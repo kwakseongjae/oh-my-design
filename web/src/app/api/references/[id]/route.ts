@@ -7,7 +7,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const mdPath = join(process.cwd(), '..', 'references', id, 'DESIGN.md');
+  const mdPath = join(process.cwd(), 'references', id, 'DESIGN.md');
   if (!existsSync(mdPath)) {
     return NextResponse.json({ error: 'Reference not found' }, { status: 404 });
   }

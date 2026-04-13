@@ -60,7 +60,7 @@ function extractBackground(md: string): string {
 }
 
 export async function GET() {
-  const refDir = join(process.cwd(), '..', 'references');
+  const refDir = join(process.cwd(), 'references');
   if (!existsSync(refDir)) {
     return NextResponse.json({ error: 'references/ not found' }, { status: 500 });
   }
