@@ -35,41 +35,52 @@ export function applyOverrides(
   const effectiveBg = ref.colors.background;
   const effectiveFg = ref.colors.foreground;
 
-  if (mode === 'customized') {
-    // Replace primary color throughout
-    if (overrides.primaryColor) {
-      md = replaceColor(md, ref.colors.primary, overrides.primaryColor);
-    }
-
-    // Replace font family
-    if (overrides.fontFamily) {
-      md = replaceFont(md, ref.typography.primary, overrides.fontFamily);
-    }
-
-    // Replace heading weight
-    if (overrides.headingWeight) {
-      md = replaceWeight(md, ref.typography.headingWeight, overrides.headingWeight);
-    }
-
-    // Replace border-radius
-    if (overrides.borderRadius) {
-      md = replaceRadius(md, ref.radius, overrides.borderRadius);
-    }
-
-    // Update the title
-    md = md.replace(
-      /^# .+$/m,
-      `# Custom Design System (based on ${ref.name})`,
-    );
-
-    // Append customization summary
-    md += buildCustomizationSummary(ref, overrides);
-  }
-
   // Strip emojis
   md = md.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{1FA00}-\u{1FAFF}\u{200D}\u{20E3}\u{E0020}-\u{E007F}]/gu, '');
   md = md.replace(/✅\s*/g, 'DO: ');
   md = md.replace(/❌\s*/g, "DON'T: ");
+
+  if (mode === 'customized') {
+    // Keep original body intact — no text replacement.
+    // Prepend override table after the title instead.
+    md = md.replace(/^# .+$/m, `# Custom Design System (based on ${ref.name})`);
+
+    const changes: string[] = [];
+    if (overrides.primaryColor) {
+      changes.push(`| Primary Color | \`${ref.colors.primary}\` | \`${overrides.primaryColor}\` |`);
+    }
+    if (overrides.fontFamily) {
+      changes.push(`| Font Family | \`${ref.typography.primary}\` | \`${overrides.fontFamily}\` |`);
+    }
+    if (overrides.headingWeight) {
+      changes.push(`| Heading Weight | ${ref.typography.headingWeight} | ${overrides.headingWeight} |`);
+    }
+    if (overrides.borderRadius) {
+      changes.push(`| Border Radius | ${ref.radius} | ${overrides.borderRadius} |`);
+    }
+    if (overrides.darkMode) {
+      changes.push(`| Dark Mode | not included | included |`);
+    }
+
+    if (changes.length > 0) {
+      const header = `
+> **Customization Notice**: This document is based on the **${ref.name}** design system
+> with the following overrides applied. When implementing, use the override values
+> from the table below instead of the original values found in the reference sections.
+
+| Property | Original | Override |
+|----------|----------|----------|
+${changes.join('\n')}
+
+---
+
+`;
+      md = md.replace(
+        /^(# Custom Design System \(based on .+\))\n/m,
+        `$1\n\n${header}`,
+      );
+    }
+  }
 
   // Append iconography section
   md += buildIconographySection();

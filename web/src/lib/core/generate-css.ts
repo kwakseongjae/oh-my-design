@@ -170,28 +170,57 @@ export function applyOverridesToMd(
   shadcnCss: string,
   components?: string[],
 ): string {
+  // Keep original document body intact — no text replacement.
+  // Instead, prepend a customization header and append override sections.
   let result = md;
 
-  if (overrides.primaryColor && overrides.primaryColor !== originalPrimary) {
-    const re = new RegExp(originalPrimary.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-    result = re[Symbol.replace](result, overrides.primaryColor);
-  }
-  if (overrides.fontFamily && overrides.fontFamily !== originalFont) {
-    result = result.replaceAll(originalFont, overrides.fontFamily);
-  }
-  if (overrides.headingWeight && overrides.headingWeight !== originalWeight) {
-    result = result.replace(new RegExp(`weight ${originalWeight}`, 'g'), `weight ${overrides.headingWeight}`);
-  }
-
-  result = result.replace(/^# .+$/m, `# Custom Design System (based on ${refName})`);
-
-  // Strip all emojis from the document
+  // Strip emojis
   result = result.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{1FA00}-\u{1FAFF}\u{200D}\u{20E3}\u{E0020}-\u{E007F}]/gu, '');
-  // Clean up "✅" "❌" style markers → use "DO:" / "DON'T:" text
   result = result.replace(/✅\s*/g, 'DO: ');
   result = result.replace(/❌\s*/g, "DON'T: ");
 
-  // Append component list if provided
+  // Replace only the title
+  result = result.replace(/^# .+$/m, `# Custom Design System (based on ${refName})`);
+
+  // Build customization override header
+  const changes: string[] = [];
+  if (overrides.primaryColor && overrides.primaryColor !== originalPrimary) {
+    changes.push(`| Primary Color | \`${originalPrimary}\` | \`${overrides.primaryColor}\` |`);
+  }
+  if (overrides.fontFamily && overrides.fontFamily !== originalFont) {
+    changes.push(`| Font Family | \`${originalFont}\` | \`${overrides.fontFamily}\` |`);
+  }
+  if (overrides.headingWeight && overrides.headingWeight !== originalWeight) {
+    changes.push(`| Heading Weight | ${originalWeight} | ${overrides.headingWeight} |`);
+  }
+  if (overrides.borderRadius) {
+    changes.push(`| Border Radius | (reference default) | ${overrides.borderRadius} |`);
+  }
+  if (overrides.darkMode) {
+    changes.push(`| Dark Mode | not included | included |`);
+  }
+
+  if (changes.length > 0) {
+    const overrideHeader = `
+> **Customization Notice**: This document is based on the **${refName}** design system
+> with the following overrides applied. When implementing, use the override values
+> from the table below instead of the original values found in the reference sections.
+
+| Property | Original | Override |
+|----------|----------|----------|
+${changes.join('\n')}
+
+---
+
+`;
+    // Insert after the title line
+    result = result.replace(
+      /^(# Custom Design System \(based on .+\))\n/m,
+      `$1\n\n${overrideHeader}`,
+    );
+  }
+
+  // Append component list
   if (components && components.length > 0) {
     result += `\n\n---\n\n## Included Components\n\nThe following components are part of this design system:\n\n`;
     result += components.map(c => `- ${c.charAt(0).toUpperCase() + c.slice(1).replace(/-/g, ' ')}`).join('\n');
