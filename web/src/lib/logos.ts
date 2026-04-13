@@ -3,8 +3,8 @@
 // 2. GitHub org avatars (PNG, always works): https://github.com/{org}.png?size=64
 
 interface LogoSource {
-  type: 'simpleicons' | 'github';
-  slug: string; // simpleicons slug or github org name
+  type: 'simpleicons' | 'github' | 'favicon';
+  slug: string; // simpleicons slug, github org name, or direct URL
 }
 
 const LOGO_MAP: Record<string, LogoSource> = {
@@ -42,7 +42,7 @@ const LOGO_MAP: Record<string, LogoSource> = {
   // ── Consumer Tech ──
   airbnb:        { type: 'simpleicons', slug: 'airbnb' },
   apple:         { type: 'simpleicons', slug: 'apple' },
-  ibm:           { type: 'simpleicons', slug: 'ibm' },
+  ibm:           { type: 'github', slug: 'IBM' },
   nvidia:        { type: 'simpleicons', slug: 'nvidia' },
   pinterest:     { type: 'simpleicons', slug: 'pinterest' },
   spacex:        { type: 'simpleicons', slug: 'spacex' },
@@ -60,15 +60,15 @@ const LOGO_MAP: Record<string, LogoSource> = {
   // ── Developer Tools ──
   cursor:        { type: 'simpleicons', slug: 'cursor' },
   expo:          { type: 'simpleicons', slug: 'expo' },
-  lovable:       { type: 'simpleicons', slug: 'lovable' },
+  lovable:       { type: 'favicon', slug: 'https://lovable.dev/favicon-192x192.png' },
   raycast:       { type: 'simpleicons', slug: 'raycast' },
-  superhuman:    { type: 'simpleicons', slug: 'superhuman' },
+  superhuman:    { type: 'github', slug: 'superhuman' },
   vercel:        { type: 'simpleicons', slug: 'vercel' },
   warp:          { type: 'simpleicons', slug: 'warp' },
 
   // ── Fintech ──
   coinbase:      { type: 'simpleicons', slug: 'coinbase' },
-  kraken:        { type: 'simpleicons', slug: 'kraken' },
+  kraken:        { type: 'github', slug: 'krakenfx' },
   revolut:       { type: 'simpleicons', slug: 'revolut' },
   stripe:        { type: 'simpleicons', slug: 'stripe' },
   wise:          { type: 'simpleicons', slug: 'wise' },
@@ -94,11 +94,16 @@ export function getLogoUrl(id: string, color?: string): string | null {
     return `https://github.com/${source.slug}.png?size=64`;
   }
 
+  if (source.type === 'favicon') {
+    return source.slug;
+  }
+
   // simpleicons
   const c = color ? color.replace('#', '') : 'white';
   return `https://cdn.simpleicons.org/${source.slug}/${c}`;
 }
 
 export function isGitHubLogo(id: string): boolean {
-  return LOGO_MAP[id]?.type === 'github';
+  const t = LOGO_MAP[id]?.type;
+  return t === 'github' || t === 'favicon';
 }

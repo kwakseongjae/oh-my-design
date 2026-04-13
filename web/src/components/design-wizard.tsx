@@ -352,20 +352,62 @@ function ColorStep({ detail, overrides, onOverride }: StepProps) {
 function TypographyStep({ detail, overrides, onOverride }: StepProps) {
   const weight = overrides.headingWeight || detail.headingWeight;
   const font = overrides.fontFamily || detail.fontFamily;
-  const WEIGHTS = ["300", "400", "500", "600", "700"];
+  const WEIGHTS: { value: string; label: string; desc: string }[] = [
+    { value: "300", label: "Light", desc: "Whisper-level elegance" },
+    { value: "400", label: "Regular", desc: "Neutral, balanced" },
+    { value: "500", label: "Medium", desc: "Slightly emphasized" },
+    { value: "600", label: "Semibold", desc: "Strong and confident" },
+    { value: "700", label: "Bold", desc: "Maximum impact" },
+  ];
   return (
     <div>
-      <AnimatedHeading text="Set the typographic weight" sub="Weight defines how headings feel -- light and elegant, or bold and commanding." />
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-        <p className="text-sm font-semibold mb-3 mt-8">Heading Weight</p>
-        <div className="flex gap-2">
-          {WEIGHTS.map((w) => (
-            <button key={w} onClick={() => onOverride({ headingWeight: w })}
-              className={`flex-1 rounded-xl border py-4 text-center transition-all ${weight === w ? "border-foreground bg-foreground text-background" : "border-border hover:border-foreground/30"}`}>
-              <div className="text-2xl leading-none" style={{ fontWeight: Number(w), fontFamily: font }}>Aa</div>
-              <div className="text-[10px] mt-2 opacity-60">{w}</div>
-            </button>
-          ))}
+      <AnimatedHeading text="How bold should headings be?" sub="This controls the visual weight of all titles and headings across your UI." />
+      <div className="mt-8 grid grid-cols-5 gap-3">
+        {WEIGHTS.map((w, i) => (
+          <motion.button
+            key={w.value}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 + i * 0.06 }}
+            onClick={() => onOverride({ headingWeight: w.value })}
+            className={`flex flex-col items-center rounded-xl border p-5 transition-all ${weight === w.value ? "border-foreground bg-foreground text-background" : "border-border hover:border-foreground/30"}`}
+          >
+            <div className="text-3xl leading-none mb-3" style={{ fontWeight: Number(w.value), fontFamily: font }}>Aa</div>
+            <div className="text-xs font-medium">{w.label}</div>
+            <div className="text-[10px] mt-0.5 opacity-50">{w.desc}</div>
+          </motion.button>
+        ))}
+      </div>
+      {/* Live comparison — show multiple UI elements affected */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+        className="mt-8 rounded-xl border border-border/40 dark:border-border overflow-hidden"
+      >
+        <div className="px-5 py-3 border-b border-border/40 dark:border-border bg-muted/20">
+          <p className="text-xs text-muted-foreground">How it looks across your UI</p>
+        </div>
+        <div className="p-5 space-y-5">
+          {/* Page title */}
+          <div>
+            <h2 className="text-3xl tracking-tight" style={{ fontWeight: Number(weight) }}>Dashboard Overview</h2>
+            <p className="text-sm text-muted-foreground mt-1">Welcome back. Here is what is happening today.</p>
+          </div>
+          {/* Card titles */}
+          <div className="grid grid-cols-3 gap-3">
+            {["Total Revenue", "Active Users", "Conversion"].map((t) => (
+              <div key={t} className="rounded-lg border border-border/40 dark:border-border p-3">
+                <p className="text-xs text-muted-foreground mb-1">{t}</p>
+                <p className="text-xl" style={{ fontWeight: Number(weight) }}>$12,345</p>
+              </div>
+            ))}
+          </div>
+          {/* Section heading */}
+          <div>
+            <h3 className="text-lg mb-1" style={{ fontWeight: Number(weight) }}>Recent Activity</h3>
+            <p className="text-xs text-muted-foreground">Body text, labels, and descriptions stay at regular weight.</p>
+          </div>
         </div>
       </motion.div>
     </div>

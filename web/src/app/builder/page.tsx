@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useTheme } from "next-themes";
-import { Moon, Sun, ArrowLeft } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { ReferenceSelector } from "@/components/reference-selector";
 import { DesignWizard } from "@/components/design-wizard";
@@ -70,7 +70,7 @@ export default function BuilderPage() {
     setDetail(data);
     setOverrides({
       primaryColor: data.primary,
-      fontFamily: data.fontFamily,
+      fontFamily: "",
       headingWeight: data.headingWeight,
       borderRadius: data.radius.replace(/[-–].*/, "").trim(),
       darkMode: false,
@@ -90,13 +90,10 @@ export default function BuilderPage() {
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-border/40 bg-background/60 backdrop-blur-xl">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground">
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
+          <Link href="/" className="flex items-center">
             <img src="/logo.png" alt="oh-my-design" className="h-6 block dark:hidden" />
             <img src="/logo-white.png" alt="oh-my-design" className="h-6 hidden dark:block" />
-          </div>
+          </Link>
 
           {/* Steps */}
           <nav className="hidden sm:flex items-center gap-1 rounded-full border border-border/40 bg-muted/30 dark:border-border dark:bg-muted/50 p-1 backdrop-blur">
