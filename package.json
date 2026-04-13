@@ -16,7 +16,8 @@
   },
   "files": [
     "dist",
-    "templates"
+    "templates",
+    "references"
   ],
   "scripts": {
     "build": "tsup && cp -r src/templates dist/templates",

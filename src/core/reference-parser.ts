@@ -179,15 +179,19 @@ function toDisplayName(id: string): string {
 // ── Main API ─────────────────────────────────────────────────────
 
 function getReferencesDir(): string {
-  // Try multiple locations: project root, relative to this file
+  // Try multiple locations:
+  // 1. Current working directory (project root)
+  // 2. Relative to this compiled file (dist/core/ → ../../references)
+  // 3. Inside the installed npm package (npx installs to node_modules)
   const candidates = [
     join(process.cwd(), 'references'),
     join(__dirname, '..', '..', 'references'),
+    join(__dirname, '..', 'references'),
   ];
   for (const dir of candidates) {
     if (existsSync(dir)) return dir;
   }
-  throw new Error('references/ directory not found. Run from the oh-my-design project root.');
+  throw new Error('references/ directory not found. Searched: ' + candidates.join(', '));
 }
 
 export function loadReference(id: string): ReferenceEntry {
