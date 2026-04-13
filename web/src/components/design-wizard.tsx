@@ -2,7 +2,8 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Check } from "lucide-react";
+import { ArrowRight, ArrowLeft, Check, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { generateColorScale, isLight, contrastForeground } from "@/lib/core/color";
 import type { Overrides } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
@@ -112,6 +113,21 @@ function ABCard({
 }
 
 // ── Steps ────────────────────────────────────────────────────────
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return <div className="w-8" />;
+  return (
+    <button
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="flex h-8 w-8 items-center justify-center rounded-full border border-border/40 dark:border-border bg-card/50 dark:bg-card/60 transition-colors hover:bg-accent"
+    >
+      {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
+    </button>
+  );
+}
 
 function IntroStep() {
   return (
@@ -546,12 +562,13 @@ export function DesignWizard({
   }, [overrides, onChange]);
 
   const onPref = useCallback((key: string, value: string) => {
-    setPrefs((p) => {
-      const updated = { ...p, [key]: value };
-      onPreferencesChange?.(updated);
-      return updated;
-    });
-  }, [onPreferencesChange]);
+    setPrefs((p) => ({ ...p, [key]: value }));
+  }, []);
+
+  // Sync preferences to parent via useEffect (avoids setState during render)
+  useEffect(() => {
+    onPreferencesChange?.(prefs);
+  }, [prefs, onPreferencesChange]);
 
   const stepProps: StepProps = { detail, overrides, preferences: prefs, onOverride, onPref };
 
@@ -595,7 +612,7 @@ export function DesignWizard({
         <span className="text-xs text-muted-foreground">
           {step + 1} / {totalSteps} &middot; {STEP_LABELS[step]}
         </span>
-        <div className="w-16" />
+        <ThemeToggle />
       </div>
 
       {/* Content */}

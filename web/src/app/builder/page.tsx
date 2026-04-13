@@ -6,8 +6,7 @@ import { Moon, Sun, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { ReferenceSelector } from "@/components/reference-selector";
 import { DesignWizard } from "@/components/design-wizard";
-import { Preview } from "@/components/preview";
-import { ExportPanel } from "@/components/export-panel";
+import { PreviewExportView } from "@/components/preview-export-view";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
 
 type Step = "select" | "customize" | "preview";
@@ -152,10 +151,14 @@ export default function BuilderPage() {
           />
         )}
         {step === "preview" && detail && (
-          <>
-            <ExportPanel detail={detail} overrides={overrides} onBack={() => setStep("customize")} components={activeComponents} stylePreferences={stylePreferences} />
-            <Preview detail={detail} overrides={overrides} onBack={() => setStep("customize")} onComponentsChange={setActiveComponents} />
-          </>
+          <PreviewExportView
+            detail={detail}
+            overrides={overrides}
+            onBack={() => setStep("customize")}
+            components={activeComponents}
+            onComponentsChange={setActiveComponents}
+            stylePreferences={stylePreferences}
+          />
         )}
       </main>
     </div>

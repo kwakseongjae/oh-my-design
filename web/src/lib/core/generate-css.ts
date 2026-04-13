@@ -171,8 +171,7 @@ export function applyOverridesToMd(
   components?: string[],
   stylePreferences?: StylePreferences,
 ): string {
-  // Keep original document body intact — no text replacement.
-  // Instead, prepend a customization header and append override sections.
+  // Direct replacement — AI agents need one source of truth, no ambiguity.
   let result = md;
 
   // Strip emojis
@@ -180,45 +179,19 @@ export function applyOverridesToMd(
   result = result.replace(/✅\s*/g, 'DO: ');
   result = result.replace(/❌\s*/g, "DON'T: ");
 
-  // Replace only the title
+  // Replace title
   result = result.replace(/^# .+$/m, `# Custom Design System (based on ${refName})`);
 
-  // Build customization override header
-  const changes: string[] = [];
+  // Replace values directly in body text
   if (overrides.primaryColor && overrides.primaryColor !== originalPrimary) {
-    changes.push(`| Primary Color | \`${originalPrimary}\` | \`${overrides.primaryColor}\` |`);
+    const re = new RegExp(originalPrimary.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    result = re[Symbol.replace](result, overrides.primaryColor);
   }
   if (overrides.fontFamily && overrides.fontFamily !== originalFont) {
-    changes.push(`| Font Family | \`${originalFont}\` | \`${overrides.fontFamily}\` |`);
+    result = result.replaceAll(originalFont, overrides.fontFamily);
   }
   if (overrides.headingWeight && overrides.headingWeight !== originalWeight) {
-    changes.push(`| Heading Weight | ${originalWeight} | ${overrides.headingWeight} |`);
-  }
-  if (overrides.borderRadius) {
-    changes.push(`| Border Radius | (reference default) | ${overrides.borderRadius} |`);
-  }
-  if (overrides.darkMode) {
-    changes.push(`| Dark Mode | not included | included |`);
-  }
-
-  if (changes.length > 0) {
-    const overrideHeader = `
-> **Customization Notice**: This document is based on the **${refName}** design system
-> with the following overrides applied. When implementing, use the override values
-> from the table below instead of the original values found in the reference sections.
-
-| Property | Original | Override |
-|----------|----------|----------|
-${changes.join('\n')}
-
----
-
-`;
-    // Insert after the title line
-    result = result.replace(
-      /^(# Custom Design System \(based on .+\))\n/m,
-      `$1\n\n${overrideHeader}`,
-    );
+    result = result.replace(new RegExp(`weight ${originalWeight}`, 'g'), `weight ${overrides.headingWeight}`);
   }
 
   // Append style preferences (user's A/B taste choices)

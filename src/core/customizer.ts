@@ -41,44 +41,18 @@ export function applyOverrides(
   md = md.replace(/❌\s*/g, "DON'T: ");
 
   if (mode === 'customized') {
-    // Keep original body intact — no text replacement.
-    // Prepend override table after the title instead.
+    // Direct replacement — one source of truth for AI agents
     md = md.replace(/^# .+$/m, `# Custom Design System (based on ${ref.name})`);
 
-    const changes: string[] = [];
-    if (overrides.primaryColor) {
-      changes.push(`| Primary Color | \`${ref.colors.primary}\` | \`${overrides.primaryColor}\` |`);
+    if (overrides.primaryColor && overrides.primaryColor !== ref.colors.primary) {
+      const re = new RegExp(ref.colors.primary.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+      md = re[Symbol.replace](md, overrides.primaryColor);
     }
-    if (overrides.fontFamily) {
-      changes.push(`| Font Family | \`${ref.typography.primary}\` | \`${overrides.fontFamily}\` |`);
+    if (overrides.fontFamily && overrides.fontFamily !== ref.typography.primary) {
+      md = md.replaceAll(ref.typography.primary, overrides.fontFamily);
     }
-    if (overrides.headingWeight) {
-      changes.push(`| Heading Weight | ${ref.typography.headingWeight} | ${overrides.headingWeight} |`);
-    }
-    if (overrides.borderRadius) {
-      changes.push(`| Border Radius | ${ref.radius} | ${overrides.borderRadius} |`);
-    }
-    if (overrides.darkMode) {
-      changes.push(`| Dark Mode | not included | included |`);
-    }
-
-    if (changes.length > 0) {
-      const header = `
-> **Customization Notice**: This document is based on the **${ref.name}** design system
-> with the following overrides applied. When implementing, use the override values
-> from the table below instead of the original values found in the reference sections.
-
-| Property | Original | Override |
-|----------|----------|----------|
-${changes.join('\n')}
-
----
-
-`;
-      md = md.replace(
-        /^(# Custom Design System \(based on .+\))\n/m,
-        `$1\n\n${header}`,
-      );
+    if (overrides.headingWeight && overrides.headingWeight !== ref.typography.headingWeight) {
+      md = md.replace(new RegExp(`weight ${ref.typography.headingWeight}`, 'g'), `weight ${overrides.headingWeight}`);
     }
   }
 

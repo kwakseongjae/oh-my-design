@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, ChevronDown, ChevronRight, Plus, X, Sun, Moon, Monitor, Sparkles } from "lucide-react";
+import { Check, ChevronDown, ChevronRight, Plus, X, Sun, Moon, Sparkles } from "lucide-react";
 import { generateColorScale, isLight, contrastForeground, generateChartColors } from "@/lib/core/color";
 import type { Overrides } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
@@ -44,7 +44,7 @@ const ALL_COMPONENTS: CompDef[] = [
   { id: "separator", label: "Separator", category: "Layout", core: false },
 ];
 
-type PreviewTheme = "reference" | "dark" | "light";
+type PreviewTheme = "light" | "dark";
 
 // ── Main Component ───────────────────────────────────────────────
 
@@ -75,7 +75,7 @@ export function Preview({
   const [compVariants, setCompVariants] = useState<Record<string, string>>({});
   const [showAddModal, setShowAddModal] = useState(false);
   const [abPickerComp, setAbPickerComp] = useState<CompDef | null>(null);
-  const [previewTheme, setPreviewTheme] = useState<PreviewTheme>("reference");
+  const [previewTheme, setPreviewTheme] = useState<PreviewTheme>("light");
 
   // Sync component list to parent
   useEffect(() => {
@@ -107,10 +107,10 @@ export function Preview({
   const extraComps = ALL_COMPONENTS.filter((c) => !c.core && activeComps.has(c.id));
   const availableToAdd = ALL_COMPONENTS.filter((c) => !activeComps.has(c.id));
 
-  const pBg = previewTheme === "dark" ? "#0a0a0a" : previewTheme === "light" ? "#ffffff" : bg;
-  const pFg = previewTheme === "dark" ? "#fafafa" : previewTheme === "light" ? "#09090b" : fg;
-  const pBorder = previewTheme === "dark" ? "#2a2a2a" : previewTheme === "light" ? "#e5e7eb" : border;
-  const pMuted = previewTheme === "dark" ? "#1a1a1a" : previewTheme === "light" ? "#f5f5f5" : (isLight(bg) ? "#f5f5f5" : "#1a1a1a");
+  const pBg = previewTheme === "dark" ? "#0a0a0a" : "#ffffff";
+  const pFg = previewTheme === "dark" ? "#fafafa" : "#09090b";
+  const pBorder = previewTheme === "dark" ? "#2a2a2a" : "#e5e7eb";
+  const pMuted = previewTheme === "dark" ? "#1a1a1a" : "#f5f5f5";
   const isDark = previewTheme === "dark";
 
   const renderComp = (id: string) => {
@@ -152,7 +152,6 @@ export function Preview({
         </div>
         <div className="flex items-center gap-0.5 rounded-lg border p-0.5 dark:border-border">
           {([
-            { key: "reference" as PreviewTheme, icon: Monitor, label: "Reference" },
             { key: "light" as PreviewTheme, icon: Sun, label: "Light" },
             { key: "dark" as PreviewTheme, icon: Moon, label: "Dark" },
           ]).map((t) => (
