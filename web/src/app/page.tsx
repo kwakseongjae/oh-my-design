@@ -1,14 +1,12 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import { ArrowRight, Download, Zap, Moon, Sun, Layers } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Playfair_Display } from "next/font/google";
 import { getLogoUrl, isGitHubLogo } from "@/lib/logos";
-import { isLight } from "@/lib/core/color";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -16,8 +14,6 @@ const playfair = Playfair_Display({
   weight: ["400", "700"],
   variable: "--font-playfair",
 });
-
-// ── Logo data ────────────────────────────────────────────────────
 
 const FEATURED_BRANDS = [
   { id: "stripe", name: "Stripe", color: "#533afd" },
@@ -42,28 +38,10 @@ const FEATURED_BRANDS = [
   { id: "webflow", name: "Webflow", color: "#4353ff" },
 ];
 
-// ── Animated word component ──────────────────────────────────────
-
-function AnimWord({ children, delay }: { children: string; delay: number }) {
-  return (
-    <motion.span
-      initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="inline-block"
-    >
-      {children}
-    </motion.span>
-  );
-}
-
-// ── Logo card for marquee ────────────────────────────────────────
-
 function LogoCard({ brand }: { brand: (typeof FEATURED_BRANDS)[number] }) {
   const lightLogo = getLogoUrl(brand.id, "999999");
   const darkLogo = getLogoUrl(brand.id, "666666");
   const github = isGitHubLogo(brand.id);
-
   return (
     <div className="mx-6 flex items-center gap-2.5 group transition-opacity duration-300 opacity-40 hover:opacity-100 sm:mx-8">
       {github ? (
@@ -79,16 +57,9 @@ function LogoCard({ brand }: { brand: (typeof FEATURED_BRANDS)[number] }) {
   );
 }
 
-// ── Main Landing ─────────────────────────────────────────────────
-
 export default function Landing() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
-
   useEffect(() => setMounted(true), []);
 
   return (
@@ -124,59 +95,35 @@ export default function Landing() {
         </div>
       </nav>
 
-      {/* Hero */}
-      <motion.section
-        ref={heroRef}
-        style={{ opacity: heroOpacity, scale: heroScale, willChange: "transform, opacity" }}
-        className="mx-auto max-w-6xl px-6 pt-28 pb-16"
-      >
+      {/* Hero — all CSS animations, no framer-motion */}
+      <section className="mx-auto max-w-6xl px-6 pt-28 pb-16">
         <div className="text-center">
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur dark:border-border dark:bg-card/60"
-          >
+          <div className="animate-fade-up animate-delay-1 mb-8 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur dark:border-border dark:bg-card/60">
             <Zap className="h-3.5 w-3.5 text-yellow-500" />
             58 companies &middot; zero AI calls &middot; 100% free
-          </motion.div>
+          </div>
 
-          {/* Headline with calligraphy accent */}
+          {/* Headline */}
           <h1 className="mx-auto max-w-4xl text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
-            <AnimWord delay={0.1}>Design</AnimWord>{" "}
-            <AnimWord delay={0.18}>systems</AnimWord>{" "}
-            <AnimWord delay={0.26}>from</AnimWord>
+            <span className="animate-fade-blur-up animate-delay-1 inline-block">Design</span>{" "}
+            <span className="animate-fade-blur-up animate-delay-2 inline-block">systems</span>{" "}
+            <span className="animate-fade-blur-up animate-delay-3 inline-block">from</span>
             <br />
-            <motion.span
-              initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.7, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className={`${playfair.className} italic bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent`}
-            >
+            <span className={`animate-fade-blur-up animate-delay-4 inline-block ${playfair.className} italic bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent`}>
               the world&apos;s best
-            </motion.span>
+            </span>
           </h1>
 
           {/* Subtext */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed text-center"
-          >
+          <div className="animate-fade-up animate-delay-6 mx-auto mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed text-center">
             <p>Start from a design system built by top companies.</p>
             <p>Customize colors, typography, and every token.</p>
             <p>Export <span className="font-semibold text-foreground">DESIGN.md</span> + <span className="font-semibold text-foreground">shadcn/ui CSS</span>.</p>
-          </motion.div>
+          </div>
 
           {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.75 }}
-            className="mt-10 flex items-center justify-center gap-4"
-          >
+          <div className="animate-fade-up animate-delay-7 mt-10 flex items-center justify-center gap-4">
             <Link
               href="/builder"
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
@@ -185,22 +132,17 @@ export default function Landing() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <a
-              href="https://github.com/oh-my-design/oh-my-design"
+              href="https://github.com/kwakseongjae/oh-my-design"
               className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/50 px-8 py-3.5 text-base font-medium backdrop-blur transition-colors hover:bg-accent dark:border-border dark:bg-card/60"
             >
               GitHub
             </a>
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Logo Marquee — Row 1 (left to right) */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.9 }}
-        className="py-8 overflow-hidden"
-      >
+      {/* Logo Marquee */}
+      <section className="animate-fade-up animate-delay-8 py-8 overflow-hidden">
         <Marquee speed={30} gradient={false} pauseOnHover autoFill>
           {FEATURED_BRANDS.slice(0, 10).map((brand) => (
             <LogoCard key={brand.id} brand={brand} />
@@ -212,51 +154,27 @@ export default function Landing() {
             <LogoCard key={brand.id} brand={brand} />
           ))}
         </Marquee>
-      </motion.section>
+      </section>
 
       {/* How it works */}
       <section className="mx-auto max-w-6xl px-6 py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Three steps to{" "}
             <span className={`${playfair.className} italic text-primary`}>your</span>{" "}
             design system
           </h2>
-        </motion.div>
+        </div>
 
         <div className="grid gap-6 sm:grid-cols-3">
           {[
-            {
-              step: "01",
-              title: "Pick a reference",
-              desc: "Choose from 58 real company design systems — Stripe, Vercel, Notion, Linear, and more.",
-              icon: Layers,
-            },
-            {
-              step: "02",
-              title: "Make it yours",
-              desc: "Walk through A/B choices for buttons, tables, cards. Fine-tune colors, fonts, and radius.",
-              icon: Zap,
-            },
-            {
-              step: "03",
-              title: "Export everything",
-              desc: "Download DESIGN.md, copy shadcn/ui CSS variables, or grab JSON tokens. Paste and ship.",
-              icon: Download,
-            },
+            { step: "01", title: "Pick a reference", desc: "Choose from 58 real company design systems -- Stripe, Vercel, Notion, Linear, and more.", icon: Layers },
+            { step: "02", title: "Make it yours", desc: "Walk through A/B choices for buttons, tables, cards. Fine-tune colors, fonts, and radius.", icon: Zap },
+            { step: "03", title: "Export everything", desc: "Download DESIGN.md, copy shadcn/ui CSS variables, or grab JSON tokens. Paste and ship.", icon: Download },
           ].map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-              className="group relative overflow-hidden rounded-2xl border border-border/40 bg-card/30 p-8 backdrop-blur transition-all hover:bg-card/60 dark:border-border dark:bg-card/60"
+              className="group relative overflow-hidden rounded-2xl border border-border/40 bg-card/30 p-8 backdrop-blur transition-all hover:bg-card/60 hover:-translate-y-1 dark:border-border dark:bg-card/60"
             >
               <div className="mb-6 flex items-center gap-4">
                 <span className={`text-4xl font-bold text-primary/20 ${playfair.className} italic`}>{item.step}</span>
@@ -266,19 +184,14 @@ export default function Landing() {
               </div>
               <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* Final CTA */}
       <section className="mx-auto max-w-6xl px-6 pb-32">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center rounded-3xl border border-border/40 bg-card/20 py-20 px-8 backdrop-blur dark:border-border dark:bg-card/40"
-        >
+        <div className="text-center rounded-3xl border border-border/40 bg-card/20 py-20 px-8 backdrop-blur dark:border-border dark:bg-card/40">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
             Ready to{" "}
             <span className={`${playfair.className} italic text-primary`}>design</span>?
@@ -293,14 +206,14 @@ export default function Landing() {
             Open Builder
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
-        </motion.div>
+        </div>
       </section>
 
       {/* Footer */}
       <footer className="border-t border-border/40 dark:border-border py-8 flex items-center justify-center gap-3 text-sm text-muted-foreground">
         <img src="/logo.png" alt="OMD" className="h-5 opacity-60 block dark:hidden" />
         <img src="/logo-white.png" alt="OMD" className="h-5 opacity-60 hidden dark:block" />
-        <span>oh-my-design &middot; Open source &middot; Built with Next.js + shadcn/ui</span>
+        <span>oh-my-design &middot; Open source</span>
       </footer>
     </div>
   );

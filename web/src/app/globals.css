@@ -2,6 +2,9 @@
 @import "../styles/tw-animate.css";
 @import "../styles/shadcn.css";
 
+@source "../../src";
+@source "../../node_modules/@radix-ui";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -173,6 +176,31 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+}
+
+/* SSR-safe fade-in animation */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+.animate-delay-5 { animation-delay: 0.5s; }
+.animate-delay-6 { animation-delay: 0.6s; }
+.animate-delay-7 { animation-delay: 0.7s; }
+.animate-delay-8 { animation-delay: 0.8s; }
+
+@keyframes fade-blur-up {
+  from { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.animate-fade-blur-up {
+  animation: fade-blur-up 0.6s ease-out both;
 }
 
 /* Marquee gradient fade */
