@@ -1,5 +1,5 @@
 import { hslString, contrastForeground, generateColorScale, lighten, darken, hexToHsl, hslToHex, generateChartColors } from './color';
-import type { Overrides } from './types';
+import type { Overrides, StylePreferences } from './types';
 
 export function generateShadcnCss(
   primary: string,
@@ -169,6 +169,7 @@ export function applyOverridesToMd(
   overrides: Overrides,
   shadcnCss: string,
   components?: string[],
+  stylePreferences?: StylePreferences,
 ): string {
   // Keep original document body intact — no text replacement.
   // Instead, prepend a customization header and append override sections.
@@ -218,6 +219,44 @@ ${changes.join('\n')}
       /^(# Custom Design System \(based on .+\))\n/m,
       `$1\n\n${overrideHeader}`,
     );
+  }
+
+  // Append style preferences (user's A/B taste choices)
+  if (stylePreferences && Object.keys(stylePreferences).filter(k => stylePreferences[k]).length > 0) {
+    result += `\n\n---\n\n## Style Preferences\n\n`;
+    result += `The following style choices reflect the user's design taste and should guide implementation decisions:\n\n`;
+
+    if (stylePreferences.buttonStyle) {
+      const isSharp = stylePreferences.buttonStyle === 'sharp';
+      result += `### Buttons\n`;
+      result += isSharp
+        ? `- Style: **Sharp & Precise** -- Use small border-radius (4px), solid fills, technical feel\n- Button corners should be tight, conveying precision and decisiveness\n- Avoid pill shapes for primary actions\n\n`
+        : `- Style: **Rounded & Friendly** -- Use pill shapes (9999px radius), soft feel\n- Buttons should feel approachable and modern\n- Use rounded corners consistently across all button variants\n\n`;
+    }
+
+    if (stylePreferences.tableStyle) {
+      const isMinimal = stylePreferences.tableStyle === 'minimal';
+      result += `### Tables\n`;
+      result += isMinimal
+        ? `- Style: **Minimal & Clean** -- Divider lines only, no outer borders, airy spacing\n- Row separators should be subtle (1px, low opacity)\n- No zebra striping, no heavy borders\n\n`
+        : `- Style: **Bordered & Structured** -- Full borders with alternating row backgrounds\n- Use zebra striping for readability on data-heavy tables\n- Outer border on the table container\n\n`;
+    }
+
+    if (stylePreferences.headerStyle) {
+      const isGlass = stylePreferences.headerStyle === 'glass';
+      result += `### Navigation Header\n`;
+      result += isGlass
+        ? `- Style: **Glass & Floating** -- Transparent background with backdrop-filter blur\n- Border-bottom only, no solid fill\n- Header should feel like it floats above the content\n\n`
+        : `- Style: **Solid & Bold** -- Solid dark background (foreground color), high contrast\n- Clear visual separation from content\n- Light text on dark header surface\n\n`;
+    }
+
+    if (stylePreferences.cardStyle) {
+      const isBordered = stylePreferences.cardStyle === 'bordered';
+      result += `### Cards\n`;
+      result += isBordered
+        ? `- Style: **Subtle Border** -- Thin border, no shadow, flat hierarchy\n- Cards are defined by their border, not by elevation\n- Use consistent border color from the palette\n\n`
+        : `- Style: **Elevated Shadow** -- Shadow depth, floating feel\n- Cards should feel lifted from the page surface\n- Use multi-layer shadows for nuanced depth\n\n`;
+    }
   }
 
   // Append component list

@@ -511,12 +511,14 @@ export function DesignWizard({
   onChange,
   onComplete,
   onBack,
+  onPreferencesChange,
 }: {
   detail: RefDetail;
   overrides: Overrides;
   onChange: (o: Overrides) => void;
   onComplete: () => void;
   onBack: () => void;
+  onPreferencesChange?: (prefs: Record<string, string>) => void;
 }) {
   const [step, setStep] = useState(0);
   const [prefs, setPrefs] = useState<Record<string, string>>({
@@ -544,8 +546,12 @@ export function DesignWizard({
   }, [overrides, onChange]);
 
   const onPref = useCallback((key: string, value: string) => {
-    setPrefs((p) => ({ ...p, [key]: value }));
-  }, []);
+    setPrefs((p) => {
+      const updated = { ...p, [key]: value };
+      onPreferencesChange?.(updated);
+      return updated;
+    });
+  }, [onPreferencesChange]);
 
   const stepProps: StepProps = { detail, overrides, preferences: prefs, onOverride, onPref };
 

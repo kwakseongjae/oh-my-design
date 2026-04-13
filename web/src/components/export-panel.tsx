@@ -5,28 +5,30 @@ import { motion } from "framer-motion";
 import { Download, Copy, FileText, Code, Braces, Check, ArrowLeft, Terminal, Paintbrush } from "lucide-react";
 import { generateShadcnCss, generateVanillaCss, applyOverridesToMd } from "@/lib/core/generate-css";
 import { generateNpxCommand } from "@/lib/core/config-hash";
-import type { Overrides } from "@/lib/core/types";
+import type { Overrides, StylePreferences } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
 import { Button } from "@/components/ui/button";
 
-type CssMode = "tailwind" | "vanilla";
+type CssMode = "tw4" | "tw3" | "vanilla";
 
 export function ExportPanel({
   detail,
   overrides,
   onBack,
   components,
+  stylePreferences,
 }: {
   detail: RefDetail;
   overrides: Overrides;
   onBack?: () => void;
   components?: string[];
+  stylePreferences?: StylePreferences;
 }) {
   const primary = overrides.primaryColor || detail.primary;
   const radius = overrides.borderRadius || detail.radius.replace(/[-–].*/, "").trim();
   const font = overrides.fontFamily || detail.fontFamily;
   const [copied, setCopied] = useState<string | null>(null);
-  const [cssMode, setCssMode] = useState<CssMode>("tailwind");
+  const [cssMode, setCssMode] = useState<CssMode>("tw4");
 
   const tailwindCss = useMemo(
     () => generateShadcnCss(primary, detail.background, detail.foreground, radius, detail.accent, detail.border, overrides.darkMode),
@@ -38,16 +40,36 @@ export function ExportPanel({
     [primary, detail, radius, overrides.darkMode, font],
   );
 
-  const activeCss = cssMode === "tailwind" ? tailwindCss : vanillaCss;
+  // Tailwind v3: same variables but wrapped with usage comment
+  const tw3Css = useMemo(() => {
+    const comment = `/* Tailwind CSS v3 + shadcn/ui
+ * Paste into your globals.css
+ * Usage: className="bg-primary text-primary-foreground"
+ * Colors use HSL format: hsl(var(--primary))
+ */\n`;
+    return comment + tailwindCss;
+  }, [tailwindCss]);
+
+  // Tailwind v4: native CSS with @layer
+  const tw4Css = useMemo(() => {
+    const comment = `/* Tailwind CSS v4 + shadcn/ui
+ * Paste into your globals.css
+ * Usage: className="bg-primary text-primary-foreground"
+ * Variables are consumed directly by Tailwind v4's theme system
+ */\n`;
+    return comment + tailwindCss;
+  }, [tailwindCss]);
+
+  const activeCss = cssMode === "tw4" ? tw4Css : cssMode === "tw3" ? tw3Css : vanillaCss;
 
   const designMd = useMemo(
     () => applyOverridesToMd(
       detail.designMd,
       detail.id.charAt(0).toUpperCase() + detail.id.slice(1),
       detail.primary, detail.fontFamily, detail.headingWeight,
-      overrides, activeCss, components,
+      overrides, activeCss, components, stylePreferences,
     ),
-    [detail, overrides, activeCss, components],
+    [detail, overrides, activeCss, components, stylePreferences],
   );
 
   const tokens = useMemo(() => JSON.stringify({
@@ -134,27 +156,26 @@ export function ExportPanel({
             </div>
           </div>
           {/* Tailwind / Vanilla toggle */}
-          <div className="flex gap-1 p-0.5 rounded-lg bg-muted/50 mb-3">
-            <button
-              onClick={() => setCssMode("tailwind")}
-              className={`flex-1 px-2.5 py-1.5 text-xs font-medium rounded-md transition-all ${
-                cssMode === "tailwind" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground"
-              }`}
-            >
-              Tailwind / shadcn
-            </button>
-            <button
-              onClick={() => setCssMode("vanilla")}
-              className={`flex-1 px-2.5 py-1.5 text-xs font-medium rounded-md transition-all ${
-                cssMode === "vanilla" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground"
-              }`}
-            >
-              Vanilla CSS
-            </button>
+          <div className="flex gap-0.5 p-0.5 rounded-lg bg-muted/50 mb-3">
+            {([
+              { key: "tw4" as CssMode, label: "TW v4" },
+              { key: "tw3" as CssMode, label: "TW v3" },
+              { key: "vanilla" as CssMode, label: "Vanilla" },
+            ]).map((m) => (
+              <button
+                key={m.key}
+                onClick={() => setCssMode(m.key)}
+                className={`flex-1 px-2 py-1.5 text-[11px] font-medium rounded-md transition-all ${
+                  cssMode === m.key ? "bg-background shadow-sm text-foreground" : "text-muted-foreground"
+                }`}
+              >
+                {m.label}
+              </button>
+            ))}
           </div>
           <div className="flex gap-1.5">
             <button
-              onClick={() => download(cssMode === "tailwind" ? "globals.css" : "design-tokens.css", activeCss, "text/css")}
+              onClick={() => download(cssMode === "vanilla" ? "design-tokens.css" : "globals.css", activeCss, "text/css")}
               className="flex-1 flex items-center justify-center gap-1.5 h-8 rounded-lg border border-border/60 bg-background dark:border-border text-xs font-medium transition-colors hover:bg-muted"
             >
               <Download className="h-3 w-3" /> Download

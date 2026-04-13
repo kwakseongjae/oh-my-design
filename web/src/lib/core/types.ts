@@ -25,3 +25,11 @@ export interface Overrides {
   borderRadius: string;
   darkMode: boolean;
 }
+
+export interface StylePreferences {
+  buttonStyle?: string;   // "sharp" | "rounded"
+  tableStyle?: string;    // "minimal" | "bordered"
+  headerStyle?: string;   // "glass" | "solid"
+  cardStyle?: string;     // "bordered" | "elevated"
+  [key: string]: string | undefined;
+}

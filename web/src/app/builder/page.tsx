@@ -8,7 +8,7 @@ import { ReferenceSelector } from "@/components/reference-selector";
 import { DesignWizard } from "@/components/design-wizard";
 import { Preview } from "@/components/preview";
 import { ExportPanel } from "@/components/export-panel";
-import type { Overrides } from "@/lib/core/types";
+import type { Overrides, StylePreferences } from "@/lib/core/types";
 
 type Step = "select" | "customize" | "preview";
 
@@ -52,6 +52,7 @@ export default function BuilderPage() {
   const [activeComponents, setActiveComponents] = useState<string[]>([
     "button", "input", "table", "card", "badge", "tabs", "dialog",
   ]);
+  const [stylePreferences, setStylePreferences] = useState<StylePreferences>({});
 
   const [refsLoading, setRefsLoading] = useState(true);
 
@@ -147,11 +148,12 @@ export default function BuilderPage() {
             onChange={setOverrides}
             onComplete={() => setStep("preview")}
             onBack={() => setStep("select")}
+            onPreferencesChange={(p) => setStylePreferences(p as StylePreferences)}
           />
         )}
         {step === "preview" && detail && (
           <>
-            <ExportPanel detail={detail} overrides={overrides} onBack={() => setStep("customize")} components={activeComponents} />
+            <ExportPanel detail={detail} overrides={overrides} onBack={() => setStep("customize")} components={activeComponents} stylePreferences={stylePreferences} />
             <Preview detail={detail} overrides={overrides} onBack={() => setStep("customize")} onComponentsChange={setActiveComponents} />
           </>
         )}
