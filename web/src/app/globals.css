@@ -1,9 +1,6 @@
-@import "tailwindcss";
+@import "tailwindcss" source("../..");
 @import "../styles/tw-animate.css";
 @import "../styles/shadcn.css";
-
-@source "../../src";
-@source "../../node_modules/@radix-ui";
 
 @custom-variant dark (&:is(.dark *));
 
