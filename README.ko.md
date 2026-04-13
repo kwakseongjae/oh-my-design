@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="web/public/logo.png" height="80" alt="oh-my-design" />
+  <img src="logo-bg.png" width="480" alt="oh-my-design" />
 </p>
 
 <h1 align="center">oh-my-design</h1>
@@ -9,7 +9,6 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/oh-my-design"><img src="https://img.shields.io/npm/v/oh-my-design?style=flat-square&color=7c5cfc" alt="npm version" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" />
@@ -54,10 +53,10 @@ cd web && npm install && npm run dev
 
 ```bash
 # 인터랙티브 모드
-npx oh-my-design
+node dist/bin/oh-my-design.js
 
 # 웹 빌더에서 생성한 config hash 사용
-npx oh-my-design --config=dmVyY2VsfCM2MzY2ZjF8SW50ZXJ8NTAwfDhweHwx
+node dist/bin/oh-my-design.js --config=<YOUR_CONFIG_HASH>
 ```
 
 ### 프로그래매틱 API
