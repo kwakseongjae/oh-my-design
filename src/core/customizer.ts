@@ -25,6 +25,7 @@ export function applyOverrides(
   ref: ReferenceEntry,
   overrides: CustomOverrides,
   mode: 'as-is' | 'customized',
+  components?: string[],
 ): { designMd: string; shadcnCss: string; previewData: PreviewData } {
   let md = ref.designMd;
 
@@ -54,6 +55,13 @@ export function applyOverrides(
     if (overrides.headingWeight && overrides.headingWeight !== ref.typography.headingWeight) {
       md = md.replace(new RegExp(`weight ${ref.typography.headingWeight}`, 'g'), `weight ${overrides.headingWeight}`);
     }
+  }
+
+  // Append component list
+  if (components && components.length > 0) {
+    md += `\n\n---\n\n## Included Components\n\nThe following components are part of this design system:\n\n`;
+    md += components.map(c => `- ${c.charAt(0).toUpperCase() + c.slice(1).replace(/-/g, ' ')}`).join('\n');
+    md += '\n';
   }
 
   // Append iconography section

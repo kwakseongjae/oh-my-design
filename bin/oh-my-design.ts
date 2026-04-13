@@ -32,11 +32,11 @@ program
         borderRadius: parts[4] || undefined,
         darkMode: parts[5] === '1',
       };
+      const components = parts[6] ? parts[6].split(',').filter(Boolean) : [];
 
       // Load reference and apply
       const { loadReference } = await import('../src/core/reference-parser.js');
       const { applyOverrides } = await import('../src/core/customizer.js');
-      const { generatePreviewHtml } = await import('../src/core/preview-generator.js');
 
       const ref = loadReference(refId);
       const mode = (overrides.primaryColor || overrides.fontFamily) ? 'customized' as const : 'as-is' as const;
@@ -46,7 +46,7 @@ program
         headingWeight: overrides.headingWeight,
         borderRadius: overrides.borderRadius,
         darkMode: overrides.darkMode,
-      }, mode);
+      }, mode, components);
 
       previewData.shadcnCss = shadcnCss;
       previewData.designMd = designMd;
