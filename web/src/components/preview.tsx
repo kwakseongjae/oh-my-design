@@ -150,6 +150,7 @@ export function Preview({
             </Button>
           )}
         </div>
+        {overrides.darkMode ? (
         <div className="flex items-center gap-0.5 rounded-lg border p-0.5 dark:border-border">
           {([
             { key: "light" as PreviewTheme, icon: Sun, label: "Light" },
@@ -167,6 +168,7 @@ export function Preview({
             </button>
           ))}
         </div>
+        ) : null}
       </div>
 
       {/* Preview frame */}

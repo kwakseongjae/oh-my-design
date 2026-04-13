@@ -59,18 +59,18 @@ export function ExportPanel({
       <div className="rounded-xl border border-border/60 dark:border-border overflow-hidden">
         {/* Toolbar */}
         <div className="flex items-center justify-end border-b border-border/40 dark:border-border bg-muted/20 dark:bg-muted/30 px-4 py-2">
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-2">
             <button
               onClick={download}
-              className="flex items-center gap-1.5 rounded-md border border-border/60 dark:border-border bg-background px-2.5 py-1 text-[11px] font-medium transition-colors hover:bg-muted"
+              className="flex items-center gap-2 rounded-lg border border-border/60 dark:border-border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
             >
-              <Download className="h-3 w-3" /> Download
+              <Download className="h-4 w-4" /> Download
             </button>
             <button
               onClick={() => copyTo("md", designMd)}
-              className="flex items-center gap-1.5 rounded-md border border-border/60 dark:border-border bg-background px-2.5 py-1 text-[11px] font-medium transition-colors hover:bg-muted"
+              className="flex items-center gap-2 rounded-lg border border-border/60 dark:border-border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
             >
-              {copied === "md" ? <Check className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3" />}
+              {copied === "md" ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
               {copied === "md" ? "Copied" : "Copy"}
             </button>
           </div>
