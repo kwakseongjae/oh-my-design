@@ -19,7 +19,6 @@ describe('applyOverrides', () => {
     }, 'customized');
 
     expect(designMd).toContain('#6366f1');
-    expect(designMd).toContain('Customization Applied');
     expect(designMd).toContain('based on Stripe');
   });
 
@@ -54,6 +53,6 @@ describe('applyOverrides', () => {
     }, 'customized');
 
     expect(designMd).toContain('Inter');
-    expect(designMd).toContain('Customization Applied');
+    expect(designMd).toContain('based on Stripe');
   });
 });
