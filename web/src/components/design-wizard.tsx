@@ -529,7 +529,6 @@ function SummaryStep({ detail, overrides, preferences }: StepProps) {
         className="mt-6 flex flex-wrap justify-center gap-2 text-xs text-muted-foreground"
       >
         <span className="rounded-full border px-3 py-1">{overrides.fontFamily || detail.fontFamily}</span>
-        <span className="rounded-full border px-3 py-1">Weight {overrides.headingWeight || detail.headingWeight}</span>
         <span className="rounded-full border px-3 py-1">Radius {overrides.borderRadius || detail.radius}</span>
         <span className="rounded-full border px-3 py-1">{overrides.darkMode ? "Dark + Light" : "Light only"}</span>
         {Object.entries(preferences).map(([k, v]) => (
@@ -542,7 +541,7 @@ function SummaryStep({ detail, overrides, preferences }: StepProps) {
 
 // ── Main Wizard ──────────────────────────────────────────────────
 
-const STEP_LABELS = ["Intro", "Buttons", "Tables", "Header", "Cards", "Color", "Weight", "Radius", "Dark Mode", "Summary"];
+const STEP_LABELS = ["Intro", "Buttons", "Tables", "Header", "Cards", "Color", "Radius", "Dark Mode", "Summary"];
 
 export function DesignWizard({
   detail,
@@ -602,7 +601,6 @@ export function DesignWizard({
     <HeaderStyleStep key="hdr" {...stepProps} />,
     <CardStyleStep key="card" {...stepProps} />,
     <ColorStep key="clr" {...stepProps} />,
-    <TypographyStep key="typ" {...stepProps} />,
     <RadiusStep key="rad" {...stepProps} />,
     <DarkModeStep key="dm" {...stepProps} />,
     <SummaryStep key="sum" {...stepProps} />,

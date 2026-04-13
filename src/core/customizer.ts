@@ -52,9 +52,6 @@ export function applyOverrides(
     if (overrides.fontFamily && overrides.fontFamily !== ref.typography.primary) {
       md = md.replaceAll(ref.typography.primary, overrides.fontFamily);
     }
-    if (overrides.headingWeight && overrides.headingWeight !== ref.typography.headingWeight) {
-      md = md.replace(new RegExp(`weight ${ref.typography.headingWeight}`, 'g'), `weight ${overrides.headingWeight}`);
-    }
   }
 
   // Append component list

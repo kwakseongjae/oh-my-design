@@ -190,9 +190,6 @@ export function applyOverridesToMd(
   if (overrides.fontFamily && overrides.fontFamily !== originalFont) {
     result = result.replaceAll(originalFont, overrides.fontFamily);
   }
-  if (overrides.headingWeight && overrides.headingWeight !== originalWeight) {
-    result = result.replace(new RegExp(`weight ${originalWeight}`, 'g'), `weight ${overrides.headingWeight}`);
-  }
 
   // Append style preferences (user's A/B taste choices)
   if (stylePreferences && Object.keys(stylePreferences).filter(k => stylePreferences[k]).length > 0) {
@@ -229,17 +226,6 @@ export function applyOverridesToMd(
       result += isBordered
         ? `- Style: **Subtle Border** -- Thin border, no shadow, flat hierarchy\n- Cards are defined by their border, not by elevation\n- Use consistent border color from the palette\n\n`
         : `- Style: **Elevated Shadow** -- Shadow depth, floating feel\n- Cards should feel lifted from the page surface\n- Use multi-layer shadows for nuanced depth\n\n`;
-    }
-
-    // Weight and radius from overrides
-    if (overrides.headingWeight) {
-      const w = parseInt(overrides.headingWeight);
-      const desc = w <= 300 ? 'Light and elegant -- headlines whisper rather than shout'
-        : w <= 400 ? 'Regular weight -- neutral, balanced, no extra emphasis'
-        : w <= 500 ? 'Medium weight -- slightly emphasized, professional'
-        : w <= 600 ? 'Semibold -- strong and confident headings'
-        : 'Bold -- maximum impact, commanding presence';
-      result += `### Heading Weight\n- Weight: **${overrides.headingWeight}** -- ${desc}\n- Apply this weight to all h1-h4 headings consistently\n\n`;
     }
 
     if (overrides.borderRadius) {

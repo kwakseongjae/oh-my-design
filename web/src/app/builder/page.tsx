@@ -71,7 +71,7 @@ export default function BuilderPage() {
     setOverrides({
       primaryColor: data.primary,
       fontFamily: "",
-      headingWeight: data.headingWeight,
+      headingWeight: "",
       borderRadius: data.radius.replace(/[-–].*/, "").trim(),
       darkMode: false,
     });
