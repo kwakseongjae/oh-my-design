@@ -77,7 +77,7 @@ export function ExportPanel({
         </div>
 
         {/* Content */}
-        <div className="max-h-[70vh] overflow-y-auto p-6">
+        <div className="p-6">
           <MarkdownRenderer content={designMd} />
         </div>
       </div>

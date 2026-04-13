@@ -121,8 +121,8 @@ export function PreviewExportView({
             {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5 text-muted-foreground" />}
           </button>
         </div>
-        <p className="text-xs text-muted-foreground mt-2">
-          Run this command from your project root, then ask your AI assistant to use <code className="px-1 py-0.5 rounded bg-muted text-[11px] font-mono">DESIGN.md</code> for UI work.
+        <p className="text-sm text-muted-foreground mt-3">
+          Run in your project root to generate <code className="px-1.5 py-0.5 rounded bg-muted text-xs font-mono">DESIGN.md</code>. Your AI coding agent will read it and build UI that matches this design system.
         </p>
         <div className="flex items-start gap-2 mt-3 text-xs text-muted-foreground/70">
           <span className="text-primary mt-0.5">*</span>
