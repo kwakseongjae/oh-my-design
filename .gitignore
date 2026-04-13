@@ -5,6 +5,7 @@ dist/
 .DS_Store
 .env
 .env.local
-# Generated output files (in project root only)
+
+# Generated output files (project root only)
 /DESIGN.md
 /DESIGN.preview.html

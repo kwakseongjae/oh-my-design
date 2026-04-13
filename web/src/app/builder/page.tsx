@@ -53,9 +53,14 @@ export default function BuilderPage() {
     "button", "input", "table", "card", "badge", "tabs", "dialog",
   ]);
 
+  const [refsLoading, setRefsLoading] = useState(true);
+
   useEffect(() => setMounted(true), []);
   useEffect(() => {
-    fetch("/api/references").then((r) => r.json()).then(setRefs);
+    fetch("/api/references")
+      .then((r) => r.json())
+      .then(setRefs)
+      .finally(() => setRefsLoading(false));
   }, []);
 
   const selectRef = useCallback(async (id: string) => {
@@ -133,7 +138,7 @@ export default function BuilderPage() {
       {/* Content */}
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
         {step === "select" && (
-          <ReferenceSelector refs={refs} onSelect={selectRef} loading={loading} />
+          <ReferenceSelector refs={refs} onSelect={selectRef} loading={loading} initialLoading={refsLoading} />
         )}
         {step === "customize" && detail && (
           <DesignWizard

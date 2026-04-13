@@ -87,6 +87,79 @@ export function generateShadcnCss(
   return css;
 }
 
+/**
+ * Generate vanilla CSS (no Tailwind/shadcn dependency).
+ * Uses standard CSS custom properties with hex values.
+ */
+export function generateVanillaCss(
+  primary: string,
+  background: string,
+  foreground: string,
+  radius: string,
+  accent: string | undefined,
+  border: string | undefined,
+  darkMode: boolean,
+  fontFamily?: string,
+): string {
+  const scale = generateColorScale(primary);
+  const [h] = hexToHsl(primary);
+  const effectiveAccent = accent || hslToHex((h + 30) % 360, 60, 55);
+  const effectiveBorder = border || lighten(foreground, 75);
+  const muted = background === '#ffffff' ? '#f5f5f5' : lighten(background, 5);
+  const chart = generateChartColors(primary);
+  const radiusVal = radius === '9999px' ? '9999px' : radius;
+  const font = fontFamily || 'system-ui, -apple-system, sans-serif';
+
+  let css = `:root {
+  /* Colors */
+  --color-primary: ${primary};
+  --color-primary-foreground: ${contrastForeground(primary)};
+  --color-background: ${background};
+  --color-foreground: ${foreground};
+  --color-accent: ${effectiveAccent};
+  --color-accent-foreground: ${contrastForeground(effectiveAccent)};
+  --color-muted: ${muted};
+  --color-muted-foreground: ${lighten(foreground, 40)};
+  --color-border: ${effectiveBorder};
+  --color-destructive: #ef4444;
+  --color-success: #22c55e;
+
+  /* Primary Scale */
+${Object.entries(scale).map(([stop, hex]) => `  --color-primary-${stop}: ${hex};`).join('\n')}
+
+  /* Chart Colors */
+${chart.map((c, i) => `  --color-chart-${i + 1}: ${c};`).join('\n')}
+
+  /* Typography */
+  --font-sans: ${font};
+  --font-mono: ui-monospace, "SF Mono", monospace;
+
+  /* Spacing & Radius */
+  --radius-sm: ${parseInt(radiusVal) > 4 ? `${parseInt(radiusVal) - 2}px` : '2px'};
+  --radius-md: ${radiusVal};
+  --radius-lg: ${parseInt(radiusVal) > 4 ? `${parseInt(radiusVal) + 4}px` : radiusVal};
+  --radius-full: 9999px;
+}`;
+
+  if (darkMode) {
+    const darkBg = hslToHex(h, 15, 7);
+    const darkBorder = hslToHex(h, 10, 18);
+    css += `
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: ${darkBg};
+    --color-foreground: #fafafa;
+    --color-muted: ${hslToHex(h, 10, 15)};
+    --color-muted-foreground: ${darken('#fafafa', 35)};
+    --color-border: ${darkBorder};
+  }
+}`;
+  }
+
+  return css;
+}
+
 export function applyOverridesToMd(
   md: string,
   refName: string,
@@ -95,6 +168,7 @@ export function applyOverridesToMd(
   originalWeight: string,
   overrides: Overrides,
   shadcnCss: string,
+  components?: string[],
 ): string {
   let result = md;
 
@@ -116,6 +190,13 @@ export function applyOverridesToMd(
   // Clean up "✅" "❌" style markers → use "DO:" / "DON'T:" text
   result = result.replace(/✅\s*/g, 'DO: ');
   result = result.replace(/❌\s*/g, "DON'T: ");
+
+  // Append component list if provided
+  if (components && components.length > 0) {
+    result += `\n\n---\n\n## Included Components\n\nThe following components are part of this design system:\n\n`;
+    result += components.map(c => `- ${c.charAt(0).toUpperCase() + c.slice(1).replace(/-/g, ' ')}`).join('\n');
+    result += '\n';
+  }
 
   // Append additional sections
   result += buildIconographySection();

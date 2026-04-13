@@ -67,5 +67,5 @@ export function generateNpxCommand(
   components?: string[],
 ): string {
   const hash = encodeConfig(refId, overrides, components);
-  return `npx oh-my-design --config=${hash}`;
+  return `npx github:kwakseongjae/oh-my-design --config=${hash}`;
 }

@@ -2,12 +2,14 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Download, Copy, FileText, Code, Braces, Check, ArrowLeft, Terminal } from "lucide-react";
-import { generateShadcnCss, applyOverridesToMd } from "@/lib/core/generate-css";
+import { Download, Copy, FileText, Code, Braces, Check, ArrowLeft, Terminal, Paintbrush } from "lucide-react";
+import { generateShadcnCss, generateVanillaCss, applyOverridesToMd } from "@/lib/core/generate-css";
 import { generateNpxCommand } from "@/lib/core/config-hash";
 import type { Overrides } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
 import { Button } from "@/components/ui/button";
+
+type CssMode = "tailwind" | "vanilla";
 
 export function ExportPanel({
   detail,
@@ -22,22 +24,56 @@ export function ExportPanel({
 }) {
   const primary = overrides.primaryColor || detail.primary;
   const radius = overrides.borderRadius || detail.radius.replace(/[-–].*/, "").trim();
+  const font = overrides.fontFamily || detail.fontFamily;
   const [copied, setCopied] = useState<string | null>(null);
+  const [cssMode, setCssMode] = useState<CssMode>("tailwind");
 
-  const css = useMemo(
+  const tailwindCss = useMemo(
     () => generateShadcnCss(primary, detail.background, detail.foreground, radius, detail.accent, detail.border, overrides.darkMode),
     [primary, detail, radius, overrides.darkMode],
   );
+
+  const vanillaCss = useMemo(
+    () => generateVanillaCss(primary, detail.background, detail.foreground, radius, detail.accent, detail.border, overrides.darkMode, font),
+    [primary, detail, radius, overrides.darkMode, font],
+  );
+
+  const activeCss = cssMode === "tailwind" ? tailwindCss : vanillaCss;
 
   const designMd = useMemo(
     () => applyOverridesToMd(
       detail.designMd,
       detail.id.charAt(0).toUpperCase() + detail.id.slice(1),
       detail.primary, detail.fontFamily, detail.headingWeight,
-      overrides, css,
+      overrides, activeCss, components,
     ),
-    [detail, overrides, css],
+    [detail, overrides, activeCss, components],
   );
+
+  const tokens = useMemo(() => JSON.stringify({
+    $schema: "oh-my-design/tokens",
+    reference: detail.id,
+    tokens: {
+      colors: {
+        primary: overrides.primaryColor || detail.primary,
+        background: detail.background,
+        foreground: detail.foreground,
+        accent: detail.accent,
+        border: detail.border,
+      },
+      typography: {
+        fontFamily: overrides.fontFamily || detail.fontFamily,
+        headingWeight: overrides.headingWeight || detail.headingWeight,
+      },
+      layout: {
+        borderRadius: overrides.borderRadius || detail.radius,
+      },
+      darkMode: overrides.darkMode,
+    },
+    components: components || [],
+  }, null, 2), [detail, overrides, components]);
+
+  const npxCmd = generateNpxCommand(detail.id, overrides, components);
 
   function download(filename: string, content: string, type = "text/plain") {
     const blob = new Blob([content], { type });
@@ -55,32 +91,9 @@ export function ExportPanel({
     setTimeout(() => setCopied(null), 2000);
   }
 
-  const tokens = JSON.stringify({
-    name: detail.id,
-    primary: overrides.primaryColor || detail.primary,
-    background: detail.background,
-    foreground: detail.foreground,
-    fontFamily: overrides.fontFamily || detail.fontFamily,
-    headingWeight: overrides.headingWeight || detail.headingWeight,
-    borderRadius: overrides.borderRadius || detail.radius,
-    darkMode: overrides.darkMode,
-  }, null, 2);
-
-  const npxCmd = generateNpxCommand(detail.id, overrides, components);
-
-  const actions = [
-    { key: "md", icon: FileText, label: "DESIGN.md", sub: `${(designMd.length / 1000).toFixed(1)}KB`, content: designMd, filename: "DESIGN.md" },
-    { key: "css", icon: Code, label: "CSS Variables", sub: "shadcn/ui", content: css, filename: "globals.css" },
-    { key: "json", icon: Braces, label: "JSON Tokens", sub: "Structured", content: tokens, filename: "design-tokens.json" },
-  ];
-
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="mb-8"
-    >
-      {/* Header row */}
+    <div className="mb-8">
+      {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           {onBack && (
@@ -90,66 +103,148 @@ export function ExportPanel({
           )}
           <div>
             <h2 className="text-2xl font-bold tracking-tight">Export</h2>
-            <p className="text-sm text-muted-foreground">Based on {detail.id.charAt(0).toUpperCase() + detail.id.slice(1)}</p>
+            <p className="text-sm text-muted-foreground">
+              Based on {detail.id.charAt(0).toUpperCase() + detail.id.slice(1)}
+              {components && ` / ${components.length} components`}
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Action cards — horizontal */}
-      <div className="grid grid-cols-3 gap-3">
-        {actions.map((a) => (
-          <div
-            key={a.key}
-            className="flex items-center gap-4 rounded-xl border border-border/60 bg-card/50 dark:border-border dark:bg-card/70 p-4 backdrop-blur"
-          >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-              <a.icon className="h-5 w-5 text-primary" />
+      {/* Export cards */}
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {/* DESIGN.md */}
+        <ExportCard
+          icon={FileText}
+          label="DESIGN.md"
+          description={`${(designMd.length / 1000).toFixed(1)}KB / Google Stitch format`}
+          onDownload={() => download("DESIGN.md", designMd)}
+          onCopy={() => copyTo("md", designMd)}
+          copied={copied === "md"}
+        />
+
+        {/* CSS Variables */}
+        <div className="rounded-xl border border-border/60 bg-card/50 dark:border-border dark:bg-card/70 p-4 backdrop-blur">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+              <Code className="h-4 w-4 text-primary" />
             </div>
             <div className="flex-1 min-w-0">
-              <div className="text-sm font-semibold">{a.label}</div>
-              <div className="text-[11px] text-muted-foreground">{a.sub}</div>
-            </div>
-            <div className="flex gap-1.5 shrink-0">
-              <button
-                onClick={() => download(a.filename, a.content)}
-                className="flex h-8 w-8 items-center justify-center rounded-lg border border-border/60 bg-background dark:border-border transition-colors hover:bg-muted"
-                title="Download"
-              >
-                <Download className="h-3.5 w-3.5" />
-              </button>
-              <button
-                onClick={() => copyTo(a.key, a.content)}
-                className="flex h-8 w-8 items-center justify-center rounded-lg border border-border/60 bg-background dark:border-border transition-colors hover:bg-muted"
-                title="Copy"
-              >
-                {copied === a.key ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
-              </button>
+              <div className="text-sm font-semibold">CSS Variables</div>
             </div>
           </div>
-        ))}
-      </div>
+          {/* Tailwind / Vanilla toggle */}
+          <div className="flex gap-1 p-0.5 rounded-lg bg-muted/50 mb-3">
+            <button
+              onClick={() => setCssMode("tailwind")}
+              className={`flex-1 px-2.5 py-1.5 text-xs font-medium rounded-md transition-all ${
+                cssMode === "tailwind" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground"
+              }`}
+            >
+              Tailwind / shadcn
+            </button>
+            <button
+              onClick={() => setCssMode("vanilla")}
+              className={`flex-1 px-2.5 py-1.5 text-xs font-medium rounded-md transition-all ${
+                cssMode === "vanilla" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground"
+              }`}
+            >
+              Vanilla CSS
+            </button>
+          </div>
+          <div className="flex gap-1.5">
+            <button
+              onClick={() => download(cssMode === "tailwind" ? "globals.css" : "design-tokens.css", activeCss, "text/css")}
+              className="flex-1 flex items-center justify-center gap-1.5 h-8 rounded-lg border border-border/60 bg-background dark:border-border text-xs font-medium transition-colors hover:bg-muted"
+            >
+              <Download className="h-3 w-3" /> Download
+            </button>
+            <button
+              onClick={() => copyTo("css", activeCss)}
+              className="flex-1 flex items-center justify-center gap-1.5 h-8 rounded-lg border border-border/60 bg-background dark:border-border text-xs font-medium transition-colors hover:bg-muted"
+            >
+              {copied === "css" ? <Check className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3" />} Copy
+            </button>
+          </div>
+        </div>
 
-      {/* CLI Command */}
-      <div className="mt-3 rounded-xl border border-border/60 bg-card/50 dark:border-border dark:bg-card/70 p-4 backdrop-blur">
-        <div className="flex items-center gap-4">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-            <Terminal className="h-5 w-5 text-primary" />
+        {/* JSON Tokens */}
+        <ExportCard
+          icon={Braces}
+          label="Design Tokens"
+          description="For Figma, Style Dictionary, or CI/CD"
+          onDownload={() => download("design-tokens.json", tokens, "application/json")}
+          onCopy={() => copyTo("json", tokens)}
+          copied={copied === "json"}
+        />
+
+        {/* CLI Command */}
+        <div className="rounded-xl border border-border/60 bg-card/50 dark:border-border dark:bg-card/70 p-4 backdrop-blur">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+              <Terminal className="h-4 w-4 text-primary" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-semibold">CLI Command</div>
+              <div className="text-[10px] text-muted-foreground">Regenerate from terminal</div>
+            </div>
           </div>
-          <div className="flex-1 min-w-0">
-            <div className="text-sm font-semibold">CLI Command</div>
-            <code className="text-xs text-muted-foreground font-mono block mt-0.5 truncate">
-              {npxCmd}
-            </code>
-          </div>
+          <code className="text-[10px] text-muted-foreground font-mono block mb-3 truncate leading-relaxed">
+            {npxCmd}
+          </code>
           <button
             onClick={() => copyTo("cli", npxCmd)}
-            className="flex h-8 items-center gap-1.5 rounded-lg border border-border/60 bg-background dark:border-border px-3 text-xs font-medium transition-colors hover:bg-muted"
+            className="w-full flex items-center justify-center gap-1.5 h-8 rounded-lg border border-border/60 bg-background dark:border-border text-xs font-medium transition-colors hover:bg-muted"
           >
-            {copied === "cli" ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
-            Copy
+            {copied === "cli" ? <Check className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3" />} Copy Command
           </button>
         </div>
       </div>
-    </motion.div>
+    </div>
+  );
+}
+
+// Reusable export card
+function ExportCard({
+  icon: Icon,
+  label,
+  description,
+  onDownload,
+  onCopy,
+  copied,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  description: string;
+  onDownload: () => void;
+  onCopy: () => void;
+  copied: boolean;
+}) {
+  return (
+    <div className="rounded-xl border border-border/60 bg-card/50 dark:border-border dark:bg-card/70 p-4 backdrop-blur">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+          <Icon className="h-4 w-4 text-primary" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="text-sm font-semibold">{label}</div>
+          <div className="text-[10px] text-muted-foreground">{description}</div>
+        </div>
+      </div>
+      <div className="flex gap-1.5">
+        <button
+          onClick={onDownload}
+          className="flex-1 flex items-center justify-center gap-1.5 h-8 rounded-lg border border-border/60 bg-background dark:border-border text-xs font-medium transition-colors hover:bg-muted"
+        >
+          <Download className="h-3 w-3" /> Download
+        </button>
+        <button
+          onClick={onCopy}
+          className="flex-1 flex items-center justify-center gap-1.5 h-8 rounded-lg border border-border/60 bg-background dark:border-border text-xs font-medium transition-colors hover:bg-muted"
+        >
+          {copied ? <Check className="h-3 w-3 text-green-500" /> : <Copy className="h-3 w-3" />} Copy
+        </button>
+      </div>
+    </div>
   );
 }

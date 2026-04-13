@@ -11,10 +11,12 @@ export function ReferenceSelector({
   refs,
   onSelect,
   loading,
+  initialLoading = false,
 }: {
   refs: RefListItem[];
   onSelect: (id: string) => void;
   loading: boolean;
+  initialLoading?: boolean;
 }) {
   const categories = [...new Set(refs.map((r) => r.category))];
   const [filter, setFilter] = useState("");
@@ -145,9 +147,25 @@ export function ReferenceSelector({
         </AnimatePresence>
       </div>
 
-      {filtered.length === 0 && !loading && (
+      {/* Loading skeleton */}
+      {initialLoading && refs.length === 0 && (
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className="rounded-xl border border-border/40 dark:border-border overflow-hidden animate-pulse">
+              <div className="h-24 bg-muted/50" />
+              <div className="px-3 py-2.5">
+                <div className="h-3.5 w-20 bg-muted/50 rounded mb-1.5" />
+                <div className="h-2.5 w-14 bg-muted/30 rounded" />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* True empty state (after loading, with filter applied) */}
+      {filtered.length === 0 && !loading && !initialLoading && (
         <div className="flex flex-col items-center py-20 text-center">
-          <div className="text-4xl mb-3">🔍</div>
+          <Search className="h-10 w-10 text-muted-foreground/30 mb-3" />
           <div className="text-muted-foreground">No references found</div>
         </div>
       )}
