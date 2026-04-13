@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System Inspired by Pinterest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white:#ffffff; --plum:#211922; --red:#e60023; --olive:#62625b; --warm-silver:#91918c;
+    --sand:#e5e5e0; --warm-light:#e0e0d9; --fog:#f6f6f3; --dark:#33332e;
+    --focus-blue:#435ee5; --link-blue:#2b48d4;
+    --font:'Nunito Sans',-apple-system,system-ui,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--white); color:var(--plum); font-family:var(--font); font-size:16px; font-weight:400; line-height:1.40; -webkit-font-smoothing:antialiased; }
+
+  .nav { position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:12px 24px; background:var(--white); border-bottom:1px solid var(--sand); }
+  .nav-brand { font-size:14px; font-weight:700; color:var(--plum); text-decoration:none; }
+  .nav-links { display:flex; gap:20px; list-style:none; }
+  .nav-links a { font-size:14px; font-weight:500; color:var(--olive); text-decoration:none; transition:color 0.15s; }
+  .nav-links a:hover { color:var(--plum); }
+  .nav-cta { display:inline-block; background:var(--red); color:var(--white); padding:8px 18px; border-radius:16px; font-size:14px; font-weight:700; text-decoration:none; }
+
+  .hero { padding:64px 24px; text-align:center; }
+  .hero h1 { font-size:56px; font-weight:600; line-height:1.10; margin-bottom:12px; }
+  .hero h1 span { color:var(--red); }
+  .hero p { font-size:16px; color:var(--olive); max-width:480px; margin:0 auto 24px; }
+  .hero-buttons { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .btn-red { display:inline-block; background:var(--red); color:var(--white); padding:10px 24px; border-radius:16px; font-family:var(--font); font-size:14px; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
+  .btn-sand { display:inline-block; background:var(--sand); color:var(--plum); padding:10px 24px; border-radius:16px; font-family:var(--font); font-size:14px; font-weight:600; text-decoration:none; border:none; cursor:pointer; }
+  .btn-circle { display:inline-flex; align-items:center; justify-content:center; background:var(--warm-light); color:var(--plum); width:40px; height:40px; border-radius:50%; font-size:16px; text-decoration:none; border:none; cursor:pointer; }
+
+  .section { padding:48px 24px; max-width:1100px; margin:0 auto; }
+  .section-label { font-size:12px; font-weight:700; color:var(--warm-silver); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px; }
+  .section-title { font-size:28px; font-weight:700; line-height:1.20; letter-spacing:-1.2px; margin-bottom:24px; }
+  .section-divider { border:none; border-top:1px solid var(--sand); margin:0; }
+
+  .color-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(145px,1fr)); gap:10px; margin-bottom:20px; }
+  .color-swatch { border-radius:16px; overflow:hidden; border:1px solid var(--sand); }
+  .color-swatch-block { height:64px; width:100%; }
+  .color-swatch-info { padding:10px; }
+  .color-swatch-name { font-size:12px; font-weight:700; margin-bottom:2px; }
+  .color-swatch-hex { font-size:10px; color:var(--warm-silver); font-family:monospace; }
+  .color-swatch-role { font-size:9px; color:var(--warm-silver); margin-top:2px; }
+  .color-group-label { font-size:12px; font-weight:700; color:var(--olive); margin:20px 0 8px; }
+
+  .type-sample { margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--fog); }
+  .type-sample:last-child { border-bottom:none; }
+  .type-meta { font-size:10px; color:var(--warm-silver); margin-top:4px; font-family:monospace; }
+
+  .button-row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .button-item { text-align:center; }
+  .button-label { font-size:10px; color:var(--warm-silver); margin-top:6px; }
+
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:12px; }
+  .card { background:var(--white); border:1px solid var(--sand); border-radius:20px; overflow:hidden; }
+  .card-img { height:140px; background:var(--fog); display:flex; align-items:center; justify-content:center; color:var(--warm-silver); font-size:12px; }
+  .card-body { padding:12px 16px; }
+  .card h3 { font-size:16px; font-weight:700; margin-bottom:4px; }
+  .card p { font-size:12px; color:var(--olive); }
+
+  .form-group { margin-bottom:16px; max-width:400px; }
+  .form-label { display:block; font-size:14px; font-weight:700; margin-bottom:4px; }
+  .form-input { width:100%; background:var(--white); color:var(--plum); border:1px solid var(--warm-silver); padding:11px 15px; border-radius:16px; font-family:var(--font); font-size:16px; outline:none; }
+  .form-input:focus { border-color:var(--focus-blue); box-shadow:0 0 0 2px rgba(67,94,229,0.3); }
+  .form-input--focus { border-color:var(--focus-blue); box-shadow:0 0 0 2px rgba(67,94,229,0.3); }
+  .form-input--error { border-color:#9e0a0a; box-shadow:0 0 0 2px rgba(158,10,10,0.2); }
+  .form-textarea { width:100%; min-height:80px; background:var(--white); color:var(--plum); border:1px solid var(--warm-silver); padding:11px 15px; border-radius:16px; font-family:var(--font); font-size:16px; resize:vertical; outline:none; }
+  .form-state-label { font-size:9px; color:var(--warm-silver); margin-top:4px; }
+
+  .spacing-row { display:flex; align-items:flex-end; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+  .spacing-item { text-align:center; }
+  .spacing-block { background:var(--red); border-radius:4px; margin-bottom:4px; height:24px; opacity:0.6; }
+  .spacing-value { font-size:9px; color:var(--warm-silver); font-family:monospace; }
+
+  .radius-row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .radius-item { text-align:center; }
+  .radius-box { width:52px; height:52px; background:var(--sand); margin-bottom:4px; }
+  .radius-label { font-size:9px; color:var(--warm-silver); font-family:monospace; }
+
+  .elevation-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:12px; }
+  .elevation-card { background:var(--white); border:1px solid var(--sand); border-radius:20px; padding:16px; text-align:center; }
+  .elevation-label { font-size:13px; font-weight:700; margin-bottom:4px; }
+  .elevation-desc { font-size:9px; color:var(--warm-silver); font-family:monospace; }
+
+  .footer { padding:32px; text-align:center; background:var(--dark); color:var(--warm-silver); font-size:12px; border-radius:40px 40px 0 0; }
+  .footer a { color:var(--white); text-decoration:underline; }
+
+  @media (max-width:768px) { .hero h1 { font-size:36px; } .nav-links { display:none; } .section { padding:32px 16px; } .card-grid { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-brand">awesome-design-md</span>
+  <ul class="nav-links">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#buttons">Buttons</a></li>
+    <li><a href="#cards">Cards</a></li>
+    <li><a href="#forms">Forms</a></li>
+  </ul>
+  <a class="nav-cta" href="#">Sign up</a>
+</nav>
+
+<section class="hero">
+  <h1>Design System<br>Inspired by <span>Pinterest</span></h1>
+  <p>A design token catalog generated from DESIGN.md. Every color, font, and component — visualized with warm craft.</p>
+  <div class="hero-buttons">
+    <a class="btn-red" href="#">Sign up</a>
+    <a class="btn-sand" href="#">Log in</a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="colors">
+  <div class="section-label">01 / Colors</div><h2 class="section-title">Color Palette</h2>
+  <div class="color-group-label">Brand</div>
+  <div class="color-grid">
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#e60023"></div><div class="color-swatch-info"><div class="color-swatch-name">Pinterest Red</div><div class="color-swatch-hex">#e60023</div><div class="color-swatch-role">Primary CTA</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#211922"></div><div class="color-swatch-info"><div class="color-swatch-name">Plum Black</div><div class="color-swatch-hex">#211922</div><div class="color-swatch-role">Primary text</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#103c25"></div><div class="color-swatch-info"><div class="color-swatch-name">Green 700</div><div class="color-swatch-hex">#103c25</div><div class="color-swatch-role">Success</div></div></div>
+  </div>
+  <div class="color-group-label">Warm Neutrals</div>
+  <div class="color-grid">
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#62625b"></div><div class="color-swatch-info"><div class="color-swatch-name">Olive Gray</div><div class="color-swatch-hex">#62625b</div><div class="color-swatch-role">Secondary text</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#91918c"></div><div class="color-swatch-info"><div class="color-swatch-name">Warm Silver</div><div class="color-swatch-hex">#91918c</div><div class="color-swatch-role">Borders, muted</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#e5e5e0"></div><div class="color-swatch-info"><div class="color-swatch-name">Sand Gray</div><div class="color-swatch-hex">#e5e5e0</div><div class="color-swatch-role">Secondary button</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#e0e0d9"></div><div class="color-swatch-info"><div class="color-swatch-name">Warm Light</div><div class="color-swatch-hex">#e0e0d9</div><div class="color-swatch-role">Circular buttons</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#f6f6f3"></div><div class="color-swatch-info"><div class="color-swatch-name">Fog</div><div class="color-swatch-hex">#f6f6f3</div><div class="color-swatch-role">Light surface</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#33332e"></div><div class="color-swatch-info"><div class="color-swatch-name">Dark</div><div class="color-swatch-hex">#33332e</div><div class="color-swatch-role">Footer</div></div></div>
+  </div>
+  <div class="color-group-label">Interactive</div>
+  <div class="color-grid">
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#435ee5"></div><div class="color-swatch-info"><div class="color-swatch-name">Focus Blue</div><div class="color-swatch-hex">#435ee5</div><div class="color-swatch-role">Focus ring</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#2b48d4"></div><div class="color-swatch-info"><div class="color-swatch-name">Link Blue</div><div class="color-swatch-hex">#2b48d4</div><div class="color-swatch-role">Links</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#6845ab"></div><div class="color-swatch-info"><div class="color-swatch-name">Purple</div><div class="color-swatch-hex">#6845ab</div><div class="color-swatch-role">Performance</div></div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="typography">
+  <div class="section-label">02 / Typography</div><h2 class="section-title">Typography Scale</h2>
+  <div class="type-sample"><div style="font-size:56px; font-weight:600; line-height:1.10;">Display Hero</div><div class="type-meta">Display — 70px / 600 / Pin Sans</div></div>
+  <div class="type-sample"><div style="font-size:28px; font-weight:700; letter-spacing:-1.2px;">Section Heading</div><div class="type-meta">Section — 28px / 700 / -1.2px</div></div>
+  <div class="type-sample"><div style="font-size:16px; font-weight:400; line-height:1.40; color:var(--olive);">Body — Find ideas for weeknight dinner. With Pinterest, discover creative ideas that spark joy.</div><div class="type-meta">Body — 16px / 400 / 1.40 / Pin Sans</div></div>
+  <div class="type-sample"><div style="font-size:14px; font-weight:700;">Caption Bold — Trending now</div><div class="type-meta">Caption Bold — 14px / 700</div></div>
+  <div class="type-sample"><div style="font-size:12px; font-weight:500; color:var(--warm-silver);">Small — 1,234 pins</div><div class="type-meta">Small — 12px / 500</div></div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="buttons">
+  <div class="section-label">03 / Buttons</div><h2 class="section-title">Button Variants</h2>
+  <div class="button-row">
+    <div class="button-item"><a class="btn-red" href="#">Sign up</a><div class="button-label">Primary Red</div></div>
+    <div class="button-item"><a class="btn-sand" href="#">Log in</a><div class="button-label">Secondary Sand</div></div>
+    <div class="button-item"><a class="btn-circle" href="#">&#x2764;</a><div class="button-label">Circular</div></div>
+    <div class="button-item"><span style="display:inline-block; background:transparent; color:var(--plum); padding:6px 14px; font-size:12px;">Ghost</span><div class="button-label">Transparent</div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="cards">
+  <div class="section-label">04 / Cards</div><h2 class="section-title">Card Examples</h2>
+  <div class="card-grid">
+    <div class="card"><div class="card-img">Pin photo</div><div class="card-body"><h3>Weeknight Dinner</h3><p>Quick recipes for busy evenings</p></div></div>
+    <div class="card"><div class="card-img" style="background:var(--sand);">Pin photo</div><div class="card-body"><h3>Home Decor</h3><p>Inspiration for every room</p></div></div>
+    <div class="card"><div class="card-img" style="background:#eee;">Pin photo</div><div class="card-body"><h3>Travel Ideas</h3><p>Destinations worth exploring</p></div></div>
+    <div class="card"><div class="card-img" style="background:var(--warm-light);">Pin photo</div><div class="card-body"><h3>Fashion</h3><p>Outfit ideas for every season</p></div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="forms">
+  <div class="section-label">05 / Forms</div><h2 class="section-title">Form Elements</h2>
+  <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="Email address"><div class="form-state-label">Default (warm silver border)</div></div>
+  <div class="form-group"><label class="form-label">Username</label><input class="form-input form-input--focus" type="text" value="pinner123"><div class="form-state-label">Focus (blue ring)</div></div>
+  <div class="form-group"><label class="form-label">Password</label><input class="form-input form-input--error" type="password" value="short"><div class="form-state-label">Error</div></div>
+  <div class="form-group"><label class="form-label">About you</label><textarea class="form-textarea" placeholder="Tell us about yourself..."></textarea></div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section">
+  <div class="section-label">06 / Spacing</div><h2 class="section-title">Spacing Scale</h2>
+  <div class="spacing-row">
+    <div class="spacing-item"><div class="spacing-block" style="width:4px"></div><div class="spacing-value">4</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:8px"></div><div class="spacing-value">8</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:12px"></div><div class="spacing-value">12</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:16px"></div><div class="spacing-value">16</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:24px"></div><div class="spacing-value">24</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:32px"></div><div class="spacing-value">32</div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section">
+  <div class="section-label">07 / Radius</div><h2 class="section-title">Border Radius</h2>
+  <div class="radius-row">
+    <div class="radius-item"><div class="radius-box" style="border-radius:12px"></div><div class="radius-label">12px</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:16px"></div><div class="radius-label">16px</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:20px"></div><div class="radius-label">20px</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:28px"></div><div class="radius-label">28px</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:40px"></div><div class="radius-label">40px</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:50%; width:52px; height:52px;"></div><div class="radius-label">50%</div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section">
+  <div class="section-label">08 / Elevation</div><h2 class="section-title">Depth</h2>
+  <div class="elevation-grid">
+    <div class="elevation-card"><div class="elevation-label">Flat</div><div class="elevation-desc">No shadow — content driven</div></div>
+    <div class="elevation-card" style="box-shadow:0 0 0 2px var(--focus-blue);"><div class="elevation-label">Focus</div><div class="elevation-desc">Blue focus ring</div></div>
+  </div>
+  <p style="font-size:11px; color:var(--warm-silver); margin-top:12px;">Pinterest uses minimal shadows — depth comes from photography and warm surface colors.</p>
+</section>
+
+<footer class="footer">Maintained by <a href="https://github.com/VoltAgent/voltagent" target="_blank" rel="noopener noreferrer" style="text-decoration:none;"><img src="https://github.com/VoltAgent.png?size=32" alt="VoltAgent" width="14" height="14" style="border-radius:3px;vertical-align:-2px;margin-right:3px;">VoltAgent</a> team</footer>
+
+</body>
+</html>

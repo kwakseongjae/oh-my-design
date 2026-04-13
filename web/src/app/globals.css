@@ -1,0 +1,220 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * oh-my-design Design System
+ * —————————————————————————
+ * Primary: Violet-Blue (#7c5cfc)
+ * Neutral: Cool zinc with slight violet tint
+ * Radius: 0.625rem (10px) — friendly but professional
+ * Philosophy: We build design tools, so our own site must be impeccable.
+ */
+
+:root {
+  /* Violet-blue primary */
+  --primary: oklch(0.55 0.22 275);
+  --primary-foreground: oklch(0.99 0 0);
+
+  /* Surfaces — warm white with very subtle violet undertone */
+  --background: oklch(0.99 0.002 275);
+  --foreground: oklch(0.13 0.02 275);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.13 0.02 275);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.13 0.02 275);
+
+  /* Secondary — violet-tinted gray */
+  --secondary: oklch(0.965 0.005 275);
+  --secondary-foreground: oklch(0.2 0.02 275);
+
+  /* Muted — slightly violet */
+  --muted: oklch(0.96 0.005 275);
+  --muted-foreground: oklch(0.5 0.015 275);
+
+  /* Accent — lighter violet */
+  --accent: oklch(0.955 0.01 275);
+  --accent-foreground: oklch(0.2 0.02 275);
+
+  /* Destructive */
+  --destructive: oklch(0.58 0.22 25);
+
+  /* Borders — violet-tinted for cohesion */
+  --border: oklch(0.91 0.008 275);
+  --input: oklch(0.91 0.008 275);
+  --ring: oklch(0.55 0.22 275);
+
+  /* Charts — violet-blue spectrum */
+  --chart-1: oklch(0.55 0.22 275);
+  --chart-2: oklch(0.6 0.18 260);
+  --chart-3: oklch(0.65 0.15 290);
+  --chart-4: oklch(0.55 0.15 240);
+  --chart-5: oklch(0.7 0.12 310);
+
+  --radius: 0.625rem;
+
+  --sidebar: oklch(0.985 0.003 275);
+  --sidebar-foreground: oklch(0.13 0.02 275);
+  --sidebar-primary: oklch(0.55 0.22 275);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.96 0.008 275);
+  --sidebar-accent-foreground: oklch(0.2 0.02 275);
+  --sidebar-border: oklch(0.91 0.008 275);
+  --sidebar-ring: oklch(0.55 0.22 275);
+}
+
+.dark {
+  /* Primary stays vibrant in dark */
+  --primary: oklch(0.7 0.2 275);
+  --primary-foreground: oklch(0.1 0.02 275);
+
+  /* Surfaces — deep with violet undertone */
+  --background: oklch(0.1 0.015 275);
+  --foreground: oklch(0.95 0.005 275);
+  --card: oklch(0.14 0.015 275);
+  --card-foreground: oklch(0.95 0.005 275);
+  --popover: oklch(0.14 0.015 275);
+  --popover-foreground: oklch(0.95 0.005 275);
+
+  /* Secondary */
+  --secondary: oklch(0.2 0.015 275);
+  --secondary-foreground: oklch(0.95 0.005 275);
+
+  /* Muted */
+  --muted: oklch(0.2 0.015 275);
+  --muted-foreground: oklch(0.6 0.015 275);
+
+  /* Accent */
+  --accent: oklch(0.2 0.02 275);
+  --accent-foreground: oklch(0.95 0.005 275);
+
+  /* Destructive */
+  --destructive: oklch(0.65 0.2 22);
+
+  /* Borders */
+  --border: oklch(0.22 0.015 275);
+  --input: oklch(0.25 0.015 275);
+  --ring: oklch(0.7 0.2 275);
+
+  /* Charts */
+  --chart-1: oklch(0.7 0.2 275);
+  --chart-2: oklch(0.65 0.18 260);
+  --chart-3: oklch(0.6 0.15 290);
+  --chart-4: oklch(0.7 0.15 240);
+  --chart-5: oklch(0.65 0.12 310);
+
+  --sidebar: oklch(0.12 0.015 275);
+  --sidebar-foreground: oklch(0.95 0.005 275);
+  --sidebar-primary: oklch(0.7 0.2 275);
+  --sidebar-primary-foreground: oklch(0.1 0.02 275);
+  --sidebar-accent: oklch(0.2 0.02 275);
+  --sidebar-accent-foreground: oklch(0.95 0.005 275);
+  --sidebar-border: oklch(0.22 0.015 275);
+  --sidebar-ring: oklch(0.6 0.15 275);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    font-feature-settings: "cv01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Marquee gradient fade */
+:root {
+  --marquee-fade: #faf9ff;
+}
+.dark {
+  --marquee-fade: #0f0e15;
+}
+
+/* Preview element borders — adapts to site theme, not the reference theme */
+.preview-border {
+  border-color: oklch(0.85 0 0);
+}
+.dark .preview-border {
+  border-color: oklch(0.35 0 0);
+}
+
+/* Selection color */
+::selection {
+  background: oklch(0.55 0.22 275 / 0.2);
+}
+
+.dark ::selection {
+  background: oklch(0.7 0.2 275 / 0.3);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.7 0 0 / 0.2);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.5 0 0 / 0.3);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: oklch(0.4 0 0 / 0.3);
+}

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System Inspired by Apple</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #f5f5f7;
+    --white: #000000;
+    --pure-black: #000000;
+    --light-gray: #1d1d1f;
+    --apple-blue: #2997ff;
+    --link-blue: #2997ff;
+    --link-blue-dark: #2997ff;
+    --gray-80: rgba(255,255,255,0.8);
+    --gray-48: rgba(255,255,255,0.48);
+    --button-active: #333336;
+    --filter-bg: #1c1c1e;
+    --dark-surface-1: #272729;
+    --dark-surface-2: #28282a;
+    --dark-surface-3: #2a2a2d;
+    --overlay: rgba(60,60,67,0.64);
+    --shadow-card: rgba(0,0,0,0.5) 3px 5px 30px 0px;
+    --nav-bg: rgba(0,0,0,0.88);
+    --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-text: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--font-text);
+    font-size: 17px; font-weight: 400; line-height: 1.47;
+    letter-spacing: -0.374px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 32px; height: 48px;
+    background: var(--nav-bg);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+  }
+  .nav-brand { font-size: 14px; font-weight: 600; color: #f5f5f7; text-decoration: none; letter-spacing: -0.28px; }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: #ffffff; }
+  .nav-cta {
+    display: inline-block; background: var(--apple-blue); color: #ffffff;
+    padding: 4px 12px; border-radius: 980px; font-size: 12px; font-weight: 400;
+    text-decoration: none; transition: opacity 0.15s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* DARK MODE BADGE */
+  .dark-badge {
+    position: fixed; top: 16px; right: 16px; z-index: 200;
+    background: #f5f5f7; color: #000000;
+    font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px;
+  }
+
+  /* HERO */
+  .hero { padding: 96px 32px 80px; text-align: center; background: var(--light-gray); }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 56px; font-weight: 600; line-height: 1.07;
+    letter-spacing: -0.28px; color: var(--black); margin-bottom: 16px;
+  }
+  .hero p { font-size: 21px; font-weight: 400; line-height: 1.19; letter-spacing: 0.231px; color: var(--gray-80); max-width: 600px; margin: 0 auto 32px; }
+  .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-blue {
+    display: inline-block; background: var(--apple-blue); color: #ffffff;
+    padding: 8px 22px; border-radius: 980px; border: none;
+    font-family: var(--font-text); font-size: 17px; font-weight: 400;
+    text-decoration: none; cursor: pointer; transition: opacity 0.15s;
+  }
+  .btn-blue:hover { opacity: 0.88; }
+  .btn-outline {
+    display: inline-block; background: transparent; color: var(--apple-blue);
+    padding: 8px 22px; border-radius: 980px;
+    border: 1px solid var(--apple-blue);
+    font-family: var(--font-text); font-size: 17px; font-weight: 400;
+    text-decoration: none; cursor: pointer; transition: background 0.15s;
+  }
+  .btn-outline:hover { background: rgba(41,151,255,0.1); }
+
+  /* SECTIONS */
+  .section { padding: 64px 32px; max-width: 980px; margin: 0 auto; }
+  .section-label { font-family: var(--font-text); font-size: 12px; font-weight: 600; color: var(--gray-48); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+  .section-title { font-family: var(--font-display); font-size: 40px; font-weight: 600; line-height: 1.10; letter-spacing: -0.28px; margin-bottom: 32px; }
+  .section-divider { border: none; border-top: 1px solid #333336; margin: 0; }
+
+  /* DARK SECTION (inverted for dark mode = lighter section) */
+  .section-dark { background: #1d1d1f; color: #f5f5f7; padding: 64px 32px; }
+  .section-dark .section-inner { max-width: 980px; margin: 0 auto; }
+  .section-dark .section-label { color: rgba(255,255,255,0.48); }
+  .section-dark .section-title { color: #f5f5f7; }
+
+  /* GRAY SECTION (slightly lighter dark) */
+  .section-gray { background: #1c1c1e; padding: 64px 32px; }
+  .section-gray .section-inner { max-width: 980px; margin: 0 auto; }
+
+  /* COLORS */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .color-swatch { border-radius: 8px; overflow: hidden; background: #1c1c1e; box-shadow: 0 0 0 1px rgba(255,255,255,0.1); }
+  .color-swatch-block { height: 72px; width: 100%; }
+  .color-swatch-info { padding: 10px 12px; }
+  .color-swatch-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; letter-spacing: -0.26px; color: var(--black); }
+  .color-swatch-hex { font-size: 12px; color: var(--gray-48); font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace; }
+  .color-swatch-role { font-size: 11px; color: var(--gray-48); margin-top: 3px; }
+  .color-group-label { font-size: 14px; font-weight: 600; color: var(--gray-80); letter-spacing: -0.224px; margin: 24px 0 10px; }
+
+  /* TYPOGRAPHY */
+  .type-sample { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid #333336; }
+  .type-sample:last-child { border-bottom: none; }
+  .type-meta { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace; font-size: 12px; font-weight: 400; color: var(--gray-48); margin-top: 8px; }
+
+  /* BUTTONS */
+  .button-row { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+  .button-item { text-align: center; }
+  .button-label { font-size: 12px; font-weight: 400; color: var(--gray-48); margin-top: 8px; }
+  .btn-dark-fill {
+    display: inline-block; background: #f5f5f7; color: #000000;
+    padding: 8px 22px; border-radius: 8px; border: none;
+    font-family: var(--font-text); font-size: 17px; font-weight: 400;
+    text-decoration: none; cursor: pointer;
+  }
+  .btn-filter {
+    display: inline-block; background: var(--filter-bg); color: var(--gray-80);
+    padding: 6px 14px; border-radius: 11px; border: 3px solid rgba(255,255,255,0.06);
+    font-family: var(--font-text); font-size: 14px; font-weight: 400;
+    text-decoration: none; cursor: pointer;
+  }
+  .btn-media {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--overlay); color: var(--gray-48); border: none;
+    font-size: 14px; cursor: pointer;
+  }
+
+  /* CARDS */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .card { background: var(--dark-surface-1); border-radius: 8px; padding: 32px 24px; transition: box-shadow 0.3s; }
+  .card:hover { box-shadow: var(--shadow-card); }
+  .card h3 { font-family: var(--font-display); font-size: 28px; font-weight: 400; letter-spacing: 0.196px; line-height: 1.14; margin-bottom: 8px; color: #f5f5f7; }
+  .card p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.43; letter-spacing: -0.224px; }
+  .card-link { font-size: 14px; color: var(--link-blue); text-decoration: none; margin-top: 12px; display: inline-block; }
+  .card-link:hover { text-decoration: underline; }
+
+  .card-light { background: #1c1c1e; }
+  .card-elevated { background: var(--dark-surface-3); }
+
+  /* FORMS */
+  .form-group { margin-bottom: 20px; max-width: 400px; }
+  .form-label { display: block; font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 6px; letter-spacing: -0.224px; }
+  .form-input {
+    width: 100%; background: #1c1c1e; color: var(--black);
+    border: 1px solid #333336; padding: 10px 14px; border-radius: 8px;
+    font-family: var(--font-text); font-size: 17px; outline: none;
+    letter-spacing: -0.374px; transition: border-color 0.15s;
+  }
+  .form-input:focus { border-color: var(--apple-blue); box-shadow: 0 0 0 3px rgba(41,151,255,0.25); }
+  .form-input--focus { border-color: var(--apple-blue); box-shadow: 0 0 0 3px rgba(41,151,255,0.25); }
+  .form-input--error { border-color: #ff453a; box-shadow: 0 0 0 3px rgba(255,69,58,0.25); }
+  .form-textarea {
+    width: 100%; min-height: 80px; background: #1c1c1e; color: var(--black);
+    border: 1px solid #333336; padding: 10px 14px; border-radius: 8px;
+    font-family: var(--font-text); font-size: 17px; resize: vertical; outline: none;
+    letter-spacing: -0.374px;
+  }
+  .form-state-label { font-size: 11px; color: var(--gray-48); margin-top: 4px; }
+
+  /* SPACING */
+  .spacing-row { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+  .spacing-item { text-align: center; }
+  .spacing-block { background: var(--apple-blue); border-radius: 3px; margin-bottom: 6px; height: 28px; }
+  .spacing-value { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace; font-size: 11px; font-weight: 500; color: var(--gray-48); }
+
+  /* RADIUS */
+  .radius-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .radius-item { text-align: center; }
+  .radius-box { width: 64px; height: 64px; background: var(--black); margin-bottom: 6px; }
+  .radius-label { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace; font-size: 11px; font-weight: 500; color: var(--gray-48); }
+  .radius-context { font-size: 10px; color: var(--gray-48); }
+
+  /* ELEVATION */
+  .elevation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+  .elevation-card { background: #1c1c1e; border-radius: 8px; padding: 24px; text-align: center; }
+  .elevation-label { font-size: 14px; font-weight: 600; letter-spacing: -0.224px; margin-bottom: 4px; }
+  .elevation-desc { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--gray-48); }
+
+  /* FOOTER */
+  .footer { padding: 32px; text-align: center; background: #1d1d1f; font-size: 12px; color: var(--gray-48); letter-spacing: -0.12px; border-top: 1px solid #333336; }
+  .footer a { color: var(--link-blue); text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 40px; }
+    .nav-links { display: none; }
+    .section { padding: 48px 20px; }
+    .section-dark { padding: 48px 20px; }
+    .section-gray { padding: 48px 20px; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-brand">awesome-design-md</span>
+  <ul class="nav-links">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#buttons">Buttons</a></li>
+    <li><a href="#cards">Cards</a></li>
+    <li><a href="#forms">Forms</a></li>
+    <li><a href="#spacing">Spacing</a></li>
+  </ul>
+  <a class="nav-cta" href="#">Shop Now</a>
+</nav>
+<div class="dark-badge">Dark Mode</div>
+
+<section class="hero">
+  <h1>Design System<br>Inspired by Apple</h1>
+  <p>A design token catalog generated from DESIGN.md. Every color, font, component, and spacing value — visualized.</p>
+  <div class="hero-buttons">
+    <a class="btn-blue" href="#">Learn more</a>
+    <a class="btn-outline" href="#">View Documentation</a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="colors">
+  <div class="section-label">01 / Colors</div>
+  <h2 class="section-title">Color Palette</h2>
+
+  <div class="color-group-label">Primary</div>
+  <div class="color-grid">
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#000000"></div><div class="color-swatch-info"><div class="color-swatch-name">Pure Black</div><div class="color-swatch-hex">#000000</div><div class="color-swatch-role">Hero backgrounds</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#f5f5f7"></div><div class="color-swatch-info"><div class="color-swatch-name">Light Gray</div><div class="color-swatch-hex">#f5f5f7</div><div class="color-swatch-role">Alternate sections</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#1d1d1f"></div><div class="color-swatch-info"><div class="color-swatch-name">Near Black</div><div class="color-swatch-hex">#1d1d1f</div><div class="color-swatch-role">Primary text, dark buttons</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#ffffff; border-bottom:1px solid #333336"></div><div class="color-swatch-info"><div class="color-swatch-name">White</div><div class="color-swatch-hex">#ffffff</div><div class="color-swatch-role">Text on dark, button text</div></div></div>
+  </div>
+
+  <div class="color-group-label">Interactive</div>
+  <div class="color-grid">
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#0071e3"></div><div class="color-swatch-info"><div class="color-swatch-name">Apple Blue</div><div class="color-swatch-hex">#0071e3</div><div class="color-swatch-role">Primary CTA, focus ring</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#0066cc"></div><div class="color-swatch-info"><div class="color-swatch-name">Link Blue</div><div class="color-swatch-hex">#0066cc</div><div class="color-swatch-role">Inline text links</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#2997ff"></div><div class="color-swatch-info"><div class="color-swatch-name">Bright Blue</div><div class="color-swatch-hex">#2997ff</div><div class="color-swatch-role">Links on dark bg</div></div></div>
+  </div>
+
+  <div class="color-group-label">Text & Surface</div>
+  <div class="color-grid">
+    <div class="color-swatch"><div class="color-swatch-block" style="background:rgba(0,0,0,0.8)"></div><div class="color-swatch-info"><div class="color-swatch-name">Black 80%</div><div class="color-swatch-hex">rgba(0,0,0,0.8)</div><div class="color-swatch-role">Secondary text</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:rgba(0,0,0,0.48)"></div><div class="color-swatch-info"><div class="color-swatch-name">Black 48%</div><div class="color-swatch-hex">rgba(0,0,0,0.48)</div><div class="color-swatch-role">Tertiary text</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#fafafc"></div><div class="color-swatch-info"><div class="color-swatch-name">Filter BG</div><div class="color-swatch-hex">#fafafc</div><div class="color-swatch-role">Search/filter buttons</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#ededf2"></div><div class="color-swatch-info"><div class="color-swatch-name">Button Active</div><div class="color-swatch-hex">#ededf2</div><div class="color-swatch-role">Pressed state</div></div></div>
+  </div>
+
+  <div class="color-group-label">Dark Surfaces</div>
+  <div class="color-grid">
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#272729"></div><div class="color-swatch-info"><div class="color-swatch-name">Surface 1</div><div class="color-swatch-hex">#272729</div><div class="color-swatch-role">Dark section cards</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#28282a"></div><div class="color-swatch-info"><div class="color-swatch-name">Surface 2</div><div class="color-swatch-hex">#28282a</div><div class="color-swatch-role">Dark elevated cards</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#2a2a2d"></div><div class="color-swatch-info"><div class="color-swatch-name">Surface 3</div><div class="color-swatch-hex">#2a2a2d</div><div class="color-swatch-role">Highest dark elevation</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#242426"></div><div class="color-swatch-info"><div class="color-swatch-name">Surface 4</div><div class="color-swatch-hex">#242426</div><div class="color-swatch-role">Deepest dark tone</div></div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="typography">
+  <div class="section-label">02 / Typography</div>
+  <h2 class="section-title">Typography Scale</h2>
+
+  <div class="type-sample"><div style="font-family:var(--font-display); font-size:56px; font-weight:600; line-height:1.07; letter-spacing:-0.28px;">Display Hero</div><div class="type-meta">Display Hero -- 56px / 600 / 1.07 / -0.28px / SF Pro Display</div></div>
+  <div class="type-sample"><div style="font-family:var(--font-display); font-size:40px; font-weight:600; line-height:1.10; letter-spacing:-0.28px;">Section Heading</div><div class="type-meta">Section Heading -- 40px / 600 / 1.10 / normal / SF Pro Display</div></div>
+  <div class="type-sample"><div style="font-family:var(--font-display); font-size:28px; font-weight:400; line-height:1.14; letter-spacing:0.196px;">Tile Heading</div><div class="type-meta">Tile Heading -- 28px / 400 / 1.14 / 0.196px / SF Pro Display</div></div>
+  <div class="type-sample"><div style="font-family:var(--font-display); font-size:21px; font-weight:700; line-height:1.19; letter-spacing:0.231px;">Card Title Bold</div><div class="type-meta">Card Title Bold -- 21px / 700 / 1.19 / 0.231px / SF Pro Display</div></div>
+  <div class="type-sample"><div style="font-family:var(--font-display); font-size:21px; font-weight:400; line-height:1.19; letter-spacing:0.231px;">Card Title Regular</div><div class="type-meta">Card Title Regular -- 21px / 400 / 1.19 / 0.231px / SF Pro Display</div></div>
+  <div class="type-sample"><div style="font-family:var(--font-text); font-size:17px; font-weight:400; line-height:1.47; letter-spacing:-0.374px;">Body -- The all-new design brings incredible capability. Powerful features let you do more than ever.</div><div class="type-meta">Body -- 17px / 400 / 1.47 / -0.374px / SF Pro Text</div></div>
+  <div class="type-sample"><div style="font-family:var(--font-text); font-size:17px; font-weight:600; line-height:1.24; letter-spacing:-0.374px;">Body Emphasis -- Featured highlights</div><div class="type-meta">Body Emphasis -- 17px / 600 / 1.24 / -0.374px / SF Pro Text</div></div>
+  <div class="type-sample"><div style="font-family:var(--font-text); font-size:14px; font-weight:400; line-height:1.43; letter-spacing:-0.224px;">Link / Caption -- Learn more about the latest features</div><div class="type-meta">Link / Caption -- 14px / 400 / 1.43 / -0.224px / SF Pro Text</div></div>
+  <div class="type-sample"><div style="font-family:var(--font-text); font-size:12px; font-weight:400; line-height:1.33; letter-spacing:-0.12px;">Micro -- Legal text, footnotes, and fine print</div><div class="type-meta">Micro -- 12px / 400 / 1.33 / -0.12px / SF Pro Text</div></div>
+  <div class="type-sample"><div style="font-family:var(--font-text); font-size:10px; font-weight:400; line-height:1.47; letter-spacing:-0.08px;">Nano -- smallest size, regulatory labels</div><div class="type-meta">Nano -- 10px / 400 / 1.47 / -0.08px / SF Pro Text</div></div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="buttons">
+  <div class="section-label">03 / Buttons</div>
+  <h2 class="section-title">Button Variants</h2>
+  <div class="button-row">
+    <div class="button-item"><a class="btn-blue" href="#">Buy</a><div class="button-label">Primary Blue</div></div>
+    <div class="button-item"><a class="btn-outline" href="#">Learn more</a><div class="button-label">Outline Pill</div></div>
+    <div class="button-item"><a class="btn-dark-fill" href="#">Shop iPhone</a><div class="button-label">Light Fill</div></div>
+    <div class="button-item"><a class="btn-filter" href="#">Search</a><div class="button-label">Filter</div></div>
+    <div class="button-item"><button class="btn-media">&#9654;</button><div class="button-label">Media</div></div>
+    <div class="button-item"><span style="display:inline-block; background:transparent; color:var(--link-blue); padding:4px 16px; border-radius:980px; border:1px solid var(--link-blue); font-size:14px; font-weight:400; letter-spacing:-0.224px;">Learn more ></span><div class="button-label">Link Pill</div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<div class="section-dark">
+<section class="section-inner" id="cards-dark">
+  <div class="section-label">04 / Cards (Dark)</div>
+  <h2 class="section-title">Cards on Dark Background</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>iPhone</h3>
+      <p>Designed to be extraordinary. Featuring the most advanced chip, an incredible camera system, and all-day battery life.</p>
+      <a class="card-link" href="#">Learn more ></a>
+    </div>
+    <div class="card card-elevated" style="box-shadow: var(--shadow-card);">
+      <h3>MacBook Neo</h3>
+      <p>Supercharged for pros. The most powerful MacBook ever with the M-series chip delivers unprecedented performance.</p>
+      <a class="card-link" href="#">Learn more ></a>
+    </div>
+    <div class="card">
+      <h3>iPad Air</h3>
+      <p>Powerful and colorful. With the latest chip, stunning Liquid Retina display, and Apple Pencil support.</p>
+      <a class="card-link" href="#">Learn more ></a>
+    </div>
+  </div>
+</section>
+</div>
+
+<section class="section-gray">
+<div class="section-inner" id="cards-light">
+  <div class="section-label">04 / Cards (Light)</div>
+  <h2 class="section-title">Cards on Gray Background</h2>
+  <div class="card-grid">
+    <div class="card card-light">
+      <h3>AirPods Max</h3>
+      <p>High-fidelity audio with active noise cancellation, spatial audio, and computational audio for immersive listening.</p>
+      <a class="card-link" href="#">Learn more ></a>
+    </div>
+    <div class="card card-light" style="box-shadow: var(--shadow-card);">
+      <h3>Apple Watch</h3>
+      <p>The ultimate device for a healthy life. Advanced health sensors, fitness metrics, and seamless connectivity.</p>
+      <a class="card-link" href="#">Learn more ></a>
+    </div>
+    <div class="card card-light">
+      <h3>Apple TV+</h3>
+      <p>Original shows and movies from the world's greatest storytellers. Stream on all your favorite devices.</p>
+      <a class="card-link" href="#">Learn more ></a>
+    </div>
+  </div>
+</div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="forms">
+  <div class="section-label">05 / Forms</div>
+  <h2 class="section-title">Form Elements</h2>
+  <div class="form-group"><label class="form-label">Apple ID</label><input class="form-input" type="text" placeholder="name@example.com"><div class="form-state-label">Default</div></div>
+  <div class="form-group"><label class="form-label">Password</label><input class="form-input form-input--focus" type="password" value="mypassword123"><div class="form-state-label">Focus (blue ring)</div></div>
+  <div class="form-group"><label class="form-label">Email</label><input class="form-input form-input--error" type="text" value="invalid@"><div class="form-state-label">Error (red ring)</div></div>
+  <div class="form-group"><label class="form-label">Feedback</label><textarea class="form-textarea" placeholder="Tell us about your experience..."></textarea></div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="spacing">
+  <div class="section-label">06 / Spacing</div>
+  <h2 class="section-title">Spacing Scale</h2>
+  <div class="spacing-row">
+    <div class="spacing-item"><div class="spacing-block" style="width:2px"></div><div class="spacing-value">2</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:4px"></div><div class="spacing-value">4</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:6px"></div><div class="spacing-value">6</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:8px"></div><div class="spacing-value">8</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:10px"></div><div class="spacing-value">10</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:14px"></div><div class="spacing-value">14</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:17px"></div><div class="spacing-value">17</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:20px"></div><div class="spacing-value">20</div></div>
+    <div class="spacing-item"><div class="spacing-block" style="width:24px"></div><div class="spacing-value">24</div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="radius">
+  <div class="section-label">07 / Radius</div>
+  <h2 class="section-title">Border Radius Scale</h2>
+  <div class="radius-row">
+    <div class="radius-item"><div class="radius-box" style="border-radius:5px"></div><div class="radius-label">5px</div><div class="radius-context">Micro</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-label">8px</div><div class="radius-context">Buttons, Cards</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:11px"></div><div class="radius-label">11px</div><div class="radius-context">Search</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:12px"></div><div class="radius-label">12px</div><div class="radius-context">Features</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:980px"></div><div class="radius-label">980px</div><div class="radius-context">Pills</div></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:50%"></div><div class="radius-label">50%</div><div class="radius-context">Media</div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="elevation">
+  <div class="section-label">08 / Elevation</div>
+  <h2 class="section-title">Elevation & Depth</h2>
+  <div class="elevation-grid">
+    <div class="elevation-card" style="border:1px solid #333336;"><div class="elevation-label">Level 0: Flat</div><div class="elevation-desc">No shadow, solid bg</div></div>
+    <div class="elevation-card" style="background:rgba(0,0,0,0.8); backdrop-filter:blur(20px);"><div class="elevation-label">Nav Glass</div><div class="elevation-desc">Translucent + blur</div></div>
+    <div class="elevation-card" style="box-shadow:rgba(0,0,0,0.5) 3px 5px 30px 0px;"><div class="elevation-label">Card Shadow</div><div class="elevation-desc">3px 5px 30px 0.5</div></div>
+    <div class="elevation-card" style="box-shadow:0 0 0 2px #2997ff;"><div class="elevation-label">Focus</div><div class="elevation-desc">2px solid Bright Blue</div></div>
+    <div class="elevation-card" style="background:var(--dark-surface-3);"><div class="elevation-label">Dark Surface</div><div class="elevation-desc">#2a2a2d</div></div>
+  </div>
+</section>
+
+<footer class="footer">Maintained by <a href="https://github.com/VoltAgent/voltagent" target="_blank" rel="noopener noreferrer" style="text-decoration:none;"><img src="https://github.com/VoltAgent.png?size=32" alt="VoltAgent" width="14" height="14" style="border-radius:3px;vertical-align:-2px;margin-right:3px;">VoltAgent</a> team</footer>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+export function hexToHsl(hex: string): [number, number, number] {
+  const h = hex.replace('#', '');
+  const [r, g, b] = [
+    parseInt(h.slice(0, 2), 16) / 255,
+    parseInt(h.slice(2, 4), 16) / 255,
+    parseInt(h.slice(4, 6), 16) / 255,
+  ];
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  const l = (max + min) / 2;
+  let hue = 0, s = 0;
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: hue = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+      case g: hue = ((b - r) / d + 2) / 6; break;
+      case b: hue = ((r - g) / d + 4) / 6; break;
+    }
+  }
+  return [Math.round(hue * 360), Math.round(s * 100), Math.round(l * 100)];
+}
+
+export function hslToHex(h: number, s: number, l: number): string {
+  const sn = s / 100, ln = l / 100;
+  const a = sn * Math.min(ln, 1 - ln);
+  const f = (n: number) => {
+    const k = (n + h / 30) % 12;
+    return Math.round(255 * (ln - a * Math.max(Math.min(k - 3, 9 - k, 1), -1)));
+  };
+  return '#' + [f(0), f(8), f(4)].map(v => Math.max(0, Math.min(255, v)).toString(16).padStart(2, '0')).join('');
+}
+
+export function hslString(hex: string): string {
+  const [h, s, l] = hexToHsl(hex);
+  return `${h} ${s}% ${l}%`;
+}
+
+export function generateColorScale(hex: string) {
+  const [h, s] = hexToHsl(hex);
+  const stops: Record<string, number> = { '50': 97, '100': 94, '200': 86, '300': 77, '400': 66, '500': 55, '600': 47, '700': 39, '800': 32, '900': 24, '950': 14 };
+  const scale: Record<string, string> = {};
+  for (const [k, l] of Object.entries(stops)) scale[k] = hslToHex(h, s, l);
+  return scale;
+}
+
+export function contrastForeground(bgHex: string): string {
+  const [, , l] = hexToHsl(bgHex);
+  return l > 55 ? '#09090b' : '#fafafa';
+}
+
+export function lighten(hex: string, amount: number): string {
+  const [h, s, l] = hexToHsl(hex);
+  return hslToHex(h, s, Math.min(100, l + amount));
+}
+
+export function darken(hex: string, amount: number): string {
+  const [h, s, l] = hexToHsl(hex);
+  return hslToHex(h, s, Math.max(0, l - amount));
+}
+
+export function generateChartColors(hex: string): string[] {
+  const [h, s, l] = hexToHsl(hex);
+  return [hex, hslToHex((h+40)%360,s,l), hslToHex((h+80)%360,s,l), hslToHex((h+160)%360,s,l), hslToHex((h+220)%360,s,l)];
+}
+
+export function isLight(hex: string): boolean {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.slice(0,2),16), g = parseInt(h.slice(2,4),16), b = parseInt(h.slice(4,6),16);
+  return (r*299 + g*587 + b*114) / 1000 > 140;
+}

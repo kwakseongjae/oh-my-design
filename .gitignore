@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.next/
+*.tsbuildinfo
+.DS_Store
+.env
+.env.local
+DESIGN.md
+DESIGN.preview.html
