@@ -60,101 +60,22 @@ Run the command from your project root, then ask your AI assistant to use `DESIG
         |
 4. Components          Add/remove from 17 component types
         |
-5. Export              DESIGN.md + CLI command
+5. Export              DESIGN.md + npx CLI command
 ```
 
 ## 58 Supported References
 
-<table>
-<tr><td>
-
-**AI & LLM**
-- Claude (Anthropic)
-- Cohere
-- ElevenLabs
-- Minimax
-- Mistral AI
-- Ollama
-- OpenCode AI
-- Replicate
-- RunwayML
-- Together AI
-- VoltAgent
-- xAI
-
-</td><td>
-
-**Developer Tools**
-- Vercel
-- Cursor
-- Expo
-- Lovable
-- Raycast
-- Superhuman
-- Warp
-
-**Fintech**
-- Stripe
-- Coinbase
-- Kraken
-- Revolut
-- Wise
-
-</td><td>
-
-**Productivity**
-- Notion
-- Linear
-- Cal.com
-- Intercom
-- Mintlify
-- Resend
-- Zapier
-
-**Design Tools**
-- Figma
-- Framer
-- Miro
-- Webflow
-- Airtable
-- Clay
-
-</td><td>
-
-**Consumer Tech**
-- Apple
-- Spotify
-- Uber
-- Airbnb
-- Pinterest
-- NVIDIA
-- IBM
-- SpaceX
-
-**Backend & DevOps**
-- Supabase
-- MongoDB
-- Sentry
-- PostHog
-- Hashicorp
-- ClickHouse
-- Sanity
-- Composio
-
-</td><td>
-
-**Automotive**
-- Tesla
-- BMW
-- Ferrari
-- Lamborghini
-- Renault
-
-**Marketing**
-- Semrush
-
-</td></tr>
-</table>
+| Category | Companies |
+|----------|-----------|
+| **AI & LLM** | Claude, Cohere, ElevenLabs, Minimax, Mistral AI, Ollama, OpenCode AI, Replicate, RunwayML, Together AI, VoltAgent, xAI |
+| **Developer Tools** | Vercel, Cursor, Expo, Lovable, Raycast, Superhuman, Warp |
+| **Fintech** | Stripe, Coinbase, Kraken, Revolut, Wise |
+| **Productivity** | Notion, Linear, Cal.com, Intercom, Mintlify, Resend, Zapier |
+| **Design Tools** | Figma, Framer, Miro, Webflow, Airtable, Clay |
+| **Consumer Tech** | Apple, Spotify, Uber, Airbnb, Pinterest, NVIDIA, IBM, SpaceX |
+| **Backend & DevOps** | Supabase, MongoDB, Sentry, PostHog, Hashicorp, ClickHouse, Sanity, Composio |
+| **Automotive** | Tesla, BMW, Ferrari, Lamborghini, Renault |
+| **Marketing** | Semrush |
 
 ## Exported DESIGN.md
 

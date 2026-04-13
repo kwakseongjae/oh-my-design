@@ -170,7 +170,7 @@ export default function Landing() {
           {[
             { step: "01", title: "Pick a reference", desc: "Choose from 58 real company design systems -- Stripe, Vercel, Notion, Linear, and more.", icon: Layers },
             { step: "02", title: "Make it yours", desc: "Walk through A/B choices for buttons, tables, cards. Fine-tune colors, fonts, and radius.", icon: Zap },
-            { step: "03", title: "Export everything", desc: "Download DESIGN.md, copy shadcn/ui CSS variables, or grab JSON tokens. Paste and ship.", icon: Download },
+            { step: "03", title: "Export DESIGN.md", desc: "Download or copy your customized DESIGN.md. Use the CLI command to regenerate anytime.", icon: Download },
           ].map((item, i) => (
             <div
               key={i}
