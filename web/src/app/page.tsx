@@ -118,7 +118,7 @@ export default function Landing() {
           {/* Subtext */}
           <div className="animate-fade-up animate-delay-6 mx-auto mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed text-center">
             <p>Start from a design system built by top companies.</p>
-            <p>Customize colors, typography, and every token.</p>
+            <p>Customize colors, radius, and dark mode.</p>
             <p>Export <span className="font-semibold text-foreground">DESIGN.md</span> + <span className="font-semibold text-foreground">shadcn/ui CSS</span>.</p>
           </div>
 
@@ -169,7 +169,7 @@ export default function Landing() {
         <div className="grid gap-6 sm:grid-cols-3">
           {[
             { step: "01", title: "Pick a reference", desc: "Choose from 58 real company design systems -- Stripe, Vercel, Notion, Linear, and more.", icon: Layers },
-            { step: "02", title: "Make it yours", desc: "Walk through A/B choices for buttons, tables, cards. Fine-tune colors, fonts, and radius.", icon: Zap },
+            { step: "02", title: "Make it yours", desc: "Walk through A/B choices for buttons, tables, cards. Fine-tune colors, radius, and dark mode.", icon: Zap },
             { step: "03", title: "Export DESIGN.md", desc: "Download or copy your customized DESIGN.md. Use the CLI command to regenerate anytime.", icon: Download },
           ].map((item, i) => (
             <div

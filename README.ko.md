@@ -55,7 +55,7 @@ npx github:kwakseongjae/oh-my-design --config=<YOUR_CONFIG_HASH>
         |
 2. 스타일 취향       A/B 선택: 버튼, 테이블, 헤더, 카드
         |
-3. 디자인 토큰       색상, 굵기, radius, 다크 모드
+3. 디자인 토큰       색상, radius, 다크 모드
         |
 4. 컴포넌트         17개 중 추가/제거
         |

@@ -56,7 +56,7 @@ Run the command from your project root, then ask your AI assistant to use `DESIG
         |
 2. Style Taste         A/B choices: buttons, tables, headers, cards
         |
-3. Design Tokens       Color, weight, radius, dark mode
+3. Design Tokens       Color, radius, dark mode
         |
 4. Components          Add/remove from 17 component types
         |
