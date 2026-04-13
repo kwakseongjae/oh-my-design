@@ -1,6 +1,13 @@
-@import "tailwindcss" source("../..");
+@import "tailwindcss";
 @import "../styles/tw-animate.css";
 @import "../styles/shadcn.css";
+
+/* Tailwind v4 source scanning.
+   On Vercel with Root Directory = web/, there's no .git folder so
+   auto-detection boundary is too narrow. @source explicitly adds scan paths.
+   Paths are relative to this CSS file (web/src/app/globals.css). */
+@source "../";
+@source "../../node_modules/@radix-ui";
 
 @custom-variant dark (&:is(.dark *));
 
