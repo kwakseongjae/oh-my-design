@@ -352,30 +352,11 @@ function ColorStep({ detail, overrides, onOverride }: StepProps) {
 function TypographyStep({ detail, overrides, onOverride }: StepProps) {
   const weight = overrides.headingWeight || detail.headingWeight;
   const font = overrides.fontFamily || detail.fontFamily;
-  const FONTS = [
-    { value: "Geist", hint: "Vercel's modern sans" },
-    { value: "Inter", hint: "Clean geometric" },
-    { value: "system-ui", hint: "Native OS fonts" },
-    { value: "JetBrains Mono", hint: "Technical monospace" },
-  ];
   const WEIGHTS = ["300", "400", "500", "600", "700"];
   return (
     <div>
-      <AnimatedHeading text="Set the typographic tone" sub="Font + weight define the personality of every word." />
+      <AnimatedHeading text="Set the typographic weight" sub="Weight defines how headings feel -- light and elegant, or bold and commanding." />
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-        <p className="text-sm font-semibold mb-3 mt-8">Font Family</p>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {FONTS.map((f) => (
-            <button key={f.value} onClick={() => onOverride({ fontFamily: f.value })}
-              className={`rounded-xl border p-4 text-left transition-all ${font === f.value ? "border-foreground bg-foreground text-background" : "border-border hover:border-foreground/30"}`}>
-              <div className="text-2xl mb-1" style={{ fontFamily: f.value, fontWeight: Number(weight) }}>Aa</div>
-              <div className="text-xs font-medium">{f.value}</div>
-              <div className="text-[10px] opacity-60">{f.hint}</div>
-            </button>
-          ))}
-        </div>
-      </motion.div>
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>
         <p className="text-sm font-semibold mb-3 mt-8">Heading Weight</p>
         <div className="flex gap-2">
           {WEIGHTS.map((w) => (
@@ -519,7 +500,7 @@ function SummaryStep({ detail, overrides, preferences }: StepProps) {
 
 // ── Main Wizard ──────────────────────────────────────────────────
 
-const STEP_LABELS = ["Intro", "Buttons", "Tables", "Header", "Cards", "Color", "Typography", "Radius", "Dark Mode", "Summary"];
+const STEP_LABELS = ["Intro", "Buttons", "Tables", "Header", "Cards", "Color", "Weight", "Radius", "Dark Mode", "Summary"];
 
 export function DesignWizard({
   detail,
