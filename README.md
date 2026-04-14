@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>Generate DESIGN.md from 58 real company design systems. No AI needed.</strong>
+  <strong>Generate DESIGN.md from 62 real company design systems. No AI needed.</strong>
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" />
   <img src="https://img.shields.io/badge/AI%20calls-zero-blue?style=flat-square" alt="Zero AI" />
-  <img src="https://img.shields.io/badge/references-58-7c5cfc?style=flat-square" alt="58 References" />
+  <img src="https://img.shields.io/badge/references-62-7c5cfc?style=flat-square" alt="62 References" />
 </p>
 
 <p align="center">
@@ -52,7 +52,7 @@ Run the command from your project root, then ask your AI assistant to use `DESIG
 ## How It Works
 
 ```
-1. Pick a Reference    Choose from 58 company design systems
+1. Pick a Reference    Choose from 62 company design systems
         |
 2. Style Taste         A/B choices: buttons, tables, headers, cards
         |
@@ -63,7 +63,7 @@ Run the command from your project root, then ask your AI assistant to use `DESIG
 5. Export              DESIGN.md + npx CLI command
 ```
 
-## 58 Supported References
+## 62 Supported References
 
 | Category | Companies |
 |----------|-----------|
@@ -75,6 +75,7 @@ Run the command from your project root, then ask your AI assistant to use `DESIG
 | **Consumer Tech** | Apple, Spotify, Uber, Airbnb, Pinterest, NVIDIA, IBM, SpaceX |
 | **Backend & DevOps** | Supabase, MongoDB, Sentry, PostHog, Hashicorp, ClickHouse, Sanity, Composio |
 | **Automotive** | Tesla, BMW, Ferrari, Lamborghini, Renault |
+| **Korean Tech** | Karrot (당근), Toss (토스), Baemin (배민), Kakao (카카오) |
 | **Marketing** | Semrush |
 
 ## Exported DESIGN.md
@@ -98,7 +99,7 @@ Plus: Style Preferences, Included Components, Iconography & SVG Guidelines, Docu
 
 ```
 oh-my-design/
-  references/        58 company DESIGN.md files
+  references/        62 company DESIGN.md files
   src/               CLI core (TypeScript)
   web/               Next.js web builder
     src/app/         Landing + Builder pages

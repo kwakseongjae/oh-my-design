@@ -21,7 +21,7 @@ oh-my-design (OMD)
 
 "대기업 디자인 시스템 골라서, 내 취향으로 커스텀하고, DESIGN.md 바로 export"
 
-- 58개 기업 디자인 시스템 (Stripe, Vercel, Notion, Linear, Figma, Apple...)
+- 62개 기업 디자인 시스템 (Stripe, Vercel, Notion, Linear, Figma, Apple...)
 - A/B 선택 위자드 (버튼 스타일, 테이블, 헤더, 카드)
 - 색상/radius/다크모드 커스텀
 - 컴포넌트 추가/삭제 (17종)
@@ -32,7 +32,7 @@ oh-my-design (OMD)
 
 동작 방식:
 
-1. 기업 레퍼런스 선택 (58개 중 택 1)
+1. 기업 레퍼런스 선택 (62개 중 택 1)
 2. A/B 스타일 취향 선택 (버튼, 테이블, 헤더, 카드)
 3. 색상 & radius & 다크모드 설정
 4. 컴포넌트 추가/삭제
@@ -87,7 +87,7 @@ oh-my-design (OMD)
 
 "Pick a real company's design system, customize it to your taste, export DESIGN.md instantly"
 
-- 58 company design systems (Stripe, Vercel, Notion, Linear, Figma, Apple...)
+- 62 company design systems (Stripe, Vercel, Notion, Linear, Figma, Apple...)
 - A/B style wizard (buttons, tables, headers, cards)
 - Color, radius, dark mode customization
 - Add/remove from 17 component types
@@ -98,7 +98,7 @@ oh-my-design (OMD)
 
 How it works:
 
-1. Pick a reference (58 companies)
+1. Pick a reference (62 companies)
 2. A/B style choices (buttons, tables, headers, cards)
 3. Customize color, radius, dark mode
 4. Add/remove components
@@ -141,7 +141,7 @@ Feedback and PRs welcome.
 
 DESIGN.md 매번 커스텀하는 거 귀찮아서 만들었습니다.
 
-oh-my-design -- 58개 대기업 디자인 시스템 중 골라서, A/B 위자드로 취향 맞추고, DESIGN.md 바로 export.
+oh-my-design -- 62개 대기업 디자인 시스템 중 골라서, A/B 위자드로 취향 맞추고, DESIGN.md 바로 export.
 
 Stripe, Vercel, Notion, Linear, Figma, Apple... 전부 지원.
 AI 호출 없음. 비용 없음. 오픈소스.
@@ -155,7 +155,7 @@ GitHub: github.com/kwakseongjae/oh-my-design
 
 Tired of customizing DESIGN.md for every project.
 
-oh-my-design -- Pick from 58 real company design systems, customize with an A/B wizard, export DESIGN.md instantly.
+oh-my-design -- Pick from 62 real company design systems, customize with an A/B wizard, export DESIGN.md instantly.
 
 Stripe, Vercel, Notion, Linear, Figma, Apple... all supported.
 Zero AI. Zero cost. Open source.

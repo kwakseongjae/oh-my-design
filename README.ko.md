@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>58개 대기업 디자인 시스템 기반 DESIGN.md 생성기. AI 호출 없음.</strong>
+  <strong>62개 대기업 디자인 시스템 기반 DESIGN.md 생성기. AI 호출 없음.</strong>
 </p>
 
 <p align="center">
@@ -51,7 +51,7 @@ npx github:kwakseongjae/oh-my-design --config=<YOUR_CONFIG_HASH>
 ## 동작 방식
 
 ```
-1. 레퍼런스 선택     58개 기업 디자인 시스템 중 선택
+1. 레퍼런스 선택     62개 기업 디자인 시스템 중 선택
         |
 2. 스타일 취향       A/B 선택: 버튼, 테이블, 헤더, 카드
         |
@@ -62,7 +62,7 @@ npx github:kwakseongjae/oh-my-design --config=<YOUR_CONFIG_HASH>
 5. 내보내기         DESIGN.md + CLI 커맨드
 ```
 
-## 58개 지원 레퍼런스
+## 62개 지원 레퍼런스
 
 | 카테고리 | 기업 |
 |----------|------|
@@ -74,6 +74,7 @@ npx github:kwakseongjae/oh-my-design --config=<YOUR_CONFIG_HASH>
 | **컨슈머 테크** | Apple, Spotify, Uber, Airbnb, Pinterest, NVIDIA, IBM, SpaceX |
 | **백엔드 & DevOps** | Supabase, MongoDB, Sentry, PostHog, Hashicorp, ClickHouse, Sanity, Composio |
 | **자동차** | Tesla, BMW, Ferrari, Lamborghini, Renault |
+| **한국 테크** | Karrot (당근), Toss (토스), Baemin (배민), Kakao (카카오) |
 
 ## 기여하기
 

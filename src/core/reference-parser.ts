@@ -55,6 +55,7 @@ const CATEGORIES: Record<string, string> = {
   shopify: 'E-commerce', semrush: 'Marketing',
   tesla: 'Automotive', bmw: 'Automotive', ferrari: 'Automotive',
   lamborghini: 'Automotive', renault: 'Automotive', bugatti: 'Automotive',
+  karrot: 'Korean Tech', toss: 'Korean Tech', baemin: 'Korean Tech', kakao: 'Korean Tech',
 };
 
 // ── Extraction helpers ───────────────────────────────────────────
@@ -91,6 +92,8 @@ function extractBackground(md: string): string {
     /(?:Pure White|White).*?`(#[0-9a-fA-F]{6})`.*?(?:page background|background)/i,
     /Background:.*?Pure White.*?\(`(#[0-9a-fA-F]{6})`\)/i,
     /(?:Page|Site)\s+background.*?`(#[0-9a-fA-F]{6})`/i,
+    // Match "hex: The primary page background" pattern (hex before description)
+    /`(#[0-9a-fA-F]{6})`[^.]*?(?:primary\s+)?page\s+background/i,
   ];
   for (const pattern of patterns) {
     const match = md.match(pattern);
@@ -99,11 +102,11 @@ function extractBackground(md: string): string {
   // Look in Section 2 for surface/background colors
   const section2 = md.match(/## 2\. Color.*?\n([\s\S]*?)(?=## 3\.)/);
   if (section2) {
-    const surfaceBg = section2[1].match(/(?:Pure White|page background|Background\b).*?`(#[0-9a-fA-F]{6})`/i);
+    const surfaceBg = section2[1].match(/(?:Pure White|Pure Black|page background|Background\b).*?`(#[0-9a-fA-F]{6})`/i);
     if (surfaceBg) return surfaceBg[1];
   }
-  // Check Quick Color Reference section for background
-  const quickRef = md.match(/Quick Color Reference[\s\S]*?Background.*?`(#[0-9a-fA-F]{6})`/i);
+  // Check Quick Color Reference section for background (supports both backtick and parenthesis hex)
+  const quickRef = md.match(/Quick Color Reference[\s\S]*?(?:Page\s+)?Background.*?[(`](#[0-9a-fA-F]{6})[)`]/i);
   if (quickRef) return quickRef[1];
   // Fallback: if the design mentions dark-mode-native, use dark bg
   if (md.match(/dark.mode.(?:native|first)/i)) {
@@ -172,6 +175,7 @@ function toDisplayName(id: string): string {
     posthog: 'PostHog', supabase: 'Supabase', voltagent: 'VoltAgent',
     elevenlabs: 'ElevenLabs', runwayml: 'RunwayML', spacex: 'SpaceX',
     coinbase: 'Coinbase', airbnb: 'Airbnb', clickhouse: 'ClickHouse',
+    karrot: 'Karrot (당근)', toss: 'Toss (토스)', baemin: 'Baemin (배민)', kakao: 'Kakao (카카오)',
   };
   return special[id] || id.charAt(0).toUpperCase() + id.slice(1);
 }

@@ -22,6 +22,7 @@ const CATEGORIES: Record<string, string> = {
   ibm: 'Consumer Tech', spacex: 'Consumer Tech', semrush: 'Marketing',
   tesla: 'Automotive', bmw: 'Automotive', ferrari: 'Automotive',
   lamborghini: 'Automotive', renault: 'Automotive',
+  karrot: 'Korean Tech', toss: 'Korean Tech', baemin: 'Korean Tech', kakao: 'Korean Tech',
 };
 
 const DISPLAY_NAMES: Record<string, string> = {
@@ -31,6 +32,7 @@ const DISPLAY_NAMES: Record<string, string> = {
   supabase: 'Supabase', voltagent: 'VoltAgent', elevenlabs: 'ElevenLabs',
   runwayml: 'RunwayML', spacex: 'SpaceX', coinbase: 'Coinbase',
   airbnb: 'Airbnb', clickhouse: 'ClickHouse',
+  karrot: 'Karrot (당근)', toss: 'Toss (토스)', baemin: 'Baemin (배민)', kakao: 'Kakao (카카오)',
 };
 
 function extractPrimaryColor(md: string): string {
@@ -45,13 +47,19 @@ function extractPrimaryColor(md: string): string {
 }
 
 function extractBackground(md: string): string {
-  const quickRef = md.match(/Quick Color Reference[\s\S]*?Background.*?`(#[0-9a-fA-F]{6})`/i);
+  // Quick Color Reference (supports backtick and parenthesis hex)
+  const quickRef = md.match(/Quick Color Reference[\s\S]*?(?:Page\s+)?Background.*?[(`](#[0-9a-fA-F]{6})[)`]/i);
   if (quickRef) return quickRef[1];
+  // Section 2: look for page background description
   const s2 = md.match(/## 2\. Color.*?\n([\s\S]*?)(?=## 3\.)/);
   if (s2) {
-    const bg = s2[1].match(/(?:Pure White|page background).*?`(#[0-9a-fA-F]{6})`/i);
+    const bg = s2[1].match(/(?:Pure White|Pure Black|page background).*?`(#[0-9a-fA-F]{6})`/i);
     if (bg) return bg[1];
   }
+  // Match "hex: The primary page background" (hex before description)
+  const reverseMatch = md.match(/`(#[0-9a-fA-F]{6})`[^.]*?(?:primary\s+)?page\s+background/i);
+  if (reverseMatch) return reverseMatch[1];
+  // Dark-mode-native fallback
   if (md.match(/dark.mode.(?:native|first)/i)) {
     const d = md.match(/(?:marketing|deepest|canvas).*?`(#[0-9a-fA-F]{6})`/i);
     if (d) return d[1];

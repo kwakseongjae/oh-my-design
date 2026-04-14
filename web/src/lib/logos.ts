@@ -73,6 +73,12 @@ const LOGO_MAP: Record<string, LogoSource> = {
   stripe:        { type: 'simpleicons', slug: 'stripe' },
   wise:          { type: 'simpleicons', slug: 'wise' },
 
+  // ── Korean Tech ──
+  karrot:        { type: 'github', slug: 'daangn' },
+  toss:          { type: 'favicon', slug: 'https://static.toss.im/icons/png/4x/icon-toss-logo.png' },
+  baemin:        { type: 'favicon', slug: 'https://www.baemin.com/favicon.ico' },
+  kakao:         { type: 'simpleicons', slug: 'kakaotalk' },
+
   // ── Marketing ──
   semrush:       { type: 'simpleicons', slug: 'semrush' },
 
