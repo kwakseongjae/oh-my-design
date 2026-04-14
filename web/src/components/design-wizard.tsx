@@ -122,7 +122,7 @@ function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="flex h-8 w-8 items-center justify-center rounded-full border border-border/40 dark:border-border bg-card/50 dark:bg-card/60 transition-colors hover:bg-accent"
+      className="flex h-11 w-11 items-center justify-center rounded-full border border-border/40 dark:border-border bg-card/50 dark:bg-card/60 transition-colors hover:bg-accent"
     >
       {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
     </button>
@@ -201,11 +201,11 @@ function InputStyleStep({ detail, preferences, onPref }: StepProps) {
         <ABCard label="Bordered Box" description="Full border, contained, structured" selected={preferences.inputStyle === "bordered"} onClick={() => onPref("inputStyle", "bordered")} delay={0.3}>
           <div className="w-full max-w-[220px] space-y-3 px-2">
             <div>
-              <div className="text-[10px] font-medium mb-1 text-muted-foreground">Email</div>
+              <div className="text-[11px] font-medium mb-1 text-muted-foreground">Email</div>
               <div className="px-3 py-2 text-xs border rounded-lg preview-border bg-background">user@example.com</div>
             </div>
             <div>
-              <div className="text-[10px] font-medium mb-1 text-muted-foreground">Password</div>
+              <div className="text-[11px] font-medium mb-1 text-muted-foreground">Password</div>
               <div className="px-3 py-2 text-xs border rounded-lg preview-border bg-background text-muted-foreground">••••••••</div>
             </div>
             <div className="px-4 py-2 text-xs font-medium text-white rounded-lg text-center" style={{ background: primary }}>Sign In</div>
@@ -214,11 +214,11 @@ function InputStyleStep({ detail, preferences, onPref }: StepProps) {
         <ABCard label="Underline" description="Bottom border only, minimal, Material-style" selected={preferences.inputStyle === "underline"} onClick={() => onPref("inputStyle", "underline")} delay={0.4}>
           <div className="w-full max-w-[220px] space-y-3 px-2">
             <div>
-              <div className="text-[10px] font-medium mb-1 text-muted-foreground">Email</div>
+              <div className="text-[11px] font-medium mb-1 text-muted-foreground">Email</div>
               <div className="px-1 py-2 text-xs border-b-2 preview-border">user@example.com</div>
             </div>
             <div>
-              <div className="text-[10px] font-medium mb-1 text-muted-foreground">Password</div>
+              <div className="text-[11px] font-medium mb-1 text-muted-foreground">Password</div>
               <div className="px-1 py-2 text-xs border-b-2 preview-border text-muted-foreground">••••••••</div>
             </div>
             <div className="px-4 py-2 text-xs font-medium text-white rounded-lg text-center" style={{ background: primary }}>Sign In</div>
@@ -429,7 +429,7 @@ function ColorStep({ detail, overrides, onOverride }: StepProps) {
           <button key={c.hex} onClick={() => onOverride({ primaryColor: c.hex })}
             className={`group flex flex-col items-center gap-2 rounded-xl p-3 transition-all ${primary === c.hex ? "bg-muted ring-2 ring-foreground ring-offset-2 ring-offset-background" : "hover:bg-muted/50"}`}>
             <div className="h-12 w-12 rounded-xl shadow-sm transition-transform group-hover:scale-110" style={{ background: c.hex }} />
-            <span className="text-[10px] font-medium">{c.name}</span>
+            <span className="text-xs font-medium">{c.name}</span>
           </button>
         ))}
       </motion.div>
@@ -441,7 +441,7 @@ function ColorStep({ detail, overrides, onOverride }: StepProps) {
       {/* Scale preview */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mt-6 flex overflow-hidden rounded-xl border border-border/40 dark:border-border">
         {Object.entries(scale).map(([stop, hex]) => (
-          <div key={stop} className="flex-1 py-8 text-center text-[9px] font-mono transition-colors" style={{ background: hex, color: isLight(hex) ? "#000" : "#fff" }}>
+          <div key={stop} className="flex-1 py-6 sm:py-8 text-center text-[10px] sm:text-xs font-mono transition-colors" style={{ background: hex, color: isLight(hex) ? "#000" : "#fff" }}>
             {stop}
           </div>
         ))}
@@ -528,7 +528,7 @@ function RadiusStep({ detail, overrides, onOverride }: StepProps) {
   return (
     <div>
       <AnimatedHeading text="Choose your corner style" sub="Radius affects the entire feel — sharp is technical, round is friendly." />
-      <div className="mt-8 grid grid-cols-5 gap-3">
+      <div className="mt-8 grid grid-cols-3 gap-3 sm:grid-cols-5">
         {OPTIONS.map((r, i) => (
           <motion.button
             key={r.value}
@@ -536,11 +536,11 @@ function RadiusStep({ detail, overrides, onOverride }: StepProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 + i * 0.06 }}
             onClick={() => onOverride({ borderRadius: r.value })}
-            className={`flex flex-col items-center rounded-xl border p-4 transition-all ${radius === r.value ? "border-foreground bg-foreground text-background" : "border-border hover:border-foreground/30"}`}
+            className={`flex flex-col items-center rounded-xl border p-3 sm:p-4 transition-all ${radius === r.value ? "border-foreground bg-foreground text-background" : "border-border hover:border-foreground/30"}`}
           >
-            <div className="mb-3 h-14 w-14 border-2 border-current opacity-40" style={{ borderRadius: r.value }} />
+            <div className="mb-2 sm:mb-3 h-12 w-12 sm:h-14 sm:w-14 border-2 border-current opacity-40" style={{ borderRadius: r.value }} />
             <div className="text-xs font-medium">{r.label}</div>
-            <div className="text-[10px] opacity-60">{r.desc}</div>
+            <div className="text-[11px] opacity-60">{r.desc}</div>
           </motion.button>
         ))}
       </div>
@@ -729,7 +729,7 @@ export function DesignWizard({
       </div>
 
       {/* Top bar */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-border/40">
+      <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-border/40 safe-top">
         <button onClick={onBack} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
           <ArrowLeft className="h-4 w-4 inline mr-1" /> Exit
         </button>
@@ -741,7 +741,7 @@ export function DesignWizard({
 
       {/* Content */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto">
-        <div className="mx-auto max-w-3xl px-6 py-12">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-12">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={step}
@@ -758,7 +758,7 @@ export function DesignWizard({
       </div>
 
       {/* Navigation */}
-      <div className="border-t border-border/40 px-6 py-4">
+      <div className="border-t border-border/40 px-4 sm:px-6 py-3 sm:py-4 safe-bottom">
         <div className="mx-auto flex max-w-3xl items-center justify-between">
           <button
             onClick={goPrev}
@@ -769,15 +769,17 @@ export function DesignWizard({
           </button>
 
           {/* Step dots */}
-          <div className="hidden sm:flex gap-1.5">
+          <div className="flex gap-1">
             {Array.from({ length: totalSteps }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => { setDirection(i > step ? 1 : -1); setStep(i); }}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === step ? "w-6 bg-foreground" : i < step ? "w-1.5 bg-foreground/40" : "w-1.5 bg-muted-foreground/20"
-                }`}
-              />
+                className="flex items-center justify-center h-8 w-4 sm:w-auto"
+              >
+                <span className={`block h-1.5 rounded-full transition-all ${
+                  i === step ? "w-5 sm:w-6 bg-foreground" : i < step ? "w-1.5 bg-foreground/40" : "w-1.5 bg-muted-foreground/20"
+                }`} />
+              </button>
             ))}
           </div>
 

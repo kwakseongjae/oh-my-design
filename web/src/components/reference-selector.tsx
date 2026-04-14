@@ -138,7 +138,7 @@ export function ReferenceSelector({
 
                 {/* Info */}
                 <div className="px-3 py-2.5">
-                  <div className="text-sm font-medium leading-tight">{ref.name}</div>
+                  <div className="text-sm font-medium leading-tight truncate">{ref.name}</div>
                   <div className="mt-0.5 text-[11px] text-muted-foreground">{ref.category}</div>
                 </div>
               </motion.button>

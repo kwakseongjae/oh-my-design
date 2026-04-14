@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
@@ -14,6 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl = "https://oh-my-design.kr";
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover" as const,
+};
 
 export const metadata: Metadata = {
   title: "oh-my-design — Design System Generator",
