@@ -32,7 +32,7 @@ const DISPLAY_NAMES: Record<string, string> = {
   supabase: 'Supabase', voltagent: 'VoltAgent', elevenlabs: 'ElevenLabs',
   runwayml: 'RunwayML', spacex: 'SpaceX', coinbase: 'Coinbase',
   airbnb: 'Airbnb', clickhouse: 'ClickHouse',
-  karrot: 'Karrot (당근)', toss: 'Toss (토스)', baemin: 'Baemin (배민)', kakao: 'Kakao (카카오)',
+  karrot: 'Karrot', toss: 'Toss', baemin: 'Baemin', kakao: 'Kakao',
 };
 
 function extractPrimaryColor(md: string): string {
@@ -85,7 +85,18 @@ export async function GET() {
         background: extractBackground(md),
       };
     })
-    .sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
+    .sort((a, b) => {
+      const order = [
+        'Korean Tech', 'AI & LLM', 'Design Tools', 'Developer Tools',
+        'Productivity', 'Consumer Tech', 'Fintech', 'Backend & DevOps',
+        'E-commerce', 'Automotive', 'Marketing',
+      ];
+      const ai = order.indexOf(a.category);
+      const bi = order.indexOf(b.category);
+      const oa = ai === -1 ? 999 : ai;
+      const ob = bi === -1 ? 999 : bi;
+      return oa - ob || a.name.localeCompare(b.name);
+    });
 
   return NextResponse.json(entries);
 }

@@ -67,15 +67,15 @@ Run the command from your project root, then ask your AI assistant to use `DESIG
 
 | Category | Companies |
 |----------|-----------|
+| **Korean Tech** | Baemin, Kakao, Karrot, Toss |
 | **AI & LLM** | Claude, Cohere, ElevenLabs, Minimax, Mistral AI, Ollama, OpenCode AI, Replicate, RunwayML, Together AI, VoltAgent, xAI |
-| **Developer Tools** | Vercel, Cursor, Expo, Lovable, Raycast, Superhuman, Warp |
-| **Fintech** | Stripe, Coinbase, Kraken, Revolut, Wise |
-| **Productivity** | Notion, Linear, Cal.com, Intercom, Mintlify, Resend, Zapier |
 | **Design Tools** | Figma, Framer, Miro, Webflow, Airtable, Clay |
+| **Developer Tools** | Vercel, Cursor, Expo, Lovable, Raycast, Superhuman, Warp |
+| **Productivity** | Notion, Linear, Cal.com, Intercom, Mintlify, Resend, Zapier |
 | **Consumer Tech** | Apple, Spotify, Uber, Airbnb, Pinterest, NVIDIA, IBM, SpaceX |
+| **Fintech** | Stripe, Coinbase, Kraken, Revolut, Wise |
 | **Backend & DevOps** | Supabase, MongoDB, Sentry, PostHog, Hashicorp, ClickHouse, Sanity, Composio |
 | **Automotive** | Tesla, BMW, Ferrari, Lamborghini, Renault |
-| **Korean Tech** | Karrot (당근), Toss (토스), Baemin (배민), Kakao (카카오) |
 | **Marketing** | Semrush |
 
 ## Exported DESIGN.md

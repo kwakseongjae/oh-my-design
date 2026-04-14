@@ -66,15 +66,15 @@ npx github:kwakseongjae/oh-my-design --config=<YOUR_CONFIG_HASH>
 
 | 카테고리 | 기업 |
 |----------|------|
+| **한국 테크** | Baemin, Kakao, Karrot, Toss |
 | **AI & LLM** | Claude, Cohere, ElevenLabs, Minimax, Mistral AI, Ollama, OpenCode AI, Replicate, RunwayML, Together AI, VoltAgent, xAI |
-| **개발자 도구** | Vercel, Cursor, Expo, Lovable, Raycast, Superhuman, Warp |
-| **핀테크** | Stripe, Coinbase, Kraken, Revolut, Wise |
-| **생산성** | Notion, Linear, Cal.com, Intercom, Mintlify, Resend, Zapier |
 | **디자인 도구** | Figma, Framer, Miro, Webflow, Airtable, Clay |
+| **개발자 도구** | Vercel, Cursor, Expo, Lovable, Raycast, Superhuman, Warp |
+| **생산성** | Notion, Linear, Cal.com, Intercom, Mintlify, Resend, Zapier |
 | **컨슈머 테크** | Apple, Spotify, Uber, Airbnb, Pinterest, NVIDIA, IBM, SpaceX |
+| **핀테크** | Stripe, Coinbase, Kraken, Revolut, Wise |
 | **백엔드 & DevOps** | Supabase, MongoDB, Sentry, PostHog, Hashicorp, ClickHouse, Sanity, Composio |
 | **자동차** | Tesla, BMW, Ferrari, Lamborghini, Renault |
-| **한국 테크** | Karrot (당근), Toss (토스), Baemin (배민), Kakao (카카오) |
 
 ## 기여하기
 
