@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://oh-my-design-lemon.vercel.app";
+const siteUrl = "https://oh-my-design.kr";
 
 export const metadata: Metadata = {
   title: "oh-my-design — Design System Generator",
