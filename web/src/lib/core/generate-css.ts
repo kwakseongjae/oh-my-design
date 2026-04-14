@@ -191,45 +191,70 @@ export function applyOverridesToMd(
     result = result.replaceAll(originalFont, overrides.fontFamily);
   }
 
-  // Append style preferences (user's A/B taste choices)
-  if (stylePreferences && Object.keys(stylePreferences).filter(k => stylePreferences[k]).length > 0) {
-    result += `\n\n---\n\n## Style Preferences\n\n`;
-    result += `The following style choices reflect the user's design taste and should guide implementation decisions:\n\n`;
-
-    if (stylePreferences.buttonStyle) {
-      const isSharp = stylePreferences.buttonStyle === 'sharp';
-      result += `### Buttons\n`;
-      result += isSharp
-        ? `- Style: **Sharp & Precise** -- Use small border-radius (4px), solid fills, technical feel\n- Button corners should be tight, conveying precision and decisiveness\n- Avoid pill shapes for primary actions\n\n`
-        : `- Style: **Rounded & Friendly** -- Use pill shapes (9999px radius), soft feel\n- Buttons should feel approachable and modern\n- Use rounded corners consistently across all button variants\n\n`;
+  // ── Inline modification: rewrite subsections to match user preferences ──
+  if (stylePreferences) {
+    // Replace Inputs & Forms subsection in Section 4
+    if (stylePreferences.inputStyle === 'underline') {
+      result = result.replace(
+        /### Inputs & Forms\n[\s\S]*?(?=###|\n## \d+\.)/,
+        `### Inputs & Forms\n- Style: Underline -- bottom border only, no side or top borders\n- Border-bottom: 2px solid border color, no border-radius on the field itself\n- Focus: bottom border thickens or shifts to primary color\n- Text: foreground color, Placeholder: muted-foreground\n- No background fill -- transparent base\n\n`
+      );
     }
 
-    if (stylePreferences.tableStyle) {
-      const isMinimal = stylePreferences.tableStyle === 'minimal';
-      result += `### Tables\n`;
-      result += isMinimal
-        ? `- Style: **Minimal & Clean** -- Divider lines only, no outer borders, airy spacing\n- Row separators should be subtle (1px, low opacity)\n- No zebra striping, no heavy borders\n\n`
-        : `- Style: **Bordered & Structured** -- Full borders with alternating row backgrounds\n- Use zebra striping for readability on data-heavy tables\n- Outer border on the table container\n\n`;
+    // Replace Navigation subsection in Section 4
+    if (stylePreferences.headerStyle === 'glass') {
+      result = result.replace(
+        /### Navigation\n[\s\S]*?(?=###|\n## \d+\.)/,
+        (match) => {
+          if (/transparent|blur|glass/i.test(match)) return match; // already glass
+          return `### Navigation\n- Style: Glass & Floating -- transparent background with backdrop-filter: blur(12px)\n- Border-bottom only (1px border color), no solid fill\n- Header floats above content, text inherits foreground color\n- CTA button uses primary color, right-aligned\n- Mobile: hamburger menu collapse\n\n`;
+        }
+      );
+    } else if (stylePreferences.headerStyle === 'solid') {
+      result = result.replace(
+        /### Navigation\n[\s\S]*?(?=###|\n## \d+\.)/,
+        (match) => {
+          if (/solid.*?dark|dark.*?background|dark\s+nav/i.test(match)) return match; // already solid
+          return `### Navigation\n- Style: Solid & Bold -- solid dark background (foreground color), high contrast\n- Light text on dark header surface, clear visual separation from content\n- CTA button uses primary color or inverted colors\n- Mobile: hamburger menu collapse\n\n`;
+        }
+      );
     }
 
-    if (stylePreferences.headerStyle) {
-      const isGlass = stylePreferences.headerStyle === 'glass';
-      result += `### Navigation Header\n`;
-      result += isGlass
-        ? `- Style: **Glass & Floating** -- Transparent background with backdrop-filter blur\n- Border-bottom only, no solid fill\n- Header should feel like it floats above the content\n\n`
-        : `- Style: **Solid & Bold** -- Solid dark background (foreground color), high contrast\n- Clear visual separation from content\n- Light text on dark header surface\n\n`;
+    // Replace Cards subsection shadow description in Section 4
+    if (stylePreferences.cardStyle === 'bordered') {
+      result = result.replace(
+        /(### Cards & Containers\n[\s\S]*?)Shadow:.*?\n/,
+        '$1Shadow: none -- use border for definition, flat hierarchy\n'
+      );
     }
 
-    if (stylePreferences.cardStyle) {
-      const isBordered = stylePreferences.cardStyle === 'bordered';
-      result += `### Cards\n`;
-      result += isBordered
-        ? `- Style: **Subtle Border** -- Thin border, no shadow, flat hierarchy\n- Cards are defined by their border, not by elevation\n- Use consistent border color from the palette\n\n`
-        : `- Style: **Elevated Shadow** -- Shadow depth, floating feel\n- Cards should feel lifted from the page surface\n- Use multi-layer shadows for nuanced depth\n\n`;
+    // Modify Section 5 spacing for density preference
+    if (stylePreferences.density === 'compact') {
+      result = result.replace(
+        /### Whitespace Philosophy\n[\s\S]*?(?=###|\n## \d+\.)/,
+        `### Whitespace Philosophy\n- **Compact & dense**: Optimize for information density and scanning speed. Tight padding (8-12px), small gaps (4-8px between related items).\n- **Reduced section spacing**: Use ~70% of the reference spacing values for a data-focused, efficient layout.\n- **Screen real estate**: Maximize visible content per viewport -- users should see more items without scrolling.\n\n`
+      );
+    } else if (stylePreferences.density === 'spacious') {
+      result = result.replace(
+        /### Whitespace Philosophy\n[\s\S]*?(?=###|\n## \d+\.)/,
+        (match) => {
+          if (/generous|spacious|breathing/i.test(match)) return match; // already spacious
+          return `### Whitespace Philosophy\n- **Open & spacious**: Generous padding (16-24px), large gaps (12-20px) between content blocks.\n- **Breathing room**: Prioritize visual clarity over density. Use 1.5-2x standard section spacing.\n- **Premium feel**: Whitespace communicates quality -- let content breathe rather than cramming.\n\n`;
+        }
+      );
     }
 
+    // Replace radius values in Section 4 when user chose a different radius
     if (overrides.borderRadius) {
-      result += `### Border Radius\n- Base radius: **${overrides.borderRadius}**\n- Apply consistently to buttons, inputs, cards, and containers\n\n`;
+      const chosenPx = parseInt(overrides.borderRadius);
+      // Replace "Radius: Npx" patterns in component descriptions (but not radius scale tables)
+      result = result.replace(/(?<=^[-*].*?)Radius:\s*\d+px/gim, `Radius: ${overrides.borderRadius}`);
+      // Replace "rounded-Npx" or "Npx radius" in inline descriptions
+      result = result.replace(/(\d+)px\s*(?:\(standard\)|\(buttons?\)|\(cards?\))/gi, (match, px) => {
+        const orig = parseInt(px);
+        if (orig === 9999 || orig === 50) return match; // don't touch pills/circles
+        return `${overrides.borderRadius} (customized)`;
+      });
     }
   }
 

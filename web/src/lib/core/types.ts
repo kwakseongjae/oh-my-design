@@ -28,8 +28,10 @@ export interface Overrides {
 
 export interface StylePreferences {
   buttonStyle?: string;   // "sharp" | "rounded"
-  tableStyle?: string;    // "minimal" | "bordered"
+  inputStyle?: string;    // "bordered" | "underline"
   headerStyle?: string;   // "glass" | "solid"
   cardStyle?: string;     // "bordered" | "elevated"
+  depthStyle?: string;    // "flat" | "layered"
+  density?: string;       // "compact" | "spacious"
   [key: string]: string | undefined;
 }

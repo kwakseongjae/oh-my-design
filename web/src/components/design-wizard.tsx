@@ -192,44 +192,145 @@ function ButtonStyleStep({ detail, preferences, onPref }: StepProps) {
   );
 }
 
-function TableStyleStep({ detail, preferences, onPref }: StepProps) {
-  const border = detail.border || "#e5e7eb";
+function InputStyleStep({ detail, preferences, onPref }: StepProps) {
   const primary = detail.primary;
-  const rows = [
-    { name: "next.js", status: "Active", updated: "2 min ago" },
-    { name: "turbo-repo", status: "Building", updated: "14 min ago" },
-    { name: "swr-app", status: "Error", updated: "1 hr ago" },
-  ];
   return (
     <div>
-      <AnimatedHeading text="How should tables display data?" sub="Tables are the backbone of dashboards and admin panels." />
+      <AnimatedHeading text="How should inputs look?" sub="Forms are in every app. This choice cascades to all text fields and selects." />
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        <ABCard label="Minimal & Clean" description="Dividers only, no borders, airy" selected={preferences.tableStyle === "minimal"} onClick={() => onPref("tableStyle", "minimal")} delay={0.3}>
-          <div className="w-full text-xs px-2">
-            <div className="flex gap-2 pb-2 border-b font-medium text-muted-foreground preview-border">
-              <span className="flex-1">Project</span><span className="w-16">Status</span><span className="w-20 text-right">Updated</span>
+        <ABCard label="Bordered Box" description="Full border, contained, structured" selected={preferences.inputStyle === "bordered"} onClick={() => onPref("inputStyle", "bordered")} delay={0.3}>
+          <div className="w-full max-w-[220px] space-y-3 px-2">
+            <div>
+              <div className="text-[10px] font-medium mb-1 text-muted-foreground">Email</div>
+              <div className="px-3 py-2 text-xs border rounded-lg preview-border bg-background">user@example.com</div>
             </div>
-            {rows.map((r, i) => (
-              <div key={i} className="flex gap-2 py-2.5 border-b last:border-0 preview-border">
-                <span className="flex-1 font-medium">{r.name}</span>
-                <span className="w-16 text-muted-foreground">{r.status}</span>
-                <span className="w-20 text-right text-muted-foreground">{r.updated}</span>
+            <div>
+              <div className="text-[10px] font-medium mb-1 text-muted-foreground">Password</div>
+              <div className="px-3 py-2 text-xs border rounded-lg preview-border bg-background text-muted-foreground">••••••••</div>
+            </div>
+            <div className="px-4 py-2 text-xs font-medium text-white rounded-lg text-center" style={{ background: primary }}>Sign In</div>
+          </div>
+        </ABCard>
+        <ABCard label="Underline" description="Bottom border only, minimal, Material-style" selected={preferences.inputStyle === "underline"} onClick={() => onPref("inputStyle", "underline")} delay={0.4}>
+          <div className="w-full max-w-[220px] space-y-3 px-2">
+            <div>
+              <div className="text-[10px] font-medium mb-1 text-muted-foreground">Email</div>
+              <div className="px-1 py-2 text-xs border-b-2 preview-border">user@example.com</div>
+            </div>
+            <div>
+              <div className="text-[10px] font-medium mb-1 text-muted-foreground">Password</div>
+              <div className="px-1 py-2 text-xs border-b-2 preview-border text-muted-foreground">••••••••</div>
+            </div>
+            <div className="px-4 py-2 text-xs font-medium text-white rounded-lg text-center" style={{ background: primary }}>Sign In</div>
+          </div>
+        </ABCard>
+      </div>
+    </div>
+  );
+}
+
+function DepthStyleStep({ detail, preferences, onPref }: StepProps) {
+  const primary = detail.primary;
+  return (
+    <div>
+      <AnimatedHeading text="Flat or elevated?" sub="This controls shadows across every card, dropdown, and dialog." />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ABCard label="Flat & Clean" description="Borders only, no shadows, minimal depth" selected={preferences.depthStyle === "flat"} onClick={() => onPref("depthStyle", "flat")} delay={0.3}>
+          <div className="flex gap-3">
+            <div className="w-32 rounded-xl border preview-border p-3 bg-background">
+              <div className="h-2 w-16 rounded bg-foreground/70 mb-2" />
+              <div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" />
+              <div className="h-1.5 w-3/4 rounded bg-muted-foreground/15" />
+            </div>
+            <div className="w-32 rounded-xl border preview-border p-3 bg-background">
+              <div className="h-2 w-12 rounded bg-foreground/70 mb-2" />
+              <div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" />
+              <div className="h-1.5 w-2/3 rounded bg-muted-foreground/15" />
+            </div>
+          </div>
+        </ABCard>
+        <ABCard label="Layered & Rich" description="Multi-layer shadows, floating feel" selected={preferences.depthStyle === "layered"} onClick={() => onPref("depthStyle", "layered")} delay={0.4}>
+          <div className="flex gap-3">
+            <div className="w-32 rounded-xl p-3 bg-card shadow-xl shadow-black/10 dark:shadow-white/5">
+              <div className="h-2 w-16 rounded bg-foreground/70 mb-2" />
+              <div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" />
+              <div className="h-1.5 w-3/4 rounded bg-muted-foreground/15" />
+            </div>
+            <div className="w-32 rounded-xl p-3 bg-card shadow-lg shadow-black/8 dark:shadow-white/3">
+              <div className="h-2 w-12 rounded bg-foreground/70 mb-2" />
+              <div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" />
+              <div className="h-1.5 w-2/3 rounded bg-muted-foreground/15" />
+            </div>
+          </div>
+        </ABCard>
+      </div>
+    </div>
+  );
+}
+
+function DensityStep({ detail, preferences, onPref }: StepProps) {
+  const primary = detail.primary;
+  return (
+    <div>
+      <AnimatedHeading text="Compact or spacious?" sub="This controls padding, gaps, and whitespace across all components." />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ABCard label="Compact & Dense" description="Tight padding, small gaps, data-focused" selected={preferences.density === "compact"} onClick={() => onPref("density", "compact")} delay={0.3}>
+          <div className="w-full max-w-[240px] rounded-lg border preview-border overflow-hidden bg-background">
+            <div className="px-2.5 py-1.5 border-b preview-border text-[10px] font-medium text-muted-foreground" style={{ background: `${primary}06` }}>Notifications</div>
+            {["Deployment successful", "New comment on PR #42", "Build failed: main"].map((t, i) => (
+              <div key={i} className="px-2.5 py-1.5 text-[10px] border-b last:border-0 preview-border flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full" style={{ background: i === 2 ? "#ef4444" : primary }} />
+                {t}
               </div>
             ))}
           </div>
         </ABCard>
-        <ABCard label="Bordered & Structured" description="Full borders, zebra rows, contained" selected={preferences.tableStyle === "bordered"} onClick={() => onPref("tableStyle", "bordered")} delay={0.4}>
-          <div className="w-full text-xs px-2 border rounded-lg overflow-hidden preview-border">
-            <div className="flex gap-2 p-2.5 font-medium text-muted-foreground border-b preview-border" style={{ background: `${primary}06` }}>
-              <span className="flex-1">Project</span><span className="w-16">Status</span><span className="w-20 text-right">Updated</span>
-            </div>
-            {rows.map((r, i) => (
-              <div key={i} className="flex gap-2 p-2.5 border-b last:border-0 preview-border" style={{ background: i % 2 === 1 ? `${primary}04` : "transparent" }}>
-                <span className="flex-1 font-medium">{r.name}</span>
-                <span className="w-16 text-muted-foreground">{r.status}</span>
-                <span className="w-20 text-right text-muted-foreground">{r.updated}</span>
+        <ABCard label="Open & Spacious" description="Generous whitespace, breathing room" selected={preferences.density === "spacious"} onClick={() => onPref("density", "spacious")} delay={0.4}>
+          <div className="w-full max-w-[240px] rounded-xl border preview-border overflow-hidden bg-background">
+            <div className="px-4 py-3 border-b preview-border text-[10px] font-medium text-muted-foreground" style={{ background: `${primary}06` }}>Notifications</div>
+            {["Deployment successful", "New comment on PR #42", "Build failed: main"].map((t, i) => (
+              <div key={i} className="px-4 py-3 text-[10px] border-b last:border-0 preview-border flex items-center gap-3">
+                <div className="h-2 w-2 rounded-full" style={{ background: i === 2 ? "#ef4444" : primary }} />
+                {t}
               </div>
             ))}
+          </div>
+        </ABCard>
+      </div>
+    </div>
+  );
+}
+
+function SaturationStep({ detail, preferences, onPref, overrides }: StepProps) {
+  const primary = overrides.primaryColor || detail.primary;
+  return (
+    <div>
+      <AnimatedHeading text="Muted or vivid?" sub="This controls the intensity of your entire color palette." />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ABCard label="Muted & Soft" description="Desaturated palette, pastel accents, calm" selected={preferences.saturation === "muted"} onClick={() => onPref("saturation", "muted")} delay={0.3}>
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex gap-2">
+              {["#8b9fad", "#9db5a0", "#b5a08b", "#a08bb5", "#8badb5"].map((c, i) => (
+                <div key={i} className="h-10 w-10 rounded-lg" style={{ background: c }} />
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <div className="px-4 py-1.5 text-[10px] font-medium text-white rounded-md" style={{ background: "#7a8e9a" }}>Button</div>
+              <div className="px-3 py-1.5 text-[10px] rounded-md" style={{ background: "#7a8e9a20", color: "#7a8e9a" }}>Badge</div>
+            </div>
+          </div>
+        </ABCard>
+        <ABCard label="Vivid & Bold" description="High saturation, punchy colors, energetic" selected={preferences.saturation === "vivid"} onClick={() => onPref("saturation", "vivid")} delay={0.4}>
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex gap-2">
+              {["#2563eb", "#16a34a", "#ea580c", "#9333ea", "#0891b2"].map((c, i) => (
+                <div key={i} className="h-10 w-10 rounded-lg" style={{ background: c }} />
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <div className="px-4 py-1.5 text-[10px] font-medium text-white rounded-md" style={{ background: "#2563eb" }}>Button</div>
+              <div className="px-3 py-1.5 text-[10px] rounded-md" style={{ background: "#2563eb20", color: "#2563eb" }}>Badge</div>
+            </div>
           </div>
         </ABCard>
       </div>
@@ -541,7 +642,7 @@ function SummaryStep({ detail, overrides, preferences }: StepProps) {
 
 // ── Main Wizard ──────────────────────────────────────────────────
 
-const STEP_LABELS = ["Intro", "Buttons", "Tables", "Header", "Cards", "Color", "Radius", "Dark Mode", "Summary"];
+const STEP_LABELS = ["Intro", "Buttons", "Inputs", "Header", "Cards", "Density", "Color", "Radius", "Dark Mode", "Summary"];
 
 export function DesignWizard({
   detail,
@@ -561,9 +662,10 @@ export function DesignWizard({
   const [step, setStep] = useState(0);
   const [prefs, setPrefs] = useState<Record<string, string>>({
     buttonStyle: "sharp",
-    tableStyle: "minimal",
+    inputStyle: "bordered",
     headerStyle: "glass",
     cardStyle: "bordered",
+    density: "spacious",
   });
   const [direction, setDirection] = useState(1);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -597,9 +699,10 @@ export function DesignWizard({
   const steps = [
     <IntroStep key="intro" />,
     <ButtonStyleStep key="btn" {...stepProps} />,
-    <TableStyleStep key="tbl" {...stepProps} />,
+    <InputStyleStep key="inp" {...stepProps} />,
     <HeaderStyleStep key="hdr" {...stepProps} />,
     <CardStyleStep key="card" {...stepProps} />,
+    <DensityStep key="density" {...stepProps} />,
     <ColorStep key="clr" {...stepProps} />,
     <RadiusStep key="rad" {...stepProps} />,
     <DarkModeStep key="dm" {...stepProps} />,
