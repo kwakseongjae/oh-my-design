@@ -7,8 +7,6 @@ DESIGN.md crafted from Baemin's publicly available design resources including th
 | File | Description |
 |------|-------------|
 | `DESIGN.md` | Complete design system documentation (9 sections) |
-| `preview.html` | Interactive design token catalog (light) |
-| `preview-dark.html` | Interactive design token catalog (dark) |
 
 Use DESIGN.md as a reference for AI agents (Claude, Cursor, Stitch) to generate UI that looks like the Baemin design language.
 
