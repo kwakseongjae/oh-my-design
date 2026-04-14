@@ -17,14 +17,20 @@ const siteUrl = "https://oh-my-design-lemon.vercel.app";
 
 export const metadata: Metadata = {
   title: "oh-my-design — Design System Generator",
-  description: "Generate DESIGN.md from 58 real company design systems. Interactive A/B wizard, shadcn/ui CSS export, zero AI calls.",
+  description: "Generate DESIGN.md from 62 real company design systems. Interactive A/B wizard, shadcn/ui CSS export, zero AI calls.",
   keywords: ["design system", "DESIGN.md", "shadcn", "tailwind", "design tokens", "AI coding agent", "Google Stitch"],
   authors: [{ name: "oh-my-design" }],
   metadataBase: new URL(siteUrl),
+  verification: {
+    google: "5mZuqjPvdwYTXpJrByQX2i7xM73aQj3Vn1UcpyJhCr4",
+    other: {
+      "naver-site-verification": "ecee2aa716d5ed7e257dcce5f72222e03f3512d4",
+    },
+  },
   openGraph: {
     type: "website",
     title: "oh-my-design — Design systems from the world's best",
-    description: "Pick from 58 real company design systems. Customize with A/B choices. Export DESIGN.md + shadcn/ui CSS. No AI needed.",
+    description: "Pick from 62 real company design systems. Customize with A/B choices. Export DESIGN.md + shadcn/ui CSS. No AI needed.",
     url: siteUrl,
     siteName: "oh-my-design",
     images: [
@@ -39,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "oh-my-design — Design systems from the world's best",
-    description: "58 company design systems. A/B wizard. shadcn/ui CSS. Zero AI calls.",
+    description: "62 company design systems. A/B wizard. shadcn/ui CSS. Zero AI calls.",
     images: ["/twitter-image.png"],
   },
 };
