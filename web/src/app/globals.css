@@ -234,7 +234,7 @@
 
 /* Safe area for notched devices */
 .safe-top { padding-top: env(safe-area-inset-top); }
-.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
 .safe-x { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
 
 /* Prevent iOS zoom on input focus (font-size < 16px triggers zoom) */

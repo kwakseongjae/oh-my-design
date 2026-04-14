@@ -174,7 +174,7 @@ export default function Landing() {
           ].map((item, i) => (
             <div
               key={i}
-              className="group relative overflow-hidden rounded-2xl border border-border/40 bg-card/30 p-8 backdrop-blur transition-all hover:bg-card/60 hover:-translate-y-1 dark:border-border dark:bg-card/60"
+              className="group relative overflow-hidden rounded-2xl border border-border/40 bg-card/30 p-6 sm:p-8 backdrop-blur transition-all hover:bg-card/60 hover:-translate-y-1 dark:border-border/80 dark:bg-card"
             >
               <div className="mb-6 flex items-center gap-4">
                 <span className={`text-4xl font-bold text-primary/20 ${playfair.className} italic`}>{item.step}</span>

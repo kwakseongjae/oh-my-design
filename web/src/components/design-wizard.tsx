@@ -729,14 +729,16 @@ export function DesignWizard({
       </div>
 
       {/* Top bar */}
-      <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-border/40 safe-top">
-        <button onClick={onBack} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-          <ArrowLeft className="h-4 w-4 inline mr-1" /> Exit
+      <div className="flex h-14 items-center justify-between px-4 sm:px-6 border-b border-border/40">
+        <button onClick={onBack} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors min-w-[72px]">
+          <ArrowLeft className="h-4 w-4" /> Back
         </button>
-        <span className="text-xs text-muted-foreground">
+        <span className="text-xs text-muted-foreground text-center">
           {step + 1} / {totalSteps} &middot; {STEP_LABELS[step]}
         </span>
-        <ThemeToggle />
+        <div className="flex justify-end min-w-[72px]">
+          <ThemeToggle />
+        </div>
       </div>
 
       {/* Content */}
@@ -768,16 +770,16 @@ export function DesignWizard({
             <ArrowLeft className="h-4 w-4" /> Back
           </button>
 
-          {/* Step dots */}
-          <div className="flex gap-1">
+          {/* Step dots — hidden on mobile, shown on sm+ */}
+          <div className="hidden sm:flex gap-1">
             {Array.from({ length: totalSteps }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => { setDirection(i > step ? 1 : -1); setStep(i); }}
-                className="flex items-center justify-center h-8 w-4 sm:w-auto"
+                className="flex items-center justify-center h-8 w-4"
               >
                 <span className={`block h-1.5 rounded-full transition-all ${
-                  i === step ? "w-5 sm:w-6 bg-foreground" : i < step ? "w-1.5 bg-foreground/40" : "w-1.5 bg-muted-foreground/20"
+                  i === step ? "w-6 bg-foreground" : i < step ? "w-1.5 bg-foreground/40" : "w-1.5 bg-muted-foreground/20"
                 }`} />
               </button>
             ))}
@@ -786,14 +788,14 @@ export function DesignWizard({
           {isLast ? (
             <button
               onClick={onComplete}
-              className="flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:opacity-90 shadow-md shadow-primary/20"
+              className="flex items-center gap-2 rounded-full bg-primary px-4 sm:px-6 py-2.5 text-sm font-medium text-primary-foreground whitespace-nowrap transition-all hover:opacity-90 shadow-md shadow-primary/20"
             >
-              View Preview <ArrowRight className="h-4 w-4" />
+              Preview <ArrowRight className="h-4 w-4" />
             </button>
           ) : (
             <button
               onClick={goNext}
-              className="flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:opacity-90 shadow-md shadow-primary/20"
+              className="flex items-center gap-2 rounded-full bg-primary px-4 sm:px-6 py-2.5 text-sm font-medium text-primary-foreground whitespace-nowrap transition-all hover:opacity-90 shadow-md shadow-primary/20"
             >
               {isFirst ? "Let's Go" : "Next"} <ArrowRight className="h-4 w-4" />
             </button>
