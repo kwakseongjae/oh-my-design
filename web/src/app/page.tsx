@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import { ArrowRight, Download, Zap, Moon, Sun, Layers } from "lucide-react";
+import { track } from "@vercel/analytics";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Playfair_Display } from "next/font/google";
@@ -87,6 +88,7 @@ export default function Landing() {
             )}
             <Link
               href="/builder"
+              onClick={() => track("cta_click", { location: "nav" })}
               className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
               Start Building <ArrowRight className="h-3.5 w-3.5" />
@@ -126,6 +128,7 @@ export default function Landing() {
           <div className="animate-fade-up animate-delay-7 mt-10 flex items-center justify-center gap-4">
             <Link
               href="/builder"
+              onClick={() => track("cta_click", { location: "hero" })}
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
             >
               Open Builder
@@ -201,6 +204,7 @@ export default function Landing() {
           </p>
           <Link
             href="/builder"
+            onClick={() => track("cta_click", { location: "footer" })}
             className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
           >
             Open Builder

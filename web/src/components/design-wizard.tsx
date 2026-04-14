@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { track } from "@vercel/analytics";
 import { ArrowRight, ArrowLeft, Check, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { generateColorScale, isLight, contrastForeground } from "@/lib/core/color";
@@ -670,9 +671,10 @@ export function DesignWizard({
   const [direction, setDirection] = useState(1);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Reset scroll on step change
+  // Reset scroll on step change + track step view
   useEffect(() => {
     scrollRef.current?.scrollTo(0, 0);
+    track("wizard_step_view", { step: step + 1, label: STEP_LABELS[step] });
   }, [step]);
 
   // Lock body scroll when wizard is open
@@ -687,6 +689,7 @@ export function DesignWizard({
 
   const onPref = useCallback((key: string, value: string) => {
     setPrefs((p) => ({ ...p, [key]: value }));
+    track("style_preference", { choice: key, value });
   }, []);
 
   // Sync preferences to parent via useEffect (avoids setState during render)

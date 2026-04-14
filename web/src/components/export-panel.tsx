@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { track } from "@vercel/analytics";
 import { Copy, Check, Download } from "lucide-react";
 import { generateShadcnCss, applyOverridesToMd } from "@/lib/core/generate-css";
 import { generateNpxCommand } from "@/lib/core/config-hash";
@@ -39,6 +40,7 @@ export function ExportPanel({
 
   function copyTo(key: string, text: string) {
     navigator.clipboard.writeText(text);
+    track("copy_designmd", { reference: detail.id });
     setCopied(key);
     setTimeout(() => setCopied(null), 2000);
   }
@@ -51,6 +53,7 @@ export function ExportPanel({
     a.download = "DESIGN.md";
     a.click();
     URL.revokeObjectURL(url);
+    track("download_designmd", { reference: detail.id });
   }
 
   return (

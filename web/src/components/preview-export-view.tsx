@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { track } from "@vercel/analytics";
 import { Eye, FileText, Terminal, Copy, Check, ArrowLeft, Download } from "lucide-react";
 import { Preview } from "@/components/preview";
 import { ExportPanel } from "@/components/export-panel";
@@ -63,6 +64,7 @@ export function PreviewExportView({
 
   function copyNpx() {
     navigator.clipboard.writeText(npxCmd);
+    track("copy_npx_command", { reference: detail.id });
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }
