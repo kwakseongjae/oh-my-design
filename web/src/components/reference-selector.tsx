@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { track } from "@vercel/analytics";
+import { event } from "@/lib/gtag";
 import { Search, Loader2 } from "lucide-react";
 import { isLight } from "@/lib/core/color";
 import { getLogoUrl, isGitHubLogo } from "@/lib/logos";
@@ -29,7 +29,7 @@ export function ReferenceSelector({
     if (searchTimer.current) clearTimeout(searchTimer.current);
     if (value.length >= 2) {
       searchTimer.current = setTimeout(() => {
-        track("search_reference", { query: value });
+        event("search_reference", { query: value });
       }, 800);
     }
   }, []);
@@ -85,7 +85,7 @@ export function ReferenceSelector({
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) track("category_filter", { category: next }); }}
+              onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) event("category_filter", { category: next }); }}
               className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 selectedCat === cat
                   ? "bg-primary text-primary-foreground shadow-sm"
@@ -121,7 +121,7 @@ export function ReferenceSelector({
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.2, delay: Math.min(i * 0.02, 0.3) }}
-                onClick={() => { track("reference_select", { reference: ref.id, category: ref.category }); onSelect(ref.id); }}
+                onClick={() => { event("reference_select", { reference: ref.id, category: ref.category }); onSelect(ref.id); }}
                 disabled={loading}
                 className="group relative flex flex-col overflow-hidden rounded-xl border border-border/40 bg-card/30 text-left backdrop-blur transition-all hover:bg-card/80 hover:shadow-lg hover:shadow-black/5 hover:-translate-y-1 dark:border-white/10 dark:bg-card/50 dark:hover:border-white/20 dark:hover:shadow-white/5 disabled:opacity-50"
               >
