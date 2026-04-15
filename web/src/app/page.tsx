@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import { ArrowRight, Download, Zap, Moon, Sun, Layers } from "lucide-react";
-import { event } from "@/lib/gtag";
+import { event, initErrorLogging, initScrollDepth } from "@/lib/gtag";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Playfair_Display } from "next/font/google";
@@ -61,7 +61,11 @@ function LogoCard({ brand }: { brand: (typeof FEATURED_BRANDS)[number] }) {
 export default function Landing() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    initErrorLogging();
+    initScrollDepth();
+  }, []);
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -136,6 +140,7 @@ export default function Landing() {
             </Link>
             <a
               href="https://github.com/kwakseongjae/oh-my-design"
+              onClick={() => event("outbound_click", { url: "github" })}
               className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/50 px-8 py-3.5 text-base font-medium backdrop-blur transition-colors hover:bg-accent dark:border-border dark:bg-card/60"
             >
               GitHub

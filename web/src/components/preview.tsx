@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { event } from "@/lib/gtag";
 import { Check, ChevronDown, ChevronRight, Plus, X, Sun, Moon, Sparkles } from "lucide-react";
 import { generateColorScale, isLight, contrastForeground, generateChartColors } from "@/lib/core/color";
 import type { Overrides } from "@/lib/core/types";
@@ -88,6 +89,7 @@ export function Preview({
     } else {
       setActiveComps((prev) => new Set([...prev, comp.id]));
       setAddedComps((prev) => new Set([...prev, comp.id]));
+      event("component_add", { component: comp.id });
     }
   };
 
@@ -96,11 +98,13 @@ export function Preview({
     setActiveComps((prev) => new Set([...prev, compId]));
     setAddedComps((prev) => new Set([...prev, compId]));
     setAbPickerComp(null);
+    event("component_add", { component: compId, variant: variantId });
   };
 
   const removeComp = (id: string) => {
     setActiveComps((prev) => { const n = new Set(prev); n.delete(id); return n; });
     setAddedComps((prev) => { const n = new Set(prev); n.delete(id); return n; });
+    event("component_remove", { component: id });
   };
 
   const coreComps = ALL_COMPONENTS.filter((c) => c.core && activeComps.has(c.id));

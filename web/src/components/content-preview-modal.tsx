@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { event } from "@/lib/gtag";
 import { X, Copy, Check, Download } from "lucide-react";
 
 export function ContentPreviewModal({
@@ -23,6 +24,7 @@ export function ContentPreviewModal({
 
   function copyContent() {
     navigator.clipboard.writeText(content);
+    event("copy_content", { filename, language });
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }
@@ -36,6 +38,7 @@ export function ContentPreviewModal({
     a.download = filename;
     a.click();
     URL.revokeObjectURL(url);
+    event("download_content", { filename, language });
   }
 
   return (

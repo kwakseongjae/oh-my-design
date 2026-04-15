@@ -90,7 +90,7 @@ export function PreviewExportView({
       <div className="flex items-center justify-center mb-4">
         <div className="flex gap-1 p-1 rounded-lg border border-border/40 dark:border-border bg-muted/30 dark:bg-muted/50">
           <button
-            onClick={() => setView("preview")}
+            onClick={() => { setView("preview"); event("view_toggle", { view: "preview", reference: detail.id }); }}
             className={`flex items-center gap-1.5 rounded-md px-4 py-2 text-sm font-medium transition-all ${
               view === "preview" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
             }`}
@@ -98,7 +98,7 @@ export function PreviewExportView({
             <Eye className="h-3.5 w-3.5" /> Live Preview
           </button>
           <button
-            onClick={() => setView("designmd")}
+            onClick={() => { setView("designmd"); event("view_toggle", { view: "designmd", reference: detail.id }); }}
             className={`flex items-center gap-1.5 rounded-md px-4 py-2 text-sm font-medium transition-all ${
               view === "designmd" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
             }`}

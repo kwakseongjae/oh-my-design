@@ -61,23 +61,29 @@ export default function BuilderPage() {
     fetch("/api/references")
       .then((r) => r.json())
       .then(setRefs)
+      .catch(() => event("api_error", { endpoint: "/api/references" }))
       .finally(() => setRefsLoading(false));
   }, []);
 
   const selectRef = useCallback(async (id: string) => {
     setLoading(true);
-    const res = await fetch(`/api/references/${id}`);
-    const data: RefDetail = await res.json();
-    setDetail(data);
-    setOverrides({
-      primaryColor: data.primary,
-      fontFamily: "",
-      headingWeight: "",
-      borderRadius: data.radius.replace(/[-–].*/, "").trim(),
-      darkMode: false,
-    });
-    setStep("customize");
-    setLoading(false);
+    try {
+      const res = await fetch(`/api/references/${id}`);
+      const data: RefDetail = await res.json();
+      setDetail(data);
+      setOverrides({
+        primaryColor: data.primary,
+        fontFamily: "",
+        headingWeight: "",
+        borderRadius: data.radius.replace(/[-–].*/, "").trim(),
+        darkMode: false,
+      });
+      setStep("customize");
+    } catch {
+      event("api_error", { endpoint: `/api/references/${id}` });
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   const STEPS: { key: Step; label: string; num: number }[] = [
