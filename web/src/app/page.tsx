@@ -129,22 +129,36 @@ export default function Landing() {
           </div>
 
           {/* CTAs */}
-          <div className="animate-fade-up animate-delay-7 mt-10 flex items-center justify-center gap-4">
+          <div className="animate-fade-up animate-delay-7 mt-10 flex flex-col items-center gap-4">
+            <div className="flex items-center gap-3">
+              <Link
+                href="/builder"
+                onClick={() => event("cta_click", { location: "hero" })}
+                className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Open Builder
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <a
+                href="https://github.com/kwakseongjae/oh-my-design"
+                onClick={() => event("outbound_click", { url: "github" })}
+                className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/50 px-8 py-3.5 text-base font-medium backdrop-blur transition-colors hover:bg-accent dark:border-border dark:bg-card/60"
+              >
+                GitHub
+              </a>
+            </div>
             <Link
-              href="/builder"
-              onClick={() => event("cta_click", { location: "hero" })}
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
+              href="/curation"
+              onClick={() => event("cta_click", { location: "hero_curation" })}
+              className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              Open Builder
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              </span>
+              Get a personal curation
+              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
             </Link>
-            <a
-              href="https://github.com/kwakseongjae/oh-my-design"
-              onClick={() => event("outbound_click", { url: "github" })}
-              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/50 px-8 py-3.5 text-base font-medium backdrop-blur transition-colors hover:bg-accent dark:border-border dark:bg-card/60"
-            >
-              GitHub
-            </a>
           </div>
         </div>
       </section>

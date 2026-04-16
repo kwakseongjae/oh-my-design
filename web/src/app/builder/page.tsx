@@ -60,7 +60,15 @@ export default function BuilderPage() {
   useEffect(() => {
     fetch("/api/references")
       .then((r) => r.json())
-      .then(setRefs)
+      .then((data) => {
+        setRefs(data);
+        // Auto-select reference from query param (from survey result)
+        const params = new URLSearchParams(window.location.search);
+        const refParam = params.get("ref");
+        if (refParam) {
+          selectRef(refParam);
+        }
+      })
       .catch(() => event("api_error", { endpoint: "/api/references" }))
       .finally(() => setRefsLoading(false));
   }, []);

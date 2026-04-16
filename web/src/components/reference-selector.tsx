@@ -3,7 +3,7 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { event } from "@/lib/gtag";
-import { Search, Loader2 } from "lucide-react";
+import { Search, Loader2, ArrowRight } from "lucide-react";
 import { isLight } from "@/lib/core/color";
 import { getLogoUrl, isGitHubLogo } from "@/lib/logos";
 import type { RefListItem } from "@/app/builder/page";
@@ -42,16 +42,37 @@ export function ReferenceSelector({
 
   return (
     <div>
-      {/* Header */}
+      {/* Header with quiz CTA */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
+        className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
       >
-        <h2 className="text-3xl font-bold tracking-tight">Choose a reference</h2>
-        <p className="mt-2 text-muted-foreground">
-          {refs.length} design systems from real companies. Pick one to start.
-        </p>
+        <div>
+          <h2 className="text-3xl font-bold tracking-tight">Choose a reference</h2>
+          <p className="mt-2 text-muted-foreground">
+            {refs.length} design systems from real companies. Pick one to start.
+          </p>
+        </div>
+
+        <a
+          href="/curation"
+          onClick={() => event("cta_click", { location: "builder_curation" })}
+          className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-border/60 bg-card/50 dark:border-white/10 dark:bg-white/[0.03] px-4 py-3 backdrop-blur transition-all hover:border-primary/40 hover:bg-card dark:hover:bg-white/[0.06] hover:shadow-lg hover:shadow-primary/10 sm:flex-shrink-0"
+        >
+          {/* Subtle gradient glow on hover */}
+          <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100 bg-gradient-to-r from-primary/5 via-transparent to-transparent" />
+
+          <div className="relative flex items-center justify-center flex-shrink-0">
+            <img src="/logo.png" alt="omd" className="h-6 object-contain block dark:hidden" />
+            <img src="/logo-white.png" alt="omd" className="h-6 object-contain hidden dark:block" />
+          </div>
+          <div className="relative text-left">
+            <div className="text-sm font-semibold tracking-tight">Get a personal curation</div>
+            <div className="text-xs text-muted-foreground mt-0.5">60 seconds · 12 questions · matched references</div>
+          </div>
+          <ArrowRight className="relative h-4 w-4 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-primary flex-shrink-0" />
+        </a>
       </motion.div>
 
       {/* Search + Filters */}

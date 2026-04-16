@@ -1,0 +1,661 @@
+"use client";
+
+import { useState, useCallback, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ArrowLeft, Check, Moon, Sun, Copy, CheckCheck } from "lucide-react";
+import { useTheme } from "next-themes";
+import { generateColorScale, isLight, contrastForeground } from "@/lib/core/color";
+import { encodeSurveyResult, type SurveyResult } from "@/lib/core/survey-hash";
+import type { Overrides } from "@/lib/core/types";
+import type { RefDetail } from "@/app/builder/page";
+import { Input } from "@/components/ui/input";
+import { TypographyCharStep } from "./typography-step";
+
+/* ── Shared sub-components (extracted from design-wizard patterns) ── */
+
+function AnimatedHeading({ text, sub }: { text: string; sub?: string }) {
+  const words = text.split(" ");
+  return (
+    <div className="mb-2">
+      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+        {words.map((word, i) => (
+          <motion.span
+            key={i}
+            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.5, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="inline-block mr-[0.3em]"
+          >
+            {word}
+          </motion.span>
+        ))}
+      </h2>
+      {sub && (
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: words.length * 0.08 + 0.1 }}
+          className="mt-3 text-base text-muted-foreground sm:text-lg"
+        >
+          {sub}
+        </motion.p>
+      )}
+    </div>
+  );
+}
+
+function ABCard({
+  label, description, selected, onClick, children, delay = 0,
+}: {
+  label: string; description: string; selected: boolean; onClick: () => void;
+  children: React.ReactNode; delay?: number;
+}) {
+  return (
+    <motion.button
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      whileTap={{ scale: 0.98 }}
+      onClick={onClick}
+      className={`group relative flex flex-col overflow-hidden rounded-2xl border-2 text-left transition-colors ${
+        selected
+          ? "border-foreground shadow-xl shadow-foreground/5"
+          : "border-border/40 hover:border-border dark:border-border"
+      }`}
+    >
+      <div className="relative flex min-h-[200px] items-center justify-center bg-muted/30 dark:bg-muted/60 p-6 sm:min-h-[220px]">
+        {children}
+        <AnimatePresence>
+          {selected && (
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-foreground shadow-lg"
+            >
+              <Check className="h-4 w-4 text-background" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+      <div className="p-4 border-t">
+        <div className="text-sm font-semibold">{label}</div>
+        <div className="text-xs text-muted-foreground mt-0.5">{description}</div>
+      </div>
+    </motion.button>
+  );
+}
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return <div className="w-8" />;
+  return (
+    <button
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="flex h-11 w-11 items-center justify-center rounded-full border border-border/40 dark:border-border bg-card/50 dark:bg-card/60 transition-colors hover:bg-accent"
+    >
+      {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
+    </button>
+  );
+}
+
+/* ── A/B Steps (same visuals as design-wizard, self-contained) ── */
+
+interface StepCtx {
+  primary: string;
+  prefs: Record<string, string>;
+  onPref: (key: string, value: string) => void;
+  overrides: Overrides;
+  onOverride: (o: Partial<Overrides>) => void;
+  border: string;
+}
+
+function ButtonStyleStep({ primary, prefs, onPref }: StepCtx) {
+  return (
+    <div>
+      <AnimatedHeading text="How should buttons feel?" sub="This sets the tone for all interactive elements." />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ABCard label="Sharp & Precise" description="Small radius, technical, decisive" selected={prefs.buttonStyle === "sharp"} onClick={() => onPref("buttonStyle", "sharp")} delay={0.3}>
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex gap-3">
+              <div className="px-6 py-2.5 text-sm font-medium text-white rounded-md shadow-sm" style={{ background: primary }}>Deploy</div>
+              <div className="px-6 py-2.5 text-sm font-medium border preview-border rounded-md">Cancel</div>
+            </div>
+            <div className="flex gap-2">
+              <div className="px-3 py-1 text-xs rounded-md border preview-border">Small</div>
+              <div className="px-3 py-1 text-xs rounded-md" style={{ background: `${primary}25`, color: primary }}>Tag</div>
+            </div>
+          </div>
+        </ABCard>
+        <ABCard label="Rounded & Friendly" description="Pill shape, approachable, modern" selected={prefs.buttonStyle === "rounded"} onClick={() => onPref("buttonStyle", "rounded")} delay={0.4}>
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex gap-3">
+              <div className="px-6 py-2.5 text-sm font-medium text-white rounded-full shadow-sm" style={{ background: primary }}>Deploy</div>
+              <div className="px-6 py-2.5 text-sm font-medium border preview-border rounded-full">Cancel</div>
+            </div>
+            <div className="flex gap-2">
+              <div className="px-3 py-1 text-xs rounded-full border preview-border">Small</div>
+              <div className="px-3 py-1 text-xs rounded-full" style={{ background: `${primary}25`, color: primary }}>Tag</div>
+            </div>
+          </div>
+        </ABCard>
+      </div>
+    </div>
+  );
+}
+
+function InputStyleStep({ primary, prefs, onPref }: StepCtx) {
+  return (
+    <div>
+      <AnimatedHeading text="How should inputs look?" sub="Forms are in every app. This choice cascades to all text fields." />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ABCard label="Bordered Box" description="Full border, contained, structured" selected={prefs.inputStyle === "bordered"} onClick={() => onPref("inputStyle", "bordered")} delay={0.3}>
+          <div className="w-full max-w-[220px] space-y-3 px-2">
+            <div>
+              <div className="text-[11px] font-medium mb-1 text-muted-foreground">Email</div>
+              <div className="px-3 py-2 text-xs border rounded-lg preview-border bg-background">user@example.com</div>
+            </div>
+            <div>
+              <div className="text-[11px] font-medium mb-1 text-muted-foreground">Password</div>
+              <div className="px-3 py-2 text-xs border rounded-lg preview-border bg-background text-muted-foreground">{'••••••••'}</div>
+            </div>
+            <div className="px-4 py-2 text-xs font-medium text-white rounded-lg text-center" style={{ background: primary }}>Sign In</div>
+          </div>
+        </ABCard>
+        <ABCard label="Underline" description="Bottom border only, minimal, Material-style" selected={prefs.inputStyle === "underline"} onClick={() => onPref("inputStyle", "underline")} delay={0.4}>
+          <div className="w-full max-w-[220px] space-y-3 px-2">
+            <div>
+              <div className="text-[11px] font-medium mb-1 text-muted-foreground">Email</div>
+              <div className="px-1 py-2 text-xs border-b-2 preview-border">user@example.com</div>
+            </div>
+            <div>
+              <div className="text-[11px] font-medium mb-1 text-muted-foreground">Password</div>
+              <div className="px-1 py-2 text-xs border-b-2 preview-border text-muted-foreground">{'••••••••'}</div>
+            </div>
+            <div className="px-4 py-2 text-xs font-medium text-white rounded-lg text-center" style={{ background: primary }}>Sign In</div>
+          </div>
+        </ABCard>
+      </div>
+    </div>
+  );
+}
+
+function HeaderStyleStep({ primary, prefs, onPref }: StepCtx) {
+  return (
+    <div>
+      <AnimatedHeading text="What's your header vibe?" sub="The first thing users see. It sets the entire mood." />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ABCard label="Glass & Floating" description="Backdrop blur, transparent, modern" selected={prefs.headerStyle === "glass"} onClick={() => onPref("headerStyle", "glass")} delay={0.3}>
+          <div className="w-full">
+            <div className="flex items-center justify-between px-4 py-3 rounded-xl border preview-border" style={{ background: "rgba(255,255,255,0.6)", backdropFilter: "blur(8px)" }}>
+              <div className="flex items-center gap-2"><div className="h-5 w-5 rounded-md bg-foreground/80" /><span className="text-xs font-bold">acme</span></div>
+              <div className="flex gap-3 text-[10px] text-muted-foreground"><span>Products</span><span>Docs</span></div>
+              <div className="px-3 py-1 text-[10px] font-medium text-white rounded-md" style={{ background: primary }}>Sign Up</div>
+            </div>
+            <div className="mt-3 px-4"><div className="h-3 w-32 rounded bg-foreground/10" /><div className="mt-2 h-2 w-48 rounded bg-foreground/5" /></div>
+          </div>
+        </ABCard>
+        <ABCard label="Solid & Bold" description="Solid dark background, high contrast" selected={prefs.headerStyle === "solid"} onClick={() => onPref("headerStyle", "solid")} delay={0.4}>
+          <div className="w-full">
+            <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-foreground text-background">
+              <div className="flex items-center gap-2"><div className="h-5 w-5 rounded-md bg-background/20" /><span className="text-xs font-bold">acme</span></div>
+              <div className="flex gap-3 text-[10px] opacity-60"><span>Products</span><span>Docs</span></div>
+              <div className="px-3 py-1 text-[10px] font-medium rounded-md bg-background text-foreground">Sign Up</div>
+            </div>
+            <div className="mt-3 px-4"><div className="h-3 w-32 rounded bg-foreground/10" /><div className="mt-2 h-2 w-48 rounded bg-foreground/5" /></div>
+          </div>
+        </ABCard>
+      </div>
+    </div>
+  );
+}
+
+function CardStyleStep({ primary, prefs, onPref }: StepCtx) {
+  return (
+    <div>
+      <AnimatedHeading text="How should cards be defined?" sub="Cards contain your main content blocks." />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ABCard label="Subtle Border" description="Thin border, no shadow, flat" selected={prefs.cardStyle === "bordered"} onClick={() => onPref("cardStyle", "bordered")} delay={0.3}>
+          <div className="w-48 rounded-xl border preview-border p-4 bg-background">
+            <div className="h-2.5 w-20 rounded bg-foreground/70 mb-3" />
+            <div className="h-2 w-full rounded bg-muted-foreground/15 mb-1.5" />
+            <div className="h-2 w-3/4 rounded bg-muted-foreground/15 mb-4" />
+            <div className="h-7 w-20 rounded-md" style={{ background: `${primary}15` }} />
+          </div>
+        </ABCard>
+        <ABCard label="Elevated Shadow" description="Shadow depth, floating, layered" selected={prefs.cardStyle === "elevated"} onClick={() => onPref("cardStyle", "elevated")} delay={0.4}>
+          <div className="w-48 rounded-xl p-4 bg-card shadow-xl shadow-black/10 dark:shadow-white/5">
+            <div className="h-2.5 w-20 rounded bg-foreground/70 mb-3" />
+            <div className="h-2 w-full rounded bg-muted-foreground/15 mb-1.5" />
+            <div className="h-2 w-3/4 rounded bg-muted-foreground/15 mb-4" />
+            <div className="h-7 w-20 rounded-md" style={{ background: `${primary}15` }} />
+          </div>
+        </ABCard>
+      </div>
+    </div>
+  );
+}
+
+function DepthStyleStep({ prefs, onPref }: StepCtx) {
+  return (
+    <div>
+      <AnimatedHeading text="Flat or elevated?" sub="This controls shadows across every card, dropdown, and dialog." />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ABCard label="Flat & Clean" description="Borders only, no shadows" selected={prefs.depthStyle === "flat"} onClick={() => onPref("depthStyle", "flat")} delay={0.3}>
+          <div className="flex gap-3">
+            <div className="w-32 rounded-xl border preview-border p-3 bg-background">
+              <div className="h-2 w-16 rounded bg-foreground/70 mb-2" /><div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" /><div className="h-1.5 w-3/4 rounded bg-muted-foreground/15" />
+            </div>
+            <div className="w-32 rounded-xl border preview-border p-3 bg-background">
+              <div className="h-2 w-12 rounded bg-foreground/70 mb-2" /><div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" /><div className="h-1.5 w-2/3 rounded bg-muted-foreground/15" />
+            </div>
+          </div>
+        </ABCard>
+        <ABCard label="Layered & Rich" description="Multi-layer shadows, floating feel" selected={prefs.depthStyle === "layered"} onClick={() => onPref("depthStyle", "layered")} delay={0.4}>
+          <div className="flex gap-3">
+            <div className="w-32 rounded-xl p-3 bg-card shadow-xl shadow-black/10 dark:shadow-white/5">
+              <div className="h-2 w-16 rounded bg-foreground/70 mb-2" /><div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" /><div className="h-1.5 w-3/4 rounded bg-muted-foreground/15" />
+            </div>
+            <div className="w-32 rounded-xl p-3 bg-card shadow-lg shadow-black/8 dark:shadow-white/3">
+              <div className="h-2 w-12 rounded bg-foreground/70 mb-2" /><div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" /><div className="h-1.5 w-2/3 rounded bg-muted-foreground/15" />
+            </div>
+          </div>
+        </ABCard>
+      </div>
+    </div>
+  );
+}
+
+function DensityStep({ primary, prefs, onPref }: StepCtx) {
+  return (
+    <div>
+      <AnimatedHeading text="Compact or spacious?" sub="This controls padding, gaps, and whitespace across all components." />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ABCard label="Compact & Dense" description="Tight padding, data-focused" selected={prefs.density === "compact"} onClick={() => onPref("density", "compact")} delay={0.3}>
+          <div className="w-full max-w-[240px] rounded-lg border preview-border overflow-hidden bg-background">
+            <div className="px-2.5 py-1.5 border-b preview-border text-[10px] font-medium text-muted-foreground" style={{ background: `${primary}06` }}>Notifications</div>
+            {["Deployment successful", "New comment on PR #42", "Build failed: main"].map((t, i) => (
+              <div key={i} className="px-2.5 py-1.5 text-[10px] border-b last:border-0 preview-border flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full" style={{ background: i === 2 ? "#ef4444" : primary }} />{t}
+              </div>
+            ))}
+          </div>
+        </ABCard>
+        <ABCard label="Open & Spacious" description="Generous whitespace, breathing room" selected={prefs.density === "spacious"} onClick={() => onPref("density", "spacious")} delay={0.4}>
+          <div className="w-full max-w-[240px] rounded-xl border preview-border overflow-hidden bg-background">
+            <div className="px-4 py-3 border-b preview-border text-[10px] font-medium text-muted-foreground" style={{ background: `${primary}06` }}>Notifications</div>
+            {["Deployment successful", "New comment on PR #42", "Build failed: main"].map((t, i) => (
+              <div key={i} className="px-4 py-3 text-[10px] border-b last:border-0 preview-border flex items-center gap-3">
+                <div className="h-2 w-2 rounded-full" style={{ background: i === 2 ? "#ef4444" : primary }} />{t}
+              </div>
+            ))}
+          </div>
+        </ABCard>
+      </div>
+    </div>
+  );
+}
+
+function SaturationStep({ primary, prefs, onPref, overrides }: StepCtx) {
+  const effective = overrides.primaryColor || primary;
+  return (
+    <div>
+      <AnimatedHeading text="Muted or vivid?" sub="This controls the intensity of your color palette." />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ABCard label="Muted & Soft" description="Desaturated palette, calm" selected={prefs.saturation === "muted"} onClick={() => onPref("saturation", "muted")} delay={0.3}>
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex gap-2">
+              {["#8b9fad", "#9db5a0", "#b5a08b", "#a08bb5", "#8badb5"].map((c, i) => (
+                <div key={i} className="h-10 w-10 rounded-lg" style={{ background: c }} />
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <div className="px-4 py-1.5 text-[10px] font-medium text-white rounded-md" style={{ background: "#7a8e9a" }}>Button</div>
+              <div className="px-3 py-1.5 text-[10px] rounded-md" style={{ background: "#7a8e9a20", color: "#7a8e9a" }}>Badge</div>
+            </div>
+          </div>
+        </ABCard>
+        <ABCard label="Vivid & Bold" description="High saturation, energetic" selected={prefs.saturation === "vivid"} onClick={() => onPref("saturation", "vivid")} delay={0.4}>
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex gap-2">
+              {["#2563eb", "#16a34a", "#ea580c", "#9333ea", "#0891b2"].map((c, i) => (
+                <div key={i} className="h-10 w-10 rounded-lg" style={{ background: c }} />
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <div className="px-4 py-1.5 text-[10px] font-medium text-white rounded-md" style={{ background: "#2563eb" }}>Button</div>
+              <div className="px-3 py-1.5 text-[10px] rounded-md" style={{ background: "#2563eb20", color: "#2563eb" }}>Badge</div>
+            </div>
+          </div>
+        </ABCard>
+      </div>
+    </div>
+  );
+}
+
+function ColorStep({ primary, overrides, onOverride }: StepCtx) {
+  const effective = overrides.primaryColor || primary;
+  const scale = generateColorScale(effective);
+  const COLORS = [
+    { hex: "#000000", name: "Black" }, { hex: "#171717", name: "Zinc" },
+    { hex: "#2563eb", name: "Blue" }, { hex: "#6366f1", name: "Indigo" },
+    { hex: "#7c3aed", name: "Violet" }, { hex: "#a855f7", name: "Purple" },
+    { hex: "#ec4899", name: "Pink" }, { hex: "#ef4444", name: "Red" },
+    { hex: "#f97316", name: "Orange" }, { hex: "#22c55e", name: "Green" },
+    { hex: "#06b6d4", name: "Cyan" }, { hex: "#0ea5e9", name: "Sky" },
+  ];
+  return (
+    <div>
+      <AnimatedHeading text="Pick your brand color" sub="This drives buttons, links, focus rings, and accents." />
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mt-8 grid grid-cols-4 gap-3 sm:grid-cols-6">
+        {COLORS.map((c) => (
+          <button key={c.hex} onClick={() => onOverride({ primaryColor: c.hex })}
+            className={`group flex flex-col items-center gap-2 rounded-xl p-3 transition-all ${effective === c.hex ? "bg-muted ring-2 ring-foreground ring-offset-2 ring-offset-background" : "hover:bg-muted/50"}`}>
+            <div className="h-12 w-12 rounded-xl shadow-sm transition-transform group-hover:scale-110" style={{ background: c.hex }} />
+            <span className="text-xs font-medium">{c.name}</span>
+          </button>
+        ))}
+      </motion.div>
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mt-6 flex items-center gap-3">
+        <input type="color" value={effective} onChange={(e) => onOverride({ primaryColor: e.target.value })} className="h-10 w-10 cursor-pointer rounded-lg border-0 p-0" />
+        <Input value={effective} onChange={(e) => { if (/^#[0-9a-fA-F]{0,6}$/.test(e.target.value)) onOverride({ primaryColor: e.target.value }); }} className="w-32 font-mono" placeholder="#000000" />
+        <span className="text-xs text-muted-foreground">or pick custom</span>
+      </motion.div>
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mt-6 flex overflow-hidden rounded-xl border border-border/40 dark:border-border">
+        {Object.entries(scale).map(([stop, hex]) => (
+          <div key={stop} className="flex-1 py-6 sm:py-8 text-center text-[10px] sm:text-xs font-mono transition-colors" style={{ background: hex, color: isLight(hex) ? "#000" : "#fff" }}>
+            {stop}
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+function RadiusStep({ primary, overrides, onOverride }: StepCtx) {
+  const radius = overrides.borderRadius || "8px";
+  const effective = overrides.primaryColor || primary;
+  const OPTIONS = [
+    { value: "0px", label: "Sharp", desc: "No rounding" },
+    { value: "4px", label: "Tight", desc: "Subtle" },
+    { value: "8px", label: "Medium", desc: "Balanced" },
+    { value: "12px", label: "Soft", desc: "Friendly" },
+    { value: "9999px", label: "Pill", desc: "Full round" },
+  ];
+  return (
+    <div>
+      <AnimatedHeading text="Choose your corner style" sub="Sharp is technical, round is friendly." />
+      <div className="mt-8 grid grid-cols-3 gap-3 sm:grid-cols-5">
+        {OPTIONS.map((r, i) => (
+          <motion.button key={r.value} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.06 }}
+            onClick={() => onOverride({ borderRadius: r.value })}
+            className={`flex flex-col items-center rounded-xl border p-3 sm:p-4 transition-all ${radius === r.value ? "border-foreground bg-foreground text-background" : "border-border hover:border-foreground/30"}`}>
+            <div className="mb-2 sm:mb-3 h-12 w-12 sm:h-14 sm:w-14 border-2 border-current opacity-40" style={{ borderRadius: r.value }} />
+            <div className="text-xs font-medium">{r.label}</div>
+            <div className="text-[11px] opacity-60">{r.desc}</div>
+          </motion.button>
+        ))}
+      </div>
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mt-8 flex items-center gap-4 justify-center">
+        <div className="px-5 py-2 text-sm font-medium text-white" style={{ background: effective, borderRadius: radius, color: contrastForeground(effective) }}>Button</div>
+        <div className="px-4 py-2 text-sm border preview-border" style={{ borderRadius: radius }}>Input</div>
+        <div className="px-3 py-1 text-xs font-medium" style={{ background: `${effective}15`, color: effective, borderRadius: radius }}>Badge</div>
+      </motion.div>
+    </div>
+  );
+}
+
+function DarkModeStep({ overrides, onOverride }: StepCtx) {
+  return (
+    <div>
+      <AnimatedHeading text="One last thing" sub="Should we generate dark mode tokens?" />
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mt-8 grid gap-4 sm:grid-cols-2">
+        <button onClick={() => onOverride({ darkMode: true })}
+          className={`flex flex-col items-center rounded-2xl border-2 p-8 transition-all ${overrides.darkMode ? "border-foreground shadow-xl" : "border-border/40 hover:border-border dark:border-border"}`}>
+          <div className="mb-4 h-24 w-40 rounded-xl bg-zinc-900 p-3"><div className="h-2 w-12 rounded bg-white/70 mb-2" /><div className="h-1.5 w-full rounded bg-white/20 mb-1" /><div className="h-1.5 w-3/4 rounded bg-white/20" /></div>
+          <div className="text-sm font-semibold">Yes, include dark mode</div>
+          <div className="text-xs text-muted-foreground mt-1">Generate .dark CSS variables</div>
+        </button>
+        <button onClick={() => onOverride({ darkMode: false })}
+          className={`flex flex-col items-center rounded-2xl border-2 p-8 transition-all ${!overrides.darkMode ? "border-foreground shadow-xl" : "border-border/40 hover:border-border dark:border-border"}`}>
+          <div className="mb-4 h-24 w-40 rounded-xl bg-white border p-3" style={{ borderColor: "#e5e7eb" }}><div className="h-2 w-12 rounded bg-zinc-800 mb-2" /><div className="h-1.5 w-full rounded bg-zinc-200 mb-1" /><div className="h-1.5 w-3/4 rounded bg-zinc-200" /></div>
+          <div className="text-sm font-semibold">Light only</div>
+          <div className="text-xs text-muted-foreground mt-1">Keep it simple</div>
+        </button>
+      </motion.div>
+    </div>
+  );
+}
+
+/* ── Result Screen ──────────────────────────────────────── */
+
+function ResultStep({ code, refName }: { code: string; refName: string }) {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    await navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  return (
+    <div className="flex flex-col items-center text-center min-h-[60vh] justify-center">
+      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", damping: 12, stiffness: 200 }} className="mb-6">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-foreground">
+          <Check className="h-8 w-8 text-background" />
+        </div>
+      </motion.div>
+      <AnimatedHeading
+        text="Survey complete!"
+        sub={`Based on ${refName}. Paste this code in your terminal.`}
+      />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="mt-8 w-full max-w-xl"
+      >
+        <div className="relative rounded-xl border border-border bg-muted/30 p-4">
+          <pre className="text-xs font-mono break-all whitespace-pre-wrap text-left leading-relaxed select-all">
+            {code}
+          </pre>
+          <button
+            onClick={copy}
+            className="absolute top-3 right-3 flex items-center gap-1.5 rounded-lg bg-foreground px-3 py-1.5 text-xs font-medium text-background transition-all hover:opacity-90"
+          >
+            {copied ? <CheckCheck className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+            {copied ? "Copied!" : "Copy"}
+          </button>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+/* ── Main SurveyWizard ──────────────────────────────────── */
+
+const STEP_LABELS = [
+  "Intro", "Typography", "Buttons", "Inputs", "Header",
+  "Cards", "Depth", "Density", "Saturation", "Color", "Radius", "Dark Mode", "Result",
+];
+
+export function SurveyWizard({
+  detail,
+  refName,
+  onBack,
+}: {
+  detail: RefDetail;
+  refName: string;
+  onBack: () => void;
+}) {
+  const [step, setStep] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const [overrides, setOverrides] = useState<Overrides>({
+    primaryColor: detail.primary,
+    fontFamily: "",
+    headingWeight: "",
+    borderRadius: detail.radius.replace(/[-–].*/, "").trim(),
+    darkMode: false,
+  });
+
+  const [prefs, setPrefs] = useState<Record<string, string>>({
+    typographyChar: "",
+    buttonStyle: "sharp",
+    inputStyle: "bordered",
+    headerStyle: "glass",
+    cardStyle: "bordered",
+    depthStyle: "flat",
+    density: "spacious",
+    saturation: "vivid",
+  });
+
+  useEffect(() => { scrollRef.current?.scrollTo(0, 0); }, [step]);
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
+
+  const onOverride = useCallback((partial: Partial<Overrides>) => {
+    setOverrides((o) => ({ ...o, ...partial }));
+  }, []);
+
+  const onPref = useCallback((key: string, value: string) => {
+    setPrefs((p) => ({ ...p, [key]: value }));
+  }, []);
+
+  const primary = overrides.primaryColor || detail.primary;
+
+  const ctx: StepCtx = {
+    primary,
+    prefs,
+    onPref,
+    overrides,
+    onOverride,
+    border: detail.border || "#e5e7eb",
+  };
+
+  // Build result code
+  const resultCode = encodeSurveyResult({
+    refId: detail.id,
+    overrides,
+    preferences: {
+      mood: "",
+      typographyChar: prefs.typographyChar,
+      buttonStyle: prefs.buttonStyle,
+      inputStyle: prefs.inputStyle,
+      headerStyle: prefs.headerStyle,
+      cardStyle: prefs.cardStyle,
+      depthStyle: prefs.depthStyle,
+      density: prefs.density,
+      saturation: prefs.saturation,
+    },
+    components: ["button", "input", "table", "card", "badge", "tabs", "dialog"],
+  });
+
+  const steps = [
+    // 0: Intro
+    <div key="intro" className="flex flex-col items-center justify-center text-center min-h-[60vh]">
+      <motion.div initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", damping: 12, stiffness: 200 }} className="mb-8">
+        <img src="/logo.png" alt="OMD" className="h-16 object-contain block dark:hidden" />
+        <img src="/logo-white.png" alt="OMD" className="h-16 object-contain hidden dark:block" />
+      </motion.div>
+      <AnimatedHeading text="Design Preference Survey" sub={`Let's discover your style preferences for ${refName}.`} />
+      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} className="mt-6 text-sm text-muted-foreground">
+        11 quick choices — takes about 60 seconds
+      </motion.p>
+    </div>,
+    // 1: Typography character
+    <TypographyCharStep key="typo" value={prefs.typographyChar as any || null} onChange={(v) => onPref("typographyChar", v)} primary={primary} />,
+    // 3–12: Existing A/B steps
+    <ButtonStyleStep key="btn" {...ctx} />,
+    <InputStyleStep key="inp" {...ctx} />,
+    <HeaderStyleStep key="hdr" {...ctx} />,
+    <CardStyleStep key="card" {...ctx} />,
+    <DepthStyleStep key="depth" {...ctx} />,
+    <DensityStep key="density" {...ctx} />,
+    <SaturationStep key="sat" {...ctx} />,
+    <ColorStep key="clr" {...ctx} />,
+    <RadiusStep key="rad" {...ctx} />,
+    <DarkModeStep key="dm" {...ctx} />,
+    // 13: Result
+    <ResultStep key="result" code={resultCode} refName={refName} />,
+  ];
+
+  const totalSteps = steps.length;
+  const isLast = step === totalSteps - 1;
+  const isFirst = step === 0;
+  const progress = (step / (totalSteps - 1)) * 100;
+
+  const goNext = () => { setDirection(1); setStep((s) => Math.min(s + 1, totalSteps - 1)); };
+  const goPrev = () => { setDirection(-1); setStep((s) => Math.max(s - 1, 0)); };
+
+  return (
+    <div className="fixed inset-0 z-50 flex flex-col bg-background">
+      {/* Progress bar */}
+      <div className="h-1 w-full bg-muted">
+        <motion.div className="h-full bg-foreground" animate={{ width: `${progress}%` }} transition={{ duration: 0.3, ease: "easeOut" }} />
+      </div>
+
+      {/* Top bar */}
+      <div className="flex h-14 items-center justify-between px-4 sm:px-6 border-b border-border/40">
+        <button onClick={onBack} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors min-w-[72px]">
+          <ArrowLeft className="h-4 w-4" /> Back
+        </button>
+        <span className="text-xs text-muted-foreground text-center">
+          {step + 1} / {totalSteps} &middot; {STEP_LABELS[step]}
+        </span>
+        <div className="flex justify-end min-w-[72px]">
+          <ThemeToggle />
+        </div>
+      </div>
+
+      {/* Content */}
+      <div ref={scrollRef} className="flex-1 overflow-y-auto">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-12">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={step}
+              custom={direction}
+              initial={{ opacity: 0, x: direction * 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction * -60 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              {steps[step]}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      {!isLast && (
+        <div className="border-t border-border/40 px-4 sm:px-6 py-3 sm:py-4 safe-bottom">
+          <div className="mx-auto flex max-w-3xl items-center justify-between">
+            <button onClick={goPrev} disabled={isFirst}
+              className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all disabled:opacity-0 hover:bg-muted">
+              <ArrowLeft className="h-4 w-4" /> Back
+            </button>
+
+            <div className="hidden sm:flex gap-1">
+              {Array.from({ length: totalSteps }).map((_, i) => (
+                <button key={i} onClick={() => { setDirection(i > step ? 1 : -1); setStep(i); }} className="flex items-center justify-center h-8 w-4">
+                  <span className={`block h-1.5 rounded-full transition-all ${
+                    i === step ? "w-6 bg-foreground" : i < step ? "w-1.5 bg-foreground/40" : "w-1.5 bg-muted-foreground/20"
+                  }`} />
+                </button>
+              ))}
+            </div>
+
+            <button onClick={goNext}
+              className="flex items-center gap-2 rounded-full bg-primary px-4 sm:px-6 py-2.5 text-sm font-medium text-primary-foreground whitespace-nowrap transition-all hover:opacity-90 shadow-md shadow-primary/20">
+              {isFirst ? "Let's Go" : "Next"} <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

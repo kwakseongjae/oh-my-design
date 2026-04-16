@@ -5,6 +5,7 @@ dist/
 .DS_Store
 .env
 .env.local
+.factory/
 
 # Generated output files (project root only)
 /DESIGN.md
