@@ -474,11 +474,6 @@ export function QuizWizard({ onComplete }: { onComplete: (result: QuizResult) =>
             <img src="/logo.png" alt="OMD" className="h-5 object-contain block dark:hidden" />
             <img src="/logo-white.png" alt="OMD" className="h-5 object-contain hidden dark:block" />
           </a>
-          {!isFirst && (
-            <button onClick={goPrev} className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
-              <ArrowLeft className="h-4 w-4" /> Back
-            </button>
-          )}
         </div>
         <span className="text-xs text-muted-foreground">{step}/{totalSteps - 1}</span>
         <div className="flex justify-end min-w-[60px]">
