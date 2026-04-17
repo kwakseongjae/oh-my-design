@@ -6,6 +6,13 @@
  * doesn't expose explicit values.
  */
 
+export interface FontMention {
+  /** Raw name as it appeared in DESIGN.md (e.g., "Helvetica Neue"). */
+  raw: string;
+  /** Inferred role: "primary" | "mono" | "display" | "serif" | "fallback" | "icon" */
+  role: string;
+}
+
 export interface TypographyTier {
   label: string;        // "Display XXL", "Heading XL", etc.
   role: string;         // "Display", "Heading 1", "Heading 2", "Body", "Small", "Caption", "Smallest"
@@ -34,6 +41,7 @@ export interface ParsedTokens {
     weights: number[];           // sorted unique font-weights observed in DESIGN.md
     sizes: number[];             // sorted unique font-sizes (px) observed
     hierarchy: TypographyTier[]; // canonical 7-tier hierarchy derived from extracted sizes/weights
+    fonts: FontMention[];        // ALL fonts mentioned in §3 with role inference
   };
   /** Per-component-type radius derived from the brand's full radius value.
    *  Buttons/inputs keep full radius (pill OK). Cards/dialogs cap at 16px.
@@ -62,6 +70,53 @@ const DEFAULT_SHADOWS = [
   { name: "Floating", value: "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05)" },
   { name: "Modal", value: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" },
 ];
+
+/** Extract every font name mentioned in §3 with role inference.
+ *  Looks at: **Primary**: `...`, **Monospace**: `...`, **Display**: `...`,
+ *  font-family declarations, and capitalized backticked tokens.
+ *  Filters hex colors, CSS keywords, and weight-like strings. */
+function extractFontMentions(md: string): FontMention[] {
+  const sec3m = md.match(/## 3\. Typography[\s\S]*?(?=## 4\.)/i);
+  if (!sec3m) return [];
+  const sec3 = sec3m[0];
+  const seen = new Set<string>();
+  const out: FontMention[] = [];
+  const push = (raw: string, role: string) => {
+    const cleaned = raw.replace(/['"]/g, "").replace(/[;].*/, "").trim();
+    if (!cleaned || cleaned.length > 50) return;
+    if (/^#[0-9a-f]{3,8}$/i.test(cleaned)) return;
+    if (/^(serif|sans-serif|monospace|var|inherit|var\(|none)$/i.test(cleaned)) return;
+    const key = cleaned.toLowerCase();
+    if (seen.has(key)) return;
+    seen.add(key);
+    out.push({ raw: cleaned, role });
+  };
+
+  // 1. **Primary** / **Monospace** / **Display** / **Serif** etc.
+  for (const m of sec3.matchAll(/\*\*(Primary|Monospace|Display|Mono|Serif|Sans|Heading|Body)[^*]*\*\*:?\s*`([^`]+)`/gi)) {
+    const role = m[1].toLowerCase().includes("mono") ? "mono"
+      : m[1].toLowerCase().includes("display") ? "display"
+      : m[1].toLowerCase().includes("serif") ? "serif"
+      : "primary";
+    m[2].split(",").forEach((f) => push(f.trim(), role));
+  }
+
+  // 2. font-family declarations
+  for (const m of sec3.matchAll(/font-family:\s*([^;\n]+)/gi)) {
+    m[1].split(",").forEach((f) => push(f.trim(), "fallback"));
+  }
+
+  // 3. Backticked capitalized font names (heuristic)
+  for (const m of sec3.matchAll(/`([A-Z][A-Za-z][\w\s\-]{2,40})`/g)) {
+    const name = m[1].trim();
+    if (name.length > 35) continue;
+    if (/^(?:Display|Heading|Body|Caption|Small|Large|Medium|Regular|Bold|Light|Italic|Mono|Sans|Serif|Variable|Variable Font|Variable Light|Variable Medium|Variable Bold|Pro|Pro Medium|Pro SemiBold|Pro Italic|Bold Italic|Italic|XS|S|M|L|XL|XXL|UI|UI Variable|Inter Placeholder|Inter Fallback|Fallback|Subhead|Hero|Mobile|Roman|Light Italic|Medium Italic|SemiBold|ExtraBold|Black|Thin|Header|NORMAL|0|RegularXXS|XXS|Open Source|Open|Source)$/i.test(name)) continue;
+    if (/^[0-9]/.test(name)) continue;
+    push(name, "primary");
+  }
+
+  return out.slice(0, 12); // cap to keep card grids reasonable
+}
 
 function capRadius(radius: string, maxPx: number): string {
   const m = radius.match(/^(\d+)/);
@@ -282,6 +337,17 @@ export function extractTokens(detail: {
     typography: (() => {
       const sizes = extractFontSizes(md);
       const hasCJK = /Hiragino|Meiryo|PingFang|Noto Sans (?:JP|KR|TC|SC)|MS Gothic|Heiti|微軟|黑體|ヒラギノ/i.test(detail.fontFamily) || /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af]/.test(md);
+      const fonts = extractFontMentions(md);
+      // If parser missed the API-provided primary font, prepend it
+      if (detail.fontFamily) {
+        const apiPrimary = detail.fontFamily.split(",")[0].replace(/['"]/g, "").trim();
+        if (apiPrimary && !fonts.some((f) => f.raw.toLowerCase() === apiPrimary.toLowerCase())) {
+          fonts.unshift({ raw: apiPrimary, role: "primary" });
+        }
+      }
+      if (detail.mono && !fonts.some((f) => f.raw.toLowerCase() === detail.mono!.toLowerCase())) {
+        fonts.push({ raw: detail.mono, role: "mono" });
+      }
       return {
         family: detail.fontFamily,
         mono: detail.mono,
@@ -289,6 +355,7 @@ export function extractTokens(detail: {
         weights: extractWeights(md),
         sizes,
         hierarchy: buildHierarchy(sizes, detail.headingWeight, hasCJK),
+        fonts,
       };
     })(),
     radii: {

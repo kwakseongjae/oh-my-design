@@ -7,11 +7,21 @@
 import type { FontInfo, FontLicense } from "@/lib/font-registry";
 
 const LICENSE_STYLES: Record<FontLicense, { bg: string; color: string; label: string }> = {
-  OFL:           { bg: "rgba(16, 185, 129, 0.12)", color: "#047857", label: "Open · OFL" },
-  "Apache 2.0":  { bg: "rgba(16, 185, 129, 0.12)", color: "#047857", label: "Open · Apache 2.0" },
-  Proprietary:   { bg: "rgba(245, 158, 11, 0.12)", color: "#b45309", label: "Commercial" },
-  System:        { bg: "rgba(107, 114, 128, 0.12)", color: "#4b5563", label: "System" },
-  Mixed:         { bg: "rgba(99, 102, 241, 0.12)", color: "#4338ca", label: "Mixed" },
+  OFL:                  { bg: "rgba(16, 185, 129, 0.12)", color: "#047857", label: "Open · OFL" },
+  "Apache 2.0":         { bg: "rgba(16, 185, 129, 0.12)", color: "#047857", label: "Open · Apache 2.0" },
+  Proprietary:          { bg: "rgba(245, 158, 11, 0.12)", color: "#b45309", label: "Commercial" },
+  "Brand-proprietary":  { bg: "rgba(239, 68, 68, 0.12)",  color: "#b91c1c", label: "Brand-only" },
+  System:               { bg: "rgba(107, 114, 128, 0.12)", color: "#4b5563", label: "System" },
+  Mixed:                { bg: "rgba(99, 102, 241, 0.12)", color: "#4338ca", label: "Mixed" },
+};
+
+const ROLE_LABELS: Record<string, string> = {
+  primary: "Primary",
+  mono: "Monospace",
+  display: "Display",
+  serif: "Serif",
+  fallback: "Fallback",
+  icon: "Icon",
 };
 
 function ExternalIcon() {
@@ -33,20 +43,26 @@ function ExternalIcon() {
   );
 }
 
-export function FontCard({ font, fontFamilyForRender }: { font: FontInfo; fontFamilyForRender?: string }) {
+export function FontCard({ font, role, fontFamilyForRender }: { font: FontInfo; role?: string; fontFamilyForRender?: string }) {
   const license = LICENSE_STYLES[font.license];
   return (
-    <div className="rounded-xl bg-card p-4 ring-1 ring-border/40 flex flex-col gap-3 min-h-[148px]">
-      {/* Name rendered in its own font when possible */}
+    <div className="rounded-xl bg-card p-4 ring-1 ring-border/40 flex flex-col gap-3 min-h-[160px]">
+      {/* Role label */}
+      {role && (
+        <div className="text-[9px] font-mono uppercase tracking-wider text-muted-foreground">
+          {ROLE_LABELS[role] ?? role}
+        </div>
+      )}
+      {/* Name (system-ui — no brand-font rendering attempt; we just label what it IS) */}
       <div>
         <div
-          className="text-2xl font-semibold leading-tight truncate"
-          style={{ fontFamily: fontFamilyForRender ?? `"${font.name}", system-ui, sans-serif` }}
+          className="text-xl font-semibold leading-tight"
+          style={{ fontFamily: fontFamilyForRender ?? "system-ui, sans-serif" }}
           title={font.name}
         >
           {font.name}
         </div>
-        <div className="mt-1 flex flex-wrap items-center gap-1.5">
+        <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
           <span
             className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium"
             style={{ background: license.bg, color: license.color }}
@@ -81,7 +97,7 @@ export function FontCard({ font, fontFamilyForRender }: { font: FontInfo; fontFa
           <ExternalIcon />
         </a>
       ) : (
-        <div className="text-[11px] text-muted-foreground italic">No source registered.</div>
+        <div className="text-[11px] text-muted-foreground italic">Not publicly distributed.</div>
       )}
     </div>
   );

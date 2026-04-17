@@ -19,8 +19,8 @@
  */
 
 import { applyOverrides, type ParsedTokens, type PreviewOverrides } from "@/lib/extract-tokens";
-import { parseFontStack, lookupFont } from "@/lib/font-registry";
-import { FontStackGrid, FontCard } from "./font-card";
+import { lookupFont } from "@/lib/font-registry";
+import { FontCard } from "./font-card";
 
 function contrastFg(hex: string): string {
   const m = hex.replace("#", "").match(/.{2}/g);
@@ -127,41 +127,27 @@ function ColorsSection({ tokens }: { tokens: ParsedTokens }) {
 /* ─────────── Typography ─────────── */
 function TypographySection({ tokens }: { tokens: ParsedTokens }) {
   const { typography, identity } = tokens;
-  const family = typography.family;
-  const muted = identity.foreground + "99"; // ~60% opacity for muted tiers
+  // Hierarchy renders in system-ui — purpose is to demonstrate scale/weight ratios,
+  // NOT to fake-render brand fonts the user doesn't have installed.
+  const sysFamily = "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+  const muted = identity.foreground + "99";
+
+  // Group fonts by role for clean card display
+  const fonts = typography.fonts;
 
   return (
     <Section title="Typography" kicker="02">
-      {/* Font stack — license-tagged cards with install links */}
+      {/* Hierarchy in system-ui */}
       <div className="rounded-xl bg-card p-6 ring-1 ring-border/40 mb-6">
-        <FontStackGrid stack={family} fonts={parseFontStack(family)} />
-        {typography.mono && (
-          <div className="mt-6 pt-6 border-t border-border/40">
-            <div className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider mb-3">Monospace</div>
-            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-              <FontCard font={lookupFont(typography.mono)} />
-            </div>
+        <div className="flex items-baseline justify-between mb-6 gap-4 flex-wrap">
+          <div>
+            <div className="text-[10px] font-mono text-muted-foreground mb-1">02 / TYPOGRAPHY HIERARCHY</div>
+            <h3 className="text-xl font-bold" style={{ color: identity.foreground }}>Type Scale</h3>
           </div>
-        )}
-        <div className="mt-6 pt-6 border-t border-border/40">
-          <div className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider mb-3">Weights</div>
-          <div className="flex flex-wrap gap-5">
-            {typography.weights.map((w) => (
-              <div key={w} className="flex flex-col gap-1">
-                <span style={{ fontFamily: family, fontWeight: w, fontSize: 32, color: identity.foreground, lineHeight: 1 }}>Aa</span>
-                <span className="text-[10px] font-mono text-muted-foreground text-center">{w}</span>
-              </div>
-            ))}
+          <div className="text-[10px] text-muted-foreground italic max-w-xs text-right">
+            Rendered in system-ui to clearly show scale & weight. See the cards below for the brand's actual fonts.
           </div>
         </div>
-      </div>
-
-      {/* Hierarchy — labeled tiers with spec line under each (awesome-design-md-jp style) */}
-      <div className="rounded-xl bg-card p-6 ring-1 ring-border/40">
-        <div className="text-[10px] font-mono text-muted-foreground mb-1">02 / TYPOGRAPHY</div>
-        <h3 className="text-xl font-bold mb-6" style={{ fontFamily: family, color: identity.foreground }}>
-          Typography Hierarchy
-        </h3>
         <div className="divide-y divide-border/40">
           {typography.hierarchy.map((tier) => {
             const sizeRem = (tier.fontSize / 16).toFixed(3).replace(/\.?0+$/, "");
@@ -169,7 +155,7 @@ function TypographySection({ tokens }: { tokens: ParsedTokens }) {
               <div key={tier.role} className="py-5 first:pt-0 last:pb-0">
                 <div
                   style={{
-                    fontFamily: family,
+                    fontFamily: sysFamily,
                     fontSize: tier.fontSize,
                     fontWeight: tier.fontWeight,
                     lineHeight: tier.lineHeight,
@@ -178,7 +164,7 @@ function TypographySection({ tokens }: { tokens: ParsedTokens }) {
                   }}
                 >
                   {tier.sampleText}
-                  <span className="ml-2 text-[10px] font-medium text-muted-foreground" style={{ fontFamily: family, letterSpacing: "0" }}>
+                  <span className="ml-2 text-[10px] font-medium text-muted-foreground" style={{ fontFamily: sysFamily, letterSpacing: "0" }}>
                     — {tier.label}
                   </span>
                 </div>
@@ -202,6 +188,28 @@ function TypographySection({ tokens }: { tokens: ParsedTokens }) {
             );
           })}
         </div>
+      </div>
+
+      {/* Brand fonts (cards with license + install) */}
+      <div className="rounded-xl bg-card p-6 ring-1 ring-border/40">
+        <div className="flex items-baseline justify-between mb-4 gap-4 flex-wrap">
+          <div>
+            <div className="text-[10px] font-mono text-muted-foreground mb-1">FONTS USED BY THIS BRAND</div>
+            <h3 className="text-xl font-bold" style={{ color: identity.foreground }}>{fonts.length} font{fonts.length !== 1 ? "s" : ""} extracted from DESIGN.md</h3>
+          </div>
+          <div className="text-[10px] text-muted-foreground italic max-w-sm text-right">
+            License + install link per font. Brand-only fonts mean the company uses a custom typeface that isn't publicly available.
+          </div>
+        </div>
+        {fonts.length === 0 ? (
+          <div className="text-sm text-muted-foreground py-6 text-center">No fonts mentioned in §3 Typography of this DESIGN.md.</div>
+        ) : (
+          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+            {fonts.map((mention, i) => (
+              <FontCard key={`${mention.raw}-${i}`} font={lookupFont(mention.raw)} role={mention.role} />
+            ))}
+          </div>
+        )}
       </div>
     </Section>
   );
