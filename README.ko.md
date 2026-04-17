@@ -66,17 +66,14 @@ npx github:kwakseongjae/oh-my-design --config=<YOUR_CONFIG_HASH>
 
 | 카테고리 | 기업 |
 |----------|------|
-| **한국 테크** | Baemin, Kakao, Karrot, Toss |
-| **대만 테크** | Dcard, Pinkoi |
-| **일본 테크** | freee, LINE, Mercari |
 | **AI & LLM** | Claude, Cohere, ElevenLabs, Minimax, Mistral AI, Ollama, OpenCode AI, Replicate, RunwayML, Together AI, VoltAgent, xAI |
-| **디자인 도구** | Figma, Framer, Miro, Webflow, Airtable, Clay |
-| **개발자 도구** | Vercel, Cursor, Expo, Lovable, Raycast, Superhuman, Warp |
-| **생산성** | Notion, Linear, Cal.com, Intercom, Mintlify, Resend, Zapier |
-| **컨슈머 테크** | Apple, Spotify, Uber, Airbnb, Pinterest, NVIDIA, IBM, SpaceX |
-| **핀테크** | Stripe, Coinbase, Kraken, Revolut, Wise |
-| **백엔드 & DevOps** | Supabase, MongoDB, Sentry, PostHog, Hashicorp, ClickHouse, Sanity, Composio |
-| **자동차** | Tesla, BMW, Ferrari, Lamborghini, Renault |
+| **디자인 도구** | Airtable, Clay, Figma, Framer, Miro, Webflow |
+| **개발자 도구** | Cursor, Expo, Lovable, Raycast, Superhuman, Vercel, Warp |
+| **생산성** | Cal.com, freee, Intercom, Linear, Mintlify, Notion, Resend, Zapier |
+| **컨슈머 테크** | Airbnb, Apple, Baemin, Dcard, IBM, Kakao, Karrot, LINE, Mercari, NVIDIA, Pinkoi, Pinterest, SpaceX, Spotify, Uber |
+| **핀테크** | Coinbase, Kraken, Revolut, Stripe, Toss, Wise |
+| **백엔드 & DevOps** | ClickHouse, Composio, Hashicorp, MongoDB, PostHog, Sanity, Sentry, Supabase |
+| **자동차** | BMW, Ferrari, Lamborghini, Renault, Tesla |
 
 ## 기여하기
 

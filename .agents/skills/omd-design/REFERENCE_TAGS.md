@@ -16,7 +16,7 @@ Use this table to match user descriptions to reference candidates. Pick 3-6 refe
 | airbnb | #ff385c | Consumer | warm, inviting, tactile, approachable, cozy, marketplace |
 | airtable | #1b61c9 | Design Tools | clean, sophisticated, precise, structured, enterprise |
 | apple | #0071e3 | Consumer | reductive, precise, cinematic, premium, confident, minimal |
-| baemin | #2AC1BC | Korean | playful, warm, irreverent, appetizing, friendly, cultural |
+| baemin | #2AC1BC | Consumer | playful, warm, irreverent, appetizing, friendly, cultural, korean, food-delivery |
 | bmw | #1c69d4 | Automotive | precise, angular, industrial, authoritative, engineered |
 | cal | #242424 | Productivity | monochrome, bold, architectural, restrained, confident |
 | claude | #c96442 | AI | warm, intellectual, editorial, literary, earthy, trustworthy |
@@ -36,8 +36,8 @@ Use this table to match user descriptions to reference candidates. Pick 3-6 refe
 | hashicorp | #000000 | Backend | enterprise, systematic, authoritative, token-driven, structured |
 | ibm | #0f62fe | Consumer | methodical, corporate, precise, engineered, systematic |
 | intercom | #ff5600 | Productivity | warm, confident, editorial, industrial, customer-service |
-| kakao | #FEE500 | Korean | warm, friendly, functional, personal, sunshine, yellow |
-| karrot | #ff6600 | Korean | warm, approachable, trustworthy, local, energetic, orange |
+| kakao | #FEE500 | Consumer | warm, friendly, functional, personal, sunshine, yellow, korean, messaging, super-app |
+| karrot | #ff6600 | Consumer | warm, approachable, trustworthy, local, energetic, orange, korean, marketplace |
 | kraken | #7132f5 | Fintech | clean, professional, trustworthy, purple, confident, crypto |
 | lamborghini | #FFC000 | Automotive | dark, theatrical, intimidating, nocturnal, luxurious, gold |
 | line | #07b53b | Consumer | green, pill-buttons, editorial, lifestyle, japanese, friendly, oversized-typography |
@@ -71,7 +71,7 @@ Use this table to match user descriptions to reference candidates. Pick 3-6 refe
 | superhuman | #cbb7fb | Developer | luxurious, clean, confident, restrained, premium, lavender |
 | tesla | #3E6AE1 | Automotive | minimal, cinematic, restrained, product-forward, clean |
 | together.ai | #ef2cc1 | AI | soft, airy, optimistic, pastel, light, gradient, pink |
-| toss | #3182f6 | Korean | calm, confident, simple, trustworthy, optimistic, fintech |
+| toss | #3182f6 | Fintech | calm, confident, simple, trustworthy, optimistic, korean, banking |
 | uber | #000000 | Consumer | bold, confident, minimal, efficient, direct, black |
 | vercel | #171717 | Developer | restrained, compressed, engineered, minimal, philosophical |
 | voltagent | #00d992 | Backend | dark, electric, focused, developer, cockpit, engineering |

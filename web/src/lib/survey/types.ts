@@ -424,9 +424,11 @@ const CATEGORIES: Record<string, string> = {
   claude: "AI", cohere: "AI", "mistral.ai": "AI", ollama: "AI", "opencode.ai": "AI", replicate: "AI", "together.ai": "AI", "x.ai": "AI", elevenlabs: "AI", minimax: "AI", runwayml: "AI",
   apple: "Consumer", spotify: "Consumer", uber: "Consumer", airbnb: "Consumer", pinterest: "Consumer", nvidia: "Consumer", ibm: "Consumer", spacex: "Consumer",
   tesla: "Automotive", bmw: "Automotive", ferrari: "Automotive", lamborghini: "Automotive", renault: "Automotive",
-  karrot: "Korean", baemin: "Korean", kakao: "Korean",
-  pinkoi: "Taiwan", dcard: "Taiwan",
-  line: "Japanese", mercari: "Japanese", freee: "Japanese",
+  // Asian refs categorized by industry (country handled separately by COUNTRIES dict in api/references)
+  kakao: "Consumer", baemin: "Consumer", karrot: "Consumer",
+  pinkoi: "Consumer", dcard: "Consumer",
+  line: "Consumer", mercari: "Consumer",
+  freee: "Productivity",
 };
 
 /** Supplementary matching data per company */
@@ -451,6 +453,13 @@ const SUPPLEMENTARY_DATA: Record<string, { saturation: "muted" | "vivid"; typogr
   sentry: { saturation: "vivid", typography: "geometric", darkNative: true },
   tesla: { saturation: "muted", typography: "geometric", darkNative: false },
   bmw: { saturation: "muted", typography: "geometric", darkNative: false },
+  // Taiwan additions
+  pinkoi: { saturation: "vivid", typography: "humanist", darkNative: false },
+  dcard: { saturation: "muted", typography: "geometric", darkNative: false },
+  // Japan additions
+  line: { saturation: "vivid", typography: "humanist", darkNative: false },
+  mercari: { saturation: "vivid", typography: "geometric", darkNative: false },
+  freee: { saturation: "muted", typography: "geometric", darkNative: false },
   // defaults for the rest
 };
 

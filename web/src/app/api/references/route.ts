@@ -22,9 +22,12 @@ const CATEGORIES: Record<string, string> = {
   ibm: 'Consumer Tech', spacex: 'Consumer Tech', semrush: 'Marketing',
   tesla: 'Automotive', bmw: 'Automotive', ferrari: 'Automotive',
   lamborghini: 'Automotive', renault: 'Automotive',
-  karrot: 'Korean Tech', toss: 'Korean Tech', baemin: 'Korean Tech', kakao: 'Korean Tech',
-  pinkoi: 'Taiwan Tech', dcard: 'Taiwan Tech',
-  line: 'Japanese Tech', mercari: 'Japanese Tech', freee: 'Japanese Tech',
+  // Asian companies categorized by industry (country handled by separate filter)
+  toss: 'Fintech',
+  kakao: 'Consumer Tech', baemin: 'Consumer Tech', karrot: 'Consumer Tech',
+  pinkoi: 'Consumer Tech', dcard: 'Consumer Tech',
+  line: 'Consumer Tech', mercari: 'Consumer Tech',
+  freee: 'Productivity',
 };
 
 const COUNTRIES: Record<string, string> = {
@@ -109,8 +112,20 @@ export async function GET() {
       };
     })
     .sort((a, b) => {
+      // Asian markets first (Korea → Taiwan → Japan), then everything else by industry order.
+      // Categories are kept as industry labels (Consumer Tech, Fintech, etc.) — country priority
+      // only affects sort order, not display labels.
+      const countryPriority = ['Korea', 'Taiwan', 'Japan'];
+      const ac = countryPriority.indexOf(a.country);
+      const bc = countryPriority.indexOf(b.country);
+      if (ac !== -1 || bc !== -1) {
+        if (ac === -1) return 1;
+        if (bc === -1) return -1;
+        return ac - bc || a.name.localeCompare(b.name);
+      }
+
       const order = [
-        'Korean Tech', 'Taiwan Tech', 'Japanese Tech', 'AI & LLM', 'Design Tools', 'Developer Tools',
+        'AI & LLM', 'Design Tools', 'Developer Tools',
         'Productivity', 'Consumer Tech', 'Fintech', 'Backend & DevOps',
         'E-commerce', 'Automotive', 'Marketing',
       ];

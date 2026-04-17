@@ -67,18 +67,17 @@ Run the command from your project root, then ask your AI assistant to use `DESIG
 
 | Category | Companies |
 |----------|-----------|
-| **Korean Tech** | Baemin, Kakao, Karrot, Toss |
-| **Taiwan Tech** | Dcard, Pinkoi |
-| **Japanese Tech** | freee, LINE, Mercari |
 | **AI & LLM** | Claude, Cohere, ElevenLabs, Minimax, Mistral AI, Ollama, OpenCode AI, Replicate, RunwayML, Together AI, VoltAgent, xAI |
-| **Design Tools** | Figma, Framer, Miro, Webflow, Airtable, Clay |
-| **Developer Tools** | Vercel, Cursor, Expo, Lovable, Raycast, Superhuman, Warp |
-| **Productivity** | Notion, Linear, Cal.com, Intercom, Mintlify, Resend, Zapier |
-| **Consumer Tech** | Apple, Spotify, Uber, Airbnb, Pinterest, NVIDIA, IBM, SpaceX |
-| **Fintech** | Stripe, Coinbase, Kraken, Revolut, Wise |
-| **Backend & DevOps** | Supabase, MongoDB, Sentry, PostHog, Hashicorp, ClickHouse, Sanity, Composio |
-| **Automotive** | Tesla, BMW, Ferrari, Lamborghini, Renault |
+| **Design Tools** | Airtable, Clay, Figma, Framer, Miro, Webflow |
+| **Developer Tools** | Cursor, Expo, Lovable, Raycast, Superhuman, Vercel, Warp |
+| **Productivity** | Cal.com, freee, Intercom, Linear, Mintlify, Notion, Resend, Zapier |
+| **Consumer Tech** | Airbnb, Apple, Baemin, Dcard, IBM, Kakao, Karrot, LINE, Mercari, NVIDIA, Pinkoi, Pinterest, SpaceX, Spotify, Uber |
+| **Fintech** | Coinbase, Kraken, Revolut, Stripe, Toss, Wise |
+| **Backend & DevOps** | ClickHouse, Composio, Hashicorp, MongoDB, PostHog, Sanity, Sentry, Supabase |
+| **Automotive** | BMW, Ferrari, Lamborghini, Renault, Tesla |
 | **Marketing** | Semrush |
+
+> Use the **country filter** in the builder to browse by region (Korea, Taiwan, Japan, France, Italy, Germany, UK, US).
 
 ## Exported DESIGN.md
 

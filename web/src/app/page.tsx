@@ -112,7 +112,7 @@ export default function Landing() {
           {/* Badge */}
           <div className="animate-fade-up animate-delay-1 mb-8 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur dark:border-border dark:bg-card/60">
             <Zap className="h-3.5 w-3.5 text-yellow-500" />
-            64 companies &middot; zero AI calls &middot; 100% free
+            67 companies &middot; zero AI calls &middot; 100% free
           </div>
 
           {/* Headline */}

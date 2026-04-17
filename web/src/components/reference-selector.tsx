@@ -3,7 +3,44 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { event, trackRef } from "@/lib/gtag";
-import { Search, Loader2, ArrowRight } from "lucide-react";
+import { Loader2, ArrowRight } from "lucide-react";
+
+/** Inline SVG magnifier — bypasses lucide-react@1.8.0 rendering issues. */
+function SearchIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <circle cx="11" cy="11" r="7" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  );
+}
+
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  );
+}
 import { isLight } from "@/lib/core/color";
 import { getLogoUrl, isGitHubLogo } from "@/lib/logos";
 import type { RefListItem } from "@/app/builder/page";
@@ -19,10 +56,7 @@ export function ReferenceSelector({
   loading: boolean;
   initialLoading?: boolean;
 }) {
-  // Country-driven categories (Korean Tech, Taiwan Tech) are surfaced via the
-  // country filter row instead of category pills to avoid redundancy.
-  const HIDDEN_CATEGORIES = new Set(["Korean Tech", "Taiwan Tech"]);
-  const categories = [...new Set(refs.map((r) => r.category))].filter((c) => !HIDDEN_CATEGORIES.has(c));
+  const categories = [...new Set(refs.map((r) => r.category))];
   const countries = [...new Set(refs.map((r) => r.country))].filter(Boolean);
   const [filter, setFilter] = useState("");
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
@@ -33,6 +67,7 @@ export function ReferenceSelector({
     "United States": "🇺🇸",
     Korea: "🇰🇷",
     Taiwan: "🇹🇼",
+    Japan: "🇯🇵",
     France: "🇫🇷",
     Italy: "🇮🇹",
     Germany: "🇩🇪",
@@ -106,14 +141,24 @@ export function ReferenceSelector({
       >
         <div className="flex flex-wrap items-center gap-2">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search..."
               value={filter}
               onChange={(e) => handleSearch(e.target.value)}
-              className="h-9 rounded-lg border border-border/60 bg-card/50 pl-9 pr-3 text-sm outline-none backdrop-blur transition-colors focus:border-foreground/20 focus:bg-card"
+              className="h-10 w-64 rounded-lg border border-border/60 bg-card pl-10 pr-9 text-sm outline-none transition-colors focus:border-foreground/30"
             />
+            <SearchIcon className="pointer-events-none absolute left-3 top-1/2 z-10 h-[18px] w-[18px] -translate-y-1/2 text-foreground/80" />
+            {filter && (
+              <button
+                type="button"
+                onClick={() => setFilter("")}
+                aria-label="Clear search"
+                className="absolute right-2 top-1/2 z-10 flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:bg-foreground hover:text-background"
+              >
+                <XIcon className="h-3.5 w-3.5" />
+              </button>
+            )}
           </div>
           <div className="flex flex-wrap gap-1.5">
             <button
@@ -251,7 +296,7 @@ export function ReferenceSelector({
       {/* True empty state (after loading, with filter applied) */}
       {filtered.length === 0 && !loading && !initialLoading && (
         <div className="flex flex-col items-center py-20 text-center">
-          <Search className="h-10 w-10 text-muted-foreground/30 mb-3" />
+          <SearchIcon className="h-10 w-10 text-muted-foreground/30 mb-3" />
           <div className="text-muted-foreground">No references found</div>
         </div>
       )}
