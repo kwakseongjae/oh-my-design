@@ -96,6 +96,19 @@ Follows the [Google Stitch DESIGN.md format](https://stitch.withgoogle.com/docs/
 
 Plus: Style Preferences, Included Components, Iconography & SVG Guidelines, Document Policies (no-emoji rule).
 
+## Live Preview
+
+Every reference has a comprehensive design system showcase at:
+```
+https://oh-my-design.kr/reference/<id>
+```
+
+Examples: [/reference/stripe](https://oh-my-design.kr/reference/stripe), [/reference/line](https://oh-my-design.kr/reference/line), [/reference/freee](https://oh-my-design.kr/reference/freee).
+
+The route renders 9 sections from each `DESIGN.md` — Hero, Color Palette, Typography, Buttons, Cards, Forms, Badges & Tabs, Spacing & Radius, Elevation — using the same regulation across all 67 references. Per-component radius handling means pill-button systems (LINE, Wise, Spotify) render correctly without capsule-shaped cards or dialogs.
+
+Static `preview.html` / `preview-dark.html` files in older references are **deprecated** in favor of this route. Files are kept for backward compat but new references no longer generate them (see [GitHub Issue #1](https://github.com/kwakseongjae/oh-my-design/issues/1)).
+
 ## Project Structure
 
 ```

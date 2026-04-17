@@ -118,6 +118,85 @@ export function getLogoUrl(id: string, color?: string): string | null {
   return `https://cdn.simpleicons.org/${source.slug}/${c}`;
 }
 
+/** Best-guess favicon URL for a reference id when its primary logo source fails.
+ *  Maps id → public domain. Returns Google's favicon proxy which is cached at
+ *  scale and rarely 504s (unlike GitHub's avatar endpoint). */
+const DOMAIN_OVERRIDES: Record<string, string> = {
+  'linear.app': 'linear.app',
+  'mistral.ai': 'mistral.ai',
+  'opencode.ai': 'opencode.ai',
+  'together.ai': 'together.ai',
+  'x.ai': 'x.ai',
+  cal: 'cal.com',
+  karrot: 'karrotmarket.com',
+  baemin: 'baemin.com',
+  toss: 'toss.im',
+  kakao: 'kakaocorp.com',
+  pinkoi: 'pinkoi.com',
+  dcard: 'dcard.tw',
+  line: 'line.me',
+  mercari: 'mercari.com',
+  freee: 'freee.co.jp',
+  spacex: 'spacex.com',
+  airbnb: 'airbnb.com',
+  ibm: 'ibm.com',
+  nvidia: 'nvidia.com',
+  pinterest: 'pinterest.com',
+  spotify: 'spotify.com',
+  uber: 'uber.com',
+  apple: 'apple.com',
+  tesla: 'tesla.com',
+  bmw: 'bmw.com',
+  ferrari: 'ferrari.com',
+  lamborghini: 'lamborghini.com',
+  renault: 'renault.com',
+  stripe: 'stripe.com',
+  coinbase: 'coinbase.com',
+  revolut: 'revolut.com',
+  wise: 'wise.com',
+  kraken: 'kraken.com',
+  vercel: 'vercel.com',
+  cursor: 'cursor.com',
+  expo: 'expo.dev',
+  lovable: 'lovable.dev',
+  raycast: 'raycast.com',
+  superhuman: 'superhuman.com',
+  warp: 'warp.dev',
+  notion: 'notion.so',
+  intercom: 'intercom.com',
+  resend: 'resend.com',
+  zapier: 'zapier.com',
+  mintlify: 'mintlify.com',
+  figma: 'figma.com',
+  framer: 'framer.com',
+  miro: 'miro.com',
+  webflow: 'webflow.com',
+  airtable: 'airtable.com',
+  clay: 'clay.com',
+  claude: 'anthropic.com',
+  cohere: 'cohere.com',
+  elevenlabs: 'elevenlabs.io',
+  minimax: 'minimax.io',
+  ollama: 'ollama.com',
+  replicate: 'replicate.com',
+  runwayml: 'runwayml.com',
+  voltagent: 'voltagent.dev',
+  supabase: 'supabase.com',
+  mongodb: 'mongodb.com',
+  sentry: 'sentry.io',
+  posthog: 'posthog.com',
+  hashicorp: 'hashicorp.com',
+  clickhouse: 'clickhouse.com',
+  composio: 'composio.dev',
+  sanity: 'sanity.io',
+};
+
+export function getLogoFallbackUrl(id: string): string | null {
+  const domain = DOMAIN_OVERRIDES[id] ?? `${id}.com`;
+  // Google's favicon service — cached, fast, rarely fails. Returns a 32px PNG.
+  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
+}
+
 export function isGitHubLogo(id: string): boolean {
   const t = LOGO_MAP[id]?.type;
   return t === 'github' || t === 'favicon';

@@ -3,7 +3,8 @@
 import { useState, useMemo } from "react";
 import { event } from "@/lib/gtag";
 import { Eye, FileText, Terminal, Copy, Check, ArrowLeft, Download } from "lucide-react";
-import { Preview } from "@/components/preview";
+import { ReferencePreview } from "@/components/reference-preview";
+import { extractTokens } from "@/lib/extract-tokens";
 import { ExportPanel } from "@/components/export-panel";
 import { generateShadcnCss, applyOverridesToMd } from "@/lib/core/generate-css";
 import { generateNpxCommand } from "@/lib/core/config-hash";
@@ -134,7 +135,13 @@ export function PreviewExportView({
 
       {/* Content */}
       {view === "preview" && (
-        <Preview detail={detail} overrides={overrides} onBack={onBack} onComponentsChange={onComponentsChange} />
+        <div className="rounded-xl overflow-hidden border border-border/40 dark:border-border">
+          <ReferencePreview
+            tokens={extractTokens(detail)}
+            overrides={overrides}
+            embedded
+          />
+        </div>
       )}
       {view === "designmd" && (
         <ExportPanel detail={detail} overrides={overrides} components={components} stylePreferences={stylePreferences} />

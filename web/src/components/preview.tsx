@@ -8,6 +8,9 @@ import { generateColorScale, isLight, contrastForeground, generateChartColors } 
 import type { Overrides } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
 import { Button } from "@/components/ui/button";
+import { extractTokens } from "@/lib/extract-tokens";
+import { parseFontStack, lookupFont } from "@/lib/font-registry";
+import { FontStackGrid, FontCard } from "./font-card";
 
 // ── Component Registry ───────────────────────────────────────────
 
@@ -20,6 +23,8 @@ interface CompDef {
 }
 
 const ALL_COMPONENTS: CompDef[] = [
+  { id: "typography", label: "Typography Hierarchy", category: "Typography", core: true },
+  { id: "fonts", label: "Font Stack", category: "Typography", core: true },
   { id: "button", label: "Button", category: "Form", core: true },
   { id: "input", label: "Input & Label", category: "Form", core: true },
   { id: "table", label: "Table", category: "Data Display", core: true },
@@ -64,6 +69,17 @@ export function Preview({
   const font = overrides.fontFamily || detail.fontFamily;
   const weight = overrides.headingWeight || detail.headingWeight;
   const radius = overrides.borderRadius || detail.radius.replace(/[-–].*/, "").trim();
+  // Cap radius for large surfaces (cards, dialogs, sheets, calendars, sidebars).
+  // The DESIGN.md parser extracts a single radius value — typically the button's pill radius
+  // for systems like LINE (50px), Spotify (500px), Wise (9999px). Applying that to a card
+  // or modal turns it into a capsule. Cap at 16px so large surfaces stay sensibly rounded
+  // while interactive controls (buttons, inputs, badges) keep the brand's full radius.
+  const surfaceRadius = (() => {
+    const m = radius.match(/^(\d+)/);
+    if (!m) return radius;
+    const n = parseInt(m[1], 10);
+    return n > 16 ? "16px" : radius;
+  })();
   const scale = generateColorScale(primary);
   const fg = detail.foreground;
   const bg = detail.background;
@@ -117,24 +133,28 @@ export function Preview({
   const pMuted = previewTheme === "dark" ? "#1a1a1a" : "#f5f5f5";
   const isDark = previewTheme === "dark";
 
+  const tokens = extractTokens({ ...detail, primary, fontFamily: font, headingWeight: weight, radius });
+
   const renderComp = (id: string) => {
     const props = { primary, radius, border: pBorder, muted: pMuted, dark: isDark, weight, font };
     switch (id) {
+      case "typography": return <TypographyHierarchyPreview tokens={tokens} fg={pFg} />;
+      case "fonts": return <FontsPreview fontFamily={font} mono={detail.mono} />;
       case "button": return <ButtonPreview {...props} />;
       case "input": return <InputPreview radius={radius} border={pBorder} />;
       case "select": return <SelectPreview radius={radius} border={pBorder} />;
       case "checkbox": return <CheckboxPreview primary={primary} border={pBorder} />;
       case "switch": return <SwitchPreview primary={primary} dark={isDark} />;
       case "table": return <TablePreview primary={primary} border={pBorder} dark={isDark} />;
-      case "card": return <CardPreview primary={primary} weight={weight} border={pBorder} radius={radius} />;
+      case "card": return <CardPreview primary={primary} weight={weight} border={pBorder} radius={surfaceRadius} />;
       case "badge": return <BadgePreview primary={primary} border={pBorder} dark={isDark} />;
-      case "calendar": return <CalendarPreview primary={primary} radius={radius} border={pBorder} />;
-      case "toast": return <ToastPreview border={pBorder} radius={radius} />;
-      case "alert": return <AlertPreview primary={primary} radius={radius} />;
-      case "dialog": return <DialogPreview border={pBorder} radius={radius} dark={isDark} />;
+      case "calendar": return <CalendarPreview primary={primary} radius={surfaceRadius} border={pBorder} />;
+      case "toast": return <ToastPreview border={pBorder} radius={surfaceRadius} />;
+      case "alert": return <AlertPreview primary={primary} radius={surfaceRadius} />;
+      case "dialog": return <DialogPreview border={pBorder} radius={surfaceRadius} dark={isDark} />;
       case "tabs": return <TabsPreview primary={primary} radius={radius} muted={pMuted} dark={isDark} border={pBorder} />;
       case "breadcrumb": return <BreadcrumbPreview />;
-      case "sidebar-nav": return <SidebarNavPreview primary={primary} radius={radius} />;
+      case "sidebar-nav": return <SidebarNavPreview primary={primary} radius={surfaceRadius} />;
       case "accordion": return <AccordionPreview border={pBorder} />;
       case "separator": return <SeparatorPreview border={pBorder} />;
       default: return null;
@@ -792,3 +812,58 @@ function SeparatorPreview({ border }: { border: string }) {
     </div>
   );
 }
+
+
+// ── Typography Hierarchy ──────────────────────────────────────────
+function TypographyHierarchyPreview({ tokens, fg }: { tokens: ReturnType<typeof extractTokens>; fg: string }) {
+  const { typography } = tokens;
+  const family = typography.family;
+  const muted = fg + '99';
+  return (
+    <div className="rounded-xl bg-card p-6 ring-1 ring-border/40">
+      <div className="text-[10px] font-mono text-muted-foreground mb-1">02 / TYPOGRAPHY</div>
+      <h3 className="text-xl font-bold mb-6" style={{ fontFamily: family, color: fg }}>Typography Hierarchy</h3>
+      <div className="divide-y divide-border/40">
+        {typography.hierarchy.map((tier) => {
+          const sizeRem = (tier.fontSize / 16).toFixed(3).replace(/\.?0+$/, '');
+          return (
+            <div key={tier.role} className="py-5 first:pt-0 last:pb-0">
+              <div style={{ fontFamily: family, fontSize: tier.fontSize, fontWeight: tier.fontWeight, lineHeight: tier.lineHeight, letterSpacing: tier.letterSpacing, color: tier.muted ? muted : fg }}>
+                {tier.sampleText}
+                <span className="ml-2 text-[10px] font-medium text-muted-foreground" style={{ fontFamily: family, letterSpacing: '0' }}>— {tier.label}</span>
+              </div>
+              <div className="mt-2 flex flex-wrap items-center gap-1.5 text-[11px] font-mono text-muted-foreground">
+                <span>{sizeRem}rem ({tier.fontSize}px)</span>
+                <span>·</span>
+                <span>{tier.fontWeight}</span>
+                <span>·</span>
+                <span>line-height: {tier.lineHeight}</span>
+                {tier.letterSpacing !== '0' && (<><span>·</span><span>letter-spacing: {tier.letterSpacing}</span></>)}
+                <span className="ml-1 inline-flex items-center rounded bg-foreground/5 px-1.5 py-0.5 text-[10px] uppercase tracking-wider ring-1 ring-border/40">{tier.role}</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ── Fonts (license + install cards) ────────────────────────────
+function FontsPreview({ fontFamily, mono }: { fontFamily: string; mono?: string }) {
+  const stackFonts = parseFontStack(fontFamily);
+  return (
+    <div className="rounded-xl bg-card p-6 ring-1 ring-border/40">
+      <FontStackGrid stack={fontFamily} fonts={stackFonts} />
+      {mono && (
+        <div className="mt-6 pt-6 border-t border-border/40">
+          <div className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider mb-3">Monospace</div>
+          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+            <FontCard font={lookupFont(mono)} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+

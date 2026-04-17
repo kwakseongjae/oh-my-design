@@ -24,6 +24,37 @@ function SearchIcon({ className }: { className?: string }) {
   );
 }
 
+/** Logo with 3-step fallback chain: primary URL → favicon → initial letter. */
+function RefLogo({ refId, refName, primaryUrl, isGh, isLightBg }: { refId: string; refName: string; primaryUrl: string | null; isGh: boolean; isLightBg: boolean }) {
+  const [stage, setStage] = useState<0 | 1 | 2>(0);
+  const fallback = getLogoFallbackUrl(refId);
+  const src = stage === 0 ? primaryUrl : stage === 1 ? fallback : null;
+
+  if (!src) {
+    // Final fallback: initial letter on a tinted ring
+    return (
+      <div
+        className={`flex items-center justify-center rounded-full text-base font-bold ${isGh ? "h-10 w-10" : "h-8 w-8"}`}
+        style={{ background: isLightBg ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.18)", color: isLightBg ? "#1e1e1e" : "#ffffff" }}
+      >
+        {refName.charAt(0).toUpperCase()}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={refName}
+      onError={() => setStage((s) => (s < 2 ? ((s + 1) as 0 | 1 | 2) : 2))}
+      className={`object-contain opacity-90 transition-all group-hover:opacity-100 group-hover:scale-110 ${
+        isGh || stage > 0 ? "h-10 w-10 rounded-full ring-2 ring-white/20 bg-white/10 p-1" : "h-8 w-8"
+      }`}
+      loading="lazy"
+    />
+  );
+}
+
 function XIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -42,7 +73,7 @@ function XIcon({ className }: { className?: string }) {
   );
 }
 import { isLight } from "@/lib/core/color";
-import { getLogoUrl, isGitHubLogo } from "@/lib/logos";
+import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import type { RefListItem } from "@/app/builder/page";
 
 export function ReferenceSelector({
@@ -249,18 +280,13 @@ export function ReferenceSelector({
                   className="relative flex h-24 items-center justify-center border-b border-transparent dark:border-white/10"
                   style={{ background: ref.primaryColor }}
                 >
-                  {logoUrl && (
-                    <img
-                      src={logoUrl}
-                      alt={ref.name}
-                      className={`object-contain opacity-90 transition-all group-hover:opacity-100 group-hover:scale-110 ${
-                        isGitHubLogo(ref.id)
-                          ? "h-10 w-10 rounded-full ring-2 ring-white/20"
-                          : "h-8 w-8"
-                      }`}
-                      loading="lazy"
-                    />
-                  )}
+                  <RefLogo
+                    refId={ref.id}
+                    refName={ref.name}
+                    primaryUrl={logoUrl}
+                    isGh={isGitHubLogo(ref.id)}
+                    isLightBg={isLight(ref.primaryColor)}
+                  />
                   {/* Hex badge */}
                   <span className="absolute bottom-2 left-2 rounded bg-black/20 px-1.5 py-0.5 font-mono text-[9px] text-white/80 backdrop-blur-sm">
                     {ref.primaryColor}
