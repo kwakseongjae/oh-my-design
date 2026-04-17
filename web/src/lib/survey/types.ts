@@ -287,7 +287,7 @@ export function getDesignType(code: TypeCode): DesignType {
   return DESIGN_TYPES[code];
 }
 
-/** All 62 reference IDs mapped to their 4-axis profile for scoring */
+/** All 64 reference IDs mapped to their 4-axis profile for scoring */
 export const REFERENCE_PROFILES: Record<string, { t: Temperature; d: Density; e: Elevation; s: Shape }> = {
   "linear.app": { t: "C", d: "D", e: "F", s: "S" },
   vercel:       { t: "C", d: "D", e: "F", s: "S" },
@@ -352,6 +352,9 @@ export const REFERENCE_PROFILES: Record<string, { t: Temperature; d: Density; e:
   wise:         { t: "W", d: "O", e: "F", s: "R" },
   "x.ai":       { t: "C", d: "D", e: "F", s: "S" },
   zapier:       { t: "W", d: "O", e: "F", s: "R" },
+  // Taiwan additions (2026-04-17)
+  pinkoi:       { t: "W", d: "D", e: "F", s: "S" },
+  dcard:        { t: "C", d: "D", e: "L", s: "R" },
 };
 
 /* ── Type Avatar Palettes ────────────────────────────────

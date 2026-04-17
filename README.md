@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>Generate DESIGN.md from 62 real company design systems. No AI needed.</strong>
+  <strong>Generate DESIGN.md from 64 real company design systems. No AI needed.</strong>
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" />
   <img src="https://img.shields.io/badge/AI%20calls-zero-blue?style=flat-square" alt="Zero AI" />
-  <img src="https://img.shields.io/badge/references-62-7c5cfc?style=flat-square" alt="62 References" />
+  <img src="https://img.shields.io/badge/references-64-7c5cfc?style=flat-square" alt="64 References" />
 </p>
 
 <p align="center">
@@ -52,7 +52,7 @@ Run the command from your project root, then ask your AI assistant to use `DESIG
 ## How It Works
 
 ```
-1. Pick a Reference    Choose from 62 company design systems
+1. Pick a Reference    Choose from 64 company design systems
         |
 2. Style Taste         A/B choices: buttons, tables, headers, cards
         |
@@ -63,11 +63,12 @@ Run the command from your project root, then ask your AI assistant to use `DESIG
 5. Export              DESIGN.md + npx CLI command
 ```
 
-## 62 Supported References
+## 64 Supported References
 
 | Category | Companies |
 |----------|-----------|
 | **Korean Tech** | Baemin, Kakao, Karrot, Toss |
+| **Taiwan Tech** | Dcard, Pinkoi |
 | **AI & LLM** | Claude, Cohere, ElevenLabs, Minimax, Mistral AI, Ollama, OpenCode AI, Replicate, RunwayML, Together AI, VoltAgent, xAI |
 | **Design Tools** | Figma, Framer, Miro, Webflow, Airtable, Clay |
 | **Developer Tools** | Vercel, Cursor, Expo, Lovable, Raycast, Superhuman, Warp |
@@ -99,7 +100,7 @@ Plus: Style Preferences, Included Components, Iconography & SVG Guidelines, Docu
 
 ```
 oh-my-design/
-  references/        62 company DESIGN.md files
+  references/        64 company DESIGN.md files
   src/               CLI core (TypeScript)
   web/               Next.js web builder
     src/app/         Landing + Builder pages

@@ -26,6 +26,7 @@ Use this table to match user descriptions to reference candidates. Pick 3-6 refe
 | coinbase | #0052ff | Fintech | clean, trustworthy, financial, professional, blue |
 | composio | #0007cd | Backend | dark, developer-focused, bioluminescent, minimal, authoritative |
 | cursor | #f54e00 | Developer | warm, crafted, typographically-rich, organic, editorial |
+| dcard | #00324e | Consumer | social, forum, community, material-design, deep-navy, blue, taiwanese, anonymous, youth, magazine-like |
 | elevenlabs | #000000 | AI | elegant, restrained, ethereal, premium, airy, audio |
 | expo | #000000 | Developer | luminous, airy, monochromatic, premium, friendly, approachable |
 | ferrari | #DA291C | Automotive | editorial, cinematic, restrained, luxurious, precise, red |
@@ -49,6 +50,7 @@ Use this table to match user descriptions to reference candidates. Pick 3-6 refe
 | nvidia | #76b900 | Consumer | industrial, engineering, high-contrast, disciplined, sharp |
 | ollama | #000000 | AI | minimal, grayscale, soft, approachable, rounded |
 | opencode.ai | #201d1d | AI | terminal, warm, monospace, utilitarian, developer-focused |
+| pinkoi | #f16c5d | Consumer | dense, multi-cultural, marketplace, asian, handcrafted, coral, locale-aware, commerce, bold-headings |
 | pinterest | #e60023 | Consumer | warm, cozy, craft-like, personal, inviting, handcrafted, red |
 | posthog | #F54E00 | Backend | irreverent, earthy, anti-corporate, playful, warm |
 | raycast | #FF6363 | Developer | dark, precise, macOS-native, trustworthy, fast, premium |
@@ -91,5 +93,8 @@ Common user descriptions → recommended references:
 - "럭셔리, 프리미엄" → apple, stripe, superhuman, ferrari, resend
 - "AI, LLM 서비스" → claude, cohere, mistral.ai, together.ai, x.ai
 - "한국 서비스" → toss, karrot, baemin, kakao
+- "대만 서비스" → pinkoi, dcard
+- "아시아 커머스, 디자이너 마켓" → pinkoi, airbnb, karrot, pinterest
+- "포럼, 커뮤니티" → dcard, intercom, posthog
 - "문서, 블로그" → mintlify, notion, cal, warp
 - "대담한, 에너지" → clickhouse, wise, replicate, mistral.ai, renault

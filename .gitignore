@@ -10,3 +10,6 @@ dist/
 # Generated output files (project root only)
 /DESIGN.md
 /DESIGN.preview.html
+
+# Playwright MCP runtime cache (screenshots, console logs, snapshots)
+.playwright-mcp/
