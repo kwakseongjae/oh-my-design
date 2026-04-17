@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
 import { DESIGN_TYPES, type TypeCode } from "@/lib/survey/types";
 
+const siteUrl = "https://oh-my-design.kr";
+
 type Params = Promise<{ typeCode: string }>;
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateStaticParams() {
+  return Object.keys(DESIGN_TYPES).map((code) => ({ typeCode: code }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
   const { typeCode } = await params;
   const code = typeCode.toUpperCase() as TypeCode;
   const type = DESIGN_TYPES[code];
@@ -15,24 +25,28 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     };
   }
 
-  // Title format: "My design type: The Engineer (CDFS) · oh-my-design"
-  const title = `My design type: ${type.name} (${code})`;
-  const description = `"${type.tagline}" — What's your design type? Take the 60-second quiz at oh-my-design.kr`;
+  const title = `My design type: ${type.name} (${code}) — oh-my-design`;
+  const description = `"${type.tagline}" — ${type.description} Take the 60-second design personality quiz at oh-my-design.kr`;
+  const canonicalUrl = `${siteUrl}/result/${code}`;
 
   return {
     title,
     description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title,
       description,
       type: "website",
+      url: canonicalUrl,
       siteName: "oh-my-design",
       images: [
         {
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "oh-my-design",
+          alt: `oh-my-design — ${type.name}`,
         },
       ],
     },
@@ -45,6 +59,12 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default function ResultLayout({ children }: { children: React.ReactNode }) {
+export default function ResultLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ typeCode: string }>;
+}) {
   return children;
 }
