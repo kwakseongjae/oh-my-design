@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { event } from "@/lib/gtag";
+import { event, trackRef } from "@/lib/gtag";
 import { Search, Loader2, ArrowRight } from "lucide-react";
 import { isLight } from "@/lib/core/color";
 import { getLogoUrl, isGitHubLogo } from "@/lib/logos";
@@ -142,7 +142,7 @@ export function ReferenceSelector({
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.2, delay: Math.min(i * 0.02, 0.3) }}
-                onClick={() => { event("reference_select", { reference: ref.id, category: ref.category }); onSelect(ref.id); }}
+                onClick={() => { event("reference_select", { reference: ref.id, category: ref.category }); trackRef("select", ref.id); onSelect(ref.id); }}
                 disabled={loading}
                 className="group relative flex flex-col overflow-hidden rounded-xl border border-border/40 bg-card/30 text-left backdrop-blur transition-all hover:bg-card/80 hover:shadow-lg hover:shadow-black/5 hover:-translate-y-1 dark:border-white/10 dark:bg-card/50 dark:hover:border-white/20 dark:hover:shadow-white/5 disabled:opacity-50"
               >

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { event } from "@/lib/gtag";
+import { event, trackRef } from "@/lib/gtag";
 import { Copy, Check, Download } from "lucide-react";
 import { generateShadcnCss, applyOverridesToMd } from "@/lib/core/generate-css";
 import { generateNpxCommand } from "@/lib/core/config-hash";
@@ -41,6 +41,7 @@ export function ExportPanel({
   function copyTo(key: string, text: string) {
     navigator.clipboard.writeText(text);
     event("copy_designmd", { reference: detail.id });
+    trackRef("copy", detail.id);
     setCopied(key);
     setTimeout(() => setCopied(null), 2000);
   }
@@ -54,6 +55,7 @@ export function ExportPanel({
     a.click();
     URL.revokeObjectURL(url);
     event("download_designmd", { reference: detail.id });
+    trackRef("download", detail.id);
   }
 
   return (

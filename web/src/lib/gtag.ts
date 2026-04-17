@@ -6,6 +6,19 @@ export function event(name: string, params?: Record<string, string | number | bo
   }
 }
 
+export type RefTrackEvent = "select" | "generate" | "download" | "copy";
+
+/** Increment a server-side counter for a reference. Fire-and-forget alongside GA event(). */
+export function trackRef(eventName: RefTrackEvent, reference: string) {
+  if (typeof window === "undefined") return;
+  fetch("/api/track", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ event: eventName, reference }),
+    keepalive: true,
+  }).catch(() => {});
+}
+
 /** Track unhandled JS errors */
 export function initErrorLogging() {
   if (typeof window === "undefined") return;

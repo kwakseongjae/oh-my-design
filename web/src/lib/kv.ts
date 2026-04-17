@@ -1,0 +1,23 @@
+import { Redis } from "@upstash/redis";
+
+export type TrackEvent = "select" | "generate" | "download" | "copy";
+
+export const TRACK_EVENTS: readonly TrackEvent[] = ["select", "generate", "download", "copy"] as const;
+
+export const REFERENCE_ID_RE = /^[a-z0-9.-]{1,40}$/;
+
+let _redis: Redis | null | undefined;
+
+export function getRedis(): Redis | null {
+  if (_redis !== undefined) return _redis;
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) {
+    _redis = null;
+    return null;
+  }
+  _redis = new Redis({ url, token });
+  return _redis;
+}
+
+export const counterKey = (event: TrackEvent) => `counter:${event}`;

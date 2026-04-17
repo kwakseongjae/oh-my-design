@@ -23,6 +23,7 @@ const CATEGORIES: Record<string, string> = {
   tesla: 'Automotive', bmw: 'Automotive', ferrari: 'Automotive',
   lamborghini: 'Automotive', renault: 'Automotive',
   karrot: 'Korean Tech', toss: 'Korean Tech', baemin: 'Korean Tech', kakao: 'Korean Tech',
+  pinkoi: 'Taiwan Tech', dcard: 'Taiwan Tech',
 };
 
 const DISPLAY_NAMES: Record<string, string> = {

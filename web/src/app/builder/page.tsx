@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { event } from "@/lib/gtag";
+import { event, trackRef } from "@/lib/gtag";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
@@ -157,7 +157,7 @@ export default function BuilderPage() {
             detail={detail}
             overrides={overrides}
             onChange={setOverrides}
-            onComplete={() => { event("generation_complete", { reference: detail.id }); setStep("preview"); }}
+            onComplete={() => { event("generation_complete", { reference: detail.id }); trackRef("generate", detail.id); setStep("preview"); }}
             onBack={() => setStep("select")}
             onPreferencesChange={(p) => setStylePreferences(p as StylePreferences)}
           />
