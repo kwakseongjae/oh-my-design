@@ -20,9 +20,27 @@ export function ReferenceSelector({
   initialLoading?: boolean;
 }) {
   const categories = [...new Set(refs.map((r) => r.category))];
+  const countries = [...new Set(refs.map((r) => r.country))].filter(Boolean);
   const [filter, setFilter] = useState("");
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const searchTimer = useRef<ReturnType<typeof setTimeout>>(null);
+
+  const COUNTRY_FLAGS: Record<string, string> = {
+    "United States": "🇺🇸",
+    Korea: "🇰🇷",
+    Taiwan: "🇹🇼",
+    France: "🇫🇷",
+    Italy: "🇮🇹",
+    Germany: "🇩🇪",
+    UK: "🇬🇧",
+  };
+  // Sort countries: non-US first (more useful filters), then US last
+  const sortedCountries = [...countries].sort((a, b) => {
+    if (a === "United States") return 1;
+    if (b === "United States") return -1;
+    return a.localeCompare(b);
+  });
 
   const handleSearch = useCallback((value: string) => {
     setFilter(value);
@@ -36,6 +54,7 @@ export function ReferenceSelector({
 
   const filtered = refs.filter((r) => {
     if (selectedCat && r.category !== selectedCat) return false;
+    if (selectedCountry && r.country !== selectedCountry) return false;
     if (filter && !r.name.toLowerCase().includes(filter.toLowerCase())) return false;
     return true;
   });
@@ -80,40 +99,71 @@ export function ReferenceSelector({
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="mb-6 flex flex-wrap items-center gap-2"
+        className="mb-6 space-y-3"
       >
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
-          <input
-            type="text"
-            placeholder="Search..."
-            value={filter}
-            onChange={(e) => handleSearch(e.target.value)}
-            className="h-9 rounded-lg border border-border/60 bg-card/50 pl-9 pr-3 text-sm outline-none backdrop-blur transition-colors focus:border-foreground/20 focus:bg-card"
-          />
-        </div>
-        <div className="flex flex-wrap gap-1.5">
-          <button
-            onClick={() => setSelectedCat(null)}
-            className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
-              !selectedCat
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "border border-border/40 text-muted-foreground hover:text-foreground hover:border-border"
-            }`}
-          >
-            All
-          </button>
-          {categories.map((cat) => (
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+            <input
+              type="text"
+              placeholder="Search..."
+              value={filter}
+              onChange={(e) => handleSearch(e.target.value)}
+              className="h-9 rounded-lg border border-border/60 bg-card/50 pl-9 pr-3 text-sm outline-none backdrop-blur transition-colors focus:border-foreground/20 focus:bg-card"
+            />
+          </div>
+          <div className="flex flex-wrap gap-1.5">
             <button
-              key={cat}
-              onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) event("category_filter", { category: next }); }}
+              onClick={() => setSelectedCat(null)}
               className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
-                selectedCat === cat
+                !selectedCat
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "border border-border/40 text-muted-foreground hover:text-foreground hover:border-border"
               }`}
             >
-              {cat}
+              All
+            </button>
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) event("category_filter", { category: next }); }}
+                className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
+                  selectedCat === cat
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "border border-border/40 text-muted-foreground hover:text-foreground hover:border-border"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Country filter row */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="text-xs text-muted-foreground mr-1">Country</span>
+          <button
+            onClick={() => setSelectedCountry(null)}
+            className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${
+              !selectedCountry
+                ? "bg-foreground/10 text-foreground"
+                : "border border-border/30 text-muted-foreground hover:text-foreground hover:border-border"
+            }`}
+          >
+            All
+          </button>
+          {sortedCountries.map((c) => (
+            <button
+              key={c}
+              onClick={() => { const next = selectedCountry === c ? null : c; setSelectedCountry(next); if (next) event("country_filter", { country: next }); }}
+              className={`rounded-full px-3 py-1 text-xs font-medium transition-all flex items-center gap-1 ${
+                selectedCountry === c
+                  ? "bg-foreground/10 text-foreground"
+                  : "border border-border/30 text-muted-foreground hover:text-foreground hover:border-border"
+              }`}
+            >
+              <span aria-hidden>{COUNTRY_FLAGS[c] ?? "🏳️"}</span>
+              <span>{c}</span>
             </button>
           ))}
         </div>

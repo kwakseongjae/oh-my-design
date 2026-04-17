@@ -79,6 +79,10 @@ const LOGO_MAP: Record<string, LogoSource> = {
   baemin:        { type: 'favicon', slug: 'https://www.baemin.com/favicon.ico' },
   kakao:         { type: 'simpleicons', slug: 'kakaotalk' },
 
+  // ── Taiwan Tech ──
+  pinkoi:        { type: 'github', slug: 'pinkoi' },
+  dcard:         { type: 'github', slug: 'Dcard' },
+
   // ── Marketing ──
   semrush:       { type: 'simpleicons', slug: 'semrush' },
 

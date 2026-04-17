@@ -421,6 +421,7 @@ const CATEGORIES: Record<string, string> = {
   apple: "Consumer", spotify: "Consumer", uber: "Consumer", airbnb: "Consumer", pinterest: "Consumer", nvidia: "Consumer", ibm: "Consumer", spacex: "Consumer",
   tesla: "Automotive", bmw: "Automotive", ferrari: "Automotive", lamborghini: "Automotive", renault: "Automotive",
   karrot: "Korean", baemin: "Korean", kakao: "Korean",
+  pinkoi: "Taiwan", dcard: "Taiwan",
 };
 
 /** Supplementary matching data per company */

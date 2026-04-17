@@ -16,6 +16,7 @@ export interface RefListItem {
   id: string;
   name: string;
   category: string;
+  country: string;
   primaryColor: string;
   background: string;
 }

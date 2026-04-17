@@ -20,4 +20,8 @@ export function getRedis(): Redis | null {
   return _redis;
 }
 
-export const counterKey = (event: TrackEvent) => `counter:${event}`;
+/**
+ * Keys are prefixed with `omd:` so OMD can safely share an Upstash database
+ * with other projects (e.g., mochabun) without key-space collisions.
+ */
+export const counterKey = (event: TrackEvent) => `omd:counter:${event}`;

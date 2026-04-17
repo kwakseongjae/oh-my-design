@@ -26,6 +26,22 @@ const CATEGORIES: Record<string, string> = {
   pinkoi: 'Taiwan Tech', dcard: 'Taiwan Tech',
 };
 
+const COUNTRIES: Record<string, string> = {
+  // Korea
+  toss: 'Korea', kakao: 'Korea', baemin: 'Korea', karrot: 'Korea',
+  // Taiwan
+  pinkoi: 'Taiwan', dcard: 'Taiwan',
+  // France
+  'mistral.ai': 'France', renault: 'France',
+  // Italy
+  ferrari: 'Italy', lamborghini: 'Italy',
+  // Germany
+  bmw: 'Germany',
+  // UK
+  revolut: 'UK', wise: 'UK',
+  // (default for unmapped → 'United States')
+};
+
 const DISPLAY_NAMES: Record<string, string> = {
   'linear.app': 'Linear', cal: 'Cal.com', 'mistral.ai': 'Mistral AI',
   'opencode.ai': 'OpenCode AI', 'together.ai': 'Together AI', 'x.ai': 'xAI',
@@ -82,6 +98,7 @@ export async function GET() {
         id: d.name,
         name: DISPLAY_NAMES[d.name] || d.name.charAt(0).toUpperCase() + d.name.slice(1),
         category: CATEGORIES[d.name] || 'Other',
+        country: COUNTRIES[d.name] || 'United States',
         primaryColor: extractPrimaryColor(md),
         background: extractBackground(md),
       };
