@@ -19,13 +19,25 @@ export function ReferenceSelector({
   loading: boolean;
   initialLoading?: boolean;
 }) {
-  const categories = [...new Set(refs.map((r) => r.category))];
+  // Country-driven categories (Korean Tech, Taiwan Tech) are surfaced via the
+  // country filter row instead of category pills to avoid redundancy.
+  const HIDDEN_CATEGORIES = new Set(["Korean Tech", "Taiwan Tech"]);
+  const categories = [...new Set(refs.map((r) => r.category))].filter((c) => !HIDDEN_CATEGORIES.has(c));
   const countries = [...new Set(refs.map((r) => r.country))].filter(Boolean);
   const [filter, setFilter] = useState("");
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const searchTimer = useRef<ReturnType<typeof setTimeout>>(null);
 
+  const COUNTRY_FLAGS: Record<string, string> = {
+    "United States": "🇺🇸",
+    Korea: "🇰🇷",
+    Taiwan: "🇹🇼",
+    France: "🇫🇷",
+    Italy: "🇮🇹",
+    Germany: "🇩🇪",
+    UK: "🇬🇧",
+  };
   // Sort countries: non-US first (more useful filters), then US last
   const sortedCountries = [...countries].sort((a, b) => {
     if (a === "United States") return 1;
@@ -147,13 +159,14 @@ export function ReferenceSelector({
             <button
               key={c}
               onClick={() => { const next = selectedCountry === c ? null : c; setSelectedCountry(next); if (next) event("country_filter", { country: next }); }}
-              className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${
+              className={`rounded-full px-3 py-1 text-xs font-medium transition-all flex items-center gap-1.5 ${
                 selectedCountry === c
                   ? "bg-foreground/10 text-foreground"
                   : "border border-border/30 text-muted-foreground hover:text-foreground hover:border-border"
               }`}
             >
-              {c}
+              <span aria-hidden>{COUNTRY_FLAGS[c] ?? "🏳️"}</span>
+              <span>{c}</span>
             </button>
           ))}
         </div>
