@@ -30,6 +30,7 @@ Use this table to match user descriptions to reference candidates. Pick 3-6 refe
 | elevenlabs | #000000 | AI | elegant, restrained, ethereal, premium, airy, audio |
 | expo | #000000 | Developer | luminous, airy, monochromatic, premium, friendly, approachable |
 | ferrari | #DA291C | Automotive | editorial, cinematic, restrained, luxurious, precise, red |
+| freee | #285ac8 | Productivity | enterprise, blue, structured, semantic-tokens, japanese, saas, accounting, calm |
 | figma | #000000 | Design Tools | sophisticated, organic, precise, creative, black-white |
 | framer | #0099ff | Design Tools | cinematic, dark, seductive, precise, product-forward |
 | hashicorp | #000000 | Backend | enterprise, systematic, authoritative, token-driven, structured |
@@ -39,10 +40,12 @@ Use this table to match user descriptions to reference candidates. Pick 3-6 refe
 | karrot | #ff6600 | Korean | warm, approachable, trustworthy, local, energetic, orange |
 | kraken | #7132f5 | Fintech | clean, professional, trustworthy, purple, confident, crypto |
 | lamborghini | #FFC000 | Automotive | dark, theatrical, intimidating, nocturnal, luxurious, gold |
+| line | #07b53b | Consumer | green, pill-buttons, editorial, lifestyle, japanese, friendly, oversized-typography |
 | linear.app | #5e6ad2 | Productivity | precise, dark, engineered, calibrated, minimal, purple |
 | lovable | #1c1c1c | Developer | warm, approachable, analog, humanist, parchment |
 | minimax | #1456f0 | AI | clean, airy, approachable, colorful, product-forward |
 | mintlify | #18E299 | Productivity | calm, confident, legible, fresh, airy, clean, docs, green |
+| mercari | #ff333f | Consumer | red, marketplace, japanese, semantic-tokens, dense, commerce, mature |
 | miro | #5b76fe | Design Tools | clean, collaborative, pastel, geometric, visual |
 | mistral.ai | #fa520f | AI | warm, bold, maximalist, golden, European, declarative |
 | mongodb | #00ed64 | Backend | dark, organic, editorial, bioluminescent, forest, electric, green |
@@ -94,6 +97,7 @@ Common user descriptions → recommended references:
 - "AI, LLM 서비스" → claude, cohere, mistral.ai, together.ai, x.ai
 - "한국 서비스" → toss, karrot, baemin, kakao
 - "대만 서비스" → pinkoi, dcard
+- "일본 서비스" → line, mercari, freee
 - "아시아 커머스, 디자이너 마켓" → pinkoi, airbnb, karrot, pinterest
 - "포럼, 커뮤니티" → dcard, intercom, posthog
 - "문서, 블로그" → mintlify, notion, cal, warp

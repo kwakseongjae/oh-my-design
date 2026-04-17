@@ -24,6 +24,7 @@ const CATEGORIES: Record<string, string> = {
   lamborghini: 'Automotive', renault: 'Automotive',
   karrot: 'Korean Tech', toss: 'Korean Tech', baemin: 'Korean Tech', kakao: 'Korean Tech',
   pinkoi: 'Taiwan Tech', dcard: 'Taiwan Tech',
+  line: 'Japanese Tech', mercari: 'Japanese Tech', freee: 'Japanese Tech',
 };
 
 const COUNTRIES: Record<string, string> = {
@@ -31,6 +32,8 @@ const COUNTRIES: Record<string, string> = {
   toss: 'Korea', kakao: 'Korea', baemin: 'Korea', karrot: 'Korea',
   // Taiwan
   pinkoi: 'Taiwan', dcard: 'Taiwan',
+  // Japan
+  line: 'Japan', mercari: 'Japan', freee: 'Japan',
   // France
   'mistral.ai': 'France', renault: 'France',
   // Italy
@@ -50,6 +53,8 @@ const DISPLAY_NAMES: Record<string, string> = {
   runwayml: 'RunwayML', spacex: 'SpaceX', coinbase: 'Coinbase',
   airbnb: 'Airbnb', clickhouse: 'ClickHouse',
   karrot: 'Karrot', toss: 'Toss', baemin: 'Baemin', kakao: 'Kakao',
+  pinkoi: 'Pinkoi', dcard: 'Dcard',
+  line: 'LINE', mercari: 'Mercari', freee: 'freee',
 };
 
 function extractPrimaryColor(md: string): string {
@@ -105,7 +110,7 @@ export async function GET() {
     })
     .sort((a, b) => {
       const order = [
-        'Korean Tech', 'Taiwan Tech', 'AI & LLM', 'Design Tools', 'Developer Tools',
+        'Korean Tech', 'Taiwan Tech', 'Japanese Tech', 'AI & LLM', 'Design Tools', 'Developer Tools',
         'Productivity', 'Consumer Tech', 'Fintech', 'Backend & DevOps',
         'E-commerce', 'Automotive', 'Marketing',
       ];

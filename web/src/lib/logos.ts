@@ -83,6 +83,11 @@ const LOGO_MAP: Record<string, LogoSource> = {
   pinkoi:        { type: 'github', slug: 'pinkoi' },
   dcard:         { type: 'github', slug: 'Dcard' },
 
+  // ── Japanese Tech ──
+  line:          { type: 'simpleicons', slug: 'line' },
+  mercari:       { type: 'github', slug: 'mercari' },
+  freee:         { type: 'github', slug: 'freee' },
+
   // ── Marketing ──
   semrush:       { type: 'simpleicons', slug: 'semrush' },
 

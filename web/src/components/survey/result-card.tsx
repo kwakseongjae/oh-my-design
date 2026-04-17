@@ -216,7 +216,7 @@ export function ResultCard({
           onClick={() => event("curation_browse_all", { type_code: score.typeCode })}
           className="group text-xs text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
         >
-          or browse all 64 references
+          or browse all 67 references
           <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
         </a>
       </motion.section>

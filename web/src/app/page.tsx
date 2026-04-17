@@ -39,6 +39,9 @@ const FEATURED_BRANDS = [
   { id: "webflow", name: "Webflow", color: "#4353ff" },
   { id: "pinkoi", name: "Pinkoi", color: "#f16c5d" },
   { id: "dcard", name: "Dcard", color: "#00324e" },
+  { id: "line", name: "LINE", color: "#07b53b" },
+  { id: "mercari", name: "Mercari", color: "#ff333f" },
+  { id: "freee", name: "freee", color: "#285ac8" },
 ];
 
 function LogoCard({ brand }: { brand: (typeof FEATURED_BRANDS)[number] }) {
@@ -192,7 +195,7 @@ export default function Landing() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           {[
-            { step: "01", title: "Pick a reference", desc: "Choose from 64 real company design systems -- Stripe, Vercel, Toss, Kakao, Pinkoi, Dcard, and more.", icon: Layers },
+            { step: "01", title: "Pick a reference", desc: "Choose from 67 real company design systems -- Stripe, Vercel, Toss, Kakao, Pinkoi, Dcard, LINE, Mercari, freee, and more.", icon: Layers },
             { step: "02", title: "Make it yours", desc: "Walk through A/B choices for buttons, tables, cards. Fine-tune colors, radius, and dark mode.", icon: Zap },
             { step: "03", title: "Export DESIGN.md", desc: "Download or copy your customized DESIGN.md. Use the CLI command to regenerate anytime.", icon: Download },
           ].map((item, i) => (

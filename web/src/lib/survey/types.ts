@@ -287,7 +287,7 @@ export function getDesignType(code: TypeCode): DesignType {
   return DESIGN_TYPES[code];
 }
 
-/** All 64 reference IDs mapped to their 4-axis profile for scoring */
+/** All 67 reference IDs mapped to their 4-axis profile for scoring */
 export const REFERENCE_PROFILES: Record<string, { t: Temperature; d: Density; e: Elevation; s: Shape }> = {
   "linear.app": { t: "C", d: "D", e: "F", s: "S" },
   vercel:       { t: "C", d: "D", e: "F", s: "S" },
@@ -355,6 +355,10 @@ export const REFERENCE_PROFILES: Record<string, { t: Temperature; d: Density; e:
   // Taiwan additions (2026-04-17)
   pinkoi:       { t: "W", d: "D", e: "F", s: "S" },
   dcard:        { t: "C", d: "D", e: "L", s: "R" },
+  // Japan additions (2026-04-17)
+  line:         { t: "W", d: "O", e: "F", s: "R" },
+  mercari:      { t: "W", d: "D", e: "F", s: "S" },
+  freee:        { t: "C", d: "D", e: "L", s: "S" },
 };
 
 /* ── Type Avatar Palettes ────────────────────────────────
@@ -422,6 +426,7 @@ const CATEGORIES: Record<string, string> = {
   tesla: "Automotive", bmw: "Automotive", ferrari: "Automotive", lamborghini: "Automotive", renault: "Automotive",
   karrot: "Korean", baemin: "Korean", kakao: "Korean",
   pinkoi: "Taiwan", dcard: "Taiwan",
+  line: "Japanese", mercari: "Japanese", freee: "Japanese",
 };
 
 /** Supplementary matching data per company */
