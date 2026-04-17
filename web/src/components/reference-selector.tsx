@@ -26,15 +26,6 @@ export function ReferenceSelector({
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const searchTimer = useRef<ReturnType<typeof setTimeout>>(null);
 
-  const COUNTRY_FLAGS: Record<string, string> = {
-    "United States": "🇺🇸",
-    Korea: "🇰🇷",
-    Taiwan: "🇹🇼",
-    France: "🇫🇷",
-    Italy: "🇮🇹",
-    Germany: "🇩🇪",
-    UK: "🇬🇧",
-  };
   // Sort countries: non-US first (more useful filters), then US last
   const sortedCountries = [...countries].sort((a, b) => {
     if (a === "United States") return 1;
@@ -156,14 +147,13 @@ export function ReferenceSelector({
             <button
               key={c}
               onClick={() => { const next = selectedCountry === c ? null : c; setSelectedCountry(next); if (next) event("country_filter", { country: next }); }}
-              className={`rounded-full px-3 py-1 text-xs font-medium transition-all flex items-center gap-1 ${
+              className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${
                 selectedCountry === c
                   ? "bg-foreground/10 text-foreground"
                   : "border border-border/30 text-muted-foreground hover:text-foreground hover:border-border"
               }`}
             >
-              <span aria-hidden>{COUNTRY_FLAGS[c] ?? "🏳️"}</span>
-              <span>{c}</span>
+              {c}
             </button>
           ))}
         </div>

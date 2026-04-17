@@ -105,7 +105,7 @@ export async function GET() {
     })
     .sort((a, b) => {
       const order = [
-        'Korean Tech', 'AI & LLM', 'Design Tools', 'Developer Tools',
+        'Korean Tech', 'Taiwan Tech', 'AI & LLM', 'Design Tools', 'Developer Tools',
         'Productivity', 'Consumer Tech', 'Fintech', 'Backend & DevOps',
         'E-commerce', 'Automotive', 'Marketing',
       ];
