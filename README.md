@@ -35,7 +35,7 @@ Choose a real company's design system, customize it through an interactive A/B w
 
 - **Builder** — pick a reference, tune colors / radius / dark mode, select components, hit Export.
 - **Design Systems Directory** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 34 of the 67 references have a verified public design system or brand-guidelines page; the directory links straight out to each one with live thumbnails.
-- **Browse dropdown** — one-tap entry to the directory from the home navigation.
+- **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — a short MBTI-style quiz that maps your design personality to one of the 67 references and drops you straight into the builder with that reference preloaded.
 
 ## 67 Supported References
 

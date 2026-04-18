@@ -35,7 +35,7 @@
 
 - **빌더** — 레퍼런스 선택 후 색상 / radius / 다크 모드를 조정하고, 컴포넌트를 고른 뒤 Export.
 - **디자인 시스템 디렉토리** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 67개 레퍼런스 중 34개는 공식 디자인 시스템 또는 브랜드 가이드라인 페이지가 있으며, 디렉토리에서 라이브 썸네일과 함께 바로 이동할 수 있습니다.
-- **Browse 드롭다운** — 홈 네비게이션에서 디렉토리로 한 번에 진입.
+- **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — MBTI 스타일의 짧은 퀴즈로 당신의 디자인 성향을 67개 레퍼런스 중 하나와 매칭해, 해당 레퍼런스가 미리 선택된 빌더로 바로 이동시켜 줍니다.
 
 ## 67개 지원 레퍼런스
 
