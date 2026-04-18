@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const publicDir = join(__dirname, '..', 'public');
-const logoPath = join(__dirname, '..', '..', 'logo.png');
+const logoPath = join(publicDir, 'logo.png');
 
 const W = 1200;
 const H = 630;

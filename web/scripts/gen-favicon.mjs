@@ -3,9 +3,9 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const logo = join(__dirname, '..', '..', 'logo.png');
 const outDir = join(__dirname, '..', 'src', 'app');
 const publicDir = join(__dirname, '..', 'public');
+const logo = join(publicDir, 'logo.png');
 
 // 1. Favicon: rounded square, primary bg (#7c5cfc), white logo
 const size = 512;
