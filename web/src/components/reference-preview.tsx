@@ -83,9 +83,11 @@ function HeroSection({ tokens }: { tokens: ParsedTokens }) {
               <span className="opacity-60">accent</span>
             </span>
           )}
-          <span className="inline-flex items-center rounded-full px-3 py-1.5 text-xs ring-1 opacity-80" style={pillStyle}>
-            {primaryFont}
-          </span>
+          {primaryFont && (
+            <span className="inline-flex items-center rounded-full px-3 py-1.5 text-xs ring-1 opacity-80" style={pillStyle}>
+              {primaryFont}
+            </span>
+          )}
         </div>
       </header>
     </div>
