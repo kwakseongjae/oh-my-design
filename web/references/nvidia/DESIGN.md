@@ -18,6 +18,21 @@ What distinguishes NVIDIA's design from other dark-background tech sites is the 
 - Font Awesome 6 Pro/Sharp icon system at weight 900 for sharp iconography
 - Multi-framework architecture (PrimeReact, Fluent UI, Element Plus) enabling rich interactive components
 
+### Do's and Don'ts
+
+- **DO** use NVIDIA Green `#76b900` exclusively as a SIGNAL color — borders, link underlines, button outlines, focus states.
+- **DON'T** use the green as a fill on large surfaces, backgrounds, or decorative gradients — that destroys its function as a fingerprint accent.
+- **DO** keep the foundation black-and-white. Black `#000000` for dark sections, white `#ffffff` for content, with green pinpricks of accent.
+- **DON'T** introduce mid-tone backgrounds (gray cards, tinted sections) — NVIDIA's contrast is binary by design.
+- **DO** use sharp 1-2px border radius across all components — buttons, cards, inputs.
+- **DON'T** use rounded or pill-shaped buttons — that reads as friendly consumer tech, not high-precision engineering hardware.
+- **DO** apply tight 1.25 line-height to headings for dense, authoritative blocks of text.
+- **DON'T** use generous 1.5+ line-height on display headers — it relaxes the engineered, compressed feel.
+- **DO** use `2px solid #76b900` as the primary button border pattern — green-outlined CTAs are the brand's default interactive shape.
+- **DON'T** use filled green buttons as the primary pattern — fills belong to consumer brands; NVIDIA reserves green for outlines and accents.
+- **DO** use Font Awesome 6 Pro/Sharp at weight 900 for sharp iconography matching the engineering aesthetic.
+- **DON'T** use rounded or playful icon sets — they conflict with NVIDIA's industrial precision.
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

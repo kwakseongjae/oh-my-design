@@ -18,6 +18,21 @@ What makes Notion's visual language distinctive is its border philosophy. Rather
 - Pill badges (9999px radius) with tinted blue backgrounds for status indicators
 - 8px base spacing unit with an organic, non-rigid scale
 
+### Do's and Don'ts
+
+- **DO** use warm near-black for text via `rgba(0,0,0,0.95)` — pure `#000000` reads as cold and clinical against Notion's warm canvas.
+- **DON'T** use cold grays (`#9ca3af`, `#6b7280`) — they break the warm yellow-brown undertone that defines Notion's analog feel.
+- **DO** apply aggressive negative tracking (-2.125px at 64px) on display headlines using NotionInter (or standard Inter).
+- **DON'T** use default tracking on display sizes — Notion's typography is precisely engineered, not casual.
+- **DO** use ultra-thin `1px solid rgba(0,0,0,0.1)` borders as the dominant separation pattern — they exist as whispers.
+- **DON'T** use heavy borders, opaque colors, or visible shadows — Notion's depth is felt, not seen.
+- **DO** stack multi-layer shadows with each layer below 0.05 opacity for cumulative depth.
+- **DON'T** use single-layer drop shadows over 0.1 opacity — they read as heavy and break the analog warmth.
+- **DO** reserve Notion Blue `#0075de` for CTAs and interactive elements only — it's the singular accent.
+- **DON'T** scatter blue across borders, dividers, or decorative elements — the brand uses blue surgically.
+- **DO** enable OpenType `"lnum"` and `"locl"` features on larger text — they reward close reading.
+- **DON'T** disable these features for Latin-only contexts — they're part of Notion's typographic refinement.
+
 ## 2. Color Palette & Roles
 
 ### Primary

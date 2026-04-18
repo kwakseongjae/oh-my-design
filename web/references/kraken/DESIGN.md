@@ -89,6 +89,27 @@ Kraken's website is a clean, trustworthy crypto exchange that uses purple as its
 - Success: `rgba(20,158,97,0.16)` bg, `#026b3f` text, 6px radius
 - Neutral: `rgba(104,107,130,0.12)` bg, `#484b5e` text, 8px radius
 
+### Cards
+
+**Default Card**
+- Background: `#ffffff`
+- Border: `1px solid rgba(148,151,169,0.16)`
+- Radius: `12px`
+- Padding: `24px`
+- Shadow: `rgba(0,0,0,0.03) 0px 4px 24px` (subtle lift)
+
+**Stat / Metric Card**
+- Background: `#ffffff`, radius `16px`, padding `20px 24px`
+- Title: 12px weight 500 `#686b82` (muted)
+- Value: 28px weight 700 `#101114`
+- Delta: 12px weight 500 — `#149e61` for positive, `#d54848` for negative
+
+**Featured / Promotional Card**
+- Background: `linear-gradient(135deg, #7132f5 0%, #5741d8 100%)` (purple gradient)
+- Text: `#ffffff`, radius `16px`, padding `32px`
+- Subtle inner glow via `box-shadow: inset 0 0 60px rgba(255,255,255,0.08)`
+- Use sparingly for premium/upgrade prompts
+
 ## 5. Layout Principles
 
 ### Spacing: 1px, 2px, 3px, 4px, 5px, 6px, 8px, 10px, 12px, 13px, 15px, 16px, 20px, 24px, 25px

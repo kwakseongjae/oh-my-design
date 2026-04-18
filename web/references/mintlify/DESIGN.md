@@ -18,6 +18,21 @@ What distinguishes Mintlify from other documentation platforms is its atmospheri
 - 8px base spacing system with generous section padding (48px–96px)
 - Clean white canvas — no gray backgrounds, no color sections, depth through borders and whitespace alone
 
+### Do's and Don'ts
+
+- **DO** keep the canvas white (`#ffffff`) and let depth come from 5% opacity borders + whitespace alone. No gray sections.
+- **DON'T** introduce filled background sections to break up content — Mintlify's visual rhythm comes from whitespace, not color blocks.
+- **DO** use Inter with tight negative tracking (-0.8px to -1.28px) at display sizes for that compressed, "well-engineered docs" feel.
+- **DON'T** use loose default tracking on headlines — it reads as generic and undersells the typographic discipline.
+- **DO** reserve the brand green `#18E299` for CTAs, hover states, focus rings, and small accent touches only.
+- **DON'T** use the green for backgrounds, large surfaces, or decorative gradients — it cheapens the singular-accent strategy.
+- **DO** use generous radii: 16px containers, 24px featured cards, 9999px (full pill) buttons. The roundness is intentional.
+- **DON'T** mix in sharp 2-4px corners — that aesthetic belongs to commerce or engineering brands, not docs.
+- **DO** apply 5% opacity borders (`rgba(0,0,0,0.05)`) for whisper-weight separation between cards and sections.
+- **DON'T** use heavy 1px solid borders or visible shadows — they break the "floating, atmospheric" mood.
+- **DO** use Geist Mono ONLY for code labels, tracked-out, uppercase, ~12px — the terminal voice should remain a minority.
+- **DON'T** use mono fonts for body or UI labels — Inter handles all non-code text.
+
 ## 2. Color Palette & Roles
 
 ### Primary

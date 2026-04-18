@@ -85,8 +85,25 @@ Webflow's website is a visually rich, tool-forward platform that communicates "d
 ## 8. Responsive: 479px, 768px, 992px
 
 ## 9. Agent Prompt Guide
-- Text: Near Black (`#080808`)
-- CTA: Webflow Blue (`#146ef5`)
-- Background: White (`#ffffff`)
-- Border: `#d8d8d8`
-- Secondary: Purple `#7a3dff`, Pink `#ed52cb`, Green `#00d722`
+
+### Quick Color Reference
+- Primary CTA: Webflow Blue (`#146ef5`)
+- Heading / body text: Near Black (`#080808`)
+- Muted text: `~#666666` (estimated)
+- Page background: White (`#ffffff`)
+- Border default: `#d8d8d8`
+- Secondary accent: Purple (`#7a3dff`), Pink (`#ed52cb`), Green (`#00d722`)
+- These three secondary accents are used for category coding (e.g., feature cards, plan tiers) — never as primary CTAs.
+
+### Example Component Prompts
+- "Build a Webflow primary button: bg `#146ef5`, white text, `~8px` border-radius, `12px 24px` padding, WF Visual Sans Variable weight 600 16px. Hover: bg darkens ~10%."
+- "Create a feature card with category accent: white bg, `1px solid #d8d8d8` border, `16px` radius. Use the secondary palette (purple `#7a3dff` / pink `#ed52cb` / green `#00d722`) as a top-edge color bar (4px tall) to indicate category. Title 20px weight 600 `#080808`, body 14px weight 400."
+- "Design a navigation header: white sticky bar, Webflow logo left, link nav (14px weight 500 `#080808`, hover to `#146ef5`), Webflow Blue 'Sign up' CTA right. Subtle 1px bottom border on scroll."
+- "Create a plan tier comparison: 3 columns, each card with white bg, `16px` radius. The 'recommended' tier gets a colored top border (`#146ef5` for default, `#7a3dff` for premium) and a 'Most Popular' badge using that same color."
+
+### Iteration Guide
+1. Use Webflow Blue `#146ef5` only as the primary CTA color — secondary accents handle visual variety and category coding.
+2. The three secondary colors (purple/pink/green) work as a SET — use them together for tier comparisons or feature categories, not in isolation.
+3. Keep components on white — Webflow's marketing aesthetic is bright and airy, never dark mode for the marketing surface.
+4. Border-radius stays moderate (8-16px) — never pill or fully square. Webflow sits between the geometric (Vercel/Linear) and rounded (Mintlify) ends of the spectrum.
+5. Use WF Visual Sans Variable weight 600 for headlines and weight 500 for buttons. Body uses weight 400.

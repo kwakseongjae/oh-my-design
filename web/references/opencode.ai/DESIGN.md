@@ -20,6 +20,20 @@ The color system is deliberately minimal. The primary palette consists of just t
 - Single button variant: dark background, light text, tight vertical padding (4px 20px)
 - Underlined links as default link style, reinforcing the text-centric identity
 
+### Do's and Don'ts
+
+- **DO** use Berkeley Mono everywhere — headings, body, buttons, navigation, labels. The single-font system IS the brand.
+- **DON'T** introduce a sans-serif or serif voice — even for "marketing" copy. Mixing voices breaks OpenCode's terminal-native identity.
+- **DO** use warm dark `#201d1d` (rgb 32, 29, 29) as background — the subtle red undertone is intentional.
+- **DON'T** use pure `#000000` or cool grays — they feel like generic dark themes, not OpenCode's lived-in terminal warmth.
+- **DO** use warm off-white `#fdfcfc` for foreground text — pure white is too cold against the warm dark.
+- **DO** use 4px border radius universally — sharp, utilitarian corners match the developer-tool aesthetic.
+- **DON'T** use rounded or pill-shaped components — that's consumer/marketing language.
+- **DO** apply Apple HIG semantic colors (blue `#007aff`, red `#ff3b30`, green `#30d158`, orange `#ff9f0a`) for status — they're trustworthy signals without adding brand complexity.
+- **DON'T** invent custom semantic colors — the Apple palette is the convention developers expect.
+- **DO** underline links by default — text-centric identity reinforces "everything is code."
+- **DON'T** use color-only link styling without underline — accessibility AND identity benefit from the underline.
+
 ## 2. Color Palette & Roles
 
 ### Primary

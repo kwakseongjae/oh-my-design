@@ -32,6 +32,17 @@ What makes SpaceX distinctive is its radical minimalism: no shadows, no borders 
 ### Gradient
 - **Dark Overlay** (`rgba(0, 0, 0, 0.5)`): Gradient overlay on photographs to ensure text legibility
 
+### Resolved Surface Tints
+The rgba overlays above resolve to these effective hex values when composited on the black canvas:
+- **Ghost Surface Resolved** (`#1a1a1f`): `rgba(240, 240, 250, 0.1)` over `#000000`.
+- **Ghost Border Resolved** (`#56565b`): `rgba(240, 240, 250, 0.35)` over `#000000`.
+- **Photo-overlay Resolved** (`#0d0d0d`): Effective tone after the 50% black overlay on hero photography.
+
+### Mission Status & Live-Indicator Accents
+Used sparingly in countdown and launch-status modules:
+- **Active Red** (`#cc0000`): Live transmission indicator, "active mission" status.
+- **Status Amber** (`#f5a623`): Pre-launch / hold status, secondary warnings.
+
 ## 3. Typography Rules
 
 ### Font Families

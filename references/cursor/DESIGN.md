@@ -19,6 +19,19 @@ The border system is particularly distinctive -- Cursor uses `oklab()` color spa
 - Pill-shaped elements with extreme radius (33.5M px, effectively full-pill)
 - 8px base spacing system with fine-grained sub-8px increments (1.5px, 2px, 2.5px, 3px, 4px, 5px, 6px)
 
+### Do's and Don'ts
+
+- **DO** lean into warm neutrals — `#f2f1ed` canvas, `#26251e` text, `oklab` borders. Pure white or pure black breaks the warm-print atmosphere.
+- **DON'T** introduce cold grays (`#e5e7eb`, `#6b7280`) — they fight the warm undertone and feel mechanical against Cursor's literary warmth.
+- **DO** apply aggressive negative letter-spacing (-2.16px at 72px, scaling proportionally) on display headlines. Compressed type is the brand voice.
+- **DON'T** use default tracking on display sizes — it reads as generic and undersells Cursor's typographic care.
+- **DO** use the three-font system deliberately: CursorGothic for display, jjannon serif for body and editorial passages, berkeleyMono for code.
+- **DON'T** mix fonts from outside the system — adding a fourth voice fragments the carefully curated typographic palette.
+- **DO** use `oklab()` color space for borders and overlays where supported — perceptually uniform colors maintain consistency across backgrounds.
+- **DON'T** fall back to flat rgba() borders without considering perceptual contrast on different surface tints.
+- **DO** use full-pill buttons (extreme radius) for primary CTAs — they're part of the warm, approachable feel.
+- **DON'T** use sharp 2-4px corners on buttons — that aesthetic belongs to engineering brands like NVIDIA, not Cursor's editorial warmth.
+
 ## 2. Color Palette & Roles
 
 ### Primary

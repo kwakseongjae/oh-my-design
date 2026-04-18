@@ -2,6 +2,69 @@ import { NextResponse } from 'next/server';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
+const HEX_RE = /^#[0-9a-f]{3,8}$/i;
+const KEYWORD_RE = /^(serif|sans-serif|monospace|var|inherit|system-ui|none)$/i;
+
+function isValidFontName(s: string): boolean {
+  if (!s || s.length > 50) return false;
+  if (HEX_RE.test(s)) return false;
+  if (KEYWORD_RE.test(s)) return false;
+  return true;
+}
+
+function cleanFontToken(raw: string): string {
+  return raw.replace(/['"`]/g, '').replace(/[;].*/, '').trim();
+}
+
+function extractPrimaryFont(md: string): string {
+  const sec3 = md.match(/## 3\. Typography[\s\S]*?(?=## 4\.)/i)?.[0] ?? md;
+
+  // 1. **Primary** label
+  const primary = sec3.match(/\*\*Primary[^*]*\*\*:?\s*`([^`]+)`/i);
+  if (primary) {
+    const first = cleanFontToken(primary[1].split(',')[0]);
+    if (isValidFontName(first)) return first;
+  }
+
+  // 2. **Display** / **Sans** / **Heading** label
+  const display = sec3.match(/\*\*(?:Display|Sans|Heading)[^*]*\*\*:?\s*`([^`]+)`/i);
+  if (display) {
+    const first = cleanFontToken(display[1].split(',')[0]);
+    if (isValidFontName(first)) return first;
+  }
+
+  // 3. font-family declaration (first non-keyword)
+  for (const m of sec3.matchAll(/font-family:\s*([^;\n]+)/gi)) {
+    for (const tok of m[1].split(',')) {
+      const cleaned = cleanFontToken(tok);
+      if (isValidFontName(cleaned)) return cleaned;
+    }
+  }
+
+  // 4. First capitalized backticked font name (heuristic)
+  for (const m of sec3.matchAll(/`([A-Z][A-Za-z][\w\s\-]{2,40})`/g)) {
+    const name = m[1].trim();
+    if (name.length > 35) continue;
+    if (/^(?:Display|Heading|Body|Caption|Small|Large|Medium|Regular|Bold|Light|Italic|Mono|Sans|Serif|Variable|Pro|UI|Inter Placeholder|Inter Fallback|Fallback|XS|S|M|L|XL|XXL|SemiBold|ExtraBold|Black|Thin)$/i.test(name)) continue;
+    if (/^[0-9]/.test(name)) continue;
+    if (isValidFontName(name)) return name;
+  }
+
+  return 'Inter';
+}
+
+function extractMonoFont(md: string): string | undefined {
+  const sec3 = md.match(/## 3\. Typography[\s\S]*?(?=## 4\.)/i)?.[0] ?? md;
+  // Explicit Monospace label
+  const m = sec3.match(/\*\*Monospace[^*]*\*\*:?\s*`([^`]+)`/i)
+    ?? sec3.match(/\*\*Mono[^*]*\*\*:?\s*`([^`]+)`/i);
+  if (m) {
+    const first = cleanFontToken(m[1].split(',')[0]);
+    if (isValidFontName(first)) return first;
+  }
+  return undefined;
+}
+
 export async function GET(
   _req: Request,
   { params }: { params: Promise<{ id: string }> },
@@ -34,11 +97,10 @@ export async function GET(
   const fgMatch = designMd.match(/(?:heading|primary text).*?`(#[0-9a-fA-F]{6})`/i);
   const foreground = fgMatch ? fgMatch[1] : '#09090b';
 
-  const fontMatch = designMd.match(/\*\*Primary\*\*:\s*`([^`]+)`/i);
-  const fontFamily = fontMatch ? fontMatch[1].split(',')[0].trim() : 'Inter';
-
-  const monoMatch = designMd.match(/\*\*Monospace\*\*:\s*`([^`]+)`/i);
-  const mono = monoMatch ? monoMatch[1].split(',')[0].trim() : undefined;
+  // Broader font extraction — looks at §3 with multiple patterns to avoid Inter fallback
+  // for refs that don't use the strict **Primary**: format.
+  const fontFamily = extractPrimaryFont(designMd);
+  const mono = extractMonoFont(designMd);
 
   const weightMatch = designMd.match(/Display.*?\|\s*(\d{3})\s*\|/);
   const headingWeight = weightMatch ? weightMatch[1] : '600';

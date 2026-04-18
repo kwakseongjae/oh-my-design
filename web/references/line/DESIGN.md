@@ -107,6 +107,31 @@ Iconified app store badges (App Store, Google Play, Desktop) instead of textual 
 - Centered "Scroll" label below the hero with a subtle vertical line animation
 - Reinforces the magazine-like vertical narrative
 
+### Cards
+
+LINE marketing chrome rarely uses traditional card containers — content sits directly on photographic backgrounds. When cards do appear (LINE STORE, LINE SHOPPING, in-product UI), they follow a minimal pattern:
+
+**Service / Feature Card**
+- Background: `#ffffff` on the gray content tier, OR full-bleed image with overlay text
+- Radius: `12px` (medium-rounded — softer than the marketing pill buttons would suggest)
+- Padding: `20–24px`
+- Border: `1px solid rgba(0, 0, 0, 0.06)` — whisper-light
+- Shadow: `0 2px 8px rgba(0, 0, 0, 0.04)` for subtle elevation only
+- Service icon (top-left, 32–40px) + title (16px weight 700 `#1e1e1e`) + 1-line description (14px weight 400 `rgba(30,30,30,0.7)`)
+
+**Image-Led Card (LINE STICKERS, LINE WEBTOON tiles)**
+- Image fills 70-80% of the card
+- Title strip at bottom with `rgba(0, 0, 0, 0.6)` overlay + white text
+- `12px` radius on the outer container, image inside `border-radius: 12px 12px 0 0`
+
+**App Download Tile**
+- Square tile, 56px touch target
+- White bg, `1px` border, `~12px` radius
+- Platform icon (Apple / Google Play / Desktop) centered
+
+**Anti-pattern**
+- Don't apply the pill `50px` button radius to cards — that's reserved for interactive controls only.
+
 ## 5. Layout Principles
 
 ### Spacing

@@ -83,7 +83,25 @@ Airtable's website is a clean, enterprise-friendly platform that communicates "s
 Breakpoints: 425–1664px (23 breakpoints)
 
 ## 9. Agent Prompt Guide
-- Text: Deep Navy (`#181d26`)
-- CTA: Airtable Blue (`#1b61c9`)
-- Background: White (`#ffffff`)
-- Border: `#e0e2e6`
+
+### Quick Color Reference
+- Primary CTA: Airtable Blue (`#1b61c9`)
+- CTA hover: deepen to `#0f4ba0` (estimated ~10% darker)
+- Heading / body text: Deep Navy (`#181d26`)
+- Muted text: `~#6b7280` (estimated)
+- Page background: White (`#ffffff`)
+- Border default: `#e0e2e6`
+- Spotlight surface: `rgba(249,252,255,0.97)`
+- Success: Green (`#006400`)
+
+### Example Component Prompts
+- "Create an Airtable-style primary button: bg `#1b61c9`, white text, `12px` border-radius, `12px 20px` padding, Haas font weight 500 14px. Hover: bg darkens ~10%. Box-shadow: `rgba(45,127,249,0.28) 0px 1px 3px` for the signature blue-tinted lift."
+- "Build a card: white bg, `1px solid #e0e2e6` border, `16px` radius (or `24-32px` for featured cards), `24px` padding. Title in Haas Groot Disp 18px weight 600 `#181d26`. Body in Haas 14px weight 400 with `0.08-0.28px` positive letter-spacing for that Swiss precision."
+- "Design a navigation header: white sticky bar, Haas wordmark left, link nav (14px weight 500 `#181d26`, hover to `#1b61c9`), Airtable Blue CTA right. Bottom border `1px solid #e0e2e6` on scroll."
+
+### Iteration Guide
+1. Apply positive letter-spacing on body and small text (0.08-0.28px) — it's Airtable's typographic signature.
+2. Use the multi-layer blue-tinted shadow (`rgba(45,127,249,0.28) 0px 1px 3px`) on primary buttons — it ties elevation to the brand color.
+3. Use semantic `--theme_*` token naming when building shadcn variables — matches Airtable's internal convention.
+4. Cards use `12-32px` radius depending on size — small components 12px, hero cards up to 32px.
+5. Don't use heavy gray backgrounds — Airtable's depth comes from the spotlight surface (`rgba(249,252,255,0.97)`) and subtle borders.

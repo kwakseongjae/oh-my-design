@@ -42,6 +42,16 @@ The spacing system operates on an 8px base grid with values concentrated at the 
 - **Text Tertiary** (`rgba(255, 255, 255, 0.5)`): Muted labels, placeholder text, timestamps.
 - **Text Quaternary** (`rgba(255, 255, 255, 0.3)`): Disabled text, very subtle annotations.
 
+### Resolved Surface Tints
+The rgba overlays above resolve to these effective hex values when composited on the `#1f2228` canvas:
+- **Surface Elevated Resolved** (`#26292f`): `rgba(255, 255, 255, 0.05)` over `#1f2228`.
+- **Surface Hover Resolved** (`#2a2d33`): `rgba(255, 255, 255, 0.08)` over `#1f2228`.
+- **Border Default Resolved** (`#2c2f35`): `rgba(255, 255, 255, 0.1)` over `#1f2228`.
+- **Border Strong Resolved** (`#3a3d42`): `rgba(255, 255, 255, 0.2)` over `#1f2228`.
+
+### Focus Ring (explicit hex from Tailwind)
+- **Ring Blue** (`#3b82f6`): The Tailwind default focus color (`rgb(59, 130, 246)`) used for keyboard accessibility — only chromatic accent in the otherwise monochrome system.
+
 ## 3. Typography Rules
 
 ### Font Family

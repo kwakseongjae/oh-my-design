@@ -35,6 +35,17 @@ What makes Figma distinctive beyond the variable font is its circle-and-pill geo
 - **Hero Gradient**: A vibrant multi-stop gradient using electric green, bright yellow, deep purple, and hot pink. This gradient is the visual signature of the hero section — it represents the creative possibilities of the tool.
 - **Product Section Gradients**: Individual product areas (Design, Dev Mode, Prototyping) may use distinct color themes in their showcases.
 
+### Resolved Surface Tints
+The rgba overlays above resolve to these effective hex values when composited on standard backgrounds:
+- **Light Border** (`#ebebeb`): `rgba(0, 0, 0, 0.08)` composited on white — subtle separator.
+- **Dark Glass** (`#292929`): `rgba(255, 255, 255, 0.16)` composited on black — used inside dark hero sections.
+- **Muted Text** (`#374151`): Used for secondary copy in product UI screenshots and footer links.
+
+### Product Accent Colors
+These appear in product UI screenshots and hero gradients (NOT in marketing chrome):
+- **Figma Plugin Purple** (`#a259ff`): Common product accent in plugin/extension cards.
+- **Plot Pink** (`#f24e1e`): Brand-adjacent accent used in select marketing visuals.
+
 ## 3. Typography Rules
 
 ### Font Family
