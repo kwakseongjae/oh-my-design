@@ -81,17 +81,33 @@ export async function GET(
   const primaryMatch = designMd.match(/## 2\. Color[\s\S]*?\*\*([^*]+)\*\*\s*\(`(#[0-9a-fA-F]{6})`\).*?(?:primary|brand|CTA|main)/i);
   const primary = primaryMatch ? primaryMatch[2] : '#6366f1';
 
-  const quickBg = designMd.match(/Quick Color Reference[\s\S]*?Background.*?`(#[0-9a-fA-F]{6})`/i);
-  const s2 = designMd.match(/## 2\. Color.*?\n([\s\S]*?)(?=## 3\.)/);
+  // Background extraction — priority ladder:
+  //  (1) An explicit **Name** (`#hex`) entry in §2 whose prose role-labels it
+  //      as the page background / primary canvas. This wins across §2
+  //      subsections — Claude/Framer/Expo put it under Surface & Background,
+  //      Runway puts it under Primary.
+  //  (2) Quick Color Reference → Background row.
+  //  (3) First **Name** (`#hex`) entry in `### Surface & Background`.
+  //  (4) Default #ffffff.
+  //
+  // The old logic anchored on "Pure White|page background" which matched text
+  // colors first for dark-brand refs, forcing many of them (Claude, RunwayML,
+  // Sanity, ClickHouse, Composio, HashiCorp, Sentry, Expo, VoltAgent, Resend,
+  // SpaceX, Lamborghini) to render as white-canvas when their DESIGN.md
+  // explicitly declared a dark canvas.
+  const s2Full = designMd.match(/## 2\. Color[\s\S]*?(?=## 3\.)/i)?.[0] ?? '';
   let background = '#ffffff';
-  if (quickBg) background = quickBg[1];
-  else if (s2) {
-    const bg = s2[1].match(/(?:Pure White|page background).*?`(#[0-9a-fA-F]{6})`/i);
-    if (bg) background = bg[1];
-  }
-  if (designMd.match(/dark.mode.(?:native|first)/i)) {
-    const d = designMd.match(/(?:marketing|deepest|canvas).*?`(#[0-9a-fA-F]{6})`/i);
-    if (d) background = d[1];
+  const roleRe = /\*\*[^*]+\*\*\s*\(`(#[0-9a-fA-F]{6})`\)[^\n]{0,200}?(?:primary\s+page\s+background|primary\s+canvas|main\s+canvas|default\s+canvas|page\s+background|primary\s+background|the\s+primary\s+(?:page\s+)?(?:canvas|background)|page\s+canvas|void\s+canvas|main\s+page\s+background)/i;
+  const explicit = s2Full.match(roleRe);
+  if (explicit) background = explicit[1];
+  else {
+    const quickBg = designMd.match(/Quick Color Reference[\s\S]*?Background.*?`(#[0-9a-fA-F]{6})`/i);
+    if (quickBg) background = quickBg[1];
+    else {
+      const surface = s2Full.match(/###\s+Surface[^\n]*\n([\s\S]*?)(?=\n###|\n## )/i)?.[1];
+      const first = surface?.match(/\*\*[^*]+\*\*\s*\(`(#[0-9a-fA-F]{6})`\)/);
+      if (first) background = first[1];
+    }
   }
 
   const fgMatch = designMd.match(/(?:heading|primary text).*?`(#[0-9a-fA-F]{6})`/i);

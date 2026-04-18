@@ -43,37 +43,52 @@ function Section({ title, kicker, children }: { title: string; kicker?: string; 
 }
 
 /* ─────────── Hero ─────────── */
+/** Hero renders inside a contained rounded surface tinted with the brand's
+ *  identity.background + identity.foreground. Keeping it contained (not
+ *  full-bleed) lets dark-brand refs like Framer/Cohere/Expo preview cleanly
+ *  without blacking out the entire app canvas around them. */
 function HeroSection({ tokens }: { tokens: ParsedTokens }) {
   const { identity, typography } = tokens;
+  const primaryFont = typography.family.split(",")[0].replace(/['"]/g, "");
+  const pillStyle = {
+    background: identity.foreground + "10",
+    color: identity.foreground,
+    borderColor: identity.foreground + "30",
+  } as const;
   return (
-    <header className="mx-auto max-w-5xl px-6 pt-16 pb-12">
-      <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground mb-3">Design System</div>
-      <h1 className="text-5xl font-bold tracking-tight" style={{ color: identity.foreground, fontFamily: typography.family }}>
-        {identity.name}
-      </h1>
-      {identity.mood && (
-        <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground" style={{ fontFamily: typography.family }}>
-          {identity.mood.length > 360 ? identity.mood.slice(0, 360) + "…" : identity.mood}
-        </p>
-      )}
-      <div className="mt-8 flex flex-wrap gap-2">
-        <span className="inline-flex items-center gap-2 rounded-full bg-card px-3 py-1.5 text-xs ring-1 ring-border/60">
-          <span className="h-3 w-3 rounded-full" style={{ background: identity.primary }} />
-          <span className="font-mono text-muted-foreground">{identity.primary}</span>
-          <span className="text-muted-foreground/60">primary</span>
-        </span>
-        {identity.accent && (
-          <span className="inline-flex items-center gap-2 rounded-full bg-card px-3 py-1.5 text-xs ring-1 ring-border/60">
-            <span className="h-3 w-3 rounded-full" style={{ background: identity.accent }} />
-            <span className="font-mono text-muted-foreground">{identity.accent}</span>
-            <span className="text-muted-foreground/60">accent</span>
-          </span>
+    <div className="mx-auto max-w-5xl px-6 pt-10 pb-4">
+      <header
+        className="rounded-2xl ring-1 ring-border/40 px-6 py-10 sm:px-10 sm:py-14 overflow-hidden"
+        style={{ background: identity.background, color: identity.foreground }}
+      >
+        <div className="text-[11px] font-semibold uppercase tracking-[0.15em] mb-3 opacity-60">Design System</div>
+        <h1 className="text-5xl font-bold tracking-tight" style={{ fontFamily: typography.family }}>
+          {identity.name}
+        </h1>
+        {identity.mood && (
+          <p className="mt-6 max-w-2xl text-base leading-relaxed opacity-75" style={{ fontFamily: typography.family }}>
+            {identity.mood.length > 360 ? identity.mood.slice(0, 360) + "…" : identity.mood}
+          </p>
         )}
-        <span className="inline-flex items-center rounded-full bg-card px-3 py-1.5 text-xs ring-1 ring-border/60 text-muted-foreground">
-          {typography.family.split(",")[0].replace(/['"]/g, "")}
-        </span>
-      </div>
-    </header>
+        <div className="mt-8 flex flex-wrap gap-2">
+          <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs ring-1" style={pillStyle}>
+            <span className="h-3 w-3 rounded-full" style={{ background: identity.primary }} />
+            <span className="font-mono opacity-80">{identity.primary}</span>
+            <span className="opacity-60">primary</span>
+          </span>
+          {identity.accent && (
+            <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs ring-1" style={pillStyle}>
+              <span className="h-3 w-3 rounded-full" style={{ background: identity.accent }} />
+              <span className="font-mono opacity-80">{identity.accent}</span>
+              <span className="opacity-60">accent</span>
+            </span>
+          )}
+          <span className="inline-flex items-center rounded-full px-3 py-1.5 text-xs ring-1 opacity-80" style={pillStyle}>
+            {primaryFont}
+          </span>
+        </div>
+      </header>
+    </div>
   );
 }
 
@@ -141,7 +156,7 @@ function TypographySection({ tokens }: { tokens: ParsedTokens }) {
       <div className="rounded-xl bg-card p-6 ring-1 ring-border/40 mb-6">
         <div className="flex items-baseline justify-between mb-6 gap-4 flex-wrap">
           <div>
-            <div className="text-[10px] font-mono text-muted-foreground mb-1">02 / TYPOGRAPHY HIERARCHY</div>
+            <div className="text-[10px] font-mono text-muted-foreground mb-1">01 / TYPE SCALE</div>
             <h3 className="text-xl font-bold" style={{ color: identity.foreground }}>Type Scale</h3>
           </div>
           <div className="text-[10px] text-muted-foreground italic max-w-xs text-right">
@@ -194,7 +209,7 @@ function TypographySection({ tokens }: { tokens: ParsedTokens }) {
       <div className="rounded-xl bg-card p-6 ring-1 ring-border/40">
         <div className="flex items-baseline justify-between mb-4 gap-4 flex-wrap">
           <div>
-            <div className="text-[10px] font-mono text-muted-foreground mb-1">FONTS USED BY THIS BRAND</div>
+            <div className="text-[10px] font-mono text-muted-foreground mb-1">02 / FONTS USED BY THIS BRAND</div>
             <h3 className="text-xl font-bold" style={{ color: identity.foreground }}>{fonts.length} font{fonts.length !== 1 ? "s" : ""} extracted from DESIGN.md</h3>
           </div>
           <div className="text-[10px] text-muted-foreground italic max-w-sm text-right">
@@ -557,8 +572,13 @@ export function ReferencePreview({
 }) {
   const tokens = applyOverrides(rawTokens, overrides);
   const wrapperClass = embedded ? "" : "min-h-screen";
+  // Intentionally NOT setting background/color here — the brand canvas lives inside the
+  // Hero card, not on the full-bleed wrapper. That way dark-brand refs (Framer, Cohere,
+  // Expo, Cursor, Webflow…) don't turn the entire app page black when the user is in
+  // light mode. Every inner section already provides its own surface (`bg-card` or an
+  // explicit `identity.background` on a contained element).
   return (
-    <div className={wrapperClass} style={{ background: tokens.identity.background, color: tokens.identity.foreground }}>
+    <div className={wrapperClass}>
       <HeroSection tokens={tokens} />
       <ColorsSection tokens={tokens} />
       <TypographySection tokens={tokens} />

@@ -277,26 +277,19 @@ function buildHierarchy(sizes: number[], headingWeight: string, hasCJK: boolean)
   const caption = sorted.find((s) => s >= 10 && s <= 12) ?? 12;
   const smallest = sorted.find((s) => s >= 9 && s <= 10) ?? 10;
 
-  // Mixed CJK/EN samples for Asian brands; English-only otherwise.
-  const sample = hasCJK
-    ? {
-        display: "デザイン — Design at scale",
-        headingXL: "セクション見出し — Section",
-        headingL: "サブ見出し — Subheading",
-        body: "本文テキスト — Body text. Designed for readable line-height across CJK and Latin scripts together.",
-        small: "補足テキスト — Supporting text",
-        caption: "キャプション — Caption · 2026",
-        smallest: "バッジ — BADGE",
-      }
-    : {
-        display: "Design at scale",
-        headingXL: "Section heading",
-        headingL: "Subheading",
-        body: "Body text. The quick brown fox jumps over the lazy dog. Designed for readable line-height in long-form content.",
-        small: "Supporting text",
-        caption: "Caption · timestamp · 2026",
-        smallest: "BADGE / LABEL",
-      };
+  // English-only samples — the hierarchy is rendered in system-ui purely to show
+  // scale & weight ratios. The brand's own fonts get full treatment in the
+  // cards below; mixing CJK in a system-ui preview just muddles the ratio comparison.
+  void hasCJK;
+  const sample = {
+    display: "Design at scale",
+    headingXL: "Section heading",
+    headingL: "Subheading",
+    body: "Body text. The quick brown fox jumps over the lazy dog. Designed for readable line-height in long-form content.",
+    small: "Supporting text",
+    caption: "Caption · timestamp · 2026",
+    smallest: "BADGE / LABEL",
+  };
 
   return [
     { role: "Display",   label: `Display XXL`,    sampleText: sample.display,   fontSize: display,   fontWeight: hWeight,    lineHeight: 1.25, letterSpacing: "-0.01em" },
