@@ -64,11 +64,8 @@ export function applyOverrides(
   // Append iconography section
   md += buildIconographySection();
 
-  // Generate shadcn CSS
+  // Generate shadcn CSS for preview data only (no longer appended to DESIGN.md)
   const shadcnCss = generateShadcnCss(effectivePrimary, effectiveBg, effectiveFg, effectiveRadius, ref, overrides);
-
-  // Append shadcn CSS block
-  md += buildShadcnSection(shadcnCss);
 
   // Append document policies
   md += buildDocumentPolicies();
@@ -404,7 +401,6 @@ This document follows the Google Stitch DESIGN.md 9-section format:
 
 Extended with:
 - Iconography & SVG Guidelines
-- shadcn/ui Theme (CSS variables block)
 - Document Policies
 
 Total target length: 250-400 lines. Keep sections concise and actionable.

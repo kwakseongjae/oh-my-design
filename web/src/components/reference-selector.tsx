@@ -72,6 +72,50 @@ function XIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
+/**
+ * Star — the quality mark for Philosophy references. Sits in a
+ * monochrome circular badge on the reference card, and decorates the
+ * Philosophy filter chip. Rendered in yellow to read as an editorial
+ * "highlight / included in the curated set" mark.
+ */
+function StarIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+  );
+}
+
+/**
+ * Philosophy — curated reference set with a complete brand philosophy
+ * (voice, narrative, principles, personas, states, motion) written
+ * against public sources. Surfaces as a small monochrome eye badge
+ * on the reference card and a "Philosophy" filter in the selector —
+ * same term as the "Include brand philosophy" toggle in the Export
+ * step, for vocabulary continuity across the product.
+ *
+ * When adding an entry here, make sure the reference's DESIGN.md carries
+ * the philosophy-layer sections AND a Sources block at the bottom
+ * (see spec/omd-v0.1.md for the contract).
+ */
+const PHILOSOPHY_IDS = new Set<string>([
+  "airbnb",
+  "apple",
+  "claude",
+  "figma",
+  "line",
+  "linear.app",
+  "notion",
+  "stripe",
+  "toss",
+  "vercel",
+]);
 import { isLight } from "@/lib/core/color";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import type { RefListItem } from "@/app/builder/page";
@@ -92,6 +136,7 @@ export function ReferenceSelector({
   const [filter, setFilter] = useState("");
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+  const [philosophyOnly, setPhilosophyOnly] = useState(false);
   const searchTimer = useRef<ReturnType<typeof setTimeout>>(null);
 
   const COUNTRY_FLAGS: Record<string, string> = {
@@ -122,6 +167,7 @@ export function ReferenceSelector({
   }, []);
 
   const filtered = refs.filter((r) => {
+    if (philosophyOnly && !PHILOSOPHY_IDS.has(r.id)) return false;
     if (selectedCat && r.category !== selectedCat) return false;
     if (selectedCountry && r.country !== selectedCountry) return false;
     if (filter && !r.name.toLowerCase().includes(filter.toLowerCase())) return false;
@@ -218,6 +264,38 @@ export function ReferenceSelector({
           </div>
         </div>
 
+        {/* Philosophy filter — curated references with a full brand philosophy.
+            Row structure mirrors the Country row: prefix label + chip.
+            Chip label reads "Included" — these are the refs that include
+            the brand-philosophy layer. */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="text-xs text-muted-foreground mr-1">Philosophy</span>
+          <button
+            onClick={() => {
+              const next = !philosophyOnly;
+              setPhilosophyOnly(next);
+              event("philosophy_filter", { on: next });
+            }}
+            aria-pressed={philosophyOnly}
+            title="Show only references whose brand philosophy (voice, principles, personas, states) is included and sourced against public references"
+            className={`rounded-full px-3 py-1 text-xs font-medium transition-all flex items-center gap-1.5 ${
+              philosophyOnly
+                ? "bg-foreground/10 text-foreground"
+                : "border border-border/30 text-muted-foreground hover:text-foreground hover:border-border"
+            }`}
+          >
+            <StarIcon className="h-3 w-3 text-yellow-400" />
+            <span>Included</span>
+            <span
+              className={`ml-0.5 rounded-full px-1.5 py-px text-[10px] tabular-nums ${
+                philosophyOnly ? "bg-foreground/15" : "bg-muted"
+              }`}
+            >
+              {PHILOSOPHY_IDS.size}
+            </span>
+          </button>
+        </div>
+
         {/* Country filter row */}
         <div className="flex flex-wrap items-center gap-1.5">
           <span className="text-xs text-muted-foreground mr-1">Country</span>
@@ -291,6 +369,18 @@ export function ReferenceSelector({
                   <span className="absolute bottom-2 left-2 rounded bg-black/20 px-1.5 py-0.5 font-mono text-[9px] text-white/80 backdrop-blur-sm">
                     {ref.primaryColor}
                   </span>
+                  {/* Philosophy mark — always visible on qualifying cards.
+                      Glassmorphism: heavy backdrop blur + light tint, no border.
+                      Floats over any swatch color with a soft floating shadow. */}
+                  {PHILOSOPHY_IDS.has(ref.id) && (
+                    <span
+                      className="absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded-full bg-black/15 backdrop-blur-xl shadow-[0_4px_12px_rgba(0,0,0,0.18)]"
+                      title="Philosophy — brand philosophy sourced against public references"
+                      aria-label="Philosophy"
+                    >
+                      <StarIcon className="h-3 w-3 text-yellow-400" />
+                    </span>
+                  )}
                 </div>
 
                 {/* Info */}

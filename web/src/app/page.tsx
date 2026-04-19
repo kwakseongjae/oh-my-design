@@ -148,7 +148,7 @@ export default function Landing() {
           <div className="animate-fade-up animate-delay-6 mx-auto mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed text-center">
             <p>Start from a design system built by top companies.</p>
             <p>Customize colors, radius, and dark mode.</p>
-            <p>Export <span className="font-semibold text-foreground">DESIGN.md</span> + <span className="font-semibold text-foreground">shadcn/ui CSS</span>.</p>
+            <p>Export <span className="font-semibold text-foreground">DESIGN.md</span>.</p>
           </div>
 
           {/* CTAs */}

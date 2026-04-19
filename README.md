@@ -5,7 +5,11 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>Generate DESIGN.md from 67 real company design systems. Interactive wizard + shadcn/ui CSS export. Zero AI calls.</strong>
+  <strong>Generate DESIGN.md from 67 real company design systems.</strong> Interactive wizard. Zero AI calls.
+</p>
+
+<p align="center">
+  <strong>Now with the OmD v0.1 Philosophy Layer.</strong> Voice · Narrative · Principles · Personas · States · Motion — so Claude Code matches your brand, not the AI's default.
 </p>
 
 <p align="center">
@@ -24,12 +28,32 @@
 
 ## What is oh-my-design?
 
-**oh-my-design** picks up where [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) left off.
+**oh-my-design (OmD)** is an open spec for giving AI coding agents enough brand context to produce on-brand UI instead of the AI's statistical default.
 
-Choose a real company's design system, customize it through an interactive A/B wizard, and export a production-ready `DESIGN.md` that any AI coding agent can use to generate consistent UI.
+`DESIGN.md` as [Google defined it](https://stitch.withgoogle.com/docs/design-md/overview/) is a **token document** — colors, typography, components. Necessary, but not sufficient. When an agent generates UI from tokens alone, the output is coherent but branded like nobody — it defaults to Inter-on-white, purple gradients, unjustified emojis. OmD v0.1 adds a **brand-philosophy layer** on top: **Voice · Narrative · Principles · Personas · States · Motion**. Drop an OmD `DESIGN.md` at your project root and the agent's output stops being generic and starts being yours.
 
-- Built on the [Google Stitch](https://stitch.withgoogle.com/) DESIGN.md format
-- **No API keys. No AI calls. Everything runs client-side.**
+Three pieces:
+
+1. **[Spec](spec/omd-v0.1.md)** — versioned, additive to Google Stitch, MIT-licensed.
+2. **[Claude Code skill](.claude/skills/omd/SKILL.md)** — auto-applies the spec as a hard constraint when generating UI in Claude Code.
+3. **[67 reference files](references/)** — real-company `DESIGN.md` files you can fork, customize with the interactive builder, and ship.
+
+**No API keys. No AI calls. Everything runs client-side.**
+
+## OmD v0.1 Philosophy Layer
+
+The 6 sections OmD adds on top of Google Stitch's 9:
+
+| Section | Purpose |
+|---|---|
+| **10. Voice & Tone** | Microcopy constraints — button labels, errors, onboarding |
+| **11. Brand Narrative** | The "why" — what the brand rejects, what it's trying to move |
+| **12. Principles** | 5–10 first-principles rules that break ties when tokens don't |
+| **13. Personas** | 2–4 concrete users so agents ground output in real use cases |
+| **14. States** | Empty / loading / error / skeleton patterns — prevents generic "No data found" |
+| **15. Motion & Easing** | Named duration + easing tokens — the dimension Stitch's 9 sections miss |
+
+See [references/toss/DESIGN.md](references/toss/DESIGN.md) for a full OmD v0.1 example.
 
 ## What's inside
 
@@ -55,8 +79,9 @@ Choose a real company's design system, customize it through an interactive A/B w
 
 ## Exported DESIGN.md
 
-Follows the [Google Stitch DESIGN.md format](https://stitch.withgoogle.com/docs/design-md/overview/):
+Follows the [Google Stitch DESIGN.md format](https://stitch.withgoogle.com/docs/design-md/overview/) — base sections 1–9, plus the OmD v0.1 Philosophy Layer (sections 10–15) when enabled:
 
+**Base (Google Stitch)**
 1. Visual Theme & Atmosphere
 2. Color Palette & Roles
 3. Typography Rules
@@ -66,14 +91,24 @@ Follows the [Google Stitch DESIGN.md format](https://stitch.withgoogle.com/docs/
 7. Do's and Don'ts
 8. Responsive Behavior
 9. Agent Prompt Guide
-10. shadcn/ui Theme (CSS variables)
 
-Plus: Style Preferences, Included Components, Iconography & SVG Guidelines, Document Policies (no-emoji rule).
+**OmD v0.1 Philosophy Layer (additive)**
+
+10. Voice & Tone
+11. Brand Narrative
+12. Principles
+13. Personas
+14. States
+15. Motion & Easing
+
+Plus: Style Preferences, Included Components, Iconography & SVG Guidelines, Document Policies.
 
 ## Project Structure
 
 ```
 oh-my-design/
+  spec/              OmD v0.1 spec (authoritative)
+  .claude/skills/omd/ Claude Code skill bundle
   references/        67 company DESIGN.md files
   src/               CLI core (TypeScript)
   web/               Next.js web builder

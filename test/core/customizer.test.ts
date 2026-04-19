@@ -9,7 +9,9 @@ describe('applyOverrides', () => {
     const { designMd } = applyOverrides(ref, { darkMode: false }, 'as-is');
     expect(designMd).toContain('Stripe');
     expect(designMd).toContain('## 1. Visual Theme');
-    expect(designMd).toContain('## 10. shadcn/ui Theme');
+    // OmD v0.1: DESIGN.md is spec-only; shadcn/ui CSS is generated separately
+    // via shadcnCss return value and no longer appended to the document body.
+    expect(designMd).not.toContain('## 10. shadcn/ui Theme');
   });
 
   it('should replace primary color in customized mode', () => {

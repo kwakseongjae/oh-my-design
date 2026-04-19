@@ -5,7 +5,11 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>67개 기업 디자인 시스템 기반 DESIGN.md 생성기. 인터랙티브 위자드 + shadcn/ui CSS 내보내기. AI 호출 없음.</strong>
+  <strong>67개 기업 디자인 시스템 기반 DESIGN.md 생성기.</strong> 인터랙티브 위자드. AI 호출 없음.
+</p>
+
+<p align="center">
+  <strong>이제 OmD v0.1 Philosophy Layer까지.</strong> Voice · Narrative · Principles · Personas · States · Motion — Claude Code가 AI의 디폴트가 아니라 당신의 브랜드에 맞춰 출력합니다.
 </p>
 
 <p align="center">
@@ -24,12 +28,32 @@
 
 ## oh-my-design란?
 
-**oh-my-design**은 [awesome-design-md](https://github.com/VoltAgent/awesome-design-md)의 확장입니다.
+**oh-my-design (OmD)** 은 AI 코딩 에이전트에게 "브랜드로서의" UI를 만들어낼 만큼의 컨텍스트를 제공하는 오픈 스펙입니다.
 
-실제 대기업의 디자인 시스템을 골라 인터랙티브 A/B 위자드로 커스터마이징하고, AI 코딩 에이전트가 바로 사용할 수 있는 `DESIGN.md`를 생성합니다.
+[Google이 제안한](https://stitch.withgoogle.com/docs/design-md/overview/) `DESIGN.md`는 본질적으로 **토큰 문서**입니다 — 색상, 타이포, 컴포넌트. 필요하지만 충분하진 않죠. 토큰만으로 UI를 만들면 형태는 그럴싸하지만 "누구의 브랜드"도 아닙니다 — Inter-on-white, 보라색 그라디언트, 의미 없는 이모지 같은 AI의 디폴트로 수렴합니다. OmD v0.1은 그 위에 **브랜드 철학 레이어**를 얹습니다: **Voice · Narrative · Principles · Personas · States · Motion**. OmD 포맷의 `DESIGN.md`를 프로젝트 루트에 두면 에이전트의 결과물이 제네릭하지 않고 "당신의 것"이 됩니다.
 
-- [Google Stitch](https://stitch.withgoogle.com/) DESIGN.md 포맷 준수
-- **API 키 불필요. AI 호출 없음. 모두 클라이언트 사이드.**
+세 가지 구성:
+
+1. **[스펙](spec/omd-v0.1.md)** — 버전 관리되는 Google Stitch 확장, MIT 라이선스.
+2. **[Claude Code 스킬](.claude/skills/omd/SKILL.md)** — 스펙을 하드 제약으로 자동 적용.
+3. **[67개 레퍼런스](references/)** — 실제 기업의 `DESIGN.md` 파일들을 포크하고, 빌더로 커스터마이징해 바로 씁니다.
+
+**API 키 불필요. AI 호출 없음. 모두 클라이언트 사이드.**
+
+## OmD v0.1 Philosophy Layer
+
+Google Stitch의 9개 섹션 위에 OmD가 더하는 6개:
+
+| 섹션 | 역할 |
+|---|---|
+| **10. Voice & Tone** | 마이크로카피 제약 — 버튼 문구, 에러 메시지, 온보딩 |
+| **11. Brand Narrative** | "왜" — 브랜드가 거부하는 것, 바꾸려는 카테고리 |
+| **12. Principles** | 토큰으로 못 푸는 케이스를 결정짓는 5~10개의 1차 원리 |
+| **13. Personas** | 2~4명의 구체 사용자. 에이전트가 UI를 실제 사용 맥락에 grounded 하게 만들기 위함 |
+| **14. States** | Empty / loading / error / skeleton 패턴 — "No data found" 같은 제네릭 상태 방지 |
+| **15. Motion & Easing** | Named duration + easing 토큰 — Stitch 9개 섹션이 놓치는 차원 |
+
+전체 OmD v0.1 예시는 [references/toss/DESIGN.md](references/toss/DESIGN.md) 참고.
 
 ## 주요 구성
 
@@ -55,8 +79,9 @@
 
 ## 내보내는 DESIGN.md
 
-[Google Stitch DESIGN.md 포맷](https://stitch.withgoogle.com/docs/design-md/overview/)을 따릅니다:
+[Google Stitch DESIGN.md 포맷](https://stitch.withgoogle.com/docs/design-md/overview/) 기반 — 섹션 1~9 + OmD v0.1 Philosophy Layer(섹션 10~15, 선택):
 
+**베이스 (Google Stitch)**
 1. Visual Theme & Atmosphere
 2. Color Palette & Roles
 3. Typography Rules
@@ -66,14 +91,24 @@
 7. Do's and Don'ts
 8. Responsive Behavior
 9. Agent Prompt Guide
-10. shadcn/ui Theme (CSS 변수)
 
-그 외: Style Preferences, Included Components, Iconography & SVG Guidelines, Document Policies (no-emoji 규칙).
+**OmD v0.1 Philosophy Layer (추가)**
+
+10. Voice & Tone
+11. Brand Narrative
+12. Principles
+13. Personas
+14. States
+15. Motion & Easing
+
+그 외: Style Preferences, Included Components, Iconography & SVG Guidelines, Document Policies.
 
 ## 프로젝트 구조
 
 ```
 oh-my-design/
+  spec/              OmD v0.1 스펙 (정본)
+  .claude/skills/omd/ Claude Code 스킬 번들
   references/        67개 기업 DESIGN.md 파일
   src/               CLI 코어 (TypeScript)
   web/               Next.js 웹 빌더

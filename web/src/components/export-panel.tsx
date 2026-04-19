@@ -23,6 +23,11 @@ export function ExportPanel({
   const radius = overrides.borderRadius || detail.radius.replace(/[-–].*/, "").trim();
   const [copied, setCopied] = useState<string | null>(null);
 
+  // Only surface the toggle when the source file actually carries an OmD v0.1
+  // Philosophy Layer — checked via the canonical "## 10. Voice & Tone" header.
+  const hasPhilosophyLayer = detail.designMd.includes("## 10. Voice & Tone");
+  const [includePhilosophyLayer, setIncludePhilosophyLayer] = useState(true);
+
   const css = useMemo(
     () => generateShadcnCss(primary, detail.background, detail.foreground, radius, detail.accent, detail.border, overrides.darkMode),
     [primary, detail, radius, overrides.darkMode],
@@ -34,8 +39,9 @@ export function ExportPanel({
       detail.id.charAt(0).toUpperCase() + detail.id.slice(1),
       detail.primary, detail.fontFamily, detail.headingWeight,
       overrides, css, components, stylePreferences,
+      includePhilosophyLayer,
     ),
-    [detail, overrides, css, components, stylePreferences],
+    [detail, overrides, css, components, stylePreferences, includePhilosophyLayer],
   );
 
   function copyTo(key: string, text: string) {
@@ -63,7 +69,27 @@ export function ExportPanel({
       {/* DESIGN.md viewer */}
       <div className="rounded-xl border border-border/60 dark:border-border overflow-hidden">
         {/* Toolbar */}
-        <div className="flex items-center justify-end border-b border-border/40 dark:border-border bg-muted/20 dark:bg-muted/30 px-4 py-2">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/40 dark:border-border bg-muted/20 dark:bg-muted/30 px-4 py-2">
+          {hasPhilosophyLayer ? (
+            <label
+              className="flex items-center gap-2 text-sm text-foreground cursor-pointer select-none"
+              title="Voice · Narrative · Principles · Personas · States · Motion. Uncheck to export only the base design system."
+            >
+              <input
+                type="checkbox"
+                checked={includePhilosophyLayer}
+                onChange={(e) => {
+                  const next = e.target.checked;
+                  setIncludePhilosophyLayer(next);
+                  event("philosophy_toggle", { reference: detail.id, on: next });
+                }}
+                className="h-4 w-4 cursor-pointer accent-primary"
+              />
+              <span className="font-medium">Include brand philosophy</span>
+            </label>
+          ) : (
+            <span />
+          )}
           <div className="flex items-center gap-2">
             <button
               onClick={download}
@@ -93,7 +119,20 @@ export function ExportPanel({
 // ── Markdown Renderer ─────────────────────────────────────────────
 
 function MarkdownRenderer({ content }: { content: string }) {
-  const lines = content.split("\n");
+  // Strip leading YAML frontmatter from the rendered preview only.
+  // The file returned by Download/Copy still contains the frontmatter
+  // so tools and AI agents that inspect the project files can read
+  // the metadata. The preview is purely user-facing and benefits from
+  // a cleaner opening.
+  let rendered = content;
+  if (rendered.startsWith("---\n")) {
+    const end = rendered.indexOf("\n---\n", 4);
+    if (end !== -1) {
+      rendered = rendered.slice(end + 5).replace(/^\n+/, "");
+    }
+  }
+
+  const lines = rendered.split("\n");
   let inCodeBlock = false;
   const codeBuffer: string[] = [];
   const elements: React.ReactNode[] = [];

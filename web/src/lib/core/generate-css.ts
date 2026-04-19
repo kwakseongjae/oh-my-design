@@ -170,9 +170,24 @@ export function applyOverridesToMd(
   shadcnCss: string,
   components?: string[],
   stylePreferences?: StylePreferences,
+  includePhilosophyLayer: boolean = true,
 ): string {
   // Direct replacement — AI agents need one source of truth, no ambiguity.
   let result = md;
+
+  // OmD v0.1 Philosophy Layer opt-out.
+  // When disabled, strip sections 10–15 (Voice, Narrative, Principles,
+  // Personas, States, Motion) plus the HTML-comment Sources block that
+  // follows. The range is anchored by the "## 10. Voice & Tone" header
+  // and the "OmD v0.1 Sources" comment end — if the file doesn't carry
+  // a Philosophy Layer, the regex simply doesn't match and nothing is
+  // stripped.
+  if (!includePhilosophyLayer) {
+    result = result.replace(
+      /\n+---\n+## 10\. Voice & Tone[\s\S]*?OmD v0\.1 Sources[\s\S]*?-->\n?/,
+      '\n'
+    );
+  }
 
   // Strip emojis
   result = result.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{1FA00}-\u{1FAFF}\u{200D}\u{20E3}\u{E0020}-\u{E007F}]/gu, '');
@@ -267,7 +282,6 @@ export function applyOverridesToMd(
 
   // Append additional sections
   result += buildIconographySection();
-  result += `\n\n---\n\n## 10. shadcn/ui Theme\n\n\`\`\`css\n${shadcnCss}\n\`\`\`\n`;
   result += buildDocumentPolicies();
   return result;
 }
@@ -345,7 +359,6 @@ This document follows the Google Stitch DESIGN.md 9-section format:
 
 Extended with:
 - Iconography & SVG Guidelines
-- shadcn/ui Theme (CSS variables block)
 - Document Policies
 
 Total target length: 250-400 lines. Keep sections concise and actionable.

@@ -5,7 +5,11 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>從 67 家真實企業的設計系統生成 DESIGN.md。互動式精靈 + shadcn/ui CSS 匯出。零 AI 呼叫。</strong>
+  <strong>從 67 家真實企業的設計系統生成 DESIGN.md。</strong>互動式精靈。零 AI 呼叫。
+</p>
+
+<p align="center">
+  <strong>新增 OmD v0.1 Philosophy Layer。</strong>Voice・Narrative・Principles・Personas・States・Motion — 讓 Claude Code 輸出你的品牌,而不是 AI 的預設值。
 </p>
 
 <p align="center">
@@ -24,12 +28,32 @@
 
 ## 什麼是 oh-my-design?
 
-**oh-my-design** 是 [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) 的延伸。
+**oh-my-design (OmD)** 是一份開放規範,為 AI 編碼代理提供「足以產出品牌級 UI」的品牌脈絡,而不是依賴 AI 的統計預設值。
 
-挑選一家真實企業的設計系統,透過互動式 A/B 精靈進行客製化,匯出可立即投入生產的 `DESIGN.md`,任何 AI 編碼代理都能用來產生風格一致的 UI。
+[Google 提出的](https://stitch.withgoogle.com/docs/design-md/overview/) `DESIGN.md` 本質上是**令牌文件** — 色彩、字體、元件。必要,但不夠。只靠令牌產 UI,形狀看似合理,卻「不像任何品牌」,會收斂到 AI 的預設:Inter-on-white、紫色漸層、毫無緣由的 emoji。OmD v0.1 在其上疊加**品牌哲學層**:**Voice・Narrative・Principles・Personas・States・Motion**。將 OmD 格式的 `DESIGN.md` 放在專案根目錄,代理的輸出就不再通用,而是「你的」。
 
-- 遵循 [Google Stitch](https://stitch.withgoogle.com/) 的 DESIGN.md 格式
-- **無須 API 金鑰。零 AI 呼叫。全部在客戶端執行。**
+三個組成部分:
+
+1. **[規範](spec/omd-v0.1.md)** — 版本化的 Google Stitch 擴充,MIT 授權。
+2. **[Claude Code skill](.claude/skills/omd/SKILL.md)** — 將規範作為硬性約束自動套用。
+3. **[67 個參考檔案](references/)** — 真實企業的 `DESIGN.md`,可以 fork、透過 builder 客製化後直接上線。
+
+**無須 API 金鑰。零 AI 呼叫。全部在客戶端執行。**
+
+## OmD v0.1 Philosophy Layer
+
+OmD 在 Google Stitch 的 9 個章節之上再加的 6 個章節:
+
+| 章節 | 用途 |
+|---|---|
+| **10. Voice & Tone** | 微文案約束 — 按鈕文字、錯誤訊息、導引流程 |
+| **11. Brand Narrative** | 「為什麼」 — 品牌拒絕什麼、試圖撼動哪個類別 |
+| **12. Principles** | 令牌無法裁決時用來拍板的 5〜10 條第一性原理 |
+| **13. Personas** | 2〜4 位具體使用者,讓代理輸出扎根於實際情境 |
+| **14. States** | Empty / loading / error / skeleton 模式 — 避免通用的「無資料」 |
+| **15. Motion & Easing** | 命名的 duration + easing 令牌 — Stitch 9 章節遺漏的維度 |
+
+完整 OmD v0.1 範例請見 [references/toss/DESIGN.md](references/toss/DESIGN.md)。
 
 ## 主要功能
 
@@ -55,8 +79,9 @@
 
 ## 匯出的 DESIGN.md
 
-遵循 [Google Stitch DESIGN.md 格式](https://stitch.withgoogle.com/docs/design-md/overview/):
+以 [Google Stitch DESIGN.md 格式](https://stitch.withgoogle.com/docs/design-md/overview/)為基礎 — 1〜9 章節,加上選用的 OmD v0.1 Philosophy Layer(10〜15 章節):
 
+**基礎 (Google Stitch)**
 1. Visual Theme & Atmosphere
 2. Color Palette & Roles
 3. Typography Rules
@@ -66,14 +91,24 @@
 7. Do's and Don'ts
 8. Responsive Behavior
 9. Agent Prompt Guide
-10. shadcn/ui Theme (CSS 變數)
 
-加上: Style Preferences、Included Components、Iconography & SVG Guidelines、Document Policies (不使用 emoji 規則)。
+**OmD v0.1 Philosophy Layer (附加)**
+
+10. Voice & Tone
+11. Brand Narrative
+12. Principles
+13. Personas
+14. States
+15. Motion & Easing
+
+另加:Style Preferences、Included Components、Iconography & SVG Guidelines、Document Policies。
 
 ## 專案結構
 
 ```
 oh-my-design/
+  spec/              OmD v0.1 規範 (正本)
+  .claude/skills/omd/ Claude Code skill 包
   references/        67 家企業的 DESIGN.md 檔案
   src/               CLI 核心 (TypeScript)
   web/               Next.js 網頁 builder

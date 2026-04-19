@@ -5,7 +5,11 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>67社の実在する企業デザインシステムから DESIGN.md を生成。インタラクティブウィザード + shadcn/ui CSS エクスポート。AI 呼び出しゼロ。</strong>
+  <strong>67 社の実在する企業デザインシステムから DESIGN.md を生成。</strong>インタラクティブウィザード。AI 呼び出しゼロ。
+</p>
+
+<p align="center">
+  <strong>新機能: OmD v0.1 Philosophy Layer。</strong>Voice・Narrative・Principles・Personas・States・Motion — Claude Code が AI のデフォルトではなく、あなたのブランドに合わせて出力します。
 </p>
 
 <p align="center">
@@ -24,12 +28,32 @@
 
 ## oh-my-design とは?
 
-**oh-my-design** は [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) を拡張したプロジェクトです。
+**oh-my-design (OmD)** は、AI コーディングエージェントに「ブランドらしい UI」を生成させるのに十分なブランドコンテキストを供給するためのオープン仕様です。
 
-実在する企業のデザインシステムを選び、インタラクティブな A/B ウィザードでカスタマイズして、AI コーディングエージェントがそのまま使えるプロダクション品質の `DESIGN.md` をエクスポートできます。
+[Google が提案した](https://stitch.withgoogle.com/docs/design-md/overview/) `DESIGN.md` は本質的に**トークン文書** — 色・タイポグラフィ・コンポーネントの集合です。必要ですが、十分ではありません。トークンだけで UI を作ると形は整っても「誰のブランドでもない」出力になります — Inter-on-white、紫グラデーション、意味のない絵文字といった AI のデフォルトに収束します。OmD v0.1 はその上に**ブランド哲学レイヤー**を重ねます: **Voice・Narrative・Principles・Personas・States・Motion**。OmD フォーマットの `DESIGN.md` をプロジェクトルートに置くと、エージェントの出力はジェネリックではなく「あなたのもの」になります。
 
-- [Google Stitch](https://stitch.withgoogle.com/) の DESIGN.md フォーマット準拠
-- **API キー不要。AI 呼び出しゼロ。全てクライアントサイドで完結。**
+3 つの構成要素:
+
+1. **[仕様](spec/omd-v0.1.md)** — バージョン管理された Google Stitch 拡張、MIT ライセンス。
+2. **[Claude Code スキル](.claude/skills/omd/SKILL.md)** — 仕様をハード制約として自動適用。
+3. **[67 のリファレンス](references/)** — 実在企業の `DESIGN.md` をフォークし、ビルダーでカスタマイズしてそのまま導入。
+
+**API キー不要。AI 呼び出しゼロ。全てクライアントサイドで完結。**
+
+## OmD v0.1 Philosophy Layer
+
+Google Stitch の 9 セクションの上に OmD が追加する 6 セクション:
+
+| セクション | 役割 |
+|---|---|
+| **10. Voice & Tone** | マイクロコピー制約 — ボタン文言、エラーメッセージ、オンボーディング |
+| **11. Brand Narrative** | 「なぜ」 — ブランドが拒否するもの、変えようとしているカテゴリ |
+| **12. Principles** | トークンでは解けないケースを決する 5〜10 の第一原理 |
+| **13. Personas** | 2〜4 人の具体的なユーザー。エージェントの出力を実際の使用文脈に grounded させる |
+| **14. States** | Empty / loading / error / skeleton パターン — ジェネリックな「データなし」を防ぐ |
+| **15. Motion & Easing** | 命名された duration + easing トークン — Stitch の 9 セクションが抜けている次元 |
+
+完全な OmD v0.1 の例は [references/toss/DESIGN.md](references/toss/DESIGN.md) を参照。
 
 ## 主な機能
 
@@ -55,8 +79,9 @@
 
 ## エクスポートされる DESIGN.md
 
-[Google Stitch DESIGN.md フォーマット](https://stitch.withgoogle.com/docs/design-md/overview/)に準拠:
+[Google Stitch DESIGN.md フォーマット](https://stitch.withgoogle.com/docs/design-md/overview/)ベース — セクション 1〜9 + OmD v0.1 Philosophy Layer (セクション 10〜15、オプション):
 
+**ベース (Google Stitch)**
 1. Visual Theme & Atmosphere
 2. Color Palette & Roles
 3. Typography Rules
@@ -66,14 +91,24 @@
 7. Do's and Don'ts
 8. Responsive Behavior
 9. Agent Prompt Guide
-10. shadcn/ui Theme (CSS 変数)
 
-その他: Style Preferences, Included Components, Iconography & SVG Guidelines, Document Policies (絵文字不使用ルール)。
+**OmD v0.1 Philosophy Layer (追加)**
+
+10. Voice & Tone
+11. Brand Narrative
+12. Principles
+13. Personas
+14. States
+15. Motion & Easing
+
+その他: Style Preferences, Included Components, Iconography & SVG Guidelines, Document Policies。
 
 ## プロジェクト構成
 
 ```
 oh-my-design/
+  spec/              OmD v0.1 仕様 (正本)
+  .claude/skills/omd/ Claude Code スキルバンドル
   references/        67 社分の DESIGN.md ファイル
   src/               CLI コア (TypeScript)
   web/               Next.js ウェブビルダー
