@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: Notion
+---
+
 # Design System Inspiration of Notion
 
 ## 1. Visual Theme & Atmosphere
@@ -322,3 +327,164 @@ What makes Notion's visual language distinctive is its border philosophy. Rather
 6. The warm white (#f6f5f4) section background is essential for visual rhythm
 7. Pill badges (9999px) for status/tags, 4px radius for buttons and inputs
 8. Notion Blue (#0075de) is the only saturated color in core UI -- use it sparingly for CTAs and links
+
+---
+
+## 10. Voice & Tone
+
+Notion's voice operates on two registers. Current marketing copy — *"The AI workspace that works for you."*, *"Meet the night shift."*, *"More productivity. Fewer tools."* — is terse, imperative, and confidently practical. But when Notion writes about itself at length (careers, about, long-form blog), the voice shifts to **lineage**: Alan Kay quotes, references to "early computing pioneers", and the now-famous LEGO metaphor *"a set of Legos (if Legos were designed by The New York Times)"*. The dual register is the signature — pragmatic at the surface, intellectual at the foundation.
+
+| Context | Tone |
+|---|---|
+| Hero headlines | Short, confident, promise-driven. "The AI workspace that works for you." |
+| Product feature copy | Consolidation-framed. "More productivity. Fewer tools." Not feature-listy. |
+| CTAs | Imperative verb + noun. "Get Notion free", "Contact sales", "Request a demo". |
+| Empty states | Encouraging without being perky. Guide the first action, never congratulatory. |
+| Docs / help | Neutral, thorough, respects reader's time. Screenshots are high-fidelity and unnarrated. |
+| Careers / about | Lineage voice. References pioneers, craft, the LEGO-by-NYT metaphor. |
+| Changelog / Release notes | Ship-proud but understated. Past tense, specific, unglamorous. |
+| Blog / long-form | Essayistic. Ideas-first; screenshots illustrating ideas, not decorating them. |
+
+**Forbidden phrases.** "Revolutionary", "game-changer", "unleash", "next-generation", "10x". Toast strings like "You're amazing! 🎉". Corporate verbs like "leverage", "synergize", "optimize" as self-descriptors. Emoji at the start of product-surface strings — Notion treats emoji as first-class block icons for *users*; the product's own voice is not emoji-spammy. Adjective stacks on capabilities ("powerful, flexible, intuitive").
+
+## 11. Brand Narrative
+
+Notion was founded in San Francisco by **Ivan Zhao** and **Simon Last** in the mid-2010s. The founding thesis — still centered in Notion's careers and about pages — inherits from the "tools for thought" lineage of Douglas Engelbart and Alan Kay: software as a medium that, in Notion's own phrasing, *"amplify[s] our imagination, extend[s] our intellect, and help[s] us model information in ways never before seen."* Alan Kay is quoted directly on Notion's about page: *"The best way to predict the future is to invent it."* Notion frames itself explicitly as a continuation of that intellectual project.
+
+The product metaphor is **building blocks** — what Notion's own careers page calls *"a set of Legos (if Legos were designed by The New York Times)."* That sentence captures the whole aesthetic in one line: modularity like Lego, but composed with the taste of a high editorial design desk. Every block (text, page, database, embed, toggle) is treated as a small typographic object with the care a New York Times story would get, not a spreadsheet cell.
+
+What Notion refuses: the rigid schemas of traditional productivity software (Jira-style workflows, SharePoint-style wikis), the cold-glass aesthetic of enterprise SaaS (blue-gray palettes, generic illustrations of laptops), and playful-at-the-expense-of-serious design (cartoon mascots, decorative emoji applied by the product itself). What it embraces: warm neutrals with yellow-brown undertones, NotionInter as a modified but restrained Inter, whisper-thin `1px solid rgba(0,0,0,0.1)` borders, and the user's own emoji choices as the primary source of color and personality on any given page.
+
+## 12. Principles
+
+1. **Empower every person to use software their way.** *(Notion values, verbatim.)* The product's job is to bend to the user's shape, not the other way around. Designs that force a workflow (forms, wizards, linear "steps") exist only in onboarding.
+2. **Be a truth seeker.** *(Notion values, verbatim.)* Design decisions are backed by evidence or by an explicit opinion — never by hand-wave. When the truth changes, the design changes.
+3. **Be kind and direct.** *(Notion values, verbatim.)* Product copy treats users as peers; error messages are specific and blameless; help docs don't patronize. Warmth does not require hedging.
+4. **Be a pace setter.** *(Notion values, verbatim.)* Ship rhythm matters more than big unveils. Changelog entries are frequent and specific, not seasonal marketing events.
+5. **Blocks are the product.** Every surface — page, doc, database, kanban — is a composition of the same small primitives. The visual treatment of a block is *slightly-smaller-than-invisible*: ultra-thin borders, near-zero shadows, warm neutrals. The block stays out of the way so the user's content can be the thing.
+6. **LEGO, but by The New York Times.** The careers page's own phrase is the whole aesthetic guidance. Modular like Lego; composed with editorial taste. Never cartoonish; never sterile.
+7. **Warmth is tone, not decoration.** The yellow-brown undertones in every gray (`#f6f5f4`, `#31302e`, `#615d59`) are the warmth. Illustrations and stickers are user-supplied; the product's own chrome provides warmth through color temperature alone.
+8. **Notion Blue is the one color.** `#0075de` anchors CTAs and primary interactive moments. Everything else lives in the warm-neutral scale. Rainbow-accent design would betray the block-as-canvas philosophy.
+9. **The user's emoji is the brand's color.** Page icons, cover images, emoji-as-bullet — these are first-class design surfaces, but they are *user-supplied*, not part of Notion's own voice. The product's own copy, buttons, and marketing do not emoji-spam.
+
+## 13. Personas
+
+*Personas below are fictional archetypes informed by publicly observable Notion user segments (knowledge workers, startup operators, writers, researchers, small-team leaders), not individual people.*
+
+**Sophie Tremblay, 29, Montreal.** Operations manager at a 40-person B2B startup. Notion is her single workspace — company wiki, project tracker, personal second brain. Has ~60 pages arranged in a nested hierarchy she has built over three years. Notices immediately when a Notion release subtly shifts the line-height of body text because she reads in Notion for 5 hours a day. Would be horrified by any "redesign" that removed the warm neutral palette.
+
+**Hiroshi Tanaka, 37, Osaka.** Independent researcher and academic writer. Uses Notion for literature review, manuscript drafting, and citation management. Values the block-level typography because his notes include Japanese, English, and occasional LaTeX — NotionInter's `"lnum"` and `"locl"` features matter to him directly. Reads long-form essays on the Notion blog for their ideas-first voice; ignores promotional posts.
+
+**Amaka Obi, 25, Lagos.** Solo founder building a creator-economy SaaS. Uses Notion as internal docs, a public customer FAQ (via publishing), and a public customer-facing changelog. Uses emoji as page icons extensively — the page icons are effectively her brand's color scheme. Notices immediately when a SaaS competitor uses a Notion-clone layout without the "LEGO-by-NYT" taste, and writes them off.
+
+**Priscilla Mendes, 42, Lisbon.** Chief of Staff at a Series-C SaaS company. Runs her CEO's weekly meeting off a Notion database, an embedded calendar, and a toggled prep doc. Does not use Notion AI by default — prefers the empty canvas because it forces her to write the agenda, not delegate it. Would not use Notion if the product copy sounded like it was selling her productivity.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (new page)** | White canvas. Single placeholder string in warm gray (`#a39e98`) at body size: "Press `space` for AI, `/` for commands…". Blinking cursor in warm near-black. No illustration, no onboarding tour. The blank page is the welcome. |
+| **Empty (database, no rows)** | Warm gray (`#615d59`) caption: "No items yet." One link ("Add a row") in Notion Blue. Database schema visible above, so the user can see what to add to. |
+| **Empty (search, no results)** | Warm gray caption: "No results for `<query>`." Nothing else — Notion trusts users to rephrase or move on without illustration. |
+| **Loading (page first paint)** | Warm neutral (`#f6f5f4`) skeleton blocks matching the block-level structure of the page. Ultra-thin border maintained on skeleton blocks. 1.5s shimmer in a lighter warm tone. |
+| **Loading (block rendering, real-time)** | Individual block renders with a 180ms opacity fade from 0.6 → 1.0. Cursor position preserved. Never a spinner on an individual block. |
+| **Error (sync failed)** | Top-right inline indicator — small warm-gray dot that transitions to a muted red when sync fails. Tooltip on hover: specific failure reason + retry action. Never a modal; Notion does not block the document. |
+| **Error (form validation, database property)** | Field-level. 13px caption below the property in muted red (not bright). States what is invalid and what would be valid. |
+| **Error (AI response failure)** | Inline under the AI action. One line of warm-gray text: "Couldn't complete that. Try again." + reason if known. Blameless, concise. |
+| **Success (comment added)** | Comment appears inline with a 300ms fade. No toast, no celebratory emoji. The comment's presence is the confirmation. |
+| **Success (page published to web)** | Toast at bottom-left with warm-gray background and near-black text: "Published to web." Link + copy-URL action inline. 5s auto-dismiss. |
+| **Skeleton** | Warm neutral `#f6f5f4` blocks at exact block dimensions. Ultra-thin border preserved. Shimmer uses a lighter warm tone, never cool blue. |
+| **Disabled** | Opacity on text and ultra-thin border together. Primary Notion Blue actions become `rgba(0,117,222,0.3)`. |
+| **AI thinking (Notion AI)** | A small waveform / "thinking" indicator inline at the AI invocation point. Stays within the block flow — never floats over the document. |
+
+## 15. Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection, toggle commit, keyboard shortcut confirm |
+| `motion-fast` | 150ms | Hover, focus, block drag-handle reveal |
+| `motion-standard` | 220ms | Sheet, popover, database view switch |
+| `motion-slow` | 360ms | Page transitions on marketing surfaces, rare hero reveals |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — popovers, sheets, toggle expand |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+| `ease-gentle` | `cubic-bezier(0.2, 0.4, 0.2, 1)` | Block opacity fades, toggle-content reveals — slightly softer entry for in-document changes |
+
+**Explicitly forbidden.** No spring, no bounce, no overshoot. Blocks never "pop" into view. A bouncing callout block would undermine the "document as medium" feeling that underwrites the whole product.
+
+**Signature motions.**
+
+1. **Block drag-handle reveal.** On hover over a block's left gutter, the drag handle (`⋮⋮` six-dot icon) fades in at `motion-fast` with `ease-gentle`. This is Notion's single most recognizable motion — the "handle that appears when you look at it" is the tactile proof that everything is a block.
+2. **Toggle expand.** When a toggle block opens, its content expands over `motion-standard` with `ease-gentle`, height animating from 0 to natural. No scale, no fade — just height. The toggle's content feels physical, not theatrical.
+3. **Slash menu reveal.** The `/` command menu appears at `motion-fast` with `ease-enter`. Keyboard-driven, so speed matters; 150ms is deliberately close to instant.
+4. **Cursor-follow comments.** Live collaboration cursors update position at raw frame rate (no easing) — accurate position is more important than smooth motion when multiple people are typing simultaneously.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Toggle expansions become instantaneous. Drag handles appear immediately on hover. The document remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via WebFetch (2026-04-19):
+- https://www.notion.com/ — confirms current marketing positioning and voice:
+    "The AI workspace that works for you." (current tagline)
+    "Meet the night shift."
+    "Keep work moving 24/7."
+    "More productivity. Fewer tools."
+    "Bring all your work together."
+  Confirms Notion's current AI-forward positioning and headline register
+  (terse, imperative, consolidation-framed).
+- https://www.notion.com/about — confirms the lineage framing:
+    "break away from today's tools—and bring back some of the ideas of
+     those early pioneers"
+    "all-in-one workspace"
+    Alan Kay quote: "The best way to predict the future is to invent it."
+  Confirms "building blocks" metaphor ("dozens of building blocks") used
+  in the product positioning.
+- https://www.notion.com/careers — confirms Notion's stated company values
+  (verbatim), used as direct source for §12 Principles #1–#4:
+    "We are drivers of our mission. We're driven by our commitment to
+     empower every person on the planet to use software exactly the way
+     they want."
+    "Be a pace setter."
+    "Be a truth seeker."
+    "Be kind and direct."
+  Also confirms the famous self-description verbatim:
+    "a set of Legos (if Legos were designed by The New York Times)"
+  And the pioneers framing:
+    "Early computing pioneers envisioned a future where machines on our
+     desks could amplify our imagination, extend our intellect, and help
+     us model information in ways never before seen."
+
+Base DESIGN.md (sections 1–9) is the source for all token-level claims
+(NotionInter typeface, warm neutral palette with yellow-brown undertones,
+#0075de Notion Blue as the sole accent, `1px solid rgba(0,0,0,0.1)`
+whisper borders, multi-layer shadow stacks with sub-0.05 opacity,
+four-weight system 400/500/600/700).
+
+Not independently verified via WebFetch — widely documented public facts used:
+- Notion is headquartered in San Francisco.
+- Notion was founded by Ivan Zhao (CEO) and Simon Last (CTO).
+- The company had an earlier product iteration before the current Notion
+  was rebuilt (widely reported in founder interviews).
+- "Tools for thought" as an intellectual lineage is associated with
+  Douglas Engelbart and Alan Kay; Notion's public positioning invokes
+  this tradition without always citing the phrase itself.
+
+Personas (§13) are fictional archetypes informed by publicly observable
+Notion user segments (operations managers, researchers, solo founders,
+chief-of-staff roles). Names are illustrative; they do not refer to real
+people.
+
+Interpretive claims (e.g., "LEGO, but by The New York Times as the whole
+aesthetic guidance", "user's emoji is the brand's color", "blocks are
+slightly-smaller-than-invisible") are editorial readings connecting
+Notion's stated positioning to the design system, not directly sourced
+Notion statements.
+-->
+

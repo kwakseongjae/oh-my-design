@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: Apple
+---
+
 # Design System Inspiration of Apple
 
 ## 1. Visual Theme & Atmosphere
@@ -311,3 +316,181 @@ The color story is starkly binary. Product sections alternate between pure black
 6. Products always appear on solid color fields — never on gradients, textures, or lifestyle backgrounds in hero modules
 7. Shadow is rare and always soft: `3px 5px 30px 0.22 opacity` or nothing at all
 8. Pill CTAs use 980px radius — this creates the signature Apple rounded-rectangle-that-looks-like-a-capsule shape
+
+---
+
+## 10. Voice & Tone
+
+Apple's marketing voice is famously terse, confident, and carefully modulated. The register assumes the audience already knows Apple and is here to learn the specifics. Headlines are short declaratives ("The most powerful Mac we've ever built"), rarely contain more than seven words, and use period punctuation instead of exclamations. Superlatives exist but are **self-comparative** ("the most [X] we've ever built"), never industry-comparative ("the world's best") without a footnoted benchmark. On HIG and developer documentation surfaces the voice shifts slightly — more explicit, more prescriptive — but retains the same clarity discipline.
+
+| Context | Tone |
+|---|---|
+| Hero headlines | Short declarative. "Hello, new iPhone." "Supercharged by Apple Silicon." |
+| Product specs | Numeric, specific, never adjectival. "Up to 20% faster CPU performance." |
+| CTAs | Verb + noun, minimal. "Buy", "Learn more", "Watch the film". Never "Shop now!". |
+| Error / system messages | Specific + actionable. Apple's OS-level error copy is the gold standard. |
+| HIG / developer docs | Prescriptive, example-driven, peer-to-peer. |
+| Legal / safety | Formal, precise. Reads like FDA labeling. |
+| Marketing film voiceover | Slow, confident, pause-heavy. Never rushed. |
+| Support copy | Warm but exact. "Here's how to fix that." Not apologetic theater. |
+| Onboarding | One idea per screen; generous whitespace, single accent color. |
+
+**Forbidden phrases.** "Revolutionary" as a marketing adjective — Apple reserves this word for actual paradigm shifts and uses it rarely. "Unleash", "supercharge" as decorative adjectives (Apple will use *"Supercharged by Apple Silicon"* structurally but never decoratively). Lightning-adjective pairings ("lightning-fast"). Emoji anywhere in product-surface copy or HIG. Exclamation marks on marketing CTAs. Superlative stacks ("the most powerful, most beautiful, most intuitive..."). Industry-comparative claims without a footnote or specific benchmark.
+
+## 11. Brand Narrative
+
+Apple was founded in 1976 in Los Altos, California, by **Steve Jobs, Steve Wozniak, and Ronald Wayne**. The company's design posture — informed by Steve Jobs' famous calligraphy class at Reed College and by the founders' shared appreciation of **Dieter Rams' "10 Principles of Good Design"** — has stayed remarkably consistent through multiple design-leadership eras (Jony Ive for roughly two decades, followed by Evans Hankey, then Alan Dye and the current design leadership).
+
+Apple's publicly documented design philosophy lives in the **Human Interface Guidelines (HIG)** — a continuously maintained set of guidelines with three canonical principles formalized in iOS 7 (2013): **Clarity** (*"text is readable at any size, icons are precise and lucid, and adornments are kept to a minimum"*), **Deference** (*"The UI should step back and let user content take center stage"*), and **Depth** (layering, shadows, and motion to convey hierarchy and create a sense of vitality). These three words have anchored Apple's interface design for over a decade and remain the vocabulary any Apple-platform designer is expected to know.
+
+The contemporary expression of those principles is **Liquid Glass**, announced on **June 9, 2025, at WWDC** — the first cross-platform material update since iOS 7, extending uniformly across **iOS 26, iPadOS 26, macOS Tahoe 26, watchOS 26, and tvOS 26**. As **Alan Dye**, Apple's VP of Human Interface Design, described it in the official announcement: *"It combines the optical qualities of glass with a fluidity only Apple can achieve, as it transforms depending on your content or context."* The material *"is translucent and behaves like glass in the real world. Its color is informed by surrounding content and intelligently adapts between light and dark environments"* and *"uses real-time rendering and dynamically reacts to movement with specular highlights."* Liquid Glass is, in effect, **Depth promoted from visual metaphor to actual material behavior** — the same HIG principle, now rendered via real-time lensing and refraction rather than static layers.
+
+What Apple refuses: decorative interface elements (*"adornments are kept to a minimum"* is HIG-verbatim), generic stock photography, marketing superlatives without quantitative backing, competitor name-calling in marketing, and visual inconsistency across platforms. What it embraces: **San Francisco** as a proprietary typeface engineered with optical sizing (letterforms automatically adjust to point size), the binary black / light-gray section rhythm as cinematic pacing, Apple Blue (`#0071e3`) reserved exclusively for interactive elements, pill-shaped CTAs at 980px radius, and **product-as-sculpture** photography on solid color fields — no gradients, no textures, no distractions from the object.
+
+## 12. Principles
+
+1. **Clarity.** *(HIG canonical principle, verbatim.)* Text is readable at any size. Icons are precise and lucid. Adornments are kept to a minimum. Focus on essential content to support functionality. This is the principle most designers cite when justifying a Jobs-era simplification.
+2. **Deference.** *(HIG canonical principle, verbatim.)* The UI steps back and lets user content take center stage. Controls exist to support content, never to compete with it. This is why Apple's photography-heavy product pages feel empty of "design" — the emptiness IS the deference.
+3. **Depth.** *(HIG canonical principle.)* Visual layers and motion communicate hierarchy, convey vitality, and facilitate understanding. Depth is how Apple replaces traditional borders and decorative chrome — physics rather than ornament.
+4. **Consistency across platforms.** A text field in iOS, macOS, iPadOS, watchOS, and visionOS should feel like it belongs to the same family. Consistency is why Apple writes HIG as a single document set rather than letting each platform drift.
+5. **Self-comparative superlatives only.** "The most powerful Mac we've ever built" is acceptable. "The world's most powerful laptop" requires a footnote citing benchmarks. This discipline makes Apple's big claims land when they are made.
+6. **One accent color at a time.** Apple Blue (`#0071e3`) is the web-marketing accent for interactive elements. In-product accent is configurable per user. But on any given surface, interactive elements share one accent; rainbow decoration is forbidden.
+7. **Product-as-sculpture photography.** Every product shot treats the object as a sculpture on a solid color field. No lifestyle context, no model holding it, no gradient background in hero modules. The product's industrial design must be legible in the photography.
+8. **Motion is physics, not time-curve.** Apple interfaces borrow from spring physics — elements have mass, velocity, and inertia. Motion is never flat linear; it is also never cartoonish overshoot. The goal is *"how a well-made physical object would move in air"*.
+9. **"It just works" is a design commitment.** The phrase is Steve Jobs-era but continues as an implicit design target. When it doesn't just work, the error message explains specifically why — a broken promise is made honest rather than hidden.
+10. **SF (San Francisco) is the typographic voice.** Proprietary, optical-sized, the only text treatment on marketing and in-product surfaces. Substituting a third-party font breaks the voice, even when the type looks superficially similar.
+11. **Material as behavior, not decoration.** *(Contemporary extension via Liquid Glass, 2025.)* Translucency, refraction, real-time lensing, and specular response to device motion are treated as first-class material properties that react to content and light — not decorative skeuomorphism. This is how Depth has evolved from a visual metaphor (iOS 7) into an actual material that behaves like glass (iOS 26).
+
+## 13. Personas
+
+*Personas below are fictional archetypes informed by publicly observable Apple user segments (creative professionals, developers, mainstream consumers, education / young users), not individual people.*
+
+**Sara Klein, 35, Berlin.** UX designer at a mid-size agency. Uses a MacBook Pro for work and an iPhone personally. Watches Apple keynotes in full — not for news but for the pacing. Appreciates that Apple's marketing voice is terse enough to respect her time. Immediately notices when another software product uses Apple-pattern elements (SF font, Apple Blue, pill CTAs) without the underlying discipline — calls this "Apple-clone aesthetic" in Slack.
+
+**Jamal Ansari, 29, Dubai.** iOS developer at a consumer fintech startup. Reads every section of the Human Interface Guidelines once per major iOS release. Appreciates that HIG is *prescriptive* — tells him what to do, not just what to consider. Rejects features his PM proposes that would violate HIG because "Apple will reject it in App Review" is both a true statement and a useful shield.
+
+**Joanna Williams, 57, Edinburgh.** Manages a small accounting practice. Uses her iPad Pro as her primary computer because she finds the Mac too complicated for her current workflow. Does not think about Apple's design; she experiences it. Would describe the iPad as "easier than my old computer" and could not articulate why — which is exactly what Apple's design philosophy is designed to produce.
+
+**Miguel Castro, 16, São Paulo.** High school student using a family iPhone for school, social, and creative work (photography, iMovie). Has never used a non-Apple phone and treats HIG-shaped interactions as the default mental model of how computers work. Will internally find Android phones "confusing" when he eventually uses one — eight years of HIG consistency have taught him a specific interaction vocabulary.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (search, no results)** | SF text at 17px, near-black (`#1d1d1f`) on white: "No results for `<query>`." No illustration. One link in Apple Blue to adjust search or view suggestions. |
+| **Empty (first launch of an app)** | Dedicated welcome flow with centered SF headline at display size and a single Apple Blue CTA. Onboarding never covers multiple concepts per screen. |
+| **Loading (dashboard / app shell)** | Skeleton rectangles in `#f5f5f7` matching final content structure. Shimmer pass uses a lighter gray; never blue-tinted. |
+| **Loading (pull-to-refresh)** | Native iOS / macOS refresh indicator — a spring-animated arc that follows the gesture. Uses system Depth principle: the indicator has physics. |
+| **Error (network / system)** | Full-screen or modal treatment depending on severity. SF headline + 1-sentence specific cause + 1 recovery CTA. Never a generic "Something went wrong". No emoji, no illustration. |
+| **Error (form validation)** | Field-level. Border shifts to system red (iOS) or equivalent. 13px caption below in system red, specific about what is invalid. |
+| **Error (app crash / unexpected quit)** | Crash report offered to send to Apple; user-facing copy acknowledges the problem without blame ("The app quit unexpectedly"). No apology theater, no emoji. |
+| **Success (purchase completed)** | Dedicated confirmation — checkmark animation drawn over ~600ms with spring easing, summary of what was purchased, delivery date if physical. Quiet, not celebratory. |
+| **Success (action committed)** | Subtle haptic + brief UI acknowledgement (checkmark appearing where the action happened). No toast, no notification for routine actions. |
+| **Skeleton** | Light gray (`#f5f5f7`) blocks at exact final dimensions. Shimmer in an even lighter gray. Skeletons preserve the same radius geometry as final content. |
+| **Disabled** | System opacity reduction. Apple Blue becomes a lighter, desaturated blue. Geometry stable; pill buttons stay pills. |
+| **Loading (long task, installation or system update)** | Progress bar with precise percent + current step label. Time estimate if available. Apple never hides progress behind an indeterminate spinner when determinate information exists. |
+
+## 15. Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | State commits, selection confirm |
+| `motion-fast` | 150ms | Hover (desktop), tap feedback, small reveals |
+| `motion-standard` | 300ms | Sheet, modal, view push / pop |
+| `motion-slow` | 500ms | Dedicated hero moments, onboarding step advance |
+| `motion-spring` | variable (physics-based) | Pull-to-refresh, swipe-to-dismiss, rubber-band scroll |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, modals, view transitions |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+| `ease-spring` | spring physics (mass, stiffness, damping) | Gesture-driven elements — physics rather than cubic-bezier |
+
+**Spring parameters.** Apple's motion system distinguishes itself from most design systems by using actual **spring physics** (mass / stiffness / damping) for gesture-driven elements rather than cubic-bezier curves. When an element responds to a user's drag or swipe, the motion should *feel like mass* — the object has weight, a velocity when released, and a natural settling rather than a programmed decelerate.
+
+**Signature motions.**
+
+1. **Pull-to-refresh.** The refresh indicator appears via spring physics as the user drags. When released below threshold, it springs back. When released above, it detaches and shows the refreshing state. This is the single most-copied motion in mobile UX and it works because it is physics-driven, not time-driven.
+2. **Swipe-to-dismiss / swipe-to-action.** Table rows and cards use spring physics to respond to horizontal drag. Partial swipes spring back; full swipes commit with a natural overshoot-then-settle.
+3. **Rubber-band scroll.** When a list is scrolled past its top or bottom, it resists with increasing spring tension, then rubber-bands back on release. Apple's signature physics moment; present on every Apple platform since the original iPhone.
+4. **Sheet and modal presentation.** Sheets rise with spring physics — the sheet has mass that settles into its final position, rather than arriving on a time curve. Dismissal uses a slightly faster spring with more damping.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all spring motions degrade to instant appearances or simple crossfades. This is enforced at OS level, not just app level — an Apple app that ignores Reduce Motion is a HIG violation and may be rejected in App Review.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via WebFetch / WebSearch (2026-04-19):
+- https://developer.apple.com/design/ — confirms the Apple Design portal
+  exists and references "Human Interface Guidelines", "SF Symbols", and
+  "Apple Design Resources" as first-class developer resources. Marketing
+  tagline for developer design verified: "Design incredible apps and games
+  that integrate seamlessly with Apple platforms."
+- https://developer.apple.com/design/human-interface-guidelines — HIG
+  landing page existence confirmed (the specific principles copy was not
+  directly verifiable on the landing shell, so the three canonical
+  principles were cross-confirmed via WebSearch).
+- https://www.apple.com/newsroom/2025/06/apple-introduces-a-delightful-and-elegant-new-software-design/
+  — Apple's official newsroom announcement of Liquid Glass (WWDC, 9 June 2025).
+  Verbatim quotes used in §11 and §12 #11:
+    Alan Dye (VP of Human Interface Design): "It combines the optical
+    qualities of glass with a fluidity only Apple can achieve, as it
+    transforms depending on your content or context."
+    "This translucent material reflects and refracts its surroundings,
+     while dynamically transforming to help bring greater focus to content."
+    "The new material, Liquid Glass, is translucent and behaves like glass
+     in the real world. Its color is informed by surrounding content and
+     intelligently adapts between light and dark environments."
+    "Liquid Glass uses real-time rendering and dynamically reacts to
+     movement with specular highlights."
+  Platforms confirmed: iOS 26, iPadOS 26, macOS Tahoe 26, watchOS 26, tvOS 26.
+- WebSearch: Apple HIG core design principles "Clarity / Deference / Depth" —
+  widely reported verbatim across secondary sources summarizing HIG:
+    "Clarity: text is readable at any size, icons are precise and lucid,
+     and adornments are kept to a minimum."
+    "Deference: The UI should step back and let user content take center
+     stage. Fluid animations and translucent or subtle UI elements help
+     the content shine without distraction."
+    "Depth: layering, shadows, and visual effects... creating a sense of
+     hierarchy and a multi-dimensional experience that guides users
+     naturally through the app."
+  These three principles were formalized by Apple in iOS 7 (2013) and
+  remain the anchor vocabulary of Apple platform design, now extended
+  through the Liquid Glass material announced in 2025.
+
+Base DESIGN.md (sections 1–9) is the source for all token-level claims
+(SF Pro Display / SF Pro Text proprietary typefaces with optical sizing,
+binary #000000 / #f5f5f7 section rhythm, Apple Blue #0071e3 as the
+sole web-marketing interactive accent, pill CTAs at 980px radius,
+product-as-hero photography on solid color fields).
+
+Not independently verified via WebFetch — widely documented public facts used:
+- Apple was founded on April 1, 1976, in Los Altos, California, by
+  Steve Jobs, Steve Wozniak, and Ronald Wayne.
+- Steve Jobs' calligraphy class at Reed College influenced Apple's early
+  typographic sensibilities (widely cited in his 2005 Stanford commencement
+  address and later biographies).
+- Apple's design leadership lineage includes Jony Ive (for roughly two
+  decades), Evans Hankey, and currently Alan Dye.
+- Dieter Rams' "10 Principles of Good Design" is widely cited as a
+  significant influence on Apple industrial and software design,
+  especially in the Jony Ive era.
+- Apple's App Review process does enforce HIG compliance as a submission
+  requirement, including the Reduce Motion accessibility setting.
+
+Personas (§13) are fictional archetypes informed by publicly observable
+Apple user segments (creative professionals, iOS developers, mainstream
+long-time consumers, young digital-native users). Names are illustrative;
+they do not refer to real people.
+
+Interpretive claims (e.g., "product-as-sculpture photography", "the
+emptiness IS the deference", "self-comparative superlatives only") are
+editorial readings connecting Apple's HIG principles and observable
+marketing discipline to the design system, not directly sourced
+Apple statements.
+-->
+

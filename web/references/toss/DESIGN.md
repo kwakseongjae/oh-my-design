@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: Toss
+---
+
 # Design System Inspiration of Toss (토스)
 
 ## 1. Visual Theme & Atmosphere
@@ -259,3 +264,124 @@ What defines Toss visually is its OKLCH-based color system, rebuilt from scratch
 5. Border-radius: 8px inputs, 12px cards, 16px sheets, pill for toggles
 6. Shadows are single-layer, pure black opacity, no colored tints
 7. Mobile-first: design at 375px, 20px horizontal padding
+
+---
+
+## 10. Voice & Tone
+
+Toss speaks like a friend who happens to be a fiduciary: calm, unhurried, zero jargon, positive statements without hedging. Balance is stated, not "approximately" anything. Korean is the primary voice — English UI strings are secondary translations, not parity. Sentences end in periods; buttons do not. No emoji in financial contexts. Tossface exists as brand decoration but is disallowed on money-handling screens.
+
+| Context | Tone |
+|---|---|
+| CTAs | Imperative, short Korean verb form (`송금하기`, `확인`, `가입하기`) |
+| Success toasts | Past-tense single sentence (`송금이 완료되었어요`). No emoji. |
+| Error messages | Specific + blameless + actionable. Never `문제가 발생했습니다`. |
+| Onboarding screens | Second-person, one idea per screen, no bullet lists. |
+| Financial amounts | Bare numerals with comma separators, then currency unit. `1,240,000원`, never `₩1.24M`. |
+| Empty states | Explain the *why* in one line, offer one action. Never `데이터가 없습니다`. |
+| Legal / disclosure | Korean financial-regulation tone — formal `합니다` endings. Single exception to the casual voice. |
+
+**Forbidden phrases.** `불편을 드려 죄송합니다`, `Oops`, `죄송하지만`, `약 ~원` (approximation on money), any sentence starting with `I'm sorry` in English strings. Rounded currency amounts (`약 120만원`) are forbidden on primary surfaces; exact numerals only.
+
+## 11. Brand Narrative
+
+Toss launched in 2015 as a single-feature money-transfer app in a Korean banking market dominated by legacy institutions — KB, Shinhan, Woori, Hana — each with institutional-indigo websites, 12-digit account numbers, Active-X plug-ins, and the presumption that handling money had to feel like filing taxes. The founding rejection was of that entire aesthetic vocabulary. The specific cerulean `#3182f6` was chosen because it was **not** the indigo of any incumbent bank. The optimism of the color was the whole thesis: money could feel light.
+
+Toss is not a neo-bank. It's a super-app: one interface holds transfers, investments, credit scoring, insurance, brokerage, and lending. The design's job is to flatten that complexity into **one gesture per screen**. That requires extreme restraint — shadows are single-layer black, palette is blue-and-neutral, type is one family in three weights. Every ornamental move costs clarity, and clarity is the entire brand promise.
+
+What Toss refuses: the institutional seriousness of legacy finance, the playfulness of consumer apps (no bright pink, no illustrations of cartoon piggy banks), the data-viz density of Bloomberg-style terminals. Toss occupies a narrow middle — calm but optimistic, dense with functionality but spacious in presentation.
+
+## 12. Principles
+
+1. **Breathing room for money.** Financial amounts get ≥1.5× the surrounding spacing of normal text. A balance at 30px with 32px margins is correct; the same balance at 16px margins looks cheap and therefore untrustworthy.
+2. **Progressive density.** Summary screens are spacious; detail and transaction screens are dense. The deeper the user navigates, the more information per pixel — they've committed to the context and want facts.
+3. **One action per screen.** If a screen has two primary buttons, it is two screens. Secondary actions are acceptable; two primaries are never acceptable.
+4. **Blue is interaction, not decoration.** `#3182f6` appears only where the user can tap. It never decorates. Illustrations, ornaments, borders, and headers never use blue500 unless they are interactive surfaces.
+5. **Restraint communicates trust.** Shadows are single-layer, pure black, low opacity. No colored shadows, no multi-layer elevation stacks. In finance, visual noise is credibility tax.
+6. **Korean and Latin are co-equal.** Never assume one is primary. Typography stacks, optical weights, and tabular numerals all assume both scripts render simultaneously in the same line.
+7. **Numbers are typography.** Financial amounts use 700 weight and tabular numerals with the same care as display headings. Amounts never inherit body-text weight.
+8. **Negative space is a brand asset.** If reducing padding would fit more on screen, the answer is another screen, not tighter packing.
+
+## 13. Personas
+
+*Personas below are fictional archetypes informed by publicly described Korean fintech user segments, not individual people.*
+
+**정민 (Jeongmin), 28, Seoul.** Software engineer at a mid-size startup. Opens Toss 2–3 times a day — morning subway, post-lunch balance check, evening transfer to a flatmate. Expects the app to open directly to the account screen and paint in under 1s. If she has to tap twice to see her money, she's already irritated. Uses both Korean and English on-device; reads financial English natively but prefers Korean UI for speed.
+
+**이선생님 (Mr. Lee), 54, Busan.** Runs a three-person machining shop. His daughter set up Toss for him two years ago. Primary use: transferring to suppliers and receiving invoice payments. Needs one-tap repeat transfer — he has about 12 regular counterparties. Distrusts anything that looks like an advertisement. Would uninstall the app before tapping a promoted banner. Reads Korean only; English strings on product surfaces are invisible to him. Values receipts and transaction history — never deletes them.
+
+**예은 (Yeeun), 21, Daegu.** University student, third year, Economics. Toss is her primary banking app — she opened her first account through it, and has never touched a legacy bank's web interface except under duress. Expects Toss Blue to be "banking blue." If another financial app uses cerulean, she assumes it's imitating Toss. Sends ₩5,000–₩30,000 amounts constantly (splitting bills, paying back friends). Treats the app like a messaging app with money attached.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (first use)** | Single paragraph of `grey700` body text explaining *why* the screen is empty (`아직 거래내역이 없어요`), plus one suggested action as a secondary button (blue50 bg, blue500 text). Never an illustration. Never `데이터가 없습니다`. |
+| **Empty (filter cleared)** | Single line of `grey500` caption (`조건에 맞는 결과가 없어요`). No button — user resets the filter themselves. |
+| **Loading (first paint)** | Skeleton blocks matching the final layout's structure at `#f2f4f6` (grey100). Financial amounts render as `--` until resolved; they never appear as skeleton blocks (would look like they have a placeholder value). |
+| **Loading (refresh)** | Top bar pull-down spinner in blue500. No overlay, no blocking. Content stays visible with its previous values. |
+| **Error (inline field)** | `#f04452` (red500) 2px border on the input, error text below in red500 13px. One actionable sentence (`계좌번호를 다시 확인해주세요`). |
+| **Error (toast)** | `#191f28` background, white 14px 400 text, 3s auto-dismiss. One sentence. No icons. Bottom of screen with 20px inset. |
+| **Error (screen-blocking)** | Reserved for server outage. White screen, centered single-line message in `grey900` 16px weight 600, retry button in blue500 below. No illustration. |
+| **Success (inline flash)** | Brief flash of `#e8f3ff` (blue50) background behind the updated element, 300ms fade to default. For routine actions like toggling a setting. |
+| **Success (money moved)** | Dedicated confirmation screen — not a toast. `#03b26c` (green500) checkmark top-center, exact amount in 30px weight 700 below, recipient name, timestamp. Single button: `확인`. This weight is intentional; money moving is never a toast. |
+| **Skeleton** | `#f2f4f6` blocks at exact final dimensions. 1.2s shimmer as `linear-gradient` with 8% white highlight. Rounded at component radius (8px/12px/16px per component). Never used on financial amounts — those show `--`. |
+| **Disabled** | Button opacity drops per `--button-disabled-opacity-color`. No grey-out of input borders — disabled inputs keep `grey200` border, so the geometry is stable if re-enabled. |
+| **Loading inside pressed button** | Text is replaced by the 3-dot white animation. Width of the button does not change. Press is visually committed; user cannot double-submit. |
+
+## 15. Motion & Easing
+
+**Durations** (named, not raw milliseconds):
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, checkbox state changes |
+| `motion-fast` | 150ms | Hover, focus, small reveals, button press overlay |
+| `motion-standard` | 250ms | The default — sheet opens, card expands, tab switches |
+| `motion-slow` | 400ms | Emphasized transitions — success checkmarks, onboarding step advances |
+| `motion-page` | 350ms | Full-screen transitions between top-level routes |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — sheets, toasts, screen pushes |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals, pops |
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — collapsible cards, tab content |
+| `ease-spring` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Reserved. Only for money-moved success checkmark. Nowhere else — overshoot on routine UI would feel unserious. |
+
+**Signature motions.**
+
+1. **Money-moves.** When a balance updates, the old number slides up 20px and fades out (`motion-fast / ease-exit`), the new number slides in from below 20px (`motion-standard / ease-enter`). Never cross-fade money — a financial amount flickering between values looks like a bug.
+2. **Bottom-sheet presentation.** Sheets rise from `y+40px` with `motion-standard / ease-enter` and a synchronized backdrop fade from `rgba(2,9,19,0)` to `rgba(2,9,19,0.5)`. Dismissal uses `motion-fast / ease-exit` — leaving feels lighter than entering.
+3. **Success checkmark.** On money-moved confirmation, the checkmark draws over `motion-slow` with `ease-spring`. This is the one place spring easing is licensed. Everywhere else, standard easing.
+4. **Reduce motion.** If `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. No exceptions. Crossfades replace slides. The app stays usable; just less kinetic.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via WebFetch (2026-04-19):
+- https://toss.im/ — confirms Viva Republica (비바리퍼블리카) as operating company,
+  unified-finance super-app positioning ("내 모든 금융 내역을 한눈에 조회하고 한 곳에서 관리하세요"),
+  and mission framing "모두의 금융에 자유를" (financial freedom for everyone).
+- https://slash.page/ — confirms Toss maintains a public open-source engineering
+  presence ("Copyright © 2024 Viva Republica - Toss Frontend Chapter"), with
+  packages including overlay-kit, suspensive, use-funnel — demonstrating the
+  design/engineering self-documentation culture referenced in §12 Principles.
+
+Base DESIGN.md (sections 1–9) is the source for token-level claims including
+Toss Blue #3182f6, Toss Product Sans, the OKLCH-based palette, and shadow tokens.
+
+Not independently verified via WebFetch — widely documented public facts used:
+- Toss (Viva Republica) was founded in 2013; the money-transfer app launched in 2015.
+- Korean legacy-bank institutional palette context (KB, Shinhan, Woori, Hana) is
+  general industry knowledge, not a sourced Toss statement.
+
+Personas (§13) are fictional archetypes informed by publicly described Korean
+fintech user segments. Any resemblance to specific individuals is unintended.
+
+Interpretive claims (e.g., "the specific cerulean was chosen because it was
+not the indigo of any incumbent bank") are editorial readings of the design,
+not documented Toss statements.
+-->
+

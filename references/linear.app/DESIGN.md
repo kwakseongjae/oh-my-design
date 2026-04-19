@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: Linear
+---
+
 # Design System Inspiration of Linear
 
 ## 1. Visual Theme & Atmosphere
@@ -365,3 +370,157 @@ The color system is almost entirely achromatic — dark backgrounds with white/g
 5. Brand indigo (`#5e6ad2` / `#7170ff`) is the only chromatic color — everything else is grayscale
 6. Borders are always semi-transparent white, never solid dark colors on dark backgrounds
 7. Berkeley Mono for any code or technical content, Inter Variable for everything else
+
+---
+
+## 10. Voice & Tone
+
+Linear's voice is craftsman-like, direct, and quietly opinionated. The product's own README opens with *"This is not a manifesto. This is not a codex, not a whitepaper, and not a secret master plan. This is just a simple story"* — and that anti-grandeur register is the whole voice. It speaks to makers: software engineers, designers, product managers, founding teams. Technical vocabulary is used when appropriate, without apology. Marketing superlatives are never used. When Linear makes a claim, it is specific ("2-week cycles are the most common in software building") rather than promotional ("boost your team's productivity by 10x").
+
+| Context | Tone |
+|---|---|
+| Hero headlines | Declarative, opinionated. "The AI-native platform for modern product teams." |
+| Product descriptions | Concrete, mechanic-focused ("Cycles create a healthy routine and focus teams"). Never feature-listy. |
+| CTAs | Imperative verb + noun. "Start building", "Sign in", "Read the method". |
+| Issue / UI strings | Dense but unambiguous. Technical abbreviations are fine — the audience reads them. |
+| Docs / API reference | Peer-to-peer. Never condescending, never hedging. |
+| Changelog ("Now") | Specific, dated, ship-proud. "We shipped X. It does Y." |
+| Marketing copy | Craft-oriented — speaks about quality, speed, focus — not productivity metrics. |
+| Error messages | Specific and blameless. Never "An error occurred." |
+| Onboarding | One idea per screen. Keyboard shortcuts are taught inline, not in a tour. |
+
+**Forbidden phrases.** "10x", "boost your productivity", "empower your team", "unleash", "supercharge", "revolutionary". User-story vocabulary ("As a user, I want...") — the Linear Method explicitly rejects this frame, and it should not appear anywhere in product, marketing, or docs copy. "Easy peasy", "effortless" as self-descriptors. Performative onboarding toasts ("Great choice!"). Emoji on product or marketing surfaces — Linear does not add 🚀 or ✨ to its release notes.
+
+## 11. Brand Narrative
+
+Linear was founded in 2019 by Karri Saarinen, Tuomas Artman, and Jori Lallo — three engineers and designers with backgrounds at companies like Airbnb, Coinbase, and Uber, frustrated with the state of project-management software. Their founding complaint is published on their public README: *"Craftsmanship was replaced with growth hacks. Our once so lively dreams have become positively lifeless."* The name itself was chosen as a design statement: *"We chose to name it Linear to signify progress."*
+
+That craft-first positioning has stayed the company's center of gravity. Linear publishes **The Linear Method** — a public document stating *"There is a lost art of building true quality software. To bring back the right focus, here are the foundational ideas Linear is built on."* The Method articulates opinions most companies would never publish: *"Write issues not user stories"*, *"A tool should work for you, not the other way around"*, *"Don't invent terms if possible"*. These are not marketing — they are internal operating principles made public because Linear wants to attract customers who already agree with them.
+
+What Linear refuses: bloat (*"A tool should be simple to get started with and grow more powerful as you scale"*), vocabulary inflation, the user-story framework, marketing metrics like "10x productivity", and the generic SaaS dark-theme-as-afterthought aesthetic. What it embraces: near-black as the native medium (not a toggled theme), Inter Variable at its 510 weight as a typographic signature, keyboard-first interaction, and publishing strong opinions *before* asking a customer to adopt them.
+
+## 12. Principles
+
+1. **A tool should work for you, not the other way around.** *(Linear Method, verbatim.)* The UI must never demand admin work to be useful. Keyboard shortcuts are first-class; mouse-only workflows are second-class.
+2. **Productivity software needs to be designed for purpose.** *(Linear Method, verbatim.)* No generic SaaS templates. Every surface — issue list, cycle view, project brief — is shaped by the specific work it supports.
+3. **Write issues not user stories.** *(Linear Method, verbatim.)* The "As a user, I want..." frame is banned from the product vocabulary and from Linear's own copy.
+4. **Don't invent terms if possible.** *(Linear Method, verbatim.)* If a concept can use an existing word, use it. Proprietary jargon is a tax on every new user.
+5. **Cycles over sprints.** *(Linear Method.)* Sprints are running — frantic, short-term. Cycles are rhythms — sustainable, repeated. Word choice is design.
+6. **Craft is the product.** Linear's public README critiques the industry for replacing craft with growth hacks. The visible craft — exact letter-spacing, semi-transparent borders at 0.05 opacity, weight 510 as signature — is that critique made concrete.
+7. **Ambitious goals are the only way to make a significant impact.** *(Linear Method, verbatim.)* Every project has a named owner and a specific brief. Vague roadmaps do not exist.
+8. **Opinions are the feature.** Linear publishes opinions (The Method, the README) before the product converts anyone. Customers self-select for alignment; they are not sold.
+9. **Darkness is the canvas, not a theme.** The near-black background is native to the product, not a dark-mode toggle. Light mode exists but is secondary. Chromatic restraint (single indigo-violet accent) is the same discipline.
+10. **Designers and engineers work together.** *(Linear Method, verbatim: "Designers and engineers should work together on projects, creating a natural push and pull.")* The design system's precision and the product's UX cohesion both come from this pairing — no handoff artifacts, no siloed "design review".
+
+## 13. Personas
+
+*Personas below are fictional archetypes informed by publicly observable Linear user segments (software engineers, product designers, engineering managers, early-stage founders), not individual people.*
+
+**Lena Hoffmann, 32, Berlin.** Staff engineer at a Series-B SaaS startup. Uses Linear as her primary work surface — issues, cycles, documents — and refuses to switch to anything that requires more than one keystroke to capture a thought. Reads The Linear Method periodically to see how the team thinks. Has opinions about the exact width of the sidebar (a few pixels too narrow for her taste). Would not use Jira if she were paid to.
+
+**Juan Pablo Reyes, 28, Buenos Aires.** Product designer at a fintech startup. Uses Linear's issue list the way a composer uses a score — he can read the state of a project in five seconds from the shape of the list alone. Appreciates that cards do not have decorative illustrations or progress bars; the data is the design. Finds Linear's keyboard shortcuts addictive to the point of being slightly annoying when he uses other tools.
+
+**Mei-Ling Chen, 45, Taipei.** Engineering manager with 12 engineers reporting to her. Runs biweekly cycles. Relies on the cycle view to see slip without having to ask anyone. Values that Linear publishes its method publicly — she uses the Method as training material for new hires instead of writing her own playbook.
+
+**Matias Lahti, 26, Helsinki.** Founding engineer at a stealth startup. Introduced Linear to his co-founders on day one because he views project-management tool choice as culture-setting. Reads Linear's "Now" release notes as a weekly ritual. Views Linear's pricing page the way he views a well-designed terminal prompt — functional, opinionated, correctly small.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no issues)** | Near-black (`#08090a`) canvas. Single Primary Text line at 18px Inter Variable 510: "No issues yet." One ghost button "Create first issue". No illustration. No decorative progress bars. |
+| **Empty (filter with zero results)** | Tertiary Text (`#8a8f98`) caption: "No issues match this filter." Active filter chip visible above. Reset filter link in Accent Violet (`#7170ff`). |
+| **Loading (first paint)** | Skeleton bars at exact list-row heights using `rgba(255,255,255,0.03)` — one luminance step *below* the actual row background, so content paints in as a step-up rather than a step-down. 1.2s shimmer in cool gray. No spinners. |
+| **Loading (real-time sync)** | Nothing. Linear's sync is assumed; if it breaks, the offline banner surfaces instead. Persistent sync spinners would violate the "tool works for you" principle. |
+| **Error (offline / sync failed)** | Top banner at `rgba(255,255,255,0.05)` with Primary Text + an Accent Violet reconnect link. One sentence. Technical and honest ("Sync paused — will reconnect automatically"). |
+| **Error (command palette action failed)** | Inline below the command input. Muted red at 510 weight — Linear's palette does not include a vibrant error red, so the error tone stays in the cool, restrained register. |
+| **Error (form validation)** | Field-level. 13px caption below the field in muted red (`~#c45858` equivalent), describes what is invalid and what would be valid. No icon, no banner. |
+| **Success (issue created)** | Issue appears at the top of the list with a 300ms fade from 0 opacity. No toast. The issue's presence is the confirmation. |
+| **Success (cycle completed)** | Cycle chip transitions to Success Green (`#10b981`) with 510 weight label. One-time transition, no celebratory effects, no confetti. |
+| **Skeleton** | Semi-transparent white (`rgba(255,255,255,0.03)` → `0.05` shimmer) blocks at exact list-row dimensions. Never cool blue or purple — stays in the achromatic palette. |
+| **Disabled** | Opacity drops on both text and border together. Disabled buttons keep their 6px radius; geometry stable if re-enabled. |
+| **Keyboard focus ring** | Multi-layer shadow stack (Depth Level "Focus" from §6). Visible but not loud — matches the "subtle structure" philosophy. |
+
+## 15. Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection, toggle, keyboard shortcut commits |
+| `motion-fast` | 100ms | Hover, focus, button press — deliberately the fastest across the reference set |
+| `motion-standard` | 180ms | Sheet, modal, dropdown, command palette |
+| `motion-slow` | 280ms | Rare — hero reveals on marketing surfaces only |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, command palette, dropdowns |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, hover states |
+
+**Explicitly forbidden.** No spring. No bounce. No overshoot. Linear does not use a `cubic-bezier` with a middle control value above `1.0` anywhere. Motion is a precision instrument, not a delight vehicle. A bouncing button in Linear would undermine the entire craft argument.
+
+**Signature motions.**
+
+1. **Command palette (⌘K).** The palette opens at `motion-fast` with `ease-enter` — 100ms is deliberately fast enough to feel like the UI responds at the speed of thought. A slower open would break the keyboard-first promise.
+2. **Issue row fade-in.** New issues appearing at the top of a list fade from 0 to 1 over `motion-standard`. No slide, no scale. The issue either exists or it doesn't — the transition is the smallest necessary proof that something changed.
+3. **Cycle completion.** When a cycle completes, the cycle header chip transitions color from Accent Violet to Success Green over `motion-slow` with `ease-standard`. One time, no repeat. This is the one place Linear's UI "celebrates" — and it celebrates by changing a color token, not by animating confetti.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Fade-ins become instant appearances. The app stays fully functional; the keyboard-first workflow gets no worse.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via WebFetch (2026-04-19):
+- https://linear.app/method — confirms the existence of "The Linear Method" as
+  a public philosophy document. Opening statement verbatim:
+    "There is a lost art of building true quality software. To bring back
+     the right focus, here are the foundational ideas Linear is built on."
+  Includes explicit practice "Write issues not user stories" (rejecting the
+  user-story frame).
+- https://linear.app/method/introduction — confirms the following verbatim
+  principles used directly in §10 and §12:
+    "Software project management tools should build with the end users –
+     the creators – in mind."
+    "Productivity software needs to be designed for purpose."
+    "A tool should work for you, not the other way around."
+    "Don't invent terms if possible, as these can confuse and have different
+     meanings in different teams."
+    "Ambitious goals are the only way to make a significant impact."
+    "Cycles create a healthy routine and focus teams on what needs to happen
+     next."
+    "2-week cycles are the most common in software building."
+    "Designers and engineers should work together on projects, creating a
+     natural push and pull."
+- https://linear.app/readme — confirms the following verbatim statements used
+  directly in §10 and §11:
+    "This is not a manifesto. This is not a codex, not a whitepaper, and
+     not a secret master plan. This is just a simple story."
+    "Our mission is to create the tool for the story at hand. A tool that
+     feels magical..."
+    "Craftsmanship was replaced with growth hacks...Our once so lively
+     dreams have become positively lifeless."
+    "We chose to name it Linear to signify progress."
+
+Base DESIGN.md (sections 1–9) is the source for all token-level claims
+(near-black backgrounds #08090a/#0f1011/#191a1b, Inter Variable with "cv01"/
+"ss03", weight 510 as the signature, semi-transparent white borders
+at 0.05–0.08 alpha, brand indigo #5e6ad2/#7170ff, Berkeley Mono for code).
+
+Not independently verified via WebFetch — widely documented public facts used:
+- Linear was founded in 2019 by Karri Saarinen, Tuomas Artman, and Jori Lallo.
+- Karri's prior roles at companies including Airbnb and Coinbase are widely
+  reported in tech press and in founder interviews.
+
+Personas (§13) are fictional archetypes informed by publicly observable
+Linear user segments (software engineers, product designers, engineering
+managers, early-stage founders). Names are illustrative; they do not refer
+to real people.
+
+Interpretive claims (e.g., "Cycles over sprints — word choice is design",
+"Darkness is the canvas, not a theme") are editorial readings connecting
+Linear's stated principles to the design system, not directly sourced
+Linear statements.
+-->
+

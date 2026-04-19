@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: Claude (Anthropic)
+---
+
 # Design System Inspiration of Claude (Anthropic)
 
 ## 1. Visual Theme & Atmosphere
@@ -310,3 +315,141 @@ What makes Claude's design truly distinctive is its warm neutral palette. Every 
 5. For shadows, use "ring shadow (0px 0px 0px 1px)" or "whisper shadow" — never generic "drop shadow"
 6. Specify the warm background — "on Parchment (#f5f4ed)" or "on Near Black (#141413)"
 7. Keep illustrations organic and conceptual — describe "hand-drawn-feeling" style
+
+---
+
+## 10. Voice & Tone
+
+Anthropic speaks the way a thoughtful colleague does — informed, careful, and allergic to hype. The voice qualifies confident claims, avoids tech-industry superlatives, and treats the reader as capable of reading more than a headline. Serious subjects get serious language; lighter moments are dry, not performative. Emoji and exclamation points are rare — warmth comes from word choice and editorial pacing, not decoration. The overall effect should read like a well-edited magazine article, not a product page.
+
+| Context | Tone |
+|---|---|
+| Headlines | Declarative, short. No "revolutionary", "unprecedented", "cutting-edge". |
+| Model descriptions | Capability + honest limit in one breath. "Sonnet is faster than Opus; Opus is better at long, multi-step reasoning." |
+| Error (content / safety refusal) | Specific + blameless + policy-cited. Never "Oops" or apologetic filler. |
+| Error (service / technical) | States the exact failure and the exact recovery action in one sentence. |
+| Documentation | Direct. "This is how it works." No "easy" or "simple" modifiers. |
+| Marketing CTAs | Verb + noun, plain. "Try Claude", not "Unleash your creativity". |
+| Legal / policy surfaces | Formal, precise. Reads like a peer-reviewed paper's methods section. |
+| Social media | Dry wit. Zero emoji in product announcements. |
+| Model card language | States training data shape, eval variance, and known failure modes up front — *before* features. |
+
+**Forbidden phrases.** "Revolutionary", "world-class", "cutting-edge", "game-changer", "unleash", "superpower", "don't worry", "easy peasy", "just". Any sentence starting with "Simply...". Exclamation marks on routine CTAs. Emoji in product descriptions, error messages, documentation, or model cards. Performative apologies ("We're so sorry for the inconvenience") — state the problem and the fix, no emotional performance.
+
+## 11. Brand Narrative
+
+Anthropic was founded in 2021 by researchers who left OpenAI when the urgency of AI safety outpaced the field's willingness to prioritize it. The founding rejection was twofold: against the tech industry's default optimism that treats powerful systems as obvious goods, and against the cinematic AI aesthetic — Terminator reds, cyberpunk neons, sterile clinical whites — that equates "powerful" with "cold" or "threatening".
+
+The warm visual language — parchment (`#f5f4ed`), terracotta (`#c96442`), olive grays, serif headlines — is a deliberate counter to that vocabulary. AI should feel like a trustworthy colleague, not a tool to be afraid of. Constitutional AI, the company's signature technique, treats alignment as engineering rather than philosophy; the brand extends that precision into every design decision.
+
+What Anthropic refuses: speculation dressed as fact, fear-based marketing, unqualified confidence, and visual tropes borrowed from science fiction. What it embraces: measured claims, editorial pacing, warmth as a form of honesty, and safety framed as the foundation that makes functionality meaningful — not as a constraint on it.
+
+## 12. Principles
+
+1. **Honesty over charm.** If a claim can't be backed by an evaluation or a specific example, it doesn't ship. Model capabilities are published with variance; limitations appear in the same paragraph as capabilities, not in an FAQ.
+2. **Warmth is a credibility signal.** Parchment canvas and terracotta brand color exist because financial-industry gray and cyberpunk neon both signal distrust. Warmth reads as "a human considered this for you".
+3. **Measured language always.** "Sonnet performs well on long-context reasoning" beats "Sonnet crushes long context". Hedging is a feature, not a weakness — it signals knowing where the edge is.
+4. **Serif carries weight.** Anthropic Serif at weight 500 for every headline says the thought was considered before it was published. Bold weights would signal urgency; that's not the mode.
+5. **No cool colors in the palette.** Blue-grays, cyberpunk magentas, clinical teals all read as "tech product optimizing for you" rather than "tool helping you think". Warm only.
+6. **Editorial pacing.** Body line-height 1.60, generous section spacing, single-column reading rhythm. Content that asks to be read, not skimmed.
+7. **Safety frames functionality, not constrains it.** Safety disclosures appear where decisions are made — model cards, onboarding, policy surfaces. A model card is a design element, not a legal afterthought.
+8. **The illustration style is the refusal.** Hand-drawn organic illustrations — not geometric tech icons, not 3D rendered abstractions — are the single clearest signal that this company rejects the industry's default aesthetic.
+9. **Streaming is the UI.** The primary "animation" is the model's output decoding token by token. Never fake it; never over-engineer around it. The latency is the honesty.
+
+## 13. Personas
+
+*Personas below are fictional archetypes informed by publicly described Claude user segments, not individual people.*
+
+**Dr. Rohit Sharma, 38, Boston.** Computational biologist at a research hospital. Uses Claude for literature review and code review on genomics pipelines. Will immediately distrust any AI product that uses "revolutionary" about itself. Reads model cards before deploying a new model to his team. Appreciates the exact caveat *"Claude may make mistakes — please double-check responses"*: for him, that caveat is why he chose Anthropic.
+
+**Elena Ruiz, 29, Berlin.** Staff engineer at a Series-B startup. Uses Claude Code daily as a pair programmer. Prefers it to alternatives because the output feels like a careful colleague's rather than an over-eager junior's. Will use exclamation marks in Slack but finds them wrong in product copy. Notices voice inconsistency across an app within 30 seconds and mentally downgrades the team that shipped it.
+
+**Tomás Vidal, 54, São Paulo.** Chief Counsel at a regulated financial services firm. Approves enterprise Claude deployment for his company's legal research team. Reads Anthropic's Responsible Scaling Policy twice before signing a commercial agreement. Does not care about playful product copy; cares deeply that the brand signals competence at regulated tasks. The serif-driven editorial aesthetic reads to him as "this company takes itself seriously".
+
+**Min-jun Park, 24, Seoul.** Graduate student in philosophy. Uses Claude for drafting and argument-testing on research papers. Started because a professor recommended it specifically for long-form reasoning. Trusts the brand more than the feature set — when Anthropic says a capability is experimental, she assumes it is experimental and reads the caveats. Will stop using the product if it ever sounds like it's selling her something.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (first use)** | A single serif line of prompt guidance on Parchment, no illustration. "What would you like to ask Claude?" — rendered as a question with ordinary punctuation, not emphasis styling. |
+| **Empty (search, no results)** | One Olive Gray (`#5e5d59`) sans line at 15px: "Nothing matches that." No suggestions unless they are genuinely useful. Never an illustration, never an emoji. |
+| **Loading (message generation)** | Text streams via typewriter. No separate "thinking…" indicator during normal generation; the stream is the indicator. During pre-stream pause (≥500ms), three Olive Gray dots animate at 1.5s cadence. No spinner anywhere. |
+| **Loading (app shell / route transition)** | Parchment background with Border Cream (`#f0eee6`) skeleton blocks at final dimensions. 1.8s shimmer with a warm-tinted highlight. Blue-tinted skeletons are forbidden — they break the palette. |
+| **Error (content / safety refusal)** | A single paragraph in Olive Gray explaining the refusal *specifically and without apology*. Cites the relevant policy surface (Usage Policies, Constitution). No 🚫 or ⚠ — the words carry the weight. |
+| **Error (service)** | Warm Sand (`#e8e6dc`) banner with Anthropic Near Black (`#141413`) text: the exact failure and the exact recovery action. "Claude is temporarily unavailable. Try again in a minute." Never speculate about the cause if it isn't known. |
+| **Error (user input, e.g., over token limit)** | Inline below the input. Specific number (`Your message is 12,000 tokens; Sonnet handles up to 200,000`). Actionable suggestion if obvious. |
+| **Streaming cursor** | A block cursor (`▍`) in Terracotta Brand (`#c96442`) blinks at 1.2s. This is the only animated terracotta element anywhere; everywhere else terracotta is static. |
+| **Success (message delivered)** | No explicit state. The streamed message is the confirmation. Never a toast. |
+| **Success (account / billing action)** | Brief Warm Sand banner with Charcoal Warm text, 4s auto-dismiss. Past tense, exact consequence. "Your plan was changed to Max." |
+| **Skeleton** | Border Cream blocks at exact final dimensions. Warm shimmer. Typography skeletons use slightly wider lines for serif headings to match their visual weight. |
+| **Disabled** | Opacity reduced on text and surface together; warm tint preserved. Disabled inputs retain Border Cream border — geometry stable if re-enabled. |
+
+## 15. Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Focus rings, toggle state commit |
+| `motion-fast` | 160ms | Hover states, small fades, button press overlay |
+| `motion-standard` | 260ms | Modal, sheet, card expand, section transition |
+| `motion-slow` | 420ms | Page-level transitions, first-paint reveals |
+| `motion-stream` | variable | Token-rate typewriter (driven by model decoding, not time) |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Sheets rise, modals appear — settled landing, never springy |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 0.9, 1)` | Dismissals, quiet removals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, card states |
+
+**Explicitly forbidden.** No `cubic-bezier(0.34, 1.56, 0.64, 1)` or any overshoot/spring curves. Anthropic motion does not bounce. Overshoot is inherently playful and slightly sycophantic; this brand is considered, not eager.
+
+**Signature motions.**
+
+1. **Typewriter streaming (the product's primary animation).** The model's output appears character by character as tokens decode. This is not a simulated effect — it is the actual decoding timing. Never fake it, and never pre-compute then replay; pre-computed or cached responses should appear instantaneously. Faking the typewriter on cached content creates the same kind of distrust as a progress bar that pauses theatrically at 95%.
+2. **Light / Dark section alternation.** On the marketing site's hero-to-feature transitions, the background crossfades between Parchment and Near Black at `motion-slow`. Headlines do not move during the transition; only the ambient light level changes. This is the one place the site "does something cinematic", and it is deliberately the only one.
+3. **Terracotta cursor.** The blinking cursor during streaming (§14) is the only animated terracotta element. Everywhere else, terracotta is static — CTAs, brand marks, unmoving.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Typewriter streaming is replaced by whole-paragraph materialization as tokens complete. The app stays fully functional; no delightful motion at the cost of accessibility.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via WebFetch (2026-04-19):
+- https://www.anthropic.com/company — confirms Anthropic's self-description as
+  "an AI safety and research company" building "reliable, interpretable, and
+  steerable AI systems". Board includes Dario Amodei and Daniela Amodei.
+- https://www.anthropic.com/news/core-views-on-ai-safety (published 2023-03-08) —
+  confirms founding mission framing ("We founded Anthropic because we believe the
+  impact of AI might be comparable to that of the industrial and scientific
+  revolutions"), the "empirically-driven approach to AI safety", and that
+  "several members of what was to become the founding Anthropic team" worked
+  on scaling laws in 2019.
+
+Base DESIGN.md (sections 1–9) is the source for all token-level claims
+(Parchment #f5f4ed, Terracotta #c96442, Anthropic Serif/Sans/Mono stacks,
+ring-shadow system, warm-only neutral palette).
+
+Anti-slop voice rules and the forbidden-phrase list in §10 are informed by:
+- anthropics/skills/frontend-design (public at github.com/anthropics/skills) —
+  Anthropic's own `frontend-design` skill with named bans on Inter/Roboto/Arial
+  as default fonts, purple-on-white palettes, SVG line-art illustrations,
+  unjustified gradients, etc. This skill is the authoritative source for
+  Anthropic's documented anti-slop stance.
+
+Not independently verified via WebFetch — widely documented public facts used:
+- Anthropic was founded in 2021.
+- Several founders previously worked at OpenAI.
+
+Personas (§13) are fictional archetypes informed by publicly described Claude
+user segments (academic researchers, startup engineers, enterprise legal /
+compliance, graduate students). Any resemblance to specific individuals is
+unintended. Names are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "the warm visual language is a deliberate counter
+to the cyberpunk AI aesthetic") are editorial readings of the design system,
+not documented Anthropic statements.
+-->
+

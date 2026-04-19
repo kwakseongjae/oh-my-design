@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: Airbnb
+---
+
 # Design System Inspiration of Airbnb
 
 ## 1. Visual Theme & Atmosphere
@@ -244,3 +249,179 @@ What distinguishes Airbnb is its palette-based token system (`--palette-*`) and 
 5. Generous radius: 8px buttons, 20px cards, 50% controls
 6. Cereal VF at 500–700 weight — no thin weights for any heading
 7. Photography is hero — every listing card is image-first
+
+---
+
+## 10. Voice & Tone
+
+Airbnb's voice is hospitality made legible — warm, unhurried, grounded in human scale. The anchor phrase is *"Belong Anywhere,"* adopted as the company's official tagline in July 2014 at the same time the **Bélo** logo launched. That phrase locates the entire voice: not transactional ("Book a room"), not distantly aspirational ("Luxury redefined"), but universal and present-tense. Headlines read like invitations. Error messages read like apologies from someone who genuinely cares. Even legal and safety surfaces preserve the Host-Guest metaphor rather than slipping into corporate passive voice.
+
+| Context | Tone |
+|---|---|
+| Hero headlines | Warm, inviting, second-person. "Find a place to stay." |
+| Listing descriptions | Specific, human-scale. "Sleeps 4" not "Max occupancy: 4". |
+| CTAs | Gentle imperative. "Continue", "Reserve", "Send message". Never "Buy now". |
+| Host-facing copy | Partnered, respectful. Hosts are capitalized (Host, Superhost), not "providers" or "suppliers". |
+| Error messages | Apologetic-but-specific. Explains what happened and how to recover. |
+| Onboarding (guest) | Encouraging without being sycophantic. Walks first-time guests through trust features. |
+| Trust & Safety copy | Serious but warm. Reads like a thoughtful letter, not a legal document. |
+| Marketing long-form | Travel-magazine-editorial. Stories of specific Hosts and Guests. |
+
+**Forbidden phrases.** "Revolutionary", "disrupt", "next-generation", "game-changer" — the voice is human, not tech-industry. "Book now!" with exclamation — Airbnb treats booking as a trust decision, not a shopping impulse. "Unlock" (as in "Unlock amazing stays") — unlocking is a transactional metaphor and this product is about belonging. Cold-booking vocabulary: "accommodations", "units", "properties" where "homes" works. Scarcity pressure ("Only 2 left!") on product surfaces — this would betray the hospitality thesis.
+
+## 11. Brand Narrative
+
+Airbnb was founded in 2008 in San Francisco by Brian Chesky, Joe Gebbia, and Nathan Blecharczyk. The founding was famously accidental: Chesky and Gebbia couldn't make rent, a design conference was in town, hotels were full, and they put air mattresses in their living room. The first three guests each paid $80 a night. That origin — a home, a Host, a Guest who could not find a traditional place to stay — stayed the company's center of gravity as it grew into a global platform.
+
+In **July 2014**, Airbnb launched its first major rebrand: the **Bélo** logo (a universal symbol intended to evoke belonging) and the tagline *"Belong Anywhere."* Brian Chesky's launch essay framed the thesis directly: *"A house is just a space, but a home is where you belong. And what makes this global community so special is that for the very first time, you can belong anywhere."* The campaign framed belonging as *"the universal human yearning to belong — the desire to feel welcomed, and respected, and appreciated for who you are, no matter where you might be."*
+
+That 2014 thesis is still the company's foundation, but the positioning has evolved substantially. In **May 2024**, the **Icons Release** introduced a new category — *"extraordinary experiences from the world's greatest icons"* — with partnerships across sports, music, and film, alongside group-trip features (shared wishlists, a redesigned Messages tab). In **2025**, the **Summer Release** expanded Airbnb into a three-pillar platform — **Homes, Experiences, and Services** — launching 10 service categories across 260 cities and a curated "Airbnb Originals" line. Brian Chesky framed the shift verbatim: *"With the launch of services and experiences, we're changing travel again. Now you can Airbnb more than an Airbnb."* The 2025 release shipped with a **visual-language refresh toward 3D, skeuomorphic, Pixar-inspired iconography** — *"vibrant, tactile, and full of depth"*, with *"smooth animations, subtle lighting, soft curves, and drop-shadows"* — while deliberately preserving the **Cereal** typeface, **Rausch Red** accent, and the underlying Belong-Anywhere thesis. The brand evolved into what Airbnb now frames as an "everything app" without abandoning any of the 2014 foundation.
+
+What Airbnb refuses: the "hotel booking site" aesthetic (stock photography, star ratings as the only trust signal, "Book Now" pressure tactics), the gig-economy aesthetic (minimalist-cold, platform-as-intermediary), and any design choice that would reduce a home to a commodity. What it embraces: photography-first listing cards where the Host's own photos are the hero content, Rausch Red (`#ff385c`) — named after the company's early office address on Rausch Street, so the brand color is a personal reference rather than a committee decision — generous border-radius that reads as soft rather than precise, and a Bélo logo designed so anyone, anywhere, could draw it.
+
+## 12. Principles
+
+1. **Belong anywhere.** *(Airbnb's official tagline since July 2014, verbatim.)* Every surface should feel like an invitation, not a transaction. If a design move reads as transactional pressure ("Only 2 left! Book now!"), it violates the thesis.
+2. **Home, not accommodation.** *(Brian Chesky, 2014, verbatim: "A house is just a space, but a home is where you belong.")* Copy, illustration, and imagery refer to "homes", never "units", "properties", or "accommodations".
+3. **Hosts are capital H.** Hosts are partners, not suppliers. Product copy capitalizes the role (Host, Superhost) as a form of respect. Guest is lowercase when used as a common noun; guests are universal, Hosts are individual.
+4. **Photography is the hero.** Listing cards, search results, marketing pages — the Host's photography is the primary visual. The chrome's job is to get out of the way of that photography.
+5. **Warm minimalism.** White canvas, Rausch Red as singular accent, near-black (`#222222`) text with a whiff of warmth, generous radius throughout. The palette refuses the "cool gray institutional" default of travel-tech.
+6. **Trust is designed.** Every trust-signaling element — reviews, Host verification, cancellation policies, identity verification — is a first-class UI element, not buried in small print. Warmth without trust is hospitality theater.
+7. **Pay attention to the in-between moments.** Empty states, error states, between-booking follow-ups — these are where belonging is either reinforced or broken. A generic "No results found" state is an Airbnb failure.
+8. **The Bélo is universal on purpose.** The 2014 Bélo was designed so anyone, anywhere, could draw it. Brand marks are not decoration — they are symbols of the community they represent, and community symbols must be replicable by the community.
+9. **Hospitality is more than a look.** Design decisions are judged against whether a real Host would feel dignified showing their listing inside this chrome. If the answer is "not quite", the chrome is wrong.
+10. **The super-app is an extension of hospitality, not a pivot from it.** *(Contemporary, 2024–2025 era.)* The 2024 **Icons Release** and 2025 expansion to **Homes + Experiences + Services** inherit the 2014 "Belong Anywhere" thesis — the unit of belonging scales from a home stay to an experience or a service, but the emotional register stays hospitable. The 2025 shift to 3D / skeuomorphic / Pixar-inspired iconography kept Cereal, Rausch Red, and the warm-minimalist chrome intact precisely because the brand is evolving, not rebooting. A redesign that introduced a cold palette or a sans-serif brand type would violate the thesis, no matter how "modern" it looked.
+
+## 13. Personas
+
+*Personas below are fictional archetypes informed by publicly observable Airbnb user segments (leisure travelers, Hosts, long-stay remote workers, multigenerational family travelers), not individual people.*
+
+**Léa Dubois, 31, Paris.** Marketing manager at a fashion startup. Books 4–6 Airbnb stays a year, mostly short European weekends with her partner. Reads listing descriptions carefully; checks the Host's review history *before* the listing photos. Would rather pay 20% more for a Superhost with a long review history than save money on a new listing. Notices when Airbnb's empty-state copy is warm or cold and judges the product accordingly.
+
+**Dimitri Stavros, 58, Thessaloniki.** Retired and runs a 2-bedroom Superhost listing in his family's village home. Uses the Host app daily. Values that the Host-facing copy treats him as a partner, not a gig-economy worker. Reads every update to Airbnb's cancellation policies carefully because they affect his household income. Would leave the platform if the Host tools ever felt more extractive than collaborative.
+
+**Aisha Mohammed, 27, Cairo.** Software engineer working fully remote. Uses Airbnb for 30–90 day "slow travel" stays — Lisbon, Mexico City, Medellín. Filters aggressively for listings with workspace photos and fiber internet mentions. Has written a Medium post about her personal rotation of Superhosts in four cities. Sees Airbnb more as "a distributed home network" than a travel product.
+
+**Kenji and Yuki Watanabe, 44 and 41, Yokohama.** Family of four. Book 2–3 Airbnb stays per year for multigenerational trips where hotel rooms would require 2–3 separate rooms. Value the "entire home" filter specifically because it lets grandparents and grandchildren share a kitchen. Read reviews filtered by the "Families" tag. Distrust listings that use professional staging photography — they prefer the slightly-imperfect real-Host photos as a trust signal.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (search, no results)** | Single warm line in near-black (`#222222`): "We couldn't find any homes matching all your filters." One soft-CTA link in Rausch Red: "Clear filters". No illustration. Filter chips visible above so users can adjust in place. |
+| **Empty (wishlist, first use)** | Warm-gray body text: "Save places you love by tapping the heart on any home." One ghost CTA: "Explore homes". No illustration, no sparkles, no tour. |
+| **Empty (messages, new user)** | Near-black headline + warm-gray body: "Your conversations with Hosts will appear here." Nothing more — Airbnb trusts that this becomes obvious once you book. |
+| **Loading (search results)** | Warm-tone skeleton cards preserving the listing-card shape (image area + 3 text lines + price). 1.2s shimmer in a lighter warm tone. Skeletons use the same 12px+ radius as real cards — no geometric surprise on paint-in. |
+| **Loading (map pan)** | Result pins fade at `motion-fast` as the user drags; map tiles load underneath. No blocking overlay, no "Loading..." text on the map. |
+| **Error (booking failed)** | Warm apology + specific cause + recovery path. *"Your booking didn't go through. Please try again, or contact the Host directly."* Rausch Red used only on the "Try again" button. Never a bright red banner. |
+| **Error (form validation)** | Field-level. Ultra-thin border switches from warm gray to Rausch Red. 13px warm message below: what's invalid and what would be valid. |
+| **Error (Host decline)** | Warm, explanatory surface. Not framed as failure — framed as "this Host isn't available; here are similar homes". The rejection is never hidden, but the alternative is immediate and present. |
+| **Success (booking confirmed)** | Dedicated confirmation screen. Host's first name + photo + welcome note if they wrote one. Check-in details prominent. Rausch Red only on the "Message Host" button. Past tense: "You're booked." |
+| **Success (review submitted)** | Brief warm-gray inline confirmation: "Thanks for your review." 4s auto-dismiss. No toast spam; reviews are a small ritual, treated quietly. |
+| **Skeleton** | Warm-tone blocks at exact final card dimensions. Shimmer in a lighter warm tone, never cool blue. Photography placeholder is a subtle warm gradient, never a blank gray square — even skeletons respect the photography-first principle. |
+| **Disabled** | Opacity on text and warm-border together. Rausch Red actions become `rgba(255,56,92,0.3)` — faded warm red, not switched to gray. |
+| **Loading (Host publishing a listing)** | Multi-step progress with named steps ("Photos uploaded", "Description saved", "Calendar synced"). Warm, specific, never abstract "Loading..." text. |
+
+## 15. Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | State commits, selection, keyboard confirm |
+| `motion-fast` | 160ms | Hover, focus, heart-icon toggle, map pin interactions |
+| `motion-standard` | 260ms | Sheet, modal, gallery swipe, card expand |
+| `motion-slow` | 400ms | Full-screen photo gallery transitions, rare hero reveals |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, modals, filter drawers |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+| `ease-warm` | `cubic-bezier(0.25, 0.8, 0.25, 1)` | Heart-icon toggle, Wishlist save — slightly more settled at the end, matching the emotional register of saving a home |
+
+**Signature motions.**
+
+1. **Heart-icon save (Wishlist).** The heart transitions from outline to filled Rausch Red over `motion-fast` with `ease-warm`. A small scale pulse (`0.9 → 1.05 → 1.0`) accompanies the color fill. This is the one place Airbnb's UI allows a tiny "joy" motion — saving a home to come back to later is an emotional act, not a neutral bookmark.
+2. **Photo gallery swipe.** Full-screen photos swipe at `motion-standard` with `ease-standard`. No parallax on the photos themselves; the user should feel like they're looking at real photographs, not a marketing carousel.
+3. **Search filter drawer.** Filter drawer rises at `motion-standard` with `ease-enter`. Backdrop fades in synchronously. Dismissal at `motion-fast` with `ease-exit`.
+4. **Map pin selection.** When a result pin is tapped, the corresponding listing card slides into focus at the bottom of the screen at `motion-standard` with `ease-enter`. The pin itself scales `1.0 → 1.15` over `motion-fast` to confirm selection.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. The heart-icon pulse becomes an instant color switch. Gallery transitions become cuts. The product stays fully functional; hospitality voice is preserved through copy, not through motion.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via WebFetch / WebSearch (2026-04-19):
+
+Historical (2014 era) — the foundation still in force:
+- Brian Chesky, "Belong Anywhere" (Medium, July 2014) — confirms the tagline
+  launch and this verbatim framing used directly in §10 and §11:
+    "really, we're about home. You see, a house is just a space, but a
+     home is where you belong. And what makes this global community so
+     special is that for the very first time, you can belong anywhere."
+  https://medium.com/@bchesky/belong-anywhere-ccf42702d010
+- "How Airbnb Found a Mission—and a Brand" (Fortune longform) — confirms
+  the July 2014 rebrand context, the Bélo logo naming (by then-CMO
+  Jonathan Mildenhall), and the campaign framing verbatim:
+    "the universal human yearning to belong — the desire to feel
+     welcomed, and respected, and appreciated for who you are, no
+     matter where you might be."
+  https://fortune.com/longform/airbnb-travel-mission-brand/
+
+Contemporary (2024–2025 era) — the current positioning:
+- Airbnb 2024 Summer Release (Icons launch) — WebSearch confirms verbatim:
+    "extraordinary experiences from the world's greatest icons"
+  Also confirmed: the Icons category launch with partners across sports,
+  music, and film; group-trip features (shared wishlists, redesigned
+  Messages tab). Announced by Brian Chesky in a 34-minute video release.
+  https://news.airbnb.com/airbnb-2024-summer-release/
+- Airbnb 2025 Summer Release — WebSearch confirms Brian Chesky verbatim:
+    "With the launch of services and experiences, we're changing travel
+     again. Now you can Airbnb more than an Airbnb."
+  Three-pillar expansion confirmed (Homes + Experiences + Services), 10
+  launch categories (including Chefs) across 260 cities, Airbnb Originals
+  line.
+  https://news.airbnb.com/airbnb-2025-summer-release/
+  https://www.airbnb.com/release
+- Medium / Design Bootcamp, "Airbnb Summer 2025 update" — confirms the
+  visual-language refresh verbatim:
+    "3D, skeuomorphic, Pixar-inspired icons — vibrant, tactile, and full
+     of depth"
+    "smooth animations, subtle lighting, soft curves, and drop-shadows"
+    "playful, utility-driven icon set with consistent visual language —
+     curved, bold, and full of personality"
+  Also confirms that Cereal typeface and existing logo were preserved
+  through the 2025 redesign — evolution, not reboot.
+
+Note: Direct WebFetch of https://news.airbnb.com/ and https://www.airbnb.com/
+returned HTTP 403 (likely bot protection), so 2024–2025 release quotes
+above were captured via WebSearch against the same underlying source pages
+and cross-confirmed against the Medium analysis piece.
+
+Base DESIGN.md (sections 1–9) is the source for all token-level claims
+(Rausch Red #ff385c, Airbnb Cereal VF typeface, three-layer shadow stacks,
+generous radius scale 8px–32px, Near-Black #222222, Luxe Purple #460479
+and Plus Magenta #92174d for premium tiers).
+
+Not independently verified via WebFetch — widely documented public facts used:
+- Airbnb was founded in 2008 in San Francisco by Brian Chesky, Joe Gebbia,
+  and Nathan Blecharczyk; the origin story involving air mattresses during
+  a San Francisco design conference is widely documented.
+- Rausch Red (#ff385c) is reported to be named after Rausch Street, the
+  location of an early Airbnb office.
+- Airbnb's Host / Superhost program terminology is widely used in
+  the company's own product and Host-facing surfaces.
+
+Personas (§13) are fictional archetypes informed by publicly observable
+Airbnb user segments (leisure travelers, Hosts / Superhosts, long-stay
+remote workers, multigenerational family travelers). Names are illustrative;
+they do not refer to real people.
+
+Interpretive claims (e.g., "hospitality is more than a look", "the Bélo is
+universal on purpose", "warm minimalism refuses the cool-gray institutional
+default") are editorial readings connecting Airbnb's stated 2014 brand
+thesis to the design system, not directly sourced Airbnb statements.
+-->
+

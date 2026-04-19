@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: Figma
+---
+
 # Design System Inspiration of Figma
 
 ## 1. Visual Theme & Atmosphere
@@ -229,3 +234,166 @@ These appear in product UI screenshots and hero gradients (NOT in marketing chro
 3. Dashed focus outlines, not solid
 4. Letter-spacing is always negative on body, always positive on mono labels
 5. Pill (50px) for buttons/tabs, circle (50%) for icon buttons
+
+---
+
+## 10. Voice & Tone
+
+Figma's voice is **colloquial-craft** — the register of someone who takes design seriously and refuses to sound like corporate-SaaS while doing it. Marketing headlines are short and aspirational (*"Make anything possible, all in Figma"*), but blog voice allows real colloquialism (*"Chat, are we cooked?"*) that would be unthinkable at Apple or Stripe. The tonal anchor is that Figma speaks *as a designer to designers* — peer-to-peer, not vendor-to-customer. Internal jargon (frames, components, auto-layout, variants) is used without defining, because the audience already knows it.
+
+| Context | Tone |
+|---|---|
+| Hero headlines | Short, aspirational, peer-voice. "Make anything possible, all in Figma." |
+| Product page copy | Feature + payoff. "Ship products, any way you want." Not spec-listy. |
+| CTAs | Minimal, present-tense. "Get started", "Watch Config", "Try Figma free". |
+| Blog editorial | Colloquial + substantive. Titles like *"The TL;DR on MCP"*, *"Chat, are we cooked?"*, *"Cooking with constraints"*. |
+| Product UI strings | Designer vocabulary assumed — "frame", "component", "auto-layout" without gloss. |
+| Error messages | Specific and friendly. Problem + action. |
+| Community / Config copy | Celebrates user work without sycophancy. |
+| Dev Mode / MCP / developer-facing | Slightly more technical; code examples prioritized. |
+| Enterprise sales copy | Calmer register but same voice foundation — never shifts into pure B2B-ese. |
+
+**Forbidden phrases.** "Revolutionary", "disrupt", "unleash", "world-class" — the voice is peer, not promotional. "Easy peasy" or "effortless" as self-descriptors — Figma is not easy; it is powerful, and the voice respects that. Stock-SaaS AI hype phrases ("AI-powered transformation"). Generic marketing emoji (🚀 ✨ 💡). Exclamation marks on routine CTAs. Condescending vocabulary for beginners — Figma treats every user as a designer, including ones who are not yet.
+
+## 11. Brand Narrative
+
+Figma was founded in 2012 by **Dylan Field and Evan Wallace**. The founding bet was technical and contrarian: at a time when every serious design tool was a native app (Sketch for Mac, Adobe everything), Field and Wallace decided to build a design tool that ran **in the browser, with real-time multiplayer collaboration**. That required solving WebGL rendering, operational-transform networking for multiplayer, and typesetting — all simultaneously. The tool launched publicly in 2016 after roughly four years of head-down engineering.
+
+Figma's brand has always centered on **design as collaboration** rather than design as solo authorship. The product's original framing was captured in the phrase "design is a team sport"; the current marketing positioning — *"Figma lets you turn big ideas into real products. Brainstorm, design, and build with your team."* — preserves the same thesis through different words. **Config**, Figma's annual conference, is explicitly framed around *"craft, quality, and intention in an AI-powered world"* and functions as a community gathering more than a product-launch event.
+
+What Figma refuses: the Sketch-era framing of design as solo craft, the Adobe-era pricing of tools behind per-seat walls, and the enterprise-SaaS aesthetic of cold dashboards and generic stock photography. What it embraces: **browser-native rendering** as a technical identity, black-and-white chrome that puts colorful user work in the foreground (the product's job is to get out of the way of what designers make in it), colloquial blog voice, Config as a recurring community ritual, and — in the current AI-native era — new sub-products (Dev Mode, FigJam, Slides, Draw, Make, Buzz, Sites, MCP) that all inherit the browser-multiplayer DNA.
+
+## 12. Principles
+
+1. **Design is collaboration, not authorship.** Multi-cursor multiplayer was built into the first public release. Every surface assumes multiple people are present or will be. Features that quietly assume a solo designer (single-user comment threads, lock-by-default edits) are anti-pattern.
+2. **The browser is the runtime.** Figma's founding technical bet — WebGL rendering, operational transforms for collab — is not legacy; it is identity. Design decisions that would require a native-only capability are rejected or reworked for the browser.
+3. **Colorless chrome, colorful content.** The interface is strictly black-and-white precisely so the user's colorful work can be the hero. Any chromatic decoration on the product UI itself would compete with the user's design output.
+4. **Peer voice, not vendor voice.** Figma speaks as a designer to designers. Blog titles use colloquialisms (*"Chat, are we cooked?"*) because peers actually talk that way. Corporate-SaaS copy would break the intimacy of the relationship.
+5. **Designer vocabulary is used without gloss.** "Frame", "component", "auto-layout", "variant" — Figma does not explain these in product copy. Assuming the audience's literacy is a form of respect.
+6. **Config is a ritual, not a launch vehicle.** The annual conference's stated frame — *"craft, quality, and intention in an AI-powered world"* — describes a community gathering around ideas, not a sales funnel around products.
+7. **The product's job is to get out of the way.** Black-and-white chrome, minimal ornament, dashed selection-handle outlines referenced by the marketing site — these are all "the tool should disappear into the work" made visible.
+8. **Sub-products inherit DNA.** FigJam, Dev Mode, Slides, Draw, Make, Buzz, Sites, MCP — each new sub-product is browser-native, multiplayer-by-default, and visually continuous with the flagship. Expanding the product family must not fragment the feel.
+9. **Craft, quality, and intention.** *(Config 2026 frame, verbatim.)* These three words are the current era's anchor. In an AI-native moment, Figma's defensive posture is to champion intentional craft rather than automated generation.
+
+## 13. Personas
+
+*Personas below are fictional archetypes informed by publicly observable Figma user segments (product designers, design-system authors, developers using Dev Mode, early-career designers, cross-functional collaborators), not individual people.*
+
+**Maya Johnson, 30, Brooklyn.** Senior product designer at a Series-B SaaS. Lives in Figma — prototyping, design review comments, handoff specs, design-system maintenance. Has opinions about auto-layout edge cases. Reads Figma's blog for the design-culture posts, less for product announcements. Would never use a design tool that required opening a desktop app instead of a browser tab.
+
+**Daniel Chen, 26, Singapore.** Design-system lead at a fintech scale-up. Maintains ~400 components across three themed variants. Relies on Figma variants + modes + libraries as the spine of his company's UI consistency. Notices when component props change behavior across releases. Watches every Config talk related to design-systems practice.
+
+**Saoirse Murphy, 22, Dublin.** Recent graduate in visual communication. Uses Figma Community as her primary learning environment — forks templates, remixes, studies how others structure files. Thinks of Figma less as a tool and more as a public workspace. Discovered her first job via a portfolio shared through Figma Community links.
+
+**Tomás Rivera, 35, Mexico City.** Frontend developer who uses Dev Mode daily to inspect design tokens, export SVGs, and increasingly Figma's MCP server to pipe design decisions into Claude Code and Cursor. Would previously have called himself "not a designer", but the browser-native inspection experience made him fluent in design vocabulary over three years.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (new file)** | Black-and-white chrome, vast white canvas. Single black-text hint at top-left: "Start designing." No template picker unless explicitly opened. The empty canvas is the welcome. |
+| **Empty (community search, no results)** | Black sans text at 14px: "No results for `<query>`." Community link in black — no accent color, because the chrome is colorless by design. |
+| **Empty (dashboard, no files yet)** | Simple typographic hero: "Welcome to Figma." One CTA "New design file". Zero illustration. |
+| **Loading (canvas first paint)** | Skeleton frames rendered as white blocks with dashed outlines — echoing Figma's selection-handle visual language. 1.2s shimmer in a lighter white tone. |
+| **Loading (community asset fetch)** | Community tile shows designer's handle and file name placeholders while thumbnail fetches. Fades in at `motion-fast`. |
+| **Error (sync failed)** | Small indicator at the top — colorless by default, a subtle warm-gray dot that becomes a specific icon on failure. Never blocks the canvas; Figma does not prevent design work because a sync hiccuped. |
+| **Error (plugin crash)** | Modal with specific plugin name + error + "Restart plugin" CTA. Plugin errors are isolated; rest of Figma stays responsive. |
+| **Error (form validation, account settings)** | Field-level. Thin black outline switches to a black dashed outline (borrowing selection-handle visual). 13px caption below in near-black — no alert red in the chrome. |
+| **Success (invite accepted)** | Presence chip animates in at the top of the file with the new user's cursor color. No toast. Multiplayer presence IS the confirmation. |
+| **Success (version saved)** | Tiny timestamp update in the file title bar. No celebration; version save is assumed, not announced. |
+| **Skeleton** | White blocks at exact final dimensions. Dashed outline preserved on blocks that will have selection-handle behavior when real. Never a colored skeleton — the chrome is colorless. |
+| **Disabled** | Opacity on text and border together. Dashed outline remains visible; disabled components keep their selection-echo visual language. |
+| **Multiplayer presence (others in file)** | Small colored cursor with designer's initials. Cursor color is the **only chromatic element in the chrome** — deliberately, because *other humans* are the only color the chrome admits. |
+
+## 15. Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection commit, property value commit |
+| `motion-fast` | 120ms | Hover, focus, property panel reveal |
+| `motion-standard` | 220ms | Sheet, modal, panel expand |
+| `motion-slow` | 380ms | Page transitions on marketing surfaces |
+| `motion-cursor` | raw frame rate (no easing) | Multiplayer cursor updates — accuracy beats smoothness |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, panels, popovers |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Explicitly forbidden.** No spring, no bounce, no overshoot in chrome. Canvas interactions (zoom, pan, object drag) use native-feeling physics, but chrome UI — panels, modals, menus — is always cubic-bezier. A bouncing property panel would feel like a toy, not a tool.
+
+**Signature motions.**
+
+1. **Multiplayer cursor presence.** Other designers' cursors update at raw frame rate with no easing — accurate position matters more than smooth motion. The cursor trail is Figma's single most recognizable motion, and it works *because* it is honest about where the other person actually is.
+2. **Property panel reveal.** When a user selects an object on canvas, the Properties panel expands at `motion-fast` with `ease-standard`. Speed matters — this is invoked thousands of times per design session.
+3. **Canvas pan / zoom.** Native-feeling physics with momentum and natural deceleration. This is the one place Figma permits physics motion in the chrome, because the canvas IS the work.
+4. **Comment-mode transition.** When the user toggles comment mode, the cursor becomes a comment-shaped icon and the chrome shifts subtly over `motion-standard`. One visual cue, not a heavy mode change.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, chrome `motion-*` tokens collapse to `motion-instant`. Canvas pan / zoom preserve physics feel (the canvas is content, and removing its physics would make the product unusable). Property panels open instantly. Multiplayer cursors still update at frame rate.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via WebFetch (2026-04-19):
+- https://www.figma.com/ — confirms current primary positioning verbatim:
+    "Make anything possible, all in Figma"
+    "Figma lets you turn big ideas into real products. Brainstorm, design,
+     and build with your team."
+  Additional marketing headlines captured:
+    "Bring everyone together with systems that scale"
+    "Ship products, any way you want"
+    "Prompt, code, and design from first idea to final product"
+    "Start with a template. Make just about anything."
+  Current product family confirmed: Figma Design, Dev Mode, FigJam, Figma
+  Slides, Figma Draw, Figma Buzz (Beta), Figma Sites (Beta), Figma Make,
+  MCP (Model Context Protocol).
+- https://www.figma.com/blog/ — confirms the colloquial blog voice used as
+  a direct source in §10 (colloquial + substantive register). Titles
+  captured verbatim:
+    "The TL;DR on MCP: Why context matters and how to put it to work"
+    "Chat, are we cooked? How language has become the new metric of virality"
+    "Hard problems are still hard: A story about the tools that change
+     and the work that doesn't"
+    "Cooking with constraints: A designer's framework for better AI prompts"
+  Config 2026 frame confirmed verbatim:
+    "craft, quality, and intention in an AI-powered world"
+  MCP integration framing confirmed:
+    "Figma's MCP server brings your design decisions into the tools where
+     code gets written—so what gets built actually matches what was designed."
+- https://www.figma.com/about — visited but returned primarily navigational
+  content without substantive founding / mission text; founding details
+  below are drawn from widely documented public facts.
+
+Base DESIGN.md (sections 1–9) is the source for all token-level claims
+(figmaSans variable font with unusual weight stops, strict black-and-white
+chrome, pill 50px / circle 50% radius geometry, dashed focus outlines
+echoing canvas selection handles, figmaMono for uppercase technical labels).
+
+Not independently verified via WebFetch — widely documented public facts used:
+- Figma was founded in 2012 by Dylan Field and Evan Wallace.
+- Figma launched publicly in 2016 after roughly four years of development.
+- Evan Wallace departed Figma in 2021; Dylan Field remains CEO.
+- Config is Figma's annual conference, held yearly in San Francisco.
+- Figma's original technical differentiator was browser-native WebGL
+  rendering with real-time multiplayer collaboration via operational
+  transforms.
+- "Design is a team sport" was an early Figma framing that captured the
+  collaborative thesis; current marketing uses "Make anything possible"
+  as the primary headline while preserving the same collaborative frame.
+
+Personas (§13) are fictional archetypes informed by publicly observable
+Figma user segments (product designers, design-system leads, early-career
+designers using Figma Community, developers using Dev Mode / MCP). Names
+are illustrative; they do not refer to real people.
+
+Interpretive claims (e.g., "colorless chrome, colorful content" as a
+principle; "peer voice, not vendor voice"; "multiplayer cursor presence
+IS the most recognizable motion") are editorial readings connecting
+Figma's verified marketing voice and product decisions to the design
+system, not directly sourced Figma statements.
+-->
+

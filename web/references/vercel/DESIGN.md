@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: Vercel
+---
+
 # Design System Inspiration of Vercel
 
 ## 1. Visual Theme & Atmosphere
@@ -308,3 +313,144 @@ What distinguishes Vercel from other monochrome design systems is its shadow-as-
 4. Color is functional, never decorative — workflow colors (Red/Pink/Blue) mark pipeline stages only
 5. The inner `#fafafa` ring in card shadows is what gives Vercel cards their subtle inner glow
 6. Geist Mono uppercase for technical labels, Geist Sans for everything else
+
+---
+
+## 10. Voice & Tone
+
+Vercel's voice is engineer-terse, confident, and quietly clever. Headlines are short and declarative — *"Your product, delivered"*, *"Deploy once, deliver everywhere"*, *"Previews for every push"* — mirroring the compressed typography they sit in. Marketing copy reads like a well-written README: precise verbs, specific nouns, no adjective stacking. Performance claims, when made, are numeric (*"95% reduction in page load times"*, *"24x faster builds"*), not adjectival ("blazingly fast"). The Vercel Design team describes its posture as *"stewards of the Vercel Brand and Geist Design System"* — the steward word is earned by the discipline visible in every pixel and comma.
+
+| Context | Tone |
+|---|---|
+| Hero headlines | Short, declarative, 4–7 words. "Build and deploy the best web experiences." |
+| Product feature copy | Verb + object, concrete. "Ship fast. Stay fast." |
+| CTAs | Imperative, 2–3 words. "Start Deploying", "Talk to Sales", "View Docs". |
+| Error messages (dashboard, CLI) | Developer-readable: error type + specific cause + next action. |
+| Docs | Terse paragraphs, heavy code examples, zero tutorial-speak. |
+| Changelog / blog / "Ship" posts | Ship-proud, dated, technical. "We did X. Here's how it works." |
+| Marketing enterprise | Confident but numeric; case studies over superlatives. |
+| Blog / social voice | Wry, developer-insider, occasional wordplay — the brand page explicitly calls out "delightful wordplay" as part of the register. |
+
+**Forbidden phrases.** "Blazingly fast" and "lightning-fast" as marketing adjectives — "fast" without the lightning is preferred. "Revolutionary", "game-changing", "unleash", "supercharge". Marketing toast strings like "You did it! 🎉". Emoji on product surfaces (dashboard, settings, billing) — Vercel does not toast-spam. Decorative "sparkle" language around AI features (✨ prefix on "AI Cloud" etc. is not Vercel's register, even when AI is the subject).
+
+## 11. Brand Narrative
+
+Vercel was founded in 2015 by Guillermo Rauch and originally called **ZEIT**; the company renamed to Vercel in April 2020, the same moment it raised its Series A to build the cloud infrastructure underneath Next.js, the open-source React framework it had shepherded since 2016. Vercel's founding thesis is that frontend developers should not have to think about infrastructure: the framework and the deployment target should be one cognitive object, not two.
+
+The visual language — white canvas, near-black text (`#171717`), Geist Sans with aggressive negative letter-spacing, shadow-as-border throughout — is a design statement that mirrors the product thesis. It is **minimalism as engineering principle**, not minimalism as style choice. Every element on a Vercel marketing page has been through the same "does this justify its bytes?" discipline that a well-written Next.js component goes through. The Vercel Design team puts this explicitly: *"We design systems and systemize designs. Imbuing our work with care and craft as stewards of the Vercel Brand and Geist Design System."*
+
+What Vercel refuses: the "enterprise dev-tools dark dashboard" visual default, decorative illustrations of cloud icons and laptops, typography that wastes tracking, marketing language with adjective stacks ("blazingly fast, enterprise-grade, battle-tested"). What it embraces: Geist as a **developer-first typeface** (*"Specifically designed for developers and designers"*, per the Geist page), the Develop / Preview / Ship pipeline as a visual motif (three workflow colors), and the shadow-as-border technique as a constant reminder that the craft is in the details most teams don't ship.
+
+## 12. Principles
+
+1. **Minimalism as engineering principle, not style.** Every element justifies its bytes. A drop shadow, a background gradient, a decorative icon — each is weighed against what it adds to understanding. The Vercel Design team states this explicitly: *"We design systems and systemize designs."*
+2. **Shadow-as-border is a craft signal.** The `box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.08)` technique is a technical choice with no marketing benefit — it exists because it's cleaner than `1px solid` on rounded corners. Readers of code recognize it. That recognition IS the brand.
+3. **Type is compression.** Display headlines at -2.4px to -2.88px letter-spacing make the text feel minified, engineered, urgent. Generous tracking on display text would read as consumer-brand; Vercel reads as infrastructure.
+4. **Workflow colors are semantic, not decorative.** Ship Red, Preview Pink, and Develop Blue each correspond to a specific stage in the product pipeline. Using them anywhere else — a decorative gradient, a generic CTA — breaks the pipeline metaphor.
+5. **Three weights, no more.** 400 (read), 500 (interact), 600 (announce). Vercel does not use 700 / bold in Geist Sans. The narrow weight range forces hierarchy through size and tracking.
+6. **Performance claims are numeric.** *"95% reduction in page load times"*, *"24x faster builds"* — not "blazingly fast". Developers are the audience; developers want numbers.
+7. **Consistency is the product.** The same shadow stack, the same pill-badge treatment, the same Geist Mono uppercase labels appear across the marketing site, the dashboard, the docs, and the CLI output. Consistency is how an infrastructure brand earns trust.
+8. **"Delightful wordplay" is the one license.** The Vercel Design page explicitly notes *"meticulous interactions, delightful wordplay"*. Occasional wit is allowed — but only in voice, never in visuals. The visuals stay austere.
+
+## 13. Personas
+
+*Personas below are fictional archetypes informed by publicly observable Vercel user segments (frontend developers, founding engineers, DevOps engineers, engineering managers at Next.js-heavy teams), not individual people.*
+
+**Aarav Nair, 26, Bengaluru.** Frontend developer at a Series-A startup. Deploys to Vercel 8–12 times a day via `git push`. Reads the Vercel dashboard the way he reads a terminal — eyes scanning for non-zero values. Would never use a CI product whose dashboard required mouse navigation for common tasks. Appreciates that Vercel's docs have code-first examples above paragraph explanations.
+
+**Priya Shah, 34, Toronto.** Staff engineer at a media company. Migrated the company's React site to Next.js on Vercel two years ago. Lives in the Deployments view. Values preview URLs per PR more than any other single feature. Cares that Geist Mono renders the same in the dashboard as it does in her terminal — that visual consistency is a subtle trust signal.
+
+**Daniel Hwang, 41, Seoul.** Engineering manager with a team of 9 frontend engineers. Uses Vercel's analytics + speed insights in weekly team syncs. Picks infrastructure partners based on dashboard clarity and docs quality, not on pricing-page calculators. Views Vercel's design restraint as a credibility signal — a dashboard that is not trying to sell him is a dashboard he trusts with production.
+
+**Elena Romano, 28, Milan.** Founder + sole engineer of an indie SaaS. Uses Vercel because it's the shortest path from `npx create-next-app` to a live URL. Reads the Vercel blog for release notes and the occasional "how we built it" post. Finds Vercel's voice closer to how her engineer friends talk about software than how marketing teams talk about software — which is why she trusts it.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no projects)** | White canvas (`#ffffff`). Single line of Gray 900 (`#171717`) text at 18px Geist weight 500: "No projects yet." One dark pill CTA: "Add New...". No illustration, no onboarding tour. |
+| **Empty (deployments list, new project)** | Gray 500 (`#666666`) caption at 14px: "Your first deployment will appear here after you push to connected Git." Single link ("Connect a repository") in Link Blue. |
+| **Loading (dashboard first paint)** | Shadow-bordered skeleton blocks at Gray 100 (`#ebebeb`). 1.2s shimmer. Skeleton keeps the same `0px 0px 0px 1px` shadow-as-border as real content — geometry matches exactly on paint-in. |
+| **Loading (deployment in progress)** | Status pill with Develop Blue (`#0a72ef`) text + spinning icon at 14px Geist Mono uppercase. Deployment row remains interactive; the build log is accessible during build. |
+| **Error (build failed)** | Status pill in Ship Red (`#ff5b4f`). Inline expandable log shows the exact failure output. No modal. No sanitized "Build failed. Contact support." — the failure is the developer's problem to solve and the tool shows them the problem, verbatim. |
+| **Error (form validation, dashboard)** | Field-level. Shadow-border switches from subtle to Ship Red at the same 1px spread. 13px caption below in Ship Red describes what is invalid and what would be valid. |
+| **Error (API / runtime, serverless function)** | Dedicated error surface with the full stack trace, request ID, timestamp, region. Vercel treats runtime errors as first-class content, not toast dismissals. |
+| **Success (deployment ready)** | Status pill in subtle green tint with "Ready" label in 12px Geist Mono uppercase. Deployment URL is instantly copyable. No celebratory animation. |
+| **Success (action saved)** | 3s auto-dismiss toast at bottom-right. Geist weight 400, sentence case, past tense: "Settings updated." No emoji, no exclamation. |
+| **Skeleton** | Shadow-bordered blocks at exact final dimensions. Gray 100 (`#ebebeb`) fill. 1.2s shimmer in Gray 50 (`#fafafa`). Never uses a different color for skeleton — stays in the monochrome palette. |
+| **Disabled** | Opacity reduced on text and shadow-border together. Disabled dark buttons become `rgba(23,23,23,0.4)` fill. Geometry stable for re-enablement. |
+| **Cold-start / preview latency** | Subtle banner in Gray 50 with Gray 600 text acknowledging the current cold-start cost. Transparent honesty; Vercel knows developers care about this specific latency. |
+
+## 15. Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | State commits, selection, toggle |
+| `motion-fast` | 120ms | Hover, focus, button press |
+| `motion-standard` | 200ms | Dropdown, popover, sheet, tab switch |
+| `motion-slow` | 320ms | Section reveals on marketing surfaces |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, popovers, dropdowns |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Explicitly forbidden.** No spring, no bounce, no overshoot. No `cubic-bezier` with middle control values above `1.0`. Vercel's motion matches its typography — compressed, deliberate, no playful excess. A bouncing modal would read as consumer app; Vercel is infrastructure.
+
+**Signature motions.**
+
+1. **Deployment status transition.** When a deployment moves from "Building" (Develop Blue) to "Ready" (green) on the dashboard, the status pill transitions color over `motion-standard` with `ease-standard`. No scale, no flash. The single color change is the entire animation — minimalism even in state transitions.
+2. **Shadow-border hover lift.** On hover over a card, the shadow stack intensifies from the base `rgba(0,0,0,0.08) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 2px` to include a deeper second layer over `motion-fast`. The element itself does not translate; the shadow grows. The card appears to "press outward from the page" without moving.
+3. **Develop → Preview → Ship ambient.** The three-color workflow accent on marketing hero sections cycles at slow 12-second intervals using `linear` easing. This is the one ambient motion on the marketing site — and it is functional: it illustrates the pipeline concept the text describes rather than decorating.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. The ambient Develop/Preview/Ship animation stops. Shadow-border hover lifts become instant. The dashboard remains fully functional.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via WebFetch (2026-04-19):
+- https://vercel.com/ — confirms current marketing positioning:
+    "Build and deploy the best web experiences with the AI Cloud"
+    "Vercel provides the developer tools and cloud infrastructure to build,
+     scale, and secure a faster, more personalized web."
+  Confirms marketing voice register — terse, declarative headlines ("Your
+  product, delivered", "Deploy once, deliver everywhere", "Previews for every
+  push") and numeric performance claims ("95% reduction in page load times",
+  "24x faster builds").
+- https://vercel.com/design — confirms the Vercel Design team's own
+  self-description (verbatim):
+    "We design systems and systemize designs. Imbuing our work with care
+     and craft as stewards of the Vercel Brand and Geist Design System."
+  Also mentions "meticulous interactions, delightful wordplay" as explicit
+  tone register.
+- https://vercel.com/geist/introduction — confirms Geist Design System's
+  tagline ("Vercel design system for building consistent web experiences")
+  and the Geist Sans / Geist Mono typefaces as "Specifically designed for
+  developers and designers".
+
+Base DESIGN.md (sections 1–9) is the source for all token-level claims
+(Vercel Black #171717, Geist Sans/Mono fonts, shadow-as-border technique,
+workflow accent colors Ship Red #ff5b4f / Preview Pink #de1d8d / Develop
+Blue #0a72ef, multi-layer shadow stacks, three-weight system 400/500/600).
+
+Not independently verified via WebFetch — widely documented public facts used:
+- Vercel was founded in 2015 by Guillermo Rauch.
+- The company was originally named ZEIT and renamed to Vercel in April 2020.
+- Vercel is the primary maintainer of Next.js, the open-source React framework.
+- Next.js has existed as an open-source project since 2016.
+
+Personas (§13) are fictional archetypes informed by publicly observable
+Vercel user segments (frontend developers, staff engineers, engineering
+managers, founding engineers of Next.js-heavy teams). Names are illustrative;
+they do not refer to real people.
+
+Interpretive claims (e.g., "shadow-as-border is a craft signal", "type is
+compression", "developers are the audience; developers want numbers") are
+editorial readings connecting Vercel's stated design posture to the design
+system, not directly sourced Vercel statements.
+-->
+

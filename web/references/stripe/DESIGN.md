@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: Stripe
+---
+
 # Design System Inspiration of Stripe
 
 ## 1. Visual Theme & Atmosphere
@@ -320,3 +325,149 @@ What truly distinguishes Stripe is its shadow system. Rather than the flat or si
 6. Use `"tnum"` for any numbers in tables, charts, or financial displays
 7. Dark sections use `#1c1e54` -- not black, not gray, but a deep branded indigo
 8. SourceCodePro for code at 12px/500 with 2.00 line-height (very generous for readability)
+
+---
+
+## 10. Voice & Tone
+
+Stripe's voice is that of a careful engineer who happens to have literary sensibilities — precise, understated, quietly confident, and anti-hype. The official tagline *"Growing the GDP of the internet"* captures the register: ambitious in scope, economist-flavored in vocabulary, zero exclamation points. Button labels are austere ("Start now", "Sign in", "Contact sales"), never "Get started FREE 🚀". Developer-facing surfaces (docs, API reference, error messages) and business-facing surfaces (pricing, marketing) share the same voice; only the density changes.
+
+| Context | Tone |
+|---|---|
+| Hero headlines | Declarative, measured. Reads like a white-paper summary. Never superlative. |
+| Product descriptions | One verb + concrete capability. "Accept payments online." Never "Transform your business." |
+| CTAs | Austere imperatives. "Start now", "Contact sales", "Read the docs". |
+| API error messages | Structured as developer errors: error type + precise explanation + link to docs. |
+| Docs / API reference | Dense, precise, respects reader as a peer. Examples precede explanations. |
+| Marketing / enterprise | Slightly more formal register, same voice. Never shifts into sales-speak. |
+| Careers / About | Confident but humble. Celebrates rigor, not scale. |
+| Legal / compliance | Formal, reads like a carefully edited regulatory filing. |
+| Changelog / release notes | Chronological, specific, engineer-to-engineer. |
+
+**Forbidden phrases.** "Revolutionary", "game-changer", "unleash", "supercharge", "cutting-edge", "disrupt/disruption" as verbs. "Simply...", "Just...". Exclamation marks on routine CTAs. Emoji anywhere on marketing, product, docs, or developer surfaces. Performative hedging ("We're so excited to announce..."). Stacked adjectives on capabilities ("world-class, enterprise-grade, battle-tested payment infrastructure" — pick one, usually none).
+
+## 11. Brand Narrative
+
+Stripe was founded in 2010 by Patrick and John Collison — two Irish brothers who kept running into the same problem: accepting payments online was far harder than it should be for any developer who wanted to build something on the internet. The founding rejection was of every incumbent payment processor that treated integration as a multi-week enterprise-sales procurement cycle. Stripe's first pitch was, essentially: *"what if it took seven lines of code instead."*
+
+That developer-first framing shaped everything that came after: the API as the product, the docs as an interface, *"Growing the GDP of the internet"* as a mission statement that reads like an economist wrote it, and the company's obsession with reliability (99.999% uptime as a stated number, not a marketing claim). **Stripe Press** — the company's publishing imprint with the tagline *"Ideas for progress"* — makes the intellectual posture explicit: this is a company that takes ideas seriously enough to commission and print books about maintenance, scientific freedom, and efficiency.
+
+What Stripe refuses: sales-driven UX (no "Request a demo" gating of basic functionality), hype-driven marketing (no "revolutionary" superlatives), and the visual aesthetics of legacy financial services (institutional blue, corporate stock photography). What it embraces: developer-readable prose, mathematically tight typography, blue-tinted chromatic shadows that feel like atmospheric depth rather than decoration, and a restraint that signals "we plan to be here for decades".
+
+## 12. Principles
+
+1. **Details are the product.** Stripe's own values statement says *"We focus on the details of everything we do."* A design system that gets a letter-spacing wrong on a pricing page is as broken as a payment intent that fails silently. Both cost trust.
+2. **Rigorous thinking, visible in the output.** The company states that *"Successful Stripes are rigorous thinkers who appreciate that things worth doing are rarely simple."* Design artifacts should reveal that rigor — precise tokens, tight typography, documented rationale. Hand-wavy design is not Stripe.
+3. **Kindness and boldness, calibrated.** From Stripe's values: *"We try to embrace kindness while still encouraging Stripes to take measured risks and act boldly."* In design this reads as: warm typography choices (the -0.96px tracking has personality), but no design feature exists just to be clever. Measured boldness, never showboating.
+4. **Ship today, infrastructure for decades.** Another stated value: *"We need to get projects done today, while building infrastructure that the internet will rely upon for decades."* Design decisions should not be trendy. A pill-radius button on a Stripe surface ages badly in four years; the 4px corner does not.
+5. **Lightness signals confidence.** Weight 300 at display sizes is the most un-Silicon-Valley-default choice in the system. Headlines that don't shout signal authority that doesn't need volume.
+6. **Chromatic shadows as brand.** `rgba(50,50,93,0.25)` is not just depth — it is Stripe's navy palette reappearing in the shadow layer. Generic gray shadows would make the UI indistinguishable from any other SaaS.
+7. **No pill buttons.** The 4px radius is a typographic commitment, not a visual preference. Stripe reads as engineering; pills would read as consumer app.
+8. **Developer as first-class user.** Documentation is a design surface. API reference is a design surface. Error messages are a design surface. Marketing does not outrank developer experience; they are peers.
+9. **Numbers are first-class citizens.** `"tnum"` for every financial figure, every table, every chart axis. Numbers are typography with different rules, not body text that happens to be digits.
+
+## 13. Personas
+
+*Personas below are fictional archetypes informed by publicly observable Stripe user segments (indie developers, startup founders, finance operations at mid-market companies, enterprise engineers), not individual people.*
+
+**Tiffany Okonkwo, 31, Lagos.** Solo indie developer launching a course-selling platform. Has integrated Stripe Checkout in an afternoon using the docs as her only guide. Measures her trust in a tool by how well the error messages explain themselves when something goes wrong. Finds Stripe's API errors the friendliest-to-debug of any payment provider she has tried. Would never use a payment processor whose primary CTA was "Book a demo" — it signals they don't trust developers to integrate without a salesperson.
+
+**Yuto Sasaki, 36, Tokyo.** Staff engineer at a Series-C SaaS startup, responsible for the billing infrastructure. Reads Stripe's docs the way a classical musician reads a score — for the notation, not just the music. Has opinions about webhook retry semantics. Cares that the `invoice` object contract is stable across API versions because his company's ledger depends on it. Notices immediately when a SaaS product's pricing page uses phrases like "Unleash your growth" and mentally downgrades the company.
+
+**Mariana Valdés, 44, Mexico City.** Head of Finance Operations at a regional e-commerce company processing ~$200M annually through Stripe. Does not write code but works daily in the Stripe Dashboard. Values the product's density — she can scan 300 transactions at a glance because the tabular numerals align. Would be annoyed by any "redesign" that added whitespace at the expense of data density. Trusts the Stripe brand in part because Stripe Press publishes books she actually reads on long flights.
+
+**Arjun Menon, 27, Bangalore.** Founding engineer at a B2B fintech startup. Builds on Stripe Connect because it is the only realistic way to launch an embedded-payments product in under six months. Reads Stripe's engineering blog for reference implementations. Views the *"Growing the GDP of the internet"* tagline as earnest rather than grandiose — he believes the claim literally and that's why he chose Stripe.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (dashboard, no transactions)** | White canvas. Single sentence in Deep Navy (`#061b31`) at 18px sohne-var weight 300: "No transactions yet." One Stripe Purple CTA: "Test a payment". No illustration. Honest about what the empty state means — no activity has happened yet. |
+| **Empty (report, zero rows)** | Slate (`#64748d`) single line at 14px: "Nothing to show for this period." Filter summary visible above so user can adjust scope. Never an illustration, never "No data found". |
+| **Loading (dashboard first paint)** | Skeleton blocks at exact final dimensions in Border Default (`#e5edf5`). 1.2s shimmer. Tabular-number skeletons use narrow bars matching `tnum` width — never wider than the final value. |
+| **Loading (table in-place refresh)** | Subtle Stripe Purple 2px progress bar below the header. Previous content stays visible with previous values. Never block the table during refresh. |
+| **Error (API call failed, dashboard)** | Inline banner below the action. Ruby-adjacent tone (Ruby `#ea2261` border, tinted background). Message = error type + one-line plain-English explanation + "View in logs" link. No generic "Something went wrong". |
+| **Error (form validation)** | Field-level. Ruby border + 13px error text below field. The message describes what specifically is invalid and what would be valid — not just "Required". |
+| **Error (payment declined)** | Dedicated state. Returns the decline code verbatim (`Card declined: insufficient_funds`) plus plain-language guidance for the end customer. Developer and customer both know exactly what happened. |
+| **Success (payment succeeded)** | Brief inline confirmation. Success Green (`#15be53`, 0.2 alpha background) with `#108c3d` text: "Succeeded". Full transaction detail linked immediately below. No toast — the row itself shows the state. |
+| **Success (action saved)** | 3s auto-dismiss toast at top-right. Sentence case, past tense: "Invoice saved." No emoji, no exclamation. |
+| **Skeleton** | Border Default blocks at final dimensions. Blue-tinted shimmer (consistent with shadow system). Amount skeletons always narrower than the longest expected value — a wide skeleton that shrinks is disorienting. |
+| **Disabled** | Opacity reduced on surface and text together. Purple actions become `rgba(83,58,253,0.3)` — faded purple, not switched to gray, to preserve brand read. |
+| **API rate-limited (429)** | Banner surfaces the specific rate-limit category plus concrete retry-after guidance. Documented in the same voice as the docs — no apology, just mechanism. |
+
+## 15. Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | State commits, selection ticks, focus rings |
+| `motion-fast` | 120ms | Hover, focus, button press overlays |
+| `motion-standard` | 200ms | Sheet, modal, dropdown, table-row expand |
+| `motion-slow` | 320ms | Page-level transitions, rare hero reveals |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, dropdowns, floating panels |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+
+**Explicitly forbidden.** No spring, no overshoot, no bounce. No `cubic-bezier` with a middle control value above `1.0` anywhere. Spring easings read as consumer-app delight; this is payments infrastructure. Infrastructure is steady.
+
+**Signature motions.**
+
+1. **Dashboard table row reveal.** New rows appearing during live event streams (webhook events, payment events) use `motion-standard / ease-enter` with a 3px fade-in-from-below. Never slide in from the side — the table's temporal order is always top-down and sideways motion would suggest a different meaning.
+2. **Gradient decoration.** On marketing surfaces, the ruby-to-magenta gradient decoration shifts hue at slow 20-second cycles using `linear` easing. This is the one place non-standard timing lives — the gradient is ambient atmosphere, not interactive.
+3. **Dark section transition.** On marketing pages, transitioning into a `#1c1e54` brand-dark section uses `motion-slow` background crossfade. Headlines do not move during the transition; the ambient light level is what changes. Cinematic-once, intentional.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. The ambient gradient freezes. Table row reveals become instantaneous. The dashboard remains fully functional; there is no delightful motion at the cost of accessibility.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via WebFetch (2026-04-19):
+- https://stripe.com/jobs — confirms Stripe's publicly stated operating principles
+  and values (verbatim):
+    "We focus on the details of everything we do, so businesses around the
+     world can focus on what's most important to them."
+    "Successful Stripes are rigorous thinkers who appreciate that things
+     worth doing are rarely simple."
+    "We try to embrace kindness while still encouraging Stripes to take
+     measured risks and act boldly."
+    "We need to get projects done today, while building infrastructure
+     that the internet will rely upon for decades."
+  Confirms mission phrase "Growing the GDP of the internet" and the Collison
+  brothers (John and Patrick) as founders/leadership on the page.
+- https://stripe.com/about — confirms current core positioning "Financial
+  infrastructure to grow your revenue" and the published reliability number
+  ("99.999% historical uptime").
+- https://press.stripe.com/ — confirms Stripe Press tagline "Ideas for progress"
+  and stated purpose: "Stripe Press highlights ideas that we think can be
+  broadly useful." Catalog confirms the intellectual register of the imprint
+  (Tyler Cowen's Stubborn Attachments, Richard Hamming's Art of Doing Science
+  and Engineering, Will Larson's An Elegant Puzzle, Nadia Eghbal's
+  Working in Public, among others).
+
+Base DESIGN.md (sections 1–9) is the source for all token-level claims
+(Stripe Purple #533afd, Deep Navy #061b31, sohne-var with "ss01" stylistic set,
+weight-300 signature, blue-tinted multi-layer shadows, 4–8px radius scale,
+"tnum" for financial data).
+
+Not independently verified via WebFetch — widely documented public facts used:
+- Stripe was founded in 2010 by Patrick and John Collison (Irish brothers).
+- Stripe is headquartered in San Francisco and Dublin.
+- The company's original codename was "/dev/payments" before being renamed Stripe.
+- Stripe Press is the company's publishing imprint (launched ~2018).
+
+Personas (§13) are fictional archetypes informed by publicly observable Stripe
+user segments (indie developers, startup founders, finance operations at
+mid-market companies, enterprise engineers). Names are illustrative; they do
+not refer to real people.
+
+Interpretive claims (e.g., "the 4px radius is a typographic commitment, not
+a visual preference", "developer-first framing as a founding rejection of
+enterprise procurement cycles") are editorial readings connecting Stripe's
+stated values to its design system, not directly sourced Stripe statements.
+-->
+
