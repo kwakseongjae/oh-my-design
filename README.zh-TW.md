@@ -53,11 +53,14 @@ OmD 在 Google Stitch 的 9 個章節之上再加的 6 個章節:
 | **14. States** | Empty / loading / error / skeleton 模式 — 避免通用的「無資料」 |
 | **15. Motion & Easing** | 命名的 duration + easing 令牌 — Stitch 9 章節遺漏的維度 |
 
+**目前已有 10 個參考附帶完整的 Philosophy Layer:**
+Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Apple · Figma — 每個都包含 voice、narrative、principles、personas、states、motion,全部基於公開來源撰寫。
+
 完整 OmD v0.1 範例請見 [references/toss/DESIGN.md](references/toss/DESIGN.md)。
 
 ## 主要功能
 
-- **Builder** — 選擇參考、調整色彩 / radius / 深色模式、挑選元件,然後按下 Export。
+- **Builder** — 選擇參考、調整色彩 / radius / 深色模式、挑選元件,然後按下 Export。透過 **Philosophy** 篩選可以只顯示具備完整品牌哲學的 10 個參考。
 - **Design Systems 目錄** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 67 個參考中有 34 個擁有官方設計系統或品牌指南頁面,可從目錄配合即時縮圖直接前往。
 - **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — 透過 MBTI 風格的簡短測驗,將你的設計偏好對應到 67 個參考之一,並直接帶你進入已預選該參考的 Builder。
 

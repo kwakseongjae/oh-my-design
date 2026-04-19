@@ -53,11 +53,14 @@ The 6 sections OmD adds on top of Google Stitch's 9:
 | **14. States** | Empty / loading / error / skeleton patterns — prevents generic "No data found" |
 | **15. Motion & Easing** | Named duration + easing tokens — the dimension Stitch's 9 sections miss |
 
+**Ten references ship with a full Philosophy Layer today:**
+Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Apple · Figma — each with voice, narrative, principles, personas, states, and motion sourced against public references.
+
 See [references/toss/DESIGN.md](references/toss/DESIGN.md) for a full OmD v0.1 example.
 
 ## What's inside
 
-- **Builder** — pick a reference, tune colors / radius / dark mode, select components, hit Export.
+- **Builder** — pick a reference, tune colors / radius / dark mode, select components, hit Export. The **Philosophy** filter isolates the 10 references with a full brand philosophy.
 - **Design Systems Directory** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 34 of the 67 references have a verified public design system or brand-guidelines page; the directory links straight out to each one with live thumbnails.
 - **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — a short MBTI-style quiz that maps your design personality to one of the 67 references and drops you straight into the builder with that reference preloaded.
 

@@ -53,11 +53,14 @@ Google Stitch의 9개 섹션 위에 OmD가 더하는 6개:
 | **14. States** | Empty / loading / error / skeleton 패턴 — "No data found" 같은 제네릭 상태 방지 |
 | **15. Motion & Easing** | Named duration + easing 토큰 — Stitch 9개 섹션이 놓치는 차원 |
 
+**현재 10개 레퍼런스가 완전한 Philosophy Layer와 함께 제공됩니다:**
+Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Apple · Figma — 각각 voice, narrative, principles, personas, states, motion까지 공개 출처 기반으로 작성됐습니다.
+
 전체 OmD v0.1 예시는 [references/toss/DESIGN.md](references/toss/DESIGN.md) 참고.
 
 ## 주요 구성
 
-- **빌더** — 레퍼런스 선택 후 색상 / radius / 다크 모드를 조정하고, 컴포넌트를 고른 뒤 Export.
+- **빌더** — 레퍼런스 선택 후 색상 / radius / 다크 모드를 조정하고, 컴포넌트를 고른 뒤 Export. **Philosophy** 필터로 완전한 브랜드 철학을 담은 10개만 볼 수 있어요.
 - **디자인 시스템 디렉토리** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 67개 레퍼런스 중 34개는 공식 디자인 시스템 또는 브랜드 가이드라인 페이지가 있으며, 디렉토리에서 라이브 썸네일과 함께 바로 이동할 수 있습니다.
 - **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — MBTI 스타일의 짧은 퀴즈로 당신의 디자인 성향을 67개 레퍼런스 중 하나와 매칭해, 해당 레퍼런스가 미리 선택된 빌더로 바로 이동시켜 줍니다.
 

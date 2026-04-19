@@ -27,12 +27,13 @@ export const viewport = {
 export const metadata: Metadata = {
   title: "oh-my-design — Design System Generator",
   description:
-    "Generate DESIGN.md from 67 real company design systems. Interactive A/B wizard, shadcn/ui CSS export, zero AI calls. Build your design system like Stripe, Vercel, Linear, and more.",
+    "Generate DESIGN.md from 67 real company design systems. Ten include a full brand philosophy — voice, principles, personas — so AI coding agents (Claude Code, Cursor, Gemini CLI) match your brand. Interactive A/B wizard, zero AI calls, MIT open source.",
   keywords: [
     "design system",
     "DESIGN.md",
     "design system generator",
-    "shadcn",
+    "brand philosophy",
+    "Claude Code",
     "tailwind",
     "design tokens",
     "AI coding agent",
@@ -40,6 +41,7 @@ export const metadata: Metadata = {
     "design personality",
     "디자인 시스템",
     "디자인 시스템 생성기",
+    "브랜드 철학",
   ],
   authors: [{ name: "oh-my-design" }],
   metadataBase: new URL(siteUrl),
@@ -56,7 +58,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "oh-my-design — Design systems from the world's best",
     description:
-      "Pick from 67 real company design systems. Customize with A/B choices. Export DESIGN.md + shadcn/ui CSS. No AI needed.",
+      "Pick from 67 real company design systems. Ten include a full brand philosophy. Customize with A/B choices. Export DESIGN.md. No AI needed.",
     url: siteUrl,
     siteName: "oh-my-design",
     images: [
@@ -72,7 +74,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "oh-my-design — Design systems from the world's best",
     description:
-      "67 company design systems. A/B wizard. shadcn/ui CSS. Zero AI calls.",
+      "67 company design systems. 10 with a full brand philosophy. A/B wizard. Zero AI calls.",
     images: ["/twitter-image.png"],
   },
 };
@@ -100,7 +102,7 @@ export default function RootLayout({
                   name: "oh-my-design",
                   url: siteUrl,
                   description:
-                    "Generate DESIGN.md from 67 real company design systems. Interactive A/B wizard, shadcn/ui CSS export.",
+                    "Generate DESIGN.md from 67 real company design systems, ten with a full brand philosophy layer. Interactive A/B wizard, zero AI calls.",
                   potentialAction: {
                     "@type": "SearchAction",
                     target: `${siteUrl}/builder`,
@@ -114,7 +116,7 @@ export default function RootLayout({
                   operatingSystem: "Web",
                   url: siteUrl,
                   description:
-                    "Design system generator that creates DESIGN.md from 67 real company design systems including Stripe, Vercel, Linear, Apple, and more.",
+                    "Design system generator that creates DESIGN.md from 67 real company design systems including Stripe, Vercel, Linear, Apple, and more. Ten references ship with a full brand philosophy layer — voice, narrative, principles, personas, states, motion — sourced against public references.",
                   offers: {
                     "@type": "Offer",
                     price: "0",
@@ -122,8 +124,8 @@ export default function RootLayout({
                   },
                   featureList: [
                     "Generate DESIGN.md from 67 real company design systems",
+                    "Brand philosophy layer on 10 curated references (voice, narrative, principles, personas, states, motion)",
                     "Interactive A/B wizard for design customization",
-                    "shadcn/ui CSS variable export",
                     "Design personality quiz with 16 types",
                     "Zero AI calls — works entirely in-browser",
                   ],
@@ -144,7 +146,7 @@ export default function RootLayout({
                       name: "How does oh-my-design generate a design system?",
                       acceptedAnswer: {
                         "@type": "Answer",
-                        text: "oh-my-design lets you pick from 67 real company design systems (Stripe, Vercel, Linear, Apple, etc.), customize them through an interactive A/B wizard, and export a DESIGN.md file plus shadcn/ui CSS variables — all without any AI API calls.",
+                        text: "oh-my-design lets you pick from 67 real company design systems (Stripe, Vercel, Linear, Apple, etc.), customize them through an interactive A/B wizard, and export a DESIGN.md file. Ten curated references ship with a full brand philosophy layer — voice, narrative, principles, personas, states, motion — so AI coding agents like Claude Code match your brand. All without any AI API calls.",
                       },
                     },
                     {

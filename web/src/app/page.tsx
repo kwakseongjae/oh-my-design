@@ -130,7 +130,7 @@ export default function Landing() {
           {/* Badge */}
           <div className="animate-fade-up animate-delay-1 mb-8 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur dark:border-border dark:bg-card/60">
             <Zap className="h-3.5 w-3.5 text-yellow-500" />
-            67 companies &middot; zero AI calls &middot; 100% free
+            67 references &middot; 10 with brand philosophy &middot; zero AI calls
           </div>
 
           {/* Headline */}
@@ -214,7 +214,7 @@ export default function Landing() {
         <div className="grid gap-6 sm:grid-cols-3">
           {[
             { step: "01", title: "Pick a reference", desc: "Choose from 67 real company design systems -- Stripe, Vercel, Toss, Kakao, Pinkoi, Dcard, LINE, Mercari, freee, and more.", icon: Layers },
-            { step: "02", title: "Make it yours", desc: "Walk through A/B choices for buttons, tables, cards. Fine-tune colors, radius, and dark mode.", icon: Zap },
+            { step: "02", title: "Make it yours", desc: "Walk through A/B choices for buttons, tables, cards. Fine-tune colors, radius, dark mode. Ten picks ship with a full brand philosophy — voice, principles, personas.", icon: Zap },
             { step: "03", title: "Export DESIGN.md", desc: "Download or copy your customized DESIGN.md. Use the CLI command to regenerate anytime.", icon: Download },
           ].map((item, i) => (
             <div
