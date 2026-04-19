@@ -13,3 +13,6 @@ dist/
 
 # Playwright MCP runtime cache (screenshots, console logs, snapshots)
 .playwright-mcp/
+
+# Internal research notes, brainstorming, strategy docs (not for public repo)
+research/
