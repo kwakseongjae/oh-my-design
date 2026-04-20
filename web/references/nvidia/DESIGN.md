@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: NVIDIA
+---
+
 # Design System Inspiration of NVIDIA
 
 ## 1. Visual Theme & Atmosphere
@@ -306,3 +311,173 @@ What distinguishes NVIDIA's design from other dark-background tech sites is the 
 6. Link hover is always `#3860be` (blue) regardless of the link's default color
 7. Line-height 1.25 for headings, 1.50-1.67 for body text -- maintain this contrast for visual hierarchy
 8. Navigation uses uppercase 14px bold -- this hardware-label typography is part of the brand voice
+
+---
+
+## 10. Voice & Tone
+
+NVIDIA speaks like the engineering team that built the silicon it is selling — declarative, technically exact, and quietly certain that the platform matters. Claims are stated rather than argued, because the benchmarks are expected to do the arguing. Marketing copy and developer documentation share the same register: short, capability-first sentences, concrete metrics when available, and a refusal to soften specifications into adjectives. Superlatives are reserved for things that are literally the fastest or the most; everything else gets named precisely or not at all. The overall effect is closer to a datasheet with a headline than a consumer product page.
+
+| Context | Tone |
+|---|---|
+| Headlines | Product-name + capability claim, no mood-setting. "NVIDIA Delivers the Lowest Token Cost" — noun, verb, metric. |
+| Product CTAs | Verb + noun, two words when possible. "Learn More", "Register Now", "Watch On Demand", "Read Blog". |
+| Developer docs | Direct imperative. "Deploy more secure, always-on AI assistants with a single command." API names appear inline, unhedged. |
+| Keynote / founder voice | First-person plural, declarative-missional. "We are a learning machine. The mission is boss." — no qualifier, no softening. |
+| Research page | Discovery-framed, outcome-neutral. "Passionate about developing the technology and finding the breakthroughs that bring positive change to the world." |
+| Benchmark / performance claims | Metric-first, unit-precise. "Cost per token is the key metric for inference TCO, and NVIDIA Blackwell leads on the metric that matters." |
+| Error (technical / runtime) | CUDA-style: error code + one-line cause + one-line recovery. No apology, no emoji. |
+| Legal / compliance surfaces | Formal, unadorned. Export control and licensing language reads like the regulation it is quoting. |
+| Community / developer forum replies | Peer-engineer register. Acknowledges the bug, names the fix version, moves on. |
+
+**Forbidden phrases.** "Revolutionary", "game-changing", "unleash" (unless literal), "cutting-edge" as a modifier, "just", "simply", "easy peasy", exclamation marks on specification claims, emoji in product announcements, performance hype words ("blazing-fast", "lightning-quick") without a number attached, and any sentence that names a competitor to diminish it. Avoid generic AI-era tropes ("AI-powered X", "the future of Y") unless the specific AI architecture is named in the same sentence. Do not use gaming-marketing adjectives ("epic", "insane", "beast") in enterprise or research surfaces.
+
+**Voice samples.**
+
+- "Learn More" <!-- verified: https://www.nvidia.com/en-us/, 2026-04 -->
+- "Register Now" <!-- verified: https://www.nvidia.com/en-us/, 2026-04 -->
+- "Watch On Demand" <!-- verified: https://www.nvidia.com/en-us/, 2026-04 -->
+- "Out Now" <!-- verified: https://www.nvidia.com/en-us/, 2026-04 -->
+- "Deploy more secure, always-on AI assistants with a single command." <!-- verified: https://developer.nvidia.com/, 2026-04 -->
+- "Cost per token is the key metric for inference TCO, and NVIDIA Blackwell leads on the metric that matters." <!-- verified: https://www.nvidia.com/en-us/, 2026-04 -->
+- "NVIDIA pioneered accelerated computing to tackle challenges no one else can solve." <!-- cited: https://www.nvidia.com/en-us/about-nvidia/ -->
+- "We are a learning machine. The mission is boss. Everyone has a voice." <!-- cited: Jensen Huang, https://www.nvidia.com/en-us/about-nvidia/ -->
+- Error (runtime example): "CUDA error 700: an illegal memory access was encountered. Check kernel launch configuration." <!-- illustrative: not verified as live NVIDIA copy -->
+- Empty state (developer portal): "No results for `<query>`. Browse by topic or try a broader term." <!-- illustrative: not verified as live NVIDIA copy -->
+
+## 11. Brand Narrative
+
+NVIDIA was founded on April 5, 1993, at a Denny's in San Jose by Jensen Huang, Chris Malachowsky, and Curtis Priem, with an initial mission to "bring 3D graphics to the gaming and multimedia markets" ([nvidia.com/en-us/about-nvidia/corporate-timeline](https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/)). The founding bet was that a dedicated parallel processor for graphics would, over a long enough time horizon, matter more than faster general-purpose CPUs. In 1999 the company shipped what it called the first GPU; in 2006 it opened that parallel architecture to general computation with CUDA; and in 2012 a GPU-trained neural network (AlexNet) won ImageNet by a margin large enough that the modern AI era is effectively dated to that result. The thread is visible only in retrospect — graphics was the training ground, CUDA was the pivot, AI was the payoff — but none of it was accidental.
+
+The current self-description collapses that history into one line: NVIDIA *"pioneered accelerated computing to tackle challenges no one else can solve"* ([nvidia.com/en-us/about-nvidia](https://www.nvidia.com/en-us/about-nvidia/)). The framing is deliberate. "Accelerated computing" is a category claim, not a product claim — the argument is that the industry's default (CPU-only, general-purpose) has stopped scaling, and that parallel processors plus domain-specific software stacks (CUDA, cuDNN, TensorRT, Omniverse) are *the only path forward*. Jensen Huang puts the sustainability case plainly: *"Figuring out how to do more while using less power is the key to driving flexibility, scalability and sustainability. Given this, every data center in the world should be accelerated."* ([blogs.nvidia.com](https://blogs.nvidia.com/blog/what-is-accelerated-computing/)).
+
+What NVIDIA refuses: soft differentiation, consumer-brand warmth in enterprise contexts, and "AI" as a marketing wrapper divorced from the underlying compute. What it embraces: metric-first claims, platform-over-product thinking, long research horizons ("positive change to the world" framing on the Research page — [nvidia.com/en-us/research](https://www.nvidia.com/en-us/research/)), and the conviction — stated at GTC keynotes and repeated across the brand — that accelerated computing is not a performance upgrade but a generational re-architecture.
+
+<!-- Over 4 million developers and ~40,000 companies on NVIDIA AI source: base DESIGN.md §1 context + nvidia.com/en-us/about-nvidia/corporate-timeline, not re-verified for this Philosophy layer. -->
+
+## 12. Principles
+
+1. **Metric over adjective.** If a capability can be measured, ship the measurement; if it can't, don't ship the claim. "Lowest token cost" beats "world-class performance" because one number is falsifiable and one adjective is boilerplate. *UI implication:* Every hero claim carries an inline metric, a benchmark link, or a named model; adjective-only headlines fail review.
+2. **The green is a signal, not a surface.** NVIDIA Green (`#76b900`) is the brand's fingerprint — used as border, underline, and focal accent. Treating it as a surface fill destroys the signal, because the eye loses the ability to find it. *UI implication:* Green appears only on 1–2px borders, 2px underlines, focus rings, and single-element highlights. Never as a button fill, card background, or gradient base.
+3. **Black and white are binary by design.** The contrast system is intentionally bimodal — `#000000` sections and `#ffffff` sections, alternating. Mid-tone gray surfaces dilute the engineering clarity and push the brand toward generic SaaS. *UI implication:* No tinted-gray cards or soft-surface backgrounds; section backgrounds are black, white, or `#1a1a1a` with a clearly separating border.
+4. **Sharp corners match the hardware.** 1–2px border radius across buttons, cards, and inputs is not a stylistic choice; it's a category signal. Consumer brands use pills; engineering hardware uses rectangles. *UI implication:* `border-radius: 2px` is the default for every component. Pills and fully rounded (≥16px) shapes are reserved for avatars or explicitly playful surfaces.
+5. **Bold weight is the default voice.** Weight 700 carries headlines, buttons, labels, and navigation; weight 400 is reserved for reading prose. This weight distribution projects authority at every scan level. *UI implication:* All interactive and structural text is bold. Regular weight appears only in paragraph body, descriptions, and long-form reading contexts.
+6. **Uppercase navigation, declarative CTAs.** Uppercase 14px links at the top of the page read as hardware-specification labels, not lifestyle taglines. CTAs are verb + noun (or single verb), two words when possible. *UI implication:* Nav labels use `text-transform: uppercase`; CTAs follow the "Learn More / Register Now / Read Blog" pattern — no sentences, no punctuation, no "Discover your..." openings.
+7. **Platform thinking, not product thinking.** Every NVIDIA product (RTX, CUDA, TensorRT, Omniverse, NIM) is presented as a layer in a stack, not a standalone feature. The page architecture reflects the stack: silicon → system software → libraries → applications. *UI implication:* Product landing pages show the layer directly above and below; "See the full stack" is a default navigation affordance.
+8. **Long time horizons over hype cycles.** The GPU-to-AI pivot took roughly fifteen years (1999 GPU → 2006 CUDA → 2012 AlexNet). Copy and roadmaps should honor that timescale — capabilities ship when the silicon, software, and developer ecosystem align, not when the news cycle wants them. *UI implication:* Release announcements reference prior generations by name and version; "introducing for the first time" claims require a specific prior-art delta.
+9. **Research is public or it is not research.** NVIDIA Research publishes papers, releases libraries (Kaolin, Sionna, Imaginaire, CUDA-X), and runs Inception for startups. Research surfaces treat openness as a deliverable, not a side effect. *UI implication:* Every research page links to the paper, the code repository, and the redistribution license in the same surface — not buried in a footer.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by publicly described NVIDIA user segments, not individual people.*
+
+**Priya Venkatesan, 34, Santa Clara.** ML infrastructure engineer at a foundation-model startup. Uses CUDA, TensorRT-LLM, and NIM microservices daily; reads new GPU whitepapers the day they drop. Judges NVIDIA marketing copy by whether the per-token cost numbers reconcile with her own benchmark runs.
+
+**Dr. Ken Nakamura, 46, Tokyo.** Research scientist at a robotics lab. Runs Isaac Sim and Omniverse for synthetic data generation, cites NVIDIA Research papers in grant proposals. Trusts the brand because the libraries ship with the paper and the numbers reproduce.
+
+**Marco Bianchi, 29, Milan.** Technical director at a mid-size game studio. Works in DLSS, RTX, and Unreal pipelines. Will defend NVIDIA's driver cadence in forums but expects any consumer-facing claim ("4× faster with DLSS 4.5") to carry a benchmark footnote.
+
+**Sarah Whitfield, 41, Austin.** VP of AI infrastructure at a Fortune 500 enterprise. Evaluates NVIDIA DGX and HGX platforms against cloud-only alternatives. Reads keynotes for roadmap signals, but signs contracts based on the datasheet and the support SLA.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (first use)** | One NVIDIA-EMEA 16px sentence on white or `#1a1a1a` background, no illustration: "No results yet. Browse by topic or try a broader term." Green accent reserved for the "Browse by topic" link. |
+| **Empty (search, no matches)** | Caption-size gray text at 14px `#757575`: the query echoed verbatim, followed by two suggested refinements. Never an emoji, never a shrug illustration. |
+| **Loading (data fetch / API)** | Thin green (`#76b900`) progress bar at the top of the viewport, 2px tall. No spinner in body content. For >2s operations, an inline "Loading…" text label in Gray 400. |
+| **Loading (skeleton)** | Border-Cream-free — instead, `#1a1a1a` blocks on black surfaces and `#f5f5f5` blocks on white, at exact final dimensions. No shimmer gradient with mid-tones; the pulse is opacity-only (0.6 ↔ 1.0). |
+| **Error (runtime / API)** | Red 500 (`#e52020`) left border 2px, Near-Black text, inline code block showing the error code verbatim. "CUDA error 700: an illegal memory access was encountered. Check kernel launch configuration." No retry animation — retry is a button labeled "Retry". |
+| **Error (form / input)** | Red 500 border on the invalid field, 14px Red 500 caption directly beneath, exact requirement stated: "License key is 24 characters; yours is 22." |
+| **Error (permission / licensing)** | Warm Sand banner — Orange 400 (`#df6500`) accent bar, black text, cites the export-control or license clause by section number. |
+| **Success (operation complete)** | Green 500 (`#3f8500`) — not brand green — 2px left border, past-tense sentence. "Model downloaded." Auto-dismiss at 4s. Brand green is reserved for interactive accents, not confirmation states. |
+| **Success (multi-step, e.g., training run)** | Final state shows metric summary in a table — elapsed time, tokens/sec, final loss — rather than a celebratory toast. The data is the success signal. |
+| **Benchmark / metric rendering** | Numeric-first typography: the number at Display-Hero scale (36px bold), unit inline at Body-Large, source footnote at Caption Small. NVIDIA-authentic state — performance numbers are a visual category in their own right. |
+| **Skeleton** | `#2a2a2a` blocks (dark-surface default) at exact final dimensions — product tiles, benchmark rows, spec-table cells. Shimmer 1.4s with a subtle NVIDIA-green tint at 4% opacity as the highlight, not pure white, so the loading state itself reads as brand-on. Benchmark numbers render as unit placeholders (`— TFLOPS`, `— tokens/sec`) until resolved, never `0`, which would misrepresent performance. |
+| **Disabled** | Opacity 0.45 on text and surface together; green border shifts to Gray-400 (`#898989`). Geometry stable — 2px radius preserved, padding unchanged. |
+| **Pressed / active** | Background shifts to `#007fff` with a 1px `#003eff` border. `transform: scale(1)` — no depression animation. The color change is the tactile signal. |
+
+## 15. Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Focus ring, active-state color commit, toggle snap |
+| `motion-fast` | 140ms | Hover color shifts, button underline, link color transition |
+| `motion-standard` | 240ms | Dropdown mega-menus, accordion expand, tab switch |
+| `motion-slow` | 380ms | Section crossfades, full-width hero image transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions, menu open/close, card reveal |
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Incoming panels, modal entry |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1.0, 1)` | Dismissals, menu collapse, toast auto-removal |
+
+**Spring / overshoot stance — forbidden on product UI.** No `cubic-bezier(0.34, 1.56, 0.64, 1)` or any spring/overshoot curve in interface motion. Rationale: NVIDIA's brand equity is engineering precision — benchmarks, tolerances, thermal envelopes. Bounce reads as consumer-toy animation, which undermines the datasheet register that the rest of the system earns. The one environment where NVIDIA tolerates theatrical motion is the GTC keynote stage — large-scale product reveals, orchestral score, stage pyrotechnics — but that is a broadcast surface, not a UI surface, and its motion vocabulary does not propagate into the website or developer portal. For product UI, motion is linear-to-standard-ease at most; arrival is considered, never springy.
+
+**Signature motions.**
+
+1. **Green-edge reveal.** Section transitions on marketing surfaces use a 380ms crossfade where the green accent border (`2px #76b900`) is the last element to land — the content appears at `motion-standard`, the green underline draws in at `motion-slow`, completing slightly after. This gives the brand green its fingerprint behavior: it is what the eye lands on last.
+2. **Metric counter.** On benchmark pages, large numeric claims animate via count-up over `motion-slow` (380ms), linear easing, only on first viewport entry. The count-up is a direct signal that the number is real and freshly rendered, not a screenshot. It runs once per session; re-scroll does not re-trigger.
+3. **Mega-menu expand.** Top-nav dropdowns expand at `motion-standard` using `ease-standard`, with the green underline on the active parent link animating in simultaneously. No stagger, no nested animations — the menu is a single coordinated surface.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Metric counters render at their final value without animation. Green-edge reveals materialize the accent with the content, not after. No spinner, no shimmer, no parallax at any time.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via WebFetch (2026-04-20):
+
+- https://www.nvidia.com/en-us/ — verified homepage microcopy: "Learn More",
+  "Register Now", "Watch On Demand", "Out Now", "Read Blog",
+  "NVIDIA Delivers the Lowest Token Cost",
+  "Cost per token is the key metric for inference TCO, and NVIDIA Blackwell leads
+  on the metric that matters." Used in §10 voice samples and tone table.
+- https://developer.nvidia.com/ — verified developer microcopy:
+  "Deploy more secure, always-on AI assistants with a single command.",
+  "Explore Curriculum", "Read More", "Browse by Topic". Used in §10 voice
+  samples.
+- https://www.nvidia.com/en-us/about-nvidia/ — verified company self-description
+  ("pioneered accelerated computing to tackle challenges no one else can solve")
+  and Jensen Huang quote ("We are a learning machine. The mission is boss.
+  Everyone has a voice."). Used in §10 and §11.
+- https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/ — verified
+  founding date (April 5, 1993), founders (Jensen Huang, Chris Malachowsky,
+  Curtis Priem), and milestones (1999 GPU, 2006 CUDA, 2012 AlexNet, 2018 RTX).
+  Used in §11.
+- https://blogs.nvidia.com/blog/what-is-accelerated-computing/ — verified
+  Jensen Huang sustainability quote ("every data center in the world should
+  be accelerated"). Used in §11.
+- https://www.nvidia.com/en-us/research/ — verified research mission phrasing
+  ("developing the technology and finding the breakthroughs that bring
+  positive change to the world"). Used in §10 tone table and §12 principle 9.
+
+Base-carried from DESIGN.md sections 1–9 (not re-verified this pass):
+
+- NVIDIA Green `#76b900` as fingerprint accent (§12 principle 2).
+- Black-and-white binary contrast, no mid-tone grays (§12 principle 3).
+- 1–2px border radius across components (§12 principle 4).
+- Weight 700 as default voice (§12 principle 5).
+- Uppercase navigation, NVIDIA-EMEA font stack (§12 principle 6).
+- Deep-green accent on interactive elements only — never surface fill.
+
+Interpretive claims (editorial readings of the design system, not documented
+NVIDIA statements):
+
+- The GTC keynote is the only surface where NVIDIA tolerates theatrical
+  motion (§15). Inferred from public keynote recordings vs product-UI motion
+  observation; not a documented brand-team statement.
+- Sharp corners as a "hardware category signal" vs consumer-brand pills
+  (§12 principle 4). Editorial reading.
+- Persona archetypes (§13) are fictional composites informed by publicly
+  described NVIDIA user segments (ML engineers, research scientists, game
+  developers, enterprise AI buyers). Names are illustrative; they do not
+  refer to real people.
+
+Numerical claims in §11 ("over 4 million developers", "~40,000 companies")
+are carried from base DESIGN.md context and the corporate timeline page
+excerpts; not independently re-verified for this Philosophy layer.
+-->
+

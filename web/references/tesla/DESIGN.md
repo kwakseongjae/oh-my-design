@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: Tesla
+---
+
 # Design System Inspiration of Tesla
 
 ## 1. Visual Theme & Atmosphere
@@ -284,3 +289,160 @@ When refining existing screens generated with this design system:
 3. Use natural language descriptions, not CSS values — "barely rounded corners" not "border-radius: 4px"
 4. Describe the desired "feel" alongside specific measurements — "gallery-like silence between sections" communicates the whitespace philosophy better than "margin-bottom: 100vh"
 5. Always verify that photography is doing the emotional heavy-lifting — if the UI itself feels "designed," it's too much
+
+---
+
+## 10. Voice & Tone
+
+Tesla writes the way an engineer briefs a room: short declarative sentences, nouns before adjectives, and no adjective that doesn't earn its place. The voice treats the reader as someone capable of assessing a specification, not a prospect to be convinced. Range, charge time, and price appear before any superlative — and usually instead of one. When Tesla does reach for scale, it reaches for numbers, not words ("1.66 million vehicles delivered" rather than "record-breaking"). Marketing copy and a technical release note read in the same register; the surface changes, the voice does not.
+
+| Context | Tone |
+|---|---|
+| Headlines | Model name + single-word or short-phrase claim. "Model Y. Long Range." No verbs unless necessary. |
+| Primary CTA | Verb + noun, no modifier. "Order Now", "View Inventory", "Schedule a Drive". Never "Unlock", "Experience", "Discover". |
+| Vehicle specs | Number + unit, stated in isolation. "358 miles", "3.5 s 0–60 mph". No "up to" unless legally required; no "!". |
+| Mission / impact copy | Plain, declarative, direct from the filing. Reads like a prospectus paragraph, not a manifesto. |
+| Master Plan essays | First-principles reasoning in numbered steps. Long-form only when the argument actually requires it. |
+| Error (configurator / order) | States the blocker and the exact next step. No apologetic preamble. |
+| Service messaging | Time window, location, cost. Never "rest assured", never "our team is working hard". |
+| Legal / autonomy disclosures | Precise, regulator-ready. Capabilities and their conditions in the same sentence. |
+| Marketing email / announcement | Lowercase, under 12 words where possible. "Cybertruck Deliveries Begin." |
+
+**Forbidden phrases.** "Revolutionary", "game-changer", "unleash", "next-generation", "reimagined", "elevate", "experience the future", "buckle up", "beyond". No exclamation marks on routine CTAs. No emoji in product copy, configurator flows, service updates, or legal surfaces. No lifestyle adjectives stacked on specifications ("luxurious premium performance" — pick at most one and only when measurable). No "simply" or "just" preceding any action verb. No asking-a-question patterns in CTAs ("Ready to change the world?") — Tesla asserts, it doesn't prompt.
+
+**Voice samples.**
+
+- Homepage hero CTA pair: "Order Now" / "View Inventory" <!-- verified: tesla.com homepage, 2026-04, observed via base DESIGN.md §1 live recon and cross-referenced in third-party UX audit -->
+- Vehicle card secondary links: "Learn" / "Order" <!-- verified: tesla.com navigation dropdown, 2026-04, base DESIGN.md §4 -->
+- Persistent bottom bar: "Ask a Question" / "Schedule a Drive Today" <!-- verified: tesla.com chat bar, 2026-04, base DESIGN.md §4 -->
+- Mission statement (Impact page): "Our mission is to accelerate the world's transition to sustainable energy." <!-- cited: [tesla.com/impact](https://www.tesla.com/impact) -->
+- Master Plan Part IV framing: "sustainable abundance" <!-- cited: [tesla.com/master-plan-part-4](https://www.tesla.com/master-plan-part-4), Sept 2025 -->
+- Order-flow error (illustrative pattern): "This configuration isn't available in your region. Change delivery location or select a different trim." <!-- illustrative: not verified as live Tesla copy; pattern follows the voice rules above — state blocker, state exact next step, no apology -->
+
+## 11. Brand Narrative
+
+Tesla Motors was incorporated in July 2003 by **Martin Eberhard** and **Marc Tarpenning**, two Silicon Valley engineers who had concluded that the binding constraint on electric transport was no longer physics but industrial will. Elon Musk joined in February 2004 as chairman and lead Series A investor; J.B. Straubel joined as CTO the same year. A 2009 settlement recognizes all five early contributors — Eberhard, Tarpenning, Ian Wright, Musk, and Straubel — as co-founders ([Wikipedia: Tesla, Inc.](https://en.wikipedia.org/wiki/Tesla,_Inc.)). The founding premise was blunt: build a car company that is a technology company, where the battery, software, and motor are treated as proprietary engineering problems rather than purchased components.
+
+The mission, as stated on the company's Impact page, is *"to accelerate the world's transition to sustainable energy"* ([tesla.com/impact](https://www.tesla.com/impact)). The 2006 original Master Plan described the mechanism — sell a premium low-volume car, use the margin to fund a mid-priced one, use that to fund a mass-market one, and bundle solar generation so personal transport becomes energy-positive. Master Plan Part 3 (April 2023) extended the logic from vehicles to a fully electrified global energy economy, modeled end-use-by-end-use in a 41-page technical paper rather than a keynote slide deck ([Tesla Master Plan Part 3 PDF](https://www.tesla.com/ns_videos/Tesla-Master-Plan-Part-3.pdf)). Master Plan Part IV (September 2025) reframes the destination as *"sustainable abundance"* and rests on five stated principles: growth is infinite; innovation removes constraints; technology solves tangible problems; autonomy benefits all humanity; greater access drives greater growth ([tesla.com/master-plan-part-4](https://www.tesla.com/master-plan-part-4)).
+
+What Tesla's brand refuses is the marketing grammar of its industry: no chrome badges, no "ultimate driving machine" mood films, no exterior wordmarks on most surfaces. It delivered 1.66 million vehicles in 2025 and deployed 46.7 GWh of battery storage <!-- source: [Wikipedia: Tesla, Inc.](https://en.wikipedia.org/wiki/Tesla,_Inc.), not re-verified against Tesla's own IR filings -->, and neither figure is presented with "more than ever" in any primary surface. The editorial decision is consistent: when the data is good, the data is the statement.
+
+## 12. Principles
+
+1. **First principles over convention.** Every constraint should be re-derived from physics and cost before it is accepted. If the industry says "batteries must be assembled this way", the answer is a structural pack; if it says "a pickup needs a frame", the answer is a stainless exoskeleton. *UI implication:* do not carry over a control because "car configurators have one" — re-ask whether the user needs it to make the decision. A Tesla configurator has fewer steps than any peer because each step was justified from scratch.
+2. **The product is the hero; the UI is scaffolding.** Photography, specification, and vehicle render carry emotional weight. Chrome dissolves. *UI implication:* buttons are 4px-radius rectangles in a single accent blue; the hero image is 100vh with no overlay gradient. If a component competes with the product for attention, the component is wrong.
+3. **One action per screen.** Each viewport presents at most two CTAs, usually a primary and a secondary ("Order Now" / "View Inventory"), and one decision moves the user forward. *UI implication:* ban stacked CTA columns and in-page feature lists more than five items long; if more actions exist, they belong in the next section, not this one.
+4. **Specification beats adjective.** Numbers with units, in isolation, outperform "fast", "efficient", "long-range". *UI implication:* present spec tables with generous whitespace and a single weight (500) for the label, 400 for the value — no bars, no stars, no relative comparisons against anonymous peers.
+5. **Whitespace is a luxury claim.** The cost of empty space is implicitly the cost of restraint; filling it would dilute the product. *UI implication:* viewport-height section breaks, no sidebars on marketing pages, body text at 14px with 1.43 line-height — the typographic system is uniform so the photograph is not.
+6. **Monochrome plus one.** Exactly one chromatic accent (`#3E6AE1`) exists, and it is reserved for the primary CTA and the occasional promo label that should read as the same action class. *UI implication:* never introduce a second brand hue for status, marketing, or decoration; status colors default to neutral where the product doesn't warrant a signal color.
+7. **Cross-platform typographic unity.** Universal Sans was commissioned so the website, the mobile app, and the in-car display share a typographic voice. *UI implication:* when building any Tesla-adjacent surface, use the Display/Text split at weights 400/500 only; system-font fallbacks are `-apple-system`, not Inter or Roboto.
+8. **Quiet interactivity.** State changes happen through color and border-color transitions at `0.33s`, never scale, translate, or spring. *UI implication:* disallow `scale(1.02)` on hover, disallow any overshoot curve, and keep the single transition timing so the whole interface exhales in the same rhythm.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by publicly described Tesla customer segments (early-adopter engineers, sustainability-motivated households, performance buyers, and fleet operators), not individual people.*
+
+**Priya Narayan, 34, Sunnyvale.** Staff software engineer who reads the Master Plan Part 3 PDF before test-driving anything. Configures at 1am, refuses financing from any salesperson, and values that the configurator exposes kWh/mi instead of "long range" as a marketing word. Would leave the brand the first time a CTA says "Unleash".
+
+**The Parks family, Denver.** Two working parents with two kids and a rooftop solar install from 2023. Chose a Model Y because the Powerwall-plus-solar-plus-car math pencilled out on a spreadsheet and because they wanted the family's transport to run on the same electrons as the dishwasher. Engage with the app daily; ignore the marketing site entirely after purchase.
+
+**Dmitri Volkov, 41, Miami.** Bought a Plaid for the 0–60 figure and keeps it because the specs it quoted on day one are the specs it still hits. Does not care about autonomy marketing; does care that acceleration claims survive independent instrumented tests. Treats the vehicle as an engineering artifact, not a lifestyle.
+
+**Jamie Okonkwo, fleet manager, Atlanta.** Operates a 140-vehicle delivery fleet and evaluates Tesla quarterly against alternatives on cost-per-mile, uptime, and OTA update cadence. Needs dashboards that expose consumption by route and a service SLA that reads in operational terms, not consumer-marketing terms.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (configurator, no trim selected)** | Full-viewport vehicle render centered on pure white (`#FFFFFF`). One Carbon Dark (`#171A20`) headline with the model name. No illustration, no "start here" arrow. The vehicle is the prompt. |
+| **Empty (inventory search, no matches)** | Single Graphite (`#393C41`) line at 14px/1.43: "No vehicles match these filters in your area." One Electric Blue (`#3E6AE1`) text link: "Broaden search". No empty-state illustration. |
+| **Loading (route / page transition)** | White surface with no spinner. Below-fold content renders as blank white until scrolled into view (lazy load). Hero imagery fades in at `0.33s`. Spinners are forbidden — silent white is the load state. |
+| **Loading (CTA press, order submission)** | Primary button keeps its Electric Blue fill; label swaps to a neutral verb ("Submitting…"). No spinner inside the button; the `0.33s` background-color transition is the only motion. |
+| **Skeleton (spec table, card grid)** | Cloud Gray (`#EEEEEE`) blocks sized to final dimensions. No shimmer gradient — static blocks only. Blue-tinted skeletons are banned; they introduce a chromatic color the system doesn't carry. |
+| **Error (configurator conflict)** | Inline below the conflicting option. Graphite text states the blocker and the exact next step. Example: "This wheel isn't available with Tow Package. Remove Tow Package or select 20-inch wheels." No icon, no red background, no apology. |
+| **Error (service / network)** | Light Ash (`#F4F4F4`) banner with Carbon Dark text: specific failure + recovery action. "Order couldn't be submitted. Try again, or contact Tesla Support with reference number #####." Never speculate about cause. |
+| **Error (input validation)** | Field border shifts to `#D0D1D2` → Carbon Dark on the invalid field. Message appears below at 14px Graphite. One sentence. No tooltip, no ⚠. |
+| **Success (order placed)** | Full-viewport white confirmation. Headline at 40px weight 500 Universal Sans Display: "Your Model Y is on order." Body states estimated delivery window as a date range in plain text. No checkmark illustration, no confetti, no toast. |
+| **Success (account / inline action)** | Field transitions to its resting state; one Graphite micro-line confirms the change at 14px. No toast component exists anywhere in the system. |
+| **Disabled (CTA)** | Button retains 4px radius and 40px height. Fill shifts to Cloud Gray (`#EEEEEE`), text to Silver Fog (`#8E8E8E`). Border remains `3px solid transparent` so geometry stays identical if re-enabled. |
+
+## 15. Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Focus rings, toggle state commit |
+| `motion-fast` | 250ms | Box-shadow transitions, small property changes |
+| `motion-standard` | 330ms | Color, background-color, border-color — the signature Tesla timing |
+| `motion-slow` | 500ms | Hero carousel cross-fade, section-level photographic transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.5, 0, 0, 0.75)` | The observed default on text-link hover underlines and box-shadow transitions — pulls into and out of state with a slight settle |
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Panel and dropdown reveals — lands without overshoot |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Panel and dropdown dismissals — quiet removal |
+
+**Explicitly forbidden.** No spring or overshoot easings anywhere in the system. No `cubic-bezier(0.34, 1.56, 0.64, 1)`, no bounce, no rubber-banding on hover. Tesla's brand register is considered, not playful; a bouncing CTA reads as consumer-app exuberance and contradicts the engineering-first stance that carries every other design decision. The vehicle's acceleration curve may be exciting; the interface's state transition is not.
+
+**Signature motions.**
+
+1. **The 330ms color transition.** Every interactive state change — button hover, nav background on scroll, link underline, inventory filter selection — moves through the same `border-color 0.33s, background-color 0.33s, color 0.33s` triad. The uniformity is the signature; deviating for a single component breaks the rhythm of the whole site.
+2. **Hero cross-fade, not slide.** The carousel advances by opacity, not by horizontal translation. The photograph below the type-layer changes; the type-layer re-materializes. Sliding introduces a direction of travel the brand does not want to imply.
+3. **Scroll-triggered nav background.** The top nav transitions from transparent-over-hero to opaque white via the `tds-site-header--white-background` class toggle — a single property change at `motion-standard`, no translate, no scale, no blur beyond the already-declared backdrop-filter.
+4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. The hero carousel stops auto-advancing and exposes its dot indicators as still buttons. The interface is fully functional without a single animated transition; Tesla's motion vocabulary is small enough that removing it loses nothing the product depends on.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification (2026-04-20):
+- https://en.wikipedia.org/wiki/Tesla,_Inc. — confirms founding (Eberhard, Tarpenning,
+  July 2003), Musk's Series A in Feb 2004, Straubel CTO May 2004, and the 2009
+  co-founder settlement. Also sources 2025 delivery figures (1.66M vehicles,
+  46.7 GWh storage) used in §11.
+- tesla.com is behind Cloudflare 403 for programmatic fetch; primary Tesla
+  surfaces (tesla.com/about, /impact, /mission, /blog, master-plan-part-4) were
+  verified through web search that returned confirmed on-page phrasing of:
+    · "Our mission is to accelerate the world's transition to sustainable energy"
+      (tesla.com/impact)
+    · "sustainable abundance" + five guiding principles (tesla.com/master-plan-part-4,
+      Sept 2025)
+    · Master Plan Part 3 (April 2023) as 41-page document modeling an electrified
+      global energy economy (tesla.com/ns_videos/Tesla-Master-Plan-Part-3.pdf)
+
+Base DESIGN.md (sections 1–9) is the direct source for token-level claims
+used in the Philosophy layer (Electric Blue #3E6AE1, Carbon Dark #171A20,
+Graphite #393C41, 0.33s transition, 4px radius, Universal Sans Display/Text,
+hero 100vh, lazy-load behavior, nav class toggle tds-site-header--white-background).
+
+Voice samples verification:
+- "Order Now", "View Inventory", "Learn", "Order", "Ask a Question",
+  "Schedule a Drive Today" — observed on tesla.com marketing surfaces during
+  base DESIGN.md §1 / §4 live recon; cross-referenced in third-party UX
+  audits (plerdy.com) that quote identical button labels.
+- Mission statement quoted from tesla.com/impact.
+- Master Plan Part IV framing "sustainable abundance" quoted from
+  tesla.com/master-plan-part-4 (Sept 2025).
+- The order-flow error example is explicitly marked illustrative; it follows
+  the documented voice rules but is not a verified string from live Tesla
+  configurator copy.
+
+Personas (§13) are fictional archetypes informed by publicly described Tesla
+customer segments (early-adopter engineers, sustainability-motivated
+households, performance buyers, fleet operators). Any resemblance to specific
+individuals is unintended.
+
+Interpretive claims — editorial readings, not official Tesla statements:
+- "The product is the hero; the UI is scaffolding" as a design principle
+  derived from the site's zero-decoration, 100vh-photography pattern.
+- The "engineering-first register contradicts bouncing motion" rationale for
+  the forbidden spring stance — extrapolated from the base DESIGN.md §7 Do's
+  and Don'ts ban on scale/translate hover transforms, not from an explicit
+  Tesla brand guideline.
+- Tesla ≠ Musk: the narrative is deliberately framed around the company's
+  founding (Eberhard/Tarpenning) and the published Master Plan documents,
+  not around Musk's individual persona.
+-->
+

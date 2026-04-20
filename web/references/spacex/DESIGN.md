@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: SpaceX
+---
+
 # Design System Inspiration of SpaceX
 
 ## 1. Visual Theme & Atmosphere
@@ -203,3 +208,164 @@ Used sparingly in countdown and launch-status modules:
 4. Ghost buttons are the only interactive element — transparent, spectral-bordered
 5. Zero shadows, zero cards, zero decorative elements
 6. Every section is full-viewport (100vh) — cinematic pacing
+
+---
+
+## 10. Voice & Tone
+
+SpaceX speaks in the voice of aerospace-grade documentation: declarative, technical, and unsentimental. Sentences are engineered — every clause carries either a verified capability, a measured dimension, or a mission objective. The register is closer to a NASA press release than a consumer tech product page. Marketing flourishes, metaphor, and emotional softening are absent; the weight of the achievement is expected to speak for itself. Headlines are uppercase single-line titles; body copy is plain, past-tense when describing milestones, and future-tense only when tied to a specific vehicle program.
+
+| Context | Tone |
+|---|---|
+| Hero headlines | Declarative, all-caps, mission-forward. "MAKING HUMANITY MULTIPLANETARY", "MAKING HISTORY". No superlatives beyond factual firsts. |
+| Program descriptions | Capability + number + destination. "Starship is the world's most powerful launch vehicle ever developed, capable of carrying up to 150 metric tonnes fully reusable." |
+| Vehicle specs | Pure data. Height / diameter / thrust / payload capacity in SI + imperial, no prose around the numbers. |
+| Mission milestones | Past-tense, dated, factual. "On December 21, 2015, the Falcon 9 rocket delivered 11 communications satellites to orbit..." |
+| CTAs / Buttons | Uppercase verb + noun. "LEARN MORE", "EXPLORE", "RESERVE YOUR RIDE", "JOIN A MISSION", "ORDER NOW". No emoji. No exclamation. |
+| Founder / mission quotes | Verbatim, attributed, em-dash before speaker. Used once per surface, never recycled. |
+| Error / empty (presumed, not on public surface) | Single declarative line. No apology theatre, no illustrations — consistent with the rest of the site's zero-decoration stance. |
+| Legal / supplier / careers links | Single noun, uppercase footer item. "CAREERS · UPDATES · PRIVACY POLICY · SUPPLIERS". |
+
+**Voice samples.**
+
+- *"SpaceX designs, manufactures and launches advanced rockets and spacecraft. The company was founded in 2002 to revolutionize space technology, with the ultimate goal of enabling people to live on other planets."* <!-- verified: https://www.spacex.com/mission/ (meta description served in HTML), 2026-04 -->
+- *"MAKING HUMANITY MULTIPLANETARY"* (hero headline, Mission page) <!-- verified: https://www.spacex.com/mission/, 2026-04 -->
+- *"SpaceX was founded under the belief that a future where humanity is out exploring the stars is fundamentally more exciting than one where we are not."* (Human Spaceflight page lede) <!-- verified: https://www.spacex.com/human-spaceflight/, 2026-04 -->
+- *"LEARN MORE ABOUT STARSHIP"* (primary CTA on Mission page) <!-- verified: https://www.spacex.com/mission/, 2026-04 -->
+- *"SpaceX's Starship spacecraft and Super Heavy rocket - collectively referred to as Starship - represent a fully reusable transportation system designed to carry both crew and cargo to Earth orbit, the Moon, Mars and beyond."* <!-- verified: https://www.spacex.com/vehicles/starship/, 2026-04 -->
+- Empty / no-results (illustrative): *"NO RESULTS."* — one line, uppercase, Spectral White on Space Black, no illustration. <!-- illustrative: not verified as live SpaceX copy -->
+
+**Forbidden phrases.** "Revolutionary" (as a marketing adjective — the word "revolutionize" is used once in the corporate meta description for the space-technology category, but not applied to individual features), "game-changing", "next-gen" as a product name, "empower", "unleash", "epic", "insane", any exclamation on a CTA, any emoji anywhere (🚀 is specifically forbidden — SpaceX never uses a rocket emoji to refer to its own rockets), sentence-case headlines on hero surfaces, hedging modifiers like "arguably" or "one of the most" on quantified claims (state the number or drop the claim).
+
+## 11. Brand Narrative
+
+SpaceX was founded in 2002 as an engineering organization with an explicit, published mission: to make humanity multiplanetary. The [company's own description](https://www.spacex.com/mission/) — *"SpaceX designs, manufactures and launches advanced rockets and spacecraft. The company was founded in 2002 to revolutionize space technology, with the ultimate goal of enabling people to live on other planets."* — frames the brand as a vertically-integrated aerospace manufacturer first, a visionary project second. This is the authoritative register: the company does not speak about itself in cinematic language; its products and launch record do that work.
+
+The [Human Spaceflight page](https://www.spacex.com/human-spaceflight/) sharpens the founding thesis in one sentence: *"SpaceX was founded under the belief that a future where humanity is out exploring the stars is fundamentally more exciting than one where we are not."* The corollary, stated on the same page, is operational: *"...developing the fully and rapidly reusable rockets necessary to transform humanity's ability to access space into something as routine as air travel."* Multi-planetary is the destination; rapid reusability is the engineering thesis that makes the destination economically tractable. The two cannot be separated in brand voice — every mission statement either names the destination (Mars, the Moon, Earth orbit) or names the reusability breakthrough (Falcon 9 first-stage return, Super Heavy chopstick catch, Starship full stack re-flight).
+
+The brand heritage is the launch manifest, not the founder. SpaceX communicates itself through a running ledger of firsts, attested with date and vehicle: Falcon 1 reaching orbit in 2008 (*"the first privately developed liquid fuel rocket to reach Earth orbit"*), Dragon delivering cargo to the ISS in 2012, first orbital-class first-stage landing on December 21, 2015, first reflight of an orbital-class rocket on March 30, 2017, [restoring human spaceflight to the United States on May 30, 2020](https://www.spacex.com/mission/). The RUD (rapid unscheduled disassembly) culture — treating each test failure as data toward the next iteration rather than as a setback to hide — is a downstream consequence: when the mission is "make humanity multiplanetary," a Starship test article disassembling mid-flight is a legitimate datapoint, not a PR event. The brand does not apologize for failed tests; it enumerates what was learned and what the next attempt will test. <!-- source: synthesized from base DESIGN.md §1 (design ethos) + mission page copy; RUD is a widely-used SpaceX engineering term, not a DESIGN.md token -->
+
+## 12. Principles
+
+1. **The photograph is the product.** Every surface is a full-viewport frame of an actual rocket, actual planet, or actual mission. Renders are used only for vehicles that have not yet flown, and they are labeled as renders by context (Starship configurations, future Mars surface). *UI implication:* If a component needs a background, it is a dated mission photograph at 100vh; if no photograph is available, the component is Space Black (`#000000`) with type only — no abstract gradient or generated imagery fills the gap.
+2. **Aerospace-grade precision in every numeric claim.** Dimensions are reported in SI first, imperial second. Thrust is reported with both mass-force (tf) and pound-force (Mlbf). Payload capacity distinguishes fully reusable vs expendable configurations explicitly. *UI implication:* Any numeric field renders the SI unit primary and the imperial unit secondary on the same line, separated by ` / ` — e.g. `123m / 403 ft`. Never show one unit alone.
+3. **Uppercase is the default.** Navigation, headlines, CTAs, captions, and labels all render `text-transform: uppercase` with positive letter-spacing (0.96px–1.17px). The lowercase exception is long-form body paragraphs describing programs or mission history. *UI implication:* A new component's default text-transform is uppercase unless it is a body paragraph ≥2 sentences; switching to sentence case must be a conscious decision tied to reading length.
+4. **Iteration culture: RUD is a design reality, not a bug.** SpaceX's engineering register treats test-flight failures as expected data collection. The brand never hides a failed flight; it publishes high-frame-rate footage and a written postmortem. *UI implication:* Status components must have a state for "test failed, data collected" that is neutral — not red-alarm, not green-celebration — styled identically to a nominal-mission state but with past-tense copy naming the specific flight and outcome.
+5. **No ornament.** The design system has zero shadows, zero cards, zero borders (except one ghost button border), zero decorative icons, zero dividers, zero gradient buttons. *UI implication:* Adding any decorative element — a badge pill, a shadow, an illustration, an emoji — is a reviewable design decision, not a default. The default is always "text on photograph, or text on black."
+6. **One button, one CTA per surface.** Every scene holds one ghost button (`rgba(240, 240, 250, 0.1)` background, 32px radius, spectral border). Multiple CTAs on one section is a red flag — the mission of each scene should be singular. *UI implication:* A layout that produces two visually coequal ghost buttons side-by-side must be refactored into two full-viewport sections, each with one CTA, or a single primary + a secondary text link.
+7. **The mission, not the founder, is the subject.** Copy attributes achievements to the vehicle, the team, or the company — never to an individual. When founder quotes are used, they appear once, attributed, and do not carry the brand narrative alone. *UI implication:* Hero copy, press release headlines, and product descriptions must not make an individual person the grammatical subject. "SpaceX achieved...", "Falcon 9 delivered...", "Dragon docked..." are the canonical subjects.
+8. **Reusability is the engineering thesis.** Every program page returns to the same claim: full, rapid reusability is what transforms space access. *UI implication:* Long-form program pages must surface a reusability data point (number of reflights, successful landings, turnaround time) in the first viewport — not buried in a spec table four scrolls down.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by publicly described SpaceX audiences — aerospace professionals, commercial launch customers, space enthusiasts, and mission operators — not individual people. Astronauts and flight crew are deliberately excluded: they are rare end-users, and the public-facing surfaces are built for the far larger population of engineers, buyers, and observers.*
+
+**Alondra Vega, 31, Hawthorne, CA.** Propulsion engineer at a commercial aerospace supplier. Reads the Starship vehicles page to check the current Raptor thrust and payload-mass envelope before drafting a supplier proposal. Expects SI-first units and will lose trust in any aerospace-adjacent brand that leads with imperial or rounds metric thrust to one significant figure.
+
+**Kenji Ikeda, 44, Yokohama.** Satellite program manager for a regional communications operator evaluating Falcon 9 and Starship as a rideshare vehicle. Reads the Mission page and the active launch manifest quarterly; treats every flight-record datapoint as a procurement input. Needs the launch cadence and landing success rate visible without clicking, because his decision timeline is measured in days.
+
+**Dara Nwosu, 27, Lagos.** Aerospace master's student and longtime space enthusiast. Follows every Starship test flight and reads the SpaceX updates page within an hour of each launch window. Expects photography and video to load edge-to-edge on mobile and will read a three-paragraph program description in full — as long as it avoids marketing language.
+
+**Marcus Reinhardt, 52, Munich.** Range-safety operator at a partner launch facility. Needs the vehicle specs (height, diameter, propellant mass) to cross-reference against the range's hazard envelope. Will never read the marketing copy; needs the numbers accessible within two clicks and in a format that reads cleanly when printed on A4.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no mission matches filter)** | A single D-DIN 16px line in Spectral White (`#f0f0fa`), uppercase, letter-spacing 1.17px, centered on Space Black: "NO MISSIONS MATCH." No illustration. No suggestion text. |
+| **Empty (no launches this month)** | Full-viewport Space Black with one D-DIN-Bold 48px line: "NO LAUNCHES SCHEDULED." Below it, one D-DIN 12px uppercase link: "VIEW PAST MISSIONS". |
+| **Loading (page shell / route transition)** | Space Black canvas. Photography fades in at `motion-slow` once the image decodes; no skeleton blocks, no spinner, no shimmer. A loading state that renders nothing is preferred to one that renders a placeholder. |
+| **Loading (live launch countdown)** | The countdown clock continues to tick in D-DIN-Bold. Above it, a small D-DIN 10px uppercase label in Status Amber (`#f5a623`): "HOLD — UPDATING." No spinner. |
+| **Live mission (active transmission)** | A 10px square solid Active Red (`#cc0000`) dot left of a D-DIN 12px uppercase label in Spectral White: "LIVE · [MISSION NAME]". The dot pulses at `motion-slow` opacity only — no scale animation. |
+| **Error (content not found)** | Full-viewport Space Black. One D-DIN-Bold 48px uppercase line: "PAGE NOT FOUND." One D-DIN 16px line below: "RETURN TO MISSION." styled as a ghost button. No imagery. |
+| **Error (form submission — supplier / careers)** | Inline below the input. D-DIN 13px uppercase in Status Amber (`#f5a623`). States the exact validation failure and the exact field. No apology. |
+| **Error (test flight RUD — aerospace-specific)** | Neutral treatment: D-DIN-Bold headline names the flight and the date, body paragraph in plain-case D-DIN 16px states the objective, the outcome, and the data collected. No red alert, no apology copy, no emoji. Visually identical to a nominal-mission recap. |
+| **Success (form submitted — supplier contact)** | Space Black with one D-DIN 16px uppercase line in Spectral White: "MESSAGE RECEIVED." Past tense, no exclamation, no checkmark icon. |
+| **Success (launch outcome — nominal)** | Full-viewport post-launch photograph. Overlay: D-DIN-Bold uppercase mission name, D-DIN 16px body recap in past tense, date inline. One ghost button: "READ THE MISSION UPDATE". |
+| **Skeleton** | Not used. SpaceX's aesthetic has no card structure to skeleton-ize; the load state is "black canvas, then photograph fades in." Skeletons with generic gray rectangles would contradict the zero-ornament principle. |
+| **Disabled** | Opacity of text and ghost-button border reduced in proportion (typically 50%); Space Black background unchanged. No cursor change beyond `not-allowed`. Geometry remains stable if re-enabled. |
+
+## 15. Motion & Easing
+
+**Durations.**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle commits, focus rings |
+| `motion-fast` | 180ms | Hover opacity shifts on ghost buttons, nav link color change |
+| `motion-standard` | 320ms | Section reveals on scroll, overlay fades |
+| `motion-slow` | 600ms | Full-viewport photography crossfades between scenes |
+| `motion-live` | variable | Countdown tick (1Hz, driven by wall-clock, not animation frame) |
+
+**Easings.**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions, opacity fades, nav color changes |
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Photograph fade-in, scene reveal on scroll |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1.0, 1.0)` | Outgoing photograph fade, overlay dismissal |
+
+**Spring / overshoot — explicitly forbidden.** No `cubic-bezier(0.34, 1.56, 0.64, 1)`, no `spring(...)`, no bounce, no overshoot anywhere in the system. SpaceX's visual register is aerospace engineering, and aerospace motion is deterministic — a Falcon 9 first stage does not "bounce" when it lands, and neither should a button. Overshoot reads as playful or sycophantic; the brand register is considered and mission-critical. A rocket landing is the most dramatic motion the brand ever shows, and that drama is carried by the photograph itself, not by an easing curve. If an interaction feels like it wants to bounce, the interaction is wrong, not the easing token.
+
+**Signature motions.**
+
+1. **Photograph crossfade between scenes.** On scroll or route change, the outgoing full-viewport photograph fades out over `motion-slow` using `ease-exit`, and the incoming photograph fades in over `motion-slow` using `ease-enter`. The two fades overlap by ~200ms, producing a continuous dark moment rather than a visible cut. No parallax, no Ken Burns zoom, no rotation.
+2. **Ghost button hover.** Background `rgba(240, 240, 250, 0.1)` transitions to `rgba(240, 240, 250, 0.2)` over `motion-fast` using `ease-standard`. Text color holds. No scale, no lift, no shadow change.
+3. **Live-indicator pulse.** The Active Red (`#cc0000`) dot on a live transmission indicator pulses opacity between 1.0 and 0.4 over a 1.2s cycle, `ease-standard` in both directions. Scale is fixed — only opacity animates.
+4. **Countdown tick.** The launch countdown clock updates exactly once per second at the wall-clock boundary. No glyph animation, no flip-digit effect, no color transition between seconds. The rigidity is the point: countdowns are not entertainment, they are time.
+
+**Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Photograph crossfades become cuts. The live-indicator pulse becomes a static full-opacity dot. The countdown tick is unaffected (wall-clock, not animation). The app stays fully functional; no aerospace drama at the cost of accessibility.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Direct verification via Playwright MCP (2026-04-20) — SpaceX is an Angular SPA,
+so server-rendered HTML is empty; all copy below was captured from fully-rendered
+DOM via `document.body.innerText` in a headless Chromium session:
+
+- https://www.spacex.com/mission/ — confirms founding year (2002), mission
+  statement ("revolutionize space technology, with the ultimate goal of enabling
+  people to live on other planets"), the "MAKING HUMANITY MULTIPLANETARY"
+  hero, the Falcon 1 / Dragon / Falcon Heavy / Crew Dragon milestone ledger
+  (with dates: 2008, 2012, 2015-12-21, 2016-04-08, 2017-03-30, 2018-02-06,
+  2020-05-30), the reusability thesis, and all CTA button labels
+  ("LEARN MORE ABOUT STARSHIP").
+- https://www.spacex.com/human-spaceflight/ — confirms the founding thesis
+  sentence ("SpaceX was founded under the belief that a future where humanity
+  is out exploring the stars is fundamentally more exciting than one where
+  we are not"), the reusability framing ("transform humanity's ability to
+  access space into something as routine as air travel"), and CTA labels
+  ("EXPLORE", "LEARN MORE", "RESERVE YOUR RIDE", "JOIN A MISSION", "ORDER NOW").
+- https://www.spacex.com/vehicles/starship/ — confirms the vehicle spec
+  register (SI-first / imperial-second, e.g. "123m / 403 ft"), the
+  Starship / Super Heavy / Raptor engine descriptions, and the payload
+  capacity framing (fully reusable vs expendable).
+
+Direct verification via curl (2026-04-20):
+- https://www.spacex.com/mission/ — the HTML `<meta name="description">` tag
+  ("SpaceX designs, manufactures and launches advanced rockets and spacecraft.
+  The company was founded in 2002 to revolutionize space technology, with the
+  ultimate goal of enabling people to live on other planets.") is served by
+  the server and is the authoritative corporate one-liner.
+
+Base DESIGN.md (sections 1–9) is the source for all token-level claims
+(Space Black #000000, Spectral White #f0f0fa, D-DIN / D-DIN-Bold, ghost button
+rgba(240,240,250,0.1), zero shadows / zero cards stance).
+
+Not independently verified, treated as widely documented aerospace-industry
+terminology:
+- RUD (rapid unscheduled disassembly) is a long-standing engineering term
+  used publicly by SpaceX in post-flight recaps; the cultural framing in §11
+  and §12-4 is editorial synthesis, not a direct quote from a single page.
+
+Personas (§13) are fictional archetypes informed by publicly described SpaceX
+audiences (aerospace engineers, commercial launch procurement, space
+enthusiasts, range-safety operators). Names are illustrative and do not refer
+to real people.
+
+Interpretive claims (e.g., "the brand heritage is the launch manifest, not
+the founder"; "overshoot reads as playful or sycophantic; the brand register
+is considered and mission-critical") are editorial readings of the design
+system and the verified public copy, not documented SpaceX statements.
+-->
+

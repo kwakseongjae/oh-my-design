@@ -1,3 +1,8 @@
+---
+omd: 0.1
+brand: Mercari
+---
+
 # Design System Inspiration of Mercari
 
 ## 1. Visual Theme & Atmosphere
@@ -292,3 +297,159 @@ Mercari has explicit shadow tokens for floating UI:
 8. **Surface contrast** (`#ffffff` cards on `#f5f5f5` page bg) handles separation — minimal shadow needed on flat layouts.
 9. **Body text `#333333`, secondary `#666666`, tertiary `#999999`** — three-tier text hierarchy across the entire system.
 10. **Page padding 36px horizontal, 40px top, 64px bottom**, with `24px` gutter — the layout grid is explicit.
+
+---
+
+## 10. Voice & Tone
+
+Mercari's voice is **pragmatic, transparent, and functionally-warm** — the voice of a trust infrastructure, not a lifestyle brand. Where LINE sells belonging ("Life on LINE") and where Apple sells aspiration, Mercari sells **circulation**: moving value from someone who no longer needs it to someone who does. The copy reflects that — action verbs, concrete amounts, shipping logistics, and a Japanese-origin register that favors politeness without ceremony. The "Move Fast" value is balanced by "Safe Rollout" — safety copy is direct ("ID verified", "payment held until delivery"), never reassurance-only ("don't worry!").
+
+| Context | Tone |
+|---|---|
+| Headlines | Declarative about value and circulation. "Sell what you don't need. Buy what someone didn't." No superlatives, no "revolutionary marketplace". |
+| Product CTAs | Imperative verb + noun ("List item", "Ship now", "Request refund"). Plain, never clever. |
+| Listings copy | Matter-of-fact. The condition labels (`New`, `Like New`, `Good`) carry the judgment; subjective adjectives like "amazing" or "must-have" are banned from platform chrome. |
+| Error messages | In Japanese UI, proper 丁寧語 (teineigo) — blameless and concrete. In English, direct and action-oriented ("Upload failed. Tap to retry."). |
+| Trust / safety copy | Explicit rather than reassuring. *"Payment held until buyer confirms receipt"* beats *"Secure and trusted"*. |
+| Engineering / culture content | Professional and retrospective; documents failures openly ("Lessons from…", "Behind the Scenes of…") — in line with the "Go Bold" + document-learnings value. |
+| Onboarding | Functional orientation first — *what you can buy and sell, how fees work, how shipping is handled* — not aspirational framing. |
+| Push notifications | Transactional specificity — item title + action ("Your listing sold: iPhone 14 Pro"). Never promotional spam in the primary notification surface. |
+
+**Forbidden phrases.** "Revolutionary", "game-changer", "world's best", "amazing deals". In Japanese UI: avoid カタカナ tech-marketing language (イノベーティブ, ディスラプティブ). Generic hype emoji (🔥 ✨ 💯 🚀) on listings or system copy — emoji is reserved for user-generated message content between buyer and seller, not for platform voice.
+
+**Representative voice samples.** Where a verified live string exists on Mercari's public surfaces it is cited with a source marker; where no public surface carries the string (logged-in-only copy, error states), the sample is marked *illustrative* and a production team should replace it with Mercari's real live copy before shipping.
+
+- Primary JP nav label (verified): *"出品"* <!-- verified: jp.mercari.com bottom-nav CTA, 2026-04 --> — two-character imperative, the canonical "List item" tap target across the app.
+- JP footer safety banner (verified): *"メルカリあんしん・あんぜん宣言！"* <!-- verified: jp.mercari.com footer, 2026-04 --> — exclamation-ending, commits to a publicly-listed safety initiative rather than generic "trust".
+- EN product description (verified): *"A C2C marketplace where individuals can enjoy buying and selling items. Through our unique payment deposit system and our use of AI to monitor for fraud, anyone can enjoy safe and secure transactions."* <!-- verified: about.mercari.com/en, 2026-04 --> — tone exemplar: concrete mechanisms (*payment deposit system*, *AI to monitor for fraud*) over vague reassurance.
+- Empty state (new user, no listings): *"Nothing listed yet. Take a photo and list your first item."* <!-- illustrative: not verified as live Mercari copy -->
+- Error (photo upload failed): *"Upload failed. Tap to retry."* <!-- illustrative: not verified as live Mercari copy -->
+- Success (item sold): *"Sold to <buyer>. Package it and print the shipping label."* <!-- illustrative: not verified as live Mercari copy -->
+
+## 11. Brand Narrative
+
+Mercari was founded in 2013 in Tokyo by Shintaro Yamada, after he left Rakuten Auctions and travelled the world asking one question — *"What can I do to help society thrive with the finite resources we have?"* ([about.mercari.com](https://about.mercari.com/en/about/)). That question became the company's founding premise: **circulate all forms of value to unleash the potential in all people**. The answer took the shape of a smartphone-first C2C marketplace that made listing an item fast enough (3 minutes, 3 photos) to be worth doing for a single pair of used jeans.
+
+From that origin Mercari grew into **Japan's largest C2C marketplace** (50M+ downloads, 350K daily listings <!-- source: base DESIGN.md §1, carried from 2026-04-17 extraction, not re-verified -->), expanded to the US in 2014, and spun up adjacent divisions: **Merpay** (2019, payments — *"Building trust for a seamless society"*), **Mercoin** (2023, crypto — *"Circulate your value, anywhere and everywhere"*). The consistent thread across divisions is the word *circulate* — not *sell*, not *exchange*, not *marketplace*. Every product framing returns to that verb.
+
+What Mercari refuses: the **auction-complexity** aesthetic of eBay (bidding clocks, snipe warnings); the **spam-forward** commerce chrome of flash-sale marketplaces (flashing banners, permanent 50%-off overlays); the **corporate-blue sterility** of legacy Japanese e-commerce (Rakuten Ichiba, Yahoo! JAPAN Auctions). What it embraces: a **semantic-token-first** design system (681 `:root` variables — see §2), Mercari Red as a **finite attention signal** (never decorative), mobile-first listing flow, and explicit trust infrastructure (ID verification, escrow, ratings) surfaced directly in the UI rather than hidden in settings.
+
+## 12. Principles
+
+1. **Circulate, don't just sell.** Product framing uses the verb *circulate*; listings flow from one user to another, not from a retailer to a consumer. *UI implication:* both sides of a transaction are peers — no "seller dashboard" / "customer account" asymmetry. The same person is often both on the same day, and the interface reflects that symmetry.
+
+2. **Semantic tokens are the source of truth.** All 681 `:root` CSS custom properties (`--alias-color-background-attention-default` and friends) resolve through the token layer before any pixel is painted. *UI implication:* components never hardcode hex values. A theme swap (dark mode, regional variant) is a `:root` redefinition, not a UI refactor.
+
+3. **Mercari Red is the `attention` role, not a primary accent.** `#ff333f` signals danger, sale emphasis, and the brand mark — nothing else. Using it as a decorative accent on buttons, illustrations, or empty-state icons dilutes its function as a warning signal. *UI implication:* primary CTA surfaces use neutral dark text on white, not red; red is reserved for destructive actions and sale-price emphasis.
+
+4. **4px radius is the commerce signature.** Sharp 4px corners read as "browse the catalog efficiently" — LINE's 50px pills would make Mercari feel social when it is transactional. *UI implication:* never round corners to match a reference aesthetic ("softer", "friendlier"); the 4px is intentional functional rigor.
+
+5. **Two weights: 700 and 400. Nothing in between.** Price, badge, primary CTA, and section headings use 700. Body, secondary labels, and helper text use 400. Middle weights (500, 600) are absent — they blur the hierarchy between scan-value (price, button) and read-value (description). *UI implication:* disable imported fonts' "medium" weight; design tokens expose only two.
+
+6. **Hiragino / Meiryo "Custom" variants are first-class, not fallbacks.** The optically-tuned Japanese faces are the primary reading surface for 50M+ Japanese users; they lead the stack, not end it. *UI implication:* never specify `-apple-system` or `system-ui` alone — the fallback chain must name the Japanese optical variants explicitly ([verified at runtime on jp.mercari.com](https://jp.mercari.com)).
+
+7. **"Move Fast" pairs with "Safe Rollout."** The engineering culture (*Go Bold, All for One, Be a Pro, Move Fast* — [careers.mercari.com/mission-values](https://careers.mercari.com/mission-values/)) is explicitly paired with documented-failure practice. Blog titles like "Safe Chunked Execution" and "Behind the Scenes" are intentional; failures are surfaced, not buried. *UI implication:* error and recovery states are visible on the failing element (*"Upload failed. Tap to retry"*), not hidden behind a modal or a support ticket.
+
+8. **Disagree & commit.** Once decisions are made — after debate — the team commits fully ([mission-values](https://careers.mercari.com/mission-values/)). *UI implication:* there is no "legacy styles" escape hatch in the design system. Deprecated tokens are removed on a schedule, not left for "gradual migration forever."
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by publicly described Mercari user segments and mission documentation; not individual people.*
+
+**Yuki Sato, 28, Tokyo.** Office worker who declutters every 2–3 weeks — a jacket, a manga set, a hand mixer. Lists in under 3 minutes during her evening commute and expects the "sold" notification to tell her exactly how to ship. Japanese-language-first; sub-¥20,000 items only, rarer collectibles still go to Yahoo! Auctions.
+
+**Takeshi Nakamura, 42, Osaka.** Secondhand-bookshop owner using Mercari as a **secondary retail channel** — photographs overstock at the shop, lists in the evening. A 1-star rating materially damages his shop's income, so he treats the platform's forced taxonomy (`Like New`, `Good`) as a feature that protects him from subjective disputes.
+
+**Sarah Kim, 19, Los Angeles.** Mercari US user since 2022; thrifts Y2K fashion and old consumer electronics. Never uses eBay ("too auction-y, too slow"); compares Mercari to Depop and picks Mercari for lower-budget finds, Depop for curated vintage.
+
+**Hiroko Tanaka, 56, Kobe.** Retiree selling handmade knit goods — supplemental income that Yahoo! Auctions' complexity never allowed. Depends on the ID-verification badge as social proof; buyers hesitate on higher-priced items without it. Her listings are spare — 3 photos, 2 sentences, 1 honest condition label.
+
+## 14. States
+
+*Copy strings below are **illustrative treatments** of Mercari's tone applied to each state, not verified live copy. A production team should replace them with Mercari's actual copy (observable via Playwright against jp.mercari.com's logged-in surfaces) before shipping.*
+
+| State | Treatment |
+|---|---|
+| **Empty (home, new user)** | White canvas (`--alias-color-background-primary-default`). One line of body copy (15px weight 400, `#333333`) explaining what Mercari does in the local register. One **4px-radius** `--alias-color-background-attention-default` (Mercari Red) CTA *"List your first item"*. No illustration — the category thumbnails below serve as visual orientation. |
+| **Empty (search results)** | Neutral gray (`#666666`) microcopy: *"No results for '<query>'. Try a broader keyword or browse categories below."* <!-- illustrative: not verified as live Mercari copy --> Suggested-category chips follow immediately. Never a "sorry" apology or emoji. |
+| **Loading (listing grid)** | Skeleton tiles at the exact final card dimensions (`--alias-color-background-secondary-default` `#f5f5f5` blocks, 4px radius). Shimmer pass ≤ 1.2s. Skeleton never shows placeholder text — only rectangles. |
+| **Loading (price / amount field)** | Currency-localized placeholder, never a number: `¥ -` for JP, `$ -` for US. Never `¥ 0` — zero reads as "this item is free." |
+| **Error (photo upload failed)** | Red icon (`--alias-color-icon-attention-default` `#ff333f`) attached to the failed photo slot. Inline text: *"Upload failed. Tap to retry."* Retry tap reattempts without full form resubmission. Never a blocking modal. |
+| **Error (network)** | Top banner in `--alias-color-background-tertiary-default` (`#333333`) with white text. One sentence + retry pill. Banner disappears silently when connectivity returns. |
+| **Error (listing rejected, policy violation)** | Modal is used here — this is not a transient error. Headline states the violation plainly (*"This item type isn't allowed"*), body links to the policy page, CTA is *"Edit listing"*. Never hide the policy reason behind a support ticket. |
+| **Success (listed)** | Bottom toast snackbar at `--mer-z-index-snackbar` (1500), `--alias-color-background-tertiary-default` (`#333333`) bg, white text, 3–4s auto-dismiss: *"Listed. View your item →"* — the link inside the toast goes to the listing. |
+| **Success (sold)** | Full-width banner at top of the listing-detail view using the success-green family (derived from `#0aa466`, not brand red — red is for attention, not celebration). Body: *"Sold to @buyer. Package within 3 days."* Primary CTA: *"Generate shipping label"* — the platform takes the user straight into the next step. |
+| **Skeleton** | `#f5f5f5` (`--alias-color-background-secondary-default`) at exact final dimensions. Never over the `price` field — that stays currency-placeholder. |
+| **Disabled** | Opacity applied to text and fill together. Disabled CTA keeps its 4px radius — never flattens or rounds to a different shape. |
+
+## 15. Motion & Easing
+
+Mercari's motion vocabulary is **disciplined commerce motion**: fast feedback on interaction, measured confirmation on completion, **no spring or bounce**. This is deliberate. Spring motion reads as delight; commerce requires precision about amounts and states. LINE's `ease-sticker` overshoot would be wrong here — a Mercari user watching a purchase-confirmation animation should feel *confidence*, not *whimsy*.
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle commits, selection state |
+| `motion-fast` | 150ms | Button/card tap feedback, image thumbnail expand |
+| `motion-standard` | 250ms | Bottom sheet rise, snackbar enter/exit, dialog appear |
+| `motion-slow` | 400ms | Listing-submit success confirmation, payment complete |
+| `motion-page` | 300ms | In-app navigation push/pop |
+
+**Easings** (verified from live `:root` computed styles on `jp.mercari.com`):
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.33, 1, 0.68, 1)` | Snackbars, dialogs, toasts — the everyday easing |
+| `ease-sheet` | `cubic-bezier(0.65, 0, 0.35, 1)` | Bottom sheet rise/dismiss — more deliberate, like a drawer |
+| `ease-exit` | `cubic-bezier(0.4, 0, 0.9, 1)` | Dismissals, cancellations |
+
+No `ease-bounce`, no `ease-overshoot`, no cubic-bezier with y-values > 1 or < 0 anywhere in the system. **Commerce has no spring.**
+
+**Signature motions.**
+
+1. **Card tap feedback.** Listing cards scale `1.0` → `0.98` over `motion-fast` on press, returning to `1.0` on release. Subtle, thumb-oriented, feels tactile without bouncing.
+2. **Bottom sheet rise (filters, sort, category picker).** Uses `ease-sheet` over `motion-standard`. The deliberate easing matches the Japanese-origin UX tradition of drawers sliding smoothly, not snapping into place.
+3. **Favorite toggle.** Heart icon fills over `motion-fast` with a simple crossfade — no scaling pulse. The commit is the signal; no decorative reinforcement.
+4. **Listing submit success.** Full-width success banner fades + slides down from top at `motion-slow` with `ease-standard`. No confetti, no illustration — the ship-now CTA that appears is the reward.
+5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Sheets and modals appear via opacity only. The app remains fully functional; motion is never load-bearing for comprehension.
+
+<!--
+OmD v0.1 Sources — Philosophy Layer (sections 10–15)
+
+Extracted 2026-04-20 via omd:add-reference AUGMENT mode.
+Style reference: line/DESIGN.md (Asian / JP-origin matrix auto-pick).
+
+Direct verification via WebFetch (2026-04-20):
+- https://about.mercari.com/en/about/ — confirms the founding question ("What
+  can I do to help society thrive with the finite resources we have?"), the
+  group mission ("Circulate all forms of value to unleash the potential in all
+  people"), and the four divisions (Mercari JP, Mercari US, Merpay, Mercoin)
+  with their divisional missions.
+- https://careers.mercari.com/mission-values/ — confirms the four values
+  ("Go Bold / All for One / Be a Pro / Move Fast") with taglines and example
+  behaviors, and the four foundational mindsets (Sustainability; Inclusion &
+  Diversity; Trust & Openness; Customer Perspective).
+- https://engineering.mercari.com/en/blog/ — confirms the engineering voice
+  register as pragmatic and retrospective, with "Move Fast" culturally paired
+  with "Safe Rollout" and documented failure.
+
+Base DESIGN.md (sections 1–9) is the source for all token-level claims: Mercari
+Red #ff333f, accent blue #0095ee, success green #0aa466, the 4px radius
+signature, the two-weight hierarchy (700/400), the 681 :root CSS custom
+properties with the --alias-color-{property}-{role}-{state} namespace, the
+JP-first font stack (Hiragino Kaku Gothic ProN Custom, Hiragino Sans Custom,
+Meiryo Custom), the z-index scale (1100–1600) via --mer-z-index-* tokens, and
+the easing curves cubic-bezier(0.33, 1, 0.68, 1) and cubic-bezier(0.65, 0, 0.35,
+1) originally extracted from live :root inspection in _research.md.
+
+Not independently verified in this session but widely documented public facts:
+- Mercari founded 2013 in Tokyo by Shintaro Yamada (previously at Rakuten
+  Auctions / Unoh).
+- US market launch 2014; Merpay launched 2019; Mercoin launched 2023.
+- "50M+ downloads, 350K daily listings" figures carried over from the base
+  DESIGN.md §1, originally from the 2026-04-17 runtime extraction on
+  jp.mercari.com; these are rounded public figures rather than independently
+  re-verified in this augmentation pass.
+-->
+
