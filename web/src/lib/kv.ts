@@ -10,8 +10,11 @@ let _redis: Redis | null | undefined;
 
 export function getRedis(): Redis | null {
   if (_redis !== undefined) return _redis;
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  // Vercel's Upstash Marketplace integration prefixes env vars with the project
+  // label (OMD_*) to keep a shared DB namespaced. Fall back to the canonical
+  // UPSTASH_REDIS_REST_* names so a direct upstash.com hookup still works.
+  const url = process.env.OMD_KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.OMD_KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN;
   if (!url || !token) {
     _redis = null;
     return null;
