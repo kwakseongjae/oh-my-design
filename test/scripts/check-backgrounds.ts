@@ -1,4 +1,4 @@
-import { loadReference } from '../src/core/reference-parser.js';
+import { loadReference } from '../../src/core/reference-parser.js';
 
 for (const id of ['stripe', 'vercel', 'notion', 'linear.app', 'figma', 'cursor', 'apple', 'spotify']) {
   try {

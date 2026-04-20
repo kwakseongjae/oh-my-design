@@ -3,6 +3,9 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     globals: true,
-    include: ['test/**/*.test.ts'],
+    include: [
+      'test/unit/**/*.test.{ts,mjs}',
+      'test/integration/**/*.test.{ts,mjs}',
+    ],
   },
 });

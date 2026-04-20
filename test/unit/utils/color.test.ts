@@ -9,7 +9,7 @@ import {
   contrastForeground,
   lighten,
   darken,
-} from '../../src/utils/color.js';
+} from '../../../src/utils/color.js';
 
 describe('hexToRgb', () => {
   it('should convert hex to RGB', () => {

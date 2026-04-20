@@ -1,16 +1,24 @@
 /**
- * DESIGN.md Consistency Test
+ * DESIGN.md Consistency Integration Test
  *
- * Generates DESIGN.md for various test cases and checks for
- * contradictions between the reference content and Style Preferences.
+ * Generates DESIGN.md for various reference + preference combinations
+ * and asserts that the inline-modification logic in generate-css.ts
+ * doesn't leave contradictions between reference content and Style
+ * Preferences (e.g. underline inputs preferred but Section 4 still
+ * shows bordered inputs).
+ *
+ * Each (reference, preference combo) is its own describe block, and
+ * each consistency check is its own it(), so PR reviewers can read
+ * the vitest output to see exactly which combination/check regressed.
  */
 
+import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const REF_DIR = join(__dirname, '..', 'references');
+const REF_DIR = join(__dirname, '..', '..', 'references');
 
 // ── Helpers ──────────────────────────────────────────────────────
 
@@ -94,24 +102,17 @@ function extractSection(md, sectionNum) {
   return m ? m[1] : '';
 }
 
-function extractStylePrefs(md) {
-  const m = md.match(/## Style Preferences\n([\s\S]*?)(?=---\n|$)/);
-  return m ? m[1] : '';
-}
-
 /** Check: does Section 4 still mention "border: 1px solid" for inputs when user chose underline? */
 function checkInputConflict(md, chosenInputStyle) {
   if (chosenInputStyle !== 'underline') return { pass: true, note: 'No underline preference' };
   const sec4 = extractSection(md, 4);
 
-  // After inline modification, Section 4 should NOT have "1px solid" for inputs
   const inputSection = sec4.match(/### Inputs & Forms\n[\s\S]*?(?=###|$)/i)?.[0] || '';
   const hasBorderedInput = /border:.*?1px\s*solid/i.test(inputSection);
   if (hasBorderedInput) {
     return {
       pass: false,
       note: 'CONFLICT: Section 4 Inputs still describes bordered inputs (1px solid) after inline modification should have replaced it with underline',
-      severity: 'medium',
     };
   }
   return { pass: true, note: 'Section 4 Inputs correctly shows underline style' };
@@ -122,20 +123,17 @@ function checkDepthConflict(md, chosenDepth) {
   const sec6 = extractSection(md, 6);
 
   if (chosenDepth === 'flat') {
-    // After inline mod, Shadow Philosophy should say "flat approach"
     const hasFlat = /flat\s+approach|no\s+box-shadows|border\s+definition/i.test(sec6);
     if (!hasFlat) {
-      // Check if it still promotes shadows
       const promotesShadows = /multi.layer|graduated\s+shadow|shadow\s+stacks/i.test(sec6);
       if (promotesShadows) {
-        return { pass: false, note: 'Section 6 still promotes multi-layer shadows after flat preference', severity: 'medium' };
+        return { pass: false, note: 'Section 6 still promotes multi-layer shadows after flat preference' };
       }
     }
     return { pass: true, note: 'Section 6 consistent with flat depth' };
   }
 
   if (chosenDepth === 'layered') {
-    // Check if Section 6/7 still warns against shadows (e.g. dark-native refs)
     const sec7 = extractSection(md, 7);
     const warnsAgainstShadows =
       /shadows?.*?invisible/i.test(sec6) ||
@@ -145,7 +143,6 @@ function checkDepthConflict(md, chosenDepth) {
       return {
         pass: false,
         note: 'Section 6/7 warns against shadows (invisible on black) -- layered preference is impractical here',
-        severity: 'medium',
       };
     }
   }
@@ -159,25 +156,22 @@ function checkHeaderConflict(md, chosenHeader) {
   const navSection = sec4.match(/### Navigation[\s\S]*?(?=###|$)/i)?.[0] || '';
 
   if (chosenHeader === 'solid' && /transparent|blur|glass|float/i.test(navSection)) {
-    return { pass: false, note: 'Section 4 Navigation still describes glass/transparent after solid preference', severity: 'low' };
+    return { pass: false, note: 'Section 4 Navigation still describes glass/transparent after solid preference' };
   }
   if (chosenHeader === 'glass' && /solid\s+dark\s+background/i.test(navSection)) {
-    return { pass: false, note: 'Section 4 Navigation still describes solid dark after glass preference', severity: 'low' };
+    return { pass: false, note: 'Section 4 Navigation still describes solid dark after glass preference' };
   }
   return { pass: true, note: 'Header consistent after inline modification' };
 }
 
 /** Check: CSS --background lightness vs DESIGN.md background color mentions */
 function checkCssBackgroundConflict(md, refBg) {
-  // If reference bg is dark (#000000, #0a0a0a, etc) but no dark CSS generated
   const isDarkRef = parseInt(refBg.replace('#', ''), 16) < 0x333333;
   if (!isDarkRef) return { pass: true, note: 'Light reference, no issue' };
 
-  // Check if CSS has light background
   const cssMatch = md.match(/--background:\s*([^;]+)/);
   if (!cssMatch) return { pass: true, note: 'No CSS block found' };
 
-  // Parse HSL: "0 0% 100%" means white, "0 0% 0%" means black
   const lightnessMatch = cssMatch[1].match(/(\d+)%\s*$/);
   if (lightnessMatch) {
     const lightness = parseInt(lightnessMatch[1]);
@@ -185,7 +179,6 @@ function checkCssBackgroundConflict(md, refBg) {
       return {
         pass: false,
         note: `CONFLICT: Reference is dark-native (bg=${refBg}) but CSS --background has ${lightness}% lightness (light theme)`,
-        severity: 'critical',
       };
     }
   }
@@ -197,19 +190,14 @@ function checkRadiusConflict(md, chosenRadius) {
   if (!chosenRadius) return { pass: true, note: 'No radius override' };
 
   const sec4 = extractSection(md, 4);
-  const prefs = extractStylePrefs(md);
-
-  // Extract radius values from Section 4 buttons
   const buttonRadii = [...sec4.matchAll(/radius:?\s*(\d+)px/gi)].map(m => m[1]);
   const chosenPx = parseInt(chosenRadius);
 
-  // Check if Section 4 has radii that significantly differ from chosen
   const conflicts = buttonRadii.filter(r => Math.abs(parseInt(r) - chosenPx) > 4 && parseInt(r) !== 9999);
   if (conflicts.length > 0) {
     return {
       pass: false,
       note: `MINOR: Section 4 has radius values [${conflicts.map(r => r + 'px').join(', ')}] that differ from chosen ${chosenRadius} (not auto-replaced)`,
-      severity: 'low',
     };
   }
   return { pass: true, note: 'Radius values consistent' };
@@ -221,12 +209,10 @@ function checkCardShadowConflict(md, chosenCardStyle) {
   const sec4 = extractSection(md, 4);
   const cardSection = sec4.match(/### Cards[\s\S]*?(?=###|$)/i)?.[0] || '';
 
-  // After inline mod, shadow line should say "none" or be removed
   if (/shadow:.*?0px.*?rgba/i.test(cardSection)) {
     return {
       pass: false,
       note: 'Section 4 Cards still has shadow rgba values after bordered card preference (should say "Shadow: none")',
-      severity: 'low',
     };
   }
   return { pass: true, note: 'Card shadow correctly removed for bordered style' };
@@ -247,7 +233,6 @@ const TEST_CASES = [
       cardStyle: 'bordered',
       density: 'compact',
     },
-    description: 'Dark-native ref with underline inputs and bordered cards (realistic combo for dark themes)',
   },
   {
     name: 'Baemin + Underline inputs + Spacious',
@@ -262,7 +247,6 @@ const TEST_CASES = [
       depthStyle: 'layered',
       density: 'spacious',
     },
-    description: 'Light ref with bordered inputs in original, user picks underline',
   },
   {
     name: 'Karrot + All matching (no conflict expected)',
@@ -277,7 +261,6 @@ const TEST_CASES = [
       depthStyle: 'flat',
       density: 'spacious',
     },
-    description: 'Preferences largely align with reference design',
   },
   {
     name: 'Toss + Flat depth + Bordered cards',
@@ -292,7 +275,6 @@ const TEST_CASES = [
       depthStyle: 'flat',
       density: 'spacious',
     },
-    description: 'User wants flat cards on a ref that uses subtle shadows',
   },
   {
     name: 'Vercel + Rounded + Underline + Glass',
@@ -307,7 +289,6 @@ const TEST_CASES = [
       depthStyle: 'layered',
       density: 'spacious',
     },
-    description: 'Pill radius on a system that uses sharp 6px radius everywhere',
   },
   {
     name: 'Kakao + Sharp + Compact + Solid header',
@@ -322,75 +303,46 @@ const TEST_CASES = [
       depthStyle: 'flat',
       density: 'compact',
     },
-    description: 'Kakao uses 12px radius everywhere, user picks 4px',
   },
 ];
 
-// ── Run Tests ────────────────────────────────────────────────────
+// ── Suite ────────────────────────────────────────────────────────
 
-console.log('═══════════════════════════════════════════════════════════');
-console.log('  DESIGN.md Consistency Test Suite');
-console.log('═══════════════════════════════════════════════════════════\n');
+describe('DESIGN.md consistency across reference + preference combinations', () => {
+  for (const tc of TEST_CASES) {
+    describe(tc.name, () => {
+      const md = simulateOutput(tc.refId, tc.overrides, tc.prefs);
 
-let totalPass = 0;
-let totalFail = 0;
-let totalTests = 0;
-const allIssues = [];
+      it('CSS --background matches reference darkness', () => {
+        const r = checkCssBackgroundConflict(md, tc.refBg);
+        expect(r.pass, r.note).toBe(true);
+      });
 
-for (const tc of TEST_CASES) {
-  console.log(`\n┌─ ${tc.name}`);
-  console.log(`│  ${tc.description}`);
-  console.log('│');
+      it('Inputs reflect chosen input style', () => {
+        const r = checkInputConflict(md, tc.prefs.inputStyle);
+        expect(r.pass, r.note).toBe(true);
+      });
 
-  const md = simulateOutput(tc.refId, tc.overrides, tc.prefs);
+      it('Depth/Shadow philosophy is internally consistent', () => {
+        const inferredDepth = tc.prefs.cardStyle === 'bordered' ? 'flat' : 'layered';
+        const r = checkDepthConflict(md, inferredDepth);
+        expect(r.pass, r.note).toBe(true);
+      });
 
-  const checks = [
-    { name: 'CSS Background vs Reference', fn: () => checkCssBackgroundConflict(md, tc.refBg) },
-    { name: 'Input Style (inline)', fn: () => checkInputConflict(md, tc.prefs.inputStyle) },
-    { name: 'Depth/Shadow (via Cards)', fn: () => checkDepthConflict(md, tc.prefs.cardStyle === 'bordered' ? 'flat' : 'layered') },
-    { name: 'Header Style (inline)', fn: () => checkHeaderConflict(md, tc.prefs.headerStyle) },
-    { name: 'Radius Consistency', fn: () => checkRadiusConflict(md, tc.overrides.borderRadius) },
-    { name: 'Card Shadow (inline)', fn: () => checkCardShadowConflict(md, tc.prefs.cardStyle) },
-  ];
+      it('Navigation reflects chosen header style', () => {
+        const r = checkHeaderConflict(md, tc.prefs.headerStyle);
+        expect(r.pass, r.note).toBe(true);
+      });
 
-  for (const check of checks) {
-    totalTests++;
-    const result = check.fn();
-    const icon = result.pass ? '✅' : (result.severity === 'critical' ? '🔴' : result.severity === 'medium' ? '🟡' : '🟠');
-    console.log(`│  ${icon} ${check.name}: ${result.note}`);
-    if (result.pass) {
-      totalPass++;
-    } else {
-      totalFail++;
-      allIssues.push({ testCase: tc.name, check: check.name, ...result });
-    }
+      it('Section 4 radius values are consistent with override', () => {
+        const r = checkRadiusConflict(md, tc.overrides.borderRadius);
+        expect(r.pass, r.note).toBe(true);
+      });
+
+      it('Cards drop shadow when bordered style chosen', () => {
+        const r = checkCardShadowConflict(md, tc.prefs.cardStyle);
+        expect(r.pass, r.note).toBe(true);
+      });
+    });
   }
-
-  console.log('└─');
-}
-
-// ── Summary ──────────────────────────────────────────────────────
-
-console.log('\n═══════════════════════════════════════════════════════════');
-console.log(`  Results: ${totalPass} passed, ${totalFail} failed, ${totalTests} total`);
-console.log('═══════════════════════════════════════════════════════════');
-
-if (allIssues.length > 0) {
-  console.log('\n📋 All Issues:\n');
-  const bySeverity = { critical: [], medium: [], low: [] };
-  for (const issue of allIssues) {
-    bySeverity[issue.severity].push(issue);
-  }
-
-  for (const [sev, issues] of Object.entries(bySeverity)) {
-    if (issues.length === 0) continue;
-    const icon = sev === 'critical' ? '🔴' : sev === 'medium' ? '🟡' : '🟠';
-    console.log(`${icon} ${sev.toUpperCase()} (${issues.length}):`);
-    for (const i of issues) {
-      console.log(`   [${i.testCase}] ${i.check}`);
-      console.log(`   → ${i.note}\n`);
-    }
-  }
-}
-
-process.exit(totalFail > 0 ? 1 : 0);
+});

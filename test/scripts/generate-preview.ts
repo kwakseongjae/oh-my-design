@@ -1,12 +1,12 @@
 /**
  * Quick script to generate a preview without the interactive CLI.
- * Usage: npx tsx test/generate-preview.ts
+ * Usage: npx tsx test/scripts/generate-preview.ts
  */
 import { writeFileSync } from 'fs';
 import { resolve } from 'path';
-import { loadReference, listReferences } from '../src/core/reference-parser.js';
-import { applyOverrides } from '../src/core/customizer.js';
-import { generatePreviewHtml } from '../src/core/preview-generator.js';
+import { loadReference, listReferences } from '../../src/core/reference-parser.js';
+import { applyOverrides } from '../../src/core/customizer.js';
+import { generatePreviewHtml } from '../../src/core/preview-generator.js';
 
 // Show available references
 const refs = listReferences();

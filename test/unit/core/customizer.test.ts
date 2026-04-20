@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { loadReference } from '../../src/core/reference-parser.js';
-import { applyOverrides } from '../../src/core/customizer.js';
+import { loadReference } from '../../../src/core/reference-parser.js';
+import { applyOverrides } from '../../../src/core/customizer.js';
 
 describe('applyOverrides', () => {
   const ref = loadReference('stripe');

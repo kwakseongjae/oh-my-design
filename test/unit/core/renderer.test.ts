@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { resolveTokens } from '../../src/core/token-resolver.js';
-import { renderDesignMd } from '../../src/core/renderer.js';
-import { generateComponentTokens } from '../../src/core/components.js';
-import { basePreset } from '../../src/presets/_base.js';
-import type { UserPreferences, TemplateContext } from '../../src/core/types.js';
+import { resolveTokens } from '../../../src/core/token-resolver.js';
+import { renderDesignMd } from '../../../src/core/renderer.js';
+import { generateComponentTokens } from '../../../src/core/components.js';
+import { basePreset } from '../../../src/presets/_base.js';
+import type { UserPreferences, TemplateContext } from '../../../src/core/types.js';
 
 function buildContext(overrides?: Partial<UserPreferences>): TemplateContext & { componentList: ReturnType<typeof generateComponentTokens>; dosAndDonts: NonNullable<typeof basePreset.dosAndDonts> } {
   const prefs: UserPreferences = {

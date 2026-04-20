@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { listReferences, loadReference } from '../../src/core/reference-parser.js';
+import { listReferences, loadReference } from '../../../src/core/reference-parser.js';
 
 describe('listReferences', () => {
   it('should list all available references', () => {

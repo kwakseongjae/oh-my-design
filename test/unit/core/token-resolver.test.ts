@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { resolveTokens } from '../../src/core/token-resolver.js';
-import type { UserPreferences } from '../../src/core/types.js';
+import { resolveTokens } from '../../../src/core/token-resolver.js';
+import type { UserPreferences } from '../../../src/core/types.js';
 
 const basePrefs: UserPreferences = {
   mood: 'clean',
