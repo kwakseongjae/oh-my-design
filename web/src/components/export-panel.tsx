@@ -2,11 +2,14 @@
 
 import { useMemo, useState } from "react";
 import { event, trackRef } from "@/lib/gtag";
-import { Copy, Check, Download } from "lucide-react";
+import { Copy, Check, Download, Eye, FileText } from "lucide-react";
 import { generateShadcnCss, applyOverridesToMd } from "@/lib/core/generate-css";
 import { generateNpxCommand } from "@/lib/core/config-hash";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
+import { Markdown } from "@/components/markdown";
+
+type MdView = "rendered" | "raw";
 
 export function ExportPanel({
   detail,
@@ -27,6 +30,12 @@ export function ExportPanel({
   // Philosophy Layer — checked via the canonical "## 10. Voice & Tone" header.
   const hasPhilosophyLayer = detail.designMd.includes("## 10. Voice & Tone");
   const [includePhilosophyLayer, setIncludePhilosophyLayer] = useState(true);
+
+  // Rendered vs raw-source view of DESIGN.md. Default is "rendered" because
+  // ExportPanel has always rendered markdown (via a hand-rolled renderer).
+  // The toggle adds a "raw" view for users who want to inspect the source
+  // DESIGN.md before copy/download — it does not change the default.
+  const [mdView, setMdView] = useState<MdView>("rendered");
 
   const css = useMemo(
     () => generateShadcnCss(primary, detail.background, detail.foreground, radius, detail.accent, detail.border, overrides.darkMode),
@@ -64,6 +73,11 @@ export function ExportPanel({
     trackRef("download", detail.id);
   }
 
+  function setView(next: MdView) {
+    setMdView(next);
+    event("md_view_toggle", { reference: detail.id, view: next });
+  }
+
   return (
     <div>
       {/* DESIGN.md viewer */}
@@ -91,6 +105,31 @@ export function ExportPanel({
             <span />
           )}
           <div className="flex items-center gap-2">
+            {/* Rendered ↔ Raw toggle — segmented control */}
+            <div className="flex items-center gap-0.5 rounded-lg border border-border/60 dark:border-border bg-background p-0.5">
+              <button
+                onClick={() => setView("rendered")}
+                className={`flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors ${
+                  mdView === "rendered"
+                    ? "bg-muted text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                aria-pressed={mdView === "rendered"}
+              >
+                <Eye className="h-3 w-3" /> Rendered
+              </button>
+              <button
+                onClick={() => setView("raw")}
+                className={`flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors ${
+                  mdView === "raw"
+                    ? "bg-muted text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                aria-pressed={mdView === "raw"}
+              >
+                <FileText className="h-3 w-3" /> Raw
+              </button>
+            </div>
             <button
               onClick={download}
               className="flex items-center gap-2 rounded-lg border border-border/60 dark:border-border bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted"
@@ -108,105 +147,16 @@ export function ExportPanel({
         </div>
 
         {/* Content */}
-        <div className="p-6">
-          <MarkdownRenderer content={designMd} />
-        </div>
+        {mdView === "rendered" ? (
+          <div className="p-6 max-h-[60vh] overflow-auto">
+            <Markdown content={designMd} />
+          </div>
+        ) : (
+          <pre className="p-6 max-h-[60vh] overflow-auto text-[11px] leading-[1.7] font-mono text-foreground/80 whitespace-pre-wrap">
+            {designMd}
+          </pre>
+        )}
       </div>
     </div>
   );
-}
-
-// ── Markdown Renderer ─────────────────────────────────────────────
-
-function MarkdownRenderer({ content }: { content: string }) {
-  // Strip leading YAML frontmatter from the rendered preview only.
-  // The file returned by Download/Copy still contains the frontmatter
-  // so tools and AI agents that inspect the project files can read
-  // the metadata. The preview is purely user-facing and benefits from
-  // a cleaner opening.
-  let rendered = content;
-  if (rendered.startsWith("---\n")) {
-    const end = rendered.indexOf("\n---\n", 4);
-    if (end !== -1) {
-      rendered = rendered.slice(end + 5).replace(/^\n+/, "");
-    }
-  }
-
-  const lines = rendered.split("\n");
-  let inCodeBlock = false;
-  const codeBuffer: string[] = [];
-  const elements: React.ReactNode[] = [];
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-
-    if (line.startsWith("```")) {
-      if (inCodeBlock) {
-        elements.push(
-          <pre key={`code-${i}`} className="my-3 rounded-lg bg-muted/50 dark:bg-muted/30 p-4 text-[11px] leading-[1.7] font-mono overflow-x-auto text-foreground/70">
-            {codeBuffer.join("\n")}
-          </pre>
-        );
-        codeBuffer.length = 0;
-        inCodeBlock = false;
-      } else {
-        inCodeBlock = true;
-      }
-      continue;
-    }
-    if (inCodeBlock) { codeBuffer.push(line); continue; }
-
-    if (line.startsWith("# ")) { elements.push(<h1 key={i} className="text-2xl font-bold mt-8 mb-3 text-foreground first:mt-0">{line.slice(2)}</h1>); continue; }
-    if (line.startsWith("## ")) { elements.push(<h2 key={i} className="text-lg font-semibold mt-8 mb-2 text-foreground border-b border-border/30 pb-2">{line.slice(3)}</h2>); continue; }
-    if (line.startsWith("### ")) { elements.push(<h3 key={i} className="text-base font-semibold mt-5 mb-1.5 text-foreground">{line.slice(4)}</h3>); continue; }
-    if (line.startsWith("> ")) { elements.push(<div key={i} className="border-l-2 border-primary/30 pl-3 py-0.5 text-sm text-muted-foreground italic">{renderInline(line.slice(2))}</div>); continue; }
-    if (line === "---") { elements.push(<hr key={i} className="border-border/20 my-4" />); continue; }
-    if (/^\|[-|: ]+\|$/.test(line)) continue;
-    if (line.startsWith("|")) {
-      const cells = line.split("|").slice(1, -1).map(c => c.trim());
-      const isHeader = lines[i + 1]?.match(/^\|[-|: ]+\|$/);
-      elements.push(
-        <div key={i} className={`flex text-[11px] font-mono py-1 ${isHeader ? "font-semibold text-muted-foreground border-b border-border/20" : "text-foreground/70"}`}>
-          {cells.map((cell, j) => <span key={j} className="flex-1 px-2 truncate">{renderInline(cell)}</span>)}
-        </div>
-      );
-      continue;
-    }
-    if (line.match(/^[-*] /)) {
-      elements.push(
-        <div key={i} className="flex gap-2 text-sm text-foreground/80 pl-2 py-0.5">
-          <span className="text-muted-foreground/40 mt-1.5 shrink-0">--</span>
-          <span>{renderInline(line.slice(2))}</span>
-        </div>
-      );
-      continue;
-    }
-    if (line.trim() === "") { elements.push(<div key={i} className="h-1.5" />); continue; }
-    elements.push(<p key={i} className="text-sm text-foreground/80 leading-relaxed">{renderInline(line)}</p>);
-  }
-
-  return <div>{elements}</div>;
-}
-
-function renderInline(text: string): React.ReactNode {
-  const parts: React.ReactNode[] = [];
-  let remaining = text;
-  let key = 0;
-
-  while (remaining.length > 0) {
-    const boldMatch = remaining.match(/\*\*(.+?)\*\*/);
-    const codeMatch = remaining.match(/`([^`]+)`/);
-    const matches = [
-      boldMatch ? { index: boldMatch.index!, length: boldMatch[0].length, type: "bold" as const, content: boldMatch[1] } : null,
-      codeMatch ? { index: codeMatch.index!, length: codeMatch[0].length, type: "code" as const, content: codeMatch[1] } : null,
-    ].filter(Boolean).sort((a, b) => a!.index - b!.index);
-
-    if (matches.length === 0) { parts.push(<span key={key++}>{remaining}</span>); break; }
-    const match = matches[0]!;
-    if (match.index > 0) parts.push(<span key={key++}>{remaining.slice(0, match.index)}</span>);
-    if (match.type === "bold") parts.push(<strong key={key++} className="font-semibold text-foreground">{match.content}</strong>);
-    else parts.push(<code key={key++} className="px-1 py-0.5 rounded bg-muted text-[11px] font-mono text-primary">{match.content}</code>);
-    remaining = remaining.slice(match.index + match.length);
-  }
-  return <>{parts}</>;
 }

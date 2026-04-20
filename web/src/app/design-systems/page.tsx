@@ -79,11 +79,11 @@ export default function DesignSystemsPage() {
 function DSCard({ ds }: { ds: DesignSystemInfo }) {
   const isSystem = ds.type === "system";
   return (
-    <a
-      href={ds.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={() => event("ds_click", { reference: ds.refId, url: ds.url, location: "directory" })}
+    <Link
+      href={`/design-systems/${ds.refId}`}
+      onClick={() =>
+        event("ds_detail_open", { reference: ds.refId, source: "directory" })
+      }
       className="group relative flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/40 p-3 transition-all hover:border-foreground/20 hover:bg-card hover:-translate-y-0.5 dark:border-border dark:bg-card/60 dark:hover:bg-card"
     >
       {/* Thumbnail — OG image with logo fallback */}
@@ -99,7 +99,6 @@ function DSCard({ ds }: { ds: DesignSystemInfo }) {
           >
             {isSystem ? "Design System" : "Brand"}
           </span>
-          <ExternalLink className="h-3.5 w-3.5 text-muted-foreground shrink-0 opacity-0 transition-opacity group-hover:opacity-100" />
         </div>
         <div className="flex items-center gap-3">
           <CardBrandLogo refId={ds.refId} name={ds.name} />
@@ -113,8 +112,27 @@ function DSCard({ ds }: { ds: DesignSystemInfo }) {
         <div className="text-xs text-muted-foreground leading-snug mt-2 line-clamp-2">
           {ds.description}
         </div>
+        {/* Secondary action — jump straight to the canonical external site.
+            Must be a <button> (not <a>), because this node is already a
+            descendant of a <Link>/<a> and HTML forbids nested anchors.
+            stopPropagation alone only suppresses the JS click bubble;
+            the DOM validity issue triggers a hydration error. We open
+            the external URL programmatically via window.open instead. */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            event("ds_external_click", { reference: ds.refId });
+            window.open(ds.url, "_blank", "noopener,noreferrer");
+          }}
+          className="mt-3 inline-flex items-center gap-1 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+          aria-label={`${ds.name} official site (opens in a new tab)`}
+        >
+          Official site <ExternalLink className="h-3 w-3" />
+        </button>
       </div>
-    </a>
+    </Link>
   );
 }
 
