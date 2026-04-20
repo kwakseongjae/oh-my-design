@@ -86,13 +86,24 @@ export default function SharedResultPage(props: { params: Params }) {
             <img src="/logo.png" alt="oh-my-design" className="h-6 block dark:hidden" />
             <img src="/logo-white.png" alt="oh-my-design" className="h-6 hidden dark:block" />
           </Link>
-          <Link
-            href="/curation"
-            onClick={() => event("shared_view_cta_click", { location: "header", type_code: code })}
-            className="rounded-full bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Take the quiz
-          </Link>
+          <div className="flex items-center gap-2">
+            {process.env.NODE_ENV !== "production" && (
+              <Link
+                href={`/playground?from=${code}`}
+                onClick={() => event("shared_view_playground_click", { type_code: code })}
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card/50 px-3.5 py-2 text-xs font-medium text-foreground/80 transition-colors hover:bg-accent dark:border-border"
+              >
+                Customize in Playground
+              </Link>
+            )}
+            <Link
+              href="/curation"
+              onClick={() => event("shared_view_cta_click", { location: "header", type_code: code })}
+              className="rounded-full bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              Take the quiz
+            </Link>
+          </div>
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

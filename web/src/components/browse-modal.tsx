@@ -10,7 +10,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
-import { Compass, ArrowRight } from "lucide-react";
+import { Compass, ArrowRight, Sparkles } from "lucide-react";
 import { getAllDesignSystems } from "@/lib/design-systems";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import { event } from "@/lib/gtag";
@@ -58,6 +58,33 @@ export function BrowseModal({ className }: { className?: string }) {
             </div>
             <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
           </Link>
+
+          {process.env.NODE_ENV !== "production" && (
+            <Link
+              href="/playground"
+              onClick={() => {
+                event("browse_playground", {});
+                setOpen(false);
+              }}
+              className="group mt-2 flex items-center gap-4 rounded-xl border border-border/50 bg-card/40 p-4 transition-colors hover:border-foreground/20 hover:bg-accent dark:border-border dark:bg-card/60"
+            >
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 ring-2 ring-background">
+                <Sparkles className="h-4 w-4 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <div className="text-sm font-semibold text-foreground">Playground</div>
+                  <span className="rounded-full bg-amber-100 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-amber-900 dark:bg-amber-500/20 dark:text-amber-300">
+                    dev
+                  </span>
+                </div>
+                <div className="text-xs text-muted-foreground leading-snug mt-0.5">
+                  Create your own DS — mood, color, tokens, philosophy. Zero AI.
+                </div>
+              </div>
+              <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
+            </Link>
+          )}
         </div>
       </DialogContent>
     </Dialog>
