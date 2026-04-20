@@ -47,10 +47,10 @@ export function PreviewExportView({
     () => applyOverridesToMd(
       detail.designMd,
       detail.id.charAt(0).toUpperCase() + detail.id.slice(1),
-      detail.primary, detail.fontFamily, detail.headingWeight,
-      overrides, css, components, stylePreferences,
+      detail.primary, detail.fontFamily,
+      overrides, components, stylePreferences,
     ),
-    [detail, overrides, css, components, stylePreferences],
+    [detail, overrides, components, stylePreferences],
   );
 
   const npxCmd = generateNpxCommand(detail.id, overrides, components);

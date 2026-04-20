@@ -165,9 +165,7 @@ export function applyOverridesToMd(
   refName: string,
   originalPrimary: string,
   originalFont: string,
-  originalWeight: string,
   overrides: Overrides,
-  shadcnCss: string,
   components?: string[],
   stylePreferences?: StylePreferences,
   includePhilosophyLayer: boolean = true,
@@ -189,10 +187,10 @@ export function applyOverridesToMd(
     );
   }
 
-  // Strip emojis
+  // Strip emojis. The unicode range covers ✅ (U+2705) and ❌ (U+274C) too,
+  // so any DO:/DON'T: prefix conversion would never match — references use
+  // explicit "**DO**" / "**DON'T**" markdown instead.
   result = result.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{1FA00}-\u{1FAFF}\u{200D}\u{20E3}\u{E0020}-\u{E007F}]/gu, '');
-  result = result.replace(/✅\s*/g, 'DO: ');
-  result = result.replace(/❌\s*/g, "DON'T: ");
 
   // Replace title
   result = result.replace(/^# .+$/m, `# Custom Design System (based on ${refName})`);

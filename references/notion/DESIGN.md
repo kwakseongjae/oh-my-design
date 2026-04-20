@@ -23,21 +23,6 @@ What makes Notion's visual language distinctive is its border philosophy. Rather
 - Pill badges (9999px radius) with tinted blue backgrounds for status indicators
 - 8px base spacing unit with an organic, non-rigid scale
 
-### Do's and Don'ts
-
-- **DO** use warm near-black for text via `rgba(0,0,0,0.95)` — pure `#000000` reads as cold and clinical against Notion's warm canvas.
-- **DON'T** use cold grays (`#9ca3af`, `#6b7280`) — they break the warm yellow-brown undertone that defines Notion's analog feel.
-- **DO** apply aggressive negative tracking (-2.125px at 64px) on display headlines using NotionInter (or standard Inter).
-- **DON'T** use default tracking on display sizes — Notion's typography is precisely engineered, not casual.
-- **DO** use ultra-thin `1px solid rgba(0,0,0,0.1)` borders as the dominant separation pattern — they exist as whispers.
-- **DON'T** use heavy borders, opaque colors, or visible shadows — Notion's depth is felt, not seen.
-- **DO** stack multi-layer shadows with each layer below 0.05 opacity for cumulative depth.
-- **DON'T** use single-layer drop shadows over 0.1 opacity — they read as heavy and break the analog warmth.
-- **DO** reserve Notion Blue `#0075de` for CTAs and interactive elements only — it's the singular accent.
-- **DON'T** scatter blue across borders, dividers, or decorative elements — the brand uses blue surgically.
-- **DO** enable OpenType `"lnum"` and `"locl"` features on larger text — they reward close reading.
-- **DON'T** disable these features for Latin-only contexts — they're part of Notion's typographic refinement.
-
 ## 2. Color Palette & Roles
 
 ### Primary
@@ -197,6 +182,16 @@ What makes Notion's visual language distinctive is its border philosophy. Rather
 - Description below in warm gray body text
 - Whisper-bordered card container
 
+### Interactive States
+
+Consolidated state behavior across all interactive components.
+
+- **Default**: Standard appearance with whisper border (`1px solid rgba(0,0,0,0.1)`)
+- **Hover**: Color shift on text, `scale(1.05)` transform on buttons, underline on links
+- **Active / Pressed**: `scale(0.9)` transform, darker background variant (e.g. `#005bab` for Notion Blue)
+- **Focus**: `2px solid` focus ring in Focus Blue (`#097fe8`) + shadow level 200 reinforcement; supported on all interactive elements via keyboard tab navigation
+- **Disabled**: Warm gray (`#a39e98`) text, primary actions reduce to `rgba(0,117,222,0.3)`, ultra-thin border preserved
+
 ## 5. Layout Principles
 
 ### Spacing System
@@ -242,7 +237,35 @@ What makes Notion's visual language distinctive is its border philosophy. Rather
 - Section alternation: white to warm white (`#f6f5f4`) background shifts
 - No hard section borders -- separation comes from background color changes and spacing
 
-## 7. Responsive Behavior
+## 7. Do's and Don'ts
+
+### Brand Rules
+
+- **DO** use warm near-black for text via `rgba(0,0,0,0.95)` — pure `#000000` reads as cold and clinical against Notion's warm canvas.
+- **DON'T** use cold grays (`#9ca3af`, `#6b7280`) — they break the warm yellow-brown undertone that defines Notion's analog feel.
+- **DO** apply aggressive negative tracking (-2.125px at 64px) on display headlines using NotionInter (or standard Inter).
+- **DON'T** use default tracking on display sizes — Notion's typography is precisely engineered, not casual.
+- **DO** use ultra-thin `1px solid rgba(0,0,0,0.1)` borders as the dominant separation pattern — they exist as whispers.
+- **DON'T** use heavy borders, opaque colors, or visible shadows — Notion's depth is felt, not seen.
+- **DO** stack multi-layer shadows with each layer below 0.05 opacity for cumulative depth.
+- **DON'T** use single-layer drop shadows over 0.1 opacity — they read as heavy and break the analog warmth.
+- **DO** reserve Notion Blue `#0075de` for CTAs and interactive elements only — it's the singular accent.
+- **DON'T** scatter blue across borders, dividers, or decorative elements — the brand uses blue surgically.
+- **DO** enable OpenType `"lnum"` and `"locl"` features on larger text — they reward close reading.
+- **DON'T** disable these features for Latin-only contexts — they're part of Notion's typographic refinement.
+
+### Accessibility
+
+- **DO** ensure visible focus indicators on every interactive element — `2px solid` outline in Focus Blue (`#097fe8`) plus shadow level 200 reinforcement. Tab navigation must work everywhere.
+- **DO** maintain WCAG AA-or-better contrast ratios:
+  - Primary text (`rgba(0,0,0,0.95)`) on white: ~18:1 (exceeds WCAG AAA)
+  - Secondary text (`#615d59`) on white: ~5.5:1 (WCAG AA)
+  - Blue CTA (`#0075de`) on white: ~4.6:1 (WCAG AA for large text)
+  - Badge text (`#097fe8`) on badge background (`#f2f9ff`): ~4.5:1 (WCAG AA for large text)
+- **DON'T** drop focus rings to "look cleaner" — they are mandatory across the system, not decoration.
+- **DON'T** use Notion Blue at less than ~4.5:1 against any background — the brand color carries an accessibility floor.
+
+## 8. Responsive Behavior
 
 ### Breakpoints
 | Name | Width | Key Changes |
@@ -275,27 +298,6 @@ What makes Notion's visual language distinctive is its border philosophy. Rather
 - Hero illustrations scale proportionally
 - Product screenshots use responsive images with consistent border radius
 - Full-width warm white sections maintain edge-to-edge treatment
-
-## 8. Accessibility & States
-
-### Focus System
-- All interactive elements receive visible focus indicators
-- Focus outline: `2px solid` with focus color + shadow level 200
-- Tab navigation supported throughout all interactive components
-- High contrast text: near-black on white exceeds WCAG AAA (>14:1 ratio)
-
-### Interactive States
-- **Default**: Standard appearance with whisper borders
-- **Hover**: Color shift on text, scale(1.05) on buttons, underline on links
-- **Active/Pressed**: scale(0.9) transform, darker background variant
-- **Focus**: Blue outline ring with shadow reinforcement
-- **Disabled**: Warm gray (`#a39e98`) text, reduced opacity
-
-### Color Contrast
-- Primary text (rgba(0,0,0,0.95)) on white: ~18:1 ratio
-- Secondary text (#615d59) on white: ~5.5:1 ratio (WCAG AA)
-- Blue CTA (#0075de) on white: ~4.6:1 ratio (WCAG AA for large text)
-- Badge text (#097fe8) on badge bg (#f2f9ff): ~4.5:1 ratio (WCAG AA for large text)
 
 ## 9. Agent Prompt Guide
 

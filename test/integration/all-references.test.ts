@@ -40,21 +40,15 @@ describe("every reference loads + generates a valid DESIGN.md", () => {
         expect(ref.designMd.length).toBeGreaterThan(500);
       });
 
-      it("DESIGN.md carries at least 9 numbered H2 sections", () => {
-        // The Stitch format expects 9 numbered sections, but title wording
-        // and ordering of 7-9 has historically varied across references
-        // (e.g. notion uses 7.Responsive / 8.Accessibility instead of
-        // 7.Do's & Don'ts / 8.Responsive). The structural invariant we
-        // actually rely on is "at least 9 numbered H2 sections present".
+      it("DESIGN.md carries the canonical Stitch sections 1-9", () => {
+        // Stitch format: 1.Visual, 2.Color, 3.Typography, 4.Component,
+        // 5.Layout, 6.Depth, 7.Do's & Don'ts, 8.Responsive, 9.Agent.
+        // Philosophy Layer (10-15) is optional per OmD v0.1.
         const numbered = [...ref.designMd.matchAll(/^## (\d+)\. /gm)].map(
           (m) => parseInt(m[1], 10),
         );
         const unique = new Set(numbered);
-        expect(
-          unique.size,
-          `${meta.id} has ${unique.size} numbered sections, expected ≥ 9`,
-        ).toBeGreaterThanOrEqual(9);
-        for (const n of [1, 2, 3, 4, 5, 6, 9]) {
+        for (const n of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
           expect(unique, `${meta.id} missing section ${n}`).toContain(n);
         }
       });

@@ -36,10 +36,10 @@ export function applyOverrides(
   const effectiveBg = ref.colors.background;
   const effectiveFg = ref.colors.foreground;
 
-  // Strip emojis
+  // Strip emojis. The unicode range covers ✅ (U+2705) and ❌ (U+274C) too,
+  // so any DO:/DON'T: prefix conversion would never match — references use
+  // explicit "**DO**" / "**DON'T**" markdown instead.
   md = md.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{1FA00}-\u{1FAFF}\u{200D}\u{20E3}\u{E0020}-\u{E007F}]/gu, '');
-  md = md.replace(/✅\s*/g, 'DO: ');
-  md = md.replace(/❌\s*/g, "DON'T: ");
 
   if (mode === 'customized') {
     // Direct replacement — one source of truth for AI agents

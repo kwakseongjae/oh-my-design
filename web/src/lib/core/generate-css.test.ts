@@ -69,10 +69,8 @@ describe("generateShadcnCss", () => {
 
   it("uses provided accent when given", () => {
     const withAccent = generateShadcnCss("#6366f1", "#ffffff", "#171717", "8px", "#ff5b4f", undefined, false);
-    // accent line should reflect #ff5b4f's HSL
     const m = withAccent.match(/--accent:\s*([^;]+);/);
     expect(m).toBeTruthy();
-    // sanity: hue of #ff5b4f is ~4
     expect(m![1]).toMatch(/^[0-9]+\s+\d+%\s+\d+%/);
   });
 
@@ -135,26 +133,23 @@ describe("generateVanillaCss", () => {
 
 describe("applyOverridesToMd – baseline", () => {
   it("replaces title with custom name based on refName", () => {
-    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", "600", baseOverrides, "");
+    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides);
     expect(out).toMatch(/^# Custom Design System \(based on Vercel\)/m);
     expect(out).not.toMatch(/^# Design System Inspiration of Vercel/m);
   });
 
   it("strips emoji code points", () => {
     const withEmoji = "# Test\n\nUse 🎨 for color and 🚀 for launch.";
-    const out = applyOverridesToMd(withEmoji, "X", "#000000", "Inter", "400", baseOverrides, "");
+    const out = applyOverridesToMd(withEmoji, "X", "#000000", "Inter", baseOverrides);
     expect(out).not.toMatch(/[\u{1F300}-\u{1F9FF}]/u);
   });
 
-  it("strips ✅ / ❌ via the unicode emoji range strip", () => {
-    // NOTE: applyOverridesToMd has a `✅\s* → 'DO: '` and `❌\s* → "DON'T: "`
-    // pair AFTER the unicode strip. Both ✅ (U+2705) and ❌ (U+274C) fall in
-    // the U+2700–U+27BF range that gets stripped first, so those replacements
-    // are effectively dead code today. No reference DESIGN.md uses these
-    // glyphs anyway. This test pins the actual current behavior so a future
-    // re-ordering doesn't accidentally regress emoji stripping.
+  it("strips ✅ and ❌ as part of the unicode emoji range strip", () => {
+    // No reference DESIGN.md uses ✅/❌; references write out **DO** / **DON'T**
+    // explicitly. The unicode strip removes the glyphs defensively in case a
+    // future reference accidentally introduces them.
     const md = "# T\n\n✅ Good\n❌ Bad\n";
-    const out = applyOverridesToMd(md, "X", "#000000", "Inter", "400", baseOverrides, "");
+    const out = applyOverridesToMd(md, "X", "#000000", "Inter", baseOverrides);
     expect(out).not.toContain("✅");
     expect(out).not.toContain("❌");
     expect(out).toContain("Good");
@@ -163,9 +158,8 @@ describe("applyOverridesToMd – baseline", () => {
 
   it("substitutes primaryColor when different from original", () => {
     const out = applyOverridesToMd(
-      vercelMd, "Vercel", "#171717", "Geist", "600",
+      vercelMd, "Vercel", "#171717", "Geist",
       { ...baseOverrides, primaryColor: "#6366f1" },
-      "",
     );
     expect(out).toContain("#6366f1");
     expect(out).not.toMatch(/#171717/i);
@@ -173,20 +167,17 @@ describe("applyOverridesToMd – baseline", () => {
 
   it("does not modify primaryColor when override matches original", () => {
     const out = applyOverridesToMd(
-      vercelMd, "Vercel", "#171717", "Geist", "600",
+      vercelMd, "Vercel", "#171717", "Geist",
       { ...baseOverrides, primaryColor: "#171717" },
-      "",
     );
     expect(out).toContain("#171717");
   });
 
   it("substitutes fontFamily when different from original", () => {
     const out = applyOverridesToMd(
-      vercelMd, "Vercel", "#171717", "Geist", "600",
+      vercelMd, "Vercel", "#171717", "Geist",
       { ...baseOverrides, fontFamily: "Inter" },
-      "",
     );
-    // Vercel uses "Geist" — should be replaced
     const geistMentions = (out.match(/\bGeist\b/g) || []).length;
     expect(geistMentions).toBe(0);
     expect(out).toContain("Inter");
@@ -197,14 +188,14 @@ describe("applyOverridesToMd – baseline", () => {
 
 describe("applyOverridesToMd – Philosophy Layer", () => {
   it("retains Philosophy Layer when includePhilosophyLayer=true (default)", () => {
-    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", "600", baseOverrides, "");
+    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides);
     expect(out).toContain("## 10. Voice & Tone");
   });
 
   it("strips sections 10-15 + Sources comment when includePhilosophyLayer=false", () => {
     const out = applyOverridesToMd(
-      vercelMd, "Vercel", "#171717", "Geist", "600",
-      baseOverrides, "", undefined, undefined, false,
+      vercelMd, "Vercel", "#171717", "Geist",
+      baseOverrides, undefined, undefined, false,
     );
     expect(out).not.toContain("## 10. Voice & Tone");
     expect(out).not.toContain("OmD v0.1 Sources");
@@ -213,10 +204,9 @@ describe("applyOverridesToMd – Philosophy Layer", () => {
   it("is a no-op for refs without Philosophy Layer", () => {
     expect(clickhouseMd).not.toContain("## 10. Voice & Tone");
     const out = applyOverridesToMd(
-      clickhouseMd, "ClickHouse", "#000000", "Inter", "600",
-      baseOverrides, "", undefined, undefined, false,
+      clickhouseMd, "ClickHouse", "#000000", "Inter",
+      baseOverrides, undefined, undefined, false,
     );
-    // Should still produce a sane document (title was replaced)
     expect(out).toMatch(/^# Custom Design System \(based on ClickHouse\)/m);
   });
 });
@@ -226,9 +216,9 @@ describe("applyOverridesToMd – Philosophy Layer", () => {
 describe("applyOverridesToMd – StylePreferences inline modifications", () => {
   function withPrefs(prefs: StylePreferences, overrides: Partial<Overrides> = {}): string {
     return applyOverridesToMd(
-      vercelMd, "Vercel", "#171717", "Geist", "600",
+      vercelMd, "Vercel", "#171717", "Geist",
       { ...baseOverrides, ...overrides },
-      "", undefined, prefs,
+      undefined, prefs,
     );
   }
 
@@ -248,10 +238,9 @@ describe("applyOverridesToMd – StylePreferences inline modifications", () => {
   it("is idempotent when reference Navigation already mentions glass/transparent", () => {
     const fakeMd = "# Test\n\n## 4. Component Stylings\n\n### Navigation\nUses transparent background with backdrop-filter: blur(20px)\n\n### Cards & Containers\nbox\n\n## 5. Layout\n";
     const out = applyOverridesToMd(
-      fakeMd, "Test", "#000000", "Inter", "400",
-      baseOverrides, "", undefined, { headerStyle: "glass" },
+      fakeMd, "Test", "#000000", "Inter",
+      baseOverrides, undefined, { headerStyle: "glass" },
     );
-    // The original glass description should be preserved (not double-rewritten)
     expect(out).toContain("backdrop-filter: blur(20px)");
   });
 
@@ -284,8 +273,8 @@ describe("applyOverridesToMd – StylePreferences inline modifications", () => {
     ].join("\n");
 
     const out = applyOverridesToMd(
-      fixture, "Test", "#000000", "Inter", "400",
-      baseOverrides, "", undefined, { cardStyle: "bordered" },
+      fixture, "Test", "#000000", "Inter",
+      baseOverrides, undefined, { cardStyle: "bordered" },
     );
     const cardsBlock = out.match(/### Cards & Containers\n[\s\S]*?(?=###|\n## \d+\.)/)?.[0] ?? "";
     expect(cardsBlock).toMatch(/Shadow:\s*none/);
@@ -298,31 +287,61 @@ describe("applyOverridesToMd – StylePreferences inline modifications", () => {
     expect(wsBlock).toMatch(/Compact & dense|Tight padding/i);
   });
 
-  it("rewrites Whitespace Philosophy when density=spacious (and idempotent if already spacious)", () => {
+  it("rewrites Whitespace Philosophy when density=spacious (against a non-spacious source)", () => {
+    // Vercel's original Whitespace Philosophy already contains "generous",
+    // which triggers the idempotence early-return inside the rewrite. To
+    // actually exercise the rewrite path we need a fixture whose original
+    // text doesn't contain generous/spacious/breathing.
+    const fixture = [
+      "# T",
+      "",
+      "## 5. Layout Principles",
+      "",
+      "### Whitespace Philosophy",
+      "- **Tight columns**: 12px padding, 4px gap.",
+      "- **High density**: Maximize information per viewport.",
+      "",
+      "### Border Radius",
+      "stub",
+      "",
+      "## 6. Depth",
+      "",
+    ].join("\n");
+    const out = applyOverridesToMd(
+      fixture, "T", "#000000", "Inter",
+      baseOverrides, undefined, { density: "spacious" },
+    );
+    const wsBlock = out.match(/### Whitespace Philosophy\n[\s\S]*?(?=###|\n## \d+\.)/)?.[0] ?? "";
+    expect(wsBlock).toMatch(/Open & spacious/);
+    expect(wsBlock).not.toContain("Tight columns");
+  });
+
+  it("density=spacious is idempotent when the original already mentions generous/breathing", () => {
+    // Vercel's original block contains "generous" — the rewrite must no-op,
+    // preserving the original copy verbatim.
     const out = withPrefs({ density: "spacious" });
     const wsBlock = out.match(/### Whitespace Philosophy\n[\s\S]*?(?=###|\n## \d+\.)/)?.[0] ?? "";
-    expect(wsBlock).toMatch(/spacious|generous|breathing|Open & spacious/i);
+    expect(wsBlock).toContain("Gallery emptiness"); // Vercel-original text preserved
+    expect(wsBlock).not.toContain("Open & spacious"); // rewrite did not fire
   });
 
   it("replaces 'Radius: Npx' patterns when borderRadius override given", () => {
     const out = withPrefs({}, { borderRadius: "4px" });
-    // Any Radius: N-greater-than-4 should now be 4px
     const sec4 = out.match(/## 4\. [^\n]+\n([\s\S]*?)(?=\n## \d+\.)/)?.[1] ?? "";
     const radiusMentions = [...sec4.matchAll(/Radius:\s*(\d+px|9999px)/gi)];
     for (const m of radiusMentions) {
-      // either 4px (replaced), 9999px (preserved as pill), or no match
       expect(["4px", "9999px"]).toContain(m[1]);
     }
   });
 });
 
-// ── applyOverridesToMd: appended sections ─────────────────────────
+// ── applyOverridesToMd: appended sections + invariants ────────────
 
 describe("applyOverridesToMd – appends", () => {
   it("appends component list when components provided", () => {
     const out = applyOverridesToMd(
-      vercelMd, "Vercel", "#171717", "Geist", "600",
-      baseOverrides, "", ["button", "card", "input"],
+      vercelMd, "Vercel", "#171717", "Geist",
+      baseOverrides, ["button", "card", "input"],
     );
     expect(out).toContain("## Included Components");
     expect(out).toContain("- Button");
@@ -331,37 +350,37 @@ describe("applyOverridesToMd – appends", () => {
   });
 
   it("does not append Included Components when list is empty", () => {
-    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", "600", baseOverrides, "", []);
+    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides, []);
     expect(out).not.toContain("## Included Components");
   });
 
   it("title-cases multi-word component names with hyphens", () => {
     const out = applyOverridesToMd(
-      vercelMd, "Vercel", "#171717", "Geist", "600",
-      baseOverrides, "", ["data-table"],
+      vercelMd, "Vercel", "#171717", "Geist",
+      baseOverrides, ["data-table"],
     );
     expect(out).toContain("- Data table");
   });
 
   it("always appends Iconography & SVG Guidelines section", () => {
-    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", "600", baseOverrides, "");
+    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides);
     expect(out).toContain("## Iconography & SVG Guidelines");
     expect(out).toContain("Lucide React");
   });
 
   it("always appends Document Policies section", () => {
-    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", "600", baseOverrides, "");
+    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides);
     expect(out).toContain("## Document Policies");
     expect(out).toContain("No Emojis");
   });
 
   it("does NOT embed shadcn CSS in the markdown body (CSS is exported separately)", () => {
-    const fakeCss = "@layer base { :root { --primary: 240 50% 50%; } }";
-    const out = applyOverridesToMd(
-      vercelMd, "Vercel", "#171717", "Geist", "600",
-      baseOverrides, fakeCss,
-    );
-    expect(out).not.toContain(fakeCss);
+    // Tokens/CSS export is a separate code path (generateShadcnCss returns
+    // the CSS; consumers download or copy it independently). The DESIGN.md
+    // body must never contain @layer/:root/--var blocks.
+    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides);
     expect(out).not.toContain("@layer base");
+    expect(out).not.toMatch(/^\s*:root\s*\{/m);
+    expect(out).not.toMatch(/^\s*--background:/m);
   });
 });

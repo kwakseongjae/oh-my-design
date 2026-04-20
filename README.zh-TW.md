@@ -117,8 +117,21 @@ oh-my-design/
   web/               Next.js 網頁 builder
     src/app/         Landing + Builder + Directory 頁面
     src/components/  Wizard、Preview、Export
-  test/              Vitest 測試
+  test/              CLI Vitest 套件 (unit/、integration/、scripts/)
 ```
+
+Web 測試與原始碼並列存放 (`web/src/**/*.test.ts`)。
+
+## 測試
+
+兩套測試套件,皆以 Vitest 執行,兩套都必須通過:
+
+```bash
+npm test                # CLI:370 個測試 — unit + 全 reference smoke
+cd web && npm test      # Web:88 個測試 — generate-css、config-hash、survey
+```
+
+整合套件 (`test/integration/all-references.test.ts`) 會對每個 `references/<id>/DESIGN.md` 執行完整的生成管線,因此損壞的 reference 會在 PR 審查時以單一 reference 的失敗形式呈現。資料夾規範與模組別覆蓋率對照表請參考 [test/README.md](test/README.md)。
 
 ## 致謝
 

@@ -117,8 +117,21 @@ oh-my-design/
   web/               Next.js ウェブビルダー
     src/app/         Landing + Builder + Directory ページ
     src/components/  Wizard, Preview, Export
-  test/              Vitest テスト
+  test/              CLI Vitest スイート (unit/, integration/, scripts/)
 ```
+
+ウェブのテストはソースファイルと並置されています (`web/src/**/*.test.ts`)。
+
+## テスト
+
+2 つのスイートがあり、いずれも Vitest で動作し、いずれも合格する必要があります:
+
+```bash
+npm test                # CLI: 370 テスト — unit + リファレンス全件のスモーク
+cd web && npm test      # Web: 88 テスト — generate-css, config-hash, survey
+```
+
+統合スイート (`test/integration/all-references.test.ts`) はすべての `references/<id>/DESIGN.md` に対して生成パイプライン全体を実行するため、リファレンスの破損は PR レビューでリファレンスごとの失敗として可視化されます。フォルダ規約とモジュール別カバレッジマップは [test/README.md](test/README.md) を参照してください。
 
 ## 謝辞
 

@@ -117,8 +117,21 @@ oh-my-design/
   web/               Next.js web builder
     src/app/         Landing + Builder + Directory pages
     src/components/  Wizard, Preview, Export
-  test/              Vitest tests
+  test/              CLI Vitest suite (unit/, integration/, scripts/)
 ```
+
+Web tests are colocated next to source files (`web/src/**/*.test.ts`).
+
+## Testing
+
+Two suites, both under Vitest, both must pass:
+
+```bash
+npm test                # CLI: 370 tests — unit + per-reference smoke
+cd web && npm test      # Web: 88 tests — generate-css, config-hash, survey
+```
+
+The integration suite (`test/integration/all-references.test.ts`) runs the full generation pipeline against every `references/<id>/DESIGN.md`, so a malformed reference surfaces as a per-ref failure in PR review. See [test/README.md](test/README.md) for the folder convention and module-by-module coverage map.
 
 ## Acknowledgments
 

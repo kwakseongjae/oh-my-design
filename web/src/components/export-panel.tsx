@@ -37,11 +37,11 @@ export function ExportPanel({
     () => applyOverridesToMd(
       detail.designMd,
       detail.id.charAt(0).toUpperCase() + detail.id.slice(1),
-      detail.primary, detail.fontFamily, detail.headingWeight,
-      overrides, css, components, stylePreferences,
+      detail.primary, detail.fontFamily,
+      overrides, components, stylePreferences,
       includePhilosophyLayer,
     ),
-    [detail, overrides, css, components, stylePreferences, includePhilosophyLayer],
+    [detail, overrides, components, stylePreferences, includePhilosophyLayer],
   );
 
   function copyTo(key: string, text: string) {

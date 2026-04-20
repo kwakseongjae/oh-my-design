@@ -117,8 +117,21 @@ oh-my-design/
   web/               Next.js 웹 빌더
     src/app/         Landing + Builder + Directory 페이지
     src/components/  Wizard, Preview, Export
-  test/              Vitest 테스트
+  test/              CLI Vitest 스위트 (unit/, integration/, scripts/)
 ```
+
+웹 테스트는 소스 파일 옆에 함께 위치합니다 (`web/src/**/*.test.ts`).
+
+## 테스트
+
+두 개의 스위트가 있고, 둘 다 Vitest로 돌아가며 둘 다 통과해야 합니다:
+
+```bash
+npm test                # CLI: 370 테스트 — unit + 레퍼런스 전체 smoke
+cd web && npm test      # Web: 88 테스트 — generate-css, config-hash, survey
+```
+
+통합 스위트(`test/integration/all-references.test.ts`)는 모든 `references/<id>/DESIGN.md`에 대해 전체 생성 파이프라인을 실행합니다. 망가진 레퍼런스가 있으면 PR 리뷰에서 어떤 ref의 어떤 체크가 실패했는지 한눈에 보입니다. 폴더 컨벤션과 모듈별 커버리지 맵은 [test/README.md](test/README.md)를 참고하세요.
 
 ## 감사의 글
 
