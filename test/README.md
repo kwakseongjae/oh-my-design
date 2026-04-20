@@ -1,60 +1,89 @@
 # Tests
 
-All test code lives under `test/`. Run with `npm test` (one-shot) or
-`npm run test:watch` (watch mode). Both unit and integration suites
-run under Vitest, so `npm test` is the single source of truth for CI
-and PR review.
+This repo has **two test suites**, one per package. Both run under
+Vitest and both must pass for a PR to ship.
 
-## Folder convention
+| Package | Run | Convention | This README covers |
+|---|---|---|---|
+| **Root (CLI)** — `oh-my-design` | `npm test` (or `test:watch`) | Tests under `test/` (separate folder) | Yes |
+| **Web** — `web/` (Next.js builder + result share + API) | `cd web && npm test` | Colocated (`*.test.ts` next to source) | Yes — see "Web coverage" below |
+
+## CLI folder convention
 
 ```
 test/
 ├── unit/           ← isolated module tests, mirror src/ layout
 │   ├── core/       ← src/core/*
 │   └── utils/      ← src/utils/*
-├── integration/    ← end-to-end DESIGN.md generation across refs
-└── scripts/        ← dev helpers (not picked up by vitest)
+├── integration/    ← cross-module end-to-end suites
+└── scripts/        ← dev helpers (excluded from vitest)
 ```
 
-- **Unit tests** (`*.test.ts`) live under `test/unit/<area>/` and
-  mirror the `src/<area>/` directory. When you add a module under
-  `src/`, add its test under the matching `test/unit/` path.
-- **Integration tests** (`*.test.{ts,mjs}`) live under
-  `test/integration/` and exercise multiple modules end-to-end.
-- **Scripts** under `test/scripts/` are dev helpers run via
-  `npx tsx test/scripts/<name>.ts`. They are not tests and are
-  excluded from the vitest include pattern.
+- **Unit tests** (`*.test.ts`) under `test/unit/<area>/` mirror the
+  `src/<area>/` directory. New `src/` module → matching test path.
+- **Integration tests** (`*.test.{ts,mjs}`) under `test/integration/`
+  exercise multiple modules. Today: `all-references.test.ts` runs
+  the full CLI pipeline against every `references/<id>/DESIGN.md`.
+- **Scripts** under `test/scripts/` are dev helpers
+  (`npx tsx test/scripts/<name>.ts`) — not tests.
 
-## Coverage map
+## CLI coverage map
 
 | Module | Test |
 |---|---|
-| `src/core/customizer.ts` | `unit/core/customizer.test.ts` |
-| `src/core/reference-parser.ts` | `unit/core/reference-parser.test.ts` |
+| `src/core/customizer.ts` | `unit/core/customizer.test.ts` + `integration/all-references.test.ts` |
+| `src/core/reference-parser.ts` | `unit/core/reference-parser.test.ts` + smoke from integration |
 | `src/core/renderer.ts` | `unit/core/renderer.test.ts` |
 | `src/core/token-resolver.ts` | `unit/core/token-resolver.test.ts` |
 | `src/utils/color.ts` | `unit/utils/color.test.ts` |
 | `src/core/components.ts` | _(indirect via renderer.test.ts)_ |
-| `src/core/shadcn-mapper.ts` | _(no direct coverage)_ |
-| `src/core/preview-generator.ts` | _(no direct coverage)_ |
-| `src/utils/spacing.ts` | _(no direct coverage)_ |
-| `src/utils/typography.ts` | _(no direct coverage)_ |
+| `src/core/shadcn-mapper.ts` | _(no direct coverage — gap)_ |
+| `src/core/preview-generator.ts` | _(no direct coverage — gap)_ |
+| `src/utils/spacing.ts` | _(no direct coverage — gap)_ |
+| `src/utils/typography.ts` | _(no direct coverage — gap)_ |
 | `src/presets/*` | _(indirect via renderer.test.ts → `_base`)_ |
-| Reference + preference inline-mod logic (mirrors `web/.../generate-css.ts`) | `integration/design-md-consistency.test.mjs` |
+| `src/cli/*`, `bin/oh-my-design.ts` | _(no direct coverage — gap)_ |
+| Every `references/<id>/DESIGN.md` × CLI generation pipeline | `integration/all-references.test.ts` |
 
-Rows marked _no direct coverage_ are gaps — open a PR to add unit
-tests under the matching `test/unit/<area>/` path.
+## Web coverage map (`web/`)
+
+The web package is a Next.js builder + survey/result + share/leaderboard
+APIs. Tests live colocated next to source (`web/src/.../foo.test.ts`).
+
+| Module | Test |
+|---|---|
+| `web/src/lib/core/generate-css.ts` (`generateShadcnCss`, `generateVanillaCss`, `applyOverridesToMd` — the actual DESIGN.md generator) | `web/src/lib/core/generate-css.test.ts` |
+| `web/src/lib/core/config-hash.ts` (Builder ↔ CLI handoff) | `web/src/lib/core/config-hash.test.ts` |
+| `web/src/lib/core/survey-hash.ts` | `web/src/lib/core/survey-hash.test.ts` |
+| `web/src/lib/core/color.ts` | _(no direct coverage — gap)_ |
+| `web/src/lib/survey/quiz-data.ts` | `web/src/lib/survey/quiz-data.test.ts` |
+| `web/src/lib/survey/scoring.ts` | `web/src/lib/survey/scoring.test.ts` |
+| `web/src/lib/survey/types.ts` | `web/src/lib/survey/types.test.ts` |
+| `web/src/lib/extract-tokens.ts` | _(no direct coverage — gap)_ |
+| `web/src/lib/design-systems.ts`, `font-registry.ts`, `logos.ts` | _(no direct coverage — gap)_ |
+| `web/src/lib/kv.ts` | _(no direct coverage — gap)_ |
+| `web/src/app/api/track/route.ts` | _(no direct coverage — gap)_ |
+| `web/src/app/api/leaderboard/route.ts` | _(no direct coverage — gap)_ |
+| `web/src/app/api/references/route.ts` | _(no direct coverage — gap)_ |
+| React components (survey-wizard, builder, export-panel, share-buttons, …) | _(no direct coverage — gap)_ |
+
+Rows marked _gap_ are open opportunities. Browser-level (Playwright)
+end-to-end coverage isn't set up yet — the natural first scenario
+would be the Builder → npx command roundtrip (encode in browser,
+decode in CLI, output matches preview).
 
 ## Adding tests
 
-1. **Unit**: create `test/unit/<area>/<module>.test.ts`, import from
-   `../../../src/<area>/<module>.js`, use `describe` / `it` / `expect`
-   from `vitest`.
-2. **Integration**: create `test/integration/<scenario>.test.{ts,mjs}`.
-   Compute fixtures at the top of the file or inside `beforeAll`,
-   then assert behaviors per `it()`.
-3. **Dev script**: drop under `test/scripts/`; document the runner
-   command in a top-of-file comment.
+**CLI (root):**
+1. **Unit**: `test/unit/<area>/<module>.test.ts`, import from
+   `../../../src/<area>/<module>.js`.
+2. **Integration**: `test/integration/<scenario>.test.{ts,mjs}`.
+3. **Dev script**: `test/scripts/<name>.ts`; document the runner in a
+   top-of-file comment.
 
-When opening a PR, update the coverage map above if you added a new
-module without a test, or filled in a previously-empty row.
+**Web:** colocate the test next to the source file:
+`web/src/<path>/<name>.test.ts`. The web `vitest.config.ts` picks up
+`src/**/*.test.ts` automatically.
+
+When opening a PR, update the relevant coverage map row above —
+either fill in a previously-empty row or add the new module.
