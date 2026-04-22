@@ -232,6 +232,72 @@
   background: oklch(0.7 0.2 275 / 0.3);
 }
 
+/* Font Playground — "invite to type" placeholder shimmer.
+ * Text sits quietly in light gray; a very faint primary-tinted glow
+ * sweeps through it left → right on a slow, calm cadence. Background
+ * image is 400% wide with no-repeat — across the animated range the
+ * element is always fully covered, so glyphs never blink out. */
+@keyframes fp-placeholder-shimmer-sweep {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
+}
+.fp-placeholder-shimmer {
+  color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    oklch(0.58 0.015 275) 0%,
+    oklch(0.58 0.015 275) 40%,
+    oklch(0.6 0.13 275) 50%,
+    oklch(0.58 0.015 275) 60%,
+    oklch(0.58 0.015 275) 100%
+  );
+  background-size: 400% 100%;
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: fp-placeholder-shimmer-sweep 3.5s ease-in-out -1s infinite;
+}
+.dark .fp-placeholder-shimmer {
+  background-image: linear-gradient(
+    90deg,
+    oklch(0.64 0.015 275) 0%,
+    oklch(0.64 0.015 275) 40%,
+    oklch(0.78 0.13 275) 50%,
+    oklch(0.64 0.015 275) 60%,
+    oklch(0.64 0.015 275) 100%
+  );
+}
+@media (prefers-reduced-motion: reduce) {
+  .fp-placeholder-shimmer {
+    color: oklch(0.58 0.015 275);
+    background: none;
+    animation: none;
+  }
+  .dark .fp-placeholder-shimmer {
+    color: oklch(0.64 0.015 275);
+  }
+}
+
+/* Font Playground — placeholder blinking caret. Sits after the hint
+ * text and mimics an active text cursor, amplifying the "type here"
+ * affordance. */
+@keyframes fp-caret-blink {
+  50% { opacity: 0; }
+}
+.fp-blink-cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 3px;
+  background: var(--primary);
+  vertical-align: -0.1em;
+  animation: fp-caret-blink 1.1s step-end infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fp-blink-cursor { animation: none; }
+}
+
 /* Safe area for notched devices */
 .safe-top { padding-top: env(safe-area-inset-top); }
 .safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }

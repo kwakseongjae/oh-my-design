@@ -10,7 +10,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
-import { Compass, ArrowRight, Sparkles } from "lucide-react";
+import { Compass, ArrowRight, Sparkles, Type } from "lucide-react";
 import { getAllDesignSystems } from "@/lib/design-systems";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import { event } from "@/lib/gtag";
@@ -47,13 +47,34 @@ export function BrowseModal({ className }: { className?: string }) {
               event("browse_ds_directory", {});
               setOpen(false);
             }}
-            className="group flex items-center gap-4 rounded-xl border border-border/50 bg-card/40 p-4 transition-colors hover:border-foreground/20 hover:bg-accent dark:border-border dark:bg-card/60"
+            className="group flex min-h-[88px] items-center gap-4 rounded-xl border border-border/50 bg-card/40 p-4 transition-colors hover:border-foreground/20 hover:bg-accent dark:border-border dark:bg-card/60"
           >
             <StackedLogoChip />
             <div className="flex-1 min-w-0">
               <div className="text-sm font-semibold text-foreground">Design Systems</div>
               <div className="text-xs text-muted-foreground leading-snug mt-0.5">
-                {total} references — browse, preview, and export.
+                {total} references — browse, preview, and export as AI-ready
+                DESIGN.md.
+              </div>
+            </div>
+            <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
+          </Link>
+
+          <Link
+            href="/font-playground"
+            onClick={() => {
+              event("browse_font_playground", {});
+              setOpen(false);
+            }}
+            className="group mt-2 flex min-h-[88px] items-center gap-4 rounded-xl border border-border/50 bg-card/40 p-4 transition-colors hover:border-foreground/20 hover:bg-accent dark:border-border dark:bg-card/60"
+          >
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 ring-2 ring-background">
+              <Type className="h-4 w-4 text-primary" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-semibold text-foreground">Font Playground</div>
+              <div className="text-xs text-muted-foreground leading-snug mt-0.5">
+                느낌을 묘사하면 60개 큐레이션 카탈로그에서 어울리는 폰트 3개를 골라드려요.
               </div>
             </div>
             <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
@@ -66,7 +87,7 @@ export function BrowseModal({ className }: { className?: string }) {
                 event("browse_playground", {});
                 setOpen(false);
               }}
-              className="group mt-2 flex items-center gap-4 rounded-xl border border-border/50 bg-card/40 p-4 transition-colors hover:border-foreground/20 hover:bg-accent dark:border-border dark:bg-card/60"
+              className="group mt-2 flex min-h-[88px] items-center gap-4 rounded-xl border border-border/50 bg-card/40 p-4 transition-colors hover:border-foreground/20 hover:bg-accent dark:border-border dark:bg-card/60"
             >
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 ring-2 ring-background">
                 <Sparkles className="h-4 w-4 text-primary" />
