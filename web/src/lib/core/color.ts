@@ -68,3 +68,55 @@ export function isLight(hex: string): boolean {
   const r = parseInt(h.slice(0,2),16), g = parseInt(h.slice(2,4),16), b = parseInt(h.slice(4,6),16);
   return (r*299 + g*587 + b*114) / 1000 > 140;
 }
+
+// ── Color family descriptor ───────────────────────────────────────
+// Turns a hex into a human-readable color family (with synonym list) and a
+// single-word adjective ("vibrant", "deep", "muted", etc).
+// Used by applyOverridesToMd to rewrite ref-specific color prose (e.g.,
+// "Stripe Purple", "rich violet") when the user swaps the primary color.
+
+export interface ColorFamily {
+  /** Canonical noun for this family (e.g., "violet", "green"). */
+  primary: string;
+  /** All synonyms that should be treated as belonging to this family during
+   *  prose rewrites. Keep them lowercase; match case-insensitively. */
+  synonyms: string[];
+  /** Adjective capturing saturation+lightness (vibrant/deep/muted/pale/rich). */
+  adjective: string;
+}
+
+export function colorFamily(hex: string): ColorFamily {
+  const [h, s, l] = hexToHsl(hex);
+
+  // Low saturation → grayscale family (hue is noise).
+  if (s < 10) {
+    if (l < 15) return { primary: 'black', synonyms: ['black', 'charcoal', 'jet', 'onyx', 'ebony'], adjective: 'deep' };
+    if (l < 40) return { primary: 'charcoal', synonyms: ['charcoal', 'graphite', 'slate'], adjective: 'deep' };
+    if (l < 70) return { primary: 'gray', synonyms: ['gray', 'grey', 'slate', 'ash', 'stone'], adjective: 'neutral' };
+    return { primary: 'white', synonyms: ['white', 'ivory', 'bone', 'alabaster'], adjective: 'pale' };
+  }
+
+  const base = hueBucket(h);
+  const adjective =
+    l < 25 ? 'deep'
+    : l > 75 ? 'pale'
+    : s > 75 ? 'vibrant'
+    : s < 35 ? 'muted'
+    : 'rich';
+  return { ...base, adjective };
+}
+
+/** Map hue angle [0,360) to a coarse color family with synonyms. */
+function hueBucket(h: number): { primary: string; synonyms: string[] } {
+  if (h < 15 || h >= 345) return { primary: 'red', synonyms: ['red', 'crimson', 'scarlet', 'ruby', 'vermilion'] };
+  if (h < 40)  return { primary: 'orange', synonyms: ['orange', 'tangerine', 'amber', 'rust', 'terracotta'] };
+  if (h < 65)  return { primary: 'yellow', synonyms: ['yellow', 'gold', 'lemon', 'mustard', 'honey'] };
+  if (h < 90)  return { primary: 'lime', synonyms: ['lime', 'chartreuse', 'olive'] };
+  if (h < 160) return { primary: 'green', synonyms: ['green', 'emerald', 'forest', 'mint', 'sage', 'jade'] };
+  if (h < 185) return { primary: 'teal', synonyms: ['teal', 'aqua', 'turquoise', 'cyan'] };
+  if (h < 210) return { primary: 'cyan', synonyms: ['cyan', 'sky', 'cerulean', 'azure'] };
+  if (h < 240) return { primary: 'blue', synonyms: ['blue', 'navy', 'cobalt', 'sapphire', 'indigo', 'azure'] };
+  if (h < 310) return { primary: 'violet', synonyms: ['violet', 'purple', 'indigo', 'lavender', 'periwinkle', 'plum', 'orchid', 'mauve'] };
+  if (h < 345) return { primary: 'pink', synonyms: ['pink', 'magenta', 'fuchsia', 'rose'] };
+  return { primary: 'red', synonyms: ['red', 'crimson', 'scarlet', 'ruby'] };
+}

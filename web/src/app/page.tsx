@@ -125,12 +125,14 @@ export default function Landing() {
       </nav>
 
       {/* Hero — all CSS animations, no framer-motion */}
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 pt-20 sm:pt-28 pb-12 sm:pb-16">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 pt-10 sm:pt-28 pb-12 sm:pb-16">
         <div className="text-center">
-          {/* Badge */}
+          {/* Badge. Philosophy count is hardcoded to mirror the PHILOSOPHY_IDS
+              set in reference-selector; update both together when new
+              references gain a philosophy layer. */}
           <div className="animate-fade-up animate-delay-1 mb-8 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur dark:border-border dark:bg-card/60">
             <Zap className="h-3.5 w-3.5 text-yellow-500" />
-            67 references &middot; 10 with brand philosophy &middot; zero AI calls
+            67 references &middot; 20 with brand philosophy &middot; zero AI calls
           </div>
 
           {/* Headline */}

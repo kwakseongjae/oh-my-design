@@ -22,6 +22,14 @@ import { applyOverrides, type ParsedTokens, type PreviewOverrides } from "@/lib/
 import { lookupFont } from "@/lib/font-registry";
 import { FontCard } from "./font-card";
 
+type PreferencesInput = NonNullable<PreviewOverrides["stylePreferences"]>;
+
+function resolveDensity(prefs?: PreferencesInput): { cardPad: number; fieldGap: number } {
+  if (prefs?.density === "compact") return { cardPad: 12, fieldGap: 12 };
+  if (prefs?.density === "spacious") return { cardPad: 28, fieldGap: 24 };
+  return { cardPad: 20, fieldGap: 20 };
+}
+
 function contrastFg(hex: string): string {
   const m = hex.replace("#", "").match(/.{2}/g);
   if (!m) return "#ffffff";
@@ -292,9 +300,15 @@ function ButtonsSection({ tokens }: { tokens: ParsedTokens }) {
 }
 
 /* ─────────── Cards ─────────── */
-function CardsSection({ tokens }: { tokens: ParsedTokens }) {
+function CardsSection({ tokens, preferences }: { tokens: ParsedTokens; preferences?: PreferencesInput }) {
   const { identity, radii, typography, shadows } = tokens;
-  const cardShadow = shadows[1]?.value ?? "0 1px 3px 0 rgba(0,0,0,0.1)";
+  // When the user picked cardStyle=bordered, applyOverrides already replaced
+  // shadows[0] with {name:'Flat', value:'none'}. We source the card shadow from
+  // shadows[1] by default, but fall back to shadows[0] when it was intentionally
+  // flattened so the preview shows the flat result without reaching past.
+  const flatChoice = preferences?.cardStyle === "bordered";
+  const cardShadow = flatChoice ? "none" : (shadows[1]?.value ?? "0 1px 3px 0 rgba(0,0,0,0.1)");
+  const { cardPad } = resolveDensity(preferences);
   return (
     <Section title="Cards" kicker="04">
       <div className="grid gap-4 sm:grid-cols-3">
@@ -311,7 +325,7 @@ function CardsSection({ tokens }: { tokens: ParsedTokens }) {
               border: `1px solid ${identity.border ?? "#e5e7eb"}`,
               borderRadius: radii.card,
               boxShadow: cardShadow,
-              padding: 20,
+              padding: cardPad,
               fontFamily: typography.family,
             }}
           >
@@ -322,13 +336,14 @@ function CardsSection({ tokens }: { tokens: ParsedTokens }) {
         ))}
       </div>
       <div
-        className="mt-4 p-6"
+        className="mt-4"
         style={{
           background: identity.background,
           color: identity.foreground,
           border: `1px solid ${identity.border ?? "#e5e7eb"}`,
           borderRadius: radii.card,
           boxShadow: cardShadow,
+          padding: Math.round(cardPad * 1.2),
           fontFamily: typography.family,
         }}
       >
@@ -359,59 +374,55 @@ function CardsSection({ tokens }: { tokens: ParsedTokens }) {
 }
 
 /* ─────────── Forms ─────────── */
-function FormsSection({ tokens }: { tokens: ParsedTokens }) {
+function FormsSection({ tokens, preferences }: { tokens: ParsedTokens; preferences?: PreferencesInput }) {
   const { identity, radii, typography } = tokens;
+  const { fieldGap } = resolveDensity(preferences);
+  const isUnderline = preferences?.inputStyle === "underline";
+  const borderColor = identity.border ?? "#d1d5db";
+
+  // Underline style: bottom-border only, transparent fill, no radius on the
+  // field itself. Bordered (default) style: full 1px box with radius.
+  const fieldStyle: React.CSSProperties = isUnderline
+    ? {
+        background: "transparent",
+        color: identity.foreground,
+        border: "none",
+        borderBottom: `2px solid ${borderColor}`,
+        borderRadius: 0,
+        padding: "8px 2px",
+        fontSize: 14,
+        fontFamily: typography.family,
+        width: "100%",
+        outline: "none",
+      }
+    : {
+        background: identity.background,
+        color: identity.foreground,
+        border: `1px solid ${borderColor}`,
+        borderRadius: radii.input,
+        padding: "10px 14px",
+        fontSize: 14,
+        fontFamily: typography.family,
+        width: "100%",
+      };
+
   return (
     <Section title="Form Elements" kicker="05">
-      <div className="rounded-xl bg-card p-6 ring-1 ring-border/40 space-y-5 max-w-md">
+      <div
+        className="rounded-xl bg-card p-6 ring-1 ring-border/40 max-w-md"
+        style={{ display: "flex", flexDirection: "column", gap: fieldGap }}
+      >
         <div>
           <label className="block text-xs font-medium mb-1.5" style={{ color: identity.foreground }}>Email</label>
-          <input
-            type="email"
-            placeholder="you@example.com"
-            style={{
-              background: identity.background,
-              color: identity.foreground,
-              border: `1px solid ${identity.border ?? "#d1d5db"}`,
-              borderRadius: radii.input,
-              padding: "10px 14px",
-              fontSize: 14,
-              fontFamily: typography.family,
-              width: "100%",
-            }}
-          />
+          <input type="email" placeholder="you@example.com" style={fieldStyle} />
         </div>
         <div>
           <label className="block text-xs font-medium mb-1.5" style={{ color: identity.foreground }}>Password</label>
-          <input
-            type="password"
-            placeholder="••••••••"
-            style={{
-              background: identity.background,
-              color: identity.foreground,
-              border: `1px solid ${identity.border ?? "#d1d5db"}`,
-              borderRadius: radii.input,
-              padding: "10px 14px",
-              fontSize: 14,
-              fontFamily: typography.family,
-              width: "100%",
-            }}
-          />
+          <input type="password" placeholder="••••••••" style={fieldStyle} />
         </div>
         <div>
           <label className="block text-xs font-medium mb-1.5" style={{ color: identity.foreground }}>Country</label>
-          <select
-            style={{
-              background: identity.background,
-              color: identity.foreground,
-              border: `1px solid ${identity.border ?? "#d1d5db"}`,
-              borderRadius: radii.input,
-              padding: "10px 14px",
-              fontSize: 14,
-              fontFamily: typography.family,
-              width: "100%",
-            }}
-          >
+          <select style={fieldStyle}>
             <option>South Korea</option>
             <option>Taiwan</option>
             <option>Japan</option>
@@ -573,6 +584,7 @@ export function ReferencePreview({
   embedded?: boolean;
 }) {
   const tokens = applyOverrides(rawTokens, overrides);
+  const prefs = overrides?.stylePreferences;
   const wrapperClass = embedded ? "" : "min-h-screen";
   // Intentionally NOT setting background/color here — the brand canvas lives inside the
   // Hero card, not on the full-bleed wrapper. That way dark-brand refs (Framer, Cohere,
@@ -585,8 +597,8 @@ export function ReferencePreview({
       <ColorsSection tokens={tokens} />
       <TypographySection tokens={tokens} />
       <ButtonsSection tokens={tokens} />
-      <CardsSection tokens={tokens} />
-      <FormsSection tokens={tokens} />
+      <CardsSection tokens={tokens} preferences={prefs} />
+      <FormsSection tokens={tokens} preferences={prefs} />
       <BadgesAndTabsSection tokens={tokens} />
       <SpacingRadiusSection tokens={tokens} />
       <ElevationSection tokens={tokens} />

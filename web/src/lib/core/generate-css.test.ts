@@ -132,10 +132,29 @@ describe("generateVanillaCss", () => {
 // ── applyOverridesToMd: baseline transforms ───────────────────────
 
 describe("applyOverridesToMd – baseline", () => {
-  it("replaces title with custom name based on refName", () => {
-    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides);
+  it("replaces title when any override is set", () => {
+    const out = applyOverridesToMd(
+      vercelMd, "Vercel", "#171717", "Geist",
+      { ...baseOverrides, primaryColor: "#6366f1" },
+    );
     expect(out).toMatch(/^# Custom Design System \(based on Vercel\)/m);
     expect(out).not.toMatch(/^# Design System Inspiration of Vercel/m);
+  });
+
+  it("replaces title when any style preference is set", () => {
+    const out = applyOverridesToMd(
+      vercelMd, "Vercel", "#171717", "Geist",
+      baseOverrides, undefined, { buttonStyle: "sharp" },
+    );
+    expect(out).toMatch(/^# Custom Design System \(based on Vercel\)/m);
+  });
+
+  it("keeps the reference's original title for as-is export (no overrides, no prefs)", () => {
+    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides);
+    // Untouched — this is the "pure original" contract used by the Use-as-is
+    // button on the selector. The reference's own heading is preserved.
+    expect(out).toMatch(/^# Design System Inspiration of Vercel/m);
+    expect(out).not.toContain("# Custom Design System");
   });
 
   it("strips emoji code points", () => {
@@ -184,6 +203,87 @@ describe("applyOverridesToMd – baseline", () => {
   });
 });
 
+// ── applyOverridesToMd: Color prose sanitizer ─────────────────────
+
+describe("applyOverridesToMd – color prose sanitizer", () => {
+  const stripeMd = readRef("stripe");
+
+  it("rewrites 'Stripe Purple' to 'Brand <NewFamily>' when user swaps to green", () => {
+    const out = applyOverridesToMd(
+      stripeMd, "Stripe", "#533afd", "sohne-var",
+      { ...baseOverrides, primaryColor: "#22c55e" },
+    );
+    expect(out).not.toContain("Stripe Purple");
+    expect(out).toMatch(/Brand\s+Green/);
+  });
+
+  it("rewrites 'signature purple' color nouns in §1 to the new family", () => {
+    const out = applyOverridesToMd(
+      stripeMd, "Stripe", "#533afd", "sohne-var",
+      { ...baseOverrides, primaryColor: "#22c55e" },
+    );
+    const sec1 = out.match(/## 1\. Visual Theme & Atmosphere[\s\S]*?(?=\n## 2\.)/)?.[0] ?? "";
+    // No violet-family nouns should remain in §1 when user picked green.
+    expect(sec1).not.toMatch(/\b(purple|violet|indigo|lavender)\b/i);
+  });
+
+  it("rotates blue-tinted shadow rgba to the new primary hue", () => {
+    const out = applyOverridesToMd(
+      stripeMd, "Stripe", "#533afd", "sohne-var",
+      { ...baseOverrides, primaryColor: "#22c55e" },
+    );
+    // Stripe's signature shadow rgba(50,50,93,0.25) — blue-purple tinted — must
+    // not survive verbatim after the primary is swapped to green.
+    expect(out).not.toContain("rgba(50,50,93,0.25)");
+    expect(out).not.toContain("rgba(50, 50, 93");
+  });
+
+  it("leaves neutral shadows (rgba(0,0,0,...)) untouched", () => {
+    const out = applyOverridesToMd(
+      stripeMd, "Stripe", "#533afd", "sohne-var",
+      { ...baseOverrides, primaryColor: "#22c55e" },
+    );
+    // Pure-neutral shadow layers in Stripe should stay — they're not tinted
+    // and therefore not derived from the primary.
+    expect(out).toContain("rgba(0,0,0,0.1)");
+  });
+
+  it("is a no-op when the override equals the original primary", () => {
+    const out = applyOverridesToMd(
+      stripeMd, "Stripe", "#533afd", "sohne-var",
+      { ...baseOverrides, primaryColor: "#533afd" },
+    );
+    // Nothing in the sanitizer path fires; prose stays identical to the ref.
+    expect(out).toContain("Stripe Purple");
+    expect(out).toContain("rgba(50,50,93,0.25)");
+  });
+
+  it("is a no-op when old and new primary share the same color family", () => {
+    // Both #533afd (violet h=249) and #7c3aed (violet h=262) are violet family.
+    // Prose describing "violet" remains correct; sanitizer must not fire.
+    const out = applyOverridesToMd(
+      stripeMd, "Stripe", "#533afd", "sohne-var",
+      { ...baseOverrides, primaryColor: "#7c3aed" },
+    );
+    expect(out).toContain("Stripe Purple"); // brand-qualified name preserved
+    const sec1 = out.match(/## 1\. Visual Theme & Atmosphere[\s\S]*?(?=\n## 2\.)/)?.[0] ?? "";
+    expect(sec1).toMatch(/\b(violet|purple)\b/i);
+  });
+
+  it("doesn't touch accent/non-primary palette entries (Ruby, Magenta)", () => {
+    // Stripe has Ruby (#ea2261) and Magenta (#f96bee) as separate accents.
+    // Swapping the violet primary must not rewrite these unrelated entries.
+    const out = applyOverridesToMd(
+      stripeMd, "Stripe", "#533afd", "sohne-var",
+      { ...baseOverrides, primaryColor: "#22c55e" },
+    );
+    // These accent entries live in §2; sanitizer only sweeps §1 free-form prose
+    // plus brand-name patterns. Ruby and Magenta should still be named as such.
+    expect(out).toMatch(/\*\*Ruby\*\*/);
+    expect(out).toMatch(/\*\*Magenta\*\*/);
+  });
+});
+
 // ── applyOverridesToMd: Philosophy Layer opt-out ──────────────────
 
 describe("applyOverridesToMd – Philosophy Layer", () => {
@@ -205,8 +305,11 @@ describe("applyOverridesToMd – Philosophy Layer", () => {
     expect(clickhouseMd).not.toContain("## 10. Voice & Tone");
     const out = applyOverridesToMd(
       clickhouseMd, "ClickHouse", "#000000", "Inter",
-      baseOverrides, undefined, undefined, false,
+      { ...baseOverrides, primaryColor: "#123456" },
+      undefined, undefined, false,
     );
+    // With an override set, the customized title applies; strip did nothing
+    // because this ref has no Philosophy Layer to remove.
     expect(out).toMatch(/^# Custom Design System \(based on ClickHouse\)/m);
   });
 });
@@ -325,6 +428,122 @@ describe("applyOverridesToMd – StylePreferences inline modifications", () => {
     expect(wsBlock).not.toContain("Open & spacious"); // rewrite did not fire
   });
 
+  it("rewrites Buttons subsection to 'Sharp & Precise' when buttonStyle=sharp", () => {
+    const out = withPrefs({ buttonStyle: "sharp" });
+    const buttonBlock = out.match(/### Buttons\n[\s\S]*?(?=###|\n## \d+\.)/)?.[0] ?? "";
+    expect(buttonBlock).toMatch(/Sharp & Precise|minimal rounding/);
+    expect(buttonBlock).not.toMatch(/pill-shaped|9999px/i);
+  });
+
+  it("rewrites Buttons subsection to 'Rounded & Friendly' when buttonStyle=rounded", () => {
+    const out = withPrefs({ buttonStyle: "rounded" });
+    const buttonBlock = out.match(/### Buttons\n[\s\S]*?(?=###|\n## \d+\.)/)?.[0] ?? "";
+    expect(buttonBlock).toMatch(/Rounded & Friendly|pill/i);
+    expect(buttonBlock).toContain("9999px");
+  });
+
+  it("inserts an explicit 'Style: Bordered Box' marker when inputStyle=bordered", () => {
+    // Fixture with no existing Style: line — rewrite must inject one.
+    const fixture = [
+      "# T",
+      "",
+      "## 4. Component Stylings",
+      "",
+      "### Inputs & Forms",
+      "- Border: 1px solid #e5e7eb",
+      "- Radius: 6px",
+      "",
+      "### Navigation",
+      "stub",
+      "",
+      "## 5. Layout",
+      "",
+    ].join("\n");
+    const out = applyOverridesToMd(
+      fixture, "T", "#000000", "Inter",
+      baseOverrides, undefined, { inputStyle: "bordered" },
+    );
+    const inputBlock = out.match(/### Inputs & Forms\n[\s\S]*?(?=###|\n## \d+\.)/)?.[0] ?? "";
+    expect(inputBlock).toMatch(/Style:\s*Bordered Box/);
+    expect(inputBlock).toContain("1px solid #e5e7eb"); // preserves ref detail
+  });
+
+  it("is idempotent when inputStyle=bordered and source already has a Style: line", () => {
+    const fixture = [
+      "# T",
+      "",
+      "## 4. Component Stylings",
+      "",
+      "### Inputs & Forms",
+      "- Style: Minimal outlined field",
+      "- Border: 1px solid #ddd",
+      "",
+      "### Navigation",
+      "stub",
+      "",
+      "## 5. Layout",
+      "",
+    ].join("\n");
+    const out = applyOverridesToMd(
+      fixture, "T", "#000000", "Inter",
+      baseOverrides, undefined, { inputStyle: "bordered" },
+    );
+    expect(out).toContain("Style: Minimal outlined field");
+    expect(out).not.toContain("Style: Bordered Box");
+  });
+
+  it("appends a Shadow: line when cardStyle=elevated and source lacks one", () => {
+    // Stripe's Cards block uses 'Shadow (standard):' / 'Shadow (ambient):' — no
+    // canonical '- Shadow:' bullet. Use a fixture that mirrors this pattern.
+    const fixture = [
+      "# T",
+      "",
+      "## 4. Component Stylings",
+      "",
+      "### Cards & Containers",
+      "- Background: #ffffff",
+      "- Border: 1px solid #eee",
+      "- Radius: 8px",
+      "- Shadow stack: layered recipe described in prose",
+      "",
+      "### Inputs & Forms",
+      "stub",
+      "",
+      "## 5. Layout",
+      "",
+    ].join("\n");
+    const out = applyOverridesToMd(
+      fixture, "T", "#000000", "Inter",
+      baseOverrides, undefined, { cardStyle: "elevated" },
+    );
+    const cardsBlock = out.match(/### Cards & Containers\n[\s\S]*?(?=###|\n## \d+\.)/)?.[0] ?? "";
+    expect(cardsBlock).toMatch(/^[-*]\s*Shadow:\s*multi-layer elevation/m);
+  });
+
+  it("is idempotent when cardStyle=elevated and source already has '- Shadow:' bullet", () => {
+    const fixture = [
+      "# T",
+      "",
+      "## 4. Component Stylings",
+      "",
+      "### Cards & Containers",
+      "- Background: #ffffff",
+      "- Shadow: rgba(0,0,0,0.1) 0 2px 4px",
+      "",
+      "### Inputs & Forms",
+      "stub",
+      "",
+      "## 5. Layout",
+      "",
+    ].join("\n");
+    const out = applyOverridesToMd(
+      fixture, "T", "#000000", "Inter",
+      baseOverrides, undefined, { cardStyle: "elevated" },
+    );
+    expect(out).toContain("Shadow: rgba(0,0,0,0.1)");
+    expect(out).not.toContain("multi-layer elevation");
+  });
+
   it("replaces 'Radius: Npx' patterns when borderRadius override given", () => {
     const out = withPrefs({}, { borderRadius: "4px" });
     const sec4 = out.match(/## 4\. [^\n]+\n([\s\S]*?)(?=\n## \d+\.)/)?.[1] ?? "";
@@ -374,6 +593,32 @@ describe("applyOverridesToMd – appends", () => {
     expect(out).toContain("No Emojis");
   });
 
+  it("appends Dark Mode Tokens section when darkMode=true", () => {
+    const out = applyOverridesToMd(
+      vercelMd, "Vercel", "#171717", "Geist",
+      { ...baseOverrides, darkMode: true },
+    );
+    expect(out).toContain("## Dark Mode Tokens");
+    expect(out).toMatch(/Dark mode is enabled for this design system/);
+    expect(out).toMatch(/\.dark\b/); // references the shadcn/Tailwind convention
+  });
+
+  it("does not append Dark Mode Tokens section when darkMode=false", () => {
+    const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides);
+    expect(out).not.toContain("## Dark Mode Tokens");
+  });
+
+  it("places Dark Mode Tokens before Iconography & SVG Guidelines", () => {
+    const out = applyOverridesToMd(
+      vercelMd, "Vercel", "#171717", "Geist",
+      { ...baseOverrides, darkMode: true },
+    );
+    const darkIdx = out.indexOf("## Dark Mode Tokens");
+    const iconIdx = out.indexOf("## Iconography & SVG Guidelines");
+    expect(darkIdx).toBeGreaterThan(0);
+    expect(iconIdx).toBeGreaterThan(darkIdx);
+  });
+
   it("does NOT embed shadcn CSS in the markdown body (CSS is exported separately)", () => {
     // Tokens/CSS export is a separate code path (generateShadcnCss returns
     // the CSS; consumers download or copy it independently). The DESIGN.md
@@ -382,5 +627,184 @@ describe("applyOverridesToMd – appends", () => {
     expect(out).not.toContain("@layer base");
     expect(out).not.toMatch(/^\s*:root\s*\{/m);
     expect(out).not.toMatch(/^\s*--background:/m);
+  });
+});
+
+// ── Wizard fidelity matrix ───────────────────────────────────────
+//
+// End-to-end guard: every wizard dimension must leave an observable
+// signature in the generated DESIGN.md. Uses a synthetic fixture with
+// every subsection so tests don't drift with reference updates. If a
+// future change drops a dimension's effect, the matching case fails.
+//
+// Source of truth for wizard inputs:
+//   components/design-wizard.tsx → overrides (primaryColor, borderRadius,
+//   darkMode) + preferences (buttonStyle, inputStyle, headerStyle,
+//   cardStyle, density).
+describe("applyOverridesToMd – wizard fidelity matrix", () => {
+  const fixture = [
+    "# Design System Inspiration of T",
+    "",
+    "## 1. Visual Theme & Atmosphere",
+    "A calm, technical aesthetic anchored in blue.",
+    "",
+    "## 2. Color Palette & Roles",
+    "- Primary: #6366f1",
+    "- Accent: #ef4444",
+    "",
+    "## 3. Typography Rules",
+    "- Primary: Inter",
+    "",
+    "## 4. Component Stylings",
+    "",
+    "### Buttons",
+    "- Style: default outlined",
+    "- Radius: 6px across variants",
+    "- Padding: 8px 16px",
+    "",
+    "### Inputs & Forms",
+    "- Border: 1px solid #e5e7eb",
+    "- Radius: 6px",
+    "",
+    "### Navigation",
+    "- Header sits on solid white with a bottom border.",
+    "",
+    "### Cards & Containers",
+    "- Background: #ffffff",
+    "- Border: 1px solid #eee",
+    "- Radius: 8px",
+    "",
+    "## 5. Layout Principles",
+    "",
+    "### Whitespace Philosophy",
+    "- Tight columns, 12px padding.",
+    "",
+    "## 6. Depth & Elevation",
+    "",
+    "## 7. Do's and Don'ts",
+    "",
+    "## 8. Responsive Behavior",
+    "",
+    "## 9. Agent Prompt Guide",
+    "",
+  ].join("\n");
+
+  function run(
+    overrides: Partial<Overrides> = {},
+    prefs: StylePreferences = {},
+    originalPrimary = "#6366f1",
+  ): string {
+    return applyOverridesToMd(
+      fixture, "T", originalPrimary, "Inter",
+      { ...baseOverrides, ...overrides },
+      undefined, prefs,
+    );
+  }
+
+  // Each row: one wizard dimension with one value. The signature must
+  // survive downstream passes (radius sweep, etc.).
+  const preferenceCases: Array<{
+    name: string;
+    prefs: StylePreferences;
+    signature: RegExp;
+  }> = [
+    { name: "buttonStyle=sharp",   prefs: { buttonStyle: "sharp" },   signature: /Sharp & Precise/ },
+    { name: "buttonStyle=rounded", prefs: { buttonStyle: "rounded" }, signature: /Rounded & Friendly/ },
+    { name: "inputStyle=bordered", prefs: { inputStyle: "bordered" }, signature: /Style:\s*Bordered Box/ },
+    { name: "inputStyle=underline",prefs: { inputStyle: "underline" },signature: /Underline -- bottom border/ },
+    { name: "headerStyle=glass",   prefs: { headerStyle: "glass" },   signature: /Glass & Floating/ },
+    { name: "headerStyle=solid",   prefs: { headerStyle: "solid" },   signature: /Solid & Bold/ },
+    { name: "cardStyle=bordered",  prefs: { cardStyle: "bordered" },  signature: /Shadow:\s*none/ },
+    { name: "cardStyle=elevated",  prefs: { cardStyle: "elevated" },  signature: /multi-layer elevation/ },
+    { name: "density=compact",     prefs: { density: "compact" },     signature: /Compact & dense/ },
+    { name: "density=spacious",    prefs: { density: "spacious" },    signature: /Open & spacious/ },
+  ];
+  for (const c of preferenceCases) {
+    it(`${c.name} leaves a signature in DESIGN.md`, () => {
+      const out = run({}, c.prefs);
+      expect(out).toMatch(c.signature);
+    });
+  }
+
+  it("primaryColor override swaps the hex and rewrites brand color prose", () => {
+    const out = run({ primaryColor: "#22c55e" });
+    expect(out).not.toContain("#6366f1");
+    expect(out).toContain("#22c55e");
+  });
+
+  it("borderRadius override rewrites '- Radius: Npx' bullets across §4", () => {
+    const out = run({ borderRadius: "12px" });
+    const sec4 = out.match(/## 4\.[\s\S]*?(?=## 5\.)/)?.[0] ?? "";
+    const bullets = [...sec4.matchAll(/^[-*]\s*Radius:\s*(\S+)/gim)];
+    expect(bullets.length).toBeGreaterThan(0);
+    for (const m of bullets) {
+      // Accept the user's value or the deliberate pill sentinel (9999px).
+      expect(["12px", "9999px"]).toContain(m[1]);
+    }
+  });
+
+  it("darkMode=true appends the Dark Mode Tokens section", () => {
+    const out = run({ darkMode: true });
+    expect(out).toContain("## Dark Mode Tokens");
+  });
+
+  // ── Conflict resolution guards ───────────────────────────────────
+  // These used to silently lose to the trailing radius sweep before the
+  // fix in generate-css.ts (sweep hoisted above the buttonStyle rewrite).
+
+  it("buttonStyle=rounded + borderRadius=8px keeps the pill radius (9999px)", () => {
+    const out = run({ borderRadius: "8px" }, { buttonStyle: "rounded" });
+    const btn = out.match(/### Buttons\n[\s\S]*?(?=###|\n## \d+\.)/)?.[0] ?? "";
+    expect(btn).toContain("9999px");
+    expect(btn).not.toMatch(/Radius:\s*8px/);
+  });
+
+  it("buttonStyle=sharp + borderRadius=12px caps buttons at 4px despite the sweep", () => {
+    const out = run({ borderRadius: "12px" }, { buttonStyle: "sharp" });
+    const btn = out.match(/### Buttons\n[\s\S]*?(?=###|\n## \d+\.)/)?.[0] ?? "";
+    expect(btn).toMatch(/Radius:\s*4px/);
+    expect(btn).not.toMatch(/Radius:\s*12px/);
+  });
+
+  // Ensure the radius sweep still fires in non-wizard paths (no prefs).
+  it("borderRadius alone (no stylePreferences) still rewrites §4 radius bullets", () => {
+    const out = applyOverridesToMd(
+      fixture, "T", "#6366f1", "Inter",
+      { ...baseOverrides, borderRadius: "2px" },
+      undefined, undefined,
+    );
+    expect(out).toMatch(/- Radius:\s*2px/);
+  });
+
+  it("cardStyle=bordered injects a Shadow: none line even when source has no Shadow bullet", () => {
+    // Our fixture's Cards block lists Background/Border/Radius but no Shadow
+    // bullet — exactly the case the old replace-only branch silently dropped.
+    const out = run({}, { cardStyle: "bordered" });
+    const cards = out.match(/### Cards & Containers\n[\s\S]*?(?=###|\n## \d+\.)/)?.[0] ?? "";
+    expect(cards).toMatch(/^[-*]\s*Shadow:\s*none/m);
+  });
+
+  // Combined: every dimension at once must leave every signature.
+  it("all wizard dimensions combined each leave their signature", () => {
+    const out = run(
+      { primaryColor: "#22c55e", borderRadius: "10px", darkMode: true },
+      {
+        buttonStyle: "rounded",
+        inputStyle: "underline",
+        headerStyle: "solid",
+        cardStyle: "elevated",
+        density: "compact",
+      },
+    );
+    expect(out).toMatch(/Rounded & Friendly/);
+    expect(out).toMatch(/Underline -- bottom border/);
+    expect(out).toMatch(/Solid & Bold/);
+    expect(out).toMatch(/multi-layer elevation/);
+    expect(out).toMatch(/Compact & dense/);
+    expect(out).toContain("#22c55e");
+    expect(out).toContain("## Dark Mode Tokens");
+    // pill wins for buttons — the 10px sweep does not clobber
+    const btn = out.match(/### Buttons\n[\s\S]*?(?=###|\n## \d+\.)/)?.[0] ?? "";
+    expect(btn).toContain("9999px");
   });
 });

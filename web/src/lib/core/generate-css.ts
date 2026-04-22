@@ -1,4 +1,4 @@
-import { hslString, contrastForeground, generateColorScale, lighten, darken, hexToHsl, hslToHex, generateChartColors } from './color';
+import { hslString, contrastForeground, generateColorScale, lighten, darken, hexToHsl, hslToHex, generateChartColors, colorFamily } from './color';
 import type { Overrides, StylePreferences } from './types';
 
 export function generateShadcnCss(
@@ -192,25 +192,94 @@ export function applyOverridesToMd(
   // explicit "**DO**" / "**DON'T**" markdown instead.
   result = result.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{1FA00}-\u{1FAFF}\u{200D}\u{20E3}\u{E0020}-\u{E007F}]/gu, '');
 
-  // Replace title
-  result = result.replace(/^# .+$/m, `# Custom Design System (based on ${refName})`);
+  // Replace title only when the user actually customized something. "As-is"
+  // export (empty overrides + no stylePreferences) keeps the reference's own
+  // "# Design System Inspiration of X" heading so the document reads like the
+  // untouched original, not a Custom derivative. The trailing export wrapper
+  // sections (Iconography, Document Policies) still append either way — those
+  // are export-format boilerplate, not customization.
+  const hasAnyOverride = !!(
+    overrides.primaryColor ||
+    overrides.fontFamily ||
+    overrides.headingWeight ||
+    overrides.borderRadius ||
+    overrides.darkMode
+  );
+  const hasAnyPref = !!(stylePreferences && Object.keys(stylePreferences).length > 0);
+  if (hasAnyOverride || hasAnyPref) {
+    result = result.replace(/^# .+$/m, `# Custom Design System (based on ${refName})`);
+  }
 
   // Replace values directly in body text
   if (overrides.primaryColor && overrides.primaryColor !== originalPrimary) {
     const re = new RegExp(originalPrimary.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
     result = re[Symbol.replace](result, overrides.primaryColor);
+
+    // Now sanitize the ref-specific color prose — "Stripe Purple", "signature
+    // violet", "rich navy", "blue-tinted shadows" all describe the OLD primary
+    // and become lies once the hex is swapped. This rewrites them to the new
+    // color family without touching accent/secondary palette entries.
+    result = sanitizeColorProse(result, refName, originalPrimary, overrides.primaryColor);
   }
   if (overrides.fontFamily && overrides.fontFamily !== originalFont) {
     result = result.replaceAll(originalFont, overrides.fontFamily);
   }
 
+  // Sweep generic "Radius: Npx" bullets in §4 BEFORE any subsection rewrite so
+  // a stale ref radius gets picked up. Must run first because buttonStyle
+  // rewrites the entire Buttons block with its own radius (pill for rounded,
+  // 4px cap for sharp) that the user's borderRadius must NOT clobber.
+  // Hoisted out of `if (stylePreferences)` so CLI/skip-wizard paths that pass
+  // borderRadius without prefs still get the sweep.
+  if (overrides.borderRadius) {
+    result = result.replace(/(?<=^[-*].*?)Radius:\s*\d+px/gim, `Radius: ${overrides.borderRadius}`);
+    result = result.replace(/(\d+)px\s*(?:\(standard\)|\(buttons?\)|\(cards?\))/gi, (match, px) => {
+      const orig = parseInt(px);
+      if (orig === 9999 || orig === 50) return match; // don't touch pills/circles
+      return `${overrides.borderRadius} (customized)`;
+    });
+  }
+
   // ── Inline modification: rewrite subsections to match user preferences ──
   if (stylePreferences) {
-    // Replace Inputs & Forms subsection in Section 4
+    // Replace Buttons subsection in Section 4 based on buttonStyle preference.
+    // Both branches rewrite explicitly so the user's pick always leaves a mark
+    // (no silent no-op branch).
+    if (stylePreferences.buttonStyle === 'sharp' || stylePreferences.buttonStyle === 'rounded') {
+      const isSharp = stylePreferences.buttonStyle === 'sharp';
+      const buttonRadius = isSharp
+        ? (overrides.borderRadius && parseInt(overrides.borderRadius, 10) <= 4 ? overrides.borderRadius : '4px')
+        : '9999px';
+      const sharpBlock = `### Buttons\n- Style: Sharp & Precise -- minimal rounding, decisive geometric edges\n- Radius: ${buttonRadius} across primary, secondary, and ghost variants\n- Padding: 8px 16px (default), 6px 12px (compact), 12px 20px (comfortable)\n- Primary: solid primary background, foreground contrast text, 1px solid primary border\n- Secondary: transparent/neutral background, foreground text, 1px solid border color\n- Ghost: transparent background, primary text, no border until hover\n- Hover: primary darkens ~10%, secondary gains subtle border-color bump\n- Font weight: 500-600 for CTA text clarity\n\n`;
+      const roundedBlock = `### Buttons\n- Style: Rounded & Friendly -- fully pill-shaped, approachable silhouette\n- Radius: ${buttonRadius} on all variants (true pill)\n- Padding: 10px 20px (default), 8px 16px (compact), 14px 28px (comfortable)\n- Primary: solid primary background, foreground contrast text, no border\n- Secondary: neutral fill or border-only, foreground text\n- Ghost: transparent with primary text, pill hover background at ~10% primary alpha\n- Hover: background shifts 8-12% darker (primary) or adds tinted overlay\n- Font weight: 500 for readable pill CTAs\n\n`;
+      result = result.replace(
+        /### Buttons\n[\s\S]*?(?=###|\n## \d+\.)/,
+        isSharp ? sharpBlock : roundedBlock,
+      );
+    }
+
+    // Replace Inputs & Forms subsection in Section 4 — both branches explicit.
     if (stylePreferences.inputStyle === 'underline') {
       result = result.replace(
         /### Inputs & Forms\n[\s\S]*?(?=###|\n## \d+\.)/,
         `### Inputs & Forms\n- Style: Underline -- bottom border only, no side or top borders\n- Border-bottom: 2px solid border color, no border-radius on the field itself\n- Focus: bottom border thickens or shifts to primary color\n- Text: foreground color, Placeholder: muted-foreground\n- No background fill -- transparent base\n\n`
+      );
+    } else if (stylePreferences.inputStyle === 'bordered') {
+      // Only rewrite if the original doesn't already describe a bordered box
+      // (common case) — this preserves ref-specific details like Stripe's
+      // "1px solid #e5edf5" and adds the explicit style label.
+      result = result.replace(
+        /### Inputs & Forms\n[\s\S]*?(?=###|\n## \d+\.)/,
+        (match) => {
+          const hasStyleLine = /^\s*[-*]\s*Style:/m.test(match);
+          if (hasStyleLine) return match;
+          // Insert the Style: line right after the heading so the user's
+          // bordered-box choice is explicit in the DESIGN.md.
+          return match.replace(
+            /^### Inputs & Forms\n/,
+            `### Inputs & Forms\n- Style: Bordered Box -- full 1px border, contained field, structured rectangle\n`,
+          );
+        },
       );
     }
 
@@ -233,11 +302,40 @@ export function applyOverridesToMd(
       );
     }
 
-    // Replace Cards subsection shadow description in Section 4
+    // Replace Cards subsection shadow description in Section 4 — both branches
+    // leave a visible trace.
     if (stylePreferences.cardStyle === 'bordered') {
+      // First try replacing an existing "Shadow: ..." line so ref-specific
+      // recipes (rgba stacks, named tiers) get flattened cleanly.
+      const before = result;
       result = result.replace(
         /(### Cards & Containers\n[\s\S]*?)Shadow:.*?\n/,
         '$1Shadow: none -- use border for definition, flat hierarchy\n'
+      );
+      // If the ref had no Shadow line at all (e.g., block only lists Background
+      // / Border / Radius), inject one so the user's bordered pick is not a
+      // silent no-op. Mirrors the elevated-branch injection pattern.
+      if (result === before) {
+        result = result.replace(
+          /### Cards & Containers\n[\s\S]*?(?=###|\n## \d+\.)/,
+          (match) => {
+            const trimmed = match.replace(/\n+$/, '\n');
+            return `${trimmed}- Shadow: none -- use border for definition, flat hierarchy\n\n`;
+          },
+        );
+      }
+    } else if (stylePreferences.cardStyle === 'elevated') {
+      // Inject a Shadow: line if the block lacks one so "elevated" is not a
+      // silent no-op. Common case: ref describes shadow in prose (e.g. "Shadow
+      // stack:") but has no `- Shadow:` bullet. We append a canonical multi-
+      // layer recipe so the user's pick is always visible in DESIGN.md.
+      result = result.replace(
+        /### Cards & Containers\n[\s\S]*?(?=###|\n## \d+\.)/,
+        (match) => {
+          if (/^[-*]\s*Shadow:/m.test(match)) return match; // already explicit
+          const trimmed = match.replace(/\n+$/, '\n');
+          return `${trimmed}- Shadow: multi-layer elevation -- 0 1px 3px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06) for default cards; intensify on hover\n\n`;
+        },
       );
     }
 
@@ -257,18 +355,8 @@ export function applyOverridesToMd(
       );
     }
 
-    // Replace radius values in Section 4 when user chose a different radius
-    if (overrides.borderRadius) {
-      const chosenPx = parseInt(overrides.borderRadius);
-      // Replace "Radius: Npx" patterns in component descriptions (but not radius scale tables)
-      result = result.replace(/(?<=^[-*].*?)Radius:\s*\d+px/gim, `Radius: ${overrides.borderRadius}`);
-      // Replace "rounded-Npx" or "Npx radius" in inline descriptions
-      result = result.replace(/(\d+)px\s*(?:\(standard\)|\(buttons?\)|\(cards?\))/gi, (match, px) => {
-        const orig = parseInt(px);
-        if (orig === 9999 || orig === 50) return match; // don't touch pills/circles
-        return `${overrides.borderRadius} (customized)`;
-      });
-    }
+    // Radius sweep moved above — runs before the Buttons rewrite so that
+    // buttonStyle=rounded / sharp keeps its intentional radius (pill / 4px cap).
   }
 
   // Append component list
@@ -278,10 +366,155 @@ export function applyOverridesToMd(
     result += '\n';
   }
 
+  // Append dark mode section when the user opted in. This documents the dark
+  // theme tokens in prose (the actual CSS lives in generateShadcnCss, exported
+  // separately) so the user's last wizard choice leaves a visible trace in
+  // DESIGN.md, not just in the CSS file.
+  if (overrides.darkMode) {
+    result += buildDarkModeSection(overrides.primaryColor || originalPrimary);
+  }
+
   // Append additional sections
   result += buildIconographySection();
   result += buildDocumentPolicies();
   return result;
+}
+
+// ── Color prose sanitizer ─────────────────────────────────────────
+//
+// Triggered only when the user overrides primaryColor with a value different
+// from the reference's original. The raw string-replace above swaps hex
+// literals but leaves ref-specific prose ("Stripe Purple", "signature violet",
+// "blue-tinted shadows") pointing at a color that no longer exists in the
+// document. This rewrite is deliberately conservative:
+//
+//   1. Only §1 "Visual Theme & Atmosphere" gets free-form color-noun rewrites.
+//      §2 palette entries, §4 component details, and prose in later sections
+//      stay untouched — they may describe accent/secondary colors that shouldn't
+//      move with the primary.
+//   2. Brand-name-qualified colors ("Stripe Purple", "Vercel Black") get swapped
+//      to generic "Brand <NewFamily>" across the whole doc — these are always
+//      primary references.
+//   3. Shadow rgba() values whose hue closely matches the OLD primary's hue
+//      get rotated to the new primary's hue (preserving saturation, lightness,
+//      and alpha). This fixes "blue-tinted shadow" on brands like Stripe.
+//      Pure-neutral shadows (rgba(0,0,0,...), low-saturation rgba) are left alone.
+function sanitizeColorProse(md: string, refName: string, oldPrimary: string, newPrimary: string): string {
+  const oldFam = colorFamily(oldPrimary);
+  const newFam = colorFamily(newPrimary);
+
+  // Early-out: families match — prose is still coherent, nothing to rewrite.
+  if (oldFam.primary === newFam.primary) return md;
+
+  const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+  // 1. "{RefName} {ColorNoun}" → "Brand {NewFamily}" (whole doc)
+  //    Matches both "Stripe Purple" in §2 named entries and §1 prose mentions.
+  const refNameEsc = escape(refName);
+  const oldSynPattern = oldFam.synonyms.map(escape).join('|');
+  const brandRe = new RegExp(`\\b${refNameEsc}\\s+(${oldSynPattern})\\b`, 'gi');
+  md = md.replace(brandRe, `Brand ${capitalizeWord(newFam.primary)}`);
+
+  // 2. Section 1 color-noun sweep — replace old-family synonyms with new-family
+  //    primary noun inside the Visual Theme & Atmosphere section only.
+  const sec1Match = md.match(/## 1\. Visual Theme & Atmosphere[\s\S]*?(?=\n## 2\.)/);
+  if (sec1Match) {
+    const sec1 = sec1Match[0];
+    const sec1Start = md.indexOf(sec1);
+    // Replace every oldFam synonym token with newFam.primary. Do adjective
+    // tokens too — "rich violet" → "rich green". Preserve capitalization of
+    // the first letter.
+    const sweepRe = new RegExp(`\\b(${oldSynPattern})\\b`, 'gi');
+    const sec1Rewritten = sec1.replace(sweepRe, (match) => {
+      const replacement = newFam.primary;
+      return match[0] === match[0].toUpperCase()
+        ? capitalizeWord(replacement)
+        : replacement;
+    });
+    // Also refresh adjective phrasing: "saturated blue-violet" type hyphenates.
+    const hyphenated = sec1Rewritten.replace(
+      new RegExp(`\\b(${oldSynPattern})-(${oldSynPattern})\\b`, 'gi'),
+      newFam.primary,
+    );
+    md = md.slice(0, sec1Start) + hyphenated + md.slice(sec1Start + sec1.length);
+  }
+
+  // 3. Shadow rgba rotation — rgba(r, g, b[, a]) whose hue is near oldPrimary's.
+  const [oldHue, oldSat] = hexToHsl(oldPrimary);
+  const [newHue] = hexToHsl(newPrimary);
+  if (oldSat >= 20) {
+    // Only rotate when the OLD primary itself had chromatic content — a neutral
+    // old primary means any blue-tinted shadow in the ref was NOT derived from
+    // the primary (e.g., a neutral-black ref using a blue shadow accent).
+    md = md.replace(
+      /rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*([\d.]+)\s*)?\)/g,
+      (match, rStr, gStr, bStr, aStr) => {
+        const r = parseInt(rStr, 10);
+        const g = parseInt(gStr, 10);
+        const b = parseInt(bStr, 10);
+        const shadowHex = '#' + [r, g, b].map((n) => n.toString(16).padStart(2, '0')).join('');
+        const [sh, ss, sl] = hexToHsl(shadowHex);
+        // Only rotate: (a) saturated enough to be tinted, (b) hue near old primary
+        if (ss < 12) return match; // pure-neutral shadow
+        if (hueDistance(sh, oldHue) > 45) return match; // unrelated tint
+        const rotated = hslToHex(newHue, ss, sl);
+        const h2 = rotated.replace('#', '');
+        const nr = parseInt(h2.slice(0, 2), 16);
+        const ng = parseInt(h2.slice(2, 4), 16);
+        const nb = parseInt(h2.slice(4, 6), 16);
+        return aStr ? `rgba(${nr},${ng},${nb},${aStr})` : `rgba(${nr},${ng},${nb})`;
+      },
+    );
+  }
+
+  return md;
+}
+
+function hueDistance(a: number, b: number): number {
+  const d = Math.abs(a - b) % 360;
+  return d > 180 ? 360 - d : d;
+}
+
+function capitalizeWord(s: string): string {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+function buildDarkModeSection(primary: string): string {
+  const [h] = hexToHsl(primary);
+  const darkBg = hslToHex(h, 15, 7);
+  const darkBorder = hslToHex(h, 10, 18);
+  const darkMuted = hslToHex(h, 10, 15);
+  return `
+
+---
+
+## Dark Mode Tokens
+
+Dark mode is enabled for this design system. When the \`.dark\` class is present
+on any ancestor (typically \`<html>\` or \`<body>\`), the following tokens replace
+the light-mode values. Hue is derived from the primary color so shadows and
+neutrals stay on-brand.
+
+| Token | Light | Dark |
+|-------|-------|------|
+| Background | page surface color | \`${darkBg}\` (primary-tinted near-black) |
+| Foreground | text color | \`#fafafa\` |
+| Border | hairline divider | \`${darkBorder}\` |
+| Muted | subdued surface | \`${darkMuted}\` |
+| Primary | ${primary} | ${primary} (unchanged — brand anchor is theme-stable) |
+
+### Implementation Guidance
+
+- Use CSS custom properties for every color; never hard-code hex in components.
+- Scope dark tokens under \`.dark\` (shadcn/Tailwind convention) or a media
+  query (\`prefers-color-scheme: dark\`), not both — pick one source of truth.
+- Run a contrast audit after applying dark tokens: body text and interactive
+  elements must hit WCAG AA (4.5:1) against the dark background.
+- Shadows: lighten and reduce opacity in dark mode. A shadow that reads clearly
+  on white often disappears entirely on a near-black surface.
+- Images and illustrations: supply a dark variant or apply a subtle overlay.
+  Transparent PNGs with dark silhouettes will vanish on dark backgrounds.
+`;
 }
 
 function buildIconographySection(): string {

@@ -130,14 +130,31 @@ export interface PreviewOverrides {
   fontFamily?: string;
   headingWeight?: string;
   borderRadius?: string;
+  /** Wizard style preferences — optional, surface-level hints that the
+   *  preview applies on top of the parsed token set so builder step 3 reflects
+   *  the user's A/B choices (button pill vs. sharp, elevated vs. bordered
+   *  card, compact vs. spacious density, underline vs. bordered input). */
+  stylePreferences?: {
+    buttonStyle?: string;
+    inputStyle?: string;
+    cardStyle?: string;
+    density?: string;
+    [key: string]: string | undefined;
+  };
 }
 
 export function applyOverrides(tokens: ParsedTokens, overrides?: PreviewOverrides): ParsedTokens {
   if (!overrides) return tokens;
   const o = overrides;
-  const radius = o.borderRadius ?? tokens.radii.button;
-  const headingWeight = o.headingWeight ?? tokens.typography.headingWeight;
-  const family = o.fontFamily ?? tokens.typography.family;
+  // Treat empty string the same as undefined — an empty override means "keep
+  // the reference default", not "apply the empty value". Required because
+  // BuilderPage holds Overrides as `{primaryColor: string, ...}` with `''` as
+  // the sentinel for "unset" (see use-as-is path), and `??` would leak that.
+  const pick = <T extends string | undefined>(v: T, fallback: string) => (v ? v : fallback);
+  const baseRadius = pick(o.borderRadius, tokens.radii.button);
+  const headingWeight = pick(o.headingWeight, tokens.typography.headingWeight);
+  const family = pick(o.fontFamily, tokens.typography.family);
+  const prefs = o.stylePreferences ?? {};
 
   const sortedSizes = [...tokens.typography.sizes].sort((a, b) => b - a);
   const hWeight = parseInt(headingWeight, 10) || 700;
@@ -150,11 +167,27 @@ export function applyOverrides(tokens: ParsedTokens, overrides?: PreviewOverride
   });
   void sortedSizes; // keep variable for future size override
 
+  // buttonStyle:rounded forces pills; buttonStyle:sharp clamps to <=4px even if
+  // the user's borderRadius is larger. Input radius follows button when the
+  // input style is bordered; underline decouples input from the radius system.
+  const buttonRadius = prefs.buttonStyle === 'rounded'
+    ? '9999px'
+    : prefs.buttonStyle === 'sharp'
+      ? capRadius(baseRadius, 4)
+      : baseRadius;
+  const inputRadius = prefs.inputStyle === 'underline' ? '0px' : buttonRadius;
+
+  // cardStyle:elevated keeps the ref's shadow; cardStyle:bordered strips it to
+  // a flat "none" recipe so the preview visually demonstrates the user's pick.
+  const shadows = prefs.cardStyle === 'bordered'
+    ? [{ name: 'Flat', value: 'none' }, ...tokens.shadows.slice(1)]
+    : tokens.shadows;
+
   return {
     ...tokens,
     identity: {
       ...tokens.identity,
-      primary: o.primaryColor ?? tokens.identity.primary,
+      primary: pick(o.primaryColor, tokens.identity.primary),
     },
     typography: {
       ...tokens.typography,
@@ -163,12 +196,13 @@ export function applyOverrides(tokens: ParsedTokens, overrides?: PreviewOverride
       hierarchy,
     },
     radii: {
-      button: radius,
-      input: radius,
-      card: capRadius(radius, 16),
-      dialog: capRadius(radius, 16),
-      badge: capRadius(radius, 8),
+      button: buttonRadius,
+      input: inputRadius,
+      card: capRadius(buttonRadius, 16),
+      dialog: capRadius(buttonRadius, 16),
+      badge: capRadius(buttonRadius, 8),
     },
+    shadows,
   };
 }
 
@@ -351,13 +385,19 @@ export function extractTokens(detail: {
         fonts,
       };
     })(),
-    radii: {
-      button: detail.radius,                      // full — pill OK
-      input: detail.radius,                       // matches button
-      card: capRadius(detail.radius, 16),         // cap large surfaces
-      dialog: capRadius(detail.radius, 16),
-      badge: capRadius(detail.radius, 8),         // tighter for inline pills
-    },
+    radii: (() => {
+      // Normalize: some refs express radius as a range ("4px-8px") rather
+      // than a single CSS value. Strip anything after the first "-"/"–" so
+      // the radii tokens always produce valid CSS. Keeps "9999px" (pill) intact.
+      const normalized = detail.radius.replace(/[-–].*/, "").trim();
+      return {
+        button: normalized,                       // full — pill OK
+        input: normalized,                        // matches button
+        card: capRadius(normalized, 16),          // cap large surfaces
+        dialog: capRadius(normalized, 16),
+        badge: capRadius(normalized, 8),          // tighter for inline pills
+      };
+    })(),
     palette: extractPalette(md),
     spacing: extractSpacing(md),
     shadows: extractShadows(md),

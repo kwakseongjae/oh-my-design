@@ -18,7 +18,8 @@ program
       const { writeFileSync } = await import('fs');
       const { resolve } = await import('path');
 
-      // Decode the hash
+      // Decode the hash — format: refId|primary|font|weight|radius|dark|components|stylePrefs
+      // parts[7] (stylePrefs) was added in v2. Old hashes lack it and still decode.
       let b64 = opts.config.replace(/-/g, '+').replace(/_/g, '/');
       while (b64.length % 4) b64 += '=';
       const decoded = Buffer.from(b64, 'base64').toString('utf-8');
@@ -33,6 +34,17 @@ program
         darkMode: parts[5] === '1',
       };
       const components = parts[6] ? parts[6].split(',').filter(Boolean) : [];
+      // stylePreferences are decoded but not yet applied here — the CLI's
+      // customizer (src/core/customizer.ts) does not mirror the web's
+      // stylePreferences inline-rewrite logic yet. Parsed here so old and
+      // new hashes coexist without error; CLI integration is a follow-up.
+      const stylePrefs: Record<string, string> = {};
+      if (parts[7]) {
+        for (const pair of parts[7].split(';')) {
+          const [k, v] = pair.split('=');
+          if (k && v) stylePrefs[k] = v;
+        }
+      }
 
       // Load reference and apply
       const { loadReference } = await import('../src/core/reference-parser.js');

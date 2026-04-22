@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { encodeConfig, decodeConfig, generateNpxCommand } from "./config-hash";
-import type { Overrides } from "./types";
+import type { Overrides, StylePreferences } from "./types";
 
 const fullOverrides: Overrides = {
   primaryColor: "#6366f1",
@@ -48,6 +48,7 @@ describe("decodeConfig", () => {
     expect(decoded.refId).toBe("vercel");
     expect(decoded.overrides).toEqual(fullOverrides);
     expect(decoded.components).toEqual(["button", "card", "input"]);
+    expect(decoded.stylePreferences).toEqual({});
   });
 
   it("roundtrips empty overrides", () => {
@@ -56,6 +57,7 @@ describe("decodeConfig", () => {
     expect(decoded.refId).toBe("vercel");
     expect(decoded.overrides).toEqual(emptyOverrides);
     expect(decoded.components).toEqual([]);
+    expect(decoded.stylePreferences).toEqual({});
   });
 
   it("roundtrips refIds containing dots (linear.app)", () => {
@@ -79,12 +81,62 @@ describe("decodeConfig", () => {
     let hash = encodeConfig("vercel", fullOverrides, ["button"]);
     for (let i = 0; i < 5; i++) {
       const d = decodeConfig(hash);
-      hash = encodeConfig(d.refId, d.overrides, d.components);
+      hash = encodeConfig(d.refId, d.overrides, d.components, d.stylePreferences);
     }
     const final = decodeConfig(hash);
     expect(final.refId).toBe("vercel");
     expect(final.overrides).toEqual(fullOverrides);
     expect(final.components).toEqual(["button"]);
+    expect(final.stylePreferences).toEqual({});
+  });
+});
+
+describe("encodeConfig/decodeConfig — stylePreferences", () => {
+  const prefs: StylePreferences = {
+    buttonStyle: "sharp",
+    inputStyle: "underline",
+    headerStyle: "glass",
+    cardStyle: "bordered",
+    density: "compact",
+  };
+
+  it("roundtrips a full set of style preferences", () => {
+    const hash = encodeConfig("vercel", fullOverrides, ["button"], prefs);
+    const decoded = decodeConfig(hash);
+    expect(decoded.stylePreferences).toEqual(prefs);
+  });
+
+  it("preserves style preferences across hash format v1 (old, no prefs slot)", () => {
+    // Simulate an old hash: only 7 pipe slots, no stylePreferences tail.
+    const oldRaw = ["vercel", "#6366f1", "Inter", "600", "8px", "1", "button,card"].join("|");
+    const oldHash = Buffer.from(oldRaw).toString("base64url");
+    const decoded = decodeConfig(oldHash);
+    expect(decoded.refId).toBe("vercel");
+    expect(decoded.components).toEqual(["button", "card"]);
+    expect(decoded.stylePreferences).toEqual({});
+  });
+
+  it("omits trailing empty prefs slot to keep hashes short when no prefs given", () => {
+    const withPrefs = encodeConfig("vercel", emptyOverrides, [], prefs);
+    const withoutPrefs = encodeConfig("vercel", emptyOverrides, []);
+    expect(withPrefs).not.toBe(withoutPrefs);
+    // The no-prefs hash should match what the old (pre-v2) encoder produced —
+    // no unexpected tail bytes.
+    const oldRaw = ["vercel", "", "", "", "", "0", ""].join("|");
+    const oldHash = Buffer.from(oldRaw).toString("base64url").replace(/=+$/, "");
+    expect(withoutPrefs).toBe(oldHash);
+  });
+
+  it("yields different hashes for different prefs on same overrides", () => {
+    const a = encodeConfig("vercel", emptyOverrides, [], { buttonStyle: "sharp" });
+    const b = encodeConfig("vercel", emptyOverrides, [], { buttonStyle: "rounded" });
+    expect(a).not.toBe(b);
+  });
+
+  it("survives roundtrip with unexpected extra pref keys (forward-compat)", () => {
+    const future: StylePreferences = { buttonStyle: "sharp", futurePref: "experimental" };
+    const decoded = decodeConfig(encodeConfig("vercel", emptyOverrides, [], future));
+    expect(decoded.stylePreferences).toEqual(future);
   });
 });
 

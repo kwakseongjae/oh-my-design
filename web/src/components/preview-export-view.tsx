@@ -53,7 +53,7 @@ export function PreviewExportView({
     [detail, overrides, components, stylePreferences],
   );
 
-  const npxCmd = generateNpxCommand(detail.id, overrides, components);
+  const npxCmd = generateNpxCommand(detail.id, overrides, components, stylePreferences);
   const refName = detail.id.charAt(0).toUpperCase() + detail.id.slice(1);
   const ds = getDesignSystem(detail.id);
 
@@ -143,7 +143,7 @@ export function PreviewExportView({
         <div className="rounded-xl overflow-hidden border border-border/40 dark:border-border">
           <ReferencePreview
             tokens={extractTokens(detail)}
-            overrides={overrides}
+            overrides={{ ...overrides, stylePreferences }}
             embedded
           />
         </div>

@@ -59,6 +59,26 @@ function AnimatedHeading({ text, sub }: { text: string; sub?: string }) {
   );
 }
 
+// ── DESIGN.md-only hint ──────────────────────────────────────────
+// Surfaced on wizard steps whose choice is reflected in the exported
+// DESIGN.md but NOT in the step-3 preview (Header has no preview section;
+// dark-mode tokens attach to the export, not the single-mode preview).
+// Keeps the user's mental model honest — otherwise they'd flip a switch,
+// see no preview change, and assume it was silently dropped.
+function DesignMdOnlyHint() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, delay: 0.25 }}
+      className="mt-3 inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/40 px-3 py-1 text-[11px] text-muted-foreground"
+    >
+      <span className="h-1.5 w-1.5 rounded-full bg-foreground/60" />
+      Reflected in your DESIGN.md export -- not in the step 3 preview
+    </motion.div>
+  );
+}
+
 // ── A/B Card ─────────────────────────────────────────────────────
 
 function ABCard({
@@ -230,45 +250,6 @@ function InputStyleStep({ detail, preferences, onPref }: StepProps) {
   );
 }
 
-function DepthStyleStep({ detail, preferences, onPref }: StepProps) {
-  const primary = detail.primary;
-  return (
-    <div>
-      <AnimatedHeading text="Flat or elevated?" sub="This controls shadows across every card, dropdown, and dialog." />
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        <ABCard label="Flat & Clean" description="Borders only, no shadows, minimal depth" selected={preferences.depthStyle === "flat"} onClick={() => onPref("depthStyle", "flat")} delay={0.3}>
-          <div className="flex gap-3">
-            <div className="w-32 rounded-xl border preview-border p-3 bg-background">
-              <div className="h-2 w-16 rounded bg-foreground/70 mb-2" />
-              <div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" />
-              <div className="h-1.5 w-3/4 rounded bg-muted-foreground/15" />
-            </div>
-            <div className="w-32 rounded-xl border preview-border p-3 bg-background">
-              <div className="h-2 w-12 rounded bg-foreground/70 mb-2" />
-              <div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" />
-              <div className="h-1.5 w-2/3 rounded bg-muted-foreground/15" />
-            </div>
-          </div>
-        </ABCard>
-        <ABCard label="Layered & Rich" description="Multi-layer shadows, floating feel" selected={preferences.depthStyle === "layered"} onClick={() => onPref("depthStyle", "layered")} delay={0.4}>
-          <div className="flex gap-3">
-            <div className="w-32 rounded-xl p-3 bg-card shadow-xl shadow-black/10 dark:shadow-white/5">
-              <div className="h-2 w-16 rounded bg-foreground/70 mb-2" />
-              <div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" />
-              <div className="h-1.5 w-3/4 rounded bg-muted-foreground/15" />
-            </div>
-            <div className="w-32 rounded-xl p-3 bg-card shadow-lg shadow-black/8 dark:shadow-white/3">
-              <div className="h-2 w-12 rounded bg-foreground/70 mb-2" />
-              <div className="h-1.5 w-full rounded bg-muted-foreground/15 mb-1" />
-              <div className="h-1.5 w-2/3 rounded bg-muted-foreground/15" />
-            </div>
-          </div>
-        </ABCard>
-      </div>
-    </div>
-  );
-}
-
 function DensityStep({ detail, preferences, onPref }: StepProps) {
   const primary = detail.primary;
   return (
@@ -302,49 +283,13 @@ function DensityStep({ detail, preferences, onPref }: StepProps) {
   );
 }
 
-function SaturationStep({ detail, preferences, onPref, overrides }: StepProps) {
-  const primary = overrides.primaryColor || detail.primary;
-  return (
-    <div>
-      <AnimatedHeading text="Muted or vivid?" sub="This controls the intensity of your entire color palette." />
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        <ABCard label="Muted & Soft" description="Desaturated palette, pastel accents, calm" selected={preferences.saturation === "muted"} onClick={() => onPref("saturation", "muted")} delay={0.3}>
-          <div className="flex flex-col items-center gap-3">
-            <div className="flex gap-2">
-              {["#8b9fad", "#9db5a0", "#b5a08b", "#a08bb5", "#8badb5"].map((c, i) => (
-                <div key={i} className="h-10 w-10 rounded-lg" style={{ background: c }} />
-              ))}
-            </div>
-            <div className="flex gap-2">
-              <div className="px-4 py-1.5 text-[10px] font-medium text-white rounded-md" style={{ background: "#7a8e9a" }}>Button</div>
-              <div className="px-3 py-1.5 text-[10px] rounded-md" style={{ background: "#7a8e9a20", color: "#7a8e9a" }}>Badge</div>
-            </div>
-          </div>
-        </ABCard>
-        <ABCard label="Vivid & Bold" description="High saturation, punchy colors, energetic" selected={preferences.saturation === "vivid"} onClick={() => onPref("saturation", "vivid")} delay={0.4}>
-          <div className="flex flex-col items-center gap-3">
-            <div className="flex gap-2">
-              {["#2563eb", "#16a34a", "#ea580c", "#9333ea", "#0891b2"].map((c, i) => (
-                <div key={i} className="h-10 w-10 rounded-lg" style={{ background: c }} />
-              ))}
-            </div>
-            <div className="flex gap-2">
-              <div className="px-4 py-1.5 text-[10px] font-medium text-white rounded-md" style={{ background: "#2563eb" }}>Button</div>
-              <div className="px-3 py-1.5 text-[10px] rounded-md" style={{ background: "#2563eb20", color: "#2563eb" }}>Badge</div>
-            </div>
-          </div>
-        </ABCard>
-      </div>
-    </div>
-  );
-}
-
 function HeaderStyleStep({ detail, preferences, onPref }: StepProps) {
   const primary = detail.primary;
   const border = detail.border || "#e5e7eb";
   return (
     <div>
       <AnimatedHeading text="What's your header vibe?" sub="The first thing users see. It sets the entire mood." />
+      <DesignMdOnlyHint />
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         <ABCard label="Glass & Floating" description="Backdrop blur, transparent, modern" selected={preferences.headerStyle === "glass"} onClick={() => onPref("headerStyle", "glass")} delay={0.3}>
           <div className="w-full">
@@ -451,71 +396,6 @@ function ColorStep({ detail, overrides, onOverride }: StepProps) {
   );
 }
 
-function TypographyStep({ detail, overrides, onOverride }: StepProps) {
-  const weight = overrides.headingWeight || detail.headingWeight;
-  const font = overrides.fontFamily || detail.fontFamily;
-  const WEIGHTS: { value: string; label: string; desc: string }[] = [
-    { value: "300", label: "Light", desc: "Whisper-level elegance" },
-    { value: "400", label: "Regular", desc: "Neutral, balanced" },
-    { value: "500", label: "Medium", desc: "Slightly emphasized" },
-    { value: "600", label: "Semibold", desc: "Strong and confident" },
-    { value: "700", label: "Bold", desc: "Maximum impact" },
-  ];
-  return (
-    <div>
-      <AnimatedHeading text="How bold should headings be?" sub="This controls the visual weight of all titles and headings across your UI." />
-      <div className="mt-8 grid grid-cols-5 gap-3">
-        {WEIGHTS.map((w, i) => (
-          <motion.button
-            key={w.value}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 + i * 0.06 }}
-            onClick={() => onOverride({ headingWeight: w.value })}
-            className={`flex flex-col items-center rounded-xl border p-5 transition-all ${weight === w.value ? "border-foreground bg-foreground text-background" : "border-border hover:border-foreground/30"}`}
-          >
-            <div className="text-3xl leading-none mb-3" style={{ fontWeight: Number(w.value), fontFamily: font }}>Aa</div>
-            <div className="text-xs font-medium">{w.label}</div>
-            <div className="text-[10px] mt-0.5 opacity-50">{w.desc}</div>
-          </motion.button>
-        ))}
-      </div>
-      {/* Live comparison — show multiple UI elements affected */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-        className="mt-8 rounded-xl border border-border/40 dark:border-border overflow-hidden"
-      >
-        <div className="px-5 py-3 border-b border-border/40 dark:border-border bg-muted/20">
-          <p className="text-xs text-muted-foreground">How it looks across your UI</p>
-        </div>
-        <div className="p-5 space-y-5">
-          {/* Page title */}
-          <div>
-            <h2 className="text-3xl tracking-tight" style={{ fontWeight: Number(weight) }}>Dashboard Overview</h2>
-            <p className="text-sm text-muted-foreground mt-1">Welcome back. Here is what is happening today.</p>
-          </div>
-          {/* Card titles */}
-          <div className="grid grid-cols-3 gap-3">
-            {["Total Revenue", "Active Users", "Conversion"].map((t) => (
-              <div key={t} className="rounded-lg border border-border/40 dark:border-border p-3">
-                <p className="text-xs text-muted-foreground mb-1">{t}</p>
-                <p className="text-xl" style={{ fontWeight: Number(weight) }}>$12,345</p>
-              </div>
-            ))}
-          </div>
-          {/* Section heading */}
-          <div>
-            <h3 className="text-lg mb-1" style={{ fontWeight: Number(weight) }}>Recent Activity</h3>
-            <p className="text-xs text-muted-foreground">Body text, labels, and descriptions stay at regular weight.</p>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
 function RadiusStep({ detail, overrides, onOverride }: StepProps) {
   const radius = overrides.borderRadius || detail.radius.replace(/[-–].*/, "").trim();
   const primary = overrides.primaryColor || detail.primary;
@@ -564,6 +444,7 @@ function DarkModeStep({ overrides, onOverride }: StepProps) {
   return (
     <div>
       <AnimatedHeading text="One last thing" sub="Should we generate dark mode tokens too?" />
+      <DesignMdOnlyHint />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
