@@ -4,11 +4,11 @@
   "description": "Interactive CLI to generate DESIGN.md files for AI coding agents",
   "type": "module",
   "bin": {
-    "oh-my-design": "./dist/bin/oh-my-design.js",
-    "omd": "./dist/bin/oh-my-design.js"
+    "oh-my-design": "dist/bin/oh-my-design.js",
+    "omd": "dist/bin/oh-my-design.js"
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
