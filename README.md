@@ -44,29 +44,41 @@ Three pieces:
 
 `oh-my-design` now ships a coding-agent ecosystem so `DESIGN.md` is **read and respected** by Claude Code, Codex, OpenCode, and Cursor while you work — not just generated once and forgotten.
 
-```bash
-npm install -g oh-my-design
+**Zero-install (recommended):**
 
+```bash
 cd my-project
 
 # 1. One-time: install agent skills (.claude/skills, .codex/skills, .opencode/agents)
-omd install-skills
+npx oh-my-design install-skills
 
 # 2. Bootstrap DESIGN.md from a reference + your project description
 #    (run from inside Claude Code/Codex/OpenCode and the omd:init skill drives this)
-omd init recommend "warm approachable B2C marketplace"
-omd init prepare --ref airbnb --description "warm approachable B2C marketplace"
+npx oh-my-design init recommend "warm approachable B2C marketplace"
+npx oh-my-design init prepare --ref airbnb --description "warm approachable B2C marketplace"
 
 # 3. Install / refresh shim files so all four agents read DESIGN.md
-omd sync
+npx oh-my-design sync
 
 # 4. As you work, log preferences whenever the agent gets a design choice wrong
-omd remember "CTAs are never uppercase"
+npx oh-my-design remember "CTAs are never uppercase"
 
 # 5. Periodically fold pending preferences into DESIGN.md
-omd learn                           # list pending
-omd learn --mark-applied <id>       # after the fold
+npx oh-my-design learn                            # list pending
+npx oh-my-design learn --mark-applied <id>        # after the fold
 ```
+
+**Or install globally for shorter commands:**
+
+```bash
+npm install -g oh-my-design
+# Now use either `oh-my-design` or the short alias `omd`
+omd install-skills
+omd sync
+omd remember "..."
+```
+
+> **Beta note**: until `v0.2.0` (stable) is released, prefix the version: `npx oh-my-design@beta install-skills`. Once stable, the `@beta` tag is no longer needed.
 
 ### What gets installed
 

@@ -44,29 +44,41 @@
 
 `oh-my-design`이 **코딩 에이전트 생태계**를 함께 ship합니다. `DESIGN.md`를 한 번 만들고 끝이 아니라, Claude Code · Codex · OpenCode · Cursor가 작업 중에 **읽고 따르도록** 만드는 것.
 
-```bash
-npm install -g oh-my-design
+**설치 없이 (권장):**
 
+```bash
 cd my-project
 
 # 1. 한 번만: 에이전트 스킬 설치 (.claude/skills, .codex/skills, .opencode/agents)
-omd install-skills
+npx oh-my-design install-skills
 
 # 2. 레퍼런스 + 프로젝트 description으로 DESIGN.md 부트스트랩
 #    (Claude Code/Codex/OpenCode 안에서 omd:init 스킬이 이 단계를 주도)
-omd init recommend "warm approachable B2C marketplace"
-omd init prepare --ref airbnb --description "warm approachable B2C marketplace"
+npx oh-my-design init recommend "warm approachable B2C marketplace"
+npx oh-my-design init prepare --ref airbnb --description "warm approachable B2C marketplace"
 
 # 3. 4개 에이전트가 DESIGN.md를 읽도록 shim 파일 생성/갱신
-omd sync
+npx oh-my-design sync
 
 # 4. 작업 중 에이전트가 디자인 선택을 잘못하면 즉시 기록
-omd remember "CTAs are never uppercase"
+npx oh-my-design remember "CTAs are never uppercase"
 
 # 5. 누적된 preference를 DESIGN.md에 일괄 반영
-omd learn                           # pending 보기
-omd learn --mark-applied <id>       # 반영 완료 표시
+npx oh-my-design learn                            # pending 보기
+npx oh-my-design learn --mark-applied <id>        # 반영 완료 표시
 ```
+
+**또는 글로벌 설치 (짧은 커맨드):**
+
+```bash
+npm install -g oh-my-design
+# 이제 'oh-my-design' 또는 단축 별칭 'omd' 사용 가능
+omd install-skills
+omd sync
+omd remember "..."
+```
+
+> **Beta 안내**: `v0.2.0` (stable) 출시 전까진 버전 prefix 필요: `npx oh-my-design@beta install-skills`. Stable 출시 후엔 `@beta` 불필요.
 
 ### 설치되는 파일
 
