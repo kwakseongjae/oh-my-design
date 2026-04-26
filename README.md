@@ -118,10 +118,11 @@ omd learn --mark-rejected <id> --reason <text>
 
 | Layer | Done by | Why |
 |---|---|---|
-| Reference recommendation | CLI (tag + stem match, MMR-style category diversity) | Fast, no API key |
-| Token deltas (color hue / saturation / lightness / spacing / radius / weight / letter-spacing) | CLI (controlled vocabulary of 41 keywords + ~75 synonyms, additive composition with clamp) | Deterministic; same description → same delta_set |
-| Section structure & tokens not in delta_set | CLI baseline, agent-preserved | Reference fidelity |
-| Voice-preserved narrative rewrite | **Agent (Claude Code / Codex / OpenCode session)** | Style transfer needs an LLM; the `omd:init` skill prompt enforces voice fingerprint preservation |
+| Reference recommendation | CLI (tag + stem match + category-prior + MMR-style diversity) | Fast, no API key. Category-prior boosts domain-aligned refs (e.g. Consumer for "marketplace / family / subscription"). |
+| Token delta computation | CLI (controlled vocabulary of 41 keywords + ~75 synonyms, additive composition with clamp) | Deterministic; same description → same delta_set |
+| Color hex shift baseline | CLI (`apply-delta-stub`) — **color-only** | Fast deterministic preview. Does NOT shift radius / letter-spacing / spacing — that's the agent's job. |
+| Full token application + section structure preservation + voice rewrite | **Agent** (Claude Code / Codex / OpenCode) following `omd:init` skill | Stub is color-only; full delta application requires structured Markdown editing. The skill prompt enforces voice fingerprint preservation. |
+| §11–13 (Brand Narrative / Principles / Personas) | **Agent + user input** (Phase 4.5) | Reference content is project-specific facts (founding year, verbatim taglines, real personas). The skill collects facts in Phase 4.5 or marks as `[FILL IN: …]` with `omd:limitation` comments — never fabricates. |
 
 ### Status
 

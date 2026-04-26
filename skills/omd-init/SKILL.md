@@ -58,9 +58,29 @@ omd init prepare --ref <id> --description "<원본 description>" --json
 이게 하는 일:
 - `references/<id>/DESIGN.md` 경로 확정 (JSON에 `reference_md` 필드로 전체 내용 포함)
 - 기존 `DESIGN.md`가 있으면 → `DESIGN_DEPRECATED.md`로 rename (메타 헤더 자동 삽입)
-- `.omd/init-context.json` 작성 (`delta_set`, `reference_path`, `description` 담김)
+- `.omd/init-context.json` 작성 (`delta_set`, `description` 담김)
 
 JSON 출력의 `reference_md`는 variation의 input이다. Read.
+
+## Phase 4.5 — Philosophy Layer 입력 수집 (CRITICAL)
+
+§11 (Brand Narrative), §12 (Principles), §13 (Personas)는 **레퍼런스의 검증된 historical facts에 기반**한다 — 창립년도, founder 이름, verbatim 인용, 공식 tagline 등. 이걸 단순 domain swap하면 **사용자 프로젝트에 거짓 brand claim을 ship**하는 사고가 난다.
+
+따라서 Phase 5B 진입 전에 사용자에게 다음 정보를 묻는다 (한 번에):
+
+```
+DESIGN.md의 §11-13 (Brand Narrative / Principles / Personas)에는 사실 정보가 들어갑니다. 다음을 알려주시거나 "skip"이라고 답해주세요:
+
+1. 프로젝트 이름 / 창립 시점 (대략)
+2. 핵심 thesis 한 문장 (e.g. Airbnb의 "Belong Anywhere")
+3. 공식 tagline 또는 거부하는 카테고리 default (e.g. "혼밥 시대의 가족 식사")
+4. 타겟 사용자 segment 2-4개 (e.g. "맞벌이 부부", "Chef Partner", "재구매 가족")
+
+답변 받으면 → Phase 5B에서 §11-13에 반영
+"skip" → §11-13은 [FILL IN: ...] placeholder + omd:limitation 코멘트로 처리
+```
+
+사용자가 부분 답변(예: 1만, 4만)을 주면 받은 부분만 사용하고 나머지는 skip 처리.
 
 ## Phase 5 — Hybrid Variation 생성 (핵심)
 
@@ -89,11 +109,16 @@ Phase 5B에서 emit하는 모든 내러티브 문단은 이 fingerprint에 **정
 
 4. **Domain swap은 구체 명사만.** 동사 / 형용사 / framing 건드리지 말 것.
 
-5. **새 philosophy 도입 금지.** OmD v0.1 레이어, 없던 원칙을 추가하지 말 것.
+5. **새 philosophy 도입 금지.** OmD v0.1 레이어, 없던 원칙을 추가하지 말 것. **Delta-derived 노트(예: "+0.005em casual tracking")도 새 bullet으로 넣지 말 것.** 기존 bullet에 자연스럽게 통합 (e.g. "Negative tracking on headings; light positive tracking on body for casual register").
 
 6. **해결 불가능한 delta는 top-of-file HTML comment로 표시.** `delta_set.axes`가 참조하는 token이 레퍼런스 DESIGN.md에 없으면 `<!-- omd:unresolved: <axis> -->` 상단 추가하고 해당 token은 건드리지 않는다.
 
 7. **Voice hints 반영.** `delta_set.voiceHints`는 Voice 섹션의 내러티브 문장에 반영하되, 레퍼런스 voice의 문장 스타일 안에서만 적용. "contractions ok"를 Voice 섹션의 원칙 bullet에 한 줄 추가하는 식.
+
+8. **§11-13 (Brand Narrative / Principles / Personas) 처리 분기.**
+   - **Phase 4.5에서 사용자가 정보를 제공한 경우**: 그 정보로 §11/12/13 작성. 단 verbatim 인용은 사용자가 직접 준 표현만 인용 부호로 감싸고, 그 외는 일반 prose. 레퍼런스의 시간 표현("In July 2014..."), 공식 인용 등은 모두 사용자 프로젝트 맥락으로 대체.
+   - **Phase 4.5에서 skip한 경우**: §11-13 본문을 `[FILL IN: <섹션 목적 한 줄>]` placeholder로 emit + 각 섹션 상단에 `<!-- omd:limitation Reference §X requires project-specific facts. Replace before shipping; do not fabricate. -->` 코멘트.
+   - **§14 (States), §15 (Motion)**: 일반 Hybrid 적용 (구체 명사만 swap).
 
 ### Phase 5C — 파일 작성
 

@@ -118,10 +118,11 @@ omd learn --mark-rejected <id> --reason <text>
 
 | 레이어 | 담당 | 이유 |
 |---|---|---|
-| 레퍼런스 추천 | CLI (tag + stem 매칭, 카테고리 다양화) | 빠름, API 키 불필요 |
-| Token deltas (hue / saturation / lightness / spacing / radius / weight / letter-spacing) | CLI (41 키워드 + ~75 synonym controlled vocabulary, additive 합성 + clamp) | 결정적; 동일 description → 동일 delta_set |
-| 섹션 구조 / delta_set 외 토큰 | CLI baseline, 에이전트 preserve | 레퍼런스 fidelity |
-| Voice-preserved 내러티브 재작성 | **에이전트 (Claude Code / Codex / OpenCode 세션)** | style transfer는 LLM 필요; `omd:init` 스킬 프롬프트가 voice fingerprint preservation을 강제 |
+| 레퍼런스 추천 | CLI (tag + stem 매칭 + category-prior + MMR 다양화) | 빠름, API 키 불필요. category-prior가 도메인 정렬된 ref 가산 (e.g. "marketplace / family / subscription" → Consumer). |
+| Token delta 계산 | CLI (41 키워드 + ~75 synonym controlled vocabulary, additive 합성 + clamp) | 결정적; 동일 description → 동일 delta_set |
+| Color hex shift baseline | CLI (`apply-delta-stub`) — **color-only** | 빠른 결정적 프리뷰. radius / letter-spacing / spacing 은 shift 안 함 — 에이전트 영역. |
+| 전체 토큰 적용 + 섹션 구조 보존 + voice 재작성 | **에이전트** (Claude Code / Codex / OpenCode) + `omd:init` 스킬 | Stub은 color-only; 전체 delta 적용은 구조화된 Markdown 편집 필요. 스킬 프롬프트가 voice fingerprint preservation 강제. |
+| §11–13 (Brand Narrative / Principles / Personas) | **에이전트 + 사용자 입력** (Phase 4.5) | 레퍼런스 content가 프로젝트별 사실 정보 (창립년도, verbatim tagline, 실제 personas). 스킬이 Phase 4.5에서 사실 수집하거나 `[FILL IN: …]` placeholder + `omd:limitation` 코멘트 — 절대 fabricate 안 함. |
 
 ### 상태
 

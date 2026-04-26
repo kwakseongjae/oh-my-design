@@ -18,7 +18,7 @@ export interface StubResult {
 const HEX_RE = /#[0-9a-fA-F]{6}\b/g;
 const NEUTRAL_RE = /^#([0-9a-fA-F])\1([0-9a-fA-F])\2([0-9a-fA-F])\3$/;
 
-const STUB_HEADER = `<!-- omd:stub v=1 — deterministic token-shift only; narrative unchanged. Re-run the omd:init skill with an agent session to produce a Hybrid variation with voice-preserved narrative. -->`;
+const STUB_HEADER = `<!-- omd:stub v=1 — color-only deterministic shift baseline. Limitations: only color hex codes are shifted (hue/saturation/lightness from delta_set); radius_px, typography.letter_spacing_em, spacing.scale_ratio, and all narrative are NOT shifted by the stub. Run the omd:init skill in an agent session to apply the full delta_set + produce a voice-preserved Hybrid variation. -->`;
 
 function isNeutral(hex: string): boolean {
   if (NEUTRAL_RE.test(hex)) return true;

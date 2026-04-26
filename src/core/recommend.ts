@@ -17,6 +17,169 @@ export interface RecommendHit {
   keywords: string[];
   score: number;
   matchedKeywords: string[];
+  matchedCategories: string[];
+}
+
+const CATEGORY_HINTS: Record<string, string[]> = {
+  Consumer: [
+    'marketplace',
+    'shopping',
+    'ecommerce',
+    'consumer',
+    'b2c',
+    'retail',
+    'subscription',
+    'family',
+    'families',
+    'meal',
+    'meals',
+    'meal-kit',
+    'food',
+    'travel',
+    'social',
+    'community',
+    'buyer',
+    'seller',
+    'parents',
+    'kids',
+    'lifestyle',
+    'recipe',
+    'recipes',
+  ],
+  Fintech: [
+    'fintech',
+    'banking',
+    'bank',
+    'payment',
+    'payments',
+    'crypto',
+    'trading',
+    'wallet',
+    'invest',
+    'investing',
+    'money',
+    'finance',
+    'financial',
+    'lending',
+    'remittance',
+    'tax',
+  ],
+  'Developer Tools': [
+    'developer',
+    'devtool',
+    'devtools',
+    'dev-tool',
+    'deploy',
+    'deployment',
+    'build',
+    'ci',
+    'cd',
+    'cli',
+    'sdk',
+    'editor',
+    'ide',
+    'engineering',
+    'compiler',
+    'runtime',
+  ],
+  AI: [
+    'ai',
+    'ml',
+    'llm',
+    'agent',
+    'agents',
+    'model',
+    'models',
+    'inference',
+    'gpt',
+    'chatbot',
+    'rag',
+    'embedding',
+    'embeddings',
+    'mcp',
+  ],
+  'Design Tools': [
+    'design',
+    'design-tool',
+    'whiteboard',
+    'prototype',
+    'prototyping',
+    'wireframe',
+    'wireframes',
+    'mockup',
+    'mockups',
+    'figma-like',
+    'illustration',
+    'canvas',
+  ],
+  Productivity: [
+    'saas',
+    'workspace',
+    'team',
+    'teams',
+    'project-management',
+    'enterprise',
+    'b2b',
+    'crm',
+    'docs',
+    'wiki',
+    'collaboration',
+    'kanban',
+    'scheduling',
+    'meetings',
+  ],
+  Backend: [
+    'backend',
+    'database',
+    'db',
+    'api',
+    'apis',
+    'observability',
+    'monitoring',
+    'logging',
+    'analytics',
+    'pipeline',
+    'data-pipeline',
+    'streaming',
+    'queue',
+    'cache',
+  ],
+  Automotive: [
+    'car',
+    'cars',
+    'vehicle',
+    'vehicles',
+    'auto',
+    'automotive',
+    'driving',
+    'ev',
+    'electric-vehicle',
+  ],
+  Marketing: [
+    'marketing',
+    'seo',
+    'campaign',
+    'campaigns',
+    'newsletter',
+    'email-marketing',
+    'attribution',
+  ],
+};
+
+function matchedCategoriesFor(
+  queryTokens: Set<string>,
+  queryStems: Set<string>
+): Set<string> {
+  const out = new Set<string>();
+  for (const [category, hints] of Object.entries(CATEGORY_HINTS)) {
+    for (const hint of hints) {
+      if (queryTokens.has(hint) || queryStems.has(stem(hint))) {
+        out.add(category);
+        break;
+      }
+    }
+  }
+  return out;
 }
 
 let cachedTags: ReferenceTag[] | null = null;
@@ -99,14 +262,27 @@ export function recommend(
   ];
   const queryTokens = new Set(rawTokens);
   const queryStems = new Set(rawTokens.map(stem));
+  const matchedCategories = matchedCategoriesFor(queryTokens, queryStems);
 
-  const scored: Array<RecommendHit & { _ratio: number }> = tags.map((t) => {
-    const matched = t.keywords.filter(
+  // First pass: tag matches per ref, to know whether to gate category bonus.
+  const tagMatchByRef = tags.map((t) =>
+    t.keywords.filter(
       (kw) => queryTokens.has(kw) || queryStems.has(stem(kw))
-    );
-    // Score = absolute match count (primary) with ratio as tiebreak.
-    // Absolute count prevents sparse-tag refs from winning on a single match.
-    const score = matched.length;
+    )
+  );
+  const totalTagMatches = tagMatchByRef.reduce((a, m) => a + m.length, 0);
+
+  const scored: Array<RecommendHit & { _ratio: number }> = tags.map((t, i) => {
+    const matched = tagMatchByRef[i];
+    const tagScore = matched.length;
+    const categoryHit = matchedCategories.has(t.category);
+    // Category bonus normally requires ≥1 tag match (prevents flooding).
+    // But when the description produces zero tag matches anywhere, we
+    // fall back to category-only scoring so users still get a useful
+    // top-K instead of an alphabetical no-op.
+    const categoryBonus =
+      categoryHit && (tagScore > 0 || totalTagMatches === 0) ? 0.5 : 0;
+    const score = tagScore + categoryBonus;
     const ratio = matched.length / Math.max(1, t.keywords.length);
     return {
       id: t.id,
@@ -115,6 +291,7 @@ export function recommend(
       keywords: t.keywords,
       score,
       matchedKeywords: matched,
+      matchedCategories: categoryHit ? [t.category] : [],
       _ratio: ratio,
     };
   });
