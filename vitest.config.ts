@@ -6,6 +6,7 @@ export default defineConfig({
     include: [
       'test/unit/**/*.test.{ts,mjs}',
       'test/integration/**/*.test.{ts,mjs}',
+      'test/scenarios/**/*.test.{ts,mjs}',
     ],
   },
 });

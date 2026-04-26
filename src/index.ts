@@ -92,3 +92,35 @@ export {
   type AgentId,
   type AgentPresence,
 } from './core/agent-detect.js';
+
+// Ecosystem v1 — omd:init (controlled vocabulary, recommendation, deterministic stub)
+export {
+  loadVocabulary,
+  loadSynonyms,
+  extractKeywords,
+  resolveConflicts,
+  buildDeltaSet,
+  listKeywords,
+  type Vocabulary,
+  type DeltaSet,
+  type ResolvedKeyword,
+  type ConflictResolution,
+  type KeywordSpec,
+} from './core/vocabulary.js';
+export {
+  loadReferenceTags,
+  recommend,
+  type ReferenceTag,
+  type RecommendHit,
+  type RecommendOptions,
+} from './core/recommend.js';
+export {
+  applyDeltaStub,
+  type StubResult,
+  type StubStats,
+} from './core/apply-delta-stub.js';
+export {
+  deprecateDesignMd,
+  type DeprecateOptions,
+  type DeprecateResult,
+} from './core/init-deprecate.js';

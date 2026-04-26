@@ -1,12 +1,33 @@
 import { Command } from 'commander';
+import { readFileSync, existsSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { run } from '../src/cli/index.js';
+
+function readPackageVersion(): string {
+  let cur = dirname(fileURLToPath(import.meta.url));
+  for (let i = 0; i < 8; i++) {
+    const pkg = join(cur, 'package.json');
+    if (existsSync(pkg)) {
+      try {
+        return JSON.parse(readFileSync(pkg, 'utf8')).version ?? '0.0.0';
+      } catch {
+        return '0.0.0';
+      }
+    }
+    const parent = dirname(cur);
+    if (parent === cur) break;
+    cur = parent;
+  }
+  return '0.0.0';
+}
 
 const program = new Command();
 
 program
   .name('oh-my-design')
   .description('Interactive CLI to generate DESIGN.md files for AI coding agents')
-  .version('0.1.0');
+  .version(readPackageVersion());
 
 program
   .command('generate', { isDefault: true })
@@ -77,6 +98,86 @@ program
     } else {
       await run();
     }
+  });
+
+program
+  .command('install-skills')
+  .description('Install omd:* skill files into agent directories (.claude/, .codex/, .opencode/)')
+  .option('--dir <path>', 'Project root (defaults to cwd)')
+  .option('--agent <name...>', 'Restrict to specific agents (claude-code | codex | opencode)')
+  .option('--force', 'Overwrite existing files even without the omd marker')
+  .action(
+    async (opts: { dir?: string; agent?: string[]; force?: boolean }) => {
+      const { runInstallSkills } = await import('../src/cli/install-skills.js');
+      const validAgents = ['claude-code', 'codex', 'opencode'] as const;
+      type Agent = (typeof validAgents)[number];
+      const agents = opts.agent
+        ? (opts.agent.filter((a): a is Agent =>
+            (validAgents as readonly string[]).includes(a)
+          ) as Agent[])
+        : undefined;
+      const code = await runInstallSkills({
+        dir: opts.dir,
+        agents,
+        force: opts.force,
+      });
+      if (code !== 0) process.exit(code);
+    }
+  );
+
+const referenceCmd = program
+  .command('reference')
+  .description('Inspect bundled design references');
+
+referenceCmd
+  .command('list')
+  .description('List all bundled reference ids')
+  .action(async () => {
+    const { runReferenceList } = await import('../src/cli/reference.js');
+    process.exit(runReferenceList());
+  });
+
+referenceCmd
+  .command('show <id>')
+  .description('Print the full reference DESIGN.md to stdout')
+  .action(async (id: string) => {
+    const { runReferenceShow } = await import('../src/cli/reference.js');
+    process.exit(runReferenceShow(id));
+  });
+
+const initCmd = program
+  .command('init')
+  .description('Bootstrap DESIGN.md from a reference + project description');
+
+initCmd
+  .command('recommend <description...>')
+  .description('Recommend references matching a project description')
+  .option('--top <n>', 'Number of recommendations', '5')
+  .option('--json', 'Emit machine-readable JSON')
+  .action(
+    async (descParts: string[], opts: { top?: string; json?: boolean }) => {
+      const { runInitRecommend } = await import('../src/cli/init.js');
+      const code = runInitRecommend({
+        description: descParts.join(' '),
+        topK: opts.top ? Number(opts.top) : 5,
+        json: opts.json,
+      });
+      if (code !== 0) process.exit(code);
+    }
+  );
+
+initCmd
+  .command('prepare')
+  .description('Stage init context: rename existing DESIGN.md, compute delta_set, write .omd/init-context.json')
+  .requiredOption('--ref <id>', 'Reference id (e.g. vercel, linear.app)')
+  .requiredOption('--description <text>', 'Project description')
+  .option('--dir <path>', 'Project root (defaults to cwd)')
+  .option('--reason <text>', 'Reason for deprecation header', 'user-initiated omd init')
+  .option('--json', 'Emit machine-readable JSON')
+  .action(async (opts: { ref: string; description: string; dir?: string; reason?: string; json?: boolean }) => {
+    const { runInitPrepare } = await import('../src/cli/init.js');
+    const code = runInitPrepare(opts);
+    if (code !== 0) process.exit(code);
   });
 
 program

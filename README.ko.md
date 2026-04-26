@@ -40,6 +40,93 @@
 
 **API 키 불필요. AI 호출 없음. 모두 클라이언트 사이드.**
 
+## Ecosystem v1 — 에이전트 통합 (신규)
+
+`oh-my-design`이 **코딩 에이전트 생태계**를 함께 ship합니다. `DESIGN.md`를 한 번 만들고 끝이 아니라, Claude Code · Codex · OpenCode · Cursor가 작업 중에 **읽고 따르도록** 만드는 것.
+
+```bash
+npm install -g oh-my-design
+
+cd my-project
+
+# 1. 한 번만: 에이전트 스킬 설치 (.claude/skills, .codex/skills, .opencode/agents)
+omd install-skills
+
+# 2. 레퍼런스 + 프로젝트 description으로 DESIGN.md 부트스트랩
+#    (Claude Code/Codex/OpenCode 안에서 omd:init 스킬이 이 단계를 주도)
+omd init recommend "warm approachable B2C marketplace"
+omd init prepare --ref airbnb --description "warm approachable B2C marketplace"
+
+# 3. 4개 에이전트가 DESIGN.md를 읽도록 shim 파일 생성/갱신
+omd sync
+
+# 4. 작업 중 에이전트가 디자인 선택을 잘못하면 즉시 기록
+omd remember "CTAs are never uppercase"
+
+# 5. 누적된 preference를 DESIGN.md에 일괄 반영
+omd learn                           # pending 보기
+omd learn --mark-applied <id>       # 반영 완료 표시
+```
+
+### 설치되는 파일
+
+| 파일 | 관리 주체 | 용도 |
+|---|---|---|
+| `DESIGN.md` | 사용자 | 단일 진실 — 브랜드 & UI 명세 |
+| `CLAUDE.md` | `omd sync` | Claude Code 포인터 (`@./DESIGN.md`) |
+| `AGENTS.md` | `omd sync` | Codex CLI **+** OpenCode 공용 포인터 (한 파일이 둘 커버) |
+| `.cursor/rules/omd-design.mdc` | `omd sync` | Cursor가 UI 파일 편집 시 DESIGN.md 자동 attach |
+| `.claude/skills/omd-*/SKILL.md` | `omd install-skills` | Claude Code 스킬 5종 |
+| `.codex/skills/omd-*/SKILL.md` | `omd install-skills` | Codex 스킬 5종 |
+| `.opencode/agents/omd-*.md` | `omd install-skills` | OpenCode 에이전트 5종 |
+| `.omd/preferences.md` | `omd remember` | append-only 디자인 교정 로그 |
+| `.omd/sync.lock.json` | `omd sync` | drift 감지 상태 |
+
+shim과 스킬 파일은 `<!-- omd:start -->` 마커 블록을 사용해서, 마커 외부의 사용자 편집은 `omd sync` 재실행에도 보존됩니다.
+
+### 5개 스킬
+
+| 스킬 | 트리거 | 동작 |
+|---|---|---|
+| `omd:init` | "DESIGN.md 만들어줘" / "브랜드 세팅" | 레퍼런스 추천 → 프로젝트 description 수집 → 레퍼런스 톤·매너를 **preserve**하면서 deltas만 반영한 Hybrid variation 생성 → DESIGN.md + shim 작성 |
+| `omd:apply` | UI / 스타일링 / 마이크로카피 / 모션 작업 | DESIGN.md + pending preference를 authoritative context로 주입, 사용자가 교정하면 **자동으로** `omd remember` 호출 |
+| `omd:sync` | "shim drift" / "AGENTS.md 동기화" | 적절한 플래그로 `omd sync` 실행 |
+| `omd:remember` | "기억해 둬" / "우리는 ~안 해" | 구조화된 entry를 `.omd/preferences.md`에 append |
+| `omd:learn` | "preferences 정리해서 DESIGN.md에 반영" | scope별로 그룹핑 → coherent edit 제안 → status flip |
+
+소스: [`skills/`](skills/) 디렉토리. `omd install-skills`가 프로젝트의 에이전트 디렉토리로 복사.
+
+### CLI 명령어
+
+```
+omd init recommend <description>   # 태그+stem 매칭 레퍼런스 추천 (top-5)
+omd init prepare --ref <id> --description <text>
+                                   # .omd/init-context.json + delta_set 준비
+omd install-skills [--agent ...]   # skills/*를 .claude /.codex /.opencode로 복사
+omd reference list                 # 번들된 레퍼런스 id 목록
+omd reference show <id>            # 레퍼런스 DESIGN.md를 stdout으로 출력
+omd sync [--force | --check]       # shim 파일 작성 또는 감사
+omd remember <note> [--scope ...]  # preference entry append
+omd learn                          # pending 목록
+omd learn --mark-applied <id>      # DESIGN.md 반영 후 상태 변경
+omd learn --mark-rejected <id> --reason <text>
+```
+
+`omd sync --check`는 CI 친화적: shim drift 또는 DESIGN.md 변경 + 미동기화 시 exit 1.
+
+### 결정적 vs 에이전트 주도
+
+| 레이어 | 담당 | 이유 |
+|---|---|---|
+| 레퍼런스 추천 | CLI (tag + stem 매칭, 카테고리 다양화) | 빠름, API 키 불필요 |
+| Token deltas (hue / saturation / lightness / spacing / radius / weight / letter-spacing) | CLI (41 키워드 + ~75 synonym controlled vocabulary, additive 합성 + clamp) | 결정적; 동일 description → 동일 delta_set |
+| 섹션 구조 / delta_set 외 토큰 | CLI baseline, 에이전트 preserve | 레퍼런스 fidelity |
+| Voice-preserved 내러티브 재작성 | **에이전트 (Claude Code / Codex / OpenCode 세션)** | style transfer는 LLM 필요; `omd:init` 스킬 프롬프트가 voice fingerprint preservation을 강제 |
+
+### 상태
+
+이 생태계는 **v0.2.0-beta**. CLI 표면(sync / remember / learn / init prepare)은 안정 + 단위 테스트 완료. 에이전트 측 Hybrid variation 품질은 호스트 LLM이 `omd:init` 스킬 프롬프트를 얼마나 잘 따르는지에 좌우됩니다 — 경험적 결과는 다양; 아카이브된 세션과 함께 이슈로 보고 부탁드립니다.
+
 ## OmD v0.1 Philosophy Layer
 
 Google Stitch의 9개 섹션 위에 OmD가 더하는 6개:

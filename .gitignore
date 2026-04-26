@@ -16,3 +16,6 @@ dist/
 
 # Internal research notes, brainstorming, strategy docs (not for public repo)
 research/
+
+# Scenario test archive (regenerable; rerun `npm test` to recreate)
+test/scenarios/archive/

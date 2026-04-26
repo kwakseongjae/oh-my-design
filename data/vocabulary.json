@@ -1,0 +1,516 @@
+{
+  "version": 1,
+  "generated_at": "2026-04-24",
+  "axis_registry": {
+    "color.hue_deg": { "type": "int", "domain": [-30, 30], "unit": "degrees (OKLCH)" },
+    "color.saturation_pct": { "type": "int", "domain": [-25, 25] },
+    "color.lightness_pct": { "type": "int", "domain": [-15, 15] },
+    "typography.body_weight": { "type": "int", "domain": [-200, 300], "step": 50 },
+    "typography.letter_spacing_em": { "type": "float", "domain": [-0.02, 0.03] },
+    "spacing.base_px": { "type": "enum", "domain": [4, 8] },
+    "spacing.scale_ratio": { "type": "float", "domain": [0.8, 1.25] },
+    "radius_px": { "type": "int", "domain": [-8, 12] },
+    "shadow.depth": { "type": "int", "domain": [-2, 2] }
+  },
+  "modifiers": {
+    "primarily": 1.2,
+    "mostly": 1.05,
+    "slightly": 0.4,
+    "very": 1.5,
+    "not": -0.5
+  },
+  "keywords": {
+    "warm": {
+      "group": "tone",
+      "axes": {
+        "color.hue_deg": { "delta": 8, "range": [4, 12] },
+        "color.saturation_pct": { "delta": 4, "range": [0, 8] },
+        "radius_px": { "delta": 2, "range": [0, 4] }
+      },
+      "conflicts_with": ["cool", "clinical"],
+      "voice_hints": ["contractions ok", "second person", "inclusive"],
+      "sources": ["aaker:sincerity", "ibm:approachable"]
+    },
+    "cool": {
+      "group": "tone",
+      "axes": {
+        "color.hue_deg": { "delta": -8, "range": [-12, -4] },
+        "color.saturation_pct": { "delta": -3, "range": [-6, 0] }
+      },
+      "conflicts_with": ["warm"],
+      "voice_hints": ["third person ok", "measured"],
+      "sources": ["aaker:competence"]
+    },
+    "playful": {
+      "group": "tone",
+      "axes": {
+        "color.hue_deg": { "delta": 18, "range": [12, 24] },
+        "color.saturation_pct": { "delta": 10, "range": [6, 15] },
+        "color.lightness_pct": { "delta": 3, "range": [0, 6] },
+        "radius_px": { "delta": 6, "range": [4, 12] },
+        "shadow.depth": { "delta": 1, "range": [0, 2] }
+      },
+      "conflicts_with": ["serious", "clinical", "formal", "institutional"],
+      "voice_hints": ["exclamations ok", "emoji ok", "contractions required"],
+      "coupled_axes": ["color.hue_deg", "color.saturation_pct", "radius_px"],
+      "sources": ["aaker:excitement", "m3:expressive-shape"]
+    },
+    "serious": {
+      "group": "tone",
+      "axes": {
+        "color.saturation_pct": { "delta": -6, "range": [-10, -2] },
+        "color.lightness_pct": { "delta": -3, "range": [-6, 0] },
+        "typography.body_weight": { "delta": 100, "range": [50, 200] },
+        "typography.letter_spacing_em": { "delta": -0.005, "range": [-0.01, 0] },
+        "radius_px": { "delta": -2, "range": [-4, 0] },
+        "shadow.depth": { "delta": -1, "range": [-2, 0] }
+      },
+      "conflicts_with": ["playful", "casual", "friendly"],
+      "voice_hints": ["declarative", "no exclamations"],
+      "sources": ["aaker:competence"]
+    },
+    "premium": {
+      "group": "tone",
+      "axes": {
+        "color.hue_deg": { "delta": -4, "range": [-8, 0] },
+        "color.saturation_pct": { "delta": -8, "range": [-12, -4] },
+        "color.lightness_pct": { "delta": -5, "range": [-8, -2] },
+        "typography.letter_spacing_em": { "delta": 0.01, "range": [0.005, 0.02] },
+        "spacing.scale_ratio": { "delta": 1.05, "range": [1.02, 1.1] },
+        "radius_px": { "delta": -2, "range": [-4, 0] },
+        "shadow.depth": { "delta": 1, "range": [0, 2] }
+      },
+      "conflicts_with": ["casual", "consumer"],
+      "voice_hints": ["restrained", "precise"],
+      "coupled_axes": ["color.saturation_pct", "color.lightness_pct", "typography.letter_spacing_em"],
+      "sources": ["aaker:sophistication"]
+    },
+    "approachable": {
+      "group": "tone",
+      "axes": {
+        "color.hue_deg": { "delta": 4, "range": [0, 8] },
+        "color.saturation_pct": { "delta": 5, "range": [0, 10] },
+        "color.lightness_pct": { "delta": 3, "range": [0, 6] },
+        "radius_px": { "delta": 4, "range": [2, 8] }
+      },
+      "conflicts_with": ["clinical", "institutional"],
+      "voice_hints": ["contractions ok", "you/we", "inclusive"],
+      "sources": ["nn/g:approachable"]
+    },
+    "clinical": {
+      "group": "tone",
+      "axes": {
+        "color.saturation_pct": { "delta": -15, "range": [-20, -10] },
+        "color.lightness_pct": { "delta": 5, "range": [2, 8] },
+        "typography.letter_spacing_em": { "delta": 0, "range": [-0.002, 0.002] },
+        "radius_px": { "delta": -4, "range": [-8, -2] },
+        "shadow.depth": { "delta": -2, "range": [-2, -1] }
+      },
+      "conflicts_with": ["warm", "playful", "approachable"],
+      "voice_hints": ["precise", "no idioms", "third person"],
+      "sources": ["aaker:competence-extreme"]
+    },
+    "bold": {
+      "group": "tone",
+      "axes": {
+        "color.saturation_pct": { "delta": 12, "range": [8, 18] },
+        "typography.body_weight": { "delta": 200, "range": [100, 300] },
+        "typography.letter_spacing_em": { "delta": -0.01, "range": [-0.015, -0.005] },
+        "shadow.depth": { "delta": 1, "range": [0, 2] }
+      },
+      "conflicts_with": ["soft", "elegant"],
+      "voice_hints": ["declarative", "short sentences"],
+      "sources": ["ibm:bold"]
+    },
+    "soft": {
+      "group": "tone",
+      "axes": {
+        "color.saturation_pct": { "delta": -5, "range": [-10, 0] },
+        "color.lightness_pct": { "delta": 5, "range": [0, 10] },
+        "typography.body_weight": { "delta": -100, "range": [-200, -50] },
+        "typography.letter_spacing_em": { "delta": 0.005, "range": [0, 0.01] },
+        "radius_px": { "delta": 4, "range": [2, 8] },
+        "shadow.depth": { "delta": -1, "range": [-2, 0] }
+      },
+      "conflicts_with": ["bold", "brutalist", "rugged"],
+      "voice_hints": ["gentle", "inclusive"],
+      "sources": ["material:soft"]
+    },
+    "rugged": {
+      "group": "tone",
+      "axes": {
+        "color.hue_deg": { "delta": 6, "range": [2, 10] },
+        "color.saturation_pct": { "delta": -10, "range": [-15, -5] },
+        "color.lightness_pct": { "delta": -8, "range": [-12, -4] },
+        "typography.body_weight": { "delta": 100, "range": [50, 200] },
+        "radius_px": { "delta": -4, "range": [-8, -2] },
+        "shadow.depth": { "delta": 2, "range": [1, 2] }
+      },
+      "conflicts_with": ["soft", "elegant", "playful"],
+      "voice_hints": ["direct", "no marketing fluff"],
+      "sources": ["aaker:ruggedness"]
+    },
+    "elegant": {
+      "group": "tone",
+      "axes": {
+        "color.hue_deg": { "delta": -2, "range": [-4, 0] },
+        "color.saturation_pct": { "delta": -6, "range": [-10, -2] },
+        "typography.body_weight": { "delta": -50, "range": [-100, 0] },
+        "typography.letter_spacing_em": { "delta": 0.015, "range": [0.01, 0.025] },
+        "spacing.scale_ratio": { "delta": 1.1, "range": [1.05, 1.2] },
+        "radius_px": { "delta": -2, "range": [-4, 0] }
+      },
+      "conflicts_with": ["bold", "rugged", "brutalist"],
+      "voice_hints": ["measured", "restrained"],
+      "sources": ["aaker:sophistication"]
+    },
+    "energetic": {
+      "group": "tone",
+      "axes": {
+        "color.hue_deg": { "delta": 12, "range": [6, 18] },
+        "color.saturation_pct": { "delta": 10, "range": [6, 15] },
+        "typography.body_weight": { "delta": 100, "range": [50, 200] },
+        "radius_px": { "delta": 4, "range": [2, 8] },
+        "shadow.depth": { "delta": 1, "range": [0, 2] }
+      },
+      "conflicts_with": ["calm", "serious"],
+      "voice_hints": ["active voice", "action verbs"],
+      "sources": ["aaker:excitement"]
+    },
+    "calm": {
+      "group": "tone",
+      "axes": {
+        "color.saturation_pct": { "delta": -8, "range": [-12, -4] },
+        "color.lightness_pct": { "delta": 3, "range": [0, 6] },
+        "typography.letter_spacing_em": { "delta": 0.005, "range": [0, 0.01] },
+        "spacing.scale_ratio": { "delta": 1.05, "range": [1.02, 1.1] },
+        "radius_px": { "delta": 2, "range": [0, 4] },
+        "shadow.depth": { "delta": -1, "range": [-2, 0] }
+      },
+      "conflicts_with": ["energetic", "bold"],
+      "voice_hints": ["measured", "no exclamations"],
+      "sources": ["ibm:quiet-confidence"]
+    },
+    "trustworthy": {
+      "group": "tone",
+      "axes": {
+        "color.hue_deg": { "delta": -6, "range": [-10, -2] },
+        "color.saturation_pct": { "delta": -4, "range": [-8, 0] }
+      },
+      "conflicts_with": [],
+      "voice_hints": ["specific", "cite sources"],
+      "sources": ["nn/g:trust"]
+    },
+
+    "dense": {
+      "group": "density",
+      "axes": {
+        "spacing.base_px": { "delta": 4, "range": [4, 4] },
+        "spacing.scale_ratio": { "delta": 0.875, "range": [0.85, 0.9] }
+      },
+      "conflicts_with": ["airy", "spacious", "sparse"],
+      "voice_hints": ["terse"],
+      "sources": ["tufte:data-ink"]
+    },
+    "airy": {
+      "group": "density",
+      "axes": {
+        "spacing.base_px": { "delta": 8, "range": [8, 8] },
+        "spacing.scale_ratio": { "delta": 1.125, "range": [1.1, 1.2] }
+      },
+      "conflicts_with": ["dense", "compact"],
+      "voice_hints": ["breath between ideas"],
+      "sources": ["radix:scaling"]
+    },
+    "spacious": {
+      "group": "density",
+      "axes": {
+        "spacing.base_px": { "delta": 8, "range": [8, 8] },
+        "spacing.scale_ratio": { "delta": 1.125, "range": [1.1, 1.2] }
+      },
+      "conflicts_with": ["dense", "compact"],
+      "voice_hints": ["breath between ideas"],
+      "sources": ["radix:scaling"]
+    },
+    "compact": {
+      "group": "density",
+      "axes": {
+        "spacing.base_px": { "delta": 4, "range": [4, 4] },
+        "spacing.scale_ratio": { "delta": 0.9, "range": [0.85, 0.95] }
+      },
+      "conflicts_with": ["airy", "spacious"],
+      "voice_hints": ["terse"],
+      "sources": ["tufte:data-ink"]
+    },
+    "minimal": {
+      "group": "density",
+      "axes": {
+        "color.saturation_pct": { "delta": -5, "range": [-10, 0] },
+        "radius_px": { "delta": -2, "range": [-4, 0] },
+        "shadow.depth": { "delta": -2, "range": [-2, 0] }
+      },
+      "conflicts_with": ["rich", "layered", "brutalist"],
+      "voice_hints": ["short sentences", "no exclamations"],
+      "sources": ["dieter-rams:10-principles"]
+    },
+    "rich": {
+      "group": "density",
+      "axes": {
+        "color.saturation_pct": { "delta": 4, "range": [0, 8] },
+        "shadow.depth": { "delta": 2, "range": [1, 2] }
+      },
+      "conflicts_with": ["minimal", "sparse"],
+      "voice_hints": ["evocative"],
+      "sources": ["material:elevation"]
+    },
+    "layered": {
+      "group": "density",
+      "axes": {
+        "color.saturation_pct": { "delta": 4, "range": [0, 8] },
+        "shadow.depth": { "delta": 2, "range": [1, 2] }
+      },
+      "conflicts_with": ["minimal", "sparse"],
+      "voice_hints": ["evocative"],
+      "sources": ["material:elevation"]
+    },
+    "sparse": {
+      "group": "density",
+      "axes": {
+        "spacing.scale_ratio": { "delta": 1.2, "range": [1.1, 1.25] },
+        "shadow.depth": { "delta": -1, "range": [-2, 0] }
+      },
+      "conflicts_with": ["dense", "rich", "layered"],
+      "voice_hints": ["pauses", "whitespace"],
+      "sources": ["tufte:data-ink"]
+    },
+
+    "formal": {
+      "group": "formality",
+      "axes": {
+        "color.saturation_pct": { "delta": -4, "range": [-8, 0] },
+        "typography.letter_spacing_em": { "delta": -0.005, "range": [-0.01, 0] },
+        "radius_px": { "delta": -2, "range": [-4, 0] }
+      },
+      "conflicts_with": ["casual", "conversational", "friendly", "playful"],
+      "voice_hints": ["no contractions", "third person", "no idioms"],
+      "sources": ["ibm:voice"]
+    },
+    "casual": {
+      "group": "formality",
+      "axes": {
+        "color.hue_deg": { "delta": 4, "range": [0, 8] },
+        "color.saturation_pct": { "delta": 4, "range": [0, 8] },
+        "typography.letter_spacing_em": { "delta": 0.005, "range": [0, 0.01] },
+        "radius_px": { "delta": 4, "range": [2, 8] }
+      },
+      "conflicts_with": ["formal", "institutional", "premium"],
+      "voice_hints": ["contractions required", "idioms ok", "you/we"],
+      "sources": ["mailchimp:voice"]
+    },
+    "friendly": {
+      "group": "formality",
+      "axes": {
+        "color.hue_deg": { "delta": 4, "range": [0, 8] },
+        "color.saturation_pct": { "delta": 4, "range": [0, 8] },
+        "typography.letter_spacing_em": { "delta": 0.005, "range": [0, 0.01] },
+        "radius_px": { "delta": 4, "range": [2, 8] }
+      },
+      "conflicts_with": ["formal", "institutional", "serious"],
+      "voice_hints": ["contractions required", "second person", "warmth"],
+      "sources": ["mailchimp:voice"]
+    },
+    "technical": {
+      "group": "formality",
+      "axes": {
+        "color.saturation_pct": { "delta": -8, "range": [-12, -4] },
+        "typography.letter_spacing_em": { "delta": 0, "range": [-0.002, 0.002] },
+        "radius_px": { "delta": -4, "range": [-8, -2] }
+      },
+      "conflicts_with": ["consumer", "playful"],
+      "voice_hints": ["specific", "code refs ok", "no marketing"],
+      "sources": ["ibm:technical"]
+    },
+    "conversational": {
+      "group": "formality",
+      "axes": {
+        "typography.letter_spacing_em": { "delta": 0.01, "range": [0.005, 0.02] },
+        "radius_px": { "delta": 2, "range": [0, 4] }
+      },
+      "conflicts_with": ["formal", "institutional"],
+      "voice_hints": ["contractions", "second person", "rhetorical questions ok"],
+      "sources": ["mailchimp:voice"]
+    },
+    "corporate": {
+      "group": "formality",
+      "axes": {
+        "color.hue_deg": { "delta": -4, "range": [-8, 0] },
+        "color.saturation_pct": { "delta": -6, "range": [-10, -2] },
+        "radius_px": { "delta": -4, "range": [-8, -2] }
+      },
+      "conflicts_with": ["indie", "playful"],
+      "voice_hints": ["third person", "no idioms"],
+      "sources": ["ibm:voice"]
+    },
+    "editorial": {
+      "group": "formality",
+      "axes": {
+        "typography.letter_spacing_em": { "delta": 0.01, "range": [0.005, 0.02] },
+        "spacing.scale_ratio": { "delta": 1.1, "range": [1.05, 1.2] },
+        "radius_px": { "delta": -2, "range": [-4, 0] }
+      },
+      "conflicts_with": [],
+      "voice_hints": ["long-form", "narrative"],
+      "sources": ["editorial-design"]
+    },
+    "institutional": {
+      "group": "formality",
+      "axes": {
+        "color.hue_deg": { "delta": -4, "range": [-8, 0] },
+        "color.saturation_pct": { "delta": -6, "range": [-10, -2] },
+        "radius_px": { "delta": -4, "range": [-8, -2] }
+      },
+      "conflicts_with": ["indie", "casual", "playful"],
+      "voice_hints": ["formal register", "third person"],
+      "sources": ["ibm:voice"]
+    },
+
+    "retro": {
+      "group": "domain",
+      "axes": {
+        "color.hue_deg": { "delta": 10, "range": [5, 15] },
+        "color.saturation_pct": { "delta": 8, "range": [4, 12] },
+        "color.lightness_pct": { "delta": -3, "range": [-6, 0] },
+        "typography.letter_spacing_em": { "delta": 0, "range": [-0.002, 0.002] },
+        "radius_px": { "delta": 6, "range": [2, 10] },
+        "shadow.depth": { "delta": 2, "range": [1, 2] }
+      },
+      "conflicts_with": ["futuristic", "clinical"],
+      "voice_hints": ["nostalgic", "specific era refs"],
+      "sources": ["awwwards:retro-2024"]
+    },
+    "futuristic": {
+      "group": "domain",
+      "axes": {
+        "color.hue_deg": { "delta": -10, "range": [-15, -5] },
+        "color.saturation_pct": { "delta": 6, "range": [2, 10] },
+        "typography.letter_spacing_em": { "delta": 0.02, "range": [0.015, 0.025] },
+        "radius_px": { "delta": -2, "range": [-4, 0] },
+        "shadow.depth": { "delta": 1, "range": [0, 2] }
+      },
+      "conflicts_with": ["retro", "handcrafted"],
+      "voice_hints": ["forward-looking"],
+      "sources": ["awwwards:futuristic"]
+    },
+    "brutalist": {
+      "group": "domain",
+      "axes": {
+        "color.saturation_pct": { "delta": -20, "range": [-25, -15] },
+        "typography.body_weight": { "delta": 300, "range": [200, 300] },
+        "typography.letter_spacing_em": { "delta": 0, "range": [-0.002, 0.002] },
+        "radius_px": { "delta": -8, "range": [-8, -4] }
+      },
+      "conflicts_with": ["soft", "elegant", "minimal", "playful"],
+      "voice_hints": ["uncompromising", "no marketing"],
+      "coupled_axes": ["typography.body_weight", "radius_px", "color.saturation_pct"],
+      "sources": ["brutalist-web-design"]
+    },
+    "handcrafted": {
+      "group": "domain",
+      "axes": {
+        "color.hue_deg": { "delta": 6, "range": [2, 10] },
+        "color.saturation_pct": { "delta": -4, "range": [-8, 0] },
+        "color.lightness_pct": { "delta": 3, "range": [0, 6] },
+        "radius_px": { "delta": 6, "range": [2, 10] }
+      },
+      "conflicts_with": ["futuristic", "geometric", "utilitarian"],
+      "voice_hints": ["warm", "craft metaphors"],
+      "sources": ["awwwards:craft"]
+    },
+    "organic": {
+      "group": "domain",
+      "axes": {
+        "color.hue_deg": { "delta": 6, "range": [2, 10] },
+        "color.saturation_pct": { "delta": -4, "range": [-8, 0] },
+        "color.lightness_pct": { "delta": 3, "range": [0, 6] },
+        "radius_px": { "delta": 6, "range": [2, 10] }
+      },
+      "conflicts_with": ["geometric", "utilitarian"],
+      "voice_hints": ["natural metaphors"],
+      "sources": ["awwwards:organic"]
+    },
+    "geometric": {
+      "group": "domain",
+      "axes": {
+        "color.hue_deg": { "delta": 0, "range": [0, 0] },
+        "typography.letter_spacing_em": { "delta": 0, "range": [-0.002, 0.002] },
+        "radius_px": { "delta": -4, "range": [-8, -2] }
+      },
+      "conflicts_with": ["organic", "handcrafted"],
+      "voice_hints": ["precise"],
+      "sources": ["bauhaus"]
+    },
+    "utilitarian": {
+      "group": "domain",
+      "axes": {
+        "color.saturation_pct": { "delta": -10, "range": [-15, -5] },
+        "spacing.scale_ratio": { "delta": 0.9, "range": [0.85, 0.95] },
+        "radius_px": { "delta": -4, "range": [-8, -2] }
+      },
+      "conflicts_with": ["luxurious", "handcrafted", "elegant"],
+      "voice_hints": ["functional", "no ornament"],
+      "sources": ["dieter-rams"]
+    },
+    "luxurious": {
+      "group": "domain",
+      "axes": {
+        "color.hue_deg": { "delta": -4, "range": [-8, 0] },
+        "color.saturation_pct": { "delta": -10, "range": [-15, -5] },
+        "color.lightness_pct": { "delta": -5, "range": [-8, -2] },
+        "typography.letter_spacing_em": { "delta": 0.02, "range": [0.015, 0.025] },
+        "spacing.scale_ratio": { "delta": 1.1, "range": [1.05, 1.2] },
+        "radius_px": { "delta": -2, "range": [-4, 0] },
+        "shadow.depth": { "delta": 1, "range": [0, 2] }
+      },
+      "conflicts_with": ["utilitarian", "brutalist"],
+      "voice_hints": ["restrained", "quality cues"],
+      "sources": ["aaker:sophistication"]
+    },
+    "consumer": {
+      "group": "domain",
+      "axes": {
+        "color.hue_deg": { "delta": 4, "range": [0, 8] },
+        "color.saturation_pct": { "delta": 6, "range": [2, 10] },
+        "color.lightness_pct": { "delta": 3, "range": [0, 6] },
+        "radius_px": { "delta": 4, "range": [2, 8] },
+        "shadow.depth": { "delta": 1, "range": [0, 2] }
+      },
+      "conflicts_with": ["enterprise", "institutional", "technical"],
+      "voice_hints": ["benefit-first", "you/we"],
+      "sources": ["nn/g:consumer"]
+    },
+    "enterprise": {
+      "group": "domain",
+      "axes": {
+        "color.hue_deg": { "delta": -4, "range": [-8, 0] },
+        "color.saturation_pct": { "delta": -6, "range": [-10, -2] },
+        "radius_px": { "delta": -2, "range": [-4, 0] },
+        "shadow.depth": { "delta": -1, "range": [-2, 0] }
+      },
+      "conflicts_with": ["consumer", "indie"],
+      "voice_hints": ["capability-first", "ROI cues"],
+      "sources": ["nn/g:b2b"]
+    },
+    "indie": {
+      "group": "domain",
+      "axes": {
+        "color.hue_deg": { "delta": 8, "range": [4, 12] },
+        "color.saturation_pct": { "delta": 4, "range": [0, 8] },
+        "typography.letter_spacing_em": { "delta": 0.005, "range": [0, 0.01] },
+        "radius_px": { "delta": 2, "range": [0, 4] }
+      },
+      "conflicts_with": ["corporate", "enterprise", "institutional"],
+      "voice_hints": ["voice-forward", "opinionated"],
+      "sources": ["awwwards:indie"]
+    }
+  }
+}

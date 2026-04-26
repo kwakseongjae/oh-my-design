@@ -40,6 +40,93 @@ Three pieces:
 
 **No API keys. No AI calls. Everything runs client-side.**
 
+## Ecosystem v1 — agent integration (new)
+
+`oh-my-design` now ships a coding-agent ecosystem so `DESIGN.md` is **read and respected** by Claude Code, Codex, OpenCode, and Cursor while you work — not just generated once and forgotten.
+
+```bash
+npm install -g oh-my-design
+
+cd my-project
+
+# 1. One-time: install agent skills (.claude/skills, .codex/skills, .opencode/agents)
+omd install-skills
+
+# 2. Bootstrap DESIGN.md from a reference + your project description
+#    (run from inside Claude Code/Codex/OpenCode and the omd:init skill drives this)
+omd init recommend "warm approachable B2C marketplace"
+omd init prepare --ref airbnb --description "warm approachable B2C marketplace"
+
+# 3. Install / refresh shim files so all four agents read DESIGN.md
+omd sync
+
+# 4. As you work, log preferences whenever the agent gets a design choice wrong
+omd remember "CTAs are never uppercase"
+
+# 5. Periodically fold pending preferences into DESIGN.md
+omd learn                           # list pending
+omd learn --mark-applied <id>       # after the fold
+```
+
+### What gets installed
+
+| File | Owned by | Purpose |
+|---|---|---|
+| `DESIGN.md` | you | Single source of truth — brand & UI spec |
+| `CLAUDE.md` | `omd sync` | Pointer (`@./DESIGN.md`) for Claude Code |
+| `AGENTS.md` | `omd sync` | Pointer for Codex CLI **and** OpenCode (single file covers both) |
+| `.cursor/rules/omd-design.mdc` | `omd sync` | Auto-attaches DESIGN.md when Cursor edits UI files |
+| `.claude/skills/omd-*/SKILL.md` | `omd install-skills` | Claude Code skill bundle (5 skills) |
+| `.codex/skills/omd-*/SKILL.md` | `omd install-skills` | Codex skill bundle (5 skills) |
+| `.opencode/agents/omd-*.md` | `omd install-skills` | OpenCode agent bundle (5 agents) |
+| `.omd/preferences.md` | `omd remember` | Append-only design correction log |
+| `.omd/sync.lock.json` | `omd sync` | Drift detection state |
+
+Shim and skill files use a `<!-- omd:start -->` marker so user edits outside the marker are preserved across `omd sync` runs.
+
+### The five skills
+
+| Skill | Trigger | What it does |
+|---|---|---|
+| `omd:init` | "make me a DESIGN.md" / "set up brand" | Recommends a reference, asks for project description, generates a Hybrid variation that **preserves the reference's voice** while applying project-context deltas, writes DESIGN.md + shims |
+| `omd:apply` | Any UI / styling / microcopy / motion task | Loads DESIGN.md + pending preferences as authoritative brand context, **auto-logs** any user correction it detects via `omd remember` |
+| `omd:sync` | "shim drift" / "AGENTS.md sync" | Runs `omd sync` with appropriate flags |
+| `omd:remember` | "remember that ..." / "we don't ..." | Appends a structured entry to `.omd/preferences.md` |
+| `omd:learn` | "fold preferences into DESIGN.md" | Groups pending preferences by scope, proposes coherent DESIGN.md edits, flips status to applied |
+
+Source: [`skills/`](skills/) in this repo. `omd install-skills` copies these into your project's agent directories.
+
+### CLI commands
+
+```
+omd init recommend <description>   # tag-stem-matched reference suggestions (top-5)
+omd init prepare --ref <id> --description <text>
+                                   # stages .omd/init-context.json + delta_set
+omd install-skills [--agent ...]   # copy skills/* into .claude /.codex /.opencode
+omd reference list                 # list bundled reference ids
+omd reference show <id>            # print a reference DESIGN.md to stdout
+omd sync [--force | --check]       # write or audit shim files
+omd remember <note> [--scope ...]  # append a preference entry
+omd learn                          # list pending preferences
+omd learn --mark-applied <id>      # after applying to DESIGN.md
+omd learn --mark-rejected <id> --reason <text>
+```
+
+`omd sync --check` is CI-friendly: exit 1 if shims drifted or DESIGN.md changed without a follow-up sync.
+
+### What's deterministic vs. agent-driven
+
+| Layer | Done by | Why |
+|---|---|---|
+| Reference recommendation | CLI (tag + stem match, MMR-style category diversity) | Fast, no API key |
+| Token deltas (color hue / saturation / lightness / spacing / radius / weight / letter-spacing) | CLI (controlled vocabulary of 41 keywords + ~75 synonyms, additive composition with clamp) | Deterministic; same description → same delta_set |
+| Section structure & tokens not in delta_set | CLI baseline, agent-preserved | Reference fidelity |
+| Voice-preserved narrative rewrite | **Agent (Claude Code / Codex / OpenCode session)** | Style transfer needs an LLM; the `omd:init` skill prompt enforces voice fingerprint preservation |
+
+### Status
+
+This ecosystem is **v0.2.0-beta**. The CLI surface (sync / remember / learn / init prepare) is stable and unit-tested. The agent-side Hybrid variation quality depends on the host LLM following the `omd:init` skill prompt — empirical results vary; please file issues with archived sessions.
+
 ## OmD v0.1 Philosophy Layer
 
 The 6 sections OmD adds on top of Google Stitch's 9:
