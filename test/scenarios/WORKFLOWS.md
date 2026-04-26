@@ -1,7 +1,7 @@
 # oh-my-design — User Workflows & Verification Map
 
 Date: 2026-04-26
-Version: v0.2.0
+Version: v0.1.0
 
 이 문서는 사용자가 실제로 실행하는 6개 워크플로우를 정리하고, 각 단계에서 받는 결과물과 그것이 어떤 테스트/스모크로 검증됐는지 매핑합니다.
 
@@ -320,4 +320,4 @@ archive: `test/scenarios/archive/llm-real-session/DESIGN.md`
 2. **omd:apply self-report 정확도**: 실 사용자 발화에서 "교정"을 얼마나 정확히 감지하는지 (false positive / negative 비율)
 3. **§14-15 (States/Motion) Hybrid 품질**: 1차 실증에선 OK 판정했지만 다른 reference + description 조합에서도 그런지
 
-이 3가지는 v0.2.0 출시 후 실 사용자 데이터로 측정 → v0.3 / v1.0 방향 결정 입력.
+이 3가지는 v0.1.0 출시 후 실 사용자 데이터로 측정 → v0.3 / v1.0 방향 결정 입력.
