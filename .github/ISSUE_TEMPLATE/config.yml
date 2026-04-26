@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Workflow & verification map
+    url: https://github.com/kwakseongjae/oh-my-design/blob/main/test/scenarios/WORKFLOWS.md
+    about: Before reporting, check whether the workflow you ran is mapped here. Each workflow links to the tests/smokes that cover it.
+  - name: Reference list
+    url: https://github.com/kwakseongjae/oh-my-design/tree/main/references
+    about: Full list of bundled references (also accessible via `omd reference list`).
