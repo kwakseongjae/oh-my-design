@@ -1,5 +1,5 @@
 {
-  "name": "oh-my-design",
+  "name": "oh-my-design-cli",
   "version": "0.2.0",
   "description": "Interactive CLI to generate DESIGN.md files for AI coding agents",
   "type": "module",

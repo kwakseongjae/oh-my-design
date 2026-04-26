@@ -11,12 +11,12 @@ Version: v0.2.0
 
 | 옵션 | 명령어 | 적합한 사용자 |
 |---|---|---|
-| Zero-install (권장) | `npx oh-my-design <command>` | 평가 / 1회성 |
-| Global install | `npm install -g oh-my-design` → `omd <command>` | 매일 사용 |
+| Zero-install (권장) | `npx oh-my-design-cli <command>` | 평가 / 1회성 |
+| Global install | `npm install -g oh-my-design-cli` → `omd <command>` | 매일 사용 |
 | GitHub URL | `npm install github:kwakseongjae/oh-my-design` | npm 미배포 시점 |
 | Local clone | `git clone + npm link` | contributor / 디버깅 |
 
-이하 워크플로우의 명령어는 `omd` 단축형으로 표기 (npx는 `npx oh-my-design ...`로 그대로 치환).
+이하 워크플로우의 명령어는 `omd` 단축형으로 표기 (npx는 `npx oh-my-design-cli ...`로 그대로 치환).
 
 ---
 

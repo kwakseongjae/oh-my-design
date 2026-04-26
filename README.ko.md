@@ -50,28 +50,28 @@
 cd my-project
 
 # 1. 한 번만: 에이전트 스킬 설치 (.claude/skills, .codex/skills, .opencode/agents)
-npx oh-my-design install-skills
+npx oh-my-design-cli install-skills
 
 # 2. 레퍼런스 + 프로젝트 description으로 DESIGN.md 부트스트랩
 #    (Claude Code/Codex/OpenCode 안에서 omd:init 스킬이 이 단계를 주도)
-npx oh-my-design init recommend "warm approachable B2C marketplace"
-npx oh-my-design init prepare --ref airbnb --description "warm approachable B2C marketplace"
+npx oh-my-design-cli init recommend "warm approachable B2C marketplace"
+npx oh-my-design-cli init prepare --ref airbnb --description "warm approachable B2C marketplace"
 
 # 3. 4개 에이전트가 DESIGN.md를 읽도록 shim 파일 생성/갱신
-npx oh-my-design sync
+npx oh-my-design-cli sync
 
 # 4. 작업 중 에이전트가 디자인 선택을 잘못하면 즉시 기록
-npx oh-my-design remember "CTAs are never uppercase"
+npx oh-my-design-cli remember "CTAs are never uppercase"
 
 # 5. 누적된 preference를 DESIGN.md에 일괄 반영
-npx oh-my-design learn                            # pending 보기
-npx oh-my-design learn --mark-applied <id>        # 반영 완료 표시
+npx oh-my-design-cli learn                            # pending 보기
+npx oh-my-design-cli learn --mark-applied <id>        # 반영 완료 표시
 ```
 
 **또는 글로벌 설치 (짧은 커맨드):**
 
 ```bash
-npm install -g oh-my-design
+npm install -g oh-my-design-cli
 # 이제 'oh-my-design' 또는 단축 별칭 'omd' 사용 가능
 omd install-skills
 omd sync

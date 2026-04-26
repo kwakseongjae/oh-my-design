@@ -50,28 +50,28 @@ Three pieces:
 cd my-project
 
 # 1. One-time: install agent skills (.claude/skills, .codex/skills, .opencode/agents)
-npx oh-my-design install-skills
+npx oh-my-design-cli install-skills
 
 # 2. Bootstrap DESIGN.md from a reference + your project description
 #    (run from inside Claude Code/Codex/OpenCode and the omd:init skill drives this)
-npx oh-my-design init recommend "warm approachable B2C marketplace"
-npx oh-my-design init prepare --ref airbnb --description "warm approachable B2C marketplace"
+npx oh-my-design-cli init recommend "warm approachable B2C marketplace"
+npx oh-my-design-cli init prepare --ref airbnb --description "warm approachable B2C marketplace"
 
 # 3. Install / refresh shim files so all four agents read DESIGN.md
-npx oh-my-design sync
+npx oh-my-design-cli sync
 
 # 4. As you work, log preferences whenever the agent gets a design choice wrong
-npx oh-my-design remember "CTAs are never uppercase"
+npx oh-my-design-cli remember "CTAs are never uppercase"
 
 # 5. Periodically fold pending preferences into DESIGN.md
-npx oh-my-design learn                            # list pending
-npx oh-my-design learn --mark-applied <id>        # after the fold
+npx oh-my-design-cli learn                            # list pending
+npx oh-my-design-cli learn --mark-applied <id>        # after the fold
 ```
 
 **Or install globally for shorter commands:**
 
 ```bash
-npm install -g oh-my-design
+npm install -g oh-my-design-cli
 # Now use either `oh-my-design` or the short alias `omd`
 omd install-skills
 omd sync
