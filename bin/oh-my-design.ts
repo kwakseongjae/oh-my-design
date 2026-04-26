@@ -80,6 +80,18 @@ program
   });
 
 program
+  .command('sync')
+  .description('Sync DESIGN.md shim files (CLAUDE.md, AGENTS.md, .cursor/rules/omd-design.mdc)')
+  .option('--dir <path>', 'Project root (defaults to cwd)')
+  .option('--force', 'Overwrite drift without prompting')
+  .option('--check', 'Exit non-zero if any shim has drift; do not write')
+  .action(async (opts: { dir?: string; force?: boolean; check?: boolean }) => {
+    const { runSync } = await import('../src/cli/sync.js');
+    const code = await runSync(opts);
+    if (code !== 0) process.exit(code);
+  });
+
+program
   .command('preview')
   .description('Open the preview HTML in the default browser')
   .action(async () => {

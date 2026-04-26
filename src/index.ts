@@ -23,3 +23,41 @@ export type {
 export type { ShadcnTheme } from './core/shadcn-mapper.js';
 export type { ReferenceEntry } from './core/reference-parser.js';
 export type { PreviewData } from './core/customizer.js';
+
+// Ecosystem v1 — Track A (shim sync)
+export {
+  parseBlock,
+  writeBlock,
+  hashContent,
+  hasDrift,
+  type ManagedBlock,
+} from './core/sync-marker.js';
+export {
+  readLock,
+  writeLock,
+  createLock,
+  updateTarget,
+  updateDesignMdHash,
+  SYNC_LOCK_PATH,
+  SYNC_LOCK_VERSION,
+  type SyncLock,
+  type SyncTarget,
+} from './core/sync-lock.js';
+export {
+  ALL_SHIMS,
+  CLAUDE_SHIM,
+  AGENTS_SHIM,
+  CURSOR_SHIM,
+  inspectShim,
+  inspectAllShims,
+  writeShim,
+  writeAllShims,
+  refreshDesignMdHash,
+  MANAGED_BLOCK_VERSION,
+  type Shim,
+  type ShimId,
+  type ShimMode,
+  type InspectResult,
+  type InspectStatus,
+  type WriteShimResult,
+} from './core/shims.js';

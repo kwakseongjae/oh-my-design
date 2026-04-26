@@ -73,7 +73,7 @@ export function generateColorScale(hex: string): ColorScale {
 
   const scale = {} as ColorScale;
   for (const [key, l] of Object.entries(lightnesses)) {
-    (scale as Record<string, string>)[key] = hslToHex(h, s, l);
+    (scale as unknown as Record<string, string>)[key] = hslToHex(h, s, l);
   }
   return scale;
 }
