@@ -1,6 +1,6 @@
 {
   "name": "oh-my-design-cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Interactive CLI to generate DESIGN.md files for AI coding agents",
   "type": "module",
   "bin": {
@@ -18,9 +18,9 @@
   "files": [
     "dist",
     "templates",
-    "references",
     "skills",
-    "data"
+    "data",
+    "references/**/DESIGN.md"
   ],
   "scripts": {
     "build": "tsup && cp -r src/templates dist/templates",
