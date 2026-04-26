@@ -80,6 +80,46 @@ program
   });
 
 program
+  .command('learn')
+  .description('List preferences and flip status (applied/rejected)')
+  .option('--dir <path>', 'Project root (defaults to cwd)')
+  .option('--all', 'Include all statuses (default: pending only)')
+  .option('--status <s>', 'Filter by status: pending|applied|rejected|superseded')
+  .option('--scope <s>', 'Filter by scope')
+  .option('--mark-applied <id>', 'Mark entry as applied')
+  .option('--mark-rejected <id>', 'Mark entry as rejected (requires --reason)')
+  .option('--reason <text>', 'Reason for rejection')
+  .option('--hash <value>', 'DESIGN.md hash to stamp on applied entry (defaults to current file)')
+  .action(async (opts: Record<string, string | boolean>) => {
+    const { runLearn } = await import('../src/cli/learn.js');
+    const code = await runLearn(opts as never);
+    if (code !== 0) process.exit(code);
+  });
+
+program
+  .command('remember <note...>')
+  .description('Append a design preference/correction to .omd/preferences.md')
+  .option('--dir <path>', 'Project root (defaults to cwd)')
+  .option('--scope <scope>', 'Explicit scope (e.g. color, components.button)')
+  .option('--agent <name>', 'Source agent (e.g. claude-code, codex)')
+  .option('--context <text>', 'Source file/line context')
+  .action(
+    async (
+      noteParts: string[],
+      opts: {
+        dir?: string;
+        scope?: string;
+        agent?: string;
+        context?: string;
+      }
+    ) => {
+      const { runRemember } = await import('../src/cli/remember.js');
+      const code = await runRemember(noteParts.join(' '), opts as never);
+      if (code !== 0) process.exit(code);
+    }
+  );
+
+program
   .command('sync')
   .description('Sync DESIGN.md shim files (CLAUDE.md, AGENTS.md, .cursor/rules/omd-design.mdc)')
   .option('--dir <path>', 'Project root (defaults to cwd)')

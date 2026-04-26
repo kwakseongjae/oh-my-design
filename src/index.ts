@@ -61,3 +61,34 @@ export {
   type InspectStatus,
   type WriteShimResult,
 } from './core/shims.js';
+
+// Ecosystem v1 — Track B (preferences append-log + capture)
+export {
+  appendEntry,
+  buildEntry,
+  readFile as readPreferencesFile,
+  writeFile as writePreferencesFile,
+  parseFile as parsePreferencesFile,
+  renderFile as renderPreferencesFile,
+  updateEntryStatus,
+  groupByScope,
+  filterByStatus,
+  inferScope,
+  generateId as generatePreferenceId,
+  slugify,
+  PREFERENCES_PATH,
+  PREFERENCES_SCHEMA,
+  type PreferenceEntry,
+  type PreferenceMeta,
+  type PreferencesFile,
+  type PreferenceScope,
+  type PreferenceSignal,
+  type PreferenceConfidence,
+  type PreferenceStatus,
+} from './core/preferences.js';
+export {
+  detectCallingAgent,
+  detectInstalledAgents,
+  type AgentId,
+  type AgentPresence,
+} from './core/agent-detect.js';
