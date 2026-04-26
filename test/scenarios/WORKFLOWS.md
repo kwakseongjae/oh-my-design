@@ -1,7 +1,7 @@
 # oh-my-design — User Workflows & Verification Map
 
 Date: 2026-04-26
-Version: v0.2.0-beta.0
+Version: v0.2.0
 
 이 문서는 사용자가 실제로 실행하는 6개 워크플로우를 정리하고, 각 단계에서 받는 결과물과 그것이 어떤 테스트/스모크로 검증됐는지 매핑합니다.
 
@@ -11,8 +11,8 @@ Version: v0.2.0-beta.0
 
 | 옵션 | 명령어 | 적합한 사용자 |
 |---|---|---|
-| Zero-install (권장) | `npx oh-my-design@beta <command>` | 평가 / 1회성 |
-| Global install | `npm install -g oh-my-design@beta` → `omd <command>` | 매일 사용 |
+| Zero-install (권장) | `npx oh-my-design <command>` | 평가 / 1회성 |
+| Global install | `npm install -g oh-my-design` → `omd <command>` | 매일 사용 |
 | GitHub URL | `npm install github:kwakseongjae/oh-my-design` | npm 미배포 시점 |
 | Local clone | `git clone + npm link` | contributor / 디버깅 |
 
@@ -320,4 +320,4 @@ archive: `test/scenarios/archive/llm-real-session/DESIGN.md`
 2. **omd:apply self-report 정확도**: 실 사용자 발화에서 "교정"을 얼마나 정확히 감지하는지 (false positive / negative 비율)
 3. **§14-15 (States/Motion) Hybrid 품질**: 1차 실증에선 OK 판정했지만 다른 reference + description 조합에서도 그런지
 
-이 3가지가 1-2주 알파 테스트로 데이터 모이면 v0.2.0 (stable) 승격 가능.
+이 3가지는 v0.2.0 출시 후 실 사용자 데이터로 측정 → v0.3 / v1.0 방향 결정 입력.

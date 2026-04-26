@@ -78,7 +78,7 @@ omd sync
 omd remember "..."
 ```
 
-> **Beta note**: until `v0.2.0` (stable) is released, prefix the version: `npx oh-my-design@beta install-skills`. Once stable, the `@beta` tag is no longer needed.
+> **Status**: `v0.2.0` is the first ecosystem release. The CLI surface (sync / remember / learn / init prepare / install-skills) is stable + unit-tested. The agent-side Hybrid variation quality depends on the host LLM following the `omd:init` skill prompt — please file issues with archived sessions if results disappoint.
 
 ### What gets installed
 
@@ -138,7 +138,7 @@ omd learn --mark-rejected <id> --reason <text>
 
 ### Status
 
-This ecosystem is **v0.2.0-beta**. The CLI surface (sync / remember / learn / init prepare) is stable and unit-tested. The agent-side Hybrid variation quality depends on the host LLM following the `omd:init` skill prompt — empirical results vary; please file issues with archived sessions.
+This ecosystem is **v0.2.0** — the first agent-integration release. The CLI surface (sync / remember / learn / init prepare / install-skills) is stable and unit-tested (505 tests). The agent-side Hybrid variation quality depends on the host LLM following the `omd:init` skill prompt — see [`test/scenarios/WORKFLOWS.md`](test/scenarios/WORKFLOWS.md) for the verification map. Empirical results from real sessions are welcome — please file issues with archived `.omd/init-context.json` and the resulting `DESIGN.md`.
 
 ## OmD v0.1 Philosophy Layer
 

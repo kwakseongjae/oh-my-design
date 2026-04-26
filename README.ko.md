@@ -78,7 +78,7 @@ omd sync
 omd remember "..."
 ```
 
-> **Beta 안내**: `v0.2.0` (stable) 출시 전까진 버전 prefix 필요: `npx oh-my-design@beta install-skills`. Stable 출시 후엔 `@beta` 불필요.
+> **상태**: `v0.2.0`은 첫 ecosystem 릴리스. CLI 표면(sync / remember / learn / init prepare / install-skills)은 안정 + 단위 테스트 완료. 에이전트 측 Hybrid variation 품질은 호스트 LLM이 `omd:init` 스킬 프롬프트를 얼마나 잘 따르는지에 좌우됩니다 — 결과가 만족스럽지 않으면 archive와 함께 이슈로 보고 부탁드려요.
 
 ### 설치되는 파일
 
@@ -138,7 +138,7 @@ omd learn --mark-rejected <id> --reason <text>
 
 ### 상태
 
-이 생태계는 **v0.2.0-beta**. CLI 표면(sync / remember / learn / init prepare)은 안정 + 단위 테스트 완료. 에이전트 측 Hybrid variation 품질은 호스트 LLM이 `omd:init` 스킬 프롬프트를 얼마나 잘 따르는지에 좌우됩니다 — 경험적 결과는 다양; 아카이브된 세션과 함께 이슈로 보고 부탁드립니다.
+이 생태계는 **v0.2.0** — 첫 agent-integration 릴리스입니다. CLI 표면 (sync / remember / learn / init prepare / install-skills)은 안정 + 단위 테스트 완료 (505 테스트). 에이전트 측 Hybrid variation 품질은 호스트 LLM이 `omd:init` 스킬 프롬프트를 얼마나 잘 따르는지에 좌우됩니다 — 검증 맵은 [`test/scenarios/WORKFLOWS.md`](test/scenarios/WORKFLOWS.md) 참고. 실 세션 결과 환영 — `.omd/init-context.json`과 결과 `DESIGN.md`를 첨부해서 이슈로 보고 부탁드립니다.
 
 ## OmD v0.1 Philosophy Layer
 
