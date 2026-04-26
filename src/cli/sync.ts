@@ -1,6 +1,7 @@
 import * as p from '@clack/prompts';
 import pc from 'picocolors';
-import { relative } from 'node:path';
+import { existsSync } from 'node:fs';
+import { join, relative } from 'node:path';
 import {
   ALL_SHIMS,
   inspectShim,
@@ -10,6 +11,10 @@ import {
   type InspectResult,
   type WriteShimResult,
 } from '../core/shims.js';
+
+const DESIGN_MD_NAME = 'DESIGN.md';
+const DEPRECATED_MD_NAME = 'DESIGN_DEPRECATED.md';
+const INIT_CONTEXT_PATH = '.omd/init-context.json';
 
 export interface SyncOptions {
   dir?: string;
@@ -80,6 +85,16 @@ export async function runSync(opts: SyncOptions = {}): Promise<number> {
     p.log.message(`  ${STATUS_LABEL[result.status]}  ${rel}`);
   }
 
+  // Mid-flow detection: shims may be clean while DESIGN.md is mid-init
+  // (after `omd init prepare` renamed the old one but before the agent
+  // wrote the new one). Surface this as a soft warning so users don't
+  // mistake "All clean" for "fully done".
+  const designMdMissing = !existsSync(join(projectRoot, DESIGN_MD_NAME));
+  const initContextExists = existsSync(join(projectRoot, INIT_CONTEXT_PATH));
+  const deprecatedExists = existsSync(join(projectRoot, DEPRECATED_MD_NAME));
+  const midInitFlow =
+    designMdMissing && (initContextExists || deprecatedExists);
+
   if (opts.check) {
     const unsynced = inspections.filter(
       (i) => i.result.status !== 'clean'
@@ -92,7 +107,14 @@ export async function runSync(opts: SyncOptions = {}): Promise<number> {
       );
       return 1;
     }
-    p.outro(pc.green('All clean.'));
+    if (designMdMissing) {
+      p.log.warn(
+        midInitFlow
+          ? 'DESIGN.md is missing but init-context is staged — your agent still needs to run the `omd:init` skill to write DESIGN.md.'
+          : 'DESIGN.md is missing — run `npx oh-my-design-cli init recommend "<description>"` to bootstrap, or have your agent run the `omd:init` skill.'
+      );
+    }
+    p.outro(pc.green('Shims clean.'));
     return 0;
   }
 

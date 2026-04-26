@@ -27,10 +27,12 @@ const program = new Command();
 program
   .name('oh-my-design')
   .description('Interactive CLI to generate DESIGN.md files for AI coding agents')
-  .version(readPackageVersion());
+  .version(readPackageVersion())
+  .showSuggestionAfterError(true)
+  .showHelpAfterError(true);
 
 program
-  .command('generate', { isDefault: true })
+  .command('generate')
   .description('Generate DESIGN.md and interactive preview')
   .option('--config <hash>', 'Apply a config hash from the web builder')
   .action(async (opts: { config?: string }) => {

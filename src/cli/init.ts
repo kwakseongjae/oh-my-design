@@ -27,6 +27,22 @@ export interface InitPrepareOptions {
 }
 
 export function runInitRecommend(opts: InitRecommendOptions): number {
+  const trimmed = opts.description.trim();
+  if (!trimmed) {
+    if (opts.json) {
+      process.stdout.write(
+        JSON.stringify({ error: 'description is empty' }, null, 2) + '\n'
+      );
+    } else {
+      console.error(
+        pc.red(
+          'omd init recommend: description is required. Try a few keywords like "warm fintech dashboard" or "minimal dev tool".'
+        )
+      );
+    }
+    return 1;
+  }
+
   const hits = recommend(opts.description, { topK: opts.topK ?? 5 });
   const delta = buildDeltaSet(opts.description);
 
@@ -56,6 +72,10 @@ export function runInitRecommend(opts: InitRecommendOptions): number {
           .map((k) => pc.cyan(k.keyword) + pc.dim(` (${k.modifier.toFixed(2)})`))
           .join(', ')
     );
+  } else {
+    p.log.warn(
+      'No vocabulary keywords matched. Recommendations will rank by tag overlap only — try adding tone words (warm / minimal / playful / premium / dense / casual / formal / etc.) for stronger matches. See https://github.com/kwakseongjae/oh-my-design#vocabulary for the full list.'
+    );
   }
   if (delta.warnings.length > 0) {
     for (const w of delta.warnings) p.log.warn(w);
@@ -82,9 +102,23 @@ export function runInitPrepare(opts: InitPrepareOptions): number {
   const projectRoot = opts.dir ?? process.cwd();
   const relRoot = relative(process.cwd(), projectRoot) || '.';
 
+  if (!opts.description?.trim()) {
+    console.error(
+      pc.red(
+        'omd init prepare: --description is required and cannot be empty.'
+      )
+    );
+    return 1;
+  }
+
   const refPath = findReferencePath(opts.ref);
   if (!refPath) {
-    console.error(pc.red(`omd init prepare: reference not found: ${opts.ref}`));
+    console.error(
+      pc.red(`omd init prepare: reference not found: ${opts.ref}`)
+    );
+    console.error(
+      pc.dim('  Run `omd reference list` to see all available references.')
+    );
     return 1;
   }
 
@@ -145,12 +179,27 @@ export function runInitPrepare(opts: InitPrepareOptions): number {
   p.log.success(
     `Context staged → ${relative(projectRoot, contextPath)}`
   );
+
+  if (!skillsInstalled(projectRoot)) {
+    p.log.warn(
+      'No omd:* skills installed in this project — your agent won\'t know how to consume this context. Run `npx oh-my-design-cli install-skills` first.'
+    );
+  }
+
   p.outro(
     pc.dim(
       'Next: have your agent (Claude Code / Codex / OpenCode) run the `omd:init` skill to generate DESIGN.md from this context.'
     )
   );
   return 0;
+}
+
+function skillsInstalled(projectRoot: string): boolean {
+  return (
+    existsSync(join(projectRoot, '.claude', 'skills', 'omd-init', 'SKILL.md')) ||
+    existsSync(join(projectRoot, '.codex', 'skills', 'omd-init', 'SKILL.md')) ||
+    existsSync(join(projectRoot, '.opencode', 'agents', 'omd-init.md'))
+  );
 }
 
 function findReferencePath(refId: string): string | null {
