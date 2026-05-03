@@ -5,11 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>Generate DESIGN.md from 67 real company design systems.</strong> Interactive wizard. Zero AI calls.
-</p>
-
-<p align="center">
-  <strong>Now with the OmD v0.1 Philosophy Layer.</strong> Voice · Narrative · Principles · Personas · States · Motion — so Claude Code matches your brand, not the AI's default.
+  <strong>One-command bootstrap for skill-driven design with your AI coding agent.</strong> 67 real company design systems. Zero AI calls in the install. Then you just talk to your agent.
 </p>
 
 <p align="center">
@@ -18,229 +14,106 @@
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
   <img src="https://img.shields.io/badge/references-67-7c5cfc?style=flat-square" alt="67 References" />
-  <img src="https://img.shields.io/badge/AI%20calls-zero-blue?style=flat-square" alt="Zero AI" />
-</p>
-
-<p align="center">
-  <a href="README.ko.md">한국어</a> | <a href="README.ja.md">日本語</a> | <a href="README.zh-TW.md">繁體中文</a> | English
+  <img src="https://img.shields.io/badge/CLI%20commands-1-blue?style=flat-square" alt="One CLI command" />
 </p>
 
 ---
 
-## What is oh-my-design?
+## What is this?
 
-**oh-my-design (OmD)** is an open spec for giving AI coding agents enough brand context to produce on-brand UI instead of the AI's statistical default.
+**oh-my-design (OmD)** turns your AI coding agent (Claude Code / Codex / OpenCode / Cursor) into a senior product designer with a working memory of your brand. You install once. After that, you just describe what you want — components, screens, copy, assets, charts — and the agent applies your project's design system, picks the right asset medium, and ships.
 
-`DESIGN.md` as [Google defined it](https://stitch.withgoogle.com/docs/design-md/overview/) is a **token document** — colors, typography, components. Necessary, but not sufficient. When an agent generates UI from tokens alone, the output is coherent but branded like nobody — it defaults to Inter-on-white, purple gradients, unjustified emojis. OmD v0.1 adds a **brand-philosophy layer** on top: **Voice · Narrative · Principles · Personas · States · Motion**. Drop an OmD `DESIGN.md` at your project root and the agent's output stops being generic and starts being yours.
+`DESIGN.md` is the brand spec ([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens + the OmD v0.1 brand-philosophy layer: Voice / Narrative / Principles / Personas / States / Motion). 67 real-company DESIGN.md files ship in this package. Pick one, customize through conversation, ship.
 
-Three pieces:
+**No API keys. No external infra. Everything runs inside your existing CLI session.**
 
-1. **[Spec](spec/omd-v0.1.md)** — versioned, additive to Google Stitch, MIT-licensed.
-2. **[Claude Code skill](.claude/skills/omd/SKILL.md)** — auto-applies the spec as a hard constraint when generating UI in Claude Code.
-3. **[67 reference files](references/)** — real-company `DESIGN.md` files you can fork, customize with the interactive builder, and ship.
-
-**No API keys. No AI calls. Everything runs client-side.**
-
-## Ecosystem v1 — agent integration (new)
-
-`oh-my-design` now ships a coding-agent ecosystem so `DESIGN.md` is **read and respected** by Claude Code, Codex, OpenCode, and Cursor while you work — not just generated once and forgotten.
-
-**Zero-install (recommended):**
+## Install
 
 ```bash
 cd my-project
-
-# 1. One-time: install agent skills (.claude/skills, .codex/skills, .opencode/agents)
 npx oh-my-design-cli install-skills
-
-# 2. Bootstrap DESIGN.md from a reference + your project description
-#    (run from inside Claude Code/Codex/OpenCode and the omd:init skill drives this)
-npx oh-my-design-cli init recommend "warm approachable B2C marketplace"
-npx oh-my-design-cli init prepare --ref airbnb --description "warm approachable B2C marketplace"
-
-# 3. Install / refresh shim files so all four agents read DESIGN.md
-npx oh-my-design-cli sync
-
-# 4. As you work, log preferences whenever the agent gets a design choice wrong
-npx oh-my-design-cli remember "CTAs are never uppercase"
-
-# 5. Periodically fold pending preferences into DESIGN.md
-npx oh-my-design-cli learn                            # list pending
-npx oh-my-design-cli learn --mark-applied <id>        # after the fold
 ```
 
-**Or install globally for shorter commands:**
+Then restart your agent (Cmd+Q in Claude Code, then relaunch) so the new skills + agents are loaded.
 
-```bash
-npm install -g oh-my-design-cli
-# Now use either `oh-my-design` or the short alias `omd`
-omd install-skills
-omd sync
-omd remember "..."
-```
+That is the only CLI command you will run. Everything else is natural language to your agent.
 
-> **Status**: `v0.1.0` is the first ecosystem release. The CLI surface (sync / remember / learn / init prepare / install-skills) is stable + unit-tested. The agent-side Hybrid variation quality depends on the host LLM following the `omd:init` skill prompt — please file issues with archived sessions if results disappoint.
+## How you use it
 
-### What gets installed
+Open Claude Code (or Codex / OpenCode) in your project. Just talk:
 
-| File | Owned by | Purpose |
+> "Set up the design system for a calm B2B fintech dashboard."
+> Agent picks a reference from 67 (likely Linear or Stripe), proposes a hybrid DESIGN.md, asks for confirmation, writes the file plus shims.
+
+> "Make the empty-state for the search results page."
+> Agent reads DESIGN.md, builds the component with brand tokens, picks an inline SVG illustration matching the voice, drops in microcopy that follows the §10 voice rules.
+
+> "Design the entire onboarding from scratch — Toss-style for a family meal-tracking app."
+> Agent invokes the harness — runs the 10-phase pipeline (discovery, research, IA, wireframes, components, assets, microcopy, validation, handoff), spawns sub-agents in parallel where possible, asks you 3 mandatory checkpoints, hands back a v0/Cursor-ready package.
+
+> "Render a 3D water glass for the hero."
+> Agent recommends Blender, walks you through install-on-demand (it does not bundle it in the upfront bootstrap), then renders with materials cited from DESIGN.md §2 and §6.
+
+> "Add a daily-intake line chart."
+> Agent reads your `package.json`, sees `recharts` is installed, builds the chart with brand colors, no library mismatch.
+
+> "We never use uppercase CTAs."
+> Agent silently appends to `.omd/preferences.md`. Next time anyone makes a CTA, that rule applies. Later you can say "fold preferences into DESIGN.md" and the agent merges by scope.
+
+## What gets installed
+
+| Path | Owner | Purpose |
 |---|---|---|
-| `DESIGN.md` | you | Single source of truth — brand & UI spec |
-| `CLAUDE.md` | `omd sync` | Pointer (`@./DESIGN.md`) for Claude Code |
-| `AGENTS.md` | `omd sync` | Pointer for Codex CLI **and** OpenCode (single file covers both) |
-| `.cursor/rules/omd-design.mdc` | `omd sync` | Auto-attaches DESIGN.md when Cursor edits UI files |
-| `.claude/skills/omd-*/SKILL.md` | `omd install-skills` | Claude Code skill bundle (5 skills) |
-| `.codex/skills/omd-*/SKILL.md` | `omd install-skills` | Codex skill bundle (5 skills) |
-| `.opencode/agents/omd-*.md` | `omd install-skills` | OpenCode agent bundle (5 agents) |
-| `.omd/preferences.md` | `omd remember` | Append-only design correction log |
-| `.omd/sync.lock.json` | `omd sync` | Drift detection state |
+| `.claude/skills/omd-*/SKILL.md` | install-skills | Claude Code skill bundle (apply / harness / init / learn / remember / sync) |
+| `.codex/skills/omd-*/SKILL.md` | install-skills | Codex skill bundle |
+| `.opencode/agents/omd-*.md` | install-skills | OpenCode agent bundle |
+| `.claude/agents/omd-*.md` | install-skills | 11 canonical sub-agents (master + 10 specialists) |
+| `.claude/data/*` | install-skills | 67-reference fingerprints, vocabulary, opt-out corpus |
+| `.claude/hooks/*.cjs` | install-skills | UserPromptSubmit / SessionStart / PostToolUse hooks |
+| `.claude/skills/skill-rules.json` | install-skills | Skill activation rules |
+| `references/*/DESIGN.md` | bundled | 67 real design systems |
+| `DESIGN.md` | your agent (after init flow) | Your project's authoritative brand spec |
+| `CLAUDE.md` / `AGENTS.md` / `.cursor/rules/omd-design.mdc` | omd-sync skill | Pointers so every agent reads DESIGN.md |
+| `.omd/preferences.md` | omd-remember skill | Append-only design correction log |
+| `.omd/runs/<id>/` | omd-harness skill | Per-harness-run artifacts (briefs, wireframes, eval, handoff zips) |
 
-Shim and skill files use a `<!-- omd:start -->` marker so user edits outside the marker are preserved across `omd sync` runs.
+## The 6 skills + 11 agents
 
-### The five skills
+Skills (loaded into your agent's context based on prompt triggers):
 
-| Skill | Trigger | What it does |
-|---|---|---|
-| `omd:init` | "make me a DESIGN.md" / "set up brand" | Recommends a reference, asks for project description, generates a Hybrid variation that **preserves the reference's voice** while applying project-context deltas, writes DESIGN.md + shims |
-| `omd:apply` | Any UI / styling / microcopy / motion task | Loads DESIGN.md + pending preferences as authoritative brand context, **auto-logs** any user correction it detects via `omd remember` |
-| `omd:sync` | "shim drift" / "AGENTS.md sync" | Runs `omd sync` with appropriate flags |
-| `omd:remember` | "remember that ..." / "we don't ..." | Appends a structured entry to `.omd/preferences.md` |
-| `omd:learn` | "fold preferences into DESIGN.md" | Groups pending preferences by scope, proposes coherent DESIGN.md edits, flips status to applied |
+- **omd:apply** — DESIGN.md as authoritative context for every UI task. Routes complex requests (assets, charts, full screens, a11y audit) to specialized sub-agents.
+- **omd:init** — Bootstrap DESIGN.md from a reference + project description. 67 references, hybrid variation that preserves the reference voice while shifting only user-named axes.
+- **omd:harness** — `/omd-harness <task>` to run the 10-phase design pipeline with checkpoints. Spawns sub-agents in parallel.
+- **omd:remember** — Captures user corrections to `.omd/preferences.md` automatically when the agent detects them.
+- **omd:learn** — Folds pending corrections back into DESIGN.md by scope.
+- **omd:sync** — Maintains the shim files (CLAUDE.md / AGENTS.md / Cursor mdc) so every agent reads your DESIGN.md.
 
-Source: [`skills/`](skills/) in this repo. `omd install-skills` copies these into your project's agent directories.
+Sub-agents — 1 orchestrator + 10 specialists (invoked by the master or directly by skills):
 
-### CLI commands
+- **omd-master** — Conversational state machine, runs the harness phases. opus.
+- **omd-ux-researcher** — Reads bundled references, validates Tier-1 official design system URLs. opus.
+- **omd-ui-junior** — Generates wireframes and component manifests from DESIGN.md. sonnet.
+- **omd-ux-engineer** — Section-level interaction / motion / IA / mobile / perceived-perf audit + code-level fixes. NN/g heuristics + Refactoring UI + Web Vitals + WAI-ARIA. Senior advisor; pairs with `omd-ui-junior` (generator). opus.
+- **omd-asset-curator** — Picks asset medium (inline SVG / chart library / Lottie / Rive / Unsplash / 3D), generates inline code or sources external. Stack-aware (recharts vs chartjs vs custom SVG, lucide vs heroicons, etc.). sonnet.
+- **omd-3d-blender** — Blender MCP renderer with just-in-time install walkthrough. opus.
+- **omd-microcopy** — Voice-consistent copy generation tied to DESIGN.md §10. sonnet.
+- **omd-ux-writer** — Section-level copy audit + 2-3 strong alternatives + A/B hypothesis. Podmajersky / Erika Hall / Mailchimp / Stripe / GitHub voice docs integrated. Senior advisor; pairs with `omd-microcopy` (generator). opus.
+- **omd-a11y-auditor** — WCAG checks. haiku.
+- **omd-persona-tester** — Adversarial 4-persona walkthrough (V/J/F/S). sonnet.
+- **omd-critic** — Root-cause analysis when the user iterates. opus.
 
-```
-omd init recommend <description>   # tag-stem-matched reference suggestions (top-5)
-omd init prepare --ref <id> --description <text>
-                                   # stages .omd/init-context.json + delta_set
-omd install-skills [--agent ...]   # copy skills/* into .claude /.codex /.opencode
-omd reference list                 # list bundled reference ids
-omd reference show <id>            # print a reference DESIGN.md to stdout
-omd sync [--force | --check]       # write or audit shim files
-omd remember <note> [--scope ...]  # append a preference entry
-omd learn                          # list pending preferences
-omd learn --mark-applied <id>      # after applying to DESIGN.md
-omd learn --mark-rejected <id> --reason <text>
-```
+## What 1.0.0 is not
 
-`omd sync --check` is CI-friendly: exit 1 if shims drifted or DESIGN.md changed without a follow-up sync.
+- It is not a collection of CLI commands. There is one bootstrap command. Everything else is skill prose.
+- It is not an SDK. The `dist/index.js` programmatic API is gone. If you need the matching algorithm or shim format, look at the skill markdown directly.
+- It does not generate emojis as icons. Asset agent prefers inline SVG (Lucide-matched or custom).
 
-### What's deterministic vs. agent-driven
+If you were on 0.1.x: see [MIGRATION.md](MIGRATION.md). All your old CLI commands are now spoken to your agent.
 
-| Layer | Done by | Why |
-|---|---|---|
-| Reference recommendation | CLI (tag + stem match + category-prior + MMR-style diversity) | Fast, no API key. Category-prior boosts domain-aligned refs (e.g. Consumer for "marketplace / family / subscription"). |
-| Token delta computation | CLI (controlled vocabulary of 41 keywords + ~75 synonyms, additive composition with clamp) | Deterministic; same description → same delta_set |
-| Color hex shift baseline | CLI (`apply-delta-stub`) — **color-only** | Fast deterministic preview. Does NOT shift radius / letter-spacing / spacing — that's the agent's job. |
-| Full token application + section structure preservation + voice rewrite | **Agent** (Claude Code / Codex / OpenCode) following `omd:init` skill | Stub is color-only; full delta application requires structured Markdown editing. The skill prompt enforces voice fingerprint preservation. |
-| §11–13 (Brand Narrative / Principles / Personas) | **Agent + user input** (Phase 4.5) | Reference content is project-specific facts (founding year, verbatim taglines, real personas). The skill collects facts in Phase 4.5 or marks as `[FILL IN: …]` with `omd:limitation` comments — never fabricates. |
+## Status
 
-### Status
-
-This ecosystem is **v0.1.0** — the first agent-integration release. The CLI surface (sync / remember / learn / init prepare / install-skills) is stable and unit-tested (505 tests). The agent-side Hybrid variation quality depends on the host LLM following the `omd:init` skill prompt — see [`test/scenarios/WORKFLOWS.md`](test/scenarios/WORKFLOWS.md) for the verification map. Empirical results from real sessions are welcome — please file issues with archived `.omd/init-context.json` and the resulting `DESIGN.md`.
-
-## OmD v0.1 Philosophy Layer
-
-The 6 sections OmD adds on top of Google Stitch's 9:
-
-| Section | Purpose |
-|---|---|
-| **10. Voice & Tone** | Microcopy constraints — button labels, errors, onboarding |
-| **11. Brand Narrative** | The "why" — what the brand rejects, what it's trying to move |
-| **12. Principles** | 5–10 first-principles rules that break ties when tokens don't |
-| **13. Personas** | 2–4 concrete users so agents ground output in real use cases |
-| **14. States** | Empty / loading / error / skeleton patterns — prevents generic "No data found" |
-| **15. Motion & Easing** | Named duration + easing tokens — the dimension Stitch's 9 sections miss |
-
-**Ten references ship with a full Philosophy Layer today:**
-Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Apple · Figma — each with voice, narrative, principles, personas, states, and motion sourced against public references.
-
-See [references/toss/DESIGN.md](references/toss/DESIGN.md) for a full OmD v0.1 example.
-
-## What's inside
-
-- **Builder** — pick a reference, tune colors / radius / dark mode, select components, hit Export. The **Philosophy** filter isolates the 10 references with a full brand philosophy.
-- **Design Systems Directory** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 34 of the 67 references have a verified public design system or brand-guidelines page; the directory links straight out to each one with live thumbnails.
-- **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — a short MBTI-style quiz that maps your design personality to one of the 67 references and drops you straight into the builder with that reference preloaded.
-
-## 67 Supported References
-
-| Category | Companies |
-|----------|-----------|
-| **AI & LLM** | Claude, Cohere, ElevenLabs, Minimax, Mistral AI, Ollama, OpenCode AI, Replicate, RunwayML, Together AI, VoltAgent, xAI |
-| **Design Tools** | Airtable, Clay, Figma, Framer, Miro, Webflow |
-| **Developer Tools** | Cursor, Expo, Lovable, Raycast, Superhuman, Vercel, Warp |
-| **Productivity** | Cal.com, freee, Intercom, Linear, Mintlify, Notion, Resend, Zapier |
-| **Consumer Tech** | Airbnb, Apple, Baemin, Dcard, IBM, Kakao, Karrot, LINE, Mercari, NVIDIA, Pinkoi, Pinterest, SpaceX, Spotify, Uber |
-| **Fintech** | Coinbase, Kraken, Revolut, Stripe, Toss, Wise |
-| **Backend & DevOps** | ClickHouse, Composio, Hashicorp, MongoDB, PostHog, Sanity, Sentry, Supabase |
-| **Automotive** | BMW, Ferrari, Lamborghini, Renault, Tesla |
-| **Marketing** | Semrush |
-
-> Use the **country filter** in the builder to browse by region (Korea, Taiwan, Japan, France, Italy, Germany, UK, US).
-
-## Exported DESIGN.md
-
-Follows the [Google Stitch DESIGN.md format](https://stitch.withgoogle.com/docs/design-md/overview/) — base sections 1–9, plus the OmD v0.1 Philosophy Layer (sections 10–15) when enabled:
-
-**Base (Google Stitch)**
-1. Visual Theme & Atmosphere
-2. Color Palette & Roles
-3. Typography Rules
-4. Component Stylings
-5. Layout Principles
-6. Depth & Elevation
-7. Do's and Don'ts
-8. Responsive Behavior
-9. Agent Prompt Guide
-
-**OmD v0.1 Philosophy Layer (additive)**
-
-10. Voice & Tone
-11. Brand Narrative
-12. Principles
-13. Personas
-14. States
-15. Motion & Easing
-
-Plus: Style Preferences, Included Components, Iconography & SVG Guidelines, Document Policies.
-
-## Project Structure
-
-```
-oh-my-design/
-  spec/              OmD v0.1 spec (authoritative)
-  .claude/skills/omd/ Claude Code skill bundle
-  references/        67 company DESIGN.md files
-  src/               CLI core (TypeScript)
-  web/               Next.js web builder
-    src/app/         Landing + Builder + Directory pages
-    src/components/  Wizard, Preview, Export
-  test/              CLI Vitest suite (unit/, integration/, scripts/)
-```
-
-Web tests are colocated next to source files (`web/src/**/*.test.ts`).
-
-## Testing
-
-Two suites, both under Vitest, both must pass:
-
-```bash
-npm test                # CLI: 370 tests — unit + per-reference smoke
-cd web && npm test      # Web: 88 tests — generate-css, config-hash, survey
-```
-
-The integration suite (`test/integration/all-references.test.ts`) runs the full generation pipeline against every `references/<id>/DESIGN.md`, so a malformed reference surfaces as a per-ref failure in PR review. See [test/README.md](test/README.md) for the folder convention and module-by-module coverage map.
-
-## Acknowledgments
-
-- [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) — the upstream collection of DESIGN.md files that seeded this project.
-- [kzhrknt/awesome-design-md-jp](https://github.com/kzhrknt/awesome-design-md-jp) — Japanese-market design-system references.
-
-oh-my-design extends these collections with an interactive customization wizard, A/B style preferences, component selection, a Design Systems directory, and a CLI export pipeline.
+`v1.0.0` — first skill-first release. Surface area collapsed by ~92% versus 0.1.x. Stable for the install bootstrap; the harness is improving every release as the agent prose tightens.
 
 ## License
 
-[MIT](LICENSE)
+MIT. References belong to their respective companies — they are reproduced for educational reference.

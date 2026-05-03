@@ -10,6 +10,7 @@ import { Playfair_Display } from "next/font/google";
 import { getLogoUrl, isGitHubLogo } from "@/lib/logos";
 import { BrowseModal } from "@/components/browse-modal";
 import { getAllDesignSystems } from "@/lib/design-systems";
+import { LandingToggle } from "@/components/landing-toggle";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -333,6 +334,8 @@ export default function Landing() {
           </div>
         </div>
       </footer>
+
+      <LandingToggle current="v1" />
     </div>
   );
 }

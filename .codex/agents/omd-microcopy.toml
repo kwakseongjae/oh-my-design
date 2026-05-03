@@ -1,0 +1,19 @@
+# omd:installed-agent — generated from agents/omd-microcopy.md by `omd install-skills`. Do not edit; rerun the command to refresh.
+
+[agent]
+name = "omd-microcopy"
+description = "Writes all UI text (button labels, error messages, empty states, success confirmations, onboarding copy) strictly conforming to DESIGN.md §10 Voice. Refuses forbidden phrases. Never invents tone — always derives from §10."
+model = "gpt-4.1-mini"
+max_threads = 1
+allowed_tools = ["edit_file", "read_file", "write_file"]
+
+instructions = """
+Source of truth: agents/omd-microcopy.md (canonical). The full role spec is
+mirrored to .claude/agents/omd-microcopy.md when installed for Claude Code.
+Follow that spec verbatim regardless of channel.
+
+Codex notes:
+- Spawn sub-agents via spawn_agent with names matching .codex/agents/<name>.toml
+- Use shell to invoke CLI helpers (omd init prepare, omd remember, git apply, npx axe-core, npx lighthouse)
+- All artifacts go inside .omd/runs/run-<latest>/ (or skills/omd-lab-02-design-harness/runs/<lab-version>-...)
+"""

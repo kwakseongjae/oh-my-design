@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "description": "Korean + English opt-out / fast-exit / frustration signals. Used by signal-classifier to detect when the user wants the harness to stop probing.",
+  "categories": {
+    "opt_out_full": {
+      "description": "User wants out completely — go to FAST_EXIT.",
+      "ko": [
+        "그만",
+        "stop",
+        "그만해",
+        "그만 좀",
+        "아 됐어",
+        "됐어",
+        "그만 됐어",
+        "이제 그만",
+        "충분",
+        "충분해",
+        "이만하면 됐어",
+        "끝내자"
+      ],
+      "en": [
+        "stop",
+        "stop it",
+        "enough",
+        "i'm done",
+        "no more",
+        "we're done",
+        "that's enough",
+        "leave it"
+      ]
+    },
+    "opt_out_skip": {
+      "description": "Skip current question — defaults OK.",
+      "ko": [
+        "skip",
+        "그냥",
+        "그냥 가",
+        "알아서",
+        "알아서 해줘",
+        "넘어가",
+        "넘기자",
+        "패스",
+        "건너뛰",
+        "다음",
+        "다음으로",
+        "나중에",
+        "지금 말고"
+      ],
+      "en": [
+        "skip",
+        "skip it",
+        "just go",
+        "you decide",
+        "your call",
+        "next",
+        "later",
+        "not now"
+      ]
+    },
+    "frustration": {
+      "description": "User is frustrated with current proposal — ALL options off.",
+      "ko": [
+        "다 별로",
+        "다 이상",
+        "이건 아닌데",
+        "별로야",
+        "별로",
+        "이상해",
+        "이상한데",
+        "마음에 안 들어",
+        "마음에 안 들",
+        "다시",
+        "다시 해",
+        "다 다시"
+      ],
+      "en": [
+        "all bad",
+        "none of these",
+        "neither",
+        "not what i want",
+        "i don't like",
+        "redo",
+        "start over",
+        "try again"
+      ]
+    },
+    "approval": {
+      "description": "Affirmative — proceed.",
+      "ko": [
+        "go",
+        "ok",
+        "좋아",
+        "좋네",
+        "그래",
+        "응",
+        "ㅇㅇ",
+        "그렇게",
+        "이대로",
+        "맞아",
+        "맞아요",
+        "괜찮",
+        "할게"
+      ],
+      "en": [
+        "go",
+        "ok",
+        "okay",
+        "yes",
+        "sure",
+        "good",
+        "looks good",
+        "lgtm",
+        "let's go",
+        "proceed",
+        "ship it"
+      ]
+    },
+    "deep_engagement": {
+      "description": "User wants more depth/iteration — opposite of skip.",
+      "ko": [
+        "더 깊게",
+        "한번 더",
+        "더 보여줘",
+        "다른 옵션",
+        "더 다듬",
+        "디테일",
+        "조금 더",
+        "이 부분"
+      ],
+      "en": [
+        "more options",
+        "show more",
+        "go deeper",
+        "more detail",
+        "what about",
+        "let's refine"
+      ]
+    }
+  }
+}
+

@@ -1,0 +1,1495 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-04-27T10:09:52.199Z",
+  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
+  "count": 67,
+  "items": [
+    {
+      "id": "airbnb",
+      "primary_color_hex": "#ff385c",
+      "category": "Consumer",
+      "visual_theme": "Warm, photography-forward marketplace feeling like a travel magazine where every page invites you to book — pure white canvas with Rausch Red accent.",
+      "voice_fingerprint": {
+        "register": "editorial-warm",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "english-dominant"
+      },
+      "tone_keywords": [
+        "warm",
+        "approachable",
+        "friendly",
+        "trustworthy",
+        "editorial",
+        "soft"
+      ],
+      "antipatterns": [
+        "No Book now! exclamations",
+        "No scarcity pressure",
+        "No accommodations/units vocabulary"
+      ],
+      "signature_motion": "Heart-icon save: outline to filled Rausch Red over motion-fast with ease-warm and small scale pulse.",
+      "has_personas": true,
+      "category_raw": "Consumer"
+    },
+    {
+      "id": "airtable",
+      "primary_color_hex": "#1b61c9",
+      "category": "Design Tools",
+      "visual_theme": "Clean, enterprise-friendly platform communicating sophisticated simplicity through white canvas, deep navy text, and Swiss-precision typography with positive letter-spacing.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "clean",
+        "enterprise",
+        "trustworthy",
+        "minimal",
+        "corporate"
+      ],
+      "antipatterns": [
+        "Skip positive letter-spacing",
+        "Use heavy shadows"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "Design Tools"
+    },
+    {
+      "id": "apple",
+      "primary_color_hex": "#0071e3",
+      "category": "Consumer",
+      "visual_theme": "Controlled drama — vast pure black and near-white expanses as cinematic backdrops for products photographed as gallery sculptures. Reductive minimalism as reverence.",
+      "voice_fingerprint": {
+        "register": "confident-restrained",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "english-dominant"
+      },
+      "tone_keywords": [
+        "premium",
+        "minimal",
+        "elegant",
+        "confident",
+        "serious"
+      ],
+      "antipatterns": [
+        "No revolutionary as decorative adjective",
+        "No exclamation marks on CTAs",
+        "No emoji in product copy"
+      ],
+      "signature_motion": "Pull-to-refresh: spring-physics indicator follows drag, springs back below threshold or detaches above.",
+      "has_personas": true,
+      "category_raw": "Consumer"
+    },
+    {
+      "id": "baemin",
+      "primary_color_hex": "#2AC1BC",
+      "category": "Consumer",
+      "visual_theme": "Korean food delivery brand turning takeout into cultural experience through typography, humor, and a deliberately counter-industry warm mint green.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "playful",
+        "warm",
+        "friendly",
+        "approachable",
+        "casual"
+      ],
+      "antipatterns": [
+        "No cold clinical blues",
+        "No pure black text",
+        "No competing accent colors"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "Consumer"
+    },
+    {
+      "id": "bmw",
+      "primary_color_hex": "#1c69d4",
+      "category": "Automotive",
+      "visual_theme": "Automotive engineering made visual — precision, performance, and German industrial confidence with cinematic dark/light rhythm and angular zero-radius geometry.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "premium",
+        "serious",
+        "geometric",
+        "minimal",
+        "corporate",
+        "elegant"
+      ],
+      "antipatterns": [
+        "Don't round corners",
+        "No medium font weights",
+        "No decorative elements"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "Automotive"
+    },
+    {
+      "id": "cal",
+      "primary_color_hex": "#242424",
+      "category": "Productivity",
+      "visual_theme": "Monochromatic restraint — grayscale world where boldness comes from confidence of black text on white space, not color. Architectural Cal Sans headlines.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "minimal",
+        "bold",
+        "serious",
+        "premium",
+        "geometric"
+      ],
+      "antipatterns": [
+        "No brand colors beyond grayscale",
+        "No CSS borders when shadows work",
+        "No illustrations or decorative graphics"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "Productivity"
+    },
+    {
+      "id": "claude",
+      "primary_color_hex": "#c96442",
+      "category": "AI",
+      "visual_theme": "Literary salon reimagined as product page — warm, unhurried, quietly intellectual on parchment canvas evoking premium paper rather than digital surface.",
+      "voice_fingerprint": {
+        "register": "editorial-warm",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "english-dominant"
+      },
+      "tone_keywords": [
+        "warm",
+        "editorial",
+        "trustworthy",
+        "elegant",
+        "calm",
+        "serious"
+      ],
+      "antipatterns": [
+        "No revolutionary or cutting-edge",
+        "No emoji or exclamations",
+        "No performative apologies"
+      ],
+      "signature_motion": "Typewriter streaming: model output appears character by character at actual decoding timing — never faked or replayed.",
+      "has_personas": true,
+      "category_raw": "AI"
+    },
+    {
+      "id": "clay",
+      "primary_color_hex": "#000000",
+      "category": "Design Tools",
+      "visual_theme": "Warm, playful celebration of color treating B2B data enrichment like a craft — cream backgrounds, named swatch palette, hand-made paper texture.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "playful",
+        "warm",
+        "handcrafted",
+        "friendly",
+        "rich",
+        "energetic"
+      ],
+      "antipatterns": [
+        "No cool gray backgrounds",
+        "No subtle hover effects",
+        "No standard blur shadows"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "Design Tools"
+    },
+    {
+      "id": "clickhouse",
+      "primary_color_hex": "#faff69",
+      "category": "Developer Tools",
+      "visual_theme": "High-performance cockpit in acid yellow-green on obsidian black — terminal-grade aesthetic screaming speed through visual mass and high-contrast neon.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "energetic",
+        "technical",
+        "futuristic",
+        "rich"
+      ],
+      "antipatterns": [
+        "No additional colors",
+        "No light backgrounds",
+        "No warm neutrals"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "Backend"
+    },
+    {
+      "id": "cohere",
+      "primary_color_hex": "#1863dc",
+      "category": "AI",
+      "visual_theme": "Polished enterprise command deck — confident, clean, designed to make AI feel like serious infrastructure. Bright white canvas with 22px signature card radius.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "enterprise",
+        "minimal",
+        "elegant",
+        "trustworthy",
+        "corporate"
+      ],
+      "antipatterns": [
+        "No warm colors",
+        "No heavy shadows",
+        "No bold body weights"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "AI"
+    },
+    {
+      "id": "coinbase",
+      "primary_color_hex": "#0052ff",
+      "category": "Fintech",
+      "visual_theme": "Clean, trustworthy crypto platform; blue-and-white binary palette with alternating dark and light sections, proprietary Coinbase fonts.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "trustworthy",
+        "cool",
+        "minimal",
+        "corporate",
+        "bold"
+      ],
+      "antipatterns": [
+        "decorative use of brand blue",
+        "sharp corners on CTAs"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "fintech"
+    },
+    {
+      "id": "composio",
+      "primary_color_hex": "#0007cd",
+      "category": "Developer Tools",
+      "visual_theme": "Nocturnal developer command center; pitch-black canvas with cyan and cobalt bioluminescent glows and barely-visible white-border containment.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "technical",
+        "minimal",
+        "futuristic",
+        "bold",
+        "serious"
+      ],
+      "antipatterns": [
+        "bright backgrounds as primary",
+        "heavy shadows everywhere",
+        "warm colors in palette"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "developer-tools"
+    },
+    {
+      "id": "cursor",
+      "primary_color_hex": "#26251e",
+      "category": "Developer Tools",
+      "visual_theme": "Warm minimalism meets code-editor elegance; cream canvas with warm near-black text, three-font system, oklab borders, full-pill CTAs.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "warm",
+        "elegant",
+        "premium",
+        "editorial",
+        "handcrafted"
+      ],
+      "antipatterns": [
+        "cold gray neutrals",
+        "default tracking on display sizes",
+        "sharp 2-4px corners on buttons"
+      ],
+      "signature_motion": "Hover text shifts to warm crimson #cf2d56; shadows transition over 200ms ease for elevation changes.",
+      "has_personas": false,
+      "category_raw": "developer-tools"
+    },
+    {
+      "id": "dcard",
+      "primary_color_hex": "#3397cf",
+      "category": "Consumer",
+      "visual_theme": "Material Design adapted for East-Asian forum culture; deep teal-navy header framing light-gray content with white post cards.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "friendly",
+        "approachable",
+        "consumer",
+        "trustworthy"
+      ],
+      "antipatterns": [
+        "weight 700 headlines",
+        "ad-hoc hex values",
+        "bouncy easing"
+      ],
+      "signature_motion": "Material easing cubic-bezier(.4,0,.2,1) with .15s hover/press and .3s page transitions.",
+      "has_personas": false,
+      "category_raw": "social"
+    },
+    {
+      "id": "elevenlabs",
+      "primary_color_hex": "#ffffff",
+      "category": "AI",
+      "visual_theme": "Restrained elegance on near-white canvas; ethereal light-weight Waldenburg display, multi-layered sub-0.1 opacity shadows, warm stone pill CTAs.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "elegant",
+        "premium",
+        "minimal",
+        "warm",
+        "soft",
+        "airy"
+      ],
+      "antipatterns": [
+        "bold weight on display headings",
+        "heavy shadows",
+        "cool gray borders"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "ai"
+    },
+    {
+      "id": "expo",
+      "primary_color_hex": "#000000",
+      "category": "Developer Tools",
+      "visual_theme": "Luminous airy developer platform; cool-tinted off-white canvas with strictly monochromatic chrome and pill-shaped geometry throughout.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "minimal",
+        "approachable",
+        "premium",
+        "spacious",
+        "friendly"
+      ],
+      "antipatterns": [
+        "decorative interface colors",
+        "sharp corners on interactive elements",
+        "heavy drop shadows"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "developer-tools"
+    },
+    {
+      "id": "ferrari",
+      "primary_color_hex": "#DA291C",
+      "category": "Automotive",
+      "visual_theme": "Digital editorial with chiaroscuro rhythm; alternating black cinematic and white editorial panels, Ferrari Red used surgically as accent.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "luxurious",
+        "editorial",
+        "premium",
+        "bold",
+        "elegant",
+        "serious"
+      ],
+      "antipatterns": [
+        "scattered Ferrari Red as decoration",
+        "rounded-pill buttons",
+        "box-shadows on cards"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "automotive"
+    },
+    {
+      "id": "figma",
+      "primary_color_hex": "#000000",
+      "category": "Design Tools",
+      "visual_theme": "Black-and-white interface chrome with vibrant multi-color hero gradients; variable font with unusual weight stops and pill-and-circle geometry.",
+      "voice_fingerprint": {
+        "register": "colloquial-craft, peer-to-peer designer voice",
+        "sentence_length": "short and aspirational in marketing; longer colloquial in blog",
+        "metaphor_density": "low in chrome; moderate in editorial blog titles",
+        "vocabulary_register": "designer jargon assumed without gloss (frame, component, auto-layout)"
+      },
+      "tone_keywords": [
+        "minimal",
+        "playful",
+        "bold",
+        "casual",
+        "indie"
+      ],
+      "antipatterns": [
+        "corporate-SaaS hype phrases",
+        "generic marketing emoji",
+        "interface colors beyond black-and-white"
+      ],
+      "signature_motion": "Multiplayer cursor presence updates at raw frame rate with no easing; chrome uses cubic-bezier only, no spring or bounce.",
+      "has_personas": true,
+      "category_raw": "design-tools"
+    },
+    {
+      "id": "framer",
+      "primary_color_hex": "#0099ff",
+      "category": "Design Tools",
+      "visual_theme": "Cinematic pure-black void canvas; GT Walsheim with extreme negative tracking, Framer Blue as sole accent, pill buttons and product screenshots as hero.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "futuristic",
+        "premium",
+        "minimal",
+        "energetic"
+      ],
+      "antipatterns": [
+        "warm dark backgrounds",
+        "additional accent colors beyond Framer Blue",
+        "positive letter-spacing on headlines"
+      ],
+      "signature_motion": "Scale-based animations using matrix transform with 0.85 scale factor and opacity transitions for reveals.",
+      "has_personas": false,
+      "category_raw": "design-tools"
+    },
+    {
+      "id": "freee",
+      "primary_color_hex": "#285ac8",
+      "category": "SaaS",
+      "visual_theme": "Open-source enterprise SaaS Vibes system; deep enterprise blue brand with three-tier token architecture and Japanese-first font stack.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "trustworthy",
+        "corporate",
+        "enterprise",
+        "utilitarian",
+        "technical"
+      ],
+      "antipatterns": [
+        "display sizes above 24dp",
+        "off-system hex values",
+        "arbitrary z-index values"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "saas"
+    },
+    {
+      "id": "hashicorp",
+      "primary_color_hex": "#000000",
+      "category": "Developer Tools",
+      "visual_theme": "Enterprise infrastructure: dual light/dark modes, HashiCorp Sans heads, multi-product token-driven color, whisper shadows, tight radii.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "enterprise",
+        "technical",
+        "serious",
+        "trustworthy",
+        "minimal"
+      ],
+      "antipatterns": [
+        "playful",
+        "casual"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "enterprise infrastructure / developer tools"
+    },
+    {
+      "id": "ibm",
+      "primary_color_hex": "#0f62fe",
+      "category": "Enterprise",
+      "visual_theme": "Carbon-driven corporate precision: white canvas, IBM Plex Sans light display, single Blue 60 accent, 0px radii, flat layered surfaces.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "corporate",
+        "enterprise",
+        "technical",
+        "minimal",
+        "institutional"
+      ],
+      "antipatterns": [
+        "playful",
+        "casual"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "enterprise / corporate tech"
+    },
+    {
+      "id": "intercom",
+      "primary_color_hex": "#ff5600",
+      "category": "AI",
+      "visual_theme": "Warm editorial SaaS: cream canvas, Saans with extreme negative tracking, Fin Orange accent, sharp 4px radii, scale-based hover physics.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "warm",
+        "editorial",
+        "bold",
+        "approachable",
+        "energetic"
+      ],
+      "antipatterns": [],
+      "signature_motion": "Buttons scale(1.1) on hover, scale(0.85) on active for physical feel.",
+      "has_personas": false,
+      "category_raw": "customer service / AI helpdesk SaaS"
+    },
+    {
+      "id": "kakao",
+      "primary_color_hex": "#FEE500",
+      "category": "Consumer",
+      "visual_theme": "Friendly Korean messenger: Kakao Yellow accent on white, system fonts, 12px radii standard, flat depth, chat-bubble centric UI.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "friendly",
+        "warm",
+        "approachable",
+        "consumer",
+        "minimal"
+      ],
+      "antipatterns": [
+        "formal",
+        "institutional"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "messaging / consumer super-app"
+    },
+    {
+      "id": "karrot",
+      "primary_color_hex": "#ff6600",
+      "category": "Consumer",
+      "visual_theme": "Warm neighborhood marketplace: Karrot Orange singular accent, system fonts, 4px grid, three-tier tokens, minimal neutral shadows.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "warm",
+        "approachable",
+        "friendly",
+        "consumer",
+        "trustworthy"
+      ],
+      "antipatterns": [
+        "clinical",
+        "institutional"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "consumer / hyperlocal marketplace"
+    },
+    {
+      "id": "kraken",
+      "primary_color_hex": "#7132f5",
+      "category": "Fintech",
+      "visual_theme": "Trustworthy crypto: Kraken Purple commands white canvas, dual brand/product fonts, 12px button radii, whisper shadows, cool neutrals.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "trustworthy",
+        "technical",
+        "bold",
+        "premium",
+        "serious"
+      ],
+      "antipatterns": [
+        "playful"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "fintech / crypto exchange"
+    },
+    {
+      "id": "lamborghini",
+      "primary_color_hex": "#FFC000",
+      "category": "Automotive",
+      "visual_theme": "Cathedral of darkness: pure black canvas, LamboType uppercase at extreme scales, gold-only accent, 0px radii, surface-layer depth.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "luxurious",
+        "bold",
+        "premium",
+        "serious",
+        "brutalist"
+      ],
+      "antipatterns": [
+        "playful",
+        "soft",
+        "casual"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "luxury automotive"
+    },
+    {
+      "id": "line",
+      "primary_color_hex": "#07b53b",
+      "category": "Consumer",
+      "visual_theme": "Editorial messenger super-app: white canvas with finite LINE Green, locale-aware system fonts, weight-700 dominance, 50px pill controls.",
+      "voice_fingerprint": {
+        "register": "warm aspirational lifestyle, locale-aware",
+        "sentence_length": "short declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "plain, never boastful, locale-polite"
+      },
+      "tone_keywords": [
+        "warm",
+        "friendly",
+        "editorial",
+        "bold",
+        "approachable"
+      ],
+      "antipatterns": [
+        "formal",
+        "clinical"
+      ],
+      "signature_motion": "Sticker send scales 0.8→1.05→1.0 with soft overshoot ease-sticker.",
+      "has_personas": true,
+      "category_raw": "messaging / consumer super-app"
+    },
+    {
+      "id": "linear.app",
+      "primary_color_hex": "#5e6ad2",
+      "category": "Developer Tools",
+      "visual_theme": "Dark-mode-native craft tool: near-black canvas, Inter Variable weight 510 with negative tracking, indigo accent, semi-transparent white borders.",
+      "voice_fingerprint": {
+        "register": "craftsman direct, quietly opinionated",
+        "sentence_length": "short to medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "technical, peer-to-peer, no superlatives"
+      },
+      "tone_keywords": [
+        "technical",
+        "minimal",
+        "serious",
+        "premium",
+        "elegant"
+      ],
+      "antipatterns": [
+        "playful",
+        "casual"
+      ],
+      "signature_motion": "Command palette opens at 100ms ease-enter; no springs or bounce anywhere.",
+      "has_personas": true,
+      "category_raw": "developer tools / project management SaaS"
+    },
+    {
+      "id": "lovable",
+      "primary_color_hex": "#1c1c1c",
+      "category": "AI",
+      "visual_theme": "Warm humanist builder: parchment cream canvas, Camera Plain humanist type, opacity-derived grays, inset shadow buttons, pill action toggles.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "warm",
+        "approachable",
+        "editorial",
+        "soft",
+        "friendly"
+      ],
+      "antipatterns": [
+        "clinical",
+        "brutalist"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "AI builder / developer tools"
+    },
+    {
+      "id": "mercari",
+      "primary_color_hex": "#ff333f",
+      "category": "Consumer",
+      "visual_theme": "Commerce-density marketplace with red attention accent, sharp 4px corners, 681 semantic tokens, system Japanese-first font stack.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "consumer",
+        "dense",
+        "approachable",
+        "trustworthy"
+      ],
+      "antipatterns": [
+        "luxurious",
+        "elegant",
+        "airy"
+      ],
+      "signature_motion": "0.25s sheet/snackbar slides via cubic-bezier(0.65,0,0.35,1) and (0.33,1,0.68,1).",
+      "has_personas": false,
+      "category_raw": "consumer marketplace"
+    },
+    {
+      "id": "minimax",
+      "primary_color_hex": "#1456f0",
+      "category": "AI",
+      "visual_theme": "White canvas with colorful gradient product cards, pill nav, multi-font system, purple-tinted shadows for approachable AI.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "approachable",
+        "playful",
+        "airy",
+        "consumer",
+        "friendly"
+      ],
+      "antipatterns": [
+        "brutalist",
+        "rugged",
+        "clinical"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "AI platform"
+    },
+    {
+      "id": "mintlify",
+      "primary_color_hex": "#18E299",
+      "category": "Developer Tools",
+      "visual_theme": "White, airy documentation canvas with green accent, atmospheric gradient hero, full-pill buttons, whisper 5% borders.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "minimal",
+        "airy",
+        "technical",
+        "calm",
+        "elegant"
+      ],
+      "antipatterns": [
+        "brutalist",
+        "rich",
+        "rugged"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "developer documentation"
+    },
+    {
+      "id": "miro",
+      "primary_color_hex": "#5b76fe",
+      "category": "Design Tools",
+      "visual_theme": "White canvas with pastel collaboration accents, Roobert geometric display, ring-shadow borders, generous rounded panels.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "playful",
+        "approachable",
+        "airy",
+        "friendly",
+        "consumer"
+      ],
+      "antipatterns": [
+        "brutalist",
+        "clinical",
+        "rugged"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "collaboration tool"
+    },
+    {
+      "id": "mistral.ai",
+      "primary_color_hex": "#fa520f",
+      "category": "AI",
+      "visual_theme": "Warm golden-amber European universe, 82px display with -2.05px tracking, sharp corners, multi-layer amber shadows.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "warm",
+        "editorial",
+        "premium",
+        "energetic"
+      ],
+      "antipatterns": [
+        "cool",
+        "clinical",
+        "playful"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "AI platform"
+    },
+    {
+      "id": "mongodb",
+      "primary_color_hex": "#00ed64",
+      "category": "Developer Tools",
+      "visual_theme": "Forest-black teal canvas with neon green accents, serif hero authority, monospace uppercase labels, teal-tinted shadows.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "technical",
+        "editorial",
+        "enterprise",
+        "bold",
+        "trustworthy"
+      ],
+      "antipatterns": [
+        "warm",
+        "playful",
+        "soft"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "developer database"
+    },
+    {
+      "id": "notion",
+      "primary_color_hex": "#0075de",
+      "category": "Productivity",
+      "visual_theme": "Warm-neutral analog canvas, NotionInter compressed display, whisper 1px borders, multi-layer sub-0.05 shadows.",
+      "voice_fingerprint": {
+        "register": "terse imperative at surface, essayistic in long-form",
+        "sentence_length": "short",
+        "metaphor_density": "medium",
+        "vocabulary_register": "plain with intellectual lineage refs"
+      },
+      "tone_keywords": [
+        "warm",
+        "editorial",
+        "minimal",
+        "approachable",
+        "calm"
+      ],
+      "antipatterns": [
+        "playful",
+        "brutalist",
+        "clinical"
+      ],
+      "signature_motion": "Block drag-handle fade-in on hover at 150ms ease-gentle.",
+      "has_personas": true,
+      "category_raw": "productivity tool"
+    },
+    {
+      "id": "nvidia",
+      "primary_color_hex": "#76b900",
+      "category": "Enterprise",
+      "visual_theme": "Stark black-white binary contrast with electric green signal accent, 2px sharp corners, green-bordered transparent CTAs.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "technical",
+        "enterprise",
+        "dense",
+        "serious"
+      ],
+      "antipatterns": [
+        "soft",
+        "playful",
+        "warm"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "enterprise hardware"
+    },
+    {
+      "id": "ollama",
+      "primary_color_hex": "#000000",
+      "category": "AI",
+      "visual_theme": "Pure-white grayscale void, SF Pro Rounded softness, binary 12px/9999px radius, zero shadows, llama line-art.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "minimal",
+        "soft",
+        "approachable",
+        "airy",
+        "calm"
+      ],
+      "antipatterns": [
+        "rich",
+        "layered",
+        "brutalist"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "developer AI tool"
+    },
+    {
+      "id": "opencode.ai",
+      "primary_color_hex": "#201d1d",
+      "category": "AI",
+      "visual_theme": "Terminal-native warm-dark canvas, Berkeley Mono single typeface, 4px sharp corners, flat zero-shadow, Apple HIG semantics.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "technical",
+        "warm",
+        "minimal",
+        "utilitarian",
+        "indie"
+      ],
+      "antipatterns": [
+        "playful",
+        "luxurious",
+        "soft"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "developer AI tool"
+    },
+    {
+      "id": "pinkoi",
+      "primary_color_hex": "#10567b",
+      "category": "Consumer",
+      "visual_theme": "High-density Asian commerce marketplace; teal-navy primary with coral purchase CTA, locale-aware fonts, flat bordered buttons.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "dense",
+        "consumer",
+        "bold",
+        "approachable"
+      ],
+      "antipatterns": [
+        "airy",
+        "minimal"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "consumer"
+    },
+    {
+      "id": "pinterest",
+      "primary_color_hex": "#e60023",
+      "category": "Consumer",
+      "visual_theme": "Warm inspiration canvas with olive/sand neutrals, singular bold red, generous radii, photography-first masonry grid.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "warm",
+        "approachable",
+        "soft",
+        "consumer"
+      ],
+      "antipatterns": [
+        "clinical",
+        "cool"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "consumer"
+    },
+    {
+      "id": "posthog",
+      "primary_color_hex": "#F54E00",
+      "category": "Developer Tools",
+      "visual_theme": "Anti-corporate developer wiki on sage-cream parchment, olive text, hand-drawn hedgehogs, hidden orange hover flash.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "warm",
+        "playful",
+        "indie",
+        "technical",
+        "approachable"
+      ],
+      "antipatterns": [
+        "corporate",
+        "clinical"
+      ],
+      "signature_motion": "Hover flash to PostHog Orange text across buttons, links, cards.",
+      "has_personas": false,
+      "category_raw": "technical"
+    },
+    {
+      "id": "raycast",
+      "primary_color_hex": "#FF6363",
+      "category": "Developer Tools",
+      "visual_theme": "Near-black blue-tinted void simulating macOS chrome; layered inset shadows, airy letter-spacing, red as punctuation.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "premium",
+        "technical",
+        "elegant",
+        "calm"
+      ],
+      "antipatterns": [
+        "playful",
+        "casual"
+      ],
+      "signature_motion": "Opacity-based hover (0.6) instead of color shifts across all buttons.",
+      "has_personas": false,
+      "category_raw": "technical"
+    },
+    {
+      "id": "renault",
+      "primary_color_hex": "#EFDF00",
+      "category": "Consumer",
+      "visual_theme": "French automotive showroom with aurora gradients, NouvelR geometric type, zero-radius black/white CTAs, yellow accents.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "energetic",
+        "geometric",
+        "premium"
+      ],
+      "antipatterns": [
+        "soft",
+        "handcrafted"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "consumer"
+    },
+    {
+      "id": "replicate",
+      "primary_color_hex": "#ea2804",
+      "category": "Developer Tools",
+      "visual_theme": "Developer playground with explosive orange-magenta gradient hero, massive 128px display type, universal pill geometry.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "energetic",
+        "playful",
+        "technical",
+        "indie"
+      ],
+      "antipatterns": [
+        "clinical",
+        "corporate"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "technical"
+    },
+    {
+      "id": "resend",
+      "primary_color_hex": "#f0f0f0",
+      "category": "Developer Tools",
+      "visual_theme": "Theatrical pure-black gallery with three-font hierarchy, icy blue-tinted borders, pill buttons, whisper shadows.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "premium",
+        "elegant",
+        "editorial",
+        "technical",
+        "minimal"
+      ],
+      "antipatterns": [
+        "playful",
+        "casual"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "technical"
+    },
+    {
+      "id": "revolut",
+      "primary_color_hex": "#191c1f",
+      "category": "Enterprise",
+      "visual_theme": "Fintech billboard scale; near-black/white binary, Aeonik 136px display, universal pill buttons, restrained marketing surface.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "premium",
+        "trustworthy",
+        "minimal"
+      ],
+      "antipatterns": [
+        "playful",
+        "soft"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "enterprise"
+    },
+    {
+      "id": "runwayml",
+      "primary_color_hex": "#000000",
+      "category": "Consumer",
+      "visual_theme": "Cinematic film-reel canvas where full-bleed photography is the UI; single typeface, dark cool neutrals, invisible chrome.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "editorial",
+        "minimal",
+        "elegant",
+        "premium",
+        "cool"
+      ],
+      "antipatterns": [
+        "playful",
+        "rich"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "consumer"
+    },
+    {
+      "id": "sanity",
+      "primary_color_hex": "#f36458",
+      "category": "Developer Tools",
+      "visual_theme": "Nocturnal command center; near-black canvas, achromatic gray ramp, neon accents, machined display type with extreme negative tracking.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "technical",
+        "bold",
+        "geometric",
+        "editorial",
+        "premium"
+      ],
+      "antipatterns": [
+        "warm",
+        "playful"
+      ],
+      "signature_motion": "Universal hover shifts interactive elements to electric blue (#0052ef).",
+      "has_personas": false,
+      "category_raw": "technical"
+    },
+    {
+      "id": "sentry",
+      "primary_color_hex": "#6a5fc1",
+      "category": "Developer Tools",
+      "visual_theme": "Dark IDE aesthetic with warm purple-black backgrounds, lime accent, and tactile inset-shadow buttons.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "technical",
+        "bold",
+        "rich",
+        "indie"
+      ],
+      "antipatterns": [
+        "clinical",
+        "minimal"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "developer-tools"
+    },
+    {
+      "id": "spacex",
+      "primary_color_hex": "#f0f0fa",
+      "category": "Aerospace",
+      "visual_theme": "Cinematic full-viewport photography on pure black with stenciled uppercase aerospace typography.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "serious",
+        "minimal",
+        "utilitarian",
+        "institutional",
+        "bold"
+      ],
+      "antipatterns": [
+        "playful",
+        "warm",
+        "soft"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "aerospace"
+    },
+    {
+      "id": "spotify",
+      "primary_color_hex": "#1ed760",
+      "category": "Consumer",
+      "visual_theme": "Near-black immersive theater where album art carries color and pill geometry rules buttons.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "dense",
+        "consumer",
+        "energetic"
+      ],
+      "antipatterns": [
+        "airy",
+        "minimal"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "consumer-media"
+    },
+    {
+      "id": "stripe",
+      "primary_color_hex": "#533afd",
+      "category": "Fintech",
+      "visual_theme": "Light navy-and-purple fintech with whisper-weight headlines and blue-tinted multi-layer shadows.",
+      "voice_fingerprint": {
+        "register": "formal",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "technical"
+      },
+      "tone_keywords": [
+        "technical",
+        "premium",
+        "elegant",
+        "trustworthy"
+      ],
+      "antipatterns": [
+        "playful",
+        "casual"
+      ],
+      "signature_motion": "Dashboard table rows fade-in-from-below 3px on live event streams.",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
+      "id": "supabase",
+      "primary_color_hex": "#3ecf8e",
+      "category": "Developer Tools",
+      "visual_theme": "Dark-mode-native developer platform with emerald accents and translucent border-defined depth.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "technical",
+        "minimal",
+        "indie",
+        "dense"
+      ],
+      "antipatterns": [
+        "playful",
+        "luxurious"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "developer-tools"
+    },
+    {
+      "id": "superhuman",
+      "primary_color_hex": "#cbb7fb",
+      "category": "Productivity",
+      "visual_theme": "White luxury canvas punctuated by a single deep purple gradient hero and warm cream buttons.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "premium",
+        "elegant",
+        "minimal",
+        "calm"
+      ],
+      "antipatterns": [
+        "playful",
+        "bold",
+        "rugged"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "productivity"
+    },
+    {
+      "id": "tesla",
+      "primary_color_hex": "#3e6ae1",
+      "category": "Automotive",
+      "visual_theme": "Gallery-like white canvas with full-viewport vehicle photography and a single blue CTA accent.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "minimal",
+        "premium",
+        "calm",
+        "utilitarian"
+      ],
+      "antipatterns": [
+        "playful",
+        "rich",
+        "rugged"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "automotive"
+    },
+    {
+      "id": "together.ai",
+      "primary_color_hex": "#ef2cc1",
+      "category": "AI",
+      "visual_theme": "Pastel pink-blue-lavender gradients on white paired with a deep midnight blue research zone.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "technical",
+        "soft",
+        "approachable",
+        "enterprise"
+      ],
+      "antipatterns": [
+        "brutalist",
+        "rugged"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "ai-infrastructure"
+    },
+    {
+      "id": "toss",
+      "primary_color_hex": "#3182f6",
+      "category": "Fintech",
+      "visual_theme": "Calm white canvas with optimistic cerulean interactions and breathing room around financial amounts.",
+      "voice_fingerprint": {
+        "register": "friendly",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "plain"
+      },
+      "tone_keywords": [
+        "calm",
+        "friendly",
+        "trustworthy",
+        "minimal"
+      ],
+      "antipatterns": [
+        "playful",
+        "institutional",
+        "rugged"
+      ],
+      "signature_motion": "Balance updates slide old number up 20px and new number in from below 20px.",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
+      "id": "uber",
+      "primary_color_hex": "#000000",
+      "category": "Consumer",
+      "visual_theme": "Stark black-and-white duality with pill-shaped controls and warm human illustrations.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "minimal",
+        "consumer",
+        "utilitarian"
+      ],
+      "antipatterns": [
+        "playful",
+        "elegant"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "consumer-mobility"
+    },
+    {
+      "id": "vercel",
+      "primary_color_hex": "#171717",
+      "category": "Developer Tools",
+      "visual_theme": "Gallery-white canvas with near-black text and shadow-as-border craft; minimalism as engineering principle.",
+      "voice_fingerprint": {
+        "register": "engineer-terse",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "technical"
+      },
+      "tone_keywords": [
+        "minimal",
+        "technical",
+        "premium",
+        "serious",
+        "geometric"
+      ],
+      "antipatterns": [
+        "playful",
+        "rich"
+      ],
+      "signature_motion": "Shadow-border hover lift; card shadow intensifies without translation.",
+      "has_personas": true,
+      "category_raw": "developer-infra"
+    },
+    {
+      "id": "voltagent",
+      "primary_color_hex": "#00d992",
+      "category": "Developer Tools",
+      "visual_theme": "Carbon-black command terminal pulsing with emerald signal green; warm-neutral borders soften the dark.",
+      "voice_fingerprint": {
+        "register": "technical",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "technical"
+      },
+      "tone_keywords": [
+        "technical",
+        "bold",
+        "futuristic",
+        "dense",
+        "indie"
+      ],
+      "antipatterns": [
+        "soft",
+        "playful"
+      ],
+      "signature_motion": "Emerald drop-shadow glow pulses 2px to 8px on the bolt logo.",
+      "has_personas": false,
+      "category_raw": "developer-infra"
+    },
+    {
+      "id": "warp",
+      "primary_color_hex": "#faf9f6",
+      "category": "Developer Tools",
+      "visual_theme": "Warm earthy near-black canvas with parchment text and nature photography; terminal as lifestyle brand.",
+      "voice_fingerprint": {
+        "register": "editorial",
+        "sentence_length": "medium",
+        "metaphor_density": "medium",
+        "vocabulary_register": "neutral"
+      },
+      "tone_keywords": [
+        "warm",
+        "calm",
+        "editorial",
+        "minimal",
+        "elegant"
+      ],
+      "antipatterns": [
+        "bold",
+        "energetic"
+      ],
+      "signature_motion": null,
+      "has_personas": false,
+      "category_raw": "developer-tool"
+    },
+    {
+      "id": "webflow",
+      "primary_color_hex": "#146ef5",
+      "category": "SaaS",
+      "visual_theme": "Bright white canvas with Webflow blue and rich secondary palette; precise variable-font confidence.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "geometric",
+        "approachable",
+        "rich",
+        "consumer"
+      ],
+      "antipatterns": [
+        "minimal"
+      ],
+      "signature_motion": "translate(6px) hover slide on buttons.",
+      "has_personas": false,
+      "category_raw": "saas-tool"
+    },
+    {
+      "id": "wise",
+      "primary_color_hex": "#9fe870",
+      "category": "Fintech",
+      "visual_theme": "Off-white canvas with billboard-bold black headlines and lime-green pill CTAs; nature-inspired fintech.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "bold",
+        "energetic",
+        "approachable",
+        "consumer",
+        "friendly"
+      ],
+      "antipatterns": [
+        "minimal",
+        "elegant"
+      ],
+      "signature_motion": "scale(1.05) hover and scale(0.95) active button compression.",
+      "has_personas": false,
+      "category_raw": "fintech"
+    },
+    {
+      "id": "x.ai",
+      "primary_color_hex": "#1f2228",
+      "category": "AI",
+      "visual_theme": "Brutalist dark canvas with monospace at extreme display scale; depth via opacity and contrast only.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "brutalist",
+        "minimal",
+        "technical",
+        "serious",
+        "futuristic"
+      ],
+      "antipatterns": [
+        "playful",
+        "warm",
+        "rich"
+      ],
+      "signature_motion": "Hover dims links to 0.5 opacity instead of brightening.",
+      "has_personas": false,
+      "category_raw": "ai-platform"
+    },
+    {
+      "id": "zapier",
+      "primary_color_hex": "#ff4f00",
+      "category": "SaaS",
+      "visual_theme": "Cream paper canvas with reddish-warm near-black text and signature orange; warm approachable automation.",
+      "voice_fingerprint": null,
+      "tone_keywords": [
+        "warm",
+        "approachable",
+        "friendly",
+        "editorial",
+        "consumer"
+      ],
+      "antipatterns": [
+        "clinical",
+        "brutalist"
+      ],
+      "signature_motion": "Inset orange underline marks active tabs; sand underline previews hover.",
+      "has_personas": false,
+      "category_raw": "saas-tool"
+    }
+  ]
+}

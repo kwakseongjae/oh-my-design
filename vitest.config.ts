@@ -7,6 +7,7 @@ export default defineConfig({
       'test/unit/**/*.test.{ts,mjs}',
       'test/integration/**/*.test.{ts,mjs}',
       'test/scenarios/**/*.test.{ts,mjs}',
+      'test/v4/**/*.test.{ts,mjs}',
     ],
   },
 });

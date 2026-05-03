@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "_doc": "OmD skill activation rules — read by .claude/hooks/skill-activation.cjs (UserPromptSubmit hook). Forced-eval pattern (~84% reliability vs ~50% naked description matching). 1.0.0: omd-add-reference removed (no SKILL.md), omd-apply triggers tightened to push complex work into subagent dispatch.",
+  "skills": {
+    "omd-apply": {
+      "enforcement": "required",
+      "priority": "critical",
+      "promptTriggers": {
+        "keywordsKr": ["스타일", "색", "버튼", "카드", "여백", "폰트", "라운드", "그림자", "톤", "카피", "에러 메시지", "empty state", "loading", "컴포넌트", "아이콘", "차트", "그래프", "SVG", "일러스트", "에셋"],
+        "keywordsEn": ["style", "color", "button", "card", "spacing", "font", "rounded", "shadow", "tone", "copy", "error message", "empty state", "loading", "component", "icon", "chart", "graph", "svg", "illustration", "asset"],
+        "intentPatterns": [
+          "(this|these|이|그|저).*?(warmer|cooler|rounder|tighter|softer|더|좀|덜)",
+          "edit.*\\.(tsx|jsx|css|scss|vue|svelte)",
+          "(만들|make|create|generate).*?(아이콘|icon|차트|chart|일러스트|illustration|svg)"
+        ]
+      }
+    },
+    "omd-remember": {
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywordsKr": ["기억해", "앞으로", "우리는"],
+        "keywordsEn": ["remember", "going forward", "we never", "we always"],
+        "intentPatterns": [
+          "(원래|never|항상|absolutely).*?(쓰지|don't|do not)",
+          "rule of thumb"
+        ]
+      }
+    },
+    "omd-learn": {
+      "enforcement": "suggest",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywordsKr": ["preference 정리", "프리퍼런스", "교정 반영", "DESIGN.md 업데이트", "fold"],
+        "keywordsEn": ["fold preferences", "apply preferences", "fold in", "learn from corrections"],
+        "intentPatterns": ["preference.*?(정리|반영|fold|apply)"]
+      }
+    },
+    "omd-sync": {
+      "enforcement": "required",
+      "priority": "high",
+      "promptTriggers": {
+        "keywordsKr": ["배포", "퍼블리시", "릴리즈", "동기화", "shim", "sync", "shim 갱신", "drift 확인"],
+        "keywordsEn": ["ship", "deploy", "publish", "release", "sync", "shim", "drift check"],
+        "intentPatterns": ["^/?(ship|deploy|publish|sync)\\b"]
+      }
+    },
+    "omd-3d-blender": {
+      "enforcement": "required",
+      "priority": "medium",
+      "promptTriggers": {
+        "keywordsKr": ["블렌더", "Blender", "3D", "렌더", "렌더링", "GLB", "모델링", "3차원"],
+        "keywordsEn": ["blender", "3d render", "3d mockup", "glb export", "isometric", "product render", "3d model"],
+        "intentPatterns": [
+          "(blender|블렌더).*?(설치|install|사용|연결|쓰)",
+          "(3d|3D|3차원).*?(mockup|목업|render|렌더|모델|model)",
+          "(hero|메인).*?(render|렌더|3d|3차원)"
+        ]
+      }
+    },
+    "omd-init": {
+      "enforcement": "suggest",
+      "priority": "low",
+      "promptTriggers": {
+        "keywordsKr": ["DESIGN.md", "디자인 시스템", "초기화", "세팅", "레퍼런스", "참고"],
+        "keywordsEn": ["design system", "init", "bootstrap", "reference"],
+        "intentPatterns": ["DESIGN\\.md.*?(create|만들|초기화|generate|emit)"]
+      }
+    },
+    "omd-harness": {
+      "enforcement": "required",
+      "priority": "high",
+      "promptTriggers": {
+        "keywordsKr": ["하네스", "알아서", "전체", "처음부터", "메인 화면", "랜딩", "랜딩페이지", "와이어프레임", "디자인 시작", "디자인 짜줘", "화면 디자인", "전반", "다듬", "정비", "톤 정비", "개선", "프로덕션화", "프로덕션", "실제로 만들", "실배포", "프로젝트화"],
+        "keywordsEn": ["harness", "from scratch", "full design", "design the entire", "wireframe", "design from", "landing", "landing page", "polish", "improve", "tone", "productionize", "production-ready", "ship it"],
+        "intentPatterns": [
+          "design.*?(from scratch|처음부터|전체)",
+          "(full|전체).*?(design|디자인)",
+          "(메인|main|first|landing|home|랜딩).*?(화면|screen|page|페이지|디자인|design|만들|build|개선|improve|다듬|정비|polish)",
+          "(프로덕션|production).*?(화|ize|만들|시키|구조|준비|진행)",
+          "(실제로|properly|production-ready).*?(만들|ship|구조)",
+          "(개선|improve|다듬|정비|polish|brush).*?(page|페이지|랜딩|landing|화면|screen|전반|전체|whole)"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+# omd:installed-agent — generated from agents/omd-a11y-auditor.md by `omd install-skills`. Do not edit; rerun the command to refresh.
+
+[agent]
+name = "omd-a11y-auditor"
+description = "Stage 0 deterministic gate of the eval pipeline. Runs DESIGN.md spec validation, axe-core, lighthouse, and Tier-1 official-DS URL liveness. Pass/fail is binary. Never opinion-based — always tool-output-based."
+model = "gpt-4.1-mini"
+max_threads = 1
+allowed_tools = ["read_file", "search", "shell", "web_fetch", "write_file"]
+
+instructions = """
+Source of truth: agents/omd-a11y-auditor.md (canonical). The full role spec is
+mirrored to .claude/agents/omd-a11y-auditor.md when installed for Claude Code.
+Follow that spec verbatim regardless of channel.
+
+Codex notes:
+- Spawn sub-agents via spawn_agent with names matching .codex/agents/<name>.toml
+- Use shell to invoke CLI helpers (omd init prepare, omd remember, git apply, npx axe-core, npx lighthouse)
+- All artifacts go inside .omd/runs/run-<latest>/ (or skills/omd-lab-02-design-harness/runs/<lab-version>-...)
+"""

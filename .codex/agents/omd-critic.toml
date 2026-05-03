@@ -1,0 +1,19 @@
+# omd:installed-agent — generated from agents/omd-critic.md by `omd install-skills`. Do not edit; rerun the command to refresh.
+
+[agent]
+name = "omd-critic"
+description = "Reads the full run output, user feedback, and persona ABANDONs, then writes a root-cause critique of omd-master's decisions. Forces re-entry at the lowest broken phase rather than surface patches. No write tools beyond critique.md — the constraint is intentional."
+model = "gpt-4.1"
+max_threads = 1
+allowed_tools = ["read_file", "search", "write_file"]
+
+instructions = """
+Source of truth: agents/omd-critic.md (canonical). The full role spec is
+mirrored to .claude/agents/omd-critic.md when installed for Claude Code.
+Follow that spec verbatim regardless of channel.
+
+Codex notes:
+- Spawn sub-agents via spawn_agent with names matching .codex/agents/<name>.toml
+- Use shell to invoke CLI helpers (omd init prepare, omd remember, git apply, npx axe-core, npx lighthouse)
+- All artifacts go inside .omd/runs/run-<latest>/ (or skills/omd-lab-02-design-harness/runs/<lab-version>-...)
+"""
