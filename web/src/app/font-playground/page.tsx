@@ -16,10 +16,12 @@ export const metadata: Metadata = {
   title: "Font Playground — oh-my-design",
   description:
     "분위기를 묘사하면 60개 큐레이션 카탈로그에서 가장 가까운 폰트 3개를 찾아드립니다. Korean + Latin, OFL·free-commercial-use curation, CSS·DESIGN.md export.",
+  alternates: { canonical: "/font-playground" },
   openGraph: {
     title: "Font Playground — oh-my-design",
     description:
       "분위기를 묘사하면 60개 큐레이션 카탈로그에서 가장 가까운 폰트 3개를 찾아드립니다.",
+    url: "/font-playground",
   },
 };
 

@@ -1,0 +1,93 @@
+# oh-my-design
+
+> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 6 skills + 11 sub-agents + 67 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
+
+## What
+
+`oh-my-design-cli` is an npm package (MIT licensed, v1.0.0) that installs a deterministic design harness into AI coding agents. It writes `.claude/skills/`, `.codex/skills/`, `.opencode/agents/`, `.claude/agents/`, hooks, and 67 reference DESIGN.md files into your project. After restart, the agent picks up the skills and routes natural-language design intent automatically.
+
+The package is zero-cost: install runs no AI calls, ships no telemetry, requires no API key. Your AI coding agent (Claude Code, Codex, OpenCode, or Cursor) provides the inference; this package teaches it where the brand spec lives.
+
+## Install (the only command)
+
+```bash
+npx oh-my-design-cli install-skills
+```
+
+Then restart your AI coding agent (Cmd+Q in Claude Code, then relaunch).
+
+## How users invoke it (natural language, no slash commands needed)
+
+- `"Set up the design system for a calm B2B fintech dashboard."` → triggers `omd:init`, bootstraps a hybrid DESIGN.md from one of 67 references.
+- `"Make the empty-state for the search results page."` → triggers `omd:apply`, builds with brand tokens + voice from DESIGN.md.
+- `"Design the entire onboarding from scratch."` → triggers `omd:harness`, runs the 10-phase pipeline with sub-agents.
+- `"We never use uppercase CTAs."` → triggers `omd:remember`, writes correction to `.omd/preferences.md`.
+
+## The 6 skills
+
+- **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
+- **omd:init** — Bootstrap DESIGN.md from one of 67 references with hybrid variation.
+- **omd:harness** — `/omd-harness <task>` runs the 10-phase pipeline.
+- **omd:remember** — Auto-captures user corrections to `.omd/preferences.md`.
+- **omd:learn** — Folds preferences into DESIGN.md by scope.
+- **omd:sync** — Maintains shim files (CLAUDE.md / AGENTS.md / .cursor/rules) so every agent reads the same spec.
+
+## The 11 sub-agents (master orchestrator + 10 specialists)
+
+Specialists pair as advisor ↔ generator:
+
+- **omd-master** (opus) — Orchestrator. Runs harness phases, asks user checkpoints, dispatches specialists.
+- **omd-ux-researcher** (opus) — Reads bundled references, validates Tier-1 official DS URLs, drafts the brief.
+- **omd-ui-junior** (sonnet) — *Generator.* Wireframes + component manifests from DESIGN.md.
+- **omd-ux-engineer** (opus) — *Advisor.* Section-level UX audit (NN/g + Refactoring UI + Web Vitals + WAI-ARIA), code-level fixes.
+- **omd-asset-curator** (sonnet) — Picks asset medium (inline SVG / chart library / Lottie / Rive / Unsplash / 3D), stack-aware.
+- **omd-3d-blender** (opus) — Blender MCP renderer with just-in-time install walkthrough.
+- **omd-microcopy** (sonnet) — *Generator.* Voice-consistent copy tied to DESIGN.md §10.
+- **omd-ux-writer** (opus) — *Advisor.* Section-level copy audit + alternatives + A/B hypothesis.
+- **omd-a11y-auditor** (haiku) — Deterministic WCAG checks (axe-core + lighthouse).
+- **omd-persona-tester** (sonnet) — Adversarial 4-persona walkthrough with quantitative metrics.
+- **omd-critic** (opus) — Root-cause analysis on iteration.
+
+## The 10-phase design pipeline (when omd:harness fires)
+
+Grouped in 4 stages:
+
+1. **Plan**: Discovery → Research → IA
+2. **System**: Wireframes → Design system → Components
+3. **Make** (parallel): Asset sourcing + Microcopy
+4. **Validate & Ship**: Validation → Handoff
+
+3 mandatory user checkpoints: after Discovery (brief), after Components (system locked), before Handoff (ship-ready).
+
+## 67 reference brands bundled
+
+Each ships a full DESIGN.md (Google Stitch format + OmD v0.1 brand-philosophy layer). 20 of them include the full philosophy layer (Voice, Narrative, Principles, Personas, States, Motion).
+
+Examples: Stripe · Toss · Linear · Vercel · Notion · Anthropic · Apple · Spotify · Airbnb · Uber · Pinterest · Tesla · Figma · Framer · Cursor · Raycast · Supabase · MongoDB · Sentry · PostHog · Resend · Mintlify · Cal.com · Kakao · LINE · Mercari · Karrot (당근) · Pinkoi · Dcard · Baemin · freee · Wise · Coinbase · Revolut · ElevenLabs · Mistral · Ollama · Replicate · OpenCode · Together AI
+
+## Resources
+
+- [Live demo + docs](https://oh-my-design.kr): https://oh-my-design.kr
+- [Documentation](https://oh-my-design.kr/docs): how the harness works in detail
+- [Builder](https://oh-my-design.kr/builder): generate DESIGN.md from any of 67 references
+- [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all 67 references
+- [npm package](https://www.npmjs.com/package/oh-my-design-cli)
+- [GitHub](https://github.com/kwakseongjae/oh-my-design)
+- [License: MIT](https://github.com/kwakseongjae/oh-my-design/blob/main/LICENSE)
+
+## Repository
+
+```
+oh-my-design/
+├── skills/              # 6 SKILL.md files (source of truth)
+├── agents/              # 11 sub-agent definitions
+├── references/          # 67 reference DESIGN.md files
+├── data/                # reference fingerprints, vocabulary, opt-out corpus
+├── .claude/hooks/       # UserPromptSubmit / SessionStart / PostToolUse hooks
+├── src/cli/             # install-skills entry point
+└── web/                 # marketing + docs site (oh-my-design.kr)
+```
+
+## Citation
+
+oh-my-design is built and maintained by Kwak Seongjae (https://github.com/kwakseongjae). The package is open source under MIT. References are reproduced for educational reference only and remain the property of their respective companies.

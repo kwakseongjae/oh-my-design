@@ -100,11 +100,20 @@ export async function generateMetadata({
   const detail = loadDetail(id);
   if (!detail) return { title: "Reference not found" };
   const name = id.replace(".app", "").replace(/^./, (c) => c.toUpperCase());
+  const path = `/design-systems/${id}`;
+  const desc =
+    detail.mood.slice(0, 160) ||
+    `${name} design system — DESIGN.md, live preview, and token reference.`;
   return {
     title: `${name} — Design System · oh-my-design`,
-    description:
-      detail.mood.slice(0, 160) ||
-      `${name} design system — DESIGN.md, live preview, and token reference.`,
+    description: desc,
+    alternates: { canonical: path },
+    openGraph: {
+      title: `${name} — Design System · oh-my-design`,
+      description: desc,
+      url: path,
+      type: "article",
+    },
   };
 }
 
