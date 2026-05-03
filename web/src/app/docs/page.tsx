@@ -25,7 +25,6 @@ import {
   Zap,
 } from "lucide-react";
 import { V2Nav } from "@/components/landing-v2/nav";
-import { LandingToggle } from "@/components/landing-toggle";
 import { V2 } from "@/components/landing-v2/tokens";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-v2" });
@@ -450,8 +449,6 @@ export default function DocsPage() {
       <InstallLayout />
       <FaqSection />
       <DocsFooter />
-
-      <LandingToggle current="v2" />
     </div>
   );
 }
@@ -1242,7 +1239,7 @@ function DocsFooter() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6 py-12">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-md">
-            <Link href="/v2" className="inline-flex items-center gap-2">
+            <Link href="/" className="inline-flex items-center gap-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/logo-white.png"
@@ -1266,7 +1263,7 @@ function DocsFooter() {
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <Link
-              href="/v2"
+              href="/"
               className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium text-white/85 transition-colors hover:bg-white/5 hover:text-white"
               style={{ borderColor: V2.borderDark }}
             >

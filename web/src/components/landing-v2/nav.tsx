@@ -60,7 +60,7 @@ export function V2Nav() {
         {/* LEFT — logo */}
         <div className="justify-self-start">
           <Link
-            href="/v2"
+            href="/"
             aria-label="oh-my-design home"
             className="group inline-flex items-center outline-none rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f]"
             style={{

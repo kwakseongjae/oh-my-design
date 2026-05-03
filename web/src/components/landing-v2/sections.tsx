@@ -903,7 +903,7 @@ export function FinalCtaFooter() {
           <div className="grid gap-12 sm:grid-cols-12">
             {/* Brand column */}
             <div className="sm:col-span-5">
-              <Link href="/v2" className="inline-flex items-center gap-2">
+              <Link href="/" className="inline-flex items-center gap-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/logo-white.png"

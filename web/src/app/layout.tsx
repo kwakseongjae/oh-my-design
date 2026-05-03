@@ -25,9 +25,9 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "oh-my-design — Design System Generator",
+  title: "oh-my-design — DESIGN.md for AI coding agents",
   description:
-    "Generate DESIGN.md from 67 real company design systems. Ten include a full brand philosophy — voice, principles, personas — so AI coding agents (Claude Code, Cursor, Gemini CLI) match your brand. Interactive A/B wizard, zero AI calls, MIT open source.",
+    "One DESIGN.md spec. 67 real brands extracted. Make Claude Code, Codex, OpenCode, and Cursor ship UI that actually looks like Stripe, Toss, or Linear — not slop. 6 skills · 11 sub-agents · zero AI calls during install. MIT open source.",
   keywords: [
     "design system",
     "DESIGN.md",
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "oh-my-design — Design systems from the world's best",
+    title: "oh-my-design — DESIGN.md for AI coding agents",
     description:
-      "Pick from 67 real company design systems. Ten include a full brand philosophy. Customize with A/B choices. Export DESIGN.md. No AI needed.",
+      "67 real brands extracted into one DESIGN.md spec your AI coding agent reads as ground truth before it codes. 6 skills, 11 sub-agents, zero AI calls during install.",
     url: siteUrl,
     siteName: "oh-my-design",
     images: [
@@ -72,9 +72,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "oh-my-design — Design systems from the world's best",
+    title: "oh-my-design — DESIGN.md for AI coding agents",
     description:
-      "67 company design systems. 10 with a full brand philosophy. A/B wizard. Zero AI calls.",
+      "67 real brands extracted. 6 skills · 11 sub-agents · zero AI calls during install. Talk to Claude Code, Codex, OpenCode, or Cursor in your brand.",
     images: ["/twitter-image.png"],
   },
 };
