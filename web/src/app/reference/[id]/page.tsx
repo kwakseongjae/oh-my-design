@@ -94,9 +94,16 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const detail = loadDetail(id);
   if (!detail) return { title: "Reference not found" };
   const name = id.replace(".app", "").replace(/^./, (c) => c.toUpperCase());
+  // Legacy route — kept for the internal /qa-references QA tool. Tell crawlers
+  // to point all SEO authority at the canonical /design-systems/[id] URL,
+  // and don't index this preview-only variant.
   return {
     title: `${name} — Design System Preview · oh-my-design`,
-    description: detail.mood.slice(0, 160) || `Design system showcase for ${name}, generated from DESIGN.md.`,
+    description:
+      detail.mood.slice(0, 160) ||
+      `Design system showcase for ${name}, generated from DESIGN.md.`,
+    alternates: { canonical: `/design-systems/${id}` },
+    robots: { index: false, follow: true },
   };
 }
 

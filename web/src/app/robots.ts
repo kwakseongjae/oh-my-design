@@ -13,11 +13,12 @@ const siteUrl = "https://oh-my-design.kr";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // Default — every crawler. Keep API and admin-only paths out.
+      // Default — every crawler. Keep API, admin-only paths, and the
+      // legacy /reference/* preview route (canonicalized to /design-systems/*) out.
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/qa-references"],
+        disallow: ["/api/", "/qa-references", "/reference/"],
       },
       // Anthropic Claude (live fetch + training)
       { userAgent: "ClaudeBot", allow: "/" },
