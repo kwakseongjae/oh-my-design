@@ -19,7 +19,6 @@
     "data",
     "references/**/DESIGN.md",
     ".claude/hooks/*.cjs",
-    ".claude/skills/skill-rules.json",
     ".claude/settings.json",
     "AGENTS.md",
     "scripts/postinstall.cjs",
