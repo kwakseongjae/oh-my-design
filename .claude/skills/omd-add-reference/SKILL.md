@@ -1,6 +1,6 @@
 ---
 name: omd:add-reference
-description: "회사 URL 또는 기존 reference id를 받아 references/<id>/DESIGN.md를 만들거나 확장합니다. URL 입력 시 CREATE 모드 (9섹션 생성), 기존 id 입력 시 AUGMENT 모드 (OmD v0.1 Philosophy 레이어 섹션 10-15 추가). '레퍼런스 추가', 'DS 추출', 'kakao Philosophy 붙여줘', 'mercari 브랜드 철학 채워' 같은 요청에 트리거."
+description: "회사 URL → references/<id>/DESIGN.md 생성(CREATE 모드, 9섹션) 또는 기존 id → OmD v0.1 Philosophy 레이어 섹션 10-15 추가(AUGMENT 모드). '레퍼런스 추가', 'DS 추출', 'kakao Philosophy 붙여줘', 「リファレンス追加」, 「新增參考」류의 요청에 트리거."
 argument-hint: "<url> | <existing-id> [--style-ref <id>]"
 user-invocable: true
 ---

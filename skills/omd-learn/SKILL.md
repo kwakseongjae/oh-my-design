@@ -1,6 +1,6 @@
 ---
 name: omd:learn
-description: "누적된 preference 교정사항을 DESIGN.md에 반영합니다. '프리퍼런스 정리해줘', 'DESIGN.md 업데이트', 'preference 반영', 'fold preferences', 'learn from corrections' 같은 요청에 트리거됩니다."
+description: ".omd/preferences.md의 status:pending 항목을 DESIGN.md에 정식 merge하고 status를 applied로 플립. '프리퍼런스 정리해줘', 'fold preferences', 'apply all corrections', 「好みをDESIGN.mdに反映」, 「套用偏好」류의 요청에 트리거. 단발성 교정 기록은 omd:remember."
 ---
 
 # omd:learn — Preference Fold into DESIGN.md

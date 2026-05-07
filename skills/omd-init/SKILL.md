@@ -1,6 +1,6 @@
 ---
 name: omd:init
-description: "프로젝트 루트에 DESIGN.md를 생성합니다. 사용자가 프로젝트를 묘사하면 67개 레퍼런스 중 가장 잘 맞는 것을 추천하고, 사용자가 고른 레퍼런스의 톤&매너를 preserve하면서 프로젝트 맥락 delta만 반영한 variation을 생성합니다. '디자인 시스템 만들어줘', 'DESIGN.md 세팅', 'brand 초기화', 'omd init' 같은 요청에 트리거됩니다. CLAUDE.md / AGENTS.md / Cursor rule shim도 함께 설치."
+description: "프로젝트 루트에 DESIGN.md를 부트스트랩 — 67개 실제 기업 레퍼런스 중 컨텍스트 매칭으로 추천하고 선택된 레퍼런스의 톤&매너를 보존한 variation을 생성. DESIGN.md 부재 상태에서의 UI 작업 또는 '디자인 시스템 세팅', 'set up our design system', 「デザインシステムを作って」, 「建立設計系統」류의 요청에 트리거. CLAUDE.md / AGENTS.md / Cursor rule shim도 함께 설치."
 ---
 
 # omd:init — DESIGN.md Bootstrap

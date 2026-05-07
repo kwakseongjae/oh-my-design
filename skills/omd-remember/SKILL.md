@@ -1,6 +1,6 @@
 ---
 name: omd:remember
-description: "디자인 선호/교정을 .omd/preferences.md 에 append합니다. 사용자가 '기억해', '앞으로는 ~해', '우리는 ~하지 않아', 'remember that' 같은 발화를 하거나 디자인 원칙을 명시할 때 트리거됩니다."
+description: "사용자의 디자인 선호·교정을 .omd/preferences.md에 기록. '이거 기억해줘', '앞으로는 이렇게', 'remember this', 'going forward never X', 「覚えておいて」, 「記住這個」류의 발화 또는 omd:apply가 교정을 감지했을 때 트리거. 기록된 내용은 omd:learn으로 DESIGN.md에 정식 반영."
 ---
 
 # omd:remember — Preference Logger

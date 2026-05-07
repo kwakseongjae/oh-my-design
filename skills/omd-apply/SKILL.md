@@ -1,6 +1,6 @@
 ---
 name: omd:apply
-description: "프로젝트의 DESIGN.md를 UI/스타일링/마이크로카피 작업의 authoritative brand context로 적용. 작은 변경(컴포넌트 1개 수정, 단일 텍스트 교체 등)은 인라인 처리하고, 화면 단위 신규 디자인·에셋 생성·접근성 감사·페르소나 검증 등 복합 작업은 적합한 서브에이전트로 즉시 dispatch. 사용자 교정 발생 시 omd:remember 스킬을 트리거합니다."
+description: "프로젝트 DESIGN.md를 UI/시각 작업의 brand context로 적용. 컴포넌트·색상·폰트·레이아웃 수정 같은 구체적 요청과 톤·분위기 표현 — KR '좀 더 따뜻하게', EN 'make it warmer/cooler', 日本語「もう少し暖かく」, 繁體中文「更溫暖一點」 — 모두에 트리거. DESIGN.md 부재 시 omd:init 우선. 화면 전체 신규 디자인은 omd:harness, 교정 기록은 omd:remember."
 ---
 
 # omd:apply — Brand Context Injection + Dispatch Router

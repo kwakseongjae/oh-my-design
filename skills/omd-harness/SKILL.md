@@ -1,6 +1,6 @@
 ---
 name: omd:harness
-description: "디자인 하네스 진입점. 사용자가 '디자인 하네스 돌려줘', '시니어 디자이너처럼 ~ 만들어줘', '/omd-harness <task>'를 호출하면 run 디렉토리를 부트스트랩하고 omd-master 오케스트레이터를 spawn해서 10-phase 파이프라인(Discovery / Asset / Research / IA / Wireframe / System / Components / AssetSourcing / Microcopy / Validation / Handoff)을 실행, 10 specialist를 dispatch해서 brief + DESIGN.md + wireframes + components + assets + persona-feedback 패키지를 emit합니다."
+description: "화면 전체나 신규 surface를 처음부터 디자인할 때의 진입점 — Discovery→Wireframe→Components→Microcopy→Validation 파이프라인을 omd-master 오케스트레이터로 실행. '랜딩 처음부터', 'production-ready', 'wireframe to production', 「一からデザイン」, 「從頭設計」류의 요청에 트리거. 단일 컴포넌트 수정은 omd:apply."
 ---
 
 # omd:harness — Design Harness Entry
