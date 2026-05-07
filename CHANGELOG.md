@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.2 — Onboarding banner correction
+
+The `install-skills` "Next" panel still claimed *"Hook이 자동으로 라우팅 — 디자인 의도 감지해서 하네스/스킬 호출"* and described `/omd-harness` as *"hook 우회"*. That language described the 1.0.0 forced-eval hook which was retired in 1.0.1 — auto-routing now happens via Claude's standard description matching, and the hook only gates on DESIGN.md existence. The banner is the first thing users see after install, so it's worth getting right even for a single panel.
+
+### Changed
+
+- `install-skills` Next panel:
+  - "Hook이 자동으로 라우팅 — 디자인 의도 감지해서 하네스/스킬 호출" → "Claude가 description 매칭으로 자동 라우팅. Hook은 DESIGN.md 부재 시 omd:init 안내만."
+  - `/omd-harness <task>` description: "hook 우회, 즉시 진입" → "즉시 진입"
+  - inline comment: "자동 hook 라우팅" → "자동 라우팅"
+
 ## 1.0.1 — Trigger surface cleanup
 
 Patch release focused on skill triggering — descriptions, hook behavior, and a stale dependency in the package manifest. No public API change.
