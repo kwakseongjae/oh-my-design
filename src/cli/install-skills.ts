@@ -271,33 +271,6 @@ function installHookFile(
   return { target, skill: skillLabel, destPath, status: exists ? 'updated' : 'created' };
 }
 
-/** Install skill-rules.json from package's .claude/skills/. */
-function installSkillRules(
-  packageRoot: string,
-  projectRoot: string,
-  force: boolean
-): InstallResult {
-  const target: SkillTarget = 'claude-code';
-  const skillLabel = 'rules:skill-rules.json';
-  const srcPath = join(packageRoot, '.claude', 'skills', 'skill-rules.json');
-  const destPath = join(projectRoot, '.claude', 'skills', 'skill-rules.json');
-  if (!existsSync(srcPath)) {
-    return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
-  }
-  const src = readFileSync(srcPath, 'utf8');
-  const exists = existsSync(destPath);
-  const existing = exists ? readFileSync(destPath, 'utf8') : '';
-  if (exists && existing === src) {
-    return { target, skill: skillLabel, destPath, status: 'unchanged' };
-  }
-  if (exists && !force) {
-    return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
-  }
-  mkdirSync(dirname(destPath), { recursive: true });
-  writeFileSync(destPath, src);
-  return { target, skill: skillLabel, destPath, status: exists ? 'updated' : 'created' };
-}
-
 /**
  * Install / merge .claude/settings.json. We MERGE hooks (don't clobber user
  * customizations) by checking if the omd-managed `_doc` field is present.
@@ -565,8 +538,6 @@ export async function runInstallSkills(
     ]) {
       results.push(installHookFile(packageRoot, projectRoot, hookFile, force));
     }
-    // skill-rules.json
-    results.push(installSkillRules(packageRoot, projectRoot, force));
     // settings.json (with merge, never clobber user)
     results.push(installSettingsJson(packageRoot, projectRoot, force));
   }

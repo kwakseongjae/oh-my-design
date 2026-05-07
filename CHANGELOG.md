@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.1 — Trigger surface cleanup
+
+Patch release focused on skill triggering — descriptions, hook behavior, and a stale dependency in the package manifest. No public API change.
+
+### Changed
+
+- Skill triggering uses the standard mechanism (SKILL.md `description`) as the single source of truth. Descriptions trimmed to ~230 chars on average (down from ~700) and rewritten in the canonical "what it does + use-when + chain hints" pattern that the rest of the Claude Code skill ecosystem uses. Modern models generalize from one phrase per language, so the keyword-inflated form was paying maintenance cost without measurable trigger gain.
+- Skill descriptions now ship Japanese and Traditional Chinese trigger examples alongside Korean and English (`omd-apply`, `omd-init`, `omd-harness`, `omd-remember`, `omd-learn`, `omd-sync`, `omd-add-reference`). About half of OmD users work in JP / TW, so they previously fell back to weaker description-only matching with English/Korean phrases.
+- `.claude/hooks/skill-activation.cjs` simplified from a keyword/regex forced-eval injector to a DESIGN.md existence gate. The "OMD SKILL ACTIVATION CHECK" block no longer appears on every UI prompt — the hook is silent unless DESIGN.md is missing and the prompt looks like UI work, in which case it surfaces a single one-line nudge to run `omd:init` first. The forced-eval layer was a custom belt-and-suspenders pattern from the 3.x model era; with 4.x description matching it became overlap and a second source of truth that drifted.
+
+### Removed
+
+- `.claude/skills/skill-rules.json` (dual source-of-truth for the forced-eval matcher).
+- Dangling reference to that file in `package.json` `files[]`.
+
 ## 1.0.0 — Skill-first
 
 Breaking release. The CLI surface collapsed from 9 user-facing commands down to 1 (`install-skills`). All operational logic moved to skill markdown + agent prose. See [MIGRATION.md](MIGRATION.md).
