@@ -1,21 +1,22 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { event } from "@/lib/gtag";
-import { Eye, FileText, Terminal, Copy, Check, ArrowLeft, Download, ArrowUpRight } from "lucide-react";
+import { event, trackRef } from "@/lib/gtag";
+import { FileText, Copy, Check, ArrowLeft, Download, ArrowUpRight, Eye } from "lucide-react";
 import { ReferencePreview } from "@/components/reference-preview";
 import { extractTokens } from "@/lib/extract-tokens";
-import { ExportPanel } from "@/components/export-panel";
-import { generateShadcnCss, applyOverridesToMd } from "@/lib/core/generate-css";
+import { applyOverridesToMd } from "@/lib/core/generate-css";
 import { generateNpxCommand } from "@/lib/core/config-hash";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
 import { Button } from "@/components/ui/button";
-import { getDesignSystem, type DesignSystemInfo } from "@/lib/design-systems";
-import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
+import { getDesignSystem } from "@/lib/design-systems";
+import { getHomepageUrl } from "@/lib/homepage-urls";
 import { isLight } from "@/lib/core/color";
+import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
+import { Markdown } from "@/components/markdown";
 
-type ViewMode = "preview" | "designmd";
+type MdView = "rendered" | "raw";
 
 export function PreviewExportView({
   detail,
@@ -32,16 +33,10 @@ export function PreviewExportView({
   onComponentsChange: (c: string[]) => void;
   stylePreferences?: StylePreferences;
 }) {
-  const [view, setView] = useState<ViewMode>("preview");
-  const [copied, setCopied] = useState(false);
-
-  const primary = overrides.primaryColor || detail.primary;
-  const radius = overrides.borderRadius || detail.radius.replace(/[-–].*/, "").trim();
-
-  const css = useMemo(
-    () => generateShadcnCss(primary, detail.background, detail.foreground, radius, detail.accent, detail.border, overrides.darkMode),
-    [primary, detail, radius, overrides.darkMode],
-  );
+  const [mdView, setMdView] = useState<MdView>("rendered");
+  const [copied, setCopied] = useState<string | null>(null);
+  const hasPhilosophyLayer = detail.designMd.includes("## 10. Voice & Tone");
+  const [includePhilosophyLayer, setIncludePhilosophyLayer] = useState(true);
 
   const designMd = useMemo(
     () => applyOverridesToMd(
@@ -49,13 +44,17 @@ export function PreviewExportView({
       detail.id.charAt(0).toUpperCase() + detail.id.slice(1),
       detail.primary, detail.fontFamily,
       overrides, components, stylePreferences,
+      includePhilosophyLayer,
     ),
-    [detail, overrides, components, stylePreferences],
+    [detail, overrides, components, stylePreferences, includePhilosophyLayer],
   );
 
   const npxCmd = generateNpxCommand(detail.id, overrides, components, stylePreferences);
   const refName = detail.id.charAt(0).toUpperCase() + detail.id.slice(1);
   const ds = getDesignSystem(detail.id);
+  const homepageUrl = getHomepageUrl(detail.id);
+  const tokens = useMemo(() => extractTokens(detail), [detail]);
+  const lineCount = designMd.split("\n").length;
 
   function download() {
     const blob = new Blob([designMd], { type: "text/plain" });
@@ -65,164 +64,195 @@ export function PreviewExportView({
     a.download = "DESIGN.md";
     a.click();
     URL.revokeObjectURL(url);
+    event("download_designmd", { reference: detail.id });
+    trackRef("download", detail.id);
+  }
+
+  function copyMd() {
+    navigator.clipboard.writeText(designMd);
+    event("copy_designmd", { reference: detail.id });
+    trackRef("copy", detail.id);
+    setCopied("md");
+    setTimeout(() => setCopied(null), 2000);
   }
 
   function copyNpx() {
     navigator.clipboard.writeText(npxCmd);
     event("copy_npx_command", { reference: detail.id });
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopied("npx");
+    setTimeout(() => setCopied(null), 2000);
   }
 
   return (
-    <div>
-      {/* Header */}
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" onClick={onBack} className="gap-1.5">
-            <ArrowLeft className="h-3.5 w-3.5" /> Back
-          </Button>
-          <div>
-            <h2 className="text-2xl font-bold tracking-tight">{refName}</h2>
-            <p className="text-sm text-muted-foreground">
-              {components.length} components / {designMd.split("\n").length} lines
-            </p>
-          </div>
+    <div className="flex flex-col gap-4">
+
+      {/* ── Header ── */}
+      <div className="flex items-center gap-3">
+        <Button variant="ghost" size="sm" onClick={onBack} className="gap-1.5 shrink-0">
+          <ArrowLeft className="h-3.5 w-3.5" /> Back
+        </Button>
+
+        <div className="flex-1 min-w-0">
+          <h2 className="text-xl font-semibold tracking-tight leading-tight">{refName}</h2>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            {components.length} components · {lineCount} lines
+          </p>
         </div>
+
+        {ds && (
+          <a
+            href={ds.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => event("ds_click", { reference: ds.refId, url: ds.url, location: "preview_header" })}
+            className="hidden sm:flex items-center gap-1.5 shrink-0 rounded-[0.625rem] border border-border/25 dark:border-border/50 bg-muted/10 dark:bg-muted/20 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors duration-150 hover:bg-muted/30 hover:text-foreground"
+          >
+            <DsLogo refId={ds.refId} refName={refName} primary={detail.primary} />
+            <span className="truncate max-w-[180px]">
+              {ds.type === "system" ? `${refName} Design System` : `${refName} Brand`}
+            </span>
+            <ArrowUpRight className="h-3 w-3 shrink-0 opacity-50" />
+          </a>
+        )}
       </div>
 
-      {/* View toggle */}
-      <div className="flex items-center justify-center mb-4">
-        <div className="flex gap-1 p-1 rounded-lg border border-border/40 dark:border-border bg-muted/30 dark:bg-muted/50">
-          <button
-            onClick={() => { setView("preview"); event("view_toggle", { view: "preview", reference: detail.id }); }}
-            className={`flex items-center gap-1.5 rounded-md px-4 py-2 text-sm font-medium transition-all ${
-              view === "preview" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            <Eye className="h-3.5 w-3.5" /> Live Preview
-          </button>
-          <button
-            onClick={() => { setView("designmd"); event("view_toggle", { view: "designmd", reference: detail.id }); }}
-            className={`flex items-center gap-1.5 rounded-md px-4 py-2 text-sm font-medium transition-all ${
-              view === "designmd" ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            <FileText className="h-3.5 w-3.5" /> DESIGN.md
-          </button>
-        </div>
-      </div>
+      {/* ── 2-column layout ── */}
+      <div className="grid gap-4 lg:grid-cols-[1fr_440px] items-start">
 
-      {/* npx command — always visible */}
-      <div className="rounded-xl border border-border/60 dark:border-border bg-muted/20 dark:bg-muted/30 p-4 mb-4">
-        <div className="flex items-center gap-3 rounded-lg border border-border/40 dark:border-border bg-background pl-3 pr-4 py-3 font-mono text-sm">
-          <div className="flex items-center justify-center shrink-0 h-8 w-8 rounded-full border border-border/40 dark:border-border bg-muted/30">
-            <img src="/logo.png" alt="OMD" className="h-4 block dark:hidden" />
-            <img src="/logo-white.png" alt="OMD" className="h-4 hidden dark:block" />
-          </div>
-          <code className="flex-1 text-foreground/80 truncate">{npxCmd}</code>
-          <button
-            onClick={copyNpx}
-            className="flex items-center gap-1.5 shrink-0 rounded-md px-2 py-1 text-xs font-medium transition-colors hover:bg-muted"
-          >
-            {copied ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5 text-muted-foreground" />}
-          </button>
-        </div>
-        <p className="text-sm text-muted-foreground mt-3">
-          Run in your project root to generate <code className="px-1.5 py-0.5 rounded bg-muted text-xs font-mono">DESIGN.md</code>. Your AI coding agent will read it and build UI that matches this design system.
-        </p>
-      </div>
-
-      {/* Official source card — sits between the npx command and the content
-          preview. Reads as "here's the company's canonical site", not "OMD's
-          export is official". */}
-      {ds && <OfficialSourceCard ds={ds} refName={refName} primary={detail.primary} />}
-
-      {/* Content */}
-      {view === "preview" && (
-        <div className="rounded-xl overflow-hidden border border-border/40 dark:border-border">
+        {/* Left — brand preview */}
+        <div className="rounded-xl border border-border/40 dark:border-border ring-1 ring-border/20 dark:ring-transparent overflow-hidden">
           <ReferencePreview
-            tokens={extractTokens(detail)}
+            tokens={tokens}
             overrides={{ ...overrides, stylePreferences }}
             embedded
+            homepageUrl={homepageUrl ?? undefined}
           />
         </div>
-      )}
-      {view === "designmd" && (
-        <ExportPanel detail={detail} overrides={overrides} components={components} stylePreferences={stylePreferences} />
-      )}
+
+        {/* Right — sticky DESIGN.md panel */}
+        <div className="sticky top-[4.5rem] flex flex-col rounded-xl border border-border/40 dark:border-border overflow-hidden max-h-[calc(100vh-5.5rem)]">
+
+          {/* NPX command */}
+          <div className="shrink-0 border-b border-border/40 dark:border-border px-3 py-2.5">
+            <div className="flex items-center gap-2 rounded-[0.5rem] border border-border/40 dark:border-border bg-muted/30 dark:bg-muted/20 pl-3 pr-2 py-2">
+              <div className="shrink-0 h-4 w-4 flex items-center justify-center">
+                <img src="/logo.png" alt="OMD" className="h-3.5 block dark:hidden" />
+                <img src="/logo-white.png" alt="OMD" className="h-3.5 hidden dark:block" />
+              </div>
+              <code className="flex-1 font-mono text-[11px] text-foreground/60 truncate">{npxCmd}</code>
+              <button
+                onClick={copyNpx}
+                aria-label="Copy npx command"
+                className="shrink-0 flex items-center justify-center h-6 w-6 rounded-md text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground"
+              >
+                {copied === "npx"
+                  ? <Check className="h-3 w-3 text-emerald-500" />
+                  : <Copy className="h-3 w-3" />}
+              </button>
+            </div>
+          </div>
+
+          {/* Toolbar */}
+          <div className="shrink-0 flex items-center gap-2 border-b border-border/40 dark:border-border px-3 py-2">
+            {/* Philosophy layer toggle — only when available */}
+            {hasPhilosophyLayer && (
+              <label className="flex items-center gap-1.5 text-xs text-muted-foreground cursor-pointer select-none mr-auto">
+                <input
+                  type="checkbox"
+                  checked={includePhilosophyLayer}
+                  onChange={(e) => {
+                    const next = e.target.checked;
+                    setIncludePhilosophyLayer(next);
+                    event("philosophy_toggle", { reference: detail.id, on: next });
+                  }}
+                  className="h-3 w-3 cursor-pointer accent-primary"
+                />
+                <span>Philosophy</span>
+              </label>
+            )}
+
+            <div className="flex items-center gap-1.5 ml-auto">
+              {/* Rendered / Raw toggle */}
+              <div className="flex items-center rounded-[0.5rem] border border-border/40 dark:border-border bg-muted/20 p-0.5">
+                <button
+                  onClick={() => setMdView("rendered")}
+                  className={`flex items-center gap-1 rounded-[0.375rem] px-2 py-1 text-[11px] font-medium transition-colors duration-150 ${
+                    mdView === "rendered"
+                      ? "bg-background text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <Eye className="h-2.5 w-2.5" /> Rendered
+                </button>
+                <button
+                  onClick={() => setMdView("raw")}
+                  className={`flex items-center gap-1 rounded-[0.375rem] px-2 py-1 text-[11px] font-medium transition-colors duration-150 ${
+                    mdView === "raw"
+                      ? "bg-background text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <FileText className="h-2.5 w-2.5" /> Raw
+                </button>
+              </div>
+
+              <button
+                onClick={download}
+                className="flex items-center gap-1 rounded-[0.5rem] border border-border/40 dark:border-border bg-background px-2.5 py-1.5 text-[11px] font-medium text-foreground/80 transition-colors duration-150 hover:bg-muted"
+              >
+                <Download className="h-3 w-3" /> Download
+              </button>
+
+              <button
+                onClick={copyMd}
+                className="flex items-center gap-1 rounded-[0.5rem] border border-border/40 dark:border-border bg-background px-2.5 py-1.5 text-[11px] font-medium text-foreground/80 transition-colors duration-150 hover:bg-muted"
+              >
+                {copied === "md"
+                  ? <><Check className="h-3 w-3 text-emerald-500" /> Copied</>
+                  : <><Copy className="h-3 w-3" /> Copy</>}
+              </button>
+            </div>
+          </div>
+
+          {/* DESIGN.md content */}
+          <div className="flex-1 overflow-auto min-h-0">
+            {mdView === "rendered"
+              ? <div className="p-5"><Markdown content={designMd} /></div>
+              : <pre className="p-5 text-[11px] leading-[1.7] font-mono text-foreground/70 whitespace-pre-wrap">{designMd}</pre>
+            }
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
-/**
- * Card linking to the company's canonical design-system / brand-guidelines
- * page. Sits between the npx command and the preview/DESIGN.md content.
- * Wording is framed around the LINK destination ("Browse {Company}'s design
- * system →") — the card is a pointer outward, not a claim about OMD's output.
- */
-function OfficialSourceCard({ ds, refName, primary }: { ds: DesignSystemInfo; refName: string; primary: string }) {
-  const isSystem = ds.type === "system";
-  const headline = isSystem
-    ? `Browse ${refName}'s design system`
-    : `Browse ${refName}'s brand guidelines`;
-  return (
-    <a
-      href={ds.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={() => event("ds_click", { reference: ds.refId, url: ds.url, location: "preview_export" })}
-      className="mb-4 group flex items-center gap-4 rounded-xl border border-border/60 dark:border-border bg-muted/20 dark:bg-muted/30 px-4 py-3 transition-colors hover:bg-muted/40 dark:hover:bg-muted/50"
-    >
-      <OfficialSourceLogo refId={ds.refId} refName={refName} primary={primary} />
-      <div className="flex-1 min-w-0">
-        <div className="text-sm font-semibold text-foreground leading-snug">{headline}</div>
-        <div className="text-xs font-mono text-muted-foreground mt-0.5 truncate">{ds.name}</div>
-        <p className="hidden sm:block text-xs text-muted-foreground leading-snug mt-1 line-clamp-1">
-          {ds.description}
-        </p>
-      </div>
-      <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground shrink-0 transition-colors group-hover:text-foreground">
-        <span className="hidden sm:inline">Visit</span>
-        <ArrowUpRight className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
-      </div>
-    </a>
-  );
-}
-
-/** Same fallback chain as the builder's Reference step: primary logo → favicon → initial. */
-function OfficialSourceLogo({ refId, refName, primary }: { refId: string; refName: string; primary: string }) {
+/** Tiny logo for the DS link chip in the header. */
+function DsLogo({ refId, refName, primary }: { refId: string; refName: string; primary: string }) {
   const isLightBrand = isLight(primary);
   const logoColor = isLightBrand ? "000000" : "ffffff";
-  const primaryUrl = getLogoUrl(refId, logoColor);
-  const fallbackUrl = getLogoFallbackUrl(refId);
-  const isGh = isGitHubLogo(refId);
   const [stage, setStage] = useState<0 | 1 | 2>(0);
-  const src = stage === 0 ? primaryUrl : stage === 1 ? fallbackUrl : null;
+  const src = stage === 0 ? getLogoUrl(refId, logoColor) : stage === 1 ? getLogoFallbackUrl(refId) : null;
+  const isGh = isGitHubLogo(refId);
 
-  const wrap =
-    "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ring-1 ring-border/60 dark:ring-border";
-  const wrapStyle = { background: primary };
+  const wrap = "flex h-4 w-4 shrink-0 items-center justify-center rounded overflow-hidden";
 
   if (!src) {
     return (
-      <div className={wrap} style={wrapStyle}>
-        <span className="text-base font-bold" style={{ color: isLightBrand ? "#1e1e1e" : "#ffffff" }}>
-          {refName.charAt(0).toUpperCase()}
-        </span>
-      </div>
+      <span className={`${wrap} text-[9px] font-bold`} style={{ background: primary, color: isLightBrand ? "#1e1e1e" : "#ffffff" }}>
+        {refName.charAt(0).toUpperCase()}
+      </span>
     );
   }
   return (
-    <div className={wrap} style={wrapStyle}>
+    <span className={wrap} style={{ background: primary }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
         alt={refName}
         onError={() => setStage((s) => (s < 2 ? ((s + 1) as 0 | 1 | 2) : 2))}
-        className={isGh || stage > 0 ? "h-6 w-6 rounded object-contain" : "h-6 w-6 object-contain"}
-        loading="lazy"
+        className={isGh || stage > 0 ? "h-3 w-3 rounded object-contain" : "h-3 w-3 object-contain"}
       />
-    </div>
+    </span>
   );
 }

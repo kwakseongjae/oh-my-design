@@ -18,6 +18,7 @@
  * (both now deprecated — kept for backward compat but no longer canonical).
  */
 
+import { ExternalLink } from "lucide-react";
 import { applyOverrides, type ParsedTokens, type PreviewOverrides } from "@/lib/extract-tokens";
 import { lookupFont } from "@/lib/font-registry";
 import { FontCard } from "./font-card";
@@ -51,52 +52,85 @@ function Section({ title, kicker, children }: { title: string; kicker?: string; 
 }
 
 /* ─────────── Hero ─────────── */
-/** Hero renders inside a contained rounded surface tinted with the brand's
- *  identity.background + identity.foreground. Keeping it contained (not
- *  full-bleed) lets dark-brand refs like Framer/Cohere/Expo preview cleanly
- *  without blacking out the entire app canvas around them. */
-function HeroSection({ tokens }: { tokens: ParsedTokens }) {
+/** Strip markdown syntax from a string — removes **bold**, *italic*, `code`, [link](url). */
+function stripMd(text: string): string {
+  return text
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/^[-*+]\s+/gm, "")
+    .replace(/^>\s*/gm, "")
+    .trim();
+}
+
+/** Derive high-contrast text colors from the brand's background hex.
+ *  Returns white-family on dark backgrounds, near-black on light ones. */
+function heroColors(bgHex: string) {
+  const m = bgHex.replace("#", "").match(/.{2}/g);
+  const lum = m
+    ? (0.299 * parseInt(m[0], 16) + 0.587 * parseInt(m[1], 16) + 0.114 * parseInt(m[2], 16)) / 255
+    : 1;
+  const isLight = lum > 0.5;
+  return {
+    text:   isLight ? "rgba(0,0,0,0.88)"  : "rgba(255,255,255,0.95)",
+    muted:  isLight ? "rgba(0,0,0,0.50)"  : "rgba(255,255,255,0.55)",
+    link:   isLight ? "rgba(0,0,0,0.40)"  : "rgba(255,255,255,0.40)",
+  };
+}
+
+/** Hero renders inside a contained rounded surface tinted with the brand's background.
+ *  Text color is derived from background luminance — never from identity.foreground —
+ *  so dark-brand refs show white text and light-brand refs show near-black text. */
+function HeroSection({ tokens, homepageUrl }: { tokens: ParsedTokens; homepageUrl?: string }) {
   const { identity, typography } = tokens;
-  const primaryFont = typography.family.split(",")[0].replace(/['"]/g, "");
-  const pillStyle = {
-    background: identity.foreground + "10",
-    color: identity.foreground,
-    borderColor: identity.foreground + "30",
-  } as const;
+  const colors = heroColors(identity.background);
+  const displayUrl = homepageUrl
+    ? homepageUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")
+    : null;
+  const mood = identity.mood ? stripMd(identity.mood) : "";
+
   return (
     <div className="mx-auto max-w-5xl px-6 pt-10 pb-4">
       <header
         className="rounded-2xl ring-1 ring-border/40 px-6 py-10 sm:px-10 sm:py-14 overflow-hidden"
-        style={{ background: identity.background, color: identity.foreground }}
+        style={{ background: identity.background }}
       >
-        <div className="text-[11px] font-semibold uppercase tracking-[0.15em] mb-3 opacity-60">Design System</div>
-        <h1 className="text-5xl font-bold tracking-tight" style={{ fontFamily: typography.family }}>
+        <div
+          className="text-[11px] font-semibold uppercase tracking-[0.15em] mb-3"
+          style={{ color: colors.muted }}
+        >
+          Design System
+        </div>
+        <h1
+          className="text-5xl font-bold tracking-tight"
+          style={{ fontFamily: typography.family, color: colors.text }}
+        >
           {identity.name}
         </h1>
-        {identity.mood && (
-          <p className="mt-6 max-w-2xl text-base leading-relaxed opacity-75" style={{ fontFamily: typography.family }}>
-            {identity.mood.length > 360 ? identity.mood.slice(0, 360) + "…" : identity.mood}
+        {mood && (
+          <p
+            className="mt-6 max-w-2xl text-base leading-relaxed"
+            style={{ fontFamily: typography.family, color: colors.muted }}
+          >
+            {mood}
           </p>
         )}
-        <div className="mt-8 flex flex-wrap gap-2">
-          <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs ring-1" style={pillStyle}>
-            <span className="h-3 w-3 rounded-full" style={{ background: identity.primary }} />
-            <span className="font-mono opacity-80">{identity.primary}</span>
-            <span className="opacity-60">primary</span>
-          </span>
-          {identity.accent && (
-            <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs ring-1" style={pillStyle}>
-              <span className="h-3 w-3 rounded-full" style={{ background: identity.accent }} />
-              <span className="font-mono opacity-80">{identity.accent}</span>
-              <span className="opacity-60">accent</span>
-            </span>
-          )}
-          {primaryFont && (
-            <span className="inline-flex items-center rounded-full px-3 py-1.5 text-xs ring-1 opacity-80" style={pillStyle}>
-              {primaryFont}
-            </span>
-          )}
-        </div>
+        {displayUrl && (
+          <a
+            href={homepageUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-1.5 text-xs font-mono transition-opacity"
+            style={{ color: colors.link, opacity: 1 }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = colors.muted)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = colors.link)}
+          >
+            <ExternalLink className="h-3 w-3 shrink-0" />
+            {displayUrl}
+          </a>
+        )}
       </header>
     </div>
   );
@@ -577,11 +611,14 @@ export function ReferencePreview({
   tokens: rawTokens,
   overrides,
   embedded = false,
+  homepageUrl,
 }: {
   tokens: ParsedTokens;
   overrides?: PreviewOverrides;
   /** When true, hides the global wrapper styling (used inside the builder which provides its own chrome). */
   embedded?: boolean;
+  /** Main homepage URL shown in the hero section. Distinct from the DS URL. */
+  homepageUrl?: string;
 }) {
   const tokens = applyOverrides(rawTokens, overrides);
   const prefs = overrides?.stylePreferences;
@@ -593,7 +630,7 @@ export function ReferencePreview({
   // explicit `identity.background` on a contained element).
   return (
     <div className={wrapperClass}>
-      <HeroSection tokens={tokens} />
+      <HeroSection tokens={tokens} homepageUrl={homepageUrl} />
       <ColorsSection tokens={tokens} />
       <TypographySection tokens={tokens} />
       <ButtonsSection tokens={tokens} />

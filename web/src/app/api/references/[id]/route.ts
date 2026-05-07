@@ -97,16 +97,41 @@ export async function GET(
   // explicitly declared a dark canvas.
   const s2Full = designMd.match(/## 2\. Color[\s\S]*?(?=## 3\.)/i)?.[0] ?? '';
   let background = '#ffffff';
-  const roleRe = /\*\*[^*]+\*\*\s*\(`(#[0-9a-fA-F]{6})`\)[^\n]{0,200}?(?:primary\s+page\s+background|primary\s+canvas|main\s+canvas|default\s+canvas|page\s+background|primary\s+background|the\s+primary\s+(?:page\s+)?(?:canvas|background)|page\s+canvas|void\s+canvas|main\s+page\s+background)/i;
-  const explicit = s2Full.match(roleRe);
-  if (explicit) background = explicit[1];
-  else {
-    const quickBg = designMd.match(/Quick Color Reference[\s\S]*?Background.*?`(#[0-9a-fA-F]{6})`/i);
-    if (quickBg) background = quickBg[1];
-    else {
-      const surface = s2Full.match(/###\s+Surface[^\n]*\n([\s\S]*?)(?=\n###|\n## )/i)?.[1];
-      const first = surface?.match(/\*\*[^*]+\*\*\s*\(`(#[0-9a-fA-F]{6})`\)/);
-      if (first) background = first[1];
+
+  // Background extraction — 4-tier priority ladder.
+  //
+  // Tier 1 — phrase-labelled hex anywhere in §2 (limited to first 2 000 chars to avoid
+  //           "in light mode" tail sections in dark-first refs like Linear).
+  //           Catches: "Page background", "primary canvas", "main canvas", etc.
+  const s2Early = s2Full.slice(0, 2000);
+  const roleRe = /\*\*[^*]+\*\*\s*\(`(#[0-9a-fA-F]{6})`\)[^\n]{0,300}?(?:primary\s+page\s+background|primary\s+canvas|main\s+canvas|default\s+canvas|page\s+background|primary\s+background|the\s+primary\s+(?:page\s+)?(?:canvas|background)|page\s+canvas|void\s+canvas|main\s+page\s+background)/i;
+  const tier1 = s2Early.match(roleRe);
+  if (tier1) {
+    background = tier1[1];
+  } else {
+    // Tier 2 — Background/Surface subsection first meaningful hex
+    //           "Meaningful" = description does NOT mention overlay/badge/pill/selection/frost/glass.
+    //           Handles "Background Surfaces" (Linear) and "Surface & Background" (Cohere/Expo).
+    const bgSectionContent = s2Full.match(
+      /###[^\n]*\b(?:Background|Surface|Canvas)\b[^\n]*\n([\s\S]*?)(?=\n###|\n## |$)/i
+    )?.[1] ?? '';
+    const hexEntries = [...bgSectionContent.matchAll(/\*\*[^*]+\*\*\s*\(`(#[0-9a-fA-F]{6})`\)[^\n]*/g)];
+    const meaningfulHex = hexEntries.find(
+      (m) => !/overlay|badge|pill|selection|frost|glass|alpha|backdrop/i.test(m[0])
+    );
+    if (meaningfulHex) {
+      background = meaningfulHex[1];
+    } else if (bgSectionContent) {
+      // Section exists but all rgba/hsla or only overlay entries → fallback to dark-surface hex in §2
+      const darkFallback = s2Full.match(
+        /\*\*[^*]+\*\*\s*\(`(#[0-9a-fA-F]{6})`\)[^\n]*(?:dark\s+(?:\w+\s+)?(?:surface|background|canvas|interactive)|deepest\s+surface|button\s+background[^\n]*dark)/i
+      );
+      if (darkFallback) background = darkFallback[1];
+    } else {
+      // Tier 3 — Quick Color Reference table (search within §2 only to avoid
+      //           Philosophy layer / §10-15 false positives in full designMd)
+      const quickBg = s2Full.match(/Quick Color Reference[\s\S]*?Background.*?`(#[0-9a-fA-F]{6})`/i);
+      if (quickBg) background = quickBg[1];
     }
   }
 
@@ -127,7 +152,7 @@ export async function GET(
   const accentMatch = designMd.match(/(?:accent|secondary).*?`(#[0-9a-fA-F]{6})`/i);
   const borderMatch = designMd.match(/(?:border.*?default|border.*?standard).*?`(#[0-9a-fA-F]{6})`/i);
 
-  const mood = designMd.match(/## 1\. Visual Theme.*?\n([\s\S]*?)(?=## 2\.)/)?.[1]?.trim().split('\n\n')[0]?.slice(0, 300) || '';
+  const mood = designMd.match(/## 1\. Visual Theme.*?\n([\s\S]*?)(?=## 2\.)/)?.[1]?.trim().split('\n\n')[0] || '';
 
   return NextResponse.json({
     id, designMd, primary, background, foreground,
