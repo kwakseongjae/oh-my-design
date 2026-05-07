@@ -57,6 +57,9 @@ export default function BuilderPage() {
   });
   const [activeComponents, setActiveComponents] = useState<string[]>(DEFAULT_COMPONENTS);
   const [stylePreferences, setStylePreferences] = useState<StylePreferences>({});
+  // Lifted from ReferenceSelector so the header can reflect the skip-wizard
+  // mode (Reference → Export, no Customize) the instant the user toggles it.
+  const [skipWizard, setSkipWizard] = useState(false);
 
   const [refsLoading, setRefsLoading] = useState(true);
 
@@ -276,11 +279,22 @@ export default function BuilderPage() {
     if (next === "preview") return goToPreview();
   }, [detail, goToSelect, goToCustomize, goToPreview]);
 
-  const STEPS: { key: Step; label: string; num: number }[] = [
-    { key: "select", label: "Reference", num: 1 },
-    { key: "customize", label: "Customize", num: 2 },
-    { key: "preview", label: "Export", num: 3 },
-  ];
+  // When skipWizard is on AND we aren't currently sitting on the customize
+  // step, drop "Customize" from the nav and renumber Export to 2 — the user
+  // signaled they want the direct path, so the header should mirror it.
+  // (If they're already on customize, keep all three so they can still
+  // navigate; toggling mode does not retroactively unmount the wizard.)
+  const STEPS: { key: Step; label: string; num: number }[] =
+    skipWizard && step !== "customize"
+      ? [
+          { key: "select", label: "Reference", num: 1 },
+          { key: "preview", label: "Export", num: 2 },
+        ]
+      : [
+          { key: "select", label: "Reference", num: 1 },
+          { key: "customize", label: "Customize", num: 2 },
+          { key: "preview", label: "Export", num: 3 },
+        ];
 
   return (
     <div className="min-h-screen">
@@ -335,6 +349,8 @@ export default function BuilderPage() {
             onSelectAsIs={selectRefAsIs}
             loading={loading}
             initialLoading={refsLoading}
+            skipWizard={skipWizard}
+            onSkipWizardChange={setSkipWizard}
           />
         )}
         {step === "customize" && detail && (

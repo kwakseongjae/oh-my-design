@@ -3,7 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { event, trackRef } from "@/lib/gtag";
-import { Loader2, ArrowRight, ChevronDown } from "lucide-react";
+import { Loader2, ArrowRight, ChevronDown, Download } from "lucide-react";
 
 /** Inline SVG magnifier — bypasses lucide-react@1.8.0 rendering issues. */
 function SearchIcon({ className }: { className?: string }) {
@@ -140,6 +140,8 @@ export function ReferenceSelector({
   onSelectAsIs,
   loading,
   initialLoading = false,
+  skipWizard,
+  onSkipWizardChange,
 }: {
   refs: RefListItem[];
   /** Standard click path: go to the customization wizard (step 2). */
@@ -149,6 +151,10 @@ export function ReferenceSelector({
   onSelectAsIs: (id: string) => void;
   loading: boolean;
   initialLoading?: boolean;
+  /** Controlled skip-wizard state lifted to the parent so the header step
+   *  nav can hide the Customize pill the moment the user toggles. */
+  skipWizard: boolean;
+  onSkipWizardChange: (next: boolean) => void;
 }) {
   // Sort categories by reference count (most-populated first) so the visible
   // short list on mobile surfaces the highest-value chips. Long-tail
@@ -161,22 +167,18 @@ export function ReferenceSelector({
   }, {});
   const categories = [...new Set(refs.map((r) => r.category))]
     .sort((a, b) => (categoryCounts[b] ?? 0) - (categoryCounts[a] ?? 0));
-  // Mobile chip limits — tuned so the category and country rows each fit on
-  // a single line at a ~390 px viewport after the uppercase label, the
-  // "All" chip, and the trailing "More ▾" trigger. Empirically 3 chips + All
-  // + More wraps ("Backend & DevOps" or "United States" labels are wide),
-  // so 2 is the safe single-line upper bound. Long-tail categories and the
-  // remaining countries collapse into each row's "More" dropdown.
+  // Mobile chip limit for categories — kept at 2 inline chips so the row
+  // fits a single line at ~390 px after "All" + the "More ▾" trigger.
+  // Country no longer needs an analogous limit; it's a single dropdown
+  // button across all viewports.
   const MOBILE_CATEGORY_LIMIT = 2;
-  const MOBILE_COUNTRY_LIMIT = 2;
   const primaryCategories = categories.slice(0, MOBILE_CATEGORY_LIMIT);
   const overflowCategories = categories.slice(MOBILE_CATEGORY_LIMIT);
 
-  // Country list: sort by reference count so the densest filter buckets land
-  // in the primary chip row on mobile. Matches the category treatment — if we
-  // kept the previous "non-US-first alphabetical" sort, the mobile top-3
-  // would surface France/Germany/Italy (the least-populated buckets) and push
-  // Korea/Japan into the overflow menu, which is the opposite of useful.
+  // Country list — sorted by reference count desc so the densest buckets
+  // surface first inside the dropdown. Country no longer renders inline
+  // chips on either viewport (one peer dropdown across desktop + mobile),
+  // so the previous primary/overflow split is gone.
   const countryCounts = refs.reduce<Record<string, number>>((acc, r) => {
     if (r.country) acc[r.country] = (acc[r.country] ?? 0) + 1;
     return acc;
@@ -184,16 +186,11 @@ export function ReferenceSelector({
   const countries = [...new Set(refs.map((r) => r.country))]
     .filter(Boolean)
     .sort((a, b) => (countryCounts[b] ?? 0) - (countryCounts[a] ?? 0));
-  const primaryCountries = countries.slice(0, MOBILE_COUNTRY_LIMIT);
-  const overflowCountries = countries.slice(MOBILE_COUNTRY_LIMIT);
 
   const [filter, setFilter] = useState("");
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [philosophyOnly, setPhilosophyOnly] = useState(false);
-  // Skip-wizard mode: when on, clicking a card bypasses customize and jumps
-  // to step 3 with the reference's original DESIGN.md untouched.
-  const [skipWizard, setSkipWizard] = useState(false);
   // Controls the mobile overflow dropdowns. Two independent menus — one for
   // the category "More ▾" trigger, one for the country "More ▾" trigger.
   const [catMoreOpen, setCatMoreOpen] = useState(false);
@@ -308,86 +305,44 @@ export function ReferenceSelector({
           No helper paragraph: the header description above already swaps
           based on the selected mode, making a second copy redundant.
 
-          Mobile placement (decided 2026-04-22): kept centered in the normal
-          flow rather than hoisted into the header or shrunk into an icon.
-          Rationale: Use-as-is is a flow-level commitment ("skip the wizard
-          entirely"), not a peripheral preference. Burying it behind an icon
-          would undo the discoverability work (sliding pill, primary-dot
-          accent, description swap). The real mobile chrome wins come from
-          CTA/category reduction (research patterns C + D), not from
-          shrinking this toggle further. Vertical margin tightened to mb-4
-          on mobile to claw back a small amount of space without touching
-          the pill geometry. */}
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.05 }}
-        className="mb-4 sm:mb-6 flex justify-center"
-      >
-        <div
-          role="radiogroup"
-          aria-label="Pick a builder mode"
-          className="relative inline-flex items-center gap-0.5 rounded-full border border-border/50 dark:border-white/10 bg-card/50 dark:bg-white/[0.04] p-1 backdrop-blur-xl shadow-sm"
-        >
-          {[
-            { value: false, label: "Customize" },
-            { value: true,  label: "Use as-is" },
-          ].map((opt) => {
-            const active = skipWizard === opt.value;
-            return (
-              <button
-                key={String(opt.value)}
-                role="radio"
-                aria-checked={active}
-                onClick={() => {
-                  if (active) return;
-                  setSkipWizard(opt.value);
-                  event("skip_wizard_toggle", { on: opt.value });
-                }}
-                className="relative z-10 rounded-full px-4 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-              >
-                {active && (
-                  <motion.span
-                    layoutId="mode-pill"
-                    aria-hidden="true"
-                    className="absolute inset-0 rounded-full bg-foreground"
-                    transition={{ type: "spring", duration: 0.4, bounce: 0.18 }}
-                  />
-                )}
-                <span
-                  className={`relative inline-flex items-center gap-1.5 ${
-                    active ? "text-background" : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {opt.value && (
-                    <span
-                      aria-hidden="true"
-                      className={`h-1.5 w-1.5 rounded-full ${active ? "bg-primary" : "bg-primary/60"}`}
-                    />
-                  )}
-                  {opt.label}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </motion.div>
+          Layout (2026-05-07): mode toggle was previously a centered
+          standalone row taking full width — visually heavy for what is a
+          binary preference. Moved inline with the search input on the same
+          row (search left, toggle right via justify-between). On mobile
+          the row wraps and the toggle drops below the search, preserving
+          discoverability without the dedicated row. Geometry of the pill
+          itself is unchanged (still bg-foreground active fill + primary
+          dot accent on Use-as-is). */}
 
-      {/* Search + Filters */}
+      {/* Search + Filters
+          Restructured 2026-05-07: previously search shared a row with the
+          category chips and made the input feel small, while Philosophy and
+          Country sat on their own labeled rows ("PHILOSOPHY" / "COUNTRY"
+          uppercase prefixes) which created a two-tier hierarchy that looked
+          disjointed (Dribbble pattern). New layout — research patterns
+          B+D hybrid (see Awwwards / GitHub Issues filter bar):
+            Row 1: Search input + mode toggle on opposite ends of the row.
+            Row 2: All filter chips at one peer level — categories inline,
+                   then Philosophy toggle, then Country as a single dropdown
+                   button (collapsing 8 country chips into one trigger).
+          Active state for every filter chip is unified to bg-primary so
+          they speak one visual language; mode toggle keeps its neutral
+          bg-foreground so it stays distinct from filter selection. */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
         className="mb-6 space-y-3"
       >
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="relative">
+        {/* Row 1 — Search (left, anchors the row) + mode toggle (right). */}
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="relative w-full max-w-md flex-1 min-w-[260px]">
             <input
               type="text"
-              placeholder="Search..."
+              placeholder="Search references..."
               value={filter}
               onChange={(e) => handleSearch(e.target.value)}
-              className="h-10 w-64 rounded-lg border border-border/60 bg-card pl-10 pr-9 text-sm outline-none transition-colors focus:border-foreground/30"
+              className="h-11 w-full rounded-lg border border-border/60 bg-card pl-10 pr-9 text-sm outline-none transition-colors focus:border-foreground/30"
             />
             <SearchIcon className="pointer-events-none absolute left-3 top-1/2 z-10 h-[18px] w-[18px] -translate-y-1/2 text-foreground/80" />
             {filter && (
@@ -401,7 +356,62 @@ export function ReferenceSelector({
               </button>
             )}
           </div>
-          {/* Category chip row.
+
+          {/* Mode toggle (Customize / Use as-is). Inline with search now;
+              flex-shrink-0 so it never compresses below its natural width. */}
+          <div
+            role="radiogroup"
+            aria-label="Pick a builder mode"
+            className="relative inline-flex flex-shrink-0 items-center gap-0.5 rounded-full border border-border/50 dark:border-white/10 bg-card/50 dark:bg-white/[0.04] p-1 backdrop-blur-xl shadow-sm"
+          >
+            {[
+              { value: false, label: "Customize" },
+              { value: true,  label: "Use as-is" },
+            ].map((opt) => {
+              const active = skipWizard === opt.value;
+              return (
+                <button
+                  key={String(opt.value)}
+                  role="radio"
+                  aria-checked={active}
+                  onClick={() => {
+                    if (active) return;
+                    onSkipWizardChange(opt.value);
+                    event("skip_wizard_toggle", { on: opt.value });
+                  }}
+                  className="relative z-10 rounded-full px-4 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                >
+                  {active && (
+                    <motion.span
+                      layoutId="mode-pill"
+                      aria-hidden="true"
+                      className="absolute inset-0 rounded-full bg-foreground"
+                      transition={{ type: "spring", duration: 0.4, bounce: 0.18 }}
+                    />
+                  )}
+                  <span
+                    className={`relative inline-flex items-center gap-1.5 ${
+                      active ? "text-background" : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {opt.value && (
+                      <span
+                        aria-hidden="true"
+                        className={`h-1.5 w-1.5 rounded-full ${active ? "bg-primary" : "bg-primary/60"}`}
+                      />
+                    )}
+                    {opt.label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Row 2 — Unified facet bar: categories + philosophy + country.
+            All chips share rounded-full / px-3 / py-1.5 / bg-primary-active. */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          {/* Category sub-group.
               - Desktop (sm+): full list is visible with `flex-wrap`, same
                 as before.
               - Mobile (<sm): only the top-5 chips render inline and the
@@ -511,23 +521,17 @@ export function ReferenceSelector({
               </div>
             )}
           </div>
-        </div>
 
-        {/* Philosophy filter — curated references with a full brand philosophy.
-            Row structure mirrors the Country row: prefix label + chip.
-            Chip label reads "Included" — these are the refs that include
-            the brand-philosophy layer.
+          {/* Vertical separator — visually splits "what kind of company"
+              (categories) from "secondary facets" (philosophy / country)
+              without resorting to a separate row + uppercase prefix label.
+              Hidden when the row wraps so the divider doesn't strand at the
+              start of a new line. */}
+          <span aria-hidden className="hidden sm:inline-block h-5 w-px bg-border/60 mx-1" />
 
-            TODO (mobile chrome reduction, ~2026-05-06): after ~2 weeks of
-            GA4 data, if `philosophy_filter` + `country_filter` sessions stay
-            below ~5% of select sessions, collapse both rows into a single
-            "Filter" button that opens a 2-tab bottom sheet (Airbnb-style,
-            research pattern B). Keep rows visible in the meantime so we can
-            measure real engagement before hiding. */}
-        <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground/70 mr-2">
-            Philosophy
-          </span>
+          {/* Philosophy toggle — peer chip, same shape/size as category chips.
+              Active state unified to bg-primary so filter selection reads as
+              one visual language across the whole row. */}
           <button
             onClick={() => {
               const next = !philosophyOnly;
@@ -536,136 +540,104 @@ export function ReferenceSelector({
             }}
             aria-pressed={philosophyOnly}
             title="Show only references whose brand philosophy (voice, principles, personas, states) is included and sourced against public references"
-            className={`rounded-full px-3 py-1 text-xs font-medium transition-all flex items-center gap-1.5 ${
+            className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all flex items-center gap-1.5 ${
               philosophyOnly
-                ? "bg-foreground/10 text-foreground"
-                : "border border-border/30 text-muted-foreground hover:text-foreground hover:border-border"
+                ? "bg-primary text-primary-foreground shadow-sm"
+                : "border border-border/40 text-muted-foreground hover:text-foreground hover:border-border"
             }`}
           >
             <StarIcon className="h-3 w-3 text-yellow-400" />
-            <span>Included</span>
+            <span>Philosophy</span>
             <span
               className={`ml-0.5 rounded-full px-1.5 py-px text-[10px] tabular-nums ${
-                philosophyOnly ? "bg-foreground/15" : "bg-muted"
+                philosophyOnly ? "bg-primary-foreground/20" : "bg-muted"
               }`}
             >
               {PHILOSOPHY_IDS.size}
             </span>
           </button>
-        </div>
 
-        {/* Country filter row — same pattern as the category row.
-            - Desktop (sm+): full list visible, wraps if needed.
-            - Mobile (<sm): primary top-N flag chips + "More ▾" dropdown.
-            Overflow dropdown includes counts so users can tell which
-            country buckets are populated before committing to filter. */}
-        <div className="relative flex flex-wrap items-center gap-1.5">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground/70 mr-2">
-            Country
-          </span>
-          <button
-            onClick={() => setSelectedCountry(null)}
-            className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${
-              !selectedCountry
-                ? "bg-foreground/10 text-foreground"
-                : "border border-border/30 text-muted-foreground hover:text-foreground hover:border-border"
-            }`}
-          >
-            All
-          </button>
-          {/* Always-visible primary country chips. */}
-          {primaryCountries.map((c) => (
+          {/* Country — collapsed from a row of 8 inline flag chips into a
+              single dropdown trigger, peer-shaped with the other filter
+              chips. Was previously an entire labeled row ("COUNTRY ...");
+              that row plus the prefix label is what created the broken
+              hierarchy the user flagged. The dropdown now serves all
+              viewports (no more sm:hidden split) and lists every country
+              with its count so users can scan density before filtering. */}
+          <div ref={countryMoreRef} className="relative">
             <button
-              key={c}
-              onClick={() => { const next = selectedCountry === c ? null : c; setSelectedCountry(next); if (next) event("country_filter", { country: next }); }}
-              className={`rounded-full px-3 py-1 text-xs font-medium transition-all flex items-center gap-1.5 ${
-                selectedCountry === c
-                  ? "bg-foreground/10 text-foreground"
-                  : "border border-border/30 text-muted-foreground hover:text-foreground hover:border-border"
+              onClick={() => setCountryMoreOpen((v) => !v)}
+              aria-expanded={countryMoreOpen}
+              aria-haspopup="menu"
+              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all inline-flex items-center gap-1.5 ${
+                selectedCountry
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "border border-border/40 text-muted-foreground hover:text-foreground hover:border-border"
               }`}
             >
-              <span aria-hidden>{COUNTRY_FLAGS[c] ?? "🏳️"}</span>
-              <span>{shortCountry(c)}</span>
+              {selectedCountry ? (
+                <>
+                  <span aria-hidden>{COUNTRY_FLAGS[selectedCountry] ?? "🏳️"}</span>
+                  <span>{shortCountry(selectedCountry)}</span>
+                </>
+              ) : (
+                <span>Country</span>
+              )}
+              <ChevronDown className={`h-3 w-3 transition-transform ${countryMoreOpen ? "rotate-180" : ""}`} />
             </button>
-          ))}
-          {/* Overflow chips — hidden on mobile, visible inline on sm+. */}
-          {overflowCountries.map((c) => (
-            <button
-              key={c}
-              onClick={() => { const next = selectedCountry === c ? null : c; setSelectedCountry(next); if (next) event("country_filter", { country: next }); }}
-              className={`hidden sm:inline-flex rounded-full px-3 py-1 text-xs font-medium transition-all items-center gap-1.5 ${
-                selectedCountry === c
-                  ? "bg-foreground/10 text-foreground"
-                  : "border border-border/30 text-muted-foreground hover:text-foreground hover:border-border"
-              }`}
-            >
-              <span aria-hidden>{COUNTRY_FLAGS[c] ?? "🏳️"}</span>
-              <span>{shortCountry(c)}</span>
-            </button>
-          ))}
-          {/* Mobile-only "More" dropdown for overflow countries. */}
-          {overflowCountries.length > 0 && (
-            <div ref={countryMoreRef} className="relative sm:hidden">
-              <button
-                onClick={() => setCountryMoreOpen((v) => !v)}
-                aria-expanded={countryMoreOpen}
-                aria-haspopup="menu"
-                className={`rounded-full px-3 py-1 text-xs font-medium transition-all inline-flex items-center gap-1 ${
-                  selectedCountry && overflowCountries.includes(selectedCountry)
-                    ? "bg-foreground/10 text-foreground"
-                    : "border border-border/30 text-muted-foreground hover:text-foreground hover:border-border"
-                }`}
-              >
-                {selectedCountry && overflowCountries.includes(selectedCountry) ? (
-                  <>
-                    <span aria-hidden>{COUNTRY_FLAGS[selectedCountry] ?? "🏳️"}</span>
-                    <span>{shortCountry(selectedCountry)}</span>
-                  </>
-                ) : (
-                  <span>More</span>
-                )}
-                <ChevronDown className={`h-3 w-3 transition-transform ${countryMoreOpen ? "rotate-180" : ""}`} />
-              </button>
-              <AnimatePresence>
-                {countryMoreOpen && (
-                  <motion.div
-                    role="menu"
-                    initial={{ opacity: 0, y: -4, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -4, scale: 0.98 }}
-                    transition={{ duration: 0.12 }}
-                    className="absolute right-0 top-full z-20 mt-1 min-w-[180px] overflow-hidden rounded-lg border border-border/60 dark:border-border bg-card shadow-lg backdrop-blur"
+            <AnimatePresence>
+              {countryMoreOpen && (
+                <motion.div
+                  role="menu"
+                  initial={{ opacity: 0, y: -4, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -4, scale: 0.98 }}
+                  transition={{ duration: 0.12 }}
+                  className="absolute left-0 top-full z-20 mt-1 min-w-[200px] max-w-[calc(100vw-2rem)] overflow-hidden rounded-lg border border-border/60 dark:border-border bg-card shadow-lg backdrop-blur"
+                >
+                  {/* "All" reset row */}
+                  <button
+                    role="menuitemradio"
+                    aria-checked={!selectedCountry}
+                    onClick={() => {
+                      setSelectedCountry(null);
+                      setCountryMoreOpen(false);
+                    }}
+                    className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium transition-colors ${
+                      !selectedCountry ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
+                    }`}
                   >
-                    {overflowCountries.map((c) => {
-                      const active = selectedCountry === c;
-                      return (
-                        <button
-                          key={c}
-                          role="menuitemradio"
-                          aria-checked={active}
-                          onClick={() => {
-                            const next = active ? null : c;
-                            setSelectedCountry(next);
-                            setCountryMoreOpen(false);
-                            if (next) event("country_filter", { country: next });
-                          }}
-                          className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium transition-colors ${
-                            active ? "bg-foreground/10 text-foreground" : "text-foreground hover:bg-muted"
-                          }`}
-                        >
-                          <span aria-hidden>{COUNTRY_FLAGS[c] ?? "🏳️"}</span>
-                          <span className="flex-1">{c}</span>
-                          <span className="text-[10px] text-muted-foreground tabular-nums">
-                            {countryCounts[c] ?? 0}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          )}
+                    <span className="flex-1">All countries</span>
+                  </button>
+                  {countries.map((c) => {
+                    const active = selectedCountry === c;
+                    return (
+                      <button
+                        key={c}
+                        role="menuitemradio"
+                        aria-checked={active}
+                        onClick={() => {
+                          const next = active ? null : c;
+                          setSelectedCountry(next);
+                          setCountryMoreOpen(false);
+                          if (next) event("country_filter", { country: next });
+                        }}
+                        className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium transition-colors ${
+                          active ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
+                        }`}
+                      >
+                        <span aria-hidden>{COUNTRY_FLAGS[c] ?? "🏳️"}</span>
+                        <span className="flex-1">{c}</span>
+                        <span className="text-[10px] text-muted-foreground tabular-nums">
+                          {countryCounts[c] ?? 0}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </motion.div>
 
@@ -713,6 +685,18 @@ export function ReferenceSelector({
                     isGh={isGitHubLogo(ref.id)}
                     isLightBg={isLight(ref.primaryColor)}
                   />
+                  {/* Skip-wizard hover overlay — only rendered when the user
+                      has flipped to "Use as-is". Tells them what the click
+                      will actually do (jump straight to export) instead of
+                      letting the card pretend it's still the customize path. */}
+                  {skipWizard && (
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/55 opacity-0 backdrop-blur-[2px] transition-opacity group-hover:opacity-100">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-[11px] font-semibold text-black shadow-sm">
+                        <Download className="h-3 w-3" />
+                        Export
+                      </span>
+                    </div>
+                  )}
                   {/* Hex badge */}
                   <span className="absolute bottom-2 left-2 rounded bg-black/20 px-1.5 py-0.5 font-mono text-[9px] text-white/80 backdrop-blur-sm">
                     {ref.primaryColor}
