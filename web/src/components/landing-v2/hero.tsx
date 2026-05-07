@@ -168,7 +168,7 @@ export function HeroV2() {
             transition={{ duration: 0.7, delay: 0.05 }}
             className="mt-6 text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-tight"
           >
-            Stop generating
+            Generate DESIGN.md
             <br />
             <span
               className="inline-block pb-1"
@@ -179,7 +179,7 @@ export function HeroV2() {
                 color: "transparent",
               }}
             >
-              modern minimalist.
+              from 50+ real company design systems.
             </span>
           </motion.h1>
 
