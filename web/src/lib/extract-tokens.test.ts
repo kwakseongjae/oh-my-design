@@ -32,12 +32,27 @@ function makeTokens(): ParsedTokens {
       fonts: [],
     },
     radii: { button: "8px", input: "8px", card: "8px", dialog: "8px", badge: "8px" },
+    radiusScale: [
+      { element: "buttons", value: "8px" },
+      { element: "inputs",  value: "8px" },
+      { element: "cards",   value: "8px" },
+      { element: "dialogs", value: "8px" },
+      { element: "badges",  value: "8px" },
+    ],
     palette: ["#6366f1"],
+    paletteRoles: [
+      { hex: "#6366f1", name: "Indigo", category: "brand", description: "Primary." },
+    ],
     spacing: [4, 8, 12, 16, 24, 32],
+    spacingScale: [4, 8, 12, 16, 24, 32].map((v) => ({ value: v })),
+    functionalSpacing: { density: "comfortable", baseUnit: 4, sectionGap: 24, cardPadding: 16, elementGap: 8 },
+    borders: [],
+    components: [],
     shadows: [
       { name: "Subtle",  value: "0 1px 2px rgba(0,0,0,0.05)" },
       { name: "Default", value: "0 1px 3px rgba(0,0,0,0.1)" },
     ],
+    guidelines: [],
   };
 }
 

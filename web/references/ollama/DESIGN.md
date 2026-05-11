@@ -265,3 +265,75 @@ What makes Ollama distinctive is the combination of SF Pro Rounded (Apple's roun
 4. Shadows are always zero — never add them
 5. Weight is always 400 or 500 — never bold
 6. If something feels too decorated, remove it — less is always more for Ollama
+
+## 10. Voice & Tone
+
+Ollama's voice is **open-source-warm and CLI-fluent** — speaks like a tool team that values local-first AI. Marketing copy emphasizes the "run AI on your machine" thesis. Pill chrome + warm round buttons signal "approachable while still being a serious tool."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Download", "Sign in", "Create account" |
+| Marketing | Practical. "Run language models locally" recurring |
+| Documentation | CLI-first; bash snippets dominant |
+| Error | Specific. "Model not found locally. Pull with: ollama pull llama3" |
+
+**Voice samples**
+- Marketing CTA: *"Download"* / *"Create account"* <!-- verified: ollama.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary AI", "magic". Aggressive sales pressure.
+
+## 11. Brand Narrative
+
+Ollama was founded by **Jeffrey Morgan** and **Michael Chiang** in **Palo Alto, CA** ([Y Combinator — Ollama](https://www.ycombinator.com/companies/ollama), [No Cap Blog — Michael Chiang](https://nocap.blog/founder/michael-chiang/)). Morgan + Chiang were **previously co-founders of Kitematic, the early UI for Docker** (acquired by Docker), giving them deep familiarity with developer-tooling distribution. The pair went through **Y Combinator Winter 2021 (W21)** batch with $125K initial investment, then pivoted into local-LLM tooling. **Initial public release July 2023 via GitHub** — the open-source CLI `ollama run llama3` became iconic in the local-AI community. The brand voice mirrors the lineage: practical, terse, CLI-aware. The cloud offering (**Ollama Pro / Max** tiers) launched **2024-2025** to monetize without abandoning the local-first OSS positioning. Mission: democratize AI access by eliminating cloud-service dependency for running LLMs ([Tracxn — Ollama](https://tracxn.com/d/companies/ollama/__dmKJg668xTKoW4o-mEXuoBUCM5Lwj1xIcCRlYr5tpOk)).
+
+## 12. Principles
+
+1. **Local-first is the thesis.** *UI implication:* product surfaces lead with `ollama run` CLI, not a hosted UI.
+2. **Pill chrome (9999px).** *UI implication:* nav, badges, modals all pill on white.
+3. **Weight 400 or 500, never bold.** *UI implication:* don't use weight 700+.
+4. **Less is more — remove decoration.** *UI implication:* no ornament; if something feels decorative, cut it.
+5. **OSS and Pro coexist.** *UI implication:* Pro/Max tiers visible but never blocking OSS UX.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Ollama user segments (privacy-conscious developers, ML researchers, local-first SaaS builders), not individual people.*
+
+**Sergey Volkov, 38, Berlin.** Privacy-conscious developer running Ollama on his M3 Max. Avoids cloud APIs for personal data.
+
+**Aisha Patel, 31, San Francisco.** ML researcher fine-tuning small models. Ollama for inference, custom training elsewhere.
+
+**Marcus Davies, 45, London.** Indie SaaS builder shipping a local-first writing tool. Ollama as the AI layer that doesn't require user API keys.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no models pulled)** | "Pull your first model" CLI snippet |
+| **Empty (no projects)** | "Try a model" with library link |
+| **Loading (model pulling)** | Per-layer progress with bytes/sec |
+| **Loading (inference)** | Per-token streaming visible |
+| **Error (model not found)** | Specific. "Model not found. Pull with: ollama pull X" |
+| **Error (memory)** | "Insufficient RAM. Try a smaller variant: ollama run llama3:8b" |
+| **Success (pull)** | Confirmation + run command snippet |
+| **Success (creation)** | Account confirmation + API key |
+| **Skeleton (model list)** | Pill placeholders |
+| **Disabled (free tier limit)** | Upgrade link |
+| **Loading (long pull)** | Persistent progress with ETA |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 42 — Apple-tier)
+**Tier 1 sources:** ollama.com home + /library (live DOM via playwright — all-pill 9999px chrome, **4-tier height system** {header 40 / hero 52 / Pro 38 / Max 36 / nav 28}, 2-weight discipline (400 default / 500 hero+pricing); Primary `#262626` Ollama Charcoal + Inverted `#fff` on dark hero; Outline `rgba(0,0,0,0.05)`).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders):** Y Combinator (Ollama W21 batch), No Cap Blog (Michael Chiang), Tracxn, Grokipedia.
+**Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier addition:** pricing inverted-pill `#fff` 36-38px / 14px·500 + hero weight-500 distinction missed by prior pass.

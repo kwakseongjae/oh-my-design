@@ -259,3 +259,76 @@ What makes Replicate distinctive is its community-powered energy. The model gall
 3. Links use dotted underline (#bbbbbb) — never solid
 4. The gradient hero is the visual anchor — make it bold
 5. Use basier-square for body, rb-freigeist-neue for display, JetBrains Mono for code
+
+## 10. Voice & Tone
+
+Replicate's voice is **research-engineering-friendly and API-first.** "Run AI with an API" — capability-driven, model-versioned. Marketing copy emphasizes the running-models-without-infra value prop.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started for free", "Try a model", "API access" |
+| Marketing | Model-driven. "Run X model with one line of code" |
+| Documentation | Code-first, copy-paste-ready |
+| Error | Specific. "Model output exceeded timeout (60s). Try smaller input." |
+
+**Voice samples**
+- Tagline: *"Run AI with an API"* <!-- verified: replicate.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary AI hosting". Generic platform claims.
+
+## 11. Brand Narrative
+
+Replicate was founded **2019** by **Ben Firshman** + **Andreas Jansson** ([Y Combinator — Replicate](https://www.ycombinator.com/companies/replicate), [Sequoia Capital — Partnering with Replicate](https://sequoiacap.com/article/partnering-with-replicate-machine-learning-simplified/)). **Firshman**: created **Docker Compose** during his time at Docker; **Jansson**: built research tools and infrastructure at **Spotify** with a **PhD in ML for music**. **Zeke Sikelianos** joined as a co-founder later. The founders' mission was to improve dissemination of scientific research with friendlier ML tools, leading to **Cog** — an open-source tool for packaging ML models into production-ready containers (Rust + Axum HTTP server). **Y Combinator Winter 2020 (W20)** batch ([MLQ — Replicate Deep Dive](https://mlq.ai/startups/replicate/)). Total funding **~$57.8M** with **post-Series B valuation $350M** (investors include **Sequoia Capital**, **Heavybit**). **Late 2025**: 50,000+ public models hosted + ~100 official curated by Replicate. **Acquired by Cloudflare** (Firshman's [LinkedIn](https://www.linkedin.com/in/bfirsh/) confirms current title **Head of AI Platform at Cloudflare**). The brand sits at the intersection of OSS researcher culture + cloud convenience — "run any model with one API call."
+
+## 12. Principles
+
+1. **One API, every model.** *UI implication:* uniform input/output schema across model variants.
+2. **Open-source heritage.** Cog still public. *UI implication:* surfaces emphasize OSS roots.
+3. **Gradient hero is the anchor.** *UI implication:* hero modules use bold gradient backgrounds.
+4. **Mixed type system.** basier-square / rb-freigeist-neue / JetBrains Mono. *UI implication:* don't substitute.
+5. **Model showcase first.** *UI implication:* discover/explore is the entry point, not pricing.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Replicate user segments (ML researchers, indie AI builders, content creators), not individual people.*
+
+**Yuki Tanaka, 30, Tokyo.** ML researcher experimenting with image models. Replicate for one-line API access without GPU setup.
+
+**Sofia Russo, 28, Milan.** Indie AI app builder shipping multiple SaaS. Replicate as the inference layer.
+
+**Marcus Chen, 41, San Francisco.** Senior engineer at content startup. Production replicate for image/video generation.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no API keys)** | "Generate first API key" CTA |
+| **Empty (no predictions)** | "Try a model" with featured grid |
+| **Loading (prediction)** | Per-step status + ETA |
+| **Loading (model loading)** | Cold-start indicator |
+| **Error (model)** | Specific. "Model failed: <reason>. Retry?" |
+| **Error (rate limit)** | Tier limit + upgrade |
+| **Success (prediction)** | Result inline + share link |
+| **Success (deployment)** | Endpoint + credentials |
+| **Skeleton (model grid)** | Gradient-tinted placeholders |
+| **Disabled (insufficient credits)** | Add credits link |
+| **Loading (long generation)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-streaming` | continuous | Token streaming |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 49 — Apple-tier)
+**Tier 1 sources:** replicate.com home + /explore (live DOM via playwright — Primary `#000` Black 0px sharp three-tier height (hero 54 / page 42 / mini 34) / 12-16×8-16 / 14-18px·400; **Replicate Orange-Red `#dd4425`** featured-accent on **Replicate Cream `#fffcfc`** card; Mid-Gray `#646464` nav + secondary; Charcoal `#202020` active code-tab states).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/Cloudflare-acquisition):** Y Combinator (W20), Sequoia Capital (Partnering with Replicate), Heavybit, MLQ Deep Dive, Latent Space podcast, LinkedIn (Firshman = Cloudflare Head of AI Platform — confirms Cloudflare acquisition), Tracxn.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** 3-height tier system + Orange-Red `#dd4425` accent + Cream `#fffcfc` featured-surface + Cloudflare acquisition narrative missed by prior pass.

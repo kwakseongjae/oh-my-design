@@ -94,95 +94,150 @@ The color story is starkly binary. Product sections alternate between pure black
 
 ## 4. Component Stylings
 
+Verified end-to-end against three sources (see footer of this section). Apple operates **two parallel button systems**: a **marketing pill** (`apple.com/iphone`, `/mac`, hero CTAs — `980px` radius / 17px / weight 400) and a **commerce compact** (`apple.com/shop/...` checkout flow — `8px` radius / 14px). `#0066cc` is a **link color**, never a button background. `#0071e3` is the only accent fill.
+
 ### Buttons
 
-**Primary Blue (CTA)**
-- Background: `#0071e3` (Apple Blue)
+**Marketing Primary Pill**
+- Background: `#0071e3`
 - Text: `#ffffff`
-- Padding: 8px 15px
-- Radius: 8px
 - Border: 1px solid transparent
-- Font: SF Pro Text, 17px, weight 400
-- Hover: background brightens slightly
-- Active: `#ededf2` background shift
-- Focus: `2px solid var(--sk-focus-color, #0071E3)` outline
-- Use: Primary call-to-action ("Buy", "Shop iPhone")
+- Radius: 980px
+- Padding: 11px 21px
+- Font: 17px / 400 / SF Pro Text
+- Use: Primary CTA across marketing pages ("Buy", "Learn more" filled). Verified `.button.product-tile-button` on apple.com/iphone.
 
-**Primary Dark**
+**Marketing Neutral Dark Pill**
 - Background: `#1d1d1f`
 - Text: `#ffffff`
-- Padding: 8px 15px
-- Radius: 8px
-- Font: SF Pro Text, 17px, weight 400
-- Use: Secondary CTA, dark variant
+- Border: 1px solid transparent
+- Radius: 980px
+- Padding: 11px 21px
+- Font: 17px / 400 / SF Pro Text
+- Use: Paired secondary CTA ("Watch the film"). Verified `.button-neutral.banner-card-cta` on apple.com/iphone.
 
-**Pill Link (Learn More / Shop)**
+**Marketing Outline Pill**
 - Background: transparent
-- Text: `#0066cc` (light bg) or `#2997ff` (dark bg)
-- Radius: 980px (full pill)
+- Text: `#0066cc`
 - Border: 1px solid `#0066cc`
-- Font: SF Pro Text, 14px-17px
-- Hover: underline decoration
-- Use: "Learn more" and "Shop" links — the signature Apple inline CTA
+- Radius: 980px
+- Padding: 11px 21px
+- Font: 17px / 400 / SF Pro Text
+- Use: Tertiary marketing CTA — outline pill matching primary geometry.
 
-**Filter / Search Button**
-- Background: `#fafafc`
-- Text: `rgba(0, 0, 0, 0.8)`
-- Padding: 0px 14px
-- Radius: 11px
-- Border: 3px solid `rgba(0, 0, 0, 0.04)`
-- Focus: `2px solid var(--sk-focus-color, #0071E3)` outline
-- Use: Search bars, filter controls
+**Commerce Compact Primary**
+- Background: `#0071e3`
+- Text: `#ffffff`
+- Border: 1px solid transparent
+- Radius: 8px
+- Padding: 8px 15px
+- Font: 14px / 400 / SF Pro Text
+- Use: Checkout flow primary action ("Continue", "Add to Bag"). Verified `.ac-ls-button.ac-ls-continue` on apple.com/shop/buy-iphone.
 
-**Media Control**
+**Commerce Compact Neutral**
+- Background: `#1d1d1f`
+- Text: `#ffffff`
+- Border: 1px solid transparent
+- Radius: 8px
+- Padding: 8px 15px
+- Font: 14px / 400 / SF Pro Text
+- Use: Checkout flow secondary on dark surfaces — same geometry as Commerce Compact Primary, neutral fill.
+
+**Utility Pill (Trade-in / Pay-monthly)**
+- Background: `#f5f5f7`
+- Text: `#1d1d1f`
+- Border: 1px solid transparent
+- Radius: 18px
+- Padding: 12px 16px
+- Font: 12px / 400 / SF Pro Text
+- Use: Inline finance / trade-in capsule on product pages. Verified at apple.com/shop/buy-iphone.
+
+**Icon Frosted Round**
 - Background: `rgba(210, 210, 215, 0.64)`
-- Text: `rgba(0, 0, 0, 0.48)`
-- Radius: 50% (circular)
-- Active: scale(0.9), background shifts
-- Focus: `2px solid var(--sk-focus-color, #0071e3)` outline, white bg, black text
-- Use: Play/pause, carousel arrows
+- Text: `rgba(0, 0, 0, 0.56)`
+- Border: none
+- Radius: 56px
+- Padding: 0
+- Font: 17px / 400 / SF Pro Text
+- Use: 56×56 carousel arrows / media controls — frosted scrim, NOT solid. Backdrop-filter blur(20px) where supported.
 
-### Cards & Containers
-- Background: `#f5f5f7` (light) or `#272729`-`#2a2a2d` (dark)
-- Border: none (borders are rare in Apple's system)
-- Radius: 5px-8px
-- Shadow: `rgba(0, 0, 0, 0.22) 3px 5px 30px 0px` for elevated product cards
-- Content: centered, generous padding
-- Hover: no standard hover state — cards are static, links within them are interactive
+**Text Link**
+- Background: transparent
+- Text: `#0066cc`
+- Border: none
+- Radius: 0
+- Padding: 0
+- Font: 17px / 400 / SF Pro Text
+- Hover: underline
+- Use: Inline "Learn more" anchor — link color, not a pill.
+
+### Inputs
+
+**Search / Filter (Frosted)**
+- Background: `#e8e8ed`
+- Text: `#1d1d1f`
+- Border: none (active: 2px solid `#2997ff`)
+- Radius: 8px
+- Padding: 8px 12px
+- Font: 17px / 400 / SF Pro Text
+- Placeholder: `rgba(0, 0, 0, 0.56)`
+- Use: Search bar / filter input. Active state shows brighter `#2997ff` accent.
+
+### Cards
+
+**White Feature Card**
+- Background: `#ffffff`
+- Text: `#1d1d1f`
+- Border: none
+- Radius: 28px
+- Padding: 28px
+- Shadow: none
+- Use: Primary content card — lifts off the canvas via color contrast alone, not shadow.
+
+**Fog Feature Card**
+- Background: `#f5f5f7`
+- Text: `#1d1d1f`
+- Border: none
+- Radius: 28px
+- Padding: 28px
+- Shadow: none
+- Use: Alternate card on white backgrounds.
+
+**Dark Feature Card**
+- Background: `#000000`
+- Text: `#ffffff`
+- Border: none
+- Radius: 28px
+- Padding: 28px
+- Shadow: none
+- Use: Maximum-contrast product detail card on dark sections.
+
+### Badges
+
+**New / Editorial Tag**
+- Background: transparent
+- Text: `#1d1d1f`
+- Border: none
+- Radius: 0
+- Padding: 0
+- Font: 12px / 600 / SF Pro Text (uppercase)
+- Use: "NEW" / "FREE" inline label — Apple uses an editorial stamp, not a pill.
 
 ### Navigation
-- Background: `rgba(0, 0, 0, 0.8)` (translucent dark) with `backdrop-filter: saturate(180%) blur(20px)`
-- Height: 48px (compact)
-- Text: `#ffffff` at 12px, weight 400
-- Active: underline on hover
-- Logo: Apple logomark (SVG) centered or left-aligned, 17x48px viewport
-- Mobile: collapses to hamburger with full-screen overlay menu
-- The nav floats above content, maintaining its dark translucent glass regardless of section background
 
-### Image Treatment
-- Products on solid-color fields (black or white) — no backgrounds, no context, just the object
-- Full-bleed section images that span the entire viewport width
-- Product photography at extremely high resolution with subtle shadows
-- Lifestyle images confined to rounded-corner containers (12px+ radius)
+**Global Nav (Translucent Fog)**
+- Background: `rgba(250, 250, 252, 0.8)` with `backdrop-filter: saturate(180%) blur(20px)`
+- Height: 44px
+- Link: `rgba(0, 0, 0, 0.8)` / 17px / 600 / SF Pro Text / padding 0 8px
+- Use: Sticky global nav across apple.com — translucent fog, NOT translucent black on light pages. (Black translucent appears only on dark hero pages.)
 
-### Distinctive Components
+---
 
-**Product Hero Module**
-- Full-viewport-width section with solid background (black or `#f5f5f7`)
-- Product name as the primary headline (SF Pro Display, 56px, weight 600)
-- One-line descriptor below in lighter weight
-- Two pill CTAs side by side: "Learn more" (outline) and "Buy" / "Shop" (filled)
-
-**Product Grid Tile**
-- Square or near-square card on contrasting background
-- Product image dominating 60-70% of the tile
-- Product name + one-line description below
-- "Learn more" and "Shop" link pair at bottom
-
-**Feature Comparison Strip**
-- Horizontal scroll of product variants
-- Each variant as a vertical card with image, name, and key specs
-- Minimal chrome — the products speak for themselves
+**Verified:** 2026-05-08
+**Tier 1 sources:** apple.com/, apple.com/iphone/, apple.com/shop/buy-iphone/iphone-17-pro (live DOM via playwright `getComputedStyle`)
+**Tier 2 sources:** styles.refero.design/style/a4f123f2-cd4b-4d26-998f-a3d3ee158024, /style/c9cabb96-32fa-4896-837a-f2497ce1c856
+**Tier 2b status:** getdesign.md/apple — directory snippet only, full token data not accessible via WebFetch (acceptable per pipeline).
+**Conflicts unresolved:** none. All Tier 1 values cross-confirmed by ≥1 Tier 2 source.
 
 ## 5. Layout Principles
 

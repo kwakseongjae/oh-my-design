@@ -255,3 +255,75 @@ What makes MiniMax distinctive is its pill-button geometry (9999px radius) for n
 4. DM Sans handles 70% of text — Outfit is display-only, Poppins is mid-tier only
 5. Keep weights moderate (500–600 for headings) — the brand tone is confident but approachable
 6. Large radius cards (20–24px) for products, smaller radius (8–13px) for UI elements
+
+## 10. Voice & Tone
+
+MiniMax's voice is **technical-modular and product-versioned** — speaks like a Chinese AI lab that ships frequent model versions (M2.7 / M2.5 / M2.1 / M2-Her / M2). Marketing copy emphasizes specific model variants and capabilities rather than a unified product narrative.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Try it", "Sign up", "API access" |
+| Marketing | Model-versioned. "MiniMax M2.7" as first-class product names |
+| Documentation | Code-first, model-spec heavy |
+
+**Voice samples**
+- Product nav: *"MiniMax M2.7"*, *"MiniMax M2-Her"*, *"MiniMax M2"* <!-- verified: minimax.io homepage 2026-05 -->
+
+**Forbidden phrases.** Marketing superlatives without benchmarks.
+
+## 11. Brand Narrative
+
+MiniMax was founded **December 2021** in **Shanghai** by **Yan Junjie (闫俊杰, CEO)**, **Yang Bin**, and **Zhou Yucong** ([MiniMax Group — Wikipedia](https://en.wikipedia.org/wiki/MiniMax_Group)). **Yan Junjie** — born 1989 in a county town in **Henan**, **PhD from Chinese Academy of Sciences Institute of Automation**, spent **7 years at SenseTime** rising to its **youngest VP**, focused on multimodal AI and computer vision. International distribution lever has been **Talkie**, an English-language AI-companion app (the overseas redeployment of MiniMax's Glow product) that **by June 2024 became the No. 1 AI companion app in U.S. downloads**, surpassing Character.AI ([Asia Tech Lens — MiniMax](https://www.asiatechlens.com/p/meet-minimax-the-chinese-tech-company), [Oreate AI — Talkie/MiniMax IPO](https://www.oreateai.com/blog/the-ai-unicorn-behind-the-virtual-lover-app-talkie-minimaxs-journey-to-ipo-and-business-challenges/c153c4c539c15df1c84197b6298dae9b)). MiniMax shipped its **first frontier LLM January 2025 (MiniMax-01)**, then reasoning models **M1 / M2** that claimed top positions among open-weight models. **Pre-IPO funding**: **30 institutions invested ~$1.5B over 7 rounds** with **Alibaba** as the largest investor, **Hillhouse** leading the first round, plus **Tencent, MiHoYo, HongShan, IDG Capital**; an **Oct 2023 round of ¥2.5B (~$350M)** was led by Alibaba + Tencent ([Caproasia — MiniMax HK IPO 2026 Q1](https://www.caproasia.com/2025/12/23/china-ai-startup-minimax-plans-hong-kong-ipo-in-2026-q1-to-raise-700-million-at-4-billion-valuation-founded-in-2022-by-yan-junjie-yang-bin-zhou-yucong-investors-include-mihoyo-alibaba-tencent/)). **Hong Kong Stock Exchange IPO January 2026** — stock **doubled in HK debut** ([CNBC — MiniMax doubles HK debut Jan 2026](https://www.cnbc.com/2026/01/09/minimax-hong-kong-ipo-ai-tigers-zhipu.html), [Rest of World — MiniMax/Zhipu beat OpenAI to IPO](https://restofworld.org/2026/zhipu-ai-minimax-ipo/)). Multi-model release cadence (M2 series, abab series) with strong international distribution. The model **M2-Her** is positioned as a conversational AI variant. The brand voice tracks the modular product family — each model has its own positioning within the MiniMax umbrella.
+
+## 12. Principles
+
+1. **Model variants are first-class.** *UI implication:* product nav lists model versions explicitly.
+2. **Large radius cards (20-24px) for products.** *UI implication:* product showcase cards generous radius.
+3. **Smaller radius (8-13px) for UI.** *UI implication:* nav buttons, modals stay 12px.
+4. **Moderate weights.** 500-600 for headings. *UI implication:* avoid 700+ headers.
+5. **Confident but approachable register.** *UI implication:* technical claims paired with clear model use-case copy.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by MiniMax user segments (Chinese AI developers, content creators, conversational AI integrators), not individual people.*
+
+**Wei Zhang, 31, Shanghai.** AI engineer at a content startup. Uses MiniMax for Chinese-first generation tasks.
+
+**Sofia Romano, 28, Milan.** Indie developer building voice agents. M2-Her for conversational quality.
+
+**Tomoko Yamada, 39, Tokyo.** ML lead evaluating Chinese vs Western models for production. Cares about benchmarks.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no API keys)** | "Generate API key" CTA |
+| **Empty (no projects)** | "Try a model" with model picker |
+| **Loading (model inference)** | Per-token streaming |
+| **Loading (model loading)** | Initialization status |
+| **Error (model unavailable)** | Specific model + region message |
+| **Error (rate limit)** | Tier limit explained |
+| **Success (generation)** | Result inline + copy/save |
+| **Success (account)** | API key visible + security reminder |
+| **Skeleton (model list)** | 12px placeholders |
+| **Disabled (no quota)** | Upgrade link |
+| **Loading (long task)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal |
+| `motion-streaming` | continuous | Token-by-token output |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 36 — Apple-tier)
+**Tier 1 sources:** minimax.io home + /news/minimax-m2 (live DOM via playwright — Header Primary **`#181e25`** MiniMax Charcoal 32px / 38px / 16px·400; Page Primary `#181e25` **9999px** full-pill / 35px / 8×24 / 16px·400; Model nav tabs ghost 12px / 40px / 8×24 / `#292929` MiniMax Ink 16px·400 (signature multi-model rail); Cookie utility 8px / 13px·**600** separate track).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/IPO):** Wikipedia (MiniMax Group), Asia Tech Lens (Yan Junjie biography), Oreate AI (Talkie/IPO), Caproasia (HK IPO Dec 2025), CNBC (HK debut 2026-01-09), Rest of World, AI Proem.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured only model-nav 12px ghost; canonical Primary is **`#181e25` Charcoal** at two radii (32 / 9999) — also missed the §4 documentation of canonical CTAs.

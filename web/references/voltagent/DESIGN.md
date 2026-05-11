@@ -321,3 +321,76 @@ When refining existing screens generated with this design system:
 5. For glow effects, specify "Emerald Signal Green (#00d992) as a drop-shadow with 2–8px blur radius"
 6. Always specify which font — system-ui for headings, Inter for body/UI, SFMono-Regular for code
 7. Keep animations slow and subtle — marquee scrolls at 25–80s, glow pulses gently
+
+## 10. Voice & Tone
+
+VoltAgent's voice is **TypeScript-AI-framework and developer-honest.** "Open Source TypeScript AI Agent Framework" — capability-driven, OSS-positioned. Marketing emphasizes the developer-tools-team behind getdesign.md / DESIGN.md ecosystem.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get Started", "Try VoltOps", "View on GitHub" |
+| Marketing | Code-first. Real TypeScript snippets in marketing |
+| Documentation | Type-aware, framework-deep |
+| Error | Stack-trace-friendly |
+
+**Voice samples**
+- Marketing CTA: *"Get Started"* / *"Try VoltOps"* <!-- verified: voltagent.dev homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary AI framework". Generic LangChain-comparison framing.
+
+## 11. Brand Narrative
+
+VoltAgent is the **open-source TypeScript AI agent framework** — a 2024-launched project providing memory, RAG, guardrails, tools, MCP, voice, and workflow primitives in one type-safe package, with **n8n-style observability** as the differentiator ([VoltAgent — voltagent.dev](https://voltagent.dev/), [GitHub: VoltAgent/voltagent](https://github.com/VoltAgent/voltagent), [Product Hunt — VoltAgent OSS AI Agent Framework](https://www.producthunt.com/products/voltagent-opensource-ai-agent-framework)). **MIT-licensed**. Founder: **Omer Aplak** (referenced across VoltAgent's GitHub org and community). **GitHub: ~8.7K stars** (live header confirms "Thank you! 8.7K" badge 2026-05). **Business model**: open-core — core framework always remains OSS; advanced enterprise features on the **observability side (VoltOps)** are monetized. The team also maintains the **getdesign.md ecosystem** (collection of DESIGN.md files for AI agents to reference — also referenced throughout this oh-my-design migration project). **Integrations confirmed**: Qdrant (vector DB), Hugging Face (`huggingface.co/voltagent`). Position: developer-first, type-safe, OSS-default.
+
+## 12. Principles
+
+1. **TypeScript-first.** *UI implication:* every code snippet shows .ts not .py.
+2. **Open source heritage.** *UI implication:* GitHub link prominent on landing.
+3. **Slow subtle animations.** Marquee 25-80s. *UI implication:* avoid fast/aggressive motion.
+4. **Three fonts.** system-ui / Inter / SFMono-Regular. *UI implication:* don't substitute.
+5. **Glow pulses gently.** *UI implication:* preserve subtle glow accent on hero.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by VoltAgent user segments (TS-first developers, AI agent builders, indie SaaS), not individual people.*
+
+**Sofia Russo, 30, Milan.** Indie SaaS founder. VoltAgent for typed agent infrastructure.
+
+**Marcus Chen, 35, San Francisco.** Senior TypeScript engineer. Migrated from LangChain JS for type safety.
+
+**Priya Krishnan, 27, Bengaluru.** AI engineer at startup. VoltOps for agent observability.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no agents)** | "Create first agent" CTA |
+| **Empty (no projects)** | "Try VoltOps" link |
+| **Loading (agent run)** | Per-step trace visible |
+| **Loading (compile)** | TypeScript checking indicator |
+| **Error (type)** | Inline TS error with line:column |
+| **Error (runtime)** | Stack trace visible |
+| **Success (agent ran)** | Result + trace expanded |
+| **Success (deployed)** | Endpoint visible |
+| **Skeleton (agent list)** | 6px placeholders |
+| **Disabled (no plan)** | Upgrade link |
+| **Loading (long task)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-marquee` | 25-80s | Background marquee |
+| `motion-glow` | 3000ms | Gentle glow pulse |
+
+Standard cubic-bezier; no bounce. **Slow subtle motion is the register.** `prefers-reduced-motion: reduce` removes marquee + glow.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 61 — Apple-tier)
+**Tier 1 sources:** voltagent.dev home + /docs (live DOM via playwright — Hero Primary `transparent` ghost + `#eeeeee` Off-White text 6px / 54px / 12×16 / 18px·**700**; Header Compact ghost 6px / 34px / 14px·500; **Brand accent `#2fd6a1` Voltage Green** (active states); Search variant `#00d992` Voltage Green Lighter; **Active Tab `#101010` Charcoal + Voltage Green text 0px** (terminal/IDE aesthetic); GitHub Star badge 9999px).
+**Tier 2 sources:** styles.refero.design / getdesign.md — directory-only (note: VoltAgent maintains the getdesign.md ecosystem).
+**Tier 2 (Philosophy):** voltagent.dev homepage, GitHub VoltAgent/voltagent (README/CONSOLE.md, MIT-license), Product Hunt, Medium (Gowtham), Qdrant integration, Hugging Face.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Voltage Green `#2fd6a1` brand accent + sharp-tab `#101010` Charcoal active state + search-variant lighter green `#00d992` + Star badge full-pill missed by prior pass.

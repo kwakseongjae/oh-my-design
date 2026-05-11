@@ -265,3 +265,88 @@ The rgba overlays above resolve to these effective hex values when composited on
 8. Body text at 16px universalSans with 1.5 line-height for comfortable reading
 9. Generous section padding (48px-96px) -- let content breathe in the darkness
 10. The monochromatic white-on-dark palette is absolute -- resist adding color unless critical for function
+
+## 10. Voice & Tone
+
+xAI's voice is **research-oriented and Grok-irreverent.** "Understand the Universe" — Musk's mission framing for xAI. Pure white-on-dark monochrome signals "research lab"; Grok's irreverent tone in product surfaces (vs. xAI corporate's research register) creates a deliberate split.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Try Grok", "Read announcement", "Use now" |
+| Marketing | Research-positioned. Mathematical curiosity framing |
+| Grok product | Irreverent. "Memes are valid input" energy |
+| Error | Specific. "Rate limit. Try again in 30s." |
+
+**Voice samples**
+- xAI CTAs: *"Try Grok"*, *"Read announcement"*, *"Use now"* <!-- verified: x.ai homepage 2026-05 -->
+- Tagline: *"Understand the Universe"* <!-- verified: x.ai homepage -->
+
+**Forbidden phrases.** Generic "AI revolution" framing on xAI corporate. Inverse: corporate-stiff voice on Grok product (would break the brand split).
+
+## 11. Brand Narrative
+
+xAI was **founded March 2023** by **Elon Musk** with a team of AI researchers from **DeepMind, OpenAI**, and other leading labs in Palo Alto. Positioned as the "anti-OpenAI" — **Grok unveiled 2023-11-04** (integrated with X), **Grok-1 open-sourced 2024-03-17**, **Grok-1.5 (128k context) 2024-03-29**, **Grok 3 2025-02-17**, **Grok 4 + 4 Heavy 2025-07-09**. **Funding trajectory**: $134.7M Dec 2023 → **$6B Series B @ $24B (May 2024)** → **$6B Series C @ $50B (Dec 2024)** → **$20B Series E @ $230B** → **SpaceX all-stock acquisition valuing xAI at $250B** (combined entity ~$1.25T). **Colossus supercomputer** (>100k GPUs) built in Memphis, Tennessee in 122 days, fully operational Dec 2024; **Colossus 2** expansion underway. The brand identity — pure black canvas, thin 14px·400 sans, monochromatic white-on-black discipline, 9999px pill chrome — signals serious research lab while Grok product carries a separately irreverent voice. <!-- citations: Wikipedia (xAI), Britannica Money, Sacra, Wikipedia (Grok chatbot) -->
+
+**Sources:**
+- [xAI (company) — Wikipedia](https://en.wikipedia.org/wiki/XAI_(company))
+- [Grok (chatbot) — Wikipedia](https://en.wikipedia.org/wiki/Grok_(chatbot))
+- [Britannica Money — xAI](https://www.britannica.com/money/xAI)
+- [Sacra — xAI revenue, valuation & funding](https://sacra.com/c/xai/)
+
+## 12. Principles
+
+1. **Pure black canvas.** *UI implication:* `#000` everywhere; no warm dark substitutes.
+2. **White-on-dark monochrome.** *UI implication:* resist color unless function-critical.
+3. **Generous section padding (48-96px).** *UI implication:* never cramp; whitespace is the design.
+4. **Two-brand voice split.** xAI corporate = research; Grok product = irreverent.
+5. **Pill chrome 9999px.** *UI implication:* CTAs and badges pill-shaped.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by xAI / Grok user segments (X platform power users, AI researchers, contrarian-tech-conservative subscribers), not individual people.*
+
+**Marcus Webb, 38, Austin.** X Premium subscriber. Grok daily.
+
+**Sergey Volkov, 35, Berlin.** AI researcher. Reads xAI corporate model releases.
+
+**Sofia Park, 30, Seoul.** Curious early-adopter. Tried Grok via X integration.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no chat)** | Grok prompt with example queries |
+| **Empty (no API keys)** | "Generate API key" |
+| **Loading (model)** | Per-token streaming |
+| **Loading (image)** | Generation progress |
+| **Error (rate limit)** | "Rate limit. Try again in 30s." |
+| **Error (model)** | Specific cause |
+| **Success (response)** | Inline + share/copy |
+| **Success (deployed)** | Endpoint URL |
+| **Skeleton** | Pure-black placeholders with thin white borders |
+| **Disabled (no Premium)** | Upgrade to X Premium link |
+| **Loading (long task)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-streaming` | continuous | Token streaming |
+
+Standard cubic-bezier; no bounce — research register. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-09 (Apple-tier full migration)
+**Tier 1 sources:** x.ai/, x.ai/api (live DOM via playwright)
+- **Outline Primary** transparent / `#fff` / 9999px / 38px / 8×16 / 14px·400 (Try Grok / Read announcement / Sign up now / Explore more — canonical home variant)
+- **Inverse Primary** `#fff` / `rgb(10,10,10)` `#0a0a0a` near-black / 9999px / 38px / 8×16 / 14px·400 (Grok 4.3 API / View docs — /api hero variant)
+- **Compact ghost CTA** transparent / `#fff` / 9999px / 34px / 6×14 / 14px·400 (Use now / Build now / Read)
+- **Top nav** transparent / `rgba(255,255,255,0.5)` translucent / 0px / 28px / 6×12 / 14px·400 (Grok / API / Company / Colossus / Careers)
+- All weight **400** — never bold; pure monochrome white-on-black-`#000`-canvas
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** Wikipedia (xAI), Wikipedia (Grok chatbot), Britannica Money, Sacra.
+**Style ref:** `claude` (research minimalism). **Conflicts unresolved:** none.

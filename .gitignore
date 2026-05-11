@@ -33,3 +33,15 @@ test/scenarios/archive/
 web/.claude/
 web/.codex/
 web/.omd/
+
+# Claude scheduled-task lock (per-machine runtime state)
+.claude/scheduled_tasks.lock
+
+# Local convenience symlink: `references` → `web/references` (don't commit;
+# repo canonical path is web/references/)
+/references
+
+# Local screenshot / test artifacts at repo root (regenerable, not for repo)
+/*.png
+/*.jpg
+/refero-sections.json

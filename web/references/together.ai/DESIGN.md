@@ -261,3 +261,76 @@ What makes Together AI distinctive is its type system. "The Future" handles all 
 4. Mono labels are always uppercase with positive letter-spacing
 5. Keep radius sharp (4px or 8px) — no pills, no generous rounding
 6. Pastel gradients are for decoration, not UI chrome
+
+## 10. Voice & Tone
+
+Together AI's voice is **AI-native cloud and OSS-research-positioned.** "The AI Native Cloud" — capability-driven, model-versioned. Marketing emphasizes open-weights model hosting + price-per-token transparency.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Start building", "Contact Sales", "Get started" |
+| Marketing | Model-listed. Hero shows MiniMax / DeepSeek / Qwen / Llama as supported |
+| Documentation | Code-first, model-spec heavy |
+| Error | Specific. "Model not available in region. Try alternate endpoint." |
+
+**Voice samples**
+- Marketing CTA: *"Start building"* / *"Contact Sales"* <!-- verified: together.ai homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary AI cloud". Generic OpenAI-comparison framing.
+
+## 11. Brand Narrative
+
+Together AI (legal name **Together Computer Inc.**) was founded **June 11 2022** by an unusually academic-heavy team of **four co-founders**: **Vipul Ved Prakash (Founder + CEO)**, **Ce Zhang** (ex-ETH Zurich, data-management-for-ML research), **Chris Ré** (Stanford professor; his lab produced foundational data-centric AI work), and **Percy Liang** (Stanford professor; leads Stanford's **Center for Research on Foundation Models (CRFM)**) ([Together AI — About Us](https://www.together.ai/about-us), [Vipul Ved Prakash — Wikipedia](https://en.wikipedia.org/wiki/Vipul_Ved_Prakash), [Latent Space — Cloud Intelligence at 5000 tok/s w/ Ce Zhang + Vipul Ved Prakash](https://www.latent.space/p/together)). Decentralized AI cloud positioned for OSS model hosting — Llama, DeepSeek, Mistral, Qwen, MiniMax served alongside Together's own models. **Funding ~$534M** at **$3.3B valuation** with investors including **Emergence Capital, General Catalyst, NVIDIA** ([TechCrunch — Together $20M for OSS gen-AI](https://techcrunch.com/2023/05/15/together-raises-20m-to-build-open-source-generative-ai-models/), [Tracxn — Together AI](https://tracxn.com/d/companies/togetherai/__fcIBLE0rJMeK3FAdcfzE0H41jE36bJd0FDBWalYo6cY)). Strong adoption among AI startups + research teams. The brand voice tracks this **academic-OSS-cloud** positioning — leading alternative to hyperscaler AI services on speed, cost efficiency, and deep OSS-ecosystem support.
+
+## 12. Principles
+
+1. **Open weights are first-class.** *UI implication:* model catalog leads with OSS models, not proprietary.
+2. **Sharp 4-8px radius.** *UI implication:* never pill chrome.
+3. **Pastel gradients for decoration only.** *UI implication:* never use gradients on UI chrome.
+4. **Token pricing is transparent.** *UI implication:* per-model pricing first-class on landing.
+5. **Black primary CTA.** *UI implication:* use `#000` for primary action.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Together AI user segments (AI startup engineers, ML researchers, fine-tuning practitioners), not individual people.*
+
+**Sergey Volkov, 33, Berlin.** AI startup engineer. Together for serving fine-tuned Llama 3.
+
+**Aisha Patel, 31, San Francisco.** ML researcher. Uses Together for benchmarking OSS models.
+
+**Marcus Chen, 38, NYC.** Platform engineer. Cost-per-token transparency drove migration.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no API keys)** | "Generate first API key" |
+| **Empty (no projects)** | "Try a model" with grid |
+| **Loading (inference)** | Per-token streaming |
+| **Loading (model loading)** | Cold-start indicator |
+| **Error (model)** | Specific error |
+| **Error (rate limit)** | Tier limit + upgrade |
+| **Success (generation)** | Result + share |
+| **Success (deployment)** | Endpoint URL |
+| **Skeleton (model list)** | 4px placeholders |
+| **Disabled (no quota)** | Add credits link |
+| **Loading (long task)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-streaming` | continuous | Token streaming |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 59 — Apple-tier)
+**Tier 1 sources:** together.ai home + /pricing (live DOM via playwright — **canonical 4px (not subpixel-rounded 3.33px)**: Primary `#000` Black 4px / 40px (32px header) / 16px / 16px·**500 ALL CAPS** + Light Outline `rgba(0,0,0,0.08)` + Dark-canvas Outline `rgba(255,255,255,0.12)` + pricing tab 3.25px sub-radius / 13px·500).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** Together AI About Us, Wikipedia (Vipul Ved Prakash), Latent Space podcast (5000 tok/s), TechCrunch (2023-05 $20M), Tracxn, Clay.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer's 3.33px / 13.3px / 33px were subpixel-rounding artifacts from rem-based measurements; canonical is 4px / 16px / 40px / 16px·500.

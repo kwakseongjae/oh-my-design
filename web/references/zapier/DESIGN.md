@@ -326,3 +326,88 @@ The brand's signature orange (`#ff4f00`) is unmistakable -- a vivid, saturated r
 6. Tab navigation uses inset box-shadow underlines, not border-bottom
 7. Text is always warm: `#201515` for dark, `#36342e` for body, `#939084` for muted
 8. Uppercase labels at 12-14px with 0.5px letter-spacing for section categorization
+
+## 10. Voice & Tone
+
+Zapier's voice is **automation-friendly and SMB-empathetic.** "Automate AI Workflows, Agents, and Apps" — capability-driven with a focus on small business outcomes. Warm typography (`#201515` text on cream) signals "approachable, not corporate."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Sign up free", "Get started", "Start automating" |
+| Marketing | Use-case-driven. Real workflow templates as social proof |
+| Documentation | Step-by-step screenshot tutorials |
+| Error | Specific. "Trigger filter conditions not met. Check filter rules." |
+
+**Voice samples**
+- Tagline: *"Automate AI Workflows, Agents, and Apps"* <!-- verified: zapier.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary automation". Generic Make-comparison framing.
+
+## 11. Brand Narrative
+
+Zapier was **founded 2011 in Columbia, Missouri** by **Wade Foster** (CEO), **Bryan Helmig**, and **Mike Knoop** — three University of Missouri grads who built a working prototype during a Columbia startup weekend. **Foster left his job December 2011**, **Helmig followed April 2012**, **Knoop joined full-time May 2012** — same month they shipped public beta. **Y Combinator initially rejected** the trio (janky weekend prototype, no customers, no track record); they were **accepted on second application**, relocated to Mountain View, and graduated **YC W12 batch June 2012**. **Seed $1.2M October 2012** led by **Bessemer Venture Partners + Draper Fisher Jurvetson** + angels — and famously little outside funding thereafter (uncommon for SaaS at scale). **Remote-first since founding** (no office, fully distributed). Pioneered "if-this-then-that" SMB workflow automation. **2024-2025 evolution**: AI agents and MCP integration alongside classic Zaps. The brand identity — **`#ff4f00` Zapier Orange Primary** + **`#201515` Plum-Black** + **`#fffefb` warm cream canvas** + **4px Buttons** + **Inter 600 body** — reflects "warm, approachable workflow automation." <!-- citations: Wikipedia (Zapier), YC company page, Wade Foster YC Q&A, Founders Talk #55 -->
+
+**Sources:**
+- [Zapier — Wikipedia](https://en.wikipedia.org/wiki/Zapier)
+- [Zapier — Y Combinator](https://www.ycombinator.com/companies/zapier)
+- [Q&A with Wade Foster, Cofounder of Zapier — Y Combinator](https://www.ycombinator.com/blog/qa-with-wade-foster-cofounder-of-zapier/)
+- [Side hustle to $35M ARR at Zapier with Bryan Helmig — Founders Talk #55](https://changelog.com/founderstalk/55)
+
+## 12. Principles
+
+1. **Workflows over code.** *UI implication:* canvas + properties layout; never code-only views.
+2. **Warm typography.** `#201515` / `#36342e`. *UI implication:* avoid pure black text.
+3. **Uppercase labels 12-14px / 0.5px tracking.** *UI implication:* preserve for section categorization.
+4. **Use-case templates first.** *UI implication:* lead with templates, not feature lists.
+5. **AI agents alongside Zaps.** *UI implication:* don't deprecate classic Zaps; AI agents are additive.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Zapier user segments (SMB owners, RevOps, marketing automation), not individual people.*
+
+**Sofia Russo, 35, Milan.** Indie agency owner. 40+ Zaps automating client onboarding.
+
+**Marcus Chen, 41, San Francisco.** RevOps lead at Series C SaaS. Zapier as glue between Salesforce + Slack + Notion.
+
+**Priya Krishnan, 28, Bengaluru.** Marketing ops. Email → CRM automation flows.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no Zaps)** | "Create your first Zap" CTA + template gallery |
+| **Empty (no triggers)** | App picker with search |
+| **Loading (Zap running)** | Per-step trace with status |
+| **Loading (test)** | Test data per step visible |
+| **Error (auth)** | "Reconnect [App]" with OAuth flow |
+| **Error (filter)** | "Filter conditions not met — view test data" |
+| **Success (Zap published)** | Confirmation + Zap History link |
+| **Success (test passed)** | Step-by-step green checks |
+| **Skeleton (Zap list)** | Warm-cream placeholders |
+| **Disabled (free plan limit)** | Upgrade link |
+| **Loading (long task)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; minimal bounce — workflow register. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-09 (Apple-tier full migration)
+**Tier 1 sources:** zapier.com/, zapier.com/pricing (live DOM via playwright)
+- **Primary `#ff4f00` Zapier Orange + `#fffefb` cream text** 4px / 40px / 8×16 / 16px·600 (Start free with email / Learn more about MCP — canonical hero CTA)
+- **Header sign-up — Compact Pill** `#ff4f00` / `#fffefb` / **18px** / 36px / 6×12 / 14px·600 (header utility — slight pill variant)
+- **Inverse Primary `#201515` Plum-Black + `#fffefb` text** 4px / 48px / 12×24 / 18px·600 (Explore Zapier for Enterprise — section CTA)
+- **Top nav** transparent / `#201515` / 4px / 36px / 6×10 / 14px·400
+- **Skip-to-content** `rgb(56,25,51)` `#381933` Deep Plum / `#fffefb` / radius 0-0-6-6 / 33px / 4×16-8 / 14px·400
+- **Pricing tier card header** `#201515` / `#fffefb` / 8px / 64px / 0×20 / 24px·600
+- Canvas warm cream `#fffefb` (not pure white) — distinctive warm-cast off-white
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** Wikipedia (Zapier), Y Combinator company page, Wade Foster YC Q&A, Founders Talk #55.
+**Style ref:** `stripe`. **Conflicts unresolved:** **Earlier mistake reverted** — prior footer cited `#9fe870` lime which is **wise's brand color** (copy-paste error). Canonical is **`#ff4f00` Zapier Orange**.

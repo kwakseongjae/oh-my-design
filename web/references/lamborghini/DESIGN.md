@@ -286,3 +286,77 @@ When refining existing screens generated with this design system:
 3. Use natural language descriptions, not CSS values — "sharp-cut golden rectangle" not "border-radius: 0px; background: #FFC000"
 4. Describe the desired "feel" alongside specific measurements — "floating in total darkness" communicates the black canvas better than "background: #000000"
 5. Remember that UPPERCASE IS THE DEFAULT — if text isn't uppercase at display sizes, it probably should be
+
+## 10. Voice & Tone
+
+Lamborghini's voice is **Italian-bold and motorsport-aggressive.** ALL CAPS at display sizes signal Lamborghini's brutalist register. Black canvas + sharp angles + Lamborghini Yellow accent moments evoke the supercar identity.
+
+| Context | Tone |
+|---|---|
+| CTA | UPPERCASE imperative. "DISCOVER", "CONFIGURE", "RESERVE" |
+| Marketing | Black canvas, photography-dominant, aggressive geometry |
+| Documentation | Sparse |
+| Error | Direct. "AN ERROR OCCURRED." |
+
+**Voice samples**
+- Brand register: ALL CAPS HEADLINES <!-- verified: lamborghini.com pattern observed -->
+
+**Forbidden phrases.** Soft language. Apology theatre. Direct Ferrari comparison.
+
+## 11. Brand Narrative
+
+**Automobili Ferruccio Lamborghini S.p.A.** was founded **1963** by **Ferruccio Lamborghini** — an **Italian manufacturing magnate** (he had built a successful tractor business, **Lamborghini Trattori**, before cars) — at a purpose-built facility in **Sant'Agata Bolognese**, with the explicit goal of competing with Ferrari ([Ferruccio Lamborghini — Wikipedia](https://en.wikipedia.org/wiki/Ferruccio_Lamborghini), [Lamborghini.com — History/Company](https://www.lamborghini.com/en-en/history/company)). The famous Ferrari clutch-dispute origin story is apocryphal but widely circulated. Founding engineering team: **Giotto Bizzarrini** (engine), **Gian Paolo Dallara + Paolo Stanzani** (chassis), **Franco Scaglione** (bodywork). The **350 GT** was the first series-produced Lamborghini, a fast, elegant two-seat grand tourer. **Sales fell after the 1973 oil crisis**; Ferruccio sold a majority stake to **Georges-Henri Rossetti 1972**, then sold his remaining interest to **René Leimer 1974**, fully retiring from the business. **1998: Mycom Setdco and V'Power sold Lamborghini to the Volkswagen Group**, where it was placed under **Audi's** control — beginning what the official VW Group history calls "the most successful chapter in its 45-year history" ([Volkswagen Group — History of Lamborghini](https://www.volkswagen-group.com/en/the-history-of-the-brands-17668/the-history-of-lamborghini-17676)). Bull-themed model names (Aventador, Huracán, Urus) come from Spanish fighting-bull lineage — Ferruccio was a Taurus zodiac. The brand voice — ALL CAPS aggression, total-darkness canvas, sharp angles — reflects the supercar register.
+
+## 12. Principles
+
+1. **UPPERCASE IS THE DEFAULT.** *UI implication:* display sizes ALL CAPS unless explicitly stated.
+2. **Total darkness canvas.** *UI implication:* `#000` backgrounds dominant; light theme is exception.
+3. **Lamborghini Yellow `#f4b81d` for accent.** *UI implication:* one yellow gesture per screen.
+4. **Sharp angles, no rounded chrome.** *UI implication:* keep 0-2px radius.
+5. **Bull mythology over feature copy.** *UI implication:* model-name storytelling beats spec sheets.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Lamborghini user segments (supercar collectors, track-day enthusiasts, brand admirers), not individual people.*
+
+**Marcus Webb, 51, Miami.** Self-made tech founder. Aventador + Urus owner.
+
+**Heinz Müller, 44, Munich.** Track-day specialist. Huracán EVO RWD.
+
+**Sofia Park, 39, Seoul.** First Lamborghini buyer (Urus SUV).
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (configurator start)** | Model selector ALL CAPS |
+| **Empty (no test drives)** | "BOOK A TEST DRIVE" |
+| **Loading (configurator)** | Black canvas with car silhouette |
+| **Loading (price)** | Yellow accent number animation |
+| **Error (incompatible)** | UPPERCASE constraint message |
+| **Error (allocation)** | "BY ALLOCATION ONLY — CONTACT YOUR DEALER" |
+| **Success (saved)** | Yellow check animation |
+| **Success (booked)** | Dealer confirmation |
+| **Skeleton (showcase)** | Black placeholders |
+| **Disabled (locked)** | Yellow tooltip |
+| **Loading (long render)** | Persistent progress with bull silhouette |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-aggressive` | 400ms | Hero reveals — sharp not bouncy |
+| `motion-cinematic` | 800ms | Configurator transitions |
+
+Aggressive easing — never bouncy springs. `prefers-reduced-motion: reduce` disables hero animations.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 32 — Apple-tier)
+**Tier 1 sources:** lamborghini.com/en-en home + /en-en/models (live DOM via playwright — canonical brand chrome is **ALL CAPS 18px·400 ghost nav** on `#000` total-darkness canvas, 0px sharp; A11y skip-nav `#000` square 16px / 56px / 16px·400; cookie banner `#fff` 2px / 12×10 / 42px / 13.008px·600 = GDPR utility track only).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/history):** Wikipedia (Lamborghini, Ferruccio Lamborghini, History of Lamborghini), Volkswagen Group corporate (1998 Audi acquisition), Lamborghini.com/history, Automotive Hall of Fame.
+**Style ref:** `apple` (premium minimal, register adapted to brutalist).
+**Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer cited cookie banner as canonical; the actual brand canon is **ALL CAPS 18px·400 ghost on dark canvas** — Lamborghini intentionally has **no filled Primary CTA** on home/models (the cinematic imagery + dealership routing is the brand's affordance, not a CTA button system).

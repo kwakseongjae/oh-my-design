@@ -89,23 +89,92 @@ The design philosophy is maximum confidence through minimum decoration. Warm cre
 ## 4. Component Stylings
 
 ### Buttons
-- **Warm Cream Primary**: `#e9e5dd` background, Charcoal Ink (`#292827`) text, subtle rounded corners (8px radius), no visible border. The signature CTA — warm, muted, luxurious rather than aggressive
-- **Dark Primary** (on light sections): `#292827` background with white text, 8px radius — inverse of the warm cream for contrast sections
-- **Ghost / Text Link**: No background, underline decoration, Amethyst Link (`#714cb6`) or Charcoal Ink color depending on context
-- **Hero CTA**: Warm Cream on the dark purple gradient — the cream color pops dramatically against `#1b1938`
-- **Hover**: Subtle opacity or brightness shift — no dramatic color transformations
 
-### Cards & Containers
-- **Content Card**: White background, Parchment Border (`#dcd7d3`) 1px border, 16px border-radius — clean and minimal
-- **Dark Surface Card**: `#292827` border on dark sections, maintaining warm-neutral tone
-- **Hero Surface**: Semi-transparent white border (`rgba(255, 255, 255, 0.2)`) on purple gradient — ghostly containment
-- **Product Screenshot Cards**: Large product UI images with clean edges, minimal framing — the product itself is the visual
-- **Hover**: Minimal state changes — consistency and calm over flashy interactions
+**Warm Cream Primary**
+- Background: `#e9e5dd`
+- Text: `#292827` (Charcoal Ink)
+- Radius: 8px
+- Padding: 12px 20px
+- Font: 16px / 460 / Super Sans VF
+- Hover: subtle opacity / brightness shift
+- Use: Signature CTA — warm, muted, luxurious
 
-### Inputs & Forms
-- Minimal form presence on the marketing site — Superhuman funnels users directly to signup
-- Dark-bordered inputs with Charcoal Ink borders and warm-toned placeholder text
-- Focus: Border emphasis increase, likely shifting from Parchment Border to Charcoal Ink
+**Dark Primary**
+- Background: `#292827`
+- Text: `#ffffff`
+- Radius: 8px
+- Padding: 12px 20px
+- Font: 16px / 600 / Super Sans VF
+- Hover: subtle brightness shift
+- Use: Inverse CTA on light contrast sections
+
+**Hero CTA**
+- Background: `#e9e5dd` (Warm Cream)
+- Text: `#292827`
+- Radius: 8px
+- Padding: 14px 24px
+- Font: 16px / 600 / Super Sans VF
+- Use: Hero CTA on the dark purple gradient `#1b1938`
+
+**Ghost / Text Link**
+- Background: transparent
+- Text: `#714cb6` (Amethyst Link) or `#292827` (Charcoal Ink) by context
+- Radius: 0
+- Padding: 0
+- Decoration: underline
+- Use: Inline text link
+
+### Inputs
+
+**Default**
+- Background: `#ffffff`
+- Text: `#292827`
+- Border: 1px solid `#dcd7d3` (Parchment Border)
+- Radius: 8px
+- Padding: 12px 16px
+- Font: 16px / 460 / Super Sans VF
+- Focus: border `#292827` (Charcoal Ink)
+- Use: Standard input — minimal form presence; marketing site funnels users to signup
+
+### Cards
+
+**Content Card**
+- Background: `#ffffff`
+- Border: 1px solid `#dcd7d3` (Parchment Border)
+- Radius: 16px
+- Padding: 24px
+- Use: Clean and minimal default card
+
+**Dark Surface Card**
+- Background: `#292827`
+- Text: `#e9e5dd`
+- Border: 1px solid `#292827`
+- Radius: 16px
+- Padding: 24px
+- Use: Card on dark sections — warm-neutral tone preserved
+
+**Hero Surface**
+- Background: rgba transparent over purple gradient `#1b1938`
+- Border: 1px solid `rgba(255, 255, 255, 0.2)`
+- Radius: 16px
+- Padding: 24px
+- Use: Ghostly containment on hero gradient
+
+**Product Screenshot**
+- Background: transparent
+- Radius: 12px
+- Padding: 0px
+- Use: Large product UI image, clean edges, minimal framing
+
+### Badges
+
+**Default**
+- Background: `#e9e5dd`
+- Text: `#292827`
+- Radius: 8px
+- Padding: 4px 10px
+- Font: 12px / 600 / Super Sans VF
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — warm cream micro-tag.
 
 ### Navigation
 - **Top nav**: Clean white background on content sections, transparent on hero gradient
@@ -250,3 +319,76 @@ When refining existing screens generated with this design system:
 3. Ensure buttons use Warm Cream (#e9e5dd) not pure white or gray — the warmth is subtle but critical
 4. Confirm the only accent color is Lavender Glow (#cbb7fb) — no other hues should appear
 5. The overall tone should feel like a luxury product presentation — minimal, confident, with one dramatic color gesture in the hero
+
+## 10. Voice & Tone
+
+Superhuman's voice is **luxury-productivity and time-as-craft.** "Docs, Mail, and AI That Work Everywhere" — capability-driven with luxury register. Lavender Glow `#cbb7fb` accent + dark surfaces signal "premium tool for time-conscious professionals."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Sign up", "Get Superhuman", "Get the suite" |
+| Marketing | Time-as-craft. "Save 4 hours a week" recurring framing |
+| Documentation | Sparse — luxury product, minimal docs |
+| Error | Polite. "Couldn't sync. Try again in a moment." |
+
+**Voice samples**
+- Marketing CTAs: *"Sign up"* / *"Get Superhuman"* <!-- verified: superhuman.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary email". Aggressive Gmail-comparison framing.
+
+## 11. Brand Narrative
+
+Superhuman was founded **2014** in San Francisco by **Rahul Vohra (CEO)**, **Conrad Irwin (CTO)**, and **Vivek Sodera** — Vohra famously built the original brand around the **"time is luxury"** premium email positioning ([Tracxn — Superhuman](https://tracxn.com/d/companies/superhuman/__uNI3PJ_Huz1B_OobMp1RIu3DT8SOBubIyA2wkxh7Quk), [Antler — Superhuman with Rahul Vohra](https://www.antler.co/blog/antler-early-days-episode-2-superhuman-with-rahul-vohra)). **Series B $33M (May 2019)** led by **Andreessen Horowitz** with **Boldstart Ventures + First Round Capital** — total funding ~**$118M across 3 rounds** from 41 investors. Premium email client positioning — fast, keyboard-driven, AI-augmented. **Acquired by Grammarly July 1 2025**; Grammarly had recently acquired **Coda**, then **rebranded the combined Grammarly+Coda+Superhuman entity to "Superhuman"** as the unified suite name (live `superhuman.com` 2026-05 confirms Mail/Grammarly/Coda product nav under unified Superhuman brand). Per recent reporting: **$700M ARR, 40M daily users** for the merged company ([The Spl.it — Inside the New Superhuman: $700M ARR, 40M Daily Users with Rahul Vohra](https://www.thespl.it/p/inside-the-new-superhuman-700m-arr)). The brand voice — **Lavender Glow accent** (`#d4c7ff`) for the unified suite, Sky Blue (`#51b1e7`) preserved on legacy Superhuman Mail surfaces, luxury chrome, keyboard shortcuts as signature — reflects the "time is luxury" positioning carried forward.
+
+## 12. Principles
+
+1. **Time is the luxury.** *UI implication:* all surfaces emphasize speed/efficiency outcomes.
+2. **Keyboard-first.** *UI implication:* every action has a keyboard shortcut documented.
+3. **Lavender Glow `#cbb7fb` is THE accent.** *UI implication:* don't introduce other hues.
+4. **Pill 8-12px primary.** *UI implication:* primary CTAs pill-shaped.
+5. **Luxury minimal.** *UI implication:* don't crowd surfaces; whitespace is the design.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Superhuman user segments (busy executives, founders, sales leaders), not individual people.*
+
+**Catherine Liu, 44, NYC.** VP Sales at Series C SaaS. Superhuman for inbox velocity.
+
+**Marcus Webb, 38, San Francisco.** Founder. Email is most of his day; Superhuman keyboard speed is the difference.
+
+**Sofia Park, 32, Seoul.** Investor. Superhuman + Calendar + AI summary on every email.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no email)** | "Inbox Zero achieved" celebration moment |
+| **Empty (no contacts)** | Connect contacts CTA |
+| **Loading (sync)** | Real-time sync indicator |
+| **Loading (AI summary)** | Per-email summary loader |
+| **Error (sync)** | "Couldn't sync. Retry in 10s." |
+| **Error (delivery)** | Bounce indicator + retry |
+| **Success (sent)** | Subtle Lavender Glow pulse |
+| **Success (snoozed)** | Snooze badge with time |
+| **Skeleton (inbox)** | Lavender-tinted placeholders |
+| **Disabled (no plan)** | Upgrade link |
+| **Loading (AI processing)** | Per-email progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Keyboard shortcut commit |
+| `motion-fast` | 100ms | Hover (faster than typical for keyboard-first feel) |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-glow-pulse` | 800ms | Lavender Glow accent moment |
+
+**Lavender Glow pulse** is the signature accent moment. `prefers-reduced-motion: reduce` removes glow pulse.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 57 — Apple-tier)
+**Tier 1 sources:** superhuman.com home (unified Suite post-Grammarly-merger) + superhuman.com/pricing (legacy Superhuman Mail) — live DOM via playwright. **Two-system split**: Suite **`#d4c7ff` Lavender** 8px / 36px / 14px·600 + Lavender Dark `#714cb6` outline-text + Cream `color(srgb 0.925 0.914 0.885)` sub-nav + Maroon `#421d24` 16px banner; legacy Mail **`#51b1e7` Sky Blue** 6px / 46-54px / 18px·500-600 ALL CAPS + Sky Lighter `#3dafed` + Deep `#186dbb` featured. **Weight 460** rare intermediate. `color(srgb …)` CSS Color L4.
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/Grammarly-acquisition):** Tracxn, Antler (Vohra interview), Crunchbase, Boldstart Ventures, The Spl.it (post-merger ARR), TechRadar.
+**Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier addition:** dual-system Lavender Suite + Sky Blue Mail post-merger split + Grammarly+Coda+Superhuman rebrand narrative + weight 460 + `color(srgb)` syntax missed by prior pass.

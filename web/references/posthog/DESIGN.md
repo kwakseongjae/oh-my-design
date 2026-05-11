@@ -93,24 +93,105 @@ The interaction design carries the same spirit: hover states flash PostHog Orang
 ## 4. Component Stylings
 
 ### Buttons
-- **Dark Primary**: `#1e1f23` background, white text, 6px radius, `10px 12px` padding. Hover: opacity 0.7 with Amber Gold text. Active: opacity 0.8 with slight scale transform. The main CTA — dark and confident
-- **Sage Light**: `#e5e7e0` background, Olive Ink (`#4d4f46`) text, 4px radius, `4px` padding. Hover: `#f4f4f4` bg with PostHog Orange text. Compact utility button
-- **Warm Tan Featured**: `#d4c9b8` background, black text, no visible radius. Hover: same orange text flash. Featured/premium actions
-- **Input-style**: `#eeefe9` background, Sage Placeholder (`#9ea096`) text, 4px radius, 1px `#b6b7af` border. Looks like a search/filter control
-- **Near-white Ghost**: `#fdfdf8` background, Olive Ink text, 4px radius, transparent 1px border. Minimal presence
-- **Hover pattern**: All buttons flash PostHog Orange (`#F54E00`) or Amber Gold (`#F7A501`) text on hover — the brand's signature interaction surprise
 
-### Cards & Containers
-- **Bordered Card**: Warm Parchment (`#fdfdf8`) or white background, 1px `#bfc1b7` border, 4px–6px radius — clean and minimal
-- **Sage Surface Card**: `#eeefe9` background for secondary content containers
-- **Shadow Card**: `0px 25px 50px -12px rgba(0, 0, 0, 0.25)` — a single deep shadow for elevated content (modals, dropdowns)
-- **Hover**: Orange text flash on interactive cards — consistent with button behavior
+**Dark Primary**
+- Background: `#1e1f23`
+- Text: `#ffffff`
+- Radius: 6px
+- Padding: 10px 12px
+- Font: 15px / 600 / IBM Plex Sans
+- Hover: opacity 0.7, text shifts to Amber Gold `#F7A501`
+- Active: opacity 0.8, slight scale transform
+- Use: Main CTA — dark and confident
 
-### Inputs & Forms
-- **Default**: `#eeefe9` background, `#9ea096` placeholder text, 1px `#b6b7af` border, 4px radius, `2px 0px 2px 8px` padding
-- **Focus**: `#3b82f6` ring at 50% opacity (Tailwind blue focus ring)
-- **Text color**: `#374151` for input values — darker than primary text for readability
-- **Border variations**: Multiple border patterns — some inputs use compound borders (top, left, bottom-only)
+**Sage Light**
+- Background: `#e5e7e0`
+- Text: `#4d4f46` (Olive Ink)
+- Radius: 4px
+- Padding: 4px
+- Font: 14px / 500 / IBM Plex Sans
+- Hover: bg `#f4f4f4`, text shifts to PostHog Orange `#F54E00`
+- Use: Compact utility button
+
+**Warm Tan Featured**
+- Background: `#d4c9b8`
+- Text: `#000000`
+- Radius: 0px
+- Padding: 10px 12px
+- Hover: text flash to PostHog Orange `#F54E00`
+- Use: Featured/premium actions
+
+**Near-white Ghost**
+- Background: `#fdfdf8`
+- Text: `#4d4f46` (Olive Ink)
+- Border: 1px solid transparent
+- Radius: 4px
+- Padding: 8px 12px
+- Hover: text flash to PostHog Orange `#F54E00`
+- Use: Minimal-presence ghost button
+
+### Inputs
+
+**Default**
+- Background: `#eeefe9`
+- Text: `#374151`
+- Border: 1px solid `#b6b7af`
+- Radius: 4px
+- Padding: 2px 0px 2px 8px
+- Placeholder: `#9ea096` (Sage Placeholder)
+- Focus: `#3b82f6` ring at 50% opacity (Tailwind blue focus ring)
+- Use: Standard form input — multiple border patterns; some inputs use compound borders (top/left/bottom-only)
+
+**Search / Filter**
+- Background: `#eeefe9`
+- Text: `#374151`
+- Border: 1px solid `#b6b7af`
+- Radius: 4px
+- Padding: 6px 8px
+- Placeholder: `#9ea096`
+- Use: Search/filter control
+
+### Cards
+
+**Bordered Card**
+- Background: `#fdfdf8` (Warm Parchment) or `#ffffff`
+- Border: 1px solid `#bfc1b7`
+- Radius: 6px
+- Padding: 16px
+- Use: Clean and minimal default card
+
+**Sage Surface Card**
+- Background: `#eeefe9`
+- Border: 1px solid `#bfc1b7`
+- Radius: 4px
+- Padding: 16px
+- Use: Secondary content container
+
+**Shadow Card**
+- Background: `#fdfdf8`
+- Radius: 6px
+- Padding: 16px
+- Shadow: `0px 25px 50px -12px rgba(0, 0, 0, 0.25)`
+- Hover: Orange text flash on interactive cards
+- Use: Elevated content (modals, dropdowns)
+
+### Badges
+
+**Default**
+- Background: `#e5e7e0`
+- Text: `#4d4f46`
+- Radius: 4px
+- Padding: 2px 8px
+- Font: 12px / 500 / IBM Plex Sans
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
+
+**Featured**
+- Background: `#d4c9b8`
+- Text: `#000000`
+- Radius: 4px
+- Padding: 2px 8px
+- Font: 12px / 600 / IBM Plex Sans
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — warm tan featured tag.
 
 ### Navigation
 - **Top nav**: Warm background, IBM Plex Sans at 15px weight 600
@@ -254,3 +335,76 @@ When refining existing screens generated with this design system:
 3. Ensure hover states flash PostHog Orange (#F54E00) — if hovering feels bland, you're missing this
 4. Confirm borders use sage-tinted gray (#bfc1b7) not neutral gray — warmth runs through every element
 5. The overall tone should feel like a fun, scrappy startup wiki — never corporate-polished or sterile
+
+## 10. Voice & Tone
+
+PostHog's voice is **scrappy-startup-wiki and engineer-honest.** "We make dev tools for product engineers" — terse, capability-driven, slightly irreverent. Sage-tinted gray (`#bfc1b7`) borders + warm canvas signal "small but serious team that ships." Famous for company handbook being entirely public (posthog.com/handbook).
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Sign up", "Talk to sales" |
+| Marketing | Capability-list with personality. "Product OS" framing |
+| Documentation | Wiki-style, deeply linked, occasional jokes |
+| Handbook | Radically transparent — even sensitive topics |
+
+**Voice samples**
+- Marketing tagline: *"We make dev tools for product engineers"* <!-- verified: posthog.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary product analytics". Aggressive Amplitude-comparison framing.
+
+## 11. Brand Narrative
+
+PostHog was founded **2020** by **James Hawkins (Co-CEO)** and **Tim Glaser (CTO/Co-CEO)** as an open-source alternative to Amplitude/Mixpanel ([PostHog — About](https://posthog.com/about), [Y Combinator — PostHog](https://www.ycombinator.com/companies/posthog)). The company **hatched in Y Combinator's W20 batch** and **launched on Hacker News with their MVP just 4 weeks after writing first code**. **Hawkins**: previously **VP Sales & Channels at Arachnys**; founded **c2o Media** before PostHog. **Glaser**: leads technical strategy, built PostHog on **ClickHouse + open-source frameworks**. Famous for **radical transparency** — **public handbook, public salaries, public roadmap, public board materials**. **From-pivot-hell-to-$1.4B-unicorn** YC library case study documents the journey ([YC Library — Pivot Hell to $1.4B Unicorn](https://www.ycombinator.com/library/NA-from-pivot-hell-to-1-4-billion-unicorn)). **Total funding ~$182M** from **Stripe, GV, Y Combinator** + angels including **Jason Warner (CTO GitHub)** and **Solomon Hykes (Founder Docker)** ([PostHog — Reflecting on YC 2 years on](https://posthog.com/blog/yc-2-years-on), [Tracxn — PostHog](https://tracxn.com/d/companies/posthog/__tWY33MozggoGzQ9VYs8-O9tG9o6ZXDONwy37RdpGE_0)). **Used by 190,254+ teams** including **65% of YC batch companies**. The brand voice tracks this culture: scrappy, honest, occasionally meme-aware. The "Product OS" pivot in 2024-2025 expanded PostHog from analytics to **feature flags, session replay, surveys, A/B tests** as a single integrated product platform.
+
+## 12. Principles
+
+1. **Open source is the default.** *UI implication:* self-hosting first-class option, never deprioritized.
+2. **Radical transparency.** *UI implication:* handbook + roadmap publicly linked.
+3. **Sage-tinted warm gray.** Borders `#bfc1b7`. *UI implication:* never neutral pure gray; warmth carries.
+4. **Hedgehog mascot.** *UI implication:* mascot appears in product (404 pages, empty states) as personality moments.
+5. **Wiki feel over corporate polish.** *UI implication:* documentation can be playful; chrome can have texture.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by PostHog user segments (product engineers, indie devs, growth teams), not individual people.*
+
+**Sarah Lin, 31, San Francisco.** Founding engineer at Series A. PostHog for analytics + feature flags + session replay in one stack.
+
+**Henrik Sondergaard, 38, Copenhagen.** Indie SaaS founder. Self-hosts PostHog to keep customer data on his infra.
+
+**Priya Krishnan, 27, Bengaluru.** Growth engineer at fintech. A/B tests + funnel analysis daily.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no events)** | "Install PostHog SDK to start" code snippet |
+| **Empty (no insights)** | "Create your first insight" with template gallery |
+| **Loading (query)** | Per-step execution visible |
+| **Loading (replay loading)** | Session video loader with frame previews |
+| **Error (SDK not detected)** | Specific instructions + verify-installation button |
+| **Error (rate limit)** | Plain explanation + upgrade link |
+| **Success (event captured)** | Implicit; events appear in feed |
+| **Success (insight saved)** | Soft confirmation, no celebration |
+| **Skeleton (insight grid)** | Sage-tinted placeholders |
+| **Disabled (free plan)** | Upgrade link — never block existing OSS features |
+| **Loading (long replay)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-hedgehog` | occasional | Mascot waves on certain success states |
+
+Standard cubic-bezier. Hedgehog mascot moments are personality, not chrome. `prefers-reduced-motion: reduce` makes mascot static.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 46 — Apple-tier)
+**Tier 1 sources:** posthog.com home + /pricing (live DOM via playwright — **Primary `#cd8407` PostHog Amber-Gold** 6-8px / 32-46px / 15-16px·400 with **Sage-Black `#23251d`** text; **Light Amber `#eb9d2a`** Secondary; nav 4px / 13px·500; **Region badge** Amber-tint 4px / 14px·**700**; warm three-color (Amber/Sage/Cool Gray) canvas).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** PostHog About + handbook + blog (YC 2-years-on), Y Combinator (PostHog W20 + Pivot Hell to $1.4B Library), Tracxn, GV.com.
+**Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier mistake reverted (significant):** prior footer captured nav-only — canonical Primary is **`#cd8407` Amber-Gold** (the brand-defining color), missed entirely.

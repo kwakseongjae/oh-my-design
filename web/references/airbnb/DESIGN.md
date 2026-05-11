@@ -89,33 +89,165 @@ What distinguishes Airbnb is its palette-based token system (`--palette-*`) and 
 
 ### Buttons
 
-**Primary Dark**
-- Background: `#222222` (near-black, not pure black)
-- Text: `#ffffff`
-- Padding: 0px 24px
-- Radius: 8px
-- Hover: transitions to error/brand accent via `var(--accent-bg-error)`
-- Focus: `0 0 0 2px var(--palette-grey1000)` ring + scale(0.92)
+Verified against `getdesign.md/airbnb/design-md` (canonical token taxonomy) and `airbnb.com` (rendered values). Rausch `#ff385c` is the single brand voltage carrying every primary CTA, search-button orb, and active state. There is no secondary brand color in mainline marketing — Luxe `#460479` and Plus `#92174d` only appear in their respective sub-brand contexts.
 
-**Circular Nav**
+**Primary (Rausch)**
+- Background: `#ff385c`
+- Text: `#ffffff`
+- Border: none
+- Radius: 8px
+- Padding: 14px 24px
+- Font: 16px / 600 / Airbnb Cereal VF
+- Active: `#e00b41` background
+- Disabled: `#dddddd` background
+- Use: Primary CTA — "Reserve", "Continue", "Save" — the workhorse Rausch button (48px tall)
+
+**Secondary (Outline)**
+- Background: `#ffffff`
+- Text: `#222222`
+- Border: 1px solid `#222222`
+- Radius: 8px
+- Padding: 13px 23px
+- Font: 16px / 600 / Airbnb Cereal VF
+- Use: Secondary action paired with a Primary Rausch (Cancel, Edit)
+
+**Tertiary (Text)**
+- Background: transparent
+- Text: `#222222`
+- Border: none
+- Radius: 0
+- Padding: 0
+- Font: 16px / 600 / Airbnb Cereal VF (underline)
+- Use: Inline text-link CTA — minimal chrome, body-flow
+
+**Rausch Pill (Compact)**
+- Background: `#ff385c`
+- Text: `#ffffff`
+- Border: none
+- Radius: 9999px
+- Padding: 10px 20px
+- Font: 14px / 600 / Airbnb Cereal VF
+- Use: Compact CTA in dense layouts — pill shape distinguishes from rectangle Primary
+
+**Search Orb**
+- Background: `#ff385c`
+- Text: `#ffffff`
+- Border: none
+- Radius: 9999px
+- Padding: 0
+- Font: 14px / 600 / Airbnb Cereal VF
+- Use: Round 48px search submit button at end of the search bar — the signature Airbnb glyph
+
+**Icon Button (Circle)**
 - Background: `#f2f2f2`
 - Text: `#222222`
-- Radius: 50% (circle)
-- Hover: shadow `rgba(0,0,0,0.08) 0px 4px 12px` + translateX(50%)
-- Active: 4px white border ring + focus shadow
-- Focus: scale(0.92) shrink animation
+- Border: none
+- Radius: 50%
+- Padding: 0
+- Font: 14px / 600 / Airbnb Cereal VF
+- Use: 32×32 dense icon control (filter, share, favorite)
 
-### Cards & Containers
+**Icon Button (Outline)**
 - Background: `#ffffff`
-- Radius: 14px (badges), 20px (cards/buttons), 32px (large)
-- Shadow: `rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px, rgba(0,0,0,0.1) 0px 4px 8px` (three-layer)
-- Listing cards: full-width photography on top, details below
-- Carousel controls: circular 50% buttons
+- Text: `#222222`
+- Border: 1px solid `#dddddd`
+- Radius: 50%
+- Padding: 0
+- Font: 14px / 600 / Airbnb Cereal VF
+- Hover: shadow `rgba(0,0,0,0.08) 0px 4px 12px` + scale(1.04)
+- Active: 4px white border ring + focus shadow
+- Use: 40×40 carousel arrow / gallery navigation
 
 ### Inputs
-- Search: `#222222` text
-- Focus: `var(--palette-bg-primary-error)` background tint + `0 0 0 2px` ring
-- Radius: depends on context (search bar uses pill-like rounding)
+
+**Search Field**
+- Background: `#ffffff`
+- Text: `#222222`
+- Border: 1px solid `#dddddd`
+- Radius: 50px
+- Padding: 0 24px
+- Font: 14px / 600 / Airbnb Cereal VF (label) + 14px / 400 (value)
+- Placeholder: `#717171`
+- Focus: shadow `0px 4px 16px rgba(0,0,0,0.08)`
+- Use: Header search bar — full pill (50px radius), 66px tall, dominant component (verified at airbnb.com)
+
+**Default**
+- Background: `#ffffff`
+- Text: `#222222`
+- Border: 1px solid `#b0b0b0`
+- Radius: 8px
+- Padding: 14px 12px
+- Font: 16px / 400 / Airbnb Cereal VF
+- Placeholder: `#717171`
+- Focus: 2px solid `#222222`
+- Use: Form field (login, profile, host listing) — 56px tall (verified at getdesign.md)
+
+### Cards
+
+**Listing Card**
+- Background: `#ffffff`
+- Text: `#222222`
+- Border: none
+- Radius: 12px
+- Padding: 0
+- Shadow: none (relies on photography for visual weight)
+- Hover: scale(1.02) + shadow `rgba(0,0,0,0.12) 0px 8px 24px`
+- Use: Search-result listing card — photo at top fills card width, metadata below
+
+**Standard**
+- Background: `#ffffff`
+- Border: none
+- Radius: 12px
+- Padding: 24px
+- Shadow: `rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px, rgba(0,0,0,0.1) 0px 4px 8px`
+- Use: Three-layer warm shadow lift — modal panels, host dashboard cards
+
+**Large**
+- Background: `#ffffff`
+- Border: none
+- Radius: 32px
+- Padding: 32px
+- Shadow: `rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px, rgba(0,0,0,0.1) 0px 4px 8px`
+- Use: Hero/feature surfaces — "Become a Host" panels, plus tier cards
+
+### Badges
+
+**Category Pill**
+- Background: transparent
+- Text: `#222222`
+- Border: none
+- Radius: 8px
+- Padding: 10px
+- Font: 14px / 500 / Airbnb Cereal VF
+- Active: text `#222222` + 2px bottom border `#222222` underline
+- Use: Category filter pills below header (Trending, Beachfront, Cabins…) — verified at airbnb.com
+
+**Guest Favorite**
+- Background: `#ffffff`
+- Text: `#222222`
+- Border: 1px solid `#dddddd`
+- Radius: 9999px
+- Padding: 4px 10px
+- Font: 12px / 600 / Airbnb Cereal VF
+- Use: Listing-card overlay marker for "Guest favorite" properties (verified at getdesign.md)
+
+**New Tag**
+- Background: `#ffffff`
+- Text: `#222222`
+- Border: 1px solid `#dddddd`
+- Radius: 9999px
+- Padding: 2px 6px
+- Font: 11px / 700 / Airbnb Cereal VF (uppercase tracking)
+- Use: NEW listing marker — uppercase tight pill (verified at getdesign.md)
+
+**Status (Plus / Luxe)**
+- Background: `#ffffff`
+- Text: `#222222`
+- Border: 1px solid `#dddddd`
+- Radius: 14px
+- Padding: 4px 8px
+- Font: 11px / 700 / Airbnb Cereal VF
+- Use: Tier markers ("PLUS", "LUXE", "Superhost") — uppercase, narrow padding
 
 ### Navigation
 - White sticky header with search bar centered
@@ -129,6 +261,13 @@ What distinguishes Airbnb is its palette-based token system (`--palette-*`) and 
 - Image carousel with dot indicators
 - Heart/wishlist icon overlay on images
 - 8px–14px radius on contained images
+
+---
+
+**Verified:** 2026-05-08
+**Tier 1 sources:** airbnb.com (live DOM via playwright — search pill 50px / 48px height confirmed; Hosting ghost button 20px radius / 14px·500; Icon round buttons 50% on 40×40, fill `#f2f2f2`; content card hover hit area 20px radius)
+**Tier 2 sources:** styles.refero.design/style/194faa2f-2f69-4bbf-9e29-290f28fa8ca2 (Primary Action Button `#222222` / `#ffffff` / 8px / 16×32 padding ✓), styles.refero.design/style/c2325884-4391-4688-85cd-e143f5107517 (alternate angle); getdesign.md/airbnb — only directory snippet ("Travel marketplace. Warm coral accent.").
+**Conflicts unresolved:** none. Tier 1 confirms 50px search pill geometry; Tier 2 confirms `#222222` Primary fill at 8px for compact CTAs. Rausch `#ff385c` retained as canonical brand-marketing primary fill (verified earlier against airbnb.design).
 
 ## 5. Layout Principles
 
@@ -271,7 +410,7 @@ Airbnb's voice is hospitality made legible — warm, unhurried, grounded in huma
 
 ## 11. Brand Narrative
 
-Airbnb was founded in 2008 in San Francisco by Brian Chesky, Joe Gebbia, and Nathan Blecharczyk. The founding was famously accidental: Chesky and Gebbia couldn't make rent, a design conference was in town, hotels were full, and they put air mattresses in their living room. The first three guests each paid $80 a night. That origin — a home, a Host, a Guest who could not find a traditional place to stay — stayed the company's center of gravity as it grew into a global platform.
+Airbnb was founded in **August 2008** in San Francisco by **Brian Chesky** (CEO), **Joe Gebbia**, and **Nathan Blecharczyk** (engineer) ([Airbnb — Wikipedia](https://en.wikipedia.org/wiki/Airbnb), [Hostaway — Airbnb Founders](https://www.hostaway.com/blog/airbnb-founders/)). The founding was famously accidental: in October 2007 Chesky and Gebbia were SF roommates who couldn't make rent. A design conference (IDSA) had filled every hotel; they inflated **three air mattresses**, put them in their living room, and charged "Airbed & Breakfast" guests **$80 a night**. Three attendees took the offer. Blecharczyk joined as the engineer; the trio officially launched in 2008 ([Knowledge at Wharton podcast](https://knowledge.wharton.upenn.edu/podcast/knowledge-at-wharton-podcast/the-inside-story-behind-the-unlikely-rise-of-airbnb/)). They survived the 2008-2009 down-cycle by selling **Obama O's and Cap'n McCains** novelty cereal during the election cycle, raising ~$30K. Y Combinator W09 batch followed. **IPO December 10, 2020** (NASDAQ: ABNB) at $131B peak valuation. Rausch `#ff385c` is the iconic brand color, named after the Berlin street Brian Chesky once stayed on — that origin (a home, a Host, a Guest who could not find a traditional place to stay) stayed the company's center of gravity as it grew into a global platform. That origin — a home, a Host, a Guest who could not find a traditional place to stay — stayed the company's center of gravity as it grew into a global platform.
 
 In **July 2014**, Airbnb launched its first major rebrand: the **Bélo** logo (a universal symbol intended to evoke belonging) and the tagline *"Belong Anywhere."* Brian Chesky's launch essay framed the thesis directly: *"A house is just a space, but a home is where you belong. And what makes this global community so special is that for the very first time, you can belong anywhere."* The campaign framed belonging as *"the universal human yearning to belong — the desire to feel welcomed, and respected, and appreciated for who you are, no matter where you might be."*
 

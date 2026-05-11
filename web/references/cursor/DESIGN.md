@@ -320,3 +320,77 @@ The border system is particularly distinctive -- Cursor uses `oklab()` color spa
 6. Hover states use `#cf2d56` text color -- the warm crimson shift is a signature interaction
 7. Shadows use large blur values (28px, 70px) for diffused atmospheric depth
 8. The sub-8px spacing scale (1.5, 2, 2.5, 3, 4, 5, 6px) is critical for icon/text micro-alignment
+
+## 10. Voice & Tone
+
+Cursor's voice is **engineer-poetic** — straightforward technical claims dressed in warm typographic restraint. Marketing copy emphasizes the developer experience over capability lists: "the best way to code with AI" (homepage 2026-05) is short, confident, present-tense. Surfaces use ivory-warm palette + crimson hover (`#cf2d56`) — the warmth signals "this is a tool you live in for 8 hours/day, not a flashy consumer demo."
+
+| Context | Tone |
+|---|---|
+| CTA | Plain. "Download for macOS", "Get started", "Request a demo" |
+| Marketing | Single-claim hero, screenshots dominate |
+| Documentation | Concise; assumes IDE / engineering context |
+| Error (model) | Specific. "Claude rate limit reached. Switch model or wait." |
+
+**Voice samples**
+- Marketing CTA (KR): *"macOS용 다운로드"* <!-- verified: cursor.com/ko homepage 2026-05 -->
+
+**Forbidden phrases.** "10× developer", "AI-powered" without specificity. Aggressive comparison-mode marketing.
+
+## 11. Brand Narrative
+
+Cursor (corporate name **Anysphere, Inc.**) was incorporated **2022** by four MIT students — **Michael Truell (CEO)**, **Sualeh Asif (CPO)**, **Aman Sanger (COO)**, and **Arvid Lunnemark (former CTO)** ([Anysphere — Wikipedia](https://en.wikipedia.org/wiki/Anysphere)). The team **graduated from OpenAI's accelerator** and **launched Cursor publicly March 2023** as a fork of VS Code with first-class LLM integration. Founding observation: AI-assisted coding was being bolted onto editors as plugins, but the editor itself needed redesign for AI-native workflows. Funding trajectory has been one of the steepest in software history: **$8M seed (Oct 2023)** led by **OpenAI Startup Fund** with **Nat Friedman** + **Arash Ferdowsi** angels → **$60M Series A (Aug 2024)** → **$900M Series C (Jun 2025)** led by **Thrive Capital** at **$9.9B** → **$2.3B Series D (Nov 2025)** co-led by **Accel** + **Coatue** with **Google** + **Nvidia** strategic, valuing the company at **$29.3B** ([Inc — Cursor billionaires](https://www.inc.com/ben-sherry/this-ai-coding-startup-just-minted-4-new-billionaires/91265014), [Contrary Research — Cursor breakdown](https://research.contrary.com/company/cursor)). ARR crossed **$100M January 2025**, **$500M June 2025**, **$1B+ annualized post-Series D**. What Cursor refuses: aggressive comparison-mode marketing, "10× developer" framing, AI-magic vocabulary that obscures the actual editor mechanic.
+
+## 12. Principles
+
+1. **The editor is the brand.** *UI implication:* marketing screenshots are always the actual editor; never illustration.
+2. **Warm ivory, not cold black.** *UI implication:* default canvas warm `#f7f7f4`; dark theme uses warm grays not pure black.
+3. **Crimson hover signals interaction.** `#cf2d56` text shift on links. *UI implication:* never use crimson as default chrome color.
+4. **Shadow blur is large.** 28px / 70px blurs create atmospheric depth. *UI implication:* don't use tight shadows; the diffused atmospheric quality IS the brand.
+5. **Typography micro-alignment matters.** Sub-8px spacing scale (1.5/2/2.5/3) for icon-text alignment. *UI implication:* don't round to 4px increments; the 1.5px granularity is intentional.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Cursor user segments (full-time engineers using AI pair-programming, indie developers, ML researchers), not individual people.*
+
+**Sarah Lin, 33, Seattle.** Senior backend engineer. Cursor as primary IDE for 6 months. Uses tab autocomplete + Cmd+K refactoring + Composer for multi-file changes.
+
+**Henrik Sondergaard, 41, Copenhagen.** Indie developer building SaaS. Multi-file Composer is the workflow that justifies the subscription.
+
+**Ravi Krishnan, 28, Bengaluru.** ML researcher. Uses Cursor for Python notebooks + research code. Cares about Claude/GPT model selection + cost transparency.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (welcome)** | Centered "Open folder" CTA + recent projects |
+| **Empty (no AI history)** | "Try Cmd+K to get started" with keyboard shortcut hint |
+| **Loading (model thinking)** | Inline cursor-blink (1.5px width, crimson) where model is composing |
+| **Loading (file applying changes)** | Diff view with applying state, accept/reject buttons |
+| **Error (model)** | Inline below input. "Claude rate limit reached. Switch model or wait." |
+| **Error (apply failed)** | Diff stays visible, error tooltip with specific reason |
+| **Success (changes applied)** | Soft cream pulse on file tabs, no toast |
+| **Success (Composer commit)** | Multi-file diff folds into success summary |
+| **Skeleton (welcome cards)** | Warm-cream rectangles, no shimmer |
+| **Disabled (no model selected)** | 0.5 opacity + crimson "Select a model" link |
+| **Loading (long agent run)** | Persistent progress with step trace, cancellable |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Cursor commit |
+| `motion-fast` | 150ms | Hover crimson shift |
+| `motion-blink` | 530ms | Cursor blink (model composing) |
+| `motion-standard` | 250ms | Modal, panel |
+
+Easings: standard cubic-bezier. **Crimson hover** is the only color animation. `prefers-reduced-motion: reduce` disables blink (steady cursor).
+
+---
+
+**Verified:** 2026-05-08 (B2 loop)
+**Tier 1 sources:** cursor.com (live DOM via playwright — Warm `#26251e` Primary 9999px / 12.48×21.6 / 43px / 16px·400; cream `#e6e5e0` Secondary same geometry)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** cursor.com homepage; cursor.com/pricing.
+**Tier 2 (Founders/Funding):** Wikipedia (Anysphere), Inc, Contrary Research, BusinessDay NG.
+**Style ref:** `claude` (engineer-poetic register). **Conflicts unresolved:** none.

@@ -91,60 +91,312 @@ What defines Toss visually is its OKLCH-based color system, rebuilt from scratch
 
 ### Buttons
 
-**Primary (Fill)**
-- Background: `#3182f6` (blue500)
+Toss `<Button>` is a 2-axis component: **variant** × **color** × size. Default size is `xlarge` (the values below); see the size-scale paragraph at the end for `small`/`medium`/`large`. Verified against `tossmini-docs.toss.im/tds-mobile/components/button` (TDS Mobile, public docs).
+
+**Fill / Primary**
+- Background: `#3182f6`
 - Text: `#ffffff`
-- Radius: `var(--button-border-radius)` (typically 8px-12px)
-- Font: 16px weight 600
-- Pressed: dimmed overlay (opacity reduction)
-- Loading: 3-dot animation replacing text
-- Disabled: reduced opacity via `--button-disabled-opacity-color`
-- Display modes: `inline` (auto-width), `block` (full-width with line break), `full` (fills parent)
-- Sizes: `tiny`, `medium`, `large`, `big` (default)
-- Colors: `primary`, `dark`, `danger`, `light`
-- Use: Primary CTAs ("송금하기", "확인")
+- Border: none
+- Radius: 16px
+- Padding: 0 20px
+- Font: 17px / 600 / Toss Product Sans
+- Pressed: dim overlay via `--button-pressed-background-color` + `--button-pressed-opacity`
+- Disabled: bg opacity scaled by `--button-disabled-opacity-color`
+- Loading: 3-dot indicator replacing label, button width preserved
+- Use: Primary CTA on light surfaces (송금하기, 확인) — 56px tall
 
-**Secondary (Weak)**
-- Background: `#e8f3ff` (blue50) or `#f2f4f6` (grey100)
-- Text: `#3182f6` (blue500) or `#191f28` (grey900)
-- Use: Less prominent CTAs, secondary actions
-
-**Dark**
-- Background: `#191f28` (grey900)
+**Fill / Dark**
+- Background: `#4e5968`
 - Text: `#ffffff`
-- Use: Actions on light backgrounds where blue would be too playful
+- Border: none
+- Radius: 16px
+- Padding: 0 20px
+- Font: 17px / 600 / Toss Product Sans
+- Use: Strong action where blue would feel too playful (admin/settings CTA)
 
-**Danger**
-- Background: `#f04452` (red500)
+**Fill / Danger**
+- Background: `#f04452`
 - Text: `#ffffff`
-- Use: Destructive actions, alert confirmations
+- Border: none
+- Radius: 16px
+- Padding: 0 20px
+- Font: 17px / 600 / Toss Product Sans
+- Use: Destructive confirmation (계좌 삭제, 거래 취소)
 
-### Cards & Containers
-- Background: `#ffffff` (layeredBackground)
-- Border: 1px solid `#e5e8eb` (grey200) or no border
-- Radius: 12px (standard), 16px (featured), 8px (compact)
-- Shadow: `0px 2px 8px rgba(0,0,0,0.08)` -- single-layer, minimal
-- Financial cards: prominent number display with amount in 700 weight, currency label in 400
+**Fill / Light**
+- Background: `#ffffff`
+- Text: `#1b64da`
+- Border: none
+- Radius: 16px
+- Padding: 0 20px
+- Font: 17px / 600 / Toss Product Sans
+- Use: CTA on dark / colored surfaces (sits on non-white bg to be legible)
 
-### Inputs & Forms
-- Background: `#f2f4f6` (grey100) for contained variant
-- Border: 1px solid `#e5e8eb`, focus: 2px solid `#3182f6`
+**Weak / Primary**
+- Background: `rgba(100, 168, 255, 0.15)`
+- Text: `#2272eb`
+- Border: none
+- Radius: 16px
+- Padding: 0 20px
+- Font: 17px / 600 / Toss Product Sans
+- Use: Secondary action paired with Fill / Primary on the same screen
+
+**Weak / Dark**
+- Background: `rgba(2, 32, 71, 0.05)`
+- Text: `#4e5968`
+- Border: none
+- Radius: 16px
+- Padding: 0 20px
+- Font: 17px / 600 / Toss Product Sans
+- Use: Neutral / cancel-style secondary (취소, 닫기)
+
+**Weak / Danger**
+- Background: `rgba(251, 136, 144, 0.15)`
+- Text: `#e42939`
+- Border: none
+- Radius: 16px
+- Padding: 0 20px
+- Font: 17px / 600 / Toss Product Sans
+- Use: Subtle destructive action (archive instead of delete)
+
+**Weak / Light**
+- Background: `rgba(255, 255, 255, 0.15)`
+- Text: `#ffffff`
+- Border: none
+- Radius: 16px
+- Padding: 0 20px
+- Font: 17px / 600 / Toss Product Sans
+- Use: Secondary on dark / colored surfaces
+
+Display modes — `inline` (auto-width), `block` (full-width with line break), `full` (fills parent). Size scale (height · font · radius): `small` 32px · 13px / 600 · 8px; `medium` 38px · 15px / 600 · 10px; `large` 48px · 17px / 600 · 14px; `xlarge` (default) 56px · 17px / 600 · 16px. CSS-var customization: `--button-color`, `--button-background-color`, `--button-pressed-background-color`, `--button-pressed-opacity`, `--button-disabled-opacity-color`, `--button-loader-color`, `--button-loading-background-color`, `--button-gradient-color`.
+
+### Inputs
+
+Toss `<TextField>` has 4 variants: `box` (default), `line`, `big`, `hero`. `hasError` toggles error state. Verified at `tossmini-docs.toss.im/tds-mobile/components/TextField/text-field`.
+
+**Box (default)**
+- Background: `rgba(0, 23, 51, 0.02)`
+- Text: `#333d4b`
+- Border: 1px solid `rgba(2, 32, 71, 0.05)`
+- Radius: 14px
+- Padding: 14px 16px
+- Font: 17px / 400 / Toss Product Sans
+- Placeholder: `#b0b8c1`
+- Focus: border `#3182f6`
+- Use: Standard form input — most-used variant
+
+**Line**
+- Background: transparent
+- Text: `#333d4b`
+- Border: 1px solid `#e5e8eb` (bottom only)
+- Radius: 0px
+- Padding: 0px 0px 4px
+- Font: 17px / 400 / Toss Product Sans
+- Use: Underline-style input on dense forms
+
+**Big**
+- Background: transparent
+- Text: `#333d4b`
+- Border: 1px solid `#e5e8eb` (bottom only)
+- Radius: 0px
+- Padding: 0px 0px 4px
+- Font: 22px / 600 / Toss Product Sans
+- Use: Highlighted single-line input (amount, name)
+
+**Hero**
+- Background: transparent
+- Text: `#333d4b`
+- Border: 1px solid `#e5e8eb` (bottom only)
+- Radius: 0px
+- Padding: 0px 0px 4px
+- Font: 30px / 600 / Toss Product Sans
+- Use: Eye-catching hero input — large amount entry, sign-up moment
+
+**Error**
+- Background: `rgba(0, 23, 51, 0.02)` (box variant base)
+- Text: `#333d4b`
+- Border: 1px solid `#f04452`
+- Radius: 14px
+- Padding: 14px 16px
+- Font: 17px / 400 / Toss Product Sans
+- Use: `hasError` state — paired with inline help message in `#f04452`
+
+`SplitTextField` (OTP), `SecureKeypad` (financial PIN with randomised digit positions), and `TextArea` are documented separately under TDS but reuse the same focus ring and base radii.
+
+### Cards
+
+**Standard**
+- Background: `#ffffff`
+- Border: none
+- Radius: 12px
+- Padding: 20px
+- Shadow: `0px 2px 8px rgba(0,0,0,0.08)`
+- Use: Account, transaction, balance — the workhorse surface
+
+**Featured**
+- Background: `#ffffff`
+- Border: none
+- Radius: 16px
+- Padding: 24px
+- Shadow: `0px 2px 8px rgba(0,0,0,0.08)`
+- Use: Hero/promotional cards on the home tab
+
+**Compact**
+- Background: `#ffffff`
+- Border: 1px solid `#e5e8eb`
 - Radius: 8px
-- Text: `#191f28`, Placeholder: `#b0b8c1` (grey400)
-- Error border: `#f04452` (red500)
-- Special: SplitTextField for OTP, SecureKeypad for financial input
+- Padding: 12px
+- Shadow: none
+- Use: Inline list items where a softer 1px edge replaces shadow
 
-### Navigation
-- Bottom tab bar: white background, top border `#e5e8eb`
-- Active: `#3182f6` icon + `#191f28` text, Inactive: `#b0b8c1` icon + `#8b95a1` text
-- Top app bar: white, sticky, optional backdrop blur
-- Segmented control for section switching
+### Badges
 
-### Overlays
-- Bottom Sheet: `#ffffff`, 16px top radius, managed via `overlay-kit`
-- Dialog: centered modal, AlertDialog and ConfirmDialog variants
-- Toast: floating notification, subtle shadow, auto-dismiss
-- Tooltip: `#191f28` background, white text, arrow pointer
+Toss `<Badge>` is a 3-axis component: **variant** × **color** × **size**. Variants `fill | weak`. Colors `blue | teal | green | red | yellow | elephant`. Sizes `xsmall | small | medium | large` (each shifts radius/font/padding). Verified at `tossmini-docs.toss.im/tds-mobile/components/badge`.
+
+**Fill / Blue (medium default)**
+- Background: `#3182f6`
+- Text: `#ffffff`
+- Border: none
+- Radius: 12px
+- Padding: 3px 7px
+- Font: 13px / 700 / Toss Product Sans
+- Use: Primary status / category emphasis ("NEW", "BEST")
+
+**Fill / Green**
+- Background: `#22c55e`
+- Text: `#ffffff`
+- Border: none
+- Radius: 12px
+- Padding: 3px 7px
+- Font: 13px / 700 / Toss Product Sans
+- Use: Success / completion state (입금 완료, 송금 성공)
+
+**Fill / Red**
+- Background: `#ef4444`
+- Text: `#ffffff`
+- Border: none
+- Radius: 12px
+- Padding: 3px 7px
+- Font: 13px / 700 / Toss Product Sans
+- Use: Negative / blocking state (실패, 차단)
+
+**Fill / Yellow**
+- Background: `#eab308`
+- Text: `#ffffff`
+- Border: none
+- Radius: 12px
+- Padding: 3px 7px
+- Font: 13px / 700 / Toss Product Sans
+- Use: Caution / pending (검토 중, 보류)
+
+**Weak / Blue**
+- Background: `rgba(100, 168, 255, 0.15)`
+- Text: `#2272eb`
+- Border: none
+- Radius: 12px
+- Padding: 3px 7px
+- Font: 13px / 700 / Toss Product Sans
+- Use: Subtle informational badge
+
+**Weak / Green**
+- Background: `rgba(34, 197, 94, 0.15)`
+- Text: `#16a34a`
+- Border: none
+- Radius: 12px
+- Padding: 3px 7px
+- Font: 13px / 700 / Toss Product Sans
+- Use: Subtle success state
+
+**Weak / Red**
+- Background: `rgba(239, 68, 68, 0.15)`
+- Text: `#dc2626`
+- Border: none
+- Radius: 12px
+- Padding: 3px 7px
+- Font: 13px / 700 / Toss Product Sans
+- Use: Subtle negative state
+
+**Weak / Elephant**
+- Background: `rgba(2, 32, 71, 0.05)`
+- Text: `#4e5968`
+- Border: none
+- Radius: 12px
+- Padding: 3px 7px
+- Font: 13px / 700 / Toss Product Sans
+- Use: Neutral metadata badge
+
+Size scale (height · font · radius · padding): `xsmall` 21px · 10px / 600 · 9px · 3px 7px; `small` 24px · 12px / 700 · 11px · 3px 7px; `medium` 26px · 13px / 700 · 12px · 3px 7px; `large` 29px · 14px / 700 · 13px · 4px 8px. Color also supports `teal` and full mapping for each color name; values above show the most-used 4 fills + 4 weaks at medium size.
+
+### Tabs
+
+**Bottom Tab (Active)**
+- Background: `#ffffff`
+- Text: `#191f28`
+- Border: 1px solid `#e5e8eb` (top border only)
+- Active: `#3182f6` (icon and label)
+- Disabled: `#b0b8c1` (icon) + `#8b95a1` (label)
+- Font: 11px / 500 / Toss Product Sans
+- Use: Bottom navigation bar — fixed white background, no shadow
+
+**Segmented**
+- Background: `#f2f4f6`
+- Text: `#8b95a1`
+- Border: none
+- Radius: 12px
+- Padding: 8px 16px
+- Active: `#ffffff` background + `#191f28` text + `0px 2px 4px rgba(0,0,0,0.06)` shadow
+- Font: 14px / 600 / Toss Product Sans
+- Use: Section switching within a screen (월/주/일 전환)
+
+### Toasts
+
+**Default**
+- Background: `#191f28`
+- Text: `#ffffff`
+- Border: none
+- Radius: 8px
+- Padding: 12px 16px
+- Shadow: `0px 4px 12px rgba(0,0,0,0.12)`
+- Font: 14px / 500 / Toss Product Sans
+- Use: Auto-dismissing transient notification ("복사되었습니다"). Money-moved success is a dedicated screen, never a toast.
+
+### Dialogs
+
+**Centered Modal**
+- Background: `#ffffff`
+- Text: `#191f28`
+- Border: none
+- Radius: 16px
+- Padding: 24px
+- Shadow: `0px 4px 12px rgba(0,0,0,0.12)`
+- Use: AlertDialog / ConfirmDialog for confirmation prompts
+
+**Bottom Sheet**
+- Background: `#ffffff`
+- Text: `#191f28`
+- Border: none
+- Radius: 16px (top corners only)
+- Padding: 24px 20px
+- Shadow: `0px -4px 12px rgba(0,0,0,0.08)`
+- Use: Bottom-attached overlay for selection, picker, secondary form (managed via `overlay-kit`)
+
+### Toggles
+
+**Default**
+- Background: `#3182f6` (on) / `#d1d6db` (off)
+- Border: none
+- Radius: 9999px
+- Thumb: `#ffffff` 18px circle with `0px 1px 2px rgba(0,0,0,0.1)` shadow
+- Use: Boolean settings (알림 켜기, 자동 송금)
+
+---
+
+**Verified:** 2026-05-08 (full-depth, A1 loop)
+**Tier 1 sources:** tossmini-docs.toss.im/tds-mobile (TDS Mobile spec docs — Button/TextField/Badge), toss.im (live DOM via playwright — `.p-button` web variants `#3182f6` / 7px radius / 15px / 600, distinct from TDS Mobile geometry; nav links `#4e5968` 8px transparent; App Store/Play CTA `rgba(0,12,30,0.8)` / 7px / 17px·600)
+**Tier 2 sources:** getdesign.md/toss — no record. styles.refero.design — no record (?q=Toss returns 0 hits).
+**Tier 2b status:** unavailable; Tier 1 (TDS Mobile docs + live web inspect) treated as authoritative per pipeline.
+**Surface split:** §4 above documents the **TDS Mobile (app)** system. The marketing web (toss.im) uses a **distinct `.p-button` system** — Primary `#3182f6` / 7px / 15px·600 / 11×16 / 40px height; Secondary Light Blue `#e8f3ff` bg / `#1b64da` text / 7px (parallel geometry). Both retained as parallel systems.
+**Conflicts unresolved:** none. TDS Mobile geometry (16px radius, 17px·600) and web `.p-button` (7px, 15px·600) coexist on different surfaces and were not in conflict.
 
 ## 5. Layout Principles
 
@@ -285,7 +537,9 @@ Toss speaks like a friend who happens to be a fiduciary: calm, unhurried, zero j
 
 ## 11. Brand Narrative
 
-Toss launched in 2015 as a single-feature money-transfer app in a Korean banking market dominated by legacy institutions — KB, Shinhan, Woori, Hana — each with institutional-indigo websites, 12-digit account numbers, Active-X plug-ins, and the presumption that handling money had to feel like filing taxes. The founding rejection was of that entire aesthetic vocabulary. The specific cerulean `#3182f6` was chosen because it was **not** the indigo of any incumbent bank. The optimism of the color was the whole thesis: money could feel light.
+Toss is the consumer brand of **Viva Republica** (비바리퍼블리카), founded by **Lee Seung-gun (이승건)** — a former dentist who [left a Samsung-owned hospital](https://en.wikipedia.org/wiki/Lee_Seung-gun) to build it ([Wikipedia: Viva Republica](https://en.wikipedia.org/wiki/Viva_Republica), [Fortune Asia, 2025](https://fortune.com/asia/2025/04/23/toss-founder-lee-seunggun-south-korea-viva-republica/)). Lee tried **eight failed ventures** before Toss; the Toss money-transfer product launched in 2014 ([Caproasia, 2025](https://www.caproasia.com/2025/07/26/south-korea-financial-app-toss-plans-united-states-ipo-in-2026)) into a Korean banking market dominated by legacy institutions — KB, Shinhan, Woori, Hana — each with institutional-indigo websites, 12-digit account numbers, Active-X plug-ins, and the presumption that handling money had to feel like filing taxes. The founding rejection was of that entire aesthetic vocabulary. The specific cerulean `#3182f6` was chosen because it was **not** the indigo of any incumbent bank. The optimism of the color was the whole thesis: money could feel light.
+
+Toss reached **20M+ users by 2021** (Wikipedia) and operates as a financial super-app spanning lending, payments, brokerage, insurance, and credit scoring. As of 2025, the company plans a **US IPO in 2026 at ~$15B valuation**, raising $2.5B (Caproasia, July 2025), with investors including Altos Ventures, Goodwater Capital, HongShan Capital, PayPal, GIC, and Korea Development Bank.
 
 Toss is not a neo-bank. It's a super-app: one interface holds transfers, investments, credit scoring, insurance, brokerage, and lending. The design's job is to flatten that complexity into **one gesture per screen**. That requires extreme restraint — shadows are single-layer black, palette is blue-and-neutral, type is one family in three weights. Every ornamental move costs clarity, and clarity is the entire brand promise.
 

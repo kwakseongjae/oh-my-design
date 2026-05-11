@@ -228,3 +228,76 @@ What distinguishes Pinterest is its generous border-radius system (12px–40px, 
 4. Pin Sans is the only font — compact at 12px for UI, 70px for display
 5. Photography carries the design — the UI stays warm and minimal
 6. Plum black (#211922) for text — warmer than pure black
+
+## 10. Voice & Tone
+
+Pinterest's voice is **inspirational-warm and visual-first.** Marketing copy avoids tech jargon — speaks to creative life moments (weddings, recipes, home decor, fashion). UI chrome stays minimal because the photography carries the brand. Plum black `#211922` for text — slightly warmer than pure black, matching the warm-photography aesthetic.
+
+| Context | Tone |
+|---|---|
+| CTA | Inspirational verb. "Get started", "Save", "Pin it" |
+| Marketing | Lifestyle moments. "Get inspired" recurring |
+| Documentation | Sparse — Pinterest is consumer-product, devs use API docs |
+| Error | Quiet. "Couldn't load — try again" |
+
+**Voice samples**
+- Marketing pattern: *"Get inspired"* / *"Find ideas you'll love"* <!-- illustrative: tagline patterns -->
+
+**Forbidden phrases.** "Revolutionary discovery". Aggressive ad-platform framing in consumer surfaces.
+
+## 11. Brand Narrative
+
+Pinterest was founded **2010** in Palo Alto by **Ben Silbermann (CEO, born July 14 1982 in Des Moines, Iowa)**, **Paul Sciarra**, and **Evan Sharp** ([Pinterest — Wikipedia](https://en.wikipedia.org/wiki/Pinterest), [Evan Sharp — Wikipedia](https://en.wikipedia.org/wiki/Evan_Sharp)). Pinterest emerged from an earlier Silbermann + Sciarra app called **Tote** (a virtual paper-catalog replacement); Silbermann pivoted into a visual board-collection product. **Development began December 2009**; **closed-beta prototype launched March 2010**. **Paul Sciarra left April 2012**. Visual discovery platform — users save ("pin") images to themed boards. **NYSE IPO April 18 2019** under ticker **PINS**. **June 2022 leadership transition**: Silbermann became **Executive Chairman** and **Bill Ready** (former President of Commerce + Payments at **Google**, ex-COO at **PayPal**) became CEO. The brand has stayed remarkably consistent across the leadership change: warm cream canvas, plum-black text, image-grid as primary chrome, red-pill CTA.
+
+## 12. Principles
+
+1. **Photography is the design.** *UI implication:* chrome stays minimal so pins read.
+2. **Plum black `#211922` over pure black.** *UI implication:* warmer text inherits warmth from photography.
+3. **Red `#e60023` pill is THE CTA.** *UI implication:* primary actions always red pill.
+4. **Masonry grid is the layout.** *UI implication:* preserve variable-height tile grid.
+5. **No corporate polish.** *UI implication:* keep the warm-handmade-collection aesthetic.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Pinterest user segments (creative planners, home/recipe enthusiasts, ecommerce sellers), not individual people.*
+
+**Sofia Park, 31, Seoul.** Wedding planner. Boards organized by season + venue. Treats Pinterest as professional moodboard.
+
+**Marcus Chen, 38, San Francisco.** Home renovation enthusiast. Multi-board project planning.
+
+**Yuki Tanaka, 27, Tokyo.** Indie ecommerce seller using Pinterest Ads for product discovery.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no pins)** | "Save pins to see them here" + recommended pin grid |
+| **Empty (search)** | "No results for `<query>`. Try different keywords." |
+| **Loading (feed)** | Masonry skeleton with cream-warm rectangles |
+| **Loading (image)** | Dominant-color placeholder before image loads |
+| **Error (image)** | Plum-black "Couldn't load" with retry icon |
+| **Error (board)** | Inline "Refresh" link |
+| **Success (saved)** | Red `#e60023` heart fills + toast "Saved to <board>" |
+| **Success (followed)** | Subtle confirmation, no celebration |
+| **Skeleton (board)** | Image-aspect-ratio placeholders |
+| **Disabled (private)** | "This board is private" message |
+| **Loading (image upload)** | Per-image progress bar |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Pin save |
+| `motion-fast` | 200ms | Hover scale on tiles |
+| `motion-standard` | 300ms | Modal expand |
+| `motion-spring` | variable | Pin save heart fill |
+
+**Pin save** has signature spring scale + heart fill. `prefers-reduced-motion: reduce` removes spring (instant fill).
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 45 — Apple-tier)
+**Tier 1 sources:** kr.pinterest.com home + business.pinterest.com/ko (live DOM via playwright — **Two-system dual-canvas split**: consumer Pinterest Red `#e60023` 16px Login + Cream `#e5e5e0` Secondary + Plum-Black `#211922` ghost nav (12px·400 / 48px); business Charcoal `#111111` dual-radius (20px compact 36px / 30px hero 60px) / 16px·400 — separate B2B track).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/IPO):** Wikipedia (Pinterest + Evan Sharp), Founders Era, Inc 30 Under 30, EBSCO, Buildd, Companies History.
+**Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier addition:** Pinterest Red `#e60023` + Cream `#e5e5e0` + Pinterest Business Charcoal dual-radius system missed by prior pass (which had only ghost nav + Plum text).

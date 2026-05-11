@@ -80,21 +80,78 @@ The size jumps are aggressive: 20px body → 40px section heads → 70px hero. T
 
 ## 4. Component Stylings
 
-### Buttons / Pills (`.productCategory`, generic CTAs)
-The signature LINE control. Verified live on `line.me`:
+### Buttons
 
-- `border-radius: 50px` — fully pill-shaped (not 4px or 8px — always 50px)
-- `padding: 8px 15px` for compact category pills
-- `font-weight: 700`, default `font-size: 14-16px`
-- **Active state**: bg `#07b53b` (LINE Green), text `#ffffff`
-- **Inactive state**: bg `transparent`, text `rgba(30, 30, 30, 0.7)`
-- **Hover**: text gains opacity (transitions to `rgba(30, 30, 30, 1)`)
-- No shadow, no border on the inactive state
+**Active Pill (`.productCategory`)**
+- Background: `#07b53b` (LINE Green)
+- Text: `#ffffff`
+- Radius: 50px (fully pill-shaped)
+- Padding: 8px 15px
+- Font: 14-16px / 700
+- Use: Active/selected category pill, primary CTA — verified live on line.me
 
-### Hero Sections
-- Full-bleed background image (typically lifestyle photography)
-- Centered overlay text (white or near-black depending on background contrast)
-- Hero CTA below the headline, often using app store badges (Apple, Google Play, Desktop)
+**Inactive Pill**
+- Background: transparent
+- Text: `rgba(30, 30, 30, 0.7)`
+- Radius: 50px
+- Padding: 8px 15px
+- Font: 14-16px / 700
+- Hover: text opacity transitions to `rgba(30, 30, 30, 1)`
+- Use: Unselected category pill — no shadow, no border
+
+**Hover Pressed**
+- Background: `#069030` (LINE Green Dark, inferred)
+- Text: `#ffffff`
+- Radius: 50px
+- Padding: 8px 15px
+- Use: Hover/pressed state for primary pill
+
+### Inputs
+
+**Default**
+- Background: `#ffffff`
+- Text: `#1e1e1e`
+- Border: 1px solid `rgba(0, 0, 0, 0.06)`
+- Radius: 12px
+- Padding: 12px 16px
+- Font: 16px / 400 / SFPro
+- Focus: border `#07b53b`
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
+
+### Cards
+
+**Service / Feature Card**
+- Background: `#ffffff`
+- Text: `#1e1e1e`
+- Border: 1px solid `rgba(0, 0, 0, 0.06)` (whisper-light)
+- Radius: 12px
+- Padding: 20-24px
+- Shadow: `0 2px 8px rgba(0, 0, 0, 0.04)`
+- Use: Service / feature card with icon (32-40px) + title (16px / 700) + 1-line description (14px / 400 `rgba(30,30,30,0.7)`)
+
+**Image-Led Card (LINE STICKERS, WEBTOON tiles)**
+- Background: `#ffffff` (image fills 70-80%)
+- Radius: 12px (image inside `border-radius: 12px 12px 0 0`)
+- Padding: 0px (title strip uses `rgba(0, 0, 0, 0.6)` overlay + white text at bottom)
+- Use: Image-dominant tile
+
+**App Download Tile**
+- Background: `#ffffff`
+- Border: 1px solid `rgba(0, 0, 0, 0.06)`
+- Radius: 12px
+- Padding: 12px (56px square touch target)
+- Hover: background tints to very light green or gray
+- Use: App store badges (Apple, Google Play, Desktop)
+
+### Badges
+
+**Default**
+- Background: `#07b53b`
+- Text: `#ffffff`
+- Radius: 50px
+- Padding: 4px 10px
+- Font: 12px / 700 / SFPro
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — pill-style badge matching LINE's pill control language.
 
 ### Navigation
 - Sticky horizontal header: LINE logo left, page-section nav center, language switcher right
@@ -102,37 +159,14 @@ The signature LINE control. Verified live on `line.me`:
 - Nav items: `font-weight: 700`, `font-size: 16px`, color `#1e1e1e`
 - Background: `#ffffff` with subtle bottom border on scroll
 
-### App Download CTAs
-Iconified app store badges (App Store, Google Play, Desktop) instead of textual buttons:
-- Square white tiles with thin `1px` border, `~12px` radius
-- 56px square (touch-friendly), inline icon for the platform
-- Hover: background tints to a very light green or gray
+### Hero Sections
+- Full-bleed background image (typically lifestyle photography)
+- Centered overlay text (white or near-black depending on background contrast)
+- Hero CTA below the headline, often using app store badges (Apple, Google Play, Desktop)
 
 ### Scroll Indicators
 - Centered "Scroll" label below the hero with a subtle vertical line animation
 - Reinforces the magazine-like vertical narrative
-
-### Cards
-
-LINE marketing chrome rarely uses traditional card containers — content sits directly on photographic backgrounds. When cards do appear (LINE STORE, LINE SHOPPING, in-product UI), they follow a minimal pattern:
-
-**Service / Feature Card**
-- Background: `#ffffff` on the gray content tier, OR full-bleed image with overlay text
-- Radius: `12px` (medium-rounded — softer than the marketing pill buttons would suggest)
-- Padding: `20–24px`
-- Border: `1px solid rgba(0, 0, 0, 0.06)` — whisper-light
-- Shadow: `0 2px 8px rgba(0, 0, 0, 0.04)` for subtle elevation only
-- Service icon (top-left, 32–40px) + title (16px weight 700 `#1e1e1e`) + 1-line description (14px weight 400 `rgba(30,30,30,0.7)`)
-
-**Image-Led Card (LINE STICKERS, LINE WEBTOON tiles)**
-- Image fills 70-80% of the card
-- Title strip at bottom with `rgba(0, 0, 0, 0.6)` overlay + white text
-- `12px` radius on the outer container, image inside `border-radius: 12px 12px 0 0`
-
-**App Download Tile**
-- Square tile, 56px touch target
-- White bg, `1px` border, `~12px` radius
-- Platform icon (Apple / Google Play / Desktop) centered
 
 **Anti-pattern**
 - Don't apply the pill `50px` button radius to cards — that's reserved for interactive controls only.
@@ -259,9 +293,7 @@ LINE's marketing voice is warm, aspirational, and lifestyle-forward — *"Life o
 
 ## 11. Brand Narrative
 
-LINE was born in 2011 in Japan in response to the Tōhoku earthquake, when disrupted phone networks left people unable to reach family and friends. The original product was a way to stay connected when infrastructure failed — and that founding moment still shapes the brand. Being "always at your side" is not a marketing phrase; it is a literal design goal inherited from how the app was conceived.
-
-Over the following decade LINE grew from a crisis-era messenger into a **super-app that anchors daily life** across Japan, Taiwan, Thailand, and Indonesia: payments, news, music, manga, mobile commerce, business tools — all held together by a single chat metaphor. In October 2023, LINE Corporation and Yahoo Japan merged into **LY Corporation**, reflecting LINE's scale as Japan's de facto communication and lifestyle infrastructure.
+LINE was born **June 2011** in Japan, launched by **NHN Japan** (a subsidiary of Korean internet giant **Naver/NHN**), in direct response to the **March 11 2011 Tōhoku earthquake and tsunami**. **Naver/NHN co-founder and chairman Lee Hae-Jin** and a team of engineers were in Japan when the disaster struck — phone lines and SMS networks were overwhelmed, leaving millions unable to reach family and friends. Lee tasked NHN Japan with building a messenger; **a beta version was testing within two months**, and the app shipped as **Line in June 2011** ([LINE — Wikipedia](https://en.wikipedia.org/wiki/Line_(software)), [Line Corporation — Wikipedia](https://en.wikipedia.org/wiki/Line_Corporation)). That founding moment still shapes the brand: being "always at your side" is not a marketing phrase but a literal design goal inherited from how the app was conceived. **April 1 2013** NHN Japan was renamed **LINE Corporation**. Over the following decade LINE grew from a crisis-era messenger into a **super-app that anchors daily life** across Japan, Taiwan, Thailand, and Indonesia: payments, news, music, manga, mobile commerce, business tools — all held together by a single chat metaphor. **December 2020**: LINE Corporation **delisted from NYSE + Tokyo Stock Exchange** ahead of an absorption-type merger; **March 1 2021** SoftBank Group affiliate **Z Holdings** (Yahoo! Japan operator) completed the merger with LINE under **A Holdings** (SoftBank + Naver, 65.3% Z Holdings). **October 1 2023**: LINE Corporation merged with **Z Holdings + Yahoo Japan** into **LY Corporation**, reflecting LINE's scale as Japan's de facto communication and lifestyle infrastructure ([LY Corp — corporate](https://www.lycorp.co.jp/en/), [KED Global — LY-Naver tech tie cut 2024](https://www.kedglobal.com/business-politics/newsView/ked202406190005)).
 
 What LINE refuses: the utility-minimalism of Western messengers (WhatsApp, iMessage), the engagement-bait aesthetics of most content super-apps, and the cold enterprise blue of Japanese incumbents. What it embraces: full-bleed lifestyle photography, oversized editorial typography, finite use of LINE Green, and a **sticker-first emotional vocabulary** that respects local cultural register in every market it serves.
 
@@ -372,4 +404,13 @@ your side' brand positioning", or the framing of LINE Green as a "finite
 signal") are editorial readings that connect public facts; they are not
 directly sourced LINE statements.
 -->
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 33 — Apple-tier)
+**Tier 1 sources:** line.me/en (consumer LINE Green `#07b53b` 50px full-pill / 8×15 / 36px / 13px·**700** BOLD + inactive `rgba(30,30,30,0.7)` ghost); lycorp.co.jp/en (corporate **LY Charcoal `#2e2e2e`** 4px / 56px / 16px·400 + asymmetric block links + 50% circular carousel chrome).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders):** Wikipedia (LINE software, LINE Corporation, Naver), KED Global (LY-Naver tech-tie split 2024-06), LY Corporation corporate, KEIA.
+**Style ref:** `line` (self).
+**Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured only consumer surface; LY Corporate is a separate Charcoal `#2e2e2e` 4px / 16px·400 enterprise track that should be documented alongside.
 

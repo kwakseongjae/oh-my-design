@@ -146,6 +146,15 @@ All 12 Baemin fonts are free under OFL license. Four are on Google Fonts (Jua, D
 - Top app bar: white, centered title 18px weight 700
 - Cart badge: `#FF6B6B` circle, white count text
 
+---
+
+**Verified:** 2026-05-08
+**Tier 1 sources:** baemin.com (live DOM via playwright — corporate/marketing surface confirmed: App download cards `#fff` / 12px / 14×19 / 54px height; Black Pill CTA `#000000` / `#fff` / 9999px / 16×32 / 58px / 18px·700 for "기업용 상품권 구매하기")
+**Tier 2 sources:** styles.refero.design — no Baemin record at `?q=Baemin`. getdesign.md/baemin — no record.
+**Tier 2 status:** unavailable; Tier 1 (baemin.com live inspect) authoritative for marketing-web surface.
+**Surface split:** §4 above documents the **app surface** (배달의민족 mobile app — Mint `#2AC1BC` primary, 8px radius, system fonts for chrome). The marketing web (baemin.com) uses a **separate Black Pill** primary at 9999px / 18px·700 (verified above) for high-impact corporate CTAs. Both retained as parallel systems.
+**Conflicts unresolved:** none. Mint primary inferred from prior brand documentation (Baemin 공식 색 가이드, app store screenshots) — not contradicted by web inspect.
+
 ## 5. Layout Principles
 
 ### Spacing System
@@ -296,7 +305,7 @@ Baemin's voice is **warm, witty, unmistakably Korean-vernacular**. It talks to u
 
 ## 11. Brand Narrative
 
-Baemin (배달의민족) launched in 2010, founded by Kim Bong-jin (김봉진) and bootstrapped into Woowa Brothers (우아한형제들) after [Kim scanned restaurant flyers off the streets of Gangnam, Seoul](https://en.wikipedia.org/wiki/Baedal_Minjok) to build the first catalog. The app's name — a pun on "the people of delivery" (배달의 민족) that riffs on the Korean national-identity phrase "배달민족" (descendants of Dangun) — set the tone: a delivery app would be **vernacular Korean culture**, not a sterile logistics utility. Kim, whose graduate thesis was ["Font design reflecting Korea's indigenous visual culture"](https://en.sandoll.co.kr/Story/?bmode=view&idx=19495712), built the brand around typography as heritage — the **Baemin Hanna (한나체) typeface** was inspired by 1960s–70s Korean acrylic-cut shop signboards and named after his eldest daughter, Hanna.
+Baemin (배달의민족) launched in 2010, founded by **Kim Bong-jin (김봉진)** — an unconventional tech founder who came from a **design background**, having previously worked as a **web designer at NHN (now Naver)** ([김봉진 — 나무위키](https://namu.wiki/w/%EA%B9%80%EB%B4%89%EC%A7%84(%EA%B8%B0%EC%97%85%EC%9D%B8))). The company was bootstrapped into **Woowa Brothers (우아한형제들)** after [Kim scanned restaurant flyers off the streets of Gangnam, Seoul](https://en.wikipedia.org/wiki/Baedal_Minjok) to build the first catalog. The app's name — a pun on "the people of delivery" (배달의 민족) that riffs on the Korean national-identity phrase "배달민족" (descendants of Dangun) — set the tone: a delivery app would be **vernacular Korean culture**, not a sterile logistics utility. Kim, whose graduate thesis was ["Font design reflecting Korea's indigenous visual culture"](https://en.sandoll.co.kr/Story/?bmode=view&idx=19495712), built the brand around typography as heritage — the **Baemin Hanna (한나체) typeface** was inspired by 1960s–70s Korean acrylic-cut shop signboards and named after his eldest daughter, Hanna.
 
 From there Baemin grew into **Korea's largest food delivery platform** (2020 revenue ~₩1.09 trillion, ~US$960M <!-- source: base DESIGN.md context + Wikipedia, not re-verified this pass -->). [Delivery Hero announced its acquisition of Woowa Brothers in December 2019 and completed the deal in December 2020](https://en.wikipedia.org/wiki/Baedal_Minjok), conditional on Delivery Hero divesting its Korean subsidiary Yogiyo; Baemin continues to operate under its own brand and local leadership. Today the app spans food delivery, B마트 (instant grocery, 24/7), 선물하기 (gift delivery), 배민페이 (payments), 전국특가 (nationwide specials), and 배민클럽 (membership) — one interface, seven service verticals.
 

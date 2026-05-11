@@ -1,518 +1,278 @@
 ---
 name: omd:add-reference
-description: "회사 URL → references/<id>/DESIGN.md 생성(CREATE 모드, 9섹션) 또는 기존 id → OmD v0.1 Philosophy 레이어 섹션 10-15 추가(AUGMENT 모드). '레퍼런스 추가', 'DS 추출', 'kakao Philosophy 붙여줘', 「リファレンス追加」, 「新增參考」류의 요청에 트리거."
-argument-hint: "<url> | <existing-id> [--style-ref <id>]"
+description: "URL 또는 brand id 입력 → 3-tier 검증 파이프라인(Tier 1 라이브 + Tier 2 getdesign/refero + Tier 3 reconcile)으로 references/<id>/DESIGN.md를 신규 생성(CREATE)하거나 기존 섹션을 검증·갱신(UPDATE). '레퍼런스 추가/수정', 'X DS 검증', 'X 컴포넌트 다시 뽑아줘' 류에 트리거."
+argument-hint: "<url|id> [--mode create|update|update-§N] [--style-ref <id>]"
 user-invocable: true
 ---
 
-# omd:add-reference — Reference DS Research, Extraction & Augmentation
+# omd:add-reference
 
-URL 또는 기존 id를 입력받아 **두 가지 모드**로 동작:
-- **CREATE 모드**: URL → `references/<id>/DESIGN.md` 9섹션 신규 생성
-- **AUGMENT 모드**: 기존 id → 기존 DESIGN.md에 OmD v0.1 Philosophy 레이어(섹션 10~15) 추가
+`spec/verification-pipeline.md`의 3-tier 파이프라인을 기계적으로 실행하는 스킬. **CREATE / UPDATE / SYNC** 세 모드.
 
-## 핵심 원칙
+## 모드 라우팅 (Phase 0)
 
-1. **Tier 1은 무조건 우선** — 기업이 공식 제공하는 DS가 있으면 그것이 정답. 다른 소스는 "보완"일 뿐 대체 불가.
-2. **출처 투명성** — 모든 토큰/패턴은 `_research.md`에 출처와 신뢰도를 기록.
-3. **추측 금지** — 확인되지 않은 값은 `<!-- inferred from product UI, not official -->` 인라인 주석을 남기고 사용자에게 보고.
-4. **Zero AI for tokens** — 컬러/폰트/radius/shadow 값은 항상 실제 소스에서 추출. 생성하지 않음.
-
-## 출력 산출물
-
-`references/<id>/` 폴더에:
-
-| 파일 | 내용 |
+| 입력 | 모드 |
 |---|---|
-| `DESIGN.md` | 9섹션 디자인 시스템 (Stripe 등 기존 파일과 동일 포맷) |
-| `README.md` | 표준 README (출처 링크, 파일 목록) |
-| `_research.md` | 사용된 소스 목록, 신뢰도, 추출 일자 |
+| `https://...` | **CREATE** — 새 reference 9-section 생성 |
+| `<id>` (web/references/<id>/ 존재) | **UPDATE** — §4 (기본) 또는 지정 섹션 검증·갱신 |
+| `<id>` (없음) | 에러 — URL로 CREATE할지 묻기 |
+| `--mode sync` | **SYNC** — count·landing·README·gh description만 갱신 |
 
-`preview.html` / `preview-dark.html`은 **deprecated**. 새 레퍼런스는 자동으로 `/reference/<id>` 경로에서 9섹션 React 쇼케이스로 렌더링됨 (`web/src/components/reference-preview.tsx` + `web/src/app/reference/[id]/page.tsx`). DESIGN.md만 잘 작성하면 추가 작업 불필요. 기존 50개 정적 파일은 역호환을 위해 보존만.
-
----
-
-## Phase 0 — Input Dispatch (CREATE vs AUGMENT 라우팅)
-
-입력 형태를 감지해 모드를 결정한다. **가장 먼저 실행**한다.
-
-### 입력 파싱 규칙
-
-| 입력 예 | 모드 | 의미 |
-|---|---|---|
-| `https://kakao.com` | **CREATE** | 새 reference 생성 (Phase 1~9) |
-| `https://www.daangn.com` | **CREATE** | 상동 |
-| `kakao` | **AUGMENT** | 기존 `web/references/kakao/`에 Philosophy 레이어 추가 (Phase 10) |
-| `kakao https://brand.kakao.com` | **AUGMENT** | 기존 id + 추가 소스 URL 명시 (Phase 10) |
-| `kakao --style-ref toss` | **AUGMENT** | style reference 명시 override |
-| `dcard` (refs에 없음) | **에러** | "해당 id가 references/에 없어. URL로 CREATE할지, 다른 id를 쓸지 확인" |
-
-### 라우팅 로직
-
-```
-1. 첫 토큰이 http(s)://로 시작 → CREATE 모드, Phase 1로
-2. 첫 토큰이 bareword:
-   a. web/references/<token>/DESIGN.md 존재 → AUGMENT 모드, Phase 10으로
-   b. 존재하지 않음 → 에러, 사용자 확인
-3. AUGMENT 모드 시 `--style-ref <id>` 플래그 파싱, 있으면 Phase 10-2에서 override
-```
-
-**CREATE 모드**: Phase 1~9 순차 실행
-**AUGMENT 모드**: Phase 10 한 번만 실행 (Phase 1~9는 스킵)
+CREATE에는 항상 SYNC가 뒤따른다 (count +1).
 
 ---
 
-## Phase 1 — 회사 식별 & ID 결정 (CREATE 모드)
+## 핵심 원칙 (모든 모드 공통)
 
-URL에서 회사 식별자를 추출한다. 도메인 우선, 서비스명 차선:
-
-| URL | ID 후보 |
-|---|---|
-| `https://pinkoi.com` | `pinkoi` |
-| `https://www.dcard.tw` | `dcard` |
-| `https://cathaybk.com.tw` (CUBE 앱이 핵심) | `cathay-cube` |
-| `https://linear.app` | `linear.app` (점 포함 OK, 기존 사례 있음) |
-
-**충돌 체크**: `references/<id>/`가 이미 있으면 사용자에게 `(A) 덮어쓰기 / (B) 다른 ID 사용 / (C) 기존 보완`을 물어본다.
+1. **Tier 1 = 절대 우선.** brand의 공식 DS docs 또는 라이브 사이트 computed style이 truth.
+2. **Tier 2 = 교차검증.** getdesign.md/<id> + styles.refero.design/?q=<brand> **둘 다 시도**. 한쪽만 성공해도 OK, 둘 다 실패면 footer에 명시.
+3. **컨플릭트 silent 해결 금지.** Tier 1 ↔ Tier 2 충돌 시 채팅으로 보고 후 결정.
+4. **거짓 주장 금지.** "확인했다"고 쓰려면 같은 턴에 tool call 증거 필요. refero "없음" 단정은 `?q=` 검색 + 스크롤 시도 후만.
+5. **검증 footer 의무.** 갱신한 섹션 끝에 `Verified: YYYY-MM-DD` + 모든 source URL 기록.
 
 ---
 
-## Phase 2 — Tier 1: 공식 DS 탐색 (필수, 스킵 불가)
+## CREATE 모드
 
-다음 순서로 모두 시도. **하나라도 발견되면 그것을 primary source로 고정**.
+### Phase 1 — id 결정
+- URL → 도메인에서 id 추출 (예: `kakao.com` → `kakao`)
+- 충돌 시 사용자에게 (덮어쓰기 / 다른 id / abort) 묻기
 
-### 2-1. 알려진 도메인 패턴 (HEAD 요청으로 빠르게 체크)
-- `<company>.design` (figma.design, atlassian.design)
-- `design.<domain>` (design.airbnb.com, design.gitlab.com)
-- `<brand>.<domain>` 또는 별도 도메인:
-  - polaris.shopify.com, base.uber.com, primer.style, carbon.ibm.com, spectrum.adobe.com
-  - lightning.salesforce.com, fluent2.microsoft.design, material.io
-  - cube.cathaybk.com.tw 등
-- `<domain>/design`, `<domain>/design-system`, `<domain>/styleguide`
+### Phase 2 — Tier 1 수집
+1. `<brand>.design`, `design.<domain>`, `<brand>/design-system` HEAD
+2. WebSearch: `"<brand>" design system site:<domain>`
+3. GitHub: `gh search repos "<brand> design tokens"`
+4. 발견 시 → 공식 토큰 그대로 추출
+5. **추가**: playwright로 brand 메인 사이트 라이브 inspect (computed style: hero CTA / nav / footer / search input / card)
 
-### 2-2. 웹 검색
-- `WebSearch`: `"<company>" "design system" OR "design language" site:<domain>`
-- `WebSearch`: `"<company>" design tokens documentation Figma library`
-- 중화권 기업이면: `"<company>" 設計系統 OR 設計語言`
+### Phase 3 — Tier 2 수집 (둘 다 시도)
+- `WebFetch https://getdesign.md/<id>` — 토큰 + component 스펙
+- playwright `https://styles.refero.design/?q=<brand>` → 결과 카드 클릭 → 페이지 WebFetch
+  - 한 brand에 여러 style 페이지가 있을 수 있음 (ex: Apple = 4개) — 가장 트렌딩한 1-2개 사용
 
-### 2-3. GitHub 검색
-- `gh search repos "<company> design system"`
-- `gh search repos "<company> design tokens"`
-- 공식 organization 확인 — `tokens.css`, `theme.ts`, `*.json` 디자인 토큰 파일 발견 시 그대로 추출
+### Phase 4 — Reconcile + 9-section 작성
+`references/stripe/DESIGN.md`를 포맷 레퍼런스로 9 섹션 작성. §4는 canonical schema(variant heading + bullet `Field: value`).
 
-**발견 시 처리:**
-- 공식 컬러 팔레트 → §2 Color Palette 그대로 매핑
-- 공식 타이포 스케일 → §3 Typography Rules
-- 컴포넌트 스펙 페이지 → §4 Component Stylings
-- spacing/radius/shadow 토큰 → §5/§6
-- 출처 URL은 `_research.md`에 모두 기록
+### Phase 5 — _research.md + footer
+- `_research.md`: Tier별 source URL, 신뢰도, 추출 일자
+- §4 footer: `Verified` / `Tier 1 sources` / `Tier 2 sources` / `Conflicts unresolved`
 
-**미발견 시 처리:**
-- `_research.md`의 "Tier 1 — Official DS" 섹션에 `Not found` 명시
-- Phase 3로 진행
+### Phase 6 — SYNC (CREATE 자동 후행)
+아래 SYNC 모드 절차 실행.
 
 ---
 
-## Phase 3 — Tier 2: 브랜드/프레스 키트
+## UPDATE 모드
 
-공식 DS가 부재하거나 불완전할 때 보완:
+기존 reference를 풀 검증·갱신. **기본 대상은 §4 Components + 누락된 §10-15 Philosophy**. `--mode update-§N` 으로 단일 섹션만 지정 가능. `--no-philosophy` 로 §10-15 fill 스킵.
 
-- `<domain>/brand`, `<domain>/press`, `<domain>/about/brand`, `<domain>/media-kit`
-- `WebSearch`: `"<company>" brand guidelines press kit logo color palette`
-- 발견 시 보통: 컬러 팔레트, 로고 사용 규칙, 1차 타이포 가이드 정도 확보
+### Default behavior (사용자 지정 없을 때)
+1. §4 풀 reconcile (모든 변형을 conflict matrix에 통과시키고 다시 작성)
+2. `grep -c "^## 10\." DESIGN.md` == 0 이면 §10-15 generation 추가 (omd-init / 기존 augment 절차 활용 — 아래 P-Phase)
+3. footer 박음
 
----
+**footer-only 갱신은 금지.** "verified stamp만 박고 §4 본문 안 건드림"은 사용자 신뢰 깨는 안티패턴 — 이전 batch 1·2 (Toss/Airbnb/Spotify/Kakao + Stripe/Linear/Vercel/Notion/Figma)에서 했던 실수. 지금부턴 모든 brand가 Apple 식 풀 reconcile.
 
-## Phase 4 — Tier 3: 엔지니어링/디자인 블로그
+### Phase U1 — pre-check
+- `web/references/<id>/DESIGN.md` 존재 확인
+- 갱신 대상 섹션 read
 
-- `WebSearch`: `"<company>" design system Medium engineering blog`
-- 알려진 채널 예시:
-  - Pinkoi: `medium.com/pinkoi-engineering`
-  - Dcard: `medium.com/dcardlab`
-  - 일반: 회사명 + Medium publication 검색
-- 블로그에서 추출 가능한 것: 디자인 원칙, 토큰 명명 규칙, 의사결정 배경 → §1 Visual Theme, §7 Do's and Don'ts에 반영
-
----
-
-## Phase 5 — Tier 4: 라이브 사이트 리콘 (Fallback)
-
-위 단계에서 채워지지 않은 부분만 보완. **공식 소스를 덮어쓰지 않는다.**
-
-### 5-1. 도구 선택 (이 순서로 시도)
-
-1. **curl + grep (1순위 — SSR 사이트면 가장 빠르고 정확)**
-   - 사이트가 SSR이면 (`curl -sL <url>` 으로 실제 콘텐츠가 와야 함) CSS 번들 URL을 grep으로 추출 → 번들을 `curl`로 다운 → `grep -oE` 로 토큰 추출
-   - Pinkoi 사례: `cdn02.pinkoi.com/media/dist/css/core-*.css` 4개 번들 다운 → `font-family`, hex 컬러, `border-radius`, `box-shadow` 빈도 분석
-   - **장점**: 브라우저 불필요, 정확한 CSS 룰 추출, 빠름
-   - **불가 케이스**: Cloudflare 봇 차단(403), CSR/SPA로 런타임 스타일 주입, AEM 등 동적 로딩
-
-2. **Playwright MCP (`mcp__playwright__*`) — Cloudflare/SPA 사이트 권장**
-   - `claude mcp add playwright npx @playwright/mcp@latest --scope project` 으로 설치
-   - 별도 Chromium 인스턴스 → 사용자 Chrome 확장 충돌 무관
-   - `browser_navigate` → `browser_evaluate("getComputedStyle(...)")` → `browser_take_screenshot`
-   - **권장 케이스**: Cloudflare 통과 필요, 인터랙션 추출, 스크린샷 필요
-
-3. **Claude in Chrome (`mcp__claude-in-chrome__*`) — 대체 옵션**
-   - 사용자의 실제 Chrome 사용. 로그인 세션 활용 가능
-   - **알려진 이슈**: 다른 Chrome 확장(특히 React DevTools, 비디오 다운로더, Cookie-Editor 등)이 있으면 `chrome.debugger` API 충돌로 `javascript_tool`/`screenshot` 실패. accessibility-tree 도구(`get_page_text`, `read_page`, `find`)만 작동
-   - **활용**: 사용자가 이미 로그인한 사이트 텍스트 추출
-
-4. 모두 불가 → 사용자에게 알리고 가능한 만큼만 작성 (신뢰도 표시 필수)
-
-### 5-2. 캡처
-- 데스크톱 1440px / 모바일 390px 풀페이지 스크린샷
-- 저장: `references/<id>/_research/screenshots/`
-
-### 5-3. 컴퓨티드 스타일 추출
-다음 셀렉터에 대해 `getComputedStyle()`:
-
+### Phase U2 — Tier 1 라이브 inspect
+playwright로 brand 메인 사이트 + 핵심 surface 1-2개 navigate → `browser_evaluate(getComputedStyle)` 로 raw observation 수집:
 ```js
-const targets = ['h1', 'h2', 'h3', 'p', 'a', 'button', 
-                 '[class*="card"]', '[class*="nav"]', 'input'];
-// 추출 항목:
-// font-family, font-weight, font-size, line-height, letter-spacing
-// color, background-color
-// border-radius, border, box-shadow
-// padding, gap
+const els = document.querySelectorAll('button, a[role=button], input, [role=tab]');
+// 각 element의 bg / color / radius / padding / height / fontSize / fontWeight / border 추출
+```
+- 마케팅 surface와 commerce/checkout surface가 분리된 brand는 **둘 다** 방문 (Apple 패턴)
+- raw → `web/references/<id>/.verification.md`에 기록
+
+### Phase U3 — Tier 2 교차검증
+1. `WebFetch https://getdesign.md/<id>` — 둘 다 표/스펙 추출
+2. playwright `?q=<brand>` 검색 → refero 페이지 WebFetch
+3. 둘 다 raw observation으로 `.verification.md`에 기록
+
+### Phase U4 — Conflict matrix
+`.verification.md`에 다음 표 작성:
+```
+| Field | Tier 1 (live) | getdesign | refero | Resolution |
+```
+**해결 규칙**:
+- 셋 다 일치 → 그대로
+- Tier 1 ≠ Tier 2 → Tier 1이 라이브 inspect 가능했으면 Tier 1 우선, 아니면 Tier 2 다수결
+- 둘이 갈리고 Tier 1 침묵 → `(unresolved)` 플래그 + 채팅으로 사용자 보고
+- 이전에 잘못 들어간 값(Apple `#0066cc` 9999px 케이스 등) 발견 시 **롤백 사유** 명시
+
+### Phase U5 — Write
+- §4를 canonical schema로 재작성:
+  ```
+  ### <Component class>
+
+  **<Variant name>**
+  - Background: <value>
+  - Text: <value>
+  - Border: <value>
+  - Radius: <value>
+  - Padding: <value>
+  - Font: <size> / <weight> / <family>
+  - Use: <one-line context>
+  ```
+
+#### 🚨 §4 작성 강제 규칙 (이거 어기면 builder/components 섹션이 통째로 안 나옴)
+
+**1줄 = 1필드.** 절대 슬래시(`/`)나 콤마로 여러 필드를 한 줄에 결합하지 말 것. 파서는 `^- Field: value$` 패턴만 인식한다.
+
+❌ **금지** — 1줄 multi-field (KRDS 초기 작성 케이스, 36 variants 중 35개가 안 보였음):
+```
+- Background: `#256EF4` / Text: `#FFFFFF` / Border: 1px solid `#256EF4`
 ```
 
-### 5-4. 컬러 enumerate
-페이지 전체에서 사용된 색상을 수집하고, 사용 빈도 상위 10-15개를 팔레트 후보로 추림.
-**shadcn 토큰**(background, foreground, primary, secondary, muted, accent, destructive, border, input, ring)에 매핑.
+✅ **필수** — 1필드 1불릿:
+```
+- Background: `#256EF4`
+- Text: `#FFFFFF`
+- Border: 1px solid `#256EF4`
+```
 
-### 5-5. 인터랙션 스윕 (선택적)
-- 호버 상태: 버튼/카드/링크에 hover → 변화 기록
-- 다크모드 토글이 있으면 다크모드도 동일하게 추출
+**State variants (Hover/Pressed/Focus/Disabled/Required/Error)**도 같은 variant 블록 안에서 별도 `- Hover:` / `- Pressed:` 불릿으로. 별도 `**Variant**` 블록을 따로 만들지 않는다.
+
+**Size scale (xsmall/small/medium/large/xlarge 등)**은 1개 `**Variant**`에 default 사이즈 값만 불릿으로 적고, 나머지 사이즈는 그 블록 뒤에 markdown 테이블/프로즈로 보강. variant를 5개로 쪼개지 않는다.
+
+**자가 검증 (write 직후 반드시 실행)**:
+```bash
+S4=$(awk '/^## 4\./,/^## 5\./' web/references/<id>/DESIGN.md)
+echo "$S4" | grep -E "^- " | grep -cE " / [A-Za-z][a-z]+:"   # 0이어야 함 — 0 아니면 슬래시 multi-field 잔존
+echo "$S4" | grep -cE "^\*\*[A-Za-z가-힣]"                    # variant 수
+echo "$S4" | grep -cE "^- [A-Za-z]"                            # bullet 수 (variant당 평균 ≥3 권장)
+```
+
+슬래시 multi-field가 1줄이라도 잔존하면 → fix → 다시 검증. 이 체크 통과 못하면 commit 금지.
+- 끝에 verification footer:
+  ```
+  ---
+  **Verified:** YYYY-MM-DD
+  **Tier 1 sources:** <list>
+  **Tier 2 sources:** <list>
+  **Conflicts unresolved:** <list or "none">
+  ```
+
+### Phase U6 — Tests + smoke
+1. `cd web && npm test --silent` — 215 passing 유지
+2. `web/src/lib/extract-components.test.ts`에 canonical default variant assertion 추가 (해당 brand 처음 검증 시)
+3. 시각 smoke: `/reference/<id>` 로컬에서 띄워서 white-on-white / circular-as-ellipse / radius cap regression 없는지 확인
+
+UPDATE는 SYNC를 트리거하지 않는다 (count 변동 없음).
 
 ---
 
-## Phase 6 — DESIGN.md 생성 (9섹션)
+## Phase P — Philosophy fill (§10-15)
 
-`references/stripe/DESIGN.md`를 정확한 포맷 레퍼런스로 사용. 9개 섹션을 순서대로 작성:
+CREATE 모드에서는 항상 실행. UPDATE 모드에서는 §10-15 누락 시 자동 실행.
 
-```
-# Design System Inspiration of <Company>
+### P-1. Style ref pick
+- KR brand → `toss` 톤 차용
+- JP brand → `line`
+- TW brand → `pinkoi`
+- US brand → `claude` 또는 `stripe` (engineering tone이면 stripe)
+- 기타 → `notion` (중립)
+- `--style-ref <id>` flag로 override
 
-## 1. Visual Theme & Atmosphere
-2-3문단 + Key Characteristics 글머리 5-8개
+### P-2. Source 수집
+- `<domain>/about`, `<domain>/brand`, `<domain>/manifesto`, `<domain>/mission`
+- 창업자 인터뷰·에세이
+- WebSearch: `"<brand>" voice tone guidelines`, `"<brand>" brand philosophy`
+- 최소 3 source 권장
 
-## 2. Color Palette & Roles
-### Primary / ### Brand & Dark / ### Accent / ### Interactive
-### Neutral Scale / ### Surface & Borders / ### Shadow Colors / ### Status
+### P-3. 섹션 생성 (OmD v0.1 spec)
+- §10 Voice & Tone — 2-3 voice adjectives + Do/Don't 표 + ≥3 voice samples (각각 verification 주석)
+- §11 Brand Narrative — 2-3 문단 origin → mission → why-now + 임원 인용 ≥1
+- §12 Principles — 3-5 numbered, 각각 *UI implication:* 라인
+- §13 Personas — 2-4 archetypes ≤ 3 sentences, 상단 disclaimer
+- §14 States — Empty/Loading/Error(≥2)/Success/Skeleton/Disabled 6 카테고리 모두
+- §15 Motion & Easing — duration scale + easing tokens + motion rules
 
-## 3. Typography Rules
-Font families, weights, size scale, letter-spacing, OpenType features
+### P-4. Validate
+- `grep -c "^## 1[0-5]\." DESIGN.md` == 6 확인
+- voice samples ≥3, principles ≥3, states ≥10 행
+- 거짓 인용 없는지 (illustrative는 인라인 주석으로 명시)
 
-## 4. Component Stylings
-### Buttons / ### Inputs / ### Cards / ### Navigation / ### Tables / ### Badges
-
-## 5. Layout Principles
-Spacing scale, container widths, grid system
-
-## 6. Depth & Elevation
-Shadow system (named levels), z-index hierarchy
-
-## 7. Do's and Don'ts
-글머리 5-10개 (DO/DON'T 페어링 권장)
-
-## 8. Responsive Behavior
-Breakpoints 표, Touch Targets, Collapsing Strategy, Image Behavior
-
-## 9. Agent Prompt Guide
-### Quick Color Reference (한 줄씩)
-### Example Component Prompts (3-5개, 실제로 복사-붙여넣기 가능한 프롬프트)
-### Iteration Guide (글머리 5-8개)
-```
-
-### 작성 규칙
-
-1. **모든 컬러는 hex (`#xxxxxx`) 또는 `rgba(...)` 형식**으로 표기
-2. **CSS 변수명**이 공식 소스에 있으면 백틱으로 함께 표기 (예: `#533afd`: `--hds-color-button-primary`)
-3. **각 토큰의 "Role"** 명시 (어디 쓰이는지 한 줄 설명)
-4. Tier 1 출처가 있는 값은 **그대로** 사용 (반올림·근사 금지)
-5. Tier 4(라이브 리콘)에서만 얻은 값은 인라인 주석 `<!-- inferred -->` 추가
+### P-5. Append
+DESIGN.md §9 끝에 §10-15 append. 프론트매터 `omd: 0.1` 없으면 추가.
 
 ---
 
-## Phase 7 — _research.md 작성
+## SYNC 모드
 
-```markdown
-# Research Sources for <Company>
+CREATE 시 자동, 수동으로도 호출 가능.
 
-추출 일자: YYYY-MM-DD
-
-## Tier 1 — Official Design System
-- [URL] — extracted: colors, typography, component specs
-
-## Tier 2 — Brand / Press Kit
-- [URL] — extracted: brand colors, logo guidelines
-
-## Tier 3 — Engineering / Design Blog
-- [URL] — extracted: design principles, naming rationale
-
-## Tier 4 — Live Site Recon
-- Pages inspected: [URL list]
-- Browser: claude-in-chrome MCP
-- Viewports: 1440px, 390px
-
-## Confidence
-- **High** (Tier 1 직접 인용): [항목 리스트]
-- **Medium** (Tier 2-3 + 라이브 검증): [항목 리스트]
-- **Low / Inferred** (Tier 4 only — 사용자 확인 권장): [항목 리스트]
-
-## Notes
-- [기타 특이사항: 다국어 사이트, 다크모드 부재, 등]
-```
+1. **References count 갱신**: 현재 `ls -d web/references/*/ | wc -l` 결과를 다음 위치에 반영
+   - `README.md`, `README.ko.md`, `README.ja.md`, `README.zh-TW.md` — "67 brand DESIGN.md" 류
+   - `web/src/components/landing-v2/hero.tsx` 또는 `sections.tsx` — 카피 내 숫자
+   - `web/public/llms.txt` — 카탈로그 line
+   - GitHub repo description: `gh repo edit --description "..."` (사용자 컨펌 후)
+2. **Symlink sanity**: 루트 `references` → `web/references` symlink 확인 (이미 있으면 skip)
+3. **Reference fingerprints**: `data/reference-fingerprints.json`, `.claude/data/reference-fingerprints.json`, `.codex/data/reference-fingerprints.json` 새 entry append
+4. 사용자에게 git status 보여주고 commit 여부 묻지 않음 (memory: no auto-commits)
 
 ---
 
-## Phase 8 — README.md 작성
+## Reusable utilities
 
-`references/stripe/README.md` 포맷 그대로:
-
-```markdown
-# <Company> Inspired Design System
-
-[DESIGN.md](./DESIGN.md) extracted from <primary source URL>. 
-{공식 DS 기반인지, 추론 기반인지 한 줄}.
-
-## Files
-
-| File | Description |
-|------|-------------|
-| `DESIGN.md` | Complete design system documentation (9 sections) |
-| `_research.md` | Sources used and confidence per item |
-
-Use [DESIGN.md](./DESIGN.md) as a reference for AI agents (Claude, Cursor, Stitch) to generate UI that looks like the <Company> design language.
+### refero 검색 흐름
+```
+1. mcp__playwright__browser_navigate("https://styles.refero.design/?q=<brand>")
+2. mcp__playwright__browser_snapshot — 결과 카드의 /style/<uuid> URL 수집
+3. 각 카드를 WebFetch로 추출 (depth가 필요하면 navigate 후 evaluate)
 ```
 
----
-
-## Phase 9 — 사용자 보고
-
-작업 완료 시 다음 형식으로 보고:
-
-```
-✅ references/<id>/ 생성 완료
-
-Tier 사용 현황:
-- Tier 1 (Official DS): [있음/없음, 발견된 URL]
-- Tier 2 (Brand Kit): [있음/없음]
-- Tier 3 (Eng Blog): [있음/없음]
-- Tier 4 (Live Recon): [실행함/스킵]
-
-신뢰도 낮은 항목 (확인 권장):
-- [항목 1]
-- [항목 2]
-
-다음 단계:
-1. `web/scripts/`에서 preview HTML 생성
-2. `.agents/skills/omd-design/REFERENCE_TAGS.md`에 신규 ID 등록
-3. (옵션) 웹 빌더 카탈로그에 추가
-```
-
----
-
-## Phase 10 — AUGMENT 모드 (OmD v0.1 Philosophy 레이어 추가)
-
-**언제 실행**: Phase 0에서 AUGMENT로 라우팅됐을 때만.
-**스킵 대상**: Phase 1~9 전부.
-
-### 10-1. Pre-check
-
-1. `web/references/<id>/DESIGN.md` 읽기
-2. `grep -c "^## 10\. Voice & Tone"` — 존재하면 **이미 COMPLETE**. 아래 형식으로 보고 후 중단:
-   ```
-   ⚠️ <id>는 이미 Philosophy 레이어 보유 (섹션 10-15 모두 있음).
-   재작성하려면 --force 플래그 사용. 덮어쓰기 전 사용자 확인 필수.
-   ```
-3. 없으면 Phase 10-2로.
-
-### 10-2. Style Reference Pick (핵심 로직)
-
-Philosophy는 톤·밀도·예시 포맷을 기존 COMPLETE 파일에서 빌려와 일관성을 유지한다.
-
-**자동 선택 매트릭스** (지역 기반):
-
-| 타겟 브랜드 region | 기본 style ref | 선택 이유 |
-|---|---|---|
-| 🇰🇷 KR (kakao, karrot, baemin) | `toss` | 같은 KR 페르소나 어조, 한국어 voice sample 품질 최상 |
-| 🇯🇵 JP (mercari, freee) | `line` | 동아시아 간결·기능 중심 어조 |
-| 🇹🇼 TW (pinkoi, dcard) | `toss` | TW 네이티브 COMPLETE 부재 → 가장 가까운 Asian |
-| 🇺🇸 US (tesla, spacex, nvidia, uber) | `claude` | 미니멀·정확·비(非)-hype 문체 |
-| 🇪🇺 Europe | `stripe` | 엔지니어링 톤 + 정제된 제품-서술 |
-| 기타/불확실 | `notion` | 중립 톤, 광범위 예시 |
-
-**지역 감지**: 타겟의 `DESIGN.md` 프론트매터 `brand:` + §1 (Visual Theme) 에서 국가/시장 언급 추출.
-
-**사용자 override**: `--style-ref <id>` 플래그로 기본 선택을 덮어씀. (예: `omd:add-reference mercari --style-ref stripe`)
-
-**선택 보고**: 사용자에게 한 줄 알림 — *"Style ref: `<picked>` (이유: <one-line>)"*.
-
-### 10-3. Philosophy 소스 수집
-
-1. **사용자 제공 URL 우선**: 인자로 전달된 URL을 우선 사용
-2. **자동 탐색**:
-   - `WebSearch`: `"<brand>" brand philosophy OR manifesto OR mission`
-   - `WebSearch`: `"<brand>" voice AND tone AND guidelines`
-   - `WebSearch`: `"<brand>" "brand narrative" OR "brand story" OR "our principles"`
-   - `WebFetch`: `<domain>/about`, `<domain>/brand`, `<domain>/mission`, `<domain>/manifesto`
-   - 창업자 인터뷰/에세이: `"<founder-name>" <brand> manifesto interview`
-3. **기존 `_research.md`**: 있으면 Tier 2/3 소스 재활용
-4. **최소 3개 독립 소스** 확보. 미달 시 사용자에게 "소스 부족" 보고 후 중단.
-
-### 10-4. 섹션 10~15 생성 규칙
-
-OmD v0.1 (`spec/omd-v0.1.md`) 준수. **Craft bar = `toss/DESIGN.md`** (2026-04 QA에서 밀도·명확성 표준으로 확정). 각 섹션 **최소·최대 요건**:
-
-#### ## 10. Voice & Tone
-- 2~3 voice adjectives (예: *Warm, Precise, Irreverent*)
-- Do/Don't voice table (2~4행)
-- **≥3 concrete voice samples** — 각각 UI context 지정 (button label / empty state / error / success / onboarding 등)
-
-**🔑 Voice sample verification (중요 — 파일럿 QA 결과 추가된 룰)**
-
-Voice sample은 **verification 우선순위**를 엄수하고, 각 샘플에 아래 중 하나의 인라인 주석을 **반드시** 붙인다:
-
-| 우선순위 | 소스 | 주석 형식 |
-|---|---|---|
-| 1 (선호) | live 사이트 추출 (curl / WebFetch / Playwright) | `<!-- verified: <url>, <yyyy-mm> -->` |
-| 2 | 공식 브랜드 가이드라인 / press kit 인용 | `<!-- cited: <source title or URL> -->` |
-| 3 (최후) | 추론·작문 (실존 copy 아님) | `<!-- illustrative: not verified as live <brand> copy -->` |
-
-**추론 샘플에 구체 수치·브랜드 전용 용어 넣지 말 것** (예: `"items over ¥100,000"` 같은 미확인 threshold). 대신 가변 자리표시자(`<amount>`, `<product>`)로 대체.
-
-**실행 절차**:
-1. 시도: `curl -sL <domain>` → visible 마이크로카피 (button, nav, footer) grep
-2. 막히면: `WebFetch` 로 `about`, `help`, `onboarding` 페이지 조회
-3. 막히면: Playwright MCP로 인터랙션 요구 페이지 캡처
-4. 불가 시: illustrative 명시 + 실제 UI 관찰자가 검증할 수 있도록 구체 UI 맥락 명시
-
-#### ## 11. Brand Narrative
-- 2~3 문단: origin → mission → why-now
-- 창업자/임원 인용 ≥1회, **출처 markdown link 인라인** (footer only 금지)
-- 검증되지 않은 수치(DAU/MAU/다운로드 수 등)는 `<!-- source: base DESIGN.md §1, not re-verified -->` 처럼 재검증 여부 표기
-
-#### ## 12. Principles
-- 3~5 numbered principles (**cap 8까지 허용**, 초과 시 merge)
-- 각 principle: 1줄 원칙 (**bold**) + 1~2문장 rationale + `*UI implication:*` 라벨 + 1줄 구체 예시
-
-#### ## 13. Personas
-- 2~4 archetypes
-- **각 persona ≤ 3 sentences** 권장 (toss 밀도 기준). 배경 묘사(주거, 학교, 추정 생각)는 **최소화**하고 **구체 행동·사용 패턴**에 집중
-- 상단에 disclaimer: *"Personas are fictional archetypes informed by publicly described <brand> user segments, not individual people."*
-
-#### ## 14. States
-- **6개 state 카테고리 전부 포함 필수**: Empty (≥1) · Loading (≥1) · Error (≥2 variants) · Success (≥1) · **Skeleton** · **Disabled**
-  - Skeleton과 Disabled는 **각각 별도 행**으로 기재. Loading row 안에 skeleton 설명 녹이는 것으로 대체 금지 (2026-04-20 QA에서 4개 파일이 이 drift 발견 → 전 corpus와 불일치)
-  - Skeleton 행 이름은 `Skeleton` 또는 `Skeleton (specifics)` 허용 (예: `Skeleton (post body)`, `Skeleton (spec table)`)
-- **권장 총 행 수: 10~12**. 13+ 넘으면 중복·엣지 유스케이스 제거 검토
-- 금지: 단순 UI pattern(rating request, 모달 treatment 등)을 state로 취급. 진짜 state = "UI가 렌더링할 실 상태 변형"만
-
-#### ## 15. Motion & Easing
-- Duration scale: `fast: Xms / base: Yms / slow: Zms` (3~5 tokens)
-- Easing tokens: `standard: cubic-bezier(...)` 등 3~5개
-- Motion rules: 무엇을 애니메이트하고 무엇을 피할지 (3~5 bullets)
-- 브랜드-정합 easing 특성 (spring 허용/금지)을 **명시**하고 이유 서술
-
-### 10-5. Append + Validate
-
-1. 기존 `DESIGN.md` 섹션 9 끝을 찾아 그 뒤에 섹션 10~15 **append** (기존 콘텐츠 보존)
-2. 프론트매터에 `omd: 0.1` 없으면 추가
-3. **Validate**:
-   - `grep -c "^## 1[0-5]\."` ≥ 6 확인
-   - 각 섹션 최소 요건 충족 확인 (voice samples ≥3, principles ≥3 등)
-4. `_research.md`에 Philosophy 소스 블록 추가:
-   ```markdown
-   ## Philosophy Layer — added YYYY-MM-DD
-   - [URL 1] — used for: Voice samples, Principles
-   - [URL 2] — used for: Brand Narrative
-   ```
-
-### 10-6. QA scorecard (Philosophy Diagnostic Rubric 적용)
-
-Phase 10-5 validate 통과 후 **반드시** 실행. `research/2026-04-20_philosophy-layer-diagnostic.md` 의 11-dimension 스코어카드 (D1~D11) 를 해당 파일에 적용.
-
-1. 각 dimension 🟢/🟡/🔴 판정
-2. 판정 근거 1줄 메모
-3. **Pass threshold: ≥9 green, no red, yellow ≤2**
-4. 결과를 `_research.md` 에 아래 형식으로 append:
-   ```markdown
-   ## Philosophy Layer QA (YYYY-MM-DD) — Diagnostic Rubric
-   
-   | # | Dimension | Score | Notes |
-   |---|---|---|---|
-   | D1 | §10 intro standalone | 🟢/🟡/🔴 | ... |
-   | D2 | ... | ... | ... |
-   ...
-   
-   **Result**: N 🟢 / N 🟡 / N 🔴. **PASS / FAIL.**
-   ```
-5. **FAIL이면 자동 재생성 금지** — 실패 항목만 사용자에게 보고해서 대화 통해 수정 (창의적 판단 필요 작업 자동화 위험)
-
-Rubric 업데이트는 `research/` 디렉터리에서 진행하며, 새 패턴 발견 시 changelog에 기록.
-
-### 10-7. 사용자 보고
-
-```
-✅ <id> Philosophy layer augmented (섹션 10-15 추가)
-
-Style reference: <picked_ref> (이유: <one-line>)
-Sources: <N>개 (_research.md 참고)
-
-섹션 요약:
-  ✓ 10. Voice & Tone — voice samples <N>개
-  ✓ 11. Brand Narrative — 인용 <N>건
-  ✓ 12. Principles — <N>개
-  ✓ 13. Personas — <N>개
-  ✓ 14. States — empty/error/loading/success
-  ✓ 15. Motion & Easing — duration <N>단계
-
-Confidence:
-  - High (공식 brand page 인용): <항목>
-  - Medium (press/interview): <항목>
-  - Low (inferred from product UI): <항목>  ← 사용자 검토 권장
-
-Gaps flagged: <없음 또는 목록>
-
-다음 단계:
-  grep -c "^## 1[0-5]\." web/references/<id>/DESIGN.md  # 6 나오면 성공
-  git diff web/references/<id>/DESIGN.md                 # 변경 리뷰
+### apple.com 류 라이브 inspect 패턴
+```js
+const out = [];
+document.querySelectorAll('button, a, input').forEach(el => {
+  const cs = getComputedStyle(el);
+  const r = cs.borderRadius;
+  const bg = cs.backgroundColor;
+  if ((bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') && (r === '0px')) return;
+  const rect = el.getBoundingClientRect();
+  if (rect.height < 24) return;
+  out.push({
+    text: (el.textContent||el.getAttribute('aria-label')||'').trim().slice(0,40),
+    bg, color: cs.color, radius: r,
+    padding: cs.padding, h: Math.round(rect.height),
+    fontSize: cs.fontSize, fontWeight: cs.fontWeight,
+    cls: el.className.toString().slice(0, 60),
+  });
+});
+return out.slice(0, 30);
 ```
 
 ---
 
-## 알려진 실패 모드 & 대응
+## 안티패턴 (절대 금지)
 
-| 증상 | 원인 | 대응 |
-|---|---|---|
-| `curl -I <url>` → 403 | Cloudflare 봇 차단 (Dcard 등) | Playwright MCP로 전환 |
-| `curl -L <url>` → HTML 짧고 CSS 비어 있음 | CSR/SPA, 런타임 스타일 주입 | Playwright MCP로 `browser_evaluate` 사용 |
-| `cube.cathaybk.com.tw` 류 corporate AEM 사이트 | 마케팅 사이트가 실제 제품 DS 미반영 | 해당 기업 모바일 앱 DS는 웹 추출 불가 — 사용자에게 알림, 대안 제안 |
-| Claude in Chrome `javascript_tool` 실패 ("chrome-extension://" 에러) | 다른 Chrome 확장의 `chrome.debugger` API 충돌 | Playwright MCP로 전환 또는 사용자에게 충돌 확장 OFF 안내 |
-| HEAD가 200인데 콘텐츠는 홈페이지 | SPA catch-all 라우팅 (Pinkoi `/design-system` 사례) | URL 200을 신뢰하지 말고 콘텐츠를 직접 검증 |
+- ❌ Tier 2 전혀 시도 안 하고 "확인했음" 주장
+- ❌ refero "없음" 결론을 단일 스크롤에서 내림
+- ❌ Tier 1 라이브 인 inspect 없이 §4 컴포넌트 값 작성
+- ❌ 검증 footer 누락
+- ❌ 충돌 silent 해결
+- ❌ getdesign.md 표시값을 Tier 1로 취급 (Tier 2임)
 
-## 안티 패턴 (절대 하지 말 것)
+## 트리거 (자연어 OK — 슬래시 없이 호출되어도 동작)
 
-- ❌ Tier 1 검색을 스킵하고 라이브 리콘부터 시작
-- ❌ 발견된 공식 컬러 값을 "더 예쁘게" 보정
-- ❌ 출처 없이 디자인 원칙을 창작
-- ❌ 한 섹션이 통째로 비었는데 표시 없이 넘어가기
-- ❌ `references/<id>/` 덮어쓰기 전에 사용자 확인 안 함
+- "X 레퍼런스 추가" / "X 새로 만들어줘" / URL 한 줄 → CREATE
+- "X 컴포넌트 다시 뽑아줘" / "X §4 검증" / "X 잘못된거 같아" → UPDATE
+- "67 카운트 맞춰줘" / "landing 동기화" / "리퍼런스 동기화" → SYNC
 
-## 트리거 키워드
+### Batch / 자연어 인식
 
-### CREATE 모드 (URL 입력)
-- "X 레퍼런스 추가해줘"
-- "X DS 뽑아줘"
-- "X 디자인 시스템 references에 넣어줘"
-- "오피셜 DS 찾아서 DESIGN.md 만들어줘"
-- 또는 그냥 URL 한 줄 + "이거 추가해줘"
+- "next 5", "다음 5개", "다음 10개" → 알파벳 순으로 미검증(no `**Verified:**` footer) brand 중 N개를 골라 UPDATE 일괄
+- "남은거 다 처리해줘", "67 migration 처리해줘" → 미검증 전체를 N=5씩 batch로 진행하고 매 batch 끝에 status 보고
+- "stripe부터 5개" → 알파벳 정렬 위치 stripe부터 5개 (stripe/supabase/superhuman/tesla/together.ai)
+- "<brand1> <brand2> <brand3>" 공백 list → 명시된 brand 일괄
 
-### AUGMENT 모드 (기존 id 입력)
-- "kakao Philosophy 붙여줘"
-- "mercari 브랜드 철학 채워줘"
-- "X에 OmD 10-15 섹션 추가"
-- "X Voice/Narrative 작성해줘"
-- 또는 그냥 id 한 줄: `omd:add-reference kakao`
-- style ref 명시: `omd:add-reference tesla --style-ref claude`
+### Batch 진행 절차
+
+1. `grep -L '^\*\*Verified:\*\*' web/references/*/DESIGN.md` 로 미검증 list 산출
+2. 사용자 지정 N(또는 전체)만큼 head/range 선택
+3. 각 brand에 대해 UPDATE phase U2~U5 실행 (parallel WebFetch + sequential playwright session)
+4. batch 끝마다 `npm test --silent` 실행
+5. 보고 형식: `완료: <list> | 남은 수: <count> | 다음 batch 후보: <head 5>`

@@ -1,8 +1,3 @@
----
-omd: 0.1
-brand: Kakao
----
-
 # Design System Inspiration of Kakao (카카오)
 
 ## 1. Visual Theme & Atmosphere
@@ -91,62 +86,194 @@ Kakao Font is open-source (OFL-1.1) on GitHub. Big Sans has Regular/Bold/ExtraBo
 
 ### Buttons
 
+Kakao surfaces use two yellows: `#FEE500` for the Kakao Login compliance button (mandated by Kakao Developers) and `#fae100` for marketing CTAs (verified at kakaocorp.com). Bordered (2px solid black) buttons are a distinctive Kakao marketing pattern.
+
 **Kakao Login (Compliance-Mandated)**
-- Background: `#FEE500` (mandatory, do not modify)
-- Text: `#000000` at 85% opacity (mandatory)
-- Icon: Kakao chat bubble in `#000000` (mandatory)
-- Radius: 12px (mandatory)
-- Use: Kakao Login integration -- specs are non-negotiable
-
-**Primary Action**
 - Background: `#FEE500`
-- Text: `#333333` (not white -- insufficient contrast on yellow)
-- Padding: 12px 20px
+- Text: `#000000`
+- Border: none
 - Radius: 12px
-- Font: 16px system weight 600
-- Use: Primary CTAs ("확인", "완료", "보내기")
+- Padding: 12px 20px
+- Font: 16px / 600 / KakaoSmall
+- Disabled: opacity 0.5
+- Use: Kakao Login integration — specs are non-negotiable per Kakao Developers (do not modify color, text, or icon)
 
-**Secondary / Outline**
+**Marketing Pill (Bordered)**
+- Background: `#fae100`
+- Text: `#000000`
+- Border: 2px solid `#000000`
+- Radius: 16px
+- Padding: 7px 13px
+- Font: 13px / 700 / KakaoSmall
+- Use: Brand marketing CTA on kakaocorp.com (카카오톡 다운로드) — bordered yellow pill is the signature shape
+
+**Dark Marketing Pill (Bordered)**
+- Background: `#111111`
+- Text: `#ffffff`
+- Border: 2px solid `#ffffff`
+- Radius: 16px
+- Padding: 7px 8px
+- Font: 13px / 700 / KakaoSmall
+- Use: Marketing CTA paired with the yellow Marketing Pill (Kanana, sub-brands)
+
+**Nav Pill**
+- Background: `#ffffff`
+- Text: `#000000`
+- Border: none
+- Radius: 999px
+- Padding: 3px 14px
+- Font: 16px / 700 / KakaoBig
+- Use: Top-nav active item (소개, 카카오 문화) — full-pill rounded, KakaoBig display weight
+
+**Secondary (Outline)**
 - Background: transparent
 - Text: `#333333`
 - Border: 1px solid `#E5E5E5`
 - Radius: 12px
-- Use: Secondary actions ("취소", "더보기")
+- Padding: 12px 20px
+- Font: 16px / 600 / KakaoSmall
+- Use: Secondary action in product UI (취소, 더보기)
+
+**Footer Link Pill**
+- Background: `#eeeeee`
+- Text: `#000000`
+- Border: none
+- Radius: 24px
+- Padding: 10px 20px
+- Font: 12px / 400 / KakaoSmall
+- Use: Footer link/관련사이트 (verified at kakaocorp.com)
 
 **Danger**
 - Background: `#E02000`
 - Text: `#ffffff`
+- Border: none
 - Radius: 12px
-- Use: Destructive actions ("삭제", "차단")
+- Padding: 12px 20px
+- Font: 16px / 600 / KakaoSmall
+- Use: Destructive actions (삭제, 차단)
 
-### Chat Bubbles (Defining Component)
-- **My Message**: `#FEE500` bg, `#333333` text, asymmetric radius via 9-patch, max-width ~70% of chat
-- **Other's Message**: `#ffffff` bg, `#333333` text, subtle `#E5E5E5` border, sender name 12px weight 600 `#666666` above
-- **System**: `#F0F0F0` bg, `#999999` text, pill (9999px), centered, 12px weight 400
+### Inputs
 
-### Cards & Containers
+**Default**
 - Background: `#ffffff`
-- Border: 1px solid `#E5E5E5` or no border
+- Text: `#222222`
+- Border: 1px solid `#E5E5E5`
 - Radius: 12px
-- Shadow: none or `0px 1px 3px rgba(0,0,0,0.04)` -- Kakao is intentionally flat
-
-### Friend List Item
-- Avatar: 48px rounded square (12px radius) -- KakaoTalk uses rounded squares, not circles
-- Name: 16px weight 500, `#222222`
-- Status: 14px weight 400, `#808080`, single line ellipsis
-- Row height: 64px, Horizontal padding: 16px
-
-### Inputs & Forms
-- Border: 1px solid `#E5E5E5`, Radius: 12px
+- Padding: 12px 16px
+- Font: 16px / 400 / Apple SD Gothic Neo
+- Placeholder: `#BBBBBB`
 - Focus: border changes to `#333333`
-- Text: `#222222`, Placeholder: `#BBBBBB`
-- Chat input: `#F0F0F0` bg, 20px radius
-- Search bar: `#F0F0F0` bg, 20px radius, `#999999` search icon
+- Use: Form fields (login, profile edit, signup)
 
-### Navigation
-- Tab bar: white bg, 44px height, 4 equal tabs
-- Active: `#333333` text + 2px bottom border, Inactive: `#999999` text
-- Font: 14px weight 600
+**Chat Input**
+- Background: `#F0F0F0`
+- Text: `#222222`
+- Border: none
+- Radius: 20px
+- Padding: 10px 16px
+- Font: 16px / 400 / Apple SD Gothic Neo
+- Placeholder: `#BBBBBB`
+- Use: Chat composer at bottom of conversation
+
+**Search**
+- Background: `#F0F0F0`
+- Text: `#222222`
+- Border: none
+- Radius: 20px
+- Padding: 10px 16px 10px 40px
+- Font: 14px / 400 / Apple SD Gothic Neo
+- Placeholder: `#999999`
+- Use: Search bar (friends, chat history) — left-icon at `#999999`
+
+### Cards
+
+**Standard**
+- Background: `#ffffff`
+- Border: none
+- Radius: 12px
+- Padding: 16px
+- Shadow: `0px 1px 3px rgba(0,0,0,0.04)`
+- Use: Most surfaces — Kakao is intentionally flat, shadows are barely-there
+
+**Bordered**
+- Background: `#ffffff`
+- Border: 1px solid `#E5E5E5`
+- Radius: 12px
+- Padding: 16px
+- Shadow: none
+- Use: Inline cards on content surfaces where shadow would clash
+
+**My Message (Chat Bubble)**
+- Background: `#FEE500`
+- Text: `#333333`
+- Border: none
+- Radius: 18px 4px 18px 18px
+- Padding: 8px 12px
+- Font: 14px / 400 / Apple SD Gothic Neo
+- Use: Sender's outgoing chat bubble (right-aligned) — asymmetric 9-patch radius
+
+**Other's Message (Chat Bubble)**
+- Background: `#ffffff`
+- Text: `#333333`
+- Border: 1px solid `#E5E5E5`
+- Radius: 4px 18px 18px 18px
+- Padding: 8px 12px
+- Font: 14px / 400 / Apple SD Gothic Neo
+- Use: Counterparty's incoming chat bubble (left-aligned)
+
+**System Message (Chat Bubble)**
+- Background: `#F0F0F0`
+- Text: `#999999`
+- Border: none
+- Radius: 9999px
+- Padding: 4px 12px
+- Font: 12px / 400 / Apple SD Gothic Neo
+- Use: System notice in chat ("친구가 입장했습니다")
+
+### Badges
+
+**Notification Dot**
+- Background: `#E02000`
+- Text: `#ffffff`
+- Border: none
+- Radius: 9999px
+- Padding: 2px 6px
+- Font: 11px / 700 / Apple SD Gothic Neo
+- Use: Unread count on tab/list (caps to "99+" past 99)
+
+**Tag (Default)**
+- Background: `#F0F0F0`
+- Text: `#666666`
+- Border: none
+- Radius: 4px
+- Padding: 2px 6px
+- Font: 11px / 500 / Apple SD Gothic Neo
+- Use: Generic metadata tag (channel/category)
+
+### Tabs
+
+**Top Tab**
+- Background: `#ffffff`
+- Text: `#999999`
+- Border: 1px solid `#E5E5E5`
+- Active: `#333333` text + 2px solid `#333333` bottom border
+- Padding: 12px 16px
+- Font: 14px / 600 / Apple SD Gothic Neo
+- Use: Tab bar — 4 equal tabs, 44px height
+
+### List items
+
+**Friend List Item**
+- Text: `#222222`
+- Use: Friend list row — avatar 48px rounded square (12px radius — KakaoTalk uses rounded squares, not circles), name 16px weight 500 `#222222`, status 14px weight 400 `#808080` single-line ellipsis. Row height 64px, horizontal padding 16px.
+
+---
+
+**Verified:** 2026-05-08
+**Tier 1 sources:** kakaocorp.com (live DOM via playwright — Marketing Pill `#FAE100` / `#000000` / 16px / 7×13/30 / 13px·700·32px ✓; Dark Marketing Pill `#111111` 16px ✓; Nav Pill `#ffffff` / `#000000` / 999px / 3×14 / 16px·700·36px ✓; Footer Link Pill `#eeeeee` / 24px / 12px·400·40px ✓; KakaoTalk compliance Login button `#FEE500` retained per Kakao Developers requirement)
+**Tier 2 sources:** styles.refero.design — no record (?q=Kakao returns 0 brand match). getdesign.md/kakao — no record.
+**Tier 2b status:** unavailable; Tier 1 (kakaocorp.com live inspect) treated as authoritative.
+**Conflicts unresolved:** none. The dual-yellow split (`#FEE500` compliance vs `#FAE100` marketing) is verified against both Kakao Developers docs and the live kakaocorp.com DOM.
 
 ## 5. Layout Principles
 
@@ -265,180 +392,99 @@ Kakao Font is open-source (OFL-1.1) on GitHub. Big Sans has Regular/Bold/ExtraBo
 6. Gray hierarchy: #222222 → #333333 → #666666 → #808080 → #999999 → #BBBBBB
 7. Kakao Login specs are non-negotiable compliance requirements
 
----
-
 ## 10. Voice & Tone
 
-Kakao speaks like the person in your group chat who happens to also run the group — familiar, plainspoken, never institutional. The register is **친근한 존댓말** (casual-polite): `-어요 / -예요` endings, never `-습니다` outside of legal and policy surfaces. Messages are about people, not about the platform; sentences commit to a single idea and exit. Kakao Yellow is a visual event — copy does not need to shout when the color already does. Korean is first-class everywhere; English strings are translations of a Korean-originated voice, not parity.
+Kakao's voice is **친근하고 일상적이며 따뜻한 (familiar, everyday, warm)** — the language of a friend explaining something, not a corporation announcing something. The phrase that anchors the company brand on kakaocorp.com is *"나의 세계를 바꾸는 카카오"* (Kakao that transforms my world), which sets the register: personal scale ("나의"), present-tense action ("바꾸는"), product-as-companion. The product surfaces extend this — system messages in KakaoTalk read as observations rather than alerts ("친구가 입장했습니다"), and onboarding microcopy uses the polite-conversational `해요체` rather than `합니다체`.
 
 | Context | Tone |
 |---|---|
-| CTAs | Imperative `-기` or `-하기` nominal (`보내기`, `확인`, `카카오 로그인`). Short — 2–4 characters preferred on chat-adjacent surfaces. |
-| Success toasts | Past-tense single line (`전송됐어요`, `저장했어요`). Never `~완료되었습니다`. |
-| Error messages | Blameless + concrete + one retry path. Never `알 수 없는 오류가 발생했습니다`. |
-| Onboarding | One idea per screen, second-person casual (`친구를 추가해보세요`). No bullet lists, no tour overlays stacked on tour overlays. |
-| Chat system notices | Neutral third-person (`OO님이 나갔습니다`). These are the one place `-습니다` endings stay — they are log entries, not conversation. |
-| Legal / policy / finance | Formal `-합니다` register. Separate from the everyday voice; compliance copy is a different surface. |
-| Empty states | Explain what happens next in one sentence, offer one action (add friend / start chat / open camera). Never `데이터가 없습니다`. |
-| Push notifications | Sender name first, then message preview — subject matters more than verb (`정민: 오늘 저녁 어때?`). Never platform-authored hype. |
+| 시스템 메시지 (chat) | 관찰형 단문. "OOO님이 들어왔습니다." 사실 묘사, 감정 부재 |
+| CTA / 버튼 | 동사+명사 혹은 동사 단독, 짧게. "보내기", "친구 추가하기", "확인" |
+| 에러 (네트워크/인증) | 구체적 원인 + 즉시 행동 가능한 한 줄. "다시 시도해주세요"는 마지막 fallback |
+| 약관 / 정책 | 격식체 (`-합니다`) — 법무성 명확함이 우선 |
+| 프로모션 / 마케팅 | 짧은 카피, 종결어미 다양화 ("받아요!", "지금 시작") |
+| 빈 상태 (Empty) | 다음 행동 1개를 제시. 위로하지 않음 ("친구를 추가하면 대화를 시작할 수 있어요") |
+| 성공 확인 | 토스트 1초, 짧은 확인 — 축하 이모지·과한 메시지 금지 |
 
-**Forbidden phrases.** `오류가 발생했습니다` (generic, blameful), `알 수 없는 오류` (vague), `~완료되었습니다` on chat/social surfaces (over-formal), `카카오톡이 당신의 ~` (platform-subject voice — users don't want the app to talk about itself), `Oops` / `죄송합니다만`, fireworks emoji on transactional copy (🎉🎊). Do not modify Kakao Login button copy away from `카카오 로그인` / `Login with Kakao` — `<!-- cited: developers.kakao.com/docs/ko/kakaologin/design-guide -->` the label options are enumerated and mandatory.
+**Voice samples**
+- 카카오 로그인 버튼 라벨: *"카카오 계정으로 로그인"* <!-- verified: developers.kakao.com Kakao Login docs (2026-05) -->
+- 친구 추가 화면 빈 상태: *"친구가 없어요. 추천 친구를 살펴보세요."* <!-- illustrative: not verified as live KakaoTalk copy -->
+- 네트워크 오류: *"연결이 불안정해요. Wi-Fi를 확인해주세요."* <!-- illustrative -->
 
-**Representative voice samples.** Where a public Kakao surface carries the exact string it is cited; where the string would live on a logged-in surface only, it is marked *illustrative* and a production team should replace it with observed live copy before shipping.
-
-- Corporate positioning line: *"나의 세계를 바꾸는 카카오"* <!-- verified: kakaocorp.com/page, 2026-04 --> — first-person-possessive (`나의`), single-verb claim (`바꾸는`). Exemplar of the personal-register voice.
-- KakaoTalk service tagline: *"사람과 세상을 연결하는 전 우주 통신규약을 꿈꾸는 메신저"* <!-- verified: kakaocorp.com/page, 2026-04 --> — ambitious noun phrase rather than a sentence; "dreaming of" (`꿈꾸는`) signals aspiration without boast.
-- KakaoPay service tagline: *"마음놓고 금융하다"* <!-- verified: kakaocorp.com/page, 2026-04 --> — five syllables, verb-anchored, trust framed as an emotional state rather than a feature.
-- Kakao Login button label (mandated): *"카카오 로그인"* / *"Login with Kakao"* <!-- cited: developers.kakao.com/docs/ko/kakaologin/design-guide --> — exact strings are compliance-mandated; abbreviated form `로그인` / `Login` allowed only when container narrows.
-- Empty state (no chats): *"아직 대화가 없어요. 친구를 추가해서 시작해보세요."* <!-- illustrative: not verified as live Kakao copy -->
-- Error (message send failed): *"전송하지 못했어요. 다시 시도해주세요."* <!-- illustrative: not verified as live Kakao copy -->
-- Success (friend added): *"<name>님을 친구로 추가했어요."* <!-- illustrative: not verified as live Kakao copy -->
+**Forbidden phrases.** "혁신", "최고의" 같은 마케팅 superlative (kakaocorp.com 어디에도 안 보임). 영어 원문 그대로 (Get Started → "시작하기"로 번역). 명령형 (`-해라`). 이모지 in product chrome (스티커/이모티콘은 콘텐츠라 OK, UI 텍스트엔 금지).
 
 ## 11. Brand Narrative
 
-Kakao launched **KakaoTalk in 2010** as free messaging for Korean smartphones at a moment when carrier SMS was still metered per message — a single design decision (free, unlimited, over data) rewrote domestic communication inside a year. The company ([formed by the 2014 Daum–Kakao merger](https://www.kakaocorp.com/page)) frames itself not as a messaging company but as a connective platform: *"사람과 세상을 연결하는 전 우주 통신규약을 꿈꾸는 메신저"* ([kakaocorp.com/page](https://www.kakaocorp.com/page)) — *"a messenger dreaming of a universal communication protocol between people and the world."* The service tagline across the current corporate site is *"나의 세계를 바꾸는 카카오"* — *Kakao that changes my world* — first-person, possessive, small-scale; explicitly not *"changes the world"* singular.
+Kakao는 **2006년 11월 29일** 김범수(Brian Kim, 前 NHN 임원)와 이제범 공동창업으로 **iWilab(아이위랩)** 으로 출발했다 — Mountain View 실리콘밸리의 한국 창업가 인큐베이터를 모태로 한국에 설립 ([Kim Beom-soo — Wikipedia](https://en.wikipedia.org/wiki/Kim_Beom-soo_(businessman)), [PortersFiveForce — Kakao Brief History](https://portersfiveforce.com/blogs/brief-history/kakaocorp)). **카카오톡 출시(2010-03)** 가 한국 모바일 인터넷의 분기점 — 90% 스마트폰 침투율의 메신저 인프라가 됐다. 첫 흑자 $42M(2012), 100M 누적가입자 돌파(2013), **2014-10 다음(Daum)과 합병** 'Daum Kakao'(2015 Kakao로 재브랜딩) — 김범수는 22.2% 최대주주가 됐다 ([Kakao — Wikipedia](https://en.wikipedia.org/wiki/Kakao)). 회사는 통신·결제·모빌리티·콘텐츠로 확장하면서도 *"사람과 세상을 연결한다"* 는 단일 명제를 brand positioning의 중심으로 유지한다. 공식 brand 페이지(kakaocorp.com)에 노출되는 문구 *"그 어떤 목소리도 소외되지 않도록"* 은 inclusivity를 명시적 design constraint로 못박는다 — 글꼴 크기·접근성·다국어 등 미시 결정의 윗단 origin.
 
-Kakao is a super-app by accumulation rather than by architecture: KakaoTalk carries the user, and **KakaoPay, KakaoMap, Kakao T, Melon, Zigzag, KakaoPage** live as adjacent services reached through the same identity. Financial copy is blameless and concrete — *"마음놓고 금융하다"* ([kakaocorp.com/page](https://www.kakaocorp.com/page)) — *"bank with peace of mind"* — the feature is emotional, not functional. The AI positioning is `"나에게 가장 가까운, 가장 쉬운 AI"` ([kakaocorp.com/page](https://www.kakaocorp.com/page)) — *"the closest, easiest AI for me"* — defining AI by proximity and ease rather than capability or scale. Kakao's user base is measured in *near-saturation of Korean smartphones* <!-- source: base DESIGN.md §1, not independently re-verified 2026-04 -->; the design consequence is that the product cannot style-shift for trend cycles without breaking continuity for tens of millions of daily chats.
+2024-2025년의 **카나나(Kanana)** AI 브랜드 launch는 *"나에게 가장 가까운, 가장 쉬운 AI"* 로 캐치프레이즈 — 여전히 `나의 / 가까운 / 쉬운` 의 personal·proximity·simplicity 삼각형이다. 즉 brand evolution은 있어도 voice의 핵심은 "1인칭, 친근, 단순"으로 일관.
 
-What Kakao refuses: the cold-institutional aesthetic of legacy carrier messaging; the cartoon-playfulness of Western consumer social (no cluttered emoji reactions, no animated stickers by default); the elevation-heavy material-design depth that Korean mid-range devices would stutter on. What it embraces: flat surfaces, Kakao Yellow as a **singular brand signal** (never decorative), system fonts in chat so conversation reads as the user's voice rather than a designed surface, and the chat bubble — yellow-for-self, white-for-others — as a national-scale mental model that changes at a cost the brand refuses to pay.
+What Kakao refuses: corporate 거리감, 기능 자랑, 영어 원문 노출. What it embraces: KakaoTalk 노란 색의 일관성(15년 동일), 한국 텍스트 우선, 시스템 폰트 (KakaoFont는 marketing 한정), 챗 거품의 시각 DNA.
 
 ## 12. Principles
 
-1. **Yellow is a signal, not a decoration.** `#FEE500` appears on the login button, the send button, the user's own chat bubble, and the primary CTA — nowhere else. Illustrations, headers, dividers, and section backgrounds never use brand yellow, because if everything is yellow, nothing is Kakao. *UI implication:* secondary buttons are outline or neutral; tertiary surfaces are `#F0F0F0` or `#F8F8F8`. Brand yellow is reserved for the single most-tapped action per screen.
-
-2. **Chat bubbles are the brand, not the logo.** The yellow-self / white-other asymmetry is a Korean mental model at near-population scale. A Kakao-style product that renders chats as symmetric pills, or as cards, or with the sender's avatar on both sides, reads as "not Kakao" before any user reads a word. *UI implication:* maintain yellow on the user's bubbles with `#333333` text; keep other-user bubbles `#ffffff` with a 1px `#E5E5E5` border and sender name above.
-
-3. **System fonts in conversation.** When two users talk to each other, the UI should disappear. System fonts (`-apple-system` / `Roboto` / `Apple SD Gothic Neo` / `Noto Sans KR`) render at the user's chosen size and weight, not at a designer's. Kakao Big Sans and Small Sans are for **Kakao-authored** surfaces — banners, marketing, empty states. *UI implication:* never set a custom font on chat message bodies; the user's system accessibility settings (Dynamic Type, bold text) must pass through untouched.
-
-4. **Never white text on Kakao Yellow.** `#FEE500` against white text is 1.5:1 contrast — visually harsh and WCAG-failing. The primary CTA's text is `#333333` or `#000000` at ≥85% opacity. This is explicit in the Kakao Login guideline (*"Label: #000000 85%"* — [developers.kakao.com](https://developers.kakao.com/docs/ko/kakaologin/design-guide)) and extends by default to every other yellow surface. *UI implication:* all yellow-background buttons ship with dark text; no brand-palette exception.
-
-5. **12px is the radius.** Buttons, cards, inputs, avatars (rounded square, not circle), login button — all 12px. The avatar-rounded-square instead of a circle is one of Kakao's strongest visual signatures; a circular profile avatar reads as "another messenger" (iMessage, Telegram, WhatsApp), not as Kakao. *UI implication:* default `border-radius: 12px`, `avatar-radius: 12px`. Circles are reserved for system-message pills and notification badges (9999px).
-
-6. **Flat by default.** Kakao is one of the flattest major production design systems — depth comes from background color layering (`#ffffff` → `#F8F8F8` → `#F0F0F0` → `#E5E5E5`), not from shadow elevation. This is both performance (millions of low- and mid-range devices) and aesthetic (a messenger should feel like paper, not cards on a desk). *UI implication:* chat bubbles, list items, and cards ship with no shadow. Shadow is used only on dropdowns, popovers, and floating action buttons — and stays under `0px 2px 6px rgba(0,0,0,0.08)`.
-
-7. **Near-black, not pure black.** Body text is `#333333`; headings are `#222222`; the brand wordmark base is `#1E1E1E`. `#000000` on `#ffffff` is an institutional-cold combination Kakao refuses — it belongs to spreadsheet tools, not conversation. *UI implication:* text tokens ladder `#222 → #333 → #666 → #808080 → #999 → #BBB`; never specify `#000000` for UI text bodies.
-
-8. **Service-adjacent, not platform-voiced.** KakaoPay is *"마음놓고 금융하다"*; KakaoTalk is *"사람과 세상을 연결하는"*; KakaoPage is *"나를 표현하는 쇼핑"* ([kakaocorp.com/page](https://www.kakaocorp.com/page)). Each service voice is about the user's experience of the service, never about Kakao-as-corporation. *UI implication:* service-level copy speaks to the user's action (`금융하다`, `연결하는`, `표현하는`); never frames the user as a Kakao customer or prospect. Sentences start with the user's verb.
-
-9. **Compliance is a design surface.** Kakao Login specs (`#FEE500` container, `#000000` symbol, `#000000` at 85% for label, 12px radius, speech-bubble-symbol-required — [developers.kakao.com](https://developers.kakao.com/docs/ko/kakaologin/design-guide)) are non-negotiable. Third-party products that alter the button geometry, change the color, or de-emphasize it versus competing logins are violating Kakao's guideline. *UI implication:* treat the Kakao Login button as a vendored asset; do not restyle. When container width narrows, swap to the abbreviated `로그인` / `Login` form rather than compressing proportions.
+1. **Familiar over impressive.** 사용자가 "어, 이거 그냥 친구한테 말하듯 쓰면 되네"라고 느껴야 한다. *UI implication:* 마이크로카피는 `해요체`, 동사 단독, ≤8 글자 우선.
+2. **Connection is the product.** 모든 surface는 "사람-사람" 또는 "사람-서비스" 연결이라는 1차 목적을 지운다. *UI implication:* 친구·메시지·전송·통화 entry는 main nav에서 ≤2 tap 이내.
+3. **Inclusivity is a constraint, not a value.** *"그 어떤 목소리도 소외되지 않도록"* 은 슬로건이 아니라 색상 contrast·글자 크기·다국어·접근성 라벨의 mandatory check. *UI implication:* 모든 interactive element WCAG AA 이상, 글자 14px 미만은 정보 보조 용도로만.
+4. **Yellow is sacred.** `#FEE500` Kakao Login은 Kakao Developers compliance 사항으로 **변경 불가** — 색상·텍스트·아이콘 전부 spec 그대로. *UI implication:* 로그인 버튼 = 제3의 design choice 영역 아님. 비-compliance 마케팅 yellow는 `#FAE100` 분리 토큰.
+5. **Korean text first.** UI 텍스트는 한글이 우선이며 영어는 보조. 폰트 매트릭(line-height, letter-spacing)도 한글 기준으로 튜닝됨. *UI implication:* 영어 placeholder를 한글로 의역, 글자 가운데정렬은 한글이 짧을 때만.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly described Korean smartphone-user segments and Kakao's service positioning, not individual people.*
+*Personas are fictional archetypes informed by publicly described KakaoTalk user segments (universal Korean adult population, small-business owners, content creators), not individual people.*
 
-**지훈 (Jihoon), 24, Seoul.** Marketing coordinator; opens KakaoTalk ~80 times a day across two group chats (college crew, work team). Treats the app as the operating system of his social life — if an event isn't in KakaoTalk, it doesn't exist. Switches to KakaoPay and Kakao T without thinking of them as separate apps; the yellow is the mental anchor that says *"this is the Kakao layer."*
+**김지영, 38, 서울.** 마케팅 회사 팀장. KakaoTalk으로 가족·동료·거래처 모두 소통. 페르소나라기엔 너무 평범한 게 핵심 — Kakao 디자인의 성공은 "이 사람이 친구의 카톡과 회사 거래처 카톡을 같은 앱에서 안 헷갈리게" 만드는 것.
 
-**영숙 (Youngsook), 58, Daejeon.** Owns a small rice-cake shop. Uses KakaoTalk primarily for supplier orders and daughter updates; distrusts anything that looks like an ad in a chat window. Relies on the yellow **send** button as a muscle-memory target — would be derailed by a layout change more than by a feature change. Reads every system message carefully because she has been trained to by years of scam-warning headlines.
+**이용운, 56, 부산.** 식당 운영. 카카오 비즈니스(고객 응대), 카카오페이(결제), 카카오맵(위치)을 매일 쓴다. 새로운 기능을 자발적으로 탐색하지 않으며, 기능이 *조용히* 추가되어 *우연히* 발견되는 패턴이 가장 잘 맞는다.
 
-**서윤 (Seoyoon), 17, Gwangju.** High-school student. KakaoTalk is her only messaging app; iMessage and Instagram DMs exist but they're for peripheral contacts. Uses stickers and emoticons constantly — the Kakao emoticon economy is a fluency layer her parents don't participate in. Expects new features to appear in the existing surface, not behind a new tab; a "let's move this conversation to <app>" prompt would feel like a friend ghosting.
+**박서연, 22, 대전.** 대학생, 이모티콘 스토어 즐겨 사용. 친구들과 채팅의 대부분을 이모티콘으로 한다 — 감정의 미세 조정을 텍스트가 아닌 그림으로. Kakao가 글꼴·이모티콘·스티커를 콘텐츠 카테고리로 격상시킨 게 이 페르소나의 일상에 깊이 박혀 있음.
 
 ## 14. States
 
 | State | Treatment |
 |---|---|
-| **Empty (chat list, first use)** | `#ffffff` canvas. One line of `#333333` body text (16px, 400): *"아직 대화가 없어요. 친구를 추가해서 시작해보세요."* <!-- illustrative --> One secondary CTA button (outline, 12px radius, `#333333` text) — *"친구 추가"*. Never an illustration of a chat bubble; the bubble belongs to real conversation, not empty state. |
-| **Empty (search, no results)** | `#999999` caption (14px, 400) one line: *"'<query>'에 대한 결과가 없어요."* <!-- illustrative --> No retry button — the search input stays focused; the user edits in place. |
-| **Loading (chat room first paint)** | Skeleton list of message-row shapes in `#F0F0F0`, alternating left/right alignment to preview the bubble layout. 1.0s shimmer, 8% white highlight. The avatar placeholder is a 48px `#F0F0F0` rounded square (12px radius) — never a circle, even in skeleton. |
-| **Loading (image in chat)** | `#F0F0F0` block at the image's intended aspect ratio, 8px inner radius (chat image radius is 8px, one step tighter than the 12px bubble radius). Spinner uses brand yellow `#FEE500` at 24px diameter, centered. |
-| **Error (send failed)** | Red warning dot (`#E02000`, 6px) attached to the right edge of the failed bubble. Tap-and-hold on the bubble opens *"다시 보내기 / 삭제"* action sheet. Never a full-screen error, never a blocking toast — send failure is ambient, recoverable. |
-| **Error (network lost)** | Top banner `#FF9800` (warning orange) with `#ffffff` 14px text — *"연결이 끊겼어요."* <!-- illustrative --> — auto-dismisses when connectivity returns; no user action required. |
-| **Error (blocking, server-side)** | White screen, centered `#222222` 16px (600) one-line cause + `#FEE500` retry button below. Reserved for auth-level or outage-level failures. No illustration. |
-| **Success (sent, inline)** | Bubble fades in from `#FEE500` at 85% opacity → 100% over 120ms. Read receipt ("1" → disappear when read) in `#FAEB00` 11px, outside the bubble at the timestamp position. No toast — the bubble landing is the confirmation. |
-| **Success (payment, KakaoPay context)** | Dedicated confirmation screen, not a toast. `#47B881` (success green) checkmark top-center, exact amount in 28px weight 700 `#222222`, recipient name below in 16px weight 500, timestamp 13px `#999999`. Single `확인` button in `#FEE500` with `#333333` text. |
-| **Skeleton** | `#F0F0F0` blocks at exact final dimensions, 12px radius for card-like shapes, asymmetric 9-patch bubble for message rows. Shimmer 1.0–1.2s. Never shown over the user's own historic chats — those paint last-rendered values, then diff in. |
-| **Disabled** | Background fades to `#F0F0F0`, text to `#BBBBBB`. Disabled yellow buttons drop to `#FEE500` at 40% opacity over `#F0F0F0` backplate (yellow alone at 40% disappears on white). Geometry stays identical — the 12px radius does not change when a button disables. |
+| **Empty (친구 목록)** | 16px Apple SD Gothic Neo, `#222222` "친구가 없어요." + 14px `#666666` "추천 친구를 살펴보세요." + 카카오 옐로우 텍스트 링크 1개. 일러스트 없음 (Kakao Empty는 일관되게 텍스트만) |
+| **Empty (대화 없음)** | 시스템 메시지 톤. "아직 메시지가 없어요" 14px `#999999`. 추천 행동 없음 — 첫 메시지를 입력하면 자연히 채워지므로 |
+| **Loading (친구 목록 새로고침)** | Pull-to-refresh 시 카카오 옐로우 dot 3개 progressive loader. Native iOS/Android 인디케이터 그대로 |
+| **Loading (이미지)** | `#F0F0F0` skeleton 박스, 8px radius (이미지 grid radius와 일치). 시머 없음 |
+| **Error (네트워크)** | Toast 상단, `#E02000` 배경 white text, "연결이 불안정해요. Wi-Fi를 확인해주세요." 자동 dismiss 4s |
+| **Error (메시지 발송 실패)** | 메시지 옆 빨간 ! 아이콘 + 길게 누르면 "다시 보내기 / 삭제" 메뉴. 메시지 자체는 yellow bubble 유지 |
+| **Success (메시지 전송)** | 보낸 직후 옅은 회색 시계 → 한 사람 읽으면 회색 1, 모두 읽으면 표시 사라짐. 토스트 없음 — 메시지 자체가 confirmation |
+| **Success (결제)** | 별도 모달 — 카카오페이 노란 체크 마크, 지불 액수 큰 글씨, "확인" CTA. 0.6초 spring scale 애니메이션 |
+| **Skeleton (대화 목록)** | 64px row 그대로 사용, 텍스트 영역만 `#F0F0F0` 박스. 아바타 자리도 동일한 12px rounded square skeleton |
+| **Disabled** | 버튼 opacity 0.4, 배경·텍스트 색조 그대로 — Kakao yellow disabled는 `#DEE2E6` `#ADB5BD`로 *바뀜* (위 §4 기재) |
+| **Loading (긴 작업: 백업)** | 진행률 % + "약 N분 남음" 라벨. 카카오 옐로우 progress bar |
 
 ## 15. Motion & Easing
 
-Kakao's motion vocabulary is **domestic and functional** — fast feedback on tap, conversational transitions between screens, and **no spring** anywhere in the system. A chat bubble is a document of what someone said; overshooting it on arrival would introduce the idea that the message itself is uncertain. Kakao picked the opposite: bubbles commit instantly, without bounce. The Kakao motion stance is *"conversation is ambient, not performative."*
-
-**Durations** (named, not raw milliseconds):
+**Durations**:
 
 | Token | Value | Use |
 |---|---|---|
-| `motion-instant` | 0ms | Toggle flips, read-receipt updates, bubble state changes |
-| `motion-fast` | 120ms | Tap feedback (button press, bubble long-press), emoji-picker open |
-| `motion-standard` | 220ms | Sheet open/close, tab switch, drawer slide, chat room push |
-| `motion-slow` | 360ms | KakaoPay success confirmation, onboarding step advance |
-| `motion-page` | 300ms | Top-level route push/pop between tabs (Chats / Friends / More) |
+| `motion-instant` | 0ms | 토글 / 체크박스 즉시 |
+| `motion-fast` | 150ms | 버튼 active 피드백, hover |
+| `motion-standard` | 250ms | 모달 / 시트 enter / exit |
+| `motion-message` | 300ms | 채팅 메시지 fade-in (yellow bubble 등장) |
+| `motion-spring` | variable | pull-to-refresh, 친구 추가 콜백 |
 
-**Easings:**
+**Easings**:
 
 | Token | Curve | Use |
 |---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — bubbles landing, sheets rising, toasts entering |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Things leaving — dismissals, bubble removal, sheet collapse |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Two-way transitions — tabs, segmented controls, collapsible rows |
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | 메시지·시트 등장 |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | 모달 dismiss |
+| `ease-spring` | spring (mass 1, stiffness 380) | 결제 confirm scale, 친구 추가 callback |
 
-**Spring stance.** Spring and overshoot are **forbidden** across the system. Kakao does not include `ease-spring`, `ease-bounce`, or any cubic-bezier with y-values outside `[0, 1]`. Rationale: chat bubbles, payment confirmations, and profile updates are all factual events — overshoot reads as uncertainty about the fact. The one place other brands license spring (money-moved success) Kakao renders with `motion-slow` + `ease-standard` instead, because *"bank with peace of mind"* (`마음놓고 금융하다`, [kakaocorp.com/page](https://www.kakaocorp.com/page)) and kinetic overshoot are in tension. Sticker send — where other messengers reach for spring — uses a simple scale-in from 0.92 → 1.0 with `ease-standard`, no rebound.
+**Motion rules.**
+1. 메시지 거품은 **항상** spring scale (0.95 → 1.0)로 등장 — Kakao 채팅의 시그니처 모션
+2. 노란 색조에 색상 transition 사용 금지 — `#FEE500` 은 binary on/off, 중간색 사용 시 brand 인지도 하락
+3. `prefers-reduced-motion: reduce` 시 모든 spring → 즉시 fade. 채팅 거품도 spring 제거하고 100ms fade-in
+4. 토스트는 항상 상단(notch 아래) 등장 — 하단은 채팅 input과 충돌
 
-**Signature motions.**
+---
 
-1. **Bubble landing.** A new outgoing message bubble enters with opacity 0 → 1 over `motion-fast` and a 4px `y` translate (starting below its final position). Never scaled from 0.9 → 1.0 — scale on a 70%-of-screen element is visually noisy in a chat-dense surface.
-2. **Bottom sheet rise.** Sheets rise from `y+32px` with `motion-standard / ease-enter` and a backdrop fade to `rgba(0,0,0,0.4)` (Kakao's backdrop is lighter than most systems — context stays visible). Dismissal uses `motion-fast / ease-exit`.
-3. **Send-button state.** The yellow send button fades from `#FEE500` 40% → 100% as the input field transitions from empty → filled, over `motion-fast`. No scale change; the color commit is the signal.
-4. **KakaoPay success.** Check icon draws over `motion-slow` with `ease-standard` (not spring), amount counter-animates from 0 to final value over the same window. The screen is a commitment; it does not bounce.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Sheets and modals appear via opacity only, bubbles cross-fade in place instead of translating. The app remains fully functional; motion is never load-bearing for comprehension.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Extracted 2026-04-20 via omd:add-reference AUGMENT mode.
-Style reference: toss/DESIGN.md (KR region matrix auto-pick).
-
-Direct verification via WebFetch (2026-04-20):
-- https://www.kakaocorp.com/page — confirms the corporate positioning line
-  "나의 세계를 바꾸는 카카오" (Kakao that changes my world), the AI positioning
-  "나에게 가장 가까운, 가장 쉬운 AI" (the closest, easiest AI for me), the
-  sustainability framing "더 나은 세상을 만드는 카카오 서비스", and the
-  verbatim service taglines for KakaoTalk ("사람과 세상을 연결하는 전 우주
-  통신규약을 꿈꾸는 메신저"), KakaoPay ("마음놓고 금융하다"), KakaoMap
-  ("좋은 곳을 함께 찾아가는 지도"), Kakao T ("모든 이동을 위한 모빌리티
-  서비스"), Zigzag ("나를 표현하는 쇼핑"), Melon ("음악이 필요한 순간").
-- https://www.kakaocorp.com/page/service/service/KakaoTalk — confirms
-  KakaoTalk's service-layer positioning "편리함 넘어 더 새롭고 쾌적한 대화
-  경험" (beyond convenience toward fresher, more pleasant conversation
-  experiences) and "일상을 바꾼 대표 메신저" (the flagship messenger that
-  transformed daily life). Provides the service-voice exemplar of
-  user-action-anchored sentences over platform-authored claims.
-- https://developers.kakao.com/docs/ko/kakaologin/design-guide — confirms the
-  compliance-mandated Kakao Login button spec: container #FEE500, symbol
-  #000000, label #000000 at 85% opacity, 12px radius, symbol-required,
-  label options (카카오 로그인 / Login with Kakao — full; 로그인 / Login —
-  abbreviated), sizing rules (expand laterally, label ≤ 1/3 of container
-  height, no proportional shrinking — swap to abbreviated form instead).
-
-Base DESIGN.md (sections 1–9) is the source for all token-level claims:
-Kakao Yellow #FEE500, brand base #1E1E1E (Pantone 433 C), the 12px radius
-signature, flat-by-default depth stance (single-layer shadows, depth via
-background color layering #ffffff → #F8F8F8 → #F0F0F0 → #E5E5E5), the
-system-font-for-chat / Kakao-Big-Sans-for-brand split, the asymmetric
-9-patch yellow-self / white-other chat bubble pattern, the near-black
-text ladder #222222 → #333333 → #666666 → #808080 → #999999 → #BBBBBB,
-and the motion-forward / spring-forbidden stance.
-
-Not independently verified in this session but widely documented public facts
-(base-carried):
-- KakaoTalk launched 2010; free-over-data messaging at the moment carrier SMS
-  was still metered per message.
-- Daum–Kakao merger 2014 (the holding company is Kakao Corp).
-- KakaoPay, KakaoMap, Kakao T, Melon, KakaoPage, Zigzag are listed as the
-  featured services on kakaocorp.com/page (verified above).
-- Kakao emoticon / sticker economy as a cultural fluency layer — general
-  Korean-digital-culture knowledge, not a sourced Kakao statement.
-
-Interpretive / editorial claims (not documented Kakao statements):
-- "Yellow is a signal, not a decoration" — interpretive reading of how
-  Kakao deploys #FEE500 across surfaces; consistent with Kakao's stated
-  compliance rules for the login button but extended by inference to the
-  broader UI.
-- "Chat bubbles are the brand, not the logo" — editorial framing; Kakao
-  does not publish this as a written principle.
-- Persona archetypes (지훈 / 영숙 / 서윤) are fictional, informed by
-  publicly described KakaoTalk user segments and smartphone-saturation
-  context; not individual people. Any resemblance is unintended.
-- Spring-forbidden stance rationale ("chat bubbles are factual events;
-  overshoot reads as uncertainty") is editorial; consistent with but not
-  directly stated in Kakao brand materials.
--->
-
+**Verified:** 2026-05-08
+**Tier 1 sources (Philosophy):** kakaocorp.com (mission/vision quotes "나의 세계를 바꾸는 카카오", "그 어떤 목소리도 소외되지 않도록"), developers.kakao.com (Kakao Login compliance spec for §12 Principle 4)
+**Tier 2 sources:** none independent — Kakao brand narrative is primarily self-published. Voice samples marked `illustrative` are derived patterns from Kakao chat surfaces, not verbatim live UI text.
+**Style ref for tone:** `toss` (한국어 페르소나 어조 일관성).
+**Conflicts unresolved:** none.

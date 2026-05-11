@@ -293,3 +293,76 @@ The color system is deliberately minimal. The primary palette consists of just t
 6. Three-stage interaction: default → hover (darkened) → active (deeply darkened) for all semantic colors.
 7. Borders use `rgba(15, 0, 0, 0.12)` -- a warm transparent dark, not neutral gray. This ties borders to the warm palette.
 8. Spacing follows an 8px grid: 8, 16, 24, 32, 40, 48, 64, 80, 96px. Use 4px for fine adjustments only.
+
+## 10. Voice & Tone
+
+OpenCode's voice is **OSS-AI-coding-direct and CLI-fluent.** "오픈 소스 AI 코딩 에이전트" — open-source AI coding agent positioning. Warm dark canvas + 4px sharp radius signal "premium developer tool with OSS heritage."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "다운로드", "문서 읽기", "Try it" |
+| Marketing | CLI-first. `curl -fsSL https://opencode.ai/install | sh` as hero |
+| Documentation | Code-block-heavy, terminal-output-rich |
+| Error | Specific. "Model not configured. Run `opencode setup`." |
+
+**Voice samples**
+- Marketing CTAs: *"다운로드"* / *"문서 읽기"* <!-- verified: opencode.ai homepage 2026-05 -->
+- Hero install snippet: *"curl -fsSL https://opencode.ai/install | sh"* <!-- verified: opencode.ai homepage -->
+
+**Forbidden phrases.** "Revolutionary AI coding". Generic Cursor-comparison framing.
+
+## 11. Brand Narrative
+
+OpenCode is the **open-source AI coding agent** built by **SST (Serverless Stack)** team — designed for terminal-first workflows ([opencode.ai](https://opencode.ai/), [GitHub: sst/opencode](https://github.com/sst/opencode)). Created by **Dax Raad** alongside SST co-founders **Jay (Frank's partner from University of Waterloo, Anomaly co-founder)** and **Frank Wang (CTO)**, with **Adam Elmore** ([Tech Funding News — OpenCode background story](https://techfundingnews.com/opencode-the-background-story-on-the-most-popular-open-source-coding-agent-in-the-world/), [Baseten — Conversation with Dax](https://www.baseten.co/blog/building-ai-agents-open-code-and-open-source-a-conversation-with-dax/)). **SST origin**: Jay + Frank met **first week at University of Waterloo**, launched **Anomaly** (Jay CEO / Frank CTO) → in **2021 took Serverless Stack (SST) through Y Combinator** raising **$1M post-demo-day** with backing from founders of **PayPal, LinkedIn, Yelp, YouTube** — SST grew to **25,000 GitHub stars** and turned profitable in 2025. **OpenCode launched June 19 2024** built from day one as a **server-client architecture** to connect to any frontend (terminal, desktop, web, mobile). Reached **650,000 monthly active users in 5 months** — one of the fastest adoption curves in developer tooling. Dax Raad is also creator of **Zen** (commerce-tech tool, Tier 1 confirms "Zen 알아보기" CTA on opencode.ai homepage cross-promotes Zen). Position: serious developer tool that respects CLI heritage while integrating LLM capabilities.
+
+## 12. Principles
+
+1. **OSS by default.** *UI implication:* GitHub link prominent; self-hosted-first.
+2. **Warm dark canvas.** Borders `rgba(15,0,0,0.12)` warm transparent. *UI implication:* preserve warmth.
+3. **4px sharp radius.** *UI implication:* never round more.
+4. **8px grid.** *UI implication:* preserve 8px spacing; 4px fine adjustments only.
+5. **CLI install is the marketing.** *UI implication:* hero shows actual install command.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by OpenCode user segments (terminal-first developers, OSS-enthusiast engineers, indie SaaS), not individual people.*
+
+**Sergey Volkov, 35, Berlin.** Senior engineer. OpenCode as terminal-native Cursor alternative.
+
+**Sofia Russo, 28, Milan.** Indie developer. Self-hosts OpenCode for privacy.
+
+**Marcus Chen, 41, San Francisco.** Engineering manager. Evaluates OpenCode + Claude vs Cursor.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no projects)** | "Open a folder" CTA |
+| **Empty (no chat)** | "Try `opencode chat`" CLI snippet |
+| **Loading (model)** | Per-token streaming |
+| **Loading (file applying)** | Diff view with applying state |
+| **Error (model)** | Specific provider error |
+| **Error (apply)** | Diff stays visible + retry |
+| **Success (changes)** | File pulse on changed files |
+| **Success (commit)** | Multi-file diff success summary |
+| **Skeleton (file tree)** | Warm dark placeholders |
+| **Disabled (no model configured)** | Setup link |
+| **Loading (long agent)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 43 — Apple-tier)
+**Tier 1 sources:** opencode.ai home + /docs (live DOM via playwright — Primary **`#201d1d` Coffee Charcoal** 4px / 40-42px / 8×16×8×10 asym (icon-spacing) / 16px·**500**; Inverse `#fdfcfc` Soft White 4px (Zen cross-promo); install-snippet text-only tabs color-state; doc sidebar `#f8f7f7` active. **Warm-cast color discipline** — no pure black/white anywhere).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/SST):** opencode.ai/about, GitHub sst/opencode, Tech Funding News (OpenCode background), Baseten (Dax conversation), Codacy blog.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Zen cross-promo Inverse Primary + install-snippet tab system + warm-cast discipline missed by prior pass.

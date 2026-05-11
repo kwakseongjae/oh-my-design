@@ -355,3 +355,75 @@ Light Surface:   #ededed / #ffffff (inverted sections)
 5. **Refine spacing**: 8px base unit, 24-32px within sections, 64-120px between sections
 6. **Technical details**: Add IBM Plex Mono uppercase labels for tags and metadata
 7. **Polish**: Ensure all interactive elements hover to `#0052ef`, all buttons are pills or subtle 5px radius, borders are hairline (1px)
+
+## 10. Voice & Tone
+
+Sanity's voice is **content-platform-confident and developer-warm.** "The Content Operating System for the AI era" — confident enterprise positioning with developer-friendly chrome. Mixed type system + flat-no-shadow signals "premium content tooling."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Talk to sales", "Start free" |
+| Marketing | Capability-list. Studio + Dataset + Content Lake naming |
+| Documentation | Deep, code-block-heavy, GROQ-aware |
+| Error | Specific. "Schema validation failed at field X." |
+
+**Voice samples**
+- Tagline: *"The Content Operating System for the AI era"* <!-- verified: sanity.io homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary CMS". Aggressive WordPress-comparison framing.
+
+## 11. Brand Narrative
+
+Sanity was **founded 2016 in Norway** with the **public launch November 2017** by four co-founders: **Magnus Kongsli Hillestad**, **Even Westvang**, **Øyvind Rostad**, and **Simen Svale Skogsrud** ([Threshold Ventures — Magnus Hillestad founder Q&A](https://medium.com/threshold-ventures/magnus-hillestad-sanity-founder-story-80b7e97952d), [Sanity — Magnus profile](https://www.sanity.io/exchange/community/magnus)). **Dual-headquartered in Oslo and San Francisco** with remote team across four continents. Headless CMS positioned as content infrastructure — **Studio** (editor) + **Dataset** (storage) + **Content Lake** (queryable). Founding insight: content must be **structured data**, easily queried + distributed across APIs (vs traditional page-bound CMS). **Series B $39M (2021)** led by **ICONIQ Growth** with **Lead Edge Capital** + existing investors — ICONIQ's portfolio includes **Datadog, Snowflake, Notion, Airtable, Zoom** ([Sanity blog — It takes a village (Series B)](https://www.sanity.io/blog/it-takes-a-village), [TechStartups — Sanity $39M Series B](https://techstartups.com/2021/06/24/norwegian-tech-startup-sanity-raises-39-million-grow-unified-content-platform-building-data-driven-content-solutions/)). Strong adoption among design-first SaaS + e-commerce. The **2024-2025 evolution to "Content Operating System for AI era"** positions Sanity as the structured-content layer for AI applications — confirmed via live `<title>` "The Content Operating System for the AI era | Sanity" 2026-05.
+
+## 12. Principles
+
+1. **Content as code.** Schemas, GROQ queries, deploys as code. *UI implication:* schema-first approach surfaces.
+2. **Studio is the canvas.** Customizable React-based editor. *UI implication:* showcase Studio screenshots as primary marketing asset.
+3. **Hairline borders, no shadow.** *UI implication:* depth via 1px borders + color contrast.
+4. **Pills + 5px subtle.** *UI implication:* primary CTAs pill; secondary 5px radius.
+5. **Hover to `#0052ef` blue.** *UI implication:* preserve hover blue across all interactive elements.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Sanity user segments (developers, content teams, e-commerce marketers), not individual people.*
+
+**Henrik Sondergaard, 35, Copenhagen.** Senior engineer at e-commerce SaaS. Sanity Studio for product content management.
+
+**Sofia Russo, 30, Milan.** Indie SaaS shipping editorial sites. Sanity for headless CMS + Next.js integration.
+
+**Marcus Chen, 38, San Francisco.** Content lead at growth-stage SaaS. Owns the marketing site CMS.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no content)** | "Create your first document" CTA + schema picker |
+| **Empty (no schemas)** | "Define a schema" with code example |
+| **Loading (query)** | GROQ query result inline |
+| **Loading (publishing)** | Per-document progress |
+| **Error (schema)** | Specific. "Field X validation failed." |
+| **Error (deploy)** | Token + permission diagnostic |
+| **Success (published)** | Subtle confirmation + revision history |
+| **Success (preview)** | Inline preview link |
+| **Skeleton (document list)** | Hairline-border placeholders |
+| **Disabled (no permission)** | Role tooltip |
+| **Loading (long deploy)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 53 — Apple-tier)
+**Tier 1 sources:** sanity.io home + /pricing (live DOM via playwright — Primary **`color(display-p3 1 0.3333 0)`** Sanity Orange-Red (~`#ff5500` sRGB / wide-gamut P3) 99999px full-pill / 35px (page 13px·400 ALL CAPS) or 55px (hero 24px·400) / 4×12 or 8×32; Inverse `#0b0b0b` Near-Black; Light Secondary `#ededed`; A11y skip-nav `#0052ef` Sanity Blue. **`display-p3()` wide-gamut color-space — most advanced in corpus**).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** Threshold Ventures (Magnus Hillestad Q&A), Sanity profile pages (Magnus + Simen), Sanity blog (Series B "It takes a village"), TechStartups, Nordic 9, Crunchbase.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier mistake reverted (significant):** prior footer claimed Primary was `#0b0b0b` 0px (announcement-banner strip) — canonical is **wide-gamut display-p3 Orange-Red 99999px full-pill**. Massive correction.

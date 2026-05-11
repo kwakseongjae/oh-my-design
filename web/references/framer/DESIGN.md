@@ -88,22 +88,76 @@ The overall effect is a nightclub for web designers: dark, precise, seductive, a
 ## 4. Component Stylings
 
 ### Buttons
-- **Frosted Pill**: `rgba(255, 255, 255, 0.1)` background, black text (`#000000`), pill shape (40px radius). The glass-effect button that lives on dark surfaces — translucent, ambient, subtle
-- **Solid White Pill**: `rgb(255, 255, 255)` background, black text (`#000000`), full pill shape (100px radius), padding `10px 15px`. The primary CTA — clean, high-contrast on dark, unmissable
-- **Ghost**: No visible background, white text, relies on text styling alone. Hover reveals subtle frosted background
-- **Transition**: Scale-based animations (matrix transform with 0.85 scale factor), opacity transitions for reveal effects
 
-### Cards & Containers
-- **Dark Surface Card**: Black or near-black (`#090909`) background, `rgba(0, 153, 255, 0.15) 0px 0px 0px 1px` blue ring shadow border, rounded corners (10px–15px radius)
-- **Elevated Card**: Multi-layer shadow — `rgba(255, 255, 255, 0.1) 0px 0.5px 0px 0.5px` (subtle top highlight) + `rgba(0, 0, 0, 0.25) 0px 10px 30px` (deep ambient shadow)
-- **Product Screenshots**: Full-width or padded within dark containers, 8px–12px border-radius for software UI previews
-- **Hover**: Subtle glow increase on Framer Blue ring shadow, or brightness shift on frosted surfaces
+**Solid White Pill**
+- Background: `#ffffff`
+- Text: `#000000`
+- Radius: 100px (pill)
+- Padding: 10px 15px
+- Font: 15px / 400 / Inter
+- Use: Primary CTA — clean, high-contrast on dark
 
-### Inputs & Forms
-- Minimal form presence on the marketing site
-- Input fields follow dark theme: dark background, subtle border, white text
-- Focus state: Framer Blue (`#0099ff`) ring border, `1px solid #0099ff`
-- Placeholder text in `rgba(255, 255, 255, 0.4)`
+**Frosted Pill**
+- Background: `rgba(255, 255, 255, 0.1)`
+- Text: `#ffffff`
+- Radius: 40px
+- Padding: 10px 15px
+- Font: 15px / 400 / Inter
+- Use: Glass-effect button on dark surfaces — translucent, ambient
+
+**Ghost**
+- Background: transparent
+- Text: `#ffffff`
+- Radius: 40px
+- Padding: 10px 15px
+- Hover: frosted background `rgba(255, 255, 255, 0.1)`
+- Use: Tertiary action — text-only
+
+### Inputs
+
+**Dark Input**
+- Background: `#090909`
+- Text: `#ffffff`
+- Border: 1px solid `rgba(255, 255, 255, 0.1)`
+- Radius: 8px
+- Padding: 10px 12px
+- Focus: 1px solid `#0099ff` ring with `rgba(0, 153, 255, 0.15)` glow
+- Placeholder: `rgba(255, 255, 255, 0.4)`
+- Use: Form input on dark theme (marketing site has minimal forms)
+
+### Cards
+
+**Dark Surface Card**
+- Background: `#090909`
+- Text: `#ffffff`
+- Radius: 12px
+- Padding: 24px
+- Shadow: `rgba(0, 153, 255, 0.15) 0px 0px 0px 1px` (Framer Blue ring border)
+- Use: Standard dark surface card with blue ring border
+
+**Elevated Card**
+- Background: `#090909`
+- Text: `#ffffff`
+- Radius: 12px
+- Padding: 24px
+- Shadow: `rgba(255, 255, 255, 0.1) 0px 0.5px 0px 0.5px, rgba(0, 0, 0, 0.25) 0px 10px 30px`
+- Use: Elevated card — subtle top highlight + deep ambient shadow
+
+**Product Screenshot**
+- Background: transparent (or `#090909`)
+- Radius: 10px
+- Padding: 0px
+- Use: Software UI preview frame within dark containers
+
+### Badges
+
+**Default**
+- Background: `rgba(255, 255, 255, 0.1)`
+- Text: `#ffffff`
+- Radius: 9999px (pill)
+- Padding: 4px 10px
+- Font: 12px / 400 / Inter
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — frosted pill badge on dark theme.
 
 ### Navigation
 - **Dark floating nav bar**: Black background with frosted glass effect, white text links
@@ -244,3 +298,76 @@ When refining existing screens generated with this design system:
 3. Check that Framer Blue appears ONLY on interactive elements — never as decorative background or text color for non-links
 4. Ensure all buttons are pill-shaped — any squared corner immediately breaks the Framer aesthetic
 5. Test frosted glass surfaces by checking they have exactly `rgba(255, 255, 255, 0.1)` — too opaque looks like a bug, too transparent disappears
+
+## 10. Voice & Tone
+
+Framer's voice is **designer-warm and craft-confident** — speaks like a tool team that genuinely loves design conventions. Marketing emphasizes the joy of building professional websites without code. Hero copy keeps lower-case for warmth, headline-as-statement.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Start for free", "Get started", "Sign up" |
+| Marketing | Single claim, big screenshots dominate |
+| Documentation | Visual-first, screenshots, clearly linked tutorials |
+| Error (publishing) | Specific. "Domain SSL provisioning. Try again in 5 minutes." |
+
+**Voice samples**
+- Marketing tagline: *"Create a professional website, free."* <!-- verified: framer.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary website builder", "magic". Aggressive "compete with Webflow" framing.
+
+## 11. Brand Narrative
+
+Framer was founded **2014** in **Amsterdam** by **Koen Bok (CEO)** and **Jorn van Dijk** — both Dutch ex-Facebook designer-engineers who **previously co-founded the design studio Sofa**, acquired by Facebook in 2011 (where they shipped Messages, Ads, Video, Photos product surfaces) ([Tracxn — Framer](https://tracxn.com/d/companies/framer/__WwABy6r40KPszbW9ZaEHR6v4BX_MP8437KgHYLns7fo), [Jorn van Dijk personal](https://jornvandijk.com/)). Originally a **code-based prototyping tool** for designers at Apple/Google/Facebook (and the parent of the **Framer Motion** animation library now used across the React ecosystem). **Major pivot 2022-2023** to a no-code website builder competing with Webflow, while preserving the Framer Motion craft DNA. Funding ladder: **$1.35M Seed (Dec 2014)** → **€25.5M Series B (2022)** → **$27M Series C (Sep 2023)** led by **Meritech Capital** with **Atomico, Accel, Foundation Capital** → **$100M Series D (Aug 13 2025)** led by **Meritech + Atomico** with **WiL + HV Capital**, valuing Framer at **$2B "double-unicorn"** ([TechCrunch — Framer $2B](https://techcrunch.com/2025/08/28/no-code-website-builder-framer-reaches-2b-valuation/), [Sifted](https://sifted.eu/articles/framer-raises-100m), [I amsterdam — double unicorn](https://www.iamsterdam.com/en/business/framer-raises-100m-becoming-a-double-unicorn)). **Total raised ~$163M.** The brand voice tracks this evolution — design-tool-first identity, now a website tool that hasn't lost the craft register.
+
+## 12. Principles
+
+1. **Designer aesthetic, not engineer aesthetic.** *UI implication:* visual-first interfaces; canvas + properties, never code-only views in chrome.
+2. **Pill shapes signal "polished".** Any squared corner breaks the Framer aesthetic. *UI implication:* nav, buttons, cards — all pill-radius (24-36px).
+3. **Frosted glass for depth.** `rgba(255,255,255,0.1)` overlays. *UI implication:* layered floating panels never opaque.
+4. **Motion is the brand.** Framer Motion library. *UI implication:* every interaction has spring physics; static UIs feel un-Framer.
+5. **Live publish.** *UI implication:* "Publish" CTA shows live preview URL + redeploys without page reload.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Framer user segments (independent designers, design teams shipping marketing sites, agencies), not individual people.*
+
+**Sofia Russo, 32, Milan.** Indie designer shipping client marketing sites. Replaced Webflow workflow with Framer for the better animation defaults.
+
+**Henrik Sondergaard, 38, Copenhagen.** Lead designer at SaaS startup. Builds the public marketing site in Framer; engineers handle product app separately.
+
+**Alex Park, 24, Seoul.** Junior designer building portfolio site. Framer template ecosystem made first launch possible without engineering help.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (canvas)** | "Add a section" CTA + template gallery |
+| **Empty (no projects)** | "Create your first project" + template browser |
+| **Loading (publishing)** | Spring-animated progress chip with build status |
+| **Loading (asset)** | Per-asset placeholder with shimmer |
+| **Error (publish)** | Specific reason + retry, never blocking |
+| **Error (CMS)** | Field-level inline message |
+| **Success (published)** | Spring-bounce confirmation + URL copy |
+| **Success (asset uploaded)** | Inline preview replaces placeholder |
+| **Skeleton (project list)** | Frosted glass placeholders |
+| **Disabled (free plan limit)** | 0.5 opacity + upgrade link |
+| **Loading (collaborator typing)** | Avatar + cursor indicator on canvas |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-spring` | variable | Click → action commits with spring physics |
+| `motion-standard` | 250ms | Modal, panel |
+
+Easings: spring physics is the signature. **Spring on every commit** — buttons, modals, panels. `prefers-reduced-motion: reduce` collapses spring to opacity-only fade.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 25 — Apple-tier)
+**Tier 1 sources:** framer.com home + /pricing (live DOM via playwright — Primary `#fff` 100px full-pill three-tier {hero 35px / pricing-compact 29px / header-utility 15px-radius 28px} 10×14 / 12px·400; Translucent Secondary `rgba(255,255,255,0.10-0.15)` same geometry; **Framer Blue `#0099ff`** featured-pricing-tier accent).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders):** Tracxn, Silicon Canals, TechCrunch (2025-08 $2B), Sifted, I amsterdam, Crunchbase.
+**Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured only header utility 15px-rect; canonical Hero Primary is 100px full-pill 35px height + Framer Blue `#0099ff` featured accent.

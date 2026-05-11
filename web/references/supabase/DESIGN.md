@@ -253,3 +253,76 @@ The green accent (`#3ecf8e`) appears selectively — in the Supabase logo, in li
 5. Hero line-height of 1.00 is the signature typographic move
 6. Pill (9999px) for primary actions, 6px for secondary, 8-16px for cards
 7. HSL with alpha channels creates the sophisticated translucent layering
+
+## 10. Voice & Tone
+
+Supabase's voice is **Postgres-pragmatic and OSS-confident.** "The Postgres Development Platform" — capability-driven, dev-first. Strong open-source positioning ("the open source Firebase alternative") with green primary `#3ecf8e` matching Postgres heritage.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Start your project", "Get started", "Sign up" |
+| Marketing | Postgres-credibility. Real SQL in marketing copy |
+| Documentation | SQL-first, code-block-heavy |
+| Error | Specific. "Foreign key constraint failed: table X column Y" |
+
+**Voice samples**
+- Tagline: *"The Postgres Development Platform"* <!-- verified: supabase.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary BaaS". Generic Firebase-comparison framing.
+
+## 11. Brand Narrative
+
+Supabase was founded **2020** by **Paul Copplestone (CEO)** + **Ant Wilson (CTO, joined January 2020)** ([Y Combinator — Supabase](https://www.ycombinator.com/companies/supabase), [Frederick AI — Founder Story Paul Copplestone](https://www.frederick.ai/blog/paul-copplestone-supabase)). **Y Combinator Summer 2020 (S20)** batch — founding coincided with the start of the COVID-19 pandemic; raised **$100K pre-seed from angels** before YC. Open-source Firebase alternative built on **Postgres → Realtime → Auth → Storage**. Funding ladder: **$30M Series A (Sept 2021)** → **$80M Series B (May 2022)** → **$2B valuation (April 2025)** → **$5B valuation October 2025** (Series E, just **4 months after $2B** — one of the fastest valuation jumps in OSS-developer-tooling) ([TechCrunch — Supabase $5B four months after $2B](https://techcrunch.com/2025/10/03/supabase-nabs-5b-valuation-four-months-after-hitting-2b/), [SuperbCrew — Supabase $100M Series E](https://www.superbcrew.com/supabase-raises-100-million-in-series-e-funding-round/)). The brand voice tracks the OSS-engineer positioning: Postgres-credible, open-by-default, never marketing-fluff. Primary green references Postgres elephant heritage with a modern lift — Tier 1 measurement on `/pricing` shows the canonical Primary CTA fill is `rgb(114, 227, 173)` = **`#72e3ad` Supabase Mint Green** (a **lighter shade** than the §2 doc's `#3ecf8e` deeper green, possibly a 2025 brand refresh).
+
+## 12. Principles
+
+1. **Postgres is the foundation.** *UI implication:* surfaces lead with Postgres-native features.
+2. **Open-source heritage.** *UI implication:* self-host first-class.
+3. **Pill (9999px) primary, 6px secondary, 8-16px cards.** *UI implication:* mixed radius with strict roles.
+4. **HSL with alpha channels.** *UI implication:* translucent layering using alpha, not opacity.
+5. **Green `#3ecf8e` for primary.** *UI implication:* preserve Postgres-heritage green.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Supabase user segments (full-stack developers, indie SaaS founders, AI app builders), not individual people.*
+
+**Henrik Sondergaard, 33, Copenhagen.** Full-stack engineer. Supabase + Next.js for client SaaS projects.
+
+**Sofia Russo, 28, Milan.** Indie founder shipping micro-SaaS. Supabase Auth + Postgres + Storage in one stack.
+
+**Marcus Chen, 35, San Francisco.** AI app builder. Supabase Edge Functions + Vector for RAG infrastructure.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no projects)** | "Start your project" CTA |
+| **Empty (no tables)** | "Create your first table" with SQL editor |
+| **Loading (query)** | Per-row count + execution time |
+| **Loading (function deploy)** | Step-by-step deploy log |
+| **Error (SQL)** | Inline below editor + line:column |
+| **Error (RLS)** | Specific policy + table |
+| **Success (query)** | Result table + execution stats |
+| **Success (deploy)** | Endpoint URL + invocation example |
+| **Skeleton (table list)** | Translucent green-tinted placeholders |
+| **Disabled (free tier)** | Upgrade link |
+| **Loading (long migration)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 56 — Apple-tier)
+**Tier 1 sources:** supabase.com home + /pricing (live DOM via playwright — Primary **`#72e3ad`** Supabase Mint Green + `#171717` Near-Black text 6px / 38-42px / 8×16 / 14-16px·400; Outline `#fdfdfd` Soft White 6px; Banner pill 9999px; nav 6px / 14px·500).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** YC (S20), LinkedIn (Copplestone), Frederick AI (Copplestone story), TechCrunch (2025-10 $5B "4 months after $2B"), SuperbCrew, Supabase company page.
+**Style ref:** `stripe`.
+**Conflicts unresolved:** Mint Green HEX — §2 doc `#3ecf8e` (darker mid-green) vs live `#72e3ad` (lighter mint) — likely 3-shade palette w/ 2025 brand refresh; both retained, live wins for Primary. **Earlier mistake reverted:** prior footer captured nav-only — canonical Primary is `#72e3ad` Mint Green missed entirely.

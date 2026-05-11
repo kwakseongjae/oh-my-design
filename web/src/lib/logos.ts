@@ -78,6 +78,17 @@ const LOGO_MAP: Record<string, LogoSource> = {
   toss:          { type: 'favicon', slug: 'https://static.toss.im/icons/png/4x/icon-toss-logo.png' },
   baemin:        { type: 'favicon', slug: 'https://www.baemin.com/favicon.ico' },
   kakao:         { type: 'simpleicons', slug: 'kakaotalk' },
+  kakaobank:     { type: 'simpleicons', slug: 'kakaotalk' },
+  naver:         { type: 'simpleicons', slug: 'naver' },
+  coupang:       { type: 'simpleicons', slug: 'coupang' },
+  yeogiotte:     { type: 'favicon', slug: 'https://www.yeogi.com/favicon/rel_icon/favicon_png_192.png' },
+  yanolja:       { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=yanolja.com&sz=128' },
+  musinsa:       { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=musinsa.com&sz=128' },
+  kurly:         { type: 'favicon', slug: 'https://res.kurly.com/icons/favicon-128x128.png' },
+  ohouse:        { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=ohou.se&sz=128' },
+  ridi:          { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=ridibooks.com&sz=128' },
+  qanda:         { type: 'favicon', slug: 'https://qanda.ai/favicon.ico' },
+  krds:          { type: 'favicon', slug: 'https://www.krds.go.kr/resources/img/guide/favicon_192.png' },
 
   // ── Taiwan Tech ──
   pinkoi:        { type: 'github', slug: 'pinkoi' },
@@ -189,6 +200,18 @@ const DOMAIN_OVERRIDES: Record<string, string> = {
   clickhouse: 'clickhouse.com',
   composio: 'composio.dev',
   sanity: 'sanity.io',
+  // Korean refs
+  yeogiotte: 'yeogi.com',
+  musinsa: 'musinsa.com',
+  kurly: 'kurly.com',
+  ohouse: 'ohou.se',
+  naver: 'naver.com',
+  yanolja: 'yanolja.com',
+  coupang: 'coupang.com',
+  kakaobank: 'kakaobank.com',
+  ridi: 'ridibooks.com',
+  qanda: 'qanda.ai',
+  krds: 'krds.go.kr',
 };
 
 export function getLogoFallbackUrl(id: string): string | null {

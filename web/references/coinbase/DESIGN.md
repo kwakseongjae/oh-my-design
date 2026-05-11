@@ -127,3 +127,79 @@ Breakpoints: 400px, 576px, 640px, 768px, 896px, 1280px, 1440px, 1600px
 ### Example Component Prompts
 - "Create hero: white background. CoinbaseDisplay 80px, line-height 1.00. Pill CTA (#eef0f3, 56px radius). Hover: #578bfa."
 - "Build dark section: #0a0b0d background. CoinbaseDisplay 64px white text. Blue accent link (#0052ff)."
+
+## 10. Voice & Tone
+
+Coinbase's voice is **compliance-aware-but-friendly** — a fintech that's been through SEC scrutiny and writes microcopy with both legal precision and consumer warmth. Marketing copy avoids hyped crypto-bro language ("moon", "lambo") and stays plainspoken: *"Buy and Sell Bitcoin, Ethereum, and more with trust"* (homepage 2026-05). Product UI emphasizes regulatory clarity (KYC required, rates explicit, fees disclosed) over speculative excitement.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb-first. "Sign up", "Buy", "Sell". Never "Trade now!!" |
+| Marketing | Trust-emphasized. Plain language about regulation/security |
+| Error (verification) | Specific. "Verification incomplete. Upload a government-issued ID to continue." |
+| Success (transaction) | Receipt-detail. Asset, amount, fee, USD equivalent, network confirmation status |
+| Risk warnings | Required and prominent — never minimized in fine print |
+
+**Voice samples**
+- Tagline: *"Buy and Sell Bitcoin, Ethereum, and more with trust"* <!-- verified: coinbase.com homepage 2026-05 -->
+
+**Forbidden phrases.** "To the moon", "diamond hands". Hyperbolic ROI claims. Hidden fees. "Risk-free" framing on volatile assets.
+
+## 11. Brand Narrative
+
+Coinbase was founded **June 2012** in San Francisco by **Brian Armstrong** (CEO) and **Fred Ehrsam** (former Goldman Sachs FX trader) ([Brian Armstrong — Wikipedia](https://en.wikipedia.org/wiki/Brian_Armstrong_(businessman)), [Frederick.ai — Brian Armstrong](https://www.frederick.ai/blog/brian-armstrong-coinbase)). Origin story: **Armstrong posted on Hacker News looking for a co-founder for Y Combinator**; Ehrsam responded after seeing the post on Reddit — the HN post itself went viral. They entered **Y Combinator S12** with $150K. Mission: ***"to increase economic freedom in the world."*** **NASDAQ direct listing April 14, 2021** under ticker **COIN** — landmark moment for the crypto industry, briefly approached **$100B market cap** at IPO peak ([99bitcoins](https://99bitcoins.com/people/who-is-brian-armstrong/)). Coinbase **survived the 2022 crypto winter and the FTX collapse (Nov 2022)** as the most-regulated US crypto exchange — turning regulatory caution into positioning advantage. Product family extended: **Coinbase Wallet** (non-custodial), **Coinbase Prime** (institutional), **Base** (L2 blockchain, launched 2023).
+
+What Coinbase refuses: token shilling, unregistered securities listings (regulatory caution), aggressive trader-bait UI, casino-style gambling framing.
+
+## 12. Principles
+
+1. **Compliance is a feature, not a tax.** *UI implication:* KYC/security flows have first-class UX investment, not last-mile.
+2. **Show the receipt, always.** *UI implication:* every transaction includes asset / amount / fee / USD value / network status.
+3. **Education sits next to action.** *UI implication:* Earn pages, Learn pages have nav prominence equal to Trade.
+4. **Round buttons, not aggressive corners.** *UI implication:* fully-pill (`56px` radius) on primary actions reads "approachable, retail-grade".
+5. **Coinbase Blue `#0052ff` is the only accent.** *UI implication:* never multi-color brand chrome; let market data charts carry color.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Coinbase user segments (retail crypto holders, institutional traders, recurring-buy long-holders), not individual people.*
+
+**Marcus Reilly, 41, Boston.** First-time crypto buyer, $200/month recurring buy of BTC and ETH. Trusts Coinbase as the most regulated US option.
+
+**Yuki Sato, 29, Tokyo.** Tech worker exploring DeFi via Coinbase Wallet (separate from Coinbase exchange). Cares about gas fees and L2 support.
+
+**Aisha Patel, 53, NYC.** RIA managing client crypto exposure via Coinbase Prime (institutional). Compliance reporting is the entire reason for choosing Coinbase.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no portfolio)** | "Make your first purchase" CTA + recurring-buy promotion |
+| **Empty (no transactions)** | "Your transaction history will appear here." Plain, no upsell |
+| **Loading (price feed)** | Per-cell shimmer; chart shows last cached + stale-indicator |
+| **Loading (KYC verification)** | Persistent badge, allows navigation while pending |
+| **Error (verification)** | Specific reason + remediation path, never blocking-without-recourse |
+| **Error (transaction)** | Receipt-style failure + retry + customer support link |
+| **Success (purchase)** | Full receipt: amount, fee, USD value, network confirmation tracker |
+| **Success (deposit)** | Confirmation + when funds available, network reliance disclosed |
+| **Skeleton (asset list)** | Light gray rows at exact dimensions |
+| **Disabled (insufficient funds)** | 0.5 opacity + "Add funds" inline link |
+| **Loading (long action: send/withdraw)** | Multi-step progress (Submitted → Confirming → Confirmed) with explicit timing |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-pulse` | continuous | Live price-update micro-flash on cells |
+
+Easings: standard cubic-bezier; no bounce. **Live price updates** flash green/red cell background briefly on tick. `prefers-reduced-motion: reduce` disables price flash.
+
+---
+
+**Verified:** 2026-05-08 (B2 loop)
+**Tier 1 sources:** coinbase.com (live DOM via playwright — round 56px icon buttons; Sign up `#0052ff` 56px / 16px·600 / 47-60px height)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** coinbase.com homepage; Brian Armstrong public talks; SEC public filings.
+**Style ref:** `stripe`. **Conflicts unresolved:** none.

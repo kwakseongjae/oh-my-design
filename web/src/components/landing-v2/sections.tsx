@@ -507,7 +507,7 @@ export function CliStrip() {
                 ✓ Wrote .claude/skills, .codex/skills, .opencode/agents
               </div>
               <div style={{ color: V2.accent }}>
-                ✓ Bundled 67 reference DESIGN.md files
+                ✓ Bundled 78 reference DESIGN.md files
               </div>
               <div style={{ color: V2.accent }}>
                 ✓ Hooked CLAUDE.md, AGENTS.md, .cursor/rules
@@ -656,7 +656,7 @@ export function PhilosophyBand() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mx-auto mt-10 max-w-2xl text-sm sm:text-base opacity-65"
         >
-          20 of our 67 references ship with a full brand-philosophy layer —{" "}
+          Every reference ships with a full brand-philosophy layer —{" "}
           <span className="font-semibold text-foreground" style={{ color: V2.textOnLight }}>
             Voice · Narrative · Principles · Personas · States · Motion
           </span>
@@ -1070,7 +1070,7 @@ export function FinalCtaFooter() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
               </span>
-              67 references · 6 skills · 11 sub-agents · live
+              78 references · 6 skills · 11 sub-agents · live
             </div>
           </div>
         </div>

@@ -144,3 +144,76 @@ Breakpoints: 425px, 530px, 600px, 640px, 768px, 896px
 
 ### Example Component Prompts
 - "Create hero: warm cream (#faf9f6) background. Saans 80px weight 400, line-height 1.00, letter-spacing -2.4px, #111111. Dark button (#111111, 4px radius). Hover: scale(1.1), white bg."
+
+## 10. Voice & Tone
+
+Intercom's voice is **support-team-first and product-agentic** — speaks as a customer messaging platform that's positioned itself for the AI agent era ("the only helpdesk designed for the AI Agent era"). Marketing copy emphasizes the support team workflow + AI agent integration.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Try Fin", "Book a demo" |
+| Marketing | AI-agent-positioned. Fin (their AI agent) is first-class brand element |
+| Documentation | Practical, integration-heavy |
+| Error | Specific. "Conversation not synced. Refresh to retry." |
+
+**Voice samples**
+- Marketing tagline: *"The only helpdesk designed for the AI Agent era"* <!-- verified: intercom.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary support", "AI-powered" without specifics.
+
+## 11. Brand Narrative
+
+Intercom was founded **2011** in **California** by **four Irish designers and engineers** — **Eoghan McCabe (Chairman, ex-CEO)**, **Des Traynor**, **Ciaran Lee**, and **David Barrett** ([Intercom — Wikipedia](https://en.wikipedia.org/wiki/Intercom,_Inc.), [Eoghan McCabe — Crunchbase](https://www.crunchbase.com/person/eoghan-mccabe)). The four had previously run a Dublin design consultancy named **Contrast** and built the bug-tracking tool **Exceptional**, which they **sold to Rackspace 2011** — those proceeds funded Intercom. Initially employed 30 people in **Dublin** before the founders relocated HQ to **San Francisco**. Funding/lineage: **2012 angel from Twitter co-founder Biz Stone**, then seed from **David Sacks, Andy McLoughlin (Huddle), Dan Martell, 500 Global, Digital Garage** → **Series A $6M March 2013** led by **Social Capital** ([Irish Times — Four Irishmen on a billion-dollar mission](https://www.irishtimes.com/business/technology/four-irishmen-on-a-mission-to-build-a-billion-dollar-company-1.1664244)) → **$250M debt financing 2025** alongside **€87M / $94M extra AI investment 2024** ([Irish Times — €87M AI investment](https://www.irishtimes.com/business/2024/05/14/intercom-boss-wants-aggression-on-all-fronts-amid-extra-94m-ai-investment/), [Silicon Republic — $250M debt](https://www.siliconrepublic.com/business/intercom-eoghan-mccabe-debt-financing-hiring-jobs-ai)). Originally positioned as "the customer messaging platform" (challenging Zendesk's ticketing model with conversation-first UX). **2023 launch of Fin** — AI chatbot powered by GPT-4 — became the central product story; in 2025 the AI Agent now ships on **fin.ai** as a discrete product surface alongside intercom.com helpdesk chrome.
+
+## 12. Principles
+
+1. **Conversations over tickets.** *UI implication:* main inbox is conversation-shaped, not row-shaped.
+2. **Fin is the agent layer.** *UI implication:* Fin Resolutions metric has main-nav placement; AI agent isn't a sub-feature.
+3. **Saans is the type voice.** *UI implication:* warm cream + Saans 80px hero is the brand register.
+4. **Hover scale signals interactive.** Buttons grow on hover (scale 1.1). *UI implication:* preserve hover scale; don't replace with color-only transition.
+5. **Cream over white.** Default canvas `#faf9f6`. *UI implication:* don't use pure white — the cream is intentional warmth.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Intercom user segments (support team leads, RevOps, AI/Fin admins), not individual people.*
+
+**Aisha Patel, 33, Dublin.** Support team lead at SaaS startup. Configures Fin to deflect 60% of tier-1 tickets.
+
+**Marcus Webb, 41, San Francisco.** RevOps at B2B SaaS. Uses Intercom outbound for product-led growth campaigns.
+
+**Priya Krishnan, 28, Bengaluru.** Frontline support agent. Cares about Inbox keyboard shortcuts + macros.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no conversations)** | "Welcome to your Inbox" + onboarding tour |
+| **Empty (Fin disabled)** | "Enable Fin to deflect tickets" with single CTA |
+| **Loading (conversation history)** | Skeleton message bubbles in cream tones |
+| **Loading (Fin response)** | Typing indicator with Fin avatar |
+| **Error (sync)** | Banner top-of-inbox with retry |
+| **Error (Fin failed)** | Inline below message + escalate-to-human option |
+| **Success (assigned)** | Subtle bg shift on conversation row |
+| **Success (Fin resolved)** | Resolution badge appears on conversation |
+| **Skeleton (inbox)** | Cream rows with subtle shimmer |
+| **Disabled (no permission)** | 0.5 opacity + tooltip permission level |
+| **Loading (long Fin run)** | Per-step "Searching knowledge base..." trace |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover scale (1.0 → 1.1) |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-typing` | continuous | Fin "typing" indicator |
+
+Standard cubic-bezier; **hover scale 1.1 is signature**. `prefers-reduced-motion: reduce` disables hover scale (color shift only).
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 29 — Apple-tier)
+**Tier 1 sources:** intercom.com home + fin.ai/ (dual-product live DOM via playwright — Hero Primary `#000` 6px / 42px / 12×16 / 16px·400 (intercom.com Cream `#faf9f6` canvas) and `#fff` 6px (fin.ai dark canvas); Compact Primary **`#111111`** Intercom Charcoal 4px / 40px / 0×14).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders):** Wikipedia (Intercom Inc.), Crunchbase (McCabe), Irish Times (4-Irishmen origin + €87M AI investment), Silicon Republic ($250M debt), Tracxn, Paperflite.
+**Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured only nav + canvas; canonical Primary is Black 6px hero + Charcoal `#111111` 4px compact across dual-product (intercom.com + fin.ai) chrome.

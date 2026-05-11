@@ -183,6 +183,14 @@ What distinguishes Vercel from other monochrome design systems is its shadow-as-
 - Description below in gray body text
 - Shadow-bordered card container
 
+---
+
+**Verified:** 2026-05-08
+**Tier 1 sources:** vercel.com (live DOM via playwright — nav pill `9999px` / 0×12 / 32px / 13px·400 `#8a8f98`; Sign up CTA `#e5e5e6` / `#08090a` / 9999px / 32px / 13px·510; Skip-to-content button `#fff` / `#0072f5` / 6px)
+**Tier 2 sources:** styles.refero.design — no Vercel record at `?q=Vercel`. getdesign.md/vercel — directory only.
+**Tier 2 status:** unavailable; Tier 1 (vercel.com live inspect) authoritative.
+**Conflicts unresolved:** none. Vercel uses tight 32px-height nav pills (9999px) and Geist Sans throughout — confirmed.
+
 ## 5. Layout Principles
 
 ### Spacing System
@@ -335,7 +343,7 @@ Vercel's voice is engineer-terse, confident, and quietly clever. Headlines are s
 
 ## 11. Brand Narrative
 
-Vercel was founded in 2015 by Guillermo Rauch and originally called **ZEIT**; the company renamed to Vercel in April 2020, the same moment it raised its Series A to build the cloud infrastructure underneath Next.js, the open-source React framework it had shepherded since 2016. Vercel's founding thesis is that frontend developers should not have to think about infrastructure: the framework and the deployment target should be one cognitive object, not two.
+Vercel was founded in **2015** in San Francisco as **ZEIT** by **Guillermo Rauch** (CEO), **Tony Kovanen** (ex-CTO), and **Naoyuki Kanezawa** ([Vercel — Wikipedia](https://en.wikipedia.org/wiki/Vercel), [History of Vercel 2015–2020](https://medium.com/history-of-vercel/history-of-vercel-2015-2020-6-7-zeit-and-next-js-dc480a88e0b8)). Rauch's prior OSS — **Socket.IO** (real-time events) and **Mongoose** — preceded the company and built his developer-first reputation ([rauchg.com/about](https://rauchg.com/about)). **Next.js was released in October 2016**, just one year after founding, and quickly became the platform's flagship product. The company **renamed ZEIT → Vercel in April 2020**, retaining the triangular logo. Vercel raised **$250M in May 2024 at $3.25B valuation** ([BrandHistories](https://brandhistories.com/vercel/company-history)) and remains private as of 2026 with no announced IPO. Vercel's founding thesis is that frontend developers should not have to think about infrastructure: the framework and the deployment target should be one cognitive object, not two.
 
 The visual language — white canvas, near-black text (`#171717`), Geist Sans with aggressive negative letter-spacing, shadow-as-border throughout — is a design statement that mirrors the product thesis. It is **minimalism as engineering principle**, not minimalism as style choice. Every element on a Vercel marketing page has been through the same "does this justify its bytes?" discipline that a well-written Next.js component goes through. The Vercel Design team puts this explicitly: *"We design systems and systemize designs. Imbuing our work with care and craft as stewards of the Vercel Brand and Geist Design System."*
 

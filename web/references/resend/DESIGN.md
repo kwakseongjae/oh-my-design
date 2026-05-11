@@ -301,3 +301,76 @@ What makes Resend distinctive is its icy, blue-tinted border system. Instead of 
 5. Multi-color accents at low opacity (12–42%) for backgrounds, full opacity for text
 6. Pill shape (9999px) for CTAs and badges, standard radius (4px–16px) for containers
 7. No shadows — use frost borders for depth against the void
+
+## 10. Voice & Tone
+
+Resend's voice is **dev-focused-elegant and API-first.** "Email for developers" — concise, capability-driven. Dark void canvas + frost-border depth signal "premium developer tool."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Try it now", "Sign up" |
+| Marketing | API-first. Code snippets dominant in marketing |
+| Documentation | Code-first, framework-specific examples |
+| Error | Specific. "Invalid API key. Generate new one in Settings." |
+
+**Voice samples**
+- Tagline: *"Email for developers"* <!-- verified: resend.com homepage 2026-05 -->
+- Recurring promo: *"Announcing Resend Forward"* <!-- verified: resend.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary email API". Aggressive SendGrid-comparison framing.
+
+## 11. Brand Narrative
+
+Resend was incorporated **January 2023** (open-source `react.email` predecessor launched 2022) by **Bu Kinoshita** and **Zeno Rocha** ([Resend — How we got here](https://resend.com/handbook/company/how-we-got-here), [Y Combinator — Resend](https://www.ycombinator.com/companies/resend)). The pair launched **react.email** in 2022 because they were frustrated by how difficult it was to build modern email templates that worked across all email clients — that OSS distribution lever became the founder-edge for the commercial Resend product. They **immediately quit their jobs and moved to San Francisco** to join **Y Combinator's Winter 2023 (W23)** batch — **Launch HN: Resend (YC W23)** thread is publicly archived ([Hacker News — Launch HN: Resend](https://news.ycombinator.com/item?id=36309120)). After YC: **$3M seed round** ([Y Combinator/TechCrunch — Resend $3M](https://www.linkedin.com/posts/y-combinator_developer-focused-email-platform-resend-raises-activity-7087087056081866753-GaNB)). Modern email API positioned for developers — React Email components + clean DX. Strong YC + community adoption among indie SaaS builders. The brand voice tracks this positioning: minimal chrome, dark canvas, premium-developer aesthetic.
+
+## 12. Principles
+
+1. **Code is the marketing.** *UI implication:* hero shows real API code, never marketing illustration.
+2. **No shadows, frost borders.** *UI implication:* depth via translucent borders against dark void.
+3. **Pill (9999px) for CTAs and badges.** *UI implication:* primary actions pill-shaped.
+4. **Standard radius (4-16px) for containers.** *UI implication:* mixed radius is intentional.
+5. **React Email is the OSS hook.** *UI implication:* surfaces lead with React Email examples.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Resend user segments (indie SaaS founders, transactional email engineers, dev-tooling buyers), not individual people.*
+
+**Sofia Russo, 30, Milan.** Indie SaaS founder shipping authentication emails. React Email + Resend for clean DX.
+
+**Marcus Chen, 38, San Francisco.** Senior engineer migrating from SendGrid. Cares about deliverability + simple API.
+
+**Priya Krishnan, 27, Bengaluru.** YC startup building B2B SaaS. Resend as the only email service their team uses.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no domains)** | "Add your first domain" CTA + DNS setup |
+| **Empty (no API keys)** | "Generate first API key" CTA |
+| **Loading (sending)** | Per-email status visible |
+| **Loading (DNS verifying)** | Persistent badge with check button |
+| **Error (DNS not verified)** | Specific record + value to add |
+| **Error (rate limit)** | Tier limit + upgrade |
+| **Success (sent)** | Implicit; appears in dashboard |
+| **Success (domain verified)** | Subtle confirmation |
+| **Skeleton (email log)** | Frost-border placeholders |
+| **Disabled (no plan)** | Upgrade link |
+| **Loading (long batch)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; no bounce — premium register. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 50 — Apple-tier)
+**Tier 1 sources:** resend.com home + /pricing (live DOM via playwright — **Primary `#00a3ff` Resend Blue 4px** / 41px / 12×20 / 14px·**600** + Tab pill `rgba(24,25,28,0.88)` Charcoal-translucent 16px (pricing tab active) + Announcement banner 9999px translucent blue (top promo) + Outline ghost 16px + Mid-Gray `#a1a4a5` nav text).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders):** Resend handbook (How we got here), Y Combinator (Resend W23), Hacker News (Launch HN W23), LinkedIn (YC TechCrunch $3M post), No Cap Blog (Rocha), Mintlify customer story.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier mistake reverted (significant):** prior footer captured 16px tab/ghost variants only — canonical Primary is `#00a3ff` **Resend Blue 4px** (the brand-defining color, missed entirely). §4 material correction.

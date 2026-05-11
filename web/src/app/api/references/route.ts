@@ -23,16 +23,24 @@ const CATEGORIES: Record<string, string> = {
   tesla: 'Automotive', bmw: 'Automotive', ferrari: 'Automotive',
   lamborghini: 'Automotive', renault: 'Automotive',
   // Asian companies categorized by industry (country handled by separate filter)
-  toss: 'Fintech',
+  toss: 'Fintech', kakaobank: 'Fintech',
   kakao: 'Consumer Tech', baemin: 'Consumer Tech', karrot: 'Consumer Tech',
+  naver: 'Consumer Tech', ohouse: 'Consumer Tech', ridi: 'Consumer Tech',
+  qanda: 'Consumer Tech',
   pinkoi: 'Consumer Tech', dcard: 'Consumer Tech',
   line: 'Consumer Tech', mercari: 'Consumer Tech',
   freee: 'Productivity',
+  coupang: 'E-commerce', musinsa: 'E-commerce', kurly: 'E-commerce',
+  yeogiotte: 'Travel', yanolja: 'Travel',
+  krds: 'Government',
 };
 
 const COUNTRIES: Record<string, string> = {
   // Korea
   toss: 'Korea', kakao: 'Korea', baemin: 'Korea', karrot: 'Korea',
+  yeogiotte: 'Korea', musinsa: 'Korea', kurly: 'Korea', ohouse: 'Korea',
+  naver: 'Korea', yanolja: 'Korea', coupang: 'Korea', kakaobank: 'Korea',
+  ridi: 'Korea', qanda: 'Korea', krds: 'Korea',
   // Taiwan
   pinkoi: 'Taiwan', dcard: 'Taiwan',
   // Japan
@@ -58,6 +66,10 @@ const DISPLAY_NAMES: Record<string, string> = {
   karrot: 'Karrot', toss: 'Toss', baemin: 'Baemin', kakao: 'Kakao',
   pinkoi: 'Pinkoi', dcard: 'Dcard',
   line: 'LINE', mercari: 'Mercari', freee: 'freee',
+  yeogiotte: '여기어때', musinsa: 'Musinsa', kurly: 'Kurly', ohouse: 'Ohouse',
+  naver: 'Naver', yanolja: 'Yanolja', coupang: 'Coupang',
+  kakaobank: 'KakaoBank', ridi: 'RIDI', qanda: 'QANDA',
+  krds: 'KRDS',
 };
 
 function extractPrimaryColor(md: string): string {
@@ -127,7 +139,7 @@ export async function GET() {
       const order = [
         'AI & LLM', 'Design Tools', 'Developer Tools',
         'Productivity', 'Consumer Tech', 'Fintech', 'Backend & DevOps',
-        'E-commerce', 'Automotive', 'Marketing',
+        'E-commerce', 'Travel', 'Automotive', 'Marketing', 'Government',
       ];
       const ai = order.indexOf(a.category);
       const bi = order.indexOf(b.category);

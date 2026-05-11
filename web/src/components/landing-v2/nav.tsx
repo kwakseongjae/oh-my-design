@@ -104,7 +104,7 @@ export function V2Nav() {
           >
             <GithubMark className="h-3.5 w-3.5" />
             <span>GitHub</span>
-            <Star className="h-3 w-3" style={{ color: V2.accent }} />
+            <Star className="h-3 w-3" fill="#facc15" style={{ color: "#facc15" }} />
           </a>
           <Link
             href="/builder"

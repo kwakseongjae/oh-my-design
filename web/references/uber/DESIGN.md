@@ -293,3 +293,76 @@ What makes Uber's design truly distinctive is its use of full-bleed photography 
 6. Keep layouts compact and information-dense -- Uber is efficient, not airy
 7. Illustrations should be warm and human -- describe "stylized people in warm tones" not abstract shapes
 8. Pair black CTAs with white secondaries for balanced dual-action layouts
+
+## 10. Voice & Tone
+
+Uber's voice is **mobility-platform-direct and dual-audience-aware.** Two parallel audiences — riders ("차량 서비스") and drivers ("운전") — with distinct CTAs. Pure black `#000` primary CTA + 999px pill nav signals "modern mobility company."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Sign up to ride", "Sign up to drive", "Get started" |
+| Marketing | Dual-audience. Rider page ≠ Driver page |
+| Documentation | Sparse — consumer product |
+| Error | Polite. "Pickup location unavailable. Try a different address." |
+
+**Voice samples**
+- Marketing nav (KR): *"차량 서비스"* / *"운전"* <!-- verified: uber.com/kr/ko 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary mobility". Aggressive Lyft-comparison framing.
+
+## 11. Brand Narrative
+
+Uber was founded **2009** in San Francisco — originally as **UberCab** — by **Garrett Camp** (Canadian entrepreneur, **co-founder of StumbleUpon**) and **Travis Kalanick** ([Travis Kalanick — Wikipedia](https://en.wikipedia.org/wiki/Travis_Kalanick), [Garrett Camp — Wikipedia](https://en.wikipedia.org/wiki/Garrett_Camp)). **Camp had become frustrated with SF taxis and expensive black-car services**, conceived a smartphone-app to hail luxury vehicles directly; discussed with Kalanick who joined as "mega advisor." Neither founder wanted to run the company directly; **Ryan Graves brought on as launch CEO** for **10 months** before being replaced by **Kalanick** (Camp + Graves transferred a large portion of shares to Kalanick on transition). Pioneered ride-hailing → expanded to **Eats / Freight / Delivery**. **2018 rebrand by Wolff Olins** + Uber in-house team — 10 months development, introduced bespoke **Uber Move** typeface + monochrome black-on-white identity + bespoke **Safety Blue** accent ([Design Week — Uber rebrand 2018](https://www.designweek.co.uk/issues/17-23-september-2018/uber-rebrand-looks-to-reflect-how-the-taxi-app-is-changing/), [Dezeen — Uber brings back the U](https://www.dezeen.com/2018/09/14/uber-rebrand-wolff-olins-black-white-wordmark-logo-typography/), [Wolff Olins — Views](https://www.wolffolins.com/views/the-medias-take-on-ubers-new-brand)). **NYSE IPO May 10 2019** under ticker **UBER** at **$45/share** raising **$8.1B** at **~$75B valuation** — biggest IPO of 2019, top-10 ever; closed first day at **$41.57 = biggest first-day dollar loss in U.S. IPO history** ([Uber IR — IPO pricing](https://investor.uber.com/news-events/news/press-release-details/2019/Uber-Announces-Pricing-of-Initial-Public-Offering/default.aspx), [Bloomberg — Uber drops after $8.1B IPO](https://www.bloomberg.com/news/articles/2019-05-10/uber-drops-after-raising-8-1-billion-in-biggest-ipo-of-2019)). The brand evolution post-2017 shifted from aggressive growth-at-all-costs to "platform for mobility" with operational + safety focus — **Dara Khosrowshahi** (current CEO, ex-Expedia) succeeded Kalanick **August 2017**.
+
+## 12. Principles
+
+1. **Dual-audience.** Riders and drivers are first-class. *UI implication:* segment nav clearly separated.
+2. **Pure black `#000` primary.** *UI implication:* preserve achromatic primary; don't introduce brand color.
+3. **999px pill nav.** *UI implication:* nav buttons fully pill on white.
+4. **Black + white dual-action.** *UI implication:* paired CTAs use black/white for balance.
+5. **Warm illustrations.** *UI implication:* never abstract shapes; warm humans.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Uber user segments (urban riders, drivers, business travelers), not individual people.*
+
+**Sofia Park, 31, Seoul.** Daily Uber rider. Cares about ETA accuracy + driver rating.
+
+**Marcus Webb, 38, San Francisco.** Business traveler. Uber for client meetings + airport transfers.
+
+**Henrik Nielsen, 45, Copenhagen.** Part-time Uber driver. Cares about earnings transparency + cancellation fees.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no rides)** | "Request your first ride" CTA |
+| **Empty (no driver activity)** | "Go online" CTA for drivers |
+| **Loading (matching)** | Real-time map with car icon |
+| **Loading (price)** | Surge indicator if active |
+| **Error (no drivers)** | "No drivers nearby. Try Uber Comfort instead." |
+| **Error (payment)** | "Payment failed. Try a different method." |
+| **Success (booked)** | Driver info + ETA + map |
+| **Success (rated)** | Subtle confirmation |
+| **Skeleton (ride history)** | Black/white placeholders |
+| **Disabled (account verification)** | Verify link |
+| **Loading (long match)** | Persistent progress with cancel option |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-map-tracking` | continuous | Real-time map updates |
+
+Standard cubic-bezier; no bounce — operational register. `prefers-reduced-motion: reduce` removes map auto-pan.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 60 — Apple-tier)
+**Tier 1 sources:** uber.com/kr/ko home + /about (live DOM via playwright — **all-pill 999px chrome with three-fill canvas-awareness**: Header `#000` Black + `#fff` text 999px / 36-38px / 10×12 / 14px·500; Header Inverse `#fff` + `#000` text (Sign-up); Hero `#addec9` **Uber Mint Green** + `#000` text 999px / 48px / 14×16 / 16px·500 soft-pastel signature).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/rebrand/IPO):** Wikipedia (Travis Kalanick, Garrett Camp), Britannica, Design Week / Dezeen / Wolff Olins Views (2018 rebrand), Uber IR (IPO pricing), Bloomberg (2019-05-10 first-day loss), CNBC.
+**Style ref:** `apple` (luxury minimal). **Conflicts unresolved:** none. **Earlier addition:** Inverse White Sign-up + Mint Green `#addec9` hero accent + 48px hero tier missed by prior pass.

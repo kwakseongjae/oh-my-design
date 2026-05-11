@@ -63,16 +63,72 @@ What makes BMW distinctive is its CSS variable-driven theming system. Context-aw
 ## 4. Component Stylings
 
 ### Buttons
-- Text: 16px BMWTypeNextLatin, weight 700 for primary, 400 for secondary
-- Line-height: 1.15–2.88 (large variation suggests padding-driven sizing)
-- Border: white bottom-border on dark surfaces (`1px solid #ffffff`)
-- No border-radius — sharp rectangular buttons
 
-### Cards & Containers
-- No border-radius — all containers are sharp-cornered rectangles
-- White backgrounds on light sections
-- Dark backgrounds for hero/feature sections
-- No visible borders on most elements
+**Primary**
+- Background: transparent
+- Text: `#ffffff`
+- Border: 1px solid `#ffffff` (bottom-border on dark surfaces)
+- Radius: 0px
+- Padding: 12px 24px
+- Font: 16px / 700 / BMWTypeNextLatin
+- Hover: text remains white, no underline
+- Use: Primary CTA on dark/hero surfaces
+
+**Secondary**
+- Background: transparent
+- Text: `#262626`
+- Border: 1px solid `#262626`
+- Radius: 0px
+- Padding: 12px 24px
+- Font: 16px / 400 / BMWTypeNextLatin
+- Use: Secondary actions on light surfaces
+
+**Highlight**
+- Background: `#1c69d4`
+- Text: `#ffffff`
+- Radius: 0px
+- Padding: 12px 24px
+- Font: 16px / 700 / BMWTypeNextLatin
+- Hover: `#0653b6`
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — BMW Blue highlight CTA
+
+### Inputs
+
+**Default**
+- Background: `#ffffff`
+- Text: `#262626`
+- Border: 1px solid `#262626`
+- Radius: 0px
+- Padding: 12px 16px
+- Font: 16px / 400 / BMWTypeNextLatin
+- Focus: border `#0653b6`
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
+
+### Cards
+
+**Standard**
+- Background: `#ffffff`
+- Radius: 0px
+- Padding: 24px
+- Border: none
+- Use: Light-section content card — sharp rectangular, no border-radius (BMW's angular signature)
+
+**Dark Hero Container**
+- Background: `#262626` (or full-bleed photography)
+- Text: `#ffffff`
+- Radius: 0px
+- Padding: 0px (edge-to-edge)
+- Use: Hero/feature sections with full-bleed automotive photography
+
+### Badges
+
+**Default**
+- Background: `#262626`
+- Text: `#ffffff`
+- Radius: 0px
+- Padding: 4px 8px
+- Font: 12px / 700 / BMWTypeNextLatin
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
 
 ### Navigation
 - BMWTypeNextLatin 18px weight 900 for primary nav links
@@ -178,3 +234,76 @@ What makes BMW distinctive is its CSS variable-driven theming system. Context-aw
 3. BMW Blue for interactive only — never as background or decoration
 4. Photography carries emotion — the UI is pure precision
 5. Tight line-heights everywhere — 1.15 to 1.30 is the range
+
+## 10. Voice & Tone
+
+BMW's voice is **precision-engineered and luxury-confident.** "프리미엄 자동차와 혁신적인 기술" — luxury performance positioning. Sharp 3px radius + photography-driven hero signal "German engineering precision."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb-noun. "사전 예약하기", "더 알아보기", "구성하기" |
+| Marketing | Photography dominant; copy supports image |
+| Documentation | Technical specs (kW, km/h, 제로백) prominent |
+| Error | Specific. "구성 옵션이 호환되지 않습니다." |
+
+**Voice samples**
+- Marketing CTAs: *"사전 예약하기"* / *"BMW AI 어시스턴트"* <!-- verified: bmw.co.kr 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary driving". Aggressive Mercedes-comparison framing.
+
+## 11. Brand Narrative
+
+BMW (**Bayerische Motoren Werke**) was founded **March 7, 1916** in Munich, originally as **Bayerische Flugzeugwerke (BFW)** — formerly Otto Flugmaschinenfabrik — an aircraft engine manufacturer ([BMW — Wikipedia](https://en.wikipedia.org/wiki/BMW), [History of BMW — Wikipedia](https://en.wikipedia.org/wiki/History_of_BMW), [BMW Group History](https://www.bmwgroup.com/en/company/history.html)). The company traces its lineage to **Karl Rapp** and **Gustav Otto**; the moniker "BMW" first appeared in 1917 when Rapp Motorenwerke became BMW GmbH, then re-formalized as **Bayerische Motoren Werke in 1922**. The first product was the **BMW IIIa aircraft engine**, distinguished by fuel economy and high-altitude performance ([PBS](https://www.pbs.org/newshour/world/heres-what-bmw-did-before-it-made-luxury-cars)). The **Treaty of Versailles (1918) banned aircraft engine production**, forcing BMW to pivot to **farm equipment, household items, and railway brakes** to survive. Motorcycle production began **1923 (R32)**; automobile market entry **1928** (Dixi acquisition). Brand positioning: ***"Sheer Driving Pleasure"* / *"Freude am Fahren"***. The 2024-2025 evolution toward AI Assistant integration + EV (i-series, Neue Klasse) positions BMW for the post-internal-combustion era while preserving driving-pleasure identity. The roundel logo's **white + blue quarters represent the Bavarian flag**, not a spinning propeller — that myth has been explicitly debunked by BMW corporate communications.
+
+## 12. Principles
+
+1. **Photography is the design.** *UI implication:* hero modules dominated by car photography.
+2. **3px sharp radius.** *UI implication:* never round corners more — sharp signals German engineering.
+3. **BMW Blue `#1c69d4` for primary action.** *UI implication:* preserve corporate blue for CTAs.
+4. **Tight line-heights 1.15-1.30.** *UI implication:* don't open line-height; tight signals premium typography.
+5. **Photography emotion, UI precision.** *UI implication:* car photos can be cinematic; chrome stays restrained.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by BMW user segments (premium auto buyers, EV early-adopters, fleet managers), not individual people.*
+
+**Heinz Müller, 48, Munich.** BMW M-series enthusiast. Long-time customer.
+
+**Sofia Park, 38, Seoul.** First BMW iX buyer, Korean market.
+
+**Marcus Webb, 52, San Francisco.** Tech executive evaluating EV options. BMW i7 vs Tesla Model S comparison.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no configurations)** | "Configure your BMW" CTA + model selector |
+| **Empty (no test drives)** | "Book a test drive" CTA |
+| **Loading (configurator)** | Real-time 3D rendering progress |
+| **Loading (price calc)** | Per-option price update |
+| **Error (incompatible config)** | Specific. Constraint explanation |
+| **Error (no inventory)** | "출고 대기 시간: N개월" with reservation CTA |
+| **Success (saved config)** | Configuration ID + share link |
+| **Success (test drive booked)** | Confirmation + dealer contact |
+| **Skeleton (model list)** | 3px-radius placeholders |
+| **Disabled (option locked)** | Tooltip with constraint reason |
+| **Loading (long render)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 300ms | Modal, panel |
+| `motion-config-transition` | 500ms | Configuration option transitions |
+
+Standard cubic-bezier; minimal bounce — premium register. `prefers-reduced-motion: reduce` removes 3D rendering animations.
+
+---
+
+**Verified:** 2026-05-08 (B9 loop)
+**Tier 1 sources:** bmw.co.kr (live DOM via playwright — BMW Blue `#1c69d4` 3px / 4px / 52px / 14px·500; Light gray `#fff` ghost 3px; Round white icon button 50% / 52px)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** bmw.com homepage; BMW corporate history; "Sheer Driving Pleasure" tagline.
+**Style ref:** `apple` (luxury minimal). **Conflicts unresolved:** none.

@@ -93,21 +93,76 @@ The overall design philosophy is restraint through warmth. Minimal color (almost
 ## 4. Component Stylings
 
 ### Buttons
-- **Dark Pill**: `#353534` background, Ash Gray (`#afaeac`) text, pill shape (50px radius), `10px` padding. The primary CTA — warm, muted, understated
-- **Frosted Tag**: `rgba(255, 255, 255, 0.16)` background, black text (`rgb(0, 0, 0)`), rectangular (6px radius), `1px 6px` padding. Small inline tag-like buttons
-- **Ghost**: No visible background, text-only with underline decoration on hover
-- **Hover**: Subtle opacity or brightness shift — no dramatic color changes
 
-### Cards & Containers
-- **Photography Cards**: Full-bleed nature imagery with overlay text, 8px–12px border-radius
-- **Terminal Screenshot Cards**: Product UI embedded in dark containers with rounded corners (8px–12px)
-- **Bordered Cards**: Semi-transparent border (`rgba(226, 226, 226, 0.35)`) for containment, 12px–14px radius
-- **Hover**: Minimal — content cards don't dramatically change on hover, maintaining the calm aesthetic
+**Dark Pill**
+- Background: `#353534`
+- Text: `#afaeac` (Ash Gray)
+- Radius: 50px (pill)
+- Padding: 10px
+- Font: 16px / 400 / Matter
+- Hover: subtle opacity/brightness shift
+- Use: Primary CTA — warm, muted, understated
 
-### Inputs & Forms
-- Minimal form presence on the marketing site
-- Dark background inputs with warm gray text
-- Focus: Border brightness increase, no colored rings (consistent with the monochromatic palette)
+**Frosted Tag**
+- Background: `rgba(255, 255, 255, 0.16)`
+- Text: `#000000`
+- Radius: 6px
+- Padding: 1px 6px
+- Font: 12px / 400 / Matter
+- Use: Small inline tag-like button
+
+**Ghost**
+- Background: transparent
+- Text: `#afaeac`
+- Radius: 50px
+- Padding: 10px
+- Hover: underline decoration
+- Use: Tertiary text-only action
+
+### Inputs
+
+**Default**
+- Background: `#1a1a18`
+- Text: `#faf9f6`
+- Border: 1px solid `rgba(226, 226, 226, 0.35)`
+- Radius: 8px
+- Padding: 10px 12px
+- Font: 16px / 400 / Matter
+- Placeholder: `#868584` (Stone Gray)
+- Focus: border brightness increase (no colored ring — monochromatic)
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — minimal form presence on marketing site.
+
+### Cards
+
+**Photography Card**
+- Background: full-bleed nature imagery
+- Radius: 8px (or 12px)
+- Padding: 0px (image-led)
+- Use: Nature photography with overlay text
+
+**Terminal Screenshot Card**
+- Background: `#1a1a18`
+- Radius: 12px
+- Padding: 0px (UI fills frame)
+- Use: Product terminal UI in dark container
+
+**Bordered Card**
+- Background: `#1a1a18`
+- Text: `#faf9f6`
+- Border: 1px solid `rgba(226, 226, 226, 0.35)`
+- Radius: 12px
+- Padding: 24px
+- Use: Containment card with semi-transparent border
+
+### Badges
+
+**Default**
+- Background: `rgba(255, 255, 255, 0.16)`
+- Text: `#000000` (or `#faf9f6` on dark)
+- Radius: 6px
+- Padding: 1px 6px
+- Font: 12px / 400 / Matter
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — frosted tag re-used as badge.
 
 ### Navigation
 - **Top nav**: Dark background, warm parchment brand text, Matter Regular at 16px for links
@@ -251,3 +306,75 @@ When refining existing screens generated with this design system:
 3. Check that Matter Regular (400) is the default weight — Medium (500) only for emphasis
 4. Confirm uppercase labels have wide letter-spacing (1.4px–2.4px) — tight uppercase feels wrong here
 5. The overall tone should feel warm and calm, like a well-designed magazine — not aggressive or tech-flashy
+
+## 10. Voice & Tone
+
+Warp's voice is **agentic-development-warm and terminal-magazine.** "The Agentic Development Environment" — terminal that's been redesigned for the AI agent era. Wide letter-spacing uppercase + warm dark canvas signal "well-designed magazine" rather than "tech-aggressive."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb-noun. "Download Warp", "Get Warp", "Try free" |
+| Marketing | Magazine-warm. Real terminal screenshots, not stock images |
+| Documentation | CLI-first, code-block heavy |
+| Error | Calm. "Command failed. View error log." |
+
+**Voice samples**
+- Tagline: *"The Agentic Development Environment"* <!-- verified: warp.dev homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary terminal". Aggressive comparison framing.
+
+## 11. Brand Narrative
+
+Warp was founded **June 2020** in San Francisco by **Zach Lloyd (Founder/CEO)** — formerly **Principal Engineer at Google** and **interim CTO at TIME** ([Warp — Wikipedia](https://en.wikipedia.org/wiki/Warp_(terminal)), [Sequoia Capital — Transforming the Command Line at Warp Speed](https://sequoiacap.com/article/warp-spotlight/), [Zach Lloyd — LinkedIn](https://www.linkedin.com/in/zachlloyd/)). Built natively in **Rust** for **macOS, Windows, and Linux**. **Show HN: Warp launched 2022** ([Hacker News — Show HN: Warp Rust-based terminal](https://news.ycombinator.com/item?id=30921231)). **Series B $50M (June 2023)** led by **Sequoia Capital**; total funding ~**$73M** across seed, A, B per recent reporting ([FinSMEs — Warp $50M Series B 2023-06](https://www.finsmes.com/2023/06/warp-raises-50m-series-b-funding-round.html)). Now positioned as **"The Agentic Development Environment"** — the first ADE built for coding with multiple agents (live `<title>` 2026-05 confirms). **Recently open-sourced** the Agentic Development Environment ([StreetInsider — Warp open-sources ADE with cloud agents](https://www.streetinsider.com/EZ+Newswire/Warp+Open-Sources+Its+Agentic+Development+Environment,+Introducing+a+New+Model+for+Building+Software+with+Cloud+Agents/26381208.html), [byteiota — 37K stars in days](https://byteiota.com/warp-terminal-open-source-agentic-dev-environment/)). The brand voice — warm dark canvas, wide letter-spacing uppercase, magazine-style chrome, **`oklch()` color-space tokens** — reflects "premium developer tool, not just another terminal." (NOTE: there's a separate **Warp YC W23** company — payroll compliance for Y Combinator startups — distinct from this Warp terminal.)
+
+## 12. Principles
+
+1. **Agentic-first.** *UI implication:* AI agent integration first-class, not bolted on.
+2. **Warm and calm register.** *UI implication:* never tech-flashy or aggressive.
+3. **Wide uppercase tracking 1.4-2.4px.** *UI implication:* never tight uppercase.
+4. **Dark warm canvas.** *UI implication:* not pure black; warm dark.
+5. **Magazine layout.** *UI implication:* generous section padding, photography-considered.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Warp user segments (Mac-based engineers, terminal power users, AI-pair-programming adopters), not individual people.*
+
+**Sergey Volkov, 36, Berlin.** Senior engineer. Warp replaced iTerm2 for AI commands + blocks.
+
+**Sofia Park, 31, Seoul.** Backend engineer. Warp Drive for shared workflows with team.
+
+**Marcus Webb, 41, San Francisco.** Engineering manager. Warp for production debugging sessions.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no commands)** | "Run your first command" |
+| **Empty (no AI history)** | "Try `warp ai`" |
+| **Loading (command)** | Terminal output streams |
+| **Loading (AI generation)** | Per-token streaming |
+| **Error (command)** | Stack trace block |
+| **Error (AI rate limit)** | Tier limit + upgrade |
+| **Success (committed)** | Block confirmation |
+| **Success (shared)** | Warp Drive share link |
+| **Skeleton (block list)** | Warm dark placeholders |
+| **Disabled (no plan)** | Upgrade link |
+| **Loading (long task)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; calm easing. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 62 — Apple-tier)
+**Tier 1 sources:** warp.dev home + /pricing (live DOM via playwright — Primary **`oklch(0.97 0.01 84.6)` Warp Cream + `oklch(0.14 0.004 84.6)` Warp Espresso** text 3px / 36px / 4×16 / 14px·500; Outline 4px sub-tier; **Billing toggle 9999px** + **`oklab()` translucent** discipline. **`oklch()` for solid + `oklab()` for translucent — most advanced color-space convention in corpus**, surpassing Sanity's `display-p3()`).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** Wikipedia (Warp terminal), Sequoia Capital, LinkedIn (Lloyd ex-Google/TIME), HN (Show HN: Warp 2022), FinSMEs (2023-06 $50M Series B), Sacra, StreetInsider (OSS ADE), byteiota (37K stars).
+**Style ref:** `claude` (warm magazine register). **Conflicts unresolved:** none. **Earlier addition:** `oklch()`/`oklab()` color-space convention + 3px sharp Primary canonical (prior footer values appear to be from a different surface state).

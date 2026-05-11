@@ -328,9 +328,9 @@ Mercari's voice is **pragmatic, transparent, and functionally-warm** — the voi
 
 ## 11. Brand Narrative
 
-Mercari was founded in 2013 in Tokyo by Shintaro Yamada, after he left Rakuten Auctions and travelled the world asking one question — *"What can I do to help society thrive with the finite resources we have?"* ([about.mercari.com](https://about.mercari.com/en/about/)). That question became the company's founding premise: **circulate all forms of value to unleash the potential in all people**. The answer took the shape of a smartphone-first C2C marketplace that made listing an item fast enough (3 minutes, 3 photos) to be worth doing for a single pair of used jeans.
+Mercari was founded **February 2013** in Tokyo by **Shintaro Yamada (山田進太郎)** — born in Seto, Aichi Prefecture; **Waseda University** mathematics graduate; previously founded the gaming company **Unoh** in 2001 which was **acquired by Zynga 2010** ([Shintaro Yamada — Wikipedia](https://en.wikipedia.org/wiki/Shintaro_Yamada_(businessman))). Yamada left Rakuten Auctions and travelled the world asking one question — *"What can I do to help society thrive with the finite resources we have?"* ([about.mercari.com](https://about.mercari.com/en/about/)). That question became the company's founding premise: **circulate all forms of value to unleash the potential in all people**. The answer took the shape of a smartphone-first C2C marketplace that made listing an item fast enough (3 minutes, 3 photos) to be worth doing for a single pair of used jeans.
 
-From that origin Mercari grew into **Japan's largest C2C marketplace** (50M+ downloads, 350K daily listings <!-- source: base DESIGN.md §1, carried from 2026-04-17 extraction, not re-verified -->), expanded to the US in 2014, and spun up adjacent divisions: **Merpay** (2019, payments — *"Building trust for a seamless society"*), **Mercoin** (2023, crypto — *"Circulate your value, anywhere and everywhere"*). The consistent thread across divisions is the word *circulate* — not *sell*, not *exchange*, not *marketplace*. Every product framing returns to that verb.
+From that origin Mercari grew into **Japan's largest C2C marketplace** (50M+ downloads, 350K daily listings <!-- source: base DESIGN.md §1, carried from 2026-04-17 extraction, not re-verified -->), expanded to the **US in 2014** and **UK in 2016**, became **Japan's first tech unicorn (>$1B) in 2016**, then completed a **Tokyo Stock Exchange IPO June 2018** raising over **$1.2B** — making Yamada **Japan's newest billionaire** ([The Japan Times — Mercari IPO 2018](https://www.japantimes.co.jp/news/2018/06/11/business/corporate-business/mercaris-top-range-ipo-set-make-founder-shintaro-yamada-new-japanese-billionaire/)). **U.S. operations achieved profitability for the first time fiscal-year ending June 30 2025**. Spun up adjacent divisions: **Merpay** (2019, payments — *"Building trust for a seamless society"*), **Mercoin** (2023, crypto — *"Circulate your value, anywhere and everywhere"*). The consistent thread across divisions is the word *circulate* — not *sell*, not *exchange*, not *marketplace*. Every product framing returns to that verb.
 
 What Mercari refuses: the **auction-complexity** aesthetic of eBay (bidding clocks, snipe warnings); the **spam-forward** commerce chrome of flash-sale marketplaces (flashing banners, permanent 50%-off overlays); the **corporate-blue sterility** of legacy Japanese e-commerce (Rakuten Ichiba, Yahoo! JAPAN Auctions). What it embraces: a **semantic-token-first** design system (681 `:root` variables — see §2), Mercari Red as a **finite attention signal** (never decorative), mobile-first listing flow, and explicit trust infrastructure (ID verification, escrow, ratings) surfaced directly in the UI rather than hidden in settings.
 
@@ -452,4 +452,13 @@ Not independently verified in this session but widely documented public facts:
   jp.mercari.com; these are rounded public figures rather than independently
   re-verified in this augmentation pass.
 -->
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 35 — Apple-tier)
+**Tier 1 sources:** jp.mercari.com home + /search (live DOM via playwright — Primary **`#ff333f`** Mercari Red 4px / 11×15 / 45px / 15px·**700** BOLD; Outline `#fff` 4px / 36px / 14px·400 / `#333` Charcoal; **search filter chip** 18px / 4×8 / 36px / 14px·400; **category tab** 0px / 14px·700 active-state Red shift; **US promo accent** `#0095ee` Bright Blue cross-border-only).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/IPO):** Wikipedia (Mercari + Shintaro Yamada), Japan Times (2018-06 IPO Yamada billionaire), Bloomberg, BoF 500, Crunchbase, about.mercari.com.
+**Style ref:** `line` (JP East-Asian, retained).
+**Conflicts unresolved:** none. **Earlier addition:** filter pill 18px sub-tier + US-locale Bright Blue `#0095ee` cross-border accent were missing from prior pass.
 

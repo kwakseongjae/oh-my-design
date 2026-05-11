@@ -279,3 +279,77 @@ What makes ClickHouse distinctive is the electrifying tension between the near-b
 4. Active states use Pale Yellow (#f4f692) — not just opacity changes
 5. All links hover to Neon Volt — consistent interactive feedback
 6. Charcoal borders (rgba(65,65,65,0.8)) are the primary depth mechanism
+
+## 10. Voice & Tone
+
+ClickHouse's voice is **benchmark-driven and engineer-pragmatic.** Marketing emphasizes raw performance numbers ("100x faster", "petabyte-scale") and open-source heritage. Closer to research paper than marketing — measured claims with citations.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Sign up", "Get a demo", "Start building" |
+| Marketing | Numeric. Always lead with benchmark |
+| Documentation | SQL-first, code-heavy, terse |
+| Error (query) | SQL error + line number, never wrapped friendly |
+| Onboarding | Choose: managed cloud / self-host / try in browser |
+
+**Voice samples**
+- *"Sign up"* / *"Get a demo"* <!-- verified: clickhouse.com homepage 2026-05 -->
+
+**Forbidden phrases.** Adjectival superlatives without numbers. "Magic" / "AI-powered" framing.
+
+## 11. Brand Narrative
+
+ClickHouse was originally developed at **Yandex** (Russia's largest tech company) starting in **2009** as an experimental real-time analytics project, with first production deployment in **2012** ([ClickHouse — Wikipedia](https://en.wikipedia.org/wiki/ClickHouse), [Introducing ClickHouse Inc. (2021 blog)](https://clickhouse.com/blog/introducing-click-house-inc)). Used internally for **Yandex.Metrica** (web analytics). **Open-sourced under Apache 2.0 in 2016** — adoption by Uber, Cloudflare, eBay quickly followed. **ClickHouse, Inc. incorporated September 2021** by **Aaron Katz (CEO)** and **Yury Izrailevsky** (co-founder). Funding: **Series A ~$50M (Sept 2021)** led by Index Ventures + Benchmark, with Yandex N.V. participating ([BusinessWire](https://www.businesswire.com/news/home/20210920005219/en/ClickHouse-Inc.-Announces-Incorporation-Along-With-%2450M-In-Series-A-Funding)); **Series B $250M @ $2B (Oct 28, 2021)** led by Coatue + Altimeter; **Series C $350M @ $6.35B (May 2025)** led by Khosla Ventures + BOND + IVP + Battery + Bessemer; **total raised >$650M** ([Forkable](https://www.forkable.io/p/open-source-database-company-clickhouse), [Index Ventures retrospective](https://www.indexventures.com/perspectives/the-fast-and-the-furious-how-clickhouse-the-worlds-fastest-open-source-database-is-creating-the-first-real-time-data-warehouse/)). Brand voice carries original Yandex engineering culture — performance-first, benchmark-cited, SQL-purist.
+
+## 12. Principles
+
+1. **Performance is the headline.** *UI implication:* hero modules contain a metric, not a tagline.
+2. **SQL is sacred.** *UI implication:* query interfaces accept standard SQL; extensions clearly labeled.
+3. **Open source is the default.** *UI implication:* "Self-host" and "Cloud" entry points equal prominence.
+4. **Charcoal borders, not shadows.** *UI implication:* never shadow on dark theme cards.
+5. **Pale yellow is the active state.** *UI implication:* selected = explicit yellow, not opacity.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by ClickHouse user segments (data engineers, observability builders, analytics leads), not individual people.*
+
+**Sergey Volkov, 38, Berlin.** Senior data engineer at ad-tech. Self-hosted on K8s for 50PB+.
+
+**Aisha Patel, 31, San Francisco.** Founding engineer at observability startup using ClickHouse Cloud.
+
+**Rui Chen, 45, Singapore.** Data platform lead at regional bank. Evaluating vs Snowflake.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no databases)** | "Create your first database" with SQL CREATE snippet |
+| **Empty (query result)** | "0 rows returned in 12ms" — query-stat focused |
+| **Loading (query)** | Inline spinner + estimated rows scanned |
+| **Loading (table scan)** | Progress bar with rows/sec + bytes/sec |
+| **Error (SQL syntax)** | Inline below editor with line:column |
+| **Error (server)** | "Server error (200): table not found." |
+| **Success (query)** | Result table appears, query stats line |
+| **Success (cluster created)** | Connection string visible, copy-button |
+| **Skeleton (cluster list)** | Charcoal-border placeholder rows |
+| **Disabled (read-only role)** | 0.5 opacity + lock icon |
+| **Loading (long query)** | Pause/cancel after 5s; partial results stream |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Result row select |
+| `motion-fast` | 150ms | Hover, link to Neon Volt |
+| `motion-standard` | 250ms | Modal |
+| `motion-active-pulse` | 300ms | Pale yellow active appearance |
+
+Standard cubic-bezier; no bounce. Charcoal borders never animate. `prefers-reduced-motion: reduce` makes link hover instant.
+
+---
+
+**Verified:** 2026-05-08 (B1 loop)
+**Tier 1 sources:** clickhouse.com (live DOM via playwright — dark `#141414` ghost; cookie banner `#166534` Allow / `#141414` Dismiss; nav 8px / 14px·500)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** clickhouse.com homepage benchmarks; ClickHouse, Inc. corporate history; Aaron Katz public talks.
+**Style ref:** `stripe`. **Conflicts unresolved:** none.

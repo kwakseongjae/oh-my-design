@@ -312,3 +312,75 @@ When refining existing screens generated with this design system:
 4. Describe the desired "feel" alongside specific measurements — "editorial magazine page-turn between sections" communicates the layout philosophy better than "margin-bottom: 80px"
 5. Always maintain the chiaroscuro contrast — if a section feels flat, check whether it needs to be on black or white to maintain the alternating rhythm
 6. Reserve Ferrari Red for ONE element per screen — if red appears in more than one place, it loses its authority
+
+## 10. Voice & Tone
+
+Ferrari's voice is **Maranello-pride and racing-heritage.** Italian-craft pride + chiaroscuro black/white sections + Ferrari Red `#da291c` for one element per screen. Marketing copy emphasizes lineage (Enzo Ferrari, F1 victories, Maranello) over feature lists.
+
+| Context | Tone |
+|---|---|
+| CTA | Heritage-imperative. "Discover", "Configure", "Reserve" |
+| Marketing | Photography first, racing heritage second, copy third |
+| Documentation | Sparse — luxury product, minimal docs |
+| Error | Polite. "An error occurred. Try again." |
+
+**Voice samples**
+- Brand register: "The Power of Dreams" / "Tradition of Innovation" type framing <!-- illustrative -->
+
+**Forbidden phrases.** "Revolutionary supercar". Direct Lamborghini comparison.
+
+## 11. Brand Narrative
+
+**Scuderia Ferrari** — the racing team — was founded **1929** by **Enzo Ferrari** as a Grand Prix outfit affiliated with **Alfa Romeo**, where Enzo had worked through the 1920s ([Enzo Ferrari — Wikipedia](https://en.wikipedia.org/wiki/Enzo_Ferrari)). After Allied bombing forced relocation from Modena, **Ferrari S.p.A. was founded 1947 in Maranello** to build road cars under his own name; the **first car (125 S, V-12 engine, 1947)** secured the brand's **first Grand Prix victory in Rome, May 1947** ([Ferrari — Wikipedia](https://en.wikipedia.org/wiki/Ferrari)). Began as racing manufacturer; road cars sold to fund the F1 program — the inverse of every other carmaker. **NYSE direct listing October 21 2015** under ticker **RACE**, priced at **$52/share** (top of $48-52 range), market cap **~$9.8B**, raised **~$900M** in public capital as part of the **Fiat Chrysler demerger** ([CNBC — Ferrari market debut](https://www.cnbc.com/2015/10/21/ferrari-spikes-15-in-market-debut.html), [Ferrari Corporate — Listing](https://www.ferrari.com/en-EN/corporate/listing-information)). The brand carries Italian craftsmanship + racing heritage as primary positioning. Ferrari Red `#da291c` is iconic — live measurement on `/auto/car-range` confirms it as the **canonical Primary CTA color** (0px sharp, 21px square padding, 16px·400 white text), not a decorative accent. Cinematic chrome elsewhere is text-only ALL CAPS ghost — the imagery is the design.
+
+## 12. Principles
+
+1. **One Ferrari Red per screen.** *UI implication:* if red appears more than once, hierarchy collapses.
+2. **Chiaroscuro alternation.** Black ↔ white section rhythm. *UI implication:* never flat all-light or all-dark sequences.
+3. **2px tight radius.** *UI implication:* sharp Italian-precision corners.
+4. **Photography is the showcase.** *UI implication:* cars dominate, copy supports.
+5. **Maranello heritage > tech specs.** *UI implication:* lead with story, not numbers.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Ferrari user segments (existing Ferraristi, prospective buyers, racing enthusiasts), not individual people.*
+
+**Marcus Conti, 55, Milan.** Existing Ferrari owner with 3 cars in collection.
+
+**Heinz Müller, 48, Munich.** Track-day enthusiast considering 296 GTB.
+
+**Sofia Park, 42, Seoul.** Tech founder, first Ferrari purchase.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (configurator start)** | Model selector with cinematic photography |
+| **Empty (no saved configs)** | "Begin your Ferrari" CTA |
+| **Loading (config render)** | Real-time 3D rendering |
+| **Loading (price)** | Per-option price update |
+| **Error (incompatible)** | Constraint explanation |
+| **Error (waitlist required)** | "This model is by allocation only — contact dealer" |
+| **Success (saved)** | Configuration ID + dealer share |
+| **Success (booked test)** | Dealer confirmation |
+| **Skeleton (model showcase)** | Black/white placeholders |
+| **Disabled (region restricted)** | Region tooltip |
+| **Loading (long render)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 200ms | Hover |
+| `motion-cinematic` | 600ms | Hero reveals |
+
+Cinematic easing for hero, standard for chrome. `prefers-reduced-motion: reduce` disables hero auto-play.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 24 — Apple-tier)
+**Tier 1 sources:** ferrari.com/en-EN home + /en-EN/auto/car-range (live DOM via playwright — Primary `#da291c` Ferrari Red **0px** 21px-square 57px / 16px·400 (SUBSCRIBE on /auto); ALL CAPS 12px·400 ghost nav across chrome; cookie banner 2px / 13.008px·600 utility exception).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/history):** Wikipedia (Enzo Ferrari + Ferrari company), Britannica, CNBC (2015-10-21 IPO debut), Ferrari Corporate listing page, Fortune.
+**Style ref:** `apple` (luxury minimal). **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer cited cookie banner as canonical Primary; the actual Primary is `#da291c` 0px (cookie 2px is GDPR utility track).

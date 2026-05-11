@@ -13,7 +13,6 @@ function readRef(id: string): string {
 }
 
 const vercelMd = readRef("vercel");
-const clickhouseMd = readRef("clickhouse");
 
 const baseOverrides: Overrides = {
   primaryColor: "",
@@ -302,15 +301,18 @@ describe("applyOverridesToMd – Philosophy Layer", () => {
   });
 
   it("is a no-op for refs without Philosophy Layer", () => {
-    expect(clickhouseMd).not.toContain("## 10. Voice & Tone");
+    // Synthetic fixture so this test is independent of any specific reference's
+    // current §10-15 status — all refs eventually have Philosophy.
+    const noPhilosophyMd = `# Design System Inspiration of TestRef\n\n## 1. Visual Theme & Atmosphere\n\nA neutral test reference.\n\n## 2. Color Palette & Roles\n\n### Primary\n- **Test** (\`#aaaaaa\`): Test color.\n\n## 9. Agent Prompt Guide\n\n- "Use TestRef colors."\n`;
+    expect(noPhilosophyMd).not.toContain("## 10. Voice & Tone");
     const out = applyOverridesToMd(
-      clickhouseMd, "ClickHouse", "#000000", "Inter",
+      noPhilosophyMd, "TestRef", "#000000", "Inter",
       { ...baseOverrides, primaryColor: "#123456" },
       undefined, undefined, false,
     );
     // With an override set, the customized title applies; strip did nothing
     // because this ref has no Philosophy Layer to remove.
-    expect(out).toMatch(/^# Custom Design System \(based on ClickHouse\)/m);
+    expect(out).toMatch(/^# Custom Design System \(based on TestRef\)/m);
   });
 });
 

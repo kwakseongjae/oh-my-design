@@ -338,7 +338,9 @@ Anthropic speaks the way a thoughtful colleague does — informed, careful, and 
 
 ## 11. Brand Narrative
 
-Anthropic was founded in 2021 by researchers who left OpenAI when the urgency of AI safety outpaced the field's willingness to prioritize it. The founding rejection was twofold: against the tech industry's default optimism that treats powerful systems as obvious goods, and against the cinematic AI aesthetic — Terminator reds, cyberpunk neons, sterile clinical whites — that equates "powerful" with "cold" or "threatening".
+Anthropic was founded in **January 2021** in San Francisco by **Dario Amodei** (CEO, former VP of Research at OpenAI) and **Daniela Amodei** (President, former VP of Safety and Policy at OpenAI) — siblings — joined by **seven other OpenAI alumni** including **Tom Brown** (lead author of the GPT-3 paper), **Sam McCandlish** (Chief Architect), **Jared Kaplan** (Chief Science Officer), **Jack Clark** (former OpenAI Policy Director), **Christopher Olah** (Interpretability Research Lead), **Benjamin Mann** (Head of Anthropic Labs), and others ([Anthropic — Wikipedia](https://en.wikipedia.org/wiki/Anthropic), [Dario Amodei — Wikipedia](https://en.wikipedia.org/wiki/Dario_Amodei), [TIME 100 AI 2023](https://time.com/collections/time100-ai/6309047/daniela-and-dario-amodei/)). The founding split from OpenAI was driven by safety concerns. Per Dario Amodei (per [Big Technology profile](https://kantrowitz.medium.com/the-making-of-anthropic-ceo-dario-amodei-449777529dd6)): *"something in addition to just scaling the models up, which is alignment or safety"* was required. The signature technique — **Constitutional AI** — trains the LLM to adhere to a set of explicit principles (the "constitution"), separating *"whether an AI can do something from the more politically fraught question of whether it should."* Claude product line: Claude 1 (March 2023) → Claude 2 → Claude 3 (March 2024) → Claude 3.5 Sonnet → Claude 4 family (2025) → Claude 4.7 currently. **Valuation ~$380B as of February 2026** ([Wikipedia: Anthropic](https://en.wikipedia.org/wiki/Anthropic)).
+
+The founding rejection was twofold: against the tech industry's default optimism that treats powerful systems as obvious goods, and against the cinematic AI aesthetic — Terminator reds, cyberpunk neons, sterile clinical whites — that equates "powerful" with "cold" or "threatening". The founding rejection was twofold: against the tech industry's default optimism that treats powerful systems as obvious goods, and against the cinematic AI aesthetic — Terminator reds, cyberpunk neons, sterile clinical whites — that equates "powerful" with "cold" or "threatening".
 
 The warm visual language — parchment (`#f5f4ed`), terracotta (`#c96442`), olive grays, serif headlines — is a deliberate counter to that vocabulary. AI should feel like a trustworthy colleague, not a tool to be afraid of. Constitutional AI, the company's signature technique, treats alignment as engineering rather than philosophy; the brand extends that precision into every design decision.
 
@@ -452,4 +454,12 @@ Interpretive claims (e.g., "the warm visual language is a deliberate counter
 to the cyberpunk AI aesthetic") are editorial readings of the design system,
 not documented Anthropic statements.
 -->
+
+---
+
+**Verified:** 2026-05-08 (B11 loop)
+**Tier 1 sources:** anthropic.com (live DOM via playwright — Skip-to-content `#faf9f5` 0/0/8/8 / 12px / 49px / 18px·600; Try Claude `#faf9f5` 8/0/0/8 ghost; warm cream canvas confirmed; Read the story 24px hover area)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** existing §10-15 retained; anthropic.com About; Claude Constitution; Anthropic publications.
+**Style ref:** `claude` (self). **Conflicts unresolved:** none.
 

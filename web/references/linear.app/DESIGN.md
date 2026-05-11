@@ -235,6 +235,13 @@ The color system is almost entirely achromatic — dark backgrounds with white/g
 - Dashboard/issue previews dominate feature sections
 - Subtle shadow beneath screenshots: `rgba(0,0,0,0.4) 0px 2px 4px`
 
+---
+
+**Verified:** 2026-05-08
+**Tier 1 sources:** linear.app (live DOM via playwright — nav typography 13.3px / 400 / Inter Variable; Sign-up CTA `#e5e5e6` / 9999px / 0×12 / 32px height confirmed)
+**Tier 2 sources:** styles.refero.design/style/90ce5883-bb24-4466-93f7-801cd617b0d1 (Primary Action `#e4f222` / `#08090a` text / 6px / 12×24 / Inter Variable 590·15px ✓; Default Card `#0f1011` / 6px ✓; Badge `#383b3f` / `#8a8f98` / 4px ✓); getdesign.md/linear — directory only.
+**Conflicts unresolved:** none. Refero captures the Linear "Build now" Lime CTA (`#e4f222`); homepage live shows the dark variant (`#e5e5e6` Sign up). Both retained as variants in §4.
+
 ## 5. Layout Principles
 
 ### Spacing System
@@ -393,7 +400,7 @@ Linear's voice is craftsman-like, direct, and quietly opinionated. The product's
 
 ## 11. Brand Narrative
 
-Linear was founded in 2019 by Karri Saarinen, Tuomas Artman, and Jori Lallo — three engineers and designers with backgrounds at companies like Airbnb, Coinbase, and Uber, frustrated with the state of project-management software. Their founding complaint is published on their public README: *"Craftsmanship was replaced with growth hacks. Our once so lively dreams have become positively lifeless."* The name itself was chosen as a design statement: *"We chose to name it Linear to signify progress."*
+Linear was founded **January 2019** in San Francisco by **Karri Saarinen** (CEO), **Tuomas Artman** (CTO), and **Jori Lallo** (CPO) — all Finnish, with origins in the Helsinki startup community ([Linear About](https://linear.app/about), [Sequoia spotlight](https://sequoiacap.com/article/linear-spotlight/)). Their backgrounds were at Airbnb (Saarinen, Principal Designer), Coinbase (Lallo, Senior Engineer), and Uber (Artman, Senior Engineer). Saarinen and Lallo had previously co-founded **Kippt** (collaborative bookmarking, [YC 2012](https://research.contrary.com/company/linear)), which Coinbase acquired in 2014. In 2018 Lallo took a sabbatical and pitched the new tool to Saarinen and Artman; they bootstrapped Linear's first version for small/mid-size companies. Linear exited private beta in **June 2020** and was **profitable by June 2021 with negative lifetime burn** ([Pragmatic Engineer](https://newsletter.pragmaticengineer.com/p/linear)). The two funding rounds were both led by Sequoia Capital — **Seed $4.2M (November 2019)** and **Series A $13M (December 2020)**. Their founding complaint is published on their public README: *"Craftsmanship was replaced with growth hacks. Our once so lively dreams have become positively lifeless."* The name itself was chosen as a design statement: *"We chose to name it Linear to signify progress."*
 
 That craft-first positioning has stayed the company's center of gravity. Linear publishes **The Linear Method** — a public document stating *"There is a lost art of building true quality software. To bring back the right focus, here are the foundational ideas Linear is built on."* The Method articulates opinions most companies would never publish: *"Write issues not user stories"*, *"A tool should work for you, not the other way around"*, *"Don't invent terms if possible"*. These are not marketing — they are internal operating principles made public because Linear wants to attract customers who already agree with them.
 

@@ -142,30 +142,112 @@ $vbFontFamily: '-apple-system', BlinkMacSystemFont, 'Helvetica Neue',
 
 ## 4. Component Stylings
 
-### Form Controls (heights are explicit tokens)
-| Token | Height | Use |
-|---|---|---|
-| `$vbFormControlSmallHeight` | `1.5rem` (24dp) | Compact inputs, dense tables |
-| `$vbFormControlHeight` | `2.25rem` (36dp) | Standard input, button |
-| `$vbFormControlLargeHeight` | `3rem` (48dp) | Hero CTAs, mobile-friendly forms |
-
 ### Buttons
-- Primary: bg `#285ac8` (`$vbPrimaryColor`), white text, weight 500-700, default `36px` height (`$vbFormControlHeight`)
-- Padding follows the `xs/s/basic` spacing scale: `4px 16px` (small), `8px 16px` (basic), `12px 24px` (large)
-- Border-radius: not explicitly tokenized in vibes — components use `4px` as the de facto standard
-- Disabled: `$vbThinScrimColor` overlay (`rgba(0,0,0,0.12)`)
+
+**Primary**
+- Background: `#285ac8` (`$vbPrimaryColor`)
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 8px 16px (basic) — small `4px 16px`, large `12px 24px`
+- Height: 36px (`$vbFormControlHeight`)
+- Font: 14px / 500-700
+- Disabled: overlay `rgba(0,0,0,0.12)` (`$vbThinScrimColor`)
+- Use: Primary CTAs, brand actions
+
+**Small**
+- Background: `#285ac8`
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 4px 16px
+- Height: 24px (`$vbFormControlSmallHeight`)
+- Font: 14px / 500
+- Use: Compact buttons in dense tables
+
+**Large**
+- Background: `#285ac8`
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 12px 24px
+- Height: 48px (`$vbFormControlLargeHeight`)
+- Font: 16px / 700
+- Use: Hero CTAs, mobile-friendly forms
+
+**Accent**
+- Background: `#73a5ff` (`$vbAccentColor`)
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 8px 16px
+- Use: Hover/secondary brand actions
 
 ### Inputs
-- Heights match `$vbFormControlHeight` tokens
-- Border: `1px solid $vbBaseColor3` (`#8c8989`)
-- Focus: border becomes `$vbPrimaryColor` (`#285ac8`)
-- Error: border becomes `$vbAlertColor` (`#dc1e32`), helper text in same red
 
-### Cards / Panels
-- Background: white (or `$vbColumnColor: #f7f5f5` for subtle differentiation)
-- Border: `1px solid $vbBaseColor2` (`#e9e7e7`)
-- Padding: `$vbBasicSize` (16dp) or `$vbLargeSize` (24dp)
-- Shadow: `$vbCardShadow` for elevated cards (see §6)
+**Default**
+- Background: `#ffffff`
+- Text: `#323232` (`$vbBlackColor`)
+- Border: 1px solid `#8c8989` (`$vbBaseColor3`)
+- Radius: 4px
+- Padding: 8px 12px
+- Height: 36px (`$vbFormControlHeight`)
+- Focus: border `#285ac8` (`$vbPrimaryColor`)
+- Error: border `#dc1e32` (`$vbAlertColor`); helper text in same red
+- Use: Standard form input
+
+**Small**
+- Background: `#ffffff`
+- Border: 1px solid `#8c8989`
+- Radius: 4px
+- Height: 24px
+- Use: Compact inputs, dense tables
+
+### Cards
+
+**Standard Panel**
+- Background: `#ffffff`
+- Border: 1px solid `#e9e7e7` (`$vbBaseColor2`)
+- Radius: 4px
+- Padding: 16px (`$vbBasicSize`)
+- Use: Default card / panel surface
+
+**Subtle Panel**
+- Background: `#f7f5f5` (`$vbColumnColor`)
+- Border: 1px solid `#e9e7e7`
+- Radius: 4px
+- Padding: 24px (`$vbLargeSize`)
+- Use: Subtle differentiation panel
+
+### Badges
+
+**Success**
+- Background: `#cdebd7` (GR02)
+- Text: `#006e2d` (GR07)
+- Radius: 4px
+- Padding: 2px 8px
+- Font: 12px / 500
+- Use: Success / confirmation status
+
+**Alert**
+- Background: `#fad2d7` (RE02)
+- Text: `#dc1e32` (RE05 / `$vbAlertColor`)
+- Radius: 4px
+- Padding: 2px 8px
+- Font: 12px / 500
+- Use: Errors, destructive states
+
+**Notice**
+- Background: `#fff0d2` (YE02)
+- Text: `#be8c14` (YE07 / `$vbNoticeColor`)
+- Radius: 4px
+- Padding: 2px 8px
+- Font: 12px / 500
+- Use: Warnings, notices
+
+**Info**
+- Background: `#dce8ff` (P02)
+- Text: `#285ac8` (P07)
+- Radius: 4px
+- Padding: 2px 8px
+- Font: 12px / 500
+- Use: Informational status
 
 ### Tables
 - Column bg alternates: white / `$vbColumnColor` (`#f7f5f5`)
@@ -176,12 +258,6 @@ $vbFontFamily: '-apple-system', BlinkMacSystemFont, 'Helvetica Neue',
 ### Navigation
 - Primary nav: white bg with subtle bottom border, `$vbPrimaryColor` for active link
 - Secondary nav: tab-style with underline indicator in `$vbPrimaryColor`
-
-### Status Badges
-- Success: `GR02` bg + `GR07` text (`#cdebd7` / `#006e2d`)
-- Alert: `RE02` bg + `RE05` text (`#fad2d7` / `#dc1e32`)
-- Notice: `YE02` bg + `YE07` text (`#fff0d2` / `#be8c14`)
-- Info: `P02` bg + `P07` text (`#dce8ff` / `#285ac8`)
 
 ## 5. Layout Principles
 
@@ -341,7 +417,7 @@ freee speaks to Japanese small-business owners and the accountants who support t
 
 ## 11. Brand Narrative
 
-freee was founded in July 2012 by Daisuke Sasaki, who had previously run SMB marketing for Google Japan and the Asia-Pacific region ([corp.freee.co.jp/company](https://corp.freee.co.jp/company/)). The starting observation was that the smallest Japanese businesses — the shops, clinics, studios, and single-person LLCs that make up most of the economy — spent a disproportionate share of their week on bookkeeping they had not signed up for. Cloud accounting freee launched in 2013, and over the following decade grew into an integrated platform spanning accounting, HR, payroll, and approval workflows.
+freee was founded **July 2012** by **Daisuke "Dice" Sasaki**, who had previously run **APAC SMB Marketing Development at Google** (and was CFO/VP at ALBERT Inc. before that) ([Daisuke Sasaki — LinkedIn](https://www.linkedin.com/in/daisukesasaki/), [DCFmodeling — freee history](https://www.dcfmodeling.com/blogs/history/4478t-history-mission-ownership)). Cloud accounting freee launched **March 2013**; expanded into HR/payroll/labor in 2015. Pre-IPO funding totaled **~$227.9M across 9 rounds** with **Mitsubishi UFJ, LINE, Life Card, Nippon Life, Sharp, Salesforce, Recruit, SBI, and Greyhound Capital** as investors ([TechCrunch — freee $60M 2018](https://techcrunch.com/2018/08/07/japans-freee-raises-60m/)). **Tokyo Stock Exchange IPO December 2019** (ticker **4478**) — the **second-biggest Japanese IPO of 2019** ([AsiaTechDaily — freee 2nd-biggest IPO Japan 2019](https://asiatechdaily.com/freee-second-biggest-ipo-of-japan-in-2019/)). Sasaki had previously run SMB marketing for Google Japan and the Asia-Pacific region ([corp.freee.co.jp/company](https://corp.freee.co.jp/company/)). The starting observation was that the smallest Japanese businesses — the shops, clinics, studios, and single-person LLCs that make up most of the economy — spent a disproportionate share of their week on bookkeeping they had not signed up for. Cloud accounting freee launched in 2013, and over the following decade grew into an integrated platform spanning accounting, HR, payroll, and approval workflows.
 
 The mission, refreshed in 2018, is *「スモールビジネスを、世界の主役に。」* — *"Put small businesses center stage"* ([corp.freee.co.jp/mission](https://corp.freee.co.jp/mission/)). freee frames small businesses as *「多様な価値観や生き方を生み出す、イノベーションの源泉」* — the catalysts that push the rest of the economy forward — and positions its product as the back-office infrastructure that lets those businesses spend their time being businesses instead of clerks. Accessibility is treated as a literal extension of the mission: *「すべての人が freee のサービスを使える必要がある」* ([corp.freee.co.jp/sustainability/social/accessibility](https://corp.freee.co.jp/sustainability/social/accessibility/)), which is why freee publishes its accessibility guidelines ([a11y-guidelines.freee.co.jp](https://a11y-guidelines.freee.co.jp/)) and the Vibes design system ([github.com/freee/vibes](https://github.com/freee/vibes)) as open source.
 
@@ -470,4 +546,13 @@ OmD v0.1 Sources — Philosophy Layer (sections 10–15)
   sole proprietors, 税理士, in-house back-office leads). Names are illustrative and do not refer to real
   people.
 -->
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 26 — Apple-tier)
+**Tier 1 sources:** freee.co.jp home + /accounting (live DOM via playwright — Primary `#2864f0` Freee Blue two-tier {5px header 31-34px / 8px hero 48px} 4-10×16-20 / 14-16px·**700** strict; Outline `#fff` w/ `#2864f0` text; segment-tint cards `#ebf3ff`).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders):** Daisuke Sasaki LinkedIn, DCFmodeling, TechCrunch, VentureBeat, AsiaTechDaily, corp.freee.co.jp/company.
+**Style ref:** `line` (JP East-Asian register, retained).
+**Conflicts unresolved:** Brand blue HEX — live DOM `#2864f0` vs §2 doc `#285ac8` (likely 2024-2025 rebrand drift; both retained, live wins for new UI).
 

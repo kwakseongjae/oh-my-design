@@ -296,3 +296,76 @@ What makes Lovable's visual system distinctive is its opacity-driven depth model
 5. Two weights: 400 (everything except headings) and 600 (headings)
 6. The inset shadow on dark buttons is the signature detail — don't skip it
 7. Camera Plain Variable at weight 480 is for special display moments only
+
+## 10. Voice & Tone
+
+Lovable's voice is **warmly enthusiastic and craft-confident** — speaks like a tool that loves being a tool for builders. "Vibe Code Apps & Websites with AI" (homepage 2026-05) — verb-with-personality framing. The brand uses warm typography + inset-shadow buttons to signal "AI tool that feels handmade."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Try it now", "Sign in" |
+| Marketing | Personality-forward. "Vibe code" coined as the brand verb |
+| Documentation | Practical, screenshot-heavy |
+| Error | Specific. "Build failed at line 42. View logs to debug." |
+
+**Voice samples**
+- Tagline: *"Vibe Code Apps & Websites with AI, Fast"* <!-- verified: lovable.dev homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary AI app builder", "10× developer".
+
+## 11. Brand Narrative
+
+Lovable was founded **2023** in **Stockholm** by **Anton Osika** and **Fabian Hedin** ([Lovable — Wikipedia](https://en.wikipedia.org/wiki/Lovable_(company)), [Anton Osika — LinkedIn](https://se.linkedin.com/in/antonosika)). The product began as **GPT Engineer**, an open-source CLI code-generation tool Osika released in 2023; with Hedin he then built **GPT Engineer App**, a commercialized web version that **rebranded to Lovable** in 2024-2025 to broaden positioning from "code generation" to "AI app builder." Funding ladder: **€6.8M seed (2024)** ([Silicon Canals — Lovable €6.8M + GPT Engineer launch](https://siliconcanals.com/lovable-secures-e6-8m-launches-gpt-engineer/)) → **$15M (Feb 2025)** ([TechCrunch — Lovable $15M](https://techcrunch.com/2025/02/25/swedens-lovable-an-app-building-ai-platform-rakes-in-16m-after-spectacular-growth/)) → **$200M Series A** led by **Accel** at **$1.8B unicorn valuation** with **20VC, ByFounders, Creandum, Hummingbird, Visionaries Club** as existing backers ([Vestbee — Lovable $200M Series A](https://www.vestbee.com/insights/articles/lovable-raises-200-m), [Startup Hub AI — Lovable unicorn](https://www.startuphub.ai/ai-news/funding-round/2025/lovable-secures-200m-series-a-achieves-unicorn-status/)). **$100M ARR in 8 months** post-launch made Lovable one of the fastest-growing software ventures in history ([Creators AI — Lovable $200M ARR playbook](https://thecreatorsai.com/p/lovable-growth-secrets-and-costs)). The brand voice — warm typography, inset-shadow buttons, "Vibe Code" as the verb — reflects the product positioning: AI app development should feel like a craft, not a sterile tool.
+
+## 12. Principles
+
+1. **Vibe Code is the verb.** *UI implication:* the brand promises a feeling, not a feature list.
+2. **Warm typography signals craft.** Camera Plain Variable. *UI implication:* don't substitute system fonts.
+3. **Inset shadow is the depth.** Dark buttons have inset highlight. *UI implication:* preserve the inset detail.
+4. **Real preview, fast iteration.** *UI implication:* surfaces emphasize live preview alongside chat.
+5. **Pill chrome over rectangular.** *UI implication:* nav, badges, modals all pill (9999px) on white surfaces.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Lovable user segments (designers building MVPs, indie founders, creative coders), not individual people.*
+
+**Sofia Russo, 28, Milan.** Designer with light JS knowledge. Ships micro-SaaS via Lovable. Loves the chat-to-app workflow.
+
+**Ravi Krishnan, 35, Bengaluru.** Full-stack developer prototyping ideas. Lovable for client-presentation MVPs.
+
+**Emma Park, 23, Seoul.** Indie hacker shipping 12 micro-products. Subscribes to Lovable Pro for unlimited generations.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no projects)** | "Start vibe coding" CTA + template grid |
+| **Empty (no chat)** | Welcoming prompt with example asks |
+| **Loading (generating)** | Per-step trace with file changes visible |
+| **Loading (preview building)** | Inline preview spinner with elapsed time |
+| **Error (build)** | Inline log + retry / fix button |
+| **Error (rate limit)** | "Upgrade for unlimited" inline link |
+| **Success (deployed)** | URL copy + share preview link |
+| **Success (committed)** | Soft pulse on changed files |
+| **Skeleton (project list)** | Inset-shadow placeholders |
+| **Disabled (no credits)** | 0.5 opacity + upgrade link |
+| **Loading (long agent task)** | Cancellable, persistent step list |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; no bounce. Inset shadow is static (never animates). `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 34 — Apple-tier)
+**Tier 1 sources:** lovable.dev home + /pricing (live DOM via playwright — Primary **`lab(0 0 0 / 0.88)`** Near-Black 8px / 32-36px / 6×10 / 14px·400; **Featured Primary** `lab(47.92 57.95 -81.30)` **Lovable Violet** (~`#6038c8`) on pricing featured tier; Cream `#fcfbf8` 6px selector chip; nav 0px text-only `rgb(28,28,28)` Near-Black 15px·400. **`lab()` color space** is canonical token convention).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders):** Wikipedia (Lovable), LinkedIn (Osika), Silicon Canals, TechCrunch (Feb 2025 $15M), Vestbee + Startup Hub AI ($200M Accel Series A → $1.8B unicorn), Creators AI ($100M ARR / 8 months), Catalaize.
+**Style ref:** `notion`.
+**Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer claimed "pill nav 1.67e+07 ≈ 9999px" — live measurement is 0px text-only ghost nav. Also added **Lovable Violet featured-tier accent** missing from prior pass.

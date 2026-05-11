@@ -17,6 +17,12 @@ import { extractTokens } from "@/lib/extract-tokens";
 
 const REFS_DIR = join(process.cwd(), "references");
 
+// Force dynamic rendering so edits to references/<id>/DESIGN.md show up
+// without a full server restart. SSG caching otherwise pins the parsed token
+// snapshot to whatever the file was at first build.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 function loadDetail(id: string) {
   const mdPath = join(REFS_DIR, id, "DESIGN.md");
   if (!existsSync(mdPath)) return null;
@@ -53,8 +59,27 @@ function loadDetail(id: string) {
   const weightMatch = designMd.match(/Display.*?\|\s*(\d{3})\s*\|/);
   const headingWeight = weightMatch ? weightMatch[1] : "600";
 
-  const radiusMatch = designMd.match(/(?:border-radius|radius).*?(\d+px(?:\s*[-–]\s*\d+px)?)/i);
-  const radius = radiusMatch ? radiusMatch[1] : "6px";
+  // Prefer authoritative patterns over a greedy "any px after radius" sweep —
+  // some refs (e.g., DCard) write "8px border-radius is the default (…) 1280px"
+  // on one line, which made the old regex capture the trailing max-width as
+  // the radius. Try in priority order:
+  //   1. **Default radius**: `Npx`        ← canonical statement
+  //   2. Default radius: `Npx`            ← without bold
+  //   3. Npx border-radius                ← prefix form ("8px border-radius")
+  //   4. border-radius: Npx               ← postfix CSS form
+  //   5. anywhere "radius" + first px     ← legacy fallback
+  const radiusPatterns: RegExp[] = [
+    /\*\*Default radius\*\*\s*[:：]\s*`?(\d+px(?:\s*[-–]\s*\d+px)?)`?/i,
+    /Default radius\s*[:：]\s*`?(\d+px(?:\s*[-–]\s*\d+px)?)`?/i,
+    /`?(\d+px(?:\s*[-–]\s*\d+px)?)`?\s+border-radius/i,
+    /border-radius\s*[:：]\s*`?(\d+px(?:\s*[-–]\s*\d+px)?)`?/i,
+    /(?:border-radius|radius).*?(\d+px(?:\s*[-–]\s*\d+px)?)/i,
+  ];
+  let radius = "6px";
+  for (const re of radiusPatterns) {
+    const m = designMd.match(re);
+    if (m) { radius = m[1]; break; }
+  }
 
   const accentMatch = designMd.match(/(?:accent|secondary).*?`(#[0-9a-fA-F]{6})`/i);
   const borderMatch = designMd.match(/(?:border.*?default|border.*?standard).*?`(#[0-9a-fA-F]{6})`/i);

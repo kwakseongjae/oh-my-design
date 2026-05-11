@@ -276,3 +276,75 @@ The component system uses the `mds` (Markdown Design System) prefix, indicating 
 4. Product colors are sacred — each product owns exactly one color
 5. Focus rings are always 3px solid, color-matched to product context
 6. Uppercase labels are the systematic wayfinding pattern — 13px, 600, 1.3px tracking
+
+## 10. Voice & Tone
+
+HashiCorp's voice is **infrastructure-engineer-fluent** — speaks the language of platform teams who manage clouds, secrets, and clusters. Copy is capability-driven, with strong open-source narrative. Each product (Terraform, Vault, Consul, Nomad, Boundary, Packer, Waypoint) has its own micro-brand within the HashiCorp identity.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Try Terraform", "Get started", "Sign up" |
+| Marketing | Product-specific. Terraform copy ≠ Vault copy ≠ Consul copy |
+| Documentation | HCL/CLI heavy, deep code examples |
+| Error (apply) | Plan diff + specific resource error |
+
+**Voice samples**
+- Marketing tagline (KR): *"혁신을 위한 인프라"* <!-- verified: hashicorp.com/ko homepage 2026-05 -->
+
+**Forbidden phrases.** Marketing superlatives without numbers. "Revolutionary infrastructure" framing.
+
+## 11. Brand Narrative
+
+HashiCorp was founded **2012** in San Francisco by **Mitchell Hashimoto** and **Armon Dadgar** — classmates at the **University of Washington's Paul G. Allen School of Computer Science**, where they met **2008** working on a research project to make then-emerging Amazon/Microsoft public-cloud tech accessible to scientists ([HashiCorp — Origin Story](https://www.hashicorp.com/en/about/origin-story), [HashiCorp — Wikipedia](https://en.wikipedia.org/wiki/HashiCorp)). Hashimoto was already running open-source **Vagrant**; he created **Terraform**, which became the de-facto standard for infrastructure-as-code. The product family expanded to **Vault** (secrets), **Consul** (service mesh), **Nomad** (orchestration), **Boundary**, **Packer**, and **Waypoint**. **NASDAQ IPO 2021-12-09** under ticker **HCP**, priced at **$80/share** (above $68-72 range), valuing HashiCorp at **~$13B**. **IBM announced acquisition April 24 2024 for $6.4B**; deal **closed February 27 2025** after regulatory review, bringing HashiCorp into IBM's hybrid cloud strategy ([IBM acquisition closed — HashiCorp blog](https://www.hashicorp.com/en/blog/hashicorp-officially-joins-the-ibm-family), [Logan Bartlett podcast — Dadgar 48hrs after IBM sale](https://www.theloganbartlettshow.com/archive/ep-102-armon-dadgar-hashicorp-co-founder-reflects-48-hours-after-selling-to-ibm)). **Hashimoto resigned December 2023** ahead of the IBM deal — later launched **Ghostty** (GPU-accelerated terminal, public Dec 2024) and joined **Vercel's board March 2026** ([BusinessWire — Vercel + Hashimoto](https://www.businesswire.com/news/home/20260318957008/en/Vercel-Appoints-Mitchell-Hashimoto-Co-Founder-of-HashiCorp-and-Creator-of-Terraform-to-Board-of-Directors)). The brand voice retains its open-source-first, platform-engineering register.
+
+## 12. Principles
+
+1. **Infrastructure as code.** Every product expects HCL or equivalent declarative input. *UI implication:* CLI-first; UI dashboards exist but never replace HCL primacy.
+2. **Multi-cloud is the default.** *UI implication:* every concept is provider-agnostic in copy; specific provider logos appear only in integration grids.
+3. **Each product has a color, none are loud.** Terraform `#7B42BC` purple, Vault `#FFEC6E` yellow-green, Consul `#E03875` magenta — but used sparingly. *UI implication:* product-specific brand color appears only on hero + product nav.
+4. **3px focus rings, color-matched.** *UI implication:* don't use generic blue focus; match to the active product theme.
+5. **Uppercase labels for wayfinding.** *UI implication:* tab labels and section dividers can use uppercase 13px / 600 / 1.3px tracking — systematic, never decorative.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by HashiCorp user segments (platform engineers, DevOps leads, security architects), not individual people.*
+
+**Sergey Volkov, 38, Berlin.** Senior platform engineer. Manages Terraform state for 120+ AWS accounts. Vault for production secrets.
+
+**Priya Krishnan, 31, Bengaluru.** SRE at fintech. Consul service mesh + Nomad orchestration replacing K8s for specific workloads.
+
+**Marcus Davies, 45, London.** Security architect. Vault is the entire reason their compliance audit passed.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no resources)** | "Define resources in your `.tf` file" + sample HCL block |
+| **Empty (no secrets)** | "Add your first secret" CTA + CLI command |
+| **Loading (terraform apply)** | Plan diff visible + apply progress per resource |
+| **Loading (state)** | Per-resource spinner |
+| **Error (plan)** | HCL line:column + specific resource + recommended fix |
+| **Error (apply)** | Resource-level rollback option |
+| **Success (apply)** | Resource list + state-locked indicator clear |
+| **Success (rotate)** | Vault rotation timestamp + next-rotation due date |
+| **Skeleton (resource list)** | Dark cards with charcoal borders |
+| **Disabled (locked state)** | Lock icon + "State locked by user@team" |
+| **Loading (long apply)** | Real-time per-resource progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; no bounce. **Focus rings** never animate — appear instant for accessibility. `prefers-reduced-motion: reduce` removes panel slide-ins.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 27 — Apple-tier)
+**Tier 1 sources:** hashicorp.com/en home + /en/products/terraform (live DOM via playwright — Shared Primary **`#1060ff`** HC Blue 5px / 36-48px / 16px·500; Light Secondary `#fafafa`/`#3b3d45` 5px; nav 4px sub-distinction; **per-product accent system** confirmed via Terraform Purple `#7b42bc`).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/IPO/IBM):** Wikipedia (HashiCorp), HashiCorp Origin Story, Mayfield (UW Allen School origin), HashiCorp blog (IBM close 2025-02), BusinessWire (Hashimoto Vercel board 2026-03), Logan Bartlett Show ep 102 (Dadgar 48hrs post-sale).
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured nav-only — canonical Primary is `#1060ff` HC Blue with documented per-product-accent pattern (Terraform Purple).

@@ -146,6 +146,37 @@ What truly distinguishes Stripe is its shadow system. Rather than the flat or si
 - Outline: `1px solid rgb(212,222,233)`
 - Use: Disabled or muted actions
 
+#### Sessions / `.CtaButton` system — `stripe.com/payments` and product surfaces
+
+Stripe runs a **second button system** on product/payment surfaces, distinct from the HDS marketing chrome. Different color (`#9966ff` lavender vs HDS `#533afd` Deep Violet), different geometry (16.5px pill vs 4px sharp), different weight (425 vs 400).
+
+**Sessions Primary**
+- Background: `#9966ff` (rgb(153, 102, 255) — lighter lavender)
+- Text: `#ffffff`
+- Padding: 3px 12px 6px 16px (asymmetric)
+- Radius: 16.5px (pill-like, much rounder than HDS 4px)
+- Height: 33px
+- Font: 15px / weight **425** / sohne-var (note: 425 is between regular and medium)
+- Use: Product-page primary CTA on stripe.com/payments — "Start accepting payments", "Start now"
+
+**Sessions Link**
+- Background: transparent
+- Text: `#9966ff`
+- Padding: 3px 0px 6px
+- Radius: 16.5px
+- Height: 33px
+- Font: 15px / 425 / sohne-var
+- Use: Inline link CTA — "Try the demo", "Explore full page", "Read the story"
+
+**Sessions Quiet** (carousel)
+- Background: transparent
+- Text: `#000000`
+- Padding: 1px 6px
+- Radius: 14px
+- Height: 28px
+- Font: 13.3px / 400
+- Use: Carousel prev/next arrows on product pages
+
 ### Cards & Containers
 - Background: `#ffffff`
 - Border: `1px solid #e5edf5` (standard) or `1px solid #061b31` (dark accent)
@@ -195,6 +226,16 @@ What truly distinguishes Stripe is its shadow system. Rather than the flat or si
 **Gradient Accents**
 - Ruby-to-magenta gradients (`#ea2261` to `#f96bee`) for hero decorations
 - Brand dark sections use `#1c1e54` backgrounds with white text
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate Apple-tier — run 3/10)
+**Tier 1 sources:** stripe.com/ (HDS `.hds-button` system, live DOM 2 surfaces); stripe.com/payments (Sessions `.CtaButton` system, second surface — distinct from HDS)
+**Tier 2 sources:** styles.refero.design/style/48e5de76-05d5-4c4e-a269-c7c245b291ec (HDS Primary `#533afd` / 4px confirmed); getdesign.md/stripe — directory only
+**Conflicts resolved:** Two-system split documented as intentional (not a conflict): HDS `#533afd` 4px sharp on marketing/home / Sessions `#9966ff` 16.5px pill 425-weight on product pages. Both retained as separate variant subgroups in §4.
+**Earlier gap:** §4 had only HDS variants; Sessions `#9966ff` system was missing. Now added.
+**Philosophy citations:** Wikipedia (Patrick + John Collison), YC Startup Library, KITRUM (Auctomatic prior exit), Founded.com ($159B valuation).
+**`.verification.md`:** `web/references/stripe/.verification.md`
 
 ## 5. Layout Principles
 
@@ -348,7 +389,9 @@ Stripe's voice is that of a careful engineer who happens to have literary sensib
 
 ## 11. Brand Narrative
 
-Stripe was founded in 2010 by Patrick and John Collison — two Irish brothers who kept running into the same problem: accepting payments online was far harder than it should be for any developer who wanted to build something on the internet. The founding rejection was of every incumbent payment processor that treated integration as a multi-week enterprise-sales procurement cycle. Stripe's first pitch was, essentially: *"what if it took seven lines of code instead."*
+Stripe was founded in **2010** by **Patrick Collison (CEO)** and **John Collison (President)** — two Irish brothers from **Limerick** who kept running into the same problem: accepting payments online was far harder than it should be for any developer who wanted to build something on the internet ([Patrick Collison — Wikipedia](https://en.wikipedia.org/wiki/Patrick_Collison), [John Collison — Wikipedia](https://en.wikipedia.org/wiki/John_Collison)). The brothers had prior exit experience: their previous company **Auctomatic** (originally Shuppa, 2007) merged with Oxford grads **Harjeet and Kulveer Taggar** through Y Combinator and was sold to Live Current Media on Good Friday, March 2008 — Patrick was 19, John was 17 ([KITRUM — Collison Brothers](https://kitrum.com/blog/stripe-founders-the-story-of-collison-brothers/)). Stripe entered **Y Combinator's W10 batch** ([YC Startup Library](https://www.ycombinator.com/library/Kx-patrick-john-collison-co-founders-of-stripe)) and raised a 2011 seed round of **$2M including PayPal co-founders Elon Musk and Peter Thiel + Sequoia Capital**. The first customer was YC company 280 North; its founder Ross Boucher later joined Stripe as one of the first employees. As of 2024-2025 Stripe is valued at **~$159B** ([Founded.com](https://www.founded.com/how-two-irish-brothers-built-stripe-the-online-payments-startup-now-worth-159-billion/)).
+
+The founding rejection was of every incumbent payment processor that treated integration as a multi-week enterprise-sales procurement cycle. Stripe's first pitch was, essentially: *"what if it took seven lines of code instead."*
 
 That developer-first framing shaped everything that came after: the API as the product, the docs as an interface, *"Growing the GDP of the internet"* as a mission statement that reads like an economist wrote it, and the company's obsession with reliability (99.999% uptime as a stated number, not a marketing claim). **Stripe Press** — the company's publishing imprint with the tagline *"Ideas for progress"* — makes the intellectual posture explicit: this is a company that takes ideas seriously enough to commission and print books about maintenance, scientific freedom, and efficiency.
 

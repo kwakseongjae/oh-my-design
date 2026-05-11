@@ -279,3 +279,75 @@ What makes Expo distinctive is its pill-shaped geometry. Buttons, tabs, video co
 5. Always specify Inter and the exact weight — weight contrast IS the hierarchy
 6. For shadows, specify "whisper shadow" or "standard elevation" from the elevation table
 7. Keep the interface monochrome — let product content be the color
+
+## 10. Voice & Tone
+
+Expo's voice is **builder-focused and warm-precise.** The brand emphasizes shipping React Native apps with the same speed as web — copy is capability-driven, never marketing-fluff. Surfaces lean into the "framework that gets out of your way" register.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Try it free", "Sign up", "Get started" |
+| Marketing | Short claim + screenshots. Capability-list, not benefit-list |
+| Documentation | Imperative, code-block-first, deeply linked |
+| Error (build) | Stack-trace-friendly. Show the actual EAS build error |
+
+**Voice samples**
+- Marketing CTA: *"Try it free"* / *"Sign up"* <!-- verified: expo.dev homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionize mobile", "magic". Apology theatre.
+
+## 11. Brand Narrative
+
+Expo was founded **October 2013** by **Charlie Cheever (CEO)** and **James Ide (CTO)** — Cheever was an **early Facebook engineer** and **Quora co-founder**, Ide an early React Native contributor ([Y Combinator — Expo](https://www.ycombinator.com/companies/expo)). Started as **Exponent**, a managed React Native runtime that abstracted iOS/Android build complexity. **First Expo development client released for iPhone May 2015** soon after React Native's public release. Participated in **Y Combinator Summer 2016**. Operates under legal name **650 Industries, Inc.** ([Crunchbase — Expo](https://www.crunchbase.com/organization/exponent-3)). **3M+ developers** build with Expo today. Pivoted toward a fully open-source framework + **EAS (Expo Application Services)** cloud build/deploy/update platform. **Series B $45M (Apr 2026)** led by **Georgian** with **Leadout Capital, A Capital, Red Swan** — round announced alongside **Expo Agent**, an AI mobile-app builder ([SiliconANGLE](https://siliconangle.com/2026/04/16/developer-tooling-startup-expo-nabs-45m-investment/), [PR Newswire](https://www.prnewswire.com/news-releases/expo-raises-45m-series-b-and-launches-expo-agent-to-close-the-gap-from-idea-to-production-ready-mobile-apps-302744423.html)). The brand voice tracks this: framework-first, build-pipeline-deep, developer-focused.
+
+## 12. Principles
+
+1. **Ship to all platforms from one codebase.** *UI implication:* surfaces emphasize iOS + Android + Web parity, never platform-specific UI.
+2. **EAS is the runway.** Cloud build/deploy/update services are first-class. *UI implication:* dashboards show build status with first-class UX investment.
+3. **Documentation is product.** *UI implication:* docs.expo.dev has full-time design investment; not "marketing site sidebar".
+4. **Monochrome chrome, color content.** *UI implication:* don't use bright accents in chrome — the developer's app preview carries color.
+5. **Whisper shadows, never heavy.** *UI implication:* depth via subtle gradients + 1px borders; no 0.5+ opacity shadows.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Expo user segments (React Native developers, indie mobile app shippers, enterprise mobile teams), not individual people.*
+
+**Yuki Tanaka, 29, Tokyo.** Indie developer shipping mobile-first SaaS. EAS Build replaces Apple/Google certificate management she'd otherwise navigate manually.
+
+**Marcus Chen, 38, San Francisco.** Senior engineer at B2B SaaS adding mobile. Expo as the "stop bikeshedding native build infra" choice.
+
+**Priya Rao, 27, Bengaluru.** Bootcamp grad shipping first React Native app. Expo Go (try-without-build) is the entire onboarding she needed.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no projects)** | "Create your first app with `npx create-expo-app`" |
+| **Empty (no builds)** | "Submit your first build" with EAS CLI snippet |
+| **Loading (build running)** | Persistent progress with step + ETA (provisioning, fetching deps, archiving) |
+| **Loading (preview)** | QR code for Expo Go alongside skeleton |
+| **Error (build)** | Full log with collapsible sections + suggestion |
+| **Error (config)** | Specific reason + link to docs section |
+| **Success (build)** | Build artifacts download links + install QR |
+| **Success (deploy/update)** | Update channel info + when users will receive |
+| **Skeleton (project list)** | Whisper-shadow rectangles |
+| **Disabled (no quota)** | 0.5 opacity + upgrade link |
+| **Loading (long install)** | Real-time log stream |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 23 — Apple-tier)
+**Tier 1 sources:** expo.dev home + /pricing (live DOM via playwright — Primary `#000` height=radius pill {hero 48px / header+pricing 36px} 0×{24/16} / 14-16px·500; Secondary `#f0f0f3` Cool Gray same geometry; testimonial card 8px `#fff`).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders):** Y Combinator (Expo profile), Crunchbase, SiliconANGLE, PR Newswire (Series B 2026), TechCompanyNews.
+**Style ref:** `stripe`. **Conflicts unresolved:** none.

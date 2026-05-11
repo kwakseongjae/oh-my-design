@@ -171,3 +171,87 @@ What distinguishes Wise is its green-on-white-on-black material palette. Lime Gr
 3. Scale animations (1.05 hover, 0.95 active) on all interactive elements
 4. "calt" on everything — contextual alternates are mandatory
 5. Inter 600 for body — confident reading weight
+
+## 10. Voice & Tone
+
+Wise's voice is **fintech-clear and money-honest.** "The international account / Money without borders" — capability-driven, no marketing fluff. Lime green primary `#9fe870` signals "modern fintech, not bank corporate." Wise has been famously transparent about exchange rate markups since founding.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Sign up", "Open an account" |
+| Marketing | Comparison-honest. Real exchange rate vs banks shown |
+| Documentation | Plain English KYC explanations |
+| Error | Specific. "Recipient details invalid. Check IBAN format." |
+
+**Voice samples**
+- Marketing tagline: *"Money without borders"* <!-- verified: wise.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary fintech". Hidden fees framing.
+
+## 11. Brand Narrative
+
+Wise was **founded January 2011 in London** as **TransferWise** (renamed July 2012 → rebranded **Wise** February 2021) by **Kristo Käärmann** (ex-Deloitte management consultant) and **Taavet Hinrikus** (Skype's first employee). Both Estonian, both moved to London ~2006, both frustrated by ~5% bank FX markups on EUR↔GBP transfers — they devised a peer-to-peer workaround between themselves that became the business concept. **Reached unicorn status in 2016.** On **7 July 2021**, Wise went public via **direct listing on the London Stock Exchange (LSE:WISE)** at an **~$11B valuation** — no new shares issued, making Käärmann + Hinrikus **Estonia's first two billionaires**. The brand voice — transparent, honest, lime green `#9fe870` primary, Wise Sans 900 display, Inter 600 body — reflects "money without borders" for international citizens. <!-- citations: Wikipedia (Wise company); Bloomberg 2021-07-07; ERR.ee; Fortune 2021-11-24 -->
+
+**Sources:**
+- [Wise (company) — Wikipedia](https://en.wikipedia.org/wiki/Wise_(company))
+- [Bloomberg — Wise Founders Turn Bank Fee Frustration into $3B Fortune (2021-07-07)](https://www.bloomberg.com/news/articles/2021-07-07/wise-founders-turn-bank-fee-frustration-into-3-billion-fortune)
+- [ERR — Wise founders' story contained plenty of twists and turns](https://news.err.ee/1608273048/daily-wise-founders-story-contained-plenty-of-twists-and-turns)
+- [Fortune — Taavet Hinrikus on his next act (2021-11-24)](https://fortune.com/2021/11/24/wise-taavet-hinrikus-venture-capital-tech-startup-investing/)
+
+## 12. Principles
+
+1. **Real exchange rate is the product.** *UI implication:* always show interbank rate; markups visible.
+2. **Multi-currency native.** *UI implication:* nav supports 50+ currency selection.
+3. **Lime green `#9fe870` for primary.** *UI implication:* preserve lime; don't substitute corporate blue.
+4. **Inter 600 body.** *UI implication:* confident reading weight; don't lighten to 400.
+5. **`calt` OpenType.** Contextual alternates mandatory. *UI implication:* preserve OpenType features.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Wise user segments (international workers, freelancers with multi-currency income, expats), not individual people.*
+
+**Sergey Volkov, 33, Berlin.** Russian-origin engineer working remotely for US company. Wise multi-currency account.
+
+**Sofia Russo, 31, Milan.** Freelancer with EUR/USD/GBP income. Wise Business for invoicing.
+
+**Henrik Sondergaard, 38, Singapore.** Expat with Danish family. Wise for sending money home + multi-currency debit card.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no transfers)** | "Send your first transfer" CTA |
+| **Empty (no accounts)** | "Open an account" CTA |
+| **Loading (rate fetch)** | Real-time rate update with timestamp |
+| **Loading (KYC)** | Persistent badge with progress |
+| **Error (recipient)** | Specific field-level message |
+| **Error (compliance)** | Plain English explanation + remediation |
+| **Success (transfer)** | Receipt with rate / fee / arrival time |
+| **Success (KYC)** | Confirmation + account active |
+| **Skeleton (transaction list)** | Lime-tinted placeholders |
+| **Disabled (insufficient funds)** | Top up link |
+| **Loading (long action)** | Multi-step progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-pulse` | continuous | Live FX rate update |
+
+Standard cubic-bezier; no bounce — fintech register. `prefers-reduced-motion: reduce` removes rate pulse.
+
+---
+
+**Verified:** 2026-05-08 (Apple-tier full migration)
+**Tier 1 sources:** wise.com/, wise.com/pricing (live DOM via playwright)
+- **Primary `#9fe870` Wise Green + `#163300` Dark Green text** 9999px / 48px / 11×24 / 16px·600 (Open an account / Try demo / Get Started / Sign up today — canonical hero/pricing CTA)
+- **Sign up — Header utility** `#9fe870` 9999px / 32px / 8×12 / 16px·600 (compact variant)
+- **Skip-to-content** `#9fe870` 9999px / 72px / 19×24 / 20px·600 (a11y, larger geometry)
+- **Top nav pills** transparent / `#163300` text / 9999px / 32px / 8×12 / 18px·600
+- **Submenu pills** transparent / `#163300` / 18.7693px / 40px / 8×12 / 18px·600 (subpixel — rem-based design tokens)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** Wikipedia (Wise company), Bloomberg 2021-07-07, ERR.ee, Fortune 2021-11-24.
+**Style ref:** `stripe`. **Conflicts unresolved:** none.

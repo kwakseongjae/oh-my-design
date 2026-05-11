@@ -144,3 +144,76 @@ Breakpoints: 375px, 425px, 640px, 768px, 1024px, 1280px, 1536px
 
 ### Example Component Prompts
 - "Create hero: white background. Kraken-Brand 48px weight 700, letter-spacing -1px. Purple CTA (#7132f5, 12px radius, 13px 16px padding)."
+
+## 10. Voice & Tone
+
+Kraken's voice is **earned-trust crypto** — confident without bombast, technical without alienating, regulator-aware without legalese. Marketing copy emphasizes durability ("Own the Power of Your Money") and the company's track record (founded 2011, has weathered every crypto cycle including FTX collapse). The tone is closer to a brokerage than a casino — feature copy reads like a financial product page, not a meme.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb-first. "Sign up", "Try Kraken", "Sign in with Apple" |
+| Marketing | Stability + history-emphasized. References to 2011 founding, regulatory milestones |
+| Error (verification/security) | Specific + reassuring. "Two-factor authentication required for withdrawals" |
+| Educational content | First-class — Kraken Learn academy is part of the brand |
+
+**Voice samples**
+- Tagline: *"Own the Power of Your Money — Crypto, Stocks & more"* <!-- verified: kraken.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Get rich quick", "moon", "to the moon". Casino metaphors. Hyperbolic ROI promises.
+
+## 11. Brand Narrative
+
+Kraken (legally **Payward, Inc.**) was founded **2011** in San Francisco by **Jesse Powell**, **Thanh Luu**, and **Michael Gronager** — making it one of the **longest-running crypto exchanges still operating** ([Kraken — Wikipedia](https://en.wikipedia.org/wiki/Kraken_(cryptocurrency_exchange)), [Contrary Research — Kraken](https://research.contrary.com/company/kraken)). Powell's path to Kraken: in **2001** he founded an internet gaming company helping players manage in-game currencies; **2010** dove into Bitcoin; **2011 consulted for Mt. Gox** to help recover from a hack — after observing that exchange's security failures, Powell decided to build a security-first alternative. The platform survived the **2014 Mt. Gox collapse** (Powell helped audit the failure), the 2017 ICO crash, 2018 bear market, and the **2022-2023 FTX/Celsius collapses**. This survival history is core to the brand voice — Kraken positions itself as the exchange that's "still here" when newer competitors fail. **Total funding $867M** from **RIT Capital Partners, SBI Group, Jane Street, DRW Venture Capital, HSG, Oppenheimer Alternative Investment Management, Tribe Capital, Citadel Securities** at **~$20B valuation** ([Tracxn — Kraken](https://tracxn.com/d/companies/kraken/__K8eQ_bnwtoEzrre_iQrRk_2-6sBivxjdpOCeXGVrx1w)). **U.S. IPO filing November 2025** (Payward, Inc.) — earlier 2022/2023 IPO plans were shelved due to regulatory scrutiny + market conditions ([Caproasia — Kraken IPO](https://www.caproasia.com/2025/11/21/cryptocurrency-exchange-kraken-files-for-united-states-ipo-after-raising-800-million-funding-at-20-billion-founded-in-2011-by-jesse-powell-thanh-luu-investors-include-jane-street-drw-venture-ca/), [Forge Global — Kraken upcoming IPO](https://forgeglobal.com/insights/kraken-upcoming-ipo-news/)). The **2024 expansion into stocks** ("Crypto, Stocks & more" tagline) reflects Kraken's strategy of broadening into a multi-asset retail brokerage, competing with Robinhood for retail trading flow.
+
+## 12. Principles
+
+1. **Track record is the proof.** *UI implication:* footer / About pages reference 2011 founding + survived-events list.
+2. **Security before speed.** Two-factor auth, withdrawal whitelisting, hardware key support — first-class. *UI implication:* security settings have main-nav placement.
+3. **Purple is the signal.** `#7132f5` for primary; never multi-color brand chrome. *UI implication:* charts may use semantic colors but UI stays purple-on-white.
+4. **Education = product.** Kraken Learn academy treated as core feature. *UI implication:* "Learn" tab adjacent to "Trade" in main nav.
+5. **Borderless purple buttons signal interactive.** *UI implication:* primary CTAs always purple `#7132f5` on white, light purple `rgba(133,91,251,0.16)` for ghost variants.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Kraken user segments (long-term holders, professional traders, institutional clients), not individual people.*
+
+**Daniel Schmidt, 47, Berlin.** Long-term BTC holder since 2014. Uses Kraken Pro for low-fee trading + cold storage withdrawal. Trusts Kraken's regulatory track record above newer EU exchanges.
+
+**Aisha Khan, 32, Dubai.** Professional crypto trader. Kraken Pro full-time on derivatives. Cares about API uptime + order book depth.
+
+**Marcus Davies, 58, London.** Recently retired professional. Cautious crypto exposure (5% portfolio). Kraken's "still here since 2011" positioning is the entire reason he chose them.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no holdings)** | "Make your first trade" CTA + asset list with prices |
+| **Empty (no transactions)** | "Your transaction history will appear here." Plain |
+| **Loading (price data)** | Last cached + stale indicator if older than 5s |
+| **Loading (KYC)** | Persistent badge, allows nav while pending |
+| **Error (insufficient balance)** | "Insufficient USD. Deposit funds or convert from another asset." |
+| **Error (2FA)** | "Two-factor code required. Open your authenticator app." |
+| **Success (trade)** | Receipt with asset / amount / fee / network confirmation tracker |
+| **Success (deposit)** | Confirmation + when funds available + network tracker |
+| **Skeleton (asset list)** | Light gray rows |
+| **Disabled (insufficient funds)** | 0.5 opacity + "Deposit" inline link |
+| **Loading (long action)** | Multi-step progress: Submitted → Confirming → Confirmed |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-pulse` | continuous | Live price update micro-flash |
+
+Standard cubic-bezier; no bounce. **Live price flashes** green/red briefly on tick. `prefers-reduced-motion: reduce` disables price flash.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 31 — Apple-tier)
+**Tier 1 sources:** kraken.com home + /prices (live DOM via playwright — Primary `#7132f5` Kraken Purple 12px tiered (header 36 / page 48-52) 8-15×12-16 / 14-16px·500; Light Purple ghost `rgba(133,91,251,0.16)` 12px; Light Secondary `#f5f5f5` 12px; **3-tier radius scale 12/10/8** = Action/Filter/Selector hierarchy).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/IPO):** Wikipedia (Kraken), Contrary Research (3-founder origin), Tracxn ($867M @ $20B), Caproasia (Nov 2025 IPO filing), Forge Global, Kraken press (leadership succession), Fortune.
+**Style ref:** `stripe`. **Conflicts unresolved:** none.

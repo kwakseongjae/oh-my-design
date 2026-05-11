@@ -1,7 +1,7 @@
 /**
  * QA-only browsing page — lists every reference as a card linking to its
  * /reference/<id> showcase. Used to spot-check the new ReferencePreview
- * across all 67 refs after the migration.
+ * across all 78 refs after the migration.
  *
  * **Will be deleted after QA pass** — see the banner at top.
  */

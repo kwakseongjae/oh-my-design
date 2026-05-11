@@ -122,60 +122,148 @@ Pinkoi's heading hierarchy is unusual: most `<h1>`, `<h2>`, `<h3>` render at **1
 
 ## 4. Component Stylings
 
-### Buttons (`.m-br-button`)
-Base: `border-radius: 4px`, `transition: border .1s, color .1s, background .1s`, `outline: 0`, `cursor: pointer`, `text-align: center`, default text size `14px`. Icon `margin-right: 6px`. **Every filled variant uses `border: 1px solid <same-as-bg>` for a crisp solid block.**
+### Buttons
 
-Verified state matrices from production CSS:
+**Primary**
+- Background: `#10567b`
+- Text: `#ffffff`
+- Border: 1px solid `#10567b`
+- Radius: 4px
+- Padding: 8px 12px
+- Font: 14px / 400
+- Hover: bg/border `#064162`
+- Active: bg/border `#003354`
+- Use: Primary CTAs
 
-| Variant | Base | Hover | Active | Use Case |
-|---|---|---|---|---|
-| `--primary` | bg `#10567b`, border `#10567b`, text `#fff` | bg/border `#064162` | bg/border `#003354` | Primary CTAs |
-| `--login` | bg `#10567b`, border `#10567b`, text `#fff` | bg/border `#064162` | (matches primary) | Auth flows |
-| `--secondary` | bg `#fff`, border `1px solid #a8a8ab`, text `#39393e` | bg `#f7f7f8` | bg `#eeeeef` | Cancel, dismiss, neutral CTAs |
-| `--purchase` | bg `#f16c5d`, border `#f16c5d`, text `#fff` | bg/border `#e56051` | bg/border `#da5648` | Add to Cart, Buy Now (coral, exclusive) |
-| `--danger` | bg `#e63349`, border `#e63349`, text `#fff` | bg/border `#d72136` | bg/border `#c41428` | Destructive actions |
-| `--green` | bg `#2cac97`, border `#2cac97`, text `#fff` | bg/border `#289c8a` | bg/border `#289c8a` | Confirmations, follow |
-| `--*-plain` | transparent, text-only color | text color hover only | bg `#f7f7f8` | Ghost variants |
+**Login**
+- Background: `#10567b`
+- Text: `#ffffff`
+- Border: 1px solid `#10567b`
+- Radius: 4px
+- Padding: 8px 12px
+- Font: 14px / 400
+- Hover: bg/border `#064162`
+- Active: matches primary
+- Use: Auth flows
 
-Buttons sit horizontally with `+ .m-br-button { margin-left: 10px }` for chained CTAs.
+**Secondary**
+- Background: `#ffffff`
+- Text: `#39393e`
+- Border: 1px solid `#a8a8ab`
+- Radius: 4px
+- Padding: 8px 12px
+- Font: 14px / 400
+- Hover: bg `#f7f7f8`
+- Active: bg `#eeeeef`
+- Use: Cancel, dismiss, neutral CTAs
 
-### Cards (`.m-card-product`)
-- `box-sizing: border-box`, `display: inline-block`, `vertical-align: top`
-- `max-width: 190px`, width `calc(16.66667% - 12px)` → 6-column responsive grid
-- Horizontal margins: `0 6px` per card → `12px` total gap
-- Container `.m-card-container { margin: 0 -6px }` to negate edge gaps
-- Cards rely on the product image as the primary visual; chrome around them is minimal
+**Purchase**
+- Background: `#f16c5d`
+- Text: `#ffffff`
+- Border: 1px solid `#f16c5d`
+- Radius: 4px
+- Padding: 8px 12px
+- Font: 14px / 400
+- Hover: bg/border `#e56051`
+- Active: bg/border `#da5648`
+- Use: Add to Cart, Buy Now (coral, conversion-exclusive)
 
-### Card Badges (`.s-card-badge`)
-- `border-radius: 2px` (smaller than buttons — sits inside a busy product card)
-- `font-size: 12px`, `font-weight: 400`
-- `padding: 1px 4px` (very tight)
-- `display: inline`, `position: relative`, `top: -1px` for optical alignment
+**Danger**
+- Background: `#e63349`
+- Text: `#ffffff`
+- Border: 1px solid `#e63349`
+- Radius: 4px
+- Padding: 8px 12px
+- Font: 14px / 400
+- Hover: bg/border `#d72136`
+- Active: bg/border `#c41428`
+- Use: Destructive actions
 
-### Discount Badges (`.card-discount-badge`)
-- `border-radius: 2px 0 2px 0` — **asymmetric** corners create a folded-ribbon effect (top-right and bottom-left squared)
-- `box-shadow: 1px 1px 2px 0 rgba(32,32,38,.2)` — subtle lift to separate from product image
-- `position: absolute; top: 0; left: 0` — anchored to product image corner
-- Numeric content uses `font-weight: 700` (`.g-item-badge-discount span`)
-- Companion `.oprice` shows the original price line-through in muted gray (`#a8a8ab` / `#bfbfc1`)
+**Green (Success)**
+- Background: `#2cac97`
+- Text: `#ffffff`
+- Border: 1px solid `#2cac97`
+- Radius: 4px
+- Padding: 8px 12px
+- Font: 14px / 400
+- Hover: bg/border `#289c8a`
+- Active: bg/border `#289c8a`
+- Use: Confirmations, follow
+
+**Plain (Ghost)**
+- Background: transparent
+- Text: variant-color (e.g., `#10567b` for `--primary-plain`)
+- Radius: 4px
+- Padding: 8px 12px
+- Hover: text color hover only
+- Active: bg `#f7f7f8`
+- Use: Ghost variants of any button color
+
+### Inputs
+
+**Default**
+- Background: `#ffffff`
+- Text: `#39393e`
+- Border: 1px solid `#d3d3d5`
+- Radius: 4px
+- Padding: 8px 12px
+- Font: 14px / 400
+- Focus: border `#bfbfc1`
+- Error: `box-shadow: inset 0 0 0 1px #e63349`, border `#e63349`
+- Use: Standard text input — bordered rectangle, no floating-label
+
+**Compact**
+- Background: `#ffffff`
+- Border: 1px solid `#d3d3d5`
+- Radius: 4px
+- Padding: 5px 10px
+- Use: Dense inputs in tight layouts
+
+### Cards
+
+**Product Card (`.m-card-product`)**
+- Background: `#ffffff`
+- Radius: 4px
+- Padding: 0 (image-led)
+- Max-width: 190px (6-column grid: `calc(16.66667% - 12px)`)
+- Margin: 0 6px (12px total gap)
+- Use: 6-column commerce product grid — image is the primary visual, chrome minimal
+
+**Standard**
+- Background: `#ffffff`
+- Border: 1px solid `#d3d3d5`
+- Radius: 4px
+- Padding: 16px
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — generic content card.
+
+### Badges
+
+**Card Badge (`.s-card-badge`)**
+- Background: `#10567b` (or variant)
+- Text: `#ffffff`
+- Radius: 2px
+- Padding: 1px 4px
+- Font: 12px / 400
+- Use: Inline product card badges — tight padding, smaller radius than buttons
+
+**Discount Badge (`.card-discount-badge`)**
+- Background: `#e63349`
+- Text: `#ffffff`
+- Radius: 2px 0 2px 0 (asymmetric folded-ribbon effect)
+- Padding: 2px 6px
+- Font: 12px / 700
+- Shadow: `1px 1px 2px 0 rgba(32,32,38,.2)`
+- Use: Discount ribbon anchored to product image corner
+
+### Tables
+- Used sparingly; commerce content is card-grid first
+- When used, row dividers via `0 1px 1px 0 rgba(32,32,38,.2)` shadow or `1px solid #e5e5e6` border
 
 ### Navigation
 - Sticky horizontal header on desktop with category dropdowns
 - Default text color `#39393e`, link/active state `#2e90b7`
 - Logo references `pinkoi_logo_2019.svg` — circular arcs + acute angles per brand identity refresh
 - Navigation links remain weight 400 (lighter than headlines) for scannability
-
-### Inputs
-- Border-color follows the neutral scale (`#d3d3d5` default, `#bfbfc1` on focus, `#e63349` on error)
-- Error state uses `box-shadow: inset 0 0 0 1px #e63349` for emphasized error borders
-- Border-radius `4px` to match buttons
-- Padding patterns from CSS: common `5px 10px`, `8px 12px`, `9px 14px` depending on size
-- Required-field asterisk: `.s-required:after { color: #e63349; content: "*"; margin-left: 4px }`
-- No floating-label or pill-shaped inputs — bordered rectangle is the convention
-
-### Tables
-- Used sparingly; commerce content is card-grid first
-- When used, row dividers via `0 1px 1px 0 rgba(32,32,38,.2)` shadow or `1px solid #e5e5e6` border
 
 ## 5. Layout Principles
 
@@ -351,7 +439,7 @@ Pinkoi was founded in **Taipei in 2011** by **Peter Yen (顏君庭)**, **Mike Le
 
 The site's mission framing is explicit: *"Pinkoi believes that design has a transformative power that can permeate every aspect of our lives. Embracing great design can bring us closer to our ideal lifestyles"* ([en.pinkoi.com/about](https://en.pinkoi.com/about)). This translates into a refusal — Pinkoi is **not** a generic marketplace competing on SKU count or price. Peter has stated the position plainly: *"E-commerce companies that sell standard products are playing a game of capital, but that's not our game. Pinkoi sells non-standard products"* ([cherubic.com](https://cherubic.com/blog/founder-interview-pinkoi/)). And: *"While the saying 'money talks' may be true in some places, at Pinkoi our decisions are primarily based on providing users with a good experience"* ([cherubic.com](https://cherubic.com/blog/founder-interview-pinkoi/)). Every designer is vetted; every listing is the work of a small maker; the review system is treated as non-negotiable infrastructure, not a line-item to optimize away.
 
-What Pinkoi has become is a design-commerce platform serving **5 primary markets (Taiwan, Hong Kong, Japan, mainland China, Thailand)** with ~6.25M members, 50,000+ active shops across 77 countries, and 95% cross-border sales share <!-- source: en.pinkoi.com/about as of 2026-04; metrics surfaced by Pinkoi, not independently audited -->. The logo is *"designed using circular arcs and acute angles, conveying the brand's core values of diversity, inclusion and respect for the unique"* ([en.pinkoi.com/about](https://en.pinkoi.com/about)). The design language reflected in §1–§9 — high-density 6-column grids, bold-heavy Helvetica Neue + locale stacks, coral coral reserved for a single `--purchase` moment per page, flat matched-border buttons, conservative 4px radii — is the product-surface expression of that thesis: clarity and density serve the designer's work, and the chrome stays out of the way so the object can do the talking.
+**Founder backgrounds**: Peter Yen — 7 years Silicon Valley, **4 years as Senior Engineer Lead Yahoo Global HQ Social Search Group** ([Taiwan Panorama — Peter Yen and Pinkoi](https://www.taiwan-panorama.com/en/Articles/Details?Guid=3fb71a67-3e23-4723-8700-115a9afe9a71&CatId=7&postname=Peter+Yen+and+Pinkoi-Connecting+Designers+with+Consumers)); **Maibelle Lin** — senior designer at multiple Silicon Valley startups (interaction + UI/UX); **Mike Lee** — National Chiao Tung University civil engineering grad, founded multiple websites/online services prior to Pinkoi. Initial bootstrap: **NT$500,000 raised** between the three; Yen worked from a **7-square-meter study in his home** with Lee on backend and Lin on visual design. **2015 funding round: $9M from Sequoia Capital India + GMO Venture Partners** alongside **English-site launch** ([TechCrunch — Pinkoi $9M 2015-09](https://techcrunch.com/2015/09/30/pinkoi/), [Tracxn — Pinkoi](https://tracxn.com/d/companies/pinkoi/__LQaag4M-ow4XbNs2JjI2lfTj0h0L6XEX2Kv8O8jCk1s/founders-and-board-of-directors)). What Pinkoi has become is a design-commerce platform serving **5 primary markets (Taiwan, Hong Kong, Japan, mainland China, Thailand)** with ~6.25M members, 50,000+ active shops across 77 countries, and 95% cross-border sales share <!-- source: en.pinkoi.com/about as of 2026-04; metrics surfaced by Pinkoi, not independently audited -->. The logo is *"designed using circular arcs and acute angles, conveying the brand's core values of diversity, inclusion and respect for the unique"* ([en.pinkoi.com/about](https://en.pinkoi.com/about)). The design language reflected in §1–§9 — high-density 6-column grids, bold-heavy Helvetica Neue + locale stacks, coral coral reserved for a single `--purchase` moment per page, flat matched-border buttons, conservative 4px radii — is the product-surface expression of that thesis: clarity and density serve the designer's work, and the chrome stays out of the way so the object can do the talking.
 
 ## 12. Principles
 
@@ -475,4 +563,13 @@ Interpretive / editorial claims (not documented Pinkoi statements):
 Illustrative voice samples in §10 are explicitly marked; they are placeholders showing
 tonal intent, not strings observed on the live Pinkoi surface.
 -->
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 44 — Apple-tier)
+**Tier 1 sources:** en.pinkoi.com home + /about/team (live DOM via playwright — Search button **`#10567b`** Pinkoi Teal **split-radius `0px 8px 8px 0px`** (search-box trailing geometry) / 8×20 / 40px; **Country pills 100px** active `#fff8f7` Coral Tint / inactive `#eeeeef` Cool Gray / 14px·500; Outline Secondary `#fff` 4px / 40-52px / 14-16px·400-500; Charcoal text `#39393e` warm-cast).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** Wikipedia (Pinkoi), Taiwan Panorama (Peter Yen Yahoo origin), LinkedIn (Peter Yen), TechCrunch (2015-09 $9M Sequoia India + GMO Venture Partners), Tracxn, en.pinkoi.com/about + /about/team, blog.google (Pinkoi case study).
+**Style ref:** `pinkoi` (self / TW Asian retained).
+**Conflicts unresolved:** none. **Earlier addition:** split-radius search trailing + 100px country pills + Coral Tint active state + 3-fill discipline missed by prior pass.
 

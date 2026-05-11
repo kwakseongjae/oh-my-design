@@ -6,7 +6,6 @@ import { FileText, Copy, Check, ArrowLeft, Download, ArrowUpRight, Eye } from "l
 import { ReferencePreview } from "@/components/reference-preview";
 import { extractTokens } from "@/lib/extract-tokens";
 import { applyOverridesToMd } from "@/lib/core/generate-css";
-import { generateNpxCommand } from "@/lib/core/config-hash";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
 import { Button } from "@/components/ui/button";
@@ -35,8 +34,6 @@ export function PreviewExportView({
 }) {
   const [mdView, setMdView] = useState<MdView>("rendered");
   const [copied, setCopied] = useState<string | null>(null);
-  const hasPhilosophyLayer = detail.designMd.includes("## 10. Voice & Tone");
-  const [includePhilosophyLayer, setIncludePhilosophyLayer] = useState(true);
 
   const designMd = useMemo(
     () => applyOverridesToMd(
@@ -44,12 +41,11 @@ export function PreviewExportView({
       detail.id.charAt(0).toUpperCase() + detail.id.slice(1),
       detail.primary, detail.fontFamily,
       overrides, components, stylePreferences,
-      includePhilosophyLayer,
+      true,
     ),
-    [detail, overrides, components, stylePreferences, includePhilosophyLayer],
+    [detail, overrides, components, stylePreferences],
   );
 
-  const npxCmd = generateNpxCommand(detail.id, overrides, components, stylePreferences);
   const refName = detail.id.charAt(0).toUpperCase() + detail.id.slice(1);
   const ds = getDesignSystem(detail.id);
   const homepageUrl = getHomepageUrl(detail.id);
@@ -73,13 +69,6 @@ export function PreviewExportView({
     event("copy_designmd", { reference: detail.id });
     trackRef("copy", detail.id);
     setCopied("md");
-    setTimeout(() => setCopied(null), 2000);
-  }
-
-  function copyNpx() {
-    navigator.clipboard.writeText(npxCmd);
-    event("copy_npx_command", { reference: detail.id });
-    setCopied("npx");
     setTimeout(() => setCopied(null), 2000);
   }
 
@@ -132,45 +121,8 @@ export function PreviewExportView({
         {/* Right — sticky DESIGN.md panel */}
         <div className="sticky top-[4.5rem] flex flex-col rounded-xl border border-border/40 dark:border-border overflow-hidden max-h-[calc(100vh-5.5rem)]">
 
-          {/* NPX command */}
-          <div className="shrink-0 border-b border-border/40 dark:border-border px-3 py-2.5">
-            <div className="flex items-center gap-2 rounded-[0.5rem] border border-border/40 dark:border-border bg-muted/30 dark:bg-muted/20 pl-3 pr-2 py-2">
-              <div className="shrink-0 h-4 w-4 flex items-center justify-center">
-                <img src="/logo.png" alt="OMD" className="h-3.5 block dark:hidden" />
-                <img src="/logo-white.png" alt="OMD" className="h-3.5 hidden dark:block" />
-              </div>
-              <code className="flex-1 font-mono text-[11px] text-foreground/60 truncate">{npxCmd}</code>
-              <button
-                onClick={copyNpx}
-                aria-label="Copy npx command"
-                className="shrink-0 flex items-center justify-center h-6 w-6 rounded-md text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground"
-              >
-                {copied === "npx"
-                  ? <Check className="h-3 w-3 text-emerald-500" />
-                  : <Copy className="h-3 w-3" />}
-              </button>
-            </div>
-          </div>
-
           {/* Toolbar */}
           <div className="shrink-0 flex items-center gap-2 border-b border-border/40 dark:border-border px-3 py-2">
-            {/* Philosophy layer toggle — only when available */}
-            {hasPhilosophyLayer && (
-              <label className="flex items-center gap-1.5 text-xs text-muted-foreground cursor-pointer select-none mr-auto">
-                <input
-                  type="checkbox"
-                  checked={includePhilosophyLayer}
-                  onChange={(e) => {
-                    const next = e.target.checked;
-                    setIncludePhilosophyLayer(next);
-                    event("philosophy_toggle", { reference: detail.id, on: next });
-                  }}
-                  className="h-3 w-3 cursor-pointer accent-primary"
-                />
-                <span>Philosophy</span>
-              </label>
-            )}
-
             <div className="flex items-center gap-1.5 ml-auto">
               {/* Rendered / Raw toggle */}
               <div className="flex items-center rounded-[0.5rem] border border-border/40 dark:border-border bg-muted/20 p-0.5">

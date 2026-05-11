@@ -125,60 +125,128 @@ Roboto leads (Material Design convention), with full Traditional Chinese fallbac
 ## 4. Component Stylings
 
 ### Buttons
-**Default radius**: `8px` (verified across multiple button variants on the site).
 
-| Variant | Bg | Text | Notable |
-|---|---|---|---|
-| Primary CTA (Download App) | `#3397cf` (`--color-dcard-primary`) | `#ffffff` | Weight 500, 14px |
-| Secondary CTA (search submit) | `#006aa6` (`--color-dcard-secondary`) | `#ffffff` | Often joined to input → `border-radius: 0px 4px 4px 0px` |
-| Counter / Action (584, 179 likes) | transparent | `rgba(0,0,0,0.5)` | 8px radius, 14px weight 500 |
-| Disabled | `#e0e0e0` (`--color-bg-btn-disabled`) | secondary text | |
+**Primary CTA (Download App)**
+- Background: `#3397cf` (`--color-dcard-primary`)
+- Text: `#ffffff`
+- Radius: 8px
+- Padding: 8px 20px
+- Font: 14px / 500
+- Use: Hero "Download App" CTA
 
-Padding patterns: `1px 14px` (small), `8px 20px` (medium for search submit).
+**Secondary CTA (Search Submit)**
+- Background: `#006aa6` (`--color-dcard-secondary`)
+- Text: `#ffffff`
+- Radius: 0px 4px 4px 0px (joined to search input)
+- Padding: 8px 20px
+- Font: 14px / 500
+- Use: Search submit button (joined to input)
 
-### Cards (Post Entry)
-- White bg (`#ffffff` = `--color-bg-base-2`)
-- Sit on the gray content background (`#f2f2f2`) → contrast handles separation, no border needed
-- `--vars-min-post-list-section-width: 728px` defines the main feed width
-- `--vars-post-entry-padding: 20px` for inner spacing
-- `--vars-post-entry-thumbnail-size: 84px` for inline thumbnails
-- Cross-post variants use `--vars-post-entry-cross-post-thumbnail-size: 66px`
-- Forum cards have explicit dimensions: `--vars-forum-card-width: 146px`, `--vars-forum-card-height: 110px`
+**Counter / Action**
+- Background: transparent
+- Text: `rgba(0,0,0,0.5)`
+- Radius: 8px
+- Padding: 1px 14px
+- Font: 14px / 500
+- Use: Like / comment counters (e.g., 584, 179)
+
+**Disabled**
+- Background: `#e0e0e0` (`--color-bg-btn-disabled`)
+- Text: secondary text color
+- Radius: 8px
+- Use: Inactive button states
+
+### Inputs
+
+**Search Input**
+- Background: `#ffffff`
+- Border: 1px solid border
+- Radius: 4px 0px 0px 4px (left side; joined to submit on right)
+- Padding: 8px 12px
+- Use: Header search field (joined with Secondary CTA submit)
+
+### Cards
+
+**Post Entry**
+- Background: `#ffffff` (`--color-bg-base-2`)
+- Radius: 4px
+- Padding: 20px (`--vars-post-entry-padding`)
+- Use: Main feed post card on `#f2f2f2` gray content bg (contrast handles separation, no border)
+
+**Forum Card**
+- Background: `#ffffff`
+- Radius: 4px
+- Padding: 16px
+- Use: Forum directory cards — explicit `146px × 110px` (`--vars-forum-card-width` / `-height`)
+
+### Badges
+
+**Topic Chip**
+- Background: `#bf8ff0` (`--color-bg-topic`)
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 4px 8px
+- Font: 12px / 500
+- Use: Topic chips — lavender accent
+
+**Sponsor / Special Chip**
+- Background: `#f0b941` (`--color-bg-special`)
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 4px 8px
+- Use: Sponsored / special-promotion chips
+
+**On-Dark Chip**
+- Background: `#ffffff14` (`--color-bg-chip-on-dark`)
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 4px 8px
+- Use: Chips placed on dark surfaces (header, modal)
+
+### Tabs
+
+**All / Following**
+- Active text: `#000000d9` (`--color-text-primary`)
+- Inactive text: `#00000080` (`--color-text-secondary`)
+- Indicator: underline
+- Header height: 48px (`--vars-tabview-header-height`)
+- Use: Feed view switcher
+
+### Toasts
+
+**Snackbar**
+- Background: `#2c2c2c` (`--color-bg-snackbar`)
+- Text: `#ffffff` (`--color-text-light-primary`)
+- Radius: 4px
+- Width: 250px (`--vars-toast-width`)
+- Position: bottom 0px (or 16px when bottom bar present)
+- Use: System feedback toasts
+
+### Dialogs
+
+**Post Modal**
+- Background: `#ffffff`
+- Radius: 8px
+- Width: 728px (`--vars-post-modal-width`)
+- Backdrop: `#00000059` (`--color-bg-spotlight`) or `#0006` (`--color-mask`)
+- Use: Full post detail view
+
+**Comment Modal**
+- Background: `#ffffff`
+- Radius: 8px
+- Width: 720px (`--vars-comment-modal-width`)
+- Use: Comment-thread modal
+
+**Sign-Up Overlay**
+- Background: `#000000b3` (`--color-bg-sign-up-overlay`, black 70%)
+- Use: Full-page overlay triggered after scroll/engagement
 
 ### Header / Navigation
-- **Header**: `--vars-header-height: 48px`, `--vars-header-padding: 20px`, bg `#00324e` (tertiary), white text
-- **Logo + Search + Sign In/Up + Download App**: horizontal layout
-- **Search input**: White bg, pill-leaning corners (left 0px, right 8px when joined with submit)
-- **Left Sider** (forum nav): `--vars-my-page-sider-width: 208px`, light bg, icon + text rows
-- **Right Aside** (widgets/ads): `--vars-forum-aside-section-width: 300px`, `--vars-forum-aside-section-gap: 10px`
 
-### Tabs (All / Following)
-- Underline-driven indicator
-- Active tab: text color `--color-text-primary` (`#000000d9`)
-- Inactive: `--color-text-secondary` (`#00000080`)
-- Tab header height: `--vars-tabview-header-height: 48px`
-
-### Chips / Topics
-- Topic chips: bg `#bf8ff0` (`--color-bg-topic`), white text — lavender accent
-- Sponsor/special chips: bg `#f0b941` (`--color-bg-special`)
-- On-dark chips: bg `#ffffff14` (`--color-bg-chip-on-dark`)
-- Topic spacing: `--vars-topic-gap: 8px`
-- Topic list height: `--vars-topic-list-height: 60px`
-
-### Snackbar / Toast
-- Bg `#2c2c2c` (`--color-bg-snackbar`)
-- White text (`--color-text-light-primary`)
-- Bottom positioning: `--vars-toast-bottom: 0px`, `--vars-toast-width: 250px`
-- With bottom bar: `--vars-snackbar-bottom-with-bottom-bar: 16px`
-
-### Modals
-- Post modal: `--vars-post-modal-width: 728px`
-- Comment modal: `--vars-comment-modal-width: 720px`
-- Backdrop: `--color-bg-spotlight` (`#00000059`) or `--color-mask` (`#0006`)
-
-### Sign-Up Overlay
-- Full-page bg: `--color-bg-sign-up-overlay` (`#000000b3`, black 70%)
-- Triggers after scroll/engagement to encourage account creation
+- Header: 48px height (`--vars-header-height`), 20px padding, bg `#00324e` (tertiary), white text
+- Layout: Logo + Search + Sign In/Up + Download App (horizontal)
+- Left Sider (forum nav): 208px width (`--vars-my-page-sider-width`), light bg, icon + text rows
+- Right Aside (widgets/ads): 300px width (`--vars-forum-aside-section-width`), 10px gap (`--vars-forum-aside-section-gap`)
 
 ## 5. Layout Principles
 
@@ -488,4 +556,12 @@ National Taiwan University (NTU). This narrative uses NTU per Wikipedia; if
 a more authoritative source (Dcard press page, founder interview) confirms
 NCCU, §11 should be corrected.
 -->
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 21 — Apple-tier)
+**Tier 1 sources:** dcard.tw/f (live DOM — `#3397cf` Dcard Blue 8px / 14×1 / 32px / 14px·500 Download App + Sign in CTAs); about.dcard.tw/ (corporate nav — same `#3397cf` accent text, 200+ token `:root` system).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders):** Wikipedia (Dcard — Kytu Lin / 林裕欽 / NTU 2011-12-16 founding / D=Destiny / 6M+ members Nov 2022); medium.com/dcardlab masthead.
+**Style ref:** `pinkoi` (TW Asian marketplace tone). **Conflicts unresolved:** none. NCCU/NTU founding origin remains a noted editorial-only research gap (NTU per Wikipedia is canonical here).
 

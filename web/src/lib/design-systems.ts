@@ -48,6 +48,13 @@ const OG_IMAGES: Record<string, string> = {
   vercel: "https://assets.vercel.com/image/upload/v1709494095/front/design/geist-og.jpg",
   // wise → OG link (Hero-Illustration-Globe.webp) 404s in client fetch; let mShots render it instead.
   zapier: "https://firebasestorage.googleapis.com/v0/b/standards-site-beta.appspot.com/o/documents%2F279072ea39f%2F8fc2c38ae5f%2Fmeta%2Fthumbnail_1_2.jpg?alt=media&token=0d0ea63f-6a32-4e46-b516-9db3c6c6ffe4",
+  // Korean refs (harvested 2026-05-11)
+  yeogiotte: "https://framerusercontent.com/assets/kA6JROOLbG0jX7SQZl1tLZzahM.jpg",
+  naver: "https://www.navercorp.com/img/og/OG_TAG_1_Main.png",
+  yanolja: "https://www.yanoljagroup.com/common/assets/yanolja_colored_og_image.jpg",
+  coupang: "https://news.coupang.com/wp-content/uploads/2023/01/Coupang_2_1609.jpg",
+  kakaobank: "https://www.kakaobank.com/view/images/kkb_og_img.png",
+  krds: "https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png",
 };
 
 const DESIGN_SYSTEMS: Record<string, Omit<DesignSystemInfo, "refId" | "ogImage">> = {
@@ -262,6 +269,44 @@ const DESIGN_SYSTEMS: Record<string, Omit<DesignSystemInfo, "refId" | "ogImage">
     url: "https://brand.zapier.com",
     type: "brand",
     description: "Zapier's official brand guidelines 1.0.",
+  },
+
+  // ─────────── Korean refs (added 2026-05) ───────────
+  yeogiotte: {
+    name: "여기어때 Design Library",
+    url: "https://designlibrary.yeogi.com/",
+    type: "system",
+    description: "여기어때 디자인 라이브러리 — A Visual Language for Travel. Foundations, components, and tokens.",
+  },
+  naver: {
+    name: "NAVER Brand Resource",
+    url: "https://www.navercorp.com/en/company/brandGuide",
+    type: "brand",
+    description: "NAVER Corp's official brand guide — logo usage, NAVER Green #03C75A, and identity rules.",
+  },
+  yanolja: {
+    name: "Yanolja Brand Center",
+    url: "https://www.yanoljagroup.com/brand_center",
+    type: "brand",
+    description: "Yanolja's official brand center — visual identity inspired by the Multiverse of Dreams.",
+  },
+  coupang: {
+    name: "Coupang Media Assets",
+    url: "https://news.coupang.com/coupang-media-assets-brand-guidelines-eng/",
+    type: "brand",
+    description: "Coupang's official media-asset brand guidelines — logo usage, sizing, and attribution rules.",
+  },
+  kakaobank: {
+    name: "KakaoBank Brand Resource",
+    url: "https://www.kakaobank.com/view/about/brand/resource",
+    type: "brand",
+    description: "KakaoBank Brand Identity Guidelines V2.0 — logo system, KakaoBank Yellow #FFE300, downloadable CI assets.",
+  },
+  krds: {
+    name: "KRDS — Korea Republic Design System",
+    url: "https://www.krds.go.kr/html/site/index.html",
+    type: "system",
+    description: "행정안전부 주관 범정부 통합 디자인 시스템. Government Blue #256EF4, Pretendard GOV, WCAG/KWCAG 2.2 a11y-first tokens and components.",
   },
 };
 

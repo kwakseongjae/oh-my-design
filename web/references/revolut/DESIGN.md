@@ -183,3 +183,77 @@ What distinguishes Revolut is its pill-everything button system. Every button us
 2. All buttons are pills (9999px) with generous padding
 3. Zero shadows — flat is the Revolut identity
 4. Near-black + white for marketing, semantic colors for product
+
+## 10. Voice & Tone
+
+Revolut's voice is **fintech-bold and segment-aware.** "Banking & Beyond" — confident, multi-segment positioning (Personal / Business / Kids & Teens). Pill chrome (9999px) signals "modern fintech" while flat-no-shadow design signals "no-nonsense banking."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Try Revolut", "Sign up" |
+| Marketing | Segment-targeted. Personal vs Business vs Teens copy distinct |
+| Onboarding | KYC-aware. Plain-language compliance |
+| Error | Specific. "Insufficient funds. Top up via bank transfer." |
+
+**Voice samples**
+- Tagline: *"Banking & Beyond"* <!-- verified: revolut.com homepage 2026-05 -->
+- Segment nav: *"Personal / Business / Kids & Teens"* <!-- verified: revolut.com homepage -->
+
+**Forbidden phrases.** "Revolutionary fintech". Aggressive crypto-bro framing.
+
+## 11. Brand Narrative
+
+**Revolut Ltd was incorporated December 2013** by **Nikolay "Nik" Storonsky (CEO)** with **Vlad Yatsenko (CTO)** joining shortly after; the consumer product **launched 2015** at **Level39 fintech accelerator, Canary Wharf, London** ([Revolut — Wikipedia](https://en.wikipedia.org/wiki/Revolut), [Nik Storonsky — Wikipedia](https://en.wikipedia.org/wiki/Nik_Storonsky)). Storonsky was **the company's first investor (£300,000 of his own savings)**. **Yatsenko**: graduated with honors, worked at **Comarch (Krakow programmer)** → **UBS (London senior software developer 2010)** → brief stints at **Deutsche Bank + Credit Suisse** through 2014. Storonsky and Yatsenko are **both immigrants** ([The Vertical — immigrant founders Revolut](https://thevertical.la/development/who-are-the-immigrant-founders-behind-revolut-the-45-billion-neobank-eyeing-u-s-expansion/)). Originally a multi-currency travel card → expanded to full neobank with stocks, crypto, lending, insurance. **Valuation timeline**: $45B secondary share sale 2024 → **$75B November 2025** ([City AM — Revolut $75B](https://www.cityam.com/revolut-inside-nik-storonskys-75bn-fintech-empire-still-hunting-for-its-crown/)). **IPO timeline**: per Bloomberg April 20 2026 interview, Storonsky stated **~2 years from IPO with U.S. listing preferred**. The brand voice — bold, multi-segment, flat-design — tracks the product's evolution from single-card to financial super-app.
+
+## 12. Principles
+
+1. **Multi-segment first-class.** Personal / Business / Kids & Teens. *UI implication:* segment nav at top level.
+2. **Pill chrome 16px+.** *UI implication:* primary actions and nav use 16px pill.
+3. **Zero shadows.** *UI implication:* depth via background contrast, never shadow.
+4. **Near-black `#0e1318` + white marketing.** *UI implication:* marketing chrome stays achromatic.
+5. **Semantic colors only in product.** *UI implication:* charts + status use semantic; marketing stays neutral.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Revolut user segments (multi-currency travelers, freelancers, EU SMB, Gen Z), not individual people.*
+
+**Catherine Liu, 32, London.** UK-based consultant traveling EU monthly. Multi-currency wallet + travel insurance.
+
+**Marcus Müller, 38, Berlin.** Freelancer with EUR/USD income streams. Revolut Business for invoicing.
+
+**Sofia Park, 18, Seoul.** Teens account holder traveling for university applications.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no transactions)** | "Top up to start" CTA |
+| **Empty (no investments)** | "Browse stocks/crypto" link |
+| **Loading (price feed)** | Last cached + stale indicator |
+| **Loading (KYC)** | Persistent badge with progress |
+| **Error (KYC)** | Specific reason + remediation |
+| **Error (payment)** | Receipt-style failure + retry |
+| **Success (transaction)** | Receipt with full details + emoji-free confirmation |
+| **Success (deposit)** | Confirmation + when funds available |
+| **Skeleton (account list)** | Pill placeholders |
+| **Disabled (no funds)** | Top up inline link |
+| **Loading (long action)** | Multi-step progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-pulse` | continuous | Live price update |
+
+Standard cubic-bezier; no bounce — fintech register. `prefers-reduced-motion: reduce` disables price pulse.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 51 — Apple-tier)
+**Tier 1 sources:** revolut.com/en-US home + /en-US/business (live DOM via playwright — **all-pill 9999px** chrome with canvas-aware Charcoal/Light pair: **Charcoal `#191c1f`** Primary (consumer light canvas) + **Light Surface `#f4f4f4`** Inverse (Business dark canvas + feature cards) + Translucent `rgba(244,244,244,0.10)` on-dark hover, all 9999px / 42px / 10×24 / 16px·**500**).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/valuation/IPO):** Wikipedia (Revolut + Nik Storonsky), Huxley (Yatsenko Ukrainian billionaire bio), The Vertical (immigrant founders narrative), City AM ($75B Nov 2025), MoneyWeek, Bloomberg Billionaires, FinTech Magazine.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Charcoal `#191c1f` Primary + Light Surface `#f4f4f4` Inverse + canvas-aware pair + translucent variant missed by prior pass (which captured 38px segment-nav only — canonical is 42px Primary).

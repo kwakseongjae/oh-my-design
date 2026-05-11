@@ -70,12 +70,83 @@ The typography uses Roobert PRO Medium as the primary display font with OpenType
 ## 4. Component Stylings
 
 ### Buttons
-- Outlined: transparent bg, `1px solid #c7cad5`, 8px radius, 7px 12px padding
-- White circle: 50% radius, white bg with shadow
-- Blue primary (implied from interactive color)
 
-### Cards: 12px–24px radius, pastel backgrounds
-### Inputs: white bg, `1px solid #e9eaef`, 8px radius, 16px padding
+**Blue Primary**
+- Background: `#5b76fe` (`--tw-color-blue-450`)
+- Text: `#ffffff`
+- Radius: 8px
+- Padding: 7px 12px
+- Font: 17.5px / 700 / Roobert PRO Medium
+- Hover: `#2a41b6` (`--tw-color-actionable-pressed`)
+- Use: Primary CTA — implied from interactive blue
+
+**Outlined**
+- Background: transparent
+- Text: `#1c1c1e`
+- Border: 1px solid `#c7cad5`
+- Radius: 8px
+- Padding: 7px 12px
+- Font: 17.5px / 700 / Roobert PRO Medium
+- Use: Secondary outlined button
+
+**White Circle**
+- Background: `#ffffff`
+- Radius: 50%
+- Padding: 12px (icon button)
+- Shadow: `rgb(224,226,232) 0px 0px 0px 1px` (ring shadow)
+- Use: Circular icon button
+
+### Inputs
+
+**Default**
+- Background: `#ffffff`
+- Text: `#1c1c1e`
+- Border: 1px solid `#e9eaef`
+- Radius: 8px
+- Padding: 16px
+- Font: 16px / 400 / Noto Sans
+- Placeholder: `#a5a8b5` (`--tw-color-input-placeholder`)
+- Use: Standard input
+
+### Cards
+
+**Standard**
+- Background: `#ffffff`
+- Radius: 12px
+- Padding: 16px
+- Shadow: `rgb(224,226,232) 0px 0px 0px 1px` (ring shadow)
+- Use: Default card with ring-shadow border
+
+**Pastel Surface**
+- Background: pastel accent (e.g., `#ffc6c6` Coral, `#c3faf5` Teal, `#ffe6cd` Orange, `#fde0f0` Pink)
+- Text: `#1c1c1e`
+- Radius: 12-24px
+- Padding: 24px
+- Use: Feature card with pastel surface
+
+**Large Panel**
+- Background: `#ffffff`
+- Radius: 24px
+- Padding: 32px
+- Shadow: `rgb(224,226,232) 0px 0px 0px 1px`
+- Use: Large containers
+
+### Badges
+
+**Default**
+- Background: `#5b76fe`
+- Text: `#ffffff`
+- Radius: 8px
+- Padding: 4px 8px
+- Font: 12px / 400 / Roobert PRO Medium
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
+
+**Success**
+- Background: `#00b473` (`--tw-color-success-accent`)
+- Text: `#ffffff`
+- Radius: 8px
+- Padding: 4px 8px
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
 
 ## 5. Layout Principles
 - Spacing: 1–24px base scale
@@ -106,3 +177,76 @@ Breakpoints: 425px, 576px, 768px, 896px, 1024px, 1200px, 1280px, 1366px, 1700px,
 - Border: `#c7cad5`
 ### Example Component Prompts
 - "Create hero: white background. Roobert PRO Medium 56px, line-height 1.15, letter-spacing -1.68px. Blue CTA (#5b76fe). Outlined secondary (1px solid #c7cad5, 8px radius)."
+
+## 10. Voice & Tone
+
+Miro's voice is **collaboration-warm and workshop-confident.** "AI 이노베이션 워크스페이스" (homepage 2026-05) — brand evolution from "online whiteboard" to "AI innovation workspace". Marketing copy emphasizes team workshops + collaborative moments. Yellow `#fde050` CTA signals "playful, sticky-note inspired."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Sign up free", "Save your spot", "Start free" |
+| Marketing | Workshop-language. Customer co-creation moments |
+| Documentation | Visual-heavy, screenshot-driven |
+| Error | Specific. "Board permissions changed. Refresh to see updates." |
+
+**Voice samples**
+- Marketing CTA: *"SAVE YOUR SPOT"* <!-- verified: miro.com/ko homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary whiteboard". Aggressive Mural-comparison framing.
+
+## 11. Brand Narrative
+
+Miro was founded **2011 as RealtimeBoard** in **Perm, Russia** (~1,150 km east of Moscow) by **Andrey Khusid** and **Oleg Shardin** ([Miro — Wikipedia](https://en.wikipedia.org/wiki/Miro_(collaboration_platform)), [bne IntelliNews — Miro $17.5B](https://www.intellinews.com/founded-in-russia-11-years-ago-the-miro-visual-collaboration-software-startup-is-now-valued-at-17-5bn-231861/)). Khusid + Shardin had previously **founded the design agency Vitamin Group in 2005** offering web/product/app design services; **2012 they left Vitamin to focus on RealtimeBoard full-time**. Funding ladder: **$25M Series A (2018)** led by **Accel** with Altair Capital + Scale Venture Partners → **$50M Series B (April 2020)**, after which user base grew **5×** (5M → 30M) and paying customers **5.5×** (20K → 130K) → **$400M Series C (January 2022)** co-led by **ICONIQ Growth + Accel + Atlassian + Dragoneer + GIC + Scale Venture Partners** at **$17.5B post-money valuation**, total funding ~**$476M** ([Miro Newsroom — $400M Series C](https://miro.com/newsroom/miro-series-c/), [BusinessWire — Series B $50M April 2020](https://www.businesswire.com/news/home/20200427005109/en/Miro-Secures-%2450-Million-in-Series-B-Funding-for-Virtual-Whiteboarding-for-Remote-Teams)). **Rebranded RealtimeBoard → Miro in 2019** reflecting a global identity. Strong adoption in design teams, agile workshops, and consulting. AI features added 2024-2025 to position Miro as the **"AI innovation workspace"** (live `miro.com/ko` page-title confirms 2026-05).
+
+## 12. Principles
+
+1. **Yellow signals action.** `#fde050` CTA inherited from sticky-note culture. *UI implication:* primary actions yellow on white.
+2. **Roobert PRO is the type voice.** Medium weight throughout. *UI implication:* don't substitute system fonts.
+3. **Workshop > toolbox.** *UI implication:* product positioning treats Miro as a meeting/workshop space, not a static design tool.
+4. **Generous radius for warmth.** *UI implication:* 8px+ on cards, 16px+ on hero modules.
+5. **AI as workshop participant.** *UI implication:* AI features framed as joining the workshop, not replacing humans.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Miro user segments (UX designers, agile coaches, consulting partners), not individual people.*
+
+**Yuki Tanaka, 32, Tokyo.** UX designer at agency. Runs client workshops in Miro 3× per week.
+
+**Marcus Chen, 41, San Francisco.** Agile coach at Series C SaaS. Sprint planning + retros in Miro.
+
+**Sofia Russo, 36, Milan.** Independent design consultant. Miro for client research + brainstorming.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no boards)** | "Create your first board" CTA + template gallery |
+| **Empty (no team)** | "Invite teammates" with email picker |
+| **Loading (board opening)** | Skeleton with sticky-note placeholders |
+| **Loading (cursor sync)** | Cursor avatars appear with name labels |
+| **Error (sync)** | Banner + retry; never block editing |
+| **Error (permission)** | "Read-only — request edit access" inline link |
+| **Success (saved)** | Implicit; auto-save with subtle indicator |
+| **Success (export)** | Download triggered + toast confirmation |
+| **Skeleton (board grid)** | Yellow-tinted placeholders |
+| **Disabled (free plan limit)** | Upgrade link |
+| **Loading (long export)** | Persistent progress chip |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-cursor` | continuous | Live cursor sync |
+
+Standard cubic-bezier; minimal bounce. Cursor sync motion is signature. `prefers-reduced-motion: reduce` removes hover transitions; cursor sync becomes step-discrete.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 38 — Apple-tier)
+**Tier 1 sources:** miro.com/ko home + /pricing (live DOM via playwright — **three-color 8px Primary**: Yellow banner `#fde050` 40px / 16px·**900** ALL CAPS (banner-only) + Charcoal `#1c1c1e` 42-44px / 16px·**600** (canonical default) + Miro Blue `#3859ff` 48px / 18px·600 (featured-tier accent); Outline transparent / Charcoal text).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** Wikipedia (Miro), bne IntelliNews ($17.5B), Crunchbase, Miro Newsroom (Series C $400M Jan 2022), BusinessWire (Series B $50M Apr 2020), Contrary Research, EWDN.
+**Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured Yellow banner only; canonical default Primary is **Charcoal `#1c1c1e`** with Miro Blue `#3859ff` featured-tier accent — three-color discipline was undocumented.

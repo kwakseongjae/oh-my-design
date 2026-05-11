@@ -60,12 +60,70 @@ Airtable's website is a clean, enterprise-friendly platform that communicates "s
 ## 4. Component Stylings
 
 ### Buttons
-- **Primary Blue**: `#1b61c9`, white text, 16px 24px padding, 12px radius
-- **White**: white bg, `#181d26` text, 12px radius, 1px border white
-- **Cookie Consent**: `#1b61c9` bg, 2px radius (sharp)
 
-### Cards: `1px solid #e0e2e6`, 16px–24px radius
-### Inputs: Standard Haas styling
+**Primary Blue**
+- Background: `#1b61c9`
+- Text: `#ffffff`
+- Radius: 12px
+- Padding: 16px 24px
+- Font: 16px / 500 / Haas
+- Use: Primary CTA buttons across the marketing site
+
+**White**
+- Background: `#ffffff`
+- Text: `#181d26`
+- Border: 1px solid `#ffffff`
+- Radius: 12px
+- Padding: 16px 24px
+- Font: 16px / 500 / Haas
+- Use: Secondary CTA on dark/blue surfaces
+
+**Cookie Consent**
+- Background: `#1b61c9`
+- Text: `#ffffff`
+- Radius: 2px
+- Padding: 16px 24px
+- Font: 16px / 500 / Haas
+- Use: Cookie banner accept (deliberately sharp 2px radius)
+
+### Inputs
+
+**Default**
+- Background: `#ffffff`
+- Text: `#181d26`
+- Border: 1px solid `#e0e2e6`
+- Radius: 12px
+- Padding: 12px 16px
+- Font: 16px / 400 / Haas
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
+
+### Cards
+
+**Standard**
+- Background: `#ffffff`
+- Border: 1px solid `#e0e2e6`
+- Radius: 16px
+- Padding: 24px
+- Shadow: `rgba(0,0,0,0.32) 0px 0px 1px, rgba(0,0,0,0.08) 0px 0px 2px, rgba(45,127,249,0.28) 0px 1px 3px, rgba(0,0,0,0.06) 0px 0px 0px 0.5px inset`
+- Use: Default card surface; blue-tinted multi-layer shadow
+
+**Large Section**
+- Background: `#ffffff`
+- Border: 1px solid `#e0e2e6`
+- Radius: 24px
+- Padding: 32px
+- Use: Larger feature/section containers
+
+### Badges
+
+**Default**
+- Background: `#f8fafc`
+- Text: `#181d26`
+- Border: 1px solid `#e0e2e6`
+- Radius: 12px
+- Padding: 4px 8px
+- Font: 14px / 500 / Haas
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
 
 ## 5. Layout
 - Spacing: 1–48px (8px base)
@@ -105,3 +163,79 @@ Breakpoints: 425–1664px (23 breakpoints)
 3. Use semantic `--theme_*` token naming when building shadcn variables — matches Airtable's internal convention.
 4. Cards use `12-32px` radius depending on size — small components 12px, hero cards up to 32px.
 5. Don't use heavy gray backgrounds — Airtable's depth comes from the spotlight surface (`rgba(249,252,255,0.97)`) and subtle borders.
+
+## 10. Voice & Tone
+
+Airtable's voice is **product-pragmatic and confidence-quiet** — speaks like an internal tools team explaining what just shipped. Hero messaging: *"Build enterprise-ready AI workflows, apps & agents"* (homepage 2026-05) — verb-first, capability-list, no hyperbole.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb + noun. "Create base", "Add field", "Sync now" |
+| Empty state | Direct invitation. "Create your first base to get started" |
+| Error | Specific. "Couldn't connect to source. Check API key in Sync settings." |
+| Marketing | Capability-list, lower-case headings allowed |
+| Onboarding | One concept per screen, screenshots dominate |
+
+**Voice samples**
+- Marketing CTA: *"Sign up"* / *"Talk to sales"* <!-- verified: airtable.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary database", "no-code magic", emoji in product chrome.
+
+## 11. Brand Narrative
+
+Airtable was founded in **2012** by **Howie Liu** (CEO), **Andrew Ofstad**, and **Emmett Nicholas** in San Francisco — three engineers who met through Duke connections ([Airtable — Wikipedia](https://en.wikipedia.org/wiki/Airtable), [Antler — Airtable with Andrew Ofstad](https://www.antler.co/blog/antler-early-days-episode-3-airtable-with-andrew-ofstad)). Howie Liu had previously co-founded **Etacts** (YC W2010, age 20), a Gmail relationship-management tool **acquired by Salesforce on December 21, 2010** ([Golden — Howie Liu](https://golden.com/wiki/Howie_Liu-PBBK48Y)); the question that became Airtable formed during his Salesforce PM stint working on social CRM. Andrew Ofstad came from Google as PM on Android, leading the redesign of Google Maps. Emmett Nicholas was a Stack Overflow engineer for 3+ years. The thesis: spreadsheets and databases occupied opposite ends of "ease of use" vs "structural rigor" — Airtable proposed a hybrid. **2 years in stealth (2012-2014)** → invite-only beta 2014 → **public launch March 2015** ([Taskade history](https://www.taskade.com/blog/history-of-airtable)). Pre-seed angels included Ashton Kutcher + Michael Birch (Bebo) + Josh Reeves (Gusto). **Series F Dec 13, 2021: $735M at $11B valuation** ([Tracxn](https://tracxn.com/d/companies/airtable/__Xdq7WaiA79BBRynm6WLMDo_kp-jvnqvpW1GxVVOirjE)). Total raised: **$1.35B**. Evolved from collaborative database (2015-2020) to platform-with-AI-workflows (2024+) — current tagline *"Build Enterprise-ready AI Workflows, Apps & Agents"* (verified live 2026-05).
+
+What Airtable refuses: competing with Notion on docs, no-code-as-magic framing.
+
+## 12. Principles
+
+1. **Records are the unit.** Bases > tables > views > records. *UI implication:* hierarchies stay flat.
+2. **Views are personalized, data is shared.** *UI implication:* view chrome (filters, sort) at view level, never global.
+3. **Spotlight surface signals "live work".** `rgba(249,252,255,0.97)`. *UI implication:* canonical work surface = spotlight white.
+4. **Color belongs to user data, not chrome.** *UI implication:* avoid bright accents for chrome; reserve for user categorization.
+5. **AI workflows are first-class blocks.** *UI implication:* every AI step has visible config + output preview.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Airtable user segments (operations leaders, internal-tooling builders), not individual people.*
+
+**Renee Park, 34, San Francisco.** Operations Manager at Series B SaaS. Builds CRM-lite, vendor tracker, content calendar in Airtable.
+
+**Tomás Reyes, 41, Mexico City.** Independent consultant building Airtable-based tools for 8 clients. Cares about base portability + per-record pricing.
+
+**Linda Chen, 28, Singapore.** Marketing Ops at multinational. Heavy cross-table linking + automations user.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no bases)** | "Create your first base" CTA + template picker grid |
+| **Empty (no records)** | Inline row "+ Add a record" — no illustration |
+| **Loading (base opening)** | Spotlight surface fades in, table grid skeletons |
+| **Loading (sync)** | Inline progress chip on view header |
+| **Error (sync failed)** | Yellow warning chip on view header + "Reconnect source" link |
+| **Error (formula)** | Red `#ef4444` pill on field header + tooltip |
+| **Success (saved)** | Implicit — auto-saves, no toast. Cmd+Z works |
+| **Success (workflow run)** | Workflow log row appears with green check + duration |
+| **Skeleton (record detail)** | Field labels stay, values become `#e5e7eb` rectangles |
+| **Disabled** | 0.5 opacity. Read-only fields show lock icon |
+| **Loading (AI agent)** | Stepwise indicator + cancellable. Latency expectation set |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Cell commit |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, side panel |
+| `motion-slow` | 400ms | Spotlight surface arrival |
+
+Easings: `ease-enter cubic-bezier(0.2,0.6,0.25,1)`, `ease-exit cubic-bezier(0.4,0,1,1)`. No bouncy springs. `prefers-reduced-motion: reduce` removes spotlight fade-in.
+
+---
+
+**Verified:** 2026-05-08 (B1 loop)
+**Tier 1 sources:** airtable.com (live DOM via playwright — round 50% icon buttons; ghost 12px; Sign up CTA)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** airtable.com homepage; Howie Liu (CEO) public talks.
+**Style ref:** `notion`. **Conflicts unresolved:** none.

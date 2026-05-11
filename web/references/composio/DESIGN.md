@@ -305,3 +305,77 @@ When refining existing screens generated with this design system:
 4. Describe the desired "feel" alongside specific measurements — "compressed and authoritative heading at 48px with line-height 1.0"
 5. For glow effects, specify "Electric Cyan at 12% opacity as a radial gradient behind the element"
 6. Always specify which font — abcDiatype for marketing, JetBrains Mono for technical/code content
+
+## 10. Voice & Tone
+
+Composio's voice is **terminal-confident and technically precise.** Marketing copy reads like a developer changelog — capability statements, no hype. Hero CTAs use uppercase ("GET STARTED", "ADD TO MY AGENT", "TRY IT OUT") which on most brands would feel aggressive but on Composio reads as "command line aesthetic" — the brand register intentionally borrows terminal vocabulary to signal "this is for developers building agent infrastructure."
+
+| Context | Tone |
+|---|---|
+| CTA | UPPERCASE imperative. "GET STARTED", "ADD TO MY AGENT", "TRY IT OUT" |
+| Marketing | Capability + integration list. "X tools, Y agents, Z protocols" |
+| Documentation | Code-block-first; minimal prose between examples |
+| Error | Stack-trace-acceptable. Technical users want the actual error |
+
+**Voice samples**
+- Marketing CTA: *"GET STARTED FOR FREE"* / *"ADD TO MY AGENT"* <!-- verified: composio.dev homepage 2026-05 -->
+
+**Forbidden phrases.** Consumer-AI hype ("magic", "AI revolution"). Apology theatre. Excessive emoji.
+
+## 11. Brand Narrative
+
+Composio was founded **2023** in San Francisco by **Soham Ganatra (CEO)** and **Karan Vaidya (CTO)** — both **IIT Bombay** graduates who first met at a **Physics Olympiad camp** before becoming roommates in college ([Tracxn — Composio profile](https://tracxn.com/d/companies/composio/), [Entrackr — Composio Series A](https://entrackr.com/2024/11/composio-raises-25-mn-in-series-a-led-by-lightspeed/)). The platform provides pre-built integrations — **200+ tools and APIs** that LLM agents can call — and powers agent infrastructure for **100K+ developers and 200+ companies** including **Glean, April, OpenNote, and Altera**. Funding total **~$29M**: **$4M seed (2024)** led by **Together Fund** with **Elevation Capital** + angels **Gokul Rajaram, Sohum Mazumdar (Rubrik), Dharmesh Shah (HubSpot)**, then **$25M Series A (Nov 2024)** led by **Lightspeed Venture Partners** ([Lightspeed announcement](https://lsvp.com/stories/composio-series-a/), [Entrackr](https://entrackr.com/2024/11/composio-raises-25-mn-in-series-a-led-by-lightspeed/)). The brand voice — terminal-aesthetic UPPERCASE, monospace typography, electric-cyan accent — signals "infrastructure for builders" rather than "consumer chatbot wrapper." What Composio refuses: consumer-AI hype framing, magic-wand metaphors, abstraction that hides the actual tool call.
+
+## 12. Principles
+
+1. **Terminal aesthetic is the register.** UPPERCASE CTAs + JetBrains Mono for technical content. *UI implication:* don't soften with sentence-case marketing; the brand feels like a CLI.
+2. **Integration count is the headline.** *UI implication:* hero modules show "200+ tools" or live integration grid, not vague claims.
+3. **Code-first documentation.** *UI implication:* every concept page leads with a copy-paste code example.
+4. **Electric Cyan glows are decorative depth.** *UI implication:* radial-gradient cyan glows behind cards, never solid cyan fills on chrome.
+5. **Two fonts, strict roles.** abcDiatype for marketing, JetBrains Mono for technical. *UI implication:* never mix; pick the surface and commit.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Composio user segments (AI engineers, agent platform builders, indie developers shipping agent products), not individual people.*
+
+**Akira Yamamoto, 34, Tokyo.** AI engineer building a Slack agent at a B2B SaaS. Composio for the Slack/Notion/GitHub integrations he'd otherwise build himself.
+
+**Priya Krishnan, 28, Bengaluru.** Indie developer shipping a personal-assistant agent. Cares about per-call pricing + which tools have OAuth flows handled.
+
+**Marcus Webb, 41, San Francisco.** Platform engineer at AI startup. Evaluating Composio vs building integration layer in-house. Latency + observability are the deciding factors.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no agents)** | UPPERCASE CTA "CREATE FIRST AGENT" + integration grid preview |
+| **Empty (no integrations)** | "BROWSE 200+ INTEGRATIONS" with searchable grid |
+| **Loading (integration installing)** | OAuth flow with provider-specific UI; progress visible |
+| **Loading (agent running)** | Per-step trace with tool calls visible |
+| **Error (tool failed)** | Full stack trace + provider error code + retry button |
+| **Error (auth)** | "RECONNECT [Tool]" with OAuth re-trigger |
+| **Success (integration installed)** | Cyan glow pulse on integration card; toast "INSTALLED" |
+| **Success (agent run)** | Trace expanded showing all tool calls + final output |
+| **Skeleton (integration grid)** | Dark cards with subtle cyan border |
+| **Disabled (rate limit)** | 0.5 opacity + "UPGRADE" CTA |
+| **Loading (model inference)** | Per-token streaming visible alongside tool-call trace |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 100ms | Hover (faster than typical for terminal feel) |
+| `motion-glow-pulse` | 1500ms | Cyan glow heartbeat behind hero elements |
+| `motion-standard` | 250ms | Modal, panel |
+
+Easings: terminal-precise. **Glow pulses** never animate on input fields (would distract). `prefers-reduced-motion: reduce` removes glow pulse (becomes static).
+
+---
+
+**Verified:** 2026-05-08 (B2 loop)
+**Tier 1 sources:** composio.dev (live DOM via playwright — UPPERCASE CTAs `#fff` / `#000` / 0px radius / 6×8 padding / 33px / 14px·400)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** composio.dev homepage; composio.dev/pricing.
+**Tier 2 (Founders/Funding):** Tracxn, Entrackr, Lightspeed Venture Partners blog.
+**Style ref:** `stripe` (engineering tone). **Conflicts unresolved:** none.

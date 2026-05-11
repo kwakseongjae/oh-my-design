@@ -259,3 +259,75 @@ What makes Mistral distinctive is the complete commitment to a warm color temper
 3. Never add border-radius — sharp corners only
 4. Shadows are always warm: "golden shadow with amber tones"
 5. Font weight is always 400 — describe emphasis through size and color
+
+## 10. Voice & Tone
+
+Mistral AI's voice is **European frontier-AI-confident** — measured, research-oriented, never breathless. The brand positions itself as the European alternative to American AI labs (OpenAI, Anthropic), with a focus on open-weights models and enterprise sovereignty. Copy stays restrained even when announcing major model releases.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Discover Le Chat", "Discover Vibe", "Contact Sales" |
+| Marketing | Product-named (Le Chat is the consumer product). European register |
+| Documentation | Code-first, model-spec heavy |
+| Error | Specific. Never wrapped in apology |
+
+**Voice samples**
+- Product CTAs: *"Discover Le Chat"*, *"Discover Vibe"* <!-- verified: mistral.ai homepage 2026-05 -->
+
+**Forbidden phrases.** "AGI", "superintelligence". Casual emoji.
+
+## 11. Brand Narrative
+
+Mistral AI was founded **April 2023** in **Paris** by **Arthur Mensch (CEO, former Google DeepMind)**, **Guillaume Lample (former Meta AI)**, and **Timothée Lacroix (former Meta AI)** — the trio first met **as students at École Polytechnique** ([Mistral AI — Wikipedia](https://en.wikipedia.org/wiki/Mistral_AI), [École polytechnique — Mistral AI raised €500M in 2023](https://www.polytechnique.edu/en/news/mistral-ai-french-ai-nugget-co-founded-two-x-alumni-raised-eu500-mlns-2023)). The founding observation: Europe needed a sovereign AI option that didn't depend on American hyperscalers. Funding ladder: **€105M ($117M) seed (June 2023)** with **Lightspeed Venture Partners, Eric Schmidt, Xavier Niel, JCDecaux** → **€385M ($428M) Series A (Dec 10 2023)** with **Andreessen Horowitz, BNP Paribas, Salesforce** → continuing rounds bringing **valuation past $14B** as of 2025 ([Arthur Mensch — Wikipedia](https://en.wikipedia.org/wiki/Arthur_Mensch), [Tracxn — Mistral AI](https://tracxn.com/d/companies/mistralai/__SLZq7rzxLYqqA97jtPwO09jLDeb76RVJVb306OhciWU)). The three founders became **France's first AI billionaires** ([Crain Currency — first AI billionaires France](https://www.craincurrency.com/investing/mistrals-3-founders-timothee-lacroix-arthur-mensch-and-guillaume-lample-become-first-ai), [Bloomberg Law — first AI billionaires](https://news.bloomberglaw.com/private-equity/first-ai-billionaires-emerge-from-french-homegrown-startup)). Quickly became one of Europe's most-funded AI startups, with strong **open-weights model releases (Mistral 7B, Mixtral 8x7B)** alongside enterprise-only frontier models. The 0px-radius aesthetic + warm golden shadows reflect the Parisian design sensibility — sharp corners signal "frontier research", warm shadows signal "European craftsmanship".
+
+## 12. Principles
+
+1. **0px radius is intentional.** Sharp corners signal frontier research. *UI implication:* never round corners on Mistral chrome.
+2. **Warm golden shadows.** *UI implication:* shadows always warm-toned; never cool-blue.
+3. **Weight 400 throughout.** *UI implication:* emphasis via size + color, not weight.
+4. **European register.** *UI implication:* avoid American startup hype; confident but understated.
+5. **Open-weights ↔ Enterprise tension.** *UI implication:* both audiences served — open-source community + enterprise.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Mistral user segments (European enterprise architects, ML researchers, sovereignty-conscious infrastructure leads), not individual people.*
+
+**Catherine Dubois, 44, Paris.** CTO at French enterprise. Mistral as the sovereign AI option her board approved.
+
+**Heinz Müller, 38, Berlin.** ML researcher. Uses open-weights Mistral models for fine-tuning experiments.
+
+**Aisha Khan, 32, Dubai.** AI infrastructure lead. Evaluating Mistral vs OpenAI for region-specific deployment.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no API keys)** | "Generate first API key" CTA |
+| **Empty (no projects)** | "Try Le Chat" link |
+| **Loading (model inference)** | Per-token streaming |
+| **Error (model unavailable)** | Specific model name + region |
+| **Error (rate limit)** | Tier limit + upgrade |
+| **Success (generation)** | Result inline + copy/save |
+| **Success (deployment)** | Endpoint visible |
+| **Skeleton (deployments)** | 0px-radius placeholders |
+| **Disabled (insufficient plan)** | Upgrade link |
+| **Loading (long task)** | Persistent progress |
+| **Loading (model loading)** | Initialization status |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal |
+
+Standard cubic-bezier; no bounce — the precision register dislikes overshoot. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 39 — Apple-tier)
+**Tier 1 sources:** mistral.ai home + /products (live DOM via playwright — Primary `#1f1f1f` Mistral Charcoal 0px sharp / 36px / 12px-square / 16px·400; **Secondary canvas-aware `oklab()`**: `oklab(0.999994 / 0.1)` (dark canvas) + `oklab(0.955114 -0.00188443 0.0614298 / 0.5)` Cream (light canvas); Cream `#fff0c2` accent. **`oklab()` color-space canonical** — most modern DS adopter in corpus).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** Wikipedia (Mistral AI + Arthur Mensch), École polytechnique (X alumni origin), Crain Currency / Bloomberg Law (first AI billionaires France), Tracxn, Crunchbase.
+**Style ref:** `claude` (research-tech precision). **Conflicts unresolved:** none. **Earlier addition:** canvas-aware `oklab()` Secondary variants + Cream `#fff0c2` accent + oklab() canonical convention missed by prior pass.

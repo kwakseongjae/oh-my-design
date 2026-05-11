@@ -67,6 +67,18 @@ export const HOMEPAGE_URLS: Record<string, string> = {
   wise:          "https://wise.com",
   "x.ai":        "https://x.ai",
   zapier:        "https://zapier.com",
+  // Korean refs (May 2026)
+  yeogiotte:     "https://www.yeogi.com",
+  musinsa:       "https://www.musinsa.com",
+  kurly:         "https://www.kurly.com",
+  ohouse:        "https://ohou.se",
+  naver:         "https://www.naver.com",
+  yanolja:       "https://www.yanolja.com",
+  coupang:       "https://www.coupang.com",
+  kakaobank:     "https://www.kakaobank.com",
+  ridi:          "https://ridibooks.com",
+  qanda:         "https://qanda.ai",
+  krds:          "https://www.krds.go.kr/html/site/index.html",
 };
 
 export function getHomepageUrl(refId: string): string | null {

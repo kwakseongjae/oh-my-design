@@ -325,7 +325,7 @@ Tesla Motors was incorporated in July 2003 by **Martin Eberhard** and **Marc Tar
 
 The mission, as stated on the company's Impact page, is *"to accelerate the world's transition to sustainable energy"* ([tesla.com/impact](https://www.tesla.com/impact)). The 2006 original Master Plan described the mechanism — sell a premium low-volume car, use the margin to fund a mid-priced one, use that to fund a mass-market one, and bundle solar generation so personal transport becomes energy-positive. Master Plan Part 3 (April 2023) extended the logic from vehicles to a fully electrified global energy economy, modeled end-use-by-end-use in a 41-page technical paper rather than a keynote slide deck ([Tesla Master Plan Part 3 PDF](https://www.tesla.com/ns_videos/Tesla-Master-Plan-Part-3.pdf)). Master Plan Part IV (September 2025) reframes the destination as *"sustainable abundance"* and rests on five stated principles: growth is infinite; innovation removes constraints; technology solves tangible problems; autonomy benefits all humanity; greater access drives greater growth ([tesla.com/master-plan-part-4](https://www.tesla.com/master-plan-part-4)).
 
-What Tesla's brand refuses is the marketing grammar of its industry: no chrome badges, no "ultimate driving machine" mood films, no exterior wordmarks on most surfaces. It delivered 1.66 million vehicles in 2025 and deployed 46.7 GWh of battery storage <!-- source: [Wikipedia: Tesla, Inc.](https://en.wikipedia.org/wiki/Tesla,_Inc.), not re-verified against Tesla's own IR filings -->, and neither figure is presented with "more than ever" in any primary surface. The editorial decision is consistent: when the data is good, the data is the statement.
+What Tesla's brand refuses is the marketing grammar of its industry: no chrome badges, no "ultimate driving machine" mood films, no exterior wordmarks on most surfaces. **NASDAQ IPO June 29 2010** — first American car company to IPO since Ford in 1956 — issued **13.3M shares at $17/share, raised $226M** ([Tesla IR — IPO pricing](https://ir.tesla.com/press-release/tesla-announces-pricing-initial-public-offering)). **Roadster production began 2008**; **Tesla Factory opened October 2010** for **Model S production** (launched June 2012); Roadster ceased Jan 2012. **Straubel served 15 years as CTO** before moving to advisory role **July 2019** ([JB Straubel — Wikipedia](https://en.wikipedia.org/wiki/J._B._Straubel)). **Cybertruck delivery event November 30 2023**, base price now $60,990 (originally announced 2019 at $39,900) ([Tesla Cybertruck — Wikipedia](https://en.wikipedia.org/wiki/Tesla_Cybertruck)). Current vehicle lineup (April 2026): **Model 3, Model Y, Semi, Cybertruck, Cybercab**. It delivered 1.66 million vehicles in 2025 and deployed 46.7 GWh of battery storage <!-- source: [Wikipedia: Tesla, Inc.](https://en.wikipedia.org/wiki/Tesla,_Inc.), not re-verified against Tesla's own IR filings -->, and neither figure is presented with "more than ever" in any primary surface. The editorial decision is consistent: when the data is good, the data is the statement.
 
 ## 12. Principles
 
@@ -445,4 +445,12 @@ Interpretive claims — editorial readings, not official Tesla statements:
   founding (Eberhard/Tarpenning) and the published Master Plan documents,
   not around Musk's individual persona.
 -->
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 58 — Apple-tier)
+**Tier 1 sources:** tesla.com home + /model3 (live DOM via playwright — Primary **`#3e6ae1` Tesla Blue** + `#fff` text 4px / 40px / 4-square / 14px·**500** + Secondary `#fff` + **`#393c41` Tesla Charcoal** text 4px + Inactive locale `#f4f4f4` Light Gray + Mini dark-canvas `#000` + `#e2e3e3` Off-White 4px / 28px / 12px·500).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/IPO/Cybertruck):** Wikipedia (Tesla Inc. + Martin Eberhard + J.B. Straubel + Tesla Cybertruck), Britannica (Eberhard+Tarpenning, Tesla Motors), Tesla IR (IPO pricing), CNBC (Eberhard+Tarpenning interview).
+**Style ref:** retained. **Conflicts unresolved:** none. **Earlier addition:** canonical Primary `#3e6ae1` Tesla Blue + Charcoal `#393c41` Secondary palette + locale-selector + dark-canvas-mini variants missed by prior nav-only pass.
 

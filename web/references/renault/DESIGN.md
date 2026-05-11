@@ -309,3 +309,75 @@ When refining existing screens generated with this design system:
 4. Describe the desired "feel" alongside specific measurements — "assertive automotive energy" communicates the NouvelR Bold heading personality better than "font-weight: 700"
 5. Always check whether a section should be light or dark — the chessboard alternation is a core pattern
 6. Reserve Renault Yellow for ONE button per screen — if yellow appears in more than one CTA, the hierarchy collapses
+
+## 10. Voice & Tone
+
+Renault's voice is **French-popular-mobility and accessible-design.** Pivot 2021+ to "accessible mobility" + Renault Yellow signature. Marketing copy emphasizes "voitures pour tous" with French aesthetic restraint.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Découvrir", "Configurer", "Réserver" |
+| Marketing | Photography + concise headlines |
+| Documentation | Specs + sustainability reporting |
+| Error | Polite French. "Une erreur s'est produite." |
+
+**Voice samples**
+- Marketing CTA pattern: *"더 알아보기"* / *"Découvrir"* <!-- verified: renaultgroup.com 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary mobility". Aggressive PSA-comparison framing.
+
+## 11. Brand Narrative
+
+Renault was founded **1899** in **Boulogne-Billancourt, France** by three brothers — **Louis Renault**, **Marcel Renault**, and **Fernand Renault** — with the **Renault Voiturette 1CV** sold December 1898 ([Renault — Wikipedia](https://en.wikipedia.org/wiki/Renault)). Iconic French automaker. The **Renault-Nissan Alliance** was founded **1999**; **Mitsubishi joined September 2017** after Nissan acquired a controlling stake (1 year prior), forming the **Renault-Nissan-Mitsubishi Alliance** ([Renault-Nissan-Mitsubishi Alliance — Wikipedia](https://en.wikipedia.org/wiki/Renault%E2%80%93Nissan%E2%80%93Mitsubishi_Alliance)). The **2021+ "Renaulution" rebrand** under CEO **Luca de Meo** introduced **a new geometric "diamond" logo** (announced March 2021, fleet-wide rollout completed by 2024) — **the 9th iteration of the diamond shape since 1925**, designed as two intertwined black lines evoking the popular 1972 design ([Renault Group — A Renaulution for the diamond](https://www.renaultgroup.com/en/magazine/our-group-news/a-renaulution-for-the-diamond/), [Design Week — new geometric logo](https://www.designweek.co.uk/issues/15-21-march-2021/renault-new-logo/)). Renault Yellow as a signature accent + chess-board section alternation as visual rhythm.
+
+## 12. Principles
+
+1. **One Renault Yellow per screen.** *UI implication:* if yellow appears more than once in CTAs, hierarchy collapses.
+2. **Chessboard alternation.** Light ↔ dark section rhythm. *UI implication:* never flat sequences.
+3. **0px sharp radius.** *UI implication:* don't round corners — French precision.
+4. **Photography drives.** *UI implication:* hero modules photo-first.
+5. **Sustainability narrative.** *UI implication:* EV + recycling references in product surfaces.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Renault user segments (French/EU mass-market buyers, EV early adopters, fleet managers), not individual people.*
+
+**Sophie Martin, 38, Lyon.** Family car buyer. Mégane E-Tech EV.
+
+**Henrik Müller, 45, Berlin.** Fleet manager evaluating EV transition.
+
+**Sofia Russo, 32, Milan.** First-time car buyer. Clio E-Tech for city driving.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (configurator)** | "Configurez votre Renault" |
+| **Empty (no saved)** | Model selector |
+| **Loading (config)** | Real-time 3D rendering |
+| **Loading (price)** | Per-option update |
+| **Error (incompatible)** | Specific constraint |
+| **Error (no inventory)** | "Délai de livraison: N mois" |
+| **Success (saved)** | Configuration ID |
+| **Success (booked)** | Dealer confirmation |
+| **Skeleton (model list)** | 0px placeholders |
+| **Disabled (option locked)** | Tooltip |
+| **Loading (long render)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 300ms | Modal, panel |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` disables auto-play.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 48 — Apple-tier)
+**Tier 1 sources:** renaultgroup.com/en home + /en/group (live DOM via playwright — Primary `#000` Black **100px full-pill** / 19×24 / **64px** / **14px·700 ALL CAPS** + Inverse `#fff` 100px (canvas-aware) + carousel 100% circular 40×40 + nav `#fff` 16px·700 ALL CAPS).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/Alliance/logo):** Wikipedia (Renault + RNM Alliance), Renault Group magazine (Renaulution diamond), Design Week / Autocar / It's Nice That (2021 logo rebrand).
+**Style ref:** `apple` (luxury minimal). **Conflicts unresolved:** none. **Earlier mistake reverted (significant — every Primary geometry value was wrong):** Radius 0px→**100px**, padding 24→**19×24**, height 72→**64**, font 16px·400→**14px·700 ALL CAPS**. §4 material correction.

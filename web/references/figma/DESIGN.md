@@ -81,68 +81,142 @@ These appear in product UI screenshots and hero gradients (NOT in marketing chro
 
 ## 4. Component Stylings
 
+Verified end-to-end against Tier 1 (`figma.com/ko-kr/`, `figma.com/ko-kr/design/` live DOM) and Tier 2 (`styles.refero.design/style/60793669` + `/8caa5004`). Refero claimed "Global Action Pill 50px"; live inspect confirmed Primary CTA is **8px**, not 50px — refero captured the **Segmented Tab Pill** as Primary. This §4 separates them. See `web/references/figma/.verification.md` for the full conflict matrix.
+
 ### Buttons
 
-**Black Solid (Pill)**
-- Background: Pure Black (`#000000`)
-- Text: Pure White (`#ffffff`)
-- Radius: circle (50%) for icon buttons
-- Focus: dashed 2px outline
-- Maximum emphasis
+**Primary Pill (Black)**
+- Background: `#000000`
+- Text: `#ffffff`
+- Border: 1px solid transparent
+- Radius: 8px
+- Padding: 12px 21px
+- Font: 16px / 330 / figmaSans
+- Focus: dashed 2px outline `#0d99ff`
+- Use: default Primary CTA across figma.com — "Get started", "지금 무료로 시작하기"
 
-**White Pill**
-- Background: Pure White (`#ffffff`)
-- Text: Pure Black (`#000000`)
+**Primary Pill (Indigo)**
+- Background: `#4D49FC`
+- Text: `#ffffff`
+- Border: 1px solid transparent
+- Radius: 8px
+- Padding: 12px 20px
+- Font: 18px / 480 / figmaSans
+- Focus: dashed 2px outline
+- Use: alt Primary on hero/product surfaces — paired with Black Primary on home; "Panel Execution CTA" pattern in refero terminology
+
+**Outline Text Button**
+- Background: transparent
+- Text: `#000000`
+- Border: 1px solid transparent (no visible border in default; outline appears on focus)
+- Radius: 8px
+- Padding: 12px 21px
+- Font: 18px / 330 / figmaSans
+- Focus: dashed 2px outline
+- Use: secondary actions like "Contact sales", "영업팀에 문의"
+
+**Hero CTA (Larger)**
+- Background: `#000000`
+- Text: `#ffffff`
+- Border: none
+- Radius: 16px
+- Padding: 8px 24px 10px
+- Font: 16px / 400 / figmaSans
+- Use: oversized Primary CTA in hero modules — wider radius for hero region pacing
+
+**Segmented Tab Pill**
+- Background: active `rgba(0, 0, 0, 0.08)` | inactive `#ffffff`
+- Text: `#000000`
+- Border: none
+- Radius: 50px (pill)
 - Padding: 8px 18px 10px (asymmetric vertical)
-- Radius: pill (50px)
+- Font: 18px / 480 / figmaSans
 - Focus: dashed 2px outline
-- Standard CTA on dark/colored surfaces
+- Use: product-area navigation ("프롬프트", "디자인", "그리기", "개발", "게시", "홍보", "협업", "프레젠테이션") — the 50px pill that refero captured as "Global Action Pill"
 
-**Glass Dark**
-- Background: `rgba(0, 0, 0, 0.08)` (subtle dark overlay)
-- Text: Pure Black
-- Radius: circle (50%)
-- Focus: dashed 2px outline
-- Secondary action on light surfaces
+**Icon Round (Light)**
+- Background: `rgba(0, 0, 0, 0.08)` (frosted)
+- Text: `#000000`
+- Border: none
+- Radius: 50%
+- 36×36px square
+- Use: carousel prev/next on light surfaces
 
-**Glass Light**
-- Background: `rgba(255, 255, 255, 0.16)` (frosted glass)
-- Text: Pure White
-- Radius: circle (50%)
-- Focus: dashed 2px outline
-- Secondary action on dark/colored surfaces
+**Icon Round (Dark)**
+- Background: `rgba(255, 255, 255, 0.16)` (frosted)
+- Text: `#ffffff`
+- Border: none
+- Radius: 50%
+- 36×36px square
+- Use: carousel prev/next on dark/colored surfaces
 
-### Cards & Containers
-- Background: Pure White
-- Border: none or minimal
-- Radius: 6px (small containers), 8px (images, cards, dialogs)
-- Shadow: subtle to medium elevation effects
-- Product screenshots as card content
+**Icon Round (Solid Black)**
+- Background: `#000000`
+- Text: `#ffffff`
+- Border: none
+- Radius: 50%
+- 40×40px square
+- Use: media controls (pause/play) on the design surface
+
+### Inputs
+
+**Prompt Input Panel**
+- Background: `#ffffff`
+- Border: 1px solid `#e2e2e2`
+- Radius: 16px
+- Padding: 16px
+- Shadow: `rgba(0, 0, 0, 0.1) 0px 24px 70px 0px`
+- Use: Figma Make / AI prompt input (the "floatingPanels" in refero terminology)
+
+### Cards
+
+**Community Artifact Card**
+- Background: `#ffffff`
+- Border: none
+- Radius: 0px
+- Padding: 12px vertical metadata, no horizontal bound
+- Shadow: none (image bleeds full width)
+- Use: Community-page artifacts; the bleed-edge image is the design
+
+**Color Tile Card** (templates section)
+- Background: variants — `#e4ff97` (lime), `#00b6ff` (cyan), `#24cb71` (green), `#c4baff` (lavender), `#95b9ac` (sage)
+- Text: `#000000`
+- Border: none
+- Radius: 0px (full bleed)
+- Padding: 0px (image-as-content)
+- Use: home page template surfaces — color is the differentiator, geometry stays squared
 
 ### Navigation
-- Clean horizontal nav on white
-- Logo: Figma wordmark in black
-- Product tabs: pill-shaped (50px) tab navigation
-- Links: black text, underline 1px decoration
-- CTA: Black pill button
-- Hover: text color via CSS variable
 
-### Distinctive Components
+**Top Nav Bar**
+- Background: `#ffffff`
+- Height: ~64px
+- Logo: Figma wordmark, black SVG
+- Links: 16px / figmaSans / `#000000` text / underline 1px decoration on hover
+- CTAs (right): Outline Text "Contact sales" + Primary Pill "Get started"
+- Use: persistent top nav across figma.com
 
-**Product Tab Bar**
-- Horizontal pill-shaped tabs (50px radius)
-- Each tab represents a Figma product area (Design, Dev Mode, Prototyping, etc.)
-- Active tab highlighted
+**Pill Tab Bar** — see Segmented Tab Pill button variant above (used as section nav for product-area filter)
 
-**Hero Gradient Section**
-- Full-width vibrant multi-color gradient background
-- White text overlay with 86px display heading
-- Product screenshots floating within the gradient
+### Distinctive Patterns
 
 **Dashed Focus Indicators**
 - All interactive elements use `dashed 2px` outline on focus
-- References the selection handles in the Figma editor
-- A meta-design choice connecting website and product
+- References the selection-handle outlines inside the Figma editor itself — a meta-design choice connecting marketing site and product
+
+**Hero Gradient Section**
+- Full-width vibrant multi-color gradient background
+- White text overlay with 86px display heading (figmaSans)
+- Product screenshots floating within the gradient
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate Apple-tier)
+**Tier 1 sources:** figma.com/ko-kr/, figma.com/ko-kr/design/ (live DOM via playwright `getComputedStyle`, 2 surfaces)
+**Tier 2 sources:** styles.refero.design/style/60793669-28e2-41bd-bf9d-972151630f7c (Figma primary), /style/8caa5004-a8cc-4c7e-a2bb-00ff60618729 (Figma Config); getdesign.md/figma — directory snippet only
+**Conflicts unresolved:** none. **Conflict resolved:** refero claimed Primary 50px pill — live inspect proved that's the **Segmented Tab Pill**, not the Primary CTA. Primary is 8px. Both variants now documented separately.
+**Earlier mistakes reverted:** "Black Solid (Pill)" was conflating Primary (8px) + Tab (50px) + Icon Round (50%) into a single entry; Cards/Navigation/Distinctive were prose, not canonical schema (caused `/reference/figma` to render only Buttons spec cards). All separated and rewritten.
+**`.verification.md`:** `web/references/figma/.verification.md` (raw observations + per-component conflict matrix).
 
 ## 5. Layout Principles
 
@@ -257,7 +331,9 @@ Figma's voice is **colloquial-craft** — the register of someone who takes desi
 
 ## 11. Brand Narrative
 
-Figma was founded in 2012 by **Dylan Field and Evan Wallace**. The founding bet was technical and contrarian: at a time when every serious design tool was a native app (Sketch for Mac, Adobe everything), Field and Wallace decided to build a design tool that ran **in the browser, with real-time multiplayer collaboration**. That required solving WebGL rendering, operational-transform networking for multiplayer, and typesetting — all simultaneously. The tool launched publicly in 2016 after roughly four years of head-down engineering.
+Figma was founded **August 16, 2012** by **Dylan Field and Evan Wallace** (verified via [Wikipedia: Dylan Field](https://en.wikipedia.org/wiki/Dylan_Field), [Index Ventures retrospective](https://www.indexventures.com/perspectives/figma-goes-public-thirteen-unforgettable-years-with-dylan-field/)). The two met at **Brown University** — Wallace was a year ahead and TA'd Field's CS course; they bonded over WebGL ([Sequoia Capital spotlight](https://sequoiacap.com/article/dylan-field-figma-spotlight/)). Field received a **$100,000 Thiel Fellowship** to leave school and work full-time on the company ([Fortune, 2025](https://fortune.com/2025/08/01/figma-ipo-cofounder-dylan-field-former-linkedin-intern-peter-thiel-fellowship/)). The founding bet was technical and contrarian: at a time when every serious design tool was a native app (Sketch for Mac, Adobe everything), Field and Wallace decided to build a design tool that ran **in the browser, with real-time multiplayer collaboration**. That required solving WebGL rendering, operational-transform networking for multiplayer, and typesetting — all simultaneously. After roughly **three years in stealth**, Figma emerged from closed beta in **2015** and launched publicly in **September 2016**.
+
+The company reached a **$10B valuation in 2021**, navigated a $20B Adobe acquisition that fell through to regulatory pressure (2022-2023), and held its **IPO on NYSE on August 2, 2025** ([Fortune](https://fortune.com/2025/08/01/figma-ipo-cofounder-dylan-field-former-linkedin-intern-peter-thiel-fellowship/)) — closing post-IPO around $68B market cap.
 
 Figma's brand has always centered on **design as collaboration** rather than design as solo authorship. The product's original framing was captured in the phrase "design is a team sport"; the current marketing positioning — *"Figma lets you turn big ideas into real products. Brainstorm, design, and build with your team."* — preserves the same thesis through different words. **Config**, Figma's annual conference, is explicitly framed around *"craft, quality, and intention in an AI-powered world"* and functions as a community gathering more than a product-launch event.
 

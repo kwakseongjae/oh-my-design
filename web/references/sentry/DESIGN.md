@@ -260,3 +260,76 @@ What makes Sentry distinctive is its embrace of the "dark IDE" aesthetic without
 4. Lime green (#c2ef4e) is the "pop" color — use once per section maximum
 5. Frosted glass for overlaid panels, solid purple for primary surfaces
 6. Rubik handles 90% of typography — Dammit Sans is hero-only
+
+## 10. Voice & Tone
+
+Sentry's voice is **error-tracking-honest and developer-empathetic.** Sentry is famous for talking about errors in plain English — "see what's broken, fix it fast." Frosted glass overlays + purple primary signal "premium debugging tool."
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Try Sentry", "Sign up free" |
+| Marketing | Error-honest. Real stack traces in marketing |
+| Documentation | Code-block-heavy, framework-specific |
+| Error (in product) | Specific stack trace + commit context |
+
+**Voice samples**
+- Marketing pattern: *"See what's broken"* / *"Errors and performance"* <!-- illustrative -->
+
+**Forbidden phrases.** "Revolutionary error monitoring". Generic "AI-powered" framing.
+
+## 11. Brand Narrative
+
+Sentry started as an **open-source project by David Cramer in 2008** for application error monitoring. **Cramer + Chris Jennings formally incorporated Functional Software Inc. in February 2012** ([CIO — Sentry's Cramer on bootstrapping](https://www.cio.com/article/401704/sentrys-david-cramer-on-bootstrapping-a-unicorn.html), [First Round Review — Sentry's Path to PMF](https://review.firstround.com/sentrys-path-to-product-market-fit/)). **Cramer (CTO)** + **Jennings (Chief Creative Officer)** **bootstrapped the company organically** for ~3 years before transitioning open-source to monetized product, and another stretch before taking VC. Cramer is famously a **high-school dropout** turned engineer — [First Round Review: "A High School Dropout Turned an Open-Source Project into a $3B Company"](https://review.firstround.com/sentrys-path-to-product-market-fit/). The brand voice tracks the founder positioning: errors are normal, debugging is craft, transparency is the ethos. Sentry remains heavily OSS-aware while operating a managed cloud product. **Total funding ~$217M** from **Accel, NEA, Bond Capital** at **~$3B valuation** ([Crunchbase — Sentry](https://www.crunchbase.com/organization/sentry), [Contrary Research — Sentry](https://research.contrary.com/company/sentry)). **Milin Desai is current CEO**. Purple primary is the signature accent — Tier 1 live measurement on `/pricing` shows the canonical Primary as `rgb(69, 38, 80)` = **`#452650` Sentry Deep Purple** (slightly different from prior §2 doc claim `#6c5fc7` Mid-Purple).
+
+## 12. Principles
+
+1. **Open-source heritage.** *UI implication:* self-hosted Sentry first-class option.
+2. **Errors are normal.** *UI implication:* tone never shames developers; debugging is craft.
+3. **Frosted glass for overlays.** *UI implication:* preserve translucent panel pattern.
+4. **Purple `#6c5fc7` primary.** *UI implication:* don't introduce new accent colors.
+5. **Rubik for 90%, Dammit Sans hero only.** *UI implication:* don't substitute Rubik.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Sentry user segments (backend engineers, mobile dev teams, frontend performance leads), not individual people.*
+
+**Sergey Volkov, 36, Berlin.** Backend engineer. Sentry as production error feed.
+
+**Sofia Russo, 30, Milan.** Mobile dev shipping iOS app. Crash analytics + release tracking.
+
+**Marcus Chen, 41, San Francisco.** Frontend performance lead. Web Vitals + LCP monitoring.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no projects)** | "Create your first project" with SDK install |
+| **Empty (no events)** | "Trigger first event" with code snippet |
+| **Loading (event capturing)** | Real-time event feed |
+| **Loading (issue grouping)** | Skeleton issue cards |
+| **Error (SDK)** | Specific. "DSN invalid" with verify steps |
+| **Error (rate limit)** | Tier limit + upgrade |
+| **Success (resolved)** | Issue moves to resolved tab + version |
+| **Success (alerted)** | Alert chip with route to alert |
+| **Skeleton (issue list)** | Frosted-glass placeholders |
+| **Disabled (no permission)** | Role tooltip |
+| **Loading (long replay)** | Persistent progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 54 — Apple-tier)
+**Tier 1 sources:** sentry.io/welcome home + sentry.io/pricing (live DOM via playwright — Primary **`#452650` Sentry Deep Purple** 8px / 40px / 12×16 / **14px·700 ALL CAPS**; Outline Eggplant `#1f1633` text; Cookie Mid-Purple `#362d59`; Lavender Mist `#f5f3fa` 0px tab; nav 14px·500 ALL CAPS).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** First Round Review (Sentry PMF case study + Cramer podcast), CIO (Cramer bootstrapping), Crunchbase, Contrary Research, Tracxn, ShiftMag (Milin Desai CEO).
+**Style ref:** `stripe`.
+**Conflicts unresolved:** Brand Purple HEX — §2 doc cited `#6c5fc7` Mid-Purple; live DOM shows `#452650` Deep Purple as canonical Primary. **Resolution: 3-shade palette `#452650`/`#362d59`/`#1f1633`**, live `#452650` wins for Primary; both retained. **Earlier mistake reverted (significant):** prior footer captured nav 14px·500 ghost only — Primary is **14px·700 ALL CAPS Deep Purple**.

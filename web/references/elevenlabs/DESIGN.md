@@ -263,3 +263,94 @@ What makes ElevenLabs distinctive is its multi-layered shadow system. Rather tha
 4. Positive letter-spacing on Inter body (+0.14px to +0.18px) — the airy reading quality
 5. Warm stone CTA is the signature — `rgba(245,242,239,0.8)` with `rgba(78,50,23,0.04)` shadow
 6. Pill (9999px) for buttons, generous radius (16px–24px) for cards
+
+## 10. Voice & Tone
+
+ElevenLabs writes like the audio it generates: **measured, precise, and built for clarity.** Marketing copy is closer to research summary than ad copy — the company describes itself as "an AI research and product company transforming how we interact with technology" (own About page). UI surfaces echo this register: short labels, technical-but-readable, never breathless.
+
+| Context | Tone |
+|---|---|
+| CTA / button | Single verb or verb-noun. "Try it now", "Sign up", "Contact sales". Lowercase or sentence-case |
+| Product names | Pascal-case prefix `Eleven`. ElevenAgents, ElevenCreative, ElevenAPI |
+| Onboarding | Technical specifics over emotion. "Generate speech in 32 languages with one model" |
+| Error (model unavailable) | State the cause. "This voice is unavailable in your region. Try a different voice." |
+| Empty (no projects) | Direct invitation. "Create your first project to start generating audio." |
+| Documentation / API | Imperative, code-block-heavy, example-first |
+| Safety / policy | Formal but not legalese |
+
+**Voice samples**
+- Marketing CTA: *"Try it now"* <!-- verified: elevenlabs.io homepage hero (2026-05) -->
+- Three-platform tagline: *"ElevenAgents, ElevenCreative, ElevenAPI"* <!-- verified: elevenlabs.io top nav (2026-05) -->
+- Safety statement opener: *"AI safety is inseparable from innovation at ElevenLabs."* <!-- verified: elevenlabs.io About / safety -->
+
+**Forbidden phrases.** "Revolutionary", "lifelike". "Unlock the power of...". Apology theatre. Emoji in product chrome.
+
+## 11. Brand Narrative
+
+ElevenLabs was founded **2022** by **Mati Staniszewski (CEO)** and **Piotr Dąbkowski (CTO)** — both Polish, **best friends since the Copernicus International Baccalaureate program in Warsaw** ([ElevenLabs — Wikipedia](https://en.wikipedia.org/wiki/ElevenLabs)). Staniszewski studied **mathematics at Imperial College London**, then **Opera Software → BlackRock (Aladdin Wealth) → Palantir** as Deployment Strategist. Dąbkowski studied **engineering at Oxford → MPhil Cambridge (2017, NeurIPS-published thesis on AI image detection)**, then **Google ML engineer → Tessian**. The founding observation was that text-to-speech in 2022 still sounded robotic on every consumer surface — both founders, growing up dubbing English-language films into Polish, knew firsthand that machine voiceover was a bottleneck for global content. Funding trajectory: **$2M pre-seed (Jan 2023)** → **$19M Series A (Jun 2023)** at **$100M** → **$80M Series B (Jan 22 2024)** at **$1.1B unicorn** → **$180M Series C (Jan 30 2025)** at **$3.3B** co-led **a16z + ICONIQ Growth** with NEA/WiL/Valor/Endeavor Catalyst/Lunate → **$500M (Feb 4 2026)** at **$11B** co-led **a16z + Nat Friedman + Daniel Gross** ahead of potential IPO ([CNBC — VC bet on ElevenLabs](https://www.cnbc.com/2025/10/25/vc-bet-on-3-billion-ai-firm-elevenlabs-after-one-meeting-with-founder.html), [Yahoo Finance — Staniszewski $200M+ revenue](https://finance.yahoo.com/news/elevenlabs-ceo-mati-staniszewski-reveals-134611632.html)). $500M+ ARR reported 2025.
+
+The brand voice — clinical-precise, research-first, three-platform vocabulary (`Eleven` + Agents/Creative/API) — reflects the founders' technical orientation. Public communication stays close to research output: model card releases, latency benchmarks, voice cloning safety policies. Founder interviews consistently emphasize **dual-use awareness**: voice cloning is dangerous if misused, and the company has built multi-layered abuse detection from day one — *"AI safety is inseparable from innovation at ElevenLabs"* is verbatim from their About page.
+
+What ElevenLabs refuses: hyperbolic adjectives about voice realism (the demo speaks for itself), celebrity voice cloning without explicit consent, generic emotion-coded marketing imagery (their visuals stay tech-product, not lifestyle).
+
+## 12. Principles
+
+1. **The model output is the marketing.** Audio demos beat any descriptive copy. *UI implication:* hero modules contain a real audio sample that plays on hover/tap.
+2. **Three-platform vocabulary, one identity.** `Eleven` prefix on every product. *UI implication:* product nav uses literal `ElevenAgents`/`ElevenCreative`/`ElevenAPI` strings.
+3. **Safety as feature, not disclaimer.** Voice-clone consent flow surfaced as product capability. *UI implication:* safety controls have first-class menu placement.
+4. **Warm stone, not cold black.** Palette uses warm beige tones to signal "human-feeling AI." *UI implication:* default canvas warm off-white; pure white reserved for content-detail surfaces.
+5. **Inter with positive letter-spacing.** Body text +0.14–0.18px tracking creates airy reading rhythm. *UI implication:* don't tighten Inter at body sizes.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by publicly described ElevenLabs user segments (developers, content creators, accessibility advocates, enterprise customers), not individual people.*
+
+**Sasha Volkov, 32, Berlin.** Senior engineer at a podcast tooling startup. Integrates the ElevenAPI for studio-quality voiceover generation. Reads the model release notes the same week they ship.
+
+**Adaeze Okafor, 28, Lagos.** Independent YouTuber dubbing English videos into Yoruba and Igbo with ElevenCreative. The 32-language coverage and voice cloning consent flow are why she's on the platform — competing services don't support West African languages.
+
+**Dr. Yuki Sato, 45, Tokyo.** Accessibility researcher using ElevenLabs through The ElevenLabs Impact program (free licenses for accessibility needs). Builds reading-aid software for visually impaired Japanese readers.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no generated audio)** | Centered Inter 24px text "Generate your first audio" + warm-stone Primary CTA pill |
+| **Empty (no projects)** | "Create a project to get started." 16px copy, single CTA, optional secondary "Browse templates" |
+| **Loading (audio generating)** | Linear progress with elapsed time + ETA. Pause/cancel button always visible. Long jobs show waveform animation |
+| **Loading (model loading)** | Skeleton player UI + "Loading voice model" copy with explicit wait expectation |
+| **Error (generation failed)** | Inline below input. "Couldn't generate audio. <reason>." Retry button + Documentation link |
+| **Error (rate limit)** | "You've reached your daily limit (100 credits). Upgrade or wait until tomorrow." |
+| **Success (audio generated)** | Inline player appears below input. Auto-plays once if "Auto-preview" enabled. Download / Share / Copy-link visible |
+| **Success (voice cloned)** | Confirmation + safety reminder. "Voice cloned. Remember to only use voices you have permission to clone." |
+| **Skeleton** | Warm-stone `rgba(245,242,239,0.4)` blocks at exact dimensions. No shimmer |
+| **Disabled** | 0.4 opacity. Disabled CTAs explain why on hover ("Add credits to enable") |
+| **Loading (batch generation)** | Persistent progress notification, per-file status. Navigation continues |
+
+## 15. Motion & Easing
+
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection commits |
+| `motion-fast` | 150ms | Hover, button feedback |
+| `motion-standard` | 250ms | Modal, dropdown |
+| `motion-audio` | continuous | Waveform during generation |
+
+**Easings**: `ease-enter cubic-bezier(0.2, 0.6, 0.25, 1)` for modals, `ease-exit cubic-bezier(0.4, 0.0, 1, 1)` for dismiss, no bounce.
+
+**Motion rules.**
+1. Audio waveform is THE signature motion — stylized model activity, not random animation
+2. No bounce, no overshoot — register is precise
+3. Hover transitions 150ms (faster than DS standard) — keyboard-driven research-tool feel
+4. `prefers-reduced-motion: reduce` removes waveform (→ progress bar), removes hover scale, keeps focus transitions
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 22 — Apple-tier)
+**Tier 1 sources (§4):** elevenlabs.io home + /pricing (live DOM via playwright — Primary `#000000` 9999px three-tier {hero 48px / mid 40px / header 28px} 0×{20/16/12} / 14-16px·400; Inverse `#ffffff` 9999px same geometry)
+**Tier 2 sources (§4):** styles.refero.design — no specific ElevenLabs style match. getdesign.md/elevenlabs — directory only.
+**Tier 2 (Founders/Funding):** Wikipedia (ElevenLabs), CNBC (2025-10 a16z bet), Yahoo Finance (Staniszewski $200M+ revenue + $11B Feb 2026), Endeavor Catalyst.
+**Style ref:** `claude` (research-tech precision tone)
+**Conflicts unresolved:** none.

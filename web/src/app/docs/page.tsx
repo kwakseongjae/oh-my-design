@@ -59,7 +59,7 @@ const SKILLS: Skill[] = [
     trigger: "First-time setup",
     title: "Bootstrap a project",
     desc:
-      "Pick from 67 reference design systems. Hybrid variation — preserves the reference voice while shifting only the axes you name.",
+      "Pick from 78 reference design systems. Hybrid variation — preserves the reference voice while shifting only the axes you name.",
     icon: Zap,
   },
   {
@@ -365,7 +365,7 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
   {
     path: ".claude/data/*",
     owner: "install-skills",
-    purpose: "67-reference fingerprints, vocabulary, opt-out corpus",
+    purpose: "78-reference fingerprints, vocabulary, opt-out corpus",
   },
   {
     path: ".claude/hooks/*.cjs",
@@ -375,7 +375,7 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
   {
     path: "references/*/DESIGN.md",
     owner: "bundled",
-    purpose: "67 real design systems",
+    purpose: "78 real design systems",
   },
   {
     path: "DESIGN.md",
@@ -402,7 +402,7 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
 const FAQ: { q: string; a: string }[] = [
   {
     q: "Does it call any AI provider during install?",
-    a: "No. Install copies skill markdown, hooks, and 67 DESIGN.md files. Zero API calls. Your AI agent (Claude Code, Codex, OpenCode, Cursor) is the inference layer — install just teaches it where to look.",
+    a: "No. Install copies skill markdown, hooks, and 78 DESIGN.md files. Zero API calls. Your AI agent (Claude Code, Codex, OpenCode, Cursor) is the inference layer — install just teaches it where to look.",
   },
   {
     q: "Which agents are supported?",
@@ -410,7 +410,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Can I bring my own DESIGN.md?",
-    a: "Yes. If a DESIGN.md exists at repo root, omd:apply uses it as-is. Otherwise omd:init proposes a hybrid from one of the 67 references.",
+    a: "Yes. If a DESIGN.md exists at repo root, omd:apply uses it as-is. Otherwise omd:init proposes a hybrid from one of the 78 references.",
   },
   {
     q: "How do preferences differ from DESIGN.md?",
@@ -534,7 +534,7 @@ function DocsHero() {
           <strong className="text-white">6 skills</strong>,{" "}
           <strong className="text-white">11 sub-agents</strong>, a{" "}
           <strong className="text-white">10-phase pipeline</strong>, and{" "}
-          <strong className="text-white">67 reference DESIGN.md files</strong>{" "}
+          <strong className="text-white">78 reference DESIGN.md files</strong>{" "}
           — installed into your AI coding agent in one command. No API keys.
           No external infra. Then you just talk to your agent.
         </motion.p>

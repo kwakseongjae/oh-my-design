@@ -264,3 +264,75 @@ What makes MongoDB distinctive is its dual-mode design: a dark hero/feature sect
 4. Weight 300 body text creates the airy reading experience — don't default to 400
 5. Source Code Pro uppercase with wide tracking for technical labels — the database voice
 6. Teal-tinted shadows keep everything in the MongoDB color world
+
+## 10. Voice & Tone
+
+MongoDB's voice is **enterprise-database-precise and developer-aware.** "The World's Leading Modern Data Platform" — confident enterprise positioning. Source Code Pro uppercase labels signal "database voice" — wide tracking, monospace authority.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Try free", "Get started", "Talk to sales" |
+| Marketing | Enterprise-data-platform language. Atlas (cloud) is first-class brand |
+| Documentation | Code-first, query-heavy |
+| Error | Specific. "Invalid ObjectId. Check format: 24-char hex." |
+
+**Voice samples**
+- Tagline: *"The World's Leading Modern Data Platform"* <!-- verified: mongodb.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary database". Generic NoSQL marketing.
+
+## 11. Brand Narrative
+
+MongoDB was founded **2007 in New York City as 10gen** by **Dwight Merriman (former DoubleClick founder + CTO)**, **Eliot Horowitz (former DoubleClick engineer + ShopWiki CTO)**, and **Kevin P. Ryan (former DoubleClick CEO + Gilt Groupe founder)** — DoubleClick veterans who learned the limits of relational databases when scaling to **400,000+ ads/sec** ([MongoDB Inc. — Wikipedia](https://en.wikipedia.org/wiki/MongoDB_Inc.), [Eliot Horowitz — Wikipedia](https://en.wikipedia.org/wiki/Eliot_Horowitz)). 10gen originally aimed to build a PaaS on entirely open-source components but, finding no existing database that met their cloud-architecture principles, instead built the **document-oriented MongoDB**. **First public release 2009**. **Renamed 10gen → MongoDB Inc. on August 27 2013**. By 2017, MongoDB had raised **$311M in venture funding**. **NASDAQ IPO October 20 2017** under ticker **MDB**, raising **$192M** ([MongoDB — About](https://www.mongodb.com/company)). **Atlas (managed cloud) launched 2016**; by 2024-2025 Atlas accounts for **>70% of revenue** and the company's **market cap ranges $22B-$26B**. The brand voice — Spring Green CTAs `#00ed64` on Navy `#001e2b`, teal-tinted shadows, uppercase Source Code Pro labels — reflects the database-engineering register.
+
+## 12. Principles
+
+1. **Atlas is the cloud product.** *UI implication:* Atlas distinct from on-prem MongoDB in marketing nav.
+2. **Green primary `#00684a`.** *UI implication:* dark green as auth, never bright lime.
+3. **Source Code Pro for technical labels.** Uppercase + wide tracking. *UI implication:* preserve this for chip labels.
+4. **Teal-tinted shadows.** *UI implication:* all shadows have a slight teal undertone.
+5. **0px-radius hero buttons, 4px-radius nav.** *UI implication:* mixed radius is intentional — sharp for data, soft for UX.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by MongoDB user segments (backend engineers, data architects, enterprise CTOs), not individual people.*
+
+**Sergey Volkov, 38, Berlin.** Backend engineer building geo-distributed app. Atlas Multi-region for low-latency reads.
+
+**Aisha Patel, 41, San Francisco.** Data architect at Fortune 500. Manages 200+ MongoDB clusters across hybrid cloud.
+
+**Heinz Müller, 50, Munich.** CTO at industrial SaaS. MongoDB Atlas as the deciding factor for cloud-native pivot.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no databases)** | "Create your first cluster" Atlas CTA |
+| **Empty (no collections)** | Inline shell command + create button |
+| **Loading (query)** | Per-stage execution explanation visible |
+| **Loading (cluster scaling)** | Progress with elapsed time, ETA |
+| **Error (query syntax)** | Inline below editor + line:column |
+| **Error (server)** | Specific MongoDB error code + docs link |
+| **Success (query)** | Results table + execution stats |
+| **Success (cluster created)** | Connection string + security checklist |
+| **Skeleton (cluster list)** | Teal-tinted placeholders |
+| **Disabled (read-only)** | Lock icon + role tooltip |
+| **Loading (long migration)** | Multi-step progress |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; no bounce — enterprise register. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 40 — Apple-tier)
+**Tier 1 sources:** mongodb.com home + /products/platform/atlas-database (live DOM via playwright — **Primary `#00ed64` Spring Green** 4px / Navy `#001e2b` text / 48-52px / 15-16×24-48 / 16px·**500** + **Inverse Primary `#001e2b` Navy** 4px on light canvas; **`#00684a` Forest Green is banner-strip chrome bg only, NOT a CTA**; cookie utility 2px / 12.195px·600 separate track).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/IPO):** Wikipedia (MongoDB Inc. + Eliot Horowitz), MongoDB About, MatrixBCG, PortersFiveForce, AlleyCorp, Medium (MongoDB IPO story).
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier mistake reverted (significant):** prior footer claimed Primary was `#00684a` 0px hero — actually `#00684a` is banner-strip chrome bg, canonical Primary is **Spring Green `#00ed64` 4px / Navy text**. §4 needs material correction.

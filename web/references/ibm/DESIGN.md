@@ -330,3 +330,71 @@ What defines IBM's visual identity beyond monochrome-plus-blue is the reliance o
 6. Inputs have bottom-border only, never fully boxed
 7. Use `--cds-` prefix for token naming to stay Carbon-compatible
 8. 48px is the universal interactive element height
+
+## 10. Voice & Tone
+
+IBM's voice is **enterprise-technical and Carbon-systematic.** Carbon Design System discipline shows up in every surface — uppercase labels, IBM Plex font, 0px-radius buttons, IBM Blue `#0f62fe` primary. The voice is closer to a research lab + enterprise contract than to consumer marketing.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Try free", "Talk to sales" |
+| Marketing | Enterprise-fluent. SOC 2 / FedRAMP / ISO references |
+| Documentation | Carbon-component-named; deep-linked component docs |
+| Error | Specific. "Authentication failed (HTTP 401). Check API key." |
+
+**Voice samples**
+- Marketing CTA (KR): *"무료로 시작하기"* <!-- verified: ibm.com/kr-ko 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary AI" without specifics. Casual emoji.
+
+## 11. Brand Narrative
+
+IBM was founded **June 16 1911** as the **Computing-Tabulating-Recording Company (CTR)** by **Charles Ranlett Flint** — a Wall Street financier who **amalgamated four companies** (Tabulating Machine Company, International Time Recording Company, Computing Scale Company of America, Bundy Manufacturing Company) ([Charles Ranlett Flint — Wikipedia](https://en.wikipedia.org/wiki/Charles_Ranlett_Flint), [IBM — The origins of IBM](https://www.ibm.com/history/ctr-and-ibm)). **Renamed "International Business Machines" 1924** under **Thomas J. Watson Sr.**, who had joined CTR in 1914. The contemporary brand identity was established through **Paul Rand**, hired by **Thomas J. Watson Jr. in 1956** — Rand replaced Beton Bold with **City Medium** and created the iconic 8-bar (later 13-bar) striped IBM logo, with a directive to "**herald a new era of IBM while also communicating continuity**" ([History of IBM logo — Hatchwise](https://www.hatchwise.com/resources/the-history-of-the-ibm-logo)). The Rand→**Eddy Opara** design legacy continues today through the **Carbon Design System** (open-sourced 2018, [carbondesignsystem.com](https://carbondesignsystem.com/)) — IBM Plex font, IBM Blue `#0f62fe`, 0px-radius buttons. Carbon makes IBM one of the few enterprise vendors with a publicly documented design system that's also adopted by external teams. **In 2024-2025 IBM acquired HashiCorp** ($6.4B announced April 24 2024, **closed February 27 2025**), folding HashiCorp's products into IBM's hybrid cloud strategy.
+
+## 12. Principles
+
+1. **Carbon is the system.** *UI implication:* every component has a Carbon spec — read carbondesignsystem.com before deviating.
+2. **0px radius is intentional.** Carbon's defining aesthetic choice. *UI implication:* never round corners on Carbon-spec elements.
+3. **IBM Plex is the type voice.** Sans / Mono / Serif variants. *UI implication:* don't substitute system fonts; Plex is the brand register.
+4. **48px universal interactive height.** *UI implication:* all clickable elements meet 48px tap target.
+5. **`#0f62fe` IBM Blue is THE accent.** *UI implication:* other Carbon tokens carry semantic meaning; IBM Blue is for "primary action" only.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by IBM user segments (enterprise IT architects, watsonx AI/ML platform users, regulated-industry compliance), not individual people.*
+
+**Catherine Liu, 47, Toronto.** Principal architect at a global insurance company. IBM Cloud + watsonx the chosen path for compliant AI deployment.
+
+**Hiroshi Tanaka, 52, Tokyo.** CIO at multinational logistics. IBM partnership for hybrid cloud modernization.
+
+**Aisha Khan, 35, Dubai.** Senior consultant at IBM Consulting. Translates client needs into Carbon-compliant deliverables.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no resources)** | "Create your first resource" Carbon Button.Primary |
+| **Empty (no data)** | Carbon EmptyState component pattern + CTA |
+| **Loading** | Carbon InlineLoading or Loading component, never custom |
+| **Error** | Carbon Notification.error variant; persistent until dismissed |
+| **Success** | Carbon Notification.success; auto-dismiss 4s |
+| **Skeleton** | Carbon SkeletonText / SkeletonPlaceholder components |
+| **Disabled** | Carbon disabled state — explicit visual contrast (not just opacity) |
+| **Loading (long)** | Carbon ProgressBar with explicit ETA |
+
+## 15. Motion & Easing
+
+Carbon Motion tokens: `productive` (110ms / 240ms / 400ms), `expressive` (175ms / 240ms / 400ms / 700ms). Curves: `standard / entrance / exit / expressive`.
+
+**Motion rules.**
+1. Carbon productive curves for utility motions
+2. Carbon expressive curves for marketing
+3. `prefers-reduced-motion: reduce` collapses to instant
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 28 — Apple-tier)
+**Tier 1 sources:** ibm.com/us-en home + /products (live DOM via playwright — Primary `#0f62fe` IBM Blue 0px / asymmetric 14-15×15-16 / 48px / 14px·400; triple-confirmed against Carbon DS `$blue-60` token ✓).
+**Tier 1 (DS-official):** carbondesignsystem.com — Carbon Design System open-source spec, the rare case where a brand publishes its own DS as authoritative.
+**Tier 2 (Philosophy/history):** Wikipedia (Charles Flint, IBM, CTR, History of IBM), IBM corporate history (`ibm.com/history/ctr-and-ibm`), Hatchwise IBM logo timeline.
+**Style ref:** `stripe`. **Conflicts unresolved:** none.

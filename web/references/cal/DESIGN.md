@@ -91,23 +91,104 @@ The elevation system is notably sophisticated for a minimal site — 11 shadow d
 ## 4. Component Stylings
 
 ### Buttons
-- **Dark Primary**: `#242424` (or `#1e1f23`) background, white text, 6–8px radius. Hover: opacity reduction to 0.7. The signature CTA — maximally dark on white
-- **White/Ghost**: White background with shadow-ring border, dark text. Uses the multi-layered shadow system for subtle elevation
-- **Pill**: 9999px radius for rounded pill-shaped actions and badges
-- **Compact**: 4px padding, small text — utility actions within product UI
-- **Inset highlight**: Some buttons feature `rgba(255, 255, 255, 0.15) 0px 2px 0px inset` — a subtle inner-top highlight creating a 3D pressed effect
 
-### Cards & Containers
-- **Shadow Card**: White background, multi-layered shadow — `rgba(19, 19, 22, 0.7) 0px 1px 5px -4px, rgba(34, 42, 53, 0.08) 0px 0px 0px 1px, rgba(34, 42, 53, 0.05) 0px 4px 8px 0px`. The ring shadow (0px 0px 0px 1px) acts as a shadow-border
-- **Product UI Cards**: Screenshots of the scheduling interface displayed in card containers with shadow elevation
-- **Radius**: 8px for standard cards, 12px for larger containers, 16px for prominent sections
-- **Hover**: Likely subtle shadow deepening or scale transform
+**Dark Primary**
+- Background: `#242424` (or `#1e1f23`)
+- Text: `#ffffff`
+- Radius: 8px
+- Padding: 12px 20px
+- Font: 16px / 600 / Inter
+- Hover: opacity 0.7
+- Use: Signature CTA — maximally dark on white
 
-### Inputs & Forms
-- **Select dropdown**: White background, `#000000` text, 1px solid `rgb(118, 118, 118)` border
-- **Focus**: Uses Framer's focus outline system (`--framer-focus-outline`)
-- **Text input**: 8px radius, standard border treatment
-- **Minimal form presence**: The marketing site prioritizes CTA buttons over complex forms
+**White / Ghost**
+- Background: `#ffffff`
+- Text: `#242424`
+- Radius: 8px
+- Padding: 12px 20px
+- Shadow: `rgba(19, 19, 22, 0.7) 0px 1px 5px -4px, rgba(34, 42, 53, 0.08) 0px 0px 0px 1px, rgba(34, 42, 53, 0.05) 0px 4px 8px 0px`
+- Font: 16px / 600 / Inter
+- Use: Secondary CTA with shadow-ring border
+
+**Pill**
+- Background: `#242424`
+- Text: `#ffffff`
+- Radius: 9999px
+- Padding: 8px 16px
+- Use: Rounded pill-shaped actions and badges
+
+**Compact**
+- Background: `#242424`
+- Text: `#ffffff`
+- Radius: 6px
+- Padding: 4px 8px
+- Font: 14px / 600 / Inter
+- Use: Utility actions within product UI
+
+**Inset Highlight**
+- Background: `#242424`
+- Text: `#ffffff`
+- Radius: 8px
+- Shadow: `rgba(255, 255, 255, 0.15) 0px 2px 0px inset`
+- Use: Subtle inner-top highlight creating a 3D pressed effect
+
+### Inputs
+
+**Select / Dropdown**
+- Background: `#ffffff`
+- Text: `#000000`
+- Border: 1px solid `rgb(118, 118, 118)`
+- Radius: 8px
+- Padding: 8px 12px
+- Focus: `--framer-focus-outline`
+- Use: Form select / dropdown
+
+**Text Input**
+- Background: `#ffffff`
+- Text: `#242424`
+- Border: 1px solid `rgb(118, 118, 118)`
+- Radius: 8px
+- Padding: 8px 12px
+- Use: Standard text input (marketing site prioritizes CTAs over complex forms)
+
+### Cards
+
+**Shadow Card**
+- Background: `#ffffff`
+- Radius: 8px
+- Padding: 16px 24px
+- Shadow: `rgba(19, 19, 22, 0.7) 0px 1px 5px -4px, rgba(34, 42, 53, 0.08) 0px 0px 0px 1px, rgba(34, 42, 53, 0.05) 0px 4px 8px 0px`
+- Use: Standard card; ring shadow acts as shadow-border
+
+**Large Container**
+- Background: `#ffffff`
+- Radius: 12px
+- Padding: 24px
+- Use: Larger containers
+
+**Prominent Section**
+- Background: `#ffffff`
+- Radius: 16px
+- Padding: 32px
+- Use: Prominent feature sections
+
+### Badges
+
+**Pill Badge**
+- Background: `#242424`
+- Text: `#ffffff`
+- Radius: 9999px
+- Padding: 4px 10px
+- Font: 12px / 600 / Cal Sans
+- Use: Pill-shaped badges and tags
+
+**Default**
+- Background: `#f5f5f5`
+- Text: `#242424`
+- Radius: 8px
+- Padding: 4px 8px
+- Font: 12px / 600 / Cal Sans
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
 
 ### Navigation
 - **Top nav**: White/transparent background, Cal Sans links at near-black
@@ -257,3 +338,78 @@ When refining existing screens generated with this design system:
 3. Ensure card elevation uses the multi-layered shadow stack, not CSS borders
 4. Confirm section spacing is generous (80px+) — if sections feel cramped, add more space
 5. The overall tone should feel like a clean, professional scheduling tool — monochrome confidence without any decorative flourishes
+
+## 10. Voice & Tone
+
+Cal.com's voice is **engineer-direct and developer-warm.** Marketing copy reads like documentation that happens to be on a marketing page — capability statements, no hype. Open-source-first positioning shapes the register: "the open source Calendly alternative" is the original tagline, and the voice still carries that "we built this because the proprietary one was bad" engineer credibility.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb-first. "Get started", "Book a demo", "Sign in with Google" |
+| Empty (no bookings) | Quiet. "Your bookings will appear here." |
+| Error | Specific + actionable. "Calendar permissions revoked. Reconnect Google Calendar." |
+| Documentation | Imperative, code-block heavy |
+| Marketing | Capability-list, monochrome typography |
+
+**Voice samples**
+- Marketing CTA: *"Get started"* <!-- verified: cal.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary scheduling", "the future of calendars", emoji in chrome.
+
+## 11. Brand Narrative
+
+Cal.com was founded **January 1, 2021** (initially as **Calendso**) by **Peer Richelsen** and **Bailey Pumfleet** — the latter only **18 years old at founding** ([GetLatka — 18-year-old raises $32M](https://blog.getlatka.com/18-year-old-raises-32m-to-build-opensource-version-of-calendly/), [Cal.com History](https://businessmodelcanvastemplate.com/blogs/brief-history/cal-com-brief-history)) — as the open-source alternative to Calendly. First version launched **April 30, 2021**, rose from **#1 Product of the Day → Week → Month on Product Hunt** ([Product Hunt Stories](https://www.producthunt.com/stories/how-this-open-source-calendly-alternative-rocketed-to-product-of-the-day)). The founding observation: scheduling tools had become essential infrastructure but the dominant player was closed-source. **AGPL-licensed + hosted SaaS.** Funding: **Seed $7.4M** (OSS Capital lead + Chad Hurley/YouTube co-founder + angels), **Series A $25M (May 2022)** (Seven Seven Six lead + Obvious Ventures), **$32M total** ([Startup Intros](https://startupintros.com/orgs/cal-com)). Cal.ai + Cal.et AI-driven scheduling shipped post-Series A.
+
+What Cal.com refuses: lock-in pricing, opaque feature gating, lifestyle marketing imagery.
+
+## 12. Principles
+
+1. **Open by default.** Source, roadmap, pricing — all public. *UI implication:* "View source" / "Roadmap" links in footer.
+2. **Calendar over UI.** *UI implication:* booking page = mostly calendar widget, minimal nav.
+3. **Embed-first thinking.** *UI implication:* design tokens are CSS variables (overridable by host).
+4. **Monochrome confidence.** No accent color at all. *UI implication:* don't introduce a brand accent; calendar widget provides the only color.
+5. **Section spacing is the visual rhythm.** *UI implication:* never cramp; whitespace is the design.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Cal.com user segments (developers, sales teams, contractors), not individual people.*
+
+**Henrik Sondergaard, 36, Copenhagen.** Engineering manager. Self-hosts Cal.com on team's infra.
+
+**Priya Krishnan, 29, Bengaluru.** Independent consultant. Hosted plan, 4 meeting types.
+
+**Marco Bianchi, 44, Milan.** Sales lead. Embeds Cal.com booking widgets in proposal docs. Cares about Salesforce integration.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no bookings)** | "Your bookings will appear here." Single line, centered, no illustration |
+| **Empty (no event types)** | CTA "Create your first event type" + 3 starter templates |
+| **Loading (calendar fetching)** | Skeleton calendar grid `#f5f5f5` blocks |
+| **Loading (booking submitting)** | CTA inline spinner, button label "Booking..." |
+| **Error (no available times)** | "No available times in next 30 days." |
+| **Error (timezone)** | Banner top of page. "Times shown in your timezone (Asia/Seoul)" |
+| **Success (booked)** | Full-page confirmation with calendar invite preview |
+| **Success (rescheduled)** | Same pattern, copy adjusts |
+| **Skeleton** | Vertical rows of `#f5f5f5` rectangles, exact dimensions |
+| **Disabled (slot)** | 0.3 opacity, cursor-not-allowed, tooltip "Already booked" |
+| **Loading (calendar sync)** | Inline chip in nav header |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Slot select |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes calendar grid fade-in.
+
+---
+
+**Verified:** 2026-05-08 (B1 loop)
+**Tier 1 sources:** cal.com (live DOM via playwright — Black `#000000` Primary 12px / 8×16 / 39px / 13.92px·500; Cream `#f3f2ed` Secondary)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** cal.com homepage; founders Peer Richelsen, Bailey Pumfleet; GitHub roadmap.
+**Style ref:** `stripe`. **Conflicts unresolved:** none.

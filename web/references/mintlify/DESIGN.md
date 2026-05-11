@@ -339,3 +339,75 @@ What distinguishes Mintlify from other documentation platforms is its atmospheri
 6. Geist Mono uppercase for technical labels, Inter for everything else
 7. Section padding is generous: 64px–96px on desktop, 48px on mobile
 8. No gray background sections — white throughout, separation through borders and whitespace
+
+## 10. Voice & Tone
+
+Mintlify's voice is **documentation-as-product and developer-warm.** "The Intelligent Knowledge Platform" (homepage 2026-05) — positions documentation infrastructure as the brand. Copy is approachable but technical, with strong open-source-aware register.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get started", "Sign up free", "Talk to sales" |
+| Marketing | Customer-driven. Mintlify-built docs as social proof |
+| Documentation | Meta — Mintlify's docs are the product showcase |
+| Error | Specific. "Build failed: invalid frontmatter at line 12" |
+
+**Voice samples**
+- Tagline: *"The Intelligent Knowledge Platform"* <!-- verified: mintlify.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary docs platform". "AI-powered" without specifics.
+
+## 11. Brand Narrative
+
+Mintlify was founded by **Han Wang (CEO)** and **Hahnbee Lee** — Cornell classmates who built the company through **Y Combinator's Winter 2022 (W22)** batch ([Y Combinator — Mintlify](https://www.ycombinator.com/companies/mintlify), [Mintlify blog — Our journey through Y Combinator](https://www.mintlify.com/blog/ycombinator)). Funding ladder: **$2.8M seed (2022)** with Bain Capital Ventures + YC → **$18M Series A (Sept 2024)** led by **Andreessen Horowitz** with Bain Capital Ventures + YC bringing total to ~$21M ([Mintlify blog — Series A](https://www.mintlify.com/blog/series-a), [TechCrunch — Mintlify next-gen docs platform](https://techcrunch.com/2024/09/05/mintlify-is-building-a-next-gen-platform-for-writing-software-docs/)) → continuing rounds bringing **total ~$67M** with **a16z, Salesforce Ventures, Bain Capital Ventures, YC, DST Global** ([Tracxn — Mintlify](https://tracxn.com/d/companies/mintlify/__4H1JwQrPEEjkuME5kKnugS51A3fazz3eCPVzsiIl9gs)). The platform serves **100M+ developers/year and powers documentation for 18,000+ companies** including **Anthropic, Cursor, PayPal, Coinbase**. The brand voice tracks the founder positioning: "documentation is product, not afterthought." Their own docs serve as the marketing site, demonstrating what customers get. Strong adoption among API-first SaaS companies.
+
+## 12. Principles
+
+1. **Documentation is product.** *UI implication:* their own docs ARE the marketing surface.
+2. **White throughout, no gray sections.** *UI implication:* separation via borders + whitespace.
+3. **Pill nav 9999px.** *UI implication:* primary nav uses fully-pill chrome.
+4. **Generous section padding (64-96px desktop).** *UI implication:* never cramp; whitespace is the design.
+5. **Mint accent reserved for CTA.** *UI implication:* don't use mint for chrome; only for primary actions.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Mintlify user segments (DevRel engineers, technical writers, API documentation owners), not individual people.*
+
+**Sarah Lin, 30, San Francisco.** DevRel engineer at Series B SaaS. Migrated docs to Mintlify; cares about MDX components + AI search.
+
+**Marcus Chen, 38, NYC.** Tech writer at fintech. Owns the public API docs portal. Mintlify integrations with OpenAPI specs.
+
+**Priya Krishnan, 27, Bengaluru.** Indie SaaS founder. Free-tier Mintlify for early-stage product docs.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no docs)** | "Connect your repo" CTA + template gallery |
+| **Empty (search)** | "No results. Try different keywords." |
+| **Loading (build)** | Inline build progress + log link |
+| **Loading (AI search)** | Two-phase: retrieving → answering |
+| **Error (build)** | Specific MDX/frontmatter error + line number |
+| **Error (deploy)** | Domain verification status |
+| **Success (deploy)** | Live URL copy + analytics preview |
+| **Success (search match)** | Highlighted snippet + page link |
+| **Skeleton (page list)** | White rows with subtle border |
+| **Disabled (insufficient plan)** | Upgrade link |
+| **Loading (large build)** | Persistent progress with file count |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, panel |
+
+Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 37 — Apple-tier)
+**Tier 1 sources:** mintlify.com home + /pricing (live DOM via playwright — Primary `lab(100 0 0)` White 9999px / 34-40px / 4.5-7×12-24 / 15-16px·500 + Mintlify Near-Black `lab(2.42579 -0.165291 -0.470081)` (`#0a0d10` w/ blue cast) inverse for featured tier; Translucent ghost `lab(100 0 0 / 0.05)`; 60px announcement banner sub-pill. **`lab()` color-space canonical** — joins Cursor + Lovable in modern AI-tooling DS pattern).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** Y Combinator (Mintlify W22), LinkedIn (Han Wang, Hahnbee Lee Cornell), Mintlify blog (YC + Series A), TechCrunch (2024-09 a16z $18M), Tracxn ($67M total), AIbase.
+**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Mintlify Near-Black inverse + pricing-hero 40px/7×24 + lab() token convention + 60px banner sub-pill missed by prior pass.

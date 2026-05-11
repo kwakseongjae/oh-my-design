@@ -77,32 +77,73 @@ What makes Runway distinctive is its complete commitment to visual content as de
 ## 4. Component Stylings
 
 ### Buttons
-- Text: weight 600 at 14px abcNormal
-- Background: likely transparent or dark, with minimal border
-- Radius: small (4px) for button-like links
-- The button design is extremely restrained — no heavy fills or borders detected
-- Interactive elements blend into the editorial flow
 
-### Cards & Containers
-- Background: transparent or Dark Surface (`#1a1a1a`)
-- Border: `1px solid #27272a` (dark mode) — barely visible containment
-- Radius: small (4–8px) for functional elements; 16px for alert-style containers
-- Shadow: zero — no shadows on any element
-- Cards are primarily photographic — the image IS the card
-
-### Navigation
-- Minimal horizontal nav — transparent over hero content
-- Logo: Runway wordmark in white/black
-- Links: abcNormal at 16px, weight 400–600
+**Default**
+- Background: transparent
+- Text: `#ffffff` (or `#000000` on light surfaces)
+- Border: minimal / none
+- Radius: 4px
+- Padding: 8px 12px
+- Font: 14px / 600 / abcNormal
 - Hover: text shifts to white or higher opacity
-- Extremely subtle — designed to not compete with visual content
+- Use: Restrained button — interactive elements blend into editorial flow, no heavy fills
 
-### Image Treatment
-- Full-bleed cinematic photography and video dominate
-- AI-generated content shown at large scale as primary visual elements
-- Mixed-size image grids creating editorial magazine layouts
-- Dark overlays on hero images for text readability
-- Product screenshots with subtle rounded corners (8px)
+**Text Link**
+- Background: transparent
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 4px 8px
+- Font: 14px / 600 / abcNormal
+- Use: Inline link-style button
+
+### Inputs
+
+**Default**
+- Background: `#1a1a1a`
+- Text: `#ffffff`
+- Border: 1px solid `#27272a`
+- Radius: 4px
+- Padding: 8px 12px
+- Font: 14px / 400 / abcNormal
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — minimal dark input.
+
+### Cards
+
+**Photographic Card**
+- Background: transparent (image fills frame)
+- Radius: 8px
+- Padding: 0px (the image IS the card)
+- Border: none
+- Shadow: none
+- Use: Mixed-size image grid card — Research Article Cards / Trust Bar
+
+**Dark Surface Card**
+- Background: `#1a1a1a`
+- Text: `#ffffff`
+- Border: 1px solid `#27272a` (barely visible)
+- Radius: 8px
+- Padding: 16px
+- Shadow: none
+- Use: Functional dark card
+
+**Alert / Containment**
+- Background: `#1a1a1a`
+- Border: 1px solid `#27272a`
+- Radius: 16px
+- Padding: 24px
+- Shadow: none
+- Use: Alert-style containers (larger radius)
+
+### Badges
+
+**Default**
+- Background: transparent
+- Text: `#ffffff`
+- Border: 1px solid `#27272a`
+- Radius: 4px
+- Padding: 2px 8px
+- Font: 11px / 600 / abcNormal
+- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — uppercase label-style.
 
 ### Distinctive Components
 
@@ -125,6 +166,20 @@ What makes Runway distinctive is its complete commitment to visual content as de
 - "We are building AI to simulate the world through imagination, art and aesthetics"
 - On a dark background with white text
 - The emotional close — artistic and philosophical
+
+### Navigation
+- Minimal horizontal nav — transparent over hero content
+- Logo: Runway wordmark in white/black
+- Links: abcNormal at 16px, weight 400-600
+- Hover: text shifts to white or higher opacity
+- Extremely subtle — designed to not compete with visual content
+
+### Image Treatment
+- Full-bleed cinematic photography and video dominate
+- AI-generated content shown at large scale as primary visual elements
+- Mixed-size image grids creating editorial magazine layouts
+- Dark overlays on hero images for text readability
+- Product screenshots with subtle rounded corners (8px)
 
 ## 5. Layout Principles
 
@@ -242,3 +297,76 @@ What makes Runway distinctive is its complete commitment to visual content as de
 4. Use the cool slate grays (#767d88, #7d848e) for secondary text — not warm grays
 5. Uppercase labels need letter-spacing (0.35px) — never tight uppercase
 6. Dark sections should be truly dark (#000000 or #1a1a1a) — no medium grays as surfaces
+
+## 10. Voice & Tone
+
+Runway's voice is **filmmaker-grade and AI-research-confident.** "Building AI to Simulate the World" — ambitious mission framing. Marketing copy positions Runway as the AI-native creative tool for video professionals + filmmakers, distinct from indie consumer tools.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb. "Get Started", "Try Runway", "Enterprise Sales" |
+| Marketing | Cinematic. Generated video samples dominate |
+| Documentation | Visual-first, frame-by-frame |
+| Error | Specific. "Generation failed: insufficient credits. Top up." |
+
+**Voice samples**
+- Tagline: *"Building AI to Simulate the World"* <!-- verified: runwayml.com homepage 2026-05 -->
+
+**Forbidden phrases.** "Revolutionary AI video". Generic Sora-comparison framing.
+
+## 11. Brand Narrative
+
+Runway was founded **2018** by **Cristóbal Valenzuela (CEO, Chilean)**, **Alejandro Matamala (Chilean)**, and **Anastasis Germanidis (Greek)** — the three met at **NYU Tisch School of the Arts ITP** ([Runway — Wikipedia](https://en.wikipedia.org/wiki/Runway_(company)), [Acquired Podcast — Cristobal Valenzuela complete history](https://www.acquired.fm/episodes/generative-ai-in-video-and-the-future-of-storytelling-with-runway-ceo-cristobal-valenzuela)). Initially a research tool for ML-creative experimentation → grew into AI video generation platform (**Gen-1, Gen-2, Gen-3, Gen-4**). Co-developed **Stable Diffusion** with the original research team. **Real production credits**: tools used in **Everything Everywhere All at Once** (Best Picture Oscar 2023) + **The Late Show with Stephen Colbert**. **June 2023**: $141M Series C extension at **$1.5B valuation** with **Google, NVIDIA, Salesforce**. **Current**: **~$860M total raised** with **General Atlantic, Amplify Partners, Google** — **valuation ~$5.3B** ([Sacra — Runway revenue/funding](https://sacra.com/c/runway/), [Contrary Research — Runway](https://research.contrary.com/company/runway)). Strong adoption in filmmaking + advertising. The brand voice — uppercase tracking, dark cinematic surfaces — reflects the filmmaker positioning.
+
+## 12. Principles
+
+1. **Filmmaker-grade, not consumer toy.** *UI implication:* tone is professional video production.
+2. **Truly dark surfaces.** `#000` or `#1a1a1a`, never medium gray. *UI implication:* preserve cinematic depth.
+3. **Uppercase with letter-spacing 0.35px.** *UI implication:* never tight uppercase.
+4. **Generated video samples lead.** *UI implication:* hero modules autoplay generated video, not static.
+5. **6px standard radius.** *UI implication:* keep consistent across CTAs and cards.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Runway user segments (filmmakers, advertising creatives, content studios), not individual people.*
+
+**Sofia Russo, 35, Milan.** Indie filmmaker. Runway Gen-4 for previs + b-roll generation.
+
+**Marcus Chen, 42, San Francisco.** Creative director at advertising agency. Runway for client pitches + concept exploration.
+
+**Yuki Tanaka, 31, Tokyo.** Music video director. Runway for stylistic transfer experiments.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no projects)** | "Start a new project" CTA + template gallery |
+| **Empty (no generations)** | "Try a generation" with prompt examples |
+| **Loading (generation)** | Real-time progress with frame previews |
+| **Loading (model)** | Initialization status |
+| **Error (generation)** | Specific. "Failed at frame 23. Retry from this point?" |
+| **Error (insufficient credits)** | Top up link + plan comparison |
+| **Success (generated)** | Inline player + download/share/timeline |
+| **Success (exported)** | Download triggered + shareable link |
+| **Skeleton (projects)** | Dark cinematic placeholders |
+| **Disabled (no plan)** | Upgrade link |
+| **Loading (long generation)** | Persistent progress with cancel option |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Selection |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 300ms | Modal, panel |
+| `motion-cinematic` | 600ms | Hero video reveals |
+
+Cinematic easing for hero reveals, standard for chrome. `prefers-reduced-motion: reduce` disables hero auto-play.
+
+---
+
+**Verified:** 2026-05-08 (omd:migrate run 52 — Apple-tier)
+**Tier 1 sources:** runwayml.com home + /research (live DOM via playwright — Primary `#262626` Charcoal 6px / 32px / 6×10 / 14px·**600**; Outline `#eef1f5` Cool Cream + `#1a1a1a` Near-Black text 6px; compact 4px / 28px sub-tier; **top nav 11px·450 ALL CAPS** with `#0c0c0c` Deep Black; **three-shade near-black palette** `#0c0c0c` / `#1a1a1a` / `#262626`).
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 2 (Philosophy/founders/funding):** Wikipedia (Runway), Acquired Podcast (Valenzuela complete history), LinkedIn (Cristóbal Valenzuela), Sacra ($5.3B valuation), Contrary Research, Tracxn, Skim AI, Upstarts Media.
+**Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier addition:** ALL CAPS 11px·**450** nav signature + 3-shade near-black palette + 4px compact sub-tier missed; Outline cream is `#eef1f5` (Cool Cream w/ blue cast) not `#f7f7f7`.

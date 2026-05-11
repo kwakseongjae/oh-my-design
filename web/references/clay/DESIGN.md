@@ -302,3 +302,78 @@ What makes Clay truly distinctive is its hover micro-animations: buttons on hove
 5. Hover animations are the signature — rotation + hard shadow, not subtle fades
 6. Generous radius: 24px cards, 40px sections — nothing looks sharp or corporate
 7. Three weights: 600 (headings), 500 (UI), 400 (body) — strict roles
+
+## 10. Voice & Tone
+
+Clay's voice is **playfully irreverent + sales-team-fluent.** Marketing mixes GTM jargon ("outbound-sourced pipeline", "CRM enrichment") with disarming humor and motion (cards rotate on hover). The combination: "we know GTM is dry, we made the tool fun."
+
+| Context | Tone |
+|---|---|
+| CTA | Direct verb. "Get started", "Book a demo", "Start building for free" |
+| Marketing | Customer-quote-driven. "How Clay uses Clay" |
+| Error | Specific. "LinkedIn rate limit hit. Resume in 4 hours or upgrade plan." |
+| Documentation | Recipe-style, copy-paste examples |
+
+**Voice samples**
+- *"Start building for free"* <!-- verified: clay.com homepage 2026-05 -->
+- *"How Clay uses Clay"* <!-- verified: clay.com case studies -->
+
+**Forbidden phrases.** "AI-powered" without explanation. "10× your outbound" superlative. Aggressive sales pressure.
+
+## 11. Brand Narrative
+
+Clay was founded in **2017** by **Kareem Amin** (CEO) in New York ([Sequoia — Partnering with Clay](https://sequoiacap.com/article/partnering-with-clay-on-a-mission-to-grow/), [Kareem Amin LinkedIn](https://www.linkedin.com/in/kareemamin)). **Varun Anand** joined as **co-founder + Head of Operations in 2021** ([Inside Clay's unconventional path to $1.25B — First Round Review podcast](https://review.firstround.com/podcast/inside-clays-unconventional-path-to-1-25b/)). Pivot from no-code-platform to **GTM-data-platform** around 2021 when sales/RevOps teams emerged as the actual customers — "Spreadsheet for outbound" → GTM-specific Airtable. Now: **10,000+ customers**, **150+ integrated data sources**. Funding: **Series B expansion $40M at $1.25B valuation**, then **Series C $100M led by CapitalG** (Alphabet's independent growth fund) on 2025-08-05 ([BusinessWire](https://www.businesswire.com/news/home/20250805719448/en/AI-GTM-Leader-Clay-Raises-$100M-Series-C-to-Fuel-GTM-Engineering-Roles-Industrywide)). Clay coined the **"GTM Engineering"** role category — published for it as a signature marketing position.
+
+## 12. Principles
+
+1. **Cells are the unit.** *UI implication:* table-first canvas, no tabs above data plane.
+2. **Recipe-style, not magic.** Workflows show every step + provider. *UI implication:* every step editable, never opaque.
+3. **Hover is the play.** Cards rotate, shadows pop. *UI implication:* generous hover transitions on cards (rotate ~3deg + hard shadow `4px 4px 0 #000`).
+4. **Customer voice over marketing voice.** *UI implication:* case studies first-class nav.
+5. **Three weights, strict roles.** *UI implication:* never introduce 700 or 300.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Clay user segments (RevOps, BDR managers, founders), not individual people.*
+
+**Yusuf Khan, 32, NYC.** RevOps lead at B2B SaaS. 15 nightly enrichment workflows.
+
+**Sarah Yoon, 27, San Francisco.** Founding BDR at Series A startup. Clay for list building + AI personalization.
+
+**Olivia Bennett, 45, London.** Agency founder running outbound for 12 clients. Workflow templates across clients.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no workflows)** | Centered illustration + "Create your first workflow" CTA |
+| **Empty (no data in table)** | Inline "+ Add a column" / "+ Add a row" with playful arrows |
+| **Loading (enrichment)** | Per-cell spinner with elapsed time, cancellable |
+| **Loading (workflow run)** | Top-bar progress with step count |
+| **Error (provider failed)** | Cell shows red `#ef4444` border + tooltip with provider name |
+| **Error (rate limit)** | Banner with countdown to next-allowed time + upgrade CTA |
+| **Success (enrichment)** | Subtle green border pulse on cells, no toast |
+| **Success (workflow ran)** | Notification chip top-right, dismissible |
+| **Skeleton (table loading)** | Rotating skeleton cards (signature motion) |
+| **Disabled (preview-only)** | 0.6 opacity + lock icon overlay |
+| **Loading (AI generation)** | Per-row "AI is writing..." with cancel link |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Cell commit |
+| `motion-fast` | 200ms | Hover (slower for rotation effect) |
+| `motion-rotate` | 300ms | Card rotation on hover |
+| `motion-shadow-snap` | 100ms | Hard shadow pop-in |
+| `motion-standard` | 300ms | Modal, panel |
+
+Easings: `ease-rotate cubic-bezier(0.4, 0, 0.2, 1)`, slight overshoot. **Hover rotation is the signature** — never disable except under `prefers-reduced-motion: reduce`.
+
+---
+
+**Verified:** 2026-05-08 (B1 loop)
+**Tier 1 sources:** clay.com (live DOM via playwright — Black `#000000` Primary 12px / 8×16 / 42px / 16px·500; content cards 16px radius)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** clay.com homepage; founder LinkedIn / podcast appearances.
+**Style ref:** `stripe`. **Conflicts unresolved:** none.

@@ -264,3 +264,78 @@ Color is used with extreme restraint — the interface is almost entirely black-
 4. Interactive elements use Interaction Blue (#1863dc) on hover only
 5. Keep surfaces white with cool gray borders — no warm tones
 6. Purple is for full-width sections, never card backgrounds
+
+## 10. Voice & Tone
+
+Cohere's voice is **enterprise-AI-careful** — formal but readable, security-aware, never breathless. Public messaging emphasizes "private, secure, customized" enterprise positioning over consumer-AI hype. Korean tagline ("개인, 보안, 맞춤형") tracks the same triple.
+
+| Context | Tone |
+|---|---|
+| CTA | Verb-noun. "Request demo", "Talk to sales", "Start free" |
+| Marketing | Enterprise-language. "Private, secure, customized" recurring triplet |
+| Onboarding | Documentation-first; quickstart with API keys |
+| Error | Formal. "Request denied: insufficient quota. Contact sales." |
+| Compliance | Heavy SOC 2 / ISO references; trust pages prominent |
+
+**Voice samples**
+- *"엔터프라이즈 AI: 개인, 보안, 맞춤형"* <!-- verified: cohere.com/ko 2026-05 -->
+- *"데모 요청"* / *"Request a demo"* <!-- verified: cohere.com -->
+
+**Forbidden phrases.** "AGI", "superintelligence". Generic "AI revolution" framing. Casual emoji.
+
+## 11. Brand Narrative
+
+Cohere was founded in **2019** in **Toronto, Canada** by **Aidan Gomez** (CEO), **Nick Frosst**, and **Ivan Zhang** ([Aidan Gomez — Wikipedia](https://en.wikipedia.org/wiki/Aidan_Gomez), [Cohere About](https://cohere.com/about)). **Aidan Gomez was 20 years old when he co-authored "Attention Is All You Need"** in 2017 as a Google Brain intern — the foundational Transformer architecture paper that every modern LLM descends from. Nick Frosst worked at **Google Brain Toronto** with **Geoffrey Hinton** (the "Godfather of AI", who later joined Cohere as advisor) ([Globe and Mail](https://www.theglobeandmail.com/business/article-toronto-ai-star-cohere-lands-tiger-led-125-million-venture-funding/)). The **first cheque came from Radical Ventures** (Toronto AI VC) ([U Toronto Centre for Entrepreneurship](https://www.entrepreneurship.artsci.utoronto.ca/news/how-cohere-ai-startup-co-founded-alumni-landed-170m-funding-year)). Cohere has raised **~US$1.6B at >$7B valuation** as of Sept 2025 ([Tracxn](https://tracxn.com/d/companies/cohere/__o4xfwmr3XwgsGEyH41XvwBm6Xd-SjsMlSld3d4ci6G0)) — Tiger Global led an earlier $125M round. Founding observation: enterprises needed customizable LLMs that respected data privacy. RAG-first, private deployment, on-prem available. **North** is Cohere's enterprise AI agent product.
+
+## 12. Principles
+
+1. **Privacy is the product, not a footnote.** *UI implication:* privacy guarantees first-class on landing pages.
+2. **RAG-first architecture.** *UI implication:* surfaces emphasize "your data + our models".
+3. **Enterprise doesn't mean stuffy.** *UI implication:* trust pages explain SOC 2 in plain English.
+4. **Interaction Blue on hover only.** *UI implication:* don't use brand blue for static CTAs.
+5. **Purple bands for sections, never cards.** *UI implication:* never apply purple to cards/buttons.
+
+## 13. Personas
+
+*Personas are fictional archetypes informed by Cohere user segments (enterprise platform engineers, AI/ML platform leads, regulated-industry compliance), not individual people.*
+
+**Catherine Liu, 42, Toronto.** Director of AI/ML at a Canadian bank. Cohere is the only LLM vendor approved by their CISO.
+
+**Hiroshi Tanaka, 36, Tokyo.** Senior platform engineer at multinational logistics. Integrates Cohere Embed for 30+ language search.
+
+**David Mensah, 50, Johannesburg.** Head of risk at insurance carrier. On-prem deployment required.
+
+## 14. States
+
+| State | Treatment |
+|---|---|
+| **Empty (no API keys)** | "Generate your first API key" CTA + quickstart code |
+| **Empty (no datasets)** | "Connect a data source" with provider grid |
+| **Loading (model inference)** | Per-token streaming visible; never just spinner |
+| **Loading (RAG retrieval)** | Two-phase: "Retrieving (12 docs)" → "Generating" |
+| **Error (rate limit)** | "Tier-1 limit reached (60 req/min). Upgrade or wait." |
+| **Error (auth)** | "API key expired. Generate a new key in Settings → API Keys." |
+| **Success (deployment)** | Endpoint URL + credentials, security reminder |
+| **Success (fine-tuned)** | Email + dashboard notification with eval metrics |
+| **Skeleton (deployments)** | White rows with cool-gray border skeletons |
+| **Disabled (no quota)** | 0.5 opacity + tooltip "Upgrade to enable" |
+| **Loading (long fine-tune)** | Persistent progress with ETA |
+
+## 15. Motion & Easing
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle |
+| `motion-fast` | 150ms | Hover (Interaction Blue color shift) |
+| `motion-standard` | 250ms | Modal, panel |
+| `motion-streaming` | continuous | Token-by-token model output |
+
+Standard cubic-bezier. **No bouncy springs** — enterprise register. `prefers-reduced-motion: reduce` removes hover transitions and panel slide-ins.
+
+---
+
+**Verified:** 2026-05-08 (B1 loop)
+**Tier 1 sources:** cohere.com/ko (live DOM via playwright — Dark `#17171c` Primary 9999px / 12×16-24 / 44-49px / 16px·400)
+**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Tier 1 (Philosophy):** cohere.com homepage; founder bios; Trust + Security pages.
+**Style ref:** `stripe`. **Conflicts unresolved:** none.
