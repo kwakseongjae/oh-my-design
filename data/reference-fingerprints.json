@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-04-27T10:09:52.199Z",
+  "generated_at": "2026-05-11T08:39:03Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 67,
+  "count": 78,
   "items": [
     {
       "id": "airbnb",
@@ -286,6 +286,37 @@
       "category_raw": "developer-tools"
     },
     {
+      "id": "coupang",
+      "primary_color_hex": "#E94B22",
+      "category": "E-commerce",
+      "visual_theme": "Hyper-efficient Korean discount warehouse: clean white canvas, near-black text, and the warm rocket-exhaust Coupang Red carrying CTAs, price emphasis, and the 로켓배송 badge. Information-dense product grids fit 4-5 cards per row with sharp 0-4px corners and tabular price stacks.",
+      "voice_fingerprint": {
+        "register": "minimal-utility",
+        "sentence_length": "short",
+        "metaphor_density": "none",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "direct",
+        "transactional",
+        "deal-driven",
+        "results-first",
+        "utility",
+        "dense"
+      ],
+      "antipatterns": [
+        "불편을 드려 죄송합니다",
+        "데이터가 없습니다",
+        "오류가 발생했습니다",
+        "놀라운",
+        "혁신적인",
+        "amazing deals"
+      ],
+      "signature_motion": "Add-to-cart fly performs a brief 8% scaled translate of the thumbnail toward the cart icon with a +1 badge increment — confirms without blocking.",
+      "has_personas": true,
+      "category_raw": "e-commerce mass market"
+    },
+    {
       "id": "cursor",
       "primary_color_hex": "#26251e",
       "category": "Developer Tools",
@@ -549,6 +580,37 @@
       "category_raw": "messaging / consumer super-app"
     },
     {
+      "id": "kakaobank",
+      "primary_color_hex": "#FFE300",
+      "category": "Fintech",
+      "visual_theme": "Banking-formal restraint with character flavoring: near-monochrome white canvas with KakaoBank Yellow reserved for the symbol, app icon, debit card faces, and primary CTAs. The corporate site is almost black on white; yellow earns its space only where trust is already established.",
+      "voice_fingerprint": {
+        "register": "minimal-utility",
+        "sentence_length": "short",
+        "metaphor_density": "none",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "friendly",
+        "plain-spoken",
+        "warm",
+        "formal-when-needed",
+        "personal",
+        "trustworthy"
+      ],
+      "antipatterns": [
+        "불편을 드려 죄송합니다",
+        "데이터가 없습니다",
+        "오류가 발생했습니다",
+        "혁신적인",
+        "업계 최초",
+        "사기 주의!"
+      ],
+      "signature_motion": "Transfer-success check icon scales 0.6 → 1.0 with a controlled spring — the brand's '끝났어요' signature, the one licensed overshoot.",
+      "has_personas": true,
+      "category_raw": "internet-only bank"
+    },
+    {
       "id": "karrot",
       "primary_color_hex": "#ff6600",
       "category": "Consumer",
@@ -588,6 +650,68 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "fintech / crypto exchange"
+    },
+    {
+      "id": "krds",
+      "primary_color_hex": "#256EF4",
+      "category": "Government",
+      "visual_theme": "Public service utility, not marketing brand: pure white canvas with near-black body text and Government Blue functioning as the singular action color — never decoration. Thin gray borders and 8px corners carry separation; visual weight is consistently subdued and accessibility (KWCAG 2.1 AA) is enforced at the token layer.",
+      "voice_fingerprint": {
+        "register": "civic-formal",
+        "sentence_length": "short",
+        "metaphor_density": "none",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "polite",
+        "predictable",
+        "accessible",
+        "clear",
+        "neutral",
+        "civic"
+      ],
+      "antipatterns": [
+        "혁신적인",
+        "차세대",
+        "최고의",
+        "데이터가 없습니다",
+        "오류가 발생했습니다",
+        "고객님께서는 ~해 주시기 바랍니다"
+      ],
+      "signature_motion": "Menu/dropdown opens with a 400ms ease-in-out opacity + translateY(-4px → 0) — no spring, no overshoot, all transitions resolve under 400ms.",
+      "has_personas": true,
+      "category_raw": "government / public service design system"
+    },
+    {
+      "id": "kurly",
+      "primary_color_hex": "#5F0080",
+      "category": "E-commerce",
+      "visual_theme": "Curator's grocer: a quiet white-and-cream gallery wall where the only saturated thing is one deep editorial Kurly Purple. Photography-forward product grids on cream/white with restrained chrome and a single premium aubergine repeated just often enough that the eye learns to associate it with 'Kurly promised this.'",
+      "voice_fingerprint": {
+        "register": "editorial-warm",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "calm",
+        "curated",
+        "operational",
+        "warm",
+        "restrained",
+        "editorial"
+      ],
+      "antipatterns": [
+        "대박",
+        "미친 가격",
+        "초특가",
+        "쇼킹",
+        "Mind-blowing deals",
+        "혁신적인"
+      ],
+      "signature_motion": "Product card hover-lift raises shadow without any scale change — restraint over carnival, photography stays the same size.",
+      "has_personas": true,
+      "category_raw": "premium grocery / dawn delivery"
     },
     {
       "id": "lamborghini",
@@ -817,6 +941,64 @@
       "category_raw": "developer database"
     },
     {
+      "id": "musinsa",
+      "primary_color_hex": "#000000",
+      "category": "E-commerce",
+      "visual_theme": "Editorial street-fashion magazine cut to grid: monochrome black-and-white discipline on pure white with a single saturated sale red used scarcely, hairline #eeeeee borders, and dense 13-14px Pretendard type with tight negative tracking. Photographs are the only thing on screen permitted to carry color.",
+      "voice_fingerprint": {
+        "register": "editorial-warm",
+        "sentence_length": "short",
+        "metaphor_density": "none",
+        "vocabulary_register": "mixed"
+      },
+      "tone_keywords": [
+        "editorial",
+        "compact",
+        "declarative",
+        "monochrome",
+        "magazine"
+      ],
+      "antipatterns": [
+        "놀라운 할인",
+        "최저가 보장!!!",
+        "대박 세일",
+        "amazing deals",
+        "must-have"
+      ],
+      "signature_motion": "Product card tap dims image to 92% opacity on press without scaling — preserving the magazine print metaphor.",
+      "has_personas": true,
+      "category_raw": "fashion e-commerce"
+    },
+    {
+      "id": "naver",
+      "primary_color_hex": "#03C75A",
+      "category": "Consumer",
+      "visual_theme": "Korean newsstand at 7am: dense, utilitarian, search-first portal on pure white with achromatic gray text and a single decisive Naver Green accent — the iconic 녹색창 search-bar frame. Information-dense over the fold with native Korean fonts and the green reserved as brand mark, search frame, and primary CTA.",
+      "voice_fingerprint": {
+        "register": "minimal-utility",
+        "sentence_length": "short",
+        "metaphor_density": "none",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "pragmatic",
+        "neutral",
+        "factual",
+        "clinical",
+        "utility"
+      ],
+      "antipatterns": [
+        "오류가 발생했습니다",
+        "잠시만 기다려 주세요",
+        "죄송합니다만",
+        "혁신적인",
+        "최고의"
+      ],
+      "signature_motion": "Search autocomplete reveals suggestions below the input as a flat 150ms fade — invisible motion, never noticed by the user.",
+      "has_personas": true,
+      "category_raw": "portal / search"
+    },
+    {
       "id": "notion",
       "primary_color_hex": "#0075de",
       "category": "Productivity",
@@ -864,6 +1046,37 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "enterprise hardware"
+    },
+    {
+      "id": "ohouse",
+      "primary_color_hex": "#35C5F0",
+      "category": "Consumer",
+      "visual_theme": "Photo-album-meets-shopping-cart: warm-neutral canvas (white, off-white, soft fill) with a single clean Ohouse Blue accent — the open-window blue of a sunlit room. Two co-equal card archetypes (UGC photo card and product card) anchor every surface so real Korean homes carry the brand and chrome recedes.",
+      "voice_fingerprint": {
+        "register": "editorial-warm",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "warm",
+        "observational",
+        "sensory",
+        "spatial",
+        "aspirational",
+        "calm"
+      ],
+      "antipatterns": [
+        "불편을 드려 죄송합니다",
+        "데이터가 없습니다",
+        "혁신적인",
+        "프리미엄",
+        "revolutionary",
+        "premium lifestyle solution"
+      ],
+      "signature_motion": "Bookmark save flashes #E8F7FD behind the icon while it fills to Ohouse Blue solid — a quiet confirmation, not a celebration.",
+      "has_personas": true,
+      "category_raw": "interior content-to-commerce"
     },
     {
       "id": "ollama",
@@ -971,6 +1184,37 @@
       "category_raw": "technical"
     },
     {
+      "id": "qanda",
+      "primary_color_hex": "#FF5500",
+      "category": "Consumer",
+      "visual_theme": "Clean study desk lit by a single warm lamp: near-white canvas with charcoal text and a saturated QANDA Orange used as the energy mark — the highlighter pen on a math worksheet. Mobile-first edutech minimalism with the camera/image-upload affordance centered on every question surface.",
+      "voice_fingerprint": {
+        "register": "editorial-warm",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "mixed"
+      },
+      "tone_keywords": [
+        "warm",
+        "encouraging",
+        "low-pressure",
+        "calm",
+        "reassuring",
+        "tutor-like"
+      ],
+      "antipatterns": [
+        "오류가 발생했습니다",
+        "데이터가 없습니다",
+        "혁신적인",
+        "세계 최초",
+        "Unlock premium features",
+        "next-generation AI"
+      ],
+      "signature_motion": "Step-by-step solution reveal fades each numbered step in with an 8px upward translate at 80ms intervals, ending with a soft green checkmark scale-spring.",
+      "has_personas": true,
+      "category_raw": "edutech / AI math solver"
+    },
+    {
       "id": "raycast",
       "primary_color_hex": "#FF6363",
       "category": "Developer Tools",
@@ -1071,6 +1315,37 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "enterprise"
+    },
+    {
+      "id": "ridi",
+      "primary_color_hex": "#3D3D3D",
+      "category": "Consumer",
+      "visual_theme": "Long-form reading room dressed as a storefront: near-pure white canvas with a deep charcoal foreground and no saturated brand color — the iconic BookCard with multi-layer soft shadows is the brand. Two-typeface system (Pretendard Std for chrome, proprietary RIDIBatang for reading) and editorial near-monochrome restraint.",
+      "voice_fingerprint": {
+        "register": "editorial-warm",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "calm",
+        "literate",
+        "editorial",
+        "low-pressure",
+        "bookish",
+        "respectful"
+      ],
+      "antipatterns": [
+        "데이터가 없습니다",
+        "오류가 발생했습니다",
+        "놀라운",
+        "최고의",
+        "amazing",
+        "Oops! Something went wrong"
+      ],
+      "signature_motion": "BookCard hover-lift translates y:-2px and escalates a two-layer shadow from soft to standard — covers float on paper, not glass.",
+      "has_personas": true,
+      "category_raw": "e-book / web novel"
     },
     {
       "id": "runwayml",
@@ -1469,6 +1744,65 @@
       "signature_motion": "Hover dims links to 0.5 opacity instead of brightening.",
       "has_personas": false,
       "category_raw": "ai-platform"
+    },
+    {
+      "id": "yanolja",
+      "primary_color_hex": "#F54B1E",
+      "category": "Travel",
+      "visual_theme": "Korean weekend getaway: clean white canvas with warm near-black headings and the unmistakable Yanolja Orange — a coral-red-orange sunset hue calibrated to feel like a vacation poster. Image-dominant lodging cards with prominent discount percentages, 8px standard radius, and a discount-first information hierarchy.",
+      "voice_fingerprint": {
+        "register": "playful-irreverent",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "friendly",
+        "casual",
+        "energetic",
+        "playful",
+        "conversational",
+        "leisure"
+      ],
+      "antipatterns": [
+        "불편을 드려 죄송합니다",
+        "오류가 발생했습니다",
+        "데이터가 없습니다",
+        "혁신적인 여행",
+        "차별화된 서비스",
+        "-습니다 in consumer copy"
+      ],
+      "signature_motion": "Discount-badge first-paint scales 0.85 → 1.0 with a soft spring so the coral percentage reads before the price.",
+      "has_personas": true,
+      "category_raw": "travel / lodging super-app"
+    },
+    {
+      "id": "yeogiotte",
+      "primary_color_hex": "#1D8BFF",
+      "category": "Travel",
+      "visual_theme": "Hospitality-grade Korean lodging booking surface: clean white canvas with a single confident Yeogiotte Blue accent and photography-as-brand listing cards. Cleaner and quieter than competing super-apps, with three-tier radii (8px buttons / 12px cards / 100px filter pills) and badge-driven promo grammar.",
+      "voice_fingerprint": {
+        "register": "minimal-utility",
+        "sentence_length": "short",
+        "metaphor_density": "none",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "plain",
+        "polite",
+        "hospitable",
+        "confident",
+        "factual"
+      ],
+      "antipatterns": [
+        "불편을 드려 죄송합니다",
+        "데이터가 없습니다",
+        "오류가 발생했습니다",
+        "stacked promo badges"
+      ],
+      "signature_motion": "Filter-chip selection fills #1D8BFF with no geometry change over motion-fast/ease-standard — fast and committed, never bouncy.",
+      "has_personas": true,
+      "category_raw": "travel / lodging booking"
     },
     {
       "id": "zapier",

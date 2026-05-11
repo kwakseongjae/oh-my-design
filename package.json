@@ -1,6 +1,6 @@
 {
   "name": "oh-my-design-cli",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Bootstrap oh-my-design skills + agents into your project. After install, talk to your AI coding agent in natural language — no other CLI commands.",
   "type": "module",
   "bin": {
@@ -17,7 +17,7 @@
     "skills/omd-sync",
     "agents",
     "data",
-    "references/**/DESIGN.md",
+    "web/references/*/DESIGN.md",
     ".claude/hooks/*.cjs",
     ".claude/settings.json",
     "AGENTS.md",

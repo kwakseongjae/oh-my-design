@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.1.0 — 78 references (+11 Korean cluster including KRDS)
+
+The reference bundle expanded from 67 → 78 and the npm tarball now actually carries them.
+
+### Added
+
+- **11 new references** (Korean cluster): `yeogiotte` (여기어때) · `musinsa` · `kurly` (마켓컬리) · `ohouse` (오늘의집) · `naver` · `yanolja` (야놀자) · `coupang` · `kakaobank` · `ridi` · `qanda` · **`krds`** (Korea Republic Design System, 행정안전부 주관 — the first government DS in the bundle).
+- Each new ref ships with a `.verification.md` alongside its `DESIGN.md` documenting Tier 1 live DOM measurements, Tier 2 cross-check status, conflict matrix, and cited philosophy sources.
+- `data/reference-fingerprints.json` regenerated → **count 67 → 78**, all 11 new entries added.
+- `data/reference-tags.md`: 11 new rows + Korean shortcut buckets (한국 이커머스 · 한국 여행 · 공공·행정·정부).
+
+### Fixed
+
+- **Tarball was missing references entirely.** `package.json` `files[]` pointed at `references/**/DESIGN.md` which is now a local-dev symlink — npm doesn't follow symlinks in the whitelist, so 1.0.x shipped 0 reference files. Updated to `web/references/*/DESIGN.md` (the canonical path); tarball now contains all 78 `DESIGN.md` files.
+
+### Changed
+
+- `omd-init` skill references the canonical `web/references/<id>/DESIGN.md` path inside the package.
+- Apple-tier philosophy verification for all 67 pre-existing refs (Tier 1 live DOM + Tier 2 cross-check + `.verification.md` with conflict matrix). Skill behavior unchanged — this only deepens the source-of-truth.
+
 ## 1.0.2 — Onboarding banner correction
 
 The `install-skills` "Next" panel still claimed *"Hook이 자동으로 라우팅 — 디자인 의도 감지해서 하네스/스킬 호출"* and described `/omd-harness` as *"hook 우회"*. That language described the 1.0.0 forced-eval hook which was retired in 1.0.1 — auto-routing now happens via Claude's standard description matching, and the hook only gates on DESIGN.md existence. The banner is the first thing users see after install, so it's worth getting right even for a single panel.

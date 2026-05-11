@@ -56,7 +56,7 @@ omd init prepare --ref <id> --description "<원본 description>" --json
 ```
 
 이게 하는 일:
-- `references/<id>/DESIGN.md` 경로 확정 (JSON에 `reference_md` 필드로 전체 내용 포함)
+- `web/references/<id>/DESIGN.md` 경로 확정 (JSON에 `reference_md` 필드로 전체 내용 포함)
 - 기존 `DESIGN.md`가 있으면 → `DESIGN_DEPRECATED.md`로 rename (메타 헤더 자동 삽입)
 - `.omd/init-context.json` 작성 (`delta_set`, `description` 담김)
 
