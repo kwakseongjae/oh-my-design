@@ -53,7 +53,7 @@ target이 wireframe markdown이면 `## Section` heading으로 분리.
 
 ### 4. Specificity
 - 광범위 단어 ("amazing", "powerful", "innovative") 카운트 — 3개 이상이면 fail
-- 측정 가능한 claim ("under 2 seconds", "67 references", "zero AI calls")가 있는가?
+- 측정 가능한 claim ("under 2 seconds", "실제 기업 references", "zero AI calls")가 있는가?
 - 모호한 형용사를 구체 수치로 대체 가능?
 
 ### 5. Verb strength (특히 CTA)

@@ -119,10 +119,12 @@ Phase 2 끝난 직후, build subagent들의 return summary를 모아서 작성. 
 `omd:add-reference` SYNC 모드와 동일. **반드시 build 끝난 직후, promo 전에** 실행.
 
 ### 갱신 대상
-1. **References count**: 현재 `ls -d web/references/*/ | wc -l` 결과 = 이전 + 10
+1. **References count** (marketing surfaces only — skill 내부는 count-agnostic 유지):
    - `README.md`, `README.ko.md`, `README.ja.md`, `README.zh-TW.md` (예: "78 brand" → "88 brand")
-   - `web/src/components/landing-v2/{hero,sections,the-wall,tokens}.tsx` — grep으로 숫자 위치 확인
+   - `web/src/components/landing-v2/{hero,sections,the-wall,tokens}.tsx`
    - `web/public/llms.txt` — 카탈로그 lines
+   - **`skills/*/SKILL.md`, `agents/*.md`는 절대 숫자 박지 말 것** — 2026-05-13 이후 정책으로 count-agnostic 유지. "88개 레퍼런스" 같은 표현은 surface하지 않음. Claude 라우팅이 description에 의존하는데 count가 stale 되면 라우팅 의도와 어긋남. 카운트를 노출하려면 런타임에 `fingerprints.json.count`를 읽어서 표시.
+   - 검증: `grep -rn "[0-9]\{2\}개 (레퍼런스|reference|카탈로그)" skills/ agents/` 결과 0 (regression guard)
 2. **Symlink sanity**: 루트 `references` → `web/references` (이미 있으면 skip)
 3. **Fingerprints**: `data/reference-fingerprints.json`, `.claude/data/reference-fingerprints.json`, `.codex/data/reference-fingerprints.json` 새 10 entry append (셋 다 byte-identical 유지)
 4. **API 매핑 4종** (`web/src/app/api/references/route.ts`) — **이전 batch에서 누락된 함정**. 추가 안 하면 Builder Step 1에서 brand가 'Other / United States'로 분류되어 한국 필터에 안 잡힘:

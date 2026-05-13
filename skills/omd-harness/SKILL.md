@@ -128,7 +128,7 @@ test -d "${RUN_DIR}" && test -f "${RUN_DIR}/task.md" && echo "OK" || echo "FAIL"
 
 다음 파일을 Read 툴로 전체 로드:
 
-- `.claude/data/reference-fingerprints.json` — 67개 reference의 fingerprint (tone keywords, visual theme, antipatterns, signature motion, has_personas, category)
+- `.claude/data/reference-fingerprints.json` — reference fingerprint (tone keywords, visual theme, antipatterns, signature motion, has_personas, category)
 - `.claude/data/reference-tags.md` — 사람-읽기용 keyword 매트릭스
 - `.claude/data/vocabulary.json` — controlled vocab
 
@@ -160,14 +160,14 @@ DESIGN.md가 없어서 reference 한 개를 골라 부트스트랩할게요. <ta
 
 이대로 가시려면 go (또는 <top1.id>).
 다른 후보: <top2.id> (한 줄 이유) · <top3.id> (...) · <top4.id> (...) · <top5.id> (...)
-본인이 아는 다른 reference면 한 줄로 id만 (예: vercel) — 67개 카탈로그에 없으면 알려드립니다.
+본인이 아는 다른 reference면 한 줄로 id만 (예: vercel) — reference 카탈로그에 없으면 알려드립니다.
 ```
 
 ### 3.6 사용자 응답 처리
 
 - `go` 또는 reference id (top-5 안) → 그 id로 master spawn
 - 다른 reference id (top-5 밖이지만 카탈로그 안) → 동일하게 진행
-- 카탈로그에 없는 id → "해당 id는 67개 카탈로그에 없어요. top-5 중에서 골라주세요."
+- 카탈로그에 없는 id → "해당 id는 reference 카탈로그에 없어요. top-5 중에서 골라주세요."
 - `중단` → 종료
 
 ## Step 4 — Master 호출 (handoff loop)
