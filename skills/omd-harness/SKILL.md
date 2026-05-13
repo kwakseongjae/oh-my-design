@@ -170,6 +170,20 @@ DESIGN.md가 없어서 reference 한 개를 골라 부트스트랩할게요. <ta
 - 카탈로그에 없는 id → "해당 id는 reference 카탈로그에 없어요. top-5 중에서 골라주세요."
 - `중단` → 종료
 
+### 3.7 (선택) 라이브 reference capture 권유
+
+선택된 reference의 라이브 사이트에서 디자인 토큰 + 시각 reference를 가져오면 master phase 정확도가 올라간다 (특히 Components / Microcopy 단계). 사용자에게 한 줄로 묻기:
+
+```
+선택하신 <id>의 라이브 사이트(예: <homepage>)에서 디자인 토큰 + 로고 + hero screenshot을 가져올까요? assets/_reference/<id>/ 에 저장됩니다 (reference 용도, 사용자 product에 직접 ship 금지).
+yes/no/skip-this-time
+```
+
+`yes` → omd:reference-capture skill 호출 (Skill 툴) → 끝나면 Step 4로
+`no/skip` → 바로 Step 4
+
+omd:reference-capture는 자체적으로 LICENSE-NOTE.md / attribution.md를 작성하며 brand IP 가드레일을 가지고 있다. 자세한 동작은 `skills/omd-reference-capture/SKILL.md` 참조.
+
 ## Step 4 — Master 호출 (handoff loop)
 
 Subagent (master)는 AskUserQuestion 직접 호출 불가 (main-thread 전용). file-based handoff 패턴으로 돌린다.
