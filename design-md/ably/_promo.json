@@ -1,0 +1,18 @@
+{
+  "id": "ably",
+  "korean": "에이블리",
+  "logo_url": "https://play-lh.googleusercontent.com/oU8WGCp7knb6T0v0eHaG7TZQNgXq0nQ3kFq6KQ7QYxGRTQRrxJ3xJ8B5l9bQ-bI3aQ",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#FA2E5F",
+      "primary-name": "Ably Pink",
+      "background": "#FFFFFF",
+      "text-primary": "#222222",
+      "surface-fill": "#F5F5F5",
+      "free-shipping-mint": "#00C8B4",
+      "accent-rule": "pink reserved for commercial pressure (CTA, sale, urgency, notification dot)"
+    },
+    "label": "취향 중심 커머스 — 벗어나지 않는 핑크"
+  }
+}

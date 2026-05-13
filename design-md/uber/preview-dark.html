@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System Inspired by Uber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Primary */
+    --color-black: #000000;
+    --color-white: #ffffff;
+    /* Interactive */
+    --color-hover-gray: #e2e2e2;
+    --color-hover-light: #f3f3f3;
+    --color-chip-gray: #efefef;
+    /* Text */
+    --color-body-gray: #4b4b4b;
+    --color-muted-gray: #afafaf;
+    /* Shadows */
+    --shadow-card: rgba(0, 0, 0, 0.12) 0px 4px 16px 0px;
+    --shadow-medium: rgba(0, 0, 0, 0.16) 0px 4px 16px 0px;
+    --shadow-float: rgba(0, 0, 0, 0.16) 0px 2px 8px 0px;
+    --shadow-press: rgba(0, 0, 0, 0.08) 0px 0px 0px 999px inset;
+    /* Fonts */
+    --font-display: 'DM Sans', system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-body: 'DM Sans', system-ui, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* Light mode tokens */
+    --bg-page: #000000;
+    --bg-card: #111111;
+    --bg-nav: rgba(0,0,0,0.92);
+    --text-primary: #ffffff;
+    --text-secondary: #afafaf;
+    --text-tertiary: #6b6b6b;
+    --border-color: #2a2a2a;
+    --section-label-color: #afafaf;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.50;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background: var(--bg-nav);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+  }
+  .nav-brand {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-brand .logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--color-black);
+    border-radius: 8px;
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-cta {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #333333; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 120px 40px 100px;
+    overflow: hidden;
+    background: var(--bg-page);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.10;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+  .hero p {
+    color: var(--text-secondary);
+    font-size: 20px;
+    line-height: 1.50;
+    max-width: 560px;
+    margin: 0 auto 36px;
+    font-family: var(--font-body);
+    font-weight: 400;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+  .btn-primary {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 14px 28px;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #222222; }
+  .btn-secondary {
+    background: var(--color-white);
+    color: var(--color-black);
+    padding: 14px 28px;
+    border: 1px solid var(--color-black);
+    border-radius: 999px;
+    font-size: 16px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--color-hover-gray); }
+
+  /* SECTIONS */
+  .section {
+    padding: 80px 40px;
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.22;
+    margin-bottom: 48px;
+    color: var(--text-primary);
+  }
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 0 40px;
+    max-width: 1136px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* COLOR PALETTE */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .color-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+  .color-swatch {
+    height: 100px;
+    width: 100%;
+  }
+  .color-info {
+    padding: 16px;
+    background: var(--bg-card);
+  }
+  .color-name {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .color-hex {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .color-role {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+  }
+
+  /* TYPOGRAPHY */
+  .type-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .type-table th {
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-tertiary);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .type-table td {
+    padding: 20px 16px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+  }
+  .type-sample {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+  }
+  .type-meta {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* BUTTONS */
+  .button-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .button-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .button-showcase-label {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-tertiary);
+    margin-bottom: 4px;
+  }
+  .btn-chip {
+    background: var(--color-chip-gray);
+    color: var(--color-black);
+    padding: 14px 20px;
+    border: none;
+    border-radius: 999px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-chip:hover { background: var(--color-hover-gray); }
+  .btn-chip.active {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+  .btn-float {
+    background: var(--color-white);
+    color: var(--color-black);
+    padding: 14px;
+    border: none;
+    border-radius: 999px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: var(--shadow-float);
+    transition: background 0.2s;
+  }
+  .btn-float:hover { background: var(--color-hover-light); }
+
+  /* DARK BUTTON ROW */
+  .dark-button-row {
+    background: var(--color-black);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin-top: 24px;
+  }
+  .dark-button-row .button-showcase-label {
+    color: var(--color-muted-gray);
+    width: 100%;
+  }
+  .btn-white {
+    background: var(--color-white);
+    color: var(--color-black);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-white:hover { background: var(--color-hover-gray); }
+
+  /* CARDS */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+  .card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .card-image-placeholder {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-tertiary);
+  }
+  .card-image-placeholder.warm-1 {
+    background: linear-gradient(135deg, #f7c59f, #f0a66e);
+  }
+  .card-image-placeholder.warm-2 {
+    background: linear-gradient(135deg, #a8d8ea, #7ec8c8);
+  }
+  .card-image-placeholder.warm-3 {
+    background: linear-gradient(135deg, #c4b5fd, #a78bfa);
+  }
+  .card-body {
+    padding: 24px;
+  }
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.33;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+  .card-desc {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.50;
+    margin-bottom: 16px;
+  }
+  .card-cta {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  /* FORM ELEMENTS */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .form-label {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .form-input {
+    font-family: var(--font-body);
+    font-size: 16px;
+    padding: 14px 16px;
+    border: 1px solid #c0c0c0;
+    border-radius: 8px;
+    background: var(--color-white);
+    color: var(--text-primary);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-input:focus {
+    border-color: var(--color-black);
+    box-shadow: 0 0 0 1px var(--color-black);
+  }
+  .form-input::placeholder {
+    color: var(--text-tertiary);
+  }
+  .form-select {
+    font-family: var(--font-body);
+    font-size: 16px;
+    padding: 14px 16px;
+    border: 1px solid #c0c0c0;
+    border-radius: 8px;
+    background: var(--color-white);
+    color: var(--text-primary);
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23000' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    cursor: pointer;
+  }
+  .form-select:focus {
+    border-color: var(--color-black);
+    box-shadow: 0 0 0 1px var(--color-black);
+  }
+  .form-textarea {
+    font-family: var(--font-body);
+    font-size: 16px;
+    padding: 14px 16px;
+    border: 1px solid #c0c0c0;
+    border-radius: 8px;
+    background: var(--color-white);
+    color: var(--text-primary);
+    outline: none;
+    resize: vertical;
+    min-height: 100px;
+  }
+  .form-textarea:focus {
+    border-color: var(--color-black);
+    box-shadow: 0 0 0 1px var(--color-black);
+  }
+  .form-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .form-checkbox {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--color-black);
+    cursor: pointer;
+  }
+
+  /* CHIP ROW */
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  /* SPACING SCALE */
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+  .spacing-label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    width: 60px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .spacing-bar {
+    height: 24px;
+    background: var(--color-black);
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
+  .spacing-value {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    flex-shrink: 0;
+    width: 50px;
+  }
+
+  /* RADIUS SCALE */
+  .radius-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-end;
+  }
+  .radius-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .radius-box {
+    width: 80px;
+    height: 80px;
+    background: var(--color-chip-gray);
+    border: 2px solid var(--color-black);
+  }
+  .radius-label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  .radius-value {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  /* ELEVATION */
+  .elevation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+  }
+  .elevation-card {
+    height: 140px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--bg-card);
+  }
+  .elevation-card.flat {
+    border: 1px solid var(--border-color);
+  }
+  .elevation-card.subtle {
+    box-shadow: rgba(0,0,0,0.12) 0px 4px 16px 0px;
+  }
+  .elevation-card.medium {
+    box-shadow: rgba(0,0,0,0.16) 0px 4px 16px 0px;
+  }
+  .elevation-card.floating {
+    box-shadow: rgba(0,0,0,0.16) 0px 2px 8px 0px;
+    transform: translateY(-2px);
+  }
+  .elevation-card.pressed {
+    box-shadow: rgba(0,0,0,0.08) 0px 0px 0px 999px inset;
+  }
+  .elevation-name {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .elevation-desc {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-align: center;
+    padding: 0 12px;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 64px 40px 40px;
+  }
+  .footer-inner {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-brand .logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--color-white);
+    border-radius: 8px;
+    color: var(--color-black);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+  .footer-col-title {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 16px;
+  }
+  .footer-col a {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-muted-gray);
+    text-decoration: none;
+    line-height: 2.0;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--color-white); }
+  .footer-divider {
+    border: none;
+    border-top: 1px solid #333333;
+    margin-bottom: 24px;
+  }
+  .footer-bottom {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--color-muted-gray);
+  }
+
+  @media (max-width: 768px) {
+    .nav { padding: 12px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 80px 20px 60px; }
+    .hero h1 { font-size: 36px; }
+    .hero p { font-size: 16px; }
+    .section { padding: 60px 20px; }
+    .section-title { font-size: 28px; margin-bottom: 32px; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-actions { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <span class="nav-brand">awesome-design-md</span>
+  <div class="nav-links">
+    <a href="#">Colors</a>
+    <a href="#">Typography</a>
+    <a href="#">Components</a>
+    <a href="#">Tokens</a>
+  </div>
+  <button class="nav-cta">Get Started</button>
+</nav>
+<div style="position:fixed;top:16px;right:16px;z-index:200;background:#ffffff;color:#000000;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;">Dark Mode</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Design System<br>Inspired by Uber</h1>
+  <p>A bold, black-and-white design language built for clarity, efficiency, and confident minimalism. Every element serves a purpose.</p>
+  <div class="hero-actions">
+    <button class="btn-primary">Explore Tokens</button>
+    <button class="btn-secondary">View Source</button>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- COLOR PALETTE -->
+<section class="section" id="colors">
+  <div class="section-label">Color Palette</div>
+  <h2 class="section-title">Stark Duality</h2>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#000000;"></div>
+      <div class="color-info">
+        <div class="color-name">Uber Black</div>
+        <div class="color-hex">#000000</div>
+        <div class="color-role">Primary CTA, headings, nav, footer</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#ffffff; border-bottom:1px solid #efefef;"></div>
+      <div class="color-info">
+        <div class="color-name">Pure White</div>
+        <div class="color-hex">#ffffff</div>
+        <div class="color-role">Page background, card surface, inverse text</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#efefef;"></div>
+      <div class="color-info">
+        <div class="color-name">Chip Gray</div>
+        <div class="color-hex">#efefef</div>
+        <div class="color-role">Chip buttons, filter toggles, borders</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#e2e2e2;"></div>
+      <div class="color-info">
+        <div class="color-name">Hover Gray</div>
+        <div class="color-hex">#e2e2e2</div>
+        <div class="color-role">Button hover state</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#f3f3f3;"></div>
+      <div class="color-info">
+        <div class="color-name">Hover Light</div>
+        <div class="color-hex">#f3f3f3</div>
+        <div class="color-role">Subtle hover for floating buttons</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#4b4b4b;"></div>
+      <div class="color-info">
+        <div class="color-name">Body Gray</div>
+        <div class="color-hex">#4b4b4b</div>
+        <div class="color-role">Secondary text, descriptions</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#afafaf;"></div>
+      <div class="color-info">
+        <div class="color-name">Muted Gray</div>
+        <div class="color-hex">#afafaf</div>
+        <div class="color-role">Tertiary text, footer links, placeholders</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#0000ee;"></div>
+      <div class="color-info">
+        <div class="color-name">Default Link Blue</div>
+        <div class="color-hex">#0000ee</div>
+        <div class="color-role">Underlined text links in body content</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- TYPOGRAPHY -->
+<section class="section" id="typography">
+  <div class="section-label">Typography Scale</div>
+  <h2 class="section-title">UberMove Type System</h2>
+  <table class="type-table">
+    <thead>
+      <tr>
+        <th>Sample</th>
+        <th>Role</th>
+        <th>Specs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="type-sample" style="font-size:52px; font-weight:700; line-height:1.23;">Display Hero</span></td>
+        <td class="type-meta">Display / Hero</td>
+        <td class="type-meta">52px / Bold 700 / 1.23</td>
+      </tr>
+      <tr>
+        <td><span class="type-sample" style="font-size:36px; font-weight:700; line-height:1.22;">Section Heading</span></td>
+        <td class="type-meta">Section Heading</td>
+        <td class="type-meta">36px / Bold 700 / 1.22</td>
+      </tr>
+      <tr>
+        <td><span class="type-sample" style="font-size:32px; font-weight:700; line-height:1.25;">Card Title</span></td>
+        <td class="type-meta">Card Title</td>
+        <td class="type-meta">32px / Bold 700 / 1.25</td>
+      </tr>
+      <tr>
+        <td><span class="type-sample" style="font-size:24px; font-weight:700; line-height:1.33;">Sub-heading</span></td>
+        <td class="type-meta">Sub-heading</td>
+        <td class="type-meta">24px / Bold 700 / 1.33</td>
+      </tr>
+      <tr>
+        <td><span class="type-sample" style="font-size:20px; font-weight:700; line-height:1.40;">Small Heading</span></td>
+        <td class="type-meta">Small Heading</td>
+        <td class="type-meta">20px / Bold 700 / 1.40</td>
+      </tr>
+      <tr>
+        <td><span class="type-sample" style="font-size:18px; font-weight:500; line-height:1.33;">Navigation / UI Large</span></td>
+        <td class="type-meta">Nav / UI Large</td>
+        <td class="type-meta">18px / Medium 500 / 1.33</td>
+      </tr>
+      <tr>
+        <td><span class="type-sample" style="font-size:16px; font-weight:400; line-height:1.50;">Body text and button labels</span></td>
+        <td class="type-meta">Body / Button</td>
+        <td class="type-meta">16px / Regular 400 / 1.50</td>
+      </tr>
+      <tr>
+        <td><span class="type-sample" style="font-size:14px; font-weight:500; line-height:1.43;">Caption and metadata</span></td>
+        <td class="type-meta">Caption</td>
+        <td class="type-meta">14px / Medium 500 / 1.43</td>
+      </tr>
+      <tr>
+        <td><span class="type-sample" style="font-size:12px; font-weight:400; line-height:1.67;">Micro text and fine print</span></td>
+        <td class="type-meta">Micro</td>
+        <td class="type-meta">12px / Regular 400 / 1.67</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<hr class="section-divider">
+
+<!-- BUTTONS -->
+<section class="section" id="buttons">
+  <div class="section-label">Button Variants</div>
+  <h2 class="section-title">Pill-Shaped Actions</h2>
+
+  <div class="button-grid">
+    <div class="button-showcase">
+      <div class="button-showcase-label">Primary Black</div>
+      <button class="btn-primary">Get Started</button>
+    </div>
+    <div class="button-showcase">
+      <div class="button-showcase-label">Secondary Outline</div>
+      <button class="btn-secondary">Learn More</button>
+    </div>
+    <div class="button-showcase">
+      <div class="button-showcase-label">Chip / Filter</div>
+      <button class="btn-chip">Ride</button>
+    </div>
+    <div class="button-showcase">
+      <div class="button-showcase-label">Chip Active</div>
+      <button class="btn-chip active">Drive</button>
+    </div>
+    <div class="button-showcase">
+      <div class="button-showcase-label">Floating</div>
+      <button class="btn-float">Scroll Top</button>
+    </div>
+  </div>
+
+  <div class="dark-button-row">
+    <div class="button-showcase-label">On Dark Surface</div>
+    <button class="btn-white">Sign Up</button>
+    <button class="btn-white">Request a Ride</button>
+    <button class="btn-chip" style="background: rgba(255,255,255,0.12); color: #fff;">Uber Eats</button>
+  </div>
+
+  <div style="margin-top:32px;">
+    <div class="button-showcase-label" style="margin-bottom:12px;">Chip Navigation Row</div>
+    <div class="chip-row">
+      <button class="btn-chip active">Ride</button>
+      <button class="btn-chip">Drive</button>
+      <button class="btn-chip">Business</button>
+      <button class="btn-chip">Uber Eats</button>
+      <button class="btn-chip">About</button>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- CARDS -->
+<section class="section" id="cards">
+  <div class="section-label">Card Examples</div>
+  <h2 class="section-title">Content Cards</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-image-placeholder warm-1">
+        <span>Illustration</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Plan for later</div>
+        <div class="card-desc">Reserve your ride in advance so you can relax on the day of your trip.</div>
+        <button class="card-cta">Reserve now</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-image-placeholder warm-2">
+        <span>Illustration</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Drive when you want</div>
+        <div class="card-desc">Make what you need in the time you have. Set your own hours and earn on your schedule.</div>
+        <button class="card-cta">Start driving</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-image-placeholder warm-3">
+        <span>Illustration</span>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Business accounts</div>
+        <div class="card-desc">Simplify travel and meal management for your company with centralized billing.</div>
+        <button class="card-cta">Get started</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- FORM ELEMENTS -->
+<section class="section" id="forms">
+  <div class="section-label">Form Elements</div>
+  <h2 class="section-title">Input Components</h2>
+  <div class="form-grid">
+    <div class="form-group">
+      <label class="form-label">Pickup location</label>
+      <input type="text" class="form-input" placeholder="Enter pickup location" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Destination</label>
+      <input type="text" class="form-input" placeholder="Where to?" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Ride type</label>
+      <select class="form-select">
+        <option>UberX</option>
+        <option>Uber Comfort</option>
+        <option>Uber Black</option>
+        <option>Uber XL</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Special instructions</label>
+      <textarea class="form-textarea" placeholder="Add a note for your driver..."></textarea>
+    </div>
+    <div class="form-group">
+      <div class="form-checkbox-group">
+        <input type="checkbox" class="form-checkbox" id="ck1" checked />
+        <label class="form-label" for="ck1">Split fare with riders</label>
+      </div>
+      <div class="form-checkbox-group">
+        <input type="checkbox" class="form-checkbox" id="ck2" />
+        <label class="form-label" for="ck2">Request quiet ride</label>
+      </div>
+    </div>
+    <div class="form-group" style="align-self: end;">
+      <button class="btn-primary" style="width:100%; padding:14px 28px;">See prices</button>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SPACING SCALE -->
+<section class="section" id="spacing">
+  <div class="section-label">Spacing Scale</div>
+  <h2 class="section-title">8px Grid System</h2>
+  <div>
+    <div class="spacing-row">
+      <span class="spacing-label">4px</span>
+      <div class="spacing-bar" style="width:16px;"></div>
+      <span class="spacing-value">0.25rem</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">8px</span>
+      <div class="spacing-bar" style="width:32px;"></div>
+      <span class="spacing-value">0.50rem</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">12px</span>
+      <div class="spacing-bar" style="width:48px;"></div>
+      <span class="spacing-value">0.75rem</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">16px</span>
+      <div class="spacing-bar" style="width:64px;"></div>
+      <span class="spacing-value">1.00rem</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">20px</span>
+      <div class="spacing-bar" style="width:80px;"></div>
+      <span class="spacing-value">1.25rem</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">24px</span>
+      <div class="spacing-bar" style="width:96px;"></div>
+      <span class="spacing-value">1.50rem</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">32px</span>
+      <div class="spacing-bar" style="width:128px;"></div>
+      <span class="spacing-value">2.00rem</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">48px</span>
+      <div class="spacing-bar" style="width:192px;"></div>
+      <span class="spacing-value">3.00rem</span>
+    </div>
+    <div class="spacing-row">
+      <span class="spacing-label">64px</span>
+      <div class="spacing-bar" style="width:256px;"></div>
+      <span class="spacing-value">4.00rem</span>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- BORDER RADIUS -->
+<section class="section" id="radius">
+  <div class="section-label">Border Radius Scale</div>
+  <h2 class="section-title">Corner Shapes</h2>
+  <div class="radius-grid">
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:0px;"></div>
+      <span class="radius-label">None</span>
+      <span class="radius-value">0px</span>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:8px;"></div>
+      <span class="radius-label">Standard</span>
+      <span class="radius-value">8px</span>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:12px;"></div>
+      <span class="radius-label">Comfortable</span>
+      <span class="radius-value">12px</span>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:999px;"></div>
+      <span class="radius-label">Full Pill</span>
+      <span class="radius-value">999px</span>
+    </div>
+    <div class="radius-item">
+      <div class="radius-box" style="border-radius:50%;"></div>
+      <span class="radius-label">Circle</span>
+      <span class="radius-value">50%</span>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ELEVATION / DEPTH -->
+<section class="section" id="elevation">
+  <div class="section-label">Elevation / Depth</div>
+  <h2 class="section-title">Shadow Hierarchy</h2>
+  <div class="elevation-grid">
+    <div class="elevation-card flat">
+      <span class="elevation-name">Flat</span>
+      <span class="elevation-desc">No shadow, border only</span>
+    </div>
+    <div class="elevation-card subtle">
+      <span class="elevation-name">Subtle</span>
+      <span class="elevation-desc">rgba(0,0,0,0.12) 0 4px 16px</span>
+    </div>
+    <div class="elevation-card medium">
+      <span class="elevation-name">Medium</span>
+      <span class="elevation-desc">rgba(0,0,0,0.16) 0 4px 16px</span>
+    </div>
+    <div class="elevation-card floating">
+      <span class="elevation-name">Floating</span>
+      <span class="elevation-desc">rgba(0,0,0,0.16) 0 2px 8px + lift</span>
+    </div>
+    <div class="elevation-card pressed">
+      <span class="elevation-name">Pressed</span>
+      <span class="elevation-desc">rgba(0,0,0,0.08) inset</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">Maintained by <a href="https://github.com/VoltAgent/voltagent" target="_blank" rel="noopener noreferrer" style="text-decoration:none;"><img src="https://github.com/VoltAgent.png?size=32" alt="VoltAgent" width="14" height="14" style="border-radius:3px;vertical-align:-2px;margin-right:3px;">VoltAgent</a> team</footer>
+
+</body>
+</html>

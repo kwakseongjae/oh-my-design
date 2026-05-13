@@ -1,0 +1,23 @@
+{
+  "id": "zigzag",
+  "korean": "지그재그",
+  "logo_url": "https://cf.res.s.zigzag.kr/common/logo/zigzag_text_logo.png",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "brand_pink": "#fa6ee3",
+      "brand_pink_token": "--zds-color-semantic-brand-zigzag",
+      "pink_400_token": "#f55dd6",
+      "font": "Pretendard",
+      "tagline": "나만의 스타일을 발견할 수 있는 플레이그라운드"
+    },
+    "label": "지그재그 핑크"
+  },
+  "design_system": {
+    "name": "ZIGZAG Tech / Brunch",
+    "url": "https://brunch.co.kr/@zigzag/73",
+    "type": "brand",
+    "description": "Kakaostyle / ZIGZAG's brand & design articles — the ZDS (ZIGZAG Design System) rearchitecture and the 2021 cool-pink rebrand.",
+    "live_verified": "2026-05-13"
+  }
+}

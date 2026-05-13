@@ -1,0 +1,27 @@
+{
+  "id": "remember",
+  "korean": "리멤버",
+  "logo_url": "https://corp.remember.co.kr/favicon.ico",
+  "highlight": {
+    "type": "cta",
+    "tokens": {
+      "primary_bg": "#000000",
+      "primary_text": "#FFFFFF",
+      "primary_radius": "4px",
+      "growth_bg": "#FF5414",
+      "growth_text": "#FFFFF9",
+      "growth_radius": "4px",
+      "font_family": "Pretendard, sans-serif",
+      "body_text": "#222222",
+      "filter_border": "#D4D4D4"
+    },
+    "label": "프로를 위한 모든 기회"
+  },
+  "design_system": {
+    "name": "Remember UI",
+    "url": "https://dramancompany.github.io/remember-ui/",
+    "type": "system",
+    "description": "Remember (drama&company) UI library — public Storybook deploy with components for the business-card / B2B networking product.",
+    "live_verified": "2026-05-13"
+  }
+}

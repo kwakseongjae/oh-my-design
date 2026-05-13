@@ -89,6 +89,17 @@ const LOGO_MAP: Record<string, LogoSource> = {
   ridi:          { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=ridibooks.com&sz=128' },
   qanda:         { type: 'favicon', slug: 'https://qanda.ai/favicon.ico' },
   krds:          { type: 'favicon', slug: 'https://www.krds.go.kr/resources/img/guide/favicon_192.png' },
+  // 2026-05-13 KR-10 batch
+  socar:         { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=socar.kr&sz=256' },
+  gangnamunni:   { type: 'favicon', slug: 'https://www.gangnamunni.com/images/icon/apple-icon-180x180.png' },
+  kakaopay:      { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=kakaopay.com&sz=256' },
+  zigzag:        { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=zigzag.kr&sz=256' },
+  '29cm':        { type: 'favicon', slug: 'https://asset.29cm.co.kr/icon/apple-icon-144x144.png' },
+  ably:          { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=a-bly.com&sz=128' },
+  banksalad:     { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=banksalad.com&sz=256' },
+  zigbang:       { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=zigbang.com&sz=256' },
+  wanted:        { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=wanted.co.kr&sz=256' },
+  remember:      { type: 'favicon', slug: 'https://cdn.rememberapp.co.kr/logos/remember/rmbr_og_image.png' },
 
   // ── Taiwan Tech ──
   pinkoi:        { type: 'github', slug: 'pinkoi' },
@@ -212,6 +223,17 @@ const DOMAIN_OVERRIDES: Record<string, string> = {
   ridi: 'ridibooks.com',
   qanda: 'qanda.ai',
   krds: 'krds.go.kr',
+  // 2026-05-13 KR-10 batch
+  socar: 'socar.kr',
+  gangnamunni: 'gangnamunni.com',
+  kakaopay: 'kakaopay.com',
+  zigzag: 'zigzag.kr',
+  '29cm': '29cm.co.kr',
+  ably: 'a-bly.com',
+  banksalad: 'banksalad.com',
+  zigbang: 'zigbang.com',
+  wanted: 'wanted.co.kr',
+  remember: 'rememberapp.co.kr',
 };
 
 export function getLogoFallbackUrl(id: string): string | null {

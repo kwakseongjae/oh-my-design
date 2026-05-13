@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>67 社の実在する企業デザインシステムから DESIGN.md を生成。</strong>インタラクティブウィザード。AI 呼び出しゼロ。
+  <strong>88 社の実在する企業デザインシステムから DESIGN.md を生成。</strong>インタラクティブウィザード。AI 呼び出しゼロ。
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" />
   <img src="https://img.shields.io/badge/AI%20calls-zero-blue?style=flat-square" alt="Zero AI" />
-  <img src="https://img.shields.io/badge/references-67-7c5cfc?style=flat-square" alt="67 References" />
+  <img src="https://img.shields.io/badge/references-88-7c5cfc?style=flat-square" alt="88 References" />
 </p>
 
 <p align="center">
@@ -36,7 +36,7 @@
 
 1. **[仕様](spec/omd-v0.1.md)** — バージョン管理された Google Stitch 拡張、MIT ライセンス。
 2. **[Claude Code スキル](.claude/skills/omd/SKILL.md)** — 仕様をハード制約として自動適用。
-3. **[67 のリファレンス](references/)** — 実在企業の `DESIGN.md` をフォークし、ビルダーでカスタマイズしてそのまま導入。
+3. **[88 のリファレンス](references/)** — 実在企業の `DESIGN.md` をフォークし、ビルダーでカスタマイズしてそのまま導入。
 
 **API キー不要。AI 呼び出しゼロ。全てクライアントサイドで完結。**
 
@@ -61,10 +61,10 @@ Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Appl
 ## 主な機能
 
 - **ビルダー** — リファレンスを選び、カラー / radius / ダークモードを調整し、コンポーネントを選択して Export。**Philosophy** フィルターで完全なブランド哲学を持つ 10 件に絞り込めます。
-- **デザインシステムディレクトリ** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 67 リファレンス中 34 件は公式のデザインシステムまたはブランドガイドラインページを持っており、ディレクトリからライブサムネイル付きで直接アクセスできます。
-- **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — MBTI 風の短いクイズであなたのデザイン傾向を 67 リファレンスのいずれかとマッチングし、そのリファレンスが事前選択されたビルダーへ直接移動します。
+- **デザインシステムディレクトリ** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 88 リファレンス中 34 件は公式のデザインシステムまたはブランドガイドラインページを持っており、ディレクトリからライブサムネイル付きで直接アクセスできます。
+- **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — MBTI 風の短いクイズであなたのデザイン傾向を 88 リファレンスのいずれかとマッチングし、そのリファレンスが事前選択されたビルダーへ直接移動します。
 
-## サポートされる 67 のリファレンス
+## サポートされる 88 のリファレンス
 
 | カテゴリ | 企業 |
 |----------|------|
@@ -112,7 +112,7 @@ Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Appl
 oh-my-design/
   spec/              OmD v0.1 仕様 (正本)
   .claude/skills/omd/ Claude Code スキルバンドル
-  references/        67 社分の DESIGN.md ファイル
+  references/        88 社分の DESIGN.md ファイル
   src/               CLI コア (TypeScript)
   web/               Next.js ウェブビルダー
     src/app/         Landing + Builder + Directory ページ

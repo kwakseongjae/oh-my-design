@@ -1,0 +1,23 @@
+{
+  "id": "29cm",
+  "korean": "29CM",
+  "logo_url": "https://asset.29cm.co.kr/next-contents/2023/06/08/3f8131682d124d16b336774ba51c4a3e_20230608162823.png",
+  "highlight": {
+    "type": "voice",
+    "tokens": {
+      "font_family": "Pretendard Variable",
+      "page_bg": "#ffffff",
+      "ink": "#000000",
+      "muted": "rgba(93, 93, 93, 0.64)",
+      "outline": "#c4c4c4",
+      "primary_cta_bg": "#000000",
+      "primary_cta_text": "#ffffff",
+      "primary_cta_radius": "2px",
+      "ghost_cta_border": "1px solid #c4c4c4",
+      "ghost_cta_radius": "4px",
+      "editorial_title": "22px / 700 / lh 29.92px",
+      "tagline_ko": "감도 깊은 취향 셀렉트샵"
+    },
+    "label": "감도 깊은 취향 — 흑백 에디토리얼"
+  }
+}

@@ -507,7 +507,7 @@ export function CliStrip() {
                 ✓ Wrote .claude/skills, .codex/skills, .opencode/agents
               </div>
               <div style={{ color: V2.accent }}>
-                ✓ Bundled 78 reference DESIGN.md files
+                ✓ Bundled 88 reference DESIGN.md files
               </div>
               <div style={{ color: V2.accent }}>
                 ✓ Hooked CLAUDE.md, AGENTS.md, .cursor/rules
@@ -1070,7 +1070,7 @@ export function FinalCtaFooter() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
               </span>
-              78 references · 6 skills · 11 sub-agents · live
+              88 references · 6 skills · 11 sub-agents · live
             </div>
           </div>
         </div>

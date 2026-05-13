@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System Inspired by Cal.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal: #242424;
+    --midnight: #111111;
+    --mid-gray: #898989;
+    --white: #ffffff;
+    --link-blue: #0099ff;
+    --focus-blue: #3b82f6;
+    --shadow-ring: rgba(34, 42, 53, 0.08);
+    --shadow-soft: rgba(34, 42, 53, 0.05);
+    --shadow-contact: rgba(19, 19, 22, 0.7);
+    --font-display: 'Cal Sans', system-ui, sans-serif;
+    --font-body: 'Inter', -apple-system, system-ui, 'Segoe UI', sans-serif;
+    --font-mono: 'Roboto Mono', ui-monospace, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--charcoal);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.50;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-contact) 0px 1px 5px -4px, var(--shadow-ring) 0px 0px 0px 1px, var(--shadow-soft) 0px 4px 8px 0px;
+  }
+  .nav-brand {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--midnight);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--midnight); }
+  .nav-cta {
+    background: var(--charcoal);
+    color: var(--white);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .nav-cta:hover { opacity: 0.7; }
+
+  /* HERO */
+  .hero {
+    padding: 96px 40px 80px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 1.10;
+    letter-spacing: 0px;
+    color: var(--charcoal);
+    max-width: 700px;
+    margin: 0 auto 20px;
+  }
+  .hero .subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.50;
+    color: var(--mid-gray);
+    max-width: 480px;
+    margin: 0 auto 36px;
+    letter-spacing: -0.2px;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-dark {
+    background: var(--charcoal);
+    color: var(--white);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    box-shadow: rgba(255,255,255,0.15) 0px 2px 0px 0px inset;
+  }
+  .btn-dark:hover { opacity: 0.7; }
+  .btn-white {
+    background: var(--white);
+    color: var(--charcoal);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+    box-shadow: var(--shadow-contact) 0px 1px 5px -4px, var(--shadow-ring) 0px 0px 0px 1px, var(--shadow-soft) 0px 4px 8px 0px;
+  }
+  .btn-white:hover { box-shadow: var(--shadow-contact) 0px 1px 5px -4px, var(--shadow-ring) 0px 0px 0px 1px, rgba(34,42,53,0.08) 0px 6px 12px 0px; }
+
+  /* SECTIONS */
+  .section {
+    padding: 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.10;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+  .section-subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.50;
+    color: var(--mid-gray);
+    margin-bottom: 48px;
+    letter-spacing: -0.2px;
+  }
+
+  /* COLORS */
+  .color-category { margin-bottom: 36px; }
+  .color-category h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+    letter-spacing: 0.2px;
+  }
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 16px;
+  }
+  .color-swatch {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-contact) 0px 1px 5px -4px, var(--shadow-ring) 0px 0px 0px 1px, var(--shadow-soft) 0px 4px 8px 0px;
+  }
+  .swatch-color { height: 80px; width: 100%; }
+  .swatch-info { padding: 10px 12px; background: var(--white); }
+  .swatch-name { font-size: 13px; font-weight: 600; color: var(--charcoal); margin-bottom: 2px; }
+  .swatch-hex { font-size: 12px; font-weight: 500; color: var(--mid-gray); font-family: var(--font-mono); margin-bottom: 4px; }
+  .swatch-role { font-size: 11px; color: var(--mid-gray); line-height: 1.4; }
+
+  /* TYPOGRAPHY */
+  .type-sample {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(34,42,53,0.08);
+  }
+  .type-sample:last-child { border-bottom: none; }
+  .type-sample .type-text { color: var(--charcoal); margin-bottom: 6px; }
+  .type-sample .type-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--mid-gray);
+    font-family: var(--font-mono);
+  }
+
+  /* BUTTONS */
+  .button-grid { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+  .button-item { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .btn-label { font-size: 11px; font-weight: 500; color: var(--mid-gray); font-family: var(--font-mono); }
+  .btn-pill {
+    background: var(--charcoal);
+    color: var(--white);
+    padding: 10px 24px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    border: none;
+    cursor: pointer;
+  }
+
+  /* CARDS */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .card { border-radius: 12px; padding: 28px; background: var(--white); }
+  .card-shadow {
+    box-shadow: var(--shadow-contact) 0px 1px 5px -4px, var(--shadow-ring) 0px 0px 0px 1px, var(--shadow-soft) 0px 4px 8px 0px;
+  }
+  .card-shadow-alt {
+    box-shadow: rgba(36,36,36,0.7) 0px 1px 5px -4px, rgba(36,36,36,0.05) 0px 4px 8px 0px;
+  }
+  .card-inset {
+    box-shadow: rgba(0,0,0,0.16) 0px 1px 1.9px 0px inset;
+    background: #fafafa;
+  }
+  .card-hover { transition: transform 0.15s, box-shadow 0.15s; }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-contact) 0px 2px 8px -4px, var(--shadow-ring) 0px 0px 0px 1px, rgba(34,42,53,0.08) 0px 8px 16px 0px;
+  }
+  .card h4 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    letter-spacing: 0.2px;
+  }
+  .card .card-desc { font-size: 14px; font-weight: 300; line-height: 1.50; color: var(--mid-gray); letter-spacing: -0.2px; }
+  .card .card-label { font-size: 11px; font-weight: 500; color: var(--mid-gray); font-family: var(--font-mono); margin-top: 14px; }
+
+  /* FORMS */
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 14px; font-weight: 600; color: var(--charcoal); }
+  .form-group input, .form-group textarea {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    background: var(--white);
+    color: var(--charcoal);
+    outline: none;
+    box-shadow: var(--shadow-contact) 0px 1px 5px -4px, var(--shadow-ring) 0px 0px 0px 1px, var(--shadow-soft) 0px 4px 8px 0px;
+    transition: box-shadow 0.15s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: var(--mid-gray); }
+  .form-group input:focus, .form-group textarea:focus {
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.4), var(--shadow-contact) 0px 1px 5px -4px, var(--shadow-soft) 0px 4px 8px 0px;
+  }
+  .form-group input.error { box-shadow: 0 0 0 2px rgba(220,38,38,0.4); }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-hint { font-size: 11px; color: var(--mid-gray); font-family: var(--font-mono); }
+  .form-error-text { font-size: 11px; color: #dc2626; }
+
+  /* SPACING */
+  .spacing-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+  .spacing-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .spacing-box { background: var(--charcoal); border-radius: 4px; height: 40px; }
+  .spacing-label { font-size: 10px; font-weight: 600; color: var(--mid-gray); font-family: var(--font-mono); }
+
+  /* RADIUS */
+  .radius-row { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
+  .radius-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .radius-box {
+    width: 80px;
+    height: 80px;
+    background: #f5f5f5;
+    box-shadow: var(--shadow-contact) 0px 1px 5px -4px, var(--shadow-ring) 0px 0px 0px 1px;
+  }
+  .radius-label { font-size: 12px; font-weight: 600; color: var(--charcoal); font-family: var(--font-mono); }
+  .radius-context { font-size: 10px; color: var(--mid-gray); text-align: center; max-width: 80px; }
+
+  /* ELEVATION */
+  .elevation-section { background: #f5f5f5; border-radius: 16px; padding: 48px; }
+  .elevation-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+  .elevation-card { background: var(--white); border-radius: 12px; padding: 24px; min-height: 120px; }
+  .elevation-card h4 { font-size: 14px; font-weight: 600; color: var(--charcoal); margin-bottom: 6px; }
+  .elevation-card p { font-size: 12px; color: var(--mid-gray); line-height: 1.5; }
+  .elev-flat { box-shadow: none; }
+  .elev-inset { box-shadow: rgba(0,0,0,0.16) 0px 1px 1.9px 0px inset; }
+  .elev-ring-soft { box-shadow: var(--shadow-contact) 0px 1px 5px -4px, var(--shadow-ring) 0px 0px 0px 1px, var(--shadow-soft) 0px 4px 8px 0px; }
+  .elev-soft { box-shadow: var(--shadow-soft) 0px 4px 8px 0px; }
+  .elev-highlight { box-shadow: rgba(255,255,255,0.15) 0px 2px 0px 0px inset; background: var(--charcoal); color: var(--white); }
+  .elev-highlight h4 { color: var(--white); }
+  .elev-highlight p { color: rgba(255,255,255,0.6); }
+
+  footer {
+    text-align: center;
+    padding: 48px 40px;
+    font-size: 13px;
+    color: var(--mid-gray);
+    border-top: 1px solid rgba(34,42,53,0.08);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 12px 16px; }
+    .nav-links { display: none; }
+    .hero { padding: 64px 16px 48px; }
+    .hero h1 { font-size: 36px; }
+    .section { padding: 48px 16px; }
+    .section-title { font-size: 32px; }
+    .color-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    .card-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .elevation-section { padding: 20px; }
+    .elevation-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">awesome-design-md</span>
+  <ul class="nav-links">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#buttons">Buttons</a></li>
+    <li><a href="#cards">Cards</a></li>
+    <li><a href="#forms">Forms</a></li>
+    <li><a href="#spacing">Spacing</a></li>
+    <li><a href="#radius">Radius</a></li>
+    <li><a href="#elevation">Elevation</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Get started</a>
+</nav>
+
+<section class="hero">
+  <h1>Design System Inspired by Cal.com</h1>
+  <p class="subtitle">A visual catalog of design tokens extracted from Cal.com's monochromatic, grayscale design system.</p>
+  <div class="hero-buttons">
+    <button class="btn-dark">Explore Tokens</button>
+    <button class="btn-white">View DESIGN.md</button>
+  </div>
+</section>
+
+<!-- 1. COLORS -->
+<section class="section" id="colors">
+  <h2 class="section-title">Color Palette</h2>
+  <p class="section-subtitle">A grayscale brand — boldness through monochrome, not color.</p>
+
+  <div class="color-category">
+    <h3>Primary</h3>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-color" style="background:#242424;"></div><div class="swatch-info"><div class="swatch-name">Charcoal</div><div class="swatch-hex">#242424</div><div class="swatch-role">Headings, buttons, primary text</div></div></div>
+      <div class="color-swatch"><div class="swatch-color" style="background:#111111;"></div><div class="swatch-info"><div class="swatch-name">Midnight</div><div class="swatch-hex">#111111</div><div class="swatch-role">Deep text, overlays</div></div></div>
+      <div class="color-swatch"><div class="swatch-color" style="background:#ffffff; border-bottom:1px solid #eee;"></div><div class="swatch-info"><div class="swatch-name">White</div><div class="swatch-hex">#ffffff</div><div class="swatch-role">Background, surfaces</div></div></div>
+    </div>
+  </div>
+
+  <div class="color-category">
+    <h3>Neutrals</h3>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-color" style="background:#898989;"></div><div class="swatch-info"><div class="swatch-name">Mid Gray</div><div class="swatch-hex">#898989</div><div class="swatch-role">Secondary text, descriptions</div></div></div>
+      <div class="color-swatch"><div class="swatch-color" style="background:#000000;"></div><div class="swatch-info"><div class="swatch-name">Black</div><div class="swatch-hex">#000000</div><div class="swatch-role">High-contrast link text</div></div></div>
+      <div class="color-swatch"><div class="swatch-color" style="background:rgba(34,42,53,0.08);border-bottom:1px solid #eee;"></div><div class="swatch-info"><div class="swatch-name">Shadow Ring</div><div class="swatch-hex">rgba(34,42,53,0.08)</div><div class="swatch-role">Ring-shadow borders</div></div></div>
+    </div>
+  </div>
+
+  <div class="color-category">
+    <h3>Accent (Minimal)</h3>
+    <div class="color-grid">
+      <div class="color-swatch"><div class="swatch-color" style="background:#0099ff;"></div><div class="swatch-info"><div class="swatch-name">Link Blue</div><div class="swatch-hex">#0099ff</div><div class="swatch-role">In-text links only</div></div></div>
+      <div class="color-swatch"><div class="swatch-color" style="background:#3b82f6;"></div><div class="swatch-info"><div class="swatch-name">Focus Blue</div><div class="swatch-hex">#3b82f6</div><div class="swatch-role">Focus ring (accessibility)</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. TYPOGRAPHY -->
+<section class="section" id="typography">
+  <h2 class="section-title">Typography Scale</h2>
+  <p class="section-subtitle">Cal Sans for display, Inter for body — a clean typographic division.</p>
+
+  <div class="type-sample">
+    <div class="type-text" style="font-family:var(--font-display); font-size:64px; font-weight:600; line-height:1.10;">Display Hero</div>
+    <div class="type-label">Display Hero — Cal Sans 64px / 600 / 1.10</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-text" style="font-family:var(--font-display); font-size:48px; font-weight:600; line-height:1.10;">Section Heading</div>
+    <div class="type-label">Section Heading — Cal Sans 48px / 600 / 1.10</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-text" style="font-family:var(--font-display); font-size:24px; font-weight:600; line-height:1.30;">Feature Heading</div>
+    <div class="type-label">Feature Heading — Cal Sans 24px / 600 / 1.30</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-text" style="font-family:var(--font-display); font-size:20px; font-weight:600; line-height:1.20; letter-spacing:0.2px;">Sub-heading</div>
+    <div class="type-label">Sub-heading — Cal Sans 20px / 600 / 1.20 / +0.2px</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-text" style="font-family:var(--font-display); font-size:16px; font-weight:600; line-height:1.10;">Card Title</div>
+    <div class="type-label">Card Title — Cal Sans 16px / 600 / 1.10</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-text" style="font-family:var(--font-body); font-size:18px; font-weight:300; line-height:1.30; letter-spacing:-0.2px;">Body Light — Elegant light-weight intro text for descriptions and subtitles</div>
+    <div class="type-label">Body Light — Inter 18px / 300 / 1.30 / -0.2px</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-text" style="font-family:var(--font-body); font-size:16px; font-weight:300; line-height:1.50; letter-spacing:-0.2px;">Body Standard — Standard reading text for longer content passages with comfortable line-height.</div>
+    <div class="type-label">Body Standard — Inter 16px / 300 / 1.50 / -0.2px</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-text" style="font-family:var(--font-body); font-size:16px; font-weight:600; line-height:1.00;">UI Label</div>
+    <div class="type-label">UI Label — Inter 16px / 600 / 1.00</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-text" style="font-family:var(--font-body); font-size:14px; font-weight:500; line-height:1.14;">Caption Inter</div>
+    <div class="type-label">Caption — Inter 14px / 500 / 1.14</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-text" style="font-family:var(--font-body); font-size:12px; font-weight:500; line-height:1.00;">Micro text</div>
+    <div class="type-label">Micro — Inter 12px / 500 / 1.00</div>
+  </div>
+  <div class="type-sample">
+    <div class="type-text" style="font-family:var(--font-mono); font-size:14px; font-weight:600; line-height:1.00;">Code — Roboto Mono</div>
+    <div class="type-label">Code — Roboto Mono 14px / 600 / 1.00</div>
+  </div>
+</section>
+
+<!-- 3. BUTTONS -->
+<section class="section" id="buttons">
+  <h2 class="section-title">Button Variants</h2>
+  <p class="section-subtitle">Dark CTAs with inset highlights, shadow-bordered white buttons, and pill shapes.</p>
+
+  <div class="button-grid">
+    <div class="button-item">
+      <button class="btn-dark">Dark Primary</button>
+      <span class="btn-label">#242424 / white / 8px / inset highlight</span>
+    </div>
+    <div class="button-item">
+      <button class="btn-white">White Shadow</button>
+      <span class="btn-label">#fff / ring shadow / 8px</span>
+    </div>
+    <div class="button-item">
+      <button class="btn-pill">Pill Button</button>
+      <span class="btn-label">#242424 / 9999px radius</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CARDS -->
+<section class="section" id="cards">
+  <h2 class="section-title">Card Examples</h2>
+  <p class="section-subtitle">Multi-layered shadow elevation with ring borders instead of CSS borders.</p>
+
+  <div class="card-grid">
+    <div class="card card-shadow card-hover">
+      <h4>Shadow Card</h4>
+      <p class="card-desc">Ring shadow + contact shadow + diffused shadow. The workhorse card pattern. Hover to see lift.</p>
+      <p class="card-label">ring + contact + soft / 12px radius</p>
+    </div>
+    <div class="card card-shadow-alt">
+      <h4>Alt Shadow Card</h4>
+      <p class="card-desc">Contact shadow + soft shadow without the ring border. Lighter elevation.</p>
+      <p class="card-label">contact + soft only / 12px radius</p>
+    </div>
+    <div class="card card-inset">
+      <h4>Inset Card</h4>
+      <p class="card-desc">Inset shadow creates a recessed, pressed-in appearance for input wells and secondary containers.</p>
+      <p class="card-label">inset 0px 1px 1.9px rgba(0,0,0,0.16)</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FORMS -->
+<section class="section" id="forms">
+  <h2 class="section-title">Form Elements</h2>
+  <p class="section-subtitle">Shadow-bordered inputs with blue focus rings.</p>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Default Input</label>
+      <input type="text" placeholder="Enter your name">
+      <span class="form-hint">shadow-ring border / 8px radius</span>
+    </div>
+    <div class="form-group">
+      <label>Focus State</label>
+      <input type="text" placeholder="Focused" style="box-shadow: 0 0 0 2px rgba(59,130,246,0.4), rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.05) 0px 4px 8px 0px;">
+      <span class="form-hint">focus: blue ring + shadows</span>
+    </div>
+    <div class="form-group">
+      <label>Error State</label>
+      <input type="text" class="error" value="bad input">
+      <span class="form-error-text">Invalid input</span>
+    </div>
+    <div class="form-group">
+      <label>Textarea</label>
+      <textarea placeholder="Type a message..."></textarea>
+      <span class="form-hint">Same shadow styling</span>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SPACING -->
+<section class="section" id="spacing">
+  <h2 class="section-title">Spacing Scale</h2>
+  <p class="section-subtitle">8px base with a jump from 28px to 80px for section-level tiers.</p>
+
+  <div class="spacing-row">
+    <div class="spacing-item"><div class="spacing-box" style="width:1px;"></div><span class="spacing-label">1</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:2px;"></div><span class="spacing-label">2</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:3px;"></div><span class="spacing-label">3</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:4px;"></div><span class="spacing-label">4</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:6px;"></div><span class="spacing-label">6</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:8px;"></div><span class="spacing-label">8</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:12px;"></div><span class="spacing-label">12</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:16px;"></div><span class="spacing-label">16</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:20px;"></div><span class="spacing-label">20</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:24px;"></div><span class="spacing-label">24</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:28px;"></div><span class="spacing-label">28</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:80px;"></div><span class="spacing-label">80</span></div>
+    <div class="spacing-item"><div class="spacing-box" style="width:96px;"></div><span class="spacing-label">96</span></div>
+  </div>
+</section>
+
+<!-- 7. RADIUS -->
+<section class="section" id="radius">
+  <h2 class="section-title">Border Radius Scale</h2>
+  <p class="section-subtitle">Wide scale from sharp 2px to full pill 9999px.</p>
+
+  <div class="radius-row">
+    <div class="radius-item"><div class="radius-box" style="border-radius:2px;"></div><span class="radius-label">2px</span><span class="radius-context">Inline</span></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:4px;"></div><span class="radius-label">4px</span><span class="radius-context">Small UI</span></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:8px;"></div><span class="radius-label">8px</span><span class="radius-context">Buttons, inputs</span></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:12px;"></div><span class="radius-label">12px</span><span class="radius-context">Cards, links</span></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:16px;"></div><span class="radius-label">16px</span><span class="radius-context">Sections</span></div>
+    <div class="radius-item"><div class="radius-box" style="border-radius:9999px; width:80px; height:40px;"></div><span class="radius-label">9999px</span><span class="radius-context">Pill</span></div>
+  </div>
+</section>
+
+<!-- 8. ELEVATION -->
+<section class="section" id="elevation">
+  <h2 class="section-title">Elevation & Depth</h2>
+  <p class="section-subtitle">Multi-layered shadow compositing: ring borders + diffused shadows + inset highlights.</p>
+
+  <div class="elevation-section">
+    <div class="elevation-grid">
+      <div class="elevation-card elev-flat"><h4>Level 0 — Flat</h4><p>No shadow. Page canvas and basic containers.</p></div>
+      <div class="elevation-card elev-inset"><h4>Level 1 — Inset</h4><p>Inset shadow. Pressed/recessed elements, input wells.</p></div>
+      <div class="elevation-card elev-ring-soft"><h4>Level 2 — Ring + Soft</h4><p>Ring border + contact shadow + diffused shadow. The workhorse elevation.</p></div>
+      <div class="elevation-card elev-soft"><h4>Level 3 — Soft Only</h4><p>Subtle ambient shadow without ring border. Gentle floating.</p></div>
+      <div class="elevation-card elev-highlight"><h4>Level 4 — Inset Highlight</h4><p>White inset on dark bg. Button 3D bevel effect.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">Maintained by <a href="https://github.com/VoltAgent/voltagent" target="_blank" rel="noopener noreferrer" style="text-decoration:none;"><img src="https://github.com/VoltAgent.png?size=32" alt="VoltAgent" width="14" height="14" style="border-radius:3px;vertical-align:-2px;margin-right:3px;">VoltAgent</a> team</footer>
+
+</body>
+</html>

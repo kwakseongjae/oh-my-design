@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>One-command bootstrap for skill-driven design with your AI coding agent.</strong> 78 real company design systems. Zero AI calls in the install. Then you just talk to your agent.
+  <strong>One-command bootstrap for skill-driven design with your AI coding agent.</strong> 88 real company design systems. Zero AI calls in the install. Then you just talk to your agent.
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/dm/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
-  <img src="https://img.shields.io/badge/references-78-7c5cfc?style=flat-square" alt="78 References" />
+  <img src="https://img.shields.io/badge/references-88-7c5cfc?style=flat-square" alt="88 References" />
   <img src="https://img.shields.io/badge/CLI%20commands-1-blue?style=flat-square" alt="One CLI command" />
 </p>
 
@@ -23,7 +23,7 @@
 
 **oh-my-design (OmD)** turns your AI coding agent (Claude Code / Codex / OpenCode / Cursor) into a senior product designer with a working memory of your brand. You install once. After that, you just describe what you want — components, screens, copy, assets, charts — and the agent applies your project's design system, picks the right asset medium, and ships.
 
-`DESIGN.md` is the brand spec ([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens + the brand-philosophy layer: Voice / Narrative / Principles / Personas / States / Motion). 78 real-company DESIGN.md files ship in this package. Pick one, customize through conversation, ship.
+`DESIGN.md` is the brand spec ([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens + the brand-philosophy layer: Voice / Narrative / Principles / Personas / States / Motion). 88 real-company DESIGN.md files ship in this package. Pick one, customize through conversation, ship.
 
 **No API keys. No external infra. Everything runs inside your existing CLI session.**
 
@@ -42,7 +42,7 @@ That is the only CLI command you will run. Everything else is natural language t
 Open Claude Code (or Codex / OpenCode) in your project. Just talk:
 
 > "Set up the design system for a calm B2B fintech dashboard."
-> Agent picks a reference from 78 (likely Linear or Stripe), proposes a hybrid DESIGN.md, asks for confirmation, writes the file plus shims.
+> Agent picks a reference from 88 (likely Linear or Stripe), proposes a hybrid DESIGN.md, asks for confirmation, writes the file plus shims.
 
 > "Make the empty-state for the search results page."
 > Agent reads DESIGN.md, builds the component with brand tokens, picks an inline SVG illustration matching the voice, drops in microcopy that follows the §10 voice rules.
@@ -67,10 +67,10 @@ Open Claude Code (or Codex / OpenCode) in your project. Just talk:
 | `.codex/skills/omd-*/SKILL.md` | install-skills | Codex skill bundle |
 | `.opencode/agents/omd-*.md` | install-skills | OpenCode agent bundle |
 | `.claude/agents/omd-*.md` | install-skills | 11 canonical sub-agents (master + 10 specialists) |
-| `.claude/data/*` | install-skills | 78-reference fingerprints, vocabulary, opt-out corpus |
+| `.claude/data/*` | install-skills | 88-reference fingerprints, vocabulary, opt-out corpus |
 | `.claude/hooks/*.cjs` | install-skills | UserPromptSubmit / SessionStart / PostToolUse hooks |
 | `.claude/skills/skill-rules.json` | install-skills | Skill activation rules |
-| `references/*/DESIGN.md` | bundled | 78 real design systems |
+| `references/*/DESIGN.md` | bundled | 88 real design systems |
 | `DESIGN.md` | your agent (after init flow) | Your project's authoritative brand spec |
 | `CLAUDE.md` / `AGENTS.md` / `.cursor/rules/omd-design.mdc` | omd-sync skill | Pointers so every agent reads DESIGN.md |
 | `.omd/preferences.md` | omd-remember skill | Append-only design correction log |
@@ -81,7 +81,7 @@ Open Claude Code (or Codex / OpenCode) in your project. Just talk:
 Skills (loaded into your agent's context based on prompt triggers):
 
 - **omd:apply** — DESIGN.md as authoritative context for every UI task. Routes complex requests (assets, charts, full screens, a11y audit) to specialized sub-agents.
-- **omd:init** — Bootstrap DESIGN.md from a reference + project description. 78 references, hybrid variation that preserves the reference voice while shifting only user-named axes.
+- **omd:init** — Bootstrap DESIGN.md from a reference + project description. 88 references, hybrid variation that preserves the reference voice while shifting only user-named axes.
 - **omd:harness** — `/omd-harness <task>` to run the 10-phase design pipeline with checkpoints. Spawns sub-agents in parallel.
 - **omd:remember** — Captures user corrections to `.omd/preferences.md` automatically when the agent detects them.
 - **omd:learn** — Folds pending corrections back into DESIGN.md by scope.

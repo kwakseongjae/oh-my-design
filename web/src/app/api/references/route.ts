@@ -33,6 +33,11 @@ const CATEGORIES: Record<string, string> = {
   coupang: 'E-commerce', musinsa: 'E-commerce', kurly: 'E-commerce',
   yeogiotte: 'Travel', yanolja: 'Travel',
   krds: 'Government',
+  // 2026-05-13 KR-10 batch
+  socar: 'Consumer Tech', gangnamunni: 'Consumer Tech', zigbang: 'Consumer Tech',
+  kakaopay: 'Fintech', banksalad: 'Fintech',
+  zigzag: 'E-commerce', '29cm': 'E-commerce', ably: 'E-commerce',
+  wanted: 'Productivity', remember: 'Productivity',
 };
 
 const COUNTRIES: Record<string, string> = {
@@ -41,6 +46,10 @@ const COUNTRIES: Record<string, string> = {
   yeogiotte: 'Korea', musinsa: 'Korea', kurly: 'Korea', ohouse: 'Korea',
   naver: 'Korea', yanolja: 'Korea', coupang: 'Korea', kakaobank: 'Korea',
   ridi: 'Korea', qanda: 'Korea', krds: 'Korea',
+  // 2026-05-13 KR-10 batch
+  socar: 'Korea', gangnamunni: 'Korea', kakaopay: 'Korea', zigzag: 'Korea',
+  '29cm': 'Korea', ably: 'Korea', banksalad: 'Korea', zigbang: 'Korea',
+  wanted: 'Korea', remember: 'Korea',
   // Taiwan
   pinkoi: 'Taiwan', dcard: 'Taiwan',
   // Japan
@@ -70,6 +79,11 @@ const DISPLAY_NAMES: Record<string, string> = {
   naver: 'Naver', yanolja: 'Yanolja', coupang: 'Coupang',
   kakaobank: 'KakaoBank', ridi: 'RIDI', qanda: 'QANDA',
   krds: 'KRDS',
+  // 2026-05-13 KR-10 batch
+  socar: 'SOCAR', gangnamunni: '강남언니', kakaopay: 'KakaoPay',
+  zigzag: 'ZIGZAG', '29cm': '29CM', ably: 'Ably',
+  banksalad: 'Banksalad', zigbang: 'Zigbang',
+  wanted: 'Wanted', remember: 'Remember',
 };
 
 function extractPrimaryColor(md: string): string {

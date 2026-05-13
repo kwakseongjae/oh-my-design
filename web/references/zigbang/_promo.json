@@ -1,0 +1,16 @@
+{
+  "id": "zigbang",
+  "korean": "직방",
+  "logo_url": "https://logodad.com/svg/zigbang",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "brand_orange": "~#FF6600 (illustrative — exact token not publicly published; reserved for wordmark only)",
+      "action_blue": "#0066ff",
+      "text_neutral": "#171719",
+      "muted_ramp": ["rgba(55,56,60,0.28)", "rgba(55,56,60,0.16)"],
+      "background": "#FFFFFF"
+    },
+    "label": "오렌지는 워드마크, 블루는 액션 — 지도가 디자인의 주인공"
+  }
+}

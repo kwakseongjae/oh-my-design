@@ -1,0 +1,31 @@
+{
+  "id": "wanted",
+  "korean": "원티드",
+  "logo_url": "https://static.wanted.co.kr/images/icon/og_wantedcokr.png",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#0066FF",
+      "primary_pantone": "PANTONE 2195 C",
+      "heading": "#171719",
+      "body": "#333333",
+      "secondary": "rgba(55, 56, 60, 0.61)",
+      "border": "rgba(112, 115, 124, 0.16)",
+      "surface_subtle": "#F7F7F8",
+      "brand_black": "#14191E",
+      "accent_orange": "#FF5C00",
+      "accent_violet": "#8364FF",
+      "jobcard_radius": "12px",
+      "font_ui": "Pretendard Variable",
+      "font_brand": "Wanted Sans"
+    },
+    "label": "커리어 성장의 블루"
+  },
+  "design_system": {
+    "name": "Wanted Montage",
+    "url": "https://montage.wanted.co.kr/",
+    "type": "system",
+    "description": "Wanted's Montage design system docs — components, foundations, Wanted Sans, and the brandcenter resource hub.",
+    "live_verified": "2026-05-13"
+  }
+}

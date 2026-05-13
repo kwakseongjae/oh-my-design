@@ -45,3 +45,6 @@ web/.omd/
 /*.png
 /*.jpg
 /refero-sections.json
+
+# Promo video archive — /omd-batch-launch outputs (hyperframes projects + MP4)
+.promo/

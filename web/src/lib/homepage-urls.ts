@@ -79,6 +79,17 @@ export const HOMEPAGE_URLS: Record<string, string> = {
   ridi:          "https://ridibooks.com",
   qanda:         "https://qanda.ai",
   krds:          "https://www.krds.go.kr/html/site/index.html",
+  // 2026-05-13 KR-10 batch
+  socar:         "https://www.socar.kr",
+  gangnamunni:   "https://www.gangnamunni.com",
+  kakaopay:      "https://www.kakaopay.com",
+  zigzag:        "https://zigzag.kr",
+  "29cm":        "https://www.29cm.co.kr",
+  ably:          "https://m.a-bly.com",
+  banksalad:     "https://www.banksalad.com",
+  zigbang:       "https://www.zigbang.com",
+  wanted:        "https://www.wanted.co.kr",
+  remember:      "https://www.rememberapp.co.kr",
 };
 
 export function getHomepageUrl(refId: string): string | null {

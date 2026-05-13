@@ -149,6 +149,25 @@ const DESIGN_SYSTEMS: Record<string, Omit<DesignSystemInfo, "refId" | "ogImage">
     type: "system",
     description: "Wise's design system covering foundations, components, patterns, and tone of voice.",
   },
+  // 2026-05-13 KR-10 batch — full DS sites (live verified)
+  socar: {
+    name: "SOCAR Design",
+    url: "https://design.socar.kr/",
+    type: "system",
+    description: "SOCAR's design system hub — Space Frame, SOCAR Blue, Sandoll Gothic Neo2 + Avenir typography, and mobility-flow component patterns.",
+  },
+  wanted: {
+    name: "Wanted Montage",
+    url: "https://montage.wanted.co.kr/",
+    type: "system",
+    description: "Wanted's Montage design system docs — components, foundations, Wanted Sans, and the brandcenter resource hub.",
+  },
+  remember: {
+    name: "Remember UI",
+    url: "https://dramancompany.github.io/remember-ui/",
+    type: "system",
+    description: "Remember (drama&company) UI library — public Storybook deploy with components for the business-card / B2B networking product.",
+  },
 
   // ─────────── Brand / trademark guideline pages ───────────
   airbnb: {
@@ -307,6 +326,31 @@ const DESIGN_SYSTEMS: Record<string, Omit<DesignSystemInfo, "refId" | "ogImage">
     url: "https://www.krds.go.kr/html/site/index.html",
     type: "system",
     description: "행정안전부 주관 범정부 통합 디자인 시스템. Government Blue #256EF4, Pretendard GOV, WCAG/KWCAG 2.2 a11y-first tokens and components.",
+  },
+  // 2026-05-13 KR-10 batch — brand / DS-narrative pages (live verified)
+  kakaopay: {
+    name: "KakaoPay Story",
+    url: "https://story.kakaopay.com/",
+    type: "brand",
+    description: "KakaoPay's design narrative blog — 3 pillars (Color · Icon · Type), the 3:1 contrast accessibility policy, and the KPDS internal design system context.",
+  },
+  zigzag: {
+    name: "ZIGZAG Tech / Brunch",
+    url: "https://brunch.co.kr/@zigzag/73",
+    type: "brand",
+    description: "Kakaostyle / ZIGZAG's brand & design articles — the ZDS (ZIGZAG Design System) rearchitecture and the 2021 cool-pink rebrand.",
+  },
+  gangnamunni: {
+    name: "Gangnamunni Blog",
+    url: "https://blog.gangnamunni.com/post/welchis/",
+    type: "brand",
+    description: "Healience design team blog — the Cell + Welchis two-system architecture behind Gangnamunni's medical-platform UI.",
+  },
+  banksalad: {
+    name: "Banksalad GitHub",
+    url: "https://github.com/banksalad",
+    type: "brand",
+    description: "Banksalad's public GitHub org including styleguide repos and BPL (Banksalad Product Library) reference material.",
   },
 };
 

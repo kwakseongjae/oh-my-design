@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-11T08:39:03Z",
+  "generated_at": "2026-05-13T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 78,
+  "count": 88,
   "items": [
     {
       "id": "airbnb",
@@ -1824,6 +1824,295 @@
       "signature_motion": "Inset orange underline marks active tabs; sand underline previews hover.",
       "has_personas": false,
       "category_raw": "saas-tool"
+    },
+    {
+      "id": "29cm",
+      "primary_color_hex": "#000000",
+      "category": "Commerce",
+      "visual_theme": "Editorial select-shop magazine on pure white with pure black ink — photography first, oversized margins, Pretendard-only typography, no shadows, no brand color beyond black-on-white.",
+      "voice_fingerprint": {
+        "register": "editorial-curatorial",
+        "sentence_length": "medium",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "editorial",
+        "curated",
+        "calm",
+        "considered",
+        "magazine",
+        "offbeat"
+      ],
+      "antipatterns": [
+        "No 최저가/초특가 or 오늘만 urgency",
+        "No English SHOP NOW exclamations",
+        "No corporate ~합니다 ending on consumer voice"
+      ],
+      "signature_motion": "Color inversion on inverted CTA hover — #000000 ↔ #ffffff with 2px radius, no scale, no shadow.",
+      "has_personas": true,
+      "category_raw": "Commerce / Editorial Select-Shop"
+    },
+    {
+      "id": "ably",
+      "primary_color_hex": "#FA2E5F",
+      "category": "Commerce",
+      "visual_theme": "MZ-coded mobile-first style commerce on white canvas — vibrant pink-coral reserved for commercial pressure (CTA, sale, urgency) while neutrals carry the photography-dense 4-up grid.",
+      "voice_fingerprint": {
+        "register": "informal-stylist-friend",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "fast",
+        "friendly",
+        "MZ-informal",
+        "image-dense",
+        "personalized",
+        "playful"
+      ],
+      "antipatterns": [
+        "No 오류가 발생했습니다 vague errors",
+        "No formal ~합니다/~십시오 on commerce surfaces",
+        "No 약 ~원 price approximations"
+      ],
+      "signature_motion": "Heart/찜 tap: outline to filled pink with brief scale pulse on the bottom-pinned 구매하기 bar.",
+      "has_personas": true,
+      "category_raw": "Commerce / MZ Style Commerce"
+    },
+    {
+      "id": "banksalad",
+      "primary_color_hex": "#04c584",
+      "category": "Fintech",
+      "visual_theme": "Trustworthy financial advisor on white with warm near-black text and saturated salad-green for all interaction — 2px radius dominance, dense data tables, Pretendard 700 numerals as headings.",
+      "voice_fingerprint": {
+        "register": "calm-advisor",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "factual",
+        "advisor",
+        "calm",
+        "data-driven",
+        "explanatory",
+        "precise"
+      ],
+      "antipatterns": [
+        "No 약 ~원 approximations on money",
+        "No 최고의/놀라운 superlatives",
+        "No emoji on financial surfaces",
+        "No 오류가 발생했습니다"
+      ],
+      "signature_motion": "Brand green focus/hover lightens to #10df99 — interaction makes things lighter, never darker; subtle single-layer shadow.",
+      "has_personas": true,
+      "category_raw": "Fintech / Personal Finance Advisor"
+    },
+    {
+      "id": "gangnamunni",
+      "primary_color_hex": "#d54300",
+      "category": "Healthcare",
+      "visual_theme": "Warm medical platform on white with bluegray neutrals and a single saturated orange — hairlines over shadows, exact numerals on hospital and procedure cards, regulatory disclosure as part of trust.",
+      "voice_fingerprint": {
+        "register": "careful-clinician",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "informational",
+        "reassuring",
+        "factual",
+        "transparent",
+        "regulatory",
+        "exact"
+      ],
+      "antipatterns": [
+        "No 예뻐지세요! or ✨💖 emoji on medical surfaces",
+        "No 약 ~원 rounded pricing",
+        "No 오류가 발생했습니다",
+        "No consumer-beauty cartoon pinks"
+      ],
+      "signature_motion": "Hospital card hover: 1px #d8dfe6 hairline darkens; orange accent appears only on the booking CTA, never on hover decoration.",
+      "has_personas": true,
+      "category_raw": "Healthcare / Cosmetic-Procedure Discovery"
+    },
+    {
+      "id": "kakaopay",
+      "primary_color_hex": "#FFEB00",
+      "category": "Fintech",
+      "visual_theme": "Warm friendly fintech that feels like a continuation of KakaoTalk — Noto Sans KR on near-white canvas, rounded geometry as brand commitment, Kakao yellow as ecosystem anchor (not default CTA), 3:1 contrast minimum enforced.",
+      "voice_fingerprint": {
+        "register": "polite-conversational",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "warm",
+        "conversational",
+        "approachable",
+        "inclusive",
+        "rounded",
+        "polite-casual"
+      ],
+      "antipatterns": [
+        "No 고객님께서는/~하시기 바랍니다 institutional Korean",
+        "No 약 ~원 on money",
+        "No 오류가 발생했습니다",
+        "No sharp/aggressive geometry"
+      ],
+      "signature_motion": "Rounded button press: subtle radius-preserving scale-down (0.98) with quiet single-layer shadow at ≤0.08 opacity.",
+      "has_personas": true,
+      "category_raw": "Fintech / Ecosystem Payments"
+    },
+    {
+      "id": "remember",
+      "primary_color_hex": "#000000",
+      "category": "HR",
+      "visual_theme": "Business-card-database-grown-up — near-white surfaces with off-black #222222 body, black as the primary CTA color (B2B professional gravity), signup orange #FF5414 reserved for conversion punches only.",
+      "voice_fingerprint": {
+        "register": "senior-colleague",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "calm",
+        "concrete",
+        "professional",
+        "B2B",
+        "trusted",
+        "restrained"
+      ],
+      "antipatterns": [
+        "No 불편을 드려 죄송합니다",
+        "No emoji in scout/recruiter messages",
+        "No 약 ~원 on salary numbers",
+        "No mascots or illustration on product surfaces"
+      ],
+      "signature_motion": "Black CTA hover: subtle 1px lift via shadow; orange #FF5414 only appears once per surface at conversion moments.",
+      "has_personas": true,
+      "category_raw": "HR / Business Network + Career Marketplace"
+    },
+    {
+      "id": "socar",
+      "primary_color_hex": "#1d4ed8",
+      "category": "Mobility",
+      "visual_theme": "Calm achromatic car-sharing chrome on pure white with cool-grey #354153 body type — SOCAR Blue reserved for the Space Frame symbol and primary booking CTA, 12/14/16px radius ladder, single-layer soft shadows.",
+      "voice_fingerprint": {
+        "register": "calm-service",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "calm",
+        "service-confirming",
+        "achromatic",
+        "declarative",
+        "frictionless",
+        "grounded"
+      ],
+      "antipatterns": [
+        "No Revolutionary/Game-changer marketing",
+        "No 새로운 경험을 시작하세요 decoration without action",
+        "No emoji on transactional booking/payment surfaces",
+        "No 오류가 발생했습니다"
+      ],
+      "signature_motion": "Booking CTA hover: SOCAR Blue darkens one step; card lift uses single rgba(0,0,0,0.1) 0 4px 8px shadow, never chromatic stacks.",
+      "has_personas": true,
+      "category_raw": "Mobility / Car-Sharing (SOCAR Blue approximation — exact hex unpublished)"
+    },
+    {
+      "id": "wanted",
+      "primary_color_hex": "#0066FF",
+      "category": "HR",
+      "visual_theme": "Career marketplace as growth mentor — single decisive cobalt #0066FF for interaction only on a warm-white canvas, custom Wanted Sans + Pretendard, 12px-radius JobCard with salary + 합격보상금 visible by structural rule.",
+      "voice_fingerprint": {
+        "register": "career-mentor",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "confident",
+        "growth-oriented",
+        "respectful",
+        "factual",
+        "gentle-yet-clear",
+        "precise"
+      ],
+      "antipatterns": [
+        "No 대박 채용/핫한 회사/놓치지 마세요 urgency marketing",
+        "No 약 X만원 salary hedging",
+        "No 오류가 발생했습니다",
+        "No competitive/negotiable in lieu of a range"
+      ],
+      "signature_motion": "JobCard hover: 12px-radius lift with bookmark icon outline→filled transition; brand blue used only on interactive states.",
+      "has_personas": true,
+      "category_raw": "HR / Career Marketplace"
+    },
+    {
+      "id": "zigbang",
+      "primary_color_hex": "#0066ff",
+      "category": "Real Estate",
+      "visual_theme": "Near-monochrome real-estate map tool — near-black #171719 type at weight 400, functional blue #0066ff for action only, brand orange reserved for wordmark, disabled-by-transparency neutrals so the map carries the surface.",
+      "voice_fingerprint": {
+        "register": "regional-analyst",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "trustworthy",
+        "data-rich",
+        "neutral",
+        "evidence-based",
+        "quiet",
+        "vision-forward"
+      ],
+      "antipatterns": [
+        "No 지금 바로!/놓치지 마세요!/최저가 보장 urgency",
+        "No exclamation marks on routine CTAs",
+        "No stacked superlatives (최고의 프리미엄 매물)",
+        "No 혁신적인 as UI dressing",
+        "No orange on functional UI (brand-mark only)"
+      ],
+      "signature_motion": "Map-floating chrome: 8/10px-radius chips fade to rgba(55,56,60,0.16) on disabled; bookmark toggle is 50% circular outline→filled.",
+      "has_personas": true,
+      "category_raw": "Real Estate / Map-First Proptech"
+    },
+    {
+      "id": "zigzag",
+      "primary_color_hex": "#fa6ee3",
+      "category": "Commerce",
+      "visual_theme": "Mobile-as-canvas fashion playground locked to 600px max-width even on desktop — off-white #f5f6f6 surface, ZIGZAG brand pink #fa6ee3 for wordmark + favorites, interactive pink #f55dd6 for CTAs, coral #fb4333 for alerts.",
+      "voice_fingerprint": {
+        "register": "stylish-friend",
+        "sentence_length": "short",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "energetic",
+        "fashion-fluent",
+        "memorable",
+        "effortless",
+        "inspiring",
+        "contextual"
+      ],
+      "antipatterns": [
+        "No 불편을 드려 죄송합니다",
+        "No 혁신적인/세상에 없던 ad clichés",
+        "No 약 ~원 commerce price approximations",
+        "No desktop multi-column reflow (mobile centred is the brand)"
+      ],
+      "signature_motion": "찜 heart: outline → filled brand pink with brief pulse; primary CTA uses pink-400 fill, darkening to pink-450/550 on hover/press.",
+      "has_personas": true,
+      "category_raw": "Commerce / Women's Fashion Discovery"
     }
   ]
 }

@@ -639,34 +639,51 @@ function VariantInstance({ type, variant, font }: { type: ComponentType; variant
     );
   }
 
+  // Canonical-schema variant names follow `<descriptor> (<usage notes> — "<example labels>")`.
+  // The whole name is a HEADING (already shown in the right spec column); the actual
+  // control's label is the first quoted example. Falling back to the whole name overflowed
+  // 260px preview cells with long Korean descriptors and visually leaked into the spec col.
+  const previewLabel = (() => {
+    const quoted = variant.name.match(/["'“”‘’]([^"'“”‘’]{1,16})["'“”‘’]/);
+    if (quoted) return quoted[1];
+    const firstWord = variant.name.split(/[\s(—–-]/)[0];
+    return firstWord && firstWord.length <= 18 ? firstWord : "Sample";
+  })();
+
   switch (type) {
     case "button":
       return (
         <button
           type="button"
-          style={{ ...baseStyle, padding: padding ?? "10px 20px", whiteSpace: "nowrap" }}
+          title={variant.name}
+          style={{ ...baseStyle, padding: padding ?? "10px 20px", whiteSpace: "nowrap", maxWidth: "100%", overflow: "hidden", textOverflow: "ellipsis" }}
         >
-          {variant.name}
+          {previewLabel}
         </button>
       );
     case "badge":
       return (
         <span
+          title={variant.name}
           style={{
             ...baseStyle,
             display: "inline-block",
             padding: padding ?? "3px 10px",
             fontSize: 12,
+            maxWidth: "100%",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
           }}
         >
-          {variant.name}
+          {previewLabel}
         </span>
       );
     case "input":
       return (
         <input
           type="text"
-          placeholder={variant.name}
+          placeholder={previewLabel}
           style={{
             ...baseStyle,
             background: bg === "transparent" ? "transparent" : bg,
@@ -912,10 +929,10 @@ function ComponentsSection({ tokens, kicker }: { tokens: ParsedTokens; kicker: s
 function VariantCard({ type, variant, font }: { type: ComponentType; variant: ComponentVariant; font?: string }) {
   return (
     <div className="grid gap-4 rounded-2xl border border-border/50 p-5 sm:grid-cols-[minmax(0,260px)_1fr] sm:items-start">
-      <div className="flex items-start justify-start">
+      <div className="flex min-w-0 items-start justify-start overflow-hidden">
         <VariantInstance type={type} variant={variant} font={font} />
       </div>
-      <div>
+      <div className="min-w-0">
         <div className="mb-2 text-sm font-semibold text-foreground">{variant.name}</div>
         <VariantSpec variant={variant} />
       </div>

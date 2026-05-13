@@ -1,0 +1,29 @@
+{
+  "id": "banksalad",
+  "korean": "뱅크샐러드",
+  "logo_url": "https://blog.banksalad.com/static/img/logo-banksalad.svg",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#04c584",
+      "hover": "#10df99",
+      "focus_tint": "#f3fdfa",
+      "heading": "#2b2b2b",
+      "body": "#434444",
+      "data_series_1": "#34464b",
+      "data_series_2": "#5c818a",
+      "data_series_3": "#1c6c73",
+      "data_series_4": "#a7c7cf",
+      "radius": "2px",
+      "font": "Pretendard + BM JUA"
+    },
+    "label": "샐러드 그린 × 2px — 데이터 어드바이저의 톤"
+  },
+  "design_system": {
+    "name": "Banksalad GitHub",
+    "url": "https://github.com/banksalad",
+    "type": "brand",
+    "description": "Banksalad's public GitHub org including styleguide repos and BPL (Banksalad Product Library) reference material.",
+    "live_verified": "2026-05-13"
+  }
+}

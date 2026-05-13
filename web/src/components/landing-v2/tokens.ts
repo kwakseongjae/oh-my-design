@@ -15,7 +15,7 @@ export const V2 = {
   borderDark: "rgba(255,255,255,0.08)",
 } as const;
 
-/** Brand color hints for the 67-card wall and the LIVE PROOF strip. */
+/** Brand color hints for the 88-card wall and the LIVE PROOF strip. */
 export const BRAND_COLORS: Record<string, string> = {
   stripe: "#635bff",
   toss: "#0064ff",
@@ -84,6 +84,17 @@ export const BRAND_COLORS: Record<string, string> = {
   wise: "#9fe870",
   "x.ai": "#000000",
   zapier: "#ff4f00",
+  // 2026-05-13 KR-10 batch
+  gangnamunni: "#d54300",
+  kakaopay: "#ffeb00",
+  zigzag: "#fa6ee3",
+  "29cm": "#000000",
+  ably: "#fa2e5f",
+  banksalad: "#04c584",
+  zigbang: "#0066ff",
+  wanted: "#0066ff",
+  remember: "#000000",
+  // socar: SOCAR Blue exact hex unpublished — falls through to hash
 };
 
 /** Deterministic fallback color from id hash. */

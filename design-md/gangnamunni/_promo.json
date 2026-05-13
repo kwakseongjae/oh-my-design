@@ -1,0 +1,26 @@
+{
+  "id": "gangnamunni",
+  "korean": "강남언니",
+  "logo_url": "https://www.gangnamunni.com/favicon.ico",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "brand_strong": "#d54300",
+      "brand_regular": "#f66336",
+      "brand_accent_raw": "#FF540F",
+      "text_primary": "#131517",
+      "border_default": "#d8dfe6",
+      "surface_subtle": "#f7f9fa",
+      "footer_band": "#f5f5f5",
+      "footer_divider": "#d6d6d6"
+    },
+    "label": "한 가지 주황, 하나의 신뢰"
+  },
+  "design_system": {
+    "name": "Gangnamunni Blog",
+    "url": "https://blog.gangnamunni.com/post/welchis/",
+    "type": "brand",
+    "description": "Healience design team blog — the Cell + Welchis two-system architecture behind Gangnamunni's medical-platform UI.",
+    "live_verified": "2026-05-13"
+  }
+}

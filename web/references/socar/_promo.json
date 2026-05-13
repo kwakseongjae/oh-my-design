@@ -1,0 +1,28 @@
+{
+  "id": "socar",
+  "korean": "쏘카",
+  "logo_url": "https://brand.socar.kr/",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "brand_primary_name": "SOCAR Blue",
+      "brand_primary_role": "primary brand color / Space Frame symbol / booking-flow CTA",
+      "supporting_palette": "achromatic — by design",
+      "text_default": "#354153",
+      "border_default": "#e5e8ef",
+      "input_fill": "#f2f3f8",
+      "placeholder": "#b4bbcb",
+      "footer_bg": "#f5f5f5",
+      "card_radius_px": 16,
+      "card_shadow": "rgba(0,0,0,0.1) 0 4px 8px"
+    },
+    "label": "SOCAR Blue × 무채색 침착함"
+  },
+  "design_system": {
+    "name": "SOCAR Design",
+    "url": "https://design.socar.kr/",
+    "type": "system",
+    "description": "SOCAR's design system hub — Space Frame, SOCAR Blue, Sandoll Gothic Neo2 + Avenir typography, and mobility-flow component patterns.",
+    "live_verified": "2026-05-13"
+  }
+}

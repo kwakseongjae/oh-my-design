@@ -1,0 +1,22 @@
+{
+  "id": "kakaopay",
+  "korean": "카카오페이",
+  "logo_url": "https://brandfetch.com/kakaopay.com",
+  "highlight": {
+    "type": "voice",
+    "tokens": {
+      "tagline": "마음 놓고 금융하다",
+      "english": "Effortless finance",
+      "principle": "따뜻하고 부드러운 컬러 · 둥글고 부드러운 라인",
+      "accessibility_minimum_contrast": "3:1"
+    },
+    "label": "마음 놓고 금융하다"
+  },
+  "design_system": {
+    "name": "KakaoPay Story",
+    "url": "https://story.kakaopay.com/",
+    "type": "brand",
+    "description": "KakaoPay's design narrative blog — 3 pillars (Color · Icon · Type), the 3:1 contrast accessibility policy, and the KPDS internal design system context.",
+    "live_verified": "2026-05-13"
+  }
+}
