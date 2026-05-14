@@ -501,7 +501,7 @@ export function CliStrip() {
             </div>
             <div className="mt-3 omd-v2-output">
               <div style={{ color: V2.accent }}>
-                ✓ Installed 6 skills + 11 sub-agents
+                ✓ Installed 9 skills + 11 sub-agents
               </div>
               <div style={{ color: V2.accent }}>
                 ✓ Wrote .claude/skills, .codex/skills, .opencode/agents
@@ -1070,7 +1070,7 @@ export function FinalCtaFooter() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
               </span>
-              88 references · 6 skills · 11 sub-agents · live
+              88 references · 9 skills · 11 sub-agents · live
             </div>
           </div>
         </div>

@@ -59,7 +59,7 @@ const SKILLS: Skill[] = [
     trigger: "First-time setup",
     title: "Bootstrap a project",
     desc:
-      "Pick from 78 reference design systems. Hybrid variation — preserves the reference voice while shifting only the axes you name.",
+      "Pick from 88 reference design systems. Hybrid variation — preserves the reference voice while shifting only the axes you name.",
     icon: Zap,
   },
   {
@@ -67,7 +67,7 @@ const SKILLS: Skill[] = [
     trigger: "/omd-harness <task>",
     title: "Run the design pipeline",
     desc:
-      "Spawns omd-master to run the 10-phase pipeline (Discovery → Handoff). Sub-agents dispatched in parallel where independent.",
+      "10-phase pipeline (Discovery → Handoff) with 7 hero archetypes (rule 9 matches brand vibe to layout — center-text / carousel / split-screen / editorial / dashboard / quote-led / left-character). Wordmark-only logo (rule 5), reveal safety net (rule 10).",
     icon: Workflow,
   },
   {
@@ -93,6 +93,30 @@ const SKILLS: Skill[] = [
     desc:
       "Keeps CLAUDE.md, AGENTS.md, .cursor/rules/omd-design.mdc up-to-date so every coding agent reads the same DESIGN.md.",
     icon: FileCode,
+  },
+  {
+    id: "omd:reference-capture",
+    trigger: "Live brand fetch",
+    title: "Capture live design context",
+    desc:
+      "Navigates the brand's live site via CDP and writes assets/_reference/<id>/ with tokens.json, structure.json, fonts.json, screenshots, and .live-inspect-proof.json. Phase 3.9 browser-harness fast-path auto-detected — 3-5x faster than playwright MCP when the user has it set up.",
+    icon: Search,
+  },
+  {
+    id: "omd:asset-fetch",
+    trigger: "Real placeholder assets",
+    title: "Free-license asset catalog",
+    desc:
+      "Looks up verified CC0 / MIT / SIL OFL CDN URLs (DiceBear avatars, Lucide icons, Picsum / Loremflickr photos, Bricolage Grotesque / Space Grotesk / DM Serif Display / Fraunces display fonts). Handcrafted character SVG is forbidden — every placeholder is a real licensed asset.",
+    icon: Layers,
+  },
+  {
+    id: "omd:experiment-gallery",
+    trigger: "Compare multiple runs",
+    title: "N-brand comparison gallery",
+    desc:
+      "Builds a single index.html that previews every brand experiment under a folder as iframe-scaled cards with archetype badges, wow ratings, multi-turn deltas, and IP audit counts. Reusable across batches.",
+    icon: Workflow,
   },
 ];
 
@@ -345,17 +369,17 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
   {
     path: ".claude/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "Claude Code skill bundle",
+    purpose: "Claude Code skill bundle — 9 skills (apply / init / harness / remember / learn / sync / reference-capture / asset-fetch / experiment-gallery)",
   },
   {
     path: ".codex/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "Codex skill bundle",
+    purpose: "Codex skill bundle (same 9 skills)",
   },
   {
     path: ".opencode/agents/omd-*.md",
     owner: "install-skills",
-    purpose: "OpenCode agent bundle",
+    purpose: "OpenCode agent bundle (same 9 skills)",
   },
   {
     path: ".claude/agents/omd-*.md",
@@ -365,7 +389,7 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
   {
     path: ".claude/data/*",
     owner: "install-skills",
-    purpose: "78-reference fingerprints, vocabulary, opt-out corpus",
+    purpose: "88-reference fingerprints, vocabulary, opt-out corpus",
   },
   {
     path: ".claude/hooks/*.cjs",
@@ -410,7 +434,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Can I bring my own DESIGN.md?",
-    a: "Yes. If a DESIGN.md exists at repo root, omd:apply uses it as-is. Otherwise omd:init proposes a hybrid from one of the 78 references.",
+    a: "Yes. If a DESIGN.md exists at repo root, omd:apply uses it as-is. Otherwise omd:init proposes a hybrid from one of the 88 references.",
   },
   {
     q: "How do preferences differ from DESIGN.md?",
@@ -531,7 +555,7 @@ function DocsHero() {
           transition={{ duration: 0.6, delay: 0.18 }}
           className="mt-5 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
         >
-          <strong className="text-white">6 skills</strong>,{" "}
+          <strong className="text-white">9 skills</strong>,{" "}
           <strong className="text-white">11 sub-agents</strong>, a{" "}
           <strong className="text-white">10-phase pipeline</strong>, and{" "}
           <strong className="text-white">78 reference DESIGN.md files</strong>{" "}
@@ -572,7 +596,7 @@ function DocsHero() {
         >
           {[
             ["#quick-start", "Quick start"],
-            ["#skills", "6 skills"],
+            ["#skills", "9 skills"],
             ["#agents", "11 sub-agents"],
             ["#pipeline", "Pipeline"],
             ["#use-cases", "Use cases"],

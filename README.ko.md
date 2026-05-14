@@ -89,23 +89,34 @@ omd remember "..."
 | `CLAUDE.md` | `omd sync` | Claude Code 포인터 (`@./DESIGN.md`) |
 | `AGENTS.md` | `omd sync` | Codex CLI **+** OpenCode 공용 포인터 (한 파일이 둘 커버) |
 | `.cursor/rules/omd-design.mdc` | `omd sync` | Cursor가 UI 파일 편집 시 DESIGN.md 자동 attach |
-| `.claude/skills/omd-*/SKILL.md` | `omd install-skills` | Claude Code 스킬 5종 |
-| `.codex/skills/omd-*/SKILL.md` | `omd install-skills` | Codex 스킬 5종 |
-| `.opencode/agents/omd-*.md` | `omd install-skills` | OpenCode 에이전트 5종 |
+| `.claude/skills/omd-*/SKILL.md` | `omd install-skills` | Claude Code 스킬 9종 |
+| `.codex/skills/omd-*/SKILL.md` | `omd install-skills` | Codex 스킬 9종 |
+| `.opencode/agents/omd-*.md` | `omd install-skills` | OpenCode 에이전트 9종 |
 | `.omd/preferences.md` | `omd remember` | append-only 디자인 교정 로그 |
 | `.omd/sync.lock.json` | `omd sync` | drift 감지 상태 |
 
 shim과 스킬 파일은 `<!-- omd:start -->` 마커 블록을 사용해서, 마커 외부의 사용자 편집은 `omd sync` 재실행에도 보존됩니다.
 
-### 5개 스킬
+### 9개 스킬
+
+**Core flow (6)**
 
 | 스킬 | 트리거 | 동작 |
 |---|---|---|
-| `omd:init` | "DESIGN.md 만들어줘" / "브랜드 세팅" | 레퍼런스 추천 → 프로젝트 description 수집 → 레퍼런스 톤·매너를 **preserve**하면서 deltas만 반영한 Hybrid variation 생성 → DESIGN.md + shim 작성 |
-| `omd:apply` | UI / 스타일링 / 마이크로카피 / 모션 작업 | DESIGN.md + pending preference를 authoritative context로 주입, 사용자가 교정하면 **자동으로** `omd remember` 호출 |
-| `omd:sync` | "shim drift" / "AGENTS.md 동기화" | 적절한 플래그로 `omd sync` 실행 |
+| `omd:init` | "DESIGN.md 만들어줘" / "브랜드 세팅" | 레퍼런스 추천 → 프로젝트 description 수집 → 레퍼런스 톤·매너 preserve하면서 deltas 반영한 Hybrid variation → DESIGN.md + shim 작성 |
+| `omd:apply` | UI / 스타일링 / 마이크로카피 / 모션 작업 | DESIGN.md + pending preference를 authoritative context로 주입, 사용자 교정 시 자동으로 `omd:remember` 호출 |
+| `omd:harness` | "랜딩 처음부터 / production-ready" | 10-phase 디자인 파이프라인. rule 9 hero archetype 7종 (center-text / carousel / split-screen / editorial / dashboard / quote-led / left-character) 중 brand vibe 매칭으로 선택. rule 5 워드마크-only 로고, rule 10 reveal safety net. |
+| `omd:sync` | "shim drift" / "AGENTS.md 동기화" | 적절한 플래그로 `omd:sync` 실행 |
 | `omd:remember` | "기억해 둬" / "우리는 ~안 해" | 구조화된 entry를 `.omd/preferences.md`에 append |
 | `omd:learn` | "preferences 정리해서 DESIGN.md에 반영" | scope별로 그룹핑 → coherent edit 제안 → status flip |
+
+**Live capture + assets (v1.3.x — 3개)**
+
+| 스킬 | 트리거 | 동작 |
+|---|---|---|
+| `omd:reference-capture` | "X 라이브 자료 가져와" / "에셋 캡쳐" | 라이브 brand 사이트 CDP/playwright inspect → `assets/_reference/<id>/`에 tokens.json + structure.json + fonts.json + `.live-inspect-proof.json` + screenshots + LICENSE-NOTE 작성. Phase 3.9 browser-harness fast-path (3-5x 빠름) auto-detect. |
+| `omd:asset-fetch` | "에셋 가져와줘" / "플레이스홀더 진짜 이미지로" | Free-license 카탈로그 — DiceBear (CC0 avatars), Lucide (ISC icons), Picsum/Loremflickr (CC photos), Bricolage Grotesque / Space Grotesk / DM Serif Display 등 SIL OFL display fonts. 핸드드로잉 캐릭터 SVG 금지. |
+| `omd:experiment-gallery` | "결과물 한 번에 보여줘" / "갤러리 만들어" | N개 experiment 디렉토리를 받아 단일 index.html에 iframe scaled로 비교 뷰 생성. wow rating + archetype badge + round-별 deltas + IP audit 한 카드에. |
 
 소스: [`skills/`](skills/) 디렉토리. `omd install-skills`가 프로젝트의 에이전트 디렉토리로 복사.
 

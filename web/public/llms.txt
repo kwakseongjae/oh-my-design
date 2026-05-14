@@ -1,6 +1,6 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 6 skills + 11 sub-agents + 88 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
+> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 9 skills + 11 sub-agents + 88 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
 
 ## What
 
@@ -23,14 +23,20 @@ Then restart your AI coding agent (Cmd+Q in Claude Code, then relaunch).
 - `"Design the entire onboarding from scratch."` → triggers `omd:harness`, runs the 10-phase pipeline with sub-agents.
 - `"We never use uppercase CTAs."` → triggers `omd:remember`, writes correction to `.omd/preferences.md`.
 
-## The 6 skills
+## The 9 skills
 
+Core flow (6):
 - **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
 - **omd:init** — Bootstrap DESIGN.md from one of 88 references with hybrid variation.
-- **omd:harness** — `/omd-harness <task>` runs the 10-phase pipeline.
+- **omd:harness** — `/omd-harness <task>` runs the 10-phase pipeline. 7 hero archetypes (rule 9) match brand vibe to layout. Wordmark-only logo (rule 5), reveal safety net (rule 10), container-inner consistency (rule 7).
 - **omd:remember** — Auto-captures user corrections to `.omd/preferences.md`.
 - **omd:learn** — Folds preferences into DESIGN.md by scope.
 - **omd:sync** — Maintains shim files (CLAUDE.md / AGENTS.md / .cursor/rules) so every agent reads the same spec.
+
+Live capture + assets (v1.3.x — 3):
+- **omd:reference-capture** — Live brand-site CDP/playwright inspect → tokens + structure + fonts + screenshots + proof. Phase 3.9 browser-harness fast-path is 3-5x faster than playwright MCP when available.
+- **omd:asset-fetch** — Free-license catalog (DiceBear CC0 / Lucide ISC / Picsum CC0 / Loremflickr Flickr-CC / SIL OFL display fonts: Bricolage Grotesque, Space Grotesk, DM Serif Display, Fraunces). Handcrafted character SVG forbidden.
+- **omd:experiment-gallery** — N-brand experiments → single comparison index.html with iframe scaled previews, wow ratings, multi-turn deltas, per-brand IP audit.
 
 ## The 11 sub-agents (master orchestrator + 10 specialists)
 

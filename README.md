@@ -63,7 +63,7 @@ Open Claude Code (or Codex / OpenCode) in your project. Just talk:
 
 | Path | Owner | Purpose |
 |---|---|---|
-| `.claude/skills/omd-*/SKILL.md` | install-skills | Claude Code skill bundle (apply / harness / init / learn / remember / sync) |
+| `.claude/skills/omd-*/SKILL.md` | install-skills | Claude Code skill bundle (apply / harness / init / learn / remember / sync / reference-capture / asset-fetch / experiment-gallery) |
 | `.codex/skills/omd-*/SKILL.md` | install-skills | Codex skill bundle |
 | `.opencode/agents/omd-*.md` | install-skills | OpenCode agent bundle |
 | `.claude/agents/omd-*.md` | install-skills | 11 canonical sub-agents (master + 10 specialists) |
@@ -76,16 +76,22 @@ Open Claude Code (or Codex / OpenCode) in your project. Just talk:
 | `.omd/preferences.md` | omd-remember skill | Append-only design correction log |
 | `.omd/runs/<id>/` | omd-harness skill | Per-harness-run artifacts (briefs, wireframes, eval, handoff zips) |
 
-## The 6 skills + 11 agents
+## The 9 skills + 11 agents
 
 Skills (loaded into your agent's context based on prompt triggers):
 
+**Core flow**
 - **omd:apply** — DESIGN.md as authoritative context for every UI task. Routes complex requests (assets, charts, full screens, a11y audit) to specialized sub-agents.
 - **omd:init** — Bootstrap DESIGN.md from a reference + project description. 88 references, hybrid variation that preserves the reference voice while shifting only user-named axes.
-- **omd:harness** — `/omd-harness <task>` to run the 10-phase design pipeline with checkpoints. Spawns sub-agents in parallel.
+- **omd:harness** — `/omd-harness <task>` to run the 10-phase design pipeline. 7 hero archetypes (rule 9) match brand vibe to layout (center-text / carousel / split-screen / editorial / dashboard / quote-led / left-character). Reveal safety net (rule 10), wordmark-only logo (rule 5), container-inner consistency (rule 7), decomposed hero (rule 8).
 - **omd:remember** — Captures user corrections to `.omd/preferences.md` automatically when the agent detects them.
 - **omd:learn** — Folds pending corrections back into DESIGN.md by scope.
 - **omd:sync** — Maintains the shim files (CLAUDE.md / AGENTS.md / Cursor mdc) so every agent reads your DESIGN.md.
+
+**Live capture + assets** (v1.3.x)
+- **omd:reference-capture** — Live brand site CDP/playwright inspect → `assets/_reference/<id>/` with tokens.json + structure.json + fonts.json + `.live-inspect-proof.json` + screenshots + LICENSE-NOTE/attribution. Phase 3.9 browser-harness fast-path: 3-5× faster than playwright MCP when available.
+- **omd:asset-fetch** — Free-license asset catalog with verified URLs. DiceBear CC0 (notionists/lorelei avatars), Lucide ISC icons, Picsum CC0 / Loremflickr Flickr-CC photos, SIL OFL display fonts (Bricolage Grotesque / Space Grotesk / DM Serif Display / Fraunces). Strict anti-patterns: handcrafted character SVG forbidden, brand creative work never in product DOM.
+- **omd:experiment-gallery** — N-brand experiment results in a single comparison index.html. iframe scaled previews + wow ratings + multi-turn deltas + per-brand IP audit. Reusable across batches.
 
 Sub-agents — 1 orchestrator + 10 specialists (invoked by the master or directly by skills):
 
