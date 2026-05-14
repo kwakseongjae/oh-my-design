@@ -426,7 +426,11 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
 const FAQ: { q: string; a: string }[] = [
   {
     q: "Does it call any AI provider during install?",
-    a: "No. Install copies skill markdown, hooks, and 78 DESIGN.md files. Zero API calls. Your AI agent (Claude Code, Codex, OpenCode, Cursor) is the inference layer — install just teaches it where to look.",
+    a: "No. Install copies skill markdown, hooks, and 88 DESIGN.md files. Zero API calls. Your AI agent (Claude Code, Codex, OpenCode, Cursor) is the inference layer — install just teaches it where to look.",
+  },
+  {
+    q: "How do I upgrade when a new release drops?",
+    a: "Re-run `npx oh-my-design-cli@latest install-skills` in your project. It's idempotent — managed files (those with the `<!-- omd:installed-skill -->` marker) refresh in place; your edits without the marker stay untouched (status `skipped-drift`). Pass `--force` to overwrite custom edits. Then restart your agent. See CHANGELOG.md for what changed each release.",
   },
   {
     q: "Which agents are supported?",

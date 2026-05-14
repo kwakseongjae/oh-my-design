@@ -152,6 +152,27 @@ omd learn --mark-rejected <id> --reason <text>
 
 이 생태계는 **v0.1.0** — 첫 agent-integration 릴리스입니다. CLI 표면 (sync / remember / learn / init prepare / install-skills)은 안정 + 단위 테스트 완료 (505 테스트). 에이전트 측 Hybrid variation 품질은 호스트 LLM이 `omd:init` 스킬 프롬프트를 얼마나 잘 따르는지에 좌우됩니다 — 검증 맵은 [`test/scenarios/WORKFLOWS.md`](test/scenarios/WORKFLOWS.md) 참고. 실 세션 결과 환영 — `.omd/init-context.json`과 결과 `DESIGN.md`를 첨부해서 이슈로 보고 부탁드립니다.
 
+### 업그레이드
+
+스킬·에이전트는 매 릴리스마다 진화합니다. 기존 프로젝트에서 최신 번들 받아오려면:
+
+```bash
+npx oh-my-design-cli@latest install-skills
+```
+
+Idempotent. 상단에 `<!-- omd:installed-skill -->` 마커가 있는 **관리 파일**은 in-place 갱신, 마커 없이 사용자가 수정한 파일은 `skipped-drift` 상태로 그대로 두기. 사용자 편집까지 정말 덮어쓰려면 `--force`.
+
+재실행 후 에이전트 재시작 (Cmd+Q in Claude Code → 재실행) — 새 스킬·에이전트 로드.
+
+**버전 확인:**
+
+```bash
+npx oh-my-design-cli --version       # 프로젝트에 깔린 버전
+npm view oh-my-design-cli version    # npm registry 최신
+```
+
+**각 릴리스 변경 내용:** [CHANGELOG.md](./CHANGELOG.md). 모든 릴리스 항목에 skill·agent·hook·CLI·data 변경 명시. re-install 외에 마이그레이션(예: `DESIGN.md` frontmatter 스키마 변경) 필요한 변경은 해당 entry 최상단에 표시.
+
 ## OmD v0.1 Philosophy Layer
 
 Google Stitch의 9개 섹션 위에 OmD가 더하는 6개:

@@ -37,6 +37,27 @@ Then restart your agent (Cmd+Q in Claude Code, then relaunch) so the new skills 
 
 That is the only CLI command you will run. Everything else is natural language to your agent.
 
+## Upgrading
+
+Skills and agents evolve every release. To pick up the latest bundle in an existing project:
+
+```bash
+npx oh-my-design-cli@latest install-skills
+```
+
+Idempotent. Managed files (those carrying the `<!-- omd:installed-skill -->` marker at the top) are refreshed in place. Files you edited that don't have the marker are left untouched (status `skipped-drift`). Pass `--force` if you really want to overwrite your custom edits.
+
+Restart your agent after re-running so the refreshed skills + agents are loaded.
+
+**Check what's installed vs what's latest:**
+
+```bash
+npx oh-my-design-cli --version       # what your project currently uses
+npm view oh-my-design-cli version    # latest on the registry
+```
+
+**What's new each release:** [CHANGELOG.md](./CHANGELOG.md). Every release entry says what changed in the skills, agents, hooks, CLI, and data. If a change requires anything beyond a re-install — for example a migration of `DESIGN.md` frontmatter — it will be called out at the top of that entry.
+
 ## How to use omd with your AI
 
 Open Claude Code (or Codex / OpenCode) in your project. Just talk:

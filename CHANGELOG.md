@@ -1,5 +1,69 @@
 # Changelog
 
+User-facing changes to `oh-my-design-cli` and the bundled skill / agent files.
+
+After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (those carrying the `<!-- omd:installed-skill -->` marker) refresh automatically; your edits outside the marker block are preserved. See `Upgrading` in `README.md`.
+
+---
+
+## 1.3.9 — 2026-05-14
+
+- Docs only. `README.md` and `README.ko.md` gain an **Upgrading** section. `CHANGELOG.md` (this file) extended to cover the 1.2.x → 1.3.x line.
+- Docs page (`oh-my-design.kr/docs`) gains an Upgrading card.
+- No skill, agent, hook, CLI, or data change.
+
+## 1.3.8 — 2026-05-14
+
+- **`omd:harness` rule 9** (new): hero archetype catalog with 7 variants — `left-character`, `center-text`, `carousel`, `split-screen`, `editorial-magazine`, `dashboard-preview`, `quote-led`. Brand-vibe → archetype matching table. Same brand re-run → 2nd-rank archetype, so visual variation is automatic.
+- `experiment-meta.json` gains a `hero_archetype` field.
+- Per-archetype grep gates documented (e.g. `center-text` mandates `position:absolute = 0` in the hero block; `dashboard-preview` mandates `<img> = 0` + mock ≥ 50% of viewport).
+
+## 1.3.7 — 2026-05-14
+
+- **`omd:harness` rule 5** rewritten — header logo is a wordmark in a display font, not a separate icon mark. Anti-pattern list: DiceBear `shapes`+wordmark pairs, DiceBear `initials` chips, hand-drawn inline-svg logos, and dashed-box `[YOUR LOGO]` placeholders are all forbidden.
+- Brand-vibe → font + product-name matching table added (Bricolage Grotesque / Space Grotesk / DM Serif Display / Fraunces, all SIL OFL via Google Fonts).
+- `omd:asset-fetch` §1 rewritten to match.
+
+## 1.3.6 — 2026-05-13
+
+- **New skill `omd:experiment-gallery`** — builds a single `index.html` that previews every brand experiment under a folder as iframe-scaled cards with archetype badges, wow ratings, multi-turn deltas, and per-brand IP audit. Reusable across batches.
+- **`omd:reference-capture` Phase 3.9** (new): browser-harness fast-path auto-detect. When the user has `browser-harness` (https://github.com/browser-use/browser-harness) installed and Chrome with `--remote-debugging-port=9222`, the skill drives live computed-style capture via CDP — measured 3-5× faster than playwright MCP. Falls back to playwright MCP otherwise.
+- **`omd:harness` rule 10** (new): IntersectionObserver reveal safety net mandatory. `@keyframes failsafeReveal` + `html.js-ready` gate + reduced-motion guard. Stops the recurring "fullpage screenshot has blank sections below the fold" regression.
+
+## 1.3.5 — 2026-05-13
+
+- **New skill `omd:asset-fetch`** — free-license asset catalog with verified-200 CDN URLs. DiceBear (CC0 avatars: notionists / lorelei / personas / adventurer / fun-emoji), Lucide (ISC icons), Heroicons (MIT), Tabler (MIT), Picsum (CC0 photos with deterministic seeds), Loremflickr (Flickr-CC photos with deterministic locks), and SIL OFL display fonts (Bricolage Grotesque, Space Grotesk, DM Serif Display, Fraunces, Pretendard, Wanted Sans, Noto Sans KR).
+- **`omd:harness` rule 6** tightened — generator must read from `omd:asset-fetch`. Handcraft inline-svg characters / icons / logos forbidden. CDN call fails → fall back to a brand-color CSS gradient placeholder. Provenance comment `<!-- omd-asset: source=<url>, license=<license>, fetched=<ISO> -->` mandatory on any saved asset file (e.g. `assets/illustrations/hero-character.svg`).
+
+## 1.3.4 — 2026-05-13
+
+- **`omd:harness` rule 7**: single shared `.container-inner` class enforces consistent horizontal padding across `<header>`, `.hero`, sections, `<footer>`. Stops the "header offset 24px from hero" class of bugs on wide viewports.
+- **`omd:harness` rule 8**: hero composition decomposed into separate elements (`.hero-character`, `.hero-chart`, `.hero-stat-card`, `.hero-ornament`). Single-SVG-with-everything forbidden — asset swap no longer destroys the scene.
+- **`omd:reference-capture` Phase 4.0** (new): `.live-inspect-proof.json` mandatory with ≥ 5 raw samples from playwright `browser_evaluate`. If `tokens.json#live_overrides` ends up byte-equal to canonical, the block is deleted (drift-detection: live inspect didn't really run).
+
+## 1.3.3 — 2026-05-13
+
+- Wordmark-only logo pattern introduced in `omd:asset-fetch` §1 (rewritten further in 1.3.7).
+- `omd:asset-fetch` becomes the single source of truth for which CDN URLs the generator may use.
+
+## 1.3.2 — 2026-05-13
+
+- Deferred experiment: a `clone` / `inspired` mode toggle that turned out to be the wrong split. Removed in 1.3.3 in favor of a single-mode flow.
+
+## 1.3.1 — 2026-05-13
+
+- Skill descriptions made count-agnostic. Replaced hard-coded `"67개 / 78개 / 88개 reference"` strings with `"실제 기업 reference"` so the description never drifts with the reference count. `omd:init` and `omd:harness` SKILL.md descriptions updated.
+
+## 1.3.0 — 2026-05-13
+
+- **New skill `omd:reference-capture`** — live brand-site CDP / playwright inspect. Writes `assets/_reference/<id>/` with `tokens.json`, `structure.json`, `fonts.json`, `screenshots/{hero-desktop,hero-mobile}.png`, `LICENSE-NOTE.md`, and `attribution.md`. The captured material is reference-only and never embedded in user product DOM.
+- **`omd:init` CLI drift fix**: the skill body referenced `omd init recommend` and `omd init prepare` subcommands the CLI never actually exposed. Rewritten to use the bundled fingerprints + Bash directly. Skill is now self-contained.
+
+## 1.2.0 — 2026-05-13
+
+- 10 new Korean references (78 → 88 total). Fingerprints + DESIGN.md files now ship in the npm tarball: `socar`, `gangnamunni`, `kakaopay`, `zigzag`, `29cm`, `ably`, `banksalad`, `zigbang`, `wanted`, `remember`.
+- Web `api/references/route.ts`, `lib/logos.ts`, `lib/homepage-urls.ts` mappings extended for the new IDs. `tokens.ts` `BRAND_COLORS` const extended.
+
 ## 1.1.0 — 78 references (+11 Korean cluster including KRDS)
 
 The reference bundle expanded from 67 → 78 and the npm tarball now actually carries them.
