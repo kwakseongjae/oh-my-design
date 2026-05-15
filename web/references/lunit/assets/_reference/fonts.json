@@ -1,0 +1,24 @@
+{
+  "id": "lunit",
+  "source": "live CDP getComputedStyle on www.lunit.io 2026-05-14",
+  "stacks_observed": [
+    "Lexend, system-ui, sans-serif",
+    "sans-serif",
+    "Arial",
+    "ClashGrotesk, system-ui, sans-serif"
+  ],
+  "primary_display": "ClashGrotesk",
+  "primary_text": "Lexend",
+  "weights_observed": {
+    "h1": 400,
+    "h2": 400,
+    "body": 300,
+    "body_sm": 400,
+    "nav": 400
+  },
+  "rationale": [
+    "Lexend: designed by Bonnie Shaver-Troup et al. specifically to improve reading proficiency. Pairing it with clinical/oncology copy signals 'we care about how this is read'.",
+    "ClashGrotesk: contemporary geometric grotesk with humanist warmth in the lowercase a/g/e. Chosen over Inter/Söhne/Helvetica to avoid both 'tech-startup' and 'corporate-pharma' tropes.",
+    "Both faces are LIGHT-weight defaults, an anti-pharma move — pharma marketing defaults to semibold/bold for legal-confidence; Lunit goes the opposite way."
+  ]
+}

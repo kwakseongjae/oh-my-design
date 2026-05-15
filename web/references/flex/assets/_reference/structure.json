@@ -1,0 +1,58 @@
+{
+  "_source": "Live CDP inspect of https://flex.team/ — 2026-05-14",
+  "url": "https://flex.team/",
+  "title": "flex – 모든 HR 데이터 flex 하나로",
+  "viewport": { "w": 1280, "h": 720 },
+  "page_shape": {
+    "header": { "present": true, "height_px": 117, "theme": "dark", "bg": "transparent-over-black-hero" },
+    "nav":    { "present": true, "padding": "0px 60px", "items": ["서비스", "블로그", "리소스", "플렉스팀 채용", "로그인", "도입 문의하기"] },
+    "main":   { "present": true, "height_px": 7533, "width_px": 1280 },
+    "footer": { "present": true },
+    "sections": 7
+  },
+  "hero": {
+    "kind": "dark-mode",
+    "bg": "#000000",
+    "text": "#FFFFFF",
+    "padding": "160px 60px",
+    "height_px": 860,
+    "h1_size": "28px (compact display)",
+    "h1_text": "모든 HR 데이터 flex 하나로",
+    "subhead": "데이터가 유기적으로 흐를 때 팀은 …"
+  },
+  "intro_section": {
+    "kind": "manifesto-cards",
+    "bg": "#FFFFFF",
+    "padding": "240px 60px 96px",
+    "headline": "flex는 조직이 일하는 방식을 바꿉니다.",
+    "headline_size": "52px / 62.4px / -1.56px tracking / 700",
+    "card_grid": "3 dark cards (#2D3338) on white, 380px tall, 16px radius, 30px padding, elevated shadow"
+  },
+  "service_section": {
+    "headline": "구성원 관리를 위해 / 성장과 성과를 위해 / 안정적인 급여 운영을 위해 / 비용 관리와 절감을 위해",
+    "secondary_h3": "flex가 선택 받는 이유 · Human Relations Platform — flex · SERVICES",
+    "service_filter_pills": [
+      "구성원 · 조직 관리",
+      "근태 관리",
+      "전자계약서",
+      "워크플로우",
+      "인사이트"
+    ],
+    "pill_anatomy": {
+      "active":   { "bg": "rgba(29,29,31,0.04)", "shadow_ring": "rgba(29,29,31,0.24) 0 0 0 1px inset", "fontWeight": 700 },
+      "inactive": { "bg": "#FFFFFF",              "shadow_ring": "rgba(29,29,31,0.10) 0 0 0 1px inset", "fontWeight": 600 },
+      "radius": "10px",
+      "padding": "9px 12px",
+      "height_px": 39
+    }
+  },
+  "ctas_observed": [
+    "도입 문의하기", "flex 도입 문의하기 →", "무료 체험하기", "자세히 알아보기"
+  ],
+  "tone_observed": {
+    "promise_language": ["근본부터 해결", "한 곳에 모아 연결", "효율을 넘어 더 큰 성장"],
+    "addressee": "HR / 운영 리더 (B2B)",
+    "register": "고요한 권위. 마침표 많음. 명사형 종결과 평서형 혼용. 군더더기 없음."
+  },
+  "_verified": "2026-05-14"
+}

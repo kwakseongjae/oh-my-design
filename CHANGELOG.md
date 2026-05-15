@@ -6,6 +6,14 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.3.10 — 2026-05-14
+
+- **+10 KR references** (88 → 98): `kream`, `upbit`, `kbank`, `inflearn`, `wadiz`, `channeltalk`, `lunit`, `bunjang`, `flex`, `classum`. Each ships full DESIGN.md + `assets/_reference/{tokens,structure,fonts}.json` + `.live-inspect-proof.json` (≥ 5 raw_samples) per `omd:add-reference` skill.
+- Tier-1 official DS finding: **Channel Talk publishes Bezier** (github.com/channel-io/bezier-react, MIT) — first canonical KR SaaS DS in the catalog.
+- Numbers refreshed across surfaces: README badges + intro, README.ko.md, docs page, `web/public/llms.txt`, landing copy, root SEO metadata.
+- `web/src/app/api/references/route.ts` + `web/src/lib/logos.ts` register the 10 new brands (categories / country / display name / logo / domain fallback).
+- Audit log: `data/reference-audits/2026-05-14-kr10.md`.
+
 ## 1.3.9 — 2026-05-14
 
 - Docs only. `README.md` and `README.ko.md` gain an **Upgrading** section. `CHANGELOG.md` (this file) extended to cover the 1.2.x → 1.3.x line.

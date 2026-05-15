@@ -1,0 +1,110 @@
+{
+  "captured_at": "2026-05-14",
+  "surfaces": {
+    "home (/)": {
+      "title": "인프런 - 라이프타임 커리어 플랫폼",
+      "gnb": {
+        "bg": "rgb(255, 255, 255)",
+        "color": "rgb(33, 37, 41)",
+        "h": 65,
+        "boxShadow": "none",
+        "position": "sticky",
+        "borderBottom": "0px none rgb(33, 37, 41)"
+      },
+      "search_input": {
+        "bg": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "placeholder": "",
+        "radius": "8px",
+        "border": "0px none rgb(0, 0, 0)",
+        "padding": "0px",
+        "h": 36,
+        "fontSize": "16px"
+      },
+      "footer": {
+        "bg": "rgb(48, 55, 64)",
+        "color": "rgb(33, 37, 41)",
+        "padding": "0px"
+      },
+      "card_grid_sample": [
+        {
+          "tag": "article",
+          "cls": "mantine-Paper-root mantine-Card-root css-1fjjtca mantine-1z0jt7",
+          "bg": "rgba(0, 0, 0, 0)",
+          "radius": "8px",
+          "border": "0px none rgb(0, 0, 0)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "w": 230,
+          "h": 286
+        },
+        {
+          "tag": "article",
+          "cls": "mantine-Paper-root mantine-Card-root css-1fjjtca mantine-1z0jt7",
+          "bg": "rgba(0, 0, 0, 0)",
+          "radius": "8px",
+          "border": "0px none rgb(0, 0, 0)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "w": 230,
+          "h": 306
+        },
+        {
+          "tag": "article",
+          "cls": "mantine-Paper-root mantine-Card-root css-1fjjtca mantine-1z0jt7",
+          "bg": "rgba(0, 0, 0, 0)",
+          "radius": "8px",
+          "border": "0px none rgb(0, 0, 0)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "w": 230,
+          "h": 286
+        }
+      ]
+    },
+    "courses (/courses)": {
+      "card_grid_sample": [
+        {
+          "tag": "article",
+          "cls": "mantine-Paper-root mantine-Card-root css-1fjjtca mantine-1z0jt7",
+          "bg": "rgba(0, 0, 0, 0)",
+          "radius": "8px",
+          "border": "0px none rgb(0, 0, 0)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "w": 230,
+          "h": 325
+        },
+        {
+          "tag": "article",
+          "cls": "mantine-Paper-root mantine-Card-root css-1fjjtca mantine-1z0jt7",
+          "bg": "rgba(0, 0, 0, 0)",
+          "radius": "8px",
+          "border": "0px none rgb(0, 0, 0)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "w": 230,
+          "h": 325
+        },
+        {
+          "tag": "article",
+          "cls": "mantine-Paper-root mantine-Card-root css-1fjjtca mantine-1z0jt7",
+          "bg": "rgba(0, 0, 0, 0)",
+          "radius": "8px",
+          "border": "0px none rgb(0, 0, 0)",
+          "boxShadow": "none",
+          "padding": "0px",
+          "w": 230,
+          "h": 325
+        }
+      ],
+      "card_count_on_first_load_estimate": 38
+    }
+  },
+  "ia_inferred": [
+    "GNB (sticky, h=65, white bg) — search-menu / 지식공유 / service-menu / 로그인",
+    "Category pill row (radius 32px) → category browse",
+    "Course tile grid (article.mantine-Card-root, radius 8px, 230×~310)",
+    "Filter + pagination footer (radius 8px buttons, primary green for active page)"
+  ]
+}

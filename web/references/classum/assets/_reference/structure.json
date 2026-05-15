@@ -1,0 +1,21 @@
+{
+  "id": "classum",
+  "surface": "business.classum.com homepage",
+  "verified_at": "2026-05-14",
+  "page_skeleton": [
+    { "section": "nav", "items": ["AI 기반 LMS", "학습 커뮤니티", "AI 상담 챗봇", "스킬 솔루션", "리소스", "로그인", "도입 문의"] },
+    { "section": "hero", "h1": "상담부터 학습까지, AI 중심의 에듀테크 솔루션", "sub": "흩어진 데이터를 모아 AI가 답하는 효율적인 운영 환경", "cta_primary": "도입 문의", "cta_secondary": "소개서 받기" },
+    { "section": "product_pillars", "items": ["AI LMS", "Learning Community", "Classum Connect (AI 상담)", "Skill Solution (telta.ai)"] },
+    { "section": "audience_split", "items": ["대학 (교수/학생/지원센터)", "기업 HRD"] },
+    { "section": "case_studies" },
+    { "section": "resources", "items": ["브로셔", "블로그", "채용"] },
+    { "section": "footer", "items": ["문의", "개인정보처리방침", "이용약관", "SNS(IG/FB/LI/YT)", "앱 다운로드(iOS/Android/Web)"] }
+  ],
+  "layout_signals": {
+    "container_bg": "#F6F6F9",
+    "card_radius_dominant": "20px",
+    "cta_radius": "8px",
+    "site_builder": "Webflow",
+    "live_chat": "Channel Talk"
+  }
+}

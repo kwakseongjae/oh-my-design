@@ -1,0 +1,137 @@
+{
+  "id": "wadiz",
+  "captured_at": "2026-05-14",
+  "method": "CDP browser :9222 attempted (blocked by --remote-allow-origins handshake 403) → fallback: direct curl of production CSS bundles + HTML surfaces",
+  "surfaces": [
+    {
+      "url": "https://www.wadiz.kr/",
+      "type": "home",
+      "html_bytes": 58290,
+      "captured": true
+    },
+    {
+      "url": "https://www.wadiz.kr/web/wreward/category/289",
+      "type": "category-listing",
+      "html_bytes": 58031,
+      "captured": true
+    },
+    {
+      "url": "https://www.wadiz.kr/web/main",
+      "type": "main-route",
+      "html_bytes": 58442,
+      "captured": true
+    },
+    {
+      "url": "https://static.wadiz.kr/main/main.css",
+      "type": "production-css-bundle",
+      "bytes": 936473,
+      "captured": true,
+      "value": "Authoritative — full token system in one file"
+    },
+    {
+      "url": "https://static.wadiz.kr/static/web/wui.css",
+      "type": "reset-css",
+      "bytes": 2385,
+      "captured": true,
+      "value": "Font stack canonical declaration"
+    }
+  ],
+  "raw_samples": [
+    {
+      "selector": ".Button_button__1U5se.Button_contained__2qbQa.Button_mint__2W1nI",
+      "role": "Primary CTA (filled mint)",
+      "border_color": "#00c4c4",
+      "background_color": "#00c4c4",
+      "color": "#fff",
+      "source": "main.css L:~grep-mint contained"
+    },
+    {
+      "selector": ".Button_button__1U5se.Button_mint__2W1nI:hover",
+      "role": "Primary CTA hover (outlined)",
+      "border_color": "#00c4c4",
+      "background_color": "#e6fafa",
+      "color": "#07abae",
+      "source": "main.css L:~grep-mint hover"
+    },
+    {
+      "selector": ".Button_button__1U5se.Button_tint__1II__.Button_mint__2W1nI",
+      "role": "Tint button (secondary mint)",
+      "border_color": "#e6fafa",
+      "background_color": "#e6fafa",
+      "color": "#00c4c4",
+      "source": "main.css L:~grep-mint tint"
+    },
+    {
+      "selector": ".Checkbox_icon__3Pv3C",
+      "role": "Checkbox checked icon",
+      "background_color": "#00c4c4",
+      "border": "1px solid #07abae",
+      "outline": "2px solid #00c4c4",
+      "source": "main.css L:~Checkbox"
+    },
+    {
+      "selector": ".LabelBadge_yellow__3S6Dx.LabelBadge_solid__25RIc",
+      "role": "Trending / hot-deal yellow label",
+      "background_color": "#fcc500",
+      "border": "1px solid #fcc500",
+      "color": "#fff",
+      "source": "main.css L:~LabelBadge"
+    },
+    {
+      "selector": ".LabelBadge_yellow__3S6Dx.LabelBadge_tint__1FLYB",
+      "role": "Trending tint badge",
+      "background_color": "#fffae1",
+      "color": "#fcc500",
+      "source": "main.css L:~LabelBadge tint"
+    },
+    {
+      "selector": "body (wui.css reset)",
+      "role": "Document body",
+      "font_family": "pretendard,-apple-system,blinkmacsystemfont,system-ui,Roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,sans-serif",
+      "font_size": "15px",
+      "source": "wui.css L:~body"
+    },
+    {
+      "selector": ".CardThumbnail_thumbnail__3bDBJ",
+      "role": "Reward card thumbnail",
+      "border_radius": "8px (inherited via CardSpinner_container)",
+      "transition": "opacity .25s ease-in-out",
+      "source": "main.css L:~CardThumbnail"
+    }
+  ],
+  "token_frequencies": {
+    "border_radius_8px": 112,
+    "border_radius_4px": 56,
+    "border_radius_3px": 26,
+    "border_radius_16px": 24,
+    "border_radius_50pct": 30,
+    "font_weight_400": 393,
+    "font_weight_700": 358,
+    "font_weight_500": 109,
+    "font_size_14px": 261,
+    "font_size_12px": 184,
+    "font_size_16px": 177,
+    "color_ffffff": 250,
+    "color_191f28": 208,
+    "color_4e5968": 154,
+    "color_f2f5f8": 130,
+    "color_6b7684": 123,
+    "color_00c4c4_brand_mint": 111,
+    "color_07abae_brand_mint_hover": 40,
+    "color_e6fafa_brand_mint_tint": 11,
+    "color_bef5f5_brand_mint_accent": 7,
+    "color_ff5959_alert_red": 62,
+    "color_4672f9_info_blue": 14,
+    "color_fcc500_label_yellow": 9,
+    "color_00af84_success_green": 4
+  },
+  "named_button_variants_observed": ["mint", "blue", "red", "yellow", "green", "contained", "tint", "outlined", "active", "loading", "block", "circular", "badge"],
+  "css_variables_root": {
+    "--white-68": "rgba(255,255,255,.68)",
+    "--black-84": "rgba(0,0,0,.84)",
+    "--black-54": "rgba(0,0,0,.54)",
+    "--pale-grey-30": "rgba(240,242,245,.3)",
+    "--dark": "#1d2129"
+  },
+  "fallback_notes": "CDP WebSocket connection blocked by Chrome --remote-allow-origins guard (handshake 403). Substituted with direct curl of production CSS bundle (main.css = 936KB authoritative source) + 3 HTML surface snapshots. Verifiable: any reader can re-run `curl -sL https://static.wadiz.kr/main/main.css | grep '#00c4c4' | wc -l` and reproduce the 111 occurrences."
+}

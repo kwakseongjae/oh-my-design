@@ -119,12 +119,33 @@ Phase 2 끝난 직후, build subagent들의 return summary를 모아서 작성. 
 `omd:add-reference` SYNC 모드와 동일. **반드시 build 끝난 직후, promo 전에** 실행.
 
 ### 갱신 대상
-1. **References count** (marketing surfaces only — skill 내부는 count-agnostic 유지):
-   - `README.md`, `README.ko.md`, `README.ja.md`, `README.zh-TW.md` (예: "78 brand" → "88 brand")
-   - `web/src/components/landing-v2/{hero,sections,the-wall,tokens}.tsx`
-   - `web/public/llms.txt` — 카탈로그 lines
-   - **`skills/*/SKILL.md`, `agents/*.md`는 절대 숫자 박지 말 것** — 2026-05-13 이후 정책으로 count-agnostic 유지. "88개 레퍼런스" 같은 표현은 surface하지 않음. Claude 라우팅이 description에 의존하는데 count가 stale 되면 라우팅 의도와 어긋남. 카운트를 노출하려면 런타임에 `fingerprints.json.count`를 읽어서 표시.
-   - 검증: `grep -rn "[0-9]\{2\}개 (레퍼런스|reference|카탈로그)" skills/ agents/` 결과 0 (regression guard)
+1. **References count** (marketing surfaces only — skill 내부는 count-agnostic 유지). **이전 카운트는 `data/reference-fingerprints.json.count`에서 읽어서 → 새 카운트로 교체**. 직전 batch가 +10 했더라도 카운트는 fingerprints에서 산출 — hardcoded "78 → 88" 식 가정 금지:
+   - `README.md`, `README.ko.md`, `README.ja.md`, `README.zh-TW.md` — badge SVG + 본문 + 디렉토리 트리
+   - `web/src/components/landing-v2/{hero,sections,the-wall,tokens}.tsx` — `BRAND_COLORS` map에 신규 entry, 본문 "X real brands", "X-card wall" 주석
+   - `web/public/llms.txt` — 카탈로그 lines + "## N reference brands bundled" 헤더 + "Examples:" 리스트에 신규 brand append
+   - **SEO layouts (이전 batch 누락 함정 — 명시):**
+     - `web/src/app/layout.tsx` — root description / openGraph / twitter / JSON-LD `text` 필드 (5~7곳)
+     - `web/src/app/docs/layout.tsx` — description
+     - `web/src/app/docs/page.tsx` — body 텍스트 "X DESIGN.md files", "X real design systems"
+     - `web/src/app/builder/layout.tsx` — description × 3 (default / openGraph / twitter)
+     - `web/src/app/design-systems/layout.tsx` — description × 2 (default / openGraph)
+   - **컴포넌트 본문 카피 (이전 batch 누락 함정):**
+     - `web/src/components/reference-preview.tsx` — JSDoc 주석 "across all N references"
+     - `web/src/components/survey/result-card.tsx` — "browse all N references" CTA
+   - **`skills/*/SKILL.md`, `agents/*.md`는 절대 숫자 박지 말 것** — count-agnostic. 카운트 노출 필요시 런타임에 `fingerprints.json.count` 읽어서 표시.
+   - **Regression guard (Phase 3 끝나기 전 필수 실행):**
+     ```bash
+     # 1. skill / agent count contamination
+     grep -rn "[0-9]\{2\}개 (레퍼런스|reference|카탈로그)" skills/ agents/ .claude/skills/ .claude/agents/  # 0 expected
+     # 2. stale number sweep — old count + the one before
+     OLD_COUNT_PREV=$(($(jq .count data/reference-fingerprints.json) - 10))
+     OLD_COUNT_PREV2=$((OLD_COUNT_PREV - 10))
+     grep -rn "\\b${OLD_COUNT_PREV}\\b\\|\\b${OLD_COUNT_PREV2}\\b" \
+       --include="*.md" --include="*.ts" --include="*.tsx" --include="*.txt" \
+       README*.md web/src web/public 2>/dev/null \
+       | grep -vE "(node_modules|\\.next|references/|design-md/|\\.promo/|CHANGELOG|tasks/|reference-audit)" \
+       | grep -iE "(reference|brand|design.system|companies|company)"  # 0 expected
+     ```
 2. **Symlink sanity**: 루트 `references` → `web/references` (이미 있으면 skip)
 3. **Fingerprints**: `data/reference-fingerprints.json`, `.claude/data/reference-fingerprints.json`, `.codex/data/reference-fingerprints.json` 새 10 entry append (셋 다 byte-identical 유지)
 4. **API 매핑 4종** (`web/src/app/api/references/route.ts`) — **이전 batch에서 누락된 함정**. 추가 안 하면 Builder Step 1에서 brand가 'Other / United States'로 분류되어 한국 필터에 안 잡힘:
@@ -208,12 +229,35 @@ Phase 2 끝난 직후, build subagent들의 return summary를 모아서 작성. 
 - 이렇게 build 시점에 박아두면 Phase 3는 단순 집계만 함 → 중복 리서치 제거
 
 ### Hyperframes 단계
-1. **scaffold**: `npx hyperframes init <dir> --resolution portrait --non-interactive --skip-transcribe`
-2. **edit `index.html`**: 카드 시퀀스 합성. timeline은 GSAP 또는 hyperframes 기본 `data-anim`.
-3. **assets**: 각 brand 로고를 `assets/logos/<id>.svg` 로 수집 (Tier 1 사이트에서 `<link rel="icon">` 또는 brand kit URL — 실패 시 텍스트 로고 fallback)
-4. **lint**: `npx hyperframes lint`
+1. **scaffold**: `npx hyperframes init <dir> --resolution portrait --non-interactive --skip-transcribe`. 직전 batch (`.promo/<prev>/index.html`)가 있으면 **반드시 읽고 layout/CSS/모션 패턴을 그대로 미러** — 시리즈 톤 일관성.
+2. **assets/logos/** (mandatory — 이전 batch 누락 함정):
+   - 모든 brand에 대해 `assets/logos/<id>.png` 다운로드. 1차: Tier 1 사이트의 `<link rel="icon" sizes="256">` / `apple-touch-icon`. 2차 fallback: `https://www.google.com/s2/favicons?domain=<domain>&sz=256`. 3차: `https://github.com/<org>.png?size=128` (GitHub org avatar).
+   - **검증**: `file assets/logos/*.png` → 모두 `PNG image data` 출력. 1KB 미만은 retry (다른 source).
+   - **mandatory `<img class="logo">`**: 각 brand 카드 좌상단(=wordmark 위)에 `<img class="logo" src="assets/logos/<id>.png" alt="<id>" />` 삽입. wordmark만 텍스트로 두는 패턴 금지 — 직전 batch (2026-05-14 kr10) 가 이걸 빼먹어 재렌더 사태 발생.
+   - **CSS template** (직전 batch 2026-05-13 패턴 그대로):
+     ```css
+     .card .left .logo {
+       width: 140px; height: 140px;
+       border-radius: 28px;
+       background: #fff;
+       padding: 12px;
+       object-fit: contain;
+       box-shadow: 0 8px 24px rgba(0,0,0,.08);
+     }
+     ```
+   - **GSAP intro**: `tl.from(logo, { scale: 0.7, opacity: 0, ease: "back.out(2)" })` — 카드 entry 모션의 첫 비트.
+3. **edit `index.html`**: 카드 시퀀스 합성. timeline은 GSAP 또는 hyperframes 기본 `data-anim`.
+4. **lint**: `npx hyperframes lint` — 0 errors 확인.
 5. **render**: `npx hyperframes render -o ../<batch-slug>.mp4 -q standard -f 30`
-6. **verify**: 파일 사이즈 > 1MB, duration ≥ 30s (`ffprobe`)
+6. **verify**: 파일 사이즈 > 1MB, duration ≥ 30s (`ffprobe`).
+7. **logo presence assertion** (regression guard, render 후):
+   ```bash
+   # index.html에 모든 10 brand logo가 박혀있는지 확인
+   for id in <10-brand-ids>; do
+     grep -q "assets/logos/${id}.png" .promo/<batch>/index.html || echo "MISSING LOGO: $id"
+   done
+   ```
+   하나라도 missing이면 render 무효 — 다시 작업.
 
 ### 자막/오디오
 - TTS는 옵션. 기본은 무음 + 한글 텍스트 큰 활자. 사용자가 명시적으로 요청 시 `hyperframes tts` 사용.
@@ -237,6 +281,9 @@ Phase 2 끝난 직후, build subagent들의 return summary를 모아서 작성. 
 - ❌ "Verified footer만 박고 §4 본문 안 건드림" (omd:add-reference 와 동일 룰)
 - ❌ TTS/음악을 사용자 컨펌 없이 추가
 - ❌ logo를 자체 그리기 (public brand asset URL 또는 fetch 실패 시 텍스트 로고)
+- ❌ **카드에 logo `<img>` 없이 wordmark 텍스트만 박는 것** — 2026-05-14 kr10 재렌더 trigger. 카드 좌상단 logo PNG는 hard requirement.
+- ❌ Phase 3 끝났는데 regression guard grep을 안 돌림 (stale number 누락의 1순위 원인)
+- ❌ `web/src/app/builder/layout.tsx` · `web/src/app/design-systems/layout.tsx` · `web/src/app/layout.tsx`의 SEO description 미갱신 (이전 2 batch 연속 누락된 surface — 체크리스트 명시됨)
 - ❌ promo composition을 Phase 2 결과(_promo.json) 없이 작성
 
 ---

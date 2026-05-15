@@ -100,6 +100,17 @@ const LOGO_MAP: Record<string, LogoSource> = {
   zigbang:       { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=zigbang.com&sz=256' },
   wanted:        { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=wanted.co.kr&sz=256' },
   remember:      { type: 'favicon', slug: 'https://cdn.rememberapp.co.kr/logos/remember/rmbr_og_image.png' },
+  // 2026-05-14 KR-10 batch
+  kream:         { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=kream.co.kr&sz=256' },
+  upbit:         { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=upbit.com&sz=256' },
+  kbank:         { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=kbanknow.com&sz=256' },
+  inflearn:      { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=inflearn.com&sz=256' },
+  wadiz:         { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=wadiz.kr&sz=256' },
+  channeltalk:   { type: 'github', slug: 'channel-io' },
+  lunit:         { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=lunit.io&sz=256' },
+  bunjang:       { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=bunjang.co.kr&sz=256' },
+  flex:          { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=flex.team&sz=256' },
+  classum:       { type: 'favicon', slug: 'https://www.google.com/s2/favicons?domain=classum.com&sz=256' },
 
   // ── Taiwan Tech ──
   pinkoi:        { type: 'github', slug: 'pinkoi' },
@@ -234,6 +245,17 @@ const DOMAIN_OVERRIDES: Record<string, string> = {
   zigbang: 'zigbang.com',
   wanted: 'wanted.co.kr',
   remember: 'rememberapp.co.kr',
+  // 2026-05-14 KR-10 batch
+  kream: 'kream.co.kr',
+  upbit: 'upbit.com',
+  kbank: 'kbanknow.com',
+  inflearn: 'inflearn.com',
+  wadiz: 'wadiz.kr',
+  channeltalk: 'channel.io',
+  lunit: 'lunit.io',
+  bunjang: 'bunjang.co.kr',
+  flex: 'flex.team',
+  classum: 'classum.com',
 };
 
 export function getLogoFallbackUrl(id: string): string | null {

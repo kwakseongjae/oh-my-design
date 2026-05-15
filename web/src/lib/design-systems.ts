@@ -55,6 +55,16 @@ const OG_IMAGES: Record<string, string> = {
   coupang: "https://news.coupang.com/wp-content/uploads/2023/01/Coupang_2_1609.jpg",
   kakaobank: "https://www.kakaobank.com/view/images/kkb_og_img.png",
   krds: "https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png",
+  // 2026-05-13 KR-10 batch (harvested 2026-05-15)
+  kakaopay: "https://i0.wp.com/story.kakaopay.com/wp-content/uploads/2024/03/kakaopay_thumb.png",
+  zigzag: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/4Zzt/image/-3UDP-Htu127zH73hWgxU-DsWNg.jpg",
+  gangnamunni: "https://blog.gangnamunni.com/contents/posts/238d9338-d3d4-80ac-a8c6-da95db5bc8bc/cover/7d41f721-4cf0-408c-b2fd-f7aa403a5cbe.png",
+  banksalad: "https://avatars.githubusercontent.com/u/71009899?s=280&v=4",
+  socar: "https://design.socar.kr/og.jpg",
+  remember: "https://cdn.rememberapp.co.kr/logos/remember/rmbr_og_image.png",
+  // wanted: design.wanted.co.kr fetch failed — falls through to logo thumbnail
+  // 2026-05-14 KR-10 batch — only channeltalk has Tier-1 DS catalog entry
+  channeltalk: "https://opengraph.githubassets.com/d5fd6836ec938de2c8399cf28b2ceabc49104fbbf86e937f9e89983f1b50d638/channel-io/bezier-react",
 };
 
 const DESIGN_SYSTEMS: Record<string, Omit<DesignSystemInfo, "refId" | "ogImage">> = {
@@ -351,6 +361,13 @@ const DESIGN_SYSTEMS: Record<string, Omit<DesignSystemInfo, "refId" | "ogImage">
     url: "https://github.com/banksalad",
     type: "brand",
     description: "Banksalad's public GitHub org including styleguide repos and BPL (Banksalad Product Library) reference material.",
+  },
+  // 2026-05-14 KR-10 batch — Channel Talk is the only Tier-1 official DS positive
+  channeltalk: {
+    name: "Bezier",
+    url: "https://github.com/channel-io/bezier-react",
+    type: "system",
+    description: "Channel Talk's open-source design system — Bezier (MIT). Inter + Noto KR/JP type stacks, token/component/icon packages, marketing-vs-product type cliff documented.",
   },
 };
 

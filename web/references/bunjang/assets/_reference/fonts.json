@@ -1,0 +1,33 @@
+{
+  "$schema": "omd.fonts/0.1",
+  "captured_at": "2026-05-14",
+  "source": "live CDP getComputedStyle on https://m.bunjang.co.kr/ — fontFamily aggregated across 211 sampled DOM nodes (desktop + mobile)",
+  "stack": [
+    {
+      "family": "Pretendard Variable",
+      "weight-axis": "100-900 (variable font)",
+      "usage": "100% of UI text (Korean + Latin + numerals)",
+      "fallback": "sans-serif",
+      "rationale": "Pretendard is the de-facto Korean web/app body face — open-source, optimized for hangul + latin mixing. Bunjang exclusively serves Pretendard Variable for crisp weight transitions (400 body → 500 secondary → 700 price emphasis) without round-tripping additional font files.",
+      "_note": "no Apple SD Gothic Neo, no Noto Sans KR, no custom display face. The entire brand voice rides on Pretendard's weight axis."
+    }
+  ],
+  "weights-observed": [400, 500, 700],
+  "weight-roles": {
+    "400": "body, link, CTA label, search input",
+    "500": "secondary body, product title (in cards), meta",
+    "700": "price, section title, emphasized label"
+  },
+  "type-scale-observed": {
+    "20px": { "weight": 700, "role": "section title" },
+    "18px": { "weight": 700, "role": "subsection title / large-emphasis" },
+    "16px": { "weight": [400, 700], "role": "default body / CTA label (400) and price (700)" },
+    "15px": { "weight": 500, "role": "search input placeholder + value" },
+    "14px": { "weight": 500, "role": "product card title" },
+    "13px": { "weight": 700, "role": "compact emphasized chip" },
+    "12px": { "weight": 500, "role": "meta / timestamp / region / heart-count" }
+  },
+  "letter-spacing": "browser default (normal) for all observed nodes — Bunjang does not tighten or loosen the hangul stem",
+  "_no-display-face": true,
+  "_self-hosted": "Pretendard Variable is loaded from a Bunjang CDN host (likely static.bunjang.co.kr) — verify via Network panel for exact .woff2 URL"
+}

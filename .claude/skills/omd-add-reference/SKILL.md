@@ -255,6 +255,65 @@ return out.slice(0, 30);
 - ❌ 검증 footer 누락
 - ❌ 충돌 silent 해결
 - ❌ getdesign.md 표시값을 Tier 1로 취급 (Tier 2임)
+- ❌ **새 reference 추가 후 SYNC phase 안 돌리고 종료** — fingerprints / API mapping / logos / docs SEO 카운트가 mismatch. 단일 추가도 SYNC 필수 (아래 Phase 5 참조).
+- ❌ **§1 헤더를 비표준으로 변경** — `## 1. Visual Theme & Atmosphere` 가 catalog canonical. "Overview" / "Identity" / "Foundation tokens" / `## §1` 등 변형 쓰면 web preview Hero 카드의 description이 빈칸으로 렌더 (2026-05-14 kr10 batch에서 flex/upbit/kbank 3건 발생). 모든 §N 헤더는 `## N. <Title>` 형식 + §1은 무조건 `Visual Theme & Atmosphere` + 첫 단락은 산문 prose (테이블/리스트/서브헤딩 금지). 검증: `grep -L '^## 1\. Visual Theme' references/*/DESIGN.md` 결과 0.
+
+---
+
+## Phase 5 — SYNC (단일/batch 공통, 새 reference 추가 직후 mandatory)
+
+새 reference 1개라도 추가됐다면 종료 직전 반드시 실행. Batch 추가는 `omd:batch-launch` Phase 3가 동일 작업을 수행 — 단일 추가일 때 이 Phase로 동등한 처리 보장.
+
+### 1. Fingerprints (3 copies, 반드시 byte-identical)
+- `data/reference-fingerprints.json` · `.claude/data/reference-fingerprints.json` · `.codex/data/reference-fingerprints.json`
+- 신규 entry append + `count` bump + `generated_at` 갱신
+
+### 2. API + logo + color 매핑 (이전 batch 누락 함정)
+- `web/src/app/api/references/route.ts` — `CATEGORIES`, `COUNTRIES`, `DISPLAY_NAMES` 모두 추가 (셋 다 — 하나라도 빠지면 Builder/Catalog 필터에서 brand가 'Other / United States' 폴백)
+- `web/src/lib/logos.ts` — `LOGO_MAP` + `DOMAIN_OVERRIDES`
+- `web/src/components/landing-v2/tokens.ts` — `BRAND_COLORS`
+
+### 3. Marketing surfaces (count 갱신, count는 fingerprints에서 산출)
+- READMEs × 4 (en/ko/ja/zh-TW) — badge SVG + 본문
+- `web/public/llms.txt` — 헤더 + Examples 리스트 append
+- `web/src/components/landing-v2/{hero,sections,the-wall,tokens}.tsx`
+
+### 4. SEO + body copy (이전 2 batch 연속 누락된 surface — 명시)
+- `web/src/app/layout.tsx` — description / openGraph / twitter / JSON-LD `text` 필드 (5~7곳)
+- `web/src/app/docs/layout.tsx` — description
+- `web/src/app/docs/page.tsx` — body "X DESIGN.md files" / "X real design systems"
+- `web/src/app/builder/layout.tsx` — description × 3
+- `web/src/app/design-systems/layout.tsx` — description × 2
+- `web/src/components/reference-preview.tsx` — JSDoc 주석
+- `web/src/components/survey/result-card.tsx` — "browse all N references" CTA
+
+### 5. 공식 DS 등재 (`_promo.json.design_system` 있을 때만)
+- `web/src/lib/design-systems.ts` `DESIGN_SYSTEMS`에 entry 추가
+- URL `curl -sIL` 200 재검증
+- 자동으로: Builder Step 3 DS 버튼 + Playground reference picker + `/design-systems` 카탈로그 surface
+
+### 6. design-md/ 미러 sync
+- `rm -rf design-md && cp -RL web/references design-md` (publish용 git-tracked 미러)
+
+### 7. Regression guard (Phase 5 끝나기 전 mandatory)
+```bash
+# 이전 카운트와 그 이전 카운트, 둘 다 stale 잔존 확인
+NEW=$(jq .count data/reference-fingerprints.json)
+PREV1=$((NEW - 10))
+PREV2=$((PREV1 - 10))
+grep -rn "\\b${PREV1}\\b\\|\\b${PREV2}\\b" \
+  --include="*.md" --include="*.ts" --include="*.tsx" --include="*.txt" \
+  README*.md web/src web/public 2>/dev/null \
+  | grep -vE "(node_modules|\\.next|references/|design-md/|\\.promo/|CHANGELOG|tasks/|reference-audit)" \
+  | grep -iE "(reference|brand|design.system|companies|company)"  # 0 expected
+
+# skill / agent count contamination
+grep -rn "[0-9]\\{2\\}개 (레퍼런스|reference|카탈로그)" skills/ agents/ .claude/skills/ .claude/agents/  # 0 expected
+```
+
+### 8. CHANGELOG + version bump (omd-cli memory rule: patch by default)
+- `package.json` patch bump (`0.0.1`) unless user said "minor"
+- `CHANGELOG.md` entry: `+N references — <id list>` + 신규 Tier-1 official DS 발견사항 highlight
 
 ## 트리거 (자연어 OK — 슬래시 없이 호출되어도 동작)
 

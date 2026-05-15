@@ -1,0 +1,35 @@
+{
+  "id": "wadiz",
+  "captured_at": "2026-05-14",
+  "primary_surfaces": [
+    { "url": "https://www.wadiz.kr/", "label": "Home (rewards funding feed)" },
+    { "url": "https://www.wadiz.kr/web/wreward/category/289", "label": "Category listing" },
+    { "url": "https://www.wadiz.kr/web/main", "label": "Main route" }
+  ],
+  "naming_pattern": "CSS Modules with BEM-ish `<Component>_<part>__<hash>`. Detected components: Button, LabelBadge, Card, CardThumbnail, CardSpinner, Checkbox, Loader, CountryListSection, ReversalLabelBadge, MainCarousel, RewardCard, Maker. Variant suffix is the role (`contained`, `tint`, `outlined`, `mint`, `blue`, `red`, `yellow`, `green`, `block`, `badge`, `circular`).",
+  "button_system": {
+    "shapes": ["contained (filled)", "outlined (default)", "tint (soft pastel fill)", "block (full-width)", "circular", "badge"],
+    "color_variants": ["mint (brand)", "blue (info / secondary CTA)", "red (alert / withdraw / refund)", "yellow (promo / highlight)", "green (success / paid)"],
+    "states": ["default", "hover", "active", "disabled", "loading"]
+  },
+  "label_badge_system": {
+    "color_variants": ["mint", "yellow", "blue", "red"],
+    "shapes": ["solid (filled)", "outlined (border-only)", "tint (pastel surface + saturated text)"],
+    "use": "Funding-state tags: '오픈예정', '오픈중', '얼리버드', '마감임박', '앵콜', '인기'"
+  },
+  "card_system": {
+    "default_radius": "8px (CardSpinner_container, CardThumbnail)",
+    "thumbnail_aspect": "fixed via background-size:cover, opacity fade-in 0.25s",
+    "error_thumbnail_bg": "#ffb9b9 (red tint, visual signal that image failed)"
+  },
+  "spacing_scale_hints_px": [4, 8, 12, 16, 20, 24, 32, 40, 48, 64],
+  "elevation_layers": [
+    "L0 page background — flat #ffffff",
+    "L1 surface alt #fafbfd — barely-perceptible alternation",
+    "L2 surface neutral #f2f5f8 — content shelf",
+    "L3 card resting — 0 6px 6px -1px #0a16461a + 0 0 5px #0a16460f",
+    "L4 card lift / hover — 0 32px 40px -2px #0a16461f + 0 0 5px #0a16460f",
+    "L5 modal — 0 16px 16px -1px #0a16461a + 0 0 5px #0a16460f"
+  ],
+  "screens_in_sample": ["home (rewards feed)", "category listing", "main route (mobile/redirect)"]
+}

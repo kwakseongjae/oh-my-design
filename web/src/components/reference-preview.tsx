@@ -2,7 +2,7 @@
 
 /**
  * Refero-style design system showcase — renders 5 sections from a parsed
- * DESIGN.md token set. Same regulation/spec across all 78 references.
+ * DESIGN.md token set. Same regulation/spec across all 98 references.
  *
  * Sections: Hero, Color Palette (grouped by role), Typography (Type Scale +
  * Fonts), Spacing & Shape (Spacing / Radius / Elevation), Guidelines (Do/Don't).

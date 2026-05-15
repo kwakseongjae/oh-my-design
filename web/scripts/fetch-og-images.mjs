@@ -43,6 +43,16 @@ const SITES = [
   ["supabase", "https://supabase.com/brand-assets"],
   ["together.ai", "https://www.together.ai/brand"],
   ["zapier", "https://brand.zapier.com"],
+  // 2026-05-13 KR-10 batch (brand-tier pages, og:image best-effort)
+  ["kakaopay", "https://story.kakaopay.com/"],
+  ["zigzag", "https://brunch.co.kr/@zigzag/73"],
+  ["gangnamunni", "https://blog.gangnamunni.com/post/welchis/"],
+  ["banksalad", "https://github.com/banksalad"],
+  ["socar", "https://design.socar.kr/"],
+  ["wanted", "https://design.wanted.co.kr/"],
+  ["remember", "https://remember.co.kr/about"],
+  // 2026-05-14 KR-10 batch — channeltalk publishes Bezier (only Tier-1 DS positive)
+  ["channeltalk", "https://github.com/channel-io/bezier-react"],
 ];
 
 function decodeEntities(s) {

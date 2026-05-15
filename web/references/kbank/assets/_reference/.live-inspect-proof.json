@@ -1,0 +1,215 @@
+{
+  "source_url": "https://www.kbanknow.com/ib20/mnu/PBKMAN000000",
+  "captured_at": "2026-05-14T10:56:33.197Z",
+  "method": "Chrome DevTools Protocol :9222 → Runtime.evaluate → getComputedStyle",
+  "operator": "omd:add-reference / browser-harness",
+  "raw_samples": [
+    {
+      "label": "body",
+      "selector": "body",
+      "tag": "BODY",
+      "classes": "",
+      "text_excerpt": "본문 바로가기\n주메뉴 바로가기\n \n개인\n기업\n은행소개\n상품안내\n고객센터\n혜택\n메인\n공지사항\n2026.05.06\n\nK-패스(모두의카드) 캐시백 지",
+      "rect": {
+        "w": 1280,
+        "h": 1126
+      },
+      "computed": {
+        "color": "rgb(2, 6, 22)",
+        "background-color": "rgb(255, 255, 255)",
+        "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+        "font-family": "\"Pretendard K Edition\", -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", sans-serif",
+        "font-size": "14px",
+        "font-weight": "400",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "border-radius": "0px",
+        "border": "0px none rgb(2, 6, 22)",
+        "box-shadow": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "1280px",
+        "height": "1125.59px",
+        "display": "block"
+      }
+    },
+    {
+      "label": "headline",
+      "selector": "h1, h2, .tit, [class*=\"title\"], [class*=\"Tit\"]",
+      "tag": "H1",
+      "classes": "logo",
+      "text_excerpt": " \n개인\n기업",
+      "rect": {
+        "w": 168,
+        "h": 25
+      },
+      "computed": {
+        "color": "rgb(2, 6, 22)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "font-family": "\"Pretendard K Edition\", -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", sans-serif",
+        "font-size": "0px",
+        "font-weight": "700",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "border-radius": "0px",
+        "border": "0px none rgb(2, 6, 22)",
+        "box-shadow": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "168px",
+        "height": "25px",
+        "display": "block"
+      }
+    },
+    {
+      "label": "body_text",
+      "selector": "p, .desc, [class*=\"desc\"], [class*=\"text\"]",
+      "tag": "P",
+      "classes": "",
+      "text_excerpt": "K-패스(모두의카드) 캐시백 지급 일정 지연 안내",
+      "rect": {
+        "w": 250,
+        "h": 20
+      },
+      "computed": {
+        "color": "rgb(2, 6, 22)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "font-family": "\"Pretendard K Edition\", -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", sans-serif",
+        "font-size": "13px",
+        "font-weight": "400",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "border-radius": "0px",
+        "border": "0px none rgb(2, 6, 22)",
+        "box-shadow": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "250px",
+        "height": "19.8984px",
+        "display": "block"
+      }
+    },
+    {
+      "label": "input",
+      "selector": "input, .input, [class*=\"input\"]",
+      "tag": "INPUT",
+      "classes": "",
+      "text_excerpt": "",
+      "rect": {
+        "w": 0,
+        "h": 0
+      },
+      "computed": {
+        "color": "rgb(0, 0, 0)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "font-family": "\"Pretendard K Edition\", -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", sans-serif",
+        "font-size": "14px",
+        "font-weight": "400",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "border-radius": "0px",
+        "border": "0px none rgb(0, 0, 0)",
+        "box-shadow": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "auto",
+        "height": "auto",
+        "display": "none"
+      }
+    },
+    {
+      "label": "logo",
+      "selector": ".logo, [class*=\"logo\"] img, header img",
+      "tag": "H1",
+      "classes": "logo",
+      "text_excerpt": " \n개인\n기업",
+      "rect": {
+        "w": 168,
+        "h": 25
+      },
+      "computed": {
+        "color": "rgb(2, 6, 22)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "font-family": "\"Pretendard K Edition\", -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", sans-serif",
+        "font-size": "0px",
+        "font-weight": "700",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "border-radius": "0px",
+        "border": "0px none rgb(2, 6, 22)",
+        "box-shadow": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "width": "168px",
+        "height": "25px",
+        "display": "block"
+      }
+    },
+    {
+      "label": "link",
+      "selector": "a",
+      "tag": "A",
+      "classes": "skip",
+      "text_excerpt": "본문 바로가기",
+      "rect": {
+        "w": 116,
+        "h": 38
+      },
+      "computed": {
+        "color": "rgb(255, 255, 255)",
+        "background-color": "rgb(1, 20, 167)",
+        "background": "rgb(1, 20, 167) none repeat scroll 0% 0% / auto padding-box border-box",
+        "font-family": "\"Pretendard K Edition\", -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", sans-serif",
+        "font-size": "14px",
+        "font-weight": "700",
+        "line-height": "18.2px",
+        "letter-spacing": "normal",
+        "border-radius": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "box-shadow": "none",
+        "padding": "10px 20px",
+        "margin": "0px",
+        "width": "75.8281px",
+        "height": "18.1953px",
+        "display": "block"
+      }
+    }
+  ],
+  "raw_sample_count": 6,
+  "css_variables_captured": 43,
+  "fonts_observed": 1,
+  "top_observed_colors": [
+    [
+      "rgb(2, 6, 22)",
+      355
+    ],
+    [
+      "rgb(77, 89, 111)",
+      38
+    ],
+    [
+      "rgb(255, 255, 255)",
+      37
+    ],
+    [
+      "rgb(1, 20, 167)",
+      4
+    ],
+    [
+      "rgb(237, 241, 247)",
+      1
+    ],
+    [
+      "rgb(243, 243, 240)",
+      1
+    ],
+    [
+      "rgb(60, 79, 96)",
+      1
+    ]
+  ]
+}

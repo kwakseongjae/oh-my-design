@@ -1,0 +1,56 @@
+{
+  "id": "kream",
+  "captured_at": "2026-05-14T10:55:53.466Z",
+  "home": {
+    "viewport": {
+      "w": 1280,
+      "h": 713
+    },
+    "header_present": true,
+    "global_header_height": "130px",
+    "primary_nav": [
+      "HOME",
+      "STYLE",
+      "SHOP"
+    ],
+    "search_in_header": false,
+    "card_count": 143,
+    "hero": "carousel of 1188×475 banner cards with 16px radius on #f5f5f5"
+  },
+  "search": {
+    "url": "/search?keyword=<q>",
+    "tabs": [
+      "상품",
+      "스타일",
+      "프로필"
+    ],
+    "filter_chips": [
+      "배송",
+      "카테고리",
+      "성별",
+      "색상",
+      "브랜드",
+      "사이즈",
+      "가격대"
+    ],
+    "category_quickrow": [
+      "스니커즈",
+      "반소매 티셔츠",
+      "샌들/슬리퍼",
+      "바람막이",
+      "숏 팬츠",
+      "긴소매 티셔츠",
+      "트레이닝 자켓",
+      "트레이닝 팬츠",
+      "후드 자켓"
+    ],
+    "popular_keyword_shortcuts": [
+      "air force",
+      "adidas",
+      "jordan",
+      "nike air max",
+      "nike dunk",
+      "puma"
+    ]
+  }
+}

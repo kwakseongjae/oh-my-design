@@ -1,0 +1,47 @@
+{
+  "id": "channeltalk",
+  "captured_at": "2026-05-14",
+  "url": "https://channel.io/en",
+  "viewport": {"w": 1280, "h": 713, "dpr": 2},
+  "method": "CDP getBoundingClientRect + getComputedStyle, 118 element samples",
+  "page_shell": {
+    "doc_height_px": 8029,
+    "regions": [
+      {"name": "global_nav", "y": "0–68", "elements": ["LogoLink", "Products popup", "ALF (AI Agent) popup", "Pricing", "Cases", "Resources popup", "Sign in", "Sign Up for Free CTA"]},
+      {"name": "hero", "y": "~120–540", "h1": "THE FUTURE OF\\nCUSTOMER SERVICE IS AI", "h1_size_px": 64, "h1_weight": 700, "h1_lh_px": 88, "h1_ls_px": -1.5, "primary_cta": {"label": "Sign Up for Free", "bg": "rgb(36,36,40)", "fg": "#fff", "radius": "18px", "padding": "8px 24px"}},
+      {"name": "hero_demo_overlay", "y": "544–1182", "w": 1136, "h": 638, "bg": "rgba(0,0,0,0.12)", "purpose": "video / interactive demo"},
+      {"name": "ai_section_dark", "y": "~1730–1900", "bg": "rgba(25,3,49,0.898)", "headlines": ["AI Handles The Routine", "You Handle The Strategy"], "size_px": 54, "weight": 600, "lh_px": 72, "ls_px": -1.5, "rhetoric": "two-line manifesto on dark plum canvas"},
+      {"name": "all_in_one_ai_messenger", "y": "~2050–2700", "headline_size_px": 48, "card_radius_px": 20, "card_example_bg": "rgb(250,154,240)", "card_example_h": 400, "subnav_chips": ["Inbox · All Chats In One Place", "Meet (Call)", "Team Chat", "Workflow", "Marketing", "Docs"]},
+      {"name": "let_ai_handle", "y": "~3900–4150", "headline": "Let AI Handle", "headline_color": "rgba(0,0,0,0.4)", "cta_subtle": {"label": "View Details", "bg": "rgba(0,0,0,0.05)", "radius": "16px", "padding": "8px 20px"}},
+      {"name": "enterprise_protection", "y": "~6430–6500", "headline": "Built for Enterprise Protection"},
+      {"name": "experience_cta_band", "y": "~6920–7300", "wrapper_radius_px": 32, "wrapper_pad_h_px": 16, "headline": "Experience It Yourself", "cta_label": "Sign Up for Free"}
+    ]
+  },
+  "global_nav": {
+    "logo_left_px": 78,
+    "menu_item_font_size_px": 15,
+    "menu_item_pad": "10px 16px 8px 0px",
+    "menu_item_color": "rgba(0,0,0,0.85)",
+    "underline_indicator": "0px 0px 2px border-bottom (3-side transparent + bottom 2px when active)",
+    "right_aligned_cta_bg": "rgb(36,36,40)",
+    "menu_toggle_button_bg": "#fff",
+    "menu_toggle_radius": "8px"
+  },
+  "card_atomic": {
+    "ai_messenger_card_radius": "20px",
+    "ai_messenger_card_first_bg_observed": "rgb(250,154,240)",
+    "ai_messenger_card_height_px": 400,
+    "ai_messenger_card_width_px": 1160
+  },
+  "buttons_atomic": {
+    "primary_hero": {"bg": "rgb(36,36,40)", "fg": "#fff", "radius": "18px", "padding": "8px 24px", "label_size_px": 18, "label_weight": 600, "label_lh_px": 26, "label_ls_px": -0.4, "h_px": 64, "w_px": 212},
+    "secondary_pill": {"bg": "rgba(0,0,0,0.05)", "fg": "rgba(0,0,0,0.85)", "radius": "16px", "padding": "8px 20px", "label_size_px": 20, "label_weight": 700, "label_lh_px": 30, "label_ls_px": -0.5, "h_px": 54},
+    "text_link": {"bg": "transparent", "fg": "rgba(0,0,0,0.6)", "padding": "4px 6px", "underline_on_hover_inferred": true}
+  },
+  "headings_atomic": {
+    "hero_h1": {"size_px": 64, "weight": 700, "lh_px": 88, "ls_px": -1.5, "color": "rgba(0,0,0,0.85)"},
+    "section_h2_xl": {"size_px": 54, "weight": 600, "lh_px": 72, "ls_px": -1.5, "color_on_dark": "rgba(25,3,49,0.898)"},
+    "section_h2_lg": {"size_px": 48, "weight": 600, "lh_px": 64, "ls_px": -1, "color": "rgba(0,0,0,0.85)"}
+  },
+  "interactive_chip_navigation_under_each_product_section": "horizontal scroller with Inbox / Meet (Call) / Team Chat / Workflow / Marketing / Docs / Reports — each pivots the section content"
+}

@@ -84,12 +84,23 @@ function loadDetail(id: string) {
   const accentMatch = designMd.match(/(?:accent|secondary).*?`(#[0-9a-fA-F]{6})`/i);
   const borderMatch = designMd.match(/(?:border.*?default|border.*?standard).*?`(#[0-9a-fA-F]{6})`/i);
 
-  const mood =
-    designMd
-      .match(/## 1\. Visual Theme.*?\n([\s\S]*?)(?=## 2\.)/)?.[1]
-      ?.trim()
-      .split("\n\n")[0]
-      ?.slice(0, 360) || "";
+  // Mood = first prose paragraph from §1. Canonical title is
+  // "## 1. Visual Theme & Atmosphere", but tolerate variants (Overview /
+  // Identity / Foundation / §N syntax) by matching ANY §1 header, then
+  // skipping leading table/list/subheading lines until a real paragraph.
+  const section1 =
+    designMd.match(/^##\s+(?:1\.|§1\b)[^\n]*\n([\s\S]*?)(?=^##\s+(?:2\.|§2\b))/m)?.[1] ?? "";
+  const moodParagraph = section1
+    .split(/\n\n+/)
+    .map((p) => p.trim())
+    .find((p) => {
+      if (p.length < 40) return false; // skip "What's design-noteworthy:" intros
+      // reject lists/tables/subheaders. NOTE: `**bold**` markdown opens with
+      // `*` too — only reject `-` / `*` / `+` followed by space (real bullet)
+      // or `1.` numbered list markers.
+      return !/^(#|\||-\s|\*\s|\+\s|\d+\.\s)/.test(p);
+    });
+  const mood = moodParagraph?.slice(0, 360) || "";
 
   return {
     id,

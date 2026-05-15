@@ -38,6 +38,12 @@ const CATEGORIES: Record<string, string> = {
   kakaopay: 'Fintech', banksalad: 'Fintech',
   zigzag: 'E-commerce', '29cm': 'E-commerce', ably: 'E-commerce',
   wanted: 'Productivity', remember: 'Productivity',
+  // 2026-05-14 KR-10 batch
+  kream: 'E-commerce', bunjang: 'E-commerce',
+  upbit: 'Fintech', kbank: 'Fintech', wadiz: 'Fintech',
+  inflearn: 'Productivity', classum: 'Productivity',
+  channeltalk: 'Productivity', flex: 'Productivity',
+  lunit: 'Consumer Tech',
 };
 
 const COUNTRIES: Record<string, string> = {
@@ -50,6 +56,10 @@ const COUNTRIES: Record<string, string> = {
   socar: 'Korea', gangnamunni: 'Korea', kakaopay: 'Korea', zigzag: 'Korea',
   '29cm': 'Korea', ably: 'Korea', banksalad: 'Korea', zigbang: 'Korea',
   wanted: 'Korea', remember: 'Korea',
+  // 2026-05-14 KR-10 batch
+  kream: 'Korea', upbit: 'Korea', kbank: 'Korea', inflearn: 'Korea',
+  wadiz: 'Korea', channeltalk: 'Korea', lunit: 'Korea',
+  bunjang: 'Korea', flex: 'Korea', classum: 'Korea',
   // Taiwan
   pinkoi: 'Taiwan', dcard: 'Taiwan',
   // Japan
@@ -84,6 +94,10 @@ const DISPLAY_NAMES: Record<string, string> = {
   zigzag: 'ZIGZAG', '29cm': '29CM', ably: 'Ably',
   banksalad: 'Banksalad', zigbang: 'Zigbang',
   wanted: 'Wanted', remember: 'Remember',
+  // 2026-05-14 KR-10 batch
+  kream: 'KREAM', upbit: 'Upbit', kbank: 'K bank', inflearn: 'Inflearn',
+  wadiz: 'Wadiz', channeltalk: 'Channel Talk', lunit: 'Lunit',
+  bunjang: '번개장터', flex: 'flex', classum: 'Classum',
 };
 
 function extractPrimaryColor(md: string): string {

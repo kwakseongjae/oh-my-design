@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-13T00:00:00Z",
+  "generated_at": "2026-05-14T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 88,
+  "count": 98,
   "items": [
     {
       "id": "airbnb",
@@ -2113,6 +2113,139 @@
       "signature_motion": "찜 heart: outline → filled brand pink with brief pulse; primary CTA uses pink-400 fill, darkening to pink-450/550 on hover/press.",
       "has_personas": true,
       "category_raw": "Commerce / Women's Fashion Discovery"
+    },
+    {
+      "id": "kream",
+      "primary_color_hex": "#000000",
+      "category": "E-commerce",
+      "visual_theme": "Sneaker-culture editorial — monochrome 0/100 chrome, fixed 1280px shop canvas, bold tabular price typography, no-shadow card grid.",
+      "voice_fingerprint": {
+        "register": "editorial-direct"
+      },
+      "signature_motion": "Hover state crossfade on card thumbnail; 1-frame opacity reveal for sold-out chips.",
+      "has_personas": true,
+      "category_raw": "Marketplace / Limited-edition Sneaker Trading",
+      "country": "KR"
+    },
+    {
+      "id": "upbit",
+      "primary_color_hex": "#093687",
+      "category": "Fintech",
+      "visual_theme": "Dense crypto exchange — KR up=red/down=blue inverted from US, navy chrome, 28px speed-fill tags, legacy Dotum/돋움 fallback chain unpruned.",
+      "voice_fingerprint": {
+        "register": "data-dense-neutral"
+      },
+      "signature_motion": "Tick-by-tick price flash (200ms red/blue), candle-chart redraw on resize, no easing on numeric updates.",
+      "has_personas": true,
+      "category_raw": "Crypto Exchange (Dunamu)",
+      "country": "KR"
+    },
+    {
+      "id": "kbank",
+      "primary_color_hex": "#0046ff",
+      "category": "Fintech",
+      "visual_theme": "Neobank minimal — electric blue CTA on near-white, font-size:0 image-replacement H1, fixed 1280px desktop, no landmark a11y.",
+      "voice_fingerprint": {
+        "register": "trustworthy-direct"
+      },
+      "signature_motion": "Subtle button press depth change; modal entry fade-in 200ms.",
+      "has_personas": true,
+      "category_raw": "Internet-only Bank",
+      "country": "KR"
+    },
+    {
+      "id": "inflearn",
+      "primary_color_hex": "#00c471",
+      "category": "Productivity",
+      "visual_theme": "Mantine UI app with green scale override — two radius families (8px cards, 32px nav pills, 999px green search pill), Pretendard-first, no custom display face.",
+      "voice_fingerprint": {
+        "register": "approachable-instructor"
+      },
+      "signature_motion": "Card hover lift 2px; tag-chip alpha fade; focus ring 2px green outline.",
+      "has_personas": true,
+      "category_raw": "EdTech / Online Courses",
+      "country": "KR"
+    },
+    {
+      "id": "wadiz",
+      "primary_color_hex": "#00c4c4",
+      "category": "Fintech",
+      "visual_theme": "Crowdfunding mint — saturated #00c4c4 CTAs with 2.7:1 contrast trade-off, single source-of-truth 936KB CSS bundle, `-하기` gerund + `~해요` polite-casual voice patterns.",
+      "voice_fingerprint": {
+        "register": "campaign-encouraging"
+      },
+      "signature_motion": "Funding-progress bar fill on viewport entry; 'XX%' counter rollup over 800ms.",
+      "has_personas": true,
+      "category_raw": "Crowdfunding Platform",
+      "country": "KR"
+    },
+    {
+      "id": "channeltalk",
+      "primary_color_hex": "#4f46e5",
+      "category": "Productivity",
+      "visual_theme": "Global B2B SaaS chat — open-source Bezier DS (MIT) with Inter + Noto KR/JP stacks, marketing-vs-product type cliff (marketing 48-64px / product 36px max).",
+      "voice_fingerprint": {
+        "register": "crisp-saas-confident"
+      },
+      "signature_motion": "Bubble pop-in spring; typing-indicator 3-dot 1.2s loop; unread badge bounce on increment.",
+      "has_personas": true,
+      "category_raw": "B2B SaaS / Customer Messaging",
+      "country": "KR",
+      "has_official_ds": true,
+      "ds_name": "Bezier",
+      "ds_url": "https://github.com/channel-io/bezier-react"
+    },
+    {
+      "id": "lunit",
+      "primary_color_hex": "#1032cf",
+      "category": "Consumer",
+      "visual_theme": "Medical AI corporate — signature blue withheld from primary CTA (CTA is black pill #000 r=100px); binary radius thesis 0px/100px; LIGHT-weight Lexend/ClashGrotesk anti-pharma.",
+      "voice_fingerprint": {
+        "register": "clinical-authoritative"
+      },
+      "signature_motion": "AOS scroll-in fades only; no hover micro-interactions; carousel snap-scroll.",
+      "has_personas": true,
+      "category_raw": "Medical Imaging AI",
+      "country": "KR"
+    },
+    {
+      "id": "bunjang",
+      "primary_color_hex": "#d80c18",
+      "category": "E-commerce",
+      "visual_theme": "C2C marketplace red — single red (#d80c18, one job: primary CTA), specialty token ladders (care=amber, safe=indigo) literally encoding product taxonomy, zero box-shadow.",
+      "voice_fingerprint": {
+        "register": "casual-marketplace"
+      },
+      "signature_motion": "Card thumbnail crossfade; like-heart fill animation; sold-out diagonal stripe overlay.",
+      "has_personas": true,
+      "category_raw": "C2C Used Marketplace",
+      "country": "KR"
+    },
+    {
+      "id": "flex",
+      "primary_color_hex": "#000000",
+      "category": "Productivity",
+      "visual_theme": "HR SaaS Stitches/CSS-in-JS stack — 0 namespaced :root tokens (tokens normalized from computed-style), Toss-adjacent KR voice tone, monochrome dashboard chrome.",
+      "voice_fingerprint": {
+        "register": "toss-adjacent-friendly"
+      },
+      "signature_motion": "Entry fade observed live; modal slide-in from right; table row hover bg shift.",
+      "has_personas": true,
+      "category_raw": "HR SaaS / Workforce Management",
+      "country": "KR"
+    },
+    {
+      "id": "classum",
+      "primary_color_hex": "#ff4438",
+      "category": "Productivity",
+      "visual_theme": "EdTech classroom collab — Webflow class-driven (no :root vars), 14px Korean body density at WCAG floor, brand red == destructive (downstream split needed).",
+      "voice_fingerprint": {
+        "register": "warm-classroom"
+      },
+      "signature_motion": "Post-reply expand 250ms; reaction emoji pop spring; threaded indent slide-in.",
+      "has_personas": true,
+      "category_raw": "EdTech / Classroom Communication",
+      "country": "KR"
     }
   ]
 }

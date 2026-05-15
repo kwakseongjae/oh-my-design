@@ -1,0 +1,151 @@
+{
+  "source": "live DOM walk on https://www.kbanknow.com/ib20/mnu/PBKMAN000000",
+  "captured_at": "2026-05-14T10:56:33.196Z",
+  "meta": {
+    "title": "케이뱅크",
+    "url": "https://www.kbanknow.com/ib20/mnu/PBKMAN000000",
+    "lang": "ko-KR",
+    "charset": "UTF-8",
+    "viewport": "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0",
+    "description": "케이뱅크는 예적금, 대출, 카드, 투자, 해외 송금 등 폭넓은 금융 상품 및 서비스를 제공합니다. 다양한 연령과 라이프 스타일을 반영한 혜택을 제공하며, 일상 속에서 금융을 보다 편리하고, 신뢰감 있게 경험할 수 있습니다."
+  },
+  "layout": {
+    "body_width_px": 1280,
+    "body_height_px": 1126,
+    "viewport": "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"
+  },
+  "heading_outline": [
+    {
+      "tag": "H1",
+      "text": " \n개인\n기업"
+    },
+    {
+      "tag": "H2",
+      "text": "은행소개"
+    },
+    {
+      "tag": "H3",
+      "text": "케이뱅크"
+    },
+    {
+      "tag": "H3",
+      "text": "투자정보"
+    },
+    {
+      "tag": "H3",
+      "text": "인재채용"
+    },
+    {
+      "tag": "H3",
+      "text": "새소식"
+    },
+    {
+      "tag": "H2",
+      "text": "상품안내"
+    },
+    {
+      "tag": "H3",
+      "text": "예적금"
+    },
+    {
+      "tag": "H3",
+      "text": "대출"
+    },
+    {
+      "tag": "H3",
+      "text": "카드"
+    },
+    {
+      "tag": "H3",
+      "text": "투자"
+    },
+    {
+      "tag": "H3",
+      "text": "서비스"
+    },
+    {
+      "tag": "H2",
+      "text": "고객센터"
+    },
+    {
+      "tag": "H3",
+      "text": "이용안내"
+    },
+    {
+      "tag": "H3",
+      "text": "소비자보호"
+    },
+    {
+      "tag": "H3",
+      "text": "금융사기대응"
+    },
+    {
+      "tag": "H3",
+      "text": "자료실"
+    },
+    {
+      "tag": "H3",
+      "text": "증명서"
+    },
+    {
+      "tag": "H3",
+      "text": "인증서"
+    },
+    {
+      "tag": "H2",
+      "text": "혜택"
+    }
+  ],
+  "link_count": 136,
+  "image_count": 8,
+  "navigation_skeleton": [
+    "개인",
+    "기업",
+    "은행소개",
+    "상품안내",
+    "고객센터",
+    "혜택"
+  ],
+  "ia_groups": [
+    {
+      "h2": "은행소개",
+      "children": [
+        "케이뱅크",
+        "투자정보",
+        "인재채용",
+        "새소식"
+      ]
+    },
+    {
+      "h2": "상품안내",
+      "children": [
+        "예적금",
+        "대출",
+        "카드",
+        "투자",
+        "서비스"
+      ]
+    },
+    {
+      "h2": "고객센터",
+      "children": [
+        "이용안내",
+        "소비자보호",
+        "금융사기대응",
+        "자료실",
+        "증명서",
+        "인증서"
+      ]
+    },
+    {
+      "h2": "혜택",
+      "children": []
+    }
+  ],
+  "observations": [
+    "Fixed 1280px desktop canvas — no responsive fluid scaling on the marketing root.",
+    "No <header>/<nav>/<footer> semantics — all chrome rendered as <div> with class hooks. A11y debt.",
+    "H1 carries .logo class with font-size:0 (image-replacement pattern).",
+    "Skip-link \"본문 바로가기\" rendered on primary brand navy (#0114A7) with white text."
+  ]
+}

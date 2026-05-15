@@ -1,0 +1,260 @@
+{
+  "$schema": "omd.live-inspect-proof/0.1",
+  "id": "bunjang",
+  "captured_at": "2026-05-14",
+  "tool": "Chrome DevTools Protocol via :9222 (websocket, suppress_origin=True), Runtime.evaluate with getComputedStyle on document.documentElement (CSS custom properties) and ~211 DOM samples across desktop (1280×713 dpr=2) and mobile-emulated (390×844 dpr=3, iPhone UA) viewports of https://m.bunjang.co.kr/",
+  "surfaces_inspected": [
+    "https://m.bunjang.co.kr/ — desktop chrome at 1280×713",
+    "https://m.bunjang.co.kr/ — mobile-emulated 390×844 dpr=3, scrolled to load product grid"
+  ],
+  "css_custom_properties_extracted": 73,
+  "raw_samples_count": 9,
+  "raw_samples": [
+    {
+      "claim_id": "primary-cta-bg",
+      "evidence": "Confirms --color-primary #d80c18 fills the highest-intent CTA. bg matches CSS var exactly.",
+      "node": {
+        "tag": "a",
+        "class": "_button_1cw4e_1 _variant-primary_1cw4e_30 _size-XS_1cw4e_103",
+        "text": "앱 다운로드",
+        "selector_hint": "a",
+        "rect": {
+          "x": 267,
+          "y": 15,
+          "w": 79,
+          "h": 30
+        },
+        "computed": {
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgb(216, 12, 24)",
+          "borderColor": "rgb(255, 255, 255)",
+          "borderRadius": "4px",
+          "boxShadow": "none",
+          "fontFamily": "\"Pretendard Variable\"",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "padding": "8px 12px"
+        }
+      }
+    },
+    {
+      "claim_id": "body-color",
+      "evidence": "Confirms --color-gray-900 #191919 is the primary text color across all surfaces.",
+      "node": {
+        "tag": "body",
+        "class": "",
+        "text": "앱에서는 등록부터 찜까지, 더 빠르게 거래할 수 있어요\n앱 다운로드\n1\n/\n10\n최근본상품\n내폰시세\n스포츠\n디지털\n스타굿즈\n오늘의 추천 아이템\n",
+        "selector_hint": "body",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844
+        },
+        "computed": {
+          "color": "rgb(25, 25, 25)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderColor": "rgb(25, 25, 25)",
+          "borderRadius": "0px",
+          "boxShadow": "none",
+          "fontFamily": "\"Pretendard Variable\"",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "padding": "0px"
+        }
+      }
+    },
+    {
+      "claim_id": "footer-bg",
+      "evidence": "Confirms --color-gray-50 #f6f6f6 = footer surface; same token used as image placeholder bg on cards.",
+      "node": {
+        "tag": "footer",
+        "class": "Box__7nn0kn17 Box_boxRecipe_boxSizing_borderBox__7nn0kn22 Box_boxRecipe_display_flex__7nn0kn1g Box_boxClassNames_paddingTop__7nn0kn29 Box_boxClassNames_paddingBottom__7nn0kn2a Box_boxClassNames_paddin",
+        "text": "회사소개\n이용약관\n운영정책\n개인정보처리방침\n청소년보호정책\n광고제휴\n번개장터(주) 사업자정보\n대표이사 : 최재화, 강승현   |   개인정보보호책",
+        "selector_hint": "footer",
+        "rect": {
+          "x": 0,
+          "y": 3798,
+          "w": 1280,
+          "h": 549
+        },
+        "computed": {
+          "color": "rgb(25, 25, 25)",
+          "backgroundColor": "rgb(246, 246, 246)",
+          "borderColor": "rgb(25, 25, 25)",
+          "borderRadius": "0px",
+          "boxShadow": "none",
+          "fontFamily": "\"Pretendard Variable\"",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "padding": "20px 132px 40px"
+        }
+      }
+    },
+    {
+      "claim_id": "font-family",
+      "evidence": "Confirms Pretendard Variable is the sole UI typeface — applied to body and inherited everywhere.",
+      "node": {
+        "tag": "body",
+        "class": "",
+        "text": "앱에서는 등록부터 찜까지, 더 빠르게 거래할 수 있어요\n앱 다운로드\n1\n/\n10\n최근본상품\n내폰시세\n스포츠\n디지털\n스타굿즈\n오늘의 추천 아이템\n",
+        "selector_hint": "body",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844
+        },
+        "computed": {
+          "color": "rgb(25, 25, 25)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderColor": "rgb(25, 25, 25)",
+          "borderRadius": "0px",
+          "boxShadow": "none",
+          "fontFamily": "\"Pretendard Variable\"",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "padding": "0px"
+        }
+      }
+    },
+    {
+      "claim_id": "secondary-button-border",
+      "evidence": "Confirms 1px solid #e5e5e5 (gray-100) border on secondary buttons + 6px radius.",
+      "node": {
+        "tag": "button",
+        "class": "_button_1cw4e_1 _variant-normal_1cw4e_53 _size-M_1cw4e_93",
+        "text": "로그인/회원가입",
+        "selector_hint": "button",
+        "rect": {
+          "x": 1128,
+          "y": 64,
+          "w": 132,
+          "h": 43
+        },
+        "computed": {
+          "color": "rgb(76, 76, 76)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "borderColor": "rgb(229, 229, 229)",
+          "borderRadius": "6px",
+          "boxShadow": "none",
+          "fontFamily": "\"Pretendard Variable\"",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "padding": "12px 20px"
+        }
+      }
+    },
+    {
+      "claim_id": "card-price-typography",
+      "evidence": "Confirms price uses 16px/700/#191919 — the heaviest typographic emphasis on the card.",
+      "node": {
+        "tag": "p",
+        "class": "Typography_typography__1wr8iu13 Typography_typography_variant_L4__1wr8iu1q",
+        "text": "600,000원",
+        "selector_hint": "",
+        "rect": {
+          "w": 170,
+          "h": 19
+        },
+        "computed": {
+          "color": "rgb(25, 25, 25)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderColor": "rgb(25, 25, 25)",
+          "borderRadius": "0px",
+          "boxShadow": "none",
+          "fontFamily": "\"Pretendard Variable\"",
+          "fontSize": "16px",
+          "fontWeight": "700",
+          "lineHeight": "19.2px",
+          "padding": "0px"
+        }
+      }
+    },
+    {
+      "claim_id": "card-title-typography",
+      "evidence": "Confirms product title de-emphasized at 14px/500/gray-600.",
+      "node": {
+        "tag": "p",
+        "class": "Typography_typography__1wr8iu13 Typography_typography_variant_L8__1wr8iu1u _ellipsis_192bp_12",
+        "text": "맥북에어 m1 2020 13인치",
+        "selector_hint": "",
+        "rect": {
+          "w": 170,
+          "h": 17
+        },
+        "computed": {
+          "color": "rgb(102, 102, 102)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderColor": "rgb(102, 102, 102)",
+          "borderRadius": "0px",
+          "boxShadow": "none",
+          "fontFamily": "\"Pretendard Variable\"",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "lineHeight": "16.8px",
+          "padding": "0px"
+        }
+      }
+    },
+    {
+      "claim_id": "card-meta-typography",
+      "evidence": "Confirms meta row tone: 12px/500/gray-300, deliberately recessive.",
+      "node": {
+        "tag": "span",
+        "class": "Typography_typography__1wr8iu13 Typography_typography_variant_L12__1wr8iu1y",
+        "text": "19시간 전",
+        "selector_hint": "",
+        "rect": {
+          "w": 47,
+          "h": 14
+        },
+        "computed": {
+          "color": "rgb(153, 153, 153)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderColor": "rgb(153, 153, 153)",
+          "borderRadius": "0px",
+          "boxShadow": "none",
+          "fontFamily": "\"Pretendard Variable\"",
+          "fontSize": "12px",
+          "fontWeight": "500",
+          "lineHeight": "14.4px",
+          "padding": "0px"
+        }
+      }
+    },
+    {
+      "claim_id": "circular-icon-button",
+      "evidence": "Confirms pill/circular tokens (999px) used for in-image scroll indicators and counter chips with semi-transparent dark backdrop.",
+      "node": {
+        "tag": "button",
+        "class": "Box__7nn0kn17 Box_boxRecipe_boxSizing_borderBox__7nn0kn22 Box_boxRecipe_position_absolute__7nn0kn1a Box_boxRecipe_display_flex__7nn0kn1g Box_boxClassNames_padding__7nn0kn28 Box_boxClassNames_width__7n",
+        "text": "",
+        "selector_hint": "button",
+        "rect": {
+          "x": 40,
+          "y": 150,
+          "w": 40,
+          "h": 40
+        },
+        "computed": {
+          "color": "rgb(25, 25, 25)",
+          "backgroundColor": "rgba(0, 0, 0, 0.3)",
+          "borderColor": "rgb(25, 25, 25)",
+          "borderRadius": "999px",
+          "boxShadow": "none",
+          "fontFamily": "\"Pretendard Variable\"",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "padding": "12px"
+        }
+      }
+    }
+  ]
+}

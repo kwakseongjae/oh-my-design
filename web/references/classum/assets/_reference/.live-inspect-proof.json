@@ -1,0 +1,72 @@
+{
+  "verified_at": "2026-05-14T11:00:00Z",
+  "url": "https://business.classum.com/",
+  "method": "CDP Runtime.evaluate via :9222, getComputedStyle on production DOM",
+  "css_bundle": "https://cdn.prod.website-files.com/67b08d840cb9f278763c8005/css/classum-web.webflow.shared.ee81640c2.css",
+  "raw_samples": [
+    {
+      "name": "hero_h1",
+      "selector": "h1",
+      "text_excerpt": "상담부터 학습까지, AI 중심의 에듀테크 솔루션",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontFamily": "Pretendard Variable, Pretendard, -apple-system, system-ui, ...",
+      "fontSize": "52px",
+      "fontWeight": "700",
+      "lineHeight": "72.8px",
+      "letterSpacing": "normal"
+    },
+    {
+      "name": "nav",
+      "selector": "nav, header",
+      "text_excerpt": "AI 기반 LMS / 학습 커뮤니티 / AI 상담 챗봇 / 도입 문의",
+      "color": "rgb(51, 51, 51)",
+      "fontFamily": "Pretendard Variable",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "20px"
+    },
+    {
+      "name": "primary_cta",
+      "selector": "a[href*=contact], a.btn-common, button",
+      "text_excerpt": "도입 문의",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgb(255, 68, 56)",
+      "fontFamily": "Pretendard Variable",
+      "fontSize": "15px",
+      "fontWeight": "600",
+      "lineHeight": "22.5px",
+      "borderRadius": "8px",
+      "padding": "6px 16px",
+      "boxShadow": "none"
+    },
+    {
+      "name": "secondary_link",
+      "selector": "a",
+      "color": "rgb(51, 51, 51)",
+      "fontFamily": "Pretendard Variable",
+      "fontSize": "14px",
+      "fontWeight": "400"
+    },
+    {
+      "name": "body",
+      "selector": "body",
+      "color": "rgb(51, 51, 51)",
+      "backgroundColor": "rgb(246, 246, 249)",
+      "fontFamily": "Pretendard Variable",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "20px"
+    },
+    {
+      "name": "section_card",
+      "selector": "section",
+      "text_excerpt": "흩어진 데이터를 모아 AI가 답하는 효율적인 운영 환경",
+      "color": "rgb(51, 51, 51)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "fontFamily": "Pretendard Variable",
+      "fontSize": "14px"
+    }
+  ],
+  "sample_count": 6
+}

@@ -1,0 +1,52 @@
+{
+  "captured_at": "2026-05-14",
+  "home": {
+    "nav": 2,
+    "header": 1,
+    "footer": 1,
+    "section": 0,
+    "main": 0,
+    "buttons": 0,
+    "links": 100,
+    "inputs": 0,
+    "tables": 0,
+    "h1": 0,
+    "h2": 2,
+    "h3": 0,
+    "title": "업비트(Upbit) | 가장 신뢰받는 디지털 자산 거래소",
+    "url": "https://www.upbit.com/home",
+    "viewport": {
+      "w": 1280,
+      "h": 713
+    },
+    "docHeight": 2911
+  },
+  "exchange": {
+    "nav": 2,
+    "header": 1,
+    "footer": 1,
+    "section": 2,
+    "main": 0,
+    "buttons": 6,
+    "links": 288,
+    "inputs": 7,
+    "tables": 31,
+    "h1": 0,
+    "h2": 0,
+    "h3": 0,
+    "title": "▲ 118,136,000 BTC/KRW +0.24% | 비트코인 | 업비트(Upbit)",
+    "url": "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC",
+    "viewport": {
+      "w": 1280,
+      "h": 713
+    },
+    "docHeight": 2678
+  },
+  "layout_notes": [
+    "1400px fixed content width on desktop (nav inner width = 1400)",
+    "Two-surface model: marketing home (light, hero, palette accents) + exchange grid (information-dense table-first)",
+    "Tables = primary UI primitive. ≥3 table types: market list, orderbook, trade history, daily candle history",
+    "Row tinting (rgba 8% alpha) communicates direction at glance — never solid fill (would compete with text)",
+    "Nav fixed top, single-row, no shadow; segment switches inline (KO/EN, KRW/BTC/USDT)"
+  ]
+}

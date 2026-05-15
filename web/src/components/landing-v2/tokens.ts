@@ -15,7 +15,7 @@ export const V2 = {
   borderDark: "rgba(255,255,255,0.08)",
 } as const;
 
-/** Brand color hints for the 88-card wall and the LIVE PROOF strip. */
+/** Brand color hints for the 98-card wall and the LIVE PROOF strip. */
 export const BRAND_COLORS: Record<string, string> = {
   stripe: "#635bff",
   toss: "#0064ff",
@@ -95,6 +95,17 @@ export const BRAND_COLORS: Record<string, string> = {
   wanted: "#0066ff",
   remember: "#000000",
   // socar: SOCAR Blue exact hex unpublished — falls through to hash
+  // 2026-05-14 KR-10 batch
+  kream: "#000000",
+  upbit: "#093687",
+  kbank: "#0046ff",
+  inflearn: "#00c471",
+  wadiz: "#00c4c4",
+  channeltalk: "#4f46e5",
+  lunit: "#1032cf",
+  bunjang: "#d80c18",
+  flex: "#000000",
+  classum: "#ff4438",
 };
 
 /** Deterministic fallback color from id hash. */

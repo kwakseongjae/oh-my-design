@@ -1,0 +1,41 @@
+{
+  "captured_at": "2026-05-14",
+  "primary_family": "Pretendard, -apple-system, system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", sans-serif",
+  "headings_family_inferred_same_as_body": true,
+  "observed_weights": [
+    "400 (body, icon buttons)",
+    "600 (nav/label buttons)",
+    "700 (h1, h2)"
+  ],
+  "samples": {
+    "body": {
+      "size": "16px",
+      "color": "rgb(33, 37, 41)"
+    },
+    "h1": {
+      "family": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "size": "34px",
+      "weight": "700",
+      "lineHeight": "44.2px",
+      "color": "rgb(33, 37, 41)",
+      "text": "인프런 - 라이프타임 커리어 플랫폼"
+    },
+    "h2": {
+      "family": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "size": "20px",
+      "weight": "700",
+      "lineHeight": "27px",
+      "color": "rgb(33, 37, 41)",
+      "text": "0원으로 부담없이 시작하기"
+    },
+    "h3": {
+      "family": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "size": "16px",
+      "weight": "500",
+      "lineHeight": "22.4px",
+      "color": "rgb(33, 37, 41)",
+      "text": "둘러보기"
+    }
+  },
+  "note": "No bundled web-font on /. Pretendard is loaded via OS-installed fallback chain; system Korean fallback (Apple SD Gothic Neo / Noto Sans KR / Malgun Gothic) takes over per OS."
+}

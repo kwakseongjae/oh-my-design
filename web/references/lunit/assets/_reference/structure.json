@@ -1,0 +1,162 @@
+{
+  "id": "lunit",
+  "url": "https://www.lunit.io/",
+  "captured_at": "2026-05-14",
+  "viewport": {
+    "w": 1280,
+    "h": 713
+  },
+  "h1": [
+    "Conquer Cancer\nThrough Cutting-Edge AI"
+  ],
+  "h2_sequence": [
+    "Reimagining How the World Detects and Treats Cancer",
+    "AI for Every Stage of Cancer Care",
+    "Partnering to Advance Cancer Innovation",
+    "Trusted by\nClinical and Industry Leaders",
+    "Medical AI Software Powering Precision at Scale",
+    "Featured News"
+  ],
+  "section_sequence": [
+    {
+      "cls": "ct-inner-content",
+      "h": "Conquer Cancer\nThrough Cutting-Edge AI"
+    },
+    {
+      "cls": "oxy-lunit-hero supreme-element lunit-hero aos-init aos-animate",
+      "h": "Conquer Cancer\nThrough Cutting-Edge AI"
+    },
+    {
+      "cls": "oxy-supreme-stats supreme-element supreme-stats aos-init",
+      "h": "10,000+"
+    },
+    {
+      "cls": "oxy-superbox-section supreme-element supreme-lunit-technology-hero aos-init",
+      "h": "Reimagining How the World Detects and Treats Cancer"
+    },
+    {
+      "cls": "oxy-solutions-overview list-item-icon supreme-element solutions-overview-wrapper",
+      "h": "AI for Every Stage of Cancer Care"
+    },
+    {
+      "cls": "oxy-partnering-section ",
+      "h": "Partnering to Advance Cancer Innovation"
+    },
+    {
+      "cls": "oxy-supreme-testimonials ",
+      "h": "Trusted by\nClinical and Industry Leaders"
+    },
+    {
+      "cls": "oxy-technology ",
+      "h": "Medical AI Software Powering Precision at Scale"
+    },
+    {
+      "cls": "oxy-supreme-investor-section supreme-element supreme-investor-section-wrapper",
+      "h": "Investing in the Future of Cancer AI"
+    },
+    {
+      "cls": "oxy-featured-posts ",
+      "h": "Featured News"
+    }
+  ],
+  "page_anatomy": [
+    {
+      "order": 1,
+      "name": "Sticky header",
+      "cls": "lunit-header",
+      "contents": [
+        "INVESTORS, CAREERS pill",
+        "primary nav: Cancer Screening · Precision Oncology · Patients · Partners · Knowledge"
+      ]
+    },
+    {
+      "order": 2,
+      "name": "Hero band",
+      "cls": "oxy-lunit-hero",
+      "contents": [
+        "H1: Conquer Cancer Through Cutting-Edge AI",
+        "Sub-deck (light 300 Lexend)",
+        "Primary CTA pill (black/white)"
+      ]
+    },
+    {
+      "order": 3,
+      "name": "Stats band",
+      "cls": "oxy-supreme-stats",
+      "contents": [
+        "10,000+ Customer Sites",
+        "65+ Countries",
+        "700+ Publications"
+      ]
+    },
+    {
+      "order": 4,
+      "name": "Technology overview",
+      "cls": "supreme-lunit-technology-hero",
+      "contents": [
+        "H2: Reimagining How the World Detects and Treats Cancer"
+      ]
+    },
+    {
+      "order": 5,
+      "name": "Solutions overview grid",
+      "cls": "oxy-solutions-overview",
+      "contents": [
+        "AI for Every Stage of Cancer Care — Screening / Precision Oncology product cards"
+      ]
+    },
+    {
+      "order": 6,
+      "name": "Partnering band",
+      "cls": "oxy-partnering-section",
+      "contents": [
+        "Radiology / Biopharma partnership lanes"
+      ]
+    },
+    {
+      "order": 7,
+      "name": "Testimonials / logo wall",
+      "cls": "oxy-supreme-testimonials",
+      "contents": [
+        "Trusted by Clinical and Industry Leaders"
+      ]
+    },
+    {
+      "order": 8,
+      "name": "Scale band",
+      "cls": "oxy-technology",
+      "contents": [
+        "Medical AI Software Powering Precision at Scale"
+      ]
+    },
+    {
+      "order": 9,
+      "name": "Investor band",
+      "cls": "oxy-supreme-investor-section",
+      "contents": [
+        "Investing in the Future of Cancer AI"
+      ]
+    },
+    {
+      "order": 10,
+      "name": "News",
+      "cls": "oxy-featured-posts",
+      "contents": [
+        "Featured News card grid"
+      ]
+    },
+    {
+      "order": 11,
+      "name": "Footer",
+      "cls": "footer",
+      "bg": "#eff0f4",
+      "contents": [
+        "Contact Us · product nav · company nav · legal"
+      ]
+    }
+  ],
+  "primary_ctas_observed": [
+    "Contact Us"
+  ],
+  "ip_note": "Section headings are NOT copied into DESIGN.md verbatim — they are paraphrased to extract structural pattern only. See §10 Voice rule."
+}
