@@ -309,6 +309,11 @@ grep -rn "\\b${PREV1}\\b\\|\\b${PREV2}\\b" \
 
 # skill / agent count contamination
 grep -rn "[0-9]\\{2\\}개 (레퍼런스|reference|카탈로그)" skills/ agents/ .claude/skills/ .claude/agents/  # 0 expected
+
+# §1 canonical header — all DESIGN.md must use "## 1. Visual Theme & Atmosphere"
+# (web/src/app/reference/[id]/page.tsx extracts Hero mood prose from §1's first paragraph;
+#  non-canonical headers like "## 1. Overview" / "## 1. Identity" / "## §1" break it)
+grep -L '^## 1\\. Visual Theme' references/*/DESIGN.md  # 0 expected (empty stdout)
 ```
 
 ### 8. CHANGELOG + version bump (omd-cli memory rule: patch by default)

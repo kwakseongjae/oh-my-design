@@ -145,6 +145,11 @@ Phase 2 끝난 직후, build subagent들의 return summary를 모아서 작성. 
        README*.md web/src web/public 2>/dev/null \
        | grep -vE "(node_modules|\\.next|references/|design-md/|\\.promo/|CHANGELOG|tasks/|reference-audit)" \
        | grep -iE "(reference|brand|design.system|companies|company)"  # 0 expected
+     # 3. §1 canonical header — DESIGN.md authoring discipline
+     # All references must use "## 1. Visual Theme & Atmosphere" as §1.
+     # Hero card mood prose extraction in /reference/<id> depends on this header.
+     # 2026-05-14 batch broke this in 3 brands (flex "Overview" / upbit "Identity" / kbank "§N").
+     grep -L '^## 1\. Visual Theme' references/*/DESIGN.md  # 0 expected (empty stdout)
      ```
 2. **Symlink sanity**: 루트 `references` → `web/references` (이미 있으면 skip)
 3. **Fingerprints**: `data/reference-fingerprints.json`, `.claude/data/reference-fingerprints.json`, `.codex/data/reference-fingerprints.json` 새 10 entry append (셋 다 byte-identical 유지)
@@ -285,6 +290,7 @@ Phase 2 끝난 직후, build subagent들의 return summary를 모아서 작성. 
 - ❌ Phase 3 끝났는데 regression guard grep을 안 돌림 (stale number 누락의 1순위 원인)
 - ❌ `web/src/app/builder/layout.tsx` · `web/src/app/design-systems/layout.tsx` · `web/src/app/layout.tsx`의 SEO description 미갱신 (이전 2 batch 연속 누락된 surface — 체크리스트 명시됨)
 - ❌ promo composition을 Phase 2 결과(_promo.json) 없이 작성
+- ❌ **§1 헤더를 비표준으로 작성** — `## 1. Visual Theme & Atmosphere` + 산문 첫 단락이 catalog canonical. "Overview" / "Identity" / "Foundation tokens" / `## §1` 변형 쓰면 `/reference/<id>` Hero card mood prose가 빈칸으로 렌더 (2026-05-14 kr10 batch에서 flex/upbit/kbank 3건 발생). Phase 3 regression guard에 `grep -L '^## 1\. Visual Theme' references/*/DESIGN.md` 검증 포함.
 
 ---
 
