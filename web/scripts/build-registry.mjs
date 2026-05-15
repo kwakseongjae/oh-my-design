@@ -15,8 +15,10 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const WEB_ROOT = resolve(__dirname, '..');
-const ROOT = resolve(WEB_ROOT, '..');
-const REFS_DIR = join(ROOT, 'references');
+// Canonical source = web/references/. The repo-root `references` symlink is
+// gitignored (local convenience), so on Vercel build (root = web/) only
+// web/references/ is reachable. Always read SSOT directly from here.
+const REFS_DIR = join(WEB_ROOT, 'references');
 const OUT_FILE = join(WEB_ROOT, 'src', 'data', 'registry.generated.ts');
 
 const VALID_COUNTRIES = new Set(['KR','US','JP','TW','UK','DE','FR','IT']);
