@@ -1,0 +1,30 @@
+{
+  "source_url": "https://fastcampus.co.kr/",
+  "captured_at": "2026-05-15T07:09:53.194Z",
+  "structure": {
+    "gnb": {
+      "tag": "header",
+      "bg": "rgba(0, 0, 0, 0)",
+      "height": 0,
+      "position": "static",
+      "borderBottom": "0px none rgb(23, 27, 31)",
+      "boxShadow": "none",
+      "cls": ""
+    },
+    "bodyBg": "rgba(0, 0, 0, 0)",
+    "docWidth": 1265
+  },
+  "category_structure": {
+    "gnb": {
+      "tag": "header",
+      "bg": "rgba(0, 0, 0, 0)",
+      "height": 0,
+      "position": "static",
+      "borderBottom": "0px none rgb(23, 27, 31)",
+      "boxShadow": "none",
+      "cls": ""
+    },
+    "bodyBg": "rgba(0, 0, 0, 0)",
+    "docWidth": 1280
+  }
+}

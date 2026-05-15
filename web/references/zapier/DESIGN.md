@@ -1,3 +1,23 @@
+---
+id: zapier
+name: Zapier
+country: US
+category: productivity
+homepage: "https://zapier.com"
+primary_color: "#ff4f00"
+logo:
+  type: simpleicons
+  slug: zapier
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Zapier Brand
+  url: "https://brand.zapier.com"
+  type: brand
+  description: Zapier's official brand guidelines 1.0.
+  og_image: "https://firebasestorage.googleapis.com/v0/b/standards-site-beta.appspot.com/o/documents%2F279072ea39f%2F8fc2c38ae5f%2Fmeta%2Fthumbnail_1_2.jpg?alt=media&token=0d0ea63f-6a32-4e46-b516-9db3c6c6ffe4"
+---
+
 # Design System Inspiration of Zapier
 
 ## 1. Visual Theme & Atmosphere

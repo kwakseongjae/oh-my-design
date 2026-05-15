@@ -1,12 +1,21 @@
 ---
-omd: 0.1
 id: channeltalk
 name: Channel Talk
 country: KR
 category: saas
-verified: 2026-05-14
-ds_official: bezier
-ds_repo: https://github.com/channel-io/bezier-react
+homepage: "https://channel.io"
+primary_color: "#4f46e5"
+logo:
+  type: github
+  slug: channel-io
+verified: "2026-05-14"
+omd: "0.1"
+ds:
+  name: Bezier
+  url: "https://github.com/channel-io/bezier-react"
+  type: system
+  description: Channel Talk's open-source design system — Bezier (MIT). Inter + Noto KR/JP type stacks, token/component/icon packages, marketing-vs-product type cliff documented.
+  og_image: "https://opengraph.githubassets.com/d5fd6836ec938de2c8399cf28b2ceabc49104fbbf86e937f9e89983f1b50d638/channel-io/bezier-react"
 ---
 
 # Design System Inspiration of Channel Talk

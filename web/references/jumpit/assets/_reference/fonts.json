@@ -1,0 +1,20 @@
+{
+  "primary": {
+    "family": "Pretendard Variable",
+    "stack": "\"Pretendard Variable\", Pretendard, -apple-system, system-ui, sans-serif",
+    "weights_used": [400, 500, 700],
+    "axes": "variable (wght axis)",
+    "license": "SIL OFL 1.1 (open source)",
+    "delivery": "self-hosted / CDN via Next.js static",
+    "rationale": "Pretendard is the de-facto Korean-product UI font (Toss, Naver, Coupang, Wanted all ship variants). Jumpit's developer-recruitment audience expects this familiar Hangul reading experience; no proprietary display face is layered on top."
+  },
+  "display": {
+    "_note": "No separate display/brand font. The 32/700 hero card title and 24/700 section heads use Pretendard Variable at the same axis as body."
+  },
+  "weight_policy": {
+    "400_body": "Default reading weight across body, links, filter-chip rest state.",
+    "500_secondary_emphasis": "Used sparingly — observed 12× across positions surface (≈12% of samples).",
+    "700_brand_heading_active": "Headings (24/700, 32/700), the single primary CTA (15/700), active filter chips (16/700), and the Notice eyebrow (13/700). No 600 in between — emphasis is binary."
+  },
+  "verified": "2026-05-15"
+}

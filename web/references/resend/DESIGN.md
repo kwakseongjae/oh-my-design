@@ -1,3 +1,23 @@
+---
+id: resend
+name: Resend
+country: US
+category: productivity
+homepage: "https://resend.com"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: resend
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Resend Brand
+  url: "https://resend.com/brand"
+  type: brand
+  description: Resend's brand guidelines with wordmark, icons, and naming rules.
+  og_image: "https://cdn.resend.com/cover-brand.png"
+---
+
 # Design System Inspiration of Resend
 
 ## 1. Visual Theme & Atmosphere

@@ -1,3 +1,17 @@
+---
+id: webflow
+name: Webflow
+country: US
+category: design-tools
+homepage: "https://webflow.com"
+primary_color: "#146ef5"
+logo:
+  type: simpleicons
+  slug: webflow
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Webflow
 
 ## 1. Visual Theme & Atmosphere

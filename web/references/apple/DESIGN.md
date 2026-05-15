@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: Apple
+id: apple
+name: Apple
+country: US
+category: consumer-tech
+homepage: "https://www.apple.com"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: apple
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Human Interface Guidelines
+  url: "https://developer.apple.com/design/human-interface-guidelines"
+  type: system
+  description: Apple's official design guidelines for iOS, macOS, watchOS, and visionOS.
+  og_image: "https://docs.developer.apple.com/tutorials/developer-og.jpg"
 ---
 
 # Design System Inspiration of Apple

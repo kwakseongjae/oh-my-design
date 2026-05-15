@@ -1,3 +1,17 @@
+---
+id: lamborghini
+name: Lamborghini
+country: IT
+category: automotive
+homepage: "https://www.lamborghini.com"
+primary_color: "#f4c01a"
+logo:
+  type: simpleicons
+  slug: lamborghini
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Lamborghini
 
 ## 1. Visual Theme & Atmosphere

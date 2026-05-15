@@ -1,0 +1,20 @@
+{
+  "id": "oliveyoung",
+  "captured_at": "2026-05-15",
+  "stacks_seen": [
+    "-apple-system, \"system-ui\", AppleSDGothicNeo, \"Noto Sans\", Roboto, Montserrat, sans-serif",
+    "Arial",
+    "Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo, Roboto, dotum, 돋움, sans-serif",
+    "Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo, Roboto, sans-serif",
+    "Montserrat, NotoSansCJKkr, -apple-system, AppleSDGothicNeo, Roboto, dotum, 돋움, sans-serif",
+    "NotoSansCJKkr"
+  ],
+  "primary_legacy": "Montserrat → NotoSansCJKkr → AppleSDGothicNeo → Roboto → dotum/돋움",
+  "primary_nextjs": "system-ui → AppleSDGothicNeo → Noto Sans → Roboto → Montserrat",
+  "korean_fallback_chain": [
+    "NotoSansCJKkr",
+    "AppleSDGothicNeo",
+    "dotum",
+    "돋움"
+  ]
+}

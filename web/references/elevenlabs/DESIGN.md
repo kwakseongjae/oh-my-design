@@ -1,3 +1,23 @@
+---
+id: elevenlabs
+name: ElevenLabs
+country: US
+category: ai
+homepage: "https://elevenlabs.io"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: elevenlabs
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: ElevenLabs Brand
+  url: "https://elevenlabs.io/brand"
+  type: brand
+  description: ElevenLabs brand guidelines covering logo, symbol, and product sub-brands.
+  og_image: "https://elevenlabs.io/cover.png"
+---
+
 # Design System Inspiration of ElevenLabs
 
 ## 1. Visual Theme & Atmosphere

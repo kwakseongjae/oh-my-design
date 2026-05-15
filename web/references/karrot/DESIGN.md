@@ -1,6 +1,20 @@
 ---
-omd: 0.1
-brand: Karrot
+id: karrot
+name: Karrot
+country: KR
+category: consumer-tech
+homepage: "https://www.karrotmarket.com"
+primary_color: "#ff7e36"
+logo:
+  type: github
+  slug: daangn
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: SEED Design
+  url: "https://seed-design.io"
+  type: system
+  description: Karrot (Daangn)'s open-source design system for marketplace apps.
 ---
 
 # Design System Inspiration of Karrot (당근)

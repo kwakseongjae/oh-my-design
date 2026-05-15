@@ -1,3 +1,17 @@
+---
+id: runwayml
+name: RunwayML
+country: US
+category: ai
+homepage: "https://runwayml.com"
+primary_color: "#000000"
+logo:
+  type: github
+  slug: runwayml
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Runway
 
 ## 1. Visual Theme & Atmosphere

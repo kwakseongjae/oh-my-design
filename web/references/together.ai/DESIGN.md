@@ -1,3 +1,23 @@
+---
+id: together.ai
+name: Together AI
+country: US
+category: ai
+homepage: "https://www.together.ai"
+primary_color: "#0f6fff"
+logo:
+  type: github
+  slug: togethercomputer
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Together AI Brand
+  url: "https://www.together.ai/brand"
+  type: brand
+  description: Together AI's logo, color, and typography brand guidelines.
+  og_image: "https://cdn.prod.website-files.com/69654e88dce9154b5f1206dd/69a49f8243e74bf4b805d130_og-brand.jpg"
+---
+
 # Design System Inspiration of Together AI
 
 ## 1. Visual Theme & Atmosphere

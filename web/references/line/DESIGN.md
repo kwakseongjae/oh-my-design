@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: LINE
+id: line
+name: LINE
+country: JP
+category: consumer-tech
+homepage: "https://line.me"
+primary_color: "#06c755"
+logo:
+  type: simpleicons
+  slug: line
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: LINE Design System
+  url: "https://designsystem.line.me"
+  type: system
+  description: LINE's shared design system for products across the LINE family.
+  og_image: "https://designsystem.line.me/static/36a4ead41b7b972b1130287e849a14b1/73f08/SEO_IMG_1741574443.png"
 ---
 
 # Design System Inspiration of LINE

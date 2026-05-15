@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: SOCAR
+id: socar
+name: SOCAR
+country: KR
+category: consumer-tech
+homepage: "https://www.socar.kr"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=socar.kr&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: SOCAR Design
+  url: "https://design.socar.kr/"
+  type: system
+  description: SOCAR's design system hub — Space Frame, SOCAR Blue, Sandoll Gothic Neo2 + Avenir typography, and mobility-flow component patterns.
+  og_image: "https://design.socar.kr/og.jpg"
 ---
 
 # Design System Inspiration of SOCAR

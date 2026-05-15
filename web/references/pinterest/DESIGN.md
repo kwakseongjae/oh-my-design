@@ -1,3 +1,22 @@
+---
+id: pinterest
+name: Pinterest
+country: US
+category: consumer-tech
+homepage: "https://www.pinterest.com"
+primary_color: "#e60023"
+logo:
+  type: simpleicons
+  slug: pinterest
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Gestalt
+  url: "https://gestalt.pinterest.systems"
+  type: system
+  description: Pinterest's open-source React component library with tokens and foundations.
+---
+
 # Design System Inspiration of Pinterest
 
 ## 1. Visual Theme & Atmosphere

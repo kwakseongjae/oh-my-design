@@ -1,0 +1,158 @@
+{
+  "id": "oliveyoung",
+  "captured_at": "2026-05-15",
+  "harness": "Chrome DevTools Protocol :9222 via websocket-client (suppress_origin=True)",
+  "surfaces_visited": [
+    "https://www.oliveyoung.co.kr/store/main/main.do?oy=0",
+    "https://www.oliveyoung.co.kr/store/main/getBestList.do",
+    "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=%EC%84%A0%ED%81%AC%EB%A6%BC",
+    "https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000167660"
+  ],
+  "surface_counts": {
+    "main": 65,
+    "best": 33,
+    "search": 55,
+    "detail_nextjs_shell": 26,
+    "total_distinct_DOM_samples": 179
+  },
+  "raw_samples": [
+    {
+      "surface": "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=%EC%84%A0%ED%81%AC%EB%A6%BC",
+      "selector": "span.icon_flag.sale",
+      "observation": "Sale flag — bg #F65C60, white text, radius 9px, 12px/400, h=18",
+      "fields": {
+        "bg": "rgb(246, 92, 96)",
+        "color": "rgb(255, 255, 255)",
+        "radius": "9px",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "h": 18
+      }
+    },
+    {
+      "surface": "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=%EC%84%A0%ED%81%AC%EB%A6%BC",
+      "selector": "span.icon_flag.coupon",
+      "observation": "Coupon flag — bg #9BCE26, white text, radius 9px (olive-adjacent green; closest token to brand olive)",
+      "fields": {
+        "bg": "rgb(155, 206, 38)",
+        "color": "rgb(255, 255, 255)",
+        "radius": "9px",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "h": 18
+      }
+    },
+    {
+      "surface": "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=%EC%84%A0%ED%81%AC%EB%A6%BC",
+      "selector": "span.icon_flag.delivery",
+      "observation": "오늘드림 (same-day) flag — bg #F374B7, white text, radius 9px",
+      "fields": {
+        "bg": "rgb(243, 116, 183)",
+        "color": "rgb(255, 255, 255)",
+        "radius": "9px",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "h": 18
+      }
+    },
+    {
+      "surface": "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=%EC%84%A0%ED%81%AC%EB%A6%BC",
+      "selector": "span.icon_flag.gift",
+      "observation": "증정 (gift) flag — bg #6FCFF7, white text, radius 9px",
+      "fields": {
+        "bg": "rgb(111, 207, 247)",
+        "color": "rgb(255, 255, 255)",
+        "radius": "9px",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "h": 18
+      }
+    },
+    {
+      "surface": "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=%EC%84%A0%ED%81%AC%EB%A6%BC",
+      "selector": "button.chip",
+      "observation": "Filter chip — white bg, neutral text #757D86, 1px solid #E5E7EA, radius 18px, 14px/400, h=36",
+      "fields": {
+        "bg": "rgb(255, 255, 255)",
+        "color": "rgb(117, 125, 134)",
+        "radius": "18px",
+        "border": "1px solid rgb(229, 231, 234)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "h": 36
+      }
+    },
+    {
+      "surface": "https://www.oliveyoung.co.kr/store/main/main.do?oy=0",
+      "selector": "a.btn-category (selected)",
+      "observation": "Category pill — active black bg / white text, inactive white / neutral text, radius 20px, h=34",
+      "fields": {
+        "bg": "rgb(0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "radius": "20px",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "h": 34
+      }
+    },
+    {
+      "surface": "https://www.oliveyoung.co.kr/store/main/main.do?oy=0",
+      "selector": "button (pagination active)",
+      "observation": "Pagination active — bg #2F3030, white text, radius 50%, 14px/700, h=24",
+      "fields": {
+        "bg": "rgb(47, 48, 48)",
+        "color": "rgb(255, 255, 255)",
+        "radius": "50%",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "h": 24
+      }
+    },
+    {
+      "surface": "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=%EC%84%A0%ED%81%AC%EB%A6%BC",
+      "selector": "span.thumb_flag.best",
+      "observation": "Best badge — white bg, red text #F05A5E, 2px solid red ring, radius 24px pill, 14px/700",
+      "fields": {
+        "bg": "rgb(255, 255, 255)",
+        "color": "rgb(240, 90, 94)",
+        "radius": "24px",
+        "border": "2px solid rgb(240, 90, 94)",
+        "fontSize": "14px",
+        "fontWeight": "700",
+        "h": 48
+      }
+    },
+    {
+      "surface": "https://www.oliveyoung.co.kr/store/main/main.do?oy=0",
+      "selector": "body",
+      "observation": "Body — Montserrat→NotoSansCJKkr stack, 14px, ink #666",
+      "fields": {
+        "fontFamily": "Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo, Roboto, dotum, 돋움, sans-serif",
+        "fontSize": "14px",
+        "color": "rgb(102, 102, 102)"
+      }
+    },
+    {
+      "surface": "https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000167660",
+      "selector": ":root (Next.js subtree on /store/goods/getGoodsDetail.do)",
+      "observation": "Product-detail surface is migrated to Next.js — runtime CSS vars include --background:#0a0a0a / --foreground:#ededed / --font-noto-sans-kr / --font-roboto / --swiper-theme-color:#007aff; CSS-Module classnames like ProductNotFound_btn__ydujY / GnbForDesktop_category-toggle-button__ym24F / OYCompanyInfo_oy-company-info-button__NSfee confirm new design-system subtree",
+      "fields": {
+        "--swiper-theme-color": "#007aff",
+        "--safe-area-inset-top": "0px",
+        "--background": "#0a0a0a",
+        "--font-roboto": "\"__Roboto_09f9df\",\"__Roboto_Fallback_09f9df\",system-ui",
+        "--foreground": "#ededed",
+        "--font-noto-sans-kr": "\"__Noto_Sans_KR_b152a5\",\"__Noto_Sans_KR_Fallback_b152a5\",system-ui",
+        "--safe-area-inset-bottom": "0px"
+      }
+    },
+    {
+      "surface": "https://www.oliveyoung.co.kr/store/main/getBestList.do",
+      "selector": "promo module accent",
+      "observation": "Promo accent #F27370 observed on /best — softer salmon companion to flag-red, used for promotional shelves vs taxonomic flags",
+      "fields": {
+        "bg": "rgb(242, 115, 112)"
+      }
+    }
+  ]
+}

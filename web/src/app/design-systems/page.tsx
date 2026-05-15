@@ -10,6 +10,7 @@
 
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Moon, Sun } from "lucide-react";
+import { isNewRef } from "@/lib/new-refs";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { getAllDesignSystems, type DesignSystemInfo } from "@/lib/design-systems";
@@ -99,6 +100,14 @@ function DSCard({ ds }: { ds: DesignSystemInfo }) {
           >
             {isSystem ? "Design System" : "Brand"}
           </span>
+          {isNewRef(ds.refId) && (
+            <span
+              className="text-[10px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
+              style={{ background: "#34d399", color: "#062514" }}
+            >
+              NEW
+            </span>
+          )}
         </div>
         <div className="flex items-center gap-3">
           <CardBrandLogo refId={ds.refId} name={ds.name} />

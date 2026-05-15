@@ -1,9 +1,15 @@
 ---
-omd: 0.1
 id: kream
-brand: KREAM
+name: KREAM
 country: KR
-category: marketplace
+category: ecommerce
+homepage: "https://kream.co.kr"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=kream.co.kr&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of KREAM

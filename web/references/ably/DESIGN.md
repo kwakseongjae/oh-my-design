@@ -1,6 +1,16 @@
 ---
-omd: 0.1
-brand: Ably (에이블리)
+id: ably
+name: Ably
+display_name_kr: Ably (에이블리)
+country: KR
+category: ecommerce
+homepage: "https://m.a-bly.com"
+primary_color: "#fa2e5f"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=a-bly.com&sz=128"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Ably (에이블리)

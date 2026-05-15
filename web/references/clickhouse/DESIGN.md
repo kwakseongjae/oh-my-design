@@ -1,3 +1,22 @@
+---
+id: clickhouse
+name: ClickHouse
+country: US
+category: backend-devops
+homepage: "https://clickhouse.com"
+primary_color: "#fff100"
+logo:
+  type: simpleicons
+  slug: clickhouse
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: ClickHouse Design
+  url: "https://clickhouse.design"
+  type: system
+  description: ClickHouse brand hub plus the Click UI design system and component library.
+---
+
 # Design System Inspiration of ClickHouse
 
 ## 1. Visual Theme & Atmosphere

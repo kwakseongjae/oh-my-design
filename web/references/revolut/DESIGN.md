@@ -1,3 +1,17 @@
+---
+id: revolut
+name: Revolut
+country: UK
+category: fintech
+homepage: "https://www.revolut.com"
+primary_color: "#0075eb"
+logo:
+  type: simpleicons
+  slug: revolut
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Revolut
 
 ## 1. Visual Theme & Atmosphere

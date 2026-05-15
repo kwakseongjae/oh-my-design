@@ -1,3 +1,22 @@
+---
+id: wise
+name: Wise
+country: UK
+category: fintech
+homepage: "https://wise.com"
+primary_color: "#9fe870"
+logo:
+  type: simpleicons
+  slug: wise
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Wise Design
+  url: "https://wise.design"
+  type: system
+  description: Wise's design system covering foundations, components, patterns, and tone of voice.
+---
+
 # Design System Inspiration of Wise
 
 ## 1. Visual Theme & Atmosphere

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-14T00:00:00Z",
+  "generated_at": "2026-05-15T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 98,
+  "count": 108,
   "items": [
     {
       "id": "airbnb",
@@ -2245,6 +2245,137 @@
       "signature_motion": "Post-reply expand 250ms; reaction emoji pop spring; threaded indent slide-in.",
       "has_personas": true,
       "category_raw": "EdTech / Classroom Communication",
+      "country": "KR"
+    },
+    {
+      "id": "toss-securities",
+      "primary_color_hex": "#3182f6",
+      "category": "Fintech",
+      "visual_theme": "Dark-mode-first trading chrome (#101013→#202025), KR-finance locale inversion (red=up, blue=down, #3182f6 doubles as fill-brand-default CTA), 2-tier radius (8/32), zero box-shadow, 416 :root CSS vars in --tw-semantic-*/--wts-adaptive-* namespaces.",
+      "voice_fingerprint": {
+        "register": "toss-direct-trading"
+      },
+      "signature_motion": "Tick price flash, candle redraw on resize.",
+      "has_personas": true,
+      "category_raw": "Securities Trading (Toss Securities)",
+      "country": "KR"
+    },
+    {
+      "id": "oliveyoung",
+      "primary_color_hex": "#000000",
+      "category": "E-commerce",
+      "visual_theme": "Dual-stack architecture (legacy JSP grayscale chrome + Next.js subtree on product detail), five-flag taxonomy: sale #F65C60 / 오늘드림 #F374B7 / 쿠폰 #9BCE26 / 증정 #6FCFF7 / best #F05A5E — all 9px radius pills inside thumbnail. Brand Olive Green absent from storefront chrome.",
+      "voice_fingerprint": {
+        "register": "omnichannel-beauty"
+      },
+      "signature_motion": "Card thumbnail crossfade, flag pill fade-in, cart drawer slide.",
+      "has_personas": true,
+      "category_raw": "Beauty Commerce (H&B Omnichannel)",
+      "country": "KR"
+    },
+    {
+      "id": "gmarket",
+      "primary_color_hex": "#ffd200",
+      "category": "E-commerce",
+      "visual_theme": "Veteran 2000-founded open marketplace post-Shinsegae rebrand. Smile Yellow #ffd200 + 247 :root CSS vars (10-hue × 10-stop ladders + Club Smile + Event + Service-accent sub-systems). Fixed 1200px canvas (WCAG fail on desktop, mitigated by m.gmarket).",
+      "voice_fingerprint": {
+        "register": "casual-marketplace"
+      },
+      "signature_motion": "Banner carousel auto-rotate, sprite-based icon animation.",
+      "has_personas": true,
+      "category_raw": "Legacy E-commerce (Shinsegae)",
+      "country": "KR"
+    },
+    {
+      "id": "tving",
+      "primary_color_hex": "#FF153C",
+      "category": "Consumer Tech",
+      "visual_theme": "CJ ENM OTT streaming — dark canvas, brand red #FF153C primary CTA, six-category --color-cate-* taxonomy, mobile-first poster card grid, 114 :root CSS custom properties.",
+      "voice_fingerprint": {
+        "register": "streaming-bold"
+      },
+      "signature_motion": "Hero auto-play 5s loop, card hover scale, episode list slide.",
+      "has_personas": true,
+      "category_raw": "OTT Streaming (CJ ENM)",
+      "country": "KR"
+    },
+    {
+      "id": "catchtable",
+      "primary_color_hex": "#FF3D00",
+      "category": "Consumer Tech",
+      "visual_theme": "Single-CTA orange (#FF3D00, 4× in 3000-element scan) — hard-square 0px chrome on 92% of elements, 150% line-height uniform across 35 typography slots, 145 :root vanilla-extract _11bicz7* vars.",
+      "voice_fingerprint": {
+        "register": "curatorial-warm"
+      },
+      "signature_motion": "Slot booking modal slide, calendar date-pick spring.",
+      "has_personas": true,
+      "category_raw": "F&B Booking",
+      "country": "KR"
+    },
+    {
+      "id": "upstage",
+      "primary_color_hex": "#D2FF95",
+      "category": "AI",
+      "visual_theme": "AI corporate identity — Espeak proprietary face on hero, Solar lime accent #D2FF95 single-use, industry-rotating hero (font-family shifts not color/weight), 74 :root vars, brand resource center with logo/symbol only (no token tables).",
+      "voice_fingerprint": {
+        "register": "research-confident"
+      },
+      "signature_motion": "Hero industry-text rotate, font-family swap not color.",
+      "has_personas": true,
+      "category_raw": "AI / LLM (Solar)",
+      "country": "KR"
+    },
+    {
+      "id": "chai",
+      "primary_color_hex": "#ff0062",
+      "category": "Fintech",
+      "visual_theme": "Hover-locked brand (#ff0062 pink → #6411ff purple 200ms flip is brand-defining motion). Service-terminated (2024 rebrand → PortOne Solutions); reference is archaeological — Webflow CSS bundle from 2022-05-13. Custom ChaiGothic typeface (proprietary).",
+      "voice_fingerprint": {
+        "register": "chai-verbal-frame"
+      },
+      "signature_motion": "Pink→purple hover flip 200ms (brand-defining).",
+      "has_personas": true,
+      "category_raw": "Lifestyle Fintech (archived 2024)",
+      "country": "KR",
+      "status_note": "service-terminated; rebranded PortOne Solutions"
+    },
+    {
+      "id": "dabang",
+      "primary_color_hex": "#FF3478",
+      "category": "Consumer Tech",
+      "visual_theme": "Real-estate listing platform — brand pink #FF3478 restricted to wordmark (3.4:1 fails AA body), 8-hue × 10-step ladder + -rgb variants (140 :root vars), Pretendard Variable 100%, zero box-shadow 100%, action blue #326CF9.",
+      "voice_fingerprint": {
+        "register": "trust-direct-property"
+      },
+      "signature_motion": "Map pin cluster zoom, listing card flip.",
+      "has_personas": true,
+      "category_raw": "Real Estate Listings (Station3)",
+      "country": "KR"
+    },
+    {
+      "id": "jumpit",
+      "primary_color_hex": "#00DD6D",
+      "category": "Productivity",
+      "visual_theme": "Developer-jobs platform (Saramin) — one-green discipline: #00DD6D appears exactly twice in chrome across 112 samples, primary CTA is #000 (opposite to Wanted/Toss pattern). styled-components hashed classes, zero :root design tokens exposed.",
+      "voice_fingerprint": {
+        "register": "developer-vernacular"
+      },
+      "signature_motion": "Job card hover lift, filter chip toggle.",
+      "has_personas": true,
+      "category_raw": "Developer Recruiting (Saramin)",
+      "country": "KR"
+    },
+    {
+      "id": "fastcampus",
+      "primary_color_hex": "#fc1c49",
+      "category": "Education",
+      "visual_theme": "Rich-color signature (yellow/orange/red/pink/blue/green Material ramps) vs single-mint Inflearn / institutional-blue Classum. Commerce-red #fc1c49 doubles as primary + sale-flag + inline-validation-error. Inverted GNB density (12px/600 secondary-compact + 16px/400 primary). Card geometry 4px 4px 0 0 + rank badge 4px 0 corner-only. 103 :root vars in --fds-color-*/--c-primary-*/--fds-semantic-* namespaces.",
+      "voice_fingerprint": {
+        "register": "approachable-instructor"
+      },
+      "signature_motion": "Category tab slide, course card hover scale.",
+      "has_personas": true,
+      "category_raw": "EdTech (Day1Company)",
       "country": "KR"
     }
   ]

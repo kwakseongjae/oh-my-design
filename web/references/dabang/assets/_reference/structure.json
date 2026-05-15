@@ -1,0 +1,53 @@
+{
+  "source": "live CDP DOM inspection (2026-05-15) on https://www.dabangapp.com/ + /map/onetwo",
+  "surfaces_inspected": [
+    {
+      "url": "https://www.dabangapp.com/",
+      "title": "부동산 필수 앱 다방",
+      "viewport": "1280×713 dpr=2",
+      "meta_description": "원룸, 투룸, 오피스텔, 아파트까지 내가 원하는 방, 다방에 다 있다!",
+      "samples": 32
+    },
+    {
+      "url": "https://www.dabangapp.com/map/onetwo?m_lat=37.4943&m_lng=127.0144&m_zoom=11",
+      "viewport": "1280×713 dpr=2",
+      "samples": 21
+    }
+  ],
+  "nav_observed": [
+    {"label": "로고 (홈)", "href": "/"},
+    {"label": "지도", "href": "/map/onetwo"},
+    {"label": "분양", "href": "/sale-in-lots"},
+    {"label": "관심목록", "href": "/favorite"}
+  ],
+  "primary_categories_h1_observed": [
+    "원/투룸", "아파트", "주택/빌라", "오피스텔", "분양"
+  ],
+  "home_anatomy_inferred": [
+    "1. Top app bar (logo pink mark / nav links: 지도 · 분양 · 관심목록)",
+    "2. Hero search entry (large pill input — 32px radius, location autocomplete)",
+    "3. Category card grid (원/투룸 · 아파트 · 주택/빌라 · 오피스텔 · 분양) — H1 20px/700",
+    "4. 최근 방문 (recently viewed) — H1 12px/700, small rail",
+    "5. 우리동네 한눈에 보기 (neighborhood overview module) — H1 20px/700",
+    "6. AI personalized band (관심있는 [동] 주변, AI가 대신 찾아봤어요 🔍) — H1 24px/400 — only emoji + 400-weight head on the page; the AI feature breaks the 700-bold default deliberately",
+    "7. Promo / value-prop panel (deep slate bg rgb(67,77,104) at 0.4 alpha overlay)",
+    "8. Footer / corporate links"
+  ],
+  "map_surface_anatomy": [
+    "1. Sticky top nav with category tabs (원/투룸 · 아파트 · 주택/빌라 · 오피스텔 · 분양)",
+    "2. Filter chip strip (rounded 42px pills with 1px gray-400 border, weight-500 labels)",
+    "3. Map canvas (Naver / proprietary tile renderer) — dominant surface",
+    "4. Floating left listing rail (cards, gray-400 borders, no shadow)",
+    "5. Map markers (pill-shaped price markers using --blue-500 for selected / --gray-700 for default)",
+    "6. Bottom toolbar / sort-by control"
+  ],
+  "layout_observations": [
+    "Map canvas dominates ~70% of viewport on /map/onetwo — chrome is borders, not shadows",
+    "Filter chips use 42px pill radius (rare in cohort) — Zigbang ships 10px chips, Dabang ships full-pill",
+    "Search-entry pill on home uses 32px radius — readable as a single 'one big input' moment",
+    "No box-shadow anywhere — depth strictly via 1px gray-400 borders and tinted backgrounds (blue-50 hover)",
+    "Headings refuse a single scale: 12 / 18 / 20 / 24px co-exist within the home page — sections lean on weight + position, not size, for hierarchy",
+    "AI band H1 is 24px/400 (lightest large heading) — the company signals 'AI is conversational, not headline-shouty' typographically"
+  ],
+  "page_weight": "single-page React (Next.js inferred from app router patterns); /brand and /design routes both 200 but return the SPA shell (no real DS page)"
+}

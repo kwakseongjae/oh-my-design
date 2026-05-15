@@ -1,3 +1,23 @@
+---
+id: miro
+name: Miro
+country: US
+category: design-tools
+homepage: "https://miro.com"
+primary_color: "#ffd02f"
+logo:
+  type: simpleicons
+  slug: miro
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Mirotone
+  url: "https://mirotone.xyz"
+  type: system
+  description: Miro's CSS component library for apps built on the Miro platform.
+  og_image: "https://www.mirotone.xyz/cover.png"
+---
+
 # Design System Inspiration of Miro
 
 ## 1. Visual Theme & Atmosphere

@@ -1,3 +1,22 @@
+---
+id: clay
+name: Clay
+country: US
+category: design-tools
+homepage: "https://www.clay.com"
+primary_color: "#ffd23f"
+logo:
+  type: github
+  slug: clay-run
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Clay Newsroom
+  url: "https://www.clay.com/press"
+  type: brand
+  description: Clay's official press kit and co-branding guidelines.
+---
+
 # Design System Inspiration of Clay
 
 ## 1. Visual Theme & Atmosphere

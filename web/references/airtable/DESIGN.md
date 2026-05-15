@@ -1,3 +1,23 @@
+---
+id: airtable
+name: Airtable
+country: US
+category: design-tools
+homepage: "https://www.airtable.com"
+primary_color: "#fcb400"
+logo:
+  type: simpleicons
+  slug: airtable
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Airtable Trademark Guidelines
+  url: "https://www.airtable.com/company/trademark-guidelines"
+  type: brand
+  description: Airtable's trademark usage and brand guidelines.
+  og_image: "https://www.airtable.com/images/airtable-seo.jpg"
+---
+
 # Design System Inspiration of Airtable
 
 ## 1. Visual Theme & Atmosphere

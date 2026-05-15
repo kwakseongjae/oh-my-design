@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: Claude (Anthropic)
+id: claude
+name: Claude (Anthropic)
+country: US
+category: ai
+homepage: "https://claude.ai"
+primary_color: "#cc785c"
+logo:
+  type: simpleicons
+  slug: anthropic
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Claude (Anthropic)

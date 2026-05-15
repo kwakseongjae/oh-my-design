@@ -1,13 +1,15 @@
 ---
-omd: 0.1
 id: wadiz
-brand: Wadiz
+name: Wadiz
 country: KR
-category: commerce
-subcategory: crowdfunding
-url: https://www.wadiz.kr
-verified: 2026-05-14
-confidence: High
+category: fintech
+homepage: "https://www.wadiz.kr"
+primary_color: "#00c4c4"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=wadiz.kr&sz=256"
+verified: "2026-05-14"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Wadiz

@@ -1,0 +1,298 @@
+{
+  "headings": [
+    {
+      "tag": "h1",
+      "text": "Supercharge",
+      "fontSize": "57.6px",
+      "fontWeight": "600",
+      "color": "rgb(255, 255, 255)",
+      "fontFamily": "Espeak, Arial, sans-serif"
+    },
+    {
+      "tag": "h1",
+      "text": "Insurance",
+      "fontSize": "48px",
+      "fontWeight": "600",
+      "color": "rgb(255, 255, 255)",
+      "fontFamily": "monospace"
+    },
+    {
+      "tag": "h1",
+      "text": "Fi",
+      "fontSize": "48px",
+      "fontWeight": "600",
+      "color": "rgb(255, 255, 255)",
+      "fontFamily": "monospace"
+    },
+    {
+      "tag": "h1",
+      "text": "Healthcare",
+      "fontSize": "48px",
+      "fontWeight": "600",
+      "color": "rgb(255, 255, 255)",
+      "fontFamily": "monospace"
+    },
+    {
+      "tag": "h1",
+      "text": "Manufacturing",
+      "fontSize": "43.2px",
+      "fontWeight": "600",
+      "color": "rgb(255, 255, 255)",
+      "fontFamily": "monospace"
+    },
+    {
+      "tag": "h1",
+      "text": "with AI.",
+      "fontSize": "57.6px",
+      "fontWeight": "600",
+      "color": "rgb(255, 255, 255)",
+      "fontFamily": "Espeak, Arial, sans-serif"
+    },
+    {
+      "tag": "h1",
+      "text": "Experience the future of work.",
+      "fontSize": "57.6px",
+      "fontWeight": "600",
+      "color": "rgb(255, 255, 255)",
+      "fontFamily": "Espeak, Arial, sans-serif"
+    },
+    {
+      "tag": "h2",
+      "text": "High-performance AI built by experts",
+      "fontSize": "48px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "Document Parse",
+      "fontSize": "20px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "Information Extract",
+      "fontSize": "20px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "Solar LLM",
+      "fontSize": "20px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h2",
+      "text": "Transforming high-stakes industries",
+      "fontSize": "48px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h2",
+      "text": "Trusted by leading companies worldwide",
+      "fontSize": "48px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "Upstage delivered a robust, end-to-end architecture for our AI-driven data extraction workstream within the Verra Project Hub.",
+      "fontSize": "32px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "Upstage AI Space helps our brokers find answers buried in 10s of 150-page documents—instantly.",
+      "fontSize": "32px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "Upstage Solar LLM enhances our Smart Assistant, transforming customer service.",
+      "fontSize": "32px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "Upstage Solar LLM powers our infra, enabling advanced AI at optimal costs.",
+      "fontSize": "32px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "Upstage OCR delivers over 95% accuracy, revolutionizing document processing.",
+      "fontSize": "32px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h2",
+      "text": "Flexible deployment, enterprise-ready anywhere",
+      "fontSize": "48px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "Run in Console",
+      "fontSize": "20px",
+      "fontWeight": "600",
+      "color": "rgb(16, 24, 40)",
+      "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "Launch via AWS Marketplace",
+      "fontSize": "20px",
+      "fontWeight": "600",
+      "color": "rgb(16, 24, 40)",
+      "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "Deploy on-prem",
+      "fontSize": "20px",
+      "fontWeight": "600",
+      "color": "rgb(16, 24, 40)",
+      "fontFamily": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif"
+    },
+    {
+      "tag": "h2",
+      "text": "Proven excellence in AI",
+      "fontSize": "48px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "AI 100",
+      "fontSize": "36.8px",
+      "fontWeight": "600",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h4",
+      "text": "CB Insights AI 100 (2025)",
+      "fontSize": "20px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "140+",
+      "fontSize": "36.8px",
+      "fontWeight": "600",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h4",
+      "text": "Top-tier conference papers",
+      "fontSize": "20px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h3",
+      "text": "1st place",
+      "fontSize": "36.8px",
+      "fontWeight": "600",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    },
+    {
+      "tag": "h4",
+      "text": "Open LLM Leaderboard",
+      "fontSize": "20px",
+      "fontWeight": "500",
+      "color": "rgb(10, 13, 20)",
+      "fontFamily": "Geist, sans-serif"
+    }
+  ],
+  "navLinks": [
+    "Solar MiniLightweight model for fast, efficient use",
+    "Syn ProTop-performing locally trained LLM for Japan",
+    "Insurance",
+    "Healthcare",
+    "Manufacturing",
+    "Financial Services",
+    "Customers",
+    "Blog",
+    "Events",
+    "Apps",
+    "Documentation",
+    "About Us",
+    "Careers",
+    "Partners",
+    "Newsroom",
+    "Support",
+    "API",
+    "Marketplace",
+    "On-premise",
+    "Try now",
+    "Try demo",
+    "Contact us",
+    "Try Studio",
+    "Developer Console"
+  ],
+  "footerLinks": [
+    "Solar Pro 3",
+    "Solar Pro 2",
+    "Solar Mini",
+    "Syn Pro",
+    "Document Parse",
+    "Information Extract",
+    "Studio",
+    "AI Space",
+    "Pricing",
+    "Insurance",
+    "Healthcare",
+    "Manufacturing",
+    "Financial Services",
+    "Customers",
+    "Blog",
+    "Events",
+    "Apps",
+    "Documentation",
+    "About us",
+    "Careers",
+    "Partners",
+    "Newsroom",
+    "Brand resource center",
+    "Notices",
+    "Support",
+    "Public tenders",
+    "privacy policy.",
+    "Privacy policy",
+    "Terms of use",
+    "contact@upstage.ai",
+    "www.upstage.ai",
+    "Decline",
+    "Allow"
+  ],
+  "sectionCount": 6
+}

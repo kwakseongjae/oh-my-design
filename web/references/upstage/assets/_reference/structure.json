@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "source": "live CDP capture of https://www.upstage.ai/ (home) + /resources/brand-resource-center",
+    "captured_at": "2026-05-15",
+    "viewport": { "w": 1280, "h": 713, "dpr": 1 }
+  },
+  "ia_tree": {
+    "primary_nav": [
+      "Products → (Solar Mini / Syn Pro / additional Solar models)",
+      "Solutions → Insurance / Healthcare / Manufacturing / Financial Services",
+      "Resources → Customers / Blog / Events / Apps / Documentation",
+      "Company → About Us / Careers / Partners / Newsroom",
+      "Pricing"
+    ],
+    "primary_cta_top_right": ["Try now"],
+    "footer_columns": [
+      "Products: Solar Pro 3, Solar Pro 2, Solar Mini, Syn Pro, Document Parse, Information Extract, Studio, AI Space, Pricing",
+      "Solutions: Insurance, Healthcare, Manufacturing, Financial Services",
+      "Resources: Customers, Blog, Events, Apps, Documentation",
+      "Company: About us, Careers, Partners, Newsroom, Brand resource center, Notices",
+      "Support: Public tenders, contact@upstage.ai"
+    ],
+    "footer_legal": ["Privacy policy", "Terms of use", "Business Information (KR mandated disclosure)"]
+  },
+  "heading_outline": [
+    {
+      "tag": "h1",
+      "rendered_as_rotating_sentence": "Supercharge {Insurance|Finance|Healthcare|Manufacturing} with AI.\\nExperience the future of work.",
+      "size": "57.6px (Espeak) + 48px (monospace swap word)",
+      "weight": "600",
+      "surface": "dark / plum #3C043B hero"
+    },
+    { "tag": "h2", "text": "High-performance AI built by experts" },
+    { "tag": "h2", "text": "Transforming high-stakes industries" },
+    { "tag": "h2", "text": "Trusted by leading companies worldwide" },
+    { "tag": "h2", "text": "Flexible deployment, enterprise-ready anywhere" },
+    { "tag": "h2", "text": "Proven excellence in AI" }
+  ],
+  "section_count_dom": 6,
+  "page_anatomy_top_to_bottom": [
+    "1. Fixed top nav (transparent on hero scroll, white below) — left logo, center menu, right 'Try now' filled CTA",
+    "2. Hero (dark plum #3C043B canvas) — rotating-industry H1, muted gray subhead, primary 'Try demo' + secondary 'Contact us' inline arrows",
+    "3. H2 'High-performance AI built by experts' — model lineup band (Solar Pro 3 / Pro 2 / Mini / Syn Pro)",
+    "4. H2 'Transforming high-stakes industries' — 4-industry grid (Insurance / Healthcare / Manufacturing / Financial Services) on a dark canvas, large industry word card-fronts",
+    "5. H2 'Trusted by leading companies worldwide' — customer logo strip + customer-story cards",
+    "6. H2 'Flexible deployment, enterprise-ready anywhere' — deployment matrix (API / On-premise / Marketplace)",
+    "7. H2 'Proven excellence in AI' — research/benchmark proof band",
+    "8. Footer (dark #191722) — 5-column site map + newsletter row + KR business-information legal block"
+  ],
+  "interactive_inventory": {
+    "primary_cta_variants": [
+      "'Try now' — top-right of nav, persistent",
+      "'Try demo' — hero, white-on-transparent with arrow",
+      "'Learn more →' — repeated inline link across every product/solution card (18px / weight 500, surface-color text + arrow glyph)",
+      "'Developer Console' / 'Learn more' — .button.is-secondary white pill with violet text, 8px radius, weight 500"
+    ],
+    "card_pattern": "Product cards inherit border-radius 8px, transparent background, paragraph body in #70757F gray. No drop shadow.",
+    "industry_card_pattern": "Each high-stakes industry presents a giant industry word as its own H1 sibling — typography-as-imagery."
+  },
+  "layout_observations": [
+    "1280px desktop sweet spot; max-full-width token is 100vw with section-internal max-content rails",
+    "Hero left-aligned (not centered) — text starts ~10% from left, no centered headline composition",
+    "Generous vertical whitespace between bands (~64-96px estimated) — not measured live",
+    "Heavy reliance on **surface-color shift** between sections (plum → white → dark) for visual rhythm; almost no decorative gradients, illustrations, or drop-shadow cards"
+  ],
+  "brand_resource_center": {
+    "url": "https://www.upstage.ai/resources/brand-resource-center",
+    "kind": "asset distribution (logo PNGs / symbol PNGs across light & dark variants), NOT a token specification page",
+    "categories": ["Brand Identity", "Product Identity", "Media kit", "Our leadership"],
+    "rights_statement": "All rights to the brand assets, including intellectual property rights, are owned by Upstage Co., Ltd."
+  }
+}

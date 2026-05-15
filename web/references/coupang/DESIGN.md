@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: Coupang
+id: coupang
+name: Coupang
+country: KR
+category: ecommerce
+homepage: "https://www.coupang.com"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: coupang
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Coupang Media Assets
+  url: "https://news.coupang.com/coupang-media-assets-brand-guidelines-eng/"
+  type: brand
+  description: Coupang's official media-asset brand guidelines — logo usage, sizing, and attribution rules.
+  og_image: "https://news.coupang.com/wp-content/uploads/2023/01/Coupang_2_1609.jpg"
 ---
 
 # Design System Inspiration of Coupang (쿠팡)

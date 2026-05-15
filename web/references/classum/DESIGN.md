@@ -1,15 +1,16 @@
 ---
-omd: 0.1
 id: classum
-name: Classum (클라썸)
+name: Classum
+display_name_kr: Classum (클라썸)
 country: KR
 category: education
-tier: 2
-verified_at: 2026-05-14
-sources:
-  tier1_live_inspect: true
-  tier1_official_ds: false
-  tier2_third_party: false
+homepage: "https://www.classum.com"
+primary_color: "#ff4438"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=classum.com&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Classum (클라썸)

@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3335",
-    "build": "next build",
+    "dev": "node scripts/build-registry.mjs && next dev -p 3335",
+    "build": "node scripts/build-registry.mjs && next build",
+    "build-registry": "node scripts/build-registry.mjs",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prepare": "husky"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.90.0",
@@ -42,6 +44,7 @@
     "@vitest/ui": "^4.1.4",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
+    "husky": "^9.1.7",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5",

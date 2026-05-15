@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUpRight, X } from "lucide-react";
 import { getLogoUrl, getLogoFallbackUrl } from "@/lib/logos";
 import { V2, BRAND_COLORS, colorForId } from "./tokens";
+import { isNewRef } from "@/lib/new-refs";
 
 /* ──────────────────────────── DATA ──────────────────────────── */
 
@@ -110,7 +111,7 @@ interface OpenState {
 }
 
 export function TheWall() {
-  // BRAND_COLORS holds all 98 brands — use it as the source of truth
+  // BRAND_COLORS holds all 108 brands — use it as the source of truth
   // (the web design-systems registry is a smaller subset).
   const cards = useMemo(
     () =>
@@ -428,6 +429,21 @@ function Tile({
       >
         <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.4} />
       </span>
+
+      {/* dev-only NEW badge — top-left, hidden in production */}
+      {isNewRef(id) && (
+        <span
+          aria-hidden
+          className="absolute left-2 top-2 rounded-full px-1.5 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider"
+          style={{
+            background: "#34d399",
+            color: "#062514",
+            boxShadow: "0 1px 4px rgba(0,0,0,0.35)",
+          }}
+        >
+          NEW
+        </span>
+      )}
 
       {/* logo */}
       <span

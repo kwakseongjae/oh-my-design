@@ -190,7 +190,7 @@ export function HeroV2() {
             className="mt-5 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg"
           >
             One <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm">DESIGN.md</code>{" "}
-            spec. 98 real brands extracted. Your AI agent (Claude Code, Codex,
+            spec. 108 real brands extracted. Your AI agent (Claude Code, Codex,
             OpenCode, Cursor) ships UI that actually looks like Stripe, Toss,
             Linear — not slop. Free, MIT, zero AI calls during install.
           </motion.p>

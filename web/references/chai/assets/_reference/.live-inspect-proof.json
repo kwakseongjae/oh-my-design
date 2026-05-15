@@ -1,0 +1,137 @@
+{
+  "id": "chai",
+  "captured_at": "2026-05-15T16:10:00+09:00",
+  "method": "Chrome DevTools Protocol — headless attach via ws://127.0.0.1:9222 (CDP 1.3, Chrome/148.0.7778.97)",
+  "harness": "/tmp/chai-cdp.mjs (Node 24 native WebSocket, Page.enable + Runtime.evaluate + Page.navigate)",
+  "tabs_opened": [
+    "F2CEA2B05F4DF449484EB56BA35415D7 — https://chai.finance/ (meta-refresh to /about.html)",
+    "955BC5563925572173FBCC71D4E8D185 — https://chai.finance/index.html (meta-refresh to /about.html)",
+    "EB705F092C655284310E8D512709C2E9 — https://web.archive.org/web/20210707171036/https://chai.finance/"
+  ],
+  "auxiliary_source": {
+    "css_bundle_url": "https://chai.finance/css/chai-finance.webflow.css",
+    "bytes": 182207,
+    "method": "curl -sL + grep frequency analysis",
+    "frequencies_verified": {
+      "#ff0062": 16,
+      "#1b1b1b": 16,
+      "#6411ff": 11,
+      "#a5a5a5": 17,
+      "#ffc600": 8,
+      "border-radius:_4px": 9,
+      "font-weight:_700": 31,
+      "font-family:_ChaiGothic": "multiple class declarations",
+      "transition:_color_200ms_ease": "primary motion observation"
+    },
+    "reproducibility": "curl -sL https://chai.finance/css/chai-finance.webflow.css | grep -c '#ff0062' → 16"
+  },
+  "live_dom_status": "https://chai.finance/ currently a Webflow service-termination notice; ChaiGothic/Hauora/Inter still ship via @font-face — runtime fonts confirmed via getComputedStyle in the CDP capture",
+  "raw_samples": [
+    {
+      "surface": "https://chai.finance/about.html",
+      "tag": "h3",
+      "selector_role": "announcement card title (× 10)",
+      "text": "차이앱(Android, iOS) 종료 공지",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0) on parent #1b1b1b panel",
+      "fontSize": "25.2px",
+      "fontWeight": "700",
+      "fontFamily": "ChaiGothic, sans-serif",
+      "height_px": 33,
+      "border_radius": "0px"
+    },
+    {
+      "surface": "https://chai.finance/about.html",
+      "tag": "a",
+      "selector_role": "footer policy link",
+      "text": "(footer link)",
+      "color": "rgb(165, 165, 165)",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "fontFamily": "Inter",
+      "height_px": 57,
+      "border_radius": "0px"
+    },
+    {
+      "surface": "https://chai.finance/about.html",
+      "tag": "a",
+      "selector_role": "footer mailto",
+      "text": "help@chai.finance",
+      "color": "rgb(165, 165, 165)",
+      "fontSize": "11.2px",
+      "fontWeight": "400",
+      "fontFamily": "Inter",
+      "height_px": 13,
+      "border_radius": "0px"
+    },
+    {
+      "surface": "https://chai.finance/css/chai-finance.webflow.css",
+      "selector": ".button.color-red",
+      "background-color": "#ff0062",
+      "role": "primary CTA default",
+      "context_lines": ["align-items: center;", "background-color: #ff0062;"]
+    },
+    {
+      "surface": "https://chai.finance/css/chai-finance.webflow.css",
+      "selector": ".button.color-red:hover",
+      "background-color": "#6411ff",
+      "role": "primary CTA hover — pink-to-purple flip (brand-defining)",
+      "transition": "color 200ms ease"
+    },
+    {
+      "surface": "https://chai.finance/css/chai-finance.webflow.css",
+      "selector": ".button.topnav.color-red",
+      "background-color": "#ff0062",
+      "role": "top-nav CTA — same pink token as button.color-red"
+    },
+    {
+      "surface": "https://chai.finance/css/chai-finance.webflow.css",
+      "selector": ".tab-list.w--current",
+      "background-color": "#6411ff",
+      "role": "selected pricing-plan tab background"
+    },
+    {
+      "surface": "https://chai.finance/css/chai-finance.webflow.css",
+      "selector": ".button-tab.w--current",
+      "background-color": "#6411ff",
+      "box-shadow": "inset 0 -4px 0 0 #6411ff",
+      "role": "active tab — inset-shadow underline (no layout shift on activation)"
+    },
+    {
+      "surface": "https://chai.finance/css/chai-finance.webflow.css",
+      "selector": ".gray-wrapper.selected-plan",
+      "background-color": "#6411ff",
+      "role": "selected plan card panel"
+    },
+    {
+      "surface": "https://chai.finance/css/chai-finance.webflow.css",
+      "selector": ".text-red",
+      "color": "#ff0062",
+      "role": "inline-text pink emphasis"
+    }
+  ],
+  "raw_sample_count": 10,
+  "floor_met": "≥ 5 (10 retained)",
+  "tier2_attempts": [
+    {
+      "source": "https://getdesign.md/chai",
+      "result": "No designs found for 'chai'",
+      "verified_at": "2026-05-15"
+    },
+    {
+      "source": "https://styles.refero.design/?q=chai",
+      "result": "no result cards",
+      "verified_at": "2026-05-15"
+    }
+  ],
+  "tier1_official_ds": {
+    "result": "negative — no public design system",
+    "probes": [
+      "https://design.chai.finance → 404",
+      "https://chai.finance/brand → not present",
+      "GitHub: no chai-finance / chaicorporation / 차이코퍼레이션 design-system / Storybook / tokens repo",
+      "Note: Chai Corporation was rebranded PortOne Solutions in 2024 (per thevc.kr/Chai); the consumer Chai app is terminated. Token corpus captured is from the 2022 final-published Webflow build still served at chai.finance."
+    ]
+  },
+  "conflicts_unresolved": "none — Tier 1 is the only signal; Tier 2 indexes both empty"
+}

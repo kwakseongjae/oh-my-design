@@ -1,3 +1,23 @@
+---
+id: ibm
+name: IBM
+country: US
+category: consumer-tech
+homepage: "https://www.ibm.com"
+primary_color: "#0f62fe"
+logo:
+  type: github
+  slug: IBM
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Carbon
+  url: "https://carbondesignsystem.com"
+  type: system
+  description: IBM's open-source design system with React, Angular, Vue, and Web Components.
+  og_image: "https://carbondesignsystem.com/ogimage.png"
+---
+
 # Design System Inspiration of IBM
 
 ## 1. Visual Theme & Atmosphere

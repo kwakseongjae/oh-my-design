@@ -1,6 +1,22 @@
 ---
-omd: 0.1
-brand: 여기어때 (GoodChoice)
+id: yeogiotte
+name: 여기어때
+display_name_kr: 여기어때 (GoodChoice)
+country: KR
+category: consumer-tech
+homepage: "https://www.yeogi.com"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://www.yeogi.com/favicon/rel_icon/favicon_png_192.png"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: 여기어때 Design Library
+  url: "https://designlibrary.yeogi.com/"
+  type: system
+  description: 여기어때 디자인 라이브러리 — A Visual Language for Travel. Foundations, components, and tokens.
+  og_image: "https://framerusercontent.com/assets/kA6JROOLbG0jX7SQZl1tLZzahM.jpg"
 ---
 
 # Design System Inspiration of 여기어때 (GoodChoice / Yeogiotte)

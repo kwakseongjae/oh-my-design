@@ -1,11 +1,15 @@
 ---
-omd: 0.1
 id: kbank
 name: K bank
 country: KR
-category: finance
-url: https://www.kbanknow.com
-verified: 2026-05-14
+category: fintech
+homepage: "https://www.kbanknow.com"
+primary_color: "#0046ff"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=kbanknow.com&sz=256"
+verified: "2026-05-14"
+omd: "0.1"
 ---
 
 # K bank — Design Reference

@@ -1,0 +1,60 @@
+{
+  "id": "chai",
+  "captured_at": "2026-05-15",
+  "surfaces_inspected": [
+    {
+      "url": "https://chai.finance/",
+      "current_state": "302 meta-refresh → /about.html (service-termination notice page)",
+      "title_shipped": "CHAI - 차이코퍼레이션",
+      "engine": "Webflow (site-id 61de89512bb7331baad32382, last published 2022-05-13)"
+    },
+    {
+      "url": "https://chai.finance/index.html",
+      "current_state": "redirects identically — index is a placeholder shell",
+      "title_shipped": "CHAI - 차이코퍼레이션"
+    },
+    {
+      "url": "https://chai.finance/about.html",
+      "current_state": "active — 10× service-termination announcement cards in dark panel",
+      "title_shipped": "CHAI - 포트원솔루션스",
+      "headings": "H3 × 10 @ 25.2px / 700 / #ffffff on dark panel #1b1b1b"
+    }
+  ],
+  "historical_surface": {
+    "url": "https://web.archive.org/web/20210707171036/https://chai.finance/",
+    "title": "CHAI - 차이나는 간편결제",
+    "hero_copy_observed": [
+      "할인 금액이 남달라서 차이다",
+      "단순하니까 차이다",
+      "끊임없이 경험하는 할인 결제의 차이를"
+    ],
+    "value_props_observed": [
+      "1년 365일 매일받는",
+      "충전 후 바로결제",
+      "다운받으세요"
+    ],
+    "footer_observed": [
+      "(주)차이코퍼레이션",
+      "대표이사 / 사업자번호 / 고객센터",
+      "1544·7839 (월 - 금 9:00 AM - 6:00 PM)"
+    ],
+    "store_links": ["App Store", "Google Play"],
+    "note": "Hero copy retained as factual reference (linguistic pattern), not adopted as design copy."
+  },
+  "layout_observations": [
+    "Webflow-class-driven (no :root --tokens) — 73 utility class names use ink + brand palette",
+    "Section paddings in em (5em 2.5em) for full-bleed feel; card padding in px (35px)",
+    "Two display families coexist: ChaiGothic for Korean, Gotham for Western — language-switched stack",
+    "Active-tab indicator is inset bottom box-shadow not border (no reflow on activation)",
+    "Pink → purple hover flip is the primary motion language; no transform tokens beyond color easing"
+  ],
+  "ia_pattern_inferred_from_class_corpus": [
+    ".button + .color-red (primary CTA)",
+    ".button.topnav.color-red (header CTA)",
+    ".tab-list.w--current (selected pricing tab)",
+    ".gray-wrapper.selected-plan (plan card active state)",
+    ".cart-quantity (commerce badge)",
+    ".link-footer (footer nav link)"
+  ],
+  "tone_observed": "Loud, magenta-on-black, slogan-driven — early-2020s Korean fintech 'simple-payment' marketing maximalism. Wordplay '차이' (= 'difference' in Korean) anchors every headline."
+}

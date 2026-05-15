@@ -1,0 +1,157 @@
+{
+  "_meta": {
+    "purpose": "Authoritative proof of live runtime capture per omd:add-reference CREATE rule.",
+    "captured_at_iso": "2026-05-15T07:10:00Z",
+    "method": "Chrome DevTools Protocol :9222 — Runtime.evaluate getComputedStyle on document.documentElement + curated DOM selector sweep + frequency analysis across all elements.",
+    "browser": "Chrome/148.0.7778.97 (mac arm64)",
+    "cdp_endpoint": "ws://localhost:9222/devtools/page/68B97F7E96541CC25A9EA2E71E016650",
+    "websocket_origin_handling": "suppress_origin=True (bypass --remote-allow-origins on this Chrome session)",
+    "surfaces_captured": [
+      { "url": "https://www.upstage.ai/", "title": "Upstage AI - Building intelligence for the future of work", "samples_dom": 44, "freq_universe": "all 930+ rendered elements" },
+      { "url": "https://www.upstage.ai/resources/brand-resource-center", "title": "brand-resource-center", "samples_dom": 0, "purpose": "Tier-1 verification — confirmed it is an asset-download surface, not a token specification" }
+    ],
+    "viewport": { "w": 1280, "h": 713, "dpr": 1 },
+    "root_css_var_count": 74
+  },
+  "raw_samples": [
+    {
+      "label": "hero H1 anchor word — Espeak display",
+      "selector": "h1 (Espeak)",
+      "text": "Supercharge",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0) (over plum #3C043B section bg)",
+      "fontFamily": "Espeak, Arial, sans-serif",
+      "fontSize": "57.6px",
+      "fontWeight": "600",
+      "borderRadius": "0px"
+    },
+    {
+      "label": "hero H1 rotating-industry swap word — monospace typographic shift",
+      "selector": "h1 (monospace swap)",
+      "text": "Insurance",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "fontFamily": "monospace",
+      "fontSize": "48px",
+      "fontWeight": "600",
+      "borderRadius": "0px"
+    },
+    {
+      "label": "secondary button — violet text on white pill, 8px corner",
+      "selector": "a.button.is-secondary",
+      "text": "Developer Console",
+      "color": "rgb(91, 82, 255)  /* #5B52FF Upstage Violet */",
+      "background": "rgb(255, 255, 255)",
+      "fontFamily": "Geist, sans-serif",
+      "fontSize": "16px",
+      "fontWeight": "500",
+      "borderRadius": "8px"
+    },
+    {
+      "label": "inline arrow CTA — text-color follows surface, no chrome",
+      "selector": "a.button (arrow)",
+      "text": "Learn more →",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "fontFamily": "Geist, sans-serif",
+      "fontSize": "18px",
+      "fontWeight": "500",
+      "borderRadius": "0px"
+    },
+    {
+      "label": "footer band — violet-tinted near-black surface",
+      "selector": "footer",
+      "text": "Products Solar Pro 3 Solar Pro 2 Solar Mini Syn Pro…",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgb(25, 23, 34)  /* #191722 */",
+      "fontFamily": "Geist, sans-serif",
+      "fontSize": "18px",
+      "fontWeight": "400",
+      "borderRadius": "0px"
+    },
+    {
+      "label": "product card body — muted gray paragraph, 8px corner",
+      "selector": "[class*=\"card\"]",
+      "text": "Document Parse — Convert PDFs, scans, and emails into…",
+      "color": "rgb(112, 117, 127)  /* #70757F dominant body gray */",
+      "background": "rgba(0, 0, 0, 0)",
+      "fontFamily": "Geist, sans-serif",
+      "fontSize": "18px",
+      "fontWeight": "400",
+      "borderRadius": "8px"
+    },
+    {
+      "label": "body root — default text color & family for the home surface",
+      "selector": "body",
+      "text": "Upstage Studio — Build and deploy your agent. Learn more…",
+      "color": "rgb(112, 117, 127)",
+      "background": "rgba(0, 0, 0, 0)",
+      "fontFamily": "Geist, sans-serif",
+      "fontSize": "18px",
+      "fontWeight": "400"
+    },
+    {
+      "label": "page header / hero container — confirms hero surface inheritance",
+      "selector": "header",
+      "text": "Supercharge {Industry} with AI. Experience the future of work.",
+      "color": "rgb(112, 117, 127)  /* applies to muted subhead */",
+      "background": "rgba(0, 0, 0, 0) (canvas underneath: plum #3C043B)",
+      "fontFamily": "Geist, sans-serif",
+      "fontSize": "18px",
+      "fontWeight": "400"
+    }
+  ],
+  "frequency_top_lines": {
+    "color_top_8": [
+      ["rgb(112, 117, 127)", 428, "#70757F body gray — dominant text"],
+      ["rgb(255, 255, 255)", 213, "white on dark sections"],
+      ["rgb(10, 13, 20)",   58,  "#0A0D14 near-black headlines on light surface"],
+      ["rgb(91, 82, 255)",  55,  "#5B52FF Upstage Violet — interactive foreground"],
+      ["rgb(0, 0, 238)",    55,  "browser default link blue (un-styled <a>)"],
+      ["rgb(0, 0, 0)",      50,  "pure black on auxiliary chrome"],
+      ["rgb(110, 113, 145)", 20, "#6E7191 muted secondary"],
+      ["rgba(255, 255, 255, 0.5)", 14, "white@50% on dark hero copy"]
+    ],
+    "background_top_5": [
+      ["rgba(0, 0, 0, 0)", 897, "transparent — overwhelming default"],
+      ["rgb(255, 255, 255)", 21, "white pill / surface"],
+      ["rgb(91, 82, 255)", 6,    "filled violet button surface"],
+      ["rgb(10, 13, 20)", 5,     "near-black surface"],
+      ["rgb(25, 23, 34)", 1,     "footer plum-black"]
+    ],
+    "font_family_top_3": [
+      ["Geist, sans-serif", 869, "primary body 93%"],
+      ["sans-serif", 50, "fallback during hydration"],
+      ["Espeak, Arial, sans-serif", 3, "hero H1 only"]
+    ],
+    "font_weight_top": [["400", 786], ["500", 129], ["600", 15], ["700", 8]],
+    "border_radius_top": [["0px", 797], ["8px", 134], ["100%", 5], ["100px", 1], ["50%", 1]]
+  },
+  "ds_verification": {
+    "tier_1_official_ds_status": "partial-positive",
+    "tier_1_evidence": [
+      "Brand Resource Center exists and is publicly linked from the footer of every page: https://www.upstage.ai/resources/brand-resource-center (HTTP 200, h1='Brand Resource Center', categories Brand Identity / Product Identity / Media kit / Our leadership).",
+      "Distributes downloadable logo + symbol PNG assets across light/dark variants via Webflow CDN and Airtable-hosted records.",
+      "Carries IP rights statement: 'All rights to the brand assets, including intellectual property rights, are owned by Upstage Co., Ltd.'",
+      "DOES NOT publish color palette / typography scale / spacing tokens / component specs. The token system is only observable via the production CSS captured here."
+    ],
+    "tier_1_negative_for": [
+      "design.upstage.ai (DNS 000)",
+      "brand.upstage.ai (DNS 000)",
+      "www.upstage.ai/brand (HTTP 404)",
+      "github.com/UpstageAI — 12 public repos, all AI/research/cookbook (UpstageAI/cookbook, UpstageAI/Gym, UpstageAI/mcp-upstage, UpstageAI/opencode, UpstageAI/solar-prompt-cookbook, UpstageAI/vllm, etc.) — zero design-system / Storybook / token-library / bezier-style repo"
+    ],
+    "tier_2_indexes_consulted": [
+      { "source": "getdesign.md", "url": "https://getdesign.md/upstage", "result": "HTTP 200 page, no curated entry for 'upstage'" },
+      { "source": "styles.refero.design", "url": "https://styles.refero.design/?q=upstage", "result": "HTTP 200 loads search UI in skeleton state, no result cards for 'upstage'" }
+    ],
+    "conclusion": "Upstage operates a brand-asset distribution surface (Tier-1 light) but no public design-system specification. Production tokens are the canonical source for this DESIGN.md."
+  },
+  "reproducibility": {
+    "verify_tier1_brand_center": "curl -sIL https://www.upstage.ai/resources/brand-resource-center | head -1   # → HTTP 200",
+    "verify_tier1_negative": "curl -sIL https://design.upstage.ai 2>&1 | head -1   # → connect failure",
+    "verify_github_no_ds": "gh search repos UpstageAI design-system   # → 0 hits",
+    "verify_live_root_vars_count": "/opt/homebrew/bin/python3.11 → CDP Runtime.evaluate getComputedStyle(document.documentElement) → 74 custom properties (--colors--*, --style--*, --_sub---untitled-ui--*, --_sub---spark-library--*, --_sub---elements-webflow-library--*)",
+    "verify_geist_dominance": "DOM-wide font-family frequency: Geist = 869 / 930 ≈ 93%"
+  }
+}

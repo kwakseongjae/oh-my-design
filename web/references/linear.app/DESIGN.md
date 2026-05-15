@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: Linear
+id: linear.app
+name: Linear
+country: US
+category: productivity
+homepage: "https://linear.app"
+primary_color: "#5e6ad2"
+logo:
+  type: simpleicons
+  slug: linear
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Linear Brand
+  url: "https://linear.app/brand"
+  type: brand
+  description: Linear's brand guidelines with wordmark, logomark, and color specifications.
+  og_image: "https://linear.app/api/og/generic?title=Brand&v=3"
 ---
 
 # Design System Inspiration of Linear

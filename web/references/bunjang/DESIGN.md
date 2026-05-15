@@ -1,12 +1,16 @@
 ---
-omd: 0.1
 id: bunjang
-brand: Bunjang
-brand_kr: 번개장터
+name: Bunjang
+display_name_kr: 번개장터
 country: KR
-category: marketplace
-url: https://m.bunjang.co.kr
-verified: 2026-05-14
+category: ecommerce
+homepage: "https://m.bunjang.co.kr"
+primary_color: "#d80c18"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=bunjang.co.kr&sz=256"
+verified: "2026-05-14"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Bunjang (번개장터)

@@ -1,0 +1,35 @@
+{
+  "$schema": "omd-structure-0.1",
+  "source": "live CDP 2026-05-15",
+  "surfaces_inspected": [
+    {
+      "url": "https://www.tossinvest.com/?focusedProductCode=A005930",
+      "title": "토스증권",
+      "sections": 14,
+      "h2_count_sampled": 2,
+      "h3_count_sampled": 2,
+      "nav_items": ["홈", "피드", "주식 골라보기", "내 계좌", "로그인", "내 투자", "관심", "최근 본", "실시간"]
+    },
+    {
+      "url": "https://www.tossinvest.com/stocks/A005930/order",
+      "context": "stock order surface — Samsung Electronics 005930",
+      "panels_observed": ["차트", "호가", "시세", "일반주문", "개인·외국인·기관", "체결가"],
+      "primary_actions": ["일반주문", "정규장 주문 예약", "구매 가격", "매매"]
+    }
+  ],
+  "ia_outline": {
+    "global_nav": ["홈", "피드", "주식 골라보기", "내 계좌", "내 투자"],
+    "secondary_nav": ["관심", "최근 본", "실시간"],
+    "auth_state": ["로그인"]
+  },
+  "layout_observations": [
+    "Dark-mode-default chrome: page background rgb(23,23,28) — no light-theme variant served at root navigation.",
+    "Two-pane composition on stock detail: chart/price panel + order panel (right rail).",
+    "Headings use neutral grey (rgb(195,195,198)) — chromatic colour is reserved for state (up/down) and brand (CTA blue).",
+    "No box-shadow on cards or buttons — depth comes from layered surface alphas + 1px translucent borders.",
+    "Chip/pill memo control radius=32px contrasts with 8px card/input radius — two-tier radius family.",
+    "Toss Securities ships a real internal DS — 416 CSS custom props on :root with three namespaces (--tw-semantic-*, --tw-adaptive-*, --wts-adaptive-*) implying a Tailwind-token + adaptive-theme + Web-Toss-Securities-specific scale."
+  ],
+  "tone_observed": "Calm, restrained dark-mode product chrome; chromatic colour reserved as semantic signal (red=up, blue=down, blue=brand CTA — semantic overlap accepted because contexts differ: brand button vs price tick).",
+  "data_first_density": "High — order book, price feed, real-time chart all fit a single viewport; type hierarchy keeps 16px body baseline."
+}

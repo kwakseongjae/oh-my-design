@@ -1,3 +1,17 @@
+---
+id: renault
+name: Renault
+country: FR
+category: automotive
+homepage: "https://www.renault.com"
+primary_color: "#ffcc00"
+logo:
+  type: simpleicons
+  slug: renault
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Renault
 
 ## 1. Visual Theme & Atmosphere

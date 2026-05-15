@@ -114,66 +114,33 @@ Phase 2 끝난 직후, build subagent들의 return summary를 모아서 작성. 
 
 ---
 
-## Phase 3 — SYNC (문서 카운트 갱신)
+## Phase 3 — SYNC (registry-driven)
 
-`omd:add-reference` SYNC 모드와 동일. **반드시 build 끝난 직후, promo 전에** 실행.
+Hand-maintained map drift was the recurring 10-brand batch-bug. Eliminated: every brand attribute lives in the **canonical frontmatter** of `references/<id>/DESIGN.md`, projected into `web/src/data/registry.generated.ts`, which every UI surface reads.
 
-### 갱신 대상
-1. **References count** (marketing surfaces only — skill 내부는 count-agnostic 유지). **이전 카운트는 `data/reference-fingerprints.json.count`에서 읽어서 → 새 카운트로 교체**. 직전 batch가 +10 했더라도 카운트는 fingerprints에서 산출 — hardcoded "78 → 88" 식 가정 금지:
-   - `README.md`, `README.ko.md`, `README.ja.md`, `README.zh-TW.md` — badge SVG + 본문 + 디렉토리 트리
-   - `web/src/components/landing-v2/{hero,sections,the-wall,tokens}.tsx` — `BRAND_COLORS` map에 신규 entry, 본문 "X real brands", "X-card wall" 주석
-   - `web/public/llms.txt` — 카탈로그 lines + "## N reference brands bundled" 헤더 + "Examples:" 리스트에 신규 brand append
-   - **SEO layouts (이전 batch 누락 함정 — 명시):**
-     - `web/src/app/layout.tsx` — root description / openGraph / twitter / JSON-LD `text` 필드 (5~7곳)
-     - `web/src/app/docs/layout.tsx` — description
-     - `web/src/app/docs/page.tsx` — body 텍스트 "X DESIGN.md files", "X real design systems"
-     - `web/src/app/builder/layout.tsx` — description × 3 (default / openGraph / twitter)
-     - `web/src/app/design-systems/layout.tsx` — description × 2 (default / openGraph)
-   - **컴포넌트 본문 카피 (이전 batch 누락 함정):**
-     - `web/src/components/reference-preview.tsx` — JSDoc 주석 "across all N references"
-     - `web/src/components/survey/result-card.tsx` — "browse all N references" CTA
-   - **`skills/*/SKILL.md`, `agents/*.md`는 절대 숫자 박지 말 것** — count-agnostic. 카운트 노출 필요시 런타임에 `fingerprints.json.count` 읽어서 표시.
-   - **Regression guard (Phase 3 끝나기 전 필수 실행):**
-     ```bash
-     # 1. skill / agent count contamination
-     grep -rn "[0-9]\{2\}개 (레퍼런스|reference|카탈로그)" skills/ agents/ .claude/skills/ .claude/agents/  # 0 expected
-     # 2. stale number sweep — old count + the one before
-     OLD_COUNT_PREV=$(($(jq .count data/reference-fingerprints.json) - 10))
-     OLD_COUNT_PREV2=$((OLD_COUNT_PREV - 10))
-     grep -rn "\\b${OLD_COUNT_PREV}\\b\\|\\b${OLD_COUNT_PREV2}\\b" \
-       --include="*.md" --include="*.ts" --include="*.tsx" --include="*.txt" \
-       README*.md web/src web/public 2>/dev/null \
-       | grep -vE "(node_modules|\\.next|references/|design-md/|\\.promo/|CHANGELOG|tasks/|reference-audit)" \
-       | grep -iE "(reference|brand|design.system|companies|company)"  # 0 expected
-     # 3. §1 canonical header — DESIGN.md authoring discipline
-     # All references must use "## 1. Visual Theme & Atmosphere" as §1.
-     # Hero card mood prose extraction in /reference/<id> depends on this header.
-     # 2026-05-14 batch broke this in 3 brands (flex "Overview" / upbit "Identity" / kbank "§N").
-     grep -L '^## 1\. Visual Theme' references/*/DESIGN.md  # 0 expected (empty stdout)
-     ```
-2. **Symlink sanity**: 루트 `references` → `web/references` (이미 있으면 skip)
-3. **Fingerprints**: `data/reference-fingerprints.json`, `.claude/data/reference-fingerprints.json`, `.codex/data/reference-fingerprints.json` 새 10 entry append (셋 다 byte-identical 유지)
-4. **API 매핑 4종** (`web/src/app/api/references/route.ts`) — **이전 batch에서 누락된 함정**. 추가 안 하면 Builder Step 1에서 brand가 'Other / United States'로 분류되어 한국 필터에 안 잡힘:
-   - `CATEGORIES` — 각 id의 industry 카테고리
-   - `COUNTRIES` — 한국 brand는 모두 `'Korea'`
-   - `DISPLAY_NAMES` — UI에 표시될 이름 (한글 또는 영문 wordmark)
-5. **Logo + URL 매핑 3종**:
-   - `web/src/lib/logos.ts` — `LOGO_MAP` (favicon URL) + `DOMAIN_OVERRIDES`
-   - `web/src/lib/homepage-urls.ts` — `HOMEPAGE_URLS`
-   - `web/src/components/landing-v2/tokens.ts` — `BRAND_COLORS` (alpha-2 fallback 가능하지만 hint 있으면 the-wall 카드가 더 선명)
-6. **공식 DS 페이지 등재** (`web/src/lib/design-systems.ts` `DESIGN_SYSTEMS`):
-   - **소스**: 각 brand의 `_promo.json` `design_system` 필드 (Phase 2 Tier 1.5에서 이미 발견·검증·기입됨)
-   - 필드 있는 brand만 `DESIGN_SYSTEMS`에 append; 없는 brand는 skip (UI가 자동으로 DS 버튼 숨김)
-   - **재검증 1회**: 모든 새 등재 URL을 `curl -sIL` 200 한번 더 확인 (Phase 2와 Phase 3 사이 시간 경과 시 발생할 수 있는 dead link 차단)
-   - 영향: Browse 모달 카운트 배지 + Builder Step 3 preview header DS 버튼 + `/design-systems` 카탈로그 페이지
-   - **anti-pattern**: 여기서 새로 리서치해서 URL 만들어내기 (build 단계에서 못 찾았다 = 정말로 공개 자료가 없다는 신호)
-7. **design-md/ 미러 sync**: `cp -RL web/references design-md` (먼저 `rm -rf design-md`). 루트 `design-md/`는 publish용 git-tracked 미러. `web/references/`가 canonical(빌드 의존)이고 `design-md/`는 사본 — 매 batch마다 sync 필수. (참고: 루트 `references` symlink는 gitignored 로컬 편의용, 무시.)
-8. **CHANGELOG.md** (있으면): `feat(refs): +10 <category> — <id list>`
-9. **GitHub repo description**: `gh repo edit --description "..."` (사용자 컨펌 후만)
+### 1. Canonical frontmatter per new id (the ONLY data edit)
+Schema lives at the top of `web/src/data/registry.generated.ts`. Required: `id`, `name`, `country`, `category`, `homepage`, `primary_color`, `logo.{type,slug}`, `verified`. Optional: `display_name_kr`, `ds`.
 
-### 검증
-- `npm test --silent` (reference fingerprint test 포함) pass
-- `node -e "console.log(require('./data/reference-fingerprints.json').length)"` = ls 결과와 일치
+### 2. Regenerate + gate (single command)
+```bash
+cd web && npm run build-registry && npm test
+```
+Catalog-integrity vitest blocks the commit until schema, §1 header, prose-first paragraph, fingerprint cross-check, design-md mirror, and triple-fingerprint byte identity all pass. Husky pre-commit runs the same gate.
+
+### 3. Adjacent surfaces (not registry-derived — still manual per batch)
+- Fingerprints × 3 byte-identical: `data/`, `.claude/data/`, `.codex/data/reference-fingerprints.json`
+- `design-md/` mirror: `rm -rf design-md && cp -RL references design-md`
+- READMEs × 4 (en/ko/ja/zh-TW): count badge + body
+- `web/public/llms.txt`: header count + Examples display name append
+- SEO layouts: `web/src/app/{layout,docs/layout,docs/page,builder/layout,design-systems/layout}.tsx` count strings
+- CHANGELOG.md + `package.json` patch bump
+- `skills/*/SKILL.md` / `agents/*.md` stay count-agnostic — do not hardcode numbers there.
+
+### 4. Sub-agent self-verification (mandatory at end of every batch slot)
+```bash
+cd web && npm test -- --run __tests__/catalog-integrity.test.ts
+```
+Report pass/fail. Do not declare the batch done before this is green.
 
 ---
 

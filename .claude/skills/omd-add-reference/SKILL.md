@@ -208,7 +208,7 @@ CREATE 시 자동, 수동으로도 호출 가능.
    - `README.md`, `README.ko.md`, `README.ja.md`, `README.zh-TW.md` — "67 brand DESIGN.md" 류
    - `web/src/components/landing-v2/hero.tsx` 또는 `sections.tsx` — 카피 내 숫자
    - `web/public/llms.txt` — 카탈로그 line
-   - GitHub repo description: `gh repo edit --description "..."` (사용자 컨펌 후)
+   - GitHub repo description: 이미 **"100+ real company design systems"** count-agnostic 문구로 고정 (2026-05-15 결정 — 매 batch마다 숫자 갱신 안 함). 한 단계 (e.g. 200+ 도달) 넘기 전까진 `gh repo edit` 호출 금지.
 2. **Symlink sanity**: 루트 `references` → `web/references` symlink 확인 (이미 있으면 skip)
 3. **Reference fingerprints**: `data/reference-fingerprints.json`, `.claude/data/reference-fingerprints.json`, `.codex/data/reference-fingerprints.json` 새 entry append
 4. 사용자에게 git status 보여주고 commit 여부 묻지 않음 (memory: no auto-commits)
@@ -260,65 +260,55 @@ return out.slice(0, 30);
 
 ---
 
-## Phase 5 — SYNC (단일/batch 공통, 새 reference 추가 직후 mandatory)
+## Phase 5 — SYNC (registry-driven, 새 reference 추가 직후 mandatory)
 
-새 reference 1개라도 추가됐다면 종료 직전 반드시 실행. Batch 추가는 `omd:batch-launch` Phase 3가 동일 작업을 수행 — 단일 추가일 때 이 Phase로 동등한 처리 보장.
+Hand-maintained map drift was the recurring batch-bug (homepage-urls.ts 2-batch miss). It's eliminated: every brand attribute lives in the **canonical frontmatter** at the top of `references/<id>/DESIGN.md`, and `web/src/data/registry.generated.ts` is the typed projection consumed by every UI surface.
 
-### 1. Fingerprints (3 copies, 반드시 byte-identical)
-- `data/reference-fingerprints.json` · `.claude/data/reference-fingerprints.json` · `.codex/data/reference-fingerprints.json`
-- 신규 entry append + `count` bump + `generated_at` 갱신
+### 1. Canonical frontmatter (the only place you edit data)
+Required keys per id (schema doc lives at the top of `registry.generated.ts`):
 
-### 2. API + logo + color 매핑 (이전 batch 누락 함정)
-- `web/src/app/api/references/route.ts` — `CATEGORIES`, `COUNTRIES`, `DISPLAY_NAMES` 모두 추가 (셋 다 — 하나라도 빠지면 Builder/Catalog 필터에서 brand가 'Other / United States' 폴백)
-- `web/src/lib/logos.ts` — `LOGO_MAP` + `DOMAIN_OVERRIDES`
-- `web/src/components/landing-v2/tokens.ts` — `BRAND_COLORS`
-
-### 3. Marketing surfaces (count 갱신, count는 fingerprints에서 산출)
-- READMEs × 4 (en/ko/ja/zh-TW) — badge SVG + 본문
-- `web/public/llms.txt` — 헤더 + Examples 리스트 append
-- `web/src/components/landing-v2/{hero,sections,the-wall,tokens}.tsx`
-
-### 4. SEO + body copy (이전 2 batch 연속 누락된 surface — 명시)
-- `web/src/app/layout.tsx` — description / openGraph / twitter / JSON-LD `text` 필드 (5~7곳)
-- `web/src/app/docs/layout.tsx` — description
-- `web/src/app/docs/page.tsx` — body "X DESIGN.md files" / "X real design systems"
-- `web/src/app/builder/layout.tsx` — description × 3
-- `web/src/app/design-systems/layout.tsx` — description × 2
-- `web/src/components/reference-preview.tsx` — JSDoc 주석
-- `web/src/components/survey/result-card.tsx` — "browse all N references" CTA
-
-### 5. 공식 DS 등재 (`_promo.json.design_system` 있을 때만)
-- `web/src/lib/design-systems.ts` `DESIGN_SYSTEMS`에 entry 추가
-- URL `curl -sIL` 200 재검증
-- 자동으로: Builder Step 3 DS 버튼 + Playground reference picker + `/design-systems` 카탈로그 surface
-
-### 6. design-md/ 미러 sync
-- `rm -rf design-md && cp -RL web/references design-md` (publish용 git-tracked 미러)
-
-### 7. Regression guard (Phase 5 끝나기 전 mandatory)
-```bash
-# 이전 카운트와 그 이전 카운트, 둘 다 stale 잔존 확인
-NEW=$(jq .count data/reference-fingerprints.json)
-PREV1=$((NEW - 10))
-PREV2=$((PREV1 - 10))
-grep -rn "\\b${PREV1}\\b\\|\\b${PREV2}\\b" \
-  --include="*.md" --include="*.ts" --include="*.tsx" --include="*.txt" \
-  README*.md web/src web/public 2>/dev/null \
-  | grep -vE "(node_modules|\\.next|references/|design-md/|\\.promo/|CHANGELOG|tasks/|reference-audit)" \
-  | grep -iE "(reference|brand|design.system|companies|company)"  # 0 expected
-
-# skill / agent count contamination
-grep -rn "[0-9]\\{2\\}개 (레퍼런스|reference|카탈로그)" skills/ agents/ .claude/skills/ .claude/agents/  # 0 expected
-
-# §1 canonical header — all DESIGN.md must use "## 1. Visual Theme & Atmosphere"
-# (web/src/app/reference/[id]/page.tsx extracts Hero mood prose from §1's first paragraph;
-#  non-canonical headers like "## 1. Overview" / "## 1. Identity" / "## §1" break it)
-grep -L '^## 1\\. Visual Theme' references/*/DESIGN.md  # 0 expected (empty stdout)
+```yaml
+---
+id: <slug>
+name: <English display>
+display_name_kr: <한글 표시>    # optional
+country: KR|US|JP|TW|UK|DE|FR|IT
+category: ecommerce|fintech|saas|ai|consumer-tech|education|productivity|developer-tools|design-tools|backend-devops|automotive|marketing|government|healthcare
+homepage: https://...
+primary_color: "#hex"
+logo:
+  type: favicon|simpleicons|github
+  slug: <domain | simpleicons-slug | github-org>
+verified: YYYY-MM-DD
+omd: 0.1
+ds:                              # optional, Tier-1 official DS only
+  name: ...
+  url: ...
+  type: system|brand
+  description: ...
+  og_image: ...                  # optional
+---
 ```
 
-### 8. CHANGELOG + version bump (omd-cli memory rule: patch by default)
-- `package.json` patch bump (`0.0.1`) unless user said "minor"
-- `CHANGELOG.md` entry: `+N references — <id list>` + 신규 Tier-1 official DS 발견사항 highlight
+### 2. Regenerate + gate
+```bash
+cd web && npm run build-registry && npm test
+```
+The vitest catalog-integrity suite asserts schema, §1 canonical header, prose-first paragraph, fingerprint cross-check, design-md mirror, triple-fingerprint byte identity, and registry sort order. If green, the API route / logos / tokens / design-systems modules pick up the new entry automatically — they all read from the registry.
+
+### 3. Adjacent surfaces (not registry-derived, manual)
+- Fingerprints × 3 (root + `.claude` + `.codex`) — append entry, bump `count`, refresh `generated_at`; keep byte-identical
+- `design-md/<id>/DESIGN.md` — mirror sync: `rm -rf design-md && cp -RL references design-md`
+- READMEs × 4 (en/ko/ja/zh-TW) — count badge + body
+- `web/public/llms.txt` — header count + Examples list display name append
+- `web/src/app/{layout,docs/layout,docs/page,builder/layout,design-systems/layout}.tsx` — count strings
+- CHANGELOG.md + `package.json` patch bump (omd-cli memory rule)
+
+### 4. Sub-agent self-verification (mandatory at end of CREATE/UPDATE)
+```bash
+cd web && npm test -- --run __tests__/catalog-integrity.test.ts -t "<id>"
+```
+Report pass/fail and the exact failing assertion. Do not declare done before this is green.
 
 ## 트리거 (자연어 OK — 슬래시 없이 호출되어도 동작)
 

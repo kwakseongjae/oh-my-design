@@ -1,0 +1,55 @@
+{
+  "captured_at": "2026-05-15T00:00:00Z",
+  "source_url": "https://www.tving.com (→ /onboarding)",
+  "viewport": "1280x713",
+  "hero": {
+    "type": "text-only (unauth onboarding) — full content surface gated behind login; authenticated surface presumed video-poster grid (industry-standard OTT pattern, not inspected in this pass)",
+    "has_carousel": false,
+    "primary_visual_position": "center",
+    "background_ornament": "none (flat #000 canvas)",
+    "headline_size_px": 43.4,
+    "headline_weight": 700,
+    "primary_cta_height_px": 62
+  },
+  "cta": {
+    "dominant_shape": "rounded-rectangle (not pill)",
+    "primary_radius_px_observed": 12.4,
+    "header_cta_radius_px": 8,
+    "secondary_style": "ghost / text-link in nav, no outlined variant observed in onboarding surface",
+    "color_role": "single brand red across all CTA variants — no secondary CTA color in unauth surface"
+  },
+  "nav": {
+    "structure": "minimal top bar (logo + 시작하기 CTA) on unauth onboarding; authenticated surface presumed to have GNB with --gnb-height: 70px (per CSS token)",
+    "approx_item_count_unauth": 2,
+    "footer_item_count": 7,
+    "footer_items": ["고객센터", "이용약관", "개인정보처리방침", "청소년 보호정책", "법적고지", "이벤트", "공지사항"],
+    "has_search": false,
+    "has_locale_switch": false
+  },
+  "page": {
+    "viewport_heights_unauth": 6.22,
+    "scroll_h_px": 4440,
+    "predominant_alignment": "center",
+    "image_density_unauth": "none (text-driven onboarding)",
+    "image_density_authenticated": "high (presumed — OTT poster grid)"
+  },
+  "section_rhythm": [
+    "top bar (logo + 시작하기)",
+    "hero headline + primary CTA",
+    "value props (text-based)",
+    "footer (정책 / 고객센터 / 이벤트 anchors)"
+  ],
+  "category_taxonomy_signal": {
+    "categories_encoded_as_css_vars": ["home", "live", "clip", "vod", "movie", "ad"],
+    "note": "Six-category content taxonomy is encoded directly as CSS custom properties (--color-cate-*) on :root — meaning category color is a first-class design system primitive, not a per-page override. Live/sports surfaces have additional geometry tokens (--kbo-player-*, --sports-player-*) suggesting dedicated layouts for KBO baseball and other live sports content."
+  },
+  "notes": [
+    "Unauthenticated visitors are redirected from / to /onboarding — full catalog browse is gated.",
+    "Pretendard exclusive: zero non-Pretendard sample observed.",
+    "Dark canvas is locked at html level (#000) — no theme-switch token observed.",
+    "Card radius pattern is top-corners-only (poster image bleeds to bottom edge), a streaming-platform idiom shared with Disney+ / Netflix / Wavve but distinct in TVING's 16.5292px radius (≈ 1rem * 1.033).",
+    "Live-streaming geometry primitives (--live-tab-player-*, --kbo-player-*, --sports-player-*) are first-class design tokens — TVING treats live as a separate surface paradigm from VOD.",
+    "Bottom tab present at 4.167rem (≈ 66.7px) per design token — mobile-first chrome.",
+    "Emotion CSS-in-JS (`css-*` class hashes) + Tailwind utilities (`--tw-*` token namespace) coexist; semantic shadcn-pattern role vars (`--card`, `--popover`, `--muted`, `--accent`) suggest a shadcn/ui base with Pretendard + brand red overlay."
+  ]
+}

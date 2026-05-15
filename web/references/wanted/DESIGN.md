@@ -1,6 +1,20 @@
 ---
-omd: 0.1
-brand: Wanted
+id: wanted
+name: Wanted
+country: KR
+category: productivity
+homepage: "https://www.wanted.co.kr"
+primary_color: "#0066ff"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=wanted.co.kr&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Wanted Montage
+  url: "https://montage.wanted.co.kr/"
+  type: system
+  description: Wanted's Montage design system docs — components, foundations, Wanted Sans, and the brandcenter resource hub.
 ---
 
 # Design System Inspiration of Wanted (원티드)

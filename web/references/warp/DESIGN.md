@@ -1,3 +1,17 @@
+---
+id: warp
+name: Warp
+country: US
+category: developer-tools
+homepage: "https://www.warp.dev"
+primary_color: "#01a4ff"
+logo:
+  type: simpleicons
+  slug: warp
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Warp
 
 ## 1. Visual Theme & Atmosphere

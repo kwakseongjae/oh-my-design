@@ -1,0 +1,145 @@
+{
+  "method": "Chrome DevTools Protocol :9222 / Runtime.evaluate / getComputedStyle + :root iteration",
+  "browser_version": "Chrome/148.0.7778.97",
+  "protocol_version": "1.3",
+  "websocket_endpoint": "ws://localhost:9222/devtools/page/B7DFD59E5452E64CA14275E072BFAC20",
+  "websocket_options": "suppress_origin=True (Chrome --remote-allow-origins guard workaround)",
+  "captured_at": "2026-05-15",
+  "surfaces": [
+    {"url": "https://www.dabangapp.com/", "title": "부동산 필수 앱 다방", "samples": 32},
+    {"url": "https://www.dabangapp.com/map/onetwo?m_lat=37.4943&m_lng=127.0144&m_zoom=11", "samples": 21}
+  ],
+  "total_samples_captured": 53,
+  "css_vars_extracted_at_root": 140,
+  "raw_samples": [
+    {
+      "surface": "home",
+      "selector": "h1",
+      "text": "원/투룸",
+      "font_family": "Pretendard Variable",
+      "font_size": "20px",
+      "font_weight": "700",
+      "color": "rgb(34, 34, 34)",
+      "background_color": "rgba(0, 0, 0, 0)",
+      "border_radius": "0px",
+      "box_shadow": "none"
+    },
+    {
+      "surface": "home",
+      "selector": "h1 (AI band)",
+      "text": "관심있는 \n서초동\n 주변, AI가 대신 찾아봤어요 🔍",
+      "font_family": "Pretendard Variable",
+      "font_size": "24px",
+      "font_weight": "400",
+      "color": "rgb(34, 34, 34)",
+      "background_color": "rgba(0, 0, 0, 0)",
+      "border_radius": "0px",
+      "note": "Only emoji + 400-weight large heading on the page — AI feature deliberately breaks the 700-bold default"
+    },
+    {
+      "surface": "home",
+      "selector": "body",
+      "font_family": "Pretendard Variable",
+      "font_size": "16px",
+      "font_weight": "400",
+      "color": "rgb(0, 0, 0)",
+      "background_color": "rgb(255, 255, 255)"
+    },
+    {
+      "surface": "home",
+      "selector": "promo / saved-search panel",
+      "background_color": "rgb(67, 77, 104)",
+      "color": "rgb(255, 255, 255)",
+      "border_radius": "12px",
+      "box_shadow": "none",
+      "note": "Deep slate panel — only non-white non-tinted surface on home"
+    },
+    {
+      "surface": "home",
+      "selector": "logo wordmark accent",
+      "color": "rgb(255, 52, 120)",
+      "color_token": "--pink-500 (#FF3478)",
+      "occurrences_in_samples": 2,
+      "note": "Logo + brand-mark only on home — does not propagate into product chrome on map surface"
+    },
+    {
+      "surface": "map",
+      "selector": "selected marker / accent control",
+      "color": "rgb(50, 108, 249)",
+      "color_token": "--blue-500 (#326CF9)",
+      "border_color": "rgb(50, 108, 249)",
+      "border_radius": "2px",
+      "occurrences_in_samples": 2
+    },
+    {
+      "surface": "map",
+      "selector": "filter chip (pill)",
+      "font_family": "Pretendard Variable",
+      "font_size": "14px",
+      "font_weight": "500",
+      "color": "rgb(34, 34, 34)",
+      "background_color": "rgb(255, 255, 255)",
+      "border_color": "rgb(223, 223, 223)",
+      "border_width": "1px",
+      "border_radius": "42px",
+      "note": "Full-pill 42px — distinctive vs Zigbang 10px chips; one of only two weight-500 occurrences"
+    },
+    {
+      "surface": "map",
+      "selector": "input field",
+      "border_color": "rgb(223, 223, 223)",
+      "border_radius": "4px",
+      "font_family": "Pretendard Variable",
+      "font_size": "14px",
+      "color": "rgb(34, 34, 34)"
+    },
+    {
+      "surface": "map",
+      "selector": "hover/active tint surface",
+      "background_color": "rgb(238, 248, 255)",
+      "color_token": "--blue-50 (#eef8ff)"
+    }
+  ],
+  "frequency_table": {
+    "top_text_colors": [
+      "rgb(0,0,0) — 26 / 53",
+      "rgb(34,34,34) — 13 / 53",
+      "rgb(50,108,249) blue-500 — 3 / 53",
+      "rgb(255,52,120) pink-500 — 2 / 53",
+      "rgb(67,67,67) — 2 / 53"
+    ],
+    "top_backgrounds": [
+      "rgba(0,0,0,0) transparent — 29 / 53",
+      "rgb(255,255,255) — 17 / 53",
+      "rgb(67,77,104) slate — 1 / 53",
+      "rgb(245,245,245) gray-200 — 1 / 53",
+      "rgb(238,248,255) blue-50 — 1 / 53"
+    ],
+    "top_radii": [
+      "0px — 31 / 53",
+      "2px — 7 / 53",
+      "8px — 5 / 53",
+      "4px — 3 / 53",
+      "12px — 2 / 53",
+      "50% — 2 / 53",
+      "32px — 1 / 53",
+      "42px — 1 / 53"
+    ],
+    "weights": "400: 39/53 · 700: 12/53 · 500: 2/53",
+    "font_family": "Pretendard Variable: 53/53 (100%)",
+    "box_shadow": "none: 53/53 (100%)"
+  },
+  "tier1_official_ds_status": "AUTHORITATIVE NEGATIVE — design.dabangapp.com / brand.dabangapp.com / tech.dabangapp.com / docs.dabangapp.com all DNS no-resolve (000); dabangapp.com/brand and /design return 200 but are SPA-routed back to home shell (title still '부동산 필수 앱 다방'); GitHub org `forgeinc/stationTHREE` has 1 repo only (corporate marketing site), no design-system / tokens / storybook repo; getdesign.md and styles.refero.design empty for 'dabang'. Production :root token system (140 CSS custom properties) is the authoritative public artifact and was captured directly.",
+  "ip_guardrails": [
+    "Brand logo / pink-500 / app name referenced for inspiration only (analytical fair-use of factual CSS values)",
+    "No verbatim Dabang marketing copy or taglines reproduced",
+    "Service-feature names (지도 · 분양 · 관심목록 · 우리동네 한눈에 보기) used descriptively, not as adopted copy",
+    "Voice samples in §10 are fresh OmD-original reconstructions in casual-polite Korean — explicitly marked tone-shape-only"
+  ],
+  "flags_for_update_pass": [
+    "Product-detail page (개별 매물 상세) not inspected — spacing scale and price-detail typography pending",
+    "Filter modal / sort-by sheet not captured — exact filter-chip state variants (active/disabled) inferred",
+    "Mobile viewport (390×844) not captured this pass — Dabang is mobile-first, recommend follow-up",
+    "Motion tokens not captured (no animation observation in single static pass)"
+  ]
+}

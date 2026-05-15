@@ -1,9 +1,15 @@
 ---
-omd: 0.1
 id: inflearn
-brand: Inflearn
+name: Inflearn
 country: KR
 category: education
+homepage: "https://www.inflearn.com"
+primary_color: "#00c471"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=inflearn.com&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Inflearn

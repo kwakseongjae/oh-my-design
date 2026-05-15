@@ -2,12 +2,14 @@
 id: upbit
 name: Upbit
 country: KR
-category: finance
-subcategory: crypto-exchange
-operator: Dunamu
-url: https://upbit.com
-omd: 0.1
-captured_at: 2026-05-14
+category: fintech
+homepage: "https://upbit.com"
+primary_color: "#093687"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=upbit.com&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Upbit — DESIGN.md

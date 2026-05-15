@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: Airbnb
+id: airbnb
+name: Airbnb
+country: US
+category: consumer-tech
+homepage: "https://www.airbnb.com"
+primary_color: "#ff5a5f"
+logo:
+  type: simpleicons
+  slug: airbnb
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Airbnb Brand Hub
+  url: "https://brand.withairbnb.com"
+  type: brand
+  description: Airbnb's brand guidelines hub with logo, color, and visual identity rules.
+  og_image: "https://firebasestorage.googleapis.com/v0/b/standards-site-beta.appspot.com/o/documents%2Fa130cd31136%2F099b28f7432%2Fmeta%2Fstandards---project-thumbnail.png?alt=media&token=b1ee4a9a-cb2a-4dd9-ae43-01dd309d6f17"
 ---
 
 # Design System Inspiration of Airbnb

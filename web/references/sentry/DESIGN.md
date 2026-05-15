@@ -1,3 +1,17 @@
+---
+id: sentry
+name: Sentry
+country: US
+category: backend-devops
+homepage: "https://sentry.io"
+primary_color: "#362d59"
+logo:
+  type: simpleicons
+  slug: sentry
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Sentry
 
 ## 1. Visual Theme & Atmosphere

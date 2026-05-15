@@ -10,7 +10,7 @@ import type { Overrides, StylePreferences } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
 import { Button } from "@/components/ui/button";
 import { getDesignSystem } from "@/lib/design-systems";
-import { getHomepageUrl } from "@/lib/homepage-urls";
+import { getHomepageUrl } from "@/data/registry.generated";
 import { isLight } from "@/lib/core/color";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import { Markdown } from "@/components/markdown";

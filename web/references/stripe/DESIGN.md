@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: Stripe
+id: stripe
+name: Stripe
+country: US
+category: fintech
+homepage: "https://stripe.com"
+primary_color: "#635bff"
+logo:
+  type: simpleicons
+  slug: stripe
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Stripe

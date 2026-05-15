@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: Vercel
+id: vercel
+name: Vercel
+country: US
+category: developer-tools
+homepage: "https://vercel.com"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: vercel
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Geist
+  url: "https://vercel.com/geist"
+  type: system
+  description: Vercel's design system with 50+ components, foundations, and brand resources.
+  og_image: "https://assets.vercel.com/image/upload/v1709494095/front/design/geist-og.jpg"
 ---
 
 # Design System Inspiration of Vercel

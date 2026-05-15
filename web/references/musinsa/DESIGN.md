@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: Musinsa
+id: musinsa
+name: Musinsa
+country: KR
+category: ecommerce
+homepage: "https://www.musinsa.com"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=musinsa.com&sz=128"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Musinsa (무신사)

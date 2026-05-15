@@ -1,0 +1,14 @@
+{
+  "source_url": "https://fastcampus.co.kr/",
+  "captured_at": "2026-05-15T07:09:53.194Z",
+  "fonts": [
+    {
+      "scope": "html",
+      "family": "\"Apple SD Gothic Neo\""
+    },
+    {
+      "scope": "body",
+      "family": "\"Pretendard Variable\", pretendard, -apple-system, blinkmacsystemfont, system-ui, roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif"
+    }
+  ]
+}

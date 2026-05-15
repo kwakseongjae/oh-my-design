@@ -1,3 +1,22 @@
+---
+id: hashicorp
+name: Hashicorp
+country: US
+category: backend-devops
+homepage: "https://www.hashicorp.com"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: hashicorp
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Helios
+  url: "https://helios.hashicorp.design"
+  type: system
+  description: HashiCorp's design system documenting components and foundations.
+---
+
 # Design System Inspiration of HashiCorp
 
 ## 1. Visual Theme & Atmosphere

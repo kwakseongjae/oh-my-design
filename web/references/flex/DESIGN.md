@@ -3,10 +3,13 @@ id: flex
 name: flex
 country: KR
 category: saas
-subcategory: hr
-omd: 0.1
-verified: 2026-05-14
-source_url: https://flex.team/
+homepage: "https://flex.team"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=flex.team&sz=256"
+verified: "2026-05-14"
+omd: "0.1"
 ---
 
 # flex — Design Reference

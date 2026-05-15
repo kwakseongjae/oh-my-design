@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: Dcard
+id: dcard
+name: Dcard
+country: TW
+category: consumer-tech
+homepage: "https://www.dcard.tw"
+primary_color: "#0086ff"
+logo:
+  type: github
+  slug: Dcard
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Dcard

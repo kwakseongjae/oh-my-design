@@ -51,6 +51,9 @@ const SITES = [
   ["socar", "https://design.socar.kr/"],
   ["wanted", "https://design.wanted.co.kr/"],
   ["remember", "https://remember.co.kr/about"],
+  // 2026-05-15 KR-10 batch — 2 partial-positive Tier-1 surfaces
+  ["upstage", "https://www.upstage.ai/resources/brand-resource-center"],
+  ["gmarket", "https://corp.gmarket.com/fonts/"],
   // 2026-05-14 KR-10 batch — channeltalk publishes Bezier (only Tier-1 DS positive)
   ["channeltalk", "https://github.com/channel-io/bezier-react"],
 ];

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Catalog-integrity gate. Runs the vitest suite when any of the data-plane
+# paths change. Otherwise skips silently so unrelated commits stay fast.
+#
+# Bypass (emergencies only): `git commit --no-verify`.
+
+set -euo pipefail
+
+changed=$(git diff --cached --name-only)
+
+if echo "$changed" | grep -qE '^(references/|data/reference-fingerprints\.json|\.claude/data/reference-fingerprints\.json|\.codex/data/reference-fingerprints\.json|web/src/data/registry\.generated\.ts|web/scripts/build-registry\.mjs|web/scripts/migrate-frontmatters\.mjs|web/__tests__/catalog-integrity\.test\.ts|design-md/)'; then
+  echo "[husky] catalog-integrity gate: running vitest…"
+  (cd web && npm run build-registry && npm test -- --run __tests__/catalog-integrity.test.ts)
+else
+  echo "[husky] catalog-integrity gate: no data-plane changes, skipping."
+fi

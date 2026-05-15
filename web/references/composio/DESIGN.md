@@ -1,3 +1,17 @@
+---
+id: composio
+name: Composio
+country: US
+category: backend-devops
+homepage: "https://composio.dev"
+primary_color: "#6366f1"
+logo:
+  type: github
+  slug: composiohq
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Composio
 
 ## 1. Visual Theme & Atmosphere

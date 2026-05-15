@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>從 98 家真實企業的設計系統生成 DESIGN.md。</strong>互動式精靈。零 AI 呼叫。
+  <strong>從 108 家真實企業的設計系統生成 DESIGN.md。</strong>互動式精靈。零 AI 呼叫。
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" />
   <img src="https://img.shields.io/badge/AI%20calls-zero-blue?style=flat-square" alt="Zero AI" />
-  <img src="https://img.shields.io/badge/references-98-7c5cfc?style=flat-square" alt="98 References" />
+  <img src="https://img.shields.io/badge/references-108-7c5cfc?style=flat-square" alt="108 References" />
 </p>
 
 <p align="center">
@@ -36,7 +36,7 @@
 
 1. **[規範](spec/omd-v0.1.md)** — 版本化的 Google Stitch 擴充,MIT 授權。
 2. **[Claude Code skill](.claude/skills/omd/SKILL.md)** — 將規範作為硬性約束自動套用。
-3. **[98 個參考檔案](references/)** — 真實企業的 `DESIGN.md`,可以 fork、透過 builder 客製化後直接上線。
+3. **[108 個參考檔案](references/)** — 真實企業的 `DESIGN.md`,可以 fork、透過 builder 客製化後直接上線。
 
 **無須 API 金鑰。零 AI 呼叫。全部在客戶端執行。**
 
@@ -61,10 +61,10 @@ Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Appl
 ## 主要功能
 
 - **Builder** — 選擇參考、調整色彩 / radius / 深色模式、挑選元件,然後按下 Export。透過 **Philosophy** 篩選可以只顯示具備完整品牌哲學的 10 個參考。
-- **Design Systems 目錄** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 98 個參考中有 34 個擁有官方設計系統或品牌指南頁面,可從目錄配合即時縮圖直接前往。
-- **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — 透過 MBTI 風格的簡短測驗,將你的設計偏好對應到 98 個參考之一,並直接帶你進入已預選該參考的 Builder。
+- **Design Systems 目錄** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 108 個參考中有 34 個擁有官方設計系統或品牌指南頁面,可從目錄配合即時縮圖直接前往。
+- **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — 透過 MBTI 風格的簡短測驗,將你的設計偏好對應到 108 個參考之一,並直接帶你進入已預選該參考的 Builder。
 
-## 98 個支援的參考
+## 108 個支援的參考
 
 | 類別 | 企業 |
 |------|------|
@@ -112,7 +112,7 @@ Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Appl
 oh-my-design/
   spec/              OmD v0.1 規範 (正本)
   .claude/skills/omd/ Claude Code skill 包
-  references/        98 家企業的 DESIGN.md 檔案
+  references/        108 家企業的 DESIGN.md 檔案
   src/               CLI 核心 (TypeScript)
   web/               Next.js 網頁 builder
     src/app/         Landing + Builder + Directory 頁面
@@ -128,7 +128,7 @@ Web 測試與原始碼並列存放 (`web/src/**/*.test.ts`)。
 
 ```bash
 npm test                # CLI:370 個測試 — unit + 全 reference smoke
-cd web && npm test      # Web:98 個測試 — generate-css、config-hash、survey
+cd web && npm test      # Web:108 個測試 — generate-css、config-hash、survey
 ```
 
 整合套件 (`test/integration/all-references.test.ts`) 會對每個 `references/<id>/DESIGN.md` 執行完整的生成管線,因此損壞的 reference 會在 PR 審查時以單一 reference 的失敗形式呈現。資料夾規範與模組別覆蓋率對照表請參考 [test/README.md](test/README.md)。

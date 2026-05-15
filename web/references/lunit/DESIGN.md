@@ -1,11 +1,15 @@
 ---
-omd: 0.1
 id: lunit
-brand: Lunit
+name: Lunit
 country: KR
 category: healthcare
-sub_category: medical_ai
-verified: 2026-05-14
+homepage: "https://www.lunit.io"
+primary_color: "#1032cf"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=lunit.io&sz=256"
+verified: "2026-05-14"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Lunit
