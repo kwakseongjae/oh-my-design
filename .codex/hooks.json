@@ -1,0 +1,50 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node '/Users/kwakseongjae/Desktop/projects/oh-my-design/.codex/hooks/post-edit-watch.cjs'",
+            "timeout": 2000
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node '/Users/kwakseongjae/Desktop/projects/oh-my-design/.codex/hooks/session-state-loader.cjs'",
+            "timeout": 3000
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node '/Users/kwakseongjae/Desktop/projects/oh-my-design/.codex/hooks/skill-activation.cjs'",
+            "timeout": 3000
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node '/Users/kwakseongjae/Desktop/projects/oh-my-design/.codex/hooks/session-end-foldin.cjs'",
+            "timeout": 5000
+          }
+        ]
+      }
+    ]
+  }
+}

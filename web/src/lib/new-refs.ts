@@ -18,7 +18,6 @@ export const NEW_REFS = new Set<string>([
   "tving",
   "catchtable",
   "upstage",
-  "chai",
   "dabang",
   "jumpit",
   "fastcampus",

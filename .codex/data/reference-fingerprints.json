@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_at": "2026-05-15T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 108,
+  "count": 107,
   "items": [
     {
       "id": "airbnb",
@@ -2324,20 +2324,6 @@
       "has_personas": true,
       "category_raw": "AI / LLM (Solar)",
       "country": "KR"
-    },
-    {
-      "id": "chai",
-      "primary_color_hex": "#ff0062",
-      "category": "Fintech",
-      "visual_theme": "Hover-locked brand (#ff0062 pink → #6411ff purple 200ms flip is brand-defining motion). Service-terminated (2024 rebrand → PortOne Solutions); reference is archaeological — Webflow CSS bundle from 2022-05-13. Custom ChaiGothic typeface (proprietary).",
-      "voice_fingerprint": {
-        "register": "chai-verbal-frame"
-      },
-      "signature_motion": "Pink→purple hover flip 200ms (brand-defining).",
-      "has_personas": true,
-      "category_raw": "Lifestyle Fintech (archived 2024)",
-      "country": "KR",
-      "status_note": "service-terminated; rebranded PortOne Solutions"
     },
     {
       "id": "dabang",

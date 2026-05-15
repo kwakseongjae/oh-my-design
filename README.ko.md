@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>108개 기업 디자인 시스템 기반 DESIGN.md 생성기.</strong> 인터랙티브 위자드. AI 호출 없음.
+  <strong>107개 기업 디자인 시스템 기반 DESIGN.md 생성기.</strong> 인터랙티브 위자드. AI 호출 없음.
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
   <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/dm/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
-  <img src="https://img.shields.io/badge/references-108-7c5cfc?style=flat-square" alt="108 References" />
+  <img src="https://img.shields.io/badge/references-107-7c5cfc?style=flat-square" alt="107 References" />
   <img src="https://img.shields.io/badge/AI%20calls-zero-blue?style=flat-square" alt="Zero AI" />
 </p>
 
@@ -37,7 +37,7 @@
 
 1. **[스펙](spec/omd-v0.1.md)** — 버전 관리되는 Google Stitch 확장, MIT 라이선스.
 2. **[Claude Code 스킬](.claude/skills/omd/SKILL.md)** — 스펙을 하드 제약으로 자동 적용.
-3. **[108개 레퍼런스](references/)** — 실제 기업의 `DESIGN.md` 파일들을 포크하고, 빌더로 커스터마이징해 바로 씁니다.
+3. **[107개 레퍼런스](references/)** — 실제 기업의 `DESIGN.md` 파일들을 포크하고, 빌더로 커스터마이징해 바로 씁니다.
 
 **API 키 불필요. AI 호출 없음. 모두 클라이언트 사이드.**
 
@@ -194,10 +194,10 @@ Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Appl
 ## 주요 구성
 
 - **빌더** — 레퍼런스 선택 후 색상 / radius / 다크 모드를 조정하고, 컴포넌트를 고른 뒤 Export. **Philosophy** 필터로 완전한 브랜드 철학을 담은 10개만 볼 수 있어요.
-- **디자인 시스템 디렉토리** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 108개 레퍼런스 중 34개는 공식 디자인 시스템 또는 브랜드 가이드라인 페이지가 있으며, 디렉토리에서 라이브 썸네일과 함께 바로 이동할 수 있습니다.
-- **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — MBTI 스타일의 짧은 퀴즈로 당신의 디자인 성향을 108개 레퍼런스 중 하나와 매칭해, 해당 레퍼런스가 미리 선택된 빌더로 바로 이동시켜 줍니다.
+- **디자인 시스템 디렉토리** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 107개 레퍼런스 중 34개는 공식 디자인 시스템 또는 브랜드 가이드라인 페이지가 있으며, 디렉토리에서 라이브 썸네일과 함께 바로 이동할 수 있습니다.
+- **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — MBTI 스타일의 짧은 퀴즈로 당신의 디자인 성향을 107개 레퍼런스 중 하나와 매칭해, 해당 레퍼런스가 미리 선택된 빌더로 바로 이동시켜 줍니다.
 
-## 108개 지원 레퍼런스
+## 107개 지원 레퍼런스
 
 | 카테고리 | 기업 |
 |----------|------|
@@ -245,7 +245,7 @@ Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Appl
 oh-my-design/
   spec/              OmD v0.1 스펙 (정본)
   .claude/skills/omd/ Claude Code 스킬 번들
-  references/        108개 기업 DESIGN.md 파일
+  references/        107개 기업 DESIGN.md 파일
   src/               CLI 코어 (TypeScript)
   web/               Next.js 웹 빌더
     src/app/         Landing + Builder + Directory 페이지

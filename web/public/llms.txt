@@ -1,10 +1,10 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 9 skills + 11 sub-agents + 108 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
+> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 9 skills + 11 sub-agents + 107 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
 
 ## What
 
-`oh-my-design-cli` is an npm package (MIT licensed, v1.0.0) that installs a deterministic design harness into AI coding agents. It writes `.claude/skills/`, `.codex/skills/`, `.opencode/agents/`, `.claude/agents/`, hooks, and 108 reference DESIGN.md files into your project. After restart, the agent picks up the skills and routes natural-language design intent automatically.
+`oh-my-design-cli` is an npm package (MIT licensed, v1.0.0) that installs a deterministic design harness into AI coding agents. It writes `.claude/skills/`, `.codex/skills/`, `.opencode/agents/`, `.claude/agents/`, hooks, and 107 reference DESIGN.md files into your project. After restart, the agent picks up the skills and routes natural-language design intent automatically.
 
 The package is zero-cost: install runs no AI calls, ships no telemetry, requires no API key. Your AI coding agent (Claude Code, Codex, OpenCode, or Cursor) provides the inference; this package teaches it where the brand spec lives.
 
@@ -18,7 +18,7 @@ Then restart your AI coding agent (Cmd+Q in Claude Code, then relaunch).
 
 ## How users invoke it (natural language, no slash commands needed)
 
-- `"Set up the design system for a calm B2B fintech dashboard."` → triggers `omd:init`, bootstraps a hybrid DESIGN.md from one of 108 references.
+- `"Set up the design system for a calm B2B fintech dashboard."` → triggers `omd:init`, bootstraps a hybrid DESIGN.md from one of 107 references.
 - `"Make the empty-state for the search results page."` → triggers `omd:apply`, builds with brand tokens + voice from DESIGN.md.
 - `"Design the entire onboarding from scratch."` → triggers `omd:harness`, runs the 10-phase pipeline with sub-agents.
 - `"We never use uppercase CTAs."` → triggers `omd:remember`, writes correction to `.omd/preferences.md`.
@@ -27,7 +27,7 @@ Then restart your AI coding agent (Cmd+Q in Claude Code, then relaunch).
 
 Core flow (6):
 - **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
-- **omd:init** — Bootstrap DESIGN.md from one of 108 references with hybrid variation.
+- **omd:init** — Bootstrap DESIGN.md from one of 107 references with hybrid variation.
 - **omd:harness** — `/omd-harness <task>` runs the 10-phase pipeline. 7 hero archetypes (rule 9) match brand vibe to layout. Wordmark-only logo (rule 5), reveal safety net (rule 10), container-inner consistency (rule 7).
 - **omd:remember** — Auto-captures user corrections to `.omd/preferences.md`.
 - **omd:learn** — Folds preferences into DESIGN.md by scope.
@@ -65,18 +65,18 @@ Grouped in 4 stages:
 
 3 mandatory user checkpoints: after Discovery (brief), after Components (system locked), before Handoff (ship-ready).
 
-## 108 reference brands bundled
+## 107 reference brands bundled
 
 Each ships a full DESIGN.md (Google Stitch format + OmD v0.1 brand-philosophy layer). 20 of them include the full philosophy layer (Voice, Narrative, Principles, Personas, States, Motion).
 
-Examples: Stripe · Toss · Linear · Vercel · Notion · Anthropic · Apple · Spotify · Airbnb · Uber · Pinterest · Tesla · Figma · Framer · Cursor · Raycast · Supabase · MongoDB · Sentry · PostHog · Resend · Mintlify · Cal.com · Kakao · LINE · Mercari · Karrot (당근) · Pinkoi · Dcard · Baemin · freee · Wise · Coinbase · Revolut · ElevenLabs · Mistral · Ollama · Replicate · OpenCode · Together AI · KREAM · Upbit · K bank · Inflearn · Wadiz · Channel Talk · Lunit · Bunjang (번개장터) · flex · Classum · Toss Securities · Olive Young · Gmarket · TVING · CatchTable · Upstage · Chai · 다방 (Dabang) · Jumpit · fastcampus
+Examples: Stripe · Toss · Linear · Vercel · Notion · Anthropic · Apple · Spotify · Airbnb · Uber · Pinterest · Tesla · Figma · Framer · Cursor · Raycast · Supabase · MongoDB · Sentry · PostHog · Resend · Mintlify · Cal.com · Kakao · LINE · Mercari · Karrot (당근) · Pinkoi · Dcard · Baemin · freee · Wise · Coinbase · Revolut · ElevenLabs · Mistral · Ollama · Replicate · OpenCode · Together AI · KREAM · Upbit · K bank · Inflearn · Wadiz · Channel Talk · Lunit · Bunjang (번개장터) · flex · Classum · Toss Securities · Olive Young · Gmarket · TVING · CatchTable · Upstage · 다방 (Dabang) · Jumpit · fastcampus
 
 ## Resources
 
 - [Live demo + docs](https://oh-my-design.kr): https://oh-my-design.kr
 - [Documentation](https://oh-my-design.kr/docs): how the harness works in detail
-- [Builder](https://oh-my-design.kr/builder): generate DESIGN.md from any of 108 references
-- [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all 108 references
+- [Builder](https://oh-my-design.kr/builder): generate DESIGN.md from any of 107 references
+- [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all 107 references
 - [npm package](https://www.npmjs.com/package/oh-my-design-cli)
 - [GitHub](https://github.com/kwakseongjae/oh-my-design)
 - [License: MIT](https://github.com/kwakseongjae/oh-my-design/blob/main/LICENSE)
@@ -87,7 +87,7 @@ Examples: Stripe · Toss · Linear · Vercel · Notion · Anthropic · Apple · 
 oh-my-design/
 ├── skills/              # 6 SKILL.md files (source of truth)
 ├── agents/              # 11 sub-agent definitions
-├── references/          # 108 reference DESIGN.md files
+├── references/          # 107 reference DESIGN.md files
 ├── data/                # reference fingerprints, vocabulary, opt-out corpus
 ├── .claude/hooks/       # UserPromptSubmit / SessionStart / PostToolUse hooks
 ├── src/cli/             # install-skills entry point

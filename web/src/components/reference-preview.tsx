@@ -894,16 +894,10 @@ function ComponentsSection({ tokens, kicker }: { tokens: ParsedTokens; kicker: s
   const { components, typography } = tokens;
   const font = typography.family;
 
-  if (components.length === 0) {
-    return (
-      <Section title="Components" kicker={kicker}>
-        <div className="rounded-2xl border border-dashed border-border/60 px-6 py-10 text-center text-sm text-muted-foreground">
-          §4 Component Stylings hasn&apos;t been migrated to the canonical schema yet.
-          See <code className="font-mono text-xs">spec/components-schema.md</code>.
-        </div>
-      </Section>
-    );
-  }
+  // Some brand DESIGN.md files describe layout/spacing in §4 instead of
+  // components (e.g. dabang's §4 is "Spacing & Layout"). Hide the section
+  // entirely rather than expose a "migration pending" placeholder.
+  if (components.length === 0) return null;
 
   return (
     <Section title="Components" kicker={kicker}>

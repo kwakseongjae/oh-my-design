@@ -367,7 +367,7 @@ export default function BuilderPage() {
           <PreviewExportView
             detail={detail}
             overrides={overrides}
-            onBack={goToCustomize}
+            onBack={skipWizard ? goToSelect : goToCustomize}
             components={activeComponents}
             onComponentsChange={setActiveComponents}
             stylePreferences={stylePreferences}
