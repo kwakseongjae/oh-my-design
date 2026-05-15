@@ -75,6 +75,7 @@ function XIcon({ className }: { className?: string }) {
 
 import { isLight } from "@/lib/core/color";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
+import { isNewRef } from "@/lib/new-refs";
 import type { RefListItem } from "@/app/builder/page";
 
 export function ReferenceSelector({
@@ -612,6 +613,15 @@ export function ReferenceSelector({
                   <span className="absolute bottom-2 left-2 rounded bg-black/20 px-1.5 py-0.5 font-mono text-[9px] text-white/80 backdrop-blur-sm">
                     {ref.primaryColor}
                   </span>
+                  {/* dev-only NEW badge — top-left, hidden in production */}
+                  {isNewRef(ref.id) && (
+                    <span
+                      className="absolute left-2 top-2 rounded-full px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider"
+                      style={{ background: "#34d399", color: "#062514", boxShadow: "0 1px 4px rgba(0,0,0,0.35)" }}
+                    >
+                      NEW
+                    </span>
+                  )}
                 </div>
 
                 {/* Info */}
