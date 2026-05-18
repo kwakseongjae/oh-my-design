@@ -128,6 +128,23 @@ Sub-agents — 1 orchestrator + 10 specialists (invoked by the master or directl
 - **omd-persona-tester** — Adversarial 4-persona walkthrough (V/J/F/S). sonnet.
 - **omd-critic** — Root-cause analysis when the user iterates. opus.
 
+## MCP server
+
+Want the 107 brand DESIGN.md files exposed directly to your agent as MCP resources, tools, and prompts? Use **[oh-my-design-mcp](./packages/mcp/)** — a separate, free, drop-in MCP server.
+
+```json
+{
+  "mcpServers": {
+    "oh-my-design": {
+      "command": "npx",
+      "args": ["-y", "oh-my-design-mcp"]
+    }
+  }
+}
+```
+
+Works with Claude Desktop, Cursor, Cline, Continue, and Codex. Zero AI calls, zero config, fully offline. Full install guide and tool reference: [`packages/mcp/README.md`](./packages/mcp/README.md).
+
 ## What it is not
 
 - It is not a collection of CLI commands. There is one bootstrap command. Everything else is skill prose.

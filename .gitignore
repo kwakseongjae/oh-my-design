@@ -48,3 +48,7 @@ web/.omd/
 
 # Promo video archive — /omd-batch-launch outputs (hyperframes projects + MP4)
 .promo/
+
+# oh-my-design-mcp bundled data (populated by scripts/sync-data.mjs at build time)
+packages/mcp/data/references/
+packages/mcp/dist/
