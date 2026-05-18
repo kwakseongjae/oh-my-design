@@ -87,13 +87,15 @@ export function V2Nav() {
 
         {/* RIGHT — docs + github + cta */}
         <div className="flex items-center gap-2 justify-self-end">
-          <Link
-            href="/blog"
-            onClick={() => event("nav_click", { location: "v2_blog" })}
-            className="hidden items-center gap-1.5 rounded-full h-9 sm:h-10 px-3 text-xs font-medium text-white/70 transition-colors hover:text-white sm:inline-flex"
-          >
-            Blog
-          </Link>
+          {process.env.NODE_ENV === "development" && (
+            <Link
+              href="/blog"
+              onClick={() => event("nav_click", { location: "v2_blog" })}
+              className="hidden items-center gap-1.5 rounded-full h-9 sm:h-10 px-3 text-xs font-medium text-white/70 transition-colors hover:text-white sm:inline-flex"
+            >
+              Blog
+            </Link>
+          )}
           <Link
             href="/docs"
             onClick={() => event("nav_click", { location: "v2_docs" })}

@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { listPosts } from "@/lib/blog";
 
-export const metadata: Metadata = {
-  title: "Blog — oh-my-design",
-  description:
-    "Decoding design systems. Long-form analysis of Korean SaaS design (Toss, Channel Talk, Karrot, Banksalad) and global brand systems, grounded in extracted DESIGN.md data.",
-  alternates: { canonical: "/blog" },
-  openGraph: {
-    title: "oh-my-design — Blog",
-    description:
-      "Decoding design systems. Long-form analysis grounded in extracted DESIGN.md data.",
-    type: "website",
-    url: "/blog",
-  },
-};
+const IS_DEV = process.env.NODE_ENV === "development";
+
+export const metadata: Metadata = IS_DEV
+  ? {
+      title: "Blog — oh-my-design (dev)",
+      description:
+        "Decoding design systems. Long-form analysis of Korean SaaS design.",
+      robots: { index: false, follow: false },
+      alternates: { canonical: "/blog" },
+    }
+  : {
+      title: "Not Found",
+      robots: { index: false, follow: false },
+    };
 
 export default function BlogIndex() {
+  if (!IS_DEV) notFound();
   const posts = listPosts();
 
   return (

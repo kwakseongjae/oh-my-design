@@ -6,7 +6,13 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getPost, listSlugs } from "@/lib/blog";
 
+const IS_DEV = process.env.NODE_ENV === "development";
+
 export function generateStaticParams() {
+  // Production builds skip prerendering — every /blog/<slug> falls through to
+  // notFound() at request time. Dev keeps the full param set so the route is
+  // reachable locally without hitting the file system per request.
+  if (!IS_DEV) return [];
   return listSlugs().map((slug) => ({ slug }));
 }
 
@@ -44,6 +50,7 @@ export default async function BlogPost({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  if (!IS_DEV) notFound();
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
