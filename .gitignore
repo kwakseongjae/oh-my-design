@@ -23,6 +23,10 @@ test/scenarios/archive/
 # Local experiment runs (regenerable via /omd-lab-* skills, not for public repo)
 .experiments/
 
+# Local experiment scratch — gallery + brand mockups + applepresso journey.
+# Iterative outputs (v1/v2 drafts, build scripts, source crops); not for public repo.
+experiments/
+
 # Per-harness-run artifacts (regenerable; not for public repo)
 .omd/
 
@@ -33,6 +37,13 @@ test/scenarios/archive/
 web/.claude/
 web/.codex/
 web/.omd/
+web/.husky/
+
+# Self-install artifacts at repo root (canonical sources: skills/, agents/, .claude/).
+# `omd install-skills` writes installed-skill-marked copies here when dogfooding
+# the codex / generic-agent channels locally.
+.codex/
+.agents/skills/omd*/
 
 # Claude scheduled-task lock (per-machine runtime state)
 .claude/scheduled_tasks.lock

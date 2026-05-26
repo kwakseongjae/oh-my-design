@@ -192,19 +192,9 @@ Each turn you are in one state. Determine current state from `.handoff.json` `st
   **Quality 가드**: 작성 후 §10-15 본문이 reference의 §10-15와 비교해서 50% 이상 겹치는지 self-check. 안 겹치면 voice 망가진 것 — Step 4.4 다시.
 
   ### Step 5 — Asset curation
-  DESIGN.md emit 직후 omd-asset-curator spawn. punch-list에 "favicon · og image · empty-state illustration · 12 icons · loading state · (선택) 3D hero render" 등 production에 필요한 에셋 식별.
+  DESIGN.md emit 직후 omd-asset-curator spawn. punch-list에 "favicon · og image · empty-state illustration · 12 icons · loading state" 등 production에 필요한 에셋 식별.
 
-  **3D 자산이 식별되면**:
-  - asset-curator가 type=`3d-render`/`3d-mockup` 항목을 manifest에 표시
-  - 사용자에게 한 줄 묻기: "hero에 3D water-glass mockup이 좋아 보이는데, Blender 설치 + MCP connector로 생성할 수 있어요 (Anthropic 2026-04-28 공식 connector). 설치는 5분 정도 걸림."
-  - picker:
-    - **install + use** — omd-3d-blender 설치 walk-through 후 생성 (Recommended if hero/render in spec)
-    - **2D fallback** — Unsplash photo 또는 unDraw illustration로 대체
-    - **skip 3D** — 3D 자산 빼고 진행
-    - **이미 설치됨 / 그냥 Blender로** — omd-3d-blender 바로 사용
-  - 사용자 선택 → master spawn omd-3d-blender (subagent_type: 'omd-3d-blender'). 결과: png + glb 둘 다 + manifest 엔트리.
-
-  **2D 자산** (대부분): 평소 fallback chain (Lucide / Unsplash / unDraw / 자체 SVG) 또는 self-fill brief 생성.
+  **2D 자산** (전부): fallback chain (Lucide / Unsplash / unDraw / 자체 SVG) 또는 self-fill brief 생성.
 
   ### Step 6 — Microcopy + handoff
   spawn omd-microcopy (§10 Voice 적용해서 prototype copy 정제) + a11y-auditor + handoff zip.

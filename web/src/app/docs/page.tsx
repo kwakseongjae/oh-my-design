@@ -120,6 +120,58 @@ const SKILLS: Skill[] = [
   },
 ];
 
+// v0.2 agent layer — bundled in the npm install alongside the core skills.
+const V2_SKILLS: Skill[] = [
+  {
+    id: "omd:orchestrator",
+    trigger: "Multi-step authoring",
+    title: "Supervisor topology",
+    desc:
+      "5-stage workflow (write → review → revise → localize → critic → images → handoff) with a hard 2-round revision cap. Anthropic orchestrator-workers + LangGraph supervisor pattern.",
+    icon: Workflow,
+  },
+  {
+    id: "omd:kr-writer",
+    trigger: "한글 글 작성 · KR rewrite",
+    title: "Korean prose · 12 presets",
+    desc:
+      "toss-tech-design (default) / karrot-neighborly / brunch-maker / naver-d2 / biz-report / academic / journalism … Each preset has a 9-field voice spec. Anti translation-ese.",
+    icon: Pencil,
+  },
+  {
+    id: "omd:locale-adapter",
+    trigger: "EN/JP/ZH-TW 버전",
+    title: "Adapt, don't translate",
+    desc:
+      "KR is the source of truth. Cultural reference swaps, JP honorific matching, ZH-TW traditional idioms — voice/register match, not literal translation.",
+    icon: GitBranch,
+  },
+  {
+    id: "omd:designer-review",
+    trigger: "UI 리뷰 · 디자인 검토",
+    title: "Visual + brand audit",
+    desc:
+      "Audits HTML/MD/JSX against DESIGN.md — typo hierarchy, color budget, radius scale, component states, mobile. Severity BLOCK / WARN / FYI with line refs. Read-only advisory.",
+    icon: ShieldCheck,
+  },
+  {
+    id: "omd:final-qa",
+    trigger: "최종 QA · 출간 검수",
+    title: "8-item publish rubric",
+    desc:
+      "Read-only critic. Forbids 'looks good' rubber-stamps, requires line refs for every FAIL, hard 2-round revision cap.",
+    icon: TestTube,
+  },
+  {
+    id: "omd:codex-image",
+    trigger: "이미지 생성 · placeholder 채우기",
+    title: "Channel-aware image gen",
+    desc:
+      "One <!-- omd:gen-image --> spec, three downstream paths: Codex native generation · omd-asset-curator free-license fallback (Claude Code) · OpenCode user-queue. Idempotent, IP-safe (no logo/face synthesis).",
+    icon: Palette,
+  },
+];
+
 interface Agent {
   id: string;
   model: "opus" | "sonnet" | "haiku";
@@ -168,14 +220,6 @@ const AGENTS: Agent[] = [
     desc:
       "Picks medium (inline SVG / chart library / Lottie / Rive / Unsplash / 3D). Stack-aware (recharts vs chartjs, lucide vs heroicons).",
     icon: Palette,
-  },
-  {
-    id: "omd-3d-blender",
-    model: "opus",
-    role: "3D renderer",
-    desc:
-      "Blender MCP renderer with just-in-time install walkthrough. Renders with materials cited from DESIGN.md §2 + §6.",
-    icon: Layers,
   },
   {
     id: "omd-microcopy",
@@ -349,11 +393,6 @@ const USE_CASES: { quote: string; whatHappens: string }[] = [
       "Invokes the harness — runs the 10-phase pipeline, spawns sub-agents in parallel, asks 3 user checkpoints, hands back a v0/Cursor-ready package.",
   },
   {
-    quote: "Render a 3D water glass for the hero.",
-    whatHappens:
-      "Recommends Blender, walks through install-on-demand (not bundled in upfront bootstrap), then renders with materials cited from §2 + §6.",
-  },
-  {
     quote: "Add a daily-intake line chart.",
     whatHappens:
       "Reads your package.json, sees recharts is installed, builds with brand colors. No library mismatch.",
@@ -369,22 +408,22 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
   {
     path: ".claude/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "Claude Code skill bundle — 9 skills (apply / init / harness / remember / learn / sync / reference-capture / asset-fetch / experiment-gallery)",
+    purpose: "Claude Code skill bundle — 15 skills (core flow + capture/assets + v0.2 agent layer)",
   },
   {
     path: ".codex/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "Codex skill bundle (same 9 skills)",
+    purpose: "Codex skill bundle (same 15 skills)",
   },
   {
     path: ".opencode/agents/omd-*.md",
     owner: "install-skills",
-    purpose: "OpenCode agent bundle (same 9 skills)",
+    purpose: "OpenCode agent bundle (same 15 skills)",
   },
   {
     path: ".claude/agents/omd-*.md",
     owner: "install-skills",
-    purpose: "11 canonical sub-agents (master + 10 specialists)",
+    purpose: "16 canonical sub-agents (master + 15 specialists)",
   },
   {
     path: ".claude/data/*",
@@ -471,6 +510,7 @@ export default function DocsPage() {
       <DocsHero />
       <QuickStart />
       <SkillsSection />
+      <V2SkillsSection />
       <AgentsSection />
       <PipelineSection />
       <UseCasesSection />
@@ -559,8 +599,8 @@ function DocsHero() {
           transition={{ duration: 0.6, delay: 0.18 }}
           className="mt-5 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
         >
-          <strong className="text-white">9 skills</strong>,{" "}
-          <strong className="text-white">11 sub-agents</strong>, a{" "}
+          <strong className="text-white">15 skills</strong>,{" "}
+          <strong className="text-white">16 sub-agents</strong>, a{" "}
           <strong className="text-white">10-phase pipeline</strong>, and{" "}
           <strong className="text-white">108 reference DESIGN.md files</strong>{" "}
           — installed into your AI coding agent in one command. No API keys.
@@ -600,8 +640,9 @@ function DocsHero() {
         >
           {[
             ["#quick-start", "Quick start"],
-            ["#skills", "9 skills"],
-            ["#agents", "11 sub-agents"],
+            ["#skills", "15 skills"],
+            ["#v2-skills", "v0.2 layer"],
+            ["#agents", "16 sub-agents"],
             ["#pipeline", "Pipeline"],
             ["#use-cases", "Use cases"],
             ["#install-layout", "Install layout"],
@@ -704,12 +745,29 @@ function SkillsSection() {
   return (
     <Section
       id="skills"
-      eyebrow="Skills · 6"
+      eyebrow="Skills · 9"
       title="Loaded into your agent's context, fired by triggers"
       desc="Skills are markdown rule files that activate based on what you say. They route complex tasks to the right sub-agents."
     >
       <div className="grid gap-4 sm:grid-cols-2">
         {SKILLS.map((s) => (
+          <SkillCard key={s.id} skill={s} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function V2SkillsSection() {
+  return (
+    <Section
+      id="v2-skills"
+      eyebrow="v0.2 agent layer · 6 skills · bundled"
+      title="Multi-step authoring — orchestrated, KR-first, channel-aware"
+      desc="A supervisor + specialist topology for long-form authoring and image generation. Installed alongside the core skills — KR voice synthesis, locale adaptation, design review, publish QA, deterministic orthography linting, and channel-aware image generation."
+    >
+      <div className="grid gap-4 sm:grid-cols-2">
+        {V2_SKILLS.map((s) => (
           <SkillCard key={s.id} skill={s} />
         ))}
       </div>
@@ -767,9 +825,9 @@ function AgentsSection() {
   return (
     <Section
       id="agents"
-      eyebrow="Sub-agents · 11"
+      eyebrow="Sub-agents · 16"
       title="Specialists, dispatched by the master orchestrator"
-      desc="omd-master runs the harness phases and dispatches specialists in parallel where independent."
+      desc="omd-master runs the harness phases and dispatches the 10 harness specialists below in parallel where independent. The v0.2 agent layer adds 6 more (orchestrator / kr-writer / locale-adapter / designer-review / final-qa / codex-image) — shown in the section above."
       light
     >
       <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">

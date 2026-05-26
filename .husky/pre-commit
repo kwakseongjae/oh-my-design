@@ -6,6 +6,13 @@
 
 set -euo pipefail
 
+# --- Release-hygiene gate: block experiment byproducts (v1/v2 .bak, _source,
+# contact sheets, logs, scratch dirs) from entering a commit. See
+# scripts/check-release-hygiene.sh and the omd-release-hygiene skill. ---
+if [ -x scripts/check-release-hygiene.sh ]; then
+  bash scripts/check-release-hygiene.sh staged
+fi
+
 changed=$(git diff --cached --name-only)
 
 if echo "$changed" | grep -qE '^(references/|data/reference-fingerprints\.json|\.claude/data/reference-fingerprints\.json|\.codex/data/reference-fingerprints\.json|web/src/data/registry\.generated\.ts|web/scripts/build-registry\.mjs|web/scripts/migrate-frontmatters\.mjs|web/__tests__/catalog-integrity\.test\.ts|design-md/)'; then

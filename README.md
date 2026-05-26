@@ -58,6 +58,23 @@ npm view oh-my-design-cli version    # latest on the registry
 
 **What's new each release:** [CHANGELOG.md](./CHANGELOG.md). Every release entry says what changed in the skills, agents, hooks, CLI, and data. If a change requires anything beyond a re-install — for example a migration of `DESIGN.md` frontmatter — it will be called out at the top of that entry.
 
+### v0.2 agent layer (bundled)
+
+A supervisor + specialist topology for multi-step authoring workflows. **6 skills + 6 sub-agents**, all channel-aware, installed alongside the core skills by `install-skills`:
+
+| Skill / agent | Role |
+|---|---|
+| `omd-orchestrator` | Supervisor — 5-stage workflow (write → review → revise → localize → critic → images → handoff), 2-round revision cap |
+| `omd-kr-writer` | Korean prose, **12 voice presets** (toss-tech-design default / karrot-neighborly / brunch-maker / naver-d2 / …) |
+| `omd-locale-adapter` | KR → EN/JP/ZH-TW **adaptation** (cultural swaps, not literal translation) |
+| `omd-designer-review` | Visual + brand audit vs DESIGN.md — typo/color/radius/state, BLOCK·WARN·FYI |
+| `omd-final-qa` | 8-item rubric, read-only verdict, no rubber-stamps |
+| `omd-codex-image` | Channel-aware image materialization — `<!-- omd:gen-image -->` spec → **Codex native generation** / `omd-asset-curator` fallback / OpenCode user-queue |
+
+Pattern adopted: Anthropic orchestrator-workers + LangGraph supervisor revision-cap. Background & full routing rules: [`data/research/2026-05-18-agent-landscape.md`](./data/research/2026-05-18-agent-landscape.md) · KR voice taxonomy: [`data/research/2026-05-18-kr-style-presets.md`](./data/research/2026-05-18-kr-style-presets.md).
+
+Promotion of future skills into the bundle is governed by the [`omd-release-hygiene`](./.claude/skills/omd-release-hygiene/SKILL.md) checklist. (A deterministic Korean-orthography linter was prototyped and dropped — a 25-pattern regex heuristic had too low recall to be worth shipping; if you need automated KR spellcheck, wire an external service such as the 부산대 한국어 맞춤법 검사기.)
+
 ## How to use omd with your AI
 
 Open Claude Code (or Codex / OpenCode) in your project. Just talk:
@@ -71,9 +88,6 @@ Open Claude Code (or Codex / OpenCode) in your project. Just talk:
 > "Design the entire onboarding from scratch — Toss-style for a family meal-tracking app."
 > Agent invokes the harness — runs the 10-phase pipeline (discovery, research, IA, wireframes, components, assets, microcopy, validation, handoff), spawns sub-agents in parallel where possible, asks you 3 mandatory checkpoints, hands back a v0/Cursor-ready package.
 
-> "Render a 3D water glass for the hero."
-> Agent recommends Blender, walks you through install-on-demand (it does not bundle it in the upfront bootstrap), then renders with materials cited from DESIGN.md §2 and §6.
-
 > "Add a daily-intake line chart."
 > Agent reads your `package.json`, sees `recharts` is installed, builds the chart with brand colors, no library mismatch.
 
@@ -84,10 +98,10 @@ Open Claude Code (or Codex / OpenCode) in your project. Just talk:
 
 | Path | Owner | Purpose |
 |---|---|---|
-| `.claude/skills/omd-*/SKILL.md` | install-skills | Claude Code skill bundle (apply / harness / init / learn / remember / sync / reference-capture / asset-fetch / experiment-gallery) |
+| `.claude/skills/omd-*/SKILL.md` | install-skills | Claude Code skill bundle (15 skills — core flow + capture/assets + v0.2 agent layer) |
 | `.codex/skills/omd-*/SKILL.md` | install-skills | Codex skill bundle |
 | `.opencode/agents/omd-*.md` | install-skills | OpenCode agent bundle |
-| `.claude/agents/omd-*.md` | install-skills | 11 canonical sub-agents (master + 10 specialists) |
+| `.claude/agents/omd-*.md` | install-skills | 16 canonical sub-agents (master + 15 specialists) |
 | `.claude/data/*` | install-skills | 107-reference fingerprints, vocabulary, opt-out corpus |
 | `.claude/hooks/*.cjs` | install-skills | UserPromptSubmit / SessionStart / PostToolUse hooks |
 | `.claude/skills/skill-rules.json` | install-skills | Skill activation rules |
@@ -97,7 +111,7 @@ Open Claude Code (or Codex / OpenCode) in your project. Just talk:
 | `.omd/preferences.md` | omd-remember skill | Append-only design correction log |
 | `.omd/runs/<id>/` | omd-harness skill | Per-harness-run artifacts (briefs, wireframes, eval, handoff zips) |
 
-## The 9 skills + 11 agents
+## The 15 skills + 16 agents
 
 Skills (loaded into your agent's context based on prompt triggers):
 
@@ -114,19 +128,22 @@ Skills (loaded into your agent's context based on prompt triggers):
 - **omd:asset-fetch** — Free-license asset catalog with verified URLs. DiceBear CC0 (notionists/lorelei avatars), Lucide ISC icons, Picsum CC0 / Loremflickr Flickr-CC photos, SIL OFL display fonts (Bricolage Grotesque / Space Grotesk / DM Serif Display / Fraunces). Strict anti-patterns: handcrafted character SVG forbidden, brand creative work never in product DOM.
 - **omd:experiment-gallery** — N-brand experiment results in a single comparison index.html. iframe scaled previews + wow ratings + multi-turn deltas + per-brand IP audit. Reusable across batches.
 
-Sub-agents — 1 orchestrator + 10 specialists (invoked by the master or directly by skills):
+**v0.2 agent layer** (6 more) — `omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`. See the [v0.2 agent layer](#v02-agent-layer-bundled) table above for what each does.
+
+Sub-agents — master + 15 specialists (invoked by the master or directly by skills):
 
 - **omd-master** — Conversational state machine, runs the harness phases. opus.
 - **omd-ux-researcher** — Reads bundled references, validates Tier-1 official design system URLs. opus.
 - **omd-ui-junior** — Generates wireframes and component manifests from DESIGN.md. sonnet.
 - **omd-ux-engineer** — Section-level interaction / motion / IA / mobile / perceived-perf audit + code-level fixes. NN/g heuristics + Refactoring UI + Web Vitals + WAI-ARIA. Senior advisor; pairs with `omd-ui-junior` (generator). opus.
-- **omd-asset-curator** — Picks asset medium (inline SVG / chart library / Lottie / Rive / Unsplash / 3D), generates inline code or sources external. Stack-aware (recharts vs chartjs vs custom SVG, lucide vs heroicons, etc.). sonnet.
-- **omd-3d-blender** — Blender MCP renderer with just-in-time install walkthrough. opus.
+- **omd-asset-curator** — Picks asset medium (inline SVG / chart library / Lottie / Rive / Unsplash), generates inline code or sources external. Stack-aware (recharts vs chartjs vs custom SVG, lucide vs heroicons, etc.). sonnet.
 - **omd-microcopy** — Voice-consistent copy generation tied to DESIGN.md §10. sonnet.
 - **omd-ux-writer** — Section-level copy audit + 2-3 strong alternatives + A/B hypothesis. Podmajersky / Erika Hall / Mailchimp / Stripe / GitHub voice docs integrated. Senior advisor; pairs with `omd-microcopy` (generator). opus.
 - **omd-a11y-auditor** — WCAG checks. haiku.
 - **omd-persona-tester** — Adversarial 4-persona walkthrough (V/J/F/S). sonnet.
 - **omd-critic** — Root-cause analysis when the user iterates. opus.
+
+Plus the **6 v0.2 sub-agents** (orchestrator / kr-writer / locale-adapter / designer-review / final-qa / codex-image) — documented in the [v0.2 agent layer](#v02-agent-layer-bundled) section.
 
 ## MCP server
 

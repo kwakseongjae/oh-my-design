@@ -17,6 +17,14 @@ export interface InstallSkillsOptions {
   dir?: string;
   agents?: SkillTarget[];
   force?: boolean;
+  /** Non-interactive: install all skills + all agents without TUI prompt.
+   *  Default false → interactive multiselect when TTY available. */
+  all?: boolean;
+  /** Pre-select specific skill names from CLI flag (`--skills omd-init,omd-apply`).
+   *  Overrides interactive prompt when set. */
+  skillsFilter?: string[];
+  /** Pre-select specific agent names. Overrides interactive prompt when set. */
+  agentsFilter?: string[];
 }
 
 interface InstallPlan {
@@ -460,14 +468,13 @@ export async function runInstallSkills(
     return 1;
   }
 
-  const skills = listShippedSkills(packageRoot);
-  if (skills.length === 0) {
+  const allSkills = listShippedSkills(packageRoot);
+  if (allSkills.length === 0) {
     console.error(pc.red('omd install-skills: no skills found in package'));
     return 1;
   }
+  const allAgents = listCanonicalAgents(packageRoot);
 
-  const targets = opts.agents ?? autoDetectTargets(projectRoot);
-  const plans = targets.map((t) => planForTarget(projectRoot, t));
   const force = opts.force ?? false;
 
   p.intro(
@@ -475,12 +482,124 @@ export async function runInstallSkills(
       pc.dim(`  (${relative(process.cwd(), projectRoot) || '.'})`)
   );
 
+  // Resolve selection: --all flag, --skills/--agents/--agent filter, or interactive TUI.
+  // TUI runs only when stdin is a TTY and the corresponding flag isn't set.
+  const isTTY = Boolean(process.stdin.isTTY && process.stdout.isTTY);
+  const nonInteractive = opts.all || !isTTY || opts.skillsFilter || opts.agentsFilter;
+
+  const detected = autoDetectTargets(projectRoot);
+  // Real presence (not the all-3 fallback) — used purely for hint labels.
+  const presence = detectInstalledAgents(projectRoot);
+  const actuallyDetected: SkillTarget[] = [
+    presence.claudeCode ? 'claude-code' : null,
+    presence.codex ? 'codex' : null,
+    presence.opencode ? 'opencode' : null,
+  ].filter((x): x is SkillTarget => x !== null);
+
+  let skills: string[];
+  let canonicalAgents: string[];
+  let targets: SkillTarget[];
+
+  if (nonInteractive) {
+    // Non-interactive resolution
+    skills = opts.skillsFilter
+      ? allSkills.filter((s) => opts.skillsFilter!.includes(s))
+      : allSkills;
+    canonicalAgents = opts.agentsFilter
+      ? allAgents.filter((a) => opts.agentsFilter!.includes(a.replace(/\.md$/, '')))
+      : allAgents;
+    targets = opts.agents
+      ? opts.agents
+      : opts.all
+        ? (['claude-code', 'codex', 'opencode'] as SkillTarget[])
+        : detected;
+  } else {
+    // === Interactive TUI — skill → subagent → channel order ===
+    // 1. Skills (default = ALL selected)
+    const skillResult = await p.multiselect({
+      message:
+        'Skills · space = 토글 · a = 전체 · enter = 확인 (default ALL)',
+      options: allSkills.map((s) => ({ value: s, label: s, hint: 'omd skill' })),
+      initialValues: allSkills,
+      required: true,
+    });
+    if (p.isCancel(skillResult)) {
+      p.cancel('Install cancelled.');
+      return 130;
+    }
+    skills = skillResult as string[];
+
+    // 2. Sub-agents (default = ALL selected)
+    if (allAgents.length > 0) {
+      const agentResult = await p.multiselect({
+        message:
+          'Sub-agents · space = 토글 · a = 전체 · enter = 확인 (default ALL)',
+        options: allAgents.map((a) => ({
+          value: a,
+          label: a.replace(/\.md$/, ''),
+          hint: 'subagent',
+        })),
+        initialValues: allAgents,
+        required: false,
+      });
+      if (p.isCancel(agentResult)) {
+        p.cancel('Install cancelled.');
+        return 130;
+      }
+      canonicalAgents = agentResult as string[];
+    } else {
+      canonicalAgents = [];
+    }
+
+    // 3. Agent channels (default = NONE — user explicitly picks)
+    if (opts.agents) {
+      targets = opts.agents;
+    } else {
+      const targetResult = await p.multiselect({
+        message:
+          'Agent channels · space = 토글 · enter = 확인 · 최소 1개 선택',
+        options: [
+          {
+            value: 'claude-code',
+            label: 'Claude Code',
+            hint: actuallyDetected.includes('claude-code') ? '.claude/ detected' : '',
+          },
+          {
+            value: 'codex',
+            label: 'Codex',
+            hint: actuallyDetected.includes('codex') ? '.codex/ detected' : '',
+          },
+          {
+            value: 'opencode',
+            label: 'OpenCode',
+            hint: actuallyDetected.includes('opencode') ? '.opencode/ detected' : '',
+          },
+        ] as { value: SkillTarget; label: string; hint?: string }[],
+        initialValues: [] as SkillTarget[],
+        required: true,
+      });
+      if (p.isCancel(targetResult)) {
+        p.cancel('Install cancelled.');
+        return 130;
+      }
+      targets = targetResult as SkillTarget[];
+    }
+  }
+
+  const plans = targets.map((t) => planForTarget(projectRoot, t));
+
   p.log.message(
-    pc.bold('Targets: ') +
-      targets.map((t) => pc.cyan(t)).join(', ')
+    pc.bold(`Skills (${skills.length}): `) +
+      skills.map((s) => pc.cyan(s)).join(', ')
   );
+  if (canonicalAgents.length > 0) {
+    p.log.message(
+      pc.bold(`Agents (${canonicalAgents.length}): `) +
+        canonicalAgents.map((a) => pc.cyan(a.replace(/\.md$/, ''))).join(', ')
+    );
+  }
   p.log.message(
-    pc.bold('Skills: ') + skills.map((s) => pc.cyan(s)).join(', ')
+    pc.bold('Targets: ') + targets.map((t) => pc.cyan(t)).join(', ')
   );
 
   const results: InstallResult[] = [];
@@ -492,7 +611,7 @@ export async function runInstallSkills(
 
   // Generate per-channel sub-agent definitions from the canonical `agents/`.
   // This is the v2 portable source-of-truth pattern (oh-my-agent style).
-  const canonicalAgents = listCanonicalAgents(packageRoot);
+  // `canonicalAgents` is already resolved above by the TUI / --agents filter.
   for (const target of targets) {
     if (target === 'claude-code') {
       for (const filename of canonicalAgents) {

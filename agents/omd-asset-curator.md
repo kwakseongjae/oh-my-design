@@ -65,8 +65,7 @@ cap: 한 화면당 8-12 에셋. 초과하면 우선순위 매겨 critical만 처
 | 차트 (custom 시각화, 1회성) | **inline SVG + d3-shape OR pure path** | 직접 작성 | 정확 제어 |
 | 사진 (제품, 사람, 풍경) | **Unsplash / Pexels** | URL listing + 사용자 download | 라이선스 무료 |
 | 일러스트 (스타일 통일된 여러 장) | **unDraw** + brand 색 변환 | OPL 라이선스 | 무료 + 통일감 |
-| Hero 사진 / 제품 mockup (사실적) | **Unsplash 우선, 안 맞으면 omd-3d-blender** | 사진 → 3D 폴백 | 비용 / 시간 |
-| Hero 3D 렌더 (제품 mockup, 의식적 3D) | **omd-3d-blender 라우팅** | dispatch | Blender MCP |
+| Hero 사진 / 제품 mockup (사실적) | **Unsplash / Pexels** | 사진 listing | 비용 / 시간 |
 | 비디오 (배경 루프, 3-10초) | **Mixkit / Coverr** | URL listing | 무료 |
 | 로고 | **사용자 자체 제공** 또는 brand-color SVG placeholder | self brief | 로고는 사용자 자산 |
 | empty state / placeholder | **inline SVG (custom)** | 24-48 line path, 1-2 컬러 | 작고 의미 명확 |
@@ -172,11 +171,7 @@ JS: `liquidGroup.setAttribute('transform', `translate(0, ${fillY[count]})`);`
 
 manifest 엔트리 schema 동일 (id, source, url, license, attribution, downloaded_to, fetched_at, fetched_by).
 
-### 분기 C — 3D dispatch
-
-`type=3d-render` 또는 `3d-mockup`이면 omd-3d-blender 서브에이전트 spawn. 사용자에게 Blender 설치 의향 먼저 확인.
-
-### 분기 D — 차트 라이브러리 코드 생성
+### 분기 C — 차트 라이브러리 코드 생성
 
 Step 0의 OMD-STACK 매칭 결과에 따라 import + JSX/Vue/Svelte 작성:
 

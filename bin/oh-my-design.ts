@@ -32,12 +32,22 @@ program
 
 program
   .command('install-skills')
-  .description('Install omd skill files + canonical agents into agent directories (.claude/, .codex/, .opencode/)')
+  .description('Install omd skill files + canonical agents into agent directories (.claude/, .codex/, .opencode/). Interactive multiselect TUI by default — picks which skills + sub-agents to install.')
   .option('--dir <path>', 'Project root (defaults to cwd)')
-  .option('--agent <name...>', 'Restrict to specific agents (claude-code | codex | opencode)')
+  .option('--agent <name...>', 'Restrict to specific channels (claude-code | codex | opencode)')
   .option('--force', 'Overwrite existing files even without the omd marker')
+  .option('--all', 'Skip the interactive TUI and install every shipped skill + agent (use in CI)')
+  .option('--skills <names>', 'Comma-separated skill names to install (overrides TUI)', (v) => v.split(',').map((s) => s.trim()).filter(Boolean))
+  .option('--agents-only <names>', 'Comma-separated agent names to install (overrides TUI). Use --agents-only to disambiguate from --agent (channel selector).', (v) => v.split(',').map((s) => s.trim()).filter(Boolean))
   .action(
-    async (opts: { dir?: string; agent?: string[]; force?: boolean }) => {
+    async (opts: {
+      dir?: string;
+      agent?: string[];
+      force?: boolean;
+      all?: boolean;
+      skills?: string[];
+      agentsOnly?: string[];
+    }) => {
       const { runInstallSkills } = await import('../src/cli/install-skills.js');
       const validAgents = ['claude-code', 'codex', 'opencode'] as const;
       type Agent = (typeof validAgents)[number];
@@ -50,6 +60,9 @@ program
         dir: opts.dir,
         agents,
         force: opts.force,
+        all: opts.all,
+        skillsFilter: opts.skills,
+        agentsFilter: opts.agentsOnly,
       });
       if (code !== 0) process.exit(code);
     }

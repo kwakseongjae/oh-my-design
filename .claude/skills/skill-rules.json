@@ -1,0 +1,84 @@
+{
+  "$schema": "./skill-rules.schema.json",
+  "version": "0.2.0",
+  "description": "omd v0.2 agent layer — skill registry. Lists skills available for orchestrated multi-agent workflows. Consumed by omd-orchestrator routing.",
+  "skills": [
+    {
+      "id": "omd-orchestrator",
+      "path": ".claude/skills/omd-orchestrator/SKILL.md",
+      "agent": ".claude/agents/omd-orchestrator.md",
+      "role": "supervisor",
+      "user_invocable": true,
+      "depends_on": [
+        "omd-kr-writer",
+        "omd-locale-adapter",
+        "omd-designer-review",
+        "omd-final-qa",
+        "omd-codex-image"
+      ]
+    },
+    {
+      "id": "omd-kr-writer",
+      "path": ".claude/skills/omd-kr-writer/SKILL.md",
+      "agent": ".claude/agents/omd-kr-writer.md",
+      "role": "writer",
+      "user_invocable": true,
+      "args": {
+        "preset_id": {
+          "type": "enum",
+          "default": "toss-tech-design",
+          "values": [
+            "toss-tech-design",
+            "karrot-neighborly",
+            "brunch-maker-popular",
+            "biz-formal-report",
+            "academic-paper",
+            "journalism-broadsheet"
+          ],
+          "spec": "data/research/2026-05-18-kr-style-presets.md"
+        }
+      }
+    },
+    {
+      "id": "omd-locale-adapter",
+      "path": ".claude/skills/omd-locale-adapter/SKILL.md",
+      "agent": ".claude/agents/omd-locale-adapter.md",
+      "role": "localizer",
+      "user_invocable": true,
+      "supports_locales": ["en", "ja", "zh-tw"],
+      "source_locale": "ko"
+    },
+    {
+      "id": "omd-designer-review",
+      "path": ".claude/skills/omd-designer-review/SKILL.md",
+      "agent": ".claude/agents/omd-designer-review.md",
+      "role": "visual-critic",
+      "user_invocable": true,
+      "read_only": true,
+      "revision_cap": 2
+    },
+    {
+      "id": "omd-final-qa",
+      "path": ".claude/skills/omd-final-qa/SKILL.md",
+      "agent": ".claude/agents/omd-final-qa.md",
+      "role": "final-critic",
+      "user_invocable": true,
+      "read_only": true,
+      "revision_cap": 2
+    },
+    {
+      "id": "omd-codex-image",
+      "path": ".claude/skills/omd-codex-image/SKILL.md",
+      "agent": ".claude/agents/omd-codex-image.md",
+      "role": "image-materializer",
+      "user_invocable": true,
+      "channels": ["codex", "claude-code", "opencode"]
+    }
+  ],
+  "orchestration": {
+    "supervisor": "omd-orchestrator",
+    "pattern": "anthropic-orchestrator-workers + langgraph-supervisor-revision-cap",
+    "max_revision_rounds_per_gate": 2,
+    "research_ref": "data/research/2026-05-18-agent-landscape.md"
+  }
+}

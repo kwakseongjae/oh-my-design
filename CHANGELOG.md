@@ -6,6 +6,39 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.5.0 — 2026-05-19
+
+**v0.2 agent layer ships in the bundle. Blog feature removed. Release-hygiene routine added.**
+
+Bundle is now **15 skills + 16 sub-agents** (was 9 + 11). Re-run `npx oh-my-design-cli@latest install-skills` to pick it up.
+
+### Added — v0.2 agent layer (6 skills + 6 sub-agents)
+
+A supervisor + specialist topology for multi-step authoring, all channel-aware (Claude Code / Codex / OpenCode):
+
+- **omd-orchestrator** — supervisor. 5-stage workflow (write → review → revise → localize → critic → images → handoff), hard 2-round revision cap. Anthropic orchestrator-workers + LangGraph supervisor pattern.
+- **omd-kr-writer** — Korean prose with **12 voice presets** (toss-tech-design default / karrot-neighborly / brunch-maker / naver-d2 / biz-report / academic / journalism / …). 9-field voice spec per preset in `data/research/2026-05-18-kr-style-presets.md`. Anti translation-ese.
+- **omd-locale-adapter** — KR → EN/JP/ZH-TW **adaptation** (cultural reference swaps, JP honorific matching, ZH-TW traditional idioms). KR is the source of truth.
+- **omd-designer-review** — visual + brand audit vs DESIGN.md (typo hierarchy, color budget, radius scale, component states, mobile). Severity BLOCK / WARN / FYI with line refs. Read-only advisory.
+- **omd-final-qa** — read-only critic, **8-item publish rubric**, forbids "looks good" rubber-stamps, hard 2-round cap.
+- **omd-codex-image** — channel-aware image materialization. One `<!-- omd:gen-image -->` spec, three downstream paths: **Codex native generation** / `omd-asset-curator` free-license fallback (Claude Code) / OpenCode user-queue. Idempotent, IP-safe (no logo/face synthesis).
+
+### Added — release hygiene
+
+- **omd-release-hygiene** skill + `scripts/check-release-hygiene.sh` + husky `pre-commit` gate. Blocks experiment byproducts (v1/v2 `.bak`, `_source-*`, contact sheets, logs, scratch dirs) from entering a commit. Codifies the docs-sync + npm-packaging checklist for new skills.
+
+### Removed
+
+- **`/blog` route and the blog feature** (was dev-only behind `NODE_ENV`). Routes, components, `@/lib/blog*`, and the blog views/likes KV endpoints removed. `omd-kr-writer` is kept — KR voice synthesis is useful beyond the blog.
+- **kr-spellcheck** — a deterministic Korean-orthography linter was prototyped and dropped. A 25-pattern regex heuristic had too low recall (~50–67%) to be worth shipping. If you need automated KR spellcheck, wire an external service such as the 부산대 한국어 맞춤법 검사기. (`omd-final-qa` dropped its rubric item 9 accordingly.)
+
+### Changed
+
+- **`install-skills` TUI** — interactive multiselect order is now **skill → sub-agent → channel**. Agent channels default to none-selected (you pick); "detected" hints read real `.claude/`/`.codex/`/`.opencode/` presence instead of the all-3 fallback. Added `enter = 확인` hints.
+- `experiments/` is now gitignored (local scratch, like `.promo/` and `.experiments/`).
+
+---
+
 ## 1.4.0 — 2026-05-15
 
 **Architectural refactor — single-source registry replaces 5 hand-maintained maps.**
