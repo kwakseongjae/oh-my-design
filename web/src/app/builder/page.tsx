@@ -20,6 +20,9 @@ export interface RefListItem {
   country: string;
   primaryColor: string;
   background: string;
+  /** Among the most-selected references — resolved server-side so the grid
+   *  arrives hot-first + badged with no post-render reflow. */
+  hot: boolean;
 }
 
 export interface RefDetail {

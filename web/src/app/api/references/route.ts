@@ -2,6 +2,16 @@ import { NextResponse } from 'next/server';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { REGISTRY } from '@/data/registry.generated';
+import { counterKey, getRedis } from '@/lib/kv';
+
+// Re-resolve the HOT set at most every 30s (matches /api/leaderboard) so the
+// builder grid arrives already hot-first + badged, without hammering KV on
+// every page load.
+export const revalidate = 30;
+
+// Number of top-selected references that earn the HOT treatment — mirrors the
+// `useHotRefs(5)` default used elsewhere so the two surfaces agree.
+const HOT_LIMIT = 5;
 
 // Display labels for category slugs. Sort priority lives in `CATEGORY_ORDER`.
 const CATEGORY_LABELS: Record<string, string> = {
@@ -66,6 +76,26 @@ export async function GET() {
     return NextResponse.json({ error: 'references/ not found' }, { status: 500 });
   }
 
+  // Resolve HOT server-side from the same `select` leaderboard the
+  // /api/leaderboard endpoint serves. Baking it into this single response
+  // (flag + ordering) means the grid never reflows after first paint.
+  // Degrades silently to "no hot refs" when KV is unavailable (local dev).
+  const hotIds = new Set<string>();
+  const redis = getRedis();
+  if (redis) {
+    try {
+      const raw = await redis.zrange<(string | number)[]>(counterKey('select'), 0, HOT_LIMIT - 1, {
+        rev: true,
+        withScores: true,
+      });
+      for (let i = 0; i < raw.length; i += 2) {
+        if (Number(raw[i + 1]) > 0) hotIds.add(String(raw[i]));
+      }
+    } catch {
+      /* KV hiccup → no hot pills; the list still renders normally. */
+    }
+  }
+
   const entries = REGISTRY
     .filter(e => existsSync(join(refDir, e.id, 'DESIGN.md')))
     .map(e => {
@@ -77,9 +107,13 @@ export async function GET() {
         country: COUNTRY_LABELS[e.country] || e.country,
         primaryColor: extractPrimaryColor(md, e.primaryColor),
         background: extractBackground(md),
+        hot: hotIds.has(e.id),
       };
     })
     .sort((a, b) => {
+      // HOT references float to the top, grouped together. Within the hot and
+      // non-hot partitions the existing country/category order is preserved.
+      if (a.hot !== b.hot) return a.hot ? -1 : 1;
       // Asian markets first (Korea → Taiwan → Japan), then everything else by industry order.
       const countryPriority = ['Korea', 'Taiwan', 'Japan'];
       const ac = countryPriority.indexOf(a.country);

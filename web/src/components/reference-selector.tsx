@@ -76,7 +76,6 @@ function XIcon({ className }: { className?: string }) {
 import { isLight } from "@/lib/core/color";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import { isNewRef } from "@/lib/new-refs";
-import { useHotRefs } from "@/lib/hot-refs";
 import { StatusBadge } from "@/components/status-badge";
 import { refMatchesQuery } from "@/lib/search-aliases";
 import type { RefListItem } from "@/app/builder/page";
@@ -138,7 +137,9 @@ export function ReferenceSelector({
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [hotOnly, setHotOnly] = useState(false);
-  const hotRefs = useHotRefs(5);
+  // HOT is resolved server-side and arrives on each ref as `ref.hot`, so the
+  // grid is already hot-first + badged on first paint — no async reflow.
+  const hasHot = refs.some((r) => r.hot);
   // Controls the mobile overflow dropdowns. Two independent menus — one for
   // the category "More ▾" trigger, one for the country "More ▾" trigger.
   const [catMoreOpen, setCatMoreOpen] = useState(false);
@@ -198,24 +199,15 @@ export function ReferenceSelector({
     }
   }, []);
 
+  // `refs` already arrives hot-first from /api/references, so the grid renders
+  // in the right order on first paint — no client-side re-sort needed.
   const filtered = refs.filter((r) => {
-    if (hotOnly && !hotRefs.has(r.id)) return false;
+    if (hotOnly && !r.hot) return false;
     if (selectedCat && r.category !== selectedCat) return false;
     if (selectedCountry && r.country !== selectedCountry) return false;
     if (filter && !refMatchesQuery(r, filter)) return false;
     return true;
   });
-
-  // Float HOT references to the top so the most-selected brands are grouped
-  // up front. `.sort` is stable in modern engines, so the API's
-  // country/category ordering is preserved within the hot/non-hot partitions.
-  // `hotRefs` loads async from the leaderboard, so the grid reflows (with the
-  // motion `layout` animation) once it resolves.
-  const ordered = hotRefs.size
-    ? [...filtered].sort(
-        (a, b) => Number(hotRefs.has(b.id)) - Number(hotRefs.has(a.id)),
-      )
-    : filtered;
 
   return (
     <div>
@@ -571,8 +563,8 @@ export function ReferenceSelector({
           {/* HOT toggle — collect just the most-selected references. Warm
               ember fill when active so it reads as "Hot" rather than borrowing
               the primary filter language used by category/country. Only shown
-              once the leaderboard has resolved at least one hot ref. */}
-          {hotRefs.size > 0 && (
+              when the response carries at least one hot ref. */}
+          {hasHot && (
             <button
               onClick={() => { const next = !hotOnly; setHotOnly(next); event("hot_filter", { on: next }); }}
               aria-pressed={hotOnly}
@@ -614,7 +606,7 @@ export function ReferenceSelector({
       {/* Grid */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         <AnimatePresence mode="popLayout">
-          {ordered.map((ref, i) => {
+          {filtered.map((ref, i) => {
             const logoUrl = getLogoUrl(ref.id, isLight(ref.primaryColor) ? "000000" : "ffffff");
             return (
               <motion.button
@@ -663,9 +655,9 @@ export function ReferenceSelector({
                   </span>
                   {/* NEW (7-day window) + HOT (top-5 by select) — glass badges,
                       top-right of the brand color header. */}
-                  {(hotRefs.has(ref.id) || isNewRef(ref.id)) && (
+                  {(ref.hot || isNewRef(ref.id)) && (
                     <span className="absolute right-2 top-2 flex items-center gap-1">
-                      {hotRefs.has(ref.id) && <StatusBadge kind="hot" />}
+                      {ref.hot && <StatusBadge kind="hot" />}
                       {isNewRef(ref.id) && <StatusBadge kind="new" />}
                     </span>
                   )}
