@@ -11,6 +11,8 @@
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Moon, Sun } from "lucide-react";
 import { isNewRef } from "@/lib/new-refs";
+import { useHotRefs } from "@/lib/hot-refs";
+import { StatusBadge } from "@/components/status-badge";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { getAllDesignSystems, type DesignSystemInfo } from "@/lib/design-systems";
@@ -23,8 +25,7 @@ export default function DesignSystemsPage() {
   useEffect(() => setMounted(true), []);
 
   const systems = getAllDesignSystems();
-  const systemCount = systems.filter((d) => d.type === "system").length;
-  const brandCount = systems.filter((d) => d.type === "brand").length;
+  const hotRefs = useHotRefs(5);
 
   return (
     <div className="min-h-screen">
@@ -59,9 +60,9 @@ export default function DesignSystemsPage() {
         </div>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Design Systems</h1>
         <p className="text-muted-foreground mt-4 max-w-2xl leading-relaxed">
-          Jump to the company&apos;s canonical documentation — {systemCount} full design
-          systems with components and tokens, plus {brandCount}{" "}
-          brand / trademark guideline pages.
+          Jump to the company&apos;s canonical documentation — 100+ full design
+          systems with components and tokens, plus brand / trademark guideline
+          pages.
         </p>
       </section>
 
@@ -69,7 +70,7 @@ export default function DesignSystemsPage() {
       <section className="mx-auto max-w-6xl px-4 sm:px-6 pb-20">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {systems.map((ds) => (
-            <DSCard key={ds.refId} ds={ds} />
+            <DSCard key={ds.refId} ds={ds} hot={hotRefs.has(ds.refId)} />
           ))}
         </div>
       </section>
@@ -77,7 +78,7 @@ export default function DesignSystemsPage() {
   );
 }
 
-function DSCard({ ds }: { ds: DesignSystemInfo }) {
+function DSCard({ ds, hot = false }: { ds: DesignSystemInfo; hot?: boolean }) {
   const isSystem = ds.type === "system";
   return (
     <Link
@@ -100,14 +101,10 @@ function DSCard({ ds }: { ds: DesignSystemInfo }) {
           >
             {isSystem ? "Design System" : "Brand"}
           </span>
-          {isNewRef(ds.refId) && (
-            <span
-              className="text-[10px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
-              style={{ background: "#34d399", color: "#062514" }}
-            >
-              NEW
-            </span>
-          )}
+          <div className="flex items-center gap-1.5">
+            {hot && <StatusBadge kind="hot" />}
+            {isNewRef(ds.refId) && <StatusBadge kind="new" />}
+          </div>
         </div>
         <div className="flex items-center gap-3">
           <CardBrandLogo refId={ds.refId} name={ds.name} />

@@ -13,6 +13,7 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Search } from "lucide-react";
 import { getAllDesignSystems } from "@/lib/design-systems";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
+import { refMatchesQuery } from "@/lib/search-aliases";
 
 export function ReferencePickerModal({
   open,
@@ -26,12 +27,9 @@ export function ReferencePickerModal({
   const [query, setQuery] = useState("");
   const all = useMemo(() => getAllDesignSystems(), []);
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return all;
-    return all.filter(
-      (ds) =>
-        ds.refId.toLowerCase().includes(q) ||
-        ds.name.toLowerCase().includes(q),
+    if (!query.trim()) return all;
+    return all.filter((ds) =>
+      refMatchesQuery({ id: ds.refId, name: ds.name }, query),
     );
   }, [all, query]);
 

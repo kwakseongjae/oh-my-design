@@ -18,7 +18,7 @@ const FINGERPRINTS_CLAUDE = join(ROOT, ".claude", "data", "reference-fingerprint
 const FINGERPRINTS_CODEX = join(ROOT, ".codex", "data", "reference-fingerprints.json");
 const LLMS_TXT = join(WEB_ROOT, "public", "llms.txt");
 
-const VALID_COUNTRIES = ["KR", "US", "JP", "TW", "UK", "DE", "FR", "IT"] as const;
+const VALID_COUNTRIES = ["KR", "US", "JP", "TW", "CN", "UK", "DE", "FR", "IT"] as const;
 const VALID_LOGO_TYPES = ["favicon", "simpleicons", "github"] as const;
 
 const fingerprintsRaw = readFileSync(FINGERPRINTS_ROOT, "utf-8");

@@ -76,6 +76,9 @@ function XIcon({ className }: { className?: string }) {
 import { isLight } from "@/lib/core/color";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import { isNewRef } from "@/lib/new-refs";
+import { useHotRefs } from "@/lib/hot-refs";
+import { StatusBadge } from "@/components/status-badge";
+import { refMatchesQuery } from "@/lib/search-aliases";
 import type { RefListItem } from "@/app/builder/page";
 
 export function ReferenceSelector({
@@ -134,6 +137,8 @@ export function ReferenceSelector({
   const [filter, setFilter] = useState("");
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+  const [hotOnly, setHotOnly] = useState(false);
+  const hotRefs = useHotRefs(5);
   // Controls the mobile overflow dropdowns. Two independent menus — one for
   // the category "More ▾" trigger, one for the country "More ▾" trigger.
   const [catMoreOpen, setCatMoreOpen] = useState(false);
@@ -194,9 +199,10 @@ export function ReferenceSelector({
   }, []);
 
   const filtered = refs.filter((r) => {
+    if (hotOnly && !hotRefs.has(r.id)) return false;
     if (selectedCat && r.category !== selectedCat) return false;
     if (selectedCountry && r.country !== selectedCountry) return false;
-    if (filter && !r.name.toLowerCase().includes(filter.toLowerCase())) return false;
+    if (filter && !refMatchesQuery(r, filter)) return false;
     return true;
   });
 
@@ -211,7 +217,7 @@ export function ReferenceSelector({
         <div>
           <h2 className="text-3xl font-bold tracking-tight">Choose a reference</h2>
           <p className="mt-2 text-muted-foreground">
-            {refs.length} design systems from real companies.{" "}
+            100+ design systems from real companies.{" "}
             {skipWizard
               ? "Picking one jumps straight to the original DESIGN.md — no customization."
               : "Pick one to start."}
@@ -550,6 +556,37 @@ export function ReferenceSelector({
               )}
             </AnimatePresence>
           </div>
+
+          {/* HOT toggle — collect just the most-selected references. Warm
+              ember fill when active so it reads as "Hot" rather than borrowing
+              the primary filter language used by category/country. Only shown
+              once the leaderboard has resolved at least one hot ref. */}
+          {hotRefs.size > 0 && (
+            <button
+              onClick={() => { const next = !hotOnly; setHotOnly(next); event("hot_filter", { on: next }); }}
+              aria-pressed={hotOnly}
+              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
+                hotOnly
+                  ? "text-white shadow-sm"
+                  : "border border-border/40 text-muted-foreground hover:text-foreground hover:border-border"
+              }`}
+              style={
+                hotOnly
+                  ? { background: "linear-gradient(135deg, #fb923c, #f43f5e)", border: "1px solid transparent" }
+                  : undefined
+              }
+            >
+              <svg viewBox="0 0 20 20" width="13" height="13" aria-hidden="true"
+                fill={hotOnly ? "currentColor" : "#f43f5e"}>
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M12.963 2.286a.75.75 0 0 0-1.071-.136 9.742 9.742 0 0 0-3.539 6.176 7.547 7.547 0 0 1-1.705-1.715.75.75 0 0 0-1.152-.082A9 9 0 1 0 15.68 4.534a7.46 7.46 0 0 1-2.717-2.248ZM15.75 14.25a3.75 3.75 0 1 1-7.313-1.172c.628.465 1.35.81 2.133 1a5.989 5.989 0 0 1 1.925-3.546 3.75 3.75 0 0 1 3.255 3.718Z"
+                />
+              </svg>
+              Hot
+            </button>
+          )}
         </div>
       </motion.div>
 
@@ -613,13 +650,12 @@ export function ReferenceSelector({
                   <span className="absolute bottom-2 left-2 rounded bg-black/20 px-1.5 py-0.5 font-mono text-[9px] text-white/80 backdrop-blur-sm">
                     {ref.primaryColor}
                   </span>
-                  {/* dev-only NEW badge — top-left, hidden in production */}
-                  {isNewRef(ref.id) && (
-                    <span
-                      className="absolute left-2 top-2 rounded-full px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider"
-                      style={{ background: "#34d399", color: "#062514", boxShadow: "0 1px 4px rgba(0,0,0,0.35)" }}
-                    >
-                      NEW
+                  {/* NEW (7-day window) + HOT (top-5 by select) — glass badges,
+                      top-right of the brand color header. */}
+                  {(hotRefs.has(ref.id) || isNewRef(ref.id)) && (
+                    <span className="absolute right-2 top-2 flex items-center gap-1">
+                      {hotRefs.has(ref.id) && <StatusBadge kind="hot" />}
+                      {isNewRef(ref.id) && <StatusBadge kind="new" />}
                     </span>
                   )}
                 </div>

@@ -7,7 +7,7 @@ homepage: "https://www.kakaopay.com"
 primary_color: "#ffeb00"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=kakaopay.com&sz=256"
+  slug: "https://t1.kakaocdn.net/kakaopay/icons/web/192-brand.png"
 verified: "2026-05-15"
 omd: "0.1"
 ds:

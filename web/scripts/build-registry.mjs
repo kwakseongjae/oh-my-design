@@ -21,7 +21,7 @@ const WEB_ROOT = resolve(__dirname, '..');
 const REFS_DIR = join(WEB_ROOT, 'references');
 const OUT_FILE = join(WEB_ROOT, 'src', 'data', 'registry.generated.ts');
 
-const VALID_COUNTRIES = new Set(['KR','US','JP','TW','UK','DE','FR','IT']);
+const VALID_COUNTRIES = new Set(['KR','US','JP','TW','CN','UK','DE','FR','IT']);
 const VALID_LOGO_TYPES = new Set(['favicon','simpleicons','github']);
 const VALID_DS_TYPES = new Set(['system','brand']);
 
@@ -133,7 +133,7 @@ const TYPES = `export interface RefEntry {
   readonly id: string;
   readonly name: string;
   readonly displayName: string;
-  readonly country: 'KR' | 'US' | 'JP' | 'TW' | 'UK' | 'DE' | 'FR' | 'IT';
+  readonly country: 'KR' | 'US' | 'JP' | 'TW' | 'CN' | 'UK' | 'DE' | 'FR' | 'IT';
   readonly category: string;
   readonly homepage: string;
   readonly primaryColor: string;

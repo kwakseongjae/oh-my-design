@@ -500,6 +500,41 @@ function firstColor(raw?: string): string | undefined {
   return cssValue(raw);
 }
 
+/** Relative luminance (0–1) of a hex or rgb/rgba color string, or null. */
+function colorLuminance(c?: string): number | null {
+  if (!c) return null;
+  const hex = c.replace("#", "");
+  if (/^[0-9a-f]{6}$/i.test(hex)) {
+    const [r, g, b] = hex.match(/.{2}/g)!.map((x) => parseInt(x, 16));
+    return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  }
+  if (/^[0-9a-f]{3}$/i.test(hex)) {
+    const [r, g, b] = hex.split("").map((x) => parseInt(x + x, 16));
+    return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  }
+  const m = c.match(/rgba?\(\s*(\d+)\D+(\d+)\D+(\d+)/i);
+  if (m) return (0.299 * +m[1] + 0.587 * +m[2] + 0.114 * +m[3]) / 255;
+  return null;
+}
+
+/** A demo instance is invisible on the light-gray card when it renders light
+ *  (white-ish) content over a transparent / translucent / light surface. Those
+ *  variants get a small dark tile behind ONLY the instance, so the card stays
+ *  light gray but white-on-dark components (Watcha Secondary/Ghost, dark text
+ *  fields, 17LIVE chrome…) read correctly. Components with their own opaque
+ *  dark/colored fill (Primary CTA, dark Icon Button) keep the transparent cell. */
+function variantNeedsDarkTile(v: ComponentVariant): boolean {
+  const fgLum = colorLuminance(firstColor(v.fg));
+  if (fgLum === null || fgLum <= 0.6) return false; // not light text → fine on gray
+  const bg = firstColor(v.bg);
+  if (!bg || bg === "transparent") return true;
+  const alpha = bg.match(/rgba?\([^)]*,\s*([0-9.]+)\s*\)/i);
+  if (alpha && parseFloat(alpha[1]) < 0.6) return true; // translucent fill
+  const bgLum = colorLuminance(bg);
+  if (bgLum !== null && bgLum > 0.6) return true; // light solid fill
+  return false; // opaque dark/colored fill already provides contrast
+}
+
 /** Normalize a radius value to CSS. Recognised: numeric+px, "pill"/"full pill"
  *  → 9999px, "circle" → 50%. When the prose uses a CSS `var(...)` that won't
  *  resolve in our preview (no design-token CSS layer is set on the page),
@@ -694,7 +729,12 @@ function VariantInstance({ type, variant, font }: { type: ComponentType; variant
           }}
         />
       );
-    case "card":
+    case "card": {
+      // Transparent "image fills" cards (e.g. Watcha Poster Card) have no
+      // chrome of their own. On the light-gray preview surface a brand-white
+      // label would vanish — use a neutral muted label + dashed outline so the
+      // empty-by-design slot reads as intentional, not broken.
+      const isTransparentCard = bg === "transparent" || !variant.bg;
       return (
         <div
           style={{
@@ -703,12 +743,23 @@ function VariantInstance({ type, variant, font }: { type: ComponentType; variant
             minHeight: 80,
             minWidth: 200,
             display: "flex",
-            alignItems: "flex-start",
+            alignItems: isTransparentCard ? "center" : "flex-start",
+            justifyContent: isTransparentCard ? "center" : "flex-start",
+            // Mid-gray dashed frame + label so the empty "image fills" slot reads
+            // on either backdrop (light-gray card OR the dark tile a white-fg
+            // transparent card gets).
+            border: isTransparentCard && !border ? "1px dashed rgba(128,128,128,0.45)" : border,
           }}
         >
-          <span className="text-xs opacity-60">{variant.name}</span>
+          <span
+            className="text-xs"
+            style={isTransparentCard ? { color: "rgba(128,128,128,0.95)" } : { opacity: 0.6 }}
+          >
+            {isTransparentCard ? "image fills" : variant.name}
+          </span>
         </div>
       );
+    }
     case "tab": {
       // Parse "active" prose: TDS-style "`#fff` background + `#191f28` text + shadow"
       // OR simpler "`#3182f6` (icon and label)" form. We need to distinguish
@@ -921,9 +972,21 @@ function ComponentsSection({ tokens, kicker }: { tokens: ParsedTokens; kicker: s
 }
 
 function VariantCard({ type, variant, font }: { type: ComponentType; variant: ComponentVariant; font?: string }) {
+  // Uniform very-light-gray card surface (whole card — demo + spec column).
+  // Gives white/transparent brand components (e.g. Watcha's white-on-rgba
+  // chips) a non-white backdrop so they don't vanish, without per-brand
+  // dark canvases. Theme-aware via the muted token.
+  const darkTile = variantNeedsDarkTile(variant);
   return (
-    <div className="grid gap-4 rounded-2xl border border-border/50 p-5 sm:grid-cols-[minmax(0,260px)_1fr] sm:items-start">
-      <div className="flex min-w-0 items-start justify-start overflow-hidden">
+    <div className="grid gap-4 rounded-2xl border border-border/50 bg-muted/40 p-5 sm:grid-cols-[minmax(0,260px)_1fr] sm:items-start">
+      <div
+        className="flex min-w-0 items-center justify-center overflow-hidden rounded-xl"
+        style={
+          darkTile
+            ? { background: "#1d1d1f", padding: "20px 16px", minHeight: 72 }
+            : undefined
+        }
+      >
         <VariantInstance type={type} variant={variant} font={font} />
       </div>
       <div className="min-w-0">

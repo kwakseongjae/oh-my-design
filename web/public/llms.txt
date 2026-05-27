@@ -1,10 +1,10 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 9 skills + 11 sub-agents + 107 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
+> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 15 skills + 16 sub-agents + 100+ reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
 
 ## What
 
-`oh-my-design-cli` is an npm package (MIT licensed, v1.0.0) that installs a deterministic design harness into AI coding agents. It writes `.claude/skills/`, `.codex/skills/`, `.opencode/agents/`, `.claude/agents/`, hooks, and 107 reference DESIGN.md files into your project. After restart, the agent picks up the skills and routes natural-language design intent automatically.
+`oh-my-design-cli` is an npm package (MIT licensed) that installs a deterministic design harness into AI coding agents. It writes `.claude/skills/`, `.codex/skills/`, `.opencode/agents/`, `.claude/agents/`, hooks, and 100+ reference DESIGN.md files into your project. After restart, the agent picks up the skills and routes natural-language design intent automatically.
 
 The package is zero-cost: install runs no AI calls, ships no telemetry, requires no API key. Your AI coding agent (Claude Code, Codex, OpenCode, or Cursor) provides the inference; this package teaches it where the brand spec lives.
 
@@ -18,27 +18,35 @@ Then restart your AI coding agent (Cmd+Q in Claude Code, then relaunch).
 
 ## How users invoke it (natural language, no slash commands needed)
 
-- `"Set up the design system for a calm B2B fintech dashboard."` → triggers `omd:init`, bootstraps a hybrid DESIGN.md from one of 107 references.
+- `"Set up the design system for a calm B2B fintech dashboard."` → triggers `omd:init`, bootstraps a hybrid DESIGN.md from one of the bundled references.
 - `"Make the empty-state for the search results page."` → triggers `omd:apply`, builds with brand tokens + voice from DESIGN.md.
 - `"Design the entire onboarding from scratch."` → triggers `omd:harness`, runs the 10-phase pipeline with sub-agents.
-- `"We never use uppercase CTAs."` → triggers `omd:remember`, writes correction to `.omd/preferences.md`.
+- `"We never use uppercase CTAs."` → triggers `omd:remember`, writes the correction to `.omd/preferences.md`.
 
-## The 9 skills
+## The 15 skills
 
 Core flow (6):
 - **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
-- **omd:init** — Bootstrap DESIGN.md from one of 107 references with hybrid variation.
-- **omd:harness** — `/omd-harness <task>` runs the 10-phase pipeline. 7 hero archetypes (rule 9) match brand vibe to layout. Wordmark-only logo (rule 5), reveal safety net (rule 10), container-inner consistency (rule 7).
+- **omd:init** — Bootstrap DESIGN.md from a reference with hybrid variation that preserves the reference voice while shifting only user-named axes.
+- **omd:harness** — `/omd-harness <task>` runs the 10-phase pipeline. 7 hero archetypes match brand vibe to layout; wordmark-only logo, reveal safety net, container-inner consistency.
 - **omd:remember** — Auto-captures user corrections to `.omd/preferences.md`.
 - **omd:learn** — Folds preferences into DESIGN.md by scope.
 - **omd:sync** — Maintains shim files (CLAUDE.md / AGENTS.md / .cursor/rules) so every agent reads the same spec.
 
-Live capture + assets (v1.3.x — 3):
-- **omd:reference-capture** — Live brand-site CDP/playwright inspect → tokens + structure + fonts + screenshots + proof. Phase 3.9 browser-harness fast-path is 3-5x faster than playwright MCP when available.
-- **omd:asset-fetch** — Free-license catalog (DiceBear CC0 / Lucide ISC / Picsum CC0 / Loremflickr Flickr-CC / SIL OFL display fonts: Bricolage Grotesque, Space Grotesk, DM Serif Display, Fraunces). Handcrafted character SVG forbidden.
-- **omd:experiment-gallery** — N-brand experiments → single comparison index.html with iframe scaled previews, wow ratings, multi-turn deltas, per-brand IP audit.
+Live capture + assets (3):
+- **omd:reference-capture** — Live brand-site CDP/Playwright inspect → tokens + structure + fonts + screenshots + proof.
+- **omd:asset-fetch** — Free-license asset catalog (DiceBear CC0 / Lucide ISC / Picsum CC0 / SIL OFL display fonts). Handcrafted character SVG forbidden.
+- **omd:experiment-gallery** — N-brand experiments → single comparison index.html with iframe previews, ratings, per-brand IP audit.
 
-## The 11 sub-agents (master orchestrator + 10 specialists)
+Localization + review layer (6):
+- **omd:orchestrator** — Coordinates multi-agent writing/review workflows with a revision cap and handoff log.
+- **omd:kr-writer** — Korean long-form / blog writer with multiple voice presets (default toss-tech-design).
+- **omd:locale-adapter** — Adapts (not translates) Korean canonical content into EN / JP / ZH-TW with cultural reference swaps.
+- **omd:designer-review** — Visual + brand-consistency audit against DESIGN.md (typography, color budget, radius scale, states, responsiveness).
+- **omd:final-qa** — Read-only final-gate critic enforcing a 9-item rubric with a hard revision cap.
+- **omd:codex-image** — Channel-aware image materializer for `omd:gen-image` spec blocks (Codex native gen / asset fallback / user queue).
+
+## The 16 sub-agents (master orchestrator + 15 specialists)
 
 Specialists pair as advisor ↔ generator:
 
@@ -47,12 +55,17 @@ Specialists pair as advisor ↔ generator:
 - **omd-ui-junior** (sonnet) — *Generator.* Wireframes + component manifests from DESIGN.md.
 - **omd-ux-engineer** (opus) — *Advisor.* Section-level UX audit (NN/g + Refactoring UI + Web Vitals + WAI-ARIA), code-level fixes.
 - **omd-asset-curator** (sonnet) — Picks asset medium (inline SVG / chart library / Lottie / Rive / Unsplash / 3D), stack-aware.
-- **omd-3d-blender** (opus) — Blender MCP renderer with just-in-time install walkthrough.
 - **omd-microcopy** (sonnet) — *Generator.* Voice-consistent copy tied to DESIGN.md §10.
 - **omd-ux-writer** (opus) — *Advisor.* Section-level copy audit + alternatives + A/B hypothesis.
 - **omd-a11y-auditor** (haiku) — Deterministic WCAG checks (axe-core + lighthouse).
 - **omd-persona-tester** (sonnet) — Adversarial 4-persona walkthrough with quantitative metrics.
 - **omd-critic** (opus) — Root-cause analysis on iteration.
+- **omd-orchestrator** — Routes between the writing/review specialists with a 2-round revision cap.
+- **omd-kr-writer** — Korean long-form writer with voice presets.
+- **omd-locale-adapter** — KR → EN / JP / ZH-TW cultural adaptation.
+- **omd-designer-review** — Visual + brand consistency reviewer (BLOCK / WARN / FYI with line refs).
+- **omd-final-qa** — Final-gate rubric critic.
+- **omd-codex-image** — Image materializer across Codex / asset-fallback / user-queue channels.
 
 ## The 10-phase design pipeline (when omd:harness fires)
 
@@ -65,19 +78,20 @@ Grouped in 4 stages:
 
 3 mandatory user checkpoints: after Discovery (brief), after Components (system locked), before Handoff (ship-ready).
 
-## 107 reference brands bundled
+## 100+ reference brands bundled
 
-Each ships a full DESIGN.md (Google Stitch format + OmD v0.1 brand-philosophy layer). 20 of them include the full philosophy layer (Voice, Narrative, Principles, Personas, States, Motion).
+Each ships a full DESIGN.md (Google Stitch format + OmD brand-philosophy layer: Voice, Narrative, Principles, Personas, States, Motion).
 
-Examples: Stripe · Toss · Linear · Vercel · Notion · Anthropic · Apple · Spotify · Airbnb · Uber · Pinterest · Tesla · Figma · Framer · Cursor · Raycast · Supabase · MongoDB · Sentry · PostHog · Resend · Mintlify · Cal.com · Kakao · LINE · Mercari · Karrot (당근) · Pinkoi · Dcard · Baemin · freee · Wise · Coinbase · Revolut · ElevenLabs · Mistral · Ollama · Replicate · OpenCode · Together AI · KREAM · Upbit · K bank · Inflearn · Wadiz · Channel Talk · Lunit · Bunjang (번개장터) · flex · Classum · Toss Securities · Olive Young · Gmarket · TVING · CatchTable · Upstage · 다방 (Dabang) · Jumpit · fastcampus
+Examples: Stripe · Toss · Linear · Vercel · Notion · Anthropic · Apple · Spotify · Airbnb · Uber · Pinterest · Tesla · Figma · Framer · Cursor · Raycast · Supabase · MongoDB · Sentry · PostHog · Resend · Mintlify · Cal.com · Kakao · LINE · Mercari · Karrot (당근) · Pinkoi · Dcard · Baemin · freee · Wise · Coinbase · Revolut · ElevenLabs · Mistral · Ollama · Replicate · KREAM · Upbit · Channel Talk · SmartNews · Xiaohongshu (小红书) · Bilibili · Alipay · Meituan · DJI · Gogoro · Cookpad · SmartHR · Watcha · Yogiyo
 
 ## Resources
 
 - [Live demo + docs](https://oh-my-design.kr): https://oh-my-design.kr
 - [Documentation](https://oh-my-design.kr/docs): how the harness works in detail
-- [Builder](https://oh-my-design.kr/builder): generate DESIGN.md from any of 107 references
-- [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all 107 references
+- [Builder](https://oh-my-design.kr/builder): generate DESIGN.md from any bundled reference
+- [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all references
 - [npm package](https://www.npmjs.com/package/oh-my-design-cli)
+- [oh-my-design-mcp](https://www.npmjs.com/package/oh-my-design-mcp): drop-in MCP server exposing the references as resources, tools, and prompts
 - [GitHub](https://github.com/kwakseongjae/oh-my-design)
 - [License: MIT](https://github.com/kwakseongjae/oh-my-design/blob/main/LICENSE)
 
@@ -85,9 +99,9 @@ Examples: Stripe · Toss · Linear · Vercel · Notion · Anthropic · Apple · 
 
 ```
 oh-my-design/
-├── skills/              # 6 SKILL.md files (source of truth)
-├── agents/              # 11 sub-agent definitions
-├── references/          # 107 reference DESIGN.md files
+├── skills/              # 15 SKILL.md files (source of truth)
+├── agents/              # 16 sub-agent definitions
+├── web/references/      # 100+ reference DESIGN.md files (canonical)
 ├── data/                # reference fingerprints, vocabulary, opt-out corpus
 ├── .claude/hooks/       # UserPromptSubmit / SessionStart / PostToolUse hooks
 ├── src/cli/             # install-skills entry point

@@ -2,8 +2,94 @@
   "schema_version": 1,
   "generated_at": "2026-05-15T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 107,
+  "count": 137,
   "items": [
+    {
+      "id": "17live",
+      "primary_color_hex": "#FF4F6E",
+      "category": "Consumer",
+      "visual_theme": "Dark-stage with a hot-pink spotlight: a #121212 video-first UI lit by signature coral-pink on every connection moment. Playful, social, animated with flying gift reactions.",
+      "voice_fingerprint": {
+        "register": "playful, intimate, celebratory",
+        "sentence_length": "short",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "mixed"
+      },
+      "tone_keywords": [
+        "upbeat",
+        "warm",
+        "social",
+        "celebratory",
+        "second-person"
+      ],
+      "antipatterns": [
+        "spend-pressure on gifting",
+        "shaming non-spenders",
+        "emoji in safety/report flows",
+        "light-mode streaming surface",
+        "painting chrome pink",
+        "Simplified Chinese on TW"
+      ],
+      "signature_motion": "Gift-send pop - spring-eased gift graphic that scales, drifts, and bursts in the reaction layer; chrome stays calm.",
+      "has_personas": true,
+      "category_raw": "live-streaming"
+    },
+    {
+      "id": "29cm",
+      "primary_color_hex": "#000000",
+      "category": "Commerce",
+      "visual_theme": "Editorial select-shop magazine on pure white with pure black ink — photography first, oversized margins, Pretendard-only typography, no shadows, no brand color beyond black-on-white.",
+      "voice_fingerprint": {
+        "register": "editorial-curatorial",
+        "sentence_length": "medium",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "editorial",
+        "curated",
+        "calm",
+        "considered",
+        "magazine",
+        "offbeat"
+      ],
+      "antipatterns": [
+        "No 최저가/초특가 or 오늘만 urgency",
+        "No English SHOP NOW exclamations",
+        "No corporate ~합니다 ending on consumer voice"
+      ],
+      "signature_motion": "Color inversion on inverted CTA hover — #000000 ↔ #ffffff with 2px radius, no scale, no shadow.",
+      "has_personas": true,
+      "category_raw": "Commerce / Editorial Select-Shop"
+    },
+    {
+      "id": "ably",
+      "primary_color_hex": "#FA2E5F",
+      "category": "Commerce",
+      "visual_theme": "MZ-coded mobile-first style commerce on white canvas — vibrant pink-coral reserved for commercial pressure (CTA, sale, urgency) while neutrals carry the photography-dense 4-up grid.",
+      "voice_fingerprint": {
+        "register": "informal-stylist-friend",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "fast",
+        "friendly",
+        "MZ-informal",
+        "image-dense",
+        "personalized",
+        "playful"
+      ],
+      "antipatterns": [
+        "No 오류가 발생했습니다 vague errors",
+        "No formal ~합니다/~십시오 on commerce surfaces",
+        "No 약 ~원 price approximations"
+      ],
+      "signature_motion": "Heart/찜 tap: outline to filled pink with brief scale pulse on the bottom-pinned 구매하기 bar.",
+      "has_personas": true,
+      "category_raw": "Commerce / MZ Style Commerce"
+    },
     {
       "id": "airbnb",
       "primary_color_hex": "#ff385c",
@@ -52,6 +138,66 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "Design Tools"
+    },
+    {
+      "id": "alipay",
+      "primary_color_hex": "#1677FF",
+      "category": "Fintech",
+      "visual_theme": "Ant Design's calm Daybreak Blue on clean white with a disciplined neutral-gray ladder and strictly semantic status colors. Clear, dense, dependable enterprise/fintech UI - Certainty made visual.",
+      "voice_fingerprint": {
+        "register": "clear reassuring procedurally-precise institution; formal in security/payment contexts",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "chinese-simplified-dominant"
+      },
+      "tone_keywords": [
+        "certain",
+        "trustworthy",
+        "semantic",
+        "dependable",
+        "precise",
+        "calm"
+      ],
+      "antipatterns": [
+        "decorative (non-semantic) status colors",
+        "weight-700 headings (Ant uses 600)",
+        "arbitrary gray hexes instead of black-opacity",
+        "ambiguous payment-status copy",
+        "hype in transactional flows"
+      ],
+      "signature_motion": "The button wave - a faint outline expands and fades on primary-button click; calm dependable transitions everywhere else.",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
+      "id": "appier",
+      "primary_color_hex": "#1D2EFF",
+      "category": "Business",
+      "visual_theme": "Clean enterprise futurism: a white high-contrast canvas with a charged electric blue signaling 'AI precision.' Card/grid IA, stat-led proof, blue->cyan gradient 'intelligence in motion.'",
+      "voice_fingerprint": {
+        "register": "results-forward, authoritative",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "english-dominant"
+      },
+      "tone_keywords": [
+        "confident",
+        "precise",
+        "outcome-oriented",
+        "credible",
+        "futurist"
+      ],
+      "antipatterns": [
+        "empty AI hype without a metric",
+        "buzzword stacking",
+        "unsourced stats",
+        "competing accent colors",
+        "playful pill geometry",
+        "emoji in enterprise chrome"
+      ],
+      "signature_motion": "Ambient blue->cyan gradient glow looping behind hero/product demos - 'active intelligence'; UI chrome quick and non-bouncy.",
+      "has_personas": true,
+      "category_raw": "ai-saas"
     },
     {
       "id": "apple",
@@ -103,6 +249,65 @@
       "category_raw": "Consumer"
     },
     {
+      "id": "banksalad",
+      "primary_color_hex": "#04c584",
+      "category": "Fintech",
+      "visual_theme": "Trustworthy financial advisor on white with warm near-black text and saturated salad-green for all interaction — 2px radius dominance, dense data tables, Pretendard 700 numerals as headings.",
+      "voice_fingerprint": {
+        "register": "calm-advisor",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "factual",
+        "advisor",
+        "calm",
+        "data-driven",
+        "explanatory",
+        "precise"
+      ],
+      "antipatterns": [
+        "No 약 ~원 approximations on money",
+        "No 최고의/놀라운 superlatives",
+        "No emoji on financial surfaces",
+        "No 오류가 발생했습니다"
+      ],
+      "signature_motion": "Brand green focus/hover lightens to #10df99 — interaction makes things lighter, never darker; subtle single-layer shadow.",
+      "has_personas": true,
+      "category_raw": "Fintech / Personal Finance Advisor"
+    },
+    {
+      "id": "bilibili",
+      "primary_color_hex": "#FB7299",
+      "category": "Consumer",
+      "visual_theme": "Iconic bili pink with a cool bili-blue accent on bright white - an unmistakably youthful ACG identity. Card-grid video feed, danmaku bullet-comments as the soul, mascots and kaomoji warmth.",
+      "voice_fingerprint": {
+        "register": "young warm fandom-fluent member-to-member; casual + community lexicon + kaomoji",
+        "sentence_length": "medium",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "chinese-simplified-dominant"
+      },
+      "tone_keywords": [
+        "youthful",
+        "community",
+        "playful",
+        "fandom",
+        "warm",
+        "participatory"
+      ],
+      "antipatterns": [
+        "swapping pink for red/corporate-blue",
+        "sterile content-delivery player",
+        "cold humorless system copy",
+        "treating users as passive audience",
+        "dark-premium or sharp-corporate chrome"
+      ],
+      "signature_motion": "The triple-action burst - a long-press fires like+coin+favorite together with a joyful ease-pop; danmaku scrolls as a continuous kinetic layer.",
+      "has_personas": true,
+      "category_raw": "video-community"
+    },
+    {
       "id": "bmw",
       "primary_color_hex": "#1c69d4",
       "category": "Automotive",
@@ -126,6 +331,19 @@
       "category_raw": "Automotive"
     },
     {
+      "id": "bunjang",
+      "primary_color_hex": "#d80c18",
+      "category": "E-commerce",
+      "visual_theme": "C2C marketplace red — single red (#d80c18, one job: primary CTA), specialty token ladders (care=amber, safe=indigo) literally encoding product taxonomy, zero box-shadow.",
+      "voice_fingerprint": {
+        "register": "casual-marketplace"
+      },
+      "signature_motion": "Card thumbnail crossfade; like-heart fill animation; sold-out diagonal stripe overlay.",
+      "has_personas": true,
+      "category_raw": "C2C Used Marketplace",
+      "country": "KR"
+    },
+    {
       "id": "cal",
       "primary_color_hex": "#242424",
       "category": "Productivity",
@@ -146,6 +364,77 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "Productivity"
+    },
+    {
+      "id": "catchtable",
+      "primary_color_hex": "#FF3D00",
+      "category": "Consumer Tech",
+      "visual_theme": "Single-CTA orange (#FF3D00, 4× in 3000-element scan) — hard-square 0px chrome on 92% of elements, 150% line-height uniform across 35 typography slots, 145 :root vanilla-extract _11bicz7* vars.",
+      "voice_fingerprint": {
+        "register": "curatorial-warm"
+      },
+      "signature_motion": "Slot booking modal slide, calendar date-pick spring.",
+      "has_personas": true,
+      "category_raw": "F&B Booking",
+      "country": "KR"
+    },
+    {
+      "id": "channeltalk",
+      "primary_color_hex": "#4f46e5",
+      "category": "Productivity",
+      "visual_theme": "Global B2B SaaS chat — open-source Bezier DS (MIT) with Inter + Noto KR/JP stacks, marketing-vs-product type cliff (marketing 48-64px / product 36px max).",
+      "voice_fingerprint": {
+        "register": "crisp-saas-confident"
+      },
+      "signature_motion": "Bubble pop-in spring; typing-indicator 3-dot 1.2s loop; unread badge bounce on increment.",
+      "has_personas": true,
+      "category_raw": "B2B SaaS / Customer Messaging",
+      "country": "KR",
+      "has_official_ds": true,
+      "ds_name": "Bezier",
+      "ds_url": "https://github.com/channel-io/bezier-react"
+    },
+    {
+      "id": "class101",
+      "primary_color_hex": "#FF5D00",
+      "category": "Consumer",
+      "visual_theme": "A bright motivational class storefront on white where an energetic orange brand-spark pairs with a grounded near-black action button over editorial creator-led thumbnails.",
+      "voice_fingerprint": {
+        "register": "warm-editorial",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "motivational",
+        "encouraging",
+        "start-now",
+        "mentor-like",
+        "celebratory"
+      ],
+      "antipatterns": [
+        "making every primary button orange instead of black",
+        "guilt/pressure framing on lapsed learners",
+        "body text below 16px on learning surfaces",
+        "fake scarcity",
+        "superlatives on chrome"
+      ],
+      "signature_motion": "Card hover lift; a green check spring-pop with progress-bar fill on lesson completion.",
+      "has_personas": true,
+      "category_raw": "Education"
+    },
+    {
+      "id": "classum",
+      "primary_color_hex": "#ff4438",
+      "category": "Productivity",
+      "visual_theme": "EdTech classroom collab — Webflow class-driven (no :root vars), 14px Korean body density at WCAG floor, brand red == destructive (downstream split needed).",
+      "voice_fingerprint": {
+        "register": "warm-classroom"
+      },
+      "signature_motion": "Post-reply expand 250ms; reaction emoji pop spring; threaded indent slide-in.",
+      "has_personas": true,
+      "category_raw": "EdTech / Classroom Communication",
+      "country": "KR"
     },
     {
       "id": "claude",
@@ -286,6 +575,36 @@
       "category_raw": "developer-tools"
     },
     {
+      "id": "cookpad",
+      "primary_color_hex": "#FF9933",
+      "category": "Consumer",
+      "visual_theme": "A warm, well-lit home kitchen: friendly orange primary popping against a signature cream off-white background, photo-forward recipe tiles, soft 8px corners - homey and unintimidating, never chef-elite.",
+      "voice_fingerprint": {
+        "register": "warm, encouraging, unpretentious polite Japanese; peer-to-peer",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "japanese-dominant"
+      },
+      "tone_keywords": [
+        "warm",
+        "encouraging",
+        "unpretentious",
+        "homey",
+        "community"
+      ],
+      "antipatterns": [
+        "chef-elite condescension",
+        "fussy jargon",
+        "hype superlatives",
+        "FOMO/pressure copy",
+        "exclamation shouting",
+        "pure-white clinical canvas"
+      ],
+      "signature_motion": "Calm standard motion with one reserved soft overshoot on the save heart tap; appetizing image fade-ins.",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
       "id": "coupang",
       "primary_color_hex": "#E94B22",
       "category": "E-commerce",
@@ -339,6 +658,19 @@
       "category_raw": "developer-tools"
     },
     {
+      "id": "dabang",
+      "primary_color_hex": "#FF3478",
+      "category": "Consumer Tech",
+      "visual_theme": "Real-estate listing platform — brand pink #FF3478 restricted to wordmark (3.4:1 fails AA body), 8-hue × 10-step ladder + -rgb variants (140 :root vars), Pretendard Variable 100%, zero box-shadow 100%, action blue #326CF9.",
+      "voice_fingerprint": {
+        "register": "trust-direct-property"
+      },
+      "signature_motion": "Map pin cluster zoom, listing card flip.",
+      "has_personas": true,
+      "category_raw": "Real Estate Listings (Station3)",
+      "country": "KR"
+    },
+    {
       "id": "dcard",
       "primary_color_hex": "#3397cf",
       "category": "Consumer",
@@ -358,6 +690,36 @@
       "signature_motion": "Material easing cubic-bezier(.4,0,.2,1) with .15s hover/press and .3s page transitions.",
       "has_personas": false,
       "category_raw": "social"
+    },
+    {
+      "id": "dji",
+      "primary_color_hex": "#000000",
+      "category": "Consumer",
+      "visual_theme": "Monochrome black/white/silver chrome with a single sky-blue accent; full-bleed product photography and flight footage carry every page. Premium-industrial minimalism where the product is the only ornament.",
+      "voice_fingerprint": {
+        "register": "confident terse engineer, capability-led, never gushing",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "mixed"
+      },
+      "tone_keywords": [
+        "precise",
+        "minimal",
+        "industrial",
+        "confident",
+        "measurable",
+        "restrained"
+      ],
+      "antipatterns": [
+        "decorative brand colors or gradients",
+        "paragraph/feature-bullet hero headlines",
+        "playful large radii",
+        "marketing hype the spec sheet can't substantiate",
+        "thin/light UI weights"
+      ],
+      "signature_motion": "Slow gravity-free product reveals - hero footage fades from black, 360 spins with smooth mechanical easing, never overshoot.",
+      "has_personas": true,
+      "category_raw": "consumer-hardware"
     },
     {
       "id": "elevenlabs",
@@ -403,6 +765,19 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "developer-tools"
+    },
+    {
+      "id": "fastcampus",
+      "primary_color_hex": "#fc1c49",
+      "category": "Education",
+      "visual_theme": "Rich-color signature (yellow/orange/red/pink/blue/green Material ramps) vs single-mint Inflearn / institutional-blue Classum. Commerce-red #fc1c49 doubles as primary + sale-flag + inline-validation-error. Inverted GNB density (12px/600 secondary-compact + 16px/400 primary). Card geometry 4px 4px 0 0 + rank badge 4px 0 corner-only. 103 :root vars in --fds-color-*/--c-primary-*/--fds-semantic-* namespaces.",
+      "voice_fingerprint": {
+        "register": "approachable-instructor"
+      },
+      "signature_motion": "Category tab slide, course card hover scale.",
+      "has_personas": true,
+      "category_raw": "EdTech (Day1Company)",
+      "country": "KR"
     },
     {
       "id": "ferrari",
@@ -455,6 +830,19 @@
       "category_raw": "design-tools"
     },
     {
+      "id": "flex",
+      "primary_color_hex": "#000000",
+      "category": "Productivity",
+      "visual_theme": "HR SaaS Stitches/CSS-in-JS stack — 0 namespaced :root tokens (tokens normalized from computed-style), Toss-adjacent KR voice tone, monochrome dashboard chrome.",
+      "voice_fingerprint": {
+        "register": "toss-adjacent-friendly"
+      },
+      "signature_motion": "Entry fade observed live; modal slide-in from right; table row hover bg shift.",
+      "has_personas": true,
+      "category_raw": "HR SaaS / Workforce Management",
+      "country": "KR"
+    },
+    {
       "id": "framer",
       "primary_color_hex": "#0099ff",
       "category": "Design Tools",
@@ -499,6 +887,78 @@
       "category_raw": "saas"
     },
     {
+      "id": "gangnamunni",
+      "primary_color_hex": "#d54300",
+      "category": "Healthcare",
+      "visual_theme": "Warm medical platform on white with bluegray neutrals and a single saturated orange — hairlines over shadows, exact numerals on hospital and procedure cards, regulatory disclosure as part of trust.",
+      "voice_fingerprint": {
+        "register": "careful-clinician",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "informational",
+        "reassuring",
+        "factual",
+        "transparent",
+        "regulatory",
+        "exact"
+      ],
+      "antipatterns": [
+        "No 예뻐지세요! or ✨💖 emoji on medical surfaces",
+        "No 약 ~원 rounded pricing",
+        "No 오류가 발생했습니다",
+        "No consumer-beauty cartoon pinks"
+      ],
+      "signature_motion": "Hospital card hover: 1px #d8dfe6 hairline darkens; orange accent appears only on the booking CTA, never on hover decoration.",
+      "has_personas": true,
+      "category_raw": "Healthcare / Cosmetic-Procedure Discovery"
+    },
+    {
+      "id": "gmarket",
+      "primary_color_hex": "#ffd200",
+      "category": "E-commerce",
+      "visual_theme": "Veteran 2000-founded open marketplace post-Shinsegae rebrand. Smile Yellow #ffd200 + 247 :root CSS vars (10-hue × 10-stop ladders + Club Smile + Event + Service-accent sub-systems). Fixed 1200px canvas (WCAG fail on desktop, mitigated by m.gmarket).",
+      "voice_fingerprint": {
+        "register": "casual-marketplace"
+      },
+      "signature_motion": "Banner carousel auto-rotate, sprite-based icon animation.",
+      "has_personas": true,
+      "category_raw": "Legacy E-commerce (Shinsegae)",
+      "country": "KR"
+    },
+    {
+      "id": "gogoro",
+      "primary_color_hex": "#000000",
+      "category": "Consumer",
+      "visual_theme": "Monochrome-industrial: a black matte-machine canvas with electric-blue and cyan voltage accents used like current through a circuit. Graphik-set, photography-led, premium and engineered.",
+      "voice_fingerprint": {
+        "register": "engineered-optimistic, premium-industrial",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "mixed"
+      },
+      "tone_keywords": [
+        "precise",
+        "confident",
+        "idealistic",
+        "evidence-backed",
+        "futurist"
+      ],
+      "antipatterns": [
+        "hype adjectives without a number",
+        "exclamation on buttons",
+        "green accent (no green in system)",
+        "competing accent colors",
+        "Simplified Chinese on TW",
+        "mascots/emoji in product chrome"
+      ],
+      "signature_motion": "Charge pulse - a soft electric-blue->cyan luminance glow on battery/swap graphics; cinematic hero reveal, no UI bounce.",
+      "has_personas": true,
+      "category_raw": "automotive"
+    },
+    {
       "id": "hashicorp",
       "primary_color_hex": "#000000",
       "category": "Developer Tools",
@@ -541,6 +1001,49 @@
       "category_raw": "enterprise / corporate tech"
     },
     {
+      "id": "ichef",
+      "primary_color_hex": "#E8552D",
+      "category": "Business",
+      "visual_theme": "Clean operational warmth: a white well-lit canvas anchored by orange-red reading as both appetite and action. Big tap targets, rigorous status colors, award-tier craft for a small-business POS.",
+      "voice_fingerprint": {
+        "register": "partner-to-owner, practical",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "chinese-traditional-dominant"
+      },
+      "tone_keywords": [
+        "practical",
+        "encouraging",
+        "trustworthy",
+        "grounded",
+        "operator-empathetic"
+      ],
+      "antipatterns": [
+        "condescending tech jargon",
+        "'Oops' on money errors",
+        "vague hype without operator benefit",
+        "abstract stock imagery",
+        "tiny POS controls",
+        "spring motion in product UI"
+      ],
+      "signature_motion": "Instant (0ms) POS tile selection - tap registers immediately with tint+border, no animation; spring forbidden.",
+      "has_personas": true,
+      "category_raw": "restaurant-saas-pos"
+    },
+    {
+      "id": "inflearn",
+      "primary_color_hex": "#00c471",
+      "category": "Productivity",
+      "visual_theme": "Mantine UI app with green scale override — two radius families (8px cards, 32px nav pills, 999px green search pill), Pretendard-first, no custom display face.",
+      "voice_fingerprint": {
+        "register": "approachable-instructor"
+      },
+      "signature_motion": "Card hover lift 2px; tag-chip alpha fade; focus ring 2px green outline.",
+      "has_personas": true,
+      "category_raw": "EdTech / Online Courses",
+      "country": "KR"
+    },
+    {
       "id": "intercom",
       "primary_color_hex": "#ff5600",
       "category": "AI",
@@ -557,6 +1060,19 @@
       "signature_motion": "Buttons scale(1.1) on hover, scale(0.85) on active for physical feel.",
       "has_personas": false,
       "category_raw": "customer service / AI helpdesk SaaS"
+    },
+    {
+      "id": "jumpit",
+      "primary_color_hex": "#00DD6D",
+      "category": "Productivity",
+      "visual_theme": "Developer-jobs platform (Saramin) — one-green discipline: #00DD6D appears exactly twice in chrome across 112 samples, primary CTA is #000 (opposite to Wanted/Toss pattern). styled-components hashed classes, zero :root design tokens exposed.",
+      "voice_fingerprint": {
+        "register": "developer-vernacular"
+      },
+      "signature_motion": "Job card hover lift, filter chip toggle.",
+      "has_personas": true,
+      "category_raw": "Developer Recruiting (Saramin)",
+      "country": "KR"
     },
     {
       "id": "kakao",
@@ -611,6 +1127,66 @@
       "category_raw": "internet-only bank"
     },
     {
+      "id": "kakaopay",
+      "primary_color_hex": "#FFEB00",
+      "category": "Fintech",
+      "visual_theme": "Warm friendly fintech that feels like a continuation of KakaoTalk — Noto Sans KR on near-white canvas, rounded geometry as brand commitment, Kakao yellow as ecosystem anchor (not default CTA), 3:1 contrast minimum enforced.",
+      "voice_fingerprint": {
+        "register": "polite-conversational",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "warm",
+        "conversational",
+        "approachable",
+        "inclusive",
+        "rounded",
+        "polite-casual"
+      ],
+      "antipatterns": [
+        "No 고객님께서는/~하시기 바랍니다 institutional Korean",
+        "No 약 ~원 on money",
+        "No 오류가 발생했습니다",
+        "No sharp/aggressive geometry"
+      ],
+      "signature_motion": "Rounded button press: subtle radius-preserving scale-down (0.98) with quiet single-layer shadow at ≤0.08 opacity.",
+      "has_personas": true,
+      "category_raw": "Fintech / Ecosystem Payments"
+    },
+    {
+      "id": "kakaot",
+      "primary_color_hex": "#FEE500",
+      "category": "Mobility",
+      "visual_theme": "Friendly infrastructure — Kakao yellow as a high-attention beacon CTA against a sober black-and-white, map-first canvas. Approachable to use, serious to trust with location and payment.",
+      "voice_fingerprint": {
+        "register": "해요체 reassuring, 합니다체 for safety/legal",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "reassuring",
+        "calm",
+        "capable",
+        "friendly",
+        "trustworthy",
+        "glanceable"
+      ],
+      "antipatterns": [
+        "flooding backgrounds with yellow",
+        "white text on the yellow CTA",
+        "crowding the map with chrome",
+        "cute/playful mobility tone",
+        "second saturated brand hue",
+        "exclamation-pressure CTAs"
+      ],
+      "signature_motion": "Bottom sheet grows (never navigates) between trip steps; yellow radar pulses outward during driver matching.",
+      "has_personas": true,
+      "category_raw": "Mobility"
+    },
+    {
       "id": "karrot",
       "primary_color_hex": "#ff6600",
       "category": "Consumer",
@@ -630,6 +1206,49 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "consumer / hyperlocal marketplace"
+    },
+    {
+      "id": "kbank",
+      "primary_color_hex": "#0046ff",
+      "category": "Fintech",
+      "visual_theme": "Neobank minimal — electric blue CTA on near-white, font-size:0 image-replacement H1, fixed 1280px desktop, no landmark a11y.",
+      "voice_fingerprint": {
+        "register": "trustworthy-direct"
+      },
+      "signature_motion": "Subtle button press depth change; modal entry fade-in 200ms.",
+      "has_personas": true,
+      "category_raw": "Internet-only Bank",
+      "country": "KR"
+    },
+    {
+      "id": "kkday",
+      "primary_color_hex": "#FF5C00",
+      "category": "Consumer",
+      "visual_theme": "Bright travel-marketplace warmth: a saturated orange action color over a white, photography-dense canvas. Card-grid-first, image-led, abundance presented cleanly.",
+      "voice_fingerprint": {
+        "register": "inviting, enthusiastic, benefit-led",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "mixed"
+      },
+      "tone_keywords": [
+        "warm",
+        "encouraging",
+        "trustworthy",
+        "aspirational",
+        "local-expert"
+      ],
+      "antipatterns": [
+        "manipulative urgency",
+        "terminal 'No results'",
+        "hype superlatives",
+        "approximate prices",
+        "flooding layouts with orange",
+        "Simplified Chinese on TW"
+      ],
+      "signature_motion": "Brisk card-hover shadow lift + filter bottom-sheet slide; no spring, commerce-functional feedback.",
+      "has_personas": true,
+      "category_raw": "ecommerce"
     },
     {
       "id": "kraken",
@@ -681,6 +1300,19 @@
       "signature_motion": "Menu/dropdown opens with a 400ms ease-in-out opacity + translateY(-4px → 0) — no spring, no overshoot, all transitions resolve under 400ms.",
       "has_personas": true,
       "category_raw": "government / public service design system"
+    },
+    {
+      "id": "kream",
+      "primary_color_hex": "#000000",
+      "category": "E-commerce",
+      "visual_theme": "Sneaker-culture editorial — monochrome 0/100 chrome, fixed 1280px shop canvas, bold tabular price typography, no-shadow card grid.",
+      "voice_fingerprint": {
+        "register": "editorial-direct"
+      },
+      "signature_motion": "Hover state crossfade on card thumbnail; 1-frame opacity reveal for sold-out chips.",
+      "has_personas": true,
+      "category_raw": "Marketplace / Limited-edition Sneaker Trading",
+      "country": "KR"
     },
     {
       "id": "kurly",
@@ -809,6 +1441,49 @@
       "category_raw": "AI builder / developer tools"
     },
     {
+      "id": "lunit",
+      "primary_color_hex": "#1032cf",
+      "category": "Consumer",
+      "visual_theme": "Medical AI corporate — signature blue withheld from primary CTA (CTA is black pill #000 r=100px); binary radius thesis 0px/100px; LIGHT-weight Lexend/ClashGrotesk anti-pharma.",
+      "voice_fingerprint": {
+        "register": "clinical-authoritative"
+      },
+      "signature_motion": "AOS scroll-in fades only; no hover micro-interactions; carousel snap-scroll.",
+      "has_personas": true,
+      "category_raw": "Medical Imaging AI",
+      "country": "KR"
+    },
+    {
+      "id": "meituan",
+      "primary_color_hex": "#FFC300",
+      "category": "Consumer",
+      "visual_theme": "Optimistic appetite-yellow (with dark text) plus a price red-orange energy color on white, anchored by the kangaroo courier mascot. Loud-on-purpose, dense-but-navigable super-app.",
+      "voice_fingerprint": {
+        "register": "warm practical value-forward neighbor; casual, benefit-led and concrete",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "chinese-simplified-dominant"
+      },
+      "tone_keywords": [
+        "warm",
+        "value",
+        "convenient",
+        "concrete",
+        "friendly",
+        "helpful"
+      ],
+      "antipatterns": [
+        "white text on the brand yellow (contrast error)",
+        "confusing brand-yellow with price red-orange",
+        "burying the price in body weight",
+        "minimalizing away service breadth",
+        "vague delivery promises"
+      ],
+      "signature_motion": "The add-to-cart fly - an item arcs into the cart with the count badge bumping; order-tracking steps advance calmly without bounce.",
+      "has_personas": true,
+      "category_raw": "local-services"
+    },
+    {
       "id": "mercari",
       "primary_color_hex": "#ff333f",
       "category": "Consumer",
@@ -829,6 +1504,37 @@
       "signature_motion": "0.25s sheet/snackbar slides via cubic-bezier(0.65,0,0.35,1) and (0.33,1,0.68,1).",
       "has_personas": false,
       "category_raw": "consumer marketplace"
+    },
+    {
+      "id": "millie",
+      "primary_color_hex": "#1B6DDA",
+      "category": "Consumer",
+      "visual_theme": "Calm streaming-style bookshelf — warm near-black on white with a reading blue accent, cover-forward 투데이 feed of horizontal shelves. Soft rounded chrome; book covers carry the color via a soft drop-shadow.",
+      "voice_fingerprint": {
+        "register": "warm librarian-curator, encouraging",
+        "sentence_length": "medium",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "warm",
+        "calm",
+        "inviting",
+        "habit-forming",
+        "encouraging",
+        "leisurely"
+      ],
+      "antipatterns": [
+        "brand blue as decoration",
+        "pure #000 body text",
+        "high-pressure urgency copy",
+        "purple/coral/yellow as primary CTA",
+        "dense data-dashboard layout",
+        "flat shadowless covers"
+      ],
+      "signature_motion": "투데이 hero autoplay cross-fade with a gentle-spring bookmark bounce on 담기 confirm.",
+      "has_personas": true,
+      "category_raw": "Ebook-subscription"
     },
     {
       "id": "minimax",
@@ -919,6 +1625,36 @@
       "category_raw": "AI platform"
     },
     {
+      "id": "money-forward",
+      "primary_color_hex": "#3B7DE9",
+      "category": "Fintech",
+      "visual_theme": "Trustworthy cloud-fintech: a subtly dimensional blue-gradient primary button on a calm white + warm-gray canvas, dense legible accounting tables, businesslike 4px corners, danger red held in reserve.",
+      "voice_fingerprint": {
+        "register": "clear, reassuring polite Japanese; empowering not auditing",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "japanese-dominant"
+      },
+      "tone_keywords": [
+        "clear",
+        "trustworthy",
+        "empowering",
+        "exact",
+        "calm"
+      ],
+      "antipatterns": [
+        "hype superlatives",
+        "approximating financial figures",
+        "false cheer around money loss",
+        "exclamation-mark buttons",
+        "jargon walls",
+        "condescending copy"
+      ],
+      "signature_motion": "Primary button gradient flips on hover over 150ms - gentle dimensional press, no scale or bounce; spring forbidden.",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
       "id": "mongodb",
       "primary_color_hex": "#00ed64",
       "category": "Developer Tools",
@@ -970,6 +1706,35 @@
       "category_raw": "fashion e-commerce"
     },
     {
+      "id": "myrealtrip",
+      "primary_color_hex": "#2B96ED",
+      "category": "Consumer",
+      "visual_theme": "A bright photographic travel-marketplace on white under a frosted-translucent header, with a two-accent system: trust-blue for action and a violet for offers.",
+      "voice_fingerprint": {
+        "register": "warm-editorial",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "encouraging",
+        "you-shaped",
+        "honest-price",
+        "warm",
+        "second-person"
+      ],
+      "antipatterns": [
+        "filling UI buttons with deep brand Science Blue #0250CB",
+        "overusing violet as a second primary",
+        "hidden-fee vagueness",
+        "hard borders on the frosted header",
+        "generic error copy"
+      ],
+      "signature_motion": "Card hover lift with soft shadow; header frosts on scroll; wishlist heart spring-pop.",
+      "has_personas": true,
+      "category_raw": "Travel"
+    },
+    {
       "id": "naver",
       "primary_color_hex": "#03C75A",
       "category": "Consumer",
@@ -997,6 +1762,67 @@
       "signature_motion": "Search autocomplete reveals suggestions below the input as a flat 150ms fade — invisible motion, never noticed by the user.",
       "has_personas": true,
       "category_raw": "portal / search"
+    },
+    {
+      "id": "naverwebtoon",
+      "primary_color_hex": "#00DC64",
+      "category": "Content Platform",
+      "visual_theme": "Bright, buzzy discovery grid — WT GREEN energy on white where cover art carries the color and the green UP badge signals a new episode. Focused vertical-scroll viewer for distraction-free reading.",
+      "voice_fingerprint": {
+        "register": "해요체 young/upbeat, 합니다체 for payment/legal",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "energetic",
+        "young",
+        "optimistic",
+        "friendly",
+        "scannable",
+        "habit-forming"
+      ],
+      "antipatterns": [
+        "shadows/borders on thumbnail cards",
+        "second saturated accent vs green",
+        "crowding the reading viewer",
+        "all-caps marketing-shouty type",
+        "tinting the white browse canvas",
+        "emoji on system chrome"
+      ],
+      "signature_motion": "Thumbnail hover scale 1.03; green UP/new badge pops in with a 1.1 scale (ease-pop).",
+      "has_personas": true,
+      "category_raw": "Content Platform (Webtoon)"
+    },
+    {
+      "id": "note",
+      "primary_color_hex": "#41C9B4",
+      "category": "Consumer",
+      "visual_theme": "A premium-paper creator publishing space: distinctive teal brand mark but a deliberately content-first UI where the product primary action is black, off-white reading surface, near-black text, generous whitespace.",
+      "voice_fingerprint": {
+        "register": "calm, sincere, creator-respecting polite Japanese",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "japanese-dominant"
+      },
+      "tone_keywords": [
+        "calm",
+        "sincere",
+        "creator-respecting",
+        "unhurried",
+        "dignified"
+      ],
+      "antipatterns": [
+        "engagement-bait/FOMO",
+        "vanity-metric pressure",
+        "hype",
+        "urgency on creative actions",
+        "exclamation shouting",
+        "treating writing as content-to-optimize"
+      ],
+      "signature_motion": "Unhurried standard motion with one reserved soft overshoot on the suki (like) reaction in teal; calm fade-ins.",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
     },
     {
       "id": "notion",
@@ -1077,6 +1903,19 @@
       "signature_motion": "Bookmark save flashes #E8F7FD behind the icon while it fills to Ohouse Blue solid — a quiet confirmation, not a celebration.",
       "has_personas": true,
       "category_raw": "interior content-to-commerce"
+    },
+    {
+      "id": "oliveyoung",
+      "primary_color_hex": "#000000",
+      "category": "E-commerce",
+      "visual_theme": "Dual-stack architecture (legacy JSP grayscale chrome + Next.js subtree on product detail), five-flag taxonomy: sale #F65C60 / 오늘드림 #F374B7 / 쿠폰 #9BCE26 / 증정 #6FCFF7 / best #F05A5E — all 9px radius pills inside thumbnail. Brand Olive Green absent from storefront chrome.",
+      "voice_fingerprint": {
+        "register": "omnichannel-beauty"
+      },
+      "signature_motion": "Card thumbnail crossfade, flag pill fade-in, cart drawer slide.",
+      "has_personas": true,
+      "category_raw": "Beauty Commerce (H&B Omnichannel)",
+      "country": "KR"
     },
     {
       "id": "ollama",
@@ -1184,6 +2023,37 @@
       "category_raw": "technical"
     },
     {
+      "id": "publy",
+      "primary_color_hex": "#7A3BFF",
+      "category": "Knowledge Content",
+      "visual_theme": "Composed professional reading room — slate-ink on white over a Tailwind-style slate scale, with one decisive purple accent on forward-moving actions. 1px slate borders over shadows; comfortable long-form leading.",
+      "voice_fingerprint": {
+        "register": "credible senior-colleague, growth-oriented",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "mixed"
+      },
+      "tone_keywords": [
+        "credible",
+        "composed",
+        "ambitious",
+        "curated",
+        "professional",
+        "worth-paying-for"
+      ],
+      "antipatterns": [
+        "a second brand hue",
+        "purple on body text",
+        "heavy shadows replacing the 1px border",
+        "clickbait/hustle-hype copy",
+        "sharp or bubbly radius extremes",
+        "overusing the purple"
+      ],
+      "signature_motion": "Quiet card hover-lift and section-by-section report fade-in — calm, never bouncy.",
+      "has_personas": true,
+      "category_raw": "Knowledge-content"
+    },
+    {
       "id": "qanda",
       "primary_color_hex": "#FF5500",
       "category": "Consumer",
@@ -1233,6 +2103,35 @@
       "signature_motion": "Opacity-based hover (0.6) instead of color shifts across all buttons.",
       "has_personas": false,
       "category_raw": "technical"
+    },
+    {
+      "id": "remember",
+      "primary_color_hex": "#000000",
+      "category": "HR",
+      "visual_theme": "Business-card-database-grown-up — near-white surfaces with off-black #222222 body, black as the primary CTA color (B2B professional gravity), signup orange #FF5414 reserved for conversion punches only.",
+      "voice_fingerprint": {
+        "register": "senior-colleague",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "calm",
+        "concrete",
+        "professional",
+        "B2B",
+        "trusted",
+        "restrained"
+      ],
+      "antipatterns": [
+        "No 불편을 드려 죄송합니다",
+        "No emoji in scout/recruiter messages",
+        "No 약 ~원 on salary numbers",
+        "No mascots or illustration on product surfaces"
+      ],
+      "signature_motion": "Black CTA hover: subtle 1px lift via shadow; orange #FF5414 only appears once per surface at conversion moments.",
+      "has_personas": true,
+      "category_raw": "HR / Business Network + Career Marketplace"
     },
     {
       "id": "renault",
@@ -1410,6 +2309,95 @@
       "category_raw": "developer-tools"
     },
     {
+      "id": "smarthr",
+      "primary_color_hex": "#00C4CC",
+      "category": "Enterprise",
+      "visual_theme": "Accessibility-first SaaS HR/labor tool built around 'anyone, efficiently, without getting lost' - fresh cyan-teal brand on white + warm-gray Stone neutrals, with a fully-public token system.",
+      "voice_fingerprint": {
+        "register": "plain polite Japanese (teineigo), de-stressing and inclusive",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "japanese-dominant"
+      },
+      "tone_keywords": [
+        "plain",
+        "reassuring",
+        "inclusive",
+        "efficient",
+        "blameless"
+      ],
+      "antipatterns": [
+        "bureaucratic keigo walls",
+        "apology-flooding",
+        "exclamation-mark buttons",
+        "marketing superlatives",
+        "emoji in chrome",
+        "ad-hoc hexes outside the families"
+      ],
+      "signature_motion": "Restrained functional motion; modal/dropdown reveals on standard easing, focus ring snaps instantly - spring forbidden.",
+      "has_personas": true,
+      "category_raw": "saas"
+    },
+    {
+      "id": "smartnews",
+      "primary_color_hex": "#EB0B22",
+      "category": "Consumer",
+      "visual_theme": "A confident newspaper-masthead aesthetic: a single urgent brand red flagging importance against a clean high-contrast black-on-white canvas, a swipeable channel tab bar, lightweight scannable headline feeds built for speed.",
+      "voice_fingerprint": {
+        "register": "clear, neutral, journalistic; even-handed across locales",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "mixed"
+      },
+      "tone_keywords": [
+        "neutral",
+        "trustworthy",
+        "factual",
+        "fast",
+        "fair"
+      ],
+      "antipatterns": [
+        "clickbait/sensationalism",
+        "editorializing in chrome",
+        "breathless fake urgency",
+        "hype superlatives",
+        "FOMO pushes",
+        "low-contrast headlines"
+      ],
+      "signature_motion": "Fast snappy 1:1 channel swipe with the red active indicator sliding to the new tab - spring forbidden.",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
+      "id": "socar",
+      "primary_color_hex": "#1d4ed8",
+      "category": "Mobility",
+      "visual_theme": "Calm achromatic car-sharing chrome on pure white with cool-grey #354153 body type — SOCAR Blue reserved for the Space Frame symbol and primary booking CTA, 12/14/16px radius ladder, single-layer soft shadows.",
+      "voice_fingerprint": {
+        "register": "calm-service",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "calm",
+        "service-confirming",
+        "achromatic",
+        "declarative",
+        "frictionless",
+        "grounded"
+      ],
+      "antipatterns": [
+        "No Revolutionary/Game-changer marketing",
+        "No 새로운 경험을 시작하세요 decoration without action",
+        "No emoji on transactional booking/payment surfaces",
+        "No 오류가 발생했습니다"
+      ],
+      "signature_motion": "Booking CTA hover: SOCAR Blue darkens one step; card lift uses single rgba(0,0,0,0.1) 0 4px 8px shadow, never chromatic stacks.",
+      "has_personas": true,
+      "category_raw": "Mobility / Car-Sharing (SOCAR Blue approximation — exact hex unpublished)"
+    },
+    {
       "id": "spacex",
       "primary_color_hex": "#f0f0fa",
       "category": "Aerospace",
@@ -1430,6 +2418,35 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "aerospace"
+    },
+    {
+      "id": "spoon",
+      "primary_color_hex": "#FF5500",
+      "category": "Consumer",
+      "visual_theme": "A warm always-live audio social lobby on white, built around circular DJ avatars with orange live-rings, neutral hashtag chips, and one energetic orange for brand, action, and live status.",
+      "voice_fingerprint": {
+        "register": "warm-editorial",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "warm",
+        "community",
+        "low-barrier",
+        "celebratory",
+        "casual"
+      ],
+      "antipatterns": [
+        "using legacy coral #F23C5C as the current web brand",
+        "sharp/large radii on CTAs (pill is the signature)",
+        "gift-gold #FFB300 as a generic highlight",
+        "over-elevating cards instead of using the orange live-ring",
+        "dropping the JP/TC CJK fallbacks"
+      ],
+      "signature_motion": "Pulsing orange live-dot heartbeat and a rising gold spoon-gift spring animation.",
+      "has_personas": true,
+      "category_raw": "Audio-Social"
     },
     {
       "id": "spotify",
@@ -1518,6 +2535,37 @@
       "category_raw": "productivity"
     },
     {
+      "id": "tada",
+      "primary_color_hex": "#1EC59F",
+      "category": "Mobility",
+      "visual_theme": "Calm mobility — signature mint-teal brand/CTA on white with warm near-black type, map-first one-action-per-screen layouts, soft corners echoing the roomy-interior promise.",
+      "voice_fingerprint": {
+        "register": "reassuring, unhurried, the-trip-is-handled",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "calm",
+        "reassuring",
+        "spacious",
+        "premium",
+        "unhurried",
+        "clear"
+      ],
+      "antipatterns": [
+        "mint as decoration",
+        "two primary buttons per screen",
+        "sharp 0-4px corners",
+        "map buried under chrome",
+        "surge-shaming red urgency",
+        "vague fare approximations (약 ~원)"
+      ],
+      "signature_motion": "Soft mint pulse-ring while matching a driver, then a gentle-spring trip-card rise on assignment.",
+      "has_personas": true,
+      "category_raw": "Mobility"
+    },
+    {
       "id": "tesla",
       "primary_color_hex": "#3e6ae1",
       "category": "Automotive",
@@ -1585,6 +2633,123 @@
       "category_raw": "fintech"
     },
     {
+      "id": "toss-securities",
+      "primary_color_hex": "#3182f6",
+      "category": "Fintech",
+      "visual_theme": "Dark-mode-first trading chrome (#101013→#202025), KR-finance locale inversion (red=up, blue=down, #3182f6 doubles as fill-brand-default CTA), 2-tier radius (8/32), zero box-shadow, 416 :root CSS vars in --tw-semantic-*/--wts-adaptive-* namespaces.",
+      "voice_fingerprint": {
+        "register": "toss-direct-trading"
+      },
+      "signature_motion": "Tick price flash, candle redraw on resize.",
+      "has_personas": true,
+      "category_raw": "Securities Trading (Toss Securities)",
+      "country": "KR"
+    },
+    {
+      "id": "tossbank",
+      "primary_color_hex": "#0064FF",
+      "category": "Fintech",
+      "visual_theme": "Calm, confident fintech minimalism — clean white canvas with warm charcoal text where a single optimistic blue does all interactive work. Trust through clarity, not institutional weight.",
+      "voice_fingerprint": {
+        "register": "해요체 soft-polite, 합니다체 for legal",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "calm",
+        "trustworthy",
+        "clear",
+        "unhurried",
+        "exact",
+        "optimistic"
+      ],
+      "antipatterns": [
+        "heavy/colored shadows",
+        "approximating money (약 ~원)",
+        "brand blue #0064FF on interactive UI",
+        "bold body text",
+        "decorative financial displays",
+        "two primary CTAs per screen"
+      ],
+      "signature_motion": "Balance updates slide-and-fade (never cross-fade money); daily-interest triggers a blue50 flash + spring number tick-up.",
+      "has_personas": true,
+      "category_raw": "Fintech"
+    },
+    {
+      "id": "triple",
+      "primary_color_hex": "#368FFF",
+      "category": "Consumer",
+      "visual_theme": "A cheerful itinerary-planning companion on white, driven by one bright sky-blue and soft pill-and-rounded geometry that feels more chat-app than OTA.",
+      "voice_fingerprint": {
+        "register": "warm-editorial",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "personal",
+        "anticipatory",
+        "playful",
+        "collaborative",
+        "light"
+      ],
+      "antipatterns": [
+        "second saturated accent competing with the blue",
+        "sharp/small radii on CTAs (pill is the signature)",
+        "dense table-style itinerary",
+        "heavy chrome over the white canvas",
+        "dark fintech-trust blue"
+      ],
+      "signature_motion": "Add-to-itinerary spring-pop and overshooting map-pin drops.",
+      "has_personas": true,
+      "category_raw": "Travel"
+    },
+    {
+      "id": "tumblbug",
+      "primary_color_hex": "#FD5744",
+      "category": "Crowdfunding",
+      "visual_theme": "Warm monochrome creator-crowdfunding magazine — pure black type on white so project art is the color, with a signature coral on the 후원하기 CTA and funding-progress bar. Full-pill buttons keep it human.",
+      "voice_fingerprint": {
+        "register": "encouraging curator, creativity-romantic",
+        "sentence_length": "short",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "supportive",
+        "warm",
+        "creative",
+        "community",
+        "encouraging",
+        "belief"
+      ],
+      "antipatterns": [
+        "a second brand hue",
+        "coral on nav/decoration",
+        "sharp 0-4px button corners",
+        "shadows on project thumbnails",
+        "chrome color competing with art",
+        "scarcity/hype pressure copy"
+      ],
+      "signature_motion": "Coral funding-bar fills 0→current% with a confident ease-out as the number counts up.",
+      "has_personas": true,
+      "category_raw": "Crowdfunding"
+    },
+    {
+      "id": "tving",
+      "primary_color_hex": "#FF153C",
+      "category": "Consumer Tech",
+      "visual_theme": "CJ ENM OTT streaming — dark canvas, brand red #FF153C primary CTA, six-category --color-cate-* taxonomy, mobile-first poster card grid, 114 :root CSS custom properties.",
+      "voice_fingerprint": {
+        "register": "streaming-bold"
+      },
+      "signature_motion": "Hero auto-play 5s loop, card hover scale, episode list slide.",
+      "has_personas": true,
+      "category_raw": "OTT Streaming (CJ ENM)",
+      "country": "KR"
+    },
+    {
       "id": "uber",
       "primary_color_hex": "#000000",
       "category": "Consumer",
@@ -1603,6 +2768,32 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "consumer-mobility"
+    },
+    {
+      "id": "upbit",
+      "primary_color_hex": "#093687",
+      "category": "Fintech",
+      "visual_theme": "Dense crypto exchange — KR up=red/down=blue inverted from US, navy chrome, 28px speed-fill tags, legacy Dotum/돋움 fallback chain unpruned.",
+      "voice_fingerprint": {
+        "register": "data-dense-neutral"
+      },
+      "signature_motion": "Tick-by-tick price flash (200ms red/blue), candle-chart redraw on resize, no easing on numeric updates.",
+      "has_personas": true,
+      "category_raw": "Crypto Exchange (Dunamu)",
+      "country": "KR"
+    },
+    {
+      "id": "upstage",
+      "primary_color_hex": "#D2FF95",
+      "category": "AI",
+      "visual_theme": "AI corporate identity — Espeak proprietary face on hero, Solar lime accent #D2FF95 single-use, industry-rotating hero (font-family shifts not color/weight), 74 :root vars, brand resource center with logo/symbol only (no token tables).",
+      "voice_fingerprint": {
+        "register": "research-confident"
+      },
+      "signature_motion": "Hero industry-text rotate, font-family swap not color.",
+      "has_personas": true,
+      "category_raw": "AI / LLM (Solar)",
+      "country": "KR"
     },
     {
       "id": "vercel",
@@ -1657,6 +2848,48 @@
       "category_raw": "developer-infra"
     },
     {
+      "id": "wadiz",
+      "primary_color_hex": "#00c4c4",
+      "category": "Fintech",
+      "visual_theme": "Crowdfunding mint — saturated #00c4c4 CTAs with 2.7:1 contrast trade-off, single source-of-truth 936KB CSS bundle, `-하기` gerund + `~해요` polite-casual voice patterns.",
+      "voice_fingerprint": {
+        "register": "campaign-encouraging"
+      },
+      "signature_motion": "Funding-progress bar fill on viewport entry; 'XX%' counter rollup over 800ms.",
+      "has_personas": true,
+      "category_raw": "Crowdfunding Platform",
+      "country": "KR"
+    },
+    {
+      "id": "wanted",
+      "primary_color_hex": "#0066FF",
+      "category": "HR",
+      "visual_theme": "Career marketplace as growth mentor — single decisive cobalt #0066FF for interaction only on a warm-white canvas, custom Wanted Sans + Pretendard, 12px-radius JobCard with salary + 합격보상금 visible by structural rule.",
+      "voice_fingerprint": {
+        "register": "career-mentor",
+        "sentence_length": "medium",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "confident",
+        "growth-oriented",
+        "respectful",
+        "factual",
+        "gentle-yet-clear",
+        "precise"
+      ],
+      "antipatterns": [
+        "No 대박 채용/핫한 회사/놓치지 마세요 urgency marketing",
+        "No 약 X만원 salary hedging",
+        "No 오류가 발생했습니다",
+        "No competitive/negotiable in lieu of a range"
+      ],
+      "signature_motion": "JobCard hover: 12px-radius lift with bookmark icon outline→filled transition; brand blue used only on interactive states.",
+      "has_personas": true,
+      "category_raw": "HR / Career Marketplace"
+    },
+    {
       "id": "warp",
       "primary_color_hex": "#faf9f6",
       "category": "Developer Tools",
@@ -1681,6 +2914,97 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "developer-tool"
+    },
+    {
+      "id": "watcha",
+      "primary_color_hex": "#F82F62",
+      "category": "Consumer",
+      "visual_theme": "A near-pure-black cinema-lobby canvas where suppressed gray-on-black chrome lets poster art glow, lit by a single hot magenta-pink interactive accent.",
+      "voice_fingerprint": {
+        "register": "warm-editorial",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "taste-personal",
+        "warm",
+        "curated",
+        "quiet",
+        "second-person"
+      ],
+      "antipatterns": [
+        "generic apology error copy",
+        "exclamation-pressure CTAs",
+        "brighter marketing pink #FF0558 as a UI fill",
+        "brightening the black canvas toward gray",
+        "superlatives on chrome"
+      ],
+      "signature_motion": "Poster scales 1.0->1.04 with a bottom gradient fade-in; a pink star-fill pop on rating.",
+      "has_personas": true,
+      "category_raw": "Entertainment"
+    },
+    {
+      "id": "wavve",
+      "primary_color_hex": "#1351F9",
+      "category": "OTT Streaming",
+      "visual_theme": "A blue tide into the evening — deep midnight-blue canvas (not pure black) with a bright brand blue point color, poster art as the light source. Calmer and bluer than the louder red OTT incumbents.",
+      "voice_fingerprint": {
+        "register": "해요체 easygoing, 합니다체 for billing/legal",
+        "sentence_length": "medium",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "calm",
+        "immersive",
+        "easygoing",
+        "cinematic",
+        "blue",
+        "evening-ritual"
+      ],
+      "antipatterns": [
+        "pure black canvas (#000000)",
+        "second saturated interactive hue vs blue",
+        "shadows/borders on poster cards",
+        "warm red beyond the LIVE indicator",
+        "crowding title-detail/player",
+        "exclamation-pressure CTAs"
+      ],
+      "signature_motion": "Poster hover scale 1.05 with continue-watching progress glowing brand blue; LIVE red dot pulses gently.",
+      "has_personas": true,
+      "category_raw": "OTT Streaming"
+    },
+    {
+      "id": "wconcept",
+      "primary_color_hex": "#000000",
+      "category": "Consumer",
+      "visual_theme": "Absolute monochrome concept-store gallery — black type and chrome on white, sharp 0px corners, a single hot orange-red flashing only on sale percentages. Premium through subtraction; the photograph is the only color.",
+      "voice_fingerprint": {
+        "register": "editorial-curator, restrained premium",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "curated",
+        "monochrome",
+        "editorial",
+        "premium",
+        "restrained",
+        "confident"
+      ],
+      "antipatterns": [
+        "brand pastel or second hue",
+        "rounded corners (>4px)",
+        "drop-shadows on product imagery",
+        "red urgency banners",
+        "hype/clickbait copy",
+        "softened black"
+      ],
+      "signature_motion": "Product card image dims to 92% on press without scaling — gallery grid, never elastic.",
+      "has_personas": true,
+      "category_raw": "Fashion-commerce"
     },
     {
       "id": "webflow",
@@ -1746,6 +3070,36 @@
       "category_raw": "ai-platform"
     },
     {
+      "id": "xiaohongshu",
+      "primary_color_hex": "#FF2442",
+      "category": "Consumer",
+      "visual_theme": "A jealously-guarded Torch Red on clinical white, with a two-column variable-height masonry waterfall of note cards. The content is the interface; soft rounded shapes whisper aspiration, never shout discount.",
+      "voice_fingerprint": {
+        "register": "warm peer-level friend, enthusiastic but credible; casual + native lexicon",
+        "sentence_length": "medium",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "chinese-simplified-dominant"
+      },
+      "tone_keywords": [
+        "warm",
+        "peer-trust",
+        "aspirational",
+        "soft",
+        "authentic",
+        "discovery"
+      ],
+      "antipatterns": [
+        "red sprayed across chrome (scarcity is the signal)",
+        "rigid equal-height feed rows",
+        "sharp aggressive commerce styling",
+        "formal register in casual social contexts",
+        "fake-scarcity hard-sell FOMO"
+      ],
+      "signature_motion": "The like-heart pop - outline heart fills with a 1->1.3->1 scale overshoot; the only spring in the product.",
+      "has_personas": true,
+      "category_raw": "social-commerce"
+    },
+    {
       "id": "yanolja",
       "primary_color_hex": "#F54B1E",
       "category": "Travel",
@@ -1805,6 +3159,37 @@
       "category_raw": "travel / lodging booking"
     },
     {
+      "id": "yogiyo",
+      "primary_color_hex": "#FA0050",
+      "category": "Food Delivery",
+      "visual_theme": "Appetite plus joy — a hot red-pink forward-motion accent over a bright white canvas where food photography supplies the craving. Soft rounded cards make the path from hungry to ordered fast and delightful.",
+      "voice_fingerprint": {
+        "register": "해요체 cheerful, 합니다체 for payment/legal",
+        "sentence_length": "short",
+        "metaphor_density": "sparse",
+        "vocabulary_register": "korean-dominant"
+      },
+      "tone_keywords": [
+        "joyful",
+        "warm",
+        "quick",
+        "appetizing",
+        "helpful",
+        "clean"
+      ],
+      "antipatterns": [
+        "flooding backgrounds with red",
+        "cartoonish or cold-utilitarian tone",
+        "burying decision numbers (rating/time/fee)",
+        "second saturated brand hue",
+        "cold jargon (주문 처리 중)",
+        "extra steps in the order path"
+      ],
+      "signature_motion": "Cart badge increments with a 1.15 scale-pop in red; sticky bottom cart bar slides up when the cart gains an item.",
+      "has_personas": true,
+      "category_raw": "Food Delivery"
+    },
+    {
       "id": "zapier",
       "primary_color_hex": "#ff4f00",
       "category": "SaaS",
@@ -1824,236 +3209,6 @@
       "signature_motion": "Inset orange underline marks active tabs; sand underline previews hover.",
       "has_personas": false,
       "category_raw": "saas-tool"
-    },
-    {
-      "id": "29cm",
-      "primary_color_hex": "#000000",
-      "category": "Commerce",
-      "visual_theme": "Editorial select-shop magazine on pure white with pure black ink — photography first, oversized margins, Pretendard-only typography, no shadows, no brand color beyond black-on-white.",
-      "voice_fingerprint": {
-        "register": "editorial-curatorial",
-        "sentence_length": "medium",
-        "metaphor_density": "moderate",
-        "vocabulary_register": "korean-dominant"
-      },
-      "tone_keywords": [
-        "editorial",
-        "curated",
-        "calm",
-        "considered",
-        "magazine",
-        "offbeat"
-      ],
-      "antipatterns": [
-        "No 최저가/초특가 or 오늘만 urgency",
-        "No English SHOP NOW exclamations",
-        "No corporate ~합니다 ending on consumer voice"
-      ],
-      "signature_motion": "Color inversion on inverted CTA hover — #000000 ↔ #ffffff with 2px radius, no scale, no shadow.",
-      "has_personas": true,
-      "category_raw": "Commerce / Editorial Select-Shop"
-    },
-    {
-      "id": "ably",
-      "primary_color_hex": "#FA2E5F",
-      "category": "Commerce",
-      "visual_theme": "MZ-coded mobile-first style commerce on white canvas — vibrant pink-coral reserved for commercial pressure (CTA, sale, urgency) while neutrals carry the photography-dense 4-up grid.",
-      "voice_fingerprint": {
-        "register": "informal-stylist-friend",
-        "sentence_length": "short",
-        "metaphor_density": "sparse",
-        "vocabulary_register": "korean-dominant"
-      },
-      "tone_keywords": [
-        "fast",
-        "friendly",
-        "MZ-informal",
-        "image-dense",
-        "personalized",
-        "playful"
-      ],
-      "antipatterns": [
-        "No 오류가 발생했습니다 vague errors",
-        "No formal ~합니다/~십시오 on commerce surfaces",
-        "No 약 ~원 price approximations"
-      ],
-      "signature_motion": "Heart/찜 tap: outline to filled pink with brief scale pulse on the bottom-pinned 구매하기 bar.",
-      "has_personas": true,
-      "category_raw": "Commerce / MZ Style Commerce"
-    },
-    {
-      "id": "banksalad",
-      "primary_color_hex": "#04c584",
-      "category": "Fintech",
-      "visual_theme": "Trustworthy financial advisor on white with warm near-black text and saturated salad-green for all interaction — 2px radius dominance, dense data tables, Pretendard 700 numerals as headings.",
-      "voice_fingerprint": {
-        "register": "calm-advisor",
-        "sentence_length": "medium",
-        "metaphor_density": "sparse",
-        "vocabulary_register": "korean-dominant"
-      },
-      "tone_keywords": [
-        "factual",
-        "advisor",
-        "calm",
-        "data-driven",
-        "explanatory",
-        "precise"
-      ],
-      "antipatterns": [
-        "No 약 ~원 approximations on money",
-        "No 최고의/놀라운 superlatives",
-        "No emoji on financial surfaces",
-        "No 오류가 발생했습니다"
-      ],
-      "signature_motion": "Brand green focus/hover lightens to #10df99 — interaction makes things lighter, never darker; subtle single-layer shadow.",
-      "has_personas": true,
-      "category_raw": "Fintech / Personal Finance Advisor"
-    },
-    {
-      "id": "gangnamunni",
-      "primary_color_hex": "#d54300",
-      "category": "Healthcare",
-      "visual_theme": "Warm medical platform on white with bluegray neutrals and a single saturated orange — hairlines over shadows, exact numerals on hospital and procedure cards, regulatory disclosure as part of trust.",
-      "voice_fingerprint": {
-        "register": "careful-clinician",
-        "sentence_length": "medium",
-        "metaphor_density": "sparse",
-        "vocabulary_register": "korean-dominant"
-      },
-      "tone_keywords": [
-        "informational",
-        "reassuring",
-        "factual",
-        "transparent",
-        "regulatory",
-        "exact"
-      ],
-      "antipatterns": [
-        "No 예뻐지세요! or ✨💖 emoji on medical surfaces",
-        "No 약 ~원 rounded pricing",
-        "No 오류가 발생했습니다",
-        "No consumer-beauty cartoon pinks"
-      ],
-      "signature_motion": "Hospital card hover: 1px #d8dfe6 hairline darkens; orange accent appears only on the booking CTA, never on hover decoration.",
-      "has_personas": true,
-      "category_raw": "Healthcare / Cosmetic-Procedure Discovery"
-    },
-    {
-      "id": "kakaopay",
-      "primary_color_hex": "#FFEB00",
-      "category": "Fintech",
-      "visual_theme": "Warm friendly fintech that feels like a continuation of KakaoTalk — Noto Sans KR on near-white canvas, rounded geometry as brand commitment, Kakao yellow as ecosystem anchor (not default CTA), 3:1 contrast minimum enforced.",
-      "voice_fingerprint": {
-        "register": "polite-conversational",
-        "sentence_length": "short",
-        "metaphor_density": "sparse",
-        "vocabulary_register": "korean-dominant"
-      },
-      "tone_keywords": [
-        "warm",
-        "conversational",
-        "approachable",
-        "inclusive",
-        "rounded",
-        "polite-casual"
-      ],
-      "antipatterns": [
-        "No 고객님께서는/~하시기 바랍니다 institutional Korean",
-        "No 약 ~원 on money",
-        "No 오류가 발생했습니다",
-        "No sharp/aggressive geometry"
-      ],
-      "signature_motion": "Rounded button press: subtle radius-preserving scale-down (0.98) with quiet single-layer shadow at ≤0.08 opacity.",
-      "has_personas": true,
-      "category_raw": "Fintech / Ecosystem Payments"
-    },
-    {
-      "id": "remember",
-      "primary_color_hex": "#000000",
-      "category": "HR",
-      "visual_theme": "Business-card-database-grown-up — near-white surfaces with off-black #222222 body, black as the primary CTA color (B2B professional gravity), signup orange #FF5414 reserved for conversion punches only.",
-      "voice_fingerprint": {
-        "register": "senior-colleague",
-        "sentence_length": "short",
-        "metaphor_density": "sparse",
-        "vocabulary_register": "korean-dominant"
-      },
-      "tone_keywords": [
-        "calm",
-        "concrete",
-        "professional",
-        "B2B",
-        "trusted",
-        "restrained"
-      ],
-      "antipatterns": [
-        "No 불편을 드려 죄송합니다",
-        "No emoji in scout/recruiter messages",
-        "No 약 ~원 on salary numbers",
-        "No mascots or illustration on product surfaces"
-      ],
-      "signature_motion": "Black CTA hover: subtle 1px lift via shadow; orange #FF5414 only appears once per surface at conversion moments.",
-      "has_personas": true,
-      "category_raw": "HR / Business Network + Career Marketplace"
-    },
-    {
-      "id": "socar",
-      "primary_color_hex": "#1d4ed8",
-      "category": "Mobility",
-      "visual_theme": "Calm achromatic car-sharing chrome on pure white with cool-grey #354153 body type — SOCAR Blue reserved for the Space Frame symbol and primary booking CTA, 12/14/16px radius ladder, single-layer soft shadows.",
-      "voice_fingerprint": {
-        "register": "calm-service",
-        "sentence_length": "short",
-        "metaphor_density": "sparse",
-        "vocabulary_register": "korean-dominant"
-      },
-      "tone_keywords": [
-        "calm",
-        "service-confirming",
-        "achromatic",
-        "declarative",
-        "frictionless",
-        "grounded"
-      ],
-      "antipatterns": [
-        "No Revolutionary/Game-changer marketing",
-        "No 새로운 경험을 시작하세요 decoration without action",
-        "No emoji on transactional booking/payment surfaces",
-        "No 오류가 발생했습니다"
-      ],
-      "signature_motion": "Booking CTA hover: SOCAR Blue darkens one step; card lift uses single rgba(0,0,0,0.1) 0 4px 8px shadow, never chromatic stacks.",
-      "has_personas": true,
-      "category_raw": "Mobility / Car-Sharing (SOCAR Blue approximation — exact hex unpublished)"
-    },
-    {
-      "id": "wanted",
-      "primary_color_hex": "#0066FF",
-      "category": "HR",
-      "visual_theme": "Career marketplace as growth mentor — single decisive cobalt #0066FF for interaction only on a warm-white canvas, custom Wanted Sans + Pretendard, 12px-radius JobCard with salary + 합격보상금 visible by structural rule.",
-      "voice_fingerprint": {
-        "register": "career-mentor",
-        "sentence_length": "medium",
-        "metaphor_density": "sparse",
-        "vocabulary_register": "korean-dominant"
-      },
-      "tone_keywords": [
-        "confident",
-        "growth-oriented",
-        "respectful",
-        "factual",
-        "gentle-yet-clear",
-        "precise"
-      ],
-      "antipatterns": [
-        "No 대박 채용/핫한 회사/놓치지 마세요 urgency marketing",
-        "No 약 X만원 salary hedging",
-        "No 오류가 발생했습니다",
-        "No competitive/negotiable in lieu of a range"
-      ],
-      "signature_motion": "JobCard hover: 12px-radius lift with bookmark icon outline→filled transition; brand blue used only on interactive states.",
-      "has_personas": true,
-      "category_raw": "HR / Career Marketplace"
     },
     {
       "id": "zigbang",
@@ -2113,256 +3268,6 @@
       "signature_motion": "찜 heart: outline → filled brand pink with brief pulse; primary CTA uses pink-400 fill, darkening to pink-450/550 on hover/press.",
       "has_personas": true,
       "category_raw": "Commerce / Women's Fashion Discovery"
-    },
-    {
-      "id": "kream",
-      "primary_color_hex": "#000000",
-      "category": "E-commerce",
-      "visual_theme": "Sneaker-culture editorial — monochrome 0/100 chrome, fixed 1280px shop canvas, bold tabular price typography, no-shadow card grid.",
-      "voice_fingerprint": {
-        "register": "editorial-direct"
-      },
-      "signature_motion": "Hover state crossfade on card thumbnail; 1-frame opacity reveal for sold-out chips.",
-      "has_personas": true,
-      "category_raw": "Marketplace / Limited-edition Sneaker Trading",
-      "country": "KR"
-    },
-    {
-      "id": "upbit",
-      "primary_color_hex": "#093687",
-      "category": "Fintech",
-      "visual_theme": "Dense crypto exchange — KR up=red/down=blue inverted from US, navy chrome, 28px speed-fill tags, legacy Dotum/돋움 fallback chain unpruned.",
-      "voice_fingerprint": {
-        "register": "data-dense-neutral"
-      },
-      "signature_motion": "Tick-by-tick price flash (200ms red/blue), candle-chart redraw on resize, no easing on numeric updates.",
-      "has_personas": true,
-      "category_raw": "Crypto Exchange (Dunamu)",
-      "country": "KR"
-    },
-    {
-      "id": "kbank",
-      "primary_color_hex": "#0046ff",
-      "category": "Fintech",
-      "visual_theme": "Neobank minimal — electric blue CTA on near-white, font-size:0 image-replacement H1, fixed 1280px desktop, no landmark a11y.",
-      "voice_fingerprint": {
-        "register": "trustworthy-direct"
-      },
-      "signature_motion": "Subtle button press depth change; modal entry fade-in 200ms.",
-      "has_personas": true,
-      "category_raw": "Internet-only Bank",
-      "country": "KR"
-    },
-    {
-      "id": "inflearn",
-      "primary_color_hex": "#00c471",
-      "category": "Productivity",
-      "visual_theme": "Mantine UI app with green scale override — two radius families (8px cards, 32px nav pills, 999px green search pill), Pretendard-first, no custom display face.",
-      "voice_fingerprint": {
-        "register": "approachable-instructor"
-      },
-      "signature_motion": "Card hover lift 2px; tag-chip alpha fade; focus ring 2px green outline.",
-      "has_personas": true,
-      "category_raw": "EdTech / Online Courses",
-      "country": "KR"
-    },
-    {
-      "id": "wadiz",
-      "primary_color_hex": "#00c4c4",
-      "category": "Fintech",
-      "visual_theme": "Crowdfunding mint — saturated #00c4c4 CTAs with 2.7:1 contrast trade-off, single source-of-truth 936KB CSS bundle, `-하기` gerund + `~해요` polite-casual voice patterns.",
-      "voice_fingerprint": {
-        "register": "campaign-encouraging"
-      },
-      "signature_motion": "Funding-progress bar fill on viewport entry; 'XX%' counter rollup over 800ms.",
-      "has_personas": true,
-      "category_raw": "Crowdfunding Platform",
-      "country": "KR"
-    },
-    {
-      "id": "channeltalk",
-      "primary_color_hex": "#4f46e5",
-      "category": "Productivity",
-      "visual_theme": "Global B2B SaaS chat — open-source Bezier DS (MIT) with Inter + Noto KR/JP stacks, marketing-vs-product type cliff (marketing 48-64px / product 36px max).",
-      "voice_fingerprint": {
-        "register": "crisp-saas-confident"
-      },
-      "signature_motion": "Bubble pop-in spring; typing-indicator 3-dot 1.2s loop; unread badge bounce on increment.",
-      "has_personas": true,
-      "category_raw": "B2B SaaS / Customer Messaging",
-      "country": "KR",
-      "has_official_ds": true,
-      "ds_name": "Bezier",
-      "ds_url": "https://github.com/channel-io/bezier-react"
-    },
-    {
-      "id": "lunit",
-      "primary_color_hex": "#1032cf",
-      "category": "Consumer",
-      "visual_theme": "Medical AI corporate — signature blue withheld from primary CTA (CTA is black pill #000 r=100px); binary radius thesis 0px/100px; LIGHT-weight Lexend/ClashGrotesk anti-pharma.",
-      "voice_fingerprint": {
-        "register": "clinical-authoritative"
-      },
-      "signature_motion": "AOS scroll-in fades only; no hover micro-interactions; carousel snap-scroll.",
-      "has_personas": true,
-      "category_raw": "Medical Imaging AI",
-      "country": "KR"
-    },
-    {
-      "id": "bunjang",
-      "primary_color_hex": "#d80c18",
-      "category": "E-commerce",
-      "visual_theme": "C2C marketplace red — single red (#d80c18, one job: primary CTA), specialty token ladders (care=amber, safe=indigo) literally encoding product taxonomy, zero box-shadow.",
-      "voice_fingerprint": {
-        "register": "casual-marketplace"
-      },
-      "signature_motion": "Card thumbnail crossfade; like-heart fill animation; sold-out diagonal stripe overlay.",
-      "has_personas": true,
-      "category_raw": "C2C Used Marketplace",
-      "country": "KR"
-    },
-    {
-      "id": "flex",
-      "primary_color_hex": "#000000",
-      "category": "Productivity",
-      "visual_theme": "HR SaaS Stitches/CSS-in-JS stack — 0 namespaced :root tokens (tokens normalized from computed-style), Toss-adjacent KR voice tone, monochrome dashboard chrome.",
-      "voice_fingerprint": {
-        "register": "toss-adjacent-friendly"
-      },
-      "signature_motion": "Entry fade observed live; modal slide-in from right; table row hover bg shift.",
-      "has_personas": true,
-      "category_raw": "HR SaaS / Workforce Management",
-      "country": "KR"
-    },
-    {
-      "id": "classum",
-      "primary_color_hex": "#ff4438",
-      "category": "Productivity",
-      "visual_theme": "EdTech classroom collab — Webflow class-driven (no :root vars), 14px Korean body density at WCAG floor, brand red == destructive (downstream split needed).",
-      "voice_fingerprint": {
-        "register": "warm-classroom"
-      },
-      "signature_motion": "Post-reply expand 250ms; reaction emoji pop spring; threaded indent slide-in.",
-      "has_personas": true,
-      "category_raw": "EdTech / Classroom Communication",
-      "country": "KR"
-    },
-    {
-      "id": "toss-securities",
-      "primary_color_hex": "#3182f6",
-      "category": "Fintech",
-      "visual_theme": "Dark-mode-first trading chrome (#101013→#202025), KR-finance locale inversion (red=up, blue=down, #3182f6 doubles as fill-brand-default CTA), 2-tier radius (8/32), zero box-shadow, 416 :root CSS vars in --tw-semantic-*/--wts-adaptive-* namespaces.",
-      "voice_fingerprint": {
-        "register": "toss-direct-trading"
-      },
-      "signature_motion": "Tick price flash, candle redraw on resize.",
-      "has_personas": true,
-      "category_raw": "Securities Trading (Toss Securities)",
-      "country": "KR"
-    },
-    {
-      "id": "oliveyoung",
-      "primary_color_hex": "#000000",
-      "category": "E-commerce",
-      "visual_theme": "Dual-stack architecture (legacy JSP grayscale chrome + Next.js subtree on product detail), five-flag taxonomy: sale #F65C60 / 오늘드림 #F374B7 / 쿠폰 #9BCE26 / 증정 #6FCFF7 / best #F05A5E — all 9px radius pills inside thumbnail. Brand Olive Green absent from storefront chrome.",
-      "voice_fingerprint": {
-        "register": "omnichannel-beauty"
-      },
-      "signature_motion": "Card thumbnail crossfade, flag pill fade-in, cart drawer slide.",
-      "has_personas": true,
-      "category_raw": "Beauty Commerce (H&B Omnichannel)",
-      "country": "KR"
-    },
-    {
-      "id": "gmarket",
-      "primary_color_hex": "#ffd200",
-      "category": "E-commerce",
-      "visual_theme": "Veteran 2000-founded open marketplace post-Shinsegae rebrand. Smile Yellow #ffd200 + 247 :root CSS vars (10-hue × 10-stop ladders + Club Smile + Event + Service-accent sub-systems). Fixed 1200px canvas (WCAG fail on desktop, mitigated by m.gmarket).",
-      "voice_fingerprint": {
-        "register": "casual-marketplace"
-      },
-      "signature_motion": "Banner carousel auto-rotate, sprite-based icon animation.",
-      "has_personas": true,
-      "category_raw": "Legacy E-commerce (Shinsegae)",
-      "country": "KR"
-    },
-    {
-      "id": "tving",
-      "primary_color_hex": "#FF153C",
-      "category": "Consumer Tech",
-      "visual_theme": "CJ ENM OTT streaming — dark canvas, brand red #FF153C primary CTA, six-category --color-cate-* taxonomy, mobile-first poster card grid, 114 :root CSS custom properties.",
-      "voice_fingerprint": {
-        "register": "streaming-bold"
-      },
-      "signature_motion": "Hero auto-play 5s loop, card hover scale, episode list slide.",
-      "has_personas": true,
-      "category_raw": "OTT Streaming (CJ ENM)",
-      "country": "KR"
-    },
-    {
-      "id": "catchtable",
-      "primary_color_hex": "#FF3D00",
-      "category": "Consumer Tech",
-      "visual_theme": "Single-CTA orange (#FF3D00, 4× in 3000-element scan) — hard-square 0px chrome on 92% of elements, 150% line-height uniform across 35 typography slots, 145 :root vanilla-extract _11bicz7* vars.",
-      "voice_fingerprint": {
-        "register": "curatorial-warm"
-      },
-      "signature_motion": "Slot booking modal slide, calendar date-pick spring.",
-      "has_personas": true,
-      "category_raw": "F&B Booking",
-      "country": "KR"
-    },
-    {
-      "id": "upstage",
-      "primary_color_hex": "#D2FF95",
-      "category": "AI",
-      "visual_theme": "AI corporate identity — Espeak proprietary face on hero, Solar lime accent #D2FF95 single-use, industry-rotating hero (font-family shifts not color/weight), 74 :root vars, brand resource center with logo/symbol only (no token tables).",
-      "voice_fingerprint": {
-        "register": "research-confident"
-      },
-      "signature_motion": "Hero industry-text rotate, font-family swap not color.",
-      "has_personas": true,
-      "category_raw": "AI / LLM (Solar)",
-      "country": "KR"
-    },
-    {
-      "id": "dabang",
-      "primary_color_hex": "#FF3478",
-      "category": "Consumer Tech",
-      "visual_theme": "Real-estate listing platform — brand pink #FF3478 restricted to wordmark (3.4:1 fails AA body), 8-hue × 10-step ladder + -rgb variants (140 :root vars), Pretendard Variable 100%, zero box-shadow 100%, action blue #326CF9.",
-      "voice_fingerprint": {
-        "register": "trust-direct-property"
-      },
-      "signature_motion": "Map pin cluster zoom, listing card flip.",
-      "has_personas": true,
-      "category_raw": "Real Estate Listings (Station3)",
-      "country": "KR"
-    },
-    {
-      "id": "jumpit",
-      "primary_color_hex": "#00DD6D",
-      "category": "Productivity",
-      "visual_theme": "Developer-jobs platform (Saramin) — one-green discipline: #00DD6D appears exactly twice in chrome across 112 samples, primary CTA is #000 (opposite to Wanted/Toss pattern). styled-components hashed classes, zero :root design tokens exposed.",
-      "voice_fingerprint": {
-        "register": "developer-vernacular"
-      },
-      "signature_motion": "Job card hover lift, filter chip toggle.",
-      "has_personas": true,
-      "category_raw": "Developer Recruiting (Saramin)",
-      "country": "KR"
-    },
-    {
-      "id": "fastcampus",
-      "primary_color_hex": "#fc1c49",
-      "category": "Education",
-      "visual_theme": "Rich-color signature (yellow/orange/red/pink/blue/green Material ramps) vs single-mint Inflearn / institutional-blue Classum. Commerce-red #fc1c49 doubles as primary + sale-flag + inline-validation-error. Inverted GNB density (12px/600 secondary-compact + 16px/400 primary). Card geometry 4px 4px 0 0 + rank badge 4px 0 corner-only. 103 :root vars in --fds-color-*/--c-primary-*/--fds-semantic-* namespaces.",
-      "voice_fingerprint": {
-        "register": "approachable-instructor"
-      },
-      "signature_motion": "Category tab slide, course card hover scale.",
-      "has_personas": true,
-      "category_raw": "EdTech (Day1Company)",
-      "country": "KR"
     }
   ]
 }

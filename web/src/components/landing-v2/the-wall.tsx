@@ -10,9 +10,9 @@ import {
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUpRight, X } from "lucide-react";
-import { getLogoUrl, getLogoFallbackUrl } from "@/lib/logos";
+import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
+import { isLight } from "@/lib/core/color";
 import { V2, BRAND_COLORS, colorForId } from "./tokens";
-import { isNewRef } from "@/lib/new-refs";
 
 /* ──────────────────────────── DATA ──────────────────────────── */
 
@@ -72,32 +72,50 @@ function readableOn(hex: string): string {
 
 /* ──────────────────────────── LOGO ──────────────────────────── */
 
-function BrandLogo({
-  id,
-  size = 30,
-  invert = true,
-}: {
-  id: string;
-  size?: number;
-  invert?: boolean;
-}) {
-  const primary = getLogoUrl(id, invert ? "ffffff" : "000000");
+/**
+ * Brand logo — mirrors the builder's RefLogo so the Wall reads identically:
+ * logo color adapts to the brand-color background luminance (black glyph on
+ * light tiles, white on dark), with a primary → favicon → initial-letter
+ * fallback chain. GitHub/favicon logos (and any fallback stage) get a frosted
+ * ring so raster marks sit cleanly on the brand color.
+ */
+function BrandLogo({ id, size = 34 }: { id: string; size?: number }) {
+  const color = colorForId(id);
+  const lightBg = isLight(color);
+  const primary = getLogoUrl(id, lightBg ? "000000" : "ffffff");
   const fallback = getLogoFallbackUrl(id);
-  const [src, setSrc] = useState<string | null>(primary ?? fallback);
-  if (!src) return null;
+  const isGh = isGitHubLogo(id);
+  const [stage, setStage] = useState<0 | 1 | 2>(0);
+  const src = stage === 0 ? primary : stage === 1 ? fallback : null;
+
+  if (!src) {
+    return (
+      <div
+        className="flex items-center justify-center rounded-full font-bold"
+        style={{
+          width: size,
+          height: size,
+          fontSize: size * 0.45,
+          background: lightBg ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.18)",
+          color: lightBg ? "#1e1e1e" : "#ffffff",
+        }}
+      >
+        {id.charAt(0).toUpperCase()}
+      </div>
+    );
+  }
+
+  const ringed = isGh || stage > 0;
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
-      width={size}
-      height={size}
       alt=""
       loading="lazy"
       decoding="async"
-      onError={() => {
-        if (src !== fallback && fallback) setSrc(fallback);
-      }}
-      style={{ width: size, height: size, objectFit: "contain" }}
+      onError={() => setStage((s) => (s < 2 ? ((s + 1) as 0 | 1 | 2) : 2))}
+      className={ringed ? "rounded-full ring-2 ring-white/20 bg-white/10 p-1 object-contain" : "object-contain"}
+      style={{ width: size, height: size }}
     />
   );
 }
@@ -229,7 +247,7 @@ export function TheWall() {
             The wall
           </div>
           <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
-            {cards.length} systems. All real.{" "}
+            100+ systems. All real.{" "}
             <span style={{ color: V2.primary }}>All extracted.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm text-white/55">
@@ -362,13 +380,12 @@ function Tile({
     }
   };
 
-  const background = dark
-    ? `linear-gradient(135deg, #16161d 0%, #0f0f15 100%)`
-    : color;
-
+  // Flat brand color as the tile background — matches the builder's reference
+  // cards (no dark-gradient substitution for near-black brands). Dark tiles
+  // get a faint white inset border so they don't vanish into the dark section.
   const tileStyle: CSSProperties = {
-    background,
-    borderColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.18)",
+    background: color,
+    borderColor: dark ? "rgba(255,255,255,0.10)" : "rgba(0,0,0,0.18)",
     transform: `perspective(600px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) ${
       hover ? "translateZ(8px) scale(1.04)" : ""
     }`,
@@ -430,27 +447,12 @@ function Tile({
         <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.4} />
       </span>
 
-      {/* dev-only NEW badge — top-left, hidden in production */}
-      {isNewRef(id) && (
-        <span
-          aria-hidden
-          className="absolute left-2 top-2 rounded-full px-1.5 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider"
-          style={{
-            background: "#34d399",
-            color: "#062514",
-            boxShadow: "0 1px 4px rgba(0,0,0,0.35)",
-          }}
-        >
-          NEW
-        </span>
-      )}
-
       {/* logo */}
       <span
         className="absolute inset-0 flex items-center justify-center transition-transform duration-300"
         style={{ transform: hover ? "scale(1.08)" : "scale(1)" }}
       >
-        <BrandLogo id={id} size={34} invert />
+        <BrandLogo id={id} size={34} />
       </span>
 
       {/* bottom gradient veil */}
@@ -633,7 +635,7 @@ function FillPanel({
                     : "rgba(255,255,255,0.1)",
               }}
             >
-              <BrandLogo id={id} size={36} invert={text === "#ffffff"} />
+              <BrandLogo id={id} size={36} />
             </div>
             <div className="flex min-w-0 flex-col">
               <span
