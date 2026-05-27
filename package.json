@@ -1,7 +1,7 @@
 {
   "name": "oh-my-design-cli",
-  "version": "1.5.0",
-  "description": "Bootstrap oh-my-design skills + agents into your project. After install, talk to your AI coding agent in natural language \u2014 no other CLI commands.",
+  "version": "1.5.1",
+  "description": "Bootstrap oh-my-design skills + agents into your project. After install, talk to your AI coding agent in natural language — no other CLI commands.",
   "type": "module",
   "bin": {
     "oh-my-design": "dist/bin/oh-my-design.js",
