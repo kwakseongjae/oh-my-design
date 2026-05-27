@@ -206,6 +206,17 @@ export function ReferenceSelector({
     return true;
   });
 
+  // Float HOT references to the top so the most-selected brands are grouped
+  // up front. `.sort` is stable in modern engines, so the API's
+  // country/category ordering is preserved within the hot/non-hot partitions.
+  // `hotRefs` loads async from the leaderboard, so the grid reflows (with the
+  // motion `layout` animation) once it resolves.
+  const ordered = hotRefs.size
+    ? [...filtered].sort(
+        (a, b) => Number(hotRefs.has(b.id)) - Number(hotRefs.has(a.id)),
+      )
+    : filtered;
+
   return (
     <div>
       {/* Header with quiz CTA */}
@@ -603,7 +614,7 @@ export function ReferenceSelector({
       {/* Grid */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         <AnimatePresence mode="popLayout">
-          {filtered.map((ref, i) => {
+          {ordered.map((ref, i) => {
             const logoUrl = getLogoUrl(ref.id, isLight(ref.primaryColor) ? "000000" : "ffffff");
             return (
               <motion.button
