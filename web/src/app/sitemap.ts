@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { existsSync, readdirSync } from "fs";
 import { join } from "path";
 import { DESIGN_TYPES } from "@/lib/survey/types";
+import { getChangelog } from "@/lib/changelog";
 
 const siteUrl = "https://oh-my-design.kr";
 const REFS_DIR = join(process.cwd(), "references");
@@ -53,7 +54,56 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${siteUrl}/faq`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${siteUrl}/what-is-design-md`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${siteUrl}/changelog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/alternatives/shadcn`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/alternatives/v0`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/alternatives/anima`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/alternatives/locofy`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
+
+  const changelogRoutes: MetadataRoute.Sitemap = getChangelog().map((e) => ({
+    url: `${siteUrl}/changelog/${e.version}`,
+    lastModified: e.date ? new Date(e.date) : now,
+    changeFrequency: "monthly" as const,
+    priority: 0.55,
+  }));
 
   const referenceRoutes: MetadataRoute.Sitemap = listReferenceIds().map(
     (id) => ({
@@ -73,5 +123,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  return [...staticRoutes, ...referenceRoutes, ...resultRoutes];
+  return [
+    ...staticRoutes,
+    ...referenceRoutes,
+    ...resultRoutes,
+    ...changelogRoutes,
+  ];
 }

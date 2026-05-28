@@ -3,7 +3,13 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GA_ID } from "@/lib/gtag";
+import pkg from "../../../package.json" with { type: "json" };
 import "./globals.css";
+
+// Single source of truth for displayed CLI version. Pulled from the root
+// package.json so schema.org / featureList never drift from the published
+// npm artifact. Bump pkg.version → schema follows automatically.
+const CLI_VERSION: string = pkg.version;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -129,7 +135,7 @@ export default function RootLayout({
                   url: siteUrl,
                   downloadUrl:
                     "https://www.npmjs.com/package/oh-my-design-cli",
-                  softwareVersion: "1.5.0",
+                  softwareVersion: CLI_VERSION,
                   license: "https://opensource.org/licenses/MIT",
                   description:
                     "Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 15 skills + 16 sub-agents + 100+ reference DESIGN.md files. Install once, then talk to your agent in natural language.",
@@ -146,6 +152,9 @@ export default function RootLayout({
                     "Zero AI calls during install — pure markdown copy",
                     "Supports Claude Code, Codex, OpenCode, Cursor",
                     "Brand-philosophy layer on every reference — voice, narrative, principles, personas, states, motion",
+                    "v1.6.0+: natural-language auto-trigger for landing-page / prototype requests (no slash command needed)",
+                    "v1.6.0+: CTX-PRIME — sub-50ms deterministic repo scan (stack, brand color, voice, surface inventory) before any question",
+                    "v1.6.0+: Interview-lite — single batched picker for audience / scope / wow-moment / CTA / visual-grounding, then master skips slot-gate",
                   ],
                 },
                 {

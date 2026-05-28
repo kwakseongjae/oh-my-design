@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/build-registry.mjs && next dev -p 3335",
-    "build": "node scripts/build-registry.mjs && next build",
+    "dev": "node scripts/build-registry.mjs && node ../scripts/gen-llms-full.cjs && next dev -p 3335",
+    "build": "node scripts/build-registry.mjs && node ../scripts/gen-llms-full.cjs && next build",
     "build-registry": "node scripts/build-registry.mjs",
     "start": "next start",
     "lint": "eslint",

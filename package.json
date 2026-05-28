@@ -42,7 +42,8 @@
     "test:watch": "vitest",
     "lint": "tsc --noEmit",
     "prepare": "npm run build",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build && node scripts/gen-llms-full.cjs",
+    "gen:llms-full": "node scripts/gen-llms-full.cjs",
     "postinstall": "node scripts/postinstall.cjs"
   },
   "keywords": [

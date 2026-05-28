@@ -21,7 +21,18 @@ Then restart your AI coding agent (Cmd+Q in Claude Code, then relaunch).
 - `"Set up the design system for a calm B2B fintech dashboard."` → triggers `omd:init`, bootstraps a hybrid DESIGN.md from one of the bundled references.
 - `"Make the empty-state for the search results page."` → triggers `omd:apply`, builds with brand tokens + voice from DESIGN.md.
 - `"Design the entire onboarding from scratch."` → triggers `omd:harness`, runs the 10-phase pipeline with sub-agents.
+- `"그럴싸한 랜딩페이지 만들어줘"` / `"프로토타입이라도 구색 갖춰서"` → **v1.6.0** triggers `omd:harness` automatically on natural-language landing/prototype phrasings (no slash command, no design jargon needed).
 - `"We never use uppercase CTAs."` → triggers `omd:remember`, writes the correction to `.omd/preferences.md`.
+
+## v1.6.0 conversational deepening (latest)
+
+When `omd:harness` activates, it runs three new steps **before** any reference question:
+
+1. **Subagent auto-recovery** — if `omd-master` isn't loaded in the session, the skill copies the agent file from `$(npm root -g)/oh-my-design-cli/agents/` into `.claude/agents/` and continues. No "restart Claude Code" dead-end.
+2. **CTX-PRIME** — `scripts/ctx-prime.cjs` runs a sub-50ms deterministic scan of the working directory: framework detection (Next/Vite/Astro/etc.), dominant brand color (most-cited hex literal), font families, voice keywords from README + commit messages, surface inventory (every routing page classified as landing/product/dashboard/docs/onboarding), and `audience_hypothesis` (3 candidates with confidence + evidence). Emits `<RUN_DIR>/ctx-prime.json`.
+3. **Single-question persona picker + Interview-lite** — one `AskUserQuestion` confirms the audience hypothesis, then a batched four-question picker resolves `exit_scope`, `wow_moment`, `cta_primary`, and `visual_grounding`. Answers write to `<RUN_DIR>/handoff/.handoff.json` as `prefilled_slots`.
+
+The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
 ## The 15 skills
 
