@@ -6,6 +6,38 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.6.0 — 2026-05-28
+
+**Conversational deepening — harness skill now reads your codebase before asking, then runs a single-batch picker interview matching the Ouroboros/donguri feel — zero external plugin dependencies.**
+
+Closes the gap where natural-language design requests ("그럴싸한 랜딩 만들어줘", "프로토타입이라도 구색 갖춰서") fell through `omd-harness` and landed in plain-coding mode. Five entry-side defects fixed in one release. Full RFC: `research/harness-design/20-harness-1.6-conversational-deepening.md`.
+
+### Added
+
+- **`scripts/ctx-prime.cjs`** — deterministic, sub-50ms codebase analyzer. Emits `<RUN_DIR>/ctx-prime.json` with stack detection, dominant brand color, font families, voice keywords, language, surface inventory, audience hypothesis (with confidence + evidence), and wow-moment candidates. Pure node, no deps.
+- **`omd-harness` Step 2.5 — CTX-PRIME phase.** Runs `ctx-prime.cjs` before reference selection, surfaces analysis as the opening move ("이 레포 분석했어요 — Next.js + #0064FF 베이스 + 11개 surface"), and asks one `AskUserQuestion` picker for audience confirmation with confidence-ranked options + free-text "Other".
+- **`omd-harness` Interview-lite** — a single batched `AskUserQuestion` covering `exit_scope` / `wow_moment` / `cta_primary` / `visual_grounding`. Options derived from `ctx-prime.json` (e.g., wow-moment options use detected `wow_moment_candidates`). Answers written to `<RUN_DIR>/handoff/.handoff.json` as `prefilled_slots`.
+- **`omd-master` INTAKE — prefilled-slots fast path.** When `.handoff.json` has `prefilled_slots`, skip SLOT_GATE entirely and jump straight to PROPOSE_PLAN. Never re-asks `audience` / `wow_moment` that the harness already collected.
+
+### Changed
+
+- **`omd-harness` trigger description broadened** — now matches "랜딩페이지", "프로토타입", "그럴싸한", "구색", "first screen", "MVP UI", "landing", "prototype", etc. Generic natural-language requests now activate the harness reliably.
+- **`omd-harness` Step 1 — subagent registration auto-recovery.** Was a hard gate that stopped on missing `omd-master`; now copies the agent file from `npm root -g`/local to `.claude/agents/` (or detected agent flavor) and continues. Restart-Claude-Code message demoted to last-resort fallback.
+
+### Why
+
+Real-session failure trace where a user requested a landing-page prototype, expected an Ouroboros-style multi-turn brainstorm, and got a single-shot DESIGN.md emit instead. Diagnosis traced five concrete entry-side defects in `skills/omd-harness/SKILL.md`. All five fixed without breaking the run-dir / handoff contract — legacy runs (without `prefilled_slots`) follow the unchanged path.
+
+### Migration
+
+`npx oh-my-design-cli@latest install-skills --all` picks up the new harness skill + master agent. No config changes required.
+
+### Files added to bundle
+
+- `scripts/ctx-prime.cjs` added to package `files:` array.
+
+---
+
 ## 1.5.0 — 2026-05-19
 
 **v0.2 agent layer ships in the bundle. Blog feature removed. Release-hygiene routine added.**

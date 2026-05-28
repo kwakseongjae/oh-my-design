@@ -105,7 +105,7 @@ shim과 스킬 파일은 `<!-- omd:start -->` 마커 블록을 사용해서, 마
 |---|---|---|
 | `omd:init` | "DESIGN.md 만들어줘" / "브랜드 세팅" | 레퍼런스 추천 → 프로젝트 description 수집 → 레퍼런스 톤·매너 preserve하면서 deltas 반영한 Hybrid variation → DESIGN.md + shim 작성 |
 | `omd:apply` | UI / 스타일링 / 마이크로카피 / 모션 작업 | DESIGN.md + pending preference를 authoritative context로 주입, 사용자 교정 시 자동으로 `omd:remember` 호출 |
-| `omd:harness` | "랜딩 처음부터 / production-ready" | 10-phase 디자인 파이프라인. rule 9 hero archetype 7종 (center-text / carousel / split-screen / editorial / dashboard / quote-led / left-character) 중 brand vibe 매칭으로 선택. rule 5 워드마크-only 로고, rule 10 reveal safety net. |
+| `omd:harness` | "랜딩 처음부터 / 그럴싸한 랜딩 / 프로토타입 구색 갖춰 / production-ready" | 10-phase 디자인 파이프라인. **v1.6.0** — 자연어 트리거 확대 (슬래시 없이도 발동), **CTX-PRIME** 사전 분석 (~20ms) + 단일 페르소나 picker + Interview-lite 배치로 `omd-master`가 slot-gate 건너뛰고 PROPOSE_PLAN 직행. rule 9 hero archetype 7종 (center-text / carousel / split-screen / editorial / dashboard / quote-led / left-character) 중 brand vibe 매칭으로 선택. rule 5 워드마크-only 로고, rule 10 reveal safety net. |
 | `omd:sync` | "shim drift" / "AGENTS.md 동기화" | 적절한 플래그로 `omd:sync` 실행 |
 | `omd:remember` | "기억해 둬" / "우리는 ~안 해" | 구조화된 entry를 `.omd/preferences.md`에 append |
 | `omd:learn` | "preferences 정리해서 DESIGN.md에 반영" | scope별로 그룹핑 → coherent edit 제안 → status flip |

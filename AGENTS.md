@@ -14,6 +14,7 @@ oh-my-design itself uses Claude Code skills + subagents for its design harness. 
 - `spec/omd-v0.1.md` — OmD spec (15-section DESIGN.md format).
 - `research/harness-design/` — Design harness research + integration design.
 - `skills/omd-lab-02-design-harness/` — Lab #02 versioned harness experiments.
+- `scripts/ctx-prime.cjs` — v1.6.0 deterministic codebase analyzer (stack, brand color, voice, surface inventory, audience hypothesis). Called by `omd-harness` Step 2.5 to pre-fill master slots.
 
 ## Build / test / lint
 

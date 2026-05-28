@@ -91,7 +91,19 @@ Each turn you are in one state. Determine current state from `.handoff.json` `st
 
 ### State definitions
 
-- **INTAKE**: First turn. Read `.omd/context.json` if it exists (skill caches via `node scripts/context.cjs` helper if available); else compute inline (Glob `**/package.json,**/*.{css,scss,tsx,jsx,vue,svelte}` + Read top files + grep for color/spacing literals). Decide INTAKE branch:
+- **INTAKE**: First turn.
+
+  **0.0.1 — Prefilled-slots fast path (v1.6.0+).** Before any other branch logic, Read `<RUN_DIR>/handoff/.handoff.json` if it exists. If it has `prefilled_slots` AND `state: "PROPOSE_PLAN"`, the omd-harness skill ran CTX-PRIME + Interview-lite already and pre-filled the slots (`audience`, `exit_scope`, `wow_moment`, `cta_primary`, `visual_grounding`).
+
+  Also Read `<RUN_DIR>/ctx-prime.json` for the codebase analysis (stack, brand_signal, surface_inventory, wow_moment_candidates).
+
+  → **Skip SLOT_GATE entirely.** Use prefilled_slots as authoritative. Jump straight to PROPOSE_PLAN with `ctx_prime.brand_signal` seeded as initial token defaults (override-able during PLAN_REVIEW). Only re-ask via ASK_TEST if a slot truly required for the chosen `exit_scope` is *missing* from prefilled_slots — never re-ask `audience` or `wow_moment` if already filled.
+
+  Acknowledge the handoff in your first user-facing prose: "분석 결과 + 페르소나 답 받았어요 — {audience} / {wow_moment} 방향으로 plan 잡을게요." Don't re-interrogate.
+
+  Continue from PROPOSE_PLAN.
+
+  **0.0.2 — Legacy fast path.** If no prefilled_slots, read `.omd/context.json` if it exists (skill caches via `node scripts/context.cjs` helper if available); else compute inline (Glob `**/package.json,**/*.{css,scss,tsx,jsx,vue,svelte}` + Read top files + grep for color/spacing literals). Decide INTAKE branch:
   - empty folder + URL hint in task ("Stripe 같이" / "https://...") AND persona_signal_initial = `F` → **F-FAST PATH**: skip SLOT_GATE entirely, propose plan immediately with all defaults (audience=`[FILL IN]`, tone_seed from URL or `stripe`, exit_scope=`handoff-zip`, etc.). Founder smashes `go`, gets handoff zip ASAP.
   - empty folder (no URL) → SLOT_GATE (greenfield mode)
   - existing code → CONTEXT_DETECT brief, then SLOT_GATE
