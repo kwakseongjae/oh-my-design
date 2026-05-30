@@ -3,6 +3,7 @@ import { existsSync, readdirSync } from "fs";
 import { join } from "path";
 import { DESIGN_TYPES } from "@/lib/survey/types";
 import { getChangelog } from "@/lib/changelog";
+import { REGISTRY_BY_ID } from "@/data/registry.generated";
 
 const siteUrl = "https://oh-my-design.kr";
 const REFS_DIR = join(process.cwd(), "references");
@@ -105,13 +106,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.55,
   }));
 
+  // Honest per-reference lastModified — the DESIGN.md "verified" date from the
+  // registry, not build-time now() (which trains crawlers to discount our
+  // timestamps). Mirrors the changelog routes' real-date pattern above.
   const referenceRoutes: MetadataRoute.Sitemap = listReferenceIds().map(
-    (id) => ({
-      url: `${siteUrl}/design-systems/${id}`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.75,
-    }),
+    (id) => {
+      const verified = REGISTRY_BY_ID[id]?.verified;
+      return {
+        url: `${siteUrl}/design-systems/${id}`,
+        lastModified: verified ? new Date(verified) : now,
+        changeFrequency: "monthly" as const,
+        priority: 0.75,
+      };
+    },
   );
 
   const resultRoutes: MetadataRoute.Sitemap = Object.keys(DESIGN_TYPES).map(

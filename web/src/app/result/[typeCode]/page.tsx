@@ -15,6 +15,7 @@ import {
 import { getLogoUrl, isGitHubLogo } from "@/lib/logos";
 import { event } from "@/lib/gtag";
 import { ShareButtons } from "@/components/survey/share-buttons";
+import { InstallCta } from "@/components/survey/install-cta";
 import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -240,6 +241,13 @@ export default function SharedResultPage(props: { params: Params }) {
               })}
             </div>
           </div>
+
+          {/* Install — convert the shared-link visitor into the CLI product */}
+          <InstallCta
+            refId={matches.primary[0]?.id}
+            typeCode={code}
+            location="shared_result"
+          />
 
           {/* Share this result */}
           <div className="flex items-center justify-center gap-3 pt-4">

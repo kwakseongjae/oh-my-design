@@ -32,6 +32,57 @@ export function getDesignSystem(refId: string): DesignSystemInfo | null {
   };
 }
 
+export interface RelatedRef {
+  id: string;
+  name: string;
+  category: string;
+  primaryColor: string;
+}
+
+function hexToRgb(hex: string): [number, number, number] | null {
+  const m = hex.replace("#", "").match(/.{2}/g);
+  if (!m || m.length < 3) return null;
+  return [parseInt(m[0], 16), parseInt(m[1], 16), parseInt(m[2], 16)];
+}
+
+/**
+ * Sibling references for the detail-page "Related design systems" block.
+ * Same category first (the strongest "you might also like" signal), then
+ * nearest by primary-color distance, so the list is always full and visually
+ * coherent. Deterministic (id tie-break) so SSG output is stable. Powers
+ * detail→detail internal links for session + crawl depth.
+ */
+export function getRelatedReferences(id: string, n = 6): RelatedRef[] {
+  const self = REGISTRY_BY_ID[id];
+  if (!self) return [];
+  const selfRgb = hexToRgb(self.primaryColor);
+
+  const scored = REGISTRY.filter((e) => e.id !== id).map((e) => {
+    const sameCat = e.category === self.category ? 0 : 1;
+    const rgb = hexToRgb(e.primaryColor);
+    const dist =
+      selfRgb && rgb
+        ? Math.sqrt(
+            (selfRgb[0] - rgb[0]) ** 2 +
+              (selfRgb[1] - rgb[1]) ** 2 +
+              (selfRgb[2] - rgb[2]) ** 2,
+          )
+        : Number.MAX_SAFE_INTEGER;
+    return { e, sameCat, dist };
+  });
+
+  scored.sort(
+    (a, b) => a.sameCat - b.sameCat || a.dist - b.dist || a.e.id.localeCompare(b.e.id),
+  );
+
+  return scored.slice(0, n).map(({ e }) => ({
+    id: e.id,
+    name: e.displayName || e.name,
+    category: e.category,
+    primaryColor: e.primaryColor,
+  }));
+}
+
 /** All design-system entries, full systems first (alphabetical within each type). */
 export function getAllDesignSystems(): DesignSystemInfo[] {
   return REGISTRY

@@ -8,6 +8,7 @@ import { getDesignType, matchReferences, AXES, buildTypeAvatarUrl, type TypeCode
 import { getLogoUrl, isGitHubLogo } from "@/lib/logos";
 import { event } from "@/lib/gtag";
 import { ShareButtons } from "./share-buttons";
+import { InstallCta } from "./install-cta";
 import type { QuizScore } from "@/lib/survey/scoring";
 
 /* ── Type Avatar (DiceBear Thumbs with custom palette) ──── */
@@ -219,6 +220,22 @@ export function ResultCard({
           or browse all 108 references
           <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
         </a>
+      </motion.section>
+
+      {/* ══════════ SECTION 4 · INSTALL (the persistent-memory product) ═════
+         Peak intent — they just learned their match. Convert attention into a
+         DESIGN.md their agent keeps, not just a web session. */}
+      <motion.section
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 0.4 }}
+        className="mt-8"
+      >
+        <InstallCta
+          refId={matches.primary[0]?.id}
+          typeCode={score.typeCode}
+          location="curation_result"
+        />
       </motion.section>
     </div>
   );

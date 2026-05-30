@@ -14,9 +14,11 @@
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { DetailView } from "./detail-view";
 import { extractTokens } from "@/lib/extract-tokens";
+import { getRelatedReferences } from "@/lib/design-systems";
 
 const REFS_DIR = join(process.cwd(), "references");
 
@@ -126,5 +128,57 @@ export default async function DesignSystemDetailPage({
   const detail = loadDetail(id);
   if (!detail) notFound();
   const tokens = extractTokens(detail);
-  return <DetailView detail={detail} tokens={tokens} />;
+  const related = getRelatedReferences(id, 6);
+  return (
+    <>
+      <DetailView detail={detail} tokens={tokens} />
+      <RelatedReferences related={related} />
+    </>
+  );
+}
+
+/**
+ * Server-rendered "Related design systems" block — real <Link>s so crawlers
+ * follow detail→detail and readers hop deeper into the wedge. Colored-initial
+ * tiles (no external logo fetch) keep it robust in the static HTML.
+ */
+function RelatedReferences({
+  related,
+}: {
+  related: ReturnType<typeof getRelatedReferences>;
+}) {
+  if (related.length === 0) return null;
+  return (
+    <section className="border-t border-border/40 bg-muted/20 dark:bg-white/[0.02]">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+        <h2 className="mb-5 text-sm font-semibold uppercase tracking-[0.1em] text-muted-foreground">
+          Related design systems
+        </h2>
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-6">
+          {related.map((r) => (
+            <Link
+              key={r.id}
+              href={`/design-systems/${r.id}`}
+              className="group flex items-center gap-2.5 rounded-xl border border-border/60 bg-card/50 p-3 transition-all hover:-translate-y-0.5 hover:border-foreground/30 hover:shadow-sm dark:border-white/10 dark:bg-white/[0.04]"
+            >
+              <span
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs font-bold ring-1 ring-border/50"
+                style={{ background: r.primaryColor + "1a", color: r.primaryColor }}
+              >
+                {r.name.charAt(0).toUpperCase()}
+              </span>
+              <span className="min-w-0">
+                <span className="block truncate text-sm font-semibold leading-tight">
+                  {r.name}
+                </span>
+                <span className="block truncate text-[11px] text-muted-foreground">
+                  {r.category.replace(/-/g, " ")}
+                </span>
+              </span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
