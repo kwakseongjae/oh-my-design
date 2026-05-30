@@ -683,25 +683,33 @@ export async function runInstallSkills(
     return 0;
   }
 
-  // Friendly next-step nudge after successful install
+  // Friendly next-step nudge after successful install.
+  // The first prompt is kept identical to the README's "Your first 60 seconds"
+  // block so the README, the terminal, and the postinstall message all teach
+  // the same activation moment. Bilingual (EN + KR) so an English reader is not
+  // handed a Korean-only outro.
   const nextSteps = [
-    `${pc.bold('Open Claude Code (or Codex). Just say what you want:')}`,
+    `${pc.bold('Restart your agent, then type your first prompt:')}`,
     '',
-    `  ${pc.dim('"토스 스타일 가족 식단 공유 앱 메인 화면 디자인해줘"')}`,
-    `  ${pc.dim('"Linear-clone B2B SaaS dashboard 만들고 싶어"')}`,
-    `  ${pc.dim('"이 카드 좀 더 세련되게"')}    ${pc.dim('# 작업 중 자연어 — 자동 라우팅')}`,
+    `  ${pc.cyan('EN')}  ${pc.dim('Set up our design system — Toss-style, for a family meal-tracking app.')}`,
+    `  ${pc.cyan('KR')}  ${pc.dim('토스 스타일로 가족 식단 공유 앱 디자인 시스템 잡아줘')}`,
     '',
-    `${pc.bold('Claude가 description 매칭으로 자동 라우팅')} ${pc.dim('— 슬래시 명령 안 쳐도 됨. Hook은 DESIGN.md 부재 시 omd:init 안내만.')}`,
+    `${pc.dim('Your agent runs omd:init and writes DESIGN.md. Then build against it:')}`,
+    `  ${pc.cyan('EN')}  ${pc.dim('Design the home screen.')}   ${pc.cyan('KR')}  ${pc.dim('홈 화면 디자인해줘')}`,
     '',
-    `${pc.dim('Power user shortcut: ')}${pc.cyan('/omd-harness <task>')} ${pc.dim('— 즉시 진입.')}`,
+    `${pc.dim('Full walkthrough → "Your first 60 seconds" in the README. Routing is automatic — no slash command needed.')}`,
+    `${pc.dim('Power user: ')}${pc.cyan('/omd-harness <task>')}${pc.dim(' — jump straight into the pipeline.')}`,
     '',
-    `${pc.yellow('⚠ Already-running Claude Code session?')} ${pc.dim('Run `/agents` inside the session to reload — or quit (Cmd+Q on macOS) and relaunch. Without reload, hooks/agents do not load.')}`,
+    `${pc.yellow('⚠ Already-running session?')} ${pc.dim('Run `/agents` to reload — or quit (Cmd+Q on macOS) and relaunch. Without reload, hooks/agents do not load.')}`,
   ].join('\n');
   p.note(nextSteps, 'Next');
 
+  // Counts derived from what was actually resolved/installed — never hardcoded,
+  // so the outro can't drift from the real skill/agent/hook set (or the README).
+  const hookCount = targets.includes('claude-code') ? 4 : 0;
   p.outro(
     pc.green(
-      `Done. 6 skills · 11 sub-agents · 4 hooks installed (${writtenCount} files).`,
+      `Done. ${skills.length} skills · ${canonicalAgents.length} sub-agents · ${hookCount} hooks installed (${writtenCount} files).`,
     ),
   );
   return 0;

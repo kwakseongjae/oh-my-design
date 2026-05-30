@@ -1,7 +1,7 @@
 {
   "name": "oh-my-design-mcp",
   "version": "0.1.0",
-  "description": "Drop-in MCP server exposing 107 brand design systems (DESIGN.md) as resources + 3 tools. Zero AI calls, zero config, fully offline.",
+  "description": "Drop-in MCP server exposing 100+ brand design systems (DESIGN.md) as resources + 3 tools. Zero AI calls, zero config, fully offline.",
   "type": "module",
   "bin": {
     "oh-my-design-mcp": "./dist/index.js"

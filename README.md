@@ -37,6 +37,28 @@ Then restart your agent (Cmd+Q in Claude Code, then relaunch) so the new skills 
 
 That is the only CLI command you will run. Everything else is natural language to your agent.
 
+## Your first 60 seconds
+
+This is the whole point: one prompt turns into a `DESIGN.md` your agent remembers across every future session.
+
+1. Install (above), then **restart your agent** (Cmd+Q, relaunch) so it loads the new skills.
+
+2. In your project, type your first prompt — copy this exactly:
+
+   > Set up our design system — Toss-style, for a family meal-tracking app.
+
+   Your agent runs **`omd:init`**: it recommends a reference from the 100+ real-company catalog, asks you to confirm, and writes **`DESIGN.md`** to your project root. (`omd:sync` then wires up the `CLAUDE.md` / `AGENTS.md` / Cursor shims so every agent reads it automatically.)
+
+   **That `DESIGN.md` is your activation — your agent now remembers your brand.**
+
+3. Now build against it:
+
+   > Design the home screen.
+
+   The agent reads `DESIGN.md` and ships brand-correct UI. No re-explaining your design system, ever again.
+
+Don't want Toss? Any brand works — `Stripe-style`, `Linear-clone B2B SaaS`, `Karrot-style marketplace`. Browse the full catalog at [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems).
+
 ## Upgrading
 
 Skills and agents evolve every release. To pick up the latest bundle in an existing project:
@@ -167,6 +189,21 @@ Works with Claude Desktop, Cursor, Cline, Continue, and Codex. Zero AI calls, ze
 - It is not a collection of CLI commands. There is one bootstrap command. Everything else is skill prose.
 - It is not an SDK. If you need the matching algorithm or shim format, look at the skill markdown directly.
 - It does not generate emojis as icons. Asset agent prefers inline SVG (Lucide-matched or custom).
+
+## Repository layout
+
+> For contributors. If you're just *using* OmD, you never touch these — the install ships everything you need.
+
+The brand `DESIGN.md` corpus lives in more than one place **on purpose**. Here's the map so nothing looks like accidental duplication:
+
+| Path | In git? | Ships to npm? | Role |
+|---|---|---|---|
+| `web/references/<id>/DESIGN.md` | ✅ | ✅ (CLI pkg) | **Canonical source of truth.** Lives under `web/` because the Vercel project root is `web/` — the site build can only read files beneath it. Everything else is derived from here. |
+| `references` → `web/references` | ❌ gitignored | — | Local convenience symlink so root-level scripts/tests resolve the same path during local dev. |
+| `design-md/<id>/DESIGN.md` | ✅ | ❌ | Public [awesome-design-md](https://github.com/VoltAgent/awesome-design-md)-style mirror — frontmatter-stripped + a "Source / Last verified" note. A different *format*, not a byte copy. |
+| `packages/mcp/data/references/` | ❌ gitignored | ✅ (MCP pkg) | Build artifact. Regenerated from `web/references` by `packages/mcp/scripts/sync-data.mjs` on every `prepublish`/`build`. Never edit by hand. |
+
+**Rule of thumb: edit `web/references/<id>/DESIGN.md` only.** `web/scripts/build-registry.mjs` regenerates the typed registry, and the pre-commit catalog-integrity gate (`web/__tests__/catalog-integrity.test.ts`) plus `sync-data.mjs` keep the derived copies honest.
 
 ## Changelog
 

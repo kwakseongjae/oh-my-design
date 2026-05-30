@@ -7,7 +7,7 @@ oh-my-design itself uses Claude Code skills + subagents for its design harness. 
 ## Repository quick map
 
 - `src/` — TypeScript source for the `omd` CLI (`bin/oh-my-design.ts` is the entrypoint).
-- `references/` — 67 real-company DESIGN.md files used as bundled references.
+- `web/references/<id>/DESIGN.md` — 100+ real-company DESIGN.md files; the **canonical source of truth** for the reference catalog. It lives under `web/` because the Vercel project root is `web/` (the site build can only read files beneath it). The root `references` symlink, `design-md/`, and `packages/mcp/data/references/` are all derived from here — see **Repository layout** in `README.md` for why each tree exists and which to edit. Rule: edit `web/references/` only.
 - `skills/omd-*` — Claude Code / Codex / OpenCode skill files (installed into target projects via `omd install-skills`).
 - `.claude/agents/` — Subagent definitions for the design harness (Claude Code).
 - `.codex/agents/` — Mirror TOML definitions for the design harness (Codex).

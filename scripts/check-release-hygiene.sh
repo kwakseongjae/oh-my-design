@@ -17,6 +17,35 @@ set -uo pipefail
 
 mode="${1:-staged}"
 
+# --- pack mode: guard the npm tarball against shipping internal-only material.
+# `files[]` in package.json must never carry the bare `data` dir (which contains
+# architecture-proposals/, issues/, reference-audits/, research/, audit/). Run as
+# part of prepublishOnly so a regressed files[] can never publish private docs. ---
+if [ "$mode" = "pack" ]; then
+  manifest=$(npm pack --dry-run --json 2>/dev/null)
+  if [ -z "$manifest" ]; then
+    echo "[hygiene] ⚠ could not read 'npm pack --dry-run' output; skipping tarball check."
+    exit 0
+  fi
+  leaked=$(printf '%s' "$manifest" \
+    | grep -oE '"path": *"[^"]*"' \
+    | grep -E 'data/(architecture-proposals|issues|reference-audits|research|audit)(/|")' || true)
+  if [ -n "$leaked" ]; then
+    echo ""
+    echo "  ✗ release-hygiene: npm tarball would ship internal-only docs:"
+    echo ""
+    echo "$leaked" | sed 's/^/      /'
+    echo ""
+    echo "  Fix: narrow package.json files[] — never list the bare \"data\" dir;"
+    echo "       enumerate only the runtime files (opt-out-corpus.json, synonyms.json,"
+    echo "       vocabulary.json, reference-fingerprints.json, reference-tags.md)."
+    echo ""
+    exit 1
+  fi
+  echo "[hygiene] ✓ npm tarball contains no internal-only docs."
+  exit 0
+fi
+
 if [ "$mode" = "staged" ]; then
   files=$(git diff --cached --name-only --diff-filter=AM 2>/dev/null)
 else
