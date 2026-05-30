@@ -316,8 +316,8 @@ export function ReferenceSelector({
             className="relative inline-flex flex-shrink-0 items-center gap-0.5 rounded-full border border-border/50 dark:border-white/10 bg-card/50 dark:bg-white/[0.04] p-1 backdrop-blur-xl shadow-sm"
           >
             {[
-              { value: false, label: "Customize" },
               { value: true,  label: "Use as-is" },
+              { value: false, label: "Customize" },
             ].map((opt) => {
               const active = skipWizard === opt.value;
               return (

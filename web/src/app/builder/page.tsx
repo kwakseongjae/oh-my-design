@@ -62,7 +62,9 @@ export default function BuilderPage() {
   const [stylePreferences, setStylePreferences] = useState<StylePreferences>({});
   // Lifted from ReferenceSelector so the header can reflect the skip-wizard
   // mode (Reference → Export, no Customize) the instant the user toggles it.
-  const [skipWizard, setSkipWizard] = useState(false);
+  // Default = true ("Use as-is"): picking a reference jumps straight to the
+  // original DESIGN.md export, no customization wizard. Customize is opt-in.
+  const [skipWizard, setSkipWizard] = useState(true);
 
   const [refsLoading, setRefsLoading] = useState(true);
 
