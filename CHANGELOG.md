@@ -6,6 +6,17 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.6.1 — 2026-06-02
+
+**Catalog grows to 150 brands (+13), the bundled DESIGN.md mirror is fixed, and the reference pipeline gains deterministic proof/format gates.**
+
+- **13 new references** through a new proof-gated pipeline — Sendbird (US), KR: velog · NHN Cloud · Hyundai Card · Melon · Bithumb, TW: Rayark · 91APP · Kdan · Hahow · Gogolook · KKBOX · Cake. Every spec value is live-DOM-inspected or pulled from an open-source token file; no fabricated values.
+- **Fixed the bundled `design-md/` mirror** — 110 DESIGN.md files carried stale pre-migration frontmatter/bodies (one shipped a broken `## 1. Overview` header). Re-synced to the canonical references.
+- **Backfilled Do's-and-Don'ts** for 21 references that previously rendered an empty Guidelines section.
+- **New deterministic catalog gates** — proof block for verified refs, §4 placeholder-value lint, §7 guideline-marker advisory, §1 blank-line guard; plus `spec/regional-sources.yaml` for KR/TW source coverage.
+
+---
+
 ## 1.6.0 — 2026-05-28
 
 **Conversational deepening — harness skill now reads your codebase before asking, then runs a single-batch picker interview matching the Ouroboros/donguri feel — zero external plugin dependencies.**
