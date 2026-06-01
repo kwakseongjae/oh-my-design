@@ -61,7 +61,7 @@ For each ref, attempt to verify **all** that exist in the brand's surface (do no
 
 For each brand processed, produce:
 
-1. **Working notes** in `web/references/<id>/.verification.md` (gitignored) — the raw three-tier tables.
+1. **Working notes + Proof block** in `web/references/<id>/.verification.md` (**tracked, committed** — this is the audit trail; see Proof Gate below).
 2. **DESIGN.md §4 update** — canonical schema variant blocks.
 3. **Verification footer** at end of §4:
    ```
@@ -72,6 +72,66 @@ For each brand processed, produce:
    **Conflicts unresolved:** <list, or "none">
    ```
 4. **Test additions** — extract-components.test.ts assertions for the canonical default variant of each component class.
+
+---
+
+## Proof Gate (Tier 1) — enforced by catalog-integrity
+
+A footer that *says* `Verified: <date>` is not proof — earlier batches stamped
+footers without touching §4 (the "footer-only" anti-pattern). The proof gate makes
+the evidence machine-checkable and tracked. **Active for refs `verified >= 2026-06-01`;
+older refs are exempt** (grandfathered — the gate is forward-only).
+
+During Tier 1 live inspect, write a `## Proof` block into the (tracked)
+`web/references/<id>/.verification.md`:
+
+```markdown
+## Proof — Tier 1 live inspect
+
+**Inspected:** 2026-06-01
+**Method:** playwright getComputedStyle
+**Sources:**
+- https://<brand>.com/ — nav, hero CTA, footer
+- https://<brand>.com/<surface> — commerce/checkout (if separate)
+
+### Raw samples
+- `https://<brand>.com/` · hero CTA `.btn-primary` · bg `rgb(116, 92, 237)` = #745CED · radius 8px · padding 12px 24px · font 16px/600
+- `https://<brand>.com/` · nav link · color `rgb(17,17,17)` · 15px/500
+- … (>= 5 lines, each ONE real computed-style observation with a color or px value)
+```
+
+The catalog-integrity test asserts, for every gated ref:
+
+1. `.verification.md` exists and contains a `## Proof` heading.
+2. The proof block holds **>= 5 raw samples** (lines carrying `rgb(` / `#hex` / `px`).
+3. At least one `http(s)` source URL is present.
+4. The §4 footer `**Tier 1 sources:**` lists **>= 1** URL.
+
+This cannot be satisfied by stamping a footer — you have to paste the real DOM
+values you read. A real inspect produces 30–100 samples (see `apple/.verification.md`);
+fewer than 5 means the inspect did not happen.
+
+**Drift re-check (UPDATE mode):** re-inspect the same selectors and diff the new
+computed values against the stored `### Raw samples`. Any field that moved → update
+§4 and note the rollback reason in the conflict matrix. (Runtime step; not CI-gated.)
+
+---
+
+## Regional sources — KR / TW (`spec/regional-sources.yaml`)
+
+getdesign.md and refero under-cover Korean and Taiwanese brands, so Tier 2 cannot
+carry a KR/TW ref. For `country: KR` or `country: TW` refs `verified >= 2026-06-01`:
+
+- The §4 `**Tier 1 sources:**` footer must list **>= 2 brand-owned regional sources**
+  (the brand's own site / official DS docs / official eng-design blog / official
+  GitHub org). See the `brand_owned` index in `spec/regional-sources.yaml`.
+- getdesign.md and styles.refero.design **do not count** toward the >= 2 — they are
+  Tier-2 cross-check only.
+- Use the `discovery` aggregators (요즘IT, velog, iThome, INSIDE…) to FIND the
+  brand's first-party surface, but cite the first-party surface, not the aggregator.
+
+catalog-integrity asserts the `>= 2 non-Western Tier-1 source` rule for gated KR/TW
+refs.
 
 ---
 

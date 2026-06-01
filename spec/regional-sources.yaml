@@ -1,0 +1,77 @@
+# Regional source registry — KR / TW reference verification
+#
+# WHY THIS EXISTS
+# The Tier-2 cross-check catalogs we lean on (getdesign.md, styles.refero.design)
+# are Western-biased: they under-cover Korean and Taiwanese brands, and when they
+# DO list one the values are often stale or guessed. So for KR/TW references the
+# pipeline cannot fall back on Tier 2 — Tier 1 (the brand's OWN surface) has to
+# carry the proof. This file is two things:
+#   (a) a DISCOVERY index — where to find regional brand-owned eng/design surfaces
+#   (b) the POLICY the catalog-integrity proof gate enforces for KR/TW brands
+#
+# LIVENESS / HONESTY RULE
+# The URLs below are SEED pointers, not asserted-live facts. During CREATE/UPDATE
+# the agent MUST HEAD-check the surface it actually cites (same rule as Tier-1
+# liveness). A dead seed → find the brand's current official surface; do not cite a
+# URL you did not open this turn (see spec/verification-pipeline.md "Honesty rules").
+
+policy:
+  applies_to: [KR, TW]
+  cutoff: "2026-06-01"           # refs verified on/after this date are gated; older refs exempt
+  regional_min: 2               # KR/TW gated ref must cite >= 2 brand-owned regional sources
+  rule: >
+    A KR or TW reference verified on/after the cutoff must cite >= regional_min
+    brand-owned regional sources in its §4 "Tier 1 sources" footer and back them
+    with a `## Proof` block in .verification.md (>= 5 raw computed-style samples +
+    source URL + inspect date). "Brand-owned" = the brand's own site, official
+    design-system docs, official engineering/design blog, or official GitHub org.
+    Western third-party catalogs (getdesign.md, styles.refero.design) are Tier-2
+    cross-check ONLY and DO NOT count toward regional_min.
+
+# ── Brand-owned engineering / design surfaces (authoritative Tier 1) ──────────
+# These are first-party. Citing the brand's own site PLUS one of these (or its
+# official GitHub org) satisfies regional_min for that brand.
+brand_owned:
+  kr:
+    - { brand: Toss,              url: "https://toss.tech" }
+    - { brand: 우아한형제들/배민,   url: "https://techblog.woowahan.com" }
+    - { brand: Kakao,             url: "https://tech.kakao.com" }
+    - { brand: "Kakao Ent. (FE)", url: "https://fe-developers.kakaoent.com" }
+    - { brand: Naver,             url: "https://d2.naver.com" }
+    - { brand: "Naver (design)",  url: "https://campaign.naver.com/design" }
+    - { brand: 당근 (Daangn),      url: "https://medium.com/daangn" }
+    - { brand: LINE,              url: "https://techblog.lycorp.co.jp/ko" }
+    - { brand: 마켓컬리 (Kurly),    url: "https://helloworld.kurly.com" }
+    - { brand: 뱅크샐러드,          url: "https://blog.banksalad.com" }
+    - { brand: 29CM,              url: "https://medium.com/29cm" }
+    - { brand: 무신사 (Musinsa),    url: "https://medium.com/musinsa-tech" }
+    - { brand: 직방 (Zigbang),      url: "https://medium.com/zigbang" }
+    - { brand: 오늘의집 (Bucketplace), url: "https://www.bucketplace.com/post" }
+    - { brand: Spoqa,             url: "https://spoqa.github.io" }
+    - { brand: KRDS (gov DS),     url: "https://www.krds.go.kr" }
+  tw:
+    - { brand: Dcard,             url: "https://medium.com/dcardlab" }
+    - { brand: Pinkoi,            url: "https://medium.com/pinkoi-engineering" }
+    - { brand: "Gogolook/Whoscall", url: "https://gogolook.com/en/blog" }
+    - { brand: KKBOX,             url: "https://engineering.kkbox.com" }
+    - { brand: 17LIVE,            url: "https://17.live" }
+    - { brand: KKday,             url: "https://www.kkday.com" }
+    - { brand: iCHEF,             url: "https://www.ichefpos.com" }
+    - { brand: "91APP",           url: "https://www.91app.com" }
+    - { brand: Cake,              url: "https://www.cake.me" }
+
+# ── Discovery aggregators (community media) ───────────────────────────────────
+# Use these to FIND a brand's first-party surface. They are NOT Tier 1 and DO NOT
+# count toward regional_min — a brunch/velog post about a brand is not the brand.
+discovery:
+  kr:
+    - "https://yozm.wishket.com"   # 요즘IT
+    - "https://velog.io"
+    - "https://disquiet.io"
+    - "https://brunch.co.kr"
+    - "https://eopla.net"          # 이오플래닛
+  tw:
+    - "https://www.ithome.com.tw"  # iThome
+    - "https://buzzorange.com/techorange"  # TechOrange
+    - "https://www.inside.com.tw"  # INSIDE
+    - "https://vocus.cc"

@@ -115,7 +115,6 @@ DJI almost never uses light/thin weights for UI text — thin weights read as fr
 - Background: transparent
 - Text: sky-blue accent (≈`#0a84ff`)
 - Border: none
-- Radius: n/a
 - Font: 15px / 400
 - Use: Inline links, "learn more" affordances, spec-detail expanders. The only place the blue accent reliably appears.
 

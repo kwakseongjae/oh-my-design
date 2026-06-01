@@ -44,6 +44,8 @@ CREATE에는 항상 SYNC가 뒤따른다 (count +1).
 3. GitHub: `gh search repos "<brand> design tokens"`
 4. 발견 시 → 공식 토큰 그대로 추출
 5. **추가**: playwright로 brand 메인 사이트 라이브 inspect (computed style: hero CTA / nav / footer / search input / card)
+6. **🔒 Proof block 작성 (mandatory, `verified >= 2026-06-01` 게이트됨)**: inspect한 raw computed-style를 `web/references/<id>/.verification.md`에 `## Proof — Tier 1 live inspect` 블록으로 기록 — `**Inspected:**` 날짜 + `**Sources:**` URL + `### Raw samples` (≥5줄, 각 줄 = 실제 1개 관측값 with `rgb(`/`#hex`/`px`). 포맷은 `spec/verification-pipeline.md` "Proof Gate" 참조. **footer만 박고 proof 생략 = catalog-integrity 실패.**
+7. **🌏 KR/TW 추가 시 (`country: KR|TW`, `verified >= 2026-06-01`)**: Tier 2(getdesign/refero)는 한국·대만 brand 커버리지가 약함 → Tier 1이 증거를 짊어진다. `spec/regional-sources.yaml`의 `brand_owned`에서 **brand 자체 surface ≥2개**(공식 사이트 / DS docs / 공식 eng-design 블로그 / 공식 GitHub org)를 §4 footer `Tier 1 sources`에 명시. getdesign/refero는 이 ≥2에 **카운트 안 됨**. `discovery` aggregator(요즘IT/velog/iThome/INSIDE)는 brand surface를 **찾는 용도**일 뿐 인용 대상 아님.
 
 ### Phase 3 — Tier 2 수집 (둘 다 시도)
 - `WebFetch https://getdesign.md/<id>` — 토큰 + component 스펙
@@ -132,6 +134,8 @@ const els = document.querySelectorAll('button, a[role=button], input, [role=tab]
 - Text: `#FFFFFF`
 - Border: 1px solid `#256EF4`
 ```
+
+**측정 못 한 필드는 불릿째 생략.** 값이 없으면 `- Padding: not measured` / `- Radius: n/a` / `not specified` 같은 placeholder를 절대 쓰지 말 것 — component preview가 그 문자열을 실제 스펙 값처럼 렌더한다. variant 블록은 측정한 필드만 나열한다 (Background+Text+Radius만 있어도 OK). catalog-integrity가 placeholder lint로 막는다.
 
 **State variants (Hover/Pressed/Focus/Disabled/Required/Error)**도 같은 variant 블록 안에서 별도 `- Hover:` / `- Pressed:` 불릿으로. 별도 `**Variant**` 블록을 따로 만들지 않는다.
 
@@ -255,6 +259,10 @@ return out.slice(0, 30);
 - ❌ 검증 footer 누락
 - ❌ 충돌 silent 해결
 - ❌ getdesign.md 표시값을 Tier 1로 취급 (Tier 2임)
+- ❌ **Proof block 없이 footer만 `Verified` 박기** — `verified >= 2026-06-01` ref은 `.verification.md`에 `## Proof` 블록(≥5 raw sample + URL + 날짜) 필수. footer-only stamp = catalog-integrity 실패. (`spec/verification-pipeline.md` Proof Gate)
+- ❌ **§4 필드에 placeholder 값** (`not measured` / `not specified` / `n/a` / `tbd`) — 측정 못 한 필드는 불릿째 생략. preview가 문자열을 그대로 렌더해서 깨져 보인다. catalog-integrity placeholder lint가 막음.
+- ❌ **§7 Do's and Don'ts를 `**Do**` 볼드 헤더나 `- Do …` 평문으로 작성** — 파서(`extractGuidelines`)는 **`### Do` / `### Don't` 헤더** 또는 인라인 `- **DO**` 불릿만 인식한다. 그 외 형식은 0개로 처리돼 preview Guidelines 섹션이 통째로 빈다. 반드시 `### Do` + 불릿 / `### Don't` + 불릿 형식. (don't 불릿은 맨 앞 "Don't" 빼고 적기 — 섹션 헤더가 컨텍스트 제공). catalog-integrity guideline advisory가 감지.
+- ❌ **KR/TW ref인데 Tier 1 source가 getdesign/refero뿐** — `verified >= 2026-06-01` KR/TW는 brand-owned regional source ≥2 필수 (`spec/regional-sources.yaml`). 서구 카탈로그는 Tier 2일 뿐 카운트 안 됨.
 - ❌ **새 reference 추가 후 SYNC phase 안 돌리고 종료** — fingerprints / API mapping / logos / docs SEO 카운트가 mismatch. 단일 추가도 SYNC 필수 (아래 Phase 5 참조).
 - ❌ **§1 헤더를 비표준으로 변경** — `## 1. Visual Theme & Atmosphere` 가 catalog canonical. "Overview" / "Identity" / "Foundation tokens" / `## §1` 등 변형 쓰면 web preview Hero 카드의 description이 빈칸으로 렌더 (2026-05-14 kr10 batch에서 flex/upbit/kbank 3건 발생). 모든 §N 헤더는 `## N. <Title>` 형식 + §1은 무조건 `Visual Theme & Atmosphere` + 첫 단락은 산문 prose (테이블/리스트/서브헤딩 금지). 검증: `grep -L '^## 1\. Visual Theme' references/*/DESIGN.md` 결과 0.
 
