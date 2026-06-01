@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-15T00:00:00Z",
+  "generated_at": "2026-06-01T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 137,
+  "count": 150,
   "items": [
     {
       "id": "17live",
@@ -3268,6 +3268,384 @@
       "signature_motion": "찜 heart: outline → filled brand pink with brief pulse; primary CTA uses pink-400 fill, darkening to pink-450/550 on hover/press.",
       "has_personas": true,
       "category_raw": "Commerce / Women's Fashion Discovery"
+    },
+    {
+      "id": "sendbird",
+      "primary_color_hex": "#742DDD",
+      "category": "Developer Tools",
+      "visual_theme": "Two-faced infrastructure: a token-driven chat UIKit on Sendbird purple #742DDD over an 8-step neutral grayscale with universal 4px flat fills, paired with a near-monochrome marketing site — white ground, 72px serif display headline, Helvetica Now Text body, black/white pill CTAs. Brand color is held back from chrome and spent only on product primary actions.",
+      "voice_fingerprint": {
+        "register": "infrastructure-precise",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "english-technical"
+      },
+      "tone_keywords": [
+        "precise",
+        "reliable",
+        "enterprise-assured",
+        "plain",
+        "calm",
+        "invisible"
+      ],
+      "antipatterns": [
+        "No gradients or drop shadows — flat fills and 1px hairlines only",
+        "No brand purple in marketing chrome",
+        "No second brand hue; green/red/blue are semantic only",
+        "No multi-field spec lines",
+        "No body copy set in the serif display face"
+      ],
+      "signature_motion": "New messages fade/slide in at the column bottom (~150-200ms ease-out); near-instant color steps on hover/focus/press (purple-300 -> 400 -> 500); overlay scrim fades in ~200ms. Motion clarifies, never performs.",
+      "has_personas": true,
+      "category_raw": "developer-infra / conversations API (UIKit)"
+    },
+    {
+      "id": "velog",
+      "primary_color_hex": "#12B886",
+      "category": "Developer Tools",
+      "visual_theme": "Reading-first Korean dev-blog surface on the Open Color palette: soft gray0 #F8F9FA canvas, white content, near-black #212529 text, and brand teal6 #12B886 reserved as the single action signal (the write button). Calm, editorial, content-forward.",
+      "voice_fingerprint": {
+        "register": "calm-editorial",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "korean-developer"
+      },
+      "tone_keywords": [
+        "calm",
+        "reading-first",
+        "minimal",
+        "content-forward",
+        "legible",
+        "developer-native"
+      ],
+      "antipatterns": [
+        "No teal as a background wash — it is the single action color",
+        "No pure black text (use #212529)",
+        "No heavy shadows — depth is the gray-to-white value step",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Quiet, near-instant state transitions; the dark login pill and teal write button are static anchors — motion stays out of the reading surface.",
+      "has_personas": true,
+      "category_raw": "developer-tools / dev-blogging platform"
+    },
+    {
+      "id": "nhncloud",
+      "primary_color_hex": "#125DE6",
+      "category": "Developer Tools",
+      "visual_theme": "Two-surface enterprise cloud: a polished corporate site (Pretendard Variable, vivid brand blue #125DE6, big 30px rounded pills) paired with the TOAST UI open-source widget library (lighter #00a9ff accent, tight 4px radius, 13px text). Clean, functional, trustworthy infrastructure.",
+      "voice_fingerprint": {
+        "register": "enterprise-precise",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "korean-technical"
+      },
+      "tone_keywords": [
+        "enterprise",
+        "trustworthy",
+        "functional",
+        "clean",
+        "scalable",
+        "precise"
+      ],
+      "antipatterns": [
+        "Don't mix the corporate 30px-pill language with the TOAST UI 4px-widget language",
+        "Don't use the #00a9ff widget blue as the corporate brand color (#125DE6)",
+        "No gradients",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Restrained corporate transitions; functional widget interactions in TOAST UI. Motion clarifies, never decorates.",
+      "has_personas": true,
+      "category_raw": "backend-devops / cloud infrastructure (NHN Cloud + TOAST UI)"
+    },
+    {
+      "id": "hyundaicard",
+      "primary_color_hex": "#000000",
+      "category": "Fintech",
+      "visual_theme": "Monochrome premium minimalism — black-and-white luxury where withholding color IS the identity — anchored by the proprietary Youandi (유앤아이) typeface as the brand signature. White ground, black ink, Noto Sans KR body, typography-as-identity. Korea's most design-celebrated card brand.",
+      "voice_fingerprint": {
+        "register": "premium-restrained",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "korean-premium"
+      },
+      "tone_keywords": [
+        "premium",
+        "monochrome",
+        "minimal",
+        "typographic",
+        "confident",
+        "cultured"
+      ],
+      "antipatterns": [
+        "No decorative color — the brand is monochrome; color is withheld on purpose",
+        "Don't substitute a generic font for the Youandi display identity",
+        "No visual clutter — typography and whitespace carry it",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Editorial restraint — slow, deliberate reveals; nothing flashy. The premium feel comes from stillness and typographic precision.",
+      "has_personas": true,
+      "category_raw": "fintech / premium credit card (design-led brand)"
+    },
+    {
+      "id": "rayark",
+      "primary_color_hex": "#5FE0EE",
+      "category": "Entertainment",
+      "visual_theme": "Dark premium gaming aesthetic from a Taipei rhythm-game studio (Cytus/Deemo/Sdorica): a near-black #1A1C1D canvas lit by a single electric-cyan #5FE0EE accent, white display type, and sharp 3px corners with white-outlined cyan CTAs. Cool, neon-on-black, rhythm-game energy.",
+      "voice_fingerprint": {
+        "register": "cool-gaming",
+        "sentence_length": "short",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "english-gaming"
+      },
+      "tone_keywords": [
+        "dark",
+        "electric",
+        "premium",
+        "rhythmic",
+        "immersive",
+        "cool"
+      ],
+      "antipatterns": [
+        "No light backgrounds — the canvas is near-black #1A1C1D",
+        "No second accent — electric cyan #5FE0EE is the only chromatic lift",
+        "Don't round corners heavily (sharp 3px)",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Beat-synced, kinetic energy true to rhythm games; quick sharp transitions, neon glow accents on the cyan.",
+      "has_personas": true,
+      "category_raw": "entertainment / indie game studio"
+    },
+    {
+      "id": "91app",
+      "primary_color_hex": "#061C3D",
+      "category": "Commerce",
+      "visual_theme": "Taiwan omnichannel retail-commerce SaaS (OMO). Deep-navy #061C3D structural brand with a coral-red #E85040 action accent on a clean white ground, Traditional-Chinese Noto Sans TC, generously rounded 16px primary buttons. Reads as trustworthy retail infrastructure with B2B confidence.",
+      "voice_fingerprint": {
+        "register": "b2b-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "traditional-chinese-business"
+      },
+      "tone_keywords": [
+        "trustworthy",
+        "retail-savvy",
+        "confident",
+        "omnichannel",
+        "growth-driven",
+        "professional"
+      ],
+      "antipatterns": [
+        "Keep navy #061C3D structural and coral #E85040 for action — don't swap their roles",
+        "No clutter — clean white ground",
+        "Maintain the rounded 16px primary-button language",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Smooth, professional B2B transitions; confident hover states on the navy and coral CTAs. Restrained and credible.",
+      "has_personas": true,
+      "category_raw": "ecommerce / omnichannel retail SaaS (OMO)"
+    },
+    {
+      "id": "melon",
+      "primary_color_hex": "#00CD3C",
+      "category": "Entertainment",
+      "visual_theme": "Dense, white, content-first Korean music-streaming UI (Kakao Entertainment): packed charts and lists, small 12-14px Pretendard type, sharp 0px corners, with the signature Melon green #00CD3C rationed onto active nav, tabs, and primary actions. Grayscale hierarchy (#1A1A1A/#666/#999) lets the green do all the signaling.",
+      "voice_fingerprint": {
+        "register": "utilitarian-dense",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "korean-mainstream"
+      },
+      "tone_keywords": [
+        "dense",
+        "efficient",
+        "content-first",
+        "mainstream",
+        "scannable",
+        "green-signal"
+      ],
+      "antipatterns": [
+        "No rounded corners — Melon is square (0px)",
+        "Don't spread the green; ration it to active/primary",
+        "Don't inflate type — density depends on 12-14px",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Minimal, utilitarian transitions; the player and list interactions stay quick and quiet — the green marks live elements rather than animating.",
+      "has_personas": true,
+      "category_raw": "entertainment / music streaming"
+    },
+    {
+      "id": "kdan",
+      "primary_color_hex": "#00DC87",
+      "category": "Productivity",
+      "visual_theme": "Bold Taiwanese document-workflow SaaS (PDF/e-sign/SDKs): a deep teal-black #002D37 structural base, an electric-lime #CAFF00 pop accent, and the kdanGreen #00DC87 brand token, set in Clear Sans with crisp 4px corners. Energetic, modern, developer-credible.",
+      "voice_fingerprint": {
+        "register": "confident-modern",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "english-technical"
+      },
+      "tone_keywords": [
+        "bold",
+        "modern",
+        "energetic",
+        "credible",
+        "workflow-driven",
+        "crisp"
+      ],
+      "antipatterns": [
+        "Keep kdanGreen #00DC87 as brand, #002D37 as structure, #CAFF00 as the loud accent — don't blur roles",
+        "Maintain crisp 4px corners",
+        "No gradients",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Crisp, confident transitions; the lime CTA pops with energy while the teal-black base stays steady.",
+      "has_personas": true,
+      "category_raw": "productivity / document-workflow SaaS"
+    },
+    {
+      "id": "hahow",
+      "primary_color_hex": "#00CCB4",
+      "category": "Education",
+      "visual_theme": "Friendly Taiwanese EdTech course marketplace (好學校): a soft gray-blue #F5F7F9 canvas, the bright brand teal #00CCB4 from its own design tokens, rounded 8px cards, and warm orange/coral promo accents, set in PingFang TC. Encouraging and human, not corporate.",
+      "voice_fingerprint": {
+        "register": "warm-encouraging",
+        "sentence_length": "medium",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "traditional-chinese-friendly"
+      },
+      "tone_keywords": [
+        "friendly",
+        "warm",
+        "approachable",
+        "encouraging",
+        "human",
+        "playful"
+      ],
+      "antipatterns": [
+        "Keep the brand teal #00CCB4; warm orange/coral are promo accents only",
+        "Maintain rounded 8px cards (not sharp)",
+        "Don't go corporate-cold — the tone is human",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Gentle, friendly transitions; warm hover lifts on cards. Encouraging, never abrupt.",
+      "has_personas": true,
+      "category_raw": "education / EdTech course marketplace"
+    },
+    {
+      "id": "bithumb",
+      "primary_color_hex": "#1C2028",
+      "category": "Fintech",
+      "visual_theme": "Dark, premium, data-dense Korean crypto-exchange (No.1): a near-black #1C2028 structural base warmed by a bronze/brown #543E35 accent, signed by the proprietary Bithumb Trading Sans typeface, with Korea-convention trading colors (red #E15241 = up, blue #4880EE = down). Serious, money-grade.",
+      "voice_fingerprint": {
+        "register": "premium-serious",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "korean-financial"
+      },
+      "tone_keywords": [
+        "premium",
+        "dark",
+        "serious",
+        "data-dense",
+        "trustworthy",
+        "money-grade"
+      ],
+      "antipatterns": [
+        "Korea convention: red = price up, blue = price down (don't invert)",
+        "Keep the near-black + bronze pairing; don't lighten the trading base",
+        "Use Bithumb Trading Sans identity",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Fast, precise data updates; restrained chrome motion. The dense trading surface prioritizes information over flourish.",
+      "has_personas": true,
+      "category_raw": "fintech / crypto-asset exchange"
+    },
+    {
+      "id": "gogolook",
+      "primary_color_hex": "#0CD25F",
+      "category": "Consumer",
+      "visual_theme": "Friendly Taiwanese TrustTech (Whoscall caller-ID / anti-scam): clean white ground, vivid documented brand green #0CD25F, fully-rounded 100px pill buttons, and a big playful Nunito rounded display over Noto Sans body. Approachable protection, not enterprise security.",
+      "voice_fingerprint": {
+        "register": "reassuring-friendly",
+        "sentence_length": "short",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "english-consumer"
+      },
+      "tone_keywords": [
+        "friendly",
+        "reassuring",
+        "approachable",
+        "safe",
+        "playful",
+        "trustworthy"
+      ],
+      "antipatterns": [
+        "Keep the fully-rounded pill language (100px)",
+        "Brand green #0CD25F leads; pink/teal are category accents",
+        "Don't make it look like cold enterprise security",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Bouncy, friendly micro-interactions on the rounded pills; reassuring and light.",
+      "has_personas": true,
+      "category_raw": "consumer-tech / TrustTech anti-scam app"
+    },
+    {
+      "id": "kkbox",
+      "primary_color_hex": "#00B6E1",
+      "category": "Entertainment",
+      "visual_theme": "Dark, premium Taiwanese music-streaming (KKCompany): a near-black #111111 canvas, the signature KKBOX cyan-blue #00B6E1 as the single brand accent, oversized Work Sans display type, and softly-rounded 30px buttons. Cinematic and music-forward.",
+      "voice_fingerprint": {
+        "register": "cinematic-premium",
+        "sentence_length": "short",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "english-media"
+      },
+      "tone_keywords": [
+        "dark",
+        "premium",
+        "cinematic",
+        "music-forward",
+        "immersive",
+        "bold"
+      ],
+      "antipatterns": [
+        "Near-black #111111 canvas — don't lighten",
+        "KKBOX cyan #00B6E1 is the single accent; don't add competing hues",
+        "Keep oversized Work Sans display",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Smooth, cinematic transitions; the cyan accent glows against the dark. Music-forward pacing.",
+      "has_personas": true,
+      "category_raw": "entertainment / music streaming (KKCompany)"
+    },
+    {
+      "id": "cakeresume",
+      "primary_color_hex": "#13AB67",
+      "category": "Productivity",
+      "visual_theme": "Clean Taiwanese global talent network (Cake, formerly CakeResume): white ground, confident Cake green #13AB67 for primary action, deep-green #0C4129 headings, crisp 4px corners, set in Inter. Professional, optimistic, with human warmth.",
+      "voice_fingerprint": {
+        "register": "professional-optimistic",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "english-professional"
+      },
+      "tone_keywords": [
+        "professional",
+        "optimistic",
+        "clean",
+        "trustworthy",
+        "modern",
+        "human"
+      ],
+      "antipatterns": [
+        "Cake green #13AB67 for primary action; deep green #0C4129 for headings",
+        "Crisp 4px corners and Inter type",
+        "Keep it professional-warm, not playful-loud",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Clean, professional transitions; confident green hover states. Optimistic and steady.",
+      "has_personas": true,
+      "category_raw": "saas / talent network + resume builder"
     }
   ]
 }
