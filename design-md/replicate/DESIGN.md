@@ -1,3 +1,17 @@
+---
+id: replicate
+name: Replicate
+country: US
+category: ai
+homepage: "https://replicate.com"
+primary_color: "#fc7676"
+logo:
+  type: simpleicons
+  slug: replicate
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Replicate
 
 ## 1. Visual Theme & Atmosphere

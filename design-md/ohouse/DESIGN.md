@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: Ohouse
+id: ohouse
+name: Ohouse
+country: KR
+category: consumer-tech
+homepage: "https://ohou.se"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=ohou.se&sz=128"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Ohouse (오늘의집)

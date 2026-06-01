@@ -1,3 +1,17 @@
+---
+id: ferrari
+name: Ferrari
+country: IT
+category: automotive
+homepage: "https://www.ferrari.com"
+primary_color: "#ff2800"
+logo:
+  type: simpleicons
+  slug: ferrari
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Ferrari
 
 ## 1. Visual Theme & Atmosphere

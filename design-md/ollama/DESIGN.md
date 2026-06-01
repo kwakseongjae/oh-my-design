@@ -1,3 +1,17 @@
+---
+id: ollama
+name: Ollama
+country: US
+category: ai
+homepage: "https://ollama.com"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: ollama
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Ollama
 
 ## 1. Visual Theme & Atmosphere

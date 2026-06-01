@@ -11,6 +11,25 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=dabangapp.com&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+
+## 16. Do's and Don'ts
+
+### Do
+- Keep brand pink `#FF3478` (`--pink-500`) on the logo wordmark and large-display contexts only, since at 3.4:1 on white it fails AA for body text
+- Drive all interaction state — selected map markers, focus rings, link emphasis — with action blue `#326CF9` (`--blue-500`) and its `#EEF8FF` (`--blue-50`) hover tint
+- Build depth from 1px `#DFDFDF` (`--gray-400`) hairline borders and background-color steps (white → `#F5F5F5` → `#EEF8FF`), keeping `box-shadow: none` everywhere
+- Set body text in `#222` (`--gray-900`) at 16px/400 and run a binary 400→700 weight rhythm, reserving 500 for map filter-chip labels
+- Preserve the contextual radius ladder by using 32px pills for search-entry CTAs and 42px pills for toggleable map filter chips
+- Render price as the map marker itself (e.g. '전세 3.2억') and let warmth surface only in the AI band — 24px/400 with a single 🔍 emoji
+
+### Don't
+- Spread `--pink-500` into product chrome — keeping it wordmark-only is the system's most disciplined rule, and bleeding it onto the map produces a saturated pink that fights the canvas
+- Adopt the zero-shadow rule without investing in clean 1px `#DFDFDF` hairlines, since borders are doing the depth work shadows would
+- Flatten the 32px and 42px pill radii into one value, which loses the affordance distinction between search-entry CTA and toggle-filter
+- Propagate the 400-weight AI-band tone across the surface — it only reads as editorial because the surrounding section heads are 700-bold at 18-20px
+- Bleed casual `-요` endings into structural labels — warmth lives in the AI surface while category labels stay bare nouns (원/투룸 · 아파트 · 분양)
+- Reuse the dense 14px Korean body stack without re-tuning line-height and letter-spacing, since it is tuned for Pretendard's Korean character rendering
+
 ---
 
 # Design System Inspiration of Dabang (다방)

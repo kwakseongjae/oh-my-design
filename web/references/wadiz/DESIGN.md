@@ -10,6 +10,25 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=wadiz.kr&sz=256"
 verified: "2026-05-14"
 omd: "0.1"
+
+## 16. Do's and Don'ts
+
+### Do
+- Reserve the brand mint #00c4c4 for interactive moments only — CTA fills, links, checkbox marks, focus outlines, progress fills, and the waffle loader — so mint always reads as a verb
+- Default to 8px radius for buttons, cards, inputs, and modals (the 112-occurrence workhorse), reserving 16px for hero modals and the 16px 16px 0 0 bottom-sheet pattern and 50% for avatars and indicator dots
+- Set body text in Pretendard at 15px / 400 and reserve 700 for funding amounts, percentages, headings, and maker names so the eye bounces between the two near-parity weights
+- Use the Toss-family ink scale (#191f28 heading, #4e5968 muted, #6b7684 subtle, #8b95a1 placeholder) for all text instead of pure black
+- Build funding-state chips from the LabelBadge system using solid / outlined / tint shapes across the mint, yellow #fcc500, blue #4672f9, and red #ff5959 hues (오픈중 = mint solid, 마감임박 = red solid, 인기 = yellow solid)
+- Reach for the tint button (#e6fafa surface, #00c4c4 label, hover to #bef5f5 / #07abae) to carry marketing weight, letting it land before outlined buttons in the page rhythm
+
+### Don't
+- Use pure black #000 anywhere — #191f28 is the ink floor of the system
+- Apply mint #00c4c4 onto campaign photography or thumbnails — mint colorizes the chrome that frames the image, with the waffle loader as the single exception
+- Tint drop-shadows with the brand color — shadows stay blue-black (0 6px 6px -1px #0a16461a), never mint, never theatrical
+- Put 12px or larger radius on functional buttons — that consumer-app idiom breaks Wadiz's 8px retail-catalog read
+- Drop skeleton placeholders on the home grid — the thumbnail opacity 0 to 1 fade-in over 0.25s ease-in-out IS the loading state
+- Reach for marketing superlatives like 최고, 최강, or 혁신적, or introduce a serif or 300-weight thin face — the funding-state vocabulary does the selling and Pretendard does the entire type job
+
 ---
 
 # Design System Inspiration of Wadiz

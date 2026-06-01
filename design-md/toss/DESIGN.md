@@ -1,6 +1,20 @@
 ---
-omd: 0.1
-brand: Toss
+id: toss
+name: Toss
+country: KR
+category: fintech
+homepage: "https://toss.im"
+primary_color: "#0064ff"
+logo:
+  type: favicon
+  slug: "https://static.toss.im/icons/png/4x/icon-toss-logo.png"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: TDS
+  url: "https://tossmini-docs.toss.im/tds-mobile/"
+  type: system
+  description: Toss's mobile design system — 40+ components, tokens, and hooks.
 ---
 
 # Design System Inspiration of Toss (토스)

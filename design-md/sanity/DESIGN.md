@@ -1,3 +1,23 @@
+---
+id: sanity
+name: Sanity
+country: US
+category: backend-devops
+homepage: "https://www.sanity.io"
+primary_color: "#f03e2f"
+logo:
+  type: simpleicons
+  slug: sanity
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Sanity UI
+  url: "https://www.sanity.io/ui"
+  type: system
+  description: Sanity's accessible React toolkit for building apps with design tokens.
+  og_image: "https://cdn.sanity.io/images/mos42crl/production/f378d0067c1406f4e3d3ed6874cd715c72f52d2c-1920x1080.png"
+---
+
 # Design System Inspiration of Sanity
 
 ## 1. Visual Theme & Atmosphere

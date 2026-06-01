@@ -380,3 +380,21 @@ The brand's motion logic mirrors its voice: minimal, factual, time-boxed. Moveme
 **Tier 2 (verified empty 2026-05-14):**
 - `getdesign.md/kream` — no record
 - `styles.refero.design/?q=kream` — no match
+
+## 16. Do's and Don'ts
+
+### Do
+- Keep the chrome on the grayscale ramp, using `#222` as primary ink and reserving `#000` for the H1 display token only
+- Signal active state by weight, not hue — active tab and selected control go to `700` while inactive stays `400`, both on `#222`
+- Map every corner radius to its card class: 16px banner/merchandising tile, 30px filter chip, 8px ghost button, 6px row/category card
+- Let full-bleed product photography on the `#f5f5f5` banner card carry all the color, keeping all surrounding chrome neutral
+- Lead promotional copy with the number (`~33% 할인`, `3% 적립`) and time-box every offer with a window tag (`이번 주`, `5월 브랜드 위크`)
+- Run Pretendard Variable across the whole stack on the documented scale — 32px/700 display, 24px/700 search query, 16px body, 13px chips
+
+### Don't
+- Introduce a branded accent fill or selected-state color — the system is designed to never need one, and color would fight the product image
+- Spread the lone `rgb(17, 161, 151)` watch teal beyond rare price-watch signaling, or treat the Swiper `#007aff` library default as a usable brand color
+- Blend radii or use a corner radius unmapped to a card class (e.g. a banner that is not 16px or a filter chip that is not 30px)
+- Add shadows, gradients, or decorative chrome iconography — the home surface deliberately has none
+- Use size to signal active state where weight should — body and active tab both sit at 16px, so only the 400→700 weight jump should change
+- Lead with adjectives (`특별한 할인`), leave offer windows open-ended, or quote/italicize English brand names like `"Nike"`

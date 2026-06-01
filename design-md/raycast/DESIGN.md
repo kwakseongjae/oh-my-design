@@ -1,3 +1,22 @@
+---
+id: raycast
+name: Raycast
+country: US
+category: developer-tools
+homepage: "https://www.raycast.com"
+primary_color: "#ff6363"
+logo:
+  type: simpleicons
+  slug: raycast
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Raycast Brand
+  url: "https://www.raycast.com/templates/brand-guidelines"
+  type: brand
+  description: Raycast's brand guidelines with colors, logos, and asset kit.
+---
+
 # Design System Inspiration of Raycast
 
 ## 1. Visual Theme & Atmosphere

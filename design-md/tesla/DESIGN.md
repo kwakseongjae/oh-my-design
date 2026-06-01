@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: Tesla
+id: tesla
+name: Tesla
+country: US
+category: automotive
+homepage: "https://www.tesla.com"
+primary_color: "#cc0000"
+logo:
+  type: simpleicons
+  slug: tesla
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Tesla

@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: Yanolja
+id: yanolja
+name: Yanolja
+country: KR
+category: consumer-tech
+homepage: "https://www.yanolja.com"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=yanolja.com&sz=128"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Yanolja Brand Center
+  url: "https://www.yanoljagroup.com/brand_center"
+  type: brand
+  description: Yanolja's official brand center — visual identity inspired by the Multiverse of Dreams.
+  og_image: "https://www.yanoljagroup.com/common/assets/yanolja_colored_og_image.jpg"
 ---
 
 # Design System Inspiration of Yanolja (야놀자)

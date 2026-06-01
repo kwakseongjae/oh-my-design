@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: KRDS
+id: krds
+name: KRDS
+country: KR
+category: government
+homepage: "https://www.krds.go.kr/html/site/index.html"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://www.krds.go.kr/resources/img/guide/favicon_192.png"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: KRDS — Korea Republic Design System
+  url: "https://www.krds.go.kr/html/site/index.html"
+  type: system
+  description: "행정안전부 주관 범정부 통합 디자인 시스템. Government Blue #256EF4, Pretendard GOV, WCAG/KWCAG 2.2 a11y-first tokens and components."
+  og_image: "https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png"
 ---
 
 # Design System Inspiration of KRDS (대한민국 정부 디자인 시스템)

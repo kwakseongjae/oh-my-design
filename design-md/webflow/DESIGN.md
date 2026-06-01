@@ -1,3 +1,17 @@
+---
+id: webflow
+name: Webflow
+country: US
+category: design-tools
+homepage: "https://webflow.com"
+primary_color: "#146ef5"
+logo:
+  type: simpleicons
+  slug: webflow
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Webflow
 
 ## 1. Visual Theme & Atmosphere
@@ -151,8 +165,22 @@ Webflow's website is a visually rich, tool-forward platform that communicates "d
 ## 6. Depth: 5-layer cascading shadow system
 
 ## 7. Do's and Don'ts
-- Do: Use WF Visual Sans Variable at 500–600. Blue (#146ef5) for CTAs. 4px radius. translate(6px) hover.
-- Don't: Round beyond 8px for functional elements. Use secondary colors on primary CTAs.
+
+### Do
+- Set WF Visual Sans Variable as the type face, using weight 600 for headlines (e.g. the 80px / -0.8px Display Hero), 500 for buttons, and 400 for body
+- Reserve Webflow Blue (#146ef5) for the primary CTA, links, and focus borders on a white (#ffffff) canvas with near-black (#080808) text
+- Keep border-radius conservative and sharp on the 2px / 4px / 8px scale — 4px for buttons, inputs, and badges, 8px for standard cards
+- Apply the signature translate(6px) horizontal nudge on button hover, timed with motion-fast (150ms)
+- Deploy purple (#7a3dff), pink (#ed52cb), and green (#00d722) together as a SET for category coding and tier comparison — e.g. a 4px top-edge color bar on feature cards
+- Build depth with the 5-layer cascading shadow stack rather than a single flat drop shadow
+
+### Don't
+- Round functional elements beyond 8px, or make them pill-shaped or fully square — radius stays moderate between geometric and rounded
+- Use the secondary accents (purple #7a3dff, pink #ed52cb, green #00d722, etc.) on primary CTAs — those stay Webflow Blue #146ef5
+- Use a single secondary accent in isolation; the purple/pink/green trio only reads correctly when used together as category coding
+- Render the marketing surface in dark mode — keep it bright and airy on white (#ffffff)
+- Substitute another typeface for WF Visual Sans Variable or drift off its 400/500/600 weights
+- Write copy like "Revolutionary no-code" or aggressive Wix-comparison framing — both are forbidden under the agentic-web-platform voice
 
 ## 8. Responsive: 479px, 768px, 992px
 

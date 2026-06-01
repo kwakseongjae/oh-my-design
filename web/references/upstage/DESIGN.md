@@ -212,3 +212,21 @@ These are reasoned inferences from the surface IA and proof bands, not user rese
 6. Motion tokens and component-state coverage incomplete — UPDATE pass recommended on a product detail page (e.g. `/products/solar-pro-3`) and Documentation surface.
 
 **IP guardrails confirmed**: brand assets reference-only (logos / Espeak face not redistributed); no verbatim Upstage marketing copy quoted; §10 voice samples are fresh OmD-derived shape-only alternatives; KR business-information block reproduced as factual disclosure, not promotion.
+
+## 16. Do's and Don'ts
+
+### Do
+- Reserve interactive violet #5B52FF as the only chromatic gesture that does work — links, CTAs, and secondary-button text, the way it appears across its 55 sampled occurrences
+- Anchor the brand on the plum canvas #3C043B (the '--colors--grey-background' hero) paired with violet primary, staying on the violet-plum axis instead of any cobalt default
+- Build vertical rhythm from surface-color flips band to band (plum hero to white product band to dark industry grid to near-black footer #191722), not from drop shadows or a numeric spacing ladder
+- Keep type to the three-family, three-job system: Geist for ~93% of body and headings, Espeak only on the hero H1 at 57.6px/600, and a monospace mid-sentence swap for the rotating industry word
+- Encode the binary radius literally — 0px for sections, cards, hero, and footer; 8px ('--style--radius-8px') only for pressable controls and content chips
+- Set body copy in Geist gray #70757F (the dominant 428-element text color) at 18px/400, the way most paragraph text ships
+
+### Don't
+- Spread the Solar yellow-green #D2FF95 broadly — keep it as a single-use accent adjacent to the Solar product narrative, never a default button surface or section background
+- Introduce a fourth type family beyond Geist, Espeak, and the monospace swap, which would break the rotating-word gesture
+- Soften the binary geometry with 4px, 12px, or 16px middle radii, which erases the layout-versus-pressable distinction
+- Import drop-shadow card chrome like 'box-shadow: 0 8px 24px rgba(0,0,0,0.08)' — Upstage ships effectively zero elevation and builds depth from surface contrast and #EEEEEE hairlines
+- Default to a corporate blue primary, the enterprise-AI cliche Upstage consciously avoids in favor of the violet-plum axis
+- Center-align the hero or signal the rotating industry word with color or weight — keep it left-aligned with the typographic monospace shift as the variable-slot cue

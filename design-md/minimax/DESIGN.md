@@ -1,3 +1,17 @@
+---
+id: minimax
+name: Minimax
+country: US
+category: ai
+homepage: "https://www.minimaxi.com"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: minimax
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of MiniMax
 
 ## 1. Visual Theme & Atmosphere

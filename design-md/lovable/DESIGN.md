@@ -1,3 +1,17 @@
+---
+id: lovable
+name: Lovable
+country: US
+category: developer-tools
+homepage: "https://lovable.dev"
+primary_color: "#ff6f61"
+logo:
+  type: favicon
+  slug: "https://lovable.dev/favicon-192x192.png"
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Lovable
 
 ## 1. Visual Theme & Atmosphere

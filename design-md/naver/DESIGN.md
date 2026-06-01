@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: Naver
+id: naver
+name: Naver
+country: KR
+category: consumer-tech
+homepage: "https://www.naver.com"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: naver
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: NAVER Brand Resource
+  url: "https://www.navercorp.com/en/company/brandGuide"
+  type: brand
+  description: "NAVER Corp's official brand guide — logo usage, NAVER Green #03C75A, and identity rules."
+  og_image: "https://www.navercorp.com/img/og/OG_TAG_1_Main.png"
 ---
 
 # Design System Inspiration of Naver (네이버)

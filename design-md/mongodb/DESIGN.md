@@ -1,3 +1,22 @@
+---
+id: mongodb
+name: Mongodb
+country: US
+category: backend-devops
+homepage: "https://www.mongodb.com"
+primary_color: "#00ed64"
+logo:
+  type: simpleicons
+  slug: mongodb
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: LeafyGreen
+  url: "https://www.mongodb.design"
+  type: system
+  description: MongoDB's open-source design system with an extensive React component library.
+---
+
 # Design System Inspiration of MongoDB
 
 ## 1. Visual Theme & Atmosphere

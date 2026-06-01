@@ -1,6 +1,20 @@
 ---
-omd: 0.1
-brand: freee
+id: freee
+name: freee
+country: JP
+category: productivity
+homepage: "https://www.freee.co.jp"
+primary_color: "#005bac"
+logo:
+  type: github
+  slug: freee
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Vibes
+  url: "https://vibes.freee.co.jp"
+  type: system
+  description: freee's open-source design system with accessibility-focused components.
 ---
 
 # Design System Inspiration of freee

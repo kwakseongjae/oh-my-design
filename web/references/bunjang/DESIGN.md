@@ -262,6 +262,25 @@ Do NOT use this reference for:
 - Editorial commerce where the photo deserves a 4:5 or 1:1 art-directed frame
 - B2B SaaS where information density and table-rendering trump scrollable feeds
 
+
+## 13. Do's and Don'ts
+
+### Do
+- Reserve Bunjang Red (#d80c18, --color-primary) for the single highest-intent CTA per surface — the only place red appears
+- Build the product card on the 81:100 portrait thumbnail (--bun-ui-aspect-ratio-vertical: 81 / 100) with a 6px radius and #f6f6f6 placeholder bg
+- Signal depth with 1px #e5e5e5 (gray-100) borders and #f6f6f6 (gray-50) tints instead of elevation
+- Set all UI text in Pretendard Variable using only the 400/500/700 weights, letting 16px/700 price outweigh 14px/500 gray-600 (#666) titles
+- Color-code service chips by their dedicated ladders — indigo --color-safe-* for 안전결제, warm-amber --color-care-* for 감정완료, info-blue --color-blue-* for 내폰시세
+- Outline the heart (찜) button with a 10% black inner glow so its white stroke stays legible on any seller photo, flipping to solid --color-red-500 when tapped
+
+### Don't
+- Spend red (#d80c18) on secondary or tertiary actions — it drains the single primary it is meant to mark
+- Use square or square-ish thumbnails that break the 81:100 vertical convention and make phones and sneakers look stunted
+- Add box-shadow to any card or button — no sampled element carries elevation, and it contradicts the borders-and-tints depth language
+- Mix in Noto Sans KR, Apple SD Gothic Neo, or any display face — Pretendard Variable carries 100% of UI text
+- Manufacture urgency with copy like '마지막 1개!' or '지금 바로!' — the platform's listing depth is the urgency, and only price typography earns emphasis
+- Reuse partner login colors (kakao #fae100, naver #03cf5d, etc.) or interrupt with a modal where a z-index 1500 snackbar would do
+
 ---
 
 ## Verification footer

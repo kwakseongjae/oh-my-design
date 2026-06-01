@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: 29CM
+id: "29cm"
+name: "29CM"
+country: KR
+category: ecommerce
+homepage: "https://www.29cm.co.kr"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://asset.29cm.co.kr/icon/apple-icon-144x144.png"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of 29CM

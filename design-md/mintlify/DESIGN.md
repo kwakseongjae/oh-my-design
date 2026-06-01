@@ -1,3 +1,17 @@
+---
+id: mintlify
+name: Mintlify
+country: US
+category: productivity
+homepage: "https://mintlify.com"
+primary_color: "#0d9373"
+logo:
+  type: simpleicons
+  slug: mintlify
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Mintlify
 
 ## 1. Visual Theme & Atmosphere

@@ -1,3 +1,17 @@
+---
+id: kraken
+name: Kraken
+country: US
+category: fintech
+homepage: "https://www.kraken.com"
+primary_color: "#5741d9"
+logo:
+  type: github
+  slug: krakenfx
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Kraken
 
 ## 1. Visual Theme & Atmosphere

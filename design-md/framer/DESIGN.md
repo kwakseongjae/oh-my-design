@@ -1,3 +1,23 @@
+---
+id: framer
+name: Framer
+country: US
+category: design-tools
+homepage: "https://www.framer.com"
+primary_color: "#0055ff"
+logo:
+  type: simpleicons
+  slug: framer
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Framer Brand Guidelines
+  url: "https://www.framer.com/brand"
+  type: brand
+  description: Framer's brand and trademark guidelines with logo rules and color palette.
+  og_image: "https://framerusercontent.com/assets/MFmOCFlEnwFAS9IP2HbUEH68axo.jpg"
+---
+
 # Design System Inspiration of Framer
 
 ## 1. Visual Theme & Atmosphere

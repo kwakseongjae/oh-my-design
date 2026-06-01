@@ -1,3 +1,17 @@
+---
+id: coinbase
+name: Coinbase
+country: US
+category: fintech
+homepage: "https://www.coinbase.com"
+primary_color: "#0052ff"
+logo:
+  type: simpleicons
+  slug: coinbase
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Coinbase
 
 ## 1. Visual Theme & Atmosphere

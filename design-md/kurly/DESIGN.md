@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: Kurly
+id: kurly
+name: Kurly
+country: KR
+category: ecommerce
+homepage: "https://www.kurly.com"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://res.kurly.com/icons/favicon-128x128.png"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Kurly (컬리 / 마켓컬리)

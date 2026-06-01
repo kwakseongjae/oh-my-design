@@ -1,6 +1,22 @@
 ---
-omd: 0.1
-brand: 여기어때 (GoodChoice)
+id: yeogiotte
+name: 여기어때
+display_name_kr: 여기어때 (GoodChoice)
+country: KR
+category: consumer-tech
+homepage: "https://www.yeogi.com"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://www.yeogi.com/favicon/rel_icon/favicon_png_192.png"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: 여기어때 Design Library
+  url: "https://designlibrary.yeogi.com/"
+  type: system
+  description: 여기어때 디자인 라이브러리 — A Visual Language for Travel. Foundations, components, and tokens.
+  og_image: "https://framerusercontent.com/assets/kA6JROOLbG0jX7SQZl1tLZzahM.jpg"
 ---
 
 # Design System Inspiration of 여기어때 (GoodChoice / Yeogiotte)
@@ -412,6 +428,25 @@ Interpretive claims (editorial, not documented Yeogiotte brand statements):
 - "One blue, scarce" rule in §12 P1 — derived from observed live usage on home + /domestic-accommodations, not a published Yeogiotte design-system rule.
 - The KKR-vs-CVC clarification in §11 — KKR is widely confused in casual press; primary press citations confirm CVC.
 -->
+
+
+## 16. Do's and Don'ts
+
+### Do
+- Reserve Yeogiotte Blue `#1D8BFF` for primary CTAs (hero `검색`, login, `지도 보기`), filter-chip selected-state, and the `반짝특가` promo badge, targeting ≤2 blue elements per viewport in a primary flow
+- Hold to the three-tier radius scale of 8px buttons, 12px cards, and 100px filter pills, with inline badges at the tight 3-6px range
+- Set body and headings in Pretendard at `#222222` rather than pure black, and confine 700 weight to the listing name, final price, promo badges, and hero CTA while keeping location and distance meta at 400-500
+- Render the promo-badge grammar by role: yellow `#FFC83B` rating chip, blue-tint `#E3F0FF`/`#1D8BFF` `반짝특가`, slate `#49627A` `회원가`, and red `#FFEDEA`/`#F94239` coupon-applied price
+- Separate borderless `#ffffff` listing cards by whitespace gap and let the edge-to-edge room photo fill the 12px-radius card top, placing all badges and pricing in the metadata block below
+- Keep hashtag filter chips in user-language Korean (`#감성숙소`, `#연인추천`, `#반려견`) on a single 32px-tall horizontal-scroll row with 1.5px `#E6E6E6` borders as the primary filter surface
+
+### Don't
+- Use `#1D8BFF` as a hero background, card fill, divider, or decorative accent, or let three blue surfaces compete on one screen instead of demoting to the `#E3F0FF` tint
+- Style the `회원가` member-rate badge in brand blue, red, or yellow — keep it on slate `#49627A` so it reads as account utility, not a flash deal
+- Reach for an off-system radius like 10px, 14px, or 20px on a button or card when the answer is one of 8px, 12px, or pill
+- Place any promo or coupon badge on top of the room photo or tint the photo with a brand-color filter — badges live below the image and the destination must read true
+- Translate hashtag chips into category-style labels like `Romantic Stays` or `Pet-Friendly`, add extra adjectives to `#감성숙소`, or collapse the filter-chip row behind a primary `Filters` modal
+- Apply spring or overshoot easing to chrome and money surfaces, bold an entire listing card, or stack two same-color-family promo badges on one card
 
 ---
 

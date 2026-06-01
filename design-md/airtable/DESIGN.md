@@ -1,3 +1,23 @@
+---
+id: airtable
+name: Airtable
+country: US
+category: design-tools
+homepage: "https://www.airtable.com"
+primary_color: "#fcb400"
+logo:
+  type: simpleicons
+  slug: airtable
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Airtable Trademark Guidelines
+  url: "https://www.airtable.com/company/trademark-guidelines"
+  type: brand
+  description: Airtable's trademark usage and brand guidelines.
+  og_image: "https://www.airtable.com/images/airtable-seo.jpg"
+---
+
 # Design System Inspiration of Airtable
 
 ## 1. Visual Theme & Atmosphere
@@ -134,8 +154,22 @@ Airtable's website is a clean, enterprise-friendly platform that communicates "s
 - Soft ambient: `rgba(15,48,106,0.05) 0px 0px 20px`
 
 ## 7. Do's and Don'ts
-### Do: Use Airtable Blue for CTAs, Haas with positive tracking, 12px radius buttons
-### Don't: Skip positive letter-spacing, use heavy shadows
+
+### Do
+- Use Airtable Blue (`#1b61c9`) only for CTAs and links, set on a white (`#ffffff`) canvas with Deep Navy (`#181d26`) text
+- Set the Haas / Haas Groot Disp font system with positive letter-spacing on body and small text (0.08px–0.28px) — it is Airtable's typographic signature
+- Apply the radius scale by component size: 12px buttons, 16px standard cards, 24px sections, 32px large containers
+- Lift primary buttons with the signature blue-tinted multi-layer shadow (`rgba(45,127,249,0.28) 0px 1px 3px`) so elevation ties back to the brand color
+- Reserve color for user data and keep chrome neutral, signaling 'live work' with the spotlight surface (`rgba(249,252,255,0.97)`) plus subtle `#e0e2e6` borders
+- Name theme variables with the semantic `--theme_*` convention (e.g. `--theme_success-text` for `#006400`) to match Airtable's internal tokens
+
+### Don't
+- Skip the positive letter-spacing on body and caption text — it is what gives Airtable its Swiss-precision feel
+- Lean on heavy gray backgrounds or dark drop shadows for depth instead of the spotlight surface and the soft ambient `rgba(15,48,106,0.05) 0px 0px 20px` glow
+- Spread Airtable Blue (`#1b61c9`) across chrome or large backgrounds — color belongs to user data, not the UI frame
+- Reach for the deliberately sharp 2px radius outside its cookie-consent context where buttons and cards use 12px and up
+- Add bouncy spring motion or exceed the 150–400ms timing tokens, and respect `prefers-reduced-motion` by dropping the spotlight fade-in
+- Use forbidden voice like 'revolutionary database', 'no-code magic', or emoji in product chrome
 
 ## 8. Responsive Behavior
 Breakpoints: 425–1664px (23 breakpoints)

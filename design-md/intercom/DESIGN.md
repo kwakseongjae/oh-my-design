@@ -1,3 +1,17 @@
+---
+id: intercom
+name: Intercom
+country: US
+category: productivity
+homepage: "https://www.intercom.com"
+primary_color: "#286efa"
+logo:
+  type: simpleicons
+  slug: intercom
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Intercom
 
 ## 1. Visual Theme & Atmosphere

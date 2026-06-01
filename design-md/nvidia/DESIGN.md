@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: NVIDIA
+id: nvidia
+name: NVIDIA
+country: US
+category: consumer-tech
+homepage: "https://www.nvidia.com"
+primary_color: "#76b900"
+logo:
+  type: simpleicons
+  slug: nvidia
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of NVIDIA

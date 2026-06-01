@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: Banksalad
+id: banksalad
+name: Banksalad
+country: KR
+category: fintech
+homepage: "https://www.banksalad.com"
+primary_color: "#04c584"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=banksalad.com&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Banksalad GitHub
+  url: "https://github.com/banksalad"
+  type: brand
+  description: Banksalad's public GitHub org including styleguide repos and BPL (Banksalad Product Library) reference material.
+  og_image: "https://avatars.githubusercontent.com/u/71009899?s=280&v=4"
 ---
 
 # Design System Inspiration of Banksalad

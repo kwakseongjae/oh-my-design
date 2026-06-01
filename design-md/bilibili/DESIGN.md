@@ -1,14 +1,13 @@
 ---
 id: bilibili
 name: Bilibili
-display_name_kr: 빌리빌리
 country: CN
 category: video-community
 homepage: "https://www.bilibili.com"
 primary_color: "#FB7299"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=bilibili.com&sz=128"
+  type: simpleicons
+  slug: bilibili
 verified: "2026-05-19"
 omd: "0.1"
 ---

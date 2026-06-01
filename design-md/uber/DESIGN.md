@@ -1,3 +1,22 @@
+---
+id: uber
+name: Uber
+country: US
+category: consumer-tech
+homepage: "https://www.uber.com"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: uber
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Base Web
+  url: "https://baseweb.design"
+  type: system
+  description: Uber's React implementation of Base — a living component system.
+---
+
 # Design System Inspiration of Uber
 
 ## 1. Visual Theme & Atmosphere

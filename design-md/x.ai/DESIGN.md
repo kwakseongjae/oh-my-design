@@ -1,3 +1,17 @@
+---
+id: x.ai
+name: xAI
+country: US
+category: ai
+homepage: "https://x.ai"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: x
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of xAI
 
 ## 1. Visual Theme & Atmosphere

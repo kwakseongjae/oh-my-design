@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: KakaoBank
+id: kakaobank
+name: KakaoBank
+country: KR
+category: fintech
+homepage: "https://www.kakaobank.com"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: kakaotalk
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: KakaoBank Brand Resource
+  url: "https://www.kakaobank.com/view/about/brand/resource"
+  type: brand
+  description: "KakaoBank Brand Identity Guidelines V2.0 — logo system, KakaoBank Yellow #FFE300, downloadable CI assets."
+  og_image: "https://www.kakaobank.com/view/images/kkb_og_img.png"
 ---
 
 # Design System Inspiration of KakaoBank (카카오뱅크)

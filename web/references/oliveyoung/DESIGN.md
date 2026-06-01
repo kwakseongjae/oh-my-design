@@ -208,6 +208,25 @@ Olive Young presents as a **dense, scan-first H&B catalog**: a near-monochrome g
 - Border: 0 (separated by `#EBEBEB` grid gap)
 - Use: Search result / category list / best list
 
+
+## 16. Do's and Don'ts
+
+### Do
+- Keep all chrome — nav, header, footer, buttons, search input, headings — on the `#131518`–`#888` grayscale neutrals and reserve every hue for status payload
+- Confine the five flag hues (`#F65C60` sale, `#F374B7` 오늘드림, `#9BCE26` coupon, `#6FCFF7` gift, `#F05A5E` best) to inside the thumbnail rectangle as 9px-radius status pills
+- Map each flag color 1:1 to a single service fact (sale / same-day / coupon / gift / best) rather than to a marketing mood
+- Encode interactive state with ink-darkening plus shape change — e.g. flip active pagination from transparent/`#888` radius-0 to `#2F3030`/`#FFF` 50% circle — not with hue
+- Keep the Korean fallback chain ending at `dotum / 돋움` to preserve rendering for older Windows/macOS Korean readers
+- Write CTAs as factual `하기`-verb labels like "장바구니 담기" and "찜하기" in casual-polite declarative tone, not imperative urgency copy
+
+### Don't
+- Put any flag color or hue on a primary CTA or chrome surface — the filled CTA stays `#000000` background with `#FFFFFF` text
+- Introduce a sixth status color for a "new" or extra badge — reuse one of the existing five flag roles or skip the chrome
+- Add hover lift, shadow gain, or drop shadows to tiles, chips, or pills — depth in this system stays line-only and state is static-encoded
+- Spread Olive Green or the coupon lime `#9BCE26` across chrome or large backgrounds — corporate olive is absent from the storefront and the lime lives only in the coupon flag
+- Prune the Korean fallback chain down to system-ui only, dropping the deliberate `돋움` legacy-OS support floor
+- Reproduce verbatim Olive Young marketing taglines or write hard-sell copy like "지금 안 사면 손해예요" — copy works as neutral labels and offers
+
 ---
 
 **Verified:** 2026-05-15

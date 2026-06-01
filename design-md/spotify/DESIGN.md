@@ -1,3 +1,17 @@
+---
+id: spotify
+name: Spotify
+country: US
+category: consumer-tech
+homepage: "https://www.spotify.com"
+primary_color: "#1db954"
+logo:
+  type: simpleicons
+  slug: spotify
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Spotify
 
 ## 1. Visual Theme & Atmosphere

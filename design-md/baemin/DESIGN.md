@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: Baemin
+id: baemin
+name: Baemin
+country: KR
+category: consumer-tech
+homepage: "https://www.baemin.com"
+primary_color: "#2ac1bc"
+logo:
+  type: favicon
+  slug: "https://www.baemin.com/favicon.ico"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Baemin (배달의민족)

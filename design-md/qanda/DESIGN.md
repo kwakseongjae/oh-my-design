@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: QANDA
+id: qanda
+name: QANDA
+country: KR
+category: consumer-tech
+homepage: "https://qanda.ai"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://qanda.ai/favicon.ico"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of QANDA (콴다)

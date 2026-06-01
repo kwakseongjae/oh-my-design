@@ -284,6 +284,25 @@ Designers picking from Fastcampus should treat the FDS hue scales as an official
 - Font: 12px / 600 / Pretendard Variable
 - Use: Design / creative category tags.
 
+
+## 16. Do's and Don'ts
+
+### Do
+- Pin the signature commerce-red #fc1c49 (--c-primary / --fds-semantic-primary-primary) to enrolment CTAs, sale-price highlights and limited-time banners, using #c9032a (--c-primary-darken) for the pressed/hover state
+- Keep the 4px radius vocabulary everywhere and reserve 4px 4px 0 0 (top-rounded, bottom flat) for course cards so the thumbnail caps the visual seam
+- Assign one accent hue per content rail (yellow #ffeb3b for 0원/사전알림, orange #f8930f for early-bird discount, blue #3b83ff for dev/data, pink #e91e63 for design/creative) so the rail hue does the spatial wayfinding
+- Set type on the binary 400/700 cadence — 40px/700 for two-line banner headlines, 14px/600 for category-pill labels, 16px/400 for body and primary GNB — reserving 500 only for the 12px rank-badge label
+- Render rank as a dark #171b1f corner-clipped (4px 0) badge showing the raw number plus enrolment count (1위 / 1,940+), letting the figure speak instead of an adjective
+- Write microcopy in casual-polite ~해요 / ~하기 / ~만나자 for product surfaces and keep formal ~합니다 only for legal, refund and receipt screens
+
+### Don't
+- Apply a full-pill radius to CTAs or category navigation — Fastcampus deliberately chose sharper 4px rectangles to read as a structured market, not a browsy social feed
+- Mix two accent hues within a single card; the rich Material palette is a per-band convention, and yellow and orange are adjacent accent slots, not a primary/secondary brand-color duo
+- Use the commerce-red #fc1c49 for system errors — form/validation errors belong to the separate --fds-color-red ramp (e.g. #c5213b), distinct from the brand primary
+- Adopt the --swiper-theme-color #007aff value as a brand token; it is the Swiper.js library default that leaked into the var dump, not a Fastcampus color
+- Editorialize ranking with superlative prose like 최고의 강의 or 압도적 1위, or add emoji and !!! tails on price/enrolment surfaces — the corner badge and raw count already carry the proof
+- Add elevation via box-shadow on the category-pill or rank-badge layer, or introduce parallax/scroll-triggered hero animation; depth comes from color contrast, and card hover micro-scale (1.0→1.02) is the only ambient motion outside the carousel
+
 ---
 
 **Verified:** 2026-05-15

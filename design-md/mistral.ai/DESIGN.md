@@ -1,3 +1,23 @@
+---
+id: mistral.ai
+name: Mistral AI
+country: FR
+category: ai
+homepage: "https://mistral.ai"
+primary_color: "#ff7000"
+logo:
+  type: simpleicons
+  slug: mistralai
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Mistral Brand
+  url: "https://mistral.ai/brand"
+  type: brand
+  description: Mistral AI's logo, colors, typography, and brand asset kit.
+  og_image: "https://mistral.ai/-/brand/opengraph-image-1robrb.png"
+---
+
 # Design System Inspiration of Mistral AI
 
 ## 1. Visual Theme & Atmosphere

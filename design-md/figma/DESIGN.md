@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: Figma
+id: figma
+name: Figma
+country: US
+category: design-tools
+homepage: "https://www.figma.com"
+primary_color: "#a259ff"
+logo:
+  type: simpleicons
+  slug: figma
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Figma Brand Guidelines
+  url: "https://www.figma.com/using-the-figma-brand"
+  type: brand
+  description: Figma's official trademark and brand usage guidelines with logo downloads.
+  og_image: "https://cdn.sanity.io/images/599r6htc/regionalized/342e17642c7afa81206490b0dd21c3e5724ae040-2400x1260.png?w=1200&q=70&fit=max&auto=format"
 ---
 
 # Design System Inspiration of Figma

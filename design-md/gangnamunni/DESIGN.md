@@ -1,6 +1,22 @@
 ---
-omd: 0.1
-brand: Gangnamunni (강남언니)
+id: gangnamunni
+name: 강남언니
+display_name_kr: Gangnamunni (강남언니)
+country: KR
+category: consumer-tech
+homepage: "https://www.gangnamunni.com"
+primary_color: "#d54300"
+logo:
+  type: favicon
+  slug: "https://www.gangnamunni.com/images/icon/apple-icon-180x180.png"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Gangnamunni Blog
+  url: "https://blog.gangnamunni.com/post/welchis/"
+  type: brand
+  description: Healience design team blog — the Cell + Welchis two-system architecture behind Gangnamunni's medical-platform UI.
+  og_image: "https://blog.gangnamunni.com/contents/posts/238d9338-d3d4-80ac-a8c6-da95db5bc8bc/cover/7d41f721-4cf0-408c-b2fd-f7aa403a5cbe.png"
 ---
 
 # Design System Inspiration of Gangnamunni (강남언니)

@@ -1,9 +1,15 @@
 ---
-omd: 0.1
 id: inflearn
-brand: Inflearn
+name: Inflearn
 country: KR
 category: education
+homepage: "https://www.inflearn.com"
+primary_color: "#00c471"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=inflearn.com&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Inflearn
@@ -302,6 +308,25 @@ Mantine's default transition timing function is `--mantine-transition-timing-fun
 - **Color contrast**: Heading `#212529` on `#FFFFFF` = 16.0:1 (AAA). Body `#495057` on `#FFFFFF` = 8.6:1 (AAA). Primary green `#00C471` on `#FFFFFF` = 2.45:1 — **fails AA for body text**; Inflearn correctly uses it only on white-on-green CTAs (where contrast is 4.4:1, passes AA), as accent fills, and for >18pt heading-scale text. Designers should not use `#00C471` for body-text links without a darker variant — use `#00A760` (3.5:1, still borderline AA for body) and prefer underline + bold.
 - **Keyboard nav**: Mantine `focusRing="auto"` — visible 2px green ring on Tab navigation.
 - **Screen reader**: GNB icon-only buttons carry `aria-label` (`search-menu`, `service-menu` observed). Course tiles use semantic `<article>`.
+
+
+## 16. Do's and Don'ts
+
+### Do
+- Use the single mint-green #00C471 for all primary action — search submit, primary CTA, active pagination, free/starter tag fills — and swap to #00A760 only for hover/pressed states
+- Set type in the Pretendard-first stack with a binary-ish weight scale: 700 for headings (H1 34px, H2 20px), 600 for nav and labelled buttons, 400 for body and prices — there is no 500
+- Apply the two-family radius vocabulary: 8px for cards, inputs, and pagination; 32px for nav pills; and full-pill 999px only for the green search submit and tag chips
+- Render the GNB as a sticky 65px white bar with no shadow and no border, letting the green circular search button be the only visual accent
+- Keep course tiles borderless and transparent (~230x310px, 8px thumbnail radius) so the thumbnail does the visual work, with title in #212529, instructor in #868E96, and price in #212529 weight 400
+- Inherit the Mantine semantic palette for non-brand needs — red #FA5252 for errors, blue #228BE6 for info, cyan-teal #1098AD for category tags — and reach for it instead of inventing new hues
+
+### Don't
+- Introduce a second brand accent hue for a sub-product — tint the existing #00C471 (e.g. rgba(0,196,113,0.1)) or fall back to the Mantine red/blue/yellow/cyan scales instead
+- Use #00C471 for body-text links or small text — it scores only 2.45:1 on white and fails AA, so reserve it for white-on-green CTAs and >18pt headings
+- Embolden prices in red or add strikethrough discount callouts outside intentional sale rails — keep price in body weight 400 as a fact, not a flag
+- Add campaign drama like rotating banner carousels, parallax, or auto-advancing home rails — show ~24 calm catalog tiles above the fold and make card thumbnail scale (1.0 to 1.02) the only ambient motion
+- Use pressure or hype microcopy such as 지금 바로!, 놓치지 마세요, 최저가, 최고의 강의, Oops!, or 오류가 발생했습니다 — write agency-on-the-learner copy in casual-polite ~해요 instead
+- Call instructors 강사 or 교수 or pit them against each other with ranking labels — use the brand term 지식공유자님 and neutral counts like 수강생 12,400명
 
 ---
 

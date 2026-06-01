@@ -1,7 +1,6 @@
 ---
 id: meituan
 name: Meituan
-display_name_kr: 메이퇀
 country: CN
 category: local-services
 homepage: "https://www.meituan.com"

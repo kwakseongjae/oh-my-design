@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: Pinkoi
+id: pinkoi
+name: Pinkoi
+country: TW
+category: consumer-tech
+homepage: "https://www.pinkoi.com"
+primary_color: "#ff595a"
+logo:
+  type: github
+  slug: pinkoi
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Pinkoi

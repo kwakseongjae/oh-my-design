@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: Notion
+id: notion
+name: Notion
+country: US
+category: productivity
+homepage: "https://www.notion.so"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: notion
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Notion

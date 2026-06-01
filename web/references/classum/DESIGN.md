@@ -158,6 +158,25 @@ business.classum.com/
 
 Top-nav surfaces: AI 기반 LMS · 학습 커뮤니티 · AI 상담 챗봇 · 스킬 솔루션 · 리소스 · 로그인 · 도입 문의 (red CTA).
 
+
+## 16. Do's and Don'ts
+
+### Do
+- Reserve the saturated brand red `#FF4438` strictly for primary CTA fills like "도입 문의", and let everything else stay in the lavender-gray neutral range
+- Set the page background to the barely-tinted lavender-gray canvas `#F6F6F9` rather than pure white, so white cards (`#FFFFFF`) read as elevated through background contrast alone
+- Typeset every role — hero, body, nav, CTA, footer — in Pretendard Variable, using only the production weights 300/400/500/600/700 served from the jsDelivr CDN
+- Build hierarchy by jumping from weight 400 to 600/700 (bold-vs-regular contrast) instead of leaning on mid-weight 500 transitions
+- Apply the disciplined radius ladder — 8px on CTA buttons, 20px on content cards, 30px on large feature cards, 999px on pill chips — with no in-between 2px/6px/14px noise
+- Use Ink `#232334` (a warm navy-charcoal, not true black) for primary headings, with Slate `#49495A` for secondary body text and Mute `#666B80` for tertiary labels
+
+### Don't
+- Spread `#FF4438` onto body type, decorative blocks, or a second button color — there is one button color for one job
+- Stack box-shadows for elevation on marketing surfaces; the primary CTA ships `box-shadow: none` and depth comes from canvas-vs-card contrast, reserving shadows only for floating UI like modals, dropdowns, and the chat widget
+- Pad the layout to a Western 16px body baseline — keep the deliberate Korean-density 14px / 1.43 line-height reading rhythm
+- Introduce serif accents, all-caps display type, decorative scripts, glassmorphism, or emoji-led headlines, all of which Classum's B2B-serious surface refuses
+- Write a generic "everyone benefits" pitch — every section should name its audience (대학 vs 기업 HRD) before splitting by feature
+- Add type gradients or auto-rotating hero carousels; gradients live only in hero illustration backdrops and functional UI stays fully flat
+
 ---
 
 ## 10. Brand Philosophy (paraphrased, not quoted)

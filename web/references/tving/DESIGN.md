@@ -257,3 +257,21 @@ Consistent with the systemic Korean-coverage gap.
 ---
 
 *Captured via `omd:add-reference` (CREATE mode) on 2026-05-15. See `assets/_reference/` for tokens.json, structure.json, fonts.json, .live-inspect-proof.json, screenshots/, LICENSE-NOTE.md, attribution.md.*
+
+## 16. Do's and Don'ts
+
+### Do
+- Lock the canvas to pure black (#000000) at the document root and build depth through surface contrast (#000 → #2E2E2E → rgba(15,15,15,0.74)) since box-shadow renders 0 0 #0000 across all product chrome
+- Reserve the brand red #FF153C strictly for CTAs, brand marks, and live-status accents — keeping it to a handful of background nodes the way the doc samples only twelve red backgrounds across 3,000 nodes
+- Drive content-area-aware chrome from the six --color-cate-* tokens (home #FF1F45, live #FF584A, clip #FD8163, VOD #387DFF, movie #7D57FC, ad #FCC800) so color carries product taxonomy
+- Apply the top-corners-only radius (16.5292px 16.5292px 0 0) to poster cards so the image bleeds flush to the bottom metadata edge
+- Set Pretendard as the exclusive typeface and hold weights to the binary 400 body / 700 heading-and-CTA scale, with no 500/600 intermediates
+- Build primary CTAs as #FF153C background, #FFFFFF label, Pretendard 18.6px/700 with generous 19.6292px 62px padding so 4-syllable Korean labels never wrap
+
+### Don't
+- Spread #FF153C across large background areas or decorative fills — it is a CTA, brand-mark, and live-status accent only, never an ambient surface color
+- Apply the locked dark canvas to non-video products, since #000 earns its energy from poster art and video frames a SaaS dashboard or marketplace cannot supply
+- Adopt the six --color-cate-* taxonomy hues for a product with fewer than six genuine content surface paradigms, which only produces visual noise
+- Reproduce #FF153C verbatim as it is a CJ ENM brand color — shift it within the #E0142E–#FF2A4D range with WCAG contrast checks on dark surface if you want a TVING-like scarlet
+- Substitute a system font for Pretendard, whose optical sizing differs meaningfully from Apple SD Gothic Neo at the 12–18px display range
+- Apply the top-corners-only radius to text cards or import the live geometry tokens (e.g. --kbo-player-width: calc(100vw - 31.25rem)) as-is, since both are calibrated to TVING's poster bleed and specific sidebar

@@ -1,11 +1,15 @@
 ---
-omd: 0.1
 id: jumpit
-brand: Jumpit
+name: Jumpit
 country: KR
 category: productivity
-verified: 2026-05-15
-captured_at: 2026-05-15
+homepage: "https://www.jumpit.co.kr"
+primary_color: "#00dd6d"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=jumpit.co.kr&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Jumpit (점핏)

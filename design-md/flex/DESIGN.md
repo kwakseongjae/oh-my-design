@@ -3,10 +3,13 @@ id: flex
 name: flex
 country: KR
 category: saas
-subcategory: hr
-omd: 0.1
-verified: 2026-05-14
-source_url: https://flex.team/
+homepage: "https://flex.team"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=flex.team&sz=256"
+verified: "2026-05-14"
+omd: "0.1"
 ---
 
 # flex — Design Reference
@@ -17,7 +20,7 @@ source_url: https://flex.team/
 
 ---
 
-## 1. Overview
+## 1. Visual Theme & Atmosphere
 
 **flex** is a Korean HR SaaS targeting mid-market and enterprise teams (founded 2019-05, Seongnam HQ, Series B, ~213 employees as of 2026-03). The product unifies employee management, attendance, contracts, workflow, payroll, and HR analytics. The 2024 site refresh ("l2024-c-*" class system observed live) signaled a deliberate pivot upmarket — away from the playful color-block aesthetic of early Korean SaaS toward a quieter, Apple-adjacent surface: black hero, white manifesto, dark graphite cards (#2D3338).
 
@@ -298,6 +301,25 @@ States 카탈로그가 사이트에 명시되지 않은 곳은 **observed shape 
 2. *Opacity is the primary verb.* fade-in + tiny translateY가 거의 모든 entry 모션.
 3. *No spring bounce.* 항상 ease-out 류. overshoot 0.
 4. *Stagger ≤ 100ms.* 3-card grid stagger는 잘게.
+
+
+## 16. Do's and Don'ts
+
+### Do
+- Build hierarchy from a single ink hue `#1D1D1F` stepped through alpha values (0.04 / 0.10 / 0.24 / 0.72 / 0.96) instead of introducing semantic colors
+- Set the 52px display h2 with tight `-1.56px` letter-spacing in Pretendard Variable 700 — the negative tracking is flex's visual signature
+- Define component edges with a 1px inset ring (`rgba(29,29,31,0.24) 0 0 0 1px inset` for active pills, `0.10` for inactive) rather than CSS borders, so hover/active transitions cause zero layout shift
+- Render the first section under the hero as a three-beat narrative (friction → mechanism → outcome) using `#2D3338` graphite cards with 16px radius and 30px padding
+- Flip light/dark by toggling `.l2024_dark` / `.l2024_light` surface classes while keeping the same ink and graphite tokens, rather than swapping the palette
+- Keep motion as assist: opacity fade plus a translateY of ≤12px on scroll entry, ease-out only, with 3-card stagger ≤100ms
+
+### Don't
+- Introduce blue, green, or yellow accent colors — flex's 2024 refresh deliberately deletes the SaaS accent-color habit and resolves nearly every element to the ink scale
+- Fill the active service pill with a solid primary color — it uses a quiet `rgba(29,29,31,0.04)` fill with an inset ring, never a filled blue/primary
+- Make the hero h1 larger than the in-page h2 — flex inverts the usual hierarchy with a compact 28px h1 banner under the 52px h2 argument
+- Use spring-bounce, parallax, or slides with overshoot — motion is always ease-out with overshoot 0 and translate capped at 12px
+- Put illustrations, icons, or images inside the manifesto cards — they are pure type on `#2D3338`, where the graphite-on-white card itself is the visual
+- Cram multiple USPs into one card or screen — flex holds to one message per screen across its three-card structure
 
 ---
 

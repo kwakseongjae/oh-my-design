@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: Remember
+id: remember
+name: Remember
+country: KR
+category: productivity
+homepage: "https://www.rememberapp.co.kr"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://cdn.rememberapp.co.kr/logos/remember/rmbr_og_image.png"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Remember UI
+  url: "https://dramancompany.github.io/remember-ui/"
+  type: system
+  description: Remember (drama&company) UI library — public Storybook deploy with components for the business-card / B2B networking product.
+  og_image: "https://cdn.rememberapp.co.kr/logos/remember/rmbr_og_image.png"
 ---
 
 # Design System Inspiration of Remember (리멤버)

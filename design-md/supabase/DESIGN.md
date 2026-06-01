@@ -1,3 +1,23 @@
+---
+id: supabase
+name: Supabase
+country: US
+category: backend-devops
+homepage: "https://supabase.com"
+primary_color: "#3ecf8e"
+logo:
+  type: simpleicons
+  slug: supabase
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Supabase Brand Assets
+  url: "https://supabase.com/brand-assets"
+  type: brand
+  description: Supabase's brand guidelines with logos and integration button specs.
+  og_image: "https://supabase.com/images/og/supabase-og.png"
+---
+
 # Design System Inspiration of Supabase
 
 ## 1. Visual Theme & Atmosphere

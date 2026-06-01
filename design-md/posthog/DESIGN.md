@@ -1,3 +1,23 @@
+---
+id: posthog
+name: PostHog
+country: US
+category: backend-devops
+homepage: "https://posthog.com"
+primary_color: "#1d4aff"
+logo:
+  type: simpleicons
+  slug: posthog
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: PostHog Brand Assets
+  url: "https://posthog.com/handbook/company/brand-assets"
+  type: brand
+  description: PostHog's public handbook brand, logo, and illustration guidelines.
+  og_image: "https://d36j3rcgc2qfsv.cloudfront.net/handbookcompanybrand-assets.jpeg"
+---
+
 # Design System Inspiration of PostHog
 
 ## 1. Visual Theme & Atmosphere

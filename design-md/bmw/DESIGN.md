@@ -1,3 +1,17 @@
+---
+id: bmw
+name: BMW
+country: DE
+category: automotive
+homepage: "https://www.bmw.com"
+primary_color: "#0066b1"
+logo:
+  type: simpleicons
+  slug: bmw
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of BMW
 
 ## 1. Visual Theme & Atmosphere

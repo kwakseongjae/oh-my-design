@@ -1,11 +1,15 @@
 ---
-omd: 0.1
 id: kbank
 name: K bank
 country: KR
-category: finance
-url: https://www.kbanknow.com
-verified: 2026-05-14
+category: fintech
+homepage: "https://www.kbanknow.com"
+primary_color: "#0046ff"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=kbanknow.com&sz=256"
+verified: "2026-05-14"
+omd: "0.1"
 ---
 
 # K bank — Design Reference
@@ -16,7 +20,12 @@ K bank reads as a **regulated bank that happens to be app-native**, not a fintec
 
 ---
 
-## §1 Foundation tokens (live-captured)
+## 1. Visual Theme & Atmosphere
+
+**K bank** is South Korea's first internet-only bank (launched 2017, KT-led consortium → 2021 KT Strategic Investment recap → 2024 IPO preparation). The product surface reads as a neobank that refuses both fintech-startup playfulness and legacy-bank gravitas: a near-white canvas anchored by a single signature **K bank Navy `#0114A7`**, an energetic **Lime `#B6F23D`** accent used sparingly on activation states, and a tight Pretendard type ladder. Skip-link primary, body 16px / 400 #1A1A1A on white, fixed 1280px desktop canvas — the chrome is sober, mobile-first-translated-to-desktop, and image-replacement H1 (font-size:0) is still in use, which surfaces concrete a11y debt (`a11y_landmark_violation` documented in §8). Where the prior batch's Toss leans warm-trust and KakaoBank leans playful-yellow, K bank leans **executive-restraint**: the brand is the navy, the navy is the trust, and chrome elsewhere stays out of the way.
+
+## 1.1 Foundation tokens (live-captured)
+
 
 All values pulled from `getComputedStyle(document.documentElement)` on `https://www.kbanknow.com` — see `assets/_reference/tokens.json` for the full machine-readable set and `assets/_reference/.live-inspect-proof.json` for raw samples.
 
@@ -56,7 +65,7 @@ All values pulled from `getComputedStyle(document.documentElement)` on `https://
 
 ---
 
-## §2 Layout & grid
+## 2. Layout & grid
 
 - **Fixed 1280px desktop canvas.** No fluid breakpoint observed on the marketing surface; mobile app is the primary product channel, web is the catalog/regulatory mirror.
 - Body width measured live at `1280px`, height `1126px` above-the-fold for the landing surface.
@@ -65,7 +74,7 @@ All values pulled from `getComputedStyle(document.documentElement)` on `https://
 
 ---
 
-## §3 Component DNA
+## 3. Component DNA
 
 **Buttons**: 56px tall × 12px radius × 18px / 500 type × navy (`#0114A7`) fill + white text. Medium weight, not bold — a small but distinctive choice; most KR finance peers default to 600/700.
 
@@ -81,20 +90,20 @@ All values pulled from `getComputedStyle(document.documentElement)` on `https://
 
 ---
 
-## §4 Iconography & illustration
+## 4. Iconography & illustration
 
 - Minimal illustration on the marketing root (8 `<img>` total). The brand leans on type + flat color blocks for hierarchy, not custom artwork.
 - No icon system surfaced in `:root` tokens — icons are inlined or asset-based, not tokenised.
 
 ---
 
-## §5 Motion
+## 5. Motion
 
 - No CSS transitions/animations declared at `:root` level (no `--motion-*` or `--duration-*` tokens). The marketing surface is static; in-app motion is out-of-scope for web inspection.
 
 ---
 
-## §6 Information architecture
+## 6. Information architecture
 
 Four-tab primary nav: `개인 · 기업 · 은행소개 · 상품안내 · 고객센터 · 혜택`. Catalog-first IA, not task-first.
 
@@ -109,7 +118,7 @@ Four-tab primary nav: `개인 · 기업 · 은행소개 · 상품안내 · 고�
 
 ---
 
-## §7 Content patterns
+## 7. Content patterns
 
 - **Notice-led hero**: top of the marketing root surfaces the most recent 공지사항 (e.g. K-패스 캐시백 지연 안내, 2026.05.06) — regulatory transparency placed above promotion.
 - **Date stamps everywhere**: every notice carries `YYYY.MM.DD` prefix. Provenance > excitement.
@@ -117,7 +126,7 @@ Four-tab primary nav: `개인 · 기업 · 은행소개 · 상품안내 · 고�
 
 ---
 
-## §8 Accessibility posture
+## 8. Accessibility posture
 
 - ✓ Skip-link present and styled for focus visibility.
 - ✓ `lang="ko-KR"` declared.
@@ -130,7 +139,7 @@ Overall: meaningful effort on focus order and language tagging; structural seman
 
 ---
 
-## §9 Voice (fresh paraphrase — NOT verbatim)
+## 9. Voice (fresh paraphrase — NOT verbatim)
 
 - Formal Korean, `~합니다` register throughout. K bank does not use Toss-style colloquial `~해요`.
 - Headlines are nouns or noun-phrases, not promises. "예적금" not "돈을 모아보세요".
@@ -141,7 +150,7 @@ Overall: meaningful effort on focus order and language tagging; structural seman
 
 ---
 
-## §10 What to steal (and what not to)
+## 10. What to steal (and what not to)
 
 **Steal**
 1. The dual-emitted token system (`--color-g*` and `--txt-g*` pointing at the same values) — lets product teams reason about role separately from value.
@@ -157,7 +166,7 @@ Overall: meaningful effort on focus order and language tagging; structural seman
 
 ---
 
-## §11 Open questions / gaps
+## 11. Open questions / gaps
 
 - **Tier 1 official DS lookup — negative result documented.** K bank does **not** publish a public design system site (no `design.kbanknow.com`, no Figma community kit, no GitHub `kbank-design` org as of 2026-05-14). The `:root` token system shipped in production CSS is the closest public artifact. Compared to Toss (Toss Design System site) or Kakao (Kakao Design site), K bank has chosen not to externalise its system.
 - Mobile-app token parity unknown — web tokens may diverge from in-app values.
@@ -165,7 +174,7 @@ Overall: meaningful effort on focus order and language tagging; structural seman
 
 ---
 
-## §12 Sources & verification
+## 12. Sources & verification
 
 - **Tier 1 — Live inspect (production)**: `https://www.kbanknow.com/ib20/mnu/PBKMAN000000` via CDP `:9222` / `Runtime.evaluate` / `getComputedStyle`. 6 raw element samples + 43 CSS variables + 7 observed color frequencies captured. See `assets/_reference/.live-inspect-proof.json`.
 - **Tier 1 — Official DS site**: **No public design system found.** Searched: `design.kbanknow.com` (no DNS), GitHub `kbanknow` / `kbank` orgs (no design-system repo), Figma Community (no official K bank kit). Negative result documented here as authoritative.
@@ -179,8 +188,26 @@ Overall: meaningful effort on focus order and language tagging; structural seman
 
 ---
 
-## §13 IP & guardrails
+## 13. IP & guardrails
 
 - Brand assets (logo, name, navy `#0114A7`) referenced for inspiration only — not redistributed.
 - No verbatim taglines or copy lifted from kbanknow.com. §9 voice paragraph is a fresh analyst paraphrase of register and structure, not transcription.
 - Token values are facts (CSS custom property values) and not protectable expression; they are reproduced here for engineering reference under fair-use analytical purpose.
+
+## 14. Do's and Don'ts
+
+### Do
+- Anchor the brand on the single signature navy #0114A7 as the sole positive primary across skip-link, CTAs, and key labels
+- Reserve the lime accent #B6F23D for sparing energetic activation states only, keeping it off body text and form chrome
+- Keep surfaces sharp and orthogonal at 0px radius and apply the 12px radius exclusively to the 56px CTA
+- Set CTAs in Pretendard K Edition at 18px / 500 medium weight with white text on navy fill, not the 600/700 most KR finance peers default to
+- Convey elevation through 1px borders and cool-tinted g200/g300 fills instead of drop-shadows, using the blue-leaning neutral ramp to stay coherent with the navy
+- Lead the page with dated notices (YYYY.MM.DD) above promotion and write formal ~합니다 noun-phrase headers with one supporting sentence
+
+### Don't
+- Spread the lime #B6F23D accent across large areas or place it on body text and form chrome
+- Round corners broadly the way K bank reads dated with 0px everywhere except CTA — adopt the sharpness only when deliberately signalling a regulated institution
+- Lock layouts to the fixed 1280px canvas, which blocks responsive zoom and is not viable for modern surfaces
+- Build chrome out of bare <div> elements — use real <header>, <nav>, <main>, and <footer> landmarks
+- Hide the logo with the font-size: 0 image-replacement trick on the H1 — use inline SVG with an explicit aria-label
+- Write chatty contractions, emoji, or second-person imperatives, or swap the formal ~합니다 register for colloquial ~해요

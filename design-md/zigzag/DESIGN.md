@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: ZIGZAG
+id: zigzag
+name: ZIGZAG
+country: KR
+category: ecommerce
+homepage: "https://zigzag.kr"
+primary_color: "#fa6ee3"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=zigzag.kr&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: ZIGZAG Tech / Brunch
+  url: "https://brunch.co.kr/@zigzag/73"
+  type: brand
+  description: Kakaostyle / ZIGZAG's brand & design articles — the ZDS (ZIGZAG Design System) rearchitecture and the 2021 cool-pink rebrand.
+  og_image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/4Zzt/image/-3UDP-Htu127zH73hWgxU-DsWNg.jpg"
 ---
 
 # Design System Inspiration of ZIGZAG (지그재그)

@@ -1,3 +1,17 @@
+---
+id: kakao
+name: Kakao
+country: KR
+category: consumer-tech
+homepage: "https://www.kakao.com"
+primary_color: "#fee500"
+logo:
+  type: simpleicons
+  slug: kakaotalk
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Kakao (카카오)
 
 ## 1. Visual Theme & Atmosphere

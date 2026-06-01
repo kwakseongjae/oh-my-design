@@ -1,3 +1,23 @@
+---
+id: superhuman
+name: Superhuman
+country: US
+category: developer-tools
+homepage: "https://superhuman.com"
+primary_color: "#5840ff"
+logo:
+  type: github
+  slug: superhuman
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Superhuman Media Assets
+  url: "https://superhuman.com/media-assets"
+  type: brand
+  description: Superhuman's press and brand asset kit.
+  og_image: "https://superhumanstatic.com/super-funnel/main/public/images/v3/social-share.png"
+---
+
 # Design System Inspiration of Superhuman
 
 ## 1. Visual Theme & Atmosphere

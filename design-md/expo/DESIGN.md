@@ -1,3 +1,23 @@
+---
+id: expo
+name: Expo
+country: US
+category: developer-tools
+homepage: "https://expo.dev"
+primary_color: "#000020"
+logo:
+  type: simpleicons
+  slug: expo
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Expo Brand
+  url: "https://expo.dev/brand"
+  type: brand
+  description: Expo logo/wordmark trademark and usage guidelines.
+  og_image: "https://og.expo.dev/?theme=universe&title=Brand%2C+Assets%2C+Styles&description=Get+Expo+brand+assets+and+styles+for+any+use."
+---
+
 # Design System Inspiration of Expo
 
 ## 1. Visual Theme & Atmosphere

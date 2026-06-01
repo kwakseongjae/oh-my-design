@@ -1,3 +1,23 @@
+---
+id: cursor
+name: Cursor
+country: US
+category: developer-tools
+homepage: "https://www.cursor.com"
+primary_color: "#000000"
+logo:
+  type: simpleicons
+  slug: cursor
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Cursor Brand
+  url: "https://www.cursor.com/brand"
+  type: brand
+  description: Cursor's brand guidelines with logos, icons, and naming conventions.
+  og_image: "https://cursor.com/public/opengraph-image.png"
+---
+
 # Design System Inspiration of Cursor
 
 ## 1. Visual Theme & Atmosphere

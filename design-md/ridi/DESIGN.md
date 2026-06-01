@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: RIDI
+id: ridi
+name: RIDI
+country: KR
+category: consumer-tech
+homepage: "https://ridibooks.com"
+primary_color: "#000000"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=ridibooks.com&sz=128"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of RIDI (리디)

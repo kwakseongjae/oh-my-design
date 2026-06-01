@@ -1,13 +1,35 @@
 ---
-omd: 0.1
 id: toss-securities
-brand: Toss Securities (토스증권)
+name: Toss Securities
+display_name_kr: Toss Securities (토스증권)
 country: KR
-category: finance
-url: https://tossinvest.com
-verified: 2026-05-15
-captured_at: 2026-05-15
-confidence: High
+category: fintech
+homepage: "https://tossinvest.com"
+primary_color: "#3182f6"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=tossinvest.com&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
+
+## 14. Do's and Don'ts
+
+### Do
+- Build dark-mode-first, layering surfaces from deepest #101013 to body rgb(23,23,28) to overlay #202025 for sheets
+- Encode the KR-finance locale by using red #dc2e47 for positive/up ticks and blue #3182f6 for negative/down ticks via the positive/negative semantic tokens
+- Create depth with translucent rgba(214,224,239,0.09) 1px borders and layered surface alpha instead of elevation
+- Keep the two-tier radius scale, using 8px for cards, inputs, and buttons and 32px for pill controls like memo and filter chips
+- Set type from the observed hierarchy: 24px/700 section H2, 18.72px/700 sub-section H3, 15px/500 nav links, and 16px/400 body
+- Use Toss Product Sans tabular numerals so price ticks, order-book columns, and percent changes align by column
+
+### Don't
+- Copy positive=red / negative=blue into non-KR/JP/TW locales without inverting positive-* to green and negative-* to red
+- Assume Toss Blue #3182f6 always means brand CTA, since on this surface it is also the down-tick fill and only context disambiguates
+- Introduce box-shadow as elevation language; this system deliberately uses translucent borders plus layered surface alphas
+- Add a third radius tier beyond the deliberate two-tier 8px / 32px scale
+- Introduce a display-only accent typeface; restraint is the rule and there is no decorative accent face
+- Decorate data surfaces with illustration; the price chart itself is the imagery
+
 ---
 
 # Design System Inspiration of Toss Securities (토스증권)

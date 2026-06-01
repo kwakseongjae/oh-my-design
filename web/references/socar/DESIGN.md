@@ -383,3 +383,21 @@ plus standard FRAME-tier conventions, not published SOCAR tokens. Treat as
 inference until cross-checked against the internal SOCAR Frame 2.0 motion
 documentation.
 -->
+
+## 16. Do's and Don'ts
+
+### Do
+- Set all body and heading text in cool blue-grey #354153 on pure white #ffffff, never true black, to signal a calm service rather than a bank or government form
+- Reserve SOCAR Blue exclusively for the Space Frame symbol, app-store badges, and the primary booking CTA, keeping the rest of the chrome achromatic
+- Keep radii on the 12 / 14 / 16px ladder — 12px for inputs and the search button, 14px for booking chips and city tiles, 16px for content cards
+- Contain article cards with the single soft shadow rgba(0,0,0,0.1) 0 4px 8px and let it act as the border, rather than adding outlines
+- Cap headings at the mobile-first scale (H1 26px/700, H2 22px/700, H3 16px/600) even on desktop, and separate hierarchy by size and weight, not by a darker color
+- Render booking and payment confirmations as a dedicated single-column screen with one '확인' CTA, never reducing money-moving events to a toast
+
+### Don't
+- Spread SOCAR Blue across large background areas or general chrome — it must stay achromatic so the blue does the brand-flagging where it matters
+- Reuse the #b4bbcb placeholder/disabled grey for active text, since it only measures ~2.5:1 on white and fails WCAG AA
+- Introduce pill (9999px) or sharp-corner (0px) primary components, or multi-layer chromatic shadow stacks — both break the single-shadow, mid-radius geometry
+- Swap Pretendard for a bespoke web display face or add letter-spacing to Korean text; the type voice comes from disciplined sizing with tracking left at normal
+- Revive the pre-2024 playful consumer-app vocabulary — bright accents, illustrated empty states, or character mascots — that the rebrand deliberately retired
+- Write generic error copy like '검색 결과가 없습니다' or '문제가 발생했습니다', or put exclamation marks and emoji on booking, payment, or return surfaces

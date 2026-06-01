@@ -1,3 +1,23 @@
+---
+id: cohere
+name: Cohere
+country: US
+category: ai
+homepage: "https://cohere.com"
+primary_color: "#39594d"
+logo:
+  type: github
+  slug: cohere-ai
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Cohere Newsroom
+  url: "https://cohere.com/newsroom"
+  type: brand
+  description: Cohere's press kit with logos, symbols, and media resources.
+  og_image: "https://cdn.sanity.io/images/rjtqmwfu/web3-prod/0750efbc3db33b1a67bc77575525b076f0137f26-1200x630.jpg?w=1200&h=630"
+---
+
 # Design System Inspiration of Cohere
 
 ## 1. Visual Theme & Atmosphere

@@ -1,12 +1,21 @@
 ---
-omd: 0.1
 id: gmarket
-brand: Gmarket
-brand_kr: 지마켓
+name: Gmarket
+display_name_kr: 지마켓
 country: KR
 category: ecommerce
-url: https://www.gmarket.co.kr
-verified: 2026-05-15
+homepage: "https://www.gmarket.co.kr"
+primary_color: "#ffd200"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=gmarket.co.kr&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: Gmarket Sans
+  url: "https://corp.gmarket.com/fonts/"
+  type: brand
+  description: "Gmarket's SIL OFL brand typeface — 3 weights, TTF/OTF, 11,172 KR glyphs. First-party font artifact from a 25-year-old open marketplace; backing 247 :root CSS vars + Smile Yellow #ffd200 + Club/Event/Service sub-systems on the storefront."
 ---
 
 # Design System Inspiration of Gmarket (지마켓)
@@ -426,6 +435,25 @@ Motion tokens **partially captured** — the chrome relies on Swiper.js defaults
 - Hover responses should be ≤150ms
 - Layer / modal transitions should be 200–250ms with ease-out
 - Respect `prefers-reduced-motion: reduce` — disable swiper auto-advance, eliminate non-essential transitions
+
+
+## 16. Do's and Don'ts
+
+### Do
+- Reserve Gmarket Red #da120d (--Red-600) for numeric price-discount strings, percentage-off, and strike-through context — treat it as a semantic-price asset, not a generic CTA fill
+- Set section H2s in Gmarket Sans at 28px/700 for hero modules and 24px/700 for compact modules, keeping the body on the Apple SD Gothic Neo / Noto Sans CJK KR system stack
+- Stack 10+ category modules vertically with ~48-64px breaks and repeating thumbnail-price-chip card rhythm so users scan the grid, not headings
+- Convey depth through borders and Gray-ladder tints (--Gray-200 #eeeeee card edge, --Gray-100 #f5f5f5 row/section tint) instead of box-shadow, which is absent in production chrome
+- Map color to revenue programs via named sub-systems — Smile-Yellow #ffd200 for loyalty/SmilePay, StarDelivery-Purple #7130f3 for premium delivery, Club-Navy-Main #002041 for Smile Club rails
+- Render Korean service-names exactly as-is (스마일배송 / 안전결제 / 도착보장 / 쿠폰적용가) and lead card copy with the price, letting the number do the work
+
+### Don't
+- Flood Gmarket Red #da120d as a primary button fill across large surfaces — in 272 sampled chrome elements it appears on price text, not as a button background
+- Place Smile-Yellow #ffd200 as a foreground on white (1.6:1 contrast, fails WCAG AA) — use it only as a background fill behind #222222 dark text
+- Add box-shadow or elevation to product cards; separation comes from the 8-16px gutter and color tints, never drop shadows
+- Pad sections to 'breathe' or introduce hierarchy that breaks the dense scan rhythm at the expense of card count per fold
+- Translate or rebrand Korean service-names (e.g. 스마일배송 to 'Smile Delivery') in Korean chrome, and avoid emotional adjectives or hero-tagline gestures inside card chrome
+- Collapse the type scale onto Medium 500 — production leans on the 400/700 binary, with 500 reserved mainly for the rendered logotype and banner overlays
 
 ---
 

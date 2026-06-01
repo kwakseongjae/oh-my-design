@@ -1,3 +1,23 @@
+---
+id: opencode.ai
+name: OpenCode AI
+country: US
+category: ai
+homepage: "https://opencode.ai"
+primary_color: "#000000"
+logo:
+  type: github
+  slug: opencode-ai
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: OpenCode Brand
+  url: "https://opencode.ai/brand"
+  type: brand
+  description: OpenCode's terminal-oriented logo and brand assets.
+  og_image: "https://opencode.ai/social-share.png"
+---
+
 # Design System Inspiration of OpenCode
 
 ## 1. Visual Theme & Atmosphere

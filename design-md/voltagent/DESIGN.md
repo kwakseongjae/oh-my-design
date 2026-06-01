@@ -1,3 +1,17 @@
+---
+id: voltagent
+name: VoltAgent
+country: US
+category: ai
+homepage: "https://voltagent.dev"
+primary_color: "#22c55e"
+logo:
+  type: github
+  slug: VoltAgent
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of VoltAgent
 
 ## 1. Visual Theme & Atmosphere

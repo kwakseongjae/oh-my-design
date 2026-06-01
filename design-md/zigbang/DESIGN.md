@@ -1,6 +1,16 @@
 ---
-omd: 0.1
-brand: Zigbang (직방)
+id: zigbang
+name: Zigbang
+display_name_kr: Zigbang (직방)
+country: KR
+category: consumer-tech
+homepage: "https://www.zigbang.com"
+primary_color: "#0066ff"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=zigbang.com&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Zigbang (직방)

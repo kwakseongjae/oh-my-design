@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: Mercari
+id: mercari
+name: Mercari
+country: JP
+category: consumer-tech
+homepage: "https://www.mercari.com"
+primary_color: "#ff0211"
+logo:
+  type: github
+  slug: mercari
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of Mercari

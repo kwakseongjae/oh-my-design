@@ -1,6 +1,21 @@
 ---
-omd: 0.1
-brand: KakaoPay
+id: kakaopay
+name: KakaoPay
+country: KR
+category: fintech
+homepage: "https://www.kakaopay.com"
+primary_color: "#ffeb00"
+logo:
+  type: favicon
+  slug: "https://t1.kakaocdn.net/kakaopay/icons/web/192-brand.png"
+verified: "2026-05-15"
+omd: "0.1"
+ds:
+  name: KakaoPay Story
+  url: "https://story.kakaopay.com/"
+  type: brand
+  description: "KakaoPay's design narrative blog — 3 pillars (Color · Icon · Type), the 3:1 contrast accessibility policy, and the KPDS internal design system context."
+  og_image: "https://i0.wp.com/story.kakaopay.com/wp-content/uploads/2024/03/kakaopay_thumb.png"
 ---
 
 # Design System Inspiration of KakaoPay

@@ -193,3 +193,21 @@ Overall: meaningful effort on focus order and language tagging; structural seman
 - Brand assets (logo, name, navy `#0114A7`) referenced for inspiration only — not redistributed.
 - No verbatim taglines or copy lifted from kbanknow.com. §9 voice paragraph is a fresh analyst paraphrase of register and structure, not transcription.
 - Token values are facts (CSS custom property values) and not protectable expression; they are reproduced here for engineering reference under fair-use analytical purpose.
+
+## 14. Do's and Don'ts
+
+### Do
+- Anchor the brand on the single signature navy #0114A7 as the sole positive primary across skip-link, CTAs, and key labels
+- Reserve the lime accent #B6F23D for sparing energetic activation states only, keeping it off body text and form chrome
+- Keep surfaces sharp and orthogonal at 0px radius and apply the 12px radius exclusively to the 56px CTA
+- Set CTAs in Pretendard K Edition at 18px / 500 medium weight with white text on navy fill, not the 600/700 most KR finance peers default to
+- Convey elevation through 1px borders and cool-tinted g200/g300 fills instead of drop-shadows, using the blue-leaning neutral ramp to stay coherent with the navy
+- Lead the page with dated notices (YYYY.MM.DD) above promotion and write formal ~합니다 noun-phrase headers with one supporting sentence
+
+### Don't
+- Spread the lime #B6F23D accent across large areas or place it on body text and form chrome
+- Round corners broadly the way K bank reads dated with 0px everywhere except CTA — adopt the sharpness only when deliberately signalling a regulated institution
+- Lock layouts to the fixed 1280px canvas, which blocks responsive zoom and is not viable for modern surfaces
+- Build chrome out of bare <div> elements — use real <header>, <nav>, <main>, and <footer> landmarks
+- Hide the logo with the font-size: 0 image-replacement trick on the H1 — use inline SVG with an explicit aria-label
+- Write chatty contractions, emoji, or second-person imperatives, or swap the formal ~합니다 register for colloquial ~해요

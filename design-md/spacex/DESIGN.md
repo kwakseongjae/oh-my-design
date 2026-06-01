@@ -1,6 +1,15 @@
 ---
-omd: 0.1
-brand: SpaceX
+id: spacex
+name: SpaceX
+country: US
+category: consumer-tech
+homepage: "https://www.spacex.com"
+primary_color: "#005288"
+logo:
+  type: simpleicons
+  slug: spacex
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Design System Inspiration of SpaceX

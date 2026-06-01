@@ -2,19 +2,21 @@
 id: upbit
 name: Upbit
 country: KR
-category: finance
-subcategory: crypto-exchange
-operator: Dunamu
-url: https://upbit.com
-omd: 0.1
-captured_at: 2026-05-14
+category: fintech
+homepage: "https://upbit.com"
+primary_color: "#093687"
+logo:
+  type: favicon
+  slug: "https://www.google.com/s2/favicons?domain=upbit.com&sz=256"
+verified: "2026-05-15"
+omd: "0.1"
 ---
 
 # Upbit — DESIGN.md
 
 > Note: brand assets and tokens captured here are documented **reference-only** for design pedagogy under the OmD project. No taglines are reproduced verbatim. Voice characterization in §10–11 is a fresh synthesis of observable surface behavior and public corporate sources; it is not lifted from Upbit/Dunamu copy.
 
-## 1. Identity
+## 1. Visual Theme & Atmosphere
 
 Upbit is the production crypto-asset exchange operated by **Dunamu** in Korea, launched 2017. Its product identity rests on three observable promises: regulated-grade trust, dense real-time information, and zero theatrics — the page presents the market, not the brand.
 
@@ -268,6 +270,25 @@ The "why now" thesis encoded in the surface: in a market famous for speculative 
   2. No page transitions on the exchange surface; navigation is instantaneous (state-driven).
   3. Modal enter from `translateY(8px) opacity:0` → identity over 200ms ease-out. Exit reverses, 250ms.
   4. Row-print blink: tint fades in 150ms then holds for 800ms before easing out 400ms. The 800ms hold is what makes a moving market legible.
+
+
+## 16. Do's and Don'ts
+
+### Do
+- Lead with tables, not cards — make the data the hero and the chrome the frame, with row heights of 45px on tradable lists and 30px on column headers
+- Encode direction in the Korean convention: red `#DD3C44` for 상승 (up) and blue `#1375EC` for 하락 (down), and invert to green-up/red-down only when porting to US/EU markets
+- Communicate row direction with an 8% alpha tint (`rgba(221,60,68,0.08)` rise / `rgba(19,117,236,0.08)` fall) so the hue supports rather than overpowers the numeral
+- Keep buttons flat and tight — 4px radius, no border, white text, scaling the blue by stakes: `#0062DF` for nav CTAs, `#003597` for the 44px hero CTA
+- Label CTAs as nouns or noun-phrases (로그인, 회원가입, 거래소 둘러보기, 직접입력) and split sentence-final forms by surface — `~합니다` on notices, `~해요` on product modules
+- Hold motion to the duration scale (100ms hover / 150ms row blink / 200ms nav / 250ms modal out) and animate only a price cell's background tint, never its typography
+
+### Don't
+- Wrap a price or numeral in a decorative card container — table primitives outrank card primitives on trading surfaces
+- Spread the accent blues (`#1375EC` / `#003597`) across large background areas; the page stays light on `#E9ECF1` with white panels and color used structurally
+- Add page transitions, parallax, scroll-jacking, or spring easing — the exchange surface is already in constant micro-motion from updating numbers
+- Sell with imperatives or exclamation (지금 시작하세요!, 쉽고 빠르게!) or lead with brand voice on a trading screen; keep persuasive copy to marketing surfaces only
+- Use emoji, exclamation marks, or a startup-slang tone on price surfaces — the register stays composed and procedural
+- Treat English as a translation layer — ship the Korean stack first with EN as a sibling KO/EN segment, and don't prune the Korean fallback chain to legacy families like Dotum / 돋움
 
 ---
 

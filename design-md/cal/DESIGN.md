@@ -1,3 +1,17 @@
+---
+id: cal
+name: Cal.com
+country: US
+category: productivity
+homepage: "https://cal.com"
+primary_color: "#111827"
+logo:
+  type: simpleicons
+  slug: caldotcom
+verified: "2026-05-15"
+omd: "0.1"
+---
+
 # Design System Inspiration of Cal.com
 
 ## 1. Visual Theme & Atmosphere
