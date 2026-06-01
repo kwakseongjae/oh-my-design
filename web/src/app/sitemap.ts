@@ -97,6 +97,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: `${siteUrl}/alternatives/getdesign-md`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
 
   const changelogRoutes: MetadataRoute.Sitemap = getChangelog().map((e) => ({

@@ -1,6 +1,6 @@
 /**
  * /faq — AEO-targeted Q&A. Server component, page-level metadata, FAQPage
- * JSON-LD. 18 questions across 4 sections. Self-contained (no shared
+ * JSON-LD. 20 questions across 4 sections. Self-contained (no shared
  * v2 nav reuse — avoids client-comp wrap so metadata export is valid).
  */
 
@@ -13,7 +13,7 @@ const SITE_URL = "https://oh-my-design.kr";
 export const metadata: Metadata = {
   title: "FAQ — oh-my-design (DESIGN.md, OmD, vibe coding)",
   description:
-    "DESIGN.md과 oh-my-design에 대한 자주 묻는 질문 18개. 설치, AI agent 호환성, shadcn/v0/Anima/Locofy와의 차이, MCP, 멀티턴 디자인, 한국어 voice preset까지.",
+    "DESIGN.md과 oh-my-design에 대한 자주 묻는 질문 20개. 설치, AI agent 호환성, shadcn/v0/Anima/Locofy/getdesign.md와의 차이, MCP, 멀티턴 디자인, 한국어 voice preset까지.",
   keywords: [
     "DESIGN.md FAQ",
     "oh-my-design FAQ",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FAQ — oh-my-design",
     description:
-      "DESIGN.md / OmD / vibe coding · 18 questions answered for AI coding agents.",
+      "DESIGN.md / OmD / vibe coding · 20 questions answered for AI coding agents.",
     url: `${SITE_URL}/faq`,
     type: "article",
   },
@@ -114,6 +114,14 @@ const SECTIONS: QASection[] = [
       {
         q: "Google Stitch와는 어떤 관계인가요?",
         a: "Google Stitch가 DESIGN.md 포맷(9 sections — color, typography, components 등)을 먼저 제안했고, OmD는 그 위에 §10–15 브랜드 철학 layer 6개 섹션을 더한 superset입니다. Stitch가 만든 DESIGN.md는 그대로 OmD에서도 valid하고, OmD를 쓰면 voice·persona·motion까지 같은 파일 안에서 다룰 수 있습니다.",
+      },
+      {
+        q: "getdesign.md 같은 다른 DESIGN.md 모음과 oh-my-design은 뭐가 다른가요?",
+        a: "getdesign.md는 Apple·BMW·Stripe·Figma 같은 서구권 브랜드의 DESIGN.md를 보기 좋게 모아둔 무료 카탈로그입니다. 영어 중심이고 browse→copy(둘러보고 복사)에 강합니다. oh-my-design은 세 가지가 다릅니다. (1) 한국 브랜드 깊이 — 토스·당근·배민·카카오·네이버·쿠팡·무신사·뱅크샐러드·29CM·컬리 등 getdesign.md에는 거의 없는 국내 디자인 시스템을 다룹니다. (2) 단순 카탈로그가 아니라 한 번 설치하면 동작하는 에이전트 레이어 — skills(omd:init/apply/harness/sync), 서브에이전트, MCP 서버를 제공해 DESIGN.md를 실제 UI 생성에 바로 적용합니다. (3) 더 깊은 스키마 — 기본 9개 섹션 위에 Voice·Narrative·Principles·Personas·States·Motion을 더한 15개 섹션 OmD v0.1 구조입니다. 정리하면, 서구권 브랜드를 빠르게 둘러보려면 getdesign.md가 좋고, 한국 브랜드 기반으로 실제 작업에 녹여 쓰려면 oh-my-design이 맞습니다.",
+      },
+      {
+        q: "한국 브랜드(토스·당근·배민)도 있나요?",
+        a: "네. oh-my-design은 한국 브랜드 디자인 시스템을 핵심으로 다룹니다. 토스·당근(Karrot)·배민·카카오·네이버·쿠팡·무신사·뱅크샐러드·29CM·컬리 등 국내 브랜드의 DESIGN.md를 한국어 문서로 제공합니다. 서구권 브랜드 위주의 영어 카탈로그(getdesign.md 등)에는 대부분 없는 부분이며, 이 한국 브랜드 깊이가 oh-my-design의 가장 큰 차별점입니다.",
       },
     ],
   },
@@ -219,7 +227,7 @@ export default function FaqPage() {
           <ArrowLeft className="h-3.5 w-3.5" /> Home
         </Link>
         <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground mb-3">
-          FAQ · 18 questions
+          FAQ · 20 questions
         </div>
         <h1
           className="text-4xl sm:text-5xl font-bold tracking-tight"

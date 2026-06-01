@@ -129,6 +129,36 @@ const ALTS: Record<string, Alt> = {
       "코드뿐 아니라 voice·copy·motion까지 같은 spec으로 통제하고 싶을 때",
     ],
   },
+  "getdesign-md": {
+    slug: "getdesign-md",
+    name: "getdesign.md",
+    url: "https://getdesign.md",
+    oneLiner: "DESIGN.md 큐레이션 웹 카탈로그 (browse → preview → copy)",
+    summary:
+      "getdesign.md는 약 71개 브랜드의 DESIGN.md를 모아 둔 무료 큐레이션 웹 카탈로그입니다. 사이트에서 브랜드를 골라 미리 보고 복사해 쓰는 단순하고 빠른 browse → copy 경험이 핵심이며, 영어·서구 브랜드(Apple, BMW, Stripe, Shopify, Figma, Tesla 등) 중심이라 한국 브랜드는 거의 없습니다. OmD가 README에서 출발점으로 인용하는 VoltAgent/awesome-design-md 오픈소스 컬렉션(GitHub 85.8k, MIT)과 뿌리를 공유하며, 사실상 그 컬렉션을 호스팅한 browse/copy 프런트엔드에 가깝습니다.",
+    purpose:
+      "이미 만들어진 브랜드 DESIGN.md를 빠르게 찾아보고 복사하는 큐레이션 카탈로그. 생성기나 유료 SaaS가 아니라, 검증된 서구 브랜드의 디자인 시스템 문서를 모아 둔 무료 참고 라이브러리입니다.",
+    output:
+      "9-section Google Stitch 스키마 기반의 브랜드별 DESIGN.md 문서. 웹에서 미리 보고 클립보드로 복사.",
+    agent:
+      "없음. 설치형 에이전트 레이어 없이 브라우즈와 복사만 제공하는 순수 웹 카탈로그입니다. (OmD는 skills omd:init/apply/harness/sync + 서브에이전트 + MCP 서버를 설치해 워크플로에 상주시킵니다.)",
+    voice:
+      "영어 우선. 사이트 UI와 문서 모두 영어 기준이며 한국어 대응은 사실상 없습니다.",
+    install:
+      "설치 불필요. 웹사이트 접속 → 브랜드 선택 → 미리 보기 → 복사. (sign-in 링크가 있어 브라우징은 일부 열려 있습니다.)",
+    price: "Free",
+    oss: "컬렉션의 뿌리는 오픈소스 — VoltAgent/awesome-design-md(MIT, GitHub 85.8k)와 뿌리를 공유하며, OmD README도 같은 컬렉션을 출발점으로 인용합니다. getdesign.md는 그 컬렉션을 호스팅한 browse/copy 프런트엔드 성격입니다.",
+    whenToUse: [
+      "서구 브랜드(Apple, BMW, Stripe, Shopify, Tesla, Figma, Spotify, Nike 등) 레퍼런스가 바로 필요할 때 — 이쪽 브랜드 셋이 두텁습니다.",
+      "설치·설정 없이 웹에서 한 브랜드 DESIGN.md를 빠르게 미리 보고 복사만 하면 되는 가벼운 작업.",
+      "'DESIGN.md가 뭔지' 처음 둘러볼 때 — 'DESIGN.md = getdesign.md'로 먼저 알려진 first-mover라 진입이 쉽습니다.",
+    ],
+    whenOmd: [
+      "한국 브랜드 depth가 필요할 때 — Toss·당근·배민·카카오·네이버·쿠팡·무신사·뱅크샐러드·29CM·컬리 등은 getdesign.md에 거의 없고 OmD가 두텁게 다룹니다.",
+      "복사로 끝나는 카탈로그가 아니라 한 번 설치해 두는 에이전트 레이어가 필요할 때 — skills(omd:init/apply/harness/sync)·서브에이전트·MCP 서버가 워크플로에 상주합니다.",
+      "9-section보다 깊은 문서가 필요할 때 — OmD v0.1의 15-section 스키마는 Voice/Narrative/Principles/Personas/States/Motion까지 더하고, 한국어 docs·oh-my-design.kr·한국인 메인테이너의 한국어 네이티브 환경을 제공합니다.",
+    ],
+  },
 };
 
 export function generateStaticParams() {
