@@ -754,13 +754,21 @@ function parseVariantField(line: string): { key: keyof ComponentVariant | null; 
   return { key: lookup, rawKey, value };
 }
 
+/** The set of §4 field keys the parser recognizes (e.g. "background", "text",
+ *  "border"). Exposed so the catalog-integrity lint can detect the
+ *  slash-multi-field anti-pattern (`- Background: #x / Text: #y`) — where a
+ *  second known field hides inside the first field's value and is silently
+ *  swallowed (the KRDS 35/36-variants-lost bug). The lint flags any field
+ *  bullet whose value contains ` / <knownField>:`. */
+export const KNOWN_FIELD_KEYS: readonly string[] = Object.keys(FIELD_ALIASES);
+
 /** Parse §4 into a list of ComponentBlock. Rules (see spec/components-schema.md):
  *  - `## 4. Component Stylings` opens the section.
  *  - Each `### Heading` starts a subsection. We map heading → ComponentType.
  *  - Inside each subsection, `**Variant Name**` lines start a variant block.
  *  - Subsequent `- Field: value` lines populate that variant.
  *  - Trailing prose paragraph (no `**` or `-` prefix) is captured as `notes`. */
-function extractComponentSpecs(md: string): ComponentBlock[] {
+export function extractComponentSpecs(md: string): ComponentBlock[] {
   const sec4 = md.match(/## 4\. Component[\s\S]*?(?=## 5\.)/i)?.[0] ?? "";
   if (!sec4) return [];
   const blocks: ComponentBlock[] = [];

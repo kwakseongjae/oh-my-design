@@ -8,6 +8,7 @@ import { describe, test, expect, it } from "vitest";
 import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { REGISTRY, REGISTRY_BY_ID } from "../src/data/registry.generated";
+import { KNOWN_FIELD_KEYS } from "../src/lib/extract-tokens";
 
 const WEB_ROOT = resolve(__dirname, "..");
 const ROOT = resolve(WEB_ROOT, "..");
@@ -70,6 +71,31 @@ describe("catalog-integrity / per-reference", () => {
       isHeader || isTable || isBullet || isOrdered,
       `${id}: §1 must start with prose, got: ${firstLine.slice(0, 80)}`
     ).toBe(false);
+
+    // §4 slash-multi-field anti-pattern (the KRDS 35/36-variants-lost bug).
+    // The parser reads `- Field: value` as ONE field; if a writer combines
+    // fields with a slash (`- Background: #x / Text: #y`), the second field is
+    // swallowed into the first field's value and silently lost. Flag any §4
+    // field bullet whose value contains ` / <knownField>:`. Variant headers
+    // (`**Secondary chip / checkbox:**`) are excluded — only `- ` field bullets
+    // are scanned, and a leading `**` disqualifies the line.
+    const sec4 = md.match(/## 4\. Component[\s\S]*?(?=\n## 5\.|$)/i)?.[0] ?? "";
+    const knownAfterSlash = new RegExp(
+      ` / \\*{0,2}(?:${KNOWN_FIELD_KEYS.map(k => k.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&")).join("|")})\\*{0,2}\\s*[:：]`,
+      "i"
+    );
+    const slashOffenders = sec4
+      .split("\n")
+      .filter(line => /^[-*]\s+(?!\*\*)[A-Za-z]/.test(line)) // field bullets only (not `**Variant**` headers)
+      .filter(line => {
+        const colon = line.indexOf(":");
+        if (colon === -1) return false;
+        return knownAfterSlash.test(line.slice(colon + 1)); // a 2nd known field hides in the value
+      });
+    expect(
+      slashOffenders,
+      `${id}: §4 has slash-combined fields (parser swallows the 2nd field — write one field per bullet):\n${slashOffenders.join("\n")}`
+    ).toEqual([]);
 
     // Fingerprint cross-check
     const fp = fpById.get(id);
