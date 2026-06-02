@@ -10,6 +10,11 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=hyundaicard.com&sz=128"
 verified: "2026-06-01"
 omd: "0.1"
+ds:
+  name: Hyundai Card Design Library
+  url: "https://newsroom.hyundaicard.com/front/board/Hyundai-Card-Design-Library?country=en"
+  type: brand
+  description: Hyundai Card's official Design Library — the brand's design philosophy, the proprietary Youandi typeface, and visual identity.
 ---
 # Design System Inspiration of Hyundai Card
 

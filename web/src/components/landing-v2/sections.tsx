@@ -452,9 +452,9 @@ export function CliStrip() {
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             One install.{" "}
             <span style={{ color: V2.accent }}>
-              Claude Code, Codex, OpenCode, Cursor
+              Every AI coding agent
             </span>{" "}
-            all see the same brand.
+            sees the same brand.
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-white/55">
             That&apos;s the only command you&apos;ll run. After that, you just
@@ -507,7 +507,7 @@ export function CliStrip() {
                 ✓ Wrote .claude/skills, .codex/skills, .opencode/agents
               </div>
               <div style={{ color: V2.accent }}>
-                ✓ Bundled 108 reference DESIGN.md files
+                ✓ Bundled 100+ reference DESIGN.md files
               </div>
               <div style={{ color: V2.accent }}>
                 ✓ Hooked CLAUDE.md, AGENTS.md, .cursor/rules
@@ -1070,7 +1070,7 @@ export function FinalCtaFooter() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
               </span>
-              108 references · 15 skills · 16 sub-agents · live
+              100+ references · 15 skills · 16 sub-agents · live
             </div>
           </div>
         </div>

@@ -10,6 +10,11 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=whoscall.com&sz=128"
 verified: "2026-06-01"
 omd: "0.1"
+ds:
+  name: Whoscall Brand Guidelines
+  url: "https://whoscall.com/en/brand"
+  type: brand
+  description: Whoscall's official brand page — logo, the documented brand green #0CD25F, and usage guidelines.
 ---
 # Design System Inspiration of Gogolook
 

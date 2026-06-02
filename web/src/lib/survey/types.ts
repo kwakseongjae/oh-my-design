@@ -287,7 +287,7 @@ export function getDesignType(code: TypeCode): DesignType {
   return DESIGN_TYPES[code];
 }
 
-/** All 67 reference IDs mapped to their 4-axis profile for scoring */
+/** All reference IDs mapped to their 4-axis profile for scoring */
 export const REFERENCE_PROFILES: Record<string, { t: Temperature; d: Density; e: Elevation; s: Shape }> = {
   "linear.app": { t: "C", d: "D", e: "F", s: "S" },
   vercel:       { t: "C", d: "D", e: "F", s: "S" },

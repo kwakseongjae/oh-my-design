@@ -17,7 +17,7 @@ export const V2 = {
   borderDark: "rgba(255,255,255,0.08)",
 } as const;
 
-/** Brand color hints for the 108-card wall and the LIVE PROOF strip.
+/** Brand color hints for the brand-card wall and the LIVE PROOF strip.
  *  Derived from the registry — every reference contributes its primaryColor. */
 export const BRAND_COLORS: Record<string, string> = Object.fromEntries(
   REGISTRY.map(e => [e.id, e.primaryColor])

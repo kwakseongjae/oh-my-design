@@ -129,7 +129,7 @@ interface OpenState {
 }
 
 export function TheWall() {
-  // BRAND_COLORS holds all 108 brands — use it as the source of truth
+  // BRAND_COLORS holds every catalog brand — use it as the source of truth
   // (the web design-systems registry is a smaller subset).
   const cards = useMemo(
     () =>
