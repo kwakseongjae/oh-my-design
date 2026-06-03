@@ -1,0 +1,74 @@
+name: "Brand SVG submission"
+description: "Contribute a brand logo SVG to the Brand-SVG gallery (or fix an existing one)."
+title: "[brand-svg] <brand name>"
+labels: ["brand-svg"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! We only accept SVGs from a brand's **official source**
+        (official site asset, press/media kit, brand-guideline / design-system docs) or an
+        **openly-licensed library** (e.g. Simple Icons CC0). Please do not submit fan-made
+        redrawings or scrapes from third-party logo-dump sites. Every logo remains the
+        property of its brand owner — this gallery is for identification only.
+  - type: input
+    id: brand_name
+    attributes:
+      label: Brand name
+      placeholder: "Toss"
+    validations: { required: true }
+  - type: input
+    id: brand_id
+    attributes:
+      label: Catalog id / slug
+      description: "If the brand is already in the catalog, use its id (e.g. `toss`). Otherwise propose a lowercase slug."
+      placeholder: "toss"
+    validations: { required: true }
+  - type: dropdown
+    id: country
+    attributes:
+      label: Country (parent-company HQ)
+      options: ["KR", "TW", "US", "JP", "CN", "UK", "DE", "FR", "IT", "Other"]
+    validations: { required: true }
+  - type: textarea
+    id: svg
+    attributes:
+      label: SVG — paste the code OR give a direct .svg URL
+      description: "Paste the full <svg>…</svg> source, or a direct https URL ending in .svg from the official source. Must contain no <script>, external references, or event handlers."
+      render: xml
+    validations: { required: true }
+  - type: input
+    id: source_url
+    attributes:
+      label: Official source URL
+      description: "Where the asset comes from — the brand's CI/press/brand-resource page, design-system docs, or the openly-licensed library page."
+      placeholder: "https://brand.toss.im/"
+    validations: { required: true }
+  - type: dropdown
+    id: license
+    attributes:
+      label: License / provenance
+      options:
+        - "CC0-1.0 (e.g. Simple Icons)"
+        - "Official brand asset (brand publishes it for use)"
+        - "CC-BY / CC-BY-ND"
+        - "Fair-use / identification only (no explicit license)"
+        - "Unknown"
+    validations: { required: true }
+  - type: textarea
+    id: usage_note
+    attributes:
+      label: Usage terms (if the brand states any)
+      description: "Summarize the brand's stated logo-usage rules, and link the guidelines page if separate from the source URL."
+      placeholder: "변형 금지 · 공식 자산만 · 여백 규정 준수 …"
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmations
+      options:
+        - label: "This SVG comes from the brand's official source or an openly-licensed library (not a fan redraw or third-party logo-dump)."
+          required: true
+        - label: "The artwork is unmodified (format conversion is fine; I did not redesign the mark)."
+          required: true
+        - label: "I understand the logo remains the property of its brand owner and this gallery is identification-only."
+          required: true

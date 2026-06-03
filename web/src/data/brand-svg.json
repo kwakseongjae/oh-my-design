@@ -1,0 +1,1058 @@
+{
+  "schema_version": 3,
+  "generated_at": "2026-06-02",
+  "note": "Brand-logo SVG collection. Each record cites its SOURCE LIBRARY/official-doc + license (provenance). simpleicons-cdn = hotlinked CC0; stored = web/public/brand-svg/<id>/; none = source-only (no open-library SVG yet). Web-only; not shipped in npm.",
+  "count": 47,
+  "counts": {
+    "available": 47,
+    "source_only": 0
+  },
+  "records": [
+    {
+      "id": "banksalad",
+      "name": "Banksalad",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/banksalad/symbol.svg",
+          "source": "Official site (banksalad.com)",
+          "source_url": "https://banksalad.com",
+          "license": "brand-asset-official",
+          "license_url": "https://banksalad.com",
+          "usage_note": "공식 CDN 심볼 마크 · 식별용"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "channeltalk",
+      "name": "Channel Talk",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/channeltalk/combined.svg",
+          "source": "Official site (channel.io)",
+          "source_url": "https://channel.io",
+          "license": "brand-asset-official",
+          "license_url": "https://channel.io",
+          "usage_note": "공식 사이트 헤더 SVG 추출 · 식별용"
+        },
+        "symbol": {
+          "ref": "brand-svg/channeltalk/symbol.svg",
+          "source": "Official site (channel.io)",
+          "source_url": "https://channel.io",
+          "license": "brand-asset-official",
+          "license_url": "https://channel.io",
+          "attribution": "Channel Corp.",
+          "usage_note": "공식 사이트 심볼(말풍선 마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "class101",
+      "name": "Class101",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/class101/symbol.svg",
+          "source": "Official site (class101.net)",
+          "source_url": "https://class101.net",
+          "license": "brand-asset-official",
+          "license_url": "https://class101.net",
+          "attribution": "Class101 Inc.",
+          "usage_note": "공식 심볼 · 식별용",
+          "source_tier": "official"
+        },
+        "wordmark": {
+          "ref": "brand-svg/class101/wordmark.svg",
+          "source": "Official site (class101.net)",
+          "source_url": "https://class101.net",
+          "license": "brand-asset-official",
+          "license_url": "https://class101.net",
+          "attribution": "Class101 Inc.",
+          "usage_note": "공식 로고(.svg) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "coupang",
+      "name": "Coupang",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "low",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/coupang/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3ACoupang%20logo.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3ACoupang%20logo.svg",
+          "attribution": "쿠팡",
+          "usage_note": "Public domain — trademark belongs to the brand owner; identification use only.",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "gmarket",
+      "name": "Gmarket",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/gmarket/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AGmarket%20logo.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3AGmarket%20logo.svg",
+          "attribution": "Gmarket Global LLC",
+          "usage_note": "Public domain — trademark belongs to the brand owner; identification use only.",
+          "source_tier": "official"
+        },
+        "symbol": {
+          "ref": "brand-svg/gmarket/symbol.svg",
+          "source": "Official site (gmarket.co.kr)",
+          "source_url": "https://gds.gmarket.co.kr/brand/logos",
+          "license": "brand-asset-official",
+          "license_url": "https://gds.gmarket.co.kr/brand/logos",
+          "attribution": "Gmarket Global LLC",
+          "usage_note": "공식 디자인시스템 심볼(G 마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "hyundaicard",
+      "name": "Hyundai Card",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "low",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/hyundaicard/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AHyundai%20Card%20logo.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3AHyundai%20Card%20logo.svg",
+          "attribution": "Hyundai Card",
+          "usage_note": "Public domain — trademark belongs to the brand owner; identification use only.",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "kakao",
+      "name": "Kakao",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "low",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/kakao/wordmark.svg",
+          "source": "Official site (kakaocorp.com)",
+          "source_url": "https://www.kakaocorp.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.kakaocorp.com",
+          "usage_note": "공식 사이트 로고(본사 _nuxt 번들 정품 벡터) · 식별용"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "kakaobank",
+      "name": "KakaoBank",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/kakaobank/symbol.svg",
+          "source": "Official site (kakaobank.com)",
+          "source_url": "https://www.kakaobank.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.kakaobank.com",
+          "attribution": "KakaoBank Corp.",
+          "usage_note": "공식 사이트 심볼(B 마크) · 식별용",
+          "source_tier": "official"
+        },
+        "combined": {
+          "ref": "brand-svg/kakaobank/combined.svg",
+          "source": "Official site (kakaobank.com)",
+          "source_url": "https://www.kakaobank.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.kakaobank.com",
+          "attribution": "KakaoBank Corp.",
+          "usage_note": "공식 사이트 시그니처(심볼+워드마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "kakaopay",
+      "name": "KakaoPay",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/kakaopay/wordmark.svg",
+          "dark_bg": true,
+          "source": "Official site (kakaopay.com)",
+          "source_url": "https://www.kakaopay.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.kakaopay.com",
+          "usage_note": "공식 사이트 헤더 SVG 추출(흰색 변형) · 식별용"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "kakaot",
+      "name": "Kakao T",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/kakaot/combined.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AKakao%20T%20logo.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3AKakao%20T%20logo.svg",
+          "attribution": "Kakao Corp.",
+          "usage_note": "공식 시그니처(라운드 심볼+kakaoT) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "karrot",
+      "name": "Karrot",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/karrot/combined.svg",
+          "source": "Official site (daangn.com)",
+          "source_url": "https://www.daangn.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.daangn.com",
+          "usage_note": "공식 사이트 시그니처(심볼+당근 워드마크) · 식별용 · 상표 당근마켓"
+        },
+        "symbol": {
+          "ref": "brand-svg/karrot/symbol.svg",
+          "source": "Official site (daangn.com)",
+          "source_url": "https://www.daangn.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.daangn.com",
+          "usage_note": "공식 심볼(당근 마크) · 식별용 · 상표 당근마켓",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "kream",
+      "name": "KREAM",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/kream/wordmark.svg",
+          "source": "Official site (kream.co.kr)",
+          "source_url": "https://kream.co.kr",
+          "license": "brand-asset-official",
+          "license_url": "https://kream.co.kr",
+          "usage_note": "공식 사이트 헤더 inline SVG · 식별용"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "kurly",
+      "name": "Kurly",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/kurly/wordmark.svg",
+          "source": "Official site (kurly.com)",
+          "source_url": "https://www.kurly.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.kurly.com",
+          "usage_note": "공식 사이트 헤더 SVG 추출 · 식별용"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "melon",
+      "name": "Melon",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/melon/combined.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AMelon%20App%20logo.svg",
+          "license": "CC-BY-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "attribution": "Streamer44857",
+          "usage_note": "멜론 앱 로고 · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "naver",
+      "name": "Naver",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "low",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/naver/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3ANaver%20Logotype.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3ANaver%20Logotype.svg",
+          "attribution": "Naver corporation",
+          "usage_note": "네이버 워드마크 · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "nexon",
+      "name": "Nexon",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/nexon/symbol.svg",
+          "source": "Official site (nexon.com)",
+          "source_url": "https://www.nexon.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.nexon.com",
+          "attribution": "Nexon Corporation",
+          "usage_note": "공식 심볼 · 식별용",
+          "source_tier": "official"
+        },
+        "combined": {
+          "ref": "brand-svg/nexon/combined.svg",
+          "source": "Official site (nexon.com)",
+          "source_url": "https://www.nexon.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.nexon.com",
+          "attribution": "Nexon Corporation",
+          "usage_note": "공식 로고(심볼+워드마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "ohou",
+      "name": "오늘의집",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "symbol": {
+          "ref": "brand-svg/ohou/symbol.svg",
+          "source": "Official site (ohou.se)",
+          "source_url": "https://www.ohou.se",
+          "license": "brand-asset-official",
+          "license_url": "https://www.ohou.se",
+          "attribution": "Ohou (오늘의집) / Bucketplace, Co., Ltd. — official CDN asset",
+          "usage_note": "공식 심볼 · 식별용",
+          "source_tier": "official"
+        },
+        "combined": {
+          "ref": "brand-svg/ohou/combined.svg",
+          "source": "Official site (ohou.se)",
+          "source_url": "https://www.ohou.se",
+          "license": "brand-asset-official",
+          "license_url": "https://www.ohou.se",
+          "attribution": "Ohou (오늘의집) / Bucketplace, Co., Ltd. — official CDN asset",
+          "usage_note": "공식 로고(심볼+워드마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "oliveyoung",
+      "name": "Olive Young",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "low",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/oliveyoung/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AOlive%20Young%20Logo.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3AOlive%20Young%20Logo.svg",
+          "attribution": "Olive Young",
+          "usage_note": "Public domain — trademark belongs to the brand owner; identification use only.",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "ridi",
+      "name": "RIDI",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/ridi/wordmark.svg",
+          "source": "Official site (ridibooks.com)",
+          "source_url": "https://ridibooks.com",
+          "license": "brand-asset-official",
+          "license_url": "https://ridibooks.com",
+          "usage_note": "공식 사이트 헤더 SVG 추출 · 식별용"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "socar",
+      "name": "SOCAR",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/socar/combined.svg",
+          "source": "Official site (socar.kr)",
+          "source_url": "https://www.socar.kr",
+          "license": "brand-asset-official",
+          "license_url": "https://www.socar.kr",
+          "attribution": "SOCAR",
+          "usage_note": "공식 시그니처(심볼+워드마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "toss",
+      "name": "Toss",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/toss/wordmark.svg",
+          "source": "Official site (toss.im)",
+          "source_url": "https://toss.im",
+          "license": "brand-asset-official",
+          "license_url": "https://toss.im",
+          "usage_note": "공식 사이트 헤더 inline SVG 추출 · 식별용 · 상표 비바리퍼블리카"
+        },
+        "symbol": {
+          "ref": "brand-svg/toss/symbol.svg",
+          "source": "Official brand center (brand.toss.im)",
+          "source_url": "https://static.toss.im/logos/svg/logo-toss-symbol.svg",
+          "license": "brand-asset-official",
+          "license_url": "https://static.toss.im/logos/svg/logo-toss-symbol.svg",
+          "attribution": "Viva Republica (Toss) · 2026 New-Dimension CI",
+          "usage_note": "공식 심볼(2026 뉴디멘션 3D) · Toss가 벡터 미배포라 공식 래스터 기반 · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "tving",
+      "name": "TVING",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "low",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/tving/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3ATVING%20logo.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3ATVING%20logo.svg",
+          "attribution": "TVING",
+          "usage_note": "Public domain — trademark belongs to the brand owner; identification use only.",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "upbit",
+      "name": "Upbit",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "low",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/upbit/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AUPbit%20Logo.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3AUPbit%20Logo.svg",
+          "attribution": "UPbit",
+          "usage_note": "Public domain — trademark belongs to the brand owner; identification use only.",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "upstage",
+      "name": "Upstage",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/upstage/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AUpstage%20Logo%20Purple.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3AUpstage%20Logo%20Purple.svg",
+          "attribution": "Upstage",
+          "usage_note": "Public domain — trademark belongs to the brand owner; identification use only.",
+          "source_tier": "official"
+        },
+        "symbol": {
+          "ref": "brand-svg/upstage/symbol.svg",
+          "source": "Official site (upstage.ai)",
+          "source_url": "https://www.upstage.ai/resources/brand-resource-center",
+          "license": "brand-asset-official",
+          "license_url": "https://www.upstage.ai/resources/brand-resource-center",
+          "attribution": "Upstage AI",
+          "usage_note": "공식 심볼(11-stripe 마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "wanted",
+      "name": "Wanted",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/wanted/combined.svg",
+          "source": "Official site (wanted.co.kr)",
+          "source_url": "https://www.wanted.co.kr/brandcenter/",
+          "license": "brand-asset-official",
+          "license_url": "https://www.wanted.co.kr/brandcenter/",
+          "attribution": "Wanted Lab",
+          "usage_note": "공식 시그니처(레인보우 심볼+워드마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "watcha",
+      "name": "Watcha",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "low",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/watcha/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AWatcha%20logo.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3AWatcha%20logo.svg",
+          "attribution": "xixi pictures",
+          "usage_note": "Public domain — trademark belongs to the brand owner; identification use only.",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "yanolja",
+      "name": "Yanolja",
+      "country": "KR",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/yanolja/combined.svg",
+          "source": "Official site (yanoljagroup.com)",
+          "source_url": "https://www.yanoljagroup.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.yanoljagroup.com",
+          "attribution": "Yanolja",
+          "usage_note": "공식 시그니처(심볼+워드마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "91app",
+      "name": "91APP",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/91app/wordmark.svg",
+          "source": "Official site (91app.com)",
+          "source_url": "https://91app.com",
+          "license": "brand-asset-official",
+          "license_url": "https://91app.com",
+          "usage_note": "공식 사이트 헤더 SVG 추출 · 식별용"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "adata",
+      "name": "ADATA",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/adata/wordmark.svg",
+          "dark_bg": true,
+          "source": "Official site (adata.com)",
+          "source_url": "https://www.adata.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.adata.com",
+          "attribution": "ADATA Technology Co., Ltd.",
+          "usage_note": "공식 로고(.svg) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "appier",
+      "name": "Appier",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/appier/wordmark.svg",
+          "source": "Official site (appier.com)",
+          "source_url": "https://www.appier.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.appier.com",
+          "usage_note": "공식 사이트 헤더 SVG 추출 · 식별용"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "asrock",
+      "name": "ASRock",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/asrock/wordmark.svg",
+          "source": "Official site (asrock.com)",
+          "source_url": "https://www.asrock.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.asrock.com",
+          "attribution": "Wikimedia Commons (Afrank99); public domain (PD-textlogo / below threshold of originality)",
+          "usage_note": "공식 로고(.svg) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "asus",
+      "name": "ASUS",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/asus/wordmark.svg",
+          "source": "Official site (asus.com)",
+          "source_url": "https://www.asus.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.asus.com",
+          "usage_note": "공식 사이트 .svg · 식별용"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "benq",
+      "name": "BenQ",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/benq/wordmark.svg",
+          "source": "Official site (benq.com)",
+          "source_url": "https://www.benq.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.benq.com",
+          "attribution": "BenQ",
+          "usage_note": "공식 로고(.svg) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "cakeresume",
+      "name": "CakeResume",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/cakeresume/combined.svg",
+          "source": "Official site (cake.me)",
+          "source_url": "https://www.cake.me",
+          "license": "brand-asset-official",
+          "license_url": "https://www.cake.me",
+          "attribution": "Cake (CakeResume)",
+          "usage_note": "공식 로고(심볼+Cake 워드마크) · 식별용",
+          "source_tier": "official"
+        },
+        "symbol": {
+          "ref": "brand-svg/cakeresume/symbol.svg",
+          "source": "Official site (cake.me)",
+          "source_url": "https://www.cake.me",
+          "license": "brand-asset-official",
+          "license_url": "https://www.cake.me",
+          "attribution": "Cake",
+          "usage_note": "공식 심볼(하우스 마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "dcard",
+      "name": "Dcard",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/dcard/combined.svg",
+          "dark_bg": true,
+          "source": "Official site (dcard.tw)",
+          "source_url": "https://www.dcard.tw",
+          "license": "brand-asset-official",
+          "license_url": "https://www.dcard.tw",
+          "usage_note": "공식 사이트 .svg(흰색 변형) · 식별용"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "gigabyte",
+      "name": "GIGABYTE",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/gigabyte/wordmark.svg",
+          "source": "Official site (gigabyte.com)",
+          "source_url": "https://www.gigabyte.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.gigabyte.com",
+          "usage_note": "공식 사이트 헤더 inline SVG · 식별용"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "gogolook",
+      "name": "Gogolook",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/gogolook/wordmark.svg",
+          "dark_bg": true,
+          "source": "Official site (gogolook.com)",
+          "source_url": "https://gogolook.com",
+          "license": "brand-asset-official",
+          "license_url": "https://gogolook.com",
+          "usage_note": "공식 사이트 .svg(흰색 변형) · 식별용"
+        },
+        "symbol": {
+          "ref": "brand-svg/gogolook/symbol.svg",
+          "source": "Official site (gogolook.com)",
+          "source_url": "https://gogolook.com",
+          "license": "brand-asset-official",
+          "license_url": "https://gogolook.com",
+          "attribution": "Gogolook",
+          "usage_note": "공식 심볼 · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "gogoro",
+      "name": "Gogoro",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "low",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/gogoro/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AGogoro.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3AGogoro.svg",
+          "attribution": "Gogoro",
+          "usage_note": "Public domain — trademark belongs to the brand owner; identification use only.",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "hahow",
+      "name": "Hahow",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/hahow/combined.svg",
+          "source": "Official site (hahow.in)",
+          "source_url": "https://hahow.in",
+          "license": "brand-asset-official",
+          "license_url": "https://hahow.in",
+          "usage_note": "공식 사이트 .svg · 식별용"
+        },
+        "symbol": {
+          "ref": "brand-svg/hahow/symbol.svg",
+          "source": "Official site (hahow.in)",
+          "source_url": "https://hahow.in",
+          "license": "brand-asset-official",
+          "license_url": "https://hahow.in",
+          "attribution": "Hahow",
+          "usage_note": "공식 favicon 심볼 · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "htc",
+      "name": "HTC",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/htc/wordmark.svg",
+          "source": "Official site (htc.com)",
+          "source_url": "https://www.htc.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.htc.com",
+          "usage_note": "공식 사이트 .svg · 식별용"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "kkbox",
+      "name": "KKBOX",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "low",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/kkbox/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AKKBOX%20logo.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3AKKBOX%20logo.svg",
+          "attribution": "kkbox",
+          "usage_note": "Public domain — trademark belongs to the brand owner; identification use only.",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "kkday",
+      "name": "KKday",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/kkday/wordmark.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AKKday%20Logo.svg",
+          "license": "CC-BY-SA-4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "attribution": "KKday",
+          "usage_note": "CC BY-SA 4.0 — trademark belongs to the brand owner; identification use only.",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "mediatek",
+      "name": "MediaTek",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/mediatek/combined.svg",
+          "source": "Official site (mediatek.com)",
+          "source_url": "https://www.mediatek.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.mediatek.com",
+          "attribution": "MediaTek Inc.",
+          "usage_note": "공식 로고(심볼+워드마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "pinkoi",
+      "name": "Pinkoi",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/pinkoi/wordmark.svg",
+          "source": "Pinkoi (official CDN)",
+          "source_url": "https://en.pinkoi.com/event/brandRefresh",
+          "license": "proprietary-fair-use",
+          "license_note": "official brand asset",
+          "usage_note": "로고 사용 약관/CI 가이드 명시 없음; 워드마크는 상표·저작권 보호 추정.",
+          "source_tier": "official"
+        },
+        "symbol": {
+          "ref": "brand-svg/pinkoi/symbol.svg",
+          "source": "Official site (pinkoi.com)",
+          "source_url": "https://www.pinkoi.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.pinkoi.com",
+          "attribution": "Pinkoi",
+          "usage_note": "공식 심볼(P 마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "symbol"
+    },
+    {
+      "id": "qnap",
+      "name": "QNAP",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "low",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/qnap/combined.svg",
+          "source": "Wikimedia Commons",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AQnap%20Logo%202004.svg",
+          "license": "PD",
+          "license_url": "https://commons.wikimedia.org/wiki/File%3AQnap%20Logo%202004.svg",
+          "attribution": "QNAP Systems, Inc.",
+          "usage_note": "공식 로고(블루+레드 2색) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    },
+    {
+      "id": "synology",
+      "name": "Synology",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "wordmark": {
+          "ref": "brand-svg/synology/wordmark.svg",
+          "source": "Official site (synology.com)",
+          "source_url": "https://www.synology.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.synology.com",
+          "attribution": "Synology Inc.",
+          "usage_note": "공식 로고(.svg) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "wordmark"
+    },
+    {
+      "id": "transcend",
+      "name": "Transcend",
+      "country": "TW",
+      "status": "available",
+      "risk_tier": "med",
+      "variants": {
+        "combined": {
+          "ref": "brand-svg/transcend/combined.svg",
+          "source": "Official site (transcend-info.com)",
+          "source_url": "https://www.transcend-info.com",
+          "license": "brand-asset-official",
+          "license_url": "https://www.transcend-info.com",
+          "attribution": "Transcend Information, Inc.",
+          "usage_note": "공식 로고(심볼+워드마크) · 식별용",
+          "source_tier": "official"
+        }
+      },
+      "default_variant": "combined"
+    }
+  ],
+  "source_breakdown": {
+    "Wikimedia Commons": 16,
+    "Official site (daangn.com)": 1,
+    "Official site (toss.im)": 1,
+    "Pinkoi (official CDN)": 1,
+    "official-site-asset": 3,
+    "none": 2
+  }
+}
