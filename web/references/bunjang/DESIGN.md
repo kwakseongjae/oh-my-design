@@ -8,7 +8,7 @@ homepage: "https://m.bunjang.co.kr"
 primary_color: "#d80c18"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=bunjang.co.kr&sz=256"
+  slug: "https://static.bunjang.co.kr/web/ui/favicon.ico"
 verified: "2026-05-14"
 omd: "0.1"
 ---

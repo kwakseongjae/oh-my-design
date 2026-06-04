@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_at": "2026-06-01T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 150,
+  "count": 170,
   "items": [
     {
       "id": "17live",
@@ -61,6 +61,35 @@
       "signature_motion": "Color inversion on inverted CTA hover — #000000 ↔ #ffffff with 2px radius, no scale, no shadow.",
       "has_personas": true,
       "category_raw": "Commerce / Editorial Select-Shop"
+    },
+    {
+      "id": "91app",
+      "primary_color_hex": "#061C3D",
+      "category": "Commerce",
+      "visual_theme": "Taiwan omnichannel retail-commerce SaaS (OMO). Deep-navy #061C3D structural brand with a coral-red #E85040 action accent on a clean white ground, Traditional-Chinese Noto Sans TC, generously rounded 16px primary buttons. Reads as trustworthy retail infrastructure with B2B confidence.",
+      "voice_fingerprint": {
+        "register": "b2b-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "traditional-chinese-business"
+      },
+      "tone_keywords": [
+        "trustworthy",
+        "retail-savvy",
+        "confident",
+        "omnichannel",
+        "growth-driven",
+        "professional"
+      ],
+      "antipatterns": [
+        "Keep navy #061C3D structural and coral #E85040 for action — don't swap their roles",
+        "No clutter — clean white ground",
+        "Maintain the rounded 16px primary-button language",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Smooth, professional B2B transitions; confident hover states on the navy and coral CTAs. Restrained and credible.",
+      "has_personas": true,
+      "category_raw": "ecommerce / omnichannel retail SaaS (OMO)"
     },
     {
       "id": "ably",
@@ -308,6 +337,35 @@
       "category_raw": "video-community"
     },
     {
+      "id": "bithumb",
+      "primary_color_hex": "#1C2028",
+      "category": "Fintech",
+      "visual_theme": "Dark, premium, data-dense Korean crypto-exchange (No.1): a near-black #1C2028 structural base warmed by a bronze/brown #543E35 accent, signed by the proprietary Bithumb Trading Sans typeface, with Korea-convention trading colors (red #E15241 = up, blue #4880EE = down). Serious, money-grade.",
+      "voice_fingerprint": {
+        "register": "premium-serious",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "korean-financial"
+      },
+      "tone_keywords": [
+        "premium",
+        "dark",
+        "serious",
+        "data-dense",
+        "trustworthy",
+        "money-grade"
+      ],
+      "antipatterns": [
+        "Korea convention: red = price up, blue = price down (don't invert)",
+        "Keep the near-black + bronze pairing; don't lighten the trading base",
+        "Use Bithumb Trading Sans identity",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Fast, precise data updates; restrained chrome motion. The dense trading surface prioritizes information over flourish.",
+      "has_personas": true,
+      "category_raw": "fintech / crypto-asset exchange"
+    },
+    {
       "id": "bmw",
       "primary_color_hex": "#1c69d4",
       "category": "Automotive",
@@ -342,6 +400,35 @@
       "has_personas": true,
       "category_raw": "C2C Used Marketplace",
       "country": "KR"
+    },
+    {
+      "id": "cakeresume",
+      "primary_color_hex": "#13AB67",
+      "category": "Productivity",
+      "visual_theme": "Clean Taiwanese global talent network (Cake, formerly CakeResume): white ground, confident Cake green #13AB67 for primary action, deep-green #0C4129 headings, crisp 4px corners, set in Inter. Professional, optimistic, with human warmth.",
+      "voice_fingerprint": {
+        "register": "professional-optimistic",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "english-professional"
+      },
+      "tone_keywords": [
+        "professional",
+        "optimistic",
+        "clean",
+        "trustworthy",
+        "modern",
+        "human"
+      ],
+      "antipatterns": [
+        "Cake green #13AB67 for primary action; deep green #0C4129 for headings",
+        "Crisp 4px corners and Inter type",
+        "Keep it professional-warm, not playful-loud",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Clean, professional transitions; confident green hover states. Optimistic and steady.",
+      "has_personas": true,
+      "category_raw": "saas / talent network + resume builder"
     },
     {
       "id": "cal",
@@ -422,6 +509,35 @@
       "signature_motion": "Card hover lift; a green check spring-pop with progress-bar fill on lesson completion.",
       "has_personas": true,
       "category_raw": "Education"
+    },
+    {
+      "id": "classting",
+      "primary_color_hex": "#00C896",
+      "category": "Education",
+      "visual_theme": "Optimistic-clinical; vivid mint-green on white with gradient section washes, rounded cards, Noto Sans KR typography",
+      "voice_fingerprint": {
+        "register": "professional-warm",
+        "sentence_length": "short-to-medium (avg ~10 words in KR)",
+        "metaphor_density": "low — data and outcomes as proof, not metaphor",
+        "vocabulary_register": "accessible-technical; edu-sector jargon used but always explained"
+      },
+      "tone_keywords": [
+        "precise",
+        "encouraging",
+        "grounded",
+        "data-driven",
+        "empathetic"
+      ],
+      "antipatterns": [
+        "heavy drop shadows",
+        "pure black text",
+        "italic decorative text",
+        "cramped layouts",
+        "multiple competing CTA colors per section"
+      ],
+      "signature_motion": "pulse skeleton 1.5s ease-in-out + fast 0.1s hover micro-transitions",
+      "has_personas": true,
+      "category_raw": "education / AI-LMS / K-12 EdTech"
     },
     {
       "id": "classum",
@@ -551,6 +667,36 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "fintech"
+    },
+    {
+      "id": "coinone",
+      "primary_color_hex": "#006BD6",
+      "category": "Fintech",
+      "visual_theme": "Calm, blue-anchored Korean crypto exchange: white surfaces with near-black #040505 text and a single confident Coinone Blue (#006BD6 identity, #0B59D5 applied CTA) carrying every primary action. Flat, lightly-bordered, trust-first; dense in trading views, airy in onboarding. KR convention trading colors (red = up, blue = down).",
+      "voice_fingerprint": {
+        "register": "steady, plain, reassuring",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "korean-financial"
+      },
+      "tone_keywords": [
+        "trustworthy",
+        "calm",
+        "blue",
+        "plain",
+        "data-dense",
+        "second-person"
+      ],
+      "antipatterns": [
+        "Korea convention: red = price up, blue = price down (do not invert)",
+        "One filled-blue CTA per view — do not stack competing primaries",
+        "Stay within the Coinone Blue family (no teal/purple drift)",
+        "Flat bordered surfaces — avoid shadow-heavy trading cards",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Restrained: brief red-up/blue-down price flashes that settle quickly; calm chrome, minimal motion in trading views.",
+      "has_personas": true,
+      "category_raw": "fintech / crypto-asset exchange"
     },
     {
       "id": "composio",
@@ -692,6 +838,35 @@
       "category_raw": "social"
     },
     {
+      "id": "devsisters",
+      "primary_color_hex": "#FF5F00",
+      "category": "Consumer Tech / Gaming",
+      "visual_theme": "Bold orange energy — full-bleed primary-colour chrome, pill-shaped buttons, rounded cards, dual-register bilingual typography",
+      "voice_fingerprint": {
+        "register": "energetic and warm-direct",
+        "sentence_length": "short-to-medium declarative",
+        "metaphor_density": "low — concrete action verbs preferred over abstract metaphor",
+        "vocabulary_register": "accessible-global with Korean warmth"
+      },
+      "tone_keywords": [
+        "joyful",
+        "brave",
+        "essential",
+        "global",
+        "playful-bold"
+      ],
+      "antipatterns": [
+        "no italic usage",
+        "no heavy drop shadows",
+        "no pastel tones",
+        "no hedged corporate language",
+        "no light-weight (100-300) fonts in UI"
+      ],
+      "signature_motion": "0.8s cubic-bezier(0.075, 0.82, 0.165, 1) content reveal; 0.2s linear micro-transitions",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
       "id": "dji",
       "primary_color_hex": "#000000",
       "category": "Consumer",
@@ -720,6 +895,35 @@
       "signature_motion": "Slow gravity-free product reveals - hero footage fades from black, 360 spins with smooth mechanical easing, never overshoot.",
       "has_personas": true,
       "category_raw": "consumer-hardware"
+    },
+    {
+      "id": "drnow",
+      "primary_color_hex": "#FF8D00",
+      "category": "Healthcare",
+      "visual_theme": "warm-orange medical — vibrant orange against clean neutral gray; rounded cards; clean sans-serif; anti-clinical healthcare aesthetic",
+      "voice_fingerprint": {
+        "register": "conversational Korean with plain language; patient-empathy first",
+        "sentence_length": "short declarative — 5–10 syllables per phrase",
+        "metaphor_density": "low — concrete benefit statements over abstraction",
+        "vocabulary_register": "consumer-healthcare; avoids jargon; warm second-person address"
+      },
+      "tone_keywords": [
+        "warm",
+        "accessible",
+        "trustworthy",
+        "urgent-not-alarming",
+        "empathetic"
+      ],
+      "antipatterns": [
+        "clinical blue as primary",
+        "sterile institutional language",
+        "heavy drop shadows",
+        "deep gradient in functional UI context",
+        "font weight outside 400–700 range"
+      ],
+      "signature_motion": "slide-up 300ms ease-out for bottom sheets; skeleton-shimmer 1.5s ease-in-out; fade+translateY(20px) 500ms ease-out for page enters",
+      "has_personas": true,
+      "category_raw": "healthcare / telemedicine / KR consumer app"
     },
     {
       "id": "elevenlabs",
@@ -843,6 +1047,34 @@
       "country": "KR"
     },
     {
+      "id": "flo",
+      "primary_color_hex": "#3f3fff",
+      "category": "consumer-tech",
+      "visual_theme": "Luminous white canvas with a single high-saturation electric blue (#3f3fff) as the sole interactive color; achromatic neutrals everywhere else; album art supplies all other color",
+      "voice_fingerprint": {
+        "register": "Korean conversational; warm and direct; speaks to the listener as a fellow music fan, not a subscriber",
+        "sentence_length": "short — 4–8 syllables per phrase in UI copy",
+        "metaphor_density": "low — one central water/flow metaphor embedded in the brand name itself",
+        "vocabulary_register": "everyday Korean with no jargon; avoids superlatives"
+      },
+      "tone_keywords": [
+        "effortless",
+        "personal",
+        "honest",
+        "warm",
+        "restrained"
+      ],
+      "antipatterns": [
+        "chart-first hierarchy",
+        "decorative animation competing with audio",
+        "multiple blue CTAs on one screen",
+        "drop shadows on flat list rows"
+      ],
+      "signature_motion": "transform 0.25s ease-in for UI transitions; opacity 0.3s for player overlays; stagger on entrance with 0.15s transform + 0.3s delay",
+      "has_personas": true,
+      "category_raw": "music streaming / consumer-tech"
+    },
+    {
       "id": "framer",
       "primary_color_hex": "#0099ff",
       "category": "Design Tools",
@@ -887,6 +1119,35 @@
       "category_raw": "saas"
     },
     {
+      "id": "fugle",
+      "primary_color_hex": "#f4af1c",
+      "category": "Fintech",
+      "visual_theme": "data-dense light canvas with amber accent; dual light/dark modes for research vs. active-trading contexts; 4 px radius system; tight 12–14 px type scale",
+      "voice_fingerprint": {
+        "register": "peer-to-peer investor; precise and empowering",
+        "sentence_length": "short to medium; declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "financial domain terminology used naturally; no jargon-dumbing"
+      },
+      "tone_keywords": [
+        "precise",
+        "empowering",
+        "peer-to-peer",
+        "serious",
+        "clear"
+      ],
+      "antipatterns": [
+        "decorative amber fills",
+        "Western red-down/green-up convention",
+        "heavy shadow on resting state",
+        "entrance animation on data rows",
+        "FOMO urgency language"
+      ],
+      "signature_motion": "cubic-bezier(.4,.6,.2,1) at 0.2s for interactive states; amber bouncing-dot loader at 0.6s cubic-bezier(0,1,1,0)",
+      "has_personas": true,
+      "category_raw": "fintech / Taiwan equity trading platform"
+    },
+    {
       "id": "gangnamunni",
       "primary_color_hex": "#d54300",
       "category": "Healthcare",
@@ -929,6 +1190,35 @@
       "country": "KR"
     },
     {
+      "id": "gogolook",
+      "primary_color_hex": "#0CD25F",
+      "category": "Consumer",
+      "visual_theme": "Friendly Taiwanese TrustTech (Whoscall caller-ID / anti-scam): clean white ground, vivid documented brand green #0CD25F, fully-rounded 100px pill buttons, and a big playful Nunito rounded display over Noto Sans body. Approachable protection, not enterprise security.",
+      "voice_fingerprint": {
+        "register": "reassuring-friendly",
+        "sentence_length": "short",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "english-consumer"
+      },
+      "tone_keywords": [
+        "friendly",
+        "reassuring",
+        "approachable",
+        "safe",
+        "playful",
+        "trustworthy"
+      ],
+      "antipatterns": [
+        "Keep the fully-rounded pill language (100px)",
+        "Brand green #0CD25F leads; pink/teal are category accents",
+        "Don't make it look like cold enterprise security",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Bouncy, friendly micro-interactions on the rounded pills; reassuring and light.",
+      "has_personas": true,
+      "category_raw": "consumer-tech / TrustTech anti-scam app"
+    },
+    {
       "id": "gogoro",
       "primary_color_hex": "#000000",
       "category": "Consumer",
@@ -959,6 +1249,64 @@
       "category_raw": "automotive"
     },
     {
+      "id": "grip",
+      "primary_color_hex": "#eb2b51",
+      "category": "Live Commerce / E-commerce",
+      "visual_theme": "dark-first cinema-mode with rose-red CTA accent, live-gradient avatar rings, and mobile-only 420px column layout",
+      "voice_fingerprint": {
+        "register": "energetic and community-warm; direct Korean imperative copy with real-time urgency cues",
+        "sentence_length": "short (5-12 characters for UI labels, 15-30 for promo copy)",
+        "metaphor_density": "low — brand relies on literal live/watch/buy framing rather than abstract metaphor",
+        "vocabulary_register": "colloquial Korean commerce vocabulary; 'Gripper' as proprietary seller term"
+      },
+      "tone_keywords": [
+        "energetic",
+        "direct",
+        "community-warm",
+        "real-time",
+        "participatory"
+      ],
+      "antipatterns": [
+        "static badge for live status instead of animated gradient ring",
+        "using #ff3c78 as checkout button color (it is the lighter affordance, not the CTA)",
+        "shadows on action buttons",
+        "multi-column layout breaking the 420px mobile column",
+        "rounded corners >8px on purchase buttons"
+      ],
+      "signature_motion": "live-avatar ring: 810ms cubic-bezier(0.167,0.166,1,1) pulse scale 1→1.06→1 × 4 iterations, then infinite on active broadcast; ripple-sm 810ms scale 1.02→1.2 opacity 1→0",
+      "has_personas": true,
+      "category_raw": "live commerce / mobile shopping"
+    },
+    {
+      "id": "hahow",
+      "primary_color_hex": "#00CCB4",
+      "category": "Education",
+      "visual_theme": "Friendly Taiwanese EdTech course marketplace (好學校): a soft gray-blue #F5F7F9 canvas, the bright brand teal #00CCB4 from its own design tokens, rounded 8px cards, and warm orange/coral promo accents, set in PingFang TC. Encouraging and human, not corporate.",
+      "voice_fingerprint": {
+        "register": "warm-encouraging",
+        "sentence_length": "medium",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "traditional-chinese-friendly"
+      },
+      "tone_keywords": [
+        "friendly",
+        "warm",
+        "approachable",
+        "encouraging",
+        "human",
+        "playful"
+      ],
+      "antipatterns": [
+        "Keep the brand teal #00CCB4; warm orange/coral are promo accents only",
+        "Maintain rounded 8px cards (not sharp)",
+        "Don't go corporate-cold — the tone is human",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Gentle, friendly transitions; warm hover lifts on cards. Encouraging, never abrupt.",
+      "has_personas": true,
+      "category_raw": "education / EdTech course marketplace"
+    },
+    {
       "id": "hashicorp",
       "primary_color_hex": "#000000",
       "category": "Developer Tools",
@@ -978,6 +1326,64 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "enterprise infrastructure / developer tools"
+    },
+    {
+      "id": "hogangnono",
+      "primary_color_hex": "#584de4",
+      "category": "Consumer Tech",
+      "visual_theme": "map-first data transparency — bold indigo on white, minimal decoration, data-dense split-panel layout",
+      "voice_fingerprint": {
+        "register": "direct and factual, Korean consumer-protective tone",
+        "sentence_length": "short to medium — action-oriented labels, no marketing prose",
+        "metaphor_density": "very low — data speaks for itself",
+        "vocabulary_register": "plain Korean; avoids real-estate jargon; explains technical terms inline"
+      },
+      "tone_keywords": [
+        "transparent",
+        "plain-spoken",
+        "user-protective",
+        "data-honest",
+        "anti-hype"
+      ],
+      "antipatterns": [
+        "paid-listing distortion",
+        "lifestyle hero imagery",
+        "multiple filled CTAs competing on same screen",
+        "fabricated or rounded price estimates",
+        "agent-centric copywriting"
+      ],
+      "signature_motion": "300 ms ease colour transitions on buttons; bottomBoundIn / topBoundIn keyframe for sheets and modals; instant price-number updates (no count-up)",
+      "has_personas": true,
+      "category_raw": "consumer-tech / proptech / real estate transparency"
+    },
+    {
+      "id": "hyundaicard",
+      "primary_color_hex": "#000000",
+      "category": "Fintech",
+      "visual_theme": "Monochrome premium minimalism — black-and-white luxury where withholding color IS the identity — anchored by the proprietary Youandi (유앤아이) typeface as the brand signature. White ground, black ink, Noto Sans KR body, typography-as-identity. Korea's most design-celebrated card brand.",
+      "voice_fingerprint": {
+        "register": "premium-restrained",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "korean-premium"
+      },
+      "tone_keywords": [
+        "premium",
+        "monochrome",
+        "minimal",
+        "typographic",
+        "confident",
+        "cultured"
+      ],
+      "antipatterns": [
+        "No decorative color — the brand is monochrome; color is withheld on purpose",
+        "Don't substitute a generic font for the Youandi display identity",
+        "No visual clutter — typography and whitespace carry it",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Editorial restraint — slow, deliberate reveals; nothing flashy. The premium feel comes from stillness and typographic precision.",
+      "has_personas": true,
+      "category_raw": "fintech / premium credit card (design-led brand)"
     },
     {
       "id": "ibm",
@@ -1060,6 +1466,63 @@
       "signature_motion": "Buttons scale(1.1) on hover, scale(0.85) on active for physical feel.",
       "has_personas": false,
       "category_raw": "customer service / AI helpdesk SaaS"
+    },
+    {
+      "id": "jkopay",
+      "primary_color_hex": "#C9191D",
+      "category": "Fintech",
+      "visual_theme": "Approachable civic red — clean white-gray canvas with bold brand red CTAs, frosted-glass nav, PingFang TC CJK typography, soft card shadows",
+      "voice_fingerprint": {
+        "register": "conversational Mandarin",
+        "sentence_length": "short to medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "everyday vernacular, minimal jargon"
+      },
+      "tone_keywords": [
+        "approachable",
+        "empowering",
+        "matter-of-fact",
+        "civic",
+        "warm"
+      ],
+      "antipatterns": [
+        "banking formality",
+        "deep drop shadows",
+        "competing accent colors",
+        "icon-only navigation",
+        "sub-13px text"
+      ],
+      "signature_motion": "QR scan pulse rings at 800ms, 250ms modal fade, cubic-bezier(0.4,0,0.2,1) for interactive states",
+      "has_personas": true,
+      "category_raw": "fintech / e-wallet / mobile payment"
+    },
+    {
+      "id": "jobkorea",
+      "primary_color_hex": "#083ccc",
+      "category": "consumer-tech",
+      "visual_theme": "confident-functional",
+      "voice_fingerprint": {
+        "register": "informal-Korean (-해요 speech level), warm-direct, data-led",
+        "sentence_length": "short (8-16 syllables per sentence)",
+        "metaphor_density": "low — prefers concrete numbers over figurative language",
+        "vocabulary_register": "everyday Korean with light digital-native terms; avoids HR jargon"
+      },
+      "tone_keywords": [
+        "direct",
+        "encouraging",
+        "data-grounded",
+        "trustworthy",
+        "accessible"
+      ],
+      "antipatterns": [
+        "vague aspiration without data",
+        "HR jargon",
+        "superlatives without proof",
+        "cold AI recs without context"
+      ],
+      "signature_motion": "6s ease-in-out gradient loop on AI search bar; 200ms cubic-bezier(0.4,0,0.2,1) card hover elevation",
+      "has_personas": true,
+      "category_raw": "employment portal / HR tech platform"
     },
     {
       "id": "jumpit",
@@ -1221,6 +1684,64 @@
       "country": "KR"
     },
     {
+      "id": "kdan",
+      "primary_color_hex": "#00DC87",
+      "category": "Productivity",
+      "visual_theme": "Bold Taiwanese document-workflow SaaS (PDF/e-sign/SDKs): a deep teal-black #002D37 structural base, an electric-lime #CAFF00 pop accent, and the kdanGreen #00DC87 brand token, set in Clear Sans with crisp 4px corners. Energetic, modern, developer-credible.",
+      "voice_fingerprint": {
+        "register": "confident-modern",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "english-technical"
+      },
+      "tone_keywords": [
+        "bold",
+        "modern",
+        "energetic",
+        "credible",
+        "workflow-driven",
+        "crisp"
+      ],
+      "antipatterns": [
+        "Keep kdanGreen #00DC87 as brand, #002D37 as structure, #CAFF00 as the loud accent — don't blur roles",
+        "Maintain crisp 4px corners",
+        "No gradients",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Crisp, confident transitions; the lime CTA pops with energy while the teal-black base stays steady.",
+      "has_personas": true,
+      "category_raw": "productivity / document-workflow SaaS"
+    },
+    {
+      "id": "kkbox",
+      "primary_color_hex": "#00B6E1",
+      "category": "Entertainment",
+      "visual_theme": "Dark, premium Taiwanese music-streaming (KKCompany): a near-black #111111 canvas, the signature KKBOX cyan-blue #00B6E1 as the single brand accent, oversized Work Sans display type, and softly-rounded 30px buttons. Cinematic and music-forward.",
+      "voice_fingerprint": {
+        "register": "cinematic-premium",
+        "sentence_length": "short",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "english-media"
+      },
+      "tone_keywords": [
+        "dark",
+        "premium",
+        "cinematic",
+        "music-forward",
+        "immersive",
+        "bold"
+      ],
+      "antipatterns": [
+        "Near-black #111111 canvas — don't lighten",
+        "KKBOX cyan #00B6E1 is the single accent; don't add competing hues",
+        "Keep oversized Work Sans display",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Smooth, cinematic transitions; the cyan accent glows against the dark. Music-forward pacing.",
+      "has_personas": true,
+      "category_raw": "entertainment / music streaming (KKCompany)"
+    },
+    {
       "id": "kkday",
       "primary_color_hex": "#FF5C00",
       "category": "Consumer",
@@ -1249,6 +1770,35 @@
       "signature_motion": "Brisk card-hover shadow lift + filter bottom-sheet slide; no spring, commerce-functional feedback.",
       "has_personas": true,
       "category_raw": "ecommerce"
+    },
+    {
+      "id": "krafton",
+      "primary_color_hex": "#000000",
+      "category": "Consumer Tech / Gaming Publisher",
+      "visual_theme": "dark-monochrome-cinematic",
+      "voice_fingerprint": {
+        "register": "formal-ambitious",
+        "sentence_length": "short-to-medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "aspirational-direct"
+      },
+      "tone_keywords": [
+        "pioneering",
+        "cinematic",
+        "direct",
+        "bold",
+        "ambitious"
+      ],
+      "antipatterns": [
+        "no drop-shadows",
+        "no color CTAs",
+        "no border-radius on buttons",
+        "no serif body fonts",
+        "no light-mode-only design"
+      ],
+      "signature_motion": "translateY(100px) → 0 + opacity 0 → 1 over 0.8s ease-out on scroll reveal; 2px underline expands left→right over 0.3s ease-out on text hover",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
     },
     {
       "id": "kraken",
@@ -1346,6 +1896,35 @@
       "category_raw": "premium grocery / dawn delivery"
     },
     {
+      "id": "laftel",
+      "primary_color_hex": "#816BFF",
+      "category": "consumer-tech",
+      "visual_theme": "dark-first streaming UI with saturated violet accent; dual-mode light/dark; thumbnail-heavy grid layout; anime-entertainment aesthetic",
+      "voice_fingerprint": {
+        "register": "fan-to-fan (덕후 voice), warm-direct, quietly authoritative",
+        "sentence_length": "short and punchy; one idea per sentence",
+        "metaphor_density": "low — brand relies on concrete anime-world vocabulary rather than abstract metaphors",
+        "vocabulary_register": "K-anime vernacular mixed with plain Korean; avoids corporate formality"
+      },
+      "tone_keywords": [
+        "fan-fluent",
+        "warm",
+        "direct",
+        "authoritative",
+        "inclusive"
+      ],
+      "antipatterns": [
+        "corporate broadcast tone",
+        "generic 'Popular' as primary discovery",
+        "hardcoded hex in themed components",
+        "border-radius values outside 4px/8px/50% system",
+        "font-weight above 700"
+      ],
+      "signature_motion": "0.2s ease for overlays/toasts; 0.4s ease for colour transitions; 1.5s linear skeleton shimmer; 1.4s ease-in-out spinner",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
       "id": "lamborghini",
       "primary_color_hex": "#FFC000",
       "category": "Automotive",
@@ -1366,6 +1945,34 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "luxury automotive"
+    },
+    {
+      "id": "lezhin",
+      "primary_color_hex": "#eb0014",
+      "category": "consumer-tech",
+      "visual_theme": "dark-immersive content-first",
+      "voice_fingerprint": {
+        "register": "direct and candid",
+        "sentence_length": "short declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "informal-adult"
+      },
+      "tone_keywords": [
+        "bold",
+        "direct",
+        "unfiltered",
+        "premium",
+        "content-first"
+      ],
+      "antipatterns": [
+        "decorative chrome",
+        "pastel softness",
+        "excessive rounding",
+        "verbose CTA copy"
+      ],
+      "signature_motion": "250ms ease-in-out slide transforms; 1.8s skeleton shimmer",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
     },
     {
       "id": "line",
@@ -1482,6 +2089,35 @@
       "signature_motion": "The add-to-cart fly - an item arcs into the cart with the count badge bumping; order-tracking steps advance calmly without bounce.",
       "has_personas": true,
       "category_raw": "local-services"
+    },
+    {
+      "id": "melon",
+      "primary_color_hex": "#00CD3C",
+      "category": "Entertainment",
+      "visual_theme": "Dense, white, content-first Korean music-streaming UI (Kakao Entertainment): packed charts and lists, small 12-14px Pretendard type, sharp 0px corners, with the signature Melon green #00CD3C rationed onto active nav, tabs, and primary actions. Grayscale hierarchy (#1A1A1A/#666/#999) lets the green do all the signaling.",
+      "voice_fingerprint": {
+        "register": "utilitarian-dense",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "korean-mainstream"
+      },
+      "tone_keywords": [
+        "dense",
+        "efficient",
+        "content-first",
+        "mainstream",
+        "scannable",
+        "green-signal"
+      ],
+      "antipatterns": [
+        "No rounded corners — Melon is square (0px)",
+        "Don't spread the green; ration it to active/primary",
+        "Don't inflate type — density depends on 12-14px",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Minimal, utilitarian transitions; the player and list interactions stay quick and quiet — the green marks live elements rather than animating.",
+      "has_personas": true,
+      "category_raw": "entertainment / music streaming"
     },
     {
       "id": "mercari",
@@ -1625,6 +2261,35 @@
       "category_raw": "AI platform"
     },
     {
+      "id": "momoshop",
+      "primary_color_hex": "#D62872",
+      "category": "E-commerce",
+      "visual_theme": "Dense value-grid; hot magenta-pink brand anchor on neutral grey canvas; urgent deal energy with functional typography hierarchy",
+      "voice_fingerprint": {
+        "register": "colloquial Traditional Chinese Mandarin, direct and warm",
+        "sentence_length": "short (4–8 characters per clause)",
+        "metaphor_density": "low — concrete logistics and price facts preferred",
+        "vocabulary_register": "everyday consumer vocabulary, deal-forward, trust-reinforcing"
+      },
+      "tone_keywords": [
+        "energetic",
+        "trustworthy",
+        "deal-focused",
+        "direct",
+        "warm"
+      ],
+      "antipatterns": [
+        "decorative motion/parallax",
+        "vague superlatives without price anchor",
+        "heavy drop shadows on cards",
+        "pure white page canvas",
+        "price font used for body text"
+      ],
+      "signature_motion": "opacity .3s ease for modal/drawer transitions; no scroll animations; instant search overlay toggle",
+      "has_personas": true,
+      "category_raw": "ecommerce"
+    },
+    {
       "id": "money-forward",
       "primary_color_hex": "#3B7DE9",
       "category": "Fintech",
@@ -1704,6 +2369,35 @@
       "signature_motion": "Product card tap dims image to 92% opacity on press without scaling — preserving the magazine print metaphor.",
       "has_personas": true,
       "category_raw": "fashion e-commerce"
+    },
+    {
+      "id": "mustit",
+      "primary_color_hex": "#D00000",
+      "category": "ecommerce",
+      "visual_theme": "luxury-marketplace-minimal — near-black and white canvas with single brand-red accent; flat surfaces, tight grid, high product photo density",
+      "voice_fingerprint": {
+        "register": "direct-discovery",
+        "sentence_length": "short-to-medium (data-first, scan-friendly)",
+        "metaphor_density": "low (periscope/lens metaphor in brand identity only)",
+        "vocabulary_register": "mixed Korean-English luxury retail; action verbs dominant"
+      },
+      "tone_keywords": [
+        "direct",
+        "discovery-forward",
+        "confident",
+        "trust-anchored",
+        "concise"
+      ],
+      "antipatterns": [
+        "heavy drop shadows",
+        "decorative use of brand red",
+        "verbose luxury puffery",
+        "rounded product image frames",
+        "viewport zoom enabled"
+      ],
+      "signature_motion": "0.4s cubic-bezier(.47,1.64,.41,.8) spring toast bounce-in; 0.25s ease-out standard sheet/fade",
+      "has_personas": true,
+      "category_raw": "luxury resale ecommerce / secondhand luxury marketplace (KR)"
     },
     {
       "id": "myrealtrip",
@@ -1793,6 +2487,35 @@
       "signature_motion": "Thumbnail hover scale 1.03; green UP/new badge pops in with a 1.1 scale (ease-pop).",
       "has_personas": true,
       "category_raw": "Content Platform (Webtoon)"
+    },
+    {
+      "id": "nhncloud",
+      "primary_color_hex": "#125DE6",
+      "category": "Developer Tools",
+      "visual_theme": "Two-surface enterprise cloud: a polished corporate site (Pretendard Variable, vivid brand blue #125DE6, big 30px rounded pills) paired with the TOAST UI open-source widget library (lighter #00a9ff accent, tight 4px radius, 13px text). Clean, functional, trustworthy infrastructure.",
+      "voice_fingerprint": {
+        "register": "enterprise-precise",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "korean-technical"
+      },
+      "tone_keywords": [
+        "enterprise",
+        "trustworthy",
+        "functional",
+        "clean",
+        "scalable",
+        "precise"
+      ],
+      "antipatterns": [
+        "Don't mix the corporate 30px-pill language with the TOAST UI 4px-widget language",
+        "Don't use the #00a9ff widget blue as the corporate brand color (#125DE6)",
+        "No gradients",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Restrained corporate transitions; functional widget interactions in TOAST UI. Motion clarifies, never decorates.",
+      "has_personas": true,
+      "category_raw": "backend-devops / cloud infrastructure (NHN Cloud + TOAST UI)"
     },
     {
       "id": "note",
@@ -1962,6 +2685,63 @@
       "category_raw": "developer AI tool"
     },
     {
+      "id": "payco",
+      "primary_color_hex": "#FF2233",
+      "category": "Fintech",
+      "visual_theme": "High-contrast red-and-white; functional and trustworthy; clean white surfaces with vivid brand red anchoring all primary actions",
+      "voice_fingerprint": {
+        "register": "friendly-direct",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "everyday consumer Korean"
+      },
+      "tone_keywords": [
+        "practical",
+        "reassuring",
+        "familiar",
+        "action-led",
+        "benefit-first"
+      ],
+      "antipatterns": [
+        "decorative motion",
+        "heavy drop shadows",
+        "multiple competing accent colors",
+        "dense typographic hierarchy"
+      ],
+      "signature_motion": "fp_nav active underline width expansion 0.5s",
+      "has_personas": true,
+      "category_raw": "fintech / payment super-app"
+    },
+    {
+      "id": "piccollage",
+      "primary_color_hex": "#4FC3C4",
+      "category": "Consumer Tech",
+      "visual_theme": "Warm scrapbook-cream canvas with teal CTA accents and celebratory purple-to-coral gradient highlights; rounded pills; diffuse soft shadows",
+      "voice_fingerprint": {
+        "register": "warm-conversational",
+        "sentence_length": "short-punchy",
+        "metaphor_density": "low",
+        "vocabulary_register": "everyday-friendly"
+      },
+      "tone_keywords": [
+        "joyful",
+        "approachable",
+        "celebratory",
+        "empowering",
+        "warm"
+      ],
+      "antipatterns": [
+        "hard drop-shadows",
+        "sharp corners",
+        "clinical phrasing",
+        "dark overlays",
+        "serif body text"
+      ],
+      "signature_motion": "200ms ease-in-out color transitions; 700ms cubic-bezier(.22,1,.36,1) reveal-from-rect entry animation",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
       "id": "pinkoi",
       "primary_color_hex": "#10567b",
       "category": "Consumer",
@@ -2083,6 +2863,35 @@
       "signature_motion": "Step-by-step solution reveal fades each numbered step in with an 8px upward translate at 80ms intervals, ending with a soft green checkmark scale-spring.",
       "has_personas": true,
       "category_raw": "edutech / AI math solver"
+    },
+    {
+      "id": "rayark",
+      "primary_color_hex": "#5FE0EE",
+      "category": "Entertainment",
+      "visual_theme": "Dark premium gaming aesthetic from a Taipei rhythm-game studio (Cytus/Deemo/Sdorica): a near-black #1A1C1D canvas lit by a single electric-cyan #5FE0EE accent, white display type, and sharp 3px corners with white-outlined cyan CTAs. Cool, neon-on-black, rhythm-game energy.",
+      "voice_fingerprint": {
+        "register": "cool-gaming",
+        "sentence_length": "short",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "english-gaming"
+      },
+      "tone_keywords": [
+        "dark",
+        "electric",
+        "premium",
+        "rhythmic",
+        "immersive",
+        "cool"
+      ],
+      "antipatterns": [
+        "No light backgrounds — the canvas is near-black #1A1C1D",
+        "No second accent — electric cyan #5FE0EE is the only chromatic lift",
+        "Don't round corners heavily (sharp 3px)",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Beat-synced, kinetic energy true to rhythm games; quick sharp transitions, neon glow accents on the cyan.",
+      "has_personas": true,
+      "category_raw": "entertainment / indie game studio"
     },
     {
       "id": "raycast",
@@ -2247,6 +3056,35 @@
       "category_raw": "e-book / web novel"
     },
     {
+      "id": "riiid",
+      "primary_color_hex": "#14161A",
+      "category": "Education",
+      "visual_theme": "Scholarly monochromatic — near-white canvas (#FCFCFC) with ink-dark primary (#131519), cool-grey accents, Playfair Display headings paired with Pretendard body; no saturated brand colours",
+      "voice_fingerprint": {
+        "register": "reflective-academic",
+        "sentence_length": "medium-long",
+        "metaphor_density": "low",
+        "vocabulary_register": "educated-professional"
+      },
+      "tone_keywords": [
+        "scholarly",
+        "clear",
+        "humanist",
+        "measured",
+        "Socratic"
+      ],
+      "antipatterns": [
+        "warm/saturated accent colours",
+        "heavy drop shadows",
+        "countdown urgency",
+        "gamification chrome",
+        "mixed serif/sans in same role"
+      ],
+      "signature_motion": "fade-in-0 + zoom-in-95 at 200ms; color-only hover transitions at duration-200; no layout-shift animations",
+      "has_personas": true,
+      "category_raw": "education"
+    },
+    {
       "id": "runwayml",
       "primary_color_hex": "#000000",
       "category": "Consumer",
@@ -2287,6 +3125,36 @@
       "signature_motion": "Universal hover shifts interactive elements to electric blue (#0052ef).",
       "has_personas": false,
       "category_raw": "technical"
+    },
+    {
+      "id": "sendbird",
+      "primary_color_hex": "#742DDD",
+      "category": "Developer Tools",
+      "visual_theme": "Two-faced infrastructure: a token-driven chat UIKit on Sendbird purple #742DDD over an 8-step neutral grayscale with universal 4px flat fills, paired with a near-monochrome marketing site — white ground, 72px serif display headline, Helvetica Now Text body, black/white pill CTAs. Brand color is held back from chrome and spent only on product primary actions.",
+      "voice_fingerprint": {
+        "register": "infrastructure-precise",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "english-technical"
+      },
+      "tone_keywords": [
+        "precise",
+        "reliable",
+        "enterprise-assured",
+        "plain",
+        "calm",
+        "invisible"
+      ],
+      "antipatterns": [
+        "No gradients or drop shadows — flat fills and 1px hairlines only",
+        "No brand purple in marketing chrome",
+        "No second brand hue; green/red/blue are semantic only",
+        "No multi-field spec lines",
+        "No body copy set in the serif display face"
+      ],
+      "signature_motion": "New messages fade/slide in at the column bottom (~150-200ms ease-out); near-instant color steps on hover/focus/press (purple-300 -> 400 -> 500); overlay scrim fades in ~200ms. Motion clarifies, never performs.",
+      "has_personas": true,
+      "category_raw": "developer-infra / conversations API (UIKit)"
     },
     {
       "id": "sentry",
@@ -2677,6 +3545,34 @@
       "category_raw": "Fintech"
     },
     {
+      "id": "trenbe",
+      "primary_color_hex": "#7620F6",
+      "category": "Ecommerce",
+      "visual_theme": "luxury-monochrome-purple-accent",
+      "voice_fingerprint": {
+        "register": "direct-trustworthy",
+        "sentence_length": "short-to-medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "formal-clear"
+      },
+      "tone_keywords": [
+        "trustworthy",
+        "direct",
+        "savvy",
+        "tech-forward",
+        "accessible-luxury"
+      ],
+      "antipatterns": [
+        "vague-luxury-cliche",
+        "shadow-heavy-cards",
+        "gradients-behind-product-images",
+        "purple-as-primary-button-inside-shopping-ui"
+      ],
+      "signature_motion": "0.325s ease-out modal slide-up",
+      "has_personas": true,
+      "category_raw": "global luxury ecommerce platform"
+    },
+    {
       "id": "triple",
       "primary_color_hex": "#368FFF",
       "category": "Consumer",
@@ -2796,6 +3692,35 @@
       "country": "KR"
     },
     {
+      "id": "velog",
+      "primary_color_hex": "#12B886",
+      "category": "Developer Tools",
+      "visual_theme": "Reading-first Korean dev-blog surface on the Open Color palette: soft gray0 #F8F9FA canvas, white content, near-black #212529 text, and brand teal6 #12B886 reserved as the single action signal (the write button). Calm, editorial, content-forward.",
+      "voice_fingerprint": {
+        "register": "calm-editorial",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "korean-developer"
+      },
+      "tone_keywords": [
+        "calm",
+        "reading-first",
+        "minimal",
+        "content-forward",
+        "legible",
+        "developer-native"
+      ],
+      "antipatterns": [
+        "No teal as a background wash — it is the single action color",
+        "No pure black text (use #212529)",
+        "No heavy shadows — depth is the gray-to-white value step",
+        "No multi-field spec lines"
+      ],
+      "signature_motion": "Quiet, near-instant state transitions; the dark login pill and teal write button are static anchors — motion stays out of the reading surface.",
+      "has_personas": true,
+      "category_raw": "developer-tools / dev-blogging platform"
+    },
+    {
       "id": "vercel",
       "primary_color_hex": "#171717",
       "category": "Developer Tools",
@@ -2820,6 +3745,36 @@
       "signature_motion": "Shadow-border hover lift; card shadow intensifies without translation.",
       "has_personas": true,
       "category_raw": "developer-infra"
+    },
+    {
+      "id": "voicetube",
+      "primary_color_hex": "#7E3AAF",
+      "category": "Education",
+      "visual_theme": "dark-purple cinematic; dark canvas #18131D body background, gradient nav #210040→#1D102B, pill buttons with #653AAF→#A73AAF gradient; streaming-platform-meets-edtech aesthetic",
+      "voice_fingerprint": {
+        "register": "warm-energetic-bilingual; Mandarin-first CTA copy paired with English taglines",
+        "sentence_length": "short (2–5 words for CTAs, 1–2 sentence paragraphs for UI copy)",
+        "metaphor_density": "low — concrete product language, action verbs, numbered benefits",
+        "vocabulary_register": "accessible everyday; avoids academic jargon; mixes zh-TW and en-US copy fluidly"
+      },
+      "tone_keywords": [
+        "encouraging",
+        "playful",
+        "community-oriented",
+        "accessible",
+        "energetic"
+      ],
+      "antipatterns": [
+        "academic language",
+        "passive voice",
+        "light backgrounds as page canvas",
+        "square-corner buttons",
+        "multiple box-shadows",
+        "sans CJK fallback fonts"
+      ],
+      "signature_motion": "150ms ease-out for standard transitions; carousel dots expand 10px→30px at 150ms; no spring physics",
+      "has_personas": true,
+      "category_raw": "education"
     },
     {
       "id": "voltagent",
@@ -3268,384 +4223,6 @@
       "signature_motion": "찜 heart: outline → filled brand pink with brief pulse; primary CTA uses pink-400 fill, darkening to pink-450/550 on hover/press.",
       "has_personas": true,
       "category_raw": "Commerce / Women's Fashion Discovery"
-    },
-    {
-      "id": "sendbird",
-      "primary_color_hex": "#742DDD",
-      "category": "Developer Tools",
-      "visual_theme": "Two-faced infrastructure: a token-driven chat UIKit on Sendbird purple #742DDD over an 8-step neutral grayscale with universal 4px flat fills, paired with a near-monochrome marketing site — white ground, 72px serif display headline, Helvetica Now Text body, black/white pill CTAs. Brand color is held back from chrome and spent only on product primary actions.",
-      "voice_fingerprint": {
-        "register": "infrastructure-precise",
-        "sentence_length": "short",
-        "metaphor_density": "low",
-        "vocabulary_register": "english-technical"
-      },
-      "tone_keywords": [
-        "precise",
-        "reliable",
-        "enterprise-assured",
-        "plain",
-        "calm",
-        "invisible"
-      ],
-      "antipatterns": [
-        "No gradients or drop shadows — flat fills and 1px hairlines only",
-        "No brand purple in marketing chrome",
-        "No second brand hue; green/red/blue are semantic only",
-        "No multi-field spec lines",
-        "No body copy set in the serif display face"
-      ],
-      "signature_motion": "New messages fade/slide in at the column bottom (~150-200ms ease-out); near-instant color steps on hover/focus/press (purple-300 -> 400 -> 500); overlay scrim fades in ~200ms. Motion clarifies, never performs.",
-      "has_personas": true,
-      "category_raw": "developer-infra / conversations API (UIKit)"
-    },
-    {
-      "id": "velog",
-      "primary_color_hex": "#12B886",
-      "category": "Developer Tools",
-      "visual_theme": "Reading-first Korean dev-blog surface on the Open Color palette: soft gray0 #F8F9FA canvas, white content, near-black #212529 text, and brand teal6 #12B886 reserved as the single action signal (the write button). Calm, editorial, content-forward.",
-      "voice_fingerprint": {
-        "register": "calm-editorial",
-        "sentence_length": "medium",
-        "metaphor_density": "low",
-        "vocabulary_register": "korean-developer"
-      },
-      "tone_keywords": [
-        "calm",
-        "reading-first",
-        "minimal",
-        "content-forward",
-        "legible",
-        "developer-native"
-      ],
-      "antipatterns": [
-        "No teal as a background wash — it is the single action color",
-        "No pure black text (use #212529)",
-        "No heavy shadows — depth is the gray-to-white value step",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Quiet, near-instant state transitions; the dark login pill and teal write button are static anchors — motion stays out of the reading surface.",
-      "has_personas": true,
-      "category_raw": "developer-tools / dev-blogging platform"
-    },
-    {
-      "id": "nhncloud",
-      "primary_color_hex": "#125DE6",
-      "category": "Developer Tools",
-      "visual_theme": "Two-surface enterprise cloud: a polished corporate site (Pretendard Variable, vivid brand blue #125DE6, big 30px rounded pills) paired with the TOAST UI open-source widget library (lighter #00a9ff accent, tight 4px radius, 13px text). Clean, functional, trustworthy infrastructure.",
-      "voice_fingerprint": {
-        "register": "enterprise-precise",
-        "sentence_length": "medium",
-        "metaphor_density": "low",
-        "vocabulary_register": "korean-technical"
-      },
-      "tone_keywords": [
-        "enterprise",
-        "trustworthy",
-        "functional",
-        "clean",
-        "scalable",
-        "precise"
-      ],
-      "antipatterns": [
-        "Don't mix the corporate 30px-pill language with the TOAST UI 4px-widget language",
-        "Don't use the #00a9ff widget blue as the corporate brand color (#125DE6)",
-        "No gradients",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Restrained corporate transitions; functional widget interactions in TOAST UI. Motion clarifies, never decorates.",
-      "has_personas": true,
-      "category_raw": "backend-devops / cloud infrastructure (NHN Cloud + TOAST UI)"
-    },
-    {
-      "id": "hyundaicard",
-      "primary_color_hex": "#000000",
-      "category": "Fintech",
-      "visual_theme": "Monochrome premium minimalism — black-and-white luxury where withholding color IS the identity — anchored by the proprietary Youandi (유앤아이) typeface as the brand signature. White ground, black ink, Noto Sans KR body, typography-as-identity. Korea's most design-celebrated card brand.",
-      "voice_fingerprint": {
-        "register": "premium-restrained",
-        "sentence_length": "short",
-        "metaphor_density": "low",
-        "vocabulary_register": "korean-premium"
-      },
-      "tone_keywords": [
-        "premium",
-        "monochrome",
-        "minimal",
-        "typographic",
-        "confident",
-        "cultured"
-      ],
-      "antipatterns": [
-        "No decorative color — the brand is monochrome; color is withheld on purpose",
-        "Don't substitute a generic font for the Youandi display identity",
-        "No visual clutter — typography and whitespace carry it",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Editorial restraint — slow, deliberate reveals; nothing flashy. The premium feel comes from stillness and typographic precision.",
-      "has_personas": true,
-      "category_raw": "fintech / premium credit card (design-led brand)"
-    },
-    {
-      "id": "rayark",
-      "primary_color_hex": "#5FE0EE",
-      "category": "Entertainment",
-      "visual_theme": "Dark premium gaming aesthetic from a Taipei rhythm-game studio (Cytus/Deemo/Sdorica): a near-black #1A1C1D canvas lit by a single electric-cyan #5FE0EE accent, white display type, and sharp 3px corners with white-outlined cyan CTAs. Cool, neon-on-black, rhythm-game energy.",
-      "voice_fingerprint": {
-        "register": "cool-gaming",
-        "sentence_length": "short",
-        "metaphor_density": "moderate",
-        "vocabulary_register": "english-gaming"
-      },
-      "tone_keywords": [
-        "dark",
-        "electric",
-        "premium",
-        "rhythmic",
-        "immersive",
-        "cool"
-      ],
-      "antipatterns": [
-        "No light backgrounds — the canvas is near-black #1A1C1D",
-        "No second accent — electric cyan #5FE0EE is the only chromatic lift",
-        "Don't round corners heavily (sharp 3px)",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Beat-synced, kinetic energy true to rhythm games; quick sharp transitions, neon glow accents on the cyan.",
-      "has_personas": true,
-      "category_raw": "entertainment / indie game studio"
-    },
-    {
-      "id": "91app",
-      "primary_color_hex": "#061C3D",
-      "category": "Commerce",
-      "visual_theme": "Taiwan omnichannel retail-commerce SaaS (OMO). Deep-navy #061C3D structural brand with a coral-red #E85040 action accent on a clean white ground, Traditional-Chinese Noto Sans TC, generously rounded 16px primary buttons. Reads as trustworthy retail infrastructure with B2B confidence.",
-      "voice_fingerprint": {
-        "register": "b2b-confident",
-        "sentence_length": "medium",
-        "metaphor_density": "low",
-        "vocabulary_register": "traditional-chinese-business"
-      },
-      "tone_keywords": [
-        "trustworthy",
-        "retail-savvy",
-        "confident",
-        "omnichannel",
-        "growth-driven",
-        "professional"
-      ],
-      "antipatterns": [
-        "Keep navy #061C3D structural and coral #E85040 for action — don't swap their roles",
-        "No clutter — clean white ground",
-        "Maintain the rounded 16px primary-button language",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Smooth, professional B2B transitions; confident hover states on the navy and coral CTAs. Restrained and credible.",
-      "has_personas": true,
-      "category_raw": "ecommerce / omnichannel retail SaaS (OMO)"
-    },
-    {
-      "id": "melon",
-      "primary_color_hex": "#00CD3C",
-      "category": "Entertainment",
-      "visual_theme": "Dense, white, content-first Korean music-streaming UI (Kakao Entertainment): packed charts and lists, small 12-14px Pretendard type, sharp 0px corners, with the signature Melon green #00CD3C rationed onto active nav, tabs, and primary actions. Grayscale hierarchy (#1A1A1A/#666/#999) lets the green do all the signaling.",
-      "voice_fingerprint": {
-        "register": "utilitarian-dense",
-        "sentence_length": "short",
-        "metaphor_density": "low",
-        "vocabulary_register": "korean-mainstream"
-      },
-      "tone_keywords": [
-        "dense",
-        "efficient",
-        "content-first",
-        "mainstream",
-        "scannable",
-        "green-signal"
-      ],
-      "antipatterns": [
-        "No rounded corners — Melon is square (0px)",
-        "Don't spread the green; ration it to active/primary",
-        "Don't inflate type — density depends on 12-14px",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Minimal, utilitarian transitions; the player and list interactions stay quick and quiet — the green marks live elements rather than animating.",
-      "has_personas": true,
-      "category_raw": "entertainment / music streaming"
-    },
-    {
-      "id": "kdan",
-      "primary_color_hex": "#00DC87",
-      "category": "Productivity",
-      "visual_theme": "Bold Taiwanese document-workflow SaaS (PDF/e-sign/SDKs): a deep teal-black #002D37 structural base, an electric-lime #CAFF00 pop accent, and the kdanGreen #00DC87 brand token, set in Clear Sans with crisp 4px corners. Energetic, modern, developer-credible.",
-      "voice_fingerprint": {
-        "register": "confident-modern",
-        "sentence_length": "medium",
-        "metaphor_density": "low",
-        "vocabulary_register": "english-technical"
-      },
-      "tone_keywords": [
-        "bold",
-        "modern",
-        "energetic",
-        "credible",
-        "workflow-driven",
-        "crisp"
-      ],
-      "antipatterns": [
-        "Keep kdanGreen #00DC87 as brand, #002D37 as structure, #CAFF00 as the loud accent — don't blur roles",
-        "Maintain crisp 4px corners",
-        "No gradients",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Crisp, confident transitions; the lime CTA pops with energy while the teal-black base stays steady.",
-      "has_personas": true,
-      "category_raw": "productivity / document-workflow SaaS"
-    },
-    {
-      "id": "hahow",
-      "primary_color_hex": "#00CCB4",
-      "category": "Education",
-      "visual_theme": "Friendly Taiwanese EdTech course marketplace (好學校): a soft gray-blue #F5F7F9 canvas, the bright brand teal #00CCB4 from its own design tokens, rounded 8px cards, and warm orange/coral promo accents, set in PingFang TC. Encouraging and human, not corporate.",
-      "voice_fingerprint": {
-        "register": "warm-encouraging",
-        "sentence_length": "medium",
-        "metaphor_density": "moderate",
-        "vocabulary_register": "traditional-chinese-friendly"
-      },
-      "tone_keywords": [
-        "friendly",
-        "warm",
-        "approachable",
-        "encouraging",
-        "human",
-        "playful"
-      ],
-      "antipatterns": [
-        "Keep the brand teal #00CCB4; warm orange/coral are promo accents only",
-        "Maintain rounded 8px cards (not sharp)",
-        "Don't go corporate-cold — the tone is human",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Gentle, friendly transitions; warm hover lifts on cards. Encouraging, never abrupt.",
-      "has_personas": true,
-      "category_raw": "education / EdTech course marketplace"
-    },
-    {
-      "id": "bithumb",
-      "primary_color_hex": "#1C2028",
-      "category": "Fintech",
-      "visual_theme": "Dark, premium, data-dense Korean crypto-exchange (No.1): a near-black #1C2028 structural base warmed by a bronze/brown #543E35 accent, signed by the proprietary Bithumb Trading Sans typeface, with Korea-convention trading colors (red #E15241 = up, blue #4880EE = down). Serious, money-grade.",
-      "voice_fingerprint": {
-        "register": "premium-serious",
-        "sentence_length": "short",
-        "metaphor_density": "low",
-        "vocabulary_register": "korean-financial"
-      },
-      "tone_keywords": [
-        "premium",
-        "dark",
-        "serious",
-        "data-dense",
-        "trustworthy",
-        "money-grade"
-      ],
-      "antipatterns": [
-        "Korea convention: red = price up, blue = price down (don't invert)",
-        "Keep the near-black + bronze pairing; don't lighten the trading base",
-        "Use Bithumb Trading Sans identity",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Fast, precise data updates; restrained chrome motion. The dense trading surface prioritizes information over flourish.",
-      "has_personas": true,
-      "category_raw": "fintech / crypto-asset exchange"
-    },
-    {
-      "id": "gogolook",
-      "primary_color_hex": "#0CD25F",
-      "category": "Consumer",
-      "visual_theme": "Friendly Taiwanese TrustTech (Whoscall caller-ID / anti-scam): clean white ground, vivid documented brand green #0CD25F, fully-rounded 100px pill buttons, and a big playful Nunito rounded display over Noto Sans body. Approachable protection, not enterprise security.",
-      "voice_fingerprint": {
-        "register": "reassuring-friendly",
-        "sentence_length": "short",
-        "metaphor_density": "moderate",
-        "vocabulary_register": "english-consumer"
-      },
-      "tone_keywords": [
-        "friendly",
-        "reassuring",
-        "approachable",
-        "safe",
-        "playful",
-        "trustworthy"
-      ],
-      "antipatterns": [
-        "Keep the fully-rounded pill language (100px)",
-        "Brand green #0CD25F leads; pink/teal are category accents",
-        "Don't make it look like cold enterprise security",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Bouncy, friendly micro-interactions on the rounded pills; reassuring and light.",
-      "has_personas": true,
-      "category_raw": "consumer-tech / TrustTech anti-scam app"
-    },
-    {
-      "id": "kkbox",
-      "primary_color_hex": "#00B6E1",
-      "category": "Entertainment",
-      "visual_theme": "Dark, premium Taiwanese music-streaming (KKCompany): a near-black #111111 canvas, the signature KKBOX cyan-blue #00B6E1 as the single brand accent, oversized Work Sans display type, and softly-rounded 30px buttons. Cinematic and music-forward.",
-      "voice_fingerprint": {
-        "register": "cinematic-premium",
-        "sentence_length": "short",
-        "metaphor_density": "moderate",
-        "vocabulary_register": "english-media"
-      },
-      "tone_keywords": [
-        "dark",
-        "premium",
-        "cinematic",
-        "music-forward",
-        "immersive",
-        "bold"
-      ],
-      "antipatterns": [
-        "Near-black #111111 canvas — don't lighten",
-        "KKBOX cyan #00B6E1 is the single accent; don't add competing hues",
-        "Keep oversized Work Sans display",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Smooth, cinematic transitions; the cyan accent glows against the dark. Music-forward pacing.",
-      "has_personas": true,
-      "category_raw": "entertainment / music streaming (KKCompany)"
-    },
-    {
-      "id": "cakeresume",
-      "primary_color_hex": "#13AB67",
-      "category": "Productivity",
-      "visual_theme": "Clean Taiwanese global talent network (Cake, formerly CakeResume): white ground, confident Cake green #13AB67 for primary action, deep-green #0C4129 headings, crisp 4px corners, set in Inter. Professional, optimistic, with human warmth.",
-      "voice_fingerprint": {
-        "register": "professional-optimistic",
-        "sentence_length": "medium",
-        "metaphor_density": "low",
-        "vocabulary_register": "english-professional"
-      },
-      "tone_keywords": [
-        "professional",
-        "optimistic",
-        "clean",
-        "trustworthy",
-        "modern",
-        "human"
-      ],
-      "antipatterns": [
-        "Cake green #13AB67 for primary action; deep green #0C4129 for headings",
-        "Crisp 4px corners and Inter type",
-        "Keep it professional-warm, not playful-loud",
-        "No multi-field spec lines"
-      ],
-      "signature_motion": "Clean, professional transitions; confident green hover states. Optimistic and steady.",
-      "has_personas": true,
-      "category_raw": "saas / talent network + resume builder"
     }
   ]
 }
