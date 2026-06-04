@@ -39,6 +39,7 @@ program
   .option('--all', 'Skip the interactive TUI and install every shipped skill + agent (use in CI)')
   .option('--skills <names>', 'Comma-separated skill names to install (overrides TUI)', (v) => v.split(',').map((s) => s.trim()).filter(Boolean))
   .option('--agents-only <names>', 'Comma-separated agent names to install (overrides TUI). Use --agents-only to disambiguate from --agent (channel selector).', (v) => v.split(',').map((s) => s.trim()).filter(Boolean))
+  .option('--skills-only', 'Install only the named skill files — skip sub-agents, hooks, and settings.json (minimal single-skill install, e.g. --skills claude-design --skills-only)')
   .action(
     async (opts: {
       dir?: string;
@@ -47,6 +48,7 @@ program
       all?: boolean;
       skills?: string[];
       agentsOnly?: string[];
+      skillsOnly?: boolean;
     }) => {
       const { runInstallSkills } = await import('../src/cli/install-skills.js');
       const validAgents = ['claude-code', 'codex', 'opencode'] as const;
@@ -63,6 +65,7 @@ program
         all: opts.all,
         skillsFilter: opts.skills,
         agentsFilter: opts.agentsOnly,
+        skillsOnly: opts.skillsOnly,
       });
       if (code !== 0) process.exit(code);
     }

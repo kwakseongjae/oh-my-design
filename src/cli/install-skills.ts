@@ -6,6 +6,7 @@ import {
   writeFileSync,
   existsSync,
   mkdirSync,
+  cpSync,
 } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -25,6 +26,9 @@ export interface InstallSkillsOptions {
   skillsFilter?: string[];
   /** Pre-select specific agent names. Overrides interactive prompt when set. */
   agentsFilter?: string[];
+  /** Minimal install: only the named skill files — skip sub-agents, data files,
+   *  hooks, and settings.json. Ideal for shipping a single standalone skill. */
+  skillsOnly?: boolean;
 }
 
 interface InstallPlan {
@@ -210,7 +214,30 @@ interface InstallResult {
   target: SkillTarget;
   skill: string;
   destPath: string;
-  status: 'created' | 'updated' | 'unchanged' | 'skipped-drift';
+  status: 'created' | 'updated' | 'unchanged' | 'skipped-drift' | 'skipped-incompat';
+}
+
+// Skill-tree entries that must never be installed (runtime state, caches, OS cruft).
+const IGNORED_SKILL_ENTRIES = new Set(['.runtime', '__pycache__', '.DS_Store']);
+
+/**
+ * A skill may restrict itself to specific agent channels via a frontmatter line
+ * `x-omd-channels: claude-code` (comma/space separated). Returns the allowed
+ * channels, or null when channel-agnostic (installs anywhere). Used by skills that
+ * depend on a particular agent runtime — e.g. claude-design needs Claude Code's
+ * claude-in-chrome MCP + Bash/python/node and is therefore claude-code only.
+ */
+function parseSkillChannels(skillMd: string): SkillTarget[] | null {
+  const fm = /^---\n([\s\S]*?)\n---/.exec(skillMd);
+  if (!fm) return null;
+  const m = /^x-omd-channels:\s*(.+)$/m.exec(fm[1]);
+  if (!m) return null;
+  const valid: SkillTarget[] = ['claude-code', 'codex', 'opencode'];
+  const list = m[1]
+    .split(/[,\s]+/)
+    .map((s) => s.trim())
+    .filter((s): s is SkillTarget => (valid as string[]).includes(s));
+  return list.length > 0 ? list : null;
 }
 
 function installOne(
@@ -219,11 +246,38 @@ function installOne(
   skill: string,
   force: boolean
 ): InstallResult {
-  const src = readFileSync(
-    join(packageRoot, 'skills', skill, 'SKILL.md'),
-    'utf8'
-  );
+  const skillDir = join(packageRoot, 'skills', skill);
+  const src = readFileSync(join(skillDir, 'SKILL.md'), 'utf8');
   const managed = MANAGED_HEADER + '\n\n' + src;
+
+  // Respect a skill's declared channel restriction (frontmatter `x-omd-channels:`).
+  const channels = parseSkillChannels(src);
+  if (channels && !channels.includes(plan.target)) {
+    return {
+      target: plan.target,
+      skill,
+      destPath: join(plan.destDir, skill + '.md'),
+      status: 'skipped-incompat',
+    };
+  }
+
+  // A skill is "multi-file" when it ships more than SKILL.md (scripts/, references/, …).
+  const extras = readdirSync(skillDir).filter(
+    (n) => n !== 'SKILL.md' && !IGNORED_SKILL_ENTRIES.has(n)
+  );
+  const isMultiFile = extras.length > 0;
+
+  // Flat channels (codex/opencode) store a skill as a single <skill>.md and cannot
+  // host a multi-file skill's scripts/references — such skills are claude-code only.
+  if (plan.layout !== 'folder' && isMultiFile) {
+    return {
+      target: plan.target,
+      skill,
+      destPath: join(plan.destDir, skill + '.md'),
+      status: 'skipped-incompat',
+    };
+  }
+
   const destPath =
     plan.layout === 'folder'
       ? join(plan.destDir, skill, 'SKILL.md')
@@ -232,16 +286,29 @@ function installOne(
   const exists = existsSync(destPath);
   const existing = exists ? readFileSync(destPath, 'utf8') : '';
 
-  if (exists && existing === managed) {
+  // Drift protection guards the user-editable SKILL.md. Single-file skills can
+  // short-circuit on "unchanged"; multi-file skills always re-sync their tree.
+  if (exists && existing === managed && !isMultiFile) {
     return { target: plan.target, skill, destPath, status: 'unchanged' };
   }
-
   if (exists && !existing.startsWith(MANAGED_HEADER) && !force) {
     return { target: plan.target, skill, destPath, status: 'skipped-drift' };
   }
 
   mkdirSync(dirname(destPath), { recursive: true });
   writeFileSync(destPath, managed, 'utf8');
+
+  // Copy the rest of the skill tree (scripts/, references/, …) for folder layout.
+  if (plan.layout === 'folder' && isMultiFile) {
+    const destSkillDir = join(plan.destDir, skill);
+    for (const entry of extras) {
+      cpSync(join(skillDir, entry), join(destSkillDir, entry), {
+        recursive: true,
+        filter: (s) => !/(\/__pycache__|\/\.runtime|\.pyc$|\.DS_Store$)/.test(s),
+      });
+    }
+  }
+
   return {
     target: plan.target,
     skill,
@@ -441,6 +508,7 @@ const STATUS_LABEL: Record<InstallResult['status'], string> = {
   updated: pc.cyan('updated'),
   unchanged: pc.dim('unchanged'),
   'skipped-drift': pc.yellow('skipped'),
+  'skipped-incompat': pc.yellow('skipped (claude-code only)'),
 };
 
 function autoDetectTargets(projectRoot: string): SkillTarget[] {
@@ -476,6 +544,7 @@ export async function runInstallSkills(
   const allAgents = listCanonicalAgents(packageRoot);
 
   const force = opts.force ?? false;
+  const minimal = opts.skillsOnly === true;
 
   p.intro(
     pc.bold('omd install-skills') +
@@ -485,7 +554,8 @@ export async function runInstallSkills(
   // Resolve selection: --all flag, --skills/--agents/--agent filter, or interactive TUI.
   // TUI runs only when stdin is a TTY and the corresponding flag isn't set.
   const isTTY = Boolean(process.stdin.isTTY && process.stdout.isTTY);
-  const nonInteractive = opts.all || !isTTY || opts.skillsFilter || opts.agentsFilter;
+  const nonInteractive =
+    opts.all || !isTTY || opts.skillsFilter || opts.agentsFilter || minimal;
 
   const detected = autoDetectTargets(projectRoot);
   // Real presence (not the all-3 fallback) — used purely for hint labels.
@@ -602,6 +672,9 @@ export async function runInstallSkills(
     pc.bold('Targets: ') + targets.map((t) => pc.cyan(t)).join(', ')
   );
 
+  // skills-only minimal install: drop sub-agents (data/hooks/settings gated below).
+  if (minimal) canonicalAgents = [];
+
   const results: InstallResult[] = [];
   for (const plan of plans) {
     for (const skill of skills) {
@@ -625,6 +698,7 @@ export async function runInstallSkills(
     // OpenCode currently has no agent-definition channel — skills only.
   }
 
+  if (!minimal) {
   // Ship the read-only data assets (reference fingerprints, controlled vocab,
   // human-readable tag matrix, opt-out corpus) into the project so skills + hooks
   // can run entirely on the host CLI's own model — no external API keys.
@@ -660,6 +734,7 @@ export async function runInstallSkills(
     // settings.json (with merge, never clobber user)
     results.push(installSettingsJson(packageRoot, projectRoot, force));
   }
+  } // !minimal — skills-only skips data files, hooks, and settings.json
 
   p.log.message(pc.bold('\nResults:'));
   for (const r of results) {
@@ -679,6 +754,33 @@ export async function runInstallSkills(
       pc.yellow(
         `${writtenCount} written, ${driftCount} skipped (existing files lack the omd marker — rerun with --force to overwrite).`
       )
+    );
+    return 0;
+  }
+
+  // Minimal single-skill install (--skills-only): no omd onboarding, no agents/hooks.
+  // Ideal for shipping a standalone skill (e.g. claude-design) to people who don't
+  // want the rest of the omd toolchain.
+  if (minimal) {
+    for (const r of results.filter((x) => x.status === 'skipped-incompat')) {
+      p.log.warn(
+        `${pc.bold(r.skill)} ${pc.dim('skipped for ')}${pc.cyan(r.target)}${pc.dim(' — declares x-omd-channels (channel not supported).')}`
+      );
+    }
+    const installed = results.filter(
+      (r) => r.status === 'created' || r.status === 'updated'
+    );
+    if (installed.length === 0) {
+      p.outro(pc.yellow('Nothing installed — no compatible skill/channel match.'));
+      return 0;
+    }
+    p.outro(
+      pc.green(
+        `Done. Installed ${skills.map((s) => pc.bold(s)).join(', ')} for ${targets.join(', ')}.`
+      ) +
+        pc.dim('  →  restart your agent, then use the skill (e.g. ') +
+        pc.cyan('/claude-design') +
+        pc.dim(').')
     );
     return 0;
   }

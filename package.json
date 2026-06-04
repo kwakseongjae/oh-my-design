@@ -24,6 +24,7 @@
     "skills/omd-designer-review",
     "skills/omd-final-qa",
     "skills/omd-codex-image",
+    "skills/claude-design",
     "agents",
     "data/opt-out-corpus.json",
     "data/synonyms.json",
