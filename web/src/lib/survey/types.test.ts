@@ -6,6 +6,7 @@ import {
   matchReferences,
   buildTypeAvatarUrl,
   REFERENCE_PROFILES,
+  profileFor,
   TYPE_PALETTES,
 } from "./types";
 
@@ -131,7 +132,7 @@ describe("matchReferences", () => {
     const result = matchReferences(userCode);
 
     for (const adj of result.adjacent) {
-      const profile = REFERENCE_PROFILES[adj.id];
+      const profile = profileFor(adj.id);
       let matches = 0;
       if (profile.t === user.t) matches++;
       if (profile.d === user.d) matches++;

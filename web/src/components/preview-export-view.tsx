@@ -34,6 +34,8 @@ export function PreviewExportView({
 }) {
   const [mdView, setMdView] = useState<MdView>("rendered");
   const [copied, setCopied] = useState<string | null>(null);
+  // Mobile-only: which panel is shown (desktop shows both side-by-side via lg: classes).
+  const [mobileView, setMobileView] = useState<"preview" | "designmd">("preview");
 
   const designMd = useMemo(
     () => applyOverridesToMd(
@@ -105,11 +107,31 @@ export function PreviewExportView({
         )}
       </div>
 
+      {/* ── Mobile view toggle (desktop shows both side-by-side) ── */}
+      <div className="flex lg:hidden items-center rounded-[0.5rem] border border-border/40 dark:border-border bg-muted/20 p-0.5">
+        <button
+          onClick={() => setMobileView("preview")}
+          className={`flex flex-1 items-center justify-center gap-1.5 rounded-[0.4rem] px-3 py-2 text-xs font-medium transition-all duration-200 ${
+            mobileView === "preview" ? "bg-primary/10 text-primary font-semibold shadow-[0_2px_10px_-3px_rgba(85,70,255,0.45)] ring-1 ring-inset ring-primary/40" : "text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          <Eye className="h-3.5 w-3.5" /> Live Preview
+        </button>
+        <button
+          onClick={() => setMobileView("designmd")}
+          className={`flex flex-1 items-center justify-center gap-1.5 rounded-[0.4rem] px-3 py-2 text-xs font-medium transition-all duration-200 ${
+            mobileView === "designmd" ? "bg-primary/10 text-primary font-semibold shadow-[0_2px_10px_-3px_rgba(85,70,255,0.45)] ring-1 ring-inset ring-primary/40" : "text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          <FileText className="h-3.5 w-3.5" /> DESIGN.md
+        </button>
+      </div>
+
       {/* ── 2-column layout ── */}
       <div className="grid gap-4 lg:grid-cols-[1fr_440px] items-start">
 
         {/* Left — brand preview */}
-        <div className="rounded-xl border border-border/40 dark:border-border ring-1 ring-border/20 dark:ring-transparent overflow-hidden">
+        <div className={`${mobileView === "preview" ? "block" : "hidden"} lg:block rounded-xl border border-border/40 dark:border-border ring-1 ring-border/20 dark:ring-transparent overflow-hidden`}>
           <ReferencePreview
             tokens={tokens}
             overrides={{ ...overrides, stylePreferences }}
@@ -119,7 +141,7 @@ export function PreviewExportView({
         </div>
 
         {/* Right — sticky DESIGN.md panel */}
-        <div className="sticky top-[4.5rem] flex flex-col rounded-xl border border-border/40 dark:border-border overflow-hidden max-h-[calc(100vh-5.5rem)]">
+        <div className={`${mobileView === "designmd" ? "flex" : "hidden"} lg:flex sticky top-[4.5rem] flex-col rounded-xl border border-border/40 dark:border-border overflow-hidden max-h-[calc(100dvh-5.5rem)] lg:max-h-[calc(100vh-5.5rem)]`}>
 
           {/* Toolbar */}
           <div className="shrink-0 flex items-center gap-2 border-b border-border/40 dark:border-border px-3 py-2">

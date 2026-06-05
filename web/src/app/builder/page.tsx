@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ReferenceSelector } from "@/components/reference-selector";
 import { DesignWizard } from "@/components/design-wizard";
 import { PreviewExportView } from "@/components/preview-export-view";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { encodeConfig, decodeConfig } from "@/lib/core/config-hash";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
 
@@ -170,6 +171,13 @@ export default function BuilderPage() {
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
   }, [loadFromUrl]);
+
+  // Reset window scroll to top on every step transition. Without this, scrolling
+  // down the reference list (step 1) then proceeding leaves the next step scrolled
+  // to the carried-over position, forcing the user to scroll back up.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [step]);
 
   // While in preview, keep the cfg query param in sync with the live state
   // (components, overrides, prefs) so the URL is always a truthful snapshot
@@ -379,6 +387,9 @@ export default function BuilderPage() {
           />
         )}
       </main>
+
+      {/* Floating scroll-to-top on the long-scrolling steps (select grid + preview). */}
+      {(step === "select" || step === "preview") && <ScrollToTop />}
     </div>
   );
 }

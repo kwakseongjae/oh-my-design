@@ -11,6 +11,10 @@
  * Type code example: "CDFS" = Cool + Dense + Flat + Sharp
  * ───────────────────────────────────────────────────────── */
 
+import { REGISTRY, type RefEntry } from "@/data/registry.generated";
+import { hexToHsl } from "@/lib/core/color";
+import { GENERATED_PROFILES, GENERATED_SUPPLEMENTARY } from "./profiles.generated";
+
 export type Temperature = "C" | "W";
 export type Density = "D" | "O";
 export type Elevation = "F" | "L";
@@ -463,6 +467,54 @@ const SUPPLEMENTARY_DATA: Record<string, { saturation: "muted" | "vivid"; typogr
   // defaults for the rest
 };
 
+/* ── Dynamic profile resolution (registry-sourced, full catalog) ──
+ * The hand-curated REFERENCE_PROFILES / SUPPLEMENTARY_DATA above stay as
+ * overrides (best quality). GENERATED_PROFILES covers the rest of the catalog
+ * (LLM-assigned from each DESIGN.md). Any ref in NEITHER map (e.g. a brand-new
+ * addition) falls back to a coarse derivation from its registry color +
+ * category — so the curation always recommends from the FULL catalog,
+ * including future references, with zero manual sync. */
+
+const REGISTRY_BY_ID_LOCAL: Record<string, RefEntry> = Object.fromEntries(REGISTRY.map((e) => [e.id, e]));
+
+const DENSE_CATS = new Set(["fintech", "ecommerce", "developer-tools", "backend-devops", "ai", "saas", "government", "social-commerce", "local-services", "video-community"]);
+const SHARP_CATS = new Set(["fintech", "developer-tools", "backend-devops", "ai", "government", "automotive"]);
+
+function deriveProfile(entry: RefEntry | undefined): { t: Temperature; d: Density; e: Elevation; s: Shape } {
+  if (!entry) return { t: "C", d: "O", e: "F", s: "R" };
+  let t: Temperature = "C";
+  try {
+    const [h, s] = hexToHsl(entry.primaryColor);
+    if (s >= 15) t = (h <= 50 || h >= 330) ? "W" : "C"; // saturated → hue; neutral → cool
+  } catch { /* keep cool */ }
+  return {
+    t,
+    d: DENSE_CATS.has(entry.category) ? "D" : "O",
+    e: "F", // modern flat default; refined by LLM/hand profiles where present
+    s: SHARP_CATS.has(entry.category) ? "S" : "R",
+  };
+}
+
+/** Resolve a reference's 4-axis profile: hand-curated → generated → derived fallback. */
+export function profileFor(id: string): { t: Temperature; d: Density; e: Elevation; s: Shape } {
+  return REFERENCE_PROFILES[id] ?? GENERATED_PROFILES[id] ?? deriveProfile(REGISTRY_BY_ID_LOCAL[id]);
+}
+
+const CATEGORY_LABEL: Record<string, string> = {
+  fintech: "Fintech", ecommerce: "Commerce", "developer-tools": "Developer", "backend-devops": "Backend",
+  ai: "AI", saas: "SaaS", "consumer-tech": "Consumer", education: "Education", productivity: "Productivity",
+  "design-tools": "Design", automotive: "Automotive", marketing: "Marketing", healthcare: "Healthcare",
+  government: "Government", entertainment: "Entertainment", travel: "Travel",
+};
+function categoryFor(id: string): string {
+  if (CATEGORIES[id]) return CATEGORIES[id];
+  const c = REGISTRY_BY_ID_LOCAL[id]?.category ?? "";
+  return CATEGORY_LABEL[c] ?? (c ? c.charAt(0).toUpperCase() + c.slice(1) : "Other");
+}
+function suppFor(id: string) {
+  return SUPPLEMENTARY_DATA[id] ?? GENERATED_SUPPLEMENTARY[id];
+}
+
 export interface RefMatch {
   id: string;
   score: number;
@@ -487,8 +539,10 @@ export function matchReferences(
 ): { primary: RefMatch[]; adjacent: RefMatch[] } {
   const user = { t: code[0], d: code[1], e: code[2], s: code[3] };
 
-  // Score all references
-  const scored = Object.entries(REFERENCE_PROFILES).map(([id, profile]) => {
+  // Score all references in the registry (full catalog, incl. future additions)
+  const scored = REGISTRY.map((entry) => {
+    const id = entry.id;
+    const profile = profileFor(id);
     let score = 0;
     if (profile.t === user.t) score += 30;
     if (profile.d === user.d) score += 25;
@@ -497,7 +551,7 @@ export function matchReferences(
 
     // Supplementary bonuses
     if (supplementary) {
-      const sup = SUPPLEMENTARY_DATA[id];
+      const sup = suppFor(id);
       if (sup) {
         if (sup.saturation === supplementary.saturation) score += 5;
         if (sup.typography === supplementary.typography) score += 5;
@@ -505,7 +559,7 @@ export function matchReferences(
       }
     }
 
-    const category = CATEGORIES[id] || "Other";
+    const category = categoryFor(id);
     return { id, score: Math.min(score, 100), category };
   });
 
@@ -523,7 +577,7 @@ export function matchReferences(
   // Adjacent: refs with 1-2 axis differences, ensuring category diversity
   const primaryIds = new Set(primary.map((r) => r.id));
   const axisMatches = scored.map((r) => {
-    const profile = REFERENCE_PROFILES[r.id];
+    const profile = profileFor(r.id);
     let matches = 0;
     if (profile.t === user.t) matches++;
     if (profile.d === user.d) matches++;
