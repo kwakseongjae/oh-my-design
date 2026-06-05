@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { PKG_VERSION } from "@/data/version.generated";
 import { motion, useInView } from "framer-motion";
 import {
   ArrowRight,
@@ -900,9 +901,9 @@ export function FinalCtaFooter() {
         }}
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14 sm:py-16">
-          <div className="grid gap-12 sm:grid-cols-12">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-12 sm:gap-12">
             {/* Brand column */}
-            <div className="sm:col-span-5">
+            <div className="col-span-2 sm:col-span-5">
               <Link href="/" className="inline-flex items-center gap-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -936,7 +937,7 @@ export function FinalCtaFooter() {
                 >
                   <span className="font-mono text-[10px] font-semibold">npm</span>
                   <span className="text-white/40">·</span>
-                  <span>v1.0.0</span>
+                  <span>v{PKG_VERSION}</span>
                 </a>
                 <a
                   href="https://github.com/kwakseongjae/oh-my-design"

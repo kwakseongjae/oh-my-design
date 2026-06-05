@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type TouchEvent as RTouchEvent } from "react";
 import { V2, BRAND_COLORS } from "./tokens";
 import { getLogoUrl, getLogoFallbackUrl } from "@/lib/logos";
 
@@ -97,6 +97,9 @@ export function LiveProof() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [reduced, setReduced] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const touchX = useRef<number | null>(null);
+  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -150,27 +153,111 @@ export function LiveProof() {
     };
   }, [reduced, isMobile]);
 
-  // Static / mobile fallback: simple grid
+  // Mobile/reduced: gentle auto-advance through brands; pauses after interaction.
+  useEffect(() => {
+    if (!isMobile || reduced || paused) return;
+    const t = setInterval(() => setActiveIdx((i) => (i + 1) % BRANDS.length), 4000);
+    return () => clearInterval(t);
+  }, [isMobile, reduced, paused]);
+
+  const pauseAuto = () => {
+    setPaused(true);
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    resumeTimer.current = setTimeout(() => setPaused(false), 9000);
+  };
+  const go = (idx: number) => {
+    setActiveIdx(((idx % BRANDS.length) + BRANDS.length) % BRANDS.length);
+    pauseAuto();
+  };
+  const onTouchStart = (e: RTouchEvent) => { touchX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e: RTouchEvent) => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 40) go(activeIdx + (dx < 0 ? 1 : -1));
+    touchX.current = null;
+  };
+
+  const active = BRANDS[activeIdx];
+
+  // Mobile / reduced-motion: a tap+swipe brand carousel that keeps the
+  // "same prompt → different DESIGN.md" narrative (instead of a static stack).
   if (reduced || isMobile) {
     return (
-      <section className="relative py-20 px-4 sm:px-6" style={{ background: V2.bgLight }}>
+      <section className="relative py-16 px-4" style={{ background: V2.bgLight }}>
         <Header />
-        <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {BRANDS.map((b) => (
-            <BrandPricingCard key={b.id} brand={b} />
+
+        {/* brand tabs */}
+        <div className="mx-auto mt-7 flex max-w-md items-center justify-center gap-1.5 overflow-x-auto pb-1">
+          {BRANDS.map((b, i) => (
+            <button
+              key={b.id}
+              onClick={() => go(i)}
+              className="shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold transition-all"
+              style={
+                i === activeIdx
+                  ? { background: b.primary, color: "#fff" }
+                  : { background: "rgba(10,10,15,0.05)", color: "rgba(10,10,15,0.5)" }
+              }
+            >
+              {b.name}
+            </button>
           ))}
         </div>
-        <p
-          className="mx-auto mt-8 max-w-2xl text-center text-sm"
-          style={{ color: "rgba(10,10,15,0.55)" }}
+
+        {/* prompt context */}
+        <div className="mx-auto mt-5 max-w-md text-center text-xs" style={{ color: "rgba(10,10,15,0.5)" }}>
+          Prompt <span className="font-mono">&ldquo;build me a hero card&rdquo;</span> · DESIGN.md ={" "}
+          <span className="font-mono font-semibold" style={{ color: active.primary }}>{active.name}</span>
+        </div>
+
+        {/* swipeable single-card crossfade */}
+        <div
+          className="relative mx-auto mt-5 h-[340px] w-full max-w-[380px]"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
-          Same prompt. Same component. The DESIGN.md decides everything else.
-        </p>
+          {BRANDS.map((b, i) => (
+            <div
+              key={b.id}
+              className="absolute inset-0 transition-all duration-500 ease-out"
+              style={{
+                opacity: i === activeIdx ? 1 : 0,
+                transform: `scale(${i === activeIdx ? 1 : 0.96})`,
+                pointerEvents: i === activeIdx ? "auto" : "none",
+              }}
+            >
+              <BrandPricingCard brand={b} />
+            </div>
+          ))}
+        </div>
+
+        {/* progress dots */}
+        <div className="mt-6 flex items-center justify-center gap-2">
+          {BRANDS.map((b, i) => (
+            <button
+              key={b.id}
+              onClick={() => go(i)}
+              aria-label={b.name}
+              className="h-1.5 rounded-full transition-all"
+              style={{
+                width: i === activeIdx ? 36 : 14,
+                background: i === activeIdx ? active.primary : "rgba(10,10,15,0.15)",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* DESIGN.md excerpt */}
+        <div
+          className="mx-auto mt-6 max-w-md rounded-lg border px-4 py-3 text-center font-mono text-xs"
+          style={{ borderColor: V2.borderLight, background: "rgba(85,70,255,0.04)", color: "rgba(10,10,15,0.7)" }}
+        >
+          <span className="opacity-60">DESIGN.md →</span>{" "}
+          <span style={{ color: active.primary, fontWeight: 600 }}>{active.name}:</span> {active.excerpt}
+        </div>
       </section>
     );
   }
-
-  const active = BRANDS[activeIdx];
 
   return (
     <section

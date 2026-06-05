@@ -227,11 +227,11 @@ export function HeroV2() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-5 flex flex-wrap items-center gap-3"
+            className="mt-5 flex items-center gap-2 sm:gap-3"
           >
             <Link
               href="/builder"
-              className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f]"
+              className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f] sm:px-6"
               style={{
                 background: V2.primary,
                 color: "#fff",
@@ -239,14 +239,14 @@ export function HeroV2() {
                 "--tw-ring-color": V2.accent,
               }}
             >
-              Browse the builder
+              Open Builder
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <a
               href="https://github.com/kwakseongjae/oh-my-design"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border px-5 py-3 text-sm font-medium text-white/90 transition-colors hover:bg-white/5"
+              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-4 py-3 text-sm font-medium text-white/90 transition-colors hover:bg-white/5 sm:px-5"
               style={{ borderColor: V2.borderDark }}
             >
               <Star className="h-4 w-4" fill="#facc15" style={{ color: "#facc15" }} />

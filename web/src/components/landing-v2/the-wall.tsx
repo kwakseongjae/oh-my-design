@@ -141,6 +141,9 @@ export function TheWall() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
   const [open, setOpen] = useState<OpenState | null>(null);
+  // Mobile: show a 3-col × 10-row subset, with a "Show more" button to reveal the rest.
+  const [expanded, setExpanded] = useState(false);
+  const MOBILE_COLLAPSED = 30;
 
   // First-entry nudge: pick 3 random tiles to pulse briefly so users see
   // they're interactive. Triggers once per page load when section enters
@@ -256,16 +259,14 @@ export function TheWall() {
           </p>
         </div>
 
-        <div
-          className="grid gap-2.5 sm:gap-3"
-          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))" }}
-        >
+        <div className="grid grid-cols-3 gap-2.5 sm:gap-3 sm:[grid-template-columns:repeat(auto-fill,minmax(120px,1fr))]">
           {cards.map((id, idx) => (
             <Tile
               key={id}
               id={id}
               index={idx}
               nudge={nudgeIdx.has(idx)}
+              className={!expanded && idx >= MOBILE_COLLAPSED ? "hidden sm:block" : ""}
               onOpen={(viewportOrigin) => {
                 const rect = sectionRef.current?.getBoundingClientRect();
                 if (!rect) return;
@@ -280,6 +281,19 @@ export function TheWall() {
             />
           ))}
         </div>
+
+        {/* Mobile-only "Show more" — desktop (sm+) always shows the full wall */}
+        {!expanded && cards.length > MOBILE_COLLAPSED && (
+          <div className="mt-6 flex justify-center sm:hidden">
+            <button
+              type="button"
+              onClick={() => setExpanded(true)}
+              className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+            >
+              Show more <span className="text-white/40">+{cards.length - MOBILE_COLLAPSED}</span>
+            </button>
+          </div>
+        )}
 
         <p className="mt-10 text-center text-xs text-white/35">
           Logos belong to their respective companies. Reproduced for
@@ -341,11 +355,13 @@ function Tile({
   index,
   nudge,
   onOpen,
+  className = "",
 }: {
   id: string;
   index: number;
   nudge?: boolean;
   onOpen: (origin: { x: number; y: number }) => void;
+  className?: string;
 }) {
   const color = colorForId(id);
   const dark = isDarkBrand(color);
@@ -415,7 +431,7 @@ function Tile({
       transition={{ duration: 0.4, delay: (index % 14) * 0.025 }}
       className={`group relative aspect-[3/2] overflow-hidden rounded-xl border outline-none cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f] ${
         nudge ? "omd-v2-nudge" : ""
-      }`}
+      } ${className}`}
       style={{
         ...tileStyle,
         // @ts-expect-error css var
