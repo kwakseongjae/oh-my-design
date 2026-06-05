@@ -6,6 +6,19 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.6.2 — 2026-06-05
+
+**New bundled skill `claude-design` (terminal → claude.ai/design), single-skill install via `--skills-only`, and channel-restricted skills.**
+
+- **`claude-design` skill (Claude Code only)** — analyzes your codebase (stack, tokens, components, real UI copy, brand assets) and drives **claude.ai/design** end-to-end to generate a code-grounded design, returning a shareable link. If claude.ai/design interjects a "Quick questions" clarifying panel before generating, the skill detects it (it appears late, in a closed Questions tab, in varying layouts) and — by default — the agent reads the questions and picks the appropriate option per your codebase, with a "Decide for me" autonomous fallback for headless runs. Install standalone: `npx oh-my-design-cli install-skills --skills claude-design --agent claude-code --skills-only`.
+- **`--skills-only` install flag** — install a single skill with no agents / hooks / omd onboarding (clean standalone install).
+- **`x-omd-channels` skill frontmatter** — a skill can declare its compatible agent channels; incompatible targets are skipped (`claude-design` is claude-code-only — needs Chrome automation + `python3` + a global `playwright`).
+- **Multi-file skills** — `install-skills` now copies a skill's full tree (`scripts/`, `references/`), not just `SKILL.md`.
+
+> Site-only (no npm impact, deploys with the site): builder UX (registry-wide curation, scroll-to-top, mobile DESIGN.md toggle), landing mobile polish (Live Proof carousel, The Wall show-more, 2-col footer), and footer version sync to `package.json`.
+
+---
+
 ## 1.6.1 — 2026-06-02
 
 **Catalog grows to 150 brands (+13), the bundled DESIGN.md mirror is fixed, and the reference pipeline gains deterministic proof/format gates.**

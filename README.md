@@ -97,6 +97,18 @@ Pattern adopted: Anthropic orchestrator-workers + LangGraph supervisor revision-
 
 Promotion of future skills into the bundle is governed by the [`omd-release-hygiene`](./.claude/skills/omd-release-hygiene/SKILL.md) checklist. (A deterministic Korean-orthography linter was prototyped and dropped — a 25-pattern regex heuristic had too low recall to be worth shipping; if you need automated KR spellcheck, wire an external service such as the 부산대 한국어 맞춤법 검사기.)
 
+### `claude-design` — drive claude.ai/design from your terminal
+
+A standalone skill (Claude Code only): it analyzes your codebase — stack, design tokens, components, real UI copy, brand assets — and drives **claude.ai/design** end-to-end to generate a code-grounded design, handing back a shareable link. If claude.ai/design asks clarifying questions before generating, the skill reads them and picks the appropriate answer per your codebase (falling back to "Decide for me").
+
+Install it on its own, with none of the omd toolchain:
+
+```bash
+npx oh-my-design-cli install-skills --skills claude-design --agent claude-code --skills-only
+```
+
+Then restart Claude Code and run `/claude-design` (or just ask: "generate a design for this landing page"). Requirements: Claude Code (it needs Chrome automation + `python3` + a global `playwright`), and a one-time claude.ai login in the window the skill opens. Channel-restricted via `x-omd-channels` — Codex/OpenCode targets are skipped.
+
 ## How to use omd with your AI
 
 Open Claude Code (or Codex / OpenCode) in your project. Just talk:

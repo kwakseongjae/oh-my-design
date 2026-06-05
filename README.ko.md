@@ -197,6 +197,18 @@ Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Appl
 - **디자인 시스템 디렉토리** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 107개 레퍼런스 중 34개는 공식 디자인 시스템 또는 브랜드 가이드라인 페이지가 있으며, 디렉토리에서 라이브 썸네일과 함께 바로 이동할 수 있습니다.
 - **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — MBTI 스타일의 짧은 퀴즈로 당신의 디자인 성향을 107개 레퍼런스 중 하나와 매칭해, 해당 레퍼런스가 미리 선택된 빌더로 바로 이동시켜 줍니다.
 
+## claude-design — 터미널에서 claude.ai/design 구동 (단독 스킬)
+
+코드베이스(스택·디자인 토큰·컴포넌트·실제 UI 카피·브랜드 에셋)를 분석해 **claude.ai/design** 을 끝까지 자동 구동하고, 코드 기반으로 생성된 디자인의 공유 링크를 돌려주는 Claude Code 전용 스킬입니다. 생성 전 claude.ai/design 이 명확화 질문을 띄우면, 스킬이 질문을 읽고 **코드 맥락에 맞는 답을 직접 선택**합니다(애매하면 "Decide for me" 폴백).
+
+omd 툴체인 없이 단독 설치:
+
+```bash
+npx oh-my-design-cli install-skills --skills claude-design --agent claude-code --skills-only
+```
+
+Claude Code 재시작 후 `/claude-design` (또는 "이 랜딩 디자인 만들어줘"처럼 자연어로). 요구사항: Claude Code(Chrome 자동화 + `python3` + 전역 `playwright` 필요), 스킬이 여는 창에서 claude.ai 1회 로그인. `x-omd-channels` 로 채널 제한 — Codex/OpenCode 타깃은 건너뜁니다.
+
 ## 107개 지원 레퍼런스
 
 | 카테고리 | 기업 |
