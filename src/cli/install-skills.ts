@@ -591,7 +591,13 @@ export async function runInstallSkills(
       ? opts.agents
       : opts.all
         ? (['claude-code', 'codex', 'opencode'] as SkillTarget[])
-        : detected;
+        : minimal
+          ? // --skills-only: don't blast all 3 ecosystems. Use channels actually
+            // present, else just Claude Code. Override with --agent codex|opencode.
+            (actuallyDetected.length > 0
+              ? actuallyDetected
+              : (['claude-code'] as SkillTarget[]))
+          : detected;
   } else {
     // === Interactive TUI — scope → skill → subagent → channel order ===
     // 0. Scope (project vs global) — skipped when --global already forced it.
@@ -696,7 +702,12 @@ export async function runInstallSkills(
     pc.bold(`Skills (${skills.length}): `) +
       skills.map((s) => pc.cyan(s)).join(', ')
   );
-  if (canonicalAgents.length > 0) {
+  if (minimal) {
+    // --skills-only: sub-agents are intentionally skipped (minimal single-skill
+    // install). Clear BEFORE the summary so we never print agents we won't write.
+    canonicalAgents = [];
+    p.log.message(pc.bold('Agents: ') + pc.dim('skipped (--skills-only)'));
+  } else if (canonicalAgents.length > 0) {
     p.log.message(
       pc.bold(`Agents (${canonicalAgents.length}): `) +
         canonicalAgents.map((a) => pc.cyan(a.replace(/\.md$/, ''))).join(', ')
@@ -705,9 +716,6 @@ export async function runInstallSkills(
   p.log.message(
     pc.bold('Targets: ') + targets.map((t) => pc.cyan(t)).join(', ')
   );
-
-  // skills-only minimal install: drop sub-agents (data/hooks/settings gated below).
-  if (minimal) canonicalAgents = [];
 
   const results: InstallResult[] = [];
   for (const plan of plans) {
