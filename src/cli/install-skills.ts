@@ -245,6 +245,25 @@ function parseSkillChannels(skillMd: string): SkillTarget[] | null {
   return list.length > 0 ? list : null;
 }
 
+/**
+ * The agent channels a skill can actually install into: its declared
+ * `x-omd-channels` (if any), further narrowed to claude-code when the skill is
+ * multi-file — scripts/references need the folder layout only `.claude` provides
+ * (codex/opencode store a skill as a single flat .md). Used to keep target
+ * resolution honest so we don't list channels a skill would just be skipped for.
+ */
+function skillSupportedChannels(packageRoot: string, skill: string): SkillTarget[] {
+  const skillDir = join(packageRoot, 'skills', skill);
+  let allowed: SkillTarget[] =
+    parseSkillChannels(readFileSync(join(skillDir, 'SKILL.md'), 'utf8')) ??
+    (['claude-code', 'codex', 'opencode'] as SkillTarget[]);
+  const extras = readdirSync(skillDir).filter(
+    (n) => n !== 'SKILL.md' && !IGNORED_SKILL_ENTRIES.has(n)
+  );
+  if (extras.length > 0) allowed = allowed.filter((c) => c === 'claude-code');
+  return allowed;
+}
+
 function installOne(
   packageRoot: string,
   plan: InstallPlan,
@@ -598,6 +617,16 @@ export async function runInstallSkills(
               ? actuallyDetected
               : (['claude-code'] as SkillTarget[]))
           : detected;
+    // Narrow auto-resolved targets to channels the selected skills can actually
+    // install into (e.g. claude-design is claude-code only). Skipped when the
+    // user named channels explicitly via --agent — their choice is respected.
+    if (!opts.agents) {
+      const supported = new Set<SkillTarget>(
+        skills.flatMap((s) => skillSupportedChannels(packageRoot, s))
+      );
+      const narrowed = targets.filter((t) => supported.has(t));
+      if (narrowed.length > 0) targets = narrowed;
+    }
   } else {
     // === Interactive TUI — scope → skill → subagent → channel order ===
     // 0. Scope (project vs global) — skipped when --global already forced it.
