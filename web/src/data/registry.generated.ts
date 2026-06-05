@@ -16,6 +16,7 @@ export interface RefEntry {
   readonly primaryColor: string;
   readonly logo: { readonly type: 'favicon' | 'simpleicons' | 'github'; readonly slug: string };
   readonly verified: string;
+  readonly added?: string;
   readonly ds?: {
     readonly name: string;
     readonly url: string;

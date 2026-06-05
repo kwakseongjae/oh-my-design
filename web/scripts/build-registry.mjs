@@ -77,6 +77,9 @@ function validate(fm, file) {
   if (!fm.logo.slug || typeof fm.logo.slug !== 'string') fail(file, `logo.slug missing`);
   if (!/^#[0-9a-fA-F]{6}$/.test(fm.primary_color)) fail(file, `primary_color '${fm.primary_color}' not hex`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(fm.verified)) fail(file, `verified '${fm.verified}' not YYYY-MM-DD`);
+  // Optional `added` = the date this reference first landed (drives the time-windowed
+  // NEW badge). Distinct from `verified` (last re-checked), which bumps on re-audits.
+  if (fm.added !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(fm.added)) fail(file, `added '${fm.added}' not YYYY-MM-DD`);
   if (fm.ds) {
     if (typeof fm.ds !== 'object') fail(file, `ds must be object`);
     if (!fm.ds.name || !fm.ds.url || !fm.ds.type || !fm.ds.description) fail(file, `ds missing required subfields`);
@@ -107,6 +110,7 @@ for (const id of ids) {
     logo: { type: fm.logo.type, slug: fm.logo.slug },
     verified: fm.verified,
   };
+  if (fm.added) entry.added = fm.added;
   if (fm.ds) {
     entry.ds = {
       name: fm.ds.name,
@@ -139,6 +143,7 @@ const TYPES = `export interface RefEntry {
   readonly primaryColor: string;
   readonly logo: { readonly type: 'favicon' | 'simpleicons' | 'github'; readonly slug: string };
   readonly verified: string;
+  readonly added?: string;
   readonly ds?: {
     readonly name: string;
     readonly url: string;
@@ -154,7 +159,7 @@ const entryLines = entries.map(e => {
   const dsBlock = e.ds
     ? `, ds: { name: ${literal(e.ds.name)}, url: ${literal(e.ds.url)}, type: ${literal(e.ds.type)}, description: ${literal(e.ds.description)}${e.ds.ogImage ? `, ogImage: ${literal(e.ds.ogImage)}` : ''} }`
     : '';
-  return `  { id: ${literal(e.id)}, name: ${literal(e.name)}, displayName: ${literal(e.displayName)}, country: ${literal(e.country)}, category: ${literal(e.category)}, homepage: ${literal(e.homepage)}, primaryColor: ${literal(e.primaryColor)}, logo: { type: ${literal(e.logo.type)}, slug: ${literal(e.logo.slug)} }, verified: ${literal(e.verified)}${dsBlock} }`;
+  return `  { id: ${literal(e.id)}, name: ${literal(e.name)}, displayName: ${literal(e.displayName)}, country: ${literal(e.country)}, category: ${literal(e.category)}, homepage: ${literal(e.homepage)}, primaryColor: ${literal(e.primaryColor)}, logo: { type: ${literal(e.logo.type)}, slug: ${literal(e.logo.slug)} }, verified: ${literal(e.verified)}${e.added ? `, added: ${literal(e.added)}` : ''}${dsBlock} }`;
 }).join(',\n');
 
 const out = `${header}\n\n${TYPES}\n\nexport const REGISTRY: readonly RefEntry[] = [\n${entryLines},\n] as const;\n\nexport const REGISTRY_BY_ID: Readonly<Record<string, RefEntry>> = Object.freeze(\n  Object.fromEntries(REGISTRY.map(e => [e.id, e]))\n);\n\n/** Convenience helper — single homepage URL by id (replaces homepage-urls.ts). */\nexport function getHomepageUrl(id: string): string | null {\n  return REGISTRY_BY_ID[id]?.homepage ?? null;\n}\n`;
