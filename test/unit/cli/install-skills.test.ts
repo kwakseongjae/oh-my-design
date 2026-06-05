@@ -32,11 +32,11 @@ describe('install-skills', () => {
         `claude/${skill}`
       ).toBe(true);
       expect(
-        existsSync(join(root, '.codex/skills', skill, 'SKILL.md')),
+        existsSync(join(root, '.agents/skills', skill, 'SKILL.md')),
         `codex/${skill}`
       ).toBe(true);
       expect(
-        existsSync(join(root, '.opencode/agents', skill + '.md')),
+        existsSync(join(root, '.opencode/skills', skill, 'SKILL.md')),
         `opencode/${skill}`
       ).toBe(true);
     }
@@ -52,8 +52,8 @@ describe('install-skills', () => {
   it('respects --agents filter', async () => {
     await runInstallSkills({ dir: root, agents: ['claude-code'] });
     expect(existsSync(join(root, '.claude/skills'))).toBe(true);
-    expect(existsSync(join(root, '.codex/skills'))).toBe(false);
-    expect(existsSync(join(root, '.opencode/agents'))).toBe(false);
+    expect(existsSync(join(root, '.agents/skills'))).toBe(false);
+    expect(existsSync(join(root, '.opencode/skills'))).toBe(false);
   });
 
   it('is idempotent — second run reports unchanged', async () => {
@@ -91,7 +91,7 @@ describe('install-skills', () => {
     // Codex/OpenCode not installed → only Claude should get skills
     await runInstallSkills({ dir: root });
     expect(existsSync(join(root, '.claude/skills/omd-init/SKILL.md'))).toBe(true);
-    expect(existsSync(join(root, '.codex/skills'))).toBe(false);
-    expect(existsSync(join(root, '.opencode/agents'))).toBe(false);
+    expect(existsSync(join(root, '.agents/skills'))).toBe(false);
+    expect(existsSync(join(root, '.opencode/skills'))).toBe(false);
   });
 });

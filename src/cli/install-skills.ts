@@ -198,16 +198,22 @@ function planForTarget(projectRoot: string, target: SkillTarget): InstallPlan {
         layout: 'folder',
       };
     case 'codex':
+      // Official Codex skill discovery path is `.agents/skills/<name>/SKILL.md`
+      // (developers.openai.com/codex/skills) — NOT `.codex/skills`. Folder layout
+      // so multi-file skills (scripts/, references/) install + run.
       return {
         target,
-        destDir: join(projectRoot, '.codex', 'skills'),
+        destDir: join(projectRoot, '.agents', 'skills'),
         layout: 'folder',
       };
     case 'opencode':
+      // OpenCode loads `.opencode/skills/<name>/SKILL.md` (opencode.ai/docs/skills)
+      // as folder skills — the old flat `.opencode/agents/<name>.md` couldn't host
+      // a skill's scripts/references.
       return {
         target,
-        destDir: join(projectRoot, '.opencode', 'agents'),
-        layout: 'flat',
+        destDir: join(projectRoot, '.opencode', 'skills'),
+        layout: 'folder',
       };
   }
 }
@@ -246,22 +252,17 @@ function parseSkillChannels(skillMd: string): SkillTarget[] | null {
 }
 
 /**
- * The agent channels a skill can actually install into: its declared
- * `x-omd-channels` (if any), further narrowed to claude-code when the skill is
- * multi-file — scripts/references need the folder layout only `.claude` provides
- * (codex/opencode store a skill as a single flat .md). Used to keep target
- * resolution honest so we don't list channels a skill would just be skipped for.
+ * The agent channels a skill can install into: its declared `x-omd-channels`
+ * (if any), else all channels. All three channels now use folder layout
+ * (.claude/skills, .agents/skills, .opencode/skills) so multi-file skills with
+ * scripts/references install everywhere — the only restriction is what the skill
+ * itself declares (e.g. claude-design needs a browser-driving runtime).
  */
 function skillSupportedChannels(packageRoot: string, skill: string): SkillTarget[] {
-  const skillDir = join(packageRoot, 'skills', skill);
-  let allowed: SkillTarget[] =
-    parseSkillChannels(readFileSync(join(skillDir, 'SKILL.md'), 'utf8')) ??
-    (['claude-code', 'codex', 'opencode'] as SkillTarget[]);
-  const extras = readdirSync(skillDir).filter(
-    (n) => n !== 'SKILL.md' && !IGNORED_SKILL_ENTRIES.has(n)
+  return (
+    parseSkillChannels(readFileSync(join(packageRoot, 'skills', skill, 'SKILL.md'), 'utf8')) ??
+    (['claude-code', 'codex', 'opencode'] as SkillTarget[])
   );
-  if (extras.length > 0) allowed = allowed.filter((c) => c === 'claude-code');
-  return allowed;
 }
 
 function installOne(

@@ -6,6 +6,29 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.6.7 — 2026-06-05
+
+**Codex / OpenCode skills now install to their real discovery paths — and `claude-design` runs on all three channels.**
+
+- **Correct channel paths.** `install-skills` installed Codex skills to `.codex/skills/` and OpenCode skills to a flat `.opencode/agents/<name>.md`. Neither matches the agents' actual discovery rules, so those skills were effectively invisible. Now:
+  - **Codex → `.agents/skills/<name>/SKILL.md`** (official path per `developers.openai.com/codex/skills`).
+  - **OpenCode → `.opencode/skills/<name>/SKILL.md`** (folder skills per `opencode.ai/docs/skills`).
+  - Both are folder layouts, so multi-file skills install with their `scripts/` and `references/` intact.
+- **`claude-design` is no longer Claude-Code-only.** Its primary backend is Playwright (a `node`-only, agent-agnostic Chrome driver), so it works from Codex and OpenCode too. `x-omd-channels` now lists all three. The `claude-in-chrome` path remains a Claude-Code-only fallback.
+- **Note:** if you previously installed for Codex/OpenCode, the old `.codex/skills/` and `.opencode/agents/` files are now stale — re-run `install-skills` and delete the old copies. OpenCode also reads `~/.claude/skills/`, so a `--global` install already surfaces skills there.
+
+---
+
+## 1.6.4–1.6.6 — 2026-06-05
+
+**`install-skills` selection UX.**
+
+- `--skills-only` now actually shows agents as skipped (was listing all 16 in the summary).
+- Auto-resolved targets no longer blast all three ecosystems; they're narrowed to channels the selected skills support.
+- Scope / skills / sub-agents / channels resolve independently — passing `--skills` no longer suppresses the "where do I install" (channel) and scope prompts.
+
+---
+
 ## 1.6.3 — 2026-06-05
 
 **Project / global install scope for `install-skills`.**

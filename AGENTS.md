@@ -27,7 +27,7 @@ oh-my-design itself uses Claude Code skills + subagents for its design harness. 
 
 User-facing entry: **`/omd-harness <task>`** in Claude Code or Codex CLI.
 
-The harness runs entirely inside the host CLI session — no external API keys, no separate process. The skill at `.codex/skills/omd-harness/` (or `.claude/skills/omd-harness/` for Claude Code) handles bootstrapping and orchestration handoff.
+The harness runs entirely inside the host CLI session — no external API keys, no separate process. The skill at `.agents/skills/omd-harness/` (Codex) or `.claude/skills/omd-harness/` (Claude Code) handles bootstrapping and orchestration handoff.
 
 ### Entrypoint
 

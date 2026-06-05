@@ -11,10 +11,10 @@ description: |
   트리거: "/claude-design", "이 코드베이스를 클로드 디자인으로 옮겨줘",
   "코드베이스 분석해서 claude design에 전달", "랜딩 디자인 뽑아줘", "claude.ai/design에 보내줘",
   "클로드 디자인에 디자인 요청해줘", "이 레퍼런스로 디자인 만들어줘", "Claude Design에 시안 요청".
-x-omd-channels: claude-code
+x-omd-channels: claude-code codex opencode
 metadata:
   author: 곽성재
-  version: "2.0.0"
+  version: "2.1.0"
 ---
 
 # Claude Design 컨텍스트 이관 스킬 (v2)
@@ -156,6 +156,11 @@ python3 ~/.claude/skills/claude-design/scripts/gather_references.py --root "$PWD
 전에는 절대 전송하지 않는다(폼 제출/대리 전송 안전 규칙). 공개 공유는 여기서 켜지 않는다.
 
 ### STEP 5 — DRIVE: Playwright 드라이버 (★ 권장 백엔드)
+
+> **채널 호환:** 이 스킬은 claude-code · codex · opencode 모두에서 동작한다. Playwright 백엔드는
+> `node`만 있으면 되는 **에이전트 독립적** 경로이므로 codex/opencode에서도 그대로 쓴다. 단,
+> **STEP 5-FALLBACK(claude-in-chrome)은 Claude Code 전용**이라 codex/opencode에서는 사용 불가 —
+> 이 두 채널에서는 **Playwright가 사실상 필수**이고, 없으면 수동 핸드오프로 전환한다.
 
 claude.ai/design 구동의 **1순위 백엔드**. Playwright 가 **자체 Chrome 인스턴스를 CDP 로 직접
 구동**하므로 claude-in-chrome 의 **포그라운드 의존 버그가 없고**(클릭/스크린샷 안정), **전용
