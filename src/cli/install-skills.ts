@@ -579,14 +579,16 @@ export async function runInstallSkills(
       pc.dim(`  (${relative(process.cwd(), projectRoot) || '.'})`)
   );
 
-  // Resolve selection: --all flag, --skills/--agents/--agent filter, or interactive TUI.
-  // TUI runs only when stdin is a TTY and the corresponding flag isn't set.
+  // Each dimension (scope / skills / sub-agents / channels) is resolved
+  // independently: a CLI flag pins it; otherwise we prompt — but only when stdin
+  // is a TTY and --all wasn't passed. This is the key fix: `--skills X` or
+  // `--skills-only` no longer suppress the *channel* (where to install) prompt —
+  // they only pin the dimension they name.
   const isTTY = Boolean(process.stdin.isTTY && process.stdout.isTTY);
-  const nonInteractive =
-    opts.all || !isTTY || opts.skillsFilter || opts.agentsFilter || minimal;
+  const interactive = isTTY && !opts.all;
 
   const detected = autoDetectTargets(projectRoot);
-  // Real presence (not the all-3 fallback) — used purely for hint labels.
+  // Real presence (not the all-3 fallback) — used for hint labels + prompt defaults.
   const presence = detectInstalledAgents(projectRoot);
   const actuallyDetected: SkillTarget[] = [
     presence.claudeCode ? 'claude-code' : null,
@@ -594,127 +596,101 @@ export async function runInstallSkills(
     presence.opencode ? 'opencode' : null,
   ].filter((x): x is SkillTarget => x !== null);
 
+  // --- Scope (project vs global) — --global pins it, else ask / default project.
+  if (!opts.global && interactive) {
+    const scopeResult = await p.select({
+      message: 'Install scope · 어디에 설치할까요?',
+      options: [
+        { value: 'project', label: 'Project', hint: `${relative(process.cwd(), projectRoot) || '.'}/.claude/skills · 이 프로젝트만` },
+        { value: 'global', label: 'Global', hint: '~/.claude/skills · 모든 프로젝트 (skills + sub-agents, hooks/settings 제외)' },
+      ],
+      initialValue: 'project',
+    });
+    if (p.isCancel(scopeResult)) { p.cancel('Install cancelled.'); return 130; }
+    scope = scopeResult as 'project' | 'global';
+  }
+
+  // --- Skills — --skills pins it, else ask / default ALL.
   let skills: string[];
-  let canonicalAgents: string[];
-  let targets: SkillTarget[];
-
-  if (nonInteractive) {
-    // Non-interactive resolution
-    skills = opts.skillsFilter
-      ? allSkills.filter((s) => opts.skillsFilter!.includes(s))
-      : allSkills;
-    canonicalAgents = opts.agentsFilter
-      ? allAgents.filter((a) => opts.agentsFilter!.includes(a.replace(/\.md$/, '')))
-      : allAgents;
-    targets = opts.agents
-      ? opts.agents
-      : opts.all
-        ? (['claude-code', 'codex', 'opencode'] as SkillTarget[])
-        : minimal
-          ? // --skills-only: don't blast all 3 ecosystems. Use channels actually
-            // present, else just Claude Code. Override with --agent codex|opencode.
-            (actuallyDetected.length > 0
-              ? actuallyDetected
-              : (['claude-code'] as SkillTarget[]))
-          : detected;
-    // Narrow auto-resolved targets to channels the selected skills can actually
-    // install into (e.g. claude-design is claude-code only). Skipped when the
-    // user named channels explicitly via --agent — their choice is respected.
-    if (!opts.agents) {
-      const supported = new Set<SkillTarget>(
-        skills.flatMap((s) => skillSupportedChannels(packageRoot, s))
-      );
-      const narrowed = targets.filter((t) => supported.has(t));
-      if (narrowed.length > 0) targets = narrowed;
-    }
-  } else {
-    // === Interactive TUI — scope → skill → subagent → channel order ===
-    // 0. Scope (project vs global) — skipped when --global already forced it.
-    if (!opts.global) {
-      const scopeResult = await p.select({
-        message: 'Install scope · 어디에 설치할까요?',
-        options: [
-          { value: 'project', label: 'Project', hint: `${relative(process.cwd(), projectRoot) || '.'}/.claude/skills · 이 프로젝트만` },
-          { value: 'global', label: 'Global', hint: '~/.claude/skills · 모든 프로젝트 (skills + sub-agents, hooks/settings 제외)' },
-        ],
-        initialValue: 'project',
-      });
-      if (p.isCancel(scopeResult)) {
-        p.cancel('Install cancelled.');
-        return 130;
-      }
-      scope = scopeResult as 'project' | 'global';
-    }
-
-    // 1. Skills (default = ALL selected)
+  if (opts.skillsFilter) {
+    skills = allSkills.filter((s) => opts.skillsFilter!.includes(s));
+  } else if (interactive) {
     const skillResult = await p.multiselect({
-      message:
-        'Skills · space = 토글 · a = 전체 · enter = 확인 (default ALL)',
+      message: 'Skills · space = 토글 · a = 전체 · enter = 확인 (default ALL)',
       options: allSkills.map((s) => ({ value: s, label: s, hint: 'omd skill' })),
       initialValues: allSkills,
       required: true,
     });
-    if (p.isCancel(skillResult)) {
-      p.cancel('Install cancelled.');
-      return 130;
-    }
+    if (p.isCancel(skillResult)) { p.cancel('Install cancelled.'); return 130; }
     skills = skillResult as string[];
+  } else {
+    skills = allSkills;
+  }
 
-    // 2. Sub-agents (default = ALL selected)
-    if (allAgents.length > 0) {
-      const agentResult = await p.multiselect({
-        message:
-          'Sub-agents · space = 토글 · a = 전체 · enter = 확인 (default ALL)',
-        options: allAgents.map((a) => ({
-          value: a,
-          label: a.replace(/\.md$/, ''),
-          hint: 'subagent',
-        })),
-        initialValues: allAgents,
-        required: false,
-      });
-      if (p.isCancel(agentResult)) {
-        p.cancel('Install cancelled.');
-        return 130;
-      }
-      canonicalAgents = agentResult as string[];
-    } else {
-      canonicalAgents = [];
-    }
+  // --- Sub-agents — dropped by --skills-only, else --agents pins, else ask / ALL.
+  let canonicalAgents: string[];
+  if (minimal) {
+    canonicalAgents = [];
+  } else if (opts.agentsFilter) {
+    canonicalAgents = allAgents.filter((a) => opts.agentsFilter!.includes(a.replace(/\.md$/, '')));
+  } else if (interactive && allAgents.length > 0) {
+    const agentResult = await p.multiselect({
+      message: 'Sub-agents · space = 토글 · a = 전체 · enter = 확인 (default ALL)',
+      options: allAgents.map((a) => ({ value: a, label: a.replace(/\.md$/, ''), hint: 'subagent' })),
+      initialValues: allAgents,
+      required: false,
+    });
+    if (p.isCancel(agentResult)) { p.cancel('Install cancelled.'); return 130; }
+    canonicalAgents = agentResult as string[];
+  } else {
+    canonicalAgents = allAgents;
+  }
 
-    // 3. Agent channels (default = NONE — user explicitly picks)
-    if (opts.agents) {
-      targets = opts.agents;
-    } else {
-      const targetResult = await p.multiselect({
-        message:
-          'Agent channels · space = 토글 · enter = 확인 · 최소 1개 선택',
-        options: [
-          {
-            value: 'claude-code',
-            label: 'Claude Code',
-            hint: actuallyDetected.includes('claude-code') ? '.claude/ detected' : '',
-          },
-          {
-            value: 'codex',
-            label: 'Codex',
-            hint: actuallyDetected.includes('codex') ? '.codex/ detected' : '',
-          },
-          {
-            value: 'opencode',
-            label: 'OpenCode',
-            hint: actuallyDetected.includes('opencode') ? '.opencode/ detected' : '',
-          },
-        ] as { value: SkillTarget; label: string; hint?: string }[],
-        initialValues: [] as SkillTarget[],
-        required: true,
-      });
-      if (p.isCancel(targetResult)) {
-        p.cancel('Install cancelled.');
-        return 130;
-      }
-      targets = targetResult as SkillTarget[];
-    }
+  // --- Channels / targets — the "where do I install" choice.
+  // --agent pins it. Otherwise, in a TTY we ASK — limited to the channels the
+  // selected skills actually support (claude-design is claude-code only, so its
+  // picker shows just Claude Code). Non-TTY / --all falls back to auto-resolution.
+  const supportedTargets = ((): SkillTarget[] => {
+    const set = new Set<SkillTarget>(skills.flatMap((s) => skillSupportedChannels(packageRoot, s)));
+    return (['claude-code', 'codex', 'opencode'] as SkillTarget[]).filter((t) => set.has(t));
+  })();
+  const channelLabel: Record<SkillTarget, string> = {
+    'claude-code': 'Claude Code',
+    codex: 'Codex',
+    opencode: 'OpenCode',
+  };
+  const channelDir: Record<SkillTarget, string> = {
+    'claude-code': '.claude',
+    codex: '.codex',
+    opencode: '.opencode',
+  };
+  let targets: SkillTarget[];
+  if (opts.agents) {
+    targets = opts.agents;
+  } else if (interactive) {
+    const defaults = actuallyDetected.filter((t) => supportedTargets.includes(t));
+    const targetResult = await p.multiselect({
+      message: 'Agent channels · 어디에 설치할까요? · space = 토글 · enter = 확인',
+      options: supportedTargets.map((t) => ({
+        value: t,
+        label: channelLabel[t],
+        hint: actuallyDetected.includes(t) ? `${channelDir[t]}/ detected` : '',
+      })) as { value: SkillTarget; label: string; hint?: string }[],
+      initialValues: defaults.length > 0 ? defaults : supportedTargets,
+      required: true,
+    });
+    if (p.isCancel(targetResult)) { p.cancel('Install cancelled.'); return 130; }
+    targets = targetResult as SkillTarget[];
+  } else {
+    // Non-interactive (CI / piped / --all): resolve from flags + detection,
+    // narrowed to channels the selected skills support.
+    targets = opts.all
+      ? (['claude-code', 'codex', 'opencode'] as SkillTarget[])
+      : minimal
+        ? (actuallyDetected.length > 0 ? actuallyDetected : (['claude-code'] as SkillTarget[]))
+        : detected;
+    const narrowed = targets.filter((t) => supportedTargets.includes(t));
+    if (narrowed.length > 0) targets = narrowed;
   }
 
   // Global scope roots everything at the home dir, so plan dirs resolve to
