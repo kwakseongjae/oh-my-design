@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_at": "2026-06-01T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 170,
+  "count": 200,
   "items": [
     {
       "id": "17live",
@@ -4223,6 +4223,786 @@
       "signature_motion": "찜 heart: outline → filled brand pink with brief pulse; primary CTA uses pink-400 fill, darkening to pink-450/550 on hover/press.",
       "has_personas": true,
       "category_raw": "Commerce / Women's Fashion Discovery"
+    },
+    {
+      "id": "muji",
+      "primary_color_hex": "#7f0019",
+      "category": "Commerce",
+      "visual_theme": "MUJI — *Mujirushi Ryohin* (無印良品), \"no-brand quality goods\" — is the rare retailer whose entire visual identity is an argument *against* visual identity. Founded in 1980 as a product line inside the Seiyu supermarket chain, MUJI was a deliberate rejection of the brand-premium economics of late-bubble Japan: strip out the packaging, strip out the logo tax, keep the material quality. The website is t",
+      "voice_fingerprint": {
+        "register": "lifestyle",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Reserve MUJI Maroon (`#7f0019`) for the logo and rare brand accents — treat it as precious",
+        "Use `#333333` for text, never pure `#000000`",
+        "Default to square corners (0px); use 2px only on buttons, inputs, modals",
+        "Separate elements with whitespace and hairline `#dddddd` borders, not shadows"
+      ],
+      "signature_motion": "*Durations**:",
+      "has_personas": true,
+      "category_raw": "ecommerce"
+    },
+    {
+      "id": "uniqlo",
+      "primary_color_hex": "#ed1d24",
+      "category": "Commerce",
+      "visual_theme": "Uniqlo is the global apparel brand of Japan's Fast Retailing, and its design language is the visual translation of one idea: **LifeWear** -- simple, high-quality, everyday clothing \"Made for All.\" The interface mirrors the product philosophy with almost literal fidelity. Where the clothing is engineering disguised as plainness, the website is a precise, gridded, near-monochrome canvas where a sing",
+      "voice_fingerprint": {
+        "register": "lifestyle",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use Uniqlo Red (`#ed1d24`) only for brand, primary CTA, prices/sale, and errors -- ration it",
+        "Keep the canvas pure white (`#ffffff`) with near-black (`#1a1a1a`) text",
+        "Use hard corners -- radius 0px on images/tags/swatches, max 2px on buttons/inputs",
+        "Make the price a first-class element: 700 weight, tabular numerals, subtitle-sized"
+      ],
+      "signature_motion": "*Durations**:",
+      "has_personas": true,
+      "category_raw": "ecommerce"
+    },
+    {
+      "id": "zozotown",
+      "primary_color_hex": "#000000",
+      "category": "Commerce",
+      "visual_theme": "ZOZOTOWN is Japan's largest fashion commerce platform — a marketplace of 7,000+ brands operated by ZOZO, Inc. (formerly Start Today). Its design language is uncompromisingly editorial: a near-monochrome system of pure black (`#000000`) and pure white (`#ffffff`) that gets out of the way and lets garment photography carry every screen. Where Western fashion retailers reach for serif elegance or pas",
+      "voice_fingerprint": {
+        "register": "lifestyle",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Keep the canvas black-and-white so garment photography is the only color",
+        "Use `#000000` for primary buttons, headings, and the global header",
+        "Reserve `#e60012` strictly for price, SALE, discount %, and urgency signals",
+        "Use the JP Gothic system stack (Hiragino / Yu Gothic / Noto Sans JP)"
+      ],
+      "signature_motion": "*Durations** (named):",
+      "has_personas": true,
+      "category_raw": "ecommerce"
+    },
+    {
+      "id": "studio",
+      "primary_color_hex": "#007cff",
+      "category": "Design",
+      "visual_theme": "Studio is a no-code web design tool built for designers who refuse to compromise on craft. Its marketing site is the product's strongest argument: a near-monochrome, gallery-grade canvas where the work — beautiful portfolios, landing pages, agency sites — is the only color on the page. The atmosphere is that of a white-walled Tokyo design studio: pure white surfaces (`#ffffff`), barely-there off-w",
+      "voice_fingerprint": {
+        "register": "crafted-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Keep the interface monochrome — white, off-white `#f7f7f7`, and the grey ramp do the structural work.",
+        "Use `#007cff` only for links and interactive accents; let it stay rare and meaningful.",
+        "Reserve coral `#f84f65` strictly for errors and destructive feedback.",
+        "Use Inter at 400/500/600; build hierarchy from grey value and size, not heavy weights."
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "design-tools"
+    },
+    {
+      "id": "layerx",
+      "primary_color_hex": "#534DFF",
+      "category": "Fintech",
+      "visual_theme": "LayerX is a Tokyo-based \"compound startup\" whose mission — *すべての経済活動を、デジタル化する* (\"digitize all economic activity\") — sets the tone for a design language that is at once corporate-trustworthy and quietly futuristic. The brand's flagship is the **Bakuraku (バクラク)** suite, cloud back-office software for corporate spend, invoices, and expense management; the parent site (`layerx.co.jp`) is a refined mod",
+      "voice_fingerprint": {
+        "register": "b2b-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "finance-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use LayerX Indigo (`#534DFF`) for all primary interactive elements — CTAs, links, focus rings, active tabs.",
+        "Keep the canvas white and let whitespace carry the corporate, trustworthy feel.",
+        "Use the navy ink (`#152632`) for headings instead of pure black — softer, on-brand.",
+        "Pair indigo with sky blue (`#8DBBFF`) only for gradients, illustration, and decorative fills."
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
+      "id": "paypay",
+      "primary_color_hex": "#FF0033",
+      "category": "Fintech",
+      "visual_theme": "PayPay is Japan's dominant QR-code mobile wallet — the app that, almost single-handedly, dragged a famously cash-loving country into cashless payments. Its visual language is loud where Japanese fintech is traditionally quiet: a single, screaming **PayPay Red (`#FF0033`)** sits at the center of everything, and the entire interface orbits it. Where a legacy Japanese bank app whispers in navy and gr",
+      "voice_fingerprint": {
+        "register": "b2b-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "finance-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use PayPay Red (`#FF0033`) for the primary money action on every screen — it is the brand and the CTA",
+        "Keep surfaces white / gray-50 and let red carry all the energy",
+        "Use the system Japanese font stack (Hiragino / Noto Sans JP / Yu Gothic) — no webfont required",
+        "Make balances and amounts large and 700 weight — numbers are the emotional payload"
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
+      "id": "sansan",
+      "primary_color_hex": "#E60012",
+      "category": "Productivity",
+      "visual_theme": "Sansan is Japan's category-defining B2B \"business card\" cloud — the company that turned the ritual exchange of *meishi* into a structured, searchable contact graph and grew it into a sales-intelligence platform. The brand wears that heritage as a single, unmistakable mark: a clean white canvas (`#ffffff`) carrying near-black corporate text (`#1a1a1a`) interrupted by one decisive stroke of **Sansan",
+      "voice_fingerprint": {
+        "register": "b2b-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use Sansan Red (`#E60012`) for the single primary CTA and links — the \"red thread\"",
+        "Keep the canvas white-dominant with `#1a1a1a` corporate text",
+        "Apply the Hiragino / Noto Sans JP / Helvetica Neue stack with JP-aware line-height (1.7+)",
+        "Keep border-radius small (4–8px) for a precise, corporate feel"
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "productivity"
+    },
+    {
+      "id": "kintone",
+      "primary_color_hex": "#ef3f24",
+      "category": "Productivity",
+      "visual_theme": "kintone is Cybozu's no-code/low-code work platform — the tool a non-engineer reaches for when they want to turn a messy spreadsheet and an email thread into a real business application. Its design language reflects that mission: approachable, friendly, and unintimidating, but grounded enough that a sales team, a city government office, or a manufacturing floor all trust it with their daily operati",
+      "voice_fingerprint": {
+        "register": "b2b-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use KIN Red (`#ef3f24`) for the primary CTA and brand moments — it is the one hero color",
+        "Pair red with the named secondary hues (Shamrock, Cerulean, Aloe, Sunshine) for category color-coding",
+        "Use the Meiryo → Hiragino → Noto Sans JP stack for Japanese-first legibility",
+        "Keep body line-height generous (1.7) for dense Japanese text"
+      ],
+      "signature_motion": "*Durations** (named, not raw milliseconds):",
+      "has_personas": true,
+      "category_raw": "productivity"
+    },
+    {
+      "id": "ubie",
+      "primary_color_hex": "#3959cc",
+      "category": "Healthcare",
+      "visual_theme": "Ubie is a Japanese healthcare-AI company whose products — a consumer symptom-checker (ユビー) and clinical software for hospitals — must do something most health software fails at: feel reassuring to an anxious person and credible to a busy doctor, on the same screen. The interface answers this with a warm, optimistic clinical aesthetic. The canvas is pure white (`#ffffff`), text is a soft near-black",
+      "voice_fingerprint": {
+        "register": "reassuring",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use Ubie Blue (`#3959cc`) for interaction — links, primary buttons, focus, selection.",
+        "Use Ubie Green (`#27cc91`) for health, success, and positive progress.",
+        "Use warm near-black (`#32353a`) for text, never pure `#000000`.",
+        "Keep body text at 170% line-height for a calm, readable rhythm."
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "healthcare"
+    },
+    {
+      "id": "pixiv",
+      "primary_color_hex": "#0096fa",
+      "category": "Consumer",
+      "visual_theme": "pixiv is Japan's largest illustration and creative-work community — a place where millions of artists upload, tag, browse, and bookmark original and fan art. The interface exists to do one thing extraordinarily well: get vivid, full-bleed artwork in front of the viewer's eyes with as little chrome as possible. The product feels like a gallery wall, not a dashboard. The canvas is a near-white surfa",
+      "voice_fingerprint": {
+        "register": "approachable",
+        "sentence_length": "medium",
+        "metaphor_density": "medium",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use pixiv Blue (`#0096fa`) for all navigation, links, and primary CTAs",
+        "Reserve pixiv Red (`#ff4060`) for the bookmark heart and engagement signals",
+        "Keep UI chrome neutral grey so artwork supplies the color",
+        "Use the system-font stack with JP faces (Hiragino, Yu Gothic, Noto Sans JP)"
+      ],
+      "signature_motion": "*Durations** (named):",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
+      "id": "meta",
+      "primary_color_hex": "#0064E0",
+      "category": "Consumer",
+      "visual_theme": "Meta is the rebrand of Facebook, Inc. into a company organized around connection across the social graph, devices, and the immersive web. Where the old Facebook interface was a wall of utilitarian `#1877F2` blue, the Meta brand is built around motion, depth, and an optimistic gradient that flows from a deep, trustworthy blue (`#0064E0`) into a brighter, almost luminescent cerulean (`#0082FB`). The",
+      "voice_fingerprint": {
+        "register": "approachable",
+        "sentence_length": "medium",
+        "metaphor_density": "medium",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use the Meta Blue gradient (`#0064E0` → `#0082FB`) for brand hero moments and primary marketing CTAs",
+        "Use solid `#0064E0` for product-surface interactive elements (links, buttons, focus)",
+        "Use Optimistic Display for headlines ≥24px, Optimistic Text for body",
+        "Lift white cards off the `#F0F2F5` canvas with subtle ink-tinted shadows"
+      ],
+      "signature_motion": "*Durations** (named):",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
+      "id": "nike",
+      "primary_color_hex": "#111111",
+      "category": "Commerce",
+      "visual_theme": "Nike's digital storefront is athletic minimalism turned into a sales engine. The page opens on pure white (`#ffffff`) with near-black ink (`#111111`) and a single high-voltage accent — **Volt** (`#d8ff00` / commonly rendered `#cdfb40`) — held in reserve for moments of energy. The default mood is editorial and confident: enormous product photography sits on generous whitespace, headlines shout in c",
+      "voice_fingerprint": {
+        "register": "lifestyle",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Lead with black (`#111111`) and white (`#ffffff`) — they carry the brand",
+        "Use pill (9999px) buttons as the default interactive shape",
+        "Set headlines in condensed bold UPPERCASE, left-aligned, tight leading",
+        "Ration Volt (`#d8ff00`) for true energy moments — one spark per view"
+      ],
+      "signature_motion": "*Durations** (named):",
+      "has_personas": true,
+      "category_raw": "ecommerce"
+    },
+    {
+      "id": "starbucks",
+      "primary_color_hex": "#00704A",
+      "category": "Consumer",
+      "visual_theme": "Starbucks is the world's most recognizable coffee brand, and its digital surfaces translate the warmth of a \"third place\" — neither home nor work — into a calm, generous, premium-feeling interface. The defining gesture is the **House Green (`#00704A`)**: a deep, confident emerald that has become so iconic it functions as a category-defining color the way Tiffany blue defines luxury jewelry. It is ",
+      "voice_fingerprint": {
+        "register": "approachable",
+        "sentence_length": "medium",
+        "metaphor_density": "medium",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use House Green (`#00704a`) as the singular primary action and brand color",
+        "Use fully-rounded pill buttons (`border-radius: 9999px`) — it is the signature shape",
+        "Use warm off-white backgrounds (`#f1f8f4`, `#fafafa`) instead of clinical pure white",
+        "Let large, appetizing photography lead the layout; let copy live in negative space"
+      ],
+      "signature_motion": "*Durations** (named):",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
+      "id": "mastercard",
+      "primary_color_hex": "#EB001B",
+      "category": "Fintech",
+      "visual_theme": "Mastercard is one of the most recognized brands on earth, and its design language is built around a single, indelible asset: the two interlocking circles. Red (`#EB001B`) on the left, yellow-orange (`#F79E1B`) on the right, and a warm orange (`#FF5F00`) where they overlap. That mark — refined to its purest form in the 2016/2019 Pentagram redesign — is the entire visual thesis: two halves coming to",
+      "voice_fingerprint": {
+        "register": "b2b-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "finance-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Protect the interlocking-circles mark with full clear space; never crop or distort it",
+        "Use Mastercard Red (`#EB001B`) as an accent and brand moment, not a universal button fill",
+        "Lead with dark (`#141413`) primary CTAs; reserve red for the single hero action",
+        "Pair red and yellow only through the official overlap orange (`#FF5F00`) in gradients"
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
+      "id": "dell",
+      "primary_color_hex": "#0076CE",
+      "category": "Consumer",
+      "visual_theme": "Dell is one of the world's largest hardware makers, and its digital surfaces carry the weight of that scale: a global commerce engine selling laptops, monitors, servers, and workstations to consumers, gamers, small businesses, and Fortune 500 IT departments simultaneously. The interface has to feel **trustworthy, efficient, and calmly authoritative** -- this is where someone configures a $4,000 wo",
+      "voice_fingerprint": {
+        "register": "approachable",
+        "sentence_length": "medium",
+        "metaphor_density": "medium",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use Dell Blue (`#0076CE`) for all interactive elements -- buttons, links, focus rings, active tabs",
+        "Use Roboto across all UI in weights 400 / 500 / 700",
+        "Define cards and inputs with 1px `#DDE1E6` borders, adding shadow only on hover/overlay",
+        "Use tabular numerals for prices, quantities, and spec values"
+      ],
+      "signature_motion": "*Durations** (named, not raw milliseconds):",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
+      "id": "hp",
+      "primary_color_hex": "#0096D6",
+      "category": "Consumer",
+      "visual_theme": "HP is one of the founding companies of Silicon Valley, and its digital surfaces carry that legacy with a deliberate, engineered calm. The hp.com experience opens on bright white (`#ffffff`) with near-black text (`#212121`) and a single, unmistakable accent: **HP Blue** (`#0096D6`) — a clean, confident cyan-leaning blue that has been the brand's signature since 2012. The atmosphere is precise but a",
+      "voice_fingerprint": {
+        "register": "approachable",
+        "sentence_length": "medium",
+        "metaphor_density": "medium",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use HP Blue (`#0096D6`) for every interactive element — links, buttons, focus, toggles, active tabs",
+        "Keep foreground text black (`#212121`) or white only, per HP brand guidelines",
+        "Write headlines and labels in sentence case",
+        "Use Forma DJR with weights 400 / 600 / 700 only"
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
+      "id": "theverge",
+      "primary_color_hex": "#5200ff",
+      "category": "Media",
+      "visual_theme": "The Verge is Vox Media's flagship technology publication, and its 2022 in-house redesign is one of the most aggressively opinionated editorial identities on the modern web. Where most tech-news sites default to a polite white canvas with a blue accent, The Verge does the opposite: it opens on an almost-black canvas (`#131313`) and weaponizes two clashing, hyper-saturated accents — an acid \"jelly m",
+      "voice_fingerprint": {
+        "register": "editorial-bold",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use `#131313` as the canvas — almost-black, never pure `#000000`",
+        "Pair ultraviolet (`#5200ff`) and mint (`#3cffd0`) as a deliberate high-tension collision",
+        "Set headlines in Mānuka 900 at 60px+ — let type dominate",
+        "Use PolySans Mono UPPERCASE for kickers, tags, and timestamps"
+      ],
+      "signature_motion": "*Durations** (named):",
+      "has_personas": true,
+      "category_raw": "marketing"
+    },
+    {
+      "id": "wired",
+      "primary_color_hex": "#000000",
+      "category": "Media",
+      "visual_theme": "WIRED is the magazine of record for how technology shapes culture, the economy, and politics — and its visual identity is an editorial machine first, a website second. The brand reads as **uncompromising black-and-white print logic ported to the screen**: a pure white canvas (`#ffffff`), near-absolute black ink (`#000000`), and a single hot accent — WIRED's signature red — deployed surgically for ",
+      "voice_fingerprint": {
+        "register": "editorial-bold",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Build on pure black-on-white; treat color as a rationed resource",
+        "Use WIRED Red (`#e90c17`) only for links, kickers, flags, and conversion CTAs",
+        "Set headlines in the condensed display face, all-caps-leaning, tight leading",
+        "Set body in the humanist sans at 16–19px with 1.55+ line-height"
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "marketing"
+    },
+    {
+      "id": "openai",
+      "primary_color_hex": "#10a37f",
+      "category": "AI",
+      "visual_theme": "OpenAI's interface is the visual argument that powerful technology should feel quiet. The canvas is uncompromising near-black-on-white (`#0d0d0d` text on `#ffffff`), with the signature teal-green (`#10a37f`) reserved almost exclusively for the moments that matter — the active state, the brand mark, a confirmation. There is no gradient theater, no glassmorphism, no drop-shadow drama. The page reads",
+      "voice_fingerprint": {
+        "register": "clear-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use OpenAI Teal (`#10a37f`) sparingly — for the mark, active states, and key CTAs only",
+        "Default to near-black `#0d0d0d` on white `#ffffff`; design dark mode as a first-class peer",
+        "Use OpenAI Sans at 400/500/600; apply slight negative tracking on large headings",
+        "Define edges with 1px hairline borders (`#e5e5e5`) before reaching for shadow"
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "ai"
+    },
+    {
+      "id": "perplexity",
+      "primary_color_hex": "#20808D",
+      "category": "AI",
+      "visual_theme": "Perplexity is an AI answer engine, and its design is built around a single idea: get out of the way of the answer. Where most AI products lean on neon gradients, glassmorphism, and a cold sci-fi chrome, Perplexity went the opposite direction — a calm, editorial, almost Scandinavian aesthetic where the interface dissolves and the text takes the stage. The brand was crafted by studio **Smith & Dicti",
+      "voice_fingerprint": {
+        "register": "clear-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use Peacock teal (`#20808D`) as the single accent — buttons, links, focus rings, active states",
+        "Background with warm paper tones (`#FBFAF4` / `#FCFCF9`), not pure white",
+        "Use teal-tinted ink (`#091717`) for text, never `#000000`",
+        "Set answer body in FK Grotesk Neue at ~1.6 line-height for a reading experience"
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "ai"
+    },
+    {
+      "id": "duolingo",
+      "primary_color_hex": "#58CC02",
+      "category": "Education",
+      "visual_theme": "Duolingo is the world's most-downloaded education app, and its interface is engineered to feel less like studying and more like a game you can't put down. The brand's whole thesis is that learning should be *fun first* — and the visual language enforces that on every pixel. The signature **Feather Green** (`#58CC02`) is an almost impossibly bright, optimistic lime that reads as energy, growth, and",
+      "voice_fingerprint": {
+        "register": "playful",
+        "sentence_length": "medium",
+        "metaphor_density": "medium",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use Feather Green (`#58CC02`) for the single primary action on every screen",
+        "Give buttons the solid 3D lip (`0 4px 0` in a darker shade of the same color)",
+        "Use 2px outlines on cards instead of soft drop shadows",
+        "Set body/heading text in Eel (`#4B4B4B`), never pure black"
+      ],
+      "signature_motion": "*Durations** (named):",
+      "has_personas": true,
+      "category_raw": "education"
+    },
+    {
+      "id": "netflix",
+      "primary_color_hex": "#E50914",
+      "category": "Consumer",
+      "visual_theme": "Netflix is the streaming interface that taught the world what \"lean-back\" entertainment software should feel like — a dark, cinematic theater where the content is the only thing that glows. The product opens on near-black (`#141414`) and stays there. There is no white-canvas mode, no light theme in the consumer app; the darkness is not a setting, it is the brand. Against that black, full-bleed art",
+      "voice_fingerprint": {
+        "register": "approachable",
+        "sentence_length": "medium",
+        "metaphor_density": "medium",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Keep the canvas dark — `#141414` page, `#000000` player. Never a light theme in the consumer app.",
+        "Reserve Netflix Red (`#E50914`) for the logo, the primary marketing CTA, progress fills, and \"New\" markers.",
+        "Use white (`#FFFFFF`) as the primary in-app action color (the Play button); red is for acquisition.",
+        "Default body/metadata text to grey `#B3B3B3`; reserve white for the single most important label."
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
+      "id": "discord",
+      "primary_color_hex": "#5865F2",
+      "category": "Consumer",
+      "visual_theme": "Discord is the place where communities hang out, and its interface is built to feel like a clubhouse, not an enterprise tool. The product UI lives almost entirely in dark mode by default — deep slate-navy surfaces (`#313338` chat, `#2B2D31` channel sidebar, `#1E1F22` server rail) layered like physical panels, with one electric accent doing all the talking: **Blurple** (`#5865F2`). Blurple is a por",
+      "voice_fingerprint": {
+        "register": "approachable",
+        "sentence_length": "medium",
+        "metaphor_density": "medium",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use Blurple (`#5865F2`) for the single primary action and all interactive accents",
+        "Build the product UI dark-first with the three layered surfaces (`#1E1F22` / `#2B2D31` / `#313338`)",
+        "Use soft white (`#DBDEE1`) for body text, reserving pure white for headers/usernames",
+        "Use green (`#23A55A`) for toggles and online status, not Blurple"
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
+      "id": "slack",
+      "primary_color_hex": "#4A154B",
+      "category": "Productivity",
+      "visual_theme": "Slack is the work-messaging app that made enterprise software feel human. Where legacy collaboration tools shouted in cold corporate blues and grays, Slack leads with **Aubergine** (`#4A154B`) — a deep, warm eggplant purple that is unmistakably its own. It reads as serious-but-friendly: confident enough for a Fortune 500 IT department, warm enough that you don't dread opening it on a Monday. The a",
+      "voice_fingerprint": {
+        "register": "b2b-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use Aubergine (`#4A154B`) for brand chrome — sidebar, nav, identity surfaces",
+        "Use Green CTA (`#007A5A`) for the primary action; it pops against aubergine",
+        "Use Lato in the product UI; Larsseit for marketing headlines",
+        "Keep border-radius at 4px for buttons/inputs, 8px for cards/modals"
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "productivity"
+    },
+    {
+      "id": "cloudflare",
+      "primary_color_hex": "#F6821F",
+      "category": "Infrastructure",
+      "visual_theme": "Cloudflare is the connectivity-cloud company that sits in front of a meaningful slice of the internet — CDN, DNS, DDoS mitigation, Zero Trust, Workers edge compute. Its visual identity has one job: make planet-scale infrastructure feel *approachable and human* in a category that defaults to cold, blue, enterprise seriousness. The answer is a single, unmistakable move — **Cloudflare Orange (`#F6821",
+      "voice_fingerprint": {
+        "register": "technical-precise",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "general-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use Cloudflare Orange (`#F6821F`) for the primary CTA and key interactive accents — and almost nowhere else.",
+        "Set technical strings (IPs, DNS records, tokens, code) in JetBrains Mono / monospace.",
+        "Use status pills with green/red/yellow + a colored dot for health and proxy state.",
+        "Prefer 1px `#EDEDED` borders to define panels; keep shadows subtle and neutral."
+      ],
+      "signature_motion": "*Durations** (named, not raw ms):",
+      "has_personas": true,
+      "category_raw": "backend-devops"
+    },
+    {
+      "id": "github",
+      "primary_color_hex": "#0969da",
+      "category": "Developer Tools",
+      "visual_theme": "GitHub is the home of the world's software, and its interface reflects a deliberate engineering aesthetic: precise, legible, and quietly confident. The product surface is built on **Primer**, GitHub's open-source design system — a token-driven framework that has powered github.com for over a decade. The atmosphere is utilitarian without being cold; it is the visual language of a tool used eight ho",
+      "voice_fingerprint": {
+        "register": "technical-precise",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "developer"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use green (`#1f883d`) for the primary constructive action — this is GitHub's signature; commit/create/merge are green, never blue",
+        "Use blue (`#0969da`) for links and focus, not for primary buttons",
+        "Specify every component in both light and dark — dark mode is first-class, not optional",
+        "Use 1px borders (`#d1d9e0`) to structure content; reserve shadows for floating layers only"
+      ],
+      "signature_motion": "GitHub motion is **minimal and functional** — this is a productivity tool, and animation that delays a developer is a tax.",
+      "has_personas": true,
+      "category_raw": "developer-tools"
+    },
+    {
+      "id": "robinhood",
+      "primary_color_hex": "#00C805",
+      "category": "Fintech",
+      "visual_theme": "Robinhood is the American brokerage that turned investing from a gated, mahogany-paneled ritual into something that looks and feels like a consumer app. The brand's visual signature is a single, electric act of defiance: **Robinhood Green (`#00C805`)** — a bright, almost radioactive green that exists nowhere in legacy finance. Where incumbents (Fidelity green, Schwab blue, Vanguard maroon) chose c",
+      "voice_fingerprint": {
+        "register": "b2b-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "finance-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use Robinhood Green (`#00C805`) for the single most important action on a screen",
+        "Put dark text (`#0E0E0E`) on green buttons — never white, which fails contrast",
+        "Use tabular/mono figures for all prices, percentages, and portfolio values",
+        "Let green appear against dark (`#0E0E0E`) where it reads most electric"
+      ],
+      "signature_motion": "*Durations** (named, not raw milliseconds):",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
+      "id": "mercury",
+      "primary_color_hex": "#5266eb",
+      "category": "Fintech",
+      "visual_theme": "Mercury is banking built for startups, and its interface carries the quiet confidence of software made by people who care about craft. The brand refuses the two dominant fintech clichés at once: it is neither the cold institutional navy of legacy banks nor the candy-bright gradients of consumer neobanks. Instead, Mercury occupies a refined, almost cinematic middle ground — deep indigo-black canvas",
+      "voice_fingerprint": {
+        "register": "b2b-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "finance-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use indigo `#5266eb` for the single primary action per section — links, focus rings, the one CTA",
+        "Use the custom 480 weight for headings and key labels",
+        "Use `#ededf3` (off-white), never pure white, for text on dark canvases",
+        "Keep base radius at 4px for buttons, inputs, and badges"
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
+      "id": "ramp",
+      "primary_color_hex": "#E5FE54",
+      "category": "Fintech",
+      "visual_theme": "Ramp is the corporate-card and spend-management platform that made expense software feel like a premium productivity tool rather than an accounting chore. The brand's entire visual thesis is built on one audacious contrast: a near-black ink (`#1C1B17`) set against an electric lime-yellow (`#E5FE54`) so saturated it almost vibrates. This is not the cautious navy-and-grey of legacy fintech. It's con",
+      "voice_fingerprint": {
+        "register": "b2b-confident",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "finance-professional"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Use lime `#E5FE54` only for primary CTAs and savings/value signals — keep it rare and intentional",
+        "Pair lime fills with ink `#1C1B17` text, never white text (contrast + brand consistency)",
+        "Use ink `#1C1B17` (warm near-black), never pure `#000000`, for text and dark surfaces",
+        "Pair Burgess serif headlines with Lausanne sans body for editorial gravitas"
+      ],
+      "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
+      "id": "retool",
+      "primary_color_hex": "#3C3C3C",
+      "category": "Developer Tools",
+      "visual_theme": "Retool is the platform for building internal tools fast — the admin panels, dashboards, and operational apps that companies used to hand-code for months. Its visual identity is unapologetically built *for developers*, and that audience defines everything: the brand site reads like a well-organized IDE, not a consumer landing page. The dominant atmosphere is **dark, structural, and instrumented** —",
+      "voice_fingerprint": {
+        "register": "technical-precise",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "developer"
+      },
+      "tone_keywords": [
+        "clear",
+        "confident",
+        "consistent"
+      ],
+      "antipatterns": [
+        "Default to the dark canvas (`#1A1A1A`) for product/tool surfaces; use Green White (`#E9EBDF`) for marketing/light",
+        "Spend Burnt Sienna (`#E0613A`) sparingly — one accented action per view",
+        "Render *values* (IDs, results, env vars, table data) in IBM Plex Mono; render *labels* in Inter",
+        "Use tabular numerals in every table and metric"
+      ],
+      "signature_motion": "*Durations** (named):",
+      "has_personas": true,
+      "category_raw": "developer-tools"
     }
   ]
 }
