@@ -37,6 +37,8 @@ Then restart your agent (Cmd+Q in Claude Code, then relaunch) so the new skills 
 
 That is the only CLI command you will run. Everything else is natural language to your agent.
 
+The installer asks **where** to install: **Project** (`./.claude/skills` — this project only, the default) or **Global** (`~/.claude/skills` — every project; skills + sub-agents, leaves your global hooks/settings untouched). Skip the prompt with `--global` for the user-level install.
+
 ## Your first 60 seconds
 
 This is the whole point: one prompt turns into a `DESIGN.md` your agent remembers across every future session.
@@ -105,6 +107,8 @@ Install it on its own, with none of the omd toolchain:
 
 ```bash
 npx oh-my-design-cli install-skills --skills claude-design --agent claude-code --skills-only
+# add --global to install once for EVERY project (~/.claude/skills) instead of this one:
+npx oh-my-design-cli install-skills --skills claude-design --agent claude-code --skills-only --global
 ```
 
 Then restart Claude Code and run `/claude-design` (or just ask: "generate a design for this landing page"). Requirements: Claude Code (it needs Chrome automation + `python3` + a global `playwright`), and a one-time claude.ai login in the window the skill opens. Channel-restricted via `x-omd-channels` — Codex/OpenCode targets are skipped.

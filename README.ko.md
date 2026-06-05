@@ -205,9 +205,11 @@ omd 툴체인 없이 단독 설치:
 
 ```bash
 npx oh-my-design-cli install-skills --skills claude-design --agent claude-code --skills-only
+# 모든 프로젝트에서 한 번만 쓰려면 --global (이 프로젝트 대신 ~/.claude/skills 에 설치):
+npx oh-my-design-cli install-skills --skills claude-design --agent claude-code --skills-only --global
 ```
 
-Claude Code 재시작 후 `/claude-design` (또는 "이 랜딩 디자인 만들어줘"처럼 자연어로). 요구사항: Claude Code(Chrome 자동화 + `python3` + 전역 `playwright` 필요), 스킬이 여는 창에서 claude.ai 1회 로그인. `x-omd-channels` 로 채널 제한 — Codex/OpenCode 타깃은 건너뜁니다.
+(설치 시 **스코프 선택** — Project `./.claude/skills`(기본) vs Global `~/.claude/skills`(모든 프로젝트, hooks/settings는 안 건드림). `--global` 로 프롬프트 생략.) Claude Code 재시작 후 `/claude-design` (또는 "이 랜딩 디자인 만들어줘"처럼 자연어로). 요구사항: Claude Code(Chrome 자동화 + `python3` + 전역 `playwright` 필요), 스킬이 여는 창에서 claude.ai 1회 로그인. `x-omd-channels` 로 채널 제한 — Codex/OpenCode 타깃은 건너뜁니다.
 
 ## 107개 지원 레퍼런스
 

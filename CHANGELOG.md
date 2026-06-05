@@ -6,6 +6,14 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.6.3 — 2026-06-05
+
+**Project / global install scope for `install-skills`.**
+
+- **Install scope: project or global** — `install-skills` now asks where to install (or pass `--global`): **Project** (`./.claude/skills`, the default) or **Global** (`~/.claude/skills`, available in every project). Global writes skills + sub-agents (+ data) to the user-level dir and deliberately leaves your global hooks/`settings.json` untouched — ideal for using `claude-design` everywhere without per-project installs.
+
+---
+
 ## 1.6.2 — 2026-06-05
 
 **New bundled skill `claude-design` (terminal → claude.ai/design), single-skill install via `--skills-only`, and channel-restricted skills.**

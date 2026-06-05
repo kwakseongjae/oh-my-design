@@ -9,6 +9,7 @@ import {
   cpSync,
 } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
+import { homedir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { detectInstalledAgents } from '../core/agent-detect.js';
 
@@ -29,6 +30,10 @@ export interface InstallSkillsOptions {
   /** Minimal install: only the named skill files — skip sub-agents, data files,
    *  hooks, and settings.json. Ideal for shipping a single standalone skill. */
   skillsOnly?: boolean;
+  /** Install to the user-level dir (~/.claude/skills) instead of this project.
+   *  Writes skills + sub-agents (+ data); never touches global hooks/settings.
+   *  When unset and interactive, the TUI asks project-vs-global. */
+  global?: boolean;
 }
 
 interface InstallPlan {
@@ -545,6 +550,10 @@ export async function runInstallSkills(
 
   const force = opts.force ?? false;
   const minimal = opts.skillsOnly === true;
+  // Install scope: 'project' (<cwd>/.claude/…) or 'global' (~/.claude/…). --global
+  // forces it; otherwise the interactive TUI asks. Global writes skills + sub-agents
+  // (+ data) to the user-level dir but never touches global hooks/settings.json.
+  let scope: 'project' | 'global' = opts.global ? 'global' : 'project';
 
   p.intro(
     pc.bold('omd install-skills') +
@@ -584,7 +593,24 @@ export async function runInstallSkills(
         ? (['claude-code', 'codex', 'opencode'] as SkillTarget[])
         : detected;
   } else {
-    // === Interactive TUI — skill → subagent → channel order ===
+    // === Interactive TUI — scope → skill → subagent → channel order ===
+    // 0. Scope (project vs global) — skipped when --global already forced it.
+    if (!opts.global) {
+      const scopeResult = await p.select({
+        message: 'Install scope · 어디에 설치할까요?',
+        options: [
+          { value: 'project', label: 'Project', hint: `${relative(process.cwd(), projectRoot) || '.'}/.claude/skills · 이 프로젝트만` },
+          { value: 'global', label: 'Global', hint: '~/.claude/skills · 모든 프로젝트 (skills + sub-agents, hooks/settings 제외)' },
+        ],
+        initialValue: 'project',
+      });
+      if (p.isCancel(scopeResult)) {
+        p.cancel('Install cancelled.');
+        return 130;
+      }
+      scope = scopeResult as 'project' | 'global';
+    }
+
     // 1. Skills (default = ALL selected)
     const skillResult = await p.multiselect({
       message:
@@ -656,8 +682,16 @@ export async function runInstallSkills(
     }
   }
 
-  const plans = targets.map((t) => planForTarget(projectRoot, t));
+  // Global scope roots everything at the home dir, so plan dirs resolve to
+  // ~/.claude/skills, ~/.claude/agents, etc. Project scope uses cwd (or --dir).
+  const installRoot = scope === 'global' ? homedir() : projectRoot;
+  const plans = targets.map((t) => planForTarget(installRoot, t));
 
+  p.log.message(
+    pc.bold('Scope: ') +
+      pc.cyan(scope) +
+      pc.dim(scope === 'global' ? '  (~/.claude)' : `  (${relative(process.cwd(), projectRoot) || '.'})`)
+  );
   p.log.message(
     pc.bold(`Skills (${skills.length}): `) +
       skills.map((s) => pc.cyan(s)).join(', ')
@@ -688,11 +722,11 @@ export async function runInstallSkills(
   for (const target of targets) {
     if (target === 'claude-code') {
       for (const filename of canonicalAgents) {
-        results.push(installAgentFile(packageRoot, projectRoot, 'claude', filename, force));
+        results.push(installAgentFile(packageRoot, installRoot, 'claude', filename, force));
       }
     } else if (target === 'codex') {
       for (const filename of canonicalAgents) {
-        results.push(installAgentFile(packageRoot, projectRoot, 'codex', filename, force));
+        results.push(installAgentFile(packageRoot, installRoot, 'codex', filename, force));
       }
     }
     // OpenCode currently has no agent-definition channel — skills only.
@@ -700,8 +734,8 @@ export async function runInstallSkills(
 
   if (!minimal) {
   // Ship the read-only data assets (reference fingerprints, controlled vocab,
-  // human-readable tag matrix, opt-out corpus) into the project so skills + hooks
-  // can run entirely on the host CLI's own model — no external API keys.
+  // human-readable tag matrix, opt-out corpus) so skills + hooks can run entirely
+  // on the host CLI's own model — no external API keys.
   const dataFiles = [
     'reference-fingerprints.json',
     'reference-tags.md',
@@ -712,33 +746,34 @@ export async function runInstallSkills(
   for (const target of targets) {
     if (target === 'claude-code') {
       for (const dataFile of dataFiles) {
-        results.push(installDataFile(packageRoot, projectRoot, '.claude', dataFile, force));
+        results.push(installDataFile(packageRoot, installRoot, '.claude', dataFile, force));
       }
     } else if (target === 'codex') {
       for (const dataFile of dataFiles) {
-        results.push(installDataFile(packageRoot, projectRoot, '.codex', dataFile, force));
+        results.push(installDataFile(packageRoot, installRoot, '.codex', dataFile, force));
       }
     }
   }
 
-  // Install hooks (Claude Code only — Codex / OpenCode have separate hook systems)
-  if (targets.includes('claude-code')) {
+  // Hooks + settings.json are PROJECT-SCOPED only — a global install must not
+  // mutate the user's global Claude config / make hooks fire in every project.
+  if (scope === 'project' && targets.includes('claude-code')) {
     for (const hookFile of [
       'skill-activation.cjs',
       'session-state-loader.cjs',
       'post-edit-watch.cjs',
       'session-end-foldin.cjs',
     ]) {
-      results.push(installHookFile(packageRoot, projectRoot, hookFile, force));
+      results.push(installHookFile(packageRoot, installRoot, hookFile, force));
     }
     // settings.json (with merge, never clobber user)
-    results.push(installSettingsJson(packageRoot, projectRoot, force));
+    results.push(installSettingsJson(packageRoot, installRoot, force));
   }
   } // !minimal — skills-only skips data files, hooks, and settings.json
 
   p.log.message(pc.bold('\nResults:'));
   for (const r of results) {
-    const rel = relative(projectRoot, r.destPath);
+    const rel = relative(installRoot, r.destPath);
     p.log.message(
       `  ${STATUS_LABEL[r.status]}  ${pc.dim(r.target.padEnd(12))} ${rel}`
     );
@@ -776,7 +811,7 @@ export async function runInstallSkills(
     }
     p.outro(
       pc.green(
-        `Done. Installed ${skills.map((s) => pc.bold(s)).join(', ')} for ${targets.join(', ')}.`
+        `Done. Installed ${skills.map((s) => pc.bold(s)).join(', ')} ${scope === 'global' ? 'globally (~/.claude/skills)' : `for ${targets.join(', ')}`}.`
       ) +
         pc.dim('  →  restart your agent, then use the skill (e.g. ') +
         pc.cyan('/claude-design') +
@@ -808,10 +843,10 @@ export async function runInstallSkills(
 
   // Counts derived from what was actually resolved/installed — never hardcoded,
   // so the outro can't drift from the real skill/agent/hook set (or the README).
-  const hookCount = targets.includes('claude-code') ? 4 : 0;
+  const hookCount = scope === 'project' && targets.includes('claude-code') ? 4 : 0;
   p.outro(
     pc.green(
-      `Done. ${skills.length} skills · ${canonicalAgents.length} sub-agents · ${hookCount} hooks installed (${writtenCount} files).`,
+      `Done. ${skills.length} skills · ${canonicalAgents.length} sub-agents · ${hookCount} hooks installed (${writtenCount} files)${scope === 'global' ? ' globally (~/.claude)' : ''}.`,
     ),
   );
   return 0;
