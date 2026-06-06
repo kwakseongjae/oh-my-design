@@ -6,8 +6,8 @@ category: consumer-tech
 homepage: "https://about.meta.com"
 primary_color: "#0064E0"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=meta.com&sz=128"
+  type: simpleicons
+  slug: "meta"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"

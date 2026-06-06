@@ -6,8 +6,8 @@ category: consumer-tech
 homepage: "https://www.hp.com"
 primary_color: "#0096D6"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=hp.com&sz=128"
+  type: simpleicons
+  slug: "hp"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"

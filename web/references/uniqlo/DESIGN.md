@@ -6,8 +6,8 @@ category: ecommerce
 homepage: "https://www.uniqlo.com"
 primary_color: "#ed1d24"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=uniqlo.com&sz=128"
+  type: simpleicons
+  slug: "uniqlo"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"

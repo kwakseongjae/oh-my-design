@@ -6,8 +6,8 @@ category: ai
 homepage: "https://www.perplexity.ai"
 primary_color: "#20808D"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128"
+  type: simpleicons
+  slug: "perplexity"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"

@@ -7,7 +7,7 @@ homepage: "https://www.fugle.tw"
 primary_color: "#f4af1c"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=fugle.tw&sz=256"
+  slug: "https://www.fugle.tw/images/favicon.ico"
 verified: "2026-06-03"
 omd: "0.1"
 ---

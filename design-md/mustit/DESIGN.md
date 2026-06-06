@@ -7,7 +7,7 @@ homepage: "https://www.mustit.co.kr"
 primary_color: "#D00000"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=mustit.co.kr&sz=256"
+  slug: "https://static-ux.mustit.co.kr/img/front/favicon.ico"
 verified: "2026-06-03"
 omd: "0.1"
 ---

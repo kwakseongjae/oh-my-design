@@ -6,8 +6,8 @@ category: ecommerce
 homepage: "https://www.coupang.com"
 primary_color: "#000000"
 logo:
-  type: simpleicons
-  slug: coupang
+  type: favicon
+  slug: "https://www.coupang.com/favicon.ico"
 verified: "2026-05-15"
 omd: "0.1"
 ds:

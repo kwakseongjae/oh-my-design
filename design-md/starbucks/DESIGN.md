@@ -6,8 +6,8 @@ category: consumer-tech
 homepage: "https://www.starbucks.com"
 primary_color: "#00704A"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=starbucks.com&sz=128"
+  type: simpleicons
+  slug: "starbucks"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"

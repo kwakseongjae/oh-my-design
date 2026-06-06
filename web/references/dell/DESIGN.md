@@ -6,8 +6,8 @@ category: consumer-tech
 homepage: "https://www.dell.com"
 primary_color: "#0076CE"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=dell.com&sz=128"
+  type: simpleicons
+  slug: "dell"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"

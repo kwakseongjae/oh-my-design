@@ -6,8 +6,8 @@ category: education
 homepage: "https://www.duolingo.com"
 primary_color: "#58CC02"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=duolingo.com&sz=128"
+  type: simpleicons
+  slug: "duolingo"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"

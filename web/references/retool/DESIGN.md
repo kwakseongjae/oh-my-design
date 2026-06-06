@@ -6,8 +6,8 @@ category: developer-tools
 homepage: "https://retool.com"
 primary_color: "#3C3C3C"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=retool.com&sz=128"
+  type: simpleicons
+  slug: "retool"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"

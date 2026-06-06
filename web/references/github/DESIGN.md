@@ -6,8 +6,8 @@ category: developer-tools
 homepage: "https://github.com"
 primary_color: "#0969da"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=github.com&sz=128"
+  type: simpleicons
+  slug: "github"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"

@@ -7,7 +7,7 @@ homepage: "https://www.wavve.com"
 primary_color: "#1351F9"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=wavve.com&sz=128"
+  slug: "https://www.wavve.com/favicon.ico"
 verified: "2026-05-27"
 omd: "0.1"
 ---

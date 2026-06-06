@@ -7,7 +7,7 @@ homepage: "https://www.kdan.com"
 primary_color: "#00DC87"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=kdan.com&sz=128"
+  slug: "https://www.kdan.com/apple-touch-icon-152x152.png"
 verified: "2026-06-01"
 omd: "0.1"
 ds:

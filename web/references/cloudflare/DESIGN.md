@@ -6,8 +6,8 @@ category: backend-devops
 homepage: "https://www.cloudflare.com"
 primary_color: "#F6821F"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=cloudflare.com&sz=128"
+  type: simpleicons
+  slug: "cloudflare"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"

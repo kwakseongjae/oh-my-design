@@ -7,7 +7,7 @@ homepage: "https://www.jkopay.com"
 primary_color: "#C9191D"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=jkopay.com&sz=256"
+  slug: "https://www.jkopay.com/application/favicon.ico"
 verified: "2026-06-03"
 omd: "0.1"
 ---

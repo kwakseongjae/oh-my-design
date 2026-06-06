@@ -7,7 +7,7 @@ homepage: "https://whoscall.com"
 primary_color: "#0CD25F"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=whoscall.com&sz=128"
+  slug: "https://cdn.prod.website-files.com/6824b7a0497f20e292c20ff9/68ac49dd7f01530f6ef06b10_Webclip.png"
 verified: "2026-06-01"
 omd: "0.1"
 ds:

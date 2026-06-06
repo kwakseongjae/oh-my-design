@@ -6,8 +6,8 @@ category: ecommerce
 homepage: "https://www.nike.com"
 primary_color: "#111111"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=nike.com&sz=128"
+  type: simpleicons
+  slug: "nike"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"

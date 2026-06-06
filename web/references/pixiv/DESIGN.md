@@ -6,8 +6,8 @@ category: consumer-tech
 homepage: "https://www.pixiv.net"
 primary_color: "#0096fa"
 logo:
-  type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=pixiv.net&sz=128"
+  type: simpleicons
+  slug: "pixiv"
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
