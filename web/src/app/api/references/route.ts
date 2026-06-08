@@ -107,8 +107,8 @@ export async function GET() {
         name: e.displayName,
         category: CATEGORY_LABELS[e.category] || e.category,
         country: COUNTRY_LABELS[e.country] || e.country,
-        primaryColor: e.tokens?.color?.primary || extractPrimaryColor(md, e.primaryColor),
-        background: e.tokens?.color?.background || extractBackground(md),
+        primaryColor: e.tokens?.colors?.primary || e.tokens?.color?.primary || extractPrimaryColor(md, e.primaryColor),
+        background: e.tokens?.colors?.canvas || e.tokens?.colors?.background || e.tokens?.color?.background || extractBackground(md),
         hot: hotIds.has(e.id),
         tokens: e.tokens ?? null,
       };
