@@ -10,6 +10,57 @@ logo:
   slug: caldotcom
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = prose Charcoal #242424 (signature near-black CTA/heading); primary_color frontmatter #111827 is a catalog approximation. Brand is intentionally grayscale — no accent color."
+  colors:
+    primary: "#242424"
+    primary-hover: "#111111"
+    brand: "#242424"
+    canvas: "#ffffff"
+    foreground: "#242424"
+    deep-text: "#111111"
+    muted: "#898989"
+    on-primary: "#ffffff"
+    surface-alt: "#f5f5f5"
+    link: "#0099ff"
+    link-default: "#0000ee"
+    black: "#000000"
+    focus-ring: "#3b82f6"
+  typography:
+    family: { sans: "Cal Sans", body: "Inter", mono: "Roboto Mono" }
+    display-hero:     { size: 64, weight: 600, lineHeight: 1.10, tracking: 0, use: "Cal Sans hero, maximum impact, tight default spacing" }
+    section-heading:  { size: 48, weight: 600, lineHeight: 1.10, tracking: 0, use: "Cal Sans large section titles" }
+    feature-heading:  { size: 24, weight: 600, lineHeight: 1.30, tracking: 0, use: "Cal Sans feature block headlines" }
+    subheading:       { size: 20, weight: 600, lineHeight: 1.20, tracking: 0.2, use: "Cal Sans sub-head, positive spacing at smaller size" }
+    subheading-alt:   { size: 20, weight: 600, lineHeight: 1.50, tracking: 0, use: "Cal Sans relaxed line-height variant" }
+    card-title:       { size: 16, weight: 600, lineHeight: 1.10, tracking: 0, use: "Cal Sans smallest usage, card titles" }
+    caption-label:    { size: 12, weight: 600, lineHeight: 1.50, tracking: 0, use: "Cal Sans small labels" }
+    body-light:       { size: 18, weight: 300, lineHeight: 1.30, tracking: -0.2, use: "Cal Sans UI Light body intro text" }
+    body-light-std:   { size: 16, weight: 300, lineHeight: 1.50, tracking: -0.2, use: "Cal Sans UI Light body text" }
+    caption-light:    { size: 14, weight: 300, lineHeight: 1.40, tracking: -0.2, use: "Cal Sans UI Light captions and descriptions" }
+    ui-label:         { size: 16, weight: 600, lineHeight: 1.00, tracking: 0, use: "Inter UI buttons and nav labels" }
+    caption-inter:    { size: 14, weight: 500, lineHeight: 1.14, tracking: 0, use: "Inter small UI text" }
+    micro:            { size: 12, weight: 500, lineHeight: 1.00, tracking: 0, use: "Inter smallest text" }
+    code:             { size: 14, weight: 600, lineHeight: 1.00, tracking: 0, use: "Roboto Mono code snippets, technical text" }
+    body-matter:      { size: 14, weight: 400, lineHeight: 1.14, tracking: 0, use: "Matter Regular alternate body text (product UI)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 28, section: 80, section-lg: 96 }
+  rounded: { xs: 2, sm: 4, base: 6, md: 8, lg: 12, xl: 16, full: 9999 }
+  shadow:
+    inset: "rgba(0,0,0,0.16) 0px 1px 1.9px 0px inset"
+    soft: "rgba(34,42,53,0.05) 0px 4px 8px"
+    ring-soft: "rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px 0px"
+    inset-highlight: "rgba(255,255,255,0.15) 0px 2px 0px inset"
+  components:
+    button-primary: "Charcoal #242424 fill, white text, 8px radius, 12px 20px padding, Inter 16/600, hover opacity 0.7"
+    button-ghost: "white fill, #242424 text, 8px radius, ring-soft shadow as border (no CSS border)"
+    button-pill: "Charcoal #242424 fill, white text, 9999px radius, 8px 16px padding"
+    card: "white surface, 8px radius, 16px 24px padding, ring-soft shadow (ring border + diffused + contact)"
+    badge-pill: "Charcoal #242424 fill, white text, 9999px radius, Cal Sans 12/600"
+    badge-default: "#f5f5f5 fill, #242424 text, 8px radius, Cal Sans 12/600"
+    input: "white fill, #242424 text, 1px solid rgb(118,118,118) border, 8px radius, 8px 12px padding"
+    nav: "white/transparent bg, Cal Sans links at #111111, dark primary CTA, sticky on scroll"
 ---
 
 # Design System Inspiration of Cal.com

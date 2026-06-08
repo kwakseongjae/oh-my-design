@@ -10,6 +10,42 @@ logo:
   slug: bmw
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = live signature interactive blue --site-context-highlight-color (#1c69d4); differs from primary_color frontmatter (#0066b1, BMW roundel marketing blue)"
+  colors:
+    primary: "#1c69d4"
+    primary-hover: "#0653b6"
+    brand: "#0066b1"
+    canvas: "#ffffff"
+    foreground: "#262626"
+    muted: "#757575"
+    on-primary: "#ffffff"
+    focus: "#0653b6"
+    surface: "#ffffff"
+    dark-surface: "#262626"
+    tertiary: "#bbbbbb"
+  typography:
+    family: { sans: "BMWTypeNextLatin, Helvetica, Arial, Hiragino Kaku Gothic ProN, Hiragino Sans, Meiryo", mono: "monospace" }
+    display-hero:    { size: 60, weight: 300, lineHeight: 1.30, use: "Uppercase hero display, whispered authority" }
+    section-heading: { size: 32, weight: 400, lineHeight: 1.30, use: "Major section titles" }
+    nav-emphasis:    { size: 18, weight: 900, lineHeight: 1.30, use: "Navigation bold items, stark authority" }
+    body:            { size: 16, weight: 400, lineHeight: 1.15, use: "Standard body text" }
+    button-bold:     { size: 16, weight: 700, lineHeight: 1.20, use: "CTA buttons" }
+    button:          { size: 16, weight: 400, lineHeight: 1.15, use: "Standard buttons" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 60 }
+  rounded: { sm: 0, md: 0, lg: 0, full: 0 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: "transparent fill, white text, 1px white border, 0px radius, 16px/700 — primary CTA on dark/hero surfaces"
+    button-secondary: "transparent fill, #262626 text + 1px #262626 border, 0px radius, 16px/400 — light surfaces"
+    button-highlight: "#1c69d4 fill, white text, 0px radius, hover #0653b6 — BMW Blue CTA"
+    input: "white bg, #262626 text + 1px #262626 border, 0px radius, focus border #0653b6"
+    card: "white surface, 0px radius, 24px padding, no border — sharp rectangular"
+    dark-hero-container: "#262626 (or full-bleed photography), white text, 0px radius, edge-to-edge"
+    badge: "#262626 bg, white text, 0px radius, 12px/700"
 ---
 
 # Design System Inspiration of BMW

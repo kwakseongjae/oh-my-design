@@ -10,6 +10,43 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=bithumb.com&sz=128"
 verified: "2026-06-01"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary #1C2028 is the measured dominant structural near-black (matches primary_color); bronze #543E35 is the rebrand CTA accent, not the structural primary. Trading red/blue follow Korea convention (red=up, blue=down)."
+  colors:
+    primary: "#1C2028"
+    brand: "#543E35"
+    canvas: "#1C2028"
+    on-primary: "#FFFFFF"
+    cta-text: "#4F3327"
+    cta-surface-text: "#F8F9FA"
+    hairline: "#B6ABA1"
+    muted: "#707882"
+    muted-2: "#93989E"
+    surface-text: "#F8F9FA"
+    foreground: "#FFFFFF"
+    price-up: "#E15241"
+    price-down: "#4880EE"
+  typography:
+    family: { sans: "Bithumb Trading Sans", mono: "Bithumb Trading Sans" }
+    body:        { size: 14, weight: 400, use: "Workhorse readable content in a packed layout" }
+    control:     { size: 13, weight: 500, use: "Buttons, chips, interactive labels" }
+    micro-label: { size: 12, weight: 400, use: "Dense data annotations coexisting with numbers" }
+    chip-active: { size: 13, weight: 600, use: "Active filter chip label" }
+    cta:         { size: 18, weight: 500, use: "Primary exchange CTA label" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, full: 9999 }
+  shadow:
+    flat: "none — depth is structural (color layering + 1px borders), no drop shadows captured"
+    hairline: "1px solid #B6ABA1"
+    chip-inactive: "1px solid rgba(28,32,40,0.1)"
+  components:
+    button-primary: "Signup #1C2028 fill, #FFFFFF text, 4px radius, 32px height, 13px/500 — structural top-chrome action"
+    cta-filled: "Exchange CTA bronze #543E35 fill, #F8F9FA text, 4px radius, 56px height, 18px/500 — single warmest action"
+    cta-outline: "transparent fill, #4F3327 text, 1px solid #B6ABA1 border, 4px radius, 56px height — secondary paired action"
+    chip-active: "#1C2028 fill, #FFFFFF text, 8px radius, 36px height, 13px/600 — selected filter"
+    chip-inactive: "transparent fill, #707882 text, 1px solid rgba(28,32,40,0.1) border, 8px radius — unselected filter"
 ---
 
 # Design System Inspiration of Bithumb

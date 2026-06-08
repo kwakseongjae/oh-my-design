@@ -10,25 +10,66 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=catchtable.co.kr&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
-
-## 16. Do's and Don'ts
-
-### Do
-- Reserve CatchTable Orange (#FF3D00) for the single primary CTA pill only, where it appears in just 4 text/icon contexts across a 3000-element scan
-- Keep chrome hard-square at 0px radius (92% of elements), softening only to 4px for photo thumbnails, 8px for interactive controls, and 12px for the primary CTA pill
-- Set Pretendard as the sole typeface across the entire system with no display or headline font, letting food photography be the brand moment
-- Apply line-height: 150% to every typography slot, from the 20px/700 Section Title down to the 10px/500 Micro Meta, as a system-wide contract
-- Carry separation with borders and hairline alpha (#00000014) on cards at rest, reserving the five-tier shadow ladder for FABs, bottom sheets, sticky search bars, and modals
-- Keep body weight at Pretendard 400 (91% of text) and punctuate only with 700 for section titles and price emphasis
-
-### Don't
-- Flood sections or large backgrounds with brand orange #FF3D00 — it is a single-CTA color, not a section-fill color
-- Apply a global border-radius reset like 8px to the chrome — it erases the hard-square 0px signature that frames the photography
-- Add a display or brand-typography font alongside Pretendard, which alone carries 91% of all rendered text
-- Fire shadows on cards at rest — depth is meant to come from borders and hairline alpha, not the shadow ladder
-- Stamp discount stickers, X% off badges, or countdown timers over food photography, which the system treats as sovereign
-- Confuse semantic Danger red #D91F11 with brand orange #FF3D00, or compress the 150% line-height contract
-
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "Single-CTA discipline — brand orange #FF3D00 is the only primary fill, deployed sparingly; depth from borders + hairline alpha, not shadows"
+  colors:
+    primary: "#ff3d00"
+    primary-hover: "#fa8d6b"
+    brand: "#ff3d00"
+    canvas: "#ffffff"
+    foreground: "#000000"
+    title: "#222222"
+    body-strong: "#424242"
+    muted: "#666666"
+    tertiary: "#5f5f5f"
+    placeholder: "#9e9e9e"
+    disabled: "#b5b5b5"
+    icon-default: "#8f8f8f"
+    icon-subtle: "#aaaaaa"
+    on-primary: "#ffffff"
+    surface-subdued: "#f9f9f9"
+    surface-muted: "#f5f5f5"
+    surface-cool: "#f2f5f7"
+    surface-cool-alt: "#f0f4fa"
+    border-default: "#e4e4e4"
+    border-cool: "#dce3e8"
+    info: "#186ade"
+    success: "#43c478"
+    success-strong: "#077d55"
+    error: "#d91f11"
+    warning: "#f5c518"
+    premium: "#8f49de"
+  typography:
+    family: { sans: "Pretendard", mono: "" }
+    section-title:      { size: 20, weight: 700, lineHeight: 1.5, use: "음식종류별 BEST, 캐치 매거진, search hero label" }
+    big-section:        { size: 18, weight: 700, lineHeight: 1.5, use: "Larger card titles" }
+    card-title:         { size: 16, weight: 600, lineHeight: 1.5, use: "Restaurant card titles in list / detail" }
+    body-default:       { size: 14, weight: 400, lineHeight: 1.5, use: "Dominant — nav labels, list items, body" }
+    tab-label:          { size: 14, weight: 400, lineHeight: 1.5, use: "Bottom-tab labels" }
+    chip-label:         { size: 14, weight: 500, lineHeight: 1.5, use: "Geo chips, filter chips" }
+    search-input:       { size: 13, weight: 500, lineHeight: 1.5, use: "Search placeholder #9e9e9e" }
+    neighbourhood-chip: { size: 13, weight: 500, lineHeight: 1.5, use: "청담, 압구정·로데오 style" }
+    caption:            { size: 12, weight: 400, lineHeight: 1.5, use: "Timestamps, secondary meta" }
+    footer-body:        { size: 11, weight: 400, lineHeight: 1.5, use: "Regulatory disclosure text" }
+    policy-link:        { size: 11, weight: 500, lineHeight: 1.5, use: "Footer 서비스 이용약관 row" }
+    micro-meta:         { size: 10, weight: 500, lineHeight: 1.5, use: "Slide counter 2 / 25, compact tab" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 45 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 999 }
+  shadow:
+    xs: "rgba(0,0,0,.12) 0 1px 2px, rgba(0,0,0,.08) 0 0 1px, rgba(0,0,0,.08) 0 0 1px"
+    sm: "rgba(0,0,0,.12) 0 2px 8px, rgba(0,0,0,.08) 0 1px 4px, rgba(0,0,0,.08) 0 0 1px"
+    drop: "rgba(0,0,0,.12) 0 2px 12px"
+    md: "rgba(0,0,0,.12) 0 6px 12px, rgba(0,0,0,.08) 0 4px 8px, rgba(0,0,0,.08) 0 0 4px"
+    lg: "rgba(0,0,0,.12) 0 16px 20px, rgba(0,0,0,.08) 0 8px 16px, rgba(0,0,0,.08) 0 0 8px"
+  components:
+    button-primary: "#ff3d00 fill, #fff text, 14px/500, 12px radius, ~44px tall — single variant, single-CTA discipline"
+    search-input: "#f5f5f5 fill, sharp 0px corners, 13px/500 placeholder #9e9e9e, inline search icon left"
+    chip-row: "13-14px/500 ink, no fill or border at rest — separation by spacing alone"
+    best-of-pill: "image-led tile + 14px/400 ink label below, no card chrome"
+    bottom-tab-bar: "5 tabs (홈/저장/내 주변/마이다이닝/MY), icon-over-label, 14px/400 ink default"
+    footer-disclosure: "#f9f9f9 surface, 11px/500 policy links separated by | pipe, 11px/400 disclaimer"
 ---
 
 # Design System Inspiration of CatchTable (캐치테이블)
@@ -279,3 +320,21 @@ Motion tokens were **not** captured in this CDP pass — only entry-fade on Swip
 - **Confidence**: **High** for tokens, type, radius, elevation, colour, IA spine, footer disclosure. **Medium** for personas (analyst-inferred from IA, not from internal research). **Low / Flagged** for motion (not captured), restaurant-detail page, list page, sell/reservation flow, MY tab — all require an UPDATE pass via mobile-emulated CDP.
 
 - **Verification date**: 2026-05-15.
+
+## 16. Do's and Don'ts
+
+### Do
+- Reserve CatchTable Orange (#FF3D00) for the single primary CTA pill only, where it appears in just 4 text/icon contexts across a 3000-element scan
+- Keep chrome hard-square at 0px radius (92% of elements), softening only to 4px for photo thumbnails, 8px for interactive controls, and 12px for the primary CTA pill
+- Set Pretendard as the sole typeface across the entire system with no display or headline font, letting food photography be the brand moment
+- Apply line-height: 150% to every typography slot, from the 20px/700 Section Title down to the 10px/500 Micro Meta, as a system-wide contract
+- Carry separation with borders and hairline alpha (#00000014) on cards at rest, reserving the five-tier shadow ladder for FABs, bottom sheets, sticky search bars, and modals
+- Keep body weight at Pretendard 400 (91% of text) and punctuate only with 700 for section titles and price emphasis
+
+### Don't
+- Flood sections or large backgrounds with brand orange #FF3D00 — it is a single-CTA color, not a section-fill color
+- Apply a global border-radius reset like 8px to the chrome — it erases the hard-square 0px signature that frames the photography
+- Add a display or brand-typography font alongside Pretendard, which alone carries 91% of all rendered text
+- Fire shadows on cards at rest — depth is meant to come from borders and hairline alpha, not the shadow ladder
+- Stamp discount stickers, X% off badges, or countdown timers over food photography, which the system treats as sovereign
+- Confuse semantic Danger red #D91F11 with brand orange #FF3D00, or compress the 150% line-height contract
