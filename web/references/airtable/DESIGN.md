@@ -16,6 +16,44 @@ ds:
   type: brand
   description: Airtable's trademark usage and brand guidelines.
   og_image: "https://www.airtable.com/images/airtable-seo.jpg"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = Airtable Blue (#1b61c9); brand-amber (#fcb400) from primary_color frontmatter. Color belongs to user data, chrome stays neutral."
+  colors:
+    primary: "#1b61c9"
+    accent-blue: "#254fad"
+    brand: "#fcb400"
+    canvas: "#ffffff"
+    surface: "#f8fafc"
+    foreground: "#181d26"
+    body: "#333333"
+    on-primary: "#ffffff"
+    hairline: "#e0e2e6"
+    success: "#006400"
+  typography:
+    family: { sans: "Haas", display: "Haas Groot Disp" }
+    display-hero:    { size: 48, weight: 400, lineHeight: 1.15, use: "Hero headlines" }
+    display-bold:    { size: 48, weight: 900, lineHeight: 1.50, use: "Bold display, Haas Groot Disp" }
+    section:         { size: 40, weight: 400, lineHeight: 1.25, use: "Section headings" }
+    subheading:      { size: 32, weight: 450, lineHeight: 1.20, use: "Sub-headings" }
+    card-title:      { size: 24, weight: 400, lineHeight: 1.25, tracking: 0.12, use: "Card titles" }
+    feature:         { size: 20, weight: 400, lineHeight: 1.40, tracking: 0.1, use: "Feature text" }
+    body:            { size: 18, weight: 400, lineHeight: 1.35, tracking: 0.18, use: "Standard reading text" }
+    body-medium:     { size: 16, weight: 500, lineHeight: 1.30, tracking: 0.12, use: "Emphasized body" }
+    button:          { size: 16, weight: 500, lineHeight: 1.28, tracking: 0.08, use: "Button labels" }
+    caption:         { size: 14, weight: 450, lineHeight: 1.30, tracking: 0.18, use: "Captions, small labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 2, md: 12, lg: 16, xl: 24, xxl: 32, full: 9999 }
+  shadow:
+    soft: "rgba(15,48,106,0.05) 0px 0px 20px"
+    standard: "rgba(0,0,0,0.32) 0px 0px 1px, rgba(0,0,0,0.08) 0px 0px 2px, rgba(45,127,249,0.28) 0px 1px 3px, rgba(0,0,0,0.06) 0px 0px 0px 0.5px inset"
+  components:
+    button-primary: "Airtable Blue #1b61c9 fill, white text, 12px radius, 16x24 padding, Haas 16/500, blue-tinted lift"
+    button-white: "white fill, #181d26 text, 12px radius, secondary CTA on dark/blue surfaces"
+    card: "white surface, 1px #e0e2e6 border, 16px radius (24-32 featured), blue-tinted multi-layer shadow"
+    input: "white fill, #181d26 text, 1px #e0e2e6 border, 12px radius, 12x16 padding"
+    badge: "#f8fafc fill, #181d26 text, 1px #e0e2e6 border, 12px radius, Haas 14/500"
 ---
 
 # Design System Inspiration of Airtable

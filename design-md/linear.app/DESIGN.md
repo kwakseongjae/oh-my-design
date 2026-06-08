@@ -46,7 +46,6 @@ tokens:
   rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
   shadow:
     subtle: "rgba(0,0,0,0.03) 0px 1.2px 0px"
-    surface: "rgba(255,255,255,0.05) bg + 1px solid rgba(255,255,255,0.08)"
     inset: "rgba(0,0,0,0.2) 0px 0px 12px 0px inset"
   components:
     button-primary: "Brand Indigo #5e6ad2 fill, white text, 8px radius"

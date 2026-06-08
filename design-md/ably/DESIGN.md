@@ -10,6 +10,59 @@ logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=a-bly.com&sz=128"
 verified: "2026-05-15"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = Ably Pink #FA2E5F; sale/urgency collapses into the brand pink by design. Active states use filled black #222222, not pink."
+  colors:
+    primary: "#FA2E5F"
+    primary-disabled: "#FFC2D2"
+    hot-deal: "#FF2D55"
+    discount: "#F0124B"
+    free-shipping: "#00C8B4"
+    canvas: "#FFFFFF"
+    foreground: "#222222"
+    body: "#333333"
+    secondary: "#666666"
+    muted: "#999999"
+    lightest: "#BBBBBB"
+    on-primary: "#FFFFFF"
+    surface-fill: "#F5F5F5"
+    surface-subtle: "#FAFAFA"
+    hairline: "#EEEEEE"
+    border-subtle: "#F0F0F0"
+    success: "#00C896"
+    error: "#F0124B"
+    info-link: "#2680EB"
+  typography:
+    family: { sans: "Pretendard", mono: "SF Mono" }
+    display:        { size: 28, weight: 700, lineHeight: 1.30, tracking: -0.02, use: "Hero banners, promo screens" }
+    heading-lg:     { size: 22, weight: 700, lineHeight: 1.36, tracking: -0.01, use: "Screen titles, modal headers" }
+    heading:        { size: 18, weight: 700, lineHeight: 1.40, use: "Section titles in feeds" }
+    title:          { size: 16, weight: 600, lineHeight: 1.44, use: "Product names in cards" }
+    body:           { size: 14, weight: 400, lineHeight: 1.50, use: "Description, list rows" }
+    body-sm:        { size: 13, weight: 400, lineHeight: 1.54, use: "Secondary metadata" }
+    caption:        { size: 12, weight: 400, lineHeight: 1.50, use: "Timestamps, seller name" }
+    caption-bold:   { size: 12, weight: 700, lineHeight: 1.50, use: "Badge text (무료배송, 쇼킹딜)" }
+    micro:          { size: 11, weight: 500, lineHeight: 1.45, use: "Tab bar labels" }
+    price-sale:     { size: 16, weight: 700, lineHeight: 1.30, use: "Discounted price, #FA2E5F" }
+    price-strike:   { size: 13, weight: 400, lineHeight: 1.30, use: "Strikethrough comparison, #999999" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32 }
+  rounded: { sm: 4, md: 8, lg: 12, xl: 16, full: 9999 }
+  shadow:
+    subtle: "0px 1px 2px rgba(0,0,0,0.04)"
+    standard: "0px 2px 8px rgba(0,0,0,0.08)"
+    elevated: "0px 4px 16px rgba(0,0,0,0.12)"
+    sheet: "0px -4px 16px rgba(0,0,0,0.08)"
+  components:
+    button-primary: "Ably Pink #FA2E5F fill, white text, 8px radius, 16px/700, 52px full-width bottom CTA; disabled #FFC2D2"
+    button-secondary: "white fill, #222222 text, 1px #DDDDDD border, 8px radius, 14px/600"
+    chip-filter: "white fill, #333333 text, 1px #DDDDDD border, full radius; active = #222222 fill, white text"
+    badge-free-shipping: "white fill, #FA2E5F text + 1px #FA2E5F border, 4px radius, 11px/700"
+    badge-hot-deal: "#FA2E5F fill, white text, 4px radius, 11px/700 (쇼킹딜)"
+    product-card: "white surface, 1:1 image, 4px top radius, flat (no shadow), #EEEEEE divider"
+    tab-bar: "white, 56px + safe-area, 6 items; active #222222 filled, inactive #999999; notification dot #FA2E5F"
+    bottom-sheet: "white, 16px top radius, #E5E5E5 handle, sheet shadow over backdrop rgba(0,0,0,0.5)"
 omd: "0.1"
 ---
 

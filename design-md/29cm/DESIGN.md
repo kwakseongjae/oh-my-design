@@ -9,6 +9,46 @@ logo:
   type: favicon
   slug: "https://asset.29cm.co.kr/icon/apple-icon-144x144.png"
 verified: "2026-05-15"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "monochrome system — brand 'color' is the absence of color; #000 ink on #fff, single muted grey, sale-red badge-only accent"
+  colors:
+    primary: "#000000"
+    foreground: "#000000"
+    body: "#000000"
+    canvas: "#ffffff"
+    background: "#ffffff"
+    on-primary: "#ffffff"
+    hairline: "#c4c4c4"
+    border: "#c4c4c4"
+    sale: "#ff0066"
+    error: "#ff003c"
+    skeleton: "#f5f5f5"
+  typography:
+    family: { sans: "Pretendard Variable" }
+    section-headline: { size: 30, weight: 700, lineHeight: 1.13, use: "Special-Order / 29Magazine section headlines, lowercase-English / mixed Korean editorial" }
+    sub-headline:     { size: 24, weight: 700, lineHeight: 1.21, use: "Smaller category nav items" }
+    card-title:       { size: 22, weight: 700, lineHeight: 1.36, use: "Signature editorial card title — PT subjects, themed collections" }
+    card-body:        { size: 15, weight: 400, lineHeight: 1.50, use: "Card descriptions, editorial blurbs" }
+    nav-link:         { size: 16, weight: 200, use: "Primary nav link — 200 inactive, 800 active BEST/current section" }
+    floating-cta:     { size: 15, weight: 400, use: "FAQ / 1:1 문의 — black bg, white text, 2px radius" }
+    ghost-cta:        { size: 14, weight: 700, use: "더보기 — white bg, 1px #c4c4c4 border" }
+    footer-heading:   { size: 13, weight: 700, lineHeight: 1.40, use: "Caps Latin section labels — NOTICE, ABOUT US, MY ORDER, HELP" }
+    product-name:     { size: 12, weight: 400, lineHeight: 1.36, use: "Card product name, restrained, under the image" }
+    product-price:    { size: 12, weight: 700, lineHeight: 1.36, use: "Card price — same size as name, never dominates" }
+    price-caption:    { size: 12, weight: 400, lineHeight: 1.36, use: "옵션비 별도 in muted grey" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, page: 20, lg: 24, xl: 32, margin: 48 }
+  rounded: { sm: 2, md: 4 }
+  shadow:
+    flat: "none — depth comes from photography on white, not box-shadow"
+    inverted: "#000000 background on #ffffff page — elevation by colour inversion"
+  components:
+    ghost-outline: "white bg, #000 text, 1px solid #c4c4c4 border, 4px radius, 52px height, 14px/700 — workhorse 더보기 CTA"
+    inverted-solid: "#000 bg, #fff text, no border, 2px radius, 31px height, 15px/400 — floating FAQ / 1:1 문의 help control"
+    editorial-tile: "white bg, no border, 0px radius, full-bleed image; 22px/700 title + 15px/400 body below, no shadow"
+    product-card: "white bg, no border, 0px radius image; 12px/400 name then 12px/700 price (#ff0066 if on sale); caption in muted grey"
+    sale-pill: "white/transparent bg, #ff0066 text, 0px radius, 12px/700 — percent-off badge only"
 omd: "0.1"
 ---
 

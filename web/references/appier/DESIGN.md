@@ -9,6 +9,50 @@ logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=appier.com&sz=128"
 verified: "2026-05-19"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = electric Klein-adjacent blue (#1D2EFF, brief-provided + brand); secondary palette is grounded B2B approximation pending live re-inspection (per §2 note)"
+  colors:
+    primary: "#1D2EFF"
+    primary-hover: "#1626D9"
+    primary-tint: "#EBEDFF"
+    accent: "#00D4FF"
+    canvas: "#FFFFFF"
+    surface-soft: "#F5F6FA"
+    ink: "#101130"
+    foreground: "#101130"
+    body: "#4A4E69"
+    muted: "#8A8FA3"
+    disabled: "#C4C7D4"
+    on-primary: "#FFFFFF"
+    hairline: "#E6E8F0"
+    border: "#D1D5E3"
+    success: "#16A34A"
+    warning: "#F59E0B"
+    error: "#DC2626"
+  typography:
+    family: { sans: "-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif", tc: "PingFang TC, Microsoft JhengHei, sans-serif", jp: "Hiragino Kaku Gothic Pro, Meiryo, sans-serif" }
+    caption:      { size: 13, weight: 400, use: "Caption, metadata" }
+    body:         { size: 16, weight: 400, lineHeight: 1.5, use: "Body, descriptions" }
+    body-lg:      { size: 18, weight: 400, use: "Body large / lead" }
+    card-heading: { size: 22, weight: 600, use: "Card titles, subheads" }
+    section:      { size: 32, weight: 700, use: "Section headings" }
+    hero:         { size: 48, weight: 700, use: "Hero headlines, value proposition" }
+    stat:         { size: 48, weight: 700, use: "Case-study stat figures, in Appier Blue" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, section: 64, section-lg: 96 }
+  rounded: { sm: 6, md: 8, lg: 12, full: 9999 }
+  shadow:
+    card: "0 4px 16px rgba(16,17,48,0.08)"
+    header: "0 1px 4px rgba(16,17,48,0.06)"
+    modal: "0 12px 40px rgba(16,17,48,0.2)"
+  components:
+    button-primary: "Appier Blue #1D2EFF fill, white text, 8px radius, 12px 24px pad, 16px/600, flat; hover #1626D9"
+    button-secondary: "white fill, #1D2EFF text + 1px #1D2EFF border, 8px radius; hover #EBEDFF bg"
+    input: "white fill, 1px #D1D5E3 border, 8px radius, 12px 14px pad; focus #1D2EFF; error #DC2626"
+    card-solution: "white surface, 1px #E6E8F0 border, 12px radius, 24px pad, blue Learn more link"
+    card-dark: "#101130 deep-ink bg, white text, blue to cyan gradient accent, 12px radius"
+    badge-credential: "#F5F6FA/white bg, #101130 text, 1px #E6E8F0 border, 4-6px radius"
 omd: "0.1"
 ---
 

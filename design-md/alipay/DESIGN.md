@@ -15,6 +15,55 @@ ds:
   url: "https://ant.design"
   type: system
   description: The open-source enterprise design system born inside Ant Group (Alipay's parent), now the most influential Chinese design language and one of the most widely adopted React component libraries in the world.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "Ant Design v5 token palette (Alipay/Ant shared language); primary = Daybreak Blue #1677FF; color is strictly semantic; neutral text via black-opacity levels"
+  colors:
+    primary: "#1677FF"
+    primary-hover: "#4096FF"
+    primary-active: "#0958D9"
+    info: "#1677FF"
+    canvas: "#F5F5F5"
+    container: "#FFFFFF"
+    on-primary: "#FFFFFF"
+    heading: "#000000"
+    body: "#000000"
+    disabled: "#000000"
+    border: "#D9D9D9"
+    split: "#000000"
+    fill-hover: "#000000"
+    success: "#52C41A"
+    warning: "#FAAD14"
+    error: "#FF4D4F"
+    table-header: "#FAFAFA"
+    backdrop: "#000000"
+    sider-dark: "#001529"
+  typography:
+    family: { sans: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" }
+    heading1: { size: 38, weight: 600, lineHeight: 1.21, use: "Largest heading, marketing/hero titles" }
+    heading2: { size: 30, weight: 600, lineHeight: 1.27, use: "Section headings" }
+    heading3: { size: 24, weight: 600, lineHeight: 1.33, use: "Sub-section headings" }
+    heading4: { size: 20, weight: 600, lineHeight: 1.40, use: "Card / panel titles" }
+    heading5: { size: 16, weight: 600, lineHeight: 1.50, use: "Smallest heading, labels" }
+    body:     { size: 14, weight: 400, lineHeight: 1.5715, use: "Base body, tables, forms — density anchor" }
+    large:    { size: 16, weight: 400, use: "Large body, emphasized text" }
+    small:    { size: 12, weight: 400, use: "Captions, status tags, helper text" }
+  spacing: { xs: 8, base: 16, lg: 24, marginSM: 12 }
+  rounded: { sm: 4, md: 6, lg: 8 }
+  shadow:
+    tertiary: "0 1px 2px 0 rgba(0,0,0,0.03), 0 1px 6px -1px rgba(0,0,0,0.02), 0 2px 4px 0 rgba(0,0,0,0.02)"
+    secondary: "0 6px 16px 0 rgba(0,0,0,0.08), 0 3px 6px -4px rgba(0,0,0,0.12), 0 9px 28px 8px rgba(0,0,0,0.05)"
+    elevated: "0 6px 16px 0 rgba(0,0,0,0.08)"
+  components:
+    button-primary: "Daybreak Blue #1677FF fill, white text, 6px radius, 4px 15px pad, 14px/400, hover #4096FF, active #0958D9, wave ripple"
+    button-default: "white fill, #000000E0 text, 1px #D9D9D9 border, 6px radius, hover shifts to #4096FF"
+    button-danger: "#FF4D4F fill, white text, 6px radius — destructive confirm"
+    input: "white fill, 1px #D9D9D9 border, 6px radius, height 32px, focus border #1677FF, error border #FF4D4F"
+    card: "white surface, 1px #D9D9D9 border, 8px radius, 24px pad, boxShadowTertiary on hover"
+    table: "white rows, #FAFAFA header, #000000E0 text, 1px #0000000F dividers, #0000000A hover fill, 16px cell pad"
+    status-tag: "status color at low alpha (e.g. success #52C41A on #F6FFED), 4px radius, 0 7px pad, 12px/400 — semantic only"
+    modal: "white surface, 8px radius, 20px 24px pad, #00000073 backdrop, elevated boxShadow"
 ---
 
 # Design System Inspiration of Alipay
