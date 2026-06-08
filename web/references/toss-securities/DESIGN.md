@@ -11,25 +11,6 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=tossinvest.com&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
-
-## 14. Do's and Don'ts
-
-### Do
-- Build dark-mode-first, layering surfaces from deepest #101013 to body rgb(23,23,28) to overlay #202025 for sheets
-- Encode the KR-finance locale by using red #dc2e47 for positive/up ticks and blue #3182f6 for negative/down ticks via the positive/negative semantic tokens
-- Create depth with translucent rgba(214,224,239,0.09) 1px borders and layered surface alpha instead of elevation
-- Keep the two-tier radius scale, using 8px for cards, inputs, and buttons and 32px for pill controls like memo and filter chips
-- Set type from the observed hierarchy: 24px/700 section H2, 18.72px/700 sub-section H3, 15px/500 nav links, and 16px/400 body
-- Use Toss Product Sans tabular numerals so price ticks, order-book columns, and percent changes align by column
-
-### Don't
-- Copy positive=red / negative=blue into non-KR/JP/TW locales without inverting positive-* to green and negative-* to red
-- Assume Toss Blue #3182f6 always means brand CTA, since on this surface it is also the down-tick fill and only context disambiguates
-- Introduce box-shadow as elevation language; this system deliberately uses translucent borders plus layered surface alphas
-- Add a third radius tier beyond the deliberate two-tier 8px / 32px scale
-- Introduce a display-only accent typeface; restraint is the rule and there is no decorative accent face
-- Decorate data surfaces with illustration; the price chart itself is the imagery
-
 ---
 
 # Design System Inspiration of Toss Securities (토스증권)
@@ -210,3 +191,21 @@ Motion timing tokens not captured this pass (no live transition introspection pe
 - **Tier 3 live capture**: ✓ CDP `:9222` getComputedStyle on **two surfaces** — homepage (601 DOM samples, 416 `:root` vars) + stock order surface (`A005930/order`). 12 raw_samples retained in `.live-inspect-proof.json` (≥5 floor).
 - **IP guardrails**: brand assets reference-only; no verbatim Toss Securities taglines/copy reproduced; voice samples in §9 are fresh derivations; logo not redistributed; persona block in §10 explicitly marked `[FILL IN]` (no fabricated quotes).
 - **Flagged for UPDATE**: (a) motion timing tokens not captured this pass; (b) light-mode variant — `--tw-adaptive-*` namespace implies a theme switch but only dark default observed live; (c) personas pending public-research sourcing; (d) primary CTA visual not directly sampled (token tree confirms `#3182f6` fill but live surface served ghost-button variants on inspected paths).
+
+## 14. Do's and Don'ts
+
+### Do
+- Build dark-mode-first, layering surfaces from deepest #101013 to body rgb(23,23,28) to overlay #202025 for sheets
+- Encode the KR-finance locale by using red #dc2e47 for positive/up ticks and blue #3182f6 for negative/down ticks via the positive/negative semantic tokens
+- Create depth with translucent rgba(214,224,239,0.09) 1px borders and layered surface alpha instead of elevation
+- Keep the two-tier radius scale, using 8px for cards, inputs, and buttons and 32px for pill controls like memo and filter chips
+- Set type from the observed hierarchy: 24px/700 section H2, 18.72px/700 sub-section H3, 15px/500 nav links, and 16px/400 body
+- Use Toss Product Sans tabular numerals so price ticks, order-book columns, and percent changes align by column
+
+### Don't
+- Copy positive=red / negative=blue into non-KR/JP/TW locales without inverting positive-* to green and negative-* to red
+- Assume Toss Blue #3182f6 always means brand CTA, since on this surface it is also the down-tick fill and only context disambiguates
+- Introduce box-shadow as elevation language; this system deliberately uses translucent borders plus layered surface alphas
+- Add a third radius tier beyond the deliberate two-tier 8px / 32px scale
+- Introduce a display-only accent typeface; restraint is the rule and there is no decorative accent face
+- Decorate data surfaces with illustration; the price chart itself is the imagery
