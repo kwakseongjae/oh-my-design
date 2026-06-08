@@ -49,20 +49,20 @@ tokens:
     subtle: "rgba(0,0,0,0.03) 0px 1.2px 0px"
     inset: "rgba(0,0,0,0.2) 0px 0px 12px 0px inset"
   components:
-    primary-cta: "#e5e5e6 fill, #08090a text, 9999px pill, 32px nav / 44px hero, layered drop shadow"
-    secondary-cta: "rgba(255,255,255,0.05) bg, #f7f8f8 text, 9999px, 40-44px, inset+ring shadow"
-    brand-cta-lime: "#e4f222 fill, #08090a text, 6-8px radius, Inter 590 15px — loudest marketing accent"
-    brand-fill-button: "#5e6ad2 brand indigo fill, white text, hover #828fff (inferred / skip-link)"
-    ghost-button: "rgba(255,255,255,0.02) bg, #e2e4e7 text, 1px solid #24282c, 6px radius"
-    nav-link: "13px/400, #8a8f98 idle → #f7f8f8 active, 9999px hit-area, 0×12, 32px"
-    dropdown-popover: "#101112 bg, 12px radius, 1px solid rgba(255,255,255,0.08); submenu #161718 / 8px"
-    search-input: "#141516 bg, #8a8f98 placeholder, 9999px, 40px, inset+ring shadow"
-    filter-pill: "transparent, #d0d6e0 text, 1px solid #23252a, 9999px, 26px, 12px/510"
-    pagination-button: "rgba(255,255,255,0.05), #f7f8f8, 9999px, 40px, 15px/510 (Load more)"
-    card: "rgba(255,255,255,0.02-0.05) translucent surface, 1px rgba(255,255,255,0.08) border, 8/12/22px radius"
-    default-card-refero: "#0f1011 panel surface, 6px radius (Refero)"
-    command-palette: "#191a1b bg, 12px radius, rgba(255,255,255,0.08) border, dialog shadow stack, rgba(0,0,0,0.85) backdrop"
-    filter-pill-success: "#10b981 success pill / status dot, #f7f8f8 text, 50% or 9999px, 10px/510"
+    primary-cta:         { type: button, bg: "#e5e5e6", fg: "#08090a", border: "1px solid #e5e5e6", radius: "9999px", height: "32px", padding: "0 12px", font: "13px / 510", shadow: "layered drop stack rgba(0,0,0,0.08) 0px 0px 1px · rgba(0,0,0,0.07) 0px 1px 1px · rgba(0,0,0,0.04) 0px 3px 2px", use: "Highest-priority CTA on dark surfaces (Sign up / Open app); 44px hero variant at 16px/510, 0 20px" }
+    secondary-cta:       { type: button, bg: "rgba(255,255,255,0.05)", fg: "#f7f8f8", radius: "9999px", height: "40px", padding: "0 14px", font: "13px / 510", shadow: "inset hairline + ring rgba(255,255,255,0.03) 0px 0px 0px 1px inset · rgba(0,0,0,0.6) 0px 0px 0px 1px · rgba(0,0,0,0.1) 0px 4px 4px", use: "Paired alternative beside the primary CTA (Contact sales next to Get started); 44px hero variant" }
+    brand-cta-lime:      { type: button, bg: "#e4f222", fg: "#08090a", radius: "6px", padding: "24px 32px", font: "15px / 590", use: "High-emphasis marketing conversion banner (Build now) — Linear's loudest single accent; 8px live banner variant" }
+    brand-fill-button:   { type: button, bg: "#5e6ad2", fg: "#ffffff", radius: "6px", height: "32px", padding: "0 16px", font: "14px / 510", hover: "#828fff", use: "Brand-accent fills; reserved indigo, surfaces on skip-link and in-product accents" }
+    ghost-button:        { type: button, bg: "rgba(255,255,255,0.02)", fg: "#e2e4e7", border: "1px solid #24282c", radius: "6px", focus: "rgba(0,0,0,0.1) 0px 4px 12px", use: "Tertiary actions, low-emphasis secondary CTAs" }
+    nav-link:            { type: tab, active: "text #f7f8f8 idle #8a8f98", radius: "9999px", height: "32px", padding: "0 12px", font: "13px / 400", use: "Top nav bar links (Product / Resources)" }
+    dropdown-popover:    { type: dialog, bg: "#101112", border: "1px solid rgba(255,255,255,0.08)", radius: "12px", use: "Product / Resources navigation flyouts; nested submenu #161718, 8px radius, 1px solid rgba(255,255,255,0.05)" }
+    search-input:        { type: input, bg: "#141516", fg: "#8a8f98", radius: "9999px", height: "40px", padding: "0 16px", font: "14px / 400", shadow: "inset+ring stack rgba(255,255,255,0.03) 0px 0px 0px 1px inset · rgba(0,0,0,0.1) 0px 4px 4px", use: "Changelog / docs search field; in-app triggers Cmd+K palette" }
+    filter-pill:         { type: badge, bg: "transparent", fg: "#d0d6e0", border: "1px solid #23252a", radius: "9999px", height: "26px", padding: "0 10px 0 5px", font: "12px / 510", use: "Tags, filter chips, category labels (Performance, iOS)" }
+    pagination-button:   { type: button, bg: "rgba(255,255,255,0.05)", fg: "#f7f8f8", radius: "9999px", height: "40px", padding: "0 16px", font: "15px / 510", shadow: "inset+ring stack (matches secondary CTA)", use: "Changelog Load more pagination" }
+    card:                { type: card, bg: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.08)", radius: "8px", shadow: "rgba(0,0,0,0.2) 0px 0px 0px 1px ring", hover: "subtle background-opacity increase", use: "Translucent surface (never solid); 12px featured, 22px large panels" }
+    default-card-refero: { type: card, bg: "#0f1011", radius: "6px", use: "Refero-captured in-product card surface" }
+    command-palette:     { type: dialog, bg: "#191a1b", border: "1px solid rgba(255,255,255,0.08)", radius: "12px", shadow: "multi-layer Dialog stack rgba(0,0,0,0.08) 0px 0px 1px … rgba(0,0,0,0) 0px 8px 2px", use: "Cmd+K command palette, modals; backdrop rgba(0,0,0,0.85)" }
+    filter-pill-success: { type: badge, bg: "#10b981", fg: "#f7f8f8", radius: "50%", font: "10px / 510", use: "Status dots, completion indicators; 9999px chip variant" }
 ---
 
 # Design System Inspiration of Linear
