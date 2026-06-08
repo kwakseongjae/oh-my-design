@@ -9,6 +9,23 @@ logo:
   type: simpleicons
   slug: stripe
 verified: "2026-05-15"
+tokens:
+  source: live-extract
+  extracted: "2026-06-08"
+  color:
+    primary: "#533afd"
+    background: "#ffffff"
+    foreground: "#061b31"
+    muted: "#64748d"
+    accent: "#ea2261"
+  font:
+    sans: "sohne-var"
+  spacing: [4, 8, 12, 16, 24, 32, 48, 64]
+  radius:
+    sm: 4
+    md: 8
+    lg: 16
+    pill: 9999
 omd: "0.1"
 ---
 

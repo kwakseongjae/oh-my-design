@@ -17,6 +17,15 @@ export interface RefEntry {
   readonly logo: { readonly type: 'favicon' | 'simpleicons' | 'github'; readonly slug: string };
   readonly verified: string;
   readonly added?: string;
+  readonly tokens?: {
+    readonly source?: 'live-extract' | 'design-system' | 'manual' | 'reconciled';
+    readonly extracted?: string;
+    readonly color?: Readonly<Record<string, string>>;
+    readonly font?: Readonly<Record<string, string>>;
+    readonly spacing?: readonly number[];
+    readonly radius?: Readonly<Record<string, number>>;
+    readonly shadow?: Readonly<Record<string, string>>;
+  };
   readonly ds?: {
     readonly name: string;
     readonly url: string;
@@ -185,7 +194,7 @@ export const REGISTRY: readonly RefEntry[] = [
   { id: "spoon", name: "Spoon", displayName: "Spoon", country: "KR", category: "audio-social", homepage: "https://www.spooncast.net", primaryColor: "#FF5500", logo: { type: "favicon", slug: "https://www.google.com/s2/favicons?domain=spooncast.net&sz=128" }, verified: "2026-05-19" },
   { id: "spotify", name: "Spotify", displayName: "Spotify", country: "US", category: "consumer-tech", homepage: "https://www.spotify.com", primaryColor: "#1db954", logo: { type: "simpleicons", slug: "spotify" }, verified: "2026-05-15" },
   { id: "starbucks", name: "Starbucks", displayName: "Starbucks", country: "US", category: "consumer-tech", homepage: "https://www.starbucks.com", primaryColor: "#00704A", logo: { type: "simpleicons", slug: "starbucks" }, verified: "2026-06-06", added: "2026-06-06" },
-  { id: "stripe", name: "Stripe", displayName: "Stripe", country: "US", category: "fintech", homepage: "https://stripe.com", primaryColor: "#635bff", logo: { type: "simpleicons", slug: "stripe" }, verified: "2026-05-15" },
+  { id: "stripe", name: "Stripe", displayName: "Stripe", country: "US", category: "fintech", homepage: "https://stripe.com", primaryColor: "#635bff", logo: { type: "simpleicons", slug: "stripe" }, verified: "2026-05-15", tokens: {"source":"live-extract","extracted":"2026-06-08","color":{"primary":"#533afd","background":"#ffffff","foreground":"#061b31","muted":"#64748d","accent":"#ea2261"},"font":{"sans":"sohne-var"},"spacing":[4,8,12,16,24,32,48,64],"radius":{"sm":4,"md":8,"lg":16,"pill":9999}} },
   { id: "studio", name: "Studio", displayName: "Studio", country: "JP", category: "design-tools", homepage: "https://studio.design", primaryColor: "#007cff", logo: { type: "favicon", slug: "https://www.google.com/s2/favicons?domain=studio.design&sz=128" }, verified: "2026-06-06", added: "2026-06-06" },
   { id: "supabase", name: "Supabase", displayName: "Supabase", country: "US", category: "backend-devops", homepage: "https://supabase.com", primaryColor: "#3ecf8e", logo: { type: "simpleicons", slug: "supabase" }, verified: "2026-05-15", ds: { name: "Supabase Brand Assets", url: "https://supabase.com/brand-assets", type: "brand", description: "Supabase's brand guidelines with logos and integration button specs.", ogImage: "https://supabase.com/images/og/supabase-og.png" } },
   { id: "superhuman", name: "Superhuman", displayName: "Superhuman", country: "US", category: "developer-tools", homepage: "https://superhuman.com", primaryColor: "#5840ff", logo: { type: "github", slug: "superhuman" }, verified: "2026-05-15", ds: { name: "Superhuman Media Assets", url: "https://superhuman.com/media-assets", type: "brand", description: "Superhuman's press and brand asset kit.", ogImage: "https://superhumanstatic.com/super-funnel/main/public/images/v3/social-share.png" } },
