@@ -10,6 +10,51 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=class101.net&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary action button is near-black #202020 (the workhorse CTA); brand = orange spark #FF5D00 (= primary_color). Distinct roles, not a conflict."
+  colors:
+    primary: "#202020"
+    primary-hover: "#000000"
+    brand: "#FF5D00"
+    brand-tint: "#FFF1E8"
+    canvas: "#FFFFFF"
+    surface: "#F3F3F3"
+    surface-raised: "#FAFAFA"
+    foreground: "#000000"
+    body: "#333333"
+    muted: "#767676"
+    tertiary: "#AAAAAA"
+    hairline: "#E5E5E5"
+    border-strong: "#D1D1D1"
+    on-primary: "#FFFFFF"
+    success: "#22C55E"
+    error: "#FF3B30"
+    warning: "#FAAD14"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "system-ui" }
+    hero:           { size: 36, weight: 700, lineHeight: 1.25, use: "Home hero, campaign headlines (32-40px)" }
+    section-heading: { size: 23, weight: 700, lineHeight: 1.35, use: "Category / row headers (22-24px)" }
+    card-title:     { size: 16, weight: 600, lineHeight: 1.40, use: "Class card titles" }
+    body:           { size: 16, weight: 400, lineHeight: 1.50, use: "Descriptions, marketing body" }
+    label:          { size: 16, weight: 600, lineHeight: 1.40, use: "Buttons, nav (CTA / label)" }
+    meta:           { size: 14, weight: 400, lineHeight: 1.40, use: "Creator names, class metadata" }
+    caption:        { size: 12, weight: 400, lineHeight: 1.40, use: "Badges, fine print" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 40, section: 40 }
+  rounded: { sm: 6, md: 8, lg: 12, xl: 16, full: 999 }
+  shadow:
+    hover: "rgba(0,0,0,0.06) 0px 2px 8px"
+    floating: "rgba(0,0,0,0.1) 0px 4px 16px"
+    modal: "rgba(0,0,0,0.16) 0px 8px 24px"
+  components:
+    button-primary: "near-black #202020 fill, white text, 12px radius, 16px/600, 50px tall — the workhorse CTA"
+    button-brand: "orange #FF5D00 fill, white text, 12px radius — high-energy promo moments only"
+    button-secondary: "white fill, #202020 text, 1px #E5E5E5 border, 12px radius"
+    input: "filled #F3F3F3, 8px radius, #AAAAAA placeholder, focus border #202020"
+    class-card: "white surface, no border, 8px radius, image-led thumbnail + text region, hover shadow"
+    chip: "#F3F3F3 fill, #333333 text, 999px pill, 6px 14px padding"
+    badge-hot: "orange #FF5D00 fill, white text, 6px radius — NEW / 인기 emphasis"
 ---
 
 # Design System Inspiration of Class101 (클래스101)

@@ -16,6 +16,66 @@ ds:
   type: brand
   description: Banksalad's public GitHub org including styleguide repos and BPL (Banksalad Product Library) reference material.
   og_image: "https://avatars.githubusercontent.com/u/71009899?s=280&v=4"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  colors:
+    primary: "#04c584"
+    primary-hover: "#10df99"
+    brand: "#04c584"
+    canvas: "#ffffff"
+    foreground: "#2b2b2b"
+    muted: "#7b7b7b"
+    on-primary: "#ffffff"
+    surface-alt: "#fbfbfb"
+    surface-neutral: "#f5f5f5"
+    body: "#434444"
+    placeholder: "#999999"
+    disabled: "#acacac"
+    hairline: "#e1e1e1"
+    mint-tint: "#f3fdfa"
+    error: "#fe493d"
+    error-soft: "#ff8a84"
+    warning: "#fd8700"
+    warning-deep: "#f56200"
+    info: "#0099ff"
+    success: "#04c584"
+    chart-1: "#34464b"
+    chart-2: "#5c818a"
+    chart-3: "#1c6c73"
+    chart-4: "#a7c7cf"
+  typography:
+    family: { sans: "Pretendard", display: "BM JUA" }
+    hero-display:     { size: 52, weight: 700, lineHeight: 1.23, tracking: -1, use: "Largest landing headline; sometimes Jua" }
+    display-lg:       { size: 48, weight: 700, lineHeight: 1.2, tracking: -1, use: "Secondary hero" }
+    display:          { size: 44, weight: 700, lineHeight: 1.25, tracking: -1, use: "Section-opening figures (balances, scores)" }
+    section-heading:  { size: 36, weight: 700, lineHeight: 1.3, tracking: -0.5, use: "Marketing section titles" }
+    h1:               { size: 28, weight: 700, lineHeight: 1.14, use: "In-app section titles" }
+    h2:               { size: 24, weight: 700, lineHeight: 1.17, use: "Card titles, panel headings" }
+    h3:               { size: 20, weight: 700, lineHeight: 1.2, use: "Sub-card headings" }
+    subhead:          { size: 18, weight: 700, lineHeight: 1.3, use: "Featured-button text, key callouts" }
+    body-lg:          { size: 16, weight: 500, lineHeight: 1.5, use: "Standard reading text on data screens" }
+    body:             { size: 14, weight: 500, lineHeight: 1.34, use: "Default body text; 500 not 400" }
+    body-tight:       { size: 13, weight: 500, lineHeight: 1.34, use: "Compact labels" }
+    caption:          { size: 12, weight: 500, lineHeight: 1.34, use: "Metadata, helper text" }
+    caption-sm:       { size: 10, weight: 500, lineHeight: 1, use: "Disclosures, smallest labels" }
+    button:           { size: 16, weight: 700, lineHeight: 1, tracking: -1, use: "All CTAs are 700" }
+    financial-amount: { size: 24, weight: 700, lineHeight: 1, use: "Comma-grouped, won unit follows in 500" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 2, md: 4, lg: 8, full: 9999 }
+  shadow:
+    soft: "rgba(0,0,0,0.08) 0px 1px 1px 0px"
+    standard: "rgba(0,0,0,0.12) 0px 2px 5px 0px"
+    elevated: "rgba(0,0,0,0.15) 0px 4px 9px 0px"
+    modal: "rgba(0,0,0,0.19) 0px 17px 50px 0px"
+  components:
+    button-primary: "Salad green #04c584 fill, white text, 2px radius, 700 weight; hover LIGHTENS to #10df99"
+    button-ghost: "white fill, #04c584 text + 1px #04c584 border, hover #f3fdfa mint tint"
+    card-data: "white surface, 1px #e1e1e1 border, 2px radius, standard shadow; dense 20-24px padding"
+    amount-input: "2px #f5f5f5 border, focus #10df99 + #f3fdfa bg, 22px/700 right-aligned — money as heading"
+    status-pill: "#f3fdfa bg, #04c584 text, 41px pill radius, 12px/500 filter chips"
+    table-row: "alternating #ffffff/#fbfbfb, amounts right-aligned 14px/700 #2b2b2b positive #fe493d negative"
+    chart: "teal-slate series (#34464b/#5c818a/#1c6c73/#a7c7cf); green #04c584 only for user's own value"
 ---
 
 # Design System Inspiration of Banksalad

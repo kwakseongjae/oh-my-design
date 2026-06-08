@@ -10,6 +10,48 @@ logo:
   slug: bilibili
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "Only bili pink #FB7299 verified; bili blue, gold coin, and all neutrals are best-fit approximations flagged in prose — no public token layer."
+  colors:
+    primary: "#FB7299"
+    primary-hover: "#F25D8E"
+    primary-tint: "#FFF0F4"
+    brand: "#FB7299"
+    brand-blue: "#00AEEC"
+    brand-blue-dark: "#0089C7"
+    canvas: "#FFFFFF"
+    surface: "#F4F4F4"
+    foreground: "#18191C"
+    muted: "#61666D"
+    hint: "#C9CCD0"
+    hairline: "#E3E5E7"
+    divider: "#F1F2F3"
+    on-primary: "#FFFFFF"
+    coin: "#FFB027"
+    error: "#FF4D4F"
+    success: "#52C41A"
+  typography:
+    family: { sans: "PingFang SC, Source Han Sans SC, 思源黑体, Microsoft YaHei, sans-serif", mono: "monospace" }
+    page-header:   { size: 18, weight: 600, lineHeight: 1.3, use: "Channel titles, section heads" }
+    video-title:   { size: 14, weight: 500, lineHeight: 1.4, use: "Video title in card, 2-line clamp" }
+    body:          { size: 14, weight: 400, lineHeight: 1.5, use: "Video detail, comments" }
+    metadata:      { size: 12, weight: 400, lineHeight: 1.4, use: "UP主 name, view/danmaku counts" }
+    caption:       { size: 11, weight: 400, lineHeight: 1.4, use: "Tags, fine labels, durations" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
+  shadow:
+    hover: "rgba(0,0,0,0.08) 0px 2px 12px 0px"
+    floating: "rgba(0,0,0,0.1) 0px 4px 16px 0px"
+    modal: "rgba(0,0,0,0.12) 0px 6px 24px 0px"
+  components:
+    button-primary: "bili pink #FB7299 fill, white text, 6px radius (pill 16px for follow chips), 14px/500; hover #F25D8E"
+    button-secondary: "white fill, #61666D text, 1px #E3E5E7 border, 6px radius — Following/ghost toggle"
+    coin-action: "transparent icon button, gold #FFB027 when active — signature 投币 reward gesture"
+    video-card: "white surface, no border, 6-8px radius, 16:9 cover + duration/count overlays, 2-line title, UP主 name; hover lift"
+    tag-chip: "#F4F4F4 bg (or pink-tint #FFF0F4 active), #61666D text (or #FB7299 active), 4px radius, 12px/400"
+    overlay-pill: "black ~60% bg, white 12px text, 4px radius — duration + view/danmaku over cover"
 ---
 
 # Design System Inspiration of Bilibili

@@ -11,6 +11,51 @@ logo:
   slug: "https://static.bunjang.co.kr/web/ui/favicon.ico"
 verified: "2026-05-14"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = --color-primary / --color-red-500 #d80c18 (matches primary_color); no box-shadow anywhere — depth is borders + tints"
+  colors:
+    primary: "#d80c18"
+    primary-hover: "#c00b15"
+    brand: "#d80c18"
+    canvas: "#ffffff"
+    foreground: "#191919"
+    muted: "#999999"
+    on-primary: "#ffffff"
+    surface: "#f6f6f6"
+    hairline: "#e5e5e5"
+    body: "#666666"
+    error: "#d80c18"
+    success: "#00a587"
+    info: "#027aff"
+    warning: "#ffc200"
+    safe: "#5558a8"
+    care: "#ffe1a6"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "sans-serif" }
+    section-title:  { size: 20, weight: 700, lineHeight: 1.2, use: "Section title (오늘의 추천 아이템), gray-900" }
+    subsection:     { size: 18, weight: 700, lineHeight: 1.2, use: "Subsection title / large emphasis, gray-900" }
+    body:           { size: 16, weight: 400, lineHeight: 1.2, use: "Default body, CTA label, gray-900 / white-on-red" }
+    price:          { size: 16, weight: 700, lineHeight: 1.2, use: "Price — the headline, gray-900" }
+    search-input:   { size: 15, weight: 500, lineHeight: 18, use: "Search input value + placeholder, gray-900" }
+    card-title:     { size: 14, weight: 500, lineHeight: 1.2, use: "Product card title, gray-600 #666" }
+    chip-emphasis:  { size: 13, weight: 700, lineHeight: 1.2, use: "Compact emphasized chip" }
+    meta:           { size: 12, weight: 500, lineHeight: 1.2, use: "Meta / timestamp / region, gray-300 #999" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 6, lg: 20, full: 999 }
+  shadow:
+    none: "none — no box-shadow on any sampled element"
+    overlay-chip: "rgba(0,0,0,0.3) semi-transparent bubble for carousel counter overlay"
+    heart-inner: "10% black inner-fill under heart SVG so white stroke reads on any thumbnail"
+  components:
+    button-primary: "Bunjang Red #d80c18 fill, #ffffff text, no border, 4-6px radius — one per surface, highest-intent CTA only"
+    button-secondary: "#ffffff fill, #4c4c4c text, 1px solid #e5e5e5 border, 6px radius"
+    product-card: "81:100 portrait thumb (6px radius, #f6f6f6 placeholder), price 16/700, title 14/500 #666, meta 12/500 #999, heart top-right"
+    chip-safe: "안전결제 escrow chip — --color-safe-* indigo ladder (#5558a8)"
+    chip-care: "감정완료 luxury-auth chip — --color-care-* warm amber ladder (#ffe1a6)"
+    chip-info: "내폰시세 price-verified chip — --color-blue-* info blue (#027aff)"
+    heart-button: "outlined SVG + 10% black inner glow, solid --color-red-500 fill when tapped"
 ---
 
 # Design System Inspiration of Bunjang (번개장터)

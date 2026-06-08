@@ -10,6 +10,34 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=cake.me&sz=128"
 verified: "2026-06-01"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  colors:
+    primary: "#13AB67"
+    brand: "#13AB67"
+    canvas: "#FFFFFF"
+    foreground: "#000000"
+    heading: "#0C4129"
+    accent: "#378060"
+    muted: "#E2E6E4"
+    hairline: "#D1D6D4"
+    chip-text: "#0E0E0F"
+    on-primary: "#FFFFFF"
+  typography:
+    family: { sans: "Inter", cjk: "Apple SD Gothic Neo" }
+    heading: { size: 38, weight: 600, use: "Page headings, deep-green anchor" }
+    body:    { size: 16, weight: 400, use: "Standard reading text" }
+    control: { size: 14, weight: 400, use: "Button and control labels" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 4, lg: 4, full: 9999 }
+  shadow:
+    none: "none — separation via color and 1px borders, not drop shadows"
+  components:
+    button-primary: "Cake green #13AB67 fill, white text, 4px radius, 32px height, Inter 14px/400 — single most important action"
+    button-secondary: "transparent fill, #13AB67 text, 4px radius, 32px height — quieter Log In beside primary"
+    language-selector: "white bg, #000000 text, 1px solid #D1D6D4 border, 4px radius, 32px height"
+    chip-neutral: "#E2E6E4 fill, #0E0E0F text, 4px radius — receding metadata pills"
 ---
 
 # Design System Inspiration of Cake

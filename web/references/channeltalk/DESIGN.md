@@ -16,6 +16,53 @@ ds:
   type: system
   description: Channel Talk's open-source design system — Bezier (MIT). Inter + Noto KR/JP type stacks, token/component/icon packages, marketing-vs-product type cliff documented.
   og_image: "https://opengraph.githubassets.com/d5fd6836ec938de2c8399cf28b2ceabc49104fbbf86e937f9e89983f1b50d638/channel-io/bezier-react"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = live product-chrome accent Cobalt 400 (#329BE7); frontmatter primary_color (#4f46e5) is the registry indigo and is NOT a Bezier token — drift documented"
+  colors:
+    primary: "#329BE7"
+    primary-hover: "#327AB8"
+    brand: "#329BE7"
+    canvas: "#FFFFFF"
+    surface: "#FCFCFC"
+    canvas-tint: "#F7F7F8"
+    hairline: "#EFEFF0"
+    foreground: "#313234"
+    body: "#464748"
+    muted: "#A7A7AA"
+    on-primary: "#FFFFFF"
+    cta-dark: "#242428"
+    accent-light: "#47C8FF"
+    info: "#5E56F0"
+    success: "#31A552"
+    caution: "#EDBC40"
+    error: "#E94E58"
+  typography:
+    family: { sans: "Inter, NotoSansKR, NotoSansJP", mono: "ui-monospace, Cascadia Code, Source Code Pro, Menlo" }
+    size-16: { size: 16, weight: 400, lineHeight: 1.5, tracking: -0.1, use: "Standard body text (product chrome)" }
+    size-15: { size: 15, weight: 400, lineHeight: 1.33, tracking: -0.1, use: "Nav links, dense body" }
+    size-18: { size: 18, weight: 400, lineHeight: 1.33, use: "Subhead / product CTA label" }
+    size-22: { size: 22, weight: 700, lineHeight: 1.27, tracking: -0.4, use: "Section subhead" }
+    size-24: { size: 24, weight: 700, lineHeight: 1.33, tracking: -0.4, use: "Card heading" }
+    size-36: { size: 36, weight: 700, lineHeight: 1.22, tracking: -0.4, use: "Product-chrome max heading" }
+    hero-h1: { size: 64, weight: 700, lineHeight: 1.375, tracking: -1.5, use: "Marketing hero (brand-layer only)" }
+    section-h2-xl: { size: 54, weight: 600, lineHeight: 1.33, tracking: -1.5, use: "Marketing section h2 on dark" }
+    section-h2-lg: { size: 48, weight: 600, lineHeight: 1.33, tracking: -1, use: "Marketing section h2" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 8, chip: 8, product: 8, cta: 18, card: 20, band: 32, ladder-max: 44, full: 9999 }
+  shadow:
+    flat: "none (live homepage leans flat — depth via surface tint + border alpha)"
+    popover: "subtle drop-shadow + rgba(0,0,0,0.05) border (Level 3)"
+    modal: "full shadow + rgba(0,0,0,0.3) scrim (Level 4)"
+  components:
+    button-primary: "Marketing hero CTA — #242428 fill, white text, 18px radius, 8px 24px pad, Inter 18px/600"
+    button-secondary: "Subtle pill — rgba(0,0,0,0.05) fill, off-black text, 16px radius, 20px/700 label"
+    button-cobalt: "In-product primary — #329BE7 fill, white text, 6-8px radius, cobalt-400-20 ghost hover"
+    card: "Theatrical-colored feature card, 20px radius, 400px fixed height (marketing)"
+    cta-band: "Bottom conversion band, 32px radius, full-bleed"
+    input: "White surface, rgba(0,0,0,0.05) border, 6-8px radius, cobalt-400-30 focus ring"
+    nav-link: "Inter 15px/400, off-black, 2px active bottom-border indicator"
 ---
 
 # Design System Inspiration of Channel Talk
