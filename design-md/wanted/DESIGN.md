@@ -15,6 +15,52 @@ ds:
   url: "https://montage.wanted.co.kr/"
   type: system
   description: Wanted's Montage design system docs — components, foundations, Wanted Sans, and the brandcenter resource hub.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#0066ff"
+    brand-black: "#14191e"
+    accent-orange: "#ff5c00"
+    accent-pink: "#ff8eff"
+    accent-sky: "#00adff"
+    accent-violet: "#8364ff"
+    brand-grey: "#f0f4f8"
+    canvas: "#ffffff"
+    surface-subtle: "#f7f7f8"
+    heading: "#171719"
+    body: "#333333"
+    disabled: "#a0a0a0"
+    divider: "#e5e8eb"
+    error: "#f0483c"
+    success: "#00b97c"
+    warning: "#ffab00"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    display:    { size: 32, weight: 700, lineHeight: 1.25, use: "Brandcenter, montage hero" }
+    h1:         { size: 24, weight: 700, lineHeight: 1.4, use: "Job detail header" }
+    h2:         { size: 20, weight: 700, lineHeight: 1.4, use: "Section titles" }
+    subtitle:   { size: 16, weight: 600, lineHeight: 1.5, use: "JobCard position title" }
+    body:       { size: 14, weight: 400, lineHeight: 1.6, use: "Standard reading, filter chip label" }
+    body-small: { size: 13, weight: 400, lineHeight: 1.5, use: "Company name on JobCard" }
+    caption:    { size: 12, weight: 400, lineHeight: 1.5, use: "Metadata, dates, location" }
+    micro:      { size: 10, weight: 500, lineHeight: 1.4, use: "Footer link strip" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 64 }
+  rounded: { sm: 6, md: 8, lg: 12, full: 9999 }
+  shadow:
+    floating: "0px 4px 12px rgba(0,0,0,0.08)"
+    modal: "0px 8px 24px rgba(0,0,0,0.12)"
+  components:
+    button-primary: { type: button, bg: "#0066ff", fg: "#ffffff", radius: 8, padding: "7px 14px", font: "14px/400 Pretendard Variable", use: "Sign-up / apply CTA (filled)" }
+    button-secondary: { type: button, fg: "#171719", radius: 8, padding: "7px 14px", font: "14px/400 Pretendard Variable", use: "Header nav text button" }
+    filter-chip: { type: badge, fg: "#171719", radius: 10, padding: "7px 9px 7px 11px", font: "14px/400 Pretendard Variable", use: "Filter taxonomy chip, hover bg #f7f7f8" }
+    jobcard: { type: card, bg: "#ffffff", radius: 12, padding: "12px 16px", use: "Job posting card, no shadow, gutter separation" }
+    segmented: { type: tab, bg: "#f7f7f8", radius: 10, padding: "0 4px", font: "14px/400 Pretendard Variable", use: "Sort control track", active: "white segment 8px radius #333333 text" }
+    reward-badge: { type: badge, fg: "#ffffff", radius: 2, font: "12px/600 Pretendard Variable", use: "합격보상금 overlay on thumbnail" }
+    micro-tag: { type: badge, bg: "#a0a0a0", fg: "#ffffff", radius: 0, padding: "5px 7px", font: "10px/500 Pretendard Variable", use: "Footer legal pill" }
+    search-input: { type: input, fg: "#171719", radius: 9999, font: "14px/400 Pretendard Variable", use: "Header search trigger" }
+    avatar-pill: { type: avatar, bg: "#171719", radius: 9999, use: "Header user avatar 38x38" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Wanted (원티드)

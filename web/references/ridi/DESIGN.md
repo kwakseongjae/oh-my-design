@@ -10,6 +10,53 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=ridibooks.com&sz=128"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    charcoal: "#3d3d3d"
+    ink: "#222222"
+    white: "#ffffff"
+    blue: "#1f8ce6"
+    fg-secondary: "#5d5d5d"
+    fg-tertiary: "#9d9d9d"
+    fg-disabled: "#b5b5b5"
+    subtle: "#f9f9f9"
+    stroke: "#d0d0d0"
+    critical: "#f4361e"
+    positive: "#03aa5a"
+    highlight-cream: "#fff9ea"
+    sepia: "#f4ecd8"
+    night: "#1a1a1a"
+    reader-night-fg: "#d8d8d8"
+    disabled-bg: "#f0f0f0"
+  typography:
+    family: { sans: "Pretendard Std", mono: "SF Mono" }
+    display:       { size: 28, weight: 700, lineHeight: 1.29, use: "Section banners, hero" }
+    heading-lg:    { size: 22, weight: 700, lineHeight: 1.36, use: "Shelf titles" }
+    heading:       { size: 18, weight: 700, lineHeight: 1.44, use: "Modal titles, expanded BookCard title" }
+    title:         { size: 16, weight: 600, lineHeight: 1.38, use: "BookCard title, nav active label" }
+    body:          { size: 16, weight: 400, lineHeight: 1.50, use: "Primary body, button label" }
+    body-sm:       { size: 14, weight: 400, lineHeight: 1.43, use: "Author, publisher, metadata" }
+    caption:       { size: 13, weight: 400, lineHeight: 1.38, use: "Ratings, review counts, page counts" }
+    caption-sm:    { size: 12, weight: 400, lineHeight: 1.33, use: "Timestamps, footer chrome, badge text" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    soft: "0 2px 16px rgba(0,0,0,0.03)"
+    standard: "0 4px 16px rgba(0,0,0,0.12), 0 0 1px rgba(0,0,0,0.08)"
+    modal: "0 6px 24px rgba(0,0,0,0.12), 0 0 1.5px rgba(0,0,0,0.08)"
+  components:
+    button-primary: { type: button, bg: "#3d3d3d", fg: "#f9f9f9", radius: 8, padding: "10px 16px", font: "16/400", use: "Brand solid CTA (로그인, 구독하기); pressed #222222, disabled #f0f0f0/#b5b5b5" }
+    button-outline: { type: button, bg: "transparent", fg: "#222222", radius: 8, use: "Neutral outline secondary, 1px #d0d0d0 border" }
+    sale-tag: { type: badge, bg: "#f4361e", fg: "#ffffff", radius: 4, use: "Inline price discount flag (chip, not CTA)" }
+    button-subscription: { type: button, bg: "#1f8ce6", fg: "#ffffff", radius: 8, use: "RIDI Select / Manta CTA" }
+    book-card: { type: card, bg: "#ffffff", fg: "#222222", radius: 12, padding: "4px 0", use: "Iconic cover-art tile, 2:3 cover at 4px, two-layer shadow" }
+    chip: { type: badge, bg: "#f9f9f9", fg: "#222222", radius: 9999, padding: "0 12px", font: "13/500", use: "Genre filter", active: "#222222 bg, #ffffff text" }
+    input: { type: input, bg: "#f9f9f9", fg: "#222222", radius: 8, use: "Form input, 1px #d0d0d0 border, #1f8ce6 focus ring" }
+    nav-top: { type: tab, bg: "#ffffff", fg: "#5d5d5d", use: "Top bar, 64px", active: "#222222 weight 700" }
+    subscribed-badge: { type: badge, bg: "#03aa5a", fg: "#ffffff", radius: 9999, use: "구독 중 pill on eligible cards" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of RIDI (리디)

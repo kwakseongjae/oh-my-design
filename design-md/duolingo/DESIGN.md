@@ -14,6 +14,7 @@ omd: "0.1"
 tokens:
   source: reconciled
   extracted: "2026-06-08"
+  components_harvested: true
   note: "deterministic pick (#1a73e8) was a Google sign-in embed false-positive; canonical = Feather Green"
   colors:
     primary: "#58cc02"

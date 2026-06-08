@@ -16,6 +16,45 @@ ds:
   type: brand
   description: ElevenLabs brand guidelines covering logo, symbol, and product sub-brands.
   og_image: "https://elevenlabs.io/cover.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    canvas: "#ffffff"
+    surface: "#f5f5f5"
+    stone: "#f5f2ef"
+    black: "#000000"
+    secondary: "#4e4e4e"
+    muted: "#777169"
+    near-white: "#f6f6f6"
+    grid-cyan: "#7fffff"
+    border: "#e5e5e5"
+  typography:
+    family: { sans: "Inter", mono: "Geist Mono" }
+    display-hero: { size: 48, weight: 300, lineHeight: 1.08, tracking: -0.96, use: "Whisper-thin ethereal hero (Waldenburg)" }
+    section:      { size: 36, weight: 300, lineHeight: 1.17, use: "Light display section heading (Waldenburg)" }
+    card-heading: { size: 32, weight: 300, lineHeight: 1.13, use: "Light card titles (Waldenburg)" }
+    body-lg:      { size: 20, weight: 400, lineHeight: 1.35, use: "Introductions (Inter)" }
+    body:         { size: 18, weight: 400, lineHeight: 1.50, tracking: 0.18, use: "Standard reading text (Inter)" }
+    body-std:     { size: 16, weight: 400, lineHeight: 1.50, tracking: 0.16, use: "UI text (Inter)" }
+    nav:          { size: 15, weight: 500, lineHeight: 1.47, tracking: 0.15, use: "Navigation links / button (Inter)" }
+    button-upper: { size: 14, weight: 700, lineHeight: 1.10, tracking: 0.7, use: "Bold uppercase CTA (WaldenburgFH)" }
+    caption:      { size: 14, weight: 400, lineHeight: 1.43, tracking: 0.14, use: "Metadata (Inter)" }
+    code:         { size: 13, weight: 400, lineHeight: 1.85, use: "Code blocks (Geist Mono)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 40 }
+  rounded: { sm: 4, md: 12, lg: 24, full: 9999 }
+  shadow:
+    outline: "rgba(0,0,0,0.06) 0px 0px 0px 1px"
+    soft: "rgba(0,0,0,0.04) 0px 4px 4px"
+    card: "rgba(0,0,0,0.4) 0px 0px 1px, rgba(0,0,0,0.04) 0px 4px 4px"
+    warm: "rgba(78,50,23,0.04) 0px 6px 16px"
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 9999, padding: "0px 14px", use: "Primary black pill CTA" }
+    button-white: { type: button, bg: "#ffffff", fg: "#000000", radius: 9999, use: "Secondary white pill, shadow-bordered" }
+    button-stone: { type: button, bg: "#f5f2ef", fg: "#000000", radius: 30, padding: "12px 20px 12px 14px", use: "Signature warm stone CTA" }
+    button-upper: { type: button, fg: "#000000", font: "14px/700 WaldenburgFH uppercase", use: "Bold uppercase CTA label" }
+    card: { type: card, bg: "#ffffff", radius: 24, use: "Standard card, 1px #e5e5e5 border or shadow-as-border" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of ElevenLabs

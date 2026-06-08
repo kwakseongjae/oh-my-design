@@ -10,6 +10,50 @@ logo:
   slug: VoltAgent
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#00d992"
+    mint: "#2fd6a1"
+    emerald: "#10b981"
+    purple: "#818cf8"
+    cobalt: "#306cce"
+    canvas: "#050507"
+    surface: "#101010"
+    border: "#3d3a39"
+    text: "#f2f2f2"
+    on-primary: "#ffffff"
+    body: "#b8b3b0"
+    muted: "#8b949e"
+    success: "#008b00"
+    warning: "#ffba00"
+    danger: "#fb565b"
+    info: "#4cb3d4"
+  typography:
+    family: { sans: "system-ui", mono: "SFMono-Regular" }
+    display:     { size: 60, weight: 400, lineHeight: 1.00, tracking: -0.65, use: "Hero, compressed blocks" }
+    section:     { size: 36, weight: 400, lineHeight: 1.11, tracking: -0.9, use: "Section headings" }
+    subheading:  { size: 24, weight: 700, lineHeight: 1.33, tracking: -0.6, use: "Bold emphasis sub-heads" }
+    overline:    { size: 20, weight: 600, lineHeight: 1.40, tracking: 0.5, use: "Uppercase section labels" }
+    feature:     { size: 20, weight: 500, lineHeight: 1.40, use: "Card headings, feature names" }
+    body:        { size: 16, weight: 400, lineHeight: 1.50, use: "Body, nav links, buttons" }
+    caption:     { size: 14, weight: 400, lineHeight: 1.43, use: "Descriptions, metadata, badges" }
+    micro:       { size: 12, weight: 400, lineHeight: 1.33, use: "Smallest sans text" }
+    code:        { size: 14, weight: 400, lineHeight: 1.43, use: "Inline code, terminal output" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
+  shadow:
+    haze: "rgba(92,88,85,0.2) 0px 0px 15px"
+    dramatic: "rgba(0,0,0,0.7) 0px 20px 60px"
+  components:
+    button-ghost: { type: button, bg: "transparent", fg: "#ffffff", radius: 6, padding: "12px 16px", use: "Default interactive; 1px #3d3a39 border" }
+    button-primary: { type: button, bg: "#101010", fg: "#2fd6a1", radius: 6, padding: "12px 16px", use: "Powered-on CTA; mint text on dark, mint outline" }
+    button-container: { type: button, bg: "#101010", fg: "#f2f2f2", radius: 8, padding: "20px", use: "Card-like button for larger surfaces; 3px #3d3a39 border" }
+    card: { type: card, bg: "#101010", fg: "#f2f2f2", radius: 8, use: "Content card; 1px #3d3a39 border, 2px #00d992 if active; haze shadow" }
+    input: { type: input, bg: "#101010", fg: "#f2f2f2", use: "Inferred; #3d3a39 border, mint focus ring" }
+    nav: { type: tab, bg: "#050507", fg: "#f2f2f2", font: "14px/500", use: "Sticky top nav; links shift green on hover" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of VoltAgent

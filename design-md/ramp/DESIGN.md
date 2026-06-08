@@ -11,6 +11,68 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#e5fe54"
+    lime-hover: "#d4ed3f"
+    lime-100: "#f4fcc9"
+    lime-50: "#fbfee8"
+    ink: "#1c1b17"
+    ink-700: "#3d3c37"
+    ink-600: "#56554f"
+    canvas: "#f7f7f5"
+    surface: "#ffffff"
+    grey-500: "#74726b"
+    grey-400: "#9c9a92"
+    grey-300: "#c9c7bf"
+    grey-200: "#e3e1da"
+    grey-100: "#efeee9"
+    success: "#1a7f4b"
+    error: "#d93f3f"
+    warning: "#e08a1e"
+    info: "#2f6fe0"
+    on-primary: "#1c1b17"
+  typography:
+    family: { sans: "Lausanne", serif: "Burgess", mono: "Lausanne Mono" }
+    display-hero:   { size: 72, weight: 400, lineHeight: 1.06, tracking: -0.02, use: "Marketing hero headlines (Burgess serif)" }
+    display-lg:     { size: 52, weight: 400, lineHeight: 1.12, tracking: -0.02, use: "Section openers, editorial (serif)" }
+    heading-1:      { size: 40, weight: 500, lineHeight: 1.15, tracking: -0.015, use: "Page titles in product" }
+    heading-2:      { size: 30, weight: 500, lineHeight: 1.27, tracking: -0.01, use: "Section headers" }
+    heading-3:      { size: 22, weight: 500, lineHeight: 1.36, tracking: -0.01, use: "Card titles, sub-sections" }
+    subtitle:       { size: 18, weight: 500, lineHeight: 1.44, use: "Navigation, list headers" }
+    body-lg:        { size: 17, weight: 400, lineHeight: 1.59, use: "Marketing body, descriptions" }
+    body:           { size: 15, weight: 400, lineHeight: 1.53, use: "Standard UI reading text" }
+    body-sm:        { size: 13, weight: 400, lineHeight: 1.46, use: "Secondary info, table cells" }
+    caption:        { size: 12, weight: 400, lineHeight: 1.33, tracking: 0.01, use: "Timestamps, fine print, labels" }
+    overline:       { size: 11, weight: 600, lineHeight: 1.27, tracking: 0.08, use: "Eyebrow labels, uppercase section tags" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 6, md: 8, lg: 16, full: 9999 }
+  shadow:
+    ambient: "rgba(28,27,23,0.05) 0px 1px 2px"
+    standard: "rgba(28,27,23,0.18) 0px 8px 24px"
+    elevated: "rgba(28,27,23,0.18) 0px 12px 40px"
+  components:
+    button-primary: { type: button, bg: "#e5fe54", fg: "#1c1b17", radius: 8, padding: "0 20px", font: "15px / 500", use: "Primary CTA — Get started, Get a demo (44px)" }
+    button-ink: { type: button, bg: "#1c1b17", fg: "#ffffff", radius: 8, padding: "0 20px", font: "15px / 500", use: "Strong action on light surfaces, default product CTA" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#1c1b17", radius: 8, padding: "0 20px", font: "15px / 500", use: "Secondary action, 1px #c9c7bf border" }
+    button-ghost: { type: button, fg: "#3d3c37", radius: 8, padding: "0 12px", font: "15px / 500", use: "Low-emphasis inline (Cancel, Back)" }
+    button-danger: { type: button, bg: "#d93f3f", fg: "#ffffff", radius: 8, padding: "0 20px", font: "15px / 500", use: "Destructive confirmation" }
+    input: { type: input, bg: "#ffffff", fg: "#1c1b17", radius: 8, padding: "11px 14px", font: "15px / 400", use: "Standard form input, 1px #c9c7bf border, lime focus ring" }
+    input-filled: { type: input, bg: "#f7f7f5", fg: "#1c1b17", radius: 8, padding: "11px 14px", font: "15px / 400", use: "Dense forms, search bars" }
+    card: { type: card, bg: "#ffffff", radius: 12, padding: "24px", use: "Workhorse surface — metrics, lists, panels, 1px #e3e1da border" }
+    card-savings: { type: card, bg: "#f4fcc9", radius: 12, padding: "24px", use: "Savings callout, lime-tinted, 1px #e5fe54 border" }
+    card-dark: { type: card, bg: "#1c1b17", fg: "#ffffff", radius: 16, padding: "32px", use: "Marketing feature card, lime accents pop on black" }
+    badge-lime: { type: badge, bg: "#e5fe54", fg: "#1c1b17", radius: 6, padding: "3px 8px", font: "12px / 600", use: "NEW / AI brand-emphasis tags" }
+    badge-success: { type: badge, fg: "#1a7f4b", radius: 6, padding: "3px 8px", font: "12px / 600", use: "Approved, reconciled, savings confirmed" }
+    badge-neutral: { type: badge, bg: "#efeee9", fg: "#56554f", radius: 6, padding: "3px 8px", font: "12px / 600", use: "Categories, metadata, default status" }
+    tab: { type: tab, fg: "#74726b", font: "15px / 500", use: "In-page section switching", active: "#1c1b17 text, 2px bottom border #1c1b17" }
+    segmented: { type: tab, bg: "#efeee9", radius: 8, padding: "6px 14px", font: "14px / 500", use: "View toggles (Month / Quarter / Year)", active: "#ffffff bg, #1c1b17 text" }
+    toast: { type: toast, bg: "#1c1b17", fg: "#ffffff", radius: 10, padding: "12px 16px", font: "14px / 500", use: "Transient confirmation, lime accent" }
+    dialog: { type: dialog, bg: "#ffffff", radius: 16, padding: "28px", use: "Confirmations, create-card flow, approval prompts" }
+    toggle: { type: toggle, bg: "#1c1b17", radius: 9999, use: "Boolean settings, white thumb, off #c9c7bf" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Ramp

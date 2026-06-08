@@ -10,6 +10,53 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=lezhin.com&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  components_harvested: true
+  colors:
+    primary: "#eb0014"
+    primary-hover: "#ff5254"
+    primary-dark: "#c40017"
+    ink: "#111115"
+    deep-dark: "#09090b"
+    charcoal: "#222225"
+    text-soft: "#36363a"
+    text-subtle: "#6f6f77"
+    text-muted: "#a1a1a9"
+    border-muted: "#e9e9ec"
+    surface-muted: "#f4f4f5"
+    canvas: "#ffffff"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    section-header: { size: 24, weight: 700, lineHeight: 1.35, tracking: -0.36, use: "Section headers" }
+    title:         { size: 18, weight: 700, lineHeight: 1.4, use: "Smaller section headers" }
+    body:          { size: 16, weight: 400, lineHeight: 1.5, use: "Body default" }
+    label:         { size: 14, weight: 600, lineHeight: 1.4, use: "Label / UI text, button labels" }
+    label-medium:  { size: 14, weight: 500, lineHeight: 1.4, use: "Medium UI text" }
+    caption:       { size: 13, weight: 400, lineHeight: 1.4, use: "Caption / metadata" }
+    caption-small: { size: 12, weight: 400, lineHeight: 1.4, use: "Smallest metadata" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 56 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    subtle: "0 0 0 rgba(17,17,21,0.06)"
+    soft: "0 2px 12px 0 rgba(17,17,21,0.08)"
+    medium: "0 0 0 rgba(17,17,21,0.25)"
+    strong: "0 0 0 rgba(17,17,21,0.30)"
+  components:
+    button-primary: { type: button, bg: "#eb0014", fg: "#ffffff", radius: 4, padding: "0 12px", font: "14px/600", use: "Primary CTA, 48px height" }
+    button-primary-large: { type: button, bg: "#eb0014", fg: "#ffffff", radius: 4, padding: "0 16px", font: "16px/600", use: "Large primary CTA, 56px height" }
+    button-secondary: { type: button, bg: "#222225", fg: "#ffffff", radius: 4, padding: "0 12px", font: "14px/600", use: "Secondary, 48px height" }
+    button-tertiary: { type: button, bg: "#f4f4f5", fg: "#36363a", radius: 4, padding: "0 12px", font: "14px/600", use: "Tertiary, 48px height" }
+    button-outlined: { type: button, bg: "transparent", fg: "#36363a", radius: 4, padding: "0 20px", font: "14px/600", use: "Outlined, 1px #a1a1a9 border, 40px height" }
+    card-thumbnail: { type: card, bg: "#f4f4f5", radius: 4, use: "Comic thumbnail card, 2/3 portrait aspect" }
+    card-circle: { type: card, radius: 9999, use: "Circle thumb card, tracked ring" }
+    badge-chip: { type: badge, bg: "transparent", fg: "#6f6f77", radius: 9999, padding: "0 12px", use: "Default genre/tag chip, 1px #e9e9ec border, 32px height" }
+    badge-chip-selected: { type: badge, fg: "#c40017", radius: 9999, use: "Selected chip" }
+    tab-default: { type: tab, fg: "#111115", radius: 4, padding: "0 12px", use: "Default tab, 36px height" }
+    tab-selected: { type: tab, fg: "#ffffff", radius: 4, use: "Selected tab" }
+    dialog-dropdown: { type: dialog, bg: "#ffffff", radius: 4, padding: "12px 0", use: "Dropdown/select container, 1px #f4f4f5 border" }
 ---
 
 # Lezhin Comics

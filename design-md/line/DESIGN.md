@@ -16,6 +16,42 @@ ds:
   type: system
   description: LINE's shared design system for products across the LINE family.
   og_image: "https://designsystem.line.me/static/36a4ead41b7b972b1130287e849a14b1/73f08/SEO_IMG_1741574443.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  components_harvested: true
+  colors:
+    primary: "#07b53b"
+    primary-hover: "#069030"
+    canvas: "#ffffff"
+    ink: "#1e1e1e"
+    body: "#000000"
+    swiper-blue: "#007aff"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "SFPro", mono: "SFPro" }
+    hero:      { size: 70, weight: 700, use: "Hero headline, Life on LINE" }
+    service:   { size: 40, weight: 700, use: "Service names, section heads" }
+    title:     { size: 20, weight: 700, use: "Page title H1" }
+    body:      { size: 20, weight: 400, lineHeight: 1.5, use: "Body default, editorial scale" }
+    button:    { size: 16, weight: 700, lineHeight: 1.0, use: "Button / pill / nav labels" }
+    caption:   { size: 14, weight: 400, use: "Card descriptions, supporting copy" }
+    badge:     { size: 12, weight: 700, use: "Pill badge label" }
+  spacing: { xs: 4, sm: 8, md: 15, base: 16, lg: 24, xl: 32, xxl: 48, section: 100 }
+  rounded: { sm: 12, md: 12, lg: 12, full: 9999 }
+  shadow:
+    header: "0 1px 0 rgba(0,0,0,0.1)"
+    card: "0 2px 8px rgba(0,0,0,0.04)"
+    modal: "0 4px 24px rgba(0,0,0,0.15)"
+  components:
+    button-pill-active: { type: button, bg: "#07b53b", fg: "#ffffff", radius: 9999, padding: "8px 15px", font: "16px/700", use: "Active category pill, primary CTA" }
+    button-pill-inactive: { type: button, bg: "transparent", fg: "#1e1e1e", radius: 9999, padding: "8px 15px", font: "16px/700", use: "Unselected category pill" }
+    button-pill-pressed: { type: button, bg: "#069030", fg: "#ffffff", radius: 9999, padding: "8px 15px", use: "Hover/pressed primary pill" }
+    input-default: { type: input, bg: "#ffffff", fg: "#1e1e1e", radius: 12, padding: "12px 16px", font: "16px/400", use: "Form field, green focus border" }
+    card-service: { type: card, bg: "#ffffff", fg: "#1e1e1e", radius: 12, padding: "24px", use: "Service/feature card with icon + title" }
+    card-image: { type: card, bg: "#ffffff", radius: 12, use: "Image-dominant tile, STICKERS/WEBTOON" }
+    card-download: { type: card, bg: "#ffffff", radius: 12, padding: "12px", use: "App download tile, 56px touch target" }
+    badge-pill: { type: badge, bg: "#07b53b", fg: "#ffffff", radius: 9999, padding: "4px 10px", font: "12px/700", use: "Pill-style badge" }
 ---
 
 # Design System Inspiration of LINE

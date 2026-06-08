@@ -10,6 +10,56 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=yogiyo.co.kr&sz=128"
 verified: "2026-05-27"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#fa0050"
+    primary-deep: "#e00048"
+    canvas: "#ffffff"
+    surface: "#f5f5f7"
+    surface-strong: "#ececef"
+    heading: "#1a1a1a"
+    text-strong: "#333333"
+    body: "#666666"
+    text-secondary: "#999999"
+    text-tertiary: "#bbbbbb"
+    border: "#dddddd"
+    divider: "#ececef"
+    rating: "#ffb300"
+    success: "#21c17a"
+    warning: "#ff8a00"
+    error: "#f5444c"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    hero:        { size: 28, weight: 700, lineHeight: 1.3, use: "Event/promo banners, onboarding" }
+    section:     { size: 20, weight: 700, lineHeight: 1.35, use: "Row headers" }
+    restaurant:  { size: 16, weight: 600, lineHeight: 1.4, use: "Restaurant card title" }
+    menu:        { size: 15, weight: 500, lineHeight: 1.4, use: "Menu item title" }
+    body:        { size: 14, weight: 400, lineHeight: 1.5, use: "Descriptions, address" }
+    label:       { size: 16, weight: 600, lineHeight: 1.4, use: "Button labels (주문하기)" }
+    caption:     { size: 12, weight: 400, lineHeight: 1.4, use: "Delivery time, review count, fine print" }
+    price:       { size: 19, weight: 700, lineHeight: 1.2, use: "Item/cart total — tabular numerals" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 6, md: 12, lg: 16, full: 999 }
+  shadow:
+    card: "0px 2px 8px rgba(0,0,0,0.06)"
+    elevated: "0px 2px 12px rgba(0,0,0,0.08)"
+    toast: "0px 4px 12px rgba(0,0,0,0.16)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#fa0050", fg: "#ffffff", radius: 12, padding: "14px 20px", font: "16/600", use: "주문하기, 결제하기 — full-width sticky CTA" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#fa0050", radius: 12, padding: "14px 20px", font: "16/600", use: "쿠폰 받기, 메뉴 더보기" }
+    button-neutral: { type: button, bg: "#f5f5f7", fg: "#333333", radius: 12, padding: "14px 20px", font: "16/600", use: "취소, 닫기" }
+    search-field: { type: input, bg: "#f5f5f7", fg: "#333333", radius: 12, padding: "14px 16px", font: "16/400", use: "음식, 가게 검색" }
+    restaurant-card: { type: card, bg: "#ffffff", radius: 16, padding: "16px", use: "Browse workhorse — photo, name, rating, ETA" }
+    category-tile: { type: card, bg: "#f5f5f7", radius: 12, padding: "12px", use: "치킨/피자/한식 grid tiles" }
+    discount-badge: { type: badge, bg: "#fa0050", fg: "#ffffff", radius: 6, padding: "2px 6px", font: "11/700", use: "할인/쿠폰 promotion flag" }
+    filter-chip: { type: badge, bg: "#f5f5f7", fg: "#666666", radius: 999, padding: "6px 14px", font: "13/500", use: "빠른배달/무료배달/별점순 filters" }
+    top-tab: { type: tab, fg: "#999999", font: "15/600", active: "#fa0050 text + 2px bottom underline #fa0050", use: "배달/포장/요편의점 switcher" }
+    bottom-tab: { type: tab, fg: "#bbbbbb", font: "11/500", active: "#fa0050 icon + label", use: "홈/검색/찜/주문내역/MY" }
+    snackbar: { type: toast, bg: "#1a1a1a", fg: "#ffffff", radius: 12, padding: "12px 16px", font: "14/500", use: "Transient feedback, 3s auto-dismiss" }
 ---
 
 # Design System Inspiration of Yogiyo (요기요)

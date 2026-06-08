@@ -10,6 +10,43 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=cookpad.com&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#FF9933"
+    brand: "#FF9933"
+    canvas: "#F8F6F2"
+    surface: "#FFFFFF"
+    cream-tint: "#FEF9EE"
+    warm-gray: "#ECEBE9"
+    foreground: "#0F0F0F"
+    body: "#4A4A4A"
+    muted: "#4A4A4A"
+    on-primary: "#FFFFFF"
+    accent-yellow: "#E9B83F"
+    pale-yellow: "#FAF5D7"
+  typography:
+    family: { sans: "Noto Sans" }
+    section:  { size: 22, weight: 700, lineHeight: 1.3, use: "Section headings" }
+    title:    { size: 16, weight: 600, lineHeight: 1.4, use: "Recipe card title" }
+    button:   { size: 16, weight: 600, lineHeight: 1.4, use: "Primary button label" }
+    body:     { size: 16, weight: 400, lineHeight: 1.5, use: "Body / recipe meta / category label" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 8, md: 8, lg: 8, full: 9999 }
+  shadow:
+    soft: "none — depth via warm cream background separating white cards"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#FF9933", fg: "#FFFFFF", radius: 8, padding: "8px 24px", font: "16/600", use: "Main action — search, post recipe, sign up" }
+    button-secondary: { type: button, bg: "#FFFFFF", fg: "#FF9933", radius: 8, use: "Outline, 1px #FF9933 border — lower-emphasis beside primary" }
+    button-text: { type: button, fg: "#4A4A4A", use: "Transparent tertiary / navigation action" }
+    button-disabled: { type: button, bg: "#ECEBE9", fg: "#4A4A4A", use: "Unavailable action" }
+    category-tile: { type: button, fg: "#0F0F0F", radius: 8, padding: "16px", font: "16/400", use: "Ingredient/category navigation — large tappable icon + label" }
+    recipe-card: { type: card, bg: "#FFFFFF", fg: "#0F0F0F", radius: 8, use: "Food photo top, title + meta below, floating on cream page" }
+    promoted-card: { type: card, bg: "#FEF9EE", radius: 8, use: "Featured / promoted recipe region" }
+    search-input: { type: input, bg: "#FFFFFF", fg: "#0F0F0F", radius: 8, padding: "12px 16px", use: "Central recipe search; focus ring in #FF9933" }
+    rating-badge: { type: badge, bg: "#FAF5D7", fg: "#4A4A4A", radius: 8, use: "Ratings, つくれぽ counts, promoted labels" }
 ---
 
 # Design System Inspiration of Cookpad

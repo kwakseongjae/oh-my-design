@@ -10,6 +10,45 @@ logo:
   slug: xiaohongshu
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#ff2442"
+    red-pressed: "#e01f3d"
+    red-tint: "#ffecef"
+    canvas: "#ffffff"
+    surface: "#f5f5f5"
+    text-primary: "#333333"
+    text-secondary: "#999999"
+    text-tertiary: "#cccccc"
+    border: "#eeeeee"
+    divider: "#f0f0f0"
+    error: "#ff4d4f"
+    success: "#52c41a"
+  typography:
+    family: { sans: "PingFang SC", mono: "PingFang SC" }
+    header:    { size: 18, weight: 600, use: "Profile names, section titles" }
+    note-title: { size: 14, weight: 500, use: "Note title, two-line clamp" }
+    body:      { size: 15, weight: 400, use: "Note detail reading view" }
+    meta:      { size: 12, weight: 400, use: "Username, likes, timestamp" }
+    caption:   { size: 11, weight: 400, use: "Hashtags, fine labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24 }
+  rounded: { sm: 8, md: 16, lg: 20, full: 9999 }
+  shadow:
+    hover: "0 2px 12px rgba(0,0,0,0.06)"
+    floating: "0 -2px 16px rgba(0,0,0,0.1)"
+    modal: "0 4px 24px rgba(0,0,0,0.12)"
+  components:
+    button-primary: { type: button, bg: "#ff2442", fg: "#ffffff", radius: 20, padding: "6px 16px", font: "14px/500 PingFang SC", use: "Follow / buy CTA, press #e01f3d" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#333333", radius: 20, padding: "6px 16px", font: "14px/500 PingFang SC", use: "Following state, 1px #eeeeee border" }
+    input-search: { type: input, bg: "#f5f5f5", fg: "#333333", radius: 20, padding: "8px 16px", font: "14px/400 PingFang SC", use: "Pill search, red caret" }
+    note-card: { type: card, bg: "#ffffff", radius: 8, padding: "8px 10px", use: "Waterfall note card, variable height, no border" }
+    chip: { type: badge, bg: "#f5f5f5", fg: "#333333", radius: 16, padding: "4px 12px", font: "12px/400 PingFang SC", use: "Hashtag chip, branded uses #ffecef bg #ff2442 text" }
+    like-heart: { type: toggle, fg: "#999999", use: "Outline heart, active fill #ff2442 with scale-pop" }
+    action-sheet: { type: dialog, bg: "#ffffff", radius: 16, use: "Bottom sheet, 40% black backdrop" }
+    nav-tab: { type: tab, fg: "#999999", use: "Top/category tab", active: "#ff2442 text + red underline" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Xiaohongshu

@@ -51,11 +51,13 @@ tokens:
     subtle: "0px 1px 3px rgba(0,0,0,0.06)"
     standard: "0px 2px 8px rgba(0,0,0,0.08)"
     elevated: "0px 4px 12px rgba(0,0,0,0.12)"
+  components_harvested: true
   components:
-    button-fill-primary: "Toss Blue #3182f6 fill, white text, 8px radius"
-    button-weak-primary: "#e8f3ff weak bg, #3182f6 text"
-    button-fill-danger: "error #f04452 fill, white text"
-    card: "white surface, 16px radius, standard shadow"
+    button-fill-primary: { type: button, bg: "#3182f6", fg: "#ffffff", radius: 16, padding: "0 20px", font: "17/600", use: "Primary CTA on light surfaces, 56px tall" }
+    button-fill-dark: { type: button, bg: "#4e5968", fg: "#ffffff", radius: 16, padding: "0 20px", font: "17/600", use: "Strong action where blue too playful" }
+    button-fill-danger: { type: button, bg: "#f04452", fg: "#ffffff", radius: 16, padding: "0 20px", font: "17/600", use: "Destructive confirmation" }
+    input-box: { type: input, fg: "#333d4b", radius: 14, padding: "14px 16px", font: "17/400", use: "Standard form input, most-used variant" }
+    card: { type: card, bg: "#ffffff", radius: 16, use: "White surface with standard shadow" }
 ---
 
 # Design System Inspiration of Toss (토스)

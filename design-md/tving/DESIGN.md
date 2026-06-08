@@ -11,6 +11,46 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=tving.com&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#ff153c"
+    canvas: "#000000"
+    on-primary: "#ffffff"
+    surface: "#2e2e2e"
+    surface-modal: "#111111"
+    surface-overlay: "#262626"
+    text-secondary: "#b3b3b3"
+    text-tertiary: "#a3a3a3"
+    disabled-bright: "#d9d9d9"
+    muted: "#6e6e6e"
+    disabled-deep: "#4f4f4f"
+    cate-home: "#ff1f45"
+    cate-live: "#ff584a"
+    cate-clip: "#fd8163"
+    cate-vod: "#387dff"
+    cate-movie: "#7d57fc"
+    cate-ad: "#fcc800"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    hero:         { size: 43, weight: 700, use: "Hero headline, onboarding h2" }
+    cta:          { size: 19, weight: 700, use: "Primary CTA label" }
+    secondary-nav: { size: 16, weight: 400, use: "Secondary nav" }
+    footer:       { size: 16, weight: 400, use: "Footer link" }
+    nav-cta:      { size: 14, weight: 700, use: "Nav CTA 티빙 시작하기" }
+    body:         { size: 12, weight: 400, use: "Body baseline" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 3, md: 8, lg: 16, full: 9999 }
+  shadow:
+    none: "none"
+  components_harvested: true
+  components:
+    button-cta-hero: { type: button, bg: "#ff153c", fg: "#ffffff", radius: 12, font: "19/700", use: "Primary hero CTA" }
+    button-cta-nav: { type: button, bg: "#ff153c", fg: "#ffffff", radius: 8, font: "14/700", use: "Header inline CTA 티빙 시작하기" }
+    card-poster: { type: card, radius: 16, use: "Poster card, top-corners-only radius, art bleeds bottom edge" }
+    chip-meta: { type: badge, radius: 3, use: "Fine chip / tag / meta-label" }
+    avatar: { type: avatar, radius: 9999, use: "Avatar / circular icon" }
 ---
 
 # Design System Inspiration of TVING (티빙)

@@ -10,6 +10,61 @@ logo:
   slug: pinkoi
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "primary = §2 Mid Teal #10567b (--primary/--login base); purchase-exclusive CTA = coral #f16c5d"
+  colors:
+    primary: "#10567b"
+    primary-hover: "#064162"
+    primary-active: "#003354"
+    link: "#2e90b7"
+    canvas: "#f7f7f8"
+    surface: "#ffffff"
+    surface-hover: "#eeeeef"
+    border-light: "#e5e5e6"
+    border-mid: "#d3d3d5"
+    heading: "#39393e"
+    text-secondary: "#515156"
+    muted: "#66666a"
+    subtle: "#7c7c80"
+    faint: "#929295"
+    disabled: "#a8a8ab"
+    ink: "#202026"
+    purchase: "#f16c5d"
+    purchase-hover: "#e56051"
+    purchase-active: "#da5648"
+    error: "#e63349"
+    error-hover: "#d72136"
+    success: "#2cac97"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Helvetica Neue", cjk: "PingFang TC" }
+    section-heading: { size: 22, weight: 700, use: "Section headings — weight-driven hierarchy" }
+    card-title:      { size: 18, weight: 700, use: "Card titles, mid headings" }
+    subhead:         { size: 16, weight: 500, use: "Subheadings, stronger labels" }
+    body:            { size: 14, weight: 400, use: "Body, button text default, breadcrumbs" }
+    meta:            { size: 13, weight: 400, use: "Inline metadata, secondary text" }
+    badge:           { size: 12, weight: 400, use: "Badge text, small labels, breadcrumbs" }
+    caption:         { size: 11, weight: 400, use: "Captions, timestamps" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 2, md: 4, lg: 8, full: 9999 }
+  shadow:
+    soft: "rgba(32,32,38,0.12) 0px 2px 4px"
+    edge: "rgba(32,32,38,0.2) 0px 1px 1px"
+    modal: "rgba(32,32,38,0.4) 0px 8px 24px"
+  components:
+    button-primary: { type: button, bg: "#10567b", fg: "#ffffff", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Primary CTA, 1px #10567b border" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#39393e", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Cancel / neutral CTA, 1px #a8a8ab border" }
+    button-purchase: { type: button, bg: "#f16c5d", fg: "#ffffff", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Add to Cart / Buy Now (conversion-exclusive coral)" }
+    button-danger: { type: button, bg: "#e63349", fg: "#ffffff", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Destructive actions" }
+    button-success: { type: button, bg: "#2cac97", fg: "#ffffff", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Confirmations, follow" }
+    input: { type: input, bg: "#ffffff", fg: "#39393e", radius: 4, padding: "8px 12px", font: "14px / 400", use: "Standard text input, 1px #d3d3d5 border" }
+    product-card: { type: card, bg: "#ffffff", radius: 4, use: "6-column commerce product grid, image-led" }
+    card: { type: card, bg: "#ffffff", radius: 4, padding: "16px", use: "Generic content card, 1px #d3d3d5 border" }
+    card-badge: { type: badge, bg: "#10567b", fg: "#ffffff", radius: 2, padding: "1px 4px", font: "12px / 400", use: "Inline product card badge" }
+    discount-badge: { type: badge, bg: "#e63349", fg: "#ffffff", radius: 2, padding: "2px 6px", font: "12px / 700", use: "Discount ribbon on product image" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Pinkoi

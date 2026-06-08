@@ -15,6 +15,30 @@ ds:
   url: "https://newsroom.hyundaicard.com/front/board/Hyundai-Card-Design-Library?country=en"
   type: brand
   description: Hyundai Card's official Design Library — the brand's design philosophy, the proprietary Youandi typeface, and visual identity.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "deliberately monochrome — black IS the brand color; the only accents are functional content tags on DIVE"
+  colors:
+    ink: "#000000"
+    ground: "#ffffff"
+    tag-red: "#f36464"
+    tag-green: "#15a91f"
+  typography:
+    family: { sans: "Youandi", fallback: "Noto Sans KR" }
+    heading: { size: 26, weight: 600, use: "Section-level headings; pair with Youandi for brand moments" }
+    body:    { size: 13, weight: 400, use: "Running text, Noto Sans KR" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 24, full: 9999 }
+  shadow:
+    flat: "none"
+  components:
+    button-primary: { type: button, bg: "#ffffff", fg: "#000000", radius: 24, use: "Minimal monochrome pill, 48px tall, outline border" }
+    heading: { type: card, bg: "#ffffff", fg: "#000000", use: "Section heading, 26px/600, editorial spacing" }
+    page-surface: { type: card, bg: "#ffffff", fg: "#000000", use: "Base content canvas, white ground, generous whitespace" }
+    tag-red: { type: badge, fg: "#f36464", use: "Functional content category tag on DIVE only" }
+    tag-green: { type: badge, fg: "#15a91f", use: "Functional content category tag on DIVE only" }
+  components_harvested: true
 ---
 # Design System Inspiration of Hyundai Card
 

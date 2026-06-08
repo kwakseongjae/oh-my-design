@@ -11,6 +11,58 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#000000"
+    canvas: "#ffffff"
+    accent-red: "#e60012"
+    body: "#333333"
+    sub: "#666666"
+    muted: "#999999"
+    hairline: "#cccccc"
+    surface: "#f5f5f5"
+    surface-subtle: "#fafafa"
+    border: "#e5e5e5"
+    border-strong: "#dddddd"
+    success: "#2e9c4f"
+    caution: "#f5a623"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Hiragino Kaku Gothic ProN", mono: "Helvetica Neue" }
+    page-title:  { size: 24, weight: 700, lineHeight: 1.4, tracking: 0.02, use: "Top-level section / landing headers" }
+    section:     { size: 20, weight: 700, lineHeight: 1.4, tracking: 0.02, use: "Category and module titles" }
+    subheading:  { size: 17, weight: 700, lineHeight: 1.5, tracking: 0.02, use: "Card group headers, feature titles" }
+    brand-name:  { size: 13, weight: 700, lineHeight: 1.4, tracking: 0.04, use: "Product-card brand label" }
+    item-title:  { size: 13, weight: 400, lineHeight: 1.5, use: "Product name, 2-line clamp" }
+    price:       { size: 15, weight: 700, lineHeight: 1.3, use: "Price — black/red, tabular numerals" }
+    body:        { size: 14, weight: 400, lineHeight: 1.7, use: "Descriptions, reviews, long copy" }
+    caption:     { size: 12, weight: 400, lineHeight: 1.5, use: "Metadata, timestamps, fine print" }
+    micro:       { size: 11, weight: 400, lineHeight: 1.4, use: "Tab labels, tag chips, footnotes" }
+    badge:       { size: 11, weight: 700, lineHeight: 1.2, tracking: 0.02, use: "SALE / NEW / 残りわずか badges" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 2, md: 4, lg: 8, full: 9999 }
+  shadow:
+    toast: "rgba(0,0,0,0.85) background, no elevation shadow"
+    modal-scrim: "rgba(0,0,0,0.6)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 4, padding: "14px 24px", font: "15/700", use: "カートに入れる, 購入手続きへ, ログイン" }
+    button-reverse: { type: button, bg: "#ffffff", fg: "#000000", radius: 4, padding: "14px 24px", font: "15/700", use: "お気に入り登録, 続けて買い物" }
+    button-sale: { type: button, bg: "#e60012", fg: "#ffffff", radius: 4, padding: "14px 24px", font: "15/700", use: "タイムセール, 今すぐ購入 — urgency only" }
+    button-disabled: { type: button, bg: "#cccccc", fg: "#ffffff", radius: 4, use: "Out-of-stock / unavailable (在庫なし)" }
+    product-card: { type: card, bg: "#ffffff", radius: 0, use: "Photography-led grid unit, 3:4 portrait, gap-separated" }
+    badge-sale: { type: badge, bg: "#e60012", fg: "#ffffff", radius: 2, padding: "2px 6px", font: "11/700", use: "SALE overlay top-left of image" }
+    badge-new: { type: badge, bg: "#000000", fg: "#ffffff", radius: 2, padding: "2px 6px", font: "11/700", use: "NEW / NEW ARRIVAL overlay" }
+    badge-lowstock: { type: badge, bg: "#ffffff", fg: "#e60012", radius: 2, padding: "2px 6px", font: "11/700", use: "残りわずか — red border outline" }
+    badge-preorder: { type: badge, bg: "#666666", fg: "#ffffff", radius: 2, padding: "2px 6px", font: "11/700", use: "予約 pre-order flag" }
+    input: { type: input, bg: "#ffffff", fg: "#000000", radius: 4, padding: "12px 14px", font: "15/400", use: "Form field — neutral black focus, #cccccc default border" }
+    bottom-tab: { type: tab, bg: "#ffffff", fg: "#999999", font: "11/400", active: "#000000 icon + label", use: "ホーム/カテゴリー/お気に入り/カート/マイページ" }
+    filter-tab: { type: tab, bg: "#ffffff", fg: "#666666", font: "14/700", active: "#000000 text + 2px bottom underline #000000", use: "新着/人気/価格が安い in-page switcher" }
+    toast: { type: toast, fg: "#ffffff", radius: 4, padding: "12px 16px", font: "14/400", use: "Transient bottom-anchored confirmation" }
+    bottom-sheet: { type: dialog, bg: "#ffffff", radius: 12, padding: "20px", use: "Size/color/filter/sort — dominant mobile overlay" }
+    modal: { type: dialog, bg: "#ffffff", radius: 8, padding: "24px", use: "Confirmations, login prompts" }
 ---
 
 # Design System Inspiration of ZOZOTOWN

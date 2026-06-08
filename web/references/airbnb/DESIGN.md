@@ -64,15 +64,16 @@ tokens:
     hover: "rgba(0,0,0,0.08) 0px 4px 12px"
     listing-hover: "rgba(0,0,0,0.12) 0px 8px 24px"
     focus-ring: "rgb(255,255,255) 0px 0px 0px 4px"
+  components_harvested: true
   components:
-    button-primary: "Rausch #ff385c fill, white text, 8px radius, 14px 24px padding, 16px weight 600; active #e00b41; disabled #dddddd"
-    button-secondary: "white fill, #222222 text + 1px #222222 border, 8px radius"
-    search-orb: "Rausch #ff385c fill, white icon, 48px round (9999px), search submit"
-    icon-button-circle: "#f2f2f2 fill, #222222 icon, 50% radius, 32x32 dense control"
-    listing-card: "white surface, 12px radius, no shadow (photography-led); hover scale + listing-hover shadow"
-    card-standard: "white surface, 12px radius, 24px padding, three-layer card shadow"
-    search-field: "white fill, 1px #dddddd border, 50px pill radius, 66px tall header search bar"
-    category-pill: "transparent, #222222 text, 14px weight 500; active 2px #222222 bottom border"
+    button-primary: { type: button, bg: "#ff385c", fg: "#ffffff", radius: 8, padding: "14px 24px", font: "16px/600", use: "primary CTA; active #e00b41; disabled #dddddd" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#222222", radius: 8, use: "secondary action, 1px #222222 border" }
+    search-orb: { type: button, bg: "#ff385c", fg: "#ffffff", radius: 9999, use: "48px round search submit, white icon" }
+    icon-button-circle: { type: button, bg: "#f2f2f2", fg: "#222222", radius: 9999, use: "32x32 dense circular control" }
+    listing-card: { type: card, bg: "#ffffff", radius: 12, use: "no shadow (photography-led); hover scale + listing-hover shadow" }
+    card-standard: { type: card, bg: "#ffffff", radius: 12, padding: "24px", use: "three-layer card shadow" }
+    search-field: { type: input, bg: "#ffffff", radius: 9999, use: "66px tall header search bar, 1px #dddddd border, pill radius" }
+    category-pill: { type: tab, fg: "#222222", font: "14px/500", use: "category nav", active: "2px #222222 bottom border" }
 ---
 
 # Design System Inspiration of Airbnb

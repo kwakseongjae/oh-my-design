@@ -16,6 +16,56 @@ ds:
   type: system
   description: Sanity's accessible React toolkit for building apps with design tokens.
   og_image: "https://cdn.sanity.io/images/mos42crl/production/f378d0067c1406f4e3d3ed6874cd715c72f52d2c-1920x1080.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    canvas: "#0b0b0b"
+    black: "#000000"
+    cta: "#f36458"
+    interactive: "#0052ef"
+    blue-light: "#55beff"
+    blue-dim: "#afe3ff"
+    green: "#19d600"
+    surface: "#212121"
+    border: "#353535"
+    white: "#ffffff"
+    light-gray: "#ededed"
+    silver: "#b9b9b9"
+    medium-gray: "#797979"
+    error: "#dd0000"
+    gpc-green: "#37cd84"
+  typography:
+    family: { sans: "waldenburgNormal", mono: "IBM Plex Mono" }
+    display-hero: { size: 112, weight: 400, lineHeight: 1.00, tracking: -4.48, use: "Maximum impact, compressed tracking" }
+    hero-secondary: { size: 72, weight: 400, lineHeight: 1.05, tracking: -2.88, use: "Large section headers" }
+    section:      { size: 48, weight: 400, lineHeight: 1.08, tracking: -1.68, use: "Primary section anchors" }
+    heading-lg:   { size: 38, weight: 400, lineHeight: 1.10, tracking: -1.14, use: "Feature section titles" }
+    heading-md:   { size: 32, weight: 425, lineHeight: 1.24, tracking: -0.32, use: "Card titles, subsection headers" }
+    heading-sm:   { size: 24, weight: 425, lineHeight: 1.24, tracking: -0.24, use: "Smaller feature headings" }
+    subheading:   { size: 20, weight: 425, lineHeight: 1.13, tracking: -0.2, use: "Sub-section markers" }
+    body-lg:      { size: 18, weight: 400, lineHeight: 1.50, tracking: -0.18, use: "Intro paragraphs, descriptions" }
+    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body text" }
+    caption:      { size: 13, weight: 400, lineHeight: 1.30, tracking: -0.13, use: "Metadata, descriptions, tags" }
+    micro:        { size: 11, weight: 600, lineHeight: 1.00, use: "Uppercase labels, tiny badges" }
+    code:         { size: 15, weight: 400, lineHeight: 1.50, use: "Code blocks, technical content" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
+  rounded: { sm: 4, md: 6, lg: 12, full: 9999 }
+  shadow:
+    ring: "0px 0px 0px 1px #212121"
+    focus: "0 0 0 2px #0052ef"
+  components:
+    button-primary: { type: button, bg: "#f36458", fg: "#ffffff", radius: 9999, padding: "8px 16px", font: "16px/400 waldenburgNormal", use: "Primary CTA pill, hover #0052ef" }
+    button-secondary: { type: button, bg: "#0b0b0b", fg: "#b9b9b9", radius: 9999, padding: "8px 12px", use: "Dark pill, hover #0052ef" }
+    button-outlined: { type: button, bg: "#ffffff", fg: "#0b0b0b", radius: 9999, padding: "8px", use: "Light pill, 1px #0b0b0b border, hover #0052ef" }
+    button-ghost: { type: button, bg: "#212121", fg: "#b9b9b9", radius: 6, padding: "0px 12px", use: "Subtle button, 1px #212121 border, hover #0052ef" }
+    button-label: { type: button, bg: "#212121", fg: "#b9b9b9", font: "11px/600 waldenburgNormal", use: "Uppercase tab-like nav and filters" }
+    card-dark: { type: card, bg: "#212121", fg: "#ffffff", radius: 6, padding: "24px", use: "Dark content card, 1px #353535 border" }
+    card-feature: { type: card, bg: "#0b0b0b", radius: 12, padding: "32px", use: "Full-bleed feature card with overlaid text" }
+    input-text: { type: input, bg: "#0b0b0b", fg: "#b9b9b9", radius: 3, padding: "8px 12px", use: "Text input, 1px #212121 border, focus 2px #0052ef ring" }
+    badge-subtle: { type: badge, bg: "#ffffff", fg: "#0b0b0b", radius: 9999, padding: "8px", font: "13px", use: "Neutral subtle pill" }
+    badge-filled: { type: badge, bg: "#0b0b0b", fg: "#ffffff", radius: 9999, padding: "8px", font: "13px", use: "Neutral filled pill" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Sanity

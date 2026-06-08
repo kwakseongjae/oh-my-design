@@ -10,6 +10,35 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=lunit.io&sz=256"
 verified: "2026-05-14"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    hero-ink: "#151515"
+    body-ink: "#232f32"
+    signature-blue: "#1032cf"
+    bright-blue: "#2a4eef"
+    canvas: "#ffffff"
+    dark: "#000000"
+    footer: "#eff0f4"
+    on-dark: "#ffffff"
+  typography:
+    family: { sans: "Lexend", mono: "Lexend" }
+    hero:    { size: 78, weight: 400, lineHeight: 1.08, use: "Hero H1, ClashGrotesk" }
+    section: { size: 52, weight: 400, lineHeight: 1.10, use: "Section H2, ClashGrotesk" }
+    body-lg: { size: 20, weight: 300, lineHeight: 1.40, use: "Lead body, Lexend" }
+    body:    { size: 18, weight: 300, lineHeight: 1.40, use: "Standard body, Lexend" }
+    body-sm: { size: 15, weight: 400, use: "Small body, Lexend" }
+    nav:     { size: 13, weight: 400, use: "Uppercase nav, tracked, Lexend" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 4, lg: 4, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    cta-pill: { type: button, bg: "#000000", fg: "#ffffff", radius: 9999, use: "Primary marketing CTA Contact Us, the single pill" }
+    surface: { type: card, bg: "#ffffff", fg: "#232f32", radius: 0, use: "Square-cornered section/card/image surface" }
+    blue-band: { type: badge, bg: "#1032cf", fg: "#ffffff", radius: 0, use: "Signature blue system-affordance band" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Lunit

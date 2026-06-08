@@ -16,6 +16,50 @@ ds:
   type: brand
   description: Figma's official trademark and brand usage guidelines with logo downloads.
   og_image: "https://cdn.sanity.io/images/599r6htc/regionalized/342e17642c7afa81206490b0dd21c3e5724ae040-2400x1260.png?w=1200&q=70&fit=max&auto=format"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "Interface chrome is strictly black/white; chromatic hexes appear only in product content / hero gradients"
+  colors:
+    black: "#000000"
+    canvas: "#ffffff"
+    border: "#ebebeb"
+    dark-glass: "#292929"
+    muted: "#374151"
+    indigo: "#4D49FC"
+    focus: "#0d99ff"
+    input-border: "#e2e2e2"
+    accent-purple: "#a259ff"
+    accent-pink: "#f24e1e"
+    tile-lime: "#e4ff97"
+    tile-cyan: "#00b6ff"
+    tile-green: "#24cb71"
+    tile-lavender: "#c4baff"
+    tile-sage: "#95b9ac"
+  typography:
+    family: { sans: "figmaSans", mono: "figmaMono" }
+    display-hero: { size: 86, weight: 400, lineHeight: 1.00, tracking: -1.72, use: "Maximum impact hero, extreme tracking" }
+    section:      { size: 64, weight: 400, lineHeight: 1.10, tracking: -0.96, use: "Feature section titles" }
+    subheading:   { size: 26, weight: 540, lineHeight: 1.35, tracking: -0.26, use: "Emphasized section text" }
+    feature-title: { size: 24, weight: 700, lineHeight: 1.45, use: "Bold card headings" }
+    body-lg:      { size: 20, weight: 330, lineHeight: 1.35, tracking: -0.14, use: "Descriptions, intros" }
+    body:         { size: 16, weight: 330, lineHeight: 1.42, tracking: -0.14, use: "Standard body, nav, buttons" }
+    mono-label:   { size: 18, weight: 400, lineHeight: 1.30, tracking: 0.54, use: "Uppercase section labels (figmaMono)" }
+    mono-small:   { size: 12, weight: 400, lineHeight: 1.00, tracking: 0.6, use: "Uppercase tiny tags (figmaMono)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, pill: 50 }
+  rounded: { sm: 6, md: 8, lg: 16, full: 9999 }
+  shadow:
+    panel: "rgba(0,0,0,0.1) 0px 24px 70px 0px"
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 8, padding: "12px 21px", font: "16px/330 figmaSans", use: "Default Primary CTA (dashed 2px #0d99ff focus)" }
+    button-indigo: { type: button, bg: "#4D49FC", fg: "#ffffff", radius: 8, padding: "12px 20px", font: "18px/480 figmaSans", use: "Alt Primary on hero/product surfaces" }
+    button-outline: { type: button, bg: "transparent", fg: "#000000", radius: 8, padding: "12px 21px", font: "18px/330 figmaSans", use: "Secondary actions (Contact sales)" }
+    button-hero: { type: button, bg: "#000000", fg: "#ffffff", radius: 16, padding: "8px 24px 10px", font: "16px/400 figmaSans", use: "Oversized hero CTA" }
+    tab-pill: { type: tab, bg: "#ffffff", fg: "#000000", radius: 50, padding: "8px 18px 10px", font: "18px/480 figmaSans", active: "bg rgba(0,0,0,0.08)", use: "Product-area segmented nav" }
+    input: { type: input, bg: "#ffffff", radius: 16, padding: "16px", font: "figmaSans", use: "Figma Make / AI prompt panel (1px #e2e2e2 border)" }
+    community-card: { type: card, bg: "#ffffff", radius: 0, padding: "12px", use: "Community artifact card, bleed-edge image" }
+    tile-card: { type: card, bg: "#e4ff97", fg: "#000000", radius: 0, use: "Home template color tile (variants lime/cyan/green/lavender/sage)" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Figma

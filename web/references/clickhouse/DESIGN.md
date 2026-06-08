@@ -56,14 +56,15 @@ tokens:
     subtle: "rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px"
     elevated: "rgba(0,0,0,0.1) 0px 10px 15px -3px, rgba(0,0,0,0.1) 0px 4px 6px -4px"
     inset: "rgba(0,0,0,0.06) 0px 4px 4px, rgba(0,0,0,0.14) 0px 4px 25px inset"
+  components_harvested: true
   components:
-    button-neon-primary: "Neon Volt #faff69 fill, near-black #151515 text, 4px radius, 0px 16px padding; hover darkens, active text Pale Yellow"
-    button-dark-solid: "Near Black #141414 fill, white text, 4/8px radius, 12px 16px padding; hover #3a3a3a"
-    button-forest-green: "Forest Green #166534 fill, white text, primary conversion CTA"
-    button-ghost: "transparent fill, white text, 1px solid #4f5100 olive border, 4px radius"
-    card: "transparent/Near Black surface, 1px solid rgba(65,65,65,0.8) charcoal border, 4/8px radius"
-    card-neon-highlight: "dark card with 1px solid #faff69 neon border for featured/selected treatment"
-    performance-stat: "oversized number 72px+ weight 700-900, neon accents, brief description beneath"
+    button-neon-primary: { type: button, bg: "#faff69", fg: "#151515", radius: 4, padding: "0px 16px", use: "Neon Volt fill; hover darkens, active text pale yellow" }
+    button-dark-solid: { type: button, bg: "#141414", fg: "#ffffff", radius: 4, padding: "12px 16px", use: "Near-black fill; hover #3a3a3a" }
+    button-forest-green: { type: button, bg: "#166534", fg: "#ffffff", use: "Forest green fill — primary conversion CTA" }
+    button-ghost: { type: button, fg: "#ffffff", radius: 4, use: "Transparent fill, 1px solid #4f5100 olive border" }
+    card: { type: card, bg: "#141414", radius: 4, use: "Near-black surface, 1px charcoal border" }
+    card-neon-highlight: { type: card, bg: "#141414", radius: 4, use: "Dark card with 1px solid #faff69 neon border for featured/selected treatment" }
+    performance-stat: { type: card, fg: "#faff69", use: "Oversized number 72px+ weight 700-900, neon accents, brief description beneath" }
 ---
 
 # Design System Inspiration of ClickHouse

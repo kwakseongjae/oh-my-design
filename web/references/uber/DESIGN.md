@@ -15,6 +15,42 @@ ds:
   url: "https://baseweb.design"
   type: system
   description: Uber's React implementation of Base — a living component system.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#000000"
+    canvas: "#ffffff"
+    hover-gray: "#e2e2e2"
+    hover-light: "#f3f3f3"
+    chip-gray: "#efefef"
+    body: "#4b4b4b"
+    muted: "#afafaf"
+    link: "#0000ee"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "UberMove", mono: "system-ui" }
+    display:    { size: 52, weight: 700, lineHeight: 1.23, use: "Hero, billboard presence" }
+    section:    { size: 36, weight: 700, lineHeight: 1.22, use: "Major section anchors" }
+    card-title: { size: 32, weight: 700, lineHeight: 1.25, use: "Card and feature headings" }
+    subheading: { size: 24, weight: 700, lineHeight: 1.33, use: "Secondary section headers" }
+    nav:        { size: 18, weight: 500, lineHeight: 1.33, use: "Navigation links, prominent UI" }
+    body:       { size: 16, weight: 400, lineHeight: 1.50, use: "Body text, button labels" }
+    caption:    { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, small links" }
+    micro:      { size: 12, weight: 400, lineHeight: 1.67, use: "Fine print, legal" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    light: "rgba(0,0,0,0.12) 0px 4px 16px 0px"
+    medium: "rgba(0,0,0,0.16) 0px 2px 8px 0px"
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 9999, padding: "10px 12px", font: "16px/500", use: "Primary CTA — bold high-contrast pill" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#000000", radius: 9999, padding: "10px 12px", use: "Secondary action; hover #e2e2e2" }
+    chip-filter: { type: tab, bg: "#efefef", fg: "#000000", radius: 9999, padding: "14px 16px", use: "Nav chips / category selectors", active: "black bg #000000 with white #ffffff text" }
+    button-floating: { type: button, bg: "#ffffff", fg: "#000000", radius: 9999, padding: "14px", use: "Map controls, FAB; shadow rgba(0,0,0,0.16)" }
+    card: { type: card, bg: "#ffffff", radius: 8, use: "Content card defined by shadow not stroke" }
+    input: { type: input, bg: "#ffffff", fg: "#000000", radius: 8, use: "Form input, 1px solid #000000 border" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Uber

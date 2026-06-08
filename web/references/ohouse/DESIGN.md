@@ -10,6 +10,62 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=ohou.se&sz=128"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#35c5f0"
+    primary-pressed: "#1fb1db"
+    ink: "#222222"
+    canvas: "#ffffff"
+    blue-tint: "#e8f7fd"
+    blue-light: "#7fd9f5"
+    blue-deep: "#0e8fb8"
+    sale: "#fa3e3e"
+    error: "#e53935"
+    success: "#1caf5c"
+    warning: "#f5a623"
+    info: "#3b82f6"
+    star: "#ffb800"
+    gray-50: "#fafafa"
+    gray-100: "#f5f5f5"
+    gray-200: "#eeeeee"
+    gray-300: "#dddddd"
+    gray-500: "#aaaaaa"
+    gray-600: "#888888"
+    gray-700: "#555555"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    display: { size: 32, weight: 700, lineHeight: 44, tracking: "-0.02em", use: "Hero headlines, campaign banners" }
+    h1: { size: 24, weight: 700, lineHeight: 33, tracking: "-0.02em", use: "Page titles, section headers" }
+    h2: { size: 20, weight: 700, lineHeight: 28, tracking: "-0.01em", use: "Card group headings" }
+    h3: { size: 18, weight: 600, lineHeight: 26, tracking: "-0.01em", use: "Sub-sections, modal titles" }
+    title: { size: 16, weight: 600, lineHeight: 24, use: "Card titles, nav labels" }
+    body: { size: 14, weight: 400, lineHeight: 22, use: "Standard reading text" }
+    caption: { size: 13, weight: 400, lineHeight: 19, use: "Metadata, review counts" }
+    small: { size: 12, weight: 400, lineHeight: 17, use: "Timestamps, fine print" }
+    price-lg: { size: 18, weight: 700, lineHeight: 26, tracking: "-0.01em", use: "Featured product price, tnum" }
+  spacing: { sm: 8, md: 12, base: 16 }
+  rounded: { sm: 4, md: 8, lg: 12, xl: 16, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#35c5f0", fg: "#ffffff", radius: 8, font: "16px/700", use: "Primary CTA (구매하기, 장바구니 담기)" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#222222", radius: 8, use: "Secondary action (관심상품, 공유하기)" }
+    button-weak: { type: button, bg: "#f5f5f5", fg: "#222222", radius: 8, use: "Tertiary, in-card buttons" }
+    button-discount: { type: button, bg: "#fa3e3e", fg: "#ffffff", radius: 8, use: "Sale-emphasis CTA only" }
+    button-critical: { type: button, bg: "#ffffff", fg: "#e53935", radius: 8, use: "Destructive action (삭제, 취소)" }
+    search-field: { type: input, bg: "#f5f5f5", fg: "#222222", radius: 9999, padding: "0 16px", use: "Top-bar search" }
+    text-field: { type: input, bg: "#ffffff", fg: "#222222", radius: 8, padding: "0 14px", font: "14px/400", use: "Form field" }
+    product-card: { type: card, bg: "#ffffff", radius: 12, padding: "12px", use: "Product grid tile" }
+    ugc-card: { type: card, bg: "#ffffff", fg: "#ffffff", radius: 12, use: "UGC photo card, full-bleed image" }
+    story-card: { type: card, bg: "#ffffff", fg: "#222222", radius: 16, padding: "16px", use: "Story/project card" }
+    discount-badge: { type: badge, bg: "#fa3e3e", fg: "#ffffff", radius: 4, padding: "2px 6px", font: "12px/700", use: "Sale-percentage overlay" }
+    new-badge: { type: badge, bg: "#35c5f0", fg: "#ffffff", radius: 4, font: "11px/700", use: "NEW on fresh products" }
+    shipping-pill: { type: badge, bg: "#e8f7fd", fg: "#0e8fb8", radius: 9999, padding: "2px 8px", font: "11px/600", use: "무료배송 inline" }
+    rank-badge: { type: badge, bg: "#222222", fg: "#ffffff", radius: 4, font: "12px/700", use: "BEST / 1위 rank chip" }
+    chip: { type: tab, bg: "#ffffff", fg: "#222222", radius: 9999, padding: "0 14px", font: "13px/500", use: "Filter/category chip", active: "#35c5f0 bg, #ffffff text, no border" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Ohouse (오늘의집)

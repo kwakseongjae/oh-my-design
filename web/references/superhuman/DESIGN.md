@@ -16,6 +16,45 @@ ds:
   type: brand
   description: Superhuman's press and brand asset kit.
   og_image: "https://superhumanstatic.com/super-funnel/main/public/images/v3/social-share.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    mysteria: "#1b1938"
+    lavender: "#cbb7fb"
+    charcoal: "#292827"
+    link: "#714cb6"
+    white: "#ffffff"
+    cream: "#e9e5dd"
+    border: "#dcd7d3"
+  typography:
+    family: { sans: "Super Sans VF", mono: "Messina Mono" }
+    display-hero: { size: 64, weight: 540, lineHeight: 0.96, use: "Maximum compression, powerful headlines" }
+    section-display: { size: 48, weight: 460, lineHeight: 0.96, tracking: -1.32, use: "Section introductions" }
+    feature-title: { size: 28, weight: 540, lineHeight: 1.14, tracking: -0.63, use: "Feature block headlines" }
+    subheading:   { size: 26, weight: 460, lineHeight: 1.30, use: "Content sub-sections" }
+    body-heading: { size: 20, weight: 460, lineHeight: 1.20, use: "Bold content intros" }
+    emphasis:     { size: 18, weight: 540, lineHeight: 1.50, tracking: -0.135, use: "Medium-weight callouts" }
+    body:         { size: 16, weight: 460, lineHeight: 1.50, use: "Standard reading text" }
+    button:       { size: 16, weight: 600, lineHeight: 1.00, use: "Semi-bold UI labels" }
+    nav-link:     { size: 16, weight: 460, lineHeight: 1.20, use: "Navigation items" }
+    caption:      { size: 14, weight: 500, lineHeight: 1.20, tracking: -0.315, use: "Small labels, metadata" }
+    micro:        { size: 12, weight: 700, lineHeight: 1.50, use: "Badges, tags" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 80 }
+  rounded: { sm: 8, md: 12, lg: 16, full: 9999 }
+  shadow:
+    subtle: "1px solid #dcd7d3"
+  components:
+    button-cream: { type: button, bg: "#e9e5dd", fg: "#292827", radius: 8, padding: "12px 20px", font: "16px/460 Super Sans VF", use: "Signature CTA, warm muted luxurious" }
+    button-dark: { type: button, bg: "#292827", fg: "#ffffff", radius: 8, padding: "12px 20px", font: "16px/600 Super Sans VF", use: "Inverse CTA on light sections" }
+    button-hero: { type: button, bg: "#e9e5dd", fg: "#292827", radius: 8, padding: "14px 24px", font: "16px/600 Super Sans VF", use: "Hero CTA on purple gradient" }
+    button-ghost: { type: button, fg: "#714cb6", padding: "0", font: "16px/460 Super Sans VF", use: "Inline text link, underline" }
+    input-default: { type: input, bg: "#ffffff", fg: "#292827", radius: 8, padding: "12px 16px", font: "16px/460 Super Sans VF", use: "Standard input, 1px #dcd7d3 border, focus #292827" }
+    card-content: { type: card, bg: "#ffffff", radius: 16, padding: "24px", use: "Clean minimal default card, 1px #dcd7d3 border" }
+    card-dark: { type: card, bg: "#292827", fg: "#e9e5dd", radius: 16, padding: "24px", use: "Card on dark sections, 1px #292827 border" }
+    card-screenshot: { type: card, radius: 12, padding: "0", use: "Product UI image, clean edges, minimal framing" }
+    badge-default: { type: badge, bg: "#e9e5dd", fg: "#292827", radius: 8, padding: "4px 10px", font: "12px/600 Super Sans VF", use: "Warm cream micro-tag" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Superhuman

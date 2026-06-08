@@ -16,6 +16,47 @@ ds:
   type: brand
   description: Supabase's brand guidelines with logos and integration button specs.
   og_image: "https://supabase.com/images/og/supabase-og.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#3ecf8e"
+    green-link: "#00c573"
+    near-black: "#0f0f0f"
+    canvas: "#171717"
+    border-dark: "#242424"
+    border: "#2e2e2e"
+    border-mid: "#363636"
+    border-light: "#393939"
+    charcoal: "#434343"
+    dark-gray: "#4d4d4d"
+    mid-gray: "#898989"
+    light-gray: "#b4b4b4"
+    near-white: "#efefef"
+    off-white: "#fafafa"
+  typography:
+    family: { sans: "Circular", mono: "Source Code Pro" }
+    display-hero: { size: 72, weight: 400, lineHeight: 1.00, use: "Maximum density, zero waste" }
+    section:      { size: 36, weight: 400, lineHeight: 1.25, use: "Feature section titles" }
+    card-title:   { size: 24, weight: 400, lineHeight: 1.33, tracking: -0.16, use: "Slight negative tracking" }
+    subheading:   { size: 18, weight: 400, lineHeight: 1.56, use: "Secondary headings" }
+    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body text" }
+    nav-link:     { size: 14, weight: 500, lineHeight: 1.43, use: "Navigation items" }
+    button:       { size: 14, weight: 500, lineHeight: 1.14, use: "Button labels" }
+    caption:      { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, tags" }
+    small:        { size: 12, weight: 400, lineHeight: 1.33, use: "Fine print, footer links" }
+    code-label:   { size: 12, weight: 400, lineHeight: 1.33, tracking: 1.2, use: "Uppercase technical labels (Source Code Pro)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
+  rounded: { sm: 6, md: 8, lg: 16, full: 9999 }
+  shadow:
+    focus: "rgba(0,0,0,0.1) 0px 4px 12px"
+  components:
+    button-primary: { type: button, bg: "#0f0f0f", fg: "#fafafa", radius: 9999, padding: "8px 32px", font: "14px/500 Circular", use: "Primary CTA, 1px #fafafa border" }
+    button-secondary: { type: button, bg: "#0f0f0f", fg: "#fafafa", radius: 9999, padding: "8px 32px", font: "14px/500 Circular", use: "Secondary CTA, 1px #2e2e2e border, opacity 0.8" }
+    button-ghost: { type: button, fg: "#fafafa", radius: 6, padding: "8px", font: "14px/500 Circular", use: "Tertiary actions, icon buttons" }
+    card-standard: { type: card, bg: "#171717", radius: 16, padding: "24px", use: "Feature card, 1px #2e2e2e border, no shadow" }
+    tab-pill: { type: tab, radius: 9999, font: "14px/500 Circular", active: "Active green accent or lighter surface", use: "Pill tabs, 1px #2e2e2e border" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Supabase

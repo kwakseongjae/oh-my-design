@@ -10,6 +10,58 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=doctornow.co.kr&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#FF8D00"
+    primary-600: "#FD7E14"
+    primary-700: "#F76707"
+    primary-800: "#E8590C"
+    primary-900: "#D9480F"
+    primary-100: "#FFF4E6"
+    primary-300: "#FFD8A8"
+    surface-10: "#FBFCFD"
+    surface-20: "#F7F9FA"
+    surface-40: "#F1F3F6"
+    border: "#DFE1E2"
+    placeholder: "#A9AEB1"
+    meta: "#8D9297"
+    body: "#71767A"
+    body-root: "#565C65"
+    strong: "#3D4551"
+    heading: "#1C1D1F"
+    canvas: "#FFFFFF"
+    info: "#228BE6"
+    yellow: "#FCC419"
+    error: "#FA5252"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    h-32:    { size: 32, weight: 700, lineHeight: 1.31, use: "Large display heading" }
+    h-28:    { size: 28, weight: 700, lineHeight: 1.36, use: "Heading" }
+    h-24:    { size: 24, weight: 700, lineHeight: 1.33, use: "Section heading" }
+    h-22:    { size: 22, weight: 700, lineHeight: 1.36, use: "Section heading" }
+    h-20:    { size: 20, weight: 600, lineHeight: 1.4, use: "Subheading" }
+    body-17: { size: 17, weight: 400, lineHeight: 1.41, use: "Body / button label at 600" }
+    body-16: { size: 16, weight: 400, lineHeight: 1.5, use: "Body default" }
+    body-15: { size: 15, weight: 400, lineHeight: 1.47, use: "Body small" }
+    caption: { size: 12, weight: 600, lineHeight: 1.5, use: "Meta / timestamps" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
+  rounded: { sm: 8, md: 12, lg: 32, full: 9999 }
+  shadow:
+    floating: "0px 2px 8px rgba(0,0,0,0.08)"
+    modal: "0px 4px 8px rgba(0,0,0,0.08)"
+    dropdown: "0px 8px 16px rgba(0,0,0,0.16)"
+  components:
+    button-primary: { type: button, bg: "#FD7E14", fg: "#FFFFFF", radius: 12, font: "17px/600", use: "Primary solid CTA" }
+    button-outline: { type: button, bg: "#FFFFFF", fg: "#FD7E14", radius: 12, padding: "16px 24px", font: "16px/600", use: "Primary outline (1px #FD7E14 border)" }
+    button-disabled: { type: button, bg: "#DFE1E2", fg: "#A9AEB1", radius: 12, padding: "16px 24px", font: "16px/500", use: "Ghost / disabled" }
+    tag-primary: { type: badge, bg: "#FFF4E6", fg: "#F76707", radius: 9999, padding: "4px 10px", font: "12px/600", use: "Primary tag chip" }
+    tag-gray: { type: badge, bg: "#F1F3F6", fg: "#71767A", radius: 9999, padding: "4px 10px", font: "12px/500", use: "Gray tag chip" }
+    card: { type: card, bg: "#FFFFFF", radius: 32, padding: "24px", use: "Content card, 1px #DFE1E2 border" }
+    section-card: { type: card, bg: "#F1F3F6", radius: 32, use: "Section background card" }
+    nav-item: { type: tab, bg: "transparent", fg: "#DFE1E2", radius: 8, padding: "0px 12px", font: "16px/400", active: "text #FD7E14, weight 700", use: "Navigation item" }
+  components_harvested: true
 ---
 
 # Dr.Now (닥터나우)

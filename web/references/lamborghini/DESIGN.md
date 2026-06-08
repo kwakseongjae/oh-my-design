@@ -10,6 +10,60 @@ logo:
   slug: lamborghini
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  components_harvested: true
+  colors:
+    primary: "#ffc000"
+    primary-alt: "#f4c01a"
+    canvas: "#000000"
+    on-primary: "#000000"
+    white: "#ffffff"
+    gold-dark: "#917300"
+    gold-text: "#ffce3e"
+    cyan: "#29abe2"
+    link: "#3860be"
+    teal: "#1eaedb"
+    charcoal: "#202020"
+    dark-iron: "#181818"
+    near-white: "#f8f8f8"
+    mist: "#e6e6e6"
+    smoke: "#f5f5f5"
+    graphite: "#494949"
+    ash: "#7d7d7d"
+    steel: "#969696"
+    slate: "#666666"
+    iron: "#555555"
+    shadow: "#313131"
+  typography:
+    family: { sans: "LamboType", mono: "LamboType" }
+    hero-display: { size: 120, weight: 400, lineHeight: 0.92, use: "Hero, uppercase, maximum impact" }
+    display-2:    { size: 80, weight: 400, lineHeight: 1.13, use: "Major section titles, uppercase" }
+    section:      { size: 54, weight: 400, lineHeight: 1.19, use: "Section title, uppercase" }
+    subsection:   { size: 40, weight: 400, lineHeight: 1.15, use: "Sub-section, uppercase" }
+    feature:      { size: 27, weight: 400, lineHeight: 1.37, use: "Feature heading, uppercase" }
+    card-title:   { size: 24, weight: 400, use: "Card title" }
+    body-large:   { size: 18, weight: 400, lineHeight: 1.56, use: "Body large" }
+    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Primary body / UI" }
+    button:       { size: 14, weight: 400, lineHeight: 1.00, tracking: 0.2, use: "Ghost buttons, uppercase" }
+    caption:      { size: 14, weight: 700, lineHeight: 1.14, tracking: -0.42, use: "Caption, uppercase, negative tracking" }
+    label:        { size: 12, weight: 400, lineHeight: 1.83, tracking: 0.96, use: "Micro labels, badges, uppercase" }
+    micro:        { size: 10, weight: 400, lineHeight: 1.00, tracking: 0.225, use: "Smallest text, uppercase" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 56 }
+  rounded: { sm: 0, md: 2, lg: 20, full: 9999 }
+  shadow:
+    overlay: "rgba(0,0,0,0.7)"
+    fog: "rgba(0,0,0,0.5)"
+    mist: "rgba(0,0,0,0.25)"
+  components:
+    button-gold: { type: button, bg: "#ffc000", fg: "#000000", radius: 0, padding: "24px", font: "16px/400", use: "Primary CTA — Discover More, Tickets" }
+    button-ghost: { type: button, bg: "transparent", fg: "#ffffff", radius: 0, padding: "16px", use: "Secondary CTA on dark, 1px white border 50% opacity" }
+    button-white: { type: button, bg: "#ffffff", fg: "#202020", radius: 0, use: "Light-mode primary CTA" }
+    button-black: { type: button, bg: "#000000", fg: "#202020", radius: 0, use: "Inverted CTA on light sections" }
+    button-gray: { type: button, bg: "#969696", fg: "#202020", radius: 0, use: "Subtle/tertiary action" }
+    card-standard: { type: card, bg: "#202020", radius: 0, use: "Card/panel on black canvas, full-bleed photo + white text" }
+    badge-tag: { type: badge, bg: "#969696", fg: "#ffffff", radius: 2, padding: "8px", font: "10px", use: "Metallic pill tag" }
 ---
 
 # Design System Inspiration of Lamborghini

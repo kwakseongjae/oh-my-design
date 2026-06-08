@@ -11,6 +11,71 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  components_harvested: true
+  colors:
+    primary: "#534dff"
+    primary-hover: "#403ae6"
+    primary-tint: "#eeedff"
+    canvas: "#ffffff"
+    ink: "#152632"
+    sky: "#8dbbff"
+    gradient-end: "#7b6cff"
+    error: "#e5484d"
+    success: "#1fa971"
+    warning: "#f5a623"
+    info: "#3e63dd"
+    grey-50: "#f7f8fa"
+    grey-100: "#f0f2f5"
+    grey-200: "#e3e6eb"
+    grey-300: "#cbd1d9"
+    grey-400: "#9aa4b2"
+    grey-500: "#6b7585"
+    grey-600: "#4a5360"
+    grey-700: "#333b45"
+    grey-800: "#1f2832"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Inter", mono: "SF Mono" }
+    display-hero: { size: 48, weight: 700, lineHeight: 1.25, tracking: -0.02, use: "Landing hero headline" }
+    display:      { size: 36, weight: 700, lineHeight: 1.33, tracking: -0.02, use: "Section headers" }
+    heading-1:    { size: 28, weight: 700, lineHeight: 1.43, tracking: -0.01, use: "Feature titles" }
+    heading-2:    { size: 22, weight: 700, lineHeight: 1.45, tracking: -0.01, use: "Card/block headings" }
+    heading-3:    { size: 18, weight: 600, lineHeight: 1.56, use: "Sub-sections" }
+    subtitle:     { size: 16, weight: 600, lineHeight: 1.63, use: "List headers, labels" }
+    body-large:   { size: 16, weight: 400, lineHeight: 1.75, use: "Lead paragraphs" }
+    body:         { size: 15, weight: 400, lineHeight: 1.73, use: "Standard reading text" }
+    body-small:   { size: 14, weight: 400, lineHeight: 1.57, use: "Secondary text" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.50, tracking: 0.01, use: "Timestamps, fine print" }
+    amount:       { size: 24, weight: 600, use: "Invoice & financial figures, tabular nums" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
+  rounded: { sm: 6, md: 8, lg: 16, full: 9999 }
+  shadow:
+    subtle: "0 1px 3px rgba(21,38,50,0.06)"
+    standard: "0 4px 16px rgba(21,38,50,0.10)"
+    elevated: "0 8px 24px rgba(21,38,50,0.12)"
+    modal: "0 16px 48px rgba(21,38,50,0.20)"
+  components:
+    button-primary: { type: button, bg: "#534dff", fg: "#ffffff", radius: 8, padding: "0 24px", font: "15px/600", use: "Primary CTA, 44px height" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#534dff", radius: 8, padding: "0 24px", font: "15px/600", use: "Secondary paired action, 1px indigo border" }
+    button-ghost: { type: button, bg: "transparent", fg: "#333b45", radius: 8, padding: "0 16px", font: "15px/600", use: "Low-emphasis nav actions" }
+    button-danger: { type: button, bg: "#e5484d", fg: "#ffffff", radius: 8, padding: "0 24px", font: "15px/600", use: "Destructive confirmation" }
+    input-default: { type: input, bg: "#ffffff", fg: "#1f2832", radius: 8, padding: "11px 14px", font: "15px/400", use: "Standard form field" }
+    input-select: { type: input, bg: "#ffffff", radius: 8, padding: "11px 14px", use: "Single choice from list" }
+    card-standard: { type: card, bg: "#ffffff", radius: 12, padding: "24px", use: "Feature blocks, content panels" }
+    card-featured: { type: card, bg: "#ffffff", radius: 16, padding: "32px", use: "Hero/marketing cards, pricing highlight" }
+    card-compact: { type: card, bg: "#ffffff", radius: 8, padding: "16px", use: "List rows, dense cards" }
+    badge-brand: { type: badge, bg: "#534dff", fg: "#ffffff", radius: 6, padding: "2px 8px", font: "12px/600", use: "Primary emphasis NEW" }
+    badge-soft-brand: { type: badge, bg: "#eeedff", fg: "#403ae6", radius: 6, padding: "2px 8px", font: "12px/600", use: "Subtle category/status tag" }
+    badge-success: { type: badge, fg: "#1fa971", radius: 6, padding: "2px 8px", font: "12px/600", use: "Approved/completed" }
+    tab-underline: { type: tab, bg: "transparent", fg: "#6b7585", padding: "12px 16px", font: "15px/600", active: "#534dff text + 2px bottom border #534dff", use: "Section navigation" }
+    tab-segmented: { type: tab, bg: "#f0f2f5", fg: "#6b7585", radius: 8, padding: "8px 16px", font: "14px/600", active: "#ffffff bg + #152632 text", use: "View switching" }
+    toast-default: { type: toast, bg: "#152632", fg: "#ffffff", radius: 8, padding: "12px 16px", font: "14px/500", use: "Transient auto-dismiss notification" }
+    dialog-modal: { type: dialog, bg: "#ffffff", fg: "#152632", radius: 16, padding: "32px", use: "Confirmation, forms, detail overlays" }
+    dialog-drawer: { type: dialog, bg: "#ffffff", radius: 0, padding: "24px", use: "Side panel, detail view, filters" }
+    toggle-default: { type: toggle, bg: "#534dff", radius: 9999, use: "Boolean settings, feature flags (off #cbd1d9)" }
 ---
 
 # Design System Inspiration of LayerX

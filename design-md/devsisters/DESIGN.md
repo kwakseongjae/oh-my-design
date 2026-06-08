@@ -10,6 +10,35 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=devsisters.com&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#FF5F00"
+    bright-orange: "#FF8200"
+    yellow: "#FFCE00"
+    black: "#000000"
+    canvas: "#FFFFFF"
+    peach: "#F8E8DA"
+    border: "#DCDCDC"
+    body: "#666666"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    h1:      { size: 32, weight: 900, use: "English display H1, all-caps azo-sans-web" }
+    h2:      { size: 24, weight: 800, use: "H2 / CTA labels" }
+    h3:      { size: 18, weight: 700, use: "H3 subheadings" }
+    body:    { size: 16, weight: 500, lineHeight: 1.5, use: "Pretendard Korean body" }
+    label:   { size: 14, weight: 500, use: "Nav links, footer items" }
+  spacing: { sm: 5.5, md: 12, base: 16, lg: 20, xl: 24 }
+  rounded: { sm: 8, md: 20, lg: 36, full: 9999 }
+  components:
+    button-primary: { type: button, bg: "#FF5F00", fg: "#FFFFFF", radius: 36, padding: "12px 24px", font: "azo-sans-web/800", use: "Orange primary CTA" }
+    button-secondary: { type: button, bg: "#000000", fg: "#FFFFFF", radius: 36, padding: "12px 24px", font: "azo-sans-web/800", use: "Black secondary pill button" }
+    nav: { type: tab, bg: "#FF5F00", fg: "#FFFFFF", padding: "0px 20px", font: "azo-sans-web/800", use: "Top nav bar" }
+    card: { type: card, bg: "#FFFFFF", radius: 8, use: "Standard content card, 1px #DCDCDC border" }
+    feature-card: { type: card, bg: "#FFFFFF", radius: 20, padding: "52px 80px", use: "News/feature card" }
+    badge: { type: badge, bg: "#FFCE00", fg: "#000000", radius: 36, padding: "5.5px 12px", use: "Accent tag badge" }
+  components_harvested: true
 ---
 
 # Devsisters

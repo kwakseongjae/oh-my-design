@@ -10,6 +10,32 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=melon.com&sz=128"
 verified: "2026-06-01"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    signature-green: "#00cd3c"
+    green-dark: "#00b523"
+    green-login: "#00d344"
+    text-primary: "#1a1a1a"
+    text-body: "#666666"
+    text-muted: "#999999"
+    red-accent: "#df2607"
+    canvas: "#ffffff"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    heading: { size: 14, weight: 400, use: "Headings/primary text, near-black #1a1a1a" }
+    control: { size: 13, weight: 400, use: "Interactive controls and inputs" }
+    body:    { size: 12, weight: 400, use: "Dense list rows and metadata, muted gray" }
+  spacing: { xs: 2, sm: 4, md: 8, base: 12, lg: 16, xl: 24, xxl: 32, section: 48 }
+  rounded: { sm: 0, md: 0, lg: 0, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    login-button: { type: button, bg: "#00d344", fg: "#ffffff", radius: 0, font: "14px/400", use: "Primary login, sharp-cornered green" }
+    search-input: { type: input, bg: "#ffffff", fg: "#999999", radius: 0, font: "13px/400", use: "Search field, light-gray text" }
+    list-row: { type: listItem, bg: "#ffffff", fg: "#666666", radius: 0, font: "12px/400", use: "Dense chart/list row text" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Melon

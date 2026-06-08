@@ -53,15 +53,16 @@ tokens:
   shadow:
     card: "rgba(0,0,0,0.22) 3px 5px 30px 0px"
     nav-glass: "backdrop-filter: saturate(180%) blur(20px)"
+  components_harvested: true
   components:
-    button-marketing-pill: "Apple Blue #0071e3 fill, white text, 980px radius, 11px 21px, 17px weight 400"
-    button-neutral-pill: "#1d1d1f fill, white text, 980px radius, paired secondary CTA"
-    button-commerce-compact: "Apple Blue #0071e3 fill, white text, 8px radius, 8px 15px, 14px — checkout actions"
-    card-white: "#ffffff surface, 28px radius, no border, no shadow — lifts via color contrast"
-    card-dark: "#000000 surface, white text, 28px radius — max-contrast product detail"
-    input-search: "#e8e8ed fill, 8px radius, active 2px solid #2997ff"
-    nav-global: "rgba(250,250,252,0.8) translucent fog, backdrop blur(20px), 44px height"
-    text-link: "transparent, #0066cc text, underline on hover — link color, not a pill"
+    button-marketing-pill: { type: button, bg: "#0071e3", fg: "#ffffff", radius: 980, padding: "11px 21px", font: "17px/400", use: "marketing pill CTA" }
+    button-neutral-pill: { type: button, bg: "#1d1d1f", fg: "#ffffff", radius: 980, use: "paired secondary CTA" }
+    button-commerce-compact: { type: button, bg: "#0071e3", fg: "#ffffff", radius: 8, padding: "8px 15px", font: "14px", use: "checkout actions" }
+    card-white: { type: card, bg: "#ffffff", radius: 28, use: "no border, no shadow — lifts via color contrast" }
+    card-dark: { type: card, bg: "#000000", fg: "#ffffff", radius: 28, use: "max-contrast product detail" }
+    input-search: { type: input, radius: 8, use: "grey fill, active 2px solid #2997ff" }
+    nav-global: { type: tab, radius: 0, use: "translucent fog, backdrop blur(20px), 44px height" }
+    text-link: { type: badge, fg: "#0066cc", use: "link color, underline on hover, not a pill" }
 ---
 
 # Design System Inspiration of Apple

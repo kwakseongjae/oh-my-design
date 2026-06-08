@@ -16,6 +16,50 @@ ds:
   type: system
   description: Vercel's design system with 50+ components, foundations, and brand resources.
   og_image: "https://assets.vercel.com/image/upload/v1709494095/front/design/geist-og.jpg"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#171717"
+    black: "#000000"
+    canvas: "#ffffff"
+    ship: "#ff5b4f"
+    preview: "#de1d8d"
+    develop: "#0a72ef"
+    link: "#0072f5"
+    body: "#4d4d4d"
+    muted: "#666666"
+    placeholder: "#808080"
+    border: "#ebebeb"
+    surface-tint: "#fafafa"
+    badge-bg: "#ebf5ff"
+    badge-text: "#0068d6"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Geist", mono: "Geist Mono" }
+    display-hero: { size: 48, weight: 600, lineHeight: 1.10, tracking: -2.4, use: "Hero, billboard impact" }
+    section:      { size: 40, weight: 600, lineHeight: 1.20, tracking: -2.4, use: "Feature section titles" }
+    subheading:   { size: 32, weight: 600, lineHeight: 1.25, tracking: -1.28, use: "Card headings, sub-sections" }
+    card-title:   { size: 24, weight: 600, lineHeight: 1.33, tracking: -0.96, use: "Feature cards" }
+    body-lg:      { size: 20, weight: 400, lineHeight: 1.80, use: "Introductions, descriptions" }
+    body:         { size: 18, weight: 400, lineHeight: 1.56, use: "Standard reading text" }
+    body-medium:  { size: 16, weight: 500, lineHeight: 1.50, use: "Navigation, emphasized text" }
+    button:       { size: 14, weight: 500, lineHeight: 1.43, use: "Buttons, links" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.33, use: "Metadata, tags" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 6, lg: 12, full: 9999 }
+  shadow:
+    subtle: "rgba(0,0,0,0.04) 0px 2px 2px"
+    border: "rgba(0,0,0,0.08) 0px 0px 0px 1px"
+    card: "rgba(0,0,0,0.08) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 2px, rgba(0,0,0,0.04) 0px 8px 8px -8px"
+  components:
+    button-primary: { type: button, bg: "#171717", fg: "#ffffff", radius: 6, padding: "8px 16px", use: "Primary CTA Start Deploying" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#171717", radius: 6, padding: "0 6px", use: "Shadow-bordered secondary; ring 1px #ebebeb" }
+    badge: { type: badge, bg: "#ebf5ff", fg: "#0068d6", radius: 9999, padding: "0 10px", font: "12px/500", use: "Status badges, tags, feature labels" }
+    card: { type: card, bg: "#ffffff", radius: 8, use: "Shadow-bordered card; border via 1px shadow" }
+    input: { type: input, bg: "#ffffff", radius: 6, use: "Border via shadow technique; focus blue ring" }
+    nav: { type: tab, bg: "#ffffff", fg: "#171717", font: "14px/500", use: "Sticky horizontal nav; dark pill CTAs", active: "weight 600 or underline" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Vercel

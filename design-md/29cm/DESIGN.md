@@ -43,12 +43,13 @@ tokens:
   shadow:
     flat: "none — depth comes from photography on white, not box-shadow"
     inverted: "#000000 background on #ffffff page — elevation by colour inversion"
+  components_harvested: true
   components:
-    ghost-outline: "white bg, #000 text, 1px solid #c4c4c4 border, 4px radius, 52px height, 14px/700 — workhorse 더보기 CTA"
-    inverted-solid: "#000 bg, #fff text, no border, 2px radius, 31px height, 15px/400 — floating FAQ / 1:1 문의 help control"
-    editorial-tile: "white bg, no border, 0px radius, full-bleed image; 22px/700 title + 15px/400 body below, no shadow"
-    product-card: "white bg, no border, 0px radius image; 12px/400 name then 12px/700 price (#ff0066 if on sale); caption in muted grey"
-    sale-pill: "white/transparent bg, #ff0066 text, 0px radius, 12px/700 — percent-off badge only"
+    ghost-outline: { type: button, bg: "#ffffff", fg: "#000000", radius: 4, padding: "52px height", font: "14px/700", use: "workhorse 더보기 CTA, 1px solid #c4c4c4 border" }
+    inverted-solid: { type: button, bg: "#000000", fg: "#ffffff", radius: 2, padding: "31px height", font: "15px/400", use: "floating FAQ / 1:1 문의 help control" }
+    editorial-tile: { type: card, bg: "#ffffff", radius: 0, font: "22px/700 title + 15px/400 body", use: "full-bleed editorial image, no border, no shadow" }
+    product-card: { type: card, bg: "#ffffff", radius: 0, font: "12px/400 name, 12px/700 price", use: "card name then price (#ff0066 if on sale); caption in muted grey" }
+    sale-pill: { type: badge, fg: "#ff0066", radius: 0, font: "12px/700", use: "percent-off badge only" }
 omd: "0.1"
 ---
 

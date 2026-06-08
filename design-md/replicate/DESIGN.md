@@ -10,6 +10,45 @@ logo:
   slug: replicate
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    dark: "#202020"
+    red: "#ea2804"
+    secondary-red: "#dd4425"
+    status-green: "#2b9a66"
+    github-dark: "#24292e"
+    white: "#ffffff"
+    near-white: "#fcfcfc"
+    medium-gray: "#646464"
+    warm-gray: "#4e4e4e"
+    mid-silver: "#8d8d8d"
+    light-silver: "#bbbbbb"
+    black: "#000000"
+  typography:
+    family: { sans: "basier-square", mono: "jetbrains-mono" }
+    display-mega: { size: 128, weight: 700, lineHeight: 1.00, use: "Closing manifesto (rb-freigeist-neue)" }
+    display-hero: { size: 72, weight: 700, lineHeight: 1.00, tracking: -1.8, use: "Hero headline (rb-freigeist-neue)" }
+    section:      { size: 48, weight: 700, lineHeight: 1.00, use: "Feature section titles (rb-freigeist-neue)" }
+    subheading:   { size: 30, weight: 600, lineHeight: 1.20, use: "Card headings (rb-freigeist-neue)" }
+    body-lg:      { size: 20, weight: 400, lineHeight: 1.40, use: "Intro paragraphs" }
+    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard text, buttons" }
+    caption:      { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, descriptions" }
+    code:         { size: 14, weight: 400, lineHeight: 1.43, use: "Code snippets (jetbrains-mono)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
+  rounded: { sm: 9999, md: 9999, lg: 9999, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-dark: { type: button, bg: "#202020", fg: "#fcfcfc", radius: 9999, padding: "0 4px", use: "Maximum-emphasis dark pill on light surface" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#202020", radius: 9999, use: "Outlined pill, 1px #202020 border, secondary actions" }
+    button-glass: { type: button, bg: "transparent", fg: "#202020", radius: 9999, padding: "6px 56px 6px 28px", use: "Frosted glass search/input button, 1px #bbbbbb outline" }
+    card: { type: card, bg: "#ffffff", fg: "#202020", radius: 9999, use: "Container, 1px #202020 border; #ea2804 border when featured" }
+    input: { type: input, bg: "transparent", fg: "#202020", radius: 9999, padding: "6px 56px 6px 28px", use: "Frosted glass search-style input" }
+    status-badge: { type: badge, bg: "#2b9a66", fg: "#ffffff", radius: 9999, font: "14/400", use: "Operational/running status indicator" }
+    code-block: { type: card, bg: "#24292e", fg: "#ffffff", radius: 9999, font: "14/400", use: "Code block (jetbrains-mono)" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Replicate

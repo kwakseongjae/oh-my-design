@@ -10,6 +10,70 @@ logo:
   slug: kakaotalk
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  components_harvested: true
+  colors:
+    primary: "#fee500"
+    marketing-yellow: "#fae100"
+    unread: "#faeb00"
+    base: "#1e1e1e"
+    canvas: "#ffffff"
+    error: "#e02000"
+    link: "#2196f3"
+    success: "#47b881"
+    warning: "#ff9800"
+    text-primary: "#222222"
+    text-standard: "#333333"
+    text-secondary: "#666666"
+    text-muted: "#808080"
+    text-light: "#999999"
+    text-lightest: "#bbbbbb"
+    surface-elevated: "#f8f8f8"
+    surface-fill: "#f0f0f0"
+    border: "#e5e5e5"
+    footer-fill: "#eeeeee"
+    dark-pill: "#111111"
+    on-primary: "#000000"
+  typography:
+    family: { sans: "-apple-system", mono: "SF Mono" }
+    display-hero:  { size: 36, weight: 800, lineHeight: 1.25, use: "Splash screens, marketing — Kakao Big Sans" }
+    display-large: { size: 28, weight: 700, lineHeight: 1.30, use: "Service section titles — Kakao Big Sans" }
+    heading-large: { size: 22, weight: 700, lineHeight: 1.36, use: "Screen titles, major sections" }
+    heading:       { size: 20, weight: 600, lineHeight: 1.40, use: "Navigation titles, modal headers" }
+    title:         { size: 18, weight: 600, lineHeight: 1.44, use: "Friend names, chat room titles" }
+    body:          { size: 16, weight: 400, lineHeight: 1.50, use: "Chat messages, descriptions" }
+    body-small:    { size: 14, weight: 400, lineHeight: 1.57, use: "Secondary info, metadata" }
+    caption:       { size: 13, weight: 400, lineHeight: 1.54, use: "Timestamps, status text" }
+    caption-small: { size: 12, weight: 400, lineHeight: 1.50, use: "Fine print, badges" }
+    micro:         { size: 11, weight: 400, lineHeight: 1.45, use: "Tab bar text, smallest labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 48 }
+  rounded: { sm: 4, md: 12, lg: 20, full: 9999 }
+  shadow:
+    minimal: "0px 1px 3px rgba(0,0,0,0.04)"
+    subtle: "0px 2px 6px rgba(0,0,0,0.08)"
+    elevated: "0px 4px 12px rgba(0,0,0,0.12)"
+  components:
+    button-login: { type: button, bg: "#fee500", fg: "#000000", radius: 12, padding: "12px 20px", font: "16px/600", use: "Kakao Login compliance-mandated CTA" }
+    button-marketing-pill: { type: button, bg: "#fae100", fg: "#000000", radius: 16, padding: "7px 13px", font: "13px/700", use: "Brand marketing CTA, bordered yellow pill" }
+    button-dark-pill: { type: button, bg: "#111111", fg: "#ffffff", radius: 16, padding: "7px 8px", font: "13px/700", use: "Marketing CTA paired with yellow pill" }
+    button-nav-pill: { type: button, bg: "#ffffff", fg: "#000000", radius: 9999, padding: "3px 14px", font: "16px/700", use: "Top-nav active item" }
+    button-secondary: { type: button, bg: "transparent", fg: "#333333", radius: 12, padding: "12px 20px", font: "16px/600", use: "Secondary outline action" }
+    button-footer-pill: { type: button, bg: "#eeeeee", fg: "#000000", radius: 24, padding: "10px 20px", font: "12px/400", use: "Footer link pill" }
+    button-danger: { type: button, bg: "#e02000", fg: "#ffffff", radius: 12, padding: "12px 20px", font: "16px/600", use: "Destructive actions" }
+    input-default: { type: input, bg: "#ffffff", fg: "#222222", radius: 12, padding: "12px 16px", font: "16px/400", use: "Form fields" }
+    input-chat: { type: input, bg: "#f0f0f0", fg: "#222222", radius: 20, padding: "10px 16px", font: "16px/400", use: "Chat composer" }
+    input-search: { type: input, bg: "#f0f0f0", fg: "#222222", radius: 20, padding: "10px 16px 10px 40px", font: "14px/400", use: "Search bar" }
+    card-standard: { type: card, bg: "#ffffff", radius: 12, padding: "16px", use: "Most surfaces — barely-there shadow" }
+    card-bordered: { type: card, bg: "#ffffff", radius: 12, padding: "16px", use: "Inline content cards, 1px border" }
+    bubble-mine: { type: card, bg: "#fee500", fg: "#333333", radius: 18, padding: "8px 12px", font: "14px/400", use: "Outgoing chat bubble, asymmetric 9-patch" }
+    bubble-other: { type: card, bg: "#ffffff", fg: "#333333", radius: 18, padding: "8px 12px", font: "14px/400", use: "Incoming chat bubble" }
+    bubble-system: { type: card, bg: "#f0f0f0", fg: "#999999", radius: 9999, padding: "4px 12px", font: "12px/400", use: "System notice in chat" }
+    badge-notification: { type: badge, bg: "#e02000", fg: "#ffffff", radius: 9999, padding: "2px 6px", font: "11px/700", use: "Unread count" }
+    badge-tag: { type: badge, bg: "#f0f0f0", fg: "#666666", radius: 4, padding: "2px 6px", font: "11px/500", use: "Generic metadata tag" }
+    tab-top: { type: tab, bg: "#ffffff", fg: "#999999", padding: "12px 16px", font: "14px/600", active: "#333333 text + 2px bottom border #333333", use: "Top tab bar" }
+    listItem-friend: { type: listItem, fg: "#222222", padding: "0 16px", use: "Friend list row, 64px height, 48px rounded-square avatar" }
 ---
 
 # Design System Inspiration of Kakao (카카오)

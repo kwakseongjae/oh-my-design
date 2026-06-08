@@ -10,6 +10,47 @@ logo:
   slug: mercari
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    brand-red: "#ff333f"
+    red-highlight: "#ff6574"
+    red-active: "#e32b36"
+    red-thin: "#fdf1f3"
+    accent-blue: "#0095ee"
+    link: "#0073cc"
+    success: "#0aa466"
+    success-thin: "#e4ffec"
+    decorative-yellow: "#ffb818"
+    text-primary: "#333333"
+    text-secondary: "#666666"
+    text-disabled: "#cccccc"
+    placeholder: "#999999"
+    canvas: "#ffffff"
+    surface-secondary: "#f5f5f5"
+    surface-dark: "#333333"
+    border: "#cccccc"
+    on-dark: "#ffffff"
+  typography:
+    family: { sans: "Helvetica Neue", mono: "Helvetica Neue" }
+    heading: { size: 20, weight: 700, lineHeight: 1.40, use: "H1/H2 headlines" }
+    cta:     { size: 15, weight: 700, lineHeight: 1.40, use: "Primary CTAs, prices, badges" }
+    body:    { size: 15, weight: 400, lineHeight: 1.40, use: "Default body, nav links, secondary CTAs" }
+  spacing: { xs: 4, sm: 6, md: 8, base: 12, lg: 16, xl: 20, xxl: 28, section: 64 }
+  rounded: { sm: 4, md: 4, lg: 8, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#ff333f", fg: "#ffffff", radius: 4, padding: "11px 15px", font: "15px/700", use: "Primary attention CTA" }
+    button-accent: { type: button, bg: "#ffffff", fg: "#0095ee", radius: 4, padding: "8px 12px", font: "15px/700", use: "Accent CTA Shop Now" }
+    button-neutral: { type: button, bg: "#ffffff", fg: "#333333", radius: 4, padding: "8px", font: "15px/400", use: "Login/Signup secondary" }
+    search-input: { type: input, bg: "#f5f5f5", fg: "#999999", radius: 4, use: "Full-width top search bar" }
+    product-card: { type: card, bg: "#ffffff", radius: 4, use: "Product/brand card, image-led" }
+    tab: { type: tab, bg: "#ffffff", fg: "#333333", active: "#ff333f text with 2px red underline", use: "Underline-driven section tabs" }
+    snackbar: { type: toast, bg: "#333333", fg: "#ffffff", use: "Dark snackbar/toast" }
+    modal: { type: dialog, bg: "#ffffff", radius: 8, use: "Centered modal, strong scrim backdrop" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Mercari

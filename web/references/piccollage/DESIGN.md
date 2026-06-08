@@ -10,6 +10,49 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=piccollage.com&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#4fc3c4"
+    teal-nav: "#b7e1da"
+    teal-footer: "#7ad2c3"
+    teal-border: "#2db59e"
+    hero-bg: "#fbf2eb"
+    nav-bg: "#f5f4ef"
+    surface: "#ece9df"
+    surface-hover: "#e8e4d9"
+    divider: "#d9d2bf"
+    body: "#292929"
+    body-secondary: "#4d4d4d"
+    accent-pink: "#f85482"
+    accent-yellow: "#ffcf3d"
+    gradient-1: "#8235b8"
+    gradient-2: "#974dcb"
+    gradient-3: "#ef4967"
+    gradient-4: "#ee604d"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Poppins", display: "Zilla Slab" }
+    display:        { size: 60, weight: 600, lineHeight: 1.12, use: "Marketing hero headline (Zilla Slab)" }
+    section-title:  { size: 36, weight: 700, use: "Feature card / section headline (desktop)" }
+    sub-headline:   { size: 25, weight: 500, lineHeight: 1.4, use: "Hero tagline / sub-headline" }
+    body:           { size: 18, weight: 400, use: "Feature descriptions, body copy" }
+    label:          { size: 14, weight: 500, tracking: -0.28, use: "UI label, nav button" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+  shadow:
+    ambient: "rgba(0,0,0,0.08) 0px 2px 12px"
+    card: "rgba(0,0,0,0.10) 0px 0px 12px"
+    thumbnail: "rgba(0,0,0,0.15) 0px 0px 8px"
+  components:
+    button-primary: { type: button, bg: "#4fc3c4", fg: "#ffffff", radius: 9999, font: "14px / 700", use: "App download / sticky CTA" }
+    button-nav: { type: button, bg: "#b7e1da", fg: "#292929", radius: 9999, padding: "8px 12px", font: "14px / 500", use: "Nav Download button, 1.5px #2db59e border" }
+    icon-button: { type: button, bg: "#ece9df", radius: 9999, use: "Toolbar / nav icon button, 1.5px #d9d2bf border" }
+    nav-item: { type: tab, fg: "#4d4d4d", radius: 9999, padding: "8px 12px", font: "14px / 500", use: "Nav menu item" }
+    card: { type: card, bg: "#ffffff", radius: 16, use: "Feature panel, 2px #e8e4d9 border, soft shadow" }
+    thumbnail: { type: card, radius: 16, use: "Collage thumbnail, soft drop shadow" }
+  components_harvested: true
 ---
 
 # PicCollage

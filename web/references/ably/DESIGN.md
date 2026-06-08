@@ -54,15 +54,16 @@ tokens:
     standard: "0px 2px 8px rgba(0,0,0,0.08)"
     elevated: "0px 4px 16px rgba(0,0,0,0.12)"
     sheet: "0px -4px 16px rgba(0,0,0,0.08)"
+  components_harvested: true
   components:
-    button-primary: "Ably Pink #FA2E5F fill, white text, 8px radius, 16px/700, 52px full-width bottom CTA; disabled #FFC2D2"
-    button-secondary: "white fill, #222222 text, 1px #DDDDDD border, 8px radius, 14px/600"
-    chip-filter: "white fill, #333333 text, 1px #DDDDDD border, full radius; active = #222222 fill, white text"
-    badge-free-shipping: "white fill, #FA2E5F text + 1px #FA2E5F border, 4px radius, 11px/700"
-    badge-hot-deal: "#FA2E5F fill, white text, 4px radius, 11px/700 (쇼킹딜)"
-    product-card: "white surface, 1:1 image, 4px top radius, flat (no shadow), #EEEEEE divider"
-    tab-bar: "white, 56px + safe-area, 6 items; active #222222 filled, inactive #999999; notification dot #FA2E5F"
-    bottom-sheet: "white, 16px top radius, #E5E5E5 handle, sheet shadow over backdrop rgba(0,0,0,0.5)"
+    button-primary: { type: button, bg: "#FA2E5F", fg: "#FFFFFF", radius: 8, font: "16px/700", use: "52px full-width bottom CTA; disabled #FFC2D2" }
+    button-secondary: { type: button, bg: "#FFFFFF", fg: "#222222", radius: 8, font: "14px/600", use: "secondary action, 1px grey border" }
+    chip-filter: { type: badge, bg: "#FFFFFF", fg: "#333333", radius: 9999, use: "filter chip, 1px grey border; active = #222222 fill, white text" }
+    badge-free-shipping: { type: badge, bg: "#FFFFFF", fg: "#FA2E5F", radius: 4, font: "11px/700", use: "무료배송, 1px #FA2E5F border" }
+    badge-hot-deal: { type: badge, bg: "#FA2E5F", fg: "#FFFFFF", radius: 4, font: "11px/700", use: "쇼킹딜 urgency badge" }
+    product-card: { type: card, bg: "#FFFFFF", radius: 4, use: "1:1 image, top radius, flat (no shadow), #EEEEEE divider" }
+    tab-bar: { type: tab, bg: "#FFFFFF", use: "56px + safe-area, 6 items; inactive #999999; notification dot #FA2E5F", active: "#222222 filled" }
+    bottom-sheet: { type: dialog, bg: "#FFFFFF", radius: 16, use: "top radius, grey handle, sheet shadow over backdrop" }
 omd: "0.1"
 ---
 

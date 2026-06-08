@@ -16,6 +16,39 @@ ds:
   type: brand
   description: Together AI's logo, color, and typography brand guidelines.
   og_image: "https://cdn.prod.website-files.com/69654e88dce9154b5f1206dd/69a49f8243e74bf4b805d130_og-brand.jpg"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#0f6fff"
+    magenta: "#ef2cc1"
+    orange: "#fc4c02"
+    dark-blue: "#010120"
+    lavender: "#bdbbff"
+    canvas: "#ffffff"
+    foreground: "#000000"
+    on-dark: "#ffffff"
+  typography:
+    family: { sans: "The Future", mono: "PP Neue Montreal Mono" }
+    display:      { size: 64, weight: 500, lineHeight: 1.05, tracking: -1.92, use: "Hero, dense blocks" }
+    section:      { size: 40, weight: 500, lineHeight: 1.20, tracking: -0.8, use: "Feature section titles" }
+    subheading:   { size: 28, weight: 500, lineHeight: 1.15, tracking: -0.42, use: "Card headings" }
+    feature-title: { size: 22, weight: 500, lineHeight: 1.15, tracking: -0.22, use: "Small feature headings" }
+    body-lg:      { size: 18, weight: 400, lineHeight: 1.30, tracking: -0.18, use: "Descriptions, sections" }
+    body:         { size: 16, weight: 400, lineHeight: 1.28, tracking: -0.16, use: "Standard body, nav, buttons" }
+    caption:      { size: 14, weight: 400, lineHeight: 1.40, use: "Metadata, descriptions" }
+    mono-label:   { size: 16, weight: 500, lineHeight: 1.00, tracking: 0.08, use: "Uppercase section labels" }
+    mono-small:   { size: 11, weight: 500, lineHeight: 1.00, tracking: 0.055, use: "Small uppercase tags" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 4, md: 8, lg: 8, full: 9999 }
+  shadow:
+    subtle: "rgba(1,1,32,0.1) 0px 4px 10px"
+  components_harvested: true
+  components:
+    button-dark: { type: button, bg: "#010120", fg: "#ffffff", radius: 4, use: "Primary CTA on light surfaces" }
+    button-outline: { type: button, fg: "#000000", radius: 4, use: "Secondary actions on light surfaces" }
+    card: { type: card, bg: "#ffffff", radius: 8, use: "Container with dark-blue-tinted subtle shadow, stats numbers" }
+    badge: { type: badge, fg: "#000000", radius: 4, padding: "2px 8px", font: "16/500", use: "Compact uppercase mono tag" }
 ---
 
 # Design System Inspiration of Together AI

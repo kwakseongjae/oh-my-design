@@ -10,6 +10,45 @@ logo:
   slug: "https://www.jobkorea.co.kr/display/images/favicon.png"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#083ccc"
+    primary-hover: "#012ca2"
+    primary-500: "#1b55f6"
+    primary-400: "#4c7afb"
+    primary-50: "#f0f2fa"
+    point-orange: "#ff6d12"
+    text: "#1a1a1e"
+    text-secondary: "#292c32"
+    text-tertiary: "#575f6c"
+    placeholder: "#949ba8"
+    border: "#e6e8ea"
+    canvas: "#f6f7f8"
+    error: "#fc3b3b"
+    success: "#0dbc7c"
+    white: "#ffffff"
+  typography:
+    family: { sans: "Pretendard", fallback: "Apple SD Gothic Neo, Malgun Gothic, sans-serif" }
+    display: { size: 48, weight: 700, lineHeight: 1.33, tracking: -0.5, use: "Display 1" }
+    h1:      { size: 32, weight: 700, lineHeight: 1.31, tracking: -0.5, use: "H1 heading" }
+    h4:      { size: 20, weight: 600, lineHeight: 1.4, use: "H4 sub-heading" }
+    body:    { size: 16, weight: 400, lineHeight: 1.5, use: "Body 2 reading text" }
+    caption: { size: 13, weight: 400, lineHeight: 1.38, use: "Caption 1" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 10, lg: 16, full: 9999 }
+  shadow:
+    card: "rgba(0,0,0,0.06) 0px 2px 8px"
+  components:
+    button-primary: { type: button, bg: "#083ccc", fg: "#ffffff", radius: 10, padding: "0 16px", font: "16px weight 700", use: "Primary CTA, 48px tall, hover #012ca2" }
+    chip-selected: { type: badge, bg: "#f0f2fa", fg: "#083ccc", use: "Selected chip / brand-tinted pill tag fill" }
+    badge-urgent: { type: badge, fg: "#ff6d12", use: "Urgency badge, deadline label" }
+    input: { type: input, bg: "#ffffff", fg: "#1a1a1e", border: "#e6e8ea", use: "Default input, gray border" }
+    card: { type: card, bg: "#ffffff", border: "#e6e8ea", use: "Job-listing card surface, subtle elevation" }
+    badge-error: { type: badge, fg: "#fc3b3b", use: "Form error / destructive indicator" }
+    badge-success: { type: badge, fg: "#0dbc7c", use: "Application success / offer received" }
+  components_harvested: true
 ---
 
 # JobKorea

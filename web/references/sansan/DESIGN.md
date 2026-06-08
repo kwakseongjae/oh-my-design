@@ -11,6 +11,71 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#E60012"
+    primary-hover: "#cc0010"
+    primary-tint: "#fdecec"
+    canvas: "#ffffff"
+    ink: "#1a1a1a"
+    ink-black: "#222222"
+    orange: "#f5821f"
+    blue: "#0a6ebd"
+    error: "#d32f2f"
+    success: "#2e9e5b"
+    warning: "#f5a623"
+    grey-50: "#f7f8fa"
+    grey-100: "#eef0f3"
+    grey-200: "#e1e4e8"
+    grey-300: "#cbd0d6"
+    grey-400: "#9aa1aa"
+    grey-500: "#6b727c"
+    grey-600: "#4a5159"
+    grey-700: "#33383f"
+    grey-900: "#1a1a1a"
+  typography:
+    family: { sans: "Hiragino Kaku Gothic ProN", mono: "SF Mono" }
+    display-hero: { size: 48, weight: 700, lineHeight: 1.25, tracking: -0.01, use: "Landing hero headline" }
+    display-lg:   { size: 36, weight: 700, lineHeight: 1.33, tracking: -0.01, use: "Section openers" }
+    heading-1:    { size: 28, weight: 700, lineHeight: 1.43, use: "Page titles" }
+    heading-2:    { size: 22, weight: 700, lineHeight: 1.45, use: "Sub-sections, modal headers" }
+    heading-3:    { size: 18, weight: 600, lineHeight: 1.55, use: "Card titles" }
+    subtitle:     { size: 16, weight: 600, lineHeight: 1.62, use: "List headers, lead-ins" }
+    body-lg:      { size: 16, weight: 400, lineHeight: 1.75, use: "Marketing body, descriptions" }
+    body:         { size: 14, weight: 400, lineHeight: 1.71, use: "Standard UI reading text" }
+    body-sm:      { size: 13, weight: 400, lineHeight: 1.62, use: "Secondary info" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.50, use: "Timestamps, fine print, labels" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 24, lg: 32, xl: 48, xxl: 64, section: 96 }
+  rounded: { sm: 4, md: 6, lg: 12, full: 9999 }
+  shadow:
+    subtle: "0 1px 3px rgba(26,26,26,0.06)"
+    standard: "0 4px 16px rgba(26,26,26,0.08)"
+    elevated: "0 8px 24px rgba(26,26,26,0.14)"
+    modal: "0 12px 32px rgba(26,26,26,0.20)"
+  components:
+    button-primary: { type: button, bg: "#E60012", fg: "#ffffff", radius: 4, padding: "14px 28px", font: "16px/700 Hiragino", use: "Primary CTA, hover #cc0010" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#E60012", radius: 4, padding: "13px 27px", font: "16px/700 Hiragino", use: "Outline red, 1.5px #E60012 border, hover #fdecec" }
+    button-neutral: { type: button, bg: "#ffffff", fg: "#33383f", radius: 4, padding: "13px 27px", font: "16px/600 Hiragino", use: "Cancel, back, 1px #cbd0d6 border" }
+    button-ghost: { type: button, bg: "#ffffff", fg: "#E60012", padding: "8px 4px", font: "15px/600 Hiragino", use: "Inline text link with arrow glyph" }
+    input-text: { type: input, bg: "#ffffff", fg: "#1a1a1a", radius: 4, padding: "12px 14px", font: "15px/400 Hiragino", use: "Standard form input, 1px #cbd0d6 border, focus #E60012" }
+    input-filled: { type: input, bg: "#f7f8fa", fg: "#1a1a1a", radius: 4, padding: "12px 14px", use: "In-product dense forms, focus #ffffff bg + #E60012 border" }
+    card-standard: { type: card, bg: "#ffffff", radius: 8, padding: "24px", use: "Content panels, 1px #e1e4e8 border" }
+    card-elevated: { type: card, bg: "#ffffff", radius: 12, padding: "32px", use: "Hero feature, pricing tiers" }
+    card-list: { type: listItem, bg: "#ffffff", radius: 6, padding: "16px", use: "Dense list rows, contact records, 1px #e1e4e8 border" }
+    card-highlighted: { type: card, bg: "#fdecec", radius: 8, padding: "24px", use: "Recommended tier, selected, 1px #E60012 border" }
+    badge-brand: { type: badge, bg: "#E60012", fg: "#ffffff", radius: 4, padding: "3px 8px", font: "12px/700 Hiragino", use: "NEW, おすすめ, featured" }
+    badge-soft: { type: badge, bg: "#fdecec", fg: "#cc0010", radius: 4, padding: "3px 8px", font: "12px/700 Hiragino", use: "Subtle category/status tag" }
+    badge-neutral: { type: badge, bg: "#eef0f3", fg: "#4a5159", radius: 4, padding: "3px 8px", font: "12px/600 Hiragino", use: "Metadata, tag chips, filter labels" }
+    badge-success: { type: badge, fg: "#2e9e5b", radius: 4, padding: "3px 8px", use: "登録済み, completion state" }
+    tab-underline: { type: tab, fg: "#6b727c", padding: "12px 20px", font: "15px/600 Hiragino", active: "Active #1a1a1a text + 2px #E60012 bottom border", use: "In-product section switching" }
+    tab-segmented: { type: tab, bg: "#eef0f3", radius: 6, padding: "8px 16px", font: "14px/600", active: "Active #ffffff bg + #1a1a1a text", use: "Compact view toggles" }
+    toast-default: { type: toast, bg: "#1a1a1a", fg: "#ffffff", radius: 6, padding: "12px 16px", font: "14px/500", use: "Transient confirmation, 3s auto-dismiss" }
+    toast-success: { type: toast, bg: "#ffffff", fg: "#1a1a1a", radius: 6, padding: "12px 16px", use: "Inline success banner, 4px #2e9e5b left border" }
+    dialog-modal: { type: dialog, bg: "#ffffff", fg: "#1a1a1a", radius: 12, padding: "32px", use: "Confirmation prompts, forms, detail overlays" }
+    toggle-switch: { type: toggle, bg: "#E60012", radius: 9999, use: "Boolean settings, #cbd0d6 off, #ffffff thumb" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Sansan (サンサン)

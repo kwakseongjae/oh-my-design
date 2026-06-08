@@ -11,6 +11,51 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#ed1d24"
+    primary-hover: "#c8161c"
+    canvas: "#ffffff"
+    heading: "#1a1a1a"
+    body: "#333333"
+    secondary: "#666666"
+    muted: "#999999"
+    error: "#d0021b"
+    success: "#1a8917"
+    info: "#0070c9"
+    gray-50: "#f5f5f5"
+    gray-100: "#eeeeee"
+    gray-300: "#cccccc"
+    border: "#e0e0e0"
+    border-strong: "#1a1a1a"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "TT Commons Pro", mono: "Helvetica Neue" }
+    display-hero: { size: 48, weight: 700, lineHeight: 1.10, tracking: -0.5, use: "Campaign headlines, hero" }
+    display-lg:   { size: 36, weight: 700, lineHeight: 1.15, tracking: -0.3, use: "Feature section heads" }
+    heading-1:    { size: 28, weight: 700, lineHeight: 1.20, use: "Page titles, category heads" }
+    heading-2:    { size: 22, weight: 700, lineHeight: 1.25, use: "Sub-section titles" }
+    subtitle:     { size: 16, weight: 600, lineHeight: 1.40, use: "Product names in tiles" }
+    body:         { size: 14, weight: 400, lineHeight: 1.50, use: "Standard catalog text" }
+    price:        { size: 18, weight: 700, lineHeight: 1.20, use: "Product price, tabular numerals" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.40, use: "Metadata, fine print" }
+    label:        { size: 11, weight: 700, lineHeight: 1.20, tracking: 0.5, use: "Uppercase tags NEW/SALE" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 2, md: 2, lg: 4, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#ed1d24", fg: "#ffffff", radius: 2, padding: "14px 24px", font: "15px/700", use: "Primary CTA ADD TO CART; hover #c8161c" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#1a1a1a", radius: 2, padding: "14px 24px", use: "Outlined; 1px #1a1a1a border, hover inverts to #1a1a1a" }
+    button-solid-black: { type: button, bg: "#1a1a1a", fg: "#ffffff", radius: 2, padding: "14px 24px", use: "Neutral strong action; hover #333333" }
+    button-disabled: { type: button, bg: "#eeeeee", fg: "#999999", radius: 2, use: "Unavailable action" }
+    product-tile: { type: card, bg: "#ffffff", radius: 0, padding: "8px", use: "Atomic product tile, grid-gutter separated, no shadow" }
+    input: { type: input, bg: "#ffffff", fg: "#1a1a1a", radius: 2, padding: "12px 14px", font: "14px", use: "Text input; 1px #cccccc border, focus #1a1a1a" }
+    size-chip: { type: badge, bg: "#ffffff", fg: "#1a1a1a", radius: 2, padding: "8px 14px", use: "Size selector; 1px #cccccc border, selected 2px #1a1a1a" }
+    sale-flag: { type: badge, bg: "#ed1d24", fg: "#ffffff", radius: 0, padding: "2px 6px", font: "11px/700", use: "SALE/LIMITED uppercase flag" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Uniqlo (ユニクロ)

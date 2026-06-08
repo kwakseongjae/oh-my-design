@@ -10,6 +10,48 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=upbit.com&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#1375ec"
+    primary-deep: "#0062df"
+    primary-darker: "#003597"
+    rise: "#dd3c44"
+    fall: "#1375ec"
+    heading: "#1a2434"
+    body: "#333333"
+    muted: "#666666"
+    subtle: "#565d6a"
+    disabled: "#8e929b"
+    surface-body: "#e9ecf1"
+    surface-card: "#ffffff"
+    table-header: "#f9fafc"
+    table-alt: "#f4f5f7"
+    neutral: "#edeef1"
+    border: "#bec1c6"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Roboto", mono: "Roboto" }
+    nav:         { size: 15, weight: 400, use: "Top-nav primary items" }
+    body:        { size: 14, weight: 400, use: "Default body, button labels" }
+    table-cell:  { size: 12, weight: 400, use: "Price/change table cells" }
+    header:      { size: 11, weight: 400, use: "Table column headers" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 4, lg: 4, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#0062df", fg: "#ffffff", radius: 4, padding: "0 10px", font: "14px/400", use: "로그인/회원가입 in compact nav, h36" }
+    button-hero: { type: button, bg: "#003597", fg: "#ffffff", radius: 4, padding: "0 12px", font: "15px/400", use: "Hero CTA, h44" }
+    button-secondary: { type: button, bg: "#edeef1", fg: "#1a2434", radius: 4, padding: "0 10px", font: "14px/400", use: "Paired secondary action, h36" }
+    tag-percent: { type: badge, bg: "#ffffff", fg: "#1a2434", radius: 4, padding: "0 8px 1px", font: "12px/400", use: "Quick-fill 10/25/50/100%; 1px #bec1c6 border" }
+    cell-rise: { type: card, bg: "#ffffff", fg: "#dd3c44", radius: 0, padding: "4.5px 4px", font: "12px/400", use: "상승 가격 셀 / 매수호가 tint" }
+    cell-fall: { type: card, bg: "#ffffff", fg: "#1375ec", radius: 0, padding: "4.5px 4px", font: "12px/400", use: "하락 가격 셀 / 매도호가 tint" }
+    header-row: { type: card, bg: "#f9fafc", fg: "#666666", radius: 0, padding: "0 14px", font: "11px/400", use: "Column heads, h30, bottom 1px #edeef1" }
+    segment: { type: tab, bg: "#ffffff", fg: "#333333", radius: 0, padding: "0", font: "12px/400", use: "KO/EN locale switch; 1px #bec1c6 border", active: "selected bg #f4f5f7" }
+    nav: { type: tab, bg: "#ffffff", fg: "#1a2434", radius: 0, padding: "0 20px", font: "15px/400", use: "Persistent top-bar, h80, bottom 1px #edeef1" }
+  components_harvested: true
 ---
 
 # Upbit — DESIGN.md

@@ -10,6 +10,53 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=triple.guide&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#368fff"
+    primary-pressed: "#1a85e8"
+    sky-accent: "#1aadf6"
+    blue-tint: "#f1f7ff"
+    canvas: "#ffffff"
+    surface: "#f5f6f7"
+    heading: "#1b1d1f"
+    body: "#3a3e41"
+    secondary: "#7e848a"
+    tertiary: "#adb1b5"
+    border: "#e8eaec"
+    border-strong: "#d5d8db"
+    success: "#22c55e"
+    highlight-teal: "#0ecedb"
+    error: "#ff3b30"
+    warning: "#faad14"
+  typography:
+    family: { sans: "-apple-system", mono: "-apple-system" }
+    hero:        { size: 32, weight: 700, lineHeight: 1.3, use: "Intro hero, feature headlines" }
+    section:     { size: 22, weight: 700, lineHeight: 1.35, use: "Itinerary day headers, section titles" }
+    card-title:  { size: 16, weight: 600, lineHeight: 1.4, use: "Place/itinerary card titles" }
+    cta:         { size: 18, weight: 700, lineHeight: 1.4, use: "Primary buttons" }
+    body:        { size: 16, weight: 400, lineHeight: 1.5, use: "Descriptions, tip copy" }
+    meta:        { size: 14, weight: 400, lineHeight: 1.4, use: "Place metadata, distance, hours" }
+    caption:     { size: 12, weight: 400, lineHeight: 1.4, use: "Badges, fine print" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 12, md: 12, lg: 20, full: 9999 }
+  shadow:
+    none: "none"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#368fff", fg: "#ffffff", radius: 9999, padding: "0 28px", font: "18/700", use: "Primary CTA, 56px pill" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#368fff", radius: 9999, padding: "0 28px", font: "18/700", use: "Secondary action, 1px border #368fff" }
+    button-soft: { type: button, bg: "#f1f7ff", fg: "#368fff", radius: 9999, padding: "0 24px", font: "16/600", use: "Low-emphasis action" }
+    button-ghost: { type: button, fg: "#3a3e41", font: "16/600", use: "Tertiary nav, 더보기" }
+    input-search: { type: input, bg: "#f5f6f7", fg: "#1b1d1f", radius: 12, padding: "12px 16px", font: "16/400", use: "Destination/place search" }
+    card-place: { type: card, bg: "#ffffff", radius: 20, padding: "16px", use: "Place/itinerary card, 1px border #e8eaec" }
+    card-tip: { type: card, bg: "#f1f7ff", fg: "#3a3e41", radius: 20, padding: "20px", font: "16/400", use: "Travel tips, contextual info" }
+    chip-filter: { type: badge, bg: "#f5f6f7", fg: "#3a3e41", radius: 9999, padding: "6px 14px", font: "13/500", use: "Place-type filters", active: "text #368fff" }
+    chip-selected: { type: badge, fg: "#368fff", radius: 12, use: "Selected itinerary item, 1px border #368fff" }
+    tab-nav: { type: tab, fg: "#7e848a", font: "12/500", use: "Bottom/top nav switcher", active: "icon+label #368fff" }
+    toast: { type: toast, bg: "#1b1d1f", fg: "#ffffff", radius: 12, padding: "12px 16px", use: "Snackbar transient feedback" }
+    sheet: { type: dialog, bg: "#ffffff", fg: "#1b1d1f", radius: 20, padding: "24px", use: "Modal / bottom sheet" }
 ---
 
 # Design System Inspiration of Triple (트리플)

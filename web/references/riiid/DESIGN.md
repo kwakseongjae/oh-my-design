@@ -10,6 +10,38 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=riiid.com&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    ink: "#14161a"
+    canvas: "#fcfcfc"
+    card: "#fafafa"
+    secondary: "#f1f2f4"
+    muted: "#e8eaed"
+    muted-fg: "#6c727f"
+    border: "#e5e7eb"
+    destructive: "#ef4343"
+    interactive-blue: "#3b82f6"
+  typography:
+    family: { sans: "Pretendard", display: "Playfair Display" }
+    title:    { size: 48, weight: 400, use: "Page titles (Playfair Display), tracking-wide" }
+    section:  { size: 24, weight: 600, use: "Section headers (Playfair Display)" }
+    body-lg:  { size: 18, weight: 400, lineHeight: 1.625, use: "Long-form prose (Pretendard)" }
+    body:     { size: 16, weight: 400, lineHeight: 1.625, use: "Body text (Pretendard)" }
+    nav:      { size: 14, weight: 500, use: "Nav links, labels (Pretendard)" }
+    caption:  { size: 12, weight: 400, use: "Captions (Pretendard)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#14161a", fg: "#fafafa", radius: 6, padding: "8px 16px", font: "14/500", use: "Default primary action, 40px height" }
+    button-outline: { type: button, bg: "#fcfcfc", fg: "#14161a", radius: 6, padding: "8px 16px", font: "14/500", use: "Secondary action, 1px #e5e7eb border" }
+    button-cta: { type: button, bg: "#14161a", fg: "#fafafa", radius: 6, padding: "12px 32px", font: "16/500", use: "Large CTA, 44px height" }
+    card: { type: card, bg: "#fafafa", fg: "#14161a", radius: 8, padding: "32px", use: "Surface card, 1px #e5e7eb border" }
+    nav-link: { type: tab, fg: "#6c727f", font: "14/500", use: "Navigation link", active: "#14161a text on hover" }
+  components_harvested: true
 ---
 
 # Riiid

@@ -11,6 +11,69 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#0096fa"
+    primary-hover: "#0086e0"
+    primary-tint: "#e3f3ff"
+    engagement-red: "#ff4060"
+    canvas: "#ffffff"
+    heading: "#1a1a1a"
+    grey-50: "#fafafa"
+    grey-100: "#f5f5f5"
+    grey-200: "#eeeeee"
+    grey-300: "#dddddd"
+    grey-400: "#cccccc"
+    grey-500: "#999999"
+    grey-600: "#858585"
+    body: "#666666"
+    label: "#333333"
+    dark-surface: "#1f1f1f"
+    dark-raised: "#2b2b2b"
+    dark-border: "#3a3a3a"
+    dark-text: "#f0f0f0"
+    success: "#4caf50"
+    error: "#e3413f"
+    warning: "#ff9800"
+    premium-gold: "#ffb300"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "system-ui", mono: "SF Mono" }
+    display:      { size: 28, weight: 700, lineHeight: 1.36, use: "Landing hero, campaign headers" }
+    heading-lg:   { size: 22, weight: 700, lineHeight: 1.36, use: "Page titles, artwork title" }
+    heading:      { size: 18, weight: 700, lineHeight: 1.44, use: "Card section titles, ranking headers" }
+    subtitle:     { size: 16, weight: 600, lineHeight: 1.50, use: "List section labels, modal headers" }
+    body-lg:      { size: 15, weight: 400, lineHeight: 1.60, use: "Artwork descriptions, captions" }
+    body:         { size: 14, weight: 400, lineHeight: 1.57, use: "Standard reading text, comments" }
+    body-sm:      { size: 13, weight: 400, lineHeight: 1.54, use: "Metadata, secondary info" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.50, use: "Tag counts, timestamps, view counts" }
+    micro:        { size: 11, weight: 400, lineHeight: 1.45, use: "Badge text, thumbnail overlay counters" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
+  shadow:
+    ambient: "rgba(0,0,0,0.12) 0px 2px 8px"
+    standard: "rgba(0,0,0,0.2) 0px 4px 12px"
+    elevated: "rgba(0,0,0,0.25) 0px 8px 28px"
+  components:
+    button-primary: { type: button, bg: "#0096fa", fg: "#ffffff", radius: 6, padding: "10px 20px", font: "14px / 700", use: "Primary CTA — Follow, Post, Login (~40px)" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#0096fa", radius: 6, padding: "10px 20px", font: "14px / 700", use: "Secondary action, 1px #0096fa border" }
+    button-neutral: { type: button, bg: "#f5f5f5", fg: "#666666", radius: 6, padding: "10px 20px", font: "14px / 600", use: "Low-emphasis action, 1px #dddddd border" }
+    button-follow: { type: toggle, bg: "#0096fa", fg: "#ffffff", radius: 6, use: "Follow toggle", active: "#ffffff bg, #999999 text, 1px #dddddd border (following)" }
+    button-premium: { type: button, bg: "#ffb300", fg: "#ffffff", radius: 6, padding: "10px 20px", font: "14px / 700", use: "Premium upsell CTA" }
+    input: { type: input, bg: "#ffffff", fg: "#333333", radius: 4, padding: "10px 12px", font: "14px / 400", use: "Text field, 1px #dddddd border, focus #0096fa" }
+    search: { type: input, bg: "#f5f5f5", fg: "#333333", radius: 9999, padding: "8px 16px", use: "Global search pill, focus white + #0096fa border" }
+    thumbnail-card: { type: card, bg: "#ffffff", radius: 8, use: "Artwork thumbnail — atomic discovery unit" }
+    content-card: { type: card, bg: "#ffffff", radius: 8, padding: "16px", use: "Ranking / recommendation panel, 1px #eeeeee border" }
+    tag-pill: { type: badge, bg: "#f5f5f5", fg: "#0096fa", radius: 4, padding: "4px 8px", font: "13px / 400", use: "Tag pill — primary navigation surface" }
+    badge-r18: { type: badge, bg: "#ff4060", fg: "#ffffff", radius: 4, font: "11px / 700", use: "Age-restricted content marker" }
+    badge-premium: { type: badge, bg: "#ffb300", fg: "#ffffff", radius: 4, use: "Premium member / feature marker" }
+    tab: { type: tab, fg: "#858585", font: "14px / 700", padding: "12px 16px", use: "Section switching", active: "#0096fa text, 2px bottom border #0096fa" }
+    toast: { type: toast, bg: "#333333", fg: "#ffffff", radius: 4, padding: "12px 16px", font: "14px / 400", use: "Bookmark confirmation, ~2.5s dismiss" }
+    dialog: { type: dialog, bg: "#ffffff", radius: 8, padding: "24px", use: "Login prompts, settings, confirmations" }
+    toggle: { type: toggle, bg: "#0096fa", radius: 9999, use: "Settings switch, white thumb, off #cccccc" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of pixiv (ピクシブ)

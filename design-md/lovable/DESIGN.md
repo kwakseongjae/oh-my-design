@@ -10,6 +10,44 @@ logo:
   slug: "https://lovable.dev/favicon-192x192.png"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  components_harvested: true
+  colors:
+    primary: "#ff6f61"
+    cream: "#f7f4ed"
+    charcoal: "#1c1c1c"
+    off-white: "#fcfbf8"
+    muted: "#5f5f5d"
+    border: "#eceae4"
+    ring: "#3b82f6"
+    on-primary: "#fcfbf8"
+  typography:
+    family: { sans: "Camera Plain Variable", mono: "ui-monospace" }
+    display-hero: { size: 60, weight: 600, lineHeight: 1.10, tracking: -1.5, use: "Maximum impact, editorial" }
+    display-alt:  { size: 60, weight: 480, lineHeight: 1.00, use: "Lighter hero variant" }
+    section:      { size: 48, weight: 600, lineHeight: 1.00, tracking: -1.2, use: "Feature section titles" }
+    subheading:   { size: 36, weight: 600, lineHeight: 1.10, tracking: -0.9, use: "Sub-sections" }
+    card-title:   { size: 20, weight: 400, lineHeight: 1.25, use: "Card headings" }
+    body-large:   { size: 18, weight: 400, lineHeight: 1.38, use: "Introductions" }
+    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
+    button:       { size: 16, weight: 400, lineHeight: 1.50, use: "Button labels" }
+    button-small: { size: 14, weight: 400, lineHeight: 1.50, use: "Compact buttons" }
+    caption:      { size: 14, weight: 400, lineHeight: 1.50, use: "Metadata, small text" }
+  spacing: { xs: 8, sm: 10, md: 12, base: 16, lg: 24, xl: 32, xxl: 56, section: 80 }
+  rounded: { sm: 4, md: 6, lg: 16, full: 9999 }
+  shadow:
+    inset: "rgba(255,255,255,0.2) 0px 0.5px 0px 0px inset, rgba(0,0,0,0.2) 0px 0px 0px 0.5px inset, rgba(0,0,0,0.05) 0px 1px 2px 0px"
+    focus: "rgba(0,0,0,0.1) 0px 4px 12px"
+  components:
+    button-primary: { type: button, bg: "#1c1c1c", fg: "#fcfbf8", radius: 6, padding: "8px 16px", use: "Primary CTA with inset shadow" }
+    button-ghost: { type: button, bg: "transparent", fg: "#1c1c1c", radius: 6, padding: "8px 16px", use: "Secondary actions, 1px interactive border" }
+    button-cream: { type: button, bg: "#f7f4ed", fg: "#1c1c1c", radius: 6, padding: "8px 16px", use: "Tertiary/toolbar actions" }
+    button-pill: { type: button, bg: "#f7f4ed", fg: "#1c1c1c", radius: 9999, use: "Icon button, plan mode toggle, voice record" }
+    card-standard: { type: card, bg: "#f7f4ed", radius: 12, use: "Standard card, 1px border, no shadow" }
+    input-default: { type: input, bg: "#f7f4ed", fg: "#1c1c1c", radius: 6, use: "Form field, 1px border, ring-blue focus" }
+    badge-pill: { type: badge, bg: "#f7f4ed", fg: "#1c1c1c", radius: 9999, use: "Suggestion pill with eceae4 border" }
 ---
 
 # Design System Inspiration of Lovable

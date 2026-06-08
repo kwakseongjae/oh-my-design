@@ -11,6 +11,57 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#5266eb"
+    primary-hover: "#4354c8"
+    primary-active: "#3442a6"
+    periwinkle: "#9cb4e8"
+    mist: "#cdddff"
+    canvas: "#171721"
+    canvas-elevated: "#1e1e2a"
+    canvas-light: "#fbfcfd"
+    surface: "#ededf3"
+    surface-secondary: "#f4f5f9"
+    surface-hover: "#dddde5"
+    ink-subdued: "#c3c3cc"
+    ink-disabled: "#70707d"
+    on-primary: "#ffffff"
+    error: "#d03275"
+    hairline: "#272735"
+  typography:
+    family: { sans: "Arcadia", mono: "Arcadia Mono" }
+    display-hero: { size: 65, weight: 360, lineHeight: 1.05, tracking: 0.42, use: "Marketing hero, Arcadia Display" }
+    display-lg:   { size: 48, weight: 360, lineHeight: 1.10, tracking: 0.42, use: "Section openers" }
+    heading-lg:   { size: 28, weight: 480, lineHeight: 1.25, use: "Feature titles, modal headers" }
+    heading:      { size: 22, weight: 480, lineHeight: 1.30, use: "Card headings, sub-sections" }
+    subtitle:     { size: 18, weight: 420, lineHeight: 1.40, use: "List headers, nav titles" }
+    body-lg:      { size: 17, weight: 400, lineHeight: 1.625, use: "Lead paragraphs" }
+    body:         { size: 15, weight: 400, lineHeight: 1.625, use: "Standard reading text" }
+    body-sm:      { size: 13, weight: 400, lineHeight: 1.50, use: "Secondary info, dense tables" }
+    caption:      { size: 12, weight: 420, lineHeight: 1.40, use: "Metadata, timestamps, labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 18, xl: 24, xxl: 28, section: 48 }
+  rounded: { sm: 4, md: 4, lg: 12, full: 9999 }
+  shadow:
+    card: "0px 1px 2px rgba(23,23,33,0.06)"
+    elevated: "0px 8px 32px rgba(0,0,0,0.4)"
+    dialog: "0px 16px 48px rgba(23,23,33,0.24)"
+  components:
+    button-primary: { type: button, bg: "#5266eb", fg: "#ffffff", radius: 4, padding: "10px 18px", font: "15px/480", use: "Single primary action Open Account" }
+    button-secondary: { type: button, bg: "#ededf3", fg: "#1e1e2a", radius: 4, padding: "10px 18px", font: "15px/480", use: "Secondary action" }
+    button-ghost: { type: button, bg: "transparent", fg: "#5266eb", radius: 4, padding: "10px 14px", font: "15px/420", use: "Inline low-emphasis Learn more" }
+    email-pill: { type: button, bg: "#5266eb", fg: "#ffffff", radius: 9999, padding: "0 20px", font: "15px/480", use: "Signature hero email-capture pill" }
+    input: { type: input, bg: "#fbfcfd", fg: "#1e1e2a", radius: 4, padding: "10px 12px", font: "15px/400", use: "Standard dashboard field" }
+    badge-neutral: { type: badge, bg: "#f4f5f9", fg: "#70707d", radius: 4, padding: "2px 8px", font: "12px/480", use: "Category/status metadata" }
+    badge-accent: { type: badge, fg: "#5266eb", radius: 4, padding: "2px 8px", font: "12px/480", use: "Highlighted status New/Active" }
+    card: { type: card, bg: "#ffffff", radius: 12, padding: "24px", use: "Dashboard panels, balance cards" }
+    tab: { type: tab, bg: "transparent", fg: "#70707d", active: "2px bottom border #5266eb", font: "15px/480", use: "Dashboard section switching" }
+    toast: { type: toast, bg: "#1e1e2a", fg: "#ededf3", radius: 12, padding: "12px 16px", use: "Transient confirmation" }
+    dialog: { type: dialog, bg: "#ffffff", radius: 12, padding: "28px", use: "Confirmation/form modal" }
+    toggle: { type: toggle, bg: "#5266eb", radius: 9999, use: "Boolean settings, on=indigo off=#c3c3cc" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Mercury

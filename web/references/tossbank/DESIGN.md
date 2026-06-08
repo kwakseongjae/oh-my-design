@@ -10,6 +10,63 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=tossbank.com&sz=128"
 verified: "2026-05-27"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#3182f6"
+    primary-hover: "#2272eb"
+    primary-light: "#e8f3ff"
+    brand: "#0064ff"
+    brand-gray: "#202632"
+    canvas: "#ffffff"
+    surface: "#f2f4f6"
+    grey-50: "#f9fafb"
+    heading: "#191f28"
+    grey-800: "#333d4b"
+    grey-700: "#4e5968"
+    body: "#6b7684"
+    muted: "#8b95a1"
+    placeholder: "#b0b8c1"
+    border: "#e5e8eb"
+    border-strong: "#d1d6db"
+    on-primary: "#ffffff"
+    error: "#f04452"
+    success: "#03b26c"
+    warning: "#fe9800"
+    caution: "#ffc342"
+  typography:
+    family: { sans: "Toss Product Sans", mono: "SF Mono" }
+    display-hero: { size: 30, weight: 700, lineHeight: 1.33, use: "Onboarding, hero moments" }
+    display-lg:   { size: 26, weight: 700, lineHeight: 1.38, use: "Section headers, key metrics" }
+    heading-lg:   { size: 22, weight: 700, lineHeight: 1.36, use: "Feature titles, modal headers" }
+    heading:      { size: 20, weight: 600, lineHeight: 1.40, use: "Card headings, sub-sections" }
+    subtitle:     { size: 16, weight: 600, lineHeight: 1.50, use: "List headers, nav titles" }
+    body-lg:      { size: 16, weight: 400, lineHeight: 1.50, use: "Descriptions, explanations" }
+    body:         { size: 14, weight: 400, lineHeight: 1.57, use: "Standard reading text" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.50, use: "Timestamps, fine print, rate disclaimers" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 8, md: 12, lg: 16, full: 9999 }
+  shadow:
+    standard: "0px 2px 8px rgba(0,0,0,0.08)"
+    elevated: "0px 4px 12px rgba(0,0,0,0.12)"
+    sheet: "0px -4px 12px rgba(0,0,0,0.08)"
+  components_harvested: true
+  components:
+    button-fill-primary: { type: button, bg: "#3182f6", fg: "#ffffff", radius: 16, padding: "0 20px", font: "17/600", use: "Primary CTA, 56px tall" }
+    button-fill-dark: { type: button, bg: "#4e5968", fg: "#ffffff", radius: 16, padding: "0 20px", font: "17/600", use: "Strong neutral action" }
+    button-fill-danger: { type: button, bg: "#f04452", fg: "#ffffff", radius: 16, padding: "0 20px", font: "17/600", use: "Destructive confirmation" }
+    input-box: { type: input, fg: "#333d4b", radius: 14, padding: "14px 16px", font: "17/400", use: "Standard form input" }
+    input-error: { type: input, fg: "#333d4b", radius: 14, padding: "14px 16px", font: "17/400", use: "hasError state, 1px border #f04452" }
+    card-account: { type: card, bg: "#ffffff", radius: 16, padding: "24px", use: "Account/balance hero card" }
+    card-standard: { type: card, bg: "#ffffff", radius: 12, padding: "20px", use: "Transaction summary, product cards" }
+    card-compact: { type: listItem, bg: "#ffffff", radius: 8, padding: "12px", use: "Transaction list row, 1px border #e5e8eb" }
+    badge-blue: { type: badge, bg: "#3182f6", fg: "#ffffff", radius: 12, padding: "3px 7px", font: "13/700", use: "Status emphasis NEW" }
+    badge-elephant: { type: badge, fg: "#4e5968", radius: 12, padding: "3px 7px", font: "13/700", use: "Neutral metadata badge" }
+    toast: { type: toast, bg: "#191f28", fg: "#ffffff", radius: 8, padding: "12px 16px", font: "14/500", use: "Transient feedback" }
+    sheet: { type: dialog, bg: "#ffffff", fg: "#191f28", radius: 16, padding: "24px 20px", use: "Bottom sheet, top corners only" }
+    segmented: { type: tab, bg: "#f2f4f6", fg: "#8b95a1", radius: 12, padding: "8px 16px", font: "14/600", use: "Segmented switch", active: "bg #ffffff, text #191f28" }
+    toggle: { type: toggle, bg: "#3182f6", radius: 9999, use: "On #3182f6 / off #d1d6db, white 18px thumb" }
 ---
 
 # Design System Inspiration of Toss Bank (토스뱅크)

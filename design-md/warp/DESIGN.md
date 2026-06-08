@@ -10,6 +10,43 @@ logo:
   slug: warp
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    parchment: "#faf9f6"
+    earth-gray: "#353534"
+    charcoal: "#454545"
+    stone-gray: "#868584"
+    ash-gray: "#afaeac"
+    muted-purple: "#666469"
+    input-bg: "#1a1a18"
+  typography:
+    family: { sans: "Matter Regular", mono: "Matter Mono Regular" }
+    display-hero:  { size: 80, weight: 400, lineHeight: 1.00, tracking: -2.4, use: "Hero impact" }
+    section:       { size: 56, weight: 400, lineHeight: 1.20, tracking: -0.56, use: "Feature section headings" }
+    feature:       { size: 40, weight: 400, lineHeight: 1.10, tracking: -0.4, use: "Feature block titles" }
+    body-heading:  { size: 24, weight: 400, lineHeight: 1.20, use: "Bold content intros" }
+    card-title:    { size: 22, weight: 500, lineHeight: 1.14, use: "Emphasized card headers" }
+    body-lg:       { size: 20, weight: 400, lineHeight: 1.40, tracking: -0.2, use: "Primary body, relaxed" }
+    body:          { size: 18, weight: 400, lineHeight: 1.30, tracking: -0.18, use: "Standard paragraphs" }
+    nav:           { size: 16, weight: 400, lineHeight: 1.20, use: "Navigation, UI text" }
+    button:        { size: 16, weight: 500, lineHeight: 1.20, use: "Button labels" }
+    caption:       { size: 14, weight: 400, lineHeight: 1.00, tracking: 1.4, use: "Uppercase labels" }
+    small-label:   { size: 12, weight: 400, lineHeight: 1.35, tracking: 2.4, use: "Uppercase micro-labels" }
+    micro:         { size: 11, weight: 400, lineHeight: 1.20, use: "Smallest text" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 36, section: 80 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 50 }
+  shadow:
+    ambient: "rgba(0,0,0,0.2) 0px 5px 15px"
+  components:
+    button-dark-pill: { type: button, bg: "#353534", fg: "#afaeac", radius: 50, padding: "10px", font: "16px/400 Matter Regular", use: "Primary CTA, muted" }
+    button-ghost: { type: button, fg: "#afaeac", radius: 50, padding: "10px", use: "Tertiary text-only, hover underline" }
+    input-default: { type: input, bg: "#1a1a18", fg: "#faf9f6", radius: 8, padding: "10px 12px", font: "16px/400 Matter Regular", use: "Form input, placeholder #868584" }
+    card-bordered: { type: card, bg: "#1a1a18", fg: "#faf9f6", radius: 12, padding: "24px", use: "Containment card, semi-transparent border" }
+    card-terminal: { type: card, bg: "#1a1a18", radius: 12, padding: "0px", use: "Product terminal UI frame" }
+    badge-frosted: { type: badge, fg: "#000000", radius: 6, padding: "1px 6px", font: "12px/400 Matter Regular", use: "Frosted tag/badge" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Warp

@@ -10,6 +10,52 @@ logo:
   slug: revolut
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    dark: "#191c1f"
+    white: "#ffffff"
+    light-surface: "#f4f4f4"
+    black: "#000000"
+    blue: "#494fdf"
+    action-blue: "#4f55f1"
+    blue-text: "#376cd5"
+    danger: "#e23b4a"
+    deep-pink: "#e61e49"
+    warning: "#ec7e00"
+    yellow: "#b09000"
+    teal: "#00a87e"
+    light-green: "#428619"
+    green-text: "#006400"
+    light-blue: "#007bc2"
+    brown: "#936d62"
+    red-text: "#8b0000"
+    mid-slate: "#505a63"
+    cool-gray: "#8d969e"
+    gray-tone: "#c9c9cd"
+  typography:
+    family: { sans: "Inter", mono: "Inter" }
+    display-mega: { size: 136, weight: 500, lineHeight: 1.00, tracking: -2.72, use: "Stadium-scale hero (Aeonik Pro)" }
+    display-hero: { size: 80, weight: 500, lineHeight: 1.00, tracking: -0.8, use: "Primary hero (Aeonik Pro)" }
+    section:      { size: 48, weight: 500, lineHeight: 1.21, tracking: -0.48, use: "Feature sections (Aeonik Pro)" }
+    card-title:   { size: 32, weight: 500, lineHeight: 1.19, tracking: -0.32, use: "Card headings (Aeonik Pro)" }
+    nav:          { size: 20, weight: 500, lineHeight: 1.40, use: "Navigation, buttons (Aeonik Pro)" }
+    body-lg:      { size: 18, weight: 400, lineHeight: 1.56, tracking: -0.09, use: "Introductions (Inter)" }
+    body:         { size: 16, weight: 400, lineHeight: 1.50, tracking: 0.24, use: "Standard reading (Inter)" }
+    body-semibold: { size: 16, weight: 600, lineHeight: 1.50, tracking: 0.16, use: "Emphasized body (Inter)" }
+  spacing: { xs: 4, sm: 8, md: 14, base: 16, lg: 24, xl: 32, xxl: 48, section: 80 }
+  rounded: { sm: 12, md: 20, lg: 20, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#191c1f", fg: "#ffffff", radius: 9999, padding: "14px 32px", use: "Primary dark pill, hover opacity 0.85" }
+    button-secondary: { type: button, bg: "#f4f4f4", fg: "#000000", radius: 9999, padding: "14px 34px", use: "Secondary light pill" }
+    button-outlined: { type: button, bg: "transparent", fg: "#191c1f", radius: 9999, padding: "14px 32px", use: "Outlined pill, 2px solid #191c1f border" }
+    button-ghost: { type: button, bg: "rgba(244,244,244,0.1)", fg: "#f4f4f4", radius: 9999, padding: "14px 32px", use: "Ghost on dark, 2px solid #f4f4f4 border" }
+    card: { type: card, radius: 20, use: "Feature card, flat, no shadow, dark/light alternation" }
+    nav-top: { type: tab, fg: "#191c1f", font: "20/500", use: "Clean header, pill CTAs right-aligned" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Revolut

@@ -16,6 +16,47 @@ ds:
   type: brand
   description: Zapier's official brand guidelines 1.0.
   og_image: "https://firebasestorage.googleapis.com/v0/b/standards-site-beta.appspot.com/o/documents%2F279072ea39f%2F8fc2c38ae5f%2Fmeta%2Fthumbnail_1_2.jpg?alt=media&token=0d0ea63f-6a32-4e46-b516-9db3c6c6ffe4"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#ff4f00"
+    ink: "#201515"
+    canvas: "#fffefb"
+    surface-alt: "#fffdf9"
+    charcoal: "#36342e"
+    warm-gray: "#939084"
+    sand: "#c5c0b1"
+    light-sand: "#eceae3"
+    mid-warm: "#b5b2aa"
+    on-primary: "#fffefb"
+  typography:
+    family: { sans: "Inter", mono: "Arial" }
+    display-hero-xl: { size: 80, weight: 500, lineHeight: 0.90, use: "Maximum-impact hero (Degular Display)" }
+    display-hero:    { size: 56, weight: 500, lineHeight: 0.90, tracking: -1.12, use: "Primary hero headlines (Degular Display)" }
+    section:         { size: 48, weight: 500, lineHeight: 1.04, use: "Major section titles (Inter)" }
+    editorial:       { size: 48, weight: 250, tracking: -1.92, use: "Thin editorial headlines (GT Alpina)" }
+    card-title:      { size: 24, weight: 600, tracking: -0.48, use: "Card headings" }
+    body-lg:         { size: 20, weight: 400, lineHeight: 1.2, tracking: -0.2, use: "Feature descriptions" }
+    body:            { size: 16, weight: 400, lineHeight: 1.25, tracking: -0.16, use: "Standard reading text" }
+    button:          { size: 16, weight: 600, use: "Standard button label" }
+    caption:         { size: 14, weight: 500, lineHeight: 1.43, use: "Labels, metadata" }
+    micro:           { size: 12, weight: 600, lineHeight: 0.9, tracking: 0.5, use: "Tiny uppercase labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 5, lg: 8, full: 9999 }
+  shadow:
+    tab-active: "rgb(255, 79, 0) 0px -4px 0px 0px inset"
+    tab-hover: "rgb(197, 192, 177) 0px -4px 0px 0px inset"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#ff4f00", fg: "#fffefb", radius: 4, padding: "8px 16px", use: "Primary CTA — Start free with email, Sign up free" }
+    button-dark: { type: button, bg: "#201515", fg: "#fffefb", radius: 8, padding: "20px 24px", use: "Large secondary CTA" }
+    button-ghost: { type: button, bg: "#eceae3", fg: "#36342e", radius: 8, padding: "20px 24px", use: "Tertiary / filter buttons" }
+    pill-button: { type: button, bg: "#fffefb", fg: "#36342e", radius: 20, padding: "0px 16px", use: "Tag-like filter pills" }
+    tab-nav: { type: tab, bg: "#fffefb", fg: "#201515", padding: "12px 16px", active: "inset underline rgb(255, 79, 0) 0px -4px 0px 0px", use: "Horizontal tab navigation" }
+    card: { type: card, bg: "#fffefb", radius: 5, use: "Borders define containment — 1px sand border, no default shadow" }
+    input: { type: input, bg: "#fffefb", fg: "#201515", radius: 5, use: "Form field — orange focus border, sand default" }
+    social-icon: { type: avatar, radius: 14, use: "Circular social-follow icon buttons in footer, sand border" }
 ---
 
 # Design System Inspiration of Zapier

@@ -10,6 +10,63 @@ logo:
   slug: Dcard
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "text colors ship as black-with-opacity (rgba); only 6-digit hexes promoted to colors — foreground uses #000000 (bg-dark) as the solid grounded base."
+  colors:
+    primary: "#3397cf"
+    primary-hover: "#5ab0db"
+    secondary: "#006aa6"
+    brand: "#00324e"
+    canvas: "#f2f2f2"
+    surface: "#ffffff"
+    foreground: "#000000"
+    on-primary: "#ffffff"
+    hint: "#e7f3f9"
+    premium: "#ffc51b"
+    premium-hover: "#ffd558"
+    success: "#49bd69"
+    danger: "#ea5c5c"
+    warning: "#f0a955"
+    special: "#f0b941"
+    topic: "#bf8ff0"
+    snackbar: "#2c2c2c"
+    sidebar-hover: "#032133"
+    disabled: "#e0e0e0"
+    hairline: "#cacaca"
+    gender-female: "#cb3a6b"
+    gender-male: "#1c7fac"
+  typography:
+    family: { sans: "Roboto" }
+    headline-1:  { size: 32, weight: 500, lineHeight: 1.31, use: "Top headline tier (mobile 30px)" }
+    headline-2:  { size: 28, weight: 500, lineHeight: 1.43, use: "Second headline tier" }
+    headline-3:  { size: 24, weight: 500, lineHeight: 1.17, use: "Third headline tier" }
+    headline-4:  { size: 20, weight: 500, lineHeight: 1.4, use: "Smallest headline tier" }
+    title:       { size: 18, weight: 600, lineHeight: 1.39, use: "Section headers in modals/editors (only 600 tier)" }
+    subtitle:    { size: 16, weight: 500, lineHeight: 1.38, use: "Subtitle 1" }
+    body:        { size: 16, weight: 400, lineHeight: 1.38, use: "Body 1, standard reading" }
+    body-sm:     { size: 14, weight: 400, lineHeight: 1.43, use: "Body 2" }
+    caption:     { size: 12, weight: 500, lineHeight: 1.42, use: "Caption — bumps to 500 for small-size legibility" }
+    caption-sm:  { size: 10, weight: 500, lineHeight: 1.6, use: "Caption 2, smallest" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 20, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, full: 9999 }
+  shadow:
+    level-1: "Material elevation level 1 — subtle card lift"
+    level-5: "Material elevation level 5 — modals, popovers"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#3397cf", fg: "#ffffff", radius: 8, padding: "8px 20px", font: "14/500", use: "Hero Download App CTA" }
+    button-secondary: { type: button, bg: "#006aa6", fg: "#ffffff", radius: 4, padding: "8px 20px", font: "14/500", use: "Search submit, joined to input" }
+    button-counter: { type: button, radius: 8, padding: "1px 14px", font: "14/500", use: "Like / comment counters" }
+    button-disabled: { type: button, bg: "#e0e0e0", radius: 8, use: "Inactive button state" }
+    search-input: { type: input, bg: "#ffffff", radius: 4, padding: "8px 12px", use: "Header search, 1px #cacaca border, joined to submit" }
+    post-card: { type: card, bg: "#ffffff", radius: 4, padding: "20px", use: "Main feed post card on #f2f2f2 gray bg, contrast handles separation" }
+    forum-card: { type: card, bg: "#ffffff", radius: 4, padding: "16px", use: "Forum directory card, 146x110px" }
+    topic-chip: { type: badge, bg: "#bf8ff0", fg: "#ffffff", radius: 4, padding: "4px 8px", font: "12/500", use: "Topic tags — lavender accent" }
+    sponsor-chip: { type: badge, bg: "#f0b941", fg: "#ffffff", radius: 4, padding: "4px 8px", use: "Sponsored / special-promotion chips" }
+    feed-tabs: { type: tab, radius: 4, use: "All / Following switcher, 48px header", active: "underline indicator + #000000 text" }
+    snackbar: { type: toast, bg: "#2c2c2c", fg: "#ffffff", radius: 4, use: "Toast notification, 250px wide" }
 ---
 
 # Design System Inspiration of Dcard

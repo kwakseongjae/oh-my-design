@@ -11,6 +11,69 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#007cff"
+    blue-light: "#4b9cfb"
+    white: "#ffffff"
+    off-white: "#f7f7f7"
+    black: "#000000"
+    ink: "#111111"
+    error: "#f84f65"
+    error-deep: "#b50000"
+    caution: "#ffff99"
+    grey-50: "#fafafa"
+    grey-100: "#f5f5f5"
+    grey-150: "#f2f2f2"
+    grey-200: "#ededed"
+    grey-250: "#e5e5e5"
+    grey-300: "#eeeeee"
+    grey-400: "#cccccc"
+    grey-600: "#616161"
+    grey-700: "#333333"
+    grey-800: "#222222"
+    grey-900: "#1a1a1a"
+  typography:
+    family: { sans: "Inter", mono: "Menlo" }
+    display-hero: { size: 64, weight: 600, lineHeight: 1.05, tracking: -0.03, use: "Landing hero headline" }
+    display:      { size: 48, weight: 600, lineHeight: 1.1, tracking: -0.02, use: "Major section openers" }
+    heading-1:    { size: 32, weight: 600, lineHeight: 1.2, tracking: -0.02, use: "Page / panel titles" }
+    heading-2:    { size: 24, weight: 600, lineHeight: 1.25, tracking: -0.015, use: "Section headings" }
+    heading-3:    { size: 18, weight: 600, lineHeight: 1.35, tracking: -0.01, use: "Card / group titles" }
+    subtitle:     { size: 16, weight: 500, lineHeight: 1.4, use: "List headers, nav labels" }
+    body-lg:      { size: 16, weight: 400, lineHeight: 1.6, use: "Marketing paragraphs" }
+    body:         { size: 14, weight: 400, lineHeight: 1.55, use: "Standard UI text" }
+    body-sm:      { size: 13, weight: 400, lineHeight: 1.5, use: "Secondary info" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.45, tracking: 0.01, use: "Metadata, timestamps" }
+    code:         { size: 12, weight: 400, lineHeight: 1.5, use: "CSS values, tokens (Menlo)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
+  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
+  shadow:
+    subtle: "0 1px 2px rgba(0,0,0,0.06)"
+    floating: "0 4px 16px rgba(0,0,0,0.08)"
+    modal: "0 8px 32px rgba(0,0,0,0.16)"
+    showcase: "0 8px 24px rgba(0,0,0,0.10)"
+  components:
+    button-primary: { type: button, bg: "#111111", fg: "#ffffff", radius: 6, padding: "0 18px", font: "14px/600 Inter", use: "Primary CTA, hover #000000" }
+    button-blue: { type: button, bg: "#007cff", fg: "#ffffff", radius: 6, padding: "0 18px", font: "14px/600 Inter", use: "Action emphasis inside editor" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#111111", radius: 6, padding: "0 18px", font: "14px/500 Inter", use: "Outline, 1px #e5e5e5 border, hover #fafafa" }
+    button-ghost: { type: button, fg: "#616161", radius: 6, padding: "0 10px", font: "14px/500 Inter", use: "Tertiary / toolbar actions" }
+    button-pill: { type: badge, fg: "#4b9cfb", radius: 9999, padding: "4px 12px", font: "12px/600 Inter", use: "New, Beta, category chips" }
+    input-text: { type: input, bg: "#ffffff", fg: "#111111", radius: 6, padding: "9px 12px", font: "14px/400 Inter", use: "Standard form input, 1px #e5e5e5 border, focus #007cff" }
+    input-inset: { type: input, bg: "#f7f7f7", fg: "#111111", radius: 4, padding: "6px 8px", font: "13px/400 Inter", use: "Property/inspector value fields" }
+    card-standard: { type: card, bg: "#ffffff", radius: 6, padding: "20px", use: "Template tiles, project cards, 1px #eeeeee border, no shadow" }
+    card-floating: { type: card, bg: "#ffffff", radius: 6, padding: "16px", use: "Popovers, inspector, floating menus" }
+    card-showcase: { type: card, bg: "#f7f7f7", radius: 6, padding: "0", use: "Gallery tile, image-filled, hover scale 1.01" }
+    badge-neutral: { type: badge, bg: "#f5f5f5", fg: "#616161", radius: 4, padding: "2px 8px", font: "12px/500 Inter", use: "Tag, status metadata" }
+    badge-accent: { type: badge, fg: "#007cff", radius: 9999, padding: "3px 10px", font: "12px/600 Inter", use: "New, highlighted category" }
+    badge-error: { type: badge, fg: "#f84f65", radius: 4, padding: "2px 8px", font: "12px/600 Inter", use: "Failed / blocked state" }
+    tab-underline: { type: tab, fg: "#616161", padding: "0 4px 12px", font: "14px/500 Inter", active: "Active #111111 text + 2px #111111 bottom border", use: "Section switching" }
+    toast-default: { type: toast, bg: "#111111", fg: "#ffffff", radius: 6, padding: "12px 16px", font: "14px/500 Inter", use: "Transient confirmation" }
+    dialog-modal: { type: dialog, bg: "#ffffff", fg: "#111111", radius: 6, padding: "24px", use: "Confirm / settings dialogs" }
+    toggle-default: { type: toggle, bg: "#007cff", radius: 9999, use: "Boolean settings, #e5e5e5 off, #ffffff thumb" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Studio

@@ -50,10 +50,12 @@ tokens:
     standard: "rgba(23,23,23,0.08) 0px 15px 35px"
     elevated: "rgba(50,50,93,0.25) 0px 30px 45px -30px, rgba(0,0,0,0.1) 0px 18px 36px -18px"
   components:
-    button-primary: "Stripe Purple #533afd fill, white text, 4-8px radius, weight 400"
-    button-ghost: "transparent fill, purple text + 1px purple border"
-    card: "white surface, 8px radius, blue-tinted standard shadow"
-    badge-success: "success #15be53 at 0.2-0.4 alpha bg, #108c3d text"
+    button-primary: { type: button, bg: "#533afd", fg: "#ffffff", radius: 4, padding: "8px 16px", font: "16px/400 sohne-var", use: "Primary CTA, hover #4434d4" }
+    button-ghost: { type: button, fg: "#533afd", radius: 4, padding: "8px 16px", font: "16px/400 sohne-var", use: "Secondary action, 1px #b9b9f9 border" }
+    card: { type: card, bg: "#ffffff", radius: 8, use: "Content card, 1px #e5edf5 border, blue-tinted standard shadow" }
+    input-text: { type: input, fg: "#061b31", radius: 4, font: "14px sohne-var", use: "Form input, 1px #e5edf5 border, focus #533afd, placeholder #64748d" }
+    badge-success: { type: badge, fg: "#108c3d", radius: 4, padding: "1px 6px", font: "10px/300 sohne-var", use: "Success badge, success #15be53 tinted bg" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Stripe

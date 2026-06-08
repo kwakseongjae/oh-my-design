@@ -56,12 +56,16 @@ tokens:
     neumorphic: "0px 10px 44px rgba(102, 102, 102, 0.12), inset -3px -3px 10px rgba(84, 92, 101, 0.16), inset -5px -3px 12px rgba(193, 203, 221, 0.16)"
     elevated: "0px 24px 60px rgba(9, 9, 10, 0.2), inset 1px 1px 8px rgba(182, 190, 199, 0.08), inset -2px -2px 10px rgba(54, 64, 83, 0.1)"
   components:
-    button-primary: "Richart teal #17b6c9 fill, #fdfdfd text, 100px pill radius, Noto Sans TC weight 500, 20px"
-    button-primary-xl: "radial-gradient #64cedb to #15a6b7, 240px wide, 16px vertical padding, 100px pill"
-    button-secondary: "transparent fill, #17b6c9 text + 2px #17b6c9 border, 100px pill, hover fills teal"
-    card: "#fdfdfd surface, 16px radius, neumorphic inset shadow"
-    title-bar: "4px x 24px #17b6c9 vertical accent bar before block title text"
-    badge-disabled: "#727d8c fill, rgba(253,253,253,0.5) text, 38px radius"
+    button-primary: { type: button, bg: "#17b6c9", fg: "#fdfdfd", radius: 9999, font: "20/500", use: "Primary CTA pill, hover #15a6b7" }
+    button-primary-xl: { type: button, fg: "#fdfdfd", radius: 9999, padding: "16px 0", use: "Hero action, radial gradient #64cedb to #15a6b7, 240px wide" }
+    button-secondary: { type: button, bg: "transparent", fg: "#17b6c9", radius: 9999, use: "Secondary action, 2px #17b6c9 border, hover fills teal" }
+    card: { type: card, bg: "#fdfdfd", radius: 16, use: "Feature card, neumorphic inset shadow" }
+    badge-teal: { type: badge, bg: "#ecf9fa", fg: "#17b6c9", radius: 9999, use: "Teal-themed tag" }
+    badge-neutral: { type: badge, bg: "#f3f5f6", fg: "#727d8c", radius: 16, use: "Neutral tag" }
+    input: { type: input, bg: "#fdfdfd", fg: "#1b2028", radius: 8, use: "Form input, 1px #c7cdd4 border, #17b6c9 focus, #e75365 error" }
+    title-bar: { type: badge, bg: "#17b6c9", use: "4px x 24px vertical accent bar before block title" }
+    badge-disabled: { type: badge, bg: "#727d8c", fg: "rgba(253,253,253,0.5)", radius: 9999, use: "Disabled button state" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Richart

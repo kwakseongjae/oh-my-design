@@ -47,13 +47,14 @@ tokens:
     ambient: "rgba(0,0,0,0.06) 0px 2px 8px"
     standard: "rgba(0,0,0,0.10) 0px 4px 16px"
     elevated: "rgba(0,0,0,0.12) 0px 8px 28px"
+  components_harvested: true
   components:
-    button-primary: "Teal #02cab9 fill, white text, 5px radius, Roboto weight 400, hero size 20px"
-    button-primary-cta: "Teal #02cab9 fill, white text, 3px radius, 8px 18px padding, 24px weight 300 — section CTA"
-    button-ghost: "transparent fill, #484848 text, no border — header utility actions (Sign In, Apply To Teach)"
-    card-course: "white surface, 8px radius, ambient shadow, image top + price label #484848"
-    accent-coral: "Coral #ff5f5f for badges, highlights, urgency tags; #ffe5e5 soft tint background"
-    nav-link: "Roboto 16px weight 400, rgba(0,0,0,0.87) text, teal #02cab9 on active/hover"
+    button-primary: { type: button, bg: "#02cab9", fg: "#ffffff", radius: 5, font: "Roboto 20px/400", use: "hero primary CTA" }
+    button-primary-cta: { type: button, bg: "#02cab9", fg: "#ffffff", radius: 3, padding: "8px 18px", font: "24px/300", use: "section CTA" }
+    button-ghost: { type: button, fg: "#484848", use: "header utility actions (Sign In, Apply To Teach), no border" }
+    card-course: { type: card, bg: "#ffffff", fg: "#484848", radius: 8, use: "ambient shadow, image top + price label" }
+    accent-coral: { type: badge, bg: "#ffe5e5", fg: "#ff5f5f", use: "badges, highlights, urgency tags, soft tint background" }
+    nav-link: { type: tab, font: "Roboto 16px/400", use: "nav link", active: "teal #02cab9 on active/hover" }
 ---
 
 # Design System Inspiration of AmazingTalker

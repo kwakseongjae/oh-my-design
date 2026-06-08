@@ -46,13 +46,14 @@ tokens:
   shadow:
     none: "none"
     float: "rgba(0,0,0,0.08) 0px 8px 24px"
+  components_harvested: true
   components:
-    button-primary: "Signal red #ff4438 fill, white label, weight 600, 8px radius, 6x16 padding, no shadow"
-    button-secondary: "Outline or text-only link, ink #232334, paired right of primary"
-    nav: "14px/400 horizontal menu, sticky on scroll, red 도입 문의 CTA right-aligned"
-    card: "White #ffffff surface on lavender canvas, 20px radius, no border, no shadow — bg contrast defines boundary"
-    pill: "999px radius chip for feature tags and 신규 status markers"
-    footer: "Dark band #06080d, white type, social icons + app-store badges + legal links"
+    button-primary: { type: button, bg: "#ff4438", fg: "#ffffff", radius: 8, padding: "6px 16px", font: "15/600", use: "Primary CTA — signal red fill, no shadow" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#232334", use: "Outline or text-only link, paired right of primary" }
+    nav: { type: tab, fg: "#232334", font: "14/400", use: "Horizontal menu, sticky on scroll, red 도입 문의 CTA right-aligned" }
+    card: { type: card, bg: "#ffffff", radius: 20, use: "White surface on lavender canvas, no border/shadow — bg contrast defines boundary" }
+    pill: { type: badge, radius: 9999, use: "Chip for feature tags and 신규 status markers" }
+    footer: { type: card, bg: "#06080d", fg: "#ffffff", use: "Dark band, white type, social icons + app-store badges + legal links" }
 ---
 
 # Design System Inspiration of Classum (클라썸)

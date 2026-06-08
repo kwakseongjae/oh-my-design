@@ -15,6 +15,51 @@ ds:
   url: "https://www.raycast.com/templates/brand-guidelines"
   type: brand
   description: Raycast's brand guidelines with colors, logos, and asset kit.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    background: "#07080a"
+    surface: "#101111"
+    card: "#1b1c1e"
+    white: "#ffffff"
+    accent: "#ff6363"
+    body: "#f9f9f9"
+    secondary: "#cecece"
+    silver: "#c0c0c0"
+    link: "#9c9c9d"
+    dim: "#6a6b6c"
+    dark-gray: "#434345"
+    border: "#2f3031"
+    button-fg: "#18191a"
+    key-start: "#121212"
+    key-end: "#0d0d0d"
+  typography:
+    family: { sans: "Inter", mono: "GeistMono" }
+    display-hero: { size: 64, weight: 600, lineHeight: 1.10, tracking: 0, use: "Hero display" }
+    section:      { size: 56, weight: 400, lineHeight: 1.17, tracking: 0.2, use: "Section display" }
+    heading:      { size: 24, weight: 500, tracking: 0.2, use: "Section heading" }
+    card-heading: { size: 22, weight: 400, lineHeight: 1.15, tracking: 0, use: "Card heading" }
+    body:         { size: 16, weight: 500, lineHeight: 1.60, tracking: 0.2, use: "Primary body text" }
+    button:       { size: 16, weight: 600, lineHeight: 1.15, tracking: 0.3, use: "Button label" }
+    caption:      { size: 14, weight: 500, lineHeight: 1.14, tracking: 0.2, use: "Small labels, metadata" }
+    code:         { size: 14, weight: 500, lineHeight: 1.60, tracking: 0.3, use: "Code blocks (GeistMono)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 40, section: 80 }
+  rounded: { sm: 6, md: 8, lg: 12, full: 9999 }
+  shadow:
+    subtle: "rgba(0,0,0,0.28) 0px 1.189px 2.377px"
+    button-inset: "rgba(255,255,255,0.1) 0px 1px 0px 0px inset"
+    warm-glow: "rgba(215,201,175,0.05) 0px 0px 20px 5px"
+  components:
+    button-primary: { type: button, bg: "transparent", fg: "#ffffff", radius: 9999, padding: "10px 16px", font: "16/600", use: "Primary pill button, inset white highlight" }
+    button-cta: { type: button, fg: "#18191a", radius: 9999, padding: "10px 16px", use: "Hero Download CTA, translucent white fill" }
+    button-ghost: { type: button, bg: "transparent", fg: "#6a6b6c", radius: 9999, padding: "10px 16px", use: "Tertiary action, gray text brightens on hover" }
+    input: { type: input, bg: "#07080a", fg: "#f9f9f9", radius: 8, padding: "10px 12px", use: "Form input on dark, blue focus glow" }
+    card: { type: card, bg: "#101111", fg: "#ffffff", radius: 12, padding: "16px", use: "Default dark card, faint white border" }
+    card-feature: { type: card, bg: "#101111", radius: 20, padding: "24px", use: "Hero/feature card with warm glow" }
+    badge: { type: badge, bg: "#1b1c1e", fg: "#ffffff", radius: 6, padding: "0 6px", font: "14/500", use: "Categorization badge" }
+    nav-top: { type: tab, bg: "#07080a", fg: "#9c9c9d", font: "16/500", use: "Top nav links, white on hover", active: "white text on hover, underline" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Raycast

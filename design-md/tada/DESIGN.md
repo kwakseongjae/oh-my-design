@@ -11,6 +11,57 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=tadatada.com&sz=128"
 verified: "2026-05-27"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#1ec59f"
+    primary-pressed: "#17a384"
+    primary-deep: "#149378"
+    mint-light: "#e6f8f3"
+    canvas: "#ffffff"
+    heading: "#1a1a1a"
+    gray-800: "#333333"
+    gray-700: "#555555"
+    body: "#777777"
+    gray-500: "#999999"
+    gray-400: "#bbbbbb"
+    border: "#e5e5e5"
+    surface: "#f2f2f2"
+    on-primary: "#ffffff"
+    error: "#ff4452"
+    warning: "#ff9f1c"
+    navy: "#19254d"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    display:      { size: 28, weight: 700, lineHeight: 38, tracking: -0.4, use: "Onboarding / hero moment" }
+    heading-lg:   { size: 22, weight: 700, lineHeight: 30, tracking: -0.4, use: "Screen title" }
+    heading:      { size: 18, weight: 700, lineHeight: 26, tracking: -0.3, use: "Section header, vehicle type title" }
+    title:        { size: 16, weight: 600, lineHeight: 24, tracking: -0.3, use: "Bottom-sheet header, list header" }
+    body-lg:      { size: 16, weight: 400, lineHeight: 24, tracking: -0.2, use: "Descriptions, address text" }
+    body:         { size: 14, weight: 400, lineHeight: 22, tracking: -0.2, use: "Default body, list metadata" }
+    caption:      { size: 13, weight: 400, lineHeight: 18, tracking: -0.2, use: "Secondary metadata, timestamps" }
+    micro:        { size: 12, weight: 500, lineHeight: 16, tracking: -0.2, use: "Fine print, map labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 40 }
+  rounded: { sm: 8, md: 12, lg: 16, full: 9999 }
+  shadow:
+    subtle: "0px 1px 3px rgba(0,0,0,0.06)"
+    standard: "0px 2px 8px rgba(0,0,0,0.08)"
+    floating: "0px 4px 16px rgba(0,0,0,0.12)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#1ec59f", fg: "#ffffff", radius: 12, padding: "16px 20px", font: "16/700", use: "Primary CTA, thumb-reachable bottom action" }
+    button-dark: { type: button, bg: "#19254d", fg: "#ffffff", radius: 12, padding: "16px 20px", font: "16/700", use: "Marketing-surface strong CTA" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#1ec59f", radius: 12, padding: "16px 20px", font: "16/600", use: "Secondary CTA" }
+    button-neutral: { type: button, bg: "#f2f2f2", fg: "#333333", radius: 12, padding: "14px 16px", font: "14/500", use: "Tertiary actions" }
+    button-danger: { type: button, bg: "#ff4452", fg: "#ffffff", radius: 12, padding: "16px 20px", font: "16/700", use: "Destructive confirm" }
+    input-default: { type: input, bg: "#ffffff", fg: "#1a1a1a", radius: 12, padding: "14px 16px", font: "16/400", use: "Default text input" }
+    input-search: { type: input, bg: "#f2f2f2", fg: "#1a1a1a", radius: 12, padding: "14px 16px 14px 44px", font: "16/400", use: "Destination-entry field" }
+    card-vehicle: { type: card, bg: "#ffffff", radius: 16, padding: "16px", use: "Vehicle type selection card" }
+    card-trip: { type: card, bg: "#ffffff", radius: 16, padding: "20px", use: "Active-trip summary over map" }
+    badge-status: { type: badge, bg: "#e6f8f3", fg: "#149378", radius: 8, padding: "4px 8px", font: "12/700", use: "Trip status" }
+    badge-neutral: { type: badge, bg: "#f2f2f2", fg: "#555555", radius: 8, padding: "4px 8px", font: "12/700", use: "Metadata / feature label" }
+    tab-bottom: { type: tab, fg: "#999999", use: "Bottom tab bar", active: "label #1ec59f, icon filled" }
 ---
 
 # Design System Inspiration of TADA (타다)

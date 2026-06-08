@@ -15,6 +15,48 @@ ds:
   url: "https://helios.hashicorp.design"
   type: system
   description: HashiCorp's design system documenting components and foundations.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    brand: "#000000"
+    dark: "#15181e"
+    dark-deep: "#0d0e12"
+    canvas: "#ffffff"
+    surface-light: "#f1f2f3"
+    border: "#d5d7db"
+    helper: "#656a76"
+    body: "#3b3d45"
+    on-dark: "#efeff1"
+    link: "#2264d6"
+    link-on-dark: "#1060ff"
+    link-bright: "#2b89ff"
+    terraform: "#7b42bc"
+    vault: "#ffcf25"
+    waypoint: "#14c6cb"
+    waypoint-hover: "#12b6bb"
+    vagrant: "#1868f2"
+    badge-bg: "#42225b"
+  typography:
+    family: { sans: "HashiCorp Sans", fallback: "system-ui, sans-serif" }
+    display-hero: { size: 82, weight: 600, lineHeight: 1.17, use: "Hero headline, kern enabled" }
+    heading:      { size: 26, weight: 700, lineHeight: 1.19, use: "Card / product titles" }
+    body:         { size: 16, weight: 400, lineHeight: 1.63, use: "Standard reading text, system-ui" }
+    label:        { size: 13, weight: 600, tracking: 1.3, use: "Uppercase section labels, letter-spaced" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 2, md: 5, lg: 8, full: 9999 }
+  shadow:
+    micro: "rgba(97,104,117,0.05) 0px 1px 1px, rgba(97,104,117,0.05) 0px 2px 2px"
+  components:
+    button-primary: { type: button, bg: "#15181e", fg: "#d5d7db", radius: 5, padding: "9px 15px", use: "Primary dark CTA" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#3b3d45", radius: 4, padding: "8px 12px", use: "Secondary white button" }
+    button-terraform: { type: button, bg: "#7b42bc", fg: "#ffffff", radius: 5, use: "Terraform product button" }
+    button-waypoint: { type: button, bg: "#14c6cb", fg: "#0d0e12", radius: 5, use: "Waypoint product button" }
+    badge: { type: badge, bg: "#42225b", fg: "#efeff1", radius: 5, padding: "3px 7px", font: "16px", use: "Deep purple pill badge" }
+    input-dark: { type: input, bg: "#0d0e12", fg: "#efeff1", radius: 5, padding: "11px", use: "Dark-mode text input" }
+    card: { type: card, bg: "#ffffff", radius: 8, use: "Light card with micro-shadow elevation" }
+    nav-link: { type: tab, fg: "#3b3d45", font: "15px weight 500", use: "Horizontal nav link, system-ui" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of HashiCorp

@@ -10,6 +10,55 @@ logo:
   slug: webflow
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    ink: "#080808"
+    primary: "#146ef5"
+    blue-400: "#3b89ff"
+    blue-300: "#006acc"
+    button-hover: "#0055d4"
+    purple: "#7a3dff"
+    pink: "#ed52cb"
+    green: "#00d722"
+    orange: "#ff6b00"
+    yellow: "#ffae13"
+    red: "#ee1d36"
+    gray-800: "#222222"
+    gray-700: "#363636"
+    gray-500: "#5a5a5a"
+    gray-300: "#ababab"
+    border: "#d8d8d8"
+    border-hover: "#898989"
+  typography:
+    family: { sans: "WF Visual Sans Variable", mono: "Inconsolata" }
+    display-hero:    { size: 80, weight: 600, lineHeight: 1.04, tracking: -0.8, use: "Hero headline" }
+    section:         { size: 56, weight: 600, lineHeight: 1.04, use: "Section heading" }
+    subheading:      { size: 32, weight: 500, lineHeight: 1.30, use: "Sub-heading" }
+    feature-title:   { size: 24, weight: 600, lineHeight: 1.30, use: "Feature title" }
+    body:            { size: 20, weight: 400, lineHeight: 1.40, use: "Body text" }
+    body-standard:   { size: 16, weight: 400, lineHeight: 1.60, tracking: -0.16, use: "Standard body" }
+    button:          { size: 16, weight: 500, lineHeight: 1.60, tracking: -0.16, use: "Button label" }
+    uppercase-label: { size: 15, weight: 500, lineHeight: 1.30, tracking: 1.5, use: "Uppercase label" }
+    caption:         { size: 14, weight: 400, lineHeight: 1.40, use: "Caption" }
+    badge:           { size: 12, weight: 550, lineHeight: 1.20, use: "Badge uppercase" }
+    micro:           { size: 10, weight: 500, lineHeight: 1.30, tracking: 1, use: "Micro uppercase" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
+  rounded: { sm: 2, md: 4, lg: 8, full: 9999 }
+  shadow:
+    cascade: "rgba(0,0,0,0) 0px 84px 24px, rgba(0,0,0,0.01) 0px 54px 22px, rgba(0,0,0,0.04) 0px 30px 18px, rgba(0,0,0,0.08) 0px 13px 13px, rgba(0,0,0,0.09) 0px 3px 7px"
+  components:
+    button-primary: { type: button, bg: "#146ef5", fg: "#ffffff", radius: 4, padding: "8px 16px", font: "16px/550 WF Visual Sans Variable", use: "Primary CTA, Webflow Blue" }
+    button-transparent: { type: button, fg: "#080808", radius: 4, padding: "8px 16px", font: "16px/550 WF Visual Sans Variable", use: "Text button, hover translate 6px" }
+    button-circle: { type: button, bg: "#ffffff", fg: "#080808", radius: 9999, padding: "12px", use: "Circular icon button" }
+    input-default: { type: input, bg: "#ffffff", fg: "#080808", radius: 4, padding: "8px 12px", font: "16px/500 WF Visual Sans Variable", use: "Form input, 1px #d8d8d8, focus #146ef5" }
+    card-standard: { type: card, bg: "#ffffff", radius: 8, padding: "24px", use: "Content card, 1px #d8d8d8 border" }
+    card-compact: { type: card, bg: "#ffffff", radius: 4, padding: "16px", use: "Smaller utility container, 1px #d8d8d8" }
+    badge-blue: { type: badge, bg: "#146ef5", fg: "#ffffff", radius: 4, padding: "2px 8px", font: "12px/550 WF Visual Sans Variable", use: "Solid blue badge" }
+    badge-tinted: { type: badge, fg: "#146ef5", radius: 4, padding: "2px 8px", font: "12px/550 WF Visual Sans Variable", use: "Subtle tinted badge, 10% blue bg" }
+    badge-micro: { type: badge, fg: "#080808", radius: 4, padding: "2px 6px", font: "10px/600 WF Visual Sans Variable", use: "Uppercase micro-label, +1px tracking" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Webflow

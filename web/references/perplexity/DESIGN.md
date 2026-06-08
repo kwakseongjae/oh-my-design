@@ -11,6 +11,67 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#20808d"
+    primary-hover: "#1a6873"
+    primary-deep: "#13343b"
+    primary-tint: "#e5f2f2"
+    teal-on-dark: "#34b4c4"
+    ink: "#091717"
+    canvas: "#fbfaf4"
+    surface: "#fcfcf9"
+    surface-white: "#ffffff"
+    body: "#2e3a3a"
+    muted: "#5c6a6a"
+    placeholder: "#8a9494"
+    hairline: "#e4e4dc"
+    hairline-soft: "#efefe9"
+    dark-canvas: "#0d1117"
+    dark-surface: "#161b22"
+    dark-line: "#2a2f37"
+    ink-inverse: "#f2f2ed"
+    success: "#1f9d6b"
+    error: "#e0524a"
+    warning: "#d9923a"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "FK Grotesk", mono: "Berkeley Mono" }
+    display-hero: { size: 48, weight: 500, lineHeight: 1.08, tracking: -0.02, use: "Landing hero" }
+    display:      { size: 36, weight: 500, lineHeight: 1.17, tracking: -0.02, use: "Marketing section headers" }
+    heading-lg:   { size: 28, weight: 600, lineHeight: 1.29, tracking: -0.01, use: "Thread title, page headers" }
+    heading:      { size: 22, weight: 600, lineHeight: 1.36, tracking: -0.01, use: "Answer section headers, modal titles" }
+    subtitle:     { size: 18, weight: 600, lineHeight: 1.44, use: "Source group labels, card headings" }
+    answer-body:  { size: 16, weight: 400, lineHeight: 1.63, use: "Generated answer text, reading-first leading" }
+    body:         { size: 15, weight: 400, lineHeight: 1.60, use: "UI descriptions, settings" }
+    label:        { size: 14, weight: 500, lineHeight: 1.43, use: "Buttons, tabs, chips" }
+    caption:      { size: 13, weight: 400, lineHeight: 1.38, use: "Metadata, source domains, timestamps" }
+    mono:         { size: 13, weight: 400, lineHeight: 1.54, use: "Code, model IDs" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 6, md: 10, lg: 16, full: 9999 }
+  shadow:
+    ambient: "rgba(9,23,23,0.06) 0px 1px 3px"
+    standard: "rgba(9,23,23,0.08) 0px 2px 8px"
+    elevated: "rgba(9,23,23,0.20) 0px 16px 48px"
+  components:
+    button-primary: { type: button, bg: "#20808d", fg: "#ffffff", radius: 10, padding: "0 18px", font: "14px / 500", use: "Ask / submit primary CTA" }
+    button-secondary: { type: button, bg: "#fcfcf9", fg: "#091717", radius: 10, padding: "0 18px", font: "14px / 500", use: "Secondary action, 1px #e4e4dc border" }
+    button-ghost: { type: button, bg: "#efefe9", fg: "#5c6a6a", radius: 8, padding: "0 12px", font: "14px / 500", use: "Toolbar actions (Share, Sources, More)" }
+    pill: { type: badge, bg: "#ffffff", fg: "#2e3a3a", radius: 9999, padding: "6px 14px", font: "13px / 500", use: "Focus mode / filter selector", active: "#20808d border, #13343b text, #e5f2f2 bg" }
+    composer: { type: input, bg: "#ffffff", fg: "#091717", radius: 16, padding: "16px 18px", font: "16px / 400", use: "The Ask box, 1px #e4e4dc border, focus #20808d ring" }
+    text-field: { type: input, bg: "#ffffff", fg: "#091717", radius: 10, padding: "10px 14px", font: "15px / 400", use: "Standard text field, 1px #e4e4dc border" }
+    answer-card: { type: card, bg: "#fcfcf9", radius: 12, padding: "20px 24px", use: "Generated answer block, 1px #efefe9 border, editorial flat" }
+    source-card: { type: card, bg: "#ffffff", radius: 10, padding: "12px 14px", use: "Cited source card, 1px #e4e4dc border" }
+    citation-chip: { type: badge, bg: "#e5f2f2", fg: "#13343b", radius: 6, padding: "1px 6px", font: "11px / 600", use: "Inline source reference" }
+    badge-pro: { type: badge, bg: "#13343b", fg: "#ffffff", radius: 6, padding: "2px 8px", font: "11px / 600", use: "PRO / model labels" }
+    badge-status: { type: badge, bg: "#e5f2f2", fg: "#20808d", radius: 6, padding: "2px 8px", font: "11px / 600", use: "New / Beta / focus-mode labels" }
+    tab: { type: tab, fg: "#5c6a6a", font: "14px / 500", use: "Home / Discover / Spaces / Library", active: "#091717 text, 2px bottom border #20808d" }
+    toast: { type: toast, bg: "#091717", fg: "#f2f2ed", radius: 10, padding: "12px 16px", font: "14px / 400", use: "Copied / Shared transient confirmations" }
+    dialog: { type: dialog, bg: "#fbfaf4", fg: "#091717", radius: 16, padding: "28px", use: "Sign-in, settings, share, upgrade modal" }
+    toggle: { type: toggle, bg: "#20808d", radius: 9999, use: "Settings switch, #ffffff thumb" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Perplexity

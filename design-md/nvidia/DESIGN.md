@@ -10,6 +10,56 @@ logo:
   slug: nvidia
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#76b900"
+    primary-light: "#bff230"
+    ink: "#000000"
+    canvas: "#ffffff"
+    near-black: "#1a1a1a"
+    orange: "#df6500"
+    yellow: "#ef9100"
+    yellow-tint: "#feeeb2"
+    error: "#e52020"
+    error-deep: "#650b0b"
+    success: "#3f8500"
+    info: "#0046a4"
+    purple: "#4d1368"
+    purple-tint: "#f9d4ff"
+    fuchsia: "#8c1c55"
+    gray-300: "#a7a7a7"
+    gray-400: "#898989"
+    gray-500: "#757575"
+    gray-border: "#5e5e5e"
+    link-hover: "#3860be"
+    button-hover: "#1eaedb"
+    button-active: "#007fff"
+  typography:
+    family: { sans: "NVIDIA-EMEA", mono: "NVIDIA-EMEA" }
+    display-hero: { size: 36, weight: 700, lineHeight: 1.25, use: "Maximum impact headlines" }
+    section: { size: 24, weight: 700, lineHeight: 1.25, use: "Section titles, card headings" }
+    subheading: { size: 22, weight: 400, lineHeight: 1.75, use: "Feature descriptions, subtitles" }
+    card-title: { size: 20, weight: 700, lineHeight: 1.25, use: "Card and module headings" }
+    body-lg: { size: 18, weight: 700, lineHeight: 1.67, use: "Emphasized body, lead paragraphs" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading text" }
+    button: { size: 16, weight: 700, lineHeight: 1.25, use: "Standard buttons" }
+    button-compact: { size: 14.4, weight: 700, lineHeight: 1.0, tracking: 0.144, use: "Small/compact buttons" }
+    link: { size: 14, weight: 700, lineHeight: 1.43, use: "Navigation links, uppercase nav labels" }
+    caption: { size: 14, weight: 600, lineHeight: 1.5, use: "Metadata, timestamps" }
+    micro: { size: 10, weight: 700, lineHeight: 1.5, use: "Uppercase tiny badges" }
+  spacing: { base: 16, lg: 24 }
+  rounded: { sm: 2, md: 2, lg: 2, full: 9999 }
+  shadow:
+    card: "rgba(0,0,0,0.3) 0px 0px 5px 0px"
+  components:
+    button-primary: { type: button, bg: "transparent", fg: "#000000", radius: 2, padding: "11px 13px", font: "16px/700", use: "Primary CTA, 2px green border" }
+    button-secondary: { type: button, bg: "transparent", fg: "#000000", radius: 2, font: "16px/700", use: "Secondary action, 1px green border" }
+    button-compact: { type: button, bg: "transparent", fg: "#000000", radius: 2, font: "14.4px/700", use: "Inline / compact CTA" }
+    card: { type: card, bg: "#ffffff", radius: 2, padding: "16-24px", use: "Light content card" }
+    card-dark: { type: card, bg: "#1a1a1a", fg: "#ffffff", radius: 2, padding: "16-24px", use: "Dark-section card" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of NVIDIA

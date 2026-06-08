@@ -11,6 +11,63 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#5865F2"
+    primary-hover: "#4752C4"
+    primary-active: "#3C45A5"
+    green: "#57F287"
+    yellow: "#FEE75C"
+    fuchsia: "#EB459E"
+    red: "#ED4245"
+    surface-tertiary: "#1E1F22"
+    surface-secondary: "#2B2D31"
+    surface-primary: "#313338"
+    surface-floating: "#111214"
+    text-normal: "#DBDEE1"
+    heading: "#F2F3F5"
+    muted: "#949BA4"
+    interactive: "#B5BAC1"
+    link: "#00A8FC"
+    grey-secondary: "#4E5058"
+    message-box: "#383A40"
+    on-primary: "#FFFFFF"
+  typography:
+    family: { sans: "gg sans", mono: "gg mono" }
+    hero:    { size: 56, weight: 800, lineHeight: 1.1, tracking: -0.02, use: "Marketing hero headline" }
+    display-lg: { size: 32, weight: 700, lineHeight: 1.25, tracking: -0.01, use: "Modal titles, big moments" }
+    h1:      { size: 24, weight: 700, lineHeight: 1.25, use: "Section headers" }
+    h2:      { size: 20, weight: 600, lineHeight: 1.30, use: "Sub-sections, settings groups" }
+    channel: { size: 16, weight: 600, lineHeight: 1.25, use: "Channel/server headers" }
+    body-lg: { size: 16, weight: 400, lineHeight: 1.375, use: "Message text, descriptions" }
+    body:    { size: 14, weight: 400, lineHeight: 1.29, use: "Standard UI text, list items" }
+    label:   { size: 12, weight: 600, lineHeight: 1.33, tracking: 0.02, use: "Section labels UPPERCASE" }
+    caption: { size: 12, weight: 400, lineHeight: 1.33, use: "Timestamps, helper text" }
+    code:    { size: 14, weight: 400, lineHeight: 1.29, use: "Inline code, code blocks (gg mono)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 40 }
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+  shadow:
+    floating: "0 4px 8px rgba(0,0,0,0.24)"
+    modal: "0 8px 16px rgba(0,0,0,0.24)"
+    high: "0 12px 32px rgba(0,0,0,0.36)"
+  components:
+    button-primary: { type: button, bg: "#5865F2", fg: "#FFFFFF", radius: 8, padding: "2px 16px", font: "14px/500 gg sans", use: "Primary action — Send, Confirm, Join" }
+    button-secondary: { type: button, bg: "#4E5058", fg: "#FFFFFF", radius: 8, padding: "2px 16px", font: "14px/500 gg sans", use: "Neutral secondary action" }
+    button-link: { type: button, bg: "transparent", fg: "#FFFFFF", padding: "2px 4px", font: "14px/500 gg sans", use: "Tertiary action, subtle cancel" }
+    input: { type: input, bg: "#1E1F22", fg: "#DBDEE1", radius: 4, padding: "10px 12px", font: "16px/400 gg sans", use: "Settings forms, search, login" }
+    message-box: { type: input, bg: "#383A40", fg: "#DBDEE1", radius: 8, padding: "11px 16px", font: "16px/400 gg sans", use: "Chat composer" }
+    embed-card: { type: card, bg: "#2B2D31", radius: 4, padding: "16px", use: "Rich link previews, bot responses (4px left accent)" }
+    settings-card: { type: card, bg: "#2B2D31", radius: 8, padding: "16px 20px", use: "Grouped settings rows" }
+    modal: { type: dialog, bg: "#313338", radius: 8, padding: "16px", use: "Confirmation dialogs, server settings" }
+    mention-badge: { type: badge, bg: "#ED4245", fg: "#FFFFFF", radius: 9999, padding: "0 4px", font: "12px/700 gg sans", use: "Unread mention counter" }
+    nitro-badge: { type: badge, bg: "#5865F2", fg: "#FFFFFF", radius: 4, font: "12px/600 gg sans", use: "Nitro / boosted badge" }
+    settings-tab: { type: tab, bg: "transparent", fg: "#B5BAC1", radius: 4, padding: "6px 10px", font: "16px/500 gg sans", active: "bg #404249, text #FFFFFF", use: "Settings sidebar item" }
+    tooltip: { type: card, bg: "#111214", fg: "#F2F3F5", radius: 8, padding: "8px 12px", font: "14px/600 gg sans", use: "Hover hints on icons" }
+    toast: { type: toast, bg: "#111214", fg: "#DBDEE1", radius: 8, padding: "12px 16px", use: "Transient confirmations (4px left status accent)" }
+    toggle: { type: toggle, bg: "#57F287", radius: 9999, use: "Boolean settings — track green on, #80848E off" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Discord

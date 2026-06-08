@@ -16,6 +16,61 @@ ds:
   type: brand
   description: Coupang's official media-asset brand guidelines — logo usage, sizing, and attribution rules.
   og_image: "https://news.coupang.com/wp-content/uploads/2023/01/Coupang_2_1609.jpg"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#E94B22"
+    primary-hover: "#C73D17"
+    brand: "#E94B22"
+    canvas: "#ffffff"
+    surface: "#ffffff"
+    foreground: "#111111"
+    body: "#333D4B"
+    muted: "#6B7684"
+    on-primary: "#ffffff"
+    red-tint: "#FFEEE8"
+    wow-magenta: "#A50034"
+    yellow: "#FAC000"
+    green: "#80BC27"
+    blue: "#3DACDC"
+    brown: "#894F24"
+    critical: "#D60404"
+    success: "#03AC0E"
+    link: "#0074E9"
+    surface-alt: "#F7F8FA"
+    surface-muted: "#F2F4F6"
+    hairline: "#E5E8EB"
+    inert: "#B0B8C1"
+  typography:
+    family: { sans: "Pretendard Variable" }
+    display:    { size: 28, weight: 700, lineHeight: 1.29, use: "Hero promo banners, splash takeovers" }
+    headline:   { size: 22, weight: 700, lineHeight: 1.36, use: "Section headers" }
+    title:      { size: 16, weight: 600, lineHeight: 1.38, use: "Product name (truncated 2 lines)" }
+    body:       { size: 14, weight: 400, lineHeight: 1.43, use: "Standard reading, descriptions" }
+    caption:    { size: 12, weight: 400, lineHeight: 1.33, use: "Timestamps, fine print" }
+    price:      { size: 18, weight: 700, lineHeight: 1.33, use: "Primary product price — tabular numerals" }
+    discount:   { size: 14, weight: 700, lineHeight: 1.29, use: "Discount % red label" }
+    badge:      { size: 11, weight: 700, lineHeight: 1.27, use: "로켓배송, BEST badge labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 4, lg: 8, full: 9999 }
+  shadow:
+    soft: "rgba(17,17,17,0.06) 0px 2px 8px"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#E94B22", fg: "#ffffff", radius: 4, padding: "12px 20px", font: "16/700", use: "Primary checkout CTA — 구매하기, 장바구니 담기; pressed #C73D17" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#E94B22", radius: 4, use: "Outlined, 1px #E94B22 border; pressed #FFEEE8 fill" }
+    button-tertiary: { type: button, bg: "#F2F4F6", fg: "#333D4B", radius: 4, use: "Neutral filter toggle, 전체보기, low-emphasis" }
+    button-wow: { type: button, bg: "#A50034", fg: "#ffffff", radius: 4, use: "WOW membership upsell — distinct from primary red" }
+    button-critical: { type: button, bg: "#ffffff", fg: "#D60404", radius: 4, use: "Destructive — 주문 취소, 삭제; 1px #D60404 border" }
+    product-card: { type: card, bg: "#ffffff", radius: 4, padding: "12px", use: "Atomic unit — 1:1 thumbnail, badge, name, rating, price block, delivery promise; hover border #111111" }
+    promo-card: { type: card, bg: "#FFEEE8", radius: 8, padding: "16px", use: "Brand-tinted promo container" }
+    filter-chip: { type: badge, bg: "#ffffff", radius: 4, font: "13/500", use: "32px height, 1px #E5E8EB border; selected = #111111 fill + white text" }
+    rocket-badge: { type: badge, bg: "#ffffff", fg: "#E94B22", font: "11/700", use: "로켓배송 — icon + label, no border/radius" }
+    discount-badge: { type: badge, fg: "#E94B22", font: "14/700", use: "Standalone red percentage; or #E94B22 fill pill for 특가/BEST" }
+    search-input: { type: input, bg: "#ffffff", fg: "#111111", radius: 4, padding: "0 16px", use: "Hero chrome — 2px #E94B22 branded border, 48px height, red search button" }
+    standard-input: { type: input, bg: "#ffffff", fg: "#111111", radius: 4, use: "1px #E5E8EB border, 44px height; focus 1px #E94B22" }
+    category-nav: { type: tab, fg: "#333D4B", font: "14/700", use: "Sticky horizontal bar", active: "#E94B22 text + 2px bottom underline" }
 ---
 
 # Design System Inspiration of Coupang (쿠팡)
