@@ -166,6 +166,23 @@ describe("catalog-integrity / per-reference", () => {
       }
     }
 
+    // Token ↔ prose consistency gate (forward-only — only refs that carry a
+    // `tokens` block). Every token color value must be grounded somewhere in the
+    // DESIGN.md OUTSIDE the tokens block itself (prose §2 or the primary_color
+    // field) — catching transcription typos and invented/ungrounded values. This
+    // is what keeps a `prose-derived` token honest; getdesign.md has no such check.
+    if (entry.tokens?.color) {
+      const grounding = md
+        .replace(/\ntokens:\n(?:[ \t].*(?:\n|$))*/, "\n")
+        .toLowerCase();
+      for (const [role, hex] of Object.entries(entry.tokens.color)) {
+        expect(
+          grounding.includes(String(hex).toLowerCase()),
+          `${id}: token color.${role} ${hex} is not grounded in the DESIGN.md (prose/primary_color) — fix the token or state the value in the prose`
+        ).toBe(true);
+      }
+    }
+
     // Fingerprint cross-check
     const fp = fpById.get(id);
     expect(fp, `${id} missing from fingerprints`).toBeDefined();
