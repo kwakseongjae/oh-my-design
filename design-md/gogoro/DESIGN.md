@@ -10,6 +10,44 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=gogoro.com&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    canvas: "#000000"
+    text: "#323237"
+    ink: "#141719"
+    accent: "#0074ff"
+    cyan: "#28c3ff"
+    cta: "#2b96ed"
+    surface: "#f6f6f6"
+    on-dark: "#ffffff"
+    gray-mid: "#737d82"
+    gray-light: "#b9bcbf"
+    gray-faint: "#888888"
+    border: "#dee2e6"
+  typography:
+    family: { sans: "Graphik", mono: "Graphik" }
+    display:  { size: 60, weight: 700, lineHeight: 1.05, use: "Full-bleed hero statements, tight tracking" }
+    h1:       { size: 42, weight: 700, lineHeight: 1.1, use: "Section openers" }
+    h2:       { size: 30, weight: 700, lineHeight: 1.2, use: "Sub-sections" }
+    h3:       { size: 22, weight: 600, lineHeight: 1.3, use: "Card titles, spec headers" }
+    body-lg:  { size: 18, weight: 400, lineHeight: 1.5, use: "Lead paragraphs" }
+    body:     { size: 16, weight: 400, lineHeight: 1.5, use: "Default copy" }
+    caption:  { size: 14, weight: 500, lineHeight: 1.4, use: "Meta, captions, button text" }
+    micro:    { size: 12, weight: 500, lineHeight: 1.3, use: "Legal, fine print" }
+  spacing: { xs: 8, sm: 16, base: 24, lg: 28, xl: 48, section: 100 }
+  rounded: { sm: 8, md: 12, lg: 16, full: 9999 }
+  shadow:
+    card: "0 2px 12px rgba(0,0,0,0.08)"
+  components:
+    button-cta: { type: button, bg: "#2b96ed", fg: "#ffffff", radius: "12px", padding: "0 24px", font: "14px / 600", use: "Account / login / primary site CTA, 40px height" }
+    button-marketing: { type: button, bg: "#0074ff", fg: "#ffffff", radius: "12px", padding: "14px 28px", font: "16px / 600", use: "Hero CTA over black / photo backgrounds" }
+    button-outline: { type: button, bg: "transparent", fg: "#323237", radius: "12px", padding: "14px 28px", font: "16px / 600", use: "Lower-priority action, 1px #dee2e6 border" }
+    input-default: { type: input, bg: "#ffffff", fg: "#323237", radius: "8px", padding: "12px 16px", font: "16px / 400", use: "Account / form input; focus border #0074ff" }
+    card-spec: { type: card, bg: "#ffffff", radius: "16px", padding: "24px", use: "Product / spec card on light surface" }
+    card-dark: { type: card, bg: "#141719", fg: "#ffffff", radius: "16px", use: "On-black storytelling card with electric-blue accent" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Gogoro

@@ -10,6 +10,46 @@ logo:
   slug: "https://www.fugle.tw/images/favicon.ico"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#f4af1c"
+    primary-hover: "#e49b00"
+    primary-tint: "#fef4cf"
+    secondary: "#4c85a0"
+    secondary-hover: "#36708c"
+    canvas: "#ffffff"
+    bg-secondary: "#f5f5f5"
+    border: "#eaeaea"
+    border-heavy: "#dfdfdf"
+    text: "#323232"
+    text-muted: "#8b8a8a"
+    dark-surface: "#131313"
+    rise: "#f3746d"
+    fall: "#6c9c46"
+    error: "#d12a2a"
+  typography:
+    family: { sans: "Lato", mono: "Lato" }
+    highlight: { size: 24, weight: 700, lineHeight: 1.4, use: "Data highlight values" }
+    heading:   { size: 20, weight: 700, lineHeight: 1.4, use: "Dialog / section headings" }
+    modal:     { size: 16, weight: 400, lineHeight: 1.5, use: "Modal body, form inputs" }
+    body:      { size: 14, weight: 400, lineHeight: 1.4, use: "Dense data rows" }
+    label:     { size: 12, weight: 400, lineHeight: 1.4, use: "Secondary labels, timestamps" }
+  spacing: { xs: 5, sm: 8, base: 16, lg: 20, xl: 32, section: 50 }
+  rounded: { sm: 4, md: 4, lg: 8, full: 9999 }
+  shadow:
+    card: "0 2px 2px 0 rgba(0,0,0,.08), 0 2px 7px 0 rgba(0,0,0,.1)"
+    popover: "0 0 24px 0 rgba(0,0,0,.08)"
+    modal: "0 0 17px 0 rgba(0,0,0,.14), 0 8px 9px 0 rgba(0,0,0,.12)"
+  components:
+    button-primary: { type: button, bg: "#f4af1c", fg: "#ffffff", radius: "4px", font: "14px / 700", use: "Amber CTA; hover #e49b00" }
+    input-default: { type: input, bg: "#eaeaea", radius: "4px", padding: "0 5px", font: "16px / 400", use: "Search / trade input, 32px height" }
+    list-item-stock: { type: listItem, bg: "#ffffff", radius: "0px", font: "14px / 400", use: "Watchlist row, 55px height, 1px #eaeaea border; hover rgba(0,0,0,0.04)" }
+    card-trade: { type: card, bg: "#ffffff", radius: "4px", padding: "20px 0", use: "Surface trade box card" }
+    card-info: { type: card, bg: "#eaeaea", radius: "8px", use: "Highlighted info box" }
+    dialog: { type: dialog, bg: "#ffffff", radius: "4px", padding: "16px", font: "16px / 400", use: "Modal dialog container" }
+  components_harvested: true
 ---
 
 # Fugle

@@ -10,6 +10,49 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=music-flo.com&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#3f3fff"
+    primary-hover: "#2f2fae"
+    primary-pressed: "#1a1a86"
+    blue-mid: "#576aff"
+    blue-light: "#7286ff"
+    indigo: "#525cfd"
+    error: "#ff4d78"
+    canvas: "#ffffff"
+    heading: "#181818"
+    body: "#333333"
+    meta: "#989898"
+    placeholder: "#c4c4c4"
+    divider: "#ebebeb"
+    surface-grey: "#f5f5f5"
+    track-grey: "#323232"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    display-lg:    { size: 34, weight: 700, lineHeight: 1.20, use: "Hero callouts, large feature text" }
+    display-sm:    { size: 24, weight: 700, lineHeight: 1.20, use: "Promotional copy, chart numbers" }
+    section-title: { size: 18, weight: 600, lineHeight: 1.20, use: "Major section headings" }
+    subhead:       { size: 16, weight: 600, lineHeight: 1.20, use: "Section headers, modal titles" }
+    body-primary:  { size: 15, weight: 400, lineHeight: 1.20, use: "Track titles, main UI copy" }
+    body:          { size: 14, weight: 400, lineHeight: 1.20, use: "Metadata, list items" }
+    label:         { size: 13, weight: 500, lineHeight: 1.20, use: "Secondary labels, nav items" }
+    small:         { size: 12, weight: 400, lineHeight: 1.20, use: "Timestamps, tags, chip labels" }
+  spacing: { xs: 5, sm: 9, md: 14, base: 15, lg: 25, xl: 50, section: 60 }
+  rounded: { sm: 5, md: 8, lg: 16, full: 9999 }
+  shadow:
+    floating: "rgba(0,0,0,0.10) 0px 4px 20px 0px"
+    modal: "rgba(0,0,0,0.20) 0px 6px 15px 0px"
+  components:
+    button-primary: { type: button, bg: "#3f3fff", fg: "#ffffff", radius: "5px", padding: "0 15px", font: "14px / 400", use: "Standard blue CTA, 36px height" }
+    button-pill: { type: button, bg: "#3f3fff", fg: "#ffffff", radius: "15px", padding: "0 12px", font: "12px / 500", use: "Small round action button, 28px height" }
+    button-ghost: { type: button, bg: "#ffffff", fg: "#3f3fff", radius: "16px", padding: "9px 15px", font: "12px / 500", use: "Outline chip with 0.5px blue border" }
+    input-text: { type: input, bg: "#ffffff", fg: "#181818", radius: "0px", font: "15px / 400", use: "Bottom-border-only text input, 58px height; focus #181818, error #ff4d78, valid #3f3fff" }
+    card-voucher: { type: card, bg: "#f4f5f8", radius: "8px", padding: "50px 60px", use: "Voucher / subscription card surface" }
+    card-voucher-active: { type: card, bg: "#525cfd", fg: "#ffffff", radius: "8px", use: "Active voucher card" }
+    tab-nav: { type: tab, bg: "#ffffff", fg: "#6d6d6d", active: "Active tab #3f3fff text + 2px bottom border #3f3fff", use: "Main navigation tabs; inactive on #f5f5f5" }
+  components_harvested: true
 ---
 
 # FLO

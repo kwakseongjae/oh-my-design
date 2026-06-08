@@ -10,6 +10,46 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=payco.com&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#FF2233"
+    primary-legacy: "#ff1414"
+    heading: "#2d2d2d"
+    body: "#2a303a"
+    muted: "#666666"
+    placeholder: "#999999"
+    secondary: "#565960"
+    surface: "#f4f6fa"
+    divider: "#ededed"
+    border: "#d4d4d4"
+    disabled-bg: "#dadada"
+    disabled-text: "#aaacae"
+    canvas: "#ffffff"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "NotoSans", mono: "monospace" }
+    hero:        { size: 52, weight: 700, tracking: -0.56, use: "Hero / section titles" }
+    section-sub: { size: 32, weight: 400, lineHeight: 1.56, use: "Section subtitles" }
+    nav:         { size: 24, weight: 300, use: "Navigation links" }
+    subtext:     { size: 24, weight: 300, lineHeight: 1.33, use: "Hero subtext" }
+    button-lg:   { size: 18, weight: 700, use: "Large button label" }
+    body:        { size: 16, weight: 400, lineHeight: 1.27, tracking: -1, use: "Standard body text" }
+    button-md:   { size: 13, weight: 700, use: "Medium button label" }
+    input:       { size: 12, weight: 400, use: "Input value text" }
+  spacing: { xs: 10, sm: 20, md: 25, base: 32, lg: 48, xl: 115, section: 159 }
+  rounded: { sm: 8, md: 20, lg: 100, full: 9999 }
+  shadow:
+    panel: "0 1px 0 rgba(0,0,0,0.1)"
+  components:
+    button-primary: { type: button, bg: "#FF2233", fg: "#ffffff", padding: "0 0", font: "18px / 700", use: "Primary page-level CTA, 48px height" }
+    button-secondary: { type: button, bg: "#565960", fg: "#ffffff", font: "18px / 700", use: "Dark secondary action, 48px height" }
+    button-ghost: { type: button, bg: "#ffffff", fg: "#2d2d2d", font: "18px / 700", use: "Ghost / secondary action with grey border" }
+    button-disabled: { type: button, bg: "#dadada", fg: "#aaacae", use: "Inactive button state" }
+    button-cta-modern: { type: button, bg: "#FF2233", fg: "#ffffff", radius: "8px", padding: "16px 10px", font: "14px / 400", use: "Modern CTA link button, 51px height" }
+    input-standard: { type: input, bg: "#ffffff", fg: "#666666", radius: "0px", padding: "0 0 0 20px", font: "12px / 400", use: "Standard form input, 32px height, #d4d4d4 border" }
+  components_harvested: true
 ---
 
 # PAYCO

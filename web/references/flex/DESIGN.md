@@ -10,6 +10,34 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=flex.team&sz=256"
 verified: "2026-05-14"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    ink: "#1d1d1f"
+    canvas: "#ffffff"
+    page-dark: "#000000"
+    card-graphite: "#2d3338"
+    soft-white: "#fdfdfd"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    display:  { size: 52, weight: 700, lineHeight: 1.20, tracking: -1.56, use: "In-page h2 argument display" }
+    hero-h1:  { size: 28, weight: 700, lineHeight: 1.00, use: "Compact hero banner h1" }
+    card:     { size: 17, weight: 600, lineHeight: 1.53, use: "Manifesto card body" }
+    pill:     { size: 15, weight: 600, lineHeight: 1.40, use: "Service pill / button label" }
+    meta:     { size: 14, weight: 500, lineHeight: 1.00, use: "Meta / nav text" }
+  spacing: { xs: 6, sm: 8, md: 12, base: 16, lg: 30, xl: 60, section: 96 }
+  rounded: { sm: 8, md: 10, lg: 16, full: 9999 }
+  shadow:
+    halo: "rgba(0,0,0,0.06) 0px 8px 20px -4px"
+    ring-active: "rgba(29,29,31,0.24) 0px 0px 0px 1px inset"
+    ring-inactive: "rgba(29,29,31,0.10) 0px 0px 0px 1px inset"
+  components:
+    pill-active: { type: tab, bg: "#ffffff", fg: "#1d1d1f", radius: "10px", padding: "9px 12px", font: "15px / 700", active: "rgba(29,29,31,0.24) inset ring", use: "Currently-selected service category in SERVICES filter row" }
+    pill-inactive: { type: tab, bg: "#ffffff", fg: "#1d1d1f", radius: "10px", padding: "9px 12px", font: "15px / 600", use: "Other tabs in the SERVICES row" }
+    header-cta: { type: button, bg: "#000000", fg: "#ffffff", radius: "8px", padding: "8px 6px 8px 8px", font: "14px / 700", use: "Top navigation items over dark hero" }
+    card-manifesto: { type: card, bg: "#2d3338", fg: "#fdfdfd", radius: "16px", padding: "30px", font: "17px / 600", use: "Three-beat narrative cards in main-intro" }
+  components_harvested: true
 ---
 
 # flex — Design Reference
