@@ -19,32 +19,34 @@ tokens:
   source: reconciled
   extracted: "2026-06-08"
   note: "primary = live Toss Blue blue500 (#3182f6); brand = official Pantone 2175C (#0064ff)"
-  color:
+  colors:
     primary: "#3182f6"
     primary-hover: "#2272eb"
     brand: "#0064ff"
-    background: "#ffffff"
+    brand-gray: "#202632"
+    canvas: "#ffffff"
     foreground: "#191f28"
     grey-700: "#333d4b"
     grey-600: "#4e5968"
     muted: "#8b95a1"
-    border: "#e5e8eb"
     surface: "#f2f4f6"
+    border: "#e5e8eb"
+    on-primary: "#ffffff"
     error: "#f04452"
     success: "#03b26c"
     warning: "#fe9800"
-  font: { sans: "Toss Product Sans", emoji: "Tossface" }
-  text:
-    display-hero: { size: 30, weight: 700, lineHeight: 1.33 }
-    display-lg:   { size: 26, weight: 700, lineHeight: 1.38 }
-    heading-lg:   { size: 22, weight: 700, lineHeight: 1.36 }
-    heading:      { size: 20, weight: 600, lineHeight: 1.40 }
-    subtitle:     { size: 16, weight: 600, lineHeight: 1.50 }
-    body-lg:      { size: 16, weight: 400, lineHeight: 1.50 }
-    body:         { size: 14, weight: 400, lineHeight: 1.57 }
-    body-sm:      { size: 13, weight: 400, lineHeight: 1.54 }
+  typography:
+    family: { sans: "Toss Product Sans", emoji: "Tossface" }
+    display-hero: { size: 30, weight: 700, lineHeight: 1.33, use: "Splash screens, hero moments" }
+    display-lg:   { size: 26, weight: 700, lineHeight: 1.38, use: "Section headers, key metrics" }
+    heading-lg:   { size: 22, weight: 700, lineHeight: 1.36, use: "Feature titles, modal headers" }
+    heading:      { size: 20, weight: 600, lineHeight: 1.40, use: "Card headings, sub-sections" }
+    subtitle:     { size: 16, weight: 600, lineHeight: 1.50, use: "Navigation titles, list headers" }
+    body-lg:      { size: 16, weight: 400, lineHeight: 1.50, use: "Descriptions, explanations" }
+    body:         { size: 14, weight: 400, lineHeight: 1.57, use: "Standard reading text" }
+    body-sm:      { size: 13, weight: 400, lineHeight: 1.54, use: "Secondary information" }
   spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
-  radius: { sm: 4, md: 8, lg: 16, pill: 9999 }
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
   shadow:
     subtle: "0px 1px 3px rgba(0,0,0,0.06)"
     standard: "0px 2px 8px rgba(0,0,0,0.08)"
