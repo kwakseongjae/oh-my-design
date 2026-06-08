@@ -9,24 +9,24 @@ logo:
   type: simpleicons
   slug: stripe
 verified: "2026-05-15"
+
+omd: "0.1"
 tokens:
-  source: live-extract
+  source: reconciled
   extracted: "2026-06-08"
+  note: "primary = live interactive purple (#533afd); brand = documented logo/marketing purple (#635bff)"
   color:
     primary: "#533afd"
+    brand: "#635bff"
     background: "#ffffff"
     foreground: "#061b31"
     muted: "#64748d"
     accent: "#ea2261"
+    success: "#15be53"
   font:
     sans: "sohne-var"
   spacing: [4, 8, 12, 16, 24, 32, 48, 64]
-  radius:
-    sm: 4
-    md: 8
-    lg: 16
-    pill: 9999
-omd: "0.1"
+  radius: { sm: 4, md: 8, lg: 16, pill: 9999 }
 ---
 
 # Design System Inspiration of Stripe

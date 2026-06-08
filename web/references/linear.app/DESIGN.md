@@ -16,6 +16,20 @@ ds:
   type: brand
   description: Linear's brand guidelines with wordmark, logomark, and color specifications.
   og_image: "https://linear.app/api/og/generic?title=Brand&v=3"
+tokens:
+  source: reconciled
+  extracted: "2026-06-08"
+  note: "freq×sat picked link color #828fff; CSS var --color-brand-bg=#5e6ad2 is the canonical primary"
+  color:
+    primary: "#5e6ad2"
+    accent: "#7170ff"
+    background: "#0f1011"
+    foreground: "#f7f8f8"
+    muted: "#8a8f98"
+  font:
+    sans: "Inter"
+  spacing: [4, 8, 12, 16, 24, 32, 48, 64]
+  radius: { sm: 4, md: 8, lg: 12, pill: 9999 }
 ---
 
 # Design System Inspiration of Linear

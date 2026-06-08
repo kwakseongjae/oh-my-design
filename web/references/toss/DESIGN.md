@@ -15,6 +15,23 @@ ds:
   url: "https://tossmini-docs.toss.im/tds-mobile/"
   type: system
   description: Toss's mobile design system — 40+ components, tokens, and hooks.
+tokens:
+  source: reconciled
+  extracted: "2026-06-08"
+  note: "primary = live Toss Blue blue500 (#3182f6); brand = official Pantone 2175C (#0064ff)"
+  color:
+    primary: "#3182f6"
+    brand: "#0064ff"
+    background: "#ffffff"
+    foreground: "#191f28"
+    muted: "#8b95a1"
+    error: "#f04452"
+    success: "#03b26c"
+    warning: "#fe9800"
+  font:
+    sans: "Toss Product Sans"
+  spacing: [4, 8, 12, 16, 24, 32, 48, 64]
+  radius: { sm: 4, md: 8, lg: 16, pill: 9999 }
 ---
 
 # Design System Inspiration of Toss (토스)
