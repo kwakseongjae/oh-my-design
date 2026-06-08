@@ -15,40 +15,44 @@ tokens:
   source: reconciled
   extracted: "2026-06-08"
   note: "primary = live interactive purple (#533afd); brand = documented logo/marketing purple (#635bff)"
-  color:
+  colors:
     primary: "#533afd"
     primary-hover: "#4434d4"
+    primary-deep: "#2e2b8c"
     brand: "#635bff"
-    background: "#ffffff"
-    foreground: "#061b31"
-    body: "#64748d"
+    brand-dark: "#1c1e54"
+    canvas: "#ffffff"
+    heading: "#061b31"
     label: "#273951"
-    muted: "#64748d"
-    accent: "#ea2261"
+    body: "#64748d"
+    on-primary: "#ffffff"
+    ruby: "#ea2261"
     magenta: "#f96bee"
     success: "#15be53"
-    border: "#e5edf5"
-  font: { sans: "sohne-var", mono: "SourceCodePro" }
-  text:
-    display-hero: { size: 56, weight: 300, lineHeight: 1.03, tracking: -1.4 }
-    display-lg:   { size: 48, weight: 300, lineHeight: 1.15, tracking: -0.96 }
-    section:      { size: 32, weight: 300, lineHeight: 1.10, tracking: -0.64 }
-    subheading:   { size: 22, weight: 300, lineHeight: 1.10, tracking: -0.22 }
-    body-lg:      { size: 18, weight: 300, lineHeight: 1.40 }
-    body:         { size: 16, weight: 400, lineHeight: 1.40 }
-    button:       { size: 16, weight: 400, lineHeight: 1.00 }
-    caption:      { size: 13, weight: 400, lineHeight: 1.40 }
-    code:         { size: 12, weight: 500, lineHeight: 2.00 }
+    success-text: "#108c3d"
+    hairline: "#e5edf5"
+    border-purple: "#b9b9f9"
+  typography:
+    family: { sans: "sohne-var", mono: "SourceCodePro" }
+    display-hero: { size: 56, weight: 300, lineHeight: 1.03, tracking: -1.4, use: "Hero headlines, whisper-weight authority" }
+    display-lg:   { size: 48, weight: 300, lineHeight: 1.15, tracking: -0.96, use: "Secondary hero headlines" }
+    section:      { size: 32, weight: 300, lineHeight: 1.10, tracking: -0.64, use: "Feature section titles" }
+    subheading:   { size: 22, weight: 300, lineHeight: 1.10, tracking: -0.22, use: "Card / sub-section heads" }
+    body-lg:      { size: 18, weight: 300, lineHeight: 1.40, use: "Feature descriptions, intro" }
+    body:         { size: 16, weight: 400, lineHeight: 1.40, use: "Standard reading text" }
+    button:       { size: 16, weight: 400, lineHeight: 1.00, use: "Primary button label" }
+    caption:      { size: 13, weight: 400, use: "Small labels, metadata" }
+    code:         { size: 12, weight: 500, lineHeight: 2.00, use: "Code blocks, syntax" }
   spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  radius: { sm: 4, md: 8, lg: 16, pill: 9999 }
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
   shadow:
     ambient: "rgba(23,23,23,0.06) 0px 3px 6px"
     standard: "rgba(23,23,23,0.08) 0px 15px 35px"
     elevated: "rgba(50,50,93,0.25) 0px 30px 45px -30px, rgba(0,0,0,0.1) 0px 18px 36px -18px"
   components:
-    button-primary: "Rausch-less: Stripe Purple #533afd fill, white text, 4-8px radius, weight 400"
+    button-primary: "Stripe Purple #533afd fill, white text, 4-8px radius, weight 400"
     button-ghost: "transparent fill, purple text + 1px purple border"
-    card: "white surface, 8px radius, standard blue-tinted shadow"
+    card: "white surface, 8px radius, blue-tinted standard shadow"
     badge-success: "success #15be53 at 0.2-0.4 alpha bg, #108c3d text"
 ---
 

@@ -91,16 +91,21 @@ function validate(fm, file) {
 /** Lite validation for the optional DTCG-lite `tokens` block (forward-only). */
 function validateTokens(t, file) {
   if (typeof t !== 'object' || Array.isArray(t)) fail(file, `tokens must be a mapping`);
-  if (t.color) {
-    if (typeof t.color !== 'object') fail(file, `tokens.color must be a mapping`);
-    for (const [k, v] of Object.entries(t.color)) if (!/^#[0-9a-fA-F]{6}$/.test(String(v))) fail(file, `tokens.color.${k} '${v}' not #rrggbb`);
+  // getdesign.md-aligned namespaces: `colors`, `typography`, `rounded`. The
+  // older `color`/`text`+`font`/`radius` names stay valid during migration.
+  const colorBlock = t.colors ?? t.color;
+  if (colorBlock) {
+    if (typeof colorBlock !== 'object') fail(file, `tokens.colors must be a mapping`);
+    for (const [k, v] of Object.entries(colorBlock)) if (!/^#[0-9a-fA-F]{6}$/.test(String(v))) fail(file, `tokens.colors.${k} '${v}' not #rrggbb`);
   }
   if (t.spacing !== undefined) {
     const arr = Array.isArray(t.spacing) && t.spacing.every(n => typeof n === 'number');
     const map = !Array.isArray(t.spacing) && typeof t.spacing === 'object' && Object.values(t.spacing).every(n => typeof n === 'number');
     if (!arr && !map) fail(file, `tokens.spacing must be number[] or { name: number }`);
   }
-  if (t.radius) for (const [k, v] of Object.entries(t.radius)) if (typeof v !== 'number') fail(file, `tokens.radius.${k} must be a number`);
+  const roundBlock = t.rounded ?? t.radius;
+  if (roundBlock) for (const [k, v] of Object.entries(roundBlock)) if (typeof v !== 'number') fail(file, `tokens.rounded.${k} must be a number`);
+  if (t.typography && typeof t.typography !== 'object') fail(file, `tokens.typography must be a mapping`);
   if (t.font && typeof t.font !== 'object') fail(file, `tokens.font must be a mapping`);
   if (t.text && typeof t.text !== 'object') fail(file, `tokens.text must be a mapping of named type tokens`);
   if (t.components && typeof t.components !== 'object') fail(file, `tokens.components must be a mapping`);
@@ -184,6 +189,10 @@ const TYPES = `export interface RefEntry {
     readonly source?: 'live-extract' | 'design-system' | 'manual' | 'reconciled' | 'prose-derived';
     readonly extracted?: string;
     readonly note?: string;
+    readonly colors?: Readonly<Record<string, string>>;
+    readonly typography?: Readonly<Record<string, unknown>>;
+    readonly rounded?: Readonly<Record<string, number>>;
+    // legacy aliases (pre-getdesign.md naming) — still accepted
     readonly color?: Readonly<Record<string, string>>;
     readonly font?: Readonly<Record<string, string>>;
     readonly text?: Readonly<Record<string, { readonly size?: number; readonly weight?: number; readonly lineHeight?: number; readonly tracking?: number }>>;
