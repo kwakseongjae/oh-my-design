@@ -65,43 +65,43 @@ tokens:
     xlarge: "0 12px 28px rgba(31,35,40,0.3)"
     focus: "0 0 0 3px rgba(9,105,218,0.3)"
   components:
-    button-primary: "green #1f883d fill, white text, 6px radius, 32px height, 0 16px pad, 14px/600; hover #1a7f37 — the commit/create/merge action"
-    button-default: "#f6f8fa fill, #1f2328 text, 1px #d1d9e0 border, 6px radius, 32px height; the common neutral button"
-    button-danger: "white fill, #cf222e text + border, hover flips to #cf222e fill/white text; destructive"
-    button-invisible: "transparent, #0969da or #1f2328 text, no border, 6px radius, hover bg #f6f8fa; tertiary/icon"
-    icon-button: "square 28/32/40px, 6px radius, transparent, #59636e icon, hover bg #f6f8fa"
-    button-sizes: "small 28px/12px, medium 32px/14px, large 40px/14px; radius 6px all"
-    text-input: "white bg, 1px #d1d9e0 border, 6px radius, 5px 12px pad, 14px; focus #0969da border + 3px ring"
-    select: "native-styled, white bg, 1px #d1d9e0 border, 6px radius, trailing chevron #59636e"
-    checkbox: "16px, 3px radius (small), checked #0969da fill white check; focus 3px blue ring"
-    radio: "16px circle, checked #0969da ring+dot; focus 3px blue ring"
-    toggle-switch: "pill (full), on #1f883d, off #818b98, white thumb; 32px track"
-    box: "white bg, 1px #d1d9e0 border, 6px radius, NO shadow, 16px pad; optional #f6f8fa header"
-    label: "pill (full), tinted bg from hue at low alpha + saturated text (#0969da on #ddf4ff), 12px/500, 0 7px pad ~20px"
-    counter-label: "neutral pill rgba(175,184,193,0.2) bg, #1f2328 text, 12px tabular; star/tab counts"
-    state-label: "pill, open #1f883d / merged #8250df / closed #cf222e / draft #59636e fill, white text, leading icon, 4px 12px"
-    token: "removable pill, #f6f8fa bg, 1px #d1d9e0 border, full radius, trailing x; assignees/topics"
-    avatar: "circle (people) / 6px square (orgs+bots), 16-64px base-4 then base-8, default 20px"
-    avatar-stack: "overlapping circles, -8px overlap, white ring between"
-    action-list: "vertical items, 16px row pad, hover bg #f6f8fa, selected #ddf4ff + #0969da text, leading/trailing visuals, group headings, dividers"
-    action-menu: "ActionList in an Overlay popover, medium shadow 0 8px 24px"
-    underline-nav: "1px bottom border #d1d9e0, active 2px #fd8c73 indicator + 600 weight, counter pills; Code/Issues/PR tabs"
-    segmented-control: "grouped button row, #f6f8fa track, selected white seg + 1px #d1d9e0 + small shadow, 28/32px"
-    breadcrumbs: "inline #0969da links, #59636e slash separators, last crumb #1f2328 no-link"
-    pagination: "numbered #0969da links, current #0969da fill white, 6px radius, prev/next chevrons"
-    tree-view: "indented file tree, 8px indent steps, hover bg #f6f8fa, selected #ddf4ff, chevron disclosure"
-    dialog: "white bg, 1px #d1d9e0 border, 12px radius, 0 8px 24px shadow, rgba(31,35,40,0.5) scrim, 16px header w/ border"
-    overlay: "floating surface, white bg, 1px #d1d9e0 border, 6-12px radius, medium/large shadow; popover/menu base"
-    tooltip: "dark #1f2328 bubble, white 12px text, 6px radius, ~6px 12px pad, small arrow"
-    banner: "info #ddf4ff / success #dafbe1 / warning #fff8c5 / critical #ffebe9, 1px hue border, 6px radius, 16px pad, leading icon + optional dismiss"
-    flash: "page-level banner, same tone set as banner, full-width, leading status icon"
-    inline-message: "compact single-line status, leading icon, tone-colored text (#1a7f37 / #9a6700 / #cf222e)"
-    spinner: "circular indeterminate, 1.5px stroke, #59636e, 16/24/32/48px"
-    progress-bar: "rounded full track #d1d9e0, #1f883d fill, 8px height default"
-    skeleton: "shimmer blocks #f6f8fa (light) / #161b22 (dark) at final geometry"
-    blankslate: "centered empty state — icon visual, #1f2328 heading, #59636e description, green primary action + secondary link; narrow/spacious/border variants"
-    timeline: "vertical thread w/ #d1d9e0 rail, badge nodes, avatar + event rows; issue/PR activity"
-    branch-name: "mono #0969da text, #ddf4ff bg, 6px radius, 0 6px pad; inline branch reference"
+    button-primary:    { type: button, bg: "#1f883d", fg: "#ffffff", border: "1px solid rgba(31,35,40,0.15)", radius: "6px", height: "32px", padding: "0 16px", font: "14px / 600", hover: "bg #1a7f37", active: "bg #187733", disabled: "bg #94d3a2 · text 0.8 opacity", use: "The one constructive primary action — Create/Commit/Merge. Never blue." }
+    button-default:    { type: button, bg: "#f6f8fa", fg: "#1f2328", border: "1px solid #d1d9e0", radius: "6px", height: "32px", padding: "0 16px", font: "14px / 600", hover: "bg #eef1f4", active: "bg #e6eaef", use: "The most common neutral button — Cancel/Edit, secondary actions" }
+    button-danger:     { type: button, bg: "#ffffff", fg: "#cf222e", border: "1px solid #d1d9e0", radius: "6px", height: "32px", hover: "bg #cf222e · text #ffffff · border #cf222e", use: "Destructive — Delete/Remove. Quiet until hovered, then commits to red." }
+    button-invisible:  { type: button, bg: "transparent", fg: "#0969da", border: "none", radius: "6px", height: "32px", hover: "bg #f6f8fa", use: "Borderless tertiary — overflow triggers, icon buttons, in-row controls" }
+    icon-button:       { type: button, bg: "transparent", fg: "#59636e", radius: "6px", height: "32px", padding: "0", hover: "bg #f6f8fa", use: "Square icon-only control 28/32/40px, min 32x32 hit area — kebab menu, copy, bell" }
+    button-sizes:      { type: button, radius: "6px", states: "small 28px / 12px / 0 12px · medium 32px / 14px / 0 16px · large 40px / 14px / 0 20px", use: "Button size scale (height · font · padding)" }
+    text-input:        { type: input, bg: "#ffffff", fg: "#1f2328", border: "1px solid #d1d9e0", radius: "6px", height: "32px", padding: "5px 12px", font: "14px / 400", focus: "border #0969da + shadow 0 0 0 3px rgba(9,105,218,0.3)", states: "error border #cf222e + ring rgba(207,34,46,0.3) + #cf222e help text", use: "Standard form field; placeholder #818b98" }
+    select:            { type: input, bg: "#ffffff", fg: "#1f2328", border: "1px solid #d1d9e0", radius: "6px", focus: "shadow 0 0 0 3px rgba(9,105,218,0.3)", use: "Native-backed dropdown styled as default input, trailing chevron #59636e" }
+    checkbox:          { type: toggle, border: "1px solid #d1d9e0", radius: "3px", height: "16px", active: "checked #0969da fill + white check glyph", focus: "shadow 0 0 0 3px rgba(9,105,218,0.3)", use: "16px box; indeterminate shows a dash" }
+    radio:             { type: toggle, border: "1px solid #d1d9e0", radius: "9999px", height: "16px", active: "checked #0969da ring + filled #0969da dot", focus: "shadow 0 0 0 3px rgba(9,105,218,0.3)", use: "16px circle, mutually-exclusive option groups" }
+    toggle-switch:     { type: toggle, bg: "#818b98", radius: "9999px", active: "on #1f883d", use: "Settings boolean, ~32px pill track, white thumb with subtle shadow" }
+    box:               { type: card, bg: "#ffffff", fg: "#1f2328", border: "1px solid #d1d9e0", radius: "6px", padding: "16px", shadow: "none", use: "Canonical container, border-first. Optional #f6f8fa header + 1px bottom border. Repo rows, settings panels." }
+    label:             { type: badge, bg: "#ddf4ff", fg: "#0969da", border: "1px solid #ddf4ff", radius: "9999px", height: "20px", padding: "0 7px", font: "12px / 500", use: "Issue/PR tag tinted from its own hue at low alpha; ten color schemes" }
+    counter-label:     { type: badge, bg: "rgba(175,184,193,0.2)", fg: "#1f2328", radius: "9999px", padding: "0 6px", font: "12px / 400", use: "Numeric pill, tabular — tab/notification/star counts" }
+    state-label:       { type: badge, bg: "#1f883d", fg: "#ffffff", radius: "9999px", padding: "4px 12px", font: "12px / 500", states: "open #1f883d · merged #8250df · closed #cf222e · draft #59636e", use: "Large status pill atop an issue/PR, leading state icon" }
+    token:             { type: badge, bg: "#f6f8fa", fg: "#1f2328", border: "1px solid #d1d9e0", radius: "9999px", use: "Removable chip with trailing x — assignees, topics, applied labels" }
+    avatar:            { type: avatar, radius: "9999px", height: "20px", use: "Circular for people, 6px-radius square for orgs/teams/bots. Sizes 16-64px, default 20px." }
+    avatar-stack:      { type: avatar, radius: "9999px", border: "white ring between", use: "Overlapping circular avatars ~-8px overlap, collapsing a contributor list into a cluster" }
+    action-list:       { type: listItem, padding: "16px", hover: "bg #f6f8fa", active: "selected bg #ddf4ff + text #0969da", use: "Vertical list of actions in menus/panels; leading/trailing visuals, group headings, dividers, danger items" }
+    action-menu:       { type: dialog, bg: "#ffffff", border: "1px solid #d1d9e0", radius: "6px", shadow: "0 8px 24px rgba(31,35,40,0.2)", use: "An action-list rendered in an overlay popover — kebab overflow and dropdown menus" }
+    underline-nav:     { type: tab, border: "1px bottom border #d1d9e0", fg: "#1f2328", font: "14px / 400", active: "text #1f2328 600 + 2px bottom border #fd8c73", hover: "bg #f6f8fa", use: "Primary tab pattern (Code/Issues/PR/Actions, profile tabs); neutral counter pills" }
+    segmented-control: { type: tab, bg: "#f6f8fa", border: "1px solid #d1d9e0", height: "32px", active: "selected white panel + 1px #d1d9e0 + small shadow", use: "Pick one of a small linear set; sizes 28/32px; collapses to dropdown/hideLabels in tight space" }
+    breadcrumbs:       { type: tab, fg: "#0969da", active: "last crumb #1f2328 no-link", use: "Inline path trail; #59636e slash separators. Repo file-path navigation." }
+    pagination:        { type: tab, fg: "#0969da", radius: "6px", active: "current page #0969da fill + #ffffff text", use: "Numbered links with prev/next chevrons under long issue/commit lists" }
+    tree-view:         { type: listItem, hover: "bg #f6f8fa", active: "selected bg #ddf4ff", use: "Indented file/symbol tree, 8px-step indentation, chevron disclosure on folders, keyboard-navigable" }
+    dialog:            { type: dialog, bg: "#ffffff", border: "1px solid #d1d9e0", radius: "12px", padding: "16px", shadow: "0 8px 24px rgba(31,35,40,0.2)", use: "Modal; rgba(31,35,40,0.5) scrim, 16px header + 1px bottom border, title 16px / 600. Confirmation/delete prompts." }
+    overlay:           { type: dialog, bg: "#ffffff", border: "1px solid #d1d9e0", radius: "6px", shadow: "0 3px 6px rgba(140,149,159,0.15)", use: "Floating-surface primitive (6-12px radius, medium/large shadow) — base for menus, popovers, dialogs" }
+    tooltip:           { type: card, bg: "#1f2328", fg: "#ffffff", radius: "6px", padding: "6px 12px", font: "12px / 400", use: "Dark bubble with small directional arrow, on hover/focus, for icon-button labels and truncated text" }
+    banner:            { type: card, bg: "#ddf4ff", fg: "#1f2328", border: "1px solid rgba(9,105,218,0.4)", radius: "6px", padding: "16px", states: "info #ddf4ff · success #dafbe1 · warning #fff8c5 · critical #ffebe9", use: "In-context message block, leading status icon + optional dismiss x; compact and flush layouts" }
+    flash:             { type: card, bg: "#ddf4ff", fg: "#1f2328", radius: "6px", padding: "16px", states: "info #ddf4ff · success #dafbe1 · warning #fff8c5 · critical #ffebe9", use: "Page-level banner spanning content width at page top; persists until navigation" }
+    inline-message:    { type: card, fg: "#1a7f37", states: "success #1a7f37 · attention #9a6700 · danger #cf222e", use: "Compact single-line status beside a control, leading icon + tone-colored text — validation hints" }
+    spinner:           { type: card, fg: "#59636e", use: "Indeterminate circular loader, ~1.5px stroke, sizes 16/24/32/48px; replaces a button label during long ops" }
+    progress-bar:      { type: card, bg: "#d1d9e0", fg: "#1f883d", radius: "9999px", height: "8px", use: "Rounded full track with green fill — language-breakdown bars, upload/operation progress" }
+    skeleton:          { type: card, bg: "#f6f8fa", radius: "6px", use: "Loading placeholders at final element geometry, subtle shimmer; SHAs/counts render as skeleton bars not values" }
+    blankslate:        { type: card, fg: "#1f2328", use: "Centered empty state — icon visual, #1f2328 heading, #59636e description, green primary action + optional secondary link; narrow/spacious/bordered variants" }
+    timeline:          { type: listItem, border: "#d1d9e0 vertical rail", use: "Issue/PR activity thread; badge nodes (commit/comment/label/merge) and avatar-led rows. Merge event in #8250df done purple." }
+    branch-name:       { type: badge, bg: "#ddf4ff", fg: "#0969da", radius: "6px", padding: "0 6px", font: "mono", use: "Inline branch/ref reference in monospace" }
 ---
 
 # Design System Inspiration of GitHub

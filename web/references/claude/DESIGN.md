@@ -61,21 +61,21 @@ tokens:
     whisper: "rgba(0,0,0,0.05) 0px 4px 24px"
     ring: "0px 0px 0px 1px #d1cfc5"
   components:
-    button-primary: "Terracotta Brand #c96442 fill, Ivory #faf9f5 text, 8-12px radius, ring shadow"
-    button-dark-cta: "measured /news 'Try Claude' — Foreground Deep #0f0f0e fill, Ivory #faf9f5 text, 8px radius (split-pill 8/0/0/8), 8px 16px padding, 36px height, Anthropic Sans 15px/400"
-    button-secondary: "Warm Sand #e8e6dc fill, Charcoal #4d4c48 text, 8px radius, asymmetric padding, ring shadow"
-    button-outline: "measured /news 'See more' — Parchment #f5f4ed fill, Muted Strong #73726c text, 1px #d1cfc5 border, 8px radius, 8px 16px 8px 24px asymmetric padding, 40px height, serif label"
-    button-dark: "Near Black #141413 fill, Warm Silver #b0aea5 text, 12px radius, 1px #30302e border"
-    segmented-tab: "measured /pricing 'Individual/Teams' — Pure White #ffffff fill, Near Black #141413 text, 12px radius, 8px 16px padding, 40px height, 20px Anthropic Sans"
-    card: "Ivory #faf9f5 surface, 1px solid #f0eee6 border, 8-16px radius, whisper shadow"
-    pricing-card: "measured /pricing — Pure White #ffffff fill, 1px solid #f0eee6 border, 24px radius, 32px padding"
-    pricing-card-featured: "measured /pricing 'Max' — Pure White #ffffff fill, blue-tinted border rgba(106,155,204,0.2), 24px radius, 32px padding, blue glow shadow rgba(98,158,218,0.16) 0px 4px 20px — the one cool accent"
-    prompt-suggestion-card: "measured /pricing dark chat preview — Near Black #141413 fill, Stone Gray #87867f text, 1px solid #30302e border, 12px radius, 8px padding"
-    news-feature-card: "measured /news hero — Accent Rose #c46686 fill, Near Black #141413 text, 16px radius, 40px padding, layered soft shadow rgba(0,0,0,0.08) 0px 16px 24px, serif"
-    input-search: "measured /news — Pure White #ffffff fill, 1px solid #d1cfc5 border, 12px radius, 8px 16px 8px 40px padding (icon-left), 44px height, 14px Anthropic Sans"
-    input: "Near Black text, 12px radius, Focus Blue #3898ec focus ring — the only cool color"
-    nav: "measured — Ivory #faf9f5 background, 68px height, 16px vertical padding, serif wordmark, Foreground Deep #0f0f0e links, Try Claude CTA"
-    footer: "measured — Near Black #141413 surface, Ivory #faf9f5 headings, Warm Silver #b0aea5 links, 12px Anthropic Sans"
+    button-primary: { type: button, bg: "#c96442", fg: "#faf9f5", radius: "8-12px", shadow: "ring #c96442 0px 0px 0px 1px", use: "Peak brand CTA — the only chromatic button" }
+    button-dark-cta: { type: button, bg: "#0f0f0e", fg: "#faf9f5", radius: "8px (split-pill 8/0/0/8 when paired)", padding: "8px 16px", height: "36px", font: "15px / 400", use: "Default marketing CTA — dark-on-warm 'Try Claude'" }
+    button-secondary: { type: button, bg: "#e8e6dc", fg: "#4d4c48", radius: "8px", padding: "0px 12px 0px 8px", shadow: "ring #e8e6dc 0px 0px 0px 0px, #d1cfc5 0px 0px 0px 1px", use: "Workhorse interactive surface — warm, unassuming" }
+    button-outline: { type: button, bg: "#f5f4ed", fg: "#73726c", border: "1px solid #d1cfc5", radius: "8px", padding: "8px 16px 8px 24px", height: "40px", font: "serif label", use: "Quiet 'See more' affordance on light sections" }
+    button-dark: { type: button, bg: "#141413", fg: "#b0aea5", border: "1px solid #30302e", radius: "12px", padding: "9.6px 16.8px", use: "Dark-theme button variant" }
+    segmented-tab: { type: tab, bg: "#ffffff", active: "text #141413", radius: "12px", padding: "8px 16px", height: "40px", font: "20px Anthropic Sans", use: "Individual / Teams plan switcher on /pricing" }
+    card: { type: card, bg: "#faf9f5", border: "1px solid #f0eee6", radius: "8-16px", shadow: "whisper rgba(0,0,0,0.05) 0px 4px 24px", use: "Generic card & container" }
+    pricing-card: { type: card, bg: "#ffffff", border: "1px solid #f0eee6", radius: "24px", padding: "32px", use: "Free / Pro plan containers — flat, clean" }
+    pricing-card-featured: { type: card, bg: "#ffffff", border: "blue-tinted rgba(106,155,204,0.2)", radius: "24px", padding: "32px", shadow: "cool glow rgba(98,158,218,0.16) 0px 4px 20px", use: "Max upsell plan — the one deliberate cool accent" }
+    prompt-suggestion-card: { type: card, bg: "#141413", fg: "#87867f", border: "1px solid #30302e", radius: "12px", padding: "8px", use: "Write / Learn / Code starter cards in dark chat mock" }
+    news-feature-card: { type: card, bg: "#c46686", fg: "#141413", radius: "16px", padding: "40px", font: "serif headline", shadow: "layered soft rgba(0,0,0,0.04) 0px 1px 1px, rgba(0,0,0,0.06) 0px 4px 4px, rgba(0,0,0,0.08) 0px 16px 24px", use: "Editorial /news hero — chromatic, non-interactive" }
+    input-search: { type: input, bg: "#ffffff", fg: "#141413", border: "1px solid #d1cfc5", radius: "12px", padding: "8px 16px 8px 40px", height: "44px", font: "14px Anthropic Sans", use: "Clean rounded search field, 44px touch target" }
+    input: { type: input, fg: "#141413", radius: "12px", focus: "ring border #3898ec — the only cool color moment", use: "General text input" }
+    nav: { type: card, bg: "#faf9f5", height: "68px", padding: "16px vertical", fg: "#0f0f0e", font: "serif wordmark, links 16-20px", hover: "text shifts to foreground-primary, no decoration", use: "Top nav / header with Try Claude CTA" }
+    footer: { type: card, bg: "#141413", fg: "#b0aea5", font: "12px Anthropic Sans, 24px line-height", use: "Closing dark band — Ivory #faf9f5 headings, warm-silver links" }
 ---
 
 # Design System Inspiration of Claude (Anthropic)

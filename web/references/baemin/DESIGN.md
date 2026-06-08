@@ -54,22 +54,22 @@ tokens:
     outlined: "0px 4px 16px rgba(0,0,0,0.12)"
     crisp: "0px 8px 24px rgba(0,0,0,0.16)"
   components:
-    button-primary: "[app] Baemin Mint #2AC1BC fill, white text, 8px radius, 16px weight 700, 48px height; pressed #20A8A4; disabled #DEE2E6 fill / #ADB5BD text"
-    button-ghost: "[app] transparent fill, mint #2AC1BC text + 1px mint border, 8px radius; pressed rgba(42,193,188,0.08)"
-    button-neutral: "[app] #F8F9FA fill, #212529 text, 8px radius — tertiary actions, filter toggles"
-    button-destructive: "[app] #FF6B6B fill, white text — cancel order, remove item"
-    button-pill-web: "[web, measured] #000000 fill, white text, 9999px radius, 16x32 padding, 58px height, 18px weight 700 — corporate CTA (기업용 상품권 구매하기)"
-    app-download-card: "[web, measured] #ffffff fill, 12px radius, 54px height, 14x19 padding, no shadow — store-badge cards"
-    card: "[app] white surface, 8px radius (12px featured), 1px #DEE2E6 border or Deep shadow 0px 2px 8px rgba(0,0,0,0.08)"
-    restaurant-card: "[app] 12px radius, 16:9 photo with 12px top radius, name 18px/700, rating star #FFB347, delivery 13px/400 #868E96, 16px padding"
-    tag: "[app] #F1F3F5 bg, #495057 text, pill radius, 12px weight 500"
-    search-bar: "[app] #F8F9FA bg, 20px radius, 44px height, left search icon, placeholder #ADB5BD"
-    input: "[app] 1px #DEE2E6 border, 8px radius, #212529 text; focus 2px #2AC1BC; error 2px #FF6B6B"
-    bottom-tab-bar: "[app] white bg, 1px #DEE2E6 top border; active #2AC1BC icon+label, inactive #868E96"
-    top-app-bar: "[app] white bg, centered title 18px weight 700 #212529"
-    floating-cart-button: "[app] 56px circle, #2AC1BC fill, white icon, #FF6B6B count badge; shadow 0px 4px 12px rgba(0,0,0,0.10)"
-    badge: "[app] promo #FF6B6B or #FFB347 fill white text 4px radius 11px/700; delivery #2AC1BC fill white text 4px radius"
-    toast: "[app] #212529 bg, white 14px/400 text, 2.5s auto-dismiss"
+    button-primary:        { type: button, bg: "#2ac1bc", fg: "#ffffff", radius: "8px", height: "48px", padding: "12px 24px", font: "16px / 700", states: "pressed #20a8a4 · disabled bg #dee2e6 / text #adb5bd", use: "Primary CTAs (주문하기, 배달 주문)" }
+    button-ghost:          { type: button, bg: "transparent", fg: "#2ac1bc", border: "1px solid #2ac1bc", radius: "8px", active: "bg rgba(42,193,188,0.08)", use: "Secondary actions (장바구니, 찜하기)" }
+    button-neutral:        { type: button, bg: "#f8f9fa", fg: "#212529", radius: "8px", use: "Tertiary actions, filter toggles" }
+    button-destructive:    { type: button, bg: "#ff6b6b", fg: "#ffffff", radius: "8px", use: "Cancel order, remove item" }
+    button-pill-web:       { type: button, bg: "#000000", fg: "#ffffff", radius: "9999px", height: "58px", padding: "16px 32px", font: "18px / 700", use: "Web corporate CTA (기업용 상품권 구매하기)" }
+    app-download-card:     { type: card, bg: "#ffffff", radius: "12px", height: "54px", padding: "14px 19px", shadow: "none", use: "Store-badge cards (App Store / Google Play)" }
+    card:                  { type: card, bg: "#ffffff", radius: "8px", border: "1px solid #dee2e6", shadow: "0px 2px 8px rgba(0,0,0,0.08)", use: "Standard surface, 12px radius when featured" }
+    restaurant-card:       { type: card, bg: "#ffffff", radius: "12px", padding: "16px", font: "name 18px / 700 #212529 · delivery 13px / 400 #868e96", states: "rating star #ffb347 · 16:9 photo 12px top radius", use: "Restaurant listing card" }
+    tag:                   { type: badge, bg: "#f1f3f5", fg: "#495057", radius: "9999px", font: "12px / 500", use: "Restaurant attribute tags" }
+    search-bar:            { type: input, bg: "#f8f9fa", fg: "#212529", radius: "20px", height: "44px", states: "left search icon #868e96 · placeholder #adb5bd", use: "Restaurant search (맛집을 검색해보세요)" }
+    input:                 { type: input, bg: "#ffffff", fg: "#212529", border: "1px solid #dee2e6", radius: "8px", focus: "2px solid #2ac1bc", states: "placeholder #adb5bd · error 2px solid #ff6b6b", use: "Text fields" }
+    bottom-tab-bar:        { type: tab, bg: "#ffffff", border: "1px solid #dee2e6 top", active: "icon+label #2ac1bc", disabled: "#868e96 inactive", use: "Primary app navigation" }
+    top-app-bar:           { type: tab, bg: "#ffffff", fg: "#212529", font: "18px / 700 centered title", use: "Screen header" }
+    floating-cart-button:  { type: button, bg: "#2ac1bc", fg: "#ffffff", radius: "9999px", height: "56px", shadow: "0px 4px 12px rgba(0,0,0,0.10)", states: "count badge #ff6b6b white 11px / 700", use: "Floating cart access" }
+    badge:                 { type: badge, bg: "#ff6b6b", fg: "#ffffff", radius: "4px", font: "11px / 700", states: "promo #ff6b6b / #ffb347 · delivery #2ac1bc", use: "Promo / delivery status" }
+    toast:                 { type: toast, bg: "#212529", fg: "#ffffff", font: "14px / 400", states: "2.5s auto-dismiss", use: "Transient confirmation (장바구니에 담겼어요)" }
 omd: "0.1"
 ---
 

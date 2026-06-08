@@ -46,31 +46,31 @@ tokens:
   shadow:
     soft: "minimal — depth from dark/light section contrast, not box-shadow"
   components:
-    button-primary: "CDS Button variant=primary. High-emphasis, one per screen. Pill CTA, #0052ff (Blue70) fill, white label, 16px·600. Measured pill radius 100000px / nav-chip 16px. Hover #578bfa"
-    button-secondary: "CDS variant=secondary. Medium emphasis, #eef0f3 (Gray15) fill, #0a0b0d label, 1px solid matching border. Equal-weight multi-action rows"
-    button-tertiary: "CDS variant=tertiary. Low emphasis, muted background, transparent-until-interaction"
-    button-inverse: "CDS variant=inverse. High contrast on dark sections, #282b31 fill, white label"
-    button-negative: "CDS variant=negative. Destructive only, #0a0b0d-on-red, use sparingly"
-    button-transparent: "Transparent modifier — container visibility only on hover/press. Compact / Default / Block sizes; startIcon+endIcon slots"
-    button-blue-bordered: "transparent fill, 1px solid #0052ff border, #0052ff label"
-    icon-button: "Square/round icon-only action, measured 56px hit target, transparent fill"
-    chip: "Pill selectable token, 100000px radius, #eef0f3 fill default / #0052ff fill selected"
-    nav-tab-chip: "Header category chip, 16px radius, 4px 16px padding, 14px CoinbaseSans, #0667d0 link color"
-    text-input: "CDS TextInput. Bordered default 1px solid rgba(91,97,110,0.2); measured 56px height, 16px padding, label outside/inside-float, variant=negative sets aria-invalid + 'Error: …' helper, read-only = secondary bg"
-    search-input: "CDS SearchInput. Borderless inline, 16px CoinbaseSans, leading search icon, #0a0b0d text"
-    switch: "CDS Switch on/off. controlColor → #0052ff when checked, thumb elevation optional"
-    checkbox-radio: "CDS Checkbox/Radio + Cell + Group variants, #0052ff selected fill"
-    segmented-control: "CDS SegmentedControl / SegmentedTabs, pill track, #eef0f3 track / #0052ff active"
-    card: "CDS ContentCard family (Header/Body/Footer). 8px–40px radius, 1px solid rgba(91,97,110,0.2) border, minimal shadow"
-    data-table: "CDS Table (desktop only; Lists View on mobile). Variants default/graph/ruled, required header row, TableCellFallback skeleton, sortable, sticky header"
-    list-cell: "CDS ListCell/ContentCell, leading CellMedia + title/subtitle, mobile substitute for Table"
-    modal: "CDS Modal (Header/Body/Footer). Scrim overlay + FocusTrap, restoreFocusOnUnmount for chains, FullscreenModal + Tray + Alert siblings"
-    toast: "CDS Toast bottom-anchored, auto-dismiss 5s base + close button, variants bgPositive/bgNegative/bgWarning, role=alert"
-    tooltip: "CDS Tooltip + PopoverPanel + Coachmark overlay family"
-    banner: "CDS Banner styles global/inline/contextual, variants informational/warning/error/promotional, startIcon+title+actions, showDismiss"
-    progress: "CDS ProgressCircle/Spinner. Determinate 0–100% / indeterminate fgMuted arc, weights thin 2px / normal 4px / semiheavy 8px / heavy 12px, ProgressBar variants"
-    sparkline: "CDS Sparkline + LineChart + AreaChart, green/red tick flash on live price, #0052ff series accent"
-    dark-section: "#0a0b0d background, white text, blue (#0052ff) accent links"
+    button-primary:      { type: button, bg: "#0052ff", fg: "#ffffff", radius: "100000px", border: "1px solid #0052ff", font: "16px / 600", hover: "bg #578bfa", focus: "2px solid black outline", states: "loading hides label + ProgressCircle · sizes Compact/Default/Block", use: "High-emphasis primary CTA, one per screen" }
+    button-secondary:    { type: button, bg: "#eef0f3", fg: "#0a0b0d", radius: "100000px", border: "1px solid #eef0f3", font: "16px / 600", use: "Medium-emphasis equal-weight actions" }
+    button-tertiary:     { type: button, bg: "#eef0f3", fg: "#0a0b0d", radius: "100000px", states: "transparent-until-interaction", use: "Low-emphasis action" }
+    button-inverse:      { type: button, bg: "#282b31", fg: "#ffffff", radius: "100000px", use: "High contrast on dark sections" }
+    button-negative:     { type: button, fg: "#ffffff", radius: "100000px", use: "Destructive only, used sparingly" }
+    button-transparent:  { type: button, bg: "transparent", fg: "#0a0b0d", radius: "100000px", states: "container visible only on hover/press · sizes Compact/Default/Block · startIcon+endIcon slots", use: "Transparent modifier on any variant" }
+    button-blue-bordered: { type: button, bg: "transparent", fg: "#0052ff", radius: "100000px", border: "1px solid #0052ff", font: "16px / 600", use: "Secondary CTA pairing" }
+    icon-button:         { type: button, bg: "transparent", radius: "100000px", height: "56px", use: "Icon-only action, 56px round hit-target" }
+    chip:                { type: badge, bg: "#eef0f3", fg: "#0a0b0d", radius: "100000px", states: "selected bg #0052ff", use: "Pill selectable token" }
+    nav-tab-chip:        { type: tab, fg: "#0667d0", radius: "16px", padding: "4px 16px", font: "14px / 400", use: "Header category chip" }
+    text-input:          { type: input, bg: "#ffffff", fg: "#0a0b0d", border: "1px solid rgba(91,97,110,0.2)", radius: "8px", height: "56px", padding: "16px", font: "16px / 400", states: "label outside/inside-float · negative sets aria-invalid + 'Error: …' helper · positive validated · read-only secondary bg · disabled distinct", use: "Bordered text field" }
+    search-input:        { type: input, bg: "transparent", fg: "#0a0b0d", border: "none", font: "16px / 400", states: "borderless inline · leading search glyph", use: "Inline search field" }
+    switch:              { type: toggle, states: "control #0052ff when checked · optional thumb elevation", use: "On/off toggle" }
+    checkbox-radio:      { type: toggle, active: "selected fill #0052ff", states: "Cell + Group wrappers", use: "Checkbox and Radio selection" }
+    segmented-control:   { type: tab, bg: "#eef0f3", active: "active segment #0052ff", radius: "100000px", use: "Time-range and view switches" }
+    card:                { type: card, bg: "#ffffff", border: "1px solid rgba(91,97,110,0.2)", radius: "8px–40px", shadow: "none — depth from section contrast", states: "ContentCard Header/Body/Footer · DataCard/MediaCard/NudgeCard/UpsellCard", use: "Content container family" }
+    data-table:          { type: card, border: "1px solid rgba(91,97,110,0.2)", states: "desktop-only (Lists View on mobile) · variants default/graph/ruled · required header row · sortable · sticky header · TableCellFallback skeleton", use: "Tabular data, desktop only" }
+    list-cell:           { type: listItem, fg: "#0a0b0d", states: "leading CellMedia + title/subtitle", use: "Mobile substitute for Table, asset rows" }
+    modal:               { type: dialog, bg: "#ffffff", shadow: "scrim overlay + FocusTrap", states: "visible + onRequestClose · restoreFocusOnUnmount=false for chains · FullscreenModal/Tray/Alert/FullscreenAlert siblings", use: "Header/Body/Footer modal" }
+    toast:               { type: toast, states: "bottom-anchored · auto-dismiss 5s base + close button · bgPositive/bgNegative/bgWarning · role=alert · persists on hover", use: "Transient status message" }
+    tooltip:             { type: card, states: "Tooltip + PopoverPanel + Coachmark", use: "Contextual hints and first-run tours" }
+    banner:              { type: card, border: "global avoids custom radius — flush with status bar", states: "styles global/inline/contextual · variants informational/warning/error/promotional · startIcon+title+children+primaryAction+secondaryAction+showDismiss", use: "Feedback and status messaging" }
+    progress:            { type: card, fg: "#0052ff", states: "ProgressCircle determinate 0–100% / indeterminate fgMuted arc · stroke thin 2px/normal 4px/semiheavy 8px/heavy 12px · ProgressBar + Spinner", use: "Determinate/indeterminate progress" }
+    sparkline:           { type: card, fg: "#0052ff", states: "Sparkline/LineChart/AreaChart/BarChart/PercentageBarChart · live price ticks flash green/red (disabled under reduced-motion)", use: "Inline price/chart visualization" }
+    dark-section:        { type: card, bg: "#0a0b0d", fg: "#ffffff", active: "accent links #0052ff", use: "Dark feature section" }
 ---
 
 # Design System Inspiration of Coinbase

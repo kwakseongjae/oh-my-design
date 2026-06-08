@@ -63,28 +63,28 @@ tokens:
     floating: "rgba(0,0,0,0.12) 0px 8px 24px 0px"
     modal: "rgba(0,0,0,0.18) 0px 12px 32px 0px"
   components:
-    button-primary: "brand fill, white text, 14px/600 Inter; DS size scale h-9 (36px, 8px radius, 12px px) and h-10 (40px, 8px radius, 16px px); marketing primary uses Cloudflare Orange #F6821F, hover #E2700B"
-    button-secondary: "white fill, #36393A text, 1px #D9D9D9 hairline ring, 8px radius; hover bg #FAFAFA border #A1A1A1"
-    button-ghost: "transparent, #F6821F text, 8px radius; hover bg #FDF3E7 (kumo: bg-kumo-tint)"
-    button-danger: "#BD2528 fill, white text, 8px radius; hover #A11F22"
-    button-sm: "h-6.5 (26px), 6px radius, 8px px, 12px text — compact toolbar/table-row action"
-    icon-button: "square h-9/h-10, rounded-full or 8px radius, p-0, centered glyph"
-    input: "white fill, 1px #D9D9D9 ring, 8px radius, h-10 (40px) 16px px; focus 1.5px brand ring; error 1.5px #BD2528 ring"
-    input-mono: "white fill, 1px #D9D9D9 ring, 8px radius, 13px/400 JetBrains Mono; DNS/IP/token entry"
-    select: "white fill, 1px #D9D9D9 ring, 8px radius, h-10, #717174 chevron"
-    switch: "DS 3 sizes (h-4/h-4.5/h-5 track), rounded-[5px] squircle 10px; on #F6821F (kumo on = blue #2C7CB0), off #D9D9D9, white thumb with edge+drop shadow"
-    checkbox: "square, ~6px radius, brand fill when checked, hairline ring unchecked"
-    card: "white surface, 1px #EDEDED border, 8px radius, 24px padding, subtle neutral shadow"
-    stat-card: "white, 1px #EDEDED, 8px radius, 20px padding; 32px/700 #1D1F20 number, 12px/600 uppercase #717174 label"
-    surface: "kumo elevation roles — canvas #FFFFFF, recessed #F7F7F7, line/hairline #EDEDED"
-    badge: "rounded-full (9999px), 8px px, 2px py, 12px/500; tinted neutral/success/error/warning/info/orange variants + dashed-brand + 7px status dot"
-    status-pill: "fully rounded 9999px, 12px/600 Inter, 2px 10px padding; green/red/yellow tinted bg + colored dot"
-    tabs: "underline style — 1px #EDEDED bottom rule, inactive #717174, active #1D1F20 + 2px #F6821F underline"
-    table: "header bg #FAFAFA 12px/600 uppercase #717174; body 13px/400 #36393A, 12px 16px cells, 1px #EDEDED rows, hover #FAFAFA"
-    dialog: "white, 12px radius (rounded-xl), 32px padding, shadow-floating, 1px line ring; scrim rgba(29,31,32,0.5), scale-90 enter over 150ms"
-    toast: "white/#1D1F20 fill, 12px radius (rounded-xl), 16px padding, shadow-lg; semantic 0.3px ring (green/red/yellow/blue); fixed bottom-right 340px"
-    tooltip: "white fill, 6px radius (rounded-md), 10px 6px padding, 13px text, shadow-lg, 1px outline"
-    code-block: "#F5F5F5 light / #15171A dark, 1px #EDEDED border, 6px radius, 13px/400 JetBrains Mono"
+    button-primary:   { type: button, bg: "#f6821f", fg: "#ffffff", radius: "8px", height: "36px", padding: "0 12px", font: "14px / 600", hover: "#e2700b", active: "#d9700f", focus: "2px brand ring", disabled: "brand 50% opacity", use: "Primary action — Get started, Add site, Save, Deploy" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#36393a", border: "1px solid #d9d9d9", radius: "8px", hover: "bg #fafafa · border #a1a1a1", use: "Companion to a primary — Cancel, Back" }
+    button-ghost:     { type: button, bg: "transparent", fg: "#f6821f", radius: "8px", padding: "0 12px", hover: "bg #fdf3e7", use: "Inline low-emphasis action, Learn more, text-link button" }
+    button-danger:    { type: button, bg: "#bd2528", fg: "#ffffff", radius: "8px", hover: "#a11f22", use: "Delete zone, remove record, purge — confirmation contexts only" }
+    button-sm:        { type: button, height: "26px", radius: "6px", padding: "0 8px", font: "12px / 600", use: "Toolbar and table-row inline actions where vertical space is tight" }
+    icon-button:      { type: button, height: "36px", radius: "8px", padding: "0", use: "Close, kebab menu, copy-to-clipboard affordance" }
+    input:            { type: input, bg: "#ffffff", fg: "#1d1f20", border: "1px solid #d9d9d9", radius: "8px", height: "40px", padding: "0 16px", font: "14px / 400", focus: "1.5px brand ring · 0 0 0 3px rgba(246,130,31,0.2)", use: "Standard form input, search, config values" }
+    input-mono:       { type: input, bg: "#ffffff", fg: "#1d1f20", border: "1px solid #d9d9d9", radius: "8px", font: "13px / 400 JetBrains Mono", use: "DNS record values, IP entry, token paste fields" }
+    select:           { type: input, bg: "#ffffff", fg: "#1d1f20", border: "1px solid #d9d9d9", radius: "8px", height: "40px", use: "Plan picker, record-type selector, region dropdown — #717174 chevron" }
+    switch:           { type: toggle, active: "#f6821f", disabled: "#d9d9d9", radius: "5px", use: "Proxy on/off, feature flags, security toggles — white thumb with edge+drop shadow" }
+    checkbox:         { type: toggle, bg: "#f6821f", border: "1px solid #d9d9d9", radius: "6px", use: "Multi-select rules, plan options, consent — brand fill + white glyph when checked" }
+    card:             { type: card, bg: "#ffffff", border: "1px solid #ededed", radius: "8px", padding: "24px", shadow: "0 1px 3px rgba(0,0,0,0.06)", use: "Dashboard config panels, analytics modules — the workhorse surface" }
+    stat-card:        { type: card, bg: "#ffffff", border: "1px solid #ededed", radius: "8px", padding: "20px", font: "32px / 700 #1d1f20 number · 12px / 600 uppercase #717174 label", use: "Analytics summary tiles (requests, bandwidth, threats blocked)" }
+    surface:          { type: card, bg: "#ffffff", border: "1px solid #ededed", use: "kumo elevation roles — canvas #ffffff, recessed #f7f7f7, line/hairline #ededed" }
+    badge:            { type: badge, radius: "9999px", padding: "2px 8px", font: "12px / 500", use: "NEW, Beta, version, plan, short metadata — neutral/success/error/warning/info/orange + dashed-brand + 7px status dot" }
+    status-pill:      { type: badge, bg: "#e8f5d8", fg: "#3d6b14", radius: "9999px", padding: "2px 10px", font: "12px / 600", states: "green active #e8f5d8/#3d6b14 · red down #fbe2e2/#bd2528 · yellow pending #fcf3d6/#8a6d1b · grey #ededed/#4d4d4d · orange #fdf3e7/#c2670f", use: "Active, Proxied, Down, Pending status with colored dot" }
+    tabs:             { type: tab, active: "text #1d1f20 + 2px bottom border #f6821f", border: "1px solid #ededed bottom rule", font: "14px / 600", disabled: "#717174 inactive label", use: "Dashboard section switching (Overview / Analytics / DNS / SSL)" }
+    table:            { type: card, bg: "#ffffff", border: "1px solid #ededed", font: "13px / 400 #36393a body", padding: "12px 16px", hover: "#fafafa row", use: "DNS records, firewall rules, analytics logs — header bg #fafafa 12px/600 uppercase #717174" }
+    dialog:           { type: dialog, bg: "#ffffff", fg: "#1d1f20", border: "1px solid #ededed", radius: "12px", padding: "32px", shadow: "0 12px 32px rgba(0,0,0,0.18)", use: "Confirmations, destructive double-checks, add-record flows — scrim rgba(29,31,32,0.5), scale-90 enter over 150ms" }
+    toast:            { type: toast, bg: "#1d1f20", fg: "#ffffff", radius: "12px", padding: "16px", shadow: "0 8px 24px rgba(0,0,0,0.12)", states: "success #2fb344 · error #bd2528 · warning #f6c549 · info #2c7cb0", use: "Auto-dismissing confirmation, fixed bottom-right 340px, 4-5s dismiss" }
+    tooltip:          { type: card, bg: "#ffffff", fg: "#1d1f20", border: "1px solid #ededed", radius: "6px", padding: "6px 10px", font: "13px / 400", shadow: "shadow-lg", use: "Icon labels, truncated-value reveal, glossary terms" }
+    code-block:       { type: card, bg: "#f5f5f5", fg: "#1d1f20", border: "1px solid #ededed", radius: "6px", padding: "12px 16px", font: "13px / 400 JetBrains Mono", use: "API examples, Worker snippets, curl commands, DNS values" }
 ---
 
 # Design System Inspiration of Cloudflare
