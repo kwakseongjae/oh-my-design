@@ -13,7 +13,8 @@ omd: "0.1"
 tokens:
   source: prose-derived
   extracted: "2026-06-08"
-  note: "primary = Terracotta Brand (#c96442) per primary_color, the only chromatic CTA; entire neutral palette is warm-toned (yellow-brown undertone)"
+  components_harvested: true
+  note: "primary = Terracotta Brand (#c96442) per primary_color, the only chromatic CTA; entire neutral palette is warm-toned (yellow-brown undertone). Components harvested live (TIER 2) via playwright getComputedStyle across anthropic.com /, /pricing, /news (2026-06-09); claude.ai app shell is JS-gated and not headless-inspectable, so app-surface components are capped to marketing-site evidence. One cool accent observed: the highlighted Max pricing card uses a blue-tinted border + shadow rgba(98,158,218,0.16) 0px 4px 20px."
   colors:
     primary: "#c96442"
     primary-hover: "#d97757"
@@ -34,6 +35,9 @@ tokens:
     error: "#b53333"
     focus: "#3898ec"
     ring: "#d1cfc5"
+    foreground-deep: "#0f0f0e"
+    muted-strong: "#73726c"
+    accent-rose: "#c46686"
   typography:
     family: { sans: "Anthropic Sans", serif: "Anthropic Serif", mono: "Anthropic Mono" }
     display-hero:    { size: 64, weight: 500, lineHeight: 1.10, use: "Hero headlines, book-title presence (serif)" }
@@ -58,11 +62,20 @@ tokens:
     ring: "0px 0px 0px 1px #d1cfc5"
   components:
     button-primary: "Terracotta Brand #c96442 fill, Ivory #faf9f5 text, 8-12px radius, ring shadow"
+    button-dark-cta: "measured /news 'Try Claude' — Foreground Deep #0f0f0e fill, Ivory #faf9f5 text, 8px radius (split-pill 8/0/0/8), 8px 16px padding, 36px height, Anthropic Sans 15px/400"
     button-secondary: "Warm Sand #e8e6dc fill, Charcoal #4d4c48 text, 8px radius, asymmetric padding, ring shadow"
+    button-outline: "measured /news 'See more' — Parchment #f5f4ed fill, Muted Strong #73726c text, 1px #d1cfc5 border, 8px radius, 8px 16px 8px 24px asymmetric padding, 40px height, serif label"
     button-dark: "Near Black #141413 fill, Warm Silver #b0aea5 text, 12px radius, 1px #30302e border"
+    segmented-tab: "measured /pricing 'Individual/Teams' — Pure White #ffffff fill, Near Black #141413 text, 12px radius, 8px 16px padding, 40px height, 20px Anthropic Sans"
     card: "Ivory #faf9f5 surface, 1px solid #f0eee6 border, 8-16px radius, whisper shadow"
+    pricing-card: "measured /pricing — Pure White #ffffff fill, 1px solid #f0eee6 border, 24px radius, 32px padding"
+    pricing-card-featured: "measured /pricing 'Max' — Pure White #ffffff fill, blue-tinted border rgba(106,155,204,0.2), 24px radius, 32px padding, blue glow shadow rgba(98,158,218,0.16) 0px 4px 20px — the one cool accent"
+    prompt-suggestion-card: "measured /pricing dark chat preview — Near Black #141413 fill, Stone Gray #87867f text, 1px solid #30302e border, 12px radius, 8px padding"
+    news-feature-card: "measured /news hero — Accent Rose #c46686 fill, Near Black #141413 text, 16px radius, 40px padding, layered soft shadow rgba(0,0,0,0.08) 0px 16px 24px, serif"
+    input-search: "measured /news — Pure White #ffffff fill, 1px solid #d1cfc5 border, 12px radius, 8px 16px 8px 40px padding (icon-left), 44px height, 14px Anthropic Sans"
     input: "Near Black text, 12px radius, Focus Blue #3898ec focus ring — the only cool color"
-    nav: "sticky warm-background top nav, serif wordmark, Terracotta or White CTA"
+    nav: "measured — Ivory #faf9f5 background, 68px height, 16px vertical padding, serif wordmark, Foreground Deep #0f0f0e links, Try Claude CTA"
+    footer: "measured — Near Black #141413 surface, Ivory #faf9f5 headings, Warm Silver #b0aea5 links, 12px Anthropic Sans"
 ---
 
 # Design System Inspiration of Claude (Anthropic)
@@ -90,6 +103,8 @@ What makes Claude's design truly distinctive is its warm neutral palette. Every 
 - **Anthropic Near Black** (`#141413`): The primary text color and dark-theme surface — not pure black but a warm, almost olive-tinted dark that's gentler on the eyes. The warmest "black" in any major tech brand.
 - **Terracotta Brand** (`#c96442`): The core brand color — a burnt orange-brown used for primary CTA buttons, brand moments, and the signature accent. Deliberately earthy and un-tech.
 - **Coral Accent** (`#d97757`): A lighter, warmer variant of the brand color used for text accents, links on dark surfaces, and secondary emphasis.
+- **Foreground Deep** (`#0f0f0e`): The deepest near-black, measured live on the `/news` "Try Claude" CTA fill and nav links — a touch darker than the standard Near Black, used where maximum-contrast dark fills are wanted.
+- **Accent Rose** (`#c46686`): A muted dusty-rose, measured on the featured news hero card — a rare chromatic surface that sits beside Terracotta in the warm family without competing with it for CTA signal.
 
 ### Secondary & Accent
 - **Error Crimson** (`#b53333`): A deep, warm red for error states — serious without being alarming.
@@ -107,6 +122,7 @@ What makes Claude's design truly distinctive is its warm neutral palette. Every 
 - **Charcoal Warm** (`#4d4c48`): Button text on light warm surfaces — the go-to dark-on-light text.
 - **Olive Gray** (`#5e5d59`): Secondary body text — a distinctly warm medium-dark gray.
 - **Stone Gray** (`#87867f`): Tertiary text, footnotes, and de-emphasized metadata.
+- **Muted Strong** (`#73726c`): A slightly deeper warm gray, measured on the `/news` "See more" outline-button label — used for muted-but-legible interactive text.
 - **Dark Warm** (`#3d3d3a`): Dark text links and emphasized secondary text.
 - **Warm Silver** (`#b0aea5`): Text on dark surfaces — a warm, parchment-tinted light gray.
 
@@ -160,93 +176,111 @@ What makes Claude's design truly distinctive is its warm neutral palette. Every 
 
 ## 4. Component Stylings
 
-### Buttons
+*Specs below are grounded in live `getComputedStyle` harvest (TIER 2) across anthropic.com `/`, `/pricing`, and `/news` (2026-06-09), supplemented by the documented warm-palette system. claude.ai's app shell is JS-gated and not headless-inspectable, so app-surface component specs are intentionally capped to what the marketing surfaces actually render. Components are grouped by role.*
 
-**Warm Sand (Secondary)**
-- Background: Warm Sand (`#e8e6dc`)
-- Text: Charcoal Warm (`#4d4c48`)
-- Padding: 0px 12px 0px 8px (asymmetric — icon-first layout)
-- Radius: comfortably rounded (8px)
-- Shadow: ring-based (`#e8e6dc 0px 0px 0px 0px, #d1cfc5 0px 0px 0px 1px`)
-- The workhorse button — warm, unassuming, clearly interactive
+### Actions
 
-**White Surface**
-- Background: Pure White (`#ffffff`)
-- Text: Anthropic Near Black (`#141413`)
-- Padding: 8px 16px 8px 12px
-- Radius: generously rounded (12px)
-- Hover: shifts to secondary background color
-- Clean, elevated button for light surfaces
-
-**Dark Charcoal**
-- Background: Dark Surface (`#30302e`)
+**Dark CTA — "Try Claude"** *(measured, `/news`)*
+- Background: Foreground Deep (`#0f0f0e`)
 - Text: Ivory (`#faf9f5`)
-- Padding: 0px 12px 0px 8px
-- Radius: comfortably rounded (8px)
-- Shadow: ring-based (`#30302e 0px 0px 0px 0px, ring 0px 0px 0px 1px`)
-- The inverted variant for dark-on-light emphasis
+- Radius: comfortably rounded (8px) — rendered as a split-pill (`8px 0px 0px 8px`) when paired with an adjacent secondary action
+- Padding: 8px 16px · Height: 36px · Font: Anthropic Sans 15px / 400
+- The default marketing CTA — dark-on-warm, not terracotta. Terracotta is reserved for the highest-signal brand moments.
 
 **Brand Terracotta**
-- Background: Terracotta Brand (`#c96442`)
-- Text: Ivory (`#faf9f5`)
-- Radius: 8–12px
-- Shadow: ring-based (`#c96442 0px 0px 0px 0px, #c96442 0px 0px 0px 1px`)
-- The primary CTA — the only button with chromatic color
+- Background: Terracotta Brand (`#c96442`) · Text: Ivory (`#faf9f5`)
+- Radius: 8–12px · Shadow: ring-based (`#c96442 0px 0px 0px 1px`)
+- The only button with chromatic color — used for peak brand CTAs.
+
+**Outline / Ghost — "See more"** *(measured, `/news`)*
+- Background: Parchment (`#f5f4ed`) · Text: Muted Strong (`#73726c`)
+- Border: 1px solid Ring Warm (`#d1cfc5`) · Radius: 8px
+- Padding: 8px 16px 8px 24px (asymmetric, label-then-icon) · Height: 40px · Serif label
+- The quiet "show more" affordance on light sections.
+
+**Warm Sand (Secondary)**
+- Background: Warm Sand (`#e8e6dc`) · Text: Charcoal Warm (`#4d4c48`)
+- Padding: 0px 12px 0px 8px (asymmetric — icon-first) · Radius: 8px
+- Shadow: ring-based (`#e8e6dc 0px 0px 0px 0px, #d1cfc5 0px 0px 0px 1px`)
+- The workhorse interactive surface — warm, unassuming.
 
 **Dark Primary**
-- Background: Anthropic Near Black (`#141413`)
-- Text: Warm Silver (`#b0aea5`)
-- Padding: 9.6px 16.8px
-- Radius: generously rounded (12px)
-- Border: thin solid Dark Surface (`1px solid #30302e`)
-- Used on dark theme surfaces
-
-### Cards & Containers
-- Background: Ivory (`#faf9f5`) or Pure White (`#ffffff`) on light surfaces; Dark Surface (`#30302e`) on dark
-- Border: thin solid Border Cream (`1px solid #f0eee6`) on light; `1px solid #30302e` on dark
-- Radius: comfortably rounded (8px) for standard cards; generously rounded (16px) for featured; very rounded (32px) for hero containers and embedded media
-- Shadow: whisper-soft (`rgba(0,0,0,0.05) 0px 4px 24px`) for elevated content
-- Ring shadow: `0px 0px 0px 1px` patterns for interactive card states
-- Section borders: `1px 0px 0px` (top-only) for list item separators
-
-### Inputs & Forms
-- Text: Anthropic Near Black (`#141413`)
-- Padding: 1.6px 12px (very compact vertical)
-- Border: standard warm borders
-- Focus: ring with Focus Blue (`#3898ec`) border-color — the only cool color moment
-- Radius: generously rounded (12px)
+- Background: Anthropic Near Black (`#141413`) · Text: Warm Silver (`#b0aea5`)
+- Padding: ~9.6px 16.8px · Radius: 12px · Border: 1px solid Dark Surface (`#30302e`)
+- The dark-theme button variant.
 
 ### Navigation
-- Sticky top nav with warm background
-- Logo: Claude wordmark in Anthropic Near Black
-- Links: mix of Near Black (`#141413`), Olive Gray (`#5e5d59`), and Dark Warm (`#3d3d3a`)
-- Nav border: `1px solid #30302e` (dark) or `1px solid #f0eee6` (light)
-- CTA: Terracotta Brand button or White Surface button
-- Hover: text shifts to foreground-primary, no decoration
+
+**Top Nav / Header** *(measured)*
+- Background: Ivory (`#faf9f5`) · Height: 68px · Vertical padding: 16px
+- Logo: Claude wordmark in Foreground Deep (`#0f0f0e`)
+- Links: Foreground Deep (`#0f0f0e`) / Olive Gray (`#5e5d59`), serif at 16–20px
+- CTA slot: Dark CTA or Terracotta button · Hover: text shifts to foreground-primary, no decoration
+
+**Footer** *(measured, homepage)*
+- Surface: Anthropic Near Black (`#141413`) full-bleed dark band
+- Headings: Ivory (`#faf9f5`) · Links: Warm Silver (`#b0aea5`) at 12px Anthropic Sans, 24px line-height
+- The closing dark "chapter" of the page.
+
+### Forms
+
+**Search Input** *(measured, `/news`)*
+- Background: Pure White (`#ffffff`) · Text: Anthropic Near Black (`#141413`)
+- Border: 1px solid Ring Warm (`#d1cfc5`) · Radius: 12px
+- Padding: 8px 16px 8px 40px (left-inset for leading search icon) · Height: 44px · Font: Anthropic Sans 14px
+- A clean rounded field — touch-target-sized at 44px.
+
+**Text Input (general)**
+- Text: Anthropic Near Black (`#141413`) · Radius: 12px
+- Focus: ring with Focus Blue (`#3898ec`) border-color — the only cool color moment in the system.
+
+**Segmented Tab — Plan switcher** *(measured, `/pricing`)*
+- Background: Pure White (`#ffffff`) · Text: Anthropic Near Black (`#141413`)
+- Radius: 12px · Padding: 8px 16px · Height: 40px · Font: Anthropic Sans 20px
+- The Individual / Teams plan toggle at the top of pricing.
+
+### Data display
+
+**Pricing Card** *(measured, `/pricing`)*
+- Background: Pure White (`#ffffff`) · Border: 1px solid Border Cream (`#f0eee6`)
+- Radius: 24px (highly rounded) · Padding: 32px · No shadow at rest
+- The Free / Pro plan containers — flat, clean, generously rounded.
+
+**Featured Pricing Card — "Max"** *(measured, `/pricing`)*
+- Background: Pure White (`#ffffff`) · Radius: 24px · Padding: 32px
+- Border: blue-tinted (`rgba(106,155,204,0.2)`) · Shadow: cool glow `rgba(98,158,218,0.16) 0px 4px 20px`
+- The single deliberate cool accent in the system — used only to mark the upsell plan, never as a brand color.
+
+**Prompt Suggestion Card** *(measured, `/pricing` chat preview)*
+- Background: Anthropic Near Black (`#141413`) · Text: Stone Gray (`#87867f`)
+- Border: 1px solid Dark Surface (`#30302e`) · Radius: 12px · Padding: 8px
+- The Write / Learn / Code starter cards inside the dark chat mock.
+
+**News Feature Card** *(measured, `/news` hero)*
+- Background: Accent Rose (`#c46686`) · Text: Anthropic Near Black (`#141413`)
+- Radius: 16px · Padding: 40px · Serif headline
+- Shadow: layered soft drop (`rgba(0,0,0,0.04) 0px 1px 1px, rgba(0,0,0,0.06) 0px 4px 4px, rgba(0,0,0,0.08) 0px 16px 24px`)
+- A rare chromatic surface — editorial, not interactive.
+
+**Generic Card & Container**
+- Background: Ivory (`#faf9f5`) / Pure White (`#ffffff`) on light; Dark Surface (`#30302e`) on dark
+- Border: 1px solid Border Cream (`#f0eee6`) light; 1px solid `#30302e` dark
+- Radius: 8px standard, 16px featured, 24–32px hero/media
+- Shadow: whisper (`rgba(0,0,0,0.05) 0px 4px 24px`); section separators use top-only `1px 0px 0px` borders.
 
 ### Image Treatment
-- Product screenshots showing the Claude chat interface
-- Generous border-radius on media (16–32px)
-- Embedded video players with rounded corners
-- Dark UI screenshots provide contrast against warm light canvas
-- Organic, hand-drawn illustrations for conceptual sections
+- Product screenshots of the Claude chat interface; generous radius on media (16–32px)
+- Embedded video players with rounded corners; dark UI screenshots contrast the warm canvas
+- Organic, hand-drawn illustrations in terracotta, black, and muted green for conceptual sections
 
 ### Distinctive Components
 
-**Model Comparison Cards**
-- Opus 4.5, Sonnet 4.5, Haiku 4.5 presented in a clean card grid
-- Each model gets a bordered card with name, description, and capability badges
-- Border Warm (`#e8e6dc`) separation between items
-
 **Organic Illustrations**
 - Hand-drawn-feeling vector illustrations in terracotta, black, and muted green
-- Abstract, conceptual rather than literal product diagrams
-- The primary visual personality — no other AI company uses this style
+- Abstract, conceptual rather than literal — the primary visual personality.
 
 **Dark/Light Section Alternation**
-- The page alternates between Parchment light and Near Black dark sections
-- Creates a reading rhythm like chapters in a book
-- Each section feels like a distinct environment
+- The page alternates Parchment light and Near Black dark sections, creating chapter-like reading rhythm. Each section reads as a distinct environment.
 
 ## 5. Layout Principles
 

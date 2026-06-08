@@ -11,8 +11,9 @@ logo:
 verified: "2026-05-15"
 omd: "0.1"
 tokens:
-  source: prose-derived
+  source: design-system
   extracted: "2026-06-08"
+  components_harvested: true
   colors:
     primary: "#0052ff"
     primary-hover: "#578bfa"
@@ -45,10 +46,30 @@ tokens:
   shadow:
     soft: "minimal — depth from dark/light section contrast, not box-shadow"
   components:
-    button-primary: "Pill CTA, 56px radius, #eef0f3 or #282b31 fill, 1px solid matching border, hover #578bfa"
-    button-blue-bordered: "transparent fill, 1px solid #0052ff border"
-    button-full-pill: "100000px radius for maximum pill shape"
-    card: "8px–40px radius, 1px solid rgba(91,97,110,0.2) border"
+    button-primary: "CDS Button variant=primary. High-emphasis, one per screen. Pill CTA, #0052ff (Blue70) fill, white label, 16px·600. Measured pill radius 100000px / nav-chip 16px. Hover #578bfa"
+    button-secondary: "CDS variant=secondary. Medium emphasis, #eef0f3 (Gray15) fill, #0a0b0d label, 1px solid matching border. Equal-weight multi-action rows"
+    button-tertiary: "CDS variant=tertiary. Low emphasis, muted background, transparent-until-interaction"
+    button-inverse: "CDS variant=inverse. High contrast on dark sections, #282b31 fill, white label"
+    button-negative: "CDS variant=negative. Destructive only, #0a0b0d-on-red, use sparingly"
+    button-transparent: "Transparent modifier — container visibility only on hover/press. Compact / Default / Block sizes; startIcon+endIcon slots"
+    button-blue-bordered: "transparent fill, 1px solid #0052ff border, #0052ff label"
+    icon-button: "Square/round icon-only action, measured 56px hit target, transparent fill"
+    chip: "Pill selectable token, 100000px radius, #eef0f3 fill default / #0052ff fill selected"
+    nav-tab-chip: "Header category chip, 16px radius, 4px 16px padding, 14px CoinbaseSans, #0667d0 link color"
+    text-input: "CDS TextInput. Bordered default 1px solid rgba(91,97,110,0.2); measured 56px height, 16px padding, label outside/inside-float, variant=negative sets aria-invalid + 'Error: …' helper, read-only = secondary bg"
+    search-input: "CDS SearchInput. Borderless inline, 16px CoinbaseSans, leading search icon, #0a0b0d text"
+    switch: "CDS Switch on/off. controlColor → #0052ff when checked, thumb elevation optional"
+    checkbox-radio: "CDS Checkbox/Radio + Cell + Group variants, #0052ff selected fill"
+    segmented-control: "CDS SegmentedControl / SegmentedTabs, pill track, #eef0f3 track / #0052ff active"
+    card: "CDS ContentCard family (Header/Body/Footer). 8px–40px radius, 1px solid rgba(91,97,110,0.2) border, minimal shadow"
+    data-table: "CDS Table (desktop only; Lists View on mobile). Variants default/graph/ruled, required header row, TableCellFallback skeleton, sortable, sticky header"
+    list-cell: "CDS ListCell/ContentCell, leading CellMedia + title/subtitle, mobile substitute for Table"
+    modal: "CDS Modal (Header/Body/Footer). Scrim overlay + FocusTrap, restoreFocusOnUnmount for chains, FullscreenModal + Tray + Alert siblings"
+    toast: "CDS Toast bottom-anchored, auto-dismiss 5s base + close button, variants bgPositive/bgNegative/bgWarning, role=alert"
+    tooltip: "CDS Tooltip + PopoverPanel + Coachmark overlay family"
+    banner: "CDS Banner styles global/inline/contextual, variants informational/warning/error/promotional, startIcon+title+actions, showDismiss"
+    progress: "CDS ProgressCircle/Spinner. Determinate 0–100% / indeterminate fgMuted arc, weights thin 2px / normal 4px / semiheavy 8px / heavy 12px, ProgressBar variants"
+    sparkline: "CDS Sparkline + LineChart + AreaChart, green/red tick flash on live price, #0052ff series accent"
     dark-section: "#0a0b0d background, white text, blue (#0052ff) accent links"
 ---
 
@@ -164,9 +185,82 @@ Minimal shadow system — depth from color contrast between dark/light sections.
 - Don't use the blue decoratively — it's functional only
 - Don't use sharp corners on CTAs — 56px minimum
 
-## 8. Responsive Behavior
+## 8. Component Patterns
 
-Breakpoints: 400px, 576px, 640px, 768px, 896px, 1280px, 1440px, 1600px
+Coinbase open-sourced its design system — **Coinbase Design System (CDS)**, internally codenamed Cedar — at `cds.coinbase.com` and `github.com/coinbase/cds`. It is a cross-platform React / React Native library of 100+ components. The patterns below combine CDS-documented semantics with values measured live from `coinbase.com` (playwright `getComputedStyle`, 2026-06). Color roles map to CDS semantic tokens: `fgPrimary`/`bgPrimary` = Blue70 (`#0052ff`), `fgMuted`/`line` = Gray60 (the `#5b616e` muted role at 20% opacity), `fgInverse`/`bg` = Gray0/white, foreground text = `#0a0b0d`.
+
+### Actions
+
+**button-primary** — CDS `Button` `variant="primary"`. High-emphasis, limit one per screen. Coinbase Blue (`#0052ff`) fill, white label, `16px·600` CoinbaseSans, `+0.16px` tracking. Pill geometry: measured `100000px` radius on full-pill CTAs, `16px` on compact nav chips. Hover lightens to `#578bfa`; focus `2px solid black` outline. Sizes: Compact / Default / Block (fills width). Slots: `startIcon`, `endIcon`. Loading state hides the label and shows an indeterminate ProgressCircle.
+
+**button-secondary** — `variant="secondary"`, medium emphasis for equal-weight actions. Cool-gray (`#eef0f3`) fill, `#0a0b0d` label, `1px solid` matching border.
+
+**button-tertiary / inverse / negative** — Tertiary: low emphasis, muted background, transparent-until-interaction. Inverse: high contrast for dark sections — `#282b31` fill, white label. Negative: destructive-only, used sparingly.
+
+**button-transparent** — modifier on any variant; the container surface only becomes visible on hover/press.
+
+**button-blue-bordered** — transparent fill, `1px solid #0052ff` border, `#0052ff` label. Secondary CTA pairing.
+
+**icon-button** — icon-only `IconButton`. Measured `56px` round hit-target on the homepage utility row, transparent fill.
+
+### Navigation
+
+**top-nav** — sticky `header` containing brand wordmark, category chips, search, and Sign in / Sign up CTAs. Nav category chip measured `16px` radius, `4px 16px` padding, `14px` CoinbaseSans; link text in Link Blue (`#0667d0`).
+
+**tabs** — CDS `Tabs` (the current component; `TabNavigation` is deprecated). Primary and secondary variants, active tab tracked by `value`, underline `TabIndicator`, full W3C tab keyboard pattern with arrow-key wrap-around and overflow arrows.
+
+**segmented-tabs / SegmentedControl** — pill track, `#eef0f3` track surface with `#0052ff` active segment. Used for time-range and view switches.
+
+**stepper / pagination** — `Stepper` for multi-step flows (mirrors the Submitted → Confirming → Confirmed transaction pattern), `Pagination` for paged tables.
+
+### Forms
+
+**text-input** — CDS `TextInput`. Bordered by default (`1px solid` at the `#5b616e`-derived line color, 20% opacity); measured `56px` height, `16px` padding, CoinbaseSans `16px`. Label `outside` (above) or `inside` (floats when unfocused). `variant="negative"` auto-sets `aria-invalid="true"` and expects `"Error: …"` helper text; `variant="positive"` for validated values. Read-only inputs take a secondary background and remain focusable; disabled inputs are visually distinct.
+
+**search-input** — CDS `SearchInput`, borderless inline with a leading search glyph, `#0a0b0d` text.
+
+**switch** — CDS `Switch` on/off toggle. `controlColor` resolves to `#0052ff` when checked; optional thumb elevation/shadow.
+
+**checkbox / radio** — `Checkbox` and `Radio` with `Cell` and `Group` wrappers; selected state fills Coinbase Blue (`#0052ff`).
+
+### Data display
+
+**card** — CDS `ContentCard` family (`Header` / `Body` / `Footer`), plus `DataCard`, `MediaCard`, `NudgeCard`, `UpsellCard`. Radius `8px–40px`, `1px solid rgba(91,97,110,0.2)` border, depth from section contrast rather than box-shadow.
+
+**data-table** — CDS `Table`, explicitly desktop-only (mobile falls back to Lists View). Variants: default / graph (grid lines) / ruled (horizontal lines). Requires a header row; supports sortable headers, row/column spans, sticky header, and `TableCellFallback` skeleton rows.
+
+**list-cell** — `ListCell` / `ContentCell` with leading `CellMedia` (asset logo) + title/subtitle; the mobile substitute for tables and the basis of asset rows.
+
+**sparkline / charts** — `Sparkline`, `LineChart`, `AreaChart`, `BarChart`, `PercentageBarChart` with `XAxis`/`YAxis`/`Scrubber`. Series accent Coinbase Blue (`#0052ff`); live price ticks flash green/red on the cell (disabled under `prefers-reduced-motion`).
+
+### Overlays
+
+**modal** — CDS `Modal` with `ModalHeader` / `ModalBody` / `ModalFooter`. Scrim overlay + `FocusTrap`; `visible` + `onRequestClose` control; `restoreFocusOnUnmount={false}` for chained modals. Siblings: `FullscreenModal`, `Tray` (bottom sheet), `Alert`, `FullscreenAlert`.
+
+**toast** — CDS `Toast`, bottom-anchored (`bottomOffset` clears bottom nav). Auto-dismiss = 5s base + content/action adjustments, plus a default close button; variants `bgPositive` / `bgNegative` / `bgWarning` surge the background; `role="alert"`, persists on hover.
+
+**tooltip / popover** — `Tooltip`, `PopoverPanel`, and `Coachmark` for contextual hints and first-run tours.
+
+### Feedback & status
+
+**banner** — CDS `Banner` in `global` / `inline` / `contextual` styles, variants informational / warning / error / promotional. Slots: `startIcon`, `title`, `children`, `primaryAction`, `secondaryAction`, optional `showDismiss`. Global banners avoid custom radius to stay flush with the status bar.
+
+**progress** — `ProgressCircle` (determinate 0–100% with % overlay, or indeterminate `fgMuted` arc) with stroke weights thin `2px` / normal `4px` / semiheavy `8px` / heavy `12px`; plus `ProgressBar` (fixed and floating label variants) and `Spinner`.
+
+## Responsive Behavior
+
+| Breakpoint | px | Notes |
+|---|---|---|
+| xs | 400 | Smallest phone |
+| sm | 576 | Phone landscape |
+| md | 640 | Large phone / small tablet |
+| lg | 768 | Tablet |
+| xl | 896 | Tablet landscape |
+| xxl | 1280 | Desktop |
+| 3xl | 1440 | Wide desktop |
+| 4xl | 1600 | Max content width |
+
+Measured live viewport 1440px. `Table` is desktop-only and swaps to `ListCell` / Lists View below tablet; `Tray` (bottom sheet) replaces `Modal` on small screens.
 
 ## 9. Agent Prompt Guide
 
@@ -252,8 +346,8 @@ Easings: standard cubic-bezier; no bounce. **Live price updates** flash green/re
 
 ---
 
-**Verified:** 2026-05-08 (B2 loop)
-**Tier 1 sources:** coinbase.com (live DOM via playwright — round 56px icon buttons; Sign up `#0052ff` 56px / 16px·600 / 47-60px height)
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Verified:** 2026-06-08 (component harvest — TIER 1)
+**Tier 1 sources:** coinbase.com (live DOM via playwright across /, /explore, /about — round 56px icon buttons; nav chip 16px radius 4px·16px; input 56px·16px pad; pill 100000px; link `#0667d0`; surface `#eef0f3`). Coinbase Design System (CDS / "Cedar") — cds.coinbase.com + github.com/coinbase/cds: component inventory (100+ across Layout/Inputs/Cards/Data Display/Feedback/Overlay/Navigation/Charts) and per-component specs (Button variants/sizes/states, TextInput, Banner, Modal, Toast, ProgressCircle, Table, Switch).
+**Tier 2 sources:** styles.refero.design — no record. getdesign.md/coinbase — cross-checked.
 **Tier 1 (Philosophy):** coinbase.com homepage; Brian Armstrong public talks; SEC public filings.
 **Style ref:** `stripe`. **Conflicts unresolved:** none.

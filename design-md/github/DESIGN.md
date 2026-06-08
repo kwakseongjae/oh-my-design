@@ -11,6 +11,97 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: design-system
+  extracted: "2026-06-08"
+  components_harvested: true
+  note: "Grounded in Primer (primer.style public DS) functional + base tokens, cross-checked against live github.com computed styles (dark-default canvas #0d1117, green primary #1f883d, 6px radius, 32px control height). primary = fgColor-accent #0969da."
+  colors:
+    primary: "#0969da"
+    primary-dark: "#4493f8"
+    accent-subtle: "#ddf4ff"
+    success: "#1f883d"
+    success-hover: "#1a7f37"
+    success-subtle: "#dafbe1"
+    danger: "#cf222e"
+    danger-subtle: "#ffebe9"
+    attention: "#9a6700"
+    attention-emphasis: "#bf8700"
+    attention-subtle: "#fff8c5"
+    done: "#8250df"
+    done-subtle: "#fbefff"
+    sponsors: "#bf3989"
+    canvas: "#ffffff"
+    canvas-inset: "#f6f8fa"
+    canvas-dark: "#0d1117"
+    canvas-dark-inset: "#010409"
+    canvas-dark-subtle: "#161b22"
+    heading: "#1f2328"
+    muted: "#59636e"
+    subtle: "#818b98"
+    on-emphasis: "#ffffff"
+    text-dark: "#e6edf3"
+    muted-dark: "#9198a1"
+    border: "#d1d9e0"
+    border-muted: "#d8dee4"
+    border-dark: "#30363d"
+    tab-active: "#fd8c73"
+  typography:
+    family: { ui: "-apple-system, BlinkMacSystemFont, Segoe UI, Noto Sans, Helvetica, Arial, sans-serif", mono: "ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace", marketing: "Mona Sans, Hubot Sans" }
+    page-title:  { size: 32, weight: 600, lineHeight: 1.25, use: "Repo/profile name, page title" }
+    h1:          { size: 24, weight: 600, lineHeight: 1.25, use: "Section titles, settings headers" }
+    h2:          { size: 20, weight: 600, lineHeight: 1.25, use: "Card headers, sub-sections" }
+    h3:          { size: 16, weight: 600, lineHeight: 1.25, use: "List group headers, dialog titles" }
+    body:        { size: 14, weight: 400, lineHeight: 1.5, use: "The GitHub baseline — most UI text" }
+    body-strong: { size: 14, weight: 600, lineHeight: 1.5, use: "File names, author names, emphasized labels" }
+    small:       { size: 12, weight: 400, lineHeight: 1.4, use: "Metadata, timestamps, counts, badges" }
+    code:        { size: 13, weight: 400, lineHeight: 1.45, use: "Mono — code, SHAs, paths, inline code" }
+  spacing: { xs: 4, sm: 8, base: 16, lg: 24, xl: 32, xxl: 40, xxxl: 48 }
+  rounded: { small: 3, medium: 6, large: 12, full: 9999 }
+  shadow:
+    small: "0 1px 0 rgba(31,35,40,0.04)"
+    medium: "0 3px 6px rgba(140,149,159,0.15)"
+    large: "0 8px 24px rgba(31,35,40,0.2)"
+    xlarge: "0 12px 28px rgba(31,35,40,0.3)"
+    focus: "0 0 0 3px rgba(9,105,218,0.3)"
+  components:
+    button-primary: "green #1f883d fill, white text, 6px radius, 32px height, 0 16px pad, 14px/600; hover #1a7f37 — the commit/create/merge action"
+    button-default: "#f6f8fa fill, #1f2328 text, 1px #d1d9e0 border, 6px radius, 32px height; the common neutral button"
+    button-danger: "white fill, #cf222e text + border, hover flips to #cf222e fill/white text; destructive"
+    button-invisible: "transparent, #0969da or #1f2328 text, no border, 6px radius, hover bg #f6f8fa; tertiary/icon"
+    icon-button: "square 28/32/40px, 6px radius, transparent, #59636e icon, hover bg #f6f8fa"
+    button-sizes: "small 28px/12px, medium 32px/14px, large 40px/14px; radius 6px all"
+    text-input: "white bg, 1px #d1d9e0 border, 6px radius, 5px 12px pad, 14px; focus #0969da border + 3px ring"
+    select: "native-styled, white bg, 1px #d1d9e0 border, 6px radius, trailing chevron #59636e"
+    checkbox: "16px, 3px radius (small), checked #0969da fill white check; focus 3px blue ring"
+    radio: "16px circle, checked #0969da ring+dot; focus 3px blue ring"
+    toggle-switch: "pill (full), on #1f883d, off #818b98, white thumb; 32px track"
+    box: "white bg, 1px #d1d9e0 border, 6px radius, NO shadow, 16px pad; optional #f6f8fa header"
+    label: "pill (full), tinted bg from hue at low alpha + saturated text (#0969da on #ddf4ff), 12px/500, 0 7px pad ~20px"
+    counter-label: "neutral pill rgba(175,184,193,0.2) bg, #1f2328 text, 12px tabular; star/tab counts"
+    state-label: "pill, open #1f883d / merged #8250df / closed #cf222e / draft #59636e fill, white text, leading icon, 4px 12px"
+    token: "removable pill, #f6f8fa bg, 1px #d1d9e0 border, full radius, trailing x; assignees/topics"
+    avatar: "circle (people) / 6px square (orgs+bots), 16-64px base-4 then base-8, default 20px"
+    avatar-stack: "overlapping circles, -8px overlap, white ring between"
+    action-list: "vertical items, 16px row pad, hover bg #f6f8fa, selected #ddf4ff + #0969da text, leading/trailing visuals, group headings, dividers"
+    action-menu: "ActionList in an Overlay popover, medium shadow 0 8px 24px"
+    underline-nav: "1px bottom border #d1d9e0, active 2px #fd8c73 indicator + 600 weight, counter pills; Code/Issues/PR tabs"
+    segmented-control: "grouped button row, #f6f8fa track, selected white seg + 1px #d1d9e0 + small shadow, 28/32px"
+    breadcrumbs: "inline #0969da links, #59636e slash separators, last crumb #1f2328 no-link"
+    pagination: "numbered #0969da links, current #0969da fill white, 6px radius, prev/next chevrons"
+    tree-view: "indented file tree, 8px indent steps, hover bg #f6f8fa, selected #ddf4ff, chevron disclosure"
+    dialog: "white bg, 1px #d1d9e0 border, 12px radius, 0 8px 24px shadow, rgba(31,35,40,0.5) scrim, 16px header w/ border"
+    overlay: "floating surface, white bg, 1px #d1d9e0 border, 6-12px radius, medium/large shadow; popover/menu base"
+    tooltip: "dark #1f2328 bubble, white 12px text, 6px radius, ~6px 12px pad, small arrow"
+    banner: "info #ddf4ff / success #dafbe1 / warning #fff8c5 / critical #ffebe9, 1px hue border, 6px radius, 16px pad, leading icon + optional dismiss"
+    flash: "page-level banner, same tone set as banner, full-width, leading status icon"
+    inline-message: "compact single-line status, leading icon, tone-colored text (#1a7f37 / #9a6700 / #cf222e)"
+    spinner: "circular indeterminate, 1.5px stroke, #59636e, 16/24/32/48px"
+    progress-bar: "rounded full track #d1d9e0, #1f883d fill, 8px height default"
+    skeleton: "shimmer blocks #f6f8fa (light) / #161b22 (dark) at final geometry"
+    blankslate: "centered empty state — icon visual, #1f2328 heading, #59636e description, green primary action + secondary link; narrow/spacious/border variants"
+    timeline: "vertical thread w/ #d1d9e0 rail, badge nodes, avatar + event rows; issue/PR activity"
+    branch-name: "mono #0969da text, #ddf4ff bg, 6px radius, 0 6px pad; inline branch reference"
 ---
 
 # Design System Inspiration of GitHub
@@ -346,15 +437,117 @@ Primer calls these **Box**. They are border-first, shadow-rarely.
 - Don't exceed 6px radius on buttons/inputs — GitHub is engineering-precise, not friendly-rounded
 - Don't forget the dark theme — shipping light-only is incomplete by GitHub's standard
 
-## 8. Responsive Behavior
+## 8. Component Patterns
+
+This section catalogs GitHub's component vocabulary as documented in **Primer** (primer.style — the public design system) and verified against live github.com computed styles. All Primer radius tokens are exact: `small` 3px, `medium` 6px, `large` 12px, `full` 9999px. Control heights are `small` 28px, `medium` 32px (default), `large` 40px. Border widths: `thin`/`default` 1px, `thick` 2px, `thicker` 4px. Values below are light-theme; dark-theme swaps to the `#0d1117` / `#161b22` / `#30363d` token set from §2.
+
+### Actions
+
+**button-primary** — The constructive action. Green `#1f883d` fill, `#ffffff` text, 1px `rgba(31,35,40,0.15)` border, 6px radius, 32px height, `0 16px` padding, 14px / 600. Hover `#1a7f37`, active `#187733`, disabled `#94d3a2`. Only one per group ("Create repository", "Commit changes", "Merge pull request"). Never blue.
+
+**button-default** — The most common button. `#f6f8fa` fill, `#1f2328` text, 1px `#d1d9e0` border, 6px radius, 32px height, 14px / 600. Hover `#eef1f4`. Used for "Cancel", "Edit", secondary actions. (Live github.com renders these at 5px 16px padding, 14px / 500.)
+
+**button-danger** — Destructive, kept quiet until committed. `#ffffff` fill, `#cf222e` text, 1px `#d1d9e0` border, 6px radius. Hover flips to `#cf222e` fill + `#ffffff` text + `#cf222e` border. "Delete repository", "Remove member" — usually behind a confirmation dialog.
+
+**button-invisible** — Borderless tertiary action. Transparent fill, `#0969da` (or `#1f2328` neutral) text, no border, 6px radius. Hover bg `#f6f8fa`. Overflow "…" triggers, in-row controls, minimal compound-component chrome.
+
+**icon-button** — Square icon-only control, 28 / 32 / 40px to match button sizes, 6px radius, transparent fill, `#59636e` icon. Hover bg `#f6f8fa`. Minimum 32×32px hit area. The "…" menu trigger, copy buttons, the bell.
+
+**button-group / counter-button** — Adjacent buttons sharing a 1px divider with split outer radius (6px outer corners, 0 inner). The Star · 1.2k pattern: a default button welded to a `counter-label` pill, dividing line `#d1d9e0`.
+
+### Navigation
+
+**underline-nav** — Primer's primary tab pattern (Code · Issues · Pull requests · Actions; profile tabs). Container 1px bottom border `#d1d9e0`; inactive text `#1f2328` 400 with hover bg `#f6f8fa`; active text 600 weight + a 2px bottom border in GitHub's signature orange `#fd8c73`. Each tab may carry a neutral `counter-label` pill.
+
+**segmented-control** — Pick one of a small linear set, applied immediately. Grouped row on a `#f6f8fa` track; the selected segment renders as a raised white panel with 1px `#d1d9e0` border + small shadow. Sizes `small` 28px / `medium` 32px. Segments take text, leading icon, or are icon-only. Responsively collapses to `dropdown` or `hideLabels` in tight space.
+
+**breadcrumbs** — Inline path trail. `#0969da` links separated by `#59636e` "/" glyphs; the final (current) crumb is `#1f2328` and not a link. Repo file-path navigation.
+
+**pagination** — Numbered `#0969da` links with prev/next chevrons; the current page is a solid `#0969da` fill with `#ffffff` text, 6px radius. Used under long issue/commit lists.
+
+**tree-view** — The file/symbol tree. Indented rows with 8px-step indentation, a chevron disclosure on folders, hover bg `#f6f8fa`, selected row bg `#ddf4ff`. Keyboard-navigable; the repo file explorer and the code-navigation sidebar.
+
+**nav-list** — Vertical settings/section navigation (left rail in Settings). ActionList-derived; items with leading icons, selected item gets `#ddf4ff` bg + `#0969da` text, supports nested sub-items.
+
+### Forms
+
+**text-input** — `#ffffff` bg, 1px `#d1d9e0` border, 6px radius, 5px 12px padding (~32px height), 14px / 400, placeholder `#818b98`. Focus: border `#0969da` + box-shadow `0 0 0 3px rgba(9,105,218,0.3)` — the signature GitHub focus ring. Error variant: 1px `#cf222e` border + `rgba(207,34,46,0.3)` ring + `#cf222e` 12px help text.
+
+**select** — Native-backed dropdown styled as a default input: `#ffffff` bg, 1px `#d1d9e0` border, 6px radius, trailing chevron `#59636e`. Shares the focus ring.
+
+**checkbox** — 16px box, 3px (small) radius, unchecked 1px `#d1d9e0` border on white; checked `#0969da` fill with white check glyph. 3px blue focus ring. Indeterminate shows a dash.
+
+**radio** — 16px circle, unchecked 1px `#d1d9e0`; checked `#0969da` ring with filled `#0969da` dot. Same focus ring. Used in mutually-exclusive option groups.
+
+**toggle-switch** — Settings boolean. Pill track (full radius), on `#1f883d` (success green, matching action semantics), off `#818b98`, white thumb with subtle shadow. ~32px track.
+
+**autocomplete / text-input-with-tokens** — A text input that holds removable `token` pills inline (assignees, labels, topics). Typing filters an attached ActionList overlay; chosen values become tokens.
+
+### Data display
+
+**box** — Primer's canonical container (border-first, shadow-rarely). `#ffffff` bg, 1px `#d1d9e0` border, 6px radius, **no shadow**, 16px body padding. Optional header: `#f6f8fa` bg + 1px bottom border. Repo rows, settings panels. A 12px-radius variant exists for profile/marketing-adjacent cards.
+
+**avatar** — Circular for people (the rule), 6px-radius square for non-human entities (orgs, teams, bots, AI agents). Sizes step 16 → 32px by base-4, then 32 → 48px by base-8, with 64px the largest; default 20px.
+
+**avatar-stack** — Overlapping circular avatars (~-8px overlap) with a thin white ring separating each, collapsing a contributor list into a compact cluster.
+
+**data-table** — Dense tabular data. `#f6f8fa` header row, 1px `#d1d9e0` row dividers, 14px body, hover row bg `#f6f8fa`. Borders (not whitespace) do the separating — keeps high-density tables scannable.
+
+**label** — Issue/PR tag. Background tinted from the label's own hue at low alpha (e.g. `#ddf4ff`), text the saturated hue (`#0969da`), 1px same-hue border, **full pill** radius, 0 7px padding (~20px), 12px / 500. Ten color schemes (default, primary, accent, success, attention, severe, danger, done, sponsors).
+
+**counter-label** — Numeric pill. `rgba(175,184,193,0.2)` neutral bg, `#1f2328` text, full radius, 0 6px padding, 12px tabular. Tab counts, notification counts, star counts.
+
+**state-label** — The large status pill atop an issue/PR. Solid fill by state: open `#1f883d`, merged `#8250df`, closed (unmerged) `#cf222e`, draft `#59636e`; `#ffffff` text, full radius, 4px 12px padding, leading state icon.
+
+**token** — Removable chip: `#f6f8fa` bg, 1px `#d1d9e0` border, full radius, trailing "x". Selected assignees, topics, applied labels.
+
+**branch-name** — Inline branch/ref reference: monospace `#0969da` text on `#ddf4ff` bg, 6px radius, 0 6px padding.
+
+**timeline** — The issue/PR activity thread. A vertical `#d1d9e0` rail with badge nodes (commit, comment, label, merge events) and avatar-led rows. The merge event renders with the `#8250df` done purple.
+
+### Overlays
+
+**overlay** — The floating-surface primitive: `#ffffff` bg, 1px `#d1d9e0` border, 6–12px radius, medium/large shadow. Base for menus, popovers, dialogs. Sized xsmall 192px → xlarge 960px by content.
+
+**action-list** — Vertical list of actions/options inside menus and panels. ~16px row padding, hover bg `#f6f8fa`, selected item `#ddf4ff` bg + `#0969da` text. Supports leading/trailing visuals, inline descriptions, group headings (filled or subtle), dividers, danger items, and loading rows. Sizes medium/large.
+
+**action-menu** — An `action-list` rendered in an `overlay` popover, opened from a button or icon-button. Medium shadow `0 3px 6px rgba(140,149,159,0.15)` to large `0 8px 24px rgba(31,35,40,0.2)`. The "…" overflow and dropdown menus.
+
+**dialog** — Modal. `#ffffff` bg, 1px `#d1d9e0` border, **12px radius**, shadow `0 8px 24px rgba(31,35,40,0.2)`, scrim `rgba(31,35,40,0.5)`. Header 16px padding + 1px bottom border, title 16px / 600. Confirmation prompts, create-from-template, delete confirmation.
+
+**tooltip** — Dark `#1f2328` bubble, `#ffffff` 12px text, 6px radius, ~6px 12px padding, small directional arrow. Short, on hover/focus, for icon-button labels and truncated text.
+
+**popover** — A non-modal pointed overlay (with a caret) anchoring tips, onboarding hints, or rich previews to a trigger; `#ffffff` bg, 1px `#d1d9e0` border, 6px radius, medium shadow.
+
+### Feedback & Status
+
+**banner** — In-context message block. Variants info `#ddf4ff` / success `#dafbe1` / warning `#fff8c5` / critical `#ffebe9` (+ upsell), each with a 1px hue border at ~0.4 alpha, 6px radius, 16px padding, leading status icon, optional title/description/actions and a dismiss "x". Compact (reduced padding) and flush (full-width, for dialogs/tables) layouts.
+
+**flash** — The page-level banner (Primer's classic Flash). Same tone set as banner, spans the content width at page top, leading status icon. "Repository created." persists until navigation rather than auto-dismissing.
+
+**inline-message** — Compact single-line status beside a control or field: leading icon + tone-colored text (success `#1a7f37`, attention `#9a6700`, danger `#cf222e`). Validation hints, save confirmations.
+
+**spinner** — Indeterminate circular loader, thin (~1.5px) `#59636e` stroke, sizes 16 / 24 / 32 / 48px. Replaces a button label during long ops ("Merging…").
+
+**progress-bar** — Rounded full track `#d1d9e0` with a `#1f883d` fill, ~8px height default. Language-breakdown bars, upload/operation progress.
+
+**skeleton** (SkeletonBox / SkeletonText / SkeletonAvatar) — Loading placeholders at the final element geometry: `#f6f8fa` (light) / `#161b22` (dark) blocks with a subtle shimmer. SHAs and counts render as skeleton bars, never placeholder values.
+
+**blankslate** — The empty state. Centered: an icon/illustration visual, a `#1f2328` heading, a `#59636e` description, a green primary action and an optional secondary link ("There aren't any issues yet." + "New issue"). Variants: narrow, spacious, and bordered. Often carries a rationed Octocat illustration.
+
+## Responsive Behavior
+
+Primer's responsive system is documented in the public DS and drives github.com's layout. Six breakpoints; the repo/detail layouts collapse a two-column main-plus-rail into a single stacked column.
 
 ### Breakpoints (Primer)
 | Name | Width | Key Changes |
 |------|-------|-------------|
+| XSmall (`xs`) | ≥320px | Base mobile, fully stacked, hamburger nav |
 | Small (`sm`) | ≥544px | Single-column, stacked metadata |
 | Medium (`md`) | ≥768px | Two-column begins, sidebar appears |
-| Large (`lg`) | ≥1012px | Full repo layout, right rail visible |
-| XLarge (`xl`) | ≥1280px | Max content width, wide gutters |
+| Large (`lg`) | ≥1012px | Full repo layout, right rail visible, `container-lg` reading width |
+| XLarge (`xl`) | ≥1280px | Max content width `container-xl`, wide gutters |
+| XXLarge (`xxl`) | ≥1400px | Widest gutters for ultra-wide displays |
 
 ### Touch & Targets
 - Minimum interactive target: 28px (small button); default 32px; comfortable 40px
@@ -363,13 +556,15 @@ Primer calls these **Box**. They are border-first, shadow-rarely.
 
 ### Collapsing Strategy
 - Right metadata rail (About, topics, contributors) drops **below** the main column under `md`
-- Repo tab bar becomes horizontally scrollable on narrow screens
-- File tree collapses to a toggle-drawer on mobile
+- Repo tab bar (`underline-nav`) becomes horizontally scrollable on narrow screens
+- File tree (`tree-view`) collapses to a toggle-drawer on mobile
+- `segmented-control` collapses to its `dropdown` / `hideLabels` responsive variant in tight space
 - Two-pane diff (side-by-side) collapses to **unified diff** on narrow viewports
 - Top nav collapses to a hamburger; global search becomes an icon-triggered overlay
+- `banner` / `flash` actions reflow from inline to stacked under `sm`
 
 ### Image & Avatar Behavior
-- Avatars: always circular, sized 16/20/24/32/48/64px by context
+- Avatars: circular (people) or 6px square (orgs/bots), sized 16/20/24/32/48/64px by context
 - Repo social-preview images: 16:9, full-width within their container
 - Markdown-rendered images: max-width 100%, never overflow the prose column
 

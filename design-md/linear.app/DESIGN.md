@@ -19,7 +19,8 @@ ds:
 tokens:
   source: reconciled
   extracted: "2026-06-08"
-  note: "freq×sat picked link color #828fff; CSS var --color-brand-bg=#5e6ad2 is the canonical primary"
+  components_harvested: true
+  note: "freq×sat picked link color #828fff; CSS var --color-brand-bg=#5e6ad2 is the canonical primary. TIER 2 multi-route harvest (home/pricing/customers/now) 2026-06-09 — no public DS; app behind auth."
   colors:
     primary: "#5e6ad2"
     accent: "#7170ff"
@@ -48,9 +49,20 @@ tokens:
     subtle: "rgba(0,0,0,0.03) 0px 1.2px 0px"
     inset: "rgba(0,0,0,0.2) 0px 0px 12px 0px inset"
   components:
-    button-primary: "Brand Indigo #5e6ad2 fill, white text, 8px radius"
-    button-ghost: "transparent, subtle hover surface"
-    card: "rgba(255,255,255,0.05) surface, 1px translucent border, 8px radius"
+    primary-cta: "#e5e5e6 fill, #08090a text, 9999px pill, 32px nav / 44px hero, layered drop shadow"
+    secondary-cta: "rgba(255,255,255,0.05) bg, #f7f8f8 text, 9999px, 40-44px, inset+ring shadow"
+    brand-cta-lime: "#e4f222 fill, #08090a text, 6-8px radius, Inter 590 15px — loudest marketing accent"
+    brand-fill-button: "#5e6ad2 brand indigo fill, white text, hover #828fff (inferred / skip-link)"
+    ghost-button: "rgba(255,255,255,0.02) bg, #e2e4e7 text, 1px solid #24282c, 6px radius"
+    nav-link: "13px/400, #8a8f98 idle → #f7f8f8 active, 9999px hit-area, 0×12, 32px"
+    dropdown-popover: "#101112 bg, 12px radius, 1px solid rgba(255,255,255,0.08); submenu #161718 / 8px"
+    search-input: "#141516 bg, #8a8f98 placeholder, 9999px, 40px, inset+ring shadow"
+    filter-pill: "transparent, #d0d6e0 text, 1px solid #23252a, 9999px, 26px, 12px/510"
+    pagination-button: "rgba(255,255,255,0.05), #f7f8f8, 9999px, 40px, 15px/510 (Load more)"
+    card: "rgba(255,255,255,0.02-0.05) translucent surface, 1px rgba(255,255,255,0.08) border, 8/12/22px radius"
+    default-card-refero: "#0f1011 panel surface, 6px radius (Refero)"
+    command-palette: "#191a1b bg, 12px radius, rgba(255,255,255,0.08) border, dialog shadow stack, rgba(0,0,0,0.85) backdrop"
+    filter-pill-success: "#10b981 success pill / status dot, #f7f8f8 text, 50% or 9999px, 10px/510"
 ---
 
 # Design System Inspiration of Linear
@@ -163,105 +175,166 @@ The color system is almost entirely achromatic — dark backgrounds with white/g
 - **OpenType as identity**: `"cv01", "ss03"` aren't decorative — they transform Inter into Linear's distinctive typeface, giving it a more geometric, purposeful character.
 - **Three-tier weight system**: 400 (reading), 510 (emphasis/UI), 590 (strong emphasis). The 300 weight appears only in deliberately de-emphasized contexts.
 
-## 4. Component Stylings
+## 4. Component Patterns
 
-### Buttons
+Specs below are grouped by function. Unless marked *(Inferred)* or *(Refero)*, every value was measured via `getComputedStyle` on a live route (`linear.app` home, `/pricing`, `/customers`, `/now`) on 2026-06-09. Heights are rendered `getBoundingClientRect` values; colors are the computed paint converted to hex.
 
-**Ghost Button (Default)**
-- Background: `rgba(255,255,255,0.02)`
-- Text: `#e2e4e7` (near-white)
-- Padding: comfortable
-- Radius: 6px
-- Border: `1px solid rgb(36, 40, 44)`
-- Outline: none
-- Focus shadow: `rgba(0,0,0,0.1) 0px 4px 12px`
-- Use: Standard actions, secondary CTAs
+### Actions
 
-**Subtle Button**
-- Background: `rgba(255,255,255,0.04)`
-- Text: `#d0d6e0` (silver-gray)
-- Padding: 0px 6px
-- Radius: 6px
-- Use: Toolbar actions, contextual buttons
+**primary cta (Sign up / Open app)**
+- Background: `#e5e5e6` (light neutral — the dark-page primary)
+- Text: `#08090a` (near-black)
+- Border: `1px solid #e5e5e6`
+- Radius: 9999px (full pill)
+- Height: 32px (nav) / 44px hero variant (16px text, 0px 20px padding)
+- Padding: 0px 12px (nav) → 0px 20px (hero)
+- Font: 13px weight 510 (nav) / 16px weight 510 (hero)
+- Shadow: layered drop stack `rgba(0,0,0,0.08) 0px 0px 1px, rgba(0,0,0,0.07) 0px 1px 1px, rgba(0,0,0,0.04) 0px 3px 2px, rgba(0,0,0,0.01) 0px 5px 2px`
+- Use: Highest-priority CTA on dark surfaces ("Sign up", "Open app", "Get started")
 
-**Primary Brand Button (Inferred)**
-- Background: `#5e6ad2` (brand indigo)
+**secondary cta (Get started / Contact sales / Download)**
+- Background: `rgba(255,255,255,0.05)`
+- Text: `#f7f8f8`
+- Radius: 9999px (full pill)
+- Height: 40px (pricing) / 44px (hero); padding 0px 14px → 0px 20px
+- Font: 13–16px weight 510
+- Shadow: inset hairline + ring `rgba(255,255,255,0.03) 0px 0px 0px 1px inset, rgba(255,255,255,0.04) 0px 1px 0px 0px inset, rgba(0,0,0,0.6) 0px 0px 0px 1px, rgba(0,0,0,0.1) 0px 4px 4px`
+- Use: Paired alternative beside the primary CTA — "Contact sales" next to "Get started"
+
+**brand cta (Lime "Build now")** *(Refero + live banner)*
+- Background: `#e4f222` (signature lime)
+- Text: `#08090a`
+- Radius: 6px (Refero) / 8px (live banner block, 24px 32px padding)
+- Font: Inter Variable 15px weight 590
+- Use: High-emphasis marketing conversion banner — Linear's loudest single accent
+
+**brand fill button** *(Inferred)*
+- Background: `#5e6ad2` (brand indigo) — measured live only on the visually-hidden "Skip to content" control (`#5e6ad2` fill, white text, 0px 16px, 32px, 14px/510)
 - Text: `#ffffff`
-- Padding: 8px 16px
-- Radius: 6px
 - Hover: `#828fff` shift
-- Use: Primary CTAs ("Start building", "Sign up")
+- Use: Brand-accent fills; in marketing chrome the indigo is reserved, surfacing on the skip-link and in-product accents rather than primary page CTAs
 
-**Icon Button (Circle)**
-- Background: `rgba(255,255,255,0.03)` or `rgba(255,255,255,0.05)`
-- Text: `#f7f8f8` or `#ffffff`
+**ghost button** *(Inferred)*
+- Background: `rgba(255,255,255,0.02)`
+- Text: `#e2e4e7`
+- Radius: 6px
+- Border: `1px solid #24282c`
+- Focus shadow: `rgba(0,0,0,0.1) 0px 4px 12px`
+- Use: Tertiary actions, low-emphasis secondary CTAs
+
+**inline chip button (toolbar)**
+- Background: `rgba(255,255,255,0.04)`
+- Text: `#d0d6e0`
+- Radius: 6px
+- Height: 28px; padding 0px 6px
+- Font: 13px weight 510
+- Use: In-product contextual labels surfaced in marketing ("Faster app launch")
+
+**icon button (circle)** *(Inferred)*
+- Background: `rgba(255,255,255,0.03)` → `rgba(255,255,255,0.05)`
+- Text: `#f7f8f8`
 - Radius: 50%
 - Border: `1px solid rgba(255,255,255,0.08)`
 - Use: Close, menu toggle, icon-only actions
 
-**Pill Button**
-- Background: transparent
-- Text: `#d0d6e0`
-- Padding: 0px 10px 0px 5px
-- Radius: 9999px
-- Border: `1px solid rgb(35, 37, 42)`
-- Use: Filter chips, tags, status indicators
+### Navigation
 
-**Small Toolbar Button**
-- Background: `rgba(255,255,255,0.05)`
-- Text: `#62666d` (muted)
-- Radius: 2px
-- Border: `1px solid rgba(255,255,255,0.05)`
-- Shadow: `rgba(0,0,0,0.03) 0px 1.2px 0px 0px`
-- Font: 12px weight 510
-- Use: Toolbar actions, quick-access controls
+**top nav bar**
+- Background: transparent over near-black; sticky; 73px tall
+- Logomark left-aligned (SVG, 4px radius hit-area, 28px)
+- Links: Inter Variable 13px weight 400, idle `#8a8f98`, active/hover lightens to `#f7f8f8`
+- Link hit-area: 9999px radius, 0px 12px padding, 32px height
+- Right cluster: "Log in" ghost text + "Sign up" primary pill
+- Mobile: hamburger collapse at 768px
 
-### Cards & Containers
-- Background: `rgba(255,255,255,0.02)` to `rgba(255,255,255,0.05)` (never solid — always translucent)
-- Border: `1px solid rgba(255,255,255,0.08)` (standard) or `1px solid rgba(255,255,255,0.05)` (subtle)
-- Radius: 8px (standard), 12px (featured), 22px (large panels)
-- Shadow: `rgba(0,0,0,0.2) 0px 0px 0px 1px` or layered multi-shadow stacks
-- Hover: subtle background opacity increase
+**mega-menu / dropdown popover**
+- Background: `#101112` (one luminance step up from panel)
+- Radius: 12px
+- Border: `1px solid rgba(255,255,255,0.08)`
+- Nested submenu: `#161718` background, 8px radius, `1px solid rgba(255,255,255,0.05)` border
+- Use: "Product" / "Resources" navigation flyouts
 
-### Inputs & Forms
+**footer**
+- Background: `#08090a` (marketing black)
+- Top divider: `1px solid #23252a`
+- Multi-column link layout; link text in `#8a8f98`, hover `#f7f8f8`
 
-**Text Area**
+### Forms
+
+**search input**
+- Background: `#141516` (line tint)
+- Text / placeholder: `#8a8f98`
+- Radius: 9999px (rendered as 100px pill)
+- Height: 40px; padding 0px 16px
+- Font: 14px weight 400
+- Shadow: same inset+ring stack as the secondary CTA (`rgba(255,255,255,0.03) 0px 0px 0px 1px inset … rgba(0,0,0,0.1) 0px 4px 4px`)
+- Use: Changelog / docs search field; in-app, the same affordance triggers the `Cmd+K` command palette
+
+**text area** *(Inferred)*
 - Background: `rgba(255,255,255,0.02)`
 - Text: `#d0d6e0`
 - Border: `1px solid rgba(255,255,255,0.08)`
 - Padding: 12px 14px
 - Radius: 6px
 
-**Search Input**
+### Data display
+
+**card / container**
+- Background: `rgba(255,255,255,0.02)` → `rgba(255,255,255,0.05)` (never solid — always translucent)
+- Border: `1px solid rgba(255,255,255,0.08)` (standard) or `1px solid rgba(255,255,255,0.05)` (subtle)
+- Radius: 8px (standard), 12px (featured), 22px (large panels)
+- Shadow: `rgba(0,0,0,0.2) 0px 0px 0px 1px` (ring) or layered multi-shadow stacks
+- Hover: subtle background-opacity increase
+
+**default card** *(Refero)*
+- Background: `#0f1011` (panel dark)
+- Radius: 6px
+- Use: Refero-captured in-product card surface
+
+**product screenshot frame**
+- Border: `1px solid rgba(255,255,255,0.08)` on dark
+- Top-rounded variant: `12px 12px 0px 0px` radius
+- Shadow: `rgba(0,0,0,0.4) 0px 2px 4px`
+- Use: Dashboard / issue previews dominating feature sections
+
+### Overlays
+
+**command palette / dialog** *(Inferred, from §6 Dialog stack)*
+- Background: `#191a1b`
+- Border: `1px solid rgba(255,255,255,0.08)`
+- Radius: 12px
+- Shadow: multi-layer Dialog stack (`rgba(0,0,0,0.08) 0px 0px 1px … rgba(0,0,0,0) 0px 8px 2px`)
+- Backdrop: `rgba(0,0,0,0.85)`
+- Use: `Cmd+K` command palette, modals
+
+### Feedback & Status
+
+**filter pill / tag**
 - Background: transparent
+- Text: `#d0d6e0`
+- Radius: 9999px (full pill)
+- Height: 26px; padding 0px 10px 0px 5px
+- Border: `1px solid #23252a`
+- Font: 12px weight 510
+- Use: Tags, filter chips, category labels ("Performance", "iOS")
+
+**pagination button (Load more)**
+- Background: `rgba(255,255,255,0.05)`
 - Text: `#f7f8f8`
-- Padding: 1px 32px (icon-aware)
+- Radius: 9999px
+- Height: 40px; padding 0px 16px
+- Font: 15px weight 510
+- Shadow: inset+ring stack (matches secondary CTA)
+- Use: Changelog "Load more" pagination
 
-**Button-style Input**
-- Text: `#8a8f98`
-- Padding: 1px 6px
-- Radius: 5px
-- Focus shadow: multi-layer stack
-
-### Badges & Pills
-
-**Success Pill**
+**success pill** *(Inferred)*
 - Background: `#10b981`
 - Text: `#f7f8f8`
-- Radius: 50% (circular)
+- Radius: 50% (circular dot) or 9999px (chip)
 - Font: 10px weight 510
 - Use: Status dots, completion indicators
 
-**Neutral Pill**
-- Background: transparent
-- Text: `#d0d6e0`
-- Padding: 0px 10px 0px 5px
-- Radius: 9999px
-- Border: `1px solid rgb(35, 37, 42)`
-- Font: 12px weight 510
-- Use: Tags, filter chips, category labels
-
-**Subtle Badge**
+**subtle badge** *(Inferred)*
 - Background: `rgba(255,255,255,0.05)`
 - Text: `#f7f8f8`
 - Padding: 0px 8px 0px 2px
@@ -270,27 +343,13 @@ The color system is almost entirely achromatic — dark backgrounds with white/g
 - Font: 10px weight 510
 - Use: Inline labels, version tags
 
-### Navigation
-- Dark sticky header on near-black background
-- Linear logomark left-aligned (SVG icon)
-- Links: Inter Variable 13–14px weight 510, `#d0d6e0` text
-- Active/hover: text lightens to `#f7f8f8`
-- CTA: Brand indigo button or ghost button
-- Mobile: hamburger collapse
-- Search: command palette trigger (`/` or `Cmd+K`)
-
-### Image Treatment
-- Product screenshots on dark backgrounds with subtle border (`rgba(255,255,255,0.08)`)
-- Top-rounded images: `12px 12px 0px 0px` radius
-- Dashboard/issue previews dominate feature sections
-- Subtle shadow beneath screenshots: `rgba(0,0,0,0.4) 0px 2px 4px`
-
 ---
 
-**Verified:** 2026-05-08
-**Tier 1 sources:** linear.app (live DOM via playwright — nav typography 13.3px / 400 / Inter Variable; Sign-up CTA `#e5e5e6` / 9999px / 0×12 / 32px height confirmed)
-**Tier 2 sources:** styles.refero.design/style/90ce5883-bb24-4466-93f7-801cd617b0d1 (Primary Action `#e4f222` / `#08090a` text / 6px / 12×24 / Inter Variable 590·15px ✓; Default Card `#0f1011` / 6px ✓; Badge `#383b3f` / `#8a8f98` / 4px ✓); getdesign.md/linear — directory only.
-**Conflicts unresolved:** none. Refero captures the Linear "Build now" Lime CTA (`#e4f222`); homepage live shows the dark variant (`#e5e5e6` Sign up). Both retained as variants in §4.
+**Verified:** 2026-06-09
+**Tier:** 2 (no public design system / Storybook; brand page at `linear.app/brand` is wordmark + color only; product app behind auth). Harvested across 4 public routes — home, `/pricing`, `/customers`, `/now`.
+**Tier 1 sources:** linear.app live DOM via playwright — nav links 13px / 400 / `#8a8f98` → `#f7f8f8` active, 9999px / 0×12 / 32px; primary CTA `#e5e5e6` fill / `#08090a` text / 9999px / 32px (nav) and 44px / 0×20 / 16px (hero); secondary CTA `rgba(255,255,255,0.05)` / 40–44px / inset+ring shadow; search input `#141516` / 40px / 100px pill; filter pill transparent / `#23252a` border / 26px; "Load more" `rgba(255,255,255,0.05)` / 40px; mega-menu popover `#101112` / 12px / `rgba(255,255,255,0.08)`, submenu `#161718` / 8px; footer `#08090a` with `#23252a` top divider; lime banner `#e4f222` / 8px.
+**Tier 2 sources:** styles.refero.design/style/90ce5883-bb24-4466-93f7-801cd617b0d1 (Primary Action Lime `#e4f222` / `#08090a` text / 6px / Inter Variable 590·15px ✓; Default Card `#0f1011` / 6px ✓); getdesign.md/linear — directory only.
+**Conflicts unresolved:** none. Refero captures the Lime "Build now" CTA (`#e4f222`); live homepage primary is the light neutral `#e5e5e6` ("Sign up"). Both retained as distinct action variants above.
 
 ## 5. Layout Principles
 
