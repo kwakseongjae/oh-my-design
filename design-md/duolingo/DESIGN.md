@@ -11,6 +11,21 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: reconciled
+  extracted: "2026-06-08"
+  note: "deterministic pick (#1a73e8) was a Google sign-in embed false-positive; canonical = Feather Green"
+  color:
+    primary: "#58cc02"
+    background: "#ffffff"
+    foreground: "#4b4b4b"
+    accent: "#1cb0f6"
+    error: "#ff4b4b"
+    warning: "#ffc800"
+  font:
+    sans: "din-round"
+  spacing: [4, 8, 12, 16, 24, 32, 48, 64]
+  radius: { sm: 8, md: 12, lg: 16, pill: 9999 }
 ---
 
 # Design System Inspiration of Duolingo

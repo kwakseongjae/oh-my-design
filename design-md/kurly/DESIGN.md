@@ -10,6 +10,20 @@ logo:
   slug: "https://res.kurly.com/icons/favicon-128x128.png"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: reconciled
+  extracted: "2026-06-08"
+  note: "deterministic picks (#bd76ff tint, #1a73e8 Google embed) rejected; canonical = Kurly Purple purple-900"
+  color:
+    primary: "#5f0080"
+    background: "#ffffff"
+    foreground: "#1c1c1c"
+    muted: "#464c52"
+    accent: "#9a60ca"
+  font:
+    sans: "Noto Sans KR"
+  spacing: [4, 8, 12, 16, 24, 32, 48, 64]
+  radius: { sm: 4, md: 8, lg: 16, pill: 9999 }
 ---
 
 # Design System Inspiration of Kurly (컬리 / 마켓컬리)

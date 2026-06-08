@@ -177,6 +177,7 @@ const TYPES = `export interface RefEntry {
   readonly tokens?: {
     readonly source?: 'live-extract' | 'design-system' | 'manual' | 'reconciled';
     readonly extracted?: string;
+    readonly note?: string;
     readonly color?: Readonly<Record<string, string>>;
     readonly font?: Readonly<Record<string, string>>;
     readonly spacing?: readonly number[];
