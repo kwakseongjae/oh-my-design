@@ -12,8 +12,9 @@ verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
 tokens:
-  source: prose-derived
+  source: design-system
   extracted: "2026-06-08"
+  components_harvested: true
   note: "Cloudflare Orange #F6821F is the singular brand + primary-action color; rationed to one or two places per screen. Warm near-black text, never pure #000."
   colors:
     primary: "#F6821F"
@@ -62,13 +63,27 @@ tokens:
     floating: "rgba(0,0,0,0.12) 0px 8px 24px 0px"
     modal: "rgba(0,0,0,0.18) 0px 12px 32px 0px"
   components:
-    button-primary: "Cloudflare Orange #F6821F fill, white text, 14px/600 Inter, 40px tall, 6px radius, 0 20px padding; hover #E2700B"
-    button-secondary: "white fill, #36393A text, 1px #D9D9D9 border, 6px radius; hover border #A1A1A1 bg #FAFAFA"
-    button-ghost: "transparent, #F6821F text, 6px radius; hover #FDF3E7 bg"
+    button-primary: "brand fill, white text, 14px/600 Inter; DS size scale h-9 (36px, 8px radius, 12px px) and h-10 (40px, 8px radius, 16px px); marketing primary uses Cloudflare Orange #F6821F, hover #E2700B"
+    button-secondary: "white fill, #36393A text, 1px #D9D9D9 hairline ring, 8px radius; hover bg #FAFAFA border #A1A1A1"
+    button-ghost: "transparent, #F6821F text, 8px radius; hover bg #FDF3E7 (kumo: bg-kumo-tint)"
+    button-danger: "#BD2528 fill, white text, 8px radius; hover #A11F22"
+    button-sm: "h-6.5 (26px), 6px radius, 8px px, 12px text — compact toolbar/table-row action"
+    icon-button: "square h-9/h-10, rounded-full or 8px radius, p-0, centered glyph"
+    input: "white fill, 1px #D9D9D9 ring, 8px radius, h-10 (40px) 16px px; focus 1.5px brand ring; error 1.5px #BD2528 ring"
+    input-mono: "white fill, 1px #D9D9D9 ring, 8px radius, 13px/400 JetBrains Mono; DNS/IP/token entry"
+    select: "white fill, 1px #D9D9D9 ring, 8px radius, h-10, #717174 chevron"
+    switch: "DS 3 sizes (h-4/h-4.5/h-5 track), rounded-[5px] squircle 10px; on #F6821F (kumo on = blue #2C7CB0), off #D9D9D9, white thumb with edge+drop shadow"
+    checkbox: "square, ~6px radius, brand fill when checked, hairline ring unchecked"
     card: "white surface, 1px #EDEDED border, 8px radius, 24px padding, subtle neutral shadow"
+    stat-card: "white, 1px #EDEDED, 8px radius, 20px padding; 32px/700 #1D1F20 number, 12px/600 uppercase #717174 label"
+    surface: "kumo elevation roles — canvas #FFFFFF, recessed #F7F7F7, line/hairline #EDEDED"
+    badge: "rounded-full (9999px), 8px px, 2px py, 12px/500; tinted neutral/success/error/warning/info/orange variants + dashed-brand + 7px status dot"
     status-pill: "fully rounded 9999px, 12px/600 Inter, 2px 10px padding; green/red/yellow tinted bg + colored dot"
-    input: "white fill, 1px #D9D9D9 border, 6px radius, 8px 12px padding; focus border #F6821F + 3px rgba(246,130,31,0.2) ring"
-    toggle: "on #F6821F / off #D9D9D9, white thumb, pill shape"
+    tabs: "underline style — 1px #EDEDED bottom rule, inactive #717174, active #1D1F20 + 2px #F6821F underline"
+    table: "header bg #FAFAFA 12px/600 uppercase #717174; body 13px/400 #36393A, 12px 16px cells, 1px #EDEDED rows, hover #FAFAFA"
+    dialog: "white, 12px radius (rounded-xl), 32px padding, shadow-floating, 1px line ring; scrim rgba(29,31,32,0.5), scale-90 enter over 150ms"
+    toast: "white/#1D1F20 fill, 12px radius (rounded-xl), 16px padding, shadow-lg; semantic 0.3px ring (green/red/yellow/blue); fixed bottom-right 340px"
+    tooltip: "white fill, 6px radius (rounded-md), 10px 6px padding, 13px text, shadow-lg, 1px outline"
     code-block: "#F5F5F5 light / #15171A dark, 1px #EDEDED border, 6px radius, 13px/400 JetBrains Mono"
 ---
 
@@ -165,216 +180,220 @@ Typography is **Inter-led** — a clean, highly-legible neo-grotesque optimized 
 - **Monospace is a first-class citizen.** Technical strings — IPs, DNS records, hashes, tokens, JSON — always render in mono so they are scannable and copy-safe. Never set an API key in a proportional font.
 - **Uppercase eyebrows.** Small 12px/600 uppercase labels with `0.06em` tracking mark sections and table headers — a quiet structural device, not decoration.
 
-## 4. Component Stylings
+## 4. Component Patterns
 
-### Buttons
+Cloudflare maintains a public, open-source component library — **kumo** (`github.com/cloudflare/kumo`, built on Base UI primitives + Tailwind CSS v4), succeeding the earlier **cf-ui** styleguide (`cloudflare.github.io/cf-ui`) — plus a public docs Style Guide (`developers.cloudflare.com/style-guide/components`). The geometry below is lifted from kumo's actual source: a consistent four-step control-size scale (`h-5`/`h-6.5`/`h-9`/`h-10` → 20/26/36/40px), a `rounded-sm → rounded-md → rounded-lg → rounded-xl` radius ladder (4/6/8/12px), and `ring`-based borders over solid borders. One honest nuance worth recording: kumo's *interactive* brand token (`--color-kumo-brand`) is a **blue** in the current library, while **Cloudflare Orange `#F6821F`** persists as the marketing/brand accent (`--text-color-kumo-brand: #f6821f`) and is what the live cloudflare.com surface renders for primary CTAs. The specs below keep the orange-led brand identity that the public marketing surface still ships, annotating where kumo diverges to blue.
 
-Cloudflare buttons are clean, near-flat rectangles with a small radius and a single solid fill. The primary is orange; everything else is neutral or outline. Default height ~40px; compact ~32px; large CTA ~48px.
+### Actions
 
-**Primary (Orange)**
-- Background: `#F6821F`
-- Text: `#FFFFFF`
-- Border: none
-- Radius: 6px
-- Padding: 0 20px
-- Font: 14px / 600 / Inter
-- Height: 40px
-- Hover: background `#E2700B`
-- Pressed: background `#D9700F`
-- Disabled: background `#F6821F` at 40% opacity, text `#FFFFFF` at 70%
+**Primary Button**
+- Fill: `#F6821F` · Text: `#FFFFFF` · Border: none
+- Radius: 8px (kumo `rounded-lg`)
+- Sizes: medium `h-9` (36px, 12px horizontal padding), large `h-10` (40px, 16px horizontal padding)
+- Font: 14px / 600 / Inter (kumo `text-base` 16px on large)
+- Hover: `#E2700B` · Pressed: `#D9700F` · Disabled: brand at 50% opacity
+- Focus: 2px brand ring (`focus-visible:ring-2 focus-visible:ring-kumo-brand`)
 - Use: Primary action — "Get started", "Add site", "Save", "Deploy"
 
-**Secondary (Outline)**
-- Background: `#FFFFFF`
-- Text: `#36393A`
-- Border: 1px solid `#D9D9D9`
-- Radius: 6px
-- Padding: 0 20px
-- Font: 14px / 600 / Inter
-- Hover: border `#A1A1A1`, background `#FAFAFA`
-- Use: Secondary action beside a primary ("Cancel", "Back")
+**Secondary Button (outline)**
+- Fill: `#FFFFFF` · Text: `#36393A`
+- Ring: 1px `#D9D9D9` hairline · Radius: 8px
+- Hover: background `#FAFAFA`, ring `#A1A1A1`
+- Use: Companion to a primary ("Cancel", "Back")
 
-**Tertiary / Ghost**
-- Background: transparent
-- Text: `#F6821F`
-- Border: none
-- Radius: 6px
-- Padding: 0 12px
-- Font: 14px / 600 / Inter
-- Hover: background `#FDF3E7`
+**Ghost Button**
+- Fill: transparent · Text: `#F6821F` · Radius: 8px
+- Padding: 0 12px · Hover: background `#FDF3E7` (kumo `bg-kumo-tint`)
 - Use: Inline low-emphasis action, "Learn more", text-link button
 
-**Destructive**
-- Background: `#BD2528`
-- Text: `#FFFFFF`
-- Border: none
-- Radius: 6px
-- Padding: 0 20px
-- Font: 14px / 600 / Inter
-- Hover: background `#A11F22`
+**Destructive Button**
+- Fill: `#BD2528` · Text: `#FFFFFF` · Radius: 8px
+- Hover: `#A11F22` (kumo: danger at 70% opacity)
+- Secondary destructive variant: white fill, `#BD2528` text, hairline ring
 - Use: Delete zone, remove record, purge — confirmation contexts only
 
+**Compact / Small Button**
+- Size: `h-6.5` (26px) · Radius: 6px (`rounded-md`) · Padding: 0 8px · Font: 12px
+- Use: Toolbar and table-row inline actions where vertical space is tight
+
+**Icon Button**
+- Square `h-9`/`h-10`, `p-0`, centered glyph; `rounded-full` or 8px radius
+- Use: Close, kebab menu, copy-to-clipboard affordance
+
 **Dark CTA (Marketing)**
-- Background: `#1D1F20`
-- Text: `#FFFFFF`
-- Border: none
-- Radius: 6px
-- Padding: 0 24px
-- Font: 16px / 600 / Inter
-- Height: 48px
+- Fill: `#1D1F20` · Text: `#FFFFFF` · Radius: 8px · Padding: 0 24px
+- Font: 16px / 600 / Inter · Height: 48px
 - Use: Marketing-page secondary CTA where orange is already spent on the primary
 
-### Inputs
+### Navigation
 
-**Text Field (default)**
-- Background: `#FFFFFF`
-- Text: `#1D1F20`
-- Border: 1px solid `#D9D9D9`
-- Radius: 6px
-- Padding: 8px 12px
-- Font: 14px / 400 / Inter
-- Placeholder: `#999999`
-- Focus: border `#F6821F`, ring `0 0 0 3px rgba(246,130,31,0.2)`
+**Underline Tabs (default)**
+- Container border-bottom: 1px solid `#EDEDED`
+- Inactive: text `#717174`, 14px / 600 · Hover: text `#36393A`
+- Active: text `#1D1F20`, 2px bottom border `#F6821F`
+- Use: Dashboard section switching (Overview / Analytics / DNS / SSL)
+
+**Sidebar / Left Nav**
+- Persistent ~240px rail, white surface, 1px `#EDEDED` right hairline
+- Item: 14px / 400, `#36393A`; active item orange-tinted `#FDF3E7` fill + `#F6821F` text/indicator
+- Collapses to an icon rail, then a drawer on mobile (kumo `sidebar`)
+
+**Breadcrumbs**
+- 13px / 400 `#717174`, `#36393A` on current crumb, `/` or chevron separators in `#A1A1A1`
+- Use: Zone → section → record deep paths
+
+**Pagination**
+- Numbered controls as compact buttons; current page brand-tinted; prev/next chevrons
+- Use: Long DNS/log/audit tables (kumo `pagination`)
+
+### Forms
+
+**Text Field**
+- Fill: `#FFFFFF` · Text: `#1D1F20` · Placeholder: `#999999`
+- Ring: 1px `#D9D9D9` (`ring-kumo-line`) · Radius: 8px
+- Size: `h-10` (40px), 16px horizontal padding · Font: 14px / 400 / Inter
+- Focus: 1.5px brand ring (kumo `focus:ring-[1.5px]`) — marketing/live surface renders the orange ring `0 0 0 3px rgba(246,130,31,0.2)`
 - Use: Standard form input, search, config values
 
 **Mono Input (technical)**
-- Background: `#FFFFFF`
-- Text: `#1D1F20`
-- Border: 1px solid `#D9D9D9`
-- Radius: 6px
-- Padding: 8px 12px
+- Fill: `#FFFFFF` · Text: `#1D1F20` · Ring: 1px `#D9D9D9` · Radius: 8px
 - Font: 13px / 400 / JetBrains Mono
 - Use: DNS record values, IP entry, token paste fields
 
-**Error State**
-- Border: 1px solid `#BD2528`
+**Input Error State**
+- Ring: 1.5px `#BD2528` (`ring-kumo-danger`)
 - Focus ring: `0 0 0 3px rgba(189,37,40,0.18)`
-- Helper text below: `#BD2528`, 12px / 400
-- Use: Validation failure — paired with one actionable inline message
+- Helper text below: `#BD2528`, 12px / 400 — one actionable sentence
+- Use: Validation failure
 
 **Select / Dropdown**
-- Background: `#FFFFFF`
-- Border: 1px solid `#D9D9D9`
-- Radius: 6px
-- Padding: 8px 12px
+- Fill: `#FFFFFF` · Ring: 1px `#D9D9D9` · Radius: 8px · Size: `h-10`
 - Chevron: `#717174`
 - Use: Plan picker, record-type selector, region dropdown
 
-### Cards
+**Switch / Toggle**
+- DS sizes: track `h-4`/`h-4.5`/`h-5` (16/18/20px)
+- Shape: `rounded-[5px]`, squircle-rounded to 10px where supported
+- On: `#F6821F` (kumo library on-state = blue `#2C7CB0`) · Off: `#D9D9D9`
+- Thumb: `#FFFFFF` circle with edge+drop shadow (`shadow-[0 0 1px .5px edge, 0 1px 2px drop]`)
+- Use: Proxy on/off, feature flags, security toggles
+
+**Checkbox / Radio**
+- Square (checkbox) / circle (radio), ~6px / pill radius
+- Checked: brand fill + white glyph · Unchecked: 1px `#D9D9D9` hairline ring
+- Use: Multi-select rules, plan options, consent
+
+### Data display
 
 **Standard Panel**
-- Background: `#FFFFFF`
-- Border: 1px solid `#EDEDED`
-- Radius: 8px
-- Padding: 24px
+- Fill: `#FFFFFF` · Border: 1px solid `#EDEDED` · Radius: 8px · Padding: 24px
 - Shadow: `0 1px 3px rgba(0,0,0,0.06)`
-- Use: Dashboard config panels, analytics modules, the workhorse surface
+- Use: Dashboard config panels, analytics modules — the workhorse surface
 
 **Marketing Feature Card**
-- Background: `#FFFFFF`
-- Border: none
-- Radius: 12px
-- Padding: 32px
+- Fill: `#FFFFFF` · Border: none · Radius: 12px · Padding: 32px
 - Shadow: `0 4px 16px rgba(0,0,0,0.08)`
 - Use: Product/feature cards on the marketing site
 
 **Stat / Metric Card**
-- Background: `#FFFFFF`
-- Border: 1px solid `#EDEDED`
-- Radius: 8px
-- Padding: 20px
+- Fill: `#FFFFFF` · Border: 1px solid `#EDEDED` · Radius: 8px · Padding: 20px
 - Big number: 32px / 700 / Inter, `#1D1F20`
 - Label: 12px / 600 uppercase, `#717174`
 - Use: Analytics summary tiles (requests, bandwidth, threats blocked)
 
-### Status Pills / Badges
+**Data Table**
+- Header row: background `#FAFAFA`, text 12px / 600 uppercase `#717174`, `0.04em` tracking
+- Body cell: 13px / 400 `#36393A`, padding 12px 16px
+- Row border: 1px solid `#EDEDED` · Hover row: background `#FAFAFA`
+- Zebra (optional): alternate `#FFFFFF` / `#FAFAFA`
+- Use: DNS records, firewall rules, analytics logs — the heart of the product
 
-Cloudflare leans heavily on status pills — proxy state, zone health, security level. Pill shape (fully rounded), small uppercase or sentence-case label.
+**Code Block**
+- Background: `#F5F5F5` (light) / `#15171A` (dark) · Text: `#1D1F20` / `#E4E6E7`
+- Border: 1px solid `#EDEDED` (light) · Radius: 6px · Padding: 12px 16px
+- Font: 13px / 400 / JetBrains Mono · with copy-to-clipboard affordance
+- Use: API examples, Worker snippets, curl commands, DNS values
 
-**Active / Proxied (Green)**
-- Background: `#E8F5D8` / dot `#2FB344`
-- Text: `#3D6B14`
+**Meter / Progress**
+- Track: `#EDEDED` rounded-full; fill brand `#F6821F` (or semantic for usage warnings)
+- Use: Plan usage, bandwidth consumption, upload progress (kumo `meter`)
+
+### Overlays
+
+**Dialog / Modal**
+- Fill: `#FFFFFF` · Text: `#1D1F20` · Ring: 1px line · Radius: 12px (`rounded-xl`) · Padding: 32px (`p-8`)
+- Shadow: `0 12px 32px rgba(0,0,0,0.18)`
+- Scrim: `rgba(29,31,32,0.5)` (kumo recessed at ~80% opacity)
+- Enter: scale from 90% + fade over 150ms
+- Use: Confirmations, destructive double-checks, add-record flows
+
+**Popover / Dropdown Menu**
+- Fill: `#FFFFFF` · Ring: 1px `#EDEDED` · Radius: 8px · Shadow: floating `0 8px 24px rgba(0,0,0,0.12)`
+- Item hover: `#FAFAFA` fill
+- Use: Action menus, command palette, account switcher (kumo `popover`, `dropdown`, `command-palette`)
+
+**Tooltip**
+- Fill: `#FFFFFF` · Text: `#1D1F20`, 13px · Radius: 6px (`rounded-md`) · Padding: 6px 10px
+- Shadow: `shadow-lg`, 1px outline
+- Use: Icon labels, truncated-value reveal, glossary terms
+
+### Feedback & Status
+
+**Toast**
+- Fill: `#1D1F20` (live marketing) / `#FFFFFF` (kumo) · Text: `#FFFFFF` / `#1D1F20`
+- Radius: 12px (`rounded-xl`) · Padding: 16px · Shadow: `shadow-lg`
+- Accent: 4px brand left-border (marketing) or 0.3px semantic ring — success green `#2FB344`, error red `#BD2528`, warning yellow `#F6C549`, info blue `#2C7CB0`
+- Position: fixed bottom-right, 340px wide; 4–5s auto-dismiss
+- Use: Auto-dismissing confirmation ("Record added", "Settings saved")
+
+**Banner / Alert**
+- Full-width inline strip; tinted background by severity (info `#FDF3E7`-style tint, warning, danger, success)
+- 1px hairline, 14px text, optional icon + dismiss
+- Use: Account-level notices, plan upgrade prompts, incident banners (kumo `banner`)
+
+**Badge**
+- Shape: `rounded-full` · Padding: 2px 8px · Font: 12px / 500
+- Variants: neutral, success, error, warning, info, orange, plus dashed-brand outline
+- Optional 7px status dot (`size-1.75 rounded-full`)
+- Use: "NEW", "Beta", version, plan, short metadata
+
+**Status Pill — Active / Proxied (Green)**
+- Background: `#E8F5D8` · Dot: `#2FB344` · Text: `#3D6B14`
 - Radius: 9999px · Padding: 2px 10px · Font: 12px / 600 / Inter
 - Use: "Active", "Proxied", healthy
 
-**Error / Down (Red)**
+**Status Pill — Error / Down (Red)**
 - Background: `#FBE2E2` · Text: `#BD2528`
 - Radius: 9999px · Padding: 2px 10px · Font: 12px / 600 / Inter
 - Use: "Down", "Blocked", "Error"
 
-**Pending / Paused (Yellow)**
+**Status Pill — Pending / Paused (Yellow)**
 - Background: `#FCF3D6` · Text: `#8A6D1B`
 - Radius: 9999px · Padding: 2px 10px · Font: 12px / 600 / Inter
 - Use: "Pending", "DNS only", "Paused"
 
-**Neutral / Info (Grey)**
+**Status Pill — Neutral (Grey)**
 - Background: `#EDEDED` · Text: `#4D4D4D`
 - Radius: 9999px · Padding: 2px 10px · Font: 12px / 600 / Inter
 - Use: "Inactive", neutral metadata
 
-**Brand (Orange)**
+**Status Pill — Brand (Orange)**
 - Background: `#FDF3E7` · Text: `#C2670F`
 - Radius: 9999px · Padding: 2px 10px · Font: 12px / 600 / Inter
 - Use: "NEW", "Beta", plan emphasis
 
-### Tabs
+**Loader / Spinner**
+- Brand `#F6821F` ring spinner (inline) or top progress bar; existing data stays visible on refresh
+- Use: In-button loading (label swaps for white spinner, width preserved), table refresh (kumo `loader`)
 
-**Underline Tabs (default)**
-- Container border-bottom: 1px solid `#EDEDED`
-- Inactive: text `#717174`, 14px / 600
-- Active: text `#1D1F20`, 2px bottom border `#F6821F`
-- Hover: text `#36393A`
-- Use: Dashboard section switching (Overview / Analytics / DNS / SSL)
-
-### Tables
-
-**Data Table**
-- Header row: background `#FAFAFA`, text 12px / 600 uppercase `#717174`, `0.04em` tracking
-- Body cell: 13px / 400 `#36393A`, padding 12px 16px
-- Row border: 1px solid `#EDEDED`
-- Hover row: background `#FAFAFA`
-- Zebra (optional): alternate `#FFFFFF` / `#FAFAFA`
-- Use: DNS records, firewall rules, analytics logs — the heart of the product
-
-### Toasts
-
-**Default**
-- Background: `#1D1F20` · Text: `#FFFFFF`
-- Border-left: 4px solid `#F6821F` (success uses green, error uses red)
-- Radius: 8px · Padding: 12px 16px
-- Shadow: `0 4px 12px rgba(0,0,0,0.15)` · Font: 14px / 400 / Inter
-- Use: Auto-dismissing confirmation ("Record added", "Settings saved")
-
-### Dialogs
-
-**Modal**
-- Background: `#FFFFFF` · Text: `#1D1F20`
-- Border: none · Radius: 10px · Padding: 24px
-- Shadow: `0 12px 32px rgba(0,0,0,0.18)`
-- Scrim: `rgba(29,31,32,0.5)`
-- Use: Confirmations, destructive double-checks, add-record flows
-
-### Toggles
-
-**Switch**
-- On: `#F6821F` · Off: `#D9D9D9`
-- Thumb: `#FFFFFF` 18px circle, shadow `0 1px 2px rgba(0,0,0,0.2)`
-- Radius: 9999px
-- Use: Proxy on/off, feature flags, security toggles
-
-### Code Block
-
-**Inline / Block**
-- Background: `#F5F5F5` (light) / `#15171A` (dark)
-- Text: `#1D1F20` / `#E4E6E7`
-- Border: 1px solid `#EDEDED` (light)
-- Radius: 6px · Padding: 12px 16px · Font: 13px / 400 / JetBrains Mono
-- Use: API examples, Worker snippets, curl commands, DNS values
+**Empty State**
+- One line of `#36393A` body explaining the *why* + one orange-ghost or secondary action; no dashboard illustration
+- Use: "No DNS records yet. Add your first record." (kumo `empty`)
 
 ---
 
 
-**Tier 1 sources:** https://www.cloudflare.com (live production site, verified via live DOM getComputedStyle).
+**Tier 1 sources:** https://www.cloudflare.com (live production marketing site, verified via live DOM getComputedStyle); Cloudflare's public component library **kumo** (`github.com/cloudflare/kumo` — source TSX + `theme-kumo.css` design tokens), the legacy **cf-ui** styleguide (`cloudflare.github.io/cf-ui`), and the docs **Style Guide** (`developers.cloudflare.com/style-guide/components`). Component geometry (size scale, radius ladder, ring borders, dialog/toast/tooltip specs) is lifted from kumo source; the orange-led palette is grounded in the live marketing surface.
 
 ## 5. Layout Principles
 

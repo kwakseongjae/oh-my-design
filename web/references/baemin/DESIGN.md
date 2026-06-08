@@ -12,7 +12,8 @@ verified: "2026-05-15"
 tokens:
   source: prose-derived
   extracted: "2026-06-08"
-  note: "primary = Baemin Mint #2AC1BC (app surface accent); teal #12B886 is the secondary UI green for confirmation fills"
+  components_harvested: true
+  note: "app-first KR delivery brand — capped at 16 components. App surface (Mint #2AC1BC, 8px) documented from Baemin public brand/color guide + app-store screenshots; web marketing surface (Black Pill #000000 / 9999px, app-download card, carousel dots) measured live via playwright on baemin.com. primary = Baemin Mint #2AC1BC (app surface accent); teal #12B886 is the secondary UI green for confirmation fills"
   colors:
     primary: "#2AC1BC"
     brand: "#2AC1BC"
@@ -53,14 +54,22 @@ tokens:
     outlined: "0px 4px 16px rgba(0,0,0,0.12)"
     crisp: "0px 8px 24px rgba(0,0,0,0.16)"
   components:
-    button-primary: "Baemin Mint #2AC1BC fill, white text, 8px radius, 16px weight 700, 48px height"
-    button-ghost: "transparent fill, mint #2AC1BC text + 1px mint border, 8px radius"
-    button-neutral: "#F8F9FA fill, #212529 text, 8px radius"
-    button-destructive: "#FF6B6B fill, white text"
-    card: "white surface, 8px radius (12px featured), 1px #DEE2E6 border or deep shadow"
-    restaurant-card: "12px radius, 16:9 photo with 12px top radius, name 18px/700, rating star #FFB347, 16px padding"
-    tag: "#F1F3F5 bg, #495057 text, pill radius, 12px weight 500"
-    search-bar: "#F8F9FA bg, 20px radius, 44px height, left search icon, placeholder #ADB5BD"
+    button-primary: "[app] Baemin Mint #2AC1BC fill, white text, 8px radius, 16px weight 700, 48px height; pressed #20A8A4; disabled #DEE2E6 fill / #ADB5BD text"
+    button-ghost: "[app] transparent fill, mint #2AC1BC text + 1px mint border, 8px radius; pressed rgba(42,193,188,0.08)"
+    button-neutral: "[app] #F8F9FA fill, #212529 text, 8px radius — tertiary actions, filter toggles"
+    button-destructive: "[app] #FF6B6B fill, white text — cancel order, remove item"
+    button-pill-web: "[web, measured] #000000 fill, white text, 9999px radius, 16x32 padding, 58px height, 18px weight 700 — corporate CTA (기업용 상품권 구매하기)"
+    app-download-card: "[web, measured] #ffffff fill, 12px radius, 54px height, 14x19 padding, no shadow — store-badge cards"
+    card: "[app] white surface, 8px radius (12px featured), 1px #DEE2E6 border or Deep shadow 0px 2px 8px rgba(0,0,0,0.08)"
+    restaurant-card: "[app] 12px radius, 16:9 photo with 12px top radius, name 18px/700, rating star #FFB347, delivery 13px/400 #868E96, 16px padding"
+    tag: "[app] #F1F3F5 bg, #495057 text, pill radius, 12px weight 500"
+    search-bar: "[app] #F8F9FA bg, 20px radius, 44px height, left search icon, placeholder #ADB5BD"
+    input: "[app] 1px #DEE2E6 border, 8px radius, #212529 text; focus 2px #2AC1BC; error 2px #FF6B6B"
+    bottom-tab-bar: "[app] white bg, 1px #DEE2E6 top border; active #2AC1BC icon+label, inactive #868E96"
+    top-app-bar: "[app] white bg, centered title 18px weight 700 #212529"
+    floating-cart-button: "[app] 56px circle, #2AC1BC fill, white icon, #FF6B6B count badge; shadow 0px 4px 12px rgba(0,0,0,0.10)"
+    badge: "[app] promo #FF6B6B or #FFB347 fill white text 4px radius 11px/700; delivery #2AC1BC fill white text 4px radius"
+    toast: "[app] #212529 bg, white 14px/400 text, 2.5s auto-dismiss"
 omd: "0.1"
 ---
 
@@ -143,46 +152,75 @@ All 12 Baemin fonts are free under OFL license. Four are on Google Fonts (Jua, D
 - **Bold for clarity**: In food ordering, weight 700 is used liberally for menu names, prices, and CTAs. Users scan quickly through many options.
 - **All fonts are free**: Every Baemin typeface is available under OFL license for personal and commercial use.
 
-## 4. Component Stylings
+## 4. Component Patterns
 
-### Buttons
+Baemin runs **two parallel component systems**, and this section is honest about which surface each component comes from. The **app surface** (배달의민족 mobile app — Mint `#2AC1BC` primary, 8px radius, system fonts for chrome) is the brand's real product; its specs are grounded in Baemin's public color/brand guide and app-store screenshots. The **web marketing surface** (baemin.com) is a thin corporate/landing site with a *separate* Black Pill primary — its specs below are measured live via playwright `getComputedStyle`. The app is not web-inspectable (login-gated, native), so this is an honest TIER 3 cap of the components actually documentable, not an exhaustive design-system index.
 
-**Primary (Brand Mint)**
-- Background: `#2AC1BC`
-- Text: `#ffffff`
-- Padding: 12px 24px
-- Radius: 8px
+### Actions
+
+**Button — Primary (Brand Mint)** `[app]`
+- Background: `#2AC1BC`, Text: `#ffffff`
+- Padding: 12px 24px, Radius: 8px, Height: 48px min
 - Font: 16px system weight 700
-- Pressed: `#20A8A4` (darkened mint)
-- Disabled: `#DEE2E6` background, `#ADB5BD` text
+- Pressed: `#20A8A4` (darkened mint); Disabled: `#DEE2E6` bg, `#ADB5BD` text
 - Use: Primary CTAs ("주문하기", "배달 주문")
 
-**Secondary (Ghost)**
-- Background: transparent
-- Text: `#2AC1BC`
-- Border: 1px solid `#2AC1BC`
-- Radius: 8px
+**Button — Ghost (Secondary)** `[app]`
+- Background: transparent, Text: `#2AC1BC`, Border: 1px solid `#2AC1BC`, Radius: 8px
 - Pressed: `rgba(42,193,188,0.08)` background
 - Use: Secondary actions ("장바구니", "찜하기")
 
-**Neutral**
-- Background: `#F8F9FA`
-- Text: `#212529`
-- Radius: 8px
+**Button — Neutral** `[app]`
+- Background: `#F8F9FA`, Text: `#212529`, Radius: 8px
 - Use: Tertiary actions, filter toggles
 
-**Destructive**
-- Background: `#FF6B6B`
-- Text: `#ffffff`
+**Button — Destructive** `[app]`
+- Background: `#FF6B6B`, Text: `#ffffff`, Radius: 8px
 - Use: Cancel order, remove item
 
-### Cards & Containers
-- Background: `#ffffff`
-- Border: 1px solid `#DEE2E6` or no border with shadow
-- Radius: 8px (standard), 12px (featured restaurant cards)
-- Shadow: `0px 2px 8px rgba(0,0,0,0.06)` (standard)
+**Button — Black Pill (Web Corporate CTA)** `[web — measured]`
+- Background: `#000000`, Text: `#ffffff`
+- Radius: 9999px (full pill), Padding: 16px 32px, Height: 58px
+- Font: 18px weight 700
+- Measured on baemin.com ("기업용 상품권 구매하기"). The marketing web deliberately uses high-contrast black, **not** mint, for its highest-impact corporate CTAs — the two systems are intentionally distinct.
 
-### Restaurant Cards (Key Component)
+**Floating Cart Button** `[app]`
+- 56px circle, `#2AC1BC` fill, white cart icon
+- Count badge: `#FF6B6B` circle, white text 11px weight 700, top-right
+- Shadow: `0px 4px 12px rgba(0,0,0,0.10)` (Sharp / Level 3)
+
+### Navigation
+
+**Bottom Tab Bar** `[app]`
+- White bg, 1px `#DEE2E6` top border
+- Active: `#2AC1BC` icon + label; Inactive: `#868E96`
+
+**Top App Bar** `[app]`
+- White bg, centered title 18px weight 700, `#212529`
+
+**Carousel Dots / Progress** `[web — measured]`
+- Inactive indicator `rgba(0,0,0,0.2)`, active `#000000` track
+- Promo banner carousels on baemin.com use a thin progress-bar segment rather than circular dots.
+
+### Forms
+
+**Search Bar** `[app]`
+- Background: `#F8F9FA`, Radius: 20px, Height: 44px
+- Left search icon (`#868E96`), placeholder `#ADB5BD`, text `#212529`
+- Full-width with 16px margin ("맛집을 검색해보세요")
+
+**Text Input** `[app]`
+- Border: 1px solid `#DEE2E6`, Radius: 8px
+- Text: `#212529`, Placeholder: `#ADB5BD`
+- Focus: 2px solid `#2AC1BC`; Error: 2px solid `#FF6B6B` + 13px/400 red error text below
+
+### Data display
+
+**Card / Container** `[app]`
+- Background: `#ffffff`, Border: 1px solid `#DEE2E6` or no border with shadow
+- Radius: 8px (standard), 12px (featured); Shadow: `0px 2px 8px rgba(0,0,0,0.08)` (Deep / Level 2)
+
+**Restaurant Card** `[app]` — key component
 - Image: full-width, 16:9, 12px top radius
 - Name: 18px weight 700, `#212529`
 - Rating: star icon (`#FFB347`) + score 14px weight 600
@@ -190,27 +228,36 @@ All 12 Baemin fonts are free under OFL license. Four are on Google Fonts (Jua, D
 - Tags: pill (9999px radius), `#F1F3F5` bg, `#495057` text, 12px
 - Internal padding: 16px
 
-### Tags & Badges
-- **Category Tag**: `#F1F3F5` bg, `#495057` text, pill radius, 12px font weight 500
-- **Promo Badge**: `#FF6B6B` or `#FFB347` bg, white text, 4px radius, 11px weight 700
-- **Delivery Badge**: `#2AC1BC` bg, white text, 4px radius
+**App-Download Card** `[web — measured]`
+- Background: `#ffffff`, Radius: 12px, Height: 54px, Padding: 14px 19px, no shadow
+- Store-badge cards on the marketing site (App Store / Google Play links).
 
-### Inputs & Forms
-- Border: 1px solid `#DEE2E6`, Radius: 8px
-- Focus: 2px solid `#2AC1BC`
-- Text: `#212529`, Placeholder: `#ADB5BD`
-- Search bar: 20px radius, `#F8F9FA` background, search icon left
+**Tag** `[app]`
+- `#F1F3F5` bg, `#495057` text, pill radius, 12px font weight 500
 
-### Navigation
-- Bottom tab bar: white, top border `#DEE2E6`
-- Active: `#2AC1BC` icon + text, Inactive: `#868E96`
-- Top app bar: white, centered title 18px weight 700
-- Cart badge: `#FF6B6B` circle, white count text
+### Overlays
+
+**Bottom Sheet / Modal** `[app]`
+- Rises from bottom, Outlined shadow `0px 4px 16px rgba(0,0,0,0.12)` (Level 4)
+- Backdrop overlay `rgba(0,0,0,0.5)`; payment-declined uses a centered modal with 18px/700 `#212529` headline + two CTAs (primary mint, neutral cancel)
+
+### Feedback & Status
+
+**Badge** `[app]`
+- Promo badge: `#FF6B6B` or `#FFB347` bg, white text, 4px radius, 11px weight 700
+- Delivery badge: `#2AC1BC` bg, white text, 4px radius
+
+**Toast** `[app]`
+- `#212529` bg, white 14px weight 400 text, 2.5s auto-dismiss ("장바구니에 담겼어요"); floating cart badge increments simultaneously
+
+**Skeleton** `[app]`
+- `#F1F3F5` blocks at exact final card dimensions (16:9 photo slot, name row, meta row), shimmer ≤ 1.2s. Ratings render as an 80px-wide block (never a placeholder star); prices render as `---원` (never `0원`).
 
 ---
 
-**Verified:** 2026-05-08
-**Tier 1 sources:** baemin.com (live DOM via playwright — corporate/marketing surface confirmed: App download cards `#fff` / 12px / 14×19 / 54px height; Black Pill CTA `#000000` / `#fff` / 9999px / 16×32 / 58px / 18px·700 for "기업용 상품권 구매하기")
+**Verified:** 2026-06-09
+**Component harvest:** 2026-06-09 — TIER 3 honest cap. baemin.com re-inspected live via playwright `getComputedStyle`; the marketing web yields only ~3-4 real components (Black Pill CTA, app-download card, carousel dots, header nav). The 배달의민족 app is login-gated / native and not web-inspectable, so app-surface components (§4 Actions/Navigation/Forms/Data display/Overlays/Feedback) are documented from Baemin's public color/brand guide + app-store screenshots, not live DOM. Capped at 16 components — no components invented to inflate the count.
+**Tier 1 sources:** baemin.com (live DOM via playwright — corporate/marketing surface confirmed & re-measured 2026-06-09: App download cards `#fff` / 12px / 14×19 / 54px height; Black Pill CTA `#000000` / `#fff` / 9999px / 16×32 / 58px / 18px·700 for "기업용 상품권 구매하기"; carousel progress `rgba(0,0,0,0.2)` inactive; footer `#000000`)
 **Tier 2 sources:** styles.refero.design — no Baemin record at `?q=Baemin`. getdesign.md/baemin — no record.
 **Tier 2 status:** unavailable; Tier 1 (baemin.com live inspect) authoritative for marketing-web surface.
 **Surface split:** §4 above documents the **app surface** (배달의민족 mobile app — Mint `#2AC1BC` primary, 8px radius, system fonts for chrome). The marketing web (baemin.com) uses a **separate Black Pill** primary at 9999px / 18px·700 (verified above) for high-impact corporate CTAs. Both retained as parallel systems.
