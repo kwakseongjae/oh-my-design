@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_at": "2026-06-01T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 201,
+  "count": 211,
   "items": [
     {
       "id": "17live",
@@ -197,6 +197,32 @@
       "signature_motion": "The button wave - a faint outline expands and fades on primary-button click; calm dependable transitions everywhere else.",
       "has_personas": true,
       "category_raw": "fintech"
+    },
+    {
+      "id": "amazingtalker",
+      "primary_color_hex": "#02cab9",
+      "category": "consumer-tech",
+      "visual_theme": "AmazingTalker is a Taiwanese language-learning marketplace, and its design speaks the language of friendly, approachable confidence rather than institutional gravity. The page opens on a clean white canvas (`#ffffff`) with a single, unmistakable brand signal: ",
+      "voice_fingerprint": {
+        "register": "warm, learner-facing marketplace",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "friendly",
+        "energetic",
+        "encouraging",
+        "vivid",
+        "approachable"
+      ],
+      "antipatterns": [
+        "formal",
+        "austere"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
     },
     {
       "id": "appier",
@@ -464,6 +490,32 @@
       "has_personas": true,
       "category_raw": "F&B Booking",
       "country": "KR"
+    },
+    {
+      "id": "cathay",
+      "primary_color_hex": "#00512a",
+      "category": "finance",
+      "visual_theme": "Cathay United Bank (國泰世華銀行) presents the calm, dependable face of one of Taiwan's largest financial groups — and its digital design reflects exactly that institutional weight, rendered with surprising lightness. The homepage opens on an almost-white canvas (`#",
+      "voice_fingerprint": {
+        "register": "formal, reassuring, institutional finance",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "trustworthy",
+        "corporate",
+        "stable",
+        "premium",
+        "institutional"
+      ],
+      "antipatterns": [
+        "playful",
+        "experimental"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "finance"
     },
     {
       "id": "channeltalk",
@@ -1591,6 +1643,32 @@
       "signature_motion": "Instant (0ms) POS tile selection - tap registers immediately with tint+border, no animation; spring forbidden.",
       "has_personas": true,
       "category_raw": "restaurant-saas-pos"
+    },
+    {
+      "id": "ikala",
+      "primary_color_hex": "#061232",
+      "category": "developer-tools",
+      "visual_theme": "iKala's website presents itself as a clean, corporate-confident B2B AI and martech platform built for the Asia-Pacific enterprise buyer. The page opens on a pure white canvas (`#ffffff`) with a restrained, professional palette: deep navy (`#061232`) anchors th",
+      "voice_fingerprint": {
+        "register": "professional, AI/enterprise",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "technical",
+        "clean",
+        "B2B",
+        "confident",
+        "modern"
+      ],
+      "antipatterns": [
+        "playful",
+        "cluttered"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "developer-tools"
     },
     {
       "id": "inflearn",
@@ -3156,6 +3234,32 @@
       "category_raw": "fintech"
     },
     {
+      "id": "pchome",
+      "primary_color_hex": "#ea1717",
+      "category": "e-commerce",
+      "visual_theme": "PChome 24h is Taiwan's archetypal high-density marketplace, and its design reflects a single, unwavering priority: get as much shoppable inventory in front of the eye as possible, as fast as possible. Where Western boutique commerce leans on whitespace and one",
+      "voice_fingerprint": {
+        "register": "transactional, deal-led, marketplace",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "dense",
+        "utilitarian",
+        "value-driven",
+        "busy",
+        "commerce-first"
+      ],
+      "antipatterns": [
+        "minimal",
+        "airy"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "e-commerce"
+    },
+    {
       "id": "perplexity",
       "primary_color_hex": "#20808D",
       "category": "AI",
@@ -3277,6 +3381,32 @@
       "category_raw": "consumer-tech"
     },
     {
+      "id": "pixnet",
+      "primary_color_hex": "#ff7200",
+      "category": "content",
+      "visual_theme": "PIXNET (痞客邦) is Taiwan's largest home-grown blogging and content platform, and its design reads exactly like what it is — a warm, editorial, reader-first publishing home rather than a slick venture-funded app. The live homepage opens on a clean white canvas (`",
+      "voice_fingerprint": {
+        "register": "friendly, creator-community",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "warm",
+        "community",
+        "approachable",
+        "content-led",
+        "lively"
+      ],
+      "antipatterns": [
+        "austere",
+        "enterprise"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "content"
+    },
+    {
       "id": "posthog",
       "primary_color_hex": "#F54E00",
       "category": "Developer Tools",
@@ -3358,6 +3488,32 @@
       "signature_motion": "Step-by-step solution reveal fades each numbered step in with an 8px upward translate at 80ms intervals, ending with a soft green checkmark scale-spring.",
       "has_personas": true,
       "category_raw": "edutech / AI math solver"
+    },
+    {
+      "id": "ragic",
+      "primary_color_hex": "#f70e0e",
+      "category": "productivity",
+      "visual_theme": "Ragic's website is unapologetically utilitarian -- the visual language of a tool built by spreadsheet people, for spreadsheet people. It is a no-code database SaaS out of Taiwan, and the site wears that engineering pragmatism on its sleeve: a clean white canva",
+      "voice_fingerprint": {
+        "register": "matter-of-fact, no-code/database",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "utilitarian",
+        "practical",
+        "no-frills",
+        "dense",
+        "functional"
+      ],
+      "antipatterns": [
+        "decorative",
+        "airy"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "productivity"
     },
     {
       "id": "ramp",
@@ -3572,6 +3728,32 @@
       "category_raw": "enterprise"
     },
     {
+      "id": "richart",
+      "primary_color_hex": "#17b6c9",
+      "category": "fintech",
+      "visual_theme": "Richart -- the digital-banking brand of Taiwan's Taishin International Bank (台新銀行) -- presents itself as the friendliest, most playful face of consumer finance on the Taiwanese web. Its self-declared promise, baked into the page `<title>`, is *\"最能幫年輕人存到錢的銀行\"* ",
+      "voice_fingerprint": {
+        "register": "casual, encouraging, youth-banking",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "playful",
+        "youthful",
+        "friendly",
+        "approachable",
+        "vivid"
+      ],
+      "antipatterns": [
+        "stuffy",
+        "corporate-cold"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
       "id": "ridi",
       "primary_color_hex": "#3D3D3D",
       "category": "Consumer",
@@ -3774,6 +3956,32 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "developer-tools"
+    },
+    {
+      "id": "shopline",
+      "primary_color_hex": "#356dff",
+      "category": "e-commerce",
+      "visual_theme": "SHOPLINE presents itself as a bright, optimistic, merchant-friendly commerce platform built for the Taiwan and Hong Kong markets — its homepage opens on a clean white canvas (`#ffffff`) with a confident, saturated royal blue (`#356dff`) doing almost all of the",
+      "voice_fingerprint": {
+        "register": "professional, commerce SaaS",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "clean",
+        "commerce-first",
+        "confident",
+        "modern",
+        "scalable"
+      ],
+      "antipatterns": [
+        "cluttered",
+        "playful"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "e-commerce"
     },
     {
       "id": "slack",
@@ -4077,6 +4285,32 @@
       ],
       "signature_motion": null,
       "has_personas": false,
+      "category_raw": "productivity"
+    },
+    {
+      "id": "surveycake",
+      "primary_color_hex": "#3dba90",
+      "category": "productivity",
+      "visual_theme": "SurveyCake's marketing site is a study in calm, trustworthy SaaS clarity built for the Taiwanese enterprise market. The page opens on a pure white canvas (`#ffffff`) with dark-charcoal headings (`#3e3e3e`) and a single, decisive mint-green brand color (`#3dba9",
+      "voice_fingerprint": {
+        "register": "product-marketing, practical SaaS",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "clear",
+        "helpful",
+        "polished",
+        "productive",
+        "approachable"
+      ],
+      "antipatterns": [
+        "heavy",
+        "corporate-cold"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
       "category_raw": "productivity"
     },
     {
@@ -4924,6 +5158,32 @@
       "signature_motion": "Cart badge increments with a 1.15 scale-pop in red; sticky bottom cart bar slides up when the cart gains an item.",
       "has_personas": true,
       "category_raw": "Food Delivery"
+    },
+    {
+      "id": "yourator",
+      "primary_color_hex": "#0063d1",
+      "category": "consumer-tech",
+      "visual_theme": "Yourator is Taiwan's startup-and-digital-talent job board, and its design reads exactly the way a stylish recruiting product for the tech crowd should: clean, bright, friendly, and quietly confident without ever tipping into corporate stiffness. The page opens",
+      "voice_fingerprint": {
+        "register": "design-forward, startup recruiting",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "stylish",
+        "modern",
+        "confident",
+        "editorial",
+        "youthful"
+      ],
+      "antipatterns": [
+        "corporate-stiff",
+        "dull"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
     },
     {
       "id": "zapier",
