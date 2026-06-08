@@ -11,6 +11,7 @@
 import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import yaml from 'js-yaml';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -87,6 +88,19 @@ function validate(fm, file) {
   }
 }
 
+/** Lite validation for the optional DTCG-lite `tokens` block (forward-only). */
+function validateTokens(t, file) {
+  if (typeof t !== 'object' || Array.isArray(t)) fail(file, `tokens must be a mapping`);
+  if (t.color) {
+    if (typeof t.color !== 'object') fail(file, `tokens.color must be a mapping`);
+    for (const [k, v] of Object.entries(t.color)) if (!/^#[0-9a-fA-F]{6}$/.test(String(v))) fail(file, `tokens.color.${k} '${v}' not #rrggbb`);
+  }
+  if (t.spacing !== undefined && !(Array.isArray(t.spacing) && t.spacing.every(n => typeof n === 'number'))) fail(file, `tokens.spacing must be number[]`);
+  if (t.radius) for (const [k, v] of Object.entries(t.radius)) if (typeof v !== 'number') fail(file, `tokens.radius.${k} must be a number`);
+  if (t.font && typeof t.font !== 'object') fail(file, `tokens.font must be a mapping`);
+  if (t.source && !['live-extract', 'design-system', 'manual', 'reconciled'].includes(t.source)) fail(file, `tokens.source '${t.source}' invalid`);
+}
+
 const ids = readdirSync(REFS_DIR, { withFileTypes: true })
   .filter(d => d.isDirectory() && existsSync(join(REFS_DIR, d.name, 'DESIGN.md')))
   .map(d => d.name)
@@ -99,6 +113,21 @@ for (const id of ids) {
   const fm = parseFrontmatter(md, file);
   if (fm.id !== id) fail(file, `id mismatch: frontmatter '${fm.id}' vs directory '${id}'`);
   validate(fm, file);
+  // Optional DTCG-lite design tokens. Hand-rolled parseFrontmatter is 1-level
+  // and string-only, so re-parse the frontmatter with full YAML just for `tokens`
+  // (nested objects + numeric arrays). Forward-only: refs without it are unaffected.
+  let tokens = null;
+  const fmEnd = md.indexOf('\n---', 4);
+  const fmYaml = md.slice(4, fmEnd === -1 ? undefined : fmEnd);
+  // Only attempt the strict-YAML pass when a tokens block is actually present —
+  // existing frontmatters were authored for the lenient hand-rolled parser and
+  // may not be strict-YAML-clean, so we must not fail the build over them.
+  if (/^tokens:/m.test(fmYaml)) {
+    let full;
+    try { full = yaml.load(fmYaml); }
+    catch (e) { fail(file, `has a 'tokens:' block but frontmatter is not valid YAML: ${e.message}`); }
+    if (full && full.tokens) { validateTokens(full.tokens, file); tokens = full.tokens; }
+  }
   const entry = {
     id: fm.id,
     name: fm.name,
@@ -111,6 +140,7 @@ for (const id of ids) {
     verified: fm.verified,
   };
   if (fm.added) entry.added = fm.added;
+  if (tokens) entry.tokens = tokens;
   if (fm.ds) {
     entry.ds = {
       name: fm.ds.name,
@@ -144,6 +174,15 @@ const TYPES = `export interface RefEntry {
   readonly logo: { readonly type: 'favicon' | 'simpleicons' | 'github'; readonly slug: string };
   readonly verified: string;
   readonly added?: string;
+  readonly tokens?: {
+    readonly source?: 'live-extract' | 'design-system' | 'manual' | 'reconciled';
+    readonly extracted?: string;
+    readonly color?: Readonly<Record<string, string>>;
+    readonly font?: Readonly<Record<string, string>>;
+    readonly spacing?: readonly number[];
+    readonly radius?: Readonly<Record<string, number>>;
+    readonly shadow?: Readonly<Record<string, string>>;
+  };
   readonly ds?: {
     readonly name: string;
     readonly url: string;
@@ -159,7 +198,7 @@ const entryLines = entries.map(e => {
   const dsBlock = e.ds
     ? `, ds: { name: ${literal(e.ds.name)}, url: ${literal(e.ds.url)}, type: ${literal(e.ds.type)}, description: ${literal(e.ds.description)}${e.ds.ogImage ? `, ogImage: ${literal(e.ds.ogImage)}` : ''} }`
     : '';
-  return `  { id: ${literal(e.id)}, name: ${literal(e.name)}, displayName: ${literal(e.displayName)}, country: ${literal(e.country)}, category: ${literal(e.category)}, homepage: ${literal(e.homepage)}, primaryColor: ${literal(e.primaryColor)}, logo: { type: ${literal(e.logo.type)}, slug: ${literal(e.logo.slug)} }, verified: ${literal(e.verified)}${e.added ? `, added: ${literal(e.added)}` : ''}${dsBlock} }`;
+  return `  { id: ${literal(e.id)}, name: ${literal(e.name)}, displayName: ${literal(e.displayName)}, country: ${literal(e.country)}, category: ${literal(e.category)}, homepage: ${literal(e.homepage)}, primaryColor: ${literal(e.primaryColor)}, logo: { type: ${literal(e.logo.type)}, slug: ${literal(e.logo.slug)} }, verified: ${literal(e.verified)}${e.added ? `, added: ${literal(e.added)}` : ''}${e.tokens ? `, tokens: ${JSON.stringify(e.tokens)}` : ''}${dsBlock} }`;
 }).join(',\n');
 
 const out = `${header}\n\n${TYPES}\n\nexport const REGISTRY: readonly RefEntry[] = [\n${entryLines},\n] as const;\n\nexport const REGISTRY_BY_ID: Readonly<Record<string, RefEntry>> = Object.freeze(\n  Object.fromEntries(REGISTRY.map(e => [e.id, e]))\n);\n\n/** Convenience helper — single homepage URL by id (replaces homepage-urls.ts). */\nexport function getHomepageUrl(id: string): string | null {\n  return REGISTRY_BY_ID[id]?.homepage ?? null;\n}\n`;
