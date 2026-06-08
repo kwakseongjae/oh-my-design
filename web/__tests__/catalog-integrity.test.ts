@@ -62,6 +62,26 @@ describe("catalog-integrity / per-reference", () => {
 
     // §1 header and prose-first rule
     const md = readFileSync(join(REFS_DIR, id, "DESIGN.md"), "utf-8");
+
+    // Frontmatter-leak guard. The YAML frontmatter (between the opening `---`
+    // and its closing `---`) must contain NO markdown prose — a `## heading`
+    // or `- bullet` leaked above the closing `---` (a) never renders on the
+    // page and (b) breaks strict-YAML parsing the moment a `tokens:` block is
+    // added (the lenient field-parser silently hides it until then). This bit
+    // catchtable/dabang/lunit/toss-securities/wadiz; the guard stops regressions.
+    expect(md.startsWith("---\n"), `${id}: must open with a --- frontmatter`).toBe(true);
+    const fmClose = md.indexOf("\n---\n", 4);
+    expect(fmClose, `${id}: frontmatter has no closing ---`).toBeGreaterThan(0);
+    // Strip ONLY the tokens: block (its `tokens:` line plus its indented
+    // continuation), not everything after it — a leak can sit AFTER the tokens
+    // block, just above the closing ---. Tokens values are all indented, so a
+    // col-0 markdown heading/bullet that survives this strip is a real leak.
+    const fmRegion = md.slice(4, fmClose).replace(/^tokens:\n(?:(?:[ \t].*)?\n)*/m, "");
+    expect(
+      /^#{1,6}\s/m.test(fmRegion) || /^- /m.test(fmRegion),
+      `${id}: markdown prose leaked into the YAML frontmatter (a heading or bullet above the closing ---). Move that section into the body, after the closing ---.`
+    ).toBe(false);
+
     expect(md, `${id}: §1 header`).toMatch(/^## 1\. Visual Theme & Atmosphere/m);
     const sec1 = md.split(/^## 1\. Visual Theme & Atmosphere[^\n]*\n/m)[1] || "";
     // Blank line required after the §1 header. The llms-full generator splits on
