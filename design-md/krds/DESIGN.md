@@ -16,6 +16,69 @@ ds:
   type: system
   description: "행정안전부 주관 범정부 통합 디자인 시스템. Government Blue #256EF4, Pretendard GOV, WCAG/KWCAG 2.2 a11y-first tokens and components."
   og_image: "https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#256ef4"
+    primary-hover: "#0b50d0"
+    primary-deep: "#083891"
+    brand: "#256ef4"
+    canvas: "#ffffff"
+    foreground: "#1e2124"
+    muted: "#6d7882"
+    on-primary: "#ffffff"
+    surface: "#f4f5f6"
+    surface-primary: "#ecf2fe"
+    hairline: "#b1b8be"
+    border-strong: "#58616a"
+    body: "#464c53"
+    secondary: "#346fb2"
+    point: "#d63d4a"
+    danger: "#de3412"
+    warning: "#ffb114"
+    success: "#228738"
+    information: "#0b78cb"
+  typography:
+    family: { sans: "Pretendard GOV", mono: "SF Mono" }
+    display-large:  { size: 60, weight: 700, lineHeight: 1.5, tracking: "1px", use: "Marketing/banner display (no body use)" }
+    display-small:  { size: 36, weight: 700, lineHeight: 1.5, tracking: "1px", use: "Small display banner" }
+    heading-xlarge: { size: 40, weight: 700, lineHeight: 1.5, tracking: "1px", use: "H1 page/section top title (28px mobile)" }
+    heading-large:  { size: 32, weight: 700, lineHeight: 1.5, tracking: "1px", use: "H1 narrow / H2" }
+    heading-medium: { size: 24, weight: 700, lineHeight: 1.5, use: "H2 / H3" }
+    heading-small:  { size: 19, weight: 700, lineHeight: 1.5, use: "H3 / H4" }
+    heading-xsmall: { size: 17, weight: 700, lineHeight: 1.5, use: "H4 / H5" }
+    body-large:     { size: 19, weight: 400, lineHeight: 1.5, use: "Emphasized body / key copy" }
+    body-medium:    { size: 17, weight: 400, lineHeight: 1.5, use: "Standard body (default)" }
+    body-small:     { size: 15, weight: 400, lineHeight: 1.5, use: "Caption / small label" }
+    body-xsmall:    { size: 13, weight: 400, lineHeight: 1.5, use: "Annotation / meta / footer" }
+  spacing: { xs: 2, sm: 4, md: 8, base: 16, lg: 24, xl: 32, xxl: 40 }
+  rounded: { sm: 4, md: 6, lg: 8, full: 1000 }
+  shadow:
+    focus: "0 0 0 0.4rem #256ef4"
+    modal: "0 0.2rem 0 0 rgba(0,0,0,0.1), 0 0.4rem 0.8rem 0 rgba(0,0,0,0.1)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#256ef4", fg: "#ffffff", border: "1px solid #256ef4", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", hover: "#0b50d0", active: "#083891", disabled: "bg #cdd1d5 fg #6d7882", use: "Core action 신청하기/확인 (1 per screen)" }
+    button-secondary: { type: button, bg: "#ecf2fe", fg: "#0b50d0", border: "1px solid #256ef4", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", use: "Secondary action 자세히 보기/이전 단계" }
+    button-tertiary: { type: button, bg: "transparent", fg: "#1e2124", border: "1px solid #58616a", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", hover: "#f4f5f6", use: "Cancel/reset 취소/초기화/닫기" }
+    button-floating: { type: button, bg: "#256ef4", fg: "#ffffff", radius: "1000px", shadow: "weak box-shadow", use: "Bottom-right floating action 맨 위로/챗봇" }
+    input-text: { type: input, bg: "#ffffff", fg: "#464c53", border: "1px solid #58616a", radius: "8px", padding: "0 16px", height: "56px", font: "19px / 400", focus: "0 0 0 4px #256ef4 halo", disabled: "bg #cdd1d5 fg #6d7882 border #b1b8be", states: "error border 2px solid #de3412", use: "Standard text input (large default)" }
+    select: { type: input, bg: "#ffffff", fg: "#1e2124", border: "1px solid #58616a", radius: "6px", padding: "0 48px 0 16px", height: "56px", font: "19px / 400", disabled: "bg #cdd1d5 border #b1b8be", states: "error border 2px solid #ab2b36", use: "Native select with chevron" }
+    toggle-checkbox: { type: toggle, bg: "#ffffff", border: "1px solid #58616a", radius: "4px", active: "bg #256ef4 + white check icon", use: "Multi-select checkbox" }
+    toggle-switch: { type: toggle, bg: "#b1b8be", fg: "#ffffff", radius: "1000px", active: "#256ef4 track, white thumb right", disabled: "bg #cdd1d5", use: "On/off toggle switch" }
+    card: { type: card, bg: "#ffffff", border: "1px solid #b1b8be", radius: "8px", padding: "24px", shadow: "none", use: "Standard content panel, border-defined" }
+    card-info: { type: card, bg: "#ecf2fe", fg: "#1e2124", radius: "8px", padding: "16px 24px", use: "Info/help panel 안내·도움말" }
+    card-critical: { type: card, bg: "#de3412", fg: "#ffffff", radius: "0", use: "Full-bleed urgent notice banner top of page" }
+    dialog: { type: dialog, bg: "#ffffff", fg: "#1e2124", radius: "12px", padding: "40px", shadow: "0 0.2rem 0 0 rgba(0,0,0,0.1), 0 0.4rem 0.8rem 0 rgba(0,0,0,0.1)", use: "Modal dialog, backdrop fade 0->0.5 black, min-height 264px" }
+    badge-primary: { type: badge, bg: "#256ef4", fg: "#ffffff", border: "1px solid #256ef4", radius: "4px", padding: "0 8px", height: "24px", font: "15px / 400", use: "Content classification, action emphasis" }
+    badge-point: { type: badge, bg: "#d63d4a", fg: "#ffffff", radius: "4px", padding: "0 8px", height: "24px", font: "15px / 400", use: "Emphasis/new/important (red point)" }
+    badge-success: { type: badge, bg: "#228738", fg: "#ffffff", radius: "4px", padding: "0 8px", height: "24px", font: "15px / 400", use: "Completed / success" }
+    badge-danger: { type: badge, bg: "#de3412", fg: "#ffffff", radius: "4px", padding: "0 8px", height: "24px", font: "15px / 400", use: "Error / rejected" }
+    badge-warning: { type: badge, bg: "#ffb114", fg: "#1e2124", radius: "4px", padding: "0 8px", height: "24px", font: "15px / 400", use: "Caution (black text on warning bg)" }
+    badge-tag: { type: badge, bg: "#ffffff", fg: "#1e2124", border: "1px solid #cdd1d5", radius: "1000px", padding: "8px 10px", font: "15px / 400", active: "bg #ecf2fe fg #0b50d0 border #256ef4", use: "Selectable filter chip with delete button" }
+    tab-horizontal: { type: tab, bg: "transparent", fg: "#464c53", font: "17px / 400", active: "fg #256ef4 700 + 2px bottom border #256ef4", use: "In-page section switch, keyboard L/R nav" }
+    toast: { type: toast, bg: "#1e2124", fg: "#ffffff", radius: "8px", padding: "16px", use: "Center/bottom card, 3s auto-dismiss" }
 ---
 
 # Design System Inspiration of KRDS (대한민국 정부 디자인 시스템)

@@ -15,6 +15,50 @@ ds:
   url: "https://www.mongodb.design"
   type: system
   description: MongoDB's open-source design system with an extensive React component library.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#00ed64"
+    brand: "#00ed64"
+    primary-dark: "#00684a"
+    canvas: "#001e2b"
+    foreground: "#ffffff"
+    on-primary: "#000000"
+    accent-blue: "#006cfa"
+    accent-blue-hover: "#3860be"
+    accent-teal: "#1eaedb"
+    surface: "#1c2d38"
+    hairline: "#b8c4c2"
+    border-dark: "#3d4f58"
+    muted: "#5c6c75"
+  typography:
+    family: { sans: "Euclid Circular A", mono: "Source Code Pro" }
+    display-hero:    { size: 96, weight: 400, lineHeight: 1.20, use: "Serif authority hero (MongoDB Value Serif)" }
+    display-secondary: { size: 64, weight: 400, lineHeight: 1.00, use: "Serif sub-hero (MongoDB Value Serif)" }
+    section:         { size: 36, weight: 500, lineHeight: 1.33, use: "Section heading" }
+    subheading:      { size: 24, weight: 500, lineHeight: 1.33, use: "Feature titles" }
+    body-lg:         { size: 20, weight: 400, lineHeight: 1.60, use: "Introductions" }
+    body:            { size: 18, weight: 400, lineHeight: 1.33, use: "Standard body" }
+    body-light:      { size: 16, weight: 300, lineHeight: 1.50, use: "Light-weight reading text" }
+    nav:             { size: 16, weight: 500, tracking: 0.16, use: "Navigation, emphasized" }
+    caption:         { size: 14, weight: 400, lineHeight: 1.71, use: "Metadata" }
+    code-label:      { size: 14, weight: 500, lineHeight: 1.14, tracking: 1, use: "Uppercase Source Code Pro labels" }
+  spacing: [4, 7, 8, 10, 12, 14, 16, 18, 20, 24, 32]
+  rounded: { sm: 4, md: 16, lg: 24, full: 9999 }
+  shadow:
+    subtle: "rgba(0,0,0,0.1) 0px 2px 4px"
+    standard: "rgba(0,0,0,0.15) 0px 3px 20px"
+    forest: "rgba(0,30,43,0.12) 0px 26px 44px, rgba(0,0,0,0.13) 0px 7px 13px"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#00684a", fg: "#000000", border: "1px solid #00684a", radius: "100px", shadow: "rgba(0,0,0,0.06) 0px 1px 6px", states: "hover scale 1.1, active scale 0.85", use: "Primary green button on dark surface" }
+    button-dark-teal: { type: button, bg: "#1c2d38", fg: "#5c6c75", border: "1px solid #3d4f58", radius: "100px", states: "hover bg #1eaedb, text white, translateX(5px)", use: "Dark teal pill button" }
+    button-outlined: { type: button, bg: "transparent", fg: "#001e2b", border: "1px solid #b8c4c2", radius: "8px", states: "hover background tint", use: "Outlined button on light surface" }
+    card: { type: card, bg: "#ffffff", border: "1px solid #b8c4c2", radius: "16px", shadow: "rgba(0,30,43,0.12) 0px 26px 44px", use: "Light-mode card" }
+    card-dark: { type: card, bg: "#001e2b", border: "1px solid #3d4f58", radius: "16px", use: "Dark-mode card" }
+    input: { type: input, fg: "#e8edeb", border: "1px solid #b8c4c2", padding: "12px 12px 12px 8px", radius: "4px", use: "Textarea / form field" }
+    code-label: { type: badge, fg: "#00ed64", font: "14px / 500", use: "Uppercase Source Code Pro section label, 1-2px tracking" }
 ---
 
 # Design System Inspiration of MongoDB

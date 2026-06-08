@@ -10,6 +10,52 @@ logo:
   slug: "https://static-ux.mustit.co.kr/img/front/favicon.ico"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#d00000"
+    brand: "#1f1f2c"
+    canvas: "#ffffff"
+    surface: "#fafafa"
+    foreground: "#222222"
+    muted: "#888888"
+    on-primary: "#ffffff"
+    accent-info: "#3083e4"
+    accent-outlet: "#8c1e46"
+    surface-mid: "#f5f5f5"
+    hairline: "#e6e6e6"
+    border-subtle: "#f0f0f0"
+    disabled: "#cccccc"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    display:    { size: 28, weight: 700, lineHeight: 1.35, use: "Section hero titles" }
+    title-l:    { size: 24, weight: 700, lineHeight: 1.33, use: "Modal, page headers" }
+    title-m:    { size: 20, weight: 700, lineHeight: 1.35, use: "Section headers" }
+    title-s:    { size: 18, weight: 600, lineHeight: 1.5, use: "Card group titles" }
+    body-l:     { size: 16, weight: 500, lineHeight: 1.5, use: "Navigation links" }
+    body-m:     { size: 15, weight: 600, lineHeight: 1.47, use: "Button labels, product name" }
+    body-s:     { size: 14, weight: 700, lineHeight: 1.43, use: "Product price, form labels" }
+    caption-l:  { size: 13, weight: 700, lineHeight: 1.38, use: "Search keyword, chips" }
+    caption-s:  { size: 12, weight: 700, lineHeight: 1.33, use: "Metadata, sizes" }
+    label:      { size: 11, weight: 700, lineHeight: 1.45, use: "Badges, micro-copy" }
+    fine:       { size: 10, weight: 400, lineHeight: 1.6, use: "Legal, cart count" }
+  spacing: [8, 10, 12, 16]
+  rounded: { sm: 2, md: 4, lg: 8, full: 9999 }
+  shadow:
+    level1: "0 2px 4px 0 rgba(0,0,0,.03)"
+    level2: "0 2px 8px 0 rgba(0,0,0,.05)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#333333", fg: "#ffffff", radius: "4px", height: "48px", padding: "0 16px", font: "15px / 600", use: "Primary black CTA" }
+    button-confirm: { type: button, bg: "#d00000", fg: "#ffffff", border: "1px solid #d00000", radius: "4px", height: "48px", font: "18px / 500", use: "Red confirm CTA" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#222222", border: "1px solid #333333", radius: "4px", height: "32px", font: "13px / 600", use: "Secondary action" }
+    button-disabled: { type: button, bg: "#ffffff", fg: "#888888", border: "1px solid #dddddd", radius: "4px", use: "Disabled action" }
+    tab: { type: tab, fg: "#aaaaaa", font: "16px / 500", active: "2px solid #222222 bottom border, fg #222222, 16px / 700", use: "Section tabs" }
+    badge-outlet: { type: badge, bg: "#8c1e46", fg: "#ffffff", radius: "2px", height: "22px", padding: "0 8px", font: "11px / 700", use: "Outlet badge" }
+    badge-info: { type: badge, fg: "#3083e4", border: "1px solid #3083e4", radius: "2px", height: "24px", font: "12px / 400", use: "Info tag" }
+    chip: { type: badge, border: "1px solid #cccccc", radius: "17px", height: "34px", active: "1px solid #d00000", use: "Filter chip" }
+    input-search: { type: input, bg: "#ffffff", fg: "#222222", radius: "4px", height: "40px", padding: "0 12px", font: "15px / 600", use: "Search input, placeholder #aaaaaa" }
 ---
 
 # MUSTIT

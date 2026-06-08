@@ -15,6 +15,39 @@ ds:
   url: "https://github.com/kdan-mobile-software-ltd/kdan-ui-revamp"
   type: system
   description: "Kdan's open-source UI token library (kdanGreen brand token + neutral scale + semantic colors)."
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "brand = kdanGreen #00dc87 (catalog primary); structural surface + primary action = deep teal-black #002d37; #caff00 = single loud hero accent"
+  colors:
+    primary: "#002d37"
+    brand: "#00dc87"
+    accent-lime: "#caff00"
+    canvas: "#ffffff"
+    foreground: "#191919"
+    muted: "#4b4b4b"
+    on-primary: "#ffffff"
+    surface: "#fafafa"
+    body: "#191919"
+    link: "#007aff"
+    error: "#f25858"
+    disabled: "#afafaf"
+  typography:
+    family: { sans: "Clear Sans", mono: "SF Mono" }
+    hero:       { size: 56, weight: 700, use: "Hero heading, steep declarative top" }
+    hero-cta:   { size: 22, weight: 500, use: "Hero CTA label" }
+    body:       { size: 16, weight: 400, use: "Standard body, document-heavy reading" }
+    button:     { size: 16, weight: 500, use: "Standard button label, medium weight" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
+  rounded: { sm: 4, md: 4, lg: 4, full: 9999 }
+  shadow:
+    hover: "rgba(0,0,0,0.2) overlay token — darkens surface on hover; depth via contrast + borders, not Z-axis"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#002d37", fg: "#ffffff", border: "1.5px solid #002d37", radius: "4px", height: "38px", font: "16px / 500", hover: "rgba(0,0,0,0.2) overlay", use: "Primary action on live kdan.com" }
+    button-outline: { type: button, bg: "transparent", fg: "#002d37", border: "1.5px solid #002d37", radius: "4px", height: "38px", font: "16px / 500", use: "Secondary action paired with solid primary" }
+    button-hero: { type: button, bg: "#caff00", fg: "#000000", radius: "4px", height: "53px", font: "22px / 500", use: "Single loud high-emphasis hero CTA" }
+    button-disabled: { type: button, bg: "#afafaf", fg: "#4b4b4b", radius: "4px", disabled: "non-interactive", use: "Disabled state" }
 ---
 
 # Design System Inspiration of Kdan Mobile

@@ -16,6 +16,43 @@ ds:
   type: brand
   description: OpenCode's terminal-oriented logo and brand assets.
   og_image: "https://opencode.ai/social-share.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#201d1d"
+    canvas: "#fdfcfc"
+    foreground: "#201d1d"
+    on-primary: "#fdfcfc"
+    muted: "#9a9898"
+    surface: "#302c2c"
+    surface-light: "#f1eeee"
+    hairline: "#646262"
+    body: "#424245"
+    accent: "#007aff"
+    accent-hover: "#0056b3"
+    accent-active: "#004085"
+    error: "#ff3b30"
+    success: "#30d158"
+    warning: "#ff9f0a"
+  typography:
+    family: { sans: "Berkeley Mono", mono: "Berkeley Mono" }
+    heading-1:   { size: 38, weight: 700, lineHeight: 1.50, use: "Hero headlines, page titles" }
+    heading-2:   { size: 16, weight: 700, lineHeight: 1.50, use: "Section titles, bold emphasis" }
+    body:        { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body text, paragraphs" }
+    body-medium: { size: 16, weight: 500, lineHeight: 1.50, use: "Links, button text, nav items" }
+    body-tight:  { size: 16, weight: 500, lineHeight: 1.00, use: "Compact labels, tab items" }
+    caption:     { size: 14, weight: 400, lineHeight: 2.00, use: "Footnotes, metadata, small labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
+  rounded: { sm: 4, md: 4, lg: 6, full: 9999 }
+  shadow:
+    flat: "none"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#201d1d", fg: "#fdfcfc", radius: "4px", padding: "4px 20px", font: "16px / 500", border: "1px solid #646262", use: "Primary CTAs, main actions" }
+    input-email: { type: input, bg: "#f1eeee", fg: "#201d1d", border: "1px solid rgba(15,0,0,0.12)", radius: "6px", padding: "20px", use: "Form fields, email capture" }
+    link-default: { type: badge, fg: "#201d1d", font: "16px / 500", states: "underline 1px", use: "Primary text links in body content" }
+    tab-nav: { type: tab, font: "16px / 500", active: "2px bottom border #9a9898", use: "Section switching, content filtering" }
 ---
 
 # Design System Inspiration of OpenCode

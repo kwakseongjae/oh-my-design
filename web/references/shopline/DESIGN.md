@@ -44,13 +44,15 @@ tokens:
     soft: "rgba(200,200,200,0.27) 2px 2px 6px 0px"
     card: "rgba(0,0,0,0.08) 0px 8px 16px 0px"
     float: "rgba(0,0,0,0.08) 0px 4px 24px 0px"
+  components_harvested: true
   components:
-    button-primary: "SHOPLINE Blue #356dff fill, white text, 30px pill, 45px tall, 18px weight 700"
-    button-outline: "white fill, #356dff text + border, 30px pill, 45px tall, weight 700"
-    button-dark: "#00142d navy fill, white text, 30px pill, weight 700"
-    button-nav: "#000000 fill, white text, 30px pill, 38px tall, 14px weight 700"
-    card: "white surface, 8px radius, soft neutral shadow rgba(0,0,0,0.08) 0px 8px 16px"
-    section-tint: "#edf4fd / #f2f7fc light-blue washes alternating with white"
+    button-primary: { type: button, bg: "#356dff", fg: "#ffffff", radius: "30px", height: "45px", padding: "0 24px", font: "18px / 700", use: "Primary marketing CTA" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#356dff", border: "1px solid #356dff", radius: "30px", height: "45px", font: "18px / 700", use: "Secondary action beside primary" }
+    button-dark: { type: button, bg: "#00142d", fg: "#ffffff", radius: "30px", height: "44px", padding: "8px 24px", font: "16px / 700", use: "High-emphasis booking/conversion CTA" }
+    button-nav: { type: button, bg: "#000000", fg: "#ffffff", radius: "30px", height: "38px", padding: "0 24px", font: "14px / 700", use: "Always-visible free-trial CTA in sticky nav" }
+    card: { type: card, bg: "#ffffff", radius: "8px", shadow: "rgba(0,0,0,0.08) 0px 8px 16px 0px", use: "Standard elevated card; elevation from soft shadow not hairlines" }
+    input: { type: input, bg: "#ffffff", fg: "#00142d", border: "1px solid #d6d6d6", radius: "6px", focus: "#356dff blue ring/border", use: "Form input" }
+    section-band: { type: card, bg: "#edf4fd", use: "Light-blue wash band (#edf4fd / #f2f7fc) alternating with white; navy #00142d for immersive sections" }
 ---
 
 # Design System Inspiration of SHOPLINE

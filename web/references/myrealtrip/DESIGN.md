@@ -10,6 +10,55 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=myrealtrip.com&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#2b96ed"
+    primary-hover: "#1583db"
+    brand: "#0250cb"
+    accent: "#8238fa"
+    canvas: "#ffffff"
+    surface: "#f8f8f8"
+    foreground: "#0f0f0f"
+    body: "#333333"
+    muted: "#767676"
+    on-primary: "#ffffff"
+    hairline: "#e5e5e5"
+    border-strong: "#d1d1d1"
+    success: "#22c55e"
+    error: "#ff4d4f"
+    warning: "#faad14"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    hero:     { size: 32, weight: 700, lineHeight: 1.25, use: "Home hero, campaign titles" }
+    section:  { size: 24, weight: 700, lineHeight: 1.35, use: "Row headers" }
+    card-title: { size: 16, weight: 600, lineHeight: 1.4, use: "Tour/accommodation card titles" }
+    body:     { size: 14, weight: 400, lineHeight: 1.5, use: "Descriptions, list copy" }
+    cta:      { size: 14, weight: 600, lineHeight: 1.4, use: "Buttons, nav" }
+    price:    { size: 18, weight: 700, lineHeight: 1.3, use: "Price emphasis on cards" }
+    caption:  { size: 12, weight: 400, lineHeight: 1.4, use: "Metadata, badges, fine print" }
+  spacing: [4, 8, 12, 16, 24, 32, 40]
+  rounded: { sm: 6, md: 8, lg: 12, xl: 16, full: 9999 }
+  shadow:
+    subtle: "0 1px 3px rgba(0,0,0,0.04)"
+    hover: "0 2px 8px rgba(0,0,0,0.06)"
+    floating: "0 4px 16px rgba(0,0,0,0.1)"
+    modal: "0 8px 24px rgba(0,0,0,0.16)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#2b96ed", fg: "#ffffff", radius: "12px", padding: "0 24px", height: "40px", font: "14px / 600", states: "hover #1583db", use: "Login/signup, primary booking action" }
+    button-promo: { type: button, bg: "#8238fa", fg: "#ffffff", radius: "12px", padding: "0 24px", font: "14px / 600", use: "Membership / benefit CTAs" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#2b96ed", border: "1px solid #2b96ed", radius: "12px", padding: "0 24px", font: "14px / 600", use: "Secondary action" }
+    button-ghost: { type: button, bg: "transparent", fg: "#333333", radius: "8px", font: "14px / 600", use: "Tertiary nav, 더보기" }
+    input: { type: input, bg: "#ffffff", fg: "#0f0f0f", border: "1px solid #e5e5e5", radius: "12px", padding: "12px 16px", font: "14px / 400", focus: "border #2b96ed", use: "Search / text field" }
+    card: { type: card, bg: "#ffffff", border: "1px solid #e5e5e5", radius: "8px", shadow: "hover 0 2px 8px rgba(0,0,0,0.06)", use: "Tour / accommodation card" }
+    badge-confirm: { type: badge, bg: "rgba(34,197,94,0.12)", fg: "#22c55e", radius: "6px", padding: "2px 8px", font: "12px / 600", use: "Instant-confirm badge" }
+    badge-discount: { type: badge, bg: "transparent", fg: "#ff4d4f", font: "14px / 700", use: "Discount percentage on cards" }
+    chip: { type: badge, bg: "#f8f8f8", fg: "#333333", radius: "999px", padding: "6px 14px", font: "13px / 500", use: "Category filter chip" }
+    tab: { type: tab, fg: "#767676", font: "14px / 600", active: "2px bottom bar #2b96ed, fg #0f0f0f", use: "Top nav category item" }
+    toast: { type: toast, bg: "#0f0f0f", fg: "#ffffff", radius: "8px", padding: "12px 16px", use: "Snackbar transient feedback" }
+    dialog: { type: dialog, bg: "#ffffff", fg: "#0f0f0f", radius: "16px", padding: "24px", shadow: "rgba(0,0,0,0.5) backdrop", use: "Login, date picker, bottom sheet" }
 ---
 
 # Design System Inspiration of MyRealTrip (마이리얼트립)

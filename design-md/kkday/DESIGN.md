@@ -10,6 +10,53 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=kkday.com&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#ff5c00"
+    primary-hover: "#e65300"
+    brand: "#ff5c00"
+    canvas: "#ffffff"
+    foreground: "#1a1a1a"
+    muted: "#888888"
+    on-primary: "#ffffff"
+    surface: "#f7f7f8"
+    hairline: "#e5e5e6"
+    border-mid: "#d9d9d9"
+    body: "#4a4a4a"
+    brand-tint: "#fff0e8"
+    success: "#1fa463"
+    warning: "#f5a623"
+    error: "#e0353b"
+    rating: "#ffb400"
+  typography:
+    family: { sans: "-apple-system", mono: "SF Mono" }
+    hero:            { size: 32, weight: 700, use: "Hero headline" }
+    section-heading: { size: 23, weight: 700, use: "Section heading" }
+    card-heading:    { size: 19, weight: 700, use: "Card heading" }
+    price:           { size: 18, weight: 700, use: "Price, prominent bold" }
+    body:            { size: 15, weight: 400, use: "Body, card title" }
+    body-small:      { size: 13, weight: 400, use: "Location label, secondary" }
+    caption:         { size: 12, weight: 400, use: "Caption, meta" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 40, xxl: 64 }
+  rounded: { sm: 4, md: 8, lg: 8, full: 9999 }
+  shadow:
+    card: "0 2px 8px rgba(0,0,0,0.08)"
+    header: "0 1px 4px rgba(0,0,0,0.06)"
+    dropdown: "0 4px 16px rgba(0,0,0,0.12)"
+    modal: "0 8px 32px rgba(0,0,0,0.2)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#ff5c00", fg: "#ffffff", radius: "8px", padding: "10px 20px", font: "16px / 600", hover: "#e65300", use: "Book Now, Add to Cart, primary conversion CTA" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#1a1a1a", border: "1px solid #d9d9d9", radius: "8px", padding: "10px 20px", font: "16px / 600", hover: "#f7f7f8", use: "View Details, secondary actions" }
+    button-ghost: { type: button, bg: "transparent", fg: "#ff5c00", radius: "8px", padding: "8px 12px", use: "Inline tertiary actions, See more" }
+    input: { type: input, bg: "#ffffff", fg: "#1a1a1a", border: "1px solid #d9d9d9", radius: "8px", padding: "10px 14px", font: "16px / 400", focus: "border #ff5c00", states: "error border #e0353b", use: "Search, traveler details, contact forms" }
+    card-experience: { type: card, bg: "#ffffff", border: "1px solid #e5e5e6", radius: "8px", padding: "0", use: "Grid product card, image-led with title/rating/price/trust chips" }
+    badge-sale: { type: badge, bg: "#ff5c00", fg: "#ffffff", radius: "4px", padding: "2px 6px", font: "12px / 700", use: "Discount/sale ribbon on product image" }
+    badge-trust: { type: badge, bg: "#fff0e8", fg: "#1fa463", radius: "4px", padding: "2px 8px", font: "12px / 500", use: "Instant confirmation, Free cancellation" }
+    badge-urgency: { type: badge, bg: "transparent", fg: "#f5a623", font: "12px / 600", use: "Only 2 left, Selling fast" }
+    tab-nav: { type: tab, fg: "#1a1a1a", font: "15px / 500", active: "orange #ff5c00 active/hover accent", use: "Sticky header nav links" }
 ---
 
 # Design System Inspiration of KKday

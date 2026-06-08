@@ -10,6 +10,33 @@ logo:
   slug: spacex
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#f0f0fa"
+    brand: "#000000"
+    canvas: "#000000"
+    foreground: "#f0f0fa"
+    on-primary: "#000000"
+    surface: "#1a1a1f"
+    hairline: "#56565b"
+    accent-red: "#cc0000"
+    accent-amber: "#f5a623"
+  typography:
+    family: { sans: "D-DIN", mono: "D-DIN" }
+    display-hero: { size: 48, weight: 700, lineHeight: 1.00, tracking: 0.96, use: "Hero headline, uppercase" }
+    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
+    nav-bold:     { size: 13, weight: 700, lineHeight: 0.94, tracking: 1.17, use: "Nav emphasis, uppercase" }
+    nav:          { size: 12, weight: 400, lineHeight: 2.00, use: "Nav link, uppercase" }
+    micro:        { size: 10, weight: 400, lineHeight: 0.94, tracking: 1, use: "Micro label, uppercase" }
+  spacing: { xs: 3, sm: 5, md: 12, base: 15, lg: 20, xl: 24, xxl: 30 }
+  rounded: { sm: 4, md: 4, lg: 32, full: 9999 }
+  shadow:
+    none: "SpaceX uses zero shadows; depth comes from photography"
+  components_harvested: true
+  components:
+    button-ghost: { type: button, bg: "rgba(240,240,250,0.1)", fg: "#f0f0fa", border: "1px solid rgba(240,240,250,0.35)", radius: "32px", padding: "18px", hover: "background brightens, text full spectral white", use: "The only button — LEARN MORE CTA on photography" }
 ---
 
 # Design System Inspiration of SpaceX

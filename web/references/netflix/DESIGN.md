@@ -11,6 +11,58 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#E50914"
+    primary-hover: "#B20710"
+    brand: "#E50914"
+    canvas: "#141414"
+    foreground: "#FFFFFF"
+    muted: "#B3B3B3"
+    on-primary: "#FFFFFF"
+    surface: "#181818"
+    hairline: "#404040"
+    body: "#B3B3B3"
+    error: "#E87C03"
+    success: "#2A9D3C"
+    accent-match: "#46D369"
+  typography:
+    family: { sans: "Netflix Sans", mono: "Courier New" }
+    billboard-title: { size: 56, weight: 700, lineHeight: 1.1, tracking: -0.01, use: "Hero artwork title" }
+    display:         { size: 40, weight: 700, lineHeight: 1.15, tracking: -0.01, use: "Marketing hero, sign-up headline" }
+    heading-lg:      { size: 32, weight: 700, lineHeight: 1.2, use: "Modal title, detail-page show name" }
+    heading:         { size: 24, weight: 700, lineHeight: 1.25, use: "Section / category headers" }
+    row-title:       { size: 20, weight: 700, lineHeight: 1.3, use: "Row headers like Trending Now" }
+    subtitle:        { size: 18, weight: 500, lineHeight: 1.4, use: "Card title in expanded preview" }
+    body-lg:         { size: 16, weight: 400, lineHeight: 1.5, use: "Synopsis, descriptions" }
+    body:            { size: 14, weight: 400, lineHeight: 1.5, use: "Standard metadata, list rows" }
+    caption:         { size: 13, weight: 400, lineHeight: 1.4, use: "Match %, maturity rating, runtime" }
+    micro:           { size: 12, weight: 400, lineHeight: 1.4, tracking: 0.02, use: "Legal, fine print, footer links" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 60 }
+  rounded: { sm: 2, md: 4, lg: 6, full: 9999 }
+  shadow:
+    hover: "0 12px 24px rgba(0,0,0,0.8)"
+    floating: "0 6px 16px rgba(0,0,0,0.7)"
+    modal: "0 8px 32px rgba(0,0,0,0.9)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#FFFFFF", fg: "#000000", radius: "4px", padding: "8px 24px", font: "16px / 700", states: "hover rgba(255,255,255,0.75)", use: "Play action on billboard / detail / continue-watching" }
+    button-cta: { type: button, bg: "#E50914", fg: "#FFFFFF", radius: "4px", padding: "16px 28px", font: "18px / 700", states: "hover #B20710", use: "Marketing acquisition CTA (Get Started, Finish Sign-Up)" }
+    button-secondary: { type: button, bg: "rgba(109,109,110,0.7)", fg: "#FFFFFF", radius: "4px", padding: "8px 24px", font: "16px / 700", states: "hover rgba(109,109,110,0.4)", use: "More Info beside Play" }
+    button-circle: { type: button, bg: "rgba(42,42,42,0.6)", fg: "#FFFFFF", border: "2px solid rgba(255,255,255,0.5)", radius: "9999px", height: "40px", states: "hover border #FFFFFF", use: "Add-to-list, Like, expand on hover cards" }
+    input-auth: { type: input, bg: "#161616", fg: "#FFFFFF", border: "1px solid #808080", radius: "4px", padding: "16px", font: "16px / 400", focus: "border #FFFFFF", states: "error border-bottom 2px #E87C03", use: "Email/password on sign-in" }
+    input-search: { type: input, bg: "rgba(0,0,0,0.75)", fg: "#FFFFFF", border: "1px solid #FFFFFF", radius: "4px", padding: "7px 12px", font: "14px / 400", use: "Top-nav search, expands from icon" }
+    card-tile: { type: card, bg: "#181818", radius: "4px", shadow: "none", use: "Resting poster tile in a scrolling row" }
+    card-hover: { type: card, bg: "#181818", radius: "6px", shadow: "0 12px 24px rgba(0,0,0,0.8)", states: "transform scale(1.5)", use: "Expanded preview card lifting above row" }
+    badge-new: { type: badge, bg: "transparent", fg: "#E50914", font: "12px / 700", use: "NEW EPISODE / RECENTLY ADDED overlay, uppercase" }
+    badge-top10: { type: badge, bg: "#E50914", fg: "#FFFFFF", font: "9px / 700", use: "Top 10 trending-rank ribbon" }
+    badge-maturity: { type: badge, bg: "rgba(51,51,51,0.6)", fg: "#FFFFFF", border: "1px solid #666666", radius: "2px", padding: "2px 6px", font: "13px / 400", use: "Maturity rating on detail pages / previews" }
+    tab-nav: { type: tab, fg: "#E5E5E5", font: "14px / 400", active: "color #FFFFFF weight 700", states: "hover #B3B3B3", use: "Top nav links" }
+    toast-banner: { type: toast, bg: "#E87C03", fg: "#FFFFFF", padding: "12px 16px", font: "14px / 500", use: "Account / payment full-width top banner" }
+    dialog-modal: { type: dialog, bg: "#181818", fg: "#FFFFFF", radius: "6px", padding: "0 / 24px body", shadow: "0 8px 32px rgba(0,0,0,0.9)", use: "Title-detail modal, account-action confirm" }
+    toggle-default: { type: toggle, bg: "#737373", radius: "9999px", states: "on track #E50914, thumb #FFFFFF", use: "Autoplay previews, subtitle, profile-lock switches" }
 ---
 
 # Design System Inspiration of Netflix

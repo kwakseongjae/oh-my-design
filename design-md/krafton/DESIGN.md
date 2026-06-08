@@ -10,6 +10,43 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=krafton.com&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#000000"
+    brand: "#000000"
+    canvas: "#000000"
+    foreground: "#ffffff"
+    muted: "#777777"
+    on-primary: "#ffffff"
+    surface: "#0a0a0a"
+    hairline: "#393939"
+    body: "#555555"
+    content: "#222222"
+    placeholder: "#adadad"
+    disabled: "#dddddd"
+    error: "#ed2929"
+    link: "#3d7fd9"
+  typography:
+    family: { sans: "Poppins", mono: "SF Mono" }
+    hero-logotype:  { size: 140, weight: 400, use: "Hero logotype, KRAFTON custom font, display only" }
+    page-header:    { size: 70, weight: 700, use: "PageHeader title on light pages" }
+    article-body:   { size: 16, weight: 400, lineHeight: 1.9, use: "Article/single body copy" }
+    nav:            { size: 18, weight: 600, use: "Navigation, Poppins" }
+    body:           { size: 14, weight: 400, lineHeight: 1.7, use: "Base body text" }
+    selector:       { size: 13, weight: 400, use: "Language selector links" }
+    footer:         { size: 12, weight: 400, use: "Footer copyright, Poppins" }
+  spacing: { xs: 15, sm: 20, md: 40, base: 60, lg: 80, xl: 100, xxl: 140 }
+  rounded: { sm: 0, md: 0, lg: 0, full: 9999 }
+  shadow:
+    none: "No box-shadow in brand CSS; depth via dark background bleed and self-lit imagery"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#ffffff", fg: "#000000", border: "2px solid #000000", padding: "8px 43px 8px 15px", font: "14px / 700", radius: "0px", hover: "bg #000000 fg #ffffff (inverted)", use: "Download button on white surface" }
+    input-search: { type: input, bg: "#ffffff", fg: "#222222", border: "2px solid #000000", height: "46px", padding: "12px 20px", font: "15px / 500", radius: "0px", use: "Search input, placeholder #adadad" }
+    tab-third: { type: tab, bg: "#f7f7f7", fg: "#000000", font: "19px / 500", height: "2.4em", active: "bg #000000 fg #ffffff 19px/700", use: "ThirdDepthTab navigation" }
+    listItem-link: { type: listItem, fg: "#222222", font: "15px / 500", hover: "underline expands 0 to 100% 2px over 0.3s", use: "Download link, text + animated underline" }
 ---
 
 # KRAFTON

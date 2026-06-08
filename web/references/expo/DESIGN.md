@@ -16,6 +16,45 @@ ds:
   type: brand
   description: Expo logo/wordmark trademark and usage guidelines.
   og_image: "https://og.expo.dev/?theme=universe&title=Brand%2C+Assets%2C+Styles&description=Get+Expo+brand+assets+and+styles+for+any+use."
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#000000"
+    brand: "#000000"
+    canvas: "#f0f0f3"
+    surface: "#ffffff"
+    foreground: "#1c2024"
+    muted: "#60646c"
+    on-primary: "#ffffff"
+    hairline: "#e0e1e6"
+    body: "#60646c"
+    accent-link: "#0d74ce"
+    accent-purple: "#8145b5"
+    error: "#eb8e90"
+    success: "#ab6400"
+  typography:
+    family: { sans: "Inter", mono: "JetBrains Mono" }
+    display:    { size: 64, weight: 800, lineHeight: 1.10, tracking: -3, use: "Hero headlines, extreme tracking" }
+    section:    { size: 48, weight: 600, lineHeight: 1.10, tracking: -2, use: "Feature section anchors" }
+    subheading: { size: 20, weight: 600, lineHeight: 1.20, tracking: -0.25, use: "Card titles, feature names" }
+    body-lg:    { size: 18, weight: 400, lineHeight: 1.40, use: "Intro paragraphs, section descriptions" }
+    body:       { size: 16, weight: 400, lineHeight: 1.40, use: "Standard text, nav links, buttons" }
+    caption:    { size: 14, weight: 500, lineHeight: 1.40, use: "Descriptions, metadata, badges" }
+    tag:        { size: 12, weight: 500, lineHeight: 1.00, use: "Smallest text, badges" }
+    code:       { size: 16, weight: 400, lineHeight: 1.40, use: "Inline code, terminal commands" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
+  rounded: { sm: 6, md: 8, lg: 24, full: 9999 }
+  shadow:
+    whisper: "rgba(0,0,0,0.08) 0px 3px 6px, rgba(0,0,0,0.07) 0px 2px 4px"
+    elevated: "rgba(0,0,0,0.1) 0px 10px 20px, rgba(0,0,0,0.05) 0px 3px 6px"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#ffffff", fg: "#1c2024", border: "1px solid #e0e1e6", radius: "6px", padding: "0 12px", font: "16px / 500", hover: "subtle shadow", use: "Default white button" }
+    button-dark: { type: button, bg: "#000000", fg: "#ffffff", radius: "9999px", padding: "0 12px", font: "16px / 500", use: "Maximum-emphasis pill CTA" }
+    input: { type: input, bg: "#ffffff", fg: "#1c2024", border: "1px solid #e0e1e6", radius: "6px", padding: "0 12px", focus: "blue ring shadow", use: "Form fields" }
+    card: { type: card, bg: "#ffffff", border: "1px solid #e0e1e6", radius: "8px", shadow: "rgba(0,0,0,0.08) 0px 3px 6px, rgba(0,0,0,0.07) 0px 2px 4px", use: "Standard content card" }
+    badge-status: { type: badge, bg: "#ffffff", fg: "#1c2024", border: "1px solid #e0e1e6", radius: "9999px", font: "12px / 500", use: "All Systems Operational pill with green dot" }
 ---
 
 # Design System Inspiration of Expo

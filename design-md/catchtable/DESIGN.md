@@ -63,13 +63,14 @@ tokens:
     drop: "rgba(0,0,0,.12) 0 2px 12px"
     md: "rgba(0,0,0,.12) 0 6px 12px, rgba(0,0,0,.08) 0 4px 8px, rgba(0,0,0,.08) 0 0 4px"
     lg: "rgba(0,0,0,.12) 0 16px 20px, rgba(0,0,0,.08) 0 8px 16px, rgba(0,0,0,.08) 0 0 8px"
+  components_harvested: true
   components:
-    button-primary: "#ff3d00 fill, #fff text, 14px/500, 12px radius, ~44px tall — single variant, single-CTA discipline"
-    search-input: "#f5f5f5 fill, sharp 0px corners, 13px/500 placeholder #9e9e9e, inline search icon left"
-    chip-row: "13-14px/500 ink, no fill or border at rest — separation by spacing alone"
-    best-of-pill: "image-led tile + 14px/400 ink label below, no card chrome"
-    bottom-tab-bar: "5 tabs (홈/저장/내 주변/마이다이닝/MY), icon-over-label, 14px/400 ink default"
-    footer-disclosure: "#f9f9f9 surface, 11px/500 policy links separated by | pipe, 11px/400 disclaimer"
+    button-primary: { type: button, bg: "#ff3d00", fg: "#ffffff", radius: "12px", height: "44px", font: "14px / 500", hover: "press #fc9086", use: "Single primary CTA pill — single-CTA discipline, only variant" }
+    search-input: { type: input, bg: "#f5f5f5", fg: "#000000", radius: "0px", font: "13px / 500", use: "Search field, placeholder #9e9e9e, inline search icon left" }
+    chip-row: { type: badge, bg: "transparent", fg: "#5f5f5f", font: "14px / 500", use: "Geo/filter chips, no fill or border at rest — separation by spacing" }
+    best-of-pill: { type: card, bg: "#ffffff", radius: "4px", font: "14px / 400", use: "Image-led tile + ink label below, no card chrome (호텔 뷔페, 스시 오마카세)" }
+    bottom-tab-bar: { type: tab, fg: "#424242", font: "14px / 400", active: "ink darkens to #000000", use: "5 tabs (홈/저장/내 주변/마이다이닝/MY), icon-over-label" }
+    footer-disclosure: { type: card, bg: "#f9f9f9", fg: "#8f8f8f", font: "11px / 400", use: "Footer block, 11px/500 policy links separated by | pipe" }
 ---
 
 # Design System Inspiration of CatchTable (캐치테이블)

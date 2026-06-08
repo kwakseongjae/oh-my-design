@@ -10,6 +10,50 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=ichefpos.com&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#e8552d"
+    primary-hover: "#d14a26"
+    accent-tint: "#fdede7"
+    canvas: "#ffffff"
+    surface: "#f7f7f7"
+    surface-hover: "#efefef"
+    foreground: "#1f1f1f"
+    body: "#555555"
+    muted: "#888888"
+    disabled: "#bcbcbc"
+    hairline: "#e6e6e6"
+    border: "#d4d4d4"
+    success: "#1fa463"
+    warning: "#f5a623"
+    error: "#e0353b"
+    info: "#2b82e0"
+  typography:
+    family: { sans: "PingFang TC", mono: "SFMono-Regular" }
+    hero:      { size: 34, weight: 700, lineHeight: 1.15, use: "Marketing hero headline" }
+    heading:   { size: 22, weight: 700, lineHeight: 1.25, use: "Card / section headings" }
+    total:     { size: 24, weight: 700, lineHeight: 1.20, use: "Totals, table numbers (scannable)" }
+    pos-tile:  { size: 17, weight: 600, lineHeight: 1.30, use: "POS button / menu item, large tap text" }
+    body:      { size: 15, weight: 400, lineHeight: 1.50, use: "Body, descriptions" }
+    button:    { size: 16, weight: 600, lineHeight: 1.20, use: "Button labels" }
+    caption:   { size: 12, weight: 400, lineHeight: 1.40, use: "Caption, metadata" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 48, xxl: 80 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    card: "rgba(0,0,0,0.06) 0px 2px 8px"
+    header: "rgba(0,0,0,0.06) 0px 1px 4px"
+    modal: "rgba(0,0,0,0.18) 0px 8px 32px"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#e8552d", fg: "#ffffff", radius: "8px", padding: "12px 24px", font: "16px / 600", hover: "bg #d14a26", use: "Primary CTA / key POS action" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#1f1f1f", border: "1px solid #d4d4d4", radius: "8px", padding: "12px 24px", font: "16px / 600", hover: "bg #f7f7f7", use: "Secondary actions" }
+    pos-tile: { type: card, bg: "#ffffff", fg: "#1f1f1f", radius: "8px", padding: "12px", font: "16px / 600", active: "bg #fdede7, 1px solid #e8552d", use: "Tappable menu-item grid in order screen" }
+    input: { type: input, bg: "#ffffff", fg: "#1f1f1f", border: "1px solid #d4d4d4", radius: "8px", padding: "12px 14px", font: "16px / 400", focus: "border #e8552d", states: "error border #e0353b", use: "Forms, menu editing, settings" }
+    card-feature: { type: card, bg: "#ffffff", border: "1px solid #e6e6e6", radius: "8px", padding: "24px", use: "Feature explainers, plan cards" }
+    card-order: { type: card, bg: "#ffffff", radius: "8px", padding: "12px", use: "Open-table / order tickets with status-tinted left border" }
+    badge-status: { type: badge, bg: "#1fa463", fg: "#ffffff", radius: "4px", padding: "2px 8px", font: "12px / 600", states: "pending #f5a623, void #e0353b", use: "Order/payment status" }
 ---
 
 # Design System Inspiration of iCHEF

@@ -10,6 +10,54 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=comic.naver.com&sz=128"
 verified: "2026-05-27"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#00dc64"
+    primary-hover: "#00c758"
+    brand: "#00dc64"
+    canvas: "#ffffff"
+    surface: "#f7f7f7"
+    foreground: "#1a1a1a"
+    body: "#666666"
+    muted: "#999999"
+    on-primary: "#ffffff"
+    hairline: "#eeeeee"
+    border-strong: "#dddddd"
+    accent-like: "#ff4d6d"
+    accent-star: "#ffb300"
+    error: "#f5444c"
+    viewer-black: "#000000"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    display:    { size: 28, weight: 700, lineHeight: 1.3, use: "Featured banner, event headers" }
+    section:    { size: 20, weight: 700, lineHeight: 1.35, use: "Row headers" }
+    title-card: { size: 16, weight: 600, lineHeight: 1.4, use: "Webtoon title under thumbnail" }
+    author:     { size: 13, weight: 400, lineHeight: 1.4, use: "Author name, genre line" }
+    body:       { size: 14, weight: 400, lineHeight: 1.6, use: "Synopsis, descriptions" }
+    label:      { size: 14, weight: 600, lineHeight: 1.4, use: "Buttons, day tabs" }
+    caption:    { size: 12, weight: 400, lineHeight: 1.4, use: "View/like counts, timestamps" }
+    rank:       { size: 22, weight: 700, use: "Chart rank, tabular" }
+  spacing: [4, 8, 12, 16, 20, 24, 32]
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    subtle: "0px 2px 8px rgba(0,0,0,0.06)"
+    floating: "0px 4px 12px rgba(0,0,0,0.12)"
+    toast: "0px 4px 12px rgba(0,0,0,0.16)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#00dc64", fg: "#ffffff", radius: "8px", padding: "10px 18px", font: "14px / 600", states: "hover #00c758, disabled bg #eeeeee fg #bbbbbb", use: "Primary read CTA" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#333333", border: "1px solid #dddddd", radius: "8px", padding: "10px 18px", font: "14px / 600", use: "Secondary action" }
+    button-subscribe: { type: button, bg: "rgba(0,220,100,0.10)", fg: "#00c758", radius: "8px", padding: "10px 18px", font: "14px / 600", use: "관심웹툰 subscribe toggle, green-tinted when active" }
+    input-search: { type: input, bg: "#f7f7f7", fg: "#333333", radius: "8px", padding: "12px 14px", font: "14px / 400", focus: "1px border #00dc64", use: "Title/author search" }
+    card-thumbnail: { type: card, bg: "transparent", radius: "8px", states: "hover scale 1.03 + title emphasis", use: "Webtoon thumbnail card, art is the card" }
+    card-info: { type: card, bg: "#ffffff", radius: "12px", padding: "20px", shadow: "0px 2px 8px rgba(0,0,0,0.06)", use: "Title-detail header" }
+    badge-up: { type: badge, bg: "#00dc64", fg: "#ffffff", radius: "4px", padding: "1px 5px", font: "11px / 700", use: "UP / new-episode flag, the green ritual" }
+    chip: { type: badge, bg: "#f7f7f7", fg: "#666666", radius: "999px", padding: "6px 14px", font: "13px / 500", active: "bg #00dc64, fg #ffffff", use: "요일별 day tabs, genre filters" }
+    badge-rating: { type: badge, bg: "transparent", fg: "#ffb300", font: "12px / 700", use: "별점 average beside a star" }
+    tab: { type: tab, fg: "#999999", font: "15px / 600", active: "fg #00dc64, 2px #00dc64 underline", use: "Day-of-week tab" }
+    toast: { type: toast, bg: "#1a1a1a", fg: "#ffffff", radius: "8px", padding: "12px 16px", shadow: "0px 4px 12px rgba(0,0,0,0.16)", font: "14px / 500", use: "Transient feedback, 3s auto-dismiss" }
 ---
 
 # Design System Inspiration of Naver Webtoon (네이버웹툰)

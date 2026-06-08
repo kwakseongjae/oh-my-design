@@ -55,14 +55,15 @@ tokens:
     flat: "none (live homepage leans flat — depth via surface tint + border alpha)"
     popover: "subtle drop-shadow + rgba(0,0,0,0.05) border (Level 3)"
     modal: "full shadow + rgba(0,0,0,0.3) scrim (Level 4)"
+  components_harvested: true
   components:
-    button-primary: "Marketing hero CTA — #242428 fill, white text, 18px radius, 8px 24px pad, Inter 18px/600"
-    button-secondary: "Subtle pill — rgba(0,0,0,0.05) fill, off-black text, 16px radius, 20px/700 label"
-    button-cobalt: "In-product primary — #329BE7 fill, white text, 6-8px radius, cobalt-400-20 ghost hover"
-    card: "Theatrical-colored feature card, 20px radius, 400px fixed height (marketing)"
-    cta-band: "Bottom conversion band, 32px radius, full-bleed"
-    input: "White surface, rgba(0,0,0,0.05) border, 6-8px radius, cobalt-400-30 focus ring"
-    nav-link: "Inter 15px/400, off-black, 2px active bottom-border indicator"
+    button-primary: { type: button, bg: "#242428", fg: "#FFFFFF", radius: "18px", padding: "8px 24px", height: "64px", font: "18px / 600", use: "Marketing hero CTA — top-of-funnel Sign Up only" }
+    button-secondary: { type: button, bg: "rgba(0,0,0,0.05)", fg: "rgba(0,0,0,0.85)", radius: "16px", padding: "8px 20px", height: "54px", font: "20px / 700", use: "Section View Details pivots, not primary" }
+    button-cobalt: { type: button, bg: "#329BE7", fg: "#FFFFFF", radius: "8px", hover: "cobalt-400-20 #329BE733 ghost fill", use: "In-product primary action (Inbox CTA, send-message)" }
+    input: { type: input, bg: "#FFFFFF", border: "1px solid rgba(0,0,0,0.05)", radius: "8px", padding: "8px 12px", focus: "cobalt-400-30 #329BE74D ring", use: "Bezier form input" }
+    card: { type: card, bg: "rgb(250,154,240)", fg: "rgba(0,0,0,0.85)", radius: "20px", height: "400px", use: "Theatrical-colored AI Messenger feature card (marketing)" }
+    cta-band: { type: card, bg: "transparent", radius: "32px", padding: "16px", use: "Bottom Experience It Yourself conversion band, full-bleed" }
+    nav-link: { type: tab, bg: "transparent", fg: "rgba(0,0,0,0.85)", font: "15px / 400", active: "2px bottom-border indicator", use: "Nav menu items" }
 ---
 
 # Design System Inspiration of Channel Talk

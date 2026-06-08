@@ -38,14 +38,15 @@ tokens:
   rounded: { sm: 0, md: 0, lg: 0, full: 0 }
   shadow:
     none: "none"
+  components_harvested: true
   components:
-    button-primary: "transparent fill, white text, 1px white border, 0px radius, 16px/700 — primary CTA on dark/hero surfaces"
-    button-secondary: "transparent fill, #262626 text + 1px #262626 border, 0px radius, 16px/400 — light surfaces"
-    button-highlight: "#1c69d4 fill, white text, 0px radius, hover #0653b6 — BMW Blue CTA"
-    input: "white bg, #262626 text + 1px #262626 border, 0px radius, focus border #0653b6"
-    card: "white surface, 0px radius, 24px padding, no border — sharp rectangular"
-    dark-hero-container: "#262626 (or full-bleed photography), white text, 0px radius, edge-to-edge"
-    badge: "#262626 bg, white text, 0px radius, 12px/700"
+    button-primary: { type: button, bg: "transparent", fg: "#ffffff", border: "1px solid #ffffff", radius: "0px", padding: "12px 24px", font: "16px / 700", hover: "text stays white, no underline", use: "Primary CTA on dark/hero surfaces" }
+    button-secondary: { type: button, bg: "transparent", fg: "#262626", border: "1px solid #262626", radius: "0px", padding: "12px 24px", font: "16px / 400", use: "Secondary action on light surfaces" }
+    button-highlight: { type: button, bg: "#1c69d4", fg: "#ffffff", radius: "0px", padding: "12px 24px", font: "16px / 700", hover: "bg #0653b6", use: "BMW Blue highlight CTA" }
+    input: { type: input, bg: "#ffffff", fg: "#262626", border: "1px solid #262626", radius: "0px", padding: "12px 16px", font: "16px / 400", focus: "border #0653b6", use: "Default text input" }
+    card: { type: card, bg: "#ffffff", radius: "0px", padding: "24px", border: "none", use: "Light-section content card — sharp rectangular" }
+    dark-hero-container: { type: card, bg: "#262626", fg: "#ffffff", radius: "0px", padding: "0px", use: "Hero/feature with full-bleed automotive photography, edge-to-edge" }
+    badge: { type: badge, bg: "#262626", fg: "#ffffff", radius: "0px", padding: "4px 8px", font: "12px / 700", use: "Label badge" }
 ---
 
 # Design System Inspiration of BMW

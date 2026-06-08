@@ -16,6 +16,43 @@ ds:
   type: brand
   description: Mistral AI's logo, colors, typography, and brand asset kit.
   og_image: "https://mistral.ai/-/brand/opengraph-image-1robrb.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#fa520f"
+    primary-hover: "#fb6424"
+    brand: "#ff8105"
+    canvas: "#fffaeb"
+    surface: "#fff0c2"
+    foreground: "#1f1f1f"
+    on-primary: "#ffffff"
+    accent-sunshine: "#ffa110"
+    accent-gold: "#ffd900"
+    accent-block-gold: "#ffe295"
+  typography:
+    family: { sans: "Arial", mono: "Arial" }
+    display:     { size: 82, weight: 400, lineHeight: 1.00, tracking: -2.05, use: "Hero headlines, billboard scale" }
+    section:     { size: 56, weight: 400, lineHeight: 0.95, use: "Feature section anchors" }
+    subheading-lg: { size: 48, weight: 400, lineHeight: 0.95, use: "Secondary section titles" }
+    subheading:  { size: 32, weight: 400, lineHeight: 1.15, use: "Card headings, feature names" }
+    card-title:  { size: 30, weight: 400, lineHeight: 1.20, use: "Mid-level headings" }
+    feature:     { size: 24, weight: 400, lineHeight: 1.33, use: "Small headings" }
+    body:        { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body, button text" }
+    caption:     { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, secondary links" }
+  spacing: [2, 4, 8, 10, 12, 16, 20, 24, 32, 40, 48, 64, 80, 98, 100]
+  rounded: { sm: 0, md: 0, lg: 0, full: 9999 }
+  shadow:
+    golden: "rgba(127,99,21,0.12) -8px 16px 39px, rgba(127,99,21,0.1) -33px 64px 72px, rgba(127,99,21,0.06) -73px 144px 97px"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#1f1f1f", fg: "#ffffff", padding: "12px", radius: "0px", font: "16px / 400", use: "Primary action, dark on warm" }
+    button-secondary: { type: button, bg: "#fff0c2", fg: "#1f1f1f", radius: "0px", font: "16px / 400", use: "Warm inviting secondary CTA" }
+    button-ghost: { type: button, bg: "transparent", fg: "#1f1f1f", radius: "0px", states: "opacity 0.4", use: "Secondary/de-emphasized actions" }
+    button-text: { type: button, bg: "transparent", fg: "#1f1f1f", padding: "8px 0px 0px", use: "Tertiary navigation links" }
+    card: { type: card, bg: "#fffaeb", radius: "0px", shadow: "golden amber 5-layer cascade", use: "Feature cards, golden-hour float" }
+    input: { type: input, border: "1px solid hsl(240,5.9%,90%)", radius: "0px", focus: "accent color ring", use: "Form fields" }
+    block-identity: { type: badge, bg: "gradient #ffd900 to #fa520f", radius: "0px", use: "Mistral block gradient brand mark" }
 ---
 
 # Design System Inspiration of Mistral AI

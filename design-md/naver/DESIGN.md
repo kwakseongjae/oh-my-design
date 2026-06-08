@@ -16,6 +16,55 @@ ds:
   type: brand
   description: "NAVER Corp's official brand guide — logo usage, NAVER Green #03C75A, and identity rules."
   og_image: "https://www.navercorp.com/img/og/OG_TAG_1_Main.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#03c75a"
+    primary-hover: "#02b350"
+    primary-active: "#02a046"
+    brand: "#03c75a"
+    canvas: "#ffffff"
+    surface: "#f5f6f7"
+    foreground: "#333333"
+    muted: "#767676"
+    on-primary: "#ffffff"
+    hairline: "#dadce0"
+    border-subtle: "#e9ebee"
+    accent-link: "#0068c3"
+    accent-visited: "#6633b9"
+    error: "#e74c3c"
+    warning: "#f5a623"
+    secondary-text: "#5f6368"
+  typography:
+    family: { sans: "Apple SD Gothic Neo", mono: "D2Coding" }
+    display:     { size: 32, weight: 700, lineHeight: 1.38, use: "Brand campaign hero, editorial titles" }
+    page-title:  { size: 22, weight: 700, lineHeight: 1.36, use: "Section headers on portal/SERP" }
+    card-title:  { size: 17, weight: 700, lineHeight: 1.41, use: "News headlines, shopping card titles" }
+    body-lg:     { size: 17, weight: 400, lineHeight: 1.62, tracking: -0.34, use: "Search-result body, blog body" }
+    body:        { size: 14, weight: 400, lineHeight: 1.5, use: "Standard list rows" }
+    body-small:  { size: 13, weight: 400, lineHeight: 1.38, use: "Secondary metadata, attributions" }
+    caption:     { size: 12, weight: 400, lineHeight: 1.33, use: "Timestamps, source bylines" }
+  spacing: [4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64]
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+  shadow:
+    subtle: "0 1px 2px rgba(0,0,0,0.06)"
+    standard: "0 2px 8px rgba(0,0,0,0.1)"
+    prominent: "0 4px 16px rgba(0,0,0,0.12)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#03c75a", fg: "#ffffff", radius: "4px", height: "48px", font: "16px / 700", states: "hover #02b350, pressed #02a046, disabled #dadce0", use: "Primary action CTA" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#333333", border: "1px solid #dadce0", radius: "4px", states: "hover #f5f6f7", use: "취소, 닫기, secondary action" }
+    button-ghost: { type: button, bg: "transparent", fg: "#03c75a", padding: "8px 12px", font: "14px / 500", use: "더보기, 전체보기 expand affordance" }
+    chip: { type: badge, bg: "#f5f6f7", fg: "#333333", radius: "9999px", height: "32px", padding: "0 14px", active: "bg #03c75a, fg #ffffff", use: "Search refinement / category chip" }
+    input-search: { type: input, bg: "#ffffff", fg: "#333333", border: "2px solid #03c75a", height: "56px", padding: "0 56px 0 16px", font: "17px / 400", use: "The 녹색창 — treat as a logo" }
+    input: { type: input, bg: "#ffffff", border: "1px solid #dadce0", radius: "4px", height: "40px", padding: "0 12px", focus: "2px solid #03c75a", use: "Standard text input" }
+    card-news: { type: card, bg: "#ffffff", border: "1px solid #e9ebee", radius: "4px", padding: "16px", use: "News / headline card" }
+    card-shopping: { type: card, bg: "#ffffff", border: "1px solid #e9ebee", radius: "8px", use: "Shopping / 가격비교 grid item" }
+    tile: { type: card, bg: "#ffffff", radius: "16px", padding: "16px", shadow: "0 1px 2px rgba(0,0,0,0.06) on hover", use: "Service tile (서비스 바로가기)" }
+    badge-ad: { type: badge, bg: "#ffffff", fg: "#03c75a", border: "1px solid #03c75a", radius: "2px", use: "광고 ad label" }
+    tab: { type: tab, fg: "#5f6368", font: "16px / 400", active: "fg #03c75a, weight 700, 3px green underline", use: "SERP vertical tabs" }
+    toast: { type: toast, bg: "#333333", fg: "#ffffff", font: "14px / 400", use: "Login / save confirmation, 2.5s dismiss" }
 ---
 
 # Design System Inspiration of Naver (네이버)

@@ -68,14 +68,21 @@ tokens:
     standard: "rgba(0,0,0,0.12) 0px 2px 5px 0px"
     elevated: "rgba(0,0,0,0.15) 0px 4px 9px 0px"
     modal: "rgba(0,0,0,0.19) 0px 17px 50px 0px"
+  components_harvested: true
   components:
-    button-primary: "Salad green #04c584 fill, white text, 2px radius, 700 weight; hover LIGHTENS to #10df99"
-    button-ghost: "white fill, #04c584 text + 1px #04c584 border, hover #f3fdfa mint tint"
-    card-data: "white surface, 1px #e1e1e1 border, 2px radius, standard shadow; dense 20-24px padding"
-    amount-input: "2px #f5f5f5 border, focus #10df99 + #f3fdfa bg, 22px/700 right-aligned — money as heading"
-    status-pill: "#f3fdfa bg, #04c584 text, 41px pill radius, 12px/500 filter chips"
-    table-row: "alternating #ffffff/#fbfbfb, amounts right-aligned 14px/700 #2b2b2b positive #fe493d negative"
-    chart: "teal-slate series (#34464b/#5c818a/#1c6c73/#a7c7cf); green #04c584 only for user's own value"
+    button-primary: { type: button, bg: "#04c584", fg: "#ffffff", radius: "2px", height: "42px", padding: "12px 24px", font: "16px / 700", hover: "bg #10df99 (lightens)", use: "Primary CTA on data/transactional flows" }
+    button-primary-large: { type: button, bg: "#04c584", fg: "#ffffff", radius: "2px", height: "56px", padding: "16px 32px", font: "18px / 700", hover: "bg #10df99", use: "Hero CTA on landing surfaces" }
+    button-ghost: { type: button, bg: "#ffffff", fg: "#04c584", border: "1px solid #04c584", radius: "2px", padding: "12px 24px", font: "16px / 700", hover: "bg #f3fdfa mint tint", use: "Secondary action paired with primary" }
+    button-neutral: { type: button, bg: "#f5f5f5", fg: "#434444", radius: "2px", padding: "12px 24px", font: "16px / 700", hover: "bg #e1e1e1", use: "Cancel / dismiss" }
+    button-disabled: { type: button, bg: "#e1e1e1", fg: "#acacac", radius: "2px", font: "16px / 700", use: "Disabled state" }
+    input-text: { type: input, bg: "#ffffff", fg: "#434444", border: "1px solid #e1e1e1", radius: "2px", height: "48px", padding: "0 16px", font: "16px / 500", focus: "border #10df99 + bg #f3fdfa", use: "Default text input" }
+    input-amount: { type: input, bg: "#ffffff", fg: "#2b2b2b", border: "2px solid #f5f5f5", radius: "2px", height: "56px", padding: "0 16px", font: "22px / 700", focus: "border #10df99 + bg #f3fdfa", use: "Won-amount input, right-aligned, money as heading" }
+    card-data: { type: card, bg: "#ffffff", border: "1px solid #e1e1e1", radius: "2px", padding: "20px 24px", shadow: "rgba(0,0,0,0.12) 0px 2px 5px 0px", use: "Recommendation/transaction/summary cards" }
+    card-highlight: { type: card, bg: "#f3fdfa", border: "1px solid #10df99", radius: "2px", padding: "20px 24px", use: "Selected/recommended-pick in comparison lists" }
+    status-pill: { type: badge, bg: "#f3fdfa", fg: "#04c584", radius: "41px", padding: "4px 10px", font: "12px / 500", use: "Filter chips on recommendation pages" }
+    badge-warning: { type: badge, bg: "#ffffff", fg: "#f56200", border: "1px solid #fd8700", radius: "2px", padding: "2px 8px", font: "12px / 700", use: "Rate-warning, expiry indicators" }
+    badge-negative: { type: badge, bg: "#ffffff", fg: "#fe493d", border: "1px solid #fe493d", radius: "2px", padding: "2px 8px", font: "12px / 700", use: "Overdue, declined indicators" }
+    table-row: { type: listItem, bg: "#ffffff", fg: "#434444", border: "1px solid #e1e1e1 bottom", padding: "12px 16px", font: "14px / 500", use: "Transaction rows; alternates #fbfbfb, amounts right-aligned 14px/700 #2b2b2b positive #fe493d negative" }
 ---
 
 # Design System Inspiration of Banksalad

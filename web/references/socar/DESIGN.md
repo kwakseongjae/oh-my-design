@@ -16,6 +16,41 @@ ds:
   type: system
   description: SOCAR's design system hub — Space Frame, SOCAR Blue, Sandoll Gothic Neo2 + Avenir typography, and mobility-flow component patterns.
   og_image: "https://design.socar.kr/og.jpg"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "SOCAR Blue brand hex unpublished; web chrome intentionally achromatic, so primary maps to ink #000000 / neutral scale"
+  colors:
+    primary: "#000000"
+    canvas: "#ffffff"
+    foreground: "#354153"
+    body: "#354153"
+    muted: "#b4bbcb"
+    on-primary: "#ffffff"
+    surface: "#f2f3f8"
+    surface-footer: "#f5f5f5"
+    hairline: "#e5e8ef"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    h1:     { size: 26, weight: 700, lineHeight: 1.38, use: "Single hero line" }
+    h2:     { size: 22, weight: 700, lineHeight: 1.36, use: "Section titles" }
+    h3:     { size: 16, weight: 600, lineHeight: 1.50, use: "City names, card headings" }
+    nav:    { size: 16, weight: 600, use: "Header navigation items" }
+    body:   { size: 16, weight: 400, use: "Card descriptions, copy" }
+    button: { size: 14, weight: 600, use: "Search CTA label" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
+  rounded: { sm: 12, md: 14, lg: 16, full: 9999 }
+  shadow:
+    card: "rgba(0,0,0,0.1) 0px 4px 8px 0px"
+  components_harvested: true
+  components:
+    button-primary: { type: button, fg: "#ffffff", radius: "12px", padding: "12px 18px", font: "14px / 600", use: "Primary booking CTA (SOCAR Blue in funnel)" }
+    button-search: { type: button, bg: "#f2f3f8", fg: "#b4bbcb", radius: "12px", padding: "12px 18px", font: "14px / 600", use: "Neutral search trigger, state-swaps when complete" }
+    link-nav: { type: button, bg: "transparent", fg: "#354153", font: "16px / 600", use: "Top nav text link, no underline/hover bg" }
+    card: { type: card, bg: "#ffffff", radius: "16px", shadow: "rgba(0,0,0,0.1) 0px 4px 8px 0px", use: "Article / promo tile" }
+    card-region: { type: card, bg: "#ffffff", border: "1px solid #e5e8ef", radius: "14px", padding: "20px", fg: "#354153", use: "Location/region booking entry tile" }
+    chip-timerange: { type: badge, bg: "#ffffff", border: "1px solid #e5e8ef", radius: "14px", padding: "0 12px", font: "16px / 400", use: "Date-time range selector chip" }
+    input: { type: input, bg: "#ffffff", fg: "#354153", border: "1px solid #e5e8ef", radius: "12px", padding: "0 13px", font: "16px / 400", use: "Search field; placeholder #b4bbcb" }
 ---
 
 # Design System Inspiration of SOCAR

@@ -10,6 +10,54 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=musinsa.com&sz=128"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#000000"
+    primary-hover: "#222222"
+    brand: "#000000"
+    canvas: "#ffffff"
+    surface: "#f5f5f5"
+    foreground: "#333333"
+    muted: "#999999"
+    on-primary: "#ffffff"
+    hairline: "#eeeeee"
+    border-mid: "#dddddd"
+    error: "#ff003b"
+    accent-star: "#ffb900"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    display:      { size: 28, weight: 700, lineHeight: 1.29, tracking: -0.4, use: "Editorial banner / event title" }
+    heading-lg:   { size: 22, weight: 700, lineHeight: 1.36, tracking: -0.4, use: "Category page title" }
+    heading:      { size: 18, weight: 700, lineHeight: 1.44, tracking: -0.4, use: "Section header" }
+    title:        { size: 15, weight: 700, lineHeight: 1.47, tracking: -0.3, use: "Product detail page title" }
+    body-lg:      { size: 14, weight: 400, lineHeight: 1.43, tracking: -0.3, use: "Standard product card title" }
+    body:         { size: 13, weight: 400, lineHeight: 1.38, tracking: -0.3, use: "Default body, listings text" }
+    body-bold:    { size: 13, weight: 700, lineHeight: 1.38, tracking: -0.3, use: "Brand name above product title" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.33, tracking: -0.3, use: "Metadata, review counts" }
+    micro:        { size: 11, weight: 500, lineHeight: 1.27, tracking: -0.2, use: "Badge text, fine print" }
+  spacing: [2, 4, 8, 12, 16, 20, 24, 32, 40, 56, 80]
+  rounded: { sm: 2, md: 4, lg: 4, full: 9999 }
+  shadow:
+    soft: "0px 2px 8px rgba(0,0,0,0.06)"
+    floating: "0px 4px 16px rgba(0,0,0,0.10)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "4px", padding: "14px 20px", font: "15px / 700", states: "hover #222222, pressed #333333, disabled #cccccc", use: "Primary CTA" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #000000", radius: "4px", padding: "14px 20px", font: "15px / 700", states: "hover #f5f5f5", use: "Secondary CTA" }
+    button-neutral: { type: button, bg: "#f5f5f5", fg: "#222222", border: "1px solid #eeeeee", radius: "4px", padding: "12px 16px", font: "14px / 500", states: "hover #eeeeee", use: "Tertiary actions" }
+    button-sale: { type: button, bg: "#ff003b", fg: "#ffffff", radius: "4px", padding: "12px 18px", font: "14px / 700", use: "Time-limited sale CTA, scarce" }
+    input: { type: input, bg: "#ffffff", fg: "#222222", border: "1px solid #dddddd", radius: "4px", padding: "12px 14px", font: "14px / 400", focus: "1px solid #000000", use: "Default text input" }
+    input-search: { type: input, bg: "#f5f5f5", radius: "4px", padding: "12px 16px 12px 40px", font: "14px / 400", focus: "bg #ffffff, 1px solid #000000", use: "Header search bar" }
+    card-product: { type: card, bg: "#ffffff", radius: "0px", shadow: "none", use: "Default product listing card, image edge is card edge" }
+    card-brand: { type: card, bg: "#fafafa", border: "1px solid #eeeeee", radius: "4px", padding: "16px", use: "Brand-of-the-day entry" }
+    badge-sale: { type: badge, bg: "transparent", fg: "#ff003b", font: "13px / 700", radius: "0px", use: "Inline sale percentage on product cards" }
+    badge-exclusive: { type: badge, bg: "#000000", fg: "#ffffff", font: "11px / 700", padding: "3px 6px", radius: "2px", use: "무신사 단독 / 선발매 exclusive flags" }
+    badge-outline: { type: badge, bg: "#ffffff", fg: "#000000", border: "1px solid #000000", font: "11px / 700", padding: "3px 6px", radius: "2px", use: "NEW, 무료배송 minor flags" }
+    chip: { type: badge, bg: "#ffffff", fg: "#222222", border: "1px solid #dddddd", font: "13px / 500", padding: "8px 14px", radius: "999px", active: "bg #000000, fg #ffffff, 13px / 700", use: "Category / size / color filter pills" }
+    tab: { type: tab, font: "14px / 700", active: "2px black bottom border, fg #000000", use: "Category nav, active item underline" }
+    toast: { type: toast, bg: "#000000", fg: "#ffffff", radius: "4px", font: "14px / 500", use: "Error / add-to-cart snackbar, 3s auto-dismiss" }
 ---
 
 # Design System Inspiration of Musinsa (무신사)

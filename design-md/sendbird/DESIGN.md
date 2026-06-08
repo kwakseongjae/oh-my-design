@@ -15,6 +15,52 @@ ds:
   url: "https://sendbird.com/docs/chat/uikit/v3/react/overview"
   type: system
   description: Sendbird's official chat UIKit — a documented, token-driven conversation-UI system (React, iOS, Android, React Native) with named color sets, message components, and themeable light/dark resources.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#742DDD"
+    primary-hover: "#6211C8"
+    primary-active: "#491389"
+    brand: "#742DDD"
+    canvas: "#FFFFFF"
+    foreground: "#0D0D0D"
+    body: "#424242"
+    muted: "#EEEEEE"
+    on-primary: "#FFFFFF"
+    success: "#259C72"
+    error: "#DE360B"
+    info: "#ADC9FF"
+    surface: "#F2F3F7"
+    hairline: "#E3E5EF"
+    border-light: "#D1D1D1"
+    ink-dark: "#0D0D0D"
+  typography:
+    family: { sans: "Helvetica Now Text", mono: "system-ui" }
+    display-serif: { size: 72, weight: 500, use: "Marketing hero headline (serif)" }
+    body-lg:    { size: 18, weight: 400, use: "Marketing body text" }
+    nav:        { size: 16, weight: 500, use: "Marketing nav links" }
+    body:       { size: 14, weight: 400, use: "UIKit message text and labels" }
+    label:      { size: 14, weight: 600, use: "UIKit labels, button text" }
+    cta:        { size: 13, weight: 600, use: "Marketing pill CTA text" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
+  rounded: { sm: 4, md: 8, lg: 24, full: 9999 }
+  shadow:
+    focus-ring: "0 0 0 1px #742DDD"
+    scrim: "rgba(0,0,0,0.55)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#742DDD", fg: "#FFFFFF", radius: "4px", height: "40px", padding: "10px 16px", font: "14px / 600", hover: "#6211C8", active: "#491389", use: "UIKit primary action (send, confirm)" }
+    button-secondary: { type: button, bg: "transparent", fg: "#742DDD", border: "1px solid #742DDD", radius: "4px", active: "rgba(0,0,0,0.04)", use: "UIKit ghost alternative beside primary" }
+    button-danger: { type: button, bg: "#DE360B", fg: "#FFFFFF", radius: "4px", hover: "#BF0711", active: "#9D091E", use: "UIKit destructive action" }
+    button-disabled: { type: button, bg: "#E0E0E0", fg: "rgba(0,0,0,0.38)", radius: "4px", disabled: "non-interactive", use: "UIKit blocked action" }
+    input: { type: input, bg: "#FFFFFF", fg: "rgba(0,0,0,0.87)", border: "1px solid rgba(0,0,0,0.12)", radius: "4px", padding: "7px 12px", font: "14px / 400", focus: "border #742DDD + 0 0 0 1px #742DDD", use: "UIKit text field" }
+    bubble-outgoing: { type: listItem, bg: "#742DDD", fg: "#FFFFFF", use: "Outgoing message bubble, right-aligned, max 400px" }
+    bubble-incoming: { type: listItem, bg: "#EEEEEE", fg: "rgba(0,0,0,0.87)", use: "Incoming message bubble, left-aligned, 40px avatar" }
+    cta-dark-pill: { type: button, bg: "#0D0D0D", fg: "#FFFFFF", border: "1px solid #0D0D0D", radius: "24px", height: "42px", padding: "12px 10px", font: "13px / 600", use: "Marketing highest-emphasis CTA" }
+    cta-outline-pill: { type: button, bg: "#FFFFFF", fg: "#0D0D0D", border: "1px solid #0D0D0D", radius: "24px", height: "42px", padding: "12px 10px", font: "13px / 600", use: "Marketing secondary CTA" }
+    chip: { type: badge, bg: "#F2F3F7", fg: "#0D0D0D", border: "1px solid #E3E5EF", radius: "8px", height: "50px", padding: "8px 12px", font: "18px / 400", use: "Marketing neutral selector / utility control" }
+    input-newsletter: { type: input, bg: "#FFFFFF", fg: "#424242", border: "1px solid #D1D1D1", radius: "50px", padding: "6px 35px", font: "12.8px / 400", use: "Marketing pill email capture" }
 ---
 # Design System Inspiration of Sendbird
 

@@ -10,6 +10,38 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=kream.co.kr&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#222222"
+    foreground: "#000000"
+    canvas: "#ffffff"
+    surface: "#f5f5f5"
+    muted: "#787878"
+    hairline: "#ebebeb"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    display:    { size: 32, weight: 700, lineHeight: 1.2, use: "Page title / H1" }
+    search:     { size: 24, weight: 700, lineHeight: 1.2, use: "Search query input — typed keyword as headline" }
+    tab-active: { size: 16, weight: 700, lineHeight: 1.4, use: "Active tab label" }
+    body:       { size: 16, weight: 400, lineHeight: 1.4, use: "Default copy, inactive tab, card title" }
+    chip:       { size: 13, weight: 400, lineHeight: 1.4, use: "Filter chip, category pill" }
+    ghost:      { size: 13, weight: 300, lineHeight: 1.4, use: "Ghost button label" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 6, md: 8, lg: 16, full: 9999 }
+  shadow:
+    none: "none"
+  components_harvested: true
+  components:
+    chip-filter: { type: badge, bg: "#f4f4f4", fg: "#222222", radius: "30px", height: "30px", padding: "0 12px", font: "13px / 400", use: "Search filter row chip (배송/카테고리/색상/사이즈/가격대)" }
+    pill-category: { type: badge, bg: "#ffffff", fg: "#222222", border: "1px solid #ebebeb", radius: "6px", height: "30px", font: "13px / 400", use: "Secondary category quick-row" }
+    shortcut-keyword: { type: listItem, bg: "#fafafa", fg: "#222222", radius: "6px", height: "48px", font: "16px / 400", use: "Popular keyword shortcut anchor" }
+    card-banner: { type: card, bg: "#f5f5f5", fg: "#222222", radius: "16px", padding: "0", font: "16px / 700", use: "Hero / merchandising banner tile (1188x475)" }
+    input-search: { type: input, bg: "transparent", fg: "#222222", radius: "0", font: "24px / 700", use: "Homepage hero search — typed keyword as headline" }
+    button-ghost: { type: button, bg: "transparent", fg: "#000000", border: "1px solid rgba(0,0,0,0.6)", radius: "8px", height: "36px", font: "13px / 300", use: "Fallback / secondary recovery action (홈으로 가기)" }
+    tab-strip: { type: tab, bg: "transparent", fg: "#222222", font: "16px / 700", active: "2px bottom border #222222", use: "Tab strip 상품/스타일/프로필 — weight + underline signals selection" }
 ---
 
 # Design System Inspiration of KREAM

@@ -10,6 +10,50 @@ logo:
   slug: krakenfx
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#7132f5"
+    primary-hover: "#5741d8"
+    primary-deep: "#5b1ecf"
+    brand: "#7132f5"
+    canvas: "#ffffff"
+    foreground: "#101114"
+    muted: "#9497a9"
+    on-primary: "#ffffff"
+    hairline: "#dedee5"
+    body: "#686b82"
+    success: "#149e61"
+    success-text: "#026b3f"
+    error: "#d54848"
+  typography:
+    family: { sans: "Kraken-Product", mono: "IBM Plex Sans" }
+    display-hero:    { size: 48, weight: 700, lineHeight: 1.17, tracking: "-1px", use: "Hero headline, Kraken-Brand" }
+    section-heading: { size: 36, weight: 700, lineHeight: 1.22, tracking: "-0.5px", use: "Section heading, Kraken-Brand" }
+    sub-heading:     { size: 28, weight: 700, lineHeight: 1.29, tracking: "-0.5px", use: "Sub-heading, Kraken-Brand" }
+    feature-title:   { size: 22, weight: 600, lineHeight: 1.2, use: "Feature title, Kraken-Product" }
+    body:            { size: 16, weight: 400, lineHeight: 1.38, use: "Body text" }
+    button:          { size: 16, weight: 500, lineHeight: 1.38, use: "Button label" }
+    caption:         { size: 14, weight: 400, lineHeight: 1.43, use: "Caption" }
+    small:           { size: 12, weight: 400, lineHeight: 1.33, use: "Small text" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 25 }
+  rounded: { sm: 6, md: 8, lg: 12, full: 9999 }
+  shadow:
+    micro: "rgba(16,24,40,0.04) 0px 1px 4px"
+    subtle: "rgba(0,0,0,0.03) 0px 4px 24px"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#7132f5", fg: "#ffffff", padding: "13px 16px", radius: "12px", font: "16px / 500", use: "Primary CTA, links" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#5741d8", border: "1px solid #5741d8", radius: "12px", use: "Outlined purple variant" }
+    button-subtle: { type: button, bg: "rgba(133,91,251,0.16)", fg: "#7132f5", padding: "8px", radius: "12px", use: "Subtle/ghost purple button" }
+    button-white: { type: button, bg: "#ffffff", fg: "#101114", radius: "10px", shadow: "rgba(0,0,0,0.03) 0px 4px 24px", use: "White button" }
+    button-secondary: { type: button, bg: "rgba(148,151,169,0.08)", fg: "#101114", radius: "12px", use: "Secondary gray button" }
+    badge-success: { type: badge, bg: "rgba(20,158,97,0.16)", fg: "#026b3f", radius: "6px", use: "Success/positive badge" }
+    badge-neutral: { type: badge, bg: "rgba(104,107,130,0.12)", fg: "#484b5e", radius: "8px", use: "Neutral badge" }
+    card: { type: card, bg: "#ffffff", border: "1px solid rgba(148,151,169,0.16)", radius: "12px", padding: "24px", shadow: "rgba(0,0,0,0.03) 0px 4px 24px", use: "Default card, subtle lift" }
+    card-stat: { type: card, bg: "#ffffff", radius: "16px", padding: "20px 24px", use: "Stat/metric card, value 28px/700, delta green/red" }
+    card-featured: { type: card, bg: "linear-gradient(135deg, #7132f5 0%, #5741d8 100%)", fg: "#ffffff", radius: "16px", padding: "32px", shadow: "inset 0 0 60px rgba(255,255,255,0.08)", use: "Featured/promotional card, used sparingly" }
 ---
 
 # Design System Inspiration of Kraken

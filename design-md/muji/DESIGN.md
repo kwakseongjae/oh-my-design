@@ -11,6 +11,59 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#333333"
+    primary-hover: "#000000"
+    brand: "#7f0019"
+    brand-hover: "#6b0015"
+    canvas: "#ffffff"
+    surface: "#f7f7f7"
+    foreground: "#333333"
+    muted: "#666666"
+    on-primary: "#ffffff"
+    hairline: "#dddddd"
+    border-strong: "#cccccc"
+    error: "#c0392b"
+    success: "#4a7c59"
+  typography:
+    family: { sans: "Helvetica Neue", mono: "Helvetica Neue" }
+    page-title:    { size: 28, weight: 300, lineHeight: 1.4, tracking: 0.02, use: "Quiet authority page title" }
+    section:       { size: 22, weight: 400, lineHeight: 1.4, tracking: 0.02, use: "Category / section titles" }
+    subheading:    { size: 18, weight: 400, lineHeight: 1.5, tracking: 0.02, use: "Card titles, group labels" }
+    lead:          { size: 16, weight: 300, lineHeight: 1.7, tracking: 0.02, use: "Editorial intro paragraphs" }
+    body:          { size: 14, weight: 400, lineHeight: 1.7, tracking: 0.02, use: "Standard reading text" }
+    body-small:    { size: 13, weight: 400, lineHeight: 1.6, tracking: 0.02, use: "Product descriptions, dense copy" }
+    caption:       { size: 12, weight: 400, lineHeight: 1.5, tracking: 0.04, use: "Metadata, legal, breadcrumbs" }
+    price:         { size: 16, weight: 400, lineHeight: 1.3, use: "Product price" }
+    button:        { size: 14, weight: 400, lineHeight: 1.0, tracking: 0.04, use: "Add to cart, primary actions" }
+  spacing: [4, 8, 12, 16, 24, 32, 48, 64, 96]
+  rounded: { sm: 2, md: 2, lg: 2, full: 9999 }
+  shadow:
+    subtle: "0 2px 8px rgba(0,0,0,0.08)"
+    modal: "0 4px 24px rgba(0,0,0,0.16)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#333333", fg: "#ffffff", radius: "2px", padding: "14px 24px", font: "14px / 400", states: "hover #000000", use: "Single primary action (add to cart / checkout)" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#333333", border: "1px solid #333333", radius: "2px", padding: "13px 24px", font: "14px / 400", states: "hover bg #f7f7f7", use: "Secondary actions" }
+    button-tertiary: { type: button, bg: "transparent", fg: "#666666", border: "1px solid #dddddd", radius: "2px", padding: "10px 16px", font: "13px / 400", use: "Low-priority actions, filters" }
+    button-brand: { type: button, bg: "#7f0019", fg: "#ffffff", radius: "2px", padding: "14px 24px", font: "14px / 400", states: "hover #6b0015", use: "Sale / campaign CTAs only" }
+    button-disabled: { type: button, bg: "#eeeeee", fg: "#999999", radius: "2px", use: "Out-of-stock, unavailable" }
+    input: { type: input, bg: "#ffffff", fg: "#333333", border: "1px solid #cccccc", radius: "2px", padding: "12px 14px", font: "14px / 400", focus: "border #333333, no glow", use: "Standard form field" }
+    input-error: { type: input, bg: "#ffffff", border: "1px solid #c0392b", radius: "2px", use: "Validation failure, help text #c0392b" }
+    card-product: { type: card, bg: "#ffffff", radius: "0px", padding: "0", shadow: "none", use: "Catalog grid card, photo is the card" }
+    card-editorial: { type: card, bg: "#ffffff", border: "1px solid #eeeeee", radius: "2px", padding: "20px", shadow: "none", use: "Story modules, info panels" }
+    tag-sale: { type: badge, bg: "#7f0019", fg: "#ffffff", radius: "0px", padding: "2px 8px", font: "11px / 400", use: "Sale indicator, printed-label feel" }
+    tag-neutral: { type: badge, bg: "#eeeeee", fg: "#666666", radius: "0px", padding: "2px 8px", font: "11px / 400", use: "NEW, category labels" }
+    tab: { type: tab, fg: "#999999", font: "14px / 400", active: "text #333333, 2px bottom border #333333", use: "PDP detail tabs, category switching" }
+    segmented: { type: tab, bg: "#eeeeee", radius: "2px", font: "13px / 400", active: "bg #ffffff, text #333333", use: "View toggles, sort modes" }
+    toast: { type: toast, bg: "#333333", fg: "#ffffff", radius: "2px", padding: "12px 16px", shadow: "0 2px 8px rgba(0,0,0,0.12)", font: "13px / 400", use: "Transient confirmation" }
+    notice-inline: { type: card, bg: "#f7f7f7", fg: "#333333", border: "2px solid #7f0019", radius: "0px", padding: "12px 16px", use: "Shipping info, stock notices" }
+    dialog: { type: dialog, bg: "#ffffff", fg: "#333333", radius: "2px", padding: "32px", shadow: "0 4px 24px rgba(0,0,0,0.16)", use: "Confirmation, size guide, login" }
+    checkbox: { type: toggle, border: "1px solid #cccccc", radius: "2px", active: "#333333 fill, white check", use: "Filters, terms agreement, square" }
+    toggle: { type: toggle, bg: "#cccccc", radius: "9999px", active: "track #333333, white thumb", use: "Newsletter / setting switches" }
 ---
 
 # Design System Inspiration of MUJI (無印良品)
