@@ -16,14 +16,35 @@ tokens:
   note: "deterministic picks (#bd76ff tint, #1a73e8 Google embed) rejected; canonical = Kurly Purple purple-900"
   color:
     primary: "#5f0080"
+    purple-800: "#672091"
+    purple-700: "#7e3ab0"
+    purple-500: "#9a60ca"
+    purple-100: "#e8dbf3"
+    purple-50: "#f5effa"
     background: "#ffffff"
     foreground: "#1c1c1c"
+    body: "#393d41"
     muted: "#464c52"
-    accent: "#9a60ca"
-  font:
-    sans: "Noto Sans KR"
-  spacing: [4, 8, 12, 16, 24, 32, 48, 64]
+  font: { sans: "Noto Sans KR" }
+  text:
+    display-72: { size: 72, weight: 700 }
+    display-44: { size: 44, weight: 700 }
+    headline-36: { size: 36, weight: 700 }
+    headline-28: { size: 28, weight: 700 }
+    title-24: { size: 24, weight: 600 }
+    title-18: { size: 18, weight: 600 }
+    body-16: { size: 16, weight: 400 }
+  spacing: { xxs: 2, xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
   radius: { sm: 4, md: 8, lg: 16, pill: 9999 }
+  shadow:
+    subtle: "0px 2px 2px 0px rgba(0,0,0,0.03)"
+    card-hover: "0px 0px 4px 0px rgba(0,0,0,0.15)"
+    floating: "2px 2px 10px 0px rgba(0,0,0,0.10)"
+  components:
+    button-primary: "Kurly Purple #5f0080 fill, white text"
+    button-secondary: "outline purple, purple text"
+    button-critical: "sale/destructive red fill"
+    card: "white, KPDS radius, hover lift shadow"
 ---
 
 # Design System Inspiration of Kurly (컬리 / 마켓컬리)

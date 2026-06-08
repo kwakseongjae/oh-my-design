@@ -95,9 +95,15 @@ function validateTokens(t, file) {
     if (typeof t.color !== 'object') fail(file, `tokens.color must be a mapping`);
     for (const [k, v] of Object.entries(t.color)) if (!/^#[0-9a-fA-F]{6}$/.test(String(v))) fail(file, `tokens.color.${k} '${v}' not #rrggbb`);
   }
-  if (t.spacing !== undefined && !(Array.isArray(t.spacing) && t.spacing.every(n => typeof n === 'number'))) fail(file, `tokens.spacing must be number[]`);
+  if (t.spacing !== undefined) {
+    const arr = Array.isArray(t.spacing) && t.spacing.every(n => typeof n === 'number');
+    const map = !Array.isArray(t.spacing) && typeof t.spacing === 'object' && Object.values(t.spacing).every(n => typeof n === 'number');
+    if (!arr && !map) fail(file, `tokens.spacing must be number[] or { name: number }`);
+  }
   if (t.radius) for (const [k, v] of Object.entries(t.radius)) if (typeof v !== 'number') fail(file, `tokens.radius.${k} must be a number`);
   if (t.font && typeof t.font !== 'object') fail(file, `tokens.font must be a mapping`);
+  if (t.text && typeof t.text !== 'object') fail(file, `tokens.text must be a mapping of named type tokens`);
+  if (t.components && typeof t.components !== 'object') fail(file, `tokens.components must be a mapping`);
   if (t.source && !['live-extract', 'design-system', 'manual', 'reconciled'].includes(t.source)) fail(file, `tokens.source '${t.source}' invalid`);
 }
 
@@ -180,9 +186,11 @@ const TYPES = `export interface RefEntry {
     readonly note?: string;
     readonly color?: Readonly<Record<string, string>>;
     readonly font?: Readonly<Record<string, string>>;
-    readonly spacing?: readonly number[];
+    readonly text?: Readonly<Record<string, { readonly size?: number; readonly weight?: number; readonly lineHeight?: number; readonly tracking?: number }>>;
+    readonly spacing?: readonly number[] | Readonly<Record<string, number>>;
     readonly radius?: Readonly<Record<string, number>>;
     readonly shadow?: Readonly<Record<string, string>>;
+    readonly components?: Readonly<Record<string, string>>;
   };
   readonly ds?: {
     readonly name: string;

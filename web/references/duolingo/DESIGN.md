@@ -17,15 +17,31 @@ tokens:
   note: "deterministic pick (#1a73e8) was a Google sign-in embed false-positive; canonical = Feather Green"
   color:
     primary: "#58cc02"
+    primary-lip: "#58a700"
+    mask: "#89e219"
+    accent: "#1cb0f6"
+    accent-lip: "#1899d6"
     background: "#ffffff"
     foreground: "#4b4b4b"
-    accent: "#1cb0f6"
     error: "#ff4b4b"
     warning: "#ffc800"
-  font:
-    sans: "din-round"
-  spacing: [4, 8, 12, 16, 24, 32, 48, 64]
+    fox: "#ff9600"
+    beetle: "#ce82ff"
+  font: { sans: "din-round", display: "Feather Bold" }
+  text:
+    display-hero: { size: 40, weight: 700, lineHeight: 1.2, tracking: -0.5 }
+    title:        { size: 24, weight: 700, lineHeight: 1.25 }
+    body:         { size: 17, weight: 400, lineHeight: 1.5 }
+    button:       { size: 15, weight: 700, lineHeight: 1.2 }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
   radius: { sm: 8, md: 12, lg: 16, pill: 9999 }
+  shadow:
+    button-3d: "0 4px 0 0 #58a700"
+    card: "0 2px 0 0 rgba(0,0,0,0.1)"
+  components:
+    button-primary: "Feather Green #58cc02 fill, white text, 16px radius, 4px #58a700 3D lip, uppercase bold"
+    button-accent: "Macaw #1cb0f6 fill, 3D whale lip"
+    card: "white, 16px radius, thick #e5e5e5 border, playful"
 ---
 
 # Design System Inspiration of Duolingo
