@@ -625,8 +625,12 @@ function VariantInstance({ type, variant, font }: { type: ComponentType; variant
   const padding = cssValue(variant.padding) ?? defaultPaddingFor(type);
   const shadow = cssValue(variant.shadow);
 
-  const hasAnyVisible = !!variant.bg || !!variant.fg || !!variant.border || !!variant.padding || !!variant.radius;
-  if (!hasAnyVisible) {
+  const hasAnyVisible =
+    !!variant.bg || !!variant.fg || !!variant.border || !!variant.padding || !!variant.radius ||
+    !!variant.active || !!variant.disabled;
+  // Tabs always render a dummy-label preview (active label + underline), even
+  // when only `active`/`disabled` prose is present — never fall to "spec only".
+  if (!hasAnyVisible && type !== "tab") {
     return (
       <div className="text-[11px] text-muted-foreground italic px-3 py-2 rounded-md border border-dashed border-border/50">
         spec only
@@ -785,45 +789,85 @@ function VariantInstance({ type, variant, font }: { type: ComponentType; variant
         firstColor(disabledStr) ??
         "rgba(0,0,0,0.4)";
 
-      const wrapperHasBg = bg !== "transparent";
+      // Underline indicator: the bottom-border color is usually DISTINCT from the
+      // active-text color (e.g. GitHub: text #1f2328 + 2px bottom border #fd8c73).
+      // Parse "<N>px bottom border <hex>" from the active/border/name prose.
+      const underlineSrc = `${activeStr} ${cssValue(variant.border) ?? ""} ${variant.name}`;
+      const underlineColor =
+        underlineSrc.match(/(?:bottom border|underline|indicator)[^#]*?(#[0-9a-f]{3,8}|rgba?\([^)]+\))/i)?.[1] ??
+        underlineSrc.match(/(#[0-9a-f]{3,8})\s*\([^)]*(?:indicator|underline|tab)/i)?.[1] ??
+        activeText;
+      const underlineWidth =
+        underlineSrc.match(/(\d+)\s*px\s*(?:bottom border|underline|indicator)/i)?.[1] ?? "2";
+
+      const wrapperHasBg = bg !== "transparent" && !!variant.bg;
       const innerRadius =
         radius && /^\d/.test(radius) ? `${Math.max(parseFloat(radius) - 4, 4)}px` : radius;
+      // Dummy preview labels — first is the active/selected tab.
+      const tabLabels = ["Tab", "Tab", "Tab"];
 
+      // Segmented-control style: the active tab carries its own surface/fill.
+      if (activeBg || wrapperHasBg) {
+        return (
+          <div
+            style={{
+              display: "inline-flex",
+              gap: 4,
+              padding: 4,
+              background: wrapperHasBg ? bg : "rgba(128,128,128,0.12)",
+              border,
+              borderRadius: radius || "8px",
+              fontFamily: font,
+              width: "fit-content",
+            }}
+          >
+            {tabLabels.map((l, i) => (
+              <span
+                key={i}
+                style={{
+                  background: i === 0 ? activeBg ?? "#ffffff" : "transparent",
+                  color: i === 0 ? activeText : disabledText,
+                  padding: "6px 14px",
+                  borderRadius: i === 0 ? innerRadius : 0,
+                  fontWeight: i === 0 ? 600 : 500,
+                  fontSize: 13,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {l}
+              </span>
+            ))}
+          </div>
+        );
+      }
+
+      // Underline-nav style (default): dummy labels with the active one underlined.
       return (
         <div
           style={{
             display: "inline-flex",
-            gap: wrapperHasBg ? 4 : 16,
-            padding: wrapperHasBg ? 4 : 0,
-            background: wrapperHasBg ? bg : "transparent",
-            border,
-            borderRadius: radius,
+            gap: 24,
             fontFamily: font,
             width: "fit-content",
+            borderBottom: "1px solid rgba(128,128,128,0.2)",
           }}
         >
-          <span
-            style={{
-              background: activeBg ?? "transparent",
-              color: activeText,
-              padding: wrapperHasBg ? "6px 14px" : "8px 12px",
-              borderRadius: activeBg ? innerRadius : 0,
-              borderBottom: !activeBg && !wrapperHasBg ? `2px solid ${activeText}` : undefined,
-              fontWeight: 600,
-              fontSize: 13,
-            }}
-          >
-            {variant.name}
-          </span>
-          <span
-            style={{
-              color: disabledText,
-              padding: wrapperHasBg ? "6px 14px" : "8px 12px",
-              fontSize: 13,
-            }}
-          >
-            Other
-          </span>
+          {tabLabels.map((l, i) => (
+            <span
+              key={i}
+              style={{
+                color: i === 0 ? activeText : disabledText,
+                padding: "8px 2px",
+                marginBottom: -1,
+                borderBottom: i === 0 ? `${underlineWidth}px solid ${underlineColor}` : "2px solid transparent",
+                fontWeight: i === 0 ? 600 : 500,
+                fontSize: 13,
+                whiteSpace: "nowrap",
+              }}
+            >
+              {l}
+            </span>
+          ))}
         </div>
       );
     }
@@ -992,7 +1036,10 @@ function VariantCard({ type, variant, font }: { type: ComponentType; variant: Co
         style={
           darkTile
             ? { background: "#1d1d1f", padding: "20px 16px", minHeight: 72 }
-            : undefined
+            : // Padding so rounded corners + focus rings (box-shadow extends
+              // outside the border) aren't clipped by overflow-hidden when an
+              // input/card fills the cell width.
+              { padding: "20px 16px", minHeight: 72 }
         }
       >
         <VariantInstance type={type} variant={variant} font={font} />
