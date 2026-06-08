@@ -16,6 +16,50 @@ ds:
   type: brand
   description: Cursor's brand guidelines with logos, icons, and naming conventions.
   og_image: "https://cursor.com/public/opengraph-image.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#26251e"
+    brand: "#f54e00"
+    canvas: "#f2f1ed"
+    foreground: "#26251e"
+    surface: "#e6e5e0"
+    surface-100: "#f7f7f4"
+    surface-300: "#ebeae5"
+    surface-500: "#e1e0db"
+    accent-gold: "#c08532"
+    error: "#cf2d56"
+    success: "#1f8a65"
+    on-primary: "#f2f1ed"
+  typography:
+    family: { sans: "CursorGothic", mono: "berkeleyMono" }
+    display-hero:    { size: 72, weight: 400, lineHeight: 1.10, tracking: -2.16, use: "Hero statements, max compression" }
+    section:         { size: 36, weight: 400, lineHeight: 1.20, tracking: -0.72, use: "Feature section / CTA headlines" }
+    subheading:      { size: 26, weight: 400, lineHeight: 1.25, tracking: -0.325, use: "Card headings, sub-sections" }
+    title-sm:        { size: 22, weight: 400, lineHeight: 1.30, tracking: -0.11, use: "Smaller titles, list headings" }
+    body-serif:      { size: 19.2, weight: 500, lineHeight: 1.50, use: "Editorial body, jjannon cswh" }
+    body-serif-sm:   { size: 17.28, weight: 400, lineHeight: 1.35, use: "Standard body, descriptions" }
+    body-sans:       { size: 16, weight: 400, lineHeight: 1.50, use: "UI body text" }
+    button:          { size: 14, weight: 400, lineHeight: 1.00, use: "Primary button label" }
+    caption:         { size: 11, weight: 400, lineHeight: 1.50, use: "Small captions, metadata" }
+    mono-body:       { size: 12, weight: 400, lineHeight: 1.67, use: "Code blocks" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 10, full: 9999 }
+  shadow:
+    ambient: "rgba(0,0,0,0.02) 0px 0px 16px, rgba(0,0,0,0.008) 0px 0px 8px"
+    focus: "rgba(0,0,0,0.1) 0px 4px 12px"
+    elevated: "rgba(0,0,0,0.14) 0px 28px 70px, rgba(0,0,0,0.1) 0px 14px 32px"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#ebeae5", fg: "#26251e", radius: "8px", padding: "10px 12px 10px 14px", font: "14px / 400", hover: "text #cf2d56", focus: "shadow rgba(0,0,0,0.1) 0px 4px 12px", use: "Primary actions, main CTAs" }
+    button-secondary: { type: button, bg: "#e6e5e0", fg: "#26251e", radius: "9999px", padding: "3px 8px", font: "14px / 400", hover: "text #cf2d56", use: "Tags, filters, secondary actions" }
+    button-tertiary: { type: button, bg: "#e1e0db", fg: "#26251e", radius: "9999px", use: "Active filter, selected tags" }
+    button-ghost: { type: button, bg: "rgba(38,37,30,0.06)", fg: "rgba(38,37,30,0.55)", padding: "6px 12px", use: "Tertiary actions, dismiss" }
+    card: { type: card, bg: "#e6e5e0", border: "1px solid rgba(38,37,30,0.1)", radius: "8px", shadow: "rgba(0,0,0,0.14) 0px 28px 70px, rgba(0,0,0,0.1) 0px 14px 32px", hover: "shadow intensifies", use: "Cards, containers" }
+    input: { type: input, bg: "transparent", fg: "#26251e", border: "1px solid rgba(38,37,30,0.1)", focus: "border rgba(38,37,30,0.2) or accent orange", use: "Text inputs, textarea" }
+    tab: { type: tab, fg: "#26251e", active: "1px bottom border rgba(38,37,30,0.1)", use: "Tab navigation" }
+    timeline-step: { type: listItem, fg: "#26251e", states: "thinking #dfa88f, grep #9fc9a2, read #9fbbe0, edit #c0a8dd", use: "AI timeline operation steps" }
 ---
 
 # Design System Inspiration of Cursor

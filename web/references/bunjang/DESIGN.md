@@ -48,14 +48,16 @@ tokens:
     none: "none — no box-shadow on any sampled element"
     overlay-chip: "rgba(0,0,0,0.3) semi-transparent bubble for carousel counter overlay"
     heart-inner: "10% black inner-fill under heart SVG so white stroke reads on any thumbnail"
+  components_harvested: true
   components:
-    button-primary: "Bunjang Red #d80c18 fill, #ffffff text, no border, 4-6px radius — one per surface, highest-intent CTA only"
-    button-secondary: "#ffffff fill, #4c4c4c text, 1px solid #e5e5e5 border, 6px radius"
-    product-card: "81:100 portrait thumb (6px radius, #f6f6f6 placeholder), price 16/700, title 14/500 #666, meta 12/500 #999, heart top-right"
-    chip-safe: "안전결제 escrow chip — --color-safe-* indigo ladder (#5558a8)"
-    chip-care: "감정완료 luxury-auth chip — --color-care-* warm amber ladder (#ffe1a6)"
-    chip-info: "내폰시세 price-verified chip — --color-blue-* info blue (#027aff)"
-    heart-button: "outlined SVG + 10% black inner glow, solid --color-red-500 fill when tapped"
+    button-primary: { type: button, bg: "#d80c18", fg: "#ffffff", border: "none", radius: "6px", padding: "16px 20px", font: "16px / 400", hover: "bg #c00b15", use: "Single highest-intent CTA per surface — the only place red appears" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#4c4c4c", border: "1px solid #e5e5e5", radius: "6px", padding: "12px 20px", font: "16px / 400", use: "Secondary action" }
+    input-search: { type: input, bg: "transparent", fg: "#191919", radius: "999px", font: "15px / 500", use: "Search input; rounded pill container carries chrome, placeholder 검색" }
+    product-card: { type: card, bg: "#f6f6f6", radius: "6px", use: "81:100 portrait thumb placeholder; price 16/700 #191919, title 14/500 #666, meta 12/500 #999, heart top-right" }
+    chip-safe: { type: badge, bg: "#5558a8", fg: "#ffffff", radius: "6px", font: "13px / 700", use: "안전결제 escrow chip — indigo --color-safe ladder" }
+    chip-care: { type: badge, bg: "#ffe1a6", fg: "#191919", radius: "6px", font: "13px / 700", use: "감정완료 luxury-auth chip — warm amber --color-care ladder" }
+    chip-info: { type: badge, bg: "#027aff", fg: "#ffffff", radius: "6px", font: "13px / 700", use: "내폰시세 price-verified chip — info blue" }
+    heart-button: { type: toggle, fg: "#ffffff", shadow: "10% black inner-fill glow under SVG", active: "solid #d80c18 fill", use: "찜 heart button, white stroke legible on any thumbnail" }
 ---
 
 # Design System Inspiration of Bunjang (번개장터)

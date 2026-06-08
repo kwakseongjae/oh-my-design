@@ -38,15 +38,20 @@ tokens:
   rounded: { sm: 4, md: 12, lg: 24, full: 9999 }
   shadow:
     sheet: "soft top shadow over rgba(0,0,0,0.5) scrim"
+  components_harvested: true
   components:
-    button-primary: "17 Pink #FF4F6E fill, white text, 24px pill radius, 16px/700; pressed #E8455F"
-    button-follow: "#FF4F6E fill white text (not-following) → transparent + 1px rgba(255,255,255,0.3) (following), 16px pill, 14px/600"
-    button-gift: "gift gradient #FF4F6E→#FF2D8E fill, white text, 20px radius — highest-energy transaction"
-    input: "#2C2C2E fill, white text, 12px radius, placeholder rgba(255,255,255,0.45), focus 1px #FF4F6E"
-    card: "#1C1C1E surface, 12px radius, 12px padding"
-    badge-live: "#FF4F6E (or #27C76F dot) fill, white text, 4px radius, 11px/700"
-    badge-rank: "#FFC83D gold fill, #121212 text, 50% or 4px radius — #1 status"
-    avatar: "50% radius, optional pink/gradient ring for live or VIP"
+    button-primary: { type: button, bg: "#FF4F6E", fg: "#FFFFFF", radius: "24px", padding: "12px 24px", font: "16px / 700", states: "pressed #E8455F", use: "GO LIVE, primary CTAs, sign-up" }
+    button-follow: { type: button, bg: "#FF4F6E", fg: "#FFFFFF", radius: "16px", padding: "6px 16px", font: "14px / 600", states: "following → transparent + 1px rgba(255,255,255,0.3), fg rgba(255,255,255,0.7)", use: "Follow / Following toggle" }
+    button-secondary: { type: button, bg: "transparent", fg: "#FFFFFF", border: "1px solid rgba(255,255,255,0.3)", radius: "24px", padding: "12px 24px", font: "16px / 600", use: "Secondary actions, Maybe later" }
+    button-gift: { type: button, bg: "#FF4F6E → #FF2D8E gradient", fg: "#FFFFFF", radius: "20px", use: "Send-gift — highest-energy transaction" }
+    input: { type: input, bg: "#2C2C2E", fg: "#FFFFFF", radius: "12px", padding: "12px 16px", focus: "1px solid #FF4F6E", use: "Search, login, profile; placeholder rgba(255,255,255,0.45)" }
+    chat-input: { type: input, bg: "#2C2C2E", radius: "24px", use: "Live-chat composer overlay, trailing pink #FF4F6E send icon" }
+    stream-card: { type: card, radius: "12px", use: "Discover grid — thumbnail + rgba(0,0,0,0.5) bottom gradient, LIVE badge + viewer count + LIVER name" }
+    card: { type: card, bg: "#1C1C1E", radius: "12px", padding: "12px", use: "LIVER lists, ranking rows, fan-club cards" }
+    badge-live: { type: badge, bg: "#FF4F6E", fg: "#FFFFFF", radius: "4px", padding: "2px 6px", font: "11px / 700", use: "Live-now indicator (or #27C76F dot)" }
+    badge-rank: { type: badge, bg: "#FFC83D", fg: "#121212", radius: "50%", use: "Leaderboard / top-fan #1 status" }
+    avatar: { type: avatar, radius: "50%", use: "LIVER and viewer avatars, optional pink/gradient ring for live or VIP" }
+    tab-bar: { type: tab, use: "Bottom tab bar; center GO LIVE elevated pink", active: "#FF4F6E label", states: "inactive rgba(255,255,255,0.45)" }
 omd: "0.1"
 ---
 

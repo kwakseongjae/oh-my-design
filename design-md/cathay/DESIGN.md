@@ -42,13 +42,15 @@ tokens:
     ambient: "rgba(0,0,0,0.08) 0px 2px 8px"
     standard: "rgba(0,0,0,0.12) 0px 4px 16px"
     overlay: "rgba(0,0,0,0.22) 0px 8px 24px"
+  components_harvested: true
   components:
-    button-primary: "deep green #00512a fill, white text, 5px radius, 50px height, 12px 20px padding, weight 400"
-    button-outline: "transparent fill, #00512a text + 1px solid #00512a border, 5px radius"
-    card: "white surface, 5px radius, soft neutral shadow, 27px padding"
-    card-glass: "rgba(255,255,255,0.5) fill on imagery, 5px radius, 40px 15px padding"
-    nav-link: "#333333 text, 16px weight 400, no underline"
-    footer-link: "#ffffff text on dark, 14px weight 400"
+    button-primary: { type: button, bg: "#00512a", fg: "#ffffff", border: "1px solid #00512a", radius: "5px", height: "50px", padding: "12px 20px", font: "16px / 400", active: "fill darkens briefly", use: "Primary CTA (把握好機匯, 我有興趣)" }
+    button-outline: { type: button, bg: "transparent", fg: "#00512a", border: "1px solid #00512a", radius: "5px", font: "16px / 400", use: "Secondary action beside primary CTA" }
+    nav-link: { type: tab, bg: "transparent", fg: "#333333", font: "16px / 400", use: "Top nav links (個人金融, 企業金融), no underline" }
+    card: { type: card, bg: "#ffffff", radius: "5px", padding: "27px", shadow: "rgba(0,0,0,0.12) 0px 4px 16px", use: "Content/product cards (CUBE信用卡)" }
+    card-glass: { type: card, bg: "rgba(255,255,255,0.5)", radius: "5px", padding: "40px 15px", use: "Quick-entry glass tiles over hero imagery (開戶, 匯率查詢)" }
+    input: { type: input, bg: "#ffffff", fg: "#333333", border: "1px solid #eeeeee", radius: "5px", focus: "border #00512a", use: "Form input, placeholder #888888" }
+    footer-link: { type: tab, bg: "#00283d", fg: "#ffffff", font: "14px / 400", use: "Footer group-company + policy links on dark band" }
 ---
 
 # Design System Inspiration of Cathay

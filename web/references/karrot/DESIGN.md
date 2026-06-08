@@ -15,6 +15,55 @@ ds:
   url: "https://seed-design.io"
   type: system
   description: Karrot (Daangn)'s open-source design system for marketplace apps.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#ff6600"
+    primary-hover: "#e14d00"
+    brand: "#ff6600"
+    canvas: "#ffffff"
+    foreground: "#1a1c20"
+    muted: "#868b94"
+    on-primary: "#ffffff"
+    surface: "#f7f8f9"
+    surface-fill: "#f3f4f5"
+    hairline: "#dcdee3"
+    body: "#555d6d"
+    placeholder: "#b0b3ba"
+    brand-tint: "#fff2ec"
+    error: "#fa342c"
+    info: "#217cf9"
+    success: "#079171"
+    warning: "#9b7821"
+    focus: "#5e98fe"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "SF Mono" }
+    display-xl:     { size: 26, weight: 700, lineHeight: 35, tracking: "0em", use: "Hero headlines, splash screens" }
+    display-large:  { size: 24, weight: 700, lineHeight: 32, tracking: "0em", use: "Section headers" }
+    heading-large:  { size: 20, weight: 700, lineHeight: 27, tracking: "0em", use: "Card headings, sub-sections" }
+    heading:        { size: 18, weight: 700, lineHeight: 24, tracking: "0em", use: "List section headers" }
+    title:          { size: 16, weight: 500, lineHeight: 22, tracking: "0em", use: "Navigation, standard titles" }
+    body:           { size: 14, weight: 400, lineHeight: 19, tracking: "0em", use: "Standard reading text, listings" }
+    body-small:     { size: 13, weight: 400, lineHeight: 18, tracking: "0em", use: "Secondary text, metadata" }
+    caption:        { size: 12, weight: 400, lineHeight: 16, tracking: "0em", use: "Timestamps, small labels" }
+    caption-small:  { size: 11, weight: 400, lineHeight: 15, tracking: "0em", use: "Fine print, badges" }
+  spacing: { xs: 2, sm: 4, md: 8, base: 16, lg: 20, xl: 24, xxl: 32, section: 64 }
+  rounded: { sm: 8, md: 12, lg: 16, full: 9999 }
+  shadow:
+    s1: "0px 1px 4px rgba(0,0,0,0.08)"
+    s2: "0px 2px 10px rgba(0,0,0,0.10)"
+    s3: "0px 4px 16px rgba(0,0,0,0.12)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#ff6600", fg: "#ffffff", radius: "12px", height: "52px", font: "16px / 700", states: "pressed #e14d00", disabled: "bg #f3f4f5 fg #d1d3d8", use: "Primary CTA 판매하기 / 채팅하기" }
+    button-neutral: { type: button, bg: "#f3f4f5", fg: "#1a1c20", radius: "8px", states: "pressed #eeeff1", use: "Tertiary actions, filters" }
+    button-outline: { type: button, bg: "transparent", fg: "#1a1c20", border: "1px solid #dcdee3", radius: "8px", states: "pressed #f7f8f9", use: "Cancel, dismiss, low-emphasis" }
+    button-critical: { type: button, bg: "#fa342c", fg: "#ffffff", radius: "8px", use: "Destructive 삭제 / 신고" }
+    card: { type: card, bg: "#ffffff", border: "1px solid rgba(0,0,0,0.08)", radius: "8px", shadow: "0px 2px 10px rgba(0,0,0,0.10)", use: "Standard listing card" }
+    chip: { type: badge, bg: "#f3f4f5", fg: "#1a1c20", radius: "9999px", height: "32px", padding: "0 12px", font: "13px / 500", active: "bg #1a1c20 fg #ffffff", use: "Filter chips, tags" }
+    input: { type: input, bg: "#f7f8f9", fg: "#1a1c20", border: "1px solid #dcdee3", radius: "8px", focus: "2px solid #5e98fe", states: "error border #fa342c", use: "Text input, placeholder #b0b3ba" }
+    tab-bottom: { type: tab, bg: "#ffffff", fg: "#868b94", border: "subtle top border", active: "Karrot Orange icon + label", use: "Bottom tab bar nav" }
 ---
 
 # Design System Inspiration of Karrot (당근)

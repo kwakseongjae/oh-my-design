@@ -10,6 +10,45 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=kbanknow.com&sz=256"
 verified: "2026-05-14"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "primary = signature K bank Navy #0114a7 (sole brand primary); lime #b6f23d is the sparing energetic accent"
+  colors:
+    primary: "#0114a7"
+    brand: "#0114a7"
+    accent-lime: "#b6f23d"
+    accent-sell: "#047af1"
+    canvas: "#ffffff"
+    foreground: "#020616"
+    muted: "#67748e"
+    on-primary: "#ffffff"
+    surface: "#f7f9fd"
+    surface-strong: "#edf1f7"
+    hairline: "#e0e6f1"
+    body: "#252b37"
+    info: "#066ae5"
+    action: "#2539e9"
+    error: "#e23a32"
+    warning: "#e46f00"
+    success: "#69a305"
+  typography:
+    family: { sans: "Pretendard K Edition", mono: "SF Mono" }
+    body:    { size: 14, weight: 400, lineHeight: "normal", use: "Standard body text" }
+    cta:     { size: 18, weight: 500, use: "Button label, medium weight not bold" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32 }
+  rounded: { sm: 0, md: 0, lg: 12, full: 9999 }
+  shadow:
+    none: "Elevation conveyed through 1px borders and g200/g300 fills, not Z-axis"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#0114a7", fg: "#ffffff", radius: "12px", height: "56px", font: "18px / 500", use: "Primary CTA, medium weight on navy fill" }
+    listItem-link: { type: listItem, fg: "#020616", use: "Nav/body links, underline on hover, dense 14px" }
+    card-tile: { type: card, bg: "#ffffff", border: "1px solid #e0e6f1", radius: "0px", shadow: "none", use: "Square-cornered product tiles separated by 1px borders" }
+    badge-info: { type: badge, bg: "#d1ecff", fg: "#066ae5", use: "Informational banner state" }
+    badge-action: { type: badge, bg: "#e6ebff", fg: "#2539e9", use: "Promo / opportunity callout" }
+    badge-neutral: { type: badge, bg: "#edf1f7", fg: "#4d596f", use: "Quiet badge / chip" }
+    badge-error: { type: badge, bg: "#ffe5e0", fg: "#e23a32", use: "Failure / fraud alert" }
 ---
 
 # K bank — Design Reference

@@ -10,6 +10,28 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=kkbox.com&sz=128"
 verified: "2026-06-01"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#00b6e1"
+    brand: "#00b6e1"
+    canvas: "#111111"
+    foreground: "#ffffff"
+    on-primary: "#00b6e1"
+    surface: "#f2f2f2"
+  typography:
+    family: { sans: "Work Sans", mono: "SF Mono" }
+    display-hero: { size: 120, weight: 600, use: "Hero headings, white on dark ground" }
+    body:         { size: 14, weight: 400, use: "Body copy, Helvetica Neue, quiet" }
+    button:       { size: 18, weight: 500, use: "Download CTA label" }
+  spacing: { sm: 16, base: 48 }
+  rounded: { sm: 30, md: 30, lg: 30, full: 9999 }
+  shadow:
+    none: "Depth via tonal contrast — bright pill on near-black ground, not drop shadow"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#f2f2f2", fg: "#00b6e1", radius: "30px", padding: "16px 48px", height: "57px", font: "18px / 500", use: "Primary download CTA, light pill floating on #111111 ground" }
 ---
 
 # Design System Inspiration of KKBOX

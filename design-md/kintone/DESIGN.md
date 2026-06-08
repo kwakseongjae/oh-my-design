@@ -11,6 +11,69 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#ef3f24"
+    primary-hover: "#d63b22"
+    brand: "#ef3f24"
+    canvas: "#ffffff"
+    foreground: "#333333"
+    muted: "#666666"
+    on-primary: "#ffffff"
+    surface: "#f5f5f5"
+    hairline: "#dddddd"
+    body: "#555555"
+    placeholder: "#999999"
+    accent-green: "#3fa862"
+    accent-cerulean: "#00afec"
+    accent-aloe: "#00afaa"
+    accent-sunshine: "#ffba00"
+    error: "#e74c3c"
+    success: "#3fa862"
+    warning: "#ffba00"
+    info: "#00afec"
+  typography:
+    family: { sans: "Meiryo", mono: "SFMono-Regular" }
+    display-hero:  { size: 40, weight: 700, lineHeight: 1.3, tracking: "0.02em", use: "Marketing hero みんな、つくれる" }
+    display-large: { size: 32, weight: 700, lineHeight: 1.35, tracking: "0.02em", use: "Section titles, landing headers" }
+    heading-1:     { size: 24, weight: 700, lineHeight: 1.4, use: "Page titles, app names" }
+    heading-2:     { size: 20, weight: 700, lineHeight: 1.45, use: "Card headers, form section titles" }
+    heading-3:     { size: 18, weight: 700, lineHeight: 1.5, use: "Sub-sections, field group labels" }
+    subtitle:      { size: 16, weight: 700, lineHeight: 1.5, use: "List headers, dialog titles" }
+    body-large:    { size: 16, weight: 400, lineHeight: 1.7, use: "Intro copy, descriptions" }
+    body:          { size: 14, weight: 400, lineHeight: 1.7, use: "Standard UI text, record fields" }
+    body-small:    { size: 13, weight: 400, lineHeight: 1.65, use: "Secondary info, table cells" }
+    caption:       { size: 12, weight: 400, lineHeight: 1.6, use: "Field hints, timestamps, fine print" }
+    label:         { size: 13, weight: 700, lineHeight: 1.5, use: "Form field labels above inputs" }
+    button:        { size: 14, weight: 700, lineHeight: 1.0, tracking: "0.02em", use: "CTA and action button text" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 64 }
+  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
+  shadow:
+    subtle: "0 1px 3px rgba(0,0,0,0.08)"
+    raised: "0 4px 12px rgba(0,0,0,0.12)"
+    elevated: "0 4px 12px rgba(0,0,0,0.18)"
+    modal: "0 8px 24px rgba(0,0,0,0.20)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#ef3f24", fg: "#ffffff", radius: "4px", padding: "10px 24px", font: "14px / 700", hover: "#d63b22", active: "#c0341e", disabled: "bg #f5b3aa fg #ffffff", use: "Primary CTA 無料ではじめる / 保存" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#ef3f24", border: "1px solid #ef3f24", radius: "4px", padding: "10px 24px", font: "14px / 700", hover: "#fff0ee", use: "Secondary action paired with primary" }
+    button-neutral: { type: button, bg: "#ffffff", fg: "#555555", border: "1px solid #dddddd", radius: "4px", padding: "10px 20px", font: "14px / 700", hover: "bg #f5f5f5 border #bbbbbb", use: "Cancel, close, back キャンセル" }
+    button-text: { type: button, bg: "transparent", fg: "#00afec", radius: "4px", padding: "8px 12px", font: "14px / 700", hover: "underline + #f5f5f5", use: "Inline link-style actions in tables/toolbars" }
+    button-danger: { type: button, bg: "#e74c3c", fg: "#ffffff", radius: "4px", padding: "10px 24px", font: "14px / 700", hover: "#d63b22", use: "Destructive confirmation 削除する" }
+    input-text: { type: input, bg: "#ffffff", fg: "#333333", border: "1px solid #dddddd", radius: "4px", padding: "8px 10px", font: "14px / 400", focus: "border #00afec + 0 0 0 2px rgba(0,175,236,0.15) ring", disabled: "bg #f5f5f5 fg #999999", use: "Single-line record fields, search" }
+    input-error: { type: input, bg: "#ffffff", fg: "#333333", border: "1px solid #e74c3c", radius: "4px", use: "Validation failure with inline message" }
+    card: { type: card, bg: "#ffffff", border: "1px solid #dddddd", radius: "6px", padding: "20px", shadow: "0 1px 3px rgba(0,0,0,0.08)", use: "Record cards, dashboard widgets, settings panels" }
+    card-tile: { type: card, bg: "#ffffff", radius: "8px", padding: "16px", shadow: "0 1px 3px rgba(0,0,0,0.08)", hover: "0 4px 12px rgba(0,0,0,0.12)", use: "Signature app launcher tile" }
+    badge-neutral: { type: badge, bg: "#f5f5f5", fg: "#555555", border: "1px solid #dddddd", radius: "12px", padding: "2px 10px", font: "12px / 700", use: "Neutral status / category tag" }
+    badge-success: { type: badge, bg: "#e7f5ed", fg: "#3fa862", radius: "12px", padding: "2px 10px", font: "12px / 700", use: "Success status pill" }
+    badge-info: { type: badge, bg: "#e6f7fd", fg: "#00afec", radius: "12px", padding: "2px 10px", font: "12px / 700", use: "Info status pill" }
+    badge-danger: { type: badge, bg: "#fdeeee", fg: "#e74c3c", radius: "12px", padding: "2px 10px", font: "12px / 700", use: "Danger status pill" }
+    tab-underline: { type: tab, fg: "#666666", border: "1px solid #dddddd bottom", font: "14px / 700", padding: "10px 16px", hover: "#333333", active: "#ef3f24 text + 2px bottom border #ef3f24", use: "Record detail tabs, settings nav" }
+    toast: { type: toast, bg: "#333333", fg: "#ffffff", radius: "4px", padding: "12px 16px", shadow: "0 4px 12px rgba(0,0,0,0.18)", font: "13px / 400", use: "Auto-dismissing confirmation 保存しました" }
+    dialog: { type: dialog, bg: "#ffffff", radius: "8px", padding: "24px", shadow: "0 8px 24px rgba(0,0,0,0.20)", use: "Confirmation dialogs, settings, backdrop rgba(0,0,0,0.5)" }
+    toggle: { type: toggle, bg: "#dddddd", radius: "9999px", active: "#3fa862 track white thumb", use: "Enable/disable settings 通知をオン" }
 ---
 
 # Design System Inspiration of kintone (キントーン)

@@ -15,6 +15,48 @@ ds:
   url: "https://github.com/moneyforward/cloud-react-ui"
   type: system
   description: Money Forward's open-source React component library and theme tokens for the Money Forward Cloud business suite — buttons, forms, and a typed styled-components theme published on GitHub.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#3b7de9"
+    primary-hover: "#0054ac"
+    brand: "#3b7de9"
+    canvas: "#ffffff"
+    surface: "#ecf2fd"
+    foreground: "#333333"
+    muted: "#999999"
+    on-primary: "#ffffff"
+    hairline: "#d4d8dd"
+    error: "#d0021b"
+    success: "#65ab51"
+    warning-bg: "#fcf8e3"
+    warning-text: "#8a6d3b"
+    error-bg: "#ffeeeb"
+  typography:
+    family: { sans: "Noto Sans JP", mono: "Noto Sans JP" }
+    xSmall:     { size: 10, use: "Fine print, dense table footnotes" }
+    small:      { size: 12, use: "Captions, helper text" }
+    middle:     { size: 13, use: "Secondary labels, table cells" }
+    large:      { size: 14, weight: 400, use: "Body / button default" }
+    xlarge:     { size: 16, use: "Emphasized body" }
+    xxlarge:    { size: 18, weight: 700, use: "Subheadings" }
+    xxxLarge:   { size: 20, weight: 700, use: "Section headings" }
+    xxxxLarge:  { size: 24, weight: 700, use: "Page headings" }
+  spacing: [12, 16, 52]
+  rounded: { sm: 4, md: 4, lg: 4, full: 9999 }
+  shadow:
+    active: "0 0 2px rgba(212,216,221,0.3)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "linear-gradient(to bottom,#3b7de9,#0054ac)", fg: "#ffffff", border: "1px solid rgba(0,0,0,0.15)", radius: "4px", height: "32px", padding: "0 12px", font: "14px / 400", states: "hover gradient flips, active 0 0 2px rgba(212,216,221,0.3)", use: "Single primary action per screen" }
+    button-default: { type: button, bg: "linear-gradient(to bottom,#ffffff,#ecf2fd)", fg: "#333333", border: "1px solid #d4d8dd", radius: "4px", font: "14px / 400", states: "hover gradient flips", use: "Secondary / cancel actions" }
+    button-danger: { type: button, bg: "linear-gradient(to bottom,#ffffff,#ecf2fd)", fg: "#d0021b", border: "1px solid #d4d8dd", radius: "4px", use: "Destructive actions, danger in text not fill" }
+    button-disabled: { type: button, bg: "#d4d8dd", fg: "#999999", border: "1px solid rgba(0,0,0,0.1)", radius: "4px", use: "Unavailable actions" }
+    block: { type: card, bg: "#ffffff", border: "1px solid #d4d8dd", radius: "4px", use: "Content panel / card container" }
+    input: { type: input, bg: "#ffffff", fg: "#333333", border: "1px solid #d4d8dd", radius: "4px", focus: "border #3b7de9", use: "Form fields" }
+    notice-error: { type: card, bg: "#ffeeeb", fg: "#d0021b", radius: "4px", use: "Error / danger banner" }
+    notice-warning: { type: card, bg: "#fcf8e3", fg: "#8a6d3b", use: "Caution banner" }
 ---
 
 # Design System Inspiration of Money Forward

@@ -10,6 +10,35 @@ logo:
   slug: smartnews
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#EB0B22"
+    brand: "#EB0B22"
+    canvas: "#FFFFFF"
+    foreground: "#000000"
+    muted: "#666666"
+    on-primary: "#FFFFFF"
+    surface: "#F5F5F5"
+  typography:
+    family: { sans: "system-ui", mono: "system-ui" }
+    headline: { size: 18, weight: 700, lineHeight: 1.30, use: "Bold scannable article headlines" }
+    body:     { size: 16, weight: 400, lineHeight: 1.50, use: "Article preview / body text" }
+    meta:     { size: 13, weight: 400, lineHeight: 1.40, use: "Source name, timestamp, channel labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    card: "minimal / 1px separation on light-neutral feed"
+  components_harvested: true
+  components:
+    tab-channel: { type: tab, bg: "#FFFFFF", fg: "#666666", active: "text #000000 bold, #EB0B22 underline bar", use: "Swipeable channel bar — core navigation" }
+    button-primary: { type: button, bg: "#EB0B22", fg: "#FFFFFF", radius: "8px", use: "Key conversion action (Get the app, Subscribe)" }
+    button-secondary: { type: button, bg: "#FFFFFF", fg: "#000000", border: "1px solid neutral", radius: "8px", use: "Lower-emphasis action" }
+    button-download: { type: button, bg: "#000000", fg: "#FFFFFF", radius: "12px", font: "/ 700", use: "App Store / Google Play download tile" }
+    card-article: { type: card, bg: "#FFFFFF", fg: "#000000", radius: "8px", use: "Headline + source + timestamp + thumbnail feed unit" }
+    card-image: { type: card, fg: "#FFFFFF", use: "Featured story — photo fill, white headline over dark scrim" }
+    badge-breaking: { type: badge, bg: "#EB0B22", fg: "#FFFFFF", radius: "4px", font: "/ 700", use: "Breaking / live emphasis, uppercase" }
 ---
 
 # Design System Inspiration of SmartNews

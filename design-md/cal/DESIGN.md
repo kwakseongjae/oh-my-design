@@ -52,15 +52,16 @@ tokens:
     soft: "rgba(34,42,53,0.05) 0px 4px 8px"
     ring-soft: "rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px 0px"
     inset-highlight: "rgba(255,255,255,0.15) 0px 2px 0px inset"
+  components_harvested: true
   components:
-    button-primary: "Charcoal #242424 fill, white text, 8px radius, 12px 20px padding, Inter 16/600, hover opacity 0.7"
-    button-ghost: "white fill, #242424 text, 8px radius, ring-soft shadow as border (no CSS border)"
-    button-pill: "Charcoal #242424 fill, white text, 9999px radius, 8px 16px padding"
-    card: "white surface, 8px radius, 16px 24px padding, ring-soft shadow (ring border + diffused + contact)"
-    badge-pill: "Charcoal #242424 fill, white text, 9999px radius, Cal Sans 12/600"
-    badge-default: "#f5f5f5 fill, #242424 text, 8px radius, Cal Sans 12/600"
-    input: "white fill, #242424 text, 1px solid rgb(118,118,118) border, 8px radius, 8px 12px padding"
-    nav: "white/transparent bg, Cal Sans links at #111111, dark primary CTA, sticky on scroll"
+    button-primary: { type: button, bg: "#242424", fg: "#ffffff", radius: "8px", padding: "12px 20px", font: "16px / 600", hover: "opacity 0.7", use: "Signature CTA — maximally dark on white" }
+    button-ghost: { type: button, bg: "#ffffff", fg: "#242424", radius: "8px", padding: "12px 20px", shadow: "rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px 0px", font: "16px / 600", use: "Secondary CTA with shadow-ring border (no CSS border)" }
+    button-pill: { type: button, bg: "#242424", fg: "#ffffff", radius: "9999px", padding: "8px 16px", use: "Rounded pill-shaped actions" }
+    input: { type: input, bg: "#ffffff", fg: "#242424", border: "1px solid rgb(118,118,118)", radius: "8px", padding: "8px 12px", focus: "--framer-focus-outline", use: "Text input / select" }
+    card: { type: card, bg: "#ffffff", radius: "8px", padding: "16px 24px", shadow: "rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px 1px, rgba(34,42,53,0.05) 0px 4px 8px 0px", use: "Standard card; ring shadow as border" }
+    badge-pill: { type: badge, bg: "#242424", fg: "#ffffff", radius: "9999px", padding: "4px 10px", font: "12px / 600", use: "Pill-shaped badges and tags" }
+    badge-default: { type: badge, bg: "#f5f5f5", fg: "#242424", radius: "8px", padding: "4px 8px", font: "12px / 600", use: "Default badge" }
+    nav: { type: tab, bg: "white/transparent", fg: "#111111", use: "Sticky top nav, Cal Sans links, dark primary CTA" }
 ---
 
 # Design System Inspiration of Cal.com

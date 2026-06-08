@@ -15,6 +15,54 @@ ds:
   url: "https://smarthr.design"
   type: system
   description: SmartHR's fully public, governance-driven design system — primitive and semantic tokens, accessibility-first components, and inclusive UI guidelines published openly at smarthr.design.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#00C4CC"
+    brand: "#00C4CC"
+    canvas: "#FFFFFF"
+    foreground: "#23221F"
+    body: "#4E4C49"
+    muted: "#AAA69F"
+    on-primary: "#FFFFFF"
+    accent-orange: "#FF9900"
+    surface: "#F8F7F6"
+    hairline: "#EDEBE6"
+    success: "#3DCC65"
+    error: "#EC5A55"
+    warning: "#FFD74A"
+    info: "#32B7F0"
+    aqua-dark: "#0F7F85"
+  typography:
+    family: { sans: "system-ui", mono: "system-ui" }
+    page-heading:  { size: 32, weight: 700, lineHeight: 1.25, use: "Page headings (XXL; mobile 28.8px)" }
+    section:       { size: 24, weight: 700, lineHeight: 1.25, use: "Section headings (XL)" }
+    subheading:    { size: 19.2, weight: 700, lineHeight: 1.25, use: "Subheadings (L)" }
+    body:          { size: 16, weight: 400, lineHeight: 1.50, use: "Body default (M)" }
+    label:         { size: 13.71, weight: 400, lineHeight: 1.00, use: "Secondary labels (S)" }
+    caption:       { size: 12, weight: 400, lineHeight: 1.50, use: "Captions, helper text (XS)" }
+    fine:          { size: 10.67, weight: 400, lineHeight: 1.50, use: "Fine print, dense table captions (XXS)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
+  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
+  shadow:
+    popover: "subtle tokenized shadow (light)"
+    modal: "stronger tokenized shadow + Stone01 backdrop scrim"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#00C4CC", fg: "#FFFFFF", radius: "6px", font: "16px / 700", use: "Single most important action (Save/Submit)" }
+    button-secondary: { type: button, bg: "#FFFFFF", fg: "#23221F", border: "1px solid #EDEBE6", radius: "6px", use: "Cancel / secondary beside primary" }
+    button-danger: { type: button, bg: "#EC5A55", fg: "#FFFFFF", radius: "6px", use: "Destructive action" }
+    button-text: { type: button, bg: "transparent", fg: "#0F7F85", use: "Low-emphasis inline action" }
+    button-disabled: { type: button, bg: "#EDEBE6", fg: "#AAA69F", disabled: "palette swap, no opacity trick", use: "Unavailable action" }
+    input: { type: input, bg: "#FFFFFF", fg: "#23221F", border: "1px solid #AAA69F", radius: "4px", focus: "border #00C4CC + focus ring", use: "Form text field" }
+    input-error: { type: input, border: "1px solid #EC5A55", use: "Validation failure; helper text #A53F3F at 12px" }
+    card: { type: card, bg: "#FFFFFF", border: "1px solid #EDEBE6", radius: "8px", use: "Content panel on Stone01 #F8F7F6 page bg" }
+    notice-info: { type: card, bg: "#DDF2FB", fg: "#1376A0", radius: "4px", use: "Informational banner" }
+    notice-success: { type: card, bg: "#E6F2C8", fg: "#378445", radius: "4px", use: "Confirmation message" }
+    notice-warning: { type: card, bg: "#FAF2D0", fg: "#F56121", radius: "4px", use: "Caution message" }
+    notice-error: { type: card, bg: "#FFE7E5", fg: "#A53F3F", radius: "4px", use: "Error / failure banner" }
+    badge: { type: badge, radius: "9999px", use: "Status chip — family-01 tint bg, family-04 dark text, color-coded by semantic family" }
 ---
 
 # Design System Inspiration of SmartHR

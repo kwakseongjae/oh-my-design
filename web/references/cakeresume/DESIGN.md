@@ -33,11 +33,12 @@ tokens:
   rounded: { sm: 4, md: 4, lg: 4, full: 9999 }
   shadow:
     none: "none — separation via color and 1px borders, not drop shadows"
+  components_harvested: true
   components:
-    button-primary: "Cake green #13AB67 fill, white text, 4px radius, 32px height, Inter 14px/400 — single most important action"
-    button-secondary: "transparent fill, #13AB67 text, 4px radius, 32px height — quieter Log In beside primary"
-    language-selector: "white bg, #000000 text, 1px solid #D1D6D4 border, 4px radius, 32px height"
-    chip-neutral: "#E2E6E4 fill, #0E0E0F text, 4px radius — receding metadata pills"
+    button-primary: { type: button, bg: "#13AB67", fg: "#FFFFFF", border: "none", radius: "4px", height: "32px", font: "14px / 400", use: "Single most important action (Sign Up, primary submit)" }
+    button-secondary: { type: button, bg: "transparent", fg: "#13AB67", border: "none", radius: "4px", height: "32px", font: "14px / 400", use: "Quieter Log In beside primary" }
+    language-selector: { type: input, bg: "#FFFFFF", fg: "#000000", border: "1px solid #D1D6D4", radius: "4px", height: "32px", font: "14px / 400", use: "Header locale/language switcher" }
+    chip-neutral: { type: badge, bg: "#E2E6E4", fg: "#0E0E0F", border: "none", radius: "4px", use: "Receding metadata/tag pills" }
 ---
 
 # Design System Inspiration of Cake

@@ -10,6 +10,59 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=kakaomobility.com&sz=128"
 verified: "2026-05-27"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#fee500"
+    primary-hover: "#f2d900"
+    brand: "#fee500"
+    canvas: "#ffffff"
+    foreground: "#191919"
+    muted: "#76787a"
+    on-primary: "#191919"
+    surface: "#f5f6f7"
+    hairline: "#e5e6e8"
+    body: "#4b4f54"
+    text-strong: "#26282b"
+    text-tertiary: "#a2a4a6"
+    success: "#0fb882"
+    info: "#3478f6"
+    warning: "#ff8a00"
+    error: "#f5444c"
+    black: "#000000"
+  typography:
+    family: { sans: "Pretendard", mono: "SF Mono" }
+    display-hero:   { size: 30, weight: 700, lineHeight: 1.3, use: "Marketing hero, onboarding" }
+    heading-large:  { size: 22, weight: 700, lineHeight: 1.35, use: "Sheet headers" }
+    heading:        { size: 18, weight: 600, lineHeight: 1.4, use: "Card titles, vehicle-class headers" }
+    subtitle:       { size: 16, weight: 600, lineHeight: 1.5, use: "List headers, fare summary label" }
+    body-large:     { size: 16, weight: 400, lineHeight: 1.5, use: "Descriptions, address detail" }
+    body:           { size: 14, weight: 400, lineHeight: 1.5, use: "Standard reading text, trip metadata" }
+    label:          { size: 16, weight: 600, lineHeight: 1.4, use: "Button labels" }
+    caption:        { size: 12, weight: 400, lineHeight: 1.4, use: "Timestamps, fine print" }
+    fare-display:   { size: 24, weight: 700, use: "Estimated/final fare, tabular numerals" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32 }
+  rounded: { sm: 8, md: 12, lg: 16, full: 9999 }
+  shadow:
+    card: "0px 2px 12px rgba(0,0,0,0.08)"
+    sheet: "0px -4px 16px rgba(0,0,0,0.10)"
+    floating: "0px 4px 16px rgba(0,0,0,0.16)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#fee500", fg: "#191919", radius: "12px", padding: "14px 20px", height: "52px", font: "16px / 600", states: "pressed #f2d900", disabled: "bg #f5f6f7 fg #a2a4a6", use: "Primary CTA 호출하기 / 결제하기" }
+    button-dark: { type: button, bg: "#191919", fg: "#ffffff", radius: "12px", padding: "14px 20px", font: "16px / 600", use: "Strong action where yellow too loud 로그인 / 다음" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#26282b", border: "1px solid #d1d3d5", radius: "12px", padding: "14px 20px", font: "16px / 600", use: "Secondary action 취소" }
+    button-danger: { type: button, bg: "#ffffff", fg: "#f5444c", border: "1px solid #f5444c", radius: "12px", padding: "14px 20px", font: "16px / 600", use: "Destructive 호출 취소" }
+    input-search: { type: input, bg: "#f5f6f7", fg: "#26282b", radius: "12px", padding: "14px 16px", font: "16px / 400", focus: "1px border #191919", use: "어디로 갈까요? destination search" }
+    input-error: { type: input, bg: "#ffffff", fg: "#26282b", border: "1px solid #f5444c", radius: "12px", padding: "14px 16px", font: "16px / 400", use: "Invalid input" }
+    card-vehicle: { type: card, bg: "#ffffff", border: "1px solid #e5e6e8", radius: "12px", padding: "16px", active: "2px border #191919 + yellow icon accent", use: "Vehicle-class selection rows" }
+    card-trip: { type: card, bg: "#ffffff", radius: "16px", padding: "20px", shadow: "0px 2px 12px rgba(0,0,0,0.08)", use: "Active-trip summary, ride receipt" }
+    badge-status: { type: badge, bg: "#f5f6f7", fg: "#4b4f54", radius: "999px", padding: "4px 12px", font: "12px / 600", use: "Filter chips, vehicle tags" }
+    badge-live: { type: badge, bg: "rgba(15,184,130,0.12)", fg: "#0fb882", radius: "999px", padding: "4px 10px", font: "12px / 700", use: "도착 / 운행 중 status pill" }
+    dialog-sheet: { type: dialog, bg: "#ffffff", fg: "#191919", radius: "20px", padding: "20px", shadow: "0px -4px 16px rgba(0,0,0,0.10)", use: "Persistent bottom sheet over the map, 36x4px handle" }
+    tab-bottom: { type: tab, bg: "#ffffff", fg: "#a2a4a6", border: "1px solid #e5e6e8", font: "11px / 500", active: "text/icon #191919", use: "홈 / 이용내역 / 결제 / 전체 nav" }
+    toast-snackbar: { type: toast, bg: "#26282b", fg: "#ffffff", radius: "12px", padding: "12px 16px", shadow: "0px 4px 12px rgba(0,0,0,0.16)", font: "14px / 500", use: "Transient feedback, 3s auto-dismiss" }
 ---
 
 # Design System Inspiration of Kakao T (카카오 T)

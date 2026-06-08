@@ -10,6 +10,54 @@ logo:
   slug: sentry
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#79628c"
+    primary-hover: "#6a5fc1"
+    brand: "#362d59"
+    canvas: "#1f1633"
+    canvas-deep: "#150f23"
+    foreground: "#ffffff"
+    muted: "#e5e7eb"
+    on-primary: "#ffffff"
+    accent-lime: "#c2ef4e"
+    accent-coral: "#ffb287"
+    accent-pink: "#fa7faa"
+    accent-violet: "#422082"
+    hairline: "#cfcfdb"
+    border-dark: "#362d59"
+    code-yellow: "#dcdcaa"
+  typography:
+    family: { sans: "Rubik", mono: "Monaco" }
+    display-hero:   { size: 88, weight: 700, lineHeight: 1.20, use: "Hero headlines (Dammit Sans), brand voice" }
+    display-secondary: { size: 60, weight: 500, lineHeight: 1.10, use: "Secondary hero text (Dammit Sans)" }
+    section:        { size: 30, weight: 400, lineHeight: 1.20, use: "Major section titles" }
+    subheading:     { size: 27, weight: 500, lineHeight: 1.25, use: "Feature section headers" }
+    card-title:     { size: 24, weight: 500, lineHeight: 1.25, use: "Card and block headings" }
+    feature-title:  { size: 20, weight: 600, lineHeight: 1.25, use: "Emphasized feature names" }
+    body:           { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body text" }
+    nav-label:      { size: 15, weight: 500, lineHeight: 1.40, use: "Navigation links" }
+    button:         { size: 14, weight: 700, lineHeight: 1.20, tracking: 0.2, use: "Uppercase button label" }
+    caption:        { size: 12, weight: 600, lineHeight: 2.00, use: "Subtle annotations" }
+    code:           { size: 16, weight: 400, lineHeight: 1.50, use: "Code blocks (Monaco)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 40 }
+  rounded: { sm: 6, md: 8, lg: 13, full: 9999 }
+  shadow:
+    surface: "rgba(0,0,0,0.08) 0px 2px 8px"
+    elevated: "rgba(0,0,0,0.1) 0px 10px 15px -3px"
+    prominent: "rgba(0,0,0,0.18) 0px 0.5rem 1.5rem"
+    inset: "rgba(0,0,0,0.1) 0px 1px 3px 0px inset"
+    ambient: "rgba(22,15,36,0.9) 0px 4px 4px 9px"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#79628c", fg: "#ffffff", border: "1px solid #362d59", radius: "13px", font: "14px / 700", shadow: "rgba(0,0,0,0.1) 0px 1px 3px 0px inset", hover: "rgba(0,0,0,0.18) 0px 0.5rem 1.5rem", use: "Primary muted-purple action, uppercase" }
+    button-glass: { type: button, bg: "rgba(255,255,255,0.18)", fg: "#ffffff", radius: "12px", padding: "8px", shadow: "rgba(0,0,0,0.08) 0px 2px 8px", hover: "rgba(54,22,107,0.14)", use: "Secondary action on dark surfaces" }
+    button-white: { type: button, bg: "#ffffff", fg: "#1f1633", radius: "8px", padding: "12px 16px", hover: "bg #6a5fc1, text #ffffff", focus: "bg #ffb287, outline #6a5fc1", use: "High-visibility CTA on dark" }
+    button-violet: { type: button, bg: "#422082", fg: "#ffffff", radius: "8px", padding: "8px 16px", use: "Select / dropdown" }
+    input: { type: input, bg: "#ffffff", fg: "#1f1633", border: "1px solid #cfcfdb", radius: "6px", padding: "8px 12px", focus: "rgba(0,0,0,0.15) 0px 2px 10px inset", use: "Text input" }
+    card: { type: card, radius: "12px", shadow: "rgba(0,0,0,0.1) 0px 10px 15px -3px", use: "Glass / dark purple surface, backdrop blur(18px)" }
 ---
 
 # Design System Inspiration of Sentry

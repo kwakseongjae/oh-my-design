@@ -10,6 +10,55 @@ logo:
   slug: spotify
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#1ed760"
+    brand: "#1ed760"
+    brand-border: "#1db954"
+    canvas: "#121212"
+    foreground: "#ffffff"
+    muted: "#b3b3b3"
+    on-primary: "#000000"
+    surface: "#181818"
+    surface-mid: "#1f1f1f"
+    surface-card: "#252525"
+    hairline: "#4d4d4d"
+    border-light: "#7c7c7c"
+    error: "#f3727f"
+    warning: "#ffa42b"
+    info: "#539df5"
+  typography:
+    family: { sans: "SpotifyMixUI", mono: "SpotifyMixUI" }
+    section-title:   { size: 24, weight: 700, use: "Bold section titles (SpotifyMixUITitle)" }
+    feature-heading: { size: 18, weight: 600, lineHeight: 1.30, use: "Semibold section heads" }
+    body-bold:       { size: 16, weight: 700, use: "Emphasized text" }
+    body:            { size: 16, weight: 400, use: "Standard body" }
+    button:          { size: 14, weight: 700, tracking: 1.4, use: "Uppercase button label" }
+    nav:             { size: 14, weight: 400, use: "Navigation links" }
+    small:           { size: 12, weight: 400, use: "Tags, counts, fine print" }
+    badge:           { size: 10.5, weight: 600, lineHeight: 1.33, use: "Badge text, capitalize" }
+    micro:           { size: 10, weight: 400, use: "Smallest text" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+  shadow:
+    heavy: "rgba(0,0,0,0.5) 0px 8px 24px"
+    medium: "rgba(0,0,0,0.3) 0px 8px 8px"
+    inset-border: "rgb(18,18,18) 0px 1px 0px, rgb(124,124,124) 0px 0px 0px 1px inset"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#1ed760", fg: "#000000", radius: "9999px", padding: "12px 32px", font: "14px / 700", hover: "scale(1.04) + brightness", use: "Primary brand CTA (Get Spotify Free, Premium)" }
+    button-dark-pill: { type: button, bg: "#1f1f1f", fg: "#ffffff", radius: "9999px", padding: "8px 16px", font: "14px / 700", use: "Navigation pills, secondary actions on dark" }
+    button-light-pill: { type: button, bg: "#ffffff", fg: "#121212", radius: "500px", padding: "16px 48px", font: "16px / 700", use: "Light-mode CTAs (cookie consent, marketing)" }
+    button-outline: { type: button, bg: "transparent", fg: "#ffffff", border: "1px solid #7c7c7c", radius: "9999px", padding: "4px 16px 4px 36px", font: "14px / 700", use: "Follow buttons, secondary actions" }
+    button-play: { type: button, bg: "#1f1f1f", fg: "#ffffff", radius: "50%", padding: "12px", font: "14px / 700", hover: "scale(1.06)", use: "Play/pause circular control" }
+    input-search: { type: input, bg: "#1f1f1f", fg: "#ffffff", border: "1px solid transparent", radius: "500px", padding: "12px 16px 12px 48px", font: "14px / 400", focus: "1px solid #000000", use: "Top-bar pill search; placeholder #b3b3b3" }
+    input: { type: input, bg: "#1f1f1f", fg: "#ffffff", border: "1px solid #7c7c7c", radius: "4px", padding: "8px 12px", font: "14px / 400", focus: "1px solid #1ed760", use: "Settings forms, playlist edit" }
+    card: { type: card, bg: "#181818", fg: "#ffffff", radius: "8px", padding: "16px", hover: "bg #1f1f1f + scale(1.02) artwork", use: "Album/playlist grid card" }
+    card-elevated: { type: card, bg: "#181818", fg: "#ffffff", radius: "8px", padding: "16px", shadow: "rgba(0,0,0,0.3) 0px 8px 8px", use: "Now playing, sticky/floating surfaces" }
+    badge-nowplaying: { type: badge, bg: "transparent", fg: "#1ed760", radius: "2px", font: "11px / 700", use: "Playback indicator on active track row" }
+    badge-genre: { type: badge, bg: "#3a3a3a", fg: "#ffffff", radius: "4px", padding: "2px 8px", font: "11px / 700", use: "Genre/mood tag on album header" }
 ---
 
 # Design System Inspiration of Spotify

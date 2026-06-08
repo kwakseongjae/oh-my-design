@@ -10,6 +10,52 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=spooncast.net&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#FF5500"
+    primary-hover: "#E64D00"
+    brand: "#FF5500"
+    canvas: "#FFFFFF"
+    foreground: "#1A1A1A"
+    body: "#333333"
+    muted: "#767676"
+    on-primary: "#FFFFFF"
+    surface: "#F2F2F2"
+    hairline: "#E5E5E5"
+    success: "#22C55E"
+    error: "#FF3B30"
+    accent-gift: "#FFB300"
+    accent-coral: "#F23C5C"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    hero:    { size: 28, weight: 700, lineHeight: 1.30, use: "Marketing hero, section headlines" }
+    section: { size: 20, weight: 700, lineHeight: 1.35, use: "라이브/팟캐스트/랭킹 headers" }
+    card-title: { size: 16, weight: 600, lineHeight: 1.40, use: "Live-room titles, DJ names" }
+    body:    { size: 14, weight: 400, lineHeight: 1.50, use: "Descriptions, room info" }
+    chip:    { size: 12, weight: 400, lineHeight: 1.40, use: "Hashtag chips, CTAs" }
+    meta:    { size: 12, weight: 400, lineHeight: 1.40, use: "Listener counts, timestamps" }
+    caption: { size: 11, weight: 400, lineHeight: 1.40, use: "Fine print" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24 }
+  rounded: { sm: 6, md: 12, lg: 16, full: 9999 }
+  shadow:
+    scrim: "rgba(0,0,0,0.5)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#FF5500", fg: "#FFFFFF", radius: "999px", height: "28px", padding: "4px 12px", font: "12px / 500", hover: "#E64D00", use: "Login/signup primary CTA — compact orange pill" }
+    button-golive: { type: button, bg: "#FF5500", fg: "#FFFFFF", radius: "999px", padding: "10px 20px", font: "15px / 600", use: "방송하기 / start-a-live — larger orange pill" }
+    button-outline: { type: button, bg: "#FFFFFF", fg: "#FF5500", border: "1px solid #FF5500", radius: "999px", padding: "4px 12px", font: "12px / 500", use: "Follow, secondary action" }
+    button-ghost: { type: button, bg: "transparent", fg: "#333333", font: "14px / 500", use: "Tertiary nav, 더보기" }
+    input: { type: input, bg: "#F2F2F2", fg: "#1A1A1A", radius: "999px", padding: "8px 14px", font: "14px / 400", focus: "border #FF5500", use: "Room/DJ search, form fields; placeholder #AAAAAA" }
+    card: { type: card, bg: "#FFFFFF", border: "1px solid #E5E5E5", radius: "12px", padding: "12px", use: "Live-room card — avatar, title, hashtags, listener count" }
+    avatar: { type: avatar, bg: "#D9D9D9", border: "2px solid #FF5500", radius: "50%", use: "DJ/creator avatar; orange ring = live now" }
+    chip-hashtag: { type: badge, bg: "#F2F2F2", fg: "#333333", radius: "12px", padding: "0 6px", font: "12px / 400", use: "Discovery hashtag chip" }
+    badge-live: { type: badge, bg: "#FF5500", fg: "#FFFFFF", radius: "6px", padding: "2px 6px", font: "11px / 600", use: "LIVE / ON AIR flag" }
+    badge-gift: { type: badge, bg: "rgba(255,179,0,0.15)", fg: "#FFB300", radius: "999px", padding: "2px 8px", font: "12px / 600", use: "Spoon-count / gift indicator" }
+    tab: { type: tab, fg: "#767676", active: "text #1A1A1A weight 600, #FF5500 on selected", font: "14px / 500", use: "라이브/팟캐스트/랭킹 switcher" }
+    toast: { type: toast, bg: "#1A1A1A", fg: "#FFFFFF", radius: "12px", padding: "12px 16px", use: "Transient feedback snackbar" }
+    dialog: { type: dialog, bg: "#FFFFFF", fg: "#1A1A1A", radius: "16px", padding: "24px", shadow: "rgba(0,0,0,0.5)", use: "Login, gift selection, bottom sheet" }
 ---
 
 # Design System Inspiration of Spoon (스푼)

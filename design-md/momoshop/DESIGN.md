@@ -10,6 +10,49 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=momoshop.com.tw&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#d62872"
+    primary-hover: "#d9006c"
+    brand: "#e5047e"
+    canvas: "#f2f2f2"
+    surface: "#fafafa"
+    foreground: "#404040"
+    muted: "#727272"
+    on-primary: "#ffffff"
+    accent-link: "#027bff"
+    error: "#dd2222"
+    error-delete: "#ea3323"
+    accent-rank: "#ffaa3b"
+    hairline: "#ededed"
+    border-medium: "#b3b3b3"
+  typography:
+    family: { sans: "Microsoft JhengHei UI", mono: "Oxygen" }
+    heading:  { size: 17, weight: 700, lineHeight: 1.41, use: "Search suggest titles, headings" }
+    body:     { size: 15, weight: 400, lineHeight: 1.33, use: "Product list items, UI labels" }
+    caption:  { size: 13, weight: 400, lineHeight: 1.38, use: "Captions, metadata" }
+    badge:    { size: 12, weight: 400, use: "Badges" }
+    micro:    { size: 11, weight: 400, use: "Heat/rank metadata labels" }
+  spacing: [3, 5, 6, 8, 10, 12, 16, 20, 24]
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+  shadow:
+    card: "0 1px 2px 0 rgba(0,0,0,.05)"
+    panel: "0 1px 3px rgba(0,0,0,.1)"
+    modal: "0 4px 6px -1px rgba(0,0,0,.1)"
+  components_harvested: true
+  components:
+    header-bar: { type: card, bg: "#d62872", fg: "#ffffff", height: "44px", font: "26px / 700", use: "Primary header bar" }
+    cart-badge: { type: badge, bg: "#e5047e", fg: "#ffffff", radius: "8px", font: "12px / 400", use: "Cart notification badge" }
+    input: { type: input, bg: "#ffffff", border: "1px solid #b3b3b3", height: "36px", padding: "8px 8px 8px 10px", radius: "4px", font: "15px / 400", use: "Search input desktop" }
+    chip: { type: badge, bg: "#f2f2f2", fg: "#404040", height: "32px", radius: "16px", padding: "6px 8px", font: "13px / 400", use: "Recent/suggest search chip" }
+    button-primary: { type: button, bg: "#d62872", fg: "#ffffff", height: "38px", radius: "4px", font: "16px / 700", states: "hover #d9006c", use: "Primary CTA" }
+    button-destructive: { type: button, bg: "#ea3323", fg: "#ffffff", height: "44px", radius: "22px", font: "17px / 400", use: "Delete all action" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#999999", border: "1px solid #b3b3b3", radius: "13px", padding: "3px 5px 3px 8px", font: "13px / 400", use: "Secondary rules button" }
+    trend-card: { type: card, bg: "linear-gradient(180deg,#fff5f9,#f9f9f9)", border: "1px solid #fbe9f1", radius: "15px", use: "Search trend card" }
+    rank-badge: { type: badge, bg: "linear-gradient(0.34deg,#ffaa3b,#ff9203)", fg: "#ffffff", radius: "4px", font: "15px / 400", use: "Top rank number badge" }
+    tooltip: { type: card, bg: "rgba(0,0,0,.8)", fg: "#ffffff", radius: "8px", padding: "12px", font: "15px / 700", use: "Search dialog tooltip" }
 ---
 
 # momo購物網

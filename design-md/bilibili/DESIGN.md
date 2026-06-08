@@ -45,13 +45,16 @@ tokens:
     hover: "rgba(0,0,0,0.08) 0px 2px 12px 0px"
     floating: "rgba(0,0,0,0.1) 0px 4px 16px 0px"
     modal: "rgba(0,0,0,0.12) 0px 6px 24px 0px"
+  components_harvested: true
   components:
-    button-primary: "bili pink #FB7299 fill, white text, 6px radius (pill 16px for follow chips), 14px/500; hover #F25D8E"
-    button-secondary: "white fill, #61666D text, 1px #E3E5E7 border, 6px radius — Following/ghost toggle"
-    coin-action: "transparent icon button, gold #FFB027 when active — signature 投币 reward gesture"
-    video-card: "white surface, no border, 6-8px radius, 16:9 cover + duration/count overlays, 2-line title, UP主 name; hover lift"
-    tag-chip: "#F4F4F4 bg (or pink-tint #FFF0F4 active), #61666D text (or #FB7299 active), 4px radius, 12px/400"
-    overlay-pill: "black ~60% bg, white 12px text, 4px radius — duration + view/danmaku over cover"
+    button-primary: { type: button, bg: "#FB7299", fg: "#FFFFFF", radius: "6px", padding: "6px 16px", font: "14px / 500", hover: "bg #F25D8E", use: "Follow / Sign up — pink is the action color" }
+    button-secondary: { type: button, bg: "#FFFFFF", fg: "#61666D", border: "1px solid #E3E5E7", radius: "6px", padding: "6px 16px", font: "14px / 500", use: "Following / ghost toggle" }
+    input-search: { type: input, bg: "#FFFFFF", fg: "#18191C", border: "1px solid #E3E5E7", radius: "8px", padding: "8px 14px", font: "14px / 400", focus: "border transitions to bili pink/blue", use: "Top search bar, comment input, form fields" }
+    coin-action: { type: toggle, bg: "transparent", fg: "#FFB027", use: "Signature 投币 give-a-coin reward gesture, gold when active" }
+    video-card: { type: card, bg: "#FFFFFF", radius: "6px", padding: "0 cover / 8px footer", shadow: "rgba(0,0,0,0.08) 0px 2px 12px 0px", hover: "subtle lift + cover preview", use: "16:9 cover + duration/count overlays, 2-line title 14px/500, UP主 name 12px/400 — atomic feed unit" }
+    tag-chip: { type: badge, bg: "#F4F4F4", fg: "#61666D", radius: "4px", padding: "4px 10px", font: "12px / 400", active: "bg #FFF0F4 + fg #FB7299", use: "分区 partition filters above feed" }
+    overlay-pill: { type: badge, bg: "rgba(0,0,0,0.6)", fg: "#FFFFFF", radius: "4px", padding: "2px 6px", font: "12px / 400", use: "Duration + view/danmaku counts over cover" }
+    nav-tab: { type: tab, fg: "#61666D", active: "fg #FB7299 + pink bottom border", use: "Partition (分区) horizontal category nav" }
 ---
 
 # Design System Inspiration of Bilibili

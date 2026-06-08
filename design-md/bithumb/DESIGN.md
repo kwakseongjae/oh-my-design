@@ -41,12 +41,13 @@ tokens:
     flat: "none — depth is structural (color layering + 1px borders), no drop shadows captured"
     hairline: "1px solid #B6ABA1"
     chip-inactive: "1px solid rgba(28,32,40,0.1)"
+  components_harvested: true
   components:
-    button-primary: "Signup #1C2028 fill, #FFFFFF text, 4px radius, 32px height, 13px/500 — structural top-chrome action"
-    cta-filled: "Exchange CTA bronze #543E35 fill, #F8F9FA text, 4px radius, 56px height, 18px/500 — single warmest action"
-    cta-outline: "transparent fill, #4F3327 text, 1px solid #B6ABA1 border, 4px radius, 56px height — secondary paired action"
-    chip-active: "#1C2028 fill, #FFFFFF text, 8px radius, 36px height, 13px/600 — selected filter"
-    chip-inactive: "transparent fill, #707882 text, 1px solid rgba(28,32,40,0.1) border, 8px radius — unselected filter"
+    button-primary: { type: button, bg: "#1C2028", fg: "#FFFFFF", radius: "4px", height: "32px", font: "13px / 500", use: "Signup — structural top-chrome action" }
+    cta-filled: { type: button, bg: "#543E35", fg: "#F8F9FA", radius: "4px", height: "56px", font: "18px / 500", use: "Primary exchange CTA — single warmest action" }
+    cta-outline: { type: button, bg: "transparent", fg: "#4F3327", border: "1px solid #B6ABA1", radius: "4px", height: "56px", use: "Secondary action paired with filled bronze CTA" }
+    chip-active: { type: badge, bg: "#1C2028", fg: "#FFFFFF", radius: "8px", height: "36px", font: "13px / 600", use: "Selected filter chip" }
+    chip-inactive: { type: badge, bg: "transparent", fg: "#707882", border: "1px solid rgba(28,32,40,0.1)", radius: "8px", use: "Unselected filter chip" }
 ---
 
 # Design System Inspiration of Bithumb

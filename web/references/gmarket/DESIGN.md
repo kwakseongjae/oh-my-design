@@ -16,6 +16,57 @@ ds:
   url: "https://corp.gmarket.com/fonts/"
   type: brand
   description: "Gmarket's SIL OFL brand typeface — 3 weights, TTF/OTF, 11,172 KR glyphs. First-party font artifact from a 25-year-old open marketplace; backing 247 :root CSS vars + Smile Yellow #ffd200 + Club/Event/Service sub-systems on the storefront."
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#da120d"
+    brand: "#da120d"
+    error: "#ef2b2a"
+    canvas: "#ffffff"
+    surface: "#ffffff"
+    foreground: "#222222"
+    muted: "#757575"
+    on-primary: "#ffffff"
+    hairline: "#e0e0e0"
+    success: "#00c400"
+    accent-smile: "#ffd200"
+    accent-stardelivery: "#7130f3"
+    accent-connect: "#00c3a0"
+    club-navy: "#002041"
+    club-blue: "#497cff"
+    event-bf: "#f1266d"
+    event-bs: "#fd4e28"
+    event-bsd: "#7b00e7"
+  typography:
+    family: { sans: "Gmarket Sans", mono: "system-ui" }
+    section-hero:  { size: 28, weight: 700, lineHeight: 1.2, use: "Hero module section H2" }
+    section-compact: { size: 24, weight: 700, lineHeight: 1.2, use: "Compact module H2" }
+    card-title:    { size: 18.72, weight: 700, lineHeight: 1.3, use: "Card H3 heading" }
+    body:          { size: 16, weight: 400, lineHeight: 1.5, use: "Body, card title, primary nav" }
+    body-strong:   { size: 16, weight: 700, lineHeight: 1.4, use: "Price emphasis, strong body" }
+    secondary:     { size: 14, weight: 400, lineHeight: 1.4, use: "Secondary nav, filter/utility" }
+    utility:       { size: 13.3333, weight: 400, lineHeight: 1.4, use: "Utility text, tooltip, swiper label" }
+    meta:          { size: 12, weight: 400, lineHeight: 1.4, use: "Meta text, footer notices, micro-badge" }
+    price-modifier: { size: 11, weight: 500, lineHeight: 1.4, use: "Price-modifier label 쿠폰적용가" }
+  spacing: { micro: 4, sm: 8, md: 16, lg: 24, module: 64 }
+  rounded: { sm: 3, md: 4, lg: 20, full: 9999 }
+  shadow:
+    none: "none"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#da120d", fg: "#ffffff", radius: "4px", padding: "14px 24px", font: "16px / 700", use: "Highest-intent purchase CTA, one per surface" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#222222", border: "1px solid #e0e0e0", radius: "3px", font: "14px / 400", use: "Chrome-utility actions, footer button" }
+    button-pill: { type: button, bg: "#ffffff", fg: "#666666", border: "1px solid #e0e0e0", radius: "20px", font: "16px / 400", states: "active fg #222222", use: "Home module entry pills, GNB sub-category chips" }
+    input-search: { type: input, bg: "#ffffff", fg: "#222222", border: "2px solid #222222", radius: "0px", height: "44px", font: "16px / 400", use: "Header search field, signature dark-stroked" }
+    input-filter: { type: input, bg: "#ffffff", border: "1px solid #e0e0e0", radius: "3px", font: "14px / 400", use: "Filter / sort refinement strip" }
+    card-product: { type: card, bg: "#ffffff", radius: "6px", shadow: "none", padding: "8px 0", use: "Home / bestsellers product card; title #222222, price #da120d 700, separation via gutter not shadow" }
+    badge-discount: { type: badge, bg: "#fff5f5", fg: "#da120d", radius: "3px", font: "12px / 700", use: "Discount-rate badge, percentage-off" }
+    badge-club: { type: badge, bg: "#002041", fg: "#ffd200", radius: "4px", font: "11px / 700", use: "Smile Club loyalty badge" }
+    chip-delivery: { type: badge, bg: "#ffd200", fg: "#222222", radius: "3px", padding: "2px 6px", font: "11px / 500", use: "스마일배송 yellow chip; 무료배송 gray #f5f5f5, StarDelivery purple #7130f3 w/ white text" }
+    nav-anchor: { type: tab, fg: "#222222", padding: "17px 0px 20px", font: "16px / 400", active: "current fg #da120d, 2px bottom border #222222 on hover", use: "GNB top primary anchor" }
+    layer-recent: { type: dialog, bg: "#ffffff", border: "1px solid #e0e0e0", shadow: "none", use: "Recent-products layer; title 16px/700 #222222" }
+    banner-event: { type: card, bg: "#f1266d", fg: "#ffffff", use: "BF/BS/BSD full-bleed event-week module; BS #fd4e28, BSD #7b00e7" }
 ---
 
 # Design System Inspiration of Gmarket (지마켓)

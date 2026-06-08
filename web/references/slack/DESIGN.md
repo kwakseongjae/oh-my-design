@@ -11,6 +11,69 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#4A154B"
+    primary-hover: "#611F69"
+    primary-active: "#7C3085"
+    brand: "#4A154B"
+    canvas: "#FFFFFF"
+    foreground: "#1D1C1D"
+    body: "#616061"
+    muted: "#868686"
+    on-primary: "#FFFFFF"
+    cta-green: "#007A5A"
+    cta-green-hover: "#148567"
+    link: "#1264A3"
+    error: "#E01E5A"
+    warning: "#ECB22E"
+    success: "#2BAC76"
+    accent-blue: "#36C5F0"
+    accent-green: "#2EB67D"
+    accent-yellow: "#ECB22E"
+    surface: "#F8F8F8"
+    hairline: "#E8E8E8"
+    sidebar: "#3F0E40"
+  typography:
+    family: { sans: "Lato", mono: "Monaco" }
+    display-hero:  { size: 56, weight: 900, lineHeight: 1.14, tracking: -0.02, use: "Marketing hero headlines (Larsseit)" }
+    display-lg:    { size: 44, weight: 700, lineHeight: 1.18, tracking: -0.01, use: "Section headers (web)" }
+    heading-1:     { size: 32, weight: 700, lineHeight: 1.25, use: "Page titles" }
+    heading-2:     { size: 24, weight: 700, lineHeight: 1.33, use: "Sub-sections, modal titles" }
+    heading-3:     { size: 18, weight: 700, lineHeight: 1.44, use: "Card titles, channel headers" }
+    subtitle:      { size: 16, weight: 700, lineHeight: 1.50, use: "List headers, emphasized labels" }
+    body-lg:       { size: 16, weight: 400, lineHeight: 1.50, use: "Marketing body, descriptions" }
+    body:          { size: 15, weight: 400, lineHeight: 1.46, use: "Message text — the workhorse" }
+    body-sm:       { size: 13, weight: 400, lineHeight: 1.38, use: "Secondary info, metadata" }
+    caption:       { size: 12, weight: 400, lineHeight: 1.33, use: "Timestamps, fine print" }
+    code:          { size: 12, weight: 400, lineHeight: 1.50, use: "Inline code, code blocks (Monaco)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    card: "0 1px 3px rgba(0,0,0,0.08)"
+    feature: "0 4px 16px rgba(0,0,0,0.10)"
+    popover: "0 4px 12px rgba(0,0,0,0.12)"
+    modal: "0 18px 48px rgba(0,0,0,0.35)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#007A5A", fg: "#FFFFFF", radius: "4px", padding: "0 16px", height: "44px", font: "18px / 900", hover: "#148567", use: "Primary marketing CTA" }
+    button-aubergine: { type: button, bg: "#4A154B", fg: "#FFFFFF", radius: "4px", padding: "0 16px", font: "18px / 900", hover: "#611F69", use: "Brand-forward CTA on white" }
+    button-outline: { type: button, bg: "transparent", fg: "#4A154B", border: "1px solid #4A154B", radius: "4px", padding: "0 16px", font: "18px / 700", hover: "8% aubergine tint fill", use: "Secondary marketing action" }
+    button-product: { type: button, bg: "#007A5A", fg: "#FFFFFF", border: "1px solid transparent", radius: "4px", padding: "0 12px", height: "36px", font: "15px / 900", hover: "#148567", use: "In-app confirm (Send, Create channel)" }
+    button-danger: { type: button, bg: "#E01E5A", fg: "#FFFFFF", radius: "4px", padding: "0 12px", font: "15px / 900", hover: "darken 8%", disabled: "opacity 0.5", use: "Destructive confirm" }
+    input: { type: input, bg: "#FFFFFF", fg: "#1D1C1D", border: "1px solid rgba(29,28,29,0.3)", radius: "4px", padding: "11px 12px", font: "15px / 400", focus: "border #1264A3 + 0 0 0 1px #1264A3", use: "Standard form input" }
+    composer: { type: input, bg: "#FFFFFF", fg: "#1D1C1D", border: "1px solid rgba(29,28,29,0.3)", radius: "8px", padding: "8px 12px", font: "15px / 400", focus: "border rgba(29,28,29,0.5), inner shadow", use: "Message composer" }
+    card: { type: card, bg: "#FFFFFF", border: "1px solid #E8E8E8", radius: "8px", padding: "24px", shadow: "0 1px 3px rgba(0,0,0,0.08)", use: "Content panels, feature cards" }
+    badge-unread: { type: badge, bg: "#CD2553", fg: "#FFFFFF", radius: "9999px", padding: "1px 6px", font: "12px / 700", use: "Channel/DM unread count" }
+    badge-status: { type: badge, bg: "#F8F8F8", fg: "#616061", border: "1px solid #E8E8E8", radius: "12px", padding: "2px 10px", font: "13px / 700", use: "NEW, custom status, app labels" }
+    tab-sidebar: { type: tab, bg: "transparent", fg: "rgba(255,255,255,0.7)", active: "bg #1164A3, text #FFFFFF", hover: "bg rgba(255,255,255,0.1)", font: "15px / 700", use: "Channel list in sidebar" }
+    tab-segmented: { type: tab, bg: "transparent", fg: "#616061", active: "text #1D1C1D, 2px bottom border #4A154B", font: "15px / 700", use: "Threads/Mentions/Saved switching" }
+    toast: { type: toast, bg: "#1D1C1D", fg: "#FFFFFF", radius: "8px", padding: "12px 16px", shadow: "0 4px 12px rgba(0,0,0,0.2)", font: "15px / 400", use: "Transient confirmation" }
+    banner: { type: card, bg: "#FEF7E0", fg: "#1D1C1D", border: "3px solid #ECB22E", radius: "4px", padding: "12px 16px", use: "System notice, workspace announcement" }
+    dialog: { type: dialog, bg: "#FFFFFF", fg: "#1D1C1D", radius: "8px", padding: "24px", shadow: "0 18px 48px rgba(0,0,0,0.35)", use: "Create-channel, preferences, confirmation" }
+    toggle: { type: toggle, bg: "#868686", radius: "9999px", states: "on #007A5A", use: "Boolean settings; white thumb" }
 ---
 
 # Design System Inspiration of Slack
