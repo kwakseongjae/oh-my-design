@@ -192,23 +192,12 @@ export function applyOverridesToMd(
   // explicit "**DO**" / "**DON'T**" markdown instead.
   result = result.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{1FA00}-\u{1FAFF}\u{200D}\u{20E3}\u{E0020}-\u{E007F}]/gu, '');
 
-  // Replace title only when the user actually customized something. "As-is"
-  // export (empty overrides + no stylePreferences) keeps the reference's own
-  // "# Design System Inspiration of X" heading so the document reads like the
-  // untouched original, not a Custom derivative. The trailing export wrapper
-  // sections (Iconography, Document Policies) still append either way — those
-  // are export-format boilerplate, not customization.
-  const hasAnyOverride = !!(
-    overrides.primaryColor ||
-    overrides.fontFamily ||
-    overrides.headingWeight ||
-    overrides.borderRadius ||
-    overrides.darkMode
-  );
-  const hasAnyPref = !!(stylePreferences && Object.keys(stylePreferences).length > 0);
-  if (hasAnyOverride || hasAnyPref) {
-    result = result.replace(/^# .+$/m, `# Custom Design System (based on ${refName})`);
-  }
+  // Drop the boilerplate document title ("# Design System Inspiration of X")
+  // entirely — both "as-is" and "customize" exports. The showcase header already
+  // names the reference, so the leading H1 is redundant noise. (`refName` is
+  // kept in the signature for backward compat / future use.)
+  void refName;
+  result = result.replace(/^# .+\n+/m, '');
 
   // Replace values directly in body text
   if (overrides.primaryColor && overrides.primaryColor !== originalPrimary) {
