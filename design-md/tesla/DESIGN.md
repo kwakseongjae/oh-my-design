@@ -10,6 +10,42 @@ logo:
   slug: tesla
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#3e6ae1"
+    brand: "#cc0000"
+    canvas: "#ffffff"
+    surface: "#f4f4f4"
+    carbon: "#171a20"
+    graphite: "#393c41"
+    pewter: "#5c5e62"
+    placeholder: "#8e8e8e"
+    border: "#eeeeee"
+    border-strong: "#d0d1d2"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Universal Sans Text", mono: "Universal Sans Text" }
+    hero:         { size: 40, weight: 500, lineHeight: 1.20, use: "Hero titles, white on dark imagery" }
+    product-name: { size: 17, weight: 500, lineHeight: 1.18, use: "Model names in nav panel and cards" }
+    nav:          { size: 14, weight: 500, lineHeight: 1.20, use: "Primary navigation labels" }
+    body:         { size: 14, weight: 400, lineHeight: 1.43, use: "Paragraph and descriptive content" }
+    button:       { size: 14, weight: 500, lineHeight: 1.20, use: "CTA button text" }
+    promo:        { size: 22, weight: 400, lineHeight: 0.91, use: "White promotional text on hero" }
+    category:     { size: 16, weight: 500, use: "White text labels on category cards" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 24, lg: 32, xl: 48, xxl: 64 }
+  rounded: { sm: 4, md: 12, lg: 12, full: 9999 }
+  shadow:
+    none: "none"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#3e6ae1", fg: "#ffffff", radius: 4, padding: "4px", font: "14/500", use: "Primary CTA Order Now, 200px wide, 40px min-height" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#393c41", radius: 4, padding: "4px", font: "14/500", use: "Alternative action, View Inventory" }
+    button-nav: { type: button, fg: "#171a20", radius: 4, padding: "4px 16px", font: "14/500", use: "Top navigation items" }
+    link-text: { type: button, fg: "#5c5e62", font: "14/400", use: "In-content text links" }
+    card-category: { type: card, radius: 12, use: "Full-bleed photography category card, white corner label" }
+    input-default: { type: input, fg: "#171a20", font: "14/400", use: "Form input, placeholder #8e8e8e" }
 ---
 
 # Design System Inspiration of Tesla

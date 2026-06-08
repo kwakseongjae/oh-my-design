@@ -10,6 +10,51 @@ logo:
   slug: runwayml
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    black: "#000000"
+    deep-black: "#030303"
+    surface-dark: "#1a1a1a"
+    white: "#ffffff"
+    near-white: "#fefefe"
+    cool-cloud: "#e9ecf2"
+    border-dark: "#27272a"
+    charcoal: "#404040"
+    near-charcoal: "#3f3f3f"
+    cool-slate: "#767d88"
+    mid-slate: "#7d848e"
+    muted-gray: "#a7a7a7"
+    cool-silver: "#c9ccd1"
+    light-silver: "#d0d4d4"
+    tailwind-gray: "#6b7280"
+    dark-link: "#0c0c0c"
+    footer-gray: "#999999"
+  typography:
+    family: { sans: "abcNormal", mono: "abcNormal" }
+    display-hero: { size: 48, weight: 400, lineHeight: 1.00, tracking: -1.2, use: "Hero, film-title presence" }
+    section:      { size: 40, weight: 400, lineHeight: 1.00, tracking: -1, use: "Feature section titles" }
+    subheading:   { size: 36, weight: 400, lineHeight: 1.00, tracking: -0.9, use: "Secondary section markers" }
+    card-title:   { size: 24, weight: 400, lineHeight: 1.00, use: "Article and card headings" }
+    feature-title: { size: 20, weight: 400, lineHeight: 1.00, use: "Small headings" }
+    body:         { size: 16, weight: 400, lineHeight: 1.40, tracking: -0.16, use: "Standard body, nav links" }
+    label:        { size: 14, weight: 500, lineHeight: 1.43, tracking: 0.35, use: "Metadata, uppercase section labels" }
+    small:        { size: 13, weight: 400, lineHeight: 1.30, tracking: -0.16, use: "Compact descriptions" }
+    micro:        { size: 11, weight: 450, lineHeight: 1.30, use: "Uppercase tags, tiny labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-default: { type: button, bg: "#000000", fg: "#ffffff", radius: 4, padding: "8px 12px", font: "14px/600 abcNormal", use: "Restrained button, blends into editorial flow" }
+    button-link: { type: button, bg: "#000000", fg: "#ffffff", radius: 4, padding: "4px 8px", font: "14px/600 abcNormal", use: "Inline link-style button" }
+    input-default: { type: input, bg: "#1a1a1a", fg: "#ffffff", radius: 4, padding: "8px 12px", font: "14px/400 abcNormal", use: "Minimal dark input, 1px #27272a border" }
+    card-photo: { type: card, radius: 8, padding: "0px", use: "Mixed-size image grid card, image fills frame, no shadow" }
+    card-dark: { type: card, bg: "#1a1a1a", fg: "#ffffff", radius: 8, padding: "16px", use: "Functional dark card, 1px #27272a border" }
+    card-alert: { type: card, bg: "#1a1a1a", radius: 16, padding: "24px", use: "Alert-style container, 1px #27272a border, larger radius" }
+    badge-default: { type: badge, fg: "#ffffff", radius: 4, padding: "2px 8px", font: "11px/600 abcNormal", use: "Uppercase label-style, 1px #27272a border" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Runway

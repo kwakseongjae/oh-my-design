@@ -10,6 +10,45 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=tw.voicetube.com&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#7e3aaf"
+    vibrant: "#a73aaf"
+    gradient-start: "#653aaf"
+    deep-purple: "#210040"
+    canvas: "#18131d"
+    surface: "#251633"
+    nav-end: "#1d102b"
+    tint: "#e0d0ec"
+    body: "#e3e3e3"
+    secondary: "#b4b4b4"
+    placeholder: "#9ca3af"
+    error: "#ed4f55"
+    success: "#33991d"
+    link: "#4283e4"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "PingFang TC", mono: "ui-monospace" }
+    h2xl:   { size: 24, weight: 700, lineHeight: 1.425, use: "Largest headings" }
+    xl:     { size: 20, weight: 600, lineHeight: 1.425, use: "Section heads" }
+    lg:     { size: 18, weight: 500, lineHeight: 1.425, use: "Sub-heads" }
+    base:   { size: 16, weight: 400, lineHeight: 1.425, use: "Body, button labels" }
+    sm:     { size: 14, weight: 400, lineHeight: 1.425, use: "Secondary text, tags" }
+    xs:     { size: 12, weight: 400, lineHeight: 1.425, use: "Captions, fine print" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 4, lg: 8, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#653aaf", fg: "#ffffff", radius: 9999, padding: "0 20px", font: "16px/500", use: "Gradient CTA #653AAF→#A73AAF, h40" }
+    button-outline: { type: button, bg: "transparent", fg: "#e3e3e3", radius: 9999, padding: "0 20px", font: "16px/500", use: "Ghost/secondary; 1px #e3e3e3 border, h40" }
+    nav: { type: tab, bg: "#210040", fg: "#e3e3e3", use: "Top nav gradient #210040→#1D102B, h64" }
+    sidebar-item: { type: listItem, bg: "#251633", fg: "#e3e3e3", radius: 0, padding: "12px 8px", font: "14px/400", use: "Sidebar nav item; active rgba purple tint" }
+    tag: { type: badge, bg: "#7e3aaf", fg: "#e3e3e3", radius: 4, padding: "2.5px 12px", font: "14px/400", use: "Brand tag chip" }
+    input: { type: input, bg: "transparent", fg: "#e3e3e3", radius: 4, use: "Text input; 1px #e3e3e3 border, focus #7e3aaf, error #ed4f55" }
+  components_harvested: true
 ---
 
 # VoiceTube

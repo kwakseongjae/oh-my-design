@@ -10,6 +10,44 @@ logo:
   slug: intercom
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "primary text/buttons are off-black #111111; Fin Orange #ff5600 is the singular brand accent"
+  colors:
+    off-black: "#111111"
+    white: "#ffffff"
+    canvas: "#faf9f6"
+    fin-orange: "#ff5600"
+    report-orange: "#fe4c02"
+    report-blue: "#65b5ff"
+    report-green: "#0bdf50"
+    report-red: "#c41c1c"
+    report-pink: "#ff2067"
+    black-80: "#313130"
+    black-60: "#626260"
+    muted: "#7b7b78"
+    tertiary: "#9c9fa5"
+    border: "#dedbd6"
+    warm-sand: "#d3cec6"
+  typography:
+    family: { sans: "Saans", serif: "Serrif", mono: "SaansMono" }
+    display-hero: { size: 80, weight: 400, lineHeight: 1.00, tracking: -2.4, use: "Display hero, ultra-compressed" }
+    section:      { size: 54, weight: 400, lineHeight: 1.00, tracking: -1.6, use: "Section heading" }
+    feature:      { size: 24, weight: 400, lineHeight: 1.00, tracking: -0.48, use: "Feature title" }
+    body:         { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading text" }
+    nav:          { size: 18, weight: 400, lineHeight: 1.00, use: "Nav / UI" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
+  shadow:
+    flat: "none"
+  components:
+    button-primary: { type: button, bg: "#111111", fg: "#ffffff", radius: 4, padding: "0px 14px", use: "Primary dark button, scale(1.1) hover" }
+    button-outlined: { type: button, bg: "#faf9f6", fg: "#111111", radius: 4, use: "Outlined button, 1px off-black border" }
+    button-warm: { type: button, bg: "#faf9f6", fg: "#111111", padding: "16px", use: "Warm card button" }
+    card: { type: card, bg: "#faf9f6", radius: 8, use: "Warm cream card, oat border, no shadow" }
+    nav-link: { type: tab, fg: "#111111", font: "16px Saans", use: "Nav link, off-black on white" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Intercom

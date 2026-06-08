@@ -11,6 +11,39 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=zigbang.com&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "brand orange #ff6600 is an illustrative wordmark-only estimate (no published token); product UI is neutral + #0066ff blue"
+  colors:
+    primary: "#0066ff"
+    brand-orange: "#ff6600"
+    canvas: "#ffffff"
+    heading: "#171719"
+    bookmark: "#333333"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    base:        { size: 16, weight: 400, use: "Browser default body text" }
+    nav:         { size: 14, weight: 400, use: "Nav button label" }
+    search-icon: { size: 24, weight: 400, use: "Icon-only search glyph" }
+    station:     { size: 22, weight: 400, use: "Station / region chip — read at distance" }
+    paginator:   { size: 20, weight: 400, use: "Paginator arrows, disabled by default" }
+    heading:     { size: 13, weight: 700, use: "Chrome heading — smaller than body, weight marks structure" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 8, md: 10, lg: 10, full: 9999 }
+  shadow:
+    card: "minimal — narrow shadows lift cards above the map canvas"
+  components_harvested: true
+  components:
+    nav-auth-link: { type: button, bg: "#ffffff", fg: "#0066ff", radius: 8, padding: "7px 14px", font: "14/400", use: "회원가입/로그인 auth entry" }
+    nav-link: { type: button, bg: "#ffffff", fg: "#171719", radius: 8, padding: "7px 14px", font: "14/400", use: "Standard top-bar nav links" }
+    search-trigger: { type: button, fg: "#171719", radius: 9999, font: "24/400", use: "Icon-only search button, circular hit area" }
+    station-chip: { type: badge, fg: "#171719", radius: 10, padding: "7px 9px 7px 11px", font: "22/400", use: "Subway-station / region map label" }
+    bookmark-toggle: { type: toggle, fg: "#333333", radius: 9999, padding: "8px", use: "Save-this-listing toggle, glyph-only" }
+    paginator: { type: tab, fg: "#333333", radius: 10, padding: "8px", font: "20/400", use: "Paired prev/next, split-corner segmented control" }
+    listing-card: { type: card, bg: "#ffffff", radius: 10, use: "White card on white map canvas, 1px hairline separation" }
+    price-chip: { type: badge, fg: "#171719", radius: 10, font: "22/400", use: "Listing price — color-separated active/past/highlight" }
 ---
 
 # Design System Inspiration of Zigbang (직방)

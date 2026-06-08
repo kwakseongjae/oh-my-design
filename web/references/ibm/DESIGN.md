@@ -16,6 +16,50 @@ ds:
   type: system
   description: IBM's open-source design system with React, Angular, Vue, and Web Components.
   og_image: "https://carbondesignsystem.com/ogimage.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#0f62fe"
+    primary-hover: "#0353e9"
+    primary-active: "#002d9c"
+    link-hover: "#0043ce"
+    primary-tint: "#edf5ff"
+    canvas: "#ffffff"
+    text: "#161616"
+    gray-90: "#262626"
+    gray-80: "#393939"
+    text-secondary: "#525252"
+    placeholder: "#6f6f6f"
+    disabled: "#8d8d8d"
+    border: "#c6c6c6"
+    border-subtle: "#e0e0e0"
+    layer: "#f4f4f4"
+    layer-hover: "#e8e8e8"
+    error: "#da1e28"
+    success: "#24a148"
+    warning: "#f1c21b"
+    interactive-dark: "#78a9ff"
+  typography:
+    family: { sans: "IBM Plex Sans", mono: "IBM Plex Mono" }
+    display: { size: 60, weight: 300, lineHeight: 1.17, use: "Maximum impact display, light weight" }
+    body:    { size: 16, weight: 400, use: "Standard reading text" }
+    caption: { size: 14, weight: 400, tracking: 0.16, use: "Captions, micro-tracking" }
+    label:   { size: 12, weight: 400, tracking: 0.32, use: "Input labels, helper text" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 0, md: 0, lg: 0, full: 9999 }
+  shadow:
+    flat: "none"
+  components:
+    button-primary: { type: button, bg: "#0f62fe", fg: "#ffffff", radius: 0, padding: "14px 63px 14px 15px", use: "Primary blue button, 48px tall, sharp rectangle" }
+    button-secondary: { type: button, bg: "#393939", fg: "#ffffff", radius: 0, use: "Gray secondary button" }
+    button-tertiary: { type: button, bg: "#ffffff", fg: "#0f62fe", radius: 0, use: "Ghost blue, 1px blue border" }
+    button-ghost: { type: button, bg: "#ffffff", fg: "#0f62fe", radius: 0, padding: "14px 16px", use: "Borderless ghost, gray hover tint" }
+    button-danger: { type: button, bg: "#da1e28", fg: "#ffffff", radius: 0, use: "Danger button" }
+    card: { type: card, bg: "#f4f4f4", radius: 0, padding: "16px", use: "Flat tile, no border/shadow, bg-layered separation" }
+    input: { type: input, bg: "#f4f4f4", fg: "#161616", radius: 0, padding: "0px 16px", use: "Bottom-border field, 40px tall, sharp" }
+    nav: { type: tab, bg: "#161616", fg: "#c6c6c6", use: "Dark masthead nav, 48px tall", active: "white text + bottom-border indicator" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of IBM

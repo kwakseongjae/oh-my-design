@@ -10,6 +10,51 @@ logo:
   slug: mintlify
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    ink: "#0d0d0d"
+    canvas: "#ffffff"
+    brand: "#18e299"
+    brand-light: "#d4fae8"
+    brand-deep: "#0fa76e"
+    amber: "#c37d0d"
+    blue: "#3772cf"
+    error: "#d45656"
+    gray-700: "#333333"
+    gray-500: "#666666"
+    gray-400: "#888888"
+    border: "#e5e5e5"
+    surface: "#f5f5f5"
+    surface-tint: "#fafafa"
+  typography:
+    family: { sans: "Inter", mono: "Geist Mono" }
+    display-hero: { size: 64, weight: 600, lineHeight: 1.15, tracking: -1.28, use: "Hero headlines" }
+    section:      { size: 40, weight: 600, lineHeight: 1.10, tracking: -0.8, use: "Feature section titles" }
+    subheading:   { size: 24, weight: 500, lineHeight: 1.30, tracking: -0.24, use: "Card headings, sub-sections" }
+    card-title:   { size: 20, weight: 600, lineHeight: 1.30, tracking: -0.2, use: "Feature card titles" }
+    body-lg:      { size: 18, weight: 400, lineHeight: 1.50, use: "Hero descriptions, intros" }
+    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
+    body-medium:  { size: 16, weight: 500, lineHeight: 1.50, use: "Navigation, emphasized text" }
+    button:       { size: 15, weight: 500, lineHeight: 1.50, use: "Button labels" }
+    link:         { size: 14, weight: 500, lineHeight: 1.50, use: "Navigation links, small CTAs" }
+    label:        { size: 13, weight: 500, lineHeight: 1.50, tracking: 0.65, use: "Uppercase section labels" }
+    mono-code:    { size: 12, weight: 500, lineHeight: 1.50, tracking: 0.6, use: "Uppercase technical labels, Geist Mono" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 8, md: 16, lg: 24, full: 9999 }
+  shadow:
+    card: "rgba(0,0,0,0.03) 0px 2px 4px"
+    button: "rgba(0,0,0,0.06) 0px 1px 2px"
+  components:
+    button-primary: { type: button, bg: "#0d0d0d", fg: "#ffffff", radius: 9999, padding: "8px 24px", font: "15px/500", use: "Primary CTA Get Started" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#0d0d0d", radius: 9999, padding: "4.5px 12px", font: "15px/500", use: "Secondary action Request Demo" }
+    button-nav: { type: button, bg: "transparent", fg: "#0d0d0d", radius: 8, padding: "5px 6px", use: "Navigation items, icon buttons" }
+    button-accent: { type: button, bg: "#18e299", fg: "#0d0d0d", radius: 9999, padding: "8px 24px", use: "Special promotional CTAs" }
+    card: { type: card, bg: "#ffffff", radius: 16, padding: "24px", use: "Standard card, border-led" }
+    card-featured: { type: card, bg: "#ffffff", radius: 24, padding: "32px", use: "Featured card" }
+    input: { type: input, bg: "#ffffff", fg: "#0d0d0d", radius: 9999, padding: "0px 12px", use: "Email input, pill matching buttons" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Mintlify

@@ -10,6 +10,34 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=note.com&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    brand: "#41c9b4"
+    theme: "#2cb696"
+    theme-dark: "#228d74"
+    primary: "#000000"
+    canvas: "#f7f9f9"
+    surface: "#ffffff"
+    text: "#222222"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Hiragino Kaku Gothic ProN", mono: "Hiragino Kaku Gothic ProN" }
+    body:    { weight: 400, use: "Long-form Japanese article body" }
+    heading: { weight: 700, use: "Titles and headings" }
+  spacing: { sm: 8, base: 16 }
+  rounded: { sm: 8, md: 8, lg: 8, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 8, use: "Primary action (Publish / フォロー / 投稿)" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#222222", radius: 8, use: "Lower-emphasis action" }
+    button-theme: { type: button, bg: "#2cb696", fg: "#ffffff", radius: 8, use: "Brand-context action, the teal moment" }
+    article-card: { type: card, bg: "#ffffff", fg: "#222222", radius: 8, use: "Article preview on off-white canvas" }
+    editor-canvas: { type: card, bg: "#ffffff", fg: "#222222", use: "Distraction-free long-form editor" }
+    text-field: { type: input, bg: "#ffffff", fg: "#222222", radius: 8, use: "Forms, search, profile fields" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of note

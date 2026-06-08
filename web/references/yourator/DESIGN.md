@@ -48,13 +48,15 @@ tokens:
     flat-sm: "rgb(242,242,242) 1.5px 2px 0px 0px"
     elevated: "rgba(0,38,90,0.1) 0px 9px 26px 0px, rgba(0,112,196,0.1) 0px 10px 14px 0px"
     modal: "rgba(0,0,0,0.5) 0px 5px 15px 0px"
+  components_harvested: true
   components:
-    button-primary: "Yourator Blue #0063d1 fill, white text, 4px radius, weight 500, 36px height"
-    button-ghost: "transparent fill, #0063d1 text + hairline border, 4px radius"
-    tag-tint: "#edf8ff tint bg, #0063d1 text, 8px radius — category / explore chips"
-    card: "white surface, 8px radius, flat offset shadow rgb(242,242,242) 2px 3px"
-    input: "white bg, bottom-rule only, #333333 text, square corners"
-    avatar: "circular (50% radius), company logo / user photo"
+    button-primary: { type: button, bg: "#0063d1", fg: "#ffffff", radius: 4, padding: "6px 12px", font: "14/500", use: "Primary CTA — sign-up, 投遞履歷" }
+    button-ghost: { type: button, bg: "#ffffff", fg: "#0063d1", radius: 4, font: "14/500", use: "Secondary actions, alternate paths" }
+    tag-tint: { type: badge, bg: "#edf8ff", fg: "#0063d1", radius: 8, font: "12/400", use: "Category / industry explore chips" }
+    tag-neutral: { type: badge, bg: "#eceff6", fg: "#566881", radius: 4, font: "12/400", use: "Neutral metadata tags" }
+    card: { type: card, bg: "#ffffff", radius: 8, use: "Containers — flat offset shadow, hover lifts to elevated" }
+    input: { type: input, bg: "#ffffff", fg: "#333333", radius: 0, use: "Underline-style fields, bottom-rule only" }
+    avatar: { type: avatar, radius: 9999, use: "Company logo / user photo, circular 50%" }
 ---
 
 # Design System Inspiration of Yourator

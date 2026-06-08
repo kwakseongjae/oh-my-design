@@ -11,6 +11,67 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#00704A"
+    accent-green: "#00a862"
+    deep-forest: "#1e3932"
+    warm-white: "#f1f8f4"
+    white: "#fafafa"
+    cream: "#ede9e1"
+    latte: "#d4e9e2"
+    gold: "#cba258"
+    berry: "#c44d58"
+    success: "#00754a"
+    error: "#e75b52"
+    black: "#000000"
+    charcoal: "#1e1e1e"
+    body: "#4a4a4a"
+    secondary: "#6b6b6b"
+    disabled: "#8c8c8c"
+    border: "#d4d4d4"
+    light-gray: "#e8e8e8"
+    bg-gray: "#f2f0eb"
+  typography:
+    family: { sans: "SoDo Sans", mono: "SoDo Sans" }
+    display-hero: { size: 48, weight: 700, lineHeight: 1.08, tracking: -0.5, use: "Campaign hero headlines (Pike/Lander)" }
+    display-lg:   { size: 36, weight: 700, lineHeight: 1.22, tracking: -0.25, use: "Page titles, section openers" }
+    heading-1:    { size: 28, weight: 700, lineHeight: 1.29, use: "Major section headings" }
+    heading-2:    { size: 22, weight: 600, lineHeight: 1.36, use: "Card headings, sub-sections" }
+    heading-3:    { size: 18, weight: 600, lineHeight: 1.44, use: "List headers, menu item names" }
+    subtitle:     { size: 16, weight: 600, lineHeight: 1.50, use: "Navigation, emphasized labels" }
+    body-lg:      { size: 16, weight: 400, lineHeight: 1.63, use: "Descriptions, product copy" }
+    body:         { size: 14, weight: 400, lineHeight: 1.57, use: "Standard reading text" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.50, tracking: 0.2, use: "Metadata, fine print, legal" }
+    button:       { size: 14, weight: 600, lineHeight: 1.0, tracking: 0.3, use: "Button labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
+  rounded: { sm: 4, md: 16, lg: 20, full: 9999 }
+  shadow:
+    subtle: "0 2px 8px rgba(30,57,50,0.08)"
+    standard: "0 4px 16px rgba(30,57,50,0.12)"
+    elevated: "0 6px 20px rgba(30,57,50,0.25)"
+    modal: "0 12px 40px rgba(30,57,50,0.24)"
+  components:
+    button-primary: { type: button, bg: "#00704A", fg: "#ffffff", radius: 9999, padding: "12px 24px", font: "14px/600 SoDo Sans", use: "Primary CTA pill, hover #1e3932" }
+    button-secondary: { type: button, fg: "#00704A", radius: 9999, padding: "12px 24px", font: "14px/600 SoDo Sans", use: "Outlined green pill, 1px #00704A border" }
+    button-tertiary: { type: button, fg: "#00704A", padding: "8px 12px", font: "14px/600 SoDo Sans", use: "Low-emphasis inline action, underline on hover" }
+    button-dark: { type: button, bg: "#fafafa", fg: "#00704A", radius: 9999, padding: "12px 24px", font: "14px/600 SoDo Sans", use: "Primary CTA on deep-forest or photo dark section" }
+    button-gold: { type: button, bg: "#cba258", fg: "#1e3932", radius: 9999, padding: "12px 24px", font: "14px/700 SoDo Sans", use: "Rewards/loyalty CTA" }
+    input-text: { type: input, fg: "#1e1e1e", radius: 4, padding: "14px 16px", font: "16px/400 SoDo Sans", use: "Standard form input, 1px #8c8c8c border, focus 2px #00704A" }
+    input-search: { type: input, bg: "#f2f0eb", radius: 9999, padding: "12px 20px", font: "16px/400 SoDo Sans", use: "Store locator, menu search pill" }
+    card-product: { type: card, radius: 16, padding: "16px", use: "Menu item, product, promo tile, 1px #e8e8e8 border, top full-bleed image" }
+    card-editorial: { type: card, bg: "#f1f8f4", radius: 20, padding: "32px", use: "Story blocks, campaign features, flat warm surface" }
+    card-rewards: { type: card, fg: "#ffffff", radius: 16, padding: "24px", use: "Loyalty balance, star count, green-to-forest gradient" }
+    badge-status: { type: badge, bg: "#00704A", fg: "#ffffff", radius: 9999, padding: "4px 12px", font: "11px/700 SoDo Sans", use: "NEW, LIMITED TIME, uppercase" }
+    badge-gold: { type: badge, bg: "#cba258", fg: "#1e3932", radius: 9999, padding: "4px 12px", font: "11px/700 SoDo Sans", use: "Star earnings, member-exclusive" }
+    badge-subtle: { type: badge, bg: "#d4e9e2", fg: "#00704A", radius: 9999, padding: "4px 12px", font: "11px/600 SoDo Sans", use: "Category labels, dietary tags" }
+    toast-default: { type: toast, bg: "#1e3932", fg: "#ffffff", radius: 8, padding: "14px 18px", font: "14px/600 SoDo Sans", use: "Transient confirmation" }
+    toast-success: { type: toast, bg: "#d4e9e2", fg: "#00704A", radius: 8, padding: "12px 16px", use: "Persistent success banner, 4px #00704A left border" }
+    dialog-modal: { type: dialog, fg: "#1e1e1e", radius: 16, padding: "32px", use: "Confirmation, store selection, green-tinted scrim" }
+    toggle-switch: { type: toggle, bg: "#00704A", radius: 9999, use: "Preference settings, #d4d4d4 off, #ffffff thumb" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Starbucks

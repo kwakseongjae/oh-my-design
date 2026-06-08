@@ -11,6 +11,70 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#ff0033"
+    primary-pressed: "#e0002e"
+    primary-deep: "#cc0029"
+    primary-tint: "#ffebef"
+    primary-disabled: "#ffb3c1"
+    canvas: "#ffffff"
+    ink: "#222222"
+    success: "#00b900"
+    error: "#e0002e"
+    warning: "#ff8800"
+    info: "#0088ff"
+    point-gold: "#ffb200"
+    gray-50: "#f5f5f5"
+    gray-100: "#eeeeee"
+    gray-200: "#e0e0e0"
+    gray-300: "#cccccc"
+    gray-400: "#999999"
+    gray-500: "#767676"
+    gray-700: "#555555"
+  typography:
+    family: { sans: "Noto Sans JP", mono: "SF Mono" }
+    display-hero: { size: 32, weight: 700, lineHeight: 1.38, use: "Splash, campaign hero, big point moments" }
+    balance: { size: 28, weight: 700, lineHeight: 1.29, use: "Wallet balance, the emotional center" }
+    display-lg: { size: 24, weight: 700, lineHeight: 1.42, use: "Section headers, key metrics" }
+    heading-lg: { size: 20, weight: 700, lineHeight: 1.4, use: "Feature titles, modal headers" }
+    heading: { size: 18, weight: 700, lineHeight: 1.44, use: "Card headings, sub-sections" }
+    subtitle: { size: 16, weight: 700, lineHeight: 1.5, use: "List headers, nav titles" }
+    body-lg: { size: 16, weight: 400, lineHeight: 1.63, use: "Descriptions, explanations" }
+    body: { size: 14, weight: 400, lineHeight: 1.57, use: "Standard reading text" }
+    body-sm: { size: 13, weight: 400, lineHeight: 1.54, use: "Secondary information" }
+    caption: { size: 12, weight: 400, lineHeight: 1.5, use: "Timestamps, fine print, legal" }
+    amount-hero: { size: 36, weight: 700, use: "Payment amount on checkout/complete" }
+  spacing: { sm: 8, base: 16, lg: 24 }
+  rounded: { sm: 8, md: 12, lg: 16, xl: 24, full: 9999 }
+  shadow:
+    card: "0px 1px 4px rgba(0,0,0,0.08)"
+    toast: "0px 4px 12px rgba(0,0,0,0.15)"
+    dialog: "0px 8px 24px rgba(0,0,0,0.18)"
+  components:
+    button-primary: { type: button, bg: "#ff0033", fg: "#ffffff", radius: 24, padding: "0 24px", font: "16px/700", use: "Primary money action (支払う, チャージ, 送る)" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#ff0033", radius: 24, padding: "0 24px", font: "16px/700", use: "Secondary action paired with red primary" }
+    button-neutral: { type: button, bg: "#f5f5f5", fg: "#555555", radius: 24, padding: "0 24px", font: "16px/700", use: "Low-emphasis dismiss (閉じる, 戻る)" }
+    button-text: { type: button, bg: "transparent", fg: "#ff0033", padding: "8px 12px", font: "15px/700", use: "Inline tertiary action (もっと見る)" }
+    input-box: { type: input, bg: "#ffffff", fg: "#222222", radius: 8, padding: "14px 16px", font: "16px/400", use: "Standard form input" }
+    input-filled: { type: input, bg: "#f5f5f5", fg: "#222222", radius: 8, padding: "14px 16px", font: "16px/400", use: "Dense forms, search bars" }
+    card: { type: card, bg: "#ffffff", radius: 12, padding: "16px", use: "Transaction, feature, content cards" }
+    balance-card: { type: card, bg: "#ff0033", fg: "#ffffff", radius: 16, padding: "20px", use: "Wallet balance hero, signature surface" }
+    promo-card: { type: card, bg: "#ffebef", radius: 16, padding: "20px", use: "Point campaigns, あげる/もらえる offers" }
+    list-item: { type: listItem, bg: "#ffffff", radius: 0, padding: "14px 16px", use: "Transaction history, settings rows" }
+    badge-red: { type: badge, bg: "#ff0033", fg: "#ffffff", radius: 10, padding: "2px 8px", font: "12px/700", use: "NEW, 限定, primary emphasis" }
+    badge-gold: { type: badge, bg: "#ffb200", fg: "#ffffff", radius: 10, padding: "2px 8px", font: "12px/700", use: "Point amounts, reward emphasis" }
+    badge-green: { type: badge, bg: "#00b900", fg: "#ffffff", radius: 10, padding: "2px 8px", font: "12px/700", use: "完了 / success state" }
+    badge-weak: { type: badge, bg: "#ffebef", fg: "#ff0033", radius: 10, padding: "2px 8px", font: "12px/700", use: "Subtle brand-tinted label" }
+    bottom-tab: { type: tab, bg: "#ffffff", fg: "#767676", font: "10px/500", use: "5-tab bottom nav", active: "#ff0033 icon + label" }
+    segmented: { type: tab, bg: "#f5f5f5", fg: "#767676", radius: 10, padding: "8px 16px", font: "14px/700", use: "In-screen section switching", active: "#ffffff thumb, #ff0033 text" }
+    toast: { type: toast, bg: "#222222", fg: "#ffffff", radius: 8, padding: "12px 16px", font: "14px/500", use: "Transient confirmation (コピーしました)" }
+    dialog: { type: dialog, bg: "#ffffff", fg: "#222222", radius: 16, padding: "24px", use: "Confirmation prompts, alerts" }
+    bottom-sheet: { type: dialog, bg: "#ffffff", fg: "#222222", radius: 20, padding: "24px 16px", use: "Selection, picker, payment-method switch" }
+    toggle: { type: toggle, bg: "#ff0033", radius: 9999, use: "Boolean settings, on=red off=#cccccc" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of PayPay (ペイペイ)

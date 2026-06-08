@@ -10,6 +10,40 @@ logo:
   slug: "https://www.jkopay.com/application/favicon.ico"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#c9191d"
+    primary-hover: "#d51b1f"
+    primary-dark: "#851113"
+    body: "#42434a"
+    dark-bg: "#171718"
+    dark-nav: "#292f40"
+    surface: "#f4f4f6"
+    border: "#ededf1"
+    placeholder: "#b7b8c4"
+    blue-accent: "#2e7dd9"
+    white: "#ffffff"
+  typography:
+    family: { sans: "PingFang TC", fallback: "apple-system, source-han-sans-traditional, sans-serif" }
+    display: { size: 56, weight: 700, lineHeight: 1.5, use: "Display / hero headline" }
+    heading: { size: 36, weight: 600, lineHeight: 1.5, use: "Heading LG-3, section labels" }
+    body:    { size: 18, weight: 400, lineHeight: 1.5, use: "Body SM reading text" }
+    button:  { size: 17, weight: 500, use: "Button label, medium" }
+    caption: { size: 13, weight: 400, use: "Caption / body SM-1" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 9, md: 12, lg: 16, full: 9999 }
+  shadow:
+    card: "rgba(0,0,0,0.12) 0px 15px 30px -25px"
+  components:
+    button-primary: { type: button, bg: "#c9191d", fg: "#ffffff", radius: 12, padding: "12px 29px", font: "17px weight 500", use: "Solid red primary CTA, hover #d51b1f" }
+    button-ghost: { type: button, bg: "#ffffff", fg: "#c9191d", radius: 9, padding: "12px 24px", font: "17px weight 500", use: "Ghost secondary, 1px red border" }
+    nav: { type: tab, bg: "#ffffff", fg: "#42434a", use: "Frosted-glass top nav, white at 0.80 alpha" }
+    card: { type: card, bg: "#f4f4f6", radius: 12, use: "Card surface, white-to-warm-gray gradient, subtle shadow" }
+    input: { type: input, bg: "#f4f4f6", fg: "#42434a", use: "Input fill, surface gray" }
+    link-blue: { type: badge, fg: "#2e7dd9", use: "Informational link / secondary highlight" }
+  components_harvested: true
 ---
 
 # JKOPay

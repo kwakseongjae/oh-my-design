@@ -10,6 +10,46 @@ logo:
   slug: ollama
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    ink: "#000000"
+    near-black: "#262626"
+    darkest: "#090909"
+    canvas: "#ffffff"
+    snow: "#fafafa"
+    light-gray: "#e5e5e5"
+    stone: "#737373"
+    mid-gray: "#525252"
+    silver: "#a3a3a3"
+    button-text: "#404040"
+    ring: "#3b82f6"
+    border-light: "#d4d4d4"
+  typography:
+    family: { sans: "SF Pro Rounded", mono: "ui-monospace" }
+    display: { size: 48, weight: 500, lineHeight: 1.0, use: "Hero, rounded letterforms" }
+    section: { size: 36, weight: 500, lineHeight: 1.11, use: "Feature section titles" }
+    subheading: { size: 30, weight: 500, lineHeight: 1.2, use: "Card headings, feature names" }
+    card-title: { size: 24, weight: 400, lineHeight: 1.33, use: "Medium emphasis headings" }
+    body-lg: { size: 18, weight: 400, lineHeight: 1.56, use: "Hero descriptions, button text" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Body text, navigation" }
+    caption: { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, descriptions" }
+    small: { size: 12, weight: 400, lineHeight: 1.33, use: "Smallest sans text" }
+    code: { size: 16, weight: 400, lineHeight: 1.5, use: "Inline code, commands" }
+  spacing: { sm: 10, base: 24 }
+  rounded: { sm: 12, md: 12, lg: 12, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#e5e5e5", fg: "#262626", radius: 9999, padding: "10px 24px", use: "Primary action, gray pill" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#404040", radius: 9999, padding: "10px 24px", use: "Secondary action, white pill" }
+    button-cta: { type: button, bg: "#000000", fg: "#ffffff", radius: 9999, use: "Max emphasis (Create account, Download)" }
+    card: { type: card, bg: "#ffffff", radius: 12, use: "Container, 1px light-gray border, no shadow" }
+    input: { type: input, bg: "#ffffff", radius: 9999, use: "Pill search/form field" }
+    tab-pill: { type: tab, bg: "transparent", radius: 9999, use: "Pill tab selector", active: "#e5e5e5 bg" }
+    model-tag: { type: badge, bg: "#e5e5e5", fg: "#262626", radius: 9999, use: "Model browse tag" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Ollama

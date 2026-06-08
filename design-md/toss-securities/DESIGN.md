@@ -11,6 +11,42 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=tossinvest.com&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#3182f6"
+    primary-hover: "#2562b9"
+    primary-pressed: "#29518e"
+    brand-text: "#4391ff"
+    positive: "#dc2e47"
+    positive-hover: "#ad2136"
+    positive-pressed: "#8d222f"
+    positive-text: "#f5445a"
+    negative: "#3182f6"
+    negative-text: "#4391ff"
+    canvas: "#101013"
+    overlay: "#202025"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Toss Product Sans", mono: "Toss Product Sans" }
+    section-h2:  { size: 24, weight: 700, use: "Section headers" }
+    sub-h3:      { size: 19, weight: 700, use: "Sub-section headers" }
+    nav:         { size: 15, weight: 500, use: "Global nav links" }
+    body:        { size: 16, weight: 400, use: "Body and button text" }
+    input:       { size: 15, weight: 400, use: "Form field text" }
+    memo-chip:   { size: 12, weight: 600, use: "Contextual pill action" }
+    on-cta:      { size: 16, weight: 400, use: "White on tinted-fill button" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+  shadow:
+    none: "none"
+  components_harvested: true
+  components:
+    button-brand: { type: button, bg: "#3182f6", fg: "#ffffff", use: "Primary CTA brand fill" }
+    badge-positive: { type: badge, fg: "#f5445a", font: "12/600", use: "Up-tick / 매수 indicator (KR red-up)" }
+    badge-negative: { type: badge, fg: "#4391ff", font: "12/600", use: "Down-tick / 매도 indicator (KR blue-down)" }
+    input-field: { type: input, font: "15/400", use: "Form field on dark surface" }
 ---
 
 # Design System Inspiration of Toss Securities (토스증권)

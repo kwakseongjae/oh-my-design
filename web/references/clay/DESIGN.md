@@ -62,14 +62,15 @@ tokens:
   shadow:
     clay: "rgba(0,0,0,0.1) 0px 1px 1px, rgba(0,0,0,0.04) 0px -1px 1px inset, rgba(0,0,0,0.05) 0px -0.5px 1px"
     hard-offset: "rgb(0,0,0) -7px 7px"
+  components_harvested: true
   components:
-    button-primary: "Transparent fill, black text, hover rotateZ(-8deg) + translateY(-80%) + hard offset shadow -7px 7px"
-    button-white-solid: "White fill, black text, 12px radius, animated rotation hover — CTA on colored sections"
-    button-ghost: "Transparent fill, black text, 1px solid #717989 border, 4px radius, dragonfruit hover"
-    card: "White surface on cream, 1px solid #dad4c8 oat border, 12-24px radius, multi-layer clay shadow with inset highlight"
-    swatch-section: "Full-width swatch-colored background (matcha/slushie/ube/lemon), white or black text by contrast"
-    dashed-border: "1px dashed #dad4c8 for secondary/decorative containers — hand-drawn craft quality"
-    uppercase-label: "12px Roobert weight 600, uppercase, 1.08px tracking — wayfinding system"
+    button-primary: { type: button, fg: "#000000", use: "Transparent fill, black text, hover rotateZ(-8deg) + hard offset shadow" }
+    button-white-solid: { type: button, bg: "#ffffff", fg: "#000000", radius: 12, use: "White fill, animated rotation hover — CTA on colored sections" }
+    button-ghost: { type: button, fg: "#000000", radius: 4, use: "Transparent fill, 1px border, dragonfruit hover" }
+    card: { type: card, bg: "#ffffff", radius: 12, use: "White surface on cream, 1px solid #dad4c8 oat border, multi-layer clay shadow with inset highlight" }
+    swatch-section: { type: card, use: "Full-width swatch-colored background (matcha/slushie/ube/lemon), white or black text by contrast" }
+    dashed-border: { type: card, use: "1px dashed #dad4c8 for secondary/decorative containers — hand-drawn craft quality" }
+    uppercase-label: { type: badge, fg: "#000000", font: "12/600", use: "Uppercase, 1.08px tracking — wayfinding system" }
 ---
 
 # Design System Inspiration of Clay

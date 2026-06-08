@@ -11,6 +11,68 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#0076CE"
+    primary-hover: "#0063AF"
+    primary-active: "#00538F"
+    blue-tint: "#E5F1FA"
+    canvas: "#ffffff"
+    band: "#F7F8FA"
+    heading: "#11141a"
+    navy: "#0E1B2C"
+    body: "#4C545E"
+    caption: "#6B7480"
+    placeholder: "#9AA3AE"
+    label: "#22262B"
+    border: "#DDE1E6"
+    border-strong: "#C5CBD3"
+    fill: "#EEF0F3"
+    success: "#008A00"
+    success-bg: "#E6F4E6"
+    error: "#CE2029"
+    warning: "#B85C00"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Roboto", mono: "Roboto Mono" }
+    display-hero: { size: 48, weight: 700, lineHeight: 1.17, tracking: -0.5, use: "Marketing hero headlines" }
+    display-lg:   { size: 36, weight: 700, lineHeight: 1.22, tracking: -0.25, use: "Landing section headers" }
+    h1:           { size: 28, weight: 700, lineHeight: 1.29, use: "Page titles, PDP product name" }
+    h2:           { size: 22, weight: 500, lineHeight: 1.36, use: "Section headings, card titles" }
+    h3:           { size: 18, weight: 500, lineHeight: 1.44, use: "Sub-sections, spec group labels" }
+    subtitle:     { size: 16, weight: 500, lineHeight: 1.50, use: "List headers, emphasized labels" }
+    body-lg:      { size: 16, weight: 400, lineHeight: 1.50, use: "Descriptions, marketing copy" }
+    body:         { size: 14, weight: 400, lineHeight: 1.43, use: "Standard reading text, spec rows" }
+    body-sm:      { size: 13, weight: 400, lineHeight: 1.38, use: "Secondary info, table cells" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.33, tracking: 0.2, use: "Legal, fine print, timestamps" }
+    price:        { size: 28, weight: 700, use: "Product price, tabular numerals" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 8, full: 9999 }
+  shadow:
+    subtle: "0 1px 3px rgba(17,20,26,0.08)"
+    standard: "0 4px 12px rgba(17,20,26,0.10)"
+    elevated: "0 8px 24px rgba(17,20,26,0.14)"
+    modal: "0 8px 32px rgba(17,20,26,0.20)"
+  components:
+    button-primary: { type: button, bg: "#0076CE", fg: "#ffffff", radius: 4, padding: "0 24px", font: "14px/500 Roboto", use: "Primary commerce CTA (Add to Cart, Buy Now)" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#0076CE", radius: 4, padding: "0 24px", font: "14px/500 Roboto", use: "Secondary action (Compare, Learn More)" }
+    button-tertiary: { type: button, bg: "transparent", fg: "#0076CE", radius: 4, padding: "0 8px", font: "14px/500 Roboto", use: "Low-emphasis inline action (View details, Remove)" }
+    button-dark: { type: button, bg: "#11141a", fg: "#ffffff", radius: 4, padding: "0 24px", font: "14px/500 Roboto", use: "High-contrast marketing CTA" }
+    button-danger: { type: button, bg: "#CE2029", fg: "#ffffff", radius: 4, padding: "0 24px", font: "14px/500 Roboto", use: "Destructive confirmation" }
+    input: { type: input, bg: "#ffffff", fg: "#22262B", radius: 4, padding: "10px 12px", font: "14px/400 Roboto", use: "Standard form input" }
+    product-card: { type: card, bg: "#ffffff", radius: 8, padding: "16px", use: "Grid product tile" }
+    promo-card: { type: card, bg: "#0E1B2C", fg: "#ffffff", radius: 8, padding: "24px", use: "Dark promotional banner card" }
+    badge-deal: { type: badge, bg: "#CE2029", fg: "#ffffff", radius: 4, padding: "2px 8px", font: "12px/700 Roboto", use: "Save $X, Clearance, Doorbuster" }
+    badge-instock: { type: badge, bg: "#E6F4E6", fg: "#008A00", radius: 4, padding: "2px 8px", font: "12px/500 Roboto", use: "Availability indicator" }
+    badge-new: { type: badge, bg: "#E5F1FA", fg: "#0076CE", radius: 4, padding: "2px 8px", font: "12px/700 Roboto", use: "Newly released product" }
+    badge-neutral: { type: badge, bg: "#EEF0F3", fg: "#4C545E", radius: 4, padding: "2px 8px", font: "12px/500 Roboto", use: "Category tags, metadata chips" }
+    tab: { type: tab, bg: "#ffffff", fg: "#6B7480", font: "14px/500 Roboto", active: "2px bottom border #0076CE, text #11141a", use: "PDP sections, account dashboard" }
+    toast: { type: toast, bg: "#11141a", fg: "#ffffff", radius: 4, padding: "12px 16px", font: "14px/400 Roboto", use: "Transient confirmation" }
+    dialog: { type: dialog, bg: "#ffffff", fg: "#11141a", radius: 8, padding: "24px", use: "Configuration confirm, cart review, sign-in" }
+    toggle: { type: toggle, bg: "#0076CE", radius: 9999, use: "Boolean preferences (on track blue, off #C5CBD3)" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Dell

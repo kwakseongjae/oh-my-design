@@ -14,6 +14,7 @@ omd: "0.1"
 tokens:
   source: live-extract
   extracted: "2026-06-08"
+  components_harvested: true
   note: "primary = live Loom blue #1868db (pill CTA, white text); brand accents (coral #ff613d, purple #bf63f3, deep purple #48245d) appear in marketing illustration gradients"
   colors:
     primary: "#1868db"

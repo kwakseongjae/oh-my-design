@@ -10,6 +10,37 @@ logo:
   slug: x
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    text-primary: "#ffffff"
+    canvas: "#1f2228"
+    ring-blue: "#3b82f6"
+    surface-elevated: "#26292f"
+    surface-hover: "#2a2d33"
+    border-default: "#2c2f35"
+    border-strong: "#3a3d42"
+    inverse-near-black: "#0a0a0a"
+  typography:
+    family: { sans: "universalSans", mono: "GeistMono" }
+    display-hero: { size: 320, weight: 300, lineHeight: 1.50, use: "GeistMono, extreme display" }
+    section:      { size: 30, weight: 400, lineHeight: 1.20, use: "universalSans, section heading" }
+    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "universalSans, body" }
+    button:       { size: 14, weight: 400, lineHeight: 1.43, tracking: 1.4, use: "GeistMono, uppercase button" }
+    caption:      { size: 14, weight: 400, lineHeight: 1.50, use: "universalSans, label/caption" }
+    small:        { size: 12, weight: 400, lineHeight: 1.50, use: "universalSans, meta" }
+  spacing: { xs: 4, sm: 8, base: 24, lg: 48 }
+  rounded: { sm: 0, md: 0, lg: 4, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#ffffff", fg: "#1f2228", radius: 0, padding: "12px 24px", font: "14px/400 GeistMono", use: "Primary CTA, uppercase 1.4px tracking, hover 0.9 white" }
+    button-ghost: { type: button, fg: "#ffffff", radius: 0, padding: "12px 24px", font: "14px/400 GeistMono", use: "Secondary, 1px rgba(255,255,255,0.2) border" }
+    card: { type: card, radius: 0, padding: "24px", use: "Container, 1px rgba(255,255,255,0.1) border, no shadow, hover border 0.2" }
+    badge-mono: { type: badge, fg: "#ffffff", radius: 0, padding: "4px 8px", font: "12px GeistMono", use: "Monospace tag, 1px rgba(255,255,255,0.2) border" }
+    input-default: { type: input, fg: "#ffffff", radius: 0, padding: "8px 12px", font: "16px universalSans", use: "Form input, 1px rgba(255,255,255,0.2), focus blue ring, placeholder 0.3" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of xAI

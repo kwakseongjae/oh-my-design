@@ -15,6 +15,50 @@ ds:
   url: "https://gestalt.pinterest.systems"
   type: system
   description: Pinterest's open-source React component library with tokens and foundations.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#e60023"
+    green: "#103c25"
+    green-hover: "#0b2819"
+    heading: "#211922"
+    ink: "#000000"
+    muted: "#62625b"
+    disabled-text: "#91918c"
+    focus: "#435ee5"
+    link: "#2b48d4"
+    pressed-blue: "#617bff"
+    perf-purple: "#6845ab"
+    rec-purple: "#7e238b"
+    facebook: "#0866ff"
+    sand: "#e5e5e0"
+    warm-light: "#e0e0d9"
+    border-disabled: "#c8c8c1"
+    hover-gray: "#bcbcb3"
+    dark-surface: "#33332e"
+    error: "#9e0a0a"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Pin Sans" }
+    display-hero:    { size: 70, weight: 600, use: "Maximum-impact hero" }
+    section-heading: { size: 28, weight: 700, tracking: -1.2, use: "Section titles, negative tracking" }
+    body:            { size: 16, weight: 400, lineHeight: 1.40, use: "Standard reading" }
+    caption-bold:    { size: 14, weight: 700, use: "Strong metadata" }
+    caption:         { size: 12, weight: 400, lineHeight: 1.50, use: "Small text, tags" }
+    button:          { size: 12, weight: 400, use: "Button labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 8, md: 16, lg: 20, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#e60023", fg: "#000000", radius: 16, padding: "6px 14px", use: "Primary CTA — black text on red" }
+    button-secondary: { type: button, bg: "#e5e5e0", fg: "#000000", radius: 16, padding: "6px 14px", use: "Secondary action, warm sand gray" }
+    button-circular: { type: button, bg: "#e0e0d9", fg: "#211922", radius: 9999, use: "Pin actions, navigation controls" }
+    button-ghost: { type: button, fg: "#000000", radius: 16, use: "Tertiary action, transparent" }
+    input: { type: input, bg: "#ffffff", fg: "#211922", radius: 16, padding: "11px 15px", use: "Email input, 1px #91918c border" }
+    card: { type: card, bg: "#ffffff", radius: 16, use: "Photography-first pin card, no shadow" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Pinterest

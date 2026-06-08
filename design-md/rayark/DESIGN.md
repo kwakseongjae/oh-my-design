@@ -10,6 +10,28 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=rayark.com&sz=128"
 verified: "2026-06-01"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    ground: "#1a1c1d"
+    accent: "#5fe0ee"
+    on-dark: "#ffffff"
+    on-accent: "#000000"
+  typography:
+    family: { sans: "Noto Sans", mono: "Noto Sans" }
+    nav:    { size: 20, weight: 400, use: "Navigation links, white on dark" }
+    body:   { size: 16, weight: 400, use: "Running text" }
+    button: { size: 16, weight: 700, use: "Primary CTA label" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 3, md: 3, lg: 3, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#5fe0ee", fg: "#000000", radius: 3, padding: "0 16px", font: "16/700", use: "Primary CTA 'Play Now', 2px solid #ffffff border, 40px height" }
+    nav-top: { type: tab, bg: "transparent", fg: "#ffffff", font: "20/400", use: "Transparent header, white nav links, 70px height" }
+    surface: { type: card, bg: "#1a1c1d", fg: "#ffffff", font: "16/400", use: "Near-black page canvas" }
+  components_harvested: true
 ---
 # Design System Inspiration of Rayark
 

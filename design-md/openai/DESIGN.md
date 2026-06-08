@@ -11,6 +11,73 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#10a37f"
+    primary-hover: "#1a7f64"
+    primary-tint: "#d9f2ea"
+    canvas: "#ffffff"
+    ink: "#0d0d0d"
+    brand-black: "#000000"
+    error: "#ef4146"
+    warning: "#f5a623"
+    info: "#4d6bfe"
+    gray-50: "#f7f7f8"
+    gray-100: "#ececec"
+    gray-200: "#e5e5e5"
+    gray-300: "#d1d1d1"
+    gray-400: "#b4b4b4"
+    gray-500: "#9b9b9b"
+    gray-600: "#6e6e80"
+    gray-700: "#40414f"
+    gray-800: "#2d2d2d"
+    surface-base: "#212121"
+    surface-sunken: "#171717"
+    surface-raised: "#2f2f2f"
+    dark-border: "#3e3e42"
+    amber-bg: "#fdf0d5"
+    amber-text: "#b8770f"
+  typography:
+    family: { sans: "OpenAI Sans", mono: "SF Mono" }
+    display-hero: { size: 56, weight: 600, lineHeight: 1.07, tracking: "-0.02em", use: "Marketing hero, launch pages" }
+    display-lg: { size: 40, weight: 600, lineHeight: 1.15, tracking: "-0.02em", use: "Section headers" }
+    h1: { size: 32, weight: 600, lineHeight: 1.25, tracking: "-0.01em", use: "Page titles" }
+    h2: { size: 24, weight: 600, lineHeight: 1.33, tracking: "-0.01em", use: "Sub-sections, card titles" }
+    h3: { size: 20, weight: 600, lineHeight: 1.4, use: "Group labels, modal headers" }
+    subtitle: { size: 18, weight: 500, lineHeight: 1.56, use: "Lead paragraphs, list headers" }
+    body-lg: { size: 16, weight: 400, lineHeight: 1.63, use: "Marketing body, descriptions" }
+    body: { size: 15, weight: 400, lineHeight: 1.6, use: "Standard reading text, chat" }
+    body-sm: { size: 14, weight: 400, lineHeight: 1.57, use: "Secondary info, dense UI" }
+    caption: { size: 13, weight: 400, lineHeight: 1.38, use: "Timestamps, metadata, helper" }
+    code: { size: 14, weight: 400, lineHeight: 1.57, use: "Code blocks, tokens, IDs" }
+  spacing: { sm: 8, md: 12, base: 16, lg: 24 }
+  rounded: { sm: 6, md: 8, lg: 12, xl: 16, full: 9999 }
+  shadow:
+    card-hover: "0 4px 12px rgba(0,0,0,0.06)"
+    toast: "0 4px 16px rgba(0,0,0,0.16)"
+    dialog: "0 8px 32px rgba(0,0,0,0.16)"
+  components:
+    button-primary: { type: button, bg: "#0d0d0d", fg: "#ffffff", radius: 12, padding: "0 20px", font: "15px/500", use: "Default primary action" }
+    button-teal: { type: button, bg: "#10a37f", fg: "#ffffff", radius: 12, padding: "0 20px", font: "15px/500", use: "Brand-forward conversion CTA" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#0d0d0d", radius: 12, padding: "0 20px", font: "15px/500", use: "Secondary action" }
+    button-ghost: { type: button, bg: "transparent", fg: "#0d0d0d", radius: 8, padding: "0 12px", font: "14px/500", use: "Low-emphasis inline action" }
+    pill: { type: button, bg: "#ffffff", fg: "#0d0d0d", radius: 9999, padding: "8px 16px", font: "14px/400", use: "Prompt-suggestion chip, filter, model selector" }
+    chat-composer: { type: input, bg: "#ffffff", fg: "#0d0d0d", radius: 26, padding: "14px 18px", font: "16px/400", use: "Signature ChatGPT message input" }
+    form-field: { type: input, bg: "#ffffff", fg: "#0d0d0d", radius: 8, padding: "10px 12px", font: "15px/400", use: "Settings, API keys, account forms" }
+    card: { type: card, bg: "#ffffff", radius: 12, padding: "24px", use: "Docs cards, pricing, model cards" }
+    card-dark: { type: card, bg: "#2f2f2f", radius: 12, padding: "24px", use: "Cards on dark canvas" }
+    user-message: { type: listItem, bg: "#f7f7f8", fg: "#0d0d0d", radius: 18, padding: "10px 16px", use: "ChatGPT user turn bubble" }
+    badge-neutral: { type: badge, bg: "#ececec", fg: "#40414f", radius: 6, padding: "2px 8px", font: "12px/500", use: "Model labels, version tags" }
+    badge-teal: { type: badge, bg: "#d9f2ea", fg: "#1a7f64", radius: 6, padding: "2px 8px", font: "12px/500", use: "New, Plus, positive emphasis" }
+    badge-amber: { type: badge, bg: "#fdf0d5", fg: "#b8770f", radius: 6, padding: "2px 8px", font: "12px/500", use: "Preview, Rate limited, caution" }
+    tab-underline: { type: tab, bg: "transparent", fg: "#6e6e80", font: "15px/500", use: "Docs, settings, API reference", active: "#0d0d0d text, 2px bottom border #0d0d0d" }
+    segmented: { type: tab, bg: "#ececec", fg: "#6e6e80", radius: 8, font: "14px/500", use: "Mode/plan toggle", active: "#ffffff bg, #0d0d0d text" }
+    toast: { type: toast, bg: "#0d0d0d", fg: "#ffffff", radius: 10, padding: "12px 16px", font: "14px/400", use: "Transient confirmation (Copied, Saved)" }
+    dialog: { type: dialog, bg: "#ffffff", radius: 16, padding: "24px", use: "Confirmations, settings, upgrade prompts" }
+    toggle: { type: toggle, bg: "#10a37f", radius: 9999, use: "Boolean settings, on=teal off=#d1d1d1" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of OpenAI

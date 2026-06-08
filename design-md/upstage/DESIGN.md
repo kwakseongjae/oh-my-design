@@ -17,6 +17,44 @@ ds:
   type: brand
   description: "Upstage's brand resource hub — logo / symbol assets + IP rights statement. Token spec lives only in production CSS (Geist + Espeak proprietary face + violet #5B52FF × plum #3C043B + Solar accent #D2FF95)."
   og_image: "https://cdn.prod.website-files.com/6743d5190bb2b52f38e99e37/680a25ee07a17eed6deeff74_OG.avif"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#5b52ff"
+    primary-hover: "#1e116e"
+    primary-deep: "#281ca5"
+    accent: "#d2ff95"
+    body: "#70757f"
+    heading: "#0a0d14"
+    muted: "#6e7191"
+    canvas: "#ffffff"
+    subtle: "#f9fafb"
+    footer: "#191722"
+    plum: "#3c043b"
+    lavender: "#f0ecfd"
+    purple-100: "#dde3ff"
+    border: "#eeeeee"
+    border-subtle: "#f7f7fc"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Geist", mono: "monospace" }
+    hero-h1:    { size: 58, weight: 600, use: "Hero headline (Espeak face)" }
+    section-h2: { size: 40, weight: 600, use: "Section headings" }
+    body-lg:    { size: 18, weight: 400, use: "Dominant body size" }
+    body:       { size: 16, weight: 400, use: "Standard body" }
+    button:     { size: 16, weight: 500, use: "Button + nav labels" }
+    caption:    { size: 14, weight: 400, use: "Small / caption" }
+    micro:      { size: 12, weight: 400, use: "Legal / micro" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 8, md: 8, lg: 8, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#5b52ff", fg: "#ffffff", radius: 8, font: "16px/500", use: "Try now persistent nav CTA" }
+    card: { type: card, bg: "transparent", fg: "#70757f", radius: 8, use: "Product/solution/customer card; no shadow, inline Learn more link" }
+    nav: { type: tab, bg: "transparent", fg: "#0a0d14", radius: 8, use: "Transparent over hero, white below; 5 categories + Try now CTA" }
+  components_harvested: true
 ---
 
 # Upstage — DESIGN.md

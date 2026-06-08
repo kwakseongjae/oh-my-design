@@ -34,11 +34,12 @@ tokens:
   rounded: { sm: 3, lg: 16 }
   shadow:
     flat: "none — separation via color/fill contrast, no literal shadow stacking"
+  components_harvested: true
   components:
-    button-primary: "navy #061C3D fill, white text, 16px radius, 48px height, 16px/600 — dominant action"
-    button-coral: "coral #E85040 fill, white text, 16px radius, 40px height, 16px/500 — lone decisive accent, kept rare"
-    button-neutral: "neutral #F7F6FB fill, navy #061C3D text, 3px radius, 48px height, 16px/600 — secondary action"
-    hero-heading: "transparent, navy #061C3D text, 44px/700 Noto Sans TC — top-of-page authority"
+    button-primary: { type: button, bg: "#061C3D", fg: "#FFFFFF", radius: 16, padding: "48px height", font: "16px/600", use: "dominant action" }
+    button-coral: { type: button, bg: "#E85040", fg: "#FFFFFF", radius: 16, padding: "40px height", font: "16px/500", use: "lone decisive accent, kept rare" }
+    button-neutral: { type: button, bg: "#F7F6FB", fg: "#061C3D", radius: 3, padding: "48px height", font: "16px/600", use: "secondary action" }
+    hero-heading: { type: card, fg: "#061C3D", font: "44px/700 Noto Sans TC", use: "top-of-page authority heading" }
 omd: "0.1"
 ---
 # Design System Inspiration of 91APP

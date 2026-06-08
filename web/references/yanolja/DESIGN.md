@@ -16,6 +16,51 @@ ds:
   type: brand
   description: Yanolja's official brand center — visual identity inspired by the Multiverse of Dreams.
   og_image: "https://www.yanoljagroup.com/common/assets/yanolja_colored_og_image.jpg"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#f54b1e"
+    primary-pressed: "#d63e14"
+    coral-tint: "#feeae2"
+    canvas: "#ffffff"
+    heading: "#1e1928"
+    body: "#555055"
+    caption: "#8c8282"
+    light-sand: "#f5ebe1"
+    critical: "#e5342b"
+    info: "#2d8cff"
+    success: "#1fa873"
+    warning: "#f2a600"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    display:      { size: 28, weight: 700, lineHeight: 1.29, use: "Hero promo headlines" }
+    heading-lg:   { size: 22, weight: 700, lineHeight: 1.36, use: "Section headers" }
+    heading:      { size: 18, weight: 700, lineHeight: 1.44, use: "Card titles, list headers" }
+    title:        { size: 16, weight: 600, lineHeight: 1.38, use: "Lodging name, list item" }
+    body:         { size: 14, weight: 400, lineHeight: 1.43, use: "Standard body" }
+    body-bold:    { size: 14, weight: 700, lineHeight: 1.43, use: "Price, discount label" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.33, use: "Metadata, neighborhood" }
+    caption-bold: { size: 12, weight: 700, lineHeight: 1.33, use: "Discount % badge, status tag" }
+    micro:        { size: 11, weight: 500, lineHeight: 1.27, use: "Legal, fine print" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 12, sheet: 16, full: 9999 }
+  shadow:
+    soft: "0 2px 8px rgba(30,25,40,0.08)"
+    standard: "0 4px 16px rgba(30,25,40,0.12)"
+    prominent: "0 8px 24px rgba(30,25,40,0.16)"
+  components:
+    button-primary: { type: button, bg: "#f54b1e", fg: "#ffffff", radius: 8, padding: "16px 24px", font: "16px/700 Pretendard", use: "예약/결제 CTA, pressed #d63e14, disabled #f5ebe1 bg #8c8282 text" }
+    button-outline: { type: button, fg: "#1e1928", radius: 8, use: "Secondary, 1px rgba(30,25,40,0.16) border, pressed #f5ebe1" }
+    button-weak: { type: button, bg: "#f5ebe1", fg: "#1e1928", radius: 8, use: "Tertiary, 더 보기 / filter" }
+    button-critical: { type: button, bg: "#e5342b", fg: "#ffffff", use: "Destructive, 예약 취소" }
+    input-default: { type: input, bg: "#ffffff", fg: "#1e1928", radius: 8, use: "Form input, 1px rgba(30,25,40,0.16), focus 2px #f54b1e, placeholder #8c8282" }
+    lodging-card: { type: card, bg: "#ffffff", radius: 8, padding: "12px 16px", use: "Image-led card, hover soft shadow" }
+    discount-badge: { type: badge, bg: "#f54b1e", fg: "#ffffff", radius: 4, padding: "2px 6px", font: "12px/700 Pretendard", use: "Top-left of image discount %" }
+    category-chip: { type: badge, bg: "#f5ebe1", fg: "#1e1928", radius: 9999, font: "12px/500 Pretendard", use: "Category chip, selected #f54b1e bg white text" }
+    toast: { type: toast, bg: "#1e1928", fg: "#ffffff", font: "14px/400 Pretendard", use: "Error/success toast, 3s" }
+    nav-tab: { type: tab, fg: "#8c8282", use: "Bottom tab bar", active: "#f54b1e icon + label" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Yanolja (야놀자)

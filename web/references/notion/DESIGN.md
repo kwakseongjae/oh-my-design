@@ -10,6 +10,54 @@ logo:
   slug: notion
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    ink: "#000000"
+    canvas: "#ffffff"
+    primary: "#0075de"
+    primary-active: "#005bab"
+    navy: "#213183"
+    warm-white: "#f6f5f4"
+    warm-dark: "#31302e"
+    warm-gray-500: "#615d59"
+    warm-gray-300: "#a39e98"
+    teal: "#2a9d99"
+    green: "#1aae39"
+    orange: "#dd5b00"
+    pink: "#ff64c8"
+    purple: "#391c57"
+    brown: "#523410"
+    link-light: "#62aef0"
+    focus: "#097fe8"
+    badge-bg: "#f2f9ff"
+    border: "#dddddd"
+  typography:
+    family: { sans: "NotionInter", mono: "NotionInter" }
+    display-hero: { size: 64, weight: 700, lineHeight: 1.0, tracking: -2.125, use: "Billboard headlines" }
+    display-secondary: { size: 54, weight: 700, lineHeight: 1.04, tracking: -1.875, use: "Secondary hero" }
+    section: { size: 48, weight: 700, lineHeight: 1.0, tracking: -1.5, use: "Feature section titles" }
+    subheading-lg: { size: 40, weight: 700, lineHeight: 1.5, use: "Card headings, metric numbers" }
+    subheading: { size: 26, weight: 700, lineHeight: 1.23, tracking: -0.625, use: "Section sub-titles" }
+    card-title: { size: 22, weight: 700, lineHeight: 1.27, tracking: -0.25, use: "Feature cards, list titles" }
+    body-lg: { size: 20, weight: 600, lineHeight: 1.4, tracking: -0.125, use: "Intros, feature descriptions" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading text" }
+    nav-button: { size: 15, weight: 600, lineHeight: 1.33, use: "Navigation links, button text" }
+    caption: { size: 14, weight: 500, lineHeight: 1.43, use: "Metadata, secondary labels" }
+    badge: { size: 12, weight: 600, lineHeight: 1.33, tracking: 0.125, use: "Pill badges, tags, status" }
+  spacing: { sm: 8, base: 16 }
+  rounded: { sm: 4, md: 12, lg: 16, full: 9999 }
+  shadow:
+    card: "rgba(0,0,0,0.04) 0px 4px 18px, rgba(0,0,0,0.027) 0px 2.025px 7.84688px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.01) 0px 0.175px 1.04062px"
+  components:
+    button-primary: { type: button, bg: "#0075de", fg: "#ffffff", radius: 4, padding: "8px 16px", use: "Primary CTA (Get Notion free)" }
+    button-secondary: { type: button, bg: "rgba(0,0,0,0.05)", fg: "#000000", radius: 4, padding: "8px 16px", use: "Secondary actions, form submit" }
+    button-ghost: { type: button, bg: "transparent", fg: "#000000", use: "Tertiary actions, inline links" }
+    badge: { type: badge, bg: "#f2f9ff", fg: "#097fe8", radius: 9999, padding: "4px 8px", font: "12px/600", use: "Status badges, feature labels, New tags" }
+    card: { type: card, bg: "#ffffff", radius: 12, use: "Standard content card, whisper border" }
+    input: { type: input, bg: "#ffffff", fg: "#000000", radius: 4, padding: "6px", use: "Forms, fields" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Notion

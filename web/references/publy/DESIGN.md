@@ -11,6 +11,58 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=publy.co&sz=128"
 verified: "2026-05-27"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#7a3bff"
+    primary-pressed: "#6429e6"
+    primary-tint: "#f1ebff"
+    canvas: "#ffffff"
+    ink: "#0f172a"
+    slate-950: "#111213"
+    slate-800: "#282b2f"
+    slate-700: "#3c4043"
+    slate-600: "#575b5c"
+    slate-500: "#77797b"
+    slate-400: "#979b9e"
+    slate-300: "#ced0d1"
+    slate-200: "#e2e8f0"
+    slate-100: "#f5f5f5"
+    error: "#ef4444"
+    success: "#16a34a"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "system-ui" }
+    display:     { size: 30, weight: 700, lineHeight: 1.33, tracking: -0.4, use: "Landing hero, report cover title" }
+    heading-lg:  { size: 24, weight: 700, lineHeight: 1.33, tracking: -0.3, use: "Section / report title" }
+    heading:     { size: 20, weight: 700, lineHeight: 1.40, tracking: -0.3, use: "Sub-section, card group header" }
+    title:       { size: 16, weight: 600, lineHeight: 1.50, tracking: -0.2, use: "Card title, list header" }
+    body-lg:     { size: 16, weight: 400, lineHeight: 1.63, tracking: -0.2, use: "Long-form report body, generous leading" }
+    body:        { size: 14, weight: 400, lineHeight: 1.57, tracking: -0.2, use: "Default body, card description" }
+    label:       { size: 14, weight: 600, lineHeight: 1.43, tracking: -0.2, use: "Tab label, emphasized inline" }
+    caption:     { size: 13, weight: 400, lineHeight: 1.38, tracking: -0.2, use: "Metadata, author, read-time" }
+    micro:       { size: 12, weight: 500, lineHeight: 1.33, tracking: -0.2, use: "Fine print, control labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    ambient: "rgba(0,0,0,0.06) 0px 2px 8px"
+    standard: "rgba(0,0,0,0.08) 0px 4px 16px"
+    elevated: "rgba(0,0,0,0.12) 0px 8px 28px"
+  components:
+    button-primary: { type: button, bg: "#7a3bff", fg: "#ffffff", radius: 8, padding: "12px 16px", font: "14px / 600", use: "Primary CTA — 멤버십 시작하기, 3일 무료체험" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#7a3bff", radius: 8, padding: "12px 16px", font: "14px / 600", use: "Secondary CTA — 저장하기, 공유하기, 1px #7a3bff border" }
+    button-neutral: { type: button, bg: "#ffffff", fg: "#282b2f", radius: 8, padding: "12px 16px", font: "14px / 500", use: "Tertiary action, 1px #e2e8f0 border" }
+    button-ghost: { type: button, fg: "#7a3bff", radius: 8, padding: "8px 12px", font: "14px / 600", use: "Inline text action, 더 보기" }
+    input: { type: input, bg: "#ffffff", fg: "#0f172a", radius: 8, padding: "12px 14px", font: "14px / 400", use: "Default text input, 1px #e2e8f0 border, focus #7a3bff" }
+    search: { type: input, bg: "#f5f5f5", fg: "#0f172a", radius: 8, padding: "12px 16px", use: "Header / discovery search bar" }
+    content-card: { type: card, bg: "#ffffff", radius: 12, padding: "20px", use: "Report / content card, 1px #e2e8f0 border" }
+    membership-card: { type: card, bg: "#f1ebff", radius: 12, padding: "24px", use: "Membership / paywall promotion" }
+    tag-default: { type: badge, bg: "#f5f5f5", fg: "#575b5c", radius: 6, padding: "4px 8px", font: "13px / 600", use: "Topic category" }
+    tag-active: { type: badge, bg: "#f1ebff", fg: "#7a3bff", radius: 6, padding: "4px 8px", font: "13px / 600", use: "Selected topic filter" }
+    badge-best: { type: badge, bg: "#7a3bff", fg: "#ffffff", radius: 4, padding: "3px 6px", font: "11px / 700", use: "BEST / NEW / Series flags" }
+    tab: { type: tab, fg: "#575b5c", font: "14px / 600", use: "Topic nav", active: "#7a3bff text + 2px purple underline" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of PUBLY (퍼블리)

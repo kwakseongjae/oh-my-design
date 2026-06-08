@@ -48,12 +48,13 @@ tokens:
   shadow:
     soft: "rgba(15,48,106,0.05) 0px 0px 20px"
     standard: "rgba(0,0,0,0.32) 0px 0px 1px, rgba(0,0,0,0.08) 0px 0px 2px, rgba(45,127,249,0.28) 0px 1px 3px, rgba(0,0,0,0.06) 0px 0px 0px 0.5px inset"
+  components_harvested: true
   components:
-    button-primary: "Airtable Blue #1b61c9 fill, white text, 12px radius, 16x24 padding, Haas 16/500, blue-tinted lift"
-    button-white: "white fill, #181d26 text, 12px radius, secondary CTA on dark/blue surfaces"
-    card: "white surface, 1px #e0e2e6 border, 16px radius (24-32 featured), blue-tinted multi-layer shadow"
-    input: "white fill, #181d26 text, 1px #e0e2e6 border, 12px radius, 12x16 padding"
-    badge: "#f8fafc fill, #181d26 text, 1px #e0e2e6 border, 12px radius, Haas 14/500"
+    button-primary: { type: button, bg: "#1b61c9", fg: "#ffffff", radius: 12, padding: "16x24", font: "Haas 16/500", use: "primary CTA, blue-tinted lift" }
+    button-white: { type: button, bg: "#ffffff", fg: "#181d26", radius: 12, use: "secondary CTA on dark/blue surfaces" }
+    card: { type: card, bg: "#ffffff", radius: 16, use: "1px #e0e2e6 border, 24-32 radius featured, blue-tinted multi-layer shadow" }
+    input: { type: input, bg: "#ffffff", fg: "#181d26", radius: 12, padding: "12x16", use: "1px #e0e2e6 border" }
+    badge: { type: badge, bg: "#f8fafc", fg: "#181d26", radius: 12, font: "Haas 14/500", use: "1px #e0e2e6 border" }
 ---
 
 # Design System Inspiration of Airtable

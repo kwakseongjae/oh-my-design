@@ -10,6 +10,59 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=wadiz.kr&sz=256"
 verified: "2026-05-14"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#00c4c4"
+    primary-hover: "#07abae"
+    tint: "#e6fafa"
+    tint-accent: "#bef5f5"
+    heading: "#191f28"
+    body: "#333d4b"
+    muted: "#4e5968"
+    subtle: "#6b7684"
+    placeholder: "#8b95a1"
+    disabled: "#b1b8c3"
+    canvas: "#ffffff"
+    surface-alt: "#fafbfd"
+    surface-neutral: "#f2f5f8"
+    divider: "#e3e7ee"
+    border: "#ced4de"
+    success: "#00af84"
+    alert: "#ff5959"
+    info: "#4672f9"
+    promo: "#fcc500"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Pretendard", mono: "ui-monospace" }
+    hero-numeral: { size: 64, weight: 700, lineHeight: 1.1, use: "Funded amount % on detail pages" }
+    h1:           { size: 48, weight: 700, lineHeight: 1.2, use: "Home banner, category landing" }
+    h2:           { size: 32, weight: 700, lineHeight: 1.25, use: "Section titles" }
+    h3:           { size: 24, weight: 700, lineHeight: 1.3, use: "Maker name, modal headings" }
+    card-title:   { size: 18, weight: 700, lineHeight: 1.35, use: "Reward card project title" }
+    lead:         { size: 17, weight: 400, lineHeight: 1.5, use: "Short paragraph leads" }
+    body:         { size: 15, weight: 400, lineHeight: 1.55, use: "Description text, body copy" }
+    label:        { size: 14, weight: 400, lineHeight: 1.4, use: "Time-remaining, supporter count" }
+    caption:      { size: 13, weight: 400, lineHeight: 1.4, use: "Helper text, fine print" }
+    small:        { size: 12, weight: 400, lineHeight: 1.3, use: "Badge text, micro-tags" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+  shadow:
+    header: "0 1px #0000000f"
+    modal: "0 16px 16px -1px #0a16461a, 0 0 5px #0a16460f"
+  components:
+    button-primary: { type: button, bg: "#00c4c4", fg: "#ffffff", radius: 8, use: "Filled mint contained CTA; active #07abae family" }
+    button-secondary: { type: button, bg: "transparent", fg: "#00c4c4", radius: 8, use: "Outlined mint; 1px #00c4c4 border, hover #e6fafa" }
+    button-tint: { type: button, bg: "#e6fafa", fg: "#00c4c4", radius: 8, use: "Wadiz signature tint button; hover #bef5f5" }
+    label-badge-solid: { type: badge, bg: "#00c4c4", fg: "#ffffff", use: "Funding-state chip solid (오픈중)" }
+    label-badge-tint: { type: badge, bg: "#e6fafa", fg: "#00c4c4", use: "Funding-state chip tint (얼리버드)" }
+    reward-card: { type: card, bg: "#ffffff", radius: 8, padding: "16px", use: "Most-shipped component; 4:3 thumbnail, badge row, funding row" }
+    input: { type: input, bg: "#ffffff", fg: "#333d4b", radius: 8, padding: "12px 16px", font: "15px/400", use: "Border 1px #ced4de, focus #00c4c4, error #ff5959" }
+    modal: { type: dialog, bg: "#ffffff", radius: 16, padding: "32px", use: "Desktop modal max-w 480px; mobile bottom-sheet top corners only" }
+    tooltip: { type: card, bg: "#191f28", fg: "#ffffff", radius: 4, padding: "8px 12px", font: "12px/400", use: "Tooltip/popover" }
+    nav: { type: tab, bg: "#ffffff", fg: "#191f28", use: "Fixed top header h64, white veil, hairline shadow" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Wadiz

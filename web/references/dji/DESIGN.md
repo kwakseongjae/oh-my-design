@@ -10,6 +10,45 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=dji.com&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "Non-black/white hexes are best-fit approximations per brand-guide (Titan, sky-blue named but hex not public)"
+  colors:
+    black: "#000000"
+    titan: "#1c1c1e"
+    canvas: "#ffffff"
+    silver: "#86868b"
+    accent: "#0a84ff"
+    surface: "#f5f5f7"
+    hairline: "#d2d2d7"
+    dark-panel: "#161617"
+    success: "#34c759"
+    error: "#ff3b30"
+    warning: "#ff9f0a"
+  typography:
+    family: { sans: "DJI", mono: "DJI" }
+    hero:      { size: 64, weight: 700, use: "Product reveal headlines on black, tight tracking" }
+    h2:        { size: 42, weight: 700, use: "Capability section heads" }
+    h3:        { size: 26, weight: 700, use: "Feature module titles" }
+    subhead:   { size: 19, weight: 500, use: "Lead-in copy under headlines" }
+    body:      { size: 16, weight: 400, use: "Descriptions, paragraph copy" }
+    spec-label: { size: 14, weight: 500, use: "Spec-table left column, nav" }
+    caption:   { size: 12, weight: 400, use: "Footnotes, disclaimers, legal" }
+  spacing: { sm: 12, base: 24, lg: 28, xl: 32, section: 120 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    hover: "0 4px 16px rgba(0,0,0,0.08)"
+    floating: "0 8px 32px rgba(0,0,0,0.16)"
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 4, padding: "12px 28px", font: "15px/500", use: "Primary purchase CTA (inverts on black pages)" }
+    button-secondary: { type: button, bg: "transparent", fg: "#000000", radius: 4, padding: "12px 28px", font: "15px/500", use: "Ghost button beside primary CTA" }
+    button-link: { type: button, bg: "transparent", fg: "#0a84ff", font: "15px/400", use: "Inline links, learn-more affordances" }
+    input: { type: input, bg: "#ffffff", fg: "#1c1c1e", radius: 4, padding: "12px 14px", font: "15px/400", use: "Account, checkout, search fields" }
+    product-tile: { type: card, bg: "#ffffff", fg: "#1c1c1e", radius: 8, padding: "24px", use: "Product grid tile" }
+    spec-module: { type: card, bg: "#f5f5f7", radius: 12, padding: "32px", use: "Highlighted spec/feature block" }
+    badge: { type: badge, bg: "transparent", fg: "#0a84ff", radius: 4, padding: "4px 8px", font: "12px/500", use: "New, Pre-order, Coming soon flags" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of DJI

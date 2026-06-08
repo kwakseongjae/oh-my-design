@@ -55,15 +55,16 @@ tokens:
     tertiary: "0 1px 2px 0 rgba(0,0,0,0.03), 0 1px 6px -1px rgba(0,0,0,0.02), 0 2px 4px 0 rgba(0,0,0,0.02)"
     secondary: "0 6px 16px 0 rgba(0,0,0,0.08), 0 3px 6px -4px rgba(0,0,0,0.12), 0 9px 28px 8px rgba(0,0,0,0.05)"
     elevated: "0 6px 16px 0 rgba(0,0,0,0.08)"
+  components_harvested: true
   components:
-    button-primary: "Daybreak Blue #1677FF fill, white text, 6px radius, 4px 15px pad, 14px/400, hover #4096FF, active #0958D9, wave ripple"
-    button-default: "white fill, #000000E0 text, 1px #D9D9D9 border, 6px radius, hover shifts to #4096FF"
-    button-danger: "#FF4D4F fill, white text, 6px radius — destructive confirm"
-    input: "white fill, 1px #D9D9D9 border, 6px radius, height 32px, focus border #1677FF, error border #FF4D4F"
-    card: "white surface, 1px #D9D9D9 border, 8px radius, 24px pad, boxShadowTertiary on hover"
-    table: "white rows, #FAFAFA header, #000000E0 text, 1px #0000000F dividers, #0000000A hover fill, 16px cell pad"
-    status-tag: "status color at low alpha (e.g. success #52C41A on #F6FFED), 4px radius, 0 7px pad, 12px/400 — semantic only"
-    modal: "white surface, 8px radius, 20px 24px pad, #00000073 backdrop, elevated boxShadow"
+    button-primary: { type: button, bg: "#1677FF", fg: "#FFFFFF", radius: 6, padding: "4px 15px", font: "14px/400", use: "primary CTA, hover #4096FF, active #0958D9, wave ripple" }
+    button-default: { type: button, bg: "#FFFFFF", fg: "#000000", radius: 6, use: "1px #D9D9D9 border, hover shifts to #4096FF" }
+    button-danger: { type: button, bg: "#FF4D4F", fg: "#FFFFFF", radius: 6, use: "destructive confirm" }
+    input: { type: input, bg: "#FFFFFF", radius: 6, use: "1px #D9D9D9 border, height 32px, focus #1677FF, error #FF4D4F" }
+    card: { type: card, bg: "#FFFFFF", radius: 8, padding: "24px", use: "1px #D9D9D9 border, boxShadowTertiary on hover" }
+    table: { type: card, bg: "#FFFFFF", fg: "#000000", use: "#FAFAFA header, low-alpha dividers + hover fill, 16px cell pad" }
+    status-tag: { type: badge, fg: "#52C41A", radius: 4, padding: "0 7px", font: "12px/400", use: "status color at low alpha, semantic only" }
+    modal: { type: dialog, bg: "#FFFFFF", radius: 8, padding: "20px 24px", use: "low-alpha backdrop, elevated boxShadow" }
 ---
 
 # Design System Inspiration of Alipay

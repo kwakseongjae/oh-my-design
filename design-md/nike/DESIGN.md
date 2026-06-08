@@ -11,6 +11,59 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    ink: "#111111"
+    canvas: "#ffffff"
+    volt: "#d8ff00"
+    volt-ui: "#cdfb40"
+    orange-heritage: "#fa5400"
+    sale: "#d43f21"
+    error: "#e34f2b"
+    success: "#0a8800"
+    info: "#1463ff"
+    warning: "#cd7b00"
+    grey-50: "#f7f7f7"
+    grey-100: "#f5f5f5"
+    grey-200: "#e5e5e5"
+    grey-300: "#cccccc"
+    grey-500: "#8d8d8d"
+    grey-600: "#757575"
+    grey-700: "#707072"
+  typography:
+    family: { sans: "Helvetica Now Text", mono: "Helvetica Now Text" }
+    hero:       { size: 80, weight: 700, lineHeight: 0.95, tracking: "-0.01em", use: "Hero headline, UPPERCASE condensed" }
+    display-lg: { size: 48, weight: 700, lineHeight: 1.0, tracking: "-0.01em", use: "Section banners (JUST IN)" }
+    display-md: { size: 36, weight: 700, lineHeight: 1.05, use: "Editorial sub-headers" }
+    h1:         { size: 28, weight: 700, lineHeight: 1.2, use: "Product title (PDP)" }
+    h2:         { size: 24, weight: 500, lineHeight: 1.25, use: "Card / section titles" }
+    subtitle:   { size: 20, weight: 400, lineHeight: 1.4, use: "Product category, list headers" }
+    body-lg:    { size: 16, weight: 400, lineHeight: 1.5, use: "Descriptions, paragraphs" }
+    body:       { size: 15, weight: 400, lineHeight: 1.5, use: "Standard reading text" }
+    price:      { size: 16, weight: 500, lineHeight: 1.4, use: "Price; sale price in red" }
+    caption:    { size: 13, weight: 400, lineHeight: 1.4, use: "Metadata, color count" }
+    label:      { size: 13, weight: 700, lineHeight: 1.3, tracking: "0.04em", use: "UPPERCASE micro-labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    toast: "0 4px 16px rgba(0,0,0,0.12)"
+  components:
+    button-primary: { type: button, bg: "#111111", fg: "#ffffff", radius: 9999, padding: "0 24px", font: "16px/500", use: "Add to Bag, Checkout on white" }
+    button-inverted: { type: button, bg: "#ffffff", fg: "#111111", radius: 9999, padding: "0 24px", font: "16px/500", use: "Primary CTA on dark sections" }
+    button-secondary: { type: button, bg: "transparent", fg: "#111111", radius: 9999, padding: "0 24px", font: "16px/500", use: "Secondary outline action" }
+    button-volt: { type: button, bg: "#d8ff00", fg: "#111111", radius: 9999, padding: "0 24px", font: "16px/700", use: "Energy CTA, drops/SNKRS" }
+    input-default: { type: input, bg: "#ffffff", fg: "#111111", radius: 8, padding: "14px 16px", font: "16px/400", use: "Form / checkout field" }
+    input-search: { type: input, bg: "#f5f5f5", fg: "#111111", radius: 9999, padding: "12px 20px", font: "16px/400", use: "Header search field" }
+    product-card: { type: card, bg: "#ffffff", fg: "#111111", radius: 0, use: "Grid PLP product tile" }
+    surface-card: { type: card, bg: "#f7f7f7", radius: 12, padding: "24px", use: "Member panels, bag summary" }
+    promo-pill: { type: badge, bg: "#111111", fg: "#ffffff", radius: 9999, padding: "4px 12px", font: "12px/700", use: "MEMBER ACCESS tags" }
+    sale-pill: { type: badge, bg: "#d43f21", fg: "#ffffff", radius: 4, padding: "2px 8px", font: "12px/700", use: "Discount flag on imagery" }
+    filter-chip: { type: tab, bg: "#ffffff", fg: "#111111", radius: 9999, padding: "8px 16px", font: "15px/400", use: "PLP filter row", active: "filled #111111 bg, #ffffff text" }
+    toast: { type: toast, bg: "#ffffff", fg: "#111111", radius: 8, padding: "16px 20px", use: "Cart confirmation, favorite saved" }
+    dialog: { type: dialog, bg: "#ffffff", fg: "#111111", radius: 12, padding: "32px", use: "Size guide, quick add, login wall" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Nike

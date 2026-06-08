@@ -10,6 +10,44 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=inflearn.com&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#00c471"
+    primary-pressed: "#00a760"
+    heading: "#212529"
+    body: "#495057"
+    muted: "#868e96"
+    canvas: "#ffffff"
+    surface-neutral: "#f8f9fa"
+    border: "#dee2e6"
+    disabled-bg: "#f1f3f5"
+    disabled-fg: "#adb5bd"
+    error: "#fa5252"
+    info: "#228be6"
+    warning: "#fcc419"
+    teal-tag: "#1098ad"
+  typography:
+    family: { sans: "Pretendard", mono: "ui-monospace, SFMono-Regular, monospace" }
+    h1:      { size: 34, weight: 700, lineHeight: 1.3, use: "Page hero phrase" }
+    h2:      { size: 20, weight: 700, lineHeight: 1.35, use: "Section title" }
+    body:    { size: 16, weight: 400, lineHeight: 1.5, use: "Default running text" }
+    nav:     { size: 16, weight: 600, lineHeight: 1.5, use: "Nav label, button label" }
+    caption: { size: 14, weight: 400, lineHeight: 1.4, use: "Instructor name, view count, price subtext" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 32, full: 9999 }
+  shadow:
+    flat: "none"
+  components:
+    button-search: { type: button, bg: "#00c471", fg: "#ffffff", radius: 9999, font: "16px weight 400", use: "Signature green circle search-submit, 42px" }
+    button-primary: { type: button, bg: "#00c471", fg: "#ffffff", radius: 8, padding: "0 24px", font: "16px weight 600", use: "Filled label CTA, hover #00a760" }
+    nav-pill: { type: tab, bg: "#f8f9fa", fg: "#495057", radius: 32, font: "16px weight 600", use: "GNB nav pill, resting", active: "green tint bg, #00c471 text" }
+    button-ghost: { type: button, bg: "#ffffff", fg: "#495057", radius: 32, font: "16px weight 600", use: "Inline secondary GNB item, hover #f8f9fa" }
+    pagination-default: { type: button, bg: "#ffffff", fg: "#212529", radius: 8, font: "14px weight 400", use: "Page number button, gray border" }
+    pagination-active: { type: button, bg: "#00c471", fg: "#ffffff", radius: 8, font: "14px weight 400", use: "Selected page" }
+    button-disabled: { type: button, bg: "#f1f3f5", fg: "#adb5bd", radius: 8, use: "Form-incomplete state" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Inflearn

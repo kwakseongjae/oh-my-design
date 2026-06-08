@@ -10,6 +10,46 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=watcha.com&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#f82f62"
+    primary-deep: "#de2a60"
+    brand-pink: "#ff0558"
+    canvas: "#000000"
+    surface-raised-1: "#1a1a1a"
+    surface-raised-2: "#28292a"
+    surface-hover: "#2c2c2c"
+    text-primary: "#ffffff"
+    text-secondary: "#999ca1"
+    text-tertiary: "#6b6e73"
+    success: "#2bc149"
+    error: "#f25c5c"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    hero:    { size: 32, weight: 700, lineHeight: 1.3, use: "Title-detail hero, billboard" }
+    section: { size: 22, weight: 700, lineHeight: 1.35, use: "Row headers" }
+    card:    { size: 16, weight: 600, lineHeight: 1.4, use: "Poster captions, list titles" }
+    body:    { size: 14, weight: 400, lineHeight: 1.5, use: "Synopsis, descriptions" }
+    label:   { size: 13, weight: 500, lineHeight: 1.4, use: "Buttons, chips" }
+    caption: { size: 12, weight: 400, lineHeight: 1.4, use: "Metadata, fine print" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#f82f62", fg: "#ffffff", radius: 4, padding: "8px 16px", font: "13px/500 Pretendard", use: "Login / subscribe CTA, hover #de2a60" }
+    button-ghost: { type: button, fg: "#ffffff", radius: 4, padding: "8px 16px", font: "13px/500 Pretendard", use: "Secondary, 1px rgba border" }
+    icon-button: { type: button, bg: "#28292a", fg: "#999ca1", radius: 9999, use: "Close / dismiss circle ~30px" }
+    input-text: { type: input, fg: "#ffffff", radius: 4, padding: "12px 14px", font: "15px/400 Pretendard", use: "Login/search, focus border white, error #f25c5c" }
+    poster-card: { type: card, radius: 4, use: "Poster image card, no border, hover scale 1.04" }
+    surface-card: { type: card, bg: "#1a1a1a", radius: 8, padding: "20px", use: "Settings/account panel" }
+    chip: { type: badge, fg: "#ffffff", radius: 9999, padding: "4px 12px", font: "12px/500 Pretendard", use: "Genre/tag chip" }
+    snackbar: { type: toast, bg: "#28292a", fg: "#ffffff", radius: 8, padding: "12px 16px", use: "Transient feedback, 3s" }
+    modal: { type: dialog, bg: "#1a1a1a", fg: "#ffffff", radius: 12, padding: "24px", use: "Login, plan, rating" }
+    nav-item: { type: tab, fg: "#999ca1", font: "14px/500 Pretendard", use: "Top nav switcher", active: "#ffffff weight+color shift" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Watcha (왓챠)

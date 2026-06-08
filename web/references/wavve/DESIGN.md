@@ -10,6 +10,48 @@ logo:
   slug: "https://www.wavve.com/favicon.ico"
 verified: "2026-05-27"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#1351f9"
+    primary-bright: "#3a6cff"
+    primary-deep: "#0e3fcc"
+    canvas: "#0a0e1a"
+    surface-raised-1: "#141a2b"
+    surface-raised-2: "#1f2742"
+    text-primary: "#ffffff"
+    text-secondary: "#a7aec0"
+    text-tertiary: "#6b7286"
+    live: "#f5444c"
+    success: "#2bc56f"
+    error: "#ff7a45"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    billboard: { size: 32, weight: 700, lineHeight: 1.25, use: "Hero/billboard title" }
+    section:   { size: 20, weight: 700, lineHeight: 1.35, use: "Row headers" }
+    card:      { size: 16, weight: 600, lineHeight: 1.4, use: "Poster captions, list titles" }
+    body:      { size: 14, weight: 400, lineHeight: 1.5, use: "Synopsis, descriptions" }
+    label:     { size: 15, weight: 600, lineHeight: 1.4, use: "Play/subscribe, tabs" }
+    caption:   { size: 12, weight: 400, lineHeight: 1.4, use: "Metadata, runtime" }
+    live:      { size: 12, weight: 700, lineHeight: 1.4, use: "LIVE / 실시간 indicators" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
+  rounded: { sm: 4, md: 6, lg: 12, full: 9999 }
+  shadow:
+    snackbar: "0px 4px 16px rgba(0,0,0,0.4)"
+  components:
+    button-primary: { type: button, bg: "#1351f9", fg: "#ffffff", radius: 6, padding: "10px 20px", font: "15px/600 Pretendard", use: "Play/subscribe, hover #3a6cff, pressed #0e3fcc" }
+    button-ghost: { type: button, fg: "#ffffff", radius: 6, padding: "10px 20px", font: "15px/600 Pretendard", use: "Secondary on dark, 1px rgba border" }
+    icon-button: { type: button, fg: "#ffffff", radius: 9999, use: "Carousel/player controls ~40px" }
+    input-text: { type: input, fg: "#ffffff", radius: 6, padding: "12px 14px", font: "15px/400 Pretendard", use: "Login/search, focus border #1351f9, error #ff7a45" }
+    poster-card: { type: card, radius: 6, use: "Poster image card, no border, hover scale 1.05" }
+    surface-card: { type: card, bg: "#141a2b", radius: 10, padding: "20px", use: "Settings/account panel" }
+    chip: { type: badge, fg: "#ffffff", radius: 9999, padding: "4px 12px", font: "12px/500 Pretendard", use: "Genre/tag, active #1351f9 bg" }
+    live-badge: { type: badge, bg: "#f5444c", fg: "#ffffff", radius: 4, padding: "1px 6px", font: "11px/700 Pretendard", use: "실시간 TV indicator" }
+    snackbar: { type: toast, bg: "#1f2742", fg: "#ffffff", radius: 8, padding: "12px 16px", font: "14px/500 Pretendard", use: "Transient feedback, 3s" }
+    modal: { type: dialog, bg: "#141a2b", fg: "#ffffff", radius: 12, padding: "24px", use: "Login, plan selection" }
+    nav-item: { type: tab, fg: "#a7aec0", font: "15px/500 Pretendard", use: "Top nav switcher", active: "#ffffff with 2px #1351f9 underline" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Wavve (웨이브)

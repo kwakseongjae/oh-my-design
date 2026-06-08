@@ -49,12 +49,13 @@ tokens:
     card: "rgba(0,0,0,0.1) 0px 2px 8px"
     elevated: "rgba(1,47,73,0.1) 0px 8px 24px"
   components:
-    button-primary: "Brand red #ea1717 fill, white text, 4px radius, weight 700 — Add to cart / Buy now"
-    button-soft: "Portal hero CTA #fe3b52 fill, white text, rounded — banner actions"
-    card: "white surface #ffffff, 8px radius, soft rgba(0,0,0,0.1) card shadow, dense product grid"
-    price-tag: "red #ea1717 text, 18px weight 600, strike-through #969696 for list price"
-    badge-promo: "#ea1717 fill, white text, 4px radius — P幣/折扣 promo flags"
-    tab-bar: "#f2f2f2 bg, black active text, 16px weight 400, no radius — category switcher"
+    button-primary: { type: button, bg: "#ea1717", fg: "#ffffff", radius: 4, font: "weight 700", use: "Add to cart / Buy now" }
+    button-soft: { type: button, bg: "#fe3b52", fg: "#ffffff", radius: 9999, use: "Portal hero CTA / banner actions" }
+    card: { type: card, bg: "#ffffff", radius: 8, use: "Dense product grid card, soft card shadow" }
+    price-tag: { type: badge, fg: "#ea1717", font: "18px weight 600", use: "Product price, strike-through #969696 for list price" }
+    badge-promo: { type: badge, bg: "#ea1717", fg: "#ffffff", radius: 4, use: "P幣 / 折扣 promo flags" }
+    tab-bar: { type: tab, bg: "#f2f2f2", fg: "#000000", font: "16px weight 400", use: "Category switcher", active: "black active text" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of PChome

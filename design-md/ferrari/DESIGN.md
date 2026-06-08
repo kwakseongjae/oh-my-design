@@ -10,6 +10,53 @@ logo:
   slug: ferrari
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "Brand primary is Ferrari Red #DA291C (§2 canonical); frontmatter primary_color #ff2800 is the Rosso swatch reference"
+  colors:
+    primary: "#DA291C"
+    primary-dark: "#B01E0A"
+    primary-deep: "#9D2211"
+    canvas: "#FFFFFF"
+    black: "#000000"
+    dark-surface: "#303030"
+    light-gray: "#D2D2D2"
+    heading: "#181818"
+    body: "#666666"
+    mid-gray: "#8F8F8F"
+    silver: "#969696"
+    racing-yellow: "#FFF200"
+    modena-yellow: "#F6E500"
+    warning: "#F13A2C"
+    success: "#03904A"
+    info: "#4C98B9"
+    link-hover: "#3860BE"
+    teal-hover: "#1EAEDB"
+  typography:
+    family: { sans: "FerrariSans", mono: "FerrariSans" }
+    section-title: { size: 26, weight: 500, lineHeight: 1.20, use: "Primary editorial headings on white" }
+    card-heading:  { size: 24, weight: 400, use: "Content card titles" }
+    subheading:    { size: 18, weight: 700, lineHeight: 1.20, use: "Bold subsection labels" }
+    ui-heading:    { size: 16, weight: 500, lineHeight: 1.40, tracking: 0.08, use: "Component headings, nav items" }
+    button:        { size: 16, weight: 400, tracking: 1.28, use: "Primary button label, wide tracking" }
+    nav-link:      { size: 13, weight: 600, lineHeight: 1.20, tracking: 0.13, use: "Navigation and footer links" }
+    caption:       { size: 13, weight: 400, lineHeight: 1.50, tracking: 0.195, use: "Metadata and descriptions" }
+    label-upper:   { size: 12, weight: 400, lineHeight: 1.27, tracking: 1, use: "Body-Font uppercase labels, category tags" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 25, section: 80 }
+  rounded: { sm: 2, md: 2, lg: 8, full: 9999 }
+  shadow:
+    subtle: "rgb(153,153,153) 1px 1px 1px 0px"
+  components:
+    button-primary: { type: button, bg: "#FFFFFF", fg: "#000000", radius: 2, padding: "12px 10px", font: "16px FerrariSans", use: "Default white CTA (hover bg #1EAEDB)" }
+    button-subscribe: { type: button, bg: "#DA291C", fg: "#FFFFFF", radius: 2, padding: "12px 10px", use: "High-emphasis Subscribe CTA — only red button" }
+    button-ghost: { type: button, bg: "transparent", fg: "#FFFFFF", radius: 2, padding: "12px 10px", use: "Ghost button on dark backgrounds (1px white border)" }
+    editorial-card: { type: card, bg: "#FFFFFF", radius: 2, use: "Content card — image above, heading + caption below, no border/shadow" }
+    dark-card: { type: card, bg: "#000000", fg: "#FFFFFF", use: "Hero/feature full-bleed cinematic card" }
+    input: { type: input, bg: "transparent", fg: "#FFFFFF", radius: 2, use: "Newsletter input on dark (1px #969696 placeholder)" }
+    dialog: { type: dialog, bg: "#FFFFFF", radius: 8, use: "Cookie consent modal" }
+    label: { type: badge, fg: "#8F8F8F", font: "12px Body-Font uppercase, 1px tracking", use: "Category tag / structural annotation" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Ferrari

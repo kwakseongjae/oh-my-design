@@ -49,12 +49,13 @@ tokens:
     brutalist: "rgba(0,0,0,0.15) 4px 4px 0px 0px"
     floating: "rgba(0,0,0,0.5) 0px 8px 32px"
     glow-cyan: "rgba(0,255,255,0.12) radial halo"
+  components_harvested: true
   components:
-    button-primary: "White fill #ffffff, near-black text, 8px 24px padding, ~4px radius, no border"
-    button-cyan: "Electric Cyan 12% (rgba(0,255,255,0.12)) bg, 1px Ocean Blue #0096ff border, glow-from-within"
-    button-ghost: "transparent fill, 1px Signal Blue #0089ff or Charcoal #2c2c2c border, 10px padding"
-    card: "Pure Black #000000 surface, white-opacity 4-12% border, ~4px radius, optional brutalist shadow"
-    code-block: "black bg, JetBrains Mono, white-opacity 10% border, 4px radius, syntax-highlighted"
+    button-primary: { type: button, bg: "#ffffff", fg: "#0f0f0f", radius: 4, padding: "8px 24px", use: "White fill, near-black text, no border" }
+    button-cyan: { type: button, radius: 4, use: "Electric cyan 12% bg, 1px ocean blue #0096ff border, glow-from-within" }
+    button-ghost: { type: button, radius: 4, padding: "10px", use: "Transparent fill, 1px signal blue #0089ff or charcoal #2c2c2c border" }
+    card: { type: card, bg: "#000000", radius: 4, use: "Pure black surface, white-opacity 4-12% border, optional brutalist shadow" }
+    code-block: { type: card, bg: "#000000", radius: 4, use: "JetBrains Mono, white-opacity 10% border, syntax-highlighted" }
 ---
 
 # Design System Inspiration of Composio

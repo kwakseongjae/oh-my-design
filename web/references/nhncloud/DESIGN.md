@@ -15,6 +15,39 @@ ds:
   url: "https://ui.toast.com"
   type: system
   description: NHN's official open-source component library (TUI Grid/Editor/Calendar/Chart/Image-Editor), MIT-licensed under the nhn GitHub org and documented at ui.toast.com.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#125de6"
+    dark: "#111111"
+    on-primary: "#ffffff"
+    accent: "#00a9ff"
+    accent-hover: "#0088d9"
+    accent-secondary: "#009bf2"
+    tint: "#e5f6ff"
+    error: "#fa2828"
+    canvas: "#f7f9fc"
+    border: "#51565f"
+    muted: "#727781"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    body:      { size: 16, weight: 400, use: "Corporate body copy" }
+    cta:       { size: 15, weight: 400, use: "Primary CTA label" }
+    cta-lg:    { size: 17, weight: 500, use: "Larger ghost CTA on dark" }
+    widget:    { size: 13, weight: 400, use: "TOAST UI grid/editor body" }
+  spacing: { sm: 8, md: 12, base: 16, lg: 19 }
+  rounded: { sm: 4, md: 6, lg: 30, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    cta-primary: { type: button, bg: "#125de6", fg: "#ffffff", radius: 30, padding: "8px 19px", font: "15px/400", use: "Primary corporate CTA pill" }
+    cta-dark: { type: button, bg: "#111111", fg: "#ffffff", radius: 30, font: "15px/400", use: "High-contrast alternate action" }
+    cta-ghost: { type: button, bg: "transparent", fg: "#ffffff", radius: 30, font: "17px/500", use: "Larger ghost pill on dark section" }
+    newsletter-input: { type: input, bg: "transparent", fg: "#727781", radius: 6, font: "14px/400", use: "Email capture field" }
+    widget-surface: { type: card, bg: "#f7f9fc", radius: 4, font: "13px/400", use: "Base TOAST UI widget surface" }
+    widget-selected: { type: card, bg: "#e5f6ff", radius: 4, use: "Selected/accented TOAST UI state" }
+  components_harvested: true
 ---
 # Design System Inspiration of NHN Cloud
 

@@ -11,6 +11,50 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#5200ff"
+    accent: "#3cffd0"
+    canvas: "#131313"
+    surface: "#2d2d2d"
+    image-frame: "#313131"
+    border-strong: "#c2c2c2"
+    text-muted: "#e9e9e9"
+    text-secondary: "#949494"
+    on-primary: "#ffffff"
+    link-hover: "#3860be"
+    focus: "#1eaedb"
+  typography:
+    family: { sans: "PolySans", mono: "PolySans Mono" }
+    display-mega:  { size: 107, weight: 900, lineHeight: 0.95, tracking: -0.02, use: "Hero/feature splash headlines" }
+    display-lg:    { size: 72, weight: 900, lineHeight: 1.0, tracking: -0.02, use: "Section/package headlines" }
+    display:       { size: 60, weight: 900, lineHeight: 1.02, tracking: -0.01, use: "Story-tile headlines" }
+    headline:      { size: 32, weight: 700, lineHeight: 1.1, tracking: -0.01, use: "Sub-feature, card titles" }
+    title:         { size: 24, weight: 700, lineHeight: 1.2, use: "List headlines, module titles" }
+    subtitle:      { size: 18, weight: 600, lineHeight: 1.35, use: "Deks, standfirst" }
+    body-lg:       { size: 18, weight: 400, lineHeight: 1.55, use: "Article body lead" }
+    body:          { size: 16, weight: 400, lineHeight: 1.6, use: "Standard article reading text" }
+    body-sm:       { size: 14, weight: 400, lineHeight: 1.5, use: "Secondary text, captions" }
+    kicker:        { size: 12, weight: 600, lineHeight: 1.2, tracking: 0.06, use: "UPPERCASE section tags, kickers" }
+    caption:       { size: 12, weight: 400, lineHeight: 1.4, use: "Bylines, timestamps, credits" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32 }
+  rounded: { sm: 3, md: 3, lg: 3, full: 9999 }
+  shadow:
+    none: "none"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#5200ff", fg: "#ffffff", radius: 3, padding: "12px 20px", font: "14/600", use: "Primary CTA Subscribe, Read more" }
+    button-accent: { type: button, bg: "#3cffd0", fg: "#131313", radius: 3, padding: "12px 20px", font: "14/600", use: "High-energy secondary CTA on dark canvas" }
+    button-outline: { type: button, fg: "#ffffff", radius: 3, padding: "12px 20px", font: "14/600", use: "Secondary action on dark, 1px border #c2c2c2" }
+    badge-pill: { type: badge, fg: "#3cffd0", radius: 9999, padding: "4px 12px", font: "12/600", use: "Section tags, topic chips, UPPERCASE mono, 1px accent border" }
+    input-default: { type: input, bg: "#2d2d2d", fg: "#ffffff", radius: 3, padding: "12px 14px", font: "16/400", use: "Newsletter signup, search, comment box" }
+    input-error: { type: input, bg: "#2d2d2d", fg: "#ffffff", radius: 3, padding: "12px 14px", font: "16/400", use: "Validation error, 1px border #5200ff" }
+    card-tile: { type: card, bg: "#5200ff", fg: "#ffffff", radius: 3, padding: "20px", use: "Signature color-block story tile, Manuka 60/900 headline" }
+    card-standard: { type: card, bg: "#131313", fg: "#ffffff", radius: 3, padding: "16px", use: "StoryStream rows, list modules, mint kicker" }
+    card-inverted: { type: card, bg: "#ffffff", fg: "#131313", radius: 3, padding: "16px", use: "Sponsored / special sections on light" }
+    tab-nav: { type: tab, fg: "#ffffff", use: "Top nav section list on #131313", active: "underline or #5200ff marker" }
 ---
 
 # Design System Inspiration of The Verge

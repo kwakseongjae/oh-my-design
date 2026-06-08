@@ -10,6 +10,56 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=fastcampus.co.kr&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#fc1c49"
+    primary-darken: "#c9032a"
+    primary-renewal: "#d60039"
+    primary-low: "#ffdad8"
+    error: "#c5213b"
+    yellow: "#ffeb3b"
+    yellow-low: "#fff9c4"
+    yellow-deep: "#f57f17"
+    orange: "#f8930f"
+    pink: "#e91e63"
+    pink-low: "#fce4ec"
+    green: "#43a047"
+    blue: "#3b83ff"
+    blue-low: "#ebf3ff"
+    surface: "#f5f5f6"
+    divider: "#e7e7e8"
+    border-light: "#cfd0d1"
+    disabled-text: "#a0a2a3"
+    muted: "#747678"
+    heading: "#252729"
+    label: "#171b1f"
+    white: "#ffffff"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    banner:  { size: 40, weight: 700, lineHeight: 1.2, use: "Home carousel two-line headline" }
+    h1:      { size: 34, weight: 700, lineHeight: 1.3, use: "Category / course page title" }
+    h2:      { size: 26, weight: 700, lineHeight: 1.35, use: "Rail group labels" }
+    body:    { size: 16, weight: 400, lineHeight: 1.5, use: "Default nav link, paragraph copy" }
+    gnb-compact: { size: 12, weight: 600, lineHeight: 1.4, use: "Secondary compact GNB items" }
+    button:  { size: 14, weight: 600, lineHeight: 1.0, use: "Category-pill carousel label" }
+    rank:    { size: 12, weight: 500, lineHeight: 1.4, use: "Rank badge corner overlay" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, section: 48 }
+  rounded: { sm: 4, md: 4, lg: 19, full: 9999 }
+  components:
+    pill-selected: { type: tab, bg: "#000000", fg: "#ffffff", radius: 4, padding: "12px 16px", font: "14px/600 Pretendard Variable", use: "Active category pill" }
+    pill-unselected: { type: tab, bg: "#f5f5f6", fg: "#747678", radius: 4, padding: "12px 16px", font: "14px/600 Pretendard Variable", use: "Inactive category pill" }
+    button-primary: { type: button, bg: "#fc1c49", fg: "#ffffff", radius: 4, padding: "12px 24px", font: "14px/600 Pretendard Variable", use: "Enrolment CTA (hover #c9032a)" }
+    button-tinted: { type: button, bg: "#ffdad8", fg: "#fc1c49", radius: 4, use: "Sale-tag fills, hover scrim" }
+    card: { type: card, bg: "#ffffff", radius: 4, use: "Course card, top-rounded 4px 4px 0 0" }
+    rank-badge: { type: badge, bg: "#171b1f", fg: "#ffffff", radius: 4, font: "12px/500 Pretendard Variable", use: "1위 / 2위 / 3위 corner overlay" }
+    tag-free: { type: badge, bg: "#fff9c4", fg: "#f57f17", radius: 4, padding: "2px 8px", font: "12px/600 Pretendard Variable", use: "0원 / 무료 promo tag" }
+    tag-discount: { type: badge, bg: "#ffdad8", fg: "#fc1c49", radius: 4, padding: "2px 8px", font: "12px/600 Pretendard Variable", use: "Discount sale flag" }
+    tag-blue: { type: badge, bg: "#ebf3ff", fg: "#3b83ff", radius: 4, padding: "2px 8px", font: "12px/600 Pretendard Variable", use: "Dev/data category tag" }
+    tag-pink: { type: badge, bg: "#fce4ec", fg: "#e91e63", radius: 4, padding: "2px 8px", font: "12px/600 Pretendard Variable", use: "Design/creative category tag" }
+    input: { type: input, bg: "#ffffff", fg: "#171b1f", radius: 4, padding: "0 12px", font: "14px/400 Pretendard Variable", use: "Search field (1px #cfd0d1, focus #fc1c49)" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Fastcampus

@@ -49,10 +49,13 @@ tokens:
     standard: "rgba(0,0,0,0.08) 0px 8px 24px"
     elevated: "rgba(0,0,0,0.12) 0px 16px 40px"
   components:
-    button-primary: "Mint green #3dba90 fill, white text, 4px radius, 60px tall hero CTA, weight 500"
-    button-outline: "white fill, #3dba90 text + 1px #3dba90 border, 4px radius, weight 700 (註冊)"
-    link-green: "transparent, #3dba90 text, weight 700, no underline (了解更多)"
-    card: "white surface, soft neutral shadow, 8px radius on light gray #f7f7f7 sections"
+    button-primary: { type: button, bg: "#3dba90", fg: "#ffffff", radius: 4, padding: "60px tall hero", font: "14px/500 Noto Sans TC", use: "Hero/section primary action, hover #34a07d" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#3dba90", radius: 4, font: "14px/700 Noto Sans TC", use: "Sign-up 註冊, 1px #3dba90 border" }
+    link-green: { type: badge, fg: "#3dba90", font: "16px/700 Noto Sans TC", use: "Inline 了解更多 learn-more link, no underline" }
+    input-text: { type: input, fg: "#000000", radius: 4, use: "Form input, 1px #dddddd border, focus #3dba90, placeholder #9b9b9b" }
+    card: { type: card, bg: "#ffffff", radius: 8, use: "Feature card, soft neutral shadow on #f7f7f7 sections" }
+    tab-pricing: { type: tab, fg: "#3e3e3e", font: "14px/400 Noto Sans TC", active: "Highlighted tier #3dba90 top band", use: "Pricing tier card label" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of SurveyCake

@@ -11,6 +11,66 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#00C805"
+    primary-hover: "#00B004"
+    primary-tint: "#E6FBE9"
+    canvas-dark: "#0E0E0E"
+    canvas: "#FFFFFF"
+    ink: "#1B1B1B"
+    loss: "#FF5000"
+    warning: "#FFB000"
+    info: "#2E6FF2"
+    gray-50: "#F7F7F7"
+    gray-100: "#EFEFEF"
+    gray-200: "#E0E0E0"
+    gray-400: "#A8A8A8"
+    gray-500: "#8C8C8C"
+    gray-600: "#6B6B6B"
+    gray-700: "#4A4A4A"
+    gray-800: "#2C2C2C"
+    gray-900: "#1B1B1B"
+  typography:
+    family: { sans: "Capsule Sans", mono: "Capsule Sans Mono" }
+    display-hero: { size: 56, weight: 700, lineHeight: 1.07, tracking: -0.02, use: "Marketing hero headlines" }
+    display-lg:   { size: 40, weight: 700, lineHeight: 1.15, tracking: -0.02, use: "Section headers" }
+    heading-lg:   { size: 30, weight: 700, lineHeight: 1.27, tracking: -0.01, use: "Feature titles, modal headers" }
+    heading:      { size: 24, weight: 600, lineHeight: 1.33, tracking: -0.01, use: "Card headings, sub-sections" }
+    subtitle:     { size: 18, weight: 600, lineHeight: 1.44, use: "List headers, nav titles" }
+    body-lg:      { size: 18, weight: 400, lineHeight: 1.56, use: "Marketing body, explanations" }
+    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
+    body-sm:      { size: 14, weight: 400, lineHeight: 1.43, use: "Secondary information" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.33, use: "Timestamps, disclosures, fine print" }
+    number:       { size: 40, weight: 700, tracking: -0.01, use: "Portfolio value, tabular numerals" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
+  rounded: { sm: 8, md: 12, lg: 20, full: 9999 }
+  shadow:
+    card: "0px 1px 3px rgba(0,0,0,0.06)"
+    toast: "0px 8px 24px rgba(0,0,0,0.20)"
+    modal: "0px 16px 48px rgba(0,0,0,0.24)"
+  components:
+    button-primary: { type: button, bg: "#00C805", fg: "#0E0E0E", radius: 9999, padding: "16px 28px", font: "16px/600 Capsule Sans", use: "Primary CTA, dark text on bright green" }
+    button-secondary: { type: button, bg: "#FFFFFF", fg: "#1B1B1B", radius: 9999, padding: "16px 28px", font: "16px/600 Capsule Sans", use: "Outline secondary, 1.5px #E0E0E0 border" }
+    button-tertiary: { type: button, bg: "#FFFFFF", fg: "#00B004", padding: "12px 8px", font: "16px/600 Capsule Sans", use: "Inline links, low-emphasis" }
+    button-destructive: { type: button, bg: "#FF5000", fg: "#FFFFFF", radius: 12, padding: "16px 28px", font: "16px/600 Capsule Sans", use: "Sell confirmation, destructive flows" }
+    input-text: { type: input, bg: "#FFFFFF", fg: "#1B1B1B", radius: 10, padding: "14px 16px", font: "16px/400 Capsule Sans", use: "Standard form input, 1.5px #E0E0E0 border, focus #00C805" }
+    card-standard: { type: card, bg: "#FFFFFF", radius: 16, padding: "20px", use: "Holding, watchlist, account cards, 1px #E0E0E0 border" }
+    card-featured: { type: card, bg: "#0E0E0E", fg: "#FFFFFF", radius: 20, padding: "28px", use: "Promotional, Gold upsell, portfolio hero" }
+    list-row: { type: listItem, radius: 0, padding: "14px 16px", use: "Ticker rows, transaction history, bottom 1px #EFEFEF border" }
+    badge-gain: { type: badge, fg: "#00B004", radius: 8, padding: "3px 8px", font: "13px/600 Capsule Sans Mono", use: "Positive movement indicator" }
+    badge-loss: { type: badge, fg: "#FF5000", radius: 8, padding: "3px 8px", font: "13px/600 Capsule Sans Mono", use: "Negative movement indicator" }
+    badge-neutral: { type: badge, bg: "#EFEFEF", fg: "#4A4A4A", radius: 8, padding: "3px 8px", font: "12px/600 Capsule Sans", use: "NEW, category labels" }
+    badge-gold: { type: badge, fg: "#0E0E0E", radius: 8, padding: "3px 8px", font: "12px/700 Capsule Sans", use: "Robinhood Gold marker, gold gradient" }
+    tab-segmented: { type: tab, bg: "#EFEFEF", fg: "#8C8C8C", radius: 9999, padding: "6px 14px", font: "13px/600 Capsule Sans", active: "Active #FFFFFF bg + #1B1B1B text", use: "Chart timeframe selector" }
+    tab-bottom: { type: tab, bg: "#FFFFFF", fg: "#A8A8A8", font: "11px/500 Capsule Sans", active: "Active #00C805 icon + label", use: "Primary mobile navigation" }
+    toast-default: { type: toast, bg: "#1B1B1B", fg: "#FFFFFF", radius: 12, padding: "14px 18px", font: "14px/500 Capsule Sans", use: "Transient confirmation" }
+    dialog-modal: { type: dialog, bg: "#FFFFFF", radius: 20, padding: "28px", use: "Confirmations, disclosures" }
+    dialog-sheet: { type: dialog, bg: "#FFFFFF", radius: 20, padding: "24px 20px", use: "Trade ticket, order review, pickers, top corners only" }
+    toggle-default: { type: toggle, bg: "#00C805", radius: 9999, use: "Boolean settings, #E0E0E0 off, #FFFFFF thumb" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Robinhood

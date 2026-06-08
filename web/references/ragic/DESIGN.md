@@ -49,12 +49,12 @@ tokens:
     standard: "rgba(0,0,0,0.12) 0px 2px 8px"
     elevated: "rgba(0,0,0,0.18) 0px 8px 24px"
   components:
-    button-primary: "Ragic Red #f70e0e fill, white text, 6px radius, weight 600, 14px 30px padding"
-    button-tab: "white fill, #aaaaaa text, 1px #dddddd border, 5px radius, 8px 16px padding"
-    button-tab-active: "white fill, #65a4f4 text + 1px #65a4f4 border, 5px radius"
-    link: "#0066cc text, no underline until hover — the utilitarian database-link blue"
-    card: "white surface, 1px #dddddd hairline, 5-6px radius, soft neutral shadow"
-    stat-figure: "#fa3e3e accent-red, weight 300, 32px — large spreadsheet-style numbers"
+    button-primary: { type: button, bg: "#f70e0e", fg: "#ffffff", radius: 6, padding: "14px 30px", font: "weight 600", use: "Primary 'Create account' CTA" }
+    tab: { type: tab, bg: "#ffffff", fg: "#aaaaaa", radius: 5, padding: "8px 16px", use: "Tab / filter chip", active: "#65a4f4 text + 1px #65a4f4 border" }
+    link: { type: badge, fg: "#0066cc", use: "Utilitarian database-link blue, no underline until hover" }
+    card: { type: card, bg: "#ffffff", radius: 6, use: "White surface, 1px #dddddd hairline, soft neutral shadow" }
+    stat-figure: { type: badge, fg: "#fa3e3e", font: "weight 300, 32px", use: "Large spreadsheet-style numeric stats" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Ragic

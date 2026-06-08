@@ -16,6 +16,60 @@ ds:
   type: brand
   description: "KakaoBank Brand Identity Guidelines V2.0 — logo system, KakaoBank Yellow #FFE300, downloadable CI assets."
   og_image: "https://www.kakaobank.com/view/images/kkb_og_img.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  components_harvested: true
+  colors:
+    primary: "#ffe300"
+    base: "#1e1e1e"
+    canvas: "#ffffff"
+    gray: "#a3a3a3"
+    light-gray: "#cccccc"
+    surface-fill: "#f7f7f7"
+    surface-subtle: "#f9f9f9"
+    error: "#e02000"
+    link: "#007aff"
+    success: "#0fbe6c"
+    warning: "#ff9800"
+    inactive-tab: "#888888"
+    border-subtle: "#e6e6e6"
+    on-primary: "#1e1e1e"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "SF Mono" }
+    hero-mega:     { size: 90, weight: 800, lineHeight: 1.10, use: "Corporate hero" }
+    display:       { size: 42, weight: 700, lineHeight: 1.25, use: "Service page h1" }
+    section-title: { size: 32, weight: 700, lineHeight: 1.30, use: "Mid-page h2" }
+    heading:       { size: 20, weight: 600, lineHeight: 1.40, use: "Footer column h3" }
+    title:         { size: 18, weight: 600, lineHeight: 1.44, use: "List section titles, modal headers" }
+    body-large:    { size: 16, weight: 400, lineHeight: 1.50, use: "Default body, card descriptions" }
+    body:          { size: 14, weight: 400, lineHeight: 1.55, use: "Sub-nav, dense list rows, button labels" }
+    caption:       { size: 13, weight: 400, lineHeight: 1.55, use: "Timestamps, helper text" }
+    micro:         { size: 12, weight: 400, lineHeight: 1.50, use: "Disclaimers, footer fine print" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 80 }
+  rounded: { sm: 8, md: 12, lg: 16, full: 9999 }
+  shadow:
+    whisper: "0 1px 2px rgba(0,0,0,0.04)"
+    subtle: "0 2px 8px rgba(0,0,0,0.06)"
+    sheet: "0 -2px 16px rgba(0,0,0,0.08)"
+  components:
+    button-yellow-solid: { type: button, bg: "#ffe300", fg: "#1e1e1e", radius: 12, padding: "14px 20px", font: "16px/600", use: "Primary CTA in product flows" }
+    button-black-solid: { type: button, bg: "#1e1e1e", fg: "#ffffff", radius: 12, padding: "14px 20px", font: "16px/600", use: "Secondary high-emphasis CTA" }
+    button-outline: { type: button, bg: "transparent", fg: "#1e1e1e", radius: 12, padding: "14px 20px", font: "16px/600", use: "Tertiary actions" }
+    button-nav-link: { type: button, bg: "transparent", fg: "#1e1e1e", padding: "0 20px", font: "14px/600", use: "Top navigation items" }
+    button-critical: { type: button, bg: "#e02000", fg: "#ffffff", radius: 12, padding: "14px 20px", font: "16px/600", use: "Destructive actions" }
+    tab-subnav: { type: tab, bg: "transparent", fg: "#888888", padding: "20px 0", font: "14px/400", active: "#1e1e1e text", use: "Sub-section nav" }
+    tab-service: { type: tab, bg: "transparent", fg: "#1e1e1e", padding: "16px 0", font: "16px/400", use: "Product-category tabs" }
+    tab-segmented: { type: tab, bg: "transparent", fg: "#a3a3a3", radius: 12, font: "14px/600", active: "#ffffff bg + #1e1e1e text", use: "Segmented control" }
+    card-product: { type: card, bg: "#ffffff", radius: 12, padding: "24px", use: "Corporate product card" }
+    card-section-fill: { type: card, bg: "#f7f7f7", radius: 16, padding: "32px", use: "Mid-page promotional sections" }
+    card-debit: { type: card, bg: "#ffe300", radius: 16, use: "Debit/savings card visualization, CR-80 aspect" }
+    input-default: { type: input, bg: "#ffffff", fg: "#1e1e1e", radius: 12, padding: "14px 16px", font: "16px/400", use: "Form fields, amount entry" }
+    input-amount: { type: input, bg: "transparent", fg: "#1e1e1e", font: "32px/700", use: "Transfer amount hero numeral" }
+    badge-notification: { type: badge, bg: "#e02000", fg: "#ffffff", radius: 9999, padding: "2px 6px", font: "11px/700", use: "Unread notification dot" }
+    badge-status-positive: { type: badge, fg: "#0fbe6c", radius: 9999, padding: "4px 10px", font: "12px/600", use: "이체 완료, 적금 진행중" }
+    badge-status-critical: { type: badge, fg: "#e02000", radius: 9999, padding: "4px 10px", font: "12px/600", use: "이체 실패, 기한 만료" }
+    listItem-account: { type: listItem, bg: "#ffffff", padding: "16px 20px", use: "Account row, 64px min-height, 40px rounded-square avatar" }
 ---
 
 # Design System Inspiration of KakaoBank (카카오뱅크)

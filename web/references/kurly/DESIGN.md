@@ -13,6 +13,7 @@ omd: "0.1"
 tokens:
   source: reconciled
   extracted: "2026-06-08"
+  components_harvested: true
   note: "deterministic picks (#bd76ff tint, #1a73e8 Google embed) rejected; canonical = Kurly Purple purple-900"
   colors:
     primary: "#5f0080"

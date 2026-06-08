@@ -10,6 +10,59 @@ logo:
   slug: minimax
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    brand-blue: "#1456f0"
+    sky-blue: "#3daeff"
+    brand-pink: "#ea5ec1"
+    primary-200: "#bfdbfe"
+    primary-light: "#60a5fa"
+    primary-500: "#3b82f6"
+    primary-600: "#2563eb"
+    primary-700: "#1d4ed8"
+    brand-deep: "#17437d"
+    text-primary: "#222222"
+    button-text: "#18181b"
+    charcoal: "#181e25"
+    text-secondary: "#45515e"
+    text-muted: "#8e8e93"
+    helper: "#5f5f5f"
+    canvas: "#ffffff"
+    surface: "#f0f0f0"
+    border-light: "#f2f3f5"
+    border: "#e5e7eb"
+    success-bg: "#e8ffea"
+    dark: "#333333"
+  typography:
+    family: { sans: "DM Sans", mono: "Roboto" }
+    display-hero: { size: 80, weight: 500, lineHeight: 1.10, use: "Hero headlines, DM Sans/Outfit" }
+    section:      { size: 31, weight: 600, lineHeight: 1.50, use: "Feature section titles, Outfit" }
+    card-title:   { size: 28, weight: 500, lineHeight: 1.71, use: "Product card headings, Outfit" }
+    subheading:   { size: 24, weight: 500, lineHeight: 1.50, use: "Mid-tier headings, Poppins" }
+    feature:      { size: 18, weight: 500, lineHeight: 1.50, use: "Feature names, Poppins" }
+    body-lg:      { size: 20, weight: 500, lineHeight: 1.50, use: "Emphasized body, DM Sans" }
+    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body, DM Sans" }
+    nav:          { size: 14, weight: 500, lineHeight: 1.50, use: "Navigation, links, DM Sans" }
+    button-sm:    { size: 13, weight: 600, lineHeight: 1.50, use: "Compact buttons, DM Sans" }
+    caption:      { size: 13, weight: 400, lineHeight: 1.70, use: "Metadata, DM Sans/Poppins" }
+    label:        { size: 12, weight: 500, lineHeight: 1.50, use: "Tags, badges, DM Sans" }
+  spacing: { xs: 4, sm: 8, md: 11, base: 16, lg: 20, xl: 24, xxl: 32, section: 48 }
+  rounded: { sm: 8, md: 13, lg: 20, full: 9999 }
+  shadow:
+    standard: "rgba(0,0,0,0.08) 0px 4px 6px"
+    soft-glow: "rgba(0,0,0,0.08) 0px 0px 22.576px"
+    brand-glow: "rgba(44,30,116,0.16) 0px 0px 15px"
+    card-elevation: "rgba(36,36,36,0.08) 0px 12px 16px -4px"
+  components:
+    button-primary: { type: button, bg: "#181e25", fg: "#ffffff", radius: 8, padding: "11px 20px", use: "Primary CTA Get Started/Learn More" }
+    button-nav: { type: button, fg: "#18181b", radius: 9999, use: "Navigation tabs, filter toggles" }
+    button-white: { type: button, bg: "#ffffff", radius: 9999, use: "Secondary nav, inactive tabs" }
+    button-secondary: { type: button, bg: "#f0f0f0", fg: "#333333", radius: 8, padding: "11px 20px", use: "Secondary actions" }
+    product-card: { type: card, radius: 20, use: "Vibrant gradient product card with brand glow" }
+    matrix-card: { type: card, bg: "#ffffff", radius: 13, use: "AI product card, white with subtle shadow" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of MiniMax

@@ -16,6 +16,59 @@ ds:
   url: "https://vitals.ubie.life"
   type: system
   description: Ubie's open-source design system — tokens, 25+ components, icons, and UX writing for healthcare products.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#3959cc"
+    primary-hover: "#304cad"
+    accent: "#27cc91"
+    accent-hover: "#21ad7b"
+    canvas: "#ffffff"
+    text-main: "#32353a"
+    text-sub: "#686a6d"
+    placeholder: "#96989a"
+    disabled: "#dcdddd"
+    border: "#c5c6c7"
+    border-light: "#dcdddd"
+    surface-subtle: "#fafafa"
+    error: "#e32e55"
+    error-text: "#a1213c"
+    error-bg: "#fceff2"
+    success-text: "#1c9167"
+    success-bg: "#e9faf4"
+    info-bg: "#f0f2fc"
+    info-border: "#8296df"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "A P-OTF UD Shin Go Pr6N", mono: "Open Sans" }
+    heading-xl: { size: 32, weight: 700, lineHeight: 1.40, use: "Page hero, landing titles" }
+    heading-lg: { size: 28, weight: 700, lineHeight: 1.40, use: "Major section titles" }
+    heading-md: { size: 24, weight: 700, lineHeight: 1.40, use: "Section headers" }
+    heading-sm: { size: 20, weight: 700, lineHeight: 1.50, use: "Card titles, modal headers" }
+    heading-xs: { size: 16, weight: 700, lineHeight: 1.50, use: "List headers, sub-sections" }
+    body-lg:    { size: 16, weight: 400, lineHeight: 1.70, use: "Primary reading text" }
+    body-md:    { size: 14, weight: 400, lineHeight: 1.70, use: "Standard body, descriptions" }
+    note:       { size: 12, weight: 400, lineHeight: 1.50, use: "Captions, helper text" }
+    button:     { size: 16, weight: 700, lineHeight: 1.00, use: "Action labels" }
+    tag:        { size: 12, weight: 700, lineHeight: 1.00, use: "Category chips, status keywords" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    card: "0px 1px 4px rgba(22,25,31,0.08)"
+    interactive: "0px 2px 8px rgba(22,25,31,0.10)"
+  components:
+    button-primary: { type: button, bg: "#3959cc", fg: "#ffffff", radius: 8, padding: "12px 24px", font: "16px/700", use: "Single most important action; hover #304cad" }
+    button-accent: { type: button, bg: "#27cc91", fg: "#ffffff", radius: 8, padding: "12px 24px", use: "Health-forward emphasis; hover #21ad7b" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#3959cc", radius: 8, padding: "12px 24px", use: "Subordinate action; 1px #3959cc border; hover #f0f2fc" }
+    button-alert: { type: button, bg: "#e32e55", fg: "#ffffff", radius: 8, padding: "12px 24px", use: "Irreversible/risky actions" }
+    button-text: { type: button, bg: "transparent", fg: "#3959cc", radius: 8, padding: "8px 12px", font: "14px/700", use: "Low-emphasis inline action" }
+    textfield: { type: input, bg: "#ffffff", fg: "#32353a", radius: 8, padding: "12px 16px", font: "16px", use: "Standard input; 1px #c5c6c7 border, focus #3959cc" }
+    textfield-error: { type: input, bg: "#ffffff", fg: "#32353a", radius: 8, padding: "12px 16px", use: "Validation failure; 1px #e32e55 border, help #a1213c" }
+    card: { type: card, bg: "#ffffff", radius: 12, padding: "24px", use: "Symptom result / content panel; 1px #dcdddd border" }
+    card-interactive: { type: card, bg: "#ffffff", radius: 12, padding: "16px", use: "Tappable card; 1px #dcdddd border, hover #8296df" }
+    card-tinted: { type: card, bg: "#f0f2fc", radius: 8, padding: "16px", use: "Inline informational callout" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Ubie (ユビー)

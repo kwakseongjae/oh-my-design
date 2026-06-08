@@ -11,6 +11,57 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=millie.co.kr&sz=128"
 verified: "2026-05-27"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#1b6dda"
+    primary-hover: "#1860c2"
+    primary-pressed: "#1554ad"
+    primary-tint: "#f2f6fd"
+    canvas: "#ffffff"
+    ink: "#242424"
+    purple: "#a451f7"
+    coral: "#ff5b4f"
+    yellow: "#ffc004"
+    system-blue: "#007aff"
+    gray-800: "#333333"
+    gray-700: "#555555"
+    gray-600: "#6f6f6f"
+    gray-500: "#8b8b8b"
+    gray-400: "#c1c1c1"
+    border: "#ececec"
+    surface: "#f2f2f2"
+    surface-tint: "#f7f7f7"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    display:      { size: 28, weight: 700, lineHeight: 1.36, tracking: -0.4, use: "Editorial banner / original-content title" }
+    heading-lg:   { size: 22, weight: 700, lineHeight: 1.36, tracking: -0.4, use: "Feed section title" }
+    heading:      { size: 18, weight: 700, lineHeight: 1.44, tracking: -0.3, use: "Sub-section header, shelf label" }
+    title:        { size: 16, weight: 600, lineHeight: 1.50, tracking: -0.3, use: "Book detail title, modal header" }
+    body-lg:      { size: 16, weight: 400, lineHeight: 1.50, tracking: -0.2, use: "Book description, reading text" }
+    body:         { size: 14, weight: 400, lineHeight: 1.57, tracking: -0.2, use: "Default body, listing metadata" }
+    tab:          { size: 14, weight: 600, lineHeight: 1.43, tracking: -0.2, use: "Category tab label" }
+    caption:      { size: 13, weight: 400, lineHeight: 1.38, tracking: -0.2, use: "Author/publisher, review counts" }
+    micro:        { size: 12, weight: 500, lineHeight: 1.33, tracking: -0.2, use: "Fine print, control labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 48 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    card: "0px 2px 8px rgba(0,0,0,0.08)"
+  components:
+    button-primary: { type: button, bg: "#1b6dda", fg: "#ffffff", radius: 8, padding: "14px 20px", font: "16px/700", use: "Primary subscription CTA" }
+    button-dark: { type: button, bg: "#333333", fg: "#ffffff", radius: 4, padding: "0px 12px", font: "12px/400", use: "Compact chrome action, login" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#1b6dda", radius: 8, padding: "14px 20px", font: "16px/600", use: "Secondary CTA" }
+    button-neutral: { type: button, bg: "#f2f2f2", fg: "#333333", radius: 8, padding: "12px 16px", font: "14px/500", use: "Tertiary action" }
+    input: { type: input, bg: "#ffffff", fg: "#242424", radius: 8, padding: "12px 14px", font: "14px/400", use: "Default text input" }
+    search: { type: input, bg: "#f2f2f2", fg: "#242424", radius: 8, padding: "12px 16px", font: "14px/400", use: "Header/discovery search bar" }
+    book-tile: { type: card, bg: "#f2f2f2", radius: 6, use: "Default book unit in feed grid" }
+    feed-card: { type: card, bg: "#ffffff", radius: 12, use: "Curated feed promotion, banner" }
+    tab-active: { type: tab, bg: "#333333", fg: "#ffffff", radius: 10, padding: "0px 10px", font: "14px/600", active: "#333333 fill", use: "Active genre/category filter" }
+    tag-original: { type: badge, bg: "#a451f7", fg: "#ffffff", radius: 4, padding: "3px 6px", font: "11px/700", use: "밀리 오리지널 flag" }
+    tag-promo: { type: badge, bg: "#ff5b4f", fg: "#ffffff", radius: 4, padding: "3px 6px", font: "11px/700", use: "Time-limited promotion flag" }
+    pill-scrim: { type: toggle, fg: "#ffffff", radius: 9999, padding: "4px 10px", font: "16px/400", use: "Floating carousel control over imagery" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Millie (밀리의서재)

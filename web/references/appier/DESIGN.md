@@ -46,13 +46,14 @@ tokens:
     card: "0 4px 16px rgba(16,17,48,0.08)"
     header: "0 1px 4px rgba(16,17,48,0.06)"
     modal: "0 12px 40px rgba(16,17,48,0.2)"
+  components_harvested: true
   components:
-    button-primary: "Appier Blue #1D2EFF fill, white text, 8px radius, 12px 24px pad, 16px/600, flat; hover #1626D9"
-    button-secondary: "white fill, #1D2EFF text + 1px #1D2EFF border, 8px radius; hover #EBEDFF bg"
-    input: "white fill, 1px #D1D5E3 border, 8px radius, 12px 14px pad; focus #1D2EFF; error #DC2626"
-    card-solution: "white surface, 1px #E6E8F0 border, 12px radius, 24px pad, blue Learn more link"
-    card-dark: "#101130 deep-ink bg, white text, blue to cyan gradient accent, 12px radius"
-    badge-credential: "#F5F6FA/white bg, #101130 text, 1px #E6E8F0 border, 4-6px radius"
+    button-primary: { type: button, bg: "#1D2EFF", fg: "#FFFFFF", radius: 8, padding: "12px 24px", font: "16px/600", use: "primary CTA, flat; hover #1626D9" }
+    button-secondary: { type: button, bg: "#FFFFFF", fg: "#1D2EFF", radius: 8, use: "1px #1D2EFF border; hover #EBEDFF bg" }
+    input: { type: input, bg: "#FFFFFF", radius: 8, padding: "12px 14px", use: "1px #D1D5E3 border; focus #1D2EFF; error #DC2626" }
+    card-solution: { type: card, bg: "#FFFFFF", radius: 12, padding: "24px", use: "1px #E6E8F0 border, blue Learn more link" }
+    card-dark: { type: card, bg: "#101130", fg: "#FFFFFF", radius: 12, use: "deep-ink bg, blue to cyan gradient accent" }
+    badge-credential: { type: badge, bg: "#F5F6FA", fg: "#101130", radius: 6, use: "1px #E6E8F0 border, 4-6px radius" }
 omd: "0.1"
 ---
 

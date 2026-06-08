@@ -16,6 +16,65 @@ ds:
   type: brand
   description: "KakaoPay's design narrative blog — 3 pillars (Color · Icon · Type), the 3:1 contrast accessibility policy, and the KPDS internal design system context."
   og_image: "https://i0.wp.com/story.kakaopay.com/wp-content/uploads/2024/03/kakaopay_thumb.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  components_harvested: true
+  colors:
+    primary: "#ffeb00"
+    ink: "#060b11"
+    canvas: "#ffffff"
+    ivory: "#fefffa"
+    wild-willow: "#c5c17a"
+    olive: "#7f7600"
+    surface-footer: "#f8f9fa"
+    surface-soft: "#f2f4f6"
+    border: "#e5e8eb"
+    border-subtle: "#eef0f3"
+    body-slate: "#374151"
+    caption-grey: "#6b7684"
+    placeholder: "#b0b8c1"
+    success: "#03b26c"
+    error: "#f04452"
+    warning: "#ffa94d"
+    info: "#3182f6"
+    header-ink: "#1a1d24"
+    brand-badge-bg: "#fffbcc"
+    on-primary: "#060b11"
+  typography:
+    family: { sans: "Noto Sans KR", mono: "Noto Sans KR" }
+    display-hero:  { size: 44, weight: 700, lineHeight: 1.20, tracking: -0.4, use: "Marketing hero" }
+    display-large: { size: 32, weight: 700, lineHeight: 1.25, tracking: -0.3, use: "Secondary marketing headlines" }
+    section:       { size: 22, weight: 500, lineHeight: 1.45, tracking: -0.2, use: "Workhorse heading, megamenu H2" }
+    subheading:    { size: 18, weight: 500, lineHeight: 1.40, tracking: -0.1, use: "Card titles, group labels" }
+    body-strong:   { size: 16, weight: 500, lineHeight: 1.50, use: "Important paragraph copy" }
+    body:          { size: 14, weight: 400, lineHeight: 1.50, use: "Default body, Korean-web baseline" }
+    body-light:    { size: 14, weight: 300, lineHeight: 1.57, use: "Inactive nav, secondary text" }
+    caption:       { size: 13, weight: 400, lineHeight: 1.50, use: "Helper text, metadata" }
+    small:         { size: 12, weight: 400, lineHeight: 1.40, use: "Legal, fine print" }
+    amount:        { size: 24, weight: 700, lineHeight: 1.20, use: "Balance and amount display" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 64 }
+  rounded: { sm: 8, md: 12, lg: 16, full: 9999 }
+  shadow:
+    subtle: "0px 1px 2px rgba(0,0,0,0.04)"
+    soft: "0px 2px 8px rgba(0,0,0,0.04)"
+    lifted: "0px 4px 12px rgba(0,0,0,0.08)"
+    modal: "0px 8px 24px rgba(0,0,0,0.12)"
+  components:
+    button-primary: { type: button, bg: "#060b11", fg: "#ffffff", radius: 12, padding: "14px 20px", font: "16px/500", use: "Primary functional CTA on white" }
+    button-brand-yellow: { type: button, bg: "#ffeb00", fg: "#060b11", radius: 12, padding: "14px 20px", font: "16px/700", use: "Kakao ecosystem moment, on dark" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#060b11", radius: 12, padding: "14px 20px", font: "16px/500", use: "Secondary paired with primary, 1px border" }
+    button-tertiary: { type: button, bg: "#f2f4f6", fg: "#060b11", radius: 12, padding: "14px 20px", font: "16px/500", use: "Low-emphasis action" }
+    button-link: { type: button, bg: "transparent", fg: "#3182f6", font: "14px/500", use: "Inline text link" }
+    card-standard: { type: card, bg: "#ffffff", radius: 16, padding: "20px", use: "Service tile, summary panel" }
+    card-soft: { type: card, bg: "#f8f9fa", radius: 16, padding: "20px", use: "Grouped content, inset panel" }
+    card-brand: { type: card, bg: "#1a1d24", fg: "#ffffff", radius: 20, padding: "24px", use: "Yellow-on-dark brand moment" }
+    badge-neutral: { type: badge, bg: "#f2f4f6", fg: "#374151", radius: 9999, padding: "4px 10px", font: "12px/500", use: "Neutral metadata pill" }
+    badge-brand: { type: badge, bg: "#fffbcc", fg: "#7f7600", radius: 9999, padding: "4px 10px", font: "12px/500", use: "Brand-tinted badge" }
+    badge-success: { type: badge, fg: "#03b26c", radius: 9999, padding: "4px 10px", font: "12px/500", use: "Success badge" }
+    badge-error: { type: badge, fg: "#f04452", radius: 9999, padding: "4px 10px", font: "12px/500", use: "Error badge" }
+    input-default: { type: input, bg: "#ffffff", fg: "#060b11", radius: 12, padding: "14px 16px", font: "16px/400", use: "Form field, 52px height" }
+    tab-bar: { type: tab, bg: "#ffffff", fg: "#6b7684", font: "11px/400", active: "#060b11 icon + #060b11 label", use: "Mobile app tab bar" }
 ---
 
 # Design System Inspiration of KakaoPay

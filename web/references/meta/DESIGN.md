@@ -11,6 +11,63 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#0064e0"
+    primary-light: "#0082fb"
+    primary-bright: "#0080fb"
+    primary-pressed: "#0058c4"
+    canvas: "#ffffff"
+    ink: "#1c2b33"
+    ink-800: "#2d3a42"
+    gray-700: "#465a69"
+    gray-600: "#65676b"
+    gray-500: "#8a8d91"
+    gray-400: "#bcc0c4"
+    border: "#e4e6eb"
+    border-strong: "#ced0d4"
+    canvas-gray: "#f0f2f5"
+    surface-tint: "#f7f8fa"
+    success: "#42b72a"
+    success-text: "#2e8b1e"
+    error: "#fa383e"
+    warning: "#f5a623"
+  typography:
+    family: { sans: "Optimistic Text", mono: "SF Mono" }
+    display-hero: { size: 56, weight: 700, lineHeight: 1.07, tracking: -0.02, use: "Marketing hero, Optimistic Display" }
+    display-lg:   { size: 40, weight: 700, lineHeight: 1.20, tracking: -0.01, use: "Section headers" }
+    display:      { size: 32, weight: 600, lineHeight: 1.25, tracking: -0.01, use: "Feature titles" }
+    heading:      { size: 24, weight: 600, lineHeight: 1.33, use: "Card headings, modal titles" }
+    subtitle:     { size: 20, weight: 600, lineHeight: 1.40, use: "Sub-section, list headers" }
+    body-lg:      { size: 17, weight: 400, lineHeight: 1.53, use: "Lead paragraphs" }
+    body:         { size: 15, weight: 400, lineHeight: 1.47, use: "Standard reading text" }
+    body-sm:      { size: 13, weight: 400, lineHeight: 1.38, use: "Secondary info" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.33, use: "Timestamps, fine print" }
+    button:       { size: 15, weight: 600, lineHeight: 1.33, use: "CTA labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 28, xxl: 32, section: 48 }
+  rounded: { sm: 6, md: 8, lg: 16, full: 9999 }
+  shadow:
+    standard: "0 1px 2px rgba(28,43,51,0.10)"
+    featured: "0 4px 16px rgba(28,43,51,0.12)"
+    gradient: "0 8px 32px rgba(0,100,224,0.30)"
+    dialog: "0 12px 28px rgba(28,43,51,0.20)"
+  components:
+    button-primary: { type: button, bg: "#0064e0", fg: "#ffffff", radius: 8, padding: "12px 20px", font: "15px/600", use: "Product-surface primary action" }
+    button-secondary: { type: button, bg: "#e4e6eb", fg: "#1c2b33", radius: 8, padding: "12px 20px", font: "15px/600", use: "Neutral secondary" }
+    button-outline: { type: button, bg: "transparent", fg: "#0064e0", radius: 8, padding: "12px 24px", font: "15px/600", use: "Tertiary CTA Sign up" }
+    input: { type: input, bg: "#ffffff", fg: "#1c2b33", radius: 8, padding: "12px 14px", font: "15px/400", use: "Standard form input" }
+    input-filled: { type: input, bg: "#f0f2f5", fg: "#1c2b33", radius: 8, padding: "12px 14px", font: "15px/400", use: "Search bars, dense forms" }
+    card: { type: card, bg: "#ffffff", radius: 12, padding: "16px", use: "Feed cards, content panels" }
+    badge-notif: { type: badge, bg: "#fa383e", fg: "#ffffff", radius: 9999, padding: "2px 6px", font: "12px/700", use: "Unread count red dot" }
+    badge-status: { type: badge, fg: "#0064e0", radius: 9999, padding: "4px 10px", font: "12px/600", use: "Soft informational label New" }
+    tab: { type: tab, bg: "transparent", fg: "#65676b", active: "3px bottom border #0064e0 with #0064e0 text", font: "15px/600", use: "In-page section nav" }
+    segmented: { type: tab, bg: "#f0f2f5", fg: "#65676b", radius: 8, padding: "8px 16px", active: "#ffffff bg with #1c2b33 text", font: "14px/600", use: "Mode switching" }
+    toast: { type: toast, bg: "#1c2b33", fg: "#ffffff", radius: 8, padding: "12px 16px", font: "14px/500", use: "Transient confirmation Link copied" }
+    dialog: { type: dialog, bg: "#ffffff", fg: "#1c2b33", radius: 12, padding: "24px", use: "Confirmations, composer dialogs" }
+    toggle: { type: toggle, bg: "#0064e0", radius: 9999, use: "Boolean settings, on=blue off=#bcc0c4" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Meta

@@ -10,6 +10,48 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=meituan.com&sz=128"
 verified: "2026-05-19"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    brand: "#ffc300"
+    brand-alt: "#ffd100"
+    brand-pressed: "#f5b800"
+    brand-tint: "#fff8e0"
+    on-brand: "#222222"
+    price: "#ff4b10"
+    price-alt: "#ff5722"
+    coupon: "#ff2d55"
+    rating-gold: "#ffb000"
+    page-ground: "#f5f5f5"
+    card: "#ffffff"
+    text-secondary: "#888888"
+    text-hint: "#bbbbbb"
+    border: "#eeeeee"
+    divider: "#f2f2f2"
+    success: "#52c41a"
+    error: "#ff4d4f"
+    warning: "#faad14"
+  typography:
+    family: { sans: "PingFang SC", mono: "PingFang SC" }
+    header:   { size: 18, weight: 600, use: "Section/page titles, merchant detail name" }
+    merchant: { size: 16, weight: 500, use: "Merchant name on card, one-line ellipsized" }
+    price:    { size: 18, weight: 700, use: "Price, the loud number" }
+    body:     { size: 14, weight: 400, use: "Body, category, deal description" }
+    meta:     { size: 13, weight: 400, use: "Distance, delivery time, rating count" }
+    badge:    { size: 11, weight: 500, use: "Deal tags, coupon chips" }
+  spacing: { xs: 2, sm: 6, md: 8, base: 10, lg: 16, xl: 20, xxl: 32, section: 48 }
+  rounded: { sm: 4, md: 8, lg: 20, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#ffc300", fg: "#222222", radius: 8, padding: "10px 20px", font: "15px/500", use: "Primary CTA Order/Pay, dark text on yellow" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#222222", radius: 8, padding: "10px 20px", font: "15px/500", use: "Ghost/outline secondary action" }
+    coupon-chip: { type: badge, bg: "#fff8e0", fg: "#ff4b10", radius: 4, padding: "2px 8px", font: "12px/500", use: "Discount/coupon flag" }
+    search-input: { type: input, bg: "#ffffff", fg: "#222222", radius: 20, padding: "8px 16px", font: "14px/400", use: "Top pill search bar" }
+    merchant-card: { type: card, bg: "#ffffff", radius: 8, padding: "10px", use: "Merchant feed card unit" }
+    deal-tag: { type: badge, bg: "#ff4b10", fg: "#ffffff", radius: 4, padding: "2px 6px", font: "11px/500", use: "Deal/activity flag" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Meituan

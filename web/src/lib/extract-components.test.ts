@@ -1,23 +1,17 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { extractTokens } from "./extract-tokens";
+import { extractComponentSpecs } from "./extract-tokens";
 
 const REFS_DIR = join(process.cwd(), "..", "references");
 
+// These tests validate the PROSE §4 parser (extractComponentSpecs) on the
+// canonical-schema refs. The live preview now prefers structured
+// `tokens.components` over prose (componentsFromTokens), so we exercise the
+// prose parser directly here rather than through extractTokens().components.
 function loadRef(id: string) {
   const md = readFileSync(join(REFS_DIR, id, "DESIGN.md"), "utf8");
-  return extractTokens({
-    id,
-    designMd: md,
-    primary: "#000000",
-    background: "#ffffff",
-    foreground: "#0a0a0a",
-    fontFamily: "Inter",
-    headingWeight: "600",
-    radius: "8px",
-    mood: "test",
-  });
+  return { components: extractComponentSpecs(md) };
 }
 
 describe("extractComponentSpecs against canonical-schema refs", () => {

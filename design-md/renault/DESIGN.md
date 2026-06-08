@@ -10,6 +10,48 @@ logo:
   slug: renault
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    yellow: "#efdf00"
+    black: "#000000"
+    white: "#ffffff"
+    soft-yellow: "#f8eb4c"
+    blue: "#1883fd"
+    warm-gray: "#d9d9d6"
+    charcoal: "#222222"
+    pale-silver: "#f2f2f2"
+    border-gray: "#d1d1d1"
+    success: "#8dc572"
+    error: "#be6464"
+    warning: "#f0ad4e"
+    info: "#337ab7"
+  typography:
+    family: { sans: "NouvelR", mono: "NouvelR" }
+    hero-title:    { size: 56, weight: 700, lineHeight: 0.95, use: "Hero titles, all-caps model names" }
+    section:       { size: 40, weight: 700, lineHeight: 0.95, use: "PromoCard section headings" }
+    card-heading:  { size: 32, weight: 700, lineHeight: 0.95, use: "Medium card headings" }
+    subheading:    { size: 24, weight: 700, lineHeight: 0.95, use: "Section sub-titles" }
+    body:          { size: 14, weight: 400, lineHeight: 1.40, use: "Paragraph and descriptive content" }
+    button:        { size: 14.4, weight: 700, lineHeight: 1.00, tracking: 0.144, use: "Primary button text" }
+    nav-link:      { size: 13, weight: 700, lineHeight: 1.50, use: "Navigation and footer links" }
+    caption:       { size: 12.8, weight: 400, lineHeight: 1.10, use: "Small descriptive text" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 40, section: 80 }
+  rounded: { sm: 2, md: 3, lg: 4, full: 9999 }
+  shadow:
+    soft: "rgba(0,0,0,0.2) 0px 4px 8px"
+    medium: "rgba(0,0,0,0.2) 0px 0px 18px"
+    deep: "rgba(0,0,0,0.15) 0px 40px 80px"
+  components:
+    button-super-primary: { type: button, bg: "#efdf00", fg: "#000000", radius: 0, padding: "10px 15px", font: "16/700", use: "Highest-emphasis CTA, 1px #efdf00 border, 46px min" }
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 0, padding: "10px 15px", font: "16/700", use: "Default action; inverted #ffffff bg on dark" }
+    button-ghost: { type: button, bg: "transparent", fg: "#ffffff", radius: 0, padding: "10px 15px", font: "16/700", use: "Transparent outline, 1px white border on dark" }
+    text-link: { type: button, bg: "transparent", fg: "#000000", use: "Inline link, hover shifts to #1883fd" }
+    promo-card-light: { type: card, bg: "#ffffff", fg: "#000000", radius: 0, use: "Editorial card, full-bleed photo, dark gradient overlay" }
+    promo-card-dark: { type: card, bg: "#000000", fg: "#ffffff", radius: 0, use: "Cinematic alternative-mode card" }
+    input: { type: input, bg: "#ffffff", fg: "#000000", radius: 9999, padding: "6px 35px 6px 15px", font: "12.8/400", use: "Pill search input, 1px #d1d1d1 border" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Renault

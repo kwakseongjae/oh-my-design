@@ -46,13 +46,14 @@ tokens:
   rounded: { sm: 3, chip: 6, md: 8, lg: 10, full: 9999 }
   shadow:
     soft: "rgba(0,0,0,0.05) 0px 1px 2px 0px"
+  components_harvested: true
   components:
-    button-primary: "#0B59D5 fill, white text, 8px radius, 46px height, 15px/700 label — one per view"
-    button-secondary: "white fill, #040505 text, 1px #DDE4EB border, 8px radius, 15px/500"
-    accent-outline: "transparent fill, #1772F8 text + 1px #1772F8 border, 3px radius — signup/inline emphasis"
-    filter-chip: "white fill, 1px #DDE4EB border, 6px radius, 32px height; active = 1px #040505 border + 700"
-    store-button: "#EBF0F5 (light) or #040505 (dark) fill, 10px radius, 48px height, 13px/700"
-    icon-button: "rgba(0,0,0,0.4) circular fill, 50% radius, 5px padding"
+    button-primary: { type: button, bg: "#0B59D5", fg: "#FFFFFF", radius: 8, font: "15/700", use: "Primary CTA, 46px height — one per view" }
+    button-secondary: { type: button, bg: "#FFFFFF", fg: "#040505", radius: 8, font: "15/500", use: "White fill, 1px #DDE4EB border" }
+    accent-outline: { type: button, fg: "#1772F8", radius: 3, use: "Transparent fill, 1px #1772F8 border — signup/inline emphasis" }
+    filter-chip: { type: badge, bg: "#FFFFFF", radius: 6, use: "1px #DDE4EB border, 32px height; active = 1px #040505 border + 700" }
+    store-button: { type: button, bg: "#EBF0F5", radius: 10, font: "13/700", use: "Light or dark (#040505) fill, 48px height" }
+    icon-button: { type: button, fg: "#040505", radius: 9999, padding: "5px", use: "Circular semi-transparent fill" }
 ---
 
 # Coinone

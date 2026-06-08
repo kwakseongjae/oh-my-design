@@ -15,6 +15,47 @@ ds:
   url: "https://wise.design"
   type: system
   description: Wise's design system covering foundations, components, patterns, and tone of voice.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    ink: "#0e0f0c"
+    primary: "#9fe870"
+    dark-green: "#163300"
+    light-mint: "#e2f6d5"
+    pastel-green: "#cdffad"
+    positive: "#054d28"
+    danger: "#d03238"
+    warning: "#ffd11a"
+    bright-orange: "#ffc091"
+    warm-dark: "#454745"
+    gray: "#868685"
+    light-surface: "#e8ebe6"
+    canvas: "#ffffff"
+  typography:
+    family: { sans: "Inter", mono: "Inter" }
+    display-mega:  { size: 126, weight: 900, lineHeight: 0.85, use: "Wise Sans, max display" }
+    display-hero:  { size: 96, weight: 900, lineHeight: 0.85, use: "Wise Sans, hero" }
+    section:       { size: 64, weight: 900, lineHeight: 0.85, use: "Wise Sans, section heading" }
+    subheading:    { size: 40, weight: 900, lineHeight: 0.85, use: "Wise Sans, sub-heading" }
+    card-title:    { size: 26, weight: 600, lineHeight: 1.23, tracking: -0.39, use: "Inter, card title" }
+    feature-title: { size: 22, weight: 600, lineHeight: 1.25, tracking: -0.4, use: "Inter, feature title" }
+    body:          { size: 18, weight: 400, lineHeight: 1.44, tracking: 0.18, use: "Inter, body" }
+    body-semibold: { size: 18, weight: 600, lineHeight: 1.44, tracking: -0.11, use: "Inter, body default" }
+    button:        { size: 18, weight: 600, lineHeight: 1.0, tracking: -0.11, use: "Inter, button" }
+    caption:       { size: 14, weight: 400, lineHeight: 1.5, tracking: -0.08, use: "Inter, caption" }
+    small:         { size: 12, weight: 400, lineHeight: 1.0, tracking: -0.08, use: "Inter, small" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24 }
+  rounded: { sm: 16, md: 30, lg: 40, full: 9999 }
+  shadow:
+    ring: "rgba(14,15,12,0.12) 0px 0px 0px 1px"
+    inset: "rgb(134,134,133) 0px 0px 0px 1px inset"
+  components:
+    button-primary: { type: button, bg: "#9fe870", fg: "#163300", radius: 9999, padding: "5px 16px", use: "Primary green pill, hover scale 1.05" }
+    button-secondary: { type: button, fg: "#0e0f0c", radius: 9999, padding: "8px 12px 8px 16px", use: "Subtle pill, dark green 8% bg" }
+    card: { type: card, radius: 30, use: "Card, 1px rgba(14,15,12,0.12) border, ring shadow" }
+    badge-mint: { type: badge, bg: "#e2f6d5", fg: "#163300", radius: 16, use: "Soft green badge surface" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Wise

@@ -14,6 +14,7 @@ omd: "0.1"
 tokens:
   source: live-extract
   extracted: "2026-06-08"
+  components_harvested: true
   note: "primary = deep navy CTA fill #061232 (live getComputedStyle on 'Get in Touch'); brand-blue accent #3a82dd for links/nav; family Noto Sans TC (Taiwan-localized)"
   colors:
     primary: "#061232"

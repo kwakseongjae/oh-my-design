@@ -17,6 +17,47 @@ ds:
   type: system
   description: 여기어때 디자인 라이브러리 — A Visual Language for Travel. Foundations, components, and tokens.
   og_image: "https://framerusercontent.com/assets/kA6JROOLbG0jX7SQZl1tLZzahM.jpg"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#1d8bff"
+    canvas: "#ffffff"
+    heading: "#222222"
+    body: "#222222"
+    on-primary: "#ffffff"
+    tint-blue: "#e3f0ff"
+    coupon-red: "#f94239"
+    coupon-red-tint: "#ffedea"
+    rating-yellow: "#ffc83b"
+    member-slate: "#49627a"
+    border: "#e6e6e6"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    hero:        { size: 32, weight: 700, lineHeight: 1.2, use: "Home hero H1 over image" }
+    page-title:  { size: 24, weight: 700, use: "Search-result count headline" }
+    section:     { size: 18, weight: 700, use: "Section H2 / listing card name" }
+    chip:        { size: 13, weight: 600, use: "Filter chips, price-range pills" }
+    tile:        { size: 14, weight: 500, use: "Destination tile caption" }
+    body:        { size: 16, weight: 400, use: "Card meta, search input, descriptions" }
+    button:      { size: 14, weight: 600, use: "Utility CTA label" }
+    badge:       { size: 12, weight: 700, use: "Promo / coupon / member / rating" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 3, md: 8, lg: 12, full: 9999 }
+  shadow:
+    card: "minimal — cards rely on whitespace and photo for separation"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#1d8bff", fg: "#ffffff", radius: 8, padding: "9px 14px", font: "14/600", use: "Login/회원가입 solid, 지도 보기, hero 검색" }
+    button-brand-outline: { type: button, bg: "#ffffff", fg: "#1d8bff", radius: 8, padding: "9px 14px", font: "14/600", use: "Top-right login/회원가입 entry" }
+    button-neutral-outline: { type: button, bg: "#ffffff", fg: "#222222", radius: 8, padding: "9px 14px", font: "14/600", use: "Guest reservation lookup, low-emphasis utility" }
+    filter-chip: { type: badge, bg: "#ffffff", fg: "#222222", radius: 9999, padding: "0px 16px", font: "13/600", use: "Price range, hashtag/star/amenity filters" }
+    search-input: { type: input, bg: "#ffffff", fg: "#222222", radius: 12, font: "16/400", use: "Home search box" }
+    listing-card: { type: card, bg: "#ffffff", radius: 12, padding: "0 0 24px", use: "Photo-led search-result / recommendation card" }
+    badge-rating: { type: badge, bg: "#ffc83b", radius: 6, padding: "4px 5px 3px 3px", font: "16/400", use: "Review score chip on every listing card" }
+    badge-promo: { type: badge, bg: "#e3f0ff", fg: "#1d8bff", radius: 3, padding: "0px 4px", font: "12/700", use: "반짝특가 flash-deal emphasis" }
+    badge-member: { type: badge, bg: "#49627a", fg: "#ffffff", radius: 3, padding: "3px 4px", font: "12/700", use: "회원가 member-rate flag" }
+    badge-coupon: { type: badge, bg: "#ffedea", fg: "#f94239", radius: 3, padding: "0px 4px", font: "12/700", use: "쿠폰 적용가 discount callout" }
 ---
 
 # Design System Inspiration of 여기어때 (GoodChoice / Yeogiotte)

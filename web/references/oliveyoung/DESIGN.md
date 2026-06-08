@@ -11,6 +11,52 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=oliveyoung.co.kr&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    black: "#000000"
+    ink: "#131518"
+    muted: "#888888"
+    neutral-dark: "#2f3030"
+    neutral-alt: "#454c53"
+    neutral-alt-2: "#50585f"
+    chip-text: "#757d86"
+    canvas: "#ffffff"
+    paper: "#f6f7f9"
+    line: "#e5e7ea"
+    line-thin: "#ebebeb"
+    sale: "#f65c60"
+    best: "#f05a5e"
+    same-day: "#f374b7"
+    coupon: "#9bce26"
+    gift: "#6fcff7"
+    promo-salmon: "#f27370"
+  typography:
+    family: { sans: "Montserrat", mono: "Montserrat" }
+    h1: { size: 28, weight: 700, use: "Legacy main page title" }
+    title: { size: 16, weight: 700, use: "Card titles, emphasis" }
+    body: { size: 14, weight: 400, lineHeight: 1.4, use: "Standard reading text" }
+    caption: { size: 13, weight: 400, use: "Brand, meta" }
+    small: { size: 12, weight: 400, use: "Flags, fine print" }
+  spacing: { sm: 8, base: 16, lg: 18 }
+  rounded: { sm: 4, md: 9, lg: 20, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 4, padding: "12px 18px", font: "13.33px/700", use: "Filled black CTA (장바구니 담기)" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#454c53", radius: 4, padding: "10px 16px", font: "14px/500", use: "Secondary action (신상 더보기)" }
+    pagination-active: { type: button, bg: "#2f3030", fg: "#ffffff", radius: 9999, font: "14px/700", use: "Current page indicator" }
+    category-pill: { type: tab, bg: "#ffffff", fg: "#757d86", radius: 20, padding: "8px 14px", font: "14px/400", use: "Category shortcut", active: "#000000 bg, #ffffff text" }
+    filter-chip: { type: tab, bg: "#ffffff", fg: "#757d86", radius: 18, padding: "8px 14px", font: "14px/400", use: "Search facet filter" }
+    flag-sale: { type: badge, bg: "#f65c60", fg: "#ffffff", radius: 9, padding: "3px 6px", font: "12px/400", use: "세일 in-thumbnail pill" }
+    flag-same-day: { type: badge, bg: "#f374b7", fg: "#ffffff", radius: 9, font: "12px/400", use: "오늘드림 pill" }
+    flag-coupon: { type: badge, bg: "#9bce26", fg: "#ffffff", radius: 9, font: "12px/400", use: "쿠폰 pill" }
+    flag-gift: { type: badge, bg: "#6fcff7", fg: "#ffffff", radius: 9, font: "12px/400", use: "증정 pill" }
+    best-badge: { type: badge, bg: "#ffffff", fg: "#f05a5e", radius: 24, padding: "8px 18px", font: "14px/700", use: "베스트 sash on hero rails" }
+    search-input: { type: input, bg: "#ffffff", fg: "#131518", radius: 0, font: "13.33px/400", use: "Global GNB product search" }
+    product-card: { type: card, bg: "#ffffff", fg: "#333333", radius: 0, use: "Search/list product tile" }
+  components_harvested: true
 ---
 
 ## 1. Visual Theme & Atmosphere

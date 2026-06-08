@@ -11,6 +11,54 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=tumblbug.com&sz=128"
 verified: "2026-05-27"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#fd5744"
+    primary-hover: "#f86453"
+    primary-pressed: "#e53c41"
+    canvas: "#ffffff"
+    foreground: "#000000"
+    gray-900: "#1c1c1c"
+    gray-800: "#3d3d3d"
+    gray-600: "#545454"
+    gray-500: "#6d6d6d"
+    gray-400: "#9e9e9e"
+    border: "#e4e4e4"
+    surface: "#f0f0f0"
+    gray-50: "#f6f6f6"
+    error: "#e53c41"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    display:       { size: 28, weight: 700, lineHeight: 38, tracking: -0.4, use: "Editorial banner / featured project title" }
+    heading-lg:    { size: 22, weight: 700, lineHeight: 30, tracking: -0.4, use: "Section header" }
+    heading:       { size: 18, weight: 700, lineHeight: 26, tracking: -0.3, use: "Project detail title, sub-section" }
+    title:         { size: 16, weight: 700, lineHeight: 24, tracking: -0.3, use: "Card project title" }
+    body-lg:       { size: 16, weight: 400, lineHeight: 24, tracking: -0.2, use: "Project story body" }
+    body:          { size: 14, weight: 400, lineHeight: 22, tracking: -0.2, use: "Default body, card metadata" }
+    body-bold:     { size: 14, weight: 700, lineHeight: 22, tracking: -0.2, use: "Creator name, emphasis, nav" }
+    caption:       { size: 13, weight: 400, lineHeight: 18, tracking: -0.2, use: "Days-left, backer count, timestamps" }
+    micro:         { size: 12, weight: 500, lineHeight: 16, tracking: -0.2, use: "Fine print, category labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    none: "none"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#fd5744", fg: "#ffffff", radius: 9999, padding: "14px 24px", font: "16/700", use: "Primary CTA 후원하기" }
+    button-secondary: { type: button, bg: "#000000", fg: "#ffffff", radius: 9999, padding: "14px 24px", font: "16/700", use: "Strong neutral action" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#545454", radius: 9999, padding: "11.5px 16px", font: "14/700", use: "Secondary actions, 1px border #e4e4e4" }
+    button-ghost: { type: button, fg: "#000000", radius: 9999, padding: "8px 12px", font: "14/700", use: "Inline nav / utility action" }
+    input-default: { type: input, bg: "#ffffff", fg: "#000000", radius: 8, padding: "12px 14px", font: "14/400", use: "Default text input, 1px border #e4e4e4" }
+    input-search: { type: input, bg: "#f0f0f0", fg: "#000000", radius: 9999, padding: "12px 16px 12px 40px", font: "14/400", use: "Header pill search bar" }
+    input-error: { type: input, bg: "#ffffff", fg: "#000000", radius: 8, padding: "12px 14px", font: "14/400", use: "Validation failure, 1px border #e53c41" }
+    card-project: { type: card, bg: "#ffffff", radius: 8, use: "Project listing card, thumbnail + funding bar" }
+    card-reward: { type: card, bg: "#ffffff", radius: 12, padding: "20px", use: "Pledge-tier reward, selected 1.5px #fd5744" }
+    badge-category: { type: badge, bg: "#f0f0f0", fg: "#545454", radius: 9999, padding: "6px 12px", font: "13/700", use: "Category filter chip", active: "bg #000000, text #ffffff" }
+    badge-status: { type: badge, bg: "#fd5744", fg: "#ffffff", radius: 4, padding: "3px 6px", font: "11/700", use: "Time-sensitive project flag" }
+    badge-new: { type: badge, bg: "#ffffff", fg: "#000000", radius: 4, padding: "3px 6px", font: "11/700", use: "NEW / editor flag, 1px border #000000" }
+    tab-bottom: { type: tab, fg: "#9e9e9e", use: "Bottom tab bar", active: "label #000000" }
 ---
 
 # Design System Inspiration of Tumblbug (텀블벅)

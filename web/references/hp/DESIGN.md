@@ -11,6 +11,48 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#0096d6"
+    primary-hover: "#0073a8"
+    primary-pressed: "#005c87"
+    primary-light: "#e6f4fb"
+    electric-blue: "#0278ab"
+    ink: "#212121"
+    canvas: "#ffffff"
+    grey-50: "#f7f7f7"
+    grey-100: "#eeeeee"
+    border: "#e0e0e0"
+    border-strong: "#cccccc"
+    placeholder: "#9e9e9e"
+    caption: "#767676"
+    body: "#595959"
+    emphasis: "#404040"
+    success: "#0c7d2f"
+    error: "#d32f2f"
+    warning: "#f5a623"
+  typography:
+    family: { sans: "Forma DJR UI", mono: "SF Mono" }
+    display-hero: { size: 48, weight: 700, lineHeight: 1.17, tracking: -0.5, use: "Marketing hero headlines" }
+    body:         { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading text, inputs" }
+    button:       { size: 16, weight: 600, use: "Button label" }
+    label:        { size: 13, weight: 600, use: "Input labels, captions" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 4, lg: 8, full: 9999 }
+  shadow:
+    flat: "none"
+  components:
+    button-primary: { type: button, bg: "#0096d6", fg: "#ffffff", radius: 4, padding: "12px 24px", font: "16px weight 600", use: "Primary CTA, 44px min-height" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#0096d6", radius: 4, padding: "12px 24px", font: "16px weight 600", use: "Outlined secondary, 1.5px blue border" }
+    button-tertiary: { type: button, bg: "#ffffff", fg: "#0096d6", radius: 4, padding: "12px 8px", use: "Low-emphasis text action, underline on hover" }
+    button-dark: { type: button, bg: "#ffffff", fg: "#212121", radius: 4, padding: "12px 24px", use: "CTA on imagery / dark hero" }
+    button-danger: { type: button, bg: "#d32f2f", fg: "#ffffff", radius: 4, padding: "12px 24px", use: "Destructive confirmation" }
+    input-default: { type: input, bg: "#ffffff", fg: "#212121", radius: 4, padding: "12px 14px", font: "16px weight 400", use: "Standard form input, grey border" }
+    input-error: { type: input, bg: "#ffffff", fg: "#212121", radius: 4, padding: "12px 14px", use: "Validation failure, red border" }
+    input-search: { type: input, bg: "#f7f7f7", fg: "#212121", radius: 8, padding: "10px 16px", use: "Header product search, rounded" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of HP

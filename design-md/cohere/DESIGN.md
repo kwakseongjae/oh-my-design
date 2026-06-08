@@ -55,14 +55,15 @@ tokens:
   rounded: { sm: 4, md: 8, lg: 16, xl: 20, signature: 22, full: 9999 }
   shadow:
     soft: "none — depth via background contrast and cool-gray borders"
+  components_harvested: true
   components:
-    button-ghost: "transparent fill, #000000 text; hover text shifts to #1863dc at 0.8 opacity; focus 2px solid #1863dc outline — the base button style"
-    button-dark-solid: "dark/black fill, white text, pill or standard radius — CTA on light surfaces"
-    button-outlined: "border-based containment for secondary actions"
-    card: "white #ffffff surface, signature 22px radius, 1px solid #f2f2f2 (or #d9d9dd emphasized), shadow-free"
-    input: "focus border #9b60aa 1px solid; focus outline 2px solid #1863dc"
-    uppercase-code-tag: "CohereMono uppercase with positive letter-spacing as section markers"
-    purple-hero-band: "full-width deep purple section housing product screenshots at 22px radius"
+    button-ghost: { type: button, fg: "#000000", use: "Transparent fill; hover text shifts to #1863dc; focus 2px solid #1863dc outline — the base button style" }
+    button-dark-solid: { type: button, bg: "#000000", fg: "#ffffff", use: "Dark fill, pill or standard radius — CTA on light surfaces" }
+    button-outlined: { type: button, use: "Border-based containment for secondary actions" }
+    card: { type: card, bg: "#ffffff", radius: 22, use: "Signature radius, 1px solid #f2f2f2 border, shadow-free" }
+    input: { type: input, use: "Focus border #9b60aa 1px solid; focus outline 2px solid #1863dc" }
+    uppercase-code-tag: { type: badge, use: "CohereMono uppercase with positive letter-spacing as section markers" }
+    purple-hero-band: { type: card, radius: 22, use: "Full-width deep purple section housing product screenshots" }
 ---
 
 # Design System Inspiration of Cohere

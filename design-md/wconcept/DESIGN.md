@@ -10,6 +10,51 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=wconcept.co.kr&sz=128"
 verified: "2026-05-27"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#000000"
+    canvas: "#ffffff"
+    sale: "#ff4600"
+    gray-900: "#222222"
+    gray-700: "#555555"
+    gray-500: "#777777"
+    gray-400: "#999999"
+    gray-300: "#bababa"
+    gray-200: "#e2e2e2"
+    gray-100: "#eeeeee"
+    gray-50: "#f6f6f6"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    display:       { size: 32, weight: 700, lineHeight: 1.31, tracking: -0.4, use: "Editorial campaign title" }
+    heading-lg:    { size: 24, weight: 700, lineHeight: 1.33, tracking: -0.4, use: "Category page title" }
+    heading:       { size: 20, weight: 700, lineHeight: 1.4, tracking: -0.3, use: "Section header" }
+    title:         { size: 16, weight: 600, lineHeight: 1.5, tracking: -0.3, use: "Product detail title, brand name" }
+    body-lg:       { size: 16, weight: 400, lineHeight: 1.5, tracking: -0.2, use: "Body, product card title" }
+    body:          { size: 14, weight: 400, lineHeight: 1.57, tracking: -0.2, use: "Listings text" }
+    body-bold:     { size: 14, weight: 700, lineHeight: 1.57, tracking: -0.2, use: "Price emphasis, brand name" }
+    caption:       { size: 13, weight: 400, lineHeight: 1.38, tracking: -0.2, use: "Metadata, review counts" }
+    caption-bold:  { size: 13, weight: 700, lineHeight: 1.38, tracking: -0.2, use: "Sale percentage labels" }
+    micro:         { size: 12, weight: 500, lineHeight: 1.33, tracking: -0.2, use: "Badge text, fine print" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 56, section: 80 }
+  rounded: { sm: 0, md: 0, lg: 0, full: 9999 }
+  shadow:
+    soft: "0px 2px 8px rgba(0,0,0,0.06)"
+    floating: "0px 4px 16px rgba(0,0,0,0.10)"
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 0, padding: "16px 24px", font: "16px/700 Pretendard Variable", use: "Primary CTA, hover #222222" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#000000", radius: 0, padding: "16px 24px", font: "16px/600 Pretendard Variable", use: "Secondary CTA, 1px #000000 border" }
+    button-neutral: { type: button, bg: "#f6f6f6", fg: "#222222", radius: 0, padding: "12px 16px", font: "14px/500 Pretendard Variable", use: "Tertiary, 1px #eeeeee border" }
+    button-sale: { type: button, bg: "#ff4600", fg: "#ffffff", radius: 0, padding: "12px 18px", font: "14px/700 Pretendard Variable", use: "Time-limited sale CTA" }
+    input-default: { type: input, bg: "#ffffff", fg: "#000000", radius: 0, padding: "12px 14px", font: "14px/400 Pretendard Variable", use: "Form input, 1px #e2e2e2, focus #000000, placeholder #999999" }
+    product-card: { type: card, bg: "#ffffff", radius: 0, use: "Product listing, no border/shadow, #f6f6f6 image placeholder" }
+    brand-card: { type: card, bg: "#ffffff", radius: 0, padding: "16px", use: "Designer-spotlight, 1px #eeeeee border" }
+    badge-sale: { type: badge, fg: "#ff4600", radius: 0, font: "14px/700 Pretendard Variable", use: "Inline sale percentage" }
+    badge-exclusive: { type: badge, bg: "#000000", fg: "#ffffff", radius: 0, padding: "3px 6px", font: "11px/700 Pretendard Variable", use: "단독/선론칭 flag" }
+    filter-chip: { type: badge, bg: "#ffffff", fg: "#222222", radius: 0, padding: "8px 14px", font: "13px/500 Pretendard Variable", use: "Filter pill, 1px #e2e2e2; selected bg #000000 fg #ffffff" }
+    toast: { type: toast, bg: "#000000", fg: "#ffffff", radius: 0, use: "Error/success snackbar, 3s" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of W Concept (W컨셉)

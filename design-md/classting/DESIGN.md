@@ -43,13 +43,14 @@ tokens:
     subtle: "rgba(0,0,0,0.05) 0px 0px 12px"
     raised: "rgba(0,0,0,0.08) 0px 2px 12px"
     accent: "rgba(0,200,150,0.08) 0px 5px 25px"
+  components_harvested: true
   components:
-    button-primary: "Green #00C896 fill, white text, 8px radius, 15px 16px padding, 14px/500"
-    button-black: "#424242 fill, white text, 8px radius, alt CTA"
-    button-outline: "transparent, #ED872D text + 1px #ED872C border, 8px radius"
-    card: "white surface, 16px radius, 24px 20px padding, subtle 12px shadow"
-    section-banner: "#00C896 fill, 24px radius, 64px 106px padding (Consult)"
-    tag-mint: "#EDF9F6 bg, 6px radius, 8px padding, 14px/500"
+    button-primary: { type: button, bg: "#00C896", fg: "#FFFFFF", radius: 8, padding: "15px 16px", font: "14px/500", use: "primary CTA" }
+    button-black: { type: button, bg: "#424242", fg: "#FFFFFF", radius: 8, use: "alt CTA" }
+    button-outline: { type: button, fg: "#ED872D", radius: 8, use: "transparent, 1px #ED872D border" }
+    card: { type: card, bg: "#FFFFFF", radius: 16, padding: "24px 20px", use: "subtle 12px shadow" }
+    section-banner: { type: card, bg: "#00C896", radius: 24, padding: "64px 106px", use: "Consult banner" }
+    tag-mint: { type: badge, bg: "#EDF9F6", radius: 6, padding: "8px", font: "14px/500", use: "mint tag" }
 ---
 
 # Classting

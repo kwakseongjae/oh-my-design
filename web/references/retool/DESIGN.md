@@ -11,6 +11,69 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    cod-gray: "#1a1a1a"
+    ink-black: "#0e0e0e"
+    green-white: "#e9ebdf"
+    white: "#ffffff"
+    burnt-sienna: "#e0613a"
+    burnt-sienna-hover: "#c94f2c"
+    cornflower: "#6e8be0"
+    smalt-blue: "#4e7c82"
+    action-primary: "#3c3c3c"
+    success: "#2fa86a"
+    error: "#e5484d"
+    warning: "#e0a23a"
+    panel: "#232323"
+    border-dark: "#2e2e2e"
+    muted: "#6b6b6b"
+    caption: "#8a8a8a"
+    body-dark: "#b4b4b4"
+    strong-dark: "#d6d6d6"
+    light-100: "#f4f5ef"
+    light-200: "#dcded2"
+    light-border: "#cacbbf"
+  typography:
+    family: { sans: "Inter", mono: "IBM Plex Mono" }
+    display-hero: { size: 56, weight: 700, lineHeight: 1.07, tracking: -0.02em, use: "Marketing hero headlines" }
+    display:      { size: 40, weight: 700, lineHeight: 1.15, tracking: -0.02em, use: "Section headers" }
+    h1:           { size: 30, weight: 600, lineHeight: 1.27, tracking: -0.01em, use: "Page titles" }
+    h2:           { size: 22, weight: 600, lineHeight: 1.36, tracking: -0.01em, use: "Card / feature titles" }
+    h3:           { size: 18, weight: 600, lineHeight: 1.44, use: "Sub-sections, panel headers" }
+    body:         { size: 14, weight: 400, lineHeight: 1.57, use: "Standard UI text" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.33, use: "Metadata, table headers" }
+    label:        { size: 11, weight: 600, lineHeight: 1.45, tracking: 0.06em, use: "Uppercase eyebrows, column heads" }
+    code:         { size: 13, weight: 400, lineHeight: 1.54, use: "Query editor, values, keys (IBM Plex Mono)" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
+  shadow:
+    subtle: "0px 1px 2px rgba(14,14,14,0.06)"
+    standard: "0px 4px 12px rgba(14,14,14,0.24)"
+    elevated: "0px 8px 24px rgba(14,14,14,0.40)"
+    modal: "0px 16px 48px rgba(14,14,14,0.50)"
+  components:
+    button-primary: { type: button, bg: "#3c3c3c", fg: "#ffffff", radius: 6, padding: "0 16px", font: "14/500", use: "Default primary action on light (Save, Run)" }
+    button-accent: { type: button, bg: "#e0613a", fg: "#ffffff", radius: 6, padding: "0 18px", font: "15/600", use: "Top-of-funnel CTA (Start for free)" }
+    button-secondary: { type: button, bg: "transparent", fg: "#d6d6d6", radius: 6, padding: "0 16px", font: "14/500", use: "Outline secondary, 1px #3c3c3c border on dark" }
+    button-ghost: { type: button, bg: "transparent", fg: "#b4b4b4", radius: 6, padding: "0 10px", font: "14/500", use: "Toolbar/inline tertiary actions" }
+    button-destructive: { type: button, bg: "#e5484d", fg: "#ffffff", radius: 6, padding: "0 16px", font: "14/500", use: "Delete query, destructive confirmation" }
+    input-light: { type: input, bg: "#ffffff", fg: "#1a1a1a", radius: 6, padding: "8px 12px", font: "14/400", use: "Standard form input on light, #e0613a focus" }
+    input-dark: { type: input, bg: "#1a1a1a", fg: "#ffffff", radius: 6, padding: "8px 12px", font: "14/400", use: "Inspector/builder forms on dark canvas" }
+    code-editor: { type: input, bg: "#0e0e0e", fg: "#d6d6d6", radius: 6, padding: "12px", font: "13/400", use: "SQL/JS query editor, 1px #2e2e2e border" }
+    card: { type: card, bg: "#ffffff", fg: "#1a1a1a", radius: 8, padding: "20px", use: "Marketing feature cards, 1px #cacbbf border" }
+    panel-dark: { type: card, bg: "#232323", fg: "#d6d6d6", radius: 8, padding: "16px", use: "Inspector, component tray, 1px #2e2e2e border" }
+    badge-success: { type: badge, bg: "rgba(47,168,106,0.14)", fg: "#2fa86a", radius: 4, padding: "2px 8px", font: "12/600", use: "Deployed, Connected, Passing" }
+    badge-error: { type: badge, bg: "rgba(229,72,77,0.14)", fg: "#e5484d", radius: 4, padding: "2px 8px", font: "12/600", use: "Failed, Disconnected" }
+    badge-warning: { type: badge, bg: "rgba(224,162,58,0.14)", fg: "#e0a23a", radius: 4, padding: "2px 8px", font: "12/600", use: "Unsaved, Deprecated" }
+    badge-neutral: { type: badge, bg: "#2e2e2e", fg: "#b4b4b4", radius: 4, padding: "2px 8px", font: "12/500", use: "Environment tags, version labels" }
+    tab: { type: tab, fg: "#8a8a8a", font: "14/500", padding: "10px 14px", use: "Builder panels (Query/State/Logs)", active: "#ffffff text + 2px #e0613a bottom indicator" }
+    toast: { type: toast, bg: "#232323", fg: "#ffffff", radius: 8, padding: "12px 16px", font: "14/400", use: "Query/save confirmation, leading status dot" }
+    dialog: { type: dialog, bg: "#1a1a1a", fg: "#b4b4b4", radius: 10, padding: "24px", use: "Confirmations, resource setup, 1px #2e2e2e border" }
+    toggle: { type: toggle, bg: "#3c3c3c", fg: "#ffffff", radius: 9999, use: "Feature flags, env switches; on=#e0613a, white thumb" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Retool

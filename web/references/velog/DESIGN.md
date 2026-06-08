@@ -15,6 +15,34 @@ ds:
   url: "https://github.com/velog-io/velog"
   type: system
   description: velog's production frontend is fully open-source (MIT); its design tokens live in src/lib/styles (themes.ts + palette.ts), built on the Open Color palette.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#12b886"
+    primary-alt: "#20c997"
+    destructive: "#ff6b6b"
+    text: "#212529"
+    body: "#495057"
+    muted: "#868e96"
+    canvas: "#f8f9fa"
+    surface: "#ffffff"
+    border: "#e9ecef"
+    border-strong: "#dee2e6"
+  typography:
+    family: { sans: "system-ui", mono: "ui-monospace" }
+    body:  { size: 16, weight: 400, use: "Body copy, reading surface" }
+    login: { size: 16, weight: 700, use: "Login pill label" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-login: { type: button, bg: "#212529", fg: "#ffffff", radius: 16, font: "16px/700", use: "Dark sign-in pill, top-right header, h32" }
+    button-write: { type: button, bg: "#12b886", fg: "#ffffff", use: "Brand teal primary-action — compose a post" }
+    header: { type: card, bg: "#ffffff", fg: "#212529", font: "16px", use: "Top navigation surface" }
+    page: { type: card, bg: "#f8f9fa", fg: "#212529", font: "16px", use: "Soft-gray reading canvas framing white blocks" }
+  components_harvested: true
 ---
 # Design System Inspiration of velog
 

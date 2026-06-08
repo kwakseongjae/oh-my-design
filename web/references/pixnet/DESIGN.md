@@ -47,10 +47,11 @@ tokens:
     standard: "rgba(66,62,60,0.12) 0px 4px 16px"
     elevated: "rgba(66,62,60,0.16) 0px 8px 28px"
   components:
-    button-primary: "PIXNET orange #ff7200 fill, white text, 6px radius, weight 500, 36px tall"
-    button-ghost: "white fill, #423e3c text, 1px #eaeae9 hairline border, 6px radius"
-    tag-pill: "transparent/white fill, #423e3c text, 6px radius, weight 700, hairline border"
-    card: "white surface, hairline #eaeae9 border, low warm shadow, sharp-to-6px corners"
+    button-primary: { type: button, bg: "#ff7200", fg: "#ffffff", radius: 6, font: "weight 500, 36px tall", use: "Primary CTA (login)" }
+    button-ghost: { type: button, bg: "#ffffff", fg: "#423e3c", radius: 6, use: "Secondary action, 1px #eaeae9 hairline border" }
+    tag-pill: { type: badge, bg: "#ffffff", fg: "#423e3c", radius: 6, font: "weight 700", use: "Tag / channel label, hairline border" }
+    card: { type: card, bg: "#ffffff", radius: 6, use: "Article/content card, hairline #eaeae9 border, low warm shadow" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of PIXNET

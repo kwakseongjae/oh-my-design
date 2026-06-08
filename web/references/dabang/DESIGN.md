@@ -11,6 +11,45 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=dabangapp.com&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "brand pink #FF3478 stays wordmark-only; functional accent is action blue #326CF9. Strict 3-layer color discipline: pink=brand, blue=action, gray=content."
+  colors:
+    primary: "#326CF9"
+    primary-hover: "#326CF9"
+    brand: "#FF3478"
+    canvas: "#FFFFFF"
+    surface: "#FFFFFF"
+    foreground: "#222222"
+    body: "#222222"
+    muted: "#656565"
+    on-primary: "#FFFFFF"
+    hairline: "#DFDFDF"
+    surface-muted: "#F5F5F5"
+    hover-tint: "#EEF8FF"
+    success: "#1CA885"
+    danger: "#E20724"
+    warning: "#FFB600"
+    premium: "#3E26FD"
+  typography:
+    family: { sans: "Pretendard Variable" }
+    section:  { size: 20, weight: 700, lineHeight: 1.3, use: "Category section heads — position + weight, not size" }
+    ai-band:  { size: 24, weight: 400, lineHeight: 1.3, use: "AI band head — largest yet lightest, editorial signal" }
+    body:     { size: 16, weight: 400, lineHeight: 1.5, use: "Body default, #222222" }
+    chip:     { size: 14, weight: 500, lineHeight: 1.4, use: "Filter-chip label (only 500-weight role)" }
+    caption:  { size: 13, weight: 400, lineHeight: 1.4, use: "Secondary text / meta" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 8, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 2, md: 4, lg: 8, xl: 12, entry: 32, filter: 42, full: 9999 }
+  shadow:
+    none: "none — zero box-shadow across surface; depth via 1px borders + bg-color steps"
+  components_harvested: true
+  components:
+    button-entry: { type: button, fg: "#222222", radius: 32, use: "Home search-entry pill — tap to start a search" }
+    filter-chip: { type: toggle, bg: "#FFFFFF", fg: "#222222", radius: 42, font: "14/500", use: "Map filter pill, 1px #DFDFDF border; active = #326CF9 border + #EEF8FF bg" }
+    listing-card: { type: card, bg: "#FFFFFF", radius: 8, use: "Floating left-rail listing card, 1px #DFDFDF border, no shadow" }
+    map-marker: { type: badge, bg: "#FFFFFF", fg: "#222222", radius: 2, use: "Price-bearing pill marker; selected = #326CF9 fill — price is the marker" }
+    icon-control: { type: button, radius: 9999, use: "Circular bookmark / close control" }
 ---
 
 # Design System Inspiration of Dabang (다방)

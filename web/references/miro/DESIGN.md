@@ -16,6 +16,53 @@ ds:
   type: system
   description: Miro's CSS component library for apps built on the Miro platform.
   og_image: "https://www.mirotone.xyz/cover.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    brand-yellow: "#ffd02f"
+    ink: "#1c1c1e"
+    canvas: "#ffffff"
+    blue: "#5b76fe"
+    blue-pressed: "#2a41b6"
+    coral: "#ffc6c6"
+    teal: "#c3faf5"
+    teal-dark: "#187574"
+    orange: "#ffe6cd"
+    rose: "#ffd8f4"
+    pink: "#fde0f0"
+    red: "#fbd4d4"
+    success: "#00b473"
+    slate: "#555a6a"
+    placeholder: "#a5a8b5"
+    border: "#c7cad5"
+    border-input: "#e9eaef"
+  typography:
+    family: { sans: "Roobert PRO", mono: "Roobert PRO" }
+    display-hero: { size: 56, weight: 400, lineHeight: 1.15, tracking: -1.68, use: "Hero, Roobert PRO Medium" }
+    section:      { size: 48, weight: 400, lineHeight: 1.15, tracking: -1.44, use: "Section heading, Roobert PRO Medium" }
+    card-title:   { size: 24, weight: 400, lineHeight: 1.15, tracking: -0.72, use: "Card title, Roobert PRO Medium" }
+    subheading:   { size: 22, weight: 400, lineHeight: 1.35, tracking: -0.44, use: "Sub-heading, Noto Sans" }
+    feature:      { size: 18, weight: 600, lineHeight: 1.35, use: "Feature, Roobert PRO Medium" }
+    body:         { size: 18, weight: 400, lineHeight: 1.45, use: "Body, Noto Sans" }
+    body-std:     { size: 16, weight: 400, lineHeight: 1.50, tracking: -0.16, use: "Standard body, Noto Sans" }
+    button:       { size: 17.5, weight: 700, lineHeight: 1.29, tracking: 0.175, use: "Button, Roobert PRO Medium" }
+    caption:      { size: 14, weight: 400, lineHeight: 1.71, use: "Caption, Roobert PRO Medium" }
+    micro:        { size: 10.5, weight: 400, lineHeight: 0.90, use: "Uppercase micro label, Roobert PRO" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 8, md: 12, lg: 24, full: 9999 }
+  shadow:
+    ring: "rgb(224,226,232) 0px 0px 0px 1px"
+  components:
+    button-primary: { type: button, bg: "#5b76fe", fg: "#ffffff", radius: 8, padding: "7px 12px", font: "17.5px/700", use: "Primary CTA, blue" }
+    button-outline: { type: button, bg: "transparent", fg: "#1c1c1e", radius: 8, padding: "7px 12px", font: "17.5px/700", use: "Secondary outlined button" }
+    button-circle: { type: button, bg: "#ffffff", radius: 9999, padding: "12px", use: "Circular icon button, ring shadow" }
+    input: { type: input, bg: "#ffffff", fg: "#1c1c1e", radius: 8, padding: "16px", font: "16px/400", use: "Standard input" }
+    card: { type: card, bg: "#ffffff", radius: 12, padding: "16px", use: "Default card with ring-shadow border" }
+    card-pastel: { type: card, bg: "#ffc6c6", fg: "#1c1c1e", radius: 12, padding: "24px", use: "Feature card with pastel surface" }
+    badge: { type: badge, bg: "#5b76fe", fg: "#ffffff", radius: 8, padding: "4px 8px", font: "12px/400", use: "Default badge" }
+    badge-success: { type: badge, bg: "#00b473", fg: "#ffffff", radius: 8, padding: "4px 8px", use: "Success badge" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Miro

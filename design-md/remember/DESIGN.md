@@ -16,6 +16,50 @@ ds:
   type: system
   description: Remember (drama&company) UI library — public Storybook deploy with components for the business-card / B2B networking product.
   og_image: "https://cdn.rememberapp.co.kr/logos/remember/rmbr_og_image.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    action: "#000000"
+    body: "#222222"
+    white: "#ffffff"
+    on-orange: "#fffff9"
+    signup-orange: "#ff5414"
+    brand-orange: "#ff6a0d"
+    success: "#239e7b"
+    surface-mint: "#d9fcf2"
+    neutral-50: "#fafafa"
+    neutral-100: "#f2f2f2"
+    neutral-200: "#ebebeb"
+    neutral-300: "#d4d4d4"
+    neutral-400: "#bdbdbd"
+    neutral-500: "#808080"
+    neutral-700: "#424242"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    section-h2: { size: 20, weight: 600, lineHeight: 1.30, use: "Career feed section headers" }
+    card-h3:    { size: 16, weight: 400, lineHeight: 1.45, use: "Job-card and company-card titles" }
+    body:       { size: 16, weight: 400, lineHeight: 1.5, use: "Job-description, community-post body" }
+    button:     { size: 14, weight: 400, use: "Login / signup / nav buttons" }
+    cta-label:  { size: 12, weight: 400, use: "Signup conversion CTA label" }
+    caption:    { size: 12, weight: 400, use: "Timestamps, D-day badges, location" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 40, section: 56 }
+  rounded: { sm: 4, md: 6, lg: 12, full: 9999 }
+  shadow:
+    subtle: "0px 1px 2px rgba(0,0,0,0.04)"
+    standard: "0px 2px 8px rgba(0,0,0,0.08)"
+    modal: "0px 8px 24px rgba(0,0,0,0.16)"
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 4, padding: "0 12px", font: "14/400", use: "Login, primary auth, search submit — the fingerprint button" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#000000", radius: 6, padding: "0 12px", font: "14/400", use: "Sign-up secondary button on dark header" }
+    button-outline: { type: button, bg: "transparent", fg: "#ffffff", radius: 6, padding: "0 12px", font: "14/400", use: "B2B nav button, 1px white border on dark" }
+    button-growth: { type: button, bg: "#ff5414", fg: "#fffff9", radius: 4, padding: "6.5px 13px", font: "12/400", use: "Signup growth CTA, single saturated punch" }
+    filter-chip: { type: badge, bg: "transparent", fg: "#222222", radius: 4, padding: "10px 16px", font: "16/400", use: "Filter facet, 1px #d4d4d4 border", active: "#222222 bg, #ffffff text" }
+    search-input: { type: input, bg: "#f2f2f2", fg: "#222222", radius: 4, padding: "0 0 0 56px", font: "16/400", use: "Hero search, 52px tall, #808080 placeholder" }
+    job-card: { type: card, bg: "transparent", fg: "#000000", radius: 0, font: "16/400", use: "Career feed atomic unit, chromeless, density-led" }
+    company-card: { type: card, bg: "#ffffff", fg: "#222222", radius: 8, padding: "16px", use: "Premium company carousel card, 1px #ebebeb border" }
+    status-pill: { type: badge, bg: "#d9fcf2", fg: "#239e7b", radius: 4, padding: "2px 8px", font: "12/400", use: "Accepted-status badge in history" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Remember (리멤버)
