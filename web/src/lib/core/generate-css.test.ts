@@ -131,28 +131,29 @@ describe("generateVanillaCss", () => {
 // ── applyOverridesToMd: baseline transforms ───────────────────────
 
 describe("applyOverridesToMd – baseline", () => {
-  it("replaces title when any override is set", () => {
+  it("drops the title H1 when any override is set", () => {
     const out = applyOverridesToMd(
       vercelMd, "Vercel", "#171717", "Geist",
       { ...baseOverrides, primaryColor: "#6366f1" },
     );
-    expect(out).toMatch(/^# Custom Design System \(based on Vercel\)/m);
     expect(out).not.toMatch(/^# Design System Inspiration of Vercel/m);
+    expect(out).not.toContain("# Custom Design System");
   });
 
-  it("replaces title when any style preference is set", () => {
+  it("drops the title H1 when any style preference is set", () => {
     const out = applyOverridesToMd(
       vercelMd, "Vercel", "#171717", "Geist",
       baseOverrides, undefined, { buttonStyle: "sharp" },
     );
-    expect(out).toMatch(/^# Custom Design System \(based on Vercel\)/m);
+    expect(out).not.toContain("# Custom Design System");
+    expect(out).not.toMatch(/^# Design System Inspiration of Vercel/m);
   });
 
-  it("keeps the reference's original title for as-is export (no overrides, no prefs)", () => {
+  it("drops the title H1 for as-is export too (no overrides, no prefs)", () => {
     const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides);
-    // Untouched — this is the "pure original" contract used by the Use-as-is
-    // button on the selector. The reference's own heading is preserved.
-    expect(out).toMatch(/^# Design System Inspiration of Vercel/m);
+    // The boilerplate "# Design System Inspiration of X" heading is removed in
+    // every mode — the showcase header already names the reference.
+    expect(out).not.toMatch(/^# Design System Inspiration of Vercel/m);
     expect(out).not.toContain("# Custom Design System");
   });
 
@@ -310,9 +311,9 @@ describe("applyOverridesToMd – Philosophy Layer", () => {
       { ...baseOverrides, primaryColor: "#123456" },
       undefined, undefined, false,
     );
-    // With an override set, the customized title applies; strip did nothing
-    // because this ref has no Philosophy Layer to remove.
-    expect(out).toMatch(/^# Custom Design System \(based on TestRef\)/m);
+    // Title H1 is dropped; the Philosophy strip is a no-op here (none present).
+    expect(out).not.toMatch(/^# Design System Inspiration of TestRef/m);
+    expect(out).not.toContain("# Custom Design System");
   });
 });
 
