@@ -16,6 +16,53 @@ ds:
   type: brand
   description: Cohere's press kit with logos, symbols, and media resources.
   og_image: "https://cdn.sanity.io/images/rjtqmwfu/web3-prod/0750efbc3db33b1a67bc77575525b076f0137f26-1200x630.jpg?w=1200&h=630"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary_color #39594d is the brand green token; live UI is near-monochrome — primary interactive accent is Interaction Blue #1863dc"
+  colors:
+    primary: "#1863dc"
+    primary-hover: "#1863dc"
+    brand: "#39594d"
+    canvas: "#ffffff"
+    foreground: "#000000"
+    muted: "#93939f"
+    on-primary: "#ffffff"
+    near-black: "#212121"
+    deep-dark: "#17171c"
+    ring-blue: "#4c6ee6"
+    focus-purple: "#9b60aa"
+    snow: "#fafafa"
+    surface-alt: "#f2f2f2"
+    hairline: "#f2f2f2"
+    border-cool: "#d9d9dd"
+    border-light: "#e5e7eb"
+  typography:
+    family: { display: "CohereText", sans: "Unica77 Cohere Web", mono: "CohereMono" }
+    display-hero:    { size: 72, weight: 400, lineHeight: 1.00, tracking: -1.44, use: "Hero, serif authority" }
+    display-secondary: { size: 60, weight: 400, lineHeight: 1.00, tracking: -1.2, use: "Large section headings" }
+    section:         { size: 48, weight: 400, lineHeight: 1.20, tracking: -0.48, use: "Feature section titles" }
+    subheading:      { size: 32, weight: 400, lineHeight: 1.20, tracking: -0.32, use: "Card headings, feature names" }
+    feature-title:   { size: 24, weight: 400, lineHeight: 1.30, use: "Smaller section titles" }
+    body-lg:         { size: 18, weight: 400, lineHeight: 1.40, use: "Intro paragraphs" }
+    body:            { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body, button text" }
+    button-medium:   { size: 14, weight: 500, lineHeight: 1.71, use: "Smaller buttons, emphasized labels" }
+    caption:         { size: 14, weight: 400, lineHeight: 1.40, use: "Metadata, descriptions" }
+    uppercase-label: { size: 14, weight: 400, lineHeight: 1.40, tracking: 0.28, use: "Uppercase section labels" }
+    small:           { size: 12, weight: 400, lineHeight: 1.40, use: "Smallest text, footer links" }
+    code-micro:      { size: 8, weight: 400, lineHeight: 1.40, tracking: 0.16, use: "Tiny uppercase code labels" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 40, section: 60 }
+  rounded: { sm: 4, md: 8, lg: 16, xl: 20, signature: 22, full: 9999 }
+  shadow:
+    soft: "none — depth via background contrast and cool-gray borders"
+  components:
+    button-ghost: "transparent fill, #000000 text; hover text shifts to #1863dc at 0.8 opacity; focus 2px solid #1863dc outline — the base button style"
+    button-dark-solid: "dark/black fill, white text, pill or standard radius — CTA on light surfaces"
+    button-outlined: "border-based containment for secondary actions"
+    card: "white #ffffff surface, signature 22px radius, 1px solid #f2f2f2 (or #d9d9dd emphasized), shadow-free"
+    input: "focus border #9b60aa 1px solid; focus outline 2px solid #1863dc"
+    uppercase-code-tag: "CohereMono uppercase with positive letter-spacing as section markers"
+    purple-hero-band: "full-width deep purple section housing product screenshots at 22px radius"
 ---
 
 # Design System Inspiration of Cohere

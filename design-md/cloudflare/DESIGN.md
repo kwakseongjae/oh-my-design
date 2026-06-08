@@ -11,6 +11,65 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "Cloudflare Orange #F6821F is the singular brand + primary-action color; rationed to one or two places per screen. Warm near-black text, never pure #000."
+  colors:
+    primary: "#F6821F"
+    primary-hover: "#E2700B"
+    primary-pressed: "#D9700F"
+    brand: "#F6821F"
+    brand-gradient-end: "#FAAD3F"
+    canvas: "#FFFFFF"
+    surface: "#FFFFFF"
+    surface-alt: "#F7F7F7"
+    foreground: "#1D1F20"
+    body: "#36393A"
+    muted: "#717174"
+    placeholder: "#999999"
+    hairline: "#EDEDED"
+    border-strong: "#D9D9D9"
+    on-primary: "#FFFFFF"
+    orange-tint: "#FDF3E7"
+    success: "#2FB344"
+    error: "#BD2528"
+    warning: "#F6C549"
+    info: "#2C7CB0"
+    dark-bg: "#15171A"
+    dark-surface: "#262A2E"
+    dark-border: "#3A3F44"
+    dark-text: "#E4E6E7"
+  typography:
+    family: { sans: "Inter", mono: "JetBrains Mono" }
+    display-hero: { size: 56, weight: 700, lineHeight: 1.1, tracking: -0.02, use: "Marketing hero headline" }
+    display:      { size: 40, weight: 700, lineHeight: 1.15, tracking: -0.02, use: "Major section headers" }
+    heading-1:    { size: 32, weight: 700, lineHeight: 1.2, tracking: -0.01, use: "Page titles" }
+    heading-2:    { size: 24, weight: 600, lineHeight: 1.3, tracking: -0.01, use: "Section / card group titles" }
+    heading-3:    { size: 20, weight: 600, lineHeight: 1.4, use: "Card headings, panel titles" }
+    subtitle:     { size: 18, weight: 600, lineHeight: 1.45, use: "Lead-in / dashboard section labels" }
+    body-large:   { size: 16, weight: 400, lineHeight: 1.6, use: "Marketing paragraphs" }
+    body:         { size: 14, weight: 400, lineHeight: 1.55, use: "Dashboard standard text" }
+    body-small:   { size: 13, weight: 400, lineHeight: 1.5, use: "Table cells, secondary info" }
+    caption:      { size: 12, weight: 400, lineHeight: 1.5, use: "Metadata, timestamps, helper text" }
+    label-eyebrow: { size: 12, weight: 600, lineHeight: 1.4, tracking: 0.06, use: "Section eyebrows, table headers, uppercase" }
+    code-mono:    { size: 13, weight: 400, lineHeight: 1.6, use: "DNS records, IPs, API tokens, code" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 6, lg: 8, xl: 12, full: 9999 }
+  shadow:
+    subtle: "rgba(0,0,0,0.06) 0px 1px 3px 0px"
+    raised: "rgba(0,0,0,0.08) 0px 4px 16px 0px"
+    floating: "rgba(0,0,0,0.12) 0px 8px 24px 0px"
+    modal: "rgba(0,0,0,0.18) 0px 12px 32px 0px"
+  components:
+    button-primary: "Cloudflare Orange #F6821F fill, white text, 14px/600 Inter, 40px tall, 6px radius, 0 20px padding; hover #E2700B"
+    button-secondary: "white fill, #36393A text, 1px #D9D9D9 border, 6px radius; hover border #A1A1A1 bg #FAFAFA"
+    button-ghost: "transparent, #F6821F text, 6px radius; hover #FDF3E7 bg"
+    card: "white surface, 1px #EDEDED border, 8px radius, 24px padding, subtle neutral shadow"
+    status-pill: "fully rounded 9999px, 12px/600 Inter, 2px 10px padding; green/red/yellow tinted bg + colored dot"
+    input: "white fill, 1px #D9D9D9 border, 6px radius, 8px 12px padding; focus border #F6821F + 3px rgba(246,130,31,0.2) ring"
+    toggle: "on #F6821F / off #D9D9D9, white thumb, pill shape"
+    code-block: "#F5F5F5 light / #15171A dark, 1px #EDEDED border, 6px radius, 13px/400 JetBrains Mono"
 ---
 
 # Design System Inspiration of Cloudflare

@@ -10,6 +10,46 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=classting.com&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  colors:
+    primary: "#00C896"
+    primary-hover: "#17A27E"
+    brand: "#00C896"
+    canvas: "#FAFAFB"
+    foreground: "#424242"
+    muted: "#757575"
+    on-primary: "#FFFFFF"
+    surface: "#FFFFFF"
+    surface-mint: "#EDF9F6"
+    surface-lavender: "#FAF5FF"
+    green-050: "#EFFFFA"
+    accent-purple: "#9F7AEA"
+    accent-orange: "#ED8936"
+    accent-blue: "#4299E1"
+    outline: "#ED872D"
+    footer: "#000000"
+  typography:
+    family: { sans: "Noto Sans KR", mono: "Noto Sans KR" }
+    body:        { size: 16, weight: 400, lineHeight: 1.5, use: "Body copy" }
+    label:       { size: 14, weight: 500, lineHeight: 1.0, use: "Sub-button / label" }
+    display-md:  { size: 28, weight: 700, use: "Section headings (.display-md)" }
+    display-lg:  { size: 42, weight: 700, lineHeight: 1.29, use: "Major feature headings (.display-lg)" }
+    display-x-lg: { size: 56, weight: 700, lineHeight: 1.21, use: "Hero headings (.display-x-lg)" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 6, md: 8, lg: 16, pill: 24, full: 9999 }
+  shadow:
+    subtle: "rgba(0,0,0,0.05) 0px 0px 12px"
+    raised: "rgba(0,0,0,0.08) 0px 2px 12px"
+    accent: "rgba(0,200,150,0.08) 0px 5px 25px"
+  components:
+    button-primary: "Green #00C896 fill, white text, 8px radius, 15px 16px padding, 14px/500"
+    button-black: "#424242 fill, white text, 8px radius, alt CTA"
+    button-outline: "transparent, #ED872D text + 1px #ED872C border, 8px radius"
+    card: "white surface, 16px radius, 24px 20px padding, subtle 12px shadow"
+    section-banner: "#00C896 fill, 24px radius, 64px 106px padding (Consult)"
+    tag-mint: "#EDF9F6 bg, 6px radius, 8px padding, 14px/500"
 ---
 
 # Classting
