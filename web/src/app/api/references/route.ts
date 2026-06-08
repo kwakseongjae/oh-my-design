@@ -100,14 +100,17 @@ export async function GET() {
     .filter(e => existsSync(join(refDir, e.id, 'DESIGN.md')))
     .map(e => {
       const md = readFileSync(join(refDir, e.id, 'DESIGN.md'), 'utf-8');
+      // Prefer the reconciled machine-readable token block when present; fall
+      // back to the legacy prose-regex extraction for refs without tokens.
       return {
         id: e.id,
         name: e.displayName,
         category: CATEGORY_LABELS[e.category] || e.category,
         country: COUNTRY_LABELS[e.country] || e.country,
-        primaryColor: extractPrimaryColor(md, e.primaryColor),
-        background: extractBackground(md),
+        primaryColor: e.tokens?.color?.primary || extractPrimaryColor(md, e.primaryColor),
+        background: e.tokens?.color?.background || extractBackground(md),
         hot: hotIds.has(e.id),
+        tokens: e.tokens ?? null,
       };
     })
     .sort((a, b) => {
