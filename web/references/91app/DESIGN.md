@@ -9,6 +9,36 @@ logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=91app.com&sz=128"
 verified: "2026-06-01"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "navy #061C3D is the structural primary (text + headings + primary button); coral #E85040 is the lone action accent, kept rare"
+  colors:
+    primary: "#061C3D"
+    brand: "#061C3D"
+    foreground: "#061C3D"
+    body: "#061C3D"
+    heading: "#061C3D"
+    accent: "#E85040"
+    error: "#CB200E"
+    muted: "#F7F6FB"
+    canvas: "#FFFFFF"
+    on-primary: "#FFFFFF"
+  typography:
+    family: { sans: "Noto Sans TC", fallback: "Helvetica" }
+    hero:   { size: 44, weight: 700, use: "Top-of-page hero heading in structural navy, carries brand authority" }
+    body:   { size: 16, weight: 400, use: "Standard reading text, calm and scannable" }
+    button: { size: 16, weight: 600, use: "Primary / neutral button label" }
+    button-accent: { size: 16, weight: 500, use: "Coral CTA label" }
+  spacing: { sm: 8, base: 16, lg: 24, xl: 32 }
+  rounded: { sm: 3, lg: 16 }
+  shadow:
+    flat: "none — separation via color/fill contrast, no literal shadow stacking"
+  components:
+    button-primary: "navy #061C3D fill, white text, 16px radius, 48px height, 16px/600 — dominant action"
+    button-coral: "coral #E85040 fill, white text, 16px radius, 40px height, 16px/500 — lone decisive accent, kept rare"
+    button-neutral: "neutral #F7F6FB fill, navy #061C3D text, 3px radius, 48px height, 16px/600 — secondary action"
+    hero-heading: "transparent, navy #061C3D text, 44px/700 Noto Sans TC — top-of-page authority"
 omd: "0.1"
 ---
 # Design System Inspiration of 91APP

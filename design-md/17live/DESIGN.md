@@ -9,6 +9,44 @@ logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=17.live&sz=128"
 verified: "2026-05-19"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = 17 Pink #FF4F6E; dark-stage palette and non-primary hexes are grounded approximations pending live re-inspection (see §2 note)"
+  colors:
+    primary: "#FF4F6E"
+    primary-hover: "#E8455F"
+    canvas: "#121212"
+    surface-1: "#1C1C1E"
+    surface-2: "#2C2C2E"
+    foreground: "#FFFFFF"
+    on-primary: "#FFFFFF"
+    rank-gold: "#FFC83D"
+    vip-purple: "#8B5CF6"
+    success: "#27C76F"
+    warning: "#F5A623"
+    error: "#FF453A"
+  typography:
+    family: { default: "-apple-system, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif", tc: "\"PingFang TC\", \"Microsoft JhengHei\", sans-serif", jp: "\"Hiragino Kaku Gothic Pro\", \"Meiryo\", sans-serif", sc: "\"PingFang SC\", \"Microsoft YaHei\", sans-serif" }
+    micro:    { size: 11, weight: 700, use: "Viewer count, LIVE badge, gamified numbers" }
+    caption:  { size: 12, weight: 400, use: "Chat meta, captions, metadata" }
+    body:     { size: 14, weight: 400, use: "Chat message, body text" }
+    liver-name: { size: 16, weight: 700, use: "LIVER name, list title, key labels" }
+    section:  { size: 20, weight: 600, use: "Section heading, tab labels" }
+    hero:     { size: 28, weight: 700, use: "Hero / spotlight headline" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24 }
+  rounded: { sm: 4, md: 12, lg: 24, full: 9999 }
+  shadow:
+    sheet: "soft top shadow over rgba(0,0,0,0.5) scrim"
+  components:
+    button-primary: "17 Pink #FF4F6E fill, white text, 24px pill radius, 16px/700; pressed #E8455F"
+    button-follow: "#FF4F6E fill white text (not-following) → transparent + 1px rgba(255,255,255,0.3) (following), 16px pill, 14px/600"
+    button-gift: "gift gradient #FF4F6E→#FF2D8E fill, white text, 20px radius — highest-energy transaction"
+    input: "#2C2C2E fill, white text, 12px radius, placeholder rgba(255,255,255,0.45), focus 1px #FF4F6E"
+    card: "#1C1C1E surface, 12px radius, 12px padding"
+    badge-live: "#FF4F6E (or #27C76F dot) fill, white text, 4px radius, 11px/700"
+    badge-rank: "#FFC83D gold fill, #121212 text, 50% or 4px radius — #1 status"
+    avatar: "50% radius, optional pink/gradient ring for live or VIP"
 omd: "0.1"
 ---
 

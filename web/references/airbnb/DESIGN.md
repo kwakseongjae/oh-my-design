@@ -16,6 +16,63 @@ ds:
   type: brand
   description: Airbnb's brand guidelines hub with logo, color, and visual identity rules.
   og_image: "https://firebasestorage.googleapis.com/v0/b/standards-site-beta.appspot.com/o/documents%2Fa130cd31136%2F099b28f7432%2Fmeta%2Fstandards---project-thumbnail.png?alt=media&token=b1ee4a9a-cb2a-4dd9-ae43-01dd309d6f17"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = live Rausch Red #ff385c (--palette-bg-primary-core); brand frontmatter primary_color is legacy Rausch #ff5a5f; single brand voltage, photography-first"
+  colors:
+    primary: "#ff385c"
+    primary-active: "#e00b41"
+    brand: "#ff5a5f"
+    luxe: "#460479"
+    plus: "#92174d"
+    canvas: "#ffffff"
+    foreground: "#222222"
+    focused: "#3f3f3f"
+    body: "#6a6a6a"
+    muted: "#929292"
+    on-primary: "#ffffff"
+    error: "#c13515"
+    error-hover: "#b32505"
+    link: "#428bff"
+    hairline: "#dddddd"
+    border: "#c1c1c1"
+    surface: "#f2f2f2"
+    placeholder: "#717171"
+    disabled-bg: "#dddddd"
+  typography:
+    family: { sans: "Airbnb Cereal VF", fallback: "Circular, -apple-system, system-ui, Roboto, Helvetica Neue" }
+    section-heading:    { size: 28, weight: 700, lineHeight: 1.43, use: "Primary headings" }
+    card-heading:       { size: 22, weight: 600, lineHeight: 1.18, tracking: -0.44, use: "Category / card titles" }
+    card-heading-medium: { size: 22, weight: 500, lineHeight: 1.18, tracking: -0.44, use: "Lighter card-title variant" }
+    subheading:         { size: 21, weight: 700, lineHeight: 1.43, use: "Bold sub-headings" }
+    feature-title:      { size: 20, weight: 600, lineHeight: 1.20, tracking: -0.18, use: "Feature headings" }
+    ui-medium:          { size: 16, weight: 500, lineHeight: 1.25, use: "Nav, emphasized text" }
+    ui-semibold:        { size: 16, weight: 600, lineHeight: 1.25, use: "Strong emphasis" }
+    button:             { size: 16, weight: 500, lineHeight: 1.25, use: "Button labels" }
+    body:               { size: 14, weight: 400, lineHeight: 1.43, use: "Standard body, links" }
+    body-medium:        { size: 14, weight: 500, lineHeight: 1.29, use: "Medium body" }
+    caption-salt:       { size: 14, weight: 600, lineHeight: 1.43, use: "Caption with salt feature" }
+    small:              { size: 13, weight: 400, lineHeight: 1.23, use: "Descriptions" }
+    tag:                { size: 12, weight: 400, lineHeight: 1.33, use: "Tags, prices" }
+    badge:              { size: 11, weight: 600, lineHeight: 1.18, use: "Badge with salt feature" }
+    micro-uppercase:    { size: 8, weight: 700, lineHeight: 1.25, tracking: 0.32, use: "Uppercase micro labels" }
+  spacing: { xs: 4, sm: 8, base: 16, md: 22, lg: 24, xl: 32 }
+  rounded: { sm: 4, md: 8, badge: 14, lg: 20, xl: 32, full: 9999 }
+  shadow:
+    card: "rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px, rgba(0,0,0,0.1) 0px 4px 8px"
+    hover: "rgba(0,0,0,0.08) 0px 4px 12px"
+    listing-hover: "rgba(0,0,0,0.12) 0px 8px 24px"
+    focus-ring: "rgb(255,255,255) 0px 0px 0px 4px"
+  components:
+    button-primary: "Rausch #ff385c fill, white text, 8px radius, 14px 24px padding, 16px weight 600; active #e00b41; disabled #dddddd"
+    button-secondary: "white fill, #222222 text + 1px #222222 border, 8px radius"
+    search-orb: "Rausch #ff385c fill, white icon, 48px round (9999px), search submit"
+    icon-button-circle: "#f2f2f2 fill, #222222 icon, 50% radius, 32x32 dense control"
+    listing-card: "white surface, 12px radius, no shadow (photography-led); hover scale + listing-hover shadow"
+    card-standard: "white surface, 12px radius, 24px padding, three-layer card shadow"
+    search-field: "white fill, 1px #dddddd border, 50px pill radius, 66px tall header search bar"
+    category-pill: "transparent, #222222 text, 14px weight 500; active 2px #222222 bottom border"
 ---
 
 # Design System Inspiration of Airbnb

@@ -9,6 +9,58 @@ logo:
   type: favicon
   slug: "https://www.baemin.com/favicon.ico"
 verified: "2026-05-15"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = Baemin Mint #2AC1BC (app surface accent); teal #12B886 is the secondary UI green for confirmation fills"
+  colors:
+    primary: "#2AC1BC"
+    brand: "#2AC1BC"
+    canvas: "#ffffff"
+    surface: "#F8F9FA"
+    surface-subtle: "#F1F3F5"
+    foreground: "#212529"
+    body: "#495057"
+    muted: "#868E96"
+    disabled: "#ADB5BD"
+    on-primary: "#ffffff"
+    accent: "#12B886"
+    accent-light: "#20C997"
+    error: "#FF6B6B"
+    warning: "#FFB347"
+    info: "#74C0FC"
+    promo: "#FF0000"
+    hairline: "#DEE2E6"
+    border-strong: "#343A40"
+  typography:
+    family: { ui: "-apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif", mono: "SF Mono, SFMono-Regular, Menlo, Consolas, monospace", brand: "BMHANNA Pro", playful: "BMJua" }
+    display-hero:  { size: 42, weight: 700, lineHeight: 1.20, use: "Splash screens, brand moments (BMHANNA Pro)" }
+    display-large: { size: 36, weight: 700, lineHeight: 1.25, use: "Campaign titles, section heroes" }
+    heading-large: { size: 24, weight: 700, lineHeight: 1.33, use: "Feature section titles" }
+    heading:       { size: 20, weight: 700, lineHeight: 1.40, use: "Card headings, menu categories" }
+    title:         { size: 18, weight: 600, lineHeight: 1.44, use: "Restaurant names, item titles" }
+    body-large:    { size: 16, weight: 400, lineHeight: 1.50, use: "Descriptions, menu details" }
+    body:          { size: 14, weight: 400, lineHeight: 1.57, use: "Standard reading, reviews" }
+    body-small:    { size: 13, weight: 400, lineHeight: 1.54, use: "Secondary info, ingredients" }
+    caption:       { size: 12, weight: 400, lineHeight: 1.50, use: "Timestamps, delivery times" }
+    price:         { size: 20, weight: 700, lineHeight: 1.30, use: "Menu item prices, order totals" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 40, max: 48 }
+  rounded: { sm: 4, md: 8, lg: 12, search: 20, full: 9999 }
+  shadow:
+    natural: "0px 1px 3px rgba(0,0,0,0.04)"
+    deep: "0px 2px 8px rgba(0,0,0,0.08)"
+    sharp: "0px 4px 12px rgba(0,0,0,0.10)"
+    outlined: "0px 4px 16px rgba(0,0,0,0.12)"
+    crisp: "0px 8px 24px rgba(0,0,0,0.16)"
+  components:
+    button-primary: "Baemin Mint #2AC1BC fill, white text, 8px radius, 16px weight 700, 48px height"
+    button-ghost: "transparent fill, mint #2AC1BC text + 1px mint border, 8px radius"
+    button-neutral: "#F8F9FA fill, #212529 text, 8px radius"
+    button-destructive: "#FF6B6B fill, white text"
+    card: "white surface, 8px radius (12px featured), 1px #DEE2E6 border or deep shadow"
+    restaurant-card: "12px radius, 16:9 photo with 12px top radius, name 18px/700, rating star #FFB347, 16px padding"
+    tag: "#F1F3F5 bg, #495057 text, pill radius, 12px weight 500"
+    search-bar: "#F8F9FA bg, 20px radius, 44px height, left search icon, placeholder #ADB5BD"
 omd: "0.1"
 ---
 

@@ -16,6 +16,52 @@ ds:
   type: system
   description: Apple's official design guidelines for iOS, macOS, watchOS, and visionOS.
   og_image: "https://docs.developer.apple.com/tutorials/developer-og.jpg"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "single chromatic accent = Apple Blue #0071e3 (interactive only); link #0066cc on light / #2997ff on dark; binary canvas = #000000 dark / #f5f5f7 light"
+  colors:
+    primary: "#0071e3"
+    brand: "#000000"
+    canvas: "#f5f5f7"
+    canvas-dark: "#000000"
+    foreground: "#1d1d1f"
+    on-primary: "#ffffff"
+    surface: "#ffffff"
+    surface-dark: "#272729"
+    link: "#0066cc"
+    link-on-dark: "#2997ff"
+  typography:
+    family: { display: "SF Pro Display", text: "SF Pro Text" }
+    display-hero:   { size: 56, weight: 600, lineHeight: 1.07, tracking: -0.28, use: "Product launch headlines, maximum impact" }
+    section:        { size: 40, weight: 600, lineHeight: 1.10, use: "Feature section titles" }
+    tile-heading:   { size: 28, weight: 400, lineHeight: 1.14, tracking: 0.196, use: "Product tile headlines" }
+    card-title:     { size: 21, weight: 700, lineHeight: 1.19, tracking: 0.231, use: "Bold card headings" }
+    subheading:     { size: 21, weight: 400, lineHeight: 1.19, tracking: 0.231, use: "Regular card headings" }
+    nav-heading:    { size: 34, weight: 600, lineHeight: 1.47, tracking: -0.374, use: "Large navigation headings" }
+    sub-nav:        { size: 24, weight: 300, lineHeight: 1.50, use: "Light sub-navigation text" }
+    body:           { size: 17, weight: 400, lineHeight: 1.47, tracking: -0.374, use: "Standard reading text" }
+    body-emphasis:  { size: 17, weight: 600, lineHeight: 1.24, tracking: -0.374, use: "Emphasized body text, labels" }
+    button-lg:      { size: 18, weight: 300, lineHeight: 1.00, use: "Large button text, light weight" }
+    button:         { size: 17, weight: 400, lineHeight: 2.41, use: "Standard button text" }
+    link:           { size: 14, weight: 400, lineHeight: 1.43, tracking: -0.224, use: "Body links, Learn more" }
+    caption:        { size: 14, weight: 400, lineHeight: 1.29, tracking: -0.224, use: "Secondary text, descriptions" }
+    micro:          { size: 12, weight: 400, lineHeight: 1.33, tracking: -0.12, use: "Fine print, footnotes" }
+    nano:           { size: 10, weight: 400, lineHeight: 1.47, tracking: -0.08, use: "Legal text, smallest size" }
+  spacing: { xs: 2, sm: 4, base: 8, md: 11, lg: 14, xl: 17, xxl: 20, section: 24 }
+  rounded: { sm: 5, md: 8, lg: 12, full: 980 }
+  shadow:
+    card: "rgba(0,0,0,0.22) 3px 5px 30px 0px"
+    nav-glass: "backdrop-filter: saturate(180%) blur(20px)"
+  components:
+    button-marketing-pill: "Apple Blue #0071e3 fill, white text, 980px radius, 11px 21px, 17px weight 400"
+    button-neutral-pill: "#1d1d1f fill, white text, 980px radius, paired secondary CTA"
+    button-commerce-compact: "Apple Blue #0071e3 fill, white text, 8px radius, 8px 15px, 14px — checkout actions"
+    card-white: "#ffffff surface, 28px radius, no border, no shadow — lifts via color contrast"
+    card-dark: "#000000 surface, white text, 28px radius — max-contrast product detail"
+    input-search: "#e8e8ed fill, 8px radius, active 2px solid #2997ff"
+    nav-global: "rgba(250,250,252,0.8) translucent fog, backdrop blur(20px), 44px height"
+    text-link: "transparent, #0066cc text, underline on hover — link color, not a pill"
 ---
 
 # Design System Inspiration of Apple
