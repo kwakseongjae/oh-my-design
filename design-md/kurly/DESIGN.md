@@ -4,7 +4,7 @@ name: Kurly
 country: KR
 category: ecommerce
 homepage: "https://www.kurly.com"
-primary_color: "#000000"
+primary_color: "#5f0080"
 logo:
   type: favicon
   slug: "https://res.kurly.com/icons/favicon-128x128.png"

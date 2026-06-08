@@ -4,7 +4,7 @@ name: QANDA
 country: KR
 category: consumer-tech
 homepage: "https://qanda.ai"
-primary_color: "#000000"
+primary_color: "#ff5500"
 logo:
   type: favicon
   slug: "https://qanda.ai/favicon.ico"

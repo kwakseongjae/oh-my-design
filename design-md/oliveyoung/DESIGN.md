@@ -5,7 +5,7 @@ display_name_kr: Olive Young (올리브영)
 country: KR
 category: ecommerce
 homepage: "https://www.oliveyoung.co.kr"
-primary_color: "#000000"
+primary_color: "#9bce26"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=oliveyoung.co.kr&sz=256"

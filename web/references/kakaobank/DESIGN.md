@@ -4,7 +4,7 @@ name: KakaoBank
 country: KR
 category: fintech
 homepage: "https://www.kakaobank.com"
-primary_color: "#000000"
+primary_color: "#ffe300"
 logo:
   type: simpleicons
   slug: kakaotalk
