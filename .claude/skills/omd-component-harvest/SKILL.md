@@ -26,7 +26,15 @@ description: "기존 references/<id>의 §8 Component Patterns + frontmatter `to
    - 공개 DS: 컴포넌트 인덱스 + 각 컴포넌트의 shape(radius)/size(height·padding)/color roles/states를 **실제 토큰명으로** lift.
 4. **§8 재작성** — `## 8. Component Patterns`를 그룹화(Actions/Navigation/Forms/Data display/Overlays/Feedback & Status)된 `**component**` 항목들로. 각 항목에 구체 스펙(radius/height/padding/color/states). 소스가 빈약하면 적게 — 발명 금지.
    - `## Responsive Behavior` 표(브레이크포인트 + 변화)도 공개 DS에 있으면 보강.
-5. **tokens 블록** — `tokens.components` 맵 갱신(헤비면 15+, cap이면 3~6). `tokens.components_harvested: true` 추가. 공개 DS 출처면 `source: design-system`도 검토.
+5. **tokens 블록 (구조화 — 렌더러 직결)** — `tokens.components`를 **구조화 객체**로 작성(헤비면 15+, cap이면 3~6). 렌더러(`componentsFromTokens`)가 이걸 직접 읽어 그린다(프로즈 §4 파싱보다 우선). flat 문자열 금지.
+   ```yaml
+   components:
+     button-primary: { type: button, bg: "#1f883d", fg: "#ffffff", radius: "6px", height: "32px", padding: "0 16px", font: "14px / 600", states: "hover #1a7f37 · disabled #94d3a2", use: "Primary constructive action" }
+     underline-tab:   { type: tab, active: "text #1f2328 + 2px bottom border #fd8c73", disabled: "#59636e label", use: "Repo tabs" }
+   ```
+   - **`type` 필수** — `button input card badge tab toggle toast dialog listItem avatar` 중 정확히 하나. 이 밖은 가장 가까운 것으로(table/tooltip/banner/empty-state→card, modal/sheet/overlay→dialog, segmented/nav→tab, chip/label/counter→badge, stepper/switch→toggle). **무엇도 버리지 않음.**
+   - 선택 필드(소스에 있는 것만): `bg fg border radius padding height font shadow hover focus active disabled states use`. tab은 `active`에 "Npx bottom border #hex" 형태로 넣어야 언더라인이 그려짐.
+   - `tokens.components_harvested: true` 추가. 공개 DS 출처면 `source: design-system`. (상세: `spec/components-schema.md`)
 6. **미러** — `design-md/<id>/DESIGN.md` 복사.
 7. **검증 + 트래킹** — `cd web && node scripts/build-registry.mjs && npx vitest run` (정합성·proof·leak 게이트 통과). `node scripts/token-status.mjs --components`로 harvested 카운트 +1 확인.
 

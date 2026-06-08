@@ -140,3 +140,40 @@ Most refs (Toss/Apple/Spotify/Cursor/Stripe + many others) already use the varia
 3. Reformatting legacy free-prose subsections into the variant-block shape without rewording prose-only notes.
 
 Migration order is brand-distinctive products first (5 batches of 5 by influence) then dashboard-style refs (where the gap is small).
+
+---
+
+## Structured component tokens (canonical machine source — 2026-06)
+
+The preview now prefers a **structured `tokens.components`** block in the
+frontmatter over prose §4 parsing (`componentsFromTokens()` in
+`extract-tokens.ts`). When present, it is the source of truth the renderer draws
+from; prose §4 remains for human reading and as a fallback for un-migrated refs.
+
+Why: prose §4 parsing drops components whose subsection heading doesn't classify
+to a render type (getdesign-style groups like "Actions"/"Overlays"), and only
+scans §4 (rich harvests written to §8 were invisible). Structured tokens carry
+an explicit per-component `type`, so neither problem occurs.
+
+### Format (flow style, one component per line)
+
+```yaml
+tokens:
+  components_harvested: true        # set once a harvest pass has run (rich OR honest cap)
+  components:
+    button-primary: { type: button, bg: "#1f883d", fg: "#ffffff", radius: "6px", height: "32px", padding: "0 16px", border: "1px solid #1f883d", font: "14px / 600", states: "hover #1a7f37 · disabled #94d3a2", use: "Primary constructive action" }
+    underline-tab:   { type: tab, active: "text #1f2328 + 2px bottom border #fd8c73", disabled: "#59636e label", use: "Repo tabs" }
+    data-table:      { type: card, bg: "#ffffff", border: "1px solid #d0d7de", radius: "6px", use: "Repo file list / issues table" }
+```
+
+### Fields
+
+- **`type`** (required) — the render type, EXACTLY one of: `button input card badge tab toggle toast dialog listItem avatar`. For components outside this set, pick the closest: table/tooltip/banner/list/empty-state → `card`; modal/sheet/overlay → `dialog`; segmented-control/nav → `tab`; chip/label/counter → `badge`; stepper/switch → `toggle`. Every component gets a type — nothing is dropped.
+- Optional, include only what the source gives: `bg` `fg` `border` `radius` `padding` `height` `font` (`"<size> / <weight>"`) `shadow` `hover` `focus` `active` `disabled` `states` `use`.
+- Tabs: put the active spec in `active` (e.g. `"text #1f2328 + 2px bottom border #fd8c73"`) so the renderer draws the underline indicator (it parses `"<N>px bottom border <hex>"`).
+
+### Rules
+
+- Component bg/fg hexes should reference colors already grounded in the prose — do not invent new hexes.
+- 6-digit `#rrggbb` only; space before every `{`; one component per line; valid YAML flow mappings.
+- `omd-component-harvest` emits this block. Flat-string `components:` values are legacy/summary and trigger the prose-§4 fallback.
