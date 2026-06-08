@@ -18,6 +18,8 @@ import { useState, useCallback } from "react";
 import { Check, Copy, ExternalLink } from "lucide-react";
 import { getLogoUrl, getLogoFallbackUrl } from "@/lib/logos";
 import { isLight } from "@/lib/core/color";
+import { REGISTRY_BY_ID } from "@/data/registry.generated";
+import { TokensPanel } from "./tokens-panel";
 import {
   applyOverrides,
   type ParsedTokens,
@@ -1066,10 +1068,18 @@ export function ReferencePreview({
   const tokens = applyOverrides(rawTokens, overrides);
   const prefs = overrides?.stylePreferences;
   const wrapperClass = embedded ? "" : "min-h-screen";
+  // Reconciled, machine-readable token block (frontmatter → registry), when present.
+  const regId = tokens.identity.id;
+  const regTokens = regId ? REGISTRY_BY_ID[regId]?.tokens : null;
 
   return (
     <div className={wrapperClass}>
       <HeroSection tokens={tokens} homepageUrl={homepageUrl} />
+      {regTokens && (
+        <div className="mx-auto max-w-5xl px-6">
+          <TokensPanel id={regId!} tokens={regTokens} />
+        </div>
+      )}
       <ColorPaletteSection tokens={tokens} />
       <TypographySection tokens={tokens} />
       <SpacingShapeSection tokens={tokens} />

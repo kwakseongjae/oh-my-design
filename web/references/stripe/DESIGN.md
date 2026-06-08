@@ -17,16 +17,39 @@ tokens:
   note: "primary = live interactive purple (#533afd); brand = documented logo/marketing purple (#635bff)"
   color:
     primary: "#533afd"
+    primary-hover: "#4434d4"
     brand: "#635bff"
     background: "#ffffff"
     foreground: "#061b31"
+    body: "#64748d"
+    label: "#273951"
     muted: "#64748d"
     accent: "#ea2261"
+    magenta: "#f96bee"
     success: "#15be53"
-  font:
-    sans: "sohne-var"
-  spacing: [4, 8, 12, 16, 24, 32, 48, 64]
+    border: "#e5edf5"
+  font: { sans: "sohne-var", mono: "SourceCodePro" }
+  text:
+    display-hero: { size: 56, weight: 300, lineHeight: 1.03, tracking: -1.4 }
+    display-lg:   { size: 48, weight: 300, lineHeight: 1.15, tracking: -0.96 }
+    section:      { size: 32, weight: 300, lineHeight: 1.10, tracking: -0.64 }
+    subheading:   { size: 22, weight: 300, lineHeight: 1.10, tracking: -0.22 }
+    body-lg:      { size: 18, weight: 300, lineHeight: 1.40 }
+    body:         { size: 16, weight: 400, lineHeight: 1.40 }
+    button:       { size: 16, weight: 400, lineHeight: 1.00 }
+    caption:      { size: 13, weight: 400, lineHeight: 1.40 }
+    code:         { size: 12, weight: 500, lineHeight: 2.00 }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
   radius: { sm: 4, md: 8, lg: 16, pill: 9999 }
+  shadow:
+    ambient: "rgba(23,23,23,0.06) 0px 3px 6px"
+    standard: "rgba(23,23,23,0.08) 0px 15px 35px"
+    elevated: "rgba(50,50,93,0.25) 0px 30px 45px -30px, rgba(0,0,0,0.1) 0px 18px 36px -18px"
+  components:
+    button-primary: "Rausch-less: Stripe Purple #533afd fill, white text, 4-8px radius, weight 400"
+    button-ghost: "transparent fill, purple text + 1px purple border"
+    card: "white surface, 8px radius, standard blue-tinted shadow"
+    badge-success: "success #15be53 at 0.2-0.4 alpha bg, #108c3d text"
 ---
 
 # Design System Inspiration of Stripe

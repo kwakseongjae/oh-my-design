@@ -23,13 +23,35 @@ tokens:
   color:
     primary: "#5e6ad2"
     accent: "#7170ff"
+    accent-hover: "#828fff"
     background: "#0f1011"
+    canvas: "#08090a"
+    surface: "#191a1b"
+    surface-2: "#28282c"
     foreground: "#f7f8f8"
+    text-secondary: "#d0d6e0"
     muted: "#8a8f98"
-  font:
-    sans: "Inter"
-  spacing: [4, 8, 12, 16, 24, 32, 48, 64]
+    text-quaternary: "#62666d"
+  font: { sans: "Inter", mono: "Berkeley Mono" }
+  text:
+    display-xl:  { size: 72, weight: 510, lineHeight: 1.00, tracking: -1.584 }
+    display-lg:  { size: 64, weight: 510, lineHeight: 1.00, tracking: -1.408 }
+    display:     { size: 48, weight: 510, lineHeight: 1.00, tracking: -1.056 }
+    heading-1:   { size: 32, weight: 400, lineHeight: 1.13, tracking: -0.704 }
+    heading-2:   { size: 24, weight: 400, lineHeight: 1.33, tracking: -0.288 }
+    heading-3:   { size: 20, weight: 590, lineHeight: 1.33, tracking: -0.24 }
+    body-lg:     { size: 18, weight: 400, lineHeight: 1.60 }
+    body:        { size: 17, weight: 400, lineHeight: 1.60 }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
   radius: { sm: 4, md: 8, lg: 12, pill: 9999 }
+  shadow:
+    subtle: "rgba(0,0,0,0.03) 0px 1.2px 0px"
+    surface: "rgba(255,255,255,0.05) bg + 1px solid rgba(255,255,255,0.08)"
+    inset: "rgba(0,0,0,0.2) 0px 0px 12px 0px inset"
+  components:
+    button-primary: "Brand Indigo #5e6ad2 fill, white text, 8px radius"
+    button-ghost: "transparent, subtle hover surface"
+    card: "rgba(255,255,255,0.05) surface, 1px translucent border, 8px radius"
 ---
 
 # Design System Inspiration of Linear
