@@ -20,7 +20,7 @@ tokens:
   source: reconciled
   extracted: "2026-06-08"
   note: "freq×sat picked link color #828fff; CSS var --color-brand-bg=#5e6ad2 is the canonical primary"
-  color:
+  colors:
     primary: "#5e6ad2"
     accent: "#7170ff"
     accent-hover: "#828fff"
@@ -32,18 +32,18 @@ tokens:
     text-secondary: "#d0d6e0"
     muted: "#8a8f98"
     text-quaternary: "#62666d"
-  font: { sans: "Inter", mono: "Berkeley Mono" }
-  text:
-    display-xl:  { size: 72, weight: 510, lineHeight: 1.00, tracking: -1.584 }
-    display-lg:  { size: 64, weight: 510, lineHeight: 1.00, tracking: -1.408 }
-    display:     { size: 48, weight: 510, lineHeight: 1.00, tracking: -1.056 }
-    heading-1:   { size: 32, weight: 400, lineHeight: 1.13, tracking: -0.704 }
-    heading-2:   { size: 24, weight: 400, lineHeight: 1.33, tracking: -0.288 }
-    heading-3:   { size: 20, weight: 590, lineHeight: 1.33, tracking: -0.24 }
-    body-lg:     { size: 18, weight: 400, lineHeight: 1.60 }
-    body:        { size: 17, weight: 400, lineHeight: 1.60 }
+  typography:
+    family: { sans: "Inter", mono: "Berkeley Mono" }
+    display-xl:  { size: 72, weight: 510, lineHeight: 1.00, tracking: -1.584, use: "Hero headlines, maximum impact" }
+    display-lg:  { size: 64, weight: 510, lineHeight: 1.00, tracking: -1.408, use: "Secondary hero text" }
+    display:     { size: 48, weight: 510, lineHeight: 1.00, tracking: -1.056, use: "Section headlines" }
+    heading-1:   { size: 32, weight: 400, lineHeight: 1.13, tracking: -0.704, use: "Major section titles" }
+    heading-2:   { size: 24, weight: 400, lineHeight: 1.33, tracking: -0.288, use: "Sub-section headings" }
+    heading-3:   { size: 20, weight: 590, lineHeight: 1.33, tracking: -0.24, use: "Feature titles, card headers" }
+    body-lg:     { size: 18, weight: 400, lineHeight: 1.60, use: "Introduction text, feature descriptions" }
+    body:        { size: 17, weight: 400, lineHeight: 1.60, use: "Body, emphasized content" }
   spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
-  radius: { sm: 4, md: 8, lg: 12, pill: 9999 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
   shadow:
     subtle: "rgba(0,0,0,0.03) 0px 1.2px 0px"
     surface: "rgba(255,255,255,0.05) bg + 1px solid rgba(255,255,255,0.08)"

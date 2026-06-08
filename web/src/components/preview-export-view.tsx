@@ -188,13 +188,13 @@ export function PreviewExportView({
             </div>
           </div>
 
-          {/* DESIGN.md content — the machine-readable `tokens:` block is part of
-              the file but hidden from the preview (Rendered already strips all
-              frontmatter; we strip just the tokens block from the Raw view too). */}
+          {/* DESIGN.md content. Rendered strips all frontmatter (markdown.tsx),
+              so the tokens block is hidden there; Raw shows the full file —
+              tokens sit at the top like frontmatter, which is the intent. */}
           <div className="flex-1 overflow-auto min-h-0">
             {mdView === "rendered"
               ? <div className="p-5"><Markdown content={designMd} /></div>
-              : <pre className="p-5 text-[11px] leading-[1.7] font-mono text-foreground/70 whitespace-pre-wrap">{designMd.replace(/\ntokens:\n(?:[ \t].*(?:\n|$))*/, "\n")}</pre>
+              : <pre className="p-5 text-[11px] leading-[1.7] font-mono text-foreground/70 whitespace-pre-wrap">{designMd}</pre>
             }
           </div>
         </div>
