@@ -128,16 +128,24 @@ function HeroSection({ tokens, homepageUrl }: { tokens: ParsedTokens; homepageUr
         </div>
         <div className="flex items-center gap-4">
           {logoSrc && (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              src={logoSrc}
-              alt={`${identity.name} logo`}
-              className="h-12 w-12 shrink-0 object-contain"
-              onError={() => {
-                if (logoSrc !== fallbackLogoUrl && fallbackLogoUrl) setLogoSrc(fallbackLogoUrl);
-                else setLogoSrc(null);
-              }}
-            />
+            // Sit the logo on its brand background so a mono logo stays visible in
+            // BOTH page themes (logoColor is picked to contrast identity.background,
+            // so the tile colour must match it — e.g. black Stripe mark on white).
+            <div
+              className="shrink-0 flex items-center justify-center rounded-xl p-2.5 ring-1 ring-border/20"
+              style={{ background: identity.background || "#ffffff" }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={logoSrc}
+                alt={`${identity.name} logo`}
+                className="h-9 w-9 object-contain"
+                onError={() => {
+                  if (logoSrc !== fallbackLogoUrl && fallbackLogoUrl) setLogoSrc(fallbackLogoUrl);
+                  else setLogoSrc(null);
+                }}
+              />
+            </div>
           )}
           <h1
             className="text-5xl font-bold tracking-tight text-foreground"
