@@ -10,25 +10,6 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=lunit.io&sz=256"
 verified: "2026-05-14"
 omd: "0.1"
-
-## 16. Do's and Don'ts
-
-### Do
-- Set every section, card, image, input, and footer to `border-radius: 0` and round only the single primary CTA pill to `100px`, honoring the binary radius thesis
-- Pair ClashGrotesk for headings and Lexend for body, keeping both at LIGHT weights — H1 at 78px/84px weight 400, body at 18.4px weight 300 — so authority reads through size and air, not heft
-- Fill the primary marketing CTA as a black pill (`#000000` background, `#ffffff` label) and withhold the signature blue `#1032cf` from primary actions
-- Set body ink in warm-cool gunmetal `#232f32` and hero H1 in near-black `#151515`, never pure `#000`, for standing copy
-- Build depth through full-bleed band switching (white canvas → black band → off-white footer `#eff0f4`) with `box-shadow: none` everywhere
-- Reserve the signature blue `#1032cf` (bright sibling `#2a4eef`) for system, cookie, hover, and dark-band moments, and use AOS scroll-reveal fades as the only motion
-
-### Don't
-- Apply mid-range radii like 4px, 6px, 8px, 12px, or 16px anywhere, or round cards, images, or surfaces that are not the primary action
-- Use the saturated signature blue `#1032cf` on the primary CTA — the brand-action color is black, and blue is deliberately withheld
-- Reach for bold or semibold typographic weights to add confidence; LIGHT weight is the rule across all heading levels
-- Add drop shadows or floating card elevation — depth comes from band switching, not floating objects
-- Add hero video autoplay, parallax, or animated stat counters on the `10,000+` band; keep motion to low-amplitude AOS fades
-- Introduce stock smiling-team photography, hex-mesh/circuit-board/neural-net cliché, multi-accent green-blue-orange palettes, exclamation marks, or emotive verbs like 'transform lives'
-
 ---
 
 # Design System Inspiration of Lunit
@@ -266,3 +247,21 @@ See `assets/_reference/.live-inspect-proof.json` for the raw CDP `getComputedSty
 
 ### Conflicts unresolved
 - None. All Tier 1 measurements are internally consistent (single source = live DOM on 2026-05-14).
+
+## 16. Do's and Don'ts
+
+### Do
+- Set every section, card, image, input, and footer to `border-radius: 0` and round only the single primary CTA pill to `100px`, honoring the binary radius thesis
+- Pair ClashGrotesk for headings and Lexend for body, keeping both at LIGHT weights — H1 at 78px/84px weight 400, body at 18.4px weight 300 — so authority reads through size and air, not heft
+- Fill the primary marketing CTA as a black pill (`#000000` background, `#ffffff` label) and withhold the signature blue `#1032cf` from primary actions
+- Set body ink in warm-cool gunmetal `#232f32` and hero H1 in near-black `#151515`, never pure `#000`, for standing copy
+- Build depth through full-bleed band switching (white canvas → black band → off-white footer `#eff0f4`) with `box-shadow: none` everywhere
+- Reserve the signature blue `#1032cf` (bright sibling `#2a4eef`) for system, cookie, hover, and dark-band moments, and use AOS scroll-reveal fades as the only motion
+
+### Don't
+- Apply mid-range radii like 4px, 6px, 8px, 12px, or 16px anywhere, or round cards, images, or surfaces that are not the primary action
+- Use the saturated signature blue `#1032cf` on the primary CTA — the brand-action color is black, and blue is deliberately withheld
+- Reach for bold or semibold typographic weights to add confidence; LIGHT weight is the rule across all heading levels
+- Add drop shadows or floating card elevation — depth comes from band switching, not floating objects
+- Add hero video autoplay, parallax, or animated stat counters on the `10,000+` band; keep motion to low-amplitude AOS fades
+- Introduce stock smiling-team photography, hex-mesh/circuit-board/neural-net cliché, multi-accent green-blue-orange palettes, exclamation marks, or emotive verbs like 'transform lives'
