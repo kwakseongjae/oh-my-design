@@ -18,7 +18,7 @@ export interface RefEntry {
   readonly verified: string;
   readonly added?: string;
   readonly tokens?: {
-    readonly source?: 'live-extract' | 'design-system' | 'manual' | 'reconciled';
+    readonly source?: 'live-extract' | 'design-system' | 'manual' | 'reconciled' | 'prose-derived';
     readonly extracted?: string;
     readonly note?: string;
     readonly color?: Readonly<Record<string, string>>;

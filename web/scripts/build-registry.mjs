@@ -104,7 +104,7 @@ function validateTokens(t, file) {
   if (t.font && typeof t.font !== 'object') fail(file, `tokens.font must be a mapping`);
   if (t.text && typeof t.text !== 'object') fail(file, `tokens.text must be a mapping of named type tokens`);
   if (t.components && typeof t.components !== 'object') fail(file, `tokens.components must be a mapping`);
-  if (t.source && !['live-extract', 'design-system', 'manual', 'reconciled'].includes(t.source)) fail(file, `tokens.source '${t.source}' invalid`);
+  if (t.source && !['live-extract', 'design-system', 'manual', 'reconciled', 'prose-derived'].includes(t.source)) fail(file, `tokens.source '${t.source}' invalid`);
 }
 
 const ids = readdirSync(REFS_DIR, { withFileTypes: true })
@@ -181,7 +181,7 @@ const TYPES = `export interface RefEntry {
   readonly verified: string;
   readonly added?: string;
   readonly tokens?: {
-    readonly source?: 'live-extract' | 'design-system' | 'manual' | 'reconciled';
+    readonly source?: 'live-extract' | 'design-system' | 'manual' | 'reconciled' | 'prose-derived';
     readonly extracted?: string;
     readonly note?: string;
     readonly color?: Readonly<Record<string, string>>;
