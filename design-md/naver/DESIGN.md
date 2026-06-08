@@ -4,7 +4,7 @@ name: Naver
 country: KR
 category: consumer-tech
 homepage: "https://www.naver.com"
-primary_color: "#000000"
+primary_color: "#03c75a"
 logo:
   type: simpleicons
   slug: naver
