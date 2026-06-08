@@ -17,6 +17,62 @@ ds:
   type: brand
   description: Healience design team blog — the Cell + Welchis two-system architecture behind Gangnamunni's medical-platform UI.
   og_image: "https://blog.gangnamunni.com/contents/posts/238d9338-d3d4-80ac-a8c6-da95db5bc8bc/cover/7d41f721-4cf0-408c-b2fd-f7aa403a5cbe.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    brand: "#d54300"
+    brand-regular: "#f66336"
+    brand-strong-fg: "#ab350c"
+    brand-accent-raw: "#ff540f"
+    brand-tint-100: "#feeee9"
+    brand-tint-50: "#fef6f4"
+    canvas: "#ffffff"
+    heading: "#131517"
+    body: "#3a444d"
+    caption: "#697683"
+    placeholder: "#8694a2"
+    border: "#d8dfe6"
+    border-weak: "#e4e8ec"
+    surface-subtle: "#eff2f5"
+    surface-faint: "#f7f9fa"
+    success: "#27a86d"
+    success-strong: "#1a8656"
+    danger: "#d73f39"
+    warning: "#f9c647"
+    info: "#3270d6"
+  typography:
+    family: { sans: "Pretendard JP Variable", mono: "ui-monospace" }
+    display-md: { size: 28, weight: 700, lineHeight: 1.3, use: "Feature headlines" }
+    title-xl:   { size: 32, weight: 700, lineHeight: 1.3, use: "Landing headlines" }
+    title-lg:   { size: 24, weight: 700, lineHeight: 1.3, use: "Page section titles" }
+    title-md:   { size: 20, weight: 700, lineHeight: 1.4, use: "Card headings, prices" }
+    subhead:    { size: 18, weight: 600, lineHeight: 1.4, use: "Section subheads" }
+    body-lg:    { size: 16, weight: 400, lineHeight: 1.5, use: "Primary body, card titles" }
+    body:       { size: 14, weight: 400, lineHeight: 1.5, use: "Default UI text" }
+    label-sm:   { size: 13, weight: 500, lineHeight: 1.4, use: "Secondary buttons, links" }
+    label-xs:   { size: 12, weight: 500, lineHeight: 1.4, use: "Chips, timestamps, tag pills" }
+    meta:       { size: 11, weight: 400, lineHeight: 1.4, use: "Smallest meta, fine print" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 32, section: 48 }
+  rounded: { sm: 4, md: 12, lg: 16, full: 9999 }
+  shadow:
+    soft: "0 4px 12px rgba(0,0,0,0.08)"
+    modal: "0 12px 32px rgba(0,0,0,0.16)"
+  components:
+    button-primary: { type: button, bg: "#d54300", fg: "#ffffff", radius: "16px", padding: "12px 20px", font: "16px / 600", use: "Primary brand CTA; hover #ab350c, disabled orange-200" }
+    button-accent: { type: button, bg: "#ff540f", fg: "#ffffff", radius: "16px", padding: "12px 20px", font: "16px / 600", use: "Hot-deal / time-limited promo CTA" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#131517", radius: "16px", padding: "10px 16px", font: "14px / 500", use: "Neutral secondary, 1px #d8dfe6 border; hover #f7f9fa" }
+    button-subtle: { type: button, bg: "#fef6f4", fg: "#d54300", radius: "16px", padding: "8px 14px", font: "14px / 600", use: "Secondary brand CTA, tinted" }
+    button-danger: { type: button, bg: "#d73f39", fg: "#ffffff", radius: "16px", padding: "10px 16px", font: "14px / 600", use: "Destructive action" }
+    input-text: { type: input, bg: "#ffffff", fg: "#131517", radius: "12px", padding: "12px 16px", font: "16px / 400", use: "Standard form field, 48px height; focus #d54300, error #d73f39" }
+    card-clinic: { type: card, bg: "#ffffff", radius: "12px", padding: "16px", use: "Hospital / doctor card, 1px #d8dfe6 border, no shadow" }
+    card-promo: { type: card, bg: "#fef6f4", radius: "12px", padding: "16px", use: "Event / promo card, 1px #feeee9 border" }
+    badge-brand: { type: badge, bg: "#ff540f", fg: "#ffffff", radius: "4px", padding: "2px 6px", font: "12px / 700", use: "HOT / 특가 time-sensitive flag" }
+    badge-success: { type: badge, bg: "#e8f6ec", fg: "#1a8656", radius: "9999px", padding: "2px 8px", font: "12px / 600", use: "인증 병원 verification badge" }
+    badge-info: { type: badge, bg: "#ebf2ff", fg: "#1b59bd", radius: "4px", padding: "2px 6px", font: "11px / 600", use: "Regulatory / certification label" }
+    pill-category: { type: badge, bg: "#ffffff", fg: "#131517", radius: "9999px", padding: "6px 12px", font: "14px / 500", use: "Category filter pill; selected #fef6f4 bg + #d54300 text + #fa8563 border" }
+    toast: { type: toast, bg: "#131517", fg: "#ffffff", radius: "12px", padding: "12px 16px", font: "14px / 500", use: "Bottom-center toast, 3s duration" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Gangnamunni (강남언니)

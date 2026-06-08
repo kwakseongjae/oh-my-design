@@ -15,6 +15,54 @@ ds:
   url: "https://vibes.freee.co.jp"
   type: system
   description: freee's open-source design system with accessibility-focused components.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#285ac8"
+    primary-hover: "#3264dc"
+    primary-active: "#1e46aa"
+    accent: "#73a5ff"
+    canvas: "#ffffff"
+    bg-tint: "#ebf3ff"
+    surface-subtle: "#f0eded"
+    column: "#f7f5f5"
+    border: "#e9e7e7"
+    text: "#323232"
+    text-muted: "#6e6b6b"
+    text-caption: "#8c8989"
+    alert: "#dc1e32"
+    alert-bg: "#fad2d7"
+    notice: "#be8c14"
+    notice-bg: "#fff0d2"
+    success: "#006e2d"
+    success-bg: "#cdebd7"
+    info-bg: "#dce8ff"
+  typography:
+    family: { sans: "-apple-system", mono: "-apple-system" }
+    headline1: { size: 24, weight: 700, lineHeight: 1.5, use: "Headline 1, dashboard titles" }
+    headline2: { size: 16, weight: 700, lineHeight: 1.5, use: "Headline 2, section headers" }
+    headline3: { size: 14, weight: 700, lineHeight: 1.5, use: "Headline 3, subsection" }
+    body:      { size: 14, weight: 400, lineHeight: 1.5, use: "Normal body text" }
+    caption:   { size: 12, weight: 400, lineHeight: 1.5, use: "Captions, badge labels" }
+    icon:      { size: 10, weight: 400, lineHeight: 1.5, use: "Smallest icon font" }
+  spacing: { xs: 4, sm: 8, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 4, md: 4, lg: 4, full: 9999 }
+  shadow:
+    card: "0 0 1rem rgba(0,0,0,0.1), 0 0.125rem 0.25rem rgba(0,0,0,0.2)"
+    floating: "0 0 1.5rem rgba(0,0,0,0.1), 0 0.25rem 0.5rem rgba(0,0,0,0.2)"
+    popup: "0 0 2rem rgba(0,0,0,0.1), 0 0.375rem 0.75rem rgba(0,0,0,0.2)"
+  components:
+    button-primary: { type: button, bg: "#285ac8", fg: "#ffffff", radius: "4px", padding: "8px 16px", font: "14px / 500", use: "Primary CTA, 36px height; hover #3264dc, active #1e46aa" }
+    button-accent: { type: button, bg: "#73a5ff", fg: "#ffffff", radius: "4px", padding: "8px 16px", use: "Hover / secondary brand action" }
+    input-default: { type: input, bg: "#ffffff", fg: "#323232", radius: "4px", padding: "8px 12px", use: "Form input, 36px height; focus border #285ac8, error #dc1e32" }
+    card-panel: { type: card, bg: "#ffffff", radius: "4px", padding: "16px", use: "Standard panel, 1px #e9e7e7 border" }
+    card-subtle: { type: card, bg: "#f7f5f5", radius: "4px", padding: "24px", use: "Subtle differentiation panel" }
+    badge-success: { type: badge, bg: "#cdebd7", fg: "#006e2d", radius: "4px", padding: "2px 8px", font: "12px / 500", use: "Success / confirmation status" }
+    badge-alert: { type: badge, bg: "#fad2d7", fg: "#dc1e32", radius: "4px", padding: "2px 8px", font: "12px / 500", use: "Error / destructive status" }
+    badge-notice: { type: badge, bg: "#fff0d2", fg: "#be8c14", radius: "4px", padding: "2px 8px", font: "12px / 500", use: "Warning / notice status" }
+    badge-info: { type: badge, bg: "#dce8ff", fg: "#285ac8", radius: "4px", padding: "2px 8px", font: "12px / 500", use: "Informational status" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of freee

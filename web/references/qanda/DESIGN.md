@@ -10,6 +10,54 @@ logo:
   slug: "https://qanda.ai/favicon.ico"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#ff5500"
+    heading: "#222222"
+    cta: "#3d3d3d"
+    canvas: "#ffffff"
+    surface: "#f9f9f9"
+    border: "#f0f0f0"
+    disabled: "#b5b5b5"
+    placeholder: "#999999"
+    body: "#5d5d5d"
+    stone-bg: "#f6f4f2"
+    stone-border: "#efefef"
+    stone-soft: "#d4cecb"
+    stone-body: "#9a9492"
+    stone-meta: "#78716e"
+    stone-text: "#665c57"
+    stone-heading: "#111111"
+    success: "#0d9974"
+    success-tint: "#ecf7f4"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    hero:    { size: 30, weight: 700, lineHeight: 1.3, use: "Hero KR statement headline" }
+    section: { size: 22, weight: 600, lineHeight: 1.4, use: "Feature card titles" }
+    body:    { size: 16, weight: 400, lineHeight: 1.5, use: "Buttons, nav, body copy — universal floor" }
+    small:   { size: 14, weight: 400, use: "Footer links, helper copy" }
+    caption: { size: 13, weight: 400, use: "Footer legal text" }
+    meta:    { size: 12, weight: 400, use: "Timestamps, badges" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 40, section: 80 }
+  rounded: { sm: 8, md: 16, lg: 24, full: 9999 }
+  shadow:
+    subtle: "0 1px 4px rgba(0,0,0,0.04)"
+    standard: "0 4px 16px rgba(0,0,0,0.08)"
+    prominent: "0 8px 24px rgba(0,0,0,0.12)"
+  components:
+    button-primary: { type: button, bg: "#3d3d3d", fg: "#f9f9f9", radius: "8px", font: "16px / 400", use: "Primary CTA — 시작하기 / Get started; charcoal not orange" }
+    button-pill: { type: button, bg: "#f9f9f9", fg: "#222222", radius: "35px", padding: "0 16px", font: "16px / 400", use: "New question / chip re-entry in left rail" }
+    button-camera: { type: button, bg: "#f9f9f9", fg: "#222222", radius: "9999px", use: "Signature image-upload / camera CTA, 44px hit target" }
+    badge-accent: { type: badge, bg: "#ff5500", fg: "#ffffff", radius: "9999px", use: "Promotional badges, NEW markers, premium flags" }
+    button-text: { type: button, bg: "transparent", fg: "#222222", use: "Nav links, active by color contrast; inactive #999999" }
+    card: { type: card, bg: "#ffffff", radius: "24px", use: "Feature cards, 1px #f0f0f0 border, minimal shadow" }
+    chip: { type: badge, bg: "#f9f9f9", fg: "#222222", radius: "35px", padding: "0 16px", use: "Chips/tags; orange variant #ff5500 fg #ffffff" }
+    input: { type: input, bg: "#ffffff", radius: "24px", padding: "12px 16px", use: "Conversation bar, 1px #f0f0f0 border, placeholder #999999" }
+    badge-success: { type: badge, bg: "#ecf7f4", fg: "#0d9974", use: "Correct-answer 정답이에요 in 풀이 첨삭" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of QANDA (콴다)

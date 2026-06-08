@@ -11,6 +11,62 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    ink: "#000000"
+    canvas: "#ffffff"
+    accent: "#e90c17"
+    accent-hover: "#c20a13"
+    ink-800: "#1a1a1a"
+    body: "#333333"
+    secondary: "#555555"
+    metadata: "#767676"
+    disabled: "#999999"
+    line: "#cccccc"
+    line-soft: "#e2e2e2"
+    band: "#f4f4f4"
+    surface-50: "#fafafa"
+    error: "#cc0000"
+    success: "#0a7d3f"
+    warning: "#b86e00"
+    info: "#0a66c2"
+  typography:
+    family: { sans: "Akkurat", mono: "Akkurat Mono" }
+    display-mega:  { size: 72, weight: 700, lineHeight: 0.94, tracking: -0.01, use: "Feature hero, cover-story title, all-caps" }
+    display-hero:  { size: 54, weight: 700, lineHeight: 0.96, tracking: -0.01, use: "Section fronts, big headlines" }
+    headline-xl:   { size: 40, weight: 600, lineHeight: 1.0, use: "Article H1" }
+    headline-l:    { size: 30, weight: 600, lineHeight: 1.07, use: "Card headlines, list leads" }
+    headline-m:    { size: 24, weight: 600, lineHeight: 1.08, use: "Secondary cards, related links" }
+    deck:          { size: 22, weight: 400, lineHeight: 1.36, use: "Article sub-headline, serif standfirst" }
+    subtitle:      { size: 18, weight: 700, lineHeight: 1.44, use: "Section labels, in-article H2" }
+    body-large:    { size: 19, weight: 400, lineHeight: 1.58, use: "Long-form article body" }
+    body:          { size: 16, weight: 400, lineHeight: 1.63, use: "UI text, captions context" }
+    body-small:    { size: 14, weight: 400, lineHeight: 1.57, use: "Metadata, secondary info" }
+    caption:       { size: 13, weight: 400, lineHeight: 1.38, use: "Photo credits, fine print" }
+    eyebrow:       { size: 12, weight: 700, lineHeight: 1.33, tracking: 0.08, use: "ALL-CAPS section tag above headlines" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 0, md: 2, lg: 2, full: 9999 }
+  shadow:
+    subtle: "0px 1px 2px rgba(0,0,0,0.08)"
+    standard: "0px 2px 8px rgba(0,0,0,0.12)"
+    elevated: "0px 4px 16px rgba(0,0,0,0.16)"
+    modal: "0px 8px 32px rgba(0,0,0,0.24)"
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "2px", padding: "14px 28px", font: "15px / 700", use: "Primary utility action (Save, Continue, Read More)" }
+    button-subscribe: { type: button, bg: "#e90c17", fg: "#ffffff", radius: "2px", padding: "14px 28px", font: "15px / 700", use: "Subscription CTA, conversion moments (SUBSCRIBE, JOIN WIRED)" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#000000", radius: "2px", padding: "12.5px 26px", font: "15px / 700", use: "Secondary action paired with a black/red primary" }
+    button-link: { type: button, bg: "#ffffff", fg: "#e90c17", font: "16px / 700", use: "Inline tertiary actions, More stories, section jumps" }
+    input-text: { type: input, bg: "#ffffff", fg: "#1a1a1a", radius: "2px", padding: "12px 14px", font: "16px / 400", use: "Newsletter signup, search, account forms" }
+    input-search: { type: input, bg: "#f4f4f4", fg: "#1a1a1a", radius: "2px", padding: "12px 16px", font: "16px / 400", use: "Site-wide search overlay" }
+    card-story: { type: card, bg: "#ffffff", radius: "0px", padding: "16px 0", use: "River of stories on section/index pages, 1px rule separators" }
+    card-promo: { type: card, bg: "#000000", fg: "#ffffff", radius: "2px", padding: "32px", use: "In-feed subscription and membership promos" }
+    badge-flag: { type: badge, bg: "#e90c17", fg: "#ffffff", radius: "0px", padding: "3px 8px", font: "11px / 700", use: "BREAKING, EXCLUSIVE, live flags" }
+    badge-tag: { type: badge, bg: "#ffffff", fg: "#000000", radius: "0px", padding: "3px 8px", font: "11px / 700", use: "Section labels (SECURITY, SCIENCE, BUSINESS, GEAR)" }
+    tab-subnav: { type: tab, fg: "#000000", active: "2px #e90c17 bottom border", use: "Within-section tabs (Latest, Most Popular)" }
+    toast-error: { type: toast, bg: "#000000", fg: "#ffffff", radius: "2px", font: "14px / 400", use: "Error toast, 4s auto-dismiss, bottom-center" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of WIRED

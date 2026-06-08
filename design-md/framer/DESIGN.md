@@ -16,6 +16,44 @@ ds:
   type: brand
   description: Framer's brand and trademark guidelines with logo rules and color palette.
   og_image: "https://framerusercontent.com/assets/MFmOCFlEnwFAS9IP2HbUEH68axo.jpg"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    canvas: "#000000"
+    on-dark: "#ffffff"
+    accent: "#0099ff"
+    muted: "#a6a6a6"
+    surface-elevated: "#090909"
+    link-default: "#0000ee"
+  typography:
+    family: { sans: "GT Walsheim Framer Medium", mono: "Azeret Mono" }
+    display-hero:    { size: 110, weight: 500, lineHeight: 0.85, tracking: -5.5, use: "Hero display, extreme compressed tracking" }
+    section-display: { size: 85, weight: 500, lineHeight: 0.95, tracking: -4.25, use: "Section display headlines" }
+    section-heading: { size: 62, weight: 500, lineHeight: 1.00, tracking: -3.1, use: "Section headings" }
+    feature-heading: { size: 32, weight: 500, lineHeight: 1.13, tracking: -1, use: "Feature headings" }
+    card-title:      { size: 24, weight: 400, lineHeight: 1.30, tracking: -0.01, use: "Card titles, Inter" }
+    feature-title:   { size: 22, weight: 700, lineHeight: 1.20, tracking: -0.8, use: "Feature titles, Inter" }
+    body-lg:         { size: 18, weight: 400, lineHeight: 1.30, tracking: -0.01, use: "Large body, Inter" }
+    body:            { size: 15, weight: 400, lineHeight: 1.30, tracking: -0.01, use: "Standard body / nav, Inter" }
+    caption:         { size: 14, weight: 400, lineHeight: 1.40, use: "Captions, Inter" }
+    label:           { size: 13, weight: 500, lineHeight: 1.60, use: "Labels, Inter" }
+    code:            { size: 10.4, weight: 400, lineHeight: 1.60, use: "Micro code, Azeret Mono" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 15, lg: 20, xl: 30, section: 80 }
+  rounded: { sm: 5, md: 8, lg: 15, full: 9999 }
+  shadow:
+    ring-blue: "rgba(0,153,255,0.15) 0px 0px 0px 1px"
+    ring-dark: "rgb(9,9,9) 0px 0px 0px 2px"
+    floating: "rgba(255,255,255,0.1) 0px 0.5px 0px 0.5px, rgba(0,0,0,0.25) 0px 10px 30px"
+  components:
+    button-primary: { type: button, bg: "#ffffff", fg: "#000000", radius: "100px", padding: "10px 15px", font: "15px / 400", use: "Solid white pill, primary CTA on dark" }
+    button-frosted: { type: button, bg: "rgba(255,255,255,0.1)", fg: "#ffffff", radius: "40px", padding: "10px 15px", font: "15px / 400", use: "Glass-effect frosted pill on dark" }
+    button-ghost: { type: button, bg: "transparent", fg: "#ffffff", radius: "40px", padding: "10px 15px", use: "Tertiary text-only action, frosted on hover" }
+    input-dark: { type: input, bg: "#090909", fg: "#ffffff", radius: "8px", padding: "10px 12px", use: "Dark theme form input; focus #0099ff ring + blue glow" }
+    card-dark: { type: card, bg: "#090909", fg: "#ffffff", radius: "12px", padding: "24px", use: "Standard dark surface card with blue ring border" }
+    card-elevated: { type: card, bg: "#090909", fg: "#ffffff", radius: "12px", padding: "24px", use: "Elevated card, white top highlight + deep ambient shadow" }
+    badge-default: { type: badge, bg: "rgba(255,255,255,0.1)", fg: "#ffffff", radius: "9999px", padding: "4px 10px", font: "12px / 400", use: "Frosted pill badge on dark" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Framer

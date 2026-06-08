@@ -16,6 +16,68 @@ ds:
   type: brand
   description: Kakaostyle / ZIGZAG's brand & design articles — the ZDS (ZIGZAG Design System) rearchitecture and the 2021 cool-pink rebrand.
   og_image: "https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/4Zzt/image/-3UDP-Htu127zH73hWgxU-DsWNg.jpg"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    brand: "#fa6ee3"
+    primary: "#f55dd6"
+    primary-hover: "#e356c6"
+    primary-pressed: "#d14fb7"
+    pink-tint: "#feeefa"
+    pink-border: "#fccef2"
+    canvas: "#f5f6f6"
+    surface: "#ffffff"
+    on-surface: "#f9fafa"
+    heading: "#121212"
+    body: "#292b2b"
+    text-secondary: "#a1a9ad"
+    text-tertiary: "#878f91"
+    text-disabled: "#b3babd"
+    border: "#ecedee"
+    border-strong: "#d0d4d6"
+    border-active: "#c6cbcd"
+    on-primary: "#ffffff"
+    sale: "#fb4333"
+    ai: "#7463f2"
+    kakao: "#fee500"
+    success: "#51aa5b"
+    error: "#e84747"
+  typography:
+    family: { sans: "Pretendard", mono: "Menlo" }
+    head-28:  { size: 28, weight: 700, lineHeight: 1.21, tracking: 0, use: "Display hero promo headlines, brand-event titles" }
+    head-24:  { size: 24, weight: 700, lineHeight: 1.21, tracking: 0, use: "Page H1, category landing" }
+    head-22:  { size: 22, weight: 600, lineHeight: 1.18, tracking: 0, use: "Section heading" }
+    body-16:  { size: 16, weight: 400, lineHeight: 1.19, tracking: 0, use: "Standard body, default reading text" }
+    body-15:  { size: 15, weight: 500, lineHeight: 1.20, tracking: 0, use: "Product card title (grid)" }
+    body-13:  { size: 13, weight: 400, lineHeight: 1.23, tracking: 0, use: "Tertiary meta, review count, ratings" }
+    caption-12: { size: 12, weight: 400, lineHeight: 1.17, tracking: 0, use: "Tag chip text, timestamps" }
+    caption-11: { size: 11, weight: 600, lineHeight: 1.18, tracking: 0, use: "Micro labels, badges, tab labels" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 40 }
+  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+  shadow:
+    subtle: "0px 1px 2px rgba(0,0,0,0.05)"
+    standard: "0px 2px 8px rgba(0,0,0,0.08)"
+    elevated: "0px 4px 16px rgba(0,0,0,0.12)"
+    modal: "0px 8px 32px rgba(0,0,0,0.16)"
+  components:
+    button-primary: { type: button, bg: "#f55dd6", fg: "#ffffff", radius: "12px", padding: "14px 20px", font: "16px / 600", use: "Primary commerce CTA — 구매하기, 장바구니 담기" }
+    button-black: { type: button, bg: "#121212", fg: "#ffffff", radius: "12px", padding: "14px 20px", font: "16px / 600", use: "Default primary CTA on non-brand surfaces — 다음, 확인, 주문하기" }
+    button-pink-ghost: { type: button, bg: "#ffffff", fg: "#f55dd6", radius: "12px", padding: "13px 19px", font: "16px / 600", use: "Secondary brand action — 찜한 상품 보기, 쿠폰함" }
+    button-outlined: { type: button, bg: "#ffffff", fg: "#292b2b", radius: "12px", padding: "13px 19px", font: "16px / 500", use: "Tertiary action — 취소, 더보기" }
+    button-kakao: { type: button, bg: "#fee500", fg: "#000000", radius: "12px", padding: "14px 20px", font: "16px / 600", use: "Kakao OAuth entry point only" }
+    switch-pink: { type: toggle, bg: "#f55dd6", radius: "9999px", use: "Notification preferences, filter inclusions; track-off gray-80, white thumb" }
+    product-card: { type: card, bg: "#ffffff", radius: "8px", use: "Workhorse grid cell; 1:1 thumbnail, title BODY_15 MEDIUM, price BOLD" }
+    chip-selected: { type: badge, bg: "#feeefa", fg: "#f55dd6", radius: "9999px", padding: "6px 12px", font: "13px / 500", use: "Filter pill active state" }
+    chip-default: { type: badge, bg: "#ffffff", fg: "#393b3d", radius: "9999px", padding: "6px 12px", font: "13px / 500", use: "Filter pill default" }
+    chip-ai: { type: badge, bg: "#ffffff", fg: "#7463f2", radius: "9999px", padding: "6px 12px", font: "13px / 600", use: "AI recommendation surfaces only" }
+    search-input: { type: input, bg: "#f5f6f6", fg: "#292b2b", radius: "12px", padding: "12px 14px", font: "15px / 400", use: "Header search bar; focus border gray-800, no pink ring" }
+    badge-discount: { type: badge, bg: "#fb4333", fg: "#ffffff", radius: "4px", padding: "2px 6px", font: "11px / 700", use: "Discount % on product thumbnails" }
+    badge-time: { type: badge, bg: "#121212", fg: "#ffffff", radius: "4px", padding: "4px 8px", font: "11px / 700", use: "Time-limited — 24시간 한정, 오늘만" }
+    badge-mdpick: { type: badge, bg: "#ffffff", fg: "#121212", radius: "4px", padding: "2px 6px", font: "10px / 700", use: "Editorial pick markers; 1px black border" }
+    bottom-sheet: { type: dialog, bg: "#ffffff", radius: "16px", padding: "8px", use: "Filter sheet, option selector; top corners only, gray-80 drag handle, dimmed backdrop" }
+    tab-bottom: { type: tab, bg: "#ffffff", fg: "#878f91", font: "11px / 600", active: "Npx #121212 icon + label", use: "Mobile primary nav — 홈/카테고리/찜/마이페이지/알림" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of ZIGZAG (지그재그)

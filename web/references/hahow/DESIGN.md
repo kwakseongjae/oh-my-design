@@ -15,6 +15,32 @@ ds:
   url: "https://github.com/hahow/hahow-design"
   type: system
   description: "Hahow's open-source design-system theme — Primary/Secondary token scales (Primary 500 #00ccb4)."
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#00ccb4"
+    primary-100: "#a3ffe8"
+    primary-400: "#23d9bd"
+    primary-800: "#006166"
+    primary-900: "#00444d"
+    secondary: "#ffb940"
+    canvas: "#f5f7f9"
+    text: "#262626"
+    promo-orange: "#fa8c16"
+    coral: "#f65f55"
+  typography:
+    family: { sans: "PingFang TC", mono: "PingFang TC" }
+    heading: { size: 24, weight: 600, lineHeight: 1.3, use: "Section headings" }
+    body:    { size: 16, weight: 400, lineHeight: 1.5, use: "Primary body text" }
+    chip:    { size: 14, weight: 400, lineHeight: 1.4, use: "Tag / chip labels" }
+  spacing: { xs: 4, sm: 8, base: 16, lg: 24, xl: 32, section: 48 }
+  rounded: { sm: 8, md: 8, lg: 20, full: 9999 }
+  components:
+    button-primary: { type: button, bg: "transparent", fg: "#00ccb4", radius: "8px", font: "16px / 600", use: "Teal outline primary CTA, 2px #dcf9f3 border, 42px height" }
+    button-card: { type: button, bg: "#ffffff", fg: "#595959", radius: "8px", use: "Neutral white card-level action" }
+    chip-tag: { type: badge, bg: "rgba(0,0,0,0.04)", fg: "rgba(0,0,0,0.65)", radius: "20px", font: "14px / 400", use: "Metadata, category, filter tags, 33px height" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Hahow

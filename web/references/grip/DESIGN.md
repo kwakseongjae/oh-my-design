@@ -10,6 +10,45 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=grip.show&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#eb2b51"
+    hot-pink: "#ff3c78"
+    purple: "#6456dc"
+    canvas: "#0e1011"
+    surface-1: "#17181a"
+    surface-2: "#222327"
+    surface-3: "#404149"
+    surface-light: "#ffffff"
+    surface-subtle: "#f3f3f3"
+    text-primary: "#eff0f4"
+    text-body: "#323232"
+    text-muted: "#999999"
+    text-subdued: "#666666"
+    border: "#e5e5e5"
+    border-subtle: "#d5d5d5"
+    error: "#ef4343"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    discount: { size: 27, weight: 700, lineHeight: 1.35, use: "Discount price, coupon amount" }
+    confirm:  { size: 18, weight: 500, lineHeight: 1.4, use: "Full-width confirm button" }
+    button:   { size: 16, weight: 600, lineHeight: 1.4, use: "Primary button label" }
+    body:     { size: 15, weight: 400, lineHeight: 1.4, use: "Body, product name" }
+    caption:  { size: 13, weight: 400, lineHeight: 1.4, use: "Caption, meta" }
+    badge:    { size: 12, weight: 500, lineHeight: 1.4, use: "Badge, tag" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, section: 56 }
+  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
+  components:
+    button-primary: { type: button, bg: "#eb2b51", fg: "#ffffff", radius: "8px", font: "16px / 600", use: "Primary CTA / cart checkout, 50px height" }
+    button-confirm: { type: button, bg: "#eb2b51", fg: "#ffffff", radius: "8px", font: "18px / 500", use: "Full-width drawer-bottom confirm, 56px height" }
+    button-secondary: { type: button, bg: "#323232", fg: "#ffffff", radius: "4px", font: "14px / 500", use: "Dark secondary buy-now inline, 34px height" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#323232", radius: "4px", font: "14px / 500", use: "Outline delete / cancel, 1px #e5e5e5 border, 34px height" }
+    button-discovery: { type: button, bg: "#17181a", fg: "#ffffff", radius: "6px", font: "15px / 600", use: "Shorts / discovery CTA, 40px height" }
+    card-coupon: { type: card, bg: "#fff5f8", fg: "#eb2b51", font: "27px / 700", use: "Active coupon card, rose-red amount" }
+    nudge-urgency: { type: banner, bg: "rgba(47,23,253,0.05)", fg: "#6456dc", radius: "4px", font: "14px / 500", use: "Urgency countdown nudge bar, 38px height" }
+  components_harvested: true
 ---
 
 # Grip
