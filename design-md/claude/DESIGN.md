@@ -10,6 +10,59 @@ logo:
   slug: anthropic
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = Terracotta Brand (#c96442) per primary_color, the only chromatic CTA; entire neutral palette is warm-toned (yellow-brown undertone)"
+  colors:
+    primary: "#c96442"
+    primary-hover: "#d97757"
+    brand: "#c96442"
+    canvas: "#f5f4ed"
+    foreground: "#141413"
+    muted: "#87867f"
+    on-primary: "#faf9f5"
+    surface: "#faf9f5"
+    surface-sand: "#e8e6dc"
+    surface-dark: "#30302e"
+    body: "#5e5d59"
+    label: "#4d4c48"
+    on-dark: "#b0aea5"
+    hairline: "#f0eee6"
+    hairline-strong: "#e8e6dc"
+    accent-coral: "#d97757"
+    error: "#b53333"
+    focus: "#3898ec"
+    ring: "#d1cfc5"
+  typography:
+    family: { sans: "Anthropic Sans", serif: "Anthropic Serif", mono: "Anthropic Mono" }
+    display-hero:    { size: 64, weight: 500, lineHeight: 1.10, use: "Hero headlines, book-title presence (serif)" }
+    section:         { size: 52, weight: 500, lineHeight: 1.20, use: "Feature section anchors (serif)" }
+    subheading-lg:   { size: 36, weight: 500, lineHeight: 1.30, use: "Secondary section markers (serif)" }
+    subheading:      { size: 32, weight: 500, lineHeight: 1.10, use: "Card titles, feature names (serif)" }
+    subheading-sm:   { size: 25, weight: 500, lineHeight: 1.20, use: "Smaller section titles (serif)" }
+    feature-title:   { size: 21, weight: 500, lineHeight: 1.20, use: "Small feature headings (serif)" }
+    body-serif:      { size: 17, weight: 400, lineHeight: 1.60, use: "Editorial serif body passages" }
+    body-lg:         { size: 20, weight: 400, lineHeight: 1.60, use: "Intro paragraphs (sans)" }
+    body-nav:        { size: 17, weight: 400, lineHeight: 1.60, use: "Navigation links, UI text (sans)" }
+    body:            { size: 16, weight: 400, lineHeight: 1.60, use: "Standard body, button text (sans)" }
+    body-sm:         { size: 15, weight: 400, lineHeight: 1.60, use: "Compact body text (sans)" }
+    caption:         { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, descriptions (sans)" }
+    label:           { size: 12, weight: 500, lineHeight: 1.25, tracking: 0.12, use: "Badges, small labels (sans)" }
+    overline:        { size: 10, weight: 400, lineHeight: 1.60, tracking: 0.5, use: "Uppercase overline labels (sans)" }
+    code:            { size: 15, weight: 400, lineHeight: 1.60, tracking: -0.32, use: "Inline code, terminal (mono)" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 80 }
+  rounded: { sm: 4, md: 8, lg: 16, xl: 32, full: 9999 }
+  shadow:
+    whisper: "rgba(0,0,0,0.05) 0px 4px 24px"
+    ring: "0px 0px 0px 1px #d1cfc5"
+  components:
+    button-primary: "Terracotta Brand #c96442 fill, Ivory #faf9f5 text, 8-12px radius, ring shadow"
+    button-secondary: "Warm Sand #e8e6dc fill, Charcoal #4d4c48 text, 8px radius, asymmetric padding, ring shadow"
+    button-dark: "Near Black #141413 fill, Warm Silver #b0aea5 text, 12px radius, 1px #30302e border"
+    card: "Ivory #faf9f5 surface, 1px solid #f0eee6 border, 8-16px radius, whisper shadow"
+    input: "Near Black text, 12px radius, Focus Blue #3898ec focus ring — the only cool color"
+    nav: "sticky warm-background top nav, serif wordmark, Terracotta or White CTA"
 ---
 
 # Design System Inspiration of Claude (Anthropic)

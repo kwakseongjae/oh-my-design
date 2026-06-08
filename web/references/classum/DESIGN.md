@@ -11,6 +11,48 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=classum.com&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  colors:
+    primary: "#ff4438"
+    brand: "#ff4438"
+    canvas: "#f6f6f9"
+    surface: "#ffffff"
+    subtle: "#f0f2f8"
+    hero-dark: "#06080d"
+    foreground: "#232334"
+    body: "#49495a"
+    muted: "#666b80"
+    inert: "#758696"
+    hairline: "#b5b9c8"
+    on-primary: "#ffffff"
+    accent-sky: "#0a84ff"
+    accent-cobalt: "#243ce7"
+    accent-violet: "#a567e4"
+    accent-teal: "#00c3d0"
+    success: "#34c759"
+    warning: "#ffb020"
+    danger: "#ff4438"
+  typography:
+    family: { sans: "Pretendard Variable" }
+    hero-h1:   { size: 52, weight: 700, lineHeight: 1.4, use: "Hero H1 on inverted dark band" }
+    cta:       { size: 15, weight: 600, lineHeight: 1.5, use: "Primary button label" }
+    nav:       { size: 14, weight: 400, lineHeight: 1.43, use: "Nav link" }
+    body:      { size: 14, weight: 400, lineHeight: 1.43, use: "Body / default — Korean-density baseline" }
+    caption:   { size: 12, weight: 500, use: "Illustration / display captions" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 80 }
+  rounded: { xs: 4, sm: 8, md: 16, lg: 20, xl: 30, full: 9999 }
+  shadow:
+    none: "none"
+    float: "rgba(0,0,0,0.08) 0px 8px 24px"
+  components:
+    button-primary: "Signal red #ff4438 fill, white label, weight 600, 8px radius, 6x16 padding, no shadow"
+    button-secondary: "Outline or text-only link, ink #232334, paired right of primary"
+    nav: "14px/400 horizontal menu, sticky on scroll, red 도입 문의 CTA right-aligned"
+    card: "White #ffffff surface on lavender canvas, 20px radius, no border, no shadow — bg contrast defines boundary"
+    pill: "999px radius chip for feature tags and 신규 status markers"
+    footer: "Dark band #06080d, white type, social icons + app-store badges + legal links"
 ---
 
 # Design System Inspiration of Classum (클라썸)

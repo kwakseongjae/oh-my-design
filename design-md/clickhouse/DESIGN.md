@@ -15,6 +15,55 @@ ds:
   url: "https://clickhouse.design"
   type: system
   description: ClickHouse brand hub plus the Click UI design system and component library.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = live interactive Neon Volt (#faff69); brand = documented logo/marketing yellow (#fff100)"
+  colors:
+    primary: "#faff69"
+    primary-hover: "#f4f692"
+    brand: "#fff100"
+    canvas: "#000000"
+    foreground: "#ffffff"
+    muted: "#a0a0a0"
+    on-primary: "#151515"
+    surface: "#141414"
+    surface-hover: "#3a3a3a"
+    hairline: "#414141"
+    hairline-deep: "#343434"
+    cta-green: "#166534"
+    cta-green-dark: "#14572f"
+    active: "#f4f692"
+    border-olive: "#4f5100"
+    olive-dark: "#161600"
+  typography:
+    family: { sans: "Inter", display: "Basier", mono: "Inconsolata" }
+    display-mega:    { size: 96, weight: 900, lineHeight: 1.00, use: "Hero headline, maximum impact extra-heavy" }
+    display-hero:    { size: 72, weight: 700, lineHeight: 1.00, use: "Section hero titles" }
+    feature-heading: { size: 36, weight: 600, lineHeight: 1.30, use: "Feature section anchors (Basier)" }
+    subheading:      { size: 24, weight: 600, lineHeight: 1.17, use: "Card headings" }
+    feature-title:   { size: 20, weight: 600, lineHeight: 1.40, use: "Small feature titles" }
+    body-lg:         { size: 18, weight: 400, lineHeight: 1.56, use: "Intro paragraphs, button text" }
+    body:            { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body, nav, buttons" }
+    caption:         { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, descriptions, links" }
+    uppercase-label: { size: 14, weight: 600, lineHeight: 1.43, tracking: 1.4, use: "Section overlines, wide-tracked uppercase" }
+    code:            { size: 16, weight: 600, lineHeight: 1.50, use: "Code blocks, commands (Inconsolata)" }
+    small:           { size: 12, weight: 500, lineHeight: 1.33, use: "Smallest text" }
+    micro:           { size: 11.2, weight: 500, lineHeight: 1.79, use: "Tags, tiny labels" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, full: 9999 }
+  shadow:
+    subtle: "rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px"
+    elevated: "rgba(0,0,0,0.1) 0px 10px 15px -3px, rgba(0,0,0,0.1) 0px 4px 6px -4px"
+    inset: "rgba(0,0,0,0.06) 0px 4px 4px, rgba(0,0,0,0.14) 0px 4px 25px inset"
+  components:
+    button-neon-primary: "Neon Volt #faff69 fill, near-black #151515 text, 4px radius, 0px 16px padding; hover darkens, active text Pale Yellow"
+    button-dark-solid: "Near Black #141414 fill, white text, 4/8px radius, 12px 16px padding; hover #3a3a3a"
+    button-forest-green: "Forest Green #166534 fill, white text, primary conversion CTA"
+    button-ghost: "transparent fill, white text, 1px solid #4f5100 olive border, 4px radius"
+    card: "transparent/Near Black surface, 1px solid rgba(65,65,65,0.8) charcoal border, 4/8px radius"
+    card-neon-highlight: "dark card with 1px solid #faff69 neon border for featured/selected treatment"
+    performance-stat: "oversized number 72px+ weight 700-900, neon accents, brief description beneath"
 ---
 
 # Design System Inspiration of ClickHouse

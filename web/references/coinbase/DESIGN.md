@@ -10,6 +10,46 @@ logo:
   slug: coinbase
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  colors:
+    primary: "#0052ff"
+    primary-hover: "#578bfa"
+    brand: "#0052ff"
+    canvas: "#ffffff"
+    foreground: "#0a0b0d"
+    muted: "#5b616e"
+    on-primary: "#ffffff"
+    surface: "#eef0f3"
+    surface-dark: "#282b31"
+    dark-section: "#0a0b0d"
+    link: "#0667d0"
+  typography:
+    family: { sans: "CoinbaseSans", display: "CoinbaseDisplay", body: "CoinbaseText", icon: "CoinbaseIcons" }
+    display-hero:      { size: 80, weight: 400, lineHeight: 1.00, use: "Hero headlines, maximum impact" }
+    display-secondary: { size: 64, weight: 400, lineHeight: 1.00, use: "Sub-hero headlines" }
+    display-third:     { size: 52, weight: 400, lineHeight: 1.00, use: "Third-tier display" }
+    section-heading:   { size: 36, weight: 400, lineHeight: 1.11, use: "Feature section titles" }
+    card-title:        { size: 32, weight: 400, lineHeight: 1.13, use: "Card headings" }
+    feature-title:     { size: 18, weight: 600, lineHeight: 1.33, use: "Feature emphasis" }
+    body-bold:         { size: 16, weight: 700, lineHeight: 1.50, use: "Strong body" }
+    body-semibold:     { size: 16, weight: 600, lineHeight: 1.25, use: "Buttons, nav" }
+    body:              { size: 18, weight: 400, lineHeight: 1.56, use: "Standard reading" }
+    body-small:        { size: 16, weight: 400, lineHeight: 1.50, use: "Secondary reading" }
+    button:            { size: 16, weight: 600, lineHeight: 1.20, tracking: 0.16, use: "Button labels" }
+    caption:           { size: 14, weight: 600, lineHeight: 1.50, use: "Metadata" }
+    small:             { size: 13, weight: 600, lineHeight: 1.23, use: "Tags" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, lg: 16, xl: 40, pill: 56, full: 100000 }
+  shadow:
+    soft: "minimal — depth from dark/light section contrast, not box-shadow"
+  components:
+    button-primary: "Pill CTA, 56px radius, #eef0f3 or #282b31 fill, 1px solid matching border, hover #578bfa"
+    button-blue-bordered: "transparent fill, 1px solid #0052ff border"
+    button-full-pill: "100000px radius for maximum pill shape"
+    card: "8px–40px radius, 1px solid rgba(91,97,110,0.2) border"
+    dark-section: "#0a0b0d background, white text, blue (#0052ff) accent links"
 ---
 
 # Design System Inspiration of Coinbase

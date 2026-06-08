@@ -10,6 +10,51 @@ logo:
   slug: composiohq
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary_color field (#6366f1) is an indigo approximation; the live DS brand is Composio Cobalt #0007cd. Dark-canvas system: many roles use white-opacity (rgba) borders/text — only stated 6-digit hexes promoted to colors; opacity variants live in shadow/note context."
+  colors:
+    primary: "#0007cd"
+    brand: "#0007cd"
+    accent-cyan: "#00ffff"
+    accent-signal: "#0089ff"
+    accent-ocean: "#0096ff"
+    canvas: "#0f0f0f"
+    surface: "#000000"
+    hairline: "#2c2c2c"
+    foreground: "#ffffff"
+    muted: "#444444"
+    on-primary: "#ffffff"
+    light-border: "#e0e0e0"
+  typography:
+    family: { sans: "abcDiatype", mono: "JetBrains Mono" }
+    display-hero:   { size: 64, weight: 400, lineHeight: 0.87, use: "Massive compressed hero headings" }
+    section:        { size: 48, weight: 400, lineHeight: 1.00, use: "Major feature section titles" }
+    subheading-lg:  { size: 40, weight: 400, lineHeight: 1.00, use: "Secondary section markers" }
+    subheading:     { size: 28, weight: 400, lineHeight: 1.20, use: "Card titles, feature names" }
+    card-title:     { size: 24, weight: 500, lineHeight: 1.20, use: "Medium-emphasis card headings" }
+    feature-label:  { size: 20, weight: 500, lineHeight: 1.20, use: "Smaller card titles, labels" }
+    body-lg:        { size: 18, weight: 400, lineHeight: 1.20, use: "Intro paragraphs" }
+    body:           { size: 16, weight: 400, lineHeight: 1.50, use: "Body text, nav links, buttons" }
+    body-sm:        { size: 15, weight: 400, lineHeight: 1.63, use: "Longer-form body text" }
+    caption:        { size: 14, weight: 400, lineHeight: 1.63, use: "Descriptions, metadata" }
+    label:          { size: 13, weight: 500, lineHeight: 1.50, use: "UI labels, badges" }
+    overline:       { size: 12, weight: 500, lineHeight: 1.00, tracking: 0.3, use: "Uppercase overline labels" }
+    code:           { size: 16, weight: 400, lineHeight: 1.50, tracking: -0.32, use: "Inline code, terminal output (JetBrains Mono)" }
+    code-sm:        { size: 14, weight: 400, lineHeight: 1.50, tracking: -0.28, use: "Code snippets, technical labels (JetBrains Mono)" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 40, section: 80 }
+  rounded: { sm: 2, md: 4, lg: 37, full: 9999 }
+  shadow:
+    brutalist: "rgba(0,0,0,0.15) 4px 4px 0px 0px"
+    floating: "rgba(0,0,0,0.5) 0px 8px 32px"
+    glow-cyan: "rgba(0,255,255,0.12) radial halo"
+  components:
+    button-primary: "White fill #ffffff, near-black text, 8px 24px padding, ~4px radius, no border"
+    button-cyan: "Electric Cyan 12% (rgba(0,255,255,0.12)) bg, 1px Ocean Blue #0096ff border, glow-from-within"
+    button-ghost: "transparent fill, 1px Signal Blue #0089ff or Charcoal #2c2c2c border, 10px padding"
+    card: "Pure Black #000000 surface, white-opacity 4-12% border, ~4px radius, optional brutalist shadow"
+    code-block: "black bg, JetBrains Mono, white-opacity 10% border, 4px radius, syntax-highlighted"
 ---
 
 # Design System Inspiration of Composio

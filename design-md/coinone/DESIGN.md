@@ -15,6 +15,44 @@ ds:
   url: "https://coinonecorp.com/company/brand"
   type: brand
   description: "Official BI/brand guideline (v4.0) — Coinone Blue color system, signature logo lockups, clear-space rules."
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = live filled-CTA blue (#0B59D5); brand = BI 'Coinone Blue' identity (#006BD6) — applied shades of the same blue, not a conflict"
+  colors:
+    primary: "#0B59D5"
+    primary-hover: "#194386"
+    brand: "#006BD6"
+    point: "#0090FF"
+    canvas: "#FFFFFF"
+    foreground: "#040505"
+    muted: "#6B7684"
+    on-primary: "#FFFFFF"
+    accent-outline: "#1772F8"
+    body: "#17181B"
+    hairline: "#DDE4EB"
+    surface-tint: "#EBF0F5"
+    skeleton: "#EEEFF0"
+    disabled: "#CFD0D3"
+    navy: "#062554"
+  typography:
+    family: { sans: "Pretendard", mono: "SFMono-Regular" }
+    hero:        { size: 32, weight: 700, lineHeight: 1.2, use: "Hero / section titles, near-black #040505" }
+    control:     { size: 15, weight: 700, lineHeight: 1.0, use: "Primary control / button label" }
+    body:        { size: 14, weight: 400, lineHeight: 1.5, use: "Body & list rows (13-15px / 400-500)" }
+    figure:      { size: 14, weight: 600, lineHeight: 1.3, use: "Trading numerals — dense, right-aligned, weighted when changing" }
+    micro:       { size: 12, weight: 400, lineHeight: 1.4, use: "Micro-labels & helper, muted #6B7684" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 8, lg: 18, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 3, chip: 6, md: 8, lg: 10, full: 9999 }
+  shadow:
+    soft: "rgba(0,0,0,0.05) 0px 1px 2px 0px"
+  components:
+    button-primary: "#0B59D5 fill, white text, 8px radius, 46px height, 15px/700 label — one per view"
+    button-secondary: "white fill, #040505 text, 1px #DDE4EB border, 8px radius, 15px/500"
+    accent-outline: "transparent fill, #1772F8 text + 1px #1772F8 border, 3px radius — signup/inline emphasis"
+    filter-chip: "white fill, 1px #DDE4EB border, 6px radius, 32px height; active = 1px #040505 border + 700"
+    store-button: "#EBF0F5 (light) or #040505 (dark) fill, 10px radius, 48px height, 13px/700"
+    icon-button: "rgba(0,0,0,0.4) circular fill, 50% radius, 5px padding"
 ---
 
 # Coinone

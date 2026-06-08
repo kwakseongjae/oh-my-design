@@ -15,6 +15,61 @@ ds:
   url: "https://www.clay.com/press"
   type: brand
   description: Clay's official press kit and co-branding guidelines.
+tokens:
+  source: prose-derived
+  extracted: "2026-06-08"
+  note: "primary = live interactive/text Clay Black (#000000, Tier 1); brand = Lemon-gold marketing swatch (#fbbd41). primary_color field #ffd23f is the press-kit gold, not present verbatim in prose."
+  colors:
+    primary: "#000000"
+    brand: "#fbbd41"
+    canvas: "#faf9f7"
+    foreground: "#000000"
+    muted: "#9f9b93"
+    on-primary: "#ffffff"
+    surface: "#ffffff"
+    hairline: "#dad4c8"
+    body: "#55534e"
+    link: "#333333"
+    accent-matcha: "#078a52"
+    accent-slushie: "#3bd3fd"
+    accent-lemon: "#fbbd41"
+    accent-ube: "#43089f"
+    accent-pomegranate: "#fc7981"
+    accent-blueberry: "#01418d"
+    error: "#ef4444"
+    badge-bg: "#f0f8ff"
+    badge-text: "#3859f9"
+  typography:
+    family: { sans: "Roobert", mono: "Space Mono" }
+    display-hero:      { size: 80, weight: 600, lineHeight: 1.00, tracking: -3.2, use: "Hero headlines, all 5 stylistic sets" }
+    display-secondary: { size: 60, weight: 600, lineHeight: 1.00, tracking: -2.4, use: "Secondary hero headlines" }
+    section:           { size: 44, weight: 600, lineHeight: 1.10, tracking: -1.32, use: "Section headings" }
+    card-heading:      { size: 32, weight: 600, lineHeight: 1.10, tracking: -0.64, use: "Card headings" }
+    feature-title:     { size: 20, weight: 600, lineHeight: 1.40, tracking: -0.4, use: "Feature titles" }
+    subheading:        { size: 20, weight: 500, lineHeight: 1.50, tracking: -0.16, use: "Sub-headings, no ss01" }
+    body-large:        { size: 20, weight: 400, lineHeight: 1.40, use: "Large body text" }
+    body:              { size: 18, weight: 400, lineHeight: 1.60, tracking: -0.36, use: "Relaxed body text" }
+    body-standard:     { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
+    button:            { size: 16, weight: 500, lineHeight: 1.50, tracking: -0.16, use: "Button label" }
+    button-large:      { size: 24, weight: 400, lineHeight: 1.50, use: "Large button label" }
+    nav-link:          { size: 15, weight: 500, lineHeight: 1.60, use: "Navigation links" }
+    caption:           { size: 14, weight: 400, lineHeight: 1.50, tracking: -0.14, use: "Captions" }
+    small:             { size: 12, weight: 400, lineHeight: 1.50, use: "Small text" }
+    uppercase-label:   { size: 12, weight: 600, lineHeight: 1.20, tracking: 1.08, use: "Uppercase wayfinding labels" }
+    badge:             { size: 9.6, weight: 600, use: "Pill badges" }
+  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 4, md: 8, badge: 11, card: 12, feature: 24, section: 40, full: 1584 }
+  shadow:
+    clay: "rgba(0,0,0,0.1) 0px 1px 1px, rgba(0,0,0,0.04) 0px -1px 1px inset, rgba(0,0,0,0.05) 0px -0.5px 1px"
+    hard-offset: "rgb(0,0,0) -7px 7px"
+  components:
+    button-primary: "Transparent fill, black text, hover rotateZ(-8deg) + translateY(-80%) + hard offset shadow -7px 7px"
+    button-white-solid: "White fill, black text, 12px radius, animated rotation hover — CTA on colored sections"
+    button-ghost: "Transparent fill, black text, 1px solid #717989 border, 4px radius, dragonfruit hover"
+    card: "White surface on cream, 1px solid #dad4c8 oat border, 12-24px radius, multi-layer clay shadow with inset highlight"
+    swatch-section: "Full-width swatch-colored background (matcha/slushie/ube/lemon), white or black text by contrast"
+    dashed-border: "1px dashed #dad4c8 for secondary/decorative containers — hand-drawn craft quality"
+    uppercase-label: "12px Roobert weight 600, uppercase, 1.08px tracking — wayfinding system"
 ---
 
 # Design System Inspiration of Clay
