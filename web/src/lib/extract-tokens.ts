@@ -79,6 +79,7 @@ export interface ComponentVariant {
   border?: string;
   radius?: string;
   padding?: string;
+  height?: string;         // structured-token field; not all variants specify it
   font?: string;           // free-form, e.g. "16px / 600 / Toss Product Sans"
   hover?: string;
   focus?: string;
@@ -762,6 +763,103 @@ function parseVariantField(line: string): { key: keyof ComponentVariant | null; 
  *  bullet whose value contains ` / <knownField>:`. */
 export const KNOWN_FIELD_KEYS: readonly string[] = Object.keys(FIELD_ALIASES);
 
+/** The 10 component types the preview can render. Structured `tokens.components`
+ *  entries whose `type` falls outside this set are rendered as a generic card. */
+const RENDER_TYPES: readonly ComponentType[] = [
+  "button", "input", "card", "badge", "tab", "toggle", "toast", "dialog", "listItem", "avatar",
+];
+/** Structured-component field → ComponentVariant key. Unmapped keys go to extras. */
+const TOKEN_FIELD_MAP: Record<string, keyof ComponentVariant> = {
+  bg: "bg", background: "bg", fg: "fg", text: "fg", color: "fg",
+  border: "border", radius: "radius", padding: "padding", height: "height",
+  font: "font", shadow: "shadow", hover: "hover", focus: "focus",
+  active: "active", disabled: "disabled", use: "use",
+};
+
+/** Split a flow-mapping body on top-level commas (ignoring commas inside quotes
+ *  or nested brackets). `a: 1, b: "x, y", c: [1,2]` → ["a: 1", ' b: "x, y"', " c: [1,2]"]. */
+function splitTopLevel(s: string): string[] {
+  const out: string[] = [];
+  let depth = 0, quote = "", cur = "";
+  for (const ch of s) {
+    if (quote) { cur += ch; if (ch === quote) quote = ""; continue; }
+    if (ch === '"' || ch === "'") { quote = ch; cur += ch; continue; }
+    if (ch === "{" || ch === "[") depth++;
+    else if (ch === "}" || ch === "]") depth--;
+    else if (ch === "," && depth === 0) { out.push(cur); cur = ""; continue; }
+    cur += ch;
+  }
+  if (cur.trim()) out.push(cur);
+  return out;
+}
+
+function parseFlowObject(body: string): Record<string, string> {
+  const obj: Record<string, string> = {};
+  for (const pair of splitTopLevel(body)) {
+    const i = pair.indexOf(":");
+    if (i === -1) continue;
+    const k = pair.slice(0, i).trim();
+    const v = pair.slice(i + 1).trim().replace(/^["']|["']$/g, "");
+    if (k) obj[k] = v;
+  }
+  return obj;
+}
+
+/** Build ComponentBlocks from a STRUCTURED `tokens.components` frontmatter block
+ *  (getdesign-aligned: components as first-class structured tokens). Preferred
+ *  over prose §4 parsing because (a) it carries an explicit render `type` per
+ *  component, so group headings like "Actions"/"Overlays" — which don't classify
+ *  to a render type — no longer drop components, and (b) it's immune to whether
+ *  the prose section lives in §4 or §8. Hand-parses the flow-style block (one
+ *  `name: { ... }` per line) to avoid bundling a YAML parser into the client.
+ *  Returns null when the ref has no structured component tokens → callers fall
+ *  back to extractComponentSpecs(md). */
+export function componentsFromTokens(md: string): ComponentBlock[] | null {
+  if (!md.startsWith("---")) return null;
+  const fmEnd = md.indexOf("\n---", 4);
+  if (fmEnd === -1) return null;
+  const lines = md.slice(4, fmEnd).split("\n");
+  // Locate `components:` inside the tokens block + capture its indent.
+  let ci = -1, cIndent = 0;
+  for (let i = 0; i < lines.length; i++) {
+    const m = lines[i].match(/^(\s*)components:\s*$/);
+    if (m) { ci = i; cIndent = m[1].length; break; }
+  }
+  if (ci === -1) return null;
+  const entries: { name: string; obj: Record<string, string> }[] = [];
+  let sawObject = false;
+  for (let i = ci + 1; i < lines.length; i++) {
+    const line = lines[i];
+    if (!line.trim()) continue;
+    const indent = (line.match(/^(\s*)/)?.[1] ?? "").length;
+    if (indent <= cIndent) break; // dedent → end of the components block
+    const m = line.match(/^\s*([\w.-]+):\s*(.*)$/);
+    if (!m) continue;
+    const name = m[1].trim();
+    const val = m[2].trim();
+    const om = val.match(/^\{(.*)\}$/);
+    if (om) { sawObject = true; entries.push({ name, obj: parseFlowObject(om[1]) }); }
+    else entries.push({ name, obj: { use: val.replace(/^["']|["']$/g, "") } });
+  }
+  if (!sawObject || entries.length === 0) return null; // flat-string block → use prose
+
+  const byType = new Map<ComponentType, ComponentVariant[]>();
+  for (const { name, obj } of entries) {
+    let type = (obj.type as ComponentType) || classifyComponentHeading(name) || "card";
+    if (!RENDER_TYPES.includes(type)) type = "card";
+    const variant: ComponentVariant = { name, extras: {} };
+    for (const [k, v] of Object.entries(obj)) {
+      if (k === "type" || k === "group" || !v) continue;
+      const key = TOKEN_FIELD_MAP[k.toLowerCase()];
+      if (key) (variant as unknown as Record<string, string>)[key] = v;
+      else variant.extras[k] = v;
+    }
+    if (!byType.has(type)) byType.set(type, []);
+    byType.get(type)!.push(variant);
+  }
+  return [...byType.entries()].map(([type, variants]) => ({ type, heading: "", variants }));
+}
+
 /** Parse §4 into a list of ComponentBlock. Rules (see spec/components-schema.md):
  *  - `## 4. Component Stylings` opens the section.
  *  - Each `### Heading` starts a subsection. We map heading → ComponentType.
@@ -1228,7 +1326,9 @@ export function extractTokens(detail: {
       return deriveFunctionalSpacing(md, values, scale);
     })(),
     borders: extractBorders(md),
-    components: extractComponentSpecs(md),
+    // Prefer structured `tokens.components` (getdesign-aligned, explicit per-
+    // component type). Falls back to prose §4 parsing for un-migrated refs.
+    components: componentsFromTokens(md) ?? extractComponentSpecs(md),
     shadows: extractShadows(md),
     guidelines: extractGuidelines(md),
   };
