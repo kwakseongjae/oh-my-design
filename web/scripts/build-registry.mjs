@@ -189,6 +189,7 @@ const TYPES = `export interface RefEntry {
     readonly source?: 'live-extract' | 'design-system' | 'manual' | 'reconciled' | 'prose-derived';
     readonly extracted?: string;
     readonly note?: string;
+    readonly components_harvested?: boolean;
     readonly colors?: Readonly<Record<string, string>>;
     readonly typography?: Readonly<Record<string, unknown>>;
     readonly rounded?: Readonly<Record<string, number>>;
@@ -199,7 +200,9 @@ const TYPES = `export interface RefEntry {
     readonly spacing?: readonly number[] | Readonly<Record<string, number>>;
     readonly radius?: Readonly<Record<string, number>>;
     readonly shadow?: Readonly<Record<string, string>>;
-    readonly components?: Readonly<Record<string, string>>;
+    // Flat string (legacy/summary) OR structured object (getdesign-aligned
+    // component tokens: { type, bg, fg, radius, padding, height, … }).
+    readonly components?: Readonly<Record<string, string | Readonly<Record<string, unknown>>>>;
   };
   readonly ds?: {
     readonly name: string;
