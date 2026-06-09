@@ -656,16 +656,24 @@ function VariantInstance({ type, variant, font, primary }: { type: ComponentType
     gradientCss(variant) ??
     (type === "button" || type === "badge" ? primary ?? "#888" : "transparent");
   const fg = firstColor(variant.fg) ?? "currentColor";
-  const border = cssValue(variant.border);
+  // Surfaces that are invisible without chrome (input box, toast/dialog/tooltip
+  // surface) get a subtle default border when neither a bg nor a border was
+  // specified — so a tokens-only `{ type, use }` component still reads as a real
+  // control rather than blank space.
+  const borderDefaultTypes = type === "input" || type === "toast" || type === "dialog";
+  const border =
+    cssValue(variant.border) ??
+    (borderDefaultTypes && !variant.bg ? "1px solid rgba(128,128,128,0.35)" : undefined);
   const radius = normalizeRadius(variant.radius) ?? defaultRadiusFor(type);
   const padding = cssValue(variant.padding) ?? defaultPaddingFor(type);
   const shadow = cssValue(variant.shadow);
 
   const hasAnyVisible =
     !!variant.bg || !!variant.fg || !!variant.border || !!variant.padding || !!variant.radius ||
-    !!variant.active || !!variant.disabled;
-  // Tabs always render a dummy-label preview (active label + underline), even
-  // when only `active`/`disabled` prose is present — never fall to "spec only".
+    !!variant.active || !!variant.disabled || !!variant.use;
+  // Structured component tokens always carry a `type` (+ usually `use`), so we
+  // render a type-default instance (outlined input, filled button, badge, …)
+  // instead of "spec only". Tabs always render their dummy-label preview too.
   if (!hasAnyVisible && type !== "tab") {
     return (
       <div className="text-[11px] text-muted-foreground italic px-3 py-2 rounded-md border border-dashed border-border/50">
