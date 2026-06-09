@@ -341,8 +341,6 @@ function SpacingShapeSection({ tokens }: { tokens: ParsedTokens }) {
     { purpose: "Card padding", value: `${fs.cardPadding}px`, preview: fs.cardPadding },
     { purpose: "Element gap",  value: `${fs.elementGap}px`,  preview: fs.elementGap },
   ];
-  const maxSpacing = Math.max(fs.sectionGap, fs.cardPadding, 16);
-
   return (
     <Section title="Spacing & Shape" kicker="03">
       <div className="space-y-6">
@@ -367,11 +365,16 @@ function SpacingShapeSection({ tokens }: { tokens: ParsedTokens }) {
                     </td>
                     <td className="px-3 py-2.5">
                       {row.preview !== null ? (
+                        // Actual pixel width — an 8px token renders an 8px bar,
+                        // 16px renders 16px. Earlier this normalized to the
+                        // column width (preview/maxSpacing), which blew an 8px
+                        // value up to a huge bar and hid the real scale.
                         <div
                           className="h-3 rounded-sm"
                           style={{
-                            width: `${(row.preview / maxSpacing) * 100}%`,
-                            minWidth: 4,
+                            width: `${row.preview}px`,
+                            maxWidth: "100%",
+                            minWidth: 2,
                             background: identity.primary + "55",
                           }}
                         />
@@ -531,10 +534,40 @@ function colorLuminance(c?: string): number | null {
  *  light gray but white-on-dark components (Watcha Secondary/Ghost, dark text
  *  fields, 17LIVE chrome…) read correctly. Components with their own opaque
  *  dark/colored fill (Primary CTA, dark Icon Button) keep the transparent cell. */
-function variantNeedsDarkTile(v: ComponentVariant): boolean {
+/** Gradient stops mentioned in a variant's prose (e.g. richart's hero CTA:
+ *  "radial gradient #64cedb to #15a6b7"). Lets us render the real fill instead
+ *  of a flat gray. Returns [from, to] hexes, or null. */
+function gradientStops(v: ComponentVariant): [string, string] | null {
+  const text = [v.use, v.shadow, ...Object.values(v.extras ?? {})].filter(Boolean).join(" ");
+  if (!/gradient/i.test(text)) return null;
+  const hexes = text.match(/#[0-9a-fA-F]{6}/g);
+  return hexes && hexes.length >= 2 ? [hexes[0], hexes[1]] : null;
+}
+function gradientCss(v: ComponentVariant): string | null {
+  const stops = gradientStops(v);
+  if (!stops) return null;
+  const radial = /radial/i.test(v.use ?? "");
+  return radial
+    ? `radial-gradient(circle at 30% 30%, ${stops[0]}, ${stops[1]})`
+    : `linear-gradient(135deg, ${stops[0]}, ${stops[1]})`;
+}
+
+/** The effective background a button/badge will render with, used to decide the
+ *  tile. Mirrors VariantInstance's fallback chain: explicit bg → gradient stop →
+ *  brand primary (for button/badge) → none. */
+function effectiveBgColor(v: ComponentVariant, type: ComponentType, primary?: string): string | null {
+  const explicit = firstColor(v.bg);
+  if (explicit) return explicit;
+  const stops = gradientStops(v);
+  if (stops) return stops[1];
+  if (type === "button" || type === "badge") return primary ?? "#888";
+  return null;
+}
+
+function variantNeedsDarkTile(v: ComponentVariant, type: ComponentType, primary?: string): boolean {
   const fgLum = colorLuminance(firstColor(v.fg));
   if (fgLum === null || fgLum <= 0.6) return false; // not light text → fine on gray
-  const bg = firstColor(v.bg);
+  const bg = effectiveBgColor(v, type, primary);
   if (!bg || bg === "transparent") return true;
   const alpha = bg.match(/rgba?\([^)]*,\s*([0-9.]+)\s*\)/i);
   if (alpha && parseFloat(alpha[1]) < 0.6) return true; // translucent fill
@@ -611,14 +644,19 @@ const COMPONENT_LABEL: Record<ComponentType, string> = {
  *  cards get an empty surface with a tiny label, etc. We deliberately apply
  *  *only* the spec values (no app-theme leak, no brand-foreground leak) so
  *  the preview is faithful to what the brand actually publishes. */
-function VariantInstance({ type, variant, font }: { type: ComponentType; variant: ComponentVariant; font?: string }) {
+function VariantInstance({ type, variant, font, primary }: { type: ComponentType; variant: ComponentVariant; font?: string; primary?: string }) {
   // Sane fallbacks: a missing radius shouldn't hide the whole instance — every
   // variant the brand actually published should render. We only fall through
   // to "spec only" when there's literally nothing renderable (no bg AND no
   // fg AND no border AND no padding) — empty bullet list, mistakenly named
   // variant, etc. Otherwise we use type-appropriate defaults for the
   // properties that weren't specified.
-  const bg = firstColor(variant.bg) ?? (type === "button" || type === "badge" ? "#888" : "transparent");
+  // bg fallback chain: explicit color → gradient from prose (richart hero CTA)
+  // → brand primary for buttons/badges (never a dead gray #888) → transparent.
+  const bg =
+    firstColor(variant.bg) ??
+    gradientCss(variant) ??
+    (type === "button" || type === "badge" ? primary ?? "#888" : "transparent");
   const fg = firstColor(variant.fg) ?? "currentColor";
   const border = cssValue(variant.border);
   const radius = normalizeRadius(variant.radius) ?? defaultRadiusFor(type);
@@ -996,6 +1034,7 @@ function VariantSpec({ variant }: { variant: ComponentVariant }) {
 function ComponentsSection({ tokens, kicker }: { tokens: ParsedTokens; kicker: string }) {
   const { components, typography } = tokens;
   const font = typography.family;
+  const primary = tokens.identity.primary;
 
   // Some brand DESIGN.md files describe layout/spacing in §4 instead of
   // components (e.g. dabang's §4 is "Spacing & Layout"). Hide the section
@@ -1010,7 +1049,7 @@ function ComponentsSection({ tokens, kicker }: { tokens: ParsedTokens; kicker: s
             <SubLabel>{block.heading || COMPONENT_LABEL[block.type]}</SubLabel>
             <div className="space-y-3">
               {block.variants.map((v, j) => (
-                <VariantCard key={`${i}-${j}-${v.name}`} type={block.type} variant={v} font={font} />
+                <VariantCard key={`${i}-${j}-${v.name}`} type={block.type} variant={v} font={font} primary={primary} />
               ))}
             </div>
             {block.notes && (
@@ -1023,12 +1062,12 @@ function ComponentsSection({ tokens, kicker }: { tokens: ParsedTokens; kicker: s
   );
 }
 
-function VariantCard({ type, variant, font }: { type: ComponentType; variant: ComponentVariant; font?: string }) {
+function VariantCard({ type, variant, font, primary }: { type: ComponentType; variant: ComponentVariant; font?: string; primary?: string }) {
   // Uniform very-light-gray card surface (whole card — demo + spec column).
   // Gives white/transparent brand components (e.g. Watcha's white-on-rgba
   // chips) a non-white backdrop so they don't vanish, without per-brand
   // dark canvases. Theme-aware via the muted token.
-  const darkTile = variantNeedsDarkTile(variant);
+  const darkTile = variantNeedsDarkTile(variant, type, primary);
   return (
     <div className="grid gap-4 rounded-2xl border border-border/50 bg-muted/40 p-5 sm:grid-cols-[minmax(0,260px)_1fr] sm:items-start">
       <div
@@ -1042,7 +1081,7 @@ function VariantCard({ type, variant, font }: { type: ComponentType; variant: Co
               { padding: "20px 16px", minHeight: 72 }
         }
       >
-        <VariantInstance type={type} variant={variant} font={font} />
+        <VariantInstance type={type} variant={variant} font={font} primary={primary} />
       </div>
       <div className="min-w-0">
         <div className="mb-2 text-sm font-semibold text-foreground">{variant.name}</div>
