@@ -250,7 +250,7 @@ export function TheWall() {
             The wall
           </div>
           <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
-            100+ systems. All real.{" "}
+            221 systems. All real.{" "}
             <span style={{ color: V2.primary }}>All extracted.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm text-white/55">

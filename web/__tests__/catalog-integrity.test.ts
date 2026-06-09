@@ -21,6 +21,9 @@ const LLMS_TXT = join(WEB_ROOT, "public", "llms.txt");
 
 const VALID_COUNTRIES = ["KR", "US", "JP", "TW", "CN", "UK", "DE", "FR", "IT"] as const;
 const VALID_LOGO_TYPES = ["favicon", "simpleicons", "github"] as const;
+// The 10 component types the preview can render (componentsFromTokens). A
+// structured component token's `type` must be one of these.
+const RENDER_TYPES = ["button", "input", "card", "badge", "tab", "toggle", "toast", "dialog", "listItem", "avatar"] as const;
 
 // Proof gate (spec/verification-pipeline.md): forward-only. Refs verified on/after
 // this date must carry a `## Proof` block in .verification.md (>= 5 raw samples +
@@ -204,15 +207,57 @@ describe("catalog-integrity / per-reference", () => {
       }
     }
 
+    // Structured component-token gate. tokens.components is the canonical render
+    // source (componentsFromTokens), so it must be structured objects — never
+    // flat strings (which silently fall back to prose §4) — each with an explicit
+    // render `type` (componentsFromTokens coerces unknown types to "card", hiding
+    // typos), a real `components_harvested` boolean marker, and component bg/fg/
+    // border hexes grounded in the DESIGN.md (the same honesty rule as colors).
+    const comps = entry.tokens?.components;
+    if (comps) {
+      expect(
+        typeof entry.tokens?.components_harvested,
+        `${id}: has tokens.components but components_harvested is not a boolean`
+      ).toBe("boolean");
+      const groundingC = md.replace(/\ntokens:\n(?:[ \t].*(?:\n|$))*/, "\n").toLowerCase();
+      for (const [cname, c] of Object.entries(comps)) {
+        expect(
+          typeof c === "object" && c !== null,
+          `${id}: component '${cname}' must be a structured object ({type,…}), not a flat string`
+        ).toBe(true);
+        const o = c as Record<string, unknown>;
+        expect(
+          RENDER_TYPES,
+          `${id}: component '${cname}' type '${String(o.type)}' is not one of the 10 render types`
+        ).toContain(o.type);
+        for (const k of ["bg", "fg", "border"] as const) {
+          for (const hex of String(o[k] ?? "").match(/#[0-9a-fA-F]{6}/g) ?? []) {
+            expect(
+              groundingC.includes(hex.toLowerCase()),
+              `${id}: component ${cname}.${k} ${hex} is not grounded in the DESIGN.md`
+            ).toBe(true);
+          }
+        }
+      }
+    }
+
     // Fingerprint cross-check
     const fp = fpById.get(id);
     expect(fp, `${id} missing from fingerprints`).toBeDefined();
 
-    // design-md mirror
+    // design-md mirror — must exist AND be byte-identical (catches silent drift
+    // when a reference is edited but its mirror copy isn't re-synced).
+    const mirrorPath = join(DESIGN_MD_MIRROR, id, "DESIGN.md");
     expect(
-      existsSync(join(DESIGN_MD_MIRROR, id, "DESIGN.md")),
+      existsSync(mirrorPath),
       `${id}: design-md/${id}/DESIGN.md mirror missing`
     ).toBe(true);
+    if (existsSync(mirrorPath)) {
+      expect(
+        readFileSync(mirrorPath, "utf-8") === md,
+        `${id}: design-md/${id}/DESIGN.md is not byte-identical to the reference — re-sync the mirror`
+      ).toBe(true);
+    }
   });
 });
 

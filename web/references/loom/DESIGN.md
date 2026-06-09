@@ -45,11 +45,11 @@ tokens:
     soft: "rgba(0,0,0,0.03) 0px 4px 6.4px 0px"
     standard: "rgba(0,0,0,0.05) 0px 3px 9.6px 0px"
   components:
-    button-primary: "Loom blue #1868db fill, white text, 9999px pill, weight 700"
-    button-light: "surface-blue #e9f2fe fill, black/ink text, 9999px pill"
-    button-dark: "ink #101214 fill, white text, 9999px pill, weight 700"
-    icon-button: "white #ffffff circle, soft multi-layer shadow, carousel arrows"
-    footer: "surface-blue #e9f2fe background, body #292a2e text"
+    button-primary: { type: button, bg: "#1868db", fg: "#ffffff", radius: "9999px", padding: "16px 23px", height: "58px", font: "16px / 700", hover: "bg #0052cc", use: "Primary CTA (Get Loom for free, Download now, Learn more)" }
+    button-light: { type: button, bg: "#e9f2fe", fg: "#101214", radius: "9999px", padding: "16px 23px", height: "58px", font: "16px / 700", use: "Secondary actions (Contact Sales, Install Chrome Extension, See all use cases)" }
+    button-dark: { type: button, bg: "#101214", fg: "#ffffff", radius: "9999px", padding: "16px 23px", height: "58px", font: "16px / 700", use: "Alternate emphasis CTA (Learn more, Explore our blog)" }
+    icon-button: { type: button, bg: "#ffffff", fg: "#292a2e", radius: "9999px", height: "56px", shadow: "rgba(0,0,0,0.03) 0px 4px 6.4px 0px, rgba(0,0,0,0.05) 0px 3px 9.6px 0px", use: "Testimonial carousel previous/next controls" }
+    footer: { type: card, bg: "#e9f2fe", fg: "#292a2e", use: "Footer background, links hover toward #1868db" }
 ---
 
 # Design System Inspiration of Loom

@@ -29,7 +29,11 @@ description: "기존 references/<id>/DESIGN.md(엄격히 작성된 산문)에서
      - `colors`: 의미론적 역할+variant (primary/primary-hover/brand/canvas/foreground/
        muted/on-primary/hairline/error/success …) — **산문에 적힌 hex만** 사용.
      - `typography`: `family` + 명명 토큰 `{size, weight, lineHeight, tracking, use}` (§3 표 그대로).
-     - `spacing`(명명/배열) · `rounded`(`sm/md/lg/full`) · `shadow`(tier) · `components`(핵심 몇 개).
+     - `spacing`(명명/배열) · `rounded`(`sm/md/lg/full`) · `shadow`(tier).
+     - **`components`는 구조화 객체로** (flat 문자열 금지 — catalog-integrity가 강제): 한 줄당
+       `name: { type: <button|input|card|badge|tab|toggle|toast|dialog|listItem|avatar>, bg, fg, radius, padding, font, use }`.
+       `type` 필수(범위 밖→가장 가까운 것). 컴포넌트 bg/fg hex는 grounding된 colors 재사용(새 hex 금지).
+       **`components_harvested: true`** 추가. (스키마: `spec/components-schema.md`)
      - `source: prose-derived`, `extracted: "<오늘>"`, primary가 drift면 `note`에 기록.
    - frontmatter에 블록 삽입(기존 minimal 블록 있으면 교체). 산문 본문 불변.
    - design-md 미러 동기화(`design-md/<id>/DESIGN.md` 복사).

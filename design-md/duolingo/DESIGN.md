@@ -41,9 +41,9 @@ tokens:
     button-3d: "0 4px 0 0 #58a700"
     card: "0 2px 0 0 rgba(0,0,0,0.1)"
   components:
-    button-primary: "Feather Green #58cc02 fill, white text, 16px radius, 4px #58a700 3D lip, uppercase bold"
-    button-accent: "Macaw #1cb0f6 fill, 3D whale lip"
-    card: "white, 16px radius, thick #e5e5e5 border, playful"
+    button-primary: { type: button, bg: "#58cc02", fg: "#ffffff", radius: "12px", padding: "14px 20px", height: "50px", font: "15px / 700", shadow: "0 4px 0 #58a700", active: "translateY(4px), lip collapses", disabled: "bg #e5e5e5, fg #afafaf, no lip", use: "Single primary action — CONTINUE, START, CHECK ANSWER (uppercase)" }
+    button-accent: { type: button, bg: "#1cb0f6", fg: "#ffffff", radius: "12px", padding: "14px 20px", font: "15px / 700", shadow: "0 4px 0 #1899d6", use: "Alternative positive action, Super upsell, info CTA (uppercase)" }
+    card: { type: card, bg: "#ffffff", border: "2px solid #e5e5e5", radius: "16px", padding: "16px", shadow: "none", use: "Course units, skill tiles, list rows" }
 ---
 
 # Design System Inspiration of Duolingo

@@ -47,7 +47,7 @@ tokens:
     button-outline: { type: button, bg: "#ffffff", fg: "#323232", radius: "4px", font: "14px / 500", use: "Outline delete / cancel, 1px #e5e5e5 border, 34px height" }
     button-discovery: { type: button, bg: "#17181a", fg: "#ffffff", radius: "6px", font: "15px / 600", use: "Shorts / discovery CTA, 40px height" }
     card-coupon: { type: card, bg: "#fff5f8", fg: "#eb2b51", font: "27px / 700", use: "Active coupon card, rose-red amount" }
-    nudge-urgency: { type: banner, bg: "rgba(47,23,253,0.05)", fg: "#6456dc", radius: "4px", font: "14px / 500", use: "Urgency countdown nudge bar, 38px height" }
+    nudge-urgency: { type: toast, bg: "rgba(47,23,253,0.05)", fg: "#6456dc", radius: "4px", font: "14px / 500", use: "Urgency countdown nudge bar, 38px height" }
   components_harvested: true
 ---
 

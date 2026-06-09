@@ -55,7 +55,7 @@ tokens:
     flag-gift: { type: badge, bg: "#6fcff7", fg: "#ffffff", radius: 9, font: "12px/400", use: "증정 pill" }
     best-badge: { type: badge, bg: "#ffffff", fg: "#f05a5e", radius: 24, padding: "8px 18px", font: "14px/700", use: "베스트 sash on hero rails" }
     search-input: { type: input, bg: "#ffffff", fg: "#131518", radius: 0, font: "13.33px/400", use: "Global GNB product search" }
-    product-card: { type: card, bg: "#ffffff", fg: "#333333", radius: 0, use: "Search/list product tile" }
+    product-card: { type: card, bg: "#ffffff", fg: "#131518", radius: 0, use: "Search/list product tile" }
   components_harvested: true
 ---
 

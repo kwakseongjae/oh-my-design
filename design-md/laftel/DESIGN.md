@@ -10,6 +10,46 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=laftel.net&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#816bff"
+    primary-hover: "#6e58ff"
+    brand: "#816bff"
+    canvas: "#ffffff"
+    foreground: "#121212"
+    muted: "#8a8a8a"
+    surface: "#242537"
+    hairline: "#eeeeee"
+    accent-wash: "#f0edff"
+    error: "#f16361"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    title-xxl: { size: 40, weight: 700, lineHeight: 1.5, use: "Largest display title" }
+    title-xl:  { size: 32, weight: 700, lineHeight: 1.5, use: "Section title" }
+    title-l:   { size: 28, weight: 700, lineHeight: 1.5, use: "Sub-section title" }
+    title-m:   { size: 24, weight: 700, lineHeight: 1.5, use: "Card / block title" }
+    title-s:   { size: 20, weight: 700, lineHeight: 1.5, use: "Small title" }
+    text-l:    { size: 18, weight: 700, lineHeight: 1.5, use: "Large body / button label" }
+    text-m:    { size: 16, weight: 400, lineHeight: 1.5, use: "Default body" }
+    text-s:    { size: 14, weight: 700, lineHeight: 1.5, use: "Nav link, toast, small label" }
+    text-xs:   { size: 13, weight: 400, lineHeight: 1.5, use: "Metadata" }
+    text-xxs:  { size: 12, weight: 400, lineHeight: 1.5, use: "Fine print" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { sm: 4, md: 4, lg: 8, full: 9999 }
+  shadow:
+    none: "none"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#816bff", fg: "#ffffff", radius: "4px", height: "56px", padding: "0 18px", font: "18px / 700", states: "hover #6e58ff", use: "Primary CTA (md)" }
+    button-primary-sm: { type: button, bg: "#816bff", fg: "#ffffff", radius: "4px", height: "48px", padding: "0 20px", font: "16px / 700", use: "Primary CTA (sm)" }
+    button-slight: { type: button, bg: "#f0edff", fg: "#816bff", radius: "4px", height: "56px", font: "18px / 700", states: "hover #d9d3ff", use: "Secondary action" }
+    button-disabled: { type: button, bg: "#eeeeee", fg: "#8a8a8a", radius: "4px", height: "56px", use: "Disabled action" }
+    nav-bar: { type: tab, bg: "#ffffff", fg: "#121212", height: "64px", padding: "0 50px", border: "1px solid #eeeeee", font: "14px / 700", active: "link color #816bff", use: "Desktop nav — active/hover link purple" }
+    badge-notification: { type: badge, bg: "#816bff", fg: "#ffffff", radius: "9999px", height: "17px", font: "10px / 700", use: "Notification count badge" }
+    toast: { type: toast, bg: "#242537", fg: "#ffffff", radius: "4px", padding: "16px 12px", height: "48px", font: "14px / 400", use: "Default toast (#000000 light / #242537 dark)" }
 ---
 
 # Laftel

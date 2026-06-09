@@ -16,6 +16,50 @@ ds:
   type: brand
   description: Resend's brand guidelines with wordmark, icons, and naming rules.
   og_image: "https://cdn.resend.com/cover-brand.png"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#ffffff"
+    brand: "#000000"
+    canvas: "#000000"
+    foreground: "#f0f0f0"
+    muted: "#a1a4a5"
+    on-primary: "#000000"
+    accent-orange: "#ff801f"
+    accent-green: "#11ff99"
+    accent-blue: "#3b9eff"
+    accent-yellow: "#ffc53d"
+    error: "#ff2047"
+  typography:
+    family: { sans: "inter", mono: "commitMono" }
+    display-hero:    { size: 96, weight: 400, lineHeight: 1.00, tracking: -0.96, use: "Domaine Display serif hero headlines" }
+    section:         { size: 56, weight: 400, lineHeight: 1.20, tracking: -2.8, use: "ABC Favorit section headings" }
+    subheading:      { size: 20, weight: 400, lineHeight: 1.30, use: "ABC Favorit sub-headings" }
+    feature-title:   { size: 24, weight: 500, lineHeight: 1.50, use: "Inter section sub-headings" }
+    body-lg:         { size: 18, weight: 400, lineHeight: 1.50, use: "Introductions" }
+    body:            { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body text" }
+    nav-link:        { size: 14, weight: 500, lineHeight: 1.43, tracking: 0.35, use: "ABC Favorit nav links, positive tracking" }
+    button:          { size: 14, weight: 600, lineHeight: 1.43, use: "Buttons, CTAs" }
+    caption:         { size: 14, weight: 400, lineHeight: 1.60, use: "Descriptions" }
+    small:           { size: 12, weight: 500, lineHeight: 1.33, use: "Tags, meta, fine print" }
+    code:            { size: 16, weight: 400, lineHeight: 1.50, use: "Commit Mono code blocks" }
+  spacing: [1, 2, 4, 5, 6, 7, 8, 10, 12, 16, 20, 24, 30, 32, 40]
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+  shadow:
+    ring: "rgba(176,199,217,0.145) 0px 0px 0px 1px"
+    subtle: "rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px"
+    focus: "rgb(0,0,0) 0px 0px 0px 8px"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#ffffff", fg: "#000000", radius: "9999px", padding: "5px 12px", font: "14px / 600", use: "High-contrast CTA, Get started" }
+    button-ghost: { type: button, bg: "transparent", fg: "#f0f0f0", radius: "9999px", padding: "5px 12px", border: "1px solid rgba(214,235,253,0.19)", hover: "bg rgba(255,255,255,0.28)", use: "Primary CTA on dark, transparent pill with frost border" }
+    button-secondary: { type: button, bg: "transparent", fg: "#f0f0f0", radius: "4px", hover: "subtle background tint", use: "Secondary actions, tab items" }
+    card: { type: card, bg: "transparent", border: "1px solid rgba(214,235,253,0.19)", radius: "16px", shadow: "rgba(176,199,217,0.145) 0px 0px 0px 1px", use: "Feature cards, frost-border panels" }
+    input: { type: input, fg: "#f0f0f0", radius: "4px", focus: "shadow-based ring", use: "Form fields, dark theme inherit" }
+    tab: { type: tab, radius: "8px", active: "subtle background differentiation", use: "Horizontal tab navigation" }
+    badge-accent: { type: badge, fg: "#ffa057", radius: "9999px", font: "12px / 500", use: "Multi-color accent badge, accent bg at low opacity" }
+    code-panel: { type: card, bg: "transparent", border: "1px solid rgba(214,235,253,0.19)", radius: "24px", font: "16px / 400", use: "Commit Mono code preview panel" }
 ---
 
 # Design System Inspiration of Resend

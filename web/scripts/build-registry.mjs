@@ -108,7 +108,20 @@ function validateTokens(t, file) {
   if (t.typography && typeof t.typography !== 'object') fail(file, `tokens.typography must be a mapping`);
   if (t.font && typeof t.font !== 'object') fail(file, `tokens.font must be a mapping`);
   if (t.text && typeof t.text !== 'object') fail(file, `tokens.text must be a mapping of named type tokens`);
-  if (t.components && typeof t.components !== 'object') fail(file, `tokens.components must be a mapping`);
+  if (t.components) {
+    if (typeof t.components !== 'object' || Array.isArray(t.components)) fail(file, `tokens.components must be a mapping`);
+    const RENDER_TYPES = new Set(['button', 'input', 'card', 'badge', 'tab', 'toggle', 'toast', 'dialog', 'listItem', 'avatar']);
+    for (const [name, c] of Object.entries(t.components)) {
+      if (typeof c === 'string') continue; // legacy flat-string summary tolerated
+      if (typeof c !== 'object') fail(file, `tokens.components.${name} must be an object or string`);
+      if (c.type && !RENDER_TYPES.has(c.type)) fail(file, `tokens.components.${name}.type '${c.type}' is not a render type`);
+      for (const k of ['bg', 'fg', 'border']) {
+        const v = c[k];
+        if (v && /#[0-9a-f]/i.test(String(v)) && !/#[0-9a-fA-F]{6}\b/.test(String(v))) fail(file, `tokens.components.${name}.${k} '${v}' has a non-6-digit hex`);
+      }
+    }
+  }
+  if (t.components_harvested !== undefined && typeof t.components_harvested !== 'boolean') fail(file, `tokens.components_harvested must be a boolean`);
   if (t.source && !['live-extract', 'design-system', 'manual', 'reconciled', 'prose-derived'].includes(t.source)) fail(file, `tokens.source '${t.source}' invalid`);
 }
 

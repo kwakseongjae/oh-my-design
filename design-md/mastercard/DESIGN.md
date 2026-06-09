@@ -11,6 +11,67 @@ logo:
 verified: "2026-06-06"
 added: "2026-06-06"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#141413"
+    primary-hover: "#333333"
+    brand: "#EB001B"
+    brand-hover: "#C8001A"
+    accent-yellow: "#F79E1B"
+    accent-orange: "#FF5F00"
+    canvas: "#FFFFFF"
+    surface: "#F7F7F7"
+    foreground: "#141413"
+    body: "#5A5A5A"
+    muted: "#767676"
+    placeholder: "#999999"
+    hairline: "#E0E0E0"
+    border-strong: "#CCCCCC"
+    on-primary: "#FFFFFF"
+    success: "#008A00"
+    error: "#EB001B"
+    info: "#1A73E8"
+  typography:
+    family: { sans: "Mark", mono: "SF Mono" }
+    display-hero:  { size: 56, weight: 700, lineHeight: 1.14, tracking: -0.02, use: "Marketing hero headlines" }
+    display-large: { size: 40, weight: 700, lineHeight: 1.20, tracking: -0.01, use: "Page titles, key statements" }
+    heading-1:     { size: 32, weight: 700, lineHeight: 1.25, tracking: -0.01, use: "Section headers" }
+    heading-2:     { size: 24, weight: 600, lineHeight: 1.33, use: "Sub-sections, card headers" }
+    heading-3:     { size: 20, weight: 600, lineHeight: 1.40, use: "Feature titles, list headers" }
+    subtitle:      { size: 18, weight: 500, lineHeight: 1.44, use: "Lead paragraphs, intros" }
+    body-large:    { size: 16, weight: 400, lineHeight: 1.63, use: "Primary reading text" }
+    body:          { size: 14, weight: 400, lineHeight: 1.57, use: "Standard UI text" }
+    caption:       { size: 12, weight: 400, lineHeight: 1.50, tracking: 0.01, use: "Legal, fine print, metadata" }
+    button:        { size: 16, weight: 600, lineHeight: 1.0, tracking: 0.01, use: "CTA labels" }
+    eyebrow:       { size: 12, weight: 700, lineHeight: 1.33, tracking: 0.08, use: "UPPERCASE section kickers" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64, hero: 96 }
+  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+  shadow:
+    subtle: "0 1px 3px rgba(0,0,0,0.08)"
+    raised: "0 2px 8px rgba(0,0,0,0.08)"
+    elevated: "0 4px 16px rgba(0,0,0,0.10)"
+    overlay: "0 16px 48px rgba(0,0,0,0.20)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#141413", fg: "#FFFFFF", radius: "24px", height: "48px", padding: "0 28px", font: "16px / 600", hover: "#333333", active: "#000000", disabled: "#CCCCCC bg, #767676 text", use: "Primary CTA across most surfaces" }
+    button-red: { type: button, bg: "#EB001B", fg: "#FFFFFF", radius: "24px", height: "48px", padding: "0 28px", font: "16px / 600", hover: "#C8001A", active: "#A30016", use: "High-emphasis brand-forward CTA, hero action" }
+    button-secondary: { type: button, bg: "transparent", fg: "#141413", border: "1.5px solid #141413", radius: "24px", height: "48px", padding: "0 28px", font: "16px / 600", hover: "#F7F7F7 bg", use: "Secondary action paired with primary" }
+    button-tertiary: { type: button, bg: "none", fg: "#EB001B", font: "16px / 600", hover: "underline + #C8001A", use: "Inline navigation, Read more, low-emphasis" }
+    input: { type: input, bg: "#FFFFFF", fg: "#141413", border: "1px solid #CCCCCC", radius: "8px", padding: "14px 16px", font: "16px / 400", focus: "2px #141413 border + outer ring", use: "Standard form input" }
+    input-error: { type: input, border: "2px solid #EB001B", font: "12px / 400 #EB001B helper", use: "Validation failure" }
+    search: { type: input, bg: "#F7F7F7", border: "1px solid transparent", radius: "9999px", focus: "#CCCCCC border", use: "Global site/product search, leading magnifier" }
+    card: { type: card, bg: "#FFFFFF", border: "1px solid #E0E0E0", radius: "12px", padding: "24px", shadow: "0 1px 3px rgba(0,0,0,0.08)", use: "Content modules, feature tiles" }
+    card-elevated: { type: card, bg: "#FFFFFF", radius: "16px", padding: "32px", shadow: "0 4px 16px rgba(0,0,0,0.10)", use: "Promotional / hero cards" }
+    card-stat: { type: card, bg: "#F7F7F7", radius: "12px", padding: "24px", use: "Metrics, data highlights — number 40px / 700, brand-gradient top bar" }
+    badge-brand: { type: badge, bg: "#EB001B", fg: "#FFFFFF", radius: "4px", padding: "4px 8px", font: "12px / 700", use: "NEW, FEATURED uppercase 0.04em" }
+    badge-neutral: { type: badge, bg: "#F0F0F0", fg: "#333333", radius: "9999px", padding: "4px 12px", font: "13px / 500", use: "Category, filter chips" }
+    badge-success: { type: badge, bg: "rgba(0,138,0,0.12)", fg: "#008A00", radius: "4px", font: "12px / 700", use: "Approved, Completed" }
+    tab: { type: tab, fg: "#5A5A5A", font: "16px / 500", active: "#141413 16px / 600, 3px bottom border #EB001B", use: "Section navigation within a page" }
+    alert: { type: toast, bg: "#F7F7F7", border: "4px left semantic color", radius: "8px", padding: "16px", font: "14px / 400 #333333", use: "Form-level and page-level messaging" }
+    dialog: { type: dialog, bg: "#FFFFFF", radius: "16px", padding: "32px", shadow: "0 16px 48px rgba(0,0,0,0.20)", use: "Confirmations, focused tasks; backdrop rgba(20,20,19,0.6)" }
+    toggle: { type: toggle, bg: "#CCCCCC track off, #141413 track on", radius: "9999px", use: "Settings, preferences; thumb #FFFFFF 20px" }
 ---
 
 # Design System Inspiration of Mastercard

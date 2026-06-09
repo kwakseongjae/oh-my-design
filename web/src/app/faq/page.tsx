@@ -79,7 +79,7 @@ const SECTIONS: QASection[] = [
     items: [
       {
         q: "어떻게 설치하나요?",
-        a: "프로젝트 루트에서 `npx oh-my-design-cli install-skills`만 실행하면 됩니다. skill·sub-agent·hook·100+ reference DESIGN.md가 모두 설치되며 외부 API 호출은 발생하지 않습니다. 설치 후 agent를 한 번 재시작하면 새 skill이 로드됩니다. 자세한 흐름은 /docs를 참조하세요.",
+        a: "프로젝트 루트에서 `npx oh-my-design-cli install-skills`만 실행하면 됩니다. skill·sub-agent·hook·221 reference DESIGN.md가 모두 설치되며 외부 API 호출은 발생하지 않습니다. 설치 후 agent를 한 번 재시작하면 새 skill이 로드됩니다. 자세한 흐름은 /docs를 참조하세요.",
       },
       {
         q: "Cursor에서도 됩니까?",
@@ -87,7 +87,7 @@ const SECTIONS: QASection[] = [
       },
       {
         q: "무료인가요?",
-        a: "네. MIT 라이선스 오픈소스이며 npm 패키지 하나로 끝납니다. 유료 tier는 존재하지 않고 만들 계획도 없습니다. 100+ reference는 각 회사 자산이며 교육용 reference로만 수록돼 있습니다.",
+        a: "네. MIT 라이선스 오픈소스이며 npm 패키지 하나로 끝납니다. 유료 tier는 존재하지 않고 만들 계획도 없습니다. 221 reference는 각 회사 자산이며 교육용 reference로만 수록돼 있습니다.",
       },
       {
         q: "제 디자인이 학습 데이터로 넘어가나요?",
@@ -240,7 +240,7 @@ export default function FaqPage() {
           <Link href="/docs" className="underline underline-offset-4">
             /docs
           </Link>
-          , 100+ 레퍼런스는{" "}
+          , 221 레퍼런스는{" "}
           <Link
             href="/design-systems"
             className="underline underline-offset-4"

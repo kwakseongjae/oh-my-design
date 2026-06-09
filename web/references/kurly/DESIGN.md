@@ -43,10 +43,10 @@ tokens:
     card-hover: "0px 0px 4px 0px rgba(0,0,0,0.15)"
     floating: "2px 2px 10px 0px rgba(0,0,0,0.10)"
   components:
-    button-primary: "Kurly Purple #5f0080 fill, white text"
-    button-secondary: "outline purple, purple text"
-    button-critical: "sale / destructive red fill"
-    card: "white, KPDS radius, hover lift shadow"
+    button-primary: { type: button, bg: "#5f0080", fg: "#ffffff", radius: "6px", padding: "16px 24px", font: "16px / 600", active: "#672091", disabled: "#dfe4eb bg, #848f9a text", use: "Primary commerce CTAs (구매하기, 장바구니 담기, 주문하기)" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#5f0080", border: "1px solid #5f0080", radius: "6px", padding: "12px 20px", font: "14px / 600", active: "#f5effa bg", use: "Secondary actions (바로 구매, 옵션 변경)" }
+    button-critical: { type: button, bg: "#e22d2e", fg: "#ffffff", radius: "6px", padding: "12px 20px", font: "14px / 600", active: "#d81b1c", use: "Last-chance sale CTAs, destructive confirms (삭제)" }
+    card: { type: card, bg: "#ffffff", radius: "4px", padding: "12px 4px", shadow: "none", hover: "0px 0px 4px rgba(0,0,0,0.15)", use: "Category list, search results, recommendation rails" }
 ---
 
 # Design System Inspiration of Kurly (컬리 / 마켓컬리)
