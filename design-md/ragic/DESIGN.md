@@ -7,7 +7,7 @@ homepage: "https://www.ragic.com"
 primary_color: "#f70e0e"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=www.ragic.com&sz=128"
+  slug: "https://www.google.com/s2/favicons?domain=ragic.com&sz=128"
 verified: "2026-06-08"
 added: "2026-06-08"
 omd: "0.1"

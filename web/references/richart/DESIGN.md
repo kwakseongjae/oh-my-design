@@ -7,7 +7,7 @@ homepage: "https://www.richart.tw"
 primary_color: "#17b6c9"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=richart.tw&sz=128"
+  slug: "https://www.google.com/s2/favicons?domain=richart.com.tw&sz=128"
 verified: "2026-06-08"
 added: "2026-06-08"
 omd: "0.1"
