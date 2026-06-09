@@ -7,7 +7,7 @@ homepage: "https://www.cathaybk.com.tw"
 primary_color: "#00512a"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=cathaybk.com.tw&sz=128"
+  slug: "https://www.cathaybk.com.tw/apple-touch-icon.png"
 verified: "2026-06-08"
 added: "2026-06-08"
 omd: "0.1"
