@@ -8,7 +8,7 @@ homepage: "https://www.gangnamunni.com"
 primary_color: "#d54300"
 logo:
   type: favicon
-  slug: "https://www.gangnamunni.com/images/icon/apple-icon-180x180.png"
+  slug: "https://www.google.com/s2/favicons?domain=gangnamunni.com&sz=128"
 verified: "2026-05-15"
 omd: "0.1"
 ds:

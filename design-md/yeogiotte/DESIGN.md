@@ -8,7 +8,7 @@ homepage: "https://www.yeogi.com"
 primary_color: "#000000"
 logo:
   type: favicon
-  slug: "https://www.yeogi.com/favicon/rel_icon/favicon_png_192.png"
+  slug: "https://www.google.com/s2/favicons?domain=yeogi.com&sz=128"
 verified: "2026-05-15"
 omd: "0.1"
 ds:
