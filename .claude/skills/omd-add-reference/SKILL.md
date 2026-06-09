@@ -60,10 +60,21 @@ CREATE에는 항상 SYNC가 뒤따른다 (count +1).
 Phase 2 라이브 inspect를 이미 했으므로 `source: live-extract`(또는 Tier 2와 reconcile 시 `reconciled`).
 `references/stripe/DESIGN.md`의 tokens 블록을 **스키마 레퍼런스**로 사용:
 
-- 네임스페이스(getdesign.md 정렬): **`colors`**(역할+variant: primary/primary-hover/brand/canvas/foreground/muted/on-primary/hairline/error/success…) · **`typography`**(`family` + 명명 토큰 `{size, weight, lineHeight, tracking, use}`) · **`spacing`**(명명 또는 배열) · **`rounded`**(`sm/md/lg/full`) · `shadow` · `components`.
+- 네임스페이스(getdesign.md 정렬): **`colors`**(역할+variant: primary/primary-hover/brand/canvas/foreground/muted/on-primary/hairline/error/success…) · **`typography`**(`family` + 명명 토큰 `{size, weight, lineHeight, tracking, use}`) · **`spacing`**(명명 또는 배열) · **`rounded`**(`sm/md/lg/full`) · `shadow` · **`components`(구조화 — 아래)**.
+- **`components`는 구조화 객체로 작성 (mandatory).** 렌더러(`componentsFromTokens` in `extract-tokens.ts`)가 이 블록을 **직접 읽어** Components 섹션을 그린다(프로즈 §4 파싱보다 우선). 한 컴포넌트당 한 줄, flow style:
+  ```yaml
+  components:
+    button-primary: { type: button, bg: "#1f883d", fg: "#ffffff", radius: "6px", height: "32px", padding: "0 16px", font: "14px / 600", states: "hover #1a7f37", use: "Primary action" }
+    underline-tab:   { type: tab, active: "text #1f2328 + 2px bottom border #fd8c73", use: "Repo tabs" }
+  ```
+  - **`type` 필수** — `button input card badge tab toggle toast dialog listItem avatar` 중 하나(범위 밖은 가장 가까운 것: table/tooltip/banner→card, modal/sheet→dialog, segmented/nav→tab, chip/label→badge, stepper/switch→toggle). 그래야 그룹 헤딩이 아닌 type으로 렌더돼 안 빠진다.
+  - 선택 필드(라이브 inspect/DS에서 측정한 것만): `bg fg border radius padding height font shadow hover focus active disabled states use`. tab은 `active`에 "Npx bottom border #hex"를 넣어야 언더라인이 그려진다.
+  - **`components_harvested: true`** 를 블록에 추가. (상세 스키마: `spec/components-schema.md`)
+  - §4 프로즈(Component Stylings)는 **사람이 읽는 용도로 유지**하되, 렌더 소스는 구조화 토큰이다.
 - 결정론 보조: `GLOBAL_ROOT=$(npm root -g) node web/scripts/extract-tokens.mjs <id> --json` 으로 라이브 후보·ΔE drift 확보 → LLM이 canonical 역할/값 확정(legacy-vs-live 판별, Google/임베드 오탐 거부).
-- **정합성 필수**: `tokens.colors`의 모든 hex는 **산문(§2)·primary_color 어딘가에 존재**해야 한다(미존재 → 산문에 명시하거나 토큰 수정). catalog-integrity의 token↔prose 게이트가 강제한다.
-- 작성 후 `cd web && node scripts/build-registry.mjs && node scripts/token-status.mjs` 로 검증 + 체크리스트 갱신.
+- **정합성 필수**: `tokens.colors`의 모든 hex는 **산문(§2)·primary_color 어딘가에 존재**해야 한다(미존재 → 산문에 명시하거나 토큰 수정). catalog-integrity의 token↔prose 게이트가 강제한다. 컴포넌트 bg/fg hex도 이미 grounding된 colors를 재사용(새 hex 발명 금지).
+- 로고: favicon 직접 URL은 hotlink 차단/느린 로딩 위험 → 가능하면 `https://www.google.com/s2/favicons?domain=<도메인>&sz=128` 사용(생성 후 generic-globe 아닌지 확인).
+- 작성 후 `cd web && node scripts/build-registry.mjs && node scripts/token-status.mjs --components` 로 검증 + 체크리스트 갱신(harvested 카운트 확인).
 
 ### Phase 5 — _research.md + footer
 - `_research.md`: Tier별 source URL, 신뢰도, 추출 일자
