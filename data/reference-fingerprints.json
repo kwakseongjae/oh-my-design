@@ -2,8 +2,32 @@
   "schema_version": 1,
   "generated_at": "2026-06-01T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 211,
+  "count": 221,
   "items": [
+    {
+      "id": "11st",
+      "primary_color_hex": "#ff0038",
+      "category": "e-commerce",
+      "visual_theme": "11st (11번가) is one of Korea's largest open-market e-commerce platforms, and its homepage is built for one job: get a shopper from a vast, dense catalog to a purchase decision as fast as possible. The atmosphere is high-density and utilitarian — a white canvas ",
+      "voice_fingerprint": {
+        "register": "transactional marketplace",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "dense",
+        "value-driven",
+        "commerce-first",
+        "busy"
+      ],
+      "antipatterns": [
+        "minimal"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "e-commerce"
+    },
     {
       "id": "17live",
       "primary_color_hex": "#FF4F6E",
@@ -413,6 +437,30 @@
       "signature_motion": null,
       "has_personas": false,
       "category_raw": "Automotive"
+    },
+    {
+      "id": "brandi",
+      "primary_color_hex": "#ff204b",
+      "category": "e-commerce",
+      "visual_theme": "Brandi (브랜디) is a Korean fashion commerce platform whose web and app surfaces read as fast, image-forward, and unapologetically commercial. The page lives on a pure white canvas (`#ffffff`) where near-black ink (`#202429`) carries almost all the type, and a si",
+      "voice_fingerprint": {
+        "register": "fashion commerce",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "trendy",
+        "fashion-forward",
+        "vivid",
+        "young"
+      ],
+      "antipatterns": [
+        "corporate"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "e-commerce"
     },
     {
       "id": "bunjang",
@@ -1190,6 +1238,31 @@
       "category_raw": "design-tools"
     },
     {
+      "id": "finda",
+      "primary_color_hex": "#4e2eed",
+      "category": "fintech",
+      "visual_theme": "Finda (핀다) is Korea's design-forward loan-comparison fintech, and its homepage reads like a calm, editorial financial product rather than a hard-sell lending site. The canvas is pure white (`#ffffff`) layered with a soft cool-grey surface (`#f5f6fa`) that segm",
+      "voice_fingerprint": {
+        "register": "loan-comparison fintech",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "clean",
+        "trustworthy",
+        "approachable",
+        "modern"
+      ],
+      "antipatterns": [
+        "heavy",
+        "corporate-cold"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
       "id": "flex",
       "primary_color_hex": "#000000",
       "category": "Productivity",
@@ -1331,6 +1404,30 @@
       "signature_motion": "Hospital card hover: 1px #d8dfe6 hairline darkens; orange accent appears only on the booking CTA, never on hover decoration.",
       "has_personas": true,
       "category_raw": "Healthcare / Cosmetic-Procedure Discovery"
+    },
+    {
+      "id": "genie",
+      "primary_color_hex": "#fa4065",
+      "category": "consumer-tech",
+      "visual_theme": "Genie Music (지니뮤직) is a Korean music-streaming service whose web surface reads as a dense, utilitarian catalog rather than a glossy marketing site — and that density is the point. The page opens on a pure white canvas (`#ffffff`) carrying a tightly packed info",
+      "voice_fingerprint": {
+        "register": "music streaming",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "vibrant",
+        "entertainment",
+        "youthful",
+        "bold"
+      ],
+      "antipatterns": [
+        "austere"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
     },
     {
       "id": "github",
@@ -1565,6 +1662,30 @@
       "category_raw": "consumer-tech"
     },
     {
+      "id": "hyperconnect",
+      "primary_color_hex": "#00dd99",
+      "category": "consumer-tech",
+      "visual_theme": "Hyperconnect's corporate site reads as a confident, globally-minded engineering company that happens to build social video at planetary scale. The atmosphere is bright, clean, and editorial: large stretches of pure white (`#ffffff`) and near-white surfaces (`#",
+      "voice_fingerprint": {
+        "register": "video/AI tech, corporate",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "modern",
+        "technical",
+        "global",
+        "confident"
+      ],
+      "antipatterns": [
+        "playful"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
       "id": "hyundaicard",
       "primary_color_hex": "#000000",
       "category": "Fintech",
@@ -1700,6 +1821,30 @@
       "signature_motion": "Buttons scale(1.1) on hover, scale(0.85) on active for physical feel.",
       "has_personas": false,
       "category_raw": "customer service / AI helpdesk SaaS"
+    },
+    {
+      "id": "jandi",
+      "primary_color_hex": "#00c473",
+      "category": "productivity",
+      "visual_theme": "JANDI (잔디) is the Korean business-collaboration messenger built by TossLab, and its website carries the calm, trustworthy confidence of a productivity tool that lives in offices all day. The page opens on a clean white canvas (`#ffffff`) — occasionally cooling",
+      "voice_fingerprint": {
+        "register": "team collaboration SaaS",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "clean",
+        "productive",
+        "friendly",
+        "modern"
+      ],
+      "antipatterns": [
+        "heavy"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "productivity"
     },
     {
       "id": "jkopay",
@@ -2030,6 +2175,30 @@
       "signature_motion": "Brisk card-hover shadow lift + filter bottom-sheet slide; no spring, commerce-functional feedback.",
       "has_personas": true,
       "category_raw": "ecommerce"
+    },
+    {
+      "id": "kmong",
+      "primary_color_hex": "#92fa72",
+      "category": "consumer-tech",
+      "visual_theme": "Kmong (크몽) is Korea's largest freelance and skill marketplace, and its homepage reads exactly like what it is: a high-trust, high-volume transaction surface designed to move a buyer from \"I have a problem\" to \"I hired the right expert\" with the least possible ",
+      "voice_fingerprint": {
+        "register": "freelance marketplace, can-do",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "practical",
+        "approachable",
+        "vivid",
+        "energetic"
+      ],
+      "antipatterns": [
+        "austere"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
     },
     {
       "id": "krafton",
@@ -2928,6 +3097,30 @@
         "Default body/metadata text to grey `#B3B3B3`; reserve white for the single most important label."
       ],
       "signature_motion": "*Durations:**",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
+    },
+    {
+      "id": "nexon",
+      "primary_color_hex": "#00de5a",
+      "category": "consumer-tech",
+      "visual_theme": "Nexon's website is the digital storefront of one of Korea's largest game publishers, and its design reflects a deliberate split personality: an editorial, almost corporate calm in the chrome, broken by sudden bursts of high-voltage brand green. The page sits o",
+      "voice_fingerprint": {
+        "register": "game publisher",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "bold",
+        "playful",
+        "gaming",
+        "energetic"
+      ],
+      "antipatterns": [
+        "corporate-stiff"
+      ],
+      "signature_motion": "See §15 Motion.",
       "has_personas": true,
       "category_raw": "consumer-tech"
     },
@@ -3958,6 +4151,30 @@
       "category_raw": "developer-tools"
     },
     {
+      "id": "shinhancard",
+      "primary_color_hex": "#005df9",
+      "category": "fintech",
+      "visual_theme": "Shinhan Card's website reads as the digital face of a major Korean financial institution that has been deliberately modernized for a mobile-first, super-app era. The page opens on a clean white canvas (`#ffffff`) layered with soft off-white and pale-blue surfa",
+      "voice_fingerprint": {
+        "register": "formal card/finance",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "trustworthy",
+        "institutional",
+        "stable",
+        "premium"
+      ],
+      "antipatterns": [
+        "playful"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "fintech"
+    },
+    {
       "id": "shopline",
       "primary_color_hex": "#356dff",
       "category": "e-commerce",
@@ -4097,6 +4314,30 @@
       "signature_motion": "Booking CTA hover: SOCAR Blue darkens one step; card lift uses single rgba(0,0,0,0.1) 0 4px 8px shadow, never chromatic stacks.",
       "has_personas": true,
       "category_raw": "Mobility / Car-Sharing (SOCAR Blue approximation — exact hex unpublished)"
+    },
+    {
+      "id": "soomgo",
+      "primary_color_hex": "#693bf2",
+      "category": "consumer-tech",
+      "visual_theme": "Soomgo (숨고) is Korea's leading local-service and pro marketplace — the place where a homeowner finds a moving-cleaning crew, a tutor, a tax accountant, or a wedding photographer — and its design reflects exactly that mandate: get a stranger to trust a stranger",
+      "voice_fingerprint": {
+        "register": "helpful local-service marketplace",
+        "sentence_length": "medium declarative",
+        "metaphor_density": "low",
+        "vocabulary_register": "brand-appropriate"
+      },
+      "tone_keywords": [
+        "friendly",
+        "practical",
+        "trustworthy",
+        "approachable"
+      ],
+      "antipatterns": [
+        "corporate-cold"
+      ],
+      "signature_motion": "See §15 Motion.",
+      "has_personas": true,
+      "category_raw": "consumer-tech"
     },
     {
       "id": "spacex",
