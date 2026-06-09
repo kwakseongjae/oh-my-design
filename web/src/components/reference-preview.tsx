@@ -371,13 +371,12 @@ function SpacingShapeSection({ tokens }: { tokens: ParsedTokens }) {
                         // fill (getdesign.md style) so small values read as solid
                         // blocks, not soft dots.
                         <div
-                          className="rounded-[2px]"
+                          className="rounded-[2px] bg-foreground"
                           style={{
                             width: `${row.preview}px`,
                             height: 26,
                             maxWidth: "100%",
                             minWidth: 2,
-                            background: identity.primary,
                           }}
                         />
                       ) : null}
@@ -413,11 +412,8 @@ function SpacingShapeSection({ tokens }: { tokens: ParsedTokens }) {
                     </td>
                     <td className="px-3 py-3">
                       <div
-                        className="h-12 w-12 ring-1 ring-border/60"
-                        style={{
-                          background: identity.primary + "15",
-                          borderRadius: r.value,
-                        }}
+                        className="h-12 w-12 bg-foreground"
+                        style={{ borderRadius: r.value }}
                       />
                     </td>
                   </tr>
