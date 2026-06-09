@@ -365,17 +365,19 @@ function SpacingShapeSection({ tokens }: { tokens: ParsedTokens }) {
                     </td>
                     <td className="px-3 py-2.5">
                       {row.preview !== null ? (
-                        // Actual pixel width — an 8px token renders an 8px bar,
-                        // 16px renders 16px. Earlier this normalized to the
-                        // column width (preview/maxSpacing), which blew an 8px
-                        // value up to a huge bar and hid the real scale.
+                        // Actual pixel width — an 8px token renders an 8px block,
+                        // 16px renders 16px (not normalized to the column, which
+                        // hid the real scale). Tall + near-square corners + solid
+                        // fill (getdesign.md style) so small values read as solid
+                        // blocks, not soft dots.
                         <div
-                          className="h-3 rounded-sm"
+                          className="rounded-[2px]"
                           style={{
                             width: `${row.preview}px`,
+                            height: 26,
                             maxWidth: "100%",
                             minWidth: 2,
-                            background: identity.primary + "55",
+                            background: identity.primary,
                           }}
                         />
                       ) : null}
