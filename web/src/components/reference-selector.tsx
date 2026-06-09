@@ -220,7 +220,7 @@ export function ReferenceSelector({
         <div>
           <h2 className="text-3xl font-bold tracking-tight">Choose a reference</h2>
           <p className="mt-2 text-muted-foreground">
-            100+ design systems from real companies.{" "}
+            221 design systems from real companies.{" "}
             {skipWizard
               ? "Picking one jumps straight to the original DESIGN.md — no customization."
               : "Pick one to start."}

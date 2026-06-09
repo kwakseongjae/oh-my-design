@@ -197,7 +197,7 @@ export default function WhatIsDesignMdPage() {
           >
             spec/omd-v0.1.md
           </a>
-          에서 읽을 수 있고, 100+ 실제 회사의 DESIGN.md 예시는{" "}
+          에서 읽을 수 있고, 221 실제 회사의 DESIGN.md 예시는{" "}
           <Link href="/design-systems" className="underline underline-offset-4 text-foreground">
             /design-systems
           </Link>
@@ -261,7 +261,7 @@ export default function WhatIsDesignMdPage() {
           최소 DESIGN.md 예시
         </h2>
         <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-          frontmatter + 첫 3개 섹션. 실제 100+ 레퍼런스는 §1–15를 모두 채웁니다 —
+          frontmatter + 첫 3개 섹션. 실제 221 레퍼런스는 §1–15를 모두 채웁니다 —
           전체 예시는{" "}
           <Link href="/design-systems" className="underline underline-offset-4 text-foreground">
             /design-systems

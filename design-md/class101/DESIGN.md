@@ -47,14 +47,20 @@ tokens:
     hover: "rgba(0,0,0,0.06) 0px 2px 8px"
     floating: "rgba(0,0,0,0.1) 0px 4px 16px"
     modal: "rgba(0,0,0,0.16) 0px 8px 24px"
+  components_harvested: true
   components:
-    button-primary: "near-black #202020 fill, white text, 12px radius, 16px/600, 50px tall — the workhorse CTA"
-    button-brand: "orange #FF5D00 fill, white text, 12px radius — high-energy promo moments only"
-    button-secondary: "white fill, #202020 text, 1px #E5E5E5 border, 12px radius"
-    input: "filled #F3F3F3, 8px radius, #AAAAAA placeholder, focus border #202020"
-    class-card: "white surface, no border, 8px radius, image-led thumbnail + text region, hover shadow"
-    chip: "#F3F3F3 fill, #333333 text, 999px pill, 6px 14px padding"
-    badge-hot: "orange #FF5D00 fill, white text, 6px radius — NEW / 인기 emphasis"
+    button-primary: { type: button, bg: "#202020", fg: "#FFFFFF", radius: "12px", height: "50px", padding: "15px 14px", font: "16px / 600", hover: "#000000", use: "Workhorse CTA — 시작하기 / 구독하기" }
+    button-brand: { type: button, bg: "#FF5D00", fg: "#FFFFFF", radius: "12px", padding: "15px 14px", font: "16px / 600", use: "High-energy promo moments only — the orange spark" }
+    button-secondary: { type: button, bg: "#FFFFFF", fg: "#202020", border: "1px solid #E5E5E5", radius: "12px", padding: "15px 14px", font: "16px / 600", use: "Secondary action beside black primary" }
+    button-ghost: { type: button, bg: "transparent", fg: "#333333", radius: "8px", font: "16px / 500", use: "Tertiary nav, 더보기" }
+    input: { type: input, bg: "#F3F3F3", fg: "#000000", radius: "8px", padding: "12px 16px", font: "16px / 400", focus: "border #202020", use: "Class search, form fields — #AAAAAA placeholder" }
+    class-card: { type: card, bg: "#FFFFFF", radius: "8px", padding: "0 + 12px text region", shadow: "rgba(0,0,0,0.06) 0px 2px 8px on hover", use: "Catalog atom — thumbnail top, title + creator + meta below" }
+    benefit-card: { type: card, bg: "#FFF1E8", radius: "8px", padding: "24px", use: "Subscription benefits, membership perks, value callouts" }
+    chip: { type: badge, bg: "#F3F3F3", fg: "#333333", radius: "999px", padding: "6px 14px", font: "13px / 500", use: "Category filters — 드로잉 / 베이킹 / 사진" }
+    badge-hot: { type: badge, bg: "#FF5D00", fg: "#FFFFFF", radius: "6px", padding: "2px 8px", font: "12px / 600", use: "NEW / 인기 high-energy emphasis on cards" }
+    top-nav-item: { type: tab, fg: "#767676", active: "#000000 weight 600", font: "16px / 500", use: "Category navigation" }
+    snackbar: { type: toast, bg: "#202020", fg: "#FFFFFF", radius: "8px", padding: "12px 16px", use: "찜한 클래스에 추가했어요 transient feedback" }
+    modal: { type: dialog, bg: "#FFFFFF", fg: "#000000", radius: "16px", padding: "24px", shadow: "backdrop rgba(0,0,0,0.5)", use: "Login, plan selection, class preview — bottom sheet top corners" }
 ---
 
 # Design System Inspiration of Class101 (클래스101)

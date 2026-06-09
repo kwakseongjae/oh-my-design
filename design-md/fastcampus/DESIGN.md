@@ -48,7 +48,7 @@ tokens:
   spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, section: 48 }
   rounded: { sm: 4, md: 4, lg: 19, full: 9999 }
   components:
-    pill-selected: { type: tab, bg: "#000000", fg: "#ffffff", radius: 4, padding: "12px 16px", font: "14px/600 Pretendard Variable", use: "Active category pill" }
+    pill-selected: { type: tab, bg: "#252729", fg: "#ffffff", radius: 4, padding: "12px 16px", font: "14px/600 Pretendard Variable", use: "Active category pill" }
     pill-unselected: { type: tab, bg: "#f5f5f6", fg: "#747678", radius: 4, padding: "12px 16px", font: "14px/600 Pretendard Variable", use: "Inactive category pill" }
     button-primary: { type: button, bg: "#fc1c49", fg: "#ffffff", radius: 4, padding: "12px 24px", font: "14px/600 Pretendard Variable", use: "Enrolment CTA (hover #c9032a)" }
     button-tinted: { type: button, bg: "#ffdad8", fg: "#fc1c49", radius: 4, use: "Sale-tag fills, hover scrim" }

@@ -10,6 +10,43 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=jumpit.co.kr&sz=256"
 verified: "2026-05-15"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    brand: "#00dd6d"
+    heading: "#000000"
+    heading-soft: "#222222"
+    body: "#444444"
+    muted: "#888888"
+    inverse: "#ffffff"
+    canvas: "#ffffff"
+    footer-plate: "#fbfbfb"
+  typography:
+    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
+    hero-title:  { size: 32, weight: 700, lineHeight: 1.3, use: "Hero carousel card title over photo, white" }
+    section-h3:  { size: 24, weight: 700, lineHeight: 1.3, use: "Section heading titles" }
+    cta:         { size: 15, weight: 700, use: "Primary auth CTA label" }
+    body:        { size: 16, weight: 400, lineHeight: 1.5, use: "Body, link, chip rest state" }
+    chip-active: { size: 16, weight: 700, use: "Active filter chip label" }
+    footer-link: { size: 14, weight: 400, use: "Footer nav link" }
+    eyebrow:     { size: 13, weight: 700, use: "Brand Notice eyebrow, always green" }
+  spacing: { xs: 8, sm: 16, md: 24, base: 32, lg: 40 }
+  rounded: { sm: 8, md: 20, lg: 100, full: 9999 }
+  shadow:
+    none: "none"
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "8px", padding: "0px 16px", font: "15px / 700", use: "회원가입/로그인 auth CTA — black, never green" }
+    chip-role-active: { type: badge, bg: "#00dd6d", fg: "#ffffff", radius: "20px", padding: "7px 16px", font: "16px / 700", use: "Single-selected job-role filter chip" }
+    chip-role-rest: { type: badge, bg: "#ffffff", fg: "#444444", radius: "20px", padding: "7px 16px", font: "16px / 400", use: "Unselected role chips in 22-chip filter row" }
+    dropdown-filter: { type: tab, bg: "#ffffff", fg: "#000000", radius: "100px", padding: "8px 30px 8px 12px", font: "16px / 400", use: "Outlined multi-select filter dropdown trigger" }
+    card-hero: { type: card, bg: "#ffffff", fg: "#ffffff", radius: "0px", font: "32px / 700", use: "Hero carousel promo card, full-bleed photo, no shadow, 340px tall" }
+    card-job: { type: card, bg: "#ffffff", fg: "#444444", radius: "0px", use: "Result-grid JobCard on /positions, no shadow, hairline border" }
+    eyebrow-brand: { type: badge, bg: "#ffffff", fg: "#00dd6d", font: "13px / 700", use: "Notice eyebrow above announcement card" }
+    heading-section: { type: badge, bg: "#ffffff", fg: "#222222", font: "24px / 700", use: "Section H3 title on canvas" }
+    link-footer: { type: listItem, bg: "#ffffff", fg: "#444444", radius: "0px", font: "14px / 400", use: "Footer nav link" }
+    link-viewall: { type: listItem, bg: "#ffffff", fg: "#888888", font: "16px / 400", use: "전체 보기 inline affordance at section header edge" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Jumpit (점핏)

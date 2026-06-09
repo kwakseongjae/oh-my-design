@@ -47,12 +47,12 @@ tokens:
     standard: "rgba(0,0,0,0.10) 0px 0px 20px 0px"
     elevated: "rgba(0,0,0,0.19) 0px 0px 10px 0px"
   components:
-    button-primary: "navy #061232 fill, white text, 8px radius, weight 500, 20px 30px pad, ~58px tall"
-    button-ghost: "white fill, navy #061232 text, 8px radius, weight 500"
-    nav-link: "Noto Sans TC 18px weight 700, active state #3a82dd brand-blue"
-    card: "white surface, 8px radius, soft 0.04-0.10 alpha ambient shadow"
-    section-title: "36px weight 600, #333333, tight -1.5px tracking"
-    link-inline: "#2563eb blue, weight 400-700"
+    button-primary: { type: button, bg: "#061232", fg: "#ffffff", radius: "8px", padding: "20px 30px", height: "58px", font: "18px / 500", use: "Primary CTA (Get in Touch, Contact)" }
+    button-ghost: { type: button, bg: "#ffffff", fg: "#061232", radius: "8px", font: "20px / 500", use: "Secondary CTA over dark/imagery (Try it Now)" }
+    nav-link: { type: tab, fg: "#333333", font: "18px / 700", active: "#3a82dd brand-blue", use: "Horizontal nav links on white sticky header" }
+    card: { type: card, bg: "#ffffff", border: "1px solid #edf1f7", radius: "8px", shadow: "rgba(0,0,0,0.04) 0px 0px 10px 0px", hover: "rgba(0,0,0,0.19) 0px 0px 10px 0px", use: "Feature/industry surface cards" }
+    section-title: { type: badge, fg: "#333333", font: "36px / 600", use: "Section/feature titles, tight -1.5px tracking" }
+    link-inline: { type: badge, fg: "#2563eb", font: "18px / 400", use: "Inline body-copy hyperlinks, weight 400-700" }
 ---
 
 # Design System Inspiration of iKala

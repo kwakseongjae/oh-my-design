@@ -10,6 +10,47 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=trenbe.com&sz=256"
 verified: "2026-06-03"
 omd: "0.1"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  colors:
+    primary: "#7620F6"
+    primary-ui: "#7351EC"
+    marketing-cta: "#7618F1"
+    black: "#000000"
+    canvas: "#FFFFFF"
+    text01: "#2F2E2B"
+    text02: "#4F4E4B"
+    text03: "#6F6E6B"
+    border: "#CFCECB"
+    surface: "#F7F6F5"
+    secondary: "#EC5151"
+    success: "#1EB789"
+    caution: "#FFAB1E"
+    disabled-text: "#AFAEAB"
+  typography:
+    family: { sans: "Pretendard", mono: "Pretendard" }
+    display01:  { size: 32, weight: 700, lineHeight: 1.31, use: "Largest display headline" }
+    display02:  { size: 24, weight: 700, lineHeight: 1.33, use: "Secondary display" }
+    title:      { size: 18, weight: 600, lineHeight: 1.44, use: "Section titles" }
+    headline:   { size: 16, weight: 500, lineHeight: 1.50, use: "Subheadings" }
+    body:       { size: 14, weight: 400, lineHeight: 1.57, use: "Body text" }
+    caption:    { size: 12, weight: 400, lineHeight: 1.67, use: "Captions, helper text" }
+    cta:        { size: 18, weight: 600, lineHeight: 1.40, use: "Marketing CTA label" }
+  spacing: { xs: 2, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
+  rounded: { sm: 2, md: 4, lg: 8, full: 9999 }
+  shadow:
+    scrim: "rgba(0,0,0,0.5)"
+  components:
+    button-primary: { type: button, bg: "#000000", fg: "#FFFFFF", radius: "2px", padding: "6px 12px", font: "13px / 400", use: "Primary black CTA in shopping UI" }
+    button-ghost: { type: button, bg: "#FFFFFF", fg: "#000000", radius: "2px", padding: "6px 12px", font: "13px / 400", use: "Default outlined action" }
+    button-disabled: { type: button, bg: "#FFFFFF", fg: "#AFAEAB", radius: "2px", use: "Disabled action" }
+    button-marketing: { type: button, bg: "#7618F1", fg: "#FFFFFF", radius: "4px", padding: "0 24px", font: "18px / 600", use: "Brand purple CTA on marketing surfaces" }
+    input-default: { type: input, bg: "#FFFFFF", fg: "#6F6E6B", radius: "0px", padding: "6px 12px", font: "13px / 400", use: "Default text field" }
+    badge-primary: { type: badge, bg: "#000000", fg: "#FFFFFF", radius: "0px", padding: "0.2em 0.6em 0.3em", use: "Primary black label" }
+    badge-sale: { type: badge, bg: "#EC5151", fg: "#FFFFFF", radius: "4px", use: "Sale / accent badge" }
+    card: { type: card, bg: "#FFFFFF", radius: "8px", use: "Product card, hairline border" }
+  components_harvested: true
 ---
 
 # Trenbe

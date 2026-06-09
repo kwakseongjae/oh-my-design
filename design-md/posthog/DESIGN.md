@@ -16,6 +16,56 @@ ds:
   type: brand
   description: PostHog's public handbook brand, logo, and illustration guidelines.
   og_image: "https://d36j3rcgc2qfsv.cloudfront.net/handbookcompanybrand-assets.jpeg"
+tokens:
+  source: prose-derived
+  extracted: "2026-06-09"
+  note: "primary = dark near-black CTA fill (#1e1f23); brand accent = hidden PostHog Orange (#F54E00) that only appears on hover"
+  colors:
+    primary: "#1e1f23"
+    brand: "#F54E00"
+    canvas: "#fdfdf8"
+    foreground: "#4d4f46"
+    heading: "#23251d"
+    muted: "#65675e"
+    surface: "#eeefe9"
+    surface-sage: "#e5e7e0"
+    surface-tan: "#d4c9b8"
+    hairline: "#bfc1b7"
+    border-light: "#b6b7af"
+    placeholder: "#9ea096"
+    accent-amber: "#F7A501"
+    accent-gold: "#b17816"
+    focus: "#3b82f6"
+    on-primary: "#ffffff"
+  typography:
+    family: { sans: "IBM Plex Sans Variable", mono: "Source Code Pro" }
+    display-hero:   { size: 30, weight: 800, lineHeight: 1.20, tracking: -0.75, use: "Hero headline — extra-bold, tight" }
+    section:        { size: 36, weight: 700, lineHeight: 1.50, use: "Section titles — large, generous line-height" }
+    feature:        { size: 24, weight: 700, lineHeight: 1.33, use: "Feature section titles" }
+    subheading:     { size: 20, weight: 700, lineHeight: 1.40, tracking: -0.5, use: "Content sub-sections" }
+    body-semi:      { size: 18, weight: 600, lineHeight: 1.56, use: "Semi-bold body / callout text" }
+    body:           { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
+    nav:            { size: 15, weight: 600, lineHeight: 1.50, use: "Navigation and UI labels" }
+    caption:        { size: 14, weight: 400, lineHeight: 1.43, use: "Small text, captions" }
+    micro:          { size: 12, weight: 500, lineHeight: 1.33, use: "Tags, badges, smallest labels" }
+    code:           { size: 14, weight: 500, lineHeight: 1.43, use: "Code snippets and terminal" }
+  spacing: { xs: 2, sm: 4, md: 8, base: 12, lg: 16, xl: 24, xxl: 32, section: 48 }
+  rounded: { sm: 2, md: 4, lg: 6, full: 9999 }
+  shadow:
+    deep: "0px 25px 50px -12px rgba(0,0,0,0.25)"
+  components_harvested: true
+  components:
+    button-primary: { type: button, bg: "#1e1f23", fg: "#ffffff", radius: "6px", padding: "10px 12px", font: "15px / 600", hover: "opacity 0.7, text #F7A501", active: "opacity 0.8, slight scale", use: "Main CTA — dark and confident" }
+    button-sage: { type: button, bg: "#e5e7e0", fg: "#4d4f46", radius: "4px", padding: "4px", font: "14px / 500", hover: "bg #f4f4f4, text #F54E00", use: "Compact utility button" }
+    button-tan: { type: button, bg: "#d4c9b8", fg: "#000000", radius: "0px", padding: "10px 12px", hover: "text #F54E00", use: "Featured/premium actions" }
+    button-ghost: { type: button, bg: "#fdfdf8", fg: "#4d4f46", border: "1px solid transparent", radius: "4px", padding: "8px 12px", hover: "text #F54E00", use: "Minimal-presence ghost button" }
+    input-default: { type: input, bg: "#eeefe9", fg: "#374151", border: "1px solid #b6b7af", radius: "4px", padding: "2px 0 2px 8px", focus: "#3b82f6 ring at 50% opacity", use: "Standard form input" }
+    input-search: { type: input, bg: "#eeefe9", fg: "#374151", border: "1px solid #b6b7af", radius: "4px", padding: "6px 8px", use: "Search/filter control" }
+    card-bordered: { type: card, bg: "#fdfdf8", border: "1px solid #bfc1b7", radius: "6px", padding: "16px", use: "Clean minimal default card" }
+    card-sage: { type: card, bg: "#eeefe9", border: "1px solid #bfc1b7", radius: "4px", padding: "16px", use: "Secondary content container" }
+    card-shadow: { type: card, bg: "#fdfdf8", radius: "6px", padding: "16px", shadow: "0px 25px 50px -12px rgba(0,0,0,0.25)", hover: "orange text flash", use: "Elevated content (modals, dropdowns)" }
+    badge-default: { type: badge, bg: "#e5e7e0", fg: "#4d4f46", radius: "4px", padding: "2px 8px", font: "12px / 500", use: "Default tag" }
+    badge-featured: { type: badge, bg: "#d4c9b8", fg: "#000000", radius: "4px", padding: "2px 8px", font: "12px / 600", use: "Warm tan featured tag" }
 ---
 
 # Design System Inspiration of PostHog

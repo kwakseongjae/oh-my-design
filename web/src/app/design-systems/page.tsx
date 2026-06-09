@@ -60,7 +60,7 @@ export default function DesignSystemsPage() {
         </div>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Design Systems</h1>
         <p className="text-muted-foreground mt-4 max-w-2xl leading-relaxed">
-          Jump to the company&apos;s canonical documentation — 100+ full design
+          Jump to the company&apos;s canonical documentation — 221 full design
           systems with components and tokens, plus brand / trademark guideline
           pages.
         </p>
