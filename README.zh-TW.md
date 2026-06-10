@@ -50,7 +50,7 @@ npx oh-my-design-cli install-skills
 
 ## 套件內容
 
-**16 個 skills · 16 個子代理 · 221 個經驗證的參考 · 活性化 hooks** — 上述一個指令全部安裝完成。
+**17 個 skills · 16 個子代理 · 221 個經驗證的參考 · 活性化 hooks** — 上述一個指令全部安裝完成。
 
 每個參考也以 raw markdown 形式提供於 `oh-my-design.kr/design-systems/<id>.md`,代理可以直接抓取。完整的 skill 與 agent 參考文件: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**。
 

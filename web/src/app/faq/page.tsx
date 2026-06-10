@@ -57,7 +57,7 @@ const SECTIONS: QASection[] = [
       },
       {
         q: "oh-my-design은 뭔가요?",
-        a: "oh-my-design(OmD)은 DESIGN.md 스펙 + 그 스펙대로 동작하는 skill·sub-agent 번들입니다. `npx oh-my-design-cli install-skills` 한 줄로 Claude Code·Codex·Cursor·OpenCode에 15개 skill + 16개 sub-agent를 설치합니다. /docs 페이지에서 전체 파이프라인을 볼 수 있습니다.",
+        a: "oh-my-design(OmD)은 DESIGN.md 스펙 + 그 스펙대로 동작하는 skill·sub-agent 번들입니다. `npx oh-my-design-cli install-skills` 한 줄로 Claude Code·Codex·Cursor·OpenCode에 17개 skill + 16개 sub-agent를 설치합니다. /docs 페이지에서 전체 파이프라인을 볼 수 있습니다.",
       },
       {
         q: "일반 디자인 시스템과 뭐가 다른가요?",

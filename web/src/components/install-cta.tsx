@@ -121,7 +121,7 @@ export function InstallCta({
         Use these design systems in your AI coding agent
       </div>
       <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-        One command installs 221 verified DESIGN.md references + 15 skills into
+        One command installs 221 verified DESIGN.md references + 17 skills into
         Claude Code, Cursor, Codex, or OpenCode. Free, MIT, zero AI calls.
       </p>
       <div className="mt-3 flex flex-wrap items-center gap-2">

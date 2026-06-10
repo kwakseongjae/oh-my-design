@@ -62,6 +62,26 @@ describe('install-skills', () => {
     expect(afterFm.startsWith('<!-- omd:installed-skill')).toBe(true);
   });
 
+  it('installs omd-taste with frontmatter-first format (issue #25)', async () => {
+    await runInstallSkills({ dir: root, agents: ['claude-code'] });
+    const path = join(root, '.claude/skills/omd-taste/SKILL.md');
+    expect(existsSync(path), 'omd-taste installed').toBe(true);
+    const content = readFileSync(path, 'utf8');
+
+    // Line 1 must be the YAML frontmatter fence (issue #17 contract applies to
+    // every shipped skill — omd-taste included).
+    expect(content.startsWith('---\n')).toBe(true);
+    const fm = /^---\n([\s\S]*?)\n---/.exec(content)![1];
+    expect(/^name:\s*omd:taste\b/m.test(fm)).toBe(true);
+    const desc = /^description:\s*(.+)$/m.exec(fm)![1];
+    expect(desc).not.toContain('omd:installed-skill');
+    expect(desc).toContain('내 취향');
+
+    // The managed marker ships right after the frontmatter block.
+    const afterFm = content.slice(content.indexOf('\n---\n') + 5);
+    expect(afterFm.startsWith('<!-- omd:installed-skill')).toBe(true);
+  });
+
   it('refreshes legacy line-1-marker files instead of skipping them as drift', async () => {
     // Simulate a pre-v1.7.2 install: marker on line 1, frontmatter pushed down.
     const target = join(root, '.claude/skills/omd-init/SKILL.md');

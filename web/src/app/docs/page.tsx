@@ -408,17 +408,17 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
   {
     path: ".claude/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "Claude Code skill bundle — 15 skills (core flow + capture/assets + v0.2 agent layer)",
+    purpose: "Claude Code skill bundle — 17 skills (core flow + capture/assets + v0.2 agent layer)",
   },
   {
     path: ".agents/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "Codex skill bundle (same 15 skills — official discovery path)",
+    purpose: "Codex skill bundle (same 17 skills — official discovery path)",
   },
   {
     path: ".opencode/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "OpenCode skill bundle (same 15 skills)",
+    purpose: "OpenCode skill bundle (same 17 skills)",
   },
   {
     path: ".cursor/rules/omd-design.mdc",
@@ -612,7 +612,7 @@ function DocsHero() {
           transition={{ duration: 0.6, delay: 0.18 }}
           className="mt-5 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
         >
-          <strong className="text-white">15 skills</strong>,{" "}
+          <strong className="text-white">17 skills</strong>,{" "}
           <strong className="text-white">16 sub-agents</strong>, a{" "}
           <strong className="text-white">10-phase pipeline</strong>, and{" "}
           <strong className="text-white">221 reference DESIGN.md files</strong>{" "}
@@ -653,7 +653,7 @@ function DocsHero() {
         >
           {[
             ["#quick-start", "Quick start"],
-            ["#skills", "15 skills"],
+            ["#skills", "17 skills"],
             ["#v2-skills", "v0.2 layer"],
             ["#agents", "16 sub-agents"],
             ["#pipeline", "Pipeline"],
