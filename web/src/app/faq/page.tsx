@@ -65,7 +65,7 @@ const SECTIONS: QASection[] = [
       },
       {
         q: "어떤 AI agent와 호환되나요?",
-        a: "Claude Code, Codex, OpenCode, Cursor가 1차 타깃이고 Gemini CLI도 동작합니다. skill 파일은 agent-agnostic markdown이라 새 agent가 등장해도 동일한 DESIGN.md를 그대로 읽을 수 있도록 설계됐습니다. Cursor는 `.cursor/rules/omd-design.mdc` shim을 통해 진입합니다.",
+        a: "Claude Code, Codex, OpenCode, Cursor가 1차 타깃이고 Gemini CLI도 동작합니다. skill 파일은 agent-agnostic markdown이라 새 agent가 등장해도 동일한 DESIGN.md를 그대로 읽을 수 있도록 설계됐습니다. Cursor는 전용 설치 채널(`--agent cursor`)로 `.cursor/rules/omd-design.mdc` shim + 공용 레퍼런스 카탈로그가 설치됩니다.",
       },
       {
         q: "Vibe coding이 뭔가요?",

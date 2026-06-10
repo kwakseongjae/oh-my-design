@@ -505,7 +505,7 @@ export function CliStrip() {
                 ✓ Installed 15 skills + 16 sub-agents
               </div>
               <div style={{ color: V2.accent }}>
-                ✓ Wrote .claude/skills, .codex/skills, .opencode/agents
+                ✓ Wrote .claude/skills, .agents/skills, .opencode/skills, .cursor/rules
               </div>
               <div style={{ color: V2.accent }}>
                 ✓ Bundled 221 reference DESIGN.md files

@@ -411,14 +411,19 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
     purpose: "Claude Code skill bundle — 15 skills (core flow + capture/assets + v0.2 agent layer)",
   },
   {
-    path: ".codex/skills/omd-*/SKILL.md",
+    path: ".agents/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "Codex skill bundle (same 15 skills)",
+    purpose: "Codex skill bundle (same 15 skills — official discovery path)",
   },
   {
-    path: ".opencode/agents/omd-*.md",
+    path: ".opencode/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "OpenCode agent bundle (same 15 skills)",
+    purpose: "OpenCode skill bundle (same 15 skills)",
+  },
+  {
+    path: ".cursor/rules/omd-design.mdc",
+    owner: "install-skills",
+    purpose: "Cursor channel (--agent cursor) — rules shim + shared .claude/data catalog, no skills/hooks",
   },
   {
     path: ".claude/agents/omd-*.md",
@@ -428,7 +433,7 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
   {
     path: ".claude/data/*",
     owner: "install-skills",
-    purpose: "reference fingerprints, vocabulary, opt-out corpus",
+    purpose: "reference catalog + ctx-prime, fingerprints, vocabulary, opt-out corpus",
   },
   {
     path: ".claude/hooks/*.cjs",
@@ -473,7 +478,15 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Which agents are supported?",
-    a: "Claude Code, Codex, OpenCode, and Cursor (via .cursor/rules). Hooks ship for Claude Code; the SKILL.md files are agent-agnostic markdown.",
+    a: "Claude Code, Codex, OpenCode, and Cursor. Cursor is a dedicated install channel — `--agent cursor` writes the .cursor/rules/omd-design.mdc shim plus the shared .claude/data reference catalog (no skills or hooks). Hooks ship for Claude Code; the SKILL.md files are agent-agnostic markdown.",
+  },
+  {
+    q: "Can my agent read a reference without installing anything?",
+    a: "Yes. Every reference has a raw markdown twin at oh-my-design.kr/design-systems/<id>.md — agents can fetch the full DESIGN.md directly over HTTP. Curated sets by use case live at oh-my-design.kr/collections.",
+  },
+  {
+    q: "I customized a reference in the web builder — how do I hand it to my agent?",
+    a: "The builder preview composes your first prompt from your live config (reference, components, token overrides, dark mode). Copy it from the install CTA and paste it into your agent — omd:init reads the prompt and bootstraps a matching DESIGN.md.",
   },
   {
     q: "Can I bring my own DESIGN.md?",
@@ -677,6 +690,10 @@ function QuickStart() {
               <>
                 In your project root:
                 <CodeLine>npx oh-my-design-cli install-skills</CodeLine>
+                Installs for every detected agent — Claude Code / Codex /
+                OpenCode / Cursor. Pin a single channel with{" "}
+                <code className="text-white/85">--agent cursor</code> (writes
+                the .cursor/rules shim + the shared reference catalog).
                 Restart your agent (Cmd+Q in Claude Code, then relaunch) so
                 the new skills + agents are loaded.
               </>

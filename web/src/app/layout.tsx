@@ -224,7 +224,7 @@ export default function RootLayout({
                       name: "Which AI coding agents are supported?",
                       acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Claude Code, Codex, OpenCode, and Cursor (via .cursor/rules). The skill markdown files are agent-agnostic; hooks ship for Claude Code specifically.",
+                        text: "Claude Code, Codex, OpenCode, and Cursor — Cursor has a dedicated install channel (--agent cursor) that writes the .cursor/rules shim plus the shared reference catalog. The skill markdown files are agent-agnostic; hooks ship for Claude Code specifically.",
                       },
                     },
                     {
