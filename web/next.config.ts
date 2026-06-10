@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
   // routing-status pill so it doesn't sit on top of our bottom-right
   // landing-toggle while comparing v1 ↔ v2.
   devIndicators: false,
+  // Raw DESIGN.md twins — /design-systems/<id>.md serves clean markdown for
+  // agents/LLMs. App Router can't express a partial dynamic segment
+  // (`[id].md`), so the handler lives at /r/[id] and this rewrite provides
+  // the pretty URL. A plain array defaults to afterFiles, which runs after
+  // static files but before dynamic routes, so `<id>.md` never falls through
+  // to the HTML [id] page. `:id` is non-greedy, so dotted ids still resolve:
+  // /design-systems/linear.app.md → /r/linear.app.
+  async rewrites() {
+    return [{ source: "/design-systems/:id.md", destination: "/r/:id" }];
+  },
   // NOTE: the previous commit (4ab523d) added a `www → apex` redirect here
   // to consolidate Google Search Console reports. In production that caused
   // ERR_TOO_MANY_REDIRECTS because Vercel's Domains already enforces a

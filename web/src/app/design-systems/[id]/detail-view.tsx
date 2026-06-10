@@ -155,6 +155,18 @@ export function DetailView({
               <Download className="h-3.5 w-3.5" />
               <span className="hidden sm:inline">Download</span>
             </button>
+            {/* Raw twin — clean markdown URL agents can fetch directly. */}
+            <a
+              href={`/design-systems/${detail.id}.md`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => event("ds_raw_md_open", { reference: detail.id })}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/50 px-2.5 py-1.5 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
+              aria-label="Open raw DESIGN.md"
+            >
+              <FileText className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Raw .md</span>
+            </a>
             {mounted && (
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
