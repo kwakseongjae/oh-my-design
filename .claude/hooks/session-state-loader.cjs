@@ -60,6 +60,16 @@ if (fs.existsSync(timelineMd)) {
 }
 
 if (lines.length > 0) {
-  process.stdout.write(JSON.stringify({ additionalContext: lines.join('\n') }));
+  // SessionStart contract: structured context must sit under hookSpecificOutput
+  // — a top-level { additionalContext } parses as JSON and is silently dropped
+  // (same class as the post-edit-watch / skill-activation fixes).
+  process.stdout.write(
+    JSON.stringify({
+      hookSpecificOutput: {
+        hookEventName: 'SessionStart',
+        additionalContext: lines.join('\n'),
+      },
+    }),
+  );
 }
 

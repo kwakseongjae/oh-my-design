@@ -190,7 +190,9 @@ describe('hooks', () => {
       ]);
       const { stdout } = runHook('session-state-loader.cjs', {}, root);
       const out = JSON.parse(stdout);
-      expect(out.additionalContext).toContain('Pending preferences: 2');
+      expect(out.hookSpecificOutput.hookEventName).toBe('SessionStart');
+      expect(out.hookSpecificOutput.additionalContext).toContain('Pending preferences: 2');
+      expect(out.additionalContext).toBeUndefined();
     });
 
     it('foldin emits a proposal when a scope recurs ≥3× in window', () => {
