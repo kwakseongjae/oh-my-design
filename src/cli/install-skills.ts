@@ -566,6 +566,43 @@ function installAgentFile(
   };
 }
 
+/**
+ * Copy the reference catalog (`web/references/<id>/DESIGN.md`) into the project's
+ * `.claude/data/references/<id>/DESIGN.md` so it's reachable on clean npx installs
+ * — where there is no `node_modules` and no dev `web/references` (issue #16).
+ *
+ * Only DESIGN.md per id is copied (not _promo.json/_research.md/screenshots) to
+ * keep the install lean. Idempotent: skips ids whose DESIGN.md already matches.
+ * Returns the number of catalog files written (created or updated).
+ */
+function installReferenceCatalog(
+  packageRoot: string,
+  installRoot: string,
+  channelDir: string,
+  force: boolean
+): number {
+  const srcRoot = join(packageRoot, 'web', 'references');
+  if (!existsSync(srcRoot)) return 0;
+  const destRoot = join(installRoot, channelDir, 'data', 'references');
+
+  let written = 0;
+  for (const id of readdirSync(srcRoot)) {
+    const srcDesign = join(srcRoot, id, 'DESIGN.md');
+    if (!existsSync(srcDesign)) continue;
+    const destDesign = join(destRoot, id, 'DESIGN.md');
+    const src = readFileSync(srcDesign, 'utf8');
+    if (existsSync(destDesign)) {
+      const existing = readFileSync(destDesign, 'utf8');
+      if (existing === src) continue;
+      if (!force) continue; // honor user edits unless --force
+    }
+    mkdirSync(dirname(destDesign), { recursive: true });
+    writeFileSync(destDesign, src, 'utf8');
+    written++;
+  }
+  return written;
+}
+
 const STATUS_LABEL: Record<InstallResult['status'], string> = {
   created: pc.green('created'),
   updated: pc.cyan('updated'),
@@ -762,6 +799,9 @@ export async function runInstallSkills(
   );
 
   const results: InstallResult[] = [];
+  // Count of reference-catalog DESIGN.md files copied (issue #16) — surfaced in
+  // the install summary. Declared here so the outro (outside `if (!minimal)`) sees it.
+  let catalogCount = 0;
   for (const plan of plans) {
     for (const skill of skills) {
       results.push(installOne(packageRoot, plan, skill, force));
@@ -804,6 +844,35 @@ export async function runInstallSkills(
       for (const dataFile of dataFiles) {
         results.push(installDataFile(packageRoot, installRoot, '.codex', dataFile, force));
       }
+    }
+  }
+
+  // Ship the reference catalog (DESIGN.md per id) into .claude/data/references
+  // so omd:init can resolve a reference on clean npx installs — no node_modules,
+  // no dev web/references (issue #16). Skipped under --skills-only (handled by the
+  // enclosing `if (!minimal)`). Codex gets the same copy under .codex/data.
+  for (const target of targets) {
+    if (target === 'claude-code') {
+      catalogCount += installReferenceCatalog(packageRoot, installRoot, '.claude', force);
+    } else if (target === 'codex') {
+      catalogCount += installReferenceCatalog(packageRoot, installRoot, '.codex', force);
+    }
+  }
+
+  // Copy ctx-prime.cjs (+ its companion context.cjs) into .claude/data/scripts/
+  // so /omd-harness CTX-PRIME works without the package dir on npx installs
+  // (issue #18 / harness OMD_DIR resolution).
+  for (const target of targets) {
+    const cd = target === 'claude-code' ? '.claude' : target === 'codex' ? '.codex' : null;
+    if (!cd) continue;
+    for (const helper of ['ctx-prime.cjs', 'context.cjs']) {
+      const srcHelper = join(packageRoot, 'scripts', helper);
+      if (!existsSync(srcHelper)) continue;
+      const destHelper = join(installRoot, cd, 'data', 'scripts', helper);
+      const srcTxt = readFileSync(srcHelper, 'utf8');
+      if (existsSync(destHelper) && readFileSync(destHelper, 'utf8') === srcTxt) continue;
+      mkdirSync(dirname(destHelper), { recursive: true });
+      writeFileSync(destHelper, srcTxt, 'utf8');
     }
   }
 
@@ -896,9 +965,16 @@ export async function runInstallSkills(
   // Counts derived from what was actually resolved/installed — never hardcoded,
   // so the outro can't drift from the real skill/agent/hook set (or the README).
   const hookCount = scope === 'project' && targets.includes('claude-code') ? 4 : 0;
+  if (catalogCount > 0) {
+    p.log.message(
+      pc.bold('Reference catalog: ') +
+        pc.cyan(`${catalogCount}`) +
+        pc.dim(' DESIGN.md copied → .claude/data/references/<id>/DESIGN.md'),
+    );
+  }
   p.outro(
     pc.green(
-      `Done. ${skills.length} skills · ${canonicalAgents.length} sub-agents · ${hookCount} hooks installed (${writtenCount} files)${scope === 'global' ? ' globally (~/.claude)' : ''}.`,
+      `Done. ${skills.length} skills · ${canonicalAgents.length} sub-agents · ${hookCount} hooks · ${catalogCount} catalog refs installed (${writtenCount} files)${scope === 'global' ? ' globally (~/.claude)' : ''}.`,
     ),
   );
   return 0;

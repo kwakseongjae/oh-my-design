@@ -168,7 +168,13 @@ Each turn you are in one state. Determine current state from `.handoff.json` `st
   ```
   (Edit 툴로 첫 줄 prepend.)
 
-  **Step 4.2 — Reference DESIGN.md Read.** `Read references/<chosen_ref_id>/DESIGN.md` (예: `references/toss/DESIGN.md`). 67개 카탈로그 안의 모든 ref에 DESIGN.md 있음.
+  **Step 4.2 — Reference DESIGN.md Read.** chosen ref의 DESIGN.md를 다음 우선순위로 resolve (omd:init Phase 4와 동일):
+  1. `.claude/data/references/<chosen_ref_id>/DESIGN.md` (installer가 복사 — npx 설치 기본 경로)
+  2. `node_modules/oh-my-design-cli/web/references/<chosen_ref_id>/DESIGN.md` (로컬 npm 설치)
+  3. `web/references/<chosen_ref_id>/DESIGN.md` (개발 레포)
+  4. `https://oh-my-design.kr/design-systems/<chosen_ref_id>.md` 를 fetch (WebFetch 또는 `curl -fsSL`) — 200이면 본문이 곧 reference DESIGN.md. 가져온 내용을 `.claude/data/references/<chosen_ref_id>/DESIGN.md`로 캐시.
+
+  4개 경로 전부 miss면 **DESIGN.md를 임의로 지어내지 말 것** — 사용자에게 reference 자료 누락을 알리고 종료. 카탈로그 안의 모든 ref에 DESIGN.md 있음.
 
   **Step 4.3 — delta axes 추론.** 사용자 description + chosen ref base를 비교해서 다음 axes 중 사용자가 명시했거나 함의한 것만 shift 대상으로 표시:
   - `hue_deg` (색상 각도, 예: +30 = warmer rotation)

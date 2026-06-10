@@ -117,6 +117,28 @@ describe('install-skills', () => {
     expect(after).toContain('<!-- omd:installed-skill');
   });
 
+  it('copies the reference catalog DESIGN.md into .claude/data/references (issue #16)', async () => {
+    await runInstallSkills({ dir: root, agents: ['claude-code'] });
+    // toss is a known reference id in web/references — its DESIGN.md must land
+    // where omd:init resolution step 1 looks.
+    const tossDesign = join(root, '.claude/data/references/toss/DESIGN.md');
+    expect(existsSync(tossDesign), 'toss DESIGN.md copied').toBe(true);
+    // Only DESIGN.md per id — keep install lean (no _promo.json/_research.md).
+    expect(existsSync(join(root, '.claude/data/references/toss/_promo.json'))).toBe(false);
+    // ctx-prime helper copied so harness CTX-PRIME works without the package dir.
+    expect(existsSync(join(root, '.claude/data/scripts/ctx-prime.cjs'))).toBe(true);
+  });
+
+  it('skips the reference catalog under --skills-only', async () => {
+    await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      skillsFilter: ['omd-init'],
+      skillsOnly: true,
+    });
+    expect(existsSync(join(root, '.claude/data/references'))).toBe(false);
+  });
+
   it('detects installed agents and installs only for those (when present)', async () => {
     mkdirSync(join(root, '.claude'));
     // Codex/OpenCode not installed → only Claude should get skills
