@@ -9,7 +9,7 @@ import {
 } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { runInstallSkills } from '../../../src/cli/install-skills.js';
+import { runInstallSkills, dataDirFor } from '../../../src/cli/install-skills.js';
 
 describe('install-skills', () => {
   let root: string;
@@ -183,6 +183,25 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.claude/hooks'))).toBe(false);
     expect(existsSync(join(root, '.claude/settings.json'))).toBe(false);
     expect(existsSync(join(root, '.claude/agents'))).toBe(false);
+  });
+
+  it('cursor + claude-code combined install does not double-copy the catalog (issue #28)', async () => {
+    const code = await runInstallSkills({ dir: root, agents: ['claude-code', 'cursor'] });
+    expect(code).toBe(0);
+
+    // Catalog + data JSONs land in the single shared .claude/data path,
+    // written by the claude-code pass only — the cursor pass is deduped.
+    expect(existsSync(join(root, '.claude/data/references/toss/DESIGN.md'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/reference-fingerprints.json'))).toBe(true);
+    // No second catalog location is invented for cursor.
+    expect(existsSync(join(root, '.cursor/data'))).toBe(false);
+    expect(existsSync(join(root, '.codex/data'))).toBe(false);
+
+    // The dedup guard itself: cursor resolves to NO data dir when claude-code
+    // is also selected (its pass already wrote .claude/data); standalone cursor
+    // resolves to the shared .claude path.
+    expect(dataDirFor('cursor', ['claude-code', 'cursor'])).toBe(null);
+    expect(dataDirFor('cursor', ['cursor'])).toBe('.claude');
   });
 
   it('cursor shim respects drift on user-written rule files without the marker', async () => {

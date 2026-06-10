@@ -223,6 +223,40 @@ function planForTarget(projectRoot: string, target: SkillChannel): InstallPlan {
   }
 }
 
+/**
+ * Channel → shared data dir (`<dir>/data/…`) for read-only data assets
+ * (catalog JSONs, reference DESIGN.md catalog, ctx-prime helper scripts).
+ * Single lookup table replacing the repeated if-else/ternary chains (issue #28).
+ * `null` = the channel hosts no data dir of its own:
+ *   - opencode ships skills only (no data channel yet);
+ *   - cursor reads the SHARED `.claude/data` path (issue #20) — resolved by
+ *     `dataDirFor()` below, which also applies the claude-code dedup guard.
+ *     (Helper scripts intentionally stay claude-code/codex only — a cursor-only
+ *     install gets the catalog + JSONs but no ctx-prime, matching the shim's scope.)
+ */
+const CHANNEL_DATA_DIRS: Record<SkillTarget, '.claude' | '.codex' | null> = {
+  'claude-code': '.claude',
+  codex: '.codex',
+  opencode: null,
+  cursor: null,
+};
+
+/**
+ * Where a target's data assets (data JSONs + reference catalog) land. Cursor
+ * reuses `.claude/data` so the catalog location stays single (issue #20) —
+ * but ONLY when claude-code isn't also selected: the claude-code pass already
+ * writes there, and a second pass would double-copy the catalog.
+ */
+export function dataDirFor(
+  target: SkillTarget,
+  targets: SkillTarget[]
+): '.claude' | '.codex' | null {
+  if (target === 'cursor') {
+    return targets.includes('claude-code') ? null : '.claude';
+  }
+  return CHANNEL_DATA_DIRS[target];
+}
+
 const MANAGED_HEADER =
   '<!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->';
 
@@ -471,7 +505,7 @@ function installDataFile(
   force: boolean,
   // Cursor reuses the `.claude` data dir (single catalog path) — callers pass
   // an explicit target so the results table reports the real channel.
-  target: SkillTarget = channelDir === '.claude' ? 'claude-code' : 'codex'
+  target: SkillTarget
 ): InstallResult {
   const skillLabel = `data:${dataFilename}`;
 
@@ -929,22 +963,13 @@ export async function runInstallSkills(
     'synonyms.json',
     'opt-out-corpus.json',
   ];
+  // Channel→dir resolution (incl. the cursor shared-`.claude/data` dedup guard,
+  // issue #20) lives in dataDirFor — single source for all three copy loops.
   for (const target of targets) {
-    if (target === 'claude-code') {
-      for (const dataFile of dataFiles) {
-        results.push(installDataFile(packageRoot, installRoot, '.claude', dataFile, force));
-      }
-    } else if (target === 'codex') {
-      for (const dataFile of dataFiles) {
-        results.push(installDataFile(packageRoot, installRoot, '.codex', dataFile, force));
-      }
-    } else if (target === 'cursor' && !targets.includes('claude-code')) {
-      // Cursor agents read the same `.claude/data` path — the catalog location
-      // stays single (issue #20). Skip when claude-code is also selected; its
-      // loop above already writes there.
-      for (const dataFile of dataFiles) {
-        results.push(installDataFile(packageRoot, installRoot, '.claude', dataFile, force, 'cursor'));
-      }
+    const dataDir = dataDirFor(target, targets);
+    if (!dataDir) continue;
+    for (const dataFile of dataFiles) {
+      results.push(installDataFile(packageRoot, installRoot, dataDir, dataFile, force, target));
     }
   }
 
@@ -952,23 +977,22 @@ export async function runInstallSkills(
   // so omd:init can resolve a reference on clean npx installs — no node_modules,
   // no dev web/references (issue #16). Skipped under --skills-only (handled by the
   // enclosing `if (!minimal)`). Codex gets the same copy under .codex/data.
+  // Same dataDirFor single-path rule as the data JSONs above — Cursor reads
+  // .claude/data/references, never a second catalog location.
   for (const target of targets) {
-    if (target === 'claude-code') {
-      catalogCount += installReferenceCatalog(packageRoot, installRoot, '.claude', force);
-    } else if (target === 'codex') {
-      catalogCount += installReferenceCatalog(packageRoot, installRoot, '.codex', force);
-    } else if (target === 'cursor' && !targets.includes('claude-code')) {
-      // Same single-path rule as the data JSONs above — Cursor reads
-      // .claude/data/references, never a second catalog location.
-      catalogCount += installReferenceCatalog(packageRoot, installRoot, '.claude', force);
+    const dataDir = dataDirFor(target, targets);
+    if (dataDir) {
+      catalogCount += installReferenceCatalog(packageRoot, installRoot, dataDir, force);
     }
   }
 
   // Copy ctx-prime.cjs (+ its companion context.cjs) into .claude/data/scripts/
   // so /omd-harness CTX-PRIME works without the package dir on npx installs
   // (issue #18 / harness OMD_DIR resolution).
+  // Note: base table (no cursor special-case) — helper scripts are
+  // claude-code/codex only; a cursor-only install ships no ctx-prime.
   for (const target of targets) {
-    const cd = target === 'claude-code' ? '.claude' : target === 'codex' ? '.codex' : null;
+    const cd = CHANNEL_DATA_DIRS[target];
     if (!cd) continue;
     for (const helper of ['ctx-prime.cjs', 'context.cjs']) {
       const srcHelper = join(packageRoot, 'scripts', helper);
