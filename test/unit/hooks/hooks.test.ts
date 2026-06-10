@@ -117,6 +117,51 @@ describe('hooks', () => {
       const { status } = runHook('post-edit-watch.cjs', null, root, 'not json{');
       expect(status).toBe(0);
     });
+
+    it('detects radius drift in .html files (harness output)', () => {
+      writeFileSync(
+        join(root, 'DESIGN.md'),
+        '# d\n\n## 2. Color\n- #111111\n\n## 5. Radius\n- radius scale: 0px / 2px / 4px\n',
+      );
+      const { stdout } = runHook(
+        'post-edit-watch.cjs',
+        {
+          tool_name: 'Write',
+          tool_input: {
+            file_path: 'hero.html',
+            content: '<button style="border-radius: 9999px">go</button>',
+          },
+        },
+        root,
+      );
+      expect(stdout).not.toBe('');
+      const out = JSON.parse(stdout);
+      expect(out.hookSpecificOutput.additionalContext).toContain('radius');
+    });
+
+    it('detects camelCase JSX inline style drift (borderRadius / transitionDuration)', () => {
+      writeFileSync(
+        join(root, 'DESIGN.md'),
+        '# d\n\n## 5. Radius\n- radius: 0px / 2px / 4px\n\n## 15. Motion\n- durations: 150ms, 300ms\n',
+      );
+      const { stdout } = runHook(
+        'post-edit-watch.cjs',
+        {
+          tool_name: 'Write',
+          tool_input: {
+            file_path: 'src/Cta.tsx',
+            content:
+              'export const C = () => <b style={{borderRadius: "24px", transitionDuration: "700ms"}}/>;',
+          },
+        },
+        root,
+      );
+      expect(stdout).not.toBe('');
+      const out = JSON.parse(stdout);
+      const ctx = out.hookSpecificOutput.additionalContext;
+      expect(ctx).toMatch(/24px|radius/);
+      expect(ctx).toContain('700ms');
+    });
   });
 
   describe('skill-activation.cjs', () => {

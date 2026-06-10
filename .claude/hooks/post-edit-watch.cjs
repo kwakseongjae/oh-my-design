@@ -57,7 +57,9 @@ process.stdin.on('end', () => {
   // a fallback for other channels / older payloads.
   const toolInput = payload.tool_input || payload.toolInput || {};
   const filePath = toolInput.file_path || toolInput.filePath || '';
-  if (!/\.(tsx|jsx|ts|js|css|scss)$/i.test(filePath)) {
+  // .html/.vue/.svelte included — omd:harness/apply emit html prototypes,
+  // which is where most generated-UI drift actually lives.
+  if (!/\.(tsx|jsx|ts|js|css|scss|html|vue|svelte)$/i.test(filePath)) {
     process.exit(0);
   }
 
@@ -147,8 +149,10 @@ process.stdin.on('end', () => {
         introducedRadii.push(label);
       }
     }
+    // kebab-case CSS (`border-radius: 9999px`) AND camelCase JSX inline style
+    // (`borderRadius: "9999px"`) — quoted values included.
     for (const m of newText.matchAll(
-      /border-radius:\s*(\d+(?:\.\d+)?)(px|rem)/g,
+      /border-?[rR]adius:\s*["']?(\d+(?:\.\d+)?)(px|rem)/g,
     )) {
       const px = m[2] === 'rem' ? parseFloat(m[1]) * 16 : parseFloat(m[1]);
       const label = `border-radius:${m[1]}${m[2]}`;
@@ -187,8 +191,9 @@ process.stdin.on('end', () => {
         introducedDurations.push(label);
       }
     }
-    // CSS / JS object literal `duration: 300ms`.
-    for (const m of newText.matchAll(/duration:\s*(\d+)\s*ms\b/g)) {
+    // CSS / JS object literal — `duration: 300ms`, `transition-duration: 300ms`,
+    // and camelCase JSX `transitionDuration: "300ms"` (quoted values included).
+    for (const m of newText.matchAll(/[dD]uration:\s*["']?(\d+)\s*ms\b/g)) {
       const n = parseInt(m[1], 10);
       const label = `duration:${n}ms`;
       if (!designDurations.has(n) && !seen.has(label)) {
