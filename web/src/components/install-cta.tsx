@@ -34,6 +34,7 @@ export function InstallCta({
   source,
   reference,
   brandName,
+  prompt,
   variant = "block",
 }: {
   source: InstallCtaSource;
@@ -41,6 +42,12 @@ export function InstallCta({
   reference?: string;
   /** Display name for the per-brand first prompt. Omit to hide that button. */
   brandName?: string;
+  /**
+   * Full first-prompt override (builder preview: composed from the live
+   * config so customizations survive the handoff). Falls back to the
+   * generic firstPromptFor(brandName). GA4 prompt_copy is unchanged.
+   */
+  prompt?: string;
   variant?: "bar" | "block";
 }) {
   const [copied, setCopied] = useState<"install" | "prompt" | null>(null);
@@ -74,15 +81,17 @@ export function InstallCta({
     </button>
   );
 
-  const promptBtn = brandName ? (
+  const promptText = prompt ?? (brandName ? firstPromptFor(brandName) : null);
+
+  const promptBtn = promptText ? (
     <button
       type="button"
-      onClick={() => copy("prompt", firstPromptFor(brandName))}
+      onClick={() => copy("prompt", promptText)}
       className="inline-flex min-w-0 items-center gap-2 rounded-full border border-border/60 bg-card/80 px-3.5 py-2 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
-      aria-label={`Copy first prompt for ${brandName}`}
+      aria-label={brandName ? `Copy first prompt for ${brandName}` : "Copy first prompt"}
     >
       <Sparkles className="h-3.5 w-3.5 shrink-0 text-primary" />
-      <span className="truncate">&ldquo;{firstPromptFor(brandName)}&rdquo;</span>
+      <span className="truncate">&ldquo;{promptText}&rdquo;</span>
       {copied === "prompt" ? (
         <Check className="h-3.5 w-3.5 shrink-0 text-green-500" />
       ) : (

@@ -174,6 +174,10 @@ Phase 4.2~6은 건너뛴다.
 }
 ```
 
+빌더(oh-my-design.kr/builder)발 프롬프트에는 "Components: button, input, ..." 목록과
+"(builder config: <URL>)"이 붙어올 수 있다. 컴포넌트 목록은 `"requested_components": ["button", "input", ...]`
+키로 함께 기록하고, builder URL은 출처 표기용으로만 보존 — fetch하지 말 것.
+
 `mode` 값 결정:
 - omd:reference-capture가 먼저 돌았으면 그 결과 사용 (`.omd/init-context.json` 기존값)
 - 아직 정해지지 않았으면 사용자에게 묻기 (omd:reference-capture Phase 0과 동일한 prompt). 라이브 캡쳐 없이 omd:init만 단독으로 도는 경우는 사실상 inspired 외엔 의미 없으므로 기본 `inspired`.

@@ -11,6 +11,7 @@ import { PreviewExportView } from "@/components/preview-export-view";
 import { InstallCta } from "@/components/install-cta";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { encodeConfig, decodeConfig } from "@/lib/core/config-hash";
+import { buildBuilderPrompt, DEFAULT_BUILDER_COMPONENTS } from "@/lib/core/builder-prompt";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
 
 type Step = "select" | "customize" | "preview";
@@ -42,9 +43,7 @@ export interface RefDetail {
   border?: string;
 }
 
-const DEFAULT_COMPONENTS = [
-  "button", "input", "table", "card", "badge", "tabs", "dialog",
-];
+const DEFAULT_COMPONENTS = DEFAULT_BUILDER_COMPONENTS;
 
 export default function BuilderPage() {
   const { theme, setTheme } = useTheme();
@@ -397,12 +396,28 @@ export default function BuilderPage() {
                 into the install command. Same sticky bottom bar as the reference
                 detail pages (#19); the main's pb-24 above keeps content clear of
                 it. Fires install_copy{source:'builder'} / prompt_copy{reference}
-                (see InstallCta). */}
+                (see InstallCta). The first prompt is composed from the LIVE
+                builder config (not a generic brand line) so the user's step-2
+                customizations survive the handoff to the agent; the URL we
+                append matches the cfg replaceState sync above (same encoder). */}
             <InstallCta
               variant="bar"
               source="builder"
               reference={detail.id}
               brandName={detail.id}
+              prompt={buildBuilderPrompt({
+                brandName: detail.id,
+                overrides,
+                components: activeComponents,
+                stylePreferences,
+                // selectRef seeds these two slots from the reference, so a
+                // matching value means "unchanged" — not a customization.
+                defaults: {
+                  primaryColor: detail.primary,
+                  borderRadius: detail.radius.replace(/[-–].*/, "").trim(),
+                },
+                url: `${typeof window !== "undefined" ? window.location.origin : "https://oh-my-design.kr"}/builder?step=preview&ref=${detail.id}&cfg=${encodeConfig(detail.id, overrides, activeComponents, stylePreferences)}`,
+              })}
             />
           </>
         )}
