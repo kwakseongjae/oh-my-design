@@ -6,6 +6,19 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.8.0 — 2026-06-10
+
+**The taste loop closes: your corrections become preferences, preferences become proposals, and one click folds them into DESIGN.md. Plus a taste dashboard and a scripted release bench.**
+
+- **Auto-fold gate.** When a preference scope recurs past the threshold, `session-end-foldin` writes a structured proposal and your *next session opens by asking* — one selectable-option question ("이 취향, DESIGN.md에 반영할까요?"). Approve → `omd:learn` folds it; decline → snoozed until it recurs again. The old remember → wait → manually-run-learn dance is gone.
+- **Ambient capture now persists — and sees more.** `post-edit-watch` no longer just warns: off-system drift is recorded to `.omd/preferences.md` as `confidence: inferred` (24h dedup, never while editing DESIGN.md/.omd). Detection grew from hex colors to radius and motion-duration — including Tailwind classes, kebab-case CSS, **camelCase JSX inline styles**, and `.html` outputs (what `omd:harness` actually emits).
+- **`omd:taste` — see what the system thinks you like.** One command renders applied / pending (with recurrence counts and how far from the fold threshold) / snoozed / not-yet-known axes, with inline actions (fold now · forget · refine). Skill count: 16 → 17.
+- **Reviewers feed the loop.** `omd:designer-review` and `omd:final-qa` now end recurring findings with a single opt-in question — "이 패턴, 취향으로 기록할까요?" — recording with `signal: review` on consent. Never auto-recorded, never auto-folded.
+- **Scripted 2-bench release routine.** `scripts/bench/score-init.mjs` (first-60s) and the new `scripts/bench/score-taste.mjs` (capture → reflect → propose) score real headless runs deterministically; both at 10/10 on this release.
+- Fixes & hygiene: `session-state-loader` output envelope corrected (its session-start context was silently dropped); catalog resolution order normalized across all 4 documents with a CI drift guard; installer channel mapping unified into one table (cursor dedup behavior preserved, tested); `omd:kr-writer` presets now self-contained for npx installs; dangling dev-only references cleaned; docs/JSON-LD FAQ generated from one source; release workflow actions bumped for Node 24 runners.
+
+---
+
 ## 1.7.2 — 2026-06-10
 
 **First-run fixes for npx installs (skill triggering, local catalog, dead hooks), a first-class Cursor install channel, and a safer `omd:init`.**
