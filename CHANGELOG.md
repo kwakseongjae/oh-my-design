@@ -6,6 +6,21 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.7.2 — 2026-06-10
+
+**First-run fixes for npx installs (skill triggering, local catalog, dead hooks), a first-class Cursor install channel, and a safer `omd:init`.**
+
+- **Installed-skill marker moved below frontmatter.** The `<!-- omd:installed-skill -->` marker was written *above* the YAML frontmatter, which broke frontmatter parsing in some hosts and stopped skills from triggering on natural language. Managed files are rewritten with the marker after the frontmatter block; re-run `install-skills` to pick it up.
+- **Reference catalog + ctx-prime install locally.** `install-skills` now copies the reference catalog and ctx-prime data into `.claude/data/`, so `omd:init` works on the very first run of an npx install — no more empty-catalog dead end. As a safety net, `omd:init` also falls back to the website's raw `.md` endpoints when the local catalog can't be resolved.
+- **Cursor install channel.** `install-skills --agent cursor` (also offered in the channel multiselect, auto-detected when `.cursor/` exists) writes the `.cursor/rules/omd-design.mdc` shim — identical to the `omd:sync` template, body-hash marker included — plus the shared `.claude/data` catalog. No skills, hooks, or settings are written for Cursor.
+- **Hooks revived on clean installs.** `post-edit-watch`, `foldin`, `state-loader`, and `skill-activation` shipped in states that left them dead on a fresh install; all four now register and fire correctly.
+- **`omd:init` apply-mode confirmation.** Before writing, `omd:init` now distinguishes root bootstrap vs reference-only mode and asks before replacing an existing `DESIGN.md` — on Claude Code via the selectable-option (AskUserQuestion) UI.
+- **Builder → agent prompt handoff.** The builder preview's install CTA composes your first prompt from the live config (reference, components, token overrides vs reference defaults, dark mode, style preferences) instead of a generic one-liner, so what you customized in the builder is what `omd:init` bootstraps.
+
+> Site-only (no npm impact, deploys with the site): raw DESIGN.md twin endpoints at `/design-systems/<id>.md` (agents can fetch references over HTTP), 8 curated collection pages at `/collections/[slug]`, builder floating install CTA + neutral logo nameplates, GA4 install-funnel events (`install_copy` / `prompt_copy`), The Wall card-expand interaction removed (static tiles, hover kept), and a four-README restructure around the install→activate path.
+
+---
+
 ## 1.6.7 — 2026-06-05
 
 **Codex / OpenCode skills now install to their real discovery paths — and `claude-design` runs on all three channels.**
