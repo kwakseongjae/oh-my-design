@@ -12,6 +12,7 @@ import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { isNewRef } from "@/lib/new-refs";
 import { StatusBadge } from "@/components/status-badge";
+import { BrandNameplateLogo } from "@/components/brand-logo";
 import type { DesignSystemInfo } from "@/lib/design-systems";
 import { getLogoUrl, isGitHubLogo, getLogoFallbackUrl } from "@/lib/logos";
 import { event } from "@/lib/gtag";
@@ -54,7 +55,9 @@ export function DSCard({
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <CardBrandLogo refId={ds.refId} name={ds.name} />
+          {/* Neutral nameplate logo — shared with the builder (issue #19);
+              see BrandNameplateLogo for the fallback chain. */}
+          <BrandNameplateLogo refId={ds.refId} name={ds.name} />
           <div className="min-w-0 flex-1">
             <div className="text-base font-semibold leading-tight truncate">{ds.name}</div>
             <div className="text-[11px] text-muted-foreground/80 mt-0.5 capitalize truncate">
@@ -118,40 +121,6 @@ function CardThumbnail({ ds }: { ds: DesignSystemInfo }) {
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         loading="lazy"
         onError={() => setStage((s) => (s < 2 ? ((s + 1) as 0 | 1 | 2) : 2))}
-      />
-    </div>
-  );
-}
-
-/** Compact brand logo shown beside the card title. Same source + fallback
- *  chain as the builder's Reference step, but neutral-backed so it reads as
- *  a nameplate rather than a brand statement. */
-function CardBrandLogo({ refId, name }: { refId: string; name: string }) {
-  const [stage, setStage] = useState<0 | 1 | 2>(0);
-  const primaryUrl = getLogoUrl(refId, "111111");
-  const fallbackUrl = getLogoFallbackUrl(refId);
-  const src = stage === 0 ? primaryUrl : stage === 1 ? fallbackUrl : null;
-  const raster = isGitHubLogo(refId);
-
-  const wrap =
-    "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted/60 ring-1 ring-border/50 dark:bg-muted/30 dark:ring-border";
-
-  if (!src) {
-    return (
-      <div className={wrap}>
-        <span className="text-sm font-bold text-foreground/70">{name.charAt(0).toUpperCase()}</span>
-      </div>
-    );
-  }
-  return (
-    <div className={wrap}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={name}
-        onError={() => setStage((s) => (s < 2 ? ((s + 1) as 0 | 1 | 2) : 2))}
-        className={raster ? "h-6 w-6 rounded object-contain" : "h-5 w-5 object-contain dark:invert"}
-        loading="lazy"
       />
     </div>
   );

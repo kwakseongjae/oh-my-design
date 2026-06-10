@@ -358,8 +358,10 @@ export default function BuilderPage() {
         </div>
       </header>
 
-      {/* Content */}
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+      {/* Content. Preview gets extra bottom padding so the last content row
+          stays reachable above the fixed install bar (same pb pattern as the
+          reference detail pages). */}
+      <main className={`mx-auto max-w-7xl px-4 py-8 sm:px-6 ${step === "preview" ? "pb-24" : ""}`}>
         {step === "select" && (
           <ReferenceSelector
             refs={refs}
@@ -392,21 +394,26 @@ export default function BuilderPage() {
               stylePreferences={stylePreferences}
             />
             {/* Builder is the main funnel surface — close the loop from preview
-                into the install command. Fires install_copy{source:'builder'} /
-                prompt_copy{reference} (see InstallCta). */}
-            <div className="mx-auto mt-8 w-full max-w-3xl px-4">
-              <InstallCta
-                source="builder"
-                reference={detail.id}
-                brandName={detail.id}
-              />
-            </div>
+                into the install command. Same sticky bottom bar as the reference
+                detail pages (#19); the main's pb-24 above keeps content clear of
+                it. Fires install_copy{source:'builder'} / prompt_copy{reference}
+                (see InstallCta). */}
+            <InstallCta
+              variant="bar"
+              source="builder"
+              reference={detail.id}
+              brandName={detail.id}
+            />
           </>
         )}
       </main>
 
-      {/* Floating scroll-to-top on the long-scrolling steps (select grid + preview). */}
-      {(step === "select" || step === "preview") && <ScrollToTop />}
+      {/* Floating scroll-to-top on the long-scrolling steps (select grid + preview).
+          On preview it lifts above the fixed install bar (bottom-4 + pill height)
+          so the two floating controls never overlap on narrow viewports. */}
+      {(step === "select" || step === "preview") && (
+        <ScrollToTop bottomClass={step === "preview" ? "bottom-20" : "bottom-5"} />
+      )}
     </div>
   );
 }

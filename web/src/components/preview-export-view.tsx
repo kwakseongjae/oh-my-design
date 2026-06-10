@@ -11,8 +11,7 @@ import type { RefDetail } from "@/app/builder/page";
 import { Button } from "@/components/ui/button";
 import { getDesignSystem } from "@/lib/design-systems";
 import { getHomepageUrl } from "@/data/registry.generated";
-import { isLight } from "@/lib/core/color";
-import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
+import { BrandNameplateLogo } from "@/components/brand-logo";
 import { Markdown } from "@/components/markdown";
 
 type MdView = "rendered" | "raw";
@@ -98,7 +97,9 @@ export function PreviewExportView({
             onClick={() => event("ds_click", { reference: ds.refId, url: ds.url, location: "preview_header" })}
             className="hidden sm:flex items-center gap-1.5 shrink-0 rounded-[0.625rem] border border-border/25 dark:border-border/50 bg-muted/10 dark:bg-muted/20 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors duration-150 hover:bg-muted/30 hover:text-foreground"
           >
-            <DsLogo refId={ds.refId} refName={refName} primary={detail.primary} />
+            {/* Neutral nameplate (shared treatment, issue #19) — the old
+                primary-colored tile hid logos matching detail.primary. */}
+            <BrandNameplateLogo refId={ds.refId} name={refName} size="xs" />
             <span className="truncate max-w-[180px]">
               {ds.type === "system" ? `${refName} Design System` : `${refName} Brand`}
             </span>
@@ -200,35 +201,5 @@ export function PreviewExportView({
         </div>
       </div>
     </div>
-  );
-}
-
-/** Tiny logo for the DS link chip in the header. */
-function DsLogo({ refId, refName, primary }: { refId: string; refName: string; primary: string }) {
-  const isLightBrand = isLight(primary);
-  const logoColor = isLightBrand ? "000000" : "ffffff";
-  const [stage, setStage] = useState<0 | 1 | 2>(0);
-  const src = stage === 0 ? getLogoUrl(refId, logoColor) : stage === 1 ? getLogoFallbackUrl(refId) : null;
-  const isGh = isGitHubLogo(refId);
-
-  const wrap = "flex h-4 w-4 shrink-0 items-center justify-center rounded overflow-hidden";
-
-  if (!src) {
-    return (
-      <span className={`${wrap} text-[9px] font-bold`} style={{ background: primary, color: isLightBrand ? "#1e1e1e" : "#ffffff" }}>
-        {refName.charAt(0).toUpperCase()}
-      </span>
-    );
-  }
-  return (
-    <span className={wrap} style={{ background: primary }}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={refName}
-        onError={() => setStage((s) => (s < 2 ? ((s + 1) as 0 | 1 | 2) : 2))}
-        className={isGh || stage > 0 ? "h-3 w-3 rounded object-contain" : "h-3 w-3 object-contain"}
-      />
-    </span>
   );
 }

@@ -24,37 +24,6 @@ function SearchIcon({ className }: { className?: string }) {
   );
 }
 
-/** Logo with 3-step fallback chain: primary URL → favicon → initial letter. */
-function RefLogo({ refId, refName, primaryUrl, isGh, isLightBg }: { refId: string; refName: string; primaryUrl: string | null; isGh: boolean; isLightBg: boolean }) {
-  const [stage, setStage] = useState<0 | 1 | 2>(0);
-  const fallback = getLogoFallbackUrl(refId);
-  const src = stage === 0 ? primaryUrl : stage === 1 ? fallback : null;
-
-  if (!src) {
-    // Final fallback: initial letter on a tinted ring
-    return (
-      <div
-        className={`flex items-center justify-center rounded-full text-base font-bold ${isGh ? "h-10 w-10" : "h-8 w-8"}`}
-        style={{ background: isLightBg ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.18)", color: isLightBg ? "#1e1e1e" : "#ffffff" }}
-      >
-        {refName.charAt(0).toUpperCase()}
-      </div>
-    );
-  }
-
-  return (
-    <img
-      src={src}
-      alt={refName}
-      onError={() => setStage((s) => (s < 2 ? ((s + 1) as 0 | 1 | 2) : 2))}
-      className={`object-contain opacity-90 transition-all group-hover:opacity-100 group-hover:scale-110 ${
-        isGh || stage > 0 ? "h-10 w-10 rounded-full ring-2 ring-white/20 bg-white/10 p-1" : "h-8 w-8"
-      }`}
-      loading="lazy"
-    />
-  );
-}
-
 function XIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -73,8 +42,7 @@ function XIcon({ className }: { className?: string }) {
   );
 }
 
-import { isLight } from "@/lib/core/color";
-import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
+import { BrandNameplateLogo } from "@/components/brand-logo";
 import { isNewRef } from "@/lib/new-refs";
 import { StatusBadge } from "@/components/status-badge";
 import { refMatchesQuery } from "@/lib/search-aliases";
@@ -607,7 +575,6 @@ export function ReferenceSelector({
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         <AnimatePresence mode="popLayout">
           {filtered.map((ref, i) => {
-            const logoUrl = getLogoUrl(ref.id, isLight(ref.primaryColor) ? "000000" : "ffffff");
             return (
               <motion.button
                 key={ref.id}
@@ -630,12 +597,15 @@ export function ReferenceSelector({
                   className="relative flex h-24 items-center justify-center border-b border-transparent dark:border-white/10"
                   style={{ background: ref.primaryColor }}
                 >
-                  <RefLogo
+                  {/* Neutral nameplate (shared with the directory cards) so the
+                      logo stays legible even when it matches ref.primaryColor —
+                      e.g. Toss's blue favicon on its blue tile (issue #19). */}
+                  <BrandNameplateLogo
                     refId={ref.id}
-                    refName={ref.name}
-                    primaryUrl={logoUrl}
-                    isGh={isGitHubLogo(ref.id)}
-                    isLightBg={isLight(ref.primaryColor)}
+                    name={ref.name}
+                    surface="brand"
+                    size="lg"
+                    className="transition-transform duration-200 group-hover:scale-105"
                   />
                   {/* Skip-wizard hover overlay — only rendered when the user
                       has flipped to "Use as-is". Tells them what the click
