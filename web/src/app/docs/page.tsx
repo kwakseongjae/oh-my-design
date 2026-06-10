@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { V2Nav } from "@/components/landing-v2/nav";
 import { V2 } from "@/components/landing-v2/tokens";
+import { FAQ_EN } from "@/data/faq";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-v2" });
 const geistMono = Geist_Mono({
@@ -467,44 +468,9 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
   },
 ];
 
-const FAQ: { q: string; a: string }[] = [
-  {
-    q: "Does it call any AI provider during install?",
-    a: "No. Install copies skill markdown, hooks, and 221 DESIGN.md files. Zero API calls. Your AI agent (Claude Code, Codex, OpenCode, Cursor) is the inference layer — install just teaches it where to look.",
-  },
-  {
-    q: "How do I upgrade when a new release drops?",
-    a: "Re-run `npx oh-my-design-cli@latest install-skills` in your project. It's idempotent — managed files (those with the `<!-- omd:installed-skill -->` marker) refresh in place; your edits without the marker stay untouched (status `skipped-drift`). Pass `--force` to overwrite custom edits. Then restart your agent. See CHANGELOG.md for what changed each release.",
-  },
-  {
-    q: "Which agents are supported?",
-    a: "Claude Code, Codex, OpenCode, and Cursor. Cursor is a dedicated install channel — `--agent cursor` writes the .cursor/rules/omd-design.mdc shim plus the shared .claude/data reference catalog (no skills or hooks). Hooks ship for Claude Code; the SKILL.md files are agent-agnostic markdown.",
-  },
-  {
-    q: "Can my agent read a reference without installing anything?",
-    a: "Yes. Every reference has a raw markdown twin at oh-my-design.kr/design-systems/<id>.md — agents can fetch the full DESIGN.md directly over HTTP. Curated sets by use case live at oh-my-design.kr/collections.",
-  },
-  {
-    q: "I customized a reference in the web builder — how do I hand it to my agent?",
-    a: "The builder preview composes your first prompt from your live config (reference, components, token overrides, dark mode). Copy it from the install CTA and paste it into your agent — omd:init reads the prompt and bootstraps a matching DESIGN.md.",
-  },
-  {
-    q: "Can I bring my own DESIGN.md?",
-    a: "Yes. If a DESIGN.md exists at repo root, omd:apply uses it as-is. Otherwise omd:init proposes a hybrid from one of the 221 references.",
-  },
-  {
-    q: "How do preferences differ from DESIGN.md?",
-    a: ".omd/preferences.md is the running log of corrections (append-only). DESIGN.md is the canonical spec. Run \"fold preferences\" to merge by scope.",
-  },
-  {
-    q: "What's a harness run?",
-    a: "Invoking /omd-harness <task> creates .omd/runs/<id>/ and steps through the 10 phases. Each phase emits artifacts. The final zip is v0/Cursor-ready.",
-  },
-  {
-    q: "Is it really free?",
-    a: "Yes. MIT licensed. The npm tarball is the only package. No paid tier exists or is planned. References belong to their respective companies — reproduced for educational reference only.",
-  },
-];
+// FAQ content is single-sourced from src/data/faq.ts — the root layout's
+// JSON-LD FAQPage schema renders the jsonLd-flagged subset of the same list
+// (issue #28). Edit Q&A there, not here.
 
 /* ──────────────────────────── PAGE ──────────────────────────── */
 
@@ -1302,7 +1268,7 @@ function FaqSection() {
         className="overflow-hidden rounded-2xl border"
         style={{ borderColor: V2.borderLight, background: "rgba(0,0,0,0.015)" }}
       >
-        {FAQ.map((f, i) => (
+        {FAQ_EN.map((f, i) => (
           <details
             key={i}
             className="group border-b last:border-b-0 px-6 py-5 transition-colors open:bg-black/[0.02]"

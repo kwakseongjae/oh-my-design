@@ -2,6 +2,10 @@
  * /faq — AEO-targeted Q&A. Server component, page-level metadata, FAQPage
  * JSON-LD. 20 questions across 4 sections. Self-contained (no shared
  * v2 nav reuse — avoids client-comp wrap so metadata export is valid).
+ *
+ * NOTE: this is the KOREAN AEO question set — intentionally distinct content.
+ * The shared EN FAQ (consumed by /docs + the root-layout JSON-LD) lives in
+ * src/data/faq.ts; don't duplicate EN entries here (issue #28).
  */
 
 import type { Metadata } from "next";

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AnalyticsInit } from "@/components/analytics-init";
 import { GA_ID } from "@/lib/gtag";
 import pkg from "../../../package.json" with { type: "json" };
+import { FAQ_EN } from "@/data/faq";
 import "./globals.css";
 
 // Single source of truth for displayed CLI version. Pulled from the root
@@ -194,56 +195,17 @@ export default function RootLayout({
                 },
                 {
                   "@type": "FAQPage",
-                  mainEntity: [
-                    {
-                      "@type": "Question",
-                      name: "What is DESIGN.md?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "DESIGN.md is a structured markdown file that defines your project's brand spec — tokens (colors, typography, spacing, radius), voice, narrative, principles, personas, states, and motion. AI coding agents (Claude Code, Codex, OpenCode, Cursor) read it as authoritative context before generating any UI, so the output looks like your brand instead of generic 'modern minimalist' slop.",
-                      },
+                  // Q&A content is single-sourced from src/data/faq.ts (the
+                  // jsonLd-flagged subset) — the /docs FAQ section renders the
+                  // full list from the same module (issue #28).
+                  mainEntity: FAQ_EN.filter((f) => f.jsonLd).map((f) => ({
+                    "@type": "Question",
+                    name: f.q,
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: f.a,
                     },
-                    {
-                      "@type": "Question",
-                      name: "How does oh-my-design work?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Run `npx oh-my-design-cli install-skills` once in your project. It installs 17 skills (core flow + live-capture + asset + the v0.2 agent layer: orchestrator, kr-writer, locale-adapter, designer-review, final-qa, codex-image), 16 sub-agents (master orchestrator + 15 specialists), 4 hooks, and 221 reference DESIGN.md files. After restarting your AI coding agent, you just talk in natural language — skills route to the right sub-agents automatically.",
-                      },
-                    },
-                    {
-                      "@type": "Question",
-                      name: "Does it call any AI provider during install?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "No. The install is a pure markdown copy — zero API calls, zero data leaves your machine. Your AI coding agent (Claude Code, Codex, OpenCode, or Cursor) is the inference layer; install just teaches it where to look.",
-                      },
-                    },
-                    {
-                      "@type": "Question",
-                      name: "Which AI coding agents are supported?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Claude Code, Codex, OpenCode, and Cursor — Cursor has a dedicated install channel (--agent cursor) that writes the .cursor/rules shim plus the shared reference catalog. The skill markdown files are agent-agnostic; hooks ship for Claude Code specifically.",
-                      },
-                    },
-                    {
-                      "@type": "Question",
-                      name: "What is the design harness?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "The omd-harness skill runs a 10-phase design pipeline (Discovery → Research → IA → Wireframes → Design system → Components → Asset sourcing → Microcopy → Validation → Handoff). It dispatches sub-agents in parallel where independent, asks 3 mandatory user checkpoints, and emits a v0/Cursor-ready package. Trigger it by saying things like 'design the entire onboarding from scratch' or '/omd-harness <task>'.",
-                      },
-                    },
-                    {
-                      "@type": "Question",
-                      name: "Is it free?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Yes — MIT licensed, open source, no signup, no API key, no paid tier. The references in the bundle belong to their respective companies and are reproduced for educational reference only.",
-                      },
-                    },
-                  ],
+                  })),
                 },
               ],
             }),
