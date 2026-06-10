@@ -77,6 +77,17 @@ prose로:
 
 vocab axis conflict 있으면 (예: formal ↔ playful) 먼저 알리고 우선시할 축을 묻기.
 
+**Claude Code 채널이면 위 prose 대신 AskUserQuestion 툴 1개로 제시** (사용자가 화살표로 고르는 selectable UI — #21). question 1개에 top-5 후보 id 5개를 option으로:
+
+```
+question: ""<task 핵심 한 줄>"에 맞는 레퍼런스를 골라주세요"
+header: "Reference"
+options: top1~top5 각각 → label = <id>, description = fingerprint 기반 1줄 (<category> · <tone_keywords 1-2개>)
+  - top1에는 label에 "(추천)" 표시
+```
+
+(AskUserQuestion이 자동 "Other"를 추가하므로 카탈로그의 다른 id를 자유 입력으로 답하는 것도 그대로 가능.) Codex / OpenCode 등 AskUserQuestion이 없는 채널은 위 prose 포맷 유지. 점수 계산·채택 로직(Phase 3)은 어느 쪽이든 동일.
+
 ## Phase 3 — 사용자 선택
 
 - `go` 또는 top-5 안 id → 그 id 채택

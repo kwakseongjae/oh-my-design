@@ -201,7 +201,7 @@ options: ctx-prime.audience_hypothesis 상위 3개 → label/description 매핑
   - audience_hypothesis[2]: label, description = evidence (없으면 생략)
 ```
 
-(AskUserQuestion이 자동 "Other" 추가하므로 자유 입력 페르소나도 가능.)
+(AskUserQuestion이 자동 "Other" 추가하므로 자유 입력 페르소나도 가능. Codex / OpenCode 등 AskUserQuestion이 없는 채널은 같은 question + option을 prose로 묻고 자유 텍스트 답을 받는다 — #21.)
 
 사용자 답을 `ctx-prime.json`에 `confirmed_audience` 필드로 merge (Edit 또는 Write):
 
@@ -215,6 +215,8 @@ options: ctx-prime.audience_hypothesis 상위 3개 → label/description 매핑
 ### 2.5.3 — Interview-lite (2-4 picker 묶음)
 
 페르소나 확정 직후 **AskUserQuestion 1번 더, 최대 4개 question 묶음**. ctx-prime 결과를 활용해 picker option을 동적 구성:
+
+> **채널 분기 (#21)**: Claude Code 채널에서는 반드시 AskUserQuestion 툴로 제시 — 복수 답이 자연스러운 question(예: wow moment 여러 개 허용 시)은 `multiSelect: true`. Codex / OpenCode 등 툴이 없는 채널은 같은 question 묶음을 prose 1회 배치로 묻고 자유 텍스트 답을 받는다. 어느 채널이든 question 수 budget은 동일(아래 최대 4개) — 추가 게이트 금지.
 
 **Question 1 — exit_scope:**
 - "단일 화면만 (한 surface 깊이)"
