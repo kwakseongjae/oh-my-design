@@ -10,10 +10,15 @@ import {
 } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { homedir } from 'node:os';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { detectInstalledAgents } from '../core/agent-detect.js';
 
-export type SkillTarget = 'claude-code' | 'codex' | 'opencode';
+export type SkillTarget = 'claude-code' | 'codex' | 'opencode' | 'cursor';
+
+/** Channels that host SKILL.md trees. Cursor is NOT one — it consumes a
+ *  `.cursor/rules` shim + the shared `.claude/data` catalog (issue #20). */
+type SkillChannel = Exclude<SkillTarget, 'cursor'>;
 
 export interface InstallSkillsOptions {
   dir?: string;
@@ -37,7 +42,7 @@ export interface InstallSkillsOptions {
 }
 
 interface InstallPlan {
-  target: SkillTarget;
+  target: SkillChannel;
   destDir: string;
   layout: 'folder' | 'flat';
 }
@@ -189,7 +194,7 @@ function renderCodexAgent(a: ParsedAgent): string {
   ].join('\n');
 }
 
-function planForTarget(projectRoot: string, target: SkillTarget): InstallPlan {
+function planForTarget(projectRoot: string, target: SkillChannel): InstallPlan {
   switch (target) {
     case 'claude-code':
       return {
@@ -272,16 +277,16 @@ const IGNORED_SKILL_ENTRIES = new Set(['.runtime', '__pycache__', '.DS_Store']);
  * depend on a particular agent runtime — e.g. claude-design needs Claude Code's
  * claude-in-chrome MCP + Bash/python/node and is therefore claude-code only.
  */
-function parseSkillChannels(skillMd: string): SkillTarget[] | null {
+function parseSkillChannels(skillMd: string): SkillChannel[] | null {
   const fm = /^---\n([\s\S]*?)\n---/.exec(skillMd);
   if (!fm) return null;
   const m = /^x-omd-channels:\s*(.+)$/m.exec(fm[1]);
   if (!m) return null;
-  const valid: SkillTarget[] = ['claude-code', 'codex', 'opencode'];
+  const valid: SkillChannel[] = ['claude-code', 'codex', 'opencode'];
   const list = m[1]
     .split(/[,\s]+/)
     .map((s) => s.trim())
-    .filter((s): s is SkillTarget => (valid as string[]).includes(s));
+    .filter((s): s is SkillChannel => (valid as string[]).includes(s));
   return list.length > 0 ? list : null;
 }
 
@@ -292,10 +297,10 @@ function parseSkillChannels(skillMd: string): SkillTarget[] | null {
  * scripts/references install everywhere — the only restriction is what the skill
  * itself declares (e.g. claude-design needs a browser-driving runtime).
  */
-function skillSupportedChannels(packageRoot: string, skill: string): SkillTarget[] {
+function skillSupportedChannels(packageRoot: string, skill: string): SkillChannel[] {
   return (
     parseSkillChannels(readFileSync(join(packageRoot, 'skills', skill, 'SKILL.md'), 'utf8')) ??
-    (['claude-code', 'codex', 'opencode'] as SkillTarget[])
+    (['claude-code', 'codex', 'opencode'] as SkillChannel[])
   );
 }
 
@@ -461,9 +466,11 @@ function installDataFile(
   projectRoot: string,
   channelDir: string,
   dataFilename: string,
-  force: boolean
+  force: boolean,
+  // Cursor reuses the `.claude` data dir (single catalog path) — callers pass
+  // an explicit target so the results table reports the real channel.
+  target: SkillTarget = channelDir === '.claude' ? 'claude-code' : 'codex'
 ): InstallResult {
-  const target: SkillTarget = channelDir === '.claude' ? 'claude-code' : 'codex';
   const skillLabel = `data:${dataFilename}`;
 
   const srcPath = join(packageRoot, 'data', dataFilename);
@@ -603,6 +610,68 @@ function installReferenceCatalog(
   return written;
 }
 
+/**
+ * Cursor channel shim — Cursor has no skill/agent surface; it consumes a
+ * project rule at `.cursor/rules/omd-design.mdc`. Frontmatter, body, and the
+ * body-hash marker below mirror the omd:sync skill's cursor template EXACTLY
+ * (skills/omd-sync/SKILL.md, "whole" mode: hash = sha256 of the body text,
+ * 12-char hex prefix), so a later omd:sync run reads the installer-written
+ * file as `clean` rather than drifted (issue #20).
+ */
+const CURSOR_RULE_BODY = [
+  'The authoritative design spec lives at `@DESIGN.md` (repo root). Open and read before generating/modifying UI.',
+  '',
+  'Pending preference corrections: `@.omd/preferences.md`.',
+  '',
+  'Precedence: DESIGN.md > preferences.md > framework defaults.',
+].join('\n');
+
+function renderCursorRule(): string {
+  const hash = createHash('sha256').update(CURSOR_RULE_BODY).digest('hex').slice(0, 12);
+  return [
+    '---',
+    'description: Authoritative brand & UI design system. Read DESIGN.md before UI work.',
+    'globs:',
+    '  - "**/*.tsx"',
+    '  - "**/*.jsx"',
+    '  - "**/*.vue"',
+    '  - "**/*.svelte"',
+    '  - "**/*.css"',
+    '  - "**/*.scss"',
+    '  - "**/tailwind.config.*"',
+    '  - "**/components/**"',
+    '  - "**/app/**/page.*"',
+    'alwaysApply: false',
+    '---',
+    '',
+    `<!-- omd:start v=1 hash=${hash} -->`,
+    CURSOR_RULE_BODY,
+    '<!-- omd:end -->',
+    '',
+  ].join('\n');
+}
+
+function installCursorRule(installRoot: string, force: boolean): InstallResult {
+  const target: SkillTarget = 'cursor';
+  const skillLabel = 'rule:omd-design.mdc';
+  const destPath = join(installRoot, '.cursor', 'rules', 'omd-design.mdc');
+  const rendered = renderCursorRule();
+
+  const exists = existsSync(destPath);
+  const existing = exists ? readFileSync(destPath, 'utf8') : '';
+  if (exists && existing === rendered) {
+    return { target, skill: skillLabel, destPath, status: 'unchanged' };
+  }
+  // The omd marker block doubles as the managed sentinel (matching omd:sync's
+  // whole-mode rules): a file without it is user content → drift unless --force.
+  if (exists && !existing.includes('<!-- omd:start') && !force) {
+    return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
+  }
+  mkdirSync(dirname(destPath), { recursive: true });
+  writeFileSync(destPath, rendered, 'utf8');
+  return { target, skill: skillLabel, destPath, status: exists ? 'updated' : 'created' };
+}
+
 const STATUS_LABEL: Record<InstallResult['status'], string> = {
   created: pc.green('created'),
   updated: pc.cyan('updated'),
@@ -617,10 +686,14 @@ function autoDetectTargets(projectRoot: string): SkillTarget[] {
   if (presence.claudeCode) targets.push('claude-code');
   if (presence.codex) targets.push('codex');
   if (presence.opencode) targets.push('opencode');
-  // Cursor uses .mdc rules, not skills — installed via `omd sync`.
+  // Cursor hosts no skills — its channel writes the .cursor/rules shim + the
+  // shared .claude/data catalog (issue #20). Only when .cursor is detected;
+  // the no-signal fallback below stays skill-channel-only so we never drop a
+  // .cursor dir into projects that don't use Cursor.
+  if (presence.cursor) targets.push('cursor');
   if (targets.length === 0) {
-    // Fallback: install for all three so user gets coverage even without
-    // explicit signal. Idempotent so cost is low.
+    // Fallback: install for all three skill channels so user gets coverage
+    // even without explicit signal. Idempotent so cost is low.
     return ['claude-code', 'codex', 'opencode'];
   }
   return targets;
@@ -670,6 +743,7 @@ export async function runInstallSkills(
     presence.claudeCode ? 'claude-code' : null,
     presence.codex ? 'codex' : null,
     presence.opencode ? 'opencode' : null,
+    presence.cursor ? 'cursor' : null,
   ].filter((x): x is SkillTarget => x !== null);
 
   // --- Scope (project vs global) — --global pins it, else ask / default project.
@@ -728,17 +802,22 @@ export async function runInstallSkills(
   // picker shows just Claude Code). Non-TTY / --all falls back to auto-resolution.
   const supportedTargets = ((): SkillTarget[] => {
     const set = new Set<SkillTarget>(skills.flatMap((s) => skillSupportedChannels(packageRoot, s)));
-    return (['claude-code', 'codex', 'opencode'] as SkillTarget[]).filter((t) => set.has(t));
+    // Cursor consumes no skills — its channel install (.cursor/rules shim +
+    // shared .claude/data catalog) is skill-independent, so always offer it.
+    set.add('cursor');
+    return (['claude-code', 'codex', 'opencode', 'cursor'] as SkillTarget[]).filter((t) => set.has(t));
   })();
   const channelLabel: Record<SkillTarget, string> = {
     'claude-code': 'Claude Code',
     codex: 'Codex',
     opencode: 'OpenCode',
+    cursor: 'Cursor',
   };
   const channelDir: Record<SkillTarget, string> = {
     'claude-code': '.claude',
     codex: '.codex',
     opencode: '.opencode',
+    cursor: '.cursor',
   };
   let targets: SkillTarget[];
   if (opts.agents) {
@@ -772,7 +851,12 @@ export async function runInstallSkills(
   // Global scope roots everything at the home dir, so plan dirs resolve to
   // ~/.claude/skills, ~/.claude/agents, etc. Project scope uses cwd (or --dir).
   const installRoot = scope === 'global' ? homedir() : projectRoot;
-  const plans = targets.map((t) => planForTarget(installRoot, t));
+  // Cursor hosts no SKILL.md tree — it's excluded from skill plans and handled
+  // below via the .cursor/rules shim + shared data copies (issue #20).
+  const skillChannelTargets = targets.filter(
+    (t): t is SkillChannel => t !== 'cursor'
+  );
+  const plans = skillChannelTargets.map((t) => planForTarget(installRoot, t));
 
   p.log.message(
     pc.bold('Scope: ') +
@@ -825,6 +909,14 @@ export async function runInstallSkills(
   }
 
   if (!minimal) {
+  // Cursor channel: write the `.cursor/rules` shim (the exact content omd:sync
+  // renders for .cursor/rules/omd-design.mdc) so Cursor reads DESIGN.md before
+  // UI work. No skills/agents/hooks — the shim plus the shared .claude/data
+  // copies below are the whole Cursor install (issue #20).
+  if (targets.includes('cursor')) {
+    results.push(installCursorRule(installRoot, force));
+  }
+
   // Ship the read-only data assets (reference fingerprints, controlled vocab,
   // human-readable tag matrix, opt-out corpus) so skills + hooks can run entirely
   // on the host CLI's own model — no external API keys.
@@ -844,6 +936,13 @@ export async function runInstallSkills(
       for (const dataFile of dataFiles) {
         results.push(installDataFile(packageRoot, installRoot, '.codex', dataFile, force));
       }
+    } else if (target === 'cursor' && !targets.includes('claude-code')) {
+      // Cursor agents read the same `.claude/data` path — the catalog location
+      // stays single (issue #20). Skip when claude-code is also selected; its
+      // loop above already writes there.
+      for (const dataFile of dataFiles) {
+        results.push(installDataFile(packageRoot, installRoot, '.claude', dataFile, force, 'cursor'));
+      }
     }
   }
 
@@ -856,6 +955,10 @@ export async function runInstallSkills(
       catalogCount += installReferenceCatalog(packageRoot, installRoot, '.claude', force);
     } else if (target === 'codex') {
       catalogCount += installReferenceCatalog(packageRoot, installRoot, '.codex', force);
+    } else if (target === 'cursor' && !targets.includes('claude-code')) {
+      // Same single-path rule as the data JSONs above — Cursor reads
+      // .claude/data/references, never a second catalog location.
+      catalogCount += installReferenceCatalog(packageRoot, installRoot, '.claude', force);
     }
   }
 

@@ -139,6 +139,7 @@ Open Claude Code (or Codex / OpenCode) in your project. Just talk:
 | `.claude/skills/omd-*/SKILL.md` | install-skills | Claude Code skill bundle (15 skills — core flow + capture/assets + v0.2 agent layer) |
 | `.agents/skills/omd-*/SKILL.md` | install-skills | Codex skill bundle (official `.agents/skills` discovery path) |
 | `.opencode/skills/omd-*/SKILL.md` | install-skills | OpenCode skill bundle |
+| `.cursor/rules/omd-design.mdc` | install-skills | Cursor channel (`--agent cursor`) — DESIGN.md rules shim + shared `.claude/data` catalog (no skills/hooks) |
 | `.claude/agents/omd-*.md` | install-skills | 16 canonical sub-agents (master + 15 specialists) |
 | `.claude/data/*` | install-skills | reference fingerprints, vocabulary, opt-out corpus |
 | `.claude/hooks/*.cjs` | install-skills | UserPromptSubmit / SessionStart / PostToolUse hooks |

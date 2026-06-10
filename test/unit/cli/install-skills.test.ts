@@ -139,6 +139,44 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.claude/data/references'))).toBe(false);
   });
 
+  it('cursor channel installs the .cursor/rules shim + shared catalog (issue #20)', async () => {
+    const code = await runInstallSkills({ dir: root, agents: ['cursor'] });
+    expect(code).toBe(0);
+
+    // The shim mirrors omd:sync's cursor template — frontmatter first, then
+    // the hash-marked body block.
+    const rule = join(root, '.cursor/rules/omd-design.mdc');
+    expect(existsSync(rule), 'cursor rule shim').toBe(true);
+    const content = readFileSync(rule, 'utf8');
+    expect(content.startsWith('---\n')).toBe(true);
+    expect(content).toMatch(/<!-- omd:start v=1 hash=[0-9a-f]{12} -->/);
+    expect(content).toContain('`@DESIGN.md`');
+    expect(content).toContain('<!-- omd:end -->');
+
+    // Catalog + data JSONs land in the single shared path (.claude/data) —
+    // cursor agents read it; no second catalog location is invented.
+    expect(existsSync(join(root, '.claude/data/references/toss/DESIGN.md'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/reference-fingerprints.json'))).toBe(true);
+
+    // No Claude-specific surfaces for a cursor-only install.
+    expect(existsSync(join(root, '.claude/skills'))).toBe(false);
+    expect(existsSync(join(root, '.claude/hooks'))).toBe(false);
+    expect(existsSync(join(root, '.claude/settings.json'))).toBe(false);
+    expect(existsSync(join(root, '.claude/agents'))).toBe(false);
+  });
+
+  it('cursor shim respects drift on user-written rule files without the marker', async () => {
+    const rule = join(root, '.cursor/rules/omd-design.mdc');
+    mkdirSync(join(root, '.cursor/rules'), { recursive: true });
+    writeFileSync(rule, '# my own cursor rule\n', 'utf8');
+
+    await runInstallSkills({ dir: root, agents: ['cursor'] });
+    expect(readFileSync(rule, 'utf8')).toBe('# my own cursor rule\n');
+
+    await runInstallSkills({ dir: root, agents: ['cursor'], force: true });
+    expect(readFileSync(rule, 'utf8')).toContain('<!-- omd:start v=1 hash=');
+  });
+
   it('detects installed agents and installs only for those (when present)', async () => {
     mkdirSync(join(root, '.claude'));
     // Codex/OpenCode not installed → only Claude should get skills

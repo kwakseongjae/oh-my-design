@@ -92,6 +92,7 @@ omd remember "..."
 | `.claude/skills/omd-*/SKILL.md` | `omd install-skills` | Claude Code 스킬 9종 |
 | `.codex/skills/omd-*/SKILL.md` | `omd install-skills` | Codex 스킬 9종 |
 | `.opencode/agents/omd-*.md` | `omd install-skills` | OpenCode 에이전트 9종 |
+| `.cursor/rules/omd-design.mdc` + `.claude/data/*` | `omd install-skills --agent cursor` | Cursor 채널 — rules shim + 공용 카탈로그 (스킬/훅 미설치) |
 | `.omd/preferences.md` | `omd remember` | append-only 디자인 교정 로그 |
 | `.omd/sync.lock.json` | `omd sync` | drift 감지 상태 |
 
