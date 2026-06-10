@@ -18,7 +18,7 @@ omd_managed: true
 
 ## 입력
 
-- `target` — 분석 대상 (e.g., `web/src/app/page.tsx`, `<run_dir>/wireframes/landing.md`, 또는 화면 id)
+- `target` — 분석 대상 (e.g., `src/app/page.tsx` 같은 사용자 프로젝트의 페이지 파일, `<run_dir>/wireframes/landing.md`, 또는 화면 id)
 - `design_md_path` — DESIGN.md (없으면 voice 기준 약화 — 사용자에게 init 권유 후 일반 원칙만 사용)
 - `output_path` — `<run_dir>/audits/ux-writer/<section>.md` 또는 단일 `audit.md`
 - `sections` — (선택) 분석할 섹션 list. 미지정 시 페이지 전체 자동 분리.

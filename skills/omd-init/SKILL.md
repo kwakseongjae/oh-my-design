@@ -270,7 +270,7 @@ args: --force
 
 omd:sync skill이 `CLAUDE.md`, `AGENTS.md`, `.cursor/rules/omd-design.mdc` shim 3종을 생성/갱신하고 `.omd/sync.lock.json` 업데이트.
 
-**옵션 B**: omd:sync skill을 호출할 수 없는 환경이면 직접 Write로 shim 작성. 템플릿은 `skills/omd-sync/SKILL.md` §"shim body" 참조. 최소한:
+**옵션 B**: omd:sync skill을 호출할 수 없는 환경이면 직접 Write로 shim 작성. 템플릿은 `.claude/skills/omd-sync/SKILL.md` (설치 경로; dev 레포에서는 `skills/omd-sync/SKILL.md`) §"shim body" 참조. 최소한:
 - `CLAUDE.md`: managed block ("<!-- omd:managed:start --> ... <!-- omd:managed:end -->") 안에 DESIGN.md 참조 + 핵심 token 요약
 - `AGENTS.md`: 동일 패턴
 - `.cursor/rules/omd-design.mdc`: 전체 파일 omd 전용 — frontmatter + DESIGN.md 인용

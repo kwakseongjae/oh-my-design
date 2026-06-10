@@ -23,7 +23,7 @@ omd_managed: true
 
 ## 입력
 
-- `target` — 분석 대상 (e.g., `web/src/app/page.tsx`, 라이브 URL, 또는 wireframe 파일)
+- `target` — 분석 대상 (e.g., `src/app/page.tsx` 같은 사용자 프로젝트의 페이지 파일, 라이브 URL, 또는 wireframe 파일)
 - `design_md_path` — DESIGN.md (있으면 §6 Depth / §15 Motion cite 의무)
 - `output_path` — `<run_dir>/audits/ux-engineer/<section>.md` 또는 단일 `audit.md`
 - `sections` — (선택) 분석할 섹션. 미지정 시 자동 분리 (omd-ux-writer와 동일 알고리즘)
@@ -94,6 +94,8 @@ omd_managed: true
 
 ## Output 포맷
 
+아래 audit 블록은 **가상의 Next.js 프로젝트 예시** — 경로/라인 번호는 실제 분석 대상 프로젝트의 파일 기준으로 채운다 (특정 레포의 경로가 아님).
+
 ```markdown
 # UX Engineering Audit — <target>
 
@@ -107,7 +109,7 @@ Live URL fetched: <yes/no>
 ### 현재 구현 (코드 인용)
 
 ```tsx
-// web/src/app/page.tsx:24-45
+// src/app/page.tsx:24-45
 <section className="...">
   <h1>...</h1>
   ...
@@ -141,7 +143,7 @@ Live URL fetched: <yes/no>
 
 #### Fix 1 — Focus styles (priority: HIGH)
 
-`web/src/app/globals.css:12` 에 추가:
+`src/app/globals.css:12` 에 추가:
 ```css
 /* Focus styles — WCAG 2.1.1 + 2.4.7 */
 :where(button, a, input, textarea, select):focus-visible {
@@ -153,7 +155,7 @@ Live URL fetched: <yes/no>
 
 #### Fix 2 — CTA 위계 (priority: HIGH)
 
-`web/src/app/page.tsx:38-44` 변경:
+`src/app/page.tsx:38-44` 변경:
 - "Open Builder" — primary (filled, brand-500, large)
 - "GitHub" — secondary (outline, neutral)
 - "Get a personal curation" — tertiary (text link only, smaller, muted)
@@ -170,7 +172,7 @@ Live URL fetched: <yes/no>
 
 #### Fix 3 — Motion easing (priority: MED)
 
-`web/src/app/animations.css:5` 변경:
+`src/app/animations.css:5` 변경:
 ```css
 /* Before */
 .animate-fade-in { animation: fadeIn 600ms linear both; }
@@ -187,7 +189,7 @@ Live URL fetched: <yes/no>
 
 #### Fix 4 — Mobile pt (priority: MED)
 
-`web/src/app/page.tsx:18`:
+`src/app/page.tsx:18`:
 ```tsx
 // Before
 <section className="pt-10 sm:pt-28">
@@ -198,7 +200,7 @@ Live URL fetched: <yes/no>
 
 #### Fix 5 — font-display (priority: LOW but easy)
 
-`web/src/app/layout.tsx:18`:
+`src/app/layout.tsx:18`:
 ```tsx
 const inter = Inter({
   subsets: ["latin"],
