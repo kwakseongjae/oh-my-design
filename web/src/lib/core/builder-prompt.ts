@@ -49,9 +49,22 @@ function humanizePrefKey(key: string): string {
   return key.replace(/Style$/, '').replace(/([A-Z])/g, ' $1').toLowerCase().trim();
 }
 
+/** Per-brand first prompt base sentence — single source of truth (InstallCta imports this). */
+export function firstPromptFor(brandName: string): string {
+  return `Set up our design system — ${brandName}-style.`;
+}
+
+/**
+ * Strip the trailing "(builder config: <url>)" provenance for display.
+ * Lives next to the append in buildBuilderPrompt so the two formats can't drift.
+ */
+export function stripBuilderProvenance(prompt: string): string {
+  return prompt.replace(/\s*\(builder config:[^)]*\)\s*$/, '').trim();
+}
+
 export function buildBuilderPrompt(input: BuilderPromptInput): string {
   const { brandName, overrides, components, stylePreferences, defaults, url } = input;
-  const parts: string[] = [`Set up our design system — ${brandName}-style.`];
+  const parts: string[] = [firstPromptFor(brandName)];
 
   if (components.length > 0 && !sameComponents(components, DEFAULT_BUILDER_COMPONENTS)) {
     parts.push(`Components: ${components.join(', ')}.`);

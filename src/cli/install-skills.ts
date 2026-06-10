@@ -240,7 +240,9 @@ const MANAGED_MARKER_SUBSTR = 'omd:installed-skill';
  * defensive), fall back to prepending the marker.
  */
 function withManagedMarker(src: string): string {
-  const fm = /^(---\n[\s\S]*?\n---\n)([\s\S]*)$/.exec(src);
+  // \r?\n: a CRLF checkout (Windows core.autocrlf) must not miss the
+  // frontmatter and fall back to a line-1 marker — that reintroduces #17.
+  const fm = /^(---\r?\n[\s\S]*?\r?\n---\r?\n)([\s\S]*)$/.exec(src);
   if (!fm) {
     return MANAGED_HEADER + '\n\n' + src;
   }

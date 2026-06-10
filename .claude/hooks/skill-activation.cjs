@@ -94,5 +94,15 @@ process.stdin.on('end', () => {
     '   with brand context.',
     '',
   ];
-  process.stdout.write(JSON.stringify({ additionalContext: lines.join('\n') }));
+  // UserPromptSubmit contract: structured context must sit under
+  // hookSpecificOutput — a top-level { additionalContext } parses as JSON
+  // with no recognized fields and the gate message is silently dropped.
+  process.stdout.write(
+    JSON.stringify({
+      hookSpecificOutput: {
+        hookEventName: 'UserPromptSubmit',
+        additionalContext: lines.join('\n'),
+      },
+    }),
+  );
 });

@@ -20,15 +20,16 @@
 import { useState } from "react";
 import { Check, Copy, Sparkles, Terminal } from "lucide-react";
 import { event, trackRef } from "@/lib/gtag";
+import {
+  firstPromptFor,
+  stripBuilderProvenance,
+} from "@/lib/core/builder-prompt";
 
 export const INSTALL_CMD = "npx oh-my-design-cli install-skills";
 
 export type InstallCtaSource = "hero" | "ref_detail" | "collection" | "builder";
 
-/** Per-brand first prompt — what users paste into their agent after install. */
-export function firstPromptFor(brandName: string) {
-  return `Set up our design system — ${brandName}-style.`;
-}
+export { firstPromptFor };
 
 export function InstallCta({
   source,
@@ -84,9 +85,7 @@ export function InstallCta({
   const promptText = prompt ?? (brandName ? firstPromptFor(brandName) : null);
   // Copy carries the full prompt (incl. builder-config provenance URL);
   // the visible label drops the URL and is width-capped so the pill stays short.
-  const promptDisplay = promptText
-    ?.replace(/\s*\(builder config:[^)]*\)\s*$/, "")
-    .trim();
+  const promptDisplay = promptText ? stripBuilderProvenance(promptText) : null;
 
   const promptBtn = promptText ? (
     <button

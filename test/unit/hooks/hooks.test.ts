@@ -96,7 +96,9 @@ describe('hooks', () => {
         root,
       );
       const out = JSON.parse(stdout);
-      expect(out.additionalContext).toContain('OMD GATE');
+      expect(out.hookSpecificOutput.hookEventName).toBe('UserPromptSubmit');
+      expect(out.hookSpecificOutput.additionalContext).toContain('OMD GATE');
+      expect(out.additionalContext).toBeUndefined();
     });
 
     it('does NOT fire on cwd/transcript paths containing design/style', () => {
