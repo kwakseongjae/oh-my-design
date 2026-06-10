@@ -48,7 +48,8 @@ function parseOmdMeta(block) {
 
 /**
  * Parse the canonical preferences.md text into structured entries.
- * Returns [{ heading, scope, status, timestamp(ms|NaN), confidence, raw }].
+ * Returns [{ heading, scope, status, timestamp(ms|NaN), confidence, body, raw }].
+ * `body` is the free text after the omd-meta block (the preference itself).
  * Robust to a missing/garbled meta block (entry is skipped, never throws).
  */
 function parsePreferences(text) {
@@ -62,12 +63,20 @@ function parsePreferences(text) {
     const meta = parseOmdMeta(section);
     if (!meta) continue;
     const tsRaw = meta.timestamp || '';
+    // Body = everything after the heading line minus the omd-meta block.
+    const body = section
+      .split('\n')
+      .slice(1)
+      .join('\n')
+      .replace(/```omd-meta\s*\n[\s\S]*?\n```/, '')
+      .trim();
     entries.push({
       heading,
       scope: meta.scope || '',
       status: meta.status || 'pending',
       confidence: meta.confidence || '',
       timestamp: tsRaw ? new Date(tsRaw).getTime() : NaN,
+      body,
       raw: meta,
     });
   }

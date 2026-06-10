@@ -989,9 +989,11 @@ export async function runInstallSkills(
       'session-state-loader.cjs',
       'post-edit-watch.cjs',
       'session-end-foldin.cjs',
-      // Shared module required by the fold-in / state-loader hooks. Lives in a
-      // lib/ subdir; installHookFile preserves the relative path under .claude/hooks/.
+      // Shared modules required by the fold-in / state-loader / watch hooks.
+      // Live in a lib/ subdir; installHookFile preserves the relative path
+      // under .claude/hooks/.
       join('lib', 'preferences-parser.cjs'),
+      join('lib', 'preferences-writer.cjs'),
     ]) {
       results.push(installHookFile(packageRoot, installRoot, hookFile, force));
     }

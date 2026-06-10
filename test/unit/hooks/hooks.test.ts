@@ -43,6 +43,41 @@ describe('hooks', () => {
     rmSync(root, { recursive: true, force: true });
   });
 
+  // Canonical omd:remember format: ## heading + ```omd-meta fenced block.
+  function prefEntry(opts: {
+    ts: string;
+    scope: string;
+    status?: string;
+    slug?: string;
+    confidence?: string;
+    body?: string;
+  }) {
+    return [
+      `## ${opts.ts} — ${opts.slug ?? 'entry'}`,
+      '',
+      '```omd-meta',
+      `id: pref_${Math.random().toString(36).slice(2)}`,
+      `timestamp: ${opts.ts}`,
+      `scope: ${opts.scope}`,
+      'signal: user-statement',
+      `confidence: ${opts.confidence ?? 'explicit'}`,
+      `status: ${opts.status ?? 'pending'}`,
+      'source_agent: claude-code',
+      '```',
+      '',
+      opts.body ?? 'Some preference body.',
+      '',
+    ].join('\n');
+  }
+
+  function writePrefs(entries: string[]) {
+    mkdirSync(join(root, '.omd'), { recursive: true });
+    const text =
+      '---\nschema: omd.preferences/v1\ndesign_md_hash_at_creation:\n---\n\n# Preference Log\n\n' +
+      entries.join('\n');
+    writeFileSync(join(root, '.omd', 'preferences.md'), text);
+  }
+
   describe('post-edit-watch.cjs', () => {
     it('reads snake_case tool_input and emits hookSpecificOutput.additionalContext', () => {
       // No DESIGN.md → every introduced hex is "off-system".
@@ -147,40 +182,6 @@ describe('hooks', () => {
   });
 
   describe('preferences parser (foldin / state-loader)', () => {
-    // Canonical omd:remember format: ## heading + ```omd-meta fenced block.
-    function prefEntry(opts: {
-      ts: string;
-      scope: string;
-      status?: string;
-      slug?: string;
-      confidence?: string;
-    }) {
-      return [
-        `## ${opts.ts} — ${opts.slug ?? 'entry'}`,
-        '',
-        '```omd-meta',
-        `id: pref_${Math.random().toString(36).slice(2)}`,
-        `timestamp: ${opts.ts}`,
-        `scope: ${opts.scope}`,
-        'signal: user-statement',
-        `confidence: ${opts.confidence ?? 'explicit'}`,
-        `status: ${opts.status ?? 'pending'}`,
-        'source_agent: claude-code',
-        '```',
-        '',
-        'Some preference body.',
-        '',
-      ].join('\n');
-    }
-
-    function writePrefs(entries: string[]) {
-      mkdirSync(join(root, '.omd'), { recursive: true });
-      const text =
-        '---\nschema: omd.preferences/v1\ndesign_md_hash_at_creation:\n---\n\n# Preference Log\n\n' +
-        entries.join('\n');
-      writeFileSync(join(root, '.omd', 'preferences.md'), text);
-    }
-
     it('state-loader counts pending entries from the canonical format', () => {
       const now = new Date().toISOString();
       writePrefs([
@@ -218,6 +219,117 @@ describe('hooks', () => {
       ]);
       runHook('session-end-foldin.cjs', {}, root);
       expect(existsSync(join(root, '.omd', 'timeline.md'))).toBe(false);
+    });
+  });
+
+  describe('post-edit-watch ambient persistence (issue #24)', () => {
+    const prefsPath = () => join(root, '.omd', 'preferences.md');
+
+    function editPayload(filePath: string, newString: string) {
+      return {
+        tool_name: 'Edit',
+        tool_input: { file_path: filePath, new_string: newString },
+      };
+    }
+
+    it('persists detected hex drift in the canonical omd:remember format', () => {
+      writeFileSync(join(root, 'DESIGN.md'), '## 2. Color Palette\n- #000000\n- #ffffff\n');
+      const { stdout } = runHook(
+        'post-edit-watch.cjs',
+        editPayload('src/components/Button.tsx', 'const c = "#ff0000";'),
+        root,
+      );
+      // alert kept (alert + record)
+      expect(JSON.parse(stdout).hookSpecificOutput.additionalContext).toContain('#ff0000');
+      const prefs = readFileSync(prefsPath(), 'utf8');
+      expect(prefs).toContain('schema: omd.preferences/v1');
+      expect(prefs).toContain('```omd-meta');
+      expect(prefs).toMatch(/id: pref_[a-z0-9]+_[0-9a-f]{8}/);
+      expect(prefs).toContain('scope: color');
+      expect(prefs).toContain('signal: ambient');
+      expect(prefs).toContain('confidence: inferred');
+      expect(prefs).toContain('status: pending');
+      expect(prefs).toContain('source_context: "src/components/Button.tsx"');
+      expect(prefs).toContain('#ff0000');
+    });
+
+    it('dedups same scope + same body within 24h (one entry across two edits)', () => {
+      writeFileSync(join(root, 'DESIGN.md'), '- #000000\n');
+      const payload = editPayload('src/App.tsx', 'bg = "#ff0000"');
+      runHook('post-edit-watch.cjs', payload, root);
+      runHook('post-edit-watch.cjs', payload, root);
+      const prefs = readFileSync(prefsPath(), 'utf8');
+      expect(prefs.match(/```omd-meta/g)).toHaveLength(1);
+    });
+
+    it('never records while editing DESIGN.md / .claude/ / .omd/ files', () => {
+      writeFileSync(join(root, 'DESIGN.md'), '- #000000\n');
+      runHook('post-edit-watch.cjs', editPayload('DESIGN.md', '#ff0000'), root);
+      runHook(
+        'post-edit-watch.cjs',
+        editPayload('.claude/hooks/foo.css', 'a { color: #ff0000; }'),
+        root,
+      );
+      runHook(
+        'post-edit-watch.cjs',
+        editPayload('.omd/scratch.css', 'a { color: #ff0000; }'),
+        root,
+      );
+      expect(existsSync(prefsPath())).toBe(false);
+    });
+
+    it('detects radius drift against the DESIGN.md radius scale', () => {
+      writeFileSync(
+        join(root, 'DESIGN.md'),
+        '## 4. Component Stylings\n- Radius: 4px\n- Radius: 2px\n- #000000\n',
+      );
+      const { stdout } = runHook(
+        'post-edit-watch.cjs',
+        editPayload(
+          'src/Card.tsx',
+          '<div className="rounded-2xl rounded-sm" />', // sm(2px) on-scale, 2xl(16px) off
+        ),
+        root,
+      );
+      const ctx = JSON.parse(stdout).hookSpecificOutput.additionalContext;
+      expect(ctx).toContain('rounded-2xl(16px)');
+      expect(ctx).not.toContain('rounded-sm');
+      const prefs = readFileSync(prefsPath(), 'utf8');
+      expect(prefs).toContain('scope: visualTheme');
+      expect(prefs).toContain('rounded-2xl(16px)');
+    });
+
+    it('detects motion drift against the DESIGN.md motion section', () => {
+      writeFileSync(
+        join(root, 'DESIGN.md'),
+        '## 15. Motion & Easing\n- motion-fast: 150ms\n- motion-standard: 250ms\n',
+      );
+      const { stdout } = runHook(
+        'post-edit-watch.cjs',
+        editPayload(
+          'src/Sheet.tsx',
+          '<div className="duration-700 duration-150" />', // 150 on-scale, 700 off
+        ),
+        root,
+      );
+      const ctx = JSON.parse(stdout).hookSpecificOutput.additionalContext;
+      expect(ctx).toContain('duration-700(700ms)');
+      expect(ctx).not.toContain('duration-150(');
+      const prefs = readFileSync(prefsPath(), 'utf8');
+      expect(prefs).toContain('scope: motion');
+      expect(prefs).toContain('duration-700(700ms)');
+    });
+
+    it('skips an axis silently when DESIGN.md has no parsable scale for it', () => {
+      // DESIGN.md has colors but no radius scale and no motion section.
+      writeFileSync(join(root, 'DESIGN.md'), '- #000000\n');
+      const { stdout } = runHook(
+        'post-edit-watch.cjs',
+        editPayload('src/Card.tsx', '<div className="rounded-2xl duration-700" />'),
+        root,
+      );
+      expect(stdout).toBe('');
+      expect(existsSync(prefsPath())).toBe(false);
     });
   });
 });
