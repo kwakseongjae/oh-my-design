@@ -83,6 +83,16 @@ spacing (1 pending):
 Review .omd/preferences.md for details.
 ```
 
+## Fold-in 제안에서 호출된 경우 (`.omd/foldin-proposal.json`)
+
+SessionStart 컨텍스트의 OMD FOLD-IN PROPOSAL → AskUserQuestion 승인 경로로 호출되었으면 Phase 2 확인은 이미 끝난 것 — 다시 묻지 말 것.
+
+- **승인된 scope만** Phase 3-4로 처리. 미승인 scope의 pending 엔트리는 건드리지 않는다
+- 처리 후 `.omd/foldin-proposal.json`의 status를 Edit 툴로 갱신:
+  - 전부 반영 → `"status": "applied"` + `"applied_at": "<ISO timestamp>"` 필드 추가
+  - 일부만 반영 → `"status": "partial"` + `scopes` 배열을 **남은(미승인) scope만**으로 갱신
+  - 전부 거절("나중에") → `"status": "snoozed"` + `"snoozed_at": "<ISO timestamp>"` 필드 추가
+
 ## 옵션 패턴
 
 사용자가 특정 작업만 요청하는 경우:

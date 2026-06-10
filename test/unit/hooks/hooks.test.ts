@@ -222,6 +222,125 @@ describe('hooks', () => {
     });
   });
 
+  describe('auto-fold gate — foldin-proposal.json (issue #23)', () => {
+    const proposalPath = () => join(root, '.omd', 'foldin-proposal.json');
+    const iso = (offsetDays: number) =>
+      new Date(Date.now() - offsetDays * 86400000).toISOString();
+
+    function writeRecurringPrefs(body = 'CTAs are pill-shaped') {
+      writePrefs([
+        prefEntry({ ts: iso(2), scope: 'components.button', slug: 'a', body }),
+        prefEntry({ ts: iso(1), scope: 'components.button', slug: 'b', body }),
+        prefEntry({ ts: iso(0), scope: 'components.button', slug: 'c', body }),
+      ]);
+    }
+
+    it('writes the proposal file when a scope crosses the threshold', () => {
+      writeRecurringPrefs();
+      runHook('session-end-foldin.cjs', {}, root);
+      expect(existsSync(proposalPath())).toBe(true);
+      const proposal = JSON.parse(readFileSync(proposalPath(), 'utf8'));
+      expect(proposal.status).toBe('proposed');
+      expect(proposal.created_at).toBeTruthy();
+      expect(proposal.scopes).toHaveLength(1);
+      const s = proposal.scopes[0];
+      expect(s.scope).toBe('components.button');
+      expect(s.count).toBe(3);
+      expect(s.score).toBeGreaterThanOrEqual(60);
+      expect(s.entry_ids).toHaveLength(3);
+      // summary = 1 line from the latest entry's body
+      expect(s.summary).toBe('CTAs are pill-shaped');
+      // internal bookkeeping must not leak into the artifact
+      expect(s.latestTs).toBeUndefined();
+    });
+
+    it('does NOT write a proposal below the threshold', () => {
+      writePrefs([
+        prefEntry({ ts: iso(0), scope: 'color', slug: 'a' }),
+      ]);
+      runHook('session-end-foldin.cjs', {}, root);
+      expect(existsSync(proposalPath())).toBe(false);
+    });
+
+    it('state-loader injects the AskUserQuestion instruction for a proposed file', () => {
+      mkdirSync(join(root, '.omd'), { recursive: true });
+      writeFileSync(
+        proposalPath(),
+        JSON.stringify({
+          created_at: new Date().toISOString(),
+          status: 'proposed',
+          scopes: [
+            {
+              scope: 'components.button',
+              count: 3,
+              score: 92,
+              entry_ids: ['pref_a', 'pref_b', 'pref_c'],
+              summary: 'CTAs are pill-shaped',
+            },
+          ],
+        }),
+      );
+      const { stdout } = runHook('session-state-loader.cjs', {}, root);
+      const out = JSON.parse(stdout);
+      expect(out.hookSpecificOutput.hookEventName).toBe('SessionStart');
+      const ctx = out.hookSpecificOutput.additionalContext;
+      expect(ctx).toContain('OMD FOLD-IN PROPOSAL');
+      expect(ctx).toContain('AskUserQuestion');
+      expect(ctx).toContain('components.button: CTAs are pill-shaped (3×)');
+      expect(ctx).toContain('전부 반영');
+      expect(ctx).toContain('나중에');
+      expect(ctx).toContain('omd:learn');
+    });
+
+    it('does NOT re-inject a snoozed proposal', () => {
+      mkdirSync(join(root, '.omd'), { recursive: true });
+      writeFileSync(
+        proposalPath(),
+        JSON.stringify({
+          created_at: new Date().toISOString(),
+          status: 'snoozed',
+          snoozed_at: new Date().toISOString(),
+          scopes: [{ scope: 'color', count: 3, score: 80, entry_ids: [], summary: 'x' }],
+        }),
+      );
+      const { stdout } = runHook('session-state-loader.cjs', {}, root);
+      expect(stdout).not.toContain('OMD FOLD-IN PROPOSAL');
+    });
+
+    it('leaves a snoozed proposal alone when no scope gained new entries', () => {
+      writeRecurringPrefs();
+      const snoozed = {
+        created_at: iso(3),
+        status: 'snoozed',
+        snoozed_at: new Date(Date.now() + 60000).toISOString(), // after all entries
+        scopes: [],
+      };
+      mkdirSync(join(root, '.omd'), { recursive: true });
+      writeFileSync(proposalPath(), JSON.stringify(snoozed));
+      runHook('session-end-foldin.cjs', {}, root);
+      const after = JSON.parse(readFileSync(proposalPath(), 'utf8'));
+      expect(after.status).toBe('snoozed');
+    });
+
+    it('re-proposes a snoozed proposal after new recurrence', () => {
+      writeRecurringPrefs(); // latest entry is "now" — newer than snoozed_at below
+      mkdirSync(join(root, '.omd'), { recursive: true });
+      writeFileSync(
+        proposalPath(),
+        JSON.stringify({
+          created_at: iso(3),
+          status: 'snoozed',
+          snoozed_at: iso(1.5), // entries at iso(1) and iso(0) are newer
+          scopes: [],
+        }),
+      );
+      runHook('session-end-foldin.cjs', {}, root);
+      const after = JSON.parse(readFileSync(proposalPath(), 'utf8'));
+      expect(after.status).toBe('proposed');
+      expect(after.scopes[0].scope).toBe('components.button');
+    });
+  });
+
   describe('post-edit-watch ambient persistence (issue #24)', () => {
     const prefsPath = () => join(root, '.omd', 'preferences.md');
 

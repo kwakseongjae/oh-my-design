@@ -13,6 +13,7 @@ const projectDir = process.env.CLAUDE_PROJECT_DIR || process.cwd();
 const stateMd = path.join(projectDir, '.omd', 'state.md');
 const timelineMd = path.join(projectDir, '.omd', 'timeline.md');
 const preferencesMd = path.join(projectDir, '.omd', 'preferences.md');
+const proposalJson = path.join(projectDir, '.omd', 'foldin-proposal.json');
 
 function safeRead(p) {
   try {
@@ -42,6 +43,43 @@ if (fs.existsSync(stateMd)) {
     lines.push(`Pending preferences: ${pendingCount}${pendingCount >= 7 ? ' — consider /omd-learn review' : ''}`);
     lines.push('');
   }
+}
+
+// Auto-fold gate (issue #23): a "proposed" fold-in proposal instructs the
+// agent to ask the user via AskUserQuestion — hooks can't render UI, the
+// agent executes the question at session start. Snoozed/applied → silent.
+let proposal = null;
+try {
+  proposal = JSON.parse(fs.readFileSync(proposalJson, 'utf8'));
+} catch {
+  // missing / malformed → no proposal
+}
+if (
+  proposal &&
+  proposal.status === 'proposed' &&
+  Array.isArray(proposal.scopes) &&
+  proposal.scopes.length > 0
+) {
+  const items = proposal.scopes
+    .map((s) => `${s.scope}: ${s.summary || '(no summary)'} (${s.count}×)`)
+    .join('; ');
+  const perScope =
+    proposal.scopes.length <= 3
+      ? ` / per-scope picks (${proposal.scopes.map((s) => s.scope).join(', ')})`
+      : '';
+  lines.push('## OMD FOLD-IN PROPOSAL');
+  lines.push('');
+  lines.push(`${proposal.scopes.length} scope(s) recurred: ${items}.`);
+  lines.push(
+    `Ask the user via AskUserQuestion (one question, options: '전부 반영'${perScope} / '나중에') whether to fold these into DESIGN.md.`,
+  );
+  lines.push(
+    "On approve: run the omd:learn skill for the approved scopes, then set .omd/foldin-proposal.json status to 'applied'.",
+  );
+  lines.push(
+    "On decline: set status to 'snoozed' and add snoozed_at (ISO timestamp).",
+  );
+  lines.push('');
 }
 
 if (fs.existsSync(timelineMd)) {

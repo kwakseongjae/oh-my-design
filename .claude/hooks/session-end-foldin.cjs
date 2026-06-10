@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Stop hook — at session end, run fold-in algorithm on .omd/preferences.md.
-// If proposals exceed threshold, append a note to .omd/timeline.md so the
-// next SessionStart hook surfaces it as "fold-in proposals ready: N".
+// If proposals exceed threshold, append a note to .omd/timeline.md AND write
+// .omd/foldin-proposal.json so the next SessionStart hook instructs the agent
+// to ask via AskUserQuestion (hooks can't render UI — the agent layer does).
 
 'use strict';
 
@@ -13,6 +14,7 @@ const projectDir = process.env.CLAUDE_PROJECT_DIR || process.cwd();
 const preferencesMd = path.join(projectDir, '.omd', 'preferences.md');
 const timelineMd = path.join(projectDir, '.omd', 'timeline.md');
 const configJson = path.join(projectDir, '.omd', 'config.json');
+const proposalJson = path.join(projectDir, '.omd', 'foldin-proposal.json');
 
 if (!fs.existsSync(preferencesMd)) process.exit(0);
 
@@ -49,7 +51,7 @@ for (const entry of parsePreferences(prefText)) {
   // from confidence (explicit statements weigh more than inferred).
   const importance = entry.confidence === 'inferred' ? 2 : 4;
   const list = byScope.get(entry.scope) || [];
-  list.push({ ts, importance });
+  list.push({ ts, importance, id: entry.raw.id || '', body: entry.body || '' });
   byScope.set(entry.scope, list);
 }
 
@@ -64,7 +66,18 @@ for (const [scope, entries] of byScope.entries()) {
   const recency = Math.exp(-daysSince / 7);
   const score = entries.length * importanceAvg * recency * 10;
   if (score >= config.fold_in_score_threshold) {
-    proposals.push({ scope, count: entries.length, score: Math.round(score) });
+    // One-line summary from the latest entry's body (first non-empty line).
+    const latest = entries.reduce((m, e) => (e.ts > m.ts ? e : m), entries[0]);
+    const summary =
+      (latest.body.split('\n').find((l) => l.trim()) || '').trim();
+    proposals.push({
+      scope,
+      count: entries.length,
+      score: Math.round(score),
+      entry_ids: entries.map((e) => e.id).filter(Boolean),
+      summary,
+      latestTs: lastTs,
+    });
   }
 }
 
@@ -76,7 +89,11 @@ const block =
   `## ${ts} — fold_in_proposal\n\n` +
   `${proposals.length} fold-in proposals ready (top: ${proposals[0].scope}, score ${proposals[0].score}).\n\n` +
   '```json\n' +
-  JSON.stringify(proposals.slice(0, 5), null, 2) +
+  JSON.stringify(
+    proposals.slice(0, 5).map(({ scope, count, score }) => ({ scope, count, score })),
+    null,
+    2,
+  ) +
   '\n```\n\n';
 
 if (!fs.existsSync(path.dirname(timelineMd))) {
@@ -86,6 +103,45 @@ if (!fs.existsSync(timelineMd)) {
   fs.writeFileSync(timelineMd, '# OMD TIMELINE — per-session journal\n\n' + block);
 } else {
   fs.appendFileSync(timelineMd, block);
+}
+
+// Write the structured proposal for the next SessionStart (auto-fold gate,
+// issue #23). Overwrite any prior proposal UNLESS it is snoozed and no scope
+// gained a new entry since snoozed_at — don't re-ask on every session.
+let writeProposal = true;
+try {
+  const prior = JSON.parse(fs.readFileSync(proposalJson, 'utf8'));
+  if (prior && prior.status === 'snoozed' && prior.snoozed_at) {
+    const snoozedAt = new Date(prior.snoozed_at).getTime();
+    if (
+      !Number.isNaN(snoozedAt) &&
+      proposals.every((p) => p.latestTs <= snoozedAt)
+    ) {
+      writeProposal = false; // still snoozed, nothing new — leave it alone
+    }
+  }
+} catch {
+  // no prior proposal / malformed → overwrite
+}
+if (writeProposal) {
+  fs.writeFileSync(
+    proposalJson,
+    JSON.stringify(
+      {
+        created_at: new Date().toISOString(),
+        status: 'proposed',
+        scopes: proposals.map(({ scope, count, score, entry_ids, summary }) => ({
+          scope,
+          count,
+          score,
+          entry_ids,
+          summary,
+        })),
+      },
+      null,
+      2,
+    ) + '\n',
+  );
 }
 
 // Optional: print one-line confirmation to stdout
