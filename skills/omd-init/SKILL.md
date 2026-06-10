@@ -122,18 +122,14 @@ Phase 4.2~6은 건너뛴다.
 
 ### 4.1 경로 결정
 
-선택된 id를 `<id>`로 하고, 다음 순서로 Read:
+선택된 id를 `<id>`로 하고, 다음 순서로 Read (먼저 존재하는 것 사용):
 
-1. `.claude/data/references/<id>/DESIGN.md`
-2. `node_modules/oh-my-design-cli/web/references/<id>/DESIGN.md`
-3. `web/references/<id>/DESIGN.md` (개발 환경)
+<!-- omd:catalog-resolution-order — omd-harness/omd-reference-capture SKILL.md + agents/omd-master.md 와 동일 순서 강제. drift guard: test/unit/core/catalog-resolution-order.test.ts -->
 
-로컬 경로가 전부 없으면 (npx 설치가 기본 경로라 흔한 상황):
-
-4. `https://oh-my-design.kr/design-systems/<id>.md` 를 fetch
-   (WebFetch 또는 `curl -fsSL`). 200이면 응답 본문이 곧 reference DESIGN.md다.
-   가져온 내용을 `.claude/data/references/<id>/DESIGN.md`로 저장해
-   다음 실행부터는 로컬 캐시(경로 1)로 잡히게 한다.
+1. `.claude/data/references/<id>/DESIGN.md` (installer가 복사 — npx 설치 기본 경로)
+2. `node_modules/oh-my-design-cli/web/references/<id>/DESIGN.md` (로컬 npm 설치 직접 경로)
+3. `web/references/<id>/DESIGN.md` (개발 레포)
+4. `https://oh-my-design.kr/design-systems/<id>.md` 를 fetch (WebFetch 또는 `curl -fsSL`) — 1~3 로컬 경로가 전부 없을 때 (npx 설치가 기본 경로라 흔한 상황). 200이면 응답 본문이 곧 reference DESIGN.md다. 가져온 내용을 `.claude/data/references/<id>/DESIGN.md`로 저장해 다음 실행부터는 로컬 캐시(경로 1)로 잡히게 한다.
 
 4까지 전부 실패하면 **절대 DESIGN.md를 임의로 지어내지 말 것.** 사용자에게
 "레퍼런스 `<id>` 원문을 찾지 못했어요 (오프라인이거나 카탈로그 미배포).

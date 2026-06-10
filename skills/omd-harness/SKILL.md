@@ -571,7 +571,14 @@ master에게 전달되는 prompt 첫 단락은 **반드시** 다음을 포함:
 
    ### 선택 절차
 
-   1. brand의 `web/references/<id>/DESIGN.md` §1 (Visual Theme) + fingerprint `category`를 읽고 위 표에서 1순위 archetype 선택
+   1. brand reference DESIGN.md의 §1 (Visual Theme) + fingerprint `category`를 읽고 위 표에서 1순위 archetype 선택. reference DESIGN.md는 다음 우선순위로 resolve (omd:init Phase 4.1과 동일한 카탈로그 resolution order):
+
+      <!-- omd:catalog-resolution-order — omd-init/omd-reference-capture SKILL.md + agents/omd-master.md 와 동일 순서 강제. drift guard: test/unit/core/catalog-resolution-order.test.ts -->
+
+      1. `.claude/data/references/<id>/DESIGN.md` (installer가 복사 — npx 설치 기본 경로)
+      2. `node_modules/oh-my-design-cli/web/references/<id>/DESIGN.md` (로컬 npm 설치 직접 경로)
+      3. `web/references/<id>/DESIGN.md` (개발 레포)
+      4. `https://oh-my-design.kr/design-systems/<id>.md` 를 fetch (WebFetch 또는 `curl -fsSL`) — 200이면 본문이 곧 reference DESIGN.md. 가져온 내용을 `.claude/data/references/<id>/DESIGN.md`로 캐시해 다음부터는 로컬 캐시(경로 1)로 잡히게 한다.
    2. 사용자가 같은 brand로 **이미 한 번 실험**했으면 (`.omd/runs/INDEX.md`에 기록) → 2순위 사용해서 variation 제공
    3. 사용자가 명시 ("center 정렬로", "carousel로") → 그대로 따름
    4. 선택된 archetype을 `experiment-meta.json`의 `hero_archetype` 필드에 명시 (gallery 표시용)
