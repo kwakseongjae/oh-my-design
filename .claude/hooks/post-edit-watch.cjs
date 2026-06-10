@@ -28,15 +28,15 @@ process.stdin.on('end', () => {
   if (!['Edit', 'Write', 'MultiEdit'].includes(toolName)) {
     process.exit(0);
   }
-  const filePath = payload.toolInput?.file_path || payload.toolInput?.filePath || '';
+  // Claude Code sends snake_case `tool_input`; keep camelCase `toolInput` as
+  // a fallback for other channels / older payloads.
+  const toolInput = payload.tool_input || payload.toolInput || {};
+  const filePath = toolInput.file_path || toolInput.filePath || '';
   if (!/\.(tsx|jsx|ts|js|css|scss)$/i.test(filePath)) {
     process.exit(0);
   }
 
-  const newText =
-    payload.toolInput?.content ||
-    payload.toolInput?.new_string ||
-    '';
+  const newText = toolInput.content || toolInput.new_string || '';
   if (!newText) process.exit(0);
 
   // Normalize a hex to canonical 6-char lowercase form (#abc → #aabbcc)
@@ -93,7 +93,15 @@ process.stdin.on('end', () => {
     '',
   ];
 
-  // Hook contract: write to additionalContext via JSON stdout
-  process.stdout.write(JSON.stringify({ additionalContext: lines.join('\n') }));
+  // PostToolUse hook contract: additionalContext must be nested under
+  // hookSpecificOutput — a top-level { additionalContext } is dropped.
+  process.stdout.write(
+    JSON.stringify({
+      hookSpecificOutput: {
+        hookEventName: 'PostToolUse',
+        additionalContext: lines.join('\n'),
+      },
+    }),
+  );
 });
 

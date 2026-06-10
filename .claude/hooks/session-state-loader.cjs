@@ -7,6 +7,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { countPending } = require('./lib/preferences-parser.cjs');
 
 const projectDir = process.env.CLAUDE_PROJECT_DIR || process.cwd();
 const stateMd = path.join(projectDir, '.omd', 'state.md');
@@ -32,9 +33,9 @@ if (fs.existsSync(stateMd)) {
     lines.push('');
   }
 } else if (fs.existsSync(preferencesMd)) {
-  // Best-effort fallback — count pending entries
+  // Best-effort fallback — count pending entries (canonical omd:remember format).
   const text = safeRead(preferencesMd) || '';
-  const pendingCount = (text.match(/^- status:\s*pending\b/gm) || []).length;
+  const pendingCount = countPending(text);
   if (pendingCount > 0) {
     lines.push('## OMD ENVIRONMENT STATE');
     lines.push('');

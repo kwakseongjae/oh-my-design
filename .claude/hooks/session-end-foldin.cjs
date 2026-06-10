@@ -7,6 +7,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { parsePreferences } = require('./lib/preferences-parser.cjs');
 
 const projectDir = process.env.CLAUDE_PROJECT_DIR || process.cwd();
 const preferencesMd = path.join(projectDir, '.omd', 'preferences.md');
@@ -34,26 +35,22 @@ try {
   process.exit(0);
 }
 
-// Parse pending entries (very rough)
-const blocks = prefText.split(/^### /m).slice(1);
+// Parse the CANONICAL omd:remember format (## heading + ```omd-meta block).
 const now = Date.now();
 const windowMs = config.recurrence_window_days * 24 * 3600 * 1000;
 const byScope = new Map();
 
-for (const block of blocks) {
-  const tsMatch = /^- ts:\s*(.+)$/m.exec(block);
-  const scopeMatch = /^- scope:\s*(.+)$/m.exec(block);
-  const statusMatch = /^- status:\s*(\w+)$/m.exec(block);
-  const importanceMatch = /^- importance:\s*([1-5])$/m.exec(block);
-  if ((statusMatch?.[1] || 'pending') !== 'pending') continue;
-  if (!tsMatch || !scopeMatch) continue;
-  const ts = new Date(tsMatch[1]).getTime();
+for (const entry of parsePreferences(prefText)) {
+  if (entry.status !== 'pending') continue;
+  if (!entry.scope) continue;
+  const ts = entry.timestamp;
   if (Number.isNaN(ts) || now - ts > windowMs) continue;
-  const scope = scopeMatch[1];
-  const importance = parseInt(importanceMatch?.[1] || '3', 10);
-  const list = byScope.get(scope) || [];
+  // The canonical format carries no numeric importance; derive a 1-5 weight
+  // from confidence (explicit statements weigh more than inferred).
+  const importance = entry.confidence === 'inferred' ? 2 : 4;
+  const list = byScope.get(entry.scope) || [];
   list.push({ ts, importance });
-  byScope.set(scope, list);
+  byScope.set(entry.scope, list);
 }
 
 const proposals = [];

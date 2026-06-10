@@ -33,6 +33,7 @@
     "data/reference-tags.md",
     "web/references/*/DESIGN.md",
     ".claude/hooks/*.cjs",
+    ".claude/hooks/lib/*.cjs",
     ".claude/settings.json",
     "AGENTS.md",
     "scripts/postinstall.cjs",
