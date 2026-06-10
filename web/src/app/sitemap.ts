@@ -3,6 +3,7 @@ import { existsSync, readdirSync } from "fs";
 import { join } from "path";
 import { DESIGN_TYPES } from "@/lib/survey/types";
 import { getChangelog } from "@/lib/changelog";
+import { COLLECTIONS } from "@/lib/collections";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
 
 const siteUrl = "https://oh-my-design.kr";
@@ -105,6 +106,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Curated collections (#5). Raw .md twins (/design-systems/<id>.md) are
+  // intentionally NOT listed — the HTML detail pages stay canonical.
+  const collectionRoutes: MetadataRoute.Sitemap = COLLECTIONS.map((c) => ({
+    url: `${siteUrl}/collections/${c.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
   const changelogRoutes: MetadataRoute.Sitemap = getChangelog().map((e) => ({
     url: `${siteUrl}/changelog/${e.version}`,
     lastModified: e.date ? new Date(e.date) : now,
@@ -138,6 +148,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticRoutes,
+    ...collectionRoutes,
     ...referenceRoutes,
     ...resultRoutes,
     ...changelogRoutes,
