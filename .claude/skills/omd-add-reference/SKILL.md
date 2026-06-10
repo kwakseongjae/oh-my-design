@@ -73,8 +73,16 @@ Phase 2 라이브 inspect를 이미 했으므로 `source: live-extract`(또는 T
   - §4 프로즈(Component Stylings)는 **사람이 읽는 용도로 유지**하되, 렌더 소스는 구조화 토큰이다.
 - 결정론 보조: `GLOBAL_ROOT=$(npm root -g) node web/scripts/extract-tokens.mjs <id> --json` 으로 라이브 후보·ΔE drift 확보 → LLM이 canonical 역할/값 확정(legacy-vs-live 판별, Google/임베드 오탐 거부).
 - **정합성 필수**: `tokens.colors`의 모든 hex는 **산문(§2)·primary_color 어딘가에 존재**해야 한다(미존재 → 산문에 명시하거나 토큰 수정). catalog-integrity의 token↔prose 게이트가 강제한다. 컴포넌트 bg/fg hex도 이미 grounding된 colors를 재사용(새 hex 발명 금지).
-- 로고: favicon 직접 URL은 hotlink 차단/느린 로딩 위험 → 가능하면 `https://www.google.com/s2/favicons?domain=<도메인>&sz=128` 사용(생성 후 generic-globe 아닌지 확인).
-- 작성 후 `cd web && node scripts/build-registry.mjs && node scripts/token-status.mjs --components` 로 검증 + 체크리스트 갱신(harvested 카운트 확인).
+- 로고 (🚨 **`type: favicon`이면 slug는 도메인이 아니라 완전한 이미지 URL**): 렌더러 `web/src/lib/logos.ts`는 favicon slug를 **그대로** `<img src>`로 사용한다. bare 도메인을 넣으면 로고가 깨진다 (2026-06-10 batch에서 teamblind/abema/timee 3건 발생). 우선순위:
+  1. `https://www.google.com/s2/favicons?domain=<도메인>&sz=128` — `curl -sL`로 받아 **450바이트 미만이면 generic globe** → 다음 후보로
+  2. brand CDN의 favicon/앱아이콘 직접 URL (예: imweb vendor-cdn)
+  3. `type: simpleicons, slug: <slug>` — `https://cdn.simpleicons.org/<slug>` 200 확인
+  4. `type: github, slug: <org>` — org avatar
+- 작성 후 **단일 게이트 명령** 실행 (catalog-integrity 전 항목 + strict-YAML 파스 + 로고 liveness를 registry 빌드 없이 검사):
+  ```bash
+  node web/scripts/verify-reference.mjs <id>
+  ```
+  전 항목 PASS 전엔 완료 선언 금지. (보조: `node web/scripts/token-status.mjs --components`)
 
 ### Phase 5 — _research.md + footer
 - `_research.md`: Tier별 source URL, 신뢰도, 추출 일자
@@ -162,15 +170,11 @@ const els = document.querySelectorAll('button, a[role=button], input, [role=tab]
 
 **Size scale (xsmall/small/medium/large/xlarge 등)**은 1개 `**Variant**`에 default 사이즈 값만 불릿으로 적고, 나머지 사이즈는 그 블록 뒤에 markdown 테이블/프로즈로 보강. variant를 5개로 쪼개지 않는다.
 
-**자가 검증 (write 직후 반드시 실행)**:
+**자가 검증 (write 직후 반드시 실행)** — 수기 grep 대신 단일 게이트:
 ```bash
-S4=$(awk '/^## 4\./,/^## 5\./' web/references/<id>/DESIGN.md)
-echo "$S4" | grep -E "^- " | grep -cE " / [A-Za-z][a-z]+:"   # 0이어야 함 — 0 아니면 슬래시 multi-field 잔존
-echo "$S4" | grep -cE "^\*\*[A-Za-z가-힣]"                    # variant 수
-echo "$S4" | grep -cE "^- [A-Za-z]"                            # bullet 수 (variant당 평균 ≥3 권장)
+node web/scripts/verify-reference.mjs <id>
 ```
-
-슬래시 multi-field가 1줄이라도 잔존하면 → fix → 다시 검증. 이 체크 통과 못하면 commit 금지.
+슬래시 multi-field / placeholder / §1 헤더 / proof / 토큰 grounding / 로고 liveness까지 한 번에 검사한다. FAIL이 1개라도 있으면 → fix → 재실행. 통과 못하면 commit 금지.
 - 끝에 verification footer:
   ```
   ---
@@ -285,6 +289,9 @@ return out.slice(0, 30);
 - ❌ **§7 Do's and Don'ts를 `**Do**` 볼드 헤더나 `- Do …` 평문으로 작성** — 파서(`extractGuidelines`)는 **`### Do` / `### Don't` 헤더** 또는 인라인 `- **DO**` 불릿만 인식한다. 그 외 형식은 0개로 처리돼 preview Guidelines 섹션이 통째로 빈다. 반드시 `### Do` + 불릿 / `### Don't` + 불릿 형식. (don't 불릿은 맨 앞 "Don't" 빼고 적기 — 섹션 헤더가 컨텍스트 제공). catalog-integrity guideline advisory가 감지.
 - ❌ **KR/TW ref인데 Tier 1 source가 getdesign/refero뿐** — `verified >= 2026-06-01` KR/TW는 brand-owned regional source ≥2 필수 (`spec/regional-sources.yaml`). 서구 카탈로그는 Tier 2일 뿐 카운트 안 됨.
 - ❌ **새 reference 추가 후 SYNC phase 안 돌리고 종료** — fingerprints / API mapping / logos / docs SEO 카운트가 mismatch. 단일 추가도 SYNC 필수 (아래 Phase 5 참조).
+- ❌ **`logo.type: favicon`에 bare 도메인 slug** — 렌더러는 slug를 그대로 `<img src>`에 넣는다. `slug: abema.tv`는 로고 깨짐 (2026-06-10 batch 3건). 반드시 완전한 URL + `verify-reference.mjs`의 logo-live 게이트 통과.
+- ❌ **tokens YAML flow-style에서 콜론 뒤 공백 누락** — `feature-title:{ size: ... }`는 strict YAML 파스 실패 → build-registry가 ref 전체를 거부 (2026-06-10 stores 케이스). `key: {` 형식 + verify-reference의 yaml-strict-parse 게이트로 차단.
+- ❌ **수기 grep 자가검증으로 끝내기** — 자가검증은 CI 게이트와 같은 코드(`verify-reference.mjs`)여야 한다. 부분집합 grep은 YAML/로고 클래스를 놓친다.
 - ❌ **§1 헤더를 비표준으로 변경** — `## 1. Visual Theme & Atmosphere` 가 catalog canonical. "Overview" / "Identity" / "Foundation tokens" / `## §1` 등 변형 쓰면 web preview Hero 카드의 description이 빈칸으로 렌더 (2026-05-14 kr10 batch에서 flex/upbit/kbank 3건 발생). 모든 §N 헤더는 `## N. <Title>` 형식 + §1은 무조건 `Visual Theme & Atmosphere` + 첫 단락은 산문 prose (테이블/리스트/서브헤딩 금지). 검증: `grep -L '^## 1\. Visual Theme' references/*/DESIGN.md` 결과 0.
 
 ---
@@ -307,7 +314,7 @@ homepage: https://...
 primary_color: "#hex"
 logo:
   type: favicon|simpleicons|github
-  slug: <domain | simpleicons-slug | github-org>
+  slug: <favicon→완전한 이미지 URL | simpleicons→slug | github→org>   # favicon slug는 URL 그대로 렌더됨 — bare 도메인 금지
 verified: YYYY-MM-DD
 omd: 0.1
 ds:                              # optional, Tier-1 official DS only
@@ -319,25 +326,38 @@ ds:                              # optional, Tier-1 official DS only
 ---
 ```
 
-### 2. Regenerate + gate
+### 2. Regenerate + propagate + gate — 단일 명령
 ```bash
-cd web && npm run build-registry && npm test
+node web/scripts/sync-catalog.mjs        # --dry-run으로 미리보기 가능
 ```
-The vitest catalog-integrity suite asserts schema, §1 canonical header, prose-first paragraph, fingerprint cross-check, design-md mirror, triple-fingerprint byte identity, and registry sort order. If green, the API route / logos / tokens / design-systems modules pick up the new entry automatically — they all read from the registry.
+이 한 명령이 ① build-registry ② fingerprints ×3 (누락 id append + count + 미러 동기화) ③ design-md mirror 재복사 ④ README ×4 / llms.txt / app layout 카운트 문자열 ⑤ llms.txt Examples append ⑥ `npm test` 까지 수행한다. vitest catalog-integrity가 그린이면 API route / logos / tokens / design-systems 모듈은 registry에서 자동 반영된다.
 
-### 3. Adjacent surfaces (not registry-derived, manual)
-- Fingerprints × 3 (root + `.claude` + `.codex`) — append entry, bump `count`, refresh `generated_at`; keep byte-identical
-- `design-md/<id>/DESIGN.md` — mirror sync: `rm -rf design-md && cp -RL references design-md`
-- READMEs × 4 (en/ko/ja/zh-TW) — count badge + body
-- `web/public/llms.txt` — header count + Examples list display name append
-- `web/src/app/{layout,docs/layout,docs/page,builder/layout,design-systems/layout}.tsx` — count strings
-- CHANGELOG.md + `package.json` patch bump (omd-cli memory rule)
+스크립트가 생성하는 fingerprint의 `tone_keywords`는 §1에서 휴리스틱 추출 — 어색하면 손으로 다듬는다.
+
+### 3. 여전히 수동인 것 (스크립트가 안 건드림)
+- CHANGELOG.md 엔트리 + `package.json` patch bump (omd-cli memory rule)
+- git commit (memory: no auto-commits)
 
 ### 4. Sub-agent self-verification (mandatory at end of CREATE/UPDATE)
 ```bash
-cd web && npm test -- --run __tests__/catalog-integrity.test.ts -t "<id>"
+node web/scripts/verify-reference.mjs <id>
 ```
-Report pass/fail and the exact failing assertion. Do not declare done before this is green.
+registry 빌드 없이 단독 실행 가능 — 서브에이전트는 이걸로 자가검증한다 (catalog-integrity per-ref 항목과 1:1 + strict-YAML + 로고 liveness). Report pass/fail and the exact failing gate. Do not declare done before this is green. (sync-catalog 후 추가 보증이 필요하면 `cd web && npm test -- --run __tests__/catalog-integrity.test.ts -t "<id>"`.)
+
+---
+
+## Batch 서브에이전트 프로토콜 (5~20개 일괄 추가)
+
+검수 리소스 폭증의 근본 원인은 "에이전트마다 다른 자가검증 + 중앙에서 재검수"의 이중화였다. 프로토콜:
+
+1. **오케스트레이터**: brand 목록 확정 (id/homepage/country/category_hint/tier1_hints) → brand당 서브에이전트 1개 병렬 디스패치 (한 wave에 5~10개; 토큰 압박 시 5개씩). 서브에이전트 프롬프트 = **`.claude/skills/omd-add-reference/batch-instructions.md` 경로 + brand 파라미터 + verified 날짜(오늘)** — 지침 본문을 프롬프트에 복사하지 말고 파일을 읽게 한다.
+2. **서브에이전트 권한 경계 (강제)**:
+   - 쓰기는 `web/references/<id>/{DESIGN.md,.verification.md}` **2파일만**. registry/fingerprints/README/llms/design-md/테스트는 절대 건드리지 않는다 (병렬 충돌 방지 — SYNC는 중앙 1회).
+   - `npm test`/`build-registry`/git 실행 금지.
+   - 종료 조건 = `node web/scripts/verify-reference.mjs <id>` 전 게이트 PASS. FAIL이 남은 채 보고 금지.
+   - 사이트 접근 불가/콘텐츠 빈약 → 파일 생성 없이 `status: INFEASIBLE` 보고 (오케스트레이터가 대체 brand 투입).
+3. **보고 스키마 (고정)**: `status / id / category / primary_color / logo(type/slug/bytes) / tier1 / tier2 / verify-reference 결과줄 / conflicts / notes ≤2줄`.
+4. **오케스트레이터 마무리**: 전 에이전트 OK 확인 → `node web/scripts/sync-catalog.mjs` 1회 → CHANGELOG + package.json bump → dev 서버 띄워 신규 `/reference/<id>` 2~3개 시각 smoke → 결과 보고.
 
 ## 트리거 (자연어 OK — 슬래시 없이 호출되어도 동작)
 

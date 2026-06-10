@@ -1,0 +1,20 @@
+{
+  "id": "classum",
+  "verified_at": "2026-05-14",
+  "primary": {
+    "family": "Pretendard Variable",
+    "fallback_stack": "Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, Helvetica Neue, Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif",
+    "delivery": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css",
+    "license": "SIL OFL 1.1 (open source, Korean optical-sized sans by orioncactus)"
+  },
+  "weights_loaded": [300, 400, 500, 600, 700],
+  "rendering": {
+    "antialiasing": "-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;",
+    "text_rendering": "optimizeLegibility"
+  },
+  "samples": [
+    { "role": "hero", "size": "52px", "weight": 700, "lh": "72.8px" },
+    { "role": "cta", "size": "15px", "weight": 600, "lh": "22.5px" },
+    { "role": "body", "size": "14px", "weight": 400, "lh": "20px" }
+  ]
+}

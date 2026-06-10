@@ -1,0 +1,204 @@
+{
+  "method": "Chrome DevTools Protocol :9222 / websocket-client suppress_origin=True / Runtime.evaluate(getComputedStyle + document.documentElement :root custom-property enumeration + 3000-element frequency analysis)",
+  "browser": "Chrome/148.0.7778.97",
+  "captured_at": "2026-05-15T07:10:00Z",
+  "page_urls": [
+    "https://app.catchtable.co.kr/",
+    "https://app.catchtable.co.kr/ct/shop/list?categoryName=서울"
+  ],
+  "ws_endpoint": "ws://localhost:9222/devtools/page/A4C8D1A86EF4D71064C45589969CFD5D",
+  "samples_total_observed": 39,
+  "css_vars_root": 145,
+  "raw_samples": [
+    {
+      "selector": "BUTTON._4qhv2s0 (primary CTA pill, list-surface fallback)",
+      "url": "/ct/shop/list",
+      "computed": {
+        "backgroundColor": "rgb(255, 61, 0)",
+        "color": "rgb(255, 255, 255)",
+        "borderRadius": "12px",
+        "fontFamily": "Pretendard, -apple-system, system-ui, Roboto, Helvetica Neue, Segoe UI, Apple SD Gothic Neo, Noto Sans KR, ...",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "text": "홈으로 가기"
+      }
+    },
+    {
+      "selector": "HTML / BODY (page canvas)",
+      "url": "/",
+      "computed": {
+        "backgroundColor": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "fontFamily": "Pretendard, -apple-system, system-ui, Roboto, Helvetica Neue, Segoe UI, Apple SD Gothic Neo, Noto Sans KR, sans-serif",
+        "fontSize": "10px (html root) / 14px (body)",
+        "fontWeight": "400"
+      }
+    },
+    {
+      "selector": "H3.section-title.ebold (음식종류별 BEST, 캐치 매거진)",
+      "url": "/",
+      "computed": {
+        "fontSize": "20px",
+        "fontWeight": "700",
+        "color": "rgb(0, 0, 0)",
+        "lineHeight": "150%"
+      }
+    },
+    {
+      "selector": "P._1ykiqva2 (어디로 가시나요? section hero label)",
+      "url": "/",
+      "computed": {
+        "fontSize": "20px",
+        "fontWeight": "700",
+        "color": "rgb(34, 34, 34)"
+      }
+    },
+    {
+      "selector": "INPUT._1smdfcr5._11bicz74d (search input)",
+      "url": "/",
+      "computed": {
+        "fontSize": "13px",
+        "fontWeight": "500",
+        "color": "rgb(158, 158, 158)",
+        "backgroundColor": "rgb(245, 245, 245)",
+        "borderRadius": "0px"
+      }
+    },
+    {
+      "selector": "BUTTON._11i5g4l4._11bicz749 (현재 위치로 chip)",
+      "url": "/",
+      "computed": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "rgb(95, 95, 95)"
+      }
+    },
+    {
+      "selector": "FOOTER (corporate footer block)",
+      "url": "/",
+      "computed": {
+        "backgroundColor": "rgb(249, 249, 249)",
+        "color": "rgb(0, 0, 0)",
+        "fontSize": "14px",
+        "fontWeight": "400"
+      }
+    },
+    {
+      "selector": "NAV.mo4qa92 (bottom tab bar: 홈 / 저장 / 내 주변 / 마이다이닝 / MY)",
+      "url": "/",
+      "computed": {
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(0, 0, 0)"
+      }
+    },
+    {
+      "selector": "A.best-food-list-item (호텔 뷔페 best-of pill)",
+      "url": "/",
+      "computed": {
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "color": "rgb(0, 0, 0)"
+      }
+    },
+    {
+      "selector": "IMG.thumbnail (restaurant card photo)",
+      "url": "/",
+      "computed": {
+        "borderRadius": "4px",
+        "note": "1063 of 1149 sampled elements ship borderRadius=0px; the 4px family appears only on rasterised thumbnails inside Swiper sliders."
+      }
+    }
+  ],
+  "frequency_proof": {
+    "home_surface_3000_element_scan": {
+      "colors_top": [
+        ["rgb(0,0,0)", 1049], ["rgb(34,34,34)", 31], ["rgb(66,66,66)", 19],
+        ["rgb(102,102,102)", 16], ["rgb(255,255,255)", 11], ["rgb(143,143,143)", 8],
+        ["rgb(170,170,170)", 8], ["rgb(95,95,95)", 4], ["rgb(255,61,0)", 4]
+      ],
+      "backgrounds_top": [
+        ["rgba(0,0,0,0)", 1118], ["rgb(249,249,249)", 21], ["rgb(255,255,255)", 6],
+        ["rgb(245,245,245)", 3], ["rgba(20,24,29,0.74)", 1], ["rgb(253,233,226)", 1],
+        ["rgb(255,61,0)", 1], ["rgba(0,0,0,0.7)", 1]
+      ],
+      "radii_top": [
+        ["0px", 1063], ["8px", 29], ["4.05px", 20], ["4px", 20], ["50%", 13],
+        ["12px", 3], ["50px", 1], ["999px", 1], ["40px", 1], ["10px", 1]
+      ],
+      "font_families_top": [
+        ["Pretendard, -apple-system, system-ui, Roboto, Helvetica Neue, Segoe UI, Apple SD Gothic Neo, Noto Sans KR, sans-serif", 1154]
+      ],
+      "font_sizes_top": [
+        ["14px", 900], ["10px", 194], ["11px", 31], ["13px", 19], ["12px", 6],
+        ["20px", 3], ["16px", 1]
+      ],
+      "font_weights_top": [
+        ["400", 1047], ["500", 61], ["700", 22], ["450", 20], ["600", 4]
+      ],
+      "shadows_top": [
+        ["rgba(0,0,0,0.05) 0px 0px 20px 0px", 1],
+        ["rgba(0,0,0,0.25) 0px 5px 6px 0px", 1]
+      ]
+    }
+  },
+  "root_token_evidence": {
+    "vanilla_extract_namespace": "_11bicz7*",
+    "naming_pattern": "Auto-hashed vanilla-extract identifiers — no semantic names exposed; meaning inferred from value + usage site.",
+    "color_tokens_observed": {
+      "--_11bicz70": "#FF3D00",
+      "--_11bicz7w": "#FF3D00",
+      "--_11bicz71": "#FA8D6B",
+      "--_11bicz7l": "#FC9086",
+      "--_11bicz72": "#FDF0EC",
+      "--_11bicz7m": "#FCF3F2",
+      "--_11bicz76": "#222222",
+      "--_11bicz77": "#222222",
+      "--_11bicz78": "#5F5F5F",
+      "--_11bicz79": "#9E9E9E",
+      "--_11bicz7a": "#B5B5B5",
+      "--_11bicz7b": "#FFFFFF",
+      "--_11bicz73": "#FFFFFF",
+      "--_11bicz74": "#F5F5F5",
+      "--_11bicz7h": "#F5F5F5",
+      "--_11bicz75": "#F2F5F7",
+      "--_11bicz7g": "#E4E4E4",
+      "--_11bicz7u": "#E4E4E4",
+      "--_11bicz7j": "#DCE3E8",
+      "--_11bicz7s": "#F0F4FA",
+      "--_11bicz7c": "#1C2B36",
+      "--_11bicz7d": "#3E5463",
+      "--_11bicz7e": "#7A909E",
+      "--_11bicz7f": "#9FB1BD",
+      "--_11bicz7q": "#186ADE",
+      "--_11bicz7r": "#75B1FF",
+      "--_11bicz7o": "#43C478",
+      "--_11bicz7p": "#EBF7ED",
+      "--_11bicz7n": "#077D55",
+      "--_11bicz7k": "#D91F11",
+      "--_11bicz7t": "#F5C518",
+      "--_11bicz7v": "#8F49DE",
+      "--_11bicz7i": "#00000014"
+    },
+    "shadow_tokens_observed": {
+      "--_11bicz73u": "0px 1px 2px 0px rgba(0,0,0,.12), 0px 0px 1px 0px rgba(0,0,0,.08), 0px 0px 1px 0px rgba(0,0,0,.08)  [xs]",
+      "--_11bicz73w": "0px 2px 8px 0px rgba(0,0,0,.12), 0px 1px 4px 0px rgba(0,0,0,.08), 0px 0px 1px 0px rgba(0,0,0,.08)  [sm]",
+      "--_11bicz73v": "0px 2px 12px 0px rgba(0,0,0,.12)  [drop]",
+      "--_11bicz73x": "0px 6px 12px 0px rgba(0,0,0,.12), 0px 4px 8px 0px rgba(0,0,0,.08), 0px 0px 4px 0px rgba(0,0,0,.08)  [md]",
+      "--_11bicz73y": "0px 16px 20px 0px rgba(0,0,0,.12), 0px 8px 16px 0px rgba(0,0,0,.08), 0px 0px 8px 0px rgba(0,0,0,.08)  [lg/modal]"
+    },
+    "line_height_observed": "150% uniform across ~35 distinct typography slots — single line-height contract.",
+    "size_scale_observed_px": ["8", "10", "11", "12", "13", "14", "15", "16", "18", "20", "24"],
+    "weight_scale_observed": ["400", "450", "500", "600", "700"]
+  },
+  "tier1_official_ds_probes": {
+    "design.catchtable.co.kr": "DNS no-resolve (000)",
+    "tech.catchtable.co.kr": "DNS no-resolve (000)",
+    "www.catchtable.co.kr/brand": "302 redirect (no brand portal)",
+    "github_org_catchtable": "200 but only 3 repos (prerender-java, claude-hud, brand-review-tool) — zero design-system / Storybook / tokens repo",
+    "getdesign.md/catchtable": "explicit 'No designs found for \\'catchtable\\''",
+    "styles.refero.design/?q=catchtable": "no result cards",
+    "result": "AUTHORITATIVE NEGATIVE — Tier 1 official DS does not exist as a public artifact. The DS lives in production code as a vanilla-extract token sheet (145 :root vars) — captured here directly via CDP."
+  },
+  "verification_date": "2026-05-15"
+}

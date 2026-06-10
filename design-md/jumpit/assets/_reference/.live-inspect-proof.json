@@ -1,0 +1,182 @@
+{
+  "method": "Chrome DevTools Protocol (CDP) over WebSocket :9222",
+  "browser": "Chrome/148.0.7778.97",
+  "captured_at": "2026-05-15",
+  "surfaces": [
+    {
+      "url": "https://jumpit.saramin.co.kr/",
+      "tab_id": "0D1AE28C681044BAD1ABF612537B7E44",
+      "viewport": "1280×720",
+      "samples_total": 52
+    },
+    {
+      "url": "https://jumpit.saramin.co.kr/positions?sort=popular",
+      "tab_id": "FB46C004FBEEF196F84348CDA107183A",
+      "viewport": "1280×720",
+      "samples_total": 60
+    }
+  ],
+  "raw_samples": [
+    {
+      "selector": "button.sc-4e6882eb-0.jXvkaV",
+      "text": "회원가입 / 로그인",
+      "tag": "button",
+      "bg": "rgb(0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "borderRadius": "8px",
+      "padding": "0px 16px",
+      "height": 48,
+      "fontSize": "15px",
+      "fontWeight": "700",
+      "fontFamily": "\"Pretendard Variable\", Pretendard, -apple-system, system-ui, sans-serif",
+      "boxShadow": "none",
+      "surface": "home — header primary CTA",
+      "role": "Primary brand CTA — black pill, not green"
+    },
+    {
+      "selector": "button.sc-fd5ea417-7.fQGbUe[aria-pressed=true]",
+      "text": "전체",
+      "tag": "button",
+      "bg": "rgb(0, 221, 109)",
+      "color": "rgb(255, 255, 255)",
+      "borderRadius": "20px",
+      "padding": "7px 16px",
+      "height": 40,
+      "fontSize": "16px",
+      "fontWeight": "700",
+      "fontFamily": "\"Pretendard Variable\", Pretendard, -apple-system, system-ui, sans-serif",
+      "surface": "positions — active job-category chip",
+      "role": "Active state of role-filter pill (the ONE place Jumpit green appears on chrome)"
+    },
+    {
+      "selector": "button.sc-fd5ea417-7.fQGbUe",
+      "text": "서버/백엔드 개발자",
+      "tag": "button",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(68, 68, 68)",
+      "borderRadius": "20px",
+      "padding": "7px 16px",
+      "height": 40,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "surface": "positions — inactive job-category chip",
+      "role": "Default rest state of role-filter pill; 20px radius pill, transparent fill, #444 ink"
+    },
+    {
+      "selector": "button.outlined",
+      "text": "기술스택",
+      "tag": "button",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "borderRadius": "100px",
+      "padding": "8px 30px 8px 12px",
+      "height": 40,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "surface": "positions — secondary filter dropdown trigger (기술스택/경력/지역/태그)",
+      "role": "100px pill outlined filter trigger — distinct radius scale from role chips (20px) and primary CTA (8px)"
+    },
+    {
+      "selector": "h2 (Notice section eyebrow)",
+      "text": "Notice",
+      "tag": "h2",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(0, 221, 109)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "height": 18,
+      "fontSize": "13px",
+      "fontWeight": "700",
+      "surface": "home — Notice eyebrow above announcement card",
+      "role": "Brand-green used as 13/700 eyebrow accent — second authorised use of #00DD6D in chrome"
+    },
+    {
+      "selector": "h3.title",
+      "text": "테마별 모음.zip",
+      "tag": "h3",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(34, 34, 34)",
+      "borderRadius": "0px",
+      "height": 32,
+      "fontSize": "24px",
+      "fontWeight": "700",
+      "fontFamily": "\"Pretendard Variable\", Pretendard, -apple-system, system-ui, sans-serif",
+      "surface": "home — section heading",
+      "role": "H3 section title; near-black #222 (NOT pure black) to soften body density"
+    },
+    {
+      "selector": "h3.sc-90f62648-4 (hero card title)",
+      "text": "신약개발 플랫폼 스타트업 아론티어와 함께해요",
+      "tag": "h3",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "borderRadius": "0px",
+      "height": 84,
+      "fontSize": "32px",
+      "fontWeight": "700",
+      "surface": "home — hero carousel card overlay title",
+      "role": "32/700 white over photo carousel; styled-components hash class sc-90f62648-4"
+    },
+    {
+      "selector": "footer.sc-e0967389-0.hEoFTB",
+      "text": "서비스 소개기업 서비스점핏Team회원약관…",
+      "tag": "footer",
+      "bg": "rgb(251, 251, 251)",
+      "color": "rgb(0, 0, 0)",
+      "padding": "40px 0px 30px",
+      "height": 363,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "surface": "home — footer",
+      "role": "Off-white footer plate #FBFBFB vs page #FFF — only surface elevation Jumpit ships"
+    },
+    {
+      "selector": "footer link a (default)",
+      "text": "서비스 소개",
+      "tag": "a",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(68, 68, 68)",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "height": 20,
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "surface": "home — footer navigation list",
+      "role": "Secondary text ink #444 at 14/400 — the dominant body-link colour across the site"
+    },
+    {
+      "selector": "a (sub-eyebrow “전체 보기”)",
+      "text": "전체 보기",
+      "tag": "a",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(136, 136, 136)",
+      "borderRadius": "0px",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "surface": "home — section header “view all” affordance",
+      "role": "Tertiary muted ink #888 — third tier of the three-stop greyscale (#000 → #444 → #888)"
+    }
+  ],
+  "top_observed_colors": {
+    "rgb(0, 0, 0)": "primary CTA fill, body ink",
+    "rgb(255, 255, 255)": "page canvas, CTA text",
+    "rgb(0, 221, 109)": "brand green — active chip + eyebrow ONLY (2 confirmed chrome uses)",
+    "rgb(68, 68, 68)": "secondary body / footer link ink",
+    "rgb(34, 34, 34)": "near-black heading ink #222",
+    "rgb(136, 136, 136)": "muted tertiary ink #888",
+    "rgb(251, 251, 251)": "footer surface elevation #FBFBFB"
+  },
+  "radii_frequency_positions": { "0px": 34, "20px": 22, "100px": 4 },
+  "radii_frequency_home": { "0px": 51, "8px": 1 },
+  "weight_frequency": { "400": 83, "500": 12, "700": 17 },
+  "font_families_observed": {
+    "\"Pretendard Variable\", Pretendard, -apple-system, system-ui, sans-serif": 112
+  },
+  "css_custom_properties_observed": 0,
+  "reproducibility": {
+    "cdp_endpoint": "ws://localhost:9222/devtools/page/<tab-id>",
+    "method": "WebSocket → Runtime.evaluate(getComputedStyle on button/a/h1-h3/[class*=Button|Card|Chip])",
+    "stack_signal": "Next.js + styled-components (sc-* class prefix, hash suffixes)",
+    "css_strategy": "styled-components runtime classes, no public :root design-token vars"
+  }
+}

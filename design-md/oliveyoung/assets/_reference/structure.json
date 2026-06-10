@@ -1,0 +1,91 @@
+{
+  "id": "oliveyoung",
+  "captured_at": "2026-05-15",
+  "architecture": "dual-stack — legacy JSP main/category/search (Montserrat→NotoSansCJKkr) + Next.js product-detail subtree (CSS-Modules class names like ProductNotFound_btn__, GnbForDesktop_category-toggle-button__, OYCompanyInfo_oy-company-info-button__; runtime --font-noto-sans-kr + --font-roboto + --background:#0a0a0a tokens)",
+  "main_structure": {
+    "title": "올리브영 온라인몰",
+    "h1": [
+      {
+        "text": "",
+        "fs": "28px",
+        "fw": "700"
+      }
+    ],
+    "nav": [
+      {
+        "tag": "DIV",
+        "cls": "header_inner",
+        "h": 90
+      },
+      {
+        "tag": "INPUT",
+        "cls": "header_search_input",
+        "h": 38
+      },
+      {
+        "tag": "DIV",
+        "cls": "header_design_area",
+        "h": 119
+      }
+    ],
+    "bodyFont": "Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo, Roboto, dotum, 돋움, sans-serif",
+    "bodyBg": "rgba(0, 0, 0, 0)",
+    "bodyColor": "rgb(102, 102, 102)",
+    "bodyFontSize": "14px"
+  },
+  "best_structure": {
+    "title": "랭킹 | 올리브영",
+    "h1": [
+      {
+        "text": "",
+        "fs": "28px",
+        "fw": "700"
+      },
+      {
+        "text": "랭킹오늘의 랭킹! 요즘 가장 핫한 상품",
+        "fs": "40px",
+        "fw": "700"
+      }
+    ],
+    "nav": [
+      {
+        "tag": "DIV",
+        "cls": "header_inner",
+        "h": 90
+      },
+      {
+        "tag": "INPUT",
+        "cls": "header_search_input",
+        "h": 38
+      },
+      {
+        "tag": "DIV",
+        "cls": "header_design_area",
+        "h": 119
+      }
+    ],
+    "bodyFont": "Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo, Roboto, dotum, 돋움, sans-serif",
+    "bodyBg": "rgba(0, 0, 0, 0)",
+    "bodyColor": "rgb(102, 102, 102)",
+    "bodyFontSize": "14px"
+  },
+  "surfaces": {
+    "main": {
+      "url": "https://www.oliveyoung.co.kr/store/main/main.do?oy=0",
+      "sampleCount": 65
+    },
+    "best": {
+      "url": "https://www.oliveyoung.co.kr/store/main/getBestList.do",
+      "sampleCount": 33
+    },
+    "search": {
+      "url": "https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=%EC%84%A0%ED%81%AC%EB%A6%BC",
+      "sampleCount": 55
+    },
+    "detail": {
+      "url": "https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000167660",
+      "sampleCount": 26,
+      "note": "product 404 — exposed Next.js shell classnames + runtime CSS vars"
+    }
+  }
+}

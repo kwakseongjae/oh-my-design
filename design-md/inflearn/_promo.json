@@ -1,0 +1,29 @@
+{
+  "id": "inflearn",
+  "korean": "인프런",
+  "logo_url": "https://www.inflearn.com/static/favicon.ico",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#00C471",
+      "pressed_inferred": "#00A760",
+      "heading": "#212529",
+      "body": "#495057",
+      "muted": "#868E96",
+      "surface_neutral": "#F8F9FA",
+      "radius_card": "8px",
+      "radius_nav_pill": "32px",
+      "radius_cta_full_pill": "999px",
+      "font": "Pretendard",
+      "framework": "Mantine UI"
+    },
+    "label": "인프런 그린 × Mantine 8/32/999px — 캠페인 아닌 카탈로그의 톤"
+  },
+  "design_system": {
+    "name": "Inflab Tech Blog",
+    "url": "https://tech.inflab.com/",
+    "type": "brand",
+    "description": "Engineering blog of Inflab (Inflearn's parent). Contains MFE / shared-GNB architecture posts but no canonical token table; the DS lives in production code via Mantine theme overrides.",
+    "live_verified": "2026-05-14"
+  }
+}

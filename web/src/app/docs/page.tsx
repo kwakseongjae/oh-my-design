@@ -60,7 +60,7 @@ const SKILLS: Skill[] = [
     trigger: "First-time setup",
     title: "Bootstrap a project",
     desc:
-      "Pick from 221 reference design systems. Hybrid variation — preserves the reference voice while shifting only the axes you name.",
+      "Pick from 246 reference design systems. Hybrid variation — preserves the reference voice while shifting only the axes you name.",
     icon: Zap,
   },
   {
@@ -444,7 +444,7 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
   {
     path: "references/*/DESIGN.md",
     owner: "bundled",
-    purpose: "221 real design systems",
+    purpose: "246 real design systems",
   },
   {
     path: "DESIGN.md",
@@ -581,7 +581,7 @@ function DocsHero() {
           <strong className="text-white">17 skills</strong>,{" "}
           <strong className="text-white">16 sub-agents</strong>, a{" "}
           <strong className="text-white">10-phase pipeline</strong>, and{" "}
-          <strong className="text-white">221 reference DESIGN.md files</strong>{" "}
+          <strong className="text-white">246 reference DESIGN.md files</strong>{" "}
           — installed into your AI coding agent in one command. No API keys.
           No external infra. Then you just talk to your agent.
         </motion.p>

@@ -1,0 +1,289 @@
+{
+  "id": "kream",
+  "captured_at": "2026-05-14T10:55:53.466Z",
+  "tool": "Chrome DevTools Protocol :9222 via WebSocket (Runtime.evaluate + getComputedStyle)",
+  "surfaces_visited": [
+    "https://kream.co.kr/",
+    "https://kream.co.kr/search?keyword=nike"
+  ],
+  "raw_samples": [
+    {
+      "source": "home",
+      "tag": "A",
+      "text": "반소매 & 샌들 위크\n~50% 랜덤 쿠폰!매일 오전 11시 선착순 오픈",
+      "bg": "rgb(245, 245, 245)",
+      "color": "rgb(34, 34, 34)",
+      "borderRadius": "16px",
+      "border": "0px none rgb(34, 34, 34)",
+      "padding": "0px",
+      "height": 475,
+      "width": 1188,
+      "fontSize": "0px",
+      "fontWeight": "400",
+      "fontFamily": "\"Pretendard Variable\", Pretendard, -apple-system, \"system-ui\", system-ui, Roboto",
+      "cls": "layout_stack pc:overflow-hidden pc:br-tl-16 pc:br-tr-16 pc:br-br-16 pc:br-bl-16 "
+    },
+    {
+      "source": "search",
+      "tag": "INPUT",
+      "text": "브랜드, 상품, 프로필, 태그 등",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(0, 0, 0)",
+      "borderRadius": "0px",
+      "border": "0px none rgb(0, 0, 0)",
+      "padding": "0px 13px 0px 1px",
+      "h": 29,
+      "w": 468,
+      "fontSize": "24px",
+      "fontWeight": "700",
+      "cls": "input_search show_placeholder_on_focus"
+    },
+    {
+      "source": "search",
+      "tag": "DIV",
+      "text": "상품스타일프로필",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(34, 34, 34)",
+      "borderRadius": "0px",
+      "border": "",
+      "padding": "0px",
+      "h": 45,
+      "w": 1280,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "cls": "tabs"
+    },
+    {
+      "source": "search",
+      "tag": "UL",
+      "text": "상품스타일프로필",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(34, 34, 34)",
+      "borderRadius": "0px",
+      "border": "0px none rgb(34, 34, 34)",
+      "padding": "0px",
+      "h": 44,
+      "w": 1280,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "cls": "ul_tab center ul_search_result_tab"
+    },
+    {
+      "source": "search",
+      "tag": "A",
+      "text": "상품",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(34, 34, 34)",
+      "borderRadius": "0px",
+      "border": "",
+      "padding": "0px",
+      "h": 44,
+      "w": 28,
+      "fontSize": "16px",
+      "fontWeight": "700",
+      "cls": "router-link-active router-link-exact-active tab active"
+    },
+    {
+      "source": "search",
+      "tag": "A",
+      "text": "스타일",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(34, 34, 34)",
+      "borderRadius": "0px",
+      "border": "",
+      "padding": "0px",
+      "h": 44,
+      "w": 41,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "cls": "router-link-active router-link-exact-active tab"
+    },
+    {
+      "source": "search",
+      "tag": "A",
+      "text": "프로필",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(34, 34, 34)",
+      "borderRadius": "0px",
+      "border": "",
+      "padding": "0px",
+      "h": 44,
+      "w": 41,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "cls": "router-link-active router-link-exact-active tab"
+    },
+    {
+      "source": "search",
+      "tag": "DIV",
+      "text": "배송0카테고리0성별0색상0브랜드0사이즈0가격대0스니커즈반소매 티셔츠샌들/",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(34, 34, 34)",
+      "borderRadius": "0px",
+      "border": "0px none rgb(34, 34, 34)",
+      "padding": "14px 0px",
+      "h": 141,
+      "w": 1280,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "cls": "sd-client-search-product-filter pc:w-fill tablet:w-fill mo:w-fill down has-paddi"
+    },
+    {
+      "source": "search",
+      "tag": "BUTTON",
+      "text": "배송0",
+      "bg": "rgb(244, 244, 244)",
+      "color": "rgb(78, 78, 78)",
+      "borderRadius": "30px",
+      "border": "0px none rgb(78, 78, 78)",
+      "padding": "0px 8px",
+      "h": 30,
+      "w": 60,
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "cls": "filter_button tint shape_pill"
+    },
+    {
+      "source": "search",
+      "tag": "BUTTON",
+      "text": "카테고리0",
+      "bg": "rgb(244, 244, 244)",
+      "color": "rgb(78, 78, 78)",
+      "borderRadius": "30px",
+      "border": "0px none rgb(78, 78, 78)",
+      "padding": "0px 8px",
+      "h": 30,
+      "w": 83,
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "cls": "filter_button tint shape_pill"
+    },
+    {
+      "source": "search",
+      "tag": "BUTTON",
+      "text": "성별0",
+      "bg": "rgb(244, 244, 244)",
+      "color": "rgb(78, 78, 78)",
+      "borderRadius": "30px",
+      "border": "0px none rgb(78, 78, 78)",
+      "padding": "0px 8px",
+      "h": 30,
+      "w": 60,
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "cls": "filter_button tint shape_pill"
+    },
+    {
+      "source": "search",
+      "tag": "BUTTON",
+      "text": "색상0",
+      "bg": "rgb(244, 244, 244)",
+      "color": "rgb(78, 78, 78)",
+      "borderRadius": "30px",
+      "border": "0px none rgb(78, 78, 78)",
+      "padding": "0px 8px",
+      "h": 30,
+      "w": 60,
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "cls": "filter_button tint shape_pill"
+    },
+    {
+      "source": "search",
+      "tag": "BUTTON",
+      "text": "브랜드0",
+      "bg": "rgb(244, 244, 244)",
+      "color": "rgb(78, 78, 78)",
+      "borderRadius": "30px",
+      "border": "0px none rgb(78, 78, 78)",
+      "padding": "0px 8px",
+      "h": 30,
+      "w": 72,
+      "fontSize": "13px",
+      "fontWeight": "400",
+      "cls": "filter_button tint shape_pill"
+    }
+  ],
+  "top_colors_distinct_home": [
+    [
+      "rgb(34, 34, 34)",
+      4763
+    ],
+    [
+      "rgb(0, 0, 0)",
+      626
+    ],
+    [
+      "rgb(255, 255, 255)",
+      135
+    ],
+    [
+      "rgb(245, 245, 245)",
+      104
+    ],
+    [
+      "rgba(0, 0, 0, 0.533)",
+      64
+    ],
+    [
+      "rgba(0, 0, 0, 0.345)",
+      60
+    ],
+    [
+      "rgba(255, 255, 255, 0.804)",
+      40
+    ],
+    [
+      "rgba(34, 34, 34, 0.5)",
+      38
+    ],
+    [
+      "rgba(0, 0, 0, 0.44)",
+      16
+    ],
+    [
+      "rgba(34, 34, 34, 0.8)",
+      11
+    ],
+    [
+      "rgb(34, 34, 34) rgb(34, 34, 34) rgba(0, 0, 0, 0)",
+      8
+    ],
+    [
+      "rgb(17, 161, 151)",
+      2
+    ],
+    [
+      "rgb(250, 250, 250)",
+      2
+    ],
+    [
+      "rgba(34, 34, 34, 0.4)",
+      2
+    ],
+    [
+      "rgba(34, 34, 34, 0.3)",
+      2
+    ],
+    [
+      "rgba(255, 255, 255, 0.1)",
+      1
+    ],
+    [
+      "rgb(235, 235, 235) rgb(34, 34, 34) rgb(34, 34, 34)",
+      1
+    ],
+    [
+      "rgb(34, 34, 34) rgb(34, 34, 34) rgb(235, 235, 235)",
+      1
+    ]
+  ],
+  "css_vars_home_root_grayscale_count": 53,
+  "method_notes": [
+    "1. Reused existing CDP tab (about:blank) on localhost:9222",
+    "2. Page.navigate + 8-9s wait for SPA hydration",
+    "3. Runtime.evaluate over button/a/input/[role=button]/[class*=btn]/[class*=chip]/[class*=tab] — getBoundingClientRect ≥24×24 filter",
+    "4. Deduped by (bg|color|radius|text-prefix|tag)",
+    "5. Captured getComputedStyle on documentElement for --greyscale-* CSS custom properties"
+  ]
+}

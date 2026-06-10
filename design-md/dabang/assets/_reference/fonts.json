@@ -1,0 +1,22 @@
+{
+  "source": "live CDP getComputedStyle (2026-05-15) on https://www.dabangapp.com/ and /map/onetwo",
+  "primary": "Pretendard Variable",
+  "coverage": "100% (32/32 home samples + 21/21 map samples)",
+  "fallback_stack_inferred": [
+    "Pretendard Variable",
+    "Pretendard JP Variable",
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "system-ui",
+    "Roboto",
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    "sans-serif"
+  ],
+  "weights_in_use": ["400", "500 (sparse)", "700"],
+  "weight_pattern": "400 → 700 cliff with sparing 500 for filter/chip emphasis — same pattern as Zigbang/Bunjang KR marketplace cohort",
+  "notes": "Pretendard Variable (open-source Korean variable font) is now the converged default for modern KR consumer-tech (Toss, Karrot, Zigbang, Bunjang, Dabang). Dabang's variant is unremarkable in choice but distinctive in restraint — no display accent face, no second family for headings. Every word on the surface is the same family at one of two weights."
+}

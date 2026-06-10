@@ -1,0 +1,448 @@
+{
+  "captured_at": "2026-05-14",
+  "method": "CDP Runtime.evaluate via :9222 (browser-harness)",
+  "surfaces_visited": [
+    "https://www.inflearn.com/",
+    "https://www.inflearn.com/courses"
+  ],
+  "raw_samples": [
+    {
+      "tag": "button",
+      "text": "search-menu",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(73, 80, 87)",
+      "radius": "32px",
+      "padding": "0px",
+      "h": 42,
+      "w": 61,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-ActionIcon-root css-kkvjzx mantine-589nf6"
+    },
+    {
+      "tag": "input",
+      "text": "",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "radius": "8px",
+      "padding": "0px",
+      "h": 36,
+      "w": 377,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "0px none rgb(0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-Input-input mantine-TextInput-input mantine-1l3yr7p"
+    },
+    {
+      "tag": "button",
+      "text": "search",
+      "bg": "rgb(0, 196, 113)",
+      "color": "rgb(255, 255, 255)",
+      "radius": "999px",
+      "padding": "0px",
+      "h": 42,
+      "w": 42,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-ActionIcon-root css-1c1hnzk mantine-1f4n01d"
+    },
+    {
+      "tag": "a",
+      "text": "지식공유",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(73, 80, 87)",
+      "radius": "32px",
+      "padding": "0px 12px",
+      "h": 42,
+      "w": 81,
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-Button-root css-1j595zm mantine-ff69qa"
+    },
+    {
+      "tag": "button",
+      "text": "service-menu",
+      "bg": "rgb(248, 249, 250)",
+      "color": "rgb(73, 80, 87)",
+      "radius": "32px",
+      "padding": "0px",
+      "h": 42,
+      "w": 42,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-ActionIcon-root mantine-5lafry"
+    },
+    {
+      "tag": "button",
+      "text": "로그인",
+      "bg": "rgb(248, 249, 250)",
+      "color": "rgb(73, 80, 87)",
+      "radius": "32px",
+      "padding": "0px 22px",
+      "h": 42,
+      "w": 90,
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-Button-root mantine-8sazk5"
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "bg": "rgba(248, 249, 250, 0.2)",
+      "color": "rgb(16, 17, 19)",
+      "radius": "32px",
+      "padding": "0px",
+      "h": 30,
+      "w": 30,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-ActionIcon-root css-b6dbba mantine-6jys8d"
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "bg": "rgb(241, 243, 245)",
+      "color": "rgb(206, 212, 218)",
+      "radius": "32px",
+      "padding": "0px",
+      "h": 30,
+      "w": 30,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgb(241, 243, 245)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-ActionIcon-root css-k3ld1p mantine-grlc4b"
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(33, 37, 41)",
+      "radius": "32px",
+      "padding": "0px",
+      "h": 30,
+      "w": 30,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgb(206, 212, 218)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-ActionIcon-root css-1m7xo6m mantine-grlc4b"
+    },
+    {
+      "tag": "button",
+      "text": "무료",
+      "bg": "rgb(37, 38, 43)",
+      "color": "rgb(255, 255, 255)",
+      "radius": "9999px",
+      "padding": "10px 16px",
+      "h": 40,
+      "w": 83,
+      "fontSize": "14px",
+      "fontWeight": "700",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "0px none rgb(255, 255, 255)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-Tabs-tab mantine-7x9n8l"
+    },
+    {
+      "tag": "button",
+      "text": "얼리버드 할인",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(0, 0, 0)",
+      "radius": "9999px",
+      "padding": "10px 16px",
+      "h": 40,
+      "w": 135,
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "0px none rgb(0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-Tabs-tab mantine-7x9n8l"
+    },
+    {
+      "tag": "a",
+      "text": "더보기",
+      "bg": "rgb(248, 249, 250)",
+      "color": "rgb(73, 80, 87)",
+      "radius": "8px",
+      "padding": "0px 26px",
+      "h": 306,
+      "w": 230,
+      "fontSize": "18px",
+      "fontWeight": "600",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-Button-root mantine-rxmt4q"
+    },
+    {
+      "tag": "button",
+      "text": "search-menu",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(73, 80, 87)",
+      "radius": "32px",
+      "padding": "0px",
+      "h": 30,
+      "w": 49,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-ActionIcon-root css-7tc47h mantine-589nf6"
+    },
+    {
+      "tag": "input",
+      "text": "",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "radius": "8px",
+      "padding": "0px",
+      "h": 36,
+      "w": 305,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "0px none rgb(0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-Input-input mantine-TextInput-input mantine-1l3yr7p"
+    },
+    {
+      "tag": "button",
+      "text": "search",
+      "bg": "rgb(0, 196, 113)",
+      "color": "rgb(255, 255, 255)",
+      "radius": "999px",
+      "padding": "0px",
+      "h": 30,
+      "w": 30,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-ActionIcon-root css-1c1hnzk mantine-3c0tfn"
+    },
+    {
+      "tag": "a",
+      "text": "지식공유",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(73, 80, 87)",
+      "radius": "32px",
+      "padding": "0px 12px",
+      "h": 42,
+      "w": 81,
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-Button-root css-1j595zm mantine-ff69qa"
+    },
+    {
+      "tag": "button",
+      "text": "service-menu",
+      "bg": "rgb(248, 249, 250)",
+      "color": "rgb(73, 80, 87)",
+      "radius": "32px",
+      "padding": "0px",
+      "h": 42,
+      "w": 42,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-ActionIcon-root mantine-5lafry"
+    },
+    {
+      "tag": "button",
+      "text": "로그인",
+      "bg": "rgb(248, 249, 250)",
+      "color": "rgb(73, 80, 87)",
+      "radius": "32px",
+      "padding": "0px 22px",
+      "h": 42,
+      "w": 90,
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-Button-root mantine-8sazk5"
+    },
+    {
+      "tag": "button",
+      "text": "카테고리",
+      "bg": "rgb(248, 249, 250)",
+      "color": "rgb(73, 80, 87)",
+      "radius": "32px",
+      "padding": "0px 18px",
+      "h": 36,
+      "w": 106,
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "cls": "mantine-UnstyledButton-root mantine-Button-root mantine-1bjnawg"
+    },
+    {
+      "tag": "button",
+      "text": "다음 카테고리",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(33, 37, 41)",
+      "radius": "32px",
+      "padding": "0px",
+      "h": 42,
+      "w": 42,
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "fontFamily": "Pretendard, -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", sans-serif",
+      "border": "1px solid rgb(206, 212, 218)",
+      "boxShadow": "rgba(0, 0, 0, 0.1) 0px 1px 2px 0px, rgba(0, 0, 0, 0.05) 0px 1px 3px 0px",
+      "cls": "mantine-UnstyledButton-root mantine-ActionIcon-root css-irsqr mantine-1nm7eso"
+    }
+  ],
+  "palette_top12_home": [
+    [
+      "rgb(0, 0, 0)",
+      5430
+    ],
+    [
+      "rgb(73, 80, 87)",
+      1812
+    ],
+    [
+      "rgb(33, 37, 41)",
+      1267
+    ],
+    [
+      "rgb(134, 142, 150)",
+      950
+    ],
+    [
+      "rgb(255, 255, 255)",
+      536
+    ],
+    [
+      "rgb(0, 0, 238)",
+      461
+    ],
+    [
+      "rgb(0, 167, 96)",
+      450
+    ],
+    [
+      "rgb(16, 152, 173)",
+      432
+    ],
+    [
+      "rgb(252, 196, 25)",
+      336
+    ],
+    [
+      "rgb(34, 139, 230)",
+      296
+    ],
+    [
+      "rgb(0, 196, 113)",
+      246
+    ],
+    [
+      "rgb(233, 236, 239)",
+      230
+    ]
+  ],
+  "palette_top12_courses": [
+    [
+      "rgb(0, 0, 0)",
+      2209
+    ],
+    [
+      "rgb(33, 37, 41)",
+      1174
+    ],
+    [
+      "rgb(73, 80, 87)",
+      848
+    ],
+    [
+      "rgb(0, 0, 238)",
+      453
+    ],
+    [
+      "rgb(134, 142, 150)",
+      390
+    ],
+    [
+      "rgb(255, 255, 255)",
+      336
+    ],
+    [
+      "rgb(0, 167, 96)",
+      248
+    ],
+    [
+      "rgb(16, 152, 173)",
+      216
+    ],
+    [
+      "rgb(34, 139, 230)",
+      180
+    ],
+    [
+      "rgb(0, 196, 113)",
+      158
+    ],
+    [
+      "rgb(250, 82, 82)",
+      144
+    ],
+    [
+      "rgb(16, 17, 19)",
+      116
+    ]
+  ],
+  "css_vars_count": 216,
+  "mantine_evidence": [
+    "--mantine-color-red-9",
+    "--mantine-color-dark-9",
+    "--mantine-color-lime-1",
+    "--mantine-color-dark-5",
+    "--mantine-color-violet-0",
+    "--mantine-color-red-8",
+    "--mantine-transition-timing-function",
+    "--mantine-shadow-xs",
+    "--mantine-color-orange-6",
+    "--mantine-color-indigo-4",
+    "--mantine-color-indigo-6",
+    "--mantine-color-pink-3",
+    "--mantine-color-blue-7",
+    "--mantine-color-dark-8",
+    "--mantine-color-indigo-7"
+  ]
+}

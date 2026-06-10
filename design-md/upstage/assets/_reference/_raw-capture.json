@@ -1,0 +1,1560 @@
+{
+  "sample_count": 44,
+  "samples": [
+    {
+      "selector": "h1",
+      "index": 0,
+      "tag": "h1",
+      "classes": "hero-title heading-style-h2 text-color-alternate",
+      "text": "Supercharge",
+      "rect": {
+        "w": 320,
+        "h": 66
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Espeak, Arial, sans-serif",
+        "fontSize": "57.6px",
+        "fontWeight": "600",
+        "lineHeight": "66.24px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderColor": "rgb(255, 255, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "h1",
+      "index": 1,
+      "tag": "h1",
+      "classes": "heading-11 type-target text-color-alternate",
+      "text": "Insurance",
+      "rect": {
+        "w": 260,
+        "h": 53
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "monospace",
+        "fontSize": "48px",
+        "fontWeight": "600",
+        "lineHeight": "52.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "",
+        "borderColor": "rgb(255, 255, 255) rgb(0, 0, 0) rgb(255, 255, 255) rgb(255, 255, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "h1",
+      "index": 2,
+      "tag": "h1",
+      "classes": "changing-heading-3 type-target text-color-alternate",
+      "text": "Fi",
+      "rect": {
+        "w": 59,
+        "h": 53
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "monospace",
+        "fontSize": "48px",
+        "fontWeight": "600",
+        "lineHeight": "52.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "",
+        "borderColor": "rgb(255, 255, 255) rgb(0, 0, 0) rgb(255, 255, 255) rgb(255, 255, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "h2",
+      "index": 0,
+      "tag": "h2",
+      "classes": "heading-style-h2 h2-small",
+      "text": "High-performance AI built by experts",
+      "rect": {
+        "w": 1185,
+        "h": 55
+      },
+      "styles": {
+        "color": "rgb(10, 13, 20)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "48px",
+        "fontWeight": "500",
+        "lineHeight": "55.2px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(10, 13, 20)",
+        "borderColor": "rgb(10, 13, 20)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "h2",
+      "index": 1,
+      "tag": "h2",
+      "classes": "heading-style-h2 h2-small",
+      "text": "Transforming high-stakes industries",
+      "rect": {
+        "w": 1185,
+        "h": 55
+      },
+      "styles": {
+        "color": "rgb(10, 13, 20)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "48px",
+        "fontWeight": "500",
+        "lineHeight": "55.2px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(10, 13, 20)",
+        "borderColor": "rgb(10, 13, 20)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "h2",
+      "index": 2,
+      "tag": "h2",
+      "classes": "heading-style-h2 h2-small",
+      "text": "Trusted by leading companies worldwide",
+      "rect": {
+        "w": 1185,
+        "h": 55
+      },
+      "styles": {
+        "color": "rgb(10, 13, 20)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "48px",
+        "fontWeight": "500",
+        "lineHeight": "55.2px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(10, 13, 20)",
+        "borderColor": "rgb(10, 13, 20)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "h3",
+      "index": 0,
+      "tag": "h3",
+      "classes": "heading-style-h5",
+      "text": "Document Parse",
+      "rect": {
+        "w": 152,
+        "h": 30
+      },
+      "styles": {
+        "color": "rgb(10, 13, 20)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "20px",
+        "fontWeight": "500",
+        "lineHeight": "30px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(10, 13, 20)",
+        "borderColor": "rgb(10, 13, 20)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "h3",
+      "index": 1,
+      "tag": "h3",
+      "classes": "heading-style-h5",
+      "text": "Information Extract",
+      "rect": {
+        "w": 177,
+        "h": 30
+      },
+      "styles": {
+        "color": "rgb(10, 13, 20)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "20px",
+        "fontWeight": "500",
+        "lineHeight": "30px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(10, 13, 20)",
+        "borderColor": "rgb(10, 13, 20)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "h3",
+      "index": 2,
+      "tag": "h3",
+      "classes": "heading-style-h5",
+      "text": "Solar LLM",
+      "rect": {
+        "w": 93,
+        "h": 30
+      },
+      "styles": {
+        "color": "rgb(10, 13, 20)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "20px",
+        "fontWeight": "500",
+        "lineHeight": "30px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(10, 13, 20)",
+        "borderColor": "rgb(10, 13, 20)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "h4",
+      "index": 0,
+      "tag": "h4",
+      "classes": "heading-style-h5",
+      "text": "CB Insights AI 100 (2025)",
+      "rect": {
+        "w": 313,
+        "h": 30
+      },
+      "styles": {
+        "color": "rgb(10, 13, 20)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "20px",
+        "fontWeight": "500",
+        "lineHeight": "30px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(10, 13, 20)",
+        "borderColor": "rgb(10, 13, 20)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "h4",
+      "index": 1,
+      "tag": "h4",
+      "classes": "heading-style-h5",
+      "text": "Top-tier conference papers",
+      "rect": {
+        "w": 313,
+        "h": 30
+      },
+      "styles": {
+        "color": "rgb(10, 13, 20)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "20px",
+        "fontWeight": "500",
+        "lineHeight": "30px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(10, 13, 20)",
+        "borderColor": "rgb(10, 13, 20)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "h4",
+      "index": 2,
+      "tag": "h4",
+      "classes": "heading-style-h5",
+      "text": "Open LLM Leaderboard",
+      "rect": {
+        "w": 313,
+        "h": 30
+      },
+      "styles": {
+        "color": "rgb(10, 13, 20)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "20px",
+        "fontWeight": "500",
+        "lineHeight": "30px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(10, 13, 20)",
+        "borderColor": "rgb(10, 13, 20)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "p",
+      "index": 0,
+      "tag": "p",
+      "classes": "text-align-center",
+      "text": "Built and refined by our team of AI experts, our technology brings the highest s",
+      "rect": {
+        "w": 640,
+        "h": 58
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px 0px 10px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(112, 117, 127)",
+        "borderColor": "rgb(112, 117, 127)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "p",
+      "index": 1,
+      "tag": "p",
+      "classes": "",
+      "text": "Convert PDFs, scans, and emails into clean, machine-readable text ready for Al p",
+      "rect": {
+        "w": 334,
+        "h": 86
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px 0px 10px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(112, 117, 127)",
+        "borderColor": "rgb(112, 117, 127)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "p",
+      "index": 2,
+      "tag": "p",
+      "classes": "",
+      "text": "Pull structured key-value data from invoices, claims, and contracts with audited",
+      "rect": {
+        "w": 334,
+        "h": 86
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px 0px 10px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(112, 117, 127)",
+        "borderColor": "rgb(112, 117, 127)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "a.button",
+      "index": 0,
+      "tag": "a",
+      "classes": "button is-text hide-tablet hide-mobile-landscape w-inline-block",
+      "text": "Learn more →",
+      "rect": {
+        "w": 85,
+        "h": 21
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "lineHeight": "27px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgba(0, 0, 0, 0)",
+        "borderColor": "rgba(0, 0, 0, 0)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "8px"
+      }
+    },
+    {
+      "selector": "a.button",
+      "index": 1,
+      "tag": "a",
+      "classes": "button is-text hide-tablet hide-mobile-landscape btn-try-demo-nav w-inline-block",
+      "text": "Try demo",
+      "rect": {
+        "w": 87,
+        "h": 22
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "lineHeight": "27px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgba(0, 0, 0, 0)",
+        "borderColor": "rgba(0, 0, 0, 0)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "8px"
+      }
+    },
+    {
+      "selector": "a.button",
+      "index": 2,
+      "tag": "a",
+      "classes": "button is-small btn-contact-nav w-inline-block",
+      "text": "Contact us",
+      "rect": {
+        "w": 106,
+        "h": 40
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgb(91, 82, 255)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "lineHeight": "24px",
+        "letterSpacing": "-0.18px",
+        "padding": "8px 16px",
+        "margin": "0px",
+        "borderRadius": "8px",
+        "border": "1px solid rgb(91, 82, 255)",
+        "borderColor": "rgb(91, 82, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "8px"
+      }
+    },
+    {
+      "selector": "a.button.is-secondary",
+      "index": 0,
+      "tag": "a",
+      "classes": "button is-secondary is-large btn-try-demo-hero w-inline-block",
+      "text": "Developer Console",
+      "rect": {
+        "w": 222,
+        "h": 58
+      },
+      "styles": {
+        "color": "rgb(91, 82, 255)",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "lineHeight": "24px",
+        "letterSpacing": "-0.18px",
+        "padding": "16px 32px",
+        "margin": "0px",
+        "borderRadius": "8px",
+        "border": "1px solid rgb(91, 82, 255)",
+        "borderColor": "rgb(91, 82, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "8px"
+      }
+    },
+    {
+      "selector": "a.button.is-secondary",
+      "index": 1,
+      "tag": "a",
+      "classes": "button is-secondary max-width-full w-inline-block",
+      "text": "Learn more",
+      "rect": {
+        "w": 334,
+        "h": 50
+      },
+      "styles": {
+        "color": "rgb(91, 82, 255)",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "lineHeight": "24px",
+        "letterSpacing": "-0.18px",
+        "padding": "12px 18px",
+        "margin": "0px",
+        "borderRadius": "8px",
+        "border": "1px solid rgb(91, 82, 255)",
+        "borderColor": "rgb(91, 82, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "8px"
+      }
+    },
+    {
+      "selector": "a.button.is-secondary",
+      "index": 2,
+      "tag": "a",
+      "classes": "button is-secondary max-width-full w-inline-block",
+      "text": "Learn more",
+      "rect": {
+        "w": 334,
+        "h": 50
+      },
+      "styles": {
+        "color": "rgb(91, 82, 255)",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "lineHeight": "24px",
+        "letterSpacing": "-0.18px",
+        "padding": "12px 18px",
+        "margin": "0px",
+        "borderRadius": "8px",
+        "border": "1px solid rgb(91, 82, 255)",
+        "borderColor": "rgb(91, 82, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "8px"
+      }
+    },
+    {
+      "selector": "button",
+      "index": 0,
+      "tag": "button",
+      "classes": "upstage-biz-toggle",
+      "text": "Business Information",
+      "rect": {
+        "w": 1185,
+        "h": 42
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22.4px",
+        "letterSpacing": "normal",
+        "padding": "14px 0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderColor": "rgb(255, 255, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "[class*=\"button\"]",
+      "index": 0,
+      "tag": "a",
+      "classes": "button is-text hide-tablet hide-mobile-landscape w-inline-block",
+      "text": "Learn more →",
+      "rect": {
+        "w": 85,
+        "h": 21
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "lineHeight": "27px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgba(0, 0, 0, 0)",
+        "borderColor": "rgba(0, 0, 0, 0)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "8px"
+      }
+    },
+    {
+      "selector": "[class*=\"button\"]",
+      "index": 1,
+      "tag": "div",
+      "classes": "uui-navbar07_button-wrapper",
+      "text": "Try demo Contact us",
+      "rect": {
+        "w": 209,
+        "h": 40
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(112, 117, 127)",
+        "borderColor": "rgb(112, 117, 127)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "16px"
+      }
+    },
+    {
+      "selector": "[class*=\"button\"]",
+      "index": 2,
+      "tag": "a",
+      "classes": "button is-text hide-tablet hide-mobile-landscape btn-try-demo-nav w-inline-block",
+      "text": "Try demo",
+      "rect": {
+        "w": 87,
+        "h": 22
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "lineHeight": "27px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgba(0, 0, 0, 0)",
+        "borderColor": "rgba(0, 0, 0, 0)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "8px"
+      }
+    },
+    {
+      "selector": "nav",
+      "index": 0,
+      "tag": "nav",
+      "classes": "uui-navbar07_menu w-nav-menu",
+      "text": "Products Solutions Resources Company Pricing Try demo Contact us",
+      "rect": {
+        "w": 1049,
+        "h": 48
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px 0px 0px 48px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(112, 117, 127)",
+        "borderColor": "rgb(112, 117, 127)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "nav a",
+      "index": 0,
+      "tag": "a",
+      "classes": "button is-text hide-tablet hide-mobile-landscape btn-try-demo-nav w-inline-block",
+      "text": "Try demo",
+      "rect": {
+        "w": 87,
+        "h": 22
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "500",
+        "lineHeight": "27px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgba(0, 0, 0, 0)",
+        "borderColor": "rgba(0, 0, 0, 0)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "8px"
+      }
+    },
+    {
+      "selector": "nav a",
+      "index": 1,
+      "tag": "a",
+      "classes": "button is-small btn-contact-nav w-inline-block",
+      "text": "Contact us",
+      "rect": {
+        "w": 106,
+        "h": 40
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgb(91, 82, 255)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "lineHeight": "24px",
+        "letterSpacing": "-0.18px",
+        "padding": "8px 16px",
+        "margin": "0px",
+        "borderRadius": "8px",
+        "border": "1px solid rgb(91, 82, 255)",
+        "borderColor": "rgb(91, 82, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "8px"
+      }
+    },
+    {
+      "selector": "header",
+      "index": 0,
+      "tag": "header",
+      "classes": "section-main-hero",
+      "text": "Supercharge Insurance Fi Healthcare Manufacturing with AI. Experience the future",
+      "rect": {
+        "w": 1265,
+        "h": 654
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(112, 117, 127)",
+        "borderColor": "rgb(112, 117, 127)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "footer",
+      "index": 0,
+      "tag": "footer",
+      "classes": "footer-component",
+      "text": "Products Solar Pro 3 Solar Pro 2 Solar Mini Syn Pro Document Parse Information E",
+      "rect": {
+        "w": 1265,
+        "h": 959
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgb(25, 23, 34)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "80px 0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderColor": "rgb(255, 255, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "footer a",
+      "index": 0,
+      "tag": "a",
+      "classes": "w-inline-block w--current",
+      "text": "",
+      "rect": {
+        "w": 58,
+        "h": 85
+      },
+      "styles": {
+        "color": "rgb(0, 0, 238)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(0, 0, 238)",
+        "borderColor": "rgb(0, 0, 238)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "underline",
+        "display": "inline-block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "footer a",
+      "index": 1,
+      "tag": "a",
+      "classes": "footer-link",
+      "text": "Solar Pro 3",
+      "rect": {
+        "w": 83,
+        "h": 38
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "16.8px",
+        "fontWeight": "400",
+        "lineHeight": "22.344px",
+        "letterSpacing": "-0.18px",
+        "padding": "8px 0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderColor": "rgb(255, 255, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "footer a",
+      "index": 2,
+      "tag": "a",
+      "classes": "footer-link",
+      "text": "Solar Pro 2",
+      "rect": {
+        "w": 83,
+        "h": 38
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "16.8px",
+        "fontWeight": "400",
+        "lineHeight": "22.344px",
+        "letterSpacing": "-0.18px",
+        "padding": "8px 0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderColor": "rgb(255, 255, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "[class*=\"hero\"]",
+      "index": 0,
+      "tag": "header",
+      "classes": "section-main-hero",
+      "text": "Supercharge Insurance Fi Healthcare Manufacturing with AI. Experience the future",
+      "rect": {
+        "w": 1265,
+        "h": 654
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(112, 117, 127)",
+        "borderColor": "rgb(112, 117, 127)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "[class*=\"hero\"]",
+      "index": 1,
+      "tag": "div",
+      "classes": "uui-heroheader18_component",
+      "text": "Supercharge Insurance Fi Healthcare Manufacturing with AI. Experience the future",
+      "rect": {
+        "w": 1201,
+        "h": 398
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(112, 117, 127)",
+        "borderColor": "rgb(112, 117, 127)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "[class*=\"hero\"]",
+      "index": 2,
+      "tag": "div",
+      "classes": "max-width-full align-center padding-medium hero-slogan",
+      "text": "Supercharge Insurance Fi Healthcare Manufacturing with AI. Experience the future",
+      "rect": {
+        "w": 1201,
+        "h": 398
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "32px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(112, 117, 127)",
+        "borderColor": "rgb(112, 117, 127)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "[class*=\"card\"]",
+      "index": 0,
+      "tag": "div",
+      "classes": "basic_card-2",
+      "text": "Document Parse Convert PDFs, scans, and emails into clean, machine-readable tex",
+      "rect": {
+        "w": 384,
+        "h": 539
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "24px",
+        "margin": "0px",
+        "borderRadius": "8px",
+        "border": "1px solid rgb(205, 208, 213)",
+        "borderColor": "rgb(205, 208, 213)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "[class*=\"card\"]",
+      "index": 1,
+      "tag": "div",
+      "classes": "basic_card-2",
+      "text": "Information Extract Pull structured key-value data from invoices, claims, and c",
+      "rect": {
+        "w": 384,
+        "h": 539
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "24px",
+        "margin": "0px",
+        "borderRadius": "8px",
+        "border": "1px solid rgb(205, 208, 213)",
+        "borderColor": "rgb(205, 208, 213)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "[class*=\"card\"]",
+      "index": 2,
+      "tag": "div",
+      "classes": "basic_card-2",
+      "text": "Solar LLM Enterprise-grade language model family optimized for speed and ground",
+      "rect": {
+        "w": 384,
+        "h": 539
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "24px",
+        "margin": "0px",
+        "borderRadius": "8px",
+        "border": "1px solid rgb(205, 208, 213)",
+        "borderColor": "rgb(205, 208, 213)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "[class*=\"upstage\"]",
+      "index": 0,
+      "tag": "div",
+      "classes": "upstage-biz-wrap",
+      "text": "Business Information Upstage Co., Ltd. (주식회사 업스테이지)|CEO: Sunghun Kim (김성훈)|Busi",
+      "rect": {
+        "w": 1185,
+        "h": 43
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "16px 0px 0px",
+        "borderRadius": "0px",
+        "border": "",
+        "borderColor": "rgba(255, 255, 255, 0.08) rgb(255, 255, 255) rgb(255, 255, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "[class*=\"upstage\"]",
+      "index": 1,
+      "tag": "button",
+      "classes": "upstage-biz-toggle",
+      "text": "Business Information",
+      "rect": {
+        "w": 1185,
+        "h": 42
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "22.4px",
+        "letterSpacing": "normal",
+        "padding": "14px 0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderColor": "rgb(255, 255, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "[class*=\"upstage\"]",
+      "index": 2,
+      "tag": "span",
+      "classes": "upstage-biz-label",
+      "text": "Business Information",
+      "rect": {
+        "w": 154,
+        "h": 14
+      },
+      "styles": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "lineHeight": "14px",
+        "letterSpacing": "normal",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(255, 255, 255)",
+        "borderColor": "rgb(255, 255, 255)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "flex",
+        "gap": "6px"
+      }
+    },
+    {
+      "selector": "body",
+      "index": 0,
+      "tag": "body",
+      "classes": "",
+      "text": "Upstage Studio — Build and deploy your agent. Learn more → Products Solutions Re",
+      "rect": {
+        "w": 1265,
+        "h": 6281
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(112, 117, 127)",
+        "borderColor": "rgb(112, 117, 127)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    },
+    {
+      "selector": "main",
+      "index": 0,
+      "tag": "main",
+      "classes": "main-wrapper",
+      "text": "Supercharge Insurance Fi Healthcare Manufacturing with AI. Experience the future",
+      "rect": {
+        "w": 1265,
+        "h": 5194
+      },
+      "styles": {
+        "color": "rgb(112, 117, 127)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Geist, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28.8px",
+        "letterSpacing": "-0.18px",
+        "padding": "0px",
+        "margin": "0px",
+        "borderRadius": "0px",
+        "border": "0px none rgb(112, 117, 127)",
+        "borderColor": "rgb(112, 117, 127)",
+        "boxShadow": "none",
+        "textTransform": "none",
+        "textDecoration": "none",
+        "display": "block",
+        "gap": "normal"
+      }
+    }
+  ],
+  "freq": {
+    "color": [
+      [
+        "rgb(112, 117, 127)",
+        428
+      ],
+      [
+        "rgb(255, 255, 255)",
+        213
+      ],
+      [
+        "rgb(10, 13, 20)",
+        58
+      ],
+      [
+        "rgb(91, 82, 255)",
+        55
+      ],
+      [
+        "rgb(0, 0, 238)",
+        55
+      ],
+      [
+        "rgb(0, 0, 0)",
+        50
+      ],
+      [
+        "rgb(110, 113, 145)",
+        20
+      ],
+      [
+        "rgba(255, 255, 255, 0.5)",
+        14
+      ],
+      [
+        "rgb(82, 88, 102)",
+        12
+      ],
+      [
+        "rgb(33, 31, 84)",
+        9
+      ],
+      [
+        "rgb(16, 24, 40)",
+        6
+      ],
+      [
+        "rgb(74, 58, 255)",
+        5
+      ],
+      [
+        "rgba(255, 255, 255, 0.15)",
+        5
+      ],
+      [
+        "rgb(71, 84, 103)",
+        3
+      ],
+      [
+        "rgb(51, 51, 51)",
+        2
+      ]
+    ],
+    "fontFamily": [
+      [
+        "Geist, sans-serif",
+        869
+      ],
+      [
+        "sans-serif",
+        50
+      ],
+      [
+        "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
+        11
+      ],
+      [
+        "monospace",
+        4
+      ],
+      [
+        "Espeak, Arial, sans-serif",
+        3
+      ]
+    ],
+    "fontWeight": [
+      [
+        "400",
+        786
+      ],
+      [
+        "500",
+        129
+      ],
+      [
+        "600",
+        15
+      ],
+      [
+        "700",
+        8
+      ]
+    ],
+    "fontSize": [
+      [
+        "18px",
+        603
+      ],
+      [
+        "16px",
+        115
+      ],
+      [
+        "17.6px",
+        45
+      ],
+      [
+        "14px",
+        30
+      ],
+      [
+        "16.8px",
+        30
+      ],
+      [
+        "15.04px",
+        25
+      ],
+      [
+        "12px",
+        23
+      ],
+      [
+        "20px",
+        17
+      ],
+      [
+        "14.4px",
+        11
+      ],
+      [
+        "48px",
+        8
+      ],
+      [
+        "24px",
+        6
+      ],
+      [
+        "32px",
+        5
+      ],
+      [
+        "15px",
+        5
+      ],
+      [
+        "13.6px",
+        4
+      ],
+      [
+        "26px",
+        4
+      ]
+    ],
+    "bg": [
+      [
+        "rgba(0, 0, 0, 0)",
+        897
+      ],
+      [
+        "rgb(255, 255, 255)",
+        21
+      ],
+      [
+        "rgb(91, 82, 255)",
+        6
+      ],
+      [
+        "rgb(10, 13, 20)",
+        5
+      ],
+      [
+        "rgba(255, 255, 255, 0.4)",
+        4
+      ],
+      [
+        "rgb(210, 255, 149)",
+        1
+      ],
+      [
+        "rgb(21, 23, 39)",
+        1
+      ],
+      [
+        "rgb(236, 240, 255)",
+        1
+      ],
+      [
+        "rgb(249, 250, 251)",
+        1
+      ],
+      [
+        "rgb(25, 23, 34)",
+        1
+      ]
+    ],
+    "borderRadius": [
+      [
+        "0px",
+        797
+      ],
+      [
+        "8px",
+        134
+      ],
+      [
+        "100%",
+        5
+      ],
+      [
+        "100px",
+        1
+      ],
+      [
+        "50%",
+        1
+      ]
+    ]
+  },
+  "viewport": {
+    "w": 1280,
+    "h": 713,
+    "dpr": 1
+  }
+}

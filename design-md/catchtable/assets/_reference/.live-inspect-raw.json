@@ -1,0 +1,22 @@
+{
+  "method": "Chrome DevTools Protocol over localhost:9222 / websocket-client suppress_origin=True / Runtime.evaluate getComputedStyle + :root CSS custom property dump + 3000-element frequency analysis",
+  "browser": "Chrome/148.0.7778.97",
+  "captured_at": "2026-05-15T07:10:00Z",
+  "surfaces": [
+    {
+      "tab_id": "A4C8D1A86EF4D71064C45589969CFD5D",
+      "url": "https://app.catchtable.co.kr/",
+      "viewport": {"w": 1280, "h": 713, "dpr": 1},
+      "samples_total": 35,
+      "css_vars_root": 145,
+      "raw_capture": "see /tmp/catchtable-raw.json (mirror of frequency table + samples below)"
+    },
+    {
+      "tab_id": "CCA4387B0B4FD4BD37F64893DEA18610",
+      "url": "https://app.catchtable.co.kr/ct/shop/list?categoryName=서울",
+      "viewport": {"w": 1280, "h": 713, "dpr": 1},
+      "note": "Surface returned shell with 홈으로 가기 CTA only (list endpoint requires authenticated mobile context). Used to confirm primary CTA color rgb(255,61,0) / radius 12px / single-orange discipline.",
+      "samples_total": 4
+    }
+  ]
+}

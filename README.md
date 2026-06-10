@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>One-command bootstrap for skill-driven design with your AI coding agent.</strong> 221 real company design systems. Zero AI calls in the install. Then you just talk to your agent.
+  <strong>One-command bootstrap for skill-driven design with your AI coding agent.</strong> 246 real company design systems. Zero AI calls in the install. Then you just talk to your agent.
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/dm/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
-  <img src="https://img.shields.io/badge/references-221-7c5cfc?style=flat-square" alt="221 References" />
+  <img src="https://img.shields.io/badge/references-246-7c5cfc?style=flat-square" alt="246 References" />
   <img src="https://img.shields.io/badge/CLI%20commands-1-blue?style=flat-square" alt="One CLI command" />
 </p>
 
@@ -25,7 +25,7 @@
 
 ## What is oh-my-design?
 
-**oh-my-design (OmD)** is a design system for AI coding agents. It turns Claude Code / Codex / OpenCode / Cursor into a senior product designer with a working memory of your brand. You install once. After that, you just describe what you want — components, screens, copy, assets, charts — and the agent applies your project's design system and ships. `DESIGN.md` is the brand spec ([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens + a brand-philosophy layer: Voice / Narrative / Principles / Personas / States / Motion), and 221 real-company DESIGN.md files ship in this package. **No API keys. No external infra. Everything runs inside your existing CLI session.**
+**oh-my-design (OmD)** is a design system for AI coding agents. It turns Claude Code / Codex / OpenCode / Cursor into a senior product designer with a working memory of your brand. You install once. After that, you just describe what you want — components, screens, copy, assets, charts — and the agent applies your project's design system and ships. `DESIGN.md` is the brand spec ([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens + a brand-philosophy layer: Voice / Narrative / Principles / Personas / States / Motion), and 246 real-company DESIGN.md files ship in this package. **No API keys. No external infra. Everything runs inside your existing CLI session.**
 
 ## Install
 
@@ -49,7 +49,7 @@ This is the whole point: one prompt turns into a `DESIGN.md` your agent remember
 
    > Set up our design system — Toss-style, for a family meal-tracking app.
 
-   Your agent runs **`omd:init`**: it recommends a reference from the 221 real-company catalog, asks you to confirm, and writes **`DESIGN.md`** to your project root. (`omd:sync` then wires up the `CLAUDE.md` / `AGENTS.md` / Cursor shims so every agent reads it automatically.)
+   Your agent runs **`omd:init`**: it recommends a reference from the 246 real-company catalog, asks you to confirm, and writes **`DESIGN.md`** to your project root. (`omd:sync` then wires up the `CLAUDE.md` / `AGENTS.md` / Cursor shims so every agent reads it automatically.)
 
    **That `DESIGN.md` is your activation — your agent now remembers your brand.**
 
@@ -74,11 +74,11 @@ The default install targets every detected agent; pass `--agent <name>` to insta
 
 ## What's inside
 
-**17 skills · 16 sub-agents · 221 verified references · activation hooks** — installed by the one command above.
+**17 skills · 16 sub-agents · 246 verified references · activation hooks** — installed by the one command above.
 
 - **Skills** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the v0.2 agent layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
 - **Sub-agents** — `omd-master` + 15 specialists (UX research, UI generation, asset curation, microcopy, a11y audit, persona testing, critique, …).
-- **References** — 221 real-company `DESIGN.md` files, each verified against live sources. Every reference is also served as raw markdown at `oh-my-design.kr/design-systems/<id>.md`, so agents can fetch it directly.
+- **References** — 246 real-company `DESIGN.md` files, each verified against live sources. Every reference is also served as raw markdown at `oh-my-design.kr/design-systems/<id>.md`, so agents can fetch it directly.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse activation so the skills trigger on natural language, not just slash commands.
 
 Full skill-by-skill and agent-by-agent reference: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**.

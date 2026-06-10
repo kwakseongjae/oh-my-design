@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>為 AI 編碼代理打造的技能驅動設計 — 一個指令完成引導。</strong>221 個真實企業設計系統。安裝過程零 AI 呼叫。之後只要和你的代理對話即可。
+  <strong>為 AI 編碼代理打造的技能驅動設計 — 一個指令完成引導。</strong>246 個真實企業設計系統。安裝過程零 AI 呼叫。之後只要和你的代理對話即可。
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/dm/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
-  <img src="https://img.shields.io/badge/references-221-7c5cfc?style=flat-square" alt="221 References" />
+  <img src="https://img.shields.io/badge/references-246-7c5cfc?style=flat-square" alt="246 References" />
   <img src="https://img.shields.io/badge/CLI%20commands-1-blue?style=flat-square" alt="One CLI command" />
 </p>
 
@@ -25,7 +25,7 @@
 
 ## 什麼是 oh-my-design?
 
-**oh-my-design (OmD)** 是為 AI 編碼代理打造的設計系統。它讓 Claude Code / Codex / OpenCode / Cursor 變成一位記得你品牌的資深產品設計師。安裝一次之後,只要描述你想要的東西 — 元件、畫面、文案、素材、圖表 — 代理就會套用專案的設計系統並交付成果。`DESIGN.md` 是品牌規格([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) 令牌 + 品牌哲學層: Voice / Narrative / Principles / Personas / States / Motion),套件內建 221 個真實企業的 DESIGN.md。**無須 API 金鑰。無須外部基礎設施。一切都在你既有的 CLI 工作階段內執行。**
+**oh-my-design (OmD)** 是為 AI 編碼代理打造的設計系統。它讓 Claude Code / Codex / OpenCode / Cursor 變成一位記得你品牌的資深產品設計師。安裝一次之後,只要描述你想要的東西 — 元件、畫面、文案、素材、圖表 — 代理就會套用專案的設計系統並交付成果。`DESIGN.md` 是品牌規格([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) 令牌 + 品牌哲學層: Voice / Narrative / Principles / Personas / States / Motion),套件內建 246 個真實企業的 DESIGN.md。**無須 API 金鑰。無須外部基礎設施。一切都在你既有的 CLI 工作階段內執行。**
 
 ## 安裝
 
@@ -50,7 +50,7 @@ npx oh-my-design-cli install-skills
 
 ## 套件內容
 
-**17 個 skills · 16 個子代理 · 221 個經驗證的參考 · 活性化 hooks** — 上述一個指令全部安裝完成。
+**17 個 skills · 16 個子代理 · 246 個經驗證的參考 · 活性化 hooks** — 上述一個指令全部安裝完成。
 
 每個參考也以 raw markdown 形式提供於 `oh-my-design.kr/design-systems/<id>.md`,代理可以直接抓取。完整的 skill 與 agent 參考文件: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**。
 

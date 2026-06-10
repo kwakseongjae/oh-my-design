@@ -1,0 +1,17 @@
+{
+  "id": "wadiz",
+  "captured_at": "2026-05-14",
+  "source": "https://static.wadiz.kr/static/web/wui.css body declaration + index.html <link> tags",
+  "primary": {
+    "family": "Pretendard",
+    "license": "OFL 1.1 (open-source variable)",
+    "cdn_loaded": "https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard-dynamic-subset.min.css",
+    "stack": "pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif",
+    "weights_in_use": [400, 500, 700],
+    "default_weight": 400,
+    "base_body_size_px": 15
+  },
+  "display_accent": null,
+  "letter_spacing_observed": "-.03em (rare, large display headings only)",
+  "rationale": "Wadiz runs Pretendard exclusively — no display secondary face. The mark of a Korean fintech-adjacent product post-2022: Toss/Banksalad/Kakao-Bank all consolidated on Pretendard for Korean+Latin coverage with weight axis. 400 (393x) carries body, 700 (358x) carries pricing/funding amounts and headings, 500 (109x) is for medium-emphasis labels."
+}

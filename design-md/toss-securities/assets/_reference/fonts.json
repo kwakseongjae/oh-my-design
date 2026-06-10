@@ -1,0 +1,24 @@
+{
+  "$schema": "omd-fonts-0.1",
+  "source": "live CDP getComputedStyle :root + body (2026-05-15)",
+  "stacks": {
+    "primary": [
+      "Toss Product Sans",
+      "Tossface",
+      "-apple-system",
+      "system-ui",
+      "Bazier Square",
+      "Noto Sans KR",
+      "Segoe UI",
+      "Apple SD Gothic Neo",
+      "sans-serif"
+    ]
+  },
+  "notes": [
+    "Toss Product Sans = same custom typeface as toss.im — shared parent-brand asset.",
+    "Tossface is Toss's open-source emoji font (GitHub: toss/tossface).",
+    "Body default rendered at 16px / 400; data tables and price ticks rely on Latin/numeric balance within Toss Product Sans.",
+    "No webfont download observed for primary face on this surface — Toss Product Sans appears via parent-domain CDN inheritance (cross-origin asset)."
+  ],
+  "weight_observed": [400, 500, 600, 700]
+}

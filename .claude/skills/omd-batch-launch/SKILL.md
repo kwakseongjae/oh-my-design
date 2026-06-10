@@ -67,8 +67,11 @@ omd 카탈로그에 **한 번에 10개**의 brand reference를 추가하고, 동
 
 ### 산출물
 - `web/references/<id>/DESIGN.md`
-- `web/references/<id>/_research.md`
+- `web/references/<id>/.verification.md` (Proof block + conflict matrix + 리서치 노트 — `_research.md` 대체)
 - (선택) `web/references/<id>/_preview.png` — Phase 3에서 쓸 라이브 hero 캡쳐 1장. **Phase 2에서 미리 찍어두면 Phase 3 재방문 비용 절감.**
+
+### 빌드 실행 방식 (mandatory)
+brand당 서브에이전트 1개, 프롬프트 = `.claude/skills/omd-add-reference/batch-instructions.md` 경로 + brand 파라미터. 각 서브에이전트의 종료 조건은 `node web/scripts/verify-reference.mjs <id>` 전 게이트 PASS. 서브에이전트는 ref 디렉터리 2파일만 쓰고 SYNC/test/git을 건드리지 않는다 (omd:add-reference "Batch 서브에이전트 프로토콜" 참조).
 
 ---
 
@@ -121,26 +124,22 @@ Hand-maintained map drift was the recurring 10-brand batch-bug. Eliminated: ever
 ### 1. Canonical frontmatter per new id (the ONLY data edit)
 Schema lives at the top of `web/src/data/registry.generated.ts`. Required: `id`, `name`, `country`, `category`, `homepage`, `primary_color`, `logo.{type,slug}`, `verified`. Optional: `display_name_kr`, `ds`.
 
-### 2. Regenerate + gate (single command)
+### 2. Regenerate + propagate + gate (single command)
 ```bash
-cd web && npm run build-registry && npm test
+node web/scripts/sync-catalog.mjs        # --dry-run으로 미리보기
 ```
-Catalog-integrity vitest blocks the commit until schema, §1 header, prose-first paragraph, fingerprint cross-check, design-md mirror, and triple-fingerprint byte identity all pass. Husky pre-commit runs the same gate.
+한 명령이 build-registry → fingerprints ×3 (append/count/mirror) → design-md mirror → README ×4 / llms.txt / SEO layout 카운트 문자열 → llms.txt Examples append → `npm test` 까지 수행. Husky pre-commit이 같은 catalog-integrity 게이트를 재실행한다.
 
-### 3. Adjacent surfaces (not registry-derived — still manual per batch)
-- Fingerprints × 3 byte-identical: `data/`, `.claude/data/`, `.codex/data/reference-fingerprints.json`
-- `design-md/` mirror: `rm -rf design-md && cp -RL references design-md`
-- READMEs × 4 (en/ko/ja/zh-TW): count badge + body
-- `web/public/llms.txt`: header count + Examples display name append
-- SEO layouts: `web/src/app/{layout,docs/layout,docs/page,builder/layout,design-systems/layout}.tsx` count strings
-- CHANGELOG.md + `package.json` patch bump
+### 3. 여전히 수동인 것
+- CHANGELOG.md 엔트리 + `package.json` patch bump
+- 스크립트가 생성한 fingerprint `tone_keywords` 휴리스틱 검토 (어색하면 다듬기)
 - `skills/*/SKILL.md` / `agents/*.md` stay count-agnostic — do not hardcode numbers there.
 
 ### 4. Sub-agent self-verification (mandatory at end of every batch slot)
 ```bash
-cd web && npm test -- --run __tests__/catalog-integrity.test.ts
+node web/scripts/verify-reference.mjs <id>    # 슬롯별, registry 빌드 불필요
 ```
-Report pass/fail. Do not declare the batch done before this is green.
+Report the summary line per id. batch 전체 완료 선언은 sync-catalog의 `npm test` 그린 이후에만.
 
 ---
 

@@ -6,6 +6,20 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.8.1 — 2026-06-11
+
+**Catalog +25: KR/JP/TW/US 배치 — 카탈로그가 221 → 246개로. 수집→검수→배포 파이프라인 스크립트화.**
+
+- **KR 5** — 3o3(삼쩜삼) · Blind(블라인드) · MiriCanvas(미리캔버스) · Imweb(아임웹) · Modusign(모두싸인). 미리캔버스가 KR design-tools 공백을 채움.
+- **JP 5** — Rakuten(ReX 토큰을 공개 npm tarball에서 직접 추출) · Wantedly(공식 Brand Guide PDF 기반) · ABEMA(다크 스트리밍 시스템) · STORES · Timee.
+- **TW 5** — Accupass · FunNow · Firstory · Omnichat · Greenvines(綠藤生機).
+- **US 5** — Google(Material 3) · Microsoft(Fluent 2) · Adobe(Spectrum 2) · Salesforce(SLDS 2 styling hooks) · Dropbox(brand.dropbox.com). 공식 DS 헤비웨이트 5종이 처음으로 카탈로그에 합류.
+- 전 레퍼런스 Proof Gate(라이브 inspect raw sample ≥5) + token↔prose 정합 게이트 통과, KR/TW는 brand-owned Tier-1 소스 ≥2 충족.
+- **KR 5 (2차)** — Ringle(링글) · POSTYPE(포스타입) · LaundryGo(런드리고) · Greeting(그리팅) · Danawa(다나와). 개선된 게이트 파이프라인으로 추가 — 5/5 첫 실행에 전 게이트 그린.
+- **새 파이프라인 스크립트** — `web/scripts/verify-reference.mjs`(레퍼런스 단독 게이트: catalog-integrity per-ref 항목 + strict-YAML + 로고 liveness, registry 빌드 불필요) + `web/scripts/sync-catalog.mjs`(fingerprints ×3 / design-md mirror / 카운트 문자열 / llms.txt Examples / npm test 일괄). `omd:add-reference` 스킬에 batch 서브에이전트 프로토콜 명문화.
+
+---
+
 ## 1.8.0 — 2026-06-10
 
 **The taste loop closes: your corrections become preferences, preferences become proposals, and one click folds them into DESIGN.md. Plus a taste dashboard and a scripted release bench.**

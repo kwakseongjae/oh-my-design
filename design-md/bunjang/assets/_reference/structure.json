@@ -1,0 +1,131 @@
+{
+  "$schema": "omd.structure/0.1",
+  "source": "live CDP DOM walk of https://m.bunjang.co.kr/ — mobile (390×844 dpr=3, iOS UA)",
+  "captured_at": "2026-05-14",
+  "page": "Home (홈)",
+  "regions": [
+    {
+      "name": "App-Download Banner (top)",
+      "selector": "section._top-banner_z6lgp_1",
+      "purpose": "Persistent app-install nudge",
+      "anatomy": [
+        "Logo icon (32×32, rounded-rect bitmap with gradient inside — see logo-icon.svg)",
+        "Body copy ~14-16px, fontWeight 400, color #191919",
+        "Primary CTA chip ('앱 다운로드') — bg #d80c18, color #ffffff, radius 4px, padding 8/12, fontSize 16px (XS variant)",
+        "Close × button, 16×16, fill #8c8c8c (gray-400)"
+      ],
+      "rect-desktop": { "x": 0, "y": 0, "w": 1280, "h": 50 },
+      "rect-mobile": "full-bleed, ~44px tall"
+    },
+    {
+      "name": "Header (search + login)",
+      "selector": "._header_1wckr_1",
+      "anatomy": [
+        "Hamburger icon-button — 20×20 SVG, fill #191919",
+        "Wordmark logo (clickable, returns to /)",
+        "Search input — placeholder '검색', fontFamily 'Pretendard Variable, sans-serif', fontSize 15px, fontWeight 500, lineHeight 18px, color #191919, transparent bg, no visible border (rounded grey pill container behind it)",
+        "Right cluster: 알림(bell) icon, 장바구니/찜 access, '로그인/회원가입' button — secondary style: bg #ffffff, color #4c4c4c (gray-700), border 1px solid #e5e5e5 (gray-100), radius 6px, padding 12/20, fontSize 16px"
+      ],
+      "_note": "Login button appears desktop-only on this width; mobile compresses to icon-only cluster"
+    },
+    {
+      "name": "Category Nav (horizontal scroll)",
+      "selector": "nav (top-level under header on desktop) / chip rail on mobile",
+      "anatomy": [
+        "Inline link list separated by ~16px gap",
+        "Items observed: 카테고리, 스포츠/레저, 스타굿즈, 디지털, 키덜트, 여성의류, 메루카리, 판매자센터",
+        "fontSize 16px, fontWeight 400 (active link a.active has no color shift — emphasis is purely positional/underline)",
+        "color #191919 across all items"
+      ]
+    },
+    {
+      "name": "Hero / Promotion Carousel",
+      "selector": "main ._content_11ivb_1 > first child",
+      "anatomy": [
+        "Full-bleed image carousel with '1 / 10' counter chip overlay (semi-transparent bg rgba(0,0,0,0.3), radius 999px, white text)",
+        "Vertical aspect ratio per --bun-ui-aspect-ratio-vertical (81/100) is reserved for product cards; hero is typically 16:9 or landscape-banner"
+      ]
+    },
+    {
+      "name": "Quick-Action Row",
+      "anatomy": [
+        "Horizontally scrolling quick-tap rail: 찜 (wishlist) · 최근본상품 (recently viewed) · 내폰시세 (my-phone price-check) · 스포츠 · 디지털 · 스타굿즈 · …",
+        "Each item: icon (circular tinted bg) above 12-14px label",
+        "'내폰시세' is a Bunjang-specific service entry — fast access to phone resale price"
+      ]
+    },
+    {
+      "name": "Section Header ('오늘의 추천 아이템')",
+      "anatomy": [
+        "Title fontSize ~18-20px fontWeight 700 color #191919",
+        "Optional '더보기' link on the right, fontSize 12-14px fontWeight 500 color gray-500 #7f7f7f"
+      ]
+    },
+    {
+      "name": "Product Card Grid (2-col on mobile)",
+      "selector": "a[href*='/products/'] ._container_15rjm_1",
+      "anatomy": [
+        "ThumbnailContainer — aspect-ratio 81/100 (vertical), borderRadius 6px (set via inline --radiusVar__1j9duj80), background #f6f6f6 placeholder",
+        "Image — loading='lazy', src from media.bunjang.co.kr, object-fit cover",
+        "Heart (찜) button — absolute top-right, 40×40 padding, 20×20 SVG icon, fill 'none' + stroke #fff with 10% black backdrop drop — outlined when unliked, filled red when liked",
+        "Below thumbnail (vertical stack with 0 explicit padding, parent flex gap):",
+        "  Price — fontSize 16px fontWeight 700 color #191919 (e.g. '600,000원')",
+        "  Title — fontSize 14px fontWeight 500 color #666 (gray-600), max-lines 1-2",
+        "  Meta row — fontSize 12px fontWeight 500 color #999 (gray-300) — '19시간 전' · region · 찜 count"
+      ],
+      "_taxonomy-of-card-types": [
+        "기본 (basic): just price + title + meta",
+        "안전결제 (escrow eligible): adds a small '안전결제' chip — uses --color-safe-* tier",
+        "내폰시세 (price-checked): adds blue verification chip",
+        "감정 (authenticated for luxury): adds --color-care-* warm-amber chip — most prominent on 명품 / 시계 / 가방 categories"
+      ]
+    },
+    {
+      "name": "Bottom Tab Bar (mobile native app only; web shows app-CTA strip)",
+      "_note": "Web m.bunjang.co.kr uses sticky bottom 'install our app' strip in place of an in-app tab bar. Tabs observed in app: 홈 / 카테고리 / 등록 / 채팅 / 마이",
+      "anatomy": [
+        "5 equally-spaced icon+label items",
+        "Center '등록' (sell) likely a raised circular FAB in red #d80c18",
+        "Label fontSize 12px"
+      ]
+    },
+    {
+      "name": "Footer",
+      "selector": "footer.Box__7nn0kn17",
+      "anatomy": [
+        "Background #f6f6f6 (gray-50)",
+        "Padding 20px 132px 40px on desktop wide; tighter on mobile",
+        "Link list: 회사소개 · 이용약관 · 운영정책 · 개인정보처리방침 · 청소년보호정책 · 광고제휴",
+        "Business-info dump — 사업자등록번호, 대표이사, 주소, 통신판매업신고",
+        "fontSize 12-13px fontWeight 400 color #666 (gray-600)"
+      ]
+    }
+  ],
+  "layout-rules": {
+    "page-max-width": "1240px (--layout-width-large) — content centered; mobile flex column from 390px baseline",
+    "card-grid": "2-col mobile / 4-col desktop, gap ~12-16px",
+    "section-padding-vertical": "24-32px between sections (observed gap from rect offsets)",
+    "thumbnail-aspect": "always 81:100 portrait (Bunjang treats vertical product photos as canonical — phones, sneakers, K-pop goods photograph taller than they are wide)"
+  },
+  "interaction-shape": {
+    "primary-cta": {
+      "shape": "rectangle with 4-6px radius (NOT pill, NOT square)",
+      "fill": "#d80c18",
+      "text": "#ffffff",
+      "_note": "Red is RESERVED for the highest-intent action on a surface — almost always 'open the app' on web, or '구매하기' / '등록하기' inside app. Never used on browse or category surfaces."
+    },
+    "secondary-cta": {
+      "shape": "rectangle with 6px radius",
+      "fill": "#ffffff",
+      "border": "1px solid #e5e5e5",
+      "text": "#4c4c4c"
+    },
+    "chip": {
+      "shape": "pill 999px or rounded 4-6px depending on size",
+      "_observed": "category chips, status chips on cards"
+    },
+    "heart": {
+      "states": "outlined (default) → filled red on tap; 10% black inner glow gives the icon legibility against thumbnail backgrounds"
+    }
+  }
+}

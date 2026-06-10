@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "source": "live CDP getComputedStyle font-family frequency on https://www.upstage.ai/",
+    "captured_at": "2026-05-15"
+  },
+  "primary_body": {
+    "stack": "Geist, sans-serif",
+    "frequency": "869 / ~930 sampled elements (~93%)",
+    "role": "Body, paragraph, navigation, button label, footer column, card text",
+    "weights_in_use": [400, 500, 600, 700],
+    "license_note": "Geist is the open-source Vercel Sans variant — public webfont, no licensing concern for reference research."
+  },
+  "display_hero": {
+    "stack": "Espeak, Arial, sans-serif",
+    "frequency": "3 sampled hero H1 phrases (e.g. 'Supercharge', 'with AI.', 'Experience the future of work.')",
+    "role": "Hero-only display face. Anchors the largest typographic moment at 57.6px / weight 600.",
+    "license_note": "Espeak is a proprietary commissioned/custom display face — reference-only; do NOT redistribute or substitute as the actual Upstage face on derivative work. For OmD generation, use a tonally similar open display (e.g. Söhne, Inter Display, or PP Neue Montreal) as a stand-in."
+  },
+  "rotating_industry_swap": {
+    "stack": "monospace (browser default)",
+    "frequency": "4 industry-word swaps inside hero ('Insurance', 'Fi…', 'Healthcare', 'Manufacturing')",
+    "role": "Marks the variable slot in the hero sentence with a typographic shift, not a color or weight shift. Signature move — pairs the custom display with a humble monospace to read 'this part is the configurable one'.",
+    "size_observed": "48px (down from 57.6px Espeak around it) — slight de-emphasis on swap word"
+  },
+  "fallback_unhydrated": {
+    "stack": "sans-serif",
+    "frequency": "~50 elements (transient or unhydrated layer)",
+    "role": "Default sans before Geist loads — system fallback"
+  },
+  "system_ui_chrome": {
+    "stack": "system-ui, -apple-system, 'system-ui', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+    "frequency": "11 elements — auxiliary chrome (browser-default form controls / overlays)",
+    "role": "Webflow's bundled system fallback for non-hydrated UI"
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "id": "lunit",
+  "captured_at": "2026-05-14T10:56:00+09:00",
+  "method": "Chrome DevTools Protocol (CDP) :9222 Runtime.evaluate + getComputedStyle",
+  "browser": "Chrome/148.0.7778.97",
+  "page": {
+    "url": "https://www.lunit.io/",
+    "title": "Early Detection & Precision Oncology Medical AI Software | Lunit",
+    "viewport": {
+      "w": 1280,
+      "h": 713
+    }
+  },
+  "surfaces_inspected": [
+    "www.lunit.io home (hero, stats, sections, nav, CTA, footer)"
+  ],
+  "raw_samples": [
+    {
+      "key": "hero-h1",
+      "source": "raw2",
+      "index": null,
+      "tag": "h1",
+      "cls": "lunit-hero__headline f-size-6xl",
+      "text": "Conquer Cancer\nThrough Cutting-Edge AI",
+      "computed": {
+        "color": "rgb(21, 21, 21)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "ClashGrotesk, system-ui, sans-serif",
+        "fontSize": "78px",
+        "fontWeight": "300",
+        "lineHeight": "92px",
+        "letterSpacing": "normal",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "boxShadow": "none",
+        "borderColor": "rgb(21, 21, 21)",
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "textTransform": "none"
+      },
+      "rect": {
+        "w": 1080,
+        "h": 184
+      }
+    },
+    {
+      "key": "stat-number",
+      "source": "raw2",
+      "index": null,
+      "tag": "div",
+      "cls": "supreme-stats-wrapper",
+      "text": "10,000+\n\nCustomer Sites\n\n65+\n\nCountries\n\n700+\n\nPublications\n\n100+\n\nPartnerships",
+      "computed": {
+        "color": "rgb(35, 50, 50)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Lexend, system-ui, sans-serif",
+        "fontSize": "20px",
+        "fontWeight": "300",
+        "lineHeight": "28px",
+        "letterSpacing": "normal",
+        "borderRadius": "0px",
+        "padding": "120px 0px",
+        "margin": "0px",
+        "boxShadow": "none",
+        "borderColor": "rgb(35, 50, 50)",
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "textTransform": "none"
+      },
+      "rect": {
+        "w": 1280,
+        "h": 351
+      }
+    },
+    {
+      "key": "cta-4",
+      "source": "raw2",
+      "index": null,
+      "tag": "a",
+      "cls": "lunit-header__cta-button btn btn-primary btn-md",
+      "text": "Contact Us",
+      "computed": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgb(0, 0, 0)",
+        "fontFamily": "Lexend, system-ui, sans-serif",
+        "fontSize": "16.4px",
+        "fontWeight": "500",
+        "lineHeight": "22.4px",
+        "letterSpacing": "normal",
+        "borderRadius": "100px",
+        "padding": "7px 24px",
+        "margin": "0px",
+        "boxShadow": "none",
+        "borderColor": "rgb(255, 255, 255)",
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "textTransform": "none"
+      },
+      "rect": {
+        "w": 137,
+        "h": 36
+      }
+    },
+    {
+      "key": "nav-link-1",
+      "source": "raw2",
+      "index": null,
+      "tag": "a",
+      "cls": "lunit-header__top-link",
+      "text": "INVESTORS",
+      "computed": {
+        "color": "rgb(0, 0, 0)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "ClashGrotesk, system-ui, sans-serif",
+        "fontSize": "13.2px",
+        "fontWeight": "400",
+        "lineHeight": "13.2px",
+        "letterSpacing": "normal",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px",
+        "boxShadow": "none",
+        "borderColor": "rgb(0, 0, 0)",
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "textTransform": "uppercase"
+      },
+      "rect": {
+        "w": 65,
+        "h": 13
+      }
+    },
+    {
+      "key": "footer",
+      "source": "raw2",
+      "index": null,
+      "tag": "footer",
+      "cls": "supreme-footer",
+      "text": "Contact Us\nCancer Screening\nAI Radiology Platform\nLunit INSIGHT MMG (2D)\nLunit INSIGHT DBT (3D)\nScor",
+      "computed": {
+        "color": "rgb(35, 50, 50)",
+        "backgroundColor": "rgb(239, 240, 244)",
+        "fontFamily": "Lexend, system-ui, sans-serif",
+        "fontSize": "20px",
+        "fontWeight": "300",
+        "lineHeight": "28px",
+        "letterSpacing": "normal",
+        "borderRadius": "0px",
+        "padding": "60px 0px 116px",
+        "margin": "0px",
+        "boxShadow": "none",
+        "borderColor": "rgb(35, 50, 50)",
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "textTransform": "none"
+      },
+      "rect": {
+        "w": 1280,
+        "h": 1077
+      }
+    },
+    {
+      "key": "body-p-1",
+      "source": "raw2",
+      "index": null,
+      "tag": "p",
+      "cls": "",
+      "text": "At Lunit, we’re working toward a future where cancer is detected earlier and treated with greater pr",
+      "computed": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Lexend, system-ui, sans-serif",
+        "fontSize": "18.4px",
+        "fontWeight": "300",
+        "lineHeight": "26.4px",
+        "letterSpacing": "normal",
+        "borderRadius": "0px",
+        "padding": "0px",
+        "margin": "0px 0px 15px",
+        "boxShadow": "none",
+        "borderColor": "rgb(255, 255, 255)",
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "textTransform": "none"
+      },
+      "rect": {
+        "w": 810,
+        "h": 53
+      }
+    },
+    {
+      "key": "section-bg-3",
+      "source": "raw2",
+      "index": null,
+      "tag": "section",
+      "cls": "oxy-superbox-section supreme-element supreme-lunit-technology-hero aos-init",
+      "text": "Reimagining How the World Detects and Treats Cancer\n\nAt Lunit, we’re working toward a future where c",
+      "computed": {
+        "color": "rgb(35, 50, 50)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "fontFamily": "Lexend, system-ui, sans-serif",
+        "fontSize": "20px",
+        "fontWeight": "300",
+        "lineHeight": "28px",
+        "letterSpacing": "normal",
+        "borderRadius": "0px",
+        "padding": "0px 40px",
+        "margin": "0px",
+        "boxShadow": "none",
+        "borderColor": "rgb(35, 50, 50)",
+        "borderWidth": "0px",
+        "borderStyle": "none",
+        "textTransform": "none"
+      },
+      "rect": {
+        "w": 1280,
+        "h": 683
+      }
+    },
+    {
+      "key": "raw1-button-16",
+      "source": "raw1",
+      "index": 16,
+      "selector": "button",
+      "tag": "button",
+      "className": "CybotCookiebotDialogBodyButton",
+      "text": "Allow all",
+      "computed": {
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgb(16, 50, 207)",
+        "fontFamily": "sans-serif",
+        "fontSize": "15px",
+        "fontWeight": "600",
+        "lineHeight": "17.25px",
+        "letterSpacing": "normal",
+        "borderRadius": "3.75px",
+        "padding": "15px",
+        "boxShadow": "none",
+        "borderColor": "rgb(16, 50, 207)",
+        "borderWidth": "2px"
+      },
+      "rect": {
+        "w": 286,
+        "h": 51
+      }
+    }
+  ]
+}

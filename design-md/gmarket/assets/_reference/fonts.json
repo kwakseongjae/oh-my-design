@@ -1,0 +1,41 @@
+{
+  "primary_display": {
+    "name": "Gmarket Sans",
+    "weights_distributed": [
+      "Light",
+      "Medium",
+      "Bold"
+    ],
+    "weight_axis": [
+      300,
+      500,
+      700
+    ],
+    "formats": [
+      "TTF",
+      "OTF"
+    ],
+    "license": "SIL Open Font License (free commercial + non-commercial)",
+    "distribution_url": "https://corp.gmarket.com/fonts/",
+    "download_files": [
+      "GmarketSansTTF.zip",
+      "GmarketSansOTF.zip"
+    ],
+    "character_set": {
+      "korean": 11172,
+      "english": 95,
+      "special": 986
+    },
+    "design_intent": "geometric forms within square boundaries; aligned for accessibility across print/web/mobile",
+    "captured_at": "2026-05-15"
+  },
+  "primary_text_stack": {
+    "css": "-apple-system, system-ui, \"Apple SD Gothic Neo\", Roboto, \"Noto Sans CJK KR\", Tahoma, \"Noto Sans Korean\", \"Noto Sans KR\", \"Gmarket Sans\", sans-serif",
+    "rationale": "Apple SD Gothic Neo first on macOS/iOS; Noto Sans KR fallback; Gmarket Sans reserved for display moments (section H2, banner copy, logo)",
+    "observed_in_body": "146/272 sampled elements used the system stack",
+    "observed_in_display": "19/272 sampled elements used pure Gmarket Sans"
+  },
+  "css_variable": "--gmarketFont: \"Gmarket Sans\", sans-serif",
+  "tier1_official": true,
+  "tier1_evidence": "https://corp.gmarket.com/fonts/ — first-party distribution page with SIL OFL"
+}

@@ -1,0 +1,66 @@
+{
+  "surfaces_inspected": [
+    "https://jumpit.saramin.co.kr/ (home)",
+    "https://jumpit.saramin.co.kr/positions?sort=popular (browse + filter row)"
+  ],
+  "ia_observed": {
+    "global_nav": ["개발자 채용", "이력서", "#꿀 피드", "개발자 인터뷰"],
+    "auth_cta": ["회원가입/로그인"],
+    "secondary_nav": ["기업 서비스"],
+    "home_sections": [
+      "global header (sticky, 121px tall, #FFF)",
+      "hero carousel (3-up sliding cards, 340px tall, 32/700 white-on-photo titles)",
+      "Notice eyebrow + announcement card (#00DD6D 13/700 eyebrow above)",
+      "테마별 모음.zip — 8-card thematic grid (140px tile, 16/400 black titles, no chrome)",
+      "회원님을 위한 AI 추천 포지션 (h3 24/700 #222)",
+      "이번주 인기 포지션 (h3 24/700)",
+      "footer (#FBFBFB, 363px tall, 14/400 #444 links)"
+    ],
+    "positions_anatomy": [
+      "filter row 1: 22 role-category chips (전체 / 서버백엔드 / 프론트엔드 / 웹풀스택 / 안드로이드 / iOS / 크로스플랫폼 / 게임클라이언트 / 게임서버 / DBA / 빅데이터 / AI ML / DevOps / 정보보안 / QA / 개발PM / HW임베디드 / SW솔루션 / 웹퍼블리셔 / VR AR 3D / 블록체인 / 기술지원) — 20px pill, single-select active uses #00DD6D",
+      "filter row 2: 4 outlined dropdowns (기술스택, 경력, 지역, 태그) — 100px pill",
+      "sort segmented control (sort=popular | latest)",
+      "JobCard grid (multi-column desktop, single-col mobile expected — 0px radius cards, no shadow)"
+    ]
+  },
+  "heading_outline": {
+    "home": {
+      "h1_count": 0,
+      "h1_note": "No <h1> on the home page (SEO/a11y observation — flagged in §9)",
+      "h2": ["Notice (#00DD6D eyebrow)"],
+      "h3": ["테마별 모음.zip", "회원님을 위한 AI 추천 포지션을 보고싶다면?", "이번주 인기 포지션", "+ 12 carousel-card titles"]
+    },
+    "positions": {
+      "h1_observed": false,
+      "h2_observed": false,
+      "h3": ["section grouping titles in result strip"]
+    }
+  },
+  "layout_observations": [
+    "Content max-width inferred ~1280px (not measured this pass — flagged for UPDATE).",
+    "Section vertical rhythm appears to use 24/32/40px spacing; not exact-captured.",
+    "No box-shadow used anywhere in sampled chrome — depth is surface-tint only (#FBFBFB footer vs #FFF page).",
+    "All cards observed at 0px radius. Pill radii are reserved for interactive controls.",
+    "Filter chip row uses horizontal scroll on mobile (CSS overflow inferred — not validated)."
+  ],
+  "class_naming": {
+    "framework": "Next.js (App Router, x-powered-by: Next.js) + styled-components",
+    "class_pattern": "sc-<8-char-hash>-<index> <kebab-or-camelhash>",
+    "examples": [
+      "sc-f154264c-0 bpYpew (header)",
+      "sc-90f62648-4 caJeSq (hero card title)",
+      "sc-4e6882eb-0 jXvkaV (primary CTA)",
+      "sc-fd5ea417-7 fQGbUe (role-filter chip)",
+      "outlined (un-hashed semantic class on filter dropdowns)"
+    ],
+    "implication": "No public token-var contract; semantic intent must be inferred from rendered styles plus the rare un-hashed class names (e.g. `outlined`, `title`, `links_wrap`)."
+  },
+  "stack_fingerprint": {
+    "framework": "Next.js (App Router)",
+    "css_strategy": "styled-components runtime",
+    "css_vars_on_root": 0,
+    "cdn": "CloudFront (ICN57 PoP, x-amz-cf-id header confirms KR-Seoul edge)",
+    "parent_org": "Saramin HR — jumpit.saramin.co.kr cname; original www.jumpit.co.kr now 301 → jumpit.saramin.co.kr"
+  },
+  "tone_observed": "Developer-vernacular Korean with English keyword inlining ('#꿀 피드', 'Notice', '.zip', 'HOT', 'AI School', 'NO.1 부트캠프'). Casual, recruiter-to-engineer register rather than corporate-HR. Frequent use of trailing 's' for plural ('요즘 폼 미친 기업s')."
+}

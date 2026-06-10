@@ -1,0 +1,26 @@
+{
+  "id": "kream",
+  "stack": "\"Pretendard Variable\", Pretendard, -apple-system, system-ui, Roboto, \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", sans-serif",
+  "primary": "Pretendard Variable",
+  "fallbacks_ko": [
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic"
+  ],
+  "fallbacks_en": [
+    "-apple-system",
+    "system-ui",
+    "Roboto",
+    "Helvetica Neue",
+    "Segoe UI"
+  ],
+  "scale_observed": {
+    "display_h1": "32px / 700",
+    "search_query": "24px / 700",
+    "body": "16px / 400",
+    "card_title": "16px / 700",
+    "shortcut_link": "16px / 400",
+    "chip": "13px / 400",
+    "ghost_button": "13px / 300"
+  }
+}

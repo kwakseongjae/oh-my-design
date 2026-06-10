@@ -1,0 +1,21 @@
+{
+  "id": "catchtable",
+  "stack_primary": "Pretendard, -apple-system, system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", sans-serif",
+  "primary_family": "Pretendard",
+  "license": "OFL 1.1 (Pretendard) — free for commercial use, no attribution required for end users; redistribution must keep OFL.",
+  "delivery": "Self-hosted at app.catchtable.co.kr (no fontsource / no Google Fonts request observed in initial paint).",
+  "no_brand_display_font": true,
+  "weights_used": [400, 450, 500, 600, 700],
+  "weight_role_map": {
+    "400": "Body text, list items, captions, nav labels, secondary chips (~91% of all rendered text)",
+    "450": "Light-emphasis count text inside Swiper indicators (e.g. slide counters '2 / 25')",
+    "500": "Search input placeholder, chip labels, geo-toggle button, footer policy links",
+    "600": "Sparse — section sub-titles and small-button emphasis",
+    "700": "Section titles (음식종류별 BEST, 캐치 매거진), '어디로 가시나요?' search hero label, H1, price emphasis"
+  },
+  "size_scale_px": [10, 11, 12, 13, 14, 15, 16, 18, 20, 24],
+  "line_height_default": "150%",
+  "letter_spacing_default": "normal",
+  "korean_density_floor": "14px body sits at the typical KR mobile density baseline. 10/11px micro-meta is below WCAG body floor — used only for legal disclaimers and slide counters.",
+  "captured_at": "2026-05-15T07:10:00Z"
+}

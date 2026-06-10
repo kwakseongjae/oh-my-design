@@ -1,0 +1,31 @@
+{
+  "captured_at": "2026-05-15T00:00:00Z",
+  "fonts": [
+    {
+      "family": "Pretendard",
+      "license": "SIL OFL 1.1 (open-source, free for commercial use)",
+      "cdn_url": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css",
+      "html_link": "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css\" />",
+      "live_observed": true,
+      "role": "body + heading + CTA (exclusive — 100% of sampled elements)",
+      "observed_weights": [400, 700]
+    },
+    {
+      "family": "-apple-system",
+      "license": "system (macOS/iOS)",
+      "cdn_url": null,
+      "html_link": null,
+      "live_observed": false,
+      "role": "system fallback (#2 in stack)"
+    },
+    {
+      "family": "system-ui",
+      "license": "system",
+      "cdn_url": null,
+      "html_link": null,
+      "live_observed": false,
+      "role": "system fallback (#3 in stack)"
+    }
+  ],
+  "full_fallback_chain": "Pretendard, -apple-system, \"system-ui\", Roboto, \"Segoe UI\", Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif"
+}

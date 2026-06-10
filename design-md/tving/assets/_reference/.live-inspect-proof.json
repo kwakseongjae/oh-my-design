@@ -1,0 +1,131 @@
+{
+  "navigated_at": "2026-05-15T00:00:00Z",
+  "source_url": "https://www.tving.com (redirected to https://www.tving.com/onboarding for unauth state)",
+  "viewport": "1280x713",
+  "tool_used": "browser-harness CDP :9222 (Chrome remote-debugging)",
+  "method": "new_tab + wait_for_load + js(getComputedStyle sampling) + capture_screenshot",
+  "raw_samples": [
+    {
+      "element_selector": "body",
+      "font-family": "Pretendard, -apple-system, \"system-ui\", Roboto, \"Segoe UI\", ...",
+      "color": "rgb(255, 255, 255)",
+      "background-color": "rgb(0, 0, 0)",
+      "font-size": "12.4px"
+    },
+    {
+      "element_selector": "html",
+      "background-color": "rgb(0, 0, 0)",
+      "note": "Dark canvas locked at root; surfaces remain dark across hero/onboarding"
+    },
+    {
+      "element_selector": "BUTTON.css-2ecmcz (primary CTA '프로모션 보기')",
+      "background-color": "rgb(255, 21, 60)",
+      "color": "rgb(255, 255, 255)",
+      "border-radius": "12.4px",
+      "padding": "19.6292px 62px",
+      "font-weight": "700",
+      "font-size": "18.6px",
+      "height": "62px"
+    },
+    {
+      "element_selector": "A '티빙 시작하기' (header CTA)",
+      "background-color": "rgb(254, 21, 60)",
+      "color": "rgb(255, 255, 255)",
+      "border-radius": "8px",
+      "height": "32px",
+      "font-weight": "700",
+      "font-size": "14px"
+    },
+    {
+      "element_selector": "h2 '지금 시작해보세요'",
+      "color": "rgb(255, 255, 255)",
+      "font-size": "43.4px",
+      "font-weight": "700",
+      "font-family": "Pretendard"
+    },
+    {
+      "element_selector": "footer nav a (이용약관/개인정보처리방침 등)",
+      "color": "rgb(163, 163, 163)",
+      "font-size": "15.5px",
+      "font-weight": "400-700 mixed"
+    },
+    {
+      "element_selector": ":root --tving (HSL)",
+      "value": "350 100% 54.12%",
+      "note": "Canonical brand token; equivalent hex ≈ #FF153C (matches observed CTA bg rgb(255,21,60))"
+    },
+    {
+      "element_selector": ":root --color-cate-home / live / clip / vod / movie / ad",
+      "values": {
+        "home": "#ff1f45",
+        "live": "#ff584a",
+        "clip": "#fd8163",
+        "vod": "#387dff",
+        "movie": "#7d57fc",
+        "ad": "#fcc800"
+      },
+      "note": "Six-category taxonomy hardcoded as CSS custom properties — distinctive brand signature"
+    },
+    {
+      "element_selector": ":root --gnb-height / --header-height / --bottom-tab-height",
+      "values": {
+        "gnb-height": "70px",
+        "header-height": "4rem",
+        "bottom-tab-height": "4.167rem"
+      }
+    },
+    {
+      "element_selector": ":root --radius",
+      "value": "0.5rem",
+      "note": "Base radius token; observed runtime values 8px / 12.4px / 16.5292px (largest = card top corners)"
+    },
+    {
+      "element_selector": "top color frequency (body-level sampling, 3000 nodes)",
+      "values": {
+        "rgb(255,255,255)": 519,
+        "rgb(179,179,179)": 169,
+        "rgb(110,110,110)": 52,
+        "rgb(163,163,163)": 24,
+        "rgb(217,217,217)": 6
+      },
+      "note": "White + 4-step gray scale dominates text; zero non-grayscale text color"
+    },
+    {
+      "element_selector": "top background frequency",
+      "values": {
+        "rgb(0,0,0)": 12,
+        "rgb(46,46,46)": 10,
+        "rgb(255,21,60)": 2,
+        "rgb(255,31,69)": 1,
+        "rgb(254,21,60)": 1,
+        "rgba(0,0,0,0.5)": 1
+      },
+      "note": "Three near-identical reds (255,21,60 / 254,21,60 / 255,31,69) — runtime alpha/hover variants of canonical --tving #FF153C"
+    },
+    {
+      "element_selector": "top radius frequency",
+      "values": {
+        "16.5292px": 41,
+        "16.5292px 16.5292px 0px 0px": 20,
+        "3px": 13,
+        "3px 3px 0px 0px": 10,
+        "50%": 4,
+        "12.4px": 3
+      },
+      "note": "Card top-corner-only radius pattern (poster bleed); fine 3px chips; circular for avatars"
+    }
+  ],
+  "css_var_count": 114,
+  "css_var_namespaces": [
+    "--tving (brand)",
+    "--color-cate-* (6 category hues)",
+    "--gnb-height / --header-height / --bottom-tab-height / --content-inset-* (layout)",
+    "--live-tab-* / --kbo-player-* / --sports-player-* (live-streaming geometry)",
+    "--safe-area-inset-* (iOS PWA)",
+    "--tw-* (tailwind utility)",
+    "--swal2-* / --swiper-* (vendor)",
+    "--card / --popover / --muted / --accent / --background / --foreground (shadcn-pattern semantic)"
+  ],
+  "screenshot_captured": "screenshots/hero-desktop.png (1280x713, above-fold)",
+  "ip_guardrail_note": "Content thumbnails (poster art, hero stills) NOT captured into product DOM. Only reference screenshot kept under fair-use commentary. No verbatim taglines reproduced in DESIGN.md."
+}

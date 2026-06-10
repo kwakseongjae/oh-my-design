@@ -1,0 +1,20 @@
+{
+  "source": "live computed style sweep across body descendants",
+  "captured_at": "2026-05-14T10:56:33.196Z",
+  "in_use": [
+    "\"Pretendard K Edition\", -apple-system, \"system-ui\", system-ui, Roboto, \"Helvetica Neue\", \"Segoe UI\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", \"Malgun Gothic\", sans-serif"
+  ],
+  "primary": "Pretendard K Edition",
+  "fallbacks": [
+    "-apple-system",
+    "system-ui",
+    "Roboto",
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    "sans-serif"
+  ],
+  "notes": "\"Pretendard K Edition\" is the Korean-optimised cut of the open-source Pretendard family. K bank ships it as the global primary — no serif/display split observed on this surface."
+}

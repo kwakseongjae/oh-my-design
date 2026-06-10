@@ -1,0 +1,65 @@
+{
+  "$meta": {
+    "brand": "Gmarket",
+    "captured_at": "2026-05-15",
+    "method": "live CDP browser inspection on 2 surfaces"
+  },
+  "surfaces": [
+    {
+      "url": "https://www.gmarket.co.kr/",
+      "title": "G마켓 - 지금부터의 마켓",
+      "section_headings_h2": [
+        "전체카테고리",
+        "프로모션 배너",
+        "지금 제일 잘 나가는 상품",
+        "지금부터의 신선마켓, 이마트몰",
+        "지금부터의 신상품, G마켓 신상마켓",
+        "지금부터의 라이브, G LIVE",
+        "이번주 베스트",
+        "G마켓 ALL kill",
+        "신세계 유니버스 클럽 전용",
+        "Smile Pay 단독 혜택"
+      ],
+      "anatomy": [
+        "Top utility bar (mypage / cart / global / language)",
+        "Main header with logo + sprite-based search bar + cart icon",
+        "GNB primary nav (전체카테고리 / 베스트 / 신상마켓 / 슈퍼딜 / 알뜰쇼핑 / 브랜드데이 / G마켓Pay / 골프 / 라이브)",
+        "Hero promo carousel (swiper-controlled, --swiper-theme-color #007aff)",
+        "Vertical stack of category sections, each = h2 28px (or 24px in module variant) + 2- or 4-up card grid",
+        "Always-on price emphasis in 16-18px Gmarket Red (#da120d)",
+        "Footer with seller-services button + legal notices + corp links"
+      ],
+      "sample_count": 182,
+      "css_var_count": 247
+    },
+    {
+      "url": "https://corners.gmarket.co.kr/Bestsellers",
+      "title": "G마켓 - G마켓 베스트>전체",
+      "anatomy": [
+        "Same top utility + GNB",
+        "Subheading H2 'G마켓 베스트' 28px / 400 (rare — most other H2s are 700)",
+        "Tab strip for category (전체 / 패션의류 / 패션잡화 / 뷰티 / etc.)",
+        "Ranked grid — numerical badge (1, 2, 3 ...) + thumbnail + title + final-card-discount-price + delivery chip",
+        "Right rail with quick-jump category list"
+      ],
+      "sample_count": 90,
+      "css_var_count": 246
+    }
+  ],
+  "naming_conventions": {
+    "buttons": "button__<role>  (BEM-like double underscore; e.g. button__category-all / button__layer-close / button__usermenu)",
+    "lists": "list-item / list-item--<variant>",
+    "boxes": "box__<role>",
+    "text": "text__<role> / text__<role>--<modifier>",
+    "links": "link__<role>",
+    "sprite": "sprite / sprite__common / sprite__common--before / sprite__common--after  (CSS-sprite-driven icons — legacy but production)"
+  },
+  "token_families": [
+    "color × 10 hues × 10 stops (gray/red/orange/yellow/green/teal/blue/indigo/purple/pink)",
+    "Club Smile sub-system (Navy 5 stops + Blue 5 stops + Gray 5 stops) — Shinsegae Universe loyalty programme branding",
+    "Event sub-system (--Event-bf-main / --Event-bs-main / --Event-bsd-main) — promotional surfaces",
+    "Smile-Yellow + StarDelivery-Purple + Green-Connect-Blue — service-line accents",
+    "Single --minWidth: 1200px layout token",
+    "Single --gmarketFont and --Font typography tokens"
+  ]
+}

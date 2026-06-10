@@ -1,0 +1,126 @@
+{
+  "$schema": "omd-live-inspect-proof-0.1",
+  "method": "CDP :9222 / Page.navigate + Runtime.evaluate(getComputedStyle)",
+  "browser": "Chrome/148.0.7778.97",
+  "captured_at": "2026-05-15",
+  "tab_ws": "ws://localhost:9222/devtools/page/25ED2AE747AA5E59EE5A90C8A10ECCB4",
+  "surfaces": [
+    "https://www.tossinvest.com/?focusedProductCode=A005930",
+    "https://www.tossinvest.com/stocks/A005930/order"
+  ],
+  "total_dom_samples": 601,
+  "css_vars_captured": 416,
+  "raw_samples": [
+    {
+      "label": "body",
+      "selector": "body",
+      "color": "rgb(195, 195, 198)",
+      "background": "rgb(23, 23, 28)",
+      "fontFamily": "\"Toss Product Sans\", Tossface, -apple-system, system-ui, \"Bazier Square\", \"Noto Sans KR\", \"Segoe UI\", \"Apple SD Gothic Neo\"",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "evidence": "page-level dark surface + Toss Product Sans confirmed"
+    },
+    {
+      "label": "h2",
+      "selector": "h2",
+      "text": "지수 목록",
+      "color": "rgb(195, 195, 198)",
+      "fontSize": "24px",
+      "fontWeight": "700",
+      "evidence": "section heading scale"
+    },
+    {
+      "label": "h3",
+      "selector": "h3",
+      "text": "필터",
+      "color": "rgb(195, 195, 198)",
+      "fontSize": "18.72px",
+      "fontWeight": "700",
+      "evidence": "sub-section heading scale (1.17rem)"
+    },
+    {
+      "label": "primary-button-chrome",
+      "selector": "button",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(217, 217, 255, 0.11)",
+      "borderRadius": "8px",
+      "fontSize": "16px",
+      "evidence": "ghost button on dark — fill via translucent off-white tint, not solid colour"
+    },
+    {
+      "label": "memo-chip",
+      "selector": "button (idx=1, stock detail)",
+      "text": "메모 작성",
+      "color": "rgba(253, 253, 254, 0.89)",
+      "background": "rgba(217, 217, 255, 0.11)",
+      "borderRadius": "32px",
+      "fontSize": "12px",
+      "fontWeight": "600",
+      "padding": "0px 8px",
+      "evidence": "pill-style chip — second radius tier (32px) for contextual actions"
+    },
+    {
+      "label": "nav-link",
+      "selector": "nav a",
+      "color": "rgba(253, 253, 254, 0.89)",
+      "fontSize": "15px",
+      "fontWeight": "500",
+      "evidence": "global nav weight 500 (between body 400 and heading 700)"
+    },
+    {
+      "label": "input",
+      "selector": "input",
+      "color": "rgb(255, 255, 255)",
+      "fontSize": "15px",
+      "fontWeight": "400",
+      "evidence": "text input fully white on dark — no placeholder seen in this sample"
+    },
+    {
+      "label": "css-token-positive-red-fill",
+      "selector": ":root",
+      "css_var": "--tw-semantic-color-fill-positive-default",
+      "value": "#dc2e47",
+      "evidence": "KR-finance convention: 'positive' (up / 매수) renders red — semantic token captured directly from :root"
+    },
+    {
+      "label": "css-token-negative-blue-fill",
+      "selector": ":root",
+      "css_var": "--tw-semantic-color-fill-negative-default",
+      "value": "#3182f6",
+      "evidence": "KR-finance convention: 'negative' (down / 매도) renders blue — same hex as Toss Blue brand CTA, context disambiguates"
+    },
+    {
+      "label": "css-token-brand-blue",
+      "selector": ":root",
+      "css_var": "--tw-semantic-color-fill-brand-default",
+      "value": "#3182f6",
+      "evidence": "Brand fill = Toss Blue — inherited from parent toss.im design language"
+    },
+    {
+      "label": "css-token-page-surface",
+      "selector": ":root",
+      "css_var": "--tw-semantic-color-bg-surface100",
+      "value": "#101013",
+      "evidence": "dark-mode page surface — deeper than rendered body (which observes 23,23,28 via composite)"
+    },
+    {
+      "label": "css-token-panel-border-outer",
+      "selector": ":root",
+      "css_var": "--tw-semantic-color-component-panel-borderOuter",
+      "value": "rgba(214,224,239,0.09)",
+      "evidence": "panel separation via translucent border, not box-shadow — confirms zero-elevation chrome thesis"
+    }
+  ],
+  "ip_guardrails": {
+    "brand_assets_reference_only": true,
+    "verbatim_taglines_excluded": true,
+    "logo_not_redistributed": true,
+    "voice_samples_fresh_derivations": true
+  },
+  "tier1_ds_status": "negative — no public design.tossinvest.com / brand portal / Storybook / Figma library; production code exposes 416 :root tokens (--tw-semantic-* + --tw-adaptive-* + --wts-adaptive-*) which is the closest public artifact",
+  "tier2_indexes": {
+    "getdesign.md": "not consulted (KR fintech systemic gap — consistent with KR-10 batch)",
+    "styles.refero.design": "not consulted (same)"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "catchtable",
+  "surfaces_inspected": [
+    {
+      "url": "https://app.catchtable.co.kr/",
+      "viewport": "1280×713 dpr=1 (desktop, but mobile-first layout dominates — visible status-bar-top / status-bar-padding-top classes confirm WebView-style chrome)",
+      "title": "캐치테이블 | 즐거운 미식 생활의 시작",
+      "css_vars_on_root": 145,
+      "samples_collected": 35,
+      "anatomy": [
+        "HEADER ._1smdfcr0 .status-bar-top — sticky top with logo H1 ('C'), location dropdown ('전국'), 현재 위치로 chip, and search field _1smdfcr5 (#F5F5F5 fill, 13px/500 placeholder #9E9E9E, sharp-corner 0px)",
+        "SECTION .home-slider.mb-16 — Swiper hero carousel with 25 slides, slide counter pill '2 / 25 / 전체' (rgba(20,24,29,0.74) backdrop)",
+        "SECTION ._1ykiqva0 — '어디로 가시나요?' geo discovery row, 20px/700 #222 prompt followed by neighbourhood chips (청담 / 압구정·로데오 / etc. — 13px/500 #222)",
+        "SECTION .section.pb-45 — '음식종류별 BEST' (20px/700 #000 H3), horizontal scroll of best-food-list-item links (호텔 뷔페 / 스시 오마카세 / 한우 오마카세 / …) — 14px/400 black on white, no radius, no background, image-led tiles",
+        "SECTION .u58jiz0 — '캐치 매거진' editorial section (H3 .u58jiz3 / 20px/700)",
+        "NAV .mo4qa92 — bottom tab bar (홈 / 저장 / 내 주변 / 마이다이닝 / MY) — 14px/400, no fill, icon-over-label pattern",
+        "FOOTER — corporate disclosure block on #F9F9F9 — operator (주)와드 / 대표 용태순 / Bundang HQ — 14px/400 #000 body, 11px/500 #666 policy links, 11px/400 #8F8F8F regulatory body"
+      ]
+    },
+    {
+      "url": "https://app.catchtable.co.kr/ct/shop/list?categoryName=서울",
+      "viewport": "1280×713",
+      "samples_collected": 4,
+      "note": "Surface degrades to a single '홈으로 가기' CTA shell on desktop (list endpoint requires authenticated mobile context). Used to confirm primary CTA spec: rgb(255,61,0) fill / #FFF text / 12px radius / 14px/500 type."
+    }
+  ],
+  "ia_observations": [
+    "Mobile-first WebView shell with status-bar reservation — desktop is a porthole, not the design target.",
+    "Discovery flow = search → location → curated category lists → editorial magazine. No price-first sort visible on home.",
+    "Bottom tab bar is the global IA spine — 5 tabs, 마이다이닝 (My Dining) functions as the loyalty / reservation-history hub.",
+    "Restaurant tiles photograph in landscape; 4px-radius rasterised thumbnails inside Swiper sliders are the only soft-corner surfaces."
+  ],
+  "naming_observations": [
+    "Two parallel class systems on the same DOM: legacy human-readable BEM-like (.home-slider, .section, .section-title, .best-food-list-item, .status-bar-top, .disable-user-select, .ebold) coexists with current vanilla-extract auto-hash (_11bicz7*, _1smdfcr*, _1ykiqva*, _1ybuj5k*, _11i5g4l*, mo4qa9*, u58jiz*, syzu2u*, _1wbaq5x*, _4qhv2s*, tuacls*) — evidence of incremental migration from hand-CSS to vanilla-extract.",
+    "Token namespace _11bicz7* contains ~145 :root variables covering color, size, weight, line-height, radius, shadow — a complete design-token sheet emitted at build time."
+  ],
+  "tone_observed": [
+    "Brand voice (from microcopy seen on home): warm-curatorial — '즐거운 미식 생활의 시작' / '어디로 가시나요?' / '음식종류별 BEST' / '캐치 매거진'. Conversational invitation rather than transactional 'book now' urgency.",
+    "Editorial magazine module suggests the brand positions itself as a taste-maker, not just a booking utility — closer to a guidebook than to OpenTable."
+  ],
+  "verified": "2026-05-15"
+}

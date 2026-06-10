@@ -1,0 +1,17 @@
+{
+  "_source": "Live CDP inspect of https://flex.team/ — 2026-05-14",
+  "stack": "\"Pretendard Variable\", Pretendard, -apple-system, system-ui, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+  "primary": {
+    "name": "Pretendard Variable",
+    "type": "variable",
+    "ko_support": true,
+    "license": "SIL Open Font License 1.1",
+    "creator": "Kil Hyung-jin",
+    "source": "https://github.com/orioncactus/pretendard"
+  },
+  "system_fallbacks": ["-apple-system", "system-ui", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans"],
+  "emoji_fallbacks": ["Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+  "weights_observed": [500, 600, 700],
+  "rationale": "Pretendard is the de-facto KR/EN-pairing variable family for Korean SaaS in 2024-26 (also used by Toss, Karrot, Channel.io). Pairs hangul and latin glyphs with matched x-height — gives flex's tight 62.4px line-height on 52px display type its even rhythm.",
+  "_verified": "2026-05-14"
+}

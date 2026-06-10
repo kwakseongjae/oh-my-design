@@ -1,0 +1,18 @@
+{
+  "captured_at": "2026-05-14",
+  "stacks_observed": [
+    "Roboto, \"Noto Sans KR\", sans-serif, AppleSDGothicNeo-Regular, \"Malgun Gothic\", Dotum, sans-serif",
+    "Roboto, \"Noto Sans KR\", Dotum, 돋움, \"sans-serif\", Arial, Helvetica",
+    "Helvetica, Arial, sans-serif"
+  ],
+  "primary": "Roboto",
+  "korean_fallback": "Noto Sans KR",
+  "legacy_fallback": [
+    "AppleSDGothicNeo-Regular",
+    "Malgun Gothic",
+    "Dotum",
+    "돋움"
+  ],
+  "monospace_observed": false,
+  "notes": "No bespoke web font. Roboto (Latin/digits) + Noto Sans KR (Hangul) is the working pair. Long fallback chain reflects legacy IE-era origin (Dotum / Malgun Gothic) — chain not yet pruned."
+}

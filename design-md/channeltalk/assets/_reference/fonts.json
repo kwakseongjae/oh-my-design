@@ -1,0 +1,53 @@
+{
+  "id": "channeltalk",
+  "source": "bezier-tokens/src/global/font.json (canonical Bezier DS) + live channel.io DOM (CDP 2026-05-14)",
+  "stacks": {
+    "sans_kr_primary": [
+      "Inter",
+      "NotoSansKR",
+      "Noto Sans KR",
+      "NotoSansJP",
+      "Noto Sans JP",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "Helvetica Neue",
+      "Segoe UI",
+      "Roboto",
+      "system-ui",
+      "sans-serif"
+    ],
+    "sans_jp_primary": [
+      "Inter",
+      "NotoSansJP",
+      "Noto Sans JP",
+      "NotoSansKR",
+      "Noto Sans KR",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "Helvetica Neue",
+      "Segoe UI",
+      "Roboto",
+      "system-ui",
+      "sans-serif"
+    ],
+    "mono": [
+      "ui-monospace",
+      "Cascadia Code",
+      "Source Code Pro",
+      "Menlo",
+      "Consolas",
+      "DejaVu Sans Mono",
+      "monospace"
+    ],
+    "display_marketing": ["BildV5", "BildV5 Fallback"]
+  },
+  "live_observed_resolutions": {
+    "body_text_117_of_118_samples": "Inter, \"Inter Fallback\", NotoSansKR, \"NotoSansKR Fallback\", NotoSansJP, \"NotoSansJP Fallback\", ...",
+    "single_display_sample": "BildV5, \"BildV5 Fallback\""
+  },
+  "notes": [
+    "Bezier DS product chrome ships Inter as primary across KR/JP locales — never a Korean-only stack; locale only flips which Noto family wins ties.",
+    "BildV5 appeared on exactly 1 of 118 sampled elements in marketing chrome — treat as a marketing-only display face, not a product token.",
+    "No 'Channel Sans' or proprietary face was found in the Bezier source or the live DOM as of 2026-05-14."
+  ]
+}
