@@ -144,3 +144,37 @@ input에 `prior_report_path` 포함되면:
 - 항목별로 RESOLVED / UNRESOLVED / NEW로 표시
 
 Round 2에도 UNRESOLVED BLOCK 있으면 orchestrator로 BLOCK escalation.
+
+## 8. 취향 캡처 — review → taste loop (최종 phase)
+
+review report를 emit한 **후에** 이번 run의 finding들을 한 번 스캔해, 반복 패턴을 취향 후보로 제안한다. report 자체는 advisory 그대로 — 이 phase가 유일하게 쓰기를 일으킬 수 있는 지점이고, 그것도 **사용자가 동의한 경우에만**.
+
+### 후보 조건 (둘 중 하나)
+
+1. **같은 axis ≥2회** — 이번 run의 finding을 axis로 분류(radius / color / spacing / typo / voice)했을 때 같은 axis가 2회 이상 등장
+2. **기존 pending preference와 매칭** — `.omd/preferences.md`가 존재하면 read해서, finding이 `status: pending` 엔트리의 scope와 같은 축이면 1회여도 후보 (반복의 증거가 이미 파일에 있으므로)
+
+`.omd/preferences.md`가 없으면 조건 2는 생략 — 파일을 만들지 않는다.
+
+### 제안 (run당 질문 1개 max)
+
+후보가 1개 이상이면 **단 한 번** 묻는다: "이 패턴, 취향으로 기록할까요?"
+
+- **Claude Code**: AskUserQuestion — 후보가 여러 개면 multiSelect 옵션으로 묶어서 한 질문에 (후보당 한 줄: axis + 발생 횟수 + 요약)
+- **다른 채널 (Codex / OpenCode)**: 같은 내용을 산문 질문 하나로
+
+### 동의 시 기록
+
+선택된 후보만 `omd:remember`의 canonical 포맷 그대로 `.omd/preferences.md`에 append (id 생성·scope 매핑·heading 규칙 전부 omd:remember 절차):
+
+- `signal: review` / `confidence: inferred` / `status: pending`
+- `source_context`: 이번 review report 경로 (예: `.reviews/designer-review-round-1.md`)
+
+### 금지
+
+- **자동 기록 금지** — 질문 없이 append 절대 불가 (omd:remember의 "묻지 말고 기록" 룰은 사용자 발화용 — review 추론에는 적용되지 않는다)
+- **자동 fold 금지** — `status: pending`으로만 기록. DESIGN.md 반영은 평소의 fold-in 임계/게이트(omd:learn)가 결정
+- run당 질문 2개 이상 금지 — 후보가 많아도 multiSelect 하나로 배칭
+- 거절된 후보를 같은 세션에서 재제안 금지
+
+> **수동 검증**: 같은 artifact에서 radius WARN 2건이 나오는 review를 돌리면, report 출력 후 "이 패턴, 취향으로 기록할까요?" 질문이 정확히 1회 뜨고, 동의 시 `.omd/preferences.md`에 `signal: review` / `confidence: inferred` / `status: pending` 엔트리 1개가 append되어야 한다 (DESIGN.md는 변경 없음).

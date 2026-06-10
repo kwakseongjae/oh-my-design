@@ -151,3 +151,32 @@ round 2:
 
 - `omd-designer-review` 보고서 ← `prior_reviews`로 참조 (해소 여부 확인)
 - `omd-locale-adapter` 결과물 ← rubric [5]에서 검증
+
+## 8. 취향 캡처 — QA → taste loop (최종 phase)
+
+verdict를 emit한 **후에**, 이번 run의 rubric FAIL들을 한 번 스캔해 반복 위반을 취향 후보로 제안한다. read-only 원칙은 그대로 — artifact·DESIGN.md는 절대 건드리지 않으며, 이 스킬이 트리거할 수 있는 **유일한 쓰기**는 사용자가 명시적으로 동의한 뒤의 preference append이고, 그것도 `omd:remember`의 canonical 절차 그대로다.
+
+### 후보 조건 (둘 중 하나)
+
+1. **반복 rubric 위반** — 같은 rubric item의 FAIL이 이번 run에서 2회 이상 (여러 artifact/locale에 걸쳐, 또는 round 1·2 연속 동일 item). item을 axis로 환원: [1] Brand consistency → 위반 토큰 종류에 따라 color/spacing/radius, [2] Typography hierarchy → typo, [3] Voice register → voice
+2. **기존 pending preference와 매칭** — `.omd/preferences.md`가 존재하면 read해서, FAIL이 `status: pending` 엔트리의 scope와 같은 축이면 1회여도 후보
+
+`.omd/preferences.md`가 없으면 조건 2는 생략 — 파일을 만들지 않는다. a11y/performance/links([6]-[8])는 취향이 아니라 hard rule — 후보에서 제외.
+
+### 제안 (run당 질문 1개 max)
+
+후보가 1개 이상이면 **단 한 번** 묻는다: "이 패턴, 취향으로 기록할까요?"
+
+- **Claude Code**: AskUserQuestion — 후보 여러 개는 multiSelect 옵션으로 배칭 (후보당 한 줄: axis + FAIL 횟수 + 요약)
+- **다른 채널**: 같은 내용을 산문 질문 하나로
+
+동의된 후보만 `omd:remember` canonical 포맷으로 `.omd/preferences.md`에 append — `signal: review` / `confidence: inferred` / `status: pending`, `source_context`는 이번 QA report 경로 (예: `.reviews/final-qa-round-1.md`).
+
+### 금지
+
+- 질문 없는 자동 기록 절대 불가 — review 추론은 사용자 동의가 전제
+- **자동 fold 금지** — `status: pending` 기록까지만. DESIGN.md 반영은 omd:learn의 평소 임계/게이트가 결정
+- run당 질문 2개 이상 금지, 거절된 후보의 같은 세션 재제안 금지
+- 이 phase가 verdict나 round cap에 영향을 주면 안 됨 (rubric 8 items 고정 유지)
+
+> **수동 검증**: KR/EN 두 artifact에서 rubric [3] Voice register가 모두 FAIL인 QA를 돌리면, verdict 출력 후 "이 패턴, 취향으로 기록할까요?" 질문이 정확히 1회 뜨고, 동의 시 `.omd/preferences.md`에 `scope: voice` / `signal: review` / `confidence: inferred` / `status: pending` 엔트리가 append되어야 한다 (artifact·DESIGN.md는 변경 없음).
