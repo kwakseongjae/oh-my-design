@@ -11,7 +11,7 @@
  * - "block" — inline card (collection pages, long-form surfaces).
  *
  * Events (GA4, matching the inline event() convention in detail-view):
- * - install_copy { source: 'hero' | 'ref_detail' | 'collection', reference? }
+ * - install_copy { source: 'hero' | 'ref_detail' | 'collection' | 'builder', reference? }
  * - prompt_copy  { reference }
  * Both also bump the server-side Redis `copy` counter via trackRef when a
  * reference is in context.
@@ -23,7 +23,7 @@ import { event, trackRef } from "@/lib/gtag";
 
 export const INSTALL_CMD = "npx oh-my-design-cli install-skills";
 
-export type InstallCtaSource = "hero" | "ref_detail" | "collection";
+export type InstallCtaSource = "hero" | "ref_detail" | "collection" | "builder";
 
 /** Per-brand first prompt — what users paste into their agent after install. */
 export function firstPromptFor(brandName: string) {

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ReferenceSelector } from "@/components/reference-selector";
 import { DesignWizard } from "@/components/design-wizard";
 import { PreviewExportView } from "@/components/preview-export-view";
+import { InstallCta } from "@/components/install-cta";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { encodeConfig, decodeConfig } from "@/lib/core/config-hash";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
@@ -260,6 +261,8 @@ export default function BuilderPage() {
     setStylePreferences({});
     setStep("preview");
     event("generation_complete", { reference: id, mode: "as_is" });
+    // GA4 mirror of the Redis trackRef("generate") funnel counter.
+    event("builder_export", { reference: id, format: "as_is" });
     trackRef("generate", id);
     const cfg = encodeConfig(id, pure, DEFAULT_COMPONENTS, {});
     pushUrl("preview", id, cfg);
@@ -269,6 +272,8 @@ export default function BuilderPage() {
     if (!detail) return;
     const cfg = encodeConfig(detail.id, overrides, activeComponents, stylePreferences);
     event("generation_complete", { reference: detail.id });
+    // GA4 mirror of the Redis trackRef("generate") funnel counter.
+    event("builder_export", { reference: detail.id, format: "customized" });
     trackRef("generate", detail.id);
     setStep("preview");
     pushUrl("preview", detail.id, cfg);
@@ -377,14 +382,26 @@ export default function BuilderPage() {
           />
         )}
         {step === "preview" && detail && (
-          <PreviewExportView
-            detail={detail}
-            overrides={overrides}
-            onBack={skipWizard ? goToSelect : goToCustomize}
-            components={activeComponents}
-            onComponentsChange={setActiveComponents}
-            stylePreferences={stylePreferences}
-          />
+          <>
+            <PreviewExportView
+              detail={detail}
+              overrides={overrides}
+              onBack={skipWizard ? goToSelect : goToCustomize}
+              components={activeComponents}
+              onComponentsChange={setActiveComponents}
+              stylePreferences={stylePreferences}
+            />
+            {/* Builder is the main funnel surface — close the loop from preview
+                into the install command. Fires install_copy{source:'builder'} /
+                prompt_copy{reference} (see InstallCta). */}
+            <div className="mx-auto mt-8 w-full max-w-3xl px-4">
+              <InstallCta
+                source="builder"
+                reference={detail.id}
+                brandName={detail.id}
+              />
+            </div>
+          </>
         )}
       </main>
 
