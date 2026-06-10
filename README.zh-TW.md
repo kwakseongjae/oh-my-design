@@ -5,19 +5,16 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>從 107 家真實企業的設計系統生成 DESIGN.md。</strong>互動式精靈。零 AI 呼叫。
+  <strong>為 AI 編碼代理打造的技能驅動設計 — 一個指令完成引導。</strong>221 個真實企業設計系統。安裝過程零 AI 呼叫。之後只要和你的代理對話即可。
 </p>
 
 <p align="center">
-  <strong>新增 OmD v0.1 Philosophy Layer。</strong>Voice・Narrative・Principles・Personas・States・Motion — 讓 Claude Code 輸出你的品牌,而不是 AI 的預設值。
-</p>
-
-<p align="center">
+  <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/v/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/dm/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" />
-  <img src="https://img.shields.io/badge/AI%20calls-zero-blue?style=flat-square" alt="Zero AI" />
-  <img src="https://img.shields.io/badge/references-107-7c5cfc?style=flat-square" alt="107 References" />
+  <img src="https://img.shields.io/badge/references-221-7c5cfc?style=flat-square" alt="221 References" />
+  <img src="https://img.shields.io/badge/CLI%20commands-1-blue?style=flat-square" alt="One CLI command" />
 </p>
 
 <p align="center">
@@ -28,118 +25,50 @@
 
 ## 什麼是 oh-my-design?
 
-**oh-my-design (OmD)** 是一份開放規範,為 AI 編碼代理提供「足以產出品牌級 UI」的品牌脈絡,而不是依賴 AI 的統計預設值。
+**oh-my-design (OmD)** 是為 AI 編碼代理打造的設計系統。它讓 Claude Code / Codex / OpenCode / Cursor 變成一位記得你品牌的資深產品設計師。安裝一次之後,只要描述你想要的東西 — 元件、畫面、文案、素材、圖表 — 代理就會套用專案的設計系統並交付成果。`DESIGN.md` 是品牌規格([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) 令牌 + 品牌哲學層: Voice / Narrative / Principles / Personas / States / Motion),套件內建 221 個真實企業的 DESIGN.md。**無須 API 金鑰。無須外部基礎設施。一切都在你既有的 CLI 工作階段內執行。**
 
-[Google 提出的](https://stitch.withgoogle.com/docs/design-md/overview/) `DESIGN.md` 本質上是**令牌文件** — 色彩、字體、元件。必要,但不夠。只靠令牌產 UI,形狀看似合理,卻「不像任何品牌」,會收斂到 AI 的預設:Inter-on-white、紫色漸層、毫無緣由的 emoji。OmD v0.1 在其上疊加**品牌哲學層**:**Voice・Narrative・Principles・Personas・States・Motion**。將 OmD 格式的 `DESIGN.md` 放在專案根目錄,代理的輸出就不再通用,而是「你的」。
-
-三個組成部分:
-
-1. **[規範](spec/omd-v0.1.md)** — 版本化的 Google Stitch 擴充,MIT 授權。
-2. **[Claude Code skill](.claude/skills/omd/SKILL.md)** — 將規範作為硬性約束自動套用。
-3. **[107 個參考檔案](references/)** — 真實企業的 `DESIGN.md`,可以 fork、透過 builder 客製化後直接上線。
-
-**無須 API 金鑰。零 AI 呼叫。全部在客戶端執行。**
-
-## OmD v0.1 Philosophy Layer
-
-OmD 在 Google Stitch 的 9 個章節之上再加的 6 個章節:
-
-| 章節 | 用途 |
-|---|---|
-| **10. Voice & Tone** | 微文案約束 — 按鈕文字、錯誤訊息、導引流程 |
-| **11. Brand Narrative** | 「為什麼」 — 品牌拒絕什麼、試圖撼動哪個類別 |
-| **12. Principles** | 令牌無法裁決時用來拍板的 5〜10 條第一性原理 |
-| **13. Personas** | 2〜4 位具體使用者,讓代理輸出扎根於實際情境 |
-| **14. States** | Empty / loading / error / skeleton 模式 — 避免通用的「無資料」 |
-| **15. Motion & Easing** | 命名的 duration + easing 令牌 — Stitch 9 章節遺漏的維度 |
-
-**目前已有 10 個參考附帶完整的 Philosophy Layer:**
-Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Apple · Figma — 每個都包含 voice、narrative、principles、personas、states、motion,全部基於公開來源撰寫。
-
-完整 OmD v0.1 範例請見 [references/toss/DESIGN.md](references/toss/DESIGN.md)。
-
-## 主要功能
-
-- **Builder** — 選擇參考、調整色彩 / radius / 深色模式、挑選元件,然後按下 Export。透過 **Philosophy** 篩選可以只顯示具備完整品牌哲學的 10 個參考。
-- **Design Systems 目錄** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 107 個參考中有 34 個擁有官方設計系統或品牌指南頁面,可從目錄配合即時縮圖直接前往。
-- **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — 透過 MBTI 風格的簡短測驗,將你的設計偏好對應到 107 個參考之一,並直接帶你進入已預選該參考的 Builder。
-
-## 107 個支援的參考
-
-| 類別 | 企業 |
-|------|------|
-| **AI & LLM** | Claude, Cohere, ElevenLabs, Minimax, Mistral AI, Ollama, OpenCode AI, Replicate, RunwayML, Together AI, VoltAgent, xAI |
-| **設計工具** | Airtable, Clay, Figma, Framer, Miro, Webflow |
-| **開發者工具** | Cursor, Expo, Lovable, Raycast, Superhuman, Vercel, Warp |
-| **生產力** | Cal.com, freee, Intercom, Linear, Mintlify, Notion, Resend, Zapier |
-| **消費科技** | Airbnb, Apple, Baemin, Dcard, IBM, Kakao, Karrot, LINE, Mercari, NVIDIA, Pinkoi, Pinterest, SpaceX, Spotify, Uber |
-| **金融科技** | Coinbase, Kraken, Revolut, Stripe, Toss, Wise |
-| **後端 & DevOps** | ClickHouse, Composio, Hashicorp, MongoDB, PostHog, Sanity, Sentry, Supabase |
-| **汽車** | BMW, Ferrari, Lamborghini, Renault, Tesla |
-| **行銷** | Semrush |
-
-> 使用 Builder 中的**國家篩選器**按地區瀏覽 (韓國、台灣、日本、法國、義大利、德國、英國、美國)。
-
-## 匯出的 DESIGN.md
-
-以 [Google Stitch DESIGN.md 格式](https://stitch.withgoogle.com/docs/design-md/overview/)為基礎 — 1〜9 章節,加上選用的 OmD v0.1 Philosophy Layer(10〜15 章節):
-
-**基礎 (Google Stitch)**
-1. Visual Theme & Atmosphere
-2. Color Palette & Roles
-3. Typography Rules
-4. Component Stylings
-5. Layout Principles
-6. Depth & Elevation
-7. Do's and Don'ts
-8. Responsive Behavior
-9. Agent Prompt Guide
-
-**OmD v0.1 Philosophy Layer (附加)**
-
-10. Voice & Tone
-11. Brand Narrative
-12. Principles
-13. Personas
-14. States
-15. Motion & Easing
-
-另加:Style Preferences、Included Components、Iconography & SVG Guidelines、Document Policies。
-
-## 專案結構
-
-```
-oh-my-design/
-  spec/              OmD v0.1 規範 (正本)
-  .claude/skills/omd/ Claude Code skill 包
-  references/        107 家企業的 DESIGN.md 檔案
-  src/               CLI 核心 (TypeScript)
-  web/               Next.js 網頁 builder
-    src/app/         Landing + Builder + Directory 頁面
-    src/components/  Wizard、Preview、Export
-  test/              CLI Vitest 套件 (unit/、integration/、scripts/)
-```
-
-Web 測試與原始碼並列存放 (`web/src/**/*.test.ts`)。
-
-## 測試
-
-兩套測試套件,皆以 Vitest 執行,兩套都必須通過:
+## 安裝
 
 ```bash
-npm test                # CLI:370 個測試 — unit + 全 reference smoke
-cd web && npm test      # Web:107 個測試 — generate-css、config-hash、survey
+npx oh-my-design-cli install-skills
 ```
 
-整合套件 (`test/integration/all-references.test.ts`) 會對每個 `references/<id>/DESIGN.md` 執行完整的生成管線,因此損壞的 reference 會在 PR 審查時以單一 reference 的失敗形式呈現。資料夾規範與模組別覆蓋率對照表請參考 [test/README.md](test/README.md)。
+安裝後請重新啟動你的代理 (Claude Code 為 Cmd+Q 後重新開啟) — 新的 skills + agents 才會載入。
 
-## 致謝
+這是你唯一需要執行的 CLI 指令。其餘一切都是對代理說的自然語言。
 
-- [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) — 啟動本專案的上游 DESIGN.md 集合。
-- [kzhrknt/awesome-design-md-jp](https://github.com/kzhrknt/awesome-design-md-jp) — 日本市場的設計系統參考。
+## 支援的代理
 
-oh-my-design 在這些集合的基礎上加入了互動式客製化精靈、A/B 風格偏好、元件選擇、Design Systems 目錄與 CLI 匯出管線。
+| 代理 | 通道 | 安裝內容 |
+|---|---|---|
+| **Claude Code** | `--agent claude-code` (預設) | 完整套件 — `.claude/` 下的 skills、16 個子代理、hooks、data |
+| **Codex** | `--agent codex` | `.agents/skills/` 技能套件 (官方 discovery 路徑) |
+| **OpenCode** | `--agent opencode` | `.opencode/skills/` 技能套件 |
+| **Cursor** | `--agent cursor` | 正式 rules 通道 — `.cursor/rules/omd-design.mdc` shim + 共用 `.claude/data` 目錄 (不含 skills/hooks) |
+
+預設會安裝到所有偵測到的代理; 只要單一通道請加 `--agent <name>`。
+
+## 套件內容
+
+**16 個 skills · 16 個子代理 · 221 個經驗證的參考 · 活性化 hooks** — 上述一個指令全部安裝完成。
+
+每個參考也以 raw markdown 形式提供於 `oh-my-design.kr/design-systems/<id>.md`,代理可以直接抓取。完整的 skill 與 agent 參考文件: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**。
+
+## 升級
+
+```bash
+npx oh-my-design-cli@latest install-skills
+```
+
+Idempotent。帶有 `<!-- omd:installed-skill -->` 標記的受管檔案會就地更新,使用者編輯過的檔案則保持不動 (要覆寫請加 `--force`)。重新執行後請重新啟動代理。
+
+## 連結
+
+- **目錄** — [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)
+- **精選集** — [oh-my-design.kr/collections](https://oh-my-design.kr/collections)
+- **文件** — [oh-my-design.kr/docs](https://oh-my-design.kr/docs)
+- **更新紀錄** — [CHANGELOG.md](CHANGELOG.md)
 
 ## 授權
 
-[MIT](LICENSE)
+[MIT](LICENSE) — 參考資料屬於各企業所有,僅為教育性參考而重現。

@@ -5,11 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>107개 기업 디자인 시스템 기반 DESIGN.md 생성기.</strong> 인터랙티브 위자드. AI 호출 없음.
-</p>
-
-<p align="center">
-  <strong>이제 OmD v0.1 Philosophy Layer까지.</strong> Voice · Narrative · Principles · Personas · States · Motion — Claude Code가 AI의 디폴트가 아니라 당신의 브랜드에 맞춰 출력합니다.
+  <strong>AI 코딩 에이전트를 위한 스킬 기반 디자인 부트스트랩 — 명령어 한 번.</strong> 221개 실제 기업 디자인 시스템. 설치에 AI 호출 없음. 그 다음은 에이전트에게 말만 하면 됩니다.
 </p>
 
 <p align="center">
@@ -17,8 +13,8 @@
   <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/dm/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
-  <img src="https://img.shields.io/badge/references-107-7c5cfc?style=flat-square" alt="107 References" />
-  <img src="https://img.shields.io/badge/AI%20calls-zero-blue?style=flat-square" alt="Zero AI" />
+  <img src="https://img.shields.io/badge/references-221-7c5cfc?style=flat-square" alt="221 References" />
+  <img src="https://img.shields.io/badge/CLI%20commands-1-blue?style=flat-square" alt="One CLI command" />
 </p>
 
 <p align="center">
@@ -27,267 +23,90 @@
 
 ---
 
-## oh-my-design란?
+## oh-my-design이란?
 
-**oh-my-design (OmD)** 은 AI 코딩 에이전트에게 "브랜드로서의" UI를 만들어낼 만큼의 컨텍스트를 제공하는 오픈 스펙입니다.
+**oh-my-design (OmD)** 은 AI 코딩 에이전트를 위한 디자인 시스템입니다. Claude Code / Codex / OpenCode / Cursor를 당신의 브랜드를 기억하는 시니어 프로덕트 디자이너로 만듭니다. 한 번 설치하면, 이후엔 원하는 것을 설명하기만 하면 됩니다 — 컴포넌트, 화면, 카피, 에셋, 차트 — 에이전트가 프로젝트의 디자인 시스템을 적용해 결과물을 만들어냅니다. `DESIGN.md`가 브랜드 스펙이고([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) 토큰 + 브랜드 철학 레이어: Voice / Narrative / Principles / Personas / States / Motion), 221개 실제 기업의 DESIGN.md 파일이 패키지에 함께 들어 있습니다. **API 키 불필요. 외부 인프라 불필요. 모든 것이 기존 CLI 세션 안에서 동작합니다.**
 
-[Google이 제안한](https://stitch.withgoogle.com/docs/design-md/overview/) `DESIGN.md`는 본질적으로 **토큰 문서**입니다 — 색상, 타이포, 컴포넌트. 필요하지만 충분하진 않죠. 토큰만으로 UI를 만들면 형태는 그럴싸하지만 "누구의 브랜드"도 아닙니다 — Inter-on-white, 보라색 그라디언트, 의미 없는 이모지 같은 AI의 디폴트로 수렴합니다. OmD v0.1은 그 위에 **브랜드 철학 레이어**를 얹습니다: **Voice · Narrative · Principles · Personas · States · Motion**. OmD 포맷의 `DESIGN.md`를 프로젝트 루트에 두면 에이전트의 결과물이 제네릭하지 않고 "당신의 것"이 됩니다.
-
-세 가지 구성:
-
-1. **[스펙](spec/omd-v0.1.md)** — 버전 관리되는 Google Stitch 확장, MIT 라이선스.
-2. **[Claude Code 스킬](.claude/skills/omd/SKILL.md)** — 스펙을 하드 제약으로 자동 적용.
-3. **[107개 레퍼런스](references/)** — 실제 기업의 `DESIGN.md` 파일들을 포크하고, 빌더로 커스터마이징해 바로 씁니다.
-
-**API 키 불필요. AI 호출 없음. 모두 클라이언트 사이드.**
-
-## Ecosystem v1 — 에이전트 통합 (신규)
-
-`oh-my-design`이 **코딩 에이전트 생태계**를 함께 ship합니다. `DESIGN.md`를 한 번 만들고 끝이 아니라, Claude Code · Codex · OpenCode · Cursor가 작업 중에 **읽고 따르도록** 만드는 것.
-
-**설치 없이 (권장):**
+## 설치
 
 ```bash
-cd my-project
-
-# 1. 한 번만: 에이전트 스킬 설치 (.claude/skills, .codex/skills, .opencode/agents)
 npx oh-my-design-cli install-skills
-
-# 2. 레퍼런스 + 프로젝트 description으로 DESIGN.md 부트스트랩
-#    (Claude Code/Codex/OpenCode 안에서 omd:init 스킬이 이 단계를 주도)
-npx oh-my-design-cli init recommend "warm approachable B2C marketplace"
-npx oh-my-design-cli init prepare --ref airbnb --description "warm approachable B2C marketplace"
-
-# 3. 4개 에이전트가 DESIGN.md를 읽도록 shim 파일 생성/갱신
-npx oh-my-design-cli sync
-
-# 4. 작업 중 에이전트가 디자인 선택을 잘못하면 즉시 기록
-npx oh-my-design-cli remember "CTAs are never uppercase"
-
-# 5. 누적된 preference를 DESIGN.md에 일괄 반영
-npx oh-my-design-cli learn                            # pending 보기
-npx oh-my-design-cli learn --mark-applied <id>        # 반영 완료 표시
 ```
 
-**또는 글로벌 설치 (짧은 커맨드):**
+설치 후 에이전트를 재시작하세요 (Claude Code는 Cmd+Q 후 재실행) — 새 스킬 + 에이전트가 로드됩니다.
 
-```bash
-npm install -g oh-my-design-cli
-# 이제 'oh-my-design' 또는 단축 별칭 'omd' 사용 가능
-omd install-skills
-omd sync
-omd remember "..."
-```
+이것이 당신이 실행할 유일한 CLI 명령어입니다. 나머지는 전부 에이전트에게 자연어로 말하면 됩니다.
 
-> **상태**: `v0.1.0`은 첫 ecosystem 릴리스. CLI 표면(sync / remember / learn / init prepare / install-skills)은 안정 + 단위 테스트 완료. 에이전트 측 Hybrid variation 품질은 호스트 LLM이 `omd:init` 스킬 프롬프트를 얼마나 잘 따르는지에 좌우됩니다 — 결과가 만족스럽지 않으면 archive와 함께 이슈로 보고 부탁드려요.
+설치 시 **어디에** 설치할지 묻습니다: **Project** (`./.claude/skills` — 이 프로젝트만, 기본값) 또는 **Global** (`~/.claude/skills` — 모든 프로젝트; 스킬 + 서브에이전트, 전역 hooks/settings는 건드리지 않음). `--global` 플래그로 프롬프트를 건너뛸 수 있습니다.
 
-### 설치되는 파일
+## 첫 60초
 
-| 파일 | 관리 주체 | 용도 |
+이게 핵심입니다: 프롬프트 한 줄이 에이전트가 모든 미래 세션에서 기억하는 `DESIGN.md`가 됩니다.
+
+1. 설치(위) 후 **에이전트 재시작** (Cmd+Q, 재실행) — 새 스킬이 로드됩니다.
+
+2. 프로젝트에서 첫 프롬프트를 입력하세요 — 그대로 복사해도 됩니다:
+
+   > Set up our design system — Toss-style, for a family meal-tracking app.
+
+   에이전트가 **`omd:init`** 을 실행합니다: 221개 실제 기업 카탈로그에서 레퍼런스를 추천하고, 확인을 받은 뒤 프로젝트 루트에 **`DESIGN.md`** 를 작성합니다. (`omd:sync`가 `CLAUDE.md` / `AGENTS.md` / Cursor shim까지 연결해 모든 에이전트가 자동으로 읽게 합니다.)
+
+   **그 `DESIGN.md`가 활성화 지점입니다 — 이제 에이전트가 당신의 브랜드를 기억합니다.**
+
+3. 이제 그 위에서 빌드하세요:
+
+   > Design the home screen.
+
+   에이전트가 `DESIGN.md`를 읽고 브랜드에 맞는 UI를 만듭니다. 디자인 시스템을 다시 설명할 일은 없습니다.
+
+Toss가 아니어도 됩니다 — `Stripe-style`, `Linear-clone B2B SaaS`, `Karrot-style marketplace` 전부 가능. 전체 카탈로그: [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems).
+
+## 지원 에이전트
+
+| 에이전트 | 채널 | 설치되는 것 |
 |---|---|---|
-| `DESIGN.md` | 사용자 | 단일 진실 — 브랜드 & UI 명세 |
-| `CLAUDE.md` | `omd sync` | Claude Code 포인터 (`@./DESIGN.md`) |
-| `AGENTS.md` | `omd sync` | Codex CLI **+** OpenCode 공용 포인터 (한 파일이 둘 커버) |
-| `.cursor/rules/omd-design.mdc` | `omd sync` | Cursor가 UI 파일 편집 시 DESIGN.md 자동 attach |
-| `.claude/skills/omd-*/SKILL.md` | `omd install-skills` | Claude Code 스킬 9종 |
-| `.codex/skills/omd-*/SKILL.md` | `omd install-skills` | Codex 스킬 9종 |
-| `.opencode/agents/omd-*.md` | `omd install-skills` | OpenCode 에이전트 9종 |
-| `.cursor/rules/omd-design.mdc` + `.claude/data/*` | `omd install-skills --agent cursor` | Cursor 채널 — rules shim + 공용 카탈로그 (스킬/훅 미설치) |
-| `.omd/preferences.md` | `omd remember` | append-only 디자인 교정 로그 |
-| `.omd/sync.lock.json` | `omd sync` | drift 감지 상태 |
+| **Claude Code** | `--agent claude-code` (기본) | 풀 번들 — `.claude/` 아래 스킬, 16 서브에이전트, hooks, data |
+| **Codex** | `--agent codex` | `.agents/skills/` 스킬 번들 (공식 discovery 경로) |
+| **OpenCode** | `--agent opencode` | `.opencode/skills/` 스킬 번들 |
+| **Cursor** | `--agent cursor` | 정식 rules 채널 — `.cursor/rules/omd-design.mdc` shim + 공용 `.claude/data` 카탈로그 (스킬/훅 미설치) |
 
-shim과 스킬 파일은 `<!-- omd:start -->` 마커 블록을 사용해서, 마커 외부의 사용자 편집은 `omd sync` 재실행에도 보존됩니다.
+기본 설치는 감지된 모든 에이전트를 대상으로 합니다; 단일 채널만 원하면 `--agent <name>`.
 
-### 9개 스킬
+## 패키지 구성
 
-**Core flow (6)**
+**16 스킬 · 16 서브에이전트 · 221 검증된 레퍼런스 · 활성화 hooks** — 위 명령어 하나로 전부 설치됩니다.
 
-| 스킬 | 트리거 | 동작 |
-|---|---|---|
-| `omd:init` | "DESIGN.md 만들어줘" / "브랜드 세팅" | 레퍼런스 추천 → 프로젝트 description 수집 → 레퍼런스 톤·매너 preserve하면서 deltas 반영한 Hybrid variation → DESIGN.md + shim 작성 |
-| `omd:apply` | UI / 스타일링 / 마이크로카피 / 모션 작업 | DESIGN.md + pending preference를 authoritative context로 주입, 사용자 교정 시 자동으로 `omd:remember` 호출 |
-| `omd:harness` | "랜딩 처음부터 / 그럴싸한 랜딩 / 프로토타입 구색 갖춰 / production-ready" | 10-phase 디자인 파이프라인. **v1.6.0** — 자연어 트리거 확대 (슬래시 없이도 발동), **CTX-PRIME** 사전 분석 (~20ms) + 단일 페르소나 picker + Interview-lite 배치로 `omd-master`가 slot-gate 건너뛰고 PROPOSE_PLAN 직행. rule 9 hero archetype 7종 (center-text / carousel / split-screen / editorial / dashboard / quote-led / left-character) 중 brand vibe 매칭으로 선택. rule 5 워드마크-only 로고, rule 10 reveal safety net. |
-| `omd:sync` | "shim drift" / "AGENTS.md 동기화" | 적절한 플래그로 `omd:sync` 실행 |
-| `omd:remember` | "기억해 둬" / "우리는 ~안 해" | 구조화된 entry를 `.omd/preferences.md`에 append |
-| `omd:learn` | "preferences 정리해서 DESIGN.md에 반영" | scope별로 그룹핑 → coherent edit 제안 → status flip |
+- **스킬** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn`), 라이브 캡처 + 에셋 (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), v0.2 agent layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), 그리고 터미널에서 claude.ai/design을 구동하는 단독 스킬 `claude-design`.
+- **서브에이전트** — `omd-master` + 15 스페셜리스트 (UX 리서치, UI 생성, 에셋 큐레이션, 마이크로카피, a11y 감사, 페르소나 테스트, 비평, …).
+- **레퍼런스** — 221개 실제 기업 `DESIGN.md`, 전부 라이브 소스 대조 검증. 모든 레퍼런스는 `oh-my-design.kr/design-systems/<id>.md`에서 raw markdown으로도 제공되어 에이전트가 직접 fetch할 수 있습니다.
+- **Hooks** — UserPromptSubmit / SessionStart / PostToolUse 활성화 — 슬래시 명령 없이 자연어만으로 스킬이 발동합니다.
 
-**Live capture + assets (v1.3.x — 3개)**
+스킬·에이전트별 상세 레퍼런스: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**.
 
-| 스킬 | 트리거 | 동작 |
-|---|---|---|
-| `omd:reference-capture` | "X 라이브 자료 가져와" / "에셋 캡쳐" | 라이브 brand 사이트 CDP/playwright inspect → `assets/_reference/<id>/`에 tokens.json + structure.json + fonts.json + `.live-inspect-proof.json` + screenshots + LICENSE-NOTE 작성. Phase 3.9 browser-harness fast-path (3-5x 빠름) auto-detect. |
-| `omd:asset-fetch` | "에셋 가져와줘" / "플레이스홀더 진짜 이미지로" | Free-license 카탈로그 — DiceBear (CC0 avatars), Lucide (ISC icons), Picsum/Loremflickr (CC photos), Bricolage Grotesque / Space Grotesk / DM Serif Display 등 SIL OFL display fonts. 핸드드로잉 캐릭터 SVG 금지. |
-| `omd:experiment-gallery` | "결과물 한 번에 보여줘" / "갤러리 만들어" | N개 experiment 디렉토리를 받아 단일 index.html에 iframe scaled로 비교 뷰 생성. wow rating + archetype badge + round-별 deltas + IP audit 한 카드에. |
+MCP를 선호한다면 **[oh-my-design-mcp](./packages/mcp/)** — 같은 카탈로그를 Claude Desktop, Cursor, Cline, Continue, Codex용 MCP 리소스/툴로 노출합니다. [`packages/mcp/README.md`](./packages/mcp/README.md) 참고.
 
-소스: [`skills/`](skills/) 디렉토리. `omd install-skills`가 프로젝트의 에이전트 디렉토리로 복사.
-
-### CLI 명령어
-
-```
-omd init recommend <description>   # 태그+stem 매칭 레퍼런스 추천 (top-5)
-omd init prepare --ref <id> --description <text>
-                                   # .omd/init-context.json + delta_set 준비
-omd install-skills [--agent ...]   # skills/*를 .claude /.codex /.opencode로 복사
-omd reference list                 # 번들된 레퍼런스 id 목록
-omd reference show <id>            # 레퍼런스 DESIGN.md를 stdout으로 출력
-omd sync [--force | --check]       # shim 파일 작성 또는 감사
-omd remember <note> [--scope ...]  # preference entry append
-omd learn                          # pending 목록
-omd learn --mark-applied <id>      # DESIGN.md 반영 후 상태 변경
-omd learn --mark-rejected <id> --reason <text>
-```
-
-`omd sync --check`는 CI 친화적: shim drift 또는 DESIGN.md 변경 + 미동기화 시 exit 1.
-
-### 결정적 vs 에이전트 주도
-
-| 레이어 | 담당 | 이유 |
-|---|---|---|
-| 레퍼런스 추천 | CLI (tag + stem 매칭 + category-prior + MMR 다양화) | 빠름, API 키 불필요. category-prior가 도메인 정렬된 ref 가산 (e.g. "marketplace / family / subscription" → Consumer). |
-| Token delta 계산 | CLI (41 키워드 + ~75 synonym controlled vocabulary, additive 합성 + clamp) | 결정적; 동일 description → 동일 delta_set |
-| Color hex shift baseline | CLI (`apply-delta-stub`) — **color-only** | 빠른 결정적 프리뷰. radius / letter-spacing / spacing 은 shift 안 함 — 에이전트 영역. |
-| 전체 토큰 적용 + 섹션 구조 보존 + voice 재작성 | **에이전트** (Claude Code / Codex / OpenCode) + `omd:init` 스킬 | Stub은 color-only; 전체 delta 적용은 구조화된 Markdown 편집 필요. 스킬 프롬프트가 voice fingerprint preservation 강제. |
-| §11–13 (Brand Narrative / Principles / Personas) | **에이전트 + 사용자 입력** (Phase 4.5) | 레퍼런스 content가 프로젝트별 사실 정보 (창립년도, verbatim tagline, 실제 personas). 스킬이 Phase 4.5에서 사실 수집하거나 `[FILL IN: …]` placeholder + `omd:limitation` 코멘트 — 절대 fabricate 안 함. |
-
-### 상태
-
-이 생태계는 **v0.1.0** — 첫 agent-integration 릴리스입니다. CLI 표면 (sync / remember / learn / init prepare / install-skills)은 안정 + 단위 테스트 완료 (505 테스트). 에이전트 측 Hybrid variation 품질은 호스트 LLM이 `omd:init` 스킬 프롬프트를 얼마나 잘 따르는지에 좌우됩니다 — 검증 맵은 [`test/scenarios/WORKFLOWS.md`](test/scenarios/WORKFLOWS.md) 참고. 실 세션 결과 환영 — `.omd/init-context.json`과 결과 `DESIGN.md`를 첨부해서 이슈로 보고 부탁드립니다.
-
-### 업그레이드
-
-스킬·에이전트는 매 릴리스마다 진화합니다. 기존 프로젝트에서 최신 번들 받아오려면:
+## 업그레이드
 
 ```bash
 npx oh-my-design-cli@latest install-skills
 ```
 
-Idempotent. 상단에 `<!-- omd:installed-skill -->` 마커가 있는 **관리 파일**은 in-place 갱신, 마커 없이 사용자가 수정한 파일은 `skipped-drift` 상태로 그대로 두기. 사용자 편집까지 정말 덮어쓰려면 `--force`.
-
-재실행 후 에이전트 재시작 (Cmd+Q in Claude Code → 재실행) — 새 스킬·에이전트 로드.
-
-**버전 확인:**
+Idempotent. `<!-- omd:installed-skill -->` 마커가 있는 관리 파일은 in-place 갱신, 사용자가 수정한 파일은 그대로 둡니다 (`skipped-drift`) — 덮어쓰려면 `--force`. 재실행 후 에이전트 재시작.
 
 ```bash
 npx oh-my-design-cli --version       # 프로젝트에 깔린 버전
 npm view oh-my-design-cli version    # npm registry 최신
 ```
 
-**각 릴리스 변경 내용:** [CHANGELOG.md](./CHANGELOG.md). 모든 릴리스 항목에 skill·agent·hook·CLI·data 변경 명시. re-install 외에 마이그레이션(예: `DESIGN.md` frontmatter 스키마 변경) 필요한 변경은 해당 entry 최상단에 표시.
+릴리스별 변경 사항 — re-install 이상이 필요한 변경 포함 — 은 [CHANGELOG.md](./CHANGELOG.md)에 있습니다.
 
-## OmD v0.1 Philosophy Layer
+## 링크
 
-Google Stitch의 9개 섹션 위에 OmD가 더하는 6개:
-
-| 섹션 | 역할 |
-|---|---|
-| **10. Voice & Tone** | 마이크로카피 제약 — 버튼 문구, 에러 메시지, 온보딩 |
-| **11. Brand Narrative** | "왜" — 브랜드가 거부하는 것, 바꾸려는 카테고리 |
-| **12. Principles** | 토큰으로 못 푸는 케이스를 결정짓는 5~10개의 1차 원리 |
-| **13. Personas** | 2~4명의 구체 사용자. 에이전트가 UI를 실제 사용 맥락에 grounded 하게 만들기 위함 |
-| **14. States** | Empty / loading / error / skeleton 패턴 — "No data found" 같은 제네릭 상태 방지 |
-| **15. Motion & Easing** | Named duration + easing 토큰 — Stitch 9개 섹션이 놓치는 차원 |
-
-**현재 10개 레퍼런스가 완전한 Philosophy Layer와 함께 제공됩니다:**
-Toss · Claude · Line · Stripe · Linear · Vercel · Notion · Airbnb · Apple · Figma — 각각 voice, narrative, principles, personas, states, motion까지 공개 출처 기반으로 작성됐습니다.
-
-전체 OmD v0.1 예시는 [references/toss/DESIGN.md](references/toss/DESIGN.md) 참고.
-
-## 주요 구성
-
-- **빌더** — 레퍼런스 선택 후 색상 / radius / 다크 모드를 조정하고, 컴포넌트를 고른 뒤 Export. **Philosophy** 필터로 완전한 브랜드 철학을 담은 10개만 볼 수 있어요.
-- **디자인 시스템 디렉토리** ([oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)) — 107개 레퍼런스 중 34개는 공식 디자인 시스템 또는 브랜드 가이드라인 페이지가 있으며, 디렉토리에서 라이브 썸네일과 함께 바로 이동할 수 있습니다.
-- **Personal Curation** ([oh-my-design.kr/curation](https://oh-my-design.kr/curation)) — MBTI 스타일의 짧은 퀴즈로 당신의 디자인 성향을 107개 레퍼런스 중 하나와 매칭해, 해당 레퍼런스가 미리 선택된 빌더로 바로 이동시켜 줍니다.
-
-## claude-design — 터미널에서 claude.ai/design 구동 (단독 스킬)
-
-코드베이스(스택·디자인 토큰·컴포넌트·실제 UI 카피·브랜드 에셋)를 분석해 **claude.ai/design** 을 끝까지 자동 구동하고, 코드 기반으로 생성된 디자인의 공유 링크를 돌려주는 Claude Code 전용 스킬입니다. 생성 전 claude.ai/design 이 명확화 질문을 띄우면, 스킬이 질문을 읽고 **코드 맥락에 맞는 답을 직접 선택**합니다(애매하면 "Decide for me" 폴백).
-
-omd 툴체인 없이 단독 설치:
-
-```bash
-npx oh-my-design-cli install-skills --skills claude-design --agent claude-code --skills-only
-# 모든 프로젝트에서 한 번만 쓰려면 --global (이 프로젝트 대신 ~/.claude/skills 에 설치):
-npx oh-my-design-cli install-skills --skills claude-design --agent claude-code --skills-only --global
-```
-
-(설치 시 **스코프 선택** — Project `./.claude/skills`(기본) vs Global `~/.claude/skills`(모든 프로젝트, hooks/settings는 안 건드림). `--global` 로 프롬프트 생략.) Claude Code 재시작 후 `/claude-design` (또는 "이 랜딩 디자인 만들어줘"처럼 자연어로). 요구사항: Claude Code(Chrome 자동화 + `python3` + 전역 `playwright` 필요), 스킬이 여는 창에서 claude.ai 1회 로그인. `x-omd-channels` 로 채널 제한 — Codex/OpenCode 타깃은 건너뜁니다.
-
-## 107개 지원 레퍼런스
-
-| 카테고리 | 기업 |
-|----------|------|
-| **AI & LLM** | Claude, Cohere, ElevenLabs, Minimax, Mistral AI, Ollama, OpenCode AI, Replicate, RunwayML, Together AI, VoltAgent, xAI |
-| **디자인 도구** | Airtable, Clay, Figma, Framer, Miro, Webflow |
-| **개발자 도구** | Cursor, Expo, Lovable, Raycast, Superhuman, Vercel, Warp |
-| **생산성** | Cal.com, freee, Intercom, Linear, Mintlify, Notion, Resend, Zapier |
-| **컨슈머 테크** | Airbnb, Apple, Baemin, Dcard, IBM, Kakao, Karrot, LINE, Mercari, NVIDIA, Pinkoi, Pinterest, SpaceX, Spotify, Uber |
-| **핀테크** | Coinbase, Kraken, Revolut, Stripe, Toss, Wise |
-| **백엔드 & DevOps** | ClickHouse, Composio, Hashicorp, MongoDB, PostHog, Sanity, Sentry, Supabase |
-| **자동차** | BMW, Ferrari, Lamborghini, Renault, Tesla |
-| **마케팅** | Semrush |
-
-> 빌더의 **국가 필터**로 지역별 탐색이 가능합니다 (한국, 대만, 일본, 프랑스, 이탈리아, 독일, 영국, 미국).
-
-## 내보내는 DESIGN.md
-
-[Google Stitch DESIGN.md 포맷](https://stitch.withgoogle.com/docs/design-md/overview/) 기반 — 섹션 1~9 + OmD v0.1 Philosophy Layer(섹션 10~15, 선택):
-
-**베이스 (Google Stitch)**
-1. Visual Theme & Atmosphere
-2. Color Palette & Roles
-3. Typography Rules
-4. Component Stylings
-5. Layout Principles
-6. Depth & Elevation
-7. Do's and Don'ts
-8. Responsive Behavior
-9. Agent Prompt Guide
-
-**OmD v0.1 Philosophy Layer (추가)**
-
-10. Voice & Tone
-11. Brand Narrative
-12. Principles
-13. Personas
-14. States
-15. Motion & Easing
-
-그 외: Style Preferences, Included Components, Iconography & SVG Guidelines, Document Policies.
-
-## 프로젝트 구조
-
-```
-oh-my-design/
-  spec/              OmD v0.1 스펙 (정본)
-  .claude/skills/omd/ Claude Code 스킬 번들
-  references/        107개 기업 DESIGN.md 파일
-  src/               CLI 코어 (TypeScript)
-  web/               Next.js 웹 빌더
-    src/app/         Landing + Builder + Directory 페이지
-    src/components/  Wizard, Preview, Export
-  test/              CLI Vitest 스위트 (unit/, integration/, scripts/)
-```
-
-웹 테스트는 소스 파일 옆에 함께 위치합니다 (`web/src/**/*.test.ts`).
-
-## 테스트
-
-두 개의 스위트가 있고, 둘 다 Vitest로 돌아가며 둘 다 통과해야 합니다:
-
-```bash
-npm test                # CLI: 370 테스트 — unit + 레퍼런스 전체 smoke
-cd web && npm test      # Web: 88 테스트 — generate-css, config-hash, survey
-```
-
-통합 스위트(`test/integration/all-references.test.ts`)는 모든 `references/<id>/DESIGN.md`에 대해 전체 생성 파이프라인을 실행합니다. 망가진 레퍼런스가 있으면 PR 리뷰에서 어떤 ref의 어떤 체크가 실패했는지 한눈에 보입니다. 폴더 컨벤션과 모듈별 커버리지 맵은 [test/README.md](test/README.md)를 참고하세요.
-
-## 감사의 글
-
-- [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) — 이 프로젝트의 출발점이 된 업스트림 DESIGN.md 컬렉션.
-- [kzhrknt/awesome-design-md-jp](https://github.com/kzhrknt/awesome-design-md-jp) — 일본 시장 디자인 시스템 레퍼런스.
-
-oh-my-design은 위 컬렉션을 기반으로 인터랙티브 커스터마이징 위자드, A/B 스타일 선택, 컴포넌트 선택, 디자인 시스템 디렉토리, CLI 내보내기 파이프라인을 더했습니다.
+- **카탈로그** — [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems) (모든 레퍼런스 + 에이전트용 raw `.md` twin)
+- **컬렉션** — [oh-my-design.kr/collections](https://oh-my-design.kr/collections) (유스케이스별 큐레이션)
+- **문서** — [oh-my-design.kr/docs](https://oh-my-design.kr/docs) (설치 옵션, 스킬, 에이전트, FAQ)
+- **체인지로그** — [CHANGELOG.md](CHANGELOG.md) · 0.1.x에서 마이그레이션: [MIGRATION.md](MIGRATION.md)
 
 ## 라이선스
 
-[MIT](LICENSE)
+MIT — [LICENSE](LICENSE) 참고. 레퍼런스는 각 기업의 자산이며, 교육적 참조 목적으로만 재구성되었습니다.

@@ -17,15 +17,15 @@
   <img src="https://img.shields.io/badge/CLI%20commands-1-blue?style=flat-square" alt="One CLI command" />
 </p>
 
+<p align="center">
+  English | <a href="README.ko.md">한국어</a> | <a href="README.ja.md">日本語</a> | <a href="README.zh-TW.md">繁體中文</a>
+</p>
+
 ---
 
 ## What is oh-my-design?
 
-**oh-my-design (OmD)** turns your AI coding agent (Claude Code / Codex / OpenCode / Cursor) into a senior product designer with a working memory of your brand. You install once. After that, you just describe what you want — components, screens, copy, assets, charts — and the agent applies your project's design system, picks the right asset medium, and ships.
-
-`DESIGN.md` is the brand spec ([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens + the brand-philosophy layer: Voice / Narrative / Principles / Personas / States / Motion). 221 real-company DESIGN.md files ship in this package. Pick one, customize through conversation, ship.
-
-**No API keys. No external infra. Everything runs inside your existing CLI session.**
+**oh-my-design (OmD)** is a design system for AI coding agents. It turns Claude Code / Codex / OpenCode / Cursor into a senior product designer with a working memory of your brand. You install once. After that, you just describe what you want — components, screens, copy, assets, charts — and the agent applies your project's design system and ships. `DESIGN.md` is the brand spec ([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens + a brand-philosophy layer: Voice / Narrative / Principles / Personas / States / Motion), and 221 real-company DESIGN.md files ship in this package. **No API keys. No external infra. Everything runs inside your existing CLI session.**
 
 ## Install
 
@@ -61,170 +61,51 @@ This is the whole point: one prompt turns into a `DESIGN.md` your agent remember
 
 Don't want Toss? Any brand works — `Stripe-style`, `Linear-clone B2B SaaS`, `Karrot-style marketplace`. Browse the full catalog at [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems).
 
-## Upgrading
+## Supported agents
 
-Skills and agents evolve every release. To pick up the latest bundle in an existing project:
+| Agent | Channel | What gets installed |
+|---|---|---|
+| **Claude Code** | `--agent claude-code` (default) | Full bundle — skills, 16 sub-agents, hooks, data under `.claude/` |
+| **Codex** | `--agent codex` | Skill bundle at `.agents/skills/` (official discovery path) |
+| **OpenCode** | `--agent opencode` | Skill bundle at `.opencode/skills/` |
+| **Cursor** | `--agent cursor` | First-class rules channel — `.cursor/rules/omd-design.mdc` shim + the shared `.claude/data` catalog (no skills/hooks) |
+
+The default install targets every detected agent; pass `--agent <name>` to install a single channel.
+
+## What's inside
+
+**16 skills · 16 sub-agents · 221 verified references · activation hooks** — installed by the one command above.
+
+- **Skills** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn`), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the v0.2 agent layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
+- **Sub-agents** — `omd-master` + 15 specialists (UX research, UI generation, asset curation, microcopy, a11y audit, persona testing, critique, …).
+- **References** — 221 real-company `DESIGN.md` files, each verified against live sources. Every reference is also served as raw markdown at `oh-my-design.kr/design-systems/<id>.md`, so agents can fetch it directly.
+- **Hooks** — UserPromptSubmit / SessionStart / PostToolUse activation so the skills trigger on natural language, not just slash commands.
+
+Full skill-by-skill and agent-by-agent reference: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**.
+
+Prefer MCP? **[oh-my-design-mcp](./packages/mcp/)** exposes the same catalog as MCP resources/tools for Claude Desktop, Cursor, Cline, Continue, and Codex — see [`packages/mcp/README.md`](./packages/mcp/README.md).
+
+## Upgrading
 
 ```bash
 npx oh-my-design-cli@latest install-skills
 ```
 
-Idempotent. Managed files (those carrying the `<!-- omd:installed-skill -->` marker at the top) are refreshed in place. Files you edited that don't have the marker are left untouched (status `skipped-drift`). Pass `--force` if you really want to overwrite your custom edits.
-
-Restart your agent after re-running so the refreshed skills + agents are loaded.
-
-**Check what's installed vs what's latest:**
+Idempotent. Managed files (those carrying the `<!-- omd:installed-skill -->` marker) are refreshed in place; files you edited are left untouched (`skipped-drift`) unless you pass `--force`. Restart your agent after re-running.
 
 ```bash
 npx oh-my-design-cli --version       # what your project currently uses
 npm view oh-my-design-cli version    # latest on the registry
 ```
 
-**What's new each release:** [CHANGELOG.md](./CHANGELOG.md). Every release entry says what changed in the skills, agents, hooks, CLI, and data. If a change requires anything beyond a re-install — for example a migration of `DESIGN.md` frontmatter — it will be called out at the top of that entry.
+What changed each release — including anything that needs more than a re-install — is in [CHANGELOG.md](./CHANGELOG.md).
 
-### v0.2 agent layer (bundled)
+## Links
 
-A supervisor + specialist topology for multi-step authoring workflows. **6 skills + 6 sub-agents**, all channel-aware, installed alongside the core skills by `install-skills`:
-
-| Skill / agent | Role |
-|---|---|
-| `omd-orchestrator` | Supervisor — 5-stage workflow (write → review → revise → localize → critic → images → handoff), 2-round revision cap |
-| `omd-kr-writer` | Korean prose, **12 voice presets** (toss-tech-design default / karrot-neighborly / brunch-maker / naver-d2 / …) |
-| `omd-locale-adapter` | KR → EN/JP/ZH-TW **adaptation** (cultural swaps, not literal translation) |
-| `omd-designer-review` | Visual + brand audit vs DESIGN.md — typo/color/radius/state, BLOCK·WARN·FYI |
-| `omd-final-qa` | 8-item rubric, read-only verdict, no rubber-stamps |
-| `omd-codex-image` | Channel-aware image materialization — `<!-- omd:gen-image -->` spec → **Codex native generation** / `omd-asset-curator` fallback / OpenCode user-queue |
-
-Pattern adopted: Anthropic orchestrator-workers + LangGraph supervisor revision-cap. Background & full routing rules: [`data/research/2026-05-18-agent-landscape.md`](./data/research/2026-05-18-agent-landscape.md) · KR voice taxonomy: [`data/research/2026-05-18-kr-style-presets.md`](./data/research/2026-05-18-kr-style-presets.md).
-
-Promotion of future skills into the bundle is governed by the [`omd-release-hygiene`](./.claude/skills/omd-release-hygiene/SKILL.md) checklist. (A deterministic Korean-orthography linter was prototyped and dropped — a 25-pattern regex heuristic had too low recall to be worth shipping; if you need automated KR spellcheck, wire an external service such as the 부산대 한국어 맞춤법 검사기.)
-
-### `claude-design` — drive claude.ai/design from your terminal
-
-A standalone skill (Claude Code only): it analyzes your codebase — stack, design tokens, components, real UI copy, brand assets — and drives **claude.ai/design** end-to-end to generate a code-grounded design, handing back a shareable link. If claude.ai/design asks clarifying questions before generating, the skill reads them and picks the appropriate answer per your codebase (falling back to "Decide for me").
-
-Install it on its own, with none of the omd toolchain:
-
-```bash
-npx oh-my-design-cli install-skills --skills claude-design --agent claude-code --skills-only
-# add --global to install once for EVERY project (~/.claude/skills) instead of this one:
-npx oh-my-design-cli install-skills --skills claude-design --agent claude-code --skills-only --global
-```
-
-Then restart Claude Code and run `/claude-design` (or just ask: "generate a design for this landing page"). Requirements: Claude Code (it needs Chrome automation + `python3` + a global `playwright`), and a one-time claude.ai login in the window the skill opens. Channel-restricted via `x-omd-channels` — Codex/OpenCode targets are skipped.
-
-## How to use omd with your AI
-
-Open Claude Code (or Codex / OpenCode) in your project. Just talk:
-
-> "Set up the design system for a calm B2B fintech dashboard."
-> Agent picks a reference from the catalog (likely Linear or Stripe), proposes a hybrid DESIGN.md, asks for confirmation, writes the file plus shims.
-
-> "Make the empty-state for the search results page."
-> Agent reads DESIGN.md, builds the component with brand tokens, picks an inline SVG illustration matching the voice, drops in microcopy that follows the §10 voice rules.
-
-> "Design the entire onboarding from scratch — Toss-style for a family meal-tracking app."
-> Agent invokes the harness — runs the 10-phase pipeline (discovery, research, IA, wireframes, components, assets, microcopy, validation, handoff), spawns sub-agents in parallel where possible, asks you 3 mandatory checkpoints, hands back a v0/Cursor-ready package.
-
-> "Add a daily-intake line chart."
-> Agent reads your `package.json`, sees `recharts` is installed, builds the chart with brand colors, no library mismatch.
-
-> "We never use uppercase CTAs."
-> Agent silently appends to `.omd/preferences.md`. Next time anyone makes a CTA, that rule applies. Later you can say "fold preferences into DESIGN.md" and the agent merges by scope.
-
-## What's in the install
-
-| Path | Owner | Purpose |
-|---|---|---|
-| `.claude/skills/omd-*/SKILL.md` | install-skills | Claude Code skill bundle (15 skills — core flow + capture/assets + v0.2 agent layer) |
-| `.agents/skills/omd-*/SKILL.md` | install-skills | Codex skill bundle (official `.agents/skills` discovery path) |
-| `.opencode/skills/omd-*/SKILL.md` | install-skills | OpenCode skill bundle |
-| `.cursor/rules/omd-design.mdc` | install-skills | Cursor channel (`--agent cursor`) — DESIGN.md rules shim + shared `.claude/data` catalog (no skills/hooks) |
-| `.claude/agents/omd-*.md` | install-skills | 16 canonical sub-agents (master + 15 specialists) |
-| `.claude/data/*` | install-skills | reference fingerprints, vocabulary, opt-out corpus |
-| `.claude/hooks/*.cjs` | install-skills | UserPromptSubmit / SessionStart / PostToolUse hooks |
-| `.claude/skills/skill-rules.json` | install-skills | Skill activation rules |
-| `references/*/DESIGN.md` | bundled | 221 real design systems |
-| `DESIGN.md` | your agent (after init flow) | Your project's authoritative brand spec |
-| `CLAUDE.md` / `AGENTS.md` / `.cursor/rules/omd-design.mdc` | omd-sync skill | Pointers so every agent reads DESIGN.md |
-| `.omd/preferences.md` | omd-remember skill | Append-only design correction log |
-| `.omd/runs/<id>/` | omd-harness skill | Per-harness-run artifacts (briefs, wireframes, eval, handoff zips) |
-
-## The 15 skills + 16 agents
-
-Skills (loaded into your agent's context based on prompt triggers):
-
-**Core flow**
-- **omd:apply** — DESIGN.md as authoritative context for every UI task. Routes complex requests (assets, charts, full screens, a11y audit) to specialized sub-agents.
-- **omd:init** — Bootstrap DESIGN.md from a reference + project description. 221 references, hybrid variation that preserves the reference voice while shifting only user-named axes.
-- **omd:harness** — `/omd-harness <task>` to run the 10-phase design pipeline. **v1.6.0**: auto-triggers on natural-language requests ("그럴싸한 랜딩 만들어줘", "프로토타입 구색 갖춰") — no slash required. New **CTX-PRIME** pre-phase scans your repo (stack, brand color, voice, surface inventory) in ~20ms, then surfaces a single audience picker + batched Interview-lite so `omd-master` skips slot-gate and jumps straight to PROPOSE_PLAN. 7 hero archetypes (rule 9) match brand vibe to layout (center-text / carousel / split-screen / editorial / dashboard / quote-led / left-character). Reveal safety net (rule 10), wordmark-only logo (rule 5), container-inner consistency (rule 7), decomposed hero (rule 8).
-- **omd:remember** — Captures user corrections to `.omd/preferences.md` automatically when the agent detects them.
-- **omd:learn** — Folds pending corrections back into DESIGN.md by scope.
-- **omd:sync** — Maintains the shim files (CLAUDE.md / AGENTS.md / Cursor mdc) so every agent reads your DESIGN.md.
-
-**Live capture + assets** (v1.3.x)
-- **omd:reference-capture** — Live brand site CDP/playwright inspect → `assets/_reference/<id>/` with tokens.json + structure.json + fonts.json + `.live-inspect-proof.json` + screenshots + LICENSE-NOTE/attribution. Phase 3.9 browser-harness fast-path: 3-5× faster than playwright MCP when available.
-- **omd:asset-fetch** — Free-license asset catalog with verified URLs. DiceBear CC0 (notionists/lorelei avatars), Lucide ISC icons, Picsum CC0 / Loremflickr Flickr-CC photos, SIL OFL display fonts (Bricolage Grotesque / Space Grotesk / DM Serif Display / Fraunces). Strict anti-patterns: handcrafted character SVG forbidden, brand creative work never in product DOM.
-- **omd:experiment-gallery** — N-brand experiment results in a single comparison index.html. iframe scaled previews + wow ratings + multi-turn deltas + per-brand IP audit. Reusable across batches.
-
-**v0.2 agent layer** (6 more) — `omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`. See the [v0.2 agent layer](#v02-agent-layer-bundled) table above for what each does.
-
-Sub-agents — master + 15 specialists (invoked by the master or directly by skills):
-
-- **omd-master** — Conversational state machine, runs the harness phases. opus.
-- **omd-ux-researcher** — Reads bundled references, validates Tier-1 official design system URLs. opus.
-- **omd-ui-junior** — Generates wireframes and component manifests from DESIGN.md. sonnet.
-- **omd-ux-engineer** — Section-level interaction / motion / IA / mobile / perceived-perf audit + code-level fixes. NN/g heuristics + Refactoring UI + Web Vitals + WAI-ARIA. Senior advisor; pairs with `omd-ui-junior` (generator). opus.
-- **omd-asset-curator** — Picks asset medium (inline SVG / chart library / Lottie / Rive / Unsplash), generates inline code or sources external. Stack-aware (recharts vs chartjs vs custom SVG, lucide vs heroicons, etc.). sonnet.
-- **omd-microcopy** — Voice-consistent copy generation tied to DESIGN.md §10. sonnet.
-- **omd-ux-writer** — Section-level copy audit + 2-3 strong alternatives + A/B hypothesis. Podmajersky / Erika Hall / Mailchimp / Stripe / GitHub voice docs integrated. Senior advisor; pairs with `omd-microcopy` (generator). opus.
-- **omd-a11y-auditor** — WCAG checks. haiku.
-- **omd-persona-tester** — Adversarial 4-persona walkthrough (V/J/F/S). sonnet.
-- **omd-critic** — Root-cause analysis when the user iterates. opus.
-
-Plus the **6 v0.2 sub-agents** (orchestrator / kr-writer / locale-adapter / designer-review / final-qa / codex-image) — documented in the [v0.2 agent layer](#v02-agent-layer-bundled) section.
-
-## MCP server
-
-Want the brand DESIGN.md files exposed directly to your agent as MCP resources, tools, and prompts? Use **[oh-my-design-mcp](./packages/mcp/)** — a separate, free, drop-in MCP server.
-
-```json
-{
-  "mcpServers": {
-    "oh-my-design": {
-      "command": "npx",
-      "args": ["-y", "oh-my-design-mcp"]
-    }
-  }
-}
-```
-
-Works with Claude Desktop, Cursor, Cline, Continue, and Codex. Zero AI calls, zero config, fully offline. Full install guide and tool reference: [`packages/mcp/README.md`](./packages/mcp/README.md).
-
-## What it is not
-
-- It is not a collection of CLI commands. There is one bootstrap command. Everything else is skill prose.
-- It is not an SDK. If you need the matching algorithm or shim format, look at the skill markdown directly.
-- It does not generate emojis as icons. Asset agent prefers inline SVG (Lucide-matched or custom).
-
-## Repository layout
-
-> For contributors. If you're just *using* OmD, you never touch these — the install ships everything you need.
-
-The brand `DESIGN.md` corpus lives in more than one place **on purpose**. Here's the map so nothing looks like accidental duplication:
-
-| Path | In git? | Ships to npm? | Role |
-|---|---|---|---|
-| `web/references/<id>/DESIGN.md` | ✅ | ✅ (CLI pkg) | **Canonical source of truth.** Lives under `web/` because the Vercel project root is `web/` — the site build can only read files beneath it. Everything else is derived from here. |
-| `references` → `web/references` | ❌ gitignored | — | Local convenience symlink so root-level scripts/tests resolve the same path during local dev. |
-| `design-md/<id>/DESIGN.md` | ✅ | ❌ | Public [awesome-design-md](https://github.com/VoltAgent/awesome-design-md)-style mirror — frontmatter-stripped + a "Source / Last verified" note. A different *format*, not a byte copy. |
-| `packages/mcp/data/references/` | ❌ gitignored | ✅ (MCP pkg) | Build artifact. Regenerated from `web/references` by `packages/mcp/scripts/sync-data.mjs` on every `prepublish`/`build`. Never edit by hand. |
-
-**Rule of thumb: edit `web/references/<id>/DESIGN.md` only.** `web/scripts/build-registry.mjs` regenerates the typed registry, and the pre-commit catalog-integrity gate (`web/__tests__/catalog-integrity.test.ts`) plus `sync-data.mjs` keep the derived copies honest.
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for release history. Migrating from 0.1.x: see [MIGRATION.md](MIGRATION.md).
+- **Catalog** — [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems) (every reference, with raw `.md` twins for agents)
+- **Collections** — [oh-my-design.kr/collections](https://oh-my-design.kr/collections) (curated sets by use case)
+- **Docs** — [oh-my-design.kr/docs](https://oh-my-design.kr/docs) (install options, skills, agents, FAQ)
+- **Changelog** — [CHANGELOG.md](CHANGELOG.md) · migrating from 0.1.x: [MIGRATION.md](MIGRATION.md)
 
 ## License
 
