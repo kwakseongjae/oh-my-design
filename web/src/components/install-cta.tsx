@@ -82,16 +82,21 @@ export function InstallCta({
   );
 
   const promptText = prompt ?? (brandName ? firstPromptFor(brandName) : null);
+  // Copy carries the full prompt (incl. builder-config provenance URL);
+  // the visible label drops the URL and is width-capped so the pill stays short.
+  const promptDisplay = promptText
+    ?.replace(/\s*\(builder config:[^)]*\)\s*$/, "")
+    .trim();
 
   const promptBtn = promptText ? (
     <button
       type="button"
       onClick={() => copy("prompt", promptText)}
-      className="inline-flex min-w-0 items-center gap-2 rounded-full border border-border/60 bg-card/80 px-3.5 py-2 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
+      className="inline-flex min-w-0 max-w-[24rem] items-center gap-2 rounded-full border border-border/60 bg-card/80 px-3.5 py-2 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
       aria-label={brandName ? `Copy first prompt for ${brandName}` : "Copy first prompt"}
     >
       <Sparkles className="h-3.5 w-3.5 shrink-0 text-primary" />
-      <span className="truncate">&ldquo;{promptText}&rdquo;</span>
+      <span className="truncate">&ldquo;{promptDisplay}&rdquo;</span>
       {copied === "prompt" ? (
         <Check className="h-3.5 w-3.5 shrink-0 text-green-500" />
       ) : (
