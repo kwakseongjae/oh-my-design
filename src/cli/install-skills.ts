@@ -221,6 +221,40 @@ function planForTarget(projectRoot: string, target: SkillTarget): InstallPlan {
 const MANAGED_HEADER =
   '<!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->';
 
+// Substring shared by old (line 1) and new (after-frontmatter) marker formats.
+// Used for detection so upgrades from pre-v1.7.2 installs still refresh.
+const MANAGED_MARKER_SUBSTR = 'omd:installed-skill';
+
+/**
+ * Write the managed marker AFTER the YAML frontmatter block so the very first
+ * line of the installed file is `---`. Claude Code's skill loader reads the
+ * frontmatter `name`/`description` only when `---` is line 1 — a leading HTML
+ * comment makes it register the comment as the description (issue #17).
+ *
+ * If the source has no frontmatter (shouldn't happen for SKILL.md, but be
+ * defensive), fall back to prepending the marker.
+ */
+function withManagedMarker(src: string): string {
+  const fm = /^(---\n[\s\S]*?\n---\n)([\s\S]*)$/.exec(src);
+  if (!fm) {
+    return MANAGED_HEADER + '\n\n' + src;
+  }
+  return fm[1] + MANAGED_HEADER + '\n\n' + fm[2];
+}
+
+/**
+ * Detect an omd-managed installed-skill file. Matches both the new format
+ * (marker after frontmatter) and the legacy format (marker on line 1) by
+ * scanning the first ~30 lines for the marker substring. This keeps upgrades
+ * working: a pre-v1.7.2 file with the marker at line 1 is still recognized as
+ * managed and gets refreshed rather than skipped as user-edited drift.
+ */
+function isManagedSkillFile(content: string): boolean {
+  if (!content) return false;
+  const head = content.split('\n', 30).join('\n');
+  return head.includes(MANAGED_MARKER_SUBSTR);
+}
+
 interface InstallResult {
   target: SkillTarget;
   skill: string;
@@ -273,7 +307,8 @@ function installOne(
 ): InstallResult {
   const skillDir = join(packageRoot, 'skills', skill);
   const src = readFileSync(join(skillDir, 'SKILL.md'), 'utf8');
-  const managed = MANAGED_HEADER + '\n\n' + src;
+  // Marker goes AFTER frontmatter so `---` stays line 1 (issue #17).
+  const managed = withManagedMarker(src);
 
   // Respect a skill's declared channel restriction (frontmatter `x-omd-channels:`).
   const channels = parseSkillChannels(src);
@@ -316,7 +351,10 @@ function installOne(
   if (exists && existing === managed && !isMultiFile) {
     return { target: plan.target, skill, destPath, status: 'unchanged' };
   }
-  if (exists && !existing.startsWith(MANAGED_HEADER) && !force) {
+  // Drift = a file we didn't write. Detect the marker anywhere in the head
+  // (new after-frontmatter position OR legacy line-1 position) so pre-v1.7.2
+  // installs are recognized as managed and refreshed, not skipped.
+  if (exists && !isManagedSkillFile(existing) && !force) {
     return { target: plan.target, skill, destPath, status: 'skipped-drift' };
   }
 

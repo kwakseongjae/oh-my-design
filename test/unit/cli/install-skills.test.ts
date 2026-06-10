@@ -42,11 +42,41 @@ describe('install-skills', () => {
     }
   });
 
-  it('installed files start with the omd marker header', async () => {
+  it('installed files start with frontmatter, not the marker (issue #17)', async () => {
     await runInstallSkills({ dir: root });
     const path = join(root, '.claude/skills/omd-init/SKILL.md');
     const content = readFileSync(path, 'utf8');
-    expect(content.startsWith('<!-- omd:installed-skill')).toBe(true);
+
+    // Line 1 must be the YAML frontmatter fence so Claude Code reads the
+    // skill's own name/description — NOT the HTML managed marker.
+    expect(content.startsWith('---\n')).toBe(true);
+
+    // Frontmatter name/description belong to the skill itself.
+    const fm = /^---\n([\s\S]*?)\n---/.exec(content)![1];
+    expect(/^name:\s*omd:init\b/m.test(fm)).toBe(true);
+    const desc = /^description:\s*(.+)$/m.exec(fm)![1];
+    expect(desc).not.toContain('omd:installed-skill');
+
+    // The marker still ships — just after the frontmatter block.
+    const afterFm = content.slice(content.indexOf('\n---\n') + 5);
+    expect(afterFm.startsWith('<!-- omd:installed-skill')).toBe(true);
+  });
+
+  it('refreshes legacy line-1-marker files instead of skipping them as drift', async () => {
+    // Simulate a pre-v1.7.2 install: marker on line 1, frontmatter pushed down.
+    const target = join(root, '.claude/skills/omd-init/SKILL.md');
+    mkdirSync(join(root, '.claude/skills/omd-init'), { recursive: true });
+    const legacy =
+      '<!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->\n\n' +
+      '---\nname: omd:init\ndescription: stale\n---\n\n# old body\n';
+    writeFileSync(target, legacy, 'utf8');
+
+    await runInstallSkills({ dir: root, agents: ['claude-code'] });
+    const after = readFileSync(target, 'utf8');
+
+    // Detected as managed → refreshed to the new (frontmatter-first) format.
+    expect(after).not.toBe(legacy);
+    expect(after.startsWith('---\n')).toBe(true);
   });
 
   it('respects --agents filter', async () => {
@@ -83,7 +113,8 @@ describe('install-skills', () => {
 
     await runInstallSkills({ dir: root, agents: ['claude-code'], force: true });
     const after = readFileSync(target, 'utf8');
-    expect(after.startsWith('<!-- omd:installed-skill')).toBe(true);
+    expect(after.startsWith('---\n')).toBe(true);
+    expect(after).toContain('<!-- omd:installed-skill');
   });
 
   it('detects installed agents and installs only for those (when present)', async () => {
