@@ -170,7 +170,7 @@ verdict를 emit한 **후에**, 이번 run의 rubric FAIL들을 한 번 스캔해
 - **Claude Code**: AskUserQuestion — 후보 여러 개는 multiSelect 옵션으로 배칭 (후보당 한 줄: axis + FAIL 횟수 + 요약)
 - **다른 채널**: 같은 내용을 산문 질문 하나로
 
-동의된 후보만 `omd:remember` canonical 포맷으로 `.omd/preferences.md`에 append — `signal: review` / `confidence: inferred` / `status: pending`, `source_context`는 이번 QA report 경로 (예: `.reviews/final-qa-round-1.md`).
+동의된 후보는 **omd:remember 스킬의 기록 절차를 그대로 수행**해 기록 (직접 포맷 모방 금지 — writer는 omd:remember 하나) — `signal: review` / `confidence: inferred` / `status: pending`, `source_context`는 이번 QA report 경로 (예: `.reviews/final-qa-round-1.md`).
 
 ### 금지
 

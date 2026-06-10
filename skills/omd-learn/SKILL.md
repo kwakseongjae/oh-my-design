@@ -87,11 +87,18 @@ Review .omd/preferences.md for details.
 
 SessionStart 컨텍스트의 OMD FOLD-IN PROPOSAL → AskUserQuestion 승인 경로로 호출되었으면 Phase 2 확인은 이미 끝난 것 — 다시 묻지 말 것.
 
+제안 없이 사용자가 직접 omd:learn을 부른 경우에도 `.omd/foldin-proposal.json`이
+`"status": "proposed"`로 존재하면: 그 scopes를 이번 폴드 대상에 포함할지 Phase 2에서
+함께 확인하고, 처리 후 아래와 동일하게 status를 갱신한다 (proposed인 채로 방치 금지 —
+다음 세션이 또 물어본다).
+
 - **승인된 scope만** Phase 3-4로 처리. 미승인 scope의 pending 엔트리는 건드리지 않는다
 - 처리 후 `.omd/foldin-proposal.json`의 status를 Edit 툴로 갱신:
   - 전부 반영 → `"status": "applied"` + `"applied_at": "<ISO timestamp>"` 필드 추가
   - 일부만 반영 → `"status": "partial"` + `scopes` 배열을 **남은(미승인) scope만**으로 갱신
   - 전부 거절("나중에") → `"status": "snoozed"` + `"snoozed_at": "<ISO timestamp>"` 필드 추가
+  - status 값은 **JSON 계약상 영문 고정** (`proposed`/`applied`/`partial`/`snoozed`) —
+    번역·한글화 금지 (훅이 문자열 비교로 읽는다)
 
 ## 옵션 패턴
 
@@ -101,6 +108,9 @@ SessionStart 컨텍스트의 OMD FOLD-IN PROPOSAL → AskUserQuestion 승인 경
 - **"X scope만 반영"** → 해당 scope만 Phase 3에서 처리
 - **"<pref_id>를 applied로 표시"** → Phase 4의 single-entry 플립만
 - **"<pref_id>를 rejected로 표시 + 이유"** → 동일
+- 플립 전 현재 status를 먼저 Read로 확인: 이미 같은 값이면 no-op 보고,
+  `superseded`/`rejected` → `applied` 전환은 **금지** (이력 오염 — 사용자에게
+  "이 항목은 X 상태예요. 되살리려면 omd:remember로 재캡처하세요"라고 안내)
 
 ## 금지
 
