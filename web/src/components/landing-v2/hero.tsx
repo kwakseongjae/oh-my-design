@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Star, Check, Copy, Pause } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { event } from "@/lib/gtag";
 import { V2 } from "./tokens";
 
 const INSTALL_CMD = "npx oh-my-design-cli install-skills";
@@ -113,6 +114,8 @@ export function HeroV2() {
   const onCopy = async () => {
     try {
       await navigator.clipboard.writeText(INSTALL_CMD);
+      // Funnel event (#4): landing hero is the `hero` source of install_copy.
+      event("install_copy", { source: "hero" });
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
     } catch {

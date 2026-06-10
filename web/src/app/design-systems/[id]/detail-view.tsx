@@ -29,6 +29,7 @@ import {
   Sun,
 } from "lucide-react";
 import { ReferencePreview } from "@/components/reference-preview";
+import { InstallCta } from "@/components/install-cta";
 import { Markdown } from "@/components/markdown";
 import { event, trackRef } from "@/lib/gtag";
 import { getDesignSystem } from "@/lib/design-systems";
@@ -212,8 +213,17 @@ export function DetailView({
         </div>
       </header>
 
+      {/* Sticky install funnel — install_copy / prompt_copy (#4). The
+          pb-20 below keeps the last content row clear of the fixed bar. */}
+      <InstallCta
+        variant="bar"
+        source="ref_detail"
+        reference={detail.id}
+        brandName={displayName}
+      />
+
       {/* Desktop: 2-col grid; Mobile: single-pane toggle */}
-      <div className="mx-auto max-w-7xl px-0 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-0 md:px-6">
+      <div className="mx-auto max-w-7xl px-0 pb-20 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-0 md:px-6">
         {/* Markdown pane — desktop visible always; mobile only when selected */}
         <section
           className={`border-border/40 md:border-r md:px-6 md:py-8 ${
