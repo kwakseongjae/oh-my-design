@@ -92,7 +92,8 @@ omd:init Phase 4.5의 규율을 **§10-15 전체로 확장**(#32). 세 증거원
 1. **포맷 게이트** — 캐논 스키마 준수 검증(§1-15 존재, §4 문법, descriptive-name+hex, placeholder-lint). `omd validate`(가능 시) 또는 catalog-integrity 규칙 수동 확인.
 2. **토큰 충실도** (dev 서버 있을 때) — `node <skill>/scripts/verify-fidelity.mjs`로 §1-9 토큰이 실 UI를 재현하는지 패밀리별(color/type/radius) 점수.
 3. **드리프트** — `node <skill>/scripts/verify-drift.mjs <url>`로 observed-but-undeclared 버킷(코드가 쓰지만 토큰에 없는 색).
-4. **양면 Fidelity Receipt** `.omd/fidelity-receipt.md` emit — 윗면: 토큰 충실도 + 드리프트, 아랫면: §10-15 provenance ledger([FILL IN] 정직 표기). (#35)
+4. **깊이 보정** — `verify-fidelity`/`receipt`를 Phase 3에서 고른 exemplar로 돌려(`--exemplar references/<id>/DESIGN.md`) §1-9가 그 exemplar 깊이의 몇 %인지(`depthParity`) 점수. 얇은 섹션(under-developed)을 표기해 어디를 더 채울지 안내. (exemplar = 천장, 증거 = 실제 fill / #36)
+5. **양면 Fidelity Receipt** `.omd/fidelity-receipt.md` emit — 윗면: 토큰 충실도 + 드리프트 + **깊이 vs exemplar(§1-9)**, 아랫면: §10-15 provenance ledger + **maturity 미터([FILL IN] 정직 표기, cited-only)**. (#35/#36/#38)
 
 ## Phase 6 — DESIGN.md + shim 작성
 

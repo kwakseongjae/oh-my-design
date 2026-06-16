@@ -19,6 +19,7 @@ const arg = (f, d) => { const i = process.argv.indexOf(f); return i >= 0 ? proce
 const DESIGN = resolve(arg("--design", ".omd/absorb-demo/DESIGN.md"));
 const URL = arg("--url", process.env.OMD_TARGET || "http://localhost:3335/");
 const OUT = resolve(arg("--out", dirname(DESIGN)));
+const EXEMPLAR = arg("--exemplar", null); // catalog DESIGN.md to score §1-9 depth against (#36)
 mkdirSync(OUT, { recursive: true });
 
 let chromium;
@@ -26,7 +27,7 @@ try { ({ chromium } = await import("playwright")); }
 catch { console.error("✗ needs a headless browser: npm i -D playwright && npx playwright install chromium"); process.exit(2); }
 
 // CIEDE2000 + helpers — single source (issue #37)
-import { hexToRgb, rgbHex, rgbToLab, deltaE2000, dE, philosophyMaturity } from "./lib/omd-core.mjs";
+import { hexToRgb, rgbHex, rgbToLab, deltaE2000, dE, philosophyMaturity, depthParity } from "./lib/omd-core.mjs";
 const MATCH = 8, CLUSTER = 6;
 
 // ── parse DESIGN.md: declared tokens + §10-15 provenance ──
@@ -43,6 +44,9 @@ const maturity = pm.maturity;
 // monotonic high-water from the Hermes ratchet (.omd/maturity.json), if the loop has run
 let maturityHigh = maturity;
 try { const mj = JSON.parse(readFileSync(resolve(OUT, "maturity.json"), "utf8")); if (Number.isFinite(mj.maturity_high)) maturityHigh = Math.max(maturity, mj.maturity_high); } catch { /* no ratchet yet */ }
+// §1-9 depth parity vs the nearest catalog exemplar (#36), if one is given
+let depth = null;
+if (EXEMPLAR) { try { depth = depthParity(raw, readFileSync(resolve(EXEMPLAR), "utf8")); } catch { /* exemplar unreadable */ } }
 
 // ── observe live DOM ──
 const browser = await chromium.launch().catch((e) => { if (/Executable doesn't exist|download new browsers/i.test(String(e))) { console.error("✗ chromium missing: npx playwright install chromium"); process.exit(2); } throw e; });
@@ -98,6 +102,13 @@ md += `\n### ▲ Observed-but-undeclared (drift — shipped, no token) — ${dri
 md += drift.length ? drift.sort((a, b) => b.pct - a.pct).slice(0, 8).map((d) => `- \`${d.hex}\` — ${d.pct.toFixed(1)}% of UI, nearest token ΔE ${d.dE.toFixed(1)}`).join("\n") + "\n" : "_none_\n";
 const fmtRad = (arr) => { const out = []; let pill = false; for (const p of arr) { if (p >= 100) pill = true; else out.push(p + "px"); } if (pill) out.push("pill"); return out.join(", "); };
 md += `\n### ◆ Radius\n- declared: ${fmtRad(declRadii.map((r) => r.px))} · observed: ${fmtRad(obsRad)}\n`;
+if (depth) {
+  md += `\n### ▦ Depth vs exemplar (§1-9, data-bound)\n`;
+  md += `Filled to **${depth.overall}%** of \`${EXEMPLAR.replace(/.*references\//, "").replace(/\/DESIGN\.md$/, "")}\` exemplar depth (${depth.comparable} comparable sections). The exemplar sets the ceiling; evidence sets the fill.\n`;
+  const ud = depth.underDeveloped.filter((s) => s.zone === "data");
+  if (ud.length) md += `- under-developed: ${ud.map((s) => `§${s.n} ${s.title} (${Math.round(s.ratio * 100)}%)`).join(" · ")}\n`;
+  else md += `- all comparable §1-9 sections at-par.\n`;
+}
 md += `\n---\n\n## ✍ Provenance ledger (§10-15) — maturity ${maturity}% (high-water ${maturityHigh}%)  ${bar(maturity)}\n\n`;
 md += `Every brand-philosophy section must be grounded (cited) or honestly marked \`[FILL IN]\` — never fabricated.\n\n`;
 md += `| § | Section | Status |\n|---|---|---|\n`;

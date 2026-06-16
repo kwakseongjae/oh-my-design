@@ -127,6 +127,23 @@ describe("Hermes loop (#38) — maturity must climb ONLY via cited fills", () =>
   });
 });
 
+describe("depthParity (#36) — fill the data-bound zone to exemplar quality", () => {
+  const exemplar = `---\nomd: 0.1\n---\n# E\n## 1. Visual Theme & Atmosphere\n${"word ".repeat(200)}\n## 5. Layout Principles\n${"layout ".repeat(60)}\n`;
+  it("flags an under-developed §1-9 section vs a deep exemplar", async () => {
+    const { depthParity } = await import("../scripts/lib/omd-core.mjs");
+    const thin = `---\nomd: 0.1\n---\n# D\n## 1. Visual Theme & Atmosphere\n${"word ".repeat(15)}\n## 5. Layout Principles\n${"layout ".repeat(58)}\n`;
+    const dp = depthParity(thin, exemplar);
+    expect(dp.sections.find((s: { n: number }) => s.n === 1)!.status).toBe("under-developed"); // ~0.07
+    expect(dp.sections.find((s: { n: number }) => s.n === 5)!.status).toBe("on-par");          // ~0.97
+    expect(dp.underDeveloped.some((s: { n: number }) => s.n === 1)).toBe(true);
+  });
+  it("skips [FILL IN] sections — depth N/A, that's the maturity meter's job", async () => {
+    const { depthParity } = await import("../scripts/lib/omd-core.mjs");
+    const draft = `---\nomd: 0.1\n---\n# D\n## 5. Layout Principles\n[FILL IN: layout system]\n`;
+    expect(depthParity(draft, exemplar).sections.find((s: { n: number }) => s.n === 5)!.status).toBe("placeholder");
+  });
+});
+
 describe("parseDesignMd + enum", () => {
   it("splits §1-15 sections and frontmatter", () => {
     const p = parseDesignMd(VALID);

@@ -130,6 +130,34 @@ export function reconcile(prev, raw, driftCount = 0) {
   return alerts;
 }
 
+// ── depth parity vs a catalog exemplar (#36) ───────────────────────────
+// "Fill the template to exemplar quality": compare each section's length against the
+// nearest curated exemplar (Toss/Apple/...) so a thin draft section is flagged
+// ("§5 ~200 chars vs exemplar ~1500 — under-developed"). The exemplar calibrates the
+// CEILING; evidence sets the actual fill. Depth parity scores the DATA-BOUND zone
+// (§1-9); §10-15 depth is governed by the cited-only maturity meter, and [FILL IN]
+// sections are skipped (ungrounded ≠ under-developed — that's maturity's job).
+const UNDERDEV_RATIO = 0.35;
+export function depthParity(draftRaw, exemplarRaw) {
+  const d = parseDesignMd(draftRaw), e = parseDesignMd(exemplarRaw);
+  const realContent = (t) => (t || "").replace(/\[FILL IN[\s\S]*?\]/gi, "").replace(/<!--[\s\S]*?-->/g, "").trim();
+  const sections = SECTIONS.map((s) => {
+    const dt = d.sections[s.n], et = e.sections[s.n] || "";
+    // depth = REAL content only (strip [FILL IN] blocks + omd:limitation comments) so a
+    // section with substantial prose + one small [FILL IN] sub-item still gets scored.
+    const draftLen = realContent(dt).length, exLen = et.trim().length;
+    const isFill = dt == null || draftLen < 40;
+    let status, ratio = null;
+    if (isFill) status = "placeholder";
+    else if (!exLen) status = "no-exemplar";
+    else { ratio = +(draftLen / exLen).toFixed(2); status = ratio < UNDERDEV_RATIO ? "under-developed" : ratio >= 0.8 ? "on-par" : "thin"; }
+    return { n: s.n, title: s.title, zone: s.zone, draftLen, exLen, ratio, status };
+  });
+  const cmp = sections.filter((s) => s.zone === "data" && s.ratio != null);
+  const overall = cmp.length ? Math.round((100 * cmp.reduce((a, s) => a + Math.min(1, s.ratio), 0)) / cmp.length) : null;
+  return { sections, overall, comparable: cmp.length, underDeveloped: sections.filter((s) => s.status === "under-developed") };
+}
+
 // ── validator (engine behind `omd validate`) ────────────────────────────
 // returns { findings: [{level:'error'|'warn'|'info', rule, msg}], errors, ok }
 export function validateDesignMd(raw) {
