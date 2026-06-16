@@ -838,7 +838,7 @@ export function FinalCtaFooter() {
                   boxShadow: `0 18px 40px -16px ${V2.primary}cc`,
                 }}
               >
-                Open the Builder
+                Get Started
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <a

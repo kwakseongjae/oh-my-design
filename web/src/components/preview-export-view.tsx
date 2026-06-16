@@ -2,13 +2,12 @@
 
 import { useState, useMemo } from "react";
 import { event, trackRef } from "@/lib/gtag";
-import { FileText, Copy, Check, ArrowLeft, Download, ArrowUpRight, Eye } from "lucide-react";
+import { FileText, Copy, Check, ChevronRight, ArrowLeft, Download, ArrowUpRight, Eye } from "lucide-react";
 import { ReferencePreview } from "@/components/reference-preview";
 import { extractTokens } from "@/lib/extract-tokens";
 import { applyOverridesToMd } from "@/lib/core/generate-css";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
-import { Button } from "@/components/ui/button";
 import { getDesignSystem } from "@/lib/design-systems";
 import { getHomepageUrl } from "@/data/registry.generated";
 import { BrandNameplateLogo } from "@/components/brand-logo";
@@ -51,7 +50,6 @@ export function PreviewExportView({
   const ds = getDesignSystem(detail.id);
   const homepageUrl = getHomepageUrl(detail.id);
   const tokens = useMemo(() => extractTokens(detail), [detail]);
-  const lineCount = designMd.split("\n").length;
 
   function download() {
     const blob = new Blob([designMd], { type: "text/plain" });
@@ -77,17 +75,26 @@ export function PreviewExportView({
     <div className="flex flex-col gap-4">
 
       {/* ── Header ── */}
-      <div className="flex items-center gap-3">
-        <Button variant="ghost" size="sm" onClick={onBack} className="gap-1.5 shrink-0">
-          <ArrowLeft className="h-3.5 w-3.5" /> Back
-        </Button>
-
-        <div className="flex-1 min-w-0">
-          <h2 className="text-xl font-semibold tracking-tight leading-tight">{refName}</h2>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            {components.length} components · {lineCount} lines
-          </p>
-        </div>
+      {/* The breadcrumb's terminal crumb (brand name) doubles as the page
+          title — the left preview panel already shows the brand prominently —
+          so we drop the redundant <h2>. The crumb is sized up a touch
+          (text-sm + semibold) to keep a focal point, and the DS link rides on
+          the same row. "← reference" keeps an explicit back affordance for
+          users who don't read a breadcrumb as clickable. */}
+      <div className="flex items-center justify-between gap-3">
+        <nav aria-label="Breadcrumb" className="flex min-w-0 items-center gap-1.5 text-sm">
+          <button
+            type="button"
+            onClick={onBack}
+            aria-label="Back to reference"
+            className="group inline-flex shrink-0 items-center gap-1 font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:underline"
+          >
+            <ArrowLeft className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-x-0.5" />
+            reference
+          </button>
+          <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground/50" />
+          <span className="truncate font-semibold tracking-tight text-foreground">{refName}</span>
+        </nav>
 
         {ds && (
           <a
@@ -145,46 +152,50 @@ export function PreviewExportView({
         <div className={`${mobileView === "designmd" ? "flex" : "hidden"} lg:flex sticky top-[4.5rem] flex-col rounded-xl border border-border/40 dark:border-border overflow-hidden max-h-[calc(100dvh-5.5rem)] lg:max-h-[calc(100vh-5.5rem)]`}>
 
           {/* Toolbar */}
-          <div className="shrink-0 flex items-center gap-2 border-b border-border/40 dark:border-border px-3 py-2">
-            <div className="flex items-center gap-1.5 ml-auto">
-              {/* Rendered / Raw toggle */}
-              <div className="flex items-center rounded-[0.5rem] border border-border/40 dark:border-border bg-muted/20 p-0.5">
-                <button
-                  onClick={() => setMdView("rendered")}
-                  className={`flex items-center gap-1 rounded-[0.375rem] px-2 py-1 text-[11px] font-medium transition-colors duration-150 ${
-                    mdView === "rendered"
-                      ? "bg-background text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <Eye className="h-2.5 w-2.5" /> Rendered
-                </button>
-                <button
-                  onClick={() => setMdView("raw")}
-                  className={`flex items-center gap-1 rounded-[0.375rem] px-2 py-1 text-[11px] font-medium transition-colors duration-150 ${
-                    mdView === "raw"
-                      ? "bg-background text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <FileText className="h-2.5 w-2.5" /> Raw
-                </button>
-              </div>
-
+          <div className="shrink-0 flex flex-wrap items-center gap-2 border-b border-border/40 dark:border-border px-3 py-2">
+            {/* Rendered / Raw toggle — lowest-emphasis (neutral segmented) */}
+            <div className="flex items-center rounded-[0.5rem] border border-border/40 dark:border-border bg-muted/20 p-0.5">
               <button
-                onClick={download}
-                className="flex items-center gap-1 rounded-[0.5rem] border border-border/40 dark:border-border bg-background px-2.5 py-1.5 text-[11px] font-medium text-foreground/80 transition-colors duration-150 hover:bg-muted"
+                onClick={() => setMdView("rendered")}
+                className={`flex items-center gap-1 rounded-[0.375rem] px-2 py-1 text-[11px] font-medium transition-colors duration-150 ${
+                  mdView === "rendered"
+                    ? "bg-background text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
-                <Download className="h-3 w-3" /> Download
+                <Eye className="h-2.5 w-2.5" /> Rendered
+              </button>
+              <button
+                onClick={() => setMdView("raw")}
+                className={`flex items-center gap-1 rounded-[0.375rem] px-2 py-1 text-[11px] font-medium transition-colors duration-150 ${
+                  mdView === "raw"
+                    ? "bg-background text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <FileText className="h-2.5 w-2.5" /> Raw
+              </button>
+            </div>
+
+            {/* Export actions — Download = primary (solid indigo), Copy =
+                secondary (tonal indigo). On mobile the group takes its own
+                full-width row with flex-1 buttons = comfortable tap targets;
+                inline + right-aligned from sm up. */}
+            <div className="ml-auto flex w-full items-center gap-2 sm:w-auto">
+              <button
+                onClick={copyMd}
+                className="flex flex-1 items-center justify-center gap-1.5 rounded-[0.5rem] border border-primary/25 bg-primary/10 px-3 py-2 text-xs font-semibold text-primary transition-colors duration-150 hover:bg-primary/20 dark:border-primary/30 sm:flex-none"
+              >
+                {copied === "md"
+                  ? <><Check className="h-3.5 w-3.5 text-emerald-500" /> Copied</>
+                  : <><Copy className="h-3.5 w-3.5" /> Copy</>}
               </button>
 
               <button
-                onClick={copyMd}
-                className="flex items-center gap-1 rounded-[0.5rem] border border-border/40 dark:border-border bg-background px-2.5 py-1.5 text-[11px] font-medium text-foreground/80 transition-colors duration-150 hover:bg-muted"
+                onClick={download}
+                className="flex flex-1 items-center justify-center gap-1.5 rounded-[0.5rem] bg-primary px-3.5 py-2 text-xs font-semibold text-primary-foreground shadow-[0_2px_12px_-3px_rgba(85,70,255,0.65)] transition-all duration-150 hover:bg-primary/90 active:translate-y-px sm:flex-none"
               >
-                {copied === "md"
-                  ? <><Check className="h-3 w-3 text-emerald-500" /> Copied</>
-                  : <><Copy className="h-3 w-3" /> Copy</>}
+                <Download className="h-3.5 w-3.5" /> Download
               </button>
             </div>
           </div>

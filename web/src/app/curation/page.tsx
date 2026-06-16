@@ -6,6 +6,7 @@ import { Moon, Sun, RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { QuizWizard, type QuizResult } from "@/components/survey/quiz-wizard";
 import { ResultCard } from "@/components/survey/result-card";
+import { GithubStarButton } from "@/components/github-star-button";
 import { event } from "@/lib/gtag";
 import type { QuizScore } from "@/lib/survey/scoring";
 
@@ -29,9 +30,11 @@ function ResultHeader({ onRetake }: { onRetake: () => void }) {
           >
             <RotateCcw className="h-3 w-3" /> Retake
           </button>
+          <GithubStarButton className="hidden sm:inline-flex" />
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              aria-label="Toggle theme"
               className="flex h-8 w-8 items-center justify-center rounded-full border border-border/40 dark:border-white/10 bg-card/50 dark:bg-white/[0.04] transition-colors hover:bg-accent"
             >
               {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}

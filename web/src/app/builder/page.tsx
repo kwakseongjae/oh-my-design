@@ -9,6 +9,7 @@ import { ReferenceSelector } from "@/components/reference-selector";
 import { DesignWizard } from "@/components/design-wizard";
 import { PreviewExportView } from "@/components/preview-export-view";
 import { InstallCta } from "@/components/install-cta";
+import { GithubStarButton } from "@/components/github-star-button";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { encodeConfig, decodeConfig } from "@/lib/core/config-hash";
 import { buildBuilderPrompt, DEFAULT_BUILDER_COMPONENTS } from "@/lib/core/builder-prompt";
@@ -346,21 +347,25 @@ export default function BuilderPage() {
             ))}
           </nav>
 
-          {mounted && (
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-border/40 bg-card/50 dark:border-border dark:bg-card/60 transition-colors hover:bg-accent"
-            >
-              {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
-            </button>
-          )}
+          <div className="flex items-center gap-2">
+            <GithubStarButton className="hidden sm:inline-flex" />
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                aria-label="Toggle theme"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-border/40 bg-card/50 dark:border-border dark:bg-card/60 transition-colors hover:bg-accent"
+              >
+                {theme === "dark" ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
+              </button>
+            )}
+          </div>
         </div>
       </header>
 
       {/* Content. Preview gets extra bottom padding so the last content row
           stays reachable above the fixed install bar (same pb pattern as the
           reference detail pages). */}
-      <main className={`mx-auto max-w-7xl px-4 py-8 sm:px-6 ${step === "preview" ? "pb-24" : ""}`}>
+      <main className={`mx-auto max-w-7xl px-4 py-8 sm:px-6 ${step === "preview" ? "sm:pb-24" : ""}`}>
         {step === "select" && (
           <ReferenceSelector
             refs={refs}
@@ -400,6 +405,9 @@ export default function BuilderPage() {
                 builder config (not a generic brand line) so the user's step-2
                 customizations survive the handoff to the agent; the URL we
                 append matches the cfg replaceState sync above (same encoder). */}
+            {/* Hidden on mobile (sm:block) — the fixed install bar crowds the
+                small-screen preview; desktop keeps it as the funnel close. */}
+            <div className="hidden sm:block">
             <InstallCta
               variant="bar"
               source="builder"
@@ -419,6 +427,7 @@ export default function BuilderPage() {
                 url: `${typeof window !== "undefined" ? window.location.origin : "https://oh-my-design.kr"}/builder?step=preview&ref=${detail.id}&cfg=${encodeConfig(detail.id, overrides, activeComponents, stylePreferences)}`,
               })}
             />
+            </div>
           </>
         )}
       </main>
@@ -427,7 +436,7 @@ export default function BuilderPage() {
           On preview it lifts above the fixed install bar (bottom-4 + pill height)
           so the two floating controls never overlap on narrow viewports. */}
       {(step === "select" || step === "preview") && (
-        <ScrollToTop bottomClass={step === "preview" ? "bottom-20" : "bottom-5"} />
+        <ScrollToTop bottomClass={step === "preview" ? "bottom-5 sm:bottom-20" : "bottom-5"} />
       )}
     </div>
   );

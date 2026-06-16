@@ -15,6 +15,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { getAllDesignSystems } from "@/lib/design-systems";
 import { DSCard } from "@/components/ds-card";
+import { GithubStarButton } from "@/components/github-star-button";
 import { COLLECTIONS } from "@/lib/collections";
 
 export default function DesignSystemsPage() {
@@ -34,14 +35,18 @@ export default function DesignSystemsPage() {
             <img src="/logo.png" alt="oh-my-design" className="h-6 sm:h-8 block dark:hidden" />
             <img src="/logo-white.png" alt="oh-my-design" className="h-6 sm:h-8 hidden dark:block" />
           </Link>
-          {mounted && (
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-border/60 bg-card/50 transition-colors hover:bg-accent dark:border-border dark:bg-card/60"
-            >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
-          )}
+          <div className="flex items-center gap-2">
+            <GithubStarButton className="hidden sm:inline-flex" />
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                aria-label="Toggle theme"
+                className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-border/60 bg-card/50 transition-colors hover:bg-accent dark:border-border dark:bg-card/60"
+              >
+                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </button>
+            )}
+          </div>
         </div>
       </header>
 

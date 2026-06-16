@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import { BrowseModal } from "@/components/browse-modal";
 import { event } from "@/lib/gtag";
+import { useGithubStars, formatStars } from "@/lib/use-github-stars";
 import { V2 } from "./tokens";
 
 function GithubMark({ className }: { className?: string }) {
@@ -23,6 +24,7 @@ function GithubMark({ className }: { className?: string }) {
  */
 export function V2Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const stars = useGithubStars();
 
   useEffect(() => {
     const onScroll = () => {
@@ -98,13 +100,18 @@ export function V2Nav() {
             href="https://github.com/kwakseongjae/oh-my-design"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={stars != null ? `GitHub — ${formatStars(stars)} stars` : "GitHub"}
             onClick={() => event("outbound_click", { url: "github_nav_v2" })}
-            className="hidden items-center gap-1.5 rounded-full border h-9 sm:h-10 px-3 text-xs font-medium text-white/85 transition-all hover:bg-white/5 hover:text-white md:inline-flex"
+            className="hidden items-center gap-2 rounded-full border h-9 sm:h-10 px-3.5 text-xs font-medium text-white/85 transition-all hover:bg-white/5 hover:text-white md:inline-flex"
             style={{ borderColor: V2.borderDark }}
           >
-            <GithubMark className="h-3.5 w-3.5" />
-            <span>GitHub</span>
-            <Star className="h-3 w-3" fill="#facc15" style={{ color: "#facc15" }} />
+            <GithubMark className="h-4 w-4" />
+            {stars != null && (
+              <span className="text-[13px] font-semibold tabular-nums leading-none text-white/90">
+                {formatStars(stars)}
+              </span>
+            )}
+            <Star className="h-3.5 w-3.5" fill="#facc15" style={{ color: "#facc15" }} />
           </a>
           <Link
             href="/builder"
@@ -115,8 +122,8 @@ export function V2Nav() {
               boxShadow: `0 6px 18px -6px ${V2.primary}`,
             }}
           >
-            <span className="sm:hidden">Build</span>
-            <span className="hidden sm:inline">Open Builder</span>
+            <span className="sm:hidden">Start</span>
+            <span className="hidden sm:inline">Get Started</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>

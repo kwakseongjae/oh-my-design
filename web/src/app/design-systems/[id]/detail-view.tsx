@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { ReferencePreview } from "@/components/reference-preview";
 import { InstallCta } from "@/components/install-cta";
+import { GithubStarButton } from "@/components/github-star-button";
 import { Markdown } from "@/components/markdown";
 import { event, trackRef } from "@/lib/gtag";
 import { getDesignSystem } from "@/lib/design-systems";
@@ -168,6 +169,7 @@ export function DetailView({
               <FileText className="h-3.5 w-3.5" />
               <span className="hidden sm:inline">Raw .md</span>
             </a>
+            <GithubStarButton className="hidden md:inline-flex" />
             {mounted && (
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

@@ -6,6 +6,7 @@ import { ArrowLeft, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { ActionsHeader } from "./actions-header";
 import { MoodOverrideBadge } from "./mood-override-badge";
+import { GithubStarButton } from "@/components/github-star-button";
 import type { PlaygroundState } from "@/lib/playground/state";
 
 export function PlaygroundHeader({
@@ -54,6 +55,7 @@ export function PlaygroundHeader({
             />
           </div>
           <ActionsHeader state={state} onReset={onReset} />
+          <GithubStarButton className="hidden sm:inline-flex" />
           {mounted && (
             <button
               type="button"
