@@ -28,7 +28,7 @@ const CLUSTER_TOL = 6;  // merge observed colors within this ΔE into one
 const TOP_DRIFT = 12;   // report this many top undeclared colors
 
 // CIEDE2000 + helpers — single source (issue #37)
-import { hexToRgb, rgbHex, rgbToLab, deltaE2000, dE } from "./lib/omd-core.mjs";
+import { rgbHex, dE } from "./lib/omd-core.mjs";
 
 async function run() {
   let browser;

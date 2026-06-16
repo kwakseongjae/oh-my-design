@@ -27,7 +27,7 @@ try { ({ chromium } = await import("playwright")); }
 catch { console.error("✗ needs a headless browser: npm i -D playwright && npx playwright install chromium"); process.exit(2); }
 
 // CIEDE2000 + helpers — single source (issue #37)
-import { hexToRgb, rgbHex, rgbToLab, deltaE2000, dE, philosophyMaturity, depthParity } from "./lib/omd-core.mjs";
+import { hexToRgb, rgbHex, dE, philosophyMaturity, depthParity } from "./lib/omd-core.mjs";
 const MATCH = 8, CLUSTER = 6;
 
 // ── parse DESIGN.md: declared tokens + §10-15 provenance ──
