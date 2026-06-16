@@ -446,6 +446,12 @@ export function ReferenceSelector({
               strand at the start of a new line. */}
           <span aria-hidden className="hidden sm:inline-block h-5 w-px bg-border/60 mx-1" />
 
+          {/* Country + Hot grouped into one non-wrapping flex unit so HOT
+              always sits beside Country and the pair wraps together. HOT used
+              to be a separate flex item at the tail of the facet row, so on
+              mobile it stranded alone on its own wrapped line and read as
+              "missing"; keeping it next to Country fixes that. */}
+          <div className="flex items-center gap-1.5">
           {/* Country — collapsed from a row of 8 inline flag chips into a
               single dropdown trigger, peer-shaped with the other filter
               chips. Was previously an entire labeled row ("COUNTRY ...");
@@ -558,6 +564,7 @@ export function ReferenceSelector({
               Hot
             </button>
           )}
+          </div>
         </div>
       </motion.div>
 
