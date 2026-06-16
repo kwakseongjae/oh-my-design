@@ -82,6 +82,22 @@ if (
   lines.push('');
 }
 
+// Hermes #38: §10-15 maturity meter + top enrichment target (written by the
+// session-end ratchet). Best-effort — absent file just means the loop hasn't run.
+try {
+  const m = JSON.parse(safeRead(path.join(projectDir, '.omd', 'maturity.json')) || 'null');
+  if (m && Number.isFinite(m.maturity)) {
+    const filled = Math.round((m.maturity_high || 0) / 10);
+    const bar = '█'.repeat(filled) + '░'.repeat(10 - filled);
+    lines.push('## OMD PHILOSOPHY MATURITY');
+    lines.push('');
+    lines.push(`§10-15 grounded: ${m.maturity}% (high-water ${m.maturity_high || 0}%) ${bar} — ${m.fill_in} section(s) still [FILL IN]${m.uncited ? `, ${m.uncited} uncited (not counted)` : ''}`);
+    if (m.top_enrichment && m.top_enrichment.readySignals > 0)
+      lines.push(`Ready to enrich: §${m.top_enrichment.n} ${m.top_enrichment.title} — ${m.top_enrichment.readySignals} grounded signal(s). Run omd:learn to fill it (citation required).`);
+    lines.push('');
+  }
+} catch { /* no maturity yet */ }
+
 if (fs.existsSync(timelineMd)) {
   const text = safeRead(timelineMd) || '';
   const blocks = text.split(/^## /m).slice(1).slice(-3);

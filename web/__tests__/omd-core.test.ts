@@ -82,6 +82,51 @@ describe("validateDesignMd", () => {
   });
 });
 
+describe("Hermes loop (#38) — maturity must climb ONLY via cited fills", () => {
+  const base = `---\nomd: 0.1\n---\n# T\n## 10. Voice & Tone\n`;
+  const uncited = base + `Calm and technical. We speak plainly.\n`;
+  const cited = base + "Calm and technical (per `CLAUDE.md` voice rule).\n";
+
+  it("an UNCITED §10-15 fill does NOT raise maturity (anti-fabrication teeth)", async () => {
+    const { philosophyMaturity } = await import("../scripts/lib/omd-core.mjs");
+    const u = philosophyMaturity(uncited);
+    expect(u.filled).toBe(1);       // it IS filled
+    expect(u.citedFilled).toBe(0);  // but not cited
+    expect(u.maturity).toBe(0);     // so the meter does NOT move
+  });
+  it("a CITED fill raises maturity", async () => {
+    const { philosophyMaturity, groundedMaturity } = await import("../scripts/lib/omd-core.mjs");
+    expect(philosophyMaturity(cited).maturity).toBe(17); // 1/6
+    expect(groundedMaturity(cited)).toBe(17);
+  });
+  it("maturityRatchet keeps a monotonic high-water floor", async () => {
+    const { maturityRatchet } = await import("../scripts/lib/omd-core.mjs");
+    let s = maturityRatchet(null, uncited);
+    expect(s.maturity_high).toBe(0);
+    s = maturityRatchet(s, cited);
+    expect(s.maturity_high).toBe(17);
+    s = maturityRatchet(s, uncited); // regress current
+    expect(s.maturity).toBe(0);
+    expect(s.maturity_high).toBe(17); // floor holds
+  });
+  it("enrichmentTargets ranks a [FILL IN] slot ready ONLY when a cited pref maps to it", async () => {
+    const { enrichmentTargets } = await import("../scripts/lib/omd-core.mjs");
+    const doc = `---\nomd: 0.1\n---\n# T\n## 10. Voice & Tone\n[FILL IN: project voice]\n## 12. Principles\n[FILL IN: 3-5 principles]\n`;
+    const prefs = [
+      { scope: "voice", status: "pending", body: "CTAs never uppercase (per `src/ui/Button.tsx:40`)" }, // cited → counts
+      { scope: "voice", status: "pending", body: "warm tone" }, // uncited → ignored
+    ];
+    const t = enrichmentTargets(doc, prefs);
+    expect(t.find((x) => x.n === 10)!.readySignals).toBe(1);
+    expect(t.find((x) => x.n === 12)!.readySignals).toBe(0);
+  });
+  it("reconcile flags an uncited fill", async () => {
+    const { reconcile } = await import("../scripts/lib/omd-core.mjs");
+    const alerts = reconcile({ fill_in: 6, maturity_high: 0 }, uncited);
+    expect(alerts.some((a: { kind: string }) => a.kind === "uncited-fill")).toBe(true);
+  });
+});
+
 describe("parseDesignMd + enum", () => {
   it("splits §1-15 sections and frontmatter", () => {
     const p = parseDesignMd(VALID);

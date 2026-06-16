@@ -69,6 +69,67 @@ export function parseDesignMd(raw) {
   return { data: fm.data || {}, content: body, sections, tokens: fm.data?.tokens || null };
 }
 
+// ── §10-15 maturity + Hermes self-feedback loop (#38) ───────────────────
+// The maturity meter is the % of brand-philosophy sections that are GROUNDED AND
+// CITED. It must climb ONLY via real, cited fills — counting merely-`filled` would
+// let the loop reward fabricated prose. So `maturity` keys off citedFilled, not filled.
+export const CITATION_RE = /`[^`]+:\d+`|CLAUDE\.md|AGENTS\.md|chat-turn|§\d/i;
+export function philosophyMaturity(raw) {
+  const { sections } = parseDesignMd(raw);
+  const phil = SECTIONS.filter((s) => s.zone === "philosophy");
+  const out = phil.map((s) => {
+    const txt = sections[s.n];
+    const isFill = txt == null || /\[FILL IN/i.test(txt) || txt.length < 8;
+    const cited = !!txt && CITATION_RE.test(txt.replace(/\[FILL IN[\s\S]*?\]/gi, ""));
+    return { n: s.n, title: s.title, status: isFill ? "fill-in" : cited ? "grounded+cited" : "grounded-uncited", filled: !isFill };
+  });
+  const filled = out.filter((s) => s.filled).length;
+  const citedFilled = out.filter((s) => s.status === "grounded+cited").length;
+  // maturity = CITED fills only (the anti-fabrication teeth). `filled` is exposed
+  // separately so an uncited fill is visible but does NOT raise the meter.
+  return { sections: out, filled, citedFilled, grounded: citedFilled, total: phil.length, maturity: Math.round((100 * citedFilled) / phil.length) };
+}
+export const groundedMaturity = (raw) => philosophyMaturity(raw).maturity; // cited-only %
+// §10-15 slots still awaiting a grounded fill — the enrichment targets
+export const fillInSlots = (raw) => philosophyMaturity(raw).sections.filter((s) => s.status === "fill-in");
+// human-readable purpose from `[FILL IN: <purpose>]`, keyed by section number
+export function fillInSlotPurpose(raw) {
+  const { sections } = parseDesignMd(raw); const out = {};
+  for (const s of SECTIONS.filter((x) => x.zone === "philosophy")) {
+    const m = sections[s.n] && /\[FILL IN:?\s*([^\]]*)\]/i.exec(sections[s.n]);
+    out[s.n] = m && m[1].trim() ? m[1].trim() : s.title;
+  }
+  return out;
+}
+// deterministic bridge from the EXISTING preference-scope vocab to philosophy slots.
+// Only the 3 scopes that already exist and map cleanly — no scope-vocab explosion.
+export const PHIL_SCOPE_SLOT = { voice: 10, visualTheme: 11, motion: 15 };
+// rank fill-in slots by how many GROUNDED (cited) prefs are ready to fill them.
+// `prefs` is the parsePreferences() shape: [{ scope, body, status }]. Only pending,
+// citation-bearing prefs count — so a slot only becomes "ready" with real evidence.
+export function enrichmentTargets(raw, prefs = []) {
+  const slots = fillInSlots(raw); const purpose = fillInSlotPurpose(raw);
+  const ready = (slotN) => prefs.filter((p) => (p.status === "pending" || p.status == null) && PHIL_SCOPE_SLOT[p.scope] === slotN && CITATION_RE.test(p.body || ""));
+  return slots.map((s) => { const r = ready(s.n); return { n: s.n, title: s.title, purpose: purpose[s.n], readySignals: r.length, signals: r.map((p) => p.body?.slice(0, 60)) }; })
+    .sort((a, b) => b.readySignals - a.readySignals);
+}
+// monotonic ratchet: maturity_high never decreases. Pure — the hook stamps ts + writes.
+export function maturityRatchet(prev, raw) {
+  const m = philosophyMaturity(raw);
+  const fill_in = m.sections.filter((s) => s.status === "fill-in").length;
+  return { maturity: m.maturity, maturity_high: Math.max(prev?.maturity_high ?? 0, m.maturity), grounded: m.citedFilled, filled: m.filled, uncited: m.filled - m.citedFilled, fill_in, total: m.total };
+}
+// minimal reconciliation: the two drift classes that rest on reliably-present data.
+export function reconcile(prev, raw, driftCount = 0) {
+  const m = philosophyMaturity(raw); const fillNow = m.sections.filter((s) => s.status === "fill-in").length;
+  const alerts = [];
+  if (prev && fillNow > (prev.fill_in ?? fillNow)) alerts.push({ kind: "philosophy-regression", msg: `§10-15 lost ground: ${prev.fill_in}→${fillNow} [FILL IN]` });
+  if (prev && m.maturity < (prev.maturity_high ?? 0)) alerts.push({ kind: "maturity-drop", msg: `maturity ${m.maturity}% below high-water ${prev.maturity_high}%` });
+  if (m.filled > m.citedFilled) alerts.push({ kind: "uncited-fill", msg: `${m.filled - m.citedFilled} §10-15 fill(s) lack a citation — do not count toward maturity` });
+  if (driftCount > 0) alerts.push({ kind: "token-drift", msg: `${driftCount} observed-but-undeclared color(s) in live UI` });
+  return alerts;
+}
+
 // ── validator (engine behind `omd validate`) ────────────────────────────
 // returns { findings: [{level:'error'|'warn'|'info', rule, msg}], errors, ok }
 export function validateDesignMd(raw) {
