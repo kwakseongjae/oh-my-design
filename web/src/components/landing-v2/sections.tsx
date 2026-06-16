@@ -1064,7 +1064,11 @@ export function FinalCtaFooter() {
                 className="underline underline-offset-2 hover:text-white"
               >
                 MIT License
-              </a>
+              </a>{" "}
+              ·{" "}
+              <Link href="/privacy" className="underline underline-offset-2 hover:text-white">
+                Privacy
+              </Link>
             </div>
             <div className="flex items-center gap-1.5">
               <span className="relative flex h-1.5 w-1.5">
