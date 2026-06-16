@@ -25,29 +25,8 @@ let chromium;
 try { ({ chromium } = await import("playwright")); }
 catch { console.error("✗ needs a headless browser: npm i -D playwright && npx playwright install chromium"); process.exit(2); }
 
-// ── CIEDE2000 ──
-const hexToRgb = (h) => { h = h.replace("#", ""); return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16)); };
-const rgbHex = ([r, g, b]) => "#" + [r, g, b].map((n) => Math.round(n).toString(16).padStart(2, "0")).join("");
-const srgbToLin = (c) => { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
-const rgbToXyz = ([r, g, b]) => { r = srgbToLin(r); g = srgbToLin(g); b = srgbToLin(b); return [r * 0.4124 + g * 0.3576 + b * 0.1805, r * 0.2126 + g * 0.7152 + b * 0.0722, r * 0.0193 + g * 0.1192 + b * 0.9505]; };
-const xyzToLab = ([x, y, z]) => { const xn = 0.95047, yn = 1, zn = 1.08883; const f = (t) => (t > 0.008856 ? Math.cbrt(t) : 7.787 * t + 16 / 116); const fx = f(x / xn), fy = f(y / yn), fz = f(z / zn); return [116 * fy - 16, 500 * (fx - fy), 200 * (fy - fz)]; };
-const rgbToLab = (rgb) => xyzToLab(rgbToXyz(rgb));
-const d2r = (d) => (d * Math.PI) / 180, r2d = (r) => (r * 180) / Math.PI;
-function deltaE2000(l1, l2) {
-  const [L1, a1, b1] = l1, [L2, a2, b2] = l2; const avgLp = (L1 + L2) / 2;
-  const C1 = Math.hypot(a1, b1), C2 = Math.hypot(a2, b2), avgC = (C1 + C2) / 2;
-  const G = 0.5 * (1 - Math.sqrt(Math.pow(avgC, 7) / (Math.pow(avgC, 7) + Math.pow(25, 7))));
-  const a1p = a1 * (1 + G), a2p = a2 * (1 + G), C1p = Math.hypot(a1p, b1), C2p = Math.hypot(a2p, b2), avgCp = (C1p + C2p) / 2;
-  let h1p = r2d(Math.atan2(b1, a1p)); if (h1p < 0) h1p += 360; let h2p = r2d(Math.atan2(b2, a2p)); if (h2p < 0) h2p += 360;
-  const dLp = L2 - L1, dCp = C2p - C1p; let dhp = 0; if (C1p * C2p !== 0) { dhp = h2p - h1p; if (dhp > 180) dhp -= 360; else if (dhp < -180) dhp += 360; }
-  const dHp = 2 * Math.sqrt(C1p * C2p) * Math.sin(d2r(dhp) / 2);
-  let avghp; if (C1p * C2p === 0) avghp = h1p + h2p; else if (Math.abs(h1p - h2p) > 180) avghp = (h1p + h2p + 360) / 2; else avghp = (h1p + h2p) / 2;
-  const T = 1 - 0.17 * Math.cos(d2r(avghp - 30)) + 0.24 * Math.cos(d2r(2 * avghp)) + 0.32 * Math.cos(d2r(3 * avghp + 6)) - 0.20 * Math.cos(d2r(4 * avghp - 63));
-  const dRo = 30 * Math.exp(-Math.pow((avghp - 275) / 25, 2)), Rc = 2 * Math.sqrt(Math.pow(avgCp, 7) / (Math.pow(avgCp, 7) + Math.pow(25, 7)));
-  const Sl = 1 + (0.015 * Math.pow(avgLp - 50, 2)) / Math.sqrt(20 + Math.pow(avgLp - 50, 2)), Sc = 1 + 0.045 * avgCp, Sh = 1 + 0.015 * avgCp * T, Rt = -Math.sin(d2r(2 * dRo)) * Rc;
-  return Math.sqrt(Math.pow(dLp / Sl, 2) + Math.pow(dCp / Sc, 2) + Math.pow(dHp / Sh, 2) + Rt * (dCp / Sc) * (dHp / Sh));
-}
-const dE = (a, b) => deltaE2000(rgbToLab(a), rgbToLab(b));
+// CIEDE2000 + helpers — single source (issue #37)
+import { hexToRgb, rgbHex, rgbToLab, deltaE2000, dE } from "./lib/omd-core.mjs";
 const MATCH = 8, CLUSTER = 6;
 
 // ── parse DESIGN.md: declared tokens + §10-15 provenance ──
