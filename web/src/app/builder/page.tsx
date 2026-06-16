@@ -74,6 +74,13 @@ export default function BuilderPage() {
   // history entry. We only write URL on transitions the user initiates.
   const hydrating = useRef(true);
 
+  // generation_complete / builder_export / trackRef('generate') fire when a
+  // reference reaches the preview step. goToPreview() is reachable via
+  // back/forward (goToStepFromNav), which would re-fire them and re-increment
+  // the Upstash counter for one user. Dedupe by cfg so only genuinely new
+  // generations count (S3).
+  const firedGenerations = useRef<Set<string>>(new Set());
+
   useEffect(() => setMounted(true), []);
 
   // ── URL hydration ────────────────────────────────────────────────
@@ -260,21 +267,27 @@ export default function BuilderPage() {
     setActiveComponents(DEFAULT_COMPONENTS);
     setStylePreferences({});
     setStep("preview");
-    event("generation_complete", { reference: id, mode: "as_is" });
-    // GA4 mirror of the Redis trackRef("generate") funnel counter.
-    event("builder_export", { reference: id, format: "as_is" });
-    trackRef("generate", id);
     const cfg = encodeConfig(id, pure, DEFAULT_COMPONENTS, {});
+    if (!firedGenerations.current.has(cfg)) {
+      firedGenerations.current.add(cfg);
+      event("generation_complete", { reference: id, mode: "as_is" });
+      // GA4 mirror of the Redis trackRef("generate") funnel counter.
+      event("builder_export", { reference: id, format: "as_is" });
+      trackRef("generate", id);
+    }
     pushUrl("preview", id, cfg);
   }, []);
 
   const goToPreview = useCallback(() => {
     if (!detail) return;
     const cfg = encodeConfig(detail.id, overrides, activeComponents, stylePreferences);
-    event("generation_complete", { reference: detail.id });
-    // GA4 mirror of the Redis trackRef("generate") funnel counter.
-    event("builder_export", { reference: detail.id, format: "customized" });
-    trackRef("generate", detail.id);
+    if (!firedGenerations.current.has(cfg)) {
+      firedGenerations.current.add(cfg);
+      event("generation_complete", { reference: detail.id });
+      // GA4 mirror of the Redis trackRef("generate") funnel counter.
+      event("builder_export", { reference: detail.id, format: "customized" });
+      trackRef("generate", detail.id);
+    }
     setStep("preview");
     pushUrl("preview", detail.id, cfg);
   }, [detail, overrides, activeComponents, stylePreferences]);

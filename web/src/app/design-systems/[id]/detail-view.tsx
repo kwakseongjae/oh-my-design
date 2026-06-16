@@ -84,6 +84,7 @@ export function DetailView({
   function copyMd() {
     navigator.clipboard.writeText(detail.designMd);
     event("ds_copy_md", { reference: detail.id });
+    trackRef("copy", detail.id); // pair the Upstash counter (S1) — was missing here
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }
@@ -97,6 +98,7 @@ export function DetailView({
     a.click();
     URL.revokeObjectURL(url);
     event("ds_download_md", { reference: detail.id });
+    trackRef("download", detail.id); // pair the Upstash counter (S1) — was missing here
   }
 
   function externalClick() {

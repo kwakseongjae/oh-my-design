@@ -3,7 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnalyticsInit } from "@/components/analytics-init";
+import { AnalyticsConsent } from "@/components/analytics-consent";
 import { GA_ID } from "@/lib/gtag";
+import { EEA_REGION_CODES } from "@/lib/eea";
 import pkg from "../../../package.json" with { type: "json" };
 import { FAQ_EN } from "@/data/faq";
 import "./globals.css";
@@ -215,11 +217,22 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <ThemeProvider>{children}</ThemeProvider>
         <AnalyticsInit />
+        <AnalyticsConsent />
         {GA_ID && (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+            {/* Consent Mode v2 defaults run BEFORE config (same inline script =
+                guaranteed order): EEA/UK/CH denied until the banner grants;
+                everywhere else granted. AnalyticsConsent flips EEA visitors to
+                granted on Accept via gtag('consent','update'). */}
             <Script id="gtag-init" strategy="afterInteractive">
-              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}` +
+                `gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:${JSON.stringify(EEA_REGION_CODES)},wait_for_update:500});` +
+                `gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});` +
+                // url_passthrough carries utm_*/gclid across navigations cookielessly
+                // when consent is denied — recovers attribution for the EU slice.
+                `gtag('set','url_passthrough',true);` +
+                `gtag('js',new Date());gtag('config','${GA_ID}');`}
             </Script>
           </>
         )}
