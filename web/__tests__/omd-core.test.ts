@@ -27,6 +27,27 @@ Geist.
 12-col grid.
 `;
 
+describe("parseFrontmatter (vendored, dependency-free)", () => {
+  it("parses scalars, numbers, colon-in-value, block + flow maps", async () => {
+    const { parseFrontmatter } = await import("../scripts/lib/omd-core.mjs");
+    const raw = `---\nomd: 0.1\nbrand: oh-my-design (web)\nnote: high (live :root resolved) for §1-9\ntokens:\n  colors:\n    primary: "#5358ee"\n  components:\n    btn: { type: button, bg: "#5358ee", radius: "10px" }\n---\n# Body\n## 1. Visual Theme & Atmosphere\nhi\n`;
+    const fm = parseFrontmatter(raw);
+    expect(fm.data.omd).toBe(0.1);                       // number
+    expect(fm.data.brand).toBe("oh-my-design (web)");    // unquoted string w/ parens
+    expect(fm.data.note).toBe("high (live :root resolved) for §1-9"); // value keeps later colons
+    expect(fm.data.tokens.colors.primary).toBe("#5358ee"); // nested block map + quote strip
+    expect(fm.data.tokens.components.btn.type).toBe("button"); // flow map
+    expect(fm.data.tokens.components.btn.bg).toBe("#5358ee");
+    expect(fm.content).toContain("## 1. Visual Theme");  // body after frontmatter
+  });
+  it("returns empty data when there is no frontmatter", async () => {
+    const { parseFrontmatter } = await import("../scripts/lib/omd-core.mjs");
+    const fm = parseFrontmatter("# No frontmatter\nbody");
+    expect(fm.data).toEqual({});
+    expect(fm.content).toContain("No frontmatter");
+  });
+});
+
 describe("CIEDE2000", () => {
   it("identical colors → ΔE 0", () => {
     expect(dE([83, 88, 238], [83, 88, 238])).toBeCloseTo(0, 5);

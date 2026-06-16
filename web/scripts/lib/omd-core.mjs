@@ -6,9 +6,65 @@
  * `omd validate`). The verify-fidelity / verify-drift / dump-seed / fidelity-receipt
  * scripts import the color math from here instead of each re-declaring it.
  *
- * No new runtime — plain ESM, gray-matter is already a web dependency.
+ * No new runtime, NO external deps — plain ESM + a vendored frontmatter parser so the
+ * core (parse / validate / maturity / depth) ships and runs anywhere Node does, matching
+ * omd's stdlib-only helper convention (ctx-prime.cjs). Browser scripts still need
+ * playwright/sharp (the absorb skill preflights those).
  */
-import matter from "gray-matter";
+
+// ── minimal YAML-subset frontmatter parser (the shape DESIGN.md actually uses:
+//    scalars, 2-space block maps, inline flow maps `{ k: v, ... }`, quoted strings). ──
+function splitTopLevel(s, sep) {
+  const out = []; let depth = 0, q = null, cur = "";
+  for (const ch of s) {
+    if (q) { if (ch === q) q = null; cur += ch; continue; }
+    if (ch === '"' || ch === "'") { q = ch; cur += ch; continue; }
+    if (ch === "{" || ch === "[") depth++;
+    else if (ch === "}" || ch === "]") depth--;
+    if (ch === sep && depth === 0) { out.push(cur); cur = ""; continue; }
+    cur += ch;
+  }
+  if (cur.trim()) out.push(cur);
+  return out;
+}
+function parseScalar(s) {
+  s = s.trim();
+  if (s === "" || s === "~" || s === "null") return s === "" ? "" : null;
+  if ((s[0] === '"' && s.at(-1) === '"') || (s[0] === "'" && s.at(-1) === "'")) return s.slice(1, -1);
+  if (/^-?\d+(\.\d+)?$/.test(s)) return Number(s);
+  if (s === "true" || s === "false") return s === "true";
+  return s;
+}
+function parseFlow(s) {
+  const obj = {};
+  for (const part of splitTopLevel(s.trim().replace(/^\{/, "").replace(/\}$/, ""), ",")) {
+    const i = part.indexOf(":"); if (i < 0) continue;
+    obj[part.slice(0, i).trim()] = parseScalar(part.slice(i + 1));
+  }
+  return obj;
+}
+function parseBlock(lines, start, indent) {
+  const obj = {}; let i = start;
+  while (i < lines.length) {
+    const line = lines[i];
+    if (!line.trim() || /^\s*#/.test(line)) { i++; continue; }
+    const ind = line.match(/^ */)[0].length;
+    if (ind < indent) break;
+    if (ind > indent) { i++; continue; }
+    const m = /^\s*([^:]+):\s?(.*)$/.exec(line);
+    if (!m) { i++; continue; }
+    const key = m[1].trim(), rest = m[2];
+    if (rest === "") { const child = parseBlock(lines, i + 1, indent + 2); obj[key] = child.obj; i = child.next; }
+    else if (rest.trimStart().startsWith("{")) { obj[key] = parseFlow(rest); i++; }
+    else { obj[key] = parseScalar(rest); i++; }
+  }
+  return { obj, next: i };
+}
+export function parseFrontmatter(raw) {
+  const m = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/.exec(raw);
+  if (!m) return { data: {}, content: raw };
+  return { data: parseBlock(m[1].split(/\r?\n/), 0, 0).obj, content: m[2] };
+}
 
 // ── color math ──────────────────────────────────────────────────────────
 export const hexToRgb = (h) => { h = h.replace("#", ""); return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16)); };
@@ -59,7 +115,7 @@ const PLACEHOLDER_VALUES = /^(not measured|n\/?a|tbd|todo|xxx|\?\?\?)$/i;
 
 // ── DESIGN.md parser ────────────────────────────────────────────────────
 export function parseDesignMd(raw) {
-  const fm = matter(raw);
+  const fm = parseFrontmatter(raw);
   const body = fm.content;
   const sections = {};
   for (const s of SECTIONS) {

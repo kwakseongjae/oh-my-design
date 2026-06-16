@@ -13,7 +13,6 @@
  */
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve, dirname, join } from "node:path";
-import matter from "gray-matter";
 
 const arg = (f, d) => { const i = process.argv.indexOf(f); return i >= 0 ? process.argv[i + 1] : d; };
 const DESIGN = resolve(arg("--design", ".omd/absorb-demo/DESIGN.md"));
@@ -27,12 +26,12 @@ try { ({ chromium } = await import("playwright")); }
 catch { console.error("✗ needs a headless browser: npm i -D playwright && npx playwright install chromium"); process.exit(2); }
 
 // CIEDE2000 + helpers — single source (issue #37)
-import { hexToRgb, rgbHex, dE, philosophyMaturity, depthParity } from "./lib/omd-core.mjs";
+import { hexToRgb, rgbHex, dE, philosophyMaturity, depthParity, parseFrontmatter } from "./lib/omd-core.mjs";
 const MATCH = 8, CLUSTER = 6;
 
 // ── parse DESIGN.md: declared tokens + §10-15 provenance ──
 const raw = readFileSync(DESIGN, "utf8");
-const fm = matter(raw);
+const fm = parseFrontmatter(raw);
 const declColors = Object.entries(fm.data?.tokens?.colors || {}).filter(([, v]) => /^#[0-9a-f]{6}$/i.test(String(v))).map(([role, hex]) => ({ role, hex: String(hex).toLowerCase() }));
 const declRadii = Object.entries(fm.data?.tokens?.rounded || {}).map(([k, v]) => ({ k, px: parseFloat(String(v)) })).filter((r) => Number.isFinite(r.px));
 // §10-15 provenance + maturity (cited-only) via omd-core — counts ONLY grounded+cited,

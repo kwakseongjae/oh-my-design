@@ -56,7 +56,7 @@ Phase 7: 요약 출력
 node <skill>/scripts/dump-seed.mjs --url <devserver-url> --cwd <target> --out .omd/absorb/<run>
 ```
 
-(dev 레포 경로: `web/scripts/dump-seed.mjs`. 설치 시 `.claude/skills/omd-absorb/scripts/`로 동봉.)
+> **헬퍼 스크립트 가용성:** `dump-seed` / `verify-fidelity` / `verify-drift` / `fidelity-receipt`는 브라우저(playwright/sharp)를 쓰는 결정론 엔진이다. 이 레포(dev)에선 `web/scripts/`에 있고, end-user 배포(스크립트 + playwright/sharp 동봉)는 후속 작업이다. **스크립트가 없으면** 이 스킬은 degrade하지 않고 **에이전트가 이 플레이북대로 직접 수행**한다 — 소스 CSS/`:root`에서 토큰을 읽고(§1-9), `omd validate`(stdlib-only, 동봉)로 스키마를 검증하고, 측정 못 한 값은 정직히 비운다. 스크립트는 그 측정을 *정밀화*할 뿐 필수가 아니다.
 
 `seed.json`이 주는 것: `framework`, `surfaces[]`, `colors{primary/background/foreground/card/secondary/muted/accent/destructive/border/ring/charts[]}`(라이브 `:root` 토큰을 oklch/lab까지 canvas로 해석), `radius_scale[]` + `radius_base_px`, `fonts[]`, `confidence`. dev 서버가 없으면 ctx-prime의 source-derived 값으로 채우고 confidence를 낮춘다.
 
