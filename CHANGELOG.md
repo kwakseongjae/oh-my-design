@@ -6,6 +6,19 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.8.2 — 2026-06-17
+
+**Catalog +40: KR/US/TW/JP IT 확장 — 카탈로그가 246 → 286개로. 4개국 × 10개, 전 항목 Proof Gate + live-inspect.**
+
+- **KR 10** — NHN(Kenya Hara 무채색 CI) · Wrtn(뤼튼) · TMAP모빌리티 · NCSOFT(→NC) · Spoqa(스포카, Spoqa Han Sans) · Stibee(스티비) · ZEPETO(제페토) · Shift Up(시프트업) · IICOMBINED(Gentle Monster·Tamburins·Nudake) · The Pinkfong Company.
+- **US 10** — Twilio(Paste) · Workday(Canvas) · Cash App · Mailchimp · GitLab(Pajamas) · Plaid(Threads) · Headspace · Datadog · Twitch · Patreon. 공개 디자인시스템 헤비웨이트 다수.
+- **TW 10** — Fourdesire(SPARKFUL) · Bito · Cubo Ai · MOZE · Vocus(方格子) · Portaly · Readmoo(讀墨) · XREX · MaiCoin/MAX · Heptabase(operating-base 기준 TW 분류).
+- **JP 10** — Spindle(CyberAgent Ameba) · 디지털청 DADS(CC BY 4.0) · DMM Turtle · GMO Pepabo Inhouse · Gaudiy · SPEEDA(FALCON) · Cybozu(kintone DS) · Goodpatch · Nintendo · mikan. DS 강국답게 공식 디자인시스템 직접 추출.
+- 전 항목 verify-reference 게이트 그린 + token↔prose 정합, KR/TW는 brand-owned Tier-1 소스 ≥2 충족. 후보는 4개국 어드버서리얼 검증(HQ 국가 + 디자인 가치)으로 큐레이션 — Typed(서비스 종료) · iCook/BlendVision(모회사 HQ 일본) · Disquiet/PopDaily(일반적 UI) 등 탈락.
+- 배치별 audit `data/reference-audits/2026-06-17-{kr,us,tw,jp}10.md` + 큐레이션 문서 `research/2026-06-17_reference-candidates-kr-us-tw-jp.md`.
+
+---
+
 ## 1.8.1 — 2026-06-11
 
 **Catalog +25: KR/JP/TW/US 배치 — 카탈로그가 221 → 246개로. 수집→검수→배포 파이프라인 스크립트화.**

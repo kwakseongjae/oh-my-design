@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-06-10T00:00:00Z",
+ "generated_at": "2026-06-17T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 246,
+ "count": 286,
  "items": [
   {
    "id": "11st",
@@ -513,6 +513,30 @@
    "category_raw": "fintech / crypto-asset exchange"
   },
   {
+   "id": "bito",
+   "primary_color_hex": "#f92c16",
+   "category": "design-tools",
+   "visual_theme": "Bito (滿滿大平台) is a leading Taiwanese motion-design and creative-branding studio out of Taipei, and its portfolio site is a master-class in restraint as a frame for maximalist work. The site itself is almost monastically plain: a pure white canvas (`#ffffff`), p",
+   "voice_fingerprint": {
+    "register": "design-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "editorial",
+    "vivid"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "design-tools"
+  },
+  {
    "id": "bmw",
    "primary_color_hex": "#1c69d4",
    "category": "Automotive",
@@ -622,6 +646,30 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "Productivity"
+  },
+  {
+   "id": "cashapp",
+   "primary_color_hex": "#00e013",
+   "category": "fintech",
+   "visual_theme": "Cash App is the irreverent, expressive face of consumer fintech — a system built on one radioactive idea: a single hero color, **Cash Green** (`#00e013`), so saturated it reads almost like a glitch. Where most finance brands hedge toward trust-blue and institu",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "catchtable",
@@ -1005,6 +1053,30 @@
    "category_raw": "e-commerce mass market"
   },
   {
+   "id": "cuboai",
+   "primary_color_hex": "#5be3d3",
+   "category": "consumer-tech",
+   "visual_theme": "Cubo Ai (built by Taiwan's Cubo brand) is an AI smart baby monitor — a bird-shaped camera plus sleep sensor — and its storefront is engineered to lower the heart rate of an anxious new parent. The canvas is pure white (`#ffffff`) broken up by soft, cool-grey s",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "minimal"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "cursor",
    "primary_color_hex": "#26251e",
    "category": "Developer Tools",
@@ -1025,6 +1097,30 @@
    "signature_motion": "Hover text shifts to warm crimson #cf2d56; shadows transition over 200ms ease for elevation changes.",
    "has_personas": false,
    "category_raw": "developer-tools"
+  },
+  {
+   "id": "cybozu",
+   "primary_color_hex": "#139cb7",
+   "category": "saas",
+   "visual_theme": "Cybozu (サイボウズ) is Japan's leading teamwork-software maker — the company behind kintone, Garoon, and Cybozu Office — and its design language splits cleanly into two brand-owned worlds that share one philosophy: clarity in service of teamwork. The corporate face",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "dabang",
@@ -1062,6 +1158,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ecommerce"
+  },
+  {
+   "id": "datadog",
+   "primary_color_hex": "#632ca6",
+   "category": "backend-devops",
+   "visual_theme": "Datadog is the rare observability platform that refuses to dress in blue. In a category — backend monitoring, APM, cloud security — where nearly every competitor reaches for the same trustworthy enterprise blue, Datadog stakes its identity on **purple**: a con",
+   "voice_fingerprint": {
+    "register": "backend-devops",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "backend-devops"
   },
   {
    "id": "dcard",
@@ -1140,6 +1260,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "digital-agency-jp",
+   "primary_color_hex": "#0017c1",
+   "category": "government",
+   "visual_theme": "The Digital Agency Design System (デジタル庁デザインシステム, DADS) is the official design system of Japan's Digital Agency (デジタル庁), published openly at `design.digital.go.jp/dads/` under CC BY 4.0. Its job is the opposite of a consumer brand's: not to delight or different",
+   "voice_fingerprint": {
+    "register": "government",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "government"
+  },
+  {
    "id": "discord",
    "primary_color_hex": "#5865F2",
    "category": "Consumer",
@@ -1194,6 +1338,30 @@
    "signature_motion": "Slow gravity-free product reveals - hero footage fades from black, 360 spins with smooth mechanical easing, never overshoot.",
    "has_personas": true,
    "category_raw": "consumer-hardware"
+  },
+  {
+   "id": "dmm",
+   "primary_color_hex": "#94bcff",
+   "category": "consumer-tech",
+   "visual_theme": "DMM.com is one of Japan's sprawling digital platforms — video, games, e-books, English conversation, FX trading, 3D printing, even an aquarium — over sixty services under one roof. In 2025 its Platform Development Division made its internal design system, **Tu",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "drnow",
@@ -1601,6 +1769,30 @@
    "category_raw": "Healthcare / Cosmetic-Procedure Discovery"
   },
   {
+   "id": "gaudiy",
+   "primary_color_hex": "#050505",
+   "category": "consumer-tech",
+   "visual_theme": "Gaudiy (株式会社Gaudiy Group) is a Tokyo Web3 fan-community platform — the maker of Gaudiy Fanlink, backed by Sony Group and Bandai Namco — and its public surfaces wear a deliberately monochrome, almost defiant \"glitch\" identity. The canvas is pure white (`#ffffff",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "genie",
    "primary_color_hex": "#fa4065",
    "category": "consumer-tech",
@@ -1647,6 +1839,30 @@
     "Use 1px borders (`#d1d9e0`) to structure content; reserve shadows for floating layers only"
    ],
    "signature_motion": "GitHub motion is **minimal and functional** — this is a productivity tool, and animation that delays a developer is a tax.",
+   "has_personas": true,
+   "category_raw": "developer-tools"
+  },
+  {
+   "id": "gitlab",
+   "primary_color_hex": "#1f75cb",
+   "category": "developer-tools",
+   "visual_theme": "GitLab's design splits cleanly across two surfaces that share one identity. The marketing site (`about.gitlab.com`) is an ink-forward, editorial DevSecOps canvas — pure white (`#ffffff`) under a near-black plum ink (`#171321`) set in the custom **GitLab Sans**",
+   "voice_fingerprint": {
+    "register": "developer-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "developer-tools"
   },
@@ -1721,6 +1937,30 @@
    "signature_motion": "Charge pulse - a soft electric-blue->cyan luminance glow on battery/swap graphics; cinematic hero reveal, no UI bounce.",
    "has_personas": true,
    "category_raw": "automotive"
+  },
+  {
+   "id": "goodpatch",
+   "primary_color_hex": "#096fc8",
+   "category": "design-tools",
+   "visual_theme": "Goodpatch (グッドパッチ) is Japan's best-known UI/UX design firm — a Tokyo-listed studio whose entire web presence is itself a portfolio piece, an argument that \"design has the power to move business.\" The homepage opens not on a marketing gradient but on a quiet wa",
+   "voice_fingerprint": {
+    "register": "design-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "design-tools"
   },
   {
    "id": "google",
@@ -1873,6 +2113,54 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "enterprise infrastructure / developer tools"
+  },
+  {
+   "id": "headspace",
+   "primary_color_hex": "#0061ef",
+   "category": "healthcare",
+   "visual_theme": "Headspace is the warmest mental-health product on the internet, and its 2024 Italic Studio rebrand made that warmth structural rather than decorative. The page does not open on the clinical white of healthcare software — it opens on a soft, warm cream (`#f9f4f",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "playful"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
+  },
+  {
+   "id": "heptabase",
+   "primary_color_hex": "#2e2e2e",
+   "category": "productivity",
+   "visual_theme": "Heptabase is a visual note-taking and knowledge-management app built around an infinite whiteboard of cards, and its marketing site mirrors that product ethos: calm, paper-like, and almost editorial. The canvas is a warm off-white (`#f7f7f7`) rather than pure ",
+   "voice_fingerprint": {
+    "register": "productivity",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "productivity"
   },
   {
    "id": "hogangnono",
@@ -2032,6 +2320,30 @@
    "signature_motion": "Instant (0ms) POS tile selection - tap registers immediately with tint+border, no animation; spring forbidden.",
    "has_personas": true,
    "category_raw": "restaurant-saas-pos"
+  },
+  {
+   "id": "iicombined",
+   "primary_color_hex": "#111111",
+   "category": "ecommerce",
+   "visual_theme": "IICOMBINED (아이아이컴바인드) is the Korean creative house behind Gentle Monster (eyewear), Tamburins (fragrance), and Nudake (dessert art), and its shared design language reads less like an e-commerce site and more like an installation-grade gallery that happens to s",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "ikala",
@@ -2859,6 +3171,54 @@
    "country": "KR"
   },
   {
+   "id": "maicoin",
+   "primary_color_hex": "#ee5457",
+   "category": "fintech",
+   "visual_theme": "MaiCoin is the largest crypto-exchange group in Taiwan, and its design splits cleanly across two surfaces with two distinct personalities. The consumer-facing buy/sell site (`www.maicoin.com`) is warm and approachable: a clean white (`#ffffff`) canvas, near-bl",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
+   "id": "mailchimp",
+   "primary_color_hex": "#ffe01b",
+   "category": "marketing",
+   "visual_theme": "Mailchimp's website is a landmark in \"outsider-art\" brand design — a marketing platform that deliberately rejects the cool, gradient-heavy SaaS aesthetic in favor of something warm, hand-made, and unmistakably its own. The page opens on a pure white canvas (`#",
+   "voice_fingerprint": {
+    "register": "marketing",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "marketing"
+  },
+  {
    "id": "mastercard",
    "primary_color_hex": "#EB001B",
    "category": "Fintech",
@@ -3040,6 +3400,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "mikan",
+   "primary_color_hex": "#ff4c0a",
+   "category": "education",
+   "visual_theme": "mikan (英語アプリmikan) is Japan's most-downloaded English-vocabulary learning app — over 10 million downloads — and its surfaces read exactly as the product promises: bright, friendly, and relentlessly encouraging. The corporate site (`mikan.link`) opens on a warm",
+   "voice_fingerprint": {
+    "register": "education",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "warm",
+    "dark",
+    "playful"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "education"
   },
   {
    "id": "millie",
@@ -3292,6 +3676,30 @@
    "category_raw": "developer database"
   },
   {
+   "id": "moze",
+   "primary_color_hex": "#ff367c",
+   "category": "fintech",
+   "visual_theme": "MOZE (摩斯, \"最美記帳 App\") is Taiwan's design-forward personal-finance and expense-tracking app, and its marketing site is built as a dark, cinematic, almost-luxury product showcase rather than a utilitarian tool page. The canvas is a near-black blue-tinted ink (`#",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "muji",
    "primary_color_hex": "#7f0019",
    "category": "Commerce",
@@ -3465,6 +3873,30 @@
    "category_raw": "Content Platform (Webtoon)"
   },
   {
+   "id": "ncsoft",
+   "primary_color_hex": "#7234e0",
+   "category": "consumer-tech",
+   "visual_theme": "NCSOFT — the Korean game maker behind Lineage, AION, Blade & Soul, and Throne and Liberty, and in 2026 rebranded simply to **NC** — runs two distinct but coordinated brand surfaces, and the contrast between them is the system. The corporate/game portal at `nc.",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "netflix",
    "primary_color_hex": "#E50914",
    "category": "Consumer",
@@ -3513,6 +3945,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "nhn",
+   "primary_color_hex": "#212126",
+   "category": "saas",
+   "visual_theme": "NHN is a Korean technology group — cloud, payments, games, commerce, and content under one publicly listed parent — and its corporate site is the clearest expression of the radical 2024 rebrand by Kenya Hara (Nippon Design Center) with NHN's in-house designers",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "nhncloud",
@@ -3568,6 +4024,30 @@
    "signature_motion": "*Durations** (named):",
    "has_personas": true,
    "category_raw": "ecommerce"
+  },
+  {
+   "id": "nintendo",
+   "primary_color_hex": "#e60012",
+   "category": "consumer-tech",
+   "visual_theme": "Nintendo's web presence is a masterclass in disciplined brand craft: a near-shadowless, light-canvas system where a single saturated red does almost all the emotional work. The page opens on pure white (`#ffffff`) with soft cool-grey surfaces (`#f8f8f8`, `#efe",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "playful"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "note",
@@ -3787,6 +4267,30 @@
    "category_raw": "developer AI tool"
   },
   {
+   "id": "patreon",
+   "primary_color_hex": "#000000",
+   "category": "consumer-tech",
+   "visual_theme": "Patreon's marketing surface is the rare brand system that treats restraint as a stage and color as something it deliberately gives away. Following its 2023 rebrand (strategy by Wolff Olins, custom type by Dinamo, motion by Active Theory), the interface is unco",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "editorial",
+    "calm"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "payco",
    "primary_color_hex": "#FF2233",
    "category": "Fintech",
@@ -3867,6 +4371,30 @@
    "category_raw": "e-commerce"
   },
   {
+   "id": "pepabo",
+   "primary_color_hex": "#1f7ccc",
+   "category": "saas",
+   "visual_theme": "GMO Pepabo's Inhouse is one of the few openly published Japanese design systems, and its defining trait is **deliberate neutrality**. Inhouse is not a single visual identity — it is a generic, trend-resistant *prototype* engineered to be overwritten. The brand",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
+  },
+  {
    "id": "perplexity",
    "primary_color_hex": "#20808D",
    "category": "AI",
@@ -3918,6 +4446,30 @@
     "serif body text"
    ],
    "signature_motion": "200ms ease-in-out color transitions; 700ms cubic-bezier(.22,1,.36,1) reveal-from-rect entry animation",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "pinkfong",
+   "primary_color_hex": "#ff66af",
+   "category": "consumer-tech",
+   "visual_theme": "The Pinkfong Company (더핑크퐁컴퍼니) is the Seoul-based kids-entertainment studio behind Pinkfong, Baby Shark, and Bebefinn — and its digital surfaces read exactly as you'd hope a global children's-IP house would: bright, friendly, and confidently playful, but built",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "playful"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
   },
@@ -4012,6 +4564,54 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "content"
+  },
+  {
+   "id": "plaid",
+   "primary_color_hex": "#02294b",
+   "category": "fintech",
+   "visual_theme": "Plaid is the financial-data network that sits behind a huge share of US fintech, and its marketing surface reads exactly like infrastructure that wants to feel approachable: a crisp white (`#ffffff`) canvas, deep-navy and dark-teal ink, and sudden bursts of an",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "playful",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
+   "id": "portaly",
+   "primary_color_hex": "#862983",
+   "category": "design-tools",
+   "visual_theme": "Portaly (傳送門) is Taiwan's largest Traditional-Chinese link-in-bio and creator landing-page builder, operated by Real Engine, and its marketing surface reads like a bright, optimistic creator-economy product rather than a utilitarian dev tool. The page backgrou",
+   "voice_fingerprint": {
+    "register": "design-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "design-tools"
   },
   {
    "id": "posthog",
@@ -4244,6 +4844,30 @@
    "signature_motion": "Opacity-based hover (0.6) instead of color shifts across all buttons.",
    "has_personas": false,
    "category_raw": "technical"
+  },
+  {
+   "id": "readmoo",
+   "primary_color_hex": "#40c8f7",
+   "category": "consumer-tech",
+   "visual_theme": "Readmoo (讀墨) is Taiwan's largest Traditional-Chinese EPUB ebook platform and the maker of the mooInk E Ink e-reader, and its design reads exactly like what it sells: a calm, bookish, reader-first store rather than a loud commerce funnel. The store canvas is a ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "remember",
@@ -4661,6 +5285,30 @@
    "category_raw": "developer-tools"
   },
   {
+   "id": "shiftup",
+   "primary_color_hex": "#569a43",
+   "category": "consumer-tech",
+   "visual_theme": "Shift Up (시프트업) is the Seoul game studio behind *Stellar Blade*, *NIKKE: Goddess of Victory*, and *Destiny Child*, and its corporate site is built like a AAA game key-art portfolio rather than a SaaS landing page. The dominant register is dark and cinematic: f",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "shinhancard",
    "primary_color_hex": "#005df9",
    "category": "fintech",
@@ -4872,6 +5520,78 @@
    "category_raw": "aerospace"
   },
   {
+   "id": "sparkful",
+   "primary_color_hex": "#2dd4bf",
+   "category": "design-tools",
+   "visual_theme": "Fourdesire — the Taipei studio that publishes its apps under the **SPARKFUL** brand (Walkr, Plant Nanny 植物保姆, Fortune City 記帳城市, To-Do Adventure 記事探險, Book Morning!) — designs around one stated idea: *\"Spark the fun in the ordinary.\"* The marketing system at `",
+   "voice_fingerprint": {
+    "register": "design-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "playful"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "design-tools"
+  },
+  {
+   "id": "speeda",
+   "primary_color_hex": "#e60f3d",
+   "category": "saas",
+   "visual_theme": "SPEEDA (スピーダ) is Uzabase's economic-information platform — a B2B research and analysis SaaS that puts the world's company, market, and industry data behind one workbench for corporate planning, M&A, R&D, and enterprise sales teams. Its marketing surface reads ",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
+  },
+  {
+   "id": "spindle",
+   "primary_color_hex": "#298737",
+   "category": "consumer-tech",
+   "visual_theme": "Spindle is CyberAgent's open design system for Ameba (アメーバ) — the 20-year-old Japanese blogging and media platform — and it reads as one of Japan's most disciplined, accessibility-first systems. The canvas is pure white (`#ffffff`) over a soft warm-grey app ba",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "spoon",
    "primary_color_hex": "#FF5500",
    "category": "Consumer",
@@ -4899,6 +5619,30 @@
    "signature_motion": "Pulsing orange live-dot heartbeat and a rising gold spoon-gift spring animation.",
    "has_personas": true,
    "category_raw": "Audio-Social"
+  },
+  {
+   "id": "spoqa",
+   "primary_color_hex": "#00ab6e",
+   "category": "fintech",
+   "visual_theme": "Spoqa (스포카) is the Korean restaurant-tech company behind Dodo Point (도도 포인트) and, today, Kitchenboard (키친보드) — a food-ingredient ordering platform for small business owners. Its corporate site reads like a calm, engineering-led product company rather than a fl",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "spotify",
@@ -4945,6 +5689,30 @@
    "signature_motion": "*Durations** (named):",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "stibee",
+   "primary_color_hex": "#ff6464",
+   "category": "marketing",
+   "visual_theme": "Stibee (스티비) is Korea's most design-literate email-marketing platform — a newsletter-and-campaign SaaS that spun out of the social-impact design studio Slowalk, and the editorial sensibility shows. The marketing site is built on a pure white canvas (`#ffffff`)",
+   "voice_fingerprint": {
+    "register": "marketing",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "marketing"
   },
   {
    "id": "stores",
@@ -5215,6 +5983,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "tmap",
+   "primary_color_hex": "#0064ff",
+   "category": "automotive",
+   "visual_theme": "TMAP Mobility (티맵모빌리티) is Korea's dominant navigation and mobility super-app, and its corporate brand site reads like a confident editorial magazine rather than a busy utility. The canvas is pure white (`#ffffff`) and the system is overwhelmingly monochrome: h",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "dark",
+    "playful"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
+  },
+  {
    "id": "together.ai",
    "primary_color_hex": "#ef2cc1",
    "category": "AI",
@@ -5406,6 +6198,54 @@
    "country": "KR"
   },
   {
+   "id": "twilio",
+   "primary_color_hex": "#ef223a",
+   "category": "developer-tools",
+   "visual_theme": "Twilio runs two coordinated but distinct visual surfaces, and the system only makes sense when you hold both at once. The marketing site (`twilio.com`) is a confident, ink-on-white developer-platform aesthetic: a deep near-black navy (`#000d25`) carries every ",
+   "voice_fingerprint": {
+    "register": "developer-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "developer-tools"
+  },
+  {
+   "id": "twitch",
+   "primary_color_hex": "#9146ff",
+   "category": "consumer-tech",
+   "visual_theme": "Twitch is the dark-mode-native home of live streaming, and its design language — known internally as **Core UI**, built on the **Ultraviolet** color system from the 2019 \"Beyond Purple\" rebrand — is engineered for one job: surrounding a glowing live video with",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "dense",
+    "immersive"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "uber",
    "primary_color_hex": "#000000",
    "category": "Consumer",
@@ -5557,6 +6397,30 @@
    "signature_motion": "Shadow-border hover lift; card shadow intensifies without translation.",
    "has_personas": true,
    "category_raw": "developer-infra"
+  },
+  {
+   "id": "vocus",
+   "primary_color_hex": "#ff485a",
+   "category": "productivity",
+   "visual_theme": "Vocus (方格子) is Taiwan's leading independent creator and paid-content platform — a local equivalent of Medium or Substack, built for Traditional-Chinese long-form writing. Its design reads as **warm editorial minimalism**: a pure white canvas (`#ffffff`) layere",
+   "voice_fingerprint": {
+    "register": "productivity",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "minimal"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "productivity"
   },
   {
    "id": "voicetube",
@@ -5865,6 +6729,54 @@
    "category_raw": "fintech"
   },
   {
+   "id": "workday",
+   "primary_color_hex": "#0057ae",
+   "category": "saas",
+   "visual_theme": "Workday is the enterprise cloud platform for HR, finance, and IT, and its public surface reads exactly the way enterprise software wants to be perceived in 2026 — calm, credible, and quietly confident rather than loud or trend-chasing. The canvas is pure white",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "minimal"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
+  },
+  {
+   "id": "wrtn",
+   "primary_color_hex": "#f54211",
+   "category": "ai",
+   "visual_theme": "Wrtn (뤼튼) is Korea's most-used consumer AI super app — \"500만명이 선택한 대한민국 대표 AI 서비스\" (the AI service chosen by 5 million people) — and its design reads as a calm, near-monochrome canvas punctuated by a single hot accent. The product surface at `wrtn.ai` opens on",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
+  },
+  {
    "id": "x.ai",
    "primary_color_hex": "#1f2228",
    "category": "AI",
@@ -5915,6 +6827,30 @@
    "signature_motion": "The like-heart pop - outline heart fills with a 1->1.3->1 scale overshoot; the only spring in the product.",
    "has_personas": true,
    "category_raw": "social-commerce"
+  },
+  {
+   "id": "xrex",
+   "primary_color_hex": "#275cfd",
+   "category": "fintech",
+   "visual_theme": "XREX (台灣 XREX) is a Taiwan-born, regulated blockchain-driven financial institution, and its site carries itself with the calm authority of an institution that wants to be trusted with money. The atmosphere is engineered and trust-forward rather than crypto-fla",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "yanolja",
@@ -6052,6 +6988,30 @@
    "signature_motion": "Inset orange underline marks active tabs; sand underline previews hover.",
    "has_personas": false,
    "category_raw": "saas-tool"
+  },
+  {
+   "id": "zepeto",
+   "primary_color_hex": "#5c46ff",
+   "category": "consumer-tech",
+   "visual_theme": "ZEPETO (제페토) is the 3D-avatar metaverse social platform built by Naver Z — a place where hundreds of millions of users style avatars, build virtual worlds, watch live shows, and trade creator-made items. Its surfaces split into two registers that share one DNA",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "dark",
+    "playful"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "zigbang",
