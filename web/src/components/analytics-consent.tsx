@@ -59,7 +59,13 @@ export function AnalyticsConsent() {
       const known = country !== null;
       const stored = getStoredConsent();
       if (stored === "granted") applyGrant();
-      else if (stored === "denied") void mpOptOut(); // ensure opted-out across reloads
+      else if (stored === "denied") {
+        // layout.tsx's unregioned Consent Mode default re-grants
+        // analytics_storage on every load, so re-apply the stored opt-out for
+        // both GA and Mixpanel to honor a returning visitor's prior Decline.
+        revokeGAConsent();
+        void mpOptOut(); // ensure opted-out across reloads
+      }
       else if (known && !eu) applyGrant(); // confirmed non-EU → auto-grant
       else setShowBanner(true); // EU or unknown → ask
     })();
