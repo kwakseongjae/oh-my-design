@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { getReference, listReferenceIds } from '../data.js';
+import { getReference, listReferenceIds, permalink, provenance } from '../data.js';
 
 export const getDesignMdSchema = {
   id: z
@@ -21,6 +21,8 @@ export async function runGetDesignMd(input: z.infer<typeof InputSchema>) {
   }
   return {
     id: ref.id,
+    url: permalink(ref),
+    provenance: provenance(ref),
     frontmatter: ref.frontmatter,
     sections: ref.sections,
     content: ref.raw,

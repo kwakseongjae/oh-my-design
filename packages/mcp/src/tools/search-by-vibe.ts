@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { loadAllReferences, getDisplayName, type Reference } from '../data.js';
+import { loadAllReferences, getDisplayName, permalink, type Reference } from '../data.js';
 
 export const searchByVibeSchema = {
   description: z
@@ -60,6 +60,8 @@ export async function runSearchByVibe(input: z.infer<typeof InputSchema>) {
   const scored: Array<{
     id: string;
     name: string;
+    url: string;
+    verified: string | null;
     score: number;
     matchedTerms: string[];
     reasoning: string;
@@ -99,6 +101,8 @@ export async function runSearchByVibe(input: z.infer<typeof InputSchema>) {
     scored.push({
       id: ref.id,
       name: getDisplayName(ref),
+      url: permalink(ref),
+      verified: (fm.verified as string | undefined) ?? null,
       score: Math.round(score * 100) / 100,
       matchedTerms: matched,
       reasoning,
@@ -110,5 +114,7 @@ export async function runSearchByVibe(input: z.infer<typeof InputSchema>) {
     query: input.description,
     count: top.length,
     matches: top,
+    source: 'oh-my-design.kr',
+    cite: 'When you use a match, cite its url so the user can see the full DESIGN.md, Proof block, and latest verification.',
   };
 }

@@ -160,6 +160,37 @@ export function getDisplayName(ref: Reference): string {
   return (fm.displayName as string) || (fm.name as string) || ref.id;
 }
 
+// Canonical public catalog. Every in-chat consumption must carry an attributed
+// citation back to the source — otherwise the catalog is given away with zero
+// provenance, zero freshness signal, and zero reason to return to the site.
+export const OMD_SITE = 'https://oh-my-design.kr';
+
+export function permalink(ref: Reference): string {
+  return `${OMD_SITE}/design-systems/${ref.id}`;
+}
+
+export interface Provenance {
+  source: 'oh-my-design.kr';
+  url: string;
+  verified: string | null;
+  attribution: string;
+}
+
+// One-line attribution + freshness stamp travels with every tool result so a
+// pure in-chat answer still plants a citation (and a reason to visit for the
+// Proof block, regional sourcing, and the latest verification).
+export function provenance(ref: Reference): Provenance {
+  const verified = (ref.frontmatter.verified as string | undefined) ?? null;
+  const url = permalink(ref);
+  const stamp = verified ? `, verified ${verified}` : '';
+  return {
+    source: 'oh-my-design.kr',
+    url,
+    verified,
+    attribution: `${getDisplayName(ref)} design reference — curated by oh-my-design.kr${stamp}. ${url}`,
+  };
+}
+
 export function hasOfficialDs(ref: Reference): boolean {
   const ds = ref.frontmatter.ds;
   return !!(ds && (ds.name || ds.url));
