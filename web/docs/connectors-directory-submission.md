@@ -1,78 +1,110 @@
-# Anthropic Connectors Directory — submission packet (oh-my-design MCP)
+# Connectors Directory submission — oh-my-design (fill-in-the-form reference)
 
-Finalized after an adversarial pre-submission review against the **live** endpoint
-(2026-06-18). No listing fee; manual review queue, no published SLA. All blockers
-cleared in code — what remains is the human form submission.
+Mapped field-by-field to the **actual** submission flow (Anthropic docs, 2026-06).
+The in-app portal has **11 steps**; the standalone form
+(`clau.de/mcp-directory-submission`, used by individual accounts) groups the same
+inputs into ~6 pages. Copy each value below straight into the matching field.
 
-## Channel (indie, no Team/Enterprise org)
+- **Channel (you, individual plan):** `https://clau.de/mcp-directory-submission` (remote MCP server). The in-app portal `claude.ai/admin-settings/directory/submissions/new` needs a Team/Enterprise org + Directory-management permission. NOT the desktop-extension form.
+- No listing fee. Review queue has no published SLA. Escalation: `mcp-review@anthropic.com`.
 
-Use the **standalone web form: `https://clau.de/mcp-directory-submission`**
-(remote MCP server). Do NOT use the in-app portal
-(`claude.ai/admin-settings/directory/submissions/new`) — it requires a Team/
-Enterprise org + Directory-management permission. Do NOT use the desktop-extension
-form. Escalation if blocked: `mcp-review@anthropic.com`.
+---
 
-## Server
+## Step 1 — Introduction
+Informational only (directory listing doesn't change how the connector works). Continue.
 
+## Step 2 — Connection
 | Field | Value |
 |---|---|
-| Connector name | oh-my-design |
-| Type | Remote MCP server (Streamable HTTP) |
-| Endpoint URL | `https://oh-my-design.kr/api/mcp` |
-| Auth | None (public, read-only) — no OAuth |
-| serverInfo | name `oh-my-design`, version `1.0.0` ✅ (verified live) |
-| Documentation URL | `https://oh-my-design.kr/docs/connector` |
-| Privacy policy URL | `https://oh-my-design.kr/privacy` (KR: `/privacy/ko`) — covers the connector ✅ |
-| Support | `https://github.com/kwakseongjae/oh-my-design/issues` |
-| Category | Design / Developer Tools |
+| Server URL | `https://oh-my-design.kr/api/mcp` |
+| Transport type | **Streamable HTTP** |
+| User connection model | **Single URL for all users** (public, no per-user URL) |
 
-## Listing copy (description-policy-safe)
+## Step 3 — Tools (auto-synced from the live server)
+No input — the form pulls the tool list. Confirm all 3 show **title + `readOnlyHint: true`** (verified live): `list_references`, `search_by_vibe`, `get_design_md`. No write/destructive tools. Nothing flagged.
 
-**Tagline (≤55 chars):**
-`Browse 286 real brand design systems, in chat`
+## Step 4 — Listing
+| Field | Value | Limit |
+|---|---|---|
+| Server name | `oh-my-design` | ≤100 ✓ |
+| Tagline | `Browse 286 real brand design systems, in chat` | ≤55 (45) ✓ |
+| Description | *(below)* | ≤2000 ✓ |
+| Categories (1–5) | **Developer Tools**, **Design** (add Productivity if offered) | pick from form list |
+| Documentation URL | `https://oh-my-design.kr/docs/connector` | |
+| Privacy policy URL | `https://oh-my-design.kr/privacy` | |
+| Support contact | `gkffhdnls13@gmail.com` (issues: `github.com/kwakseongjae/oh-my-design/issues`) | |
+| Icon | `https://oh-my-design.kr/icon.png` (256×256 square) | |
+| URL slug | `oh-my-design` | **permanent — set carefully** |
 
-**Description:**
-`A read-only connector to the oh-my-design catalog of 286 curated brand design systems (Toss, Stripe, Linear, and more). Three tools: list and filter references by country/category, find brands by a described vibe, and fetch a brand's full DESIGN.md (color, typography, components, spacing, motion, voice). Every result includes a provenance permalink to oh-my-design.kr. No account, no auth, read-only.`
+**Description (paste):**
+`A read-only connector to the oh-my-design catalog of 286 curated brand design systems (Toss, Stripe, Linear, and more). Three tools: list and filter references by country and category, find brands by a described vibe (semantic search), and fetch a brand's full DESIGN.md — color, typography, components, spacing, motion, and voice. Every result includes a provenance permalink back to oh-my-design.kr. No account, no authentication, read-only.`
 
-**Example prompts (form + docs page):**
-1. `List the Korean fintech design references in the oh-my-design catalog.`
-2. `Find brands in oh-my-design with a calm, editorial B2B vibe and show their permalinks.`
-3. `Fetch the full DESIGN.md for "stripe" from oh-my-design and summarize its color and typography.`
+## Step 5 — Use Cases
+- **Primary use cases:** `Reference real brand design systems while building UI in Claude: discover brands by vibe, filter by country/category, and pull a brand's full DESIGN.md tokens (color, type, components, voice) to build on-brand.`
+- **User prerequisites:** `None. Public and unauthenticated — just add the connector URL. No account, plan, or setup.`
+- **Data scope:** **Reads only.**
 
-## Tools (all `readOnlyHint: true` ✅)
+## Step 6 — Company
+| Field | Value |
+|---|---|
+| Company name | `oh-my-design` (individual maintainer) |
+| Company website | `https://oh-my-design.kr` |
+| Primary contact | your name + `gkffhdnls13@gmail.com` (pre-filled from account) |
 
-1. **`list_references`** — list/filter by country, category, has_official_ds.
-2. **`search_by_vibe`** — semantic vibe search over the oh-my-design catalog.
-3. **`get_design_md`** — fetch a brand's full DESIGN.md + provenance.
+## Step 7 — Authentication
+- **No authentication** (public read-only catalog). No OAuth, no custom credentials.
+- Per-tool on-demand auth prompt: **No**.
 
-## Data handling statement
+## Step 8 — Data Handling
+| Question | Answer |
+|---|---|
+| Underlying API source | **Own / first-party** (we own and curate the catalog) |
+| Personal health data | **No** |
+| Sponsored content | **No** |
 
-Read-only access to a public catalog of design-system specs. No user data, no
-authentication, no PII. Server-side we keep only anonymous aggregate counts (tool
-name + public reference id) — **no query text, no IP, no user identity**. The
-connector never accesses Claude memory, history, prompts, or files. The separate
-`oh-my-design-mcp` npm package (local/stdio) is fully offline, zero telemetry.
+## Step 9 — Test & Launch
+- **Test account setup:** `No account required — public, unauthenticated.`
+- **Reviewer access guide (paste):**
+  1. In Claude → Settings → Connectors → Add custom connector → paste `https://oh-my-design.kr/api/mcp` (no auth).
+  2. Run: `List the Korean fintech design references in the oh-my-design catalog.` → returns a filtered list.
+  3. Run: `Find brands in oh-my-design with a calm, editorial B2B vibe and show their permalinks.` → returns ranked matches with `oh-my-design.kr/design-systems/...` URLs.
+  4. Run: `Fetch the full DESIGN.md for "stripe" from oh-my-design and summarize its color and typography.` → returns the full spec + provenance.
+- **Confirm all tools tested:** Yes (Claude custom connector / MCP Inspector). Unknown ids return a friendly error, not a crash.
+
+## Step 10 — Compliance (7 acknowledgements — our stance for each)
+1. **Directory guidelines compliance** — Yes.
+2. **First-party API usage** — Yes; the catalog is our own curated data, no third-party API proxied.
+3. **Financial transactions** — N/A; no payments or transactions.
+4. **AI media generation policies** — N/A; no AI media generation.
+5. **Prompt-injection prevention** — Tool outputs are our own catalog content; no tool injects instructions to steer Claude. (The optional `cite` hint is benign, not a "prefer-us / skip-other-tools" directive.)
+6. **Conversation data collection** — We collect **no** conversation data; only anonymous aggregate tool-call counts (no query text, no IP, no account). Disclosed in the privacy policy.
+7. **Public documentation** — Yes: `/docs/connector` + `/privacy`.
+
+## Step 11 — Review
+Verify all fields, clear any quality warnings, **Submit**. Track status via the submissions dashboard (or the email tied to your account on the standalone form).
+
+---
+
+## Optional fields worth setting
+- **Allowed Link URIs:** add `https://oh-my-design.kr` so the provenance permalinks we return aren't per-click confirmation-prompted.
+- **MCP App screenshots:** not applicable — we ship a plain tools-only server (no interactive UI), so the 3–5 PNG carousel requirement does not apply.
 
 ## Pre-submission checklist — status
+- [x] serverInfo = `oh-my-design` / `1.0.0` (verified live)
+- [x] Origin allowlist → 403 on mismatch; no-Origin/claude.ai → 200 (verified live)
+- [x] Per-IP rate limit (60/60s) → 429 + Retry-After (verified live)
+- [x] Privacy policy (EN+KO) covers the connector; no query/IP/account; no Claude-context access
+- [x] Raw query text not logged
+- [x] All 3 tools: title + `readOnlyHint:true`
+- [x] Connector docs page live at `/docs/connector` with server URL + 3 prompts
+- [x] Square icon at `/icon.png` (256×256)
+- [x] Deps pinned
+- [ ] Self-test: add the connector in Claude, run the 3 prompts end-to-end
+- [ ] (You only) Vercel → Firewall: confirm no challenge rule on `/api/mcp`
+- [ ] Submit via `clau.de/mcp-directory-submission`
 
-- [x] serverInfo name/version = `oh-my-design` / `1.0.0` (was Vercel template default)
-- [x] Origin validation: browser Origin allowlist → 403 on mismatch, 200 for no-Origin (Claude server) and claude.ai/claude.com/oh-my-design.kr
-- [x] Privacy policy covers the connector + states no query/IP/Claude-context collection (EN + KO)
-- [x] `search_by_vibe` no longer logs raw query text (KV + Mixpanel count tool calls only)
-- [x] Connector documentation page live at `/docs/connector` with server URL + 3 example prompts
-- [x] All 3 tools carry title + `readOnlyHint:true` (verified live)
-- [x] Streamable HTTP + HTTPS; unknown id returns friendly `isError`
-- [x] Dep versions pinned (mcp-handler 1.1.0, @modelcontextprotocol/sdk 1.26.0, zod 4.4.3)
-- [ ] **Deploy this commit** so the fixes are live before submitting
-- [ ] (Optional, recommended) per-IP rate limit on `/api/mcp` (abuse / stability)
-- [ ] (Verify) Vercel Firewall has no challenge rule on `/api/mcp`
-- [ ] Self-test: add `https://oh-my-design.kr/api/mcp` as a custom connector in Claude, run the 3 example prompts end-to-end
-- [ ] Submit via `https://clau.de/mcp-directory-submission`
-
-## Notes
-
-- Reviewers run every tool; the catalog is static (286 refs) so results are never
-  empty. `search_by_vibe` falls back to keyword if the embedding API is down, so a
-  reviewer never sees an empty/erroring vibe search.
-- (Optional reach) also publish a `server.json` to the official MCP Registry
-  (`registry.modelcontextprotocol.io`).
+## Sources
+- [Submitting to the Connectors Directory — Claude docs](https://claude.com/docs/connectors/building/submission)
+- [Connectors Directory FAQ — Claude Help](https://support.claude.com/en/articles/11596036-anthropic-connectors-directory-faq)
+- [Anthropic Software Directory Policy](https://support.claude.com/en/articles/13145358-anthropic-software-directory-policy)
+- [Connector submission walkthrough (sunpeak, May 2026)](https://sunpeak.ai/blogs/claude-connector-directory-submission/)
