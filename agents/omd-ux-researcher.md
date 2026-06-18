@@ -54,6 +54,8 @@ Write a markdown fragment to `output_path`. Schema:
 
 Cap your output at ~600 words. Cite EVERY claim with a URL. Mark unverified items.
 
+**§10-15 attribution (#32):** when your findings feed the brand-philosophy layer (Voice / Narrative / Principles / Personas), every voice sample / founding fact / principle MUST carry its source (URL or `file:line` / `CLAUDE.md`). A finding without a source is `[FILL IN]` material, not content — the §10-15 author may only write what you cited, never infer a brand story from a thin signal. This keeps the cited-only maturity meter honest.
+
 ## Hard rules
 
 - Read-only on the rest of the project. You only write to your `output_path`.

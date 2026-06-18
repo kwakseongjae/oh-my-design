@@ -13,6 +13,7 @@ user-invocable: true
 1. `.omd/preferences.md` — canonical 포맷 (`## <heading>` + ` ```omd-meta` 블록 + body — `omd:remember` 스킬의 포맷 정의 참조). **모든 status**의 엔트리를 파싱: `id` / `timestamp` / `scope` / `signal` / `confidence` / `status`
 2. `.omd/foldin-proposal.json` — 있으면 `status` (`proposed` / `applied` / `partial` / `snoozed`)와 `scopes[]` (scope, count, score, summary)
 3. `DESIGN.md` — § 라우팅 표시 + "모르는 것" 축 도출용
+4. `.omd/maturity.json` — 있으면 §10-15 maturity 미터 (`maturity` / `maturity_high` / `fill_in` / `uncited` / `top_enrichment`). session-end 훅이 작성. omd:absorb 콜드스타트로 시작한 프로젝트의 brand-philosophy 성숙도.
 
 ## 빈 상태
 
@@ -24,6 +25,18 @@ user-invocable: true
 이때 `.omd/` 디렉토리나 파일을 **만들지 말 것** — 뷰 스킬이 상태를 생성하면 안 된다.
 
 ## 렌더 — 4 그룹 한 뷰
+
+### ⓪ §10-15 성숙도 미터 (maturity.json 있을 때만, 뷰 최상단)
+
+`.omd/maturity.json`이 있으면 한 줄 배너로:
+
+```
+브랜드 철학(§10-15) 성숙도: <maturity>% (최고치 <maturity_high>%) ██░░░░░░░░ — <fill_in>개 섹션 아직 [FILL IN]
+```
+
+- `uncited > 0`이면 "⚠️ <uncited>개 섹션은 출처 없이 채워져 미터에 안 잡힘 — omd:learn으로 출처 달아 정식 반영" 한 줄 덧붙임.
+- `top_enrichment.readySignals > 0`이면 "지금 채울 수 있음: §<n> <title> — grounded 신호 <readySignals>개. omd:learn 호출" 한 줄. 이게 **[FILL IN] → enrichment 타깃**의 핵심 surface다.
+- maturity.json 없으면(레퍼런스 기반 시작) 이 그룹 생략. 미터는 **cited-only** — 출처 있는 채움으로만 오른다.
 
 ### ① 반영됨 (`status: applied`)
 

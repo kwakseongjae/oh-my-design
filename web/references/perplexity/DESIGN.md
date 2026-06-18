@@ -326,7 +326,8 @@ The composer is the signature surface — a large rounded well where the user ty
 ### Toggles
 
 **Switch**
-- On: `#20808D` track / off: `#D6D6CC` track
+- On: `#20808D` track
+- Off: `#D6D6CC` track
 - Thumb: `#FFFFFF` 18px circle, `0 1px 2px rgba(9,23,23,0.20)`
 - Radius: 9999px
 - Use: Settings (e.g. AI Profile, dark mode, auto-suggestions)

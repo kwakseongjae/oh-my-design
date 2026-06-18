@@ -194,6 +194,7 @@ Each turn you are in one state. Determine current state from `.handoff.json` `st
   - **§10-15 (Voice / Narrative / Principles / Personas / States / Motion)**: reference voice fingerprint **그대로 보존** — 본문 paraphrase 금지. Toss "breathing room around amounts", Lovable "warm encouragement" 같은 시그니처 문장은 verbatim 인용.
   - **§11 Brand Narrative / §12 Principles / §13 Personas**: 사용자가 fact 제공 안 했으면 `[FILL IN — <안내 텍스트>]` placeholder. **자동 fact 생성 금지** (예: Drop이 Toss처럼 "2015년 창립" 으로 쓰면 거짓 brand claim).
   - **§14 States / §15 Motion**: reference 그대로.
+  - **§10-15 cite-or-[FILL IN] (omd:absorb와 동일 규율, #32/#38)**: §10-15에 새로 쓰는(= reference에서 verbatim 보존이 아닌) 모든 문장은 **출처를 달아야** 한다 — reference-유래는 reference URL/id, 코드/룰셋-유래는 `` `file:line` `` / `CLAUDE.md` / `chat-turn`. 출처를 못 달면 `[FILL IN: <목적>]` + `<!-- omd:limitation ... do not fabricate -->`로 남긴다. 이 citation 토큰들은 maturity 미터(cited-only)가 인식하므로, 출처 있는 문장만 §10-15 성숙도를 올린다. **출처 없이 그럴듯하게 채우는 것 = fabrication, 금지.**
   - **frontmatter**: `omd_version: 0.1`, `base_reference: <chosen_ref_id>`, `delta: { axis: value, ... }` (적용한 axes만), `created_at: <ISO>`.
 
   **Step 4.5 — manifest 기록.** `<run_dir>/init-manifest.json` Write:
