@@ -69,7 +69,7 @@ const handler = createMcpHandler(
       {
         title: "Find brands by vibe",
         description:
-          "Find brand references matching a mood/vibe. Examples: 'calm B2B fintech', 'playful kids app', 'editorial newspaper', 'developer-first dark CLI'. Use when the user describes what they want without naming a brand. Returns top matches, each with a permalink to cite.",
+          "Search the oh-my-design catalog of 286 brand design references for brands matching a mood/vibe. Examples: 'calm B2B fintech', 'playful kids app', 'editorial newspaper', 'developer-first dark CLI'. Use when the user describes what they want without naming a brand. Returns top matches, each with a permalink to cite.",
         inputSchema: {
           description: z.string().min(2).describe("Mood/vibe description."),
           limit: z.number().int().min(1).max(20).optional().describe("Max matches (default 5)."),
@@ -78,7 +78,8 @@ const handler = createMcpHandler(
       },
       async ({ description, limit }) => {
         const res = await searchByVibe(description, limit);
-        after(() => trackMcp({ tool: "search_by_vibe", query: description }));
+        // Count the call only — never log the raw query text (privacy).
+        after(() => trackMcp({ tool: "search_by_vibe" }));
         return jsonContent(res);
       },
     );
@@ -107,8 +108,37 @@ const handler = createMcpHandler(
       },
     );
   },
-  {},
+  { serverInfo: { name: "oh-my-design", version: "1.0.0" } },
   { basePath: "/api", maxDuration: 60 },
 );
 
-export { handler as GET, handler as POST };
+// MCP Streamable HTTP spec MUST: validate the Origin header to defeat DNS-rebinding
+// / cross-site abuse (mcp-handler doesn't do this itself). Claude's servers call us
+// with no browser Origin → allow; a browser must match the allowlist or get 403.
+const ALLOWED_ORIGINS = new Set([
+  "https://oh-my-design.kr",
+  "https://claude.ai",
+  "https://claude.com",
+]);
+
+function originAllowed(req: Request): boolean {
+  const origin = req.headers.get("origin");
+  if (!origin) return true; // server-to-server (no browser Origin)
+  try {
+    return ALLOWED_ORIGINS.has(new URL(origin).origin);
+  } catch {
+    return false;
+  }
+}
+
+async function guarded(req: Request): Promise<Response> {
+  if (!originAllowed(req)) {
+    return new Response(
+      JSON.stringify({ jsonrpc: "2.0", error: { code: -32600, message: "Forbidden origin" }, id: null }),
+      { status: 403, headers: { "content-type": "application/json" } },
+    );
+  }
+  return handler(req);
+}
+
+export { guarded as GET, guarded as POST };

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ManageConsentButton } from "@/components/manage-consent-button";
 
-const UPDATED = "June 17, 2026";
+const UPDATED = "June 18, 2026";
 
 export const metadata: Metadata = {
   title: "Privacy — oh-my-design",
@@ -121,6 +121,30 @@ export default function PrivacyPage() {
             the EEA. Google LLC self-certifies under the EU–US Data Privacy
             Framework; transfers to Mixpanel rely on EU Standard Contractual
             Clauses.
+          </p>
+        </Section>
+
+        <Section title="Claude connector (MCP)">
+          <p>
+            oh-my-design offers a read-only{" "}
+            <strong className="font-medium text-foreground">Claude connector</strong> at{" "}
+            <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/api/mcp</code>.
+            When you use it inside Claude, Claude&apos;s servers call our endpoint
+            to search and fetch entries from our public design-systems catalog.
+          </p>
+          <p>
+            We log only{" "}
+            <strong className="font-medium text-foreground">anonymous, aggregate counts</strong> — which
+            tool was called and, for a fetch, which public reference id — to
+            understand usage. We do{" "}
+            <strong className="font-medium text-foreground">not</strong> log the text of your search
+            queries, your IP, or any account; there is no sign-in.
+          </p>
+          <p>
+            The connector only reads our own public catalog. It does{" "}
+            <strong className="font-medium text-foreground">not</strong> access or store your Claude
+            memory, conversation history, prompts, or files. It is read-only and
+            requires no authentication.
           </p>
         </Section>
 

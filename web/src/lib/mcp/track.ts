@@ -15,8 +15,10 @@
  * Fire-and-forget: never throws, never blocks the tool response. Call via
  * Next's `after()` so it runs after the response is flushed.
  *
- * Privacy: no PII, no client IP, a constant server-side distinct_id. The local
- * npx package stays zero-telemetry; only this hosted connector measures.
+ * Privacy: no PII, no client IP, no free-text query content, a constant
+ * server-side distinct_id. We log only the tool name and (for get_design_md)
+ * the public reference id. The local npx package stays zero-telemetry; only
+ * this hosted connector measures.
  */
 import { getRedis } from "@/lib/kv";
 
@@ -27,7 +29,6 @@ const MP_TOKEN = process.env.NEXT_PUBLIC_MIXPANEL_TOKEN ?? "";
 export interface McpEvent {
   tool: string;
   reference?: string;
-  query?: string;
 }
 
 async function kvTrack(ev: McpEvent): Promise<void> {
@@ -53,7 +54,6 @@ async function mixpanelTrack(ev: McpEvent): Promise<void> {
         surface: "mcp",
         tool: ev.tool,
         ...(ev.reference ? { reference: ev.reference } : {}),
-        ...(ev.query ? { query: ev.query } : {}),
       },
     },
   ];
