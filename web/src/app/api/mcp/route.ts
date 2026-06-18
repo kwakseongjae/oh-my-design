@@ -16,6 +16,7 @@ import { z } from "zod";
 import { after } from "next/server";
 import { listReferences, searchByVibe, getDesignMd } from "@/lib/mcp/catalog";
 import { trackMcp } from "@/lib/mcp/track";
+import { mcpRateLimit } from "@/lib/mcp/rate-limit";
 
 // mcp-handler needs the Node runtime (fs + node-redis); not edge.
 export const runtime = "nodejs";
@@ -131,11 +132,24 @@ function originAllowed(req: Request): boolean {
   }
 }
 
+function clientIp(req: Request): string {
+  const xff = req.headers.get("x-forwarded-for");
+  if (xff) return xff.split(",")[0]!.trim();
+  return req.headers.get("x-real-ip") ?? "anon";
+}
+
 async function guarded(req: Request): Promise<Response> {
   if (!originAllowed(req)) {
     return new Response(
       JSON.stringify({ jsonrpc: "2.0", error: { code: -32600, message: "Forbidden origin" }, id: null }),
       { status: 403, headers: { "content-type": "application/json" } },
+    );
+  }
+  const rl = await mcpRateLimit(clientIp(req));
+  if (!rl.ok) {
+    return new Response(
+      JSON.stringify({ jsonrpc: "2.0", error: { code: -32000, message: "Rate limited" }, id: null }),
+      { status: 429, headers: { "content-type": "application/json", "Retry-After": String(rl.retryAfterSec) } },
     );
   }
   return handler(req);
