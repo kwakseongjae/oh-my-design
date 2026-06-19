@@ -29,9 +29,10 @@ No input — the form pulls the tool list. Confirm all 3 show **title + `readOnl
 | Server name | `oh-my-design` | ≤100 ✓ |
 | Tagline | `Browse 286 real brand design systems, in chat` | ≤55 (45) ✓ |
 | Description | *(below)* | ≤2000 ✓ |
-| Categories (1–5) | **Developer Tools**, **Design** (add Productivity if offered) | pick from form list |
+| Categories (1–5) | **Development tools** (real form has no "Design" option; closest fit) | pick from form list |
 | Documentation URL | `https://oh-my-design.kr/docs/connector` | |
 | Privacy policy URL | `https://oh-my-design.kr/privacy` | |
+| Terms of service URL | `https://oh-my-design.kr/terms` (KR: `/terms/ko`) | |
 | Support contact | `gkffhdnls13@gmail.com` (issues: `github.com/kwakseongjae/oh-my-design/issues`) | |
 | Icon | `https://oh-my-design.kr/icon.png` (256×256 square) | |
 | URL slug | `oh-my-design` | **permanent — set carefully** |
@@ -85,6 +86,24 @@ Verify all fields, clear any quality warnings, **Submit**. Track status via the 
 
 ---
 
+## Actual form note (the live standalone form = a 6-page Google Form)
+The 11 steps above are grouped into 6 pages on `clau.de/mcp-directory-submission`. The last page is a **legal checklist** (Policy / Technical / Documentation / Testing) ending in Submit. Our stance per item:
+
+**Policy Compliance** — check all: no cross-service automation ✓ · no money/crypto/financial transactions ✓ · live & published & production-ready ✓ · I own the endpoint ✓ · (read & agree to the Software Directory Policy).
+
+**Technical Requirements** — readOnly annotations ✓ · HTTPS ✓ · OAuth/IP-allowlist/CORS = "not applicable" (no auth, no browser auth) ✓ · **"tested with Claude.ai on latest build" → check only AFTER the self-test.**
+
+**Documentation** — docs published (`/docs/connector`, now incl. troubleshooting) ✓ · privacy published (`/privacy`) ✓ · **Terms of service published (`/terms`) ✓** · setup + tool descriptions + troubleshooting present ✓.
+
+**Testing** — test account/creds items = "(if relevant)" → N/A (no account) ✓ · **"all tools tested in the surfaces" → check only AFTER the self-test.**
+
+**Additional Information (optional free-text), suggested paste:**
+> Public, read-only, unauthenticated connector over our own curated catalog of 286 brand design systems — no user data, no PII. The only external call: the short vibe-search query is sent to OpenRouter to compute a ranking embedding (disclosed in our privacy policy; not stored). Contact: gkffhdnls13@gmail.com.
+
+**Two items gate the legal page → both need YOUR self-test:** add the connector in Claude.ai (web), run the 3 example prompts, then check the two testing boxes.
+
+---
+
 ## Optional fields worth setting
 - **Allowed Link URIs:** add `https://oh-my-design.kr` so the provenance permalinks we return aren't per-click confirmation-prompted.
 - **MCP App screenshots:** not applicable — we ship a plain tools-only server (no interactive UI), so the 3–5 PNG carousel requirement does not apply.
@@ -96,10 +115,14 @@ Verify all fields, clear any quality warnings, **Submit**. Track status via the 
 - [x] Privacy policy (EN+KO) covers the connector; no query/IP/account; no Claude-context access
 - [x] Raw query text not logged
 - [x] All 3 tools: title + `readOnlyHint:true`
-- [x] Connector docs page live at `/docs/connector` with server URL + 3 prompts
+- [x] Connector docs page live at `/docs/connector` with server URL + 3 prompts + troubleshooting
+- [x] Terms of service published at `/terms` (+ `/terms/ko`)
 - [x] Square icon at `/icon.png` (256×256)
 - [x] Deps pinned
-- [ ] Self-test: add the connector in Claude, run the 3 prompts end-to-end
+- [x] Form pages 2–3 filled (draft saved to the submitter's Google account); page 4 logo filled
+- [ ] Self-test: add the connector in Claude.ai (web), run the 3 prompts end-to-end
+- [ ] After self-test: check page-4 "Claude.ai (web)" + the two page-6 testing boxes
+- [ ] Provide a square SVG logo (optional; PNG icon currently used) + 3–5 screenshots (optional)
 - [ ] (You only) Vercel → Firewall: confirm no challenge rule on `/api/mcp`
 - [ ] Submit via `clau.de/mcp-directory-submission`
 
