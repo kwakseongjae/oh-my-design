@@ -111,7 +111,9 @@ export default function PrivacyPage() {
             We use <strong className="font-medium text-foreground">Google Analytics</strong> and{" "}
             <strong className="font-medium text-foreground">Mixpanel</strong> for analytics, plus{" "}
             <strong className="font-medium text-foreground">Vercel</strong> and{" "}
-            <strong className="font-medium text-foreground">Upstash</strong> for hosting and counters. We also use{" "}
+            <strong className="font-medium text-foreground">Upstash</strong> for hosting and counters, and{" "}
+            <strong className="font-medium text-foreground">OpenRouter</strong> to compute embeddings for the connector&apos;s
+            vibe search. We also use{" "}
             <strong className="font-medium text-foreground">Google Search Console</strong> to see aggregated, anonymized search
             performance (no personal data).
           </p>
@@ -139,6 +141,13 @@ export default function PrivacyPage() {
             understand usage. We do{" "}
             <strong className="font-medium text-foreground">not</strong> log the text of your search
             queries, your IP, or any account; there is no sign-in.
+          </p>
+          <p>
+            To rank a vibe search, your search phrase is sent to our embedding
+            provider,{" "}
+            <strong className="font-medium text-foreground">OpenRouter</strong> (United States), to
+            compute a numeric vector. It is used only to find matching references
+            and is not stored by us.
           </p>
           <p>
             The connector only reads our own public catalog. It does{" "}

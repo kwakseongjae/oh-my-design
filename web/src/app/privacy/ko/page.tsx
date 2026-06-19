@@ -96,6 +96,7 @@ export default function PrivacyKoPage() {
             <li>Mixpanel, Inc. — 제품 이용 행태 분석</li>
             <li>Vercel, Inc. — 웹사이트 호스팅</li>
             <li>Upstash, Inc. — 인기 레퍼런스 집계(개인정보 미포함)</li>
+            <li>OpenRouter, Inc. — 커넥터 vibe 검색용 임베딩 계산(검색어 미저장)</li>
           </ul>
         </Section>
 
@@ -103,7 +104,7 @@ export default function PrivacyKoPage() {
           <p>위 수탁자는 국외에서 서비스를 운영하므로, 익명 이용 분석 데이터가
             국외로 이전됩니다.</p>
           <ul className="ml-4 list-disc space-y-1">
-            <li><strong className="font-medium text-foreground">이전받는 자(수탁자):</strong> Google LLC, Mixpanel Inc., Vercel Inc.</li>
+            <li><strong className="font-medium text-foreground">이전받는 자(수탁자):</strong> Google LLC, Mixpanel Inc., Vercel Inc., OpenRouter Inc.</li>
             <li><strong className="font-medium text-foreground">이전 항목:</strong> 익명 이용 분석 이벤트, 쿠키·로컬스토리지 식별자 (IP·국가정보 미전송)</li>
             <li><strong className="font-medium text-foreground">이전 국가:</strong> 미국(United States)</li>
             <li><strong className="font-medium text-foreground">이전 일시 및 방법:</strong> 서비스 이용 시점에 네트워크를 통해 전송</li>
@@ -165,6 +166,10 @@ export default function PrivacyKoPage() {
           <p>우리는 익명 집계 카운트(어떤 도구가 호출되었는지, 조회 시 공개
             레퍼런스 ID)만 기록합니다. 검색어 텍스트, IP 주소, 계정 정보는
             기록하지 않으며 로그인 절차도 없습니다.</p>
+          <p>다만 vibe 검색의 순위를 매기기 위해, 검색어 문구는 임베딩 제공자인{" "}
+            <strong className="font-medium text-foreground">OpenRouter</strong>(미국)로 전송되어 숫자
+            벡터로 변환됩니다. 이는 일치하는 레퍼런스를 찾는 데에만 사용되며
+            저장되지 않습니다.</p>
           <p>이 커넥터는 우리의 공개 카탈로그만 읽으며, 이용자의 Claude 메모리·대화
             기록·프롬프트·파일에 접근하거나 저장하지 않습니다. 읽기 전용이며 인증이
             필요 없습니다.</p>
