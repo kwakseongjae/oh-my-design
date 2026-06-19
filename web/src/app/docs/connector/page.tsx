@@ -112,6 +112,17 @@ export default function ConnectorDocsPage() {
           </ul>
         </Section>
 
+        <Section title="Troubleshooting">
+          <ul className="ml-4 list-disc space-y-1.5">
+            <li><strong className="font-medium text-foreground">No tools appear after adding it:</strong> confirm the URL is exactly <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">https://oh-my-design.kr/api/mcp</code> (no trailing path), then remove and re-add the connector.</li>
+            <li><strong className="font-medium text-foreground">A vibe search returns nothing:</strong> try a broader phrase, or use <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">list_references</code> to browse by country/category.</li>
+            <li><strong className="font-medium text-foreground">&ldquo;Unknown reference id&rdquo;:</strong> ids are lowercase slugs (e.g. <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">toss</code>); call <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">list_references</code> to find valid ids.</li>
+            <li><strong className="font-medium text-foreground">Requests start failing (HTTP 429):</strong> the public endpoint is rate-limited per IP — wait about a minute and retry.</li>
+            <li>Still stuck? Open an issue at{" "}
+              <a href="https://github.com/kwakseongjae/oh-my-design/issues" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground">GitHub</a>.</li>
+          </ul>
+        </Section>
+
         <Section title="Privacy">
           <p>
             The connector is read-only and stores no personal data — see the{" "}

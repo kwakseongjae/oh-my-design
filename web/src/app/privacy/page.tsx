@@ -39,6 +39,7 @@ export default function PrivacyPage() {
           </Link>
           <nav className="flex items-center gap-4 text-xs sm:text-sm">
             <Link href="/docs" className="text-muted-foreground hover:text-foreground">Docs</Link>
+            <Link href="/terms" className="text-muted-foreground hover:text-foreground">Terms</Link>
             <Link href="/privacy/ko" className="text-muted-foreground hover:text-foreground">한국어</Link>
             <a href="https://github.com/kwakseongjae/oh-my-design" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub</a>
           </nav>
