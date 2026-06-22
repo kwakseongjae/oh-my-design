@@ -78,7 +78,7 @@ Toss가 아니어도 됩니다 — `Stripe-style`, `Linear-clone B2B SaaS`, `Kar
 
 - **스킬** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn` / `omd:taste` — "내 취향 보여줘" 한마디로 루프가 배운 것·대기 중·보류된 것을 한 뷰로), 라이브 캡처 + 에셋 (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), v0.2 agent layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), 그리고 터미널에서 claude.ai/design을 구동하는 단독 스킬 `claude-design`.
 - **서브에이전트** — `omd-master` + 15 스페셜리스트 (UX 리서치, UI 생성, 에셋 큐레이션, 마이크로카피, a11y 감사, 페르소나 테스트, 비평, …).
-- **레퍼런스** — 286개 실제 기업 `DESIGN.md`, 전부 라이브 소스 대조 검증. 모든 레퍼런스는 `oh-my-design.kr/design-systems/<id>.md`에서 raw markdown으로도 제공되어 에이전트가 직접 fetch할 수 있습니다.
+- **레퍼런스** — 286개 실제 기업 `DESIGN.md`, 전부 라이브 소스 대조 검증. 모든 레퍼런스는 `oh-my-design.kr/<id>/design.md`에서 raw markdown으로도 제공되어 에이전트가 직접 fetch할 수 있습니다.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse 활성화 — 슬래시 명령 없이 자연어만으로 스킬이 발동합니다.
 
 스킬·에이전트별 상세 레퍼런스: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**.

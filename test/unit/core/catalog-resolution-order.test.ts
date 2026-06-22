@@ -24,7 +24,7 @@ const CANONICAL_ORDER = [
   '.claude/data/references/<id>/DESIGN.md',
   'node_modules/oh-my-design-cli/web/references/<id>/DESIGN.md',
   'web/references/<id>/DESIGN.md',
-  'https://oh-my-design.kr/design-systems/<id>.md',
+  'https://oh-my-design.kr/<id>/design.md',
 ];
 
 const DOCUMENTS = [
