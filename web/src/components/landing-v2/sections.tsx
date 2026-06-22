@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { PKG_VERSION } from "@/data/version.generated";
+import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { motion, useInView } from "framer-motion";
 import {
   ArrowRight,
@@ -508,7 +509,7 @@ export function CliStrip() {
                 ✓ Wrote .claude/skills, .agents/skills, .opencode/skills, .cursor/rules
               </div>
               <div style={{ color: V2.accent }}>
-                ✓ Bundled 221 reference DESIGN.md files
+                ✓ Bundled {REFERENCE_COUNT} reference DESIGN.md files
               </div>
               <div style={{ color: V2.accent }}>
                 ✓ Hooked CLAUDE.md, AGENTS.md, .cursor/rules
@@ -1007,6 +1008,22 @@ export function FinalCtaFooter() {
                   </Link>
                 </li>
                 <li>
+                  <Link
+                    href="/what-is-design-md"
+                    className="text-sm text-white/85 transition-colors hover:text-white"
+                  >
+                    What is DESIGN.md?
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/faq"
+                    className="text-sm text-white/85 transition-colors hover:text-white"
+                  >
+                    FAQ
+                  </Link>
+                </li>
+                <li>
                   <a
                     href="https://www.npmjs.com/package/oh-my-design-cli"
                     target="_blank"
@@ -1075,7 +1092,7 @@ export function FinalCtaFooter() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
               </span>
-              221 references · 17 skills · 16 sub-agents · live
+              {REFERENCE_COUNT} references · 17 skills · 16 sub-agents · live
             </div>
           </div>
         </div>

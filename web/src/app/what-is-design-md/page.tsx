@@ -7,6 +7,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, FileCode, ExternalLink } from "lucide-react";
+import { REFERENCE_COUNT } from "@/lib/catalog-count";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -197,7 +198,7 @@ export default function WhatIsDesignMdPage() {
           >
             spec/omd-v0.1.md
           </a>
-          에서 읽을 수 있고, 221 실제 회사의 DESIGN.md 예시는{" "}
+          에서 읽을 수 있고, {REFERENCE_COUNT} 실제 회사의 DESIGN.md 예시는{" "}
           <Link href="/design-systems" className="underline underline-offset-4 text-foreground">
             /design-systems
           </Link>
@@ -261,7 +262,7 @@ export default function WhatIsDesignMdPage() {
           최소 DESIGN.md 예시
         </h2>
         <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-          frontmatter + 첫 3개 섹션. 실제 221 레퍼런스는 §1–15를 모두 채웁니다 —
+          frontmatter + 첫 3개 섹션. 실제 {REFERENCE_COUNT} 레퍼런스는 §1–15를 모두 채웁니다 —
           전체 예시는{" "}
           <Link href="/design-systems" className="underline underline-offset-4 text-foreground">
             /design-systems
@@ -271,6 +272,51 @@ export default function WhatIsDesignMdPage() {
         <pre className="mt-5 overflow-x-auto rounded-xl border border-border/60 bg-foreground/[0.02] p-5 text-[12.5px] leading-relaxed font-mono">
           <code>{SAMPLE}</code>
         </pre>
+
+        {/* Public .md endpoints — ties the definition to the fetchable artifacts */}
+        <h2 className="mt-14 text-2xl sm:text-3xl font-bold tracking-tight">
+          에이전트가 바로 fetch하는 공개 <code className="font-mono text-[0.8em]">.md</code>
+        </h2>
+        <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+          카탈로그의 모든 레퍼런스는 <strong className="text-foreground">raw 마크다운</strong>으로
+          공개돼 있어, AI 코딩 에이전트(Claude Code 등)가 JS 렌더링 없이 DESIGN.md를 그대로
+          가져올 수 있습니다. URL 규칙은{" "}
+          <code className="text-[13px] font-mono">oh-my-design.kr/&lt;id&gt;/design.md</code> —{" "}
+          <a
+            href="https://vercel.com/design.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 text-foreground"
+          >
+            vercel.com/design.md
+          </a>
+          와 같은 형태입니다.
+        </p>
+        <ul className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {["toss", "stripe", "vercel", "notion"].map((id) => (
+            <li key={id}>
+              <a
+                href={`/${id}/design.md`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-lg border border-border/60 bg-card/40 px-3 py-2 font-mono text-xs hover:bg-accent"
+              >
+                /{id}/design.md
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+          전체 목록(머신리더블 인덱스)은{" "}
+          <a href="/llms.txt" className="underline underline-offset-4 text-foreground">
+            /llms.txt
+          </a>
+          에 있고, 사람이 보는 페이지는{" "}
+          <Link href="/design-systems" className="underline underline-offset-4 text-foreground">
+            /design-systems
+          </Link>
+          입니다.
+        </p>
 
         {/* CTAs */}
         <div className="mt-14 rounded-2xl border border-border/60 bg-card/30 p-6 sm:p-8">

@@ -14,6 +14,7 @@ import { useHotRefs } from "@/lib/hot-refs";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { getAllDesignSystems } from "@/lib/design-systems";
+import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { DSCard } from "@/components/ds-card";
 import { GithubStarButton } from "@/components/github-star-button";
 import { COLLECTIONS } from "@/lib/collections";
@@ -63,9 +64,8 @@ export default function DesignSystemsPage() {
         </div>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Design Systems</h1>
         <p className="text-muted-foreground mt-4 max-w-2xl leading-relaxed">
-          Jump to the company&apos;s canonical documentation — 221 full design
-          systems with components and tokens, plus brand / trademark guideline
-          pages.
+          Jump to the company&apos;s canonical documentation — {REFERENCE_COUNT}{" "}
+          real company design systems and brand / trademark guideline pages.
         </p>
 
         {/* Curated collections — intent-keyword entry points (#5) */}

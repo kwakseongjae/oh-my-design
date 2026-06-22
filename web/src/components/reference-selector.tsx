@@ -4,6 +4,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { event, trackRef } from "@/lib/gtag";
 import { Loader2, ArrowRight, ChevronDown, Download } from "lucide-react";
+import { REFERENCE_COUNT } from "@/lib/catalog-count";
 
 /** Inline SVG magnifier — bypasses lucide-react@1.8.0 rendering issues. */
 function SearchIcon({ className }: { className?: string }) {
@@ -188,7 +189,7 @@ export function ReferenceSelector({
         <div>
           <h2 className="text-3xl font-bold tracking-tight">Choose a reference</h2>
           <p className="mt-2 text-muted-foreground">
-            221 design systems from real companies.{" "}
+            {REFERENCE_COUNT} design systems from real companies.{" "}
             {skipWizard
               ? "Picking one jumps straight to the original DESIGN.md — no customization."
               : "Pick one to start."}

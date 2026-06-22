@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Star, Check, Copy, Pause } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { event } from "@/lib/gtag";
+import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { V2 } from "./tokens";
 
 const INSTALL_CMD = "npx oh-my-design-cli install-skills";
@@ -182,7 +183,7 @@ export function HeroV2() {
                 color: "transparent",
               }}
             >
-              from 221 real company design systems.
+              from {REFERENCE_COUNT} real company design systems.
             </span>
           </motion.h1>
 
@@ -193,7 +194,7 @@ export function HeroV2() {
             className="mt-5 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg"
           >
             One <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm">DESIGN.md</code>{" "}
-            spec. 221 real brands extracted. Any AI coding agent (Claude
+            spec. {REFERENCE_COUNT} real brands extracted. Any AI coding agent (Claude
             Code, Cursor, Codex, OpenCode) ships UI that actually looks like
             Stripe, Toss, Linear — not slop. Free, MIT, zero AI calls during install.
           </motion.p>

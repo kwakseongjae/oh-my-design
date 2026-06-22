@@ -10,6 +10,7 @@ import {
   Brain,
   Check,
   Copy,
+  Eye,
   ExternalLink,
   FileCode,
   GitBranch,
@@ -21,12 +22,14 @@ import {
   Star,
   Terminal,
   TestTube,
+  Wand2,
   Workflow,
   Zap,
 } from "lucide-react";
 import { V2Nav } from "@/components/landing-v2/nav";
 import { V2 } from "@/components/landing-v2/tokens";
 import { FAQ_EN } from "@/data/faq";
+import { PKG_VERSION } from "@/data/version.generated";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-v2" });
 const geistMono = Geist_Mono({
@@ -88,6 +91,14 @@ const SKILLS: Skill[] = [
     icon: GitBranch,
   },
   {
+    id: "omd:taste",
+    trigger: "내 취향 보여줘 · show my taste",
+    title: "See your learned taste",
+    desc:
+      "Renders what the system has learned about your design taste in one view — reads .omd/preferences.md + foldin-proposal.json + DESIGN.md and groups them into applied / pending / held / unknown. Pairs with omd:remember (capture) and omd:learn (fold in).",
+    icon: Eye,
+  },
+  {
     id: "omd:sync",
     trigger: "Maintain shims",
     title: "Sync agent pointers",
@@ -118,6 +129,14 @@ const SKILLS: Skill[] = [
     desc:
       "Builds a single index.html that previews every brand experiment under a folder as iframe-scaled cards with archetype badges, wow ratings, multi-turn deltas, and IP audit counts. Reusable across batches.",
     icon: Workflow,
+  },
+  {
+    id: "claude-design",
+    trigger: "claude.ai/design로 보내줘",
+    title: "Hand off to Claude Design",
+    desc:
+      "Analyzes the current codebase into a design-context brief (stack / tokens / components / routes / real UI copy / curated assets / repo link) and drives claude.ai/design via your logged-in Chrome to generate a design — returning a clickable result link. Falls back to a clean manual handoff if the browser layer is blocked.",
+    icon: Wand2,
   },
 ];
 
@@ -549,7 +568,7 @@ function DocsHero() {
             className="inline-block h-1.5 w-1.5 rounded-full"
             style={{ background: V2.accent }}
           />
-          Docs · v1.0.0
+          Docs · v{PKG_VERSION}
         </motion.div>
 
         <motion.h1
@@ -1364,7 +1383,7 @@ function DocsFooter() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </span>
-            v1.0.0 · live
+            v{PKG_VERSION} · live
           </span>
         </div>
       </div>

@@ -14,6 +14,7 @@
  */
 
 import { REGISTRY, REGISTRY_BY_ID, type RefEntry } from "@/data/registry.generated";
+import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import type { DesignSystemInfo } from "@/lib/design-systems";
 
 export interface Collection {
@@ -59,11 +60,11 @@ export const COLLECTIONS: readonly Collection[] = [
     titleEn: "DESIGN.md for Claude Code",
     introKr: [
       "Claude Code는 코드를 잘 짜지만, 디자인 취향은 남의 것입니다. DESIGN.md 한 파일을 프로젝트에 두면 에이전트가 매 UI 작업 전에 브랜드의 색·타이포·보이스를 ground truth로 읽습니다.",
-      "이 컬렉션은 Claude Code 사용자들이 가장 먼저 적용해 보는 검증된 레퍼런스 모음입니다. 카드를 열어 DESIGN.md를 그대로 복사하거나, 한 줄 설치로 221개 전부를 스킬과 함께 들여올 수 있습니다.",
+      `이 컬렉션은 Claude Code 사용자들이 가장 먼저 적용해 보는 검증된 레퍼런스 모음입니다. 카드를 열어 DESIGN.md를 그대로 복사하거나, 한 줄 설치로 ${REFERENCE_COUNT}개 전부를 스킬과 함께 들여올 수 있습니다.`,
     ],
     introEn: [
       "Claude Code ships beautiful code with someone else's design taste. Drop one DESIGN.md in your project and the agent reads your brand's color, type, and voice as ground truth before every UI task.",
-      "These are the verified references Claude Code users reach for first. Open a card to copy the DESIGN.md raw, or install all 221 with skills in one command.",
+      `These are the verified references Claude Code users reach for first. Open a card to copy the DESIGN.md raw, or install all ${REFERENCE_COUNT} with skills in one command.`,
     ],
     select: byIds([
       "toss",
