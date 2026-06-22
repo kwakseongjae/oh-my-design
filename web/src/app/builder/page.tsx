@@ -441,6 +441,28 @@ export default function BuilderPage() {
               })}
             />
             </div>
+            {/* Bridge the client funnel to the server-rendered, indexable
+                artifacts: the canonical reference page (where Claude/Brave land)
+                and its raw .md (what agents fetch). Keeps shared builder URLs
+                one hop from citable content. */}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
+              <Link
+                href={`/design-systems/${detail.id}`}
+                className="underline underline-offset-2 hover:text-foreground"
+              >
+                View {detail.id} reference page
+              </Link>
+              <span aria-hidden className="hidden sm:inline">·</span>
+              <a
+                href={`/${detail.id}/design.md`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => event("builder_raw_md_open", { reference: detail.id })}
+                className="underline underline-offset-2 hover:text-foreground"
+              >
+                Raw DESIGN.md
+              </a>
+            </div>
           </>
         )}
       </main>

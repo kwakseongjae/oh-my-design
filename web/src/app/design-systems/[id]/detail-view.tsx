@@ -27,6 +27,7 @@ import {
   Eye,
   Moon,
   Sun,
+  SlidersHorizontal,
 } from "lucide-react";
 import { ReferencePreview } from "@/components/reference-preview";
 import { InstallCta } from "@/components/install-cta";
@@ -57,9 +58,12 @@ type MobileView = "preview" | "markdown";
 export function DetailView({
   detail,
   tokens,
+  summary,
 }: {
   detail: Detail;
   tokens: ParsedTokens;
+  /** Answer-first extract from the server page (#5) — also the JSON-LD description. */
+  summary?: string;
 }) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -128,13 +132,25 @@ export function DetailView({
           </div>
 
           <div className="flex items-center gap-1 sm:gap-2">
+            {/* Primary funnel CTA — this page is where Claude/Brave citations
+                land; convert that visitor into the builder with the reference
+                preselected (step=customize). Kept at least as prominent as the
+                official-site link. */}
+            <Link
+              href={`/builder?step=customize&ref=${detail.id}`}
+              onClick={() => event("ds_open_in_builder", { reference: detail.id })}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm ring-1 ring-primary/20 transition-all hover:brightness-110 hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+            >
+              <SlidersHorizontal className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Customize in builder</span>
+            </Link>
             {ds && (
               <a
                 href={ds.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={externalClick}
-                className="hidden sm:inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm ring-1 ring-primary/20 transition-all hover:brightness-110 hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/50 px-3 py-1.5 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
               >
                 Official site <ExternalLink className="h-3 w-3" />
               </a>
@@ -161,7 +177,7 @@ export function DetailView({
             </button>
             {/* Raw twin — clean markdown URL agents can fetch directly. */}
             <a
-              href={`/design-systems/${detail.id}.md`}
+              href={`/${detail.id}/design.md`}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => event("ds_raw_md_open", { reference: detail.id })}
@@ -225,6 +241,38 @@ export function DetailView({
         reference={detail.id}
         brandName={displayName}
       />
+
+      {/* Answer-first summary (#5) — the extractable lead Claude/Brave cite,
+          before the full DESIGN.md dump. The labeled facts below are the visible
+          backing for the page's FAQ structured data. */}
+      {summary && (
+        <section className="mx-auto max-w-7xl px-4 pt-6 sm:px-6">
+          <p className="max-w-3xl text-sm leading-relaxed text-foreground">{summary}</p>
+          <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-xs text-muted-foreground">
+            <div className="flex items-center gap-1.5">
+              <dt>Primary</dt>
+              <dd className="flex items-center gap-1 font-medium text-foreground">
+                <span
+                  className="inline-block h-3 w-3 rounded-full ring-1 ring-border/60"
+                  style={{ background: detail.primary }}
+                />
+                {detail.primary}
+              </dd>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <dt>Typography</dt>
+              <dd className="font-medium text-foreground">
+                {detail.fontFamily}
+                {detail.mono ? ` · ${detail.mono}` : ""}
+              </dd>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <dt>Radius</dt>
+              <dd className="font-medium text-foreground">{detail.radius}</dd>
+            </div>
+          </dl>
+        </section>
+      )}
 
       {/* Desktop: 2-col grid; Mobile: single-pane toggle */}
       <div className="mx-auto max-w-7xl px-0 pb-20 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-0 md:px-6">
