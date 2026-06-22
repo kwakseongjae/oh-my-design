@@ -10,7 +10,7 @@
  * its own 20 questions and is intentionally NOT generated from this list.
  */
 
-import { REFERENCE_COUNT } from "@/lib/catalog-count";
+import { REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 
 export interface FaqEntry {
   q: string;
@@ -27,7 +27,7 @@ export const FAQ_EN: FaqEntry[] = [
   },
   {
     q: "How does oh-my-design work?",
-    a: "Run `npx oh-my-design-cli install-skills` once in your project. It installs 17 skills (core flow + live-capture + asset + the v0.2 agent layer: orchestrator, kr-writer, locale-adapter, designer-review, final-qa, codex-image), 16 sub-agents (master orchestrator + 15 specialists), 4 hooks, and " + REFERENCE_COUNT + " reference DESIGN.md files. After restarting your AI coding agent, you just talk in natural language — skills route to the right sub-agents automatically.",
+    a: "Run `npx oh-my-design-cli install-skills` once in your project. It installs " + SKILL_COUNT + " skills (core flow + live-capture + asset + the v0.2 agent layer: orchestrator, kr-writer, locale-adapter, designer-review, final-qa, codex-image), " + SUBAGENT_COUNT + " sub-agents (master orchestrator + 15 specialists), 4 hooks, and " + REFERENCE_COUNT + " reference DESIGN.md files. After restarting your AI coding agent, you just talk in natural language — skills route to the right sub-agents automatically.",
     jsonLd: true,
   },
   {

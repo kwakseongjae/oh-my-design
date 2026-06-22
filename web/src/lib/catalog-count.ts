@@ -1,13 +1,17 @@
 import { REGISTRY } from "@/data/registry.generated";
 
 /**
- * Single source of truth for the public reference count.
+ * Single import hub for catalog counts. Import all three from here so no surface
+ * hardcodes a number again.
  *
- * This number was previously hardcoded as a literal ("221") across ~11 surfaces
- * and only a subset was kept in sync by scripts/sync-catalog.mjs (an incremental
- * old→new string replace over a fixed file list). Files outside that list froze
- * at whatever count they were last written with, so the UI drifted behind the
- * real catalog. Deriving from the generated REGISTRY means every surface always
- * shows the true server value — no sync step, no drift.
+ * These were previously hand-maintained literals ("221" references, "17 skills",
+ * "16 sub-agents") scattered across dozens of surfaces; only the reference count
+ * was partially synced by scripts/sync-catalog.mjs, so the rest drifted. Now:
+ *   - REFERENCE_COUNT derives from the generated REGISTRY (no step needed).
+ *   - SKILL_COUNT / SUBAGENT_COUNT are emitted by scripts/build-registry.mjs into
+ *     catalog-meta.generated.ts (sources mirror what npm actually ships).
+ * Static files that can't import TS (README, llms.txt) are kept honest by
+ * scripts/sync-catalog.mjs + the scripts/check-counts.mjs drift guard.
  */
 export const REFERENCE_COUNT = REGISTRY.length;
+export { SKILL_COUNT, SUBAGENT_COUNT } from "@/data/catalog-meta.generated";

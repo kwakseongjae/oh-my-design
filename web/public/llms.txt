@@ -1,6 +1,6 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 15 skills + 16 sub-agents + 286 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
+> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 17 skills + 16 sub-agents + 286 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
 
 ## What
 
@@ -34,14 +34,15 @@ When `omd:harness` activates, it runs three new steps **before** any reference q
 
 The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
-## The 15 skills
+## The 17 skills
 
-Core flow (6):
+Core flow (7):
 - **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
 - **omd:init** — Bootstrap DESIGN.md from a reference with hybrid variation that preserves the reference voice while shifting only user-named axes.
 - **omd:harness** — `/omd-harness <task>` runs the 10-phase pipeline. 7 hero archetypes match brand vibe to layout; wordmark-only logo, reveal safety net, container-inner consistency.
 - **omd:remember** — Auto-captures user corrections to `.omd/preferences.md`.
 - **omd:learn** — Folds preferences into DESIGN.md by scope.
+- **omd:taste** — Renders your learned design taste in one view (applied / pending / held / unknown) from preferences + DESIGN.md.
 - **omd:sync** — Maintains shim files (CLAUDE.md / AGENTS.md / .cursor/rules) so every agent reads the same spec.
 
 Live capture + assets (3):
@@ -56,6 +57,9 @@ Localization + review layer (6):
 - **omd:designer-review** — Visual + brand-consistency audit against DESIGN.md (typography, color budget, radius scale, states, responsiveness).
 - **omd:final-qa** — Read-only final-gate critic enforcing a 9-item rubric with a hard revision cap.
 - **omd:codex-image** — Channel-aware image materializer for `omd:gen-image` spec blocks (Codex native gen / asset fallback / user queue).
+
+Standalone (1):
+- **claude-design** — Analyzes the current codebase into a design-context brief and drives claude.ai/design (via logged-in Chrome) to generate a design, returning a result link.
 
 ## The 16 sub-agents (master orchestrator + 15 specialists)
 
