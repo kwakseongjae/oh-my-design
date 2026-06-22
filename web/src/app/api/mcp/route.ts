@@ -138,7 +138,15 @@ function clientIp(req: Request): string {
   return req.headers.get("x-real-ip") ?? "anon";
 }
 
+// Dev flag — the connector is paused (directory submission on hold). It stays
+// dormant unless OMD_MCP_ENABLED=true is set (dev/preview), so prod returns 404
+// and nothing is publicly exposed. Flip the env var to re-enable.
+const MCP_ENABLED = process.env.OMD_MCP_ENABLED === "true";
+
 async function guarded(req: Request): Promise<Response> {
+  if (!MCP_ENABLED) {
+    return new Response("Not found", { status: 404 });
+  }
   if (!originAllowed(req)) {
     return new Response(
       JSON.stringify({ jsonrpc: "2.0", error: { code: -32600, message: "Forbidden origin" }, id: null }),
