@@ -30,6 +30,7 @@ import { V2Nav } from "@/components/landing-v2/nav";
 import { V2 } from "@/components/landing-v2/tokens";
 import { FAQ_EN } from "@/data/faq";
 import { PKG_VERSION } from "@/data/version.generated";
+import { REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-v2" });
 const geistMono = Geist_Mono({
@@ -63,7 +64,7 @@ const SKILLS: Skill[] = [
     trigger: "First-time setup",
     title: "Bootstrap a project",
     desc:
-      "Pick from 286 reference design systems. Hybrid variation — preserves the reference voice while shifting only the axes you name.",
+      `Pick from ${REFERENCE_COUNT} reference design systems. Hybrid variation — preserves the reference voice while shifting only the axes you name.`,
     icon: Zap,
   },
   {
@@ -428,17 +429,17 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
   {
     path: ".claude/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "Claude Code skill bundle — 17 skills (core flow + capture/assets + v0.2 agent layer)",
+    purpose: `Claude Code skill bundle — ${SKILL_COUNT} skills (core flow + capture/assets + v0.2 agent layer)`,
   },
   {
     path: ".agents/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "Codex skill bundle (same 17 skills — official discovery path)",
+    purpose: `Codex skill bundle (same ${SKILL_COUNT} skills — official discovery path)`,
   },
   {
     path: ".opencode/skills/omd-*/SKILL.md",
     owner: "install-skills",
-    purpose: "OpenCode skill bundle (same 17 skills)",
+    purpose: `OpenCode skill bundle (same ${SKILL_COUNT} skills)`,
   },
   {
     path: ".cursor/rules/omd-design.mdc",
@@ -463,7 +464,7 @@ const INSTALL_FILES: { path: string; owner: string; purpose: string }[] = [
   {
     path: "references/*/DESIGN.md",
     owner: "bundled",
-    purpose: "286 real design systems",
+    purpose: `${REFERENCE_COUNT} real design systems`,
   },
   {
     path: "DESIGN.md",
@@ -597,10 +598,10 @@ function DocsHero() {
           transition={{ duration: 0.6, delay: 0.18 }}
           className="mt-5 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
         >
-          <strong className="text-white">17 skills</strong>,{" "}
-          <strong className="text-white">16 sub-agents</strong>, a{" "}
+          <strong className="text-white">{SKILL_COUNT} skills</strong>,{" "}
+          <strong className="text-white">{SUBAGENT_COUNT} sub-agents</strong>, a{" "}
           <strong className="text-white">10-phase pipeline</strong>, and{" "}
-          <strong className="text-white">286 reference DESIGN.md files</strong>{" "}
+          <strong className="text-white">{REFERENCE_COUNT} reference DESIGN.md files</strong>{" "}
           — installed into your AI coding agent in one command. No API keys.
           No external infra. Then you just talk to your agent.
         </motion.p>
@@ -638,9 +639,9 @@ function DocsHero() {
         >
           {[
             ["#quick-start", "Quick start"],
-            ["#skills", "17 skills"],
+            ["#skills", `${SKILL_COUNT} skills`],
             ["#v2-skills", "v0.2 layer"],
-            ["#agents", "16 sub-agents"],
+            ["#agents", `${SUBAGENT_COUNT} sub-agents`],
             ["#pipeline", "Pipeline"],
             ["#use-cases", "Use cases"],
             ["#install-layout", "Install layout"],
