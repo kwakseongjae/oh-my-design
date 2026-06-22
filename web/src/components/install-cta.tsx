@@ -20,6 +20,7 @@
 import { useState } from "react";
 import { Check, Copy, Sparkles, Terminal } from "lucide-react";
 import { event, trackRef } from "@/lib/gtag";
+import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import {
   firstPromptFor,
   stripBuilderProvenance,
@@ -121,8 +122,8 @@ export function InstallCta({
         Use these design systems in your AI coding agent
       </div>
       <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-        One command installs 221 verified DESIGN.md references + 17 skills into
-        Claude Code, Cursor, Codex, or OpenCode. Free, MIT, zero AI calls.
+        One command installs {REFERENCE_COUNT} verified DESIGN.md references + 17
+        skills into Claude Code, Cursor, Codex, or OpenCode. Free, MIT, zero AI calls.
       </p>
       <div className="mt-3 flex flex-wrap items-center gap-2">
         {installBtn}
