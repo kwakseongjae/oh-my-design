@@ -78,7 +78,7 @@ The default install targets every detected agent; pass `--agent <name>` to insta
 
 - **Skills** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the v0.2 agent layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
 - **Sub-agents** — `omd-master` + 15 specialists (UX research, UI generation, asset curation, microcopy, a11y audit, persona testing, critique, …).
-- **References** — 286 real-company `DESIGN.md` files, each verified against live sources. Every reference is also served as raw markdown at `oh-my-design.kr/design-systems/<id>.md`, so agents can fetch it directly.
+- **References** — 286 real-company `DESIGN.md` files, each verified against live sources. Every reference is also served as raw markdown at `oh-my-design.kr/<id>/design.md`, so agents can fetch it directly.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse activation so the skills trigger on natural language, not just slash commands.
 
 Full skill-by-skill and agent-by-agent reference: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**.

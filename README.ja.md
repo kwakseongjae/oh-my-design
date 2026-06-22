@@ -52,7 +52,7 @@ npx oh-my-design-cli install-skills
 
 **17 スキル · 16 サブエージェント · 286 の検証済みリファレンス · 活性化 hooks** — 上記コマンド 1 回ですべてインストールされます。
 
-すべてのリファレンスは `oh-my-design.kr/design-systems/<id>.md` から raw markdown としても取得でき、エージェントが直接 fetch できます。スキル・エージェントごとの詳細リファレンス: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**。
+すべてのリファレンスは `oh-my-design.kr/<id>/design.md` から raw markdown としても取得でき、エージェントが直接 fetch できます。スキル・エージェントごとの詳細リファレンス: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**。
 
 ## アップグレード
 

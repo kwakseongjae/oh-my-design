@@ -23,7 +23,7 @@ Pick whichever fits the surface you're already in:
 | You're in… | How to get it |
 |---|---|
 | **Claude (chat / desktop) with our MCP connector** | Ask Claude e.g. *"get the toss DESIGN.md"* → the `get_design_md` tool returns it, with a `provenance.url` to cite. Or *"find a calm B2B fintech reference"* → `search_by_vibe`. |
-| **A browser** | Open `https://oh-my-design.kr/design-systems/<id>` and copy, or fetch the raw markdown twin at `https://oh-my-design.kr/design-systems/<id>.md`. |
+| **A browser** | Open `https://oh-my-design.kr/design-systems/<id>` and copy, or fetch the raw markdown twin at `https://oh-my-design.kr/<id>/design.md`. |
 | **A terminal / coding agent** | `npx oh-my-design-mcp` (local, offline) exposes `design://<id>` resources and the same 3 tools. |
 
 > The DESIGN.md *is* the currency. It carries the full token system (color,

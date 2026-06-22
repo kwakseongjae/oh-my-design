@@ -106,7 +106,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Curated collections (#5). Raw .md twins (/design-systems/<id>.md) are
+  // Curated collections (#5). Raw .md twins (/<id>/design.md) are
   // intentionally NOT listed — the HTML detail pages stay canonical.
   const collectionRoutes: MetadataRoute.Sitemap = COLLECTIONS.map((c) => ({
     url: `${siteUrl}/collections/${c.slug}`,

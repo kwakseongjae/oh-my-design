@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // scripts/smoke-md-twins.mjs — verifies the raw DESIGN.md twin endpoints
-// (/design-systems/<id>.md → /r/<id>) cover every reference.
+// (/<id>/design.md → /r/<id>) cover every reference.
 //
 // Two modes:
 //   1. Static (default, no server needed): every web/references/<id>/DESIGN.md
@@ -50,8 +50,12 @@ if (existsSync(routeFile)) {
 }
 const nextConfig = readFileSync(path.join(repoRoot, 'web', 'next.config.ts'), 'utf8');
 ok(
-  nextConfig.includes('/design-systems/:id.md') && nextConfig.includes('/r/:id'),
-  'next.config.ts lacks the /design-systems/:id.md → /r/:id rewrite',
+  nextConfig.includes('/:id/design.md') && nextConfig.includes('/r/:id'),
+  'next.config.ts lacks the /:id/design.md → /r/:id rewrite',
+);
+ok(
+  nextConfig.includes('/design-systems/:id.md'),
+  'next.config.ts lacks the legacy /design-systems/:id.md → /:id/design.md redirect',
 );
 
 // ── 3. llms.txt / llms-full.txt twin listings ────────────────────────────
@@ -59,7 +63,7 @@ for (const file of ['llms.txt', 'llms-full.txt']) {
   const p = path.join(repoRoot, 'web', 'public', file);
   if (!existsSync(p)) { failures.push(`missing web/public/${file}`); continue; }
   const txt = readFileSync(p, 'utf8');
-  const missing = ids.filter((id) => !txt.includes(`/design-systems/${id}.md`));
+  const missing = ids.filter((id) => !txt.includes(`/${id}/design.md`));
   ok(missing.length === 0, `${file} missing ${missing.length} twin URLs (e.g. ${missing.slice(0, 3).join(', ')}) — run node scripts/gen-llms-full.cjs`);
 }
 
@@ -72,7 +76,7 @@ if (base) {
   async function worker() {
     while (queue.length) {
       const id = queue.shift();
-      const url = `${base}/design-systems/${id}.md`;
+      const url = `${base}/${id}/design.md`;
       try {
         const res = await fetch(url);
         ok(res.status === 200, `${url} → ${res.status}`);
