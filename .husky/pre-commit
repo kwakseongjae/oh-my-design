@@ -13,6 +13,13 @@ if [ -x scripts/check-release-hygiene.sh ]; then
   bash scripts/check-release-hygiene.sh staged
 fi
 
+# --- Count-drift gate: README / llms.txt / SEO layout metadata carry literal
+# reference / skill / sub-agent counts that can't import the TS constants. Fast
+# (reads ~9 files); fails the commit if any drifted from the authoritative
+# source. Fix: node web/scripts/sync-catalog.mjs ---
+echo "[husky] count-drift gate…"
+node scripts/check-counts.mjs
+
 changed=$(git diff --cached --name-only)
 
 if echo "$changed" | grep -qE '^(references/|data/reference-fingerprints\.json|\.claude/data/reference-fingerprints\.json|\.codex/data/reference-fingerprints\.json|web/src/data/registry\.generated\.ts|web/scripts/build-registry\.mjs|web/scripts/migrate-frontmatters\.mjs|web/__tests__/catalog-integrity\.test\.ts|design-md/)'; then

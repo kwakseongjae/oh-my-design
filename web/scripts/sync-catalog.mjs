@@ -35,15 +35,48 @@ const FP_PATHS = [
   join(ROOT, '.claude', 'data', 'reference-fingerprints.json'),
   join(ROOT, '.codex', 'data', 'reference-fingerprints.json'),
 ];
-// Every file that carries the literal reference count. Word-boundary replace
-// of oldCount → newCount; keep this list explicit so an unrelated number is
-// never touched.
+// Static / prose surfaces that carry literal counts and CANNOT import the TS
+// constants (markdown) or are SEO metadata prose we keep literal. Rendered web
+// pages (docs/page.tsx, landing sections, faq data) are NOT here — they read
+// REFERENCE_COUNT / SKILL_COUNT / SUBAGENT_COUNT from @/lib/catalog-count and
+// never drift. llms-full.txt is omitted too: gen-llms-full.cjs rebuilds it from
+// these sources, so fixing them + regenerating propagates.
 const COUNT_SURFACES = [
   'README.md', 'README.ko.md', 'README.ja.md', 'README.zh-TW.md',
   'web/public/llms.txt',
-  'web/src/app/layout.tsx', 'web/src/app/docs/layout.tsx', 'web/src/app/docs/page.tsx',
+  'web/src/app/layout.tsx', 'web/src/app/docs/layout.tsx',
   'web/src/app/builder/layout.tsx', 'web/src/app/design-systems/layout.tsx',
 ].map(p => join(ROOT, p));
+
+// Authoritative bundled counts (mirror what npm ships + the installer's filters,
+// same definitions as scripts/build-registry.mjs → catalog-meta.generated.ts).
+function bundledCounts() {
+  const rootPkg = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf-8'));
+  const skills = (rootPkg.files || []).filter((f) => f.startsWith('skills/')).length;
+  const agentsDir = join(ROOT, 'agents');
+  const subagents = existsSync(agentsDir)
+    ? readdirSync(agentsDir).filter((f) => /^omd-.*\.md$/.test(f)).length
+    : 0;
+  return { skills, subagents };
+}
+
+// Self-healing count replacement: each rule matches the NUMBER immediately
+// before a canonical noun phrase and overwrites it with the true count —
+// unconditional and phrase-anchored, so a surface that already drifted heals on
+// the next run (the old oldCount→newCount approach could only fix the last-known
+// number, which is how "15 skills" / "221 references" froze). Sub-counts like
+// "15 specialists" / "6 skills (v0.2 layer)" use different phrasing and are left
+// untouched by design.
+function countRules({ refs, skills, subagents }) {
+  return [
+    { re: /\b\d+(?=\s+skills\b)/g, val: skills },
+    { re: /\b\d+(?=\s+sub-agents\b)/g, val: subagents },
+    {
+      re: /\b\d+(?=\s+(?:references?\b|reference DESIGN\.md\b|real company design systems\b|design systems\b|verified\b))/g,
+      val: refs,
+    },
+  ];
+}
 
 const TONE_LEXICON = ['clean', 'bold', 'warm', 'dark', 'playful', 'minimal', 'dense', 'flat', 'editorial', 'calm', 'energetic', 'trustworthy', 'friendly', 'modern', 'vivid', 'systematic', 'utilitarian', 'premium', 'approachable', 'confident', 'cinematic', 'immersive', 'organic', 'human'];
 
@@ -105,15 +138,21 @@ if (!DRY) {
 }
 console.log('[mirror] design-md re-synced');
 
-// ── 4. count strings ───────────────────────────────────────────────────
-if (oldCount !== fp.count) {
-  const re = new RegExp(`\\b${oldCount}\\b`, 'g');
+// ── 4. count strings (self-healing) ────────────────────────────────────
+{
+  const { skills, subagents } = bundledCounts();
+  const rules = countRules({ refs: fp.count, skills, subagents });
+  console.log(`[count] targets: refs=${fp.count} skills=${skills} sub-agents=${subagents}`);
   for (const p of COUNT_SURFACES) {
     if (!existsSync(p)) { console.warn(`[count] skip missing ${p}`); continue; }
-    const txt = readFileSync(p, 'utf-8');
-    const n = (txt.match(re) || []).length;
-    if (n && !DRY) writeFileSync(p, txt.replace(re, String(fp.count)));
-    if (n) console.log(`[count] ${p.replace(ROOT + '/', '')}: ${n} x ${oldCount} -> ${fp.count}`);
+    const before = readFileSync(p, 'utf-8');
+    let after = before;
+    let n = 0;
+    for (const { re, val } of rules) {
+      after = after.replace(re, (m) => { if (m !== String(val)) n++; return String(val); });
+    }
+    if (n && !DRY) writeFileSync(p, after);
+    if (n) console.log(`[count] ${p.replace(ROOT + '/', '')}: ${n} fix(es)`);
   }
 }
 

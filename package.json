@@ -51,6 +51,7 @@
     "prepare": "npm run build",
     "prepublishOnly": "npm run build && node scripts/gen-llms-full.cjs && bash scripts/check-release-hygiene.sh pack",
     "gen:llms-full": "node scripts/gen-llms-full.cjs",
+    "check-counts": "node scripts/check-counts.mjs",
     "postinstall": "node scripts/postinstall.cjs"
   },
   "keywords": [
