@@ -63,6 +63,25 @@ describe("catalog-integrity / per-reference", () => {
     expect(entry.logo.slug.length).toBeGreaterThan(0);
     expect(entry.verified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
 
+    // Guard: entry-level frontmatter fields mis-indented INTO the `tokens:`
+    // block. YAML then nests them under tokens, build-registry serializes them
+    // inside the tokens JSON, and `next build`'s tsc rejects them against the
+    // tokens type — failing the Vercel deploy while passing verify-reference and
+    // every other check here (none run tsc). Regression: samsung `ds` nested
+    // under tokens broke prod build 2026-06-23.
+    if (entry.tokens) {
+      const ENTRY_ONLY = [
+        "ds", "id", "name", "country", "category", "homepage",
+        "primary_color", "primaryColor", "logo", "verified", "omd",
+        "display_name_kr", "displayNameKr",
+      ];
+      const leaked = Object.keys(entry.tokens).filter((k) => ENTRY_ONLY.includes(k));
+      expect(
+        leaked,
+        `${id}: entry-level field(s) [${leaked.join(", ")}] are nested inside the tokens: block — de-indent them to top level (sibling of tokens:)`,
+      ).toEqual([]);
+    }
+
     // §1 header and prose-first rule
     const md = readFileSync(join(REFS_DIR, id, "DESIGN.md"), "utf-8");
 
