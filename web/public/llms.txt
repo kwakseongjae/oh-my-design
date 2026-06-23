@@ -1,10 +1,10 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 17 skills + 16 sub-agents + 286 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
+> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 17 skills + 16 sub-agents + 326 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
 
 ## What
 
-`oh-my-design-cli` is an npm package (MIT licensed) that installs a deterministic design harness into AI coding agents. It writes `.claude/skills/`, `.codex/skills/`, `.opencode/agents/`, `.claude/agents/`, hooks, and 286 reference DESIGN.md files into your project. After restart, the agent picks up the skills and routes natural-language design intent automatically.
+`oh-my-design-cli` is an npm package (MIT licensed) that installs a deterministic design harness into AI coding agents. It writes `.claude/skills/`, `.codex/skills/`, `.opencode/agents/`, `.claude/agents/`, hooks, and 326 reference DESIGN.md files into your project. After restart, the agent picks up the skills and routes natural-language design intent automatically.
 
 The package is zero-cost: install runs no AI calls, ships no telemetry, requires no API key. Your AI coding agent (Claude Code, Codex, OpenCode, or Cursor) provides the inference; this package teaches it where the brand spec lives.
 
@@ -93,14 +93,14 @@ Grouped in 4 stages:
 
 3 mandatory user checkpoints: after Discovery (brief), after Components (system locked), before Handoff (ship-ready).
 
-## 286 reference brands bundled
+## 326 reference brands bundled
 
 Each ships a full DESIGN.md (Google Stitch format + OmD brand-philosophy layer: Voice, Narrative, Principles, Personas, States, Motion).
 
-Examples: Stripe · Toss · Linear · Vercel · Notion · Anthropic · Apple · Spotify · Airbnb · Uber · Pinterest · Tesla · Figma · Framer · Cursor · Raycast · Supabase · MongoDB · Sentry · PostHog · Resend · Mintlify · Cal.com · Kakao · LINE · Mercari · Karrot (당근) · Pinkoi · Dcard · Baemin · freee · Wise · Coinbase · Revolut · ElevenLabs · Mistral · Ollama · Replicate · KREAM · Upbit · Channel Talk · SmartNews · Xiaohongshu (小红书) · Bilibili · Alipay · Meituan · DJI · Gogoro · Cookpad · SmartHR · Watcha · Yogiyo · 3o3 (삼쩜삼) · Blind (블라인드) · MiriCanvas (미리캔버스) · Imweb (아임웹) · Modusign (모두싸인) · Rakuten · Wantedly · ABEMA · STORES · Timee · Accupass · FunNow · Firstory · Omnichat · Greenvines (綠藤生機) · Google · Microsoft · Adobe · Salesforce · Dropbox · Danawa (다나와) · Greeting (그리팅) · LaundryGo (런드리고) · POSTYPE (포스타입) · Ringle (링글) · IICOMBINED (아이아이컴바인드) · NCSOFT (엔씨소프트) · NHN (NHN) · The Pinkfong Company (더핑크퐁컴퍼니) · Shift Up (시프트업) · Spoqa (스포카) · Stibee (스티비) · TMAP Mobility (티맵모빌리티) · Wrtn (뤼튼) · ZEPETO (제페토) · Cash App · Datadog · GitLab · Headspace · Mailchimp · Patreon · Plaid · Twilio · Twitch · Workday · Bito · Cubo Ai · Heptabase · MaiCoin / MAX · MOZE · Portaly · Readmoo · Fourdesire · Vocus · XREX · Cybozu · Digital Agency Design System (DADS) · DMM.com (Turtle) · Gaudiy · Goodpatch · mikan · Nintendo · GMO Pepabo (Inhouse) · SPEEDA (Uzabase) · Spindle (CyberAgent Ameba)
+Examples: Stripe · Toss · Linear · Vercel · Notion · Anthropic · Apple · Spotify · Airbnb · Uber · Pinterest · Tesla · Figma · Framer · Cursor · Raycast · Supabase · MongoDB · Sentry · PostHog · Resend · Mintlify · Cal.com · Kakao · LINE · Mercari · Karrot (당근) · Pinkoi · Dcard · Baemin · freee · Wise · Coinbase · Revolut · ElevenLabs · Mistral · Ollama · Replicate · KREAM · Upbit · Channel Talk · SmartNews · Xiaohongshu (小红书) · Bilibili · Alipay · Meituan · DJI · Gogoro · Cookpad · SmartHR · Watcha · Yogiyo · 3o3 (삼쩜삼) · Blind (블라인드) · MiriCanvas (미리캔버스) · Imweb (아임웹) · Modusign (모두싸인) · Rakuten · Wantedly · ABEMA · STORES · Timee · Accupass · FunNow · Firstory · Omnichat · Greenvines (綠藤生機) · Google · Microsoft · Adobe · Salesforce · Dropbox · Danawa (다나와) · Greeting (그리팅) · LaundryGo (런드리고) · POSTYPE (포스타입) · Ringle (링글) · IICOMBINED (아이아이컴바인드) · NCSOFT (엔씨소프트) · NHN (NHN) · The Pinkfong Company (더핑크퐁컴퍼니) · Shift Up (시프트업) · Spoqa (스포카) · Stibee (스티비) · TMAP Mobility (티맵모빌리티) · Wrtn (뤼튼) · ZEPETO (제페토) · Cash App · Datadog · GitLab · Headspace · Mailchimp · Patreon · Plaid · Twilio · Twitch · Workday · Bito · Cubo Ai · Heptabase · MaiCoin / MAX · MOZE · Portaly · Readmoo · Fourdesire · Vocus · XREX · Cybozu · Digital Agency Design System (DADS) · DMM.com (Turtle) · Gaudiy · Goodpatch · mikan · Nintendo · GMO Pepabo (Inhouse) · SPEEDA (Uzabase) · Spindle (CyberAgent Ameba) · Hana Bank (하나은행) · Hyundai (현대자동차) · KakaoPage (카카오페이지) · KB Pay (KB페이) · Kia (기아) · Liner (라이너) · Naver Pay (네이버페이) · Samsung (삼성전자) · Shinhan Bank (신한은행) · SSG.COM (쓱닷컴) · 591 · Bahamut · Chunghwa Telecom · EasyWallet · E.SUN Bank · Fubon · iCook · iPASS MONEY · OPENPOINT · Taiwan Mobile (台灣大哥大) · Asana · Databricks · DoorDash · HubSpot · Instacart · PayPal · Reddit · Snapchat · Squarespace · Zoom · ASOS · BBC · Deliveroo · Farfetch · GOV.UK · Monzo · Octopus Energy · Skyscanner · Starling Bank · Trainline
 
 <!-- md-twins:start (generated by scripts/gen-llms-full.cjs — do not edit) -->
-## Raw DESIGN.md endpoints (286)
+## Raw DESIGN.md endpoints (326)
 
 Every reference DESIGN.md is fetchable as clean markdown — no JS rendering needed:
 
@@ -108,6 +108,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - 17live: https://oh-my-design.kr/17live/design.md
 - 29cm: https://oh-my-design.kr/29cm/design.md
 - 3o3: https://oh-my-design.kr/3o3/design.md
+- 591: https://oh-my-design.kr/591/design.md
 - 91app: https://oh-my-design.kr/91app/design.md
 - abema: https://oh-my-design.kr/abema/design.md
 - ably: https://oh-my-design.kr/ably/design.md
@@ -119,8 +120,12 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - amazingtalker: https://oh-my-design.kr/amazingtalker/design.md
 - appier: https://oh-my-design.kr/appier/design.md
 - apple: https://oh-my-design.kr/apple/design.md
+- asana: https://oh-my-design.kr/asana/design.md
+- asos: https://oh-my-design.kr/asos/design.md
 - baemin: https://oh-my-design.kr/baemin/design.md
+- bahamut: https://oh-my-design.kr/bahamut/design.md
 - banksalad: https://oh-my-design.kr/banksalad/design.md
+- bbc: https://oh-my-design.kr/bbc/design.md
 - bilibili: https://oh-my-design.kr/bilibili/design.md
 - bithumb: https://oh-my-design.kr/bithumb/design.md
 - bito: https://oh-my-design.kr/bito/design.md
@@ -133,6 +138,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - catchtable: https://oh-my-design.kr/catchtable/design.md
 - cathay: https://oh-my-design.kr/cathay/design.md
 - channeltalk: https://oh-my-design.kr/channeltalk/design.md
+- chunghwa: https://oh-my-design.kr/chunghwa/design.md
 - class101: https://oh-my-design.kr/class101/design.md
 - classting: https://oh-my-design.kr/classting/design.md
 - classum: https://oh-my-design.kr/classum/design.md
@@ -151,19 +157,25 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - cybozu: https://oh-my-design.kr/cybozu/design.md
 - dabang: https://oh-my-design.kr/dabang/design.md
 - danawa: https://oh-my-design.kr/danawa/design.md
+- databricks: https://oh-my-design.kr/databricks/design.md
 - datadog: https://oh-my-design.kr/datadog/design.md
 - dcard: https://oh-my-design.kr/dcard/design.md
+- deliveroo: https://oh-my-design.kr/deliveroo/design.md
 - dell: https://oh-my-design.kr/dell/design.md
 - devsisters: https://oh-my-design.kr/devsisters/design.md
 - digital-agency-jp: https://oh-my-design.kr/digital-agency-jp/design.md
 - discord: https://oh-my-design.kr/discord/design.md
 - dji: https://oh-my-design.kr/dji/design.md
 - dmm: https://oh-my-design.kr/dmm/design.md
+- doordash: https://oh-my-design.kr/doordash/design.md
 - drnow: https://oh-my-design.kr/drnow/design.md
 - dropbox: https://oh-my-design.kr/dropbox/design.md
 - duolingo: https://oh-my-design.kr/duolingo/design.md
+- easywallet: https://oh-my-design.kr/easywallet/design.md
 - elevenlabs: https://oh-my-design.kr/elevenlabs/design.md
+- esunbank: https://oh-my-design.kr/esunbank/design.md
 - expo: https://oh-my-design.kr/expo/design.md
+- farfetch: https://oh-my-design.kr/farfetch/design.md
 - fastcampus: https://oh-my-design.kr/fastcampus/design.md
 - ferrari: https://oh-my-design.kr/ferrari/design.md
 - figma: https://oh-my-design.kr/figma/design.md
@@ -173,6 +185,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - flo: https://oh-my-design.kr/flo/design.md
 - framer: https://oh-my-design.kr/framer/design.md
 - freee: https://oh-my-design.kr/freee/design.md
+- fubon: https://oh-my-design.kr/fubon/design.md
 - fugle: https://oh-my-design.kr/fugle/design.md
 - funnow: https://oh-my-design.kr/funnow/design.md
 - gangnamunni: https://oh-my-design.kr/gangnamunni/design.md
@@ -185,35 +198,45 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - gogoro: https://oh-my-design.kr/gogoro/design.md
 - goodpatch: https://oh-my-design.kr/goodpatch/design.md
 - google: https://oh-my-design.kr/google/design.md
+- govuk: https://oh-my-design.kr/govuk/design.md
 - greenvines: https://oh-my-design.kr/greenvines/design.md
 - greeting: https://oh-my-design.kr/greeting/design.md
 - grip: https://oh-my-design.kr/grip/design.md
 - hahow: https://oh-my-design.kr/hahow/design.md
+- hana: https://oh-my-design.kr/hana/design.md
 - hashicorp: https://oh-my-design.kr/hashicorp/design.md
 - headspace: https://oh-my-design.kr/headspace/design.md
 - heptabase: https://oh-my-design.kr/heptabase/design.md
 - hogangnono: https://oh-my-design.kr/hogangnono/design.md
 - hp: https://oh-my-design.kr/hp/design.md
+- hubspot: https://oh-my-design.kr/hubspot/design.md
 - hyperconnect: https://oh-my-design.kr/hyperconnect/design.md
+- hyundai: https://oh-my-design.kr/hyundai/design.md
 - hyundaicard: https://oh-my-design.kr/hyundaicard/design.md
 - ibm: https://oh-my-design.kr/ibm/design.md
 - ichef: https://oh-my-design.kr/ichef/design.md
+- icook: https://oh-my-design.kr/icook/design.md
 - iicombined: https://oh-my-design.kr/iicombined/design.md
 - ikala: https://oh-my-design.kr/ikala/design.md
 - imweb: https://oh-my-design.kr/imweb/design.md
 - inflearn: https://oh-my-design.kr/inflearn/design.md
+- instacart: https://oh-my-design.kr/instacart/design.md
 - intercom: https://oh-my-design.kr/intercom/design.md
+- ipassmoney: https://oh-my-design.kr/ipassmoney/design.md
 - jandi: https://oh-my-design.kr/jandi/design.md
 - jkopay: https://oh-my-design.kr/jkopay/design.md
 - jobkorea: https://oh-my-design.kr/jobkorea/design.md
 - jumpit: https://oh-my-design.kr/jumpit/design.md
 - kakao: https://oh-my-design.kr/kakao/design.md
 - kakaobank: https://oh-my-design.kr/kakaobank/design.md
+- kakaopage: https://oh-my-design.kr/kakaopage/design.md
 - kakaopay: https://oh-my-design.kr/kakaopay/design.md
 - kakaot: https://oh-my-design.kr/kakaot/design.md
 - karrot: https://oh-my-design.kr/karrot/design.md
 - kbank: https://oh-my-design.kr/kbank/design.md
+- kbpay: https://oh-my-design.kr/kbpay/design.md
 - kdan: https://oh-my-design.kr/kdan/design.md
+- kia: https://oh-my-design.kr/kia/design.md
 - kintone: https://oh-my-design.kr/kintone/design.md
 - kkbox: https://oh-my-design.kr/kkbox/design.md
 - kkday: https://oh-my-design.kr/kkday/design.md
@@ -230,6 +253,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - lezhin: https://oh-my-design.kr/lezhin/design.md
 - line: https://oh-my-design.kr/line/design.md
 - linear.app: https://oh-my-design.kr/linear.app/design.md
+- liner: https://oh-my-design.kr/liner/design.md
 - loom: https://oh-my-design.kr/loom/design.md
 - lovable: https://oh-my-design.kr/lovable/design.md
 - lunit: https://oh-my-design.kr/lunit/design.md
@@ -253,12 +277,14 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - momoshop: https://oh-my-design.kr/momoshop/design.md
 - money-forward: https://oh-my-design.kr/money-forward/design.md
 - mongodb: https://oh-my-design.kr/mongodb/design.md
+- monzo: https://oh-my-design.kr/monzo/design.md
 - moze: https://oh-my-design.kr/moze/design.md
 - muji: https://oh-my-design.kr/muji/design.md
 - musinsa: https://oh-my-design.kr/musinsa/design.md
 - mustit: https://oh-my-design.kr/mustit/design.md
 - myrealtrip: https://oh-my-design.kr/myrealtrip/design.md
 - naver: https://oh-my-design.kr/naver/design.md
+- naverpay: https://oh-my-design.kr/naverpay/design.md
 - naverwebtoon: https://oh-my-design.kr/naverwebtoon/design.md
 - ncsoft: https://oh-my-design.kr/ncsoft/design.md
 - netflix: https://oh-my-design.kr/netflix/design.md
@@ -270,14 +296,17 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - note: https://oh-my-design.kr/note/design.md
 - notion: https://oh-my-design.kr/notion/design.md
 - nvidia: https://oh-my-design.kr/nvidia/design.md
+- octopusenergy: https://oh-my-design.kr/octopusenergy/design.md
 - ohouse: https://oh-my-design.kr/ohouse/design.md
 - oliveyoung: https://oh-my-design.kr/oliveyoung/design.md
 - ollama: https://oh-my-design.kr/ollama/design.md
 - omnichat: https://oh-my-design.kr/omnichat/design.md
 - openai: https://oh-my-design.kr/openai/design.md
 - opencode.ai: https://oh-my-design.kr/opencode.ai/design.md
+- openpoint: https://oh-my-design.kr/openpoint/design.md
 - patreon: https://oh-my-design.kr/patreon/design.md
 - payco: https://oh-my-design.kr/payco/design.md
+- paypal: https://oh-my-design.kr/paypal/design.md
 - paypay: https://oh-my-design.kr/paypay/design.md
 - pchome: https://oh-my-design.kr/pchome/design.md
 - pepabo: https://oh-my-design.kr/pepabo/design.md
@@ -300,6 +329,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - rayark: https://oh-my-design.kr/rayark/design.md
 - raycast: https://oh-my-design.kr/raycast/design.md
 - readmoo: https://oh-my-design.kr/readmoo/design.md
+- reddit: https://oh-my-design.kr/reddit/design.md
 - remember: https://oh-my-design.kr/remember/design.md
 - renault: https://oh-my-design.kr/renault/design.md
 - replicate: https://oh-my-design.kr/replicate/design.md
@@ -313,16 +343,20 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - robinhood: https://oh-my-design.kr/robinhood/design.md
 - runwayml: https://oh-my-design.kr/runwayml/design.md
 - salesforce: https://oh-my-design.kr/salesforce/design.md
+- samsung: https://oh-my-design.kr/samsung/design.md
 - sanity: https://oh-my-design.kr/sanity/design.md
 - sansan: https://oh-my-design.kr/sansan/design.md
 - sendbird: https://oh-my-design.kr/sendbird/design.md
 - sentry: https://oh-my-design.kr/sentry/design.md
 - shiftup: https://oh-my-design.kr/shiftup/design.md
+- shinhanbank: https://oh-my-design.kr/shinhanbank/design.md
 - shinhancard: https://oh-my-design.kr/shinhancard/design.md
 - shopline: https://oh-my-design.kr/shopline/design.md
+- skyscanner: https://oh-my-design.kr/skyscanner/design.md
 - slack: https://oh-my-design.kr/slack/design.md
 - smarthr: https://oh-my-design.kr/smarthr/design.md
 - smartnews: https://oh-my-design.kr/smartnews/design.md
+- snapchat: https://oh-my-design.kr/snapchat/design.md
 - socar: https://oh-my-design.kr/socar/design.md
 - soomgo: https://oh-my-design.kr/soomgo/design.md
 - spacex: https://oh-my-design.kr/spacex/design.md
@@ -332,7 +366,10 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - spoon: https://oh-my-design.kr/spoon/design.md
 - spoqa: https://oh-my-design.kr/spoqa/design.md
 - spotify: https://oh-my-design.kr/spotify/design.md
+- squarespace: https://oh-my-design.kr/squarespace/design.md
+- ssg: https://oh-my-design.kr/ssg/design.md
 - starbucks: https://oh-my-design.kr/starbucks/design.md
+- starling: https://oh-my-design.kr/starling/design.md
 - stibee: https://oh-my-design.kr/stibee/design.md
 - stores: https://oh-my-design.kr/stores/design.md
 - stripe: https://oh-my-design.kr/stripe/design.md
@@ -341,6 +378,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - superhuman: https://oh-my-design.kr/superhuman/design.md
 - surveycake: https://oh-my-design.kr/surveycake/design.md
 - tada: https://oh-my-design.kr/tada/design.md
+- taiwanmobile: https://oh-my-design.kr/taiwanmobile/design.md
 - teamblind: https://oh-my-design.kr/teamblind/design.md
 - tesla: https://oh-my-design.kr/tesla/design.md
 - theverge: https://oh-my-design.kr/theverge/design.md
@@ -350,6 +388,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - toss: https://oh-my-design.kr/toss/design.md
 - toss-securities: https://oh-my-design.kr/toss-securities/design.md
 - tossbank: https://oh-my-design.kr/tossbank/design.md
+- trainline: https://oh-my-design.kr/trainline/design.md
 - trenbe: https://oh-my-design.kr/trenbe/design.md
 - triple: https://oh-my-design.kr/triple/design.md
 - tumblbug: https://oh-my-design.kr/tumblbug/design.md
@@ -389,6 +428,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - zepeto: https://oh-my-design.kr/zepeto/design.md
 - zigbang: https://oh-my-design.kr/zigbang/design.md
 - zigzag: https://oh-my-design.kr/zigzag/design.md
+- zoom: https://oh-my-design.kr/zoom/design.md
 - zozotown: https://oh-my-design.kr/zozotown/design.md
 <!-- md-twins:end -->
 
@@ -409,7 +449,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 oh-my-design/
 ├── skills/              # 15 SKILL.md files (source of truth)
 ├── agents/              # 16 sub-agent definitions
-├── web/references/      # 286 reference DESIGN.md files (canonical)
+├── web/references/      # 326 reference DESIGN.md files (canonical)
 ├── data/                # reference fingerprints, vocabulary, opt-out corpus
 ├── .claude/hooks/       # UserPromptSubmit / SessionStart / PostToolUse hooks
 ├── src/cli/             # install-skills entry point

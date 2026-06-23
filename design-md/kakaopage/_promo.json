@@ -1,0 +1,16 @@
+{
+  "id": "kakaopage",
+  "korean": "카카오페이지",
+  "logo_url": "https://www.google.com/s2/favicons?domain=page.kakao.com&sz=128",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#ffd618",
+      "ink": "#000000",
+      "canvas": "#ffffff",
+      "surface": "#eeeeee",
+      "error": "#ff3042"
+    },
+    "label": "콘텐츠가 색이다 — 노란 CTA 하나, 검정 필 탭, 순백 캔버스"
+  }
+}

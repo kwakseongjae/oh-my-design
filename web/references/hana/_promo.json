@@ -1,0 +1,16 @@
+{
+  "id": "hana",
+  "korean": "하나은행",
+  "logo_url": "https://www.google.com/s2/favicons?domain=www.kebhana.com&sz=128",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#00a39f",
+      "primary-deep": "#008485",
+      "primary-light": "#2dc396",
+      "canvas": "#ffffff",
+      "body": "#555555"
+    },
+    "label": "Hana Mint teal family — measured blue-green of Korea's trust banking"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "hyundai",
+  "korean": "현대자동차",
+  "logo_url": "https://cdn.simpleicons.org/hyundai",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#002c5f",
+      "teal": "#007fa8",
+      "canvas": "#ffffff",
+      "surface": "#f6f3f2",
+      "ink": "#000000"
+    },
+    "label": "Deep Navy × Sharp Zero-Radius × Automotive Precision"
+  }
+}

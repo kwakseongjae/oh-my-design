@@ -142,7 +142,7 @@ export default function RootLayout({
                   softwareVersion: CLI_VERSION,
                   license: "https://opensource.org/licenses/MIT",
                   description:
-                    "Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 17 skills + 16 sub-agents + 286 reference DESIGN.md files. Install once, then talk to your agent in natural language.",
+                    "Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 17 skills + 16 sub-agents + 326 reference DESIGN.md files. Install once, then talk to your agent in natural language.",
                   offers: {
                     "@type": "Offer",
                     price: "0",
@@ -152,7 +152,7 @@ export default function RootLayout({
                     "17 skills: core flow (apply / init / harness / remember / learn / sync / taste) + capture/assets + v0.2 agent layer (orchestrator / kr-writer / locale-adapter / designer-review / final-qa / codex-image) + standalone claude-design",
                     "16 sub-agents: master orchestrator + 15 specialists with advisor/generator pairs",
                     "10-phase design pipeline (Plan → System → Make → Validate)",
-                    "286 reference DESIGN.md files (Stripe, Toss, Linear, Vercel, Anthropic, Notion, etc.)",
+                    "326 reference DESIGN.md files (Stripe, Toss, Linear, Vercel, Anthropic, Notion, etc.)",
                     "Zero AI calls during install — pure markdown copy",
                     "Supports Claude Code, Codex, OpenCode, Cursor",
                     "Brand-philosophy layer on every reference — voice, narrative, principles, personas, states, motion",
@@ -185,7 +185,7 @@ export default function RootLayout({
                       "@type": "HowToStep",
                       position: 2,
                       name: "Bootstrap a DESIGN.md",
-                      text: 'Open Claude Code / Codex / OpenCode / Cursor and say: "Set up the design system for [your project description]." The agent picks one of 286 references, proposes a hybrid DESIGN.md, asks for confirmation, writes the file plus shims (CLAUDE.md / AGENTS.md / .cursor/rules).',
+                      text: 'Open Claude Code / Codex / OpenCode / Cursor and say: "Set up the design system for [your project description]." The agent picks one of 326 references, proposes a hybrid DESIGN.md, asks for confirmation, writes the file plus shims (CLAUDE.md / AGENTS.md / .cursor/rules).',
                     },
                     {
                       "@type": "HowToStep",

@@ -1,0 +1,15 @@
+{
+  "id": "shinhanbank",
+  "korean": "신한은행",
+  "logo_url": "https://avatars.githubusercontent.com/shinhan-bank",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#005DF9",
+      "primary-banking": "#2967B2",
+      "ink": "#24272D",
+      "surface": "#F3F6FB"
+    },
+    "label": "Shinhan Blue #005DF9 + OneShinhan custom typeface"
+  }
+}

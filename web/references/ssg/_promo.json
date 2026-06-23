@@ -1,0 +1,16 @@
+{
+  "id": "ssg",
+  "korean": "쓱닷컴",
+  "logo_url": "https://www.google.com/s2/favicons?domain=ssg.com&sz=128",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#ff5452",
+      "primary-light": "#fff2f2",
+      "ink": "#222222",
+      "canvas": "#ffffff",
+      "surface": "#f5f5f5"
+    },
+    "label": "신세계 그룹의 프리미엄 이커머스 — 브랜드 레드(#ff5452) 단 하나의 시그널 컬러"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "naverpay",
+  "korean": "네이버페이",
+  "logo_url": "https://www.google.com/s2/favicons?domain=pay.naver.com&sz=128",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#09aa5c",
+      "primary-hover": "#0b9552",
+      "brand-green": "#00de5a",
+      "canvas": "#ffffff",
+      "surface": "#f6f8fa",
+      "ink": "#1e1e23"
+    },
+    "label": "Naver Pay Green (#09aa5c) — Korea's most-used payment action color"
+  }
+}

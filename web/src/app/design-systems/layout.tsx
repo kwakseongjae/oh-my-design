@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 export const metadata: Metadata = {
   title: "Design Systems — oh-my-design",
   description:
-    "Browse all 286 verified company design systems oh-my-design tracks. Open-source components, brand-guidelines pages, and DESIGN.md exports for AI coding agents.",
+    "Browse all 326 verified company design systems oh-my-design tracks. Open-source components, brand-guidelines pages, and DESIGN.md exports for AI coding agents.",
   alternates: { canonical: "/design-systems" },
   openGraph: {
     title: "Design Systems — oh-my-design",

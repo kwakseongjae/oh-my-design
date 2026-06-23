@@ -6,6 +6,40 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.8.5 — 2026-06-23
+
+**QA pass on the 2026-06-22 batch: 40 refs re-inspected vs live + benchmarked against the `designlang` deterministic extractor. 35/40 PASS, mean accuracy 98.3/100, 5 MINOR token-value fixes applied.**
+
+- Two multi-agent workflows: per-ref live re-inspection + adversarial verify (QA), and our-tokens-vs-designlang-vs-reality comparison. Zero major errors, zero fabrications; brand primaries/fonts all held. `designlang` independently corroborated ~5.4/6 of our key tokens per ref.
+- **5 confirmed MINOR corrections** (structural token values, not brand errors): **paypal** card shadow `0.1/4px/12px → 0.08/24px/48px` (live `layered-card`); **chunghwa** radius scale +20px (dominant modal/card default, ~46%); **hyundai** chatbot FAB box-shadow `rgba(0,0,0,0.15) 0 0 20px` added (CREATE sampled the wrapper, not the button); **snapchat** §6 "none across nav" softened — components flat but marketing nav wrapper carries one shadow; **octopusenergy** postcode input split into hero (white/Arial-600) vs tariffs (transparent/Chromatophore) surfaces. All 5 verify-reference green; 553 tests pass.
+- Benchmark write-up: `data/reference-audits/2026-06-23-qa-designlang-benchmark.md`. Finding: our LLM pipeline is 39–0 (1 tie) more brand-accurate than `designlang` (which picks most-frequent color as "primary", ~35% brand-correct); recommendation = fold designlang in as a free deterministic Stage 0 (palette histograms + DTCG) feeding our brand-judgment pass.
+
+---
+
+## 1.8.4 — 2026-06-22
+
+**Catalog +30: TW·US·UK 메가브랜드 — 카탈로그가 296 → 326개로. 4개국 확장 라운드 2의 배치 2~4/4 (KR은 1.8.3). Phase 4 프로모는 이 라운드에서 생략.**
+
+- **TW 10** (Taiwan-HQ 한정) — E.SUN Bank(玉山銀行) · Fubon(富邦) · iPASS MONEY(一卡通) · EasyWallet(悠遊付) · OPENPOINT(統一/7-11) · Bahamut(巴哈姆特) · iCook(愛料理) · Taiwan Mobile(台灣大哥大) · Chunghwa Telecom(中華電信) · 591(591房屋交易). 핀테크 ≤5 도메인 균형.
+- **US 10** — PayPal · Zoom · Asana · Squarespace · Reddit(RPL) · Snapchat · DoorDash · Instacart · Databricks(brand portal) · HubSpot(Canvas). 4종은 공개 DS/brand 포털 보유로 토큰 grounding 최상.
+- **UK 10** (registry enum=UK) — GOV.UK(Design System) · BBC(GEL) · Monzo · Starling · Deliveroo · Octopus Energy · ASOS · Skyscanner(Backpack) · Trainline · Farfetch. UK 보유 2 → 12개로. GOV.UK·BBC·Backpack 등 공개 DS 골드스탠다드 다수.
+- 전 30종 verify-reference 게이트 그린(US/UK는 26, KR/TW 규칙 비적용) + token↔prose 정합. TW는 brand-owned Tier-1 ≥2 충족. 큐레이션은 HQ-국가 규칙으로 Shopify(CA)·Shopee(SG)·Atlassian(AU)·Depop(US-owned) 등 제외.
+- getdesign.md/refero: KR/TW 0/20(empty 지속), US/UK는 7종 등재 — 영미권 공개 DS 가시성이 동아시아 대비 확연.
+- 배치별 audit `data/reference-audits/2026-06-22-{tw,us,uk}10.md`.
+
+---
+
+## 1.8.3 — 2026-06-22
+
+**Catalog +10: KR 메가브랜드 — 카탈로그가 286 → 296개로. 4개국 확장 라운드 2의 배치 1/4 (KR→TW→US→UK).**
+
+- **KR 10** — Samsung(삼성전자, One UI) · Hyundai(현대자동차) · Kia(기아) · Naver Pay(네이버페이) · KB Pay(KB페이) · Hana Bank(하나은행) · Shinhan Bank(신한은행) · SSG.COM(쓱닷컴) · KakaoPage(카카오페이지) · Liner(라이너). 실제 브랜드 인지도/사용량 상위 기준으로 큐레이션.
+- 자동차 2종은 모노크롬·0px radius·무그림자(차량 사진이 깊이 담당), 금융 4종은 로그인 게이트 뒤 네이티브 앱 — 공개 웹/개발자 디자인가이드 표면에서 정직하게 토큰 추출(naverpay/kbpay는 Medium-High, in-app 상태는 UPDATE 대상).
+- getdesign.md/refero는 KR 0/10(여전히 empty) — KR brand-owned Tier-1 소스 ≥2로 전 항목 충족. verify-reference 27/27 게이트 전원 그린, 523 테스트 통과.
+- 배치 audit `data/reference-audits/2026-06-22-kr10.md`.
+
+---
+
 ## 1.8.2 — 2026-06-17
 
 **Catalog +40: KR/US/TW/JP IT 확장 — 카탈로그가 246 → 286개로. 4개국 × 10개, 전 항목 Proof Gate + live-inspect.**

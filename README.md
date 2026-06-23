@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>One-command bootstrap for skill-driven design with your AI coding agent.</strong> 286 real company design systems. Zero AI calls in the install. Then you just talk to your agent.
+  <strong>One-command bootstrap for skill-driven design with your AI coding agent.</strong> 326 real company design systems. Zero AI calls in the install. Then you just talk to your agent.
 </p>
 
 <p align="center">
@@ -74,7 +74,7 @@ The default install targets every detected agent; pass `--agent <name>` to insta
 
 ## What's inside
 
-**17 skills · 16 sub-agents · 286 verified references · activation hooks** — installed by the one command above.
+**17 skills · 16 sub-agents · 326 verified references · activation hooks** — installed by the one command above.
 
 - **Skills** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the v0.2 agent layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
 - **Sub-agents** — `omd-master` + 15 specialists (UX research, UI generation, asset curation, microcopy, a11y audit, persona testing, critique, …).

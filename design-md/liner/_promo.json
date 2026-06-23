@@ -1,0 +1,18 @@
+{
+  "id": "liner",
+  "korean": "라이너",
+  "logo_url": "https://www.google.com/s2/favicons?domain=liner.com&sz=128",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#197b2e",
+      "heading": "#14371b",
+      "tint": "#edf3ed",
+      "canvas": "#ffffff",
+      "surface": "#f9f9fa",
+      "ink": "#1e1e1f",
+      "muted": "#6d6d70"
+    },
+    "label": "Liner Green — single-action highlighter-origin brand color"
+  }
+}

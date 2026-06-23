@@ -1,0 +1,17 @@
+{
+  "id": "kbpay",
+  "korean": "KB페이",
+  "logo_url": "https://www.google.com/s2/favicons?domain=kbcard.com&sz=128",
+  "highlight": {
+    "type": "palette",
+    "tokens": {
+      "primary": "#FFCC00",
+      "primary-light": "#FFE066",
+      "primary-tint": "#FAEAAD",
+      "canvas": "#FFFFFF",
+      "ink": "#151515",
+      "accent-purple": "#614CC2"
+    },
+    "label": "KB 시그니처 옐로우 — 단 하나의 액션 컬러"
+  }
+}

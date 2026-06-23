@@ -1,0 +1,23 @@
+{
+  "id": "samsung",
+  "korean": "삼성전자",
+  "logo_url": "https://cdn.simpleicons.org/samsung",
+  "highlight": {
+    "type": "cta",
+    "tokens": {
+      "bg": "#000000",
+      "fg": "#ffffff",
+      "radius": "20px",
+      "height": "40px",
+      "font": "14px / 700 SamsungOneKorean",
+      "label_kr": "구매하기"
+    },
+    "label": "Black pill CTA — Samsung's monochrome purchase button system"
+  },
+  "design_system": {
+    "name": "Samsung One UI Design System",
+    "url": "https://developer.samsung.com/one-ui",
+    "type": "system",
+    "description": "Samsung's official mobile OS design language for Galaxy devices — principles, color system, motion, typography, and component specs for One UI apps."
+  }
+}

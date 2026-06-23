@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-06-17T00:00:00Z",
+ "generated_at": "2026-06-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 286,
+ "count": 326,
  "items": [
   {
    "id": "11st",
@@ -110,6 +110,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "591",
+   "primary_color_hex": "#ff8000",
+   "category": "consumer-tech",
+   "visual_theme": "591房屋交易網 (591 Fang Wu — Taiwan's dominant property marketplace) is a dense, information-first real-estate platform where practical utility overrides aesthetic refinement. The canvas is pure white (`#ffffff`) with warm grey text (`#4a4a4a`) and a single unmista",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "minimal"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "91app",
@@ -403,6 +427,54 @@
    "category_raw": "Consumer"
   },
   {
+   "id": "asana",
+   "primary_color_hex": "#f06a6a",
+   "category": "productivity",
+   "visual_theme": "Asana's 2026 homepage presents a dramatic evolution from its iconic multi-dot, coral-drenched brand of the 2010s toward a high-contrast, near-monochromatic editorial system that still pulses with unexpected chromatic moments. The canvas is pure white (`#ffffff",
+   "voice_fingerprint": {
+    "register": "productivity",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "playful"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "productivity"
+  },
+  {
+   "id": "asos",
+   "primary_color_hex": "#2d2d2d",
+   "category": "ecommerce",
+   "visual_theme": "ASOS is one of the world's largest online fashion retailers, and its visual identity is built on a deliberate philosophy of stark editorial restraint. The canvas is pure white (`#ffffff`) — no colour tinting, no gradients — against which product photography do",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "minimal",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
    "id": "baemin",
    "primary_color_hex": "#2AC1BC",
    "category": "Consumer",
@@ -423,6 +495,30 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "Consumer"
+  },
+  {
+   "id": "bahamut",
+   "primary_color_hex": "#11aac1",
+   "category": "consumer-tech",
+   "visual_theme": "巴哈姆特 (Bahamut Gamer) is Taiwan's largest gaming and ACG (Anime, Comics, Games) community portal, and its visual design embodies the no-nonsense density of a community-first information hub that has served Taiwanese gamers since 1996. The page opens on a near-w",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "banksalad",
@@ -452,6 +548,30 @@
    "signature_motion": "Brand green focus/hover lightens to #10df99 — interaction makes things lighter, never darker; subtle single-layer shadow.",
    "has_personas": true,
    "category_raw": "Fintech / Personal Finance Advisor"
+  },
+  {
+   "id": "bbc",
+   "primary_color_hex": "#000000",
+   "category": "consumer-tech",
+   "visual_theme": "BBC's digital presence is the world's most visited public-service broadcaster website — a global newsroom that has built its design language around uncompromising clarity, accessibility-first principles, and the quiet authority of institutional black. The canv",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "bilibili",
@@ -725,6 +845,30 @@
    "has_official_ds": true,
    "ds_name": "Bezier",
    "ds_url": "https://github.com/channel-io/bezier-react"
+  },
+  {
+   "id": "chunghwa",
+   "primary_color_hex": "#209cff",
+   "category": "consumer-tech",
+   "visual_theme": "Chunghwa Telecom (中華電信), Taiwan's largest and oldest telecommunications carrier, presents a digital brand anchored in a bold, accessible sky-blue — the same Chunghwa Blue (`#209cff`) that has identified the company since the era of state-owned telecoms. The ho",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "class101",
@@ -1160,6 +1304,30 @@
    "category_raw": "ecommerce"
   },
   {
+   "id": "databricks",
+   "primary_color_hex": "#FF3621",
+   "category": "developer-tools",
+   "visual_theme": "Databricks presents the visual language of high-stakes enterprise data infrastructure translated into confident, approachable design. The canvas opens on pure white (`#ffffff`) layered with deep teal headings (`#1B3139`) and accented by a single blazing red-or",
+   "voice_fingerprint": {
+    "register": "developer-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "developer-tools"
+  },
+  {
    "id": "datadog",
    "primary_color_hex": "#632ca6",
    "category": "backend-devops",
@@ -1203,6 +1371,30 @@
    "signature_motion": "Material easing cubic-bezier(.4,0,.2,1) with .15s hover/press and .3s page transitions.",
    "has_personas": false,
    "category_raw": "social"
+  },
+  {
+   "id": "deliveroo",
+   "primary_color_hex": "#00CCBC",
+   "category": "consumer-tech",
+   "visual_theme": "Deliveroo is the UK's leading food delivery platform, and its design identity centres on one of the most recognisable brand assets in consumer tech: the teal \"Roo\" kangaroo (`#00CCBC`). The visual system is built around a clean, energetic personality — white c",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "dell",
@@ -1364,6 +1556,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "doordash",
+   "primary_color_hex": "#eb1700",
+   "category": "consumer-tech",
+   "visual_theme": "DoorDash's product surface is defined by a single, unmistakable decision: a vivid delivery-truck red (`#eb1700`) that functions as both brand identifier and every interactive element in the system. The page opens on a clean white canvas (`#ffffff`) with near-b",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "drnow",
    "primary_color_hex": "#FF8D00",
    "category": "Healthcare",
@@ -1444,6 +1660,30 @@
    "category_raw": "education"
   },
   {
+   "id": "easywallet",
+   "primary_color_hex": "#007bc6",
+   "category": "fintech",
+   "visual_theme": "EasyWallet (悠遊付) is Taiwan's leading mobile payment app, developed by EasyCard Corporation (悠遊卡股份有限公司). Its marketing website — `easywallet.easycard.com.tw` — projects a clean, modern, mobile-first personality that bridges the brand's public-transit roots with",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "elevenlabs",
    "primary_color_hex": "#ffffff",
    "category": "AI",
@@ -1467,6 +1707,30 @@
    "category_raw": "ai"
   },
   {
+   "id": "esunbank",
+   "primary_color_hex": "#00a19b",
+   "category": "fintech",
+   "visual_theme": "E.SUN Bank (玉山銀行) is Taiwan's most digital-forward commercial bank, and its official website — esunbank.com — channels that reputation into a design language that is clean, credentialed, and warmly approachable without feeling corporate-cold. The canvas is pur",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "expo",
    "primary_color_hex": "#000000",
    "category": "Developer Tools",
@@ -1487,6 +1751,30 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "developer-tools"
+  },
+  {
+   "id": "farfetch",
+   "primary_color_hex": "#222222",
+   "category": "ecommerce",
+   "visual_theme": "Farfetch is the global luxury fashion marketplace, and its homepage is engineered to disappear behind the products it sells. The canvas is pure white (`#ffffff`) with all text, navigation, and interactions in jet-black Carbon (`#222222`) — a binary monochrome ",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "dark",
+    "minimal",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "fastcampus",
@@ -1685,6 +1973,30 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "saas"
+  },
+  {
+   "id": "fubon",
+   "primary_color_hex": "#0093c1",
+   "category": "fintech",
+   "visual_theme": "Fubon Financial Holding (富邦金控) and its flagship retail arm Taipei Fubon Bank (台北富邦銀行) share a design language built on trust, approachability, and Taiwanese banking heritage. The canvas is clean white (`#ffffff`) underpinned by a confident, mid-range blue — `#",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "fugle",
@@ -1987,6 +2299,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "govuk",
+   "primary_color_hex": "#1d70b8",
+   "category": "government",
+   "visual_theme": "GOV.UK is the UK government's central digital platform — and its design system is one of the world's most influential public-sector design systems. The aesthetic is unmistakably utilitarian and accessibility-first: pure white (`#ffffff`) canvas with near-black",
+   "voice_fingerprint": {
+    "register": "government",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "government"
+  },
+  {
    "id": "greenvines",
    "primary_color_hex": "#002d18",
    "category": "ecommerce",
@@ -2092,6 +2428,30 @@
    "signature_motion": "Gentle, friendly transitions; warm hover lifts on cards. Encouraging, never abrupt.",
    "has_personas": true,
    "category_raw": "education / EdTech course marketplace"
+  },
+  {
+   "id": "hana",
+   "primary_color_hex": "#00a39f",
+   "category": "fintech",
+   "visual_theme": "하나은행 (Hana Bank, KEB Hana Bank) presents a mature, institutional fintech aesthetic grounded in a signature **Hana Mint teal** (`#00a39f`) — a medium-dark, slightly warm teal that anchors every brand touchpoint from the homepage hero carousel to product card ac",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "hashicorp",
@@ -2218,6 +2578,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "hubspot",
+   "primary_color_hex": "#ff4800",
+   "category": "marketing",
+   "visual_theme": "HubSpot's homepage is a warm, modern marketing platform — approachable and energetic without sacrificing professionalism. The page opens on a canvas cream background (`#fcfcfa`), a softly warmed white that reads organic and friendly rather than clinical. The p",
+   "voice_fingerprint": {
+    "register": "marketing",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "minimal",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "marketing"
+  },
+  {
    "id": "hyperconnect",
    "primary_color_hex": "#00dd99",
    "category": "consumer-tech",
@@ -2240,6 +2624,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "hyundai",
+   "primary_color_hex": "#002c5f",
+   "category": "automotive",
+   "visual_theme": "현대자동차 (Hyundai Motor Company) presents a design language that is resolutely automotive and precision-engineered — a digital expression of its \"Sensuous Sportiness\" brand philosophy. The homepage opens on a near-white canvas (`#ffffff`) alternating with a warm ",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
   },
   {
    "id": "hyundaicard",
@@ -2320,6 +2728,30 @@
    "signature_motion": "Instant (0ms) POS tile selection - tap registers immediately with tint+border, no animation; spring forbidden.",
    "has_personas": true,
    "category_raw": "restaurant-saas-pos"
+  },
+  {
+   "id": "icook",
+   "primary_color_hex": "#f04646",
+   "category": "consumer-tech",
+   "visual_theme": "iCook (愛料理) is Taiwan's largest recipe and cooking community platform, built by Polydice Inc. since 2011. Its design language radiates the warmth and approachability of home cooking — warm neutrals, a coral-red brand accent, and generous food photography take ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "iicombined",
@@ -2409,6 +2841,30 @@
    "country": "KR"
   },
   {
+   "id": "instacart",
+   "primary_color_hex": "#108910",
+   "category": "ecommerce",
+   "visual_theme": "Instacart's product UI is defined by a confident, utilitarian clarity: a white canvas (`#ffffff`) with a soft cool-grey surface (`#F6F7F8`) for secondary zones, and a single saturated green (`#108910`) that functions as both brand signal and primary action col",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
    "id": "intercom",
    "primary_color_hex": "#ff5600",
    "category": "AI",
@@ -2425,6 +2881,30 @@
    "signature_motion": "Buttons scale(1.1) on hover, scale(0.85) on active for physical feel.",
    "has_personas": false,
    "category_raw": "customer service / AI helpdesk SaaS"
+  },
+  {
+   "id": "ipassmoney",
+   "primary_color_hex": "#53b232",
+   "category": "fintech",
+   "visual_theme": "iPASS MONEY (一卡通 MONEY) is Taiwan's integrated e-wallet and transit card management platform operated by iPASS Corporation (一卡通票證股份有限公司). Its visual identity is rooted in an energetic, nature-connected green — a hue that bridges the civic trust of public trans",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "jandi",
@@ -2573,6 +3053,30 @@
    "category_raw": "internet-only bank"
   },
   {
+   "id": "kakaopage",
+   "primary_color_hex": "#ffd618",
+   "category": "consumer-tech",
+   "visual_theme": "카카오페이지 (KakaoPage) is Kakao Entertainment's flagship webtoon and web-novel platform, and its interface is built around one governing tension: immersive visual content deserves a near-invisible UI frame. The canvas is pure white (`#ffffff`) with pure black (`#0",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "kakaopay",
    "primary_color_hex": "#FFEB00",
    "category": "Fintech",
@@ -2667,6 +3171,30 @@
    "country": "KR"
   },
   {
+   "id": "kbpay",
+   "primary_color_hex": "#FFCC00",
+   "category": "fintech",
+   "visual_theme": "KB Pay (KB페이) is KB Kookmin Card's flagship mobile payment platform — the unified gateway to Korea's largest credit card network wrapped in KB Financial Group's signature warm yellow identity. The visual system opens on a clean white canvas (`#FFFFFF`) with th",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "kdan",
    "primary_color_hex": "#00DC87",
    "category": "Productivity",
@@ -2694,6 +3222,30 @@
    "signature_motion": "Crisp, confident transitions; the lime CTA pops with energy while the teal-black base stays steady.",
    "has_personas": true,
    "category_raw": "productivity / document-workflow SaaS"
+  },
+  {
+   "id": "kia",
+   "primary_color_hex": "#05141f",
+   "category": "automotive",
+   "visual_theme": "Kia's digital presence since the 2021 global rebrand (\"Movement that inspires\") is a study in automotive restraint — an identity that lets the vehicles breathe rather than compete with the interface chrome. The canvas is pure white (`#ffffff`) broken only by a",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
   },
   {
    "id": "kintone",
@@ -3108,6 +3660,30 @@
    "signature_motion": "Command palette opens at 100ms ease-enter; no springs or bounce anywhere.",
    "has_personas": true,
    "category_raw": "developer tools / project management SaaS"
+  },
+  {
+   "id": "liner",
+   "primary_color_hex": "#197b2e",
+   "category": "ai",
+   "visual_theme": "Liner (라이너) is a Korean AI startup that began as a web highlighter and has evolved into an AI-powered search and research copilot serving 11M+ professionals. Its homepage embodies a quiet authority: a near-white canvas (`#ffffff`) punctuated by a signature Lin",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
   },
   {
    "id": "loom",
@@ -3676,6 +4252,30 @@
    "category_raw": "developer database"
   },
   {
+   "id": "monzo",
+   "primary_color_hex": "#ff4f40",
+   "category": "fintech",
+   "visual_theme": "Monzo is the UK's most recognisable neobank, and its visual identity is built around one audacious choice: a single saturated Hot Coral (`#ff4f40`) on a canvas that is otherwise nearly achromatic. The homepage opens on pure white (`#ffffff`) with a deep Midnig",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "moze",
    "primary_color_hex": "#ff367c",
    "category": "fintech",
@@ -3840,6 +4440,30 @@
    "signature_motion": "Search autocomplete reveals suggestions below the input as a flat 150ms fade — invisible motion, never noticed by the user.",
    "has_personas": true,
    "category_raw": "portal / search"
+  },
+  {
+   "id": "naverpay",
+   "primary_color_hex": "#09aa5c",
+   "category": "fintech",
+   "visual_theme": "Naver Pay (네이버페이) is Korea's dominant payment platform, embedded across the Naver super-app ecosystem — spanning shopping, booking, banking, and loyalty. Its visual language reflects that scale: a system engineered to be instantly recognizable in every merchan",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "naverwebtoon",
@@ -4129,6 +4753,30 @@
    "category_raw": "enterprise hardware"
   },
   {
+   "id": "octopusenergy",
+   "primary_color_hex": "#f050f8",
+   "category": "consumer-tech",
+   "visual_theme": "Octopus Energy is the UK's most awarded energy supplier, and its digital presence makes an immediately striking and distinctive impression: a deep cosmic indigo (`#100030`) canvas saturated with electric magenta (`#f050f8`) and cyan (`#60f0f8`) — a palette tha",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "ohouse",
    "primary_color_hex": "#35C5F0",
    "category": "Consumer",
@@ -4267,6 +4915,30 @@
    "category_raw": "developer AI tool"
   },
   {
+   "id": "openpoint",
+   "primary_color_hex": "#8081ff",
+   "category": "consumer-tech",
+   "visual_theme": "OPENPOINT (統一超商紅利點數平台) is Taiwan's dominant retail loyalty and payment ecosystem, operated by President Chain Store (統一超商股份有限公司), the parent company of Taiwan's 7-ELEVEN network. Its web presence lands in a clean white (`#ffffff`) canvas with a signature dual-",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "patreon",
    "primary_color_hex": "#000000",
    "category": "consumer-tech",
@@ -4317,6 +4989,30 @@
    "signature_motion": "fp_nav active underline width expansion 0.5s",
    "has_personas": true,
    "category_raw": "fintech / payment super-app"
+  },
+  {
+   "id": "paypal",
+   "primary_color_hex": "#002991",
+   "category": "fintech",
+   "visual_theme": "PayPal's homepage is a study in high-contrast black-and-white modernism punctuated by a signature sky blue hero. The page opens with an immersive pale-blue section (`#60cdff`) carrying a monumental black headline in **PayPal Pro** at nearly 100px weight 900 — ",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "paypay",
@@ -4870,6 +5566,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "reddit",
+   "primary_color_hex": "#FF4500",
+   "category": "consumer-tech",
+   "visual_theme": "Reddit is the internet's self-described \"front page\" — and its design system, the Reddit Product Language (RPL), reflects exactly that: a platform built for content discovery at massive scale, where the design recedes so community-generated content can lead. T",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "dark",
+    "minimal",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "remember",
    "primary_color_hex": "#000000",
    "category": "HR",
@@ -5188,6 +5908,30 @@
    "category_raw": "saas"
   },
   {
+   "id": "samsung",
+   "primary_color_hex": "#000000",
+   "category": "consumer-tech",
+   "visual_theme": "Samsung's web commerce and device branding operate under a single, unwavering visual principle: black leads. The Samsung Korea e-commerce surface (`samsung.com/sec`) is built on a pure white canvas (`#ffffff`) intersected with a light cool-grey surface (`#f7f7",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "sanity",
    "primary_color_hex": "#f36458",
    "category": "Developer Tools",
@@ -5309,6 +6053,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "shinhanbank",
+   "primary_color_hex": "#005DF9",
+   "category": "fintech",
+   "visual_theme": "신한은행 (Shinhan Bank) is Korea's leading retail bank and the flagship subsidiary of Shinhan Financial Group (신한금융그룹), a financial conglomerate that has defined modern Korean banking aesthetics for four decades. The design system spans two distinct visual registe",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "shinhancard",
    "primary_color_hex": "#005df9",
    "category": "fintech",
@@ -5357,6 +6125,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "e-commerce"
+  },
+  {
+   "id": "skyscanner",
+   "primary_color_hex": "#0062e3",
+   "category": "consumer-tech",
+   "visual_theme": "Skyscanner's product speaks with the confidence of a global travel marketplace that has handled hundreds of millions of searches — clear, energetic, and trustworthy, without the corporate gravity of legacy airline booking tools. The system opens on a pure whit",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "minimal",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "slack",
@@ -5441,6 +6233,30 @@
     "low-contrast headlines"
    ],
    "signature_motion": "Fast snappy 1:1 channel swipe with the red active indicator sliding to the new tab - spring forbidden.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "snapchat",
+   "primary_color_hex": "#FFFC00",
+   "category": "consumer-tech",
+   "visual_theme": "Snapchat's design identity is built around a single, electrifying fact: the world's most recognizable yellow (`#FFFC00`). This near-pure yellow — so saturated it reads like a safety signal and a celebration at once — is the entire visual strategy. The consumer",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
   },
@@ -5665,6 +6481,54 @@
    "category_raw": "consumer-media"
   },
   {
+   "id": "squarespace",
+   "primary_color_hex": "#000000",
+   "category": "saas",
+   "visual_theme": "Squarespace is the definitive case study in editorial minimalism as a product philosophy. The homepage opens on an immersive full-screen hero video set against pure black (`#000000`) — not a dark navy, not a charcoal, but absolute black — with a 64px `Clarkson",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "minimal"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
+  },
+  {
+   "id": "ssg",
+   "primary_color_hex": "#ff5452",
+   "category": "ecommerce",
+   "visual_theme": "SSG.COM (쓱닷컴) is South Korea's flagship premium e-commerce platform, born from the convergence of Shinsegae department store prestige and the everyday convenience of emart. The homepage presents an uncluttered white canvas (`#ffffff`) layered over a neutral li",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "dark",
+    "playful"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
    "id": "starbucks",
    "primary_color_hex": "#00704A",
    "category": "Consumer",
@@ -5689,6 +6553,30 @@
    "signature_motion": "*Durations** (named):",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "starling",
+   "primary_color_hex": "#50ffeb",
+   "category": "fintech",
+   "visual_theme": "Starling Bank's visual identity is one of the most distinctive in UK neobanking — a bold, high-contrast system that pairs a deep aubergine-purple canvas (`#321e37`) with an electric teal/mint CTA (`#50ffeb`) that lights up every page like a circuit trace. Wher",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "stibee",
@@ -5886,6 +6774,30 @@
    "signature_motion": "Soft mint pulse-ring while matching a driver, then a gentle-spring trip-card rise on assignment.",
    "has_personas": true,
    "category_raw": "Mobility"
+  },
+  {
+   "id": "taiwanmobile",
+   "primary_color_hex": "#ff6700",
+   "category": "consumer-tech",
+   "visual_theme": "Taiwan Mobile (台灣大哥大) is Taiwan's largest telecom carrier, and its digital presence communicates bold accessibility through a clean, modern consumer-tech aesthetic. The primary brand color is a confident **vibrant orange** (`#ff6700` — 活力橘), splashed across ca",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "teamblind",
@@ -6095,6 +7007,30 @@
    "signature_motion": "Balance updates slide-and-fade (never cross-fade money); daily-interest triggers a blue50 flash + spring number tick-up.",
    "has_personas": true,
    "category_raw": "Fintech"
+  },
+  {
+   "id": "trainline",
+   "primary_color_hex": "#00a88f",
+   "category": "consumer-tech",
+   "visual_theme": "Trainline is Europe's leading independent rail and coach booking platform, and its interface reflects a practical, optimistic approach to travel — clean, confident, and task-focused. The homepage opens on a white canvas (`#ffffff`) with a prominent booking for",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "trenbe",
@@ -7071,6 +8007,30 @@
    "signature_motion": "찜 heart: outline → filled brand pink with brief pulse; primary CTA uses pink-400 fill, darkening to pink-450/550 on hover/press.",
    "has_personas": true,
    "category_raw": "Commerce / Women's Fashion Discovery"
+  },
+  {
+   "id": "zoom",
+   "primary_color_hex": "#0b5cff",
+   "category": "saas",
+   "visual_theme": "Zoom's website communicates confidence and clarity through a dual-surface palette — a deep, immersive midnight navy (`#00053d`) hero paired with a clean white (`#ffffff`) body — that creates a dramatic first impression before settling into an airy, information",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "zozotown",
