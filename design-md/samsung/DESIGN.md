@@ -57,11 +57,11 @@ tokens:
     badge-error: { type: badge, bg: "#ef3434", fg: "#ffffff", radius: "9999px", font: "12px / 700 SamsungOneKorean", use: "Notification badge, error indicator" }
     nav-tab: { type: tab, fg: "#000000", font: "16px / 700 SamsungOneKorean", active: "text #000000 + 2px bottom border #000000", use: "Top horizontal nav category tab" }
   components_harvested: true
-  ds:
-    name: Samsung One UI Design System
-    url: "https://developer.samsung.com/one-ui"
-    type: system
-    description: "Samsung's official mobile OS design language for Galaxy devices — principles, color system, motion, typography, and component specs for One UI apps."
+ds:
+  name: Samsung One UI Design System
+  url: "https://developer.samsung.com/one-ui"
+  type: system
+  description: "Samsung's official mobile OS design language for Galaxy devices — principles, color system, motion, typography, and component specs for One UI apps."
 ---
 
 # Design System Inspiration of Samsung
