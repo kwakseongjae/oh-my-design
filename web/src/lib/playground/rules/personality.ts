@@ -1,10 +1,11 @@
 /**
  * Personality quiz → Playground seed.
  *
- * The Design Personality Quiz (src/app/curation/* and /result/[typeCode])
- * produces a 4-axis code like "CDFS" (Cool / Dense / Flat / Sharp). This
- * module maps each TypeCode to an opinionated Playground seed, using the
- * axes as primitives and the type's top-matched reference to seed color.
+ * A 4-axis design type code like "CDFS" (Cool / Dense / Flat / Sharp) — the
+ * type taxonomy in @/lib/survey/types — maps to an opinionated Playground
+ * seed, using the axes as primitives and the type's top-matched reference to
+ * seed color. (The curation quiz that surfaced these codes was retired
+ * 2026-06-23; the taxonomy + `?from=CODE` deep-link seed still stand.)
  *
  * Usage: /playground?from=CDFS → `seedFromTypeCode("CDFS")` returns the
  * initial PlaygroundState to merge into DEFAULT_STATE.

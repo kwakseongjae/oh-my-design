@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { event, trackRef } from "@/lib/gtag";
+import { trackReferenceSelect, trackSearch, trackCategoryFilter, trackCountryFilter, trackHotFilter } from "@/lib/builder/analytics";
 import { Loader2, ArrowRight, ChevronDown, Download } from "lucide-react";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 
@@ -52,24 +52,15 @@ import type { RefListItem } from "@/app/builder/page";
 export function ReferenceSelector({
   refs,
   onSelect,
-  onSelectAsIs,
   loading,
   initialLoading = false,
-  skipWizard,
-  onSkipWizardChange,
 }: {
   refs: RefListItem[];
-  /** Standard click path: go to the customization wizard (step 2). */
+  /** Picking a reference generates it as-is and jumps to the preview/export
+   *  step. Customize is a demoted, opt-in tweak reached from there. */
   onSelect: (id: string) => void;
-  /** Skip-wizard path: go directly to step 3 (preview) with a pure,
-   *  unmodified DESIGN.md. No overrides, no stylePreferences applied. */
-  onSelectAsIs: (id: string) => void;
   loading: boolean;
   initialLoading?: boolean;
-  /** Controlled skip-wizard state lifted to the parent so the header step
-   *  nav can hide the Customize pill the moment the user toggles. */
-  skipWizard: boolean;
-  onSkipWizardChange: (next: boolean) => void;
 }) {
   // Sort categories by reference count (most-populated first) so the visible
   // short list on mobile surfaces the highest-value chips. Long-tail
@@ -163,10 +154,10 @@ export function ReferenceSelector({
     if (searchTimer.current) clearTimeout(searchTimer.current);
     if (value.length >= 2) {
       searchTimer.current = setTimeout(() => {
-        event("search_reference", { query: value });
+        trackSearch({ queryLen: value.length, hasResults: refs.some((r) => refMatchesQuery(r, value)) });
       }, 800);
     }
-  }, []);
+  }, [refs]);
 
   // `refs` already arrives hot-first from /api/references, so the grid renders
   // in the right order on first paint — no client-side re-sort needed.
@@ -189,31 +180,10 @@ export function ReferenceSelector({
         <div>
           <h2 className="text-3xl font-bold tracking-tight">Choose a reference</h2>
           <p className="mt-2 text-muted-foreground">
-            {REFERENCE_COUNT} design systems from real companies.{" "}
-            {skipWizard
-              ? "Picking one jumps straight to the original DESIGN.md — no customization."
-              : "Pick one to start."}
+            {REFERENCE_COUNT} design systems from real companies. Picking one
+            jumps straight to the original DESIGN.md.
           </p>
         </div>
-
-        <a
-          href="/curation"
-          onClick={() => event("cta_click", { location: "builder_curation" })}
-          className="group relative flex items-center gap-3 overflow-hidden rounded-xl border border-border/60 bg-card/50 dark:border-white/10 dark:bg-white/[0.03] px-4 py-3 backdrop-blur transition-all hover:border-primary/40 hover:bg-card dark:hover:bg-white/[0.06] hover:shadow-lg hover:shadow-primary/10 sm:flex-shrink-0"
-        >
-          {/* Subtle gradient glow on hover */}
-          <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100 bg-gradient-to-r from-primary/5 via-transparent to-transparent" />
-
-          <div className="relative flex items-center justify-center flex-shrink-0">
-            <img src="/logo.png" alt="omd" className="h-6 object-contain block dark:hidden" />
-            <img src="/logo-white.png" alt="omd" className="h-6 object-contain hidden dark:block" />
-          </div>
-          <div className="relative text-left">
-            <div className="text-sm font-semibold tracking-tight">Get a personal curation</div>
-            <div className="text-xs text-muted-foreground mt-0.5">60 seconds · 12 questions · matched references</div>
-          </div>
-          <ArrowRight className="relative h-4 w-4 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-primary flex-shrink-0" />
-        </a>
       </motion.div>
 
       {/* Mode selector — compact sliding toggle, modeled on the theme
@@ -276,56 +246,6 @@ export function ReferenceSelector({
               </button>
             )}
           </div>
-
-          {/* Mode toggle (Customize / Use as-is). Inline with search now;
-              flex-shrink-0 so it never compresses below its natural width. */}
-          <div
-            role="radiogroup"
-            aria-label="Pick a builder mode"
-            className="relative inline-flex flex-shrink-0 items-center gap-0.5 rounded-full border border-border/50 dark:border-white/10 bg-card/50 dark:bg-white/[0.04] p-1 backdrop-blur-xl shadow-sm"
-          >
-            {[
-              { value: true,  label: "Use as-is" },
-              { value: false, label: "Customize" },
-            ].map((opt) => {
-              const active = skipWizard === opt.value;
-              return (
-                <button
-                  key={String(opt.value)}
-                  role="radio"
-                  aria-checked={active}
-                  onClick={() => {
-                    if (active) return;
-                    onSkipWizardChange(opt.value);
-                    event("skip_wizard_toggle", { on: opt.value });
-                  }}
-                  className="relative z-10 rounded-full px-4 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-                >
-                  {active && (
-                    <motion.span
-                      layoutId="mode-pill"
-                      aria-hidden="true"
-                      className="absolute inset-0 rounded-full bg-foreground"
-                      transition={{ type: "spring", duration: 0.4, bounce: 0.18 }}
-                    />
-                  )}
-                  <span
-                    className={`relative inline-flex items-center gap-1.5 ${
-                      active ? "text-background" : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {opt.value && (
-                      <span
-                        aria-hidden="true"
-                        className={`h-1.5 w-1.5 rounded-full ${active ? "bg-primary" : "bg-primary/60"}`}
-                      />
-                    )}
-                    {opt.label}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
         </div>
 
         {/* Row 2 — Unified facet bar: categories + philosophy + country.
@@ -356,7 +276,7 @@ export function ReferenceSelector({
             {primaryCategories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) event("category_filter", { category: next }); }}
+                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) trackCategoryFilter(next); }}
                 className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                   selectedCat === cat
                     ? "bg-primary text-primary-foreground shadow-sm"
@@ -371,7 +291,7 @@ export function ReferenceSelector({
             {overflowCategories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) event("category_filter", { category: next }); }}
+                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) trackCategoryFilter(next); }}
                 className={`hidden sm:inline-flex rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                   selectedCat === cat
                     ? "bg-primary text-primary-foreground shadow-sm"
@@ -422,7 +342,7 @@ export function ReferenceSelector({
                               const next = active ? null : cat;
                               setSelectedCat(next);
                               setCatMoreOpen(false);
-                              if (next) event("category_filter", { category: next });
+                              if (next) trackCategoryFilter(next);
                             }}
                             className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium transition-colors ${
                               active ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
@@ -516,7 +436,7 @@ export function ReferenceSelector({
                           const next = active ? null : c;
                           setSelectedCountry(next);
                           setCountryMoreOpen(false);
-                          if (next) event("country_filter", { country: next });
+                          if (next) trackCountryFilter(next);
                         }}
                         className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium transition-colors ${
                           active ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
@@ -541,7 +461,7 @@ export function ReferenceSelector({
               when the response carries at least one hot ref. */}
           {hasHot && (
             <button
-              onClick={() => { const next = !hotOnly; setHotOnly(next); event("hot_filter", { on: next }); }}
+              onClick={() => { const next = !hotOnly; setHotOnly(next); trackHotFilter(next); }}
               aria-pressed={hotOnly}
               className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 hotOnly
@@ -592,10 +512,8 @@ export function ReferenceSelector({
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.2, delay: Math.min(i * 0.02, 0.3) }}
                 onClick={() => {
-                  event("reference_select", { reference: ref.id, category: ref.category, mode: skipWizard ? "as_is" : "customize" });
-                  trackRef("select", ref.id);
-                  if (skipWizard) onSelectAsIs(ref.id);
-                  else onSelect(ref.id);
+                  trackReferenceSelect({ reference: ref.id, category: ref.category });
+                  onSelect(ref.id);
                 }}
                 disabled={loading}
                 className="group relative flex flex-col overflow-hidden rounded-xl border border-border/40 bg-card/30 text-left backdrop-blur transition-all hover:bg-card/80 hover:shadow-lg hover:shadow-black/5 hover:-translate-y-1 dark:border-white/10 dark:bg-card/50 dark:hover:border-white/20 dark:hover:shadow-white/5 disabled:opacity-50"
@@ -615,18 +533,14 @@ export function ReferenceSelector({
                     size="lg"
                     className="transition-transform duration-200 group-hover:scale-105"
                   />
-                  {/* Skip-wizard hover overlay — only rendered when the user
-                      has flipped to "Use as-is". Tells them what the click
-                      will actually do (jump straight to export) instead of
-                      letting the card pretend it's still the customize path. */}
-                  {skipWizard && (
-                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/55 opacity-0 backdrop-blur-[2px] transition-opacity group-hover:opacity-100">
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-[11px] font-semibold text-black shadow-sm">
-                        <Download className="h-3 w-3" />
-                        Export
-                      </span>
-                    </div>
-                  )}
+                  {/* Hover overlay — picking a card generates the reference
+                      as-is and jumps straight to export; surface that intent. */}
+                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/55 opacity-0 backdrop-blur-[2px] transition-opacity group-hover:opacity-100">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-[11px] font-semibold text-black shadow-sm">
+                      <Download className="h-3 w-3" />
+                      Export
+                    </span>
+                  </div>
                   {/* Hex badge */}
                   <span className="absolute bottom-2 left-2 rounded bg-black/20 px-1.5 py-0.5 font-mono text-[9px] text-white/80 backdrop-blur-sm">
                     {ref.primaryColor}

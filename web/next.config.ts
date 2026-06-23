@@ -30,6 +30,11 @@ const nextConfig: NextConfig = {
         destination: "/:id/design.md",
         permanent: true,
       },
+      // Curation quiz + result pages removed (2026-06-23) — the share/viral
+      // hypothesis was falsified (0 shares/28d). 301 the indexed URLs to the
+      // builder / directory so no link equity is lost.
+      { source: "/curation", destination: "/builder", permanent: true },
+      { source: "/result/:typeCode", destination: "/design-systems", permanent: true },
     ];
   },
   // NOTE: the previous commit (4ab523d) added a `www → apex` redirect here

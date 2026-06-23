@@ -18,7 +18,7 @@ export function event(name: string, params?: Record<string, string | number | bo
   if (!MP_SKIP.has(name)) mpTrack(name, params);
 }
 
-export type RefTrackEvent = "select" | "generate" | "download" | "copy";
+export type RefTrackEvent = "select" | "generate" | "download" | "copy" | "install";
 
 /** Increment a server-side counter for a reference. Fire-and-forget alongside GA event(). */
 export function trackRef(eventName: RefTrackEvent, reference: string) {

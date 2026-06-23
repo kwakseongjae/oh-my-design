@@ -66,3 +66,8 @@ packages/mcp/dist/
 
 # AI-generated internal audit/analysis docs (keep local, not for public repo)
 data/audit/
+
+# Analytics pull — service-account keys (NEVER commit) + raw API dumps (carry
+# search queries / geo / PII-adjacent data). Synthesized reports go to data/audit/.
+scripts/analytics/.secrets/
+data/analytics/

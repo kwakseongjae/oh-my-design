@@ -982,14 +982,6 @@ export function FinalCtaFooter() {
                     Design Systems
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/curation"
-                    className="text-sm text-white/85 transition-colors hover:text-white"
-                  >
-                    Personal Curation
-                  </Link>
-                </li>
               </ul>
             </div>
 

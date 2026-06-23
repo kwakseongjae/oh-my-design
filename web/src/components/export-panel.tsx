@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { event, trackRef } from "@/lib/gtag";
+import { trackExport, trackMdViewToggle, trackPhilosophyToggle } from "@/lib/builder/analytics";
 import { Copy, Check, Download, Eye, FileText } from "lucide-react";
 import { generateShadcnCss, applyOverridesToMd } from "@/lib/core/generate-css";
 import { generateNpxCommand } from "@/lib/core/config-hash";
@@ -55,8 +55,7 @@ export function ExportPanel({
 
   function copyTo(key: string, text: string) {
     navigator.clipboard.writeText(text);
-    event("copy_designmd", { reference: detail.id });
-    trackRef("copy", detail.id);
+    trackExport({ reference: detail.id, channel: "copy" });
     setCopied(key);
     setTimeout(() => setCopied(null), 2000);
   }
@@ -69,13 +68,12 @@ export function ExportPanel({
     a.download = "DESIGN.md";
     a.click();
     URL.revokeObjectURL(url);
-    event("download_designmd", { reference: detail.id });
-    trackRef("download", detail.id);
+    trackExport({ reference: detail.id, channel: "download" });
   }
 
   function setView(next: MdView) {
     setMdView(next);
-    event("md_view_toggle", { reference: detail.id, view: next });
+    trackMdViewToggle({ reference: detail.id, view: next });
   }
 
   return (
@@ -95,7 +93,7 @@ export function ExportPanel({
                 onChange={(e) => {
                   const next = e.target.checked;
                   setIncludePhilosophyLayer(next);
-                  event("philosophy_toggle", { reference: detail.id, on: next });
+                  trackPhilosophyToggle({ reference: detail.id, on: next });
                 }}
                 className="h-4 w-4 cursor-pointer accent-primary"
               />

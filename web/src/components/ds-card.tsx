@@ -15,7 +15,7 @@ import { StatusBadge } from "@/components/status-badge";
 import { BrandNameplateLogo } from "@/components/brand-logo";
 import type { DesignSystemInfo } from "@/lib/design-systems";
 import { getLogoUrl, isGitHubLogo, getLogoFallbackUrl } from "@/lib/logos";
-import { event } from "@/lib/gtag";
+import { trackDetailOpen, trackExternalClick } from "@/lib/design-systems/analytics";
 
 export function DSCard({
   ds,
@@ -32,7 +32,7 @@ export function DSCard({
     <Link
       href={`/design-systems/${ds.refId}`}
       onClick={() =>
-        event("ds_detail_open", { reference: ds.refId, source })
+        trackDetailOpen({ reference: ds.refId, source })
       }
       className="group relative flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/40 p-3 transition-all hover:border-foreground/20 hover:bg-card hover:-translate-y-0.5 dark:border-border dark:bg-card/60 dark:hover:bg-card"
     >
@@ -79,7 +79,7 @@ export function DSCard({
           onClick={(e) => {
             e.stopPropagation();
             e.preventDefault();
-            event("ds_external_click", { reference: ds.refId });
+            trackExternalClick(ds.refId);
             window.open(ds.url, "_blank", "noopener,noreferrer");
           }}
           className="mt-3 inline-flex items-center gap-1 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground"

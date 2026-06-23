@@ -1,8 +1,11 @@
 import { Redis } from "@upstash/redis";
 
-export type TrackEvent = "select" | "generate" | "download" | "copy";
+// `install` (2026-06-23) tracks per-reference CLI-install intent — the npx
+// command copy. Kept OUT of `copy` so content-copy popularity isn't polluted
+// by install-command copies (install-cta previously fired `copy`).
+export type TrackEvent = "select" | "generate" | "download" | "copy" | "install";
 
-export const TRACK_EVENTS: readonly TrackEvent[] = ["select", "generate", "download", "copy"] as const;
+export const TRACK_EVENTS: readonly TrackEvent[] = ["select", "generate", "download", "copy", "install"] as const;
 
 export const REFERENCE_ID_RE = /^[a-z0-9.-]{1,40}$/;
 

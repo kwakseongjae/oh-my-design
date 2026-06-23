@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { event, trackRef } from "@/lib/gtag";
+import { trackGenerate, trackApiError, trackRawMdOpen, trackBuilderOpen } from "@/lib/builder/analytics";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
@@ -62,11 +62,6 @@ export default function BuilderPage() {
   });
   const [activeComponents, setActiveComponents] = useState<string[]>(DEFAULT_COMPONENTS);
   const [stylePreferences, setStylePreferences] = useState<StylePreferences>({});
-  // Lifted from ReferenceSelector so the header can reflect the skip-wizard
-  // mode (Reference → Export, no Customize) the instant the user toggles it.
-  // Default = true ("Use as-is"): picking a reference jumps straight to the
-  // original DESIGN.md export, no customization wizard. Customize is opt-in.
-  const [skipWizard, setSkipWizard] = useState(true);
 
   const [refsLoading, setRefsLoading] = useState(true);
 
@@ -81,7 +76,10 @@ export default function BuilderPage() {
   // generations count (S3).
   const firedGenerations = useRef<Set<string>>(new Set());
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    trackBuilderOpen();
+  }, []);
 
   // ── URL hydration ────────────────────────────────────────────────
   //
@@ -161,7 +159,7 @@ export default function BuilderPage() {
     fetch("/api/references")
       .then((r) => r.json())
       .then((data) => setRefs(data))
-      .catch(() => event("api_error", { endpoint: "/api/references" }))
+      .catch(() => trackApiError("references"))
       .finally(() => setRefsLoading(false));
   }, []);
 
@@ -221,31 +219,13 @@ export default function BuilderPage() {
       if (!res.ok) return null;
       return await res.json();
     } catch {
-      event("api_error", { endpoint: `/api/references/${id}` });
+      trackApiError("reference_detail");
       return null;
     }
   }
 
-  const selectRef = useCallback(async (id: string) => {
-    setLoading(true);
-    const data = await fetchRef(id);
-    setLoading(false);
-    if (!data) return;
-    setDetail(data);
-    setOverrides({
-      primaryColor: data.primary,
-      fontFamily: "",
-      headingWeight: "",
-      borderRadius: data.radius.replace(/[-–].*/, "").trim(),
-      darkMode: false,
-    });
-    setActiveComponents(DEFAULT_COMPONENTS);
-    setStylePreferences({});
-    setStep("customize");
-    pushUrl("customize", id);
-  }, []);
-
-  // Skip-wizard path: load the ref but hold overrides at their empty-string
+  // Reference grid pick → always as-is (the single primary path). Load the ref
+  // but hold overrides at their empty-string
   // defaults and stylePreferences at {}. This is the contract for "pure
   // original" — every rewrite guard inside applyOverridesToMd and the preview
   // honors empty strings as "no override" and falls back to the ref's own
@@ -270,10 +250,8 @@ export default function BuilderPage() {
     const cfg = encodeConfig(id, pure, DEFAULT_COMPONENTS, {});
     if (!firedGenerations.current.has(cfg)) {
       firedGenerations.current.add(cfg);
-      event("generation_complete", { reference: id, mode: "as_is" });
-      // GA4 mirror of the Redis trackRef("generate") funnel counter.
-      event("builder_export", { reference: id, format: "as_is" });
-      trackRef("generate", id);
+      // Fires bld_generate{mode:as_is} + the Redis `generate` counter.
+      trackGenerate({ reference: id, mode: "as_is" });
     }
     pushUrl("preview", id, cfg);
   }, []);
@@ -283,10 +261,8 @@ export default function BuilderPage() {
     const cfg = encodeConfig(detail.id, overrides, activeComponents, stylePreferences);
     if (!firedGenerations.current.has(cfg)) {
       firedGenerations.current.add(cfg);
-      event("generation_complete", { reference: detail.id });
-      // GA4 mirror of the Redis trackRef("generate") funnel counter.
-      event("builder_export", { reference: detail.id, format: "customized" });
-      trackRef("generate", detail.id);
+      // Fires bld_generate{mode:customize} + the Redis `generate` counter.
+      trackGenerate({ reference: detail.id, mode: "customize" });
     }
     setStep("preview");
     pushUrl("preview", detail.id, cfg);
@@ -294,6 +270,20 @@ export default function BuilderPage() {
 
   const goToCustomize = useCallback(() => {
     if (!detail) return;
+    // Entering customize from the as-is preview: seed the wizard from the
+    // reference's own values (empty overrides == "as-is") so the controls
+    // start populated. Mirrors the pre-demotion selectRef seeding.
+    setOverrides((o) =>
+      o.primaryColor || o.borderRadius
+        ? o
+        : {
+            primaryColor: detail.primary,
+            fontFamily: "",
+            headingWeight: "",
+            borderRadius: detail.radius.replace(/[-–].*/, "").trim(),
+            darkMode: o.darkMode,
+          },
+    );
     setStep("customize");
     pushUrl("customize", detail.id);
   }, [detail]);
@@ -310,22 +300,13 @@ export default function BuilderPage() {
     if (next === "preview") return goToPreview();
   }, [detail, goToSelect, goToCustomize, goToPreview]);
 
-  // When skipWizard is on AND we aren't currently sitting on the customize
-  // step, drop "Customize" from the nav and renumber Export to 2 — the user
-  // signaled they want the direct path, so the header should mirror it.
-  // (If they're already on customize, keep all three so they can still
-  // navigate; toggling mode does not retroactively unmount the wizard.)
-  const STEPS: { key: Step; label: string; num: number }[] =
-    skipWizard && step !== "customize"
-      ? [
-          { key: "select", label: "Reference", num: 1 },
-          { key: "preview", label: "Export", num: 2 },
-        ]
-      : [
-          { key: "select", label: "Reference", num: 1 },
-          { key: "customize", label: "Customize", num: 2 },
-          { key: "preview", label: "Export", num: 3 },
-        ];
+  // Use-as-is is the only primary path now (customize is a demoted, opt-in
+  // tweak reachable from the preview screen), so the header is always the
+  // two-step Reference → Export.
+  const STEPS: { key: Step; label: string; num: number }[] = [
+    { key: "select", label: "Reference", num: 1 },
+    { key: "preview", label: "Export", num: 2 },
+  ];
 
   return (
     <div className="min-h-screen">
@@ -382,12 +363,9 @@ export default function BuilderPage() {
         {step === "select" && (
           <ReferenceSelector
             refs={refs}
-            onSelect={selectRef}
-            onSelectAsIs={selectRefAsIs}
+            onSelect={selectRefAsIs}
             loading={loading}
             initialLoading={refsLoading}
-            skipWizard={skipWizard}
-            onSkipWizardChange={setSkipWizard}
           />
         )}
         {step === "customize" && detail && (
@@ -405,7 +383,8 @@ export default function BuilderPage() {
             <PreviewExportView
               detail={detail}
               overrides={overrides}
-              onBack={skipWizard ? goToSelect : goToCustomize}
+              onBack={goToSelect}
+              onCustomize={goToCustomize}
               components={activeComponents}
               onComponentsChange={setActiveComponents}
               stylePreferences={stylePreferences}
@@ -457,7 +436,7 @@ export default function BuilderPage() {
                 href={`/${detail.id}/design.md`}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => event("builder_raw_md_open", { reference: detail.id })}
+                onClick={() => trackRawMdOpen(detail.id)}
                 className="underline underline-offset-2 hover:text-foreground"
               >
                 Raw DESIGN.md

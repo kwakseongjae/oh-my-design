@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { event, trackRef } from "@/lib/gtag";
-import { FileText, Copy, Check, ChevronRight, ArrowLeft, Download, ArrowUpRight, Eye } from "lucide-react";
+import { trackExport, trackDsClick } from "@/lib/builder/analytics";
+import { FileText, Copy, Check, ChevronRight, ArrowLeft, Download, ArrowUpRight, Eye, SlidersHorizontal } from "lucide-react";
 import { ReferencePreview } from "@/components/reference-preview";
 import { extractTokens } from "@/lib/extract-tokens";
 import { applyOverridesToMd } from "@/lib/core/generate-css";
@@ -19,6 +19,7 @@ export function PreviewExportView({
   detail,
   overrides,
   onBack,
+  onCustomize,
   components,
   onComponentsChange,
   stylePreferences,
@@ -26,6 +27,8 @@ export function PreviewExportView({
   detail: RefDetail;
   overrides: Overrides;
   onBack: () => void;
+  /** Opt-in tweak path — opens the (demoted) customize wizard from preview. */
+  onCustomize: () => void;
   components: string[];
   onComponentsChange: (c: string[]) => void;
   stylePreferences?: StylePreferences;
@@ -59,14 +62,12 @@ export function PreviewExportView({
     a.download = "DESIGN.md";
     a.click();
     URL.revokeObjectURL(url);
-    event("download_designmd", { reference: detail.id });
-    trackRef("download", detail.id);
+    trackExport({ reference: detail.id, channel: "download" });
   }
 
   function copyMd() {
     navigator.clipboard.writeText(designMd);
-    event("copy_designmd", { reference: detail.id });
-    trackRef("copy", detail.id);
+    trackExport({ reference: detail.id, channel: "copy" });
     setCopied("md");
     setTimeout(() => setCopied(null), 2000);
   }
@@ -101,7 +102,7 @@ export function PreviewExportView({
             href={ds.url}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => event("ds_click", { reference: ds.refId, url: ds.url, location: "preview_header" })}
+            onClick={() => trackDsClick({ reference: ds.refId, location: "preview_header" })}
             className="hidden sm:flex items-center gap-1.5 shrink-0 rounded-[0.625rem] border border-border/25 dark:border-border/50 bg-muted/10 dark:bg-muted/20 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors duration-150 hover:bg-muted/30 hover:text-foreground"
           >
             {/* Neutral nameplate (shared treatment, issue #19) — the old
@@ -176,6 +177,15 @@ export function PreviewExportView({
                 <FileText className="h-2.5 w-2.5" /> Raw
               </button>
             </div>
+
+            {/* Customize — demoted, opt-in tweak path (most users export as-is). */}
+            <button
+              type="button"
+              onClick={onCustomize}
+              className="flex items-center gap-1.5 rounded-[0.5rem] border border-border/40 dark:border-border bg-background px-2.5 py-1.5 text-[11px] font-medium text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground"
+            >
+              <SlidersHorizontal className="h-3 w-3" /> Customize
+            </button>
 
             {/* Export actions — Download = primary (solid indigo), Copy =
                 secondary (tonal indigo). On mobile the group takes its own

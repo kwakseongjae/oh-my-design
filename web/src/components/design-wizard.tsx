@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { event } from "@/lib/gtag";
+import { trackCustomizeOpen, trackCustomizeChange } from "@/lib/builder/analytics";
 import { ArrowRight, ArrowLeft, Check, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { generateColorScale, isLight, contrastForeground } from "@/lib/core/color";
@@ -552,17 +552,19 @@ export function DesignWizard({
   const [direction, setDirection] = useState(1);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Reset scroll on step change + track step view
+  // Reset scroll on step change.
   useEffect(() => {
     scrollRef.current?.scrollTo(0, 0);
-    event("wizard_step_view", { step: step + 1, label: STEP_LABELS[step] });
   }, [step]);
 
-  // Lock body scroll when wizard is open
+  // Lock body scroll while the (demoted) customize wizard is open, and fire the
+  // single bld_customize_open funnel event — opening the wizard at all is the
+  // signal now, not each step view.
   useEffect(() => {
+    trackCustomizeOpen(detail.id);
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
-  }, []);
+  }, [detail.id]);
 
   const onOverride = useCallback((partial: Partial<Overrides>) => {
     onChange({ ...overrides, ...partial });
@@ -570,8 +572,8 @@ export function DesignWizard({
 
   const onPref = useCallback((key: string, value: string) => {
     setPrefs((p) => ({ ...p, [key]: value }));
-    event("style_preference", { choice: key, value });
-  }, []);
+    trackCustomizeChange({ reference: detail.id, token: key });
+  }, [detail.id]);
 
   // Sync preferences to parent via useEffect (avoids setState during render)
   useEffect(() => {

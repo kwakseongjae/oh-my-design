@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Star, Check, Copy, Pause } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { event } from "@/lib/gtag";
+import { trackInstallCopy } from "@/lib/activation/analytics";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { V2 } from "./tokens";
 
@@ -116,7 +116,7 @@ export function HeroV2() {
     try {
       await navigator.clipboard.writeText(INSTALL_CMD);
       // Funnel event (#4): landing hero is the `hero` source of install_copy.
-      event("install_copy", { source: "hero" });
+      trackInstallCopy({ surface: "hero" });
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
     } catch {

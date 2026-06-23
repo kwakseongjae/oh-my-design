@@ -10,16 +10,16 @@
  *             last content row stays reachable.
  * - "block" — inline card (collection pages, long-form surfaces).
  *
- * Events (GA4, matching the inline event() convention in detail-view):
- * - install_copy { source: 'hero' | 'ref_detail' | 'collection' | 'builder', reference? }
- * - prompt_copy  { reference }
- * Both also bump the server-side Redis `copy` counter via trackRef when a
- * reference is in context.
+ * Events (via lib/activation/analytics):
+ * - act_install_copy { surface, reference? } — KEY EVENT. Also bumps the Redis
+ *   `install` counter (NOT `copy`), so install-command copies never pollute a
+ *   reference's content-copy popularity.
+ * - act_prompt_copy  { reference } — bumps the Redis `copy` counter.
  */
 
 import { useState } from "react";
 import { Check, Copy, Sparkles, Terminal } from "lucide-react";
-import { event, trackRef } from "@/lib/gtag";
+import { trackInstallCopy, trackPromptCopy } from "@/lib/activation/analytics";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import {
   firstPromptFor,
@@ -57,11 +57,10 @@ export function InstallCta({
   function copy(kind: "install" | "prompt", text: string) {
     navigator.clipboard.writeText(text);
     if (kind === "install") {
-      event("install_copy", { source, ...(reference ? { reference } : {}) });
+      trackInstallCopy({ surface: source, reference });
     } else if (reference) {
-      event("prompt_copy", { reference });
+      trackPromptCopy(reference);
     }
-    if (reference) trackRef("copy", reference);
     setCopied(kind);
     setTimeout(() => setCopied(null), 2000);
   }

@@ -33,7 +33,14 @@ import { ReferencePreview } from "@/components/reference-preview";
 import { InstallCta } from "@/components/install-cta";
 import { GithubStarButton } from "@/components/github-star-button";
 import { Markdown } from "@/components/markdown";
-import { event, trackRef } from "@/lib/gtag";
+import {
+  trackExport as trackDsExport,
+  trackDetailView,
+  trackExternalClick,
+  trackMdViewToggle,
+  trackOpenInBuilder,
+  trackRawMdOpen,
+} from "@/lib/design-systems/analytics";
 import { getDesignSystem } from "@/lib/design-systems";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import type { ParsedTokens } from "@/lib/extract-tokens";
@@ -74,11 +81,10 @@ export function DetailView({
 
   // Fire page-view analytics once per mount.
   useEffect(() => {
-    event("ds_detail_view", {
+    trackDetailView({
       reference: detail.id,
       referrer: typeof document !== "undefined" ? document.referrer : "",
     });
-    trackRef("select", detail.id);
   }, [detail.id]);
 
   const ds = getDesignSystem(detail.id);
@@ -87,8 +93,7 @@ export function DetailView({
 
   function copyMd() {
     navigator.clipboard.writeText(detail.designMd);
-    event("ds_copy_md", { reference: detail.id });
-    trackRef("copy", detail.id); // pair the Upstash counter (S1) — was missing here
+    trackDsExport({ reference: detail.id, channel: "copy" });
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }
@@ -101,17 +106,16 @@ export function DetailView({
     a.download = "DESIGN.md";
     a.click();
     URL.revokeObjectURL(url);
-    event("ds_download_md", { reference: detail.id });
-    trackRef("download", detail.id); // pair the Upstash counter (S1) — was missing here
+    trackDsExport({ reference: detail.id, channel: "download" });
   }
 
   function externalClick() {
-    event("ds_external_click", { reference: detail.id });
+    trackExternalClick(detail.id);
   }
 
   function toggleMobileView(next: MobileView) {
     setMobileView(next);
-    event("ds_view_toggle", { reference: detail.id, view: next });
+    trackMdViewToggle({ reference: detail.id, view: next });
   }
 
   return (
@@ -138,7 +142,7 @@ export function DetailView({
                 official-site link. */}
             <Link
               href={`/builder?step=customize&ref=${detail.id}`}
-              onClick={() => event("ds_open_in_builder", { reference: detail.id })}
+              onClick={() => trackOpenInBuilder(detail.id)}
               className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm ring-1 ring-primary/20 transition-all hover:brightness-110 hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
             >
               <SlidersHorizontal className="h-3.5 w-3.5" />
@@ -180,7 +184,7 @@ export function DetailView({
               href={`/${detail.id}/design.md`}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => event("ds_raw_md_open", { reference: detail.id })}
+              onClick={() => trackRawMdOpen(detail.id)}
               className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/50 px-2.5 py-1.5 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
               aria-label="Open raw DESIGN.md"
             >

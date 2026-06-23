@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { existsSync, readdirSync } from "fs";
 import { join } from "path";
-import { DESIGN_TYPES } from "@/lib/survey/types";
 import { getChangelog } from "@/lib/changelog";
 import { COLLECTIONS } from "@/lib/collections";
 import { REGISTRY_BY_ID } from "@/data/registry.generated";
@@ -49,12 +48,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.85,
-    },
-    {
-      url: `${siteUrl}/curation`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
     },
     {
       url: `${siteUrl}/faq`,
@@ -137,20 +130,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   );
 
-  const resultRoutes: MetadataRoute.Sitemap = Object.keys(DESIGN_TYPES).map(
-    (code) => ({
-      url: `${siteUrl}/result/${code}`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    }),
-  );
-
   return [
     ...staticRoutes,
     ...collectionRoutes,
     ...referenceRoutes,
-    ...resultRoutes,
     ...changelogRoutes,
   ];
 }
