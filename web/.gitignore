@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+# omd review/audit scratch (omd:feel / omd:designer-review advisory output)
+.reviews/
+
 # next.js
 /.next/
 /out/

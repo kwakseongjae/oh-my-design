@@ -333,7 +333,7 @@ function DesignMdPanel() {
                     setActive(i);
                     setPaused(true);
                   }}
-                  className="rounded-md px-2 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-wider transition-all"
+                  className="rounded-md px-2 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-wider transition-colors"
                   style={
                     isActive
                       ? {
@@ -432,7 +432,7 @@ function DesignMdPanel() {
             {BRANDS_HERO.map((b, i) => (
               <span
                 key={b.id}
-                className="block rounded-full transition-all duration-300"
+                className="block rounded-full transition-[width] duration-300"
                 style={{
                   width: i === active ? 18 : 4,
                   height: 4,

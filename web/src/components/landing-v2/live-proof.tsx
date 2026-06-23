@@ -192,7 +192,7 @@ export function LiveProof() {
             <button
               key={b.id}
               onClick={() => go(i)}
-              className="shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold transition-all"
+              className="shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors"
               style={
                 i === activeIdx
                   ? { background: b.primary, color: "#fff" }
@@ -219,7 +219,7 @@ export function LiveProof() {
           {BRANDS.map((b, i) => (
             <div
               key={b.id}
-              className="absolute inset-0 transition-all duration-500 ease-out"
+              className="absolute inset-0 transition-[opacity,transform] duration-500 ease-out"
               style={{
                 opacity: i === activeIdx ? 1 : 0,
                 transform: `scale(${i === activeIdx ? 1 : 0.96})`,
@@ -238,7 +238,7 @@ export function LiveProof() {
               key={b.id}
               onClick={() => go(i)}
               aria-label={b.name}
-              className="h-1.5 rounded-full transition-all"
+              className="h-1.5 rounded-full transition-[width,background-color]"
               style={{
                 width: i === activeIdx ? 36 : 14,
                 background: i === activeIdx ? active.primary : "rgba(10,10,15,0.15)",
@@ -300,7 +300,7 @@ export function LiveProof() {
               {BRANDS.map((b, i) => (
                 <span
                   key={b.id}
-                  className="h-1.5 rounded-full transition-all"
+                  className="h-1.5 rounded-full transition-[width,background-color]"
                   style={{
                     width: i === activeIdx ? 36 : 14,
                     background:
@@ -320,7 +320,7 @@ export function LiveProof() {
                 return (
                   <div
                     key={b.id}
-                    className="absolute inset-0 transition-all duration-500 ease-out"
+                    className="absolute inset-0 transition-[opacity,transform] duration-500 ease-out"
                     style={{
                       opacity: isActive ? 1 : 0,
                       transform: `translateY(${offset * 24}px) scale(${

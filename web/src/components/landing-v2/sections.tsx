@@ -464,7 +464,7 @@ export function CliStrip() {
           </p>
           <Link
             href="/docs"
-            className="group mt-5 inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white/85 transition-all hover:bg-white/5 hover:text-white"
+            className="group mt-5 inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white/85 transition-colors hover:bg-white/5 hover:text-white"
             style={{ borderColor: V2.borderDark }}
           >
             Read the docs
@@ -833,7 +833,7 @@ export function FinalCtaFooter() {
             <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
                 href="/builder"
-                className="group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-base font-semibold text-white shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-base font-semibold text-white shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
                 style={{
                   background: V2.primary,
                   boxShadow: `0 18px 40px -16px ${V2.primary}cc`,
@@ -1126,7 +1126,7 @@ function ContactTile({
     <a
       href={href}
       {...props}
-      className="group relative overflow-hidden rounded-2xl border p-5 text-left transition-all hover:-translate-y-0.5"
+      className="group relative overflow-hidden rounded-2xl border p-5 text-left transition-transform hover:-translate-y-0.5"
       style={{
         borderColor: V2.borderDark,
         background: "rgba(255,255,255,0.02)",
@@ -1166,7 +1166,7 @@ function ContactTile({
       </div>
       <div className="relative mt-1 text-xs text-white/55">{desc}</div>
       <div
-        className="relative mt-4 inline-flex items-center gap-1 text-[11px] font-medium opacity-65 transition-all group-hover:gap-2 group-hover:opacity-100"
+        className="relative mt-4 inline-flex items-center gap-1 text-[11px] font-medium opacity-65 transition-[gap,opacity] group-hover:gap-2 group-hover:opacity-100"
         style={{ color: accent }}
       >
         Open

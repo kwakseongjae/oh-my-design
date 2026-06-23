@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Design Systems — oh-my-design",
     description:
-      "286 real-company design systems. Live previews, source links, and DESIGN.md export for AI coding agents.",
+      "326 real-company design systems. Live previews, source links, and DESIGN.md export for AI coding agents.",
     url: "/design-systems",
     type: "website",
   },

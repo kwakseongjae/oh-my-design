@@ -1,6 +1,6 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 17 skills + 16 sub-agents + 326 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
+> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 18 skills + 16 sub-agents + 326 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
 
 ## What
 
@@ -34,7 +34,7 @@ When `omd:harness` activates, it runs three new steps **before** any reference q
 
 The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
-## The 17 skills
+## The 18 skills
 
 Core flow (7):
 - **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.

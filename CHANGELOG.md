@@ -6,6 +6,16 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.8.6 — 2026-06-23
+
+**New skill `omd:feel` — quantifies the design / frontend industry's "gut-feel" into 113 provenance-graded, machine-checkable interface rules an AI can APPLY (inject motion / spacing / type / a11y defaults during UI work) and AUDIT (BLOCK / WARN / FYI). Inherits Jakub Krehel's `make-interfaces-feel-better` and extends it with Apple HIG / Material 3 / WCAG / design-system tokens + practitioner research.**
+
+- 17 feel-dimensions, 113 rules. 85 are spec / design-system-token-backed (enforceable); the rest are labelled convention / opinion so folklore is never presented as spec. Core idea: **provenance tier → enforcement strength** (SPEC/DS = gate, CONV = default, OP/FOLK = suggestion). `DESIGN.md` tokens always win. Files: `skills/omd-feel/{SKILL.md, reference.md, provenance.md}` — auto-installs via `install-skills`. Skill bundle 17 → 18.
+- Dogfooded on this site's home + docs: fixed a real `prefers-reduced-motion` a11y gap (framer-motion + `animate-ping` + smooth-scroll were ungated) via a global CSS net + `<MotionConfig reducedMotion="user">`, swept `transition: all` → named props on the landing / docs surfaces, and added `text-wrap: balance / pretty`. `tsc` + 553 tests green.
+- Docs / README: reference count corrected 286 → 326 across localized READMEs + site metadata (catalog grew in 1.8.3–1.8.4; localized surfaces had drifted).
+
+---
+
 ## 1.8.5 — 2026-06-23
 
 **QA pass on the 2026-06-22 batch: 40 refs re-inspected vs live + benchmarked against the `designlang` deterministic extractor. 35/40 PASS, mean accuracy 98.3/100, 5 MINOR token-value fixes applied.**

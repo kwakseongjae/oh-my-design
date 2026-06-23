@@ -18,6 +18,7 @@ import {
   Palette,
   Pencil,
   Search,
+  Sparkles,
   ShieldCheck,
   Star,
   Terminal,
@@ -58,6 +59,14 @@ const SKILLS: Skill[] = [
     desc:
       "Authoritative brand context for every UI request. Routes complex tasks (assets, charts, full screens, a11y audit) to specialist sub-agents.",
     icon: Layers,
+  },
+  {
+    id: "omd:feel",
+    trigger: "feel 좋게 · feel 점검 · make this feel better",
+    title: "Quantified interface feel",
+    desc:
+      "113 provenance-graded rules (Apple HIG / Material 3 / WCAG / design-system tokens, extending jakub's make-interfaces-feel-better) — APPLY motion / spacing / type / a11y defaults during UI work, AUDIT artifacts as BLOCK / WARN / FYI. DESIGN.md tokens always win.",
+    icon: Sparkles,
   },
   {
     id: "omd:init",
@@ -650,7 +659,7 @@ function DocsHero() {
             <a
               key={href}
               href={href}
-              className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 font-medium text-white/65 transition-all hover:bg-white/5 hover:text-white"
+              className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 font-medium text-white/65 transition-colors hover:bg-white/5 hover:text-white"
               style={{ borderColor: V2.borderDark }}
             >
               {label}
@@ -748,7 +757,7 @@ function SkillsSection() {
   return (
     <Section
       id="skills"
-      eyebrow="Skills · 9"
+      eyebrow={`Skills · ${SKILLS.length}`}
       title="Loaded into your agent's context, fired by triggers"
       desc="Skills are markdown rule files that activate based on what you say. They route complex tasks to the right sub-agents."
     >
@@ -765,7 +774,7 @@ function V2SkillsSection() {
   return (
     <Section
       id="v2-skills"
-      eyebrow="v0.2 agent layer · 6 skills · bundled"
+      eyebrow={`v0.2 agent layer · ${V2_SKILLS.length} skills · bundled`}
       title="Multi-step authoring — orchestrated, KR-first, channel-aware"
       desc="A supervisor + specialist topology for long-form authoring and image generation. Installed alongside the core skills — KR voice synthesis, locale adaptation, design review, publish QA, deterministic orthography linting, and channel-aware image generation."
     >

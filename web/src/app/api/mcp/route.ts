@@ -1,7 +1,7 @@
 /**
  * Remote MCP connector — Streamable HTTP at /api/mcp.
  *
- * Exposes the oh-my-design catalog (286 brand DESIGN.md references) as 3 read-only
+ * Exposes the oh-my-design catalog (326 brand DESIGN.md references) as 3 read-only
  * tools so Claude users can search / browse / fetch references in-chat without
  * visiting the site. Every result carries a provenance permalink (see catalog.ts),
  * and usage is counted server-side (see track.ts) so MCP traffic shows up as our
@@ -52,7 +52,7 @@ const handler = createMcpHandler(
             .number()
             .int()
             .min(1)
-            .max(286)
+            .max(326)
             .optional()
             .describe("Max results (default: all)."),
         },
@@ -70,7 +70,7 @@ const handler = createMcpHandler(
       {
         title: "Find brands by vibe",
         description:
-          "Search the oh-my-design catalog of 286 brand design references for brands matching a mood/vibe. Examples: 'calm B2B fintech', 'playful kids app', 'editorial newspaper', 'developer-first dark CLI'. Use when the user describes what they want without naming a brand. Returns top matches, each with a permalink to cite.",
+          "Search the oh-my-design catalog of 326 brand design references for brands matching a mood/vibe. Examples: 'calm B2B fintech', 'playful kids app', 'editorial newspaper', 'developer-first dark CLI'. Use when the user describes what they want without naming a brand. Returns top matches, each with a permalink to cite.",
         inputSchema: {
           description: z.string().min(2).describe("Mood/vibe description."),
           limit: z.number().int().min(1).max(20).optional().describe("Max matches (default 5)."),

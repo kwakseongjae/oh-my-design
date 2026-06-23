@@ -83,7 +83,7 @@ export function V2Nav() {
         {/* CENTER — browse */}
         <div className="justify-self-center">
           <BrowseModal
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 sm:px-4 h-9 sm:h-10 text-xs sm:text-sm font-medium text-white/85 transition-all hover:bg-white/[0.07] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a89cff]"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 sm:px-4 h-9 sm:h-10 text-xs sm:text-sm font-medium text-white/85 transition-colors hover:bg-white/[0.07] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a89cff]"
           />
         </div>
 
@@ -102,7 +102,7 @@ export function V2Nav() {
             rel="noopener noreferrer"
             aria-label={stars != null ? `GitHub — ${formatStars(stars)} stars` : "GitHub"}
             onClick={() => event("outbound_click", { url: "github_nav_v2" })}
-            className="hidden items-center gap-2 rounded-full border h-9 sm:h-10 px-3.5 text-xs font-medium text-white/85 transition-all hover:bg-white/5 hover:text-white md:inline-flex"
+            className="hidden items-center gap-2 rounded-full border h-9 sm:h-10 px-3.5 text-xs font-medium text-white/85 transition-colors hover:bg-white/5 hover:text-white md:inline-flex"
             style={{ borderColor: V2.borderDark }}
           >
             <GithubMark className="h-4 w-4" />
@@ -116,7 +116,7 @@ export function V2Nav() {
           <Link
             href="/builder"
             onClick={() => event("cta_click", { location: "nav_v2" })}
-            className="inline-flex items-center gap-1.5 rounded-full whitespace-nowrap px-3 sm:px-4 h-9 sm:h-10 text-xs sm:text-sm font-semibold text-white transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex items-center gap-1.5 rounded-full whitespace-nowrap px-3 sm:px-4 h-9 sm:h-10 text-xs sm:text-sm font-semibold text-white transition-[transform,opacity] hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
             style={{
               background: V2.primary,
               boxShadow: `0 6px 18px -6px ${V2.primary}`,

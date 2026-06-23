@@ -1,6 +1,6 @@
 {
   "name": "oh-my-design-cli",
-  "version": "1.8.5",
+  "version": "1.8.6",
   "description": "Bootstrap oh-my-design skills + agents into your project. After install, talk to your AI coding agent in natural language — no other CLI commands.",
   "type": "module",
   "bin": {
@@ -24,6 +24,7 @@
     "skills/omd-locale-adapter",
     "skills/omd-designer-review",
     "skills/omd-final-qa",
+    "skills/omd-feel",
     "skills/omd-codex-image",
     "skills/claude-design",
     "agents",

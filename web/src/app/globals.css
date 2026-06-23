@@ -180,6 +180,24 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  /* omd:feel — typographic feel (🟡 jakub seed): balance titles so the last
+     line isn't a lonely word; pretty body so paragraphs avoid orphans. */
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+/* omd:feel — global reduced-motion safety net (🟢 a11y SPEC, WCAG 2.3.3).
+   framer-motion is gated separately via <MotionConfig reducedMotion="user">
+   in theme-provider; this covers CSS motion (animate-ping, fade-up,
+   fade-blur-up), hover transitions, and smooth scroll. End-states are kept —
+   motion snaps to its final frame instead of travelling. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* SSR-safe fade-in animation */
