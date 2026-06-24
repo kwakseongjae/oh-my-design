@@ -70,6 +70,26 @@ function extractBackground(md: string): string {
   return '#ffffff';
 }
 
+/** Content-quality score (0..1) — our algorithmic stand-in for a "marquee"
+ *  signal (no per-reference star count exists). Rewards live-extracted tokens,
+ *  an official design-system link, harvested components, and token completeness.
+ *  Globally iconic refs (Apple, Anthropic, Stripe) tend to be the most complete,
+ *  so they surface in "Recommended" even before any popularity accrues. */
+function qualityScore(e: (typeof REGISTRY)[number]): number {
+  const t = e.tokens;
+  let q = 0;
+  const src = t?.source;
+  if (src === 'live-extract') q += 0.35;
+  else if (src === 'design-system' || src === 'reconciled') q += 0.2;
+  else if (src) q += 0.1;
+  if (e.ds) q += 0.2;
+  if (t?.components_harvested) q += 0.15;
+  const colorCount = t?.colors ? Object.keys(t.colors).length : 0;
+  if (colorCount >= 6) q += 0.15;
+  if (t?.typography) q += 0.15;
+  return Math.min(1, q);
+}
+
 export async function GET() {
   const refDir = join(process.cwd(), 'references');
   if (!existsSync(refDir)) {
@@ -80,19 +100,26 @@ export async function GET() {
   // /api/leaderboard endpoint serves. Baking it into this single response
   // (flag + ordering) means the grid never reflows after first paint.
   // Degrades silently to "no hot refs" when KV is unavailable (local dev).
+  // Full popularity map (not just the top 5) so the client can offer a
+  // "Popular" sort and blend popularity into the locale-aware "Recommended"
+  // default. HOT = the top `HOT_LIMIT` of this same map (score > 0).
+  const popMap = new Map<string, number>();
   const hotIds = new Set<string>();
   const redis = getRedis();
   if (redis) {
     try {
-      const raw = await redis.zrange<(string | number)[]>(counterKey('select'), 0, HOT_LIMIT - 1, {
+      const raw = await redis.zrange<(string | number)[]>(counterKey('select'), 0, -1, {
         rev: true,
         withScores: true,
       });
       for (let i = 0; i < raw.length; i += 2) {
-        if (Number(raw[i + 1]) > 0) hotIds.add(String(raw[i]));
+        const id = String(raw[i]);
+        const score = Number(raw[i + 1]);
+        popMap.set(id, score);
+        if (score > 0 && hotIds.size < HOT_LIMIT) hotIds.add(id);
       }
     } catch {
-      /* KV hiccup → no hot pills; the list still renders normally. */
+      /* KV hiccup → no hot pills / zero popularity; list still renders. */
     }
   }
 
@@ -107,36 +134,28 @@ export async function GET() {
         name: e.displayName,
         category: CATEGORY_LABELS[e.category] || e.category,
         country: COUNTRY_LABELS[e.country] || e.country,
+        countryCode: e.country, // raw 2-letter for client locale matching
         primaryColor: e.tokens?.colors?.primary || e.tokens?.color?.primary || extractPrimaryColor(md, e.primaryColor),
         background: e.tokens?.colors?.canvas || e.tokens?.colors?.background || e.tokens?.color?.background || extractBackground(md),
         hot: hotIds.has(e.id),
+        pop: popMap.get(e.id) ?? 0,        // select-counter score, for Popular sort + blend
+        added: e.added ?? null,            // first-added date, for New sort + recency boost
+        quality: qualityScore(e),          // 0..1 content-completeness (marquee proxy)
         tokens: e.tokens ?? null,
       };
-    })
-    .sort((a, b) => {
-      // HOT references float to the top, grouped together. Within the hot and
-      // non-hot partitions the existing country/category order is preserved.
-      if (a.hot !== b.hot) return a.hot ? -1 : 1;
-      // Asian markets first (Korea → Taiwan → Japan), then everything else by industry order.
-      const countryPriority = ['Korea', 'Taiwan', 'Japan'];
-      const ac = countryPriority.indexOf(a.country);
-      const bc = countryPriority.indexOf(b.country);
-      if (ac !== -1 || bc !== -1) {
-        if (ac === -1) return 1;
-        if (bc === -1) return -1;
-        return ac - bc || a.name.localeCompare(b.name);
-      }
-      const order = [
-        'AI & LLM', 'Design Tools', 'Developer Tools',
-        'Productivity', 'Consumer Tech', 'Fintech', 'Backend & DevOps',
-        'E-commerce', 'Automotive', 'Marketing', 'Government',
-      ];
-      const ai = order.indexOf(a.category);
-      const bi = order.indexOf(b.category);
-      const oa = ai === -1 ? 999 : ai;
-      const ob = bi === -1 ? 999 : bi;
-      return oa - ob || a.name.localeCompare(b.name);
     });
+
+  // Locale-agnostic default ordering (HOT first → quality+popularity), so SSR /
+  // no-JS and the first paint are sensible. The client re-sorts by the chosen
+  // mode AND the visitor locale (see reference-selector). The previous hardcoded
+  // KR→TW→JP country pin is gone — it buried globally iconic refs after the HOT 5.
+  const maxPop = Math.max(1, ...entries.map(e => e.pop));
+  entries.sort((a, b) => {
+    if (a.hot !== b.hot) return a.hot ? -1 : 1;
+    const sa = 0.5 * a.quality + 0.5 * (Math.log1p(a.pop) / Math.log1p(maxPop));
+    const sb = 0.5 * b.quality + 0.5 * (Math.log1p(b.pop) / Math.log1p(maxPop));
+    return sb - sa || a.name.localeCompare(b.name);
+  });
 
   return NextResponse.json(entries);
 }

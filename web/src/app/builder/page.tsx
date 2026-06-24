@@ -22,11 +22,19 @@ export interface RefListItem {
   name: string;
   category: string;
   country: string;
+  /** Raw 2-letter code (KR/US/JP…) for locale-aware sort matching. */
+  countryCode: string;
   primaryColor: string;
   background: string;
   /** Among the most-selected references — resolved server-side so the grid
    *  arrives hot-first + badged with no post-render reflow. */
   hot: boolean;
+  /** select-counter score (0 when KV cold) — drives Popular sort + Recommended blend. */
+  pop: number;
+  /** first-added date (YYYY-MM-DD) or null — drives New sort + recency boost. */
+  added: string | null;
+  /** 0..1 content-completeness — the algorithmic "marquee" proxy. */
+  quality: number;
 }
 
 export interface RefDetail {
