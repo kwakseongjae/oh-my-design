@@ -2,7 +2,8 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { trackReferenceSelect, trackSearch, trackCategoryFilter, trackCountryFilter, trackHotFilter } from "@/lib/builder/analytics";
+import { trackReferenceSelect, trackSearch, trackCategoryFilter, trackCountryFilter, trackHotFilter, trackSortChange } from "@/lib/builder/analytics";
+import { sortRefs, SORT_MODES, resolveVisitorCountry, type SortMode } from "@/lib/builder/sort-refs";
 import { Loader2, ArrowRight, ChevronDown, Download } from "lucide-react";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 
@@ -48,6 +49,30 @@ import { isNewRef } from "@/lib/new-refs";
 import { StatusBadge } from "@/components/status-badge";
 import { refMatchesQuery } from "@/lib/search-aliases";
 import type { RefListItem } from "@/app/builder/page";
+
+/** Stable signature for a grid view (sort + active filters). Used to cache which
+ *  views have already been computed so repeat visits swap instantly (no skeleton). */
+function viewSig(sort: SortMode, cat: string | null, country: string | null, hot: boolean): string {
+  return `${sort}|${cat ?? ""}|${country ?? ""}|${hot ? 1 : 0}`;
+}
+
+/** Placeholder grid shown during initial load and while a sort/filter settles —
+ *  matches the real card layout so the swap doesn't shift the page. */
+function SkeletonGrid({ count = 12 }: { count?: number }) {
+  return (
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+      {Array.from({ length: count }).map((_, i) => (
+        <div key={i} className="overflow-hidden rounded-xl border border-border/40 animate-pulse dark:border-border">
+          <div className="h-24 bg-muted/50" />
+          <div className="px-3 py-2.5">
+            <div className="mb-1.5 h-3.5 w-20 rounded bg-muted/50" />
+            <div className="h-2.5 w-14 rounded bg-muted/30" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function ReferenceSelector({
   refs,
@@ -97,6 +122,40 @@ export function ReferenceSelector({
   const [selectedCat, setSelectedCat] = useState<string | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [hotOnly, setHotOnly] = useState(false);
+  const [sortMode, setSortMode] = useState<SortMode>("recommend");
+  // Visitor region for the locale-aware "Recommended" sort. Seed from the
+  // browser language immediately (no flash), then refine via /api/geo (IP).
+  const [visitorCountry, setVisitorCountry] = useState<string>(() =>
+    resolveVisitorCountry(null, typeof navigator !== "undefined" ? navigator.language : undefined),
+  );
+  useEffect(() => {
+    let alive = true;
+    fetch("/api/geo")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (alive && j?.country) setVisitorCountry(resolveVisitorCountry(j.country, navigator.language));
+      })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, []);
+
+  // Sort/filter changes re-order the grid. Rather than animate cards flying to
+  // new positions (chaotic), briefly show a skeleton then render the settled
+  // order — BUT only the FIRST time a given view is shown. Repeat visits to a
+  // view we've already computed swap instantly (cached). Fired explicitly from
+  // the discrete sort + chip-filter handlers — NOT on live search (no
+  // per-keystroke flash) and NOT on the async geo resolve.
+  const [recomputing, setRecomputing] = useState(false);
+  const recomputeTimer = useRef<ReturnType<typeof setTimeout>>(null);
+  // Seed with the initial view so returning to it never re-skeletons.
+  const seenViews = useRef<Set<string>>(new Set([viewSig("recommend", null, null, false)]));
+  const flagRecompute = useCallback((sig: string) => {
+    if (seenViews.current.has(sig)) return; // already computed → instant swap
+    seenViews.current.add(sig);
+    setRecomputing(true);
+    if (recomputeTimer.current) clearTimeout(recomputeTimer.current);
+    recomputeTimer.current = setTimeout(() => setRecomputing(false), 260);
+  }, []);
   // HOT is resolved server-side and arrives on each ref as `ref.hot`, so the
   // grid is already hot-first + badged on first paint — no async reflow.
   const hasHot = refs.some((r) => r.hot);
@@ -159,15 +218,25 @@ export function ReferenceSelector({
     }
   }, [refs]);
 
-  // `refs` already arrives hot-first from /api/references, so the grid renders
-  // in the right order on first paint — no client-side re-sort needed.
-  const filtered = refs.filter((r) => {
-    if (hotOnly && !r.hot) return false;
-    if (selectedCat && r.category !== selectedCat) return false;
-    if (selectedCountry && r.country !== selectedCountry) return false;
-    if (filter && !refMatchesQuery(r, filter)) return false;
-    return true;
-  });
+  // Filter, then sort by the chosen mode + visitor locale. Sorting is
+  // client-side because "Recommended" is locale-aware (see lib/builder/sort-refs).
+  const filtered = sortRefs(
+    refs.filter((r) => {
+      if (hotOnly && !r.hot) return false;
+      if (selectedCat && r.category !== selectedCat) return false;
+      if (selectedCountry && r.country !== selectedCountry) return false;
+      if (filter && !refMatchesQuery(r, filter)) return false;
+      return true;
+    }),
+    sortMode,
+    visitorCountry,
+  );
+
+  const handleSortChange = (mode: SortMode) => {
+    setSortMode(mode);
+    trackSortChange(mode);
+    flagRecompute(viewSig(mode, selectedCat, selectedCountry, hotOnly));
+  };
 
   return (
     <div>
@@ -246,6 +315,40 @@ export function ReferenceSelector({
               </button>
             )}
           </div>
+
+          {/* Sort mode — Recommended (locale-aware) is default. Swift-style
+              segmented control: a single glass pill slides between options via
+              framer-motion shared layout (`layoutId`). Glassmorphism container +
+              primary pill. */}
+          <div
+            className="relative flex shrink-0 items-center gap-0.5 rounded-xl border border-white/20 bg-white/10 p-1 shadow-sm ring-1 ring-inset ring-white/10 backdrop-blur-xl backdrop-saturate-150 dark:border-white/10 dark:bg-white/5"
+            role="group"
+            aria-label="Sort references"
+          >
+            {SORT_MODES.map(({ mode, label }) => {
+              const active = sortMode === mode;
+              return (
+                <button
+                  key={mode}
+                  type="button"
+                  onClick={() => handleSortChange(mode)}
+                  aria-pressed={active}
+                  className={`relative rounded-lg px-3 py-1.5 text-xs font-medium transition-colors duration-200 ${
+                    active ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {active && (
+                    <motion.span
+                      layoutId="sortPill"
+                      transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                      className="absolute inset-0 rounded-lg bg-primary shadow-md shadow-primary/25 ring-1 ring-inset ring-white/25"
+                    />
+                  )}
+                  <span className="relative z-10">{label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Row 2 — Unified facet bar: categories + philosophy + country.
@@ -263,7 +366,7 @@ export function ReferenceSelector({
               label instead of "More" so the state stays legible. */}
           <div className="relative flex flex-wrap gap-1.5">
             <button
-              onClick={() => setSelectedCat(null)}
+              onClick={() => { setSelectedCat(null); flagRecompute(viewSig(sortMode, null, selectedCountry, hotOnly)); }}
               className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 !selectedCat
                   ? "bg-primary text-primary-foreground shadow-sm"
@@ -276,7 +379,7 @@ export function ReferenceSelector({
             {primaryCategories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) trackCategoryFilter(next); }}
+                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) trackCategoryFilter(next); flagRecompute(viewSig(sortMode, next, selectedCountry, hotOnly)); }}
                 className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                   selectedCat === cat
                     ? "bg-primary text-primary-foreground shadow-sm"
@@ -291,7 +394,7 @@ export function ReferenceSelector({
             {overflowCategories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) trackCategoryFilter(next); }}
+                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) trackCategoryFilter(next); flagRecompute(viewSig(sortMode, next, selectedCountry, hotOnly)); }}
                 className={`hidden sm:inline-flex rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                   selectedCat === cat
                     ? "bg-primary text-primary-foreground shadow-sm"
@@ -343,6 +446,7 @@ export function ReferenceSelector({
                               setSelectedCat(next);
                               setCatMoreOpen(false);
                               if (next) trackCategoryFilter(next);
+                              flagRecompute(viewSig(sortMode, next, selectedCountry, hotOnly));
                             }}
                             className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium transition-colors ${
                               active ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
@@ -418,6 +522,7 @@ export function ReferenceSelector({
                     onClick={() => {
                       setSelectedCountry(null);
                       setCountryMoreOpen(false);
+                      flagRecompute(viewSig(sortMode, selectedCat, null, hotOnly));
                     }}
                     className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium transition-colors ${
                       !selectedCountry ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
@@ -437,6 +542,7 @@ export function ReferenceSelector({
                           setSelectedCountry(next);
                           setCountryMoreOpen(false);
                           if (next) trackCountryFilter(next);
+                          flagRecompute(viewSig(sortMode, selectedCat, next, hotOnly));
                         }}
                         className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium transition-colors ${
                           active ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
@@ -461,7 +567,7 @@ export function ReferenceSelector({
               when the response carries at least one hot ref. */}
           {hasHot && (
             <button
-              onClick={() => { const next = !hotOnly; setHotOnly(next); trackHotFilter(next); }}
+              onClick={() => { const next = !hotOnly; setHotOnly(next); trackHotFilter(next); flagRecompute(viewSig(sortMode, selectedCat, selectedCountry, next)); }}
               aria-pressed={hotOnly}
               className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 hotOnly
@@ -499,14 +605,20 @@ export function ReferenceSelector({
         </div>
       )}
 
-      {/* Grid */}
+      {/* Grid — show a skeleton during initial load OR while a sort/filter
+          settles, then render the cards. We swap via skeleton instead of
+          animating cards to new positions (the old `layout` FLIP looked chaotic). */}
+      {(initialLoading && refs.length === 0) || recomputing ? (
+        // Size the skeleton to the result count so its height matches the cards
+        // it replaces — no layout shift / page push during the swap.
+        <SkeletonGrid count={initialLoading ? 12 : filtered.length || 12} />
+      ) : (
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         <AnimatePresence mode="popLayout">
           {filtered.map((ref, i) => {
             return (
               <motion.button
                 key={ref.id}
-                layout
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
@@ -565,24 +677,10 @@ export function ReferenceSelector({
           })}
         </AnimatePresence>
       </div>
-
-      {/* Loading skeleton */}
-      {initialLoading && refs.length === 0 && (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="rounded-xl border border-border/40 dark:border-border overflow-hidden animate-pulse">
-              <div className="h-24 bg-muted/50" />
-              <div className="px-3 py-2.5">
-                <div className="h-3.5 w-20 bg-muted/50 rounded mb-1.5" />
-                <div className="h-2.5 w-14 bg-muted/30 rounded" />
-              </div>
-            </div>
-          ))}
-        </div>
       )}
 
       {/* True empty state (after loading, with filter applied) */}
-      {filtered.length === 0 && !loading && !initialLoading && (
+      {filtered.length === 0 && !loading && !initialLoading && !recomputing && (
         <div className="flex flex-col items-center py-20 text-center">
           <SearchIcon className="h-10 w-10 text-muted-foreground/30 mb-3" />
           <div className="text-muted-foreground">No references found</div>
