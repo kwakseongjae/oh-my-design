@@ -67,6 +67,11 @@ export function trackCategoryFilter(category: string) {
   event("bld_category_filter", { category });
 }
 
+/** Reference grid sort mode changed (recommend|popular|az|new). */
+export function trackSortChange(mode: string) {
+  event("bld_sort_change", { mode });
+}
+
 export function trackCountryFilter(country: string) {
   event("bld_country_filter", { country });
 }
