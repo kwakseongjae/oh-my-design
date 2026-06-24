@@ -103,7 +103,7 @@ Generic collisions to namespace in a follow-up (likely landing-scope, out of thi
 | `channel` (export) | enum `download\|copy` | 2 | on `bld_export` / `ds_export` |
 | `channel` (view) | enum `direct\|search\|social\|ai\|referral\|internal` | 6 | on `ds_detail_view` — bucketed referrer |
 | `entry` | enum `search\|browse\|hot\|deeplink` | 4 | how the reference was reached |
-| `surface` (install) | enum `preview\|hero\|footer` | 3 | where the install command was copied |
+| `surface` (install) | enum `hero\|ref_detail\|collection\|builder` | 4 | where the install command was copied (matches `InstallSurface` in `lib/activation/analytics.ts`) |
 | `category` | enum (catalog categories) | ~12 | finite |
 | `token` | enum `color\|font\|weight\|radius\|dark\|components` | 6 | which style was customized |
 | `query_len_bucket` | enum (`0`,`1-5`,…) | 7 | replaces raw search query |
@@ -113,6 +113,33 @@ Generic collisions to namespace in a follow-up (likely landing-scope, out of thi
 **Banned:** raw `query`, `referrer`/`url`, `brand_name`, array `.join(",")` of free text.
 
 ---
+
+## Active users (DAU / WAU / MAU) — server-side, consent-independent
+
+GA4/Mixpanel DAU is consent-gated (EU fail-closed) and ad-blocker-lossy, so it
+under-counts and *swings whenever dashboards or config change* — which is exactly
+how the 2026-06-23 taxonomy reset reads as a "decline" that isn't real. The
+north-star (DAU=1000) needs a floor that does NOT depend on GA4 being configured
+or consent being granted.
+
+**Mechanism (added 2026-06-24):**
+- Client: `src/lib/active.ts` → `pulseActive()`, mounted once in `AnalyticsInit`.
+  Generates a random first-party visitor id (`localStorage omd:vid`, no PII) and
+  pings `/api/active` **once per session** (`sessionStorage` dedupe).
+- Server: `POST /api/active` → `PFADD omd:active:YYYYMMDD <vid>` (+ 35-day TTL).
+  One HyperLogLog per UTC day; Redis keeps an aggregate cardinality sketch only,
+  never the individual ids.
+- Read: `GET /api/active` → `{ dau, wau, mau }`. DAU = today's sketch; rolling
+  WAU/MAU = `PFCOUNT` *union* of the trailing 7 / 30 day keys (no per-window
+  writes). CLI: `node scripts/analytics/pull-active.mjs` (writes
+  `data/analytics/raw/active.json` incl. a 30-day per-day DAU series).
+
+**Why it's privacy-safe & consent-independent:** the beacon carries no analytics
+payload (no page, no referrer, no event) — purely "a unique browser was active
+today" — and is irreversibly folded into an aggregate HLL. Treat it as the truth
+for *active users*; keep GA4/Mixpanel for *what they did* (the funnel). If legal
+later wants this consent-gated, move `pulseActive()` behind the same gate as GA —
+but you then re-inherit the ad-blocker/consent under-count.
 
 ## Upstash counter fix (per-reference popularity)
 
