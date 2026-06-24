@@ -595,7 +595,16 @@ function normalizeRadius(raw?: string): string | undefined {
     if (m) return `${Math.round(parseFloat(m[1]))}px`;
     return undefined;
   }
-  return v;
+  // Unit-less numerics (structured `tokens.components` frontmatter writes
+  // `radius: 12`, which reaches us as the STRING "12") are invalid as a CSS
+  // `border-radius` — React only auto-appends px to *numeric* style values,
+  // not numeric strings — so they silently read as sharp corners. Append px
+  // to each bare number, leaving units/percentages/keywords (`18px`, `50%`)
+  // untouched. Covers single (`12`), pill (`9999`), and asymmetric (`18 4 18 18`).
+  return v
+    .split(/\s+/)
+    .map((tok) => (/^\d+(?:\.\d+)?$/.test(tok) ? `${tok}px` : tok))
+    .join(" ");
 }
 
 /** Radius fallback per component type — used when DESIGN.md prose for a
@@ -1006,7 +1015,18 @@ const SPEC_FIELD_ORDER: { key: keyof ComponentVariant; label: string }[] = [
 
 function VariantSpec({ variant }: { variant: ComponentVariant }) {
   const rows = SPEC_FIELD_ORDER
-    .map(({ key, label }) => ({ label, value: variant[key] as string | undefined }))
+    .map(({ key, label }) => {
+      let value = variant[key] as string | undefined;
+      // Display radius with units so unit-less frontmatter tokens (`radius: 12`)
+      // read consistently with prose refs (`12px`) — mirrors the preview fix.
+      if (key === "radius" && value) {
+        value = String(value)
+          .split(/\s+/)
+          .map((tok) => (/^\d+(?:\.\d+)?$/.test(tok) ? `${tok}px` : tok))
+          .join(" ");
+      }
+      return { label, value };
+    })
     .filter((r) => r.value);
   const extras = Object.entries(variant.extras);
   return (
