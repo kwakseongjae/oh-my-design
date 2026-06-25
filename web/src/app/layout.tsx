@@ -63,7 +63,14 @@ export const metadata: Metadata = {
   verification: {
     google: "5mZuqjPvdwYTXpJrByQX2i7xM73aQj3Vn1UcpyJhCr4",
     other: {
-      "naver-site-verification": "ecee2aa716d5ed7e257dcce5f72222e03f3512d4",
+      // Two tokens: the legacy www.oh-my-design.kr property and the apex
+      // oh-my-design.kr property (apex is the canonical 200 host crawlers see;
+      // www 308-redirects to it). Next renders one <meta> per array entry, so
+      // both Search Advisor properties verify off the same deployment.
+      "naver-site-verification": [
+        "ecee2aa716d5ed7e257dcce5f72222e03f3512d4",
+        "a2e4997db92c96180459be3eca9d4daeb4d14152",
+      ],
     },
   },
   openGraph: {
