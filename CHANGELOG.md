@@ -6,6 +6,18 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.8.7 — 2026-06-26
+
+**30 new Korean company references added (catalog 326 → 356; KR refs 119 → 149) via the full 탐색→선발→수집→검수→배포 pipeline — every ref Tier-1 brand-owned proof-gated.**
+
+- Coverage deliberately steered toward under-represented categories: **AI 7** (nota·rebellions·furiosaai·returnzero·makinarocks·supertone·neosapience), **marketing 4** (airbridge·buzzvil·datarize·bigin), **education 3** (goorm·elice·codeit), **SaaS 3** (saramin·lemonbase·shiftee), **ecommerce 3** (kyobobook·cafe24·queenit), **developer-tools 2** (hackle·solapi), **backend-devops 2** (lablup·moreh), **consumer-tech 2** (hwahae·weverse), **fintech 2** (portone·kcd), **automotive 1** (greencar), **healthcare 1** (vuno).
+- Standouts carry named / official design systems: goorm (Vapor UI), 교보문고 (KDS), 화해 (HDS), cafe24 (Smart Design), lablup (Backend.AI WebUI).
+- Discovery fanned 8 sector agents (101 raw → 89 unique, deduped vs the full 326-id catalog); two LLM-drift duplicates caught at curation (`wadiz`, `yeogi`==`yeogiotte`) and swapped for clean alternates. Build ran one CREATE subagent per brand in waves of 5 (Tier-1 live Playwright `getComputedStyle` over ≥2 brand-owned surfaces each).
+- All 30 pass `verify-reference` 27/27 + catalog-integrity (16 files / 594 tests). KR proof gate met for every ref: ≥2 brand-owned Tier-1 sources + `## Proof` block (≥80 raw computed-style samples). Tier 2 (getdesign / refero) empty for all 30, as `spec/regional-sources.yaml` anticipates.
+- Audit: `data/reference-audits/2026-06-26-kr30.md` (23 High / 7 Medium / 0 Low). Counts propagated by `sync-catalog.mjs` (README ×4, llms.txt, SEO layouts, fingerprints ×3, design-md mirror).
+
+---
+
 ## 1.8.6 — 2026-06-23
 
 **New skill `omd:feel` — quantifies the design / frontend industry's "gut-feel" into 113 provenance-graded, machine-checkable interface rules an AI can APPLY (inject motion / spacing / type / a11y defaults during UI work) and AUDIT (BLOCK / WARN / FYI). Inherits Jakub Krehel's `make-interfaces-feel-better` and extends it with Apple HIG / Material 3 / WCAG / design-system tokens + practitioner research.**

@@ -37,7 +37,7 @@ export const viewport = {
 export const metadata: Metadata = {
   title: "oh-my-design — DESIGN.md for AI coding agents",
   description:
-    "One DESIGN.md spec. 326 real brands extracted. Make Claude Code, Codex, OpenCode, and Cursor ship UI that actually looks like Stripe, Toss, or Linear — not slop. 18 skills · 16 sub-agents · zero AI calls during install. MIT open source.",
+    "One DESIGN.md spec. 356 real brands extracted. Make Claude Code, Codex, OpenCode, and Cursor ship UI that actually looks like Stripe, Toss, or Linear — not slop. 18 skills · 16 sub-agents · zero AI calls during install. MIT open source.",
   keywords: [
     "design system",
     "DESIGN.md",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "oh-my-design — DESIGN.md for AI coding agents",
     description:
-      "326 real brands extracted into one DESIGN.md spec your AI coding agent reads as ground truth before it codes. 18 skills, 16 sub-agents, zero AI calls during install.",
+      "356 real brands extracted into one DESIGN.md spec your AI coding agent reads as ground truth before it codes. 18 skills, 16 sub-agents, zero AI calls during install.",
     // og:url intentionally omitted — same inheritance reason as canonical.
     siteName: "oh-my-design",
     images: [
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "oh-my-design — DESIGN.md for AI coding agents",
     description:
-      "326 real brands extracted. 18 skills · 16 sub-agents · zero AI calls during install. Talk to Claude Code, Codex, OpenCode, or Cursor in your brand.",
+      "356 real brands extracted. 18 skills · 16 sub-agents · zero AI calls during install. Talk to Claude Code, Codex, OpenCode, or Cursor in your brand.",
     images: ["/twitter-image.png"],
   },
 };
@@ -131,7 +131,7 @@ export default function RootLayout({
                   name: "oh-my-design",
                   url: siteUrl,
                   description:
-                    "DESIGN.md as ground truth for AI coding agents. 326 real brand references, 18 skills, 16 sub-agents — installed in one npx command.",
+                    "DESIGN.md as ground truth for AI coding agents. 356 real brand references, 18 skills, 16 sub-agents — installed in one npx command.",
                   potentialAction: {
                     "@type": "SearchAction",
                     target: `${siteUrl}/design-systems?q={search_term_string}`,
@@ -149,7 +149,7 @@ export default function RootLayout({
                   softwareVersion: CLI_VERSION,
                   license: "https://opensource.org/licenses/MIT",
                   description:
-                    "Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 18 skills + 16 sub-agents + 326 reference DESIGN.md files. Install once, then talk to your agent in natural language.",
+                    "Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 18 skills + 16 sub-agents + 356 reference DESIGN.md files. Install once, then talk to your agent in natural language.",
                   offers: {
                     "@type": "Offer",
                     price: "0",
@@ -159,7 +159,7 @@ export default function RootLayout({
                     "18 skills: core flow (apply / init / harness / remember / learn / sync / taste) + capture/assets + v0.2 agent layer (orchestrator / kr-writer / locale-adapter / designer-review / final-qa / codex-image) + omd:feel (quantified interface-feel — apply + audit) + standalone claude-design",
                     "16 sub-agents: master orchestrator + 15 specialists with advisor/generator pairs",
                     "10-phase design pipeline (Plan → System → Make → Validate)",
-                    "326 reference DESIGN.md files (Stripe, Toss, Linear, Vercel, Anthropic, Notion, etc.)",
+                    "356 reference DESIGN.md files (Stripe, Toss, Linear, Vercel, Anthropic, Notion, etc.)",
                     "Zero AI calls during install — pure markdown copy",
                     "Supports Claude Code, Codex, OpenCode, Cursor",
                     "Brand-philosophy layer on every reference — voice, narrative, principles, personas, states, motion",
@@ -192,7 +192,7 @@ export default function RootLayout({
                       "@type": "HowToStep",
                       position: 2,
                       name: "Bootstrap a DESIGN.md",
-                      text: 'Open Claude Code / Codex / OpenCode / Cursor and say: "Set up the design system for [your project description]." The agent picks one of 326 references, proposes a hybrid DESIGN.md, asks for confirmation, writes the file plus shims (CLAUDE.md / AGENTS.md / .cursor/rules).',
+                      text: 'Open Claude Code / Codex / OpenCode / Cursor and say: "Set up the design system for [your project description]." The agent picks one of 356 references, proposes a hybrid DESIGN.md, asks for confirmation, writes the file plus shims (CLAUDE.md / AGENTS.md / .cursor/rules).',
                     },
                     {
                       "@type": "HowToStep",
