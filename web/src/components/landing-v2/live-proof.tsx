@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type TouchEvent as RTouchEvent } from "react";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 import { V2, BRAND_COLORS } from "./tokens";
 import { getLogoUrl, getLogoFallbackUrl } from "@/lib/logos";
 
@@ -116,42 +117,23 @@ export function LiveProof() {
     };
   }, []);
 
-  useEffect(() => {
+  // Desktop: pin the section (CSS position:sticky) and scrub the active brand
+  // by scroll progress — same behaviour as the previous gsap ScrollTrigger, but
+  // on the framer-motion engine the rest of the landing already uses (no second
+  // animation library, no separate gsap chunk). The tall outer section provides
+  // BRANDS.length*400px of scroll travel; the sticky inner stays pinned across it.
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+  useMotionValueEvent(scrollYProgress, "change", (progress) => {
     if (reduced || isMobile) return;
-    let ctx: { revert: () => void } | undefined;
-    let cancelled = false;
-    (async () => {
-      const gsapMod = await import("gsap");
-      const stMod = await import("gsap/ScrollTrigger");
-      if (cancelled) return;
-      const gsap = gsapMod.gsap ?? gsapMod.default;
-      const ScrollTrigger = stMod.ScrollTrigger ?? stMod.default;
-      gsap.registerPlugin(ScrollTrigger);
-
-      const el = sectionRef.current;
-      if (!el) return;
-      ctx = gsap.context(() => {
-        ScrollTrigger.create({
-          trigger: el,
-          start: "top top",
-          end: `+=${BRANDS.length * 400}`,
-          pin: true,
-          scrub: 0.6,
-          onUpdate: (self: { progress: number }) => {
-            const idx = Math.min(
-              BRANDS.length - 1,
-              Math.floor(self.progress * BRANDS.length)
-            );
-            setActiveIdx(idx);
-          },
-        });
-      }, el);
-    })();
-    return () => {
-      cancelled = true;
-      ctx?.revert();
-    };
-  }, [reduced, isMobile]);
+    const idx = Math.min(
+      BRANDS.length - 1,
+      Math.floor(progress * BRANDS.length)
+    );
+    setActiveIdx(idx);
+  });
 
   // Mobile/reduced: gentle auto-advance through brands; pauses after interaction.
   useEffect(() => {
@@ -262,10 +244,10 @@ export function LiveProof() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden"
-      style={{ height: "100vh", background: V2.bgLight }}
+      style={{ height: `calc(100vh + ${BRANDS.length * 400}px)`, background: V2.bgLight }}
     >
-      <div className="mx-auto flex h-full max-w-6xl flex-col px-4 sm:px-6 py-16">
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <div className="mx-auto flex h-full max-w-6xl flex-col px-4 sm:px-6 py-16">
         <Header />
 
         <div className="mt-8 grid flex-1 grid-cols-1 gap-8 lg:grid-cols-[1fr_1fr]">
@@ -354,6 +336,7 @@ export function LiveProof() {
             </span>{" "}
             {active.excerpt}
           </div>
+        </div>
         </div>
       </div>
     </section>

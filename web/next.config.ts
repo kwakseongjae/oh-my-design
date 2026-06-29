@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["shadcn", "tw-animate-css"],
   trailingSlash: false,
   // Hide the dev-only on-screen route indicator (the floating "N" badge in
   // bottom-left). Errors still surface normally; this only removes the
