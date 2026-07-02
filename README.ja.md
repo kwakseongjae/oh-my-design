@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>AI コーディングエージェントのためのスキル駆動デザイン — コマンド 1 回でブートストラップ。</strong>356 社の実在する企業デザインシステム。インストールに AI 呼び出しゼロ。あとはエージェントに話しかけるだけ。
+  <strong>AI コーディングエージェントのためのスキル駆動デザイン — コマンド 1 回でブートストラップ。</strong>400 社の実在する企業デザインシステム。インストールに AI 呼び出しゼロ。あとはエージェントに話しかけるだけ。
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/dm/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
-  <img src="https://img.shields.io/badge/references-356-7c5cfc?style=flat-square" alt="356 References" />
+  <img src="https://img.shields.io/badge/references-400-7c5cfc?style=flat-square" alt="400 References" />
   <img src="https://img.shields.io/badge/CLI%20commands-1-blue?style=flat-square" alt="One CLI command" />
 </p>
 
@@ -25,7 +25,7 @@
 
 ## oh-my-design とは?
 
-**oh-my-design (OmD)** は AI コーディングエージェントのためのデザインシステムです。Claude Code / Codex / OpenCode / Cursor を、あなたのブランドを記憶したシニアプロダクトデザイナーに変えます。一度インストールすれば、あとは欲しいものを説明するだけ — コンポーネント、画面、コピー、アセット、チャート — エージェントがプロジェクトのデザインシステムを適用して出力します。`DESIGN.md` がブランド仕様([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) トークン + ブランド哲学レイヤー: Voice / Narrative / Principles / Personas / States / Motion)で、356 社の実在企業の DESIGN.md がパッケージに同梱されています。**API キー不要。外部インフラ不要。すべて既存の CLI セッション内で動作します。**
+**oh-my-design (OmD)** は AI コーディングエージェントのためのデザインシステムです。Claude Code / Codex / OpenCode / Cursor を、あなたのブランドを記憶したシニアプロダクトデザイナーに変えます。一度インストールすれば、あとは欲しいものを説明するだけ — コンポーネント、画面、コピー、アセット、チャート — エージェントがプロジェクトのデザインシステムを適用して出力します。`DESIGN.md` がブランド仕様([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) トークン + ブランド哲学レイヤー: Voice / Narrative / Principles / Personas / States / Motion)で、400 社の実在企業の DESIGN.md がパッケージに同梱されています。**API キー不要。外部インフラ不要。すべて既存の CLI セッション内で動作します。**
 
 ## インストール
 
@@ -50,7 +50,7 @@ npx oh-my-design-cli install-skills
 
 ## パッケージの中身
 
-**18 スキル · 16 サブエージェント · 356 の検証済みリファレンス · 活性化 hooks** — 上記コマンド 1 回ですべてインストールされます。
+**18 スキル · 16 サブエージェント · 400 の検証済みリファレンス · 活性化 hooks** — 上記コマンド 1 回ですべてインストールされます。
 
 すべてのリファレンスは `oh-my-design.kr/<id>/design.md` から raw markdown としても取得でき、エージェントが直接 fetch できます。スキル・エージェントごとの詳細リファレンス: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**。
 

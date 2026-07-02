@@ -8,7 +8,7 @@ homepage: "https://www.dabangapp.com"
 primary_color: "#ff3478"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=dabangapp.com&sz=256"
+  slug: "https://www.dabangapp.com/static/favicon.ico"
 verified: "2026-05-15"
 omd: "0.1"
 tokens:

@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-06-26T00:00:00Z",
+ "generated_at": "2026-07-02T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 356,
+ "count": 400,
  "items": [
   {
    "id": "11st",
@@ -112,6 +112,30 @@
    "category_raw": "fintech"
   },
   {
+   "id": "42dot",
+   "primary_color_hex": "#786efa",
+   "category": "automotive",
+   "visual_theme": "42dot (포티투닷) is Hyundai Motor Group's mobility-AI company, and its site reads exactly like an engineering-led autonomy lab that happens to have taste: a near-monochrome black-and-white system, cinematic dark hero footage, and a single restrained accent. The ho",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "flat",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
+  },
+  {
    "id": "591",
    "primary_color_hex": "#ff8000",
    "category": "consumer-tech",
@@ -134,6 +158,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "8percent",
+   "primary_color_hex": "#3282f0",
+   "category": "fintech",
+   "visual_theme": "8percent (에잇퍼센트) is Korea's first licensed online investment-linked finance (온투업) platform, and its product surface reads exactly like what it is: a data-dense, trust-first financial marketplace that stays calm instead of loud. The page sits on a soft cool-gre",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "91app",
@@ -475,6 +523,30 @@
    "category_raw": "productivity"
   },
   {
+   "id": "asleep",
+   "primary_color_hex": "#2a75fc",
+   "category": "ai",
+   "visual_theme": "Asleep (에이슬립) is a KAIST-born sleep-tech AI company, and its marketing site reads exactly like that lineage suggests: a dark, cinematic, research-grade surface where a single electric blue does all the persuading. The hero canvas is a near-black `#121212`, tex",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
+  },
+  {
    "id": "asos",
    "primary_color_hex": "#2d2d2d",
    "category": "ecommerce",
@@ -497,6 +569,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ecommerce"
+  },
+  {
+   "id": "autopedia",
+   "primary_color_hex": "#7A00FF",
+   "category": "automotive",
+   "visual_theme": "Autopedia (오토피디아) — the company behind the 닥터차(Dr.Cha) automotive-aftermarket platform — presents itself with a stark, high-contrast corporate identity that reads as engineering-forward rather than consumer-cute. The canvas is pure white (`#ffffff`) and the ty",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "playful",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
   },
   {
    "id": "baemin",
@@ -574,6 +670,30 @@
    "category_raw": "Fintech / Personal Finance Advisor"
   },
   {
+   "id": "barogo",
+   "primary_color_hex": "#fa5014",
+   "category": "consumer-tech",
+   "visual_theme": "Barogo (바로고) is one of Korea's largest last-mile delivery-dispatch platforms — the logistics rails beneath thousands of restaurants and stores — and its website carries the confident, high-energy plainness of an operator that moves physical goods for a living.",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "bbc",
    "primary_color_hex": "#000000",
    "category": "consumer-tech",
@@ -596,6 +716,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "beusable",
+   "primary_color_hex": "#ec0047",
+   "category": "marketing",
+   "visual_theme": "Beusable (뷰저블), built by the Korean analytics company 4Grit (포그리트), is a CX-data and UX-heatmap SaaS whose marketing site pairs a cinematic dark hero with crisp, high-contrast white product sections. The homepage opens on a near-black band (`#181818`) where a ",
+   "voice_fingerprint": {
+    "register": "marketing",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "marketing"
   },
   {
    "id": "bigin",
@@ -967,6 +1111,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "cjonstyle",
+   "primary_color_hex": "#640faf",
+   "category": "ecommerce",
+   "visual_theme": "CJ ONSTYLE (CJ온스타일) is Korea's flagship TV-home-shopping-and-commerce brand, and its storefront reads exactly as that heritage suggests: a dense, information-rich, conversion-first retail grid rather than an airy editorial site. The canvas is pure white (`#fff",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
    "id": "class101",
    "primary_color_hex": "#FF5D00",
    "category": "Consumer",
@@ -1286,6 +1454,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "corca",
+   "primary_color_hex": "#1a2352",
+   "category": "ai",
+   "visual_theme": "Corca (코르카) is a Korean AI company whose corporate site frames the whole business around a single confident sentence — \"코르카는 AI 기술로 세상을 바꾸고 있습니다\" (\"Corca is changing the world with AI technology\"). The site is built on Wix, and its atmosphere is that of a youn",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
+  },
+  {
    "id": "coupang",
    "primary_color_hex": "#E94B22",
    "category": "E-commerce",
@@ -1398,6 +1590,30 @@
    "has_personas": true,
    "category_raw": "Real Estate Listings (Station3)",
    "country": "KR"
+  },
+  {
+   "id": "dable",
+   "primary_color_hex": "#0071ce",
+   "category": "marketing",
+   "visual_theme": "Dable (데이블) is Korea's leading content-discovery and native-advertising platform, and its site reads like a confident, technology-forward adtech product rather than a busy media page. The canvas is pure white (`#ffffff`) broken up by full-bleed dark cinematic ",
+   "voice_fingerprint": {
+    "register": "marketing",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "marketing"
   },
   {
    "id": "danawa",
@@ -1515,6 +1731,30 @@
    "signature_motion": "Material easing cubic-bezier(.4,0,.2,1) with .15s hover/press and .3s page transitions.",
    "has_personas": false,
    "category_raw": "social"
+  },
+  {
+   "id": "dealicious",
+   "primary_color_hex": "#001339",
+   "category": "ecommerce",
+   "visual_theme": "Dealicious (딜리셔스) is the company behind 신상마켓 (Sinsang Market), Korea's No.1 K-fashion wholesale (도소매) trading platform, and its corporate surface reads like a confident, editorial tech company rather than a busy commerce site. The canvas is pure white (`#fffff",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "deliveroo",
@@ -1722,6 +1962,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "drdiary",
+   "primary_color_hex": "#3eaeff",
+   "category": "healthcare",
+   "visual_theme": "Dr.diary (닥터다이어리) is a Korean healthcare and lifestyle-tech company built around hyper-personalized chronic-disease care — blood-glucose tracking, continuous glucose monitoring (CGM), and data-driven diabetes management. Its corporate site reads as clean, clin",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
   },
   {
    "id": "drnow",
@@ -2058,6 +2322,30 @@
    "category_raw": "saas"
   },
   {
+   "id": "fitpet",
+   "primary_color_hex": "#0050ff",
+   "category": "healthcare",
+   "visual_theme": "Fitpet (핏펫) is Korea's pet-healthcare and pet-commerce brand — an at-home health-check kit, a curated product mall, and an animal-hospital booking flow, all under one confident blue. The system spans two surfaces with one identity: a clean, editorial corporate",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
+  },
+  {
    "id": "flex",
    "primary_color_hex": "#000000",
    "category": "Productivity",
@@ -2141,6 +2429,54 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "saas"
+  },
+  {
+   "id": "friendliai",
+   "primary_color_hex": "#2a62db",
+   "category": "ai",
+   "visual_theme": "FriendliAI (프렌들리에이아이) is a Korean AI-infrastructure company whose homepage presents itself as \"The Frontier AI Inference Cloud\" — and the design reads exactly like that positioning: technical, exact, and quietly confident, the visual language of a systems comp",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "minimal",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
+  },
+  {
+   "id": "frip",
+   "primary_color_hex": "#7a29fa",
+   "category": "consumer-tech",
+   "visual_theme": "Frip (프립) is Korea's self-described \"대한민국 1등 취미여가 탐색 플랫폼\" (No.1 hobby-and-leisure discovery platform) — a marketplace where people book experiences, classes, and social outings. Its web surface reads like a bright, content-dense commerce feed rather than a min",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "fubon",
@@ -2271,6 +2607,30 @@
    "signature_motion": "Hospital card hover: 1px #d8dfe6 hairline darkens; orange accent appears only on the booking CTA, never on hover decoration.",
    "has_personas": true,
    "category_raw": "Healthcare / Cosmetic-Procedure Discovery"
+  },
+  {
+   "id": "gaudiolab",
+   "primary_color_hex": "#00b7ff",
+   "category": "ai",
+   "visual_theme": "Gaudio Lab (가우디오랩) is a Korean AI-audio technology company, and its website reads like a research lab that learned restraint from consumer product design. The canvas is almost entirely pure white (`#ffffff`), sectioned by wide bands of full-bleed video and nea",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "dark",
+    "flat",
+    "trustworthy"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
   },
   {
    "id": "gaudiy",
@@ -2787,6 +3147,30 @@
    "category_raw": "productivity"
   },
   {
+   "id": "heydealer",
+   "primary_color_hex": "#396eff",
+   "category": "consumer-tech",
+   "visual_theme": "Heydealer (헤이딜러) is Korea's app-first used-car platform — a reverse-auction sell-my-car service and certified buy-a-car marketplace operated by PRND — and its web surface reads like a fast, engineered product tool rather than a glossy automotive brochure. The ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "hogangnono",
    "primary_color_hex": "#584de4",
    "category": "Consumer Tech",
@@ -2864,6 +3248,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "marketing"
+  },
+  {
+   "id": "humanscape",
+   "primary_color_hex": "#00adf7",
+   "category": "healthcare",
+   "visual_theme": "Humanscape (휴먼스케이프) is the Korean healthcare-data company behind RareNote (레어노트), and its current corporate site — now presented under the LifeX brand at `humanscape.io` (which resolves to `lifex.io`) — reads like a scientific white paper turned into a product",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "minimal"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
   },
   {
    "id": "hwahae",
@@ -3040,6 +3448,54 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "idus",
+   "primary_color_hex": "#ef7014",
+   "category": "ecommerce",
+   "visual_theme": "idus (아이디어스), operated by Backpackr, is Korea's largest handmade-goods marketplace — a place where independent 작가 (makers) sell handcrafted rings, ceramics, candles, baked goods and classes. Its web surface reads like a warm, high-density Korean commerce app r",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "minimal"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
+   "id": "igaworks",
+   "primary_color_hex": "#1a1d23",
+   "category": "marketing",
+   "visual_theme": "IGAWorks (아이지에이웍스) is Korea's data-and-AI marketing company, and its corporate site reads exactly like the tagline stamped across the hero: *\"Built on Data. Driven by AI.\"* The aesthetic is confident monochrome — a pure white canvas (`#ffffff`) carrying near-b",
+   "voice_fingerprint": {
+    "register": "marketing",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "marketing"
   },
   {
    "id": "iicombined",
@@ -3274,6 +3730,30 @@
    "signature_motion": "6s ease-in-out gradient loop on AI search bar; 200ms cubic-bezier(0.4,0,0.2,1) card hover elevation",
    "has_personas": true,
    "category_raw": "employment portal / HR tech platform"
+  },
+  {
+   "id": "jobplanet",
+   "primary_color_hex": "#00c362",
+   "category": "saas",
+   "visual_theme": "Jobplanet (잡플래닛) is Korea's leading company-review and recruitment platform — the domestic answer to Glassdoor — and its interface reads like a bright, data-dense information utility rather than a glossy marketing site. The canvas alternates pure white (`#ffff",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "jumpit",
@@ -3994,6 +4474,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "likelion",
+   "primary_color_hex": "#ff6000",
+   "category": "education",
+   "visual_theme": "LikeLion (멋쟁이사자처럼) is Korea's largest coding-education organization — university clubs turned national bootcamp operator (K-Digital Training, 국비지원 courses, AI education, enterprise training) — and its design reads exactly like that mission: energetic, approach",
+   "voice_fingerprint": {
+    "register": "education",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "education"
+  },
+  {
    "id": "line",
    "primary_color_hex": "#07b53b",
    "category": "Consumer",
@@ -4229,6 +4733,54 @@
    "category_raw": "fintech"
   },
   {
+   "id": "maum-ai",
+   "primary_color_hex": "#4262ff",
+   "category": "ai",
+   "visual_theme": "maum.ai (마음AI, formerly MindsLab / 마인즈랩) presents itself as a \"Physical AI\" platform, and its homepage carries the calm, engineered confidence of a deep-tech company that ships real hardware and models rather than a consumer app chasing delight. The canvas is ",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
+  },
+  {
+   "id": "medibloc",
+   "primary_color_hex": "#0066ff",
+   "category": "healthcare",
+   "visual_theme": "MediBloc (메디블록) is the Korean healthcare-data company behind Dr.Palette (닥터팔레트), a web-based cloud EMR for clinics, and the Panacea blockchain that lets patients own their own medical records. Its corporate surface reads as a confident, engineering-led health-",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "minimal"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
+  },
+  {
    "id": "meituan",
    "primary_color_hex": "#FFC300",
    "category": "Consumer",
@@ -4410,6 +4962,30 @@
    "category_raw": "education"
   },
   {
+   "id": "mildang",
+   "primary_color_hex": "#00b29d",
+   "category": "education",
+   "visual_theme": "Milddang (밀당) is the AI-driven 1:1 tutoring product of the Korean edu-tech company I Hate Flying Bugs (IHFB), and its site reads like a calm, editorial education brand rather than a loud cram-school ad. The canvas is pure white (`#ffffff`), text sits in a soft",
+   "voice_fingerprint": {
+    "register": "education",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "education"
+  },
+  {
    "id": "millie",
    "primary_color_hex": "#1B6DDA",
    "category": "Consumer",
@@ -4577,6 +5153,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "saas"
+  },
+  {
+   "id": "moin",
+   "primary_color_hex": "#0082ff",
+   "category": "fintech",
+   "visual_theme": "Moin (모인) is a Korean cross-border money-transfer fintech, and its site carries itself like a trustworthy utility rather than a flashy consumer app — clean, functional, and quietly confident. The canvas is pure white (`#ffffff`) broken up by soft near-white su",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "momoshop",
@@ -5211,6 +5811,30 @@
    "category_raw": "productivity tool"
   },
   {
+   "id": "nrise",
+   "primary_color_hex": "#ff0056",
+   "category": "consumer-tech",
+   "visual_theme": "NRISE (엔라이즈) is the Korean consumer-tech company behind WIPPY (위피), a No.1-positioned social-discovery app, and 콰트 (Quat), a habit-forming health product. Its web surfaces read as confident, editorial, and almost aggressively monochrome — a near-black-on-white",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "nvidia",
    "primary_color_hex": "#76b900",
    "category": "Enterprise",
@@ -5471,6 +6095,30 @@
    "category_raw": "fintech / payment super-app"
   },
   {
+   "id": "payhere",
+   "primary_color_hex": "#008cff",
+   "category": "fintech",
+   "visual_theme": "Payhere (페이히어) is Korea's No.1 mobile-POS company, and its homepage reads like a bright, energetic tech-retail product rather than a staid financial service. The canvas is pure white (`#ffffff`) broken by soft cool-grey cards (`#f5f8fa`) and a saturated azure ",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "paypal",
    "primary_color_hex": "#002991",
    "category": "fintech",
@@ -5547,6 +6195,30 @@
    "category_raw": "e-commerce"
   },
   {
+   "id": "peoplefund",
+   "primary_color_hex": "#ffc32d",
+   "category": "fintech",
+   "visual_theme": "PeopleFund (피플펀드), now rebranded as 크플 (Cple), is Korea's online P2P real-estate lending and investment platform, and its design system reads as a confident, minimal financial product with a single bold accent: the brand amber `#ffc32d`. The canvas is pure whi",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "pepabo",
    "primary_color_hex": "#1f7ccc",
    "category": "saas",
@@ -5595,6 +6267,30 @@
    "signature_motion": "*Durations:**",
    "has_personas": true,
    "category_raw": "ai"
+  },
+  {
+   "id": "petfriends",
+   "primary_color_hex": "#ff4081",
+   "category": "ecommerce",
+   "visual_theme": "Pet Friends (펫프렌즈) is Korea's self-described \"반려동물 1등 쇼핑몰\" (No.1 pet shopping mall), and its interface reads like a friendly, high-energy commerce app built for anxious-but-loving pet parents (집사님). The canvas is pure white (`#ffffff`) broken up by soft grey p",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "piccollage",
@@ -5859,6 +6555,54 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "pozalabs",
+   "primary_color_hex": "#aba1fa",
+   "category": "ai",
+   "visual_theme": "POZAlabs (포자랩스) is Korea's leading generative-music AI company, and its design language lives in two deliberately different registers. The corporate site (`pozalabs.com`) is austere and gallery-like: a pure white canvas (`#ffffff`) carrying a single oversized ",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "minimal"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
+  },
+  {
+   "id": "protopie",
+   "primary_color_hex": "#8169ff",
+   "category": "design-tools",
+   "visual_theme": "ProtoPie (프로토파이) is the Seoul-born high-fidelity prototyping tool from Studio XID, and its marketing site reads like a confident, product-led design tool rather than a generic SaaS landing page. The canvas is pure white (`#ffffff`) with occasional cool light-g",
+   "voice_fingerprint": {
+    "register": "design-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "design-tools"
+  },
+  {
    "id": "publy",
    "primary_color_hex": "#7A3BFF",
    "category": "Knowledge Content",
@@ -5921,6 +6665,30 @@
    "category_raw": "edutech / AI math solver"
   },
   {
+   "id": "qraft",
+   "primary_color_hex": "#1033d4",
+   "category": "fintech",
+   "visual_theme": "Qraft Technologies (크래프트테크놀로지스) is a Seoul-headquartered AI-fintech that builds quantitative investment products — AI-managed ETFs, an AI hedge fund, and market-intelligence execution engines — and its homepage carries itself like an institutional research hou",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "queenit",
    "primary_color_hex": "#642fe9",
    "category": "ecommerce",
@@ -5943,6 +6711,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ecommerce"
+  },
+  {
+   "id": "quotabook",
+   "primary_color_hex": "#00e8c5",
+   "category": "fintech",
+   "visual_theme": "Quotabook (쿼타북) is Korea's equity-and-securities-management platform — a Carta-style cap table, stock-option, and fund-administration suite that markets itself as \"국내유일 기업 증권금융\" (Korea's only corporate securities finance). Its homepage rejects the pastel, roun",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "flat",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "ragic",
@@ -6507,6 +7299,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "sandoll",
+   "primary_color_hex": "#ff0600",
+   "category": "design-tools",
+   "visual_theme": "Sandoll (산돌) is Korea's most influential type foundry, and its corporate site reads exactly like a foundry that has spent four decades thinking about letterforms: austere, editorial, and almost entirely monochrome. The canvas is pure white (`#ffffff`); text si",
+   "voice_fingerprint": {
+    "register": "design-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "design-tools"
+  },
+  {
    "id": "sanity",
    "primary_color_hex": "#f36458",
    "category": "Developer Tools",
@@ -6576,6 +7392,54 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "saas"
+  },
+  {
+   "id": "scatterlab",
+   "primary_color_hex": "#212529",
+   "category": "ai",
+   "visual_theme": "Scatter Lab (스캐터랩) is the Korean AI company behind Zeta (제타), and its web presence reads less like a consumer product and more like a serious research house presenting its work. The identity is aggressively monochrome — pure white canvas (`#ffffff`), near-blac",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
+  },
+  {
+   "id": "selectstar",
+   "primary_color_hex": "#0c5fdb",
+   "category": "ai",
+   "visual_theme": "Selectstar (셀렉트스타) is a Korean AI-evaluation and data company whose homepage reads like a serious research-grade product rather than a flashy startup pitch. The atmosphere is calm, institutional, and blue — a light cool-grey canvas (`#f8f9fa`) carries white co",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "minimal",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
   },
   {
    "id": "sendbird",
@@ -6748,6 +7612,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "e-commerce"
+  },
+  {
+   "id": "sionic",
+   "primary_color_hex": "#007ff5",
+   "category": "ai",
+   "visual_theme": "SIONIC AI (사이오닉에이아이) is a Korean enterprise-AI company whose homepage reads like a confident B2B infrastructure product — clean, engineered, and quietly technical rather than flashy. The canvas is pure white (`#ffffff`) alternating with dramatic near-black sec",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
   },
   {
    "id": "skyscanner",
@@ -7152,6 +8040,30 @@
    "category_raw": "saas"
   },
   {
+   "id": "squeezebits",
+   "primary_color_hex": "#cc5a16",
+   "category": "ai",
+   "visual_theme": "SqueezeBits (스퀴즈비츠) is a Korean deep-tech AI company whose product is efficiency itself — model quantization, compression, and inference optimization (OwLite, Fits on Chips, Yetter, RoBoost). Its design language runs on two deliberately different surfaces. The",
+   "voice_fingerprint": {
+    "register": "ai",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ai"
+  },
+  {
    "id": "ssg",
    "primary_color_hex": "#ff5452",
    "category": "ecommerce",
@@ -7224,6 +8136,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "stayfolio",
+   "primary_color_hex": "#1a1a1a",
+   "category": "consumer-tech",
+   "visual_theme": "Stayfolio (스테이폴리오) is Korea's curated boutique-stay platform, and its homepage behaves less like a booking engine than like a printed travel monograph rendered on screen. The canvas is pure white (`#ffffff`), the photography is full-bleed and edge-to-edge, and",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "flat",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "stibee",
@@ -7416,6 +8352,30 @@
    "category_raw": "productivity"
   },
   {
+   "id": "tabling",
+   "primary_color_hex": "#ff5100",
+   "category": "consumer-tech",
+   "visual_theme": "Tabling (테이블링) is Korea's leading restaurant remote-waiting and discovery app — its tagline \"맛집 도착 전 앱으로 미리 줄서기\" (line up in advance via the app before you arrive) — and its web surface reads like a bright, appetite-forward consumer product rather than a utili",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "tada",
    "primary_color_hex": "#1EC59F",
    "category": "Mobility",
@@ -7493,6 +8453,54 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "teamsparta",
+   "primary_color_hex": "#fa0030",
+   "category": "education",
+   "visual_theme": "Team Sparta (팀스파르타), the operator of 스파르타코딩클럽 (Spartacodingclub), runs Korea's most recognizable coding-education brand, and its site reads like a high-energy motivational campaign rather than a quiet courseware catalog. The canvas is pure white (`#ffffff`) br",
+   "voice_fingerprint": {
+    "register": "education",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "education"
+  },
+  {
+   "id": "tellingme",
+   "primary_color_hex": "#07beb8",
+   "category": "healthcare",
+   "visual_theme": "TellingMe (텔링미) is a Korean journaling-diary product — \"진정한 나에 가까워지는 저널링 다이어리\" (a journaling diary that brings you closer to your true self) — and its homepage feels less like a software landing page and more like the paper cover of a warm, gentle notebook. Th",
+   "voice_fingerprint": {
+    "register": "healthcare",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "healthcare"
   },
   {
    "id": "tesla",
@@ -7851,6 +8859,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "typed",
+   "primary_color_hex": "#a88ef5",
+   "category": "productivity",
+   "visual_theme": "Typed (타입드) is the flagship document-and-knowledge workspace built by the Korean productivity-software company Business Canvas (비즈니스캔버스), and its brand today lives across two very different but deliberately paired surfaces. The Typed product site (typed.do) — ",
+   "voice_fingerprint": {
+    "register": "productivity",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "bold",
+    "warm",
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "productivity"
   },
   {
    "id": "uber",
@@ -8382,6 +9414,30 @@
    "signature_motion": "scale(1.05) hover and scale(0.95) active button compression.",
    "has_personas": false,
    "category_raw": "fintech"
+  },
+  {
+   "id": "wisetracker",
+   "primary_color_hex": "#ff8d08",
+   "category": "marketing",
+   "visual_theme": "Wisetracker (와이즈트래커) is a Korean marketing-analytics and attribution platform, and its two public surfaces speak in two deliberately different registers. The marketing homepage — built on Framer — is bright, confident and playful: a pure white canvas (`#ffffff",
+   "voice_fingerprint": {
+    "register": "marketing",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "playful",
+    "flat",
+    "calm"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "marketing"
   },
   {
    "id": "workday",

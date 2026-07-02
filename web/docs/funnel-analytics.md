@@ -41,7 +41,7 @@ The current taxonomy conflates intents that must be measured apart:
 - `ds_` — the design-system directory (`/design-systems/[id]`)
 - `act_` — activation (install hand-off; shared across surfaces)
 
-ID parameter is **always `reference`** (finite catalog ~356 → safe dimension).
+ID parameter is **always `reference`** (finite catalog ~400 → safe dimension).
 
 ---
 
@@ -98,7 +98,7 @@ Generic collisions to namespace in a follow-up (likely landing-scope, out of thi
 
 | Param | Type | Cardinality | Notes |
 |---|---|---|---|
-| `reference` | string (catalog id) | ~356, finite | THE join key; register as custom dimension |
+| `reference` | string (catalog id) | ~400, finite | THE join key; register as custom dimension |
 | `mode` | enum `as_is\|customize` | 2 | splits the demoted customize path |
 | `channel` (export) | enum `download\|copy` | 2 | on `bld_export` / `ds_export` |
 | `channel` (view) | enum `direct\|search\|social\|ai\|referral\|internal` | 6 | on `ds_detail_view` — bucketed referrer |

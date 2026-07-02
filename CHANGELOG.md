@@ -6,6 +6,19 @@ After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (
 
 ---
 
+## 1.8.8 — 2026-07-02
+
+**44 new Korean company references added (catalog 356 → 400; KR refs 149 → 193) via the full 추천→선발→수집→검수 pipeline — every ref Tier-1 brand-owned proof-gated. Milestone: catalog hits 400.**
+
+- Coverage: **AI 10** (asleep·scatterlab·friendliai·pozalabs·selectstar·squeezebits·corca·gaudiolab·maum-ai·sionic), **consumer-tech 6** (heydealer·barogo·frip·nrise·stayfolio·tabling), **fintech 6** (payhere·8percent·moin·peoplefund·quotabook·qraft), **healthcare 5** (fitpet·tellingme·drdiary·humanscape·medibloc), **ecommerce 4** (petfriends·idus·cjonstyle·dealicious), **marketing 4** (dable·beusable·igaworks·wisetracker), **education 3** (likelion·mildang·teamsparta), **design-tools 2** (protopie·sandoll), **automotive 2** (autopedia·42dot), **productivity 1** (typed), **saas 1** (jobplanet).
+- Standouts carry named / official design systems or distinctive product UIs: likelion (Storybook DS), protopie (Studio XID), sandoll (type foundry), asleep / scatterlab (consumer AI apps).
+- Recommend fanned 9 sector deep-research agents (64-item clean pool, deduped vs the full 356-id catalog); **an LLM-synthesis drift that silently re-introduced 12 catalog-existing ids + 1 same-company alias was caught at curation** and hard-re-deduped against on-disk `references/`. User excluded 6 母-brand sub-products (tosspayments/kakaopaysec/kakaowebtoon/brunch/kakaowork/watchapedia) + tistory. Build ran one CREATE subagent per brand in demand-driven waves of 5, stopping at 44 green.
+- `urbanbase` dropped as **INFEASIBLE** (brand defunct — domain now a GoDaddy parking lander; agent correctly refused to fabricate). `peoplefund` captured through its 크플(Cple) rebrand redirect.
+- All 44 pass `verify-reference` 27/27 + catalog-integrity (16 files / 638 tests). KR proof gate met for every ref (≥2 brand-owned Tier-1 sources + `## Proof` block). Tier 2 (getdesign / refero) empty for all 44, as `spec/regional-sources.yaml` anticipates.
+- Audit: `data/reference-audits/2026-07-02-kr44.md` (13 High / 29 Medium / 2 Low). Counts propagated by `sync-catalog.mjs` (README, llms.txt, SEO layouts ×3, fingerprints ×3, design-md mirror).
+
+---
+
 ## 1.8.7 — 2026-06-26
 
 **30 new Korean company references added (catalog 326 → 356; KR refs 119 → 149) via the full 탐색→선발→수집→검수→배포 pipeline — every ref Tier-1 brand-owned proof-gated.**

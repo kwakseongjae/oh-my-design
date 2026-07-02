@@ -7,7 +7,7 @@ const MCP_URL = "https://oh-my-design.kr/api/mcp";
 export const metadata: Metadata = {
   title: "Claude connector (MCP) — oh-my-design",
   description:
-    "Add the oh-my-design Claude connector to search, browse, and fetch 356 real brand design systems in chat. Read-only, no account, no auth.",
+    "Add the oh-my-design Claude connector to search, browse, and fetch 400 real brand design systems in chat. Read-only, no account, no auth.",
   alternates: { canonical: "/docs/connector" },
 };
 
@@ -63,7 +63,7 @@ export default function ConnectorDocsPage() {
           Use oh-my-design inside Claude
         </h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-          A read-only Claude connector (MCP) over the oh-my-design catalog of 356
+          A read-only Claude connector (MCP) over the oh-my-design catalog of 400
           real brand design systems. Search by vibe, browse by country/category,
           and fetch a brand&apos;s full <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">DESIGN.md</code> —
           without leaving chat. No account, no auth.
