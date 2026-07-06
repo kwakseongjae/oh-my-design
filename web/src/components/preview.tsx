@@ -139,7 +139,7 @@ export function Preview({
     const props = { primary, radius, border: pBorder, muted: pMuted, dark: isDark, weight, font };
     switch (id) {
       case "typography": return <TypographyHierarchyPreview tokens={tokens} fg={pFg} />;
-      case "fonts": return <FontsPreview fontFamily={font} mono={detail.mono} />;
+      case "fonts": return <FontsPreview fontFamily={font} mono={detail.mono} brandFont={detail.brandFont} />;
       case "button": return <ButtonPreview {...props} />;
       case "input": return <InputPreview radius={radius} border={pBorder} />;
       case "select": return <SelectPreview radius={radius} border={pBorder} />;
@@ -850,11 +850,19 @@ function TypographyHierarchyPreview({ tokens, fg }: { tokens: ReturnType<typeof 
 }
 
 // ── Fonts (license + install cards) ────────────────────────────
-function FontsPreview({ fontFamily, mono }: { fontFamily: string; mono?: string }) {
+function FontsPreview({ fontFamily, mono, brandFont }: { fontFamily: string; mono?: string; brandFont?: string }) {
   const stackFonts = parseFontStack(fontFamily);
   return (
     <div className="rounded-xl bg-card p-6 ring-1 ring-border/40">
       <FontStackGrid stack={fontFamily} fonts={stackFonts} />
+      {brandFont && (
+        <div className="mt-6 pt-6 border-t border-border/40">
+          <div className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider mb-3">Brand / Display</div>
+          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+            <FontCard font={lookupFont(brandFont)} />
+          </div>
+        </div>
+      )}
       {mono && (
         <div className="mt-6 pt-6 border-t border-border/40">
           <div className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider mb-3">Monospace</div>

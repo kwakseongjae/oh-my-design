@@ -14,6 +14,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ReferencePreview } from "@/components/reference-preview";
 import { extractTokens } from "@/lib/extract-tokens";
+import { resolveFontsFromDesignMd } from "@/lib/font-registry";
 
 const REFS_DIR = join(process.cwd(), "references");
 
@@ -50,11 +51,9 @@ function loadDetail(id: string) {
   const fgMatch = designMd.match(/(?:heading|primary text).*?`(#[0-9a-fA-F]{6})`/i);
   const foreground = fgMatch ? fgMatch[1] : "#09090b";
 
-  const fontMatch = designMd.match(/\*\*Primary\*\*:\s*`([^`]+)`/i);
-  const fontFamily = fontMatch ? fontMatch[1].split(",")[0].trim() : "Inter";
-
-  const monoMatch = designMd.match(/\*\*Monospace\*\*:\s*`([^`]+)`/i);
-  const mono = monoMatch ? monoMatch[1].split(",")[0].trim() : undefined;
+  // Font resolution — frontmatter tokens.typography.family → §3 prose → honest
+  // "System" sentinel. Never a blind 'Inter' guess (see font-registry).
+  const { family: fontFamily, mono, brand: brandFont } = resolveFontsFromDesignMd(designMd);
 
   const weightMatch = designMd.match(/Display.*?\|\s*(\d{3})\s*\|/);
   const headingWeight = weightMatch ? weightMatch[1] : "600";
@@ -110,6 +109,7 @@ function loadDetail(id: string) {
     foreground,
     fontFamily,
     mono,
+    brandFont,
     headingWeight,
     radius,
     mood,

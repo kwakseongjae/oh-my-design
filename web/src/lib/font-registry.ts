@@ -167,6 +167,7 @@ const FONT_REGISTRY: Record<string, FontInfo> = {
   "Apple System": { name: "Apple System", license: "System", installable: false, notes: "macOS/iOS default — uses SF Pro automatically." },
   "-apple-system": { name: "Apple System", license: "System", installable: false, notes: "macOS/iOS default — uses SF Pro automatically." },
   "BlinkMacSystemFont": { name: "Apple System (Blink)", license: "System", installable: false, notes: "Chrome alias for Apple system font on macOS." },
+  "System": { name: "System UI stack", license: "System", installable: false, notes: "OS-native font stack (San Francisco on Apple, Segoe UI on Windows, Roboto on Android). No web font is loaded — the OS supplies the face." },
   "system-ui": { name: "System UI", license: "System", installable: false, notes: "Generic OS-default font keyword." },
   "ui-sans-serif": { name: "UI Sans Serif", license: "System", installable: false, notes: "CSS keyword — OS default sans (San Francisco / Segoe UI / etc.)." },
   "ui-monospace": { name: "UI Monospace", license: "System", installable: false, notes: "CSS keyword — OS default mono (SF Mono / Consolas / etc.)." },
@@ -373,4 +374,203 @@ export function parseFontStack(stack: string): FontInfo[] {
 /** Return whether a normalized font name is registered (vs. defaulting to "not found"). */
 export function isRegistered(token: string): boolean {
   return Boolean(FONT_REGISTRY[normalize(token)]);
+}
+
+/** Public canonicalization: map a raw font token to its canonical registry name
+ *  (e.g. "SFMono-Regular" → "SF Mono"). Used by extract-tokens.ts to dedupe
+ *  font mentions AFTER canonicalization so a single font stack that lists both
+ *  a variant and its canonical name ("SF Mono, SFMono-Regular, …") doesn't
+ *  render two identical cards. */
+export function canonicalFontName(token: string): string {
+  return normalize(token);
+}
+
+/* ─────────── Font resolution (frontmatter → prose → honest fallback) ─────────── */
+
+const HEX_RE = /^#[0-9a-f]{3,8}$/i;
+const KEYWORD_RE = /^(serif|sans-serif|monospace|var|inherit|system-ui|ui-sans-serif|ui-monospace|ui-serif|none)$/i;
+/** Tokens that, when leading a stack, mark it as an OS-native (system) stack. */
+const SYSTEM_STACK_LEADERS = /^(?:-apple-system|system-ui|BlinkMacSystemFont|ui-sans-serif|ui-monospace|ui-serif)$/i;
+/** Korean/JP/legacy system faces that lead a native OS stack (baemin, naver, …). */
+const SYSTEM_CJK_LEADERS = /^(?:Apple SD Gothic Neo|Malgun Gothic|Helvetica Neue)$/i;
+
+function isValidFontName(s: string): boolean {
+  if (!s || s.length > 50) return false;
+  if (HEX_RE.test(s)) return false;
+  if (KEYWORD_RE.test(s)) return false;
+  return true;
+}
+
+function stackTokens(stack: string): string[] {
+  return stack.split(",").map((t) => t.replace(/['"`]/g, "").trim()).filter(Boolean);
+}
+
+/** True when a CSS font stack is an OS-native (system) stack rather than a
+ *  brand/web font — e.g. "-apple-system, BlinkMacSystemFont, 'Apple SD Gothic
+ *  Neo', 'Noto Sans KR', sans-serif". Detected so the UI can render a
+ *  "System UI stack" card instead of confidently misattributing a web font. */
+export function isSystemFontStack(stack: string): boolean {
+  const tokens = stackTokens(stack);
+  if (!tokens.length) return false;
+  const lead = tokens[0];
+  if (SYSTEM_STACK_LEADERS.test(lead)) return true;
+  // A CJK-led stack counts as "system" only when it's chained with a system
+  // keyword (so "Noto Sans KR, sans-serif" alone — a real webfont — doesn't
+  // get swallowed, but "Apple SD Gothic Neo, -apple-system, …" does).
+  if (SYSTEM_CJK_LEADERS.test(lead) && tokens.some((t) => SYSTEM_STACK_LEADERS.test(t))) return true;
+  return false;
+}
+
+/** First non-generic font token in a stack, quotes stripped. Falls back to the
+ *  literal first token when every entry is a generic keyword. */
+function firstFontToken(stack: string): string {
+  const tokens = stackTokens(stack);
+  for (const t of tokens) {
+    if (!KEYWORD_RE.test(t)) return t;
+  }
+  return tokens[0] ?? "";
+}
+
+/** Resolve a family stack to a display value: "System" for OS stacks, else the
+ *  first real font name. Never returns a blind 'Inter'. */
+function resolveFamilyValue(stack: string): string | null {
+  if (isSystemFontStack(stack)) return "System";
+  const tok = firstFontToken(stack);
+  return isValidFontName(tok) ? tok : null;
+}
+
+/** Split a YAML flow-object body on top-level commas, honoring both single and
+ *  double quotes (a value may itself contain commas inside quotes). */
+function splitFlowCommas(s: string): string[] {
+  const out: string[] = [];
+  let quote = "";
+  let cur = "";
+  for (const ch of s) {
+    if (quote) { cur += ch; if (ch === quote) quote = ""; continue; }
+    if (ch === '"' || ch === "'") { quote = ch; cur += ch; continue; }
+    if (ch === ",") { out.push(cur); cur = ""; continue; }
+    cur += ch;
+  }
+  if (cur.trim()) out.push(cur);
+  return out;
+}
+
+/** Parse the `tokens.typography.family` inline object from DESIGN.md YAML
+ *  frontmatter into a { key: value } map (ui / sans / body / mono / brand /
+ *  display / playful / …). Returns null when there's no frontmatter family
+ *  block. Hand-parsed (no YAML dep) to match how componentsFromTokens reads
+ *  the flow-style tokens block. */
+function parseFrontmatterFamily(md: string): Record<string, string> | null {
+  if (!md.startsWith("---")) return null;
+  const fmEnd = md.indexOf("\n---", 3);
+  if (fmEnd === -1) return null;
+  const fm = md.slice(0, fmEnd);
+  const m = fm.match(/^\s*family:\s*\{([^}]*)\}/m);
+  if (!m) return null;
+  const obj: Record<string, string> = {};
+  for (const pair of splitFlowCommas(m[1])) {
+    const i = pair.indexOf(":");
+    if (i === -1) continue;
+    const k = pair.slice(0, i).trim().replace(/['"]/g, "");
+    const v = pair.slice(i + 1).trim().replace(/^['"]|['"]$/g, "");
+    if (k && v) obj[k] = v;
+  }
+  return Object.keys(obj).length ? obj : null;
+}
+
+function sec3Of(md: string): string {
+  return md.match(/## 3\. Typography[\s\S]*?(?=## 4\.)/i)?.[0] ?? md;
+}
+
+/** §3-prose primary-font fallback. Mirrors the historical route.ts patterns but
+ *  (a) recognizes system stacks → "System", and (b) NEVER returns a blind
+ *  'Inter' — an unresolved doc yields the honest "System" (OS default) sentinel
+ *  instead of misattributing Rasmus Andersson's Inter. Legit Inter written in
+ *  prose (e.g. "**Primary**: `Inter`") still resolves to Inter. */
+function primaryFromProse(md: string): string {
+  const sec3 = sec3Of(md);
+
+  // 1. **… Primary …** label (tolerates a qualifier: "**UI Primary**")
+  const primary = sec3.match(/\*\*([^*]*\bPrimary[^*]*)\*\*:?\s*`([^`]+)`/i);
+  if (primary) { const r = resolveFamilyValue(primary[2]); if (r) return r; }
+
+  // 2. **Display** / **Sans** / **Heading** / **Body** label
+  const display = sec3.match(/\*\*([^*]*\b(?:Display|Sans|Heading|Body)[^*]*)\*\*:?\s*`([^`]+)`/i);
+  if (display) { const r = resolveFamilyValue(display[2]); if (r) return r; }
+
+  // 3. font-family declaration
+  for (const m of sec3.matchAll(/font-family:\s*([^;\n]+)/gi)) {
+    const r = resolveFamilyValue(m[1]);
+    if (r) return r;
+  }
+
+  // 4. First capitalized backticked font name (heuristic)
+  for (const m of sec3.matchAll(/`([A-Z][A-Za-z][\w\s\-]{2,40})`/g)) {
+    const name = m[1].trim();
+    if (name.length > 35) continue;
+    if (/^(?:Display|Heading|Body|Caption|Small|Large|Medium|Regular|Bold|Light|Italic|Mono|Sans|Serif|Variable|Pro|UI|Inter Placeholder|Inter Fallback|Fallback|XS|S|M|L|XL|XXL|SemiBold|ExtraBold|Black|Thin)$/i.test(name)) continue;
+    if (/^[0-9]/.test(name)) continue;
+    if (isValidFontName(name)) return name;
+  }
+
+  // Honest fallback — the OS default. Never 'Inter'.
+  return "System";
+}
+
+function monoFromProse(md: string): string | undefined {
+  const sec3 = sec3Of(md);
+  const m = sec3.match(/\*\*([^*]*\bMono(?:space)?[^*]*)\*\*:?\s*`([^`]+)`/i);
+  if (m) { const tok = firstFontToken(m[2]); if (isValidFontName(tok)) return tok; }
+  return undefined;
+}
+
+function brandFromProse(md: string): string | undefined {
+  const sec3 = sec3Of(md);
+  const m = sec3.match(/\*\*([^*]*\b(?:Brand|Display)[^*]*)\*\*:?\s*`([^`]+)`/i);
+  if (m && !isSystemFontStack(m[2])) { const tok = firstFontToken(m[2]); if (isValidFontName(tok)) return tok; }
+  return undefined;
+}
+
+export interface ResolvedFonts {
+  /** Primary/UI family. "System" for OS-native stacks; a real font name
+   *  otherwise. Never a blind 'Inter' guess. */
+  family: string;
+  /** Monospace family, when the ref declares one. */
+  mono?: string;
+  /** Brand / display / playful family (e.g. "BMHANNA Pro"), when distinct from
+   *  the UI family. Surfaced so the UI can show a dedicated brand-font card. */
+  brand?: string;
+}
+
+/** Single source of truth for resolving a reference's fonts from its DESIGN.md.
+ *  Resolution order:
+ *    1. YAML frontmatter `tokens.typography.family` (machine-readable truth)
+ *    2. §3 Typography prose patterns (legacy fallback)
+ *    3. Honest "System" sentinel — NEVER a blind 'Inter'.
+ *  Used by the reference API route and the SSR showcase pages so every surface
+ *  agrees and no path silently invents Inter. */
+export function resolveFontsFromDesignMd(md: string): ResolvedFonts {
+  const fam = parseFrontmatterFamily(md);
+  let family: string | undefined;
+  let mono: string | undefined;
+  let brand: string | undefined;
+
+  if (fam) {
+    const uiRaw = fam.ui ?? fam.sans ?? fam.body ?? fam.primary ?? fam.text ?? fam.default ?? fam.base;
+    if (uiRaw) family = resolveFamilyValue(uiRaw) ?? undefined;
+    if (fam.mono) { const t = firstFontToken(fam.mono); if (isValidFontName(t)) mono = t; }
+    const brandRaw = fam.brand ?? fam.display ?? fam.playful ?? fam.heading;
+    if (brandRaw && !isSystemFontStack(brandRaw)) { const t = firstFontToken(brandRaw); if (isValidFontName(t)) brand = t; }
+    // If frontmatter had no UI family but did name a display/brand face, fall
+    // back to it as the family so we don't drop to the prose scan needlessly.
+    if (!family && brand) family = brand;
+  }
+
+  if (!family) family = primaryFromProse(md);
+  if (!mono) mono = monoFromProse(md);
+  if (!brand) brand = brandFromProse(md);
+  // Never surface the brand as a duplicate of the resolved family.
+  if (brand && (brand === family || canonicalFontName(brand) === canonicalFontName(family))) brand = undefined;
+
+  return { family, mono, brand };
 }

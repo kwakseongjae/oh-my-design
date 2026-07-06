@@ -45,6 +45,7 @@ export interface RefDetail {
   foreground: string;
   fontFamily: string;
   mono?: string;
+  brandFont?: string;
   headingWeight: string;
   radius: string;
   mood: string;

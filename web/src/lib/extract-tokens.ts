@@ -6,6 +6,8 @@
  * doesn't expose explicit values.
  */
 
+import { canonicalFontName } from "./font-registry";
+
 export interface FontMention {
   /** Raw name as it appeared in DESIGN.md (e.g., "Helvetica Neue"). */
   raw: string;
@@ -193,7 +195,10 @@ function extractFontMentions(md: string): FontMention[] {
     if (!cleaned || cleaned.length > 50) return;
     if (/^#[0-9a-f]{3,8}$/i.test(cleaned)) return;
     if (/^(serif|sans-serif|monospace|var|inherit|var\(|none)$/i.test(cleaned)) return;
-    const key = cleaned.toLowerCase();
+    // Dedupe on the CANONICAL name, not the raw token — so a stack that lists a
+    // variant and its canonical form ("SF Mono, SFMono-Regular, …") collapses to
+    // one card instead of rendering two identical "SF Mono" cards.
+    const key = canonicalFontName(cleaned).toLowerCase();
     if (seen.has(key)) return;
     seen.add(key);
     out.push({ raw: cleaned, role });
@@ -1217,6 +1222,7 @@ export function extractTokens(detail: {
   foreground: string;
   fontFamily: string;
   mono?: string;
+  brandFont?: string;
   headingWeight: string;
   radius: string;
   mood: string;
@@ -1252,14 +1258,21 @@ export function extractTokens(detail: {
       const sizes = extractFontSizes(md);
       const hasCJK = /Hiragino|Meiryo|PingFang|Noto Sans (?:JP|KR|TC|SC)|MS Gothic|Heiti|微軟|黑體|ヒラギノ/i.test(detail.fontFamily) || /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af]/.test(md);
       const fonts = extractFontMentions(md);
+      const hasCanonical = (name: string) =>
+        fonts.some((f) => canonicalFontName(f.raw).toLowerCase() === canonicalFontName(name).toLowerCase());
+      // Surface the brand/display face (e.g. "BMHANNA Pro") the §3 prose parser
+      // usually misses — resolved from frontmatter tokens.typography.family.
+      if (detail.brandFont && !hasCanonical(detail.brandFont)) {
+        fonts.unshift({ raw: detail.brandFont, role: "display" });
+      }
       // If parser missed the API-provided primary font, prepend it
       if (detail.fontFamily) {
         const apiPrimary = detail.fontFamily.split(",")[0].replace(/['"]/g, "").trim();
-        if (apiPrimary && !fonts.some((f) => f.raw.toLowerCase() === apiPrimary.toLowerCase())) {
+        if (apiPrimary && !hasCanonical(apiPrimary)) {
           fonts.unshift({ raw: apiPrimary, role: "primary" });
         }
       }
-      if (detail.mono && !fonts.some((f) => f.raw.toLowerCase() === detail.mono!.toLowerCase())) {
+      if (detail.mono && !hasCanonical(detail.mono)) {
         fonts.push({ raw: detail.mono, role: "mono" });
       }
       return {
