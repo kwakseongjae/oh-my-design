@@ -8,7 +8,7 @@ user-invocable: true
 
 omd v0.2 agent layer의 **supervisor**. 한 글/한 컴포넌트가 여러 specialist를 거쳐야 할 때 routing을 책임진다.
 
-채택 패턴: **Anthropic orchestrator-workers** (Building effective agents, 2024-12) + **LangGraph supervisor**의 revision-cap. 자세한 비교는 `data/research/2026-05-18-agent-landscape.md` §1.
+채택 패턴: **Anthropic orchestrator-workers** (Building effective agents, 2024-12) + **LangGraph supervisor**의 revision-cap.
 
 > 런타임 dependency 없음. Claude Code의 subagent 호출 메커니즘이 그대로 orchestrator-workers 토폴로지를 구현한다.
 
