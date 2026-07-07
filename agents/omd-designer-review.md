@@ -1,7 +1,7 @@
 ---
 name: omd-designer-review
 description: "Visual + brand consistency reviewer. Audits HTML/MD/JSX against the brand DESIGN.md across typography, color budget, radius scale, component states, mobile responsiveness, spacing. Outputs BLOCK / WARN / FYI with line refs. Read-only advisory — never modifies artifacts."
-tools: Read, Glob, Grep, Bash
+tools: Read, Glob, Grep, Bash, Write
 model: opus
 ---
 
