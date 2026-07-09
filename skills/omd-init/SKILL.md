@@ -32,6 +32,23 @@ Phase 7: 요약 출력
 
 한 번에 하나씩, 또는 통합해서 한 번에. 질문 쌓지 말 것.
 
+## Phase 1.5 — codebase-led 분기 (omd:absorb 라우팅)
+
+레퍼런스를 고르기 **전에** 코드베이스가 이미 디자인을 들고 있는지 확인한다. 다음 신호가 하나라도 있으면 **reference-led 대신 codebase-led**가 맞다:
+
+- `tailwind.config.*` 존재, 또는 CSS `:root`에 `--primary`/`--background` 등 custom property 선언
+- `src/components/` · `app/components/`에 컴포넌트 N≥5
+- 도달 가능한 dev 서버(`package.json` scripts의 `dev`)
+
+신호가 있으면 사용자에게 한 줄로 제시(Claude Code 채널은 AskUserQuestion, 그 외는 prose):
+
+> "이 프로젝트는 이미 디자인 토큰이 코드에 있어요(Tailwind/`:root`/컴포넌트 N개). 레퍼런스에서 시작하는 대신 **코드베이스에서 DESIGN.md를 추출**할까요? (`omd:absorb`)"
+
+- **예 / 코드 기반** → `Skill: omd:absorb`로 위임하고 종료(이 스킬의 Phase 2~7 skip).
+- **아니오 / 레퍼런스 기반** 또는 신호 없음 → 아래 Phase 2로 계속.
+
+(omd:harness Step 2.5는 CTX-PRIME이 같은 신호를 감지하면 reference picker 대신 omd:absorb로 라우팅한다 — 동일 정책.)
+
 ## Phase 2 — 레퍼런스 추천 (file-based, no CLI)
 
 ### 2.1 카탈로그 로드

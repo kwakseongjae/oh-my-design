@@ -11,6 +11,7 @@
     "dist",
     "skills/omd-apply",
     "skills/omd-init",
+    "skills/omd-absorb",
     "skills/omd-harness",
     "skills/omd-learn",
     "skills/omd-remember",

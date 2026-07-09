@@ -147,3 +147,33 @@ if (writeProposal) {
 // Optional: print one-line confirmation to stdout
 process.stdout.write(JSON.stringify({}) || '');
 
+// ── Hermes #38: §10-15 maturity ratchet — single writer of .omd/maturity.json.
+// Additive + best-effort: silently no-ops if a root DESIGN.md or omd-core isn't
+// reachable (e.g. before packaging ships omd-core alongside hooks). Never throws.
+(async () => {
+  try {
+    const designMd = path.join(projectDir, 'DESIGN.md');
+    if (!fs.existsSync(designMd)) return;
+    const candidates = [
+      path.join(projectDir, 'web', 'scripts', 'lib', 'omd-core.mjs'),
+      path.join(__dirname, '..', 'skills', 'omd-absorb', 'scripts', 'omd-core.mjs'),
+      path.join(__dirname, 'lib', 'omd-core.mjs'),
+    ];
+    const corePath = candidates.find((p) => fs.existsSync(p));
+    if (!corePath) return;
+    const core = await import(require('node:url').pathToFileURL(corePath).href);
+    const raw = fs.readFileSync(designMd, 'utf8');
+    const maturityJson = path.join(projectDir, '.omd', 'maturity.json');
+    let prev = null;
+    try { prev = JSON.parse(fs.readFileSync(maturityJson, 'utf8')); } catch { /* first run */ }
+    let prefs = [];
+    try { prefs = parsePreferences(fs.readFileSync(preferencesMd, 'utf8')); } catch { /* none */ }
+    const ratchet = core.maturityRatchet(prev, raw);
+    const top = core.enrichmentTargets(raw, prefs).find((t) => t.readySignals > 0) || null;
+    fs.writeFileSync(maturityJson, JSON.stringify({
+      ...ratchet, updated_at: new Date().toISOString(),
+      top_enrichment: top ? { n: top.n, title: top.title, purpose: top.purpose, readySignals: top.readySignals } : null,
+    }, null, 2) + '\n');
+  } catch { /* Hermes maturity is best-effort — never break session end */ }
+})();
+

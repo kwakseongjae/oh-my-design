@@ -48,6 +48,7 @@ spacing (1 pending):
    - `visualTheme` → §1 (Visual Theme)
 4. **voice/내러티브 수정 시 DESIGN.md의 기존 문체 preserve** — 교정 내용만 반영, 문장 스타일/길이/톤 유지
 5. **§10-15 (Brand Philosophy 레이어)는 reference voice 보존이 우선** — preference가 §10-15 본문 자체를 다시 쓰라고 하지 않는 한 본문은 건드리지 않고 §1-9의 axes만 수정
+6. **§10-15 `[FILL IN]` enrichment 게이트 (omd:absorb 콜드스타트 전용, #38)** — 해당 §10-15 섹션이 `[FILL IN: ...]` placeholder + `<!-- omd:limitation ... -->` 상태(absorb이 증거 없어 비워둔 슬롯)인 경우에 한해 **채울 수 있다**. 단 **그 채움을 구동하는 preference가 출처(citation)를 담고 있을 때만** — body에 `` `file:line` `` / `CLAUDE.md` / `chat-turn` / `§N` 같은 근거가 있어야 한다. 채울 때 placeholder를 grounded 문장 + 그 출처 인용으로 교체하고 `omd:limitation` 코멘트는 제거. **출처 없는 preference로는 절대 채우지 말 것** — `[FILL IN]`을 그대로 두고 "출처가 없어 §N은 비워둠"이라고 보고. 이렇게 해야 maturity 미터(cited-only)가 fabrication 없이만 오른다. scope→슬롯: `voice`→§10, `visualTheme`→§11, `motion`→§15.
 
 ## Phase 4 — 상태 플립
 
