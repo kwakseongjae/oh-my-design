@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-07-14 (Codex) · v2/440 release gates closed
+- npm 10 lockfile과 canonical test path를 보정해 GitHub Quality의 CLI/Web jobs를 모두 green으로 닫았다.
+- Vercel Production과 custom domain에서 catalog 440, KB/Acer, Home/Builder 200, GitHub About 400+를 확인했다.
+
 ## 2026-07-14 (Codex) · v2/440 production release
 - v2 누적 변경을 `main`에 배포했고 custom domain에서 440개 catalog와 신규 레퍼런스를 확인했다.
 - CLI 57/57, Web 790/790, TypeScript, ESLint 0 errors, 1,411-page build와 builder desktop/mobile smoke가 green이다.
