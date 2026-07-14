@@ -1,4 +1,6 @@
-# oh-my-design-mcp
+# oh-my-design-mcp — archived
+
+> Deprecated and no longer built or published. oh-my-design skills and agents use the local reference catalog, raw `/<id>/design.md` routes, and the browser evidence pipeline directly. MCP is not required for reference capture or reverify.
 
 **Drop-in MCP server. 107 brand design systems. Zero AI calls. Free & open.**
 

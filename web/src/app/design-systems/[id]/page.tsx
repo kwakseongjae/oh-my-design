@@ -1,9 +1,8 @@
 /**
  * Design-system detail route — /design-systems/<id>.
  *
- * Server component. Reads references/<id>/DESIGN.md from disk (same
- * pattern as the legacy /reference/[id] route it replaces), parses
- * tokens, and hands off to <DetailView>, a client component that
+ * Server component. Reads the canonical Reference AST repository and hands
+ * its legacy-compatible projection to <DetailView>, a client component that
  * presents the DESIGN.md markdown alongside a live <ReferencePreview>.
  *
  * Why RSC here: the data is static-at-request-time (markdown file on
@@ -11,18 +10,20 @@
  * build time via generateStaticParams. Zero client JS for the loader.
  */
 
-import { readFileSync, existsSync, readdirSync } from "fs";
-import { join } from "path";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { DetailView } from "./detail-view";
 import { extractTokens } from "@/lib/extract-tokens";
-import { resolveFontsFromDesignMd } from "@/lib/font-registry";
 import { getRelatedReferences } from "@/lib/design-systems";
-import { REGISTRY_BY_ID } from "@/data/registry.generated";
+import { REGISTRY, REGISTRY_BY_ID } from "@/data/registry.generated";
+import { loadReference } from "@/lib/references/repository.server";
+import {
+  extractLegacyReferenceDetail,
+  projectAstReferenceDetail,
+} from "@/lib/references/detail-projection";
+import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
 
-const REFS_DIR = join(process.cwd(), "references");
 const SITE_URL = "https://oh-my-design.kr";
 
 /** Display name for a reference id — registry first, then a title-cased id. */
@@ -44,84 +45,38 @@ function buildSummary(
   detail: ReturnType<typeof loadDetail>,
 ): string {
   if (!detail) return "";
-  const mono = detail.mono ? ` and ${detail.mono} for code` : "";
-  const facts = `${name}'s design system uses ${detail.primary} as its primary color and ${detail.fontFamily} for typography${mono}, with ${detail.radius} corner radius.`;
+  const editorial = getReferenceEnglishEditorial(detail.id);
+  if (editorial) return editorial.canonicalSummary;
+  const facts = [
+    detail.primary ? `${detail.primary} as a documented primary color` : null,
+    detail.fontFamily ? `${detail.fontFamily} for typography${detail.mono ? ` and ${detail.mono} for code` : ""}` : null,
+    detail.radius ? `${detail.radius} corner radius` : null,
+  ].filter(Boolean);
+  const factsSentence = facts.length > 0
+    ? `${name}'s reference documents ${facts.join(", ")}.`
+    : "";
   const moodSentence = detail.mood
     .replace(/\s+/g, " ")
     .split(/(?<=[.!?])\s/)[0]
     ?.slice(0, 220)
     .trim();
-  return moodSentence ? `${facts} ${moodSentence}` : facts;
+  return [factsSentence, moodSentence].filter(Boolean).join(" ");
 }
 
 function loadDetail(id: string) {
-  const mdPath = join(REFS_DIR, id, "DESIGN.md");
-  if (!existsSync(mdPath)) return null;
-  const designMd = readFileSync(mdPath, "utf-8");
-
-  const primaryMatch = designMd.match(
-    /## 2\. Color[\s\S]*?\*\*([^*]+)\*\*\s*\(`(#[0-9a-fA-F]{6})`\).*?(?:primary|brand|CTA|main)/i,
-  );
-  const primary = primaryMatch ? primaryMatch[2] : "#6366f1";
-
-  const quickBg = designMd.match(/Quick Color Reference[\s\S]*?Background.*?`(#[0-9a-fA-F]{6})`/i);
-  const s2 = designMd.match(/## 2\. Color.*?\n([\s\S]*?)(?=## 3\.)/);
-  let background = "#ffffff";
-  if (quickBg) background = quickBg[1];
-  else if (s2) {
-    const bg = s2[1].match(/(?:Pure White|page background).*?`(#[0-9a-fA-F]{6})`/i);
-    if (bg) background = bg[1];
-  }
-  if (designMd.match(/dark.mode.(?:native|first)/i)) {
-    const d = designMd.match(/(?:marketing|deepest|canvas).*?`(#[0-9a-fA-F]{6})`/i);
-    if (d) background = d[1];
-  }
-
-  const fgMatch = designMd.match(/(?:heading|primary text).*?`(#[0-9a-fA-F]{6})`/i);
-  const foreground = fgMatch ? fgMatch[1] : "#09090b";
-
-  // Font resolution — frontmatter tokens.typography.family → §3 prose → honest
-  // "System" sentinel. Never a blind 'Inter' guess (see font-registry).
-  const { family: fontFamily, mono, brand: brandFont } = resolveFontsFromDesignMd(designMd);
-
-  const weightMatch = designMd.match(/Display.*?\|\s*(\d{3})\s*\|/);
-  const headingWeight = weightMatch ? weightMatch[1] : "600";
-
-  const radiusMatch = designMd.match(/(?:border-radius|radius).*?(\d+px(?:\s*[-–]\s*\d+px)?)/i);
-  const radius = radiusMatch ? radiusMatch[1] : "6px";
-
-  const accentMatch = designMd.match(/(?:accent|secondary).*?`(#[0-9a-fA-F]{6})`/i);
-  const borderMatch = designMd.match(/(?:border.*?default|border.*?standard).*?`(#[0-9a-fA-F]{6})`/i);
-
-  const mood =
-    designMd
-      .match(/## 1\. Visual Theme.*?\n([\s\S]*?)(?=## 2\.)/)?.[1]
-      ?.trim()
-      .split("\n\n")[0]
-      ?.slice(0, 360) || "";
-
+  const loaded = loadReference(id);
+  if (!loaded) return null;
+  const legacy = extractLegacyReferenceDetail(id, loaded.markdown);
+  const projection = projectAstReferenceDetail(loaded.ast, legacy);
   return {
-    id,
-    designMd,
-    primary,
-    background,
-    foreground,
-    fontFamily,
-    mono,
-    brandFont,
-    headingWeight,
-    radius,
-    mood,
-    accent: accentMatch?.[1],
-    border: borderMatch?.[1],
+    ...projection.detail,
+    referenceAst: projection.contract,
+    entry: loaded.entry,
   };
 }
 
 export async function generateStaticParams() {
-  if (!existsSync(REFS_DIR)) return [];
-  return readdirSync(REFS_DIR, { withFileTypes: true })
-    .filter((d) => d.isDirectory() && existsSync(join(REFS_DIR, d.name, "DESIGN.md")))
-    .map((d) => ({ id: d.name }));
+  return REGISTRY.map(({ id }) => ({ id }));
 }
 
 export async function generateMetadata({
@@ -134,6 +89,7 @@ export async function generateMetadata({
   if (!detail) return { title: "Reference not found" };
   const name = refName(id);
   const path = `/design-systems/${id}`;
+  const editorial = getReferenceEnglishEditorial(id);
   // #6 query-shaped title (matches "<brand> design system / colors / typography
   // / tokens" searches) + answer-first summary as the description (extractable,
   // and identical to the visible band + JSON-LD description).
@@ -146,12 +102,25 @@ export async function generateMetadata({
     description: desc,
     // canonical = HTML page; expose the raw-markdown twin as an alternate so
     // agents/crawlers can discover /<id>/design.md (handler: /r/[id]).
-    alternates: { canonical: path, types: { "text/markdown": `/${id}/design.md` } },
+    alternates: {
+      canonical: path,
+      languages: { en: path, "x-default": path },
+      types: { "text/markdown": `/${id}/design.md` },
+    },
+    ...(editorial ? { keywords: [...editorial.keywords] } : {}),
     openGraph: {
       title,
       description: desc,
       url: path,
       type: "article",
+      locale: "en_US",
+      images: [`/api/og/reference?id=${id}`],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: desc,
+      images: [`/api/og/reference?id=${id}`],
     },
   };
 }
@@ -167,9 +136,9 @@ export default async function DesignSystemDetailPage({
   const tokens = extractTokens(detail);
   const related = getRelatedReferences(id, 6);
 
-  const entry = REGISTRY_BY_ID[id];
   const name = refName(id);
   const summary = buildSummary(name, detail);
+  const editorial = getReferenceEnglishEditorial(id);
   const pageUrl = `${SITE_URL}/design-systems/${id}`;
 
   // #4 structured data — Article (so the summary is an extractable description
@@ -180,11 +149,29 @@ export default async function DesignSystemDetailPage({
     {
       "@context": "https://schema.org",
       "@type": "Article",
+      inLanguage: "en",
       headline: `${name} Design System`,
       description: summary,
       mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
       about: { "@type": "Brand", name },
-      ...(entry?.verified ? { dateModified: entry.verified } : {}),
+      ...(detail.referenceAst.quality.tokensExtractedAt || detail.referenceAst.quality.verifiedAt
+        ? {
+            dateModified:
+              detail.referenceAst.quality.tokensExtractedAt
+              ?? detail.referenceAst.quality.verifiedAt
+              ?? undefined,
+          }
+        : {}),
+      additionalProperty: [
+        {
+          "@type": "PropertyValue",
+          name: "referenceQualityStatus",
+          value: detail.referenceAst.quality.status,
+        },
+      ],
+      ...(detail.referenceAst.evidence?.sources.length
+        ? { citation: detail.referenceAst.evidence.sources.map((source) => source.url) }
+        : {}),
       author: { "@type": "Organization", name: "oh-my-design", url: SITE_URL },
       publisher: { "@type": "Organization", name: "oh-my-design", url: SITE_URL },
       isPartOf: {
@@ -199,7 +186,7 @@ export default async function DesignSystemDetailPage({
       mainEntity: [
         {
           "@type": "Question",
-          name: `What is ${name}'s primary brand color?`,
+          name: `What is ${name}'s primary UI color?`,
           acceptedAnswer: { "@type": "Answer", text: detail.primary },
         },
         {
@@ -227,7 +214,12 @@ export default async function DesignSystemDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <DetailView detail={detail} tokens={tokens} summary={summary} />
+      <DetailView
+        detail={detail}
+        tokens={tokens}
+        summary={summary}
+        evidenceBoundary={editorial?.evidenceBoundary}
+      />
       <RelatedReferences related={related} />
     </>
   );

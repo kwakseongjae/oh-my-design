@@ -1,7 +1,7 @@
 ---
 name: omd:add-reference
 description: "URL 또는 brand id 입력 → 3-tier 검증 파이프라인(Tier 1 라이브 + Tier 2 getdesign/refero + Tier 3 reconcile)으로 references/<id>/DESIGN.md를 신규 생성(CREATE)하거나 기존 섹션을 검증·갱신(UPDATE). '레퍼런스 추가/수정', 'X DS 검증', 'X 컴포넌트 다시 뽑아줘' 류에 트리거."
-argument-hint: "<url|id> [--mode create|update|update-§N] [--style-ref <id>]"
+argument-hint: "<url|id> [--mode create|update|update-§N] [--style-ref <id>] [--runner codex-terra]"
 user-invocable: true
 ---
 
@@ -29,6 +29,17 @@ CREATE에는 항상 SYNC가 뒤따른다 (count +1).
 3. **컨플릭트 silent 해결 금지.** Tier 1 ↔ Tier 2 충돌 시 채팅으로 보고 후 결정.
 4. **거짓 주장 금지.** "확인했다"고 쓰려면 같은 턴에 tool call 증거 필요. refero "없음" 단정은 `?q=` 검색 + 스크롤 시도 후만.
 5. **검증 footer 의무.** 갱신한 섹션 끝에 `Verified: YYYY-MM-DD` + 모든 source URL 기록.
+6. **정확성만큼 맥락 깊이도 gate다.** reference는 감사 보고서가 아니라 사용자가 브랜드를 이해하고 적용하기 위한 문서다. 검증 메타·미확인 목록으로 §1/§3/§10-13을 대체하지 않는다. 공식 history/rebrand/culture/font 자료로 브랜드의 기원, 현재 변화, 표현 방식, 타이포 자산을 설명하되 각 사실의 evidence class를 분리한다.
+
+### Context depth contract (CREATE/UPDATE 공통)
+
+- §1 첫 문단은 `무엇을 하는 브랜드인가 + 무엇이 인상을 구별하는가`를 80–160단어 산문으로 답한다. `current public ecosystem`, `this reference preserves`, `unverified claims are omitted` 같은 검증 메타로 시작하지 않는다.
+- §1은 가능하면 3층으로 구성한다: **product/category → recognizable brand expression → current evolution/rebrand**. 최소 2개 공식 source를 `.verification.md`의 context evidence에 남긴다.
+- §3은 폰트를 한 덩어리로 평탄화하지 않고 다음 evidence class를 분리한다: **official product-use**, **live computed surface-use**, **official distributed brand asset**, **declared-only**, **unresolved**.
+- 공식 발표가 특정 폰트를 앱/제품에 적용했다고 명시하면 live webfont가 없어도 product family 사실로 승격할 수 있다. 이 경우 metadata는 보여주되 browser-loadable source가 없으면 specimen은 unavailable로 둔다.
+- 공식 배포 서체는 현재 UI 폰트가 아니어도 이름·역사·형태·license boundary를 설명할 가치가 있다. 다만 `tokens.typography.family.ui`에는 넣지 않는다.
+- 미확인 경계는 해당 주장 근처의 짧은 boundary note나 verification footer에 둔다. 유용한 브랜드 설명 전체를 경고문·상태문서로 바꾸지 않는다.
+- §10–13은 공식 mission, service principles, stakeholder groups, first-party culture/history 자료가 있으면 `[FILL IN]`보다 그것을 우선 사용한다. 허구 인물/인용/의도는 만들지 않는다.
 
 ---
 
@@ -43,7 +54,7 @@ CREATE에는 항상 SYNC가 뒤따른다 (count +1).
 2. WebSearch: `"<brand>" design system site:<domain>`
 3. GitHub: `gh search repos "<brand> design tokens"`
 4. 발견 시 → 공식 토큰 그대로 추출
-5. **추가**: playwright로 brand 메인 사이트 라이브 inspect (computed style: hero CTA / nav / footer / search input / card)
+5. **추가**: MCP 없이 결정론 collector 실행: `npm --prefix web run capture:reference -- <id> --max-routes 3`. 생성된 `artifacts/reference-evidence/<id>.json`의 computed style, FontFaceSet, `@font-face`, surface/state evidence를 사용한다.
 6. **🔒 Proof block 작성 (mandatory, `verified >= 2026-06-01` 게이트됨)**: inspect한 raw computed-style를 `web/references/<id>/.verification.md`에 `## Proof — Tier 1 live inspect` 블록으로 기록 — `**Inspected:**` 날짜 + `**Sources:**` URL + `### Raw samples` (≥5줄, 각 줄 = 실제 1개 관측값 with `rgb(`/`#hex`/`px`). 포맷은 `spec/verification-pipeline.md` "Proof Gate" 참조. **footer만 박고 proof 생략 = catalog-integrity 실패.**
 7. **🌏 KR/TW 추가 시 (`country: KR|TW`, `verified >= 2026-06-01`)**: Tier 2(getdesign/refero)는 한국·대만 brand 커버리지가 약함 → Tier 1이 증거를 짊어진다. `spec/regional-sources.yaml`의 `brand_owned`에서 **brand 자체 surface ≥2개**(공식 사이트 / DS docs / 공식 eng-design 블로그 / 공식 GitHub org)를 §4 footer `Tier 1 sources`에 명시. getdesign/refero는 이 ≥2에 **카운트 안 됨**. `discovery` aggregator(요즘IT/velog/iThome/INSIDE)는 brand surface를 **찾는 용도**일 뿐 인용 대상 아님.
 
@@ -61,7 +72,7 @@ Phase 2 라이브 inspect를 이미 했으므로 `source: live-extract`(또는 T
 `references/stripe/DESIGN.md`의 tokens 블록을 **스키마 레퍼런스**로 사용:
 
 - 네임스페이스(getdesign.md 정렬): **`colors`**(역할+variant: primary/primary-hover/brand/canvas/foreground/muted/on-primary/hairline/error/success…) · **`typography`**(`family` + 명명 토큰 `{size, weight, lineHeight, tracking, use}`) · **`spacing`**(명명 또는 배열) · **`rounded`**(`sm/md/lg/full`) · `shadow` · `components`.
-- 결정론 보조: `GLOBAL_ROOT=$(npm root -g) node web/scripts/extract-tokens.mjs <id> --json` 으로 라이브 후보·ΔE drift 확보 → LLM이 canonical 역할/값 확정(legacy-vs-live 판별, Google/임베드 오탐 거부).
+- 결정론 입력: `artifacts/reference-evidence/<id>.json`의 색·타이포·간격·radius cluster와 element provenance를 사용한다. LLM은 후보를 새로 추출하지 않고 canonical 역할/값만 확정한다(legacy-vs-live 판별, Google/임베드 오탐 거부).
 - **정합성 필수**: `tokens.colors`의 모든 hex는 **산문(§2)·primary_color 어딘가에 존재**해야 한다(미존재 → 산문에 명시하거나 토큰 수정). catalog-integrity의 token↔prose 게이트가 강제한다.
 - 작성 후 `cd web && node scripts/build-registry.mjs && node scripts/token-status.mjs` 로 검증 + 체크리스트 갱신.
 
@@ -90,13 +101,15 @@ Phase 2 라이브 inspect를 이미 했으므로 `source: live-extract`(또는 T
 - 갱신 대상 섹션 read
 
 ### Phase U2 — Tier 1 라이브 inspect
-playwright로 brand 메인 사이트 + 핵심 surface 1-2개 navigate → `browser_evaluate(getComputedStyle)` 로 raw observation 수집:
-```js
-const els = document.querySelectorAll('button, a[role=button], input, [role=tab]');
-// 각 element의 bg / color / radius / padding / height / fontSize / fontWeight / border 추출
-```
-- 마케팅 surface와 commerce/checkout surface가 분리된 brand는 **둘 다** 방문 (Apple 패턴)
-- raw → `web/references/<id>/.verification.md`에 기록
+1. `npm --prefix web run capture:reference -- <id> --max-routes 3` 실행. MCP server나 Playwright MCP는 필요 없다. 현재 collector는 hover/focus/pressed style snapshot과 menu/dialog/form-error/tab/toast expansion을 `interactions[]`에 보존한다. `coverage.interactionKinds`와 `interactionCount`가 0이면 상호작용 상태를 관측했다고 주장하지 않는다.
+2. **browser-harness exception lane**: collector가 유용한 공개 surface를 2개 미만으로 잡거나, 눈에 보이는 interactive UI인데 interaction coverage가 0이거나, SPA/overlay/반응형 상태·폰트·컴포넌트 충돌이 남으면 `browser-harness`를 사용한다. 항상 screenshot → disputed element/state의 computed style + `document.fonts` → screenshot 순서로 검사하고 URL·viewport·selector/visible text·raw value·screenshot path를 `.verification.md`에 기록한다. browser-harness 관측은 raw evidence이며 단독으로 token을 승격하지 않는다.
+3. `artifacts/reference-evidence/<id>.json`이 없거나 `surfaces.length < 2`면 완료로 보고하지 않는다. 공개 surface가 하나뿐이면 cap 사유를 명시한다.
+4. 색·간격·타이포는 aggregate 값만 복사하지 말고 representative element의 `surfaceId + selector + raw style`을 claim evidence로 연결한다.
+5. 폰트는 다음 순서로 판정한다: visible computed family → loaded `document.fonts` match → `@font-face` source URL → 공식 font/license URL. loaded match가 없으면 brand font로 확정하지 말고 `declared`/`system`/`unresolved`를 유지한다.
+   - 단, 공식 rebrand/product announcement가 "앱/제품에 적용"을 명시하면 `official product-use`로 별도 확정한다. 이는 마케팅 페이지 computed-use와 독립된 증거이며, browser loader 부재는 family 사실을 지우지 않고 specimen availability만 제한한다.
+6. 마케팅 surface와 product/docs surface가 분리된 brand는 둘 다 방문한다. login/checkout을 억지로 자동화하지 않는다.
+7. bundle 요약과 필요한 raw samples를 `web/references/<id>/.verification.md`에 기록한다. 원본 bundle은 ephemeral artifact이며 DESIGN.md보다 먼저 trust를 주장하지 않는다.
+8. 전체 운영 순서는 `spec/reference-collection-final.md`를 따른다. in-app browser는 Home → `/builder` acceptance에 사용하며 reference claim 수집기로 승격하지 않는다.
 
 ### Phase U3 — Tier 2 교차검증
 1. `WebFetch https://getdesign.md/<id>` — 둘 다 표/스펙 추출
@@ -113,6 +126,17 @@ const els = document.querySelectorAll('button, a[role=button], input, [role=tab]
 - Tier 1 ≠ Tier 2 → Tier 1이 라이브 inspect 가능했으면 Tier 1 우선, 아니면 Tier 2 다수결
 - 둘이 갈리고 Tier 1 침묵 → `(unresolved)` 플래그 + 채팅으로 사용자 보고
 - 이전에 잘못 들어간 값(Apple `#0066cc` 9999px 케이스 등) 발견 시 **롤백 사유** 명시
+
+### Phase U4.5 — Context depth reconcile
+
+1. 공식 history/about, current rebrand/newsroom, culture/brand-assets/font 자료를 최소 3개 시도한다.
+2. `.verification.md`에 `## Context and narrative evidence`를 만들고 source별로 사용할 수 있는 사실과 evidence boundary를 적는다.
+3. §1·§3·§10–13을 읽고 다음 anti-pattern이면 반드시 다시 쓴다:
+   - 첫 문단이 검증 범위/미확인 경고만 설명함
+   - 브랜드 고유 설명 없이 색·토큰 목록으로 바로 진입함
+   - 공식 폰트 자산을 모두 UI family로 합치거나, 반대로 current UI 미사용이라는 이유로 역사/형태/라이선스 설명까지 삭제함
+   - 공식 mission/stakeholder 자료가 있는데 `[FILL IN]`만 남김
+4. narrative fact와 machine token은 독립적으로 판정한다. 서사적으로 유용한 공식 사실이 반드시 UI token일 필요는 없다.
 
 ### Phase U5 — Write
 - §4를 canonical schema로 재작성:
@@ -176,6 +200,46 @@ echo "$S4" | grep -cE "^- [A-Za-z]"                            # bullet 수 (var
 
 UPDATE는 SYNC를 트리거하지 않는다 (count 변동 없음).
 
+## Codex Terra 구독 실행기 (`--runner codex-terra`)
+
+Codex 로컬 실행에서는 결정론 collector와 이 스킬을 그대로 사용하고, 공식 출처 추가 수집과 증거 reconcile 단계를 로그인된 ChatGPT 구독의 `gpt-5.6-terra` + `high`에 위임한다. API key 기반 종량제 경로와 섞지 않는다. 원시 DOM/computed-style/FontFaceSet 수집은 결정론 collector가 담당하고 Terra는 브라우저 수치를 새로 추정하지 않는다.
+
+### 전제
+
+- `codex --version`은 Terra를 지원하는 버전이어야 한다. 현재 검증 기준은 `0.144.1+`이다.
+- 사용자는 로컬 Codex에서 ChatGPT 계정으로 로그인되어 있어야 한다. `OPENAI_API_KEY`를 요구하거나 패킷에 기록하지 않는다.
+- `~/.codex/models_cache.json`에 `gpt-5.6-terra`와 `high` reasoning level이 실제로 노출되는지 실행기가 선검증한다.
+- 프로젝트 MCP와 Codex apps는 중첩 worker에서 끈다. 수집은 `playwright-core` 기반 로컬 collector가 먼저 완료하며, Terra는 raw bundle을 해석·교차검증한다.
+
+### 실행 순서
+
+```bash
+# 1) 한 reference만 Terra/high 정책으로 큐에 넣는다.
+npm --prefix web run reverify:queue -- --ids <id> --limit 1 --model-profile gpt-5.6-terra --reasoning-effort high
+
+# 2) 명령·전송 파일을 먼저 확인한다. 구독 adapter라 --budget-usd를 쓰지 않는다.
+npm --prefix web run reverify:run -- --id <id> --adapter config/reverify-runner.codex-terra.example.json
+
+# 3) 명시적 실행. collector → evidence validation → Terra reconcile → deterministic gates 순서다.
+npm --prefix web run reverify:run -- --id <id> --execute --adapter config/reverify-runner.codex-terra.example.json
+
+# 4) 여러 reference는 10개 단위 resumable runner로 계획을 먼저 확인한 뒤 실행한다.
+npm --prefix web run reverify:batch -- --queue artifacts/reverify/<queue>.json --batch 1
+npm --prefix web run reverify:batch -- --queue artifacts/reverify/<queue>.json --batch 1 --execute
+```
+
+배치 runner는 capture evidence가 `surfaces >= 2`, `coverage >= 60`, `components >= 1`인 항목만 Terra에 보낸다. 나머지는 `hold`, 기존 Verified가 이 조건을 어기면 `audit_required`로 기록한다. Terra worker 안에서는 repository gate를 반복하지 않고 per-reference gate는 outer runner가 1회, 전체 Web/test/typecheck gate는 배치 끝에 1회 실행한다.
+
+### 권한·성공 판정
+
+- `--execute`는 packet과 `artifacts/reference-evidence/<id>.json`을 OpenAI 서비스로 보내는 명시적 경계다. 사용자가 요청한 reference만 1개씩 실행한다.
+- nested Codex worker는 대상 `web/references/<id>/DESIGN.md`, `.verification.md`, 해당 `design-md/<id>` mirror 외에는 수정하지 않는다. commit/push/deploy/PR은 금지다.
+- worker 응답만으로 성공 처리하지 않는다. `turn.completed`, runner의 `run.json = complete`, packet의 deterministic acceptance가 모두 통과해야 한다.
+- capture만 점검할 때는 `reverify:run -- --id <id> --capture-only`를 사용한다. 이 모드는 Terra를 호출하지 않는다.
+- worker edit은 끝났지만 deterministic acceptance만 실패한 경우 canonical을 최소 수정한 뒤 `reverify:run -- --id <id> --acceptance-only`로 worker를 재호출하지 않고 gate만 재개한다.
+- `--execute`는 live surface가 2개 미만이면 실패한다. 단일 surface capture는 raw artifact로 보존할 수 있지만 Verified 승격 근거로 쓰지 않는다.
+- 모델·reasoning level이 계정에 없거나 CLI가 오래됐으면 조용히 다른 모델로 fallback하지 않고 즉시 실패한다.
+
 ---
 
 ## Phase P — Philosophy fill (§10-15)
@@ -233,9 +297,9 @@ CREATE 시 자동, 수동으로도 호출 가능.
 
 ### refero 검색 흐름
 ```
-1. mcp__playwright__browser_navigate("https://styles.refero.design/?q=<brand>")
-2. mcp__playwright__browser_snapshot — 결과 카드의 /style/<uuid> URL 수집
-3. 각 카드를 WebFetch로 추출 (depth가 필요하면 navigate 후 evaluate)
+1. 일반 HTTP fetch 또는 로컬 browser CLI로 "https://styles.refero.design/?q=<brand>" 조회
+2. DOM의 결과 카드에서 /style/<uuid> URL 수집
+3. 각 카드를 HTTP fetch로 추출 (클라이언트 렌더링이 필요하면 로컬 Playwright/browser-harness 사용)
 ```
 
 ### apple.com 류 라이브 inspect 패턴

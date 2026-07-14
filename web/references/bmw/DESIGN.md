@@ -4,357 +4,243 @@ name: BMW
 country: DE
 category: automotive
 homepage: "https://www.bmw.com"
-primary_color: "#0066b1"
+primary_color: "#1c69d4"
 logo:
   type: simpleicons
   slug: bmw
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: product-marketing, url: "https://www.bmwusa.com/", inspected: "2026-07-13" }
+    - { id: models, kind: vehicle-catalog, url: "https://www.bmwusa.com/vehicles/all-bmw-models.html", inspected: "2026-07-13" }
+    - { id: configurator, kind: configurator-marketing, url: "https://www.bmwusa.com/build-your-own.html#/", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.bmwusa.com/", captured: "2026-07-13" }
+    - { id: models-live, kind: product-surface, url: "https://www.bmwusa.com/vehicles/all-bmw-models.html", captured: "2026-07-13" }
+    - { id: configurator-live, kind: product-surface, url: "https://www.bmwusa.com/build-your-own.html#/", captured: "2026-07-13" }
+    - { id: bmwtype-web-assets, kind: brand-asset, url: "https://www.bmwusa.com/etc.clientlibs/bmw-web/clientlibs/clientlib-site/resources/fonts/BMWTypeNext-Regular.woff2", captured: "2026-07-13" }
+    - { id: bmw-club-ci, kind: official-doc, url: "https://www.bmwgroup-werke.com/content/dam/grpw/websites/bmwgroup-classic_com/bmw_clubs/downloads/leitlinien/en/BCIC_Guideline_no5_version2.1.1.pdf", captured: "2026-07-13" }
+    - { id: bmw-brand-design, kind: official-doc, url: "https://www.press.bmwgroup.com/global/article/detail/T0306305EN/introducing-bmw%E2%80%99s-new-brand-design-for-online-and-offline-communication?language=en", captured: "2026-07-13" }
+    - { id: bmw-history, kind: official-doc, url: "https://www.bmwgroup.com/en/company/history.html", captured: "2026-07-13" }
+    - { id: bmw-neue-klasse, kind: official-doc, url: "https://www.bmwgroup.com/en/company/neue-klasse.html", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.foreground": *home
+    "tokens.colors.on-dark": *home
+    "tokens.colors.outline": *home
+    "tokens.colors.foreground-configurator": &configurator { surface_id: configurator, source_id: configurator-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.family.ui": { surface_id: home, source_id: bmwtype-web-assets, method: computed-font-face, captured: "2026-07-13" }
+    "tokens.typography.display.size": *home
+    "tokens.typography.display.weight": *home
+    "tokens.typography.display.lineHeight": *home
+    "tokens.typography.display.use": *home
+    "tokens.typography.body.size": *home
+    "tokens.typography.body.weight": *home
+    "tokens.typography.body.lineHeight": *home
+    "tokens.typography.body.use": *home
+    "tokens.typography.control.size": *home
+    "tokens.typography.control.weight": *home
+    "tokens.typography.control.lineHeight": *home
+    "tokens.typography.control.use": *home
+    "tokens.typography.utility.size": *home
+    "tokens.typography.utility.weight": *home
+    "tokens.typography.utility.lineHeight": *home
+    "tokens.typography.utility.use": *home
+    "tokens.spacing.space-4": *home
+    "tokens.spacing.space-12": *home
+    "tokens.spacing.space-24": *home
+    "tokens.spacing.space-32": *home
+    "tokens.rounded.none": *home
+    "tokens.rounded.control": *home
 tokens:
-  source: prose-derived
-  extracted: "2026-06-08"
-  note: "primary = live signature interactive blue --site-context-highlight-color (#1c69d4); differs from primary_color frontmatter (#0066b1, BMW roundel marketing blue)"
+  source: live-extract
+  extracted: "2026-07-13"
+  components_harvested: false
   colors:
     primary: "#1c69d4"
-    primary-hover: "#0653b6"
-    brand: "#0066b1"
-    canvas: "#ffffff"
-    foreground: "#262626"
-    muted: "#757575"
-    on-primary: "#ffffff"
-    focus: "#0653b6"
-    surface: "#ffffff"
-    dark-surface: "#262626"
-    tertiary: "#bbbbbb"
+    foreground: "#414141"
+    foreground-configurator: "#262626"
+    on-dark: "#ffffff"
+    outline: "#f2f2f2"
   typography:
-    family: { sans: "BMWTypeNextLatin, Helvetica, Arial, Hiragino Kaku Gothic ProN, Hiragino Sans, Meiryo", mono: "monospace" }
-    display-hero:    { size: 60, weight: 300, lineHeight: 1.30, use: "Uppercase hero display, whispered authority" }
-    section-heading: { size: 32, weight: 400, lineHeight: 1.30, use: "Major section titles" }
-    nav-emphasis:    { size: 18, weight: 900, lineHeight: 1.30, use: "Navigation bold items, stark authority" }
-    body:            { size: 16, weight: 400, lineHeight: 1.15, use: "Standard body text" }
-    button-bold:     { size: 16, weight: 700, lineHeight: 1.20, use: "CTA buttons" }
-    button:          { size: 16, weight: 400, lineHeight: 1.15, use: "Standard buttons" }
-  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 60 }
-  rounded: { sm: 0, md: 0, lg: 0, full: 0 }
-  shadow:
-    none: "none"
-  components_harvested: true
-  components:
-    button-primary: { type: button, bg: "transparent", fg: "#ffffff", border: "1px solid #ffffff", radius: "0px", padding: "12px 24px", font: "16px / 700", hover: "text stays white, no underline", use: "Primary CTA on dark/hero surfaces" }
-    button-secondary: { type: button, bg: "transparent", fg: "#262626", border: "1px solid #262626", radius: "0px", padding: "12px 24px", font: "16px / 400", use: "Secondary action on light surfaces" }
-    button-highlight: { type: button, bg: "#1c69d4", fg: "#ffffff", radius: "0px", padding: "12px 24px", font: "16px / 700", hover: "bg #0653b6", use: "BMW Blue highlight CTA" }
-    input: { type: input, bg: "#ffffff", fg: "#262626", border: "1px solid #262626", radius: "0px", padding: "12px 16px", font: "16px / 400", focus: "border #0653b6", use: "Default text input" }
-    card: { type: card, bg: "#ffffff", radius: "0px", padding: "24px", border: "none", use: "Light-section content card — sharp rectangular" }
-    dark-hero-container: { type: card, bg: "#262626", fg: "#ffffff", radius: "0px", padding: "0px", use: "Hero/feature with full-bleed automotive photography, edge-to-edge" }
-    badge: { type: badge, bg: "#262626", fg: "#ffffff", radius: "0px", padding: "4px 8px", font: "12px / 700", use: "Label badge" }
+    family: { ui: "bmwTypeNextWeb" }
+    display: { size: 35, weight: 300, lineHeight: 1.43, use: "Observed home heading only." }
+    body: { size: 18, weight: 300, lineHeight: 1.56, use: "Observed home body copy only." }
+    control: { size: 15, weight: 500, lineHeight: 1.6, use: "Observed home button and navigation control text only." }
+    utility: { size: 20, weight: 300, lineHeight: 1.5, use: "Observed home navigation icon-flyout text only." }
+  spacing: { space-4: 4, space-12: 12, space-24: 24, space-32: 32 }
+  rounded: { none: 0, control: 3 }
+  components: {}
 ---
 
 # Design System Inspiration of BMW
 
 ## 1. Visual Theme & Atmosphere
 
-BMW's website is automotive engineering made visual — a design system that communicates precision, performance, and German industrial confidence. The page alternates between deep dark hero sections (featuring full-bleed automotive photography) and clean white content areas, creating a cinematic rhythm reminiscent of a luxury car showroom where vehicles are lit against darkness. The BMW CI2020 design language (their corporate identity refresh) defines every element.
+BMW makes premium automobiles, motorcycles, and mobility services. Its public BMW USA home, model-catalog, and build-your-own routes were captured as separate product-marketing surfaces; this reference intentionally does not turn them into a claim about an authenticated vehicle, account, dealer, or in-car interface. The recorded home treatment pairs a small number of blue primary actions with white or transparent navigation controls and light, high-line-height BMW Type text. The catalogue and configurator share the same family but do not resolve every color identically, so the values remain surface-scoped rather than being blended into a fictional global palette. BMW’s official 2020 identity update describes a digitally oriented brand presence built around openness, clarity, visual restraint, and graphic flexibility; its current Neue Klasse programme carries that direction into a new, reduced vehicle-design language. [BMW brand design announcement](https://www.press.bmwgroup.com/global/article/detail/T0306305EN/introducing-bmw%E2%80%99s-new-brand-design-for-online-and-offline-communication?language=en) and [Neue Klasse context](https://www.bmwgroup.com/en/company/neue-klasse.html) inform this narrative, not the live web tokens.
 
-The typography is built on BMWTypeNextLatin — a proprietary typeface in two variants: BMWTypeNextLatin Light (weight 300) for massive uppercase display headings, and BMWTypeNextLatin Regular for body and UI text. The 60px uppercase headline at weight 300 is the defining typographic gesture — light-weight type that whispers authority rather than shouting it. The fallback stack includes Helvetica and Japanese fonts (Hiragino, Meiryo), reflecting BMW's global presence.
+**Key characteristics:**
 
-What makes BMW distinctive is its CSS variable-driven theming system. Context-aware variables (`--site-context-highlight-color: #1c69d4`, `--site-context-focus-color: #0653b6`, `--site-context-metainfo-color: #757575`) suggest a design system built for multi-brand, multi-context deployment where colors can be swapped globally. The blue highlight color (`#1c69d4`) is BMW's signature blue — used sparingly for interactive elements and focus states, never decoratively. Zero border-radius was detected — BMW's design is angular, sharp-cornered, and uncompromisingly geometric.
-
-**Key Characteristics:**
-- BMWTypeNextLatin Light (weight 300) uppercase for display — whispered authority
-- BMW Blue (`#1c69d4`) as singular accent — used only for interactive elements
-- Zero border-radius detected — angular, sharp-cornered, industrial geometry
-- Dark hero photography + white content sections — showroom lighting rhythm
-- CSS variable-driven theming: `--site-context-*` tokens for brand flexibility
-- Weight 900 for navigation emphasis — extreme contrast with 300 display
-- Tight line-heights (1.15–1.30) throughout — compressed, efficient, German engineering
-- Full-bleed automotive photography as primary visual content
+- A single observed blue home CTA fill, `#1c69d4`
+- `bmwTypeNextWeb` as the loaded, computed public-web family
+- Mostly square navigation chrome, with 3px CTA corners where measured
+- Separate home and configurator foreground values rather than one assumed neutral scale
+- No promoted hover, focus, pressed, modal, or responsive system from this capture
 
 ## 2. Color Palette & Roles
 
-### Primary Brand
-- **Pure White** (`#ffffff`): `--site-context-theme-color`, primary surface, card backgrounds
-- **BMW Blue** (`#1c69d4`): `--site-context-highlight-color`, primary interactive accent
-- **BMW Focus Blue** (`#0653b6`): `--site-context-focus-color`, keyboard focus and active states
+### Observed BMW USA product-marketing values
 
-### Neutral Scale
-- **Near Black** (`#262626`): Primary text on light surfaces, dark link text
-- **Meta Gray** (`#757575`): `--site-context-metainfo-color`, secondary text, metadata
-- **Silver** (`#bbbbbb`): Tertiary text, muted links, footer elements
+- **Primary action** (`#1c69d4`): home `.cmp-button` background at `home::[data-omd-capture="10"]`.
+- **Home foreground** (`#414141`): home list and dialog chrome; it is not substituted for the configurator value.
+- **Configurator foreground** (`#262626`): build-your-own navigation and local chrome at `surface-3`.
+- **On-dark navigation** (`#ffffff`): home global-navigation control text.
+- **Outline action** (`#f2f2f2`): inset-outline and text color of the paired home CTA at `home::[data-omd-capture="11"]`.
 
-### Interactive States
-- All links hover to white (`#ffffff`) — suggesting primarily dark-surface navigation
-- Text links use underline: none on hover — clean interaction
-
-### Shadows
-- Minimal shadow system — depth through photography and dark/light section contrast
+No semantic success, warning, error, disabled, hover, or focus color is claimed. The collector did not observe a reusable white canvas fill, a general dark-surface token, or a system-wide BMW roundel color role, so those values are omitted instead of inferred from marketing imagery or logos.
 
 ## 3. Typography Rules
 
-### Font Families
-- **Display Light**: `BMWTypeNextLatin Light`, fallbacks: `Helvetica, Arial, Hiragino Kaku Gothic ProN, Hiragino Sans, Meiryo`
-- **Body / UI**: `BMWTypeNextLatin`, same fallback stack
+### Evidence classes
 
-### Hierarchy
+- **Live computed surface-use, FontFaceSet, and source corroboration:** `bmwTypeNextWeb` is loaded with high confidence, appears on 288 captured elements across body, headings, navigation, buttons, dialogs, and list items, and is backed by 52 BMWUSA-hosted WOFF/WOFF2 source URLs. It is the sole UI family token.
+- **Live computed but limited use:** `BMWTypeNext` is also loaded with high confidence (five captured uses) from six BMWUSA-hosted BMWTypeNextLatin files. Its limited observed role is recorded here but it is not made a second generic UI-family token.
+- **Official distributed brand asset:** BMW’s official Club CI guideline specifies BMW TypeNext Bold and Regular for club identifiers. That establishes an official brand-asset context, not an assertion that the club guideline defines the captured BMWUSA product UI. [BMW Club CI guideline](https://www.bmwgroup-werke.com/content/dam/grpw/websites/bmwgroup-classic_com/bmw_clubs/downloads/leitlinien/en/BCIC_Guideline_no5_version2.1.1.pdf)
+- **Declared-only:** Arial MT, `bmw_next_icons`, and SangBleuKingdom have captured `@font-face` declarations but zero visible uses. They are not UI-family tokens.
+- **Licence boundary:** the collected BMWUSA WOFF/WOFF2 files corroborate browser use only. The public BMW Club guideline governs official-club brand materials and does not grant a downstream webfont licence; no public first-party reuse licence was located in this pass.
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display Hero | BMWTypeNextLatin Light | 60px (3.75rem) | 300 | 1.30 (tight) | `text-transform: uppercase` |
-| Section Heading | BMWTypeNextLatin | 32px (2.00rem) | 400 | 1.30 (tight) | Major section titles |
-| Nav Emphasis | BMWTypeNextLatin | 18px (1.13rem) | 900 | 1.30 (tight) | Navigation bold items |
-| Body | BMWTypeNextLatin | 16px (1.00rem) | 400 | 1.15 (tight) | Standard body text |
-| Button Bold | BMWTypeNextLatin | 16px (1.00rem) | 700 | 1.20–2.88 | CTA buttons |
-| Button | BMWTypeNextLatin | 16px (1.00rem) | 400 | 1.15 (tight) | Standard buttons |
+### Observed hierarchy
 
-### Principles
-- **Light display, heavy navigation**: Weight 300 for hero headlines creates whispered elegance; weight 900 for navigation creates stark authority. This extreme weight contrast (300 vs 900) is the signature typographic tension.
-- **Universal uppercase display**: The 60px hero is always uppercase — creating a monumental, architectural quality.
-- **Tight everything**: Line-heights from 1.15 to 1.30 across the entire system. Nothing breathes — every line is compressed, efficient, German-engineered.
-- **Single font family**: BMWTypeNextLatin handles everything from 60px display to 16px body — unity through one typeface at different weights.
+| Role | Size | Weight | Line height | Surface boundary |
+|------|------|--------|-------------|------------------|
+| Display heading | 35px | 300 | 50px | Home only |
+| Body copy | 18px | 300 | 28px | Home only |
+| Control text | 15px | 500 | 24px | Home button and navigation controls |
+| Icon-flyout text | 20px | 300 | 30px | Home global navigation only |
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary**
-- Background: transparent
-- Text: `#ffffff`
-- Border: 1px solid `#ffffff` (bottom-border on dark surfaces)
+**Home primary CTA — observed default**
+- Background: #1c69d4
+- Text: #ffffff
+- Radius: 3px
+- Padding: 4px
+- Font: 15px / 500 / bmwTypeNextWeb
+- Use: `home::[data-omd-capture="10"]` `.cmp-button`; 52px rendered height. No state snapshot was supplied.
+
+**Home outline CTA — observed default**
+- Text: #f2f2f2
+- Radius: 3px
+- Padding: 4px
+- Font: 15px / 500 / bmwTypeNextWeb
+- Use: `home::[data-omd-capture="11"]` `.cmp-button`; transparent fill with `#f2f2f2` 1px inset outline and 52px rendered height. No state snapshot was supplied.
+
+### Global navigation controls
+
+**Home flyout trigger — observed default**
+- Text: #ffffff
 - Radius: 0px
-- Padding: 12px 24px
-- Font: 16px / 700 / BMWTypeNextLatin
-- Hover: text remains white, no underline
-- Use: Primary CTA on dark/hero surfaces
+- Padding: 0px 12px
+- Font: 15px / 500 / bmwTypeNextWeb
+- Use: `home::[data-omd-capture="1"]` `.cmp-globalnavigation__interaction--flyout`; 84px rendered height. No menu-open state was observed.
 
-**Secondary**
-- Background: transparent
-- Text: `#262626`
-- Border: 1px solid `#262626`
+**Build-your-own flyout trigger — observed default**
+- Text: #666666
 - Radius: 0px
-- Padding: 12px 24px
-- Font: 16px / 400 / BMWTypeNextLatin
-- Use: Secondary actions on light surfaces
+- Padding: 0px 12px
+- Font: 15px / 500 / bmwTypeNextWeb
+- Use: `surface-3::[data-omd-capture="1"]` `.cmp-globalnavigation__interaction--flyout`; 84px rendered height. This surface-specific value is not a home-navigation variant.
 
-**Highlight**
-- Background: `#1c69d4`
-- Text: `#ffffff`
-- Radius: 0px
-- Padding: 12px 24px
-- Font: 16px / 700 / BMWTypeNextLatin
-- Hover: `#0653b6`
-- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — BMW Blue highlight CTA
+Inputs, cards, badges, dialogs, chatbot chrome, menu panels, and state variants are omitted: the supplied artifact has no representative BMW selector/state evidence for them. OneTrust dialog and close-button records are third-party consent chrome, not BMW product components.
 
-### Inputs
-
-**Default**
-- Background: `#ffffff`
-- Text: `#262626`
-- Border: 1px solid `#262626`
-- Radius: 0px
-- Padding: 12px 16px
-- Font: 16px / 400 / BMWTypeNextLatin
-- Focus: border `#0653b6`
-- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
-
-### Cards
-
-**Standard**
-- Background: `#ffffff`
-- Radius: 0px
-- Padding: 24px
-- Border: none
-- Use: Light-section content card — sharp rectangular, no border-radius (BMW's angular signature)
-
-**Dark Hero Container**
-- Background: `#262626` (or full-bleed photography)
-- Text: `#ffffff`
-- Radius: 0px
-- Padding: 0px (edge-to-edge)
-- Use: Hero/feature sections with full-bleed automotive photography
-
-### Badges
-
-**Default**
-- Background: `#262626`
-- Text: `#ffffff`
-- Radius: 0px
-- Padding: 4px 8px
-- Font: 12px / 700 / BMWTypeNextLatin
-- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
-
-### Navigation
-- BMWTypeNextLatin 18px weight 900 for primary nav links
-- White text on dark header
-- BMW logo 54x54px
-- Hover: remains white, text-decoration none
-- "Home" text link in header
-
-### Image Treatment
-- Full-bleed automotive photography
-- Dark cinematic lighting
-- Edge-to-edge hero images
-- Car photography as primary visual content
+---
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.bmwusa.com/ · https://www.bmwusa.com/vehicles/all-bmw-models.html · https://www.bmwusa.com/build-your-own.html#/
+**Tier 2 sources:** https://getdesign.md/bmw (record present; broad editorial cross-check only) · https://styles.refero.design/?q=bmw (required search attempted; built-in open was blocked and no usable BMW style record was collected)
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 1px, 5px, 8px, 10px, 12px, 15px, 16px, 20px, 24px, 30px, 32px, 40px, 45px, 56px, 60px
+### Observed spacing
 
-### Grid & Container
-- Full-width hero photography
-- Centered content sections
-- Footer: multi-column link grid
+The supplied desktop capture repeatedly records 4px, 12px, 24px, and 32px values. They are exposed as observed values rather than a declared BMW spacing scale: 4px is the CTA inset padding, 12px is global-navigation horizontal padding, 24px is recurrent control/list line-height or spacing, and 32px occurs in home list margins. No grid, container width, or breakpoint is established by these repetitions.
 
-### Whitespace Philosophy
-- **Showroom pacing**: Dark hero sections with generous padding create the feeling of walking through a showroom where each vehicle is spotlit in its own space.
-- **Compressed content**: Body text areas use tight line-heights and compact spacing — information-dense, no waste.
+### Shape boundary
 
-### Border Radius Scale
-- **None detected.** BMW uses sharp corners exclusively — every element is a precise rectangle. This is the most angular design system analyzed.
+The sampled global-navigation controls are 0px radius; the sampled paired home CTAs are 3px radius. The evidence therefore supports two measured geometries, not a claim that every BMW surface is square or that 3px is a universal corporate rule.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Photography (Level 0) | Full-bleed dark imagery | Hero backgrounds |
-| Flat (Level 1) | White surface, no shadow | Content sections |
-| Focus (Accessibility) | BMW Focus Blue (`#0653b6`) | Focus states |
-
-**Shadow Philosophy**: BMW uses virtually no shadows. Depth is created entirely through the contrast between dark photographic sections and white content sections — the automotive lighting does the elevation work.
+The observed BMW CTA and global-navigation controls have `box-shadow: none`. A low-confidence chatbot record contains a shadow, but it is not used to define an elevation token or a general BMW component rule. No reusable panel, card, or modal elevation system was collected.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use BMWTypeNextLatin Light (300) uppercase for all display headings
-- Keep ALL corners sharp (0px radius) — angular geometry is non-negotiable
-- Use BMW Blue (`#1c69d4`) only for interactive elements — never decoratively
-- Apply weight 900 for navigation emphasis — the extreme weight contrast is intentional
-- Use full-bleed automotive photography for hero sections
-- Keep line-heights tight (1.15–1.30) throughout
-- Use `--site-context-*` CSS variables for theming
+
+- Keep the home primary action tied to the observed `#1c69d4` CTA rather than treating it as a generic semantic blue.
+- Preserve the measured distinction between 0px navigation controls and 3px paired CTAs when recreating the captured home pattern.
+- Keep `bmwTypeNextWeb` metadata attached to BMWUSA web evidence; use a lawful fallback only when the proprietary face cannot be loaded.
+- Scope home and configurator navigation values to their recorded surfaces.
 
 ### Don't
-- Don't round corners — zero radius is the BMW identity
-- Don't use BMW Blue for backgrounds or large surfaces — it's an accent only
-- Don't use medium font weights (500–600) — the system uses 300, 400, 700, 900 extremes
-- Don't add decorative elements — the photography and typography carry everything
-- Don't use relaxed line-heights — BMW text is always compressed
-- Don't lighten the dark hero sections — the contrast with white IS the design
+
+- Don't claim unobserved hover, focus, pressed, disabled, error, or menu-open behavior.
+- Don't promote declared-only Arial MT, `bmw_next_icons`, or SangBleuKingdom into BMW UI typography.
+- Don't reuse BMW-hosted font files as though the capture supplied a public downstream licence.
+- Don't turn consent-banner or chatbot records into BMW component tokens without source-specific evidence.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile Small | <375px | Minimum supported |
-| Mobile | 375–480px | Single column |
-| Mobile Large | 480–640px | Slight adjustments |
-| Tablet Small | 640–768px | 2-column begins |
-| Tablet | 768–920px | Standard tablet |
-| Desktop Small | 920–1024px | Desktop layout begins |
-| Desktop | 1024–1280px | Standard desktop |
-| Large Desktop | 1280–1440px | Expanded |
-| Ultra-wide | 1440–1600px | Maximum layout |
-
-### Collapsing Strategy
-- Hero: 60px → scales down, maintains uppercase
-- Navigation: horizontal → hamburger
-- Photography: full-bleed maintained at all sizes
-- Content sections: stack vertically
-- Footer: multi-column → stacked
+Only a 1440×900 desktop collector run was supplied. It does not substantiate mobile breakpoints, navigation collapse, touch targets, or responsive spacing rules; no responsive token or rule is asserted.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Background: Pure White (`#ffffff`)
-- Text: Near Black (`#262626`)
-- Secondary text: Meta Gray (`#757575`)
-- Accent: BMW Blue (`#1c69d4`)
-- Focus: BMW Focus Blue (`#0653b6`)
-- Muted: Silver (`#bbbbbb`)
+Use this reference as a constrained public-web inspiration, not as a specification for a vehicle interface or an authenticated service.
 
-### Example Component Prompts
-- "Create a hero: full-width dark automotive photography background. Heading at 60px BMWTypeNextLatin Light weight 300, uppercase, line-height 1.30, white text. No border-radius anywhere."
-- "Design navigation: dark background. BMWTypeNextLatin 18px weight 900 for links, white text. BMW logo 54x54. Sharp rectangular layout."
-- "Build a button: 16px BMWTypeNextLatin weight 700, line-height 1.20. Sharp corners (0px radius). White bottom border on dark surface."
-- "Create content section: white background. Heading at 32px weight 400, line-height 1.30, #262626. Body at 16px weight 400, line-height 1.15."
-
-### Iteration Guide
-1. Zero border-radius — every corner is sharp, no exceptions
-2. Weight extremes: 300 (display), 400 (body), 700 (buttons), 900 (nav)
-3. BMW Blue for interactive only — never as background or decoration
-4. Photography carries emotion — the UI is pure precision
-5. Tight line-heights everywhere — 1.15 to 1.30 is the range
+- "Create a BMW USA home CTA: `#1c69d4` fill, white 15px/500 `bmwTypeNextWeb` text where licensed and loadable, 3px radius, 4px inset padding, 52px observed height."
+- "Create a paired outline action: transparent fill, `#f2f2f2` text and inset outline, 3px radius; do not invent interaction states."
+- "Create the observed home navigation trigger: white 15px/500 text, 0px radius, 0px 12px padding. Keep it separate from the build-your-own trigger's `#666666` text."
 
 ## 10. Voice & Tone
 
-BMW's voice is **precision-engineered and luxury-confident.** "프리미엄 자동차와 혁신적인 기술" — luxury performance positioning. Sharp 3px radius + photography-driven hero signal "German engineering precision."
+BMW’s official 2020 communication-design announcement describes the brand update as open, clear, customer-centred, and suited to a digital future. For source-backed BMW-inspired communication, use concise, confident language that makes the next action legible and lets a product image or technical detail carry the rest. This is brand-communication context, not evidence for unobserved product error copy.
 
-| Context | Tone |
-|---|---|
-| CTA | Verb-noun. "사전 예약하기", "더 알아보기", "구성하기" |
-| Marketing | Photography dominant; copy supports image |
-| Documentation | Technical specs (kW, km/h, 제로백) prominent |
-| Error | Specific. "구성 옵션이 호환되지 않습니다." |
-
-**Voice samples**
-- Marketing CTAs: *"사전 예약하기"* / *"BMW AI 어시스턴트"* <!-- verified: bmw.co.kr 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary driving". Aggressive Mercedes-comparison framing.
+| Context | Source-backed direction |
+|---------|-------------------------|
+| Brand communication | Openness, clarity, and strength of character from the 2020 brand-design announcement |
+| Future mobility | Electric, digital, circular, and driving-pleasure framing from Neue Klasse materials |
+| Controls | Use direct labels whose visual treatment stays within the observed surface-specific component evidence |
 
 ## 11. Brand Narrative
 
-BMW (**Bayerische Motoren Werke**) was founded **March 7, 1916** in Munich, originally as **Bayerische Flugzeugwerke (BFW)** — formerly Otto Flugmaschinenfabrik — an aircraft engine manufacturer ([BMW — Wikipedia](https://en.wikipedia.org/wiki/BMW), [History of BMW — Wikipedia](https://en.wikipedia.org/wiki/History_of_BMW), [BMW Group History](https://www.bmwgroup.com/en/company/history.html)). The company traces its lineage to **Karl Rapp** and **Gustav Otto**; the moniker "BMW" first appeared in 1917 when Rapp Motorenwerke became BMW GmbH, then re-formalized as **Bayerische Motoren Werke in 1922**. The first product was the **BMW IIIa aircraft engine**, distinguished by fuel economy and high-altitude performance ([PBS](https://www.pbs.org/newshour/world/heres-what-bmw-did-before-it-made-luxury-cars)). The **Treaty of Versailles (1918) banned aircraft engine production**, forcing BMW to pivot to **farm equipment, household items, and railway brakes** to survive. Motorcycle production began **1923 (R32)**; automobile market entry **1928** (Dixi acquisition). Brand positioning: ***"Sheer Driving Pleasure"* / *"Freude am Fahren"***. The 2024-2025 evolution toward AI Assistant integration + EV (i-series, Neue Klasse) positions BMW for the post-internal-combustion era while preserving driving-pleasure identity. The roundel logo's **white + blue quarters represent the Bavarian flag**, not a spinning propeller — that myth has been explicitly debunked by BMW corporate communications.
+BMW’s roots reach to 1916, when the Flugmaschinenfabrik Gustav Otto merged into Bayerische Flugzeug-Werke AG; BMW Group’s own history identifies 7 March 1916 as the foundation date of today’s BMW AG and traces the company’s roots to Karl Rapp and Gustav Otto. [BMW Group history](https://www.bmwgroup.com/en/company/history.html) describes a company that now spans BMW, MINI, Rolls-Royce, and BMW Motorrad across automobiles, motorcycles, and mobility services.
+
+Its current evolution is not only a web re-skin. BMW’s 2020 communication identity moved toward a pared-down, two-dimensional, digitally focused presence centred on openness and clarity. The Neue Klasse programme now positions electrification, digitalisation, circularity, and a reduced new design language as an update to the brand’s driving-pleasure proposition. [BMW Group’s Neue Klasse overview](https://www.bmwgroup.com/en/company/neue-klasse.html) records the first series-production iX3 as the beginning of that new model generation.
 
 ## 12. Principles
 
-1. **Photography is the design.** *UI implication:* hero modules dominated by car photography.
-2. **3px sharp radius.** *UI implication:* never round corners more — sharp signals German engineering.
-3. **BMW Blue `#1c69d4` for primary action.** *UI implication:* preserve corporate blue for CTAs.
-4. **Tight line-heights 1.15-1.30.** *UI implication:* don't open line-height; tight signals premium typography.
-5. **Photography emotion, UI precision.** *UI implication:* car photos can be cinematic; chrome stays restrained.
+1. **Communicate with openness and clarity.** *UI implication:* make hierarchy and calls to action legible before adding decorative treatment. Source: BMW’s 2020 brand-design announcement.
+2. **Use restraint with flexibility across touchpoints.** *UI implication:* reuse verified primitives only where their surface provenance matches; do not flatten different routes into one speculative kit. Source: BMW’s 2020 brand-design announcement.
+3. **Carry driving pleasure into a digital future.** *UI implication:* a BMW-inspired public page can foreground product imagery and digital action, but it must not claim in-car UI behavior without product evidence. Source: BMW Group Neue Klasse materials.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by BMW user segments (premium auto buyers, EV early-adopters, fleet managers), not individual people.*
+The following are source-backed stakeholder groups, not fictional customers or demographic personas.
 
-**Heinz Müller, 48, Munich.** BMW M-series enthusiast. Long-time customer.
-
-**Sofia Park, 38, Seoul.** First BMW iX buyer, Korean market.
-
-**Marcus Webb, 52, San Francisco.** Tech executive evaluating EV options. BMW i7 vs Tesla Model S comparison.
+- **Prospective BMW customer:** the 2020 brand announcement says BMW puts the customer at the centre of the revised identity and invites customers into the world of BMW.
+- **Official BMW Club representative:** the Club CI guideline addresses official clubs as brand ambassadors and sets mandatory rules for their communications; it is not a public-product UI persona.
+- **BMW Group design collaborator:** BMW Group Design describes a global design organisation working across its automotive brands; this informs brand context, not a user-flow requirement.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no configurations)** | "Configure your BMW" CTA + model selector |
-| **Empty (no test drives)** | "Book a test drive" CTA |
-| **Loading (configurator)** | Real-time 3D rendering progress |
-| **Loading (price calc)** | Per-option price update |
-| **Error (incompatible config)** | Specific. Constraint explanation |
-| **Error (no inventory)** | "출고 대기 시간: N개월" with reservation CTA |
-| **Success (saved config)** | Configuration ID + share link |
-| **Success (test drive booked)** | Confirmation + dealer contact |
-| **Skeleton (model list)** | 3px-radius placeholders |
-| **Disabled (option locked)** | Tooltip with constraint reason |
-| **Loading (long render)** | Persistent progress |
+No BMW product state treatment is asserted. The supplied collector reports zero observed states, zero interaction kinds, and zero interaction snapshots. Empty, loading, error, success, skeleton, and disabled treatments require a future selector-level public-surface capture.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 300ms | Modal, panel |
-| `motion-config-transition` | 500ms | Configuration option transitions |
-
-Standard cubic-bezier; minimal bounce — premium register. `prefers-reduced-motion: reduce` removes 3D rendering animations.
-
----
-
-**Verified:** 2026-05-08 (B9 loop)
-**Tier 1 sources:** bmw.co.kr (live DOM via playwright — BMW Blue `#1c69d4` 3px / 4px / 52px / 14px·500; Light gray `#fff` ghost 3px; Round white icon button 50% / 52px)
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 1 (Philosophy):** bmw.com homepage; BMW corporate history; "Sheer Driving Pleasure" tagline.
-**Style ref:** `apple` (luxury minimal). **Conflicts unresolved:** none.
+No BMW public-web duration, easing, or reduced-motion rule was captured or located in the official sources reviewed for this update. Motion tokens are intentionally omitted.

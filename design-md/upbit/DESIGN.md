@@ -4,334 +4,223 @@ name: Upbit
 country: KR
 category: fintech
 homepage: "https://upbit.com"
-primary_color: "#093687"
+primary_color: "#0062df"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=upbit.com&sz=256"
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: marketing-home, kind: marketing, url: "https://www.upbit.com/home", inspected: "2026-07-13" }
+    - { id: exchange, kind: product, url: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC", inspected: "2026-07-13" }
+    - { id: support-notice, kind: support, url: "https://www.upbit.com/service_center/notice", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.upbit.com/home", captured: "2026-07-13" }
+    - { id: exchange-live, kind: product-surface, url: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC", captured: "2026-07-13" }
+    - { id: notice-live, kind: product-surface, url: "https://www.upbit.com/service_center/notice", captured: "2026-07-13" }
+    - { id: developer-center, kind: official-doc, url: "https://global-docs.upbit.com/", captured: "2026-07-13" }
+    - { id: sdk-license, kind: license, url: "https://docs.upbit.com/kr/page/upbit_developer_sdk_license", captured: "2026-07-13" }
+    - { id: roboto-license, kind: license, url: "https://github.com/googlefonts/roboto-2/blob/main/LICENSE", captured: "2026-07-13" }
+    - { id: noto-license, kind: license, url: "https://notofonts.github.io/noto-docs/website/use/", captured: "2026-07-13" }
+  claims:
+    "tokens.colors.accent": &exchange { surface_id: exchange, source_id: exchange-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.accent-deep": &home { surface_id: marketing-home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.rise": *exchange
+    "tokens.colors.fall": *exchange
+    "tokens.colors.ink": *exchange
+    "tokens.colors.body": *home
+    "tokens.colors.muted": *home
+    "tokens.colors.border": *exchange
+    "tokens.colors.surface": *exchange
+    "tokens.colors.canvas": *home
+    "tokens.colors.control": *exchange
+    "tokens.colors.disabled": &notice { surface_id: support-notice, source_id: notice-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body.size": *home
+    "tokens.typography.body.weight": *home
+    "tokens.typography.body.lineHeight": *home
+    "tokens.typography.body.use": *home
+    "tokens.typography.dense.size": *exchange
+    "tokens.typography.dense.weight": *exchange
+    "tokens.typography.dense.lineHeight": *exchange
+    "tokens.typography.dense.use": *exchange
+    "tokens.spacing.control-inline": *exchange
+    "tokens.rounded.square": *exchange
+    "tokens.rounded.control": *exchange
+    "tokens.components.quick-fill.type": *exchange
+    "tokens.components.quick-fill.bg": *exchange
+    "tokens.components.quick-fill.fg": *exchange
+    "tokens.components.quick-fill.border": *exchange
+    "tokens.components.quick-fill.radius": *exchange
+    "tokens.components.quick-fill.padding": *exchange
+    "tokens.components.quick-fill.height": *exchange
+    "tokens.components.quick-fill.font": *exchange
+    "tokens.components.quick-fill.use": *exchange
+  conflicts: []
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: live-extract
+  extracted: "2026-07-13"
+  note: "Observed public marketing, exchange, and service-center surfaces only; no authenticated application or documentation-chrome token is inferred."
   colors:
-    primary: "#1375ec"
-    primary-deep: "#0062df"
-    primary-darker: "#003597"
+    accent: "#0062df"
+    accent-deep: "#003597"
     rise: "#dd3c44"
     fall: "#1375ec"
-    heading: "#1a2434"
+    ink: "#1a2434"
     body: "#333333"
-    muted: "#666666"
-    subtle: "#565d6a"
+    muted: "#565d6a"
+    border: "#d6d8db"
+    surface: "#ffffff"
+    canvas: "#e9ecf1"
+    control: "#f4f5f7"
     disabled: "#8e929b"
-    surface-body: "#e9ecf1"
-    surface-card: "#ffffff"
-    table-header: "#f9fafc"
-    table-alt: "#f4f5f7"
-    neutral: "#edeef1"
-    border: "#bec1c6"
-    on-primary: "#ffffff"
   typography:
-    family: { sans: "Roboto", mono: "Roboto" }
-    nav:         { size: 15, weight: 400, use: "Top-nav primary items" }
-    body:        { size: 14, weight: 400, use: "Default body, button labels" }
-    table-cell:  { size: 12, weight: 400, use: "Price/change table cells" }
-    header:      { size: 11, weight: 400, use: "Table column headers" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 4, lg: 4, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-primary: { type: button, bg: "#0062df", fg: "#ffffff", radius: 4, padding: "0 10px", font: "14px/400", use: "로그인/회원가입 in compact nav, h36" }
-    button-hero: { type: button, bg: "#003597", fg: "#ffffff", radius: 4, padding: "0 12px", font: "15px/400", use: "Hero CTA, h44" }
-    button-secondary: { type: button, bg: "#edeef1", fg: "#1a2434", radius: 4, padding: "0 10px", font: "14px/400", use: "Paired secondary action, h36" }
-    tag-percent: { type: badge, bg: "#ffffff", fg: "#1a2434", radius: 4, padding: "0 8px 1px", font: "12px/400", use: "Quick-fill 10/25/50/100%; 1px #bec1c6 border" }
-    cell-rise: { type: card, bg: "#ffffff", fg: "#dd3c44", radius: 0, padding: "4.5px 4px", font: "12px/400", use: "상승 가격 셀 / 매수호가 tint" }
-    cell-fall: { type: card, bg: "#ffffff", fg: "#1375ec", radius: 0, padding: "4.5px 4px", font: "12px/400", use: "하락 가격 셀 / 매도호가 tint" }
-    header-row: { type: card, bg: "#f9fafc", fg: "#666666", radius: 0, padding: "0 14px", font: "11px/400", use: "Column heads, h30, bottom 1px #edeef1" }
-    segment: { type: tab, bg: "#ffffff", fg: "#333333", radius: 0, padding: "0", font: "12px/400", use: "KO/EN locale switch; 1px #bec1c6 border", active: "selected bg #f4f5f7" }
-    nav: { type: tab, bg: "#ffffff", fg: "#1a2434", radius: 0, padding: "0 20px", font: "15px/400", use: "Persistent top-bar, h80, bottom 1px #edeef1" }
+    body: { size: 14, weight: 400, lineHeight: "21px", use: "Observed public home/list body text" }
+    dense: { size: 12, weight: 400, lineHeight: "normal", use: "Observed exchange labels and quick-fill control text" }
+  spacing: { control-inline: 8 }
+  rounded: { square: 0, control: 4 }
   components_harvested: true
+  components:
+    quick-fill: { type: badge, bg: "#ffffff", fg: "#1a2434", border: "1px solid #d6d8db", radius: "4px", padding: "0px 8px 1px", height: "28px", font: "12px / 400", use: "Exchange percentage quick-fill link; surface-2::[data-omd-capture=\"139\"]" }
 ---
 
-# Upbit — DESIGN.md
-
-> Note: brand assets and tokens captured here are documented **reference-only** for design pedagogy under the OmD project. No taglines are reproduced verbatim. Voice characterization in §10–11 is a fresh synthesis of observable surface behavior and public corporate sources; it is not lifted from Upbit/Dunamu copy.
+# Upbit — Design Reference
 
 ## 1. Visual Theme & Atmosphere
 
-Upbit is the production crypto-asset exchange operated by **Dunamu** in Korea, launched 2017. Its product identity rests on three observable promises: regulated-grade trust, dense real-time information, and zero theatrics — the page presents the market, not the brand.
+Upbit is a digital-asset service operated by Dunamu. Its public web surface makes market information the visual priority: the reverified exchange page exposes trading-oriented controls and dense data regions, while the home and service-center notice pages retain the same light, low-radius treatment around them. The current Developer Center describes APIs for prices, order books, trading, balances, deposits, withdrawals, and real-time streaming; that public product framing helps explain why compact numeric controls and restrained surface colors dominate the captured pages. The observable identity is not a universal visual system: it is a disciplined public-web layer in which blue is used for actions and down-market data, red for up-market data, and white panels sit on a pale gray canvas. This record keeps that exchange, marketing, support, documentation, and authenticated-product boundary explicit.
 
-The interface is unmistakably a **Korean finance UI**: tables first, hero second; red signals 상승 (up), blue signals 하락 (down) — inversion of the US convention and a hard tell for locale-correct design. There is no animated mascot, no gradient hero illustration, no "lifestyle" photography. Trust is communicated through restraint.
+- **Public-source boundary:** the supplied capture contains `https://www.upbit.com/home`, the public exchange URL, and `https://www.upbit.com/service_center/notice`. It contains no authenticated application screen and no Developer Center chrome.
+- **Geometry:** the repeated raw radii are 0px and 4px; the captured quick-fill control is the only retained component pattern.
+- **No state inference:** the bundle has `interactionCount: 0` and no observed interaction kind. Hover, focus, pressed, disabled, validation, menu, modal, toast, and transition claims are omitted.
 
-## 2. Layout
+## 2. Color & surface roles
 
-- **Desktop grid**: fixed 1400px content width; single top nav (h≈80 with primary row 36px + utility row); no sidebar on the marketing surface.
-- **Exchange surface**: information-dense grid — left market list, center chart + orderbook, right order panel — all driven by tables, not cards.
-- **Marketing surface (`/home`)**: hero band → market-summary table → product modules (스테이킹, 코인모으기) → CTA band. Light surface (`#E9ECF1` page bg, white panels).
-- **Density rule**: row height 45px on tradable lists, 30px on column headers. Vertical rhythm in 4–8px increments.
-- **Color is structural, not decorative**: tinted row backgrounds (rgba 8% alpha of rise/fall hue) communicate direction without competing with the numerals.
+The following values are live computed observations, not a published Upbit token set.
 
-## 3. Color tokens
+| Observed role | Value | Evidence boundary |
+|---|---:|---|
+| Action/accent | `#0062DF` | visible text, border, and background on captured public surfaces; not assigned a universal semantic role |
+| Deeper public-blue fill | `#003597` | background on home and exchange; no reusable CTA component is inferred |
+| Rise market value | `#DD3C44` | exchange-only visible text/border observation |
+| Fall market value | `#1375EC` | exchange-only visible text/border observation |
+| Primary ink | `#1A2434` | public controls and text |
+| Body / muted text | `#333333` / `#565D6A` | repeated public text observations |
+| Hairline control border | `#D6D8DB` | quick-fill and service-center controls |
+| White surface / pale canvas | `#FFFFFF` / `#E9ECF1` | repeated public panel and page surfaces |
+| Control fill / disabled text | `#F4F5F7` / `#8E929B` | observed public values; neither establishes a behavior state |
 
-Captured 2026-05-14 from production via CDP `getComputedStyle`. See `assets/_reference/tokens.json`.
+The exchange-only red/blue pair is documented as a local market display observation. It is not generalized into an accessibility, locale, or cross-market rule without a first-party specification.
 
-| Token | Hex | Use |
-|---|---|---|
-| `brand.primary` | `#1375EC` | Primary brand blue — nav highlight, KRW pair tint |
-| `brand.primaryDeep` | `#0062DF` | Primary CTA bg (Login / 회원가입) |
-| `brand.primaryDarker` | `#003597` | Hero CTA bg (large) |
-| `semantic.rise` | `#DD3C44` | ▲ 상승 / 매수호가 (KR: red = up) |
-| `semantic.riseSoft` | `rgba(221,60,68,0.08)` | rise row tint |
-| `semantic.fall` | `#1375EC` | ▼ 하락 / 매도호가 (KR: blue = down) |
-| `semantic.fallSoft` | `rgba(19,117,236,0.08)` | fall row tint |
-| `text.primary` | `#1A2434` | headings, nav |
-| `text.body` | `#333333` | default body |
-| `text.muted` | `#666666` | table header / labels |
-| `text.subtle` | `#565D6A` | footer / utility |
-| `text.disabled` | `#8E929B` | placeholder |
-| `surface.body` | `#E9ECF1` | page background |
-| `surface.card` | `#FFFFFF` | card / panel |
-| `surface.tableHeader` | `#F9FAFC` | table header / alt row |
-| `surface.tableAlt` | `#F4F5F7` | alt row / segment unselected |
-| `surface.neutral` | `#EDEEF1` | secondary button |
+## 3. Typography & font evidence
 
-**Locale rule (critical):** if you port Upbit-tone UI to a US/EU market, swap rise/fall hues — green = up, red = down. The blue-down semantic only reads correctly to Korean / JP / TW users.
+### Evidence classes
+
+- **Live computed system use:** visible public text resolves most often to `Roboto, "Noto Sans KR", sans-serif, AppleSDGothicNeo-Regular, "Malgun Gothic", Dotum, sans-serif`; the collector classifies `Roboto` as a **system** family with high confidence and 744 visible uses. Its `FontFaceSet` record also lists Google-hosted Roboto sources. This verifies a current resolved public runtime family, not an Upbit-owned brand typeface, so no `tokens.typography.family` is promoted.
+- **Declared-only assets:** `Noto Sans KR` has 128 listed source URLs but zero visible uses in the supplied bundle; `Droid Sans`, `Roboto Condensed`, and the TradingView-bundled `EuclidCircular` are likewise declared with zero visible uses. They are not UI-family tokens and must not be substituted into specimens.
+- **Other system results:** `Arial` and `Helvetica` occur only a handful of times and are classified system; neither is a brand claim.
+- **Official font/licence context:** the Google Fonts Roboto repository carries Apache License 2.0; Noto’s official documentation says Noto fonts use SIL OFL 1.1. These third-party font licences do not grant rights to Upbit marks, UI assets, or an Upbit brand font.
+- **Upbit licence boundary:** the Upbit Developer SDK licence applies to the SDK materials, says it is not an open-source licence, and expressly does not grant rights to Dunamu trademarks, logos, names, or brands. It is not a font licence or a public design-system specification.
+
+### Measured public text roles
+
+| Role | Resolved family | Size | Weight | Line height | Surface |
+|---|---|---:|---:|---:|---|
+| Public list body | Roboto system stack | 14px | 400 | 21px | home, exchange, notice |
+| Dense exchange/control text | Roboto system stack | 12px | 400 | normal | exchange |
 
 ## 4. Components
 
-### Button
+### Exchange quick-fill control
 
-**Primary**
-- Background: `#0062DF`
-- Text: `#FFFFFF`
-- Border: none
-- Radius: 4px
-- Padding: 0 10px
-- Height: 36px
-- Font: 14px / 400 / Roboto+Noto Sans KR
-- Use: 로그인 / 회원가입 in compact nav
-
-**Primary — Hero**
-- Background: `#003597`
-- Text: `#FFFFFF`
-- Border: none
-- Radius: 4px
-- Padding: 0 12px
-- Height: 44px
-- Font: 15px / 400 / Roboto+Noto Sans KR
-- Use: 거래소 둘러보기 / 회원가입 (hero CTA)
-
-**Secondary**
-- Background: `#EDEEF1`
-- Text: `#1A2434`
-- Border: none
-- Radius: 4px
-- Padding: 0 10px
-- Height: 36px
-- Font: 14px / 400 / Roboto+Noto Sans KR
-- Use: paired secondary action (회원가입 small variant)
-
-**Tag — percent / direct-input**
+**Observed default**
 - Background: `#FFFFFF`
 - Text: `#1A2434`
-- Border: 1px solid `#BEC1C6`
+- Border: `1px solid #D6D8DB`
 - Radius: 4px
-- Padding: 0 8px 1px
+- Padding: 0px 8px 1px
 - Height: 28px
-- Font: 12px / 400
-- Use: 10% / 25% / 50% / 100% / 직접입력 quick-fill on order form
+- Font: 12px / 400 / resolved Roboto system stack
+- Use: percentage quick-fill link on the public exchange; evidence `surface-2::[data-omd-capture="139"]`, class `percentage-button css-1vvi88j`
 
-### Table cell — price / change
-
-**Rise (▲ up)**
-- Background: `rgba(221, 60, 68, 0.08)`
-- Text: `#DD3C44`
-- Border: none
-- Radius: 0
-- Padding: 4.5px 4px
-- Height: 45px
-- Font: 12px / 400
-- Use: 상승 가격 셀 / 매수호가 cell tint
-
-**Fall (▼ down)**
-- Background: `rgba(19, 117, 236, 0.08)`
-- Text: `#1375EC`
-- Border: none
-- Radius: 0
-- Padding: 4.5px 4px
-- Height: 45px
-- Font: 12px / 400
-- Use: 하락 가격 셀 / 매도호가 cell tint
-
-**Header row**
-- Background: `#F9FAFC`
-- Text: `#666666`
-- Border: bottom 1px `#EDEEF1`
-- Radius: 0
-- Padding: 0 14px
-- Height: 30px
-- Font: 11px / 400
-- Use: 체결가 / 현재가 / 전일대비 / 거래대금 column heads
-
-### Segment switch
-
-**Locale segment (KO / EN)**
-- Background (selected): `#F4F5F7`
-- Background (unselected): `#FFFFFF`
-- Text: `#333333`
-- Border: 1px solid `#BEC1C6`
-- Radius: 0
-- Padding: 0
-- Height: 28px
-- Font: 12px / 400
-- Use: top-right utility row
-
-### Navigation
-
-**Top nav**
-- Background: `#FFFFFF`
-- Text: `#1A2434`
-- Border: bottom 1px `#EDEEF1`
-- Radius: 0
-- Padding: 0 20px
-- Height: 80px (60px primary + 20px utility)
-- Font: 15px / 400 (primary items)
-- Use: persistent top-bar, fixed 1400px inner width
+The collector reports this as five medium-confidence occurrences on the exchange page. It captures a static default only. No hover, focus, pressed, disabled, validation, or size variant is documented because the top-level interaction record is empty.
 
 ---
-**Verified:** 2026-05-14
-**Tier 1 sources:** live CDP inspect of `https://upbit.com/home` (samples 41) + `https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC` (samples 80). Combined 121 raw samples → `assets/_reference/raw-capture.json` + `raw-capture-exchange.json` + `.live-inspect-proof.json`.
-**Tier 2 sources:** `getdesign.md/upbit` — returned `not_found` (verified 2026-05-14, page text: "No designs found for 'upbit'"). `styles.refero.design/?q=upbit` — search interface returned no result cards for the query (verified 2026-05-14). Both 3rd-party indexes have weak Korean coverage (consistent with the 2026-05-13 KR-10 batch finding).
-**Tier 1 official DS:** **NEGATIVE result.** Attempted: `design.upbit.com` (DNS no-resolve), `upbit.com/brand` (301 → marketing), `design.dunamu.com` (DNS no-resolve), `dunamu.com` corporate site (200, no public DS surface; Naver blog `blog.naver.com/dunamupr` is PR, not design). Dunamu/Upbit do not publish an external design system as of 2026-05-14. Reconcile is therefore Tier-1-live-only.
-**Conflicts unresolved:** none.
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://www.upbit.com/home` (public marketing), `https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC` (public exchange), `https://www.upbit.com/service_center/notice` (public support/notice), `https://global-docs.upbit.com/` (official Developer Center), `https://docs.upbit.com/kr/page/upbit_developer_sdk_license` (official SDK licence)
+**Tier 2 sources:** `https://getdesign.md/upbit` (attempted; built-in web open returned an internal/safe-open failure), `https://styles.refero.design/?q=upbit` (attempted; built-in web open returned an internal/safe-open failure); no Upbit record was returned by built-in web search for either catalog.
+**Conflicts unresolved:** none
 
-## 5. Iconography
+The prior prose-derived token block, 2025 date stamp, broad navigation/hero/table component inventory, motion timings, contrast results, persona profiles, and behavioral state catalogue were not supported by the supplied 2026 collector and are removed rather than refreshed by assumption.
 
-Upbit uses two icon registers:
-- **Coin marks** — third-party brand glyphs (BTC, ETH, XRP, …) shown at 16–20px monochrome or color, ID-only role; never decorative.
-- **UI glyphs** — flat 1.5px stroke, 16px frame, sparse: chevron, sort, favorite (★ outline → solid), info (i), close (×). No bespoke icon family; the visual contract is "stay invisible until needed."
+## 5. Elevation
 
-Direction is communicated by **▲ / ▼ glyphs colocated with hue and number**, not by separate icons.
+The retained exchange quick-fill sample has `box-shadow: none`. No general elevation scale is claimed from one control or from unqualified article containers.
 
-## 6. Imagery
+## 6. Imagery & illustration
 
-Marketing surface uses flat, isometric-leaning illustration for product modules (스테이킹, 코인모으기) — small, contained inside white card frames, not edge-to-edge hero photography. No people, no aspirational lifestyle. The hero band is type-led with a single product screenshot, not a photographic backdrop. Total imagery footprint is small; the table is the hero.
+The supplied evidence is a computed-style/component capture and does not establish a reusable image, illustration, crop, overlay, or asset-licence rule. The public marketing surface remains separate from the exchange UI; neither is used to infer an authenticated-product image system.
 
-## 7. Motion
+## 7. Iconography
 
-Restrained. Observable motion:
-- Row blink (≈150ms ease-out) when a new trade prints — opacity 0 → 1 on the rise/fall tint.
-- Hover affordance on rows: tint shift to `#F4F5F7` ≈100ms linear.
-- Nav highlight underline: 200ms ease-out.
+No named icon family, stroke specification, icon-size scale, or reusable icon component is established in the retained evidence. Coin symbols, glyphs, and asset files are intentionally not promoted from incidental page content.
 
-No page transitions, no parallax, no scroll-jacking. The exchange surface itself is in constant micro-motion (numbers updating) — applying additional UI motion would compete with data motion.
+## 8. Motion
 
-## 8. Voice (microcopy register)
-
-Korean primary, English secondary (KO/EN segment). Sentence-final form is `~합니다 / ~해요` mixed: `~합니다` on legal/notice surfaces (지원 종료 안내), `~해요` on product features (코인모으기로 꾸준히 모아요). Numerals are unitised in Korean reading order (1,234,567원, 1,234.56 BTC).
-
-CTA labels are nouns or noun-phrases, not imperatives: 로그인 · 회원가입 · 거래소 둘러보기 · 직접입력. No exclamation marks. No emoji.
+No duration, easing, transition, data-update animation, scroll behavior, or interactive sequence was captured. Static CSS classes and one rendered default do not establish a motion contract.
 
 ## 9. Accessibility & locale
 
-- Color contrast: primary CTA `#0062DF` on white = 5.13:1 (AA pass). Rise text `#DD3C44` on `rgba(221,60,68,0.08)` background ≈ 4.9:1 (AA pass for normal text). Fall text `#1375EC` on its tint ≈ 4.6:1 (AA pass).
-- Hit targets: 28px tags are below WCAG 2.5.5 (44px target). Trading speed > accessibility floor is an explicit trade-off here.
-- Locale-critical: rise/fall hue convention. Any port outside KR/JP/TW must invert.
-- Korean font stack falls back through legacy IE-era families (Dotum / 돋움) — chain not pruned.
-
----
+- The public capture supplies color and geometry values, not an accessibility audit; contrast, keyboard support, focus indication, and target-size conformance are not claimed here.
+- The current public text stack includes Korean-capable fallback families, but the capture does not establish a locale typography policy or cross-market color convention.
+- Implementations should provide accessible states without presenting those states as observed Upbit behavior.
 
 ## 10. Voice & Tone
 
-**Voice adjectives**: 1) **Composed** — never breathless even during volatility. 2) **Procedural** — every action is named, listed, traceable. 3) **Locale-fluent** — Korean financial register, no startup slang.
-
-| Do | Don't |
-|---|---|
-| Use nouns for CTAs (`로그인`, `회원가입`) | Use imperatives or exclamation (`지금 시작하세요!`) |
-| State the rule before the action ("최소 5,000원부터 매수") | Inflate ("쉽고 빠르게!") |
-| Show the number first, label second | Lead with brand voice on a trading screen |
-| Mix `~합니다` (notice) and `~해요` (product) by surface | Use casual emoji-laden tone on price surfaces |
-
-**Voice samples** (illustrative — characterizing the observed register, not lifting copy):
-1. (notice) "5월 15일 00:00부터 해당 마켓 거래 지원이 종료됩니다." — straight declarative, time-first.
-2. (product) "코인모으기로 매주 정해진 금액만큼 자동 매수해요." — `~해요` form, mechanism named.
-3. (CTA) "거래소 둘러보기" — noun phrase, no urgency word.
+No first-party voice or editorial guideline was collected. The public Korean product, support, and Developer Center surfaces show different functional registers, but this evidence is insufficient to prescribe a reusable brand voice. Avoid inventing customer promises, urgency claims, or copied copy under the Upbit name.
 
 ## 11. Brand Narrative
 
-Upbit launched in October 2017 as Dunamu's bet that crypto in Korea would need a counterpart that looked, regulated, and felt like Korean equities — not a Silicon Valley product photographed onto a black background. The product identity has held remarkably steady through three boom-bust cycles: the same blue, the same tables, the same restraint.
+The official Developer Center identifies Upbit as a Dunamu service and presents market-data, exchange, and real-time APIs for strategic trading. Its Korean reference footer identifies Dunamu and a registered virtual-asset-business number. A 2022 Dunamu/Upbit conference report records the then-current statement that Upbit would focus on regulation compliance and investor protections; it is retained as dated corporate context, not as proof of a present visual token or product workflow.
 
-Dunamu's broader portfolio (StockPlus for KOSPI/KOSDAQ retail, Quotation Corp for B2B market data) signals the company's center of gravity — they are a **market-data company first**, an exchange operator second. That shows in the UI: the table is canon, the brand is wallpaper.
-
-The "why now" thesis encoded in the surface: in a market famous for speculative theatrics, the **most trusted-looking** exchange wins disproportionate flow during downturns. Restraint is the strategy.
+No first-party history, rebrand, or public brand-system source was found in the supplied collector evidence. This reference therefore does not create an origin story or infer a private product strategy.
 
 ## 12. Principles
 
-1. **Data is the hero; chrome is the frame.**
-   *UI implication:* table primitives outrank card primitives. Never wrap a price in a decorative container.
+The following are evidence-bounded reference implications, not quoted Upbit principles.
 
-2. **Direction must be readable at a glance — and in the local convention.**
-   *UI implication:* red = up, blue = down (KR/JP/TW). Tint at 8% alpha so hue communicates without overpowering the numeral.
-
-3. **Restraint scales with stakes.**
-   *UI implication:* the higher the order-size context, the fewer the design accents. Hero modules can carry illustration; the order panel cannot.
-
-4. **Procedural before persuasive.**
-   *UI implication:* CTAs name what happens (`로그인`, `직접입력`), they don't sell it. Reserve persuasive copy for marketing surfaces only.
-
-5. **Locale-correct or wrong.**
-   *UI implication:* Korean stack ships first, English is a sibling segment — not a translation layer. Sentence-final forms by surface (`~합니다` notice / `~해요` product) are non-negotiable.
+1. **Keep market data local to its surface.** The red `#DD3C44` and blue `#1375EC` observations come from the exchange only. *UI implication:* do not reuse them as universal marketing, error, or success tokens.
+2. **Keep controls compact only where measured.** The retained quick-fill control is 28px high with a 4px radius. *UI implication:* do not extrapolate that geometry into navigation, forms, or authenticated trading flows.
+3. **Keep domains separate.** Marketing home, exchange, support notice, Developer Center, SDK licence, and unobserved authenticated product each have different evidence roles. *UI implication:* do not combine them into a fictional public design system.
 
 ## 13. Personas
 
-> Disclaimer: archetypes synthesised from public market behavior, app-store reviews, and 2024–2025 Korean crypto-retail surveys. No internal Upbit research is referenced.
-
-- **혜진, 34, 직장인 (서울)** — KOSPI 5년 차, 2024 비트코인 ETF 뉴스 후 입문. KRW 마켓 위주, 매수는 코인모으기 자동, 매도는 수동. UI 신뢰가 입문 결정의 80%였다고 말함.
-- **준호, 28, 개발자 (판교)** — 알트 트레이더, 호가창 + 차트 +체결창 3 패널 항상 띄움. 화면 정보 밀도가 만족도의 1순위. 모바일은 보조.
-- **선영, 41, 자영업 (대구)** — 보유 종목 5개 이하, 주 1회 진입. 푸시 알림 + 알기 쉬운 표가 핵심. 신용카드 결제 없이 은행 연동만 사용.
+[FILL IN] No first-party user research, audience segmentation, or persona material was collected for this update. No fictional names, demographics, jobs, or motivations are supplied.
 
 ## 14. States
 
-| Category | Behavior |
-|---|---|
-| Empty | 보유 자산 없을 때: 좌측 정렬 안내문 + 입금 안내 link. 일러스트 없음. |
-| Loading | 표 셀 단위 skeleton bar (h≈14, bg `#EDEEF1`); 페이지 단위 spinner 없음. |
-| Error — recoverable | inline 빨간 helper text `#DD3C44` 12px under input; CTA disabled. |
-| Error — network | top sticky bar `#FFE7E8` bg, `#DD3C44` text, 재시도 link. |
-| Success | toast 하단 우측, h≈40, bg `#FFFFFF`, border 1px `#BEC1C6`, 3s auto-dismiss. |
-| Skeleton | row-level only on tables (price/volume cells), 1.2s shimmer linear-gradient. |
-| Disabled | `#8E929B` text on `#F4F5F7` bg; button opacity unchanged (color-only signal). |
+No loading, empty, success, error, disabled, focus, validation, menu, dialog, toast, or tab-transition state is documented. The supplied collector has zero interaction records; adding a behavior table would fabricate unobserved variants.
 
 ## 15. Motion & Easing
 
-- **Duration scale**: 100ms (hover) / 150ms (row blink, segment) / 200ms (nav, modal in) / 250ms (modal out).
-- **Easing**: `ease-out` for entrances and value changes; `linear` for shimmer; no spring.
-- **Motion rules**:
-  1. Never animate a price field's own typography — only its background tint.
-  2. No page transitions on the exchange surface; navigation is instantaneous (state-driven).
-  3. Modal enter from `translateY(8px) opacity:0` → identity over 200ms ease-out. Exit reverses, 250ms.
-  4. Row-print blink: tint fades in 150ms then holds for 800ms before easing out 400ms. The 800ms hold is what makes a moving market legible.
-
+No motion or easing values were captured. Preserve this absence instead of assigning default durations or curves.
 
 ## 16. Do's and Don'ts
 
 ### Do
-- Lead with tables, not cards — make the data the hero and the chrome the frame, with row heights of 45px on tradable lists and 30px on column headers
-- Encode direction in the Korean convention: red `#DD3C44` for 상승 (up) and blue `#1375EC` for 하락 (down), and invert to green-up/red-down only when porting to US/EU markets
-- Communicate row direction with an 8% alpha tint (`rgba(221,60,68,0.08)` rise / `rgba(19,117,236,0.08)` fall) so the hue supports rather than overpowers the numeral
-- Keep buttons flat and tight — 4px radius, no border, white text, scaling the blue by stakes: `#0062DF` for nav CTAs, `#003597` for the 44px hero CTA
-- Label CTAs as nouns or noun-phrases (로그인, 회원가입, 거래소 둘러보기, 직접입력) and split sentence-final forms by surface — `~합니다` on notices, `~해요` on product modules
-- Hold motion to the duration scale (100ms hover / 150ms row blink / 200ms nav / 250ms modal out) and animate only a price cell's background tint, never its typography
+
+- Use the observed public exchange quick-fill treatment only with its recorded `#FFFFFF`, `#1A2434`, `#D6D8DB`, 4px-radius, and 28px-height provenance.
+- Keep `#DD3C44` and `#1375EC` bounded to their captured exchange-market context.
+- Treat Roboto as an observed system-resolved runtime family, not an Upbit-owned brand font.
+- Keep marketing, exchange, support, Developer Center, and unobserved authenticated-product claims separated.
+- Record only static defaults when the interaction capture is empty.
 
 ### Don't
-- Wrap a price or numeral in a decorative card container — table primitives outrank card primitives on trading surfaces
-- Spread the accent blues (`#1375EC` / `#003597`) across large background areas; the page stays light on `#E9ECF1` with white panels and color used structurally
-- Add page transitions, parallax, scroll-jacking, or spring easing — the exchange surface is already in constant micro-motion from updating numbers
-- Sell with imperatives or exclamation (지금 시작하세요!, 쉽고 빠르게!) or lead with brand voice on a trading screen; keep persuasive copy to marketing surfaces only
-- Use emoji, exclamation marks, or a startup-slang tone on price surfaces — the register stays composed and procedural
-- Treat English as a translation layer — ship the Korean stack first with EN as a sibling KO/EN segment, and don't prune the Korean fallback chain to legacy families like Dotum / 돋움
 
----
-
-**OmD provenance:** Created 2026-05-14 via `omd:add-reference` CREATE pipeline. Tier 1 = live CDP inspect (2 surfaces, 121 raw samples). Tier 2 = both indexes attempted, both empty (documented). Tier 1 official DS = negative (documented). IP guardrails: brand assets reference-only; voice fresh characterization; no verbatim taglines. See `_research.md` for full source map.
+- Reintroduce the former prose-derived semantic palette or unsupported broad component inventory as current evidence.
+- Render Noto Sans KR, EuclidCircular, Droid Sans, Roboto Condensed, Arial, or Helvetica as a verified Upbit UI-family substitute.
+- Invent hover, focus, pressed, disabled, validation, menu, dialog, toast, state-transition, motion, or accessibility behavior from static markup.
+- Treat the Upbit Developer SDK licence as a licence for UI assets, fonts, logos, or brand use.
+- Infer a documented public design system from the absence of a discovered design-system URL.

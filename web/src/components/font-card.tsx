@@ -5,6 +5,7 @@
  */
 
 import type { FontInfo, FontLicense } from "@/lib/font-registry";
+import { resolveRuntimeFont } from "@/lib/fonts/runtime-family";
 
 const LICENSE_STYLES: Record<FontLicense, { bg: string; color: string; label: string }> = {
   OFL:                  { bg: "rgba(16, 185, 129, 0.12)", color: "#047857", label: "Open · OFL" },
@@ -45,6 +46,7 @@ function ExternalIcon() {
 
 export function FontCard({ font, role, fontFamilyForRender }: { font: FontInfo; role?: string; fontFamilyForRender?: string }) {
   const license = LICENSE_STYLES[font.license];
+  const runtime = resolveRuntimeFont(font.name);
   return (
     <div className="rounded-xl bg-card p-4 ring-1 ring-border/40 flex flex-col gap-3 min-h-[160px]">
       {/* Role label */}
@@ -53,11 +55,11 @@ export function FontCard({ font, role, fontFamilyForRender }: { font: FontInfo; 
           {ROLE_LABELS[role] ?? role}
         </div>
       )}
-      {/* Name (system-ui — no brand-font rendering attempt; we just label what it IS) */}
+      {/* Render with the same resolved family as the builder specimen. */}
       <div>
         <div
           className="text-xl font-semibold leading-tight"
-          style={{ fontFamily: fontFamilyForRender ?? "system-ui, sans-serif" }}
+          style={{ fontFamily: fontFamilyForRender ?? runtime.cssFamily }}
           title={font.name}
         >
           {font.name}
@@ -72,6 +74,9 @@ export function FontCard({ font, role, fontFamilyForRender }: { font: FontInfo; 
           {!font.installable && font.license === "System" && (
             <span className="text-[10px] text-muted-foreground">no install needed</span>
           )}
+        </div>
+        <div className={`mt-2 text-[10px] leading-snug ${runtime.mode === "unavailable" ? "text-amber-700 dark:text-amber-400" : "text-muted-foreground"}`}>
+          {runtime.label}
         </div>
       </div>
 

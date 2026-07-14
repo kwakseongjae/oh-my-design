@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>AI 코딩 에이전트를 위한 스킬 기반 디자인 부트스트랩 — 명령어 한 번.</strong> 400개 실제 기업 디자인 시스템. 설치에 AI 호출 없음. 그 다음은 에이전트에게 말만 하면 됩니다.
+  <strong>AI 코딩 에이전트를 위한 스킬 기반 디자인 부트스트랩 — 명령어 한 번.</strong> 400개 이상의 실제 기업 디자인 시스템. 설치에 AI 호출 없음. 그 다음은 에이전트에게 말만 하면 됩니다.
 </p>
 
 <p align="center">
@@ -25,7 +25,7 @@
 
 ## oh-my-design이란?
 
-**oh-my-design (OmD)** 은 AI 코딩 에이전트를 위한 디자인 시스템입니다. Claude Code / Codex / OpenCode / Cursor를 당신의 브랜드를 기억하는 시니어 프로덕트 디자이너로 만듭니다. 한 번 설치하면, 이후엔 원하는 것을 설명하기만 하면 됩니다 — 컴포넌트, 화면, 카피, 에셋, 차트 — 에이전트가 프로젝트의 디자인 시스템을 적용해 결과물을 만들어냅니다. `DESIGN.md`가 브랜드 스펙이고([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) 토큰 + 브랜드 철학 레이어: Voice / Narrative / Principles / Personas / States / Motion), 400개 실제 기업의 DESIGN.md 파일이 패키지에 함께 들어 있습니다. **API 키 불필요. 외부 인프라 불필요. 모든 것이 기존 CLI 세션 안에서 동작합니다.**
+**oh-my-design (OmD)** 은 AI 코딩 에이전트를 위한 디자인 시스템입니다. Claude Code / Codex / OpenCode / Cursor를 당신의 브랜드를 기억하는 시니어 프로덕트 디자이너로 만듭니다. 한 번 설치하면, 이후엔 원하는 것을 설명하기만 하면 됩니다 — 컴포넌트, 화면, 카피, 에셋, 차트 — 에이전트가 프로젝트의 디자인 시스템을 적용해 결과물을 만들어냅니다. `DESIGN.md`가 브랜드 스펙이고([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) 토큰 + 브랜드 철학 레이어: Voice / Narrative / Principles / Personas / States / Motion), 400개 이상의 실제 기업 DESIGN.md 파일이 패키지에 함께 들어 있습니다. **API 키 불필요. 외부 인프라 불필요. 모든 것이 기존 CLI 세션 안에서 동작합니다.**
 
 ## 설치
 
@@ -74,16 +74,16 @@ Toss가 아니어도 됩니다 — `Stripe-style`, `Linear-clone B2B SaaS`, `Kar
 
 ## 패키지 구성
 
-**18 스킬 · 16 서브에이전트 · 400 검증된 레퍼런스 · 활성화 hooks** — 위 명령어 하나로 전부 설치됩니다.
+**18 스킬 · 16 서브에이전트 · 400 품질 등급형 레퍼런스 · 활성화 hooks** — 위 명령어 하나로 전부 설치됩니다.
 
 - **스킬** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn` / `omd:taste` — "내 취향 보여줘" 한마디로 루프가 배운 것·대기 중·보류된 것을 한 뷰로), 라이브 캡처 + 에셋 (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), v0.2 agent layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), 인터페이스 품질 스킬 `omd:feel` (HIG / Material / WCAG 기반 113개 출처-등급 규칙으로 모션·여백·타이포·a11y를 적용 + 감사), 그리고 터미널에서 claude.ai/design을 구동하는 단독 스킬 `claude-design`.
 - **서브에이전트** — `omd-master` + 15 스페셜리스트 (UX 리서치, UI 생성, 에셋 큐레이션, 마이크로카피, a11y 감사, 페르소나 테스트, 비평, …).
-- **레퍼런스** — 400개 실제 기업 `DESIGN.md`, 전부 라이브 소스 대조 검증. 모든 레퍼런스는 `oh-my-design.kr/<id>/design.md`에서 raw markdown으로도 제공되어 에이전트가 직접 fetch할 수 있습니다.
+- **레퍼런스** — 400개 실제 기업 `DESIGN.md`, 각각 근거와 품질 상태를 명시합니다. 모든 레퍼런스는 `oh-my-design.kr/<id>/design.md`에서 raw markdown으로도 제공되어 에이전트가 직접 fetch할 수 있습니다.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse 활성화 — 슬래시 명령 없이 자연어만으로 스킬이 발동합니다.
 
 스킬·에이전트별 상세 레퍼런스: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**.
 
-MCP를 선호한다면 **[oh-my-design-mcp](./packages/mcp/)** — 같은 카탈로그를 Claude Desktop, Cursor, Cline, Continue, Codex용 MCP 리소스/툴로 노출합니다. [`packages/mcp/README.md`](./packages/mcp/README.md) 참고.
+기존 catalog MCP transport는 종료했습니다. 스킬과 에이전트는 로컬 카탈로그 또는 raw `/<id>/design.md` 경로를 직접 사용하며, 과거 구현은 `packages/mcp/`에 archive로만 남겨 둡니다.
 
 ## 업그레이드
 

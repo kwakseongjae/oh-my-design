@@ -4,204 +4,266 @@ name: "NHN Cloud"
 country: KR
 category: backend-devops
 homepage: "https://www.nhncloud.com"
-primary_color: "#125DE6"
+primary_color: "#125de6"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=nhncloud.com&sz=128"
-verified: "2026-06-01"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: TOAST UI
   url: "https://ui.toast.com"
   type: system
-  description: NHN's official open-source component library (TUI Grid/Editor/Calendar/Chart/Image-Editor), MIT-licensed under the nhn GitHub org and documented at ui.toast.com.
+  description: NHN Cloud's official, continuously maintained open-source JavaScript UI catalog; it is a distinct developer/documentation surface, not a published token sheet for the NHN Cloud marketing site.
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: corporate-marketing, kind: marketing, url: "https://www.nhncloud.com/kr", inspected: "2026-07-13" }
+    - { id: toast-catalog, kind: documentation-catalog, url: "https://ui.toast.com/", inspected: "2026-07-13" }
+    - { id: cloud-docs, kind: documentation-chrome, url: "https://docs.nhncloud.com/ko/nhncloud/ko/overview/", inspected: "2026-07-13" }
+  sources:
+    - { id: corporate-marketing-live, kind: product-surface, url: "https://www.nhncloud.com/kr", captured: "2026-07-13" }
+    - { id: toast-catalog-live, kind: product-surface, url: "https://ui.toast.com/", captured: "2026-07-13" }
+    - { id: cloud-docs-live, kind: product-surface, url: "https://docs.nhncloud.com/ko/nhncloud/ko/overview/", captured: "2026-07-13" }
+    - { id: company-about, kind: official-doc, url: "https://company.nhncloud.com/about?lang=en", captured: "2026-07-13" }
+    - { id: toast-ui-official, kind: official-doc, url: "https://ui.toast.com/", captured: "2026-07-13" }
+    - { id: toast-ui-license, kind: official-doc, url: "https://github.com/nhn/toast-ui.doc", captured: "2026-07-13" }
+    - { id: pretendard-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &corporate { surface_id: corporate-marketing, source_id: corporate-marketing-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.on-primary": *corporate
+    "tokens.colors.dark": *corporate
+    "tokens.colors.muted": *corporate
+    "tokens.colors.border": *corporate
+    "tokens.typography.family.ui": *corporate
+    "tokens.typography.body.size": *corporate
+    "tokens.typography.body.weight": *corporate
+    "tokens.typography.body.use": *corporate
+    "tokens.typography.cta.size": *corporate
+    "tokens.typography.cta.weight": *corporate
+    "tokens.typography.cta.use": *corporate
+    "tokens.typography.cta-lg.size": *corporate
+    "tokens.typography.cta-lg.weight": *corporate
+    "tokens.typography.cta-lg.use": *corporate
+    "tokens.spacing.cta-sm-y": *corporate
+    "tokens.spacing.cta-sm-x": *corporate
+    "tokens.spacing.cta-lg-y": *corporate
+    "tokens.spacing.cta-lg-x": *corporate
+    "tokens.spacing.menu-y": *corporate
+    "tokens.spacing.menu-x": *corporate
+    "tokens.rounded.cta": *corporate
+    "tokens.rounded.control": *corporate
+    "tokens.rounded.menu": *corporate
+    "tokens.shadow.menu-overlay": *corporate
+    "tokens.components.corporate-header-cta.type": *corporate
+    "tokens.components.corporate-header-cta.bg": *corporate
+    "tokens.components.corporate-header-cta.fg": *corporate
+    "tokens.components.corporate-header-cta.border": *corporate
+    "tokens.components.corporate-header-cta.radius": *corporate
+    "tokens.components.corporate-header-cta.padding": *corporate
+    "tokens.components.corporate-header-cta.height": *corporate
+    "tokens.components.corporate-header-cta.font": *corporate
+    "tokens.components.corporate-header-cta.states": *corporate
+    "tokens.components.corporate-header-cta.use": *corporate
+    "tokens.components.corporate-section-cta.type": *corporate
+    "tokens.components.corporate-section-cta.bg": *corporate
+    "tokens.components.corporate-section-cta.fg": *corporate
+    "tokens.components.corporate-section-cta.border": *corporate
+    "tokens.components.corporate-section-cta.radius": *corporate
+    "tokens.components.corporate-section-cta.padding": *corporate
+    "tokens.components.corporate-section-cta.height": *corporate
+    "tokens.components.corporate-section-cta.font": *corporate
+    "tokens.components.corporate-section-cta.states": *corporate
+    "tokens.components.corporate-section-cta.use": *corporate
+    "tokens.components.resource-menu-trigger.type": *corporate
+    "tokens.components.resource-menu-trigger.fg": *corporate
+    "tokens.components.resource-menu-trigger.border": *corporate
+    "tokens.components.resource-menu-trigger.radius": *corporate
+    "tokens.components.resource-menu-trigger.padding": *corporate
+    "tokens.components.resource-menu-trigger.height": *corporate
+    "tokens.components.resource-menu-trigger.font": *corporate
+    "tokens.components.resource-menu-trigger.states": *corporate
+    "tokens.components.resource-menu-trigger.use": *corporate
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: live-extract
+  extracted: "2026-07-13"
+  components_harvested: true
+  note: "Machine tokens are limited to selector-backed values from the NHN Cloud public corporate marketing route. TOAST UI and NHN Cloud documentation are recorded as separate source domains."
   colors:
     primary: "#125de6"
-    dark: "#111111"
     on-primary: "#ffffff"
-    accent: "#00a9ff"
-    accent-hover: "#0088d9"
-    accent-secondary: "#009bf2"
-    tint: "#e5f6ff"
-    error: "#fa2828"
-    canvas: "#f7f9fc"
-    border: "#51565f"
+    dark: "#111111"
     muted: "#727781"
+    border: "#51565f"
   typography:
-    family: { sans: "Pretendard Variable", mono: "Pretendard Variable" }
-    body:      { size: 16, weight: 400, use: "Corporate body copy" }
-    cta:       { size: 15, weight: 400, use: "Primary CTA label" }
-    cta-lg:    { size: 17, weight: 500, use: "Larger ghost CTA on dark" }
-    widget:    { size: 13, weight: 400, use: "TOAST UI grid/editor body" }
-  spacing: { sm: 8, md: 12, base: 16, lg: 19 }
-  rounded: { sm: 4, md: 6, lg: 30, full: 9999 }
-  shadow:
-    none: "none"
+    family: { ui: "Pretendard Variable" }
+    body: { size: 16, weight: 400, use: "Corporate-marketing body sample" }
+    cta: { size: 15, weight: 400, use: "40px corporate header CTA" }
+    cta-lg: { size: 17, weight: 500, use: "48px corporate section CTA" }
+  spacing: { cta-sm-y: 8, cta-sm-x: 19, cta-lg-y: 10, cta-lg-x: 27, menu-y: 8, menu-x: 16 }
+  rounded: { cta: 30, control: 6, menu: 8 }
+  shadow: { menu-overlay: "0px 4px 8px rgba(0, 0, 0, 0.06)" }
   components:
-    cta-primary: { type: button, bg: "#125de6", fg: "#ffffff", radius: 30, padding: "8px 19px", font: "15px/400", use: "Primary corporate CTA pill" }
-    cta-dark: { type: button, bg: "#111111", fg: "#ffffff", radius: 30, font: "15px/400", use: "High-contrast alternate action" }
-    cta-ghost: { type: button, bg: "transparent", fg: "#ffffff", radius: 30, font: "17px/500", use: "Larger ghost pill on dark section" }
-    newsletter-input: { type: input, bg: "transparent", fg: "#727781", radius: 6, font: "14px/400", use: "Email capture field" }
-    widget-surface: { type: card, bg: "#f7f9fc", radius: 4, font: "13px/400", use: "Base TOAST UI widget surface" }
-    widget-selected: { type: card, bg: "#e5f6ff", radius: 4, use: "Selected/accented TOAST UI state" }
-  components_harvested: true
+    corporate-header-cta: { type: button, bg: "#125de6", fg: "#ffffff", border: "1px solid #125de6", radius: "30px", padding: "8px 19px", height: "40px", font: "15px / 400 Pretendard Variable", states: "hover and pressed observed on the same selector; no state value is inferred", use: "Corporate-marketing header CTA, selector home::[data-omd-capture=13]" }
+    corporate-section-cta: { type: button, bg: "#125de6", fg: "#ffffff", border: "1px solid #125de6", radius: "30px", padding: "10px 27px", height: "48px", font: "17px / 500 Pretendard Variable", states: "hover and pressed observed on the same selector class; no state value is inferred", use: "Corporate-marketing section CTA, selector home::[data-omd-capture=29]" }
+    resource-menu-trigger: { type: button, fg: "#727781", border: "1px solid #51565f", radius: "6px", padding: "10px 16px", height: "42px", font: "16px / 400 Pretendard Variable", states: "expanded and menu-open observed", use: "Corporate-marketing resource/menu trigger, selector home::[data-omd-capture=130]" }
 ---
 # Design System Inspiration of NHN Cloud
 
 ## 1. Visual Theme & Atmosphere
 
-NHN Cloud presents two distinct but related faces, and the brand's character lives in the gap between them. The corporate marketing site is confident and saturated — a vivid #125DE6 blue carried on large, fully-rounded pill CTAs that feel approachable and modern, anchored by clean near-black text on Pretendard Variable. The TOAST UI open-source widget library is the engineering counterpart: tighter, more functional, and a touch cooler in hue, leaning on a lighter accent blue (#00a9ff) and small 4px corner radii built for dense data interfaces like grids and editors. Where the corporate site sells trust and scale, the component library optimizes for legibility and information density. Together they read as one company speaking two registers — the marketing voice for executives evaluating an enterprise cloud, and the practitioner voice for developers embedding NHN's tools. The consistent thread is a blue-forward, clean, no-nonsense Korean enterprise aesthetic that never feels playful for its own sake.
+NHN Cloud is a cloud and IT-service company whose public platform describes a broad set of infrastructure and platform services for business operations and service development. Its corporate history traces the cloud service to a 2014 OpenStack launch and records NHN Cloud Corp.'s 2022 establishment, while the current company site frames the role as enabling customers' next technical challenge. On the captured corporate marketing route, that promise is expressed with a narrow, high-contrast action system: a bright `#125DE6` blue on fully rounded CTAs, white labels, dark resource menus, and the loaded `Pretendard Variable` face. The company’s official symbol describes three dots as both cloud and connection; the visual interface does not literalize that story with a broad decorative palette. It instead uses blue as a deliberate conversion signal. [NHN Cloud Company](https://company.nhncloud.com/about?lang=en) and the public [cloud platform](https://www.nhncloud.com/kr) are distinct from the developer-facing TOAST UI catalog and from the documentation chrome captured below.
 
 ## 2. Color Palette & Roles
-The brand operates across two surfaces, each with its own blue.
 
-**Corporate site (live nhncloud.com)**
-- Brand primary blue: #125DE6 (rgb 18,93,230) — every primary CTA
-- Dark CTA: #111111 — high-contrast alternate action
-- Newsletter input border: #51565F
-- Muted text: #727781
-- Body text: near-black
+**Corporate marketing route — selector-backed machine tokens**
 
-**TOAST UI (source-verified CSS)**
-- Accent blue: #00a9ff — primary interactive accent
-- Hover / active blue: #0088d9
-- Light tint: #e5f6ff
-- Secondary blue: #009bf2
-- Error red: #fa2828
-- Neutral background: #f7f9fc
+- Primary action: `#125DE6` — observed as the filled CTA background and border.
+- On primary: `#FFFFFF` — observed CTA label color.
+- Dark menu surface: `#111111` — observed expanded menu background.
+- Muted control text: `#727781` — observed resource-menu trigger text and menu border.
+- Control border: `#51565F` — observed resource-menu trigger border.
 
-Roles: on the corporate surface, #125DE6 is reserved for the single most important action on a section, with #111111 serving as a dark high-contrast alternate. On TOAST UI, #00a9ff drives interactive accents with #0088d9 as the hover/active darkening and #e5f6ff as a soft selection/tint fill; #fa2828 is the dedicated error signal and #f7f9fc the calm neutral canvas behind widgets.
+The capture also records `#E9F1FF` in documentation chrome. It is not promoted as a corporate marketing or TOAST UI token: the page is a separate documentation shell.
 
 ## 3. Typography Rules
-The corporate site uses Pretendard Variable throughout. Body copy is set at 16px; primary CTAs render at 15px / 400; a secondary heading-style CTA steps up to 17px / 500 for slightly more presence. The TOAST UI library defaults to a compact 13px body, appropriate for the data-dense grids and editors it powers. The hierarchy is restrained: weight moves between 400 and 500 rather than relying on heavy display weights, and size differences are modest, keeping the overall feel even and professional. Use Pretendard Variable for any corporate-aligned interface and the smaller 13px scale when matching the embedded TOAST UI surface.
+
+- **Live corporate computed use:** `Pretendard Variable` is the only general corporate UI family promoted here. It has 480 visible uses across the corporate marketing capture and a loaded FontFace/source match at `https://www.nhncloud.com/fonts/PretendardVariable.woff2`.
+- **Live documentation-chrome use:** `Noto Sans KR` is loaded/high confidence with 203 visible uses on `docs.nhncloud.com`, from Google Fonts sources. It is documentation chrome evidence, not a replacement for the corporate token family.
+- **Unresolved catalog use:** the TOAST UI catalog computes `Noto Sans CJK KR` on 122 visible samples, but the collector found no matching loaded FontFace or source. It remains unresolved.
+- **Declared-only assets:** `common`, `Noto Sans`, `Noto Sans JP`, `swiper-icons`, and `tui-calendar-font-icon` have declaration/source evidence but zero visible observed use. They are not promoted or substituted.
+- **Font licence boundary:** Pretendard’s upstream project distributes the family under SIL Open Font License 1.1. The licence describes the family; the corporate FontFaceSet/source evidence above is what establishes current NHN Cloud web use.
 
 ## 4. Component Stylings
 
-### Primary CTA (Corporate)
+### Corporate Header CTA
 
-**Vivid-blue pill**
+**40px primary action**
 - Background: #125DE6
 - Text: #FFFFFF
-- Border: none
+- Border: 1px solid #125DE6
 - Radius: 30px
 - Padding: 8px 19px
 - Height: 40px
-- Font: 15px / 400
-- Use: the primary call-to-action on corporate marketing sections
+- Font: 15px / 400 / Pretendard Variable
+- Use: Corporate-marketing header CTA; `home::[data-omd-capture="13"]`.
 
-### Dark CTA (Corporate)
+### Corporate Section CTA
 
-**Near-black pill**
-- Background: #111111
+**48px primary action**
+- Background: #125DE6
 - Text: #FFFFFF
-- Border: none
+- Border: 1px solid #125DE6
 - Radius: 30px
-- Height: 40px
-- Font: 15px / 400
-- Use: high-contrast alternate primary action
+- Padding: 10px 27px
+- Height: 48px
+- Font: 17px / 500 / Pretendard Variable
+- Use: Corporate-marketing section CTA; `home::[data-omd-capture="29"]`.
 
-### Outline CTA on Dark (Corporate)
+### Resource Menu Trigger
 
-**Ghost pill**
-- Background: transparent
-- Text: #FFFFFF
-- Border: 1px solid #FFFFFF
-- Radius: 30px
-- Height: 50px
-- Font: 17px / 500
-- Use: larger secondary action placed over a dark section
-
-### Newsletter Input (Corporate)
-
-**Transparent field**
-- Background: transparent
+**Expanded trigger**
 - Text: #727781
 - Border: 1px solid #51565F
 - Radius: 6px
+- Padding: 10px 16px
 - Height: 42px
-- Font: 14px / 400
-- Use: email capture field in the newsletter/footer area
+- Font: 16px / 400 / Pretendard Variable
+- Use: Corporate-marketing resource/menu trigger; `home::[data-omd-capture="130"]`; expanded/menu-open was observed.
 
-### TOAST UI Widget Element (Source)
+### Resource Menu
 
-**Compact surface**
-- Background: #f7f9fc
-- Text: near-black
-- Border: derived from accent #00a9ff on interactive states
-- Radius: 4px
-- Font: 13px / 400
-- Use: base styling for TOAST UI grid/editor widgets
+**Expanded panel**
+- Background: #111111
+- Text: #FFFFFF
+- Border: 1px solid #727781
+- Radius: 8px
+- Padding: 8px 0px
+- Shadow: 0px 4px 8px rgba(0, 0, 0, 0.06)
+- Font: 16px / 400 / Pretendard Variable
+- Use: Expanded corporate-marketing menu panel; `home::[data-omd-interaction-capture="menu-0-0"]`.
 
-**Interactive (accent)**
-- Background: #e5f6ff
-- Border: #00a9ff
-- Use: selected / accented state within the widget
-
-**Hover / active**
-- Border: #0088d9
-- Use: hover and active darkening of the accent
+No TOAST widget, input, grid, editor, hover color, error treatment, or responsive variant is specified here without a captured selector/value pair on an actual relevant surface.
 
 ## 5. Layout Principles
-The corporate site favors generous, breathing layouts where a single saturated CTA anchors each section against ample whitespace, letting the vivid blue do the work of directing attention. Fully-rounded 30px pills are placed as clear focal points rather than crowded clusters. The TOAST UI surface inverts this priority: it is built for density, with the calm #f7f9fc neutral background framing tight, legible grids and editors at the 13px scale and small 4px radii that keep many adjacent cells visually quiet. Match the corporate layout when designing marketing or top-of-funnel pages, and the TOAST UI layout when designing functional, data-heavy application screens.
+
+The corporate marketing capture pairs a 40px header action with 48px section actions, keeping the bright blue lane intentionally limited. The 30px CTA radius belongs to this marketing surface; the observed 6px trigger and 8px menu panel are a separate resource-control cluster. The source artifact does not establish a universal grid, app-shell spacing scale, or layout rule for the cloud console, TOAST UI applications, or documentation pages.
 
 ## 6. Depth & Elevation
-NHN Cloud reads as a fundamentally flat, modern system on both surfaces — depth is expressed through color contrast and crisp 1px borders rather than heavy shadow. On the corporate site, separation comes from the saturated #125DE6 (or #111111) fill standing out against light backgrounds, and from thin 1px outlines such as the #51565F input border and the #FFFFFF ghost-button stroke. On TOAST UI, the #f7f9fc neutral canvas and small 4px-radius elements establish quiet layering, with the #00a9ff accent and #e5f6ff tint lifting interactive elements forward through hue rather than elevation. Keep elevation subtle: prefer contrast and hairline borders over drop shadows.
+
+The captured corporate CTA samples have no shadow. The expanded resource menu alone records an overlay shadow of `0px 4px 8px rgba(0, 0, 0, 0.06)` behind a `#111111` panel and `#727781` hairline. Do not turn that one menu observation into a general card-elevation system.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Reserve #125DE6 for the single primary action on a corporate section.
-- Use Pretendard Variable for corporate-aligned interfaces.
-- Use fully-rounded 30px pills for corporate CTAs and the compact 4px radius for TOAST UI elements.
-- Keep the two surfaces visually distinct: vivid #125DE6 for corporate, lighter #00a9ff for TOAST UI.
+
+- Use `#125DE6` and a 30px radius only for the captured corporate marketing CTA pattern.
+- Use loaded `Pretendard Variable` for corporate-marketing reproductions.
+- Keep the 6px trigger and 8px expanded-menu geometry tied to their observed resource control.
+- Treat TOAST UI and NHN Cloud docs as separately evidenced developer/documentation surfaces.
 
 ### Don't
-- Blur the two blues — #125DE6 (corporate) and #00a9ff (TOAST UI) are not interchangeable.
-- Introduce heavy drop shadows; rely on color contrast and 1px borders.
-- Crowd multiple saturated pills together; let one CTA lead.
-- Use the dense 13px scale on marketing pages or the large pills inside data grids.
+
+- Do not merge TOAST UI catalog chrome or documentation-chrome colors into the corporate marketing token set.
+- Do not substitute `Noto Sans KR`, `Noto Sans CJK KR`, or a system font for the verified corporate `Pretendard Variable` role.
+- Do not invent grid, editor, calendar, error, hover, disabled, or responsive variants from TOAST UI’s product list.
+- Do not generalize the menu overlay shadow into a broad elevation ladder.
 
 ## 8. Responsive Behavior
-Component sizing in the blob points to comfortable, finger-friendly targets: corporate CTAs stand at 40px high (50px for the larger ghost button) and the newsletter input at 42px, with rounded 30px pills that stay legible at small widths. The Pretendard Variable type scale — 16px body, 15px and 17px CTAs — remains readable across breakpoints without restyling. The TOAST UI surface, designed for embedding, holds its compact 13px scale and 4px radii so that grids and editors retain density on whatever container they sit in. Preserve these heights and radii across viewports; scale layout and spacing rather than re-theming the components.
+
+The supplied capture is 1440×900 only. It establishes 40px and 48px CTA examples and a 42px resource trigger at that viewport, but it does not establish a mobile breakpoint, responsive menu geometry, or touch-target policy. Preserve the observed values only where the same surface is being recreated; validate any responsive implementation separately.
 
 ## 9. Agent Prompt Guide
-When generating UI in the NHN Cloud style, first decide which surface you are matching. For corporate/marketing work, use Pretendard Variable, set body at 16px, and render the primary CTA as a fully-rounded 30px pill with background #125DE6, white text, 15px / 400, 40px tall, padding 8px 19px; offer #111111 as a dark alternate and a transparent ghost button with a 1px #FFFFFF border (50px, 17px / 500) over dark sections; style inputs as transparent fields with a 1px #51565F border, 6px radius, 42px height, #727781 text at 14px / 400. For TOAST UI / application work, use the 13px scale, 4px radii, an #f7f9fc neutral background, the #00a9ff accent with #0088d9 hover and #e5f6ff tint, #009bf2 as a secondary blue, and #fa2828 for errors. Never mix the two blues, and never invent shadows the system doesn't use.
+
+For a corporate NHN Cloud marketing treatment, use `Pretendard Variable`, a white-on-`#125DE6` 30px pill CTA, and choose either the 40px / `8px 19px` / 15px-400 header sample or the 48px / `10px 27px` / 17px-500 section sample. For the captured resource menu, use a transparent `#727781` / `#51565F` 6px trigger and an expanded `#111111` panel with an 8px radius and the observed light overlay shadow. Do not use this small marketing sample to synthesize a cloud-console UI or TOAST UI widget library.
 
 ## 10. Voice & Tone
-NHN Cloud speaks in two registers tied to its two surfaces. The corporate voice is confident, trust-building, and enterprise-minded — selling scale, reliability, and partnership to decision-makers, with bold blue CTAs that invite a clear next step. The TOAST UI voice is the practitioner's: precise, functional, and documentation-driven, addressing developers who want their widgets to work predictably. Keep corporate copy assured and outcome-focused; keep TOAST UI copy exact and utilitarian.
+
+The official company statement is business-enabling and practical: it positions NHN Cloud as technology support for customers' new journeys. Keep corporate copy direct, capability-led, and concrete about the operational outcome. The TOAST UI catalog has a different, developer-oriented voice: it presents applications, components, tools, and front-end guidance. That public catalog voice is useful context for developers, but it does not turn documentation labels into corporate-marketing microcopy. [Company statement](https://company.nhncloud.com/about?lang=en) · [TOAST UI](https://ui.toast.com/)
 
 ## 11. Brand Narrative
-NHN Cloud is the enterprise cloud arm of NHN Corp, headquartered in Pangyo, Korea. Its identity is built on two complementary pillars: a polished corporate presence that markets cloud infrastructure to enterprises, and TOAST UI — NHN's open-source component library (TUI Grid, Editor, Calendar, Chart, Image-Editor) released MIT-licensed under the nhn GitHub organization and documented at ui.toast.com. This pairing mirrors how strong product companies maintain a marketing surface and a developer surface side by side: the corporate site earns trust at the buying level, while TOAST UI earns credibility at the building level. The brand's story is one of a Korean enterprise that both sells the cloud and contributes the tools developers use on top of it.
+
+NHN Cloud's official history records an OpenStack public-cloud launch in 2014, a cloud-center build in Pangyo in 2015, and the launch of NHN Cloud in April 2022. The company now describes itself as a cloud and IT-service business, with current growth efforts spanning data/AI services, private and global markets, and regional data centers. Its official logo explanation centres connection and boundless possibility; the three-dot symbol is described as a cloud and as a prompt for easy, flexible collaboration.
+
+The developer-facing counterpart is TOAST UI: its own site calls it a JavaScript UI library and free open-source project constantly managed by NHN Cloud, listing applications such as Grid, Editor, Calendar, Chart, and Image Editor alongside smaller components and front-end guides. The catalog is informative evidence of the developer ecosystem, not proof that its catalog-page typography or any unobserved component value is the NHN Cloud corporate design system.
 
 ## 12. Principles
-- Two surfaces, one brand: corporate marketing and TOAST UI are parallel systems, each internally consistent.
-- Blue-forward clarity: a single saturated blue leads attention on each surface.
-- Flat and clean: contrast and hairline borders over shadow.
-- Density where it counts: marketing breathes; application widgets pack tight at 13px / 4px.
-- Restraint in type: weights stay between 400 and 500.
+
+1. **Enable a customer’s technical journey.**
+   *UI implication:* Prefer a clear capability and an unambiguous next action over decorative language.
+
+2. **Connection is a brand idea, not a license to invent a token system.**
+   *UI implication:* Keep the action lane focused; do not turn the corporate logo story into unsupported visual rules.
+
+3. **Corporate marketing and developer catalog are distinct public domains.**
+   *UI implication:* Attribute each token and component to its captured route before reuse.
+
+4. **Open-source developer tools need precise boundaries.**
+   *UI implication:* Describe TOAST UI's documented applications and components without claiming unseen states or styles.
 
 ## 13. Personas
-- Enterprise buyer: evaluating NHN Cloud for infrastructure; meets the confident corporate site, vivid #125DE6 CTAs, and Pretendard Variable copy.
-- Developer / integrator: embedding TOAST UI widgets; works in the compact 13px, 4px-radius surface with the #00a9ff accent system.
-- Korean enterprise team: expecting a clean, professional, blue-forward Korean cloud aesthetic across both touchpoints.
+
+- **Enterprise technical evaluator:** visits the public cloud marketing route to understand services and a next step; the verified CTA values belong to this route.
+- **Developer evaluating a UI utility:** visits TOAST UI’s catalog for applications, components, and guides; this is a developer/documentation journey, not the NHN Cloud console.
+- **Cloud documentation reader:** uses `docs.nhncloud.com` for reference material; its loaded Noto Sans KR documentation chrome remains surface-local.
 
 ## 14. States
-- Default (corporate CTA): #125DE6 background, white text, 30px pill.
-- Default (TOAST UI accent): #00a9ff accent on #f7f9fc neutral background.
-- Hover / active (TOAST UI): accent darkens to #0088d9.
-- Selected / tinted (TOAST UI): #e5f6ff light tint fill with #00a9ff edge.
-- Error (TOAST UI): #fa2828 red.
-- Input resting (corporate): transparent field, 1px #51565F border, #727781 text.
+
+- Corporate header and section CTA selectors carry collector markers for hover and pressed, but no separate computed state values are promoted.
+- The corporate resource trigger was observed expanded/menu-open with the 42px, 6px-radius trigger values above.
+- The expanded corporate menu panel was observed at `#111111`, with a 1px `#727781` border, 8px radius, and the recorded overlay shadow.
+- A documentation-chrome CTA was observed separately at `surface-3::[data-omd-capture="3"]`: `#125DE6`, white text, 30px radius, `9px 20px` padding, and Noto Sans KR 15px/300. It is not promoted as the corporate CTA token.
+- No focus, disabled, error, success, loading, empty, toast, dialog, or form-validation state is asserted.
 
 ## 15. Motion & Easing
-No motion or easing values were captured in live inspection, so specifics are not asserted here. In keeping with the system's flat, clean, contrast-driven character, treat motion as restrained and functional: brief, confident transitions on the corporate CTAs and the lightest possible state feedback on TOAST UI's dense widgets, where the #00a9ff → #0088d9 darkening communicates interaction without distracting from data. Favor subtle, purposeful movement over decorative animation.
+
+No computed duration, easing curve, or motion sequence was supplied as a reliable token. The menu-open capture establishes the resulting expanded panel only. Treat motion values as unresolved until a relevant public surface is captured with explicit computed transition evidence.
 
 ---
-**Verified:** 2026-06-01
-**Tier 1 sources:** https://www.nhncloud.com (live corporate DOM — #125DE6 primary CTAs, #111111 dark CTA, #51565F input border, #727781 muted text, Pretendard Variable 16/15/17px), https://ui.toast.com (TOAST UI system entry point — open-source widget library), https://github.com/nhn (nhn org source CSS — tui.grid grid.css #00a9ff/#0088d9/#e5f6ff 13px, tui.editor editor.css #00a9ff/#009bf2/#fa2828/#f7f9fc radius 4px)
-**Tier 2 sources:** getdesign.md/nhncloud — NOT LISTED. refero — not listed. Note: corporate brand blue #125DE6 differs from TOAST UI accent #00a9ff (two surfaces).
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.nhncloud.com/kr (corporate marketing computed styles and loaded Pretendard Variable), https://ui.toast.com/ (official TOAST UI catalog), https://docs.nhncloud.com/ko/nhncloud/ko/overview/ (separate documentation chrome), https://company.nhncloud.com/about?lang=en (official company history and brand context)
+**Tier 2 sources:** https://getdesign.md/nhncloud — attempted; built-in web open returned a non-retryable error and search returned no record. https://styles.refero.design/?q=nhncloud — attempted; built-in web open returned a non-retryable error and search returned no record.
 **Conflicts unresolved:** none
-**Proof:** see .verification.md (## Proof block)
+**Proof:** see .verification.md (## Proof — Tier 1 live inspect)

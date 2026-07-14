@@ -7,6 +7,7 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { getAccessToken } from "./_google-auth.mjs";
 import { env, requireEnv, repoRoot } from "./_env.mjs";
+import { gscCompleteDateRange } from "./_dates.mjs";
 
 const arg = (n, d) => {
   const i = process.argv.indexOf(`--${n}`);
@@ -17,13 +18,7 @@ const SITE = requireEnv("GSC_SITE_URL"); // e.g. sc-domain:oh-my-design.kr
 const SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"];
 const API = `https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SITE)}/searchAnalytics/query`;
 
-function ymd(daysAgo) {
-  const d = new Date();
-  d.setUTCDate(d.getUTCDate() - daysAgo);
-  return d.toISOString().slice(0, 10);
-}
-const startDate = ymd(DAYS + 3);
-const endDate = ymd(3); // GSC freshness lag
+const { startDate, endDate } = gscCompleteDateRange(DAYS, { lagDays: 3 });
 
 const REPORTS = {
   queries: { dimensions: ["query"], rowLimit: 250 },
@@ -64,6 +59,7 @@ async function query(token, spec) {
 
 const token = await getAccessToken(SCOPES);
 const out = { _meta: { site: SITE, startDate, endDate, days: DAYS, pulledAt: new Date().toISOString() } };
+let requiredFailures = 0;
 for (const [name, spec] of Object.entries(REPORTS)) {
   try {
     out[name] = await query(token, spec);
@@ -71,6 +67,7 @@ for (const [name, spec] of Object.entries(REPORTS)) {
   } catch (e) {
     out[name] = { error: String(e.message || e) };
     console.error(`gsc:${name} FAILED${spec.optional ? " (optional)" : ""} — ${e.message || e}`);
+    if (!spec.optional) requiredFailures++;
   }
 }
 
@@ -79,3 +76,4 @@ mkdirSync(dir, { recursive: true });
 const file = path.join(dir, "gsc.json");
 writeFileSync(file, JSON.stringify(out, null, 2));
 console.log(`\nwrote ${path.relative(repoRoot, file)}`);
+if (requiredFailures > 0) process.exitCode = 1;

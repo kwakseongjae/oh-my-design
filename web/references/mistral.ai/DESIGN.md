@@ -4,387 +4,304 @@ name: Mistral AI
 country: FR
 category: ai
 homepage: "https://mistral.ai"
-primary_color: "#ff7000"
+primary_color: "#000000"
 logo:
   type: simpleicons
   slug: mistralai
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Mistral Brand
-  url: "https://mistral.ai/brand"
+  url: "https://mistral.ai/brand/"
   type: brand
-  description: Mistral AI's logo, colors, typography, and brand asset kit.
+  description: Official logo, model illustration, and brand-asset guidance.
   og_image: "https://mistral.ai/-/brand/opengraph-image-1robrb.png"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://mistral.ai/", inspected: "2026-07-13" }
+    - { id: pricing, kind: product-pricing, url: "https://mistral.ai/pricing/", inspected: "2026-07-13" }
+    - { id: pricing-duplicate, kind: product-pricing, url: "https://mistral.ai/pricing/", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://mistral.ai/", captured: "2026-07-13" }
+    - { id: pricing-live, kind: product-surface, url: "https://mistral.ai/pricing/", captured: "2026-07-13" }
+    - { id: inter-asset, kind: brand-asset, url: "https://mistral.ai/fonts/inter/Inter-VariableFont.ttf", captured: "2026-07-13" }
+    - { id: alt-mistral-asset, kind: brand-asset, url: "https://mistral.ai/fonts/alt-mistral/ALTMistral-Regular.woff2", captured: "2026-07-13" }
+    - { id: space-mono-asset, kind: brand-asset, url: "https://mistral.ai/fonts/space-mono/SpaceMono-Regular.ttf", captured: "2026-07-13" }
+    - { id: brand-guidance, kind: official-doc, url: "https://mistral.ai/brand/", captured: "2026-07-13" }
+    - { id: about, kind: official-doc, url: "https://mistral.ai/about/", captured: "2026-07-13" }
+    - { id: careers, kind: official-doc, url: "https://mistral.ai/careers/", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.foreground": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.border": *home
+    "tokens.colors.surface-brand-secondary": *home
+    "tokens.colors.surface-brand-primary": *home
+    "tokens.typography.family.ui": &inter { surface_id: home, source_id: inter-asset, method: computed-style-plus-fontfaceset-source, captured: "2026-07-13" }
+    "tokens.typography.family.display": &alt { surface_id: home, source_id: alt-mistral-asset, method: computed-style-plus-fontfaceset-source, captured: "2026-07-13" }
+    "tokens.typography.family.mono": &mono { surface_id: home, source_id: space-mono-asset, method: computed-style-plus-fontfaceset-source, captured: "2026-07-13" }
+    "tokens.typography.body.size": *inter
+    "tokens.typography.body.weight": *inter
+    "tokens.typography.body.lineHeight": *inter
+    "tokens.typography.body.use": *inter
+    "tokens.typography.control.size": *alt
+    "tokens.typography.control.weight": *alt
+    "tokens.typography.control.lineHeight": *alt
+    "tokens.typography.control.tracking": *alt
+    "tokens.typography.control.use": *alt
+    "tokens.typography.display.size": *alt
+    "tokens.typography.display.weight": *alt
+    "tokens.typography.display.lineHeight": *alt
+    "tokens.typography.display.tracking": *alt
+    "tokens.typography.display.use": *alt
+    "tokens.typography.eyebrow.size": *mono
+    "tokens.typography.eyebrow.weight": *mono
+    "tokens.typography.eyebrow.lineHeight": *mono
+    "tokens.typography.eyebrow.use": *mono
+    "tokens.spacing.xs": *home
+    "tokens.spacing.sm": *home
+    "tokens.spacing.md": *home
+    "tokens.spacing.lg": *home
+    "tokens.spacing.xl": *home
+    "tokens.rounded.sharp": *home
+    "tokens.rounded.sm": *home
+    "tokens.rounded.md": *home
+    "tokens.rounded.lg": *home
+    "tokens.components.pricing-plan.type": &pricing { surface_id: pricing, source_id: pricing-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.pricing-plan.bg": *pricing
+    "tokens.components.pricing-plan.fg": *pricing
+    "tokens.components.pricing-plan.border": *pricing
+    "tokens.components.pricing-plan.radius": *pricing
+    "tokens.components.pricing-plan.font": *inter
+    "tokens.components.pricing-plan.use": *pricing
+    "tokens.components.disabled-compact-control.type": *pricing
+    "tokens.components.disabled-compact-control.bg": *pricing
+    "tokens.components.disabled-compact-control.fg": *pricing
+    "tokens.components.disabled-compact-control.radius": *pricing
+    "tokens.components.disabled-compact-control.padding": *pricing
+    "tokens.components.disabled-compact-control.font": *inter
+    "tokens.components.disabled-compact-control.states": *pricing
+    "tokens.components.disabled-compact-control.use": *pricing
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
   colors:
-    primary: "#fa520f"
-    primary-hover: "#fb6424"
-    brand: "#ff8105"
-    canvas: "#fffaeb"
-    surface: "#fff0c2"
-    foreground: "#1f1f1f"
-    on-primary: "#ffffff"
-    accent-sunshine: "#ffa110"
-    accent-gold: "#ffd900"
-    accent-block-gold: "#ffe295"
+    foreground: "#000000"
+    border: "#e4e3de"
+    surface-brand-secondary: "#f5f4ef"
+    surface-brand-primary: "#fbfbf8"
   typography:
-    family: { sans: "Arial", mono: "Arial" }
-    display:     { size: 82, weight: 400, lineHeight: 1.00, tracking: -2.05, use: "Hero headlines, billboard scale" }
-    section:     { size: 56, weight: 400, lineHeight: 0.95, use: "Feature section anchors" }
-    subheading-lg: { size: 48, weight: 400, lineHeight: 0.95, use: "Secondary section titles" }
-    subheading:  { size: 32, weight: 400, lineHeight: 1.15, use: "Card headings, feature names" }
-    card-title:  { size: 30, weight: 400, lineHeight: 1.20, use: "Mid-level headings" }
-    feature:     { size: 24, weight: 400, lineHeight: 1.33, use: "Small headings" }
-    body:        { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body, button text" }
-    caption:     { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, secondary links" }
-  spacing: [2, 4, 8, 10, 12, 16, 20, 24, 32, 40, 48, 64, 80, 98, 100]
-  rounded: { sm: 0, md: 0, lg: 0, full: 9999 }
-  shadow:
-    golden: "rgba(127,99,21,0.12) -8px 16px 39px, rgba(127,99,21,0.1) -33px 64px 72px, rgba(127,99,21,0.06) -73px 144px 97px"
+    family: { ui: "Inter", display: "ALTMistral", mono: "Space Mono" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Public-site body, list, card, and product-pricing copy" }
+    control: { size: 16, weight: 500, lineHeight: 1.5, tracking: 0.16, use: "Header controls and compact links" }
+    display: { size: 56, weight: 500, lineHeight: 1.07, tracking: -0.56, use: "Observed large public-marketing headings" }
+    eyebrow: { size: 11, weight: 400, lineHeight: 1.45, use: "Small uppercase label on the public marketing surface" }
+  spacing: { xs: 2, sm: 4, md: 8, lg: 16, xl: 24 }
+  rounded: { sharp: 0, sm: 4, md: 6, lg: 8 }
   components_harvested: true
   components:
-    button-primary: { type: button, bg: "#1f1f1f", fg: "#ffffff", padding: "12px", radius: "0px", font: "16px / 400", use: "Primary action, dark on warm" }
-    button-secondary: { type: button, bg: "#fff0c2", fg: "#1f1f1f", radius: "0px", font: "16px / 400", use: "Warm inviting secondary CTA" }
-    button-ghost: { type: button, bg: "transparent", fg: "#1f1f1f", radius: "0px", states: "opacity 0.4", use: "Secondary/de-emphasized actions" }
-    button-text: { type: button, bg: "transparent", fg: "#1f1f1f", padding: "8px 0px 0px", use: "Tertiary navigation links" }
-    card: { type: card, bg: "#fffaeb", radius: "0px", shadow: "golden amber 5-layer cascade", use: "Feature cards, golden-hour float" }
-    input: { type: input, border: "1px solid hsl(240,5.9%,90%)", radius: "0px", focus: "accent color ring", use: "Form fields" }
-    block-identity: { type: badge, bg: "gradient #ffd900 to #fa520f", radius: "0px", use: "Mistral block gradient brand mark" }
+    pricing-plan: { type: card, bg: "#fbfbf8", fg: "#000000", border: "1px solid #e4e3de", radius: "0px", font: "16px / 400 / Inter", use: "Pricing-plan shell" }
+    disabled-compact-control: { type: button, bg: "rgba(7, 7, 11, 0.1)", fg: "oklch(0.552 0.016 285.938)", radius: "6px", padding: "4px", font: "16px / 400 / Inter", states: "disabled DOM state observed", use: "Disabled compact pricing control" }
 ---
 
-# Design System Inspiration of Mistral AI
+# Mistral AI — Design Reference
 
 ## 1. Visual Theme & Atmosphere
 
-Mistral AI's interface is a sun-drenched landscape rendered in code — a warm, bold, unapologetically European design that trades the typical blue-screen AI aesthetic for golden amber, burnt orange, and the feeling of late-afternoon light in southern France. Every surface glows with warmth: backgrounds fade from pale cream to deep amber, shadows carry golden undertones (`rgba(127, 99, 21, ...)`), and the brand's signature orange (`#fa520f`) burns through the page like a signal fire.
+Mistral AI builds frontier models, developer tools, applications, and compute for people and organizations that need control over how they use AI. Its official about page frames the company as a European, open and responsible alternative born in 2023, while its public site currently expresses that position with restrained, almost editorial web chrome: black text, pale near-white or warm-gray surfaces, fine `#e4e3de` rules, and a mix of proprietary-feeling display lettering with Inter for practical reading. The captured home and pricing pages are not a product-app audit: they are separate public marketing and commercial-pricing surfaces. Official brand guidance supplies a distinct asset layer—the pixel-cat emblem, a preferred gradient logo, monochrome variants, and colorful model illustrations—but its artwork is not promoted into the live UI palette without a computed source.
 
-The design language is maximalist in its warmth but minimalist in its structure. Huge display headlines (82px) crash into the viewport with aggressive negative tracking (-2.05px), creating text blocks that feel like billboards or protest posters — declarations rather than descriptions. The typography uses Arial (likely a custom font with Arial as fallback) at extreme sizes, creating a raw, unadorned voice that says "we build frontier AI" with no decoration needed.
-
-What makes Mistral distinctive is the complete commitment to a warm color temperature. The signature "block" identity — a gradient system flowing from bright yellow (`#ffd900`) through amber (`#ffa110`) to burnt orange (`#fa520f`) — creates a visual identity that's immediately recognizable. Even the shadows are warm, using amber-tinted blacks instead of cool grays. Combined with dramatic landscape photography in golden tones, the design feels less like a tech company and more like a European luxury brand that happens to build language models.
-
-**Key Characteristics:**
-- Golden-amber color universe: every tone from pale cream (#fffaeb) to burnt orange (#fa520f)
-- Massive display typography (82px) with aggressive negative letter-spacing (-2.05px)
-- Warm golden shadow system using amber-tinted rgba values
-- The Mistral "M" block identity — a gradient from yellow to orange
-- Dramatic landscape photography in warm golden tones
-- Uppercase typography used strategically for section labels and CTAs
-- Near-zero border-radius — sharp, architectural geometry
-- French-European confidence: bold, warm, declarative
+- **Structured neutrality:** current captured chrome is led by black, soft off-whites, and fine neutral dividers.
+- **Type as contrast:** `ALTMistral` supplies high-visibility headings and controls; Inter carries repeated reading and transactional copy.
+- **Asset/UI boundary:** the official gradient logo and model artwork establish identity, but their colors are not claimed as current generic UI tokens.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Mistral Orange** (`#fa520f`): The core brand color — a vivid, saturated orange-red that anchors the entire identity. Used for primary emphasis, the brand block, and the highest-signal moments.
-- **Mistral Flame** (`#fb6424`): A slightly warmer, lighter variant of the brand orange used for secondary brand moments and hover states.
-- **Block Orange** (`#ff8105`): A pure orange used in the gradient block system — warmer and less red than Mistral Orange.
+### Current public-web observations
 
-### Secondary & Accent
-- **Sunshine 900** (`#ff8a00`): Deep golden amber — the darkest sunshine tone, used for strong accent moments.
-- **Sunshine 700** (`#ffa110`): Warm amber-gold — the core sunshine accent for backgrounds and interactive elements.
-- **Sunshine 500** (`#ffb83e`): Medium golden — balanced warmth for mid-level emphasis.
-- **Sunshine 300** (`#ffd06a`): Light golden — for subtle warm tints and secondary backgrounds.
-- **Block Gold** (`#ffe295`): Pale gold — soft background accents and gentle warmth.
-- **Bright Yellow** (`#ffd900`): The brightest tone in the gradient — used at the "top" of the block identity.
+- **Foreground** (`#000000`): repeated text and border color on the captured home and pricing records.
+- **Divider** (`#e4e3de`): repeated one-pixel navigation, list-row, pricing-plan, and segmented-control border.
+- **Brand-secondary surface** (`#f5f4ef`): observed on pricing plan and segmented-shell treatments.
+- **Brand-primary surface** (`#fbfbf8`): observed on a pricing-plan shell and an expanded header-control treatment.
 
-### Surface & Background
-- **Warm Ivory** (`#fffaeb`): The lightest page background — barely tinted with warmth, the foundation canvas.
-- **Cream** (`#fff0c2`): The primary warm surface and secondary button background — noticeably golden.
-- **Pure White** (`#ffffff`): Used for maximum contrast elements and popover surfaces.
-- **Mistral Black** (`#1f1f1f`): The primary dark surface for buttons, text, and dark sections.
-- **Accent Orange** (defined as `hsl(17, 96%, 52%)`): The functional accent color for interactive states.
-
-### Neutrals & Text
-- **Mistral Black** (`#1f1f1f`): Primary text color and dark button backgrounds — a near-black that's warmer than pure #000.
-- **Black Tint** (defined as `hsl(0, 0%, 24%)`): A medium dark gray for secondary text on light backgrounds.
-- **Pure White** (`#ffffff`): Text on dark surfaces and CTA labels.
-
-### Semantic & Accent
-- **Input Border** (defined as `hsl(240, 5.9%, 90%)`): A cool-tinted light gray for form borders — one of the few cool tones in the system.
-- **White Overlay** (`oklab(1, 0, 0 / 0.088–0.1)`): Semi-transparent white for frosted glass effects and button overlays.
-
-### Gradient System
-- **Mistral Block Gradient**: The signature identity — a multi-step gradient flowing through Yellow (`#ffd900`) → Gold (`#ffe295`) → Amber (`#ffa110`) → Orange (`#ff8105`) → Flame (`#fb6424`) → Mistral Orange (`#fa520f`). This gradient appears in the logo blocks, section backgrounds, and decorative elements.
-- **Golden Landscape Wash**: Photography and backgrounds use warm amber overlays creating a consistent golden temperature across the page.
-- **Warm Shadow Cascade**: Multi-layered golden shadows that build depth with amber-tinted transparency rather than gray.
+The official brand page documents gradient, black, and white logo variants plus colorful model illustrations, but it does not publish the numeric artwork colors in the inspected text. Those brand assets remain an identity source, not an inferred semantic or interaction palette. No success, warning, error, dark-mode, focus, or hover color token is established by this capture.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Primary**: Likely a custom font (Font Source detected) with `Arial` as fallback, and extended stack: `ui-sans-serif, system-ui, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji`
+### Evidence classes
 
-### Hierarchy
+- **Live computed public-web use:** `Inter` is loaded with high confidence, has 632 visible uses, and has a matching Mistral-hosted variable-font source. It is observed in body, list, card, input, tab, and button roles.
+- **Live computed public-web use:** `ALTMistral` is loaded with high confidence, has 560 visible uses and matching Mistral-hosted Regular, Medium, Semibold, and italic WOFF/WOFF2 sources. It appears in public-marketing display, badges, body, and header-control roles.
+- **Live computed public-web use:** `Space Mono` is loaded with high confidence, has 38 visible uses, and has a matching Mistral-hosted source. The capture confines it to small body/card-label contexts.
+- **Declared-only:** `Source Sans 3` has seven `@font-face` source URLs through the consent-provider domain but zero visible captured uses. It is not a typography token.
+- **Documentation chrome:** `https://docs.mistral.ai/` was consulted only as an official documentation domain. No supplied computed-style or FontFaceSet record supports promoting its chrome or a docs family into this reference.
+- **Licence boundary:** Mistral’s brand guidance says its name, trademarks, logos, icons, and identifying assets are its property; it does not publish a downstream reuse licence for the captured font files. Keep font metadata, but do not substitute another font and do not treat these URLs as reusable project assets.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display / Hero | Arial (custom) | 82px (5.13rem) | 400 | 1.00 (tight) | -2.05px | Maximum impact, billboard scale |
-| Section Heading | Arial (custom) | 56px (3.5rem) | 400 | 0.95 (ultra-tight) | normal | Feature section anchors |
-| Sub-heading Large | Arial (custom) | 48px (3rem) | 400 | 0.95 (ultra-tight) | normal | Secondary section titles |
-| Sub-heading | Arial (custom) | 32px (2rem) | 400 | 1.15 (tight) | normal | Card headings, feature names |
-| Card Title | Arial (custom) | 30px (1.88rem) | 400 | 1.20 (tight) | normal | Mid-level headings |
-| Feature Title | Arial (custom) | 24px (1.5rem) | 400 | 1.33 | normal | Small headings |
-| Body / Button | Arial (custom) | 16px (1rem) | 400 | 1.50 | normal | Standard body, button text |
-| Button Uppercase | Arial (custom) | 16px (1rem) | 400 | 1.50 | normal | Uppercase CTA labels |
-| Caption / Link | Arial (custom) | 14px (0.88rem) | 400 | 1.43 | normal | Metadata, secondary links |
+### Measured public-web hierarchy
 
-### Principles
-- **Single weight, maximum impact**: The entire system uses weight 400 (regular) — even at 82px. This creates a surprisingly elegant effect where the size alone carries authority without needing bold weight.
-- **Ultra-tight at scale**: Line-heights of 0.95–1.00 at display sizes create text blocks where ascenders nearly touch descenders from the line above — creating dense, poster-like composition.
-- **Aggressive tracking on display**: -2.05px letter-spacing at 82px compresses the hero text into a monolithic block.
-- **Uppercase as emphasis**: Strategic `text-transform: uppercase` on button labels and section markers creates a formal, European signage quality.
-- **No weight variation**: Unlike most systems that use 300–700 weight range, Mistral uses 400 everywhere. Hierarchy comes from size and color, never weight.
+| Role | Family | Size | Weight | Line height | Tracking | Provenance |
+|---|---|---:|---:|---:|---:|---|
+| Large marketing heading | ALTMistral | 56px | 500 | 60px | -0.56px | captured home body elements |
+| Marketing heading | ALTMistral | 44px | 500 | 52px | -0.44px | captured home body elements |
+| Control label | ALTMistral | 16px | 500 | 24px | 0.16px | `home::[data-omd-capture="55"]` |
+| Compact link/label | ALTMistral | 14px | 500 | 20px | 0.28px | `home::[data-omd-capture="126"]` |
+| Body, list, and card copy | Inter | 16px | 400 | 24px | normal | captured home and pricing elements |
+| Small label | Space Mono | 11px | 400 | 16px | normal | `home::p.text-eyebrow-small` |
 
-## 4. Component Stylings
+## 4. Components
 
-### Buttons
+All components below preserve their public-surface and selector provenance. The collector records `interactionCount: 0` and an empty `interactions[]`; class names mentioning hover do not establish a hover value. The one disabled row is a captured disabled DOM state, not a complete state or behavior specification.
 
-**Cream Surface**
-- Background: Cream (`#fff0c2`)
-- Text: Mistral Black (`#1f1f1f`)
-- No visible border
-- The warm, inviting secondary CTA
+### Header controls
 
-**Dark Solid**
-- Background: Mistral Black (`#1f1f1f`)
-- Text: Pure White (`#ffffff`)
-- Padding: 12px (all sides)
-- No visible border
-- The primary action button — dark on warm
-
-**Ghost / Transparent**
-- Background: transparent with slight dark overlay (`oklab(0, 0, 0 / 0.1)`)
-- Text: Mistral Black (`#1f1f1f`)
-- Opacity: 0.4
-- For secondary/de-emphasized actions
-
-**Text / Underline**
+**Public header control**
 - Background: transparent
-- Text: Mistral Black (`#1f1f1f`)
-- Padding: 8px 0px 0px (top-only)
-- Minimal styling — text link as button
-- For tertiary navigation actions
+- Text: `#000000`
+- Border: `1px solid #e4e3de` on the right edge
+- Radius: `0px`
+- Padding: `0px 16px`
+- Font: `16px / 500 / ALTMistral`
+- Use: `home::[data-omd-capture="55"]`; 48px-high public header control on home and pricing
 
-### Cards & Containers
-- Background: Warm Ivory (`#fffaeb`), Cream (`#fff0c2`), or Pure White
-- Border: minimal to none — containers defined by background color
-- Radius: near-zero — sharp, architectural corners
-- Shadow: warm golden multi-layer (`rgba(127, 99, 21, 0.12) -8px 16px 39px, rgba(127, 99, 21, 0.1) -33px 64px 72px, rgba(127, 99, 21, 0.06) -73px 144px 97px, ...`) — a dramatic, cascading warm shadow
-- Distinctive: the golden shadow creates a "golden hour" lighting effect
+### List rows
 
-### Inputs & Forms
-- Border: `hsl(240, 5.9%, 90%)` — the sole cool-toned element
-- Focus: accent color ring
-- Minimal styling consistent with sparse aesthetic
+**Expandable/list row**
+- Background: transparent
+- Text: `#000000`
+- Border: `1px solid #e4e3de` on the bottom edge
+- Radius: `0px`
+- Padding: `16px`
+- Font: `16px / 400 / Inter`
+- Use: `home::[data-omd-capture="1"]`; full-width row observed across the captured public surfaces
 
-### Navigation
-- Transparent nav overlaying the warm hero
-- Logo: Mistral "M" wordmark
-- Links: Dark text (white on dark sections)
-- CTA: Dark solid button or cream surface button
-- Minimal, wide-spaced layout
+### Pricing plans
 
-### Image Treatment
-- Dramatic landscape photography in warm golden tones
-- The winding road through golden hills — a recurring visual motif
-- The Mistral "M" rendered at large scale on golden backgrounds
-- Warm color grading on all photography
-- Full-bleed sections with photography
+**Primary-surface plan shell**
+- Background: `#fbfbf8`
+- Text: `oklch(0.21 0.006 285.885)`
+- Border: `1px solid #e4e3de`
+- Radius: `0px`
+- Font: `16px / 400 / Inter`
+- Use: `pricing::mistral-block-card-plan`; public pricing-plan shell
 
-### Distinctive Components
+**Secondary-surface plan shell**
+- Background: `#f5f4ef`
+- Text: `oklch(0.21 0.006 285.885)`
+- Border: `1px solid #e4e3de`
+- Radius: `0px`
+- Font: `16px / 400 / Inter`
+- Use: `pricing::mistral-block-card-plan`; alternate captured public pricing-plan shell
 
-**Mistral Block Identity**
-- A row of colored blocks forming the gradient: yellow → amber → orange → burnt orange
-- Each block gets progressively more orange/red
-- The visual DNA of the brand — recognizable at any size
+### Segmented navigation shell
 
-**Golden Shadow Cards**
-- Cards elevated with warm amber multi-layered shadows
-- 5 layers of shadow from 16px to 400px offset
-- Creates a "floating in golden light" effect unique to Mistral
+**Pricing navigation container**
+- Background: `#f5f4ef`
+- Text: `#000000`
+- Border: `1px solid #e4e3de`
+- Radius: `6px`
+- Padding: `6px`
+- Font: `16px / 400 / Inter`
+- Use: `pricing::mistral-atom-navigation-tabs`; a container observation, not a child-tab active/inactive claim
 
-**Dark Footer Gradient**
-- Footer transitions from warm amber to dark through a dramatic gradient
-- Creates a "sunset" effect as the page ends
+### Quantity input
+
+**Pricing number input**
+- Background: transparent
+- Text: `oklch(0.21 0.006 285.885)`
+- Border: `1px solid oklch(0.21 0.006 285.885)` on the bottom edge
+- Radius: `0px`
+- Font: `16px / 400 / Inter`
+- Use: `pricing::[data-omd-capture="74"]`; number input in the public pricing surface
+
+### Compact control
+
+**Disabled compact control**
+- Background: `rgba(7, 7, 11, 0.1)`
+- Text: `oklch(0.552 0.016 285.938)`
+- Radius: `6px`
+- Padding: `4px`
+- Font: `16px / 400 / Inter`
+- Use: `pricing::[data-omd-capture="75"]`; disabled DOM control on the public pricing surface
+- Disabled: present in the captured DOM; no interaction transition was recorded
+
+---
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://mistral.ai/ · https://mistral.ai/pricing/ · https://mistral.ai/brand/ · https://mistral.ai/fonts/inter/Inter-VariableFont.ttf · https://mistral.ai/fonts/alt-mistral/ALTMistral-Regular.woff2 · https://mistral.ai/fonts/space-mono/SpaceMono-Regular.ttf
+**Tier 2 sources:** https://getdesign.md/mistral.ai/design-md (independent analysis; its purple, DM Serif, JetBrains Mono, 8px-button, and 12px-card claims are not promoted) · https://styles.refero.design/?q=Mistral (attempted; built-in open returned an internal error and no Refero record was used)
+**Conflicts unresolved:** none
+
+Legacy claims were rolled back where absent from current Tier 1 evidence.
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 2px, 4px, 8px, 10px, 12px, 16px, 20px, 24px, 32px, 40px, 48px, 64px, 80px, 98px, 100px
-- Button padding: 12px or 8px 0px (compact)
-- Section vertical spacing: very generous (80px–100px)
-
-### Grid & Container
-- Max container width: approximately 1280px, centered
-- Hero: full-width with massive typography overlaying warm backgrounds
-- Feature sections: wide-format layouts with dramatic imagery
-- Card grids: 2–3 column layouts
-
-### Whitespace Philosophy
-- **Bold declarations**: Huge headlines surrounded by generous whitespace create billboard-like impact — each statement gets its own breathing space.
-- **Warm void**: Empty space itself feels warm because the backgrounds are tinted ivory/cream rather than pure white.
-- **Photography as space-filler**: Large landscape images serve double duty as content and decorative whitespace.
-
-### Border Radius Scale
-- Near-zero: The dominant radius — sharp, architectural corners on most elements
-- This extreme sharpness contrasts with the warmth of the colors, creating a tension between soft color and hard geometry.
+The supplied evidence recurs at 2px, 4px, 8px, 16px, and 24px. The highest-frequency values are 16px for rows and card/control spacing, 8px for gaps, and 4px for compact labels. This is an observed public-web rhythm, not a released spacing scale or responsive specification. The capture does not establish a sitewide max width, grid, or authenticated-product layout.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page backgrounds, text blocks |
-| Golden Float (Level 1) | Multi-layer warm shadow (5 layers, 12%→0% opacity, amber-tinted) | Feature cards, product showcases, elevated content |
-
-**Shadow Philosophy**: Mistral uses a single but extraordinarily complex shadow — **five cascading layers** of amber-tinted shadow (`rgba(127, 99, 21, ...)`) that build from a close 16px offset to a distant 400px offset. The result is a rich, warm, "golden hour" lighting effect that makes elevated elements look like they're bathed in afternoon sunlight. This is the most distinctive shadow system in any major AI brand.
+The representative pricing plans, rows, tabs, and inputs in this bundle report `box-shadow: none`. No global shadow scale, modal elevation, overlay treatment, or animation layer is claimed.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use the warm color spectrum exclusively: ivory, cream, amber, gold, orange
-- Keep display typography at 82px+ with -2.05px letter-spacing for hero sections
-- Use the Mistral block gradient (yellow → amber → orange) for brand moments
-- Apply warm golden shadows (amber-tinted rgba) for elevated elements
-- Use Mistral Black (#1f1f1f) for text — never pure #000000
-- Keep font weight at 400 throughout — let size and color carry hierarchy
-- Use sharp, architectural corners — near-zero border-radius
-- Apply uppercase on button labels and section markers for European formality
-- Use warm landscape photography with golden color grading
+
+- Use the captured public-web neutrals and one-pixel `#e4e3de` dividers only in the documented public-web scope.
+- Pair ALTMistral, Inter, and Space Mono only when the target has a legitimate right to load those exact families.
+- Preserve selector and surface boundaries when borrowing a row, pricing-plan, tab-shell, or quantity-input treatment.
+- Treat the official gradient logo and colorful model art as brand assets rather than unmeasured UI color tokens.
 
 ### Don't
-- Don't introduce cool colors (blue, green, purple) — the palette is exclusively warm
-- Don't use bold (700+) weight — 400 is the only weight
-- Don't round corners — the sharp geometry is intentional
-- Don't use cool-toned shadows — shadows must carry amber warmth
-- Don't use pure white as a page background — always warm-tinted (#fffaeb minimum)
-- Don't reduce hero text below 48px on desktop — the billboard scale is core
-- Don't use more than 2 font weights — size variation replaces weight variation
-- Don't add gradients outside the warm spectrum — no blue-to-purple, no cool transitions
-- Don't use generic gray for text — even neutrals should be warm-tinted
+
+- Do not restore the earlier orange/golden palette, Arial, all-0px rule, or warm-shadow system without fresh Tier 1 evidence.
+- Do not treat Source Sans 3, documentation chrome, or a system fallback as a Mistral UI family.
+- Do not invent active tabs, hover colors, focus rings, menus, dialogs, errors, breakpoints, or additional price-plan variants.
+- Do not use the captured font URLs as a downstream redistribution licence.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, stacked everything, hero text reduces to ~32px |
-| Tablet | 640–768px | Minor layout adjustments |
-| Small Desktop | 768–1024px | 2-column layouts begin |
-| Desktop | 1024–1280px | Full layout with maximum typography scale |
-
-### Touch Targets
-- Buttons use generous padding (12px minimum)
-- Navigation elements adequately spaced
-- Cards serve as large touch targets
-
-### Collapsing Strategy
-- **Navigation**: Collapses to hamburger on mobile
-- **Hero text**: 82px → 56px → 48px → 32px progressive scaling
-- **Feature sections**: Multi-column → stacked
-- **Photography**: Scales proportionally, may crop on mobile
-- **Block identity**: Scales down proportionally
-
-### Image Behavior
-- Landscape photography scales proportionally
-- Warm color grading maintained at all sizes
-- Block gradient elements resize fluidly
-- No art direction changes — same warm composition at all sizes
+Only the supplied desktop public-surface evidence is in scope. It exposes a horizontally scrollable pricing navigation shell and responsive utility classes in markup, but it does not establish breakpoints, mobile navigation behavior, touch-target policy, reflow rules, or an authenticated-product responsive contract.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Brand Orange: "Mistral Orange (#fa520f)"
-- Page Background: "Warm Ivory (#fffaeb)"
-- Warm Surface: "Cream (#fff0c2)"
-- Primary Text: "Mistral Black (#1f1f1f)"
-- Sunshine Amber: "Sunshine 700 (#ffa110)"
-- Bright Gold: "Bright Yellow (#ffd900)"
-- Text on Dark: "Pure White (#ffffff)"
-
-### Example Component Prompts
-- "Create a hero section on Warm Ivory (#fffaeb) with a massive headline at 82px Arial weight 400, line-height 1.0, letter-spacing -2.05px. Mistral Black (#1f1f1f) text. Add a dark solid CTA button (#1f1f1f bg, white text, 12px padding, sharp corners) and a cream secondary button (#fff0c2 bg)."
-- "Design a feature card on Cream (#fff0c2) with sharp corners (no border-radius). Apply the golden shadow system: rgba(127, 99, 21, 0.12) -8px 16px 39px as the primary layer. Title at 32px weight 400, body at 16px."
-- "Build the Mistral block identity: a row of colored blocks from Bright Yellow (#ffd900) through Sunshine 700 (#ffa110) to Mistral Orange (#fa520f). Sharp corners, no gaps."
-- "Create a dark footer section on Mistral Black (#1f1f1f) with Pure White (#ffffff) text. Footer links at 14px. Add a warm gradient from Sunshine 700 (#ffa110) at the top fading to Mistral Black."
-
-### Iteration Guide
-1. Keep the warm temperature — "shift toward amber" not "shift toward gray"
-2. Use size for hierarchy — 82px → 56px → 48px → 32px → 24px → 16px
-3. Never add border-radius — sharp corners only
-4. Shadows are always warm: "golden shadow with amber tones"
-5. Font weight is always 400 — describe emphasis through size and color
+For a Mistral-like public commercial page, begin with a quiet `#fbfbf8` or `#f5f4ef` surface, black content, thin `#e4e3de` dividers, Inter for repeated reading, and ALTMistral only where it can be legally loaded. Use square list and pricing-plan shells plus the observed 6px segmented container; do not recreate Mistral’s product, documentation, or brand artwork from this limited public-web reference.
 
 ## 10. Voice & Tone
 
-Mistral AI's voice is **European frontier-AI-confident** — measured, research-oriented, never breathless. The brand positions itself as the European alternative to American AI labs (OpenAI, Anthropic), with a focus on open-weights models and enterprise sovereignty. Copy stays restrained even when announcing major model releases.
+Official language is direct, technically ambitious, and oriented toward access and control: Mistral says it exists to put frontier AI in everyone’s hands, while its careers page asks for structured, direct communication that values content over tone. This supports product-led, specific public language; it is not evidence for a comprehensive error-copy or conversational-assistant style guide.
 
-| Context | Tone |
+| Context | First-party direction |
 |---|---|
-| CTA | Verb. "Discover Le Chat", "Discover Vibe", "Contact Sales" |
-| Marketing | Product-named (Le Chat is the consumer product). European register |
-| Documentation | Code-first, model-spec heavy |
-| Error | Specific. Never wrapped in apology |
+| Mission | Frame AI as open, controllable, and capable of solving hard problems. |
+| Enterprise and public-sector work | Describe the concrete stakes: control, ownership, reliability, and tailored systems. |
+| Internal culture | Prefer rigor, directness, ownership, speed, and low-ego collaboration. |
 
 **Voice samples**
-- Product CTAs: *"Discover Le Chat"*, *"Discover Vibe"* <!-- verified: mistral.ai homepage 2026-05 -->
-
-**Forbidden phrases.** "AGI", "superintelligence". Casual emoji.
+- “Putting frontier AI in everyone's hands.” <!-- official about page, 2026-07-13 -->
+- “Mission-critical AI for enterprises and governments.” <!-- official about page, 2026-07-13 -->
+- “Build the future of frontier AI.” <!-- official careers page, 2026-07-13 -->
 
 ## 11. Brand Narrative
 
-Mistral AI was founded **April 2023** in **Paris** by **Arthur Mensch (CEO, former Google DeepMind)**, **Guillaume Lample (former Meta AI)**, and **Timothée Lacroix (former Meta AI)** — the trio first met **as students at École Polytechnique** ([Mistral AI — Wikipedia](https://en.wikipedia.org/wiki/Mistral_AI), [École polytechnique — Mistral AI raised €500M in 2023](https://www.polytechnique.edu/en/news/mistral-ai-french-ai-nugget-co-founded-two-x-alumni-raised-eu500-mlns-2023)). The founding observation: Europe needed a sovereign AI option that didn't depend on American hyperscalers. Funding ladder: **€105M ($117M) seed (June 2023)** with **Lightspeed Venture Partners, Eric Schmidt, Xavier Niel, JCDecaux** → **€385M ($428M) Series A (Dec 10 2023)** with **Andreessen Horowitz, BNP Paribas, Salesforce** → continuing rounds bringing **valuation past $14B** as of 2025 ([Arthur Mensch — Wikipedia](https://en.wikipedia.org/wiki/Arthur_Mensch), [Tracxn — Mistral AI](https://tracxn.com/d/companies/mistralai/__SLZq7rzxLYqqA97jtPwO09jLDeb76RVJVb306OhciWU)). The three founders became **France's first AI billionaires** ([Crain Currency — first AI billionaires France](https://www.craincurrency.com/investing/mistrals-3-founders-timothee-lacroix-arthur-mensch-and-guillaume-lample-become-first-ai), [Bloomberg Law — first AI billionaires](https://news.bloomberglaw.com/private-equity/first-ai-billionaires-emerge-from-french-homegrown-startup)). Quickly became one of Europe's most-funded AI startups, with strong **open-weights model releases (Mistral 7B, Mixtral 8x7B)** alongside enterprise-only frontier models. The 0px-radius aesthetic + warm golden shadows reflect the Parisian design sensibility — sharp corners signal "frontier research", warm shadows signal "European craftsmanship".
+Mistral’s official account traces the company to April 2023, when its co-founders set out to build a European AI company around openness, transparency, cost efficiency, responsibility, and user control. Its present offer extends beyond models to developer tools, applications, and compute, with enterprise and government work positioned around ownership and production reliability. The public brand system is correspondingly more than a logo: the official guidance describes a pixel-cat emblem, controlled gradient and monochrome logo variants, and colorful small-scale model illustrations. Those assets explain the brand’s visual identity, while the token layer above remains limited to the current captured public pages.
 
 ## 12. Principles
 
-1. **0px radius is intentional.** Sharp corners signal frontier research. *UI implication:* never round corners on Mistral chrome.
-2. **Warm golden shadows.** *UI implication:* shadows always warm-toned; never cool-blue.
-3. **Weight 400 throughout.** *UI implication:* emphasis via size + color, not weight.
-4. **European register.** *UI implication:* avoid American startup hype; confident but understated.
-5. **Open-weights ↔ Enterprise tension.** *UI implication:* both audiences served — open-source community + enterprise.
+1. **Put control with the user.** *UI implication:* explain ownership, deployment, and capability boundaries concretely rather than hiding them in generic AI claims.
+2. **Be rigorous and direct.** *UI implication:* favor structured labels, specific actions, and readable information hierarchy over ornamental copy.
+3. **Make complex systems usable.** *UI implication:* keep commercial choices and quantities legible with clear rows, dividers, and restrained controls.
+4. **Keep brand art distinct from interface evidence.** *UI implication:* use supplied gradient logos or illustrations only under official guidance; do not synthesize an orange semantic UI system from artwork.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Mistral user segments (European enterprise architects, ML researchers, sovereignty-conscious infrastructure leads), not individual people.*
+The official material identifies stakeholder groups rather than named user personas; the following are evidence-based groups, not fictional profiles.
 
-**Catherine Dubois, 44, Paris.** CTO at French enterprise. Mistral as the sovereign AI option her board approved.
-
-**Heinz Müller, 38, Berlin.** ML researcher. Uses open-weights Mistral models for fine-tuning experiments.
-
-**Aisha Khan, 32, Dubai.** AI infrastructure lead. Evaluating Mistral vs OpenAI for region-specific deployment.
+- **Enterprise and government teams:** organizations in high-stakes industries that need tailored systems, control, ownership, and production reliability.
+- **Developers and product builders:** people using Mistral models, developer tools, applications, and compute to build or customize AI systems.
+- **Research, product, and engineering collaborators:** internal teams and candidates working under the stated expectations of audacity, rigor, customer centricity, speed, and low-ego ownership.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no API keys)** | "Generate first API key" CTA |
-| **Empty (no projects)** | "Try Le Chat" link |
-| **Loading (model inference)** | Per-token streaming |
-| **Error (model unavailable)** | Specific model name + region |
-| **Error (rate limit)** | Tier limit + upgrade |
-| **Success (generation)** | Result inline + copy/save |
-| **Success (deployment)** | Endpoint visible |
-| **Skeleton (deployments)** | 0px-radius placeholders |
-| **Disabled (insufficient plan)** | Upgrade link |
-| **Loading (long task)** | Persistent progress |
-| **Loading (model loading)** | Initialization status |
+The supplied capture records one disabled compact control at `pricing::[data-omd-capture="75"]`, with `rgba(7, 7, 11, 0.1)` background, `oklch(0.552 0.016 285.938)` text, 6px radius, and 4px padding. It does not supply empty, loading, success, error, validation, toast, dialog, or skeleton states. Those state groups are intentionally omitted rather than inferred.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal |
-
-Standard cubic-bezier; no bounce — the precision register dislikes overshoot. `prefers-reduced-motion: reduce` removes hover transitions.
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 39 — Apple-tier)
-**Tier 1 sources:** mistral.ai home + /products (live DOM via playwright — Primary `#1f1f1f` Mistral Charcoal 0px sharp / 36px / 12px-square / 16px·400; **Secondary canvas-aware `oklab()`**: `oklab(0.999994 / 0.1)` (dark canvas) + `oklab(0.955114 -0.00188443 0.0614298 / 0.5)` Cream (light canvas); Cream `#fff0c2` accent. **`oklab()` color-space canonical** — most modern DS adopter in corpus).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/funding):** Wikipedia (Mistral AI + Arthur Mensch), École polytechnique (X alumni origin), Crain Currency / Bloomberg Law (first AI billionaires France), Tracxn, Crunchbase.
-**Style ref:** `claude` (research-tech precision). **Conflicts unresolved:** none. **Earlier addition:** canvas-aware `oklab()` Secondary variants + Cream `#fff0c2` accent + oklab() canonical convention missed by prior pass.
+No computed transition duration, easing token, motion rule, or reduced-motion behavior is promoted from this evidence. Class names that include transition utilities are not a measured motion specification.

@@ -9,239 +9,316 @@ primary_color: "#3182f6"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=tossinvest.com&sz=256"
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: public-wts, kind: public-web-trading, url: "https://www.tossinvest.com/?focusedProductCode=A000660", inspected: "2026-07-13" }
+    - { id: corporate-info, kind: corporate-marketing, url: "https://home.tossinvest.com/en/corporate-info", inspected: "2026-07-13" }
+    - { id: investment-marketing, kind: product-marketing, url: "https://home.tossinvest.com/en/investment-products", inspected: "2026-07-13" }
+  sources:
+    - { id: wts-live, kind: product-surface, url: "https://www.tossinvest.com/?focusedProductCode=A000660", captured: "2026-07-13" }
+    - { id: corporate-live, kind: official-doc, url: "https://home.tossinvest.com/en/corporate-info", captured: "2026-07-13" }
+    - { id: investment-live, kind: official-doc, url: "https://home.tossinvest.com/en/investment-products", captured: "2026-07-13" }
+    - { id: tps-design, kind: brand-asset, url: "https://toss.im/simplicity-21/sessions/3-3", captured: "2026-07-13" }
+    - { id: tossface-repo, kind: brand-asset, url: "https://github.com/toss/tossface", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &wts { surface_id: public-wts, source_id: wts-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.canvas": *wts
+    "tokens.colors.foreground": *wts
+    "tokens.colors.body": *wts
+    "tokens.colors.on-primary": *wts
+    "tokens.colors.dialog-canvas": *wts
+    "tokens.typography.family.sans": &font { surface_id: public-wts, source_id: wts-live, method: computed-style-and-fontfaceset-source, captured: "2026-07-13" }
+    "tokens.typography.compact.size": *wts
+    "tokens.typography.compact.weight": *wts
+    "tokens.typography.compact.lineHeight": *wts
+    "tokens.typography.compact.use": *wts
+    "tokens.typography.body.size": *wts
+    "tokens.typography.body.weight": *wts
+    "tokens.typography.body.lineHeight": *wts
+    "tokens.typography.body.use": *wts
+    "tokens.typography.marketing-heading.size": &marketing { surface_id: investment-marketing, source_id: investment-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.marketing-heading.weight": *marketing
+    "tokens.typography.marketing-heading.lineHeight": *marketing
+    "tokens.typography.marketing-heading.use": *marketing
+    "tokens.spacing.xs": *wts
+    "tokens.spacing.sm": *wts
+    "tokens.spacing.md": *wts
+    "tokens.spacing.lg": *marketing
+    "tokens.spacing.xl": *wts
+    "tokens.rounded.compact-control": *wts
+    "tokens.rounded.primary": *wts
+    "tokens.rounded.menu": *wts
+    "tokens.rounded.dialog": *wts
+    "tokens.rounded.marketing-pill": *marketing
+    "tokens.shadow.menu": *wts
+    "tokens.shadow.dialog": *wts
+    "tokens.components.wts-primary-entry.type": *wts
+    "tokens.components.wts-primary-entry.bg": *wts
+    "tokens.components.wts-primary-entry.fg": *wts
+    "tokens.components.wts-primary-entry.radius": *wts
+    "tokens.components.wts-primary-entry.padding": *wts
+    "tokens.components.wts-primary-entry.height": *wts
+    "tokens.components.wts-primary-entry.font": *wts
+    "tokens.components.wts-primary-entry.states": *wts
+    "tokens.components.wts-primary-entry.use": *wts
+    "tokens.components.investment-primary.type": *marketing
+    "tokens.components.investment-primary.bg": *marketing
+    "tokens.components.investment-primary.fg": *marketing
+    "tokens.components.investment-primary.radius": *marketing
+    "tokens.components.investment-primary.padding": *marketing
+    "tokens.components.investment-primary.height": *marketing
+    "tokens.components.investment-primary.font": *marketing
+    "tokens.components.investment-primary.states": *marketing
+    "tokens.components.investment-primary.use": *marketing
+    "tokens.components.wts-selection-dialog.type": *wts
+    "tokens.components.wts-selection-dialog.bg": *wts
+    "tokens.components.wts-selection-dialog.fg": *wts
+    "tokens.components.wts-selection-dialog.radius": *wts
+    "tokens.components.wts-selection-dialog.size": *wts
+    "tokens.components.wts-selection-dialog.font": *wts
+    "tokens.components.wts-selection-dialog.states": *wts
+    "tokens.components.wts-selection-dialog.use": *wts
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Only the supplied public WTS and corporate/marketing capture is canonical here. Authenticated or native trading UI, documentation chrome, and declared-only fonts are separate or unresolved evidence domains."
   colors:
     primary: "#3182f6"
-    primary-hover: "#2562b9"
-    primary-pressed: "#29518e"
-    brand-text: "#4391ff"
-    positive: "#dc2e47"
-    positive-hover: "#ad2136"
-    positive-pressed: "#8d222f"
-    positive-text: "#f5445a"
-    negative: "#3182f6"
-    negative-text: "#4391ff"
-    canvas: "#101013"
-    overlay: "#202025"
+    canvas: "#ffffff"
+    foreground: "#1a1f29"
+    body: "#4e5968"
     on-primary: "#ffffff"
+    dialog-canvas: "#fbfcfd"
   typography:
-    family: { sans: "Toss Product Sans", mono: "Toss Product Sans" }
-    section-h2:  { size: 24, weight: 700, use: "Section headers" }
-    sub-h3:      { size: 19, weight: 700, use: "Sub-section headers" }
-    nav:         { size: 15, weight: 500, use: "Global nav links" }
-    body:        { size: 16, weight: 400, use: "Body and button text" }
-    input:       { size: 15, weight: 400, use: "Form field text" }
-    memo-chip:   { size: 12, weight: 600, use: "Contextual pill action" }
-    on-cta:      { size: 16, weight: 400, use: "White on tinted-fill button" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
-  rounded: { sm: 4, md: 8, lg: 16, full: 9999 }
+    family: { sans: "Toss Product Sans" }
+    compact: { size: 13, weight: 600, lineHeight: "20px", use: "Public WTS compact menu-trigger text" }
+    body: { size: 16, weight: 400, lineHeight: "23.2px", use: "Public WTS body, tab, menu, and dialog copy" }
+    marketing-heading: { size: 18, weight: 700, lineHeight: "28.8px", use: "Investment-product marketing H1" }
+  spacing: { xs: 4, sm: 8, md: 12, lg: 14, xl: 16 }
+  rounded: { compact-control: 7, primary: 8, menu: 12, dialog: 16, marketing-pill: 100 }
   shadow:
-    none: "none"
+    menu: "0 16px 24px -2px rgba(0,0,0,0.06), 0 8px 56px rgba(0,0,0,0.1)"
+    dialog: "0 12px 28px -4px rgba(0,0,0,0.12), 0 8px 56px -4px rgba(0,0,0,0.1)"
   components_harvested: true
   components:
-    button-brand: { type: button, bg: "#3182f6", fg: "#ffffff", use: "Primary CTA brand fill" }
-    badge-positive: { type: badge, fg: "#f5445a", font: "12/600", use: "Up-tick / 매수 indicator (KR red-up)" }
-    badge-negative: { type: badge, fg: "#4391ff", font: "12/600", use: "Down-tick / 매도 indicator (KR blue-down)" }
-    input-field: { type: input, font: "15/400", use: "Form field on dark surface" }
+    wts-primary-entry: { type: button, bg: "#3182f6", fg: "#ffffff", radius: "8px", padding: "6px 12px", height: "32px", font: "14px / 600 / 16px", states: "default, focus, and pressed observed; colors and geometry remained the same in the retained samples", use: "Public WTS compact primary link-action" }
+    investment-primary: { type: button, bg: "#3182f6", fg: "#ffffff", radius: "100px", padding: "11px 14px", height: "40px", font: "15px / 600 / 18px", states: "default, focus, hover, and pressed observed; no distinct color change retained", use: "Investment-products marketing primary action" }
+    wts-selection-dialog: { type: dialog, bg: "#fbfcfd", fg: "#4e5968", radius: "16px", size: "640px x 600px", font: "16px / 400 / 23.2px", states: "dialog-open observed", use: "Public WTS selection dialog container" }
 ---
 
 # Design System Inspiration of Toss Securities (토스증권)
 
 ## 1. Visual Theme & Atmosphere
 
-Toss Securities is the brokerage arm inside Korea's fintech super-app, and it inherits its parent's typographic and chromatic DNA while pulling the entire surface into a deep, calm dark mode by default. The page opens not on white but on a near-black canvas — page background `rgb(23, 23, 28)` over a deeper surface token `#101013` — where money information feels less like banking-product chrome and more like an instrument panel: legible, quiet, technically dense, and resolutely free of decoration. Where retail-banking Toss optimises for "anyone can use this," Toss Securities optimises for "someone watching a chart wants this exact answer right now," and the visual system reflects that pivot without changing brand vocabulary.
+Toss Securities positions itself as an investment platform for both beginners and experienced investors: the company says its mission is to empower everyone with investing, combining access to global markets, investment information, social participation, and expanding channels such as WTS. Its public web language turns that broad promise into a familiar Toss hierarchy—white canvas, dense dark-neutral reading text, a precise blue action color, and a single Korean-first product face—rather than turning the marketing site into a simulation of a trading terminal. The result is an inviting, information-led public entry point for a regulated investment product.
 
-The custom **Toss Product Sans** typeface carries over wholesale from `toss.im` — same Korean-Latin optical balancing, same tabular-numeral support that makes price ticks, volume figures, and percent changes line up cleanly across rows. Body sits at 16px / 400, section headings at 24px / 700, sub-section headings at 18.72px / 700, and global navigation uses an intermediate 15px / 500 weight that quietly separates wayfinding from reading. There is no display-only accent typeface; restraint is the rule.
+The supplied 2026-07-13 capture establishes three separate public domains. `www.tossinvest.com` is a public WTS surface with controls, tabs, a menu, and a dialog; `home.tossinvest.com/en/corporate-info` is corporate context; and `home.tossinvest.com/en/investment-products` is a marketing explanation of stocks, ETFs, options, and bonds. They share `#3182f6`, `#ffffff`, `#1a1f29`, `#4e5968`, and Toss Product Sans, but their component geometry is not automatically interchangeable. The compact 32px WTS action and the 40px marketing pill are recorded separately.
 
-What makes Toss Securities visually unique inside the Toss family is the **semantic colour inversion**: the parent product treats blue as "go / primary action," but a securities surface must carry the Korean-finance locale convention where **red means a price went up (positive)** and **blue means a price went down (negative)**. The live token tree honours this — `--tw-semantic-color-fill-positive-default: #dc2e47` (red), `--tw-semantic-color-fill-negative-default: #3182f6` (blue) — and the same Toss Blue `#3182f6` is reused as the brand CTA fill `--tw-semantic-color-fill-brand-default`. Context resolves the ambiguity: a blue rectangle next to a price tick means "this stock fell"; a blue rectangle as a button means "execute." Designers porting this language outside KR/JP/TW **must invert** the positive/negative hue assignments.
+No authenticated account, native app, order-entry flow, or documentation UI was captured in this packet. The former dark-canvas, red/blue market-semantic, token-tree, and two-radius claims are therefore removed rather than carried forward from a legacy snapshot.
 
 **Key Characteristics:**
-- Dark-mode-first surface (`#101013` deepest, `rgb(23,23,28)` body, `#202025` overlay)
-- Toss Product Sans inherited from parent brand — tabular numerals for price data
-- KR-finance locale: `positive` = red `#dc2e47`, `negative` = blue `#3182f6` (semantic tokens, not just colour values)
-- Toss Blue `#3182f6` carries dual duty as brand CTA AND down-tick — context-disambiguated
-- Three-namespace token system on `:root`: `--tw-semantic-*` (role) / `--tw-adaptive-*` (theme-aware primitive) / `--wts-adaptive-*` (Web-Toss-Securities scale)
-- Zero box-shadow on production chrome — depth via layered surface alpha + translucent 1px borders (`rgba(214,224,239,0.09)`)
-- Two-tier radius family: `8px` for cards/inputs/buttons, `32px` for contextual chips/pills
-- 416 CSS custom properties live on `:root` — a real internal DS, simply not published
+
+- Light public-web canvas: `#ffffff`, `#1a1f29`, and `#4e5968`
+- Shared Toss blue `#3182f6` for observed primary actions and links
+- Loaded Toss Product Sans on the public WTS and investment-marketing surfaces
+- Compact WTS controls at 7–8px corners; expanded menu and dialog containers at 12px and 16px
+- A 100px-radius marketing pill is a marketing-specific component, not a universal product radius
+- Public WTS menu and dialog were interaction-expanded; focus, hover, and pressed states are preserved only where observed
 
 ## 2. Color Palette & Roles
 
-### Brand (CTA, links, active)
-- **Toss Blue** (`#3182f6`): `--tw-semantic-color-fill-brand-default`. Primary CTA fill, brand icon, brand link.
-- **Toss Blue Hover** (`#2562b9`): `--tw-semantic-color-fill-brand-defaultHover`.
-- **Toss Blue Pressed** (`#29518e`): `--tw-semantic-color-fill-brand-defaultPressed`.
-- **Brand Text** (`#4391ff`): `--tw-semantic-color-txt-brand`. Brand-coloured inline text.
-- **Brand Text Hover** (`#74b1f8`): `--tw-semantic-color-txt-brandHover`.
+- **Primary action** (`#3182f6`): observed on the public WTS compact primary action and the investment-products marketing CTA.
+- **Canvas** (`#ffffff`): observed public WTS and marketing page canvas.
+- **Foreground** (`#1a1f29`): observed compact WTS foreground.
+- **Supporting text** (`#4e5968`): observed WTS menu, dialog, and cross-surface supporting text.
+- **On primary** (`#ffffff`): observed text on `#3182f6` actions.
+- **Dialog canvas** (`#fbfcfd`): observed public WTS dialog container.
 
-### Semantic — KR finance convention (CRITICAL)
-- **Positive / Up / 매수** (`#dc2e47`): `--tw-semantic-color-fill-positive-default`. RED. Used for rising prices, gain indicators, buy confirms.
-- **Positive Hover** (`#ad2136`): `--tw-semantic-color-fill-positive-defaultHover`.
-- **Positive Pressed** (`#8d222f`): `--tw-semantic-color-fill-positive-defaultPressed`.
-- **Positive Text** (`#f5445a`): `--tw-semantic-color-txt-positive`.
-- **Positive Text Hover** (`#ff7187`): `--tw-semantic-color-txt-positiveHover`.
-- **Positive Weak** (`rgba(219,81,87,0.2)`): `--tw-semantic-color-fill-positive-weak`. Tinted background for up-tick rows.
-- **Negative / Down / 매도** (`#3182f6`): `--tw-semantic-color-fill-negative-default`. BLUE. Same hex as Brand — context disambiguates.
-- **Negative Text** (`#4391ff`): `--tw-semantic-color-txt-negative`.
-- **Negative Weak** (`rgba(67,122,223,0.2)`): `--tw-semantic-color-fill-negative-weak`.
-
-> **Locale rule**: This is non-negotiable for KR/JP/TW finance UI. Porting to US/EU markets requires swapping all `positive-*` tokens to green and all `negative-*` tokens to red. Toss Securities does not ship that variant publicly; it must be authored downstream.
-
-### Surface (dark default)
-- **Surface 100** (`#101013`): `--tw-semantic-color-bg-surface100`. Deepest surface — page floor.
-- **Body composite** (`rgb(23, 23, 28)`): rendered body background as observed via getComputedStyle.
-- **Overlay 300** (`#202025`): `--tw-semantic-color-bg-overlay300`. Modal/sheet overlay base.
-- **Panel border outer** (`rgba(214,224,239,0.09)`): `--tw-semantic-color-component-panel-borderOuter`. Translucent dividers — depth without shadow.
-
-### Text (dark surface)
-- **Primary** (`rgba(242,246,255,0.9)`): `--tw-semantic-color-txt-neutral-primary`. Default reading text.
-- **Primary Hover** (`rgba(255,255,255,0.96)`).
-- **Primary Pressed** (`#FFFFFF`).
-- **Secondary observed** (`rgba(253,253,254,0.89)`): inline secondary text — slightly warmer alpha.
-- **Tertiary observed** (`rgba(242,242,255,0.47)`): disabled / muted captions.
-- **Body default rendered** (`rgb(195, 195, 198)`): composited body text — neutral cool grey.
-- **Static white** (`#FFFFFF`): `--tw-semantic-color-txt-staticWhite`. On-CTA text.
-
-### Icon
-- **Icon brand** (`#3182f6`).
-- **Icon neutral primary** (`rgba(217,223,235,0.8)`).
-- **Icon positive** (`#f5445a`) — up-tick chevron.
-- **Icon negative** (`#4391ff`) — down-tick chevron.
+The packet does not establish a public positive/negative market-color system, dark trading canvas, error color, success color, or hover palette. Those values are intentionally absent rather than inferred from the Toss parent brand or a previous snapshot.
 
 ## 3. Typography Rules
 
-### Font Family
+### Font evidence boundary
 
-**Primary**: `"Toss Product Sans", Tossface, -apple-system, system-ui, "Bazier Square", "Noto Sans KR", "Segoe UI", "Apple SD Gothic Neo", sans-serif`
+| Evidence class | Resolution |
+|---|---|
+| Official product-use | Toss’s first-party design conference describes Toss Product Sans as a typeface developed for financial numbers and symbols across mobile, desktop, and offline contexts. |
+| Live computed surface-use | `Toss Product Sans` is the computed first family on the supplied public WTS and investment-marketing capture: loaded/high, 419 visible uses, backed by matching FontFaceSet records and dated `static.toss.im/tps/20260223/` sources. It is the canonical public-web UI family. |
+| Official distributed brand asset | Tossface is a separate Toss-designed emoji font distributed through the official `toss/tossface` repository in TTF, OTF, WOFF, and WOFF2 formats. |
+| Declared-only | Tossface has `@font-face` sources in this capture but zero visible first-family uses. It remains contextual asset information, not `tokens.typography.family.sans`. |
+| System / unresolved | The computed fallback stack includes platform and Korean system faces. No fallback is promoted as a Toss Securities type token, and native-app typography was not inspected. |
 
-Tossface is Toss's open-source emoji font (3500+ glyphs, parent-brand asset). Toss Product Sans is loaded via parent-domain CDN — Toss Securities does not appear to serve its own webfont copy on this surface.
+### Observed hierarchy
 
-### Hierarchy (observed live)
+| Role | Size | Weight | Line height | Surface |
+|---|---:|---:|---:|---|
+| Compact menu trigger | 13px | 600 | 20px | Public WTS |
+| Body, tab, menu, dialog | 16px | 400 | 23.2px | Public WTS |
+| Investment-products H1 | 18px | 700 | 28.8px | Marketing |
+| Marketing primary action | 15px | 600 | 18px | Marketing |
 
-| Role | Size | Weight | Notes |
-|------|------|--------|-------|
-| Section H2 | 24px | 700 | "지수 목록" / "실시간 차트" |
-| Sub-section H3 | 18.72px | 700 | "필터" / "종목 정보" |
-| Nav link | 15px | 500 | Global nav |
-| Body / button text | 16px | 400 | Body default |
-| Input text | 15px | 400 | Form fields |
-| Memo chip | 12px | 600 | Contextual pill action |
-| On-CTA text | 16px | 400 | White on tinted-fill button |
+## 4. Components
 
-### Numeric & data treatment
-Tabular numerals inherit from Toss Product Sans variable-width / tabular-mode toggle. Price ticks, order-book columns, and percent changes use the tabular mode so digits align by column without `font-variant-numeric` patching at each surface.
+### Public WTS compact primary entry
 
-## 4. Iconography & Imagery
+**Default / focus / pressed**
+- Background: `#3182f6`
+- Text: `#ffffff`
+- Radius: `8px`
+- Padding: `6px 12px`
+- Height: `32px`
+- Font: `14px / 600 / 16px Toss Product Sans`
+- Focus: observed; retained color and geometry remained unchanged
+- Pressed: observed; retained color and geometry remained unchanged
+- Use: public WTS compact link-action at `home::[data-omd-capture="6"]`
 
-- Icon weight: medium-stroke, single-tone (`--tw-semantic-color-icon-*`).
-- Brand icon set inherits from parent Toss icon system.
-- No decorative illustration on data surfaces — the price chart IS the imagery.
-- Marketing surfaces (homepage feed) use product screenshots of the order panel itself, recursively.
+### Investment-products marketing primary
+
+**Default / focus / hover / pressed**
+- Background: `#3182f6`
+- Text: `#ffffff`
+- Radius: `100px`
+- Padding: `11px 14px`
+- Height: `40px`
+- Font: `15px / 600 / 18px Toss Product Sans`
+- Focus: observed; no distinct color change retained
+- Hover: observed; no distinct color change retained
+- Pressed: observed; no distinct color change retained
+- Use: investment-products marketing action at `surface-3::[data-omd-capture="11"]`
+
+### Public WTS expanded menu
+
+**Menu-open**
+- Background: `#ffffff`
+- Text: `#4e5968`
+- Radius: `12px`
+- Size: `160px x 204px`
+- Shadow: `0 16px 24px -2px rgba(0,0,0,0.06), 0 8px 56px rgba(0,0,0,0.1)`
+- Font: `16px / 400 / 23.2px Toss Product Sans`
+- States: expanded and menu-open observed
+- Use: public WTS menu container at `home::[data-omd-interaction-capture="menu-0-0"]`
+
+### Public WTS selection dialog
+
+**Dialog-open**
+- Background: `#fbfcfd`
+- Text: `#4e5968`
+- Radius: `16px`
+- Size: `640px x 600px`
+- Shadow: `0 12px 28px -4px rgba(0,0,0,0.12), 0 8px 56px -4px rgba(0,0,0,0.1)`
+- Font: `16px / 400 / 23.2px Toss Product Sans`
+- States: dialog-open observed
+- Use: public WTS dialog container at `home::[data-omd-interaction-capture="dialog-1-0"]`
+
+Only selectors, surfaces, and states present in the supplied raw collector evidence are described here. The capture did not establish native-order, card, toast, error, disabled, or checkout variants.
+
+---
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.tossinvest.com/?focusedProductCode=A000660 · https://home.tossinvest.com/en/corporate-info · https://home.tossinvest.com/en/investment-products · https://toss.im/simplicity-21/sessions/3-3 · https://github.com/toss/tossface
+**Tier 2 sources:** https://getdesign.md/toss-securities (direct detail attempt; no importable record returned) · https://styles.refero.design/?q=Toss%20Securities (query attempt; no importable record returned)
+**Conflicts unresolved:** none
 
 ## 5. Layout & Spacing
 
-- **Two-pane stock detail**: chart + price panel (left) / order panel (right rail).
-- **Card radius**: `8px` (cards, inputs, default buttons).
-- **Chip radius**: `32px` (pill controls — memo, filter chips).
-- **Icon button radius**: `6–8px` with compact padding (`3px 6px` to `6px 8px`).
-- **No box-shadow** on any production chrome element sampled.
-- Surface depth = base `#101013` → body `rgb(23,23,28)` composite → overlay `#202025` for sheets.
-- Translucent `rgba(214,224,239,0.09)` 1px borders for panel separation.
+The observed public WTS uses compact 4px, 8px, 12px, and 16px spacing clusters; the investment-marketing CTA contributes a 14px horizontal inset. Treat this as a small observed set, not as a complete spacing scale. WTS has square-edged tabs, 7–8px compact controls, a 12px menu, and a 16px dialog; the marketing pill’s 100px radius belongs only to that action.
 
-## 6. Components
+## 6. Iconography & Imagery
 
-### Buttons
-- **Ghost (default observed)**: bg `rgba(217,217,255,0.11)` / text `#fff` or `rgba(253,253,254,0.89)` / radius `8px` / 16px text / 400 weight.
-- **Brand CTA (inferred from token tree, not sampled directly on this surface)**: bg `#3182f6` / text `#fff` / radius `8px`.
-- **Memo chip**: bg `rgba(217,217,255,0.11)` / radius `32px` / 12px / 600 / padding `0 8px`.
-- **Icon button**: radius `6–8px` / padding `3×6` to `6×8`.
+The public WTS capture shows compact control and text-led UI; the expanded menu and dialog establish interaction containers but not a reusable icon family. The investment-products page uses product imagery and explanatory marketing content. No proprietary chart, illustration, or native-app icon system is promoted from this evidence.
 
-### Order panel (stock detail)
-- Panels: 차트 · 호가 · 시세 · 일반주문 · 개인·외국인·기관 · 체결가.
-- Order types: 일반주문 / 정규장 주문 예약.
+## 7. Usage Guidelines
 
-### Navigation
-- Global: 홈 · 피드 · 주식 골라보기 · 내 계좌 · 내 투자.
-- Secondary: 관심 · 최근 본 · 실시간.
-- Auth: 로그인.
+### Do
 
-### Price tick (semantic)
-- Up → text `#f5445a` (icon `#f5445a`), weak tint `rgba(219,81,87,0.2)`.
-- Down → text `#4391ff` (icon `#4391ff`), weak tint `rgba(67,122,223,0.2)`.
+- Keep public WTS compact actions distinct from the 40px marketing pill.
+- Use `#3182f6` with `#ffffff` for the observed primary action pairing.
+- Preserve the recorded WTS container progression: 12px menu, 16px dialog.
+- Use Toss Product Sans where the verified public web family is available; label unavailable specimens rather than substituting a system face as if it were Toss Product Sans.
+- Limit interaction claims to the observed WTS focus, pressed, expanded/menu-open, and dialog-open states.
 
-## 7. Motion & Interaction
+### Don't
 
-State tokens captured for all interactive roles:
-
-- **Brand**: default `#3182f6` → hover `#2562b9` → pressed `#29518e`.
-- **Positive**: default `#dc2e47` → hover `#ad2136` → pressed `#8d222f`.
-- **Negative**: default `#3182f6` → hover `#2562b9` → pressed `#29518e`.
-- **Ghost-fill family**: `*-ghostHover` / `*-ghostPressed` / `*-weakHover` / `*-weakPressed` exist for every role — fine-grained state language.
-
-Motion timing tokens not captured this pass (no live transition introspection performed) — flagged for UPDATE.
+- Reintroduce an unverified dark trading canvas or red/blue market semantics from the legacy snapshot.
+- Treat the corporate or investment-marketing page as proof of authenticated or native trading UI.
+- Generalize the 100px marketing pill to WTS controls.
+- Promote Tossface to the UI family merely because it is declared in the stack.
+- Invent disabled, error, loading, toast, card, or checkout variants not seen in the capture.
 
 ## 8. Accessibility & Density
 
-- Dark surface + `rgba(242,246,255,0.9)` primary text ≈ AA-passing contrast on `#101013` (~14:1).
-- Body composited grey `rgb(195,195,198)` on `rgb(23,23,28)` ≈ 11:1 — comfortable AA.
-- **Locale risk**: KR red/blue convention is opposite to most US/EU expectations. Cross-locale users may misread direction.
-- High data density tolerates 16px body baseline because tabular numerals stabilise column scanning.
+The public WTS samples use `#1a1f29` and `#4e5968` on light surfaces, while primary actions use `#ffffff` on `#3182f6`. The packet establishes visible selected and unselected tab/radio controls plus menu and dialog expansion, but it does not provide a full keyboard, screen-reader, contrast, disabled, error, or responsive audit. Retain the observed state distinction and perform a product-specific accessibility audit before extending it to account or order entry.
 
-## 9. Voice (illustrative, fresh derivations — not verbatim Toss copy)
+## 9. Voice
 
-- "Watch the tick. Move when it matters."
-- "차트는 정직해요. 결정은 빠르게."
-- "Real prices. Real depth. No theatre."
+The official corporate language is direct, inclusive, and opportunity-oriented: it frames the service around better investment experiences, access to global markets, and technology that makes investing easier. The samples below are original tone guidance, not verbatim Toss Securities copy.
 
-§10 voice samples above are tone-shape paraphrases — derived from observing the calm/declarative product voice on the live surface, not lifted from Toss Securities marketing copy. Brand owns its own taglines; we do not reproduce them.
+- “See the choice clearly, then decide.”
+- “투자를 더 쉽게, 다음 기회를 더 가깝게.”
+- “One account, more ways to invest.”
 
-## 10. Personas (FILL IN — surface-inferred placeholders)
+## 10. Voice & Tone
 
-- **A. Active retail trader, KR 20s–30s**: opens app multiple times intraday, watches a small watchlist, executes via mobile. Wants speed and signal. `[FILL IN with sourced research]`
-- **B. Long-horizon individual investor, KR 30s–50s**: monthly rebalance, ETF + blue-chip focus, uses 내 계좌 dashboard primarily. `[FILL IN]`
-- **C. First-time investor onboarding from Toss core**: came in via Toss super-app, expects continuity of brand and trust. `[FILL IN]`
+| Attribute | Do | Don't |
+|---|---|---|
+| Inclusive | Explain options for a broad investor range. | Assume expertise or exclude beginners. |
+| Direct | Name the product, market, and next action plainly. | Make a regulated choice sound effortless or guaranteed. |
+| Useful | Pair a feature with the decision it supports. | Use market drama as decoration. |
 
-## 11. Anti-patterns (don't steal)
+The examples in §9 are illustrative paraphrases only; no tagline or customer promise is reproduced as official copy.
 
-- **Do not** copy positive=red / negative=blue into non-KR/JP/TW locales without inversion.
-- **Do not** assume Toss Blue means "brand CTA" everywhere — on Securities it also means "down-tick."
-- **Do not** introduce box-shadow as elevation language; this system has chosen translucent borders + layered surface alphas.
-- **Do not** introduce a third radius tier; the system is deliberately two-tier (`8px` / `32px`).
-- **Do not** introduce a display-only typeface; restraint is the point.
+## 11. Brand Narrative
 
-## 12. Reference URLs
+Toss Securities is a Korean securities company building an investment platform around the mission “To Empower Everyone with Investing.” Its official company page describes an aim to offer better investing experiences and access to opportunities in global capital markets.
 
-- Production app: https://tossinvest.com (homepage)
-- Production stock surface: https://www.tossinvest.com/stocks/A005930/order (Samsung Electronics order panel)
-- Parent brand DS context: https://toss.im (typography + base colour origin)
-- Tossface (open-source emoji): https://github.com/toss/tossface
+The current public company narrative expands that scope from stock trading toward an inclusive platform for beginners and experts, with investment content, a social community, broader investment products, and WTS access. Its investment-products page makes the portfolio breadth concrete through domestic and overseas stocks, ETFs, U.S. stock options, and overseas bonds.
 
-## 13. Verification footer
+The company page also records current international expansion milestones, including a U.S. broker-dealer license in 2025. This is company context, not a claim about any uninspected product interface.
 
-- **Tier 1 official DS**: ✗ NEGATIVE — no `design.tossinvest.com`, no `tossinvest.com/design`, no `tossinvest.com/brand` portal; GitHub org `@toss` (45+ repos, verified for `toss.im`) has zero Toss-Securities-specific design-system / Storybook / token repository; no `toss-im` or `toss-securities` GitHub org exists. Production code exposes 416 `:root` CSS custom properties across three namespaces (`--tw-semantic-*`, `--tw-adaptive-*`, `--wts-adaptive-*`) — the closest public artifact, captured directly.
-- **Tier 2 indexes**: not consulted (consistent with KR fintech systemic gap logged in `2026-05-13-kr10.md` and `2026-05-14-kr10.md` audits).
-- **Tier 3 live capture**: ✓ CDP `:9222` getComputedStyle on **two surfaces** — homepage (601 DOM samples, 416 `:root` vars) + stock order surface (`A005930/order`). 12 raw_samples retained in `.live-inspect-proof.json` (≥5 floor).
-- **IP guardrails**: brand assets reference-only; no verbatim Toss Securities taglines/copy reproduced; voice samples in §9 are fresh derivations; logo not redistributed; persona block in §10 explicitly marked `[FILL IN]` (no fabricated quotes).
-- **Flagged for UPDATE**: (a) motion timing tokens not captured this pass; (b) light-mode variant — `--tw-adaptive-*` namespace implies a theme switch but only dark default observed live; (c) personas pending public-research sourcing; (d) primary CTA visual not directly sampled (token tree confirms `#3182f6` fill but live surface served ghost-button variants on inspected paths).
+## 12. Principles
 
-## 14. Do's and Don'ts
+1. **Opportunity should be broadly reachable.** The stated mission is to empower everyone with investing.
+   *UI implication:* explain product choices and next actions without presuming expert knowledge.
+2. **Global-market access should feel connected.** The company describes global products and WTS as access channels.
+   *UI implication:* make market, product, and account context explicit rather than relying on implicit navigation.
+3. **Technology should make investing easier.** The official narrative connects technology and AI with better decisions.
+   *UI implication:* present information as decision support, not as a promise of outcomes.
 
-### Do
-- Build dark-mode-first, layering surfaces from deepest #101013 to body rgb(23,23,28) to overlay #202025 for sheets
-- Encode the KR-finance locale by using red #dc2e47 for positive/up ticks and blue #3182f6 for negative/down ticks via the positive/negative semantic tokens
-- Create depth with translucent rgba(214,224,239,0.09) 1px borders and layered surface alpha instead of elevation
-- Keep the two-tier radius scale, using 8px for cards, inputs, and buttons and 32px for pill controls like memo and filter chips
-- Set type from the observed hierarchy: 24px/700 section H2, 18.72px/700 sub-section H3, 15px/500 nav links, and 16px/400 body
-- Use Toss Product Sans tabular numerals so price ticks, order-book columns, and percent changes align by column
+## 13. Personas
 
-### Don't
-- Copy positive=red / negative=blue into non-KR/JP/TW locales without inverting positive-* to green and negative-* to red
-- Assume Toss Blue #3182f6 always means brand CTA, since on this surface it is also the down-tick fill and only context disambiguates
-- Introduce box-shadow as elevation language; this system deliberately uses translucent borders plus layered surface alphas
-- Add a third radius tier beyond the deliberate two-tier 8px / 32px scale
-- Introduce a display-only accent typeface; restraint is the rule and there is no decorative accent face
-- Decorate data surfaces with illustration; the price chart itself is the imagery
+*These are official audience-scope archetypes, not user-research findings or synthetic satisfaction scores.*
+
+- **Beginning investor:** the company explicitly names beginners among the people its inclusive platform should serve. Use plain explanations and visible product context.
+- **Experienced investor:** the same platform is intended to include experts. Keep high-information paths available without representing unobserved native or authenticated UI as canonical.
+- **Cross-market investor:** the official product range includes domestic and overseas investments. Make product and market boundaries explicit.
+
+## 14. States
+
+| State | Evidence boundary |
+|---|---|
+| Focus | Public WTS compact primary and marketing primary focus samples were captured; retained colors and geometry did not change. |
+| Hover | Public WTS tabs and marketing primary were captured in hover; only the retained computed values are documented. |
+| Pressed | Public WTS compact primary, tabs, and marketing primary were captured pressed; no new palette is inferred. |
+| Expanded / menu-open | One public WTS menu interaction was expanded and recorded. |
+| Dialog-open | One public WTS dialog interaction was opened and recorded. |
+| Selected / unchecked | Public WTS tab and radio-like controls exposed selected and unchecked states. |
+| Disabled | Not observed; no disabled token or variant is claimed. |
+| Error | Not observed; no error token or variant is claimed. |
+| Loading / skeleton | Not observed; no loading or skeleton token is claimed. |
+| Empty / success | Not observed; no empty or success treatment is claimed. |
+
+## 15. Motion & Easing
+
+No duration, easing, or transition token was measured in the supplied evidence. The captured hover, focus, pressed, menu, and dialog snapshots establish state presence only; they do not authorize a motion scale. Keep any future motion specification separate until first-party computed transition evidence is available.
+
+## 16. Reference URLs
+
+- Public WTS surface: https://www.tossinvest.com/?focusedProductCode=A000660
+- Corporate context: https://home.tossinvest.com/en/corporate-info
+- Investment-products marketing: https://home.tossinvest.com/en/investment-products
+- Toss Product Sans context: https://toss.im/simplicity-21/sessions/3-3
+- Tossface official repository: https://github.com/toss/tossface

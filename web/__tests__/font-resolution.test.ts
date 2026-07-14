@@ -7,6 +7,12 @@ import {
   canonicalFontName,
 } from "@/lib/font-registry";
 import { extractTokens } from "@/lib/extract-tokens";
+import { resolveRuntimeFont } from "@/lib/fonts/runtime-family";
+import {
+  extractLegacyReferenceDetail,
+  projectAstReferenceDetail,
+} from "@/lib/references/detail-projection";
+import { loadReference } from "@/lib/references/repository.server";
 
 // Vitest runs with cwd = web/, and the reference catalog is mirrored at
 // web/references/<id>/DESIGN.md (same path the API route reads).
@@ -29,38 +35,36 @@ describe("font resolution — no silent Inter fallback", () => {
     expect(isSystemFontStack("Pretendard, sans-serif")).toBe(false);
   });
 
-  // (a) baemin: UI font is a system stack + Korean; every regex in the old
-  //     path failed and the API confidently returned "Inter". It must now
-  //     resolve to the honest System sentinel, and surface the brand face.
-  it("baemin resolves to System (NEVER Inter) and surfaces BMHANNA Pro", () => {
-    const md = readRef("baemin");
-    const { family, mono, brand } = resolveFontsFromDesignMd(md);
-    expect(family).not.toBe("Inter");
-    expect(family).toBe("System");
-    expect(brand).toBe("BMHANNA Pro");
-    expect(mono).toBe("SF Mono");
+  // (a) Baemin 2.0 officially confirms WORK as the app family. The family is
+  //     canonical even though no authorized browser-loadable specimen exists.
+  it("baemin canonical projection exposes WORK without a substitute loader", () => {
+    const loaded = loadReference("baemin");
+    expect(loaded).not.toBeNull();
+    const legacy = extractLegacyReferenceDetail("baemin", loaded!.markdown);
+    const projection = projectAstReferenceDetail(loaded!.ast, legacy);
+
+    expect(projection.detail.fontFamily).toBe("BAEMINWORK");
+    expect(projection.detail.mono).toBeUndefined();
+    expect(projection.detail.brandFont).toBeUndefined();
+    expect(projection.contract.foundations.uiFont?.value).toBe("BAEMINWORK");
+    expect(resolveRuntimeFont(projection.detail.fontFamily)).toMatchObject({
+      mode: "unavailable",
+      cssFamily: "inherit",
+    });
   });
 
-  it("baemin token pipeline surfaces no Inter card", () => {
-    const md = readRef("baemin");
-    const { family, mono, brand } = resolveFontsFromDesignMd(md);
+  it("baemin token pipeline renders WORK metadata plus verified metric tiers", () => {
+    const loaded = loadReference("baemin");
+    expect(loaded).not.toBeNull();
+    const legacy = extractLegacyReferenceDetail("baemin", loaded!.markdown);
+    const projection = projectAstReferenceDetail(loaded!.ast, legacy);
     const tokens = extractTokens({
-      id: "baemin",
-      designMd: md,
-      primary: "#2ac1bc",
-      background: "#ffffff",
-      foreground: "#212529",
-      fontFamily: family,
-      mono,
-      brandFont: brand,
-      headingWeight: "700",
-      radius: "8px",
-      mood: "",
+      ...projection.detail,
+      referenceAst: projection.contract,
     });
     const canon = tokens.typography.fonts.map((f) => canonicalFontName(f.raw));
-    expect(canon).not.toContain("Inter");
-    expect(canon).toContain("System");
-    expect(canon).toContain("BMHANNA Pro");
+    expect(canon).toEqual(["BAEMINWORK"]);
+    expect(tokens.typography.hierarchy).toHaveLength(8);
   });
 
   // (b) A legitimately-Inter reference must still resolve to Inter.
@@ -69,9 +73,9 @@ describe("font resolution — no silent Inter fallback", () => {
     expect(resolveFontsFromDesignMd(md).family).toBe("Inter");
   });
 
-  it("channeltalk (genuine Inter-led stack) still resolves to Inter", () => {
+  it("channeltalk resolves the current marketing surface to Pretendard", () => {
     const md = readRef("channeltalk");
-    expect(resolveFontsFromDesignMd(md).family).toBe("Inter");
+    expect(resolveFontsFromDesignMd(md).family).toBe("Pretendard");
   });
 
   // (c) A mono stack that names a variant alongside its canonical form

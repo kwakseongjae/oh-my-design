@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "capturedThrough": "2026-07-10",
+  "metric": "reference_select_count",
+  "source": "GA4/Upstash synthesized snapshot; raw analytics remain gitignored",
+  "scores": {
+    "toss": 4378,
+    "apple": 1774,
+    "karrot": 1687,
+    "baemin": 1287,
+    "kakao": 1140,
+    "krds": 612,
+    "naver": 458,
+    "yeogiotte": 434,
+    "29cm": 394,
+    "line": 387,
+    "banksalad": 372,
+    "socar": 315,
+    "channeltalk": 297,
+    "wanted": 281,
+    "figma": 246,
+    "linear.app": 238,
+    "airbnb": 227,
+    "kakaobank": 212,
+    "vercel": 210,
+    "ably": 203
+  }
+}

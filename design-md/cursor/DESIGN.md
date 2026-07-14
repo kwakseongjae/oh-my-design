@@ -4,457 +4,316 @@ name: Cursor
 country: US
 category: developer-tools
 homepage: "https://www.cursor.com"
-primary_color: "#000000"
+primary_color: "#26251e"
 logo:
   type: simpleicons
   slug: cursor
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Cursor Brand
-  url: "https://www.cursor.com/brand"
+  url: "https://cursor.com/en-US/brand"
   type: brand
-  description: Cursor's brand guidelines with logos, icons, and naming conventions.
+  description: Official brand guidance for Cursor names and distributed logo, icon, and avatar assets.
   og_image: "https://cursor.com/public/opengraph-image.png"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: public-marketing, url: "https://cursor.com/", inspected: "2026-07-13" }
+    - { id: surface-2, kind: duplicate-public-marketing-snapshot, url: "https://cursor.com/", inspected: "2026-07-13" }
+    - { id: surface-3, kind: localized-public-marketing, url: "https://cursor.com/en-US", inspected: "2026-07-13" }
+  sources:
+    - { id: public-capture, kind: product-surface, url: "https://cursor.com/", captured: "2026-07-13" }
+    - { id: brand-context, kind: official-doc, url: "https://cursor.com/en-US/brand", captured: "2026-07-13" }
+    - { id: docs-context, kind: official-doc, url: "https://cursor.com/docs", captured: "2026-07-13" }
+    - { id: changelog-context, kind: official-doc, url: "https://cursor.com/en-US/changelog/1-0", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &home { surface_id: home, source_id: public-capture, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.canvas": *home
+    "tokens.colors.surface": *home
+    "tokens.colors.surface-muted": *home
+    "tokens.colors.surface-emphasis": *home
+    "tokens.colors.surface-selected": *home
+    "tokens.colors.accent": *home
+    "tokens.colors.on-primary": *home
+    "tokens.colors.gold": *home
+    "tokens.typography.family.ui": *home
+    "tokens.typography.body.size": *home
+    "tokens.typography.body.weight": *home
+    "tokens.typography.body.lineHeight": *home
+    "tokens.typography.body.use": *home
+    "tokens.typography.action-sm.size": *home
+    "tokens.typography.action-sm.weight": *home
+    "tokens.typography.action-sm.lineHeight": *home
+    "tokens.typography.action-sm.tracking": *home
+    "tokens.typography.action-sm.use": *home
+    "tokens.spacing.xxs": *home
+    "tokens.spacing.xs": *home
+    "tokens.spacing.sm": *home
+    "tokens.spacing.md": *home
+    "tokens.spacing.lg": *home
+    "tokens.spacing.xl": *home
+    "tokens.spacing.xxl": *home
+    "tokens.rounded.sm": *home
+    "tokens.rounded.md": *home
+    "tokens.rounded.full": *home
+    "tokens.components.marketing-card.type": *home
+    "tokens.components.marketing-card.bg": *home
+    "tokens.components.marketing-card.radius": *home
+    "tokens.components.marketing-card.padding": *home
+    "tokens.components.marketing-card.font": *home
+    "tokens.components.marketing-card.use": *home
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: live-extract
+  extracted: "2026-07-13"
   colors:
     primary: "#26251e"
-    brand: "#f54e00"
-    canvas: "#f2f1ed"
-    foreground: "#26251e"
-    surface: "#e6e5e0"
-    surface-100: "#f7f7f4"
-    surface-300: "#ebeae5"
-    surface-500: "#e1e0db"
-    accent-gold: "#c08532"
-    error: "#cf2d56"
-    success: "#1f8a65"
-    on-primary: "#f2f1ed"
+    canvas: "#f7f7f4"
+    surface: "#f2f1ed"
+    surface-muted: "#e6e5e0"
+    surface-emphasis: "#ebeae5"
+    surface-selected: "#e1e0db"
+    accent: "#f54e00"
+    on-primary: "#f7f7f4"
+    gold: "#c08532"
   typography:
-    family: { sans: "CursorGothic", mono: "berkeleyMono" }
-    display-hero:    { size: 72, weight: 400, lineHeight: 1.10, tracking: -2.16, use: "Hero statements, max compression" }
-    section:         { size: 36, weight: 400, lineHeight: 1.20, tracking: -0.72, use: "Feature section / CTA headlines" }
-    subheading:      { size: 26, weight: 400, lineHeight: 1.25, tracking: -0.325, use: "Card headings, sub-sections" }
-    title-sm:        { size: 22, weight: 400, lineHeight: 1.30, tracking: -0.11, use: "Smaller titles, list headings" }
-    body-serif:      { size: 19.2, weight: 500, lineHeight: 1.50, use: "Editorial body, jjannon cswh" }
-    body-serif-sm:   { size: 17.28, weight: 400, lineHeight: 1.35, use: "Standard body, descriptions" }
-    body-sans:       { size: 16, weight: 400, lineHeight: 1.50, use: "UI body text" }
-    button:          { size: 14, weight: 400, lineHeight: 1.00, use: "Primary button label" }
-    caption:         { size: 11, weight: 400, lineHeight: 1.50, use: "Small captions, metadata" }
-    mono-body:       { size: 12, weight: 400, lineHeight: 1.67, use: "Code blocks" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 8, lg: 10, full: 9999 }
-  shadow:
-    ambient: "rgba(0,0,0,0.02) 0px 0px 16px, rgba(0,0,0,0.008) 0px 0px 8px"
-    focus: "rgba(0,0,0,0.1) 0px 4px 12px"
-    elevated: "rgba(0,0,0,0.14) 0px 28px 70px, rgba(0,0,0,0.1) 0px 14px 32px"
-  components_harvested: true
+    family: { ui: "CursorGothic" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Current public marketing body, cards, and primary actions" }
+    action-sm: { size: 14, weight: 400, lineHeight: 1, tracking: 0.14, use: "Compact public actions" }
+  spacing: { xxs: 2, xs: 3, sm: 4, md: 6, lg: 8, xl: 12, xxl: 16 }
+  rounded: { sm: 4, md: 8, full: 9999 }
   components:
-    button-primary: { type: button, bg: "#ebeae5", fg: "#26251e", radius: "8px", padding: "10px 12px 10px 14px", font: "14px / 400", hover: "text #cf2d56", focus: "shadow rgba(0,0,0,0.1) 0px 4px 12px", use: "Primary actions, main CTAs" }
-    button-secondary: { type: button, bg: "#e6e5e0", fg: "#26251e", radius: "9999px", padding: "3px 8px", font: "14px / 400", hover: "text #cf2d56", use: "Tags, filters, secondary actions" }
-    button-tertiary: { type: button, bg: "#e1e0db", fg: "#26251e", radius: "9999px", use: "Active filter, selected tags" }
-    button-ghost: { type: button, bg: "rgba(38,37,30,0.06)", fg: "rgba(38,37,30,0.55)", padding: "6px 12px", use: "Tertiary actions, dismiss" }
-    card: { type: card, bg: "#e6e5e0", border: "1px solid rgba(38,37,30,0.1)", radius: "8px", shadow: "rgba(0,0,0,0.14) 0px 28px 70px, rgba(0,0,0,0.1) 0px 14px 32px", hover: "shadow intensifies", use: "Cards, containers" }
-    input: { type: input, bg: "transparent", fg: "#26251e", border: "1px solid rgba(38,37,30,0.1)", focus: "border rgba(38,37,30,0.2) or accent orange", use: "Text inputs, textarea" }
-    tab: { type: tab, fg: "#26251e", active: "1px bottom border rgba(38,37,30,0.1)", use: "Tab navigation" }
-    timeline-step: { type: listItem, fg: "#26251e", states: "thinking #dfa88f, grep #9fc9a2, read #9fbbe0, edit #c0a8dd", use: "AI timeline operation steps" }
+    marketing-card: { type: card, bg: "#f2f1ed", radius: "4px", padding: "15.9px 17.5px 20px", font: "16px / 400 / CursorGothic", use: "Public marketing feature card" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Cursor
 
 ## 1. Visual Theme & Atmosphere
 
-Cursor's website is a study in warm minimalism meets code-editor elegance. The entire experience is built on a warm off-white canvas (`#f2f1ed`) with dark warm-brown text (`#26251e`) -- not pure black, not neutral gray, but a deeply warm near-black with a yellowish undertone that evokes old paper, ink, and craft. This warmth permeates every surface: backgrounds lean toward cream (`#e6e5e0`, `#ebeae5`), borders dissolve into transparent warm overlays using `oklab` color space, and even the error state (`#cf2d56`) carries warmth rather than clinical red. The result feels more like a premium print publication than a tech website.
+Cursor is an AI code editor whose public product story spans autocomplete, editing, agent workflows, and enterprise controls. Its current public home presents that technical scope through a restrained warm palette: paper-like light surfaces, an ink-brown primary, and an orange link accent rather than the high-contrast blue often associated with developer tools. The official brand guide treats the name as simply “Cursor” and distributes a family of 2D/2.5D logos, app icons, and avatars, while the public product navigation now foregrounds Agents, Cloud, CLI, Mobile, Automations, Review, and Tab. This reference records the present public marketing surface—not the authenticated editor or dashboard—and keeps its embedded editor-like demonstrations separate from product-app claims.
 
-The custom CursorGothic font is the typographic signature -- a gothic sans-serif with aggressive negative letter-spacing at display sizes (-2.16px at 72px) that creates a compressed, engineered feel. As a secondary voice, the jjannon serif font (with OpenType `"cswh"` contextual swash alternates) provides literary counterpoint for body copy and editorial passages. The monospace voice comes from berkeleyMono, a refined coding font that connects the marketing site to Cursor's core identity as a code editor. This three-font system (gothic display, serif body, mono code) gives Cursor one of the most typographically rich palettes in developer tooling.
+The observed system is compact and deliberately repetitive: `#f7f7f4` canvas, `#26251e` text and primary actions, 4px feature cards, and very large pill radii for compact actions. `CursorGothic` is the dominant rendered public family. Public embedded demos introduce their own local chrome, so they are not evidence that every observed control is a general Cursor application token.
 
-The border system is particularly distinctive -- Cursor uses `oklab()` color space for border colors, applying warm brown at various alpha levels (0.1, 0.2, 0.55) to create borders that feel organic rather than mechanical. The signature border color `oklab(0.263084 -0.00230259 0.0124794 / 0.1)` is not a simple rgba value but a perceptually uniform color that maintains visual consistency across different backgrounds.
+### Do
 
-**Key Characteristics:**
-- CursorGothic with aggressive negative letter-spacing (-2.16px at 72px, -0.72px at 36px) for compressed display headings
-- jjannon serif for body text with OpenType `"cswh"` (contextual swash alternates)
-- berkeleyMono for code and technical labels
-- Warm off-white background (`#f2f1ed`) instead of pure white -- the entire system is warm-shifted
-- Primary text color `#26251e` (warm near-black with yellow undertone)
-- Accent orange `#f54e00` for brand highlight and links
-- oklab-space borders at various alpha levels for perceptually uniform edge treatment
-- Pill-shaped elements with extreme radius (33.5M px, effectively full-pill)
-- 8px base spacing system with fine-grained sub-8px increments (1.5px, 2px, 2.5px, 3px, 4px, 5px, 6px)
+- Use the observed warm canvas `#f7f7f4`, primary ink `#26251e`, and warm card surfaces before introducing a neutral gray.
+- Use a full pill only for action patterns with matching captured geometry; use 4px for the observed public feature cards.
+- Keep the orange `#f54e00` as the observed text-link accent, not a substitute for every filled action.
 
-### Do's and Don'ts
+### Don't
 
-- **DO** lean into warm neutrals — `#f2f1ed` canvas, `#26251e` text, `oklab` borders. Pure white or pure black breaks the warm-print atmosphere.
-- **DON'T** introduce cold grays (`#e5e7eb`, `#6b7280`) — they fight the warm undertone and feel mechanical against Cursor's literary warmth.
-- **DO** apply aggressive negative letter-spacing (-2.16px at 72px, scaling proportionally) on display headlines. Compressed type is the brand voice.
-- **DON'T** use default tracking on display sizes — it reads as generic and undersells Cursor's typographic care.
-- **DO** use the three-font system deliberately: CursorGothic for display, jjannon serif for body and editorial passages, berkeleyMono for code.
-- **DON'T** mix fonts from outside the system — adding a fourth voice fragments the carefully curated typographic palette.
-- **DO** use `oklab()` color space for borders and overlays where supported — perceptually uniform colors maintain consistency across backgrounds.
-- **DON'T** fall back to flat rgba() borders without considering perceptual contrast on different surface tints.
-- **DO** use full-pill buttons (extreme radius) for primary CTAs — they're part of the warm, approachable feel.
-- **DON'T** use sharp 2-4px corners on buttons — that aesthetic belongs to engineering brands like NVIDIA, not Cursor's editorial warmth.
+- Do not treat the public homepage or its embedded examples as an authenticated Cursor editor specification.
+- Do not add hover, pressed, focus, error, loading, or motion values from class names alone; this capture contains no interaction event records.
+- Do not substitute a system font where `CursorGothic` is called for, or promote isolated demo fonts to the general UI family.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Cursor Dark** (`#26251e`): Primary text, headings, dark UI surfaces. A warm near-black with distinct yellow-brown undertone -- the defining color of the system.
-- **Cursor Cream** (`#f2f1ed`): Page background, primary surface. Not white but a warm cream that sets the entire warm tone.
-- **Cursor Light** (`#e6e5e0`): Secondary surface, button backgrounds, card fills. A slightly warmer, slightly darker cream.
-- **Pure White** (`#ffffff`): Used sparingly for maximum contrast elements and specific surface highlights.
-- **True Black** (`#000000`): Minimal use, specific code/console contexts.
+### Current public marketing colors
 
-### Accent
-- **Cursor Orange** (`#f54e00`): Brand accent, `--color-accent`. A vibrant red-orange used for primary CTAs, active links, and brand moments. Warm and urgent.
-- **Gold** (`#c08532`): Secondary accent, warm gold for premium or highlighted contexts.
+- **Primary ink** (`#26251e`): observed text, borders, and filled public action background.
+- **Canvas** (`#f7f7f4`): observed homepage body and inverse action text.
+- **Card surface** (`#f2f1ed`): observed public feature card and menu surface.
+- **Muted surface** (`#e6e5e0`): observed compact secondary action and avatar/pill container surface.
+- **Emphasis surface** (`#ebeae5`): observed embedded-demo surface.
+- **Selected surface** (`#e1e0db`): observed disabled compact-control background in the public embedded demo.
+- **Accent link** (`#f54e00`): observed tertiary-link text and border.
+- **Gold** (`#c08532`): observed in a small embedded-demo pill; keep this bounded rather than treating it as the global accent.
 
-### Semantic
-- **Error** (`#cf2d56`): `--color-error`. A warm crimson-rose rather than cold red.
-- **Success** (`#1f8a65`): `--color-success`. A muted teal-green, warm-shifted.
+### Observed border treatment
 
-### Timeline / Feature Colors
-- **Thinking** (`#dfa88f`): Warm peach for "thinking" state in AI timeline.
-- **Grep** (`#9fc9a2`): Soft sage green for search/grep operations.
-- **Read** (`#9fbbe0`): Soft blue for file reading operations.
-- **Edit** (`#c0a8dd`): Soft lavender for editing operations.
+- **Primary action border** (`#26251e`, 1px): observed on the public filled action.
+- **Ghost action border** (`oklab(0.263084 -0.00230259 0.0124794 / 0.2)`, 1px): observed on the compact public ghost action.
+- **Embedded selected-tab edge** (`oklab(0.263084 -0.00230259 0.0124794 / 0.1)`, right edge): observed in a static embedded demo.
 
-### Surface Scale
-- **Surface 100** (`#f7f7f4`): Lightest button/card surface, barely tinted.
-- **Surface 200** (`#f2f1ed`): Primary page background.
-- **Surface 300** (`#ebeae5`): Button default background, subtle emphasis.
-- **Surface 400** (`#e6e5e0`): Card backgrounds, secondary surfaces.
-- **Surface 500** (`#e1e0db`): Tertiary button background, deeper emphasis.
-
-### Border Colors
-- **Border Primary** (`oklab(0.263084 -0.00230259 0.0124794 / 0.1)`): Standard border, 10% warm brown in oklab space.
-- **Border Medium** (`oklab(0.263084 -0.00230259 0.0124794 / 0.2)`): Emphasized border, 20% warm brown.
-- **Border Strong** (`rgba(38, 37, 30, 0.55)`): Strong borders, table rules.
-- **Border Solid** (`#26251e`): Full-opacity dark border for maximum contrast.
-- **Border Light** (`#f2f1ed`): Light border matching page background.
-
-### Shadows & Depth
-- **Card Shadow** (`rgba(0,0,0,0.14) 0px 28px 70px, rgba(0,0,0,0.1) 0px 14px 32px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px`): Heavy elevated card with warm oklab border ring.
-- **Ambient Shadow** (`rgba(0,0,0,0.02) 0px 0px 16px, rgba(0,0,0,0.008) 0px 0px 8px`): Subtle ambient glow for floating elements.
+No generic error or success token is retained: the supplied current capture does not establish one.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Display/Headlines**: `CursorGothic`, with fallbacks: `CursorGothic Fallback, system-ui, Helvetica Neue, Helvetica, Arial`
-- **Body/Editorial**: `jjannon`, with fallbacks: `Iowan Old Style, Palatino Linotype, URW Palladio L, P052, ui-serif, Georgia, Cambria, Times New Roman, Times`
-- **Code/Technical**: `berkeleyMono`, with fallbacks: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New`
-- **UI/System**: `system-ui`, with fallbacks: `-apple-system, Segoe UI, Helvetica Neue, Arial`
-- **Icons**: `CursorIcons16` (icon font at 14px and 12px)
-- **OpenType Features**: `"cswh"` on jjannon body text, `"ss09"` on CursorGothic buttons/captions
+### Evidence classes
 
-### Hierarchy
+- **Live computed public family — `CursorGothic`:** 643 visible computed uses across the captured public homepage records, including headings, body, actions, cards, tabs, menus, and toggles. The supplied `FontFaceSet` evidence reports it loaded with four Cursor-hosted WOFF2 sources. This is the only promoted general public UI/content family.
+- **Live computed but bounded embedded-demo families — `Lato` and `EB Garamond`:** respectively 24 and 19 visible uses, each with loaded FontFace/source corroboration. Their observed contexts are embedded examples within the public marketing page, not evidence of Cursor’s general UI family.
+- **Live computed but isolated — `berkeleyMono`:** one visible input use and two loaded source URLs. It is retained as a narrow observed technical/demo occurrence, not a general family token.
+- **System values — `system-ui` and `-apple-system`:** visible operating-system stacks, not Cursor-owned type assets and not substitutes for a named family.
+- **Declared-only assets:** `CursorGothic Fallback`, `CursorIcons16`, and the captured KaTeX families have declarations but no visible computed use in this bundle. They are not promoted to typography tokens.
+- **Official distributed brand assets:** the official brand page distributes logos, icons, and avatars, not a public font package or font licence. No public licence for the Cursor-hosted font files was located; the embedded page files are evidence of live delivery, not permission to redistribute them.
+- **Unresolved legacy claim:** the prior `jjannon` body-family claim has no supporting current computed-use/FontFaceSet evidence in the supplied collector and is omitted.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | CursorGothic | 72px (4.50rem) | 400 | 1.10 (tight) | -2.16px | Maximum compression, hero statements |
-| Section Heading | CursorGothic | 36px (2.25rem) | 400 | 1.20 (tight) | -0.72px | Feature sections, CTA headlines |
-| Sub-heading | CursorGothic | 26px (1.63rem) | 400 | 1.25 (tight) | -0.325px | Card headings, sub-sections |
-| Title Small | CursorGothic | 22px (1.38rem) | 400 | 1.30 (tight) | -0.11px | Smaller titles, list headings |
-| Body Serif | jjannon | 19.2px (1.20rem) | 500 | 1.50 | normal | Editorial body with `"cswh"` |
-| Body Serif SM | jjannon | 17.28px (1.08rem) | 400 | 1.35 | normal | Standard body text, descriptions |
-| Body Sans | CursorGothic | 16px (1.00rem) | 400 | 1.50 | normal/0.08px | UI body text |
-| Button Label | CursorGothic | 14px (0.88rem) | 400 | 1.00 (tight) | normal | Primary button text |
-| Button Caption | CursorGothic | 14px (0.88rem) | 400 | 1.50 | 0.14px | Secondary button with `"ss09"` |
-| Caption | CursorGothic | 11px (0.69rem) | 400-500 | 1.50 | normal | Small captions, metadata |
-| System Heading | system-ui | 20px (1.25rem) | 700 | 1.55 | normal | System UI headings |
-| System Caption | system-ui | 13px (0.81rem) | 500-600 | 1.33 | normal | System UI labels |
-| System Micro | system-ui | 11px (0.69rem) | 500 | 1.27 (tight) | 0.048px | Uppercase micro labels |
-| Mono Body | berkeleyMono | 12px (0.75rem) | 400 | 1.67 (relaxed) | normal | Code blocks |
-| Mono Small | berkeleyMono | 11px (0.69rem) | 400 | 1.33 | -0.275px | Inline code, terminal |
-| Lato Heading | Lato | 16px (1.00rem) | 600 | 1.33 | normal | Lato section headings |
-| Lato Caption | Lato | 14px (0.88rem) | 400-600 | 1.33 | normal | Lato captions |
-| Lato Micro | Lato | 12px (0.75rem) | 400-600 | 1.27 (tight) | 0.053px | Lato small labels |
+### Current public hierarchy samples
 
-### Principles
-- **Gothic compression for impact**: CursorGothic at display sizes uses -2.16px letter-spacing at 72px, progressively relaxing: -0.72px at 36px, -0.325px at 26px, -0.11px at 22px, normal at 16px and below. The tracking creates a sense of precision engineering.
-- **Serif for soul**: jjannon provides literary warmth. The `"cswh"` feature adds contextual swash alternates that give body text a calligraphic quality.
-- **Three typographic voices**: Gothic (display/UI), serif (editorial/body), mono (code/technical). Each serves a distinct communication purpose.
-- **Weight restraint**: CursorGothic uses weight 400 almost exclusively, relying on size and tracking for hierarchy rather than weight. System-ui components use 500-700 for functional emphasis.
+| Role | Family | Size | Weight | Line height | Boundary |
+|---|---|---:|---:|---:|---|
+| Public body/card/action | CursorGothic | 16px | 400 | 24px | Repeated current public marketing use |
+| Compact public action | CursorGothic | 14px | 400 | 14px | Full-pill action and compact header patterns |
+| Embedded product-demo label | system-ui | 13px | 400 | 17.3333px | Local demo chrome, not a named-brand font claim |
+| Embedded technical input | berkeleyMono | not generalized | not generalized | not generalized | One observed visible use only |
 
 ## 4. Component Stylings
 
-### Buttons
+All claims below preserve the supplied collector’s selector and surface provenance. `home`, `surface-2`, and `surface-3` are public homepage capture records (`https://cursor.com/` and `https://cursor.com/en-US`); no authenticated product application or documentation chrome was captured. The top-level interaction array is empty, so static `selected`, `unchecked`, and `disabled` markup is not a behavioral state specification.
 
-**Primary (Warm Surface)**
-- Background: `#ebeae5` (Surface 300)
-- Text: `#26251e` (Cursor Dark)
-- Padding: 10px 12px 10px 14px
-- Radius: 8px
-- Outline: none
-- Hover: text shifts to `var(--color-error)` (`#cf2d56`)
-- Focus shadow: `rgba(0,0,0,0.1) 0px 4px 12px`
-- Use: Primary actions, main CTAs
+### Public marketing actions
 
-**Secondary Pill**
-- Background: `#e6e5e0` (Surface 400)
-- Text: `oklab(0.263 / 0.6)` (60% warm brown)
-- Padding: 3px 8px
-- Radius: full pill (33.5M px)
-- Hover: text shifts to `var(--color-error)`
-- Use: Tags, filters, secondary actions
+**Filled primary action — `home::[data-omd-capture="64"]`**
+- Background: `#26251e`
+- Text: `#f7f7f4`
+- Border: `1px solid #26251e`
+- Radius: `3.35544e+07px` (full pill)
+- Padding: `12.48px 21.6px 12.8px`
+- Font: `16px / 400 / CursorGothic`
+- Use: Public homepage primary action
 
-**Tertiary Pill**
-- Background: `#e1e0db` (Surface 500)
-- Text: `oklab(0.263 / 0.6)` (60% warm brown)
-- Radius: full pill
-- Use: Active filter state, selected tags
+**Compact filled action — `home::[data-omd-capture="8"]`**
+- Background: `#26251e`
+- Text: `#f7f7f4`
+- Border: `1px solid #26251e`
+- Radius: `3.35544e+07px` (full pill)
+- Padding: `5.6px 10.5px 5.88px`
+- Font: `14px / 400 / CursorGothic`
+- Use: Public compact/header action
 
-**Ghost (Transparent)**
-- Background: `rgba(38, 37, 30, 0.06)` (6% warm brown)
-- Text: `rgba(38, 37, 30, 0.55)` (55% warm brown)
-- Padding: 6px 12px
-- Use: Tertiary actions, dismiss buttons
-
-**Light Surface**
-- Background: `#f7f7f4` (Surface 100) or `#f2f1ed` (Surface 200)
-- Text: `#26251e` or `oklab(0.263 / 0.9)` (90%)
-- Padding: 0px 8px 1px 12px
-- Use: Dropdown triggers, subtle interactive elements
-
-### Cards & Containers
-- Background: `#e6e5e0` or `#f2f1ed`
-- Border: `1px solid oklab(0.263 / 0.1)` (warm brown at 10%)
-- Radius: 8px (standard), 4px (compact), 10px (featured)
-- Shadow: `rgba(0,0,0,0.14) 0px 28px 70px, rgba(0,0,0,0.1) 0px 14px 32px` for elevated cards
-- Hover: shadow intensification
-
-### Inputs & Forms
-- Background: transparent or surface
+**Compact secondary action — `home::[data-omd-capture="101"]`**
+- Background: `#e6e5e0`
 - Text: `#26251e`
-- Padding: 8px 8px 6px (textarea)
-- Border: `1px solid oklab(0.263 / 0.1)`
-- Focus: border shifts to `oklab(0.263 / 0.2)` or accent orange
+- Border: `1px solid oklab(0.263084 -0.00230259 0.0124794 / 0.025)`
+- Radius: `3.35544e+07px` (full pill)
+- Padding: `5.6px 10.5px 5.88px`
+- Font: `14px / 400 / CursorGothic`
+- Use: Public compact secondary action
 
-### Navigation
-- Clean horizontal nav on warm cream background
-- Cursor logotype left-aligned (~96x24px)
-- Links: 14px CursorGothic or system-ui, weight 500
-- CTA button: warm surface with Cursor Dark text
-- Tab navigation: bottom border `1px solid oklab(0.263 / 0.1)` with active tab differentiation
+**Compact ghost action — `home::[data-omd-capture="7"]`**
+- Background: transparent
+- Text: `#26251e`
+- Border: `1px solid oklab(0.263084 -0.00230259 0.0124794 / 0.2)`
+- Radius: `3.35544e+07px` (full pill)
+- Padding: `5.6px 10.5px 5.88px`
+- Font: `14px / 400 / CursorGothic`
+- Use: Public compact ghost action
 
-### Image Treatment
-- Code editor screenshots with `1px solid oklab(0.263 / 0.1)` border
-- Rounded corners: 8px standard
-- AI chat/timeline screenshots dominate feature sections
-- Warm gradient or solid cream backgrounds behind hero images
+**Tertiary text action — `home::[data-omd-capture="18"]`**
+- Background: transparent
+- Text: `#f54e00`
+- Radius: `0px`
+- Font: `16px / 400 / CursorGothic`
+- Use: Public marketing text link
 
-### Distinctive Components
+### Public marketing cards
 
-**AI Timeline**
-- Vertical timeline showing AI operations: thinking (peach), grep (sage), read (blue), edit (lavender)
-- Each step uses its semantic color with matching text
-- Connected with vertical lines
-- Core visual metaphor for Cursor's AI-first coding experience
+**Feature card — `home::[data-omd-capture="53"]`**
+- Background: `#f2f1ed`
+- Radius: `4px`
+- Padding: `15.9px 17.5px 20px`
+- Font: `16px / 400 / CursorGothic`
+- Use: Public marketing feature card
 
-**Code Editor Previews**
-- Dark code editor screenshots with warm cream border frame
-- berkeleyMono for code text
-- Syntax highlighting using timeline colors
+**Large feature card — `home::[data-omd-capture="9"]`**
+- Background: `#f2f1ed`
+- Radius: `4px`
+- Padding: `17.5px`
+- Font: `16px / 400 / CursorGothic`
+- Use: Public large feature-card wrapper
 
-**Pricing Cards**
-- Warm surface backgrounds with bordered containers
-- Feature lists using jjannon serif for readability
-- CTA buttons with accent orange or primary dark styling
+### Embedded public-demo chrome
+
+**Selected tab — `home::[data-omd-capture="11"]`**
+- Background: `#f7f7f4`
+- Text: `#26251e`
+- Border: `0px 1px 0px 0px solid oklab(0.263084 -0.00230259 0.0124794 / 0.1)`
+- Padding: `0px 8px 1px 12px`
+- Font: `14px / 400 / CursorGothic`
+- Selected: static selected markup in the public embedded demo
+- Use: Embedded marketing product-demo tab
+
+**Prompt input — `home::[data-omd-capture="14"]`**
+- Background: transparent
+- Text: `#26251e`
+- Padding: `8px 8px 6px`
+- Font: `13px / 400 / system-ui`
+- Use: Embedded marketing product-demo input
+
+**Disabled compact control — `home::[data-omd-capture="17"]`**
+- Background: `#e1e0db`
+- Text: `oklab(0.263084 -0.00230259 0.0124794 / 0.6)`
+- Radius: `3.35544e+07px` (full pill)
+- Disabled: static disabled markup in the public embedded demo
+- Use: Embedded marketing product-demo compact control
+
+No hover, pressed, focus, error, menu-opening, or toast variant is recorded as observed interaction evidence.
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Fine scale: 1.5px, 2px, 2.5px, 3px, 4px, 5px, 6px (sub-8px for micro-adjustments)
-- Standard scale: 8px, 10px, 12px, 14px (derived from extraction)
-- Extended scale (inferred): 16px, 24px, 32px, 48px, 64px, 96px
-- Notable: fine-grained sub-8px increments for precise icon/text alignment
-
-### Grid & Container
-- Max content width: approximately 1200px
-- Hero: centered single-column with generous top padding (80-120px)
-- Feature sections: 2-3 column grids for cards and features
-- Full-width sections with warm cream or slightly darker backgrounds
-- Sidebar layouts for documentation and settings pages
-
-### Whitespace Philosophy
-- **Warm negative space**: The cream background means whitespace has warmth and texture, unlike cold white minimalism. Large empty areas feel cozy rather than clinical.
-- **Compressed text, open layout**: Aggressive negative letter-spacing on CursorGothic headlines is balanced by generous surrounding margins. Text is dense; space around it breathes.
-- **Section variation**: Alternating surface tones (cream → lighter cream → cream) create subtle section differentiation without harsh boundaries.
-
-### Border Radius Scale
-- Micro (1.5px): Fine detail elements
-- Small (2px): Inline elements, code spans
-- Medium (3px): Small containers, inline badges
-- Standard (4px): Cards, images, compact buttons
-- Comfortable (8px): Primary buttons, cards, menus
-- Featured (10px): Larger containers, featured cards
-- Full Pill (33.5M px / 9999px): Pill buttons, tags, badges
+- The captured public homepage body is a `#f7f7f4` canvas with 52px top padding at the 1440×900 collector viewport.
+- Public feature-card variants repeatedly use 4px corners with card-local padding around 15–20px.
+- Public compact actions repeat a full-pill radius with either 14px/14px or 16px/16px CursorGothic type, depending on the captured action scale.
+- The evidence has one desktop viewport and duplicate locale records. It does not establish a responsive breakpoint system, page-wide grid contract, or authenticated-product layout.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, text blocks |
-| Border Ring (Level 1) | `oklab(0.263 / 0.1) 0px 0px 0px 1px` | Standard card/container border (warm oklab) |
-| Border Medium (Level 1b) | `oklab(0.263 / 0.2) 0px 0px 0px 1px` | Emphasized borders, active states |
-| Ambient (Level 2) | `rgba(0,0,0,0.02) 0px 0px 16px, rgba(0,0,0,0.008) 0px 0px 8px` | Floating elements, subtle glow |
-| Elevated Card (Level 3) | `rgba(0,0,0,0.14) 0px 28px 70px, rgba(0,0,0,0.1) 0px 14px 32px, oklab ring` | Modals, popovers, elevated cards |
-| Focus | `rgba(0,0,0,0.1) 0px 4px 12px` on button focus | Interactive focus feedback |
-
-**Shadow Philosophy**: Cursor's depth system is built around two ideas. First, borders use perceptually uniform oklab color space rather than rgba, ensuring warm brown borders look consistent across different background tones. Second, elevation shadows use dramatically large blur values (28px, 70px) with moderate opacity (0.14, 0.1), creating a diffused, atmospheric lift rather than hard-edged drop shadows. Cards don't feel like they float above the page -- they feel like the page has gently opened a space for them.
-
-### Decorative Depth
-- Warm cream surface variations create subtle tonal depth without shadows
-- oklab borders at 10% and 20% create a spectrum of edge definition
-- No harsh divider lines -- section separation through background tone shifts and spacing
+Current evidence establishes tonal separation through the warm canvas and `#f2f1ed`, `#e6e5e0`, `#ebeae5`, and `#e1e0db` surfaces. It also establishes the explicitly captured oklab borders on compact public actions and the embedded selected tab. The supplied samples do not justify a reusable shadow scale, modal elevation rule, or generic focus shadow token.
 
 ## 7. Interaction & Motion
 
-### Hover States
-- Buttons: text color shifts to `--color-error` (`#cf2d56`) on hover -- a distinctive warm crimson that signals interactivity
-- Links: color shift to accent orange (`#f54e00`) or underline decoration with `rgba(38, 37, 30, 0.4)`
-- Cards: shadow intensification on hover (ambient → elevated)
-
-### Focus States
-- Shadow-based focus: `rgba(0,0,0,0.1) 0px 4px 12px` for depth-based focus indication
-- Border focus: `oklab(0.263 / 0.2)` (20% border) for input/form focus
-- Consistent warm tone in all focus states -- no cold blue focus rings
-
-### Transitions
-- Color transitions: 150ms ease for text/background color changes
-- Shadow transitions: 200ms ease for elevation changes
-- Transform: subtle scale or translate for interactive feedback
+The collector reports `interactionCount: 0` and an empty `interactions` array. Some captured class strings contain transition or pseudo-class names, but no computed before/after observation ties them to a trigger or a visual result. Therefore this reference preserves only static markup markers in §4 and defines no reusable hover, focus, pressed, animation, duration, or easing token.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <600px | Single column, reduced padding, stacked navigation |
-| Tablet Small | 600-768px | 2-column grids begin |
-| Tablet | 768-900px | Expanded card grids, sidebar appears |
-| Desktop Small | 900-1279px | Full layout forming |
-| Desktop | >1279px | Full layout, maximum content width |
-
-### Touch Targets
-- Buttons use comfortable padding (6px-14px vertical, 8px-14px horizontal)
-- Pill buttons maintain tap-friendly sizing with 3px-10px padding
-- Navigation links at 14px with adequate spacing for touch
-
-### Collapsing Strategy
-- Hero: 72px CursorGothic → 36px → 26px on smaller screens, maintaining proportional letter-spacing
-- Navigation: horizontal links → hamburger menu on mobile
-- Feature cards: 3-column → 2-column → single column stacked
-- Code editor screenshots: maintain aspect ratio, may shrink with border treatment preserved
-- Timeline visualization: horizontal → vertical stacking
-- Section spacing: 80px+ → 48px → 32px on mobile
-
-### Image Behavior
-- Editor screenshots maintain warm border treatment at all sizes
-- AI timeline adapts from horizontal to vertical layout
-- Product screenshots use responsive images with consistent border radius
-- Full-width hero images scale proportionally
+The supplied evidence is limited to a 1440×900 capture viewport and repeated public homepage records. No mobile, breakpoint, drawer, or navigation-collapse behavior is established. Keep responsive behavior unresolved rather than deriving it from framework class names.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA background: `#ebeae5` (warm cream button)
-- Page background: `#f2f1ed` (warm off-white)
-- Text color: `#26251e` (warm near-black)
-- Secondary text: `rgba(38, 37, 30, 0.55)` (55% warm brown)
-- Accent: `#f54e00` (orange)
-- Error/hover: `#cf2d56` (warm crimson)
-- Success: `#1f8a65` (muted teal)
-- Border: `oklab(0.263084 -0.00230259 0.0124794 / 0.1)` or `rgba(38, 37, 30, 0.1)` as fallback
-
-### Example Component Prompts
-- "Create a hero section on `#f2f1ed` warm cream background. Headline at 72px CursorGothic weight 400, line-height 1.10, letter-spacing -2.16px, color `#26251e`. Subtitle at 17.28px jjannon weight 400, line-height 1.35, color `rgba(38,37,30,0.55)`. Primary CTA button (`#ebeae5` bg, 8px radius, 10px 14px padding) with hover text shift to `#cf2d56`."
-- "Design a card: `#e6e5e0` background, border `1px solid rgba(38,37,30,0.1)`. Radius 8px. Title at 22px CursorGothic weight 400, letter-spacing -0.11px. Body at 17.28px jjannon weight 400, color `rgba(38,37,30,0.55)`. Use `#f54e00` for link accents."
-- "Build a pill tag: `#e6e5e0` background, `rgba(38,37,30,0.6)` text, full-pill radius (9999px), 3px 8px padding, 14px CursorGothic weight 400."
-- "Create navigation: sticky `#f2f1ed` background with backdrop-filter blur. 14px system-ui weight 500 for links, `#26251e` text. CTA button right-aligned with `#ebeae5` bg and 8px radius. Bottom border `1px solid rgba(38,37,30,0.1)`."
-- "Design an AI timeline showing four steps: Thinking (`#dfa88f`), Grep (`#9fc9a2`), Read (`#9fbbe0`), Edit (`#c0a8dd`). Each step: 14px system-ui label + 16px CursorGothic description + vertical connecting line in `rgba(38,37,30,0.1)`."
-
-### Iteration Guide
-1. Always use warm tones -- `#f2f1ed` background, `#26251e` text, never pure white/black for primary surfaces
-2. Letter-spacing scales with font size for CursorGothic: -2.16px at 72px, -0.72px at 36px, -0.325px at 26px, normal at 16px
-3. Use `rgba(38, 37, 30, alpha)` as a CSS-compatible fallback for oklab borders
-4. Three fonts, three voices: CursorGothic (display/UI), jjannon (editorial), berkeleyMono (code)
-5. Pill shapes (9999px radius) for tags and filters; 8px radius for primary buttons and cards
-6. Hover states use `#cf2d56` text color -- the warm crimson shift is a signature interaction
-7. Shadows use large blur values (28px, 70px) for diffused atmospheric depth
-8. The sub-8px spacing scale (1.5, 2, 2.5, 3, 4, 5, 6px) is critical for icon/text micro-alignment
+- Use `#f7f7f4` canvas, `#26251e` primary ink, and `#f2f1ed` public feature-card surfaces.
+- For a public primary action, use `#26251e` / `#f7f7f4`, a 1px `#26251e` border, full-pill radius, `12.48px 21.6px 12.8px` padding, and `16px / 400 / CursorGothic`.
+- For a compact secondary action, use `#e6e5e0`, `#26251e`, the observed 1px low-alpha oklab border, full-pill radius, and `5.6px 10.5px 5.88px` padding.
+- Use `#f54e00` for observed tertiary text-link treatment; do not claim it is a universal action or error color.
+- Do not invent interaction behavior, responsive values, dashboard controls, or typography beyond the evidence classes in §3.
 
 ## 10. Voice & Tone
 
-Cursor's voice is **engineer-poetic** — straightforward technical claims dressed in warm typographic restraint. Marketing copy emphasizes the developer experience over capability lists: "the best way to code with AI" (homepage 2026-05) is short, confident, present-tense. Surfaces use ivory-warm palette + crimson hover (`#cf2d56`) — the warmth signals "this is a tool you live in for 8 hours/day, not a flashy consumer demo."
+Current first-party product language is direct and task-oriented: Cursor’s official documentation describes an AI-powered code editor that understands a codebase and lets a user describe what to build or change; the product’s 1.0 release names concrete additions such as Bugbot, Background Agent, Jupyter support, memories, and one-click MCP setup. Keep public copy specific to an engineering action, feature, or control.
 
-| Context | Tone |
+| Context | Observed direction |
 |---|---|
-| CTA | Plain. "Download for macOS", "Get started", "Request a demo" |
-| Marketing | Single-claim hero, screenshots dominate |
-| Documentation | Concise; assumes IDE / engineering context |
-| Error (model) | Specific. "Claude rate limit reached. Switch model or wait." |
-
-**Voice samples**
-- Marketing CTA (KR): *"macOS용 다운로드"* <!-- verified: cursor.com/ko homepage 2026-05 -->
-
-**Forbidden phrases.** "10× developer", "AI-powered" without specificity. Aggressive comparison-mode marketing.
+| Product explanation | Name the coding task or workflow before the AI capability. |
+| CTA | Use a concise imperative such as the official public “Download” or “Get Cursor.” |
+| Release communication | Lead with a named release and concrete features, as in the Cursor 1.0 changelog. |
 
 ## 11. Brand Narrative
 
-Cursor (corporate name **Anysphere, Inc.**) was incorporated **2022** by four MIT students — **Michael Truell (CEO)**, **Sualeh Asif (CPO)**, **Aman Sanger (COO)**, and **Arvid Lunnemark (former CTO)** ([Anysphere — Wikipedia](https://en.wikipedia.org/wiki/Anysphere)). The team **graduated from OpenAI's accelerator** and **launched Cursor publicly March 2023** as a fork of VS Code with first-class LLM integration. Founding observation: AI-assisted coding was being bolted onto editors as plugins, but the editor itself needed redesign for AI-native workflows. Funding trajectory has been one of the steepest in software history: **$8M seed (Oct 2023)** led by **OpenAI Startup Fund** with **Nat Friedman** + **Arash Ferdowsi** angels → **$60M Series A (Aug 2024)** → **$900M Series C (Jun 2025)** led by **Thrive Capital** at **$9.9B** → **$2.3B Series D (Nov 2025)** co-led by **Accel** + **Coatue** with **Google** + **Nvidia** strategic, valuing the company at **$29.3B** ([Inc — Cursor billionaires](https://www.inc.com/ben-sherry/this-ai-coding-startup-just-minted-4-new-billionaires/91265014), [Contrary Research — Cursor breakdown](https://research.contrary.com/company/cursor)). ARR crossed **$100M January 2025**, **$500M June 2025**, **$1B+ annualized post-Series D**. What Cursor refuses: aggressive comparison-mode marketing, "10× developer" framing, AI-magic vocabulary that obscures the actual editor mechanic.
+Cursor is presented by its own documentation as an AI-powered code editor that understands a user’s codebase and helps with natural-language coding tasks. The current public product ecosystem extends that editor-centered proposition across Agents, Cloud, CLI, Mobile, Automations, Review, and Tab. Cursor’s official 1.0 release framed its evolution around code review, Background Agent access, Jupyter editing, memories, MCP setup, and a dashboard rather than around a change to a public visual-token specification.
+
+The public brand guide is intentionally practical: it supplies ways to represent Cursor consistently, asks third parties to call the product “Cursor” rather than “Cursor AI” or “Cursor Code,” and distributes logo, icon, and avatar variants. It does not publish a public font licence or an official design-token system, so the typography and component facts in this document remain bounded to the supplied live collector evidence.
 
 ## 12. Principles
 
-1. **The editor is the brand.** *UI implication:* marketing screenshots are always the actual editor; never illustration.
-2. **Warm ivory, not cold black.** *UI implication:* default canvas warm `#f7f7f4`; dark theme uses warm grays not pure black.
-3. **Crimson hover signals interaction.** `#cf2d56` text shift on links. *UI implication:* never use crimson as default chrome color.
-4. **Shadow blur is large.** 28px / 70px blurs create atmospheric depth. *UI implication:* don't use tight shadows; the diffused atmospheric quality IS the brand.
-5. **Typography micro-alignment matters.** Sub-8px spacing scale (1.5/2/2.5/3) for icon-text alignment. *UI implication:* don't round to 4px increments; the 1.5px granularity is intentional.
+1. **Name the product Cursor.** *UI implication:* use the official product name; do not extend it to “Cursor AI” or “Cursor Code.”
+2. **Make engineering work concrete.** *UI implication:* describe a coding action, tool, model, or workflow rather than relying on generic AI claims.
+3. **Keep public marketing warm and restrained.** *UI implication:* start from the observed cream/ink/orange hierarchy and reserve accents for their recorded roles.
+4. **Separate product claims from promotional demos.** *UI implication:* do not turn the homepage’s embedded editor-like controls into a full authenticated-app component system.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Cursor user segments (full-time engineers using AI pair-programming, indie developers, ML researchers), not individual people.*
+The official public materials support stakeholder groups rather than named fictional users: individual developers getting started with Tab, Inline Edit, and Agent; developers using an agent with tools and terminal commands; and enterprise teams managing model access, MCP controls, and system-level rules. These are evidence-backed groups, not synthetic personas.
 
-**Sarah Lin, 33, Seattle.** Senior backend engineer. Cursor as primary IDE for 6 months. Uses tab autocomplete + Cmd+K refactoring + Composer for multi-file changes.
-
-**Henrik Sondergaard, 41, Copenhagen.** Indie developer building SaaS. Multi-file Composer is the workflow that justifies the subscription.
-
-**Ravi Krishnan, 28, Bengaluru.** ML researcher. Uses Cursor for Python notebooks + research code. Cares about Claude/GPT model selection + cost transparency.
+- **Individual developer:** learns core editor workflows such as autocomplete, inline edits, and agent chat through official quickstart material.
+- **Agent workflow user:** uses Cursor’s assistant for complex coding tasks, terminal commands, and code editing.
+- **Engineering organization administrator:** configures controls and privacy/security settings for teams at scale.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (welcome)** | Centered "Open folder" CTA + recent projects |
-| **Empty (no AI history)** | "Try Cmd+K to get started" with keyboard shortcut hint |
-| **Loading (model thinking)** | Inline cursor-blink (1.5px width, crimson) where model is composing |
-| **Loading (file applying changes)** | Diff view with applying state, accept/reject buttons |
-| **Error (model)** | Inline below input. "Claude rate limit reached. Switch model or wait." |
-| **Error (apply failed)** | Diff stays visible, error tooltip with specific reason |
-| **Success (changes applied)** | Soft cream pulse on file tabs, no toast |
-| **Success (Composer commit)** | Multi-file diff folds into success summary |
-| **Skeleton (welcome cards)** | Warm-cream rectangles, no shimmer |
-| **Disabled (no model selected)** | 0.5 opacity + crimson "Select a model" link |
-| **Loading (long agent run)** | Persistent progress with step trace, cancellable |
+Only three static markers appear in the supplied public marketing capture: a selected embedded-demo tab, an unchecked embedded-demo toggle, and disabled compact controls. They do not establish product state behavior. Empty, loading, error, success, skeleton, and recovery treatments are unresolved for the authenticated editor and dashboard.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Cursor commit |
-| `motion-fast` | 150ms | Hover crimson shift |
-| `motion-blink` | 530ms | Cursor blink (model composing) |
-| `motion-standard` | 250ms | Modal, panel |
-
-Easings: standard cubic-bezier. **Crimson hover** is the only color animation. `prefers-reduced-motion: reduce` disables blink (steady cursor).
+No duration, easing curve, or reduced-motion behavior is promoted. The capture includes no interaction events; CSS class names that mention transitions are not sufficient evidence of a reusable motion rule.
 
 ---
 
-**Verified:** 2026-05-08 (B2 loop)
-**Tier 1 sources:** cursor.com (live DOM via playwright — Warm `#26251e` Primary 9999px / 12.48×21.6 / 43px / 16px·400; cream `#e6e5e0` Secondary same geometry)
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 1 (Philosophy):** cursor.com homepage; cursor.com/pricing.
-**Tier 2 (Founders/Funding):** Wikipedia (Anysphere), Inc, Contrary Research, BusinessDay NG.
-**Style ref:** `claude` (engineer-poetic register). **Conflicts unresolved:** none.
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://cursor.com/`; `https://cursor.com/en-US`; `https://cursor.com/en-US/brand`; `https://cursor.com/docs`; `https://cursor.com/en-US/changelog/1-0`; supplied `artifacts/reference-evidence/cursor.json`.
+**Tier 2 sources:** `https://getdesign.md/cursor` (directory record only); `https://styles.refero.design/?q=Cursor` (attempted; no usable result returned).
+**Conflicts unresolved:** none
+
+Tier 2’s “sleek dark interface, gradient accents” catalog summary conflicts with the supplied current public warm-surface evidence and is not used.

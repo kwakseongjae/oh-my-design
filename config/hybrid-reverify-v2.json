@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-07-11",
+  "policy": {
+    "capture": "deterministic-multi-surface",
+    "officialQa": "codex-in-app-browser",
+    "localQa": ["desktop", "375x812"],
+    "acceptance": "reference-gate+quality-ast+tests+typecheck",
+    "onConflict": "hold-for-reconcile"
+  },
+  "references": [
+    { "id": "karrot", "officialUrl": "https://v2.seed-design.io/", "captureBudget": 3 },
+    { "id": "toss", "officialUrl": "https://tossmini-docs.toss.im/tds-mobile/components/button/", "captureBudget": 5 },
+    { "id": "apple", "officialUrl": "https://developer.apple.com/design/human-interface-guidelines/buttons", "captureBudget": 4 },
+    { "id": "kakao", "officialUrl": "https://developers.kakao.com/docs/ko/kakaologin/design-guide", "captureBudget": 4 },
+    { "id": "baemin", "officialUrl": "https://www.woowahan.com/fonts", "captureBudget": 4 },
+    { "id": "naver", "officialUrl": "https://www.navercorp.com/company/brandGuide", "captureBudget": 4 },
+    { "id": "krds", "officialUrl": "https://www.krds.go.kr/html/site/style/style_03.html", "captureBudget": 8 },
+    { "id": "29cm", "officialUrl": "https://www.29cm.co.kr/", "captureBudget": 5 },
+    { "id": "line", "officialUrl": "https://designsystem.line.me/LDSM/foundation/color/line-color-guide-ex-en/", "captureBudget": 8 },
+    { "id": "yeogiotte", "officialUrl": "https://designlibrary.yeogi.com/foudations/typography", "captureBudget": 8 }
+  ]
+}

@@ -95,7 +95,7 @@ ferrari (이미 B9?) — 정정. 미배치 brand 점검 후 채움
 
 ## 각 batch 내 단계 (per brand)
 
-1. **Tier 1 라이브 inspect** — `mcp__playwright__browser_navigate(<brand-domain>)` + `evaluate` (computed style)
+1. **Tier 1 라이브 inspect** — `npm --prefix web run capture:reference -- <id> --max-routes 3` (MCP-free computed-style evidence bundle)
 2. **Tier 2 교차** — `WebFetch(getdesign.md/<id>)` + `WebFetch(refero search ?q=<brand>)` (refero 결과 있으면 detail page WebFetch)
 3. **Conflict matrix** → `web/references/<id>/.verification.md`
 4. **§4 풀 재작성** — canonical schema 변형 블록

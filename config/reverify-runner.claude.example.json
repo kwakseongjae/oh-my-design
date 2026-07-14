@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "claude-opus-local-cli",
+  "billingMode": "usage",
+  "command": {
+    "executable": "node",
+    "args": [
+      "web/scripts/adapters/run-claude-reverify.mjs",
+      "--packet",
+      "{packet}",
+      "--reference",
+      "{referenceId}",
+      "--evidence",
+      "{evidenceArtifact}",
+      "--budget",
+      "{budgetUsd}",
+      "--reasoning",
+      "{reasoningEffort}"
+    ]
+  },
+  "passEnvironment": [],
+  "limits": {
+    "maxTasksPerRun": 1,
+    "maxPullRequestsPerRun": 1,
+    "maxRetries": 0,
+    "timeoutMinutes": 45,
+    "maxBudgetUsd": 5
+  }
+}

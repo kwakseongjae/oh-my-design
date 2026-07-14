@@ -127,34 +127,12 @@ export default function PrivacyPage() {
           </p>
         </Section>
 
-        <Section title="Claude connector (MCP)">
+        <Section title="Retired Claude connector (MCP)">
           <p>
-            oh-my-design offers a read-only{" "}
-            <strong className="font-medium text-foreground">Claude connector</strong> at{" "}
-            <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/api/mcp</code>.
-            When you use it inside Claude, Claude&apos;s servers call our endpoint
-            to search and fetch entries from our public design-systems catalog.
-          </p>
-          <p>
-            We log only{" "}
-            <strong className="font-medium text-foreground">anonymous, aggregate counts</strong> — which
-            tool was called and, for a fetch, which public reference id — to
-            understand usage. We do{" "}
-            <strong className="font-medium text-foreground">not</strong> log the text of your search
-            queries, your IP, or any account; there is no sign-in.
-          </p>
-          <p>
-            To rank a vibe search, your search phrase is sent to our embedding
-            provider,{" "}
-            <strong className="font-medium text-foreground">OpenRouter</strong> (United States), to
-            compute a numeric vector. It is used only to find matching references
-            and is not stored by us.
-          </p>
-          <p>
-            The connector only reads our own public catalog. It does{" "}
-            <strong className="font-medium text-foreground">not</strong> access or store your Claude
-            memory, conversation history, prompts, or files. It is read-only and
-            requires no authentication.
+            The former read-only connector at{" "}
+            <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/api/mcp</code>{" "}
+            is retired and returns HTTP 410. It no longer accepts searches, sends phrases to an embedding provider,
+            or records connector usage. Historical aggregate metrics may remain in operational backups under the retention rules above.
           </p>
         </Section>
 

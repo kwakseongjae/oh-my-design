@@ -8,420 +8,345 @@ primary_color: "#92fa72"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=kmong.com&sz=128"
-verified: "2026-06-09"
+verified: "2026-07-13"
 added: "2026-06-09"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: marketplace-home, kind: public-marketplace, url: "https://kmong.com/", inspected: "2026-07-13" }
+    - { id: marketplace-category, kind: public-marketplace, url: "https://kmong.com/category/1", inspected: "2026-07-13" }
+  sources:
+    - { id: home-capture, kind: product-surface, url: "https://kmong.com/", captured: "2026-07-13" }
+    - { id: category-capture, kind: product-surface, url: "https://kmong.com/category/1", captured: "2026-07-13" }
+    - { id: company-context, kind: official-doc, url: "https://company.kmong.com/", captured: "2026-07-13" }
+    - { id: font-design, kind: official-doc, url: "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md", captured: "2026-07-13" }
+    - { id: font-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.canvas": &home { surface_id: marketplace-home, source_id: home-capture, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.ink": *home
+    "tokens.colors.heading": *home
+    "tokens.colors.muted": *home
+    "tokens.colors.hairline": *home
+    "tokens.colors.control-border": *home
+    "tokens.colors.primary": *home
+    "tokens.colors.on-primary": *home
+    "tokens.colors.header-action": *home
+    "tokens.colors.on-header-action": *home
+    "tokens.colors.category-surface": &category { surface_id: marketplace-category, source_id: category-capture, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.category-border": *category
+    "tokens.typography.family.ui": *home
+    "tokens.typography.marketplace-body.size": *home
+    "tokens.typography.marketplace-body.weight": *home
+    "tokens.typography.marketplace-body.lineHeight": *home
+    "tokens.typography.marketplace-body.use": *home
+    "tokens.typography.header-action.size": *home
+    "tokens.typography.header-action.weight": *home
+    "tokens.typography.header-action.lineHeight": *home
+    "tokens.typography.header-action.use": *home
+    "tokens.typography.hero.size": *home
+    "tokens.typography.hero.weight": *home
+    "tokens.typography.hero.lineHeight": *home
+    "tokens.typography.hero.use": *home
+    "tokens.typography.search.size": *home
+    "tokens.typography.search.weight": *home
+    "tokens.typography.search.lineHeight": *home
+    "tokens.typography.search.use": *home
+    "tokens.typography.category-heading.size": *category
+    "tokens.typography.category-heading.weight": *category
+    "tokens.typography.category-heading.lineHeight": *category
+    "tokens.typography.category-heading.use": *category
+    "tokens.spacing.xxs": *home
+    "tokens.spacing.sm": *home
+    "tokens.spacing.md": *home
+    "tokens.spacing.base": *home
+    "tokens.spacing.lg": *home
+    "tokens.spacing.xl": *home
+    "tokens.spacing.xxl": *category
+    "tokens.rounded.square": *home
+    "tokens.rounded.primary-cta": *home
+    "tokens.rounded.control": *home
+    "tokens.rounded.category-panel": *category
+    "tokens.rounded.home-search": *home
+    "tokens.rounded.category-search": *category
+    "tokens.shadow.home-search": *home
+    "tokens.shadow.category-search": *category
+    "tokens.components.home-primary-cta.type": *home
+    "tokens.components.home-primary-cta.bg": *home
+    "tokens.components.home-primary-cta.fg": *home
+    "tokens.components.home-primary-cta.radius": *home
+    "tokens.components.home-primary-cta.padding": *home
+    "tokens.components.home-primary-cta.height": *home
+    "tokens.components.home-primary-cta.font": *home
+    "tokens.components.home-primary-cta.states": *home
+    "tokens.components.home-primary-cta.use": *home
+    "tokens.components.header-action.type": *home
+    "tokens.components.header-action.bg": *home
+    "tokens.components.header-action.fg": *home
+    "tokens.components.header-action.radius": *home
+    "tokens.components.header-action.height": *home
+    "tokens.components.header-action.font": *home
+    "tokens.components.header-action.states": *home
+    "tokens.components.header-action.use": *home
+    "tokens.components.home-search.type": *home
+    "tokens.components.home-search.bg": *home
+    "tokens.components.home-search.fg": *home
+    "tokens.components.home-search.border": *home
+    "tokens.components.home-search.radius": *home
+    "tokens.components.home-search.padding": *home
+    "tokens.components.home-search.height": *home
+    "tokens.components.home-search.font": *home
+    "tokens.components.home-search.states": *home
+    "tokens.components.home-search.use": *home
+    "tokens.components.home-outline-cta.type": *home
+    "tokens.components.home-outline-cta.bg": *home
+    "tokens.components.home-outline-cta.fg": *home
+    "tokens.components.home-outline-cta.border": *home
+    "tokens.components.home-outline-cta.radius": *home
+    "tokens.components.home-outline-cta.padding": *home
+    "tokens.components.home-outline-cta.height": *home
+    "tokens.components.home-outline-cta.font": *home
+    "tokens.components.home-outline-cta.states": *home
+    "tokens.components.home-outline-cta.use": *home
+    "tokens.components.category-filter-control.type": *category
+    "tokens.components.category-filter-control.bg": *category
+    "tokens.components.category-filter-control.fg": *category
+    "tokens.components.category-filter-control.border": *category
+    "tokens.components.category-filter-control.radius": *category
+    "tokens.components.category-filter-control.padding": *category
+    "tokens.components.category-filter-control.height": *category
+    "tokens.components.category-filter-control.font": *category
+    "tokens.components.category-filter-control.states": *category
+    "tokens.components.category-filter-control.use": *category
+    "tokens.components.category-panel.type": *category
+    "tokens.components.category-panel.bg": *category
+    "tokens.components.category-panel.radius": *category
+    "tokens.components.category-panel.padding": *category
+    "tokens.components.category-panel.font": *category
+    "tokens.components.category-panel.use": *category
 tokens:
-  source: live-extract
-  extracted: "2026-06-09"
-  components_harvested: true
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Only selector-backed values from the supplied public marketplace capture are tokens. Home and category observations remain route-local; no logged-in, checkout, support-doc, or interaction state is inferred."
   colors:
-    primary: "#92fa72"
-    primary-deep: "#5dd877"
-    primary-tint: "#e1f5dc"
-    mint: "#27e7b7"
     canvas: "#ffffff"
-    heading: "#212224"
     ink: "#000000"
-    label: "#303441"
+    heading: "#212224"
+    muted: "#555969"
     hairline: "#f2f3f7"
-    border: "#c8cad2"
-    border-card: "#e4e5ed"
-    blue: "#4b94fa"
-    blue-deep: "#116ad4"
-    blue-tint: "#ebf4ff"
-    red: "#ff402b"
+    control-border: "#c8cad2"
+    primary: "#92fa72"
     on-primary: "#212224"
+    header-action: "#212224"
+    on-header-action: "#ffffff"
+    category-surface: "#fafafc"
+    category-border: "#e4e5ed"
   typography:
-    family: { sans: "Pretendard" }
-    display:    { size: 40, weight: 700, lineHeight: 1.30, tracking: 0, use: "Hero headline (40px / 52px)" }
-    section:    { size: 28, weight: 700, lineHeight: 1.36, tracking: 0, use: "Section titles (28px / 38px)" }
-    subheading: { size: 20, weight: 700, lineHeight: 1.40, tracking: 0, use: "Card heads, search field text" }
-    body:       { size: 16, weight: 400, lineHeight: 1.50, tracking: 0, use: "Standard reading text, nav, links" }
-    button:     { size: 16, weight: 500, lineHeight: 1.00, tracking: 0, use: "Primary button label" }
-    caption:    { size: 11, weight: 700, lineHeight: 1.40, tracking: 0, use: "Badges, ranking labels" }
-    micro:      { size: 10, weight: 700, lineHeight: 1.40, tracking: 0, use: "Pill tags (기업용), metadata" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 40, section: 76 }
-  rounded: { sm: 4, md: 11, lg: 27, full: 9999 }
+    family: { ui: "Pretendard" }
+    marketplace-body: { size: 16, weight: 400, lineHeight: 1.50, use: "Repeated public marketplace body, card, and list sample" }
+    header-action: { size: 14, weight: 500, lineHeight: 1.43, use: "Public home/category header action" }
+    hero: { size: 40, weight: 700, lineHeight: 1.30, use: "Public home headline" }
+    search: { size: 20, weight: 400, lineHeight: 1.40, use: "Public home search input" }
+    category-heading: { size: 36, weight: 700, lineHeight: 1.22, use: "Public category-page heading sample" }
+  spacing: { xxs: 2, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32 }
+  rounded: { square: 0, primary-cta: 4, control: 8, category-panel: 12, home-search: 36, category-search: 24 }
   shadow:
-    card: "rgba(0,0,0,0.08) 0px 4px 12px 0px"
-    pop: "rgba(0,0,0,0.1) 0px 0px 20px 0px"
+    home-search: "rgba(0,0,0,0.1) 0px 0px 20px 0px"
+    category-search: "rgba(0,0,0,0.06) 0px 0px 8px 0px"
   components:
-    button-primary: { type: button, bg: "#92fa72", fg: "#212224", radius: "4px", padding: "0px 24px", font: "16px / 500", use: "Primary CTA — 크몽 시작하기, dark ink label on signature green" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#000000", radius: "4px", padding: "0px 20px", font: "16px / 400", use: "Outlined action, 1px #c8cad2 border — category chips" }
-    button-pill: { type: button, bg: "#ffffff", fg: "#303441", radius: "9999px", padding: "0px", font: "16px / 400", use: "Round icon/control button, translucent white surface" }
-    input-search: { type: input, bg: "#ffffff", fg: "#212224", radius: "4px", padding: "16px 0px", font: "20px / 400", use: "Hero search — 어떤 전문가가 필요하세요?, underline-led, 1px #f2f3f7 hairline" }
-    card-gig: { type: card, bg: "#ffffff", fg: "#212224", radius: "4px", use: "Service/gig card, 1px #e4e5ed border, shadow rgba(0,0,0,0.08) 0px 4px 12px" }
-    badge-biz: { type: badge, bg: "#ebf4ff", fg: "#116ad4", radius: "11px", font: "10px / 700", use: "기업용 / Biz pill, blue-tinted" }
-    badge-best: { type: badge, bg: "#ffffff", fg: "#ff402b", radius: "27px", font: "11px / 700", use: "Best / ranking badge, red accent" }
-    badge-mint: { type: badge, bg: "#e1f5dc", fg: "#5dd877", radius: "11px", font: "10px / 700", use: "Promo / new tag, green-tint on deep green text" }
-    nav-bar: { type: tab, bg: "#ffffff", fg: "#212224", font: "16px / 400", use: "Top header 76px, white surface, category nav row", active: "2px bottom border #212224" }
-    avatar-pro: { type: avatar, bg: "#f2f3f7", radius: "9999px", use: "Expert/seller profile circle, hairline fill" }
+    home-primary-cta: { type: button, bg: "#92fa72", fg: "#212224", radius: "4px", padding: "0px 24px", height: "52px", font: "16px / 500 Pretendard", states: "default only; no interaction state captured", use: "Public home CTA, selector home::[data-omd-capture=143]" }
+    header-action: { type: button, bg: "#212224", fg: "#ffffff", radius: "8px", height: "36px", font: "14px / 500 Pretendard", states: "default only; no interaction state captured", use: "Public marketplace header action, selector home::[data-omd-capture=6]" }
+    home-search: { type: input, bg: "#ffffff", fg: "#212224", border: "1px solid #c8cad2", radius: "36px", padding: "0px 32px", height: "64px", font: "20px / 400 Pretendard", states: "default only; no interaction state captured", use: "Public home search shell/input, selectors home::form and home::[data-omd-capture=7]" }
+    home-outline-cta: { type: button, bg: "#ffffff", fg: "#212224", border: "1px solid #c8cad2", radius: "8px", padding: "0px 24px", height: "52px", font: "16px / 500 Pretendard", states: "default only; no interaction state captured", use: "Public home outlined CTA, selector home::[data-omd-capture=145]" }
+    category-filter-control: { type: button, bg: "#ffffff", fg: "#212224", border: "1px solid #e4e5ed", radius: "8px", padding: "0px 12px", height: "36px", font: "14px / 400 Pretendard", states: "default only; no interaction state captured", use: "Public category filter control, selector surface-3::[data-omd-capture=93]" }
+    category-panel: { type: card, bg: "#fafafc", radius: "12px", padding: "32px 24px", font: "16px / 400 Pretendard", use: "Public category-page panel, selector surface-3::article" }
+  components_harvested: true
 ---
 
-# Design System Inspiration of Kmong
+# Design System Inspiration of Kmong (크몽)
 
 ## 1. Visual Theme & Atmosphere
 
-Kmong (크몽) is Korea's largest freelance and skill marketplace, and its homepage reads exactly like what it is: a high-trust, high-volume transaction surface designed to move a buyer from "I have a problem" to "I hired the right expert" with the least possible friction. The canvas is pure white (`#ffffff`) with near-black ink headings (`#212224`), and the entire personality is carried by a single, almost shockingly bright signature green — `#92fa72` on the primary CTA and the deeper `#5dd877` saturating cards, tags, and accents across the page. This is not the muted, institutional green of a bank; it is a fresh, energetic, almost neon lime that signals approachability and momentum. The effect is a marketplace that feels optimistic and fast rather than corporate.
+Kmong is a Korean expert-services marketplace: its public home lets people find and commission specialists, while the official company site describes an escrow-protected transaction model and company-oriented services such as corporate-card payment and tax-invoice issuance. The public marketplace surface is deliberately direct: white space, dark `#212224` headings, a large searchable entry point, and a lime `#92FA72` action that stands apart from a compact dark header action. Kmong’s company site also records a 2025 logo-rebrand story, so the current expression should be treated as a living marketplace identity rather than an inherited generic green UI. This reference separates the public marketplace evidence from company/corporate context; neither is treated as a substitute for a signed-in workflow or documentation chrome.
 
-The typography is set entirely in **Pretendard**, the de-facto Korean web sans that renders Hangul and Latin with even rhythm and excellent legibility at small sizes. Headlines run heavy (weight 700) and tight in leading — the hero is 40px on a 52px line — projecting confidence and directness rather than the whisper-weight restraint of Western fintech. Korean copy ("성공이 필요한 순간, 딱 맞는 전문가를 찾아보세요") is large, bold, and conversational. There is no decorative letter-spacing; tracking sits at `normal` throughout, letting Pretendard's native metrics do the work.
+## 2. Color & Surface Evidence
 
-Depth is handled with the lightest possible touch. Cards lift on a soft single-layer shadow (`rgba(0,0,0,0.08) 0px 4px 12px`) and floating popovers use a diffuse `rgba(0,0,0,0.1) 0px 0px 20px`. Corners are conservative — a 4px radius dominates buttons, cards, and inputs — while small status pills go fully rounded (11px–27px) for a friendly, badge-like read. The overall atmosphere is clean, dense, and commerce-first: lots of real content per screen, a vivid green guiding every primary action, and just enough elevation to separate the gig cards from the white field they sit on.
-
-**Key Characteristics:**
-- Pretendard everywhere — the standard Korean web sans, weight 700 for headings, 400 for body
-- Signature electric green `#92fa72` on the primary CTA with deeper `#5dd877` as the dominant brand fill
-- Dark ink labels (`#212224`) ON the green button rather than white text — the green is bright enough to carry dark type
-- Pure white (`#ffffff`) canvas with `#f2f3f7` hairlines for a clean, high-density commerce layout
-- Conservative 4px radius on buttons/cards/inputs; fully-rounded pills (11px–27px) on status badges
-- Soft single-layer shadows (`rgba(0,0,0,0.08) 0px 4px 12px`) — gentle elevation, never heavy
-- Blue (`#116ad4` on `#ebf4ff`) for Biz/기업용 trust tags; red (`#ff402b`) for Best/ranking accents
-- Bold, conversational Korean headlines at 40px/52px — direct and momentum-driven, not understated
-
-## 2. Color Palette & Roles
-
-### Primary
-- **Kmong Green** (`#92fa72`): The primary CTA background ("크몽 시작하기"). A bright, energetic lime-green that anchors every primary action.
-- **Brand Green Deep** (`#5dd877`): The dominant brand fill across cards, tags, and decorative accents — the most-used saturated color on the page.
-- **Green Tint** (`#e1f5dc`): Soft pale-green surface for promo/new tags and tinted backgrounds.
-- **Mint** (`#27e7b7`): Secondary teal-green accent for highlights and decorative gradients.
-
-### Neutrals & Text
-- **Heading Ink** (`#212224`): Primary heading and label color — a near-black with a hint of warmth. Also the label color on the green CTA.
-- **Pure Ink** (`#000000`): Section headings and high-contrast body text.
-- **Label Slate** (`#303441`): Secondary control text, muted labels on translucent surfaces.
-- **Pure White** (`#ffffff`): Page background, card surfaces, header bar.
-
-### Accents
-- **Trust Blue** (`#4b94fa`): Informational accent, links, Biz-related highlights.
-- **Blue Deep** (`#116ad4`): Biz/기업용 badge text color.
-- **Blue Tint** (`#ebf4ff`): Tinted surface for blue Biz badges.
-- **Alert Red** (`#ff402b`): Best/ranking badges, urgency and promotional accents.
-
-### Surface & Borders
-- **Hairline** (`#f2f3f7`): The standard light divider and input underline color.
-- **Border** (`#c8cad2`): Outlined secondary button and control borders.
-- **Card Border** (`#e4e5ed`): Subtle 1px border on gig/service cards.
+- `#FFFFFF` — observed public home/category canvas, search shell, and outlined controls.
+- `#000000` — frequent body and card text in the supplied public capture.
+- `#212224` — heading, search-input, and dark header-action colour.
+- `#555969` — observed muted public-marketplace text.
+- `#F2F3F7` — repeatedly observed hairline/border colour.
+- `#C8CAD2` — home search and outlined-CTA border.
+- `#E4E5ED` — category filter-control border.
+- `#92FA72` — observed home primary-CTA background; it is not assumed to be every primary action on every route.
+- `#FAFAFC` — observed category-page panel surface only.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Primary**: `Pretendard`, with system sans fallback (`sans-serif`)
-- Pretendard is the de-facto Korean web typeface, chosen for even Hangul/Latin rhythm and strong small-size legibility. No monospace face is used on the marketing surface.
+### Evidence classes
 
-### Hierarchy
+- **Live product computed use:** `Pretendard` has 1,444 visible uses across the supplied home and category capture, with a high-confidence loaded FontFace match and 18 Kmong CloudFront font-source URLs. It is the sole `tokens.typography.family.ui` family.
+- **Official font asset and licence:** the upstream Pretendard project documents distribution and its SIL Open Font License 1.1. This establishes the upstream licence boundary; it does not independently establish Kmong product use.
+- **Declared-only:** `slick` has four Kmong-hosted declared source files but zero visible uses in the bundle. It is not a UI-family token and must not be substituted.
+- **Unresolved:** no separate official Kmong typeface or additional browser-loaded family was established from the supplied public routes.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Hero Display | Pretendard | 40px (2.50rem) | 700 | 52px (1.30) | normal | Main homepage headline |
-| Section Heading | Pretendard | 28px (1.75rem) | 700 | 38px (1.36) | normal | Feature/section titles |
-| Subheading | Pretendard | 20px (1.25rem) | 700 | 1.40 | normal | Card heads, search field text |
-| Body | Pretendard | 16px (1.00rem) | 400 | 1.50 | normal | Standard text, nav, links |
-| Button | Pretendard | 16px (1.00rem) | 500 | 1.00 | normal | Primary CTA label |
-| Caption | Pretendard | 11px (0.69rem) | 700 | 1.40 | normal | Best/ranking badges |
-| Micro | Pretendard | 10px (0.63rem) | 700 | 1.40 | normal | Pill tags (기업용), metadata |
+### Observed public-marketplace hierarchy
 
-### Principles
-- **Bold-and-direct**: Headlines at weight 700 with tight leading (40px on 52px). Kmong communicates with confidence and clarity, not whisper-weight restraint.
-- **One family, full range**: Pretendard handles everything from 40px hero to 10px micro-tags. Weight is the primary hierarchy lever — 700 for headings/badges, 500 for buttons, 400 for body.
-- **No decorative tracking**: Letter-spacing stays at `normal` throughout. Pretendard's native metrics are tuned for Hangul and need no adjustment.
-- **Korean-first sizing**: Body and labels are generously sized (16px base, 20px search input) for comfortable Hangul reading and dense commerce scanning.
+| Role | Family | Size | Weight | Line height | Surface boundary |
+|---|---|---:|---:|---:|---|
+| Home headline | Pretendard | 40px | 700 | 52px | Home only |
+| Home search input | Pretendard | 20px | 400 | 28px | Home only |
+| Category heading sample | Pretendard | 36px | 700 | 44px | Category route only |
+| Repeated body/card/list sample | Pretendard | 16px | 400 | 24px | Home and category routes |
+| Header action | Pretendard | 14px | 500 | 20px | Public marketplace header |
 
-## 4. Component Stylings
+## 4. Components
 
-### Buttons
+### Home primary CTA
 
-**Primary (Kmong Green)**
-- Background: `#92fa72`
-- Text: `#212224` (dark ink — not white)
-- Padding: 0px 24px
-- Radius: 4px
-- Font: 16px Pretendard weight 500
-- Use: Primary CTA — "크몽 시작하기", "의뢰하기"
+**Default**
+- Background: `#92FA72`
+- Text: `#212224`
+- Radius: `4px`
+- Padding: `0px 24px`
+- Height: `52px`
+- Font: `16px / 500 Pretendard`
+- Use: Public home CTA; `home::[data-omd-capture="143"]`.
 
-**Secondary (Outlined)**
-- Background: `#ffffff`
-- Text: `#000000`
-- Border: `1px solid #c8cad2`
-- Padding: 0px 20px
-- Radius: 4px
-- Font: 16px Pretendard weight 400
-- Use: Category chips, secondary actions
+### Header action
 
-**Round Control Pill**
-- Background: `#ffffff` (often translucent)
-- Text: `#303441`
-- Radius: 9999px (full)
-- Font: 16px weight 400
-- Use: Icon/carousel control buttons
+**Default**
+- Background: `#212224`
+- Text: `#FFFFFF`
+- Radius: `8px`
+- Height: `36px`
+- Font: `14px / 500 Pretendard`
+- Use: Public marketplace header action; `home::[data-omd-capture="6"]`.
 
-### Cards & Containers
-- Background: `#ffffff`
-- Border: `1px solid #e4e5ed`
-- Radius: 4px
-- Shadow: `rgba(0,0,0,0.08) 0px 4px 12px 0px`
-- Popover shadow: `rgba(0,0,0,0.1) 0px 0px 20px 0px`
-- Use: Gig/service cards, expert profile cards
+### Home search
 
-### Badges / Tags / Pills
-**Biz / 기업용 Pill**
-- Background: `#ebf4ff`
-- Text: `#116ad4`
-- Radius: 11px
-- Font: 10px weight 700
+**Default**
+- Background: `#FFFFFF`
+- Text: `#212224`
+- Border: `1px solid #C8CAD2`
+- Radius: `36px`
+- Padding: `0px 32px`
+- Height: `64px`
+- Font: `20px / 400 Pretendard`
+- Use: Public home search shell/input; `home::form` and `home::[data-omd-capture="7"]`.
 
-**Best / Ranking Badge**
-- Background: `#ffffff`
-- Text: `#ff402b`
-- Radius: 27px
-- Font: 11px weight 700
+### Home outlined CTA
 
-**Green Promo Tag**
-- Background: `#e1f5dc`
-- Text: `#5dd877`
-- Radius: 11px
-- Font: 10px weight 700
+**Default**
+- Background: `#FFFFFF`
+- Text: `#212224`
+- Border: `1px solid #C8CAD2`
+- Radius: `8px`
+- Padding: `0px 24px`
+- Height: `52px`
+- Font: `16px / 500 Pretendard`
+- Use: Public home outlined CTA; `home::[data-omd-capture="145"]`.
 
-### Inputs & Forms
-- Hero search: white surface, 4px radius, 20px Pretendard text, placeholder "어떤 전문가가 필요하세요?"
-- Underline/hairline border in `#f2f3f7`
-- Text color: `#212224`
-- Padding: 16px vertical
+### Category filter control
 
-### Navigation
-- White (`#ffffff`) sticky header, 76px tall
-- Ink (`#212224`) link text, 16px Pretendard weight 400
-- Category nav row below the brand logotype
-- Active nav item: 2px bottom border in `#212224`
-- Primary green CTA right-aligned
+**Default**
+- Background: `#FFFFFF`
+- Text: `#212224`
+- Border: `1px solid #E4E5ED`
+- Radius: `8px`
+- Padding: `0px 12px`
+- Height: `36px`
+- Font: `14px / 400 Pretendard`
+- Use: Public category filter control; `surface-3::[data-omd-capture="93"]`.
+
+### Category panel
+
+**Default**
+- Background: `#FAFAFC`
+- Radius: `12px`
+- Padding: `32px 24px`
+- Font: `16px / 400 Pretendard`
+- Use: Public category-page panel; `surface-3::article`.
+
+The supplied bundle reports zero interaction records. No hover, pressed, focus, disabled, menu, dialog, validation, or responsive variants are claimed from class names or static samples.
 
 ---
 
-**Verified:** 2026-06-09 (live DOM inspect — homepage)
-**Tier 1 sources:** https://kmong.com, https://kmong.com/atoz (Kmong A to Z brand guide / help center)
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://kmong.com/` (public marketplace home), `https://kmong.com/category/1` (public category marketplace), `https://company.kmong.com/` (official company context), `https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md` (upstream font distribution), and `https://github.com/orioncactus/pretendard/blob/main/LICENSE` (upstream font licence)
+**Tier 2 sources:** `https://getdesign.md/kmong` (attempted; built-in web open returned an internal safe-open failure/no usable record), `https://styles.refero.design/?q=kmong` (attempted; built-in web open returned an internal safe-open failure/no usable record)
+**Conflicts unresolved:** none
 
-## 5. Layout Principles
+The older universal 4px input/card rule, 76px header, card-shadow system, Biz/Best/promo badge variants, generic gig-card treatment, and all reusable interaction/state/motion assertions were rolled back: they are not established by the supplied 2026 multi-surface capture.
 
-### Spacing System
-- Base unit: 4px, scaling 4 / 8 / 12 / 16 / 20 / 24 / 40 / 76px
-- Section rhythm uses generous ~76px header-to-content gaps, while gig cards pack densely in grids
-- Notable: dense at the small end (4–16px) for in-card spacing, generous at the section level
+## 5. Layout & Responsive Evidence
 
-### Grid & Container
-- Wide centered content area for category grids and gig-card carousels
-- Hero: left-aligned bold headline + large search field as the primary entry point
-- Feature sections: horizontally scrolling card carousels ("쇼핑몰 사장님이 많이 찾아요")
-- High content density — many gig cards visible per screen, commerce-first
-
-### Whitespace Philosophy
-- **Commerce density**: Unlike minimalist marketing sites, Kmong fills the screen with real, scannable inventory. Whitespace separates sections, not individual cards.
-- **Green as wayfinding**: The bright green CTA is the single most prominent element, pulling the eye to the next action on every section.
-- **Card rhythm**: Uniform 4px-radius gig cards in repeating carousels create a predictable, catalog-like scanning rhythm.
-
-### Border Radius Scale
-- Standard (4px): Buttons, inputs, cards — the workhorse radius
-- Pill small (11px): Biz/promo status tags
-- Pill large (27px): Best/ranking badges
-- Full (9999px): Round control buttons, avatars
+- The supplied capture covers public 1440×900 home and category routes. It establishes a 628px × 64px home-search shell and a 500px × 50px category-search shell, not a breakpoint system.
+- The public category page includes a 1,168px × 184px `#FAFAFC` panel with `32px 24px` padding. It is a route-local observation, not a universal card layout.
+- No mobile, signed-in, checkout, seller, help-centre, or documentation-chrome route was supplied as product evidence. Their layout contracts are intentionally absent.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, hairline dividers |
-| Card (Level 1) | `rgba(0,0,0,0.08) 0px 4px 12px 0px` | Gig cards, content panels |
-| Popover (Level 2) | `rgba(0,0,0,0.1) 0px 0px 20px 0px` | Dropdowns, floating tooltips, hover cards |
+- Home search shell: `rgba(0,0,0,0.1) 0px 0px 20px 0px`.
+- Category search shell: `rgba(0,0,0,0.06) 0px 0px 8px 0px`.
 
-**Shadow Philosophy**: Kmong's elevation is deliberately gentle. Shadows are neutral black at very low alpha (0.08–0.1), single-layer, with no colored tinting. The goal is to lift a gig card just enough off the white field to register as tappable, without introducing visual heaviness that would slow down catalog scanning. Elevation is functional separation, not decorative drama — appropriate for a high-volume marketplace where the content, not the chrome, is the star.
+No general card, popover, modal, or hover-elevation ladder is claimed.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use the signature green `#92fa72` for the primary CTA, with dark ink (`#212224`) text on it
-- Use `#5dd877` as the dominant brand fill for accents, tags, and decorative elements
-- Set all type in Pretendard — 700 for headings/badges, 500 for buttons, 400 for body
-- Keep button/card/input radius at 4px; reserve full-round pills for status badges only
-- Use soft single-layer shadows (`rgba(0,0,0,0.08) 0px 4px 12px`) for card elevation
-- Use blue (`#116ad4` on `#ebf4ff`) for Biz/기업용 trust tags and red (`#ff402b`) for Best/ranking
-- Let content density carry the layout — many scannable gig cards per screen
+
+- Keep the observed home primary CTA distinct: `#92FA72` with `#212224` text.
+- Use Pretendard only when reproducing the verified public-marketplace specimen.
+- Preserve the route distinction between the 36px home search and 24px category search.
+- Treat the dark 36px header action and lime 52px home CTA as separate observed variants.
 
 ### Don't
-- Don't put white text on the green CTA — the green is bright; dark ink (`#212224`) is the brand choice
-- Don't use heavy or colored shadows — elevation stays soft, neutral, and minimal
-- Don't apply decorative letter-spacing — Pretendard runs at `normal` tracking
-- Don't use large rounded corners (12px+) on cards or buttons — 4px is the standard
-- Don't dilute the green with secondary brand colors — green is the single wayfinding accent
-- Don't use thin/light heading weights — Kmong headlines are bold (700) and direct
-- Don't sacrifice content density for whitespace — this is a marketplace, not a minimalist landing page
+
+- Do not turn the lime home CTA into an unsupported universal action token.
+- Do not reuse `slick` or substitute it for Pretendard; its visible product use was not observed.
+- Do not infer hover, focus, disabled, error, modal, or responsive styles from utility class names.
+- Do not apply the category panel or filters to marketing, support, or signed-in flows without evidence.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single-column, full-width search, stacked card carousels |
-| Tablet | 768–1024px | 2-column gig grids, condensed nav |
-| Desktop | 1024–1440px | Full multi-column carousels, complete category nav |
-| Large | >1440px | Centered content with side margins |
-
-### Touch Targets
-- Primary CTA and search field sized for comfortable mobile tapping
-- Gig cards full-width tappable on mobile
-- Category chips with adequate horizontal padding (0 20px)
-- Round control pills sized as discrete tap targets
-
-### Collapsing Strategy
-- Hero: 40px headline compresses on mobile, weight 700 maintained
-- Navigation: full category row collapses to hamburger + search on mobile
-- Card carousels: horizontal scroll preserved across breakpoints
-- Search field: remains the dominant above-the-fold element at all sizes
-
-### Image Behavior
-- Gig thumbnails maintain 4px radius at all sizes
-- Expert avatars stay fully round (9999px)
-- Card images fill card width, fixed aspect ratio for catalog uniformity
+Only desktop-sized public capture evidence was supplied. No breakpoint, touch-target, mobile navigation, or image-ratio rule is recorded.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: Kmong Green (`#92fa72`) with dark ink (`#212224`) text
-- Brand fill: Green Deep (`#5dd877`)
-- Background: Pure White (`#ffffff`)
-- Heading text: Ink (`#212224`)
-- Body text: Ink (`#000000`)
-- Hairline/divider: (`#f2f3f7`)
-- Card border: (`#e4e5ed`)
-- Biz tag: blue text (`#116ad4`) on tint (`#ebf4ff`)
-- Best/ranking: Red (`#ff402b`)
-
-### Example Component Prompts
-- "Create a hero on white background. Headline at 40px Pretendard weight 700, line-height 52px, color #212224, no letter-spacing. Below it a search field (white, 4px radius, 20px text, placeholder '어떤 전문가가 필요하세요?'). Primary green CTA button (#92fa72 bg, #212224 dark text, 4px radius, 0 24px padding, 16px weight 500)."
-- "Design a gig card: white background, 1px solid #e4e5ed border, 4px radius, shadow rgba(0,0,0,0.08) 0px 4px 12px. Title at 20px Pretendard weight 700, #212224. A Biz pill: #ebf4ff bg, #116ad4 text, 11px radius, 10px weight 700."
-- "Build a Best badge: white background, #ff402b text, 27px radius, 11px Pretendard weight 700."
-- "Create navigation: white sticky 76px header. Pretendard 16px weight 400 links in #212224, active item with 2px bottom border #212224. Green CTA '크몽 시작하기' right-aligned (#92fa72 bg, #212224 text, 4px radius)."
-
-### Iteration Guide
-1. The signature green `#92fa72` carries dark ink text (`#212224`), not white — this is the defining brand quirk
-2. Pretendard is the only family; lean on weight (700/500/400) for hierarchy
-3. Radius stays at 4px for buttons/cards/inputs; full-round only for badges and avatars
-4. Shadows are soft, neutral, single-layer — `rgba(0,0,0,0.08) 0px 4px 12px`
-5. Blue (`#116ad4`/`#ebf4ff`) is reserved for Biz/trust; red (`#ff402b`) for ranking/urgency
-6. Content density over whitespace — this is a marketplace catalog
-
----
+- Recreate the **public home CTA** as a 52px-tall, 4px-radius button with `#92FA72` background, `#212224` label, `0px 24px` padding, and 16px/500 Pretendard.
+- Recreate the **public home search** as a 64px white shell with a `#C8CAD2` 1px border, 36px radius, `0px 32px` shell padding, and a 20px/400 Pretendard input.
+- Recreate the **public category filter** as a 36px white control with `#E4E5ED` border, 8px radius, `0px 12px` padding, and 14px/400 Pretendard.
+- Do not generate an interaction or state variant unless new selector-and-interaction evidence establishes it.
 
 ## 10. Voice & Tone
 
-Kmong's voice is warm, encouraging, and outcome-focused — it speaks to small-business owners, founders, and solo creators who need expert help and frames the platform as the bridge to their goal. The hero line "성공이 필요한 순간, 딱 맞는 전문가를 찾아보세요" (When you need success, find exactly the right expert) is characteristic: it leads with the user's aspiration, then offers a concrete path. Copy is conversational and second-person, never bureaucratic. Section headers like "쇼핑몰 사장님이 많이 찾아요" (Shopping-mall owners search for this a lot) use social proof and relatable personas rather than abstract feature claims.
-
-| Context | Tone |
-|---|---|
-| Hero headlines | Aspirational + concrete. Names the goal ("성공"), then the action ("전문가를 찾아보세요"). |
-| Category labels | Plain, scannable Korean nouns. "디자인", "마케팅", "IT·프로그래밍". |
-| Social-proof sections | Relatable persona framing. "쇼핑몰 사장님이 많이 찾아요". |
-| CTAs | Direct, momentum verbs. "크몽 시작하기", "의뢰하기", "전문가 찾기". |
-| Trust signals | Specific and reassuring — ratings, review counts, 안전결제 (safe payment), Biz guarantees. |
-| Help / A to Z | Friendly, step-by-step, beginner-aware. Assumes the user is new to outsourcing. |
-
-**Forbidden register.** Cold corporate jargon, English-heavy buzzwords where plain Korean works, fear-based urgency, or anything that makes a first-time outsourcer feel they don't belong. Kmong's voice lowers the barrier to hiring an expert.
+The official homepage frames the service around finding capable experts and protecting a transaction until work is received; the company site presents the same marketplace as a place where individuals and companies can commission work with practical payment and document support. The observable public tone is therefore direct, reassuring, and task-oriented. This is source-grounded service framing, not a claim that every internal or support message uses one fixed voice.
 
 ## 11. Brand Narrative
 
-Kmong (크몽) launched in **2012** and grew into **Korea's largest freelance and skill marketplace**, operated by **Kmong Inc.** The platform connects clients with freelancers and agencies across categories such as design, IT/programming, marketing, video/photography, translation, documents, and business consulting. The model is a service-listing ("gig") marketplace: experts publish productized services with fixed scopes and prices, and buyers browse, compare ratings and reviews, and commission work through Kmong's escrow-style safe-payment (안전결제) system.
-
-The name "크몽" is the brand's own coinage, and the bright lime-green identity has become a recognizable mark in the Korean startup and SMB ecosystem. Over time Kmong expanded beyond individual gigs into **Kmong Enterprise / Biz** offerings (the 기업용 / 엔터프라이즈 tags visible in the nav) — bringing vetted experts, quality guarantees, and managed sourcing to companies, not just individuals. The platform positions itself as the default first stop for any Korean small business or founder who needs specialized work done without the overhead of hiring full-time.
-
-What Kmong embraces: lowering the barrier to outsourcing, trust infrastructure (reviews, safe payment, dispute handling), and a friendly, high-energy visual brand that makes commissioning expert work feel approachable rather than intimidating.
+Kmong’s official company site presents the service as an expert platform where a request can be made by chat and protected through escrow payment, with distinct support for company transactions such as corporate cards and tax invoices. Its public home exposes the marketplace side of that proposition: specialist listings, reviews, and a search-led path into discovery. The company site also publishes a 2025 logo-rebrand item, indicating an actively maintained visual identity. These facts establish the product and its current public expression; no unobserved seller, contract, or post-purchase experience is inferred here.
 
 ## 12. Principles
 
-1. **Lower the barrier to expertise.** The entire experience is engineered so a first-time buyer can go from problem to hired expert quickly. Design should reduce friction, never add ceremony.
-2. **Trust is the product.** Reviews, ratings, safe payment, and Biz guarantees are not features bolted on — they are the reason the marketplace works. Surface trust signals prominently.
-3. **Green means go.** The signature `#92fa72` is reserved for the next action. One unmistakable wayfinding color keeps the path to purchase obvious.
-4. **Density serves discovery.** A marketplace lives or dies by inventory visibility. Show many scannable gig cards; let content, not chrome, fill the screen.
-5. **Approachable, not corporate.** Bold conversational Korean, warm persona framing, and an energetic palette make hiring an expert feel friendly — appropriate for SMB and solo founders.
-6. **Conservative chrome, vivid accent.** 4px radii and soft neutral shadows keep the frame quiet so the green CTA and the gig content stand out.
+1. **Start with expert discovery.** The large public search field is the most explicit route into the marketplace. *UI implication:* keep a verified search treatment route-local rather than inventing a global command surface.
+2. **Make the next action legible.** The public home’s lime CTA contrasts with the dark header action. *UI implication:* preserve their separate size, colour, and radius values.
+3. **Keep transaction trust concrete.** Escrow protection and company-payment support come from official company context. *UI implication:* do not fabricate trust badges, validation states, or checkout affordances from that narrative alone.
 
-## 13. Personas
+## 13. Stakeholder Groups
 
-*Personas below are fictional archetypes informed by publicly observable Kmong user segments (small-business owners, solo founders, freelancers, marketers), not individual people.*
+*Source-grounded groups, not fictional personas.*
 
-**Jisoo Han, 34, Seoul.** Runs a small online clothing shop. Needs a detail page (상세페이지) designed and product photos shot but has no in-house designer. Searches Kmong by category, compares portfolios and review counts, and commissions a freelancer through safe payment. Trusts the green "크몽 시작하기" path because it always tells her clearly what happens next.
-
-**Minjun Park, 29, Busan.** Solo SaaS founder who needs a landing page built and a logo designed on a startup budget. Lives in the IT·프로그래밍 and 디자인 categories. Values the review system and fixed-price gigs because they make scope predictable. Would be put off by a marketplace that hid prices behind "문의하기" gates.
-
-**Soyeon Lee, 41, Daejeon.** Marketing lead at a mid-size company evaluating Kmong Biz / Enterprise for ongoing outsourced work. Notices the 기업용 blue tags and quality-guarantee messaging. Cares that the platform can provide vetted experts and managed sourcing, not just one-off gigs.
-
-**Daniel Kim, 26, freelance designer, Seoul.** Sells productized design gigs on Kmong as a seller. Optimizes his card thumbnails, ratings, and Best-badge ranking. Experiences the same green-accented, Pretendard-set system from the supply side and relies on the trust infrastructure to get paid reliably.
+- **Clients commissioning expert work:** the public marketplace exposes specialist listings, reviews, and search-led discovery for this group.
+- **Experts offering services:** Kmong’s marketplace model depends on expert service listings; no seller-console UI is claimed from this public capture.
+- **Companies commissioning external work:** the official company site identifies corporate transaction support, including corporate-card payment and tax-invoice issuance; this is business context, not a captured enterprise product UI.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (search, no results)** | White canvas, ink (`#212224`) single line: "검색 결과가 없어요." A green CTA suggests browsing categories instead. No heavy illustration. |
-| **Loading (card grid)** | Skeleton cards at final dimensions in hairline (`#f2f3f7`), 4px radius. Soft shimmer. Card-shaped placeholders preserve the catalog grid. |
-| **Error (action failed)** | Inline message below the action in ink. Red (`#ff402b`) accent for the error marker. Plain-Korean explanation plus a retry affordance. |
-| **Error (form validation)** | Field-level. Red (`#ff402b`) marker + short Korean message describing what to fix. |
-| **Success (order placed / safe payment)** | Confirmation with the green brand fill (`#5dd877`/`#e1f5dc` tint). Clear next-step link to the order. Reassuring, momentum-preserving. |
-| **Disabled** | Reduced opacity on surface and text together. Green actions fade rather than switch to gray, preserving brand read. |
-| **Loading (button press)** | Inline spinner on the green CTA; label stays, button stays green. No layout shift. |
+No reusable empty, loading, error, success, disabled, validation, or skeleton treatment is recorded. The bundle has zero interaction records, so state design is intentionally omitted rather than synthesized.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, focus, button press feedback |
-| `motion-standard` | 200ms | Dropdowns, card hover lift, carousel steps |
-| `motion-slow` | 320ms | Section reveals, modal open |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Default two-way transitions |
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Dropdowns, hover cards arriving |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-
-**Signature motions.**
-
-1. **Card hover lift.** Gig cards raise gently on hover using `motion-standard / ease-standard`, the soft shadow (`rgba(0,0,0,0.08) 0px 4px 12px`) deepening slightly. The motion signals tappability without distracting from scanning.
-2. **Carousel step.** Horizontal card carousels ("쇼핑몰 사장님이 많이 찾아요") slide one column at a time with `motion-standard`, keeping the catalog's left-to-right reading order intact.
-3. **CTA press.** The green primary button gives immediate `motion-fast` press feedback — a brief scale/opacity dip — confirming the action without delay.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, hover lifts and carousel slides become instantaneous; the marketplace stays fully functional with no decorative motion.
-
-<!--
-OmD v0.1 Sources — Kmong
-
-Token-level claims (sections 1–9) are sourced from a live DOM inspection of
-https://kmong.com on 2026-06-09 via Playwright getComputedStyle:
-- Primary CTA "크몽 시작하기": background #92fa72, color #212224, radius 4px,
-  padding 0 24px, 16px / weight 500 (BUTTON).
-- Dominant brand fill #5dd877 (152 occurrences), tint #e1f5dc, mint #27e7b7.
-- H1 hero 40px / weight 700 / line-height 52px / color rgb(33,34,36)=#212224,
-  font-family Pretendard.
-- H2 28px / weight 700 / line-height 38px.
-- Header (nav) white #ffffff, height 76px, ink #212224 links.
-- Biz pill 기업용: bg #ebf4ff, fg #116ad4, radius 11px, 10px / 700.
-- Best badge: fg #ff402b, radius 27px, 11px / 700.
-- Secondary button: border #c8cad2, radius 4px, fg #000000, 16px / 400.
-- Card: white, radius 4px, border #e4e5ed, shadow rgba(0,0,0,0.08) 0px 4px 12px;
-  popover shadow rgba(0,0,0,0.1) 0px 0px 20px.
-- Search input placeholder "어떤 전문가가 필요하세요?", 20px text, #f2f3f7 hairline.
-
-Brand-narrative claims (sections 10–13): Kmong (크몽) is Korea's largest
-freelance/skill marketplace operated by Kmong Inc., launched 2012, productized
-gig model with safe-payment (안전결제) escrow and a Biz/Enterprise tier
-(기업용 / 엔터프라이즈 tags observed in nav). These are widely documented public
-facts about the company plus on-page observed labels.
-
-Personas (§13) are fictional archetypes informed by publicly observable Kmong
-user segments (SMB owners, solo founders, freelancers, marketers). Names are
-illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "green means go", "dark ink on bright green is the
-defining brand quirk") are editorial readings connecting Kmong's observed design
-choices to its marketplace strategy, not directly sourced Kmong statements.
--->
+No reusable duration, easing, or motion rule is recorded. Public utility class names and static elements do not establish a motion contract without interaction provenance.

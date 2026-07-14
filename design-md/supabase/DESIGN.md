@@ -4,386 +4,314 @@ name: Supabase
 country: US
 category: backend-devops
 homepage: "https://supabase.com"
-primary_color: "#3ecf8e"
+primary_color: "#72e3ad"
 logo:
   type: simpleicons
   slug: supabase
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Supabase Brand Assets
   url: "https://supabase.com/brand-assets"
   type: brand
-  description: Supabase's brand guidelines with logos and integration button specs.
+  description: Official logo and integration-button assets with trademark-use boundaries.
   og_image: "https://supabase.com/images/og/supabase-og.png"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://supabase.com/", inspected: "2026-07-13" }
+    - { id: features, kind: marketing, url: "https://supabase.com/features", inspected: "2026-07-13" }
+    - { id: pricing, kind: public-pricing, url: "https://supabase.com/pricing", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://supabase.com/", captured: "2026-07-13" }
+    - { id: features-live, kind: product-surface, url: "https://supabase.com/features", captured: "2026-07-13" }
+    - { id: pricing-live, kind: product-surface, url: "https://supabase.com/pricing", captured: "2026-07-13" }
+    - { id: brand-assets, kind: brand-asset, url: "https://supabase.com/brand-assets", captured: "2026-07-13" }
+    - { id: architecture, kind: official-doc, url: "https://supabase.com/docs/guides/getting-started/architecture", captured: "2026-07-13" }
+    - { id: community, kind: official-doc, url: "https://supabase.com/contribute/about", captured: "2026-07-13" }
+    - { id: inter-license, kind: license, url: "https://github.com/rsms/inter", captured: "2026-07-13" }
+    - { id: manrope-license, kind: license, url: "https://github.com/davelab6/manrope", captured: "2026-07-13" }
+    - { id: source-code-license, kind: license, url: "https://github.com/adobe-fonts/source-code-pro", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.family.ui": *home
+    "tokens.typography.family.display": *home
+    "tokens.typography.family.mono": *home
+    "tokens.typography.display.size": *home
+    "tokens.typography.display.weight": *home
+    "tokens.typography.display.lineHeight": *home
+    "tokens.typography.display.use": *home
+    "tokens.typography.body.size": *home
+    "tokens.typography.body.weight": *home
+    "tokens.typography.body.lineHeight": *home
+    "tokens.typography.body.use": *home
+    "tokens.typography.control.size": *home
+    "tokens.typography.control.weight": *home
+    "tokens.typography.control.lineHeight": *home
+    "tokens.typography.control.use": *home
+    "tokens.spacing.xs": *home
+    "tokens.spacing.sm": *home
+    "tokens.spacing.md": *home
+    "tokens.spacing.control": *home
+    "tokens.spacing.lg": *home
+    "tokens.spacing.xl": *home
+    "tokens.rounded.focus": *home
+    "tokens.rounded.control": *home
+    "tokens.rounded.overlay": *home
+    "tokens.components.green-form-submit.type": *home
+    "tokens.components.green-form-submit.bg": *home
+    "tokens.components.green-form-submit.fg": *home
+    "tokens.components.green-form-submit.border": *home
+    "tokens.components.green-form-submit.radius": *home
+    "tokens.components.green-form-submit.padding": *home
+    "tokens.components.green-form-submit.font": *home
+    "tokens.components.green-form-submit.states": *home
+    "tokens.components.green-form-submit.use": *home
+    "tokens.components.dark-compact-action.type": &pricing { surface_id: pricing, source_id: pricing-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.dark-compact-action.bg": *pricing
+    "tokens.components.dark-compact-action.fg": *pricing
+    "tokens.components.dark-compact-action.border": *pricing
+    "tokens.components.dark-compact-action.radius": *pricing
+    "tokens.components.dark-compact-action.padding": *pricing
+    "tokens.components.dark-compact-action.font": *pricing
+    "tokens.components.dark-compact-action.states": *pricing
+    "tokens.components.dark-compact-action.use": *pricing
+    "tokens.components.selected-pill-tab.type": *home
+    "tokens.components.selected-pill-tab.bg": *home
+    "tokens.components.selected-pill-tab.fg": *home
+    "tokens.components.selected-pill-tab.border": *home
+    "tokens.components.selected-pill-tab.radius": *home
+    "tokens.components.selected-pill-tab.padding": *home
+    "tokens.components.selected-pill-tab.font": *home
+    "tokens.components.selected-pill-tab.states": *home
+    "tokens.components.selected-pill-tab.use": *home
+    "tokens.components.public-input.type": *home
+    "tokens.components.public-input.bg": *home
+    "tokens.components.public-input.fg": *home
+    "tokens.components.public-input.border": *home
+    "tokens.components.public-input.radius": *home
+    "tokens.components.public-input.padding": *home
+    "tokens.components.public-input.font": *home
+    "tokens.components.public-input.states": *home
+    "tokens.components.public-input.use": *home
+    "tokens.components.public-dialog.type": *home
+    "tokens.components.public-dialog.bg": *home
+    "tokens.components.public-dialog.fg": *home
+    "tokens.components.public-dialog.border": *home
+    "tokens.components.public-dialog.radius": *home
+    "tokens.components.public-dialog.states": *home
+    "tokens.components.public-dialog.use": *home
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Selector-backed observations from Supabase public marketing, features, and pricing routes only. No authenticated dashboard or documentation-chrome token is inferred."
   colors:
-    primary: "#3ecf8e"
-    green-link: "#00c573"
-    near-black: "#0f0f0f"
-    canvas: "#171717"
-    border-dark: "#242424"
-    border: "#2e2e2e"
-    border-mid: "#363636"
-    border-light: "#393939"
-    charcoal: "#434343"
-    dark-gray: "#4d4d4d"
-    mid-gray: "#898989"
-    light-gray: "#b4b4b4"
-    near-white: "#efefef"
-    off-white: "#fafafa"
+    primary: "#72e3ad"
   typography:
-    family: { sans: "Circular", mono: "Source Code Pro" }
-    display-hero: { size: 72, weight: 400, lineHeight: 1.00, use: "Maximum density, zero waste" }
-    section:      { size: 36, weight: 400, lineHeight: 1.25, use: "Feature section titles" }
-    card-title:   { size: 24, weight: 400, lineHeight: 1.33, tracking: -0.16, use: "Slight negative tracking" }
-    subheading:   { size: 18, weight: 400, lineHeight: 1.56, use: "Secondary headings" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body text" }
-    nav-link:     { size: 14, weight: 500, lineHeight: 1.43, use: "Navigation items" }
-    button:       { size: 14, weight: 500, lineHeight: 1.14, use: "Button labels" }
-    caption:      { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, tags" }
-    small:        { size: 12, weight: 400, lineHeight: 1.33, use: "Fine print, footer links" }
-    code-label:   { size: 12, weight: 400, lineHeight: 1.33, tracking: 1.2, use: "Uppercase technical labels (Source Code Pro)" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
-  rounded: { sm: 6, md: 8, lg: 16, full: 9999 }
-  shadow:
-    focus: "rgba(0,0,0,0.1) 0px 4px 12px"
+    family: { ui: "Inter", display: "Manrope", mono: "Source Code Pro" }
+    display: { size: 46, weight: 500, lineHeight: 1.00, use: "Home h1 only; not a complete display scale" }
+    body: { size: 16, weight: 450, lineHeight: 1.50, use: "Repeated public-route Inter text and list items" }
+    control: { size: 14, weight: 500, lineHeight: 1.14, use: "Observed public navigation/control sample" }
+  spacing: { xs: 4, sm: 8, md: 12, control: 16, lg: 24, xl: 32 }
+  rounded: { focus: 2, control: 6, overlay: 8 }
   components:
-    button-primary: { type: button, bg: "#0f0f0f", fg: "#fafafa", radius: 9999, padding: "8px 32px", font: "14px/500 Circular", use: "Primary CTA, 1px #fafafa border" }
-    button-secondary: { type: button, bg: "#0f0f0f", fg: "#fafafa", radius: 9999, padding: "8px 32px", font: "14px/500 Circular", use: "Secondary CTA, 1px #2e2e2e border, opacity 0.8" }
-    button-ghost: { type: button, fg: "#fafafa", radius: 6, padding: "8px", font: "14px/500 Circular", use: "Tertiary actions, icon buttons" }
-    card-standard: { type: card, bg: "#171717", radius: 16, padding: "24px", use: "Feature card, 1px #2e2e2e border, no shadow" }
-    tab-pill: { type: tab, radius: 9999, font: "14px/500 Circular", active: "Active green accent or lighter surface", use: "Pill tabs, 1px #2e2e2e border" }
+    green-form-submit: { type: button, bg: "#72e3ad", fg: "oklch(0.1 0 34)", border: "1px solid oklab(0.685565 -0.144466 0.057858 / 0.75)", radius: "6px", padding: "4px 10px", font: "12px / 450 / Inter", states: "dialog-open capture context", use: "home::[data-omd-capture=\"75\"] public form submit" }
+    dark-compact-action: { type: button, bg: "oklch(0.1 0 34)", fg: "oklch(0.995 0 34)", border: "1px solid oklch(0.394455 0 34)", radius: "6px", padding: "4px 10px", font: "12px / 450 / Inter", states: "focus, hover, and pressed computed snapshots", use: "pricing::[data-omd-capture=\"17\"] compact public action" }
+    selected-pill-tab: { type: tab, bg: "oklch(0.995 0 34)", fg: "oklch(0.1 0 34)", border: "1px solid oklch(0.1 0 34)", radius: "3.35544e+07px", padding: "8px 32px", font: "14px / 450 / Inter", states: "selected and tab-selected", use: "home::[data-omd-capture=\"19\"] selected public tab" }
+    public-input: { type: input, bg: "oklab(0.1 0 0 / 0.026)", fg: "oklch(0.1 0 34)", border: "1px solid oklch(0.1 0 34 / 0.146418)", radius: "6px", padding: "8px", font: "14px / 450 / Inter", states: "error capture; no changed error color is asserted", use: "home::[data-omd-capture=\"74\"] public email input" }
+    public-dialog: { type: dialog, bg: "oklch(0.995 0 34)", fg: "oklch(0.1 0 34)", border: "1px solid oklch(0.1 0 34 / 0.0812725)", radius: "8px", states: "dialog-open", use: "home::[data-omd-interaction-capture=\"dialog-1-0\"] public dialog" }
   components_harvested: true
 ---
 
-# Design System Inspiration of Supabase
+# Supabase — Design Reference
 
 ## 1. Visual Theme & Atmosphere
 
-Supabase's website is a dark-mode-native developer platform that channels the aesthetic of a premium code editor — deep black backgrounds (`#0f0f0f`, `#171717`) with emerald green accents (`#3ecf8e`, `#00c573`) that reference the brand's open-source, PostgreSQL-green identity. The design system feels like it was born in a terminal window and evolved into a sophisticated marketing surface without losing its developer soul.
+Supabase is an open-source Postgres development platform: its architecture documentation places a full Postgres database at the center of a project, with Auth, Storage, Realtime, Functions, and other services around it. The current public site communicates that developer platform with a bright, low-chrome interface rather than the older dark-terminal treatment in this reference. Across the captured home, features, and pricing routes, a mint `#72e3ad` action fill punctuates white and near-white surfaces; Inter supplies repeated UI text, Manrope carries the larger marketing hierarchy, and Source Code Pro appears sparingly in live public content. The result is technical but open rather than ornamental—small radii, direct controls, and lightweight overlays support dense product information without standing in for the authenticated dashboard.
 
-The typography is built on "Circular" — a geometric sans-serif with rounded terminals that softens the technical edge. At 72px with a 1.00 line-height, the hero text is compressed to its absolute minimum vertical space, creating dense, impactful statements that waste nothing. The monospace companion (Source Code Pro) appears sparingly for uppercase technical labels with 1.2px letter-spacing, creating the "developer console" markers that connect the marketing site to the product experience.
+The official brand-assets page separately governs logo and integration-button use: official logos are supplied in light and dark treatments, and Supabase says its trademarks and other brand elements must represent Supabase. This reference therefore keeps that identity guidance separate from the computed public-route values. It also keeps public marketing, public pricing, authenticated product UI, documentation chrome, and declared-only font assets as different evidence domains.
 
-What makes Supabase distinctive is its sophisticated HSL-based color token system. Rather than flat hex values, Supabase uses HSL with alpha channels for nearly every color (`--colors-crimson4`, `--colors-purple5`, `--colors-slateA12`), enabling a nuanced layering system where colors interact through transparency. This creates depth through translucency — borders at `rgba(46, 46, 46)`, surfaces at `rgba(41, 41, 41, 0.84)`, and accents at partial opacity all blend with the dark background to create a rich, dimensional palette from minimal color ingredients.
-
-The green accent (`#3ecf8e`) appears selectively — in the Supabase logo, in link colors (`#00c573`), and in border highlights (`rgba(62, 207, 142, 0.3)`) — always as a signal of "this is Supabase" rather than as a decorative element. Pill-shaped buttons (9999px radius) for primary CTAs contrast with standard 6px radius for secondary elements, creating a clear visual hierarchy of importance.
-
-**Key Characteristics:**
-- Dark-mode-native: near-black backgrounds (`#0f0f0f`, `#171717`) — never pure black
-- Emerald green brand accent (`#3ecf8e`, `#00c573`) used sparingly as identity marker
-- Circular font — geometric sans-serif with rounded terminals
-- Source Code Pro for uppercase technical labels (1.2px letter-spacing)
-- HSL-based color token system with alpha channels for translucent layering
-- Pill buttons (9999px) for primary CTAs, 6px radius for secondary
-- Neutral gray scale from `#171717` through `#898989` to `#fafafa`
-- Border system using dark grays (`#2e2e2e`, `#363636`, `#393939`)
-- Minimal shadows — depth through border contrast and transparency
-- Radix color primitives (crimson, purple, violet, indigo, yellow, tomato, orange, slate)
+- **Mint action signal:** `#72e3ad` is the repeated observed public background color, not a blanket status or product-surface palette.
+- **Light public chrome:** the captured menu and dialog surfaces compute to near-white Oklch values with thin neutral rules.
+- **Compact geometry:** 4px, 8px, 12px, 16px, 24px, and 32px are recurring public-route measurements; the packet does not publish them as an official scale.
 
 ## 2. Color Palette & Roles
 
-### Brand
-- **Supabase Green** (`#3ecf8e`): Primary brand color, logo, accent borders
-- **Green Link** (`#00c573`): Interactive green for links and actions
-- **Green Border** (`rgba(62, 207, 142, 0.3)`): Subtle green border accent
+### Selector-backed public roles
 
-### Neutral Scale (Dark Mode)
-- **Near Black** (`#0f0f0f`): Primary button background, deepest surface
-- **Dark** (`#171717`): Page background, primary canvas
-- **Dark Border** (`#242424`): Horizontal rule, section dividers
-- **Border Dark** (`#2e2e2e`): Card borders, tab borders
-- **Mid Border** (`#363636`): Button borders, dividers
-- **Border Light** (`#393939`): Secondary borders
-- **Charcoal** (`#434343`): Tertiary borders, dark accents
-- **Dark Gray** (`#4d4d4d`): Heavy secondary text
-- **Mid Gray** (`#898989`): Muted text, link color
-- **Light Gray** (`#b4b4b4`): Secondary link text
-- **Near White** (`#efefef`): Light border, subtle surface
-- **Off White** (`#fafafa`): Primary text, button text
+- **Mint action** (`#72e3ad`): high-confidence public background color across all three captured routes; exact submit sample at `home::[data-omd-capture="75"]`.
+- **Compact dark action** (`oklch(0.1 0 34)`): pricing compact-action background at `pricing::[data-omd-capture="17"]`.
+- **Near-white public surfaces** (`oklch(1 0 34)` and `oklch(0.995 0 34)`): observed menu, selected-tab, and dialog backgrounds. They remain raw computed values because the packet does not provide a matching official hex scale.
+- **Public foreground** (`oklch(0.1 0 34)`): observed button, input, tab, and dialog text; it is not presented as a dashboard token.
 
-### Radix Color Tokens (HSL-based)
-- **Slate Scale**: `--colors-slate5` through `--colors-slateA12` — neutral progression
-- **Purple**: `--colors-purple4`, `--colors-purple5`, `--colors-purpleA7` — accent spectrum
-- **Violet**: `--colors-violet10` (`hsl(251, 63.2%, 63.2%)`) — vibrant accent
-- **Crimson**: `--colors-crimson4`, `--colors-crimsonA9` — warm accent / alert
-- **Indigo**: `--colors-indigoA2` — subtle blue wash
-- **Yellow**: `--colors-yellowA7` — attention/warning
-- **Tomato**: `--colors-tomatoA4` — error accent
-- **Orange**: `--colors-orange6` — warm accent
-
-### Surface & Overlay
-- **Glass Dark** (`rgba(41, 41, 41, 0.84)`): Translucent dark overlay
-- **Slate Alpha** (`hsla(210, 87.8%, 16.1%, 0.031)`): Ultra-subtle blue wash
-- **Fixed Scale Alpha** (`hsla(200, 90.3%, 93.4%, 0.109)`): Light frost overlay
-
-### Shadows
-- Supabase uses **almost no shadows** in its dark theme. Depth is created through border contrast and surface color differences rather than box-shadows. Focus states use `rgba(0, 0, 0, 0.1) 0px 4px 12px` — minimal, functional.
+The collector also aggregates `#3fcf8e` and `#0a874f` on public routes, but no selector-backed role from this packet makes either a canonical token. The brand-assets page supplies logo rules, not a published UI color scale; no semantic success, warning, error, product-console, or documentation palette is inferred.
 
 ## 3. Typography Rules
 
-### Font Families
-- **Primary**: `Circular`, with fallbacks: `custom-font, Helvetica Neue, Helvetica, Arial`
-- **Monospace**: `Source Code Pro`, with fallbacks: `Office Code Pro, Menlo`
+### Evidence classes
 
-### Hierarchy
+| Evidence class | Family and boundary |
+|---|---|
+| Live computed public-surface use | **Inter** is loaded/high, has 752 visible uses, and is backed by Supabase-hosted WOFF2 sources. It appears in body, buttons, cards, dialogs, inputs, lists, menus, tabs, text, and toggles. |
+| Live computed public-surface use | **Manrope** is loaded/high, has 150 visible uses, and is backed by Supabase-hosted WOFF2 sources. It appears in public h1–h4, body, and buttons. |
+| Live computed public-surface use | **Source Code Pro** is loaded/high, has 13 visible uses and seven Supabase-hosted source URLs. Its captured uses are limited to body, button, and h3 roles; this is not a complete code-style scale. |
+| System stack | `ui-sans-serif` has 407 uses but is an operating-system stack, not a Supabase-family substitute. |
+| Declared-only | `Inter Fallback` and the KaTeX family declarations have zero visible captured uses. They are not typography-family tokens. |
+| Documentation boundary | Some font source URLs are served from Supabase’s docs asset host, but no documentation route or documentation-chrome computed sample is in this packet. An asset URL alone does not populate documentation typography. |
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | Circular | 72px (4.50rem) | 400 | 1.00 (tight) | normal | Maximum density, zero waste |
-| Section Heading | Circular | 36px (2.25rem) | 400 | 1.25 (tight) | normal | Feature section titles |
-| Card Title | Circular | 24px (1.50rem) | 400 | 1.33 | -0.16px | Slight negative tracking |
-| Sub-heading | Circular | 18px (1.13rem) | 400 | 1.56 | normal | Secondary headings |
-| Body | Circular | 16px (1.00rem) | 400 | 1.50 | normal | Standard body text |
-| Nav Link | Circular | 14px (0.88rem) | 500 | 1.00–1.43 | normal | Navigation items |
-| Button | Circular | 14px (0.88rem) | 500 | 1.14 (tight) | normal | Button labels |
-| Caption | Circular | 14px (0.88rem) | 400–500 | 1.43 | normal | Metadata, tags |
-| Small | Circular | 12px (0.75rem) | 400 | 1.33 | normal | Fine print, footer links |
-| Code Label | Source Code Pro | 12px (0.75rem) | 400 | 1.33 | 1.2px | `text-transform: uppercase` |
+### Captured public hierarchy
 
-### Principles
-- **Weight restraint**: Nearly all text uses weight 400 (regular/book). Weight 500 appears only for navigation links and button labels. There is no bold (700) in the detected system — hierarchy is created through size, not weight.
-- **1.00 hero line-height**: The hero text is compressed to absolute zero leading. This is the defining typographic gesture — text that feels like a terminal command: dense, efficient, no wasted vertical space.
-- **Negative tracking on cards**: Card titles use -0.16px letter-spacing, a subtle tightening that differentiates them from body text without being obvious.
-- **Monospace as ritual**: Source Code Pro in uppercase with 1.2px letter-spacing is the "developer console" voice — used sparingly for technical labels that connect to the product experience.
-- **Geometric personality**: Circular's rounded terminals create warmth in what could otherwise be a cold, technical interface. The font is the humanizing element.
+| Role | Family | Size | Weight | Line height | Scope |
+|---|---|---:|---:|---:|---|
+| Home h1 | Manrope | 46px | 500 | 46px | `home::h1` only |
+| Public large heading | Manrope | 34px | 600 | 37.7778px | home h2/h3 samples |
+| Repeated body/list text | Inter | 16px | 450 | 24px | public routes |
+| Navigation/control sample | Inter | 14px | 500 | 16px | public controls |
+| Compact action label | Inter | 12px | 450 | 16px | home/pricing compact actions |
 
-## 4. Component Stylings
+### Official font and licence context
 
-### Buttons
+Inter’s official repository describes it as screen-oriented and licensed under the SIL Open Font License. The Manrope project identifies Michael Sharanda as designer and uses the SIL Open Font License. Adobe’s official Source Code Pro repository describes a monospaced family for UI and coding environments under OFL-1.1. Those licences explain the upstream font families; Supabase’s loaded WOFF2 URLs prove public-route use, not a grant to redistribute Supabase’s served files. If a target cannot load the family legitimately, mark the specimen unavailable rather than rendering a system substitute as Inter, Manrope, or Source Code Pro.
 
-**Primary Pill (Dark)**
-- Background: `#0f0f0f`
-- Text: `#fafafa`
-- Padding: 8px 32px
-- Radius: 9999px (full pill)
-- Border: `1px solid #fafafa` (white border on dark)
-- Focus shadow: `rgba(0, 0, 0, 0.1) 0px 4px 12px`
-- Use: Primary CTA ("Start your project")
+## 4. Components
 
-**Secondary Pill (Dark, Muted)**
-- Background: `#0f0f0f`
-- Text: `#fafafa`
-- Padding: 8px 32px
-- Radius: 9999px
-- Border: `1px solid #2e2e2e` (dark border)
-- Opacity: 0.8
-- Use: Secondary CTA alongside primary
+All values below retain their public-route selector and state boundary. The collector reports four interaction kinds and 12 interactions: menu, dialog, tab, and form-error captures. Those records prove the listed expanded/open/selected/error contexts only; unobserved variants are omitted.
 
-**Ghost Button**
-- Background: transparent
-- Text: `#fafafa`
-- Padding: 8px
-- Radius: 6px
-- Border: `1px solid transparent`
-- Use: Tertiary actions, icon buttons
+### Public actions
 
-### Cards & Containers
-- Background: dark surfaces (`#171717` or slightly lighter)
-- Border: `1px solid #2e2e2e` or `#363636`
-- Radius: 8px–16px
-- No visible shadows — borders define edges
-- Internal padding: 16px–24px
+**Green form submit**
+- Background: `#72e3ad`
+- Text: `oklch(0.1 0 34)`
+- Border: `1px solid oklab(0.685565 -0.144466 0.057858 / 0.75)`
+- Radius: `6px`
+- Padding: `4px 10px`
+- Font: `12px / 450 / Inter`
+- Dialog-open: captured context at `home::[data-omd-capture="75"]`; no general dialog-button contract is inferred
+- Use: Public home form submit
 
-### Tabs
-- Border: `1px solid #2e2e2e`
-- Radius: 9999px (pill tabs)
-- Active: green accent or lighter surface
-- Inactive: dark, muted
+**Dark compact action**
+- Background: `oklch(0.1 0 34)`
+- Text: `oklch(0.995 0 34)`
+- Border: `1px solid oklch(0.394455 0 34)`
+- Radius: `6px`
+- Padding: `4px 10px`
+- Font: `12px / 450 / Inter`
+- Hover: computed snapshot recorded for `pricing::[data-omd-capture="17"]`
+- Pressed: computed snapshot recorded for `pricing::[data-omd-capture="17"]`
+- Focus: computed snapshot recorded for `pricing::[data-omd-capture="17"]`
+- Use: Compact public pricing action
 
-### Links
-- **Green**: `#00c573` — Supabase-branded links
-- **Primary Light**: `#fafafa` — standard links on dark
-- **Secondary**: `#b4b4b4` — muted links
-- **Muted**: `#898989` — tertiary links, footer
+### Selected public tab
 
-### Navigation
-- Dark background matching page (`#171717`)
-- Supabase logo with green icon
-- Circular 14px weight 500 for nav links
-- Clean horizontal layout with product dropdown
-- Green "Start your project" CTA pill button
-- Sticky header behavior
+**Selected pill tab**
+- Background: `oklch(0.995 0 34)`
+- Text: `oklch(0.1 0 34)`
+- Border: `1px solid oklch(0.1 0 34)`
+- Radius: `3.35544e+07px`
+- Padding: `8px 32px`
+- Font: `14px / 450 / Inter`
+- Selected: `home::[data-omd-capture="19"]` is `aria-selected="true"`
+- Use: Public home tab; this does not establish a general tab system
+
+### Public form field
+
+**Email input**
+- Background: `oklab(0.1 0 0 / 0.026)`
+- Text: `oklch(0.1 0 34)`
+- Border: `1px solid oklch(0.1 0 34 / 0.146418)`
+- Radius: `6px`
+- Padding: `8px`
+- Font: `14px / 450 / Inter`
+- Error: an error capture is recorded at `home::[data-omd-interaction-capture="form-error-5-0"]`; no changed error color is asserted
+- Use: Public home email input at `home::[data-omd-capture="74"]`
+
+### Public overlays
+
+**Navigation menu — expanded**
+- Background: `oklch(1 0 34)`
+- Text: `oklch(0.394455 0 34)`
+- Border: `1px solid oklch(0.1 0 34 / 0.144163)`
+- Radius: `6px`
+- Padding: `4px`
+- Font: `16px / 450 / Inter`
+- Expanded: menu-open capture at `home::[data-omd-interaction-capture="menu-0-0"]`
+- Use: Public navigation menu, not authenticated application navigation
+
+**Public dialog — open**
+- Background: `oklch(0.995 0 34)`
+- Text: `oklch(0.1 0 34)`
+- Border: `1px solid oklch(0.1 0 34 / 0.0812725)`
+- Radius: `8px`
+- Dialog-open: captured at `home::[data-omd-interaction-capture="dialog-1-0"]`
+- Use: Public dialog; no padding or shadow value is asserted because it was not measured in the representative claim
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 1px, 4px, 6px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px, 90px, 96px, 128px
-- Notable large jumps: 48px → 90px → 96px → 128px for major section spacing
-
-### Grid & Container
-- Centered content with generous max-width
-- Full-width dark sections with constrained inner content
-- Feature grids: icon-based grids with consistent card sizes
-- Logo grids for "Trusted by" sections
-- Footer: multi-column on dark background
-
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <600px | Single column, stacked layout |
-| Desktop | >600px | Multi-column grids, expanded layout |
-
-*Note: Supabase uses a notably minimal breakpoint system — primarily a single 600px breakpoint, suggesting a mobile-first approach with progressive enhancement.*
-
-### Whitespace Philosophy
-- **Dramatic section spacing**: 90px–128px between major sections creates a cinematic pacing — each section is its own scene in the dark void.
-- **Dense content blocks**: Within sections, spacing is tight (16px–24px), creating concentrated information clusters.
-- **Border-defined space**: Instead of whitespace + shadows for separation, Supabase uses thin borders on dark backgrounds — separation through line, not gap.
-
-### Border Radius Scale
-- Standard (6px): Ghost buttons, small elements
-- Comfortable (8px): Cards, containers
-- Medium (11px–12px): Mid-size panels
-- Large (16px): Feature cards, major containers
-- Pill (9999px): Primary buttons, tab indicators
+The packet is three desktop captures at 1440×900. It records 4px, 8px, 12px, 16px, 24px, and 32px as recurring public-route spacing values, with 8px most frequent. These observations support compact controls and more generous public-section rhythm, but they do not establish mobile breakpoints, authenticated-dashboard density, or a published Supabase grid.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, border `#2e2e2e` | Default state, most surfaces |
-| Subtle Border (Level 1) | Border `#363636` or `#393939` | Interactive elements, hover |
-| Focus (Level 2) | `rgba(0, 0, 0, 0.1) 0px 4px 12px` | Focus states only |
-| Green Accent (Level 3) | Border `rgba(62, 207, 142, 0.3)` | Brand-highlighted elements |
-
-**Shadow Philosophy**: Supabase deliberately avoids shadows. In a dark-mode-native design, shadows are nearly invisible and serve no purpose. Instead, depth is communicated through a sophisticated border hierarchy — from `#242424` (barely visible) through `#2e2e2e` (standard) to `#393939` (prominent). The green accent border (`rgba(62, 207, 142, 0.3)`) at 30% opacity is the "elevated" state — the brand color itself becomes the depth signal.
+The captured public menu has two small neutral shadows (`rgba(0, 0, 0, 0.1) 0px 4px 6px -1px` and `rgba(0, 0, 0, 0.1) 0px 2px 4px -2px`); the compact action, selected pill tab, and representative input report no shadow. That is evidence for these public overlay/control instances only, not a reusable elevation scale.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use near-black backgrounds (`#0f0f0f`, `#171717`) — depth comes from the gray border hierarchy
-- Apply Supabase green (`#3ecf8e`, `#00c573`) sparingly — it's an identity marker, not a decoration
-- Use Circular at weight 400 for nearly everything — 500 only for buttons and nav
-- Set hero text to 1.00 line-height — the zero-leading is the typographic signature
-- Create depth through border color differences (`#242424` → `#2e2e2e` → `#363636`)
-- Use pill shape (9999px) exclusively for primary CTAs and tabs
-- Employ HSL-based colors with alpha for translucent layering effects
-- Use Source Code Pro uppercase labels for developer-context markers
+
+- Use `#72e3ad` only where a selector-backed public action relationship is appropriate.
+- Preserve Inter, Manrope, and Source Code Pro as separate loaded families when the target has legitimate access to them.
+- Keep raw Oklch/Oklab values as raw computed evidence instead of inventing a hex token scale.
+- Retain selector and state provenance when reusing an observed public component pattern.
 
 ### Don't
-- Don't add box-shadows — they're invisible on dark backgrounds and break the border-defined depth system
-- Don't use bold (700) text weight — the system uses 400 and 500 only
-- Don't apply green to backgrounds or large surfaces — it's for borders, links, and small accents
-- Don't use warm colors (crimson, orange) as primary design elements — they exist as semantic tokens for states
-- Don't increase hero line-height above 1.00 — the density is intentional
-- Don't use large border radius (16px+) on buttons — pills (9999px) or standard (6px), nothing in between
-- Don't lighten the background above `#171717` for primary surfaces — the darkness is structural
-- Don't forget the translucent borders — `rgba` border colors are the layering mechanism
+
+- Do not recreate the obsolete dark/Circular system from the prior snapshot.
+- Do not convert `ui-sans-serif`, `Inter Fallback`, or declared-only KaTeX faces into Supabase UI typography.
+- Do not move marketing/pricing/menu/dialog values into an authenticated dashboard, native application, or documentation chrome without evidence from that surface.
+- Do not invent unobserved component variants, semantic status colors, responsive rules, or interaction behavior.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <600px | Single column, stacked features, condensed nav |
-| Desktop | >600px | Multi-column grids, full nav, expanded sections |
-
-### Collapsing Strategy
-- Hero: 72px → scales down proportionally
-- Feature grids: multi-column → single column stacked
-- Logo row: horizontal → wrapped grid
-- Navigation: full → hamburger
-- Section spacing: 90–128px → 48–64px
-- Buttons: inline → full-width stacked
+No responsive viewport was supplied. The three captures are all 1440×900, so no breakpoint, mobile navigation, stacking, or touch-target behavior is documented here.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Background: `#0f0f0f` (button), `#171717` (page)
-- Text: `#fafafa` (primary), `#b4b4b4` (secondary), `#898989` (muted)
-- Brand green: `#3ecf8e` (brand), `#00c573` (links)
-- Borders: `#242424` (subtle), `#2e2e2e` (standard), `#363636` (prominent)
-- Green border: `rgba(62, 207, 142, 0.3)` (accent)
-
-### Example Component Prompts
-- "Create a hero section on #171717 background. Headline at 72px Circular weight 400, line-height 1.00, #fafafa text. Sub-text at 16px Circular weight 400, line-height 1.50, #b4b4b4. Pill CTA button (#0f0f0f bg, #fafafa text, 9999px radius, 8px 32px padding, 1px solid #fafafa border)."
-- "Design a feature card: #171717 background, 1px solid #2e2e2e border, 16px radius. Title at 24px Circular weight 400, letter-spacing -0.16px. Body at 14px weight 400, #898989 text."
-- "Build navigation bar: #171717 background. Circular 14px weight 500 for links, #fafafa text. Supabase logo with green icon left-aligned. Green pill CTA 'Start your project' right-aligned."
-- "Create a technical label: Source Code Pro 12px, uppercase, letter-spacing 1.2px, #898989 text."
-- "Design a framework logo grid: 6-column layout on dark, grayscale logos at 60% opacity, 1px solid #2e2e2e border between sections."
-
-### Iteration Guide
-1. Start with #171717 background — everything is dark-mode-native
-2. Green is the brand identity marker — use it for links, logo, and accent borders only
-3. Depth comes from borders (#242424 → #2e2e2e → #363636), not shadows
-4. Weight 400 is the default for everything — 500 only for interactive elements
-5. Hero line-height of 1.00 is the signature typographic move
-6. Pill (9999px) for primary actions, 6px for secondary, 8-16px for cards
-7. HSL with alpha channels creates the sophisticated translucent layering
+Use this reference as a public Supabase-web direction, not as a dashboard clone: prefer the observed mint action, light raw-computed surfaces, Inter UI rhythm, and Manrope display hierarchy. Keep the public-route selector boundary visible in implementation notes. Do not add a dark terminal canvas, Circular, generic product-console widgets, or fonts that the target cannot load.
 
 ## 10. Voice & Tone
 
-Supabase's voice is **Postgres-pragmatic and OSS-confident.** "The Postgres Development Platform" — capability-driven, dev-first. Strong open-source positioning ("the open source Firebase alternative") with green primary `#3ecf8e` matching Postgres heritage.
-
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Start your project", "Get started", "Sign up" |
-| Marketing | Postgres-credibility. Real SQL in marketing copy |
-| Documentation | SQL-first, code-block-heavy |
-| Error | Specific. "Foreign key constraint failed: table X column Y" |
-
-**Voice samples**
-- Tagline: *"The Postgres Development Platform"* <!-- verified: supabase.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary BaaS". Generic Firebase-comparison framing.
+Supabase’s official architecture and contribution pages use direct, technically specific language: Postgres stays explicit, open source is an operating choice, and the community invitation is practical—contribute code, documentation, or help. Prefer short capability-led CTAs such as “Start your project” and “Build in a weekend, scale to millions,” both visible on official public pages.
 
 ## 11. Brand Narrative
 
-Supabase was founded **2020** by **Paul Copplestone (CEO)** + **Ant Wilson (CTO, joined January 2020)** ([Y Combinator — Supabase](https://www.ycombinator.com/companies/supabase), [Frederick AI — Founder Story Paul Copplestone](https://www.frederick.ai/blog/paul-copplestone-supabase)). **Y Combinator Summer 2020 (S20)** batch — founding coincided with the start of the COVID-19 pandemic; raised **$100K pre-seed from angels** before YC. Open-source Firebase alternative built on **Postgres → Realtime → Auth → Storage**. Funding ladder: **$30M Series A (Sept 2021)** → **$80M Series B (May 2022)** → **$2B valuation (April 2025)** → **$5B valuation October 2025** (Series E, just **4 months after $2B** — one of the fastest valuation jumps in OSS-developer-tooling) ([TechCrunch — Supabase $5B four months after $2B](https://techcrunch.com/2025/10/03/supabase-nabs-5b-valuation-four-months-after-hitting-2b/), [SuperbCrew — Supabase $100M Series E](https://www.superbcrew.com/supabase-raises-100-million-in-series-e-funding-round/)). The brand voice tracks the OSS-engineer positioning: Postgres-credible, open-by-default, never marketing-fluff. Primary green references Postgres elephant heritage with a modern lift — Tier 1 measurement on `/pricing` shows the canonical Primary CTA fill is `rgb(114, 227, 173)` = **`#72e3ad` Supabase Mint Green** (a **lighter shade** than the §2 doc's `#3ecf8e` deeper green, possibly a 2025 brand refresh).
+Supabase presents a Postgres-centered platform rather than an abstraction over it: its architecture documentation says each project contains several tools around a single Postgres instance, and explains that the company chose open-source tools that are scalable and approachable. Its company page frames the present organization as a large open-source community, while the contribution page describes a mission of helping developers succeed through work in the open. This is product and culture context, not evidence that public marketing values describe every product surface.
 
 ## 12. Principles
 
-1. **Postgres is the foundation.** *UI implication:* surfaces lead with Postgres-native features.
-2. **Open-source heritage.** *UI implication:* self-host first-class.
-3. **Pill (9999px) primary, 6px secondary, 8-16px cards.** *UI implication:* mixed radius with strict roles.
-4. **HSL with alpha channels.** *UI implication:* translucent layering using alpha, not opacity.
-5. **Green `#3ecf8e` for primary.** *UI implication:* preserve Postgres-heritage green.
+1. **Keep Postgres legible.** *UI implication:* describe database capability directly rather than masking it behind generic backend language.
+2. **Work in the open.** *UI implication:* make contribution, documentation, and community paths concrete.
+3. **Make the platform approachable.** *UI implication:* public information architecture should let users begin small and find deeper technical detail when needed.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Supabase user segments (full-stack developers, indie SaaS founders, AI app builders), not individual people.*
+*Stakeholder groups below are source-backed categories, not fictional people.*
 
-**Henrik Sondergaard, 33, Copenhagen.** Full-stack engineer. Supabase + Next.js for client SaaS projects.
-
-**Sofia Russo, 28, Milan.** Indie founder shipping micro-SaaS. Supabase Auth + Postgres + Storage in one stack.
-
-**Marcus Chen, 35, San Francisco.** AI app builder. Supabase Edge Functions + Vector for RAG infrastructure.
+- **Developers new to Postgres:** the architecture guidance says they can start small and grow into the platform.
+- **Postgres veterans:** the same guidance identifies users who want full Postgres access and familiarity.
+- **Open-source contributors and helpers:** the contribution page invites people to contribute code, improve documentation, and help developers across community channels.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no projects)** | "Start your project" CTA |
-| **Empty (no tables)** | "Create your first table" with SQL editor |
-| **Loading (query)** | Per-row count + execution time |
-| **Loading (function deploy)** | Step-by-step deploy log |
-| **Error (SQL)** | Inline below editor + line:column |
-| **Error (RLS)** | Specific policy + table |
-| **Success (query)** | Result table + execution stats |
-| **Success (deploy)** | Endpoint URL + invocation example |
-| **Skeleton (table list)** | Translucent green-tinted placeholders |
-| **Disabled (free tier)** | Upgrade link |
-| **Loading (long migration)** | Persistent progress |
+Only the public form-error state is captured: `home::[data-omd-interaction-capture="form-error-5-0"]` preserves the input’s raw background, border, radius, padding, and Inter text values. The packet also captures public menu-open, dialog-open, and selected-tab contexts. It does not supply empty, loading, success, disabled, or product-console state treatments, so none is invented.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
-
-Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+The public control class names expose `duration-200` and transition utilities, but the packet does not contain a measured easing curve or a motion scale. Preserve that boundary; do not promote an inferred motion-token system.
 
 ---
-
-**Verified:** 2026-05-08 (omd:migrate run 56 — Apple-tier)
-**Tier 1 sources:** supabase.com home + /pricing (live DOM via playwright — Primary **`#72e3ad`** Supabase Mint Green + `#171717` Near-Black text 6px / 38-42px / 8×16 / 14-16px·400; Outline `#fdfdfd` Soft White 6px; Banner pill 9999px; nav 6px / 14px·500).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/funding):** YC (S20), LinkedIn (Copplestone), Frederick AI (Copplestone story), TechCrunch (2025-10 $5B "4 months after $2B"), SuperbCrew, Supabase company page.
-**Style ref:** `stripe`.
-**Conflicts unresolved:** Mint Green HEX — §2 doc `#3ecf8e` (darker mid-green) vs live `#72e3ad` (lighter mint) — likely 3-shade palette w/ 2025 brand refresh; both retained, live wins for Primary. **Earlier mistake reverted:** prior footer captured nav-only — canonical Primary is `#72e3ad` Mint Green missed entirely.
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://supabase.com/, https://supabase.com/features, https://supabase.com/pricing, https://supabase.com/brand-assets, https://supabase.com/docs/guides/getting-started/architecture, https://supabase.com/contribute/about
+**Tier 2 sources:** https://getdesign.md/supabase (one editorial Supabase record; no token provenance used); Refero query attempted at https://styles.refero.design/?q=Supabase and was unavailable to built-in open, with no indexed Supabase record returned by built-in search.
+**Resolution note:** Replaced the legacy dark/Circular snapshot with selector-backed 2026-07-13 public-route evidence. Marketing, features, pricing, unauthenticated overlays, documentation assets, and authenticated product UI remain separate domains.
+**Conflicts unresolved:** none

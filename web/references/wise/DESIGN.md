@@ -8,310 +8,302 @@ primary_color: "#9fe870"
 logo:
   type: simpleicons
   slug: wise
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Wise Design
   url: "https://wise.design"
   type: system
-  description: Wise's design system covering foundations, components, patterns, and tone of voice.
+  description: Wise's public design system for product, editorial, and brand guidance.
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://wise.com/", inspected: "2026-07-13" }
+    - { id: business-pricing, kind: public-pricing, url: "https://wise.com/gb/pricing/business", inspected: "2026-07-13" }
+    - { id: kr-pricing, kind: public-pricing, url: "https://wise.com/kr/pricing/", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://wise.com/", captured: "2026-07-13" }
+    - { id: business-pricing-live, kind: product-surface, url: "https://wise.com/gb/pricing/business", captured: "2026-07-13" }
+    - { id: kr-pricing-live, kind: product-surface, url: "https://wise.com/kr/pricing/", captured: "2026-07-13" }
+    - { id: wise-typography, kind: official-doc, url: "https://wise.design/foundations/typography", captured: "2026-07-13" }
+    - { id: wise-components, kind: official-doc, url: "https://docs.wise.design/components", captured: "2026-07-13" }
+    - { id: inter-license, kind: license, url: "https://github.com/rsms/inter/blob/master/LICENSE.txt", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &live { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.forest-ink": *live
+    "tokens.colors.obsidian": *live
+    "tokens.colors.charcoal": *live
+    "tokens.colors.fog": *live
+    "tokens.colors.paper": *live
+    "tokens.colors.pebble": *live
+    "tokens.typography.family.ui": &fonts { surface_id: home, source_id: home-live, method: computed-style-fontfaceset-and-source-url, captured: "2026-07-13" }
+    "tokens.typography.family.display": *fonts
+    "tokens.typography.display.size": *fonts
+    "tokens.typography.display.weight": *fonts
+    "tokens.typography.display.lineHeight": *fonts
+    "tokens.typography.display.use": *fonts
+    "tokens.typography.body.size": *fonts
+    "tokens.typography.body.weight": *fonts
+    "tokens.typography.body.lineHeight": *fonts
+    "tokens.typography.body.tracking": *fonts
+    "tokens.typography.body.use": *fonts
+    "tokens.typography.button.size": *fonts
+    "tokens.typography.button.weight": *fonts
+    "tokens.typography.button.lineHeight": *fonts
+    "tokens.typography.button.tracking": *fonts
+    "tokens.typography.button.use": *fonts
+    "tokens.spacing.xs": *live
+    "tokens.spacing.sm": *live
+    "tokens.spacing.md": *live
+    "tokens.spacing.lg": *live
+    "tokens.spacing.xl": *live
+    "tokens.spacing.xxl": *live
+    "tokens.rounded.input": *live
+    "tokens.rounded.chip": *live
+    "tokens.rounded.nav": *live
+    "tokens.rounded.pill": *live
+    "tokens.components.selection-chip.type": &chip { surface_id: home, source_id: home-live, method: computed-style-and-observed-state, captured: "2026-07-13" }
+    "tokens.components.selection-chip.bg": *chip
+    "tokens.components.selection-chip.fg": *chip
+    "tokens.components.selection-chip.radius": *chip
+    "tokens.components.selection-chip.height": *chip
+    "tokens.components.selection-chip.padding": *chip
+    "tokens.components.selection-chip.states": *chip
+    "tokens.components.selection-chip.use": *chip
+    "tokens.components.dialog-field.type": &dialog_field { surface_id: home, source_id: home-live, method: computed-style-and-observed-state, captured: "2026-07-13" }
+    "tokens.components.dialog-field.fg": *dialog_field
+    "tokens.components.dialog-field.radius": *dialog_field
+    "tokens.components.dialog-field.height": *dialog_field
+    "tokens.components.dialog-field.padding": *dialog_field
+    "tokens.components.dialog-field.states": *dialog_field
+    "tokens.components.dialog-field.use": *dialog_field
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Machine tokens are limited to the supplied public live capture; Wise Design documentation provides context, not unobserved component values."
+  components_harvested: false
   colors:
-    ink: "#0e0f0c"
     primary: "#9fe870"
-    dark-green: "#163300"
-    light-mint: "#e2f6d5"
-    pastel-green: "#cdffad"
-    positive: "#054d28"
-    danger: "#d03238"
-    warning: "#ffd11a"
-    bright-orange: "#ffc091"
-    warm-dark: "#454745"
-    gray: "#868685"
-    light-surface: "#e8ebe6"
-    canvas: "#ffffff"
+    forest-ink: "#163300"
+    obsidian: "#0e0f0c"
+    charcoal: "#454745"
+    fog: "#e8ebe6"
+    paper: "#ffffff"
+    pebble: "#868685"
   typography:
-    family: { sans: "Inter", mono: "Inter" }
-    display-mega:  { size: 126, weight: 900, lineHeight: 0.85, use: "Wise Sans, max display" }
-    display-hero:  { size: 96, weight: 900, lineHeight: 0.85, use: "Wise Sans, hero" }
-    section:       { size: 64, weight: 900, lineHeight: 0.85, use: "Wise Sans, section heading" }
-    subheading:    { size: 40, weight: 900, lineHeight: 0.85, use: "Wise Sans, sub-heading" }
-    card-title:    { size: 26, weight: 600, lineHeight: 1.23, tracking: -0.39, use: "Inter, card title" }
-    feature-title: { size: 22, weight: 600, lineHeight: 1.25, tracking: -0.4, use: "Inter, feature title" }
-    body:          { size: 18, weight: 400, lineHeight: 1.44, tracking: 0.18, use: "Inter, body" }
-    body-semibold: { size: 18, weight: 600, lineHeight: 1.44, tracking: -0.11, use: "Inter, body default" }
-    button:        { size: 18, weight: 600, lineHeight: 1.0, tracking: -0.11, use: "Inter, button" }
-    caption:       { size: 14, weight: 400, lineHeight: 1.5, tracking: -0.08, use: "Inter, caption" }
-    small:         { size: 12, weight: 400, lineHeight: 1.0, tracking: -0.08, use: "Inter, small" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24 }
-  rounded: { sm: 16, md: 30, lg: 40, full: 9999 }
-  shadow:
-    ring: "rgba(14,15,12,0.12) 0px 0px 0px 1px"
-    inset: "rgb(134,134,133) 0px 0px 0px 1px inset"
+    family: { ui: "Inter", display: "Wise Sans" }
+    display: { size: 105.428, weight: 900, lineHeight: 89.6142, use: "Observed home display headline" }
+    body: { size: 18, weight: 400, lineHeight: 26, tracking: -0.108, use: "Observed public pricing list copy" }
+    button: { size: 16, weight: 600, lineHeight: 24, tracking: -0.176, use: "Observed public primary CTA" }
+  spacing: { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 }
+  rounded: { input: 10, chip: 16, nav: 18.7693, pill: 9999 }
   components:
-    button-primary: { type: button, bg: "#9fe870", fg: "#163300", radius: 9999, padding: "5px 16px", use: "Primary green pill, hover scale 1.05" }
-    button-secondary: { type: button, fg: "#0e0f0c", radius: 9999, padding: "8px 12px 8px 16px", use: "Subtle pill, dark green 8% bg" }
-    card: { type: card, radius: 30, use: "Card, 1px rgba(14,15,12,0.12) border, ring shadow" }
-    badge-mint: { type: badge, bg: "#e2f6d5", fg: "#163300", radius: 16, use: "Soft green badge surface" }
-  components_harvested: true
+    selection-chip: { type: toggle, bg: "#9fe870", fg: "#163300", radius: 16, height: 32, padding: "0px 16px", states: "checked, unchecked", use: "Home selection chip; both states observed" }
+    dialog-field: { type: input, fg: "#0e0f0c", radius: 10, height: 48, padding: "0px 16px 0px 48px", states: "dialog-open", use: "Field in captured home dialog" }
 ---
 
 # Design System Inspiration of Wise
 
 ## 1. Visual Theme & Atmosphere
 
-Wise's website is a bold, confident fintech platform that communicates "money without borders" through massive typography and a distinctive lime-green accent. The design operates on a warm off-white canvas with near-black text (`#0e0f0c`) and a signature Wise Green (`#9fe870`) — a fresh, lime-bright color that feels alive and optimistic, unlike the corporate blues of traditional banking.
+Wise builds an international account for people and businesses that send, spend, receive, and hold money across borders. Its public web presentation makes that practical offer feel unmistakably unlike a conventional bank: a forest-green and electric-lime contrast, wide areas of paper white, and short, oversized Wise Sans headlines. Wise’s own 2021 name change broadened the story from transfers to multi-currency lives, while its later help guidance says the greener look, lettering, and globally inspired icons were introduced to better reflect the products and the people using them. The supplied July 2026 capture confirms the palette and type are not merely campaign language: the three public home/pricing surfaces repeatedly render Inter for functional UI and load Wise Sans for display moments.
 
-The typography uses Wise Sans — a proprietary font used at extreme weight 900 (black) for display headings with a remarkably tight line-height of 0.85 and OpenType `"calt"` (contextual alternates). At 126px, the text is so dense it feels like a protest sign — bold, urgent, and impossible to ignore. Inter serves as the body font with weight 600 as the default for emphasis, creating a consistently confident voice.
-
-What distinguishes Wise is its green-on-white-on-black material palette. Lime Green (`#9fe870`) appears on buttons with dark green text (`#163300`), creating a nature-inspired CTA that feels fresh. Hover states use `scale(1.05)` expansion rather than color changes — buttons physically grow on interaction. The border-radius system uses 9999px for buttons (pill), 30px–40px for cards, and the shadow system is minimal — just `rgba(14,15,12,0.12) 0px 0px 0px 1px` ring shadows.
-
-**Key Characteristics:**
-- Wise Sans at weight 900, 0.85 line-height — billboard-scale bold headlines
-- Lime Green (`#9fe870`) accent with dark green text (`#163300`) — nature-inspired fintech
-- Inter body at weight 600 as default — confident, not light
-- Near-black (`#0e0f0c`) primary with warm green undertone
-- Scale(1.05) hover animations — buttons physically grow
-- OpenType `"calt"` on all text
-- Pill buttons (9999px) and large rounded cards (30px–40px)
-- Semantic color system with comprehensive state management
+- **Lime punctuation:** `#9fe870` is the repeated live primary-action fill, paired with `#163300` text.
+- **Forest rhythm:** `#163300`, paper white, and `#e8ebe6` make the captured public pages feel warm rather than corporate-blue.
+- **Expressive restraint:** Wise Design reserves Wise Sans for short, high-impact moments and says to default to Inter for most product communication.
 
 ## 2. Color Palette & Roles
 
-### Primary Brand
-- **Near Black** (`#0e0f0c`): Primary text, background for dark sections
-- **Wise Green** (`#9fe870`): Primary CTA button, brand accent
-- **Dark Green** (`#163300`): Button text on green, deep green accent
-- **Light Mint** (`#e2f6d5`): Soft green surface, badge backgrounds
-- **Pastel Green** (`#cdffad`): `--color-interactive-contrast-hover`, hover accent
+### Observed public-surface roles
 
-### Semantic
-- **Positive Green** (`#054d28`): `--color-sentiment-positive-primary`, success
-- **Danger Red** (`#d03238`): `--color-interactive-negative-hover`, error/destructive
-- **Warning Yellow** (`#ffd11a`): `--color-sentiment-warning-hover`, warnings
-- **Background Cyan** (`rgba(56,200,255,0.10)`): `--color-background-accent`, info tint
-- **Bright Orange** (`#ffc091`): `--color-bright-orange`, warm accent
+- **Lime action** (`#9fe870`): primary CTA fill on home and both public pricing surfaces.
+- **Forest ink** (`#163300`): recurring text, border, dark-action fill, and CTA text.
+- **Obsidian** (`#0e0f0c`): high-contrast text and borders in the supplied public capture.
+- **Charcoal** (`#454745`): repeated secondary copy and border value.
+- **Fog** (`#e8ebe6`): repeated light surface/border value on home and business pricing.
+- **Paper** (`#ffffff`): observed public canvas and dialog surface.
+- **Pebble** (`#868685`): observed home input/chip border; this is a lower-frequency public value, not a universal semantic claim.
 
-### Neutral
-- **Warm Dark** (`#454745`): Secondary text, borders
-- **Gray** (`#868685`): Muted text, tertiary
-- **Light Surface** (`#e8ebe6`): Subtle green-tinted light surface
+No unobserved status palette or broad authenticated-product color scale is asserted here.
 
 ## 3. Typography Rules
 
-### Font Families
-- **Display**: `Wise Sans`, fallback: `Inter` — OpenType `"calt"` on all text
-- **Body / UI**: `Inter`, fallbacks: `Helvetica, Arial`
+### Evidence classes
 
-### Hierarchy
+- **Official product-use:** Wise Design says to use Inter for most communication and Wise Sans for short, expressive headlines; its product guidance specifically allows Wise Sans for success, progress, and feature-intro moments.
+- **Live computed public-surface use:** the supplied collector records `Inter` as loaded/high confidence with 1,502 visible uses across home and pricing, backed by seven Wise-hosted WOFF2 sources. `Wise Sans` is loaded/high confidence with 24 visible uses and two Wise-hosted WOFF2 sources. These are the only two family tokens promoted here.
+- **Official distributed-font licence:** Inter’s upstream project is licensed under SIL OFL 1.1. That licence applies to Inter, not to Wise Sans.
+- **Declared-only:** `Averta`, `VideoJS`, and `Wise Sans JP` have declared font-face sources in the bundle but zero visible use in the captured surfaces. They are not UI tokens or specimen substitutes.
+- **Unresolved:** no public licence source for Wise Sans was found in this pass. Its live metadata and official Wise Design usage guidance remain useful, but redistribution rights are not asserted.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Mega | Wise Sans | 126px (7.88rem) | 900 | 0.85 (ultra-tight) | normal | `"calt"` |
-| Display Hero | Wise Sans | 96px (6.00rem) | 900 | 0.85 | normal | `"calt"` |
-| Section Heading | Wise Sans | 64px (4.00rem) | 900 | 0.85 | normal | `"calt"` |
-| Sub-heading | Wise Sans | 40px (2.50rem) | 900 | 0.85 | normal | `"calt"` |
-| Alt Heading | Inter | 78px (4.88rem) | 600 | 1.10 (tight) | -2.34px | `"calt"` |
-| Card Title | Inter | 26px (1.62rem) | 600 | 1.23 (tight) | -0.39px | `"calt"` |
-| Feature Title | Inter | 22px (1.38rem) | 600 | 1.25 (tight) | -0.396px | `"calt"` |
-| Body | Inter | 18px (1.13rem) | 400 | 1.44 | 0.18px | `"calt"` |
-| Body Semibold | Inter | 18px (1.13rem) | 600 | 1.44 | -0.108px | `"calt"` |
-| Button | Inter | 18px–22px | 600 | 1.00–1.44 | -0.108px | `"calt"` |
-| Caption | Inter | 14px (0.88rem) | 400–600 | 1.50–1.86 | -0.084px to -0.108px | `"calt"` |
-| Small | Inter | 12px (0.75rem) | 400–600 | 1.00–2.17 | -0.084px to -0.108px | `"calt"` |
+### Measured public hierarchy
 
-### Principles
-- **Weight 900 as identity**: Wise Sans Black (900) is used exclusively for display — the heaviest weight in any analyzed system. It creates text that feels stamped, pressed, physical.
-- **0.85 line-height**: The tightest display line-height analyzed. Letters overlap vertically, creating dense, billboard-like text blocks.
-- **"calt" everywhere**: Contextual alternates enabled on ALL text — both Wise Sans and Inter.
-- **Weight 600 as body default**: Inter Semibold is the standard reading weight — confident, not light.
+| Role | Family | Size | Weight | Line height | Tracking | Provenance |
+|---|---|---:|---:|---:|---:|---|
+| Display headline | Wise Sans | 105.428px | 900 | 89.6142px | normal | `home::h1` |
+| Display heading | Wise Sans | 89.1428px | 900 | 75.7714px | normal | `home::h2` |
+| Public CTA | Inter | 16px | 600 | 24px | -0.176px | `home::[data-omd-capture="35"]` |
+| Public body/list | Inter | 18px | 400 | 26px | -0.108px | `surface-2::li` |
 
 ## 4. Component Stylings
 
-### Buttons
+All variants below are observations from the supplied public home/pricing capture, not a complete Wise product-component contract. Selector, surface, and observed-state provenance are retained; no hover, pressed, focus, animation, or unobserved size variant is inferred.
 
-**Primary Green Pill**
-- Background: `#9fe870` (Wise Green)
-- Text: `#163300` (Dark Green)
-- Padding: 5px 16px
-- Radius: 9999px
-- Hover: scale(1.05) — button physically grows
-- Active: scale(0.95) — button compresses
-- Focus: inset ring + outline
+### Public actions
 
-**Secondary Subtle Pill**
-- Background: `rgba(22, 51, 0, 0.08)` (dark green at 8% opacity)
+**Lime primary CTA**
+- Background: `#9fe870`
+- Text: `#163300`
+- Border: `1px solid #9fe870`
+- Radius: `9999px`
+- Padding: `11px 24px`
+- Height: `48px`
+- Font: `16px / 600 / Inter`
+- Use: home marketing CTA; `home::[data-omd-capture="35"]`, also repeated on `surface-3`
+
+**Forest inverted CTA**
+- Background: `#163300`
+- Text: `#9fe870`
+- Border: `1px solid #163300`
+- Radius: `9999px`
+- Padding: `11px 24px`
+- Height: `48px`
+- Font: `16px / 600 / Inter`
+- Use: home marketing CTA on a dark surface; `home::[data-omd-capture="40"]`
+
+### Public navigation
+
+**Secondary navigation control**
+- Text: `#163300`
+- Border: `0px solid #163300`
+- Radius: `18.7693px`
+- Padding: `8px 12px`
+- Height: `40px`
+- Font: `18px / 600 / Inter`
+- Use: public navigation; `home::[data-omd-capture="5"]`, also present on `surface-3`
+
+### Selection and dialog
+
+**Selection chip**
+- Background: `#9fe870`
+- Text: `#163300`
+- Border: `1px solid #9fe870`
+- Radius: `16px`
+- Padding: `0px 16px`
+- Height: `32px`
+- Font: `18px / 600 / Inter`
+- Checked: `home::[data-omd-capture="79"]`
+- Unchecked: transparent background with `#868685` 1px border at `home::[data-omd-capture="80"]`
+- Use: home selection chip; checked and unchecked states were both captured
+
+**Dialog field**
 - Text: `#0e0f0c`
-- Padding: 8px 12px 8px 16px
-- Radius: 9999px
-- Same scale hover/active behavior
-
-### Cards & Containers
-- Radius: 16px (small), 30px (medium), 40px (large cards/tables)
-- Border: `1px solid rgba(14,15,12,0.12)` or `1px solid #9fe870` (green accent)
-- Shadow: `rgba(14,15,12,0.12) 0px 0px 0px 1px` (ring shadow)
-
-### Navigation
-- Green-tinted navigation hover: `rgba(211,242,192,0.4)`
-- Clean header with Wise wordmark
-- Pill CTAs right-aligned
+- Radius: `10px`
+- Padding: `0px 16px 0px 48px`
+- Height: `48px`
+- Font: `16px / 400 / Inter`
+- Dialog-open: `home::[data-omd-interaction-capture="dialog-0-3"]`; inset shadow `rgb(52, 74, 36) 0px 0px 0px 2.45557px`
+- Use: field inside the captured home dialog
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 1px, 2px, 3px, 4px, 5px, 8px, 10px, 11px, 12px, 16px, 18px, 19px, 20px, 22px, 24px
+### Observed spacing scale
 
-### Border Radius Scale
-- Minimal (2px): Links, inputs
-- Standard (10px): Comboboxes, inputs
-- Card (16px): Small cards, buttons, radio
-- Medium (20px): Links, medium cards
-- Large (30px): Feature cards
-- Section (40px): Tables, large cards
-- Mega (1000px): Presentation elements
-- Pill (9999px): All buttons, images
-- Circle (50%): Icons, badges
+The public capture repeatedly uses 4, 8, 12, 16, 24, and 32px values. Wise Design’s published spacing foundation lists the same values as foundational tokens and extends the scale beyond the captured component set. This reference keeps only the overlap as machine tokens.
+
+### Observed shape scale
+
+- **Input/dialog control:** `10px`
+- **Selection chip:** `16px`
+- **Public navigation control:** `18.7693px` computed radius
+- **Public CTA:** `9999px` pill
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Default |
-| Ring (Level 1) | `rgba(14,15,12,0.12) 0px 0px 0px 1px` | Card borders |
-| Inset (Level 2) | `rgb(134,134,133) 0px 0px 0px 1px inset` | Input focus |
-
-**Shadow Philosophy**: Wise uses minimal shadows — ring shadows only. Depth comes from the bold green accent against the neutral canvas.
+The supplied capture does not establish a universal card-elevation scale. The observed home dialog uses `rgba(69, 71, 69, 0.2) 0px 0px 40px 0px`; the dialog field exposes an inset focus-like shadow in its dialog-open snapshot. Keep those values local to those components rather than treating them as a global shadow system.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Wise Sans weight 900 for display — the extreme boldness IS the brand
-- Apply line-height 0.85 on Wise Sans display — ultra-tight is intentional
-- Use Lime Green (#9fe870) for primary CTAs with Dark Green (#163300) text
-- Apply scale(1.05) hover and scale(0.95) active on buttons
-- Enable "calt" on all text
-- Use Inter weight 600 as the body default
+
+- Default to Inter for functional UI and longer communication; this is Wise Design’s stated default.
+- Reserve Wise Sans for short, expressive display moments.
+- Pair the observed lime primary action with forest-green text on the captured public-web pattern.
+- Preserve the captured pill geometry for a public CTA only when that specific marketing pattern is intended.
 
 ### Don't
-- Don't use light font weights for Wise Sans — only 900
-- Don't relax the 0.85 line-height on display — the density is the identity
-- Don't use the Wise Green as background for large surfaces — it's for buttons and accents
-- Don't skip the scale animation on buttons
-- Don't use traditional shadows — ring shadows only
+
+- Don’t use Wise Sans for long or serious text; Wise Design directs those cases to the cleaner face.
+- Don’t promote declared-only Averta or Wise Sans JP to visible UI typography.
+- Don’t copy the public marketing CTA, dialog, or chip measurements into authenticated-product or documentation surfaces without separate evidence.
+- Don’t infer hover, pressed, focus, motion, error, or loading variants from this capture.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <576px | Single column |
-| Tablet | 576–992px | 2-column |
-| Desktop | 992–1440px | Full layout |
-| Large | >1440px | Expanded |
+The supplied evidence is desktop-only (`1440x900`) for home, business pricing, and Korean pricing. No breakpoint, mobile layout, or responsive component change is claimed.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Text: Near Black (`#0e0f0c`)
-- Background: White (`#ffffff` / off-white)
-- Accent: Wise Green (`#9fe870`)
-- Button text: Dark Green (`#163300`)
-- Secondary: Gray (`#868685`)
+### Evidence-safe prompt
 
-### Example Component Prompts
-- "Create hero: white background. Headline at 96px Wise Sans weight 900, line-height 0.85, 'calt' enabled, #0e0f0c text. Green pill CTA (#9fe870, 9999px radius, 5px 16px padding, #163300 text). Hover: scale(1.05)."
-- "Build a card: 30px radius, 1px solid rgba(14,15,12,0.12). Title at 22px Inter weight 600, body at 18px weight 400."
-
-### Iteration Guide
-1. Wise Sans 900 at 0.85 line-height — the extreme weight IS the brand
-2. Lime Green for buttons only — dark green text on green background
-3. Scale animations (1.05 hover, 0.95 active) on all interactive elements
-4. "calt" on everything — contextual alternates are mandatory
-5. Inter 600 for body — confident reading weight
+- “Create a public Wise-inspired marketing action using the observed lime `#9fe870` fill, forest `#163300` text, 9999px radius, 11px 24px padding, 48px height, and 16px/600 Inter. Do not assume this is an authenticated-product button.”
+- “Use Inter for body/UI and reserve Wise Sans for a short display headline; do not substitute a system font for a declared-only family.”
+- “For a home selection chip, use the observed checked and unchecked values only; no transition, hover, or error behavior is specified.”
 
 ## 10. Voice & Tone
 
-Wise's voice is **fintech-clear and money-honest.** "The international account / Money without borders" — capability-driven, no marketing fluff. Lime green primary `#9fe870` signals "modern fintech, not bank corporate." Wise has been famously transparent about exchange rate markups since founding.
+Wise’s first-party rebrand account frames the service around making money work without borders and speaks directly to people and businesses with multi-currency lives. The current public messaging is concise and capability-led rather than decorative.
 
-| Context | Tone |
+| Context | Supported voice evidence |
 |---|---|
-| CTA | Verb. "Get started", "Sign up", "Open an account" |
-| Marketing | Comparison-honest. Real exchange rate vs banks shown |
-| Documentation | Plain English KYC explanations |
-| Error | Specific. "Recipient details invalid. Check IBAN format." |
+| Mission | “Money without borders” — Wise’s rebrand account |
+| Product scope | “Sending, spending, and receiving money internationally” — Wise’s rebrand account |
+| CTA register | “Open an account” — captured public home CTA context |
 
-**Voice samples**
-- Marketing tagline: *"Money without borders"* <!-- verified: wise.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary fintech". Hidden fees framing.
+No fictional error copy, prohibited-language list, or broad documentation tone is asserted.
 
 ## 11. Brand Narrative
 
-Wise was **founded January 2011 in London** as **TransferWise** (renamed July 2012 → rebranded **Wise** February 2021) by **Kristo Käärmann** (ex-Deloitte management consultant) and **Taavet Hinrikus** (Skype's first employee). Both Estonian, both moved to London ~2006, both frustrated by ~5% bank FX markups on EUR↔GBP transfers — they devised a peer-to-peer workaround between themselves that became the business concept. **Reached unicorn status in 2016.** On **7 July 2021**, Wise went public via **direct listing on the London Stock Exchange (LSE:WISE)** at an **~$11B valuation** — no new shares issued, making Käärmann + Hinrikus **Estonia's first two billionaires**. The brand voice — transparent, honest, lime green `#9fe870` primary, Wise Sans 900 display, Inter 600 body — reflects "money without borders" for international citizens. <!-- citations: Wikipedia (Wise company); Bloomberg 2021-07-07; ERR.ee; Fortune 2021-11-24 -->
+Wise’s February 2021 first-party rebrand account says the company changed its name from TransferWise to Wise as the service had grown beyond transfers. It describes the job as making money move across borders more instantly, transparently, conveniently, and eventually for free, for people and businesses managing money internationally.
 
-**Sources:**
-- [Wise (company) — Wikipedia](https://en.wikipedia.org/wiki/Wise_(company))
-- [Bloomberg — Wise Founders Turn Bank Fee Frustration into $3B Fortune (2021-07-07)](https://www.bloomberg.com/news/articles/2021-07-07/wise-founders-turn-bank-fee-frustration-into-3-billion-fortune)
-- [ERR — Wise founders' story contained plenty of twists and turns](https://news.err.ee/1608273048/daily-wise-founders-story-contained-plenty-of-twists-and-turns)
-- [Fortune — Taavet Hinrikus on his next act (2021-11-24)](https://fortune.com/2021/11/24/wise-taavet-hinrikus-venture-capital-tech-startup-investing/)
+The later first-party help update connects the greener look, new logo, lettering, and people-and-place-inspired icons to the products Wise is building and the people it serves. That explains the visible contrast between the practical Inter-led UI and moments where Wise Sans is allowed to add a more expressive voice.
 
 ## 12. Principles
 
-1. **Real exchange rate is the product.** *UI implication:* always show interbank rate; markups visible.
-2. **Multi-currency native.** *UI implication:* nav supports 50+ currency selection.
-3. **Lime green `#9fe870` for primary.** *UI implication:* preserve lime; don't substitute corporate blue.
-4. **Inter 600 body.** *UI implication:* confident reading weight; don't lighten to 400.
-5. **`calt` OpenType.** Contextual alternates mandatory. *UI implication:* preserve OpenType features.
+1. **Money across borders, not a single transfer.** *UI implication:* describe sending, spending, receiving, and holding as a coherent international-money task when the product context supports it.
+2. **Clarity for functional communication.** *UI implication:* default to Inter for readable UI and long-form information.
+3. **Expression is a deliberate accent.** *UI implication:* use Wise Sans for short key moments, not as a universal UI family.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Wise user segments (international workers, freelancers with multi-currency income, expats), not individual people.*
+*These are verified stakeholder groups, not invented individual personas.*
 
-**Sergey Volkov, 33, Berlin.** Russian-origin engineer working remotely for US company. Wise multi-currency account.
-
-**Sofia Russo, 31, Milan.** Freelancer with EUR/USD/GBP income. Wise Business for invoicing.
-
-**Henrik Sondergaard, 38, Singapore.** Expat with Danish family. Wise for sending money home + multi-currency debit card.
+- **People with international lives:** Wise’s rebrand account names people who live, work, travel, or support family around the world.
+- **Businesses managing money across borders:** Wise explicitly frames the expanded service around both people and businesses.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no transfers)** | "Send your first transfer" CTA |
-| **Empty (no accounts)** | "Open an account" CTA |
-| **Loading (rate fetch)** | Real-time rate update with timestamp |
-| **Loading (KYC)** | Persistent badge with progress |
-| **Error (recipient)** | Specific field-level message |
-| **Error (compliance)** | Plain English explanation + remediation |
-| **Success (transfer)** | Receipt with rate / fee / arrival time |
-| **Success (KYC)** | Confirmation + account active |
-| **Skeleton (transaction list)** | Lime-tinted placeholders |
-| **Disabled (insufficient funds)** | Top up link |
-| **Loading (long action)** | Multi-step progress |
+Only the following UI states were captured on the public home surface:
+
+| State | Observed component | Provenance |
+|---|---|---|
+| Dialog open | Popover dialog and field | two captured home dialog interactions |
+| Selected | Selection option | `home::[data-omd-interaction-capture="dialog-0-7"]` |
+| Checked | Selection chip | `home::[data-omd-capture="79"]` |
+| Unchecked | Selection chip | `home::[data-omd-capture="80"]` |
+| Disabled | Circular control | `home::[data-omd-capture="65"]` |
+
+No public evidence in this pass establishes loading, empty, success, or error treatment.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
-| `motion-pulse` | continuous | Live FX rate update |
-
-Standard cubic-bezier; no bounce — fintech register. `prefers-reduced-motion: reduce` removes rate pulse.
+The collector expanded two dialogs but did not capture a transition duration, easing value, hover behavior, or pressed behavior. No motion token is supplied.
 
 ---
 
-**Verified:** 2026-05-08 (Apple-tier full migration)
-**Tier 1 sources:** wise.com/, wise.com/pricing (live DOM via playwright)
-- **Primary `#9fe870` Wise Green + `#163300` Dark Green text** 9999px / 48px / 11×24 / 16px·600 (Open an account / Try demo / Get Started / Sign up today — canonical hero/pricing CTA)
-- **Sign up — Header utility** `#9fe870` 9999px / 32px / 8×12 / 16px·600 (compact variant)
-- **Skip-to-content** `#9fe870` 9999px / 72px / 19×24 / 20px·600 (a11y, larger geometry)
-- **Top nav pills** transparent / `#163300` text / 9999px / 32px / 8×12 / 18px·600
-- **Submenu pills** transparent / `#163300` / 18.7693px / 40px / 8×12 / 18px·600 (subpixel — rem-based design tokens)
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 1 (Philosophy):** Wikipedia (Wise company), Bloomberg 2021-07-07, ERR.ee, Fortune 2021-11-24.
-**Style ref:** `stripe`. **Conflicts unresolved:** none.
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://wise.com/ · https://wise.com/gb/pricing/business · https://wise.com/kr/pricing/ · https://wise.design/foundations/typography · https://docs.wise.design/components · https://wise.com/us/blog/world-meet-wise · https://wise.com/help/articles/0pZf4t8FdGwauVsQGiHqD/why-does-wise-look-different
+**Tier 2 sources:** https://getdesign.md/wise · https://styles.refero.design/style/367c0c6e-73a7-441c-a8ff-91d139ac60dc
+**Conflicts unresolved:** none

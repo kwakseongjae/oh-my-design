@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>One-command bootstrap for skill-driven design with your AI coding agent.</strong> 400 real company design systems. Zero AI calls in the install. Then you just talk to your agent.
+  <strong>One-command bootstrap for skill-driven design with your AI coding agent.</strong> 400+ real company design systems. Zero AI calls in the install. Then you just talk to your agent.
 </p>
 
 <p align="center">
@@ -25,7 +25,7 @@
 
 ## What is oh-my-design?
 
-**oh-my-design (OmD)** is a design system for AI coding agents. It turns Claude Code / Codex / OpenCode / Cursor into a senior product designer with a working memory of your brand. You install once. After that, you just describe what you want — components, screens, copy, assets, charts — and the agent applies your project's design system and ships. `DESIGN.md` is the brand spec ([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens + a brand-philosophy layer: Voice / Narrative / Principles / Personas / States / Motion), and 400 real-company DESIGN.md files ship in this package. **No API keys. No external infra. Everything runs inside your existing CLI session.**
+**oh-my-design (OmD)** is a design system for AI coding agents. It turns Claude Code / Codex / OpenCode / Cursor into a senior product designer with a working memory of your brand. You install once. After that, you just describe what you want — components, screens, copy, assets, charts — and the agent applies your project's design system and ships. `DESIGN.md` is the brand spec ([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens + a brand-philosophy layer: Voice / Narrative / Principles / Personas / States / Motion), and 400+ real-company DESIGN.md files ship in this package. **No API keys. No external infra. Everything runs inside your existing CLI session.**
 
 ## Install
 
@@ -74,16 +74,16 @@ The default install targets every detected agent; pass `--agent <name>` to insta
 
 ## What's inside
 
-**18 skills · 16 sub-agents · 400 verified references · activation hooks** — installed by the one command above.
+**18 skills · 16 sub-agents · 400 quality-graded references · activation hooks** — installed by the one command above.
 
 - **Skills** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the v0.2 agent layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), the `omd:feel` interface-quality skill (113 provenance-graded HIG / Material / WCAG rules that apply + audit motion, spacing, type, and a11y), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
 - **Sub-agents** — `omd-master` + 15 specialists (UX research, UI generation, asset curation, microcopy, a11y audit, persona testing, critique, …).
-- **References** — 400 real-company `DESIGN.md` files, each verified against live sources. Every reference is also served as raw markdown at `oh-my-design.kr/<id>/design.md`, so agents can fetch it directly.
+- **References** — 400 real-company `DESIGN.md` files with explicit evidence/quality status. Every reference is also served as raw markdown at `oh-my-design.kr/<id>/design.md`, so agents can fetch it directly.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse activation so the skills trigger on natural language, not just slash commands.
 
 Full skill-by-skill and agent-by-agent reference: **[oh-my-design.kr/docs](https://oh-my-design.kr/docs)**.
 
-Prefer MCP? **[oh-my-design-mcp](./packages/mcp/)** exposes the same catalog as MCP resources/tools for Claude Desktop, Cursor, Cline, Continue, and Codex — see [`packages/mcp/README.md`](./packages/mcp/README.md).
+The old catalog MCP transport is retired. Skills and agents consume the local catalog or the raw `/<id>/design.md` route directly; the historical implementation remains under `packages/mcp/` as an archive.
 
 ## Upgrading
 

@@ -22,9 +22,10 @@ node scripts/check-counts.mjs
 
 changed=$(git diff --cached --name-only)
 
-if echo "$changed" | grep -qE '^(references/|data/reference-fingerprints\.json|\.claude/data/reference-fingerprints\.json|\.codex/data/reference-fingerprints\.json|web/src/data/registry\.generated\.ts|web/scripts/build-registry\.mjs|web/scripts/migrate-frontmatters\.mjs|web/__tests__/catalog-integrity\.test\.ts|design-md/)'; then
+if echo "$changed" | grep -qE '^(web/references/|references/|data/reference-fingerprints\.json|\.claude/data/reference-fingerprints\.json|\.codex/data/reference-fingerprints\.json|web/src/data/(registry|reference-quality)\.generated\.(ts|json)|web/scripts/(build-registry|build-reference-quality|build-reference-ast)\.(mjs|ts)|web/scripts/lib/reference-quality\.mjs|web/scripts/migrate-frontmatters\.mjs|web/__tests__/(catalog-integrity|reference-quality|reference-ast-fleet)\.test\.ts|web/src/lib/references/|spec/(reference-v2|regional-sources)\.(md|yaml)|design-md/)'; then
   echo "[husky] catalog-integrity gate: running vitest…"
-  (cd web && npm run build-registry && npm test -- --run __tests__/catalog-integrity.test.ts)
+  npm run check:catalog
+  (cd web && npm test -- --run __tests__/catalog-integrity.test.ts __tests__/reference-quality.test.ts)
 else
   echo "[husky] catalog-integrity gate: no data-plane changes, skipping."
 fi

@@ -24,6 +24,16 @@
             "timeout": 3000
           }
         ]
+      },
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/scripts/context_restore.sh",
+            "timeout": 5000
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -52,4 +62,3 @@
     ]
   }
 }
-

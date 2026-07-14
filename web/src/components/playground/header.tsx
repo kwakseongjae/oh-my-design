@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -8,6 +7,7 @@ import { ActionsHeader } from "./actions-header";
 import { MoodOverrideBadge } from "./mood-override-badge";
 import { GithubStarButton } from "@/components/github-star-button";
 import type { PlaygroundState } from "@/lib/playground/state";
+import { useMounted } from "@/lib/use-mounted";
 
 export function PlaygroundHeader({
   state,
@@ -19,8 +19,7 @@ export function PlaygroundHeader({
   onRevertOverrides: () => void;
 }) {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   const displayName = state.name.trim() || "Untitled";
 

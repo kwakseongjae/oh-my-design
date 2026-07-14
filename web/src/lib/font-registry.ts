@@ -95,6 +95,11 @@ const NORMALIZE: Record<string, string> = {
   "SpotifyMixUITitle": "Spotify Mix",
   "SpotifyMixUI": "Spotify Mix",
 
+  // Baemin 2.0
+  "WORK": "BAEMINWORK",
+  "WORK체": "BAEMINWORK",
+  "Baemin Work": "BAEMINWORK",
+
   // Uber
   "UberMoveText": "Uber Move",
   "UberMove": "Uber Move",
@@ -181,7 +186,7 @@ const FONT_REGISTRY: Record<string, FontInfo> = {
   "SF Mono": { name: "SF Mono", license: "Proprietary", installable: true, source: { name: "Apple Developer", url: "https://developer.apple.com/fonts/" }, notes: "Apple's monospace. Free for Apple platforms." },
   "Helvetica Neue": { name: "Helvetica Neue", license: "Proprietary", installable: false, source: { name: "Linotype", url: "https://www.myfonts.com/collections/neue-helvetica-font-linotype" }, notes: "Pre-installed on macOS/iOS. Commercial license required for redistribution." },
   "Helvetica": { name: "Helvetica", license: "Proprietary", installable: false, source: { name: "Linotype", url: "https://www.myfonts.com/collections/helvetica-font-linotype" }, notes: "Pre-installed on macOS/iOS." },
-  "Arial": { name: "Arial", license: "Proprietary", installable: false, notes: "Pre-installed on Windows/macOS." },
+  "Arial": { name: "Arial", license: "System", installable: false, notes: "Pre-installed on Windows/macOS; no webfont download is needed." },
   "Verdana": { name: "Verdana", license: "Proprietary", installable: false, notes: "Microsoft system font." },
   "Times": { name: "Times", license: "Proprietary", installable: false, notes: "Pre-installed on macOS/Windows." },
   "Times New Roman": { name: "Times New Roman", license: "Proprietary", installable: false, notes: "Pre-installed on macOS/Windows." },
@@ -244,6 +249,7 @@ const FONT_REGISTRY: Record<string, FontInfo> = {
   "Commit Mono": { name: "Commit Mono", license: "OFL", installable: true, source: { name: "commitmono.com", url: "https://commitmono.com/" }, notes: "Free, open-source mono designed for code." },
   "Pretendard Variable": { name: "Pretendard Variable", license: "OFL", installable: true, source: { name: "GitHub · orioncactus/pretendard", url: "https://github.com/orioncactus/pretendard" }, notes: "Modern Korean variable font with full Latin coverage." },
   "Pretendard": { name: "Pretendard", license: "OFL", installable: true, source: { name: "GitHub · orioncactus/pretendard", url: "https://github.com/orioncactus/pretendard" } },
+  "BAEMINWORK": { name: "BAEMINWORK", license: "Brand-proprietary", installable: false, source: { name: "Official Baemin 2.0 announcement", url: "https://www.woowahan.com/report/detail/975?page=1" }, notes: "Current Baemin app typeface (WORK), officially introduced in July 2025. Metadata is shown without a substitute live specimen." },
   "Cal Sans": { name: "Cal Sans", license: "OFL", installable: true, source: { name: "GitHub · calcom/font", url: "https://github.com/calcom/font" }, notes: "Cal.com's open-source display font." },
   "D-DIN": { name: "D-DIN", license: "OFL", installable: true, source: { name: "GitHub · datto", url: "https://github.com/datto/d-din" }, notes: "Open-source DIN clone, used by SpaceX." },
   "Tossface": { name: "Tossface", license: "OFL", installable: true, source: { name: "toss.im/tossface", url: "https://toss.im/tossface" }, notes: "Toss's open-source emoji font (3,500+ emojis). Source on GitHub: toss/tossface." },
@@ -286,7 +292,7 @@ const FONT_REGISTRY: Record<string, FontInfo> = {
   "JJannon": { name: "JJannon", license: "Proprietary", installable: false, notes: "Used by Cursor as a serif accent. Foundry catalog page is not currently available — check Production Type's current catalog for availability." },
 
   // ─────────── Brand-proprietary (NOT publicly distributed) ───────────
-  "Airbnb Cereal VF": { name: "Airbnb Cereal VF", license: "Brand-proprietary", installable: false, notes: "Airbnb's internal typeface. Not publicly distributed. Use Inter as the closest open-source substitute." },
+  "Airbnb Cereal VF": { name: "Airbnb Cereal VF", license: "Brand-proprietary", installable: false, notes: "Airbnb's internal typeface. Not publicly distributed; do not render or label a substitute as Airbnb Cereal." },
   "Pin Sans": { name: "Pin Sans", license: "Brand-proprietary", installable: false, notes: "Pinterest's custom typeface. Not publicly distributed." },
   "NVIDIA-EMEA": { name: "NVIDIA Sans (EMEA)", license: "Brand-proprietary", installable: false, notes: "NVIDIA's brand typeface. Not publicly distributed." },
   "Notion Inter": { name: "Notion Inter (modified)", license: "OFL", installable: true, source: { name: "Use Inter (Google Fonts)", url: "https://fonts.google.com/specimen/Inter" }, notes: "Notion uses a slightly customized Inter — install standard Inter as a near-perfect match." },

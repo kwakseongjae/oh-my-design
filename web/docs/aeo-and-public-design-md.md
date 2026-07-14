@@ -127,7 +127,7 @@ The original implementation plan is kept below for reference.
 What the user wanted: `/toss/design.md`-style public raw markdown, like Vercel.
 
 ### Read path already exists
-`web/src/lib/mcp/catalog.ts` reads `references/<id>/DESIGN.md` from disk (`readRaw`) and
+The retired `web/src/lib/mcp/catalog.ts` used to read `references/<id>/DESIGN.md` from disk (`readRaw`) and
 `REGISTRY_BY_ID` is the id guard. The brand page `/design-systems/[id]/page.tsx` does the same.
 A `.md` route is a thin new representation over content we already serve — no new data layer.
 

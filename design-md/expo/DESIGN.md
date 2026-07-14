@@ -4,409 +4,316 @@ name: Expo
 country: US
 category: developer-tools
 homepage: "https://expo.dev"
-primary_color: "#000020"
+primary_color: "#000000"
 logo:
   type: simpleicons
   slug: expo
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
-  name: Expo Brand
+  name: Expo Brand Guidelines
   url: "https://expo.dev/brand"
   type: brand
-  description: Expo logo/wordmark trademark and usage guidelines.
-  og_image: "https://og.expo.dev/?theme=universe&title=Brand%2C+Assets%2C+Styles&description=Get+Expo+brand+assets+and+styles+for+any+use."
+  description: Official guidance for using Expo's registered name, logo, wordmark, and brand assets; it is distinct from live marketing and documentation UI evidence.
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://expo.dev/", inspected: "2026-07-13" }
+    - { id: surface-2, kind: marketing, url: "https://expo.dev/services", inspected: "2026-07-13" }
+    - { id: surface-3, kind: marketing, url: "https://expo.dev/pricing", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://expo.dev/", captured: "2026-07-13" }
+    - { id: services-live, kind: product-surface, url: "https://expo.dev/services", captured: "2026-07-13" }
+    - { id: pricing-live, kind: product-surface, url: "https://expo.dev/pricing", captured: "2026-07-13" }
+    - { id: brand-official, kind: brand-asset, url: "https://expo.dev/brand", captured: "2026-07-13" }
+    - { id: about-official, kind: official-doc, url: "https://expo.dev/about", captured: "2026-07-13" }
+    - { id: eas-docs, kind: official-doc, url: "https://docs.expo.dev/eas/", captured: "2026-07-13" }
+    - { id: inter-license, kind: license, url: "https://github.com/rsms/inter", captured: "2026-07-13" }
+    - { id: jetbrains-mono-license, kind: license, url: "https://github.com/JetBrains/JetBrainsMono", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &marketing { surface_id: home, source_id: home-live, method: evidence-bundle-live-inspect, captured: "2026-07-13" }
+    "tokens.colors.canvas": *marketing
+    "tokens.colors.surface": *marketing
+    "tokens.colors.foreground": *marketing
+    "tokens.colors.muted": *marketing
+    "tokens.colors.subtle": *marketing
+    "tokens.colors.on-primary": *marketing
+    "tokens.colors.hairline": *marketing
+    "tokens.colors.control-border": *marketing
+    "tokens.colors.link": *marketing
+    "tokens.typography.family.ui": *marketing
+    "tokens.typography.family.mono": *marketing
+    "tokens.typography.hero.size": *marketing
+    "tokens.typography.hero.weight": *marketing
+    "tokens.typography.hero.lineHeight": *marketing
+    "tokens.typography.hero.tracking": *marketing
+    "tokens.typography.hero.use": *marketing
+    "tokens.typography.section.size": *marketing
+    "tokens.typography.section.weight": *marketing
+    "tokens.typography.section.lineHeight": *marketing
+    "tokens.typography.section.tracking": *marketing
+    "tokens.typography.section.use": *marketing
+    "tokens.typography.subheading.size": *marketing
+    "tokens.typography.subheading.weight": *marketing
+    "tokens.typography.subheading.lineHeight": *marketing
+    "tokens.typography.subheading.tracking": *marketing
+    "tokens.typography.subheading.use": *marketing
+    "tokens.typography.body.size": *marketing
+    "tokens.typography.body.weight": *marketing
+    "tokens.typography.body.lineHeight": *marketing
+    "tokens.typography.body.use": *marketing
+    "tokens.typography.action.size": *marketing
+    "tokens.typography.action.weight": *marketing
+    "tokens.typography.action.lineHeight": *marketing
+    "tokens.typography.action.use": *marketing
+    "tokens.typography.code.size": *marketing
+    "tokens.typography.code.weight": *marketing
+    "tokens.typography.code.lineHeight": *marketing
+    "tokens.typography.code.use": *marketing
+    "tokens.spacing.xs": *marketing
+    "tokens.spacing.sm": *marketing
+    "tokens.spacing.md": *marketing
+    "tokens.spacing.lg": *marketing
+    "tokens.spacing.xl": *marketing
+    "tokens.spacing.xxl": *marketing
+    "tokens.rounded.dialog": &pricing { surface_id: surface-3, source_id: pricing-live, method: evidence-bundle-live-inspect, captured: "2026-07-13" }
+    "tokens.rounded.action": *marketing
+    "tokens.rounded.hero-action": *marketing
+    "tokens.rounded.full": *marketing
+    "tokens.components.header-primary.type": *marketing
+    "tokens.components.header-primary.bg": *marketing
+    "tokens.components.header-primary.fg": *marketing
+    "tokens.components.header-primary.radius": *marketing
+    "tokens.components.header-primary.padding": *marketing
+    "tokens.components.header-primary.height": *marketing
+    "tokens.components.header-primary.font": *marketing
+    "tokens.components.header-primary.states": *marketing
+    "tokens.components.header-primary.use": *marketing
+    "tokens.components.pricing-action.type": *pricing
+    "tokens.components.pricing-action.bg": *pricing
+    "tokens.components.pricing-action.fg": *pricing
+    "tokens.components.pricing-action.radius": *pricing
+    "tokens.components.pricing-action.padding": *pricing
+    "tokens.components.pricing-action.height": *pricing
+    "tokens.components.pricing-action.font": *pricing
+    "tokens.components.pricing-action.states": *pricing
+    "tokens.components.pricing-action.use": *pricing
+    "tokens.components.pricing-dialog.type": *pricing
+    "tokens.components.pricing-dialog.radius": *pricing
+    "tokens.components.pricing-dialog.shadow": *pricing
+    "tokens.components.pricing-dialog.font": *pricing
+    "tokens.components.pricing-dialog.states": *pricing
+    "tokens.components.pricing-dialog.use": *pricing
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Only the 2026-07-13 first-party marketing bundle is token authority. Brand guidance, product documentation, font licensing, and Tier 2 analysis remain separate evidence domains."
   colors:
     primary: "#000000"
-    brand: "#000000"
     canvas: "#f0f0f3"
     surface: "#ffffff"
     foreground: "#1c2024"
     muted: "#60646c"
+    subtle: "#80838d"
     on-primary: "#ffffff"
     hairline: "#e0e1e6"
-    body: "#60646c"
-    accent-link: "#0d74ce"
-    accent-purple: "#8145b5"
-    error: "#eb8e90"
-    success: "#ab6400"
+    control-border: "#d9d9e0"
+    link: "#0d74ce"
   typography:
-    family: { sans: "Inter", mono: "JetBrains Mono" }
-    display:    { size: 64, weight: 800, lineHeight: 1.10, tracking: -3, use: "Hero headlines, extreme tracking" }
-    section:    { size: 48, weight: 600, lineHeight: 1.10, tracking: -2, use: "Feature section anchors" }
-    subheading: { size: 20, weight: 600, lineHeight: 1.20, tracking: -0.25, use: "Card titles, feature names" }
-    body-lg:    { size: 18, weight: 400, lineHeight: 1.40, use: "Intro paragraphs, section descriptions" }
-    body:       { size: 16, weight: 400, lineHeight: 1.40, use: "Standard text, nav links, buttons" }
-    caption:    { size: 14, weight: 500, lineHeight: 1.40, use: "Descriptions, metadata, badges" }
-    tag:        { size: 12, weight: 500, lineHeight: 1.00, use: "Smallest text, badges" }
-    code:       { size: 16, weight: 400, lineHeight: 1.40, use: "Inline code, terminal commands" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
-  rounded: { sm: 6, md: 8, lg: 24, full: 9999 }
-  shadow:
-    whisper: "rgba(0,0,0,0.08) 0px 3px 6px, rgba(0,0,0,0.07) 0px 2px 4px"
-    elevated: "rgba(0,0,0,0.1) 0px 10px 20px, rgba(0,0,0,0.05) 0px 3px 6px"
+    family: { ui: "Inter", mono: "JetBrains Mono" }
+    hero: { size: 64, weight: 600, lineHeight: 1.10, tracking: -3, use: "Current marketing hero heading" }
+    section: { size: 48, weight: 600, lineHeight: 1.10, tracking: -2, use: "Repeated marketing section heading" }
+    subheading: { size: 32, weight: 600, lineHeight: 1.10, tracking: -0.5, use: "Marketing subheading" }
+    body: { size: 14, weight: 400, lineHeight: 1.40, use: "Repeated marketing body and list text" }
+    action: { size: 14, weight: 500, lineHeight: 1.40, use: "Compact action label" }
+    code: { size: 12, weight: 500, lineHeight: 1.60, use: "Observed code-oriented marketing text" }
+  spacing: { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 }
+  rounded: { dialog: 8, action: 36, hero-action: 48, full: 9999 }
   components_harvested: true
   components:
-    button-primary: { type: button, bg: "#ffffff", fg: "#1c2024", border: "1px solid #e0e1e6", radius: "6px", padding: "0 12px", font: "16px / 500", hover: "subtle shadow", use: "Default white button" }
-    button-dark: { type: button, bg: "#000000", fg: "#ffffff", radius: "9999px", padding: "0 12px", font: "16px / 500", use: "Maximum-emphasis pill CTA" }
-    input: { type: input, bg: "#ffffff", fg: "#1c2024", border: "1px solid #e0e1e6", radius: "6px", padding: "0 12px", focus: "blue ring shadow", use: "Form fields" }
-    card: { type: card, bg: "#ffffff", border: "1px solid #e0e1e6", radius: "8px", shadow: "rgba(0,0,0,0.08) 0px 3px 6px, rgba(0,0,0,0.07) 0px 2px 4px", use: "Standard content card" }
-    badge-status: { type: badge, bg: "#ffffff", fg: "#1c2024", border: "1px solid #e0e1e6", radius: "9999px", font: "12px / 500", use: "All Systems Operational pill with green dot" }
+    header-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "36px", padding: "0 16px", height: "36px", font: "14px / 500 / Inter", states: "hover and pressed observed; pressed background #010101", use: "Repeated header conversion action across the three marketing surfaces" }
+    pricing-action: { type: button, bg: "#000000", fg: "#ffffff", radius: "32px", padding: "0 12px", height: "32px", font: "12px / 500 / Inter", states: "hover background #010101 and pressed background #030304 observed", use: "Pricing-surface compact action that opens a dialog" }
+    pricing-dialog: { type: dialog, radius: "8px", shadow: "rgba(0,0,0,0.1) 0px 10px 20px, rgba(0,0,0,0.05) 0px 3px 6px", font: "16px / 400 / Inter", states: "dialog-open observed", use: "Observed pricing dialog panel; fill was not promoted because the captured panel is transparent" }
 ---
 
 # Design System Inspiration of Expo
 
 ## 1. Visual Theme & Atmosphere
 
-Expo's interface is a luminous, confidence-radiating developer platform built on the premise that tools for building apps should feel as polished as the apps themselves. The entire experience lives on a bright, airy canvas — a cool-tinted off-white (`#f0f0f3`) that gives the page a subtle technological coolness without the starkness of pure white. This is a site that breathes: enormous vertical spacing between sections creates a gallery-like pace where each feature gets its own "room."
+Expo is a React Native framework and cloud-services platform for shipping apps across native and web targets. Its current public marketing pages make that infrastructure feel calm and usable: black conversion actions, off-white planes, blue-gray text, and generous rounded geometry put capability ahead of decorative brand theatre. The three captured pages—home, services, and pricing—share the same light marketing system, while the official brand guidelines describe the intended character as simple, spacious, consistent, universally approachable, and technically excellent. Expo’s 2026 company story also extends from a framework foundation toward AI-native universal-app development and Expo Agent; that product evolution is context, not a substitute for a UI token. Documentation chrome, authenticated product UI, native clients, and brand-asset rules are separate domains and are not inferred from this marketing capture.
 
-The design language is decisively monochromatic — pure black (`#000000`) headlines against the lightest possible backgrounds, with a spectrum of cool blue-grays (`#60646c`, `#b0b4ba`, `#555860`) handling all secondary communication. Color is almost entirely absent from the interface itself; when it appears, it's reserved for product screenshots, app icons, and the React universe illustration — making the actual content burst with life against the neutral canvas.
-
-What makes Expo distinctive is its pill-shaped geometry. Buttons, tabs, video containers, and even images use generously rounded or fully pill-shaped corners (24px–9999px), creating an organic, approachable feel that contradicts the typical sharp-edged developer tool aesthetic. Combined with tight letter-spacing on massive headlines (-1.6px to -3px at 64px), the result is a design that's simultaneously premium and friendly — like an Apple product page reimagined for developers.
-
-**Key Characteristics:**
-- Luminous cool-white canvas (`#f0f0f3`) with gallery-like vertical spacing
-- Strictly monochromatic: pure black headlines, cool blue-gray body text, no decorative color
-- Pill-shaped geometry everywhere — buttons, tabs, containers, images (24px–9999px radius)
-- Massive display headlines (64px) with extreme negative letter-spacing (-1.6px to -3px)
-- Inter as the sole typeface, used at weights 400–900 for full expressive range
-- Whisper-soft shadows that barely lift elements from the surface
-- Product screenshots as the only source of color in the interface
+**Key characteristics:**
+- Light canvas with near-black, muted blue-gray, and white structural contrast
+- Solid black 32–48px actions, with 36px compact header actions
+- Inter for general UI and JetBrains Mono for sparse code-oriented text
+- Rounded action geometry and an 8px observed pricing-dialog panel
+- A neutral, technical presentation that leaves product screenshots and code to carry detail
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Expo Black** (`#000000`): The absolute anchor — used for primary headlines, CTA buttons, and the brand identity. Pure black on cool white creates maximum contrast without feeling aggressive.
-- **Near Black** (`#1c2024`): The primary text color for body content — a barely perceptible blue-black that's softer than pure #000 for extended reading.
+- **Primary action** (`#000000`): observed as the filled header, hero, and compact pricing action.
+- **Canvas** (`#f0f0f3`) and **surface** (`#ffffff`): current light marketing planes.
+- **Foreground** (`#1c2024`): repeated body and control text.
+- **Muted** (`#60646c`) and **subtle** (`#80838d`): repeated secondary and lower-emphasis text/border values.
+- **On-primary** (`#ffffff`): text on the black actions.
+- **Hairline** (`#e0e1e6`) and **control border** (`#d9d9e0`): observed light containment values.
+- **Link** (`#0d74ce`): repeated link-colored text and borders across all three captured marketing surfaces.
 
-### Secondary & Accent
-- **Link Cobalt** (`#0d74ce`): The standard link color — a trustworthy, saturated blue that signals interactivity without competing with the monochrome hierarchy.
-- **Legal Blue** (`#476cff`): A brighter, more saturated blue for legal/footer links — slightly more attention-grabbing than Link Cobalt.
-- **Widget Sky** (`#47c2ff`): A light, friendly cyan-blue for widget branding elements — the brightest accent in the system.
-- **Preview Purple** (`#8145b5`): A rich violet used for "preview" or beta feature indicators — creating clear visual distinction from standard content.
-
-### Surface & Background
-- **Cloud Gray** (`#f0f0f3`): The primary page background — a cool off-white with the faintest blue-violet tint. Not warm, not sterile — precisely technological.
-- **Pure White** (`#ffffff`): Card surfaces, button backgrounds, and elevated content containers. Creates a clear "lifted" distinction from Cloud Gray.
-- **Widget Dark** (`#1a1a1a`): Dark surface for dark-theme widgets and overlay elements.
-- **Banner Dark** (`#171717`): The darkest surface variant, used for promotional banners and high-contrast containers.
-
-### Neutrals & Text
-- **Slate Gray** (`#60646c`): The workhorse secondary text color (305 instances). A cool blue-gray that's authoritative without being heavy.
-- **Mid Slate** (`#555860`): Slightly darker than Slate, used for emphasized secondary text.
-- **Silver** (`#b0b4ba`): Tertiary text, placeholders, and de-emphasized metadata. Comfortably readable but clearly receded.
-- **Pewter** (`#999999`): Accordion icons and deeply de-emphasized UI elements in dark contexts.
-- **Light Silver** (`#cccccc`): Arrow icons and decorative elements in dark contexts.
-- **Dark Slate** (`#363a3f`): Borders on dark surfaces, switch tracks, and emphasized containment.
-- **Charcoal** (`#333333`): Dark mode switch backgrounds and deep secondary surfaces.
-
-### Semantic & Accent
-- **Warning Amber** (`#ab6400`): A warm, deep amber for warning states — deliberately not bright yellow, conveying seriousness.
-- **Destructive Rose** (`#eb8e90`): A soft pink-coral for disabled destructive actions — gentler than typical red, reducing alarm fatigue.
-- **Border Lavender** (`#e0e1e6`): Standard card/container borders — a cool lavender-gray that's visible without being heavy.
-- **Input Border** (`#d9d9e0`): Button and form element borders — slightly warmer/darker than card borders for interactive elements.
-- **Dark Focus Ring** (`#2547d0`): Deep blue for keyboard focus indicators in dark theme contexts.
-
-### Gradient System
-- The design is notably **gradient-free** in the interface layer. Visual richness comes from product screenshots, the React universe illustration, and careful shadow layering rather than color gradients. This absence IS the design decision — gradients would undermine the clinical precision.
+The collector also saw local blue and green values. They are not promoted to brand or semantic roles because this packet does not link a representative element to a stable Expo-wide meaning.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Primary**: `Inter`, with fallbacks: `-apple-system, system-ui`
-- **Monospace**: `JetBrains Mono`, with fallback: `ui-monospace`
-- **System Fallback**: `system-ui, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji`
+### Evidence classes
 
-### Hierarchy
+- **Live marketing surface-use:** Inter was both computed and loaded for 990 visible uses from first-party `static.expo.dev` WOFF2 sources. It is the UI family for this reference.
+- **Live code-oriented surface-use:** JetBrains Mono was both computed and loaded for six visible uses from first-party WOFF2 sources. It is retained as the mono family, not as general UI type.
+- **Official font/license context:** Inter’s author distributes it under SIL OFL 1.1; JetBrains Mono is likewise OFL 1.1 and available for commercial and non-commercial use. These licenses describe the fonts, not an Expo-exclusive asset.
+- **Declared-only:** none in the supplied bundle.
+- **Unresolved:** `ui-monospace` appeared twice without a matching loaded FontFace; it is not a token or substitute.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display / Hero | Inter | 64px (4rem) | 700–900 | 1.10 (tight) | -1.6px to -3px | Maximum impact, extreme tracking |
-| Section Heading | Inter | 48px (3rem) | 600 | 1.10 (tight) | -2px | Feature section anchors |
-| Sub-heading | Inter | 20px (1.25rem) | 600 | 1.20 (tight) | -0.25px | Card titles, feature names |
-| Body Large | Inter | 18px (1.13rem) | 400–500 | 1.40 | normal | Intro paragraphs, section descriptions |
-| Body / Button | Inter | 16px (1rem) | 400–700 | 1.25–1.40 | normal | Standard text, nav links, buttons |
-| Caption / Label | Inter | 14px (0.88rem) | 400–600 | 1.00–1.40 | normal | Descriptions, metadata, badge text |
-| Tag / Small | Inter | 12px (0.75rem) | 500 | 1.00–1.60 | normal | Smallest sans-serif text, badges |
-| Code Body | JetBrains Mono | 16px (1rem) | 400–600 | 1.40 | normal | Inline code, terminal commands |
-| Code Caption | JetBrains Mono | 14px (0.88rem) | 400–600 | 1.40 | normal | Code snippets, technical labels |
-| Code Small | JetBrains Mono | 12px (0.75rem) | 400 | 1.60 | normal | Uppercase tech tags |
-
-### Principles
-- **One typeface, full expression**: Inter is the only sans-serif, used from weight 400 (regular) through 900 (black). This gives the design a unified voice while still achieving dramatic contrast between whisper-light body text and thundering display headlines.
-- **Extreme negative tracking at scale**: Headlines at 64px use -1.6px to -3px letter-spacing, creating ultra-dense text blocks that feel like logotypes. This aggressive compression is the signature typographic move.
-- **Weight as hierarchy**: 700–900 for display, 600 for headings, 500 for emphasis, 400 for body. The jumps are decisive — no ambiguous in-between weights.
-- **Consistent 1.40 body line-height**: Nearly all body and UI text shares 1.40 line-height, creating a rhythmic vertical consistency.
+| Role | Font | Size | Weight | Line Height | Tracking | Evidence use |
+|------|------|------|--------|-------------|----------|--------------|
+| Hero | Inter | 64px | 600 | 1.10 | -3px | Current marketing hero heading |
+| Section | Inter | 48px | 600 | 1.10 | -2px | Repeated marketing section heading |
+| Subheading | Inter | 32px | 600 | 1.10 | -0.5px | Marketing subheading |
+| Body | Inter | 14px | 400 | 1.40 | normal | Repeated body and list text |
+| Action | Inter | 14px | 500 | 1.40 | normal | Compact action label |
+| Code-oriented | JetBrains Mono | 12px | 500 | 1.60 | normal | Observed code-oriented marketing text |
 
 ## 4. Component Stylings
 
-### Buttons
+### Header primary action
 
-**Primary (White on border)**
-- Background: Pure White (`#ffffff`)
-- Text: Near Black (`#1c2024`)
-- Padding: 0px 12px (compact, content-driven height)
-- Border: thin solid Input Border (`1px solid #d9d9e0`)
-- Radius: subtly rounded (6px)
-- Shadow: subtle combined shadow on hover
-- The understated default — clean, professional, unheroic
+**Default**
+- Background: `#000000`
+- Text: `#ffffff`
+- Radius: `36px`
+- Padding: `0px 16px`
+- Height: `36px`
+- Font: `14px / 500 / Inter`
+- Use: Repeated header conversion action across home, services, and pricing
 
-**Primary Pill**
-- Same as Primary but with pill-shaped radius (9999px)
-- Used for hero CTAs and high-emphasis actions
-- The extra roundness signals "start here"
+Hover and pressed states were captured; the pressed selector resolves to `#010101` background. Evidence: `home::[data-omd-capture="9"]` and `home::[data-omd-capture="9"]::state-pressed` on the `home` marketing surface.
 
-**Dark Primary**
-- Background: Expo Black (`#000000`)
-- Text: Pure White (`#ffffff`)
-- Pill-shaped (9999px) or generously rounded (32–36px)
-- No border (black IS the border)
-- The maximum-emphasis CTA — reserved for primary conversion actions
+### Hero actions
 
-### Cards & Containers
-- Background: Pure White (`#ffffff`) — clearly lifted from Cloud Gray page
-- Border: thin solid Border Lavender (`1px solid #e0e1e6`) for standard cards
-- Radius: comfortably rounded (8px) for standard cards; generously rounded (16–24px) for featured containers
-- Shadow Level 1: Whisper (`rgba(0,0,0,0.08) 0px 3px 6px, rgba(0,0,0,0.07) 0px 2px 4px`) — barely perceptible lift
-- Shadow Level 2: Standard (`rgba(0,0,0,0.1) 0px 10px 20px, rgba(0,0,0,0.05) 0px 3px 6px`) — clear floating elevation
-- Hover: likely subtle shadow deepening or background shift
+**Primary**
+- Background: `#000000`
+- Text: `#ffffff`
+- Radius: `48px`
+- Padding: `0px 24px`
+- Height: `48px`
+- Font: `16px / 500 / Inter`
+- Use: Home marketing hero primary action
 
-### Inputs & Forms
-- Background: Pure White (`#ffffff`)
-- Text: Near Black (`#1c2024`)
-- Border: thin solid Input Border (`1px solid #d9d9e0`)
-- Padding: 0px 12px (inline with button sizing)
-- Radius: subtly rounded (6px)
-- Focus: blue ring shadow via CSS custom property
+**Secondary**
+- Background: `#f0f0f3`
+- Text: `#1c2024`
+- Radius: `48px`
+- Padding: `0px 24px`
+- Height: `48px`
+- Font: `16px / 500 / Inter`
+- Use: Home marketing hero secondary action
 
-### Navigation
-- Sticky top nav on transparent/blurred background
-- Logo: Expo wordmark in black
-- Links: Near Black (`#1c2024`) or Slate Gray (`#60646c`) at 14–16px Inter weight 500
-- CTA: Black pill button ("Sign Up") on the right
-- GitHub star badge as social proof
-- Status indicator ("All Systems Operational") with green dot
+Evidence: `home::[data-omd-capture="11"]` (primary) and `home::[data-omd-capture="12"]` (secondary), both on `home`. No unobserved state variant is added.
 
-### Image Treatment
-- Product screenshots and device mockups are the visual heroes
-- Generously rounded corners (24px) on video and image containers
-- Screenshots shown in realistic device frames
-- Dark UI screenshots provide contrast against the light canvas
-- Full-bleed within rounded containers
+### Pricing compact action
 
-### Distinctive Components
+**Default**
+- Background: `#000000`
+- Text: `#ffffff`
+- Radius: `32px`
+- Padding: `0px 12px`
+- Height: `32px`
+- Font: `12px / 500 / Inter`
+- Use: Compact pricing action that opens a dialog
 
-**Universe React Logo**
-- Animated/illustrated React logo as the visual centerpiece
-- Connects Expo's identity to the React ecosystem
-- The only illustrative element on an otherwise photographic page
+Hover resolves to `#010101`; pressed resolves to `#030304`. Evidence: `surface-3::[data-omd-capture="23"]`, `::state-hover`, and `::state-pressed` on `https://expo.dev/pricing`.
 
-**Device Preview Grid**
-- Multiple device types (phone, tablet, web) shown simultaneously
-- Demonstrates cross-platform capability visually
-- Each device uses realistic device chrome
+### Pricing dialog panel
 
-**Status Badge**
-- "All Systems Operational" pill in the nav
-- Green dot + text — compact trust signal
-- Pill-shaped (36px radius)
+**Open**
+- Radius: `8px`
+- Shadow: `rgba(0,0,0,0.1) 0px 10px 20px, rgba(0,0,0,0.05) 0px 3px 6px`
+- Font: `16px / 400 / Inter`
+- Use: Pricing dialog panel after the compact action opens it
+
+Evidence: `surface-3::[data-omd-interaction-capture="dialog-0-1"]` with `dialog-open`. The captured panel is transparent, so no fill token is invented.
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 1px, 2px, 4px, 8px, 12px, 16px, 24px, 32px, 40px, 48px, 64px, 80px, 96px, 144px
-- Button padding: 0px 12px (unusually compact — height driven by line-height)
-- Card internal padding: approximately 24–32px
-- Section vertical spacing: enormous (estimated 96–144px between major sections)
-- Component gap: 16–24px between sibling elements
+The bundle’s repeated spacing values form a small working scale: 4, 8, 12, 16, 24, and 32px. The official brand guidance supports the observed spacious, consistent presentation, but the collector did not establish a formal grid, maximum width, or responsive breakpoint. Treat those unmeasured layout rules as absent rather than extrapolating a system.
 
-### Grid & Container
-- Max container width: approximately 1200–1400px, centered
-- Hero: centered single-column with massive breathing room
-- Feature sections: alternating layouts (image left/right, full-width showcases)
-- Card grids: 2–3 column for feature highlights
-- Full-width sections with contained inner content
-
-### Whitespace Philosophy
-- **Gallery-like pacing**: Each section feels like its own exhibit, surrounded by vast empty space. This creates a premium, unhurried browsing experience.
-- **Breathing room is the design**: The generous whitespace IS the primary design element — it communicates confidence, quality, and that each feature deserves individual attention.
-- **Content islands**: Sections float as isolated "islands" in the white space, connected by scrolling rather than visual continuation.
-
-### Border Radius Scale
-- Nearly squared (4px): Small inline elements, tags
-- Subtly rounded (6px): Buttons, form inputs, combo boxes — the functional interactive radius
-- Comfortably rounded (8px): Standard content cards, containers
-- Generously rounded (16px): Feature tabs, content panels
-- Very rounded (24px): Buttons, video/image containers, tabpanels — the signature softness
-- Highly rounded (32–36px): Hero CTAs, status badges, nav buttons
-- Pill-shaped (9999px): Primary action buttons, tags, avatars — maximum friendliness
+Observed rounded values are role-specific: 36px compact actions, 48px hero actions, 32px compact pricing actions, and an 8px dialog panel. `9999px` also appears in a small number of marketing controls, but no single generic pill component is promoted from it.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Cloud Gray page background, inline text |
-| Surface (Level 1) | White bg, no shadow | Standard white cards on Cloud Gray |
-| Whisper (Level 2) | `rgba(0,0,0,0.08) 0px 3px 6px` + `rgba(0,0,0,0.07) 0px 2px 4px` | Subtle card lift, hover states |
-| Elevated (Level 3) | `rgba(0,0,0,0.1) 0px 10px 20px` + `rgba(0,0,0,0.05) 0px 3px 6px` | Feature showcases, product screenshots |
-| Modal (Level 4) | Dark overlay (`--dialog-overlay-background-color`) + heavy shadow | Dialogs, overlays |
-
-**Shadow Philosophy**: Expo uses shadows as gentle whispers rather than architectural statements. The primary depth mechanism is **background color contrast** — white cards floating on Cloud Gray — rather than shadow casting. When shadows appear, they're soft, diffused, and directional (downward), creating the feeling of paper hovering millimeters above a desk.
+Most captured actions are flat. The only promoted elevation is the open pricing dialog panel: `rgba(0,0,0,0.1) 0px 10px 20px, rgba(0,0,0,0.05) 0px 3px 6px`. No generic card, hover, or modal-overlay shadow token is established by this packet.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Cloud Gray (`#f0f0f3`) as the page background and Pure White (`#ffffff`) for elevated cards — the two-tone light system is essential
-- Keep display headlines at extreme negative letter-spacing (-1.6px to -3px at 64px) for the signature compressed look
-- Use pill-shaped (9999px) radius for primary CTA buttons — the organic shape is core to the identity
-- Reserve black (`#000000`) for headlines and primary CTAs — it carries maximum authority on the light canvas
-- Use Slate Gray (`#60646c`) for secondary text — it's the precise balance between readable and receded
-- Maintain enormous vertical spacing between sections (96px+) — the gallery pacing defines the premium feel
-- Use product screenshots as the primary visual content — the interface stays monochrome, the products bring color
-- Apply Inter at the full weight range (400–900) — weight contrast IS the hierarchy
+
+- Use the observed light canvas, white surface, near-black text, and black conversion-action hierarchy together.
+- Keep header, hero, and compact pricing actions in their separately measured 36px, 48px, and 32px geometries.
+- Use Inter for general marketing UI and reserve JetBrains Mono for evidence-backed code-oriented text.
+- Preserve the close black hover and pressed values only for the compact pricing action where they were captured.
 
 ### Don't
-- Don't introduce decorative colors into the interface chrome — the monochromatic palette is intentional
-- Don't use sharp corners (border-radius < 6px) on interactive elements — the pill/rounded geometry is the signature
-- Don't reduce section spacing below 64px — the breathing room is the design
-- Don't use heavy drop shadows — depth comes from background contrast and whisper-soft shadows
-- Don't mix in additional typefaces — Inter handles everything from display to caption
-- Don't use letter-spacing wider than -0.25px on body text — extreme tracking is reserved for display only
-- Don't use borders heavier than 2px — containment is subtle, achieved through background color and gentle borders
-- Don't add gradients to the interface — visual richness comes from content, not decoration
-- Don't use saturated colors outside of semantic contexts — the palette is strictly grayscale + functional blue
+
+- Do not turn a locally observed green or blue value into a global Expo semantic token without element-level evidence.
+- Do not substitute `ui-monospace` for JetBrains Mono; its two computed uses lacked a loaded FontFace match.
+- Do not infer inputs, cards, authenticated dashboard controls, native app components, or responsive breakpoints from this marketing-only bundle.
+- Do not treat the official brand asset page or documentation chrome as a source for these marketing component measurements.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hamburger nav, stacked cards, hero text scales to ~36px |
-| Tablet | 640–1024px | 2-column grids, condensed nav, medium hero text |
-| Desktop | >1024px | Full multi-column layout, expanded nav, massive hero (64px) |
-
-*Only one explicit breakpoint detected (640px), suggesting a fluid, container-query or min()/clamp()-based responsive system rather than fixed breakpoint snapping.*
-
-### Touch Targets
-- Buttons use generous radius (24–36px) creating large, finger-friendly surfaces
-- Navigation links spaced with adequate gap
-- Status badge sized for touch (36px radius)
-- Minimum recommended: 44x44px
-
-### Collapsing Strategy
-- **Navigation**: Full horizontal nav with CTA collapses to hamburger on mobile
-- **Feature sections**: Multi-column → stacked single column
-- **Hero text**: 64px → ~36px progressive scaling
-- **Device previews**: Grid → stacked/carousel
-- **Cards**: Side-by-side → vertical stacking
-- **Spacing**: Reduces proportionally but maintains generous rhythm
-
-### Image Behavior
-- Product screenshots scale proportionally
-- Device mockups may simplify or show fewer devices on mobile
-- Rounded corners maintained at all sizes
-- Lazy loading for below-fold content
+No viewport comparison is included in the supplied collector evidence. Responsive breakpoints, collapsed navigation, touch-target policy, and mobile component variants are therefore unresolved and omitted.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA / Headlines: "Expo Black (#000000)"
-- Page Background: "Cloud Gray (#f0f0f3)"
-- Card Surface: "Pure White (#ffffff)"
-- Body Text: "Near Black (#1c2024)"
-- Secondary Text: "Slate Gray (#60646c)"
-- Borders: "Border Lavender (#e0e1e6)"
-- Links: "Link Cobalt (#0d74ce)"
-- Tertiary Text: "Silver (#b0b4ba)"
-
-### Example Component Prompts
-- "Create a hero section on Cloud Gray (#f0f0f3) with a massive headline at 64px Inter weight 700, line-height 1.10, letter-spacing -3px. Text in Expo Black (#000000). Below, add a subtitle in Slate Gray (#60646c) at 18px. Place a black pill-shaped CTA button (9999px radius) beneath."
-- "Design a feature card on Pure White (#ffffff) with a 1px solid Border Lavender (#e0e1e6) border and comfortably rounded corners (8px). Title in Near Black (#1c2024) at 20px Inter weight 600, description in Slate Gray (#60646c) at 16px. Add a whisper shadow (rgba(0,0,0,0.08) 0px 3px 6px)."
-- "Build a navigation bar with Expo logo on the left, text links in Near Black (#1c2024) at 14px Inter weight 500, and a black pill CTA button on the right. Background: transparent with blur backdrop. Bottom border: 1px solid Border Lavender (#e0e1e6)."
-- "Create a code block using JetBrains Mono at 14px on a Pure White surface with Border Lavender border and 8px radius. Code in Near Black, keywords in Link Cobalt (#0d74ce)."
-- "Design a status badge pill (9999px radius) with a green dot and 'All Systems Operational' text in Inter 12px weight 500. Background: Pure White, border: 1px solid Input Border (#d9d9e0)."
-
-### Iteration Guide
-1. Focus on ONE component at a time
-2. Reference specific color names and hex codes — "use Slate Gray (#60646c)" not "make it gray"
-3. Use radius values deliberately — 6px for buttons, 8px for cards, 24px for images, 9999px for pills
-4. Describe the "feel" alongside measurements — "enormous breathing room with 96px section spacing"
-5. Always specify Inter and the exact weight — weight contrast IS the hierarchy
-6. For shadows, specify "whisper shadow" or "standard elevation" from the elevation table
-7. Keep the interface monochrome — let product content be the color
+Use only the observed system: a `#f0f0f3` canvas, `#1c2024` text, `#60646c` supporting text, black actions with white labels, and Inter. Pick the action geometry by its observed context: 36px header, 48px hero, or 32px compact pricing. Use the 8px dialog panel and its measured shadow only for a pricing-dialog-like overlay. Do not add error, success, input, card, or mobile rules from this reference.
 
 ## 10. Voice & Tone
 
-Expo's voice is **builder-focused and warm-precise.** The brand emphasizes shipping React Native apps with the same speed as web — copy is capability-driven, never marketing-fluff. Surfaces lean into the "framework that gets out of your way" register.
-
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Try it free", "Sign up", "Get started" |
-| Marketing | Short claim + screenshots. Capability-list, not benefit-list |
-| Documentation | Imperative, code-block-first, deeply linked |
-| Error (build) | Stack-trace-friendly. Show the actual EAS build error |
-
-**Voice samples**
-- Marketing CTA: *"Try it free"* / *"Sign up"* <!-- verified: expo.dev homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionize mobile", "magic". Apology theatre.
+The official home page frames Expo around building, deploying, and iterating on apps, while EAS documentation names concrete services such as Build, Submit, Update, Workflows, and Hosting. The current voice is direct, technical, and action-led: short service labels and practical imperative calls such as “Get started for free,” “Read the docs,” and “Talk to our team.” The brand guidelines add a useful boundary: simple, approachable, and technically excellent rather than ornamental.
 
 ## 11. Brand Narrative
 
-Expo was founded **October 2013** by **Charlie Cheever (CEO)** and **James Ide (CTO)** — Cheever was an **early Facebook engineer** and **Quora co-founder**, Ide an early React Native contributor ([Y Combinator — Expo](https://www.ycombinator.com/companies/expo)). Started as **Exponent**, a managed React Native runtime that abstracted iOS/Android build complexity. **First Expo development client released for iPhone May 2015** soon after React Native's public release. Participated in **Y Combinator Summer 2016**. Operates under legal name **650 Industries, Inc.** ([Crunchbase — Expo](https://www.crunchbase.com/organization/exponent-3)). **3M+ developers** build with Expo today. Pivoted toward a fully open-source framework + **EAS (Expo Application Services)** cloud build/deploy/update platform. **Series B $45M (Apr 2026)** led by **Georgian** with **Leadout Capital, A Capital, Red Swan** — round announced alongside **Expo Agent**, an AI mobile-app builder ([SiliconANGLE](https://siliconangle.com/2026/04/16/developer-tooling-startup-expo-nabs-45m-investment/), [PR Newswire](https://www.prnewswire.com/news-releases/expo-raises-45m-series-b-and-launches-expo-agent-to-close-the-gap-from-idea-to-production-ready-mobile-apps-302744423.html)). The brand voice tracks this: framework-first, build-pipeline-deep, developer-focused.
+Expo describes itself as crafting a universal way to write and distribute apps. Its official About page dates the company’s founding to 2015 and positions its work around helping creators and enterprises build and publish apps; it also identifies Expo as a React Foundation founding member with ambitions for AI-native universal apps. The public home page gives that story a product shape: a React Native framework plus cloud services for building, deploying, updating, and observing applications.
+
+The current evolution is explicit in Expo’s April 2026 first-party funding post: the company raised a $45 million Series B and introduced Expo Agent while explaining a broader effort to make app creation easier and faster. This narrative is company and product context, not evidence that the marketing UI’s measured tokens apply to authenticated EAS dashboards or native Expo clients.
 
 ## 12. Principles
 
-1. **Ship to all platforms from one codebase.** *UI implication:* surfaces emphasize iOS + Android + Web parity, never platform-specific UI.
-2. **EAS is the runway.** Cloud build/deploy/update services are first-class. *UI implication:* dashboards show build status with first-class UX investment.
-3. **Documentation is product.** *UI implication:* docs.expo.dev has full-time design investment; not "marketing site sidebar".
-4. **Monochrome chrome, color content.** *UI implication:* don't use bright accents in chrome — the developer's app preview carries color.
-5. **Whisper shadows, never heavy.** *UI implication:* depth via subtle gradients + 1px borders; no 0.5+ opacity shadows.
+1. **Universal application delivery.** Expo’s public product message spans Android, iOS, and web. *UI implication:* explain cross-platform capability with product evidence, not platform-specific visual invention.
+2. **Neutral, reliable foundations.** The official brand manifesto explicitly contrasts Expo’s foundation with more expressive platform design languages. *UI implication:* prefer the observed quiet light hierarchy over decorative color.
+3. **Simple, spacious, consistent presentation.** These are first-party brand-guideline goals. *UI implication:* retain measured spacing and rounded-action roles; do not manufacture a full grid.
+4. **Concrete developer operations.** EAS documentation describes build, submit, update, workflow, hosting, and observability services. *UI implication:* use concise, task-oriented labels rather than generic benefit copy.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Expo user segments (React Native developers, indie mobile app shippers, enterprise mobile teams), not individual people.*
+The first-party public material identifies two supported audience groups without inventing named personas:
 
-**Yuki Tanaka, 29, Tokyo.** Indie developer shipping mobile-first SaaS. EAS Build replaces Apple/Google certificate management she'd otherwise navigate manually.
-
-**Marcus Chen, 38, San Francisco.** Senior engineer at B2B SaaS adding mobile. Expo as the "stop bikeshedding native build infra" choice.
-
-**Priya Rao, 27, Bengaluru.** Bootcamp grad shipping first React Native app. Expo Go (try-without-build) is the entire onboarding she needed.
+- **Creators and individual developers:** the About page says Expo helps creators build and publish apps; the home page offers a free starting path and device-oriented development tools.
+- **Enterprise teams:** the About page includes enterprises, while the home page and pricing surface provide an enterprise path and EAS services for application lifecycle work.
+- **Existing React Native teams:** EAS documentation describes deeply integrated cloud services for Expo and React Native apps, including build, submission, update, workflow, hosting, and observability needs.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no projects)** | "Create your first app with `npx create-expo-app`" |
-| **Empty (no builds)** | "Submit your first build" with EAS CLI snippet |
-| **Loading (build running)** | Persistent progress with step + ETA (provisioning, fetching deps, archiving) |
-| **Loading (preview)** | QR code for Expo Go alongside skeleton |
-| **Error (build)** | Full log with collapsible sections + suggestion |
-| **Error (config)** | Specific reason + link to docs section |
-| **Success (build)** | Build artifacts download links + install QR |
-| **Success (deploy/update)** | Update channel info + when users will receive |
-| **Skeleton (project list)** | Whisper-shadow rectangles |
-| **Disabled (no quota)** | 0.5 opacity + upgrade link |
-| **Loading (long install)** | Real-time log stream |
+The public pricing surface exposes a dialog-open interaction, documented in §4. No authenticated project, build, form-validation, loading, error, empty, success, skeleton, or disabled state was captured; those product states are not specified here.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
-
-Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+The supplied evidence records interaction states but no transition duration, easing curve, or reduced-motion rule. Motion tokens are unresolved and omitted.
 
 ---
 
-**Verified:** 2026-05-08 (omd:migrate run 23 — Apple-tier)
-**Tier 1 sources:** expo.dev home + /pricing (live DOM via playwright — Primary `#000` height=radius pill {hero 48px / header+pricing 36px} 0×{24/16} / 14-16px·500; Secondary `#f0f0f3` Cool Gray same geometry; testimonial card 8px `#fff`).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders):** Y Combinator (Expo profile), Crunchbase, SiliconANGLE, PR Newswire (Series B 2026), TechCompanyNews.
-**Style ref:** `stripe`. **Conflicts unresolved:** none.
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://expo.dev/ · https://expo.dev/services · https://expo.dev/pricing · https://expo.dev/brand · https://expo.dev/about · https://docs.expo.dev/eas/
+**Tier 2 sources:** https://getdesign.md/expo/design-md (independent analysis; examined) · https://styles.refero.design/?q=Expo (query attempted; endpoint returned an internal error)
+The getdesign dark-theme summary was resolved in favor of the current inspectable first-party light surfaces and was not used as token authority.
+
+**Conflicts unresolved:** none

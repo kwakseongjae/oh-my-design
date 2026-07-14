@@ -141,7 +141,7 @@ const ALTS: Record<string, Alt> = {
     output:
       "9-section Google Stitch 스키마 기반의 브랜드별 DESIGN.md 문서. 웹에서 미리 보고 클립보드로 복사.",
     agent:
-      "없음. 설치형 에이전트 레이어 없이 브라우즈와 복사만 제공하는 순수 웹 카탈로그입니다. (OmD는 skills omd:init/apply/harness/sync + 서브에이전트 + MCP 서버를 설치해 워크플로에 상주시킵니다.)",
+      "없음. 설치형 에이전트 레이어 없이 브라우즈와 복사만 제공하는 순수 웹 카탈로그입니다. (OmD는 skills omd:init/apply/harness/sync + 서브에이전트를 설치해 워크플로에 상주시킵니다.)",
     voice:
       "영어 우선. 사이트 UI와 문서 모두 영어 기준이며 한국어 대응은 사실상 없습니다.",
     install:
@@ -155,7 +155,7 @@ const ALTS: Record<string, Alt> = {
     ],
     whenOmd: [
       "한국 브랜드 depth가 필요할 때 — Toss·당근·배민·카카오·네이버·쿠팡·무신사·뱅크샐러드·29CM·컬리 등은 getdesign.md에 거의 없고 OmD가 두텁게 다룹니다.",
-      "복사로 끝나는 카탈로그가 아니라 한 번 설치해 두는 에이전트 레이어가 필요할 때 — skills(omd:init/apply/harness/sync)·서브에이전트·MCP 서버가 워크플로에 상주합니다.",
+      "복사로 끝나는 카탈로그가 아니라 한 번 설치해 두는 에이전트 레이어가 필요할 때 — skills(omd:init/apply/harness/sync)와 서브에이전트가 워크플로에 상주합니다.",
       "9-section보다 깊은 문서가 필요할 때 — OmD v0.1의 15-section 스키마는 Voice/Narrative/Principles/Personas/States/Motion까지 더하고, 한국어 docs·oh-my-design.kr·한국인 메인테이너의 한국어 네이티브 환경을 제공합니다.",
     ],
   },

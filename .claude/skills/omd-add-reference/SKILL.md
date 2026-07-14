@@ -29,6 +29,17 @@ CREATE에는 항상 SYNC가 뒤따른다 (count +1).
 3. **컨플릭트 silent 해결 금지.** Tier 1 ↔ Tier 2 충돌 시 채팅으로 보고 후 결정.
 4. **거짓 주장 금지.** "확인했다"고 쓰려면 같은 턴에 tool call 증거 필요. refero "없음" 단정은 `?q=` 검색 + 스크롤 시도 후만.
 5. **검증 footer 의무.** 갱신한 섹션 끝에 `Verified: YYYY-MM-DD` + 모든 source URL 기록.
+6. **정확성만큼 맥락 깊이도 gate다.** reference는 감사 보고서가 아니라 사용자가 브랜드를 이해하고 적용하기 위한 문서다. 검증 메타·미확인 목록으로 §1/§3/§10-13을 대체하지 않는다. 공식 history/rebrand/culture/font 자료로 브랜드의 기원, 현재 변화, 표현 방식, 타이포 자산을 설명하되 각 사실의 evidence class를 분리한다.
+
+### Context depth contract (CREATE/UPDATE 공통)
+
+- §1 첫 문단은 `무엇을 하는 브랜드인가 + 무엇이 인상을 구별하는가`를 80–160단어 산문으로 답한다. 검증 메타로 시작하지 않는다.
+- §1은 가능하면 **product/category → recognizable brand expression → current evolution/rebrand**의 3층으로 구성하고, 최소 2개 공식 source를 `.verification.md`에 남긴다.
+- §3은 **official product-use / live computed surface-use / official distributed brand asset / declared-only / unresolved**를 분리한다.
+- 공식 발표가 특정 폰트를 제품에 적용했다고 명시하면 live webfont가 없어도 family 사실로 승격하되, browser loader가 없으면 specimen만 unavailable로 둔다.
+- 공식 배포 서체는 현재 UI 폰트가 아니어도 역사·형태·license boundary를 설명하며, `tokens.typography.family.ui`에는 넣지 않는다.
+- 미확인 경계는 boundary note/footer에 두고, 유용한 브랜드 설명 전체를 경고문으로 바꾸지 않는다.
+- §10–13은 공식 mission, principles, stakeholder/culture 자료가 있으면 `[FILL IN]`보다 우선한다. 허구 인물·인용·의도는 만들지 않는다.
 
 ---
 
@@ -109,6 +120,7 @@ Phase 2 라이브 inspect를 이미 했으므로 `source: live-extract`(또는 T
 - 갱신 대상 섹션 read
 
 ### Phase U2 — Tier 1 라이브 inspect
+결정론 collector를 먼저 실행한다. collector가 유용한 공개 surface를 2개 미만으로 잡거나, 보이는 interactive UI인데 interaction coverage가 0이거나, SPA/overlay/반응형 상태·폰트·컴포넌트 충돌이 남으면 `browser-harness` exception lane을 실행한다. screenshot → disputed element/state computed style + `document.fonts` → screenshot 순으로 검사하고 URL·viewport·selector/visible text·raw value·screenshot path를 `.verification.md`에 기록한다. browser-harness 관측은 raw evidence이며 단독으로 token을 승격하지 않는다. 전체 순서는 `spec/reference-collection-final.md`를 따른다.
 playwright로 brand 메인 사이트 + 핵심 surface 1-2개 navigate → `browser_evaluate(getComputedStyle)` 로 raw observation 수집:
 ```js
 const els = document.querySelectorAll('button, a[role=button], input, [role=tab]');
@@ -132,6 +144,13 @@ const els = document.querySelectorAll('button, a[role=button], input, [role=tab]
 - Tier 1 ≠ Tier 2 → Tier 1이 라이브 inspect 가능했으면 Tier 1 우선, 아니면 Tier 2 다수결
 - 둘이 갈리고 Tier 1 침묵 → `(unresolved)` 플래그 + 채팅으로 사용자 보고
 - 이전에 잘못 들어간 값(Apple `#0066cc` 9999px 케이스 등) 발견 시 **롤백 사유** 명시
+
+### Phase U4.5 — Context depth reconcile
+
+1. 공식 history/about, current rebrand/newsroom, culture/brand-assets/font 자료를 최소 3개 시도한다.
+2. `.verification.md`에 `## Context and narrative evidence`를 만들고 source별 사실과 evidence boundary를 적는다.
+3. §1이 검증 범위 경고로 시작하거나, 공식 폰트 자산을 전부 UI family로 합치거나 전부 삭제하거나, 공식 mission/stakeholder 자료가 있는데 `[FILL IN]`만 남으면 반드시 다시 쓴다.
+4. narrative fact와 machine token은 독립적으로 판정한다. 서사적으로 유용한 공식 사실이 UI token일 필요는 없다.
 
 ### Phase U5 — Write
 - §4를 canonical schema로 재작성:

@@ -7,195 +7,245 @@ homepage: "https://www.hyundaicard.com"
 primary_color: "#000000"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=hyundaicard.com&sz=128"
-verified: "2026-06-01"
+  slug: "https://newsroom.hyundaicard.com/images/favicon.ico"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Hyundai Card Design Library
   url: "https://newsroom.hyundaicard.com/front/board/Hyundai-Card-Design-Library?country=en"
   type: brand
-  description: Hyundai Card's official Design Library — the brand's design philosophy, the proprietary Youandi typeface, and visual identity.
+  description: A Hyundai Card cultural space, not a public component design-system specification.
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: product, url: "https://www.hyundaicard.com/index.jsp", inspected: "2026-07-13" }
+    - { id: corporate-ceh, kind: corporate-information, url: "https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc", inspected: "2026-07-13" }
+    - { id: corporate-ckh, kind: corporate-information, url: "https://www.hyundaicard.com/about/ckh/ho/ckhho0101_01.hc", inspected: "2026-07-13" }
+  sources:
+    - { id: collector-home, kind: product-surface, url: "https://www.hyundaicard.com/index.jsp", captured: "2026-07-13" }
+    - { id: collector-ceh, kind: product-surface, url: "https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc", captured: "2026-07-13" }
+    - { id: collector-ckh, kind: product-surface, url: "https://www.hyundaicard.com/about/ckh/ho/ckhho0101_01.hc", captured: "2026-07-13" }
+    - { id: youandi-official, kind: official-doc, url: "https://newsroom.hyundaicard.com/front/board/Hyundai-Card-branding-through-typeface?country=en", captured: "2026-07-13" }
+  claims:
+    "tokens.colors.ink": &home { surface_id: home, source_id: collector-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.canvas": *home
+    "tokens.colors.inverse": &corporate { surface_id: corporate-ceh, source_id: collector-ceh, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.link-product": *home
+    "tokens.colors.link-corporate": *corporate
+    "tokens.typography.family.sans": &font { surface_id: home, source_id: collector-home, method: computed-style-fontfaceset-source, captured: "2026-07-13" }
+    "tokens.typography.hero.size": *font
+    "tokens.typography.hero.weight": *font
+    "tokens.typography.hero.lineHeight": *font
+    "tokens.typography.hero.use": *font
+    "tokens.typography.corporate-hero.size": *corporate
+    "tokens.typography.corporate-hero.weight": *corporate
+    "tokens.typography.corporate-hero.lineHeight": *corporate
+    "tokens.typography.corporate-hero.use": *corporate
+    "tokens.typography.nav.size": *font
+    "tokens.typography.nav.weight": *font
+    "tokens.typography.nav.lineHeight": *font
+    "tokens.typography.nav.use": *font
+    "tokens.typography.card-title.size": *home
+    "tokens.typography.card-title.weight": *home
+    "tokens.typography.card-title.lineHeight": *home
+    "tokens.typography.card-title.use": *home
+    "tokens.spacing.nav-inline": *font
+    "tokens.spacing.corporate-action-inline": *corporate
+    "tokens.rounded.corporate-outline-action": *corporate
+    "tokens.rounded.carousel-control": *home
+    "tokens.shadow.flat": *home
+    "tokens.components.product-card-link.type": *home
+    "tokens.components.product-card-link.fg": *home
+    "tokens.components.product-card-link.font": *home
+    "tokens.components.product-card-link.use": *home
+  conflicts: []
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  note: "deliberately monochrome — black IS the brand color; the only accents are functional content tags on DIVE"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Current product home and corporate-information surfaces are separate from DIVE, marketing, and unobserved interaction states."
   colors:
     ink: "#000000"
-    ground: "#ffffff"
-    tag-red: "#f36464"
-    tag-green: "#15a91f"
+    canvas: "#ffffff"
+    inverse: "#ffffff"
+    link-product: "#0070f0"
+    link-corporate: "#1e75d6"
   typography:
-    family: { sans: "Youandi", fallback: "Noto Sans KR" }
-    heading: { size: 26, weight: 600, use: "Section-level headings; pair with Youandi for brand moments" }
-    body:    { size: 13, weight: 400, use: "Running text, Noto Sans KR" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 8, lg: 24, full: 9999 }
+    family: { sans: "YouandiNewKr" }
+    hero: { size: 40, weight: 600, lineHeight: 52, use: "Product-home h2 headings" }
+    corporate-hero: { size: 54, weight: 700, lineHeight: 80, use: "Corporate-information h2 headings on the two captured routes" }
+    nav: { size: 18, weight: 500, lineHeight: 26, use: "Product-home second-level navigation links" }
+    card-title: { size: 16, weight: 500, lineHeight: 22, use: "Product-card title labels" }
+  spacing:
+    nav-inline: 20
+    corporate-action-inline: 29
+  rounded:
+    corporate-outline-action: 3
+    carousel-control: 5
   shadow:
     flat: "none"
   components:
-    button-primary: { type: button, bg: "#ffffff", fg: "#000000", radius: 24, use: "Minimal monochrome pill, 48px tall, outline border" }
-    heading: { type: card, bg: "#ffffff", fg: "#000000", use: "Section heading, 26px/600, editorial spacing" }
-    page-surface: { type: card, bg: "#ffffff", fg: "#000000", use: "Base content canvas, white ground, generous whitespace" }
-    tag-red: { type: badge, fg: "#f36464", use: "Functional content category tag on DIVE only" }
-    tag-green: { type: badge, fg: "#15a91f", use: "Functional content category tag on DIVE only" }
+    product-card-link: { type: card, fg: "#000000", font: "16px / 400 / platform system stack", use: "Product-home card link; transparent, borderless default" }
   components_harvested: true
 ---
 # Design System Inspiration of Hyundai Card
 
 ## 1. Visual Theme & Atmosphere
 
-Hyundai Card is Korea's most design-celebrated credit-card brand, and its visual identity is an exercise in disciplined restraint: monochrome premium minimalism built almost entirely from ink black (#000000) on a clean white (#FFFFFF) ground. Color is not used as decoration here — it is withheld on purpose, treated as a luxury that the brand chooses not to spend, so that the absence of color becomes the statement. The signature element is typography itself: the proprietary "Youandi" (유앤아이) typeface carries the brand's voice, making letterforms the primary expressive medium rather than imagery or palette. The atmosphere is gallery-like and editorial — generous whitespace, high contrast, and a quiet confidence that reads as understated wealth rather than loud premium cues. Surfaces are flat and unadorned, headers are transparent, and every element earns its place. The result feels less like a banking product and more like a cultural design platform, which is exactly how the DIVE surface presents the brand. This is typography-as-identity, where the discipline of black, white, and a custom face does all the work.
+Hyundai Card is a Korean credit-card company whose identity reaches beyond payment products into card design, cultural programming, and branded libraries. Its most recognizable visual asset is Youandi: the company introduced the proprietary typeface in 2003, then renewed it as YouandiNew for contemporary digital media. Hyundai Card’s own account places the card plate’s proportions inside the letterforms, treating type as a carrier of brand identity rather than as a decorative layer. That history is visible on the current captured product home, where loaded YouandiNewKr leads product headings and navigation, while the corporate-information routes use a larger white-on-dark display treatment. The live product routes are not a uniform monochrome system: black and white form the common base, but their product and corporate links use distinct blue values. DIVE, the Design Library, and other cultural/marketing surfaces are meaningful brand context, but were not used to fill product tokens in this reference.
 
 ## 2. Color Palette & Roles
-The palette is deliberately monochrome. The ground is white (#FFFFFF) and the ink is black (#000000), and the brand color is essentially black itself — color is the thing that is held back, which is the entire point of the identity. The only chromatic accents appear as functional category tags on the DIVE content surface, never as primary brand expression.
 
-| Role | Value | Usage |
+The three supplied current captures share black text and white page fields. Two blue link treatments are surface-specific, so neither is promoted as a universal brand primary.
+
+| Role | Value | Usage and evidence boundary |
 | --- | --- | --- |
-| Ground | #FFFFFF | Page and surface background; the dominant field |
-| Ink | #000000 | Body text, headings, primary brand color; the monochrome anchor |
-| Accent — red (functional) | #F36464 | Content category tag on DIVE only |
-| Accent — green (functional) | #15A91F | Content category tag on DIVE only |
+| Ink | #000000 | Current product home and both corporate-information routes; text and border observations |
+| Canvas | #FFFFFF | Current captured surface background observations |
+| Inverse text | #FFFFFF | Corporate-information hero/action context; not a global text token |
+| Product link | #0070F0 | Product-home detail links only |
+| Corporate link | #1E75D6 | Corporate-information links only |
 
-The accents are strictly utilitarian. They classify content; they do not brand. Treat #F36464 and #15A91F as labeling tools confined to tags, and keep the rest of the experience in pure black-and-white.
+The prior DIVE-only red and green content tags are omitted: they were not observed in this product/corporate packet and cannot describe the current product token set.
 
 ## 3. Typography Rules
-Typography is the brand. The display layer uses the proprietary "Youandi" typeface (confirmed in the DOM as YouandiNewKr, with HEB / TR / HB weights) for headings and branding — it is the signature element and should be reserved for moments that carry the brand's voice. Body text is set in Noto Sans KR for legibility across Korean and Latin content. The captured body size is 13px, and the heading size is 26px at weight 600, giving a clear two-step hierarchy: a confident editorial heading over a quiet, readable body.
 
-| Token | Value |
-| --- | --- |
-| Display / branding | Youandi (YouandiNewKr — HEB / TR / HB weights), proprietary |
-| Body | Noto Sans KR |
-| Body size | 13px |
-| Heading | 26px / 600 |
+**Official product-use.** Hyundai Card says that it has used Youandi for product branding and official company documents since 2003; the 2021 renewal, YouandiNew, was designed for digital environments, readability, Korean/English balance, and variable-font use. The official account describes it as a proprietary corporate typeface, not a public web-font distribution or open-license announcement.
 
-Rule of thumb: let Youandi own the brand and headline moments; let Noto Sans KR carry running text at 13px; reserve the 26px/600 step for section-level headings.
+**Live computed surface-use.** `YouandiNewKr` is the only verified branded family in this packet: it is the computed family on 60 visible heading, navigation, and text observations, has a loaded FontFace match, and resolves to Hyundai Card-hosted `YouandiNewKrTitle` font files. The product home uses 40px/600/52px `h2` headings and 18px/500/26px second-level links; the two corporate-information pages use 54px/700/80px `h2` headings.
+
+**System use.** A platform stack is the first computed family on 351 ordinary body, card, button, and text observations. It is an observed runtime fallback/utility stack, not a substitute rendering of YouandiNewKr and not a brand-font claim. Product-card labels are observed at 16px/500/22px in that stack.
+
+**Declared-only assets.** `Spoqa Han Sans Neo`, `YouandiModernHEB`, `YouandiModernTR`, and `YouandModern` have `@font-face` source declarations in the capture but no visible first-family usage. They remain declared-only. A password-input face named `pass` is loaded for two inputs and is not a brand type token.
+
+**License boundary.** The official font history establishes Hyundai Card’s ownership and internal product/document use. No public redistribution license or browser-consumable licensing terms were found in the official sources consulted; do not infer permission to ship the font outside its supplied Hyundai Card sources.
 
 ## 4. Component Stylings
 
-### Page Surface (DIVE)
+### Product-home navigation link
+
+**Second-level link**
+- Background: transparent
+- Text: #000000
+- Border: none
+- Radius: 0px
+- Padding: 0px 20px
+- Font: 18px / 500 / YouandiNewKr
+- Use: `home::[data-omd-capture="1"–"7"]` static second-level navigation links on the product home
+
+### Product-card link
 
 **Default**
-- Background: #FFFFFF
-- Text: #000000
-- Border: none
-- Padding: generous whitespace (editorial)
-- Height: full viewport
-- Font: 13px / 400 (Noto Sans KR)
-- Use: the base content canvas — white ground, black ink, maximal restraint
-
-### Heading
-
-**Section heading**
 - Background: transparent
 - Text: #000000
 - Border: none
-- Padding: editorial spacing above and below
-- Height: auto
-- Font: 26px / 600
-- Use: section-level titles; pair with Youandi for true brand moments
+- Radius: 0px
+- Font: 16px / 400 / platform system stack
+- Use: `home::[data-omd-capture="55"–"84"]` product-card links; only the default was captured
 
-### Button
+### Corporate-information action
 
-**Primary (minimal pill)**
-- Background: #FFFFFF
-- Text: #000000
-- Border: minimal outline (monochrome)
-- Radius: 24px
-- Padding: balanced for a 48px pill
-- Height: 48px
-- Font: body scale (Noto Sans KR)
-- Use: primary action; the rounded pill is the one soft gesture in an otherwise hard, flat system
-
-### Header
-
-**Transparent header**
+**Outline action**
 - Background: transparent
-- Text: #000000
-- Border: none
-- Padding: edge-aligned to the content grid
-- Height: auto
-- Font: Noto Sans KR
-- Use: lets the white ground read continuously from header into content; no chrome, no shadow
+- Text: #FFFFFF
+- Border: 1px solid rgba(255,255,255,0.6)
+- Radius: 3px
+- Padding: 0px 29px
+- Font: 16px / 400 / platform system stack
+- Use: `surface-2::[data-omd-capture="11"]` and `surface-3::[data-omd-capture="12"]`; corporate-information routes only
 
-### Content Tag
-
-**Category tag (red)**
-- Background: tag fill
-- Text: #F36464
-- Border: none
-- Radius: pill
-- Padding: compact
-- Height: compact label
-- Font: small body scale
-- Use: functional content classification on DIVE only — not brand color
-
-**Category tag (green)**
-- Background: tag fill
-- Text: #15A91F
-- Border: none
-- Radius: pill
-- Padding: compact
-- Height: compact label
-- Font: small body scale
-- Use: functional content classification on DIVE only — not brand color
+No hover, focus, pressed, disabled, error, menu, dialog, or toast state is included: the supplied collector reports zero interaction expansions and zero observed states.
 
 ## 5. Layout Principles
-The layout is editorial and gallery-like, built on generous whitespace and a continuous white ground. The transparent header dissolves into the content so the page reads as one uninterrupted surface, and the absence of borders, fills, and chrome keeps attention on type and spacing. Black ink on white field creates the contrast that structures the page; there is no competing color to organize around. Hierarchy is established through the typographic step — 26px/600 headings over 13px body — and through the rhythm of negative space rather than through dividers or boxes. The pill button at 24px radius is the single soft moment in an otherwise crisp, rectilinear field. Treat layout as composition: align to a clean grid, let whitespace breathe, and resist the urge to add color or ornament.
+
+The captured product home establishes hierarchy through a 40px YouandiNewKr heading, 18px second-level navigation, and transparent product-card links rather than a documented card-container recipe. Corporate-information routes use a separate 54px inverse hero and compact 3px outline action. Treat those as surface-specific compositions; there is no captured evidence for a shared responsive grid, spacing scale, or universal card treatment.
 
 ## 6. Depth & Elevation
-This is a flat system. There are no documented shadows, gradients, or elevation layers — the header is transparent and surfaces sit at a single plane on the white ground. Depth, to the extent it exists, comes from contrast (black ink against white) and from spacing, not from drop shadows or stacking. Keep elements coplanar; if separation is needed, use whitespace and the typographic hierarchy rather than introducing elevation. The only curvature in the system is the 24px button radius, which softens the action without implying lift. Restraint applies to depth exactly as it applies to color.
+
+The captured representatives report `box-shadow: none`. This supports a flat default for the retained components only. It does not establish that Hyundai Card never uses shadows, gradients, or elevation on other product, marketing, or native-app surfaces.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Keep the palette monochrome: #FFFFFF ground, #000000 ink.
-- Treat black (#000000) as the brand color — withholding color is the point.
-- Reserve Youandi (proprietary) for headings and branding moments.
-- Set body in Noto Sans KR at 13px; use 26px/600 for headings.
-- Use the 48px pill button with 24px radius as the soft action gesture.
-- Keep the header transparent and surfaces flat.
+
+- Use YouandiNewKr only when it is licensed and actually available from Hyundai Card-controlled sources.
+- Preserve the product/corporate split: black-and-white foundation, product link #0070F0, corporate link #1E75D6.
+- Keep the observed product navigation and card links transparent and borderless.
+- Use the 3px corporate outline action only for the corporate-information context from which it was measured.
 
 ### Don't
-- Introduce color as a brand element — the accents #F36464 and #15A91F are for functional content tags only.
-- Add shadows, gradients, or elevation; the system is flat.
-- Substitute a generic display face where Youandi carries the brand voice.
-- Crowd the layout — whitespace is structural.
-- Box content in borders or fills; let contrast and spacing do the work.
+
+- Treat DIVE tag colors or Design Library visuals as current payment-product tokens.
+- Replace unavailable YouandiNewKr with a system face while labeling it Youandi.
+- Generalize the corporate white outline action into a product-home primary button.
+- Invent interaction states, motion, a spacing scale, or component variants absent from the capture.
 
 ## 8. Responsive Behavior
-The captured surface (DIVE) is a content/culture platform whose responsive logic follows its editorial, whitespace-driven layout: the continuous white ground and transparent header scale naturally from desktop to mobile, with the typographic hierarchy (26px/600 heading over 13px body) carrying structure at every width. The 48px pill button provides a comfortable touch target on mobile. Beyond these observed values, responsive specifics were not captured (the main banking site is security-plugin-walled), so adapt qualitatively: preserve generous whitespace, keep the monochrome contrast, maintain the flat single-plane surface, and let the type hierarchy — not added chrome — communicate structure as the viewport narrows.
+
+The supplied evidence is desktop-only at 1440×900. It establishes typography and default component values on the listed routes, not a responsive contract. Preserve the surface split and remeasure at target breakpoints before assigning mobile dimensions, stacking behavior, or touch states.
 
 ## 9. Agent Prompt Guide
-When generating UI in the Hyundai Card style, instruct the agent: "Design a monochrome, editorial interface — white (#FFFFFF) ground, black (#000000) ink, and treat black as the brand color. Withhold color entirely; the absence of color is the statement. Use a proprietary-feeling display typeface (Youandi, weights HEB/TR/HB) for headings and branding, and Noto Sans KR for body at 13px, with 26px/600 section headings. Keep everything flat — no shadows, no gradients, no elevation, transparent header. The only soft gesture is a 48px pill button with 24px radius, white fill, black text. Lean on generous whitespace and high black-on-white contrast for structure. If you must classify content, you may use red #F36464 or green #15A91F as small functional tag colors only — never as brand color." Emphasize restraint above all: when in doubt, remove rather than add.
+
+When using the verified current Hyundai Card web cues, prompt for a restrained black-and-white base with surface-local blue links, not a generic monochrome luxury system. Use licensed YouandiNewKr for verified display/nav moments only; otherwise keep the observed platform stack honestly labeled. On a product-home composition, use transparent 18px/500 YouandiNewKr second-level links with 20px inline padding and transparent product-card links. Do not import DIVE category tags, a 48px pill, Noto Sans KR, or any invented state behavior. Keep the 54px inverse corporate hero and 3px white outline action confined to corporate-information-like contexts.
 
 ## 10. Voice & Tone
-The voice is quietly confident and editorial — the tone of a design gallery rather than a bank. It speaks with the assurance of a brand that has nothing to prove, letting restraint imply premium. There is no shouting, no urgency, no decorative flourish; the message lands through clarity and discipline. Like the monochrome palette, the language withholds: it says only what is needed, and it trusts the audience to read the sophistication in the negative space. The tone is cultured, deliberate, and self-assured.
+
+The official materials frame Hyundai Card as a financial company that has deliberately built a wider culture-and-design practice through its branded spaces, card plates, and typeface. The usable voice is therefore precise, design-literate, and concrete rather than “luxury” by default.
+
+| Do | Don't |
+| --- | --- |
+| Describe a specific product, design choice, or cultural program plainly. | Claim an unmeasured visual rule as a universal brand mandate. |
+| Let Youandi’s card-derived construction carry a factual brand story. | Use vague premium language in place of evidence. |
+| Keep product and cultural surfaces named and separated. | Fold DIVE or library material into payment-product UI claims. |
 
 ## 11. Brand Narrative
-Hyundai Card built its reputation as Korea's most design-celebrated credit-card brand by treating design as the product, not the packaging. The brand's central idea is that luxury is restraint: a monochrome world of black and white, anchored by a typeface it commissioned for itself — Youandi (유앤아이) — so that even the letters belong to the brand alone. Color is the resource it refuses to spend, turning absence into a signature. The DIVE platform extends this story from finance into culture and design, presenting the same monochrome, Youandi-led identity as a creative point of view rather than a transactional one. The narrative is consistent at every touchpoint: typography-as-identity, discipline-as-luxury, and the quiet confidence of a brand that lets what it leaves out speak as loudly as what it puts in.
+
+Hyundai Card pairs credit-card products with a long-running cultural and design program. Its official company overview describes a current move toward a technology-company identity while continuing the cultural work expressed through libraries, performance programs, branded spaces, card plates, and Youandi. That makes the company’s visual story broader than one web page or one card campaign.
+
+Youandi is the clearest continuity thread. Hyundai Card developed the first version in 2003; its official account says the original letterforms drew from the physical shape and proportions of a card. The 2021 YouandiNew renewal rebuilt that asset for evolving digital media, expanded its range, and added variable-font capability. The current web capture corroborates that the newer family is not merely historical: `YouandiNewKr` is loaded and visible on current product and corporate headings.
 
 ## 12. Principles
-- **Withhold color.** Black (#000000) on white (#FFFFFF) is the identity; color is deliberately held back.
-- **Typography is the brand.** Youandi (proprietary) carries the voice; let letterforms lead.
-- **Restraint as luxury.** Remove before you add; whitespace and contrast do the structural work.
-- **Flat and honest.** No shadows, no gradients, no chrome — a single clean plane.
-- **One soft gesture.** The 24px-radius, 48px pill button is the system's only concession to softness.
-- **Function over decoration.** The only accents (#F36464, #15A91F) exist to classify, never to brand.
+
+1. **Build identity into useful assets.** Youandi is presented as a brand asset used in product branding and official documents.
+   *UI implication:* preserve the verified family distinction instead of approximating it with a system font.
+2. **Let the product and the cultural program remain distinct evidence domains.** The company’s libraries and DIVE expand brand context, but they are not product-component documentation.
+   *UI implication:* do not transfer their colors or patterns into payment-product tokens without direct proof.
+3. **Use surface-local rules.** The current product home and corporate-information routes intentionally expose different link and inverse-action treatments.
+   *UI implication:* name a component’s source surface before reusing its geometry or colors.
 
 ## 13. Personas
-- **The design-literate cardholder** — values craft and discretion over flash; reads the monochrome restraint as a marker of taste and expects the interface to feel like a curated space.
-- **The culture seeker on DIVE** — comes for design, art, and editorial content rather than banking, and responds to the gallery-like white-ground layout and Youandi typography.
-- **The premium minimalist** — wants the confidence of black-and-white sophistication, prefers whitespace to ornament, and trusts a brand that says less.
+
+These are service-context archetypes, not claims about private user research.
+
+- **Card product visitor** — needs a product route whose navigation, cards, and links remain clear without relying on cultural-site styling.
+- **Corporate-information reader** — encounters a high-contrast informational hero and outline action on Hyundai Card’s company pages.
+- **Culture-program visitor** — may meet DIVE or a Hyundai Card library; that context can inform brand understanding but must not be mistaken for payment-product UI evidence.
 
 ## 14. States
-Observed component states are minimal by design — the system favors flat, high-contrast defaults over elaborate interactive feedback. From the captured values: the default surface is #FFFFFF ground with #000000 text; the primary button defaults to white fill, black text, 24px radius, 48px height; the header defaults to transparent. Hover, pressed, focus, disabled, and error states were not captured in the blob, so do not invent them — derive them qualitatively in keeping with the monochrome, flat philosophy (e.g., subtle black/white contrast shifts rather than colored state changes), and keep any feedback as restrained as the rest of the system. Functional content tags carry the red (#F36464) or green (#15A91F) accent to signal category, the closest thing to a "stateful" color in the system.
+
+The packet captured default styles only. It reports `interactionCount: 0`, `interactionKinds: 0`, and `observedStates: 0`; no state token is published. Reinspect the relevant live surface before specifying any of the following:
+
+| Category | Status |
+| --- | --- |
+| Default | Observed only for the three §4 component defaults |
+| Hover | Not observed |
+| Focus | Not observed |
+| Pressed | Not observed |
+| Disabled | Not observed |
+| Error | Not observed |
+| Loading | Not observed |
+| Success | Not observed |
+| Empty | Not observed |
+| Skeleton | Not observed |
 
 ## 15. Motion & Easing
-No motion or easing values were captured in the blob. In keeping with the brand's restraint, motion should be treated qualitatively: quiet, minimal, and unobtrusive — transitions that respect the gallery-like calm rather than drawing attention to themselves. The flat, monochrome system implies subtle, understated movement (gentle fades and clean transitions) over expressive or bouncy animation. Do not invent specific durations or curves; let any motion echo the same discipline as the visual identity — present only when it serves clarity, never as decoration.
+
+No transition duration, easing curve, or motion state was observed in the supplied capture. Do not derive motion guidance from the flat default component styles; retain motion as unresolved until a relevant live surface is measured.
 
 ---
-**Verified:** 2026-06-01
-**Tier 1 sources:** https://www.hyundaicard.com (homepage / brand context — main site security-plugin-walled), https://dive.hyundaicard.com (live DOM inspect — monochrome surface, Youandi display fonts, Noto Sans KR body, button + tag values), https://newsroom.hyundaicard.com (brand-owned regional source)
-**Tier 2 sources:** getdesign.md/hyundaicard — NOT LISTED. refero — not listed. Note: hyundaicard.com main site is security-plugin-walled; DIVE (dive.hyundaicard.com) is the accessible brand surface and carries the same Youandi/monochrome identity.
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.hyundaicard.com/index.jsp (current product home, supplied computed-style capture), https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc and https://www.hyundaicard.com/about/ckh/ho/ckhho0101_01.hc (current corporate-information routes, supplied capture), https://newsroom.hyundaicard.com/front/board/Hyundai-Card-branding-through-typeface?country=en (official Youandi/YouandiNew history and product-use context), https://img.hyundaicard.com/about/common/en/pageView.hc?id=ceabi0201_01 (official company overview), https://newsroom.hyundaicard.com/front/board/Hyundai-Card-Design-Library?country=en (official cultural/design context; not token evidence)
+**Tier 2 sources:** https://getdesign.md/hyundaicard (attempted; built-in fetch path rejected the direct URL and search yielded no importable record), https://styles.refero.design/?q=Hyundai%20Card (attempted; built-in fetch path rejected the direct URL and search yielded no importable record). No Tier 2 values were promoted.
+**Resolution note:** Prior DIVE-only palette, Noto Sans KR body, 26px heading, 24px/48px pill, category tags, and interaction guidance were removed because this packet did not corroborate them on current product/corporate routes.
 **Conflicts unresolved:** none
-**Proof:** see .verification.md (## Proof block)
+**Proof:** see .verification.md (## Proof — Tier 1 live inspect)

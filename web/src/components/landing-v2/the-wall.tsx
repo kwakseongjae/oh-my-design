@@ -8,10 +8,13 @@ import {
   type CSSProperties,
 } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import { isLight } from "@/lib/core/color";
 import { V2, BRAND_COLORS, colorForId } from "./tokens";
+import { canonicalBuilderPreviewPath } from "@/lib/builder/preview-path";
+import { event } from "@/lib/gtag";
 
 /* ──────────────────────────── COLOR HELPERS ──────────────────────────── */
 
@@ -284,6 +287,12 @@ function Tile({
   };
 
   return (
+    <Link
+      href={canonicalBuilderPreviewPath(id)}
+      aria-label={`Open ${id} reference in builder preview`}
+      onClick={() => event("wall_reference_open", { reference: id })}
+      className={`block rounded-xl outline-none focus-visible:ring-3 focus-visible:ring-white/50 ${className}`}
+    >
     <motion.div
       onMouseMove={onMove}
       onMouseEnter={() => setHover(true)}
@@ -292,7 +301,7 @@ function Tile({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.05 }}
       transition={{ duration: 0.4, delay: (index % 14) * 0.025 }}
-      className={`group relative aspect-[3/2] overflow-hidden rounded-xl border ${className}`}
+      className="group relative aspect-[3/2] overflow-hidden rounded-xl border"
       style={tileStyle}
     >
       {/* moving sheen */}
@@ -329,5 +338,6 @@ function Tile({
         {id}
       </span>
     </motion.div>
+    </Link>
   );
 }

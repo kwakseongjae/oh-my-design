@@ -8,460 +8,501 @@ primary_color: "#06c755"
 logo:
   type: simpleicons
   slug: line
-verified: "2026-05-15"
+verified: "2026-07-11"
 omd: "0.1"
 ds:
   name: LINE Design System
   url: "https://designsystem.line.me"
   type: system
-  description: LINE's shared design system for products across the LINE family.
+  description: "LINE Messenger and Global Family Service design guidance, including foundations, components, UX guidelines, principles, and LINE Voice."
   og_image: "https://designsystem.line.me/static/36a4ead41b7b972b1130287e849a14b1/73f08/SEO_IMG_1741574443.png"
+verification_v2:
+  schema: 2
+  checked: "2026-07-11"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.line.me/ko/", inspected: "2026-07-11" }
+    - { id: ds-home, kind: design-system, url: "https://designsystem.line.me/", inspected: "2026-07-11" }
+    - { id: colors, kind: design-system, url: "https://designsystem.line.me/LDSM/foundation/color/line-color-guide-ex-en/", inspected: "2026-07-11" }
+    - { id: typography, kind: design-system, url: "https://designsystem.line.me/LDSM/foundation/typography-ex-en/", inspected: "2026-07-11" }
+    - { id: layout, kind: design-system, url: "https://designsystem.line.me/LDSM/foundation/layout-ex-en/", inspected: "2026-07-11" }
+    - { id: box-button, kind: design-system, url: "https://designsystem.line.me/LDSM/components/box-button-ex-en/", inspected: "2026-07-11" }
+    - { id: capsule-button, kind: design-system, url: "https://designsystem.line.me/LDSM/components/capsule-button-ex-en/", inspected: "2026-07-11" }
+    - { id: input, kind: design-system, url: "https://designsystem.line.me/LDSM/components/input-ex-en/", inspected: "2026-07-11" }
+    - { id: popup, kind: design-system, url: "https://designsystem.line.me/LDSM/components/popup-ex-en/", inspected: "2026-07-11" }
+    - { id: tabs, kind: design-system, url: "https://designsystem.line.me/LDSM/components/tabs-ex-en/", inspected: "2026-07-11" }
+    - { id: badge, kind: design-system, url: "https://designsystem.line.me/LDSM/components/badge-ex-en/", inspected: "2026-07-11" }
+    - { id: principles, kind: design-system, url: "https://designsystem.line.me/about/design-principle-en", inspected: "2026-07-11" }
+    - { id: voice, kind: design-system, url: "https://designsystem.line.me/about/line-voice-en", inspected: "2026-07-11" }
+    - { id: corporate-style, kind: corporate, url: "https://www.lycorp.co.jp/en/technology-design/design/", inspected: "2026-07-11" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.line.me/ko/", captured: "2026-07-11" }
+    - { id: ds-home-doc, kind: official-doc, url: "https://designsystem.line.me/", captured: "2026-07-11" }
+    - { id: colors-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/foundation/color/line-color-guide-ex-en/", captured: "2026-07-11" }
+    - { id: typography-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/foundation/typography-ex-en/", captured: "2026-07-11" }
+    - { id: layout-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/foundation/layout-ex-en/", captured: "2026-07-11" }
+    - { id: box-button-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/box-button-ex-en/", captured: "2026-07-11" }
+    - { id: capsule-button-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/capsule-button-ex-en/", captured: "2026-07-11" }
+    - { id: input-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/input-ex-en/", captured: "2026-07-11" }
+    - { id: popup-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/popup-ex-en/", captured: "2026-07-11" }
+    - { id: tabs-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/tabs-ex-en/", captured: "2026-07-11" }
+    - { id: badge-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/badge-ex-en/", captured: "2026-07-11" }
+    - { id: principles-doc, kind: official-doc, url: "https://designsystem.line.me/about/design-principle-en", captured: "2026-07-11" }
+    - { id: voice-doc, kind: official-doc, url: "https://designsystem.line.me/about/line-voice-en", captured: "2026-07-11" }
+    - { id: corporate-style-doc, kind: official-doc, url: "https://www.lycorp.co.jp/en/technology-design/design/", captured: "2026-07-11" }
+  claims:
+    "tokens.colors.action-blue": &color_evidence { surface_id: colors, source_id: colors-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.colors.android-primary": *color_evidence
+    "tokens.colors.border": *color_evidence
+    "tokens.colors.canvas": *color_evidence
+    "tokens.colors.danger": *color_evidence
+    "tokens.colors.foreground": *color_evidence
+    "tokens.colors.on-primary": *color_evidence
+    "tokens.colors.outline": *color_evidence
+    "tokens.colors.primary": *color_evidence
+    "tokens.colors.text-muted": *color_evidence
+    "tokens.colors.text-secondary": *color_evidence
+    "tokens.components.box-button-destructive.bg": &button_evidence { surface_id: box-button, source_id: box-button-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.box-button-destructive.fg": *button_evidence
+    "tokens.components.box-button-destructive.height": *button_evidence
+    "tokens.components.box-button-destructive.radius": *button_evidence
+    "tokens.components.box-button-destructive.states": *button_evidence
+    "tokens.components.box-button-destructive.type": *button_evidence
+    "tokens.components.box-button-destructive.use": *button_evidence
+    "tokens.components.box-button-outline.bg": *button_evidence
+    "tokens.components.box-button-outline.border": *button_evidence
+    "tokens.components.box-button-outline.fg": *button_evidence
+    "tokens.components.box-button-outline.height": *button_evidence
+    "tokens.components.box-button-outline.radius": *button_evidence
+    "tokens.components.box-button-outline.states": *button_evidence
+    "tokens.components.box-button-outline.type": *button_evidence
+    "tokens.components.box-button-outline.use": *button_evidence
+    "tokens.components.box-button-primary.bg": *button_evidence
+    "tokens.components.box-button-primary.fg": *button_evidence
+    "tokens.components.box-button-primary.height": *button_evidence
+    "tokens.components.box-button-primary.radius": *button_evidence
+    "tokens.components.box-button-primary.states": *button_evidence
+    "tokens.components.box-button-primary.type": *button_evidence
+    "tokens.components.box-button-primary.use": *button_evidence
+    "tokens.components.capsule-button.bg": &capsule_evidence { surface_id: capsule-button, source_id: capsule-button-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.capsule-button.fg": *capsule_evidence
+    "tokens.components.capsule-button.radius": *capsule_evidence
+    "tokens.components.capsule-button.states": *capsule_evidence
+    "tokens.components.capsule-button.type": *capsule_evidence
+    "tokens.components.capsule-button.use": *capsule_evidence
+    "tokens.components.notification-badge.bg": &badge_evidence { surface_id: badge, source_id: badge-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.notification-badge.fg": *badge_evidence
+    "tokens.components.notification-badge.radius": *badge_evidence
+    "tokens.components.notification-badge.type": *badge_evidence
+    "tokens.components.notification-badge.use": *badge_evidence
+    "tokens.components.popup.bg": &popup_evidence { surface_id: popup, source_id: popup-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.popup.fg": *popup_evidence
+    "tokens.components.popup.states": *popup_evidence
+    "tokens.components.popup.type": *popup_evidence
+    "tokens.components.popup.use": *popup_evidence
+    "tokens.components.tabs.bg": &tabs_evidence { surface_id: tabs, source_id: tabs-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.tabs.border": *tabs_evidence
+    "tokens.components.tabs.fg": *tabs_evidence
+    "tokens.components.tabs.states": *tabs_evidence
+    "tokens.components.tabs.type": *tabs_evidence
+    "tokens.components.tabs.use": *tabs_evidence
+    "tokens.components.text-input.bg": &input_evidence { surface_id: input, source_id: input-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.text-input.border": *input_evidence
+    "tokens.components.text-input.fg": *input_evidence
+    "tokens.components.text-input.states": *input_evidence
+    "tokens.components.text-input.type": *input_evidence
+    "tokens.components.text-input.use": *input_evidence
+    "tokens.rounded.button": *button_evidence
+    "tokens.rounded.button-large": *button_evidence
+    "tokens.rounded.full": *capsule_evidence
+    "tokens.shadow.flat": &ds_home_evidence { surface_id: ds-home, source_id: ds-home-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.spacing.card-margin": &layout_evidence { surface_id: layout, source_id: layout-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.spacing.gutter-2-column": *layout_evidence
+    "tokens.spacing.gutter-3-column": *layout_evidence
+    "tokens.spacing.gutter-4-column": *layout_evidence
+    "tokens.spacing.screen-margin": *layout_evidence
+    "tokens.typography.body-1.size": &typography_evidence { surface_id: typography, source_id: typography-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.typography.body-1.use": *typography_evidence
+    "tokens.typography.body-1.weight": *typography_evidence
+    "tokens.typography.body-2.size": *typography_evidence
+    "tokens.typography.body-2.use": *typography_evidence
+    "tokens.typography.body-2.weight": *typography_evidence
+    "tokens.typography.body-4.size": *typography_evidence
+    "tokens.typography.body-4.use": *typography_evidence
+    "tokens.typography.body-4.weight": *typography_evidence
+    "tokens.typography.family.display": &home_evidence { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-11" }
+    "tokens.typography.family.sans": *typography_evidence
+    "tokens.typography.heading-1.size": *typography_evidence
+    "tokens.typography.heading-1.use": *typography_evidence
+    "tokens.typography.heading-1.weight": *typography_evidence
+    "tokens.typography.heading-2.size": *typography_evidence
+    "tokens.typography.heading-2.use": *typography_evidence
+    "tokens.typography.heading-2.weight": *typography_evidence
+    "tokens.typography.marketing-hero.size": *home_evidence
+    "tokens.typography.marketing-hero.use": *home_evidence
+    "tokens.typography.marketing-hero.weight": *home_evidence
+    "tokens.typography.marketing-service.lineHeight": *home_evidence
+    "tokens.typography.marketing-service.size": *home_evidence
+    "tokens.typography.marketing-service.use": *home_evidence
+    "tokens.typography.marketing-service.weight": *home_evidence
+    "tokens.typography.title-1.size": *typography_evidence
+    "tokens.typography.title-1.use": *typography_evidence
+    "tokens.typography.title-1.weight": *typography_evidence
+    "tokens.typography.title-3.size": *typography_evidence
+    "tokens.typography.title-3.use": *typography_evidence
+    "tokens.typography.title-3.weight": *typography_evidence
+
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  components_harvested: true
+  source: reconciled
+  extracted: "2026-07-11"
+  note: "LINE Messenger product UI uses OS system fonts; public marketing and design-system headings use loaded LINESeed. The official v3.5 palette defines #06c755, replacing the legacy #07b53b value. LY corporate chrome is a separate domain and is not mixed into Messenger tokens."
   colors:
-    primary: "#07b53b"
-    primary-hover: "#069030"
+    primary: "#06c755"
+    android-primary: "#4cc764"
     canvas: "#ffffff"
-    ink: "#1e1e1e"
-    body: "#000000"
-    swiper-blue: "#007aff"
+    foreground: "#000000"
+    text-secondary: "#616161"
+    text-muted: "#949494"
+    border: "#e8e8e8"
+    outline: "#efefef"
+    action-blue: "#638dff"
+    danger: "#ff334b"
     on-primary: "#ffffff"
   typography:
-    family: { sans: "SFPro", mono: "SFPro" }
-    hero:      { size: 70, weight: 700, use: "Hero headline, Life on LINE" }
-    service:   { size: 40, weight: 700, use: "Service names, section heads" }
-    title:     { size: 20, weight: 700, use: "Page title H1" }
-    body:      { size: 20, weight: 400, lineHeight: 1.5, use: "Body default, editorial scale" }
-    button:    { size: 16, weight: 700, lineHeight: 1.0, use: "Button / pill / nav labels" }
-    caption:   { size: 14, weight: 400, use: "Card descriptions, supporting copy" }
-    badge:     { size: 12, weight: 700, use: "Pill badge label" }
-  spacing: { xs: 4, sm: 8, md: 15, base: 16, lg: 24, xl: 32, xxl: 48, section: 100 }
-  rounded: { sm: 12, md: 12, lg: 12, full: 9999 }
+    family: { sans: "System", display: "LINESeed" }
+    marketing-hero: { size: 70, weight: 700, use: "Public line.me Life on LINE heading" }
+    marketing-service: { size: 60, weight: 700, lineHeight: 1.334, use: "Public line.me Messenger and Services headings" }
+    heading-1: { size: 24, weight: 900, use: "Messenger product heading 1; official Heavy role" }
+    heading-2: { size: 17, weight: 700, use: "Messenger product heading 2" }
+    title-1: { size: 23, weight: 700, use: "Messenger product title 1" }
+    title-3: { size: 16, weight: 500, use: "Messenger product title 3; Medium or Semibold" }
+    body-1: { size: 16, weight: 400, use: "Messenger primary body" }
+    body-2: { size: 14, weight: 400, use: "Messenger secondary body" }
+    body-4: { size: 12, weight: 400, use: "Minimum recommended Messenger body role" }
+  spacing:
+    gutter-4-column: 5
+    gutter-3-column: 8
+    gutter-2-column: 9
+    screen-margin: 16
+    card-margin: 16
+  rounded: { button: 5, button-large: 6, full: 9999 }
   shadow:
-    header: "0 1px 0 rgba(0,0,0,0.1)"
-    card: "0 2px 8px rgba(0,0,0,0.04)"
-    modal: "0 4px 24px rgba(0,0,0,0.15)"
+    flat: "none"
+  components_harvested: true
   components:
-    button-pill-active: { type: button, bg: "#07b53b", fg: "#ffffff", radius: 9999, padding: "8px 15px", font: "16px/700", use: "Active category pill, primary CTA" }
-    button-pill-inactive: { type: button, bg: "transparent", fg: "#1e1e1e", radius: 9999, padding: "8px 15px", font: "16px/700", use: "Unselected category pill" }
-    button-pill-pressed: { type: button, bg: "#069030", fg: "#ffffff", radius: 9999, padding: "8px 15px", use: "Hover/pressed primary pill" }
-    input-default: { type: input, bg: "#ffffff", fg: "#1e1e1e", radius: 12, padding: "12px 16px", font: "16px/400", use: "Form field, green focus border" }
-    card-service: { type: card, bg: "#ffffff", fg: "#1e1e1e", radius: 12, padding: "24px", use: "Service/feature card with icon + title" }
-    card-image: { type: card, bg: "#ffffff", radius: 12, use: "Image-dominant tile, STICKERS/WEBTOON" }
-    card-download: { type: card, bg: "#ffffff", radius: 12, padding: "12px", use: "App download tile, 56px touch target" }
-    badge-pill: { type: badge, bg: "#07b53b", fg: "#ffffff", radius: 9999, padding: "4px 10px", font: "12px/700", use: "Pill-style badge" }
+    box-button-primary: { type: button, bg: "#06c755", fg: "#ffffff", radius: "5px", height: "36px", states: "active, inactive, pressed, loading, on, off", use: "Primary general action; official medium box-button geometry" }
+    box-button-destructive: { type: button, bg: "#ff334b", fg: "#ffffff", radius: "5px", height: "36px", states: "active, inactive, pressed, loading", use: "Delete, replace, remove, and other destructive actions" }
+    box-button-outline: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #efefef", radius: "5px", height: "36px", states: "active, inactive, pressed, loading, off", use: "Secondary or turned-off box-button action" }
+    capsule-button: { type: button, bg: "#06c755", fg: "#ffffff", radius: "9999px", states: "active, pressed; disappears after completing its scroll action", use: "Move to new content above or below the current scroll position" }
+    text-input: { type: input, bg: "#ffffff", fg: "#000000", border: "0 0 1px solid #949494", states: "inactive, focused #06c755, typing, completed, error #ff334b, disabled", use: "Text, password, and code input with required underline and reset action" }
+    popup: { type: dialog, bg: "#ffffff", fg: "#000000", states: "light, dark, one-button, two-button, three-button, affirmative-disabled", use: "Important information or user decision with content, action area, and scrim" }
+    tabs: { type: tab, bg: "transparent", fg: "#000000", border: "selected indicator uses #06c755", states: "selected, unselected, pressed", use: "Text, box, or icon grouping at the top of dependent content" }
+    notification-badge: { type: badge, bg: "#06c755", fg: "#ffffff", radius: "9999px", use: "N, dot, or number update badge; red is reserved for GNB placement" }
 ---
 
 # Design System Inspiration of LINE
 
 ## 1. Visual Theme & Atmosphere
 
-LINE is the messaging platform that anchors daily life across Japan, Taiwan, Thailand, and Indonesia, and its visual identity reflects exactly that role — confident, friendly, instantly recognizable. The page chrome is bright white with the famous **LINE Green** (`#07b53b`) reserved for the brand mark and the most important interactive moments. Headlines are oversized and bold (`Life on LINE` renders at 70px weight 700, in near-black `#1e1e1e`), creating a high-contrast editorial feel that matches LINE's positioning as a media-style super-app rather than a utility messenger.
+LINE is a communication product whose identity begins with helping people stay close, then extends into services that support everyday life. Its current evidence has two related but distinct public design surfaces. The consumer marketing site uses large `LINESeed` display typography and lifestyle imagery, while the official LINE Design System for Messenger specifies OS-native system fonts, compact product type roles, a structured color palette, and reusable interaction patterns. They share LINE Green and a direct, approachable tone, but their typography and density must not be collapsed into one generic marketing system.
 
-The signature interaction primitive is the **fully pill-shaped button** (`border-radius: 50px`) — used for category filters, navigation chips, and CTAs. This is LINE's tactile fingerprint: every clickable surface curves into a complete oval, signaling approachability and a touch-friendly design heritage. Contrast this with Pinkoi's sharp 4px corners or Dcard's modest 8px Material radii — LINE's pill-shape is unmistakably its own.
+The July 11 capture covered the Korean consumer site plus seven official design-system routes: home, color, typography, layout, box buttons, inputs, and popups. It found 8 surfaces, 41 color candidates, 10 font families, 45 component variants, five tab interactions, and coverage 87/100. `system-ui` was visibly used on 682 elements across the design-system pages; loaded `LINESeed` appeared on 107 elements. The previous `SFPro` canonical claim is no longer sufficient: `SFPro` remained unresolved on the marketing page, while declared `SF Pro Text` and `SF Pro Display` had zero observed usage.
 
-Typography is **multi-locale system fonts** with the global SF Pro foundation: `SFPro, Arial, "Noto Sans JP", "Noto Sans KR", sans-serif`. The Korean and Japanese fallbacks are first-class — LINE serves localized markets where native font rendering is non-negotiable. There is no custom brand typeface; instead, weight 700 and large display sizes do the visual work. Body text starts at a generous 20px (vs. typical 14-16px), reinforcing the editorial, content-forward atmosphere of LINE's marketing surfaces.
-
-**Key Characteristics:**
-- LINE Green (`#07b53b`) reserved for the brand mark and primary "selected" / active states
-- Pill-shaped controls: `border-radius: 50px` is the workhorse on buttons, category chips, and navigation
-- Weight 700 dominant on headlines (H2 70px, H3 40px), buttons, and category labels
-- Editorial-scale hero typography — display headlines 40-70px, body 20px (much larger than commerce sites)
-- Locale-aware font stack: `SFPro, Arial, Noto Sans JP, Noto Sans KR` — Japanese and Korean as first-class fallbacks
-- Dimmed inactive states via alpha — `rgba(30, 30, 30, 0.7)` for unselected pills (vs. solid `#1e1e1e` active)
-- White surface background with bright green accents — never dark mode or muted palettes for the marketing chrome
-- Subtle grid: oversized hero images with vertical scroll narrative (services listed below the hero)
-- "Life on LINE" voice: aspirational, lifestyle-led, not utility-functional
+Current product identity is anchored by official LINE Green `#06c755`, white `#ffffff`, black `#000000`, and a deep gray scale. The official component system is broader than pills: box buttons, capsule buttons, inputs, popups, tabs, badges, sheets, navigation, lists, cards, and feedback components each have defined anatomy, usage, and state behavior.
 
 ## 2. Color Palette & Roles
 
-### Brand
-- **LINE Green** (`#07b53b`): The signature brand color. Used as button bg for the active/selected state, brand iconography, the LINE logo bubble. RGB: `rgb(7, 181, 59)`.
-- **LINE Green Dark** (`#069030`): Inferred hover/pressed state — darker variant for press feedback (estimated, not officially confirmed).
-- **Pure White** (`#ffffff`): Default page surface, pill button text on green bg.
+### Official Messenger palette
+- **LINE Green** — `#06c755`: brand color and primary action.
+- **Android Green** — `#4cc764`: Android display-environment variant.
+- **White** — `#ffffff`: canvas and on-dark/on-brand content.
+- **Black** — `#000000`: primary foreground.
+- **Gray 650** — `#616161`: recurring secondary text in all eight captured surfaces.
+- **Gray 500** — `#949494`: muted navigation, inactive labels, and input underline reference.
+- **Gray 250** — `#e8e8e8`: repeated structural border.
+- **Gray 200** — `#efefef`: official outline-button asset border.
+- **Blue 500** — `#638dff`: documented button-background and large-tooltip blue.
+- **Red 400** — `#ff334b`: destructive action and error state.
 
-### Text & Foreground
-- **Near Black** (`#1e1e1e`): Primary headline color, active pill label, body emphasis.
-- **Pure Black** (`#000000`): Body text default.
-- **Inactive Label** (`rgba(30, 30, 30, 0.7)`): Unselected pill labels, secondary text.
-- **Tertiary** (`rgba(30, 30, 30, 0.4)`): Hint text, muted captions (estimated).
+The official color guide does not permit arbitrary opacity changes except for LINE Black and LINE White. Text should generally use palette values numbered 500 or higher to maintain at least 3:1 contrast; Gray 400 is restricted to the least important text. Highlighted colors are generated by documented HSV rules, and disabled labels use 40% treatment according to foreground context.
 
-### Surface
-- **Page White** (`#ffffff`): Default background. LINE marketing rarely uses gray surfaces — content sits on white with rich imagery providing visual interest.
-- **Image Overlay**: Hero sections layer text on full-bleed photography; no card chrome required.
-
-### Sectional / Service Brand Accents
-LINE products span Communication / Entertainment / Lifestyle / Shopping / Fintech / Business / News categories. Each LINE service (LINE NEWS, LINE MUSIC, LINE Pay, etc.) carries its own accent color in product UIs. Marketing surfaces stay green-anchored; product UIs may use service-specific palettes.
-
-### Swiper Defaults (carousel UI)
-- **Swiper Theme** (`#007aff`): iOS system blue used for carousel navigation arrows (`--swiper-theme-color`).
-- **Swiper Nav Size**: `44px` (`--swiper-navigation-size`) — touch-friendly circular controls.
+The previous `#07b53b` green was removed. It appeared in an older live tab capture, but the current v3.5 official palette and current product metadata identify `#06c755` as LINE Green.
 
 ## 3. Typography Rules
 
-### Font Stack
-```
-SFPro, Arial, "Noto Sans JP", "Noto Sans KR", sans-serif
-```
+### Font evidence boundary
 
-LINE leads with `SFPro` (Apple system font) for instant familiarity on iOS/macOS, then falls back to Noto Sans JP and Noto Sans KR for Japanese and Korean content. There is **no custom brand typeface** — system fonts respect each market's native reading habits.
+| Evidence class | Resolution |
+|---|---|
+| Official product-use | Messenger guidance specifies OS-native system fonts by platform. |
+| Live surface-use | Design-system pages use `system-ui`; marketing and documentation display roles use loaded `LINESeed`. |
+| Official distributed asset | LINESeed is official, but distribution does not make it the Messenger UI default. |
+| Declared-only | `SF Pro Text` and `SF Pro Display` declarations had zero observed usage. |
+| Unresolved | `SFPro` on the marketing surface had no resolved loaded face. |
 
-### Weights
-- **700 (bold)**: The dominant weight. All headlines, all buttons, all category pills, all emphasis. LINE almost never uses weight 400 or 500 for visible interactive text.
-- **400 (regular)**: Reserved for long-form body copy and supporting captions.
+Specimen availability is separate for system UI and LINESeed; neither is a substitute for the other.
 
-### Size Scale (verified live on `line.me`)
-| Use | Size | Weight |
-|---|---|---|
-| Body default | `20px` | 400 |
-| Hero subtitle | `20px` | 400-700 |
-| H1 (page title) | `20px` | 700 |
-| H3 (service names — LINE NEWS, LINE MUSIC) | `40px` | 700 |
-| H2 (hero — "Life on LINE") | `70px` | 700 |
+### Product UI
 
-The size jumps are aggressive: 20px body → 40px section heads → 70px hero. There is no quiet middle tier (no 24/32 between body and 40). Headlines exist to dominate the viewport, not to fill it.
+The official Messenger typography guideline explicitly uses each operating system's system font. It lists SF Pro Text/Display and localized iOS fonts such as Hiragino Sans, PingFang, Apple SD Gothic Neo, and Thonburi. These are platform mappings, not a license to hard-code SF Pro as the universal LINE font.
 
-### Conventions
-- **No letter-spacing tweaks** — system defaults trusted.
-- **`font-style: italic` not used** in marketing chrome.
-- **No tabular numerals** — body type flows naturally.
-- **All-caps reserved** for the LINE wordmark itself.
+| Role | Size | Weight |
+|---|---:|---|
+| Heading 1 | 24pt | Heavy |
+| Heading 2 | 17pt | Bold |
+| Heading 3 | 14pt | Bold |
+| Heading 4 | 13pt | Regular |
+| Title 1 | 23pt | Bold |
+| Title 2 | 19pt | Semibold or Bold |
+| Title 3 | 16pt | Medium or Semibold |
+| Title 4 | 15pt | Medium or Semibold |
+| Title 5 | 14pt | Medium or Semibold |
+| Body 1 | 16pt | Regular |
+| Body 2 | 14pt | Regular |
+| Body 3 | 13pt | Regular |
+| Body 4 | 12pt | Regular |
+
+Sizes smaller than 12pt are not recommended. The scale is recommended rather than mandatory so designers can combine roles when content hierarchy requires it.
+
+### Marketing and documentation
+
+The public consumer surface uses loaded `LINESeed` for major display roles: “Life on LINE” is 70px/700, while “Messenger APP” and “Services” are 60px/700. The design-system documentation also uses LINESeed for 48px/900 page titles and 32px/700 section titles, while its explanatory body uses system-ui.
 
 ## 4. Component Stylings
 
-### Buttons
+### Box Button
 
-**Active Pill (`.productCategory`)**
-- Background: `#07b53b` (LINE Green)
+**Primary Medium**
+- Type: button
+- Background: `#06c755`
 - Text: `#ffffff`
-- Radius: 50px (fully pill-shaped)
-- Padding: 8px 15px
-- Font: 14-16px / 700
-- Use: Active/selected category pill, primary CTA — verified live on line.me
+- Radius: 5px
+- Height: 36px
+- States: active, inactive, pressed, loading, on, off
+- Use: the most important general action in content or the bottom action area
 
-**Inactive Pill**
+**Destructive Medium**
+- Type: button
+- Background: `#ff334b`
+- Text: `#ffffff`
+- Radius: 5px
+- Height: 36px
+- States: active, inactive, pressed, loading
+- Use: delete, replace, remove, and other destructive actions
+
+**Outline Medium**
+- Type: button
+- Background: `#ffffff`
+- Text: `#000000`
+- Border: `1px solid #efefef`
+- Radius: 5px
+- Height: 36px
+- States: active, inactive, pressed, loading, off
+- Use: secondary action or turned-off state
+
+Official SVG assets expose a progression from approximately 29–30px small controls through 36px medium, 43px large, and 48px extra-large controls, using 5px radius at medium and 6px at large/extra-large.
+
+### Capsule Button
+
+**Green**
+- Type: button
+- Background: `#06c755`
+- Text: `#ffffff`
+- Radius: 9999px
+- States: active, pressed
+- Use: scroll to newly available content above or below the current position, then disappear
+
+### Text Input
+
+**Underline Input**
+- Type: input
+- Background: `#ffffff`
+- Text: `#000000`
+- Border: bottom underline using Gray 500
+- Focus: underline changes to `#06c755`
+- Error: underline, cursor, and helper text change to `#ff334b`
+- States: inactive, focused, typing, completed, error, disabled
+- Use: text, password, or code entry with reset action and optional label/helper/counter
+
+### Popup
+
+**Messenger Modal**
+- Type: dialog
+- Background: `#ffffff`
+- Text: `#000000`
+- States: light, dark, one-button, two-button, three-button, affirmative-disabled
+- Use: important information or a user decision with content area, action area, and scrim
+
+The action area must include a dismissal path. Affirmative actions sit right or above dismissive actions. Only one popup may be exposed at a time.
+
+### Tabs
+
+**Content Grouping**
+- Type: tab
 - Background: transparent
-- Text: `rgba(30, 30, 30, 0.7)`
-- Radius: 50px
-- Padding: 8px 15px
-- Font: 14-16px / 700
-- Hover: text opacity transitions to `rgba(30, 30, 30, 1)`
-- Use: Unselected category pill — no shadow, no border
+- Text: `#000000`
+- Active: selected indicator uses `#06c755`
+- States: selected, unselected, pressed
+- Use: text, box, or icon grouping at the top of dependent content
 
-**Hover Pressed**
-- Background: `#069030` (LINE Green Dark, inferred)
+Only one tab can be active. Tabs may scroll horizontally when all items do not fit; fixed tabs divide the width into two to four columns.
+
+### Notification Badge
+
+**Update Badge**
+- Type: badge
+- Background: `#06c755`
 - Text: `#ffffff`
-- Radius: 50px
-- Padding: 8px 15px
-- Use: Hover/pressed state for primary pill
+- Radius: 9999px
+- Use: N, dot, or number notification; red is reserved for GNB placement
 
-### Inputs
+---
 
-**Default**
-- Background: `#ffffff`
-- Text: `#1e1e1e`
-- Border: 1px solid `rgba(0, 0, 0, 0.06)`
-- Radius: 12px
-- Padding: 12px 16px
-- Font: 16px / 400 / SFPro
-- Focus: border `#07b53b`
-- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
+**Verified:** 2026-07-11 (eight-surface collector plus in-app visual verification)
+**Tier 1 sources:** https://www.line.me/ko/ , https://designsystem.line.me/ , https://designsystem.line.me/LDSM/foundation/color/line-color-guide-ex-en/ , https://designsystem.line.me/LDSM/foundation/typography-ex-en/ , https://designsystem.line.me/LDSM/foundation/layout-ex-en/ , https://designsystem.line.me/LDSM/components/box-button-ex-en/ , https://designsystem.line.me/LDSM/components/capsule-button-ex-en/ , https://designsystem.line.me/LDSM/components/input-ex-en/ , https://designsystem.line.me/LDSM/components/popup-ex-en/ , https://designsystem.line.me/LDSM/components/tabs-ex-en/ , https://designsystem.line.me/LDSM/components/badge-ex-en/ , https://designsystem.line.me/about/design-principle-en , https://designsystem.line.me/about/line-voice-en , https://www.lycorp.co.jp/en/technology-design/design/
+**Tier 2 sources:** https://getdesign.md/line returned “No designs found for line”; https://styles.refero.design/?q=LINE exposed no LINE-specific style result after top and bottom rendered-path inspection.
+**Conflicts unresolved:** none
 
-### Cards
-
-**Service / Feature Card**
-- Background: `#ffffff`
-- Text: `#1e1e1e`
-- Border: 1px solid `rgba(0, 0, 0, 0.06)` (whisper-light)
-- Radius: 12px
-- Padding: 20-24px
-- Shadow: `0 2px 8px rgba(0, 0, 0, 0.04)`
-- Use: Service / feature card with icon (32-40px) + title (16px / 700) + 1-line description (14px / 400 `rgba(30,30,30,0.7)`)
-
-**Image-Led Card (LINE STICKERS, WEBTOON tiles)**
-- Background: `#ffffff` (image fills 70-80%)
-- Radius: 12px (image inside `border-radius: 12px 12px 0 0`)
-- Padding: 0px (title strip uses `rgba(0, 0, 0, 0.6)` overlay + white text at bottom)
-- Use: Image-dominant tile
-
-**App Download Tile**
-- Background: `#ffffff`
-- Border: 1px solid `rgba(0, 0, 0, 0.06)`
-- Radius: 12px
-- Padding: 12px (56px square touch target)
-- Hover: background tints to very light green or gray
-- Use: App store badges (Apple, Google Play, Desktop)
-
-### Badges
-
-**Default**
-- Background: `#07b53b`
-- Text: `#ffffff`
-- Radius: 50px
-- Padding: 4px 10px
-- Font: 12px / 700 / SFPro
-- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — pill-style badge matching LINE's pill control language.
-
-### Navigation
-- Sticky horizontal header: LINE logo left, page-section nav center, language switcher right
-- Active nav link gets a `2px` solid `#1e1e1e` underline accent
-- Nav items: `font-weight: 700`, `font-size: 16px`, color `#1e1e1e`
-- Background: `#ffffff` with subtle bottom border on scroll
-
-### Hero Sections
-- Full-bleed background image (typically lifestyle photography)
-- Centered overlay text (white or near-black depending on background contrast)
-- Hero CTA below the headline, often using app store badges (Apple, Google Play, Desktop)
-
-### Scroll Indicators
-- Centered "Scroll" label below the hero with a subtle vertical line animation
-- Reinforces the magazine-like vertical narrative
-
-**Anti-pattern**
-- Don't apply the pill `50px` button radius to cards — that's reserved for interactive controls only.
+LY Corporation's corporate Design Style is retained as organizational context only. Its corporate chrome and values are not used as LINE Messenger component tokens.
 
 ## 5. Layout Principles
 
-### Spacing
-LINE marketing pages use **vertical sections of generous height** — each service block (LINE NEWS, LINE MUSIC, etc.) takes a full viewport scroll. Section paddings are large (typically 80-120px vertical).
+The official Messenger layout uses a common 16pt left and right screen margin and repeats 16pt inside cards. Its reference grid defines:
 
-| Use | Padding |
-|---|---|
-| Pill button | `8px 15px` |
-| Section vertical | `80–120px` |
-| Hero vertical | `100vh` (full viewport) |
+| Grid | Column width | Gutter | Margin |
+|---|---:|---:|---:|
+| 2 columns | 167pt | 9pt | 16pt |
+| 3 columns | 109pt | 8pt | 16pt |
+| 4 columns | 82pt | 5pt | 16pt |
 
-### Grid
-- Single-column hero with overlay text
-- Service blocks use full-width imagery + centered or left-aligned text overlay
-- Footer uses 3-4 column grid for links
-
-### Density
-LINE is **low-density, high-impact**. Each viewport scroll reveals one service or one message. Don't pack multiple features into a single fold — let imagery dominate, let typography shout.
+When resolution increases, the guideline keeps the gutter and increases column count while maintaining proportional column widths. This is a product grid rule, not a claim about the wide marketing site's layout.
 
 ## 6. Depth & Elevation
 
-LINE marketing chrome is **almost entirely flat**. Buttons have no shadow. Cards (when used) have no shadow. The visual depth comes from full-bleed photography behind the chrome.
+The captured public and documentation surfaces are predominantly flat and reported `box-shadow: none`. Component hierarchy is expressed through color, borders, scrims, fixed placement, and content order.
 
-### Where shadow does appear
-- **Sticky header on scroll**: very subtle `0 1px 0 rgba(0, 0, 0, 0.1)` bottom border (or inset shadow)
-- **Modal / popup**: `0 4px 24px rgba(0, 0, 0, 0.15)` (estimated — LINE rarely uses modals on marketing surfaces)
-- **App download icon hover**: subtle lift via `box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08)`
-
-### Z-Index Hierarchy
-- Sticky header above scroll content
-- Modal/popup above all chrome
-- Toast/snackbar at the highest level
-
-### Animation
-- Scroll-triggered fade-in for hero text and service blocks
-- Pill hover transition: `0.2s ease` color/bg transition
-- Image parallax: subtle vertical translate on scroll within hero
+A popup is elevated semantically in front of app content using a scrim. Sticky buttons sit above scrolling content but below dialogs and sheets. No reusable shadow value was published or reliably extracted, so the canonical shadow token remains `none` rather than an invented modal shadow.
 
 ## 7. Do's and Don'ts
 
-- **DO** use weight 700 for everything visible — headlines, buttons, pills, nav, captions. LINE doesn't whisper.
-- **DON'T** use weight 300 or 400 for interactive text. Buttons that look quiet read as broken in LINE's voice.
-- **DO** use pill-shaped buttons (`border-radius: 50px`). This is LINE's tactile signature.
-- **DON'T** use 4px, 8px, or any "rectangular" radius for primary CTAs — that breaks the brand language entirely.
-- **DO** reserve LINE Green (`#07b53b`) for the brand mark, the active selected state, and the primary "Download LINE" CTA. It's a finite signal.
-- **DON'T** use LINE Green for warnings, links, or general accents — it dilutes the brand association.
-- **DO** lead with the locale-aware font stack: `SFPro, Arial, Noto Sans JP, Noto Sans KR` — Japanese and Korean as first-class.
-- **DON'T** load a custom web font. LINE's audience reads on phones across many markets; system fonts are fastest and most native.
-- **DO** use oversized display headlines (40-70px) with high vertical spacing. LINE's marketing is editorial, not utilitarian.
-- **DON'T** pack a viewport with multiple competing CTAs. One scroll = one service block = one message.
-- **DO** dim inactive UI with alpha (`rgba(30, 30, 30, 0.7)`) instead of swapping to a different gray hex.
-- **DON'T** introduce shadow to flatten interactive controls. LINE chrome is overwhelmingly flat — depth comes from photography.
+### Do
+- Use official `#06c755` LINE Green for primary Messenger actions.
+- Use each OS's system font for product UI and LINESeed for verified marketing/display roles.
+- Keep the primary task intuitive and visually dominant.
+- Use one primary green or red box button per screen.
+- Place affirmative popup actions on the right or above dismissive actions.
+- Support multilingual labels and change horizontal controls to vertical when translation length requires it.
+- Use green badges in content areas and red badges only in GNB placement.
+- Preserve 16pt screen and card margins.
+
+### Don't
+- Hard-code SF Pro as the universal cross-platform LINE font.
+- Use the legacy `#07b53b` as current LINE Green.
+- Place more than one popup on screen.
+- Disable the dismissive popup action while waiting for an affirmative selection.
+- Expose nested tabs or connect tabs directly to bottom navigation.
+- Repeat label text as placeholder text without adding guidance.
+- Use capsule buttons in the center of content; place them at the top or bottom scroll boundary.
+- Merge LY corporate charcoal chrome into Messenger tokens.
 
 ## 8. Responsive Behavior
 
-### Breakpoints (inferred from line.me layout shifts)
-| Width | Behavior |
-|---|---|
-| Desktop `>1024px` | Full nav visible, hero at 70px, services full-width with overlay text |
-| Tablet `768–1024px` | Nav condenses, hero shrinks to ~50px, service blocks stack |
-| Mobile `<768px` | Hamburger nav, hero scales to ~40px, service blocks become full-mobile views |
+LINE's official guidance is resolution-adaptive rather than breakpoint-specific. Gutters remain stable while the number of grid columns increases, and screen/card margins remain 16pt in the documented mobile grid.
 
-### Touch & Mobile
-- Pill buttons stay touch-friendly at all sizes (min `44px` tappable height per Apple HIG)
-- App download badges remain prominent on mobile (top of fold)
-- Image-heavy hero sections gracefully crop on portrait orientation
+Multilingual behavior is part of responsiveness. English, Japanese, Korean, Chinese, and Thai labels can vary substantially in length. Buttons and popups should switch from horizontal to vertical arrangements when translations would truncate action labels. Tabs can become horizontally scrollable, but labels remain single-line and the selected tab must be fully revealed.
 
-### Image Behavior
-- Hero photography: full-bleed, lazy-loaded, art-directed for desktop vs. mobile crops
-- Service icons: vector SVG (LINE NEWS, LINE MUSIC, LINE Pay icons all single-color or 2-tone)
-- Carousel (`swiper`-based): horizontal scroll with `44px` circular nav arrows in `#007aff`
+No canonical CSS breakpoints were published in the inspected Messenger documents.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- LINE Green (brand / active CTA): `#07b53b` (`rgb(7, 181, 59)`)
-- Headline / active text: `#1e1e1e`
-- Inactive text: `rgba(30, 30, 30, 0.7)`
-- Body text: `#000000` (or `#1e1e1e`)
-- Page bg: `#ffffff`
-- Carousel theme: `#007aff` (iOS system blue)
+### Product UI tokens
+- Primary: `#06c755`
+- Android primary: `#4cc764`
+- Foreground: `#000000`
+- Secondary text: `#616161`
+- Muted: `#949494`
+- Danger: `#ff334b`
+- Product font: platform `System`
+- Screen and card margin: 16pt
+- Standard body: 16pt/Regular
+- Minimum recommended body: 12pt/Regular
 
-### Example Component Prompts
-- "Create a LINE-style category pill: `border-radius: 50px`, `padding: 8px 15px`, `font-weight: 700`, `font-size: 14px`. Active state: bg `#07b53b`, white text. Inactive: transparent bg, `rgba(30, 30, 30, 0.7)` text. No shadow, no border. Smooth `0.2s ease` transition on color/bg."
-- "Build a LINE hero: full-viewport white bg with full-bleed lifestyle photography behind. Centered headline 'Life on LINE' at 70px weight 700 color `#1e1e1e` (or white if photo is dark). Subhead at 20px weight 400 below. Three app download icon tiles (Apple, Google, Desktop) — 56px squares, `12px` radius, thin border, no fill."
-- "Design a LINE service card: full-bleed product screenshot on left, oversized `40px` weight 700 service name (e.g., 'LINE NEWS') on right with brand accent color, supporting copy at 20px weight 400 below. No card chrome — section uses background color contrast for separation."
-- "Create a LINE sticky nav: white bg, 56-64px height, LINE logo wordmark left, horizontal pill nav center (active item gets `#1e1e1e` 2px underline), language switcher (globe icon + locale code) right. On scroll, add a subtle `0 1px 0 rgba(0, 0, 0, 0.1)` bottom shadow."
-- "Build a LINE 'Download Now' primary CTA: `border-radius: 50px`, bg `#07b53b`, white text, `font-weight: 700`, `padding: 16px 32px`, `font-size: 18px`. Hover: bg darkens to `#069030`. Active: scale `0.98`. Add LINE icon (the speech bubble) to the left of the text label."
+### Construction prompts
+- “Build a LINE Messenger medium primary box button with `#06c755` fill, white text, 36px height, and 5px radius. Include active, inactive, pressed, and loading states.”
+- “Build a LINE underline input with a Gray 500 default underline, green focused underline, red error underline/helper text, reset action, optional label, and password visibility toggle.”
+- “Build a LINE popup with content, optional area, mandatory dismissal path, action area, and scrim. Keep affirmative action right or above dismissive action and allow only one popup.”
+- “Build a LINE tab row with selected, unselected, and pressed states. Use a green selected indicator and enable horizontal scroll when localized labels do not fit.”
 
-### Iteration Guide
-1. **Always default to weight 700** for visible interactive text. LINE never whispers.
-2. **Pill radius (50px) is non-negotiable** for buttons and chips — it's the brand signature.
-3. **LINE Green (`#07b53b`) is rare** — use it for the brand mark, the single primary CTA, and the active "selected" state. Nothing else.
-4. **Use the locale-aware font stack with Noto Sans JP and Noto Sans KR** in the fallback chain — never hardcode a single Latin-only font family.
-5. **Body type is 20px** (not 14-16px). Editorial scale, not utility scale.
-6. **Hero typography 40-70px** at weight 700. No middle tier between 20px and 40px — LINE's hierarchy jumps.
-7. **No shadow on the modern button system** — depth comes from photography behind the chrome, not from elevation primitives.
-8. **Use alpha (`rgba(30, 30, 30, 0.7)`) for inactive states**, not a different gray hex. Maintains color-family coherence.
-9. **One viewport = one message** — let each service block breathe with full-screen vertical sections.
-10. **Service-specific color accents** (LINE NEWS green, LINE MUSIC pink, etc.) belong inside product UIs — marketing chrome stays green-anchored.
-
----
+Treat the public 70px LINESeed headline as marketing typography. Do not transfer it into Messenger product screens.
 
 ## 10. Voice & Tone
 
-LINE's marketing voice is warm, aspirational, and lifestyle-forward — *"Life on LINE"* is the whole stance. The product is framed not as utility but as **infrastructure for everyday moments**: keeping in touch with family, paying a friend back, reading news on the commute, sending a sticker to soften a pricing question. The voice is confident but never boastful, friendly but never childish, and locale-aware enough to speak differently to Tokyo, Taipei, Bangkok, and Jakarta audiences while keeping brand character consistent.
+The official LINE Voice defines three qualities:
 
-| Context | Tone |
-|---|---|
-| Headlines | Short, declarative, aspirational. "Life on LINE." "Always at your side." No hedge words, no superlatives. |
-| CTAs | Imperative verb + noun ("Download LINE", "Start chatting"). Plain, not clever. |
-| Service descriptions | Lifestyle-framed ("Discover what's happening around you") — never feature-listed ("40 million news articles"). |
-| Error / system messages | Direct and blameless in each locale's polite register (Japanese keigo 丁寧語; Korean 존댓말). |
-| Onboarding | Friendly first-person plural ("Let's get started"), never technical jargon. |
-| Sticker store copy | Playful but disciplined — LINE stickers ARE the emoji, so external emoji flooding is unnecessary. |
-| Push notifications | Context-aware; news pushes, friend-message pushes, and payment pushes all differ in register. |
-| Business / LINE for Business surfaces | Slightly more formal, reads closer to a B2B tone — a deliberate shift the consumer voice does not make. |
+1. **Clear** — remove unimportant information, prefer unambiguous language, and choose clarity over rigid consistency.
+2. **Conversational** — translate complex concepts into the user's language, use active sentences, and treat buttons as the user's voice.
+3. **Considerate** — avoid assumptions, focus on user goals, anticipate problems, and emphasize what users can do.
 
-**Forbidden phrases.** "Revolutionary", "unparalleled", "next-generation", "world-class". In Japanese user-facing copy: avoid カタカナ-heavy jargon like イノベーティブ, ディスラプティブ. In Korean: avoid 혁신적인, 완벽한 as self-descriptors. Generic tech-bro emoji (🚀 ✨ 💡) on product surfaces — LINE has its own sticker/sticon ecosystem; external emoji dilute it.
+Official examples include “Keep it short,” “Buttons are the user's voice,” and “Use descriptive links instead of URLs paired with instructions.” These are current first-party writing rules, not inferred marketing tone.
 
 ## 11. Brand Narrative
 
-LINE was born **June 2011** in Japan, launched by **NHN Japan** (a subsidiary of Korean internet giant **Naver/NHN**), in direct response to the **March 11 2011 Tōhoku earthquake and tsunami**. **Naver/NHN co-founder and chairman Lee Hae-Jin** and a team of engineers were in Japan when the disaster struck — phone lines and SMS networks were overwhelmed, leaving millions unable to reach family and friends. Lee tasked NHN Japan with building a messenger; **a beta version was testing within two months**, and the app shipped as **Line in June 2011** ([LINE — Wikipedia](https://en.wikipedia.org/wiki/Line_(software)), [Line Corporation — Wikipedia](https://en.wikipedia.org/wiki/Line_Corporation)). That founding moment still shapes the brand: being "always at your side" is not a marketing phrase but a literal design goal inherited from how the app was conceived. **April 1 2013** NHN Japan was renamed **LINE Corporation**. Over the following decade LINE grew from a crisis-era messenger into a **super-app that anchors daily life** across Japan, Taiwan, Thailand, and Indonesia: payments, news, music, manga, mobile commerce, business tools — all held together by a single chat metaphor. **December 2020**: LINE Corporation **delisted from NYSE + Tokyo Stock Exchange** ahead of an absorption-type merger; **March 1 2021** SoftBank Group affiliate **Z Holdings** (Yahoo! Japan operator) completed the merger with LINE under **A Holdings** (SoftBank + Naver, 65.3% Z Holdings). **October 1 2023**: LINE Corporation merged with **Z Holdings + Yahoo Japan** into **LY Corporation**, reflecting LINE's scale as Japan's de facto communication and lifestyle infrastructure ([LY Corp — corporate](https://www.lycorp.co.jp/en/), [KED Global — LY-Naver tech tie cut 2024](https://www.kedglobal.com/business-politics/newsView/ked202406190005)).
+LINE's current first-party design documentation frames its mission as closing the distance between information, services, and people. The core product priority is conversation: the official principle “Chat comes first” states that sharing messages with people closest to the user is central to LINE's values.
 
-What LINE refuses: the utility-minimalism of Western messengers (WhatsApp, iMessage), the engagement-bait aesthetics of most content super-apps, and the cold enterprise blue of Japanese incumbents. What it embraces: full-bleed lifestyle photography, oversized editorial typography, finite use of LINE Green, and a **sticker-first emotional vocabulary** that respects local cultural register in every market it serves.
+The public marketing site describes LINE as more than a messenger and as infrastructure for everyday life. This supports the product's broad service surface without requiring unverified name-origin, founding, or ownership mythology. LY Corporation is the current publisher of these documents, but its separate corporate visual system is not treated as Messenger UI.
+
+That boundary is part of LINE's current design identity. The consumer brand can use LINESeed, lifestyle imagery, and expansive display copy, while Messenger relies on native type, compact roles, and predictable interaction patterns. Green and conversational clarity connect the surfaces; identical typography does not. Keeping those layers separate makes the reference useful for recreating a product flow without flattening the wider brand.
 
 ## 12. Principles
 
-1. **"Always at your side" is a design constraint.** The app must work when connectivity is poor. Offline-first patterns, light payloads, minimal shell — interfaces that load in 1s on a train in rural Hokkaido or a subway in Bangkok.
-2. **LINE Green is a finite signal.** `#07b53b` appears only for the brand mark, the primary "Download LINE" CTA, and the active-selected state. Used decoratively, it stops meaning anything.
-3. **Weight 700 or weight 400. No middle.** Hierarchy jumps are aggressive by design — body 20px → service head 40px → hero 70px. Quiet in-between weights undermine the editorial voice.
-4. **Pill radius (50px) is the tactile signature.** Buttons, chips, category filters — always pills on marketing surfaces. A 4px or 8px corner breaks the brand language entirely.
-5. **Photography carries depth; chrome stays flat.** Shadows are absent from interactive controls. Hero imagery is the elevation system.
-6. **Locale fidelity is first-class, not a fallback.** Japanese, Korean, Thai, Indonesian, Traditional Chinese rendering — every market's native font stack and cultural register matter equally to English.
-7. **One viewport = one message.** Scrolling a LINE marketing page is chapters, not feature bullets. Each service gets its own 100vh block with imagery + one CTA.
-8. **The sticker ecosystem is the emoji vocabulary.** External emoji (🚀 ✨ 💡) are banned on product surfaces; LINE has its own emotional primitives (Brown, Cony, Moon + the creator sticker economy).
+The official LINE Design Principles are:
+
+1. **WE ≠ USERS.** Investigate what users actually need rather than assuming designer perspectives are universal.
+   *UI implication:* validate tasks and localization with real usage evidence.
+
+2. **Clear primary tasks.** Make primary tasks intuitive.
+   *UI implication:* one primary action should dominate the screen and remain easy to identify.
+
+3. **Chat comes first.** New features should reinforce conversation between people.
+   *UI implication:* avoid features or flows that obscure the messaging core.
+
+4. **Reliable design.** Pursue trustworthy, intuitive design for all ages and varied use cases.
+   *UI implication:* prioritize clear states, accessibility, and predictable actions.
+
+5. **A cohesive experience.** Design seamless flows across related screens.
+   *UI implication:* components and terminology must remain consistent across journeys.
+
+6. **Respect for legacy.** Phase beneficial changes carefully because users develop familiarity and unexpected workflows.
+   *UI implication:* migration and redesign need compatibility and staged rollout plans.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly described LINE user segments across its four primary markets (JP / TW / TH / ID), not individual people.*
-
-**Haruka Takeda, 34, Tokyo.** Product manager at a consumer electronics company. Uses LINE for everything — family group chat with her parents in Osaka, splitting dinner bills with colleagues via LINE Pay, checking LINE NEWS on the Yamanote Line commute, sending Brown stickers to her 6-year-old daughter. Expects the app to Just Work in tunnels where signal drops. Does not use other messengers except for overseas work contacts on Slack.
-
-**Chih-Wei Chen, 27, Taipei.** Designer at a startup. Uses LINE primarily for Taiwanese friends and family; follows international accounts on Instagram for design inspiration. Watches LINE WEBTOON daily at lunch. Pays via LINE Pay at 7-Eleven and sees the QR flow as unremarkable — it's simply how paying works now. Appreciates that LINE respects Traditional Chinese font rendering in a way that apps designed primarily in San Francisco don't.
-
-**Somchai Boonmee, 41, Bangkok.** Small business owner (restaurant). Uses LINE Official Account to message his regulars about daily specials. Would be lost running his business without LINE OA as a CRM substitute. Uses LINE stickers to soften direct pricing questions — Thai business communication norms reward warmth, and a Cony sticker alongside an invoice changes the emotional register entirely.
-
-**Ibu Dwi Lestari, 23, Jakarta.** University student. Opens LINE primarily for friend group chats and LINE TODAY (news feed). Uses LINE stickers more than typed emoji. Treats the app as her close-friends social layer while Instagram handles the broader social feed. Notices immediately when a brand uses English-only copy in Indonesia — it reads as lazy localization and she mentally downgrades the company.
+No current first-party LINE persona definitions were found in the inspected public design-system documents. Supported task contexts include starting and maintaining a chat, reading notifications, sharing content, recovering from a communication error, and using localized interfaces across operating systems. Do not convert the broad global audience into fictional demographic profiles inside the canonical reference. Persona research should be stored separately with market, language, task, device, and observed behavior.
 
 ## 14. States
 
-| State | Treatment |
+| Component | Official states |
 |---|---|
-| **Empty (friend list, no contacts)** | White canvas. One near-black line of body copy (20px weight 400) in the local register explaining what "adding friends" does in LINE. One pill CTA "Add friends" at the bottom of the viewport. No illustration. |
-| **Empty (chat, no messages)** | White canvas with centered 14px `rgba(30,30,30,0.7)` hint in the local register ("Say hi with a sticker"). Sticker picker button is more visible than the text input. |
-| **Loading (chat messages)** | Message bubbles render as `#f5f5f5` blocks at their final width and height. 1.2s shimmer. Sender avatar as circular gray placeholder. Timestamp skeletons are narrower than final width — never wider. |
-| **Loading (sticker store)** | Sticker tiles render as 1:1 grayscale squares matching the final grid. Shimmer pass over the whole grid, not per tile — faster visual scan. |
-| **Error (message send failed)** | Red exclamation circle (`#e50019` variant) next to the pending bubble. Tap to retry inline. Never a modal — the failure stays attached to the message that failed, where it happened. |
-| **Error (service unavailable)** | Top banner in warm gray (`#f5f5f5`) with near-black text. One sentence + retry pill. Banner never blocks content. |
-| **Error (network)** | Inline banner at top of the chat view: "Not connected". LINE's core brand promise is connectivity; the banner is honest about when the promise is unmet and disappears without fanfare when it returns. |
-| **Success (payment sent via LINE Pay)** | Full-screen LINE Green (`#07b53b`) confirmation with white checkmark. Amount + recipient in 40px weight 700. Single "Done" pill CTA. This is the one place the brand green floods the screen — confidence about money, not delight about it. |
-| **Success (sticker purchased)** | Brief inline toast: "Stickers added". 3s auto-dismiss. No celebratory illustration — the sticker itself, appearing in the sticker picker immediately, is the reward. |
-| **Skeleton** | `#f5f5f5` blocks at exact final dimensions. 1.2s shimmer. Never on price/amount fields — those show the proper locale-formatted placeholder (`¥ -`, `NT$ -`, `฿ -`, `Rp -`). |
-| **Disabled** | Opacity on text and fill together. Disabled pill keeps its 50px radius — never flattens to a rectangle. |
-| **Read receipt (既読 / 읽음 / อ่านแล้ว)** | Tiny 11px `rgba(30,30,30,0.5)` label below the message bubble on the sender's side. Culturally significant in JP / KR / TW markets; never hide this. |
+| Box button | Active, inactive, pressed, loading, on, off |
+| Text input | Inactive, focused, typing, completed, error, disabled |
+| Password input | Inactive, focused, typing visible, typing hidden |
+| Code input | Initial focused, typing, submitted, error |
+| Capsule button | Active, pressed, disappears after scroll completion |
+| Tabs | Selected, unselected, pressed |
+| Popup | Light, dark, one/two/three actions, affirmative disabled |
+| Badge | N, dot, number; appears on update and dismisses by defined action |
+| Destructive action | Solid red; may be affirmative depending on context |
+| Disabled label | 40% treatment according to white or Gray 900 foreground rules |
+
+The collector safely exercised five official documentation tab controls and recorded selected/tab-selected variants. It did not execute form submission, destructive actions, or popup actions.
 
 ## 15. Motion & Easing
 
-**Durations**:
+The inspected documents define interaction outcomes but do not publish canonical duration or easing tokens.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle commits, selection state |
-| `motion-fast` | 150ms | Pill hover/press feedback, sticker tap scale |
-| `motion-standard` | 250ms | Sheet rise, modal appear, chat bubble send |
-| `motion-slow` | 400ms | Full-screen success (payment confirmation) |
-| `motion-page` | 350ms | Navigation push/pop in app shell |
+- Capsule buttons scroll to new content and disappear after the destination is reached.
+- Tabs navigate through press or content swipe, subject to documented gesture-priority rules.
+- Box buttons may show loading progress for save/download-like actions.
+- Code inputs submit automatically after the final digit.
+- Popup content can scroll while its button area remains fixed.
 
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Things arriving — sheets, toasts, pushed views |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 0.9, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-| `ease-sticker` | `cubic-bezier(0.34, 1.3, 0.64, 1)` | **Reserved.** Sticker send animation only — soft overshoot, never on other elements. |
-
-**Signature motions.**
-
-1. **Sticker send.** When a sticker is sent, it scales from `0.8` → `1.05` → `1.0` over `motion-standard` with `ease-sticker`. The tiny overshoot is the only spring in the product, and it matches the emotional register of sending a Brown or Cony to a friend.
-2. **Pill state transition.** Category pills and buttons use `motion-fast` on `background-color` and `color` simultaneously. Never transition one without the other — creates a weird half-state where text and surface disagree.
-3. **Hero scroll parallax.** On marketing pages, hero photography translates vertically at `0.5×` the scroll rate. Text stays fixed. This creates the "infrastructure of your life" feeling of content flowing past you rather than being navigated.
-4. **Payment success.** The full-screen green confirmation (§14) fades in at `motion-slow` with `ease-enter`. The checkmark draws as a path over 500ms. No spring — payment is about confidence, not delight.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`, and the sticker overshoot flattens to a simple scale-to-1.0 appearance. The app stays fully functional; there is no delightful motion at the cost of accessibility.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Direct verification via WebFetch (2026-04-19):
-- https://line.me/en/ — confirms marketing taglines "LINE—always at your side"
-  and "More than just a messenger app. LINE is new level of communication, and
-  the very infrastructure of your life". Also confirms the multi-locale footprint
-  through published language options (EN / JP / KR / TW / TH / ID).
-- https://engineering.linecorp.com/en — confirms LINE Corporation rebranded to
-  LY Corporation on 2023-10-01 (footer: "© LY Corporation"), and publishes
-  engineering culture values: "Take Ownership", "Be Open", "Trust & Respect".
-- https://designsystem.line.me/ — public entry point for LINE Design System
-  confirmed to exist. Detailed sub-pages (e.g., LDSM at designsystem.line.me/LDSM/)
-  are access-restricted (returned HTTP 403), so no further specific token values
-  could be verified directly.
-
-Base DESIGN.md (sections 1–9) is the source for all token-level claims including
-LINE Green #07b53b, pill radius 50px, weight-700 dominance on interactive text,
-the SFPro / Arial / Noto Sans JP / Noto Sans KR font stack, and the 20 / 40 / 70
-size scale.
-
-Not independently verified via WebFetch — widely documented public facts used:
-- LINE launched in 2011 in Japan (originally by NHN Japan Corporation), built
-  in response to the 2011 Tōhoku earthquake when phone networks were disrupted.
-- The LINE Stickers ecosystem (Brown, Cony, Moon plus a creator sticker economy)
-  is a culturally significant brand primitive across LINE's primary markets.
-- LINE's primary-market footprint (Japan, Taiwan, Thailand, Indonesia) is
-  reported consistently in tech press and in LY Corporation's own communications.
-
-Personas (§13) are fictional archetypes informed by publicly described LINE
-user segments across the four primary markets. Names are illustrative and do
-not refer to real people.
-
-Interpretive claims (e.g., "the 2011 earthquake origin shaped the 'always at
-your side' brand positioning", or the framing of LINE Green as a "finite
-signal") are editorial readings that connect public facts; they are not
-directly sourced LINE statements.
--->
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 33 — Apple-tier)
-**Tier 1 sources:** line.me/en (consumer LINE Green `#07b53b` 50px full-pill / 8×15 / 36px / 13px·**700** BOLD + inactive `rgba(30,30,30,0.7)` ghost); lycorp.co.jp/en (corporate **LY Charcoal `#2e2e2e`** 4px / 56px / 16px·400 + asymmetric block links + 50% circular carousel chrome).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders):** Wikipedia (LINE software, LINE Corporation, Naver), KED Global (LY-Naver tech-tie split 2024-06), LY Corporation corporate, KEIA.
-**Style ref:** `line` (self).
-**Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured only consumer surface; LY Corporate is a separate Charcoal `#2e2e2e` 4px / 16px·400 enterprise track that should be documented alongside.
-
+`[FILL IN: capture computed transition-duration, transition-timing-function, animation-duration, and reduced-motion behavior before adding motion tokens.]`

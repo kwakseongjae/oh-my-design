@@ -4,58 +4,126 @@ name: Hashicorp
 country: US
 category: backend-devops
 homepage: "https://www.hashicorp.com"
-primary_color: "#000000"
+primary_color: "#1060ff"
 logo:
   type: simpleicons
   slug: hashicorp
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Helios
   url: "https://helios.hashicorp.design"
   type: system
-  description: HashiCorp's design system documenting components and foundations.
+  description: HashiCorp's public design system for product foundations, content, components, and patterns.
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.hashicorp.com/ko", inspected: "2026-07-13" }
+    - { id: pricing, kind: pricing, url: "https://www.hashicorp.com/ko/pricing", inspected: "2026-07-13" }
+    - { id: boundary, kind: product-marketing, url: "https://www.hashicorp.com/ko/products/boundary", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.hashicorp.com/ko", captured: "2026-07-13" }
+    - { id: pricing-live, kind: product-surface, url: "https://www.hashicorp.com/ko/pricing", captured: "2026-07-13" }
+    - { id: boundary-live, kind: product-surface, url: "https://www.hashicorp.com/ko/products/boundary", captured: "2026-07-13" }
+    - { id: helios, kind: official-doc, url: "https://helios.hashicorp.design/", captured: "2026-07-13" }
+    - { id: font-announcement, kind: official-doc, url: "https://www.hashicorp.com/en/blog/introducing-hashicorp-sans", captured: "2026-07-13" }
+    - { id: typography-guideline, kind: brand-asset, url: "https://www.hashicorp.com/en/brand/hcp-product-typography", captured: "2026-07-13" }
+    - { id: terms, kind: license, url: "https://www.hashicorp.com/terms-of-service", captured: "2026-07-13" }
+    - { id: about, kind: official-doc, url: "https://www.hashicorp.com/en/about", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.boundary": &boundary { surface_id: boundary, source_id: boundary-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.canvas": &home { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.foreground": *home
+    "tokens.colors.foreground-dark": *home
+    "tokens.colors.hairline": *home
+    "tokens.colors.muted": *home
+    "tokens.colors.on-dark": *home
+    "tokens.colors.on-primary": *home
+    "tokens.colors.primary": *home
+    "tokens.colors.primary-border": *home
+    "tokens.colors.primary-bright": &pricing { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.surface": *home
+    "tokens.colors.surface-dark": *home
+    "tokens.colors.surface-deep": *home
+    "tokens.colors.surface-muted": *home
+    "tokens.colors.terraform": *pricing
+    "tokens.components.card.bg": *home
+    "tokens.components.card.fg": *home
+    "tokens.components.card.radius": *home
+    "tokens.components.card.type": *home
+    "tokens.components.card.use": *home
+    "tokens.rounded.card": *home
+    "tokens.rounded.control": *home
+    "tokens.rounded.nav": *home
+    "tokens.rounded.sm": *home
+    "tokens.rounded.square": *home
+    "tokens.shadow.control": *home
+    "tokens.spacing.base": *home
+    "tokens.spacing.lg": *home
+    "tokens.spacing.md": *home
+    "tokens.spacing.sm": *home
+    "tokens.spacing.xl": *home
+    "tokens.spacing.xs": *home
+    "tokens.spacing.xxl": *home
+    "tokens.typography.body.lineHeight": *home
+    "tokens.typography.body.size": *home
+    "tokens.typography.body.use": *home
+    "tokens.typography.body.weight": *home
+    "tokens.typography.button.lineHeight": *home
+    "tokens.typography.button.size": *home
+    "tokens.typography.button.use": *home
+    "tokens.typography.button.weight": *home
+    "tokens.typography.display-hero.lineHeight": *home
+    "tokens.typography.display-hero.size": *home
+    "tokens.typography.display-hero.use": *home
+    "tokens.typography.display-hero.weight": *home
+    "tokens.typography.family.display": *home
+    "tokens.typography.family.ui": *home
+    "tokens.typography.heading.lineHeight": *home
+    "tokens.typography.heading.size": *home
+    "tokens.typography.heading.use": *home
+    "tokens.typography.heading.weight": *home
+    "tokens.typography.label.lineHeight": *boundary
+    "tokens.typography.label.size": *boundary
+    "tokens.typography.label.tracking": *boundary
+    "tokens.typography.label.use": *boundary
+    "tokens.typography.label.weight": *boundary
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: live-extract
+  extracted: "2026-07-13"
+  note: "Only values observed in the supplied three-route capture are machine tokens; HashiCorp Sans is a loaded display family, while controls and body text use system stacks."
   colors:
-    brand: "#000000"
-    dark: "#15181e"
-    dark-deep: "#0d0e12"
+    primary: "#1060ff"
+    primary-border: "#0c56e9"
+    primary-bright: "#2b89ff"
     canvas: "#ffffff"
-    surface-light: "#f1f2f3"
-    border: "#d5d7db"
-    helper: "#656a76"
-    body: "#3b3d45"
+    surface: "#fafafa"
+    surface-muted: "#f1f2f3"
+    surface-dark: "#15181e"
+    surface-deep: "#0d0e12"
+    foreground: "#3b3d45"
+    foreground-dark: "#d5d7db"
+    on-primary: "#ffffff"
     on-dark: "#efeff1"
-    link: "#2264d6"
-    link-on-dark: "#1060ff"
-    link-bright: "#2b89ff"
+    muted: "#656a76"
+    hairline: "#b2b6bd"
     terraform: "#7b42bc"
-    vault: "#ffcf25"
-    waypoint: "#14c6cb"
-    waypoint-hover: "#12b6bb"
-    vagrant: "#1868f2"
-    badge-bg: "#42225b"
+    boundary: "#f24c53"
   typography:
-    family: { sans: "HashiCorp Sans", fallback: "system-ui, sans-serif" }
-    display-hero: { size: 82, weight: 600, lineHeight: 1.17, use: "Hero headline, kern enabled" }
-    heading:      { size: 26, weight: 700, lineHeight: 1.19, use: "Card / product titles" }
-    body:         { size: 16, weight: 400, lineHeight: 1.63, use: "Standard reading text, system-ui" }
-    label:        { size: 13, weight: 600, tracking: 1.3, use: "Uppercase section labels, letter-spaced" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 2, md: 5, lg: 8, full: 9999 }
+    family: { ui: "system-ui", display: "HashiCorp Sans" }
+    display-hero: { size: 82, weight: 600, lineHeight: 1.17, use: "Loaded HashiCorp Sans H1 on captured public surfaces" }
+    heading: { size: 52, weight: 600, lineHeight: 1.19, use: "Loaded HashiCorp Sans H2 on captured public surfaces" }
+    body: { size: 16, weight: 400, lineHeight: 1.63, use: "Computed system-ui reading text" }
+    button: { size: 16, weight: 500, lineHeight: 1.69, use: "Computed system-ui primary and secondary control label" }
+    label: { size: 13, weight: 600, lineHeight: 1.69, tracking: 1.3, use: "Loaded HashiCorp Sans eyebrow observed on Boundary" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
+  rounded: { square: 0, sm: 2, nav: 4, control: 5, card: 6 }
   shadow:
-    micro: "rgba(97,104,117,0.05) 0px 1px 1px, rgba(97,104,117,0.05) 0px 2px 2px"
+    control: "rgba(101,104,118,0.05) 0px 1px 1px, rgba(101,104,118,0.05) 0px 2px 2px"
   components:
-    button-primary: { type: button, bg: "#15181e", fg: "#d5d7db", radius: 5, padding: "9px 15px", use: "Primary dark CTA" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#3b3d45", radius: 4, padding: "8px 12px", use: "Secondary white button" }
-    button-terraform: { type: button, bg: "#7b42bc", fg: "#ffffff", radius: 5, use: "Terraform product button" }
-    button-waypoint: { type: button, bg: "#14c6cb", fg: "#0d0e12", radius: 5, use: "Waypoint product button" }
-    badge: { type: badge, bg: "#42225b", fg: "#efeff1", radius: 5, padding: "3px 7px", font: "16px", use: "Deep purple pill badge" }
-    input-dark: { type: input, bg: "#0d0e12", fg: "#efeff1", radius: 5, padding: "11px", use: "Dark-mode text input" }
-    card: { type: card, bg: "#ffffff", radius: 8, use: "Light card with micro-shadow elevation" }
-    nav-link: { type: tab, fg: "#3b3d45", font: "15px weight 500", use: "Horizontal nav link, system-ui" }
+    card: { type: card, bg: "#ffffff", fg: "#3b3d45", radius: 6, use: "Home content card with a 1px rgba(101,104,118,0.2) outline shadow" }
   components_harvested: true
 ---
 
@@ -63,349 +131,236 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-HashiCorp's website is enterprise infrastructure made tangible — a design system that must communicate the complexity of cloud infrastructure management while remaining approachable. The visual language splits between two modes: a clean white light-mode for informational sections and a dramatic dark-mode (`#15181e`, `#0d0e12`) for hero areas and product showcases, creating a day/night duality that mirrors the "build in light, deploy in dark" developer workflow.
+HashiCorp, now an IBM company, builds infrastructure and security software for multi-cloud and hybrid environments. Its current public expression puts a sober operational interface around that mission: white and near-white information surfaces sit beside deep charcoal sections, with blue as the shared action color and named product routes able to introduce their own accent. The 2024 Infrastructure Cloud brand launch also introduced HashiCorp Sans, a custom display typeface that ties the logotype and headlines together. In the captured public routes, that mix produces a clear division of labor: HashiCorp Sans carries large headings and eyebrow labels; system stacks carry reading text, navigation, controls, and cards.
 
-The typography is anchored by a custom brand font (HashiCorp Sans, loaded as `__hashicorpSans_96f0ca`) that carries substantial weight — literally. Headings use 600–700 weights with tight line-heights (1.17–1.19), creating dense, authoritative text blocks that communicate enterprise confidence. The hero headline at 82px weight 600 with OpenType `"kern"` enabled is not decorative — it's infrastructure-grade typography.
-
-What distinguishes HashiCorp is its multi-product color system. Each product in the portfolio has its own brand color — Terraform purple (`#7b42bc`), Vault yellow (`#ffcf25`), Waypoint teal (`#14c6cb`), Vagrant blue (`#1868f2`) — and these colors appear throughout as accent tokens via a CSS custom property system (`--mds-color-*`). This creates a design system within a design system: the parent brand is black-and-white with blue accents, while each child product injects its own chromatic identity.
-
-The component system uses the `mds` (Markdown Design System) prefix, indicating a systematic, token-driven approach where colors, spacing, and states are all managed through CSS variables. Shadows are remarkably subtle — dual-layer micro-shadows using `rgba(97, 104, 117, 0.05)` that are nearly invisible but provide just enough depth to separate interactive surfaces from the background.
+The raw capture covers three public-facing domains within the company site, not a signed-in application: `/ko` is corporate marketing, `/ko/pricing` is commercial/pricing marketing, and `/ko/products/boundary` is a Boundary product-marketing route. No developer documentation chrome or authenticated product UI was captured, so this reference does not promote those domains into the shared token set. Helios is documented separately by HashiCorp as the public product design system.
 
 **Key Characteristics:**
-- Dual-mode: clean white sections + dramatic dark (`#15181e`) hero/product areas
-- Custom HashiCorp Sans font with 600–700 weights and `"kern"` feature
-- Multi-product color system via `--mds-color-*` CSS custom properties
-- Product brand colors: Terraform purple, Vault yellow, Waypoint teal, Vagrant blue
-- Uppercase letter-spaced captions (13px, weight 600, 1.3px letter-spacing)
-- Micro-shadows: dual-layer at 0.05 opacity — depth through whisper, not shout
-- Token-driven `mds` component system with semantic variable names
-- Tight border radius: 2px–8px, nothing pill-shaped or circular
-- System-ui fallback stack for secondary text
+- White, near-white, deep-charcoal, and near-black surfaces are all observed in the capture
+- Shared actions use `#1060ff`; a Terraform-labelled control and a Boundary-labelled control use their observed route-specific colors
+- Loaded HashiCorp Sans appears in headings and a Boundary eyebrow; system-ui dominates visible UI text
+- Controls use small 4–5px corners; the captured home card uses 6px
 
 ## 2. Color Palette & Roles
 
-### Brand Primary
-- **Black** (`#000000`): Primary brand color, text on light surfaces, `--mds-color-hcp-brand`
-- **Dark Charcoal** (`#15181e`): Dark mode backgrounds, hero sections
-- **Near Black** (`#0d0e12`): Deepest dark mode surface, form inputs on dark
+### Shared live surfaces
+- **Shared primary** (`#1060ff`): blue primary CTA background, with observed border `#0c56e9`
+- **Bright blue** (`#2b89ff`): selected pricing-tab foreground
+- **Canvas** (`#ffffff`): navigation and light card background
+- **Secondary surface** (`#fafafa`): secondary CTA background
+- **Muted surface** (`#f1f2f3`): observed badge and alert background
+- **Deep surfaces** (`#15181e`, `#0d0e12`): dark toggle and dark pricing-card/input backgrounds
+- **Light foreground** (`#3b3d45`): secondary CTA, navigation, and light-card text
+- **Dark-surface foreground** (`#d5d7db`, `#efeff1`): dark-route text and dark input text
+- **Muted text** (`#656a76`) and **hairline** (`#b2b6bd`): observed supporting text and borders
 
-### Neutral Scale
-- **Light Gray** (`#f1f2f3`): Light backgrounds, subtle surfaces
-- **Mid Gray** (`#d5d7db`): Borders, button text on dark
-- **Cool Gray** (`#b2b6bd`): Border accents (at 0.1–0.4 opacity)
-- **Dark Gray** (`#656a76`): Helper text, secondary labels, `--mds-form-helper-text-color`
-- **Charcoal** (`#3b3d45`): Secondary text on light, button borders
-- **Near White** (`#efeff1`): Primary text on dark surfaces
+### Route-specific live variants
+- **Terraform** (`#7b42bc`): one `color-terraform` CTA observed on `/ko/pricing`
+- **Boundary** (`#f24c53`): one `color-boundary` CTA observed on `/ko/products/boundary`
 
-### Product Brand Colors
-- **Terraform Purple** (`#7b42bc`): `--mds-color-terraform-button-background`
-- **Vault Yellow** (`#ffcf25`): `--mds-color-vault-button-background`
-- **Waypoint Teal** (`#14c6cb`): `--mds-color-waypoint-button-background-focus`
-- **Waypoint Teal Hover** (`#12b6bb`): `--mds-color-waypoint-button-background-hover`
-- **Vagrant Blue** (`#1868f2`): `--mds-color-vagrant-brand`
-- **Purple Accent** (`#911ced`): `--mds-color-palette-purple-300`
-- **Visited Purple** (`#a737ff`): `--mds-color-foreground-action-visited`
-
-### Semantic Colors
-- **Action Blue** (`#1060ff`): Primary action links on dark
-- **Link Blue** (`#2264d6`): Primary links on light
-- **Bright Blue** (`#2b89ff`): Active links, hover accent
-- **Amber** (`#bb5a00`): `--mds-color-palette-amber-200`, warning states
-- **Amber Light** (`#fbeabf`): `--mds-color-palette-amber-100`, warning backgrounds
-- **Vault Faint Yellow** (`#fff9cf`): `--mds-color-vault-radar-gradient-faint-stop`
-- **Orange** (`#a9722e`): `--mds-color-unified-core-orange-6`
-- **Red** (`#731e25`): `--mds-color-unified-core-red-7`, error states
-- **Navy** (`#101a59`): `--mds-color-unified-core-blue-7`
-
-### Shadows
-- **Micro Shadow** (`rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) 0px 2px 2px`): Default card/button elevation
-- **Focus Outline**: `3px solid var(--mds-color-focus-action-external)` — systematic focus ring
+No other product-color variant is included: it was not present in the supplied capture.
 
 ## 3. Typography Rules
 
-### Font Families
-- **Primary Brand**: `__hashicorpSans_96f0ca` (HashiCorp Sans), with fallback: `__hashicorpSans_Fallback_96f0ca`
-- **System UI**: `system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial`
+### Evidence classes
 
-### Hierarchy
+- **Official brand/product use:** HashiCorp’s 2024 font announcement describes HashiCorp Sans as a display typeface used across corporate and product logos and headlines. Its brand typography guidance directs HashiCorp Sans to headlines, sub-headlines, and titles; it separately names Metro Sans Book for brand-material body copy. That guidance is not evidence that Metro Sans is loaded on the captured Korean marketing routes.
+- **Live computed and loaded:** the capture records `__hashicorpSans_96f0ca` on 21 visible heading/eyebrow nodes and a site-hosted WOFF2 source (`d29050812a1756cf-s.p.woff2`). The family is therefore represented as **HashiCorp Sans** for display use, not as the UI family.
+- **Live system use:** `system-ui` is the computed high-confidence family on 713 visible body, button, card, tab, and badge nodes. Arial appears only on the captured embedded marketing form controls.
+- **Declared-only assets:** `__dejavuSansMono_7cac6c` and `dejavu-sans-mono-web` have declared sources but no visible usage in this capture; they are not a UI or code token.
+- **License boundary:** the official typography guidance directs access requests to the Brand Studio, while the site terms say no license to proprietary interests is implied. Neither source grants reusable webfont distribution or substitution rights; do not treat the captured WOFF2 source as such permission.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | HashiCorp Sans | 82px (5.13rem) | 600 | 1.17 (tight) | normal | `"kern"` enabled |
-| Section Heading | HashiCorp Sans | 52px (3.25rem) | 600 | 1.19 (tight) | normal | `"kern"` enabled |
-| Feature Heading | HashiCorp Sans | 42px (2.63rem) | 700 | 1.19 (tight) | -0.42px | Negative tracking |
-| Sub-heading | HashiCorp Sans | 34px (2.13rem) | 600–700 | 1.18 (tight) | normal | Feature blocks |
-| Card Title | HashiCorp Sans | 26px (1.63rem) | 700 | 1.19 (tight) | normal | Card and panel headings |
-| Small Title | HashiCorp Sans | 19px (1.19rem) | 700 | 1.21 (tight) | normal | Compact headings |
-| Body Emphasis | HashiCorp Sans | 17px (1.06rem) | 600–700 | 1.18–1.35 | normal | Bold body text |
-| Body Large | system-ui | 20px (1.25rem) | 400–600 | 1.50 | normal | Hero descriptions |
-| Body | system-ui | 16px (1.00rem) | 400–500 | 1.63–1.69 (relaxed) | normal | Standard body text |
-| Nav Link | system-ui | 15px (0.94rem) | 500 | 1.60 (relaxed) | normal | Navigation items |
-| Small Body | system-ui | 14px (0.88rem) | 400–500 | 1.29–1.71 | normal | Secondary content |
-| Caption | system-ui | 13px (0.81rem) | 400–500 | 1.23–1.69 | normal | Metadata, footer links |
-| Uppercase Label | HashiCorp Sans | 13px (0.81rem) | 600 | 1.69 (relaxed) | 1.3px | `text-transform: uppercase` |
+### Observed hierarchy
 
-### Principles
-- **Brand/System split**: HashiCorp Sans for headings and brand-critical text; system-ui for body, navigation, and functional text. The brand font carries the weight, system-ui carries the words.
-- **Kern always on**: All HashiCorp Sans text enables OpenType `"kern"` — letterfitting is non-negotiable.
-- **Tight headings**: Every heading uses 1.17–1.21 line-height, creating dense, stacked text blocks that feel infrastructural — solid, load-bearing.
-- **Relaxed body**: Body text uses 1.50–1.69 line-height (notably generous), creating comfortable reading rhythm beneath the dense headings.
-- **Uppercase labels as wayfinding**: 13px uppercase with 1.3px letter-spacing serves as the systematic category/section marker — always HashiCorp Sans weight 600.
+| Role | Family / evidence | Size | Weight | Line height | Captured use |
+|------|-------------------|------|--------|-------------|--------------|
+| Display hero | HashiCorp Sans, loaded | 82px | 600 | 96px | H1 |
+| Heading | HashiCorp Sans, loaded | 52px | 600 | 62px | H2 |
+| Heading variant | HashiCorp Sans, loaded | 42px | 700 | 50px | H2 |
+| Eyebrow | HashiCorp Sans, loaded | 13px | 600 | 22px | Boundary label, 1.3px tracking |
+| Body / card | system-ui | 16px | 400 | 26px | visible reading and card text |
+| Controls | system-ui | 16px | 500 | 26–27px | shared CTAs and tabs |
+| Navigation | system-ui | 15.008px | 500 | 24.013px | top navigation trigger |
 
 ## 4. Component Stylings
 
+All values below are raw computed values from the supplied 2026-07-13 capture. Selector and route provenance are retained in `.verification.md`. The capture reports zero interaction events, so hover, focus, pressed, modal, menu, and error variants are intentionally omitted.
+
 ### Buttons
 
-**Primary Dark**
-- Background: `#15181e`
-- Text: `#d5d7db`
-- Padding: 9px 9px 9px 15px (asymmetric, more left padding)
-- Radius: 5px
-- Border: `1px solid rgba(178, 182, 189, 0.4)`
-- Shadow: `rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) 0px 2px 2px`
-- Focus: `3px solid var(--mds-color-focus-action-external)`
-- Hover: uses `--mds-color-surface-interactive` token
+**Shared Primary CTA**
+- Background: `#1060ff`
+- Text: `#ffffff`
+- Border: `1px solid #0c56e9`
+- Radius: `5px`
+- Padding: `9px 15px`
+- Shadow: `rgba(101, 106, 118, 0.05) 0px 1px 1px, rgba(101, 106, 118, 0.05) 0px 2px 2px`
+- Font: `16px / 500 / system-ui`
+- Use: `.button__gOWvd.color-primary__rWbwp` on home, pricing, and Boundary routes
+- Disabled: one icon-only primary instance used `#fafafa` background, `#8c909c` text, and `rgba(101, 106, 118, 0.2)` border
 
-**Secondary White**
+**Shared Secondary CTA — medium**
+- Background: `#fafafa`
+- Text: `#3b3d45`
+- Border: `1px solid rgba(59, 61, 69, 0.4)`
+- Radius: `5px`
+- Padding: `9px 15px`
+- Shadow: `rgba(101, 106, 118, 0.05) 0px 1px 1px, rgba(101, 106, 118, 0.05) 0px 2px 2px`
+- Font: `16px / 500 / system-ui`
+- Use: `.button__gOWvd.size-medium__HxMcm.color-secondary-white__AseI0` on all three routes
+
+**Shared Secondary CTA — large**
+- Background: `#fafafa`
+- Text: `#3b3d45`
+- Border: `1px solid rgba(59, 61, 69, 0.4)`
+- Radius: `5px`
+- Padding: `11px 19px`
+- Shadow: `rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) 0px 2px 2px`
+- Font: `16px / 500 / system-ui`
+- Use: `.button__gOWvd.size-large__MEpK3.color-secondary-high-contrast__3bxg3` on all three routes
+
+**Terraform-labelled CTA**
+- Background: `#7b42bc`
+- Text: `#ffffff`
+- Border: `1px solid rgba(178, 182, 189, 0.2)`
+- Radius: `5px`
+- Padding: `9px 15px`
+- Shadow: `rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) 0px 2px 2px`
+- Font: `16px / 500 / system-ui`
+- Use: `.button__gOWvd.color-terraform__DQMD5` on pricing; only this Terraform-labelled variant was captured
+
+**Boundary-labelled CTA**
+- Background: `#f24c53`
+- Text: `#0c0c0e`
+- Border: `1px solid rgba(178, 182, 189, 0.2)`
+- Radius: `5px`
+- Padding: `11px 19px`
+- Shadow: `rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) 0px 2px 2px`
+- Font: `16px / 500 / system-ui`
+- Use: `.button__gOWvd.color-boundary__xJtzy` on the Boundary route; only this Boundary-labelled variant was captured
+
+### Navigation and tabs
+
+**Top navigation trigger**
 - Background: `#ffffff`
 - Text: `#3b3d45`
-- Padding: 8px 12px
-- Radius: 4px
-- Hover: `--mds-color-surface-interactive` + low-shadow elevation
-- Focus: `3px solid transparent` outline
-- Clean, minimal appearance
+- Radius: `4px`
+- Padding: `8px 12px`
+- Font: `15.008px / 500 / system-ui`
+- Use: `.style_navItemTrigger__65Jsv` on all three routes
 
-**Product-Colored Buttons**
-- Terraform: background `#7b42bc`
-- Vault: background `#ffcf25` (dark text)
-- Waypoint: background `#14c6cb`, hover `#12b6bb`
-- Each product button follows the same structural pattern but uses its brand color
+**Pricing tab — selected**
+- Text: `#2b89ff`
+- Radius: `5px`
+- Font: `16px / 500 / system-ui`
+- Use: `.tab-button__qI9wt` with `aria-selected="true"` on pricing
 
-### Badges / Pills
-- Background: `#42225b` (deep purple)
-- Text: `#efeff1`
-- Padding: 3px 7px
-- Radius: 5px
-- Border: `1px solid rgb(180, 87, 255)`
-- Font: 16px
+**Pricing tab — unselected**
+- Text: `#d5d7db`
+- Radius: `5px`
+- Font: `16px / 500 / system-ui`
+- Use: `.tab-button__qI9wt` with `aria-selected="false"` on pricing
 
-### Inputs
+### Form control
 
-**Text Input (Dark Mode)**
+**Dark email field**
 - Background: `#0d0e12`
 - Text: `#efeff1`
-- Border: `1px solid rgb(97, 104, 117)`
-- Padding: 11px
-- Radius: 5px
-- Focus: `3px solid var(--mds-color-focus-action-external)` outline
+- Border: `1px solid #616875`
+- Radius: `5px`
+- Padding: `11px`
+- Shadow: `rgba(97, 104, 117, 0.1) 0px 1px 2px 1px inset`
+- Font: `16px / 400 / Arial`
+- Use: `.mktoField.mktoEmailField.mktoRequired` in the shared marketing form on all three routes
 
-**Checkbox**
-- Background: `#0d0e12`
-- Border: `1px solid rgb(97, 104, 117)`
-- Radius: 3px
+### Cards and badge
 
-### Links
-- **Action Blue on Light**: `#2264d6`, hover → blue-600 variable, underline on hover
-- **Action Blue on Dark**: `#1060ff` or `#2b89ff`, underline on hover
-- **White on Dark**: `#ffffff`, transparent underline → visible underline on hover
-- **Neutral on Light**: `#3b3d45`, transparent underline → visible underline on hover
-- **Light on Dark**: `#efeff1`, similar hover pattern
-- All links use `var(--wpl-blue-600)` as hover color
+**Light content card**
+- Background: `#ffffff`
+- Text: `#3b3d45`
+- Radius: `6px`
+- Shadow: `rgba(101, 106, 118, 0.2) 0px 0px 0px 1px`
+- Font: `16px / 400 / system-ui`
+- Use: `.card__HomZw` on home
 
-### Cards & Containers
-- Light mode: white background, micro-shadow elevation
-- Dark mode: `#15181e` or darker surfaces
-- Radius: 8px for cards and containers
-- Product showcase cards with gradient borders or accent lighting
-
-### Navigation
-- Clean horizontal nav with mega-menu dropdowns
-- HashiCorp logo left-aligned
-- system-ui 15px weight 500 for links
-- Product categories organized by lifecycle management group
-- "Get started" and "Contact us" CTAs in header
-- Dark mode variant for hero sections
+**Neutral filled badge**
+- Background: `#f1f2f3`
+- Text: `#3b3d45`
+- Border: `1px solid transparent`
+- Radius: `5px`
+- Padding: `3px 7px`
+- Font: `16px / 400 / system-ui`
+- Use: `.badge__zns82.type-filled__ZaWsu.color-neutral__6Csf4` on home
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 2px, 3px, 4px, 6px, 7px, 8px, 9px, 11px, 12px, 16px, 20px, 24px, 32px, 40px, 48px
-
-### Grid & Container
-- Max content width: ~1150px (xl breakpoint)
-- Full-width dark hero sections with contained content
-- Card grids: 2–3 column layouts
-- Generous horizontal padding at desktop scale
-
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile Small | <375px | Tight single column |
-| Mobile | 375–480px | Standard mobile |
-| Small Tablet | 480–600px | Minor adjustments |
-| Tablet | 600–768px | 2-column grids begin |
-| Small Desktop | 768–992px | Full nav visible |
-| Desktop | 992–1120px | Standard layout |
-| Large Desktop | 1120–1440px | Max-width content |
-| Ultra-wide | >1440px | Centered, generous margins |
-
-### Whitespace Philosophy
-- **Enterprise breathing room**: Generous vertical spacing between sections (48px–80px+) communicates stability and seriousness.
-- **Dense headings, spacious body**: Tight line-height headings sit above relaxed body text, creating visual "weight at the top" of each section.
-- **Dark as canvas**: Dark hero sections use extra vertical padding to let 3D illustrations and gradients breathe.
-
-### Border Radius Scale
-- Minimal (2px): Links, small inline elements
-- Subtle (3px): Checkboxes, small inputs
-- Standard (4px): Secondary buttons
-- Comfortable (5px): Primary buttons, badges, inputs
-- Card (8px): Cards, containers, images
+The capture records a recurring 4/8/12/16/24/32/48px spacing rhythm. Its high-frequency visible corners are 0px, 4px, 5px, and 6px; the only captured 8px radius is not promoted as the card standard. No responsive breakpoint, container-width, or grid behavior was measured in this packet.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Default surfaces, text blocks |
-| Whisper (Level 1) | `rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) 0px 2px 2px` | Cards, buttons, interactive surfaces |
-| Focus (Level 2) | `3px solid var(--mds-color-focus-action-external)` outline | Focus rings — color-matched to context |
-
-**Shadow Philosophy**: HashiCorp uses arguably the subtlest shadow system in modern web design. The dual-layer shadows at 5% opacity are nearly invisible — they exist not to create visual depth but to signal interactivity. If you can see the shadow, it's too strong. This restraint communicates the enterprise value of stability — nothing floats, nothing is uncertain.
+- **Control shadow:** the primary, secondary, Terraform, and Boundary CTAs use a two-layer 5% shadow, with the exact values recorded in §4.
+- **Light-card outline:** home cards use `rgba(101, 106, 118, 0.2) 0px 0px 0px 1px`.
+- **Dark-input inset:** the captured email field uses `rgba(97, 104, 117, 0.1) 0px 1px 2px 1px inset`.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use HashiCorp Sans for headings and brand text, system-ui for body and UI text
-- Enable `"kern"` on all HashiCorp Sans text
-- Use product brand colors ONLY for their respective products (Terraform = purple, Vault = yellow, etc.)
-- Apply uppercase labels at 13px weight 600 with 1.3px letter-spacing for section markers
-- Keep shadows at the "whisper" level (0.05 opacity dual-layer)
-- Use the `--mds-color-*` token system for consistent color application
-- Maintain the tight-heading / relaxed-body rhythm (1.17–1.21 vs 1.50–1.69 line-heights)
-- Use `3px solid` focus outlines for accessibility
+- Use HashiCorp Sans only where the official brand describes display/logo/headline use and where it can actually be loaded.
+- Use system-ui for the captured body and control treatments.
+- Keep shared primary, Terraform, and Boundary CTA treatments attached to the route/context in which they were observed.
 
 ### Don't
-- Don't use product brand colors outside their product context (no Terraform purple on Vault content)
-- Don't increase shadow opacity above 0.1 — the whisper level is intentional
-- Don't use pill-shaped buttons (>8px radius) — the sharp, minimal radius is structural
-- Don't skip the `"kern"` feature on headings — the font requires it
-- Don't use HashiCorp Sans for small body text — it's designed for 17px+ heading use
-- Don't mix product colors in the same component — each product has one color
-- Don't use pure black (`#000000`) for dark backgrounds — use `#15181e` or `#0d0e12`
-- Don't forget the asymmetric button padding — 9px 9px 9px 15px is intentional
+- Don't substitute a system font while labelling it HashiCorp Sans.
+- Don't infer unobserved product colors, hover states, focus rings, or component variants from class names or adjacent routes.
+- Don't treat declared DejaVu Sans Mono assets as a live code-font token.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, hamburger nav, stacked CTAs |
-| Tablet | 768–992px | 2-column grids, nav begins expanding |
-| Desktop | 992–1150px | Full layout, mega-menu nav |
-| Large | >1150px | Max-width centered, generous margins |
-
-### Collapsing Strategy
-- Hero: 82px → 52px → 42px heading sizes
-- Navigation: mega-menu → hamburger
-- Product cards: 3-column → 2-column → stacked
-- Dark sections maintain full-width but compress padding
-- Buttons: inline → full-width stacked on mobile
+No responsive observations were collected in this packet. Do not infer breakpoint values or mobile transformations from the desktop-route evidence.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Light bg: `#ffffff`, `#f1f2f3`
-- Dark bg: `#15181e`, `#0d0e12`
-- Text light: `#000000`, `#3b3d45`
-- Text dark: `#efeff1`, `#d5d7db`
-- Links: `#2264d6` (light), `#1060ff` (dark), `#2b89ff` (active)
-- Helper text: `#656a76`
-- Borders: `rgba(178, 182, 189, 0.4)`, `rgb(97, 104, 117)`
-- Focus: `3px solid` product-appropriate color
-
-### Example Component Prompts
-- "Create a hero on dark background (#15181e). Headline at 82px HashiCorp Sans weight 600, line-height 1.17, kern enabled, white text. Sub-text at 20px system-ui weight 400, line-height 1.50, #d5d7db text. Two buttons: primary dark (#15181e, 5px radius, 9px 15px padding) and secondary white (#ffffff, 4px radius, 8px 12px padding)."
-- "Design a product card: white background, 8px radius, dual-layer shadow at rgba(97,104,117,0.05). Title at 26px HashiCorp Sans weight 700, body at 16px system-ui weight 400 line-height 1.63."
-- "Build an uppercase section label: 13px HashiCorp Sans weight 600, line-height 1.69, letter-spacing 1.3px, text-transform uppercase, #656a76 color."
-- "Create a product-specific CTA button: Terraform → #7b42bc background, Vault → #ffcf25 with dark text, Waypoint → #14c6cb. All: 5px radius, 500 weight text, 16px system-ui."
-- "Design a dark form: #0d0e12 input background, #efeff1 text, 1px solid rgb(97,104,117) border, 5px radius, 11px padding. Focus: 3px solid accent-color outline."
-
-### Iteration Guide
-1. Always start with the mode decision: light (white) for informational, dark (#15181e) for hero/product
-2. HashiCorp Sans for headings only (17px+), system-ui for everything else
-3. Shadows are at whisper level (0.05 opacity) — if visible, reduce
-4. Product colors are sacred — each product owns exactly one color
-5. Focus rings are always 3px solid, color-matched to product context
-6. Uppercase labels are the systematic wayfinding pattern — 13px, 600, 1.3px tracking
+Use the captured public-marketing pattern only: `#1060ff` shared primary CTA or `#fafafa` secondary CTA, 5px corners, 16px/500 system-ui labels, and the recorded low-opacity control shadow. Use the Terraform `#7b42bc` or Boundary `#f24c53` CTA only for those specifically observed route contexts. Treat all other product colors and states as unresolved.
 
 ## 10. Voice & Tone
 
-HashiCorp's voice is **infrastructure-engineer-fluent** — speaks the language of platform teams who manage clouds, secrets, and clusters. Copy is capability-driven, with strong open-source narrative. Each product (Terraform, Vault, Consul, Nomad, Boundary, Packer, Waypoint) has its own micro-brand within the HashiCorp identity.
-
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Try Terraform", "Get started", "Sign up" |
-| Marketing | Product-specific. Terraform copy ≠ Vault copy ≠ Consul copy |
-| Documentation | HCL/CLI heavy, deep code examples |
-| Error (apply) | Plan diff + specific resource error |
+HashiCorp describes its work in operational, outcome-oriented terms: automate and secure multi-cloud and hybrid environments; focus on workflows rather than technologies; and keep source code freely available at the core of its offerings. The public marketing routes use short imperative actions.
 
 **Voice samples**
-- Marketing tagline (KR): *"혁신을 위한 인프라"* <!-- verified: hashicorp.com/ko homepage 2026-05 -->
-
-**Forbidden phrases.** Marketing superlatives without numbers. "Revolutionary infrastructure" framing.
+- “Get started” — shared marketing CTA, captured on `/ko`
+- “Contact us” — shared marketing CTA, captured on `/ko`
+- “The Infrastructure Cloud” — official company positioning
 
 ## 11. Brand Narrative
 
-HashiCorp was founded **2012** in San Francisco by **Mitchell Hashimoto** and **Armon Dadgar** — classmates at the **University of Washington's Paul G. Allen School of Computer Science**, where they met **2008** working on a research project to make then-emerging Amazon/Microsoft public-cloud tech accessible to scientists ([HashiCorp — Origin Story](https://www.hashicorp.com/en/about/origin-story), [HashiCorp — Wikipedia](https://en.wikipedia.org/wiki/HashiCorp)). Hashimoto was already running open-source **Vagrant**; he created **Terraform**, which became the de-facto standard for infrastructure-as-code. The product family expanded to **Vault** (secrets), **Consul** (service mesh), **Nomad** (orchestration), **Boundary**, **Packer**, and **Waypoint**. **NASDAQ IPO 2021-12-09** under ticker **HCP**, priced at **$80/share** (above $68-72 range), valuing HashiCorp at **~$13B**. **IBM announced acquisition April 24 2024 for $6.4B**; deal **closed February 27 2025** after regulatory review, bringing HashiCorp into IBM's hybrid cloud strategy ([IBM acquisition closed — HashiCorp blog](https://www.hashicorp.com/en/blog/hashicorp-officially-joins-the-ibm-family), [Logan Bartlett podcast — Dadgar 48hrs after IBM sale](https://www.theloganbartlettshow.com/archive/ep-102-armon-dadgar-hashicorp-co-founder-reflects-48-hours-after-selling-to-ibm)). **Hashimoto resigned December 2023** ahead of the IBM deal — later launched **Ghostty** (GPU-accelerated terminal, public Dec 2024) and joined **Vercel's board March 2026** ([BusinessWire — Vercel + Hashimoto](https://www.businesswire.com/news/home/20260318957008/en/Vercel-Appoints-Mitchell-Hashimoto-Co-Founder-of-HashiCorp-and-Creator-of-Terraform-to-Board-of-Directors)). The brand voice retains its open-source-first, platform-engineering register.
+Mitchell Hashimoto and Armon Dadgar met at the University of Washington in 2008 while working on a research project to make public-cloud technologies available to scientists. Hashimoto started HashiCorp in November 2012 and Dadgar joined as co-founder in 2013. Their early view was that organizations using multiple clouds would need a consistent, reliable set of automation tools for combinations of cloud and on-premises environments.
+
+The present company describes itself as an IBM company that helps organizations automate and secure multi-cloud and hybrid environments through The Infrastructure Cloud. In April 2024 it introduced that brand chapter and HashiCorp Sans; in February 2025 it officially joined IBM. These facts describe the corporate/brand domain and should not be read as a claim about the captured public UI’s runtime tokens.
 
 ## 12. Principles
 
-1. **Infrastructure as code.** Every product expects HCL or equivalent declarative input. *UI implication:* CLI-first; UI dashboards exist but never replace HCL primacy.
-2. **Multi-cloud is the default.** *UI implication:* every concept is provider-agnostic in copy; specific provider logos appear only in integration grids.
-3. **Each product has a color, none are loud.** Terraform `#7B42BC` purple, Vault `#FFEC6E` yellow-green, Consul `#E03875` magenta — but used sparingly. *UI implication:* product-specific brand color appears only on hero + product nav.
-4. **3px focus rings, color-matched.** *UI implication:* don't use generic blue focus; match to the active product theme.
-5. **Uppercase labels for wayfinding.** *UI implication:* tab labels and section dividers can use uppercase 13px / 600 / 1.3px tracking — systematic, never decorative.
+1. **Workflows, not technologies.** The company frames its offering around real-world operator workflows. *UI implication:* lead with the task or outcome before product mechanics.
+2. **Multi-cloud and hybrid operations.** The public mission is to automate and secure these environments. *UI implication:* avoid implying that a single provider is the default context.
+3. **Open source at the core.** HashiCorp describes source-available projects and a practitioner community as foundational. *UI implication:* make technical learning and implementation paths legible alongside commercial paths.
+4. **Pragmatic beauty.** The font announcement links “beauty works better” with pragmatism. *UI implication:* use distinctive display typography deliberately while keeping functional UI plain and readable.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by HashiCorp user segments (platform engineers, DevOps leads, security architects), not individual people.*
-
-**Sergey Volkov, 38, Berlin.** Senior platform engineer. Manages Terraform state for 120+ AWS accounts. Vault for production secrets.
-
-**Priya Krishnan, 31, Bengaluru.** SRE at fintech. Consul service mesh + Nomad orchestration replacing K8s for specific workloads.
-
-**Marcus Davies, 45, London.** Security architect. Vault is the entire reason their compliance audit passed.
+The official company material identifies technical and business teams, IT operators, practitioners, users, customers, and partners as stakeholders. This reference does not invent named or demographic personas; use those verified stakeholder groups as the starting point for task research.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no resources)** | "Define resources in your `.tf` file" + sample HCL block |
-| **Empty (no secrets)** | "Add your first secret" CTA + CLI command |
-| **Loading (terraform apply)** | Plan diff visible + apply progress per resource |
-| **Loading (state)** | Per-resource spinner |
-| **Error (plan)** | HCL line:column + specific resource + recommended fix |
-| **Error (apply)** | Resource-level rollback option |
-| **Success (apply)** | Resource list + state-locked indicator clear |
-| **Success (rotate)** | Vault rotation timestamp + next-rotation due date |
-| **Skeleton (resource list)** | Dark cards with charcoal borders |
-| **Disabled (locked state)** | Lock icon + "State locked by user@team" |
-| **Loading (long apply)** | Real-time per-resource progress |
+The supplied capture records one disabled icon-only primary button and selected/unselected pricing tabs. It records no interaction events, loading, error, success, empty, skeleton, dialog, or toast state transitions, so those treatments are intentionally unresolved.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
-
-Standard cubic-bezier; no bounce. **Focus rings** never animate — appear instant for accessibility. `prefers-reduced-motion: reduce` removes panel slide-ins.
+No motion duration, easing value, or reduced-motion behavior was measured in this packet. Keep motion tokens unresolved.
 
 ---
 
-**Verified:** 2026-05-08 (omd:migrate run 27 — Apple-tier)
-**Tier 1 sources:** hashicorp.com/en home + /en/products/terraform (live DOM via playwright — Shared Primary **`#1060ff`** HC Blue 5px / 36-48px / 16px·500; Light Secondary `#fafafa`/`#3b3d45` 5px; nav 4px sub-distinction; **per-product accent system** confirmed via Terraform Purple `#7b42bc`).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/IPO/IBM):** Wikipedia (HashiCorp), HashiCorp Origin Story, Mayfield (UW Allen School origin), HashiCorp blog (IBM close 2025-02), BusinessWire (Hashimoto Vercel board 2026-03), Logan Bartlett Show ep 102 (Dadgar 48hrs post-sale).
-**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured nav-only — canonical Primary is `#1060ff` HC Blue with documented per-product-accent pattern (Terraform Purple).
+**Verified:** 2026-07-13
+**Tier 1 sources:** supplied live capture of `https://www.hashicorp.com/ko`, `https://www.hashicorp.com/ko/pricing`, and `https://www.hashicorp.com/ko/products/boundary`; [Helios](https://helios.hashicorp.design/); [HashiCorp Sans announcement](https://www.hashicorp.com/en/blog/introducing-hashicorp-sans); [official typography guideline](https://www.hashicorp.com/en/brand/hcp-product-typography); [official terms of service](https://www.hashicorp.com/terms-of-service); [About](https://www.hashicorp.com/en/about); [Origin story](https://www.hashicorp.com/en/about/origin-story); [IBM-family announcement](https://www.hashicorp.com/en/blog/hashicorp-officially-joins-the-ibm-family).
+**Tier 2 sources:** [getdesign.md/hashicorp](https://getdesign.md/hashicorp) directory metadata only; [Refero’s HashiCorp style](https://styles.refero.design/style/834ce97f-61f2-4b12-bf5c-e9fad2544456) cross-check. Its 4px-control and 8px-card claims conflict with the supplied raw capture, so the Tier 1 values remain canonical.
+**Conflicts unresolved:** none
+
+Refero’s differing radii and active-blue account are documented in `.verification.md` and resolved to the supplied computed evidence; unobserved prior claims for Vault, Waypoint, Vagrant, focus/hover behavior, responsive behavior, and motion remain omitted.

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-07-13",
+  "modelPolicy": { "profile": "gpt-5.6-terra", "reasoningEffort": "high" },
+  "markets": {
+    "KR": [
+      { "id": "kb-kookmin", "name": "KB Kookmin Bank", "displayName": "KB국민은행", "category": "fintech", "homepage": "https://www.kbstar.com/", "routes": ["https://www.kbstar.com/", "https://obank.kbstar.com/quics?page=C018702", "https://omoney.kbstar.com/"] },
+      { "id": "wooribank", "name": "Woori Bank", "displayName": "우리은행", "category": "fintech", "homepage": "https://www.wooribank.com/", "routes": ["https://www.wooribank.com/", "https://spot.wooribank.com/pot/Dream?withyou=PODEP0001", "https://spot.wooribank.com/pot/Dream?withyou=POLON0001"] },
+      { "id": "sktelecom", "name": "SK Telecom", "displayName": "SK텔레콤", "category": "consumer-tech", "homepage": "https://www.sktelecom.com/" },
+      { "id": "lguplus", "name": "LG U+", "displayName": "LG유플러스", "category": "consumer-tech", "homepage": "https://www.lguplus.com/" },
+      { "id": "lotteon", "name": "Lotte ON", "displayName": "롯데ON", "category": "ecommerce", "homepage": "https://www.lotteon.com/" },
+      { "id": "soop", "name": "SOOP", "displayName": "숲", "category": "consumer-tech", "homepage": "https://www.sooplive.co.kr/", "routes": ["https://www.sooplive.co.kr/", "https://vod.sooplive.co.kr/", "https://esports.sooplive.co.kr/"] },
+      { "id": "megabox", "name": "MEGABOX", "displayName": "메가박스", "category": "consumer-tech", "homepage": "https://www.megabox.co.kr/", "routes": ["https://www.megabox.co.kr/", "https://www.megabox.co.kr/movie", "https://www.megabox.co.kr/booking"] },
+      { "id": "cgv", "name": "CGV", "displayName": "CGV", "category": "consumer-tech", "homepage": "https://www.cgv.co.kr/", "routes": ["https://www.cgv.co.kr/", "https://www.cgv.co.kr/cnm/movieBook/movie", "https://www.cgv.co.kr/cnm/cgvStore"] },
+      { "id": "onestore", "name": "ONE store", "displayName": "원스토어", "category": "ecommerce", "homepage": "https://m.onestore.co.kr/", "maxRoutes": 5, "routes": ["https://m.onestore.co.kr/", "https://m.onestore.co.kr/v2/ko-kr/game", "https://m.onestore.co.kr/v2/ko-kr/about/oneplay", "https://m.onestore.co.kr/v2/ko-kr/app/0000117501/about", "https://dev.onestore.co.kr/" ] },
+      { "id": "kakaogames", "name": "Kakao Games", "displayName": "카카오게임즈", "category": "consumer-tech", "homepage": "https://www.kakaogames.com/", "routes": ["https://www.kakaogames.com/", "https://www.kakaogames.com/games", "https://www.kakaogames.com/company"] }
+    ],
+    "TW": [
+      { "id": "acer", "name": "Acer", "displayName": "宏碁", "category": "consumer-tech", "homepage": "https://www.acer.com/", "routes": ["https://www.acer.com/", "https://www.acer.com/us-en/laptops", "https://www.acer.com/corporate/en"] },
+      { "id": "taishinbank", "name": "Taishin Bank", "displayName": "台新銀行", "category": "fintech", "homepage": "https://www.taishinbank.com.tw/" },
+      { "id": "104", "name": "104 Job Bank", "displayName": "104人力銀行", "category": "productivity", "homepage": "https://www.104.com.tw/", "routes": ["https://www.104.com.tw/", "https://www.104.com.tw/jobs/main/", "https://www.104.com.tw/company/"] },
+      { "id": "udn", "name": "United Daily News", "displayName": "聯合新聞網", "category": "consumer-tech", "homepage": "https://udn.com/news/index", "routes": ["https://udn.com/news/index", "https://udn.com/news/cate/2/6638", "https://udn.com/news/cate/2/6649"] },
+      { "id": "familymart-tw", "name": "Taiwan FamilyMart", "displayName": "全家便利商店", "category": "ecommerce", "homepage": "https://www.family.com.tw/Marketing/", "routes": ["https://www.family.com.tw/Marketing/", "https://www.family.com.tw/Marketing/zh/Convenience", "https://www.family.com.tw/Marketing/zh/Map"] },
+      { "id": "eslite", "name": "Eslite", "displayName": "誠品", "category": "ecommerce", "homepage": "https://www.eslite.com/" },
+      { "id": "thsr", "name": "Taiwan High Speed Rail", "displayName": "台灣高鐵", "category": "consumer-tech", "homepage": "https://www.thsrc.com.tw/", "routes": ["https://www.thsrc.com.tw/", "https://www.thsrc.com.tw/ArticleContent/46de4c5f-7c2e-4583-bd4c-0f5d67fbb9b8", "https://www.thsrc.com.tw/ArticleContent/743c51ac-124d-4b1a-a57b-1fd820848032"] },
+      { "id": "evaair", "name": "EVA Air", "displayName": "長榮航空", "category": "consumer-tech", "homepage": "https://www.evaair.com/" },
+      { "id": "china-airlines", "name": "China Airlines", "displayName": "中華航空", "category": "consumer-tech", "homepage": "https://www.china-airlines.com/" },
+      { "id": "poya", "name": "POYA", "displayName": "寶雅", "category": "ecommerce", "homepage": "https://www.poya.com.tw/" }
+    ],
+    "JP": [
+      { "id": "toyota", "name": "Toyota", "displayName": "トヨタ", "category": "automotive", "homepage": "https://global.toyota/en/" },
+      { "id": "sony", "name": "Sony", "displayName": "ソニー", "category": "consumer-tech", "homepage": "https://www.sony.com/" },
+      { "id": "recruit", "name": "Recruit", "displayName": "リクルート", "category": "productivity", "homepage": "https://www.recruit.co.jp/" },
+      { "id": "mynavi", "name": "Mynavi", "displayName": "マイナビ", "category": "productivity", "homepage": "https://www.mynavi.jp/", "routes": ["https://www.mynavi.jp/", "https://www.mynavi.jp/service/", "https://www.mynavi.jp/company/"] },
+      { "id": "mixi", "name": "MIXI", "displayName": "MIXI", "category": "consumer-tech", "homepage": "https://mixi.co.jp/" },
+      { "id": "panasonic", "name": "Panasonic", "displayName": "パナソニック", "category": "consumer-tech", "homepage": "https://holdings.panasonic/global/", "routes": ["https://holdings.panasonic/global/", "https://holdings.panasonic/global/corporate/about.html", "https://holdings.panasonic/global/corporate/technology.html" ] },
+      { "id": "sakura-internet", "name": "Sakura Internet", "displayName": "さくらインターネット", "category": "backend-devops", "homepage": "https://www.sakura.ad.jp/" },
+      { "id": "teamlab", "name": "teamLab", "displayName": "チームラボ", "category": "design-tools", "homepage": "https://www.team-lab.com/" },
+      { "id": "au", "name": "au", "displayName": "au", "category": "consumer-tech", "homepage": "https://www.au.com/" },
+      { "id": "softbank", "name": "SoftBank", "displayName": "ソフトバンク", "category": "consumer-tech", "homepage": "https://www.softbank.jp/" }
+    ],
+    "US": [
+      { "id": "uswds", "name": "U.S. Web Design System", "displayName": "U.S. Web Design System", "category": "government", "homepage": "https://designsystem.digital.gov/" },
+      { "id": "aws-cloudscape", "name": "AWS Cloudscape", "displayName": "AWS Cloudscape", "category": "backend-devops", "homepage": "https://cloudscape.design/" },
+      { "id": "patternfly", "name": "PatternFly", "displayName": "PatternFly", "category": "developer-tools", "homepage": "https://www.patternfly.org/", "routes": ["https://www.patternfly.org/", "https://www.patternfly.org/components/button", "https://www.patternfly.org/design-foundations/colors"] },
+      { "id": "palantir", "name": "Palantir Blueprint", "displayName": "Palantir Blueprint", "category": "developer-tools", "homepage": "https://blueprintjs.com/" },
+      { "id": "pega", "name": "Pega UX Design System", "displayName": "Pega UX Design System", "category": "saas", "homepage": "https://design.pega.com/", "routes": ["https://design.pega.com/", "https://design.pega.com/foundations/", "https://design.pega.com/components/" ] },
+      { "id": "zendesk", "name": "Zendesk Garden", "displayName": "Zendesk Garden", "category": "saas", "homepage": "https://garden.zendesk.com/", "routes": ["https://garden.zendesk.com/", "https://garden.zendesk.com/components/button", "https://garden.zendesk.com/design/color"] },
+      { "id": "elastic", "name": "Elastic UI", "displayName": "Elastic UI", "category": "developer-tools", "homepage": "https://eui.elastic.co/" },
+      { "id": "intuit", "name": "Intuit QuickBooks Design", "displayName": "Intuit QuickBooks", "category": "fintech", "homepage": "https://design.intuit.com/quickbooks/brand/" },
+      { "id": "servicenow", "name": "ServiceNow Horizon", "displayName": "ServiceNow Horizon", "category": "saas", "homepage": "https://horizon.servicenow.com/", "routes": ["https://horizon.servicenow.com/", "https://horizon.servicenow.com/getting-started/about-horizon", "https://horizon.servicenow.com/workspace/components"] },
+      { "id": "thumbtack", "name": "Thumbtack Thumbprint", "displayName": "Thumbtack Thumbprint", "category": "consumer-tech", "homepage": "https://thumbprint.design/", "routes": ["https://thumbprint.design/", "https://thumbprint.design/components/button/react/", "https://thumbprint.design/tokens/"] }
+    ]
+  }
+}

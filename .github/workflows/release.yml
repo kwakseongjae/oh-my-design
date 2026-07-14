@@ -46,6 +46,13 @@ jobs:
 
       - run: npm ci
 
+      - name: Install web quality dependencies
+        run: npm ci
+        working-directory: web
+
+      - name: Verify canonical reference pipeline
+        run: npm run check:catalog
+
       - run: npm test
 
       # prepublishOnly가 build + gen-llms-full + release-hygiene(pack)을 다시 돌린다

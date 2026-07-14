@@ -8,386 +8,319 @@ primary_color: "#000000"
 logo:
   type: simpleicons
   slug: ollama
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://ollama.com/", inspected: "2026-07-13" }
+    - { id: surface-2, kind: marketing, url: "https://ollama.com/pricing", inspected: "2026-07-13" }
+    - { id: surface-3, kind: documentation, url: "https://docs.ollama.com/", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://ollama.com/", captured: "2026-07-13" }
+    - { id: pricing-live, kind: product-surface, url: "https://ollama.com/pricing", captured: "2026-07-13" }
+    - { id: docs-live, kind: official-doc, url: "https://docs.ollama.com/", captured: "2026-07-13" }
+    - { id: repository, kind: official-doc, url: "https://github.com/ollama/ollama", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.ink": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.action": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.canvas": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.muted": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.hairline": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.outline": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.family.sans": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.family.mono": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body-sm.size": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body-sm.weight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body-sm.lineHeight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body-sm.use": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body.size": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body.weight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body.lineHeight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body.use": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.nav.size": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.nav.weight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.nav.lineHeight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.nav.use": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.section.size": { surface_id: surface-2, source_id: pricing-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.section.weight": { surface_id: surface-2, source_id: pricing-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.section.lineHeight": { surface_id: surface-2, source_id: pricing-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.section.use": { surface_id: surface-2, source_id: pricing-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.spacing.xxs": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.spacing.xs": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.spacing.sm": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.spacing.md": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.spacing.lg": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.spacing.xl": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.spacing.2xl": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.rounded.full": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.shadow.none": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
   colors:
     ink: "#000000"
-    near-black: "#262626"
-    darkest: "#090909"
+    action: "#262626"
     canvas: "#ffffff"
-    snow: "#fafafa"
-    light-gray: "#e5e5e5"
-    stone: "#737373"
-    mid-gray: "#525252"
-    silver: "#a3a3a3"
-    button-text: "#404040"
-    ring: "#3b82f6"
-    border-light: "#d4d4d4"
+    muted: "#737373"
+    hairline: "#e5e7eb"
+    outline: "#d4d4d4"
   typography:
-    family: { sans: "SF Pro Rounded", mono: "ui-monospace" }
-    display: { size: 48, weight: 500, lineHeight: 1.0, use: "Hero, rounded letterforms" }
-    section: { size: 36, weight: 500, lineHeight: 1.11, use: "Feature section titles" }
-    subheading: { size: 30, weight: 500, lineHeight: 1.2, use: "Card headings, feature names" }
-    card-title: { size: 24, weight: 400, lineHeight: 1.33, use: "Medium emphasis headings" }
-    body-lg: { size: 18, weight: 400, lineHeight: 1.56, use: "Hero descriptions, button text" }
-    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Body text, navigation" }
-    caption: { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, descriptions" }
-    small: { size: 12, weight: 400, lineHeight: 1.33, use: "Smallest sans text" }
-    code: { size: 16, weight: 400, lineHeight: 1.5, use: "Inline code, commands" }
-  spacing: { sm: 10, base: 24 }
-  rounded: { sm: 12, md: 12, lg: 12, full: 9999 }
+    family: { sans: "ui-sans-serif", mono: "ui-monospace" }
+    body-sm: { size: 14, weight: 400, lineHeight: 1.43, use: "Observed product text and input" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Observed product list and body text" }
+    nav: { size: 18, weight: 400, lineHeight: 1.56, use: "Product navigation and header controls" }
+    section: { size: 30, weight: 500, lineHeight: 1.2, use: "Observed pricing heading" }
+  spacing: { xxs: 4, xs: 6, sm: 8, md: 12, lg: 16, xl: 24, 2xl: 32 }
+  rounded: { full: 9999 }
   shadow:
     none: "none"
-  components:
-    button-primary: { type: button, bg: "#e5e5e5", fg: "#262626", radius: 9999, padding: "10px 24px", use: "Primary action, gray pill" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#404040", radius: 9999, padding: "10px 24px", use: "Secondary action, white pill" }
-    button-cta: { type: button, bg: "#000000", fg: "#ffffff", radius: 9999, use: "Max emphasis (Create account, Download)" }
-    card: { type: card, bg: "#ffffff", radius: 12, use: "Container, 1px light-gray border, no shadow" }
-    input: { type: input, bg: "#ffffff", radius: 9999, use: "Pill search/form field" }
-    tab-pill: { type: tab, bg: "transparent", radius: 9999, use: "Pill tab selector", active: "#e5e5e5 bg" }
-    model-tag: { type: badge, bg: "#e5e5e5", fg: "#262626", radius: 9999, use: "Model browse tag" }
-  components_harvested: true
+  components: {}
+  components_harvested: false
 ---
 
 # Design System Inspiration of Ollama
 
 ## 1. Visual Theme & Atmosphere
 
-Ollama's interface is radical minimalism taken to its logical conclusion — a pure-white void where content floats without decoration, shadow, or color. The design philosophy mirrors the product itself: strip away everything unnecessary until only the essential tool remains. This is the digital equivalent of a Dieter Rams object — every pixel earns its place, and the absence of design IS the design.
+Ollama is a developer platform for getting open models running locally, through an app, CLI, API, and integrations. Its public product marketing surface makes that technical proposition feel deliberately direct: a white canvas, black and charcoal calls to action, spare text links, terminal-shaped instructions, and full-pill controls. The current homepage pairs the local-first promise with an optional cloud offer—"Start local. Scale with cloud."—rather than replacing the local workflow. That evolution is echoed in the pricing surface, which introduces Free, Pro, and Max tiers while keeping download and local use visible. Visually, the recognizable expression is restrained neutral contrast and rounded product controls, not an independently named color system or decorative campaign treatment.
 
-The entire page exists in pure grayscale. There is zero chromatic color in the interface — no brand blue, no accent green, no semantic red. The only colors that exist are shades between pure black (`#000000`) and pure white (`#ffffff`), creating a monochrome environment that lets the user's mental model of "open models" remain uncolored by brand opinion. The Ollama llama mascot, rendered in simple black line art, is the only illustration — and even it's monochrome.
+The July 2026 company post describes the product as a way to make open models easy to run, build with, own, and keep private; its homepage and pricing page now present cloud capacity as an extension for larger or parallel workloads. The live values below describe those public marketing product surfaces at the captured desktop viewport. Documentation chrome is recorded separately and is not promoted into product tokens.
 
-What makes Ollama distinctive is the combination of SF Pro Rounded (Apple's rounded system font) with an exclusively pill-shaped geometry (9999px radius on everything interactive). The rounded letterforms + rounded buttons + rounded containers create a cohesive "softness language" that makes a developer CLI tool feel approachable and friendly rather than intimidating. This is minimalism with warmth — not cold Swiss-style grid minimalism, but the kind where the edges are literally softened.
+**Key characteristics:**
 
-**Key Characteristics:**
-- Pure white canvas with zero chromatic color — completely grayscale
-- SF Pro Rounded headlines creating a distinctively Apple-like softness
-- Binary border-radius system: 12px (containers) or 9999px (everything interactive)
-- Zero shadows — depth comes exclusively from background color shifts and borders
-- Pill-shaped geometry on all interactive elements (buttons, tabs, inputs, tags)
-- The Ollama llama as the sole illustration — black line art, no color
-- Extreme content restraint — the homepage is short, focused, and uncluttered
+- White canvas, black text, and charcoal (`#262626`) primary CTAs.
+- Full-pill (`9999px`) controls for the observed product inputs and calls to action.
+- No observed drop shadow on the product controls in the supplied capture.
+- System-stack body text plus a separately unresolved rounded display-family observation.
+- Terminal and command language used as product content, not ornament.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Pure Black** (`#000000`): Primary headlines, primary links, and the darkest text. The only "color" that demands attention.
-- **Near Black** (`#262626`): Button text on light surfaces, secondary headline weight.
-- **Darkest Surface** (`#090909`): The darkest possible surface — barely distinguishable from pure black, used for footer or dark containers.
+### Product marketing surfaces
 
-### Surface & Background
-- **Pure White** (`#ffffff`): The primary page background — not off-white, not cream, pure white. Button surfaces for secondary actions.
-- **Snow** (`#fafafa`): The subtlest possible surface distinction from white — used for section backgrounds and barely-elevated containers.
-- **Light Gray** (`#e5e5e5`): Button backgrounds, borders, and the primary containment color. The workhorse neutral.
+- **Ink** (`#000000`): observed primary text and the text of white pricing actions.
+- **Action charcoal** (`#262626`): observed header download and hero CTA background.
+- **Canvas** (`#ffffff`): observed page and inverted pricing CTA surface.
+- **Muted** (`#737373`): observed secondary product text.
+- **Hairline** (`#e5e7eb`): observed product border color.
+- **Outline** (`#d4d4d4`): observed border on a white product CTA.
 
-### Neutrals & Text
-- **Stone** (`#737373`): Secondary body text, footer links, and de-emphasized content. The primary "muted" tone.
-- **Mid Gray** (`#525252`): Emphasized secondary text, slightly darker than Stone.
-- **Silver** (`#a3a3a3`): Tertiary text, placeholders, and deeply de-emphasized metadata.
-- **Button Text Dark** (`#404040`): Specific to white-surface button text.
+### Documentation chrome — separate domain
 
-### Semantic & Accent
-- **Ring Blue** (`#3b82f6` at 50%): The ONLY non-gray color in the entire system — Tailwind's default focus ring, used exclusively for keyboard accessibility. Never visible in normal interaction flow.
-- **Border Light** (`#d4d4d4`): A slightly darker gray for white-surface button borders.
-
-### Gradient System
-- **None.** Ollama uses absolutely no gradients. Visual separation comes from flat color blocks and single-pixel borders. This is a deliberate, almost philosophical design choice.
+The captured docs homepage uses additional light-gray, charcoal, and semantic color values. Those belong to `docs.ollama.com` chrome and are not product-marketing tokens. No gradient token is asserted from the supplied evidence.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Display**: `SF Pro Rounded`, with fallbacks: `system-ui, -apple-system, system-ui`
-- **Body / UI**: `ui-sans-serif`, with fallbacks: `system-ui, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji`
-- **Monospace**: `ui-monospace`, with fallbacks: `SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New`
+### Official product-use
 
-*Note: SF Pro Rounded is Apple's system font — it renders with rounded terminals on macOS/iOS and falls back to the system sans-serif on other platforms.*
+Ollama’s official homepage, pricing page, documentation, and public repository all frame the product around local and open-model workflows. They do not provide a first-party typography specification or a downloadable Ollama-branded typeface in the sources reviewed for this update.
 
-### Hierarchy
+### Live computed product-surface use
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display / Hero | SF Pro Rounded | 48px (3rem) | 500 | 1.00 (tight) | normal | Maximum impact, rounded letterforms |
-| Section Heading | SF Pro Rounded | 36px (2.25rem) | 500 | 1.11 (tight) | normal | Feature section titles |
-| Sub-heading | SF Pro Rounded / ui-sans-serif | 30px (1.88rem) | 400–500 | 1.20 (tight) | normal | Card headings, feature names |
-| Card Title | ui-sans-serif | 24px (1.5rem) | 400 | 1.33 | normal | Medium emphasis headings |
-| Body Large | ui-sans-serif | 18px (1.13rem) | 400–500 | 1.56 | normal | Hero descriptions, button text |
-| Body / Link | ui-sans-serif | 16px (1rem) | 400–500 | 1.50 | normal | Standard body text, navigation |
-| Caption | ui-sans-serif | 14px (0.88rem) | 400 | 1.43 | normal | Metadata, descriptions |
-| Small | ui-sans-serif | 12px (0.75rem) | 400 | 1.33 | normal | Smallest sans-serif text |
-| Code Body | ui-monospace | 16px (1rem) | 400 | 1.50 | normal | Inline code, commands |
-| Code Caption | ui-monospace | 14px (0.88rem) | 400 | 1.43 | normal | Code snippets, secondary |
-| Code Small | ui-monospace | 12px (0.75rem) | 400–700 | 1.63 | normal | Tags, labels |
+`ui-sans-serif` is the high-confidence visible system stack across the captured homepage and pricing page; `system-ui` is also observed in the bundle. These are system-stack facts, not a claim to a proprietary Ollama font. The observed product text scale includes 14px/400/20px, 16px/400/24px, 18px/400/28px, and a 30px/500/36px pricing heading.
 
-### Principles
-- **Rounded display, standard body**: SF Pro Rounded carries display headlines with its distinctive rounded terminals, while the standard system sans handles all body text. The rounded font IS the brand expression.
-- **Weight restraint**: Only two weights matter — 400 (regular) for body and 500 (medium) for headings. No bold, no light, no black weight. This extreme restraint reinforces the minimal philosophy.
-- **Tight display, comfortable body**: Headlines compress to 1.0 line-height, while body text relaxes to 1.43–1.56. The contrast creates clear hierarchy without needing weight contrast.
-- **Monospace for developer identity**: Code blocks and terminal commands appear throughout as primary content, using the system monospace stack.
+`SF Pro Rounded` appears in computed headings on the homepage and pricing page (including 36px/500/40px and 48px/600/48px), but the supplied FontFaceSet/source reconciliation contains no matching loaded face or source URL. It remains **unresolved** and is deliberately excluded from `tokens.typography.family`. Apple describes SF Pro and its rounded variant as Apple platform fonts; that does not establish an Ollama-distributed webfont or a portable product token.
+
+`ui-monospace` is observed in product command-related UI and is retained as a system-stack token. The capture does not establish a custom downloadable monospace family for the product.
+
+### Declared-only documentation assets
+
+On `docs.ollama.com`, the raw bundle declares `Inter`, `paperMono`, `CMU Typewriter Text`, and `Latin Modern` sources. It records zero visible usage for each. They remain declared-only documentation assets, not product typography tokens or live specimens. The docs surface is therefore not evidence for the homepage/pricing typography system.
+
+### Typography application
+
+| Role | Family status | Observed size / weight / line height | Surface boundary |
+|------|---------------|--------------------------------------|------------------|
+| Product body | system `ui-sans-serif` | 14px / 400 / 20px; 16px / 400 / 24px | homepage and pricing |
+| Product navigation | system `ui-sans-serif` | 18px / 400 / 28px | homepage |
+| Pricing section title | system `ui-sans-serif` | 30px / 500 / 36px | pricing |
+| Rounded display headings | unresolved `SF Pro Rounded` | 36px / 500 / 40px; 48px / 600 / 48px | homepage and pricing; no loaded/source match |
+| Product command UI | system `ui-monospace` | 14px / 400 / 22.75px | homepage |
+| Docs fonts | declared-only | no visible usage recorded | docs only |
 
 ## 4. Component Stylings
 
-### Buttons
+The variants below preserve the captured selector, surface, and default-state provenance. The collector recorded zero interaction snapshots, so no hover, focus, pressed, disabled, error, dialog, or menu state is specified.
 
-**Gray Pill (Primary)**
-- Background: Light Gray (`#e5e5e5`)
-- Text: Near Black (`#262626`)
-- Padding: 10px 24px
-- Border: thin solid Light Gray (`1px solid #e5e5e5`)
-- Radius: pill-shaped (9999px)
-- The primary action button — understated, grayscale, always pill-shaped
+### Product marketing — Header controls
 
-**White Pill (Secondary)**
-- Background: Pure White (`#ffffff`)
-- Text: Button Text Dark (`#404040`)
-- Padding: 10px 24px
-- Border: thin solid Border Light (`1px solid #d4d4d4`)
-- Radius: pill-shaped (9999px)
-- Secondary action — visually lighter than Gray Pill
+**Sign-in ghost**
+- Background: `rgba(0, 0, 0, 0.05)`
+- Text: `#000000`
+- Radius: `9999px`
+- Padding: `6px 16px`
+- Font: `18px / 400 / ui-sans-serif`
+- Use: Homepage header link at `home::[data-omd-capture="5"]`.
 
-**Black Pill (CTA)**
-- Background: Pure Black (`#000000`)
-- Text: Pure White (`#ffffff`)
-- Radius: pill-shaped (9999px)
-- Inferred from "Create account" and "Explore" buttons
-- Maximum emphasis — black on white
+**Download charcoal CTA**
+- Background: `#262626`
+- Text: `#ffffff`
+- Radius: `9999px`
+- Padding: `6px 16px`
+- Font: `18px / 400 / ui-sans-serif`
+- Use: Homepage header CTA at `home::[data-omd-capture="6"]`.
 
-### Cards & Containers
-- Background: Pure White or Snow (`#fafafa`)
-- Border: thin solid Light Gray (`1px solid #e5e5e5`) when needed
-- Radius: comfortably rounded (12px) — the ONLY non-pill radius in the system
-- Shadow: **none** — zero shadows on any element
-- Hover: likely subtle background shift or border darkening
+### Product marketing — Hero and pricing actions
 
-### Inputs & Forms
-- Background: Pure White
-- Border: `1px solid #e5e5e5`
-- Radius: pill-shaped (9999px) — search inputs and form fields are pill-shaped
-- Focus: Ring Blue (`#3b82f6` at 50%) ring
-- Placeholder: Silver (`#a3a3a3`)
+**Hero charcoal CTA**
+- Background: `#262626`
+- Text: `#ffffff`
+- Radius: `9999px`
+- Padding: `12px 32px`
+- Font: `18px / 500 / ui-sans-serif`
+- Use: Homepage hero action at `home::[data-omd-capture="10"]`.
 
-### Navigation
-- Clean horizontal nav with minimal elements
-- Logo: Ollama llama icon + wordmark in black
-- Links: "Models", "Docs", "Pricing" in black at 16px, weight 400
-- Search bar: pill-shaped with placeholder text
-- Right side: "Sign in" link + "Download" black pill CTA
-- No borders, no background — transparent nav on white page
+**Pricing outlined CTA**
+- Background: `#ffffff`
+- Text: `#000000`
+- Border: `1px solid #d4d4d4`
+- Radius: `9999px`
+- Padding: `8px 24px`
+- Font: `14px / 500 / ui-sans-serif`
+- Use: Homepage pricing action at `home::[data-omd-capture="12"]`.
 
-### Image Treatment
-- The Ollama llama mascot is the only illustration — black line art on white
-- Code screenshots/terminal outputs shown in bordered containers (12px radius)
-- Integration logos displayed as simple icons in a grid
-- No photographs, no gradients, no decorative imagery
+**Pricing white CTA**
+- Background: `#ffffff`
+- Text: `#000000`
+- Radius: `9999px`
+- Padding: `8px 24px`
+- Font: `14px / 500 / ui-sans-serif`
+- Use: Homepage pricing action at `home::[data-omd-capture="13"]`.
 
-### Distinctive Components
+### Product marketing — Input
 
-**Tab Pills**
-- Pill-shaped tab selectors (e.g., "Coding" | "OpenClaw")
-- Active: Light Gray bg; Inactive: transparent
-- All pill-shaped (9999px)
+**Pill input**
+- Text: `#000000`
+- Border: `0px solid #6b7280`
+- Radius: `9999px`
+- Padding: `10px 12px`
+- Font: `14px / 400 / ui-sans-serif`
+- Use: Homepage input at `home::[data-omd-capture="4"]`; also observed on pricing.
 
-**Model Tags**
-- Small pill-shaped tags (e.g., "ollama", "launch", "claude")
-- Light Gray background, dark text
-- The primary way to browse models
+### Documentation chrome — separate domain
 
-**Terminal Command Block**
-- Monospace code showing `ollama run` commands
-- Minimal styling — just a bordered 12px-radius container
-- Copy button integrated
+**Docs search control**
+- Background: `#ffffff`
+- Text: `#6f6f6f`
+- Radius: `12px`
+- Padding: `0px 12px 0px 14px`
+- Font: `14px / 400 / ui-sans-serif`
+- Use: Docs-only search button at `surface-3::[data-omd-capture="5"]`.
 
-**Integration Grid**
-- Grid of integration logos (Codex, Claude Code, OpenCode, LangChain, etc.)
-- Each in a bordered pill or card with icon + name
-- Tabbed by category (Coding, Documents & RAG, Automation, Chat)
+**Docs link card**
+- Background: `#ffffff`
+- Border: `1px solid oklab(0.144787 0.00000661612 0.00000289828 / 0.1)`
+- Radius: `16px`
+- Font: `16px / 400 / ui-sans-serif`
+- Use: Docs-only link cards at `surface-3::[data-omd-capture="34"]` and related selectors.
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 6px, 8px, 9px, 10px, 12px, 14px, 16px, 20px, 24px, 32px, 40px, 48px, 88px, 112px
-- Button padding: 10px 24px (consistent across all buttons)
-- Card internal padding: approximately 24–32px
-- Section vertical spacing: very generous (88px–112px)
+### Spacing system
 
-### Grid & Container
-- Max container width: approximately 1024–1280px, centered
-- Hero: centered single-column with llama illustration
-- Feature sections: 2-column layout (text left, code right)
-- Integration grid: responsive multi-column
-- Footer: clean single-row
+The captured bundle clusters spacing at 4, 6, 8, 12, 16, 24, and 32px. These are observed values, not a published Ollama spacing scale. Header actions use 6px 16px padding, the hero CTA uses 12px 32px, and the product input uses 10px 12px.
 
-### Whitespace Philosophy
-- **Emptiness as luxury**: The page is remarkably short and sparse — no feature section overstays its welcome. Each concept gets minimal but sufficient space.
-- **Content density is low by design**: Where other AI companies pack feature after feature, Ollama presents three ideas (run models, use with apps, integrations) and stops.
-- **The white space IS the brand**: Pure white space with zero decoration communicates "this tool gets out of your way."
+### Product composition
 
-### Border Radius Scale
-- Comfortably rounded (12px): The sole container radius — code blocks, cards, panels
-- Pill-shaped (9999px): Everything interactive — buttons, tabs, inputs, tags, badges
+- The homepage leads with an install command and a narrow set of entry points: Models, Docs, Pricing, Sign in, and Download.
+- The cloud proposition follows the local starting point instead of displacing it.
+- Pricing is presented as Free, Pro, Max, and an announced Team tier on the captured official pricing page.
+- Documentation is a separate content surface with navigation, search, cards, and API/integration paths; its chrome should not dictate the public product-marketing layout.
 
-*This binary system is extreme and distinctive. There is no 4px, no 8px, no gradient of roundness. Elements are either containers (12px) or interactive (pill).*
+### Radius boundary
+
+`9999px` is directly observed on the product controls recorded in §4. The 12px and 16px radii in this update are confined to documentation chrome; they are not generalized to the product marketing surface.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, no border | Page background, most content |
-| Bordered (Level 1) | `1px solid #e5e5e5` | Cards, code blocks, buttons |
-
-**Shadow Philosophy**: Ollama uses **zero shadows**. This is not an oversight — it's a deliberate design decision. Every other major AI product site uses at least subtle shadows. Ollama's flat, shadowless approach creates a paper-like experience where elements are distinguished purely by background color and single-pixel borders. Depth is communicated through **content hierarchy and typography weight**, not visual layering.
+The captured homepage and pricing controls in §4 have `box-shadow: none`. Separate product elements can only be described when directly measured; this reference does not turn the absence of shadow on the sampled controls into a universal product rule. Docs cards carry transparent ring values in the raw capture, not an elevated product-card token.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use pure white (`#ffffff`) as the page background — never off-white or cream
-- Use pill-shaped (9999px) radius on all interactive elements — buttons, tabs, inputs, tags
-- Use 12px radius on all non-interactive containers — code blocks, cards, panels
-- Keep the palette strictly grayscale — no chromatic colors except the blue focus ring
-- Use SF Pro Rounded at weight 500 for display headings — the rounded terminals are the brand expression
-- Maintain zero shadows — depth comes from borders and background shifts only
-- Keep content density low — each section should present one clear idea
-- Use monospace for terminal commands and code — it's primary content, not decoration
-- Keep all buttons at 10px 24px padding with pill shape — consistency is absolute
+
+- Use `#262626` with white text for the observed dark product CTA treatment.
+- Use full-pill geometry only for controls whose observed product provenance supports it.
+- Keep body and navigation type on the system stack unless a loadable font is independently verified.
+- Keep local use prominent when describing the current local-plus-cloud product story.
+- Treat docs chrome as its own surface when borrowing patterns.
 
 ### Don't
-- Don't introduce any chromatic color — no brand blue, no accent green, no warm tones
-- Don't use border-radius between 12px and 9999px — the system is binary
-- Don't add shadows to any element — the flat aesthetic is intentional
-- Don't use font weights above 500 — no bold, no black weight
-- Don't add decorative illustrations beyond the llama mascot
-- Don't use gradients anywhere — flat blocks and borders only
-- Don't overcomplicate the layout — two columns maximum, no complex grids
-- Don't use borders heavier than 1px — containment is always the lightest possible touch
-- Don't add hover animations or transitions — interactions should feel instant and direct
+
+- Do not substitute a local or system font and label it `SF Pro Rounded`.
+- Do not promote declared docs fonts to the product UI family.
+- Do not generalize docs cards or their 12px/16px radii to marketing-product components.
+- Do not specify hover, focus, pressed, disabled, or error visuals from this capture; interaction coverage is zero.
+- Do not invent a published spacing, shadow, or color scale where only clustered computed values were collected.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, stacked everything, hamburger nav |
-| Small Tablet | 640–768px | Minor adjustments to spacing |
-| Tablet | 768–850px | 2-column layouts begin |
-| Desktop | 850–1024px | Standard layout, expanded features |
-| Large Desktop | 1024–1280px | Maximum content width |
-
-### Touch Targets
-- All buttons are pill-shaped with generous padding (10px 24px)
-- Navigation links at comfortable 16px size
-- Minimum touch area easily exceeds 44x44px
-
-### Collapsing Strategy
-- **Navigation**: Collapses to hamburger menu on mobile
-- **Feature sections**: 2-column → stacked single column
-- **Hero text**: 48px → 36px → 30px progressive scaling
-- **Integration grid**: Multi-column → 2-column → single column
-- **Code blocks**: Horizontal scroll maintained
-
-### Image Behavior
-- Llama mascot scales proportionally
-- Code blocks maintain monospace formatting
-- Integration icons reflow to fewer columns
-- No art direction changes
+The supplied evidence is a 1440×900 desktop capture for each surface. It confirms the desktop component values in §4 but does not establish mobile breakpoints, collapsed navigation, touch targets, or responsive asset behavior. Those fields are intentionally absent rather than extrapolated.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary Text: "Pure Black (#000000)"
-- Page Background: "Pure White (#ffffff)"
-- Secondary Text: "Stone (#737373)"
-- Button Background: "Light Gray (#e5e5e5)"
-- Borders: "Light Gray (#e5e5e5)"
-- Muted Text: "Silver (#a3a3a3)"
-- Dark Text: "Near Black (#262626)"
-- Subtle Surface: "Snow (#fafafa)"
+### Safe product-marketing brief
 
-### Example Component Prompts
-- "Create a hero section on pure white (#ffffff) with an illustration centered above a headline at 48px SF Pro Rounded weight 500, line-height 1.0. Use Pure Black (#000000) text. Below, add a black pill-shaped CTA button (9999px radius, 10px 24px padding) and a gray pill button."
-- "Design a code block with a 12px border-radius, 1px solid Light Gray (#e5e5e5) border on white background. Use ui-monospace at 16px for the terminal command. No shadow."
-- "Build a tab bar with pill-shaped tabs (9999px radius). Active tab: Light Gray (#e5e5e5) background, Near Black (#262626) text. Inactive: transparent background, Stone (#737373) text."
-- "Create an integration card grid. Each card is a bordered pill (9999px radius) or a 12px-radius card with 1px solid #e5e5e5 border. Icon + name inside. Grid of 4 columns on desktop."
-- "Design a navigation bar: transparent background, no border. Ollama logo on the left, 3 text links (Pure Black, 16px, weight 400), pill search input in the center, 'Sign in' text link and black pill 'Download' button on the right."
+> Create a sparse developer-tool landing section using a white canvas, `#000000` text, a `#262626` full-pill primary CTA with white text, and system sans body type. Keep the local workflow explicit. Do not claim or substitute SF Pro Rounded, and do not import documentation-site cards or declared docs fonts.
 
-### Iteration Guide
-1. Focus on ONE component at a time
-2. Keep all values grayscale — "Stone (#737373)" not "use a light color"
-3. Always specify pill (9999px) or container (12px) radius — nothing in between
-4. Shadows are always zero — never add them
-5. Weight is always 400 or 500 — never bold
-6. If something feels too decorated, remove it — less is always more for Ollama
+### Safe documentation brief
+
+> Treat documentation as a separate surface. A captured docs search control uses a white 12px-radius shell and a docs link card uses a white 16px-radius, 1px-border treatment. Keep those values out of product-marketing tokens unless new product-surface evidence supports them.
 
 ## 10. Voice & Tone
 
-Ollama's voice is **open-source-warm and CLI-fluent** — speaks like a tool team that values local-first AI. Marketing copy emphasizes the "run AI on your machine" thesis. Pill chrome + warm round buttons signal "approachable while still being a serious tool."
+The official homepage and repository use concise, action-first language: installation commands, “Get started,” “Download,” and “Start local. Scale with cloud.” The July 2026 company post explains the larger idea in direct developer language—open models should be easy to build, run, and own.
 
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Download", "Sign in", "Create account" |
-| Marketing | Practical. "Run language models locally" recurring |
-| Documentation | CLI-first; bash snippets dominant |
-| Error | Specific. "Model not found locally. Pull with: ollama pull llama3" |
+| Do | Don't |
+|----|-------|
+| Lead with the concrete task or command. | Lead with abstract AI hype. |
+| Explain local control and optional scale plainly. | Imply cloud use is required. |
+| Name the developer workflow or integration. | Hide the next technical step behind marketing language. |
 
-**Voice samples**
-- Marketing CTA: *"Download"* / *"Create account"* <!-- verified: ollama.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary AI", "magic". Aggressive sales pressure.
+Verified voice samples: “The easiest way to build with open models,” “Start local. Scale with cloud.”, and “Your model. Your machine. Your data.”
 
 ## 11. Brand Narrative
 
-Ollama was founded by **Jeffrey Morgan** and **Michael Chiang** in **Palo Alto, CA** ([Y Combinator — Ollama](https://www.ycombinator.com/companies/ollama), [No Cap Blog — Michael Chiang](https://nocap.blog/founder/michael-chiang/)). Morgan + Chiang were **previously co-founders of Kitematic, the early UI for Docker** (acquired by Docker), giving them deep familiarity with developer-tooling distribution. The pair went through **Y Combinator Winter 2021 (W21)** batch with $125K initial investment, then pivoted into local-LLM tooling. **Initial public release July 2023 via GitHub** — the open-source CLI `ollama run llama3` became iconic in the local-AI community. The brand voice mirrors the lineage: practical, terse, CLI-aware. The cloud offering (**Ollama Pro / Max** tiers) launched **2024-2025** to monetize without abandoning the local-first OSS positioning. Mission: democratize AI access by eliminating cloud-service dependency for running LLMs ([Tracxn — Ollama](https://tracxn.com/d/companies/ollama/__dmKJg668xTKoW4o-mEXuoBUCM5Lwj1xIcCRlYr5tpOk)).
+Ollama presents open models as something developers should be able to run on their own machine and integrate through a simple API. Its official repository and documentation make that practical: download the software, run a model, connect an integration, or use the API.
+
+In the company’s July 2026 post, Jeff and Michael connect Ollama to their earlier work on Kitematic and Docker Desktop, then describe a return to making complex developer infrastructure easier to run. The same post frames the present product around ownership, affordability, and privacy, with cloud capacity offered when local hardware is not enough.
+
+That story makes the quiet, command-led public surface coherent: it lets a local workflow remain the primary mental model while acknowledging a growing cloud product.
 
 ## 12. Principles
 
-1. **Local-first is the thesis.** *UI implication:* product surfaces lead with `ollama run` CLI, not a hosted UI.
-2. **Pill chrome (9999px).** *UI implication:* nav, badges, modals all pill on white.
-3. **Weight 400 or 500, never bold.** *UI implication:* don't use weight 700+.
-4. **Less is more — remove decoration.** *UI implication:* no ornament; if something feels decorative, cut it.
-5. **OSS and Pro coexist.** *UI implication:* Pro/Max tiers visible but never blocking OSS UX.
+1. **Open models should be practical to run.**
+   *UI implication:* make installation, model selection, and API entry points easy to scan.
+2. **Ownership and privacy remain legible.**
+   *UI implication:* explain the local path plainly and avoid making cloud the only visible route.
+3. **Scale is an extension, not a replacement.**
+   *UI implication:* distinguish local capability from optional cloud capacity in layout and copy.
+4. **Developer actions come before persuasion.**
+   *UI implication:* use commands, integrations, and links as primary content.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Ollama user segments (privacy-conscious developers, ML researchers, local-first SaaS builders), not individual people.*
+These are product-surface archetypes inferred from official use cases, not research personas or synthetic satisfaction claims.
 
-**Sergey Volkov, 38, Berlin.** Privacy-conscious developer running Ollama on his M3 Max. Avoids cloud APIs for personal data.
-
-**Aisha Patel, 31, San Francisco.** ML researcher fine-tuning small models. Ollama for inference, custom training elsewhere.
-
-**Marcus Davies, 45, London.** Indie SaaS builder shipping a local-first writing tool. Ollama as the AI layer that doesn't require user API keys.
+- **Local-model developer:** wants to install Ollama, run a model, and call it from an app or API without treating a remote service as the default.
+- **Integration builder:** connects a coding agent, editor, or application to open models using the official integrations and libraries.
+- **Cloud-scale team member:** starts with the local workflow and needs larger or parallel cloud capacity for some work.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no models pulled)** | "Pull your first model" CLI snippet |
-| **Empty (no projects)** | "Try a model" with library link |
-| **Loading (model pulling)** | Per-layer progress with bytes/sec |
-| **Loading (inference)** | Per-token streaming visible |
-| **Error (model not found)** | Specific. "Model not found. Pull with: ollama pull X" |
-| **Error (memory)** | "Insufficient RAM. Try a smaller variant: ollama run llama3:8b" |
-| **Success (pull)** | Confirmation + run command snippet |
-| **Success (creation)** | Account confirmation + API key |
-| **Skeleton (model list)** | Pill placeholders |
-| **Disabled (free tier limit)** | Upgrade link |
-| **Loading (long pull)** | Persistent progress with ETA |
+No product interaction-state variants are included in this update. The supplied collector recorded `interactionCount: 0` and no observed hover, focus, pressed, disabled, error, dialog, toast, or tab state. A future capture can add only states with selector, surface, raw computed value, and interaction provenance.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal |
-
-Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+Some captured class strings declare color-transition utilities, but no interaction snapshot measured their resulting motion or state. No duration, easing, or motion token is asserted from this evidence.
 
 ---
+**Verified:** 2026-07-13
+**Tier 1 sources:** [Ollama homepage](https://ollama.com/) (marketing product surface; raw collector `home`), [Ollama pricing](https://ollama.com/pricing) (marketing product surface; raw collector `surface-2`), [Ollama docs](https://docs.ollama.com/) (documentation chrome only; raw collector `surface-3`), [Ollama’s official open-model narrative](https://ollama.com/blog/all-aboard-open-models), [official repository](https://github.com/ollama/ollama), [Apple SF font documentation](https://developer.apple.com/fonts/).
+**Tier 2 sources:** [getdesign.md/ollama](https://getdesign.md/ollama) lists one community design; [Refero search](https://styles.refero.design/?q=Ollama) was attempted but did not return a fetchable result in this run.
+**Conflicts unresolved:** none
 
-**Verified:** 2026-05-08 (omd:migrate run 42 — Apple-tier)
-**Tier 1 sources:** ollama.com home + /library (live DOM via playwright — all-pill 9999px chrome, **4-tier height system** {header 40 / hero 52 / Pro 38 / Max 36 / nav 28}, 2-weight discipline (400 default / 500 hero+pricing); Primary `#262626` Ollama Charcoal + Inverted `#fff` on dark hero; Outline `rgba(0,0,0,0.05)`).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders):** Y Combinator (Ollama W21 batch), No Cap Blog (Michael Chiang), Tracxn, Grokipedia.
-**Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier addition:** pricing inverted-pill `#fff` 36-38px / 14px·500 + hero weight-500 distinction missed by prior pass.
+Tier 2 supplied no conflicting measured values. SF Pro Rounded remains unresolved (computed-only, no FontFaceSet/source corroboration), rather than a Tier 2 conflict.

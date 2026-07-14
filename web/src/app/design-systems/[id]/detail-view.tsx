@@ -14,7 +14,7 @@
  * interaction analytics.
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import {
@@ -44,6 +44,8 @@ import {
 import { getDesignSystem } from "@/lib/design-systems";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import type { ParsedTokens } from "@/lib/extract-tokens";
+import type { ReferenceDetailAstContract } from "@/lib/references/detail-projection";
+import { ReferenceShareButton } from "@/components/reference-share-button";
 
 interface Detail {
   id: string;
@@ -58,26 +60,29 @@ interface Detail {
   mood: string;
   accent?: string;
   border?: string;
+  referenceAst: ReferenceDetailAstContract;
 }
 
 type MobileView = "preview" | "markdown";
+const subscribeToHydration = () => () => {};
 
 export function DetailView({
   detail,
   tokens,
   summary,
+  evidenceBoundary,
 }: {
   detail: Detail;
   tokens: ParsedTokens;
   /** Answer-first extract from the server page (#5) — also the JSON-LD description. */
   summary?: string;
+  /** English evidence-domain boundary; present only for editorially reviewed references. */
+  evidenceBoundary?: string;
 }) {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(subscribeToHydration, () => true, () => false);
   const [mobileView, setMobileView] = useState<MobileView>("preview");
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => setMounted(true), []);
 
   // Fire page-view analytics once per mount.
   useEffect(() => {
@@ -90,6 +95,10 @@ export function DetailView({
   const ds = getDesignSystem(detail.id);
   const displayName =
     ds?.name ?? detail.id.replace(/\.(app|ai)$/, "").replace(/^./, (c) => c.toUpperCase());
+  const quality = detail.referenceAst.quality;
+  const fontEvidence = detail.referenceAst.foundations.uiFont;
+  const componentCount = Object.keys(detail.referenceAst.tokens.components).length;
+  const evidencePercent = Math.round(quality.evidenceCoverage * 100);
 
   function copyMd() {
     navigator.clipboard.writeText(detail.designMd);
@@ -136,6 +145,7 @@ export function DetailView({
           </div>
 
           <div className="flex items-center gap-1 sm:gap-2">
+            <ReferenceShareButton reference={detail.id} location="ref_detail" compact />
             {/* Primary funnel CTA — this page is where Claude/Brave citations
                 land; convert that visitor into the builder with the reference
                 preselected (step=customize). Kept at least as prominent as the
@@ -252,6 +262,12 @@ export function DetailView({
       {summary && (
         <section className="mx-auto max-w-7xl px-4 pt-6 sm:px-6">
           <p className="max-w-3xl text-sm leading-relaxed text-foreground">{summary}</p>
+          {evidenceBoundary ? (
+            <p className="mt-2 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+              <span className="font-medium text-foreground">Evidence boundary:</span>{" "}
+              {evidenceBoundary}
+            </p>
+          ) : null}
           <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-xs text-muted-foreground">
             <div className="flex items-center gap-1.5">
               <dt>Primary</dt>
@@ -275,6 +291,47 @@ export function DetailView({
               <dd className="font-medium text-foreground">{detail.radius}</dd>
             </div>
           </dl>
+          <div className="mt-4 rounded-xl border border-border/60 bg-muted/30 p-3 dark:bg-muted/20">
+            <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+              <h2 className="text-xs font-semibold text-foreground">Evidence snapshot</h2>
+              <span className="font-mono text-[10px] uppercase tracking-wide text-muted-foreground">
+                {quality.status.replaceAll("_", " ")}
+              </span>
+            </div>
+            <dl className="grid gap-2 text-xs sm:grid-cols-2 lg:grid-cols-4">
+              <div>
+                <dt className="text-muted-foreground">Claims grounded</dt>
+                <dd className="mt-0.5 font-medium text-foreground">
+                  {quality.evidenceClaimCount}/{quality.claimCount} · {evidencePercent}%
+                </dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground">Sources</dt>
+                <dd className="mt-0.5 font-medium text-foreground">
+                  {quality.surfaceCount} surfaces · {quality.sourceCount} sources
+                </dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground">UI font basis</dt>
+                <dd className="mt-0.5 font-medium text-foreground">
+                  {fontEvidence
+                    ? `${fontEvidence.origin.replaceAll("_", " ")} · ${fontEvidence.confidence}`
+                    : "unresolved"}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground">Components</dt>
+                <dd className="mt-0.5 font-medium text-foreground">
+                  {componentCount} documented · {detail.referenceAst.tokens.componentsHarvested ? "harvested" : "baseline"}
+                </dd>
+              </div>
+            </dl>
+            {quality.reasonCodes.length > 0 && (
+              <p className="mt-2 border-t border-border/50 pt-2 font-mono text-[10px] leading-relaxed text-muted-foreground">
+                Needs work: {quality.reasonCodes.join(" · ").replaceAll("_", " ")}
+              </p>
+            )}
+          </div>
         </section>
       )}
 

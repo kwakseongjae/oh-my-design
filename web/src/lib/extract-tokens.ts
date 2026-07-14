@@ -7,6 +7,8 @@
  */
 
 import { canonicalFontName } from "./font-registry";
+import type { ReferenceDetailAstContract } from "./references/detail-projection";
+import type { ReferenceAstNode, ReferenceAstTokens } from "./references/schema";
 
 export interface FontMention {
   /** Raw name as it appeared in DESIGN.md (e.g., "Helvetica Neue"). */
@@ -21,8 +23,10 @@ export interface TypographyTier {
   sampleText: string;   // copy shown at this tier
   fontSize: number;     // px
   fontWeight: number;
-  lineHeight: number;
+  lineHeight: number | string;
   letterSpacing: string;
+  /** Exact family for this role/surface when DESIGN.md provides one. */
+  fontFamily?: string;
   muted?: boolean;      // render in muted color (Small/Caption/Smallest)
 }
 
@@ -275,6 +279,7 @@ export function applyOverrides(tokens: ParsedTokens, overrides?: PreviewOverride
     return {
       ...tier,
       fontWeight: isHeading ? hWeight : tier.fontWeight,
+      fontFamily: o.fontFamily ? family : tier.fontFamily,
     };
   });
   void sortedSizes; // keep variable for future size override
@@ -296,6 +301,9 @@ export function applyOverrides(tokens: ParsedTokens, overrides?: PreviewOverride
     : tokens.shadows;
 
   const newPrimary = pick(o.primaryColor, tokens.identity.primary);
+  const fonts = o.fontFamily
+    ? [{ raw: family, role: "builder override" }]
+    : tokens.typography.fonts;
   // If the user changed the primary color in the customizer, update the brand
   // entry of paletteRoles so the swatch reflects their pick. Re-categorize the
   // old primary (it might shift from "brand" → "accent"). Other categories are
@@ -326,6 +334,7 @@ export function applyOverrides(tokens: ParsedTokens, overrides?: PreviewOverride
       family,
       headingWeight,
       hierarchy,
+      fonts,
     },
     radii: {
       button: buttonRadius,
@@ -865,6 +874,53 @@ export function componentsFromTokens(md: string): ComponentBlock[] | null {
   return [...byType.entries()].map(([type, variants]) => ({ type, heading: "", variants }));
 }
 
+function unwrapReferenceAstNode(node: ReferenceAstNode): unknown {
+  if (Array.isArray(node)) return node.map(unwrapReferenceAstNode);
+  if (node && typeof node === "object") {
+    if ("value" in node && "claimPath" in node) return node.value;
+    return Object.fromEntries(
+      Object.entries(node).map(([key, value]) => [key, unwrapReferenceAstNode(value)]),
+    );
+  }
+  return node;
+}
+
+function hasCanonicalNode(node: ReferenceAstNode): boolean {
+  if (Array.isArray(node)) return node.some(hasCanonicalNode);
+  if (!node || typeof node !== "object") return false;
+  if ("value" in node && "origin" in node && "confidence" in node) {
+    return node.origin === "frontmatter" && node.confidence === "high";
+  }
+  return Object.values(node).some(hasCanonicalNode);
+}
+
+/** Canonical structured-component adapter. This removes the client-side YAML
+ * parser from AST-backed routes while retaining the prose adapter for rollback. */
+function componentsFromReferenceAst(tokens?: ReferenceAstTokens): ComponentBlock[] | null {
+  if (!tokens || Object.keys(tokens.components).length === 0) return null;
+  const byType = new Map<ComponentType, ComponentVariant[]>();
+  for (const [name, node] of Object.entries(tokens.components)) {
+    if (!hasCanonicalNode(node)) continue;
+    const raw = unwrapReferenceAstNode(node);
+    if (!raw || typeof raw !== "object" || Array.isArray(raw)) continue;
+    const obj = raw as Record<string, unknown>;
+    let type = (obj.type as ComponentType) || classifyComponentHeading(name) || "card";
+    if (!RENDER_TYPES.includes(type)) type = "card";
+    const variant: ComponentVariant = { name, extras: {} };
+    for (const [field, rawValue] of Object.entries(obj)) {
+      if (field === "type" || field === "group" || rawValue === null || rawValue === "") continue;
+      const value = String(rawValue);
+      const key = TOKEN_FIELD_MAP[field.toLowerCase()];
+      if (key) (variant as unknown as Record<string, string>)[key] = value;
+      else variant.extras[field] = value;
+    }
+    if (!byType.has(type)) byType.set(type, []);
+    byType.get(type)!.push(variant);
+  }
+  if (byType.size === 0) return null;
+  return [...byType.entries()].map(([type, variants]) => ({ type, heading: "", variants }));
+}
+
 /** Parse §4 into a list of ComponentBlock. Rules (see spec/components-schema.md):
  *  - `## 4. Component Stylings` opens the section.
  *  - Each `### Heading` starts a subsection. We map heading → ComponentType.
@@ -1214,6 +1270,58 @@ function buildHierarchy(sizes: number[], headingWeight: string, hasCJK: boolean)
   ];
 }
 
+function astScalar(node: ReferenceAstNode | undefined): string | number | boolean | null | undefined {
+  if (!node || Array.isArray(node) || typeof node !== "object" || !("value" in node)) return undefined;
+  if (node.origin !== "frontmatter" || node.confidence !== "high") return undefined;
+  const value = node.value;
+  return typeof value === "string" || typeof value === "number" || typeof value === "boolean" || value === null
+    ? value
+    : undefined;
+}
+
+function astTierField(tier: ReferenceAstNode, field: string): string | number | boolean | null | undefined {
+  if (!tier || Array.isArray(tier) || typeof tier !== "object" || "value" in tier) return undefined;
+  return astScalar((tier as { readonly [key: string]: ReferenceAstNode })[field]);
+}
+
+/** Prefer exact frontmatter roles over a prose-derived normalized scale. */
+export function buildStructuredHierarchy(
+  tiers: ReferenceAstTokens["typography"]["tiers"] | undefined,
+): TypographyTier[] {
+  if (!tiers) return [];
+  return Object.entries(tiers)
+    .flatMap(([key, tier]) => {
+      const size = astTierField(tier, "size");
+      const weight = astTierField(tier, "weight");
+      if (typeof size !== "number" || typeof weight !== "number") return [];
+      const lineHeight = astTierField(tier, "lineHeight");
+      const tracking = astTierField(tier, "tracking");
+      const use = astTierField(tier, "use");
+      const family = astTierField(tier, "family");
+      const label = key
+        .split("-")
+        .map((part) => part ? part[0].toUpperCase() + part.slice(1) : part)
+        .join(" ");
+      return [{
+        role: label,
+        label,
+        sampleText: typeof use === "string" ? use : label,
+        fontSize: size,
+        fontWeight: weight,
+        lineHeight: typeof lineHeight === "number" || typeof lineHeight === "string"
+          ? lineHeight
+          : size >= 20 ? 1.25 : 1.5,
+        letterSpacing: typeof tracking === "number"
+          ? `${tracking}px`
+          : typeof tracking === "string" ? tracking : "0",
+        fontFamily: typeof family === "string" ? family : undefined,
+        muted: /^(?:body-[24]|caption|small)/i.test(key),
+      } satisfies TypographyTier];
+    })
+    .sort((a, b) => b.fontSize - a.fontSize || b.fontWeight - a.fontWeight)
+    .slice(0, 10);
+}
+
 export function extractTokens(detail: {
   id: string;
   designMd: string;
@@ -1228,8 +1336,21 @@ export function extractTokens(detail: {
   mood: string;
   accent?: string;
   border?: string;
+  referenceAst?: ReferenceDetailAstContract;
 }): ParsedTokens {
   const md = detail.designMd;
+  const astTokens = detail.referenceAst?.tokens;
+  const hasCanonicalAst = Boolean(detail.referenceAst);
+  const isCanonicalValue = (value: { origin: string; confidence: string }) =>
+    value.origin === "frontmatter" && value.confidence === "high";
+  const canonicalColors = Object.entries(astTokens?.colors ?? {}).filter(([, value]) => isCanonicalValue(value));
+  const astPalette = canonicalColors.map(([, { value }]) => value);
+  const palette = hasCanonicalAst ? [...new Set(astPalette)] : extractPalette(md);
+  const canonicalSpacing = Object.entries(astTokens?.spacing ?? {}).filter(([, value]) => isCanonicalValue(value));
+  const astSpacing = canonicalSpacing.map(([, { value }]) => value);
+  const spacing = hasCanonicalAst
+    ? [...new Set(astSpacing)].sort((a, b) => a - b)
+    : extractSpacing(md);
   const SPECIAL_NAMES: Record<string, string> = {
     krds: "KRDS", ibm: "IBM", bmw: "BMW", nvidia: "NVIDIA", ridi: "RIDI",
     qanda: "QANDA", kakaobank: "KakaoBank", spacex: "SpaceX", "x.ai": "xAI",
@@ -1255,33 +1376,49 @@ export function extractTokens(detail: {
       mood: detail.mood,
     } as ParsedTokens["identity"],
     typography: (() => {
-      const sizes = extractFontSizes(md);
+      const sizes = hasCanonicalAst
+        ? Object.values(astTokens?.typography.tiers ?? {}).flatMap((tier) => {
+            const size = astTierField(tier, "size");
+            return typeof size === "number" ? [size] : [];
+          })
+        : extractFontSizes(md);
+      const structuredHierarchy = buildStructuredHierarchy(astTokens?.typography.tiers);
       const hasCJK = /Hiragino|Meiryo|PingFang|Noto Sans (?:JP|KR|TC|SC)|MS Gothic|Heiti|微軟|黑體|ヒラギノ/i.test(detail.fontFamily) || /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af]/.test(md);
-      const fonts = extractFontMentions(md);
+      const structuredFamilies = Object.entries(astTokens?.typography.families ?? {})
+        .filter(([, value]) => isCanonicalValue(value))
+        .map(
+        ([role, value]) => ({ raw: value.value, role }),
+      );
+      // Structured family roles are authoritative. Falling back to prose is
+      // reserved for legacy documents; mixing both caused surface-specific
+      // Baemin fonts to be flattened into multiple false "Primary" cards.
+      const fonts = hasCanonicalAst ? structuredFamilies : extractFontMentions(md);
       const hasCanonical = (name: string) =>
         fonts.some((f) => canonicalFontName(f.raw).toLowerCase() === canonicalFontName(name).toLowerCase());
       // Surface the brand/display face (e.g. "BMHANNA Pro") the §3 prose parser
       // usually misses — resolved from frontmatter tokens.typography.family.
-      if (detail.brandFont && !hasCanonical(detail.brandFont)) {
+      if (!hasCanonicalAst && detail.brandFont && !hasCanonical(detail.brandFont)) {
         fonts.unshift({ raw: detail.brandFont, role: "display" });
       }
       // If parser missed the API-provided primary font, prepend it
-      if (detail.fontFamily) {
+      if (!hasCanonicalAst && detail.fontFamily) {
         const apiPrimary = detail.fontFamily.split(",")[0].replace(/['"]/g, "").trim();
         if (apiPrimary && !hasCanonical(apiPrimary)) {
           fonts.unshift({ raw: apiPrimary, role: "primary" });
         }
       }
-      if (detail.mono && !hasCanonical(detail.mono)) {
+      if (!hasCanonicalAst && detail.mono && !hasCanonical(detail.mono)) {
         fonts.push({ raw: detail.mono, role: "mono" });
       }
       return {
-        family: detail.fontFamily,
-        mono: detail.mono,
+        family: structuredFamilies[0]?.raw ?? (hasCanonicalAst ? "" : detail.fontFamily),
+        mono: structuredFamilies.find((font) => font.role === "mono")?.raw ?? (hasCanonicalAst ? undefined : detail.mono),
         headingWeight: detail.headingWeight,
         weights: extractWeights(md),
         sizes,
-        hierarchy: buildHierarchy(sizes, detail.headingWeight, hasCJK),
+        hierarchy: hasCanonicalAst
+          ? structuredHierarchy
+          : buildHierarchy(sizes, detail.headingWeight, hasCJK),
         fonts,
       };
     })(),
@@ -1301,6 +1438,15 @@ export function extractTokens(detail: {
       };
     })(),
     radiusScale: (() => {
+      const structured = Object.entries(astTokens?.rounded ?? {})
+        .filter(([, token]) => isCanonicalValue(token))
+        .map(([element, token]) => ({
+        element,
+        value: token.value,
+        label: "Structured token",
+      }));
+      if (hasCanonicalAst) return structured;
+      if (structured.length >= 3) return structured;
       const parsed = extractRadiusScale(md);
       if (parsed.length >= 3) return parsed;
       // Mid-fallback: scan the whole DESIGN.md for "Default radius" and
@@ -1323,26 +1469,48 @@ export function extractTokens(detail: {
       for (const r of prose) map.set(r.element, r);
       return [...map.values()];
     })(),
-    palette: extractPalette(md),
+    palette,
     paletteRoles: (() => {
-      const palette = extractPalette(md);
+      if (hasCanonicalAst) {
+        return canonicalColors.map(([name, token]) => ({
+          hex: token.value,
+          name,
+          category: /^(?:primary|brand)$/i.test(name)
+            ? "brand"
+            : /accent|secondary/i.test(name)
+              ? "accent"
+              : /success|error|danger|warning|info/i.test(name)
+                ? "semantic"
+                : "neutral",
+        } satisfies ColorRole));
+      }
       return extractColorRoles(palette, detail.primary, md);
     })(),
-    spacing: extractSpacing(md),
+    spacing,
     spacingScale: (() => {
-      const values = extractSpacing(md);
-      return extractSpacingScale(md, values);
+      if (hasCanonicalAst) {
+        return canonicalSpacing.map(([purpose, token]) => ({
+          value: token.value,
+          purpose,
+        }));
+      }
+      return extractSpacingScale(md, spacing);
     })(),
     functionalSpacing: (() => {
-      const values = extractSpacing(md);
-      const scale = extractSpacingScale(md, values);
-      return deriveFunctionalSpacing(md, values, scale);
+      const scale = extractSpacingScale(md, spacing);
+      return deriveFunctionalSpacing(md, spacing, scale);
     })(),
-    borders: extractBorders(md),
-    // Prefer structured `tokens.components` (getdesign-aligned, explicit per-
-    // component type). Falls back to prose §4 parsing for un-migrated refs.
-    components: componentsFromTokens(md) ?? extractComponentSpecs(md),
-    shadows: extractShadows(md),
+    borders: hasCanonicalAst ? [] : extractBorders(md),
+    // Canonical product surfaces never synthesize missing components from
+    // prose. Unknown data is represented by absence, not a plausible guess.
+    components: hasCanonicalAst
+      ? (componentsFromReferenceAst(astTokens) ?? [])
+      : (componentsFromTokens(md) ?? extractComponentSpecs(md)),
+    shadows: Object.entries(astTokens?.shadows ?? {}).some(([, token]) => isCanonicalValue(token))
+      ? Object.entries(astTokens!.shadows)
+          .filter(([, token]) => isCanonicalValue(token))
+          .map(([name, token]) => ({ name, value: token.value }))
+      : hasCanonicalAst ? [] : extractShadows(md),
     guidelines: extractGuidelines(md),
   };
 }

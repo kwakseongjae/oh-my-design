@@ -4,386 +4,339 @@ name: Together AI
 country: US
 category: ai
 homepage: "https://www.together.ai"
-primary_color: "#0f6fff"
+primary_color: "#000000"
 logo:
   type: github
   slug: togethercomputer
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Together AI Brand
   url: "https://www.together.ai/brand"
   type: brand
-  description: Together AI's logo, color, and typography brand guidelines.
+  description: Official logo, colour-family, and typography guidance; it is distinct from public web and docs-chrome observations.
   og_image: "https://cdn.prod.website-files.com/69654e88dce9154b5f1206dd/69a49f8243e74bf4b805d130_og-brand.jpg"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.together.ai/", inspected: "2026-07-13" }
+    - { id: about, kind: corporate-marketing, url: "https://www.together.ai/about-us", inspected: "2026-07-13" }
+    - { id: brand, kind: official-brand-guidelines, url: "https://www.together.ai/brand", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.together.ai/", captured: "2026-07-13" }
+    - { id: about-live, kind: product-surface, url: "https://www.together.ai/about-us", captured: "2026-07-13" }
+    - { id: brand-live, kind: brand-asset, url: "https://www.together.ai/brand", captured: "2026-07-13" }
+    - { id: docs-context, kind: official-doc, url: "https://docs.together.ai/intro", captured: "2026-07-13" }
+    - { id: about-context, kind: official-doc, url: "https://www.together.ai/about-us", captured: "2026-07-13" }
+    - { id: careers-context, kind: official-doc, url: "https://www.together.ai/careers", captured: "2026-07-13" }
+    - { id: brand-context, kind: brand-asset, url: "https://www.together.ai/brand", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: computed-style-and-fontfaceset, captured: "2026-07-13" }
+    "tokens.colors.canvas": *home
+    "tokens.colors.tab-cyan": *home
+    "tokens.colors.tab-lavender": *home
+    "tokens.typography.family.ui": *home
+    "tokens.typography.family.label": *home
+    "tokens.typography.display.size": *home
+    "tokens.typography.display.weight": *home
+    "tokens.typography.display.lineHeight": *home
+    "tokens.typography.display.tracking": *home
+    "tokens.typography.display.use": *home
+    "tokens.typography.body.size": *home
+    "tokens.typography.body.weight": *home
+    "tokens.typography.body.lineHeight": *home
+    "tokens.typography.body.use": *home
+    "tokens.typography.action.size": *home
+    "tokens.typography.action.weight": *home
+    "tokens.typography.action.lineHeight": *home
+    "tokens.typography.action.tracking": *home
+    "tokens.typography.action.use": *home
+    "tokens.typography.label.size": *home
+    "tokens.typography.label.weight": *home
+    "tokens.typography.label.lineHeight": *home
+    "tokens.typography.label.tracking": *home
+    "tokens.typography.label.use": *home
+    "tokens.spacing.xs": *home
+    "tokens.spacing.sm": *home
+    "tokens.spacing.md": *home
+    "tokens.spacing.lg": *home
+    "tokens.spacing.xl": *home
+    "tokens.spacing.xxl": *home
+    "tokens.rounded.none": *home
+    "tokens.rounded.control": *home
+    "tokens.rounded.container": *home
+    "tokens.shadow.none": *home
+    "tokens.components.primary-action.type": *home
+    "tokens.components.primary-action.bg": *home
+    "tokens.components.primary-action.fg": *home
+    "tokens.components.primary-action.radius": *home
+    "tokens.components.primary-action.padding": *home
+    "tokens.components.primary-action.height": *home
+    "tokens.components.primary-action.font": *home
+    "tokens.components.primary-action.states": *home
+    "tokens.components.primary-action.use": *home
+    "tokens.components.secondary-action.type": *home
+    "tokens.components.secondary-action.bg": *home
+    "tokens.components.secondary-action.fg": *home
+    "tokens.components.secondary-action.radius": *home
+    "tokens.components.secondary-action.padding": *home
+    "tokens.components.secondary-action.font": *home
+    "tokens.components.secondary-action.states": *home
+    "tokens.components.secondary-action.use": *home
+    "tokens.components.selected-tab-cyan.type": *home
+    "tokens.components.selected-tab-cyan.bg": *home
+    "tokens.components.selected-tab-cyan.fg": *home
+    "tokens.components.selected-tab-cyan.radius": *home
+    "tokens.components.selected-tab-cyan.padding": *home
+    "tokens.components.selected-tab-cyan.height": *home
+    "tokens.components.selected-tab-cyan.font": *home
+    "tokens.components.selected-tab-cyan.states": *home
+    "tokens.components.selected-tab-cyan.use": *home
+    "tokens.components.tab-panel.type": *home
+    "tokens.components.tab-panel.bg": *home
+    "tokens.components.tab-panel.fg": *home
+    "tokens.components.tab-panel.radius": *home
+    "tokens.components.tab-panel.padding": *home
+    "tokens.components.tab-panel.use": *home
+    "tokens.components.research-card.type": *home
+    "tokens.components.research-card.bg": *home
+    "tokens.components.research-card.fg": *home
+    "tokens.components.research-card.radius": *home
+    "tokens.components.research-card.padding": *home
+    "tokens.components.research-card.use": *home
+    "tokens.components.disabled-slider-arrow.type": *home
+    "tokens.components.disabled-slider-arrow.bg": *home
+    "tokens.components.disabled-slider-arrow.fg": *home
+    "tokens.components.disabled-slider-arrow.radius": *home
+    "tokens.components.disabled-slider-arrow.size": *home
+    "tokens.components.disabled-slider-arrow.states": *home
+    "tokens.components.disabled-slider-arrow.use": *home
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Only supplied public marketing, corporate-marketing, and official-brand capture is tokenized. No authenticated console or documentation chrome was captured; the documented product surface and brand assets remain separate evidence domains."
   colors:
-    primary: "#0f6fff"
-    magenta: "#ef2cc1"
-    orange: "#fc4c02"
-    dark-blue: "#010120"
-    lavender: "#bdbbff"
+    primary: "#000000"
     canvas: "#ffffff"
-    foreground: "#000000"
-    on-dark: "#ffffff"
+    tab-cyan: "#c8f6f9"
+    tab-lavender: "#e2e1fe"
   typography:
-    family: { sans: "The Future", mono: "PP Neue Montreal Mono" }
-    display:      { size: 64, weight: 500, lineHeight: 1.05, tracking: -1.92, use: "Hero, dense blocks" }
-    section:      { size: 40, weight: 500, lineHeight: 1.20, tracking: -0.8, use: "Feature section titles" }
-    subheading:   { size: 28, weight: 500, lineHeight: 1.15, tracking: -0.42, use: "Card headings" }
-    feature-title: { size: 22, weight: 500, lineHeight: 1.15, tracking: -0.22, use: "Small feature headings" }
-    body-lg:      { size: 18, weight: 400, lineHeight: 1.30, tracking: -0.18, use: "Descriptions, sections" }
-    body:         { size: 16, weight: 400, lineHeight: 1.28, tracking: -0.16, use: "Standard body, nav, buttons" }
-    caption:      { size: 14, weight: 400, lineHeight: 1.40, use: "Metadata, descriptions" }
-    mono-label:   { size: 16, weight: 500, lineHeight: 1.00, tracking: 0.08, use: "Uppercase section labels" }
-    mono-small:   { size: 11, weight: 500, lineHeight: 1.00, tracking: 0.055, use: "Small uppercase tags" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48 }
-  rounded: { sm: 4, md: 8, lg: 8, full: 9999 }
+    family: { ui: "The Future", label: "PP Neue Montreal Mono" }
+    display: { size: 64, weight: 500, lineHeight: 1.10, tracking: -1.92, use: "Observed marketing h1" }
+    body: { size: 16, weight: 400, lineHeight: 1.25, use: "Observed public marketing, about, and brand body/list text" }
+    action: { size: 16, weight: 500, lineHeight: 1.00, tracking: 0.08, use: "Observed compact public action" }
+    label: { size: 11, weight: 500, lineHeight: 1.40, tracking: 0.055, use: "Observed public mono label" }
+  spacing: { xs: 4, sm: 6, md: 8, lg: 16, xl: 20, xxl: 40 }
+  rounded: { none: 0, control: 4, container: 8 }
   shadow:
-    subtle: "rgba(1,1,32,0.1) 0px 4px 10px"
+    none: "none"
   components_harvested: true
   components:
-    button-dark: { type: button, bg: "#010120", fg: "#ffffff", radius: 4, use: "Primary CTA on light surfaces" }
-    button-outline: { type: button, fg: "#000000", radius: 4, use: "Secondary actions on light surfaces" }
-    card: { type: card, bg: "#ffffff", radius: 8, use: "Container with dark-blue-tinted subtle shadow, stats numbers" }
-    badge: { type: badge, fg: "#000000", radius: 4, padding: "2px 8px", font: "16/500", use: "Compact uppercase mono tag" }
+    primary-action: { type: button, bg: "#000000", fg: "#ffffff", radius: "4px", padding: "8px 16px", height: "40px", font: "16px / 500 PP Neue Montreal Mono", states: "hover, focus, and pressed captured for selector; no common state value promoted", use: "Public compact action at home::[data-omd-capture=20]" }
+    secondary-action: { type: button, bg: "rgba(0, 0, 0, 0.08)", fg: "#000000", radius: "4px", padding: "16px", font: "16px / 500 PP Neue Montreal Mono", states: "hover, focus, and pressed captured for selector", use: "Public light-surface action at home::[data-omd-capture=22]" }
+    selected-tab-cyan: { type: tab, bg: "#c8f6f9", fg: "#000000", radius: "4px", padding: "4px 0px", height: "72px", font: "16px / 400 The Future", states: "selected and tab-selected observed", use: "Home tab at home::[data-omd-capture=29]" }
+    tab-panel: { type: card, bg: "#ffffff", fg: "#000000", radius: "8px", padding: "16px 16px 16px 40px", use: "Home tab panel at home::#tabs-0-panel-0 (role tabpanel)" }
+    research-card: { type: card, bg: "rgba(255, 255, 255, 0.08)", fg: "#ffffff", radius: "4px", padding: "20px 40px", use: "Home research card at home::div.research-card" }
+    disabled-slider-arrow: { type: button, bg: "rgba(255, 255, 255, 0.12)", fg: "#ffffff", radius: "4px", size: "40px", states: "disabled observed", use: "Disabled home carousel arrow at home::[data-omd-capture=38]" }
 ---
 
 # Design System Inspiration of Together AI
 
 ## 1. Visual Theme & Atmosphere
 
-Together AI's interface is a pastel-gradient dreamscape built for enterprise AI infrastructure — a design that somehow makes GPU clusters and model inference feel light, airy, and optimistic. The hero section blooms with soft pink-blue-lavender gradients and abstract, painterly illustrations that evoke clouds and flight, establishing a visual metaphor for the "AI-Native Cloud" proposition. Against this softness, the typography cuts through with precision: "The Future" display font at 64px with aggressive negative tracking (-1.92px) creates dense, authoritative headline blocks.
+Together AI describes itself as the AI Native Cloud: a full-stack platform for production AI built on systems research. Its official material ties that work to open and responsible development, helping teams ship faster, scale reliably, and improve unit economics. The public web language recorded on 13 July 2026 turns that infrastructure message into a stark, editorial surface: black actions and type on white, a large geometric display face, and small monospace control language. The official brand guide says The Future is the headline-and-body typeface and identifies the logo plus three colour families as its visual foundation. [About](https://www.together.ai/about-us) · [Brand](https://www.together.ai/brand)
 
-The design straddles two worlds: a bright, white-canvas light side where pastel gradients and stats cards create an approachable platform overview, and a dark navy universe (`#010120` — not gray-black but a deep midnight blue) where research papers and technical content live. This dual-world approach elegantly separates the "business" messaging (light, friendly, stat-driven) from the "research" messaging (dark, serious, academic).
-
-What makes Together AI distinctive is its type system. "The Future" handles all display and body text with a geometric modernist aesthetic, while "PP Neue Montreal Mono" provides uppercase labels with meticulous letter-spacing — creating a "technical infrastructure company with taste" personality. The brand accents — magenta (`#ef2cc1`) and orange (`#fc4c02`) — appear sparingly in the gradient and illustrations, never polluting the clean UI.
+The supplied runtime evidence covers only the public home, About, and Brand pages. It shows the recurring black/white structure, The Future in visible reading and display roles, and PP Neue Montreal Mono in compact public actions and labels. Cyan and lavender were observed only on particular selected home tabs; they are retained with their selectors rather than generalized into a complete semantic palette. An authenticated console, API UI, and the separately hosted documentation chrome were not captured, so this reference does not claim their tokens or component rules.
 
 **Key Characteristics:**
-- Soft pastel gradients (pink, blue, lavender) against pure white canvas
-- Deep midnight blue (`#010120`) for dark/research sections — not gray-black
-- Custom "The Future" font with aggressive negative letter-spacing throughout
-- PP Neue Montreal Mono for uppercase technical labels
-- Sharp geometry (4px, 8px radius) — not rounded, not pill
-- Magenta (#ef2cc1) + orange (#fc4c02) brand accents in illustrations only
-- Lavender (#bdbbff) as a soft secondary accent
-- Enterprise stats prominently displayed (2x, 60%, 90%)
-- Dark-blue-tinted shadows (rgba(1, 1, 32, 0.1))
+- Officially positioned as a full-stack, research-led production AI platform
+- Black `#000000` public action treatment and white `#ffffff` canvas in the supplied capture
+- The Future for visible display/body use; PP Neue Montreal Mono for observed action/label use
+- Compact 4px controls, 8px tab panels, and no observed box shadows on the retained components
+- Selector-specific cyan and lavender selected-tab surfaces, not an inferred universal palette
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Brand Magenta** (`#ef2cc1`): The primary brand accent — a vivid pink-magenta used in gradient illustrations and the highest-signal brand moments. Never used as UI chrome.
-- **Brand Orange** (`#fc4c02`): The secondary brand accent — a vivid orange for gradient endpoints and warm accent moments.
-- **Dark Blue** (`#010120`): The primary dark surface — a deep midnight blue-black used for research sections, footer, and dark containers. Not gray, not black — distinctly blue.
+### Observed public web colours
 
-### Secondary & Accent
-- **Soft Lavender** (`#bdbbff`): A gentle blue-violet used for subtle accents, secondary indicators, and soft UI highlights.
-- **Black 40** (`#00000066`): Semi-transparent black for de-emphasized overlays and secondary text.
+- **Primary action / ink** (`#000000`): computed on the retained compact black action and repeated public text/border observations.
+- **Canvas / on-dark text** (`#ffffff`): observed page and tab-panel canvas plus inverse action/card text.
+- **Selected tab cyan** (`#c8f6f9`): observed only on `home::[data-omd-capture="29"]` while selected.
+- **Selected tab lavender** (`#e2e1fe`): observed only after a recorded home-tab interaction at `home::[data-omd-interaction-capture="tab-1-0"]`.
+- **Light secondary fill** (`rgba(0, 0, 0, 0.08)`): observed on the selector-specific public secondary action.
+- **Dark secondary fill** (`rgba(255, 255, 255, 0.12)`): observed on the public research-card action and disabled carousel arrow.
 
-### Surface & Background
-- **Pure White** (`#ffffff`): The primary light-section page background.
-- **Dark Blue** (`#010120`): Dark-section backgrounds — research, footer, technical content.
-- **Glass Light** (`rgba(255, 255, 255, 0.12)`): Frosted glass button backgrounds on dark sections.
-- **Glass Dark** (`rgba(0, 0, 0, 0.08)`): Subtle tinted surfaces on light sections.
+### Brand and domain boundary
 
-### Neutrals & Text
-- **Pure Black** (`#000000`): Primary text on light surfaces.
-- **Pure White** (`#ffffff`): Primary text on dark surfaces.
-- **Black 8%** (`rgba(0, 0, 0, 0.08)`): Borders and subtle containment on light surfaces.
-- **White 12%** (`rgba(255, 255, 255, 0.12)`): Borders and containment on dark surfaces.
-
-### Gradient System
-- **Pastel Cloud Gradient**: Soft pink → lavender → soft blue gradients in hero illustrations. These appear in abstract, painterly forms — clouds, feathers, flowing shapes — that create visual warmth without literal meaning.
-- **Hero Gradient**: The hero background uses soft pastel tints layered over white, creating a dawn-like atmospheric effect.
+Together AI’s official Brand page calls its three foundational colour families general-purpose brand colours, but the public text extraction did not expose stable numeric values for that artwork. They are therefore not added as machine tokens. The separate documentation overview establishes product capability context—running, training, and serving open-source models—but its Mintlify chrome is not a source for the marketing tokens above. [Brand](https://www.together.ai/brand) · [Docs overview](https://docs.together.ai/intro)
 
 ## 3. Typography Rules
 
-### Font Family
-- **Primary**: `The Future`, with fallback: `Arial`
-- **Monospace / Labels**: `PP Neue Montreal Mono`, with fallback: `Georgia`
+### Evidence classes
 
-### Hierarchy
+- **Official brand / product-use — The Future:** Together AI explicitly calls The Future its primary headline and body typeface and describes it as a homage to Futura. [Brand](https://www.together.ai/brand)
+- **Live computed surface-use + FontFaceSet/source corroboration — The Future:** 957 visible uses across the three supplied public surfaces, with four Together-hosted `.woff2` source URLs for light, regular, medium, and bold files.
+- **Live computed surface-use + FontFaceSet/source corroboration — PP Neue Montreal Mono:** 134 visible uses, including public buttons and headings, with six Together-hosted `.woff2` source URLs. Pangram Pangram’s official Neue Montreal site identifies the family; that does not create a redistribution grant for Together’s served files. [Neue Montreal](https://neuemontreal.com/)
+- **Declared-only — The Future Mono:** four Together-hosted `@font-face` source files were declared, but no visible computed use was recorded. It is not a UI token.
+- **Declared-only — swiper-icons and webflow-icons:** asset faces with no visible computed use; not UI tokens.
+- **License boundary:** Together’s brand page and Terms do not publish a font licence or redistribution permission for these webfont files. Treat them as site-delivery assets; do not extract or redistribute them.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display / Hero | The Future | 64px (4rem) | 400–500 | 1.00–1.10 (tight) | -1.92px | Maximum impact, dense blocks |
-| Section Heading | The Future | 40px (2.5rem) | 500 | 1.20 (tight) | -0.8px | Feature section titles |
-| Sub-heading | The Future | 28px (1.75rem) | 500 | 1.15 (tight) | -0.42px | Card headings |
-| Feature Title | The Future | 22px (1.38rem) | 500 | 1.15 (tight) | -0.22px | Small feature headings |
-| Body Large | The Future | 18px (1.13rem) | 400–500 | 1.30 (tight) | -0.18px | Descriptions, sections |
-| Body / Button | The Future | 16px (1rem) | 400–500 | 1.25–1.30 | -0.16px | Standard body, nav, buttons |
-| Caption | The Future | 14px (0.88rem) | 400–500 | 1.40 | normal | Metadata, descriptions |
-| Mono Label | PP Neue Montreal Mono | 16px (1rem) | 500 | 1.00 (tight) | 0.08px | Uppercase section labels |
-| Mono Small | PP Neue Montreal Mono | 11px (0.69rem) | 500 | 1.00–1.40 | 0.055–0.08px | Small uppercase tags |
-| Mono Micro | PP Neue Montreal Mono | 10px (0.63rem) | 400 | 1.40 | 0.05px | Smallest uppercase labels |
+### Observed hierarchy
 
-### Principles
-- **Negative tracking everywhere**: Every size of "The Future" uses negative letter-spacing (-0.16px to -1.92px), creating consistently tight, modern text.
-- **Mono for structure**: PP Neue Montreal Mono in uppercase with positive letter-spacing creates technical "label" moments that structure the page without competing with display text.
-- **Weight 500 as emphasis**: The system uses 400 (regular) and 500 (medium) — no bold. Medium weight marks headings and emphasis.
-- **Tight line-heights throughout**: Even body text uses 1.25–1.30 line-height — tighter than typical, creating a dense, information-rich feel.
+| Role | Family | Size | Weight | Line Height | Tracking | Evidence boundary |
+|------|--------|------|--------|-------------|----------|-------------------|
+| Marketing display | The Future | 64px | 500 | 70.4px | -1.92px | Captured public `h1` |
+| Public body/list | The Future | 16px | 400 | 20px | normal | Repeated public text/list roles |
+| Compact action | PP Neue Montreal Mono | 16px | 500 | 16px | 0.08px | Selector-specific public actions |
+| Mono label | PP Neue Montreal Mono | 11px | 500 | 15.4px | 0.055px | Public label role |
 
 ## 4. Component Stylings
 
-### Buttons
+### Public actions
 
-**Glass on Dark**
-- Background: `rgba(255, 255, 255, 0.12)` (frosted glass)
-- Text: Pure White (`#ffffff`)
-- Radius: sharp (4px)
-- Opacity: 0.5
-- Hover: transparent dark overlay
-- Used on dark sections — subtle, glass-like
+**Compact black action**
+- Background: `#000000`
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 8px 16px
+- Height: 40px
+- Font: 16px / 500 / PP Neue Montreal Mono
+- Use: `home::[data-omd-capture="20"]`; hover, focus, and pressed were captured for this selector, but no shared state value is promoted.
 
-**Dark Solid**
-- Background: Dark Blue (`#010120`) or Pure Black
-- Text: Pure White
-- Radius: sharp (4px)
-- The primary CTA on light surfaces
+**Light secondary action**
+- Background: `rgba(0, 0, 0, 0.08)`
+- Text: `#000000`
+- Radius: 4px
+- Padding: 16px
+- Font: 16px / 500 / PP Neue Montreal Mono
+- Use: `home::[data-omd-capture="22"]`; hover, focus, and pressed were captured for this selector.
 
-**Outlined Light**
-- Border: `1px solid rgba(0, 0, 0, 0.08)`
-- Background: transparent or subtle glass
-- Text: Pure Black
-- Radius: sharp (4px)
-- Secondary actions on light surfaces
+**Research-card action**
+- Background: `rgba(255, 255, 255, 0.12)`
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 16px
+- Font: 16px / 500 / PP Neue Montreal Mono
+- Use: `home::[data-omd-capture="40"]`, class `btn … is-secondary-dark`.
 
-### Cards & Containers
-- Background: Pure White or subtle glass tint
-- Border: `1px solid rgba(0, 0, 0, 0.08)` on light; `1px solid rgba(255, 255, 255, 0.12)` on dark
-- Radius: sharp (4px) for badges and small elements; comfortable (8px) for larger containers
-- Shadow: dark-blue-tinted (`rgba(1, 1, 32, 0.1) 0px 4px 10px`) — warm and subtle
-- Stats cards with large numbers prominently displayed
+### Home tab treatment
 
-### Badges / Tags
-- Background: `rgba(0, 0, 0, 0.04)` (light) or `rgba(255, 255, 255, 0.12)` (dark)
-- Text: Black (light) or White (dark)
-- Padding: 2px 8px (compact)
-- Radius: sharp (4px)
-- Border: `1px solid rgba(0, 0, 0, 0.08)`
-- PP Neue Montreal Mono, uppercase, 16px
+**Selected cyan tab**
+- Background: `#c8f6f9`
+- Text: `#000000`
+- Radius: 4px
+- Padding: 4px 0px
+- Height: 72px
+- Font: 16px / 400 / The Future
+- Use: selected home tab `home::[data-omd-capture="29"]`; selected/tab-selected state recorded.
 
-### Navigation
-- Clean horizontal nav on white/transparent
-- Logo: Together AI wordmark
-- Links: The Future at 16px, weight 400
-- CTA: Dark solid button
-- Hover: no text-decoration
+**Selected lavender tab**
+- Background: `#e2e1fe`
+- Text: `#000000`
+- Radius: 4px
+- Padding: 4px 0px
+- Height: 72px
+- Font: 16px / 400 / The Future
+- Use: interaction-captured selected home tab `home::[data-omd-interaction-capture="tab-1-0"]`; selector-specific, not a general tab variant.
 
-### Image Treatment
-- Abstract pastel gradient illustrations (cloud/feather forms)
-- Product UI screenshots on dark/light surfaces
-- Team photos in editorial style
-- Research paper cards with dark backgrounds
+**Tab panel**
+- Background: `#ffffff`
+- Text: `#000000`
+- Radius: 8px
+- Padding: 16px 16px 16px 40px
+- Use: selected home panel `home::#tabs-0-panel-0`.
 
-### Distinctive Components
+### Research and disabled control
 
-**Stats Bar**
-- Large performance metrics (2x, 60%, 90%)
-- Bold display numbers
-- Short descriptive captions beneath
-- Clean horizontal layout
+**Research card**
+- Background: `rgba(255, 255, 255, 0.08)`
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 20px 40px
+- Font: 16px / 400 / The Future
+- Use: home `div.research-card`; no shadow was computed.
 
-**Mono Section Labels**
-- PP Neue Montreal Mono, uppercase, 11px, letter-spacing 0.055px
-- Used as navigational signposts throughout the page
-- Technical, structured feel
-
-**Research Section**
-- Dark Blue (#010120) background
-- White text, research paper thumbnails
-- Creates a distinct "academic" zone
-
-**Large Footer Logo**
-- "together" wordmark rendered at massive scale in the dark footer
-- Creates a brand-statement closing moment
+**Disabled carousel arrow**
+- Background: `rgba(255, 255, 255, 0.12)`
+- Text: `#ffffff`
+- Radius: 4px
+- Size: 40px
+- Font: 16px / 400 / The Future
+- Use: disabled home slider arrow `home::[data-omd-capture="38"]`, class containing `swiper-button-disabled`.
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 1px, 2px, 4px, 8px, 10px, 12px, 16px, 20px, 24px, 32px, 44px, 48px, 80px, 100px, 120px
-- Button/badge padding: 2px 8px (compact)
-- Card internal padding: approximately 24–32px
-- Section vertical spacing: generous (80–120px)
-
-### Grid & Container
-- Max container width: approximately 1200px, centered
-- Hero: centered with pastel gradient background
-- Feature sections: multi-column card grids
-- Stats: horizontal row of metric cards
-- Research: dark full-width section
-
-### Whitespace Philosophy
-- **Optimistic breathing room**: Generous spacing between sections creates an open, inviting feel that makes enterprise AI infrastructure feel accessible.
-- **Dual atmosphere**: Light sections breathe with whitespace; dark sections are denser with content.
-- **Stats as visual anchors**: Large numbers with small captions create natural focal points.
-
-### Border Radius Scale
-- Sharp (4px): Buttons, badges, tags, small interactive elements — the primary radius
-- Comfortable (8px): Larger containers, feature cards
-
-*This is a deliberately restrained radius system — no pills, no generous rounding. The sharp geometry contrasts with the soft pastel gradients.*
+The recorded home evidence establishes a compact public control rhythm rather than a complete application grid: 4px control corners, 8px tab-panel corners, 4px/6px/8px/16px/20px/40px spacing values, and a 40px compact action height. The selected tab panel uses asymmetric `16px 16px 16px 40px` padding; research cards use `20px 40px`. These are component observations, not a mandate for separate product or documentation layouts.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, no border | Page background, text blocks |
-| Contained (Level 1) | `1px solid rgba(0,0,0,0.08)` (light) or `rgba(255,255,255,0.12)` (dark) | Cards, badges, containers |
-| Elevated (Level 2) | `rgba(1, 1, 32, 0.1) 0px 4px 10px` | Feature cards, hover states |
-| Dark Zone (Level 3) | Dark Blue (#010120) full-width background | Research, footer, technical sections |
-
-**Shadow Philosophy**: Together AI uses a single, distinctive shadow — tinted with Dark Blue (`rgba(1, 1, 32, 0.1)`) rather than generic black. This gives elevated elements a subtle blue-ish cast that ties them to the brand's midnight-blue dark mode. The shadow is soft (10px blur, 4px offset) and always downward — creating gentle paper-hover elevation.
+The retained components report `box-shadow: none`. Separation is provided by black/white contrast, translucent white or black fills, and the 4px/8px geometry. No general elevation scale is claimed.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use pastel gradients (pink/blue/lavender) for hero illustrations and decorative backgrounds
-- Use Dark Blue (#010120) for dark sections — never generic gray-black
-- Apply negative letter-spacing on all "The Future" text (scaled by size)
-- Use PP Neue Montreal Mono in uppercase for section labels and technical markers
-- Keep border-radius sharp (4px) for badges and interactive elements
-- Use the dark-blue-tinted shadow for elevation
-- Maintain the light/dark section duality — business (light) vs research (dark)
-- Show enterprise stats prominently with large display numbers
+
+- Use The Future only when it is available through a valid licence; keep its observed public display/body roles distinct from the mono label face.
+- Keep the recorded public action treatment compact: 4px corners, black/white contrast, and mono action text.
+- Treat cyan and lavender as the documented home-tab observations, with their selector/surface boundaries intact.
+- Use flat containment where the retained components show `box-shadow: none`.
 
 ### Don't
-- Don't use Brand Magenta (#ef2cc1) or Brand Orange (#fc4c02) as UI colors — they're for illustrations only
-- Don't use pill-shaped or generously rounded corners — the geometry is sharp
-- Don't use generic gray-black for dark sections — always Dark Blue (#010120)
-- Don't use positive letter-spacing on "The Future" — it's always negative
-- Don't use bold (700+) weight — 400–500 is the full range
-- Don't use warm-toned shadows — always dark-blue-tinted
-- Don't reduce section spacing below 48px — the open feeling is core
-- Don't mix in additional typefaces — "The Future" + PP Neue Montreal Mono is the pair
+
+- Do not substitute a system font and label it The Future or PP Neue Montreal Mono.
+- Do not infer console, authenticated API, or Mintlify documentation components from the public marketing capture.
+- Do not turn the selector-specific cyan/lavender tab fills into a general semantic colour system.
+- Do not reintroduce the uncorroborated legacy blue primary, universal navy token, or subpixel pricing-tab values.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <479px | Compact layout, stacked everything |
-| Large Mobile | 479–767px | Single column, hamburger nav |
-| Tablet | 768–991px | 2-column grids begin |
-| Desktop | 992px+ | Full multi-column layout |
-
-### Touch Targets
-- Buttons with adequate padding
-- Card surfaces as touch targets
-- Navigation links at comfortable 16px
-
-### Collapsing Strategy
-- **Navigation**: Collapses to hamburger on mobile
-- **Hero text**: 64px → 40px → 28px progressive scaling
-- **Stats bar**: Horizontal → stacked vertical
-- **Feature grids**: Multi-column → single column
-- **Research section**: Cards stack vertically
-
-### Image Behavior
-- Pastel illustrations scale proportionally
-- Product screenshots maintain aspect ratio
-- Team photos scale within containers
+No responsive breakpoint or mobile layout claim is retained: the supplied evidence records desktop-style computed components and two tab interactions, not a responsive audit. Preserve the observed 40px compact action and 72px tab measurements only in their captured public contexts.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary Text (light): "Pure Black (#000000)"
-- Primary Text (dark): "Pure White (#ffffff)"
-- Page Background: "Pure White (#ffffff)"
-- Dark Surface: "Dark Blue (#010120)"
-- Brand Accent 1: "Brand Magenta (#ef2cc1)"
-- Brand Accent 2: "Brand Orange (#fc4c02)"
-- Soft Accent: "Soft Lavender (#bdbbff)"
-- Border (light): "rgba(0, 0, 0, 0.08)"
-
-### Example Component Prompts
-- "Create a hero section on white with soft pastel gradients (pink → lavender → blue) as background. Headline at 64px 'The Future' weight 500, line-height 1.10, letter-spacing -1.92px. Pure Black text. Include a dark blue CTA button (#010120, 4px radius)."
-- "Design a stats card: large display number (64px, weight 500) with a small caption below (14px). White background, 8px radius, dark-blue-tinted shadow (rgba(1, 1, 32, 0.1) 0px 4px 10px)."
-- "Build a section label: PP Neue Montreal Mono, 11px, weight 500, uppercase, letter-spacing 0.055px. Black text on light, white on dark."
-- "Create a dark research section: Dark Blue (#010120) background. White text, section heading at 40px 'The Future' weight 500, letter-spacing -0.8px. Cards with rgba(255, 255, 255, 0.12) border."
-- "Design a badge: 4px radius, rgba(0, 0, 0, 0.04) background, 1px solid rgba(0, 0, 0, 0.08) border, 'The Future' 16px text. Padding: 2px 8px."
-
-### Iteration Guide
-1. Always specify negative letter-spacing for "The Future" — it's scaled by size
-2. Dark sections use #010120 (midnight blue), never generic black
-3. Shadows are always dark-blue-tinted: rgba(1, 1, 32, 0.1)
-4. Mono labels are always uppercase with positive letter-spacing
-5. Keep radius sharp (4px or 8px) — no pills, no generous rounding
-6. Pastel gradients are for decoration, not UI chrome
+Design a public Together AI-inspired marketing section with a white canvas, black compact mono actions, The Future only when licensed, 4px control geometry, and flat surfaces. Use the documented cyan or lavender only for selector-specific selected tabs, not as a generic product palette. Do not invent authenticated-console, documentation, form-error, or motion patterns from this reference.
 
 ## 10. Voice & Tone
 
-Together AI's voice is **AI-native cloud and OSS-research-positioned.** "The AI Native Cloud" — capability-driven, model-versioned. Marketing emphasizes open-weights model hosting + price-per-token transparency.
-
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Start building", "Contact Sales", "Get started" |
-| Marketing | Model-listed. Hero shows MiniMax / DeepSeek / Qwen / Llama as supported |
-| Documentation | Code-first, model-spec heavy |
-| Error | Specific. "Model not available in region. Try alternate endpoint." |
+Together AI’s official language is direct, research-led, and open-community oriented: “Building the AI Native Cloud” and a full-stack platform for production AI. Its About page pairs delivery language—helping teams ship faster and scale reliably—with values including open and responsible development, empowerment of innovation, and model stewardship. [About](https://www.together.ai/about-us)
 
 **Voice samples**
-- Marketing CTA: *"Start building"* / *"Contact Sales"* <!-- verified: together.ai homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary AI cloud". Generic OpenAI-comparison framing.
+- *“Build what’s next on the AI Native Cloud”* — public home proposition. <!-- verified: together.ai home, 2026-07-13 -->
+- *“Run, train, and serve open-source AI models on Together AI.”* — official documentation overview. <!-- verified: docs.together.ai/intro, 2026-07-13 -->
+- *“We design a full-stack AI platform powered by cutting edge system research.”* — official mission statement. <!-- verified: together.ai/about-us, 2026-07-13 -->
 
 ## 11. Brand Narrative
 
-Together AI (legal name **Together Computer Inc.**) was founded **June 11 2022** by an unusually academic-heavy team of **four co-founders**: **Vipul Ved Prakash (Founder + CEO)**, **Ce Zhang** (ex-ETH Zurich, data-management-for-ML research), **Chris Ré** (Stanford professor; his lab produced foundational data-centric AI work), and **Percy Liang** (Stanford professor; leads Stanford's **Center for Research on Foundation Models (CRFM)**) ([Together AI — About Us](https://www.together.ai/about-us), [Vipul Ved Prakash — Wikipedia](https://en.wikipedia.org/wiki/Vipul_Ved_Prakash), [Latent Space — Cloud Intelligence at 5000 tok/s w/ Ce Zhang + Vipul Ved Prakash](https://www.latent.space/p/together)). Decentralized AI cloud positioned for OSS model hosting — Llama, DeepSeek, Mistral, Qwen, MiniMax served alongside Together's own models. **Funding ~$534M** at **$3.3B valuation** with investors including **Emergence Capital, General Catalyst, NVIDIA** ([TechCrunch — Together $20M for OSS gen-AI](https://techcrunch.com/2023/05/15/together-raises-20m-to-build-open-source-generative-ai-models/), [Tracxn — Together AI](https://tracxn.com/d/companies/togetherai/__fcIBLE0rJMeK3FAdcfzE0H41jE36bJd0FDBWalYo6cY)). Strong adoption among AI startups + research teams. The brand voice tracks this **academic-OSS-cloud** positioning — leading alternative to hyperscaler AI services on speed, cost efficiency, and deep OSS-ecosystem support.
+Together AI’s first-party material frames the company around open and decentralized alternatives for AI infrastructure. In its 2023 seed announcement, co-founder and CEO Vipul Ved Prakash wrote that the founders saw the costs of GPU clusters concentrating foundation models within a small number of companies and wanted an open ecosystem to remain viable. [Seed announcement](https://www.together.ai/blog/seed-funding)
+
+The current About page expresses that direction as the AI Native Cloud: a full-stack production-AI platform powered by systems research. It identifies Vipul Ved Prakash, Ce Zhang, Chris Ré, Tri Dao, and Percy Liang among its founders and lists open development, efficiency, curiosity, and model stewardship among its values. [About](https://www.together.ai/about-us)
 
 ## 12. Principles
 
-1. **Open weights are first-class.** *UI implication:* model catalog leads with OSS models, not proprietary.
-2. **Sharp 4-8px radius.** *UI implication:* never pill chrome.
-3. **Pastel gradients for decoration only.** *UI implication:* never use gradients on UI chrome.
-4. **Token pricing is transparent.** *UI implication:* per-model pricing first-class on landing.
-5. **Black primary CTA.** *UI implication:* use `#000` for primary action.
+1. **Open and responsible development.** *UI implication:* describe model and platform choices plainly; do not imply a closed-only ecosystem. [About](https://www.together.ai/about-us)
+2. **Empower innovation.** *UI implication:* make the next developer/researcher action direct and legible rather than decorative. [About](https://www.together.ai/about-us)
+3. **Do more with less.** *UI implication:* retain the captured flat, compact public chrome instead of adding unsupported ornament. [About](https://www.together.ai/about-us)
+4. **Model stewardship.** *UI implication:* do not make unsupported safety, performance, or product-state claims. [About](https://www.together.ai/about-us)
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Together AI user segments (AI startup engineers, ML researchers, fine-tuning practitioners), not individual people.*
-
-**Sergey Volkov, 33, Berlin.** AI startup engineer. Together for serving fine-tuned Llama 3.
-
-**Aisha Patel, 31, San Francisco.** ML researcher. Uses Together for benchmarking OSS models.
-
-**Marcus Chen, 38, NYC.** Platform engineer. Cost-per-token transparency drove migration.
+Together AI’s official pages name developers, researchers, and teams as audiences for its platform. No first-party persona research, named user archetypes, or role-specific workflow evidence was supplied, so fictional personas are intentionally not created here. [Careers](https://www.together.ai/careers) · [Docs overview](https://docs.together.ai/intro)
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no API keys)** | "Generate first API key" |
-| **Empty (no projects)** | "Try a model" with grid |
-| **Loading (inference)** | Per-token streaming |
-| **Loading (model loading)** | Cold-start indicator |
-| **Error (model)** | Specific error |
-| **Error (rate limit)** | Tier limit + upgrade |
-| **Success (generation)** | Result + share |
-| **Success (deployment)** | Endpoint URL |
-| **Skeleton (model list)** | 4px placeholders |
-| **Disabled (no quota)** | Add credits link |
-| **Loading (long task)** | Persistent progress |
+Only one state is retained from the supplied computed evidence: a disabled public carousel arrow with `rgba(255, 255, 255, 0.12)` background, white text, 4px radius, and 40px size at `home::[data-omd-capture="38"]`. The home capture also records selected/tab-selected tab transitions. Empty, loading, error, success, quota, and authenticated product states were not observed and are not invented.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
-| `motion-streaming` | continuous | Token streaming |
-
-Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+The supplied evidence records interaction kinds and selected/disabled outcomes, but no duration, easing, transition, or reduced-motion values. No motion tokens are claimed.
 
 ---
 
-**Verified:** 2026-05-08 (omd:migrate run 59 — Apple-tier)
-**Tier 1 sources:** together.ai home + /pricing (live DOM via playwright — **canonical 4px (not subpixel-rounded 3.33px)**: Primary `#000` Black 4px / 40px (32px header) / 16px / 16px·**500 ALL CAPS** + Light Outline `rgba(0,0,0,0.08)` + Dark-canvas Outline `rgba(255,255,255,0.12)` + pricing tab 3.25px sub-radius / 13px·500).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/funding):** Together AI About Us, Wikipedia (Vipul Ved Prakash), Latent Space podcast (5000 tok/s), TechCrunch (2023-05 $20M), Tracxn, Clay.
-**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer's 3.33px / 13.3px / 33px were subpixel-rounding artifacts from rem-based measurements; canonical is 4px / 16px / 40px / 16px·500.
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.together.ai/ (marketing computed styles + FontFaceSet), https://www.together.ai/about-us (corporate-marketing computed styles + official context), https://www.together.ai/brand (official brand guidance + computed styles), https://docs.together.ai/intro (documentation context only), https://www.together.ai/careers, https://www.together.ai/blog/seed-funding
+**Tier 2 sources:** https://getdesign.md/together.ai/design-md (independent, explicitly not affiliated); https://styles.refero.design/style/461da0f0-fde6-46bc-8137-7eca006260a8 (independent style reference)
+**Conflicts unresolved:** none
+
+Tier 2 agrees on the black/white, pastel-tab, sharp-corner direction but does not override the supplied selector-level Tier 1 measurements.

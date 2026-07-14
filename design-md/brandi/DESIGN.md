@@ -2,413 +2,272 @@
 id: brandi
 name: Brandi
 country: KR
-category: e-commerce
+category: ecommerce
 homepage: "https://www.brandi.co.kr"
-primary_color: "#ff204b"
+primary_color: "#1e1e1e"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=brandi.co.kr&sz=128"
-verified: "2026-06-09"
+verified: "2026-07-13"
 added: "2026-06-09"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: commerce-home, url: "https://www.brandi.co.kr/", inspected: "2026-07-13" }
+    - { id: product-a, kind: commerce-product, url: "https://www.brandi.co.kr/products/106329458", inspected: "2026-07-13" }
+    - { id: product-b, kind: commerce-product, url: "https://www.brandi.co.kr/products/125381184", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.brandi.co.kr/", captured: "2026-07-13" }
+    - { id: product-a-live, kind: product-surface, url: "https://www.brandi.co.kr/products/106329458", captured: "2026-07-13" }
+    - { id: product-b-live, kind: product-surface, url: "https://www.brandi.co.kr/products/125381184", captured: "2026-07-13" }
+    - { id: spoqa-font, kind: official-doc, url: "https://github.com/spoqa/spoqa-han-sans", captured: "2026-07-13" }
+    - { id: noto-font, kind: official-doc, url: "https://notofonts.github.io/noto-docs/website/use/", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.canvas": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.ink": *home
+    "tokens.colors.promo-active": *home
+    "tokens.colors.action-direct": &product { surface_id: product-a, source_id: product-a-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.action-partner": *product
+    "tokens.colors.action-on": *product
+    "tokens.colors.option-border": *product
+    "tokens.colors.option-border-disabled": *product
+    "tokens.colors.badge-surface": *product
+    "tokens.colors.badge-text": *product
+    "tokens.typography.family.ui": *product
+    "tokens.typography.product-action.size": *product
+    "tokens.typography.product-action.weight": *product
+    "tokens.typography.product-action.lineHeight": *product
+    "tokens.typography.product-action.use": *product
+    "tokens.typography.option.size": *product
+    "tokens.typography.option.weight": *product
+    "tokens.typography.option.lineHeight": *product
+    "tokens.typography.option.use": *product
+    "tokens.typography.badge.size": *product
+    "tokens.typography.badge.weight": *product
+    "tokens.typography.badge.lineHeight": *product
+    "tokens.typography.badge.use": *product
+    "tokens.spacing.action-x": *product
+    "tokens.spacing.action-y": *product
+    "tokens.spacing.option-item": *product
+    "tokens.spacing.badge-x": *product
+    "tokens.spacing.badge-y-start": *product
+    "tokens.spacing.badge-y-end": *product
+    "tokens.rounded.product-action": *product
+    "tokens.rounded.option": *product
+    "tokens.rounded.option-menu": *product
+    "tokens.rounded.badge": *product
+    "tokens.components.product-badge.type": *product
+    "tokens.components.product-badge.bg": *product
+    "tokens.components.product-badge.fg": *product
+    "tokens.components.product-badge.radius": *product
+    "tokens.components.product-badge.padding": *product
+    "tokens.components.product-badge.font": *product
+    "tokens.components.product-badge.use": *product
 tokens:
-  source: live-extract
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
   components_harvested: true
   colors:
-    primary: "#ff204b"
-    primary-hover: "#ff365d"
-    ink: "#202429"
-    slate: "#5f6773"
-    muted: "#868d96"
-    muted-alt: "#808893"
-    placeholder: "#989ca1"
     canvas: "#ffffff"
-    surface: "#f5f5f5"
-    hairline: "#ebeef2"
-    border: "#d3d7df"
-    dark: "#313842"
-    on-primary: "#ffffff"
+    ink: "#202429"
+    promo-active: "#ff365d"
+    action-direct: "#1e1e1e"
+    action-partner: "#00c73c"
+    action-on: "#ffffff"
+    option-border: "#e6e6e6"
+    option-border-disabled: "#e1e1e1"
+    badge-surface: "#ebeef2"
+    badge-text: "#808893"
   typography:
-    family: { sans: "Spoqa Han Sans", korean: "Noto Sans KR" }
-    h2-section:  { size: 32, weight: 700, lineHeight: 1.20, use: "Section / promo headlines" }
-    h1-page:     { size: 26, weight: 400, lineHeight: 1.30, use: "Page title, BRANDI logotype" }
-    nav-active:  { size: 17, weight: 700, lineHeight: 1.41, use: "Active GNB tab (홈)" }
-    label-bold:  { size: 15, weight: 700, lineHeight: 1.40, use: "Category / section labels" }
-    body:        { size: 13, weight: 400, lineHeight: 1.50, use: "Standard reading text, body" }
-    caption:     { size: 12, weight: 400, lineHeight: 1.50, use: "Sub-links, footer, metadata" }
-  spacing: { xs: 3, sm: 7, md: 8, base: 12, lg: 16, xl: 24, xxl: 40 }
-  rounded: { sm: 4, md: 8, lg: 20, full: 9999 }
-  shadow:
-    ambient: "rgba(0,0,0,0.06) 0px 1px 4px"
-    standard: "rgba(0,0,0,0.08) 0px 2px 8px"
-    overlay: "rgba(32,36,41,0.8) 0px 0px 0px"
+    family: { ui: "Noto Sans KR" }
+    product-action: { size: 17, weight: 500, lineHeight: 1.0, use: "Observed direct and partner purchase links on both captured product pages." }
+    option: { size: 13, weight: 400, lineHeight: 1.0, use: "Observed product-option select and expanded listbox." }
+    badge: { size: 13, weight: 700, lineHeight: 1.0, use: "Observed product-detail badge." }
+  spacing: { action-x: 4, action-y: 18, option-item: 16, badge-x: 8, badge-y-start: 2, badge-y-end: 3 }
+  rounded: { product-action: 6, option: 6, option-menu: 6, badge: 6 }
   components:
-    button-primary: { type: button, bg: "#ff204b", fg: "#ffffff", radius: "4px", padding: "12px 24px", font: "15px / 700", use: "Primary CTA — 구매하기, 좋아요 등록, hover #ff365d" }
-    button-pill: { type: button, bg: "#ffffff", fg: "#202429", radius: "20px", padding: "7px 12px 7px 8px", font: "13px / 400", use: "Filter / search pill, 1px #d3d7df border" }
-    nav-tab: { type: tab, fg: "#5f6773", font: "17px / 700", padding: "12px 8px", use: "GNB tab", active: "#202429 ink + 2px bottom border #ff204b" }
-    input-search: { type: input, bg: "#f5f5f5", fg: "#202429", radius: "4px", padding: "8px 12px", font: "13px / 400", use: "Search field, placeholder #989ca1" }
-    product-card: { type: card, bg: "#ffffff", fg: "#202429", radius: "8px", use: "Product thumbnail card, 1px #ebeef2 hairline, standard shadow" }
-    badge-sale: { type: badge, bg: "#ff204b", fg: "#ffffff", radius: "4px", padding: "3px 7px", font: "12px / 700", use: "Sale / discount badge, percent rate" }
-    badge-new: { type: badge, bg: "#202429", fg: "#ffffff", radius: "4px", padding: "3px 7px", font: "12px / 700", use: "NEW / 신상 label on thumbnails" }
-    wish-toggle: { type: toggle, bg: "#ffffff", fg: "#ff204b", radius: "9999px", padding: "8px", use: "찜 heart toggle, off #868d96, on #ff204b filled" }
-    avatar-circle: { type: avatar, bg: "#f5f5f5", radius: "9999px", use: "Seller / profile thumbnail, circular" }
-    toast: { type: toast, bg: "#313842", fg: "#ffffff", radius: "8px", padding: "12px 16px", font: "13px / 400", use: "Action confirmation, 장바구니 담김 등" }
+    product-badge: { type: badge, bg: "#ebeef2", fg: "#808893", radius: "6px", padding: "2px 8px 3px", font: "13px / 700 / Noto Sans KR", use: "Observed product-detail metadata badge." }
 ---
 
 # Design System Inspiration of Brandi
 
 ## 1. Visual Theme & Atmosphere
 
-Brandi (브랜디) is a Korean fashion commerce platform whose web and app surfaces read as fast, image-forward, and unapologetically commercial. The page lives on a pure white canvas (`#ffffff`) where near-black ink (`#202429`) carries almost all the type, and a single hot pink-red (`#ff204b`) does all the persuading — sale prices, discount badges, active heart toggles, and the primary "구매하기" call to action. This is the visual grammar of Korean mobile fashion retail: the photography is the hero, the chrome gets out of the way, and one saturated accent color tells the eye exactly where to spend money. Nothing about the system is decorative for its own sake; every colored pixel is doing conversion work.
-
-The typographic backbone is `Spoqa Han Sans` with `Noto Sans KR` as the Korean companion — two of the most common, screen-optimized Korean web families, chosen for legibility at small sizes rather than for character. Body text runs as small as 13px (and footer links at 12px), which is dense by Western standards but standard for a Korean commerce GNB where dozens of categories, prices, and labels compete for a phone-width column. Headings jump to 26px (page titles) and 32px/700 (promo sections), creating a sharp two-tier hierarchy: tiny dense utility text, then bold large merchandising headlines, with little in between.
-
-The atmosphere is bright, tight, and high-velocity. Corners are conservative — 4px on most controls, 8px on cards, with one expressive exception: the 20px rounded search/filter pills that signal interactivity. Shadows are minimal and neutral-gray, used only to lift floating cards and overlays off the white. There is no gradient drama and no chromatic shadow play here; the brand's entire emotional charge is concentrated in that one pink-red, against a clean monochrome grid of product imagery.
+Brandi is an official Korean women's fashion shopping service: the public site title calls it “여성 패션 쇼핑앱 브랜디,” and its two captured item pages concentrate the available product evidence around choosing an option and proceeding to purchase. Those public commerce surfaces are predominantly white with `#202429` text. The clearest action treatment is not the legacy pink claim: the direct purchase link is `#1e1e1e` with white text, while an adjacent green `#00c73c` link is a partner purchase path. On the home route, `#ff365d` appears on an active promotional slider item; it is therefore recorded as route-local promo evidence rather than a universal Brandi action token. The capture is desktop-only and does not establish an app, marketing, documentation, or account-area system beyond these public routes.
 
 **Key Characteristics:**
-- A single hot pink-red (`#ff204b`) as the entire interactive/commerce accent — sale, CTA, active heart
-- Pure white canvas (`#ffffff`) with near-black ink (`#202429`) — high-contrast, image-forward
-- `Spoqa Han Sans` / `Noto Sans KR` screen-optimized Korean stack, dense 13px body
-- Sharp two-tier type hierarchy: 32px/700 promo headlines vs 13px utility text
-- Conservative 4px / 8px radius, with expressive 20px pills for search & filters
-- Minimal neutral-gray shadows — depth is functional, never decorative
-- Layered gray neutrals (`#5f6773`, `#868d96`, `#808893`) for secondary metadata
-- Dark slate (`#313842`) reserved for toasts and overlay surfaces
+- White commerce canvas with `#202429` ink across all three captured routes
+- Product-detail purchase pair: direct `#1e1e1e` and a separate green partner action
+- 6px rounding on the recorded product actions, option control, listbox, and badge
+- Noto Sans KR and Spoqa Han Sans are live-loaded on the captured web surfaces
+- Active home promotional slider evidence is `#ff365d`, not a general CTA rule
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Brandi Pink** (`#ff204b`): The signature. Primary CTA backgrounds, sale prices, discount badges, active heart/wish toggle, active-tab underline. The single color that carries all commercial intent.
-- **Pink Hover** (`#ff365d`): Lighter pink-red for hover/pressed states on primary buttons and links.
-- **Ink** (`#202429`): Primary text, headings, logotype, active nav label. A near-black with a faint warm-gray cast — softer than pure `#000000`.
+### Captured commerce colors
 
-### Neutrals
-- **Slate** (`#5f6773`): Secondary headings, inactive nav tabs, mid-emphasis labels.
-- **Muted** (`#868d96`): Captions, helper text, inactive icons, footer metadata.
-- **Muted Alt** (`#808893`): Alternate gray for timestamps and tertiary labels.
-- **Placeholder** (`#989ca1`): Input placeholder text, disabled hints.
+- **Canvas** (`#ffffff`): observed page/control background on the home and product routes.
+- **Ink** (`#202429`): observed product-option, menu, and general text color.
+- **Direct purchase** (`#1e1e1e`): background of `.btn-buy` on both captured product pages.
+- **Partner purchase** (`#00c73c`): background of the adjacent `.btn-n-buy`; this is a route-local partner action, not a universal Brandi color.
+- **On action** (`#ffffff`): observed text on both recorded purchase links.
+- **Promo active** (`#ff365d`): observed only on active home slider list items.
+- **Option border** (`#e6e6e6`): default product-option selector border.
+- **Disabled option border** (`#e1e1e1`): observed disabled selector border.
+- **Badge surface / text** (`#ebeef2` / `#808893`): product-detail badge pair.
 
-### Surface & Borders
-- **Canvas** (`#ffffff`): Page background, card surfaces, button text on pink.
-- **Surface** (`#f5f5f5`): Filled search fields, subtle section backgrounds, avatar placeholders.
-- **Hairline** (`#ebeef2`): Lightest divider — card borders, list separators.
-- **Border** (`#d3d7df`): Standard control border — pills, inputs, outlined buttons.
-
-### Dark
-- **Dark Slate** (`#313842`): Toast backgrounds, overlay surfaces, dark UI chips.
-- **Overlay Ink** (`rgba(32,36,41,0.8)`): Scrim over imagery — image dim layers and circular controls on photos.
+No `#ff204b` live use was recorded by the supplied 2026-07-13 capture, so it is not retained as a current token.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Primary**: `Spoqa Han Sans`, with fallback `sans-serif`
-- **Korean / Heading companion**: `Noto Sans KR`, applied to page titles, nav, and logotype
-- No monospace family is used in the consumer commerce surface.
+### Font evidence classes
 
-### Hierarchy
+| Family | Captured use | FontFaceSet / source corroboration | Resolution |
+|------|--------------|------------------------------------|------------|
+| `Noto Sans KR` | 257 visible uses across home and both product pages, including headings, controls, badges, and purchase links | `loaded`, high confidence, with 124 `fonts.gstatic.com` source URLs | **Verified live webfont.** It is the sole `tokens.typography.family.ui` family. The [Noto documentation](https://notofonts.github.io/noto-docs/website/use/) describes the collection’s OFL use boundary; that licence context does not make it a Brandi-owned font. |
+| `Spoqa Han Sans` | 124 visible uses across body, menu, button, badge, and list-item roles | `loaded`, high confidence, backed by the captured FontFaceSet; the artifact lists no exact source URL for this family | **Verified live surface use**, preserved as route-local typographic evidence rather than an additional UI-family token. The [Spoqa project](https://github.com/spoqa/spoqa-han-sans) distributes its family under SIL OFL and documents webfont use; do not rename the exact captured family to a newer upstream alias. |
+| `Pretendard` | No visible use | 18 CDN `@font-face` sources but no computed use | **Declared-only.** It is not a Brandi UI token and is not substituted into examples. |
+| `Arial` | Seven utility-button uses | System classification; no webfont source | **System-only.** Not a Brandi font claim. |
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Section / Promo | Spoqa Han Sans | 32px | 700 | 1.20 | Merchandising headlines, event banners |
-| Page Title / Logo | Noto Sans KR | 26px | 400 | 1.30 | Page heads, BRANDI logotype |
-| Nav Active | Noto Sans KR | 17px | 700 | 1.41 | Active GNB tab (홈) |
-| Label Bold | Noto Sans KR | 15px | 700 | 1.40 | Category labels, section heads |
-| Body | Spoqa Han Sans | 13px | 400 | 1.50 | Standard reading text, list items |
-| Caption | Noto Sans KR | 12px | 400 | 1.50 | Sub-links, footer, metadata |
+### Observed hierarchy
 
-### Principles
-- **Two-tier contrast**: A wide gap between bold merchandising headlines (32px/700, 26px) and dense utility text (13px/12px) — almost nothing lives in the middle. This is intentional commerce density.
-- **Korean-first legibility**: Both families are chosen for clean rendering of Hangul at small sizes; `Noto Sans KR` carries the heavier display and navigation roles, `Spoqa Han Sans` carries body.
-- **Weight as the hierarchy lever**: With a narrow size range in utility text, weight (400 vs 700) does most of the emphasis work — bold labels punch out of regular-weight surroundings.
-- **No letter-spacing tricks**: Tracking stays at `normal` everywhere; Hangul does not benefit from the negative tracking used on Latin display type.
+| Role | Font | Size | Weight | Line Height | Provenance |
+|------|------|------|--------|-------------|------------|
+| Product purchase link | Noto Sans KR | 17px | 500 | normal | `.btn-buy` and `.btn-n-buy` on both product pages |
+| Product option / expanded menu | Spoqa Han Sans | 13px | 400 | normal | option trigger and listbox on both product pages |
+| Product badge | Noto Sans KR | 13px | 700 | normal | `.badge` on both product pages |
 
 ## 4. Component Stylings
 
-### Buttons
-**Primary CTA**
-- Background: `#ff204b`
-- Text: `#ffffff`
-- Padding: 12px 24px
-- Radius: 4px
-- Font: 15px / weight 700
-- Hover: `#ff365d`
-- Use: "구매하기", "좋아요 등록", primary conversion actions
+### Product purchase action
 
-**Pill (search / filter)**
+**Direct purchase — observed default**
+- Background: `#1e1e1e`
+- Text: `#ffffff`
+- Radius: `6px`
+- Padding: `18px 4px`
+- Font: `17px / 500 / Noto Sans KR`
+- Use: `surface-2::[data-omd-capture="17"]` / `.btn-buy`, also observed on surface-3; direct product purchase link.
+
+**Partner purchase — observed default**
+- Background: `#00c73c`
+- Text: `#ffffff`
+- Radius: `6px`
+- Padding: `18px 4px`
+- Font: `17px / 500 / Noto Sans KR`
+- Use: `surface-2::[data-omd-capture="18"]` / `.btn-n-buy`, also observed on surface-3; adjacent green partner purchase link.
+
+### Product option select
+
+**Default and observed states**
 - Background: `#ffffff`
 - Text: `#202429`
-- Padding: 7px 12px 7px 8px
-- Radius: 20px
-- Border: `1px solid #d3d7df`
-- Use: Search trigger, filter chips, sort toggles
+- Border: `1px solid #e6e6e6`
+- Radius: `6px`
+- Font: `13px / 400 / Spoqa Han Sans`
+- Expanded: The trigger at `surface-2::[data-omd-capture="15"]` opened the recorded listbox on both product routes.
+- Disabled: The disabled trigger at `surface-2::[data-omd-capture="16"]` retained white background and `#202429` text with `1px solid #e1e1e1` border.
+- Use: Product-option selector. No hover, focus, pressed, validation, or selected-option styling is specified.
 
-### Navigation (GNB)
-- Horizontal tab bar on white, sticky at top
-- Inactive tabs: `#5f6773`, 17px
-- Active tab: `#202429` ink + 2px bottom border in `#ff204b`
-- BRANDI logotype left-aligned at 26px
-- Utility links (장바구니, 찜, 마이페이지) right-aligned at 13px
+### Product option listbox
 
-### Inputs & Forms
-- Background: `#f5f5f5` (filled) or `#ffffff` with `1px solid #d3d7df`
-- Radius: 4px
-- Text: `#202429`
-- Placeholder: `#989ca1`
-- Padding: 8px 12px
-
-### Product Cards
+**Expanded — observed interaction state**
 - Background: `#ffffff`
-- Border: `1px solid #ebeef2` hairline
-- Radius: 8px
-- Shadow (standard): `rgba(0,0,0,0.08) 0px 2px 8px`
-- Image-forward: thumbnail dominates, price + badges below
-- Sale price rendered in `#ff204b`; original price struck through in `#868d96`
+- Text: `#202429`
+- Border: `0px 1px 1px #e6e6e6`
+- Radius: `0px 0px 6px 6px`
+- Padding: `0px 0px 1px`
+- Font: `13px / 400 / Spoqa Han Sans`
+- Expanded: `surface-2::[data-omd-interaction-capture="menu-0-0"]` / `.ui-menu` appeared after the option-trigger interaction; a 16px-padded option wrapper was observed inside it.
+- Use: Product-option listbox on product pages only.
 
-### Badges
-**Sale / Discount**
-- Background: `#ff204b`
-- Text: `#ffffff`
-- Padding: 3px 7px
-- Radius: 4px
-- Font: 12px / weight 700
+### Product detail badge
 
-**NEW / 신상**
-- Background: `#202429`
-- Text: `#ffffff`
-- Padding: 3px 7px
-- Radius: 4px
-
-### Wish / Heart Toggle
-- Off: `#868d96` outline heart on `#ffffff`
-- On: `#ff204b` filled heart
-- Radius: 9999px (circular hit area)
-- Often placed over imagery with `rgba(32,36,41,0.8)` circular scrim
-
-### Toast
-- Background: `#313842`
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 12px 16px
-- Font: 13px / 400
-- Use: "장바구니에 담겼습니다" and similar confirmations
+**Default — observed product metadata badge**
+- Background: `#ebeef2`
+- Text: `#808893`
+- Radius: `6px`
+- Padding: `2px 8px 3px`
+- Font: `13px / 700 / Noto Sans KR`
+- Use: `surface-2::span` / `.badge`, also observed on surface-3.
 
 ---
-
-**Verified:** 2026-06-09 (omd-add-reference — Tier 1 live inspect)
-**Tier 1 sources:** https://www.brandi.co.kr, https://brandi.career.greetinghr.com
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.brandi.co.kr/; https://www.brandi.co.kr/products/106329458; https://www.brandi.co.kr/products/125381184; https://github.com/spoqa/spoqa-han-sans; https://notofonts.github.io/noto-docs/website/use/
+**Tier 2 sources:** https://getdesign.md/brandi (no indexed Brandi record found); https://styles.refero.design/?q=brandi (no Brandi result found in the public search result set)
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: ~4px, with a dense practical scale: 3px, 7px, 8px, 12px, 16px, 24px, 40px
-- The small-end density (3-8px) reflects a mobile-first commerce grid where padding is tight to maximize product imagery per viewport.
-
-### Grid & Container
-- Mobile-first single-column product feed scaling to a centered desktop column
-- Product grids: 2-column on mobile, 3-4 column on wider viewports
-- Sticky top GNB with category tabs; sticky bottom action bar on product detail (price + 구매하기)
-- Imagery occupies the dominant visual area; text chrome is compressed around it
-
-### Whitespace Philosophy
-- **Density over air**: Korean commerce convention favors information density — more products visible, tighter gaps, smaller type. Whitespace is rationed, not lavished.
-- **Image breathing room**: The one place whitespace is generous is around hero product photography and promo banners, which get full-bleed treatment.
-- **Card rhythm**: Consistent hairline (`#ebeef2`) separation keeps a dense feed scannable without heavy borders.
-
-### Border Radius Scale
-- Sharp (4px): Buttons, inputs, badges — the workhorse
-- Standard (8px): Cards, toasts, containers
-- Expressive (20px): Search/filter pills — the one playful radius
-- Full (9999px): Heart toggles, avatars, circular controls
+The supplied evidence is a 1440×900 desktop capture. It supports only the recorded product-action spacing (`18px 4px`), option-listbox item padding (16px on the representative option wrapper), and compact badge padding. No product grid, page container, sticky bar, mobile layout, or checkout funnel rule is retained without a representative captured selector.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, feed |
-| Ambient (Level 1) | `rgba(0,0,0,0.06) 0px 1px 4px` | Subtle card lift, hover hint |
-| Standard (Level 2) | `rgba(0,0,0,0.08) 0px 2px 8px` | Product cards, floating chips |
-| Overlay (Level 3) | `rgba(32,36,41,0.8)` scrim | Image dim layers, sticky action bars, toasts |
-
-**Shadow Philosophy**: Brandi's elevation is deliberately quiet. Shadows are neutral gray, low-opacity, and short-throw — they exist to separate a floating card or sticky bar from the dense feed beneath, never to add atmosphere. The strongest "depth" device is not a shadow at all but the `rgba(32,36,41,0.8)` overlay scrim used to dim imagery so white text and the pink heart read cleanly on top of busy product photos. In a system where photography is the hero, depth is about legibility, not decoration.
+The representative purchase links, select trigger, listbox, and badge all have `box-shadow: none`. No shadow scale or image overlay system is established by this capture.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use `#ff204b` for every commercial signal — CTA, sale price, discount badge, active heart
-- Keep the canvas pure white (`#ffffff`) and let product photography dominate
-- Use `#202429` ink for primary text, not pure black — it's the brand's near-black
-- Render sale prices in pink and strike original prices in `#868d96` gray
-- Use 4px radius on buttons/badges, 8px on cards, reserve 20px pills for search/filter
-- Keep utility text dense (12-13px) — Korean commerce expects information density
-- Use weight 700 to create emphasis when sizes are close together
-- Use `Spoqa Han Sans` / `Noto Sans KR` for clean Hangul rendering at small sizes
+
+- Keep the direct product purchase link black `#1e1e1e` with white text when reproducing the captured product-page state.
+- Keep the green `#00c73c` purchase link scoped to the observed adjacent partner action.
+- Use the measured 6px corners and 13px Spoqa Han Sans option text only for the recorded product-option controls.
+- Preserve the observed option listbox and disabled border as distinct states with their route/selector provenance.
+- Treat Noto Sans KR and Spoqa Han Sans as live font evidence; keep Pretendard declared-only.
 
 ### Don't
-- Don't introduce a second accent color — `#ff204b` carries all interactive intent alone
-- Don't use heavy or colored shadows — elevation is neutral, low, and functional
-- Don't use pill (20px+) radius on primary CTAs — sale buttons stay sharp at 4px
-- Don't pad generously at the expense of products-per-screen — density is the convention
-- Don't use pure black (`#000000`) for body text — `#202429` ink is the brand tone
-- Don't decorate; every colored element should be doing conversion or wayfinding work
-- Don't apply Latin-style negative letter-spacing to Hangul headlines
-- Don't bury the price or the 구매하기 CTA — they anchor every product surface
+
+- Do not restore the legacy pink `#ff204b` CTA, sale badge, wish-toggle, or card system from this evidence set.
+- Do not turn the home slider’s `#ff365d` into a universal product action token.
+- Do not infer hover, focus, pressed, error, checkout, responsive, or app-native variants from the two recorded menu expansions.
+- Do not use the green partner action as evidence of a Brandi-owned brand palette.
+- Do not substitute a system font or declared-only Pretendard for the captured loaded families.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single-column feed, 2-col product grid, sticky bottom CTA |
-| Tablet | 640-1024px | 3-column product grid, expanded GNB |
-| Desktop | >1024px | Centered column, 4-column grid, full category nav |
-
-### Touch Targets
-- Primary CTA at 12px 24px padding gives a comfortable tap height
-- Heart toggle uses a circular 9999px hit area sized for thumb taps
-- Nav tabs at 12px 8px padding with 17px text
-- Pill controls at 7px vertical padding stay tappable
-
-### Collapsing Strategy
-- GNB: full category tab row → scrollable tab strip / hamburger on mobile
-- Product grid: 4-col → 3-col → 2-col
-- Product detail: inline CTA → sticky bottom action bar (price + 구매하기)
-- Promo headlines: 32px → reduced on mobile, weight 700 maintained
-- Footer links compress from multi-column to stacked accordion
-
-### Image Behavior
-- Product thumbnails maintain 8px radius and `#ebeef2` hairline at all sizes
-- Hero/promo imagery goes full-bleed on mobile
-- Overlay scrim (`rgba(32,36,41,0.8)`) preserved on imagery with overlaid text/controls
+No mobile viewport was supplied. The public evidence does not establish breakpoints, touch-target requirements, sticky behavior, product-grid columns, or mobile navigation rules.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA / Sale: Brandi Pink (`#ff204b`)
-- CTA Hover: Pink Light (`#ff365d`)
-- Background: Pure White (`#ffffff`)
-- Heading / Body ink: Near-black (`#202429`)
-- Secondary text: Slate (`#5f6773`)
-- Caption / muted: Gray (`#868d96`)
-- Filled field / surface: Light Gray (`#f5f5f5`)
-- Hairline divider: (`#ebeef2`)
-- Control border: (`#d3d7df`)
-- Toast / dark UI: Dark Slate (`#313842`)
+### Verified prompt boundary
 
-### Example Component Prompts
-- "Create a product card: white background, 1px solid #ebeef2 border, 8px radius, shadow rgba(0,0,0,0.08) 0px 2px 8px. Image on top. Below: product name in #202429 at 13px Spoqa Han Sans, sale price in #ff204b 700, original price struck-through in #868d96. A #ff204b sale badge (12px/700, white text, 4px radius, 3px 7px padding) top-left over the image."
-- "Build a primary CTA button: #ff204b background, white text, 4px radius, 12px 24px padding, 15px weight 700, hover #ff365d. Label '구매하기'."
-- "Design a GNB tab bar: white sticky header, BRANDI logotype left at 26px Noto Sans KR. Tabs at 17px — inactive #5f6773, active #202429 with a 2px #ff204b bottom border."
-- "Create a search pill: white background, 1px solid #d3d7df border, 20px radius, 7px 12px 7px 8px padding, placeholder #989ca1 at 13px."
-- "Build a toast: #313842 background, white text 13px, 8px radius, 12px 16px padding. Message '장바구니에 담겼습니다'."
-
-### Iteration Guide
-1. `#ff204b` is the only accent — never add a second persuasion color
-2. Ink is `#202429`, not black; captions are `#868d96`
-3. Sale prices are pink, original prices are struck `#868d96` gray
-4. Radius: 4px controls, 8px cards, 20px search pills, 9999px hearts/avatars
-5. Keep utility text dense (12-13px) and lean on weight 700 for emphasis
-6. Shadows stay neutral gray and low — use the `rgba(32,36,41,0.8)` scrim over imagery
-7. Use `Spoqa Han Sans` / `Noto Sans KR`; no monospace on commerce surfaces
-8. Let product photography dominate; chrome compresses around it
-
----
+“Recreate only the captured Brandi product-detail controls: a `#1e1e1e` direct purchase link and adjacent `#00c73c` partner link, both white 17px/500 Noto Sans KR with 6px radius and `18px 4px` padding; a white 6px product-option select with `#e6e6e6` border and 13px Spoqa Han Sans; and its observed white expanded listbox. Do not add pink CTAs, product cards, heart toggles, hover/focus/error states, grid rules, or a mobile treatment.”
 
 ## 10. Voice & Tone
 
-Brandi's voice is the brisk, friendly register of Korean mobile fashion commerce — direct, trend-aware, and conversion-focused, speaking to a predominantly young female shopper. Labels are short Korean imperatives and nouns: "구매하기", "좋아요", "장바구니", "찜". The tone is warm but efficient; it does not over-explain. Marketing copy leans into urgency and value ("오늘의 특가", discount rates, limited drops) without tipping into hard-sell desperation. The register is closer to a stylish friend recommending a find than a department store announcing a sale.
-
-| Context | Tone |
-|---|---|
-| Product CTAs | Short Korean imperatives. "구매하기", "좋아요 등록". |
-| Promo headlines | Value + urgency. Discount rate forward, time-bound framing. |
-| Empty states | Gently encouraging, suggests next action (browse, search). |
-| Error / validation | Plain, brief, non-blaming Korean. |
-| Confirmations | Friendly past-tense toasts: "장바구니에 담겼습니다". |
-| Footer / legal | Formal Korean commerce disclosure register. |
-
-**Forbidden patterns.** Over-long sentences in the dense feed. Cold, corporate phrasing that breaks the friendly register. Aggressive all-caps shouting beyond a short badge. Hard-sell desperation language. English where Korean is expected by the shopper.
+The supplied capture establishes the service name and commerce labels only; it does not provide a first-party editorial voice guide or enough verified copy to derive one. [FILL IN: official voice principles or source-backed microcopy.]
 
 ## 11. Brand Narrative
 
-Brandi (브랜디) is a Korean fashion commerce platform operated by **Brandi, Inc.**, positioned as a women's fashion shopping app/web ("여성 패션 쇼핑앱 브랜디", per the site's own page title). It aggregates a large catalog of women's apparel and accessories from many small sellers and brands, packaging discovery, curation, and fast checkout into a mobile-first experience. Its model sits in the same Korean fashion-commerce arena as Zigzag, W Concept, and Musinsa — a market where the contest is won on speed, breadth of catalog, sharp pricing, and a frictionless mobile funnel.
-
-The design system encodes that competitive logic directly. There is no luxury restraint and no editorial whitespace because those are not where this market is won. Instead the system optimizes for the one metric that matters: getting a shopper from a product image to a completed purchase as fast as possible. The single hot pink-red, the dense scannable feed, the sticky 구매하기 bar, and the conversion-coded color usage are all expressions of a fashion-commerce platform that treats the funnel as the product.
-
-What Brandi embraces: image-forward merchandising, dense high-velocity browsing, a single decisive accent color, and a friendly trend-aware voice. What it avoids: visual decoration that doesn't sell, generous whitespace that costs products-per-screen, and any chrome that competes with the photography.
+Brandi’s public site identifies the service as “여성 패션 쇼핑앱 브랜디.” Its product pages show a public option-selection and purchase surface, while the site footer identifies Newnex as the hosting operator and describes its payment/intermediation boundary. These are product and legal-context facts, not authority for a broader origin story, market position, mission, or rebrand narrative. [FILL IN: first-party history, mission, or current-evolution source.]
 
 ## 12. Principles
 
-1. **One color sells.** `#ff204b` is the entire persuasion palette. Restricting commercial signaling to a single saturated accent makes price, sale, and CTA instantly legible in a busy feed.
-2. **Photography is the hero.** Chrome compresses around product imagery; the UI's job is to frame and never to compete.
-3. **Density is a feature.** More products per screen, tighter type, rationed whitespace — Korean commerce shoppers expect to scan a lot fast.
-4. **Weight over size.** With a narrow type scale, 700 weight does the emphasis work that bigger sizes would in a more spacious system.
-5. **Functional depth only.** Shadows separate floating surfaces; the overlay scrim keeps text legible on imagery. Neither is decorative.
-6. **The funnel is the product.** Sticky CTAs, pink prices, and frictionless paths to 구매하기 are design decisions, not afterthoughts.
-7. **Korean-first legibility.** Type choices serve clean Hangul rendering at small sizes above all else.
+[FILL IN: official Brandi product or design principles. The observed commerce constraints above are not presented as official principles.]
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Korean fashion-commerce shopper segments, not individual people.*
-
-**Yujin, 24, Seoul.** University student who shops almost entirely on her phone during commutes. Scans dozens of products per minute and trusts the pink price tag to tell her instantly what's on sale. Abandons any shopping flow that takes more than a couple of taps to reach checkout. Saves looks with the heart toggle to compare later.
-
-**Subin, 29, Busan.** Office worker who buys seasonal wardrobe refreshes in batches. Compares Brandi against Zigzag and Musinsa on price and shipping speed. Cares that the product imagery is accurate and that discounts are real, not inflated-then-marked-down. The sticky 구매하기 bar means she never loses the buy button while reading reviews.
-
-**Haeun, 21, Daegu.** Trend-driven shopper who follows fashion drops. Comes for the curation and the daily specials, browses the feed like a social timeline, and responds to urgency framing on promo banners. Lives in the app's notification-driven discovery loop.
+[FILL IN: first-party, source-backed stakeholder groups or research. No synthetic personas are included.]
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (wishlist / 찜 list)** | White canvas, gray `#868d96` line encouraging browsing, one `#ff204b` CTA to explore the feed. No heavy illustration. |
-| **Empty (search no results)** | Plain Korean message in `#5f6773` with the query echoed, suggested categories below. |
-| **Loading (feed)** | Gray `#f5f5f5` skeleton blocks at final card dimensions, subtle shimmer. Product image placeholders dominate. |
-| **Error (network)** | Brief non-blaming Korean message, a retry action in `#ff204b`. |
-| **Error (form validation)** | Field-level, short Korean text below the field, control border shifts to a warning tone. |
-| **Success (added to cart)** | `#313842` toast, white text 13px, auto-dismiss: "장바구니에 담겼습니다". |
-| **Active (wish toggled on)** | Heart fills `#ff204b` with a brief scale pop. |
-| **Disabled** | Reduced opacity on surface and text together; pink actions fade rather than turn gray to keep brand read. |
-| **Sold out** | `#202429` overlay label on the thumbnail, CTA disabled, price muted to `#868d96`. |
+Only the product-option expanded/listbox state and the disabled option border were observed. Empty, loading, error, success, cart, wish, sold-out, and validation treatments are not specified.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection ticks, focus states |
-| `motion-fast` | 150ms | Hover, button press, heart toggle |
-| `motion-standard` | 250ms | Toast in/out, sheet, dropdown |
-| `motion-slow` | 350ms | Page / sticky-bar transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Toasts, sheets, sticky bars arriving |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Signature motions.**
-
-1. **Heart toggle pop.** Tapping 찜 fills the heart `#ff204b` with a quick `motion-fast` scale bounce — the one moment of delight in an otherwise efficient interface.
-2. **Toast slide-up.** Cart/wish confirmations slide up from the bottom on `motion-standard / ease-enter` as a `#313842` pill, auto-dismissing.
-3. **Sticky CTA reveal.** On product detail scroll, the bottom 구매하기 bar fades/slides in on `motion-standard` so the buy action is always reachable.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, the heart pop and toast slide collapse to instant; the feed stays fully functional.
+No motion duration, easing curve, transition, or reduced-motion behavior was captured. None is specified.
 
 ## 16. Do's and Don'ts (Summary)
 
 ### Do
-- Concentrate all commercial signaling in `#ff204b` — CTA, sale, active heart
-- Let product photography lead; keep chrome compressed and white
-- Use `#202429` ink and `#868d96` muted gray for the text hierarchy
-- Keep 4px controls / 8px cards / 20px search pills / 9999px hearts
-- Maintain dense, scannable utility text and a sticky path to 구매하기
+
+- Reuse only values tied to a captured Brandi route and selector.
+- Keep font, component, and interaction provenance separate by surface and state.
 
 ### Don't
-- Don't add a second accent color or colored/heavy shadows
-- Don't round primary CTAs into pills or use pure black for text
-- Don't trade products-per-screen for generous whitespace
-- Don't decorate — every colored element earns its place by selling or guiding
-- Don't break the friendly, brisk Korean voice with cold corporate phrasing
+
+- Promote declared-only assets or old token values into the current product system.
+- Invent checkout, account, marketing, documentation, or mobile components from these three public routes.

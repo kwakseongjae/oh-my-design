@@ -62,6 +62,9 @@ web/.husky/
 
 # oh-my-design-mcp bundled data (populated by scripts/sync-data.mjs at build time)
 packages/mcp/data/references/
+packages/mcp/data/reference-manifest.json
+packages/mcp/data/reference-ast.json
+web/src/data/reference-ast.generated.json
 packages/mcp/dist/
 
 # AI-generated internal audit/analysis docs (keep local, not for public repo)
@@ -71,3 +74,7 @@ data/audit/
 # search queries / geo / PII-adjacent data). Synthesized reports go to data/audit/.
 scripts/analytics/.secrets/
 data/analytics/
+
+# Deterministic reverify queue/task packets (CI artifact, never source data)
+artifacts/reverify/
+artifacts/reference-evidence/

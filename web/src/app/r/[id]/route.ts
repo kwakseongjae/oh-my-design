@@ -46,7 +46,7 @@ export async function GET(
   const footer =
     `\n\n---\n` +
     `Source: ${SITE_URL}/design-systems/${id} · Raw twin of references/${id}/DESIGN.md\n` +
-    `Install ${REFERENCE_COUNT} verified references for your AI coding agent: npx oh-my-design-cli install-skills\n`;
+    `Install ${REFERENCE_COUNT} quality-graded references for your AI coding agent: npx oh-my-design-cli install-skills\n`;
   return new Response(md + footer, {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",

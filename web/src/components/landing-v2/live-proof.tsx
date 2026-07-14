@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type TouchEvent as RTouchEvent } from "react";
+import { useMediaQuery } from "@/lib/use-media-query";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { V2, BRAND_COLORS } from "./tokens";
 import { getLogoUrl, getLogoFallbackUrl } from "@/lib/logos";
@@ -96,26 +97,11 @@ const BRANDS: BrandCard[] = [
 export function LiveProof() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
-  const [reduced, setReduced] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const reduced = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const isMobile = useMediaQuery("(max-width: 767px)");
   const [paused, setPaused] = useState(false);
   const touchX = useRef<number | null>(null);
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const md = window.matchMedia("(max-width: 767px)");
-    setIsMobile(md.matches);
-    const onMq = () => setReduced(mq.matches);
-    const onMd = () => setIsMobile(md.matches);
-    mq.addEventListener("change", onMq);
-    md.addEventListener("change", onMd);
-    return () => {
-      mq.removeEventListener("change", onMq);
-      md.removeEventListener("change", onMd);
-    };
-  }, []);
 
   // Desktop: pin the section (CSS position:sticky) and scrub the active brand
   // by scroll progress — same behaviour as the previous gsap ScrollTrigger, but

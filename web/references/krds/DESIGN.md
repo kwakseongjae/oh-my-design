@@ -4,11 +4,11 @@ name: KRDS
 country: KR
 category: government
 homepage: "https://www.krds.go.kr/html/site/index.html"
-primary_color: "#000000"
+primary_color: "#256ef4"
 logo:
   type: favicon
   slug: "https://www.krds.go.kr/resources/img/guide/favicon_192.png"
-verified: "2026-05-15"
+verified: "2026-07-11"
 omd: "0.1"
 ds:
   name: KRDS — Korea Republic Design System
@@ -16,9 +16,230 @@ ds:
   type: system
   description: "행정안전부 주관 범정부 통합 디자인 시스템. Government Blue #256EF4, Pretendard GOV, WCAG/KWCAG 2.2 a11y-first tokens and components."
   og_image: "https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png"
+verification_v2:
+  schema: 2
+  checked: "2026-07-11"
+  surfaces:
+    - { id: home, kind: design-system, url: "https://www.krds.go.kr/html/site/index.html", inspected: "2026-07-11" }
+    - { id: typography, kind: design-system, url: "https://www.krds.go.kr/html/site/style/style_03.html", inspected: "2026-07-11" }
+    - { id: colors, kind: design-system, url: "https://www.krds.go.kr/html/site/style/style_02.html", inspected: "2026-07-11" }
+    - { id: buttons, kind: design-system, url: "https://www.krds.go.kr/html/site/component/component_05_02.html", inspected: "2026-07-11" }
+    - { id: text-input, kind: design-system, url: "https://www.krds.go.kr/html/site/component/component_09_03.html", inspected: "2026-07-11" }
+    - { id: select, kind: design-system, url: "https://www.krds.go.kr/html/site/component/component_06_03.html", inspected: "2026-07-11" }
+    - { id: modal, kind: design-system, url: "https://www.krds.go.kr/html/site/component/component_04_05.html", inspected: "2026-07-11" }
+    - { id: badges, kind: design-system, url: "https://www.krds.go.kr/html/site/component/component_04_06.html", inspected: "2026-07-11" }
+    - { id: layout, kind: design-system, url: "https://www.krds.go.kr/html/site/style/style_05.html", inspected: "2026-05-08" }
+    - { id: tag, kind: design-system, url: "https://www.krds.go.kr/html/site/component/component_06_04.html", inspected: "2026-05-08" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.krds.go.kr/html/site/index.html", captured: "2026-07-11" }
+    - { id: type-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/style/style_03.html", captured: "2026-07-11" }
+    - { id: colors-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/style/style_02.html", captured: "2026-07-11" }
+    - { id: button-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_05_02.html", captured: "2026-07-11" }
+    - { id: input-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_09_03.html", captured: "2026-07-11" }
+    - { id: select-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_06_03.html", captured: "2026-07-11" }
+    - { id: modal-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_04_05.html", captured: "2026-07-11" }
+    - { id: badge-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_04_06.html", captured: "2026-07-11" }
+    - { id: layout-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/style/style_05.html", captured: "2026-05-08" }
+    - { id: tag-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_06_04.html", captured: "2026-05-08" }
+  claims:
+    "tokens.colors.body": &color_doc { surface_id: colors, source_id: colors-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.colors.border-strong": *color_doc
+    "tokens.colors.brand": *color_doc
+    "tokens.colors.canvas": *color_doc
+    "tokens.colors.danger": *color_doc
+    "tokens.colors.foreground": *color_doc
+    "tokens.colors.hairline": *color_doc
+    "tokens.colors.information": *color_doc
+    "tokens.colors.muted": *color_doc
+    "tokens.colors.on-primary": *color_doc
+    "tokens.colors.point": *color_doc
+    "tokens.colors.primary": *color_doc
+    "tokens.colors.primary-deep": *color_doc
+    "tokens.colors.primary-hover": *color_doc
+    "tokens.colors.secondary": *color_doc
+    "tokens.colors.success": *color_doc
+    "tokens.colors.surface": *color_doc
+    "tokens.colors.surface-primary": *color_doc
+    "tokens.colors.warning": *color_doc
+    "tokens.components.badge-danger.bg": &badge_doc { surface_id: badges, source_id: badge-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.badge-danger.fg": *badge_doc
+    "tokens.components.badge-danger.font": *badge_doc
+    "tokens.components.badge-danger.height": *badge_doc
+    "tokens.components.badge-danger.padding": *badge_doc
+    "tokens.components.badge-danger.radius": *badge_doc
+    "tokens.components.badge-danger.type": *badge_doc
+    "tokens.components.badge-danger.use": *badge_doc
+    "tokens.components.badge-point.bg": *badge_doc
+    "tokens.components.badge-point.fg": *badge_doc
+    "tokens.components.badge-point.font": *badge_doc
+    "tokens.components.badge-point.height": *badge_doc
+    "tokens.components.badge-point.padding": *badge_doc
+    "tokens.components.badge-point.radius": *badge_doc
+    "tokens.components.badge-point.type": *badge_doc
+    "tokens.components.badge-point.use": *badge_doc
+    "tokens.components.badge-primary.bg": *badge_doc
+    "tokens.components.badge-primary.border": *badge_doc
+    "tokens.components.badge-primary.fg": *badge_doc
+    "tokens.components.badge-primary.font": *badge_doc
+    "tokens.components.badge-primary.height": *badge_doc
+    "tokens.components.badge-primary.padding": *badge_doc
+    "tokens.components.badge-primary.radius": *badge_doc
+    "tokens.components.badge-primary.type": *badge_doc
+    "tokens.components.badge-primary.use": *badge_doc
+    "tokens.components.badge-success.bg": *badge_doc
+    "tokens.components.badge-success.fg": *badge_doc
+    "tokens.components.badge-success.font": *badge_doc
+    "tokens.components.badge-success.height": *badge_doc
+    "tokens.components.badge-success.padding": *badge_doc
+    "tokens.components.badge-success.radius": *badge_doc
+    "tokens.components.badge-success.type": *badge_doc
+    "tokens.components.badge-success.use": *badge_doc
+    "tokens.components.badge-warning.bg": *badge_doc
+    "tokens.components.badge-warning.fg": *badge_doc
+    "tokens.components.badge-warning.font": *badge_doc
+    "tokens.components.badge-warning.height": *badge_doc
+    "tokens.components.badge-warning.padding": *badge_doc
+    "tokens.components.badge-warning.radius": *badge_doc
+    "tokens.components.badge-warning.type": *badge_doc
+    "tokens.components.badge-warning.use": *badge_doc
+    "tokens.components.badge-tag.active": &tag_doc { surface_id: tag, source_id: tag-doc, method: official-doc, captured: "2026-05-08" }
+    "tokens.components.badge-tag.bg": *tag_doc
+    "tokens.components.badge-tag.border": *tag_doc
+    "tokens.components.badge-tag.fg": *tag_doc
+    "tokens.components.badge-tag.font": *tag_doc
+    "tokens.components.badge-tag.padding": *tag_doc
+    "tokens.components.badge-tag.radius": *tag_doc
+    "tokens.components.badge-tag.type": *tag_doc
+    "tokens.components.badge-tag.use": *tag_doc
+    "tokens.components.button-primary.active": &button_doc { surface_id: buttons, source_id: button-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.button-primary.bg": *button_doc
+    "tokens.components.button-primary.border": *button_doc
+    "tokens.components.button-primary.disabled": *button_doc
+    "tokens.components.button-primary.fg": *button_doc
+    "tokens.components.button-primary.font": *button_doc
+    "tokens.components.button-primary.height": *button_doc
+    "tokens.components.button-primary.hover": *button_doc
+    "tokens.components.button-primary.padding": *button_doc
+    "tokens.components.button-primary.radius": *button_doc
+    "tokens.components.button-primary.type": *button_doc
+    "tokens.components.button-primary.use": *button_doc
+    "tokens.components.button-secondary.bg": *button_doc
+    "tokens.components.button-secondary.border": *button_doc
+    "tokens.components.button-secondary.fg": *button_doc
+    "tokens.components.button-secondary.font": *button_doc
+    "tokens.components.button-secondary.height": *button_doc
+    "tokens.components.button-secondary.padding": *button_doc
+    "tokens.components.button-secondary.radius": *button_doc
+    "tokens.components.button-secondary.states": *button_doc
+    "tokens.components.button-secondary.type": *button_doc
+    "tokens.components.button-secondary.use": *button_doc
+    "tokens.components.button-tertiary.bg": *button_doc
+    "tokens.components.button-tertiary.border": *button_doc
+    "tokens.components.button-tertiary.fg": *button_doc
+    "tokens.components.button-tertiary.font": *button_doc
+    "tokens.components.button-tertiary.height": *button_doc
+    "tokens.components.button-tertiary.hover": *button_doc
+    "tokens.components.button-tertiary.padding": *button_doc
+    "tokens.components.button-tertiary.radius": *button_doc
+    "tokens.components.button-tertiary.type": *button_doc
+    "tokens.components.button-tertiary.use": *button_doc
+    "tokens.shadow.focus": *button_doc
+    "tokens.components.dialog.bg": &modal_doc { surface_id: modal, source_id: modal-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.dialog.fg": *modal_doc
+    "tokens.components.dialog.padding": *modal_doc
+    "tokens.components.dialog.radius": *modal_doc
+    "tokens.components.dialog.shadow": *modal_doc
+    "tokens.components.dialog.type": *modal_doc
+    "tokens.components.dialog.use": *modal_doc
+    "tokens.shadow.modal": *modal_doc
+    "tokens.components.input-text.bg": &input_doc { surface_id: text-input, source_id: input-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.input-text.border": *input_doc
+    "tokens.components.input-text.disabled": *input_doc
+    "tokens.components.input-text.fg": *input_doc
+    "tokens.components.input-text.focus": *input_doc
+    "tokens.components.input-text.font": *input_doc
+    "tokens.components.input-text.height": *input_doc
+    "tokens.components.input-text.padding": *input_doc
+    "tokens.components.input-text.radius": *input_doc
+    "tokens.components.input-text.states": *input_doc
+    "tokens.components.input-text.type": *input_doc
+    "tokens.components.input-text.use": *input_doc
+    "tokens.components.select.bg": &select_doc { surface_id: select, source_id: select-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.select.border": *select_doc
+    "tokens.components.select.disabled": *select_doc
+    "tokens.components.select.fg": *select_doc
+    "tokens.components.select.font": *select_doc
+    "tokens.components.select.height": *select_doc
+    "tokens.components.select.padding": *select_doc
+    "tokens.components.select.radius": *select_doc
+    "tokens.components.select.states": *select_doc
+    "tokens.components.select.type": *select_doc
+    "tokens.components.select.use": *select_doc
+    "tokens.rounded.full": &layout_doc { surface_id: layout, source_id: layout-doc, method: official-doc, captured: "2026-05-08" }
+    "tokens.rounded.lg": *layout_doc
+    "tokens.rounded.md": *layout_doc
+    "tokens.rounded.sm": *layout_doc
+    "tokens.spacing.base": *layout_doc
+    "tokens.spacing.lg": *layout_doc
+    "tokens.spacing.md": *layout_doc
+    "tokens.spacing.sm": *layout_doc
+    "tokens.spacing.xl": *layout_doc
+    "tokens.spacing.xs": *layout_doc
+    "tokens.spacing.xxl": *layout_doc
+    "tokens.typography.body-large.lineHeight": &type_doc { surface_id: typography, source_id: type-doc, method: official-doc, captured: "2026-07-11" }
+    "tokens.typography.body-large.size": *type_doc
+    "tokens.typography.body-large.use": *type_doc
+    "tokens.typography.body-large.weight": *type_doc
+    "tokens.typography.body-medium.lineHeight": *type_doc
+    "tokens.typography.body-medium.size": *type_doc
+    "tokens.typography.body-medium.use": *type_doc
+    "tokens.typography.body-medium.weight": *type_doc
+    "tokens.typography.body-small.lineHeight": *type_doc
+    "tokens.typography.body-small.size": *type_doc
+    "tokens.typography.body-small.use": *type_doc
+    "tokens.typography.body-small.weight": *type_doc
+    "tokens.typography.body-xsmall.lineHeight": *type_doc
+    "tokens.typography.body-xsmall.size": *type_doc
+    "tokens.typography.body-xsmall.use": *type_doc
+    "tokens.typography.body-xsmall.weight": *type_doc
+    "tokens.typography.display-large.lineHeight": *type_doc
+    "tokens.typography.display-large.size": *type_doc
+    "tokens.typography.display-large.tracking": *type_doc
+    "tokens.typography.display-large.use": *type_doc
+    "tokens.typography.display-large.weight": *type_doc
+    "tokens.typography.display-small.lineHeight": *type_doc
+    "tokens.typography.display-small.size": *type_doc
+    "tokens.typography.display-small.tracking": *type_doc
+    "tokens.typography.display-small.use": *type_doc
+    "tokens.typography.display-small.weight": *type_doc
+    "tokens.typography.family.sans": *type_doc
+    "tokens.typography.heading-large.lineHeight": *type_doc
+    "tokens.typography.heading-large.size": *type_doc
+    "tokens.typography.heading-large.tracking": *type_doc
+    "tokens.typography.heading-large.use": *type_doc
+    "tokens.typography.heading-large.weight": *type_doc
+    "tokens.typography.heading-medium.lineHeight": *type_doc
+    "tokens.typography.heading-medium.size": *type_doc
+    "tokens.typography.heading-medium.use": *type_doc
+    "tokens.typography.heading-medium.weight": *type_doc
+    "tokens.typography.heading-small.lineHeight": *type_doc
+    "tokens.typography.heading-small.size": *type_doc
+    "tokens.typography.heading-small.use": *type_doc
+    "tokens.typography.heading-small.weight": *type_doc
+    "tokens.typography.heading-xlarge.lineHeight": *type_doc
+    "tokens.typography.heading-xlarge.size": *type_doc
+    "tokens.typography.heading-xlarge.tracking": *type_doc
+    "tokens.typography.heading-xlarge.use": *type_doc
+    "tokens.typography.heading-xlarge.weight": *type_doc
+    "tokens.typography.heading-xsmall.lineHeight": *type_doc
+    "tokens.typography.heading-xsmall.size": *type_doc
+    "tokens.typography.heading-xsmall.use": *type_doc
+    "tokens.typography.heading-xsmall.weight": *type_doc
+  conflicts: []
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-11"
+  note: "Canonical tokens are limited to official KRDS pages with current live capture or still-fresh 2026-05 official-document evidence. Unreverified card, toggle, tab, toast, and floating-button candidates remain prose-only and are not exposed as machine tokens."
   colors:
     primary: "#256ef4"
     primary-hover: "#0b50d0"
@@ -40,7 +261,7 @@ tokens:
     success: "#228738"
     information: "#0b78cb"
   typography:
-    family: { sans: "Pretendard GOV", mono: "SF Mono" }
+    family: { sans: "Pretendard GOV" }
     display-large:  { size: 60, weight: 700, lineHeight: 1.5, tracking: "1px", use: "Marketing/banner display (no body use)" }
     display-small:  { size: 36, weight: 700, lineHeight: 1.5, tracking: "1px", use: "Small display banner" }
     heading-xlarge: { size: 40, weight: 700, lineHeight: 1.5, tracking: "1px", use: "H1 page/section top title (28px mobile)" }
@@ -60,16 +281,10 @@ tokens:
   components_harvested: true
   components:
     button-primary: { type: button, bg: "#256ef4", fg: "#ffffff", border: "1px solid #256ef4", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", hover: "#0b50d0", active: "#083891", disabled: "bg #cdd1d5 fg #6d7882", use: "Core action 신청하기/확인 (1 per screen)" }
-    button-secondary: { type: button, bg: "#ecf2fe", fg: "#0b50d0", border: "1px solid #256ef4", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", use: "Secondary action 자세히 보기/이전 단계" }
+    button-secondary: { type: button, bg: "#ecf2fe", fg: "#0b50d0", border: "1px solid #256ef4", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", states: "default; shared 4px focus halo and aria-disabled behavior", use: "Secondary action 자세히 보기/이전 단계" }
     button-tertiary: { type: button, bg: "transparent", fg: "#1e2124", border: "1px solid #58616a", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", hover: "#f4f5f6", use: "Cancel/reset 취소/초기화/닫기" }
-    button-floating: { type: button, bg: "#256ef4", fg: "#ffffff", radius: "1000px", shadow: "weak box-shadow", use: "Bottom-right floating action 맨 위로/챗봇" }
     input-text: { type: input, bg: "#ffffff", fg: "#464c53", border: "1px solid #58616a", radius: "8px", padding: "0 16px", height: "56px", font: "19px / 400", focus: "0 0 0 4px #256ef4 halo", disabled: "bg #cdd1d5 fg #6d7882 border #b1b8be", states: "error border 2px solid #de3412", use: "Standard text input (large default)" }
     select: { type: input, bg: "#ffffff", fg: "#1e2124", border: "1px solid #58616a", radius: "6px", padding: "0 48px 0 16px", height: "56px", font: "19px / 400", disabled: "bg #cdd1d5 border #b1b8be", states: "error border 2px solid #ab2b36", use: "Native select with chevron" }
-    toggle-checkbox: { type: toggle, bg: "#ffffff", border: "1px solid #58616a", radius: "4px", active: "bg #256ef4 + white check icon", use: "Multi-select checkbox" }
-    toggle-switch: { type: toggle, bg: "#b1b8be", fg: "#ffffff", radius: "1000px", active: "#256ef4 track, white thumb right", disabled: "bg #cdd1d5", use: "On/off toggle switch" }
-    card: { type: card, bg: "#ffffff", border: "1px solid #b1b8be", radius: "8px", padding: "24px", shadow: "none", use: "Standard content panel, border-defined" }
-    card-info: { type: card, bg: "#ecf2fe", fg: "#1e2124", radius: "8px", padding: "16px 24px", use: "Info/help panel 안내·도움말" }
-    card-critical: { type: card, bg: "#de3412", fg: "#ffffff", radius: "0", use: "Full-bleed urgent notice banner top of page" }
     dialog: { type: dialog, bg: "#ffffff", fg: "#1e2124", radius: "12px", padding: "40px", shadow: "0 0.2rem 0 0 rgba(0,0,0,0.1), 0 0.4rem 0.8rem 0 rgba(0,0,0,0.1)", use: "Modal dialog, backdrop fade 0->0.5 black, min-height 264px" }
     badge-primary: { type: badge, bg: "#256ef4", fg: "#ffffff", border: "1px solid #256ef4", radius: "4px", padding: "0 8px", height: "24px", font: "15px / 400", use: "Content classification, action emphasis" }
     badge-point: { type: badge, bg: "#d63d4a", fg: "#ffffff", radius: "4px", padding: "0 8px", height: "24px", font: "15px / 400", use: "Emphasis/new/important (red point)" }
@@ -77,15 +292,13 @@ tokens:
     badge-danger: { type: badge, bg: "#de3412", fg: "#ffffff", radius: "4px", padding: "0 8px", height: "24px", font: "15px / 400", use: "Error / rejected" }
     badge-warning: { type: badge, bg: "#ffb114", fg: "#1e2124", radius: "4px", padding: "0 8px", height: "24px", font: "15px / 400", use: "Caution (black text on warning bg)" }
     badge-tag: { type: badge, bg: "#ffffff", fg: "#1e2124", border: "1px solid #cdd1d5", radius: "1000px", padding: "8px 10px", font: "15px / 400", active: "bg #ecf2fe fg #0b50d0 border #256ef4", use: "Selectable filter chip with delete button" }
-    tab-horizontal: { type: tab, bg: "transparent", fg: "#464c53", font: "17px / 400", active: "fg #256ef4 700 + 2px bottom border #256ef4", use: "In-page section switch, keyboard L/R nav" }
-    toast: { type: toast, bg: "#1e2124", fg: "#ffffff", radius: "8px", padding: "16px", use: "Center/bottom card, 3s auto-dismiss" }
 ---
 
 # Design System Inspiration of KRDS (대한민국 정부 디자인 시스템)
 
 ## 1. Visual Theme & Atmosphere
 
-KRDS는 대한민국 행정·공공기관 웹·앱이 공유하는 정부 표준 디자인 시스템입니다. 화면은 마케팅 브랜드가 아니라 **공공 서비스의 도구**처럼 보이도록 설계되었습니다 — 순백 배경(`#ffffff`) 위에 거의 검정에 가까운 본문(`#1E2124`), 그리고 신뢰감을 주는 정부 블루(`#256EF4`)가 단 하나의 강조색으로 작동합니다. 강조색은 그래픽 장식이 아니라 행위(action), 즉 "신청", "확인", "다음 단계"가 있는 자리에만 나타납니다. 영역 분리는 그림자가 아니라 **얇은 회색 보더**(`#58616A` 1px / `#B1B8BE` 1px / `#CDD1D5` 1px)와 **8px 라운드**로 처리되어, 시각적 무게가 일관되게 가라앉아 있습니다.
+KRDS는 대한민국 행정·공공기관 웹·앱이 공유하는 정부 표준 디자인 시스템입니다. 화면은 마케팅 브랜드가 아니라 **공공 서비스의 도구**처럼 보이도록 설계되었습니다 — 순백 배경(`#ffffff`) 위에 거의 검정에 가까운 본문(`#1E2124`), 그리고 신뢰감을 주는 정부 블루(`#256EF4`)가 단 하나의 강조색으로 작동합니다. 강조색은 그래픽 장식이 아니라 행위(action), 즉 "신청", "확인", "다음 단계"가 있는 자리에만 나타납니다. 영역 분리는 그림자가 아니라 **얇은 회색 보더**(`#58616A` 1px / `#B1B8BE` 1px / `#CDD1D5` 1px)와 **8px 라운드**로 처리되어, 시각적 무게가 일관되게 가라앉아 있습니다. 이 절제는 기관별 취향보다 시민의 예측 가능성과 접근성을 먼저 두는 공공 제품의 정체성입니다.
 
 이 시스템은 "디지털 정부서비스 UI/UX 가이드라인"을 표준 토큰·컴포넌트로 정착시킨 것으로, 행정안전부(MOIS)가 2024년 4월에 공식 배포했습니다 ([행정안전부 보도자료](https://www.mois.go.kr/frt/bbs/type010/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000008&nttId=115144)). 분위기를 한 줄로 요약하면 **"읽기 쉽고, 예측 가능하며, 접근성을 우선하는 공공 유틸리티"**입니다. 화려한 일러스트, 그라데이션, 톤다운된 마케팅 영문 카피, 과장된 모션은 의도적으로 배제되어 있습니다.
 
@@ -213,6 +426,18 @@ KRDS 컬러 팔레트는 명도 단계 간 차이를 **WCAG 대비율과 직접 
 이 매핑 덕분에 디자이너는 "primary-50 위 gray-0" 같은 조합을 선택하면 즉시 대비율을 보장받습니다.
 
 ## 3. Typography Rules
+
+### Font evidence boundary
+
+| Evidence class | Resolution |
+|---|---|
+| Official product-use | KRDS 공식 typography foundation이 `Pretendard GOV`를 기본 서체로 지정합니다. |
+| Live surface-use | `krds.go.kr`의 수집된 10개 surface에서 loaded/high-confidence 사용을 확인했습니다. |
+| Official distributed asset | KRDS가 공식 웹폰트와 구현 자산을 공개합니다. |
+| Declared-only | 기관 확장용 고딕 계열 예시는 현재 KRDS 기본 제품 사용으로 승격하지 않습니다. |
+| Unresolved | 개별 도입 기관의 자체 서체는 해당 기관 surface를 별도로 검증하기 전에는 미확정입니다. |
+
+Specimen availability is separate from family truth: 공식 자산을 로드할 수 있을 때만 실제 specimen을 렌더합니다.
 
 ### Font Family
 - **Primary**: `"Pretendard GOV", "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif`
@@ -1052,9 +1277,10 @@ Rebuild diff vs prior pass:
 
 ---
 
-**Verified:** 2026-05-08 (deep re-verification — 10 pages inspected)
-**Tier 1 sources:** 10 live pages on www.krds.go.kr — index + 3 style pages (color/typography/layout) + 6 component pages (buttons/inputs/select/tag/modal/badge). 588 `--krds-color-*` tokens enumerated, full radius/padding/size-height/transition token sets extracted.
-**Tier 2 sources:** getdesign.md/krds — no record / styles.refero.design — no record. KRDS 자체가 정부 발행 canonical token catalog.
+**Verified:** 2026-07-11 (8-surface live recapture + still-fresh layout/tag official evidence)
+**Tier 1 sources:** https://www.krds.go.kr/html/site/index.html · https://www.krds.go.kr/html/site/style/style_02.html · https://www.krds.go.kr/html/site/style/style_03.html · https://www.krds.go.kr/html/site/style/style_05.html · https://www.krds.go.kr/html/site/component/component_05_02.html · https://www.krds.go.kr/html/site/component/component_09_03.html · https://www.krds.go.kr/html/site/component/component_06_03.html · https://www.krds.go.kr/html/site/component/component_06_04.html · https://www.krds.go.kr/html/site/component/component_04_05.html · https://www.krds.go.kr/html/site/component/component_04_06.html
+**Tier 2 sources:** https://getdesign.md/krds (rendered `No designs found`) · https://styles.refero.design/?q=KRDS (no rendered `/style/` result in available path)
 **Tier 3 (Philosophy):** 행정안전부 보도자료, 대한민국 정책브리핑, Design Compass(KR/EN), TPGi(KWCAG·장차법), AAAtraq(2025 a11y 동향), GOV.UK / USWDS / Singapore GDS 비교 좌표.
 **Style ref:** `yeogiotte` (한국 공공·민간 정중한 한국어 톤 참조), `karrot` (한국 voice 형식 참조).
-**Conflicts unresolved:** none. KRDS는 단일 정부 발행 시스템이므로 부처별 변형 / 외부 aggregator 충돌 없음.
+미재수집 컴포넌트는 conflict로 덮지 않고 machine token에서 제외했다.
+**Conflicts unresolved:** none

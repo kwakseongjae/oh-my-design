@@ -12,6 +12,7 @@ import { useMemo, useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Search } from "lucide-react";
 import { getAllDesignSystems } from "@/lib/design-systems";
+import type { DesignSystemType } from "@/lib/design-systems";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import { refMatchesQuery } from "@/lib/search-aliases";
 
@@ -50,8 +51,8 @@ export function ReferencePickerModal({
             Pick a reference
           </DialogTitle>
           <p className="mt-1 text-xs text-muted-foreground">
-            Clone the primary color, radius, and heading weight from a verified
-            design system. Mood, personas, and philosophy stay your own.
+            Clone the primary color, radius, and heading weight from a quality-graded
+            reference. Mood, personas, and philosophy stay your own.
           </p>
         </div>
         <div className="border-b border-border/40 px-5 py-3">
@@ -98,7 +99,7 @@ function ReferenceCard({
 }: {
   refId: string;
   name: string;
-  category: "system" | "brand";
+  category: DesignSystemType;
   onPick: (id: string) => void;
 }) {
   const primaryUrl = getLogoUrl(refId, "111111");
@@ -138,7 +139,7 @@ function ReferenceCard({
       <div className="min-w-0 text-center">
         <div className="truncate text-xs font-semibold">{name}</div>
         <div className="truncate text-[10px] uppercase tracking-wider text-muted-foreground">
-          {category === "system" ? "system" : "brand"}
+          {category === "system" ? "system" : category === "brand" ? "brand" : "reference"}
         </div>
       </div>
     </button>

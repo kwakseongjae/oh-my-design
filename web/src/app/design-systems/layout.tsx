@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { REFERENCE_COUNT } from "@/lib/catalog-count";
 
 export const metadata: Metadata = {
   title: "Design Systems — oh-my-design",
   description:
-    "Browse all 400 verified company design systems oh-my-design tracks. Open-source components, brand-guidelines pages, and DESIGN.md exports for AI coding agents.",
+    `Browse all ${REFERENCE_COUNT} quality-graded company DESIGN.md references. Evidence status, source links, and exports for AI coding agents.`,
   alternates: { canonical: "/design-systems" },
   openGraph: {
     title: "Design Systems — oh-my-design",
     description:
-      "400 real-company design systems. Live previews, source links, and DESIGN.md export for AI coding agents.",
+      `${REFERENCE_COUNT} real-company DESIGN.md references with computed quality tiers, live previews, and source links.`,
     url: "/design-systems",
     type: "website",
   },

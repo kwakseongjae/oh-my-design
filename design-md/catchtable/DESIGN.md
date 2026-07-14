@@ -8,334 +8,289 @@ primary_color: "#ff3d00"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=catchtable.co.kr&sz=256"
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: consumer-home, kind: consumer-product, url: "https://www.catchtable.net/", inspected: "2026-07-13" }
+    - { id: merchant-marketing, kind: b2b-marketing, url: "https://biz.catchtable.co.kr/n/main", inspected: "2026-07-13" }
+    - { id: careers-marketing, kind: careers-marketing, url: "https://career.catchtable.co.kr/ko/service", inspected: "2026-07-13" }
+  sources:
+    - { id: consumer-capture, kind: product-surface, url: "https://www.catchtable.net/", captured: "2026-07-13" }
+    - { id: merchant-capture, kind: product-surface, url: "https://biz.catchtable.co.kr/n/main", captured: "2026-07-13" }
+    - { id: careers-capture, kind: product-surface, url: "https://career.catchtable.co.kr/ko/service", captured: "2026-07-13" }
+    - { id: service-context, kind: official-doc, url: "https://career.catchtable.co.kr/ko/service", captured: "2026-07-13" }
+    - { id: font-design, kind: official-doc, url: "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md", captured: "2026-07-13" }
+    - { id: font-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.canvas": &consumer { surface_id: consumer-home, source_id: consumer-capture, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.foreground": *consumer
+    "tokens.colors.title": *consumer
+    "tokens.colors.muted": *consumer
+    "tokens.colors.search-surface": *consumer
+    "tokens.colors.control-border": *consumer
+    "tokens.colors.brand-orange": &career { surface_id: careers-marketing, source_id: careers-capture, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.on-brand": *career
+    "tokens.typography.family.ui": *consumer
+    "tokens.typography.consumer-body.size": *consumer
+    "tokens.typography.consumer-body.weight": *consumer
+    "tokens.typography.consumer-body.lineHeight": *consumer
+    "tokens.typography.consumer-body.use": *consumer
+    "tokens.typography.consumer-title.size": *consumer
+    "tokens.typography.consumer-title.weight": *consumer
+    "tokens.typography.consumer-title.lineHeight": *consumer
+    "tokens.typography.consumer-title.use": *consumer
+    "tokens.typography.search-control.size": *consumer
+    "tokens.typography.search-control.weight": *consumer
+    "tokens.typography.search-control.lineHeight": *consumer
+    "tokens.typography.search-control.use": *consumer
+    "tokens.typography.career-display.size": *career
+    "tokens.typography.career-display.weight": *career
+    "tokens.typography.career-display.lineHeight": *career
+    "tokens.typography.career-display.use": *career
+    "tokens.spacing.xs": *consumer
+    "tokens.spacing.sm": *consumer
+    "tokens.spacing.md": *consumer
+    "tokens.spacing.lg": *consumer
+    "tokens.rounded.square": *consumer
+    "tokens.rounded.discovery-tile": *consumer
+    "tokens.rounded.control": *consumer
+    "tokens.rounded.search": *consumer
+    "tokens.rounded.career-action": *career
+    "tokens.components.consumer-search.type": *consumer
+    "tokens.components.consumer-search.bg": *consumer
+    "tokens.components.consumer-search.fg": *consumer
+    "tokens.components.consumer-search.radius": *consumer
+    "tokens.components.consumer-search.padding": *consumer
+    "tokens.components.consumer-search.font": *consumer
+    "tokens.components.consumer-search.states": *consumer
+    "tokens.components.consumer-search.use": *consumer
+    "tokens.components.consumer-filter-control.type": *consumer
+    "tokens.components.consumer-filter-control.bg": *consumer
+    "tokens.components.consumer-filter-control.fg": *consumer
+    "tokens.components.consumer-filter-control.border": *consumer
+    "tokens.components.consumer-filter-control.radius": *consumer
+    "tokens.components.consumer-filter-control.height": *consumer
+    "tokens.components.consumer-filter-control.font": *consumer
+    "tokens.components.consumer-filter-control.states": *consumer
+    "tokens.components.consumer-filter-control.use": *consumer
+    "tokens.components.consumer-discovery-tile.type": *consumer
+    "tokens.components.consumer-discovery-tile.radius": *consumer
+    "tokens.components.consumer-discovery-tile.padding": *consumer
+    "tokens.components.consumer-discovery-tile.font": *consumer
+    "tokens.components.consumer-discovery-tile.states": *consumer
+    "tokens.components.consumer-discovery-tile.use": *consumer
+    "tokens.components.merchant-cta.type": &merchant { surface_id: merchant-marketing, source_id: merchant-capture, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.merchant-cta.bg": *merchant
+    "tokens.components.merchant-cta.fg": *merchant
+    "tokens.components.merchant-cta.radius": *merchant
+    "tokens.components.merchant-cta.height": *merchant
+    "tokens.components.merchant-cta.font": *merchant
+    "tokens.components.merchant-cta.states": *merchant
+    "tokens.components.merchant-cta.use": *merchant
+    "tokens.components.careers-orange-action.type": *career
+    "tokens.components.careers-orange-action.bg": *career
+    "tokens.components.careers-orange-action.fg": *career
+    "tokens.components.careers-orange-action.radius": *career
+    "tokens.components.careers-orange-action.padding": *career
+    "tokens.components.careers-orange-action.font": *career
+    "tokens.components.careers-orange-action.states": *career
+    "tokens.components.careers-orange-action.use": *career
 tokens:
-  source: prose-derived
-  extracted: "2026-06-08"
-  note: "Single-CTA discipline — brand orange #FF3D00 is the only primary fill, deployed sparingly; depth from borders + hairline alpha, not shadows"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Selector-backed values are limited to the supplied consumer, merchant-marketing, and careers-marketing captures. These domains are not a single inferred product UI."
   colors:
-    primary: "#ff3d00"
-    primary-hover: "#fa8d6b"
-    brand: "#ff3d00"
     canvas: "#ffffff"
     foreground: "#000000"
     title: "#222222"
-    body-strong: "#424242"
     muted: "#666666"
-    tertiary: "#5f5f5f"
-    placeholder: "#9e9e9e"
-    disabled: "#b5b5b5"
-    icon-default: "#8f8f8f"
-    icon-subtle: "#aaaaaa"
-    on-primary: "#ffffff"
-    surface-subdued: "#f9f9f9"
-    surface-muted: "#f5f5f5"
-    surface-cool: "#f2f5f7"
-    surface-cool-alt: "#f0f4fa"
-    border-default: "#e4e4e4"
-    border-cool: "#dce3e8"
-    info: "#186ade"
-    success: "#43c478"
-    success-strong: "#077d55"
-    error: "#d91f11"
-    warning: "#f5c518"
-    premium: "#8f49de"
+    search-surface: "#f5f5f5"
+    control-border: "#e4e4e4"
+    brand-orange: "#ff3d00"
+    on-brand: "#ffffff"
   typography:
-    family: { sans: "Pretendard", mono: "" }
-    section-title:      { size: 20, weight: 700, lineHeight: 1.5, use: "음식종류별 BEST, 캐치 매거진, search hero label" }
-    big-section:        { size: 18, weight: 700, lineHeight: 1.5, use: "Larger card titles" }
-    card-title:         { size: 16, weight: 600, lineHeight: 1.5, use: "Restaurant card titles in list / detail" }
-    body-default:       { size: 14, weight: 400, lineHeight: 1.5, use: "Dominant — nav labels, list items, body" }
-    tab-label:          { size: 14, weight: 400, lineHeight: 1.5, use: "Bottom-tab labels" }
-    chip-label:         { size: 14, weight: 500, lineHeight: 1.5, use: "Geo chips, filter chips" }
-    search-input:       { size: 13, weight: 500, lineHeight: 1.5, use: "Search placeholder #9e9e9e" }
-    neighbourhood-chip: { size: 13, weight: 500, lineHeight: 1.5, use: "청담, 압구정·로데오 style" }
-    caption:            { size: 12, weight: 400, lineHeight: 1.5, use: "Timestamps, secondary meta" }
-    footer-body:        { size: 11, weight: 400, lineHeight: 1.5, use: "Regulatory disclosure text" }
-    policy-link:        { size: 11, weight: 500, lineHeight: 1.5, use: "Footer 서비스 이용약관 row" }
-    micro-meta:         { size: 10, weight: 500, lineHeight: 1.5, use: "Slide counter 2 / 25, compact tab" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32, section: 45 }
-  rounded: { sm: 4, md: 8, lg: 12, full: 999 }
-  shadow:
-    xs: "rgba(0,0,0,.12) 0 1px 2px, rgba(0,0,0,.08) 0 0 1px, rgba(0,0,0,.08) 0 0 1px"
-    sm: "rgba(0,0,0,.12) 0 2px 8px, rgba(0,0,0,.08) 0 1px 4px, rgba(0,0,0,.08) 0 0 1px"
-    drop: "rgba(0,0,0,.12) 0 2px 12px"
-    md: "rgba(0,0,0,.12) 0 6px 12px, rgba(0,0,0,.08) 0 4px 8px, rgba(0,0,0,.08) 0 0 4px"
-    lg: "rgba(0,0,0,.12) 0 16px 20px, rgba(0,0,0,.08) 0 8px 16px, rgba(0,0,0,.08) 0 0 8px"
-  components_harvested: true
+    family: { ui: "Pretendard Std Variable" }
+    consumer-body: { size: 16, weight: 400, lineHeight: 1.50, use: "Repeated consumer-home body and button sample" }
+    consumer-title: { size: 20, weight: 700, lineHeight: 1.50, use: "Consumer-home section-title sample" }
+    search-control: { size: 15, weight: 500, lineHeight: 1.50, use: "Consumer-home search input" }
+    career-display: { size: 38, weight: 700, lineHeight: 1.35, use: "Careers-service marketing heading" }
+  spacing: { xs: 4, sm: 8, md: 12, lg: 20 }
+  rounded: { square: 0, discovery-tile: 6, control: 8, search: 40, career-action: 15 }
   components:
-    button-primary: { type: button, bg: "#ff3d00", fg: "#ffffff", radius: "12px", height: "44px", font: "14px / 500", hover: "press #fc9086", use: "Single primary CTA pill — single-CTA discipline, only variant" }
-    search-input: { type: input, bg: "#f5f5f5", fg: "#000000", radius: "0px", font: "13px / 500", use: "Search field, placeholder #9e9e9e, inline search icon left" }
-    chip-row: { type: badge, bg: "transparent", fg: "#5f5f5f", font: "14px / 500", use: "Geo/filter chips, no fill or border at rest — separation by spacing" }
-    best-of-pill: { type: card, bg: "#ffffff", radius: "4px", font: "14px / 400", use: "Image-led tile + ink label below, no card chrome (호텔 뷔페, 스시 오마카세)" }
-    bottom-tab-bar: { type: tab, fg: "#424242", font: "14px / 400", active: "ink darkens to #000000", use: "5 tabs (홈/저장/내 주변/마이다이닝/MY), icon-over-label" }
-    footer-disclosure: { type: card, bg: "#f9f9f9", fg: "#8f8f8f", font: "11px / 400", use: "Footer block, 11px/500 policy links separated by | pipe" }
+    consumer-search: { type: input, bg: "#f5f5f5", fg: "#000000", radius: "40px", padding: "0px 15px 0px 32px", font: "15px / 500 Pretendard Std Variable", states: "default only; no interaction state captured", use: "Consumer-home search input, selector home::[data-omd-capture=0]" }
+    consumer-filter-control: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #e4e4e4", radius: "8px", height: "32px", font: "16px / 400 Pretendard Std Variable", states: "default only; no interaction state captured", use: "Consumer-home compact filter/control, selector home::[data-omd-capture=1]" }
+    consumer-discovery-tile: { type: button, radius: "6px", padding: "8px 12px", font: "16px / 400 Pretendard Std Variable", states: "default only; no interaction state captured", use: "Consumer-home image-led discovery tile, selector home::[data-omd-capture=17]" }
+    merchant-cta: { type: button, bg: "#002d4e", fg: "#ffffff", radius: "8px", height: "48px", font: "16px / 700 Pretendard", states: "default only; no interaction state captured", use: "Merchant-marketing CTA link, selector surface-2::[data-omd-capture=20]" }
+    careers-orange-action: { type: button, bg: "#ff3d00", fg: "#ffffff", radius: "15px", padding: "10.5px 24px", font: "16px / 400 Pretendard", states: "default only; no interaction state captured", use: "Careers-service marketing action, selector surface-3::[data-omd-capture=14]" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of CatchTable (캐치테이블)
 
 ## 1. Visual Theme & Atmosphere
 
-CatchTable is Korea's premier restaurant-reservation platform — a service that lets diners book hotel buffets, sushi omakase, and hanwoo tasting menus with the same calm as flipping through a magazine. The atmosphere on the home surface is **editorial restraint**: a white canvas (`#FFFFFF`), deep black ink (`#000000` for body, `#222222` for titles), zero ambient shadow, and a hard-square chrome that lets food photography do the speaking. Where a delivery app would flood the screen with red CTAs and stamp-shaped discount stickers, CatchTable shows you photographs and titles — the brand orange `#FF3D00` appears exactly where you place your finger, and almost nowhere else.
+CatchTable is a restaurant platform operated by WAD that connects the diner’s choice and reservation journey with merchant-side reservation, waiting, POS, pickup, and ordering operations. Its official careers narrative describes the consumer service as making a choice more certain and enjoyable, while its merchant site frames the other side as an integrated operating solution. The supplied public consumer home is visually quieter than those merchant and employer stories: a white field, black text, compact controls, image-led discovery tiles, and a single loaded `Pretendard Std Variable` family. The official careers surface supplies the current orange `#FF3D00` action treatment, but that marketing expression is kept distinct from the consumer home rather than generalized into a product-wide CTA system.
 
-This isn't accidental minimalism — it's a vanilla-extract token system with **145 `:root` design tokens** discovered live (the namespace is `_11bicz7*`, a hashed identifier, so the system has no semantic names exposed publicly — only values). The token sheet defines a five-tier shadow ladder, a 33-color palette across brand / ink / surface / support-cool / semantic / overlay, a 10-step type scale that all share a **150% line-height contract**, and a radius family that defaults to `0px` on 92% of elements and softens only for rasterised thumbnails (`4px`), interactive controls (`8px`), and the primary CTA pill (`12px`). The discipline is the design.
+The reference therefore preserves three source domains as three facts: consumer-product discovery, merchant marketing, and careers marketing. It does not claim that a merchant lead form or careers campaign button is a restaurant-booking control.
 
-Typographically the system is Pretendard-only — no display font, no brand-display moment, no signage-typography flex. Pretendard 400 carries roughly 91% of all rendered text, with 700 reserved for section titles (`음식종류별 BEST`, `캐치 매거진`) and price emphasis. The home flow opens with a search field on `#F5F5F5` fill, a location chip row, a 25-slide Swiper hero, a "어디로 가시나요?" neighbourhood-discovery row, a horizontally scrolling "음식종류별 BEST" pillar, and an editorial "캐치 매거진" magazine module before reaching a five-tab bottom nav (홈 / 저장 / 내 주변 / 마이다이닝 / MY). The overall impression is **taste-maker, not utility** — the brand wants to feel closer to a Michelin guide than to OpenTable.
+## 2. Layout & Grid
 
-**Key Characteristics:**
-- Single accent `#FF3D00` (CatchTable Orange) deployed sparingly — single-CTA discipline, not flooded brand color
-- Hard-square chrome (`0px` radius on 92% of elements) — sharpness amplifies food photography
-- Pretendard-only stack, no display font; 150% line-height applied uniformly to all ~35 typography slots
-- White-canvas + black-ink editorial restraint — depth lives in borders and surface tints, not shadows
-- Five-tier shadow ladder defined in tokens but rarely fired on the home surface
-- Mobile-first WebView shell with `status-bar-top` reservation — desktop is a porthole
-- 5-tab bottom nav as the global IA spine; 마이다이닝 is the reservation-history / loyalty hub
-- Editorial 캐치 매거진 module signals taste-maker positioning, not transactional booking
+- The captured consumer home is a 1440×900 public route with a 38px search input, compact 32px control, centered 13px discovery labels, a 20px/700 section-title sample, and repeated image-led discovery tiles.
+- Consumer search padding is asymmetric—`0px 15px 0px 32px`—which leaves room for a leading search affordance without asserting an unmeasured icon spec.
+- Consumer discovery tiles are observed at 6px radius with `8px 12px` padding. The capture does not establish a universal card grid, breakpoint, or responsive rule.
+- Merchant and careers surfaces have their own marketing layouts. Their button values are documented only as route-local examples below.
 
-## 2. Color Palette & Roles
+## 3. Color & Typography
 
-### Primary
+### Color tokens
 
-- **CatchTable Orange** (`#FF3D00`): Brand primary. Used **exclusively** on the primary CTA pill (`12px` radius, `#FFF` text, 14px/500). In a 3000-element scan of the home surface, this color appears just 4 times in text/icon contexts and once as a background fill — scarcity is the discipline.
-- **Pure White** (`#FFFFFF`): Page canvas, card surfaces. Clean, photograph-amplifying.
-- **Title Black** (`#222222`): Section sub-titles, restaurant names, neighbourhood chip labels.
-- **Pure Black** (`#000000`): Body text default, link text, nav labels. Maximum contrast.
+- `#FFFFFF` — observed consumer canvas and compact-control background.
+- `#000000` — observed consumer foreground.
+- `#222222` — observed consumer section-title and careers-heading ink.
+- `#666666` — consumer-home muted text sample.
+- `#F5F5F5` — consumer search background.
+- `#E4E4E4` — consumer compact-control border.
+- `#FF3D00` — careers-marketing action background; this is verified public brand expression, not a universal consumer-product status or CTA token.
 
-### Brand support
+### Typography evidence classes
 
-- **Orange Soft** (`#FA8D6B`): Soft variant for pressed states and warm accents.
-- **Orange Pressed** (`#FC9086`): Active-press / hover-state surface.
-- **Orange Tint Warm** (`#FDF0EC`): Banner/notice surface fill.
-- **Orange Tint Pale** (`#FCF3F2`): Subtle alert surface fill.
+- **Live consumer computed use:** `Pretendard Std Variable` is loaded/high confidence with 122 observed uses on the consumer home and seven jsDelivr subset source URLs. It is the only UI family promoted in `tokens.typography.family.ui`.
+- **Live marketing computed use:** `Pretendard` is loaded/high confidence with 117 observed uses across the merchant and careers surfaces and source URLs from Lazyrockets plus jsDelivr. It is recorded as source-domain evidence, not added as a second consumer UI-family token.
+- **Surface-local live use:** `NanumSquareRound` is loaded with one observed merchant-surface text use and eighteen source URLs; its low frequency and separate B2B surface keep it out of consumer tokens.
+- **Declared-only assets:** Aggro, Arita-dotum-Medium, Cafe24Oneprettynight, Chosunilbo_myungjo, D2Coding, DungGeunMo, Gmarket Sans, NanumSquare, Inter, KaTeX faces, and other zero-use declarations in the bundle remain declared-only. They are neither rendered as substitutes nor promoted as CatchTable UI roles.
+- **Official font/license boundary:** Pretendard’s upstream project distributes the family under SIL Open Font License 1.1. That license explains the font asset, while computed usage plus FontFaceSet/source corroboration is what establishes the observed public use above.
 
-### Ink ladder (text & icon)
+## 4. Components
 
-- **Body Default** (`#000000`): Default body text — used everywhere by default.
-- **Title** (`#222222`): Section sub-titles, list-item titles.
-- **Body Strong** (`#424242`): Tab-bar labels at rest.
-- **Body Muted** (`#666666`): Footer policy links, secondary descriptions.
-- **Tertiary** (`#5F5F5F`): Chip-button text (e.g. 현재 위치로).
-- **Placeholder** (`#9E9E9E`): Search-input placeholder.
-- **Disabled** (`#B5B5B5`): Disabled controls.
-- **Icon Default** (`#8F8F8F`): Footer regulatory text, icon default.
-- **Icon Subtle** (`#AAAAAA`): Decorative icons.
+### Consumer search
 
-### Surface
+**Default**
+- Background: `#F5F5F5`
+- Text: `#000000`
+- Radius: `40px`
+- Padding: `0px 15px 0px 32px`
+- Font: `15px / 500 Pretendard Std Variable`
+- Use: Consumer-home search input; `home::[data-omd-capture="0"]`.
 
-- **Canvas** (`#FFFFFF`): Page background.
-- **Subdued** (`#F9F9F9`): Footer block fill.
-- **Muted** (`#F5F5F5`): Search-input fill, chip rest state.
-- **Cool** (`#F2F5F7`): Optional cool-tinted surface.
-- **Cool Alt** (`#F0F4FA`): Info-tint surface paired with `#186ADE`.
+### Consumer filter control
 
-### Borders
+**Default**
+- Background: `#FFFFFF`
+- Text: `#000000`
+- Border: `1px solid #E4E4E4`
+- Radius: `8px`
+- Height: `32px`
+- Font: `16px / 400 Pretendard Std Variable`
+- Use: Consumer-home compact control; `home::[data-omd-capture="1"]`.
 
-- **Hairline Alpha** (`#00000014`): Default hairline divider (8% black).
-- **Border Default** (`#E4E4E4`): Standard card and input border.
-- **Border Cool** (`#DCE3E8`): Cool-themed surface border.
+### Consumer discovery tile
 
-### Support cool-ink (rare; used in editorial / magazine module)
+**Default**
+- Radius: `6px`
+- Padding: `8px 12px`
+- Font: `16px / 400 Pretendard Std Variable`
+- Use: Image-led consumer-home discovery tile; `home::[data-omd-capture="17"]`.
 
-- **Cool Ink Deep** (`#1C2B36`), **Mid** (`#3E5463`), **Soft** (`#7A909E`), **Light** (`#9FB1BD`).
+### Merchant marketing CTA
 
-### Semantic
+**Default**
+- Background: `#002D4E`
+- Text: `#FFFFFF`
+- Radius: `8px`
+- Height: `48px`
+- Font: `16px / 700 Pretendard`
+- Use: Merchant-marketing CTA link; `surface-2::[data-omd-capture="20"]`.
 
-- **Info** (`#186ADE`) / **Info Soft** (`#75B1FF`) / **Info Tint** (`#F0F4FA`)
-- **Success** (`#43C478`) / **Success Strong** (`#077D55`) / **Success Tint** (`#EBF7ED`)
-- **Danger** (`#D91F11`): Distinct from brand orange — semantic red is darker, redder. Don't confuse.
-- **Warning** (`#F5C518`)
-- **Premium Purple** (`#8F49DE`): Reserved for premium-tier badges (e.g. members-only restaurants).
+### Careers orange action
 
-### Overlay
+**Default**
+- Background: `#FF3D00`
+- Text: `#FFFFFF`
+- Radius: `15px`
+- Padding: `10.5px 24px`
+- Font: `16px / 400 Pretendard`
+- Use: Careers-service marketing action; `surface-3::[data-omd-capture="14"]`.
 
-- **Counter Dim** (`rgba(20,24,29,0.74)`): Swiper slide-counter pill.
-- **Scrim 70/60** (`rgba(0,0,0,0.7)`, `rgba(0,0,0,0.6)`): Modal/sheet backdrops.
+The supplied bundle reports zero interaction records. No hover, pressed, focus, disabled, menu, dialog, validation, or responsive variants are claimed; the `surface-2` static pseudo-state samples are not promoted because the bundle has no corresponding interaction provenance.
 
-## 3. Typography Rules
+---
 
-### Font Family
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://www.catchtable.net/` (consumer product surface), `https://biz.catchtable.co.kr/n/main` (merchant marketing), `https://career.catchtable.co.kr/ko/service` (careers marketing and official service context), `https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md` (upstream font distribution/design boundary), and `https://github.com/orioncactus/pretendard/blob/main/LICENSE` (upstream font licence boundary)
+**Tier 2 sources:** `https://getdesign.md/catchtable` (attempted; built-in web open safe-open failure/no usable record), `https://styles.refero.design/?q=catchtable` (attempted; built-in web open safe-open failure/no usable record), web search for both names (no CatchTable record returned)
+**Conflicts unresolved:** none
 
-- **Primary**: `Pretendard, -apple-system, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif`
-- **No brand display font.** No headline accent. Pretendard alone carries the entire system. This is a deliberate restraint — the photography is the brand.
-
-### Hierarchy
-
-| Role | Size | Weight | Line Height | Notes |
-|------|------|--------|-------------|-------|
-| Section Title | 20px | 700 | 150% | `음식종류별 BEST`, `캐치 매거진`, search hero label `어디로 가시나요?` |
-| Big Section | 18px | 700 | 150% | Larger card titles |
-| Card Title | 16px | 600 | 150% | Restaurant card titles in list / detail surfaces |
-| Body Default | 14px | 400 | 150% | **Dominant** — 900 of 1149 sampled elements; nav labels, list items, body |
-| Tab Label | 14px | 400 | 150% | Bottom-tab labels |
-| Chip Label | 14px | 500 | 150% | Geo chips, filter chips |
-| Search Input | 13px | 500 | 150% | Placeholder color `#9E9E9E` |
-| Neighbourhood Chip | 13px | 500 | 150% | `청담`, `압구정·로데오` style |
-| Caption | 12px | 400 | 150% | Timestamps, secondary meta |
-| Footer Body | 11px | 400 | 150% | Regulatory disclosure text |
-| Policy Link | 11px | 500 | 150% | Footer `서비스 이용약관` row |
-| Micro Meta | 10px | 500 | 150% | Slide counter `2 / 25`, bottom-tab compact mode |
-
-### Principles
-
-- **150% line-height is a system-wide contract.** Every typography token across ~35 distinct slots ships `line-height: 150%`. Don't break this — vertical rhythm depends on it.
-- **400 dominates, 700 punctuates.** Weight distribution observed: 400 = 91%, 500 = 5%, 700 = 2%, 450 = 2%, 600 = <1%. The "weight rhythm" is binary — body or title, almost nothing in between.
-- **No tracking adjustments observed** — `letter-spacing: normal` is universal.
-- **Micro text below WCAG body floor**: 10–11px appears on slide counters and legal disclosures. For ports to Latin-script translations, elevate these to ≥12px.
-
-## 4. Radius & Shape
-
-The geometry is **hard-square by default**:
-
-| Use | Radius | Frequency |
-|---|---|---|
-| Default chrome (canvas, sections, list rows, dividers, search input) | `0px` | 1063 of 1149 sampled elements (92%) |
-| Photo thumbnail (rasterised, inside Swiper) | `4px` (also `4.05px` legacy) | 40 |
-| Interactive control (button, card pill, filter pill) | `8px` | 29 |
-| Avatar / circular icon | `50%` | 13 |
-| **Primary CTA pill** | `12px` | 3 |
-| Pill-full (rare, special-case) | `999px` | 1 |
-
-The visual signature is the **absence** of softening on the chrome. Sharp corners frame food photography the way a magazine frames a photograph. When porting: do **not** apply a global `border-radius: 8px` reset — you will lose the brand entirely.
+Legacy claims about a 145-token semantic sheet, a universal 150% type contract, a five-tier shadow ladder, restaurant-booking CTA styling, bottom-navigation states, Swiper states, and a universal hard-square geometry were removed: the supplied 2026 capture does not substantiate them.
 
 ## 5. Elevation
 
-Five-tier shadow ladder defined in `:root`, but used sparingly on the home surface (only 2 distinct shadows fired across 3000+ elements observed). Depth is mostly carried by **borders + surface tints**.
+The selector-backed consumer controls documented above have `box-shadow: none`. The merchant CTA has a route-local shadow, but no repeatable elevation scale is established across the three domains, so no shadow token is promoted.
 
-| Tier | Token | Recipe |
-|---|---|---|
-| xs | `--shadow-xs` | `0 1px 2px rgba(0,0,0,.12), 0 0 1px rgba(0,0,0,.08), 0 0 1px rgba(0,0,0,.08)` |
-| sm | `--shadow-sm` | `0 2px 8px rgba(0,0,0,.12), 0 1px 4px rgba(0,0,0,.08), 0 0 1px rgba(0,0,0,.08)` |
-| drop | `--shadow-drop` | `0 2px 12px rgba(0,0,0,.12)` |
-| md | `--shadow-md` | `0 6px 12px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.08), 0 0 4px rgba(0,0,0,.08)` |
-| lg / modal | `--shadow-lg` | `0 16px 20px rgba(0,0,0,.12), 0 8px 16px rgba(0,0,0,.08), 0 0 8px rgba(0,0,0,.08)` |
+## 6. Spacing & Shape
 
-Reserve elevation for: floating action buttons over photography, bottom sheets, sticky search bars on scroll, modal surfaces. Don't fire on cards-at-rest — borders or hairline alpha (`#00000014`) handle separation.
+The repeated small values in the supplied bundle support a conservative `4 / 8 / 12 / 20px` observed spacing set. Radius is deliberately source-specific: the consumer home includes square chrome, 6px discovery tiles, an 8px compact control, and a 40px search field; the careers action is 15px. These observations are not a global radius prescription.
 
-## 6. Spacing & Layout
+## 7. Iconography & Imagery
 
-Observed spacing scale (px): **4 / 8 / 12 / 16 / 20 / 24 / 32 / 45 / 60**.
-
-- **Mobile-first**: WebView shell with `status-bar-top` and `status-bar-padding-top` classes — the design target is the in-app surface, not desktop.
-- **Section paddings**: `pb-45` and `mb-16` legacy utility classes — 45px bottom-of-section, 16px between modules.
-- **Horizontal scrolling lists** dominate discovery — `음식종류별 BEST` is a swipe-row of best-of pills, not a vertical grid.
-- **Bottom tab bar** owns the lowest 56–60px of the viewport.
-
-## 7. Iconography & Photography
-
-- **Photography-first**. The home flow is dominated by 4:3 and landscape food photography. Tile thumbnails carry a subtle `4px` radius — the only soft-corner surface in the system.
-- **Icons are line-style**, rendered as inline SVG; default stroke color `#8F8F8F` (icon-default), darkening to `#000` on active states.
-- **No illustration system observed** on the home surface. Magazine articles inside 캐치 매거진 carry editorial photography rather than custom illustration.
-
-## 8. Component Patterns
-
-- **Primary CTA pill**: `#FF3D00` fill, `#FFF` text, 14px/500 Pretendard, `12px` radius, ~44px tall — only one variant observed. Single-color, single-shape, single-CTA discipline.
-- **Search input**: `#F5F5F5` fill, sharp `0px` corners, 13px/500 placeholder `#9E9E9E`, inline search icon left.
-- **Chip / pill row**: 13–14px/500 ink, no fill at rest, no border at rest — separation by spacing alone (chips at `청담`, `압구정·로데오`, etc.).
-- **Geo-toggle button** (현재 위치로): 14px/500, ink `#5F5F5F`, leading geo icon — text-style action button.
-- **Best-of horizontal pill** (호텔 뷔페, 스시 오마카세): Image-led tile + 14px/400 ink label below — no card chrome, just photo + name.
-- **Bottom tab bar**: 5 tabs (홈 / 저장 / 내 주변 / 마이다이닝 / MY), icon-over-label, 14px/400 ink default; active state inferred (not captured live this pass — flagged).
-- **Swiper hero**: 25-slide carousel with counter pill (`2 / 25 / 전체`) on `rgba(20,24,29,0.74)` overlay.
-- **Footer disclosure block**: `#F9F9F9` surface, 14px/400 corporate info, 11px/500 policy links separated by `|` pipe glyphs, 11px/400 regulatory disclaimer.
-
-## 9. Accessibility & Locale
-
-- **WCAG contrast** — `#000` on `#FFF` body is 21:1 (max); `#222`/`#FFF` titles are 16.1:1; `#FF3D00`/`#FFF` CTA pill is **3.7:1** — **fails AA for normal text but passes AA for large text (18pt+/14pt bold equivalent)**. Since the CTA pill ships 14px/500 (below the bold threshold), this sits at the **borderline AA fail** for body. The system as shipped accepts the trade-off; ports must either bold the CTA label or darken the orange to `#E63600` (≈4.6:1) for strict AA.
-- **Micro text below body floor**: 10–11px slide counters and footer disclaimers are below WCAG body recommendations. Ports to Latin scripts (where stroke widths increase) should elevate to ≥12px.
-- **No landmark elements observed in initial capture** — `<main>` is present but no `<aside>` / explicit `role` annotations on the bottom tab bar. A11y debt; flag for ports.
-- **Locale convention**: Korean restaurant-reservation flows assume KR mobile carriers, KakaoTalk-style identity, and 24h reservation windows. The 마이다이닝 (My Dining) IA spine is loyalty-flavoured, not transaction-flavoured — ports should consider whether the destination market expects a "Reservations" history rather than a "Dining" hub.
-
-## 10. Voice & Microcopy
-
-**Voice shape** (analyst characterisation — not verbatim CatchTable copy): **curatorial-warm, gerund-light, second-person-implied**. The on-surface copy treats the user as a diner choosing a story, not a customer completing a transaction.
-
-Don'ts:
-- Don't write "Book now." The brand's invitation is softer.
-- Don't write "X% off" stickers across photography. The system is photograph-respectful.
-- Don't write urgency timers. Magazine, not flash sale.
-
-Voice samples (fresh OmD-original characterisations, **not** lifted from CatchTable copy — three options to triangulate the shape):
-
-1. *"오늘의 자리, 천천히 골라보세요."* — invitation framing, soft imperative.
-2. *"이번 주말, 어디서 드실래요?"* — question framing, peer-to-peer warmth.
-3. *"미식의 시작, 한 자리에서."* — slogan-shape, factual + warm.
-
-**IP guardrail**: The title-tag phrase "즐거운 미식 생활의 시작" is quoted **once** in §11 as a factual brand-narrative reference and is **not** adopted as headline copy in any sample above. The gerund-lite, curatorial register is documented as a *shape*, not reproduced.
-
-## 11. Brand Narrative (factual provenance)
-
-CatchTable is operated by **주식회사 와드** (WAD Inc.), founded by **용태순** (Yong Tae-soon, current 대표/CEO). Headquartered in **Bundang, Gyeonggi-do** (corporate disclosure observed on the home footer, 2026-05-15). The service positions itself as a premium-leaning restaurant-reservation platform with editorial inflection — the 캐치 매거진 module on the home surface signals that the brand treats discovery as guidebook-style curation, not a transactional booking listing. Title-tag positioning observed on the home surface: "캐치테이블 | 즐거운 미식 생활의 시작" (factual evidence of curatorial-warm positioning, **not** adopted as design copy).
-
-**FILL IN** (verification deferred — Crunchbase / DART access needed): founding year, total funding raised, employee headcount, investor list, monthly active users, reservation volume. These are reported in Korean trade press but were not verified at OmD attribution fidelity in this pass.
-
-## 12. Personas (illustrative — for portable design briefs only)
-
-> Personas are illustrative sketches derived from observable IA decisions (e.g. 마이다이닝 hub, 호텔 뷔페 / 스시 오마카세 / 한우 오마카세 best-of pillars). They are **not** based on internal CatchTable research and should be treated as analyst-inferred FILL-IN placeholders.
-
-- **The Anniversary Planner** — 30s couple in Seoul; books quarterly for birthdays / anniversaries; values curation over price; uses 저장 (Save) before deciding.
-- **The Omakase Regular** — 40s professional; books monthly; uses 마이다이닝 as a memory aid (where did I go, what did I eat); cares about repeat-discount tiers.
-- **The Out-of-Town Visitor** — late 20s traveller in town for 2 days; uses 내 주변 + 캐치 매거진 to discover; books 24–48h ahead; one-shot user (low return).
-
-## 13. Anti-Patterns
-
-Things CatchTable's design **avoids** — and which a port must avoid to keep the inspiration:
-
-- ❌ Flooding the surface with brand orange. Orange is a single-CTA color, not a section-fill color.
-- ❌ Softening every corner. 92% of chrome is `0px` radius — sharpness is the brand.
-- ❌ Adding a display / brand-typography font. Pretendard alone is the entire system.
-- ❌ Firing shadows on cards at rest. Depth = borders + hairline alpha.
-- ❌ "Book now" urgency rhetoric or countdown timers. Voice is curatorial, not transactional.
-- ❌ Discount stickers stamped on food photography. Photography is sovereign.
-- ❌ Breaking the 150% line-height contract. Every text slot ships 150% — don't compress.
-- ❌ Treating desktop as the primary canvas. Design ships to mobile WebView; desktop is a porthole.
-
-## 14. Motion (partially captured — flagged)
-
-Motion tokens were **not** captured in this CDP pass — only entry-fade on Swiper transitions was visibly inferred. The home Swiper uses a default Swiper.js horizontal slide (cubic-ease, ~300ms). Detailed motion tokens (durations, easings, FAB rise, sheet present, tab-switch) require a follow-up UPDATE pass with interaction-triggered capture. **Flagged**.
-
-## 15. Footer / Verification
-
-- **DS surfaces probed and result**:
-  - `design.catchtable.co.kr` → DNS no-resolve (000)
-  - `tech.catchtable.co.kr` → DNS no-resolve (000)
-  - `www.catchtable.co.kr/brand` → 302 redirect (no brand portal)
-  - `github.com/catchtable` → 200 but only 3 public repos (`prerender-java`, `claude-hud`, `brand-review-tool`); **no design-system / Storybook / tokens repo**
-  - `getdesign.md/catchtable` → "No designs found for 'catchtable'"
-  - `styles.refero.design/?q=catchtable` → no result cards
-  - **Result**: **Tier 1 official DS = authoritative NEGATIVE.** The system lives in production code as a vanilla-extract token sheet — captured here directly via CDP (145 `:root` vars on `app.catchtable.co.kr/`).
-
-- **Live capture method**: Chrome DevTools Protocol over `localhost:9222`, `websocket-client` with `suppress_origin=True`, `Runtime.evaluate` against `document.documentElement` for full `:root` custom-property enumeration plus a 3000-element `getComputedStyle` frequency analysis. Browser: Chrome/148.0.7778.97. Captured `2026-05-15T07:10Z`.
-
-- **Surfaces inspected**: `https://app.catchtable.co.kr/` (35 element samples, 145 `:root` vars, 3000-element frequency table) + `https://app.catchtable.co.kr/ct/shop/list?categoryName=서울` (4 element samples — degraded desktop shell, used to confirm primary CTA spec).
-
-- **Proof artefacts**:
-  - `assets/_reference/.live-inspect-proof.json` — 10 raw_samples (≥5 floor), full frequency proof, 33-color token map, 5-tier shadow ladder.
-  - `assets/_reference/.live-inspect-raw.json` — provenance manifest.
-  - `assets/_reference/tokens.json` — normalised colour / typography / radius / elevation / spacing.
-  - `assets/_reference/fonts.json` — Pretendard stack + weight-role map.
-  - `assets/_reference/structure.json` — IA + heading outline + tone-observed.
-  - `_research.md` — 5-tier source map + IP guardrails + flags.
-
-- **IP guardrails**: Brand assets (logo, name, primary `#FF3D00`) referenced for inspiration only. Title-tag positioning phrase quoted **once** as §11 narrative evidence; **not** reproduced as design copy. §10 voice samples are fresh OmD analyst paraphrases. Token values reproduced as factual CSS-custom-property values under analytical fair-use.
-
-- **Confidence**: **High** for tokens, type, radius, elevation, colour, IA spine, footer disclosure. **Medium** for personas (analyst-inferred from IA, not from internal research). **Low / Flagged** for motion (not captured), restaurant-detail page, list page, sell/reservation flow, MY tab — all require an UPDATE pass via mobile-emulated CDP.
-
-- **Verification date**: 2026-05-15.
-
-## 16. Do's and Don'ts
+The consumer home is image-led: repeated discovery tiles use a simple control shell around imagery and text. The capture exposes ordinary controls but no named icon library, stroke treatment, image ratio, or reusable media-card contract. Those details remain unclaimed.
 
 ### Do
-- Reserve CatchTable Orange (#FF3D00) for the single primary CTA pill only, where it appears in just 4 text/icon contexts across a 3000-element scan
-- Keep chrome hard-square at 0px radius (92% of elements), softening only to 4px for photo thumbnails, 8px for interactive controls, and 12px for the primary CTA pill
-- Set Pretendard as the sole typeface across the entire system with no display or headline font, letting food photography be the brand moment
-- Apply line-height: 150% to every typography slot, from the 20px/700 Section Title down to the 10px/500 Micro Meta, as a system-wide contract
-- Carry separation with borders and hairline alpha (#00000014) on cards at rest, reserving the five-tier shadow ladder for FABs, bottom sheets, sticky search bars, and modals
-- Keep body weight at Pretendard 400 (91% of text) and punctuate only with 700 for section titles and price emphasis
+
+- Keep restaurant imagery and discovery content tied to the consumer surface where they were observed.
+- Preserve the separation between diner discovery imagery and merchant lead-generation content.
 
 ### Don't
-- Flood sections or large backgrounds with brand orange #FF3D00 — it is a single-CTA color, not a section-fill color
-- Apply a global border-radius reset like 8px to the chrome — it erases the hard-square 0px signature that frames the photography
-- Add a display or brand-typography font alongside Pretendard, which alone carries 91% of all rendered text
-- Fire shadows on cards at rest — depth is meant to come from borders and hairline alpha, not the shadow ladder
-- Stamp discount stickers, X% off badges, or countdown timers over food photography, which the system treats as sovereign
-- Confuse semantic Danger red #D91F11 with brand orange #FF3D00, or compress the 150% line-height contract
+
+- Invent a named icon library, stroke specification, or image ratio that the evidence does not establish.
+- Recast merchant marketing imagery as an observed consumer reservation component.
+
+## 8. Accessibility
+
+- The consumer search has black text on `#F5F5F5`; the compact control has black text on white with a `#E4E4E4` border.
+- The careers orange action is `#FFFFFF` on `#FF3D00`; it is a marketing observation, not an accessibility approval for all consumer actions.
+- No keyboard or focus-visible state was captured. Any implementation needs its own accessible focus treatment rather than inferring one from the recorded radii.
+- Declared-only fonts must not be presented as loaded CatchTable faces.
+
+## 9. Content & Voice
+
+Official careers copy frames the consumer experience around making a dining choice with more confidence and enjoyment, and the merchant experience around connecting reservation, waiting, POS, and store operations. Use that clarity—choice for diners, operational continuity for merchants—without copying slogans or turning a careers narrative into consumer-product microcopy.
+
+## 10. Voice & Tone
+
+**Voice adjectives:** clear · food-centered · operationally concrete
+
+| Do | Don't |
+|---|---|
+| Describe a diner choice or a concrete restaurant operation. | Invent urgency, discounts, or reservation states that were not captured. |
+| Keep consumer and merchant messages audience-specific. | Treat a merchant lead-generation CTA as a diner-booking control. |
+| Use calm, direct Korean service language. | Reproduce official slogans as generated product copy. |
+
+## 11. Brand Narrative
+
+CatchTable’s official careers page describes a service present around meaningful meals and store opening/growth moments. It identifies the consumer side as CatchTable (B2C), where reservations and waiting support the dining journey, and the merchant side as CatchTable Business (B2B), combining reservation, waiting, and POS operations. The same page reports a current ambition to grow into a food-service super-platform. WAD’s official service terms identify the operating company as 주식회사 와드.
+
+## 12. Principles
+
+1. **Keep the two-sided service legible.** Consumer discovery and merchant operations are related but not the same UI surface.
+2. **Promote only observed public styles.** A selector-backed product token does not authorize a plausible restaurant-detail or reservation-flow variant.
+3. **Let food discovery carry the consumer surface.** The captured consumer home uses image-led tiles and compact controls rather than a generalized sales dashboard.
+4. **Treat orange by source domain.** `#FF3D00` is verified on the careers marketing action; do not automatically use it as a universal consumer semantic color.
+
+## 13. Personas
+
+The official service description names two stakeholder groups; this reference keeps them as groups rather than inventing demographic personas:
+
+- **Diners:** use the consumer service to discover restaurants, make reservations, and use waiting-related experiences.
+- **Restaurant operators:** use merchant-side reservation, waiting, POS, pickup, order, and management functions.
+
+## 14. States
+
+Only default static component samples are documented. The raw bundle contains zero interaction records, so loading, error, success, focus, hover, pressed, disabled, menu-open, dialog-open, and responsive states are intentionally omitted.
+
+## 15. Motion
+
+No duration, easing, transition, carousel, or scroll state is recorded in the supplied evidence. Motion is intentionally undocumented.

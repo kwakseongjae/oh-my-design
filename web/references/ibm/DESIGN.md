@@ -8,57 +8,108 @@ primary_color: "#0f62fe"
 logo:
   type: github
   slug: IBM
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Carbon
   url: "https://carbondesignsystem.com"
   type: system
-  description: IBM's open-source design system with React, Angular, Vue, and Web Components.
+  description: IBM's official open-source design system; Carbon documentation is distinct from the captured IBM.com product surfaces.
   og_image: "https://carbondesignsystem.com/ogimage.png"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.ibm.com/kr-ko", inspected: "2026-07-13" }
+    - { id: cloud-support, kind: public-product, url: "https://www.ibm.com/kr-ko/products/cloud/support?lnk=flathl", inspected: "2026-07-13" }
+    - { id: confluent, kind: public-product, url: "https://www.ibm.com/kr-ko/products/confluent?lnk=hpfp4kr", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.ibm.com/kr-ko", captured: "2026-07-13" }
+    - { id: cloud-support-live, kind: product-surface, url: "https://www.ibm.com/kr-ko/products/cloud/support?lnk=flathl", captured: "2026-07-13" }
+    - { id: confluent-live, kind: product-surface, url: "https://www.ibm.com/kr-ko/products/confluent?lnk=hpfp4kr", captured: "2026-07-13" }
+    - { id: carbon-docs, kind: official-doc, url: "https://carbondesignsystem.com/components/button/usage/", captured: "2026-07-13" }
+    - { id: plex-typeface, kind: license, url: "https://www.ibm.com/design/language/typography/typeface/", captured: "2026-07-13" }
+    - { id: ibm-history, kind: official-doc, url: "https://www.ibm.com/history/ctr-and-ibm", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &product { surface_id: cloud-support, source_id: cloud-support-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.canvas": &marketing { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.foreground": *product
+    "tokens.colors.muted": *product
+    "tokens.colors.layer": *marketing
+    "tokens.colors.border": *product
+    "tokens.colors.link": &confluent { surface_id: confluent, source_id: confluent-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.typography.family.sans": *product
+    "tokens.typography.display.size": *marketing
+    "tokens.typography.display.weight": *marketing
+    "tokens.typography.display.lineHeight": *marketing
+    "tokens.typography.display.use": *marketing
+    "tokens.typography.body.size": *product
+    "tokens.typography.body.weight": *product
+    "tokens.typography.body.lineHeight": *product
+    "tokens.typography.body.use": *product
+    "tokens.typography.action.size": *product
+    "tokens.typography.action.weight": *product
+    "tokens.typography.action.lineHeight": *product
+    "tokens.typography.action.tracking": *product
+    "tokens.typography.action.use": *product
+    "tokens.typography.label.size": *marketing
+    "tokens.typography.label.weight": *marketing
+    "tokens.typography.label.lineHeight": *marketing
+    "tokens.typography.label.tracking": *marketing
+    "tokens.typography.label.use": *marketing
+    "tokens.spacing.xs": *product
+    "tokens.spacing.sm": *product
+    "tokens.spacing.md": *product
+    "tokens.spacing.lg": *product
+    "tokens.spacing.xl": *product
+    "tokens.spacing.section": *marketing
+    "tokens.rounded.sharp": *product
+    "tokens.rounded.control": *product
+    "tokens.shadow.flat": *product
+    "tokens.components.primary-action.type": *product
+    "tokens.components.primary-action.bg": *product
+    "tokens.components.primary-action.fg": *product
+    "tokens.components.primary-action.radius": *product
+    "tokens.components.primary-action.padding": *product
+    "tokens.components.primary-action.height": *product
+    "tokens.components.primary-action.font": *product
+    "tokens.components.primary-action.states": *product
+    "tokens.components.primary-action.use": *product
+    "tokens.components.product-tabs.type": *confluent
+    "tokens.components.product-tabs.bg": *confluent
+    "tokens.components.product-tabs.fg": *confluent
+    "tokens.components.product-tabs.border": *confluent
+    "tokens.components.product-tabs.radius": *confluent
+    "tokens.components.product-tabs.padding": *confluent
+    "tokens.components.product-tabs.height": *confluent
+    "tokens.components.product-tabs.font": *confluent
+    "tokens.components.product-tabs.states": *confluent
+    "tokens.components.product-tabs.use": *confluent
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: live-extract
+  extracted: "2026-07-13"
   colors:
     primary: "#0f62fe"
-    primary-hover: "#0353e9"
-    primary-active: "#002d9c"
-    link-hover: "#0043ce"
-    primary-tint: "#edf5ff"
     canvas: "#ffffff"
-    text: "#161616"
-    gray-90: "#262626"
-    gray-80: "#393939"
-    text-secondary: "#525252"
-    placeholder: "#6f6f6f"
-    disabled: "#8d8d8d"
-    border: "#c6c6c6"
-    border-subtle: "#e0e0e0"
+    foreground: "#161616"
+    muted: "#525252"
     layer: "#f4f4f4"
-    layer-hover: "#e8e8e8"
-    error: "#da1e28"
-    success: "#24a148"
-    warning: "#f1c21b"
-    interactive-dark: "#78a9ff"
+    border: "#c6c6c6"
+    link: "#0062fe"
   typography:
-    family: { sans: "IBM Plex Sans", mono: "IBM Plex Mono" }
-    display: { size: 60, weight: 300, lineHeight: 1.17, use: "Maximum impact display, light weight" }
-    body:    { size: 16, weight: 400, use: "Standard reading text" }
-    caption: { size: 14, weight: 400, tracking: 0.16, use: "Captions, micro-tracking" }
-    label:   { size: 12, weight: 400, tracking: 0.32, use: "Input labels, helper text" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 0, md: 0, lg: 0, full: 9999 }
+    family: { sans: "IBM Plex Sans KR" }
+    display: { size: 53.6469, weight: 300, lineHeight: 62.7669, use: "Marketing leadspace at the captured 1440px viewport" }
+    body: { size: 16, weight: 400, lineHeight: 24, use: "Observed public-product body text" }
+    action: { size: 14, weight: 400, lineHeight: 18.0001, tracking: 0.16, use: "Observed primary action" }
+    label: { size: 12, weight: 400, lineHeight: 16, tracking: 0.32, use: "Observed marketing badge" }
+  spacing: { xs: 8, sm: 12, md: 16, lg: 24, xl: 32, section: 64 }
+  rounded: { sharp: 0, control: 4 }
   shadow:
     flat: "none"
   components:
-    button-primary: { type: button, bg: "#0f62fe", fg: "#ffffff", radius: 0, padding: "14px 63px 14px 15px", use: "Primary blue button, 48px tall, sharp rectangle" }
-    button-secondary: { type: button, bg: "#393939", fg: "#ffffff", radius: 0, use: "Gray secondary button" }
-    button-tertiary: { type: button, bg: "#ffffff", fg: "#0f62fe", radius: 0, use: "Ghost blue, 1px blue border" }
-    button-ghost: { type: button, bg: "#ffffff", fg: "#0f62fe", radius: 0, padding: "14px 16px", use: "Borderless ghost, gray hover tint" }
-    button-danger: { type: button, bg: "#da1e28", fg: "#ffffff", radius: 0, use: "Danger button" }
-    card: { type: card, bg: "#f4f4f4", radius: 0, padding: "16px", use: "Flat tile, no border/shadow, bg-layered separation" }
-    input: { type: input, bg: "#f4f4f4", fg: "#161616", radius: 0, padding: "0px 16px", use: "Bottom-border field, 40px tall, sharp" }
-    nav: { type: tab, bg: "#161616", fg: "#c6c6c6", use: "Dark masthead nav, 48px tall", active: "white text + bottom-border indicator" }
+    primary-action: { type: button, bg: "#0f62fe", fg: "#ffffff", radius: 4, padding: "14px 63px 14px 15px", height: 48, font: "14px/400 IBM Plex Sans KR", states: "hover/pressed/focus captured on cloud-support and confluent", use: "Public product CTA" }
+    product-tabs: { type: tab, bg: "#f4f4f4", fg: "#161616", border: "1px solid #c6c6c6", radius: 4, padding: "0px 16px", height: 48, font: "16px/400 IBM Plex Sans KR", states: "hover/pressed/selected captured", use: "Confluent public-product tablist" }
   components_harvested: true
 ---
 
@@ -66,399 +117,197 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-IBM's website is the digital embodiment of enterprise authority built on the Carbon Design System — a design language so methodically structured it reads like an engineering specification rendered as a webpage. The page operates on a stark duality: a bright white (`#ffffff`) canvas with near-black (`#161616`) text, punctuated by a single, unwavering accent — IBM Blue 60 (`#0f62fe`). This isn't playful tech-startup minimalism; it's corporate precision distilled into pixels. Every element exists within Carbon's rigid 2x grid, every color maps to a semantic token, every spacing value snaps to the 8px base unit.
+IBM is a long-running enterprise technology company whose public web experience connects cloud, AI, data, automation, and support information to a highly recognizable system language. Its current Korean public surfaces balance dense, practical product information with a restrained visual grammar: a white and light-gray field, near-black text, precise blue actions, and modestly rounded controls. The brand’s expressive layer comes principally from IBM Plex, a corporate typeface that IBM positions alongside its name and logo, while Carbon supplies the reusable component and accessibility guidance behind many of those public patterns. IBM’s own history traces the company from the 1911 Computing-Tabulating-Recording merger through its 1924 IBM name; its current About material frames the company around AI, cloud, quantum, and sustainability. [IBM history](https://www.ibm.com/history/ctr-and-ibm) · [IBM About](https://www.ibm.com/about?lnk=intro)
 
-The IBM Plex type family is the system's backbone. IBM Plex Sans at light weight (300) for display headlines creates an unexpectedly airy, almost delicate quality at large sizes — a deliberate counterpoint to IBM's corporate gravity. At body sizes, regular weight (400) with 0.16px letter-spacing on 14px captions introduces the meticulous micro-tracking that makes Carbon text feel engineered rather than designed. IBM Plex Mono serves code, data, and technical labels, completing the family trinity alongside the rarely-surfaced IBM Plex Serif.
+The July 2026 capture establishes a narrower, current implementation boundary. It covers one Korean marketing route and two public product routes; it does not represent an authenticated IBM application or every Carbon theme. The product routes repeatedly use IBM Plex Sans KR, full-height 48px primary actions, 4px control corners, flat surfaces, and tab/accordion structures. Carbon documentation is authoritative design-system context, but its catalog of variants is not automatically a claim about every observed IBM.com surface.
 
-What defines IBM's visual identity beyond monochrome-plus-blue is the reliance on Carbon's component token system. Every interactive state maps to a CSS custom property prefixed with `--cds-` (Carbon Design System). Buttons don't have hardcoded colors; they reference `--cds-button-primary`, `--cds-button-primary-hover`, `--cds-button-primary-active`. This tokenized architecture means the entire visual layer is a thin skin over a deeply systematic foundation — the design equivalent of a well-typed API.
-
-**Key Characteristics:**
-- IBM Plex Sans at weight 300 (Light) for display — corporate gravitas through typographic restraint
-- IBM Plex Mono for code and technical content with consistent 0.16px letter-spacing at small sizes
-- Single accent color: IBM Blue 60 (`#0f62fe`) — every interactive element, every CTA, every link
-- Carbon token system (`--cds-*`) driving all semantic colors, enabling theme-switching at the variable level
-- 8px spacing grid with strict adherence — no arbitrary values, everything aligns
-- Flat, borderless cards on `#f4f4f4` Gray 10 surface — depth through background-color layering, not shadows
-- Bottom-border inputs (not boxed) — the signature Carbon form pattern
-- 0px border-radius on primary buttons — unapologetically rectangular, no softening
+**Key characteristics:**
+- White and Gray 10 (`#f4f4f4`) layers with Gray 100 (`#161616`) text
+- IBM Blue (`#0f62fe`) for the captured primary action; `#0062fe` also appears as a public link/color treatment
+- IBM Plex Sans KR is the loaded, visible family on the captured Korean marketing and public-product surfaces
+- Small, explicit action typography: 14px / 400 / 18.0001px with 0.16px tracking
+- A mixed corner treatment: content structures are often sharp, while captured primary actions and tabs use 4px
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **IBM Blue 60** (`#0f62fe`): The singular interactive color. Primary buttons, links, focus states, active indicators. This is the only chromatic hue in the core UI palette.
-- **White** (`#ffffff`): Page background, card surfaces, button text on blue, `--cds-background`.
-- **Gray 100** (`#161616`): Primary text, headings, dark surface backgrounds, nav bar, footer. `--cds-text-primary`.
+### Observed public marketing and product palette
+- **Primary action** (`#0f62fe`): default background on the captured Cloud Support CTA; white text.
+- **Link / product accent** (`#0062fe`): observed as text and border color on the marketing and Confluent routes. It is retained as a separate observed role, not silently collapsed into the CTA value.
+- **Canvas** (`#ffffff`): observed public page background and light control surface.
+- **Foreground** (`#161616`): repeated text and border color across all three captured routes.
+- **Muted text** (`#525252`): repeated secondary text color across all three captured routes.
+- **Layer** (`#f4f4f4`): repeated product tab/input/card-adjacent surface.
+- **Border** (`#c6c6c6`): observed tab and card boundary color.
 
-### Neutral Scale (Gray Family)
-- **Gray 100** (`#161616`): Primary text, headings, dark UI chrome, footer background.
-- **Gray 90** (`#262626`): Secondary dark surfaces, hover states on dark backgrounds.
-- **Gray 80** (`#393939`): Tertiary dark, active states.
-- **Gray 70** (`#525252`): Secondary text, helper text, descriptions. `--cds-text-secondary`.
-- **Gray 60** (`#6f6f6f`): Placeholder text, disabled text.
-- **Gray 50** (`#8d8d8d`): Disabled icons, muted labels.
-- **Gray 30** (`#c6c6c6`): Borders, divider lines, input bottom-borders. `--cds-border-subtle`.
-- **Gray 20** (`#e0e0e0`): Subtle borders, card outlines.
-- **Gray 10** (`#f4f4f4`): Secondary surface background, card fills, alternating rows. `--cds-layer-01`.
-- **Gray 10 Hover** (`#e8e8e8`): Hover state for Gray 10 surfaces.
-
-### Interactive
-- **Blue 60** (`#0f62fe`): Primary interactive — buttons, links, focus. `--cds-link-primary`, `--cds-button-primary`.
-- **Blue 70** (`#0043ce`): Link hover state. `--cds-link-primary-hover`.
-- **Blue 80** (`#002d9c`): Active/pressed state for blue elements.
-- **Blue 10** (`#edf5ff`): Blue tint surface, selected row background.
-- **Focus Blue** (`#0f62fe`): `--cds-focus` — 2px inset border on focused elements.
-- **Focus Inset** (`#ffffff`): `--cds-focus-inset` — white inner ring for focus on dark backgrounds.
-
-### Support & Status
-- **Red 60** (`#da1e28`): Error, danger. `--cds-support-error`.
-- **Green 50** (`#24a148`): Success. `--cds-support-success`.
-- **Yellow 30** (`#f1c21b`): Warning. `--cds-support-warning`.
-- **Blue 60** (`#0f62fe`): Informational. `--cds-support-info`.
-
-### Dark Theme (Gray 100 Theme)
-- **Background**: Gray 100 (`#161616`). `--cds-background`.
-- **Layer 01**: Gray 90 (`#262626`). Card and container surfaces.
-- **Layer 02**: Gray 80 (`#393939`). Elevated surfaces.
-- **Text Primary**: Gray 10 (`#f4f4f4`). `--cds-text-primary`.
-- **Text Secondary**: Gray 30 (`#c6c6c6`). `--cds-text-secondary`.
-- **Border Subtle**: Gray 80 (`#393939`). `--cds-border-subtle`.
-- **Interactive**: Blue 40 (`#78a9ff`). Links and interactive elements shift lighter for contrast.
+The capture also found route-local state colors such as `#e8e8e8` on a tab hover and several darker blue CTA states. They are documented with selector and surface provenance in §4 rather than promoted as universal palette tokens.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Primary**: `IBM Plex Sans`, with fallbacks: `Helvetica Neue, Arial, sans-serif`
-- **Monospace**: `IBM Plex Mono`, with fallbacks: `Menlo, Courier, monospace`
-- **Serif** (limited use): `IBM Plex Serif`, for editorial/expressive contexts
-- **Icon Font**: `ibm_icons` — proprietary icon glyphs at 20px
+### Evidence classes
 
-### Hierarchy
+**Official product-use.** IBM’s Design Language calls IBM Plex its corporate typeface and lists Sans, Mono, Serif, and Condensed subfamilies. IBM Developer separately states that Plex Mono Light is its expressive primary face and Plex Sans supports informative text. These are official brand-system facts, not proof that every current IBM.com page loads every family. [IBM Design Language](https://www.ibm.com/design/language/typography/typeface/) · [IBM Developer typography](https://www.ibm.com/brand/experience-guides/developer/brand/typography/)
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display 01 | IBM Plex Sans | 60px (3.75rem) | 300 (Light) | 1.17 (70px) | 0 | Maximum impact, light weight for elegance |
-| Display 02 | IBM Plex Sans | 48px (3.00rem) | 300 (Light) | 1.17 (56px) | 0 | Secondary hero, responsive fallback |
-| Heading 01 | IBM Plex Sans | 42px (2.63rem) | 300 (Light) | 1.19 (50px) | 0 | Expressive heading |
-| Heading 02 | IBM Plex Sans | 32px (2.00rem) | 400 (Regular) | 1.25 (40px) | 0 | Section headings |
-| Heading 03 | IBM Plex Sans | 24px (1.50rem) | 400 (Regular) | 1.33 (32px) | 0 | Sub-section titles |
-| Heading 04 | IBM Plex Sans | 20px (1.25rem) | 600 (Semibold) | 1.40 (28px) | 0 | Card titles, feature headers |
-| Heading 05 | IBM Plex Sans | 20px (1.25rem) | 400 (Regular) | 1.40 (28px) | 0 | Lighter card headings |
-| Body Long 01 | IBM Plex Sans | 16px (1.00rem) | 400 (Regular) | 1.50 (24px) | 0 | Standard reading text |
-| Body Long 02 | IBM Plex Sans | 16px (1.00rem) | 600 (Semibold) | 1.50 (24px) | 0 | Emphasized body, labels |
-| Body Short 01 | IBM Plex Sans | 14px (0.88rem) | 400 (Regular) | 1.29 (18px) | 0.16px | Compact body, captions |
-| Body Short 02 | IBM Plex Sans | 14px (0.88rem) | 600 (Semibold) | 1.29 (18px) | 0.16px | Bold captions, nav items |
-| Caption 01 | IBM Plex Sans | 12px (0.75rem) | 400 (Regular) | 1.33 (16px) | 0.32px | Metadata, timestamps |
-| Code 01 | IBM Plex Mono | 14px (0.88rem) | 400 (Regular) | 1.43 (20px) | 0.16px | Inline code, terminal |
-| Code 02 | IBM Plex Mono | 16px (1.00rem) | 400 (Regular) | 1.50 (24px) | 0 | Code blocks |
-| Mono Display | IBM Plex Mono | 42px (2.63rem) | 400 (Regular) | 1.19 (50px) | 0 | Hero mono decorative |
+**Live computed surface-use.** The supplied 2026-07-13 capture records `IBM Plex Sans KR` as loaded/high for 485 visible elements across marketing, Cloud Support, and Confluent. `IBM Plex Sans` is also loaded/high for 25 elements. Representative measured styles include a 53.6469px/300/62.7669px marketing leadspace, 16px/400/24px product body, 14px/400/18.0001px action text with 0.16px tracking, and a 12px/400/16px marketing badge with 0.32px tracking.
 
-### Principles
-- **Light weight at display sizes**: Carbon's expressive type set uses weight 300 (Light) at 42px+. This creates a distinctive tension — the content speaks with corporate authority while the letterforms whisper with typographic lightness.
-- **Micro-tracking at small sizes**: 0.16px letter-spacing at 14px and 0.32px at 12px. These seemingly negligible values are Carbon's secret weapon for readability at compact sizes — they open up the tight IBM Plex letterforms just enough.
-- **Three functional weights**: 300 (display/expressive), 400 (body/reading), 600 (emphasis/UI labels). Weight 700 is intentionally absent from the production type scale.
-- **Productive vs. Expressive**: Productive sets use tighter line-heights (1.29) for dense UI. Expressive sets breathe more (1.40-1.50) for marketing and editorial content.
+**Official distributed asset and license.** IBM describes Plex as open source and directs users to its GitHub release; its Design Language says the downloadable files contain the Open Font License. This supports the typeface’s distribution and license boundary, not a browser substitution. [Typeface and license note](https://www.ibm.com/design/language/typography/typeface/)
+
+**Declared-only in this capture.** `IBM Plex Mono`, `IBM Plex Serif`, `IBM Plex Sans Arabic`, `IBM Plex Sans Hebrew`, and `IBM Plex Sans JP` had `@font-face` sources but no visible computed use in the three captured routes. Mono and Serif remain useful official family context, but are not machine UI-family tokens here.
+
+**System/unresolved.** A marketing newsletter input computed to `Helvetica, Arial, sans-serif`; it is kept separate as marketing-form chrome and is not represented as IBM Plex. `ibm_icons` was loaded for two icon elements; it is not typography content.
 
 ## 4. Component Stylings
 
-### Buttons
+### Public product primary action
 
-**Primary Button (Blue)**
-- Background: `#0f62fe` (Blue 60) → `--cds-button-primary`
-- Text: `#ffffff` (White)
-- Padding: 14px 63px 14px 15px (asymmetric — room for trailing icon)
+**Default — Cloud Support and Confluent**
+- Background: `#0f62fe`
+- Text: `#ffffff`
 - Border: 1px solid transparent
-- Border-radius: 0px (sharp rectangle — the Carbon signature)
-- Height: 48px (default), 40px (compact), 64px (expressive)
-- Hover: `#0353e9` (Blue 60 Hover) → `--cds-button-primary-hover`
-- Active: `#002d9c` (Blue 80) → `--cds-button-primary-active`
-- Focus: `2px solid #0f62fe` inset + `1px solid #ffffff` inner
-
-**Secondary Button (Gray)**
-- Background: `#393939` (Gray 80)
-- Text: `#ffffff`
-- Hover: `#4c4c4c` (Gray 70)
-- Active: `#6f6f6f` (Gray 60)
-- Same padding/radius as primary
-
-**Tertiary Button (Ghost Blue)**
-- Background: transparent
-- Text: `#0f62fe` (Blue 60)
-- Border: 1px solid `#0f62fe`
-- Hover: `#0353e9` text + Blue 10 background tint
-- Border-radius: 0px
-
-**Ghost Button**
-- Background: transparent
-- Text: `#0f62fe` (Blue 60)
-- Padding: 14px 16px
-- Border: none
-- Hover: `#e8e8e8` background tint
-
-**Danger Button**
-- Background: `#da1e28` (Red 60)
-- Text: `#ffffff`
-- Hover: `#b81921` (Red 70)
-
-### Cards & Containers
-- Background: `#ffffff` on white theme, `#f4f4f4` (Gray 10) for elevated cards
-- Border: none (flat design — no border or shadow on most cards)
-- Border-radius: 0px (matching the rectangular button aesthetic)
-- Hover: background shifts to `#e8e8e8` (Gray 10 Hover) for clickable cards
-- Content padding: 16px
-- Separation: background-color layering (white → gray 10 → white) rather than shadows
-
-### Inputs & Forms
-- Background: `#f4f4f4` (Gray 10) — `--cds-field`
-- Text: `#161616` (Gray 100)
-- Padding: 0px 16px (horizontal only)
-- Height: 40px (default), 48px (large)
-- Border: none on sides/top — `2px solid transparent` bottom
-- Bottom-border active: `2px solid #161616` (Gray 100)
-- Focus: `2px solid #0f62fe` (Blue 60) bottom-border — `--cds-focus`
-- Error: `2px solid #da1e28` (Red 60) bottom-border
-- Label: 12px IBM Plex Sans, 0.32px letter-spacing, Gray 70
-- Helper text: 12px, Gray 60
-- Placeholder: Gray 60 (`#6f6f6f`)
-- Border-radius: 0px (top) — inputs are sharp-cornered
-
-### Navigation
-- Background: `#161616` (Gray 100) — full-width dark masthead
+- Radius: 4px
+- Padding: 14px 63px 14px 15px
 - Height: 48px
-- Logo: IBM 8-bar logo, white on dark, left-aligned
-- Links: 14px IBM Plex Sans, weight 400, `#c6c6c6` (Gray 30) default
-- Link hover: `#ffffff` text
-- Active link: `#ffffff` with bottom-border indicator
-- Platform switcher: left-aligned horizontal tabs
-- Search: icon-triggered slide-out search field
-- Mobile: hamburger with left-sliding panel
+- Font: 14px / 400 / IBM Plex Sans KR
+- Use: Public product CTA; selectors `surface-2::[data-omd-capture="4"]` and `surface-3::[data-omd-capture="16"]`.
+- Hover: `#095bf4` on Cloud Support and `#0b5df8` on Confluent.
+- Pressed: `#0c56e7` on Cloud Support and `#0953e5` on Confluent.
+- Focus: 4px radius with dark-blue background and inset focus treatment; raw values are retained in `.verification.md` because the two routes differ.
 
-### Links
-- Default: `#0f62fe` (Blue 60) with no underline
-- Hover: `#0043ce` (Blue 70) with underline
-- Visited: remains Blue 60 (no visited state change)
-- Inline links: underlined by default in body copy
+### Public product tabs
 
-### Distinctive Components
+**Contained tab — Confluent route**
+- Background: `#f4f4f4`
+- Text: `#161616`
+- Border: 1px solid `#c6c6c6`
+- Radius: 4px
+- Padding: 0px 16px
+- Height: 48px
+- Font: 16px / 400 / IBM Plex Sans KR
+- Use: `surface-3::[data-omd-capture="10"]`, a public Confluent tablist.
+- Hover: `#e8e8e8` background.
+- Selected: transparent background with `#ffffff` text; the selected target panels were captured through the tab interaction.
+- Pressed: observed by the collector; no universal pressed color is promoted because the evidence records route-local values only.
 
-**Content Block (Hero/Feature)**
-- Full-width alternating white/gray-10 background bands
-- Headline left-aligned with 60px or 48px display type
-- CTA as blue primary button with arrow icon
-- Image/illustration right-aligned or below on mobile
+### Public product accordion
 
-**Tile (Clickable Card)**
-- Background: `#f4f4f4` or `#ffffff`
-- Full-width bottom-border or background-shift hover
-- Arrow icon bottom-right on hover
-- No shadow — flatness is the identity
+**Flush support accordion header — Cloud Support route**
+- Text: `#161616`
+- Border: 1px solid `#e0e0e0` on the item’s top edge
+- Radius: 0px
+- Padding: 0px 16px 0px 0px
+- Height: 40px
+- Font: 16px / 400 / IBM Plex Sans KR
+- Use: `surface-2::[data-omd-capture="5"]`, class `cds--accordion__heading cmp-accordion__button`.
+- Focus: captured on the header.
+- Pressed: captured on the header.
 
-**Tag / Label**
-- Background: contextual color at 10% opacity (e.g., Blue 10, Red 10)
-- Text: corresponding 60-grade color
-- Padding: 4px 8px
-- Border-radius: 24px (pill — exception to the 0px rule)
-- Font: 12px weight 400
+The bundle did not record an accordion-panel expansion interaction, so no expanded-panel spacing, icon rotation, disabled state, or generic modal/toast/form-error variant is asserted. Carbon’s [accordion guidance](https://carbondesignsystem.com/components/accordion/usage/) describes the broader component separately.
 
-**Notification Banner**
-- Full-width bar, typically Blue 60 or Gray 100 background
-- White text, 14px
-- Close/dismiss icon right-aligned
+### Marketing-form boundary
+
+**Newsletter field — marketing only**
+- Background: `#f4f4f4`
+- Text: `#161616`
+- Border: 1px bottom edge `#8d8d8d`
+- Radius: 0px
+- Padding: 0px 16px
+- Height: 48px
+- Font: 14px / 400 / Helvetica, Arial, sans-serif
+- Use: `home::[data-omd-capture="23"]`; a Marketo-classed field on the public marketing route.
+
+This form field is not promoted into the IBM Plex product token set.
+
+---
+**Verified:** 2026-07-13
+**Tier 1 sources:** [IBM KR marketing](https://www.ibm.com/kr-ko), [Cloud Support](https://www.ibm.com/kr-ko/products/cloud/support?lnk=flathl), [Confluent](https://www.ibm.com/kr-ko/products/confluent?lnk=hpfp4kr), [Carbon Button](https://carbondesignsystem.com/components/button/usage/), [Carbon Tabs](https://carbondesignsystem.com/components/tabs/usage/), [Carbon Accordion](https://carbondesignsystem.com/components/accordion/usage/)
+**Tier 2 sources:** [getdesign IBM directory](https://getdesign.md/ibm); Refero query attempted, but the built-in web tool refused the direct URL and no indexed Refero IBM result was used.
+**Resolution note:** The earlier universal 0px primary-button claim was rolled back: the supplied fresh public-product evidence measures 4px on the captured primary CTAs.
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px (Carbon 2x grid)
-- Component spacing scale: 2px, 4px, 8px, 12px, 16px, 24px, 32px, 40px, 48px
-- Layout spacing scale: 16px, 24px, 32px, 48px, 64px, 80px, 96px, 160px
-- Mini unit: 8px (smallest usable spacing)
-- Padding within components: typically 16px
-- Gap between cards/tiles: 1px (hairline) or 16px (standard)
+The captured 1440px routes repeatedly expose 8, 12, 16, 24, 32, 48, and 64px spacing values. Treat these as observed rhythm candidates, not a complete responsive grid specification. Carbon’s 2x Grid is official system guidance, but the supplied artifact did not measure breakpoint-specific grid columns or a second viewport; those values remain outside this reference’s live-token scope.
 
-### Grid & Container
-- 16-column grid (Carbon's 2x grid system)
-- Max content width: 1584px (max breakpoint)
-- Column gutters: 32px (16px on mobile)
-- Margin: 16px (mobile), 32px (tablet+)
-- Content typically spans 8-12 columns for readable line lengths
-- Full-bleed sections alternate with contained content
-
-### Whitespace Philosophy
-- **Functional density**: Carbon favors productive density over expansive whitespace. Sections are tightly packed compared to consumer design systems — this reflects IBM's enterprise DNA.
-- **Background-color zoning**: Instead of massive padding between sections, IBM uses alternating background colors (white → gray 10 → white) to create visual separation with minimal vertical space.
-- **Consistent 48px rhythm**: Major section transitions use 48px vertical spacing. Hero sections may use 80px–96px.
-
-### Border Radius Scale
-- **0px**: Primary buttons, inputs, tiles, cards — the dominant treatment. Carbon is fundamentally rectangular.
-- **2px**: Occasionally on small interactive elements (tags)
-- **24px**: Tags/labels (pill shape — the sole rounded exception)
-- **50%**: Avatar circles, icon containers
+For the observed public routes, use light-gray layering and clean rule boundaries before introducing shadow. Keep action controls at the measured 48px height where the public-product primary CTA pattern is appropriate. Do not infer an authenticated-product layout from the marketing or product-detail pages.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, `#ffffff` background | Default page surface |
-| Layer 01 | No shadow, `#f4f4f4` background | Cards, tiles, alternating sections |
-| Layer 02 | No shadow, `#e0e0e0` background | Elevated panels within Layer 01 |
-| Raised | `0 2px 6px rgba(0,0,0,0.3)` | Dropdowns, tooltips, overflow menus |
-| Overlay | `0 2px 6px rgba(0,0,0,0.3)` + dark scrim | Modal dialogs, side panels |
-| Focus | `2px solid #0f62fe` inset + `1px solid #ffffff` | Keyboard focus ring |
-| Bottom-border | `2px solid #161616` on bottom edge | Active input, active tab indicator |
-
-**Shadow Philosophy**: Carbon is deliberately shadow-averse. IBM achieves depth primarily through background-color layering — stacking surfaces of progressively darker grays rather than adding box-shadows. This creates a flat, print-inspired aesthetic where hierarchy is communicated through color value, not simulated light. Shadows are reserved exclusively for floating elements (dropdowns, tooltips, modals) where the element genuinely overlaps content. This restraint gives the rare shadow meaningful impact — when something floats in Carbon, it matters.
+The representative public components in the supplied bundle report `box-shadow: none`. The visible hierarchy comes from white and `#f4f4f4` surfaces, text contrast, borders, and the accent action. Floating menus, dialogs, tooltips, and overlays were not captured; their elevation values are intentionally absent.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use IBM Plex Sans at weight 300 for display sizes (42px+) — the lightness is intentional
-- Apply 0.16px letter-spacing on 14px body text and 0.32px on 12px captions
-- Use 0px border-radius on buttons, inputs, cards, and tiles — rectangles are the system
-- Reference `--cds-*` token names when implementing (e.g., `--cds-button-primary`, `--cds-text-primary`)
-- Use background-color layering (white → gray 10 → gray 20) for depth instead of shadows
-- Use bottom-border (not box) for input field indicators
-- Maintain the 48px default button height and asymmetric padding for icon accommodation
-- Apply Blue 60 (`#0f62fe`) as the sole accent — one blue to rule them all
+- Use the measured IBM Plex Sans KR public-web family when implementing the captured Korean product patterns.
+- Keep the captured primary CTA at 48px high with 4px radius and the observed asymmetric padding.
+- Distinguish `#0f62fe` CTA backgrounds from the separately observed `#0062fe` link treatment.
+- Keep tabs and accordion behavior tied to their documented public-product routes and selector provenance.
+- Use Carbon documentation for system-level guidance while preserving the actual IBM.com surface boundary.
 
 ### Don't
-- Don't round button corners — 0px radius is the Carbon identity
-- Don't use shadows on cards or tiles — flatness is the point
-- Don't introduce additional accent colors — IBM's system is monochromatic + blue
-- Don't use weight 700 (Bold) — the scale stops at 600 (Semibold)
-- Don't add letter-spacing to display-size text — tracking is only for 14px and below
-- Don't box inputs with full borders — Carbon inputs use bottom-border only
-- Don't use gradient backgrounds — IBM's surfaces are flat, solid colors
-- Don't deviate from the 8px spacing grid — every value should be divisible by 8 (with 2px and 4px for micro-adjustments)
+- Do not reintroduce a universal 0px-radius primary-button rule for the captured public-product routes.
+- Do not render Helvetica marketing-form chrome as IBM Plex or promote it to the product type token.
+- Do not turn declared-only Mono, Serif, or locale faces into visible-webfont claims.
+- Do not invent expanded accordion, error, modal, toast, or dashboard states from the current capture.
+- Do not apply the Korean public-web measurements as a substitute for an authenticated IBM product surface.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Small (sm) | 320px | Single column, hamburger nav, 16px margins |
-| Medium (md) | 672px | 2-column grids begin, expanded content |
-| Large (lg) | 1056px | Full navigation visible, 3-4 column grids |
-| X-Large (xlg) | 1312px | Maximum content density, wide layouts |
-| Max | 1584px | Maximum content width, centered with margins |
-
-### Touch Targets
-- Button height: 48px default, minimum 40px (compact)
-- Navigation links: 48px row height for touch
-- Input height: 40px default, 48px large
-- Icon buttons: 48px square touch target
-- Mobile menu items: full-width 48px rows
-
-### Collapsing Strategy
-- Hero: 60px display → 42px → 32px heading as viewport narrows
-- Navigation: full horizontal masthead → hamburger with slide-out panel
-- Grid: 4-column → 2-column → single column
-- Tiles/cards: horizontal grid → vertical stack
-- Images: maintain aspect ratio, max-width 100%
-- Footer: multi-column link groups → stacked single column
-- Section padding: 48px → 32px → 16px
-
-### Image Behavior
-- Responsive images with `max-width: 100%`
-- Product illustrations scale proportionally
-- Hero images may shift from side-by-side to stacked below
-- Data visualizations maintain aspect ratio with horizontal scroll on mobile
+No breakpoint comparison was collected in this packet. The public primary CTA, tabs, accordion header, and marketing field were measured only at the captured 1440×900 viewport. Preserve normal responsive accessibility requirements in an implementation, but do not claim IBM-specific mobile geometry, navigation collapse, or grid changes without a separate observation.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: IBM Blue 60 (`#0f62fe`)
-- Background: White (`#ffffff`)
-- Heading text: Gray 100 (`#161616`)
-- Body text: Gray 100 (`#161616`)
-- Secondary text: Gray 70 (`#525252`)
-- Surface/Card: Gray 10 (`#f4f4f4`)
-- Border: Gray 30 (`#c6c6c6`)
-- Link: Blue 60 (`#0f62fe`)
-- Link hover: Blue 70 (`#0043ce`)
-- Focus ring: Blue 60 (`#0f62fe`)
-- Error: Red 60 (`#da1e28`)
-- Success: Green 50 (`#24a148`)
+### Quick reference
+- Product CTA: `#0f62fe` / `#ffffff`, 4px radius, 48px high, 14px / 400 IBM Plex Sans KR.
+- Product body: IBM Plex Sans KR, 16px / 400 / 24px, `#161616`.
+- Product tabs: `#f4f4f4` surface, `#161616` text, 1px `#c6c6c6` border, 4px radius.
+- Support accordion: sharp 40px header, top rule `#e0e0e0`, 16px / 400 IBM Plex Sans KR.
 
-### Example Component Prompts
-- "Create a hero section on white background. Headline at 60px IBM Plex Sans weight 300, line-height 1.17, color #161616. Subtitle at 16px weight 400, line-height 1.50, color #525252, max-width 640px. Blue CTA button (#0f62fe background, #ffffff text, 0px border-radius, 48px height, 14px 63px 14px 15px padding)."
-- "Design a card tile: #f4f4f4 background, 0px border-radius, 16px padding. Title at 20px IBM Plex Sans weight 600, line-height 1.40, color #161616. Body at 14px weight 400, letter-spacing 0.16px, line-height 1.29, color #525252. Hover: background shifts to #e8e8e8."
-- "Build a form field: #f4f4f4 background, 0px border-radius, 40px height, 16px horizontal padding. Label above at 12px weight 400, letter-spacing 0.32px, color #525252. Bottom-border: 2px solid transparent default, 2px solid #0f62fe on focus. Placeholder: #6f6f6f."
-- "Create a dark navigation bar: #161616 background, 48px height. IBM logo white left-aligned. Links at 14px IBM Plex Sans weight 400, color #c6c6c6. Hover: #ffffff text. Active: #ffffff with 2px bottom border."
-- "Build a tag component: Blue 10 (#edf5ff) background, Blue 60 (#0f62fe) text, 4px 8px padding, 24px border-radius, 12px IBM Plex Sans weight 400."
-
-### Iteration Guide
-1. Always use 0px border-radius on buttons, inputs, and cards — this is non-negotiable in Carbon
-2. Letter-spacing only at small sizes: 0.16px at 14px, 0.32px at 12px — never on display text
-3. Three weights: 300 (display), 400 (body), 600 (emphasis) — no bold
-4. Blue 60 is the only accent color — do not introduce secondary accent hues
-5. Depth comes from background-color layering (white → #f4f4f4 → #e0e0e0), not shadows
-6. Inputs have bottom-border only, never fully boxed
-7. Use `--cds-` prefix for token naming to stay Carbon-compatible
-8. 48px is the universal interactive element height
+### Boundary-aware prompt
+- "Create a public-product CTA using the captured IBM pattern: `#0f62fe` background, white text, 4px radius, 48px height, 14px 63px 14px 15px padding, and IBM Plex Sans KR at 14px/400. Keep hover, pressed, and focus route-specific rather than inventing one global state value."
 
 ## 10. Voice & Tone
 
-IBM's voice is **enterprise-technical and Carbon-systematic.** Carbon Design System discipline shows up in every surface — uppercase labels, IBM Plex font, 0px-radius buttons, IBM Blue `#0f62fe` primary. The voice is closer to a research lab + enterprise contract than to consumer marketing.
+IBM’s public design guidance favors clear, action-led labels and systematic information architecture over decorative copy. Carbon’s button guidance asks labels to communicate the action and recommends sentence case; the IBM Developer typography guidance uses code-adjacent glyphs and disciplined type to make technical communication recognizable. For IBM-style public product copy, name the task or resource, use direct verbs, and let supporting text explain the technical context. Avoid invented security certifications, performance outcomes, or informal claims of transformation. [Carbon Button guidance](https://carbondesignsystem.com/components/button/usage/) · [IBM Developer typography](https://www.ibm.com/brand/experience-guides/developer/brand/typography/)
 
-| Context | Tone |
+| Context | Treatment |
 |---|---|
-| CTA | Verb. "Get started", "Try free", "Talk to sales" |
-| Marketing | Enterprise-fluent. SOC 2 / FedRAMP / ISO references |
-| Documentation | Carbon-component-named; deep-linked component docs |
-| Error | Specific. "Authentication failed (HTTP 401). Check API key." |
-
-**Voice samples**
-- Marketing CTA (KR): *"무료로 시작하기"* <!-- verified: ibm.com/kr-ko 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary AI" without specifics. Casual emoji.
+| Primary action | Sentence-case action label that states the outcome. |
+| Product detail | Direct technical noun plus a concise explanatory sentence. |
+| Support disclosure | Short heading that describes the content revealed by the accordion. |
 
 ## 11. Brand Narrative
 
-IBM was founded **June 16 1911** as the **Computing-Tabulating-Recording Company (CTR)** by **Charles Ranlett Flint** — a Wall Street financier who **amalgamated four companies** (Tabulating Machine Company, International Time Recording Company, Computing Scale Company of America, Bundy Manufacturing Company) ([Charles Ranlett Flint — Wikipedia](https://en.wikipedia.org/wiki/Charles_Ranlett_Flint), [IBM — The origins of IBM](https://www.ibm.com/history/ctr-and-ibm)). **Renamed "International Business Machines" 1924** under **Thomas J. Watson Sr.**, who had joined CTR in 1914. The contemporary brand identity was established through **Paul Rand**, hired by **Thomas J. Watson Jr. in 1956** — Rand replaced Beton Bold with **City Medium** and created the iconic 8-bar (later 13-bar) striped IBM logo, with a directive to "**herald a new era of IBM while also communicating continuity**" ([History of IBM logo — Hatchwise](https://www.hatchwise.com/resources/the-history-of-the-ibm-logo)). The Rand→**Eddy Opara** design legacy continues today through the **Carbon Design System** (open-sourced 2018, [carbondesignsystem.com](https://carbondesignsystem.com/)) — IBM Plex font, IBM Blue `#0f62fe`, 0px-radius buttons. Carbon makes IBM one of the few enterprise vendors with a publicly documented design system that's also adopted by external teams. **In 2024-2025 IBM acquired HashiCorp** ($6.4B announced April 24 2024, **closed February 27 2025**), folding HashiCorp's products into IBM's hybrid cloud strategy.
+IBM’s own history places its origin in the 1911 creation of Computing-Tabulating-Recording Company from data-processing businesses; the company later became IBM. That long data-and-computing lineage helps explain a brand system that presents technical information as structured, durable, and internationally usable rather than fashion-led. [The origins of IBM](https://www.ibm.com/history/ctr-and-ibm)
+
+The contemporary expression is held together by IBM Plex and Carbon. IBM calls Plex a corporate typeface and makes its source and OFL boundary available; Carbon provides the public component guidance that contextualizes buttons, tabs, and accordions. Current IBM About material presents the company’s work around AI, cloud, quantum computing, and sustainability. This reference keeps those first-party narrative facts separate from the limited set of computed values collected on Korean public routes. [IBM Plex](https://www.ibm.com/design/language/typography/typeface/) · [IBM About](https://www.ibm.com/about?lnk=intro)
 
 ## 12. Principles
 
-1. **Carbon is the system.** *UI implication:* every component has a Carbon spec — read carbondesignsystem.com before deviating.
-2. **0px radius is intentional.** Carbon's defining aesthetic choice. *UI implication:* never round corners on Carbon-spec elements.
-3. **IBM Plex is the type voice.** Sans / Mono / Serif variants. *UI implication:* don't substitute system fonts; Plex is the brand register.
-4. **48px universal interactive height.** *UI implication:* all clickable elements meet 48px tap target.
-5. **`#0f62fe` IBM Blue is THE accent.** *UI implication:* other Carbon tokens carry semantic meaning; IBM Blue is for "primary action" only.
+1. **Make the action legible.** Carbon treats a button label as the statement of the action. *UI implication:* use direct sentence-case action labels rather than vague promotional nouns.
+2. **Use typography as identity and information structure.** IBM positions Plex as a core brand asset and uses Mono/Sans differently in its Developer guidance. *UI implication:* use the loaded KR Sans evidence for this public-web reference; reserve other official Plex families for surfaces where their use is actually established.
+3. **Keep component context intact.** Carbon’s tab and accordion guidance makes their purpose and behavior explicit. *UI implication:* use tabs for related views and accordions for progressive disclosure; do not invent unobserved state variants.
+4. **Separate system guidance from surface fact.** Carbon is IBM’s official system, but this packet observes a bounded public web slice. *UI implication:* never overwrite product/marketing evidence with a generic component catalog.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by IBM user segments (enterprise IT architects, watsonx AI/ML platform users, regulated-industry compliance), not individual people.*
+No first-party audience research suitable for named personas was collected in this packet. Do not invent demographic personas.
 
-**Catherine Liu, 47, Toronto.** Principal architect at a global insurance company. IBM Cloud + watsonx the chosen path for compliant AI deployment.
-
-**Hiroshi Tanaka, 52, Tokyo.** CIO at multinational logistics. IBM partnership for hybrid cloud modernization.
-
-**Aisha Khan, 35, Dubai.** Senior consultant at IBM Consulting. Translates client needs into Carbon-compliant deliverables.
+- **[FILL IN: validated public-product audience]** — add only with an IBM first-party research or product source.
+- **[FILL IN: validated support-information audience]** — add only with an IBM first-party research or product source.
 
 ## 14. States
 
-| State | Treatment |
+| State | Evidence boundary |
 |---|---|
-| **Empty (no resources)** | "Create your first resource" Carbon Button.Primary |
-| **Empty (no data)** | Carbon EmptyState component pattern + CTA |
-| **Loading** | Carbon InlineLoading or Loading component, never custom |
-| **Error** | Carbon Notification.error variant; persistent until dismissed |
-| **Success** | Carbon Notification.success; auto-dismiss 4s |
-| **Skeleton** | Carbon SkeletonText / SkeletonPlaceholder components |
-| **Disabled** | Carbon disabled state — explicit visual contrast (not just opacity) |
-| **Loading (long)** | Carbon ProgressBar with explicit ETA |
+| Primary action — default | Captured on Cloud Support and Confluent: `#0f62fe`, white text, 4px radius, 48px height. |
+| Primary action — hover | Captured route-local values: `#095bf4` (Cloud Support) and `#0b5df8` (Confluent). |
+| Primary action — pressed | Captured route-local values: `#0c56e7` (Cloud Support) and `#0953e5` (Confluent). |
+| Primary action — focus | Captured on both routes with dark-blue/inset focus treatment; raw values are in verification notes. |
+| Tab — default | Confluent: `#f4f4f4`, `#161616`, 1px `#c6c6c6`, 4px radius. |
+| Tab — hover | Confluent: `#e8e8e8` background. |
+| Tab — selected | Confluent interaction capture: white text, transparent background. |
+| Accordion — focus/pressed | Cloud Support header interaction states captured; no expanded panel was captured. |
+| Loading, error, empty, disabled, success, skeleton | Not captured on these public routes; intentionally unspecified. |
 
 ## 15. Motion & Easing
 
-Carbon Motion tokens: `productive` (110ms / 240ms / 400ms), `expressive` (175ms / 240ms / 400ms / 700ms). Curves: `standard / entrance / exit / expressive`.
-
-**Motion rules.**
-1. Carbon productive curves for utility motions
-2. Carbon expressive curves for marketing
-3. `prefers-reduced-motion: reduce` collapses to instant
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 28 — Apple-tier)
-**Tier 1 sources:** ibm.com/us-en home + /products (live DOM via playwright — Primary `#0f62fe` IBM Blue 0px / asymmetric 14-15×15-16 / 48px / 14px·400; triple-confirmed against Carbon DS `$blue-60` token ✓).
-**Tier 1 (DS-official):** carbondesignsystem.com — Carbon Design System open-source spec, the rare case where a brand publishes its own DS as authoritative.
-**Tier 2 (Philosophy/history):** Wikipedia (Charles Flint, IBM, CTR, History of IBM), IBM corporate history (`ibm.com/history/ctr-and-ibm`), Hatchwise IBM logo timeline.
-**Style ref:** `stripe`. **Conflicts unresolved:** none.
+The supplied evidence records hover, pressed, focus, and tab-selected results but does not measure durations, curves, or reduced-motion behavior. Do not infer a motion scale from Carbon documentation or from static state values. **[FILL IN: motion tokens only after direct IBM-surface or official-token evidence.]**

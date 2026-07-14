@@ -28,6 +28,15 @@ export function DSCard({
   source?: string;
 }) {
   const isSystem = ds.type === "system";
+  const typeLabel = isSystem ? "Design System" : ds.type === "brand" ? "Brand Guide" : "Reference";
+  const qualityLabel = ds.qualityStatus === "verified_v2"
+    ? "Verified v2"
+    : ds.qualityStatus === "partial" ? "Partial" : "Legacy";
+  const qualityClass = ds.qualityStatus === "verified_v2"
+    ? "bg-primary text-primary-foreground"
+    : ds.qualityStatus === "partial"
+      ? "bg-secondary text-secondary-foreground"
+      : "border border-border text-muted-foreground";
   return (
     <Link
       href={`/design-systems/${ds.refId}`}
@@ -47,11 +56,17 @@ export function DSCard({
               isSystem ? "bg-primary/10 text-primary" : "bg-foreground/5 text-muted-foreground"
             }`}
           >
-            {isSystem ? "Design System" : "Brand"}
+            {typeLabel}
           </span>
           <div className="flex items-center gap-1.5">
             {hot && <StatusBadge kind="hot" />}
             {isNewRef(ds.refId) && <StatusBadge kind="new" />}
+            <span
+              className={`rounded-4xl px-2 py-0.5 text-[10px] font-medium ${qualityClass}`}
+              title={ds.verifiedAt ? `Last checked ${ds.verifiedAt}` : "No checked date"}
+            >
+              {qualityLabel}
+            </span>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -83,9 +98,9 @@ export function DSCard({
             window.open(ds.url, "_blank", "noopener,noreferrer");
           }}
           className="mt-3 inline-flex items-center gap-1 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground"
-          aria-label={`${ds.name} official site (opens in a new tab)`}
+          aria-label={`${ds.name} ${ds.type === "reference" ? "brand" : "official"} site (opens in a new tab)`}
         >
-          Official site <ExternalLink className="h-3 w-3" />
+          {ds.type === "reference" ? "Brand site" : "Official site"} <ExternalLink className="h-3 w-3" />
         </button>
       </div>
     </Link>

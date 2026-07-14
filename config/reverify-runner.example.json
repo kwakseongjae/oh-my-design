@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "name": "external-frontier-worker-example",
+  "billingMode": "usage",
+  "command": {
+    "executable": "echo",
+    "args": [
+      "Replace this adapter with a provider CLI or wrapper.",
+      "packet={packet}",
+      "reference={referenceId}",
+      "profile={modelProfile}",
+      "reasoning={reasoningEffort}",
+      "budget={budgetUsd}"
+    ]
+  },
+  "passEnvironment": [],
+  "limits": {
+    "maxTasksPerRun": 1,
+    "maxPullRequestsPerRun": 1,
+    "maxRetries": 1,
+    "timeoutMinutes": 45,
+    "maxBudgetUsd": 5
+  }
+}

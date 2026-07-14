@@ -1,7 +1,8 @@
 {
   "name": "oh-my-design-mcp",
+  "private": true,
   "version": "0.1.0",
-  "description": "Drop-in MCP server exposing 100+ brand design systems (DESIGN.md) as resources + 3 tools. Zero AI calls, zero config, fully offline.",
+  "description": "Archived catalog MCP transport. Retained for history; no longer built, published, or required by oh-my-design skills.",
   "type": "module",
   "bin": {
     "oh-my-design-mcp": "./dist/index.js"
@@ -12,10 +13,11 @@
     "README.md"
   ],
   "scripts": {
-    "sync-data": "node scripts/sync-data.mjs",
+    "sync-data": "npm --prefix ../../web run build-reference-ast && node scripts/sync-data.mjs",
     "build": "npm run sync-data && tsup",
     "dev": "tsup --watch",
     "start": "node dist/index.js",
+    "pretest": "npm run sync-data",
     "test": "vitest run",
     "lint": "tsc --noEmit",
     "prepublishOnly": "npm run build"

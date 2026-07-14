@@ -8,250 +8,270 @@ primary_color: "#006BD6"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=coinone.co.kr&sz=256"
-verified: "2026-06-03"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: "Coinone Brand Guideline"
-  url: "https://coinonecorp.com/company/brand"
+  url: "https://www.coinonecorp.com/company/brand"
   type: brand
-  description: "Official BI/brand guideline (v4.0) — Coinone Blue color system, signature logo lockups, clear-space rules."
+  description: "Official BI/brand guideline for the Coinone Blue palette, signature, and clear space."
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: exchange-home, kind: product-home, url: "https://coinone.co.kr/", inspected: "2026-07-13" }
+    - { id: exchange-trading, kind: product-trading, url: "https://coinone.co.kr/exchange/trade/btc/krw", inspected: "2026-07-13" }
+    - { id: brand-guideline, kind: official-brand-guideline, url: "https://coinonecorp.com/company/brand", inspected: "2026-07-13" }
+  sources:
+    - { id: home-capture, kind: product-surface, url: "https://coinone.co.kr/", captured: "2026-07-13" }
+    - { id: trading-capture, kind: product-surface, url: "https://coinone.co.kr/exchange/trade/btc/krw", captured: "2026-07-13" }
+    - { id: brand-capture, kind: official-doc, url: "https://coinonecorp.com/company/brand", captured: "2026-07-13" }
+    - { id: brand-guideline-pdf, kind: official-doc, url: "https://image-public.coinone.co.kr/download/corphome/coinone_guide_4.0.pdf", captured: "2026-07-13" }
+    - { id: mission-context, kind: official-doc, url: "https://www.coinonecorp.com/company/mission", captured: "2026-07-13" }
+    - { id: history-context, kind: official-doc, url: "https://www.coinonecorp.com/company/history", captured: "2026-07-13" }
+    - { id: business-context, kind: official-doc, url: "https://www.coinonecorp.com/business/", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.brand": &brand { surface_id: brand-guideline, source_id: brand-capture, method: official-guideline, captured: "2026-07-13" }
+    "tokens.colors.point": *brand
+    "tokens.colors.brand-deep": *brand
+    "tokens.colors.brand-navy": *brand
+    "tokens.colors.canvas": &home { surface_id: exchange-home, source_id: home-capture, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.foreground": *home
+    "tokens.colors.product-primary": *home
+    "tokens.colors.control-border": *home
+    "tokens.colors.login-text": *home
+    "tokens.typography.family.home": *home
+    "tokens.typography.home-control.size": *home
+    "tokens.typography.home-control.weight": *home
+    "tokens.typography.home-control.lineHeight": *home
+    "tokens.typography.home-control.use": *home
+    "tokens.typography.family.trading": &trading { surface_id: exchange-trading, source_id: trading-capture, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.trading-tab.size": *trading
+    "tokens.typography.trading-tab.weight": *trading
+    "tokens.typography.trading-tab.use": *trading
+    "tokens.spacing.xs": *home
+    "tokens.spacing.sm": *home
+    "tokens.spacing.md": *home
+    "tokens.spacing.lg": *trading
+    "tokens.rounded.login": *home
+    "tokens.rounded.control": *home
+    "tokens.rounded.badge": *home
+    "tokens.components.sign-in-outline.type": *home
+    "tokens.components.sign-in-outline.fg": *home
+    "tokens.components.sign-in-outline.border": *home
+    "tokens.components.sign-in-outline.radius": *home
+    "tokens.components.sign-in-outline.padding": *home
+    "tokens.components.sign-in-outline.height": *home
+    "tokens.components.sign-in-outline.font": *home
+    "tokens.components.sign-in-outline.states": *home
+    "tokens.components.sign-in-outline.use": *home
+    "tokens.components.home-compact-control.type": *home
+    "tokens.components.home-compact-control.bg": *home
+    "tokens.components.home-compact-control.fg": *home
+    "tokens.components.home-compact-control.border": *home
+    "tokens.components.home-compact-control.radius": *home
+    "tokens.components.home-compact-control.padding": *home
+    "tokens.components.home-compact-control.height": *home
+    "tokens.components.home-compact-control.font": *home
+    "tokens.components.home-compact-control.states": *home
+    "tokens.components.home-compact-control.use": *home
+    "tokens.components.trading-chart-tab.type": *trading
+    "tokens.components.trading-chart-tab.fg": *trading
+    "tokens.components.trading-chart-tab.padding": *trading
+    "tokens.components.trading-chart-tab.height": *trading
+    "tokens.components.trading-chart-tab.font": *trading
+    "tokens.components.trading-chart-tab.states": *trading
+    "tokens.components.trading-chart-tab.use": *trading
+    "tokens.components.trading-side-tab.type": *trading
+    "tokens.components.trading-side-tab.fg": *trading
+    "tokens.components.trading-side-tab.height": *trading
+    "tokens.components.trading-side-tab.font": *trading
+    "tokens.components.trading-side-tab.states": *trading
+    "tokens.components.trading-side-tab.use": *trading
 tokens:
-  source: prose-derived
-  extracted: "2026-06-08"
-  note: "primary = live filled-CTA blue (#0B59D5); brand = BI 'Coinone Blue' identity (#006BD6) — applied shades of the same blue, not a conflict"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Selector-backed product values are separated between the current exchange home and the public trading route. The corporate guideline is brand evidence, not product UI evidence."
   colors:
-    primary: "#0B59D5"
-    primary-hover: "#194386"
     brand: "#006BD6"
     point: "#0090FF"
+    brand-deep: "#194386"
+    brand-navy: "#062554"
     canvas: "#FFFFFF"
-    foreground: "#040505"
-    muted: "#6B7684"
-    on-primary: "#FFFFFF"
-    accent-outline: "#1772F8"
-    body: "#17181B"
-    hairline: "#DDE4EB"
-    surface-tint: "#EBF0F5"
-    skeleton: "#EEEFF0"
-    disabled: "#CFD0D3"
-    navy: "#062554"
+    foreground: "#17181B"
+    product-primary: "#0B59D5"
+    control-border: "#DDE4EB"
+    login-text: "#79818F"
   typography:
-    family: { sans: "Pretendard", mono: "SFMono-Regular" }
-    hero:        { size: 32, weight: 700, lineHeight: 1.2, use: "Hero / section titles, near-black #040505" }
-    control:     { size: 15, weight: 700, lineHeight: 1.0, use: "Primary control / button label" }
-    body:        { size: 14, weight: 400, lineHeight: 1.5, use: "Body & list rows (13-15px / 400-500)" }
-    figure:      { size: 14, weight: 600, lineHeight: 1.3, use: "Trading numerals — dense, right-aligned, weighted when changing" }
-    micro:       { size: 12, weight: 400, lineHeight: 1.4, use: "Micro-labels & helper, muted #6B7684" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 8, lg: 18, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 3, chip: 6, md: 8, lg: 10, full: 9999 }
-  shadow:
-    soft: "rgba(0,0,0,0.05) 0px 1px 2px 0px"
+    family: { home: "pretendardCoinone", trading: "Spoqa Han Sans" }
+    home-control: { size: 13, weight: 500, lineHeight: 1.38, use: "Home compact control, selector home::[data-omd-capture=59]" }
+    trading-tab: { size: 13, weight: 400, use: "Trading chart tab, selector surface-2::[data-omd-capture=49]" }
+  spacing: { xs: 4, sm: 8, md: 12, lg: 16 }
+  rounded: { login: 3, control: 6, badge: 26 }
   components_harvested: true
   components:
-    button-primary: { type: button, bg: "#0B59D5", fg: "#FFFFFF", radius: 8, font: "15/700", use: "Primary CTA, 46px height — one per view" }
-    button-secondary: { type: button, bg: "#FFFFFF", fg: "#040505", radius: 8, font: "15/500", use: "White fill, 1px #DDE4EB border" }
-    accent-outline: { type: button, fg: "#1772F8", radius: 3, use: "Transparent fill, 1px #1772F8 border — signup/inline emphasis" }
-    filter-chip: { type: badge, bg: "#FFFFFF", radius: 6, use: "1px #DDE4EB border, 32px height; active = 1px #040505 border + 700" }
-    store-button: { type: button, bg: "#EBF0F5", radius: 10, font: "13/700", use: "Light or dark (#040505) fill, 48px height" }
-    icon-button: { type: button, fg: "#040505", radius: 9999, padding: "5px", use: "Circular semi-transparent fill" }
+    sign-in-outline: { type: button, fg: "#79818F", border: "1px solid #AEB3BB", radius: "3px", padding: "0px 8px", height: "24px", font: "12px / 400 pretendardCoinone", states: "default only; static pseudo-state samples are not promoted", use: "Home sign-in control, selector home::[data-omd-capture=14]" }
+    home-compact-control: { type: button, bg: "#FFFFFF", fg: "#040505", border: "1px solid #DDE4EB", radius: "6px", padding: "6px 12px", height: "32px", font: "13px / 500 pretendardCoinone", states: "default only; no interaction record", use: "Home compact product control, selector home::[data-omd-capture=59]" }
+    trading-chart-tab: { type: tab, fg: "#18191C", padding: "0px 16px", height: "37px", font: "13px / 400 Spoqa Han Sans", states: "default only; no interaction record", use: "Trading chart tab, selector surface-2::[data-omd-capture=49]" }
+    trading-side-tab: { type: tab, fg: "#9E9E9E", height: "40px", font: "14px / 400 Spoqa Han Sans", states: "default only; no interaction record", use: "Trading side tab, selector surface-2::[data-omd-capture=156]" }
 ---
 
 # Coinone
 
-Coinone is one of Korea's longest-running cryptocurrency exchanges (est. 2014). Its product face pairs a trustworthy, institutional blue with a clean, high-density trading surface — a fintech tone that has to read as both safe and fast.
-
 ## 1. Visual Theme & Atmosphere
 
-Coinone presents as a calm, blue-anchored fintech exchange that wants to feel safe before it feels exciting. The chrome is mostly white with near-black text, letting a single confident blue carry every primary action and the brand itself. Surfaces are flat and lightly bordered rather than shadow-heavy; density rises sharply once you enter trading views, but the marketing and onboarding surfaces stay airy and reassuring. The result is a "boring-on-purpose" trust aesthetic typical of regulated Korean crypto, lifted by a brighter point-blue used sparingly for emphasis and AI/automation features.
+Coinone is a Korean virtual-asset exchange whose public company materials frame the business around bringing blockchain into the world and creating an environment grounded in trust, innovation, and expertise. Founded in 2014, the exchange presents a formal blue identity in its corporate guideline, then uses a more utilitarian product language in the public routes captured here. The current exchange home is white, compact, and set in the loaded `pretendardCoinone` webfont; its public trading route is denser and uses the separately loaded `Spoqa Han Sans`. The corporate brand page is a third, distinct source domain: it defines the signature, clear space, and Coinone Blue palette, but its Roboto-led documentation chrome is not a product font rule. This reference preserves those boundaries rather than forcing them into one inferred UI system.
 
-## 2. Color Palette & Roles
+## 2. Layout & Grid
 
-Coinone's official BI defines "Coinone Blue" as the identity color, applied through a small set of roles. The live product applies a slightly deeper, more saturated blue to primary CTAs than the BI swatch.
+- The public home and public BTC/KRW trading route are both product surfaces, but their captured controls use different loaded families and density. They are recorded as separate product sub-surfaces.
+- The home capture contains compact 24px and 32px controls; the trading route contains a 37px chart tab and a 40px side tab.
+- The supplied capture does not establish a reusable page grid, breakpoint, logged-in balance view, order-entry flow, or mobile navigation behavior.
+- The corporate brand guideline provides identity rules and its own documentation chrome. It is not used to populate exchange layout tokens.
 
-- **Coinone Blue (Main):** `#006BD6` — brand identity color (BI v4.0)
-- **Point Blue:** `#0090FF` — emphasis / highlight accent (BI)
-- **Sub Blue 1:** `#194386` — deep supporting blue (BI)
-- **Sub Blue 2:** `#062554` — darkest navy, headings on light (BI)
-- **Primary CTA (live):** `#0B59D5` — actual filled-button blue used on coinone.co.kr
-- **Accent outline blue (live):** `#1772F8` — signup / inline emphasis outline
-- **Text primary:** `#040505` — near-black body & headings
-- **Text secondary:** `#17181B` — strong neutral
-- **Text muted:** `#6B7684` — captions, helper text
-- **Neutral border:** `#DDE4EB` — input & outline-button borders
-- **Gray scale (BI):** `#EEEFF0` / `#CFD0D3` / `#8D9299` / `#616670`
-- **Surface tint:** `#EBF0F5` — light fill (store buttons, soft chips)
-- **Trading direction:** Korean market convention — price-up = red, price-down = blue (not measured as fixed tokens; applied per ticker state).
+## 3. Color & Typography
 
-## 3. Typography Rules
+### Color tokens
 
-- System Korean/Latin sans (Pretendard-class) — no proprietary display face on web.
-- Hero / section titles: bold, large, near-black `#040505`.
-- Primary control label: 15px / 700.
-- Body & list rows: 13–15px / 400–500.
-- Micro-labels & helper: 12px / 400, muted `#6B7684`.
-- Numerals run dense and right-aligned in trading tables; weight 500–700 for figures that change.
+- `#006BD6` — official Coinone Blue main color.
+- `#0090FF` — official point color.
+- `#194386` and `#062554` — official supporting blue and navy colors.
+- `#FFFFFF` — observed public product canvas and compact-control background.
+- `#17181B` — observed product foreground across the home and trading route.
+- `#0B59D5` — observed current-home primary blue. It is distinct from, but compatible with, the official `#006BD6` identity swatch; the two values are recorded by source domain rather than collapsed.
+- `#DDE4EB` — observed home compact-control border.
 
-## 4. Component Stylings
+### Typography evidence classes
 
-### Buttons
+- **Live home computed use:** `pretendardCoinone` is loaded/high confidence with 408 observed uses across home body, controls, cards, headings, inputs, and badges. Three Coinone CDN WOFF2 source URLs corroborate the computed family. It is the home UI family in the machine tokens.
+- **Live trading computed use:** `Spoqa Han Sans` is loaded/high confidence with 314 observed uses across the BTC/KRW public trading route, including controls, rows, tabs, and text. Its loaded source list includes Coinone-hosted font assets. It is a separate trading-route family, not a fallback for the home.
+- **Documentation chrome:** Roboto and Arial occur on the corporate brand page; the bundle classifies them as system families. They are not product UI tokens.
+- **Loaded icon asset:** `coinone_glyph_ui` is loaded for one observed icon-font use. It is an interface asset, not a text family token.
+- **Declared-only assets:** `coinone_glyph_coin`, Glyphicons Halflings, Noto Sans KR, `pretendardCoinone Fallback`, and slick have zero visible uses in the supplied capture. They remain declared-only and are not substituted or promoted.
+- **Licence boundary:** no first-party public font-licence statement was found for `pretendardCoinone` or the Coinone-hosted Spoqa files in the requested searches. The capture proves live loading and use; it does not establish redistribution terms.
 
-**Primary (filled)**
-- Background: `#0B59D5`
-- Text: `#FFFFFF`
-- Radius: 8px
-- Padding: 14px 18px
-- Height: 46px
-- Font: 15px / 700
+## 4. Components
 
-**Secondary (outline on white)**
+### Home sign-in control
+
+**Default**
+- Text: `#79818F`
+- Border: `1px solid #AEB3BB`
+- Radius: `3px`
+- Padding: `0px 8px`
+- Height: `24px`
+- Font: `12px / 400 pretendardCoinone`
+- Use: Public-home sign-in control; `home::[data-omd-capture="14"]`.
+
+### Home compact control
+
+**Default**
 - Background: `#FFFFFF`
 - Text: `#040505`
-- Border: 1px solid `#DDE4EB`
-- Radius: 8px
-- Padding: 14px 18px
-- Height: 46px
-- Font: 15px / 500
+- Border: `1px solid #DDE4EB`
+- Radius: `6px`
+- Padding: `6px 12px`
+- Height: `32px`
+- Font: `13px / 500 pretendardCoinone`
+- Use: Public-home compact product control; `home::[data-omd-capture="59"]`.
 
-**Accent outline (signup / inline emphasis)**
-- Background: transparent
-- Text: `#1772F8`
-- Border: 1px solid `#1772F8`
-- Radius: 3px
-- Padding: 0 8px
-- Height: 24px
-- Font: 12px / 700
+### Trading chart tab
 
-**Text link**
-- Background: transparent
-- Text: `#0B59D5`
-- Font: 16px / 400
+**Default**
+- Text: `#18191C`
+- Padding: `0px 16px`
+- Height: `37px`
+- Font: `13px / 400 Spoqa Han Sans`
+- Use: Public BTC/KRW trading chart tab; `surface-2::[data-omd-capture="49"]`.
 
-**Store button (light)**
-- Background: `#EBF0F5`
-- Text: `#040505`
-- Radius: 10px
-- Padding: 13px
-- Height: 48px
-- Font: 13px / 700
+### Trading side tab
 
-**Store button (dark)**
-- Background: `#040505`
-- Text: `#FFFFFF`
-- Radius: 10px
-- Padding: 13px
-- Height: 48px
-- Font: 13px / 700
+**Default**
+- Text: `#9E9E9E`
+- Height: `40px`
+- Font: `14px / 400 Spoqa Han Sans`
+- Use: Public BTC/KRW trading side tab; `surface-2::[data-omd-capture="156"]`.
 
-### Chip / Toggle
-
-**Filter chip (default)**
-- Background: `#FFFFFF`
-- Text: `#040505`
-- Border: 1px solid `#DDE4EB`
-- Radius: 6px
-- Padding: 6px 12px
-- Height: 32px
-- Font: 13px / 500
-- Active: border 1px solid `#040505`, font-weight 700
-
-### Icon button
-
-**Circular**
-- Background: `rgba(0,0,0,0.4)`
-- Radius: 50%
-- Padding: 5px
+The supplied bundle reports `interactionCount: 0` and no interaction records. Its static hover, focus, and pressed selector snapshots are not promoted as reusable states. No disabled, menu, dialog, validation, toast, responsive, or logged-in variants are claimed.
 
 ---
-**Verified:** 2026-06-03
-**Tier 1 sources:** https://coinonecorp.com/company/brand (official BI guideline, brand-owned), https://coinone.co.kr (live exchange site, brand-owned), https://image-public.coinone.co.kr/download/corphome/coinone_guide_4.0.pdf (official brand guideline PDF v4.0, brand-owned)
-**Tier 2 sources:** getdesign.md/coinone — NOT LISTED. refero ?q=coinone — no Coinone-specific result. Tier 1 carries the evidence per KR regional-source rule.
-**Conflicts unresolved:** BI "Coinone Blue" main is `#006BD6`; the live product applies `#0B59D5` to filled CTAs and `#1772F8` to outline emphasis — recorded as applied shades of the same identity blue, not a conflict.
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://coinone.co.kr/` (public exchange home), `https://coinone.co.kr/exchange/trade/btc/krw` (public trading surface), `https://www.coinonecorp.com/company/brand` (official brand guideline), and `https://image-public.coinone.co.kr/download/corphome/coinone_guide_4.0.pdf` (official brand-guideline PDF).
+**Tier 2 sources:** `https://getdesign.md/coinone` and `https://styles.refero.design/?q=coinone` were both attempted; built-in web open returned safe-open failures and subsequent web searches returned no Coinone record. No Tier 2 values were used.
+**Conflicts unresolved:** none
 
-## 5. Layout Principles
+Legacy generic CTA, filter-chip, store-button, icon-button, trading-state, system-font, shadow, motion, and fallback-family claims were removed or narrowed where the 2026 supplied capture does not provide selector-backed product evidence.
 
-- Marketing/onboarding: centered, generous vertical rhythm, single-column hero with one primary blue CTA.
-- App/exchange: dense multi-pane (market list · chart · order form), right-aligned numeric columns, thin neutral dividers `#DDE4EB`.
-- 8px spacing base; controls cluster at 8/12/18px gaps.
-- White surfaces dominate; sectioning by border and spacing rather than heavy cards.
+## 5. Elevation
 
-## 6. Depth & Elevation
+The selector-backed home and trading controls above have `box-shadow: none`. The capture does not substantiate a reusable shadow or elevation ladder.
 
-- Low elevation overall: flat white surfaces, 1px `#DDE4EB` borders do most of the separation.
-- Radius scale: 3px (inline tags) · 6px (chips) · 8px (buttons/cards) · 10px (store/large) · 50% (icon).
-- Shadows reserved for floating menus / modals, kept soft and short.
+## 6. Spacing & Shape
 
-## 7. Do's and Don'ts
+Observed component spacing is intentionally kept small and local: 4px and 8px occur in home controls, 12px in the compact-control horizontal padding, and 16px in the chart-tab horizontal padding. The recorded radii are 3px for the sign-in control, 6px for the compact control, and 26px for a home badge. These are observations, not a universal radius scale.
+
+## 7. Iconography & Imagery
+
+The public exchange home has a loaded `coinone_glyph_ui` asset for one observed icon-font use. The supplied bundle does not establish a named icon set, image treatment, illustration style, or media-card specification.
 
 ### Do
-- Use one confident blue for the single primary action per view.
-- Keep trading numerals dense, right-aligned, and weighted when they change.
-- Respect Korean market color convention (red = up, blue = down) in price contexts.
-- Lean on borders and spacing for structure; keep surfaces flat and white.
+
+- Keep the official Coinone Blue palette and current product-blue observation distinct in implementation notes.
+- Preserve the home/trading typography boundary when recreating one of the captured routes.
+- Treat the corporate brand guideline as identity evidence, not as a source of exchange-control CSS.
 
 ### Don't
-- Stack multiple filled-blue CTAs competing in one viewport.
-- Introduce shadow-heavy cards in trading views — it slows scanning.
-- Recolor the identity blue toward teal/purple; stay within the Coinone Blue family.
-- Use red/green for price direction (that's a Western convention; KR is red-up/blue-down).
 
-## 8. Responsive Behavior
+- Substitute a declared-only or system family for `pretendardCoinone` or `Spoqa Han Sans` while presenting it as the observed family.
+- Invent hover, error, empty, modal, responsive, or logged-in component variants from static capture samples.
+- Generalize the corporate guideline's Roboto documentation chrome into exchange UI typography.
 
-- Marketing pages collapse to single column; CTA goes full-width with the same 8px radius.
-- Exchange UI is desktop-dense; mobile app reflows panes into stacked tabs (markets → chart → order).
-- Touch targets ≥ 44px on app surfaces; 48–49px primary buttons translate cleanly to mobile.
+## 8. Accessibility
 
-## 9. Agent Prompt Guide
+- The home compact control records `#040505` text on white with a `#DDE4EB` border; the sign-in control records `#79818F` text with a `#AEB3BB` border.
+- The capture includes static focus/pressed snapshots but no interaction record, so it does not establish a reusable keyboard focus-visible treatment.
+- No accessibility conformance score, screen-reader behavior, validation behavior, or mobile target rule is claimed from these public captures.
 
-When generating Coinone-style UI: white background, near-black `#040505` text, exactly one filled blue (`#0B59D5`) primary action with 8px radius and 15px/700 label, outline secondaries with `#DDE4EB` borders. Keep it flat and bordered, dense in data views, calm in marketing. For price/market data use KR convention (red up, blue down). Use `#1772F8`/`#0090FF` only as sparing emphasis, never as a second competing CTA.
+## 9. Content & Voice
+
+Coinone's official mission emphasizes blockchain-enabled connection and names trust, innovation, and expertise as values. Its product and support materials pair task-specific guidance with customer-verification and investor-protection information. Use concrete service language and make compliance or risk boundaries explicit; do not invent promotional trading promises or unobserved product microcopy.
 
 ## 10. Voice & Tone
 
-Coinone's voice is **steady, plain, and reassuring** — a regulated exchange explaining money clearly, not hyping coins.
+**Voice adjectives:** clear · trust-oriented · technically grounded
 
 | Do | Don't |
 |---|---|
-| "30초면 가입 완료" — concrete, low-friction | "지금 안 사면 후회!" — FOMO/hype |
-| Explain risk and fees plainly | Bury terms or over-promise returns |
-| Calm, confident, second-person | Slangy crypto-degen tone |
-
-Voice samples (illustrative, derived from live copy):
-- "딱 30초면 완료할 수 있어요!" (signup nudge — friendly, concrete)
-- "스마트 트레이딩 바로가기" (feature CTA — direct, plain)
-- "방문 상담 예약하기" (support — calm, service-oriented)
+| Explain the task, requirement, or protection boundary directly. | Add urgency or return promises not supported by official material. |
+| Separate exchange action copy from compliance/support information. | Turn the company mission into a UI slogan without route-specific evidence. |
+| Use precise, calm Korean financial-service language. | Treat illustrative copy as a captured product string. |
 
 ## 11. Brand Narrative
 
-Founded in 2014, Coinone is one of Korea's first-generation crypto exchanges and has framed itself around "connecting the world and technology" (세상과 기술을 연결하다). Its logo guideline describes the mark as carrying "the infinite possibilities of connection." Over a decade it has leaned into trust and compliance as differentiators in a heavily regulated market, while pushing automation features (AI grid / smart trading) to stay competitive with larger rivals. The design language reflects that posture: institutional blue, plain language, safety-first surfaces.
+Coinone's official history records the company's establishment in 2014 and the launch of its Bitcoin exchange that October. Its mission page describes the company as believing in the possibilities created by free connection and movement of value through blockchain, under the slogan “Bringing Blockchain into the World.” The company names trust, innovation, and expertise as its values.
+
+The official business page describes Coinone Exchange as a Korean professional virtual-asset exchange and presents asset safety, anti-money-laundering systems, transparent listing policy, and a user-centered trading environment as core operating themes. The public brand guideline gives that service context a consistent visual identity: a horizontal signature as the default, protected clear space, and blue as the main color representing the future.
 
 ## 12. Principles
 
-1. **Trust before excitement.** — *UI implication:* calm white surfaces, one blue, no hype color.
-2. **Clarity of money.** — *UI implication:* plain copy, explicit fees/states, legible dense numerals.
-3. **One decisive action.** — *UI implication:* a single filled-blue CTA per view.
-4. **Speed in data, calm in marketing.** — *UI implication:* dense trading panes, airy onboarding.
-5. **Stay within the identity blue.** — *UI implication:* blue family only for brand/primary; grays carry the rest.
+1. **Make trust legible.** *UI implication:* keep verification, safety, and status language explicit instead of implying a guarantee.
+2. **Separate identity from surface evidence.** *UI implication:* use the official palette as brand context while retaining the captured home and trading controls as route-local facts.
+3. **Support expert use without inventing density rules.** *UI implication:* preserve observed trading-tab typography, but do not infer an entire order-entry system from a public route.
+4. **Keep product and support boundaries clear.** *UI implication:* do not turn support documentation or corporate copy into an observed exchange state.
 
 ## 13. Personas
 
-*Illustrative archetypes for design context, not official user research.*
+The first-party sources identify stakeholder groups rather than publishing user-research personas. The following are source-grounded service audiences, not synthetic behavioral profiles:
 
-- **Cautious first-timer** — wants a safe, regulated place to buy a little crypto; needs plain steps and visible trust signals.
-- **Active retail trader** — lives in the order book; values dense data, fast toggles, reliable numerals.
-- **Automation seeker** — drawn to AI grid / smart trading; wants set-and-forget tooling explained simply.
+- **Exchange members** — people using Coinone's exchange and asset-management services.
+- **Prospective or returning users completing customer verification** — the official support flow identifies customer verification and real-name account checks as service requirements.
+- **Customers seeking security or investor-protection guidance** — the support center publishes phishing, fraud, account-protection, and investor-protection information.
 
 ## 14. States
 
-- **Empty:** "보유 자산이 없어요" — quiet muted `#6B7684` text + a single blue "입금하기" CTA.
-- **Loading:** skeleton rows in trading tables; spinner inside buttons on submit.
-- **Error (validation):** inline red helper under field; field border turns warning red.
-- **Error (network):** non-blocking toast, retriable; data panes keep last values dimmed.
-- **Success:** brief confirmation toast / checkmark; return to the relevant balance or order view.
-- **Skeleton:** gray `#EEEFF0` placeholder blocks matching final row layout.
-- **Disabled:** muted `#CFD0D3` fill, no border emphasis, non-interactive cursor.
+No empty, loading, success, validation-error, network-error, skeleton, disabled, toast, or responsive state was captured with interaction provenance. These states are intentionally not specified for Coinone in this reference.
 
 ## 15. Motion & Easing
 
-- Duration scale: 120ms (micro hover/press) · 200ms (toggles, toasts) · 300ms (page/section transitions).
-- Easing: standard ease-out for entrances, ease-in-out for toggles.
-- Price/number changes flash briefly (red up / blue down) then settle — motion communicates direction, never decorates.
-- Keep motion minimal in trading views to avoid distracting from live data.
+The supplied evidence does not measure durations, easing curves, animated price changes, or transition behavior. No motion token or recommendation is claimed.

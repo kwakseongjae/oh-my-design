@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Reference capture fixture</title>
+  <style>
+    @font-face {
+      font-family: "Fixture Declared";
+      src: url("/fixture-declared.woff2") format("woff2");
+      font-weight: 400;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 32px; color: #111827; background: #f7f8fc; font: 16px/24px Arial, sans-serif; }
+    main { display: grid; gap: 24px; max-width: 720px; }
+    section { display: grid; gap: 12px; }
+    button { min-height: 40px; padding: 8px 16px; color: #ffffff; background: #2d6cdf; border: 1px solid #2d6cdf; border-radius: 8px; font: 600 16px/24px Arial, sans-serif; }
+    button:hover { background: #1f57b8; }
+    button:active { background: #173f87; }
+    button:focus { outline: 3px solid #0b1020; outline-offset: 2px; box-shadow: 0 0 0 3px #0b1020; }
+    [role="menu"], [role="dialog"], [role="tabpanel"] { padding: 16px; background: #ffffff; border: 1px solid #e6ebf5; border-radius: 12px; }
+    [role="menu"] { list-style: none; margin: 0; }
+    [role="menuitem"] { padding: 8px; }
+    [role="tablist"] { display: flex; gap: 8px; }
+    [role="tab"] { color: #111827; background: #e6ebf5; border-color: #e6ebf5; }
+    [role="tab"][aria-selected="true"] { color: #ffffff; background: #2d6cdf; }
+    input { min-height: 40px; padding: 8px 12px; color: #111827; background: #ffffff; border: 1px solid #e6ebf5; border-radius: 8px; font: 400 16px/24px Arial, sans-serif; }
+    input[aria-invalid="true"], input:invalid { border-color: #d92d20; }
+    .error-message { padding: 8px 12px; color: #d92d20; background: #fff6f5; border-radius: 8px; }
+    [role="status"] { position: fixed; right: 24px; bottom: 24px; padding: 12px 16px; color: #d1fae5; background: #147d64; border-radius: 8px; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Known capture fixture</h1>
+
+    <section>
+      <button id="menu-trigger" data-omd-action="menu" aria-haspopup="menu" aria-controls="fixture-menu" aria-expanded="false">Open menu</button>
+      <ul id="fixture-menu" role="menu" hidden>
+        <li role="menuitem" class="menu-item">First item</li>
+        <li role="menuitem" class="menu-item">Second item</li>
+      </ul>
+    </section>
+
+    <section>
+      <button id="dialog-trigger" data-omd-action="dialog" aria-haspopup="dialog" aria-controls="fixture-dialog">Open dialog</button>
+      <div id="fixture-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" hidden>
+        <h2 id="dialog-title">Fixture dialog</h2>
+        <button type="button">Confirm</button>
+      </div>
+    </section>
+
+    <section>
+      <div role="tablist" aria-label="Fixture tabs">
+        <button id="tab-one" role="tab" aria-selected="true" aria-controls="panel-one">Overview</button>
+        <button id="tab-two" role="tab" data-omd-action="tab" aria-selected="false" aria-controls="panel-two">Details</button>
+        <a id="tab-navigation" role="tab" aria-selected="false" href="/pricing">Pricing route</a>
+      </div>
+      <div id="panel-one" role="tabpanel">Overview panel</div>
+      <div id="panel-two" role="tabpanel" hidden>Details panel</div>
+    </section>
+
+    <section>
+      <label for="fixture-email">Email</label>
+      <input id="fixture-email" type="email" required aria-describedby="email-error">
+      <button id="form-trigger" type="button" data-omd-action="form-error">Validate form</button>
+      <div id="email-error" class="error-message" role="alert" hidden>Enter a valid email.</div>
+    </section>
+
+    <section>
+      <button id="toast-trigger" type="button" data-omd-action="toast">Show toast</button>
+      <div id="fixture-toast" role="status" hidden>Changes saved.</div>
+    </section>
+  </main>
+
+  <script>
+    const menu = document.querySelector("#fixture-menu");
+    const dialog = document.querySelector("#fixture-dialog");
+    const toast = document.querySelector("#fixture-toast");
+    document.querySelector("#menu-trigger").addEventListener("click", (event) => {
+      const open = menu.hidden;
+      menu.hidden = !open;
+      event.currentTarget.setAttribute("aria-expanded", String(open));
+    });
+    document.querySelector("#dialog-trigger").addEventListener("click", () => { dialog.hidden = false; });
+    document.querySelector("#tab-two").addEventListener("click", () => {
+      document.querySelector("#tab-one").setAttribute("aria-selected", "false");
+      document.querySelector("#tab-two").setAttribute("aria-selected", "true");
+      document.querySelector("#panel-one").hidden = true;
+      document.querySelector("#panel-two").hidden = false;
+    });
+    document.querySelector("#form-trigger").addEventListener("click", () => {
+      const input = document.querySelector("#fixture-email");
+      input.setAttribute("aria-invalid", "true");
+      document.querySelector("#email-error").hidden = false;
+    });
+    document.querySelector("#toast-trigger").addEventListener("click", () => { toast.hidden = false; });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      menu.hidden = true;
+      dialog.hidden = true;
+      toast.hidden = true;
+      document.querySelector("#menu-trigger").setAttribute("aria-expanded", "false");
+    });
+  </script>
+</body>
+</html>

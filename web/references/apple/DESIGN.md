@@ -8,606 +8,332 @@ primary_color: "#000000"
 logo:
   type: simpleicons
   slug: apple
-verified: "2026-05-15"
+verified: "2026-07-11"
 omd: "0.1"
 ds:
   name: Human Interface Guidelines
   url: "https://developer.apple.com/design/human-interface-guidelines"
   type: system
-  description: Apple's official design guidelines for iOS, macOS, watchOS, and visionOS.
+  description: Apple's official platform design guidance; this reference separately labels apple.com and HIG documentation-site UI.
   og_image: "https://docs.developer.apple.com/tutorials/developer-og.jpg"
+verification_v2:
+  schema: 2
+  checked: "2026-07-11"
+  surfaces:
+    - { id: apple-home, kind: marketing, url: "https://www.apple.com/", inspected: "2026-07-11" }
+    - { id: apple-store-product, kind: commerce, url: "https://www.apple.com/shop/product/mw5g3am/a/siri-remote", inspected: "2026-07-11" }
+    - { id: hig-buttons, kind: design-system, url: "https://developer.apple.com/design/human-interface-guidelines/buttons", inspected: "2026-07-11" }
+    - { id: hig-components, kind: design-system, url: "https://developer.apple.com/design/human-interface-guidelines/components", inspected: "2026-07-11" }
+  sources:
+    - { id: apple-live, kind: product-surface, url: "https://www.apple.com/", captured: "2026-07-11" }
+    - { id: apple-store-live, kind: product-surface, url: "https://www.apple.com/shop/product/mw5g3am/a/siri-remote", captured: "2026-07-11" }
+    - { id: hig-buttons-live, kind: official-doc, url: "https://developer.apple.com/design/human-interface-guidelines/buttons", captured: "2026-07-11" }
+    - { id: hig-components-live, kind: official-doc, url: "https://developer.apple.com/design/human-interface-guidelines/components", captured: "2026-07-11" }
+  claims:
+    "tokens.colors.primary": &apple_live { surface_id: apple-home, source_id: apple-live, method: computed-style, captured: "2026-07-11" }
+    "tokens.colors.brand": *apple_live
+    "tokens.colors.canvas": *apple_live
+    "tokens.colors.canvas-dark": *apple_live
+    "tokens.colors.surface": *apple_live
+    "tokens.colors.foreground": *apple_live
+    "tokens.colors.on-primary": *apple_live
+    "tokens.colors.muted": &hig_live { surface_id: hig-components, source_id: hig-components-live, method: computed-style, captured: "2026-07-11" }
+    "tokens.colors.secondary": *hig_live
+    "tokens.colors.link": *apple_live
+    "tokens.colors.link-on-dark": *apple_live
+    "tokens.typography.family.display": *apple_live
+    "tokens.typography.family.text": *apple_live
+    "tokens.typography.display-hero.size": *apple_live
+    "tokens.typography.display-hero.weight": *apple_live
+    "tokens.typography.display-hero.lineHeight": *apple_live
+    "tokens.typography.display-hero.tracking": *apple_live
+    "tokens.typography.section.size": *apple_live
+    "tokens.typography.section.weight": *apple_live
+    "tokens.typography.section.lineHeight": *apple_live
+    "tokens.typography.tile-heading.size": *apple_live
+    "tokens.typography.tile-heading.weight": *apple_live
+    "tokens.typography.tile-heading.lineHeight": *apple_live
+    "tokens.typography.tile-heading.tracking": *apple_live
+    "tokens.typography.body.size": *apple_live
+    "tokens.typography.body.weight": *apple_live
+    "tokens.typography.body.lineHeight": *apple_live
+    "tokens.typography.body.tracking": *apple_live
+    "tokens.typography.body-small.size": *apple_live
+    "tokens.typography.body-small.weight": *apple_live
+    "tokens.typography.body-small.lineHeight": *apple_live
+    "tokens.typography.body-small.tracking": *apple_live
+    "tokens.typography.caption.size": *apple_live
+    "tokens.typography.caption.weight": *apple_live
+    "tokens.typography.caption.lineHeight": *apple_live
+    "tokens.typography.caption.tracking": *apple_live
+    "tokens.spacing.compact": *apple_live
+    "tokens.spacing.control-inline": *apple_live
+    "tokens.spacing.pill-block": *apple_live
+    "tokens.spacing.pill-inline": *apple_live
+    "tokens.spacing.content": *apple_live
+    "tokens.rounded.control": *apple_live
+    "tokens.rounded.docs-card": *hig_live
+    "tokens.rounded.marketing-pill": *apple_live
+    "tokens.components.marketing-primary.type": *apple_live
+    "tokens.components.marketing-primary.bg": *apple_live
+    "tokens.components.marketing-primary.fg": *apple_live
+    "tokens.components.marketing-primary.radius": *apple_live
+    "tokens.components.marketing-primary.padding": *apple_live
+    "tokens.components.marketing-primary.height": *apple_live
+    "tokens.components.marketing-primary.font": *apple_live
+    "tokens.components.marketing-primary.states": *apple_live
+    "tokens.components.marketing-primary.use": *apple_live
+    "tokens.components.marketing-outline.type": *apple_live
+    "tokens.components.marketing-outline.bg": *apple_live
+    "tokens.components.marketing-outline.fg": *apple_live
+    "tokens.components.marketing-outline.border": *apple_live
+    "tokens.components.marketing-outline.radius": *apple_live
+    "tokens.components.marketing-outline.padding": *apple_live
+    "tokens.components.marketing-outline.height": *apple_live
+    "tokens.components.marketing-outline.font": *apple_live
+    "tokens.components.marketing-outline.states": *apple_live
+    "tokens.components.marketing-outline.use": *apple_live
+    "tokens.components.marketing-compact.type": *apple_live
+    "tokens.components.marketing-compact.bg": *apple_live
+    "tokens.components.marketing-compact.fg": *apple_live
+    "tokens.components.marketing-compact.radius": *apple_live
+    "tokens.components.marketing-compact.padding": *apple_live
+    "tokens.components.marketing-compact.height": *apple_live
+    "tokens.components.marketing-compact.font": *apple_live
+    "tokens.components.marketing-compact.states": *apple_live
+    "tokens.components.marketing-compact.use": *apple_live
+    "tokens.components.product-gallery-tab.type": &store_live { surface_id: apple-store-product, source_id: apple-store-live, method: computed-style, captured: "2026-07-11" }
+    "tokens.components.product-gallery-tab.fg": *store_live
+    "tokens.components.product-gallery-tab.height": *store_live
+    "tokens.components.product-gallery-tab.font": *store_live
+    "tokens.components.product-gallery-tab.states": *store_live
+    "tokens.components.product-gallery-tab.use": *store_live
+    "tokens.components.hig-reference-card.type": *hig_live
+    "tokens.components.hig-reference-card.bg": *hig_live
+    "tokens.components.hig-reference-card.radius": *hig_live
+    "tokens.components.hig-reference-card.states": *hig_live
+    "tokens.components.hig-reference-card.use": *hig_live
+  conflicts: []
 tokens:
-  source: prose-derived
-  extracted: "2026-06-08"
-  note: "single chromatic accent = Apple Blue #0071e3 (interactive only); link #0066cc on light / #2997ff on dark; binary canvas = #000000 dark / #f5f5f7 light"
+  source: reconciled
+  extracted: "2026-07-11"
+  note: "apple.com marketing/commerce values are distinct from HIG guidance and the HIG documentation site's own chrome."
   colors:
     primary: "#0071e3"
     brand: "#000000"
     canvas: "#f5f5f7"
     canvas-dark: "#000000"
+    surface: "#ffffff"
     foreground: "#1d1d1f"
     on-primary: "#ffffff"
-    surface: "#ffffff"
-    surface-dark: "#272729"
+    muted: "#6e6e73"
+    secondary: "#515154"
     link: "#0066cc"
     link-on-dark: "#2997ff"
   typography:
     family: { display: "SF Pro Display", text: "SF Pro Text" }
-    display-hero:   { size: 56, weight: 600, lineHeight: 1.07, tracking: -0.28, use: "Product launch headlines, maximum impact" }
-    section:        { size: 40, weight: 600, lineHeight: 1.10, use: "Feature section titles" }
-    tile-heading:   { size: 28, weight: 400, lineHeight: 1.14, tracking: 0.196, use: "Product tile headlines" }
-    card-title:     { size: 21, weight: 700, lineHeight: 1.19, tracking: 0.231, use: "Bold card headings" }
-    subheading:     { size: 21, weight: 400, lineHeight: 1.19, tracking: 0.231, use: "Regular card headings" }
-    nav-heading:    { size: 34, weight: 600, lineHeight: 1.47, tracking: -0.374, use: "Large navigation headings" }
-    sub-nav:        { size: 24, weight: 300, lineHeight: 1.50, use: "Light sub-navigation text" }
-    body:           { size: 17, weight: 400, lineHeight: 1.47, tracking: -0.374, use: "Standard reading text" }
-    body-emphasis:  { size: 17, weight: 600, lineHeight: 1.24, tracking: -0.374, use: "Emphasized body text, labels" }
-    button-lg:      { size: 18, weight: 300, lineHeight: 1.00, use: "Large button text, light weight" }
-    button:         { size: 17, weight: 400, lineHeight: 2.41, use: "Standard button text" }
-    link:           { size: 14, weight: 400, lineHeight: 1.43, tracking: -0.224, use: "Body links, Learn more" }
-    caption:        { size: 14, weight: 400, lineHeight: 1.29, tracking: -0.224, use: "Secondary text, descriptions" }
-    micro:          { size: 12, weight: 400, lineHeight: 1.33, tracking: -0.12, use: "Fine print, footnotes" }
-    nano:           { size: 10, weight: 400, lineHeight: 1.47, tracking: -0.08, use: "Legal text, smallest size" }
-  spacing: { xs: 2, sm: 4, base: 8, md: 11, lg: 14, xl: 17, xxl: 20, section: 24 }
-  rounded: { sm: 5, md: 8, lg: 12, full: 980 }
-  shadow:
-    card: "rgba(0,0,0,0.22) 3px 5px 30px 0px"
-    nav-glass: "backdrop-filter: saturate(180%) blur(20px)"
+    display-hero: { size: 56, weight: 600, lineHeight: "60px", tracking: "-0.28px" }
+    section: { size: 40, weight: 600, lineHeight: "44px" }
+    tile-heading: { size: 28, weight: 400, lineHeight: "32px", tracking: "0.196px" }
+    body: { size: 17, weight: 400, lineHeight: "25px", tracking: "-0.374px" }
+    body-small: { size: 14, weight: 400, lineHeight: "18.0008px", tracking: "-0.224px" }
+    caption: { size: 12, weight: 400, lineHeight: "16.0005px", tracking: "-0.12px" }
+  spacing: { compact: 8, control-inline: 15, pill-block: 11, pill-inline: 21, content: 20 }
+  rounded: { control: 8, docs-card: 18, marketing-pill: 980 }
   components_harvested: true
   components:
-    button-marketing-pill: { type: button, bg: "#0071e3", fg: "#ffffff", radius: 980, padding: "11px 21px", font: "17px/400", use: "marketing pill CTA" }
-    button-neutral-pill: { type: button, bg: "#1d1d1f", fg: "#ffffff", radius: 980, use: "paired secondary CTA" }
-    button-commerce-compact: { type: button, bg: "#0071e3", fg: "#ffffff", radius: 8, padding: "8px 15px", font: "14px", use: "checkout actions" }
-    card-white: { type: card, bg: "#ffffff", radius: 28, use: "no border, no shadow — lifts via color contrast" }
-    card-dark: { type: card, bg: "#000000", fg: "#ffffff", radius: 28, use: "max-contrast product detail" }
-    input-search: { type: input, radius: 8, use: "grey fill, active 2px solid #2997ff" }
-    nav-global: { type: tab, radius: 0, use: "translucent fog, backdrop blur(20px), 44px height" }
-    text-link: { type: badge, fg: "#0066cc", use: "link color, underline on hover, not a pill" }
+    marketing-primary: { type: button, bg: "#0071e3", fg: "#ffffff", radius: "980px", padding: "11px 21px", height: "44px", font: "17px / 400", states: "default captured; hover not retained", use: "large apple.com marketing CTA" }
+    marketing-outline: { type: button, bg: "transparent", fg: "#0066cc", border: "1px solid #0066cc", radius: "980px", padding: "11px 21px", height: "44px", font: "17px / 400", states: "default captured; hover not retained", use: "secondary apple.com marketing CTA" }
+    marketing-compact: { type: button, bg: "#0071e3", fg: "#ffffff", radius: "980px", padding: "8px 15px", height: "36px", font: "14px / 400", states: "default captured; hover not retained", use: "compact apple.com tile CTA" }
+    product-gallery-tab: { type: tab, fg: "#1d1d1f", height: "53px", font: "17px / 400", states: "selected and unselected gallery thumbnails", use: "Apple Store product image selection" }
+    hig-reference-card: { type: card, bg: "#ffffff", radius: "18px", states: "default documentation card; hover not retained", use: "HIG documentation index card, not a native-platform component token" }
 ---
 
 # Design System Inspiration of Apple
 
 ## 1. Visual Theme & Atmosphere
 
-Apple's website is a masterclass in controlled drama — vast expanses of pure black and near-white serve as cinematic backdrops for products that are photographed as if they were sculptures in a gallery. The design philosophy is reductive to its core: every pixel exists in service of the product, and the interface itself retreats until it becomes invisible. This is not minimalism as aesthetic preference; it is minimalism as reverence for the object.
+Apple’s current design language makes hardware, software, content, and controls feel like one continuous system. On the public web, a small neutral palette, SF Pro optical families, and conspicuous blue actions leave product photography and page composition to carry most of the drama. Across Apple platforms, the newer Liquid Glass direction adds a translucent functional layer for controls and navigation while keeping content visually primary. The recognizable effect is not minimalism for its own sake: precise hierarchy, familiar behavior, platform harmony, and carefully limited ornament make complex capabilities feel immediately usable.
 
-The typography anchors everything. San Francisco (SF Pro Display for large sizes, SF Pro Text for body) is Apple's proprietary typeface, engineered with optical sizing that automatically adjusts letterforms depending on point size. At display sizes (56px), weight 600 with a tight line-height of 1.07 and subtle negative letter-spacing (-0.28px) creates headlines that feel machined rather than typeset — precise, confident, and unapologetically direct. At body sizes (17px), the tracking loosens slightly (-0.374px) and line-height opens to 1.47, creating a reading rhythm that is comfortable without ever feeling slack.
-
-The color story is starkly binary. Product sections alternate between pure black (`#000000`) backgrounds with white text and light gray (`#f5f5f7`) backgrounds with near-black text (`#1d1d1f`). This creates a cinematic pacing — dark sections feel immersive and premium, light sections feel open and informational. The only chromatic accent is Apple Blue (`#0071e3`), reserved exclusively for interactive elements: links, buttons, and focus states. This singular accent color in a sea of neutrals gives every clickable element unmistakable visibility.
+This reference distinguishes three evidence domains: `apple.com` marketing, Apple Store commerce/product UI, and the Human Interface Guidelines documentation website. HIG guidance may describe native-platform components, but the computed style of the HIG website is only evidence for its documentation chrome.
 
 **Key Characteristics:**
-- SF Pro Display/Text with optical sizing — letterforms adapt automatically to size context
-- Binary light/dark section rhythm: black (`#000000`) alternating with light gray (`#f5f5f7`)
-- Single accent color: Apple Blue (`#0071e3`) reserved exclusively for interactive elements
-- Product-as-hero photography on solid color fields — no gradients, no textures, no distractions
-- Extremely tight headline line-heights (1.07-1.14) creating compressed, billboard-like impact
-- Full-width section layout with centered content — the viewport IS the canvas
-- Pill-shaped CTAs (980px radius) creating soft, approachable action buttons
-- Generous whitespace between sections allowing each product moment to breathe
+- SF Pro Text: 600 visible uses on current Apple public pages; SF Pro Display: 31
+- Primary filled action `#0071e3`; text link `#0066cc`; dark-surface link `#2997ff`
+- 44px large pill and 36px compact pill coexist on the current homepage
+- HIG documentation cards use an 18px radius but are not native-platform component tokens
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Pure Black** (`#000000`): Hero section backgrounds, immersive product showcases. The darkest canvas for the brightest products.
-- **Light Gray** (`#f5f5f7`): Alternate section backgrounds, informational areas. Not white — the slight blue-gray tint prevents sterility.
-- **Near Black** (`#1d1d1f`): Primary text on light backgrounds, dark button fills. Slightly warmer than pure black for comfortable reading.
+- **Primary Action** (`#0071e3`): current filled buttons across Apple-owned web surfaces.
+- **Brand / Dark Canvas** (`#000000`): identity and immersive dark sections.
+- **Fog Canvas** (`#f5f5f7`): light section and footer background.
+- **Surface** (`#ffffff`): white content and HIG card surfaces.
+- **Foreground** (`#1d1d1f`): principal text and selected commerce state.
+- **Muted** (`#6e6e73`): secondary HIG documentation text.
+- **Secondary** (`#515154`): another current HIG documentation neutral.
+- **On Primary** (`#ffffff`): text on blue filled actions.
+- **Link** (`#0066cc`): links and outline-button text/border on light surfaces.
+- **Link on Dark** (`#2997ff`): brighter blue observed on dark Apple sections.
 
-### Interactive
-- **Apple Blue** (`#0071e3`): `--sk-focus-color`, primary CTA backgrounds, focus rings. The ONLY chromatic color in the interface.
-- **Link Blue** (`#0066cc`): `--sk-body-link-color`, inline text links. Slightly darker than Apple Blue for text-level readability.
-- **Bright Blue** (`#2997ff`): Links on dark backgrounds. Higher luminance for contrast on black sections.
-
-### Text
-- **White** (`#ffffff`): Text on dark backgrounds, button text on blue/dark CTAs.
-- **Near Black** (`#1d1d1f`): Primary body text on light backgrounds.
-- **Black 80%** (`rgba(0, 0, 0, 0.8)`): Secondary text, nav items on light backgrounds. Slightly softened.
-- **Black 48%** (`rgba(0, 0, 0, 0.48)`): Tertiary text, disabled states, carousel controls.
-
-### Surface & Dark Variants
-- **Dark Surface 1** (`#272729`): Card backgrounds in dark sections.
-- **Dark Surface 2** (`#262628`): Subtle surface variation in dark contexts.
-- **Dark Surface 3** (`#28282a`): Elevated cards on dark backgrounds.
-- **Dark Surface 4** (`#2a2a2d`): Highest dark surface elevation.
-- **Dark Surface 5** (`#242426`): Deepest dark surface tone.
-
-### Button States
-- **Button Active** (`#ededf2`): Active/pressed state for light buttons.
-- **Button Default Light** (`#fafafc`): Search/filter button backgrounds.
-- **Overlay** (`rgba(210, 210, 215, 0.64)`): Media control scrims, overlays.
-- **White 32%** (`rgba(255, 255, 255, 0.32)`): Hover state on dark modal close buttons.
-
-### Shadows
-- **Card Shadow** (`rgba(0, 0, 0, 0.22) 3px 5px 30px 0px`): Soft, diffused elevation for product cards. Offset and wide blur create a natural, photographic shadow.
+Do not infer a universal native-platform semantic palette from these web values. HIG platform colors are dynamic and context-dependent; this pass records public web evidence.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display**: `SF Pro Display`, with fallbacks: `SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif`
-- **Body**: `SF Pro Text`, with fallbacks: `SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif`
-- SF Pro Display is used at 20px and above; SF Pro Text is optimized for 19px and below.
+- **Display**: `SF Pro Display`, loaded/high confidence, 31 visible uses across current Apple public pages.
+- **Text**: `SF Pro Text`, loaded/high confidence, 600 visible uses across marketing and store surfaces; another 734 on HIG documentation surfaces.
+- **SF Mono**: declared on the HIG site but not visibly used in this capture, so it is not promoted.
 
-### Hierarchy
+| Role | Family | Size | Weight | Line Height | Tracking |
+|---|---|---:|---:|---:|---:|
+| Display Hero | SF Pro Display | 56px | 600 | 60px | -0.28px |
+| Section | SF Pro Display | 40px | 600 | 44px | normal |
+| Tile Heading | SF Pro Display | 28px | 400 | 32px | 0.196px |
+| Body | SF Pro Text | 17px | 400 | 25px | -0.374px |
+| Body Small | SF Pro Text | 14px | 400 | 18.0008px | -0.224px |
+| Caption | SF Pro Text | 12px | 400 | 16.0005px | -0.12px |
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | SF Pro Display | 56px (3.50rem) | 600 | 1.07 (tight) | -0.28px | Product launch headlines, maximum impact |
-| Section Heading | SF Pro Display | 40px (2.50rem) | 600 | 1.10 (tight) | normal | Feature section titles |
-| Tile Heading | SF Pro Display | 28px (1.75rem) | 400 | 1.14 (tight) | 0.196px | Product tile headlines |
-| Card Title | SF Pro Display | 21px (1.31rem) | 700 | 1.19 (tight) | 0.231px | Bold card headings |
-| Sub-heading | SF Pro Display | 21px (1.31rem) | 400 | 1.19 (tight) | 0.231px | Regular card headings |
-| Nav Heading | SF Pro Text | 34px (2.13rem) | 600 | 1.47 | -0.374px | Large navigation headings |
-| Sub-nav | SF Pro Text | 24px (1.50rem) | 300 | 1.50 | normal | Light sub-navigation text |
-| Body | SF Pro Text | 17px (1.06rem) | 400 | 1.47 | -0.374px | Standard reading text |
-| Body Emphasis | SF Pro Text | 17px (1.06rem) | 600 | 1.24 (tight) | -0.374px | Emphasized body text, labels |
-| Button Large | SF Pro Text | 18px (1.13rem) | 300 | 1.00 (tight) | normal | Large button text, light weight |
-| Button | SF Pro Text | 17px (1.06rem) | 400 | 2.41 (relaxed) | normal | Standard button text |
-| Link | SF Pro Text | 14px (0.88rem) | 400 | 1.43 | -0.224px | Body links, "Learn more" |
-| Caption | SF Pro Text | 14px (0.88rem) | 400 | 1.29 (tight) | -0.224px | Secondary text, descriptions |
-| Caption Bold | SF Pro Text | 14px (0.88rem) | 600 | 1.29 (tight) | -0.224px | Emphasized captions |
-| Micro | SF Pro Text | 12px (0.75rem) | 400 | 1.33 | -0.12px | Fine print, footnotes |
-| Micro Bold | SF Pro Text | 12px (0.75rem) | 600 | 1.33 | -0.12px | Bold fine print |
-| Nano | SF Pro Text | 10px (0.63rem) | 400 | 1.47 | -0.08px | Legal text, smallest size |
-
-### Principles
-- **Optical sizing as philosophy**: SF Pro automatically switches between Display and Text optical sizes. Display versions have wider letter spacing and thinner strokes optimized for large sizes; Text versions are tighter and sturdier for small sizes. This means the font literally changes its DNA based on context.
-- **Weight restraint**: The scale spans 300 (light) to 700 (bold) but most text lives at 400 (regular) and 600 (semibold). Weight 300 appears only on large decorative text. Weight 700 is rare, used only for bold card titles.
-- **Negative tracking at all sizes**: Unlike most systems that only track headlines, Apple applies subtle negative letter-spacing even at body sizes (-0.374px at 17px, -0.224px at 14px, -0.12px at 12px). This creates universally tight, efficient text.
-- **Extreme line-height range**: Headlines compress to 1.07 while body text opens to 1.47, and some button contexts stretch to 2.41. This dramatic range creates clear visual hierarchy through rhythm alone.
+| Evidence class | Apple status |
+|---|---|
+| **Official product-use** | SF Pro is the system family for Apple platforms; SF Compact serves watchOS; SF Mono serves coding environments such as Xcode |
+| **Live surface-use** | SF Pro Text and SF Pro Display are loaded and visibly used across inspected Apple marketing, Store, and HIG web surfaces |
+| **Official distributed asset** | Apple provides SF Pro, SF Compact, SF Mono, New York, script extensions, and design resources under Apple-specific licenses |
+| **Declared-only** | SF Mono was declared on the inspected HIG website but not observed as visible page chrome |
+| **Unresolved** | A universal mapping from Apple web roles to every native platform context; platform APIs remain the authority |
 
 ## 4. Component Stylings
 
-Verified end-to-end against three sources (see footer of this section). Apple operates **two parallel button systems**: a **marketing pill** (`apple.com/iphone`, `/mac`, hero CTAs — `980px` radius / 17px / weight 400) and a **commerce compact** (`apple.com/shop/...` checkout flow — `8px` radius / 14px). `#0066cc` is a **link color**, never a button background. `#0071e3` is the only accent fill.
-
-### Buttons
-
-**Marketing Primary Pill**
+### apple.com Marketing Primary
 - Background: `#0071e3`
 - Text: `#ffffff`
-- Border: 1px solid transparent
 - Radius: 980px
 - Padding: 11px 21px
+- Height: 44px
 - Font: 17px / 400 / SF Pro Text
-- Use: Primary CTA across marketing pages ("Buy", "Learn more" filled). Verified `.button.product-tile-button` on apple.com/iphone.
+- States: default captured; hover not retained
+- Use: large homepage marketing CTA
 
-**Marketing Neutral Dark Pill**
-- Background: `#1d1d1f`
-- Text: `#ffffff`
-- Border: 1px solid transparent
-- Radius: 980px
-- Padding: 11px 21px
-- Font: 17px / 400 / SF Pro Text
-- Use: Paired secondary CTA ("Watch the film"). Verified `.button-neutral.banner-card-cta` on apple.com/iphone.
-
-**Marketing Outline Pill**
+### apple.com Marketing Outline
 - Background: transparent
 - Text: `#0066cc`
 - Border: 1px solid `#0066cc`
 - Radius: 980px
 - Padding: 11px 21px
+- Height: 44px
 - Font: 17px / 400 / SF Pro Text
-- Use: Tertiary marketing CTA — outline pill matching primary geometry.
+- States: default captured; hover not retained
+- Use: secondary marketing CTA paired with a filled action
 
-**Commerce Compact Primary**
+### apple.com Marketing Compact
 - Background: `#0071e3`
 - Text: `#ffffff`
-- Border: 1px solid transparent
-- Radius: 8px
+- Radius: 980px
 - Padding: 8px 15px
+- Height: 36px
 - Font: 14px / 400 / SF Pro Text
-- Use: Checkout flow primary action ("Continue", "Add to Bag"). Verified `.ac-ls-button.ac-ls-continue` on apple.com/shop/buy-iphone.
+- States: default captured; hover not retained
+- Use: compact product-tile CTA on the current homepage
 
-**Commerce Compact Neutral**
-- Background: `#1d1d1f`
-- Text: `#ffffff`
-- Border: 1px solid transparent
-- Radius: 8px
-- Padding: 8px 15px
-- Font: 14px / 400 / SF Pro Text
-- Use: Checkout flow secondary on dark surfaces — same geometry as Commerce Compact Primary, neutral fill.
-
-**Utility Pill (Trade-in / Pay-monthly)**
-- Background: `#f5f5f7`
+### Apple Store Product Gallery Tab
 - Text: `#1d1d1f`
-- Border: 1px solid transparent
-- Radius: 18px
-- Padding: 12px 16px
-- Font: 12px / 400 / SF Pro Text
-- Use: Inline finance / trade-in capsule on product pages. Verified at apple.com/shop/buy-iphone.
-
-**Icon Frosted Round**
-- Background: `rgba(210, 210, 215, 0.64)`
-- Text: `rgba(0, 0, 0, 0.56)`
-- Border: none
-- Radius: 56px
-- Padding: 0
+- Height: 53px in the captured product thumbnail navigation
 - Font: 17px / 400 / SF Pro Text
-- Use: 56×56 carousel arrows / media controls — frosted scrim, NOT solid. Backdrop-filter blur(20px) where supported.
+- States: selected and unselected thumbnails
+- Use: choosing a product image on an Apple Store product page
 
-**Text Link**
-- Background: transparent
-- Text: `#0066cc`
-- Border: none
-- Radius: 0
-- Padding: 0
-- Font: 17px / 400 / SF Pro Text
-- Hover: underline
-- Use: Inline "Learn more" anchor — link color, not a pill.
-
-### Inputs
-
-**Search / Filter (Frosted)**
-- Background: `#e8e8ed`
-- Text: `#1d1d1f`
-- Border: none (active: 2px solid `#2997ff`)
-- Radius: 8px
-- Padding: 8px 12px
-- Font: 17px / 400 / SF Pro Text
-- Placeholder: `rgba(0, 0, 0, 0.56)`
-- Use: Search bar / filter input. Active state shows brighter `#2997ff` accent.
-
-### Cards
-
-**White Feature Card**
+### HIG Documentation Reference Card
 - Background: `#ffffff`
-- Text: `#1d1d1f`
-- Border: none
-- Radius: 28px
-- Padding: 28px
-- Shadow: none
-- Use: Primary content card — lifts off the canvas via color contrast alone, not shadow.
-
-**Fog Feature Card**
-- Background: `#f5f5f7`
-- Text: `#1d1d1f`
-- Border: none
-- Radius: 28px
-- Padding: 28px
-- Shadow: none
-- Use: Alternate card on white backgrounds.
-
-**Dark Feature Card**
-- Background: `#000000`
-- Text: `#ffffff`
-- Border: none
-- Radius: 28px
-- Padding: 28px
-- Shadow: none
-- Use: Maximum-contrast product detail card on dark sections.
-
-### Badges
-
-**New / Editorial Tag**
-- Background: transparent
-- Text: `#1d1d1f`
-- Border: none
-- Radius: 0
-- Padding: 0
-- Font: 12px / 600 / SF Pro Text (uppercase)
-- Use: "NEW" / "FREE" inline label — Apple uses an editorial stamp, not a pill.
-
-### Navigation
-
-**Global Nav (Translucent Fog)**
-- Background: `rgba(250, 250, 252, 0.8)` with `backdrop-filter: saturate(180%) blur(20px)`
-- Height: 44px
-- Link: `rgba(0, 0, 0, 0.8)` / 17px / 600 / SF Pro Text / padding 0 8px
-- Use: Sticky global nav across apple.com — translucent fog, NOT translucent black on light pages. (Black translucent appears only on dark hero pages.)
+- Radius: 18px
+- States: default documentation card; hover not retained
+- Use: HIG component-index navigation only. Do not present this as a native iOS or macOS card token.
 
 ---
 
-**Verified:** 2026-05-08
-**Tier 1 sources:** apple.com/, apple.com/iphone/, apple.com/shop/buy-iphone/iphone-17-pro (live DOM via playwright `getComputedStyle`)
-**Tier 2 sources:** styles.refero.design/style/a4f123f2-cd4b-4d26-998f-a3d3ee158024, /style/c9cabb96-32fa-4896-837a-f2497ce1c856
-**Tier 2b status:** getdesign.md/apple — directory snippet only, full token data not accessible via WebFetch (acceptable per pipeline).
-**Conflicts unresolved:** none. All Tier 1 values cross-confirmed by ≥1 Tier 2 source.
+**Verified:** 2026-07-11 (verification v2, 4 current Apple-owned surfaces)
+**Tier 1 sources:** https://www.apple.com/ https://www.apple.com/shop/product/mw5g3am/a/siri-remote https://developer.apple.com/design/human-interface-guidelines/buttons https://developer.apple.com/design/human-interface-guidelines/components
+**Tier 2 sources:** https://styles.refero.design/style/a4f123f2 and https://styles.refero.design/style/c9cabb96 remain historical cross-checks only; https://getdesign.md/apple did not provide an importable current record in this run.
+**Surface split:** apple.com marketing, Apple Store product UI, and HIG documentation chrome are retained as separate evidence domains.
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 2px, 4px, 5px, 6px, 7px, 8px, 9px, 10px, 11px, 14px, 15px, 17px, 20px, 24px
-- Notable characteristic: the scale is dense at small sizes (2-11px) with granular 1px increments, then jumps in larger steps. This allows precise micro-adjustments for typography and icon alignment.
-
-### Grid & Container
-- Max content width: approximately 980px (the recurring "980px radius" in pill buttons echoes this width)
-- Hero: full-viewport-width sections with centered content block
-- Product grids: 2-3 column layouts within centered container
-- Single-column for hero moments — one product, one message, full attention
-- No visible grid lines or gutters — spacing creates implied structure
-
-### Whitespace Philosophy
-- **Cinematic breathing room**: Each product section occupies a full viewport height (or close to it). The whitespace between products is not empty — it is the pause between scenes in a film.
-- **Vertical rhythm through color blocks**: Rather than using spacing alone to separate sections, Apple uses alternating background colors (black, `#f5f5f7`, white). Each color change signals a new "scene."
-- **Compression within, expansion between**: Text blocks are tightly set (negative letter-spacing, tight line-heights) while the space surrounding them is vast. This creates a tension between density and openness.
-
-### Border Radius Scale
-- Micro (5px): Small containers, link tags
-- Standard (8px): Buttons, product cards, image containers
-- Comfortable (11px): Search inputs, filter buttons
-- Large (12px): Feature panels, lifestyle image containers
-- Full Pill (980px): CTA links ("Learn more", "Shop"), navigation pills
-- Circle (50%): Media controls (play/pause, arrows)
+- Public marketing sections use full-width composition and centered content; store pages use denser product-detail layout.
+- Exact spacing promoted here is component-local: 8px and 15px for compact action padding; 11px and 21px for the large pill; 20px as a recurrent content cluster.
+- Avoid treating every sampled margin from Apple page composition as a universal system token.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, solid background | Standard content sections, text blocks |
-| Navigation Glass | `backdrop-filter: saturate(180%) blur(20px)` on `rgba(0,0,0,0.8)` | Sticky navigation bar — the glass effect |
-| Subtle Lift (Level 1) | `rgba(0, 0, 0, 0.22) 3px 5px 30px 0px` | Product cards, floating elements |
-| Media Control | `rgba(210, 210, 215, 0.64)` background with scale transforms | Play/pause buttons, carousel controls |
-| Focus (Accessibility) | `2px solid #0071e3` outline | Keyboard focus on all interactive elements |
-
-**Shadow Philosophy**: Apple uses shadow extremely sparingly. The primary shadow (`3px 5px 30px` with 0.22 opacity) is soft, wide, and offset — mimicking a diffused studio light casting a natural shadow beneath a physical object. This reinforces the "product as physical sculpture" metaphor. Most elements have NO shadow at all; elevation comes from background color contrast (dark card on darker background, or light card on slightly different gray).
-
-### Decorative Depth
-- Navigation glass: the translucent, blurred navigation bar is the most recognizable depth element, creating a sense of floating UI above scrolling content
-- Section color transitions: depth is implied by the alternation between black and light gray sections rather than by shadows
-- Product photography shadows: the products themselves cast shadows in their photography, so the UI doesn't need to add synthetic ones
+No shadow token is canonical in this revision. Captured primary and outline buttons reported no shadow, and HIG reference cards were flat in computed style. Product imagery and color contrast create depth on the inspected surfaces.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use SF Pro Display at 20px+ and SF Pro Text below 20px — respect the optical sizing boundary
-- Apply negative letter-spacing at all text sizes (not just headlines) — Apple tracks tight universally
-- Use Apple Blue (`#0071e3`) ONLY for interactive elements — it must be the singular accent
-- Alternate between black and light gray (`#f5f5f7`) section backgrounds for cinematic rhythm
-- Use 980px pill radius for CTA links — the signature Apple link shape
-- Keep product imagery on solid-color fields with no competing visual elements
-- Use the translucent dark glass (`rgba(0,0,0,0.8)` + blur) for sticky navigation
-- Compress headline line-heights to 1.07-1.14 — Apple headlines are famously tight
+- Use SF Pro Display for verified large display roles and SF Pro Text for body/control roles.
+- Name Apple web variants by surface and size.
+- Use `#0071e3` for filled actions and `#0066cc` for light-surface links/outline actions.
+- Keep selected state explicit in gallery-style tabs.
+- Label HIG website chrome separately from native-platform HIG guidance.
 
 ### Don't
-- Don't introduce additional accent colors — the entire chromatic budget is spent on blue
-- Don't use heavy shadows or multiple shadow layers — Apple's shadow system is one soft diffused shadow or nothing
-- Don't use borders on cards or containers — Apple almost never uses visible borders (except on specific buttons)
-- Don't apply wide letter-spacing to SF Pro — it is designed to run tight at every size
-- Don't use weight 800 or 900 — the maximum is 700 (bold), and even that is rare
-- Don't add textures, patterns, or gradients to backgrounds — solid colors only
-- Don't make the navigation opaque — the glass blur effect is essential to the Apple UI identity
-- Don't center-align body text — Apple body copy is left-aligned; only headlines center
-- Don't use rounded corners larger than 12px on rectangular elements (980px is for pills only)
+- Don't call the HIG website's 18px card a universal Apple platform card.
+- Don't promote declared-only SF Mono or icon fonts as visible UI families.
+- Don't treat `#0066cc` as a filled-button background.
+- Don't collapse 36px and 44px marketing controls into one invented default.
+- Don't infer hover, disabled, or focus visuals that were not retained by the capture.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Small Mobile | <360px | Minimum supported, single column |
-| Mobile | 360-480px | Standard mobile layout |
-| Mobile Large | 480-640px | Wider single column, larger images |
-| Tablet Small | 640-834px | 2-column product grids begin |
-| Tablet | 834-1024px | Full tablet layout, expanded nav |
-| Desktop Small | 1024-1070px | Standard desktop layout begins |
-| Desktop | 1070-1440px | Full layout, max content width |
-| Large Desktop | >1440px | Centered with generous margins |
-
-### Touch Targets
-- Primary CTAs: 8px 15px padding creating ~44px touch height
-- Navigation links: 48px height with adequate spacing
-- Media controls: 50% radius circular buttons, minimum 44x44px
-- "Learn more" pills: generous padding for comfortable tapping
-
-### Collapsing Strategy
-- Hero headlines: 56px Display → 40px → 28px on mobile, maintaining tight line-height proportionally
-- Product grids: 3-column → 2-column → single column stacked
-- Navigation: full horizontal nav → compact mobile menu (hamburger)
-- Product hero modules: full-bleed maintained at all sizes, text scales down
-- Section backgrounds: maintain full-width color blocks at all breakpoints — the cinematic rhythm never breaks
-- Image sizing: products scale proportionally, never crop — the product silhouette is sacred
-
-### Image Behavior
-- Product photography maintains aspect ratio at all breakpoints
-- Hero product images scale down but stay centered
-- Full-bleed section backgrounds persist at every size
-- Lifestyle images may crop on mobile but maintain their rounded corners
-- Lazy loading for below-fold product images
+The homepage and store surface are responsive, but this pass does not promote universal breakpoints. Preserve control geometry at the inspected desktop surface, then use platform-specific HIG guidance when targeting iOS, macOS, watchOS, tvOS, or visionOS rather than scaling web values mechanically.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: Apple Blue (`#0071e3`)
-- Page background (light): `#f5f5f7`
-- Page background (dark): `#000000`
-- Heading text (light): `#1d1d1f`
-- Heading text (dark): `#ffffff`
-- Body text: `rgba(0, 0, 0, 0.8)` on light, `#ffffff` on dark
-- Link (light bg): `#0066cc`
-- Link (dark bg): `#2997ff`
-- Focus ring: `#0071e3`
-- Card shadow: `rgba(0, 0, 0, 0.22) 3px 5px 30px 0px`
-
-### Example Component Prompts
-- "Create a hero section on black background. Headline at 56px SF Pro Display weight 600, line-height 1.07, letter-spacing -0.28px, color white. One-line subtitle at 21px SF Pro Display weight 400, line-height 1.19, color white. Two pill CTAs: 'Learn more' (transparent bg, white text, 1px solid white border, 980px radius) and 'Buy' (Apple Blue #0071e3 bg, white text, 8px radius, 8px 15px padding)."
-- "Design a product card: #f5f5f7 background, 8px border-radius, no border, no shadow. Product image top 60% of card on solid background. Title at 28px SF Pro Display weight 400, letter-spacing 0.196px, line-height 1.14. Description at 14px SF Pro Text weight 400, color rgba(0,0,0,0.8). 'Learn more' and 'Shop' links in #0066cc at 14px."
-- "Build the Apple navigation: sticky, 48px height, background rgba(0,0,0,0.8) with backdrop-filter: saturate(180%) blur(20px). Links at 12px SF Pro Text weight 400, white text. Apple logo left, links centered, search and bag icons right."
-- "Create an alternating section layout: first section black bg with white text and centered product image, second section #f5f5f7 bg with #1d1d1f text. Each section near full-viewport height with 56px headline and two pill CTAs below."
-- "Design a 'Learn more' link: text #0066cc on light bg or #2997ff on dark bg, 14px SF Pro Text, underline on hover. After the text, include a right-arrow chevron character (>). Wrap in a container with 980px border-radius for pill shape when used as a standalone CTA."
-
-### Iteration Guide
-1. Every interactive element gets Apple Blue (`#0071e3`) — no other accent colors
-2. Section backgrounds alternate: black for immersive moments, `#f5f5f7` for informational moments
-3. Typography optical sizing: SF Pro Display at 20px+, SF Pro Text below — never mix
-4. Negative letter-spacing at all sizes: -0.28px at 56px, -0.374px at 17px, -0.224px at 14px, -0.12px at 12px
-5. The navigation glass effect (translucent dark + blur) is non-negotiable — it defines the Apple web experience
-6. Products always appear on solid color fields — never on gradients, textures, or lifestyle backgrounds in hero modules
-7. Shadow is rare and always soft: `3px 5px 30px 0.22 opacity` or nothing at all
-8. Pill CTAs use 980px radius — this creates the signature Apple rounded-rectangle-that-looks-like-a-capsule shape
-
----
+- “Create a large Apple web CTA with `#0071e3`, white text, 44px height, 980px radius, 11px 21px padding, and SF Pro Text 17px/400.”
+- “Pair it with an outline action using transparent background and `#0066cc` text/border.”
+- “For a compact homepage tile, use the separately verified 36px / 8px 15px variant.”
+- “When building a native app, treat this web reference as inspiration and consult the relevant platform HIG instead of copying web geometry.”
 
 ## 10. Voice & Tone
 
-Apple's marketing voice is famously terse, confident, and carefully modulated. The register assumes the audience already knows Apple and is here to learn the specifics. Headlines are short declaratives ("The most powerful Mac we've ever built"), rarely contain more than seven words, and use period punctuation instead of exclamations. Superlatives exist but are **self-comparative** ("the most [X] we've ever built"), never industry-comparative ("the world's best") without a footnoted benchmark. On HIG and developer documentation surfaces the voice shifts slightly — more explicit, more prescriptive — but retains the same clarity discipline.
+Apple’s current design guidance treats language as part of simplicity and agency. Labels should be concise, recognizable, and directly tied to what happens next; feedback should keep people informed and in control. Product pages tend to make one capability the subject of a headline and use short actions, while platform guidance explains the rationale and constraints without promotional filler.
 
-| Context | Tone |
-|---|---|
-| Hero headlines | Short declarative. "Hello, new iPhone." "Supercharged by Apple Silicon." |
-| Product specs | Numeric, specific, never adjectival. "Up to 20% faster CPU performance." |
-| CTAs | Verb + noun, minimal. "Buy", "Learn more", "Watch the film". Never "Shop now!". |
-| Error / system messages | Specific + actionable. Apple's OS-level error copy is the gold standard. |
-| HIG / developer docs | Prescriptive, example-driven, peer-to-peer. |
-| Legal / safety | Formal, precise. Reads like FDA labeling. |
-| Marketing film voiceover | Slow, confident, pause-heavy. Never rushed. |
-| Support copy | Warm but exact. "Here's how to fix that." Not apologetic theater. |
-| Onboarding | One idea per screen; generous whitespace, single accent color. |
-
-**Forbidden phrases.** "Revolutionary" as a marketing adjective — Apple reserves this word for actual paradigm shifts and uses it rarely. "Unleash", "supercharge" as decorative adjectives (Apple will use *"Supercharged by Apple Silicon"* structurally but never decoratively). Lightning-adjective pairings ("lightning-fast"). Emoji anywhere in product-surface copy or HIG. Exclamation marks on marketing CTAs. Superlative stacks ("the most powerful, most beautiful, most intuitive..."). Industry-comparative claims without a footnote or specific benchmark.
+Clarity does not mean stripping away character. Apple’s current principles pair **Simplicity** with **Craft** and **Delight**: remove what is unnecessary, care about every detail, and create defining moments that support the task rather than interrupt it. Privacy, safety, permissions, and destructive actions require transparent language and recoverability, not euphemism.
 
 ## 11. Brand Narrative
 
-Apple was founded in 1976 in Los Altos, California, by **Steve Jobs, Steve Wozniak, and Ronald Wayne**. The company's design posture — informed by Steve Jobs' famous calligraphy class at Reed College and by the founders' shared appreciation of **Dieter Rams' "10 Principles of Good Design"** — has stayed remarkably consistent through multiple design-leadership eras (Jony Ive for roughly two decades, followed by Evans Hankey, then Alan Dye and the current design leadership).
+Apple publishes the Human Interface Guidelines as a living platform design system rather than a static visual kit. The current principles start from how people think, feel, and act, then organize design around purpose, agency, responsibility, familiarity, flexibility, simplicity, craft, and delight. This makes the system’s restraint functional: interfaces are expected to help people act, preserve context, recover from mistakes, and trust how their information is handled.
 
-Apple's publicly documented design philosophy lives in the **Human Interface Guidelines (HIG)** — a continuously maintained set of guidelines with three canonical principles formalized in iOS 7 (2013): **Clarity** (*"text is readable at any size, icons are precise and lucid, and adornments are kept to a minimum"*), **Deference** (*"The UI should step back and let user content take center stage"*), and **Depth** (layering, shadows, and motion to convey hierarchy and create a sense of vitality). These three words have anchored Apple's interface design for over a decade and remain the vocabulary any Apple-platform designer is expected to know.
+The 2025 software redesign introduced Liquid Glass across iOS, iPadOS, macOS, watchOS, and tvOS. Apple describes it as a shared material language that creates harmony while preserving what makes each platform distinct. Controls and navigation occupy a translucent functional layer above content; they should not become a decorative glass effect spread across the content layer.
 
-The contemporary expression of those principles is **Liquid Glass**, announced on **June 9, 2025, at WWDC** — the first cross-platform material update since iOS 7, extending uniformly across **iOS 26, iPadOS 26, macOS Tahoe 26, watchOS 26, and tvOS 26**. As **Alan Dye**, Apple's VP of Human Interface Design, described it in the official announcement: *"It combines the optical qualities of glass with a fluidity only Apple can achieve, as it transforms depending on your content or context."* The material *"is translucent and behaves like glass in the real world. Its color is informed by surrounding content and intelligently adapts between light and dark environments"* and *"uses real-time rendering and dynamically reacts to movement with specular highlights."* Liquid Glass is, in effect, **Depth promoted from visual metaphor to actual material behavior** — the same HIG principle, now rendered via real-time lensing and refraction rather than static layers.
-
-What Apple refuses: decorative interface elements (*"adornments are kept to a minimum"* is HIG-verbatim), generic stock photography, marketing superlatives without quantitative backing, competitor name-calling in marketing, and visual inconsistency across platforms. What it embraces: **San Francisco** as a proprietary typeface engineered with optical sizing (letterforms automatically adjust to point size), the binary black / light-gray section rhythm as cinematic pacing, Apple Blue (`#0071e3`) reserved exclusively for interactive elements, pill-shaped CTAs at 980px radius, and **product-as-sculpture** photography on solid color fields — no gradients, no textures, no distractions from the object.
+Typography follows the same system logic. SF Pro is neutral and flexible, with optical sizing and platform integration; SF Compact adapts to narrow watch contexts; SF Mono supports alignment in coding environments; New York provides a serif companion. The family names matter less than using the platform role, license, and context correctly.
 
 ## 12. Principles
 
-1. **Clarity.** *(HIG canonical principle, verbatim.)* Text is readable at any size. Icons are precise and lucid. Adornments are kept to a minimum. Focus on essential content to support functionality. This is the principle most designers cite when justifying a Jobs-era simplification.
-2. **Deference.** *(HIG canonical principle, verbatim.)* The UI steps back and lets user content take center stage. Controls exist to support content, never to compete with it. This is why Apple's photography-heavy product pages feel empty of "design" — the emptiness IS the deference.
-3. **Depth.** *(HIG canonical principle.)* Visual layers and motion communicate hierarchy, convey vitality, and facilitate understanding. Depth is how Apple replaces traditional borders and decorative chrome — physics rather than ornament.
-4. **Consistency across platforms.** A text field in iOS, macOS, iPadOS, watchOS, and visionOS should feel like it belongs to the same family. Consistency is why Apple writes HIG as a single document set rather than letting each platform drift.
-5. **Self-comparative superlatives only.** "The most powerful Mac we've ever built" is acceptable. "The world's most powerful laptop" requires a footnote citing benchmarks. This discipline makes Apple's big claims land when they are made.
-6. **One accent color at a time.** Apple Blue (`#0071e3`) is the web-marketing accent for interactive elements. In-product accent is configurable per user. But on any given surface, interactive elements share one accent; rainbow decoration is forbidden.
-7. **Product-as-sculpture photography.** Every product shot treats the object as a sculpture on a solid color field. No lifestyle context, no model holding it, no gradient background in hero modules. The product's industrial design must be legible in the photography.
-8. **Motion is physics, not time-curve.** Apple interfaces borrow from spring physics — elements have mass, velocity, and inertia. Motion is never flat linear; it is also never cartoonish overshoot. The goal is *"how a well-made physical object would move in air"*.
-9. **"It just works" is a design commitment.** The phrase is Steve Jobs-era but continues as an implicit design target. When it doesn't just work, the error message explains specifically why — a broken promise is made honest rather than hidden.
-10. **SF (San Francisco) is the typographic voice.** Proprietary, optical-sized, the only text treatment on marketing and in-product surfaces. Substituting a third-party font breaks the voice, even when the type looks superficially similar.
-11. **Material as behavior, not decoration.** *(Contemporary extension via Liquid Glass, 2025.)* Translucency, refraction, real-time lensing, and specular response to device motion are treated as first-class material properties that react to content and light — not decorative skeuomorphism. This is how Depth has evolved from a visual metaphor (iOS 7) into an actual material that behaves like glass (iOS 26).
+These are implementation principles derived from the verified public surfaces:
+
+1. Let product content dominate while controls remain visually restrained.
+2. Use one clear chromatic action accent per local composition.
+3. Match typography optical role to size: Display for large hierarchy, Text for reading and controls.
+4. Keep marketing, commerce, documentation, and native-platform evidence separate.
+5. Prefer verified component-local measurements over a fictional universal Apple scale.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Apple user segments (creative professionals, developers, mainstream consumers, education / young users), not individual people.*
+These are official design contexts from the Human Interface Guidelines, not invented demographic personas.
 
-**Sara Klein, 35, Berlin.** UX designer at a mid-size agency. Uses a MacBook Pro for work and an iPhone personally. Watches Apple keynotes in full — not for news but for the pacing. Appreciates that Apple's marketing voice is terse enough to respect her time. Immediately notices when another software product uses Apple-pattern elements (SF font, Apple Blue, pill CTAs) without the underlying discipline — calls this "Apple-clone aesthetic" in Slack.
-
-**Jamal Ansari, 29, Dubai.** iOS developer at a consumer fintech startup. Reads every section of the Human Interface Guidelines once per major iOS release. Appreciates that HIG is *prescriptive* — tells him what to do, not just what to consider. Rejects features his PM proposes that would violate HIG because "Apple will reject it in App Review" is both a true statement and a useful shield.
-
-**Joanna Williams, 57, Edinburgh.** Manages a small accounting practice. Uses her iPad Pro as her primary computer because she finds the Mac too complicated for her current workflow. Does not think about Apple's design; she experiences it. Would describe the iPad as "easier than my old computer" and could not articulate why — which is exactly what Apple's design philosophy is designed to produce.
-
-**Miguel Castro, 16, São Paulo.** High school student using a family iPhone for school, social, and creative work (photography, iMovie). Has never used a non-Apple phone and treats HIG-shaped interactions as the default mental model of how computers work. Will internally find Android phones "confusing" when he eventually uses one — eight years of HIG consistency have taught him a specific interaction vocabulary.
+- **A person pursuing a goal:** expects the interface to stay out of the way, provide feedback, and make mistakes reversible.
+- **A person protecting sensitive information:** needs clear reasons for permissions, transparent data behavior, and safe defaults.
+- **A person using a different device, input, language, or accessibility setting:** needs the experience to adapt while preserving familiar structure and context.
+- **A person learning a new interaction:** relies on established physical and digital patterns plus consistent behavior to build confidence quickly.
 
 ## 14. States
 
-| State | Treatment |
+| Component | Verified state evidence |
 |---|---|
-| **Empty (search, no results)** | SF text at 17px, near-black (`#1d1d1f`) on white: "No results for `<query>`." No illustration. One link in Apple Blue to adjust search or view suggestions. |
-| **Empty (first launch of an app)** | Dedicated welcome flow with centered SF headline at display size and a single Apple Blue CTA. Onboarding never covers multiple concepts per screen. |
-| **Loading (dashboard / app shell)** | Skeleton rectangles in `#f5f5f7` matching final content structure. Shimmer pass uses a lighter gray; never blue-tinted. |
-| **Loading (pull-to-refresh)** | Native iOS / macOS refresh indicator — a spring-animated arc that follows the gesture. Uses system Depth principle: the indicator has physics. |
-| **Error (network / system)** | Full-screen or modal treatment depending on severity. SF headline + 1-sentence specific cause + 1 recovery CTA. Never a generic "Something went wrong". No emoji, no illustration. |
-| **Error (form validation)** | Field-level. Border shifts to system red (iOS) or equivalent. 13px caption below in system red, specific about what is invalid. |
-| **Error (app crash / unexpected quit)** | Crash report offered to send to Apple; user-facing copy acknowledges the problem without blame ("The app quit unexpectedly"). No apology theater, no emoji. |
-| **Success (purchase completed)** | Dedicated confirmation — checkmark animation drawn over ~600ms with spring easing, summary of what was purchased, delivery date if physical. Quiet, not celebratory. |
-| **Success (action committed)** | Subtle haptic + brief UI acknowledgement (checkmark appearing where the action happened). No toast, no notification for routine actions. |
-| **Skeleton** | Light gray (`#f5f5f7`) blocks at exact final dimensions. Shimmer in an even lighter gray. Skeletons preserve the same radius geometry as final content. |
-| **Disabled** | System opacity reduction. Apple Blue becomes a lighter, desaturated blue. Geometry stable; pill buttons stay pills. |
-| **Loading (long task, installation or system update)** | Progress bar with precise percent + current step label. Time estimate if available. Apple never hides progress behind an indeterminate spinner when determinate information exists. |
+| Marketing buttons | default geometry captured; hover/pressed/disabled not retained |
+| Product gallery tab | selected and unselected thumbnail states |
+| HIG reference card | default documentation state only |
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | State commits, selection confirm |
-| `motion-fast` | 150ms | Hover (desktop), tap feedback, small reveals |
-| `motion-standard` | 300ms | Sheet, modal, view push / pop |
-| `motion-slow` | 500ms | Dedicated hero moments, onboarding step advance |
-| `motion-spring` | variable (physics-based) | Pull-to-refresh, swipe-to-dismiss, rubber-band scroll |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, modals, view transitions |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-| `ease-spring` | spring physics (mass, stiffness, damping) | Gesture-driven elements — physics rather than cubic-bezier |
-
-**Spring parameters.** Apple's motion system distinguishes itself from most design systems by using actual **spring physics** (mass / stiffness / damping) for gesture-driven elements rather than cubic-bezier curves. When an element responds to a user's drag or swipe, the motion should *feel like mass* — the object has weight, a velocity when released, and a natural settling rather than a programmed decelerate.
-
-**Signature motions.**
-
-1. **Pull-to-refresh.** The refresh indicator appears via spring physics as the user drags. When released below threshold, it springs back. When released above, it detaches and shows the refreshing state. This is the single most-copied motion in mobile UX and it works because it is physics-driven, not time-driven.
-2. **Swipe-to-dismiss / swipe-to-action.** Table rows and cards use spring physics to respond to horizontal drag. Partial swipes spring back; full swipes commit with a natural overshoot-then-settle.
-3. **Rubber-band scroll.** When a list is scrolled past its top or bottom, it resists with increasing spring tension, then rubber-bands back on release. Apple's signature physics moment; present on every Apple platform since the original iPhone.
-4. **Sheet and modal presentation.** Sheets rise with spring physics — the sheet has mass that settles into its final position, rather than arriving on a time curve. Dismissal uses a slightly faster spring with more damping.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all spring motions degrade to instant appearances or simple crossfades. This is enforced at OS level, not just app level — an Apple app that ignores Reduce Motion is a HIG violation and may be rejected in App Review.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Direct verification via WebFetch / WebSearch (2026-04-19):
-- https://developer.apple.com/design/ — confirms the Apple Design portal
-  exists and references "Human Interface Guidelines", "SF Symbols", and
-  "Apple Design Resources" as first-class developer resources. Marketing
-  tagline for developer design verified: "Design incredible apps and games
-  that integrate seamlessly with Apple platforms."
-- https://developer.apple.com/design/human-interface-guidelines — HIG
-  landing page existence confirmed (the specific principles copy was not
-  directly verifiable on the landing shell, so the three canonical
-  principles were cross-confirmed via WebSearch).
-- https://www.apple.com/newsroom/2025/06/apple-introduces-a-delightful-and-elegant-new-software-design/
-  — Apple's official newsroom announcement of Liquid Glass (WWDC, 9 June 2025).
-  Verbatim quotes used in §11 and §12 #11:
-    Alan Dye (VP of Human Interface Design): "It combines the optical
-    qualities of glass with a fluidity only Apple can achieve, as it
-    transforms depending on your content or context."
-    "This translucent material reflects and refracts its surroundings,
-     while dynamically transforming to help bring greater focus to content."
-    "The new material, Liquid Glass, is translucent and behaves like glass
-     in the real world. Its color is informed by surrounding content and
-     intelligently adapts between light and dark environments."
-    "Liquid Glass uses real-time rendering and dynamically reacts to
-     movement with specular highlights."
-  Platforms confirmed: iOS 26, iPadOS 26, macOS Tahoe 26, watchOS 26, tvOS 26.
-- WebSearch: Apple HIG core design principles "Clarity / Deference / Depth" —
-  widely reported verbatim across secondary sources summarizing HIG:
-    "Clarity: text is readable at any size, icons are precise and lucid,
-     and adornments are kept to a minimum."
-    "Deference: The UI should step back and let user content take center
-     stage. Fluid animations and translucent or subtle UI elements help
-     the content shine without distraction."
-    "Depth: layering, shadows, and visual effects... creating a sense of
-     hierarchy and a multi-dimensional experience that guides users
-     naturally through the app."
-  These three principles were formalized by Apple in iOS 7 (2013) and
-  remain the anchor vocabulary of Apple platform design, now extended
-  through the Liquid Glass material announced in 2025.
-
-Base DESIGN.md (sections 1–9) is the source for all token-level claims
-(SF Pro Display / SF Pro Text proprietary typefaces with optical sizing,
-binary #000000 / #f5f5f7 section rhythm, Apple Blue #0071e3 as the
-sole web-marketing interactive accent, pill CTAs at 980px radius,
-product-as-hero photography on solid color fields).
-
-Not independently verified via WebFetch — widely documented public facts used:
-- Apple was founded on April 1, 1976, in Los Altos, California, by
-  Steve Jobs, Steve Wozniak, and Ronald Wayne.
-- Steve Jobs' calligraphy class at Reed College influenced Apple's early
-  typographic sensibilities (widely cited in his 2005 Stanford commencement
-  address and later biographies).
-- Apple's design leadership lineage includes Jony Ive (for roughly two
-  decades), Evans Hankey, and currently Alan Dye.
-- Dieter Rams' "10 Principles of Good Design" is widely cited as a
-  significant influence on Apple industrial and software design,
-  especially in the Jony Ive era.
-- Apple's App Review process does enforce HIG compliance as a submission
-  requirement, including the Reduce Motion accessibility setting.
-
-Personas (§13) are fictional archetypes informed by publicly observable
-Apple user segments (creative professionals, iOS developers, mainstream
-long-time consumers, young digital-native users). Names are illustrative;
-they do not refer to real people.
-
-Interpretive claims (e.g., "product-as-sculpture photography", "the
-emptiness IS the deference", "self-comparative superlatives only") are
-editorial readings connecting Apple's HIG principles and observable
-marketing discipline to the design system, not directly sourced
-Apple statements.
--->
-
+No exact Apple motion token is promoted from this web capture. Use relevant platform HIG guidance and reduced-motion support for native implementation; label any web animation duration or easing as a local extension until verified.

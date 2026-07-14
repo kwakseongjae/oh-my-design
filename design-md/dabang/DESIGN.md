@@ -9,259 +9,294 @@ primary_color: "#ff3478"
 logo:
   type: favicon
   slug: "https://www.dabangapp.com/static/favicon.ico"
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: product-home, kind: product-surface, url: "https://www.dabangapp.com/", inspected: "2026-07-13" }
+    - { id: product-map, kind: product-surface, url: "https://www.dabangapp.com/map/onetwo?m_lat=37.494367328004216&m_lng=127.01446798508894&m_zoom=11", inspected: "2026-07-13" }
+    - { id: support-faq, kind: support-documentation, url: "https://www.dabangapp.com/service/faq", inspected: "2026-07-13" }
+  sources:
+    - { id: home-capture, kind: product-surface, url: "https://www.dabangapp.com/", captured: "2026-07-13" }
+    - { id: map-capture, kind: product-surface, url: "https://www.dabangapp.com/map/onetwo?m_lat=37.494367328004216&m_lng=127.01446798508894&m_zoom=11", captured: "2026-07-13" }
+    - { id: faq-capture, kind: product-surface, url: "https://www.dabangapp.com/service/faq", captured: "2026-07-13" }
+    - { id: service-context, kind: official-doc, url: "https://www.station3.co.kr/service/", captured: "2026-07-13" }
+    - { id: terms-context, kind: official-doc, url: "https://static.dabangapp.com/html/useragreement.html", captured: "2026-07-13" }
+    - { id: font-design, kind: brand-asset, url: "https://github.com/orioncactus/pretendard", captured: "2026-07-13" }
+    - { id: font-license, kind: license, url: "https://github.com/orioncactus/pretendard/blob/main/LICENSE", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.canvas": &home { surface_id: product-home, source_id: home-capture, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.foreground": *home
+    "tokens.colors.border": *home
+    "tokens.colors.surface-muted": *home
+    "tokens.colors.action": &map { surface_id: product-map, source_id: map-capture, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.map-field-border": *map
+    "tokens.typography.family.ui": *home
+    "tokens.typography.body.size": *home
+    "tokens.typography.body.weight": *home
+    "tokens.typography.body.lineHeight": *home
+    "tokens.typography.body.use": *home
+    "tokens.typography.section-title.size": *home
+    "tokens.typography.section-title.weight": *home
+    "tokens.typography.section-title.lineHeight": *home
+    "tokens.typography.section-title.use": *home
+    "tokens.typography.map-control.size": *map
+    "tokens.typography.map-control.weight": *map
+    "tokens.typography.map-control.lineHeight": *map
+    "tokens.typography.map-control.use": *map
+    "tokens.spacing.xs": *home
+    "tokens.spacing.sm": *home
+    "tokens.spacing.md": *home
+    "tokens.rounded.compact": *home
+    "tokens.rounded.standard": *home
+    "tokens.rounded.map-tool": *map
+    "tokens.rounded.search-entry": *home
+    "tokens.rounded.map-search": *map
+    "tokens.components.header-account-control.type": *home
+    "tokens.components.header-account-control.bg": *home
+    "tokens.components.header-account-control.fg": *home
+    "tokens.components.header-account-control.radius": *home
+    "tokens.components.header-account-control.padding": *home
+    "tokens.components.header-account-control.font": *home
+    "tokens.components.header-account-control.states": *home
+    "tokens.components.header-account-control.use": *home
+    "tokens.components.header-outline-action.type": *home
+    "tokens.components.header-outline-action.fg": *home
+    "tokens.components.header-outline-action.border": *home
+    "tokens.components.header-outline-action.radius": *home
+    "tokens.components.header-outline-action.padding": *home
+    "tokens.components.header-outline-action.font": *home
+    "tokens.components.header-outline-action.states": *home
+    "tokens.components.header-outline-action.use": *home
+    "tokens.components.map-location-search.type": *map
+    "tokens.components.map-location-search.bg": *map
+    "tokens.components.map-location-search.fg": *map
+    "tokens.components.map-location-search.border": *map
+    "tokens.components.map-location-search.radius": *map
+    "tokens.components.map-location-search.padding": *map
+    "tokens.components.map-location-search.font": *map
+    "tokens.components.map-location-search.states": *map
+    "tokens.components.map-location-search.use": *map
+    "tokens.components.map-dock-control.type": *map
+    "tokens.components.map-dock-control.bg": *map
+    "tokens.components.map-dock-control.fg": *map
+    "tokens.components.map-dock-control.border": *map
+    "tokens.components.map-dock-control.radius": *map
+    "tokens.components.map-dock-control.padding": *map
+    "tokens.components.map-dock-control.font": *map
+    "tokens.components.map-dock-control.states": *map
+    "tokens.components.map-dock-control.use": *map
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  note: "brand pink #FF3478 stays wordmark-only; functional accent is action blue #326CF9. Strict 3-layer color discipline: pink=brand, blue=action, gray=content."
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Values are limited to selector-backed home and map observations in the supplied evidence. The support FAQ is documentation chrome, not a product-token source."
   colors:
-    primary: "#326CF9"
-    primary-hover: "#326CF9"
-    brand: "#FF3478"
-    canvas: "#FFFFFF"
-    surface: "#FFFFFF"
+    canvas: "#ffffff"
     foreground: "#222222"
-    body: "#222222"
-    muted: "#656565"
-    on-primary: "#FFFFFF"
-    hairline: "#DFDFDF"
-    surface-muted: "#F5F5F5"
-    hover-tint: "#EEF8FF"
-    success: "#1CA885"
-    danger: "#E20724"
-    warning: "#FFB600"
-    premium: "#3E26FD"
+    border: "#dfdfdf"
+    surface-muted: "#f5f5f5"
+    action: "#326cf9"
+    map-field-border: "#ededed"
   typography:
-    family: { sans: "Pretendard Variable" }
-    section:  { size: 20, weight: 700, lineHeight: 1.3, use: "Category section heads — position + weight, not size" }
-    ai-band:  { size: 24, weight: 400, lineHeight: 1.3, use: "AI band head — largest yet lightest, editorial signal" }
-    body:     { size: 16, weight: 400, lineHeight: 1.5, use: "Body default, #222222" }
-    chip:     { size: 14, weight: 500, lineHeight: 1.4, use: "Filter-chip label (only 500-weight role)" }
-    caption:  { size: 13, weight: 400, lineHeight: 1.4, use: "Secondary text / meta" }
-  spacing: { xs: 4, sm: 8, md: 16, base: 8, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 2, md: 4, lg: 8, xl: 12, entry: 32, filter: 42, full: 9999 }
-  shadow:
-    none: "none — zero box-shadow across surface; depth via 1px borders + bg-color steps"
-  components_harvested: true
+    family: { ui: "Pretendard Variable" }
+    body: { size: 14, weight: 400, lineHeight: "24px", use: "Repeated public home and map text/control cluster" }
+    section-title: { size: 20, weight: 700, lineHeight: "32px", use: "Public-home section-title sample" }
+    map-control: { size: 14, weight: 400, lineHeight: "24px", use: "Map location-search and dock-control samples" }
+  spacing: { xs: 4, sm: 8, md: 16 }
+  rounded: { compact: 2, standard: 8, map-tool: 6, search-entry: 32, map-search: 42 }
   components:
-    button-entry: { type: button, fg: "#222222", radius: 32, use: "Home search-entry pill — tap to start a search" }
-    filter-chip: { type: toggle, bg: "#FFFFFF", fg: "#222222", radius: 42, font: "14/500", use: "Map filter pill, 1px #DFDFDF border; active = #326CF9 border + #EEF8FF bg" }
-    listing-card: { type: card, bg: "#FFFFFF", radius: 8, use: "Floating left-rail listing card, 1px #DFDFDF border, no shadow" }
-    map-marker: { type: badge, bg: "#FFFFFF", fg: "#222222", radius: 2, use: "Price-bearing pill marker; selected = #326CF9 fill — price is the marker" }
-    icon-control: { type: button, radius: 9999, use: "Circular bookmark / close control" }
+    header-account-control: { type: button, bg: "#ffffff", fg: "#222222", radius: "8px", padding: "8px 16px", font: "16px / 400 Pretendard Variable", states: "default only; no interaction expansion captured", use: "Shared public header account control; home::[data-omd-capture=4]" }
+    header-outline-action: { type: button, fg: "#222222", border: "1px solid #dfdfdf", radius: "2px", padding: "0px 16px", font: "14px / 700 Pretendard Variable", states: "default only; no interaction expansion captured", use: "Shared public header outline action; home::[data-omd-capture=5]" }
+    map-location-search: { type: input, bg: "#ffffff", fg: "#222222", border: "1px solid #ededed", radius: "42px", padding: "7px 37px 7px 15px", font: "14px / 400 Pretendard Variable", states: "default only; no interaction expansion captured", use: "Map location-search field; surface-2::[data-omd-capture=1]" }
+    map-dock-control: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #dfdfdf", radius: "2px", padding: "0px 7px 0px 11px", font: "14px / 400 Pretendard Variable", states: "default only; no interaction expansion captured", use: "Map dock control; surface-2::[data-omd-capture=14]" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Dabang (다방)
 
 ## 1. Visual Theme & Atmosphere
 
-Dabang's web product reads like a working tool that does not want to be looked at too long. The home surface is white, the map surface is whiter, and the chrome between them is a near-black `#222` neutral sitting at body weight 400 on top of Pretendard Variable. Where its direct competitor Zigbang reaches for a Bloomberg-terminal restraint and reserves orange exclusively for the wordmark, Dabang takes the opposite trade: a saturated brand pink — `#FF3478`, internally tokenised as `--pink-500` — sits on the logo and stays there. Action moves to a different color entirely. The functional accent is blue `#326CF9` (`--blue-500`), and it appears in two places only: the selected map marker, and the focus state on filter pills. That split — pink for identity, blue for behavior, near-black for everything else — is the structural decision that organizes the system.
+Dabang is Station3’s residential-information service: the company presents Dabang alongside its broker and landlord services, while the service terms describe a platform where individual users, licensed brokers, and landlords can find or register property information. The current public web product is deliberately utilitarian rather than a brand campaign. Its home and map routes use a white field, dark neutral text, compact controls, and one loaded `Pretendard Variable` family to make browsing and filtering legible. The notable product expression is geometric rather than decorative: an 8px header control, 2px outlined actions, a 32px home-search pill, and a 42px map-search pill coexist because they serve different contexts.
 
-The map page is where the design's intent becomes visible. Filter chips sit on a 1px `#DFDFDF` border at a 42px pill radius, weight 500 text — full-round pills, not the 8/10px rectangles the rest of the Korean property cohort ships. The map canvas itself fills the viewport; price markers float over it as small rounded rectangles tinted by `--blue-500` when selected and a deep gray when default. There is no box-shadow anywhere on the production surface — 53 of 53 sampled elements returned `box-shadow: none`. Depth is borders and tints exclusively: a 1px hairline in `#DFDFDF` for separation, a `#EEF8FF` (the lightest blue-50) wash for hover, a `#F5F5F5` plate for muted sections. The product is engineered to be skimmed at speed; it does not perform visual weight.
-
-The token system is unusually complete for a Korean consumer property app. Captured directly off `:root` via CDP, Dabang exposes a full 8-hue × 10-step scale — blue, pink, gray, green, violet, yellow, red, plus an `-rgb` variant of each step (140 CSS custom properties total). The ramps are not decorative; they encode product reality. `--pink-500` is the brand wordmark. `--blue-500` is interaction. `--gray-900` (`#222`) is body text. `--green-500` (`#1ca885`) is reserved for verified-listing and "안심" trust signals (not observed live this pass, inferred from token semantics). The colored ramps not seen on the home or map surfaces (violet, yellow, red beyond 500) sit on `:root` waiting — Dabang built the system, then deployed only the slice it needed.
-
-The most striking single decision is the AI feature band. Where every other H1 on the home page is `font-weight: 700` (원/투룸, 아파트, 주택/빌라, 오피스텔, 분양 — all 18-20px, all bold), the AI personalized band reads "관심있는 [동] 주변, AI가 대신 찾아봤어요 🔍" at 24px / **400**. It is the largest heading on the page and the lightest. The choice signals an intentional voice: AI is conversational, AI does not shout, AI is the only place on the surface where an emoji is allowed. It is the one place the system relaxes — and it does so by going *lighter*, not bolder.
-
-**Key Characteristics:**
-- **Pretendard Variable** universal (100% — 53/53 samples)
-- **Pink-500 `#FF3478`** brand-mark only — never appears on functional UI on the map surface
-- **Blue-500 `#326CF9`** as the single functional accent — selected marker, focus ring, link emphasis
-- **Near-black `#222` (`--gray-900`)** as the dominant text token — 21/53 samples
-- **42px full-pill filter chips** with 1px `#DFDFDF` border — distinctive vs Zigbang's 10px chip default
-- **Zero box-shadow** across the production surface — depth is borders + tints exclusively
-- **Two pill radii co-exist**: 32px for entry CTAs (home search), 42px for filter strips (map) — a *contextual* radius ladder, not a flat scale
-- **Weight cliff 400 → 700** with only 2 occurrences of 500 across 53 samples — emphasis is binary
-- **AI band at 24px / 400** — the lightest large heading is the editorial signal of the AI surface
+The supplied evidence establishes three separate source domains: the home and map as product surfaces, the FAQ as support-documentation chrome, and Station3’s service page as corporate context. This reference does not turn support controls or corporate messaging into universal product tokens.
 
 ## 2. Color Palette & Roles
 
-### Brand
-- **Dabang Pink** `#FF3478` (`--pink-500`): logo wordmark and brand-chrome accent. Used 2× in 32 home samples; **does not propagate** into the map product surface. This is the system's most disciplined rule — brand color stays in the brand layer.
-- **Map Canvas White** `#FFFFFF`: the dominant surface on `/map/onetwo`. Listing cards, filter pills, and chrome float above the map tiles with hairline borders separating them.
+- `#FFFFFF` — observed public home/map canvas and control background.
+- `#222222` — repeated home/map foreground and control text.
+- `#DFDFDF` — repeated outline border on public header and map dock controls.
+- `#F5F5F5` — observed muted surface and header-control hover sample; it is not promoted as a global interaction state.
+- `#EDEDED` — map location-search border.
+- `#326CF9` — observed map-route action ink/border and selected tool treatment. The current evidence supports it as a map action color, not a universal Dabang CTA rule.
 
-### Text Neutrals (full gray ramp on `:root`)
-- `--gray-50` `#FCFCFC` · `--gray-100` `#FAFAFA` · `--gray-200` `#F5F5F5` · `--gray-300` `#EDEDED` · `--gray-400` `#DFDFDF` · `--gray-500` `#CCCCCC` · `--gray-600` `#979797` · `--gray-700` `#656565` · `--gray-800` `#434343` · `--gray-900` `#222222`
-- **Primary body text** = `--gray-900` `#222` (observed 21/53)
-- **Secondary text** = `--gray-700` `#656565` (2/53, footer / meta)
-- **Default border** = `--gray-400` `#DFDFDF` (7/21 map samples — single most-used border value)
+The pink value in frontmatter is catalog identity metadata. It was not established as a reusable current product-control token by this supplied capture, so it is not silently substituted for the map action color.
 
-### Interactive
-- **Action Blue** `#326CF9` (`--blue-500`): selected marker fill, focus ring, primary link emphasis. The full blue ramp (50→900) is on `:root` for state escalation.
-- **Hover/active tint** `#EEF8FF` (`--blue-50`): the only tint observed live for hover/active surfaces.
+## 3. Typography Rules
 
-### Trust / Status (system-ready, not all observed live)
-- `--green-500` `#1CA885` inferred role: verified-listing / 안심 badge (semantic match to KR property convention).
-- `--red-500` `#E20724` inferred role: error / urgent / sold-out indicator.
-- `--yellow-500` `#FFB600` inferred role: warning / pending state.
-- `--violet-500` `#3E26FD` inferred role: premium / promoted-listing tier (the violet ramp is the cleanest mathematical ladder in the system — suggests reserved future-feature use).
+### Verified visible UI family
 
-### Surface
-- **Page bg** `#FFFFFF` (17/53)
-- **Muted plate** `#F5F5F5` (`--gray-200`)
-- **Hover tint** `#EEF8FF` (`--blue-50`)
-- **Deep slate promo panel** `rgb(67, 77, 104)` — used once for a saved-search call-out band; off-ladder color, suggesting marketing-team override rather than token-system primitive.
+`Pretendard Variable` is the only family promoted to `tokens.typography.family.ui`. The supplied bundle records 376 visible first-family uses across body text, headings, buttons, inputs, and lists; it is marked `loaded` with high confidence and is corroborated by 92 Dabang-hosted dynamic-subset WOFF2 source URLs. That is computed use plus FontFaceSet/source corroboration, not an inference from a CSS declaration.
 
-### Color discipline summary
-The system separates three layers with strict color rules:
-1. **Brand layer** (logo / wordmark) — `--pink-500` only.
-2. **Action layer** (selected / focus / link) — `--blue-500` only.
-3. **Content layer** (text / borders / surfaces) — gray ramp only.
+| Role | Observed value | Surface boundary |
+|---|---|---|
+| Body/control cluster | 14px / 400 / 24px | Repeated on the public home and map routes |
+| Home section title | 20px / 700 / 32px | Public home heading sample |
+| Map input/dock control | 14px / 400 / 24px | Map search and dock-control samples |
+| Support FAQ display | 46px / 700 / 70px | Support-documentation route only; not a product type token |
 
-The other five hues (green, violet, yellow, red, beyond the 500 steps of blue/pink) are present on `:root` but not deployed on home or map chrome. They exist for status and state escalation, not decoration.
+| Evidence class | Resolution |
+|---|---|
+| **Official product-use** | No separate Dabang typography announcement was found in the checked official sources. |
+| **Live computed surface-use** | `Pretendard Variable` is loaded/high and visibly used across all three supplied routes. |
+| **Official distributed asset** | Pretendard’s upstream project distributes the family under SIL Open Font License 1.1. This explains the font asset but does not itself prove Dabang use. |
+| **Declared-only** | No additional family is promoted from declarations because the supplied bundle reports only the loaded, visible Pretendard family. |
+| **Unresolved** | Native-app typography metrics and a Dabang-owned font licence/asset are not established by these public web sources. |
 
-## 3. Typography
+## 4. Components
 
-- **Family**: Pretendard Variable (100% of 53 samples). No display accent, no second family. Fallback chain inferred: Pretendard Variable → Pretendard JP Variable → -apple-system → BlinkMacSystemFont → system-ui → Apple SD Gothic Neo → Noto Sans KR → Malgun Gothic → sans-serif.
-- **Weights**: 400 (39/53), 700 (12/53), 500 (2/53). The system effectively ships a **binary weight rhythm** with 500 reserved for filter-chip labels on the map surface.
-- **Sizes observed**: 10 · 12 · 13 · 14 · 16 · 18 · 20 · 24 px. No 32 / 40 / 48 captured on the surfaces sampled — Dabang does not have a marketing hero typeface scale visible from product entry.
-- **Body default**: 16px / 400 / `--gray-900`.
-- **Section heads (categories)**: 18-20px / 700.
-- **AI band head**: 24px / 400 — the deliberate inversion (largest = lightest).
-- **Hierarchy logic**: position + weight, not size. The system trusts that "section title" reads as such because it sits at the top of a card grid, not because it is 40px.
+### Header account control
 
-## 4. Spacing & Layout
+**Default**
+- Background: `#FFFFFF`
+- Text: `#222222`
+- Radius: `8px`
+- Padding: `8px 16px`
+- Font: `16px / 400 Pretendard Variable`
+- Use: Shared public header account control on the product home; `home::[data-omd-capture="4"]`.
 
-- **Base grid**: 8px (inferred from padding samples; not exhaustively token-mined this pass — flagged for UPDATE).
-- **Map canvas dominance**: ~70% of viewport width on `/map/onetwo` belongs to the map tile renderer; chrome (left listing rail, top filter strip) is built around not obscuring it.
-- **Listing rail**: floating left column, card-based, 1px `--gray-400` borders, no shadow.
-- **Filter strip**: horizontal pill row across the top of the map surface, 42px pill radius, 1px hairline border.
-- **Home page**: vertical card grid with section bands; AI band uses a different background tint to signal its different voice.
+### Header outline action
 
-## 5. Radius
+**Default**
+- Text: `#222222`
+- Border: `1px solid #DFDFDF`
+- Radius: `2px`
+- Padding: `0px 16px`
+- Font: `14px / 700 Pretendard Variable`
+- Use: Shared public header outline action; `home::[data-omd-capture="5"]`.
 
-A **contextual ladder**, not a flat scale:
-- `0px` (31/53) — default for text containers, dividers, list items
-- `2px` (7/53) — tight chips, map markers
-- `4px` (3/53) — input fields
-- `8px` (5/53) — cards, secondary buttons
-- `12px` (2/53) — large card surfaces, promo panel
-- `32px` (1/53) — home search-entry pill
-- `42px` (1/53) — map filter chips
-- `50%` (2/53) — circular icon controls (bookmark, close)
+### Map location search
 
-The two pill radii (32 and 42) co-exist because they signal different things: 32px is "tap to start a search," 42px is "filter you can toggle on/off mid-flow." The distinction is functional, not aesthetic.
+**Default**
+- Background: `#FFFFFF`
+- Text: `#222222`
+- Border: `1px solid #EDEDED`
+- Radius: `42px`
+- Padding: `7px 37px 7px 15px`
+- Font: `14px / 400 Pretendard Variable`
+- Use: Map location-search field; `surface-2::[data-omd-capture="1"]`.
 
-## 6. Elevation
+### Map dock control
 
-**Zero box-shadow** across 53 sampled production elements (100%). Depth is achieved exclusively by:
-1. 1px `--gray-400` borders
-2. Background-color steps (white → `--gray-200` → `--blue-50` tint)
-3. Z-stacking via position (filter strip > map; listing rail > map)
+**Default**
+- Background: `#FFFFFF`
+- Text: `#000000`
+- Border: `1px solid #DFDFDF`
+- Radius: `2px`
+- Padding: `0px 7px 0px 11px`
+- Font: `14px / 400 Pretendard Variable`
+- Use: Map dock control; `surface-2::[data-omd-capture="14"]`.
 
-This matches Bunjang's zero-shadow discipline and diverges from Zigbang (minor floating shadows on drawer) and most international property platforms (Zillow / Rightmove ship multi-tier shadow scales). The structural argument: shadows on a map surface fight the map's own visual depth (terrain tints, road shadows). Borders do not.
+### Support FAQ row
 
-## 7. Motion & State
+**Default**
+- Text: `#000000`
+- Border: `1px solid #F5F5F5` on the block end
+- Padding: `16px 20px`
+- Font: `13.3333px / 400 Pretendard Variable`
+- Use: Support-documentation FAQ row; `surface-3::[data-omd-capture="10"]`. It is documented here as support chrome, not promoted into product tokens.
 
-- Motion tokens **not captured** this pass (single static CDP capture; no animation timeline observed).
-- Filter chip state inferred (active → `--blue-500` border + `--blue-50` background; default → `--gray-400` border + white).
-- Hover state observed once as the `--blue-50` `#EEF8FF` background tint.
-- **Flagged for UPDATE**: full state matrix (hover / active / disabled / loading) and motion duration/easing tokens.
+The supplied bundle has `interactionCount: 0` and an empty `interactions` array. Static selector strings ending in hover, focus, or pressed are therefore not reusable state evidence. No menu, dialog, validation, disabled, loading, responsive, or component variants beyond the defaults above are claimed.
 
-## 8. Iconography & Imagery
+---
 
-- **Map markers**: pill-shaped price-bearing markers — text content (e.g. "전세 3.2억") replaces the typical icon-only pin. This is the system's defining product affordance: price *is* the marker.
-- **Category icons**: light-line illustrative icons on the home category grid (원/투룸 · 아파트 · 주택/빌라 · 오피스텔 · 분양).
-- **AI band emoji**: 🔍 — the only emoji captured live on the home surface. Emoji presence is a voice signal, not a decorative pattern.
-- **Listing photography**: thumbnails likely portrait-oriented for mobile-first display (Bunjang uses 81:100; Dabang's exact aspect ratio not captured this pass — flagged).
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://www.dabangapp.com/` (product home), `https://www.dabangapp.com/map/onetwo?m_lat=37.494367328004216&m_lng=127.01446798508894&m_zoom=11` (product map), `https://www.dabangapp.com/service/faq` (support documentation), `https://www.station3.co.kr/service/` (official company/service context), `https://static.dabangapp.com/html/useragreement.html` (official service and stakeholder context), `https://github.com/orioncactus/pretendard` (upstream font context), and `https://github.com/orioncactus/pretendard/blob/main/LICENSE` (font licence).
+**Tier 2 sources:** `https://getdesign.md/dabang` (attempted; built-in web open safe-open failure and name search returned no record), `https://styles.refero.design/?q=dabang` (attempted; built-in web open safe-open failure and name search returned no record).
+**Conflicts unresolved:** none
 
-## 9. Accessibility & A11y Notes
+The earlier reference’s full semantic colour ramps, pink-as-global-brand-control rule, status meanings, map-marker semantics, universal 8px layout system, zero-shadow universal rule, and unobserved interaction/motion matrices were rolled back. The supplied 2026 bundle does not substantiate them as reusable product claims.
 
-- Pretendard Variable + 16px body sits well above WCAG SC 1.4.4 floor.
-- `#222` text on `#FFF` background = 16.0:1 (passes AAA).
-- `#326CF9` action blue on white = 4.6:1 (passes AA for normal text).
-- **`#FF3478` brand pink on white = 3.4:1 — fails AA for body text**, passes AA only for large text ≥18.66px. Dabang appears to honor this by restricting pink to the wordmark and large-display contexts, not running body text in brand color. Downstream port should preserve this restriction.
-- **42px filter pills** comfortably exceed WCAG 2.5.5 minimum hit target (44px tap target measured center-to-edge of pill).
-- Map markers at 2px radius are visually crisp but may have hit-target debt at default zoom — flagged for verification.
+## 5. Layout Principles
+
+- The home and map are distinct product compositions: home exposes a 32px-radius search-entry control, while the map route uses a 42px location-search field and compact dock controls.
+- Repeated observed spacing values support only a conservative `4 / 8 / 16px` set. They do not establish a full layout grid, rail width, map-canvas percentage, or breakpoint contract.
+- The FAQ uses a separate support-documentation layout. Its 16px/20px row padding must not be treated as map or listing-card spacing.
+
+## 6. Depth & Elevation
+
+The selector-backed product controls retained in §4 report `box-shadow: none`. This is useful evidence for those controls, but not proof of a global zero-elevation system: the supplied routes do not establish cards, markers, drawers, or native-app elevation. Use flat borders and surfaces only where a retained component names them; label any broader shadow system as a local extension.
+
+## 7. Do's and Don'ts
+
+### Do
+
+- Keep home, map, support-documentation, and corporate-context evidence explicitly separated.
+- Use `Pretendard Variable` only where its loaded public-web evidence applies; retain a normal runtime fallback in an implementation.
+- Preserve the observed 32px home-search and 42px map-search geometries as separate controls.
+- Use `#326CF9` only for the documented map action context unless a broader product source verifies it.
+- Build the retained outline controls from their explicit border, radius, padding, and type values.
+
+### Don't
+
+- Don't promote the frontmatter pink identity color into a current universal CTA or status color.
+- Don't represent the FAQ disclosure row as a product-listing, modal, or accordion component contract.
+- Don't infer hover, pressed, focus, disabled, error, or loading states from static pseudo-state selector names when interaction expansion is zero.
+- Don't substitute a system font as if it were loaded Pretendard Variable.
+- Don't invent map markers, card elevation, breakpoints, icon geometry, or motion values absent from the supplied evidence.
+
+## 8. Responsive Behavior
+
+The supplied evidence uses a 1440×900 viewport for all three routes. It does not verify mobile breakpoints, map drawer behavior, native safe areas, or listing density at another viewport. Treat the current dimensions as desktop public-web observations only.
+
+## 9. Agent Prompt Guide
+
+- “Create a Dabang public-home account control with a white background, `#222222` text, 8px radius, 8px 16px padding, and 16px/400 Pretendard Variable.”
+- “Create a Dabang map location-search field with a white background, 1px `#EDEDED` border, 42px radius, 7px 37px 7px 15px padding, and 14px/400 Pretendard Variable.”
+- “Create a map dock control from the selector-backed default only; do not add hover, disabled, or selected states as verified Dabang behaviour.”
+- “If a component is not listed here, mark it as an extension rather than presenting it as a verified Dabang product component.”
 
 ## 10. Voice & Tone
 
-Dabang's voice on the home surface is **functional with one moment of warmth**. Category labels are bare nouns (원/투룸 · 아파트 · 분양). Section heads are imperative-light ("우리동네 한눈에 보기" — "see your neighborhood at a glance"). Then the AI band drops the bold and adds an emoji: "관심있는 [동] 주변, AI가 대신 찾아봤어요 🔍" — "AI looked around your neighborhood for you 🔍". The verb-ending `-했어요` is casual-polite (반말 톤은 아니지만 격식체도 아닌 중간 톤). The rest of the page is `-합니다` or noun-only labels. The voice cliff is intentional: AI talks, the rest of the product labels.
+The official service context centres on housing information and on connecting the people who search for, list, and manage a property: individual users, licensed brokers, and landlords. That makes the reliable voice direction practical and role-aware. Name the property task, make the next action clear, and distinguish information provided by the platform from content entered by a user or broker. Avoid a campaign-like promise, a demographic stereotype, or an implication that the platform itself is a party to a property transaction.
 
-**OmD-original voice reconstructions** (illustrative, tone-shape-only, not adopted from Dabang surface):
-- "내가 살고 싶은 동네, 다 찾아봤어요" (warmth — match AI band register)
-- "원룸 137건. 지도에서 확인하세요" (functional — match category label register)
-- "조건 저장하면 새 매물 알려드려요" (utility — match notification register)
+## 11. Brand Narrative
 
-The system rule: warmth lives in the AI surface; functionality lives in the chrome. Do not bleed casual `-요` endings into structural labels.
+Station3 publicly positions Dabang beside Dabang Pro and Dabang Bangjoo-in: consumer property discovery, broker workflow, and landlord-management services are related but different offerings. The service terms make the platform boundary equally explicit: Dabang provides real-estate information and a place for registered content, while users, landlords, and brokers provide the relevant listings and conduct their own transactions.
 
-## 11. Personas (factual inferred — public-survey-only)
+The current public web UI reflects that operational role. Its controlled neutral palette and compact map controls prioritize a finding/filtering task rather than a decorative real-estate lifestyle story. The pink identity colour remains catalog metadata in this revision because the supplied web evidence does not show it as a reusable product-control rule.
 
-[FILL IN — Dabang user surveys/research not publicly indexed at OmD attribution fidelity.] Reported product positioning suggests:
-1. **20s-30s renter searching one-room / two-room (원/투룸)** — primary surface user; price-marker-first browsing
-2. **Newlyweds / first-home buyers searching apartment listings (아파트)** — secondary segment; broader filter use
-3. **Pre-construction subscribers tracking new-build offerings (분양)** — niche but visible nav slot
+## 12. Principles
 
-§11 narrative is treated as **factual inference from public surface positioning**, not as adopted persona research. Any downstream use should re-validate with primary research.
+1. **Separate source domains.** Home/map evidence, FAQ chrome, and Station3 corporate copy have different authority.
+   *UI implication:* do not merge their component values into one synthetic library.
+2. **Keep property tasks explicit.** The terms distinguish search, listing, and transaction roles.
+   *UI implication:* name the task and actor instead of using vague conversion language.
+3. **Use action blue locally.** `#326CF9` is verified in the map-route action treatment only.
+   *UI implication:* expand its use only after a specific product component provides evidence.
+4. **Preserve measured geometry.** The two search pills differ by route and purpose.
+   *UI implication:* keep the 32px and 42px radii distinct rather than averaging them.
 
-## 12. Anti-Patterns (don't steal)
+## 13. Personas
 
-- **Do not stretch `--pink-500` into product chrome.** Dabang's discipline is to keep pink as wordmark-only; copying the color without the discipline produces a "saturated red-pink" experience that fights the map.
-- **Do not adopt the zero-shadow rule without the border discipline.** Removing shadow but not investing in clean 1px hairlines collapses depth entirely; borders are doing the work shadows would.
-- **Do not flatten the contextual radius ladder.** 32 and 42 px are *different decisions*; replacing both with "16px pill" loses the affordance distinction (entry-CTA vs toggle-filter).
-- **Do not propagate the 400-weight AI band tone elsewhere.** It works because the rest of the surface is 700-bold; making everything 400 collapses the voice cliff.
-- **Do not adopt the 14px Korean body density** without verifying line-height and letter-spacing on the target language. Dabang's 14-16px stack is tuned for Korean character rendering on Pretendard.
+These are service-role contexts from the official terms and Station3 service page, not invented demographic personas.
 
-## 13. Tokens-as-Shipped Summary
+- **Property seeker:** searches public housing information and needs a clear route into filtering or inquiry.
+- **Licensed broker:** can register and provide permitted property information through the service.
+- **Landlord:** can provide a listing for rental and needs the platform’s registration boundary made clear.
 
-```
---pink-500    #FF3478   brand wordmark
---blue-500    #326CF9   action / selected
---gray-900    #222222   primary text
---gray-700    #656565   secondary text
---gray-400    #DFDFDF   default border
---gray-200    #F5F5F5   muted plate
---blue-50     #EEF8FF   hover tint
---green-500   #1CA885   trust / verified (inferred role)
---red-500     #E20724   error / urgent (inferred role)
---yellow-500  #FFB600   warning (inferred role)
---violet-500  #3E26FD   premium / promoted (inferred role)
+## 14. States
 
-radius:  0 / 2 / 4 / 8 / 12 / 32 / 42 / 50%
-weight:  400 / 500(sparse) / 700
-font:    Pretendard Variable (100%)
-shadow:  none (100%)
-```
+| Evidence area | Verified state boundary |
+|---|---|
+| Header account and outline controls | Default visual values only |
+| Map location search and dock control | Default visual values only |
+| Support FAQ row | Default documentation-row visual values only |
 
-## 14. Methodology & Sources
+No interaction expansion was retained, so hover, focus, pressed, disabled, error, empty, loading, success, skeleton, menu, dialog, and toast contracts remain unclaimed.
 
-- **Tier 1 — live product** (positive): Chrome DevTools Protocol :9222, `Runtime.evaluate` + `getComputedStyle` on `https://www.dabangapp.com/` (32 samples) and `https://www.dabangapp.com/map/onetwo` (21 samples) on 2026-05-15. 140 CSS custom properties extracted from `:root`. Full proof in `assets/_reference/.live-inspect-proof.json`.
-- **Tier 1 — official DS** (negative, authoritative): `design.dabangapp.com` / `brand.dabangapp.com` / `tech.dabangapp.com` / `docs.dabangapp.com` all DNS no-resolve. `dabangapp.com/brand` and `/design` return HTTP 200 but resolve to the SPA shell (title remains "부동산 필수 앱 다방") — no DS surface published. Parent company is Station3 (스테이션쓰리); `stationthree.com` returns 200 (corporate page), but no Tech / Design portal. GitHub `forgeinc/stationTHREE` (1 repo, corporate site) is the only org-level surface — no design-system / tokens / Storybook repo.
-- **Tier 2 — third-party DS indexes** (negative): `getdesign.md` search "dabang" → no entry. `styles.refero.design` search "dabang" / "다방" → no result cards. Consistent with the systemic KR-coverage gap logged in `2026-05-13-kr10.md` / `2026-05-14-kr10.md`.
-- **Tier 3 — competitor cross-reference** (consulted): `references/zigbang/DESIGN.md` (KR-real-estate direct competitor); `references/bunjang/DESIGN.md` (zero-shadow + KR-marketplace radius pattern).
-- **Tier 4 — corporate context**: Station3 Co., Ltd. (스테이션쓰리 주식회사), founded 2012, headquartered in Seoul. Dabang launched 2013 as 원룸/투룸 specialist; expanded to 아파트 + 분양 verticals in 2018-2021; current scope covers full-spectrum residential. Acquired by KCC Construction in 2022. Full corporate verification to attribution fidelity not completed this pass — flagged.
-- **Tier 5 — anti-pattern survey**: red+yellow "신규!" badge saturation typical of legacy KR property classifieds (네이버 부동산, 직방 pre-2022) used as the negative reference. Dabang's discipline reads against that legacy.
+## 15. Motion & Easing
 
-## 15. Verification Footer
-
-- **Tier 1 live capture**: ✓ CDP :9222, 53 raw_samples, 140 :root vars, 2 surfaces — reproducible via `ws://localhost:9222/devtools/page/B7DFD59E5452E64CA14275E072BFAC20` on Chrome/148.
-- **Tier 1 official DS**: ✗ AUTHORITATIVE NEGATIVE. No public DS hub, no Storybook, no GitHub design-system repo. Production `:root` token set is the public artifact.
-- **Tier 2 indexes**: ✗ getdesign.md empty; ✗ styles.refero.design empty (dabang / 다방).
-- **Confidence**: High on §1-§6 (live-captured); Medium on §7-§8 (motion + iconography partially inferred); Low on §11 (personas FILL IN); High on §13 (token table is direct capture).
-- **IP guardrails**: Brand assets reference-only. No verbatim taglines. Voice fresh. Service-feature names used descriptively only.
-- **Flagged for UPDATE pass**:
-  - Product-detail page (개별 매물 상세) — spacing scale + price typography
-  - Filter modal / sort sheet — full state variants
-  - Mobile viewport 390×844 — Dabang is mobile-first
-  - Motion tokens — duration/easing
-  - Listing thumbnail aspect ratio
-  - Verified Station3 corporate timeline to attribution fidelity
-
-## 16. Do's and Don'ts
-
-### Do
-- Keep brand pink `#FF3478` (`--pink-500`) on the logo wordmark and large-display contexts only, since at 3.4:1 on white it fails AA for body text
-- Drive all interaction state — selected map markers, focus rings, link emphasis — with action blue `#326CF9` (`--blue-500`) and its `#EEF8FF` (`--blue-50`) hover tint
-- Build depth from 1px `#DFDFDF` (`--gray-400`) hairline borders and background-color steps (white → `#F5F5F5` → `#EEF8FF`), keeping `box-shadow: none` everywhere
-- Set body text in `#222` (`--gray-900`) at 16px/400 and run a binary 400→700 weight rhythm, reserving 500 for map filter-chip labels
-- Preserve the contextual radius ladder by using 32px pills for search-entry CTAs and 42px pills for toggleable map filter chips
-- Render price as the map marker itself (e.g. '전세 3.2억') and let warmth surface only in the AI band — 24px/400 with a single 🔍 emoji
-
-### Don't
-- Spread `--pink-500` into product chrome — keeping it wordmark-only is the system's most disciplined rule, and bleeding it onto the map produces a saturated pink that fights the canvas
-- Adopt the zero-shadow rule without investing in clean 1px `#DFDFDF` hairlines, since borders are doing the depth work shadows would
-- Flatten the 32px and 42px pill radii into one value, which loses the affordance distinction between search-entry CTA and toggle-filter
-- Propagate the 400-weight AI-band tone across the surface — it only reads as editorial because the surrounding section heads are 700-bold at 18-20px
-- Bleed casual `-요` endings into structural labels — warmth lives in the AI surface while category labels stay bare nouns (원/투룸 · 아파트 · 분양)
-- Reuse the dense 14px Korean body stack without re-tuning line-height and letter-spacing, since it is tuned for Pretendard's Korean character rendering
+No motion duration, easing curve, or animation behaviour is promoted. The static supplied capture has no interaction records, and any motion implementation must be treated as a local extension with reduced-motion support rather than as verified Dabang behaviour.

@@ -4,249 +4,294 @@ name: K bank
 country: KR
 category: fintech
 homepage: "https://www.kbanknow.com"
-primary_color: "#0046ff"
+primary_color: "#0114a7"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=kbanknow.com&sz=256"
-verified: "2026-05-14"
+verified: "2026-07-13"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: public-product-web, url: "https://www.kbanknow.com/web/web-home/home/main", inspected: "2026-07-13" }
+    - { id: product-index, kind: public-product-web, url: "https://www.kbanknow.com/web/product/info/list?tab=deposit", inspected: "2026-07-13" }
+    - { id: product-curious, kind: public-product-web, url: "https://www.kbanknow.com/web/product/deposit/curious-saving", inspected: "2026-07-13" }
+    - { id: product-rolling, kind: public-product-web, url: "https://www.kbanknow.com/web/product/deposit/rolling-farm", inspected: "2026-07-13" }
+    - { id: product-one-card, kind: public-product-web, url: "https://www.kbanknow.com/web/product/card/one-card", inspected: "2026-07-13" }
+  sources:
+    - { id: product-home, kind: product-surface, url: "https://www.kbanknow.com/web/web-home/home/main", captured: "2026-07-13" }
+    - { id: product-index-source, kind: product-surface, url: "https://www.kbanknow.com/web/product/info/list?tab=deposit", captured: "2026-07-13" }
+    - { id: product-curious-source, kind: product-surface, url: "https://www.kbanknow.com/web/product/deposit/curious-saving", captured: "2026-07-13" }
+    - { id: product-rolling-source, kind: product-surface, url: "https://www.kbanknow.com/web/product/deposit/rolling-farm", captured: "2026-07-13" }
+    - { id: product-one-card-source, kind: product-surface, url: "https://www.kbanknow.com/web/product/card/one-card", captured: "2026-07-13" }
+    - { id: brand-resource, kind: brand-asset, url: "https://brand.kbanknow.com/resource.html", captured: "2026-07-13" }
+    - { id: brand-story, kind: official-doc, url: "https://brand.kbanknow.com/", captured: "2026-07-13" }
+    - { id: culture-story, kind: official-doc, url: "https://blog.kbanknow.com/%EC%BC%80%EB%AF%B8%EC%BD%94%EB%93%9C-1%ED%8E%B8-%EC%BC%80%EB%AF%B8%EC%BD%94%EB%93%9C-%ED%83%84%EC%83%9D-%EA%B8%B0%EB%A1%9D-%EC%9D%91%EC%95%A0%F0%9F%90%A3/", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": { surface_id: home, source_id: product-home, method: computed-style-and-official-brand-guide, captured: "2026-07-13" }
+    "tokens.colors.secondary": { surface_id: home, source_id: product-home, method: computed-style-and-official-brand-guide, captured: "2026-07-13" }
+    "tokens.colors.canvas": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.foreground": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.family.ui": { surface_id: home, source_id: product-home, method: computed-style-and-FontFaceSet, captured: "2026-07-13" }
+    "tokens.typography.body.size": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body.weight": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body.lineHeight": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.body.use": { surface_id: home, source_id: product-home, method: selector-provenance, captured: "2026-07-13" }
+    "tokens.typography.product-display.size": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.product-display.weight": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.product-display.lineHeight": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.product-display.tracking": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.product-display.use": { surface_id: product-curious, source_id: product-curious-source, method: selector-provenance, captured: "2026-07-13" }
+    "tokens.spacing.compact-action-inline": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.spacing.wide-action-inline": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
+    "tokens.rounded.compact-action": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.rounded.primary-action": { surface_id: product-curious, source_id: product-curious-source, method: computed-style, captured: "2026-07-13" }
+    "tokens.rounded.selected-tab": { surface_id: product-index, source_id: product-index-source, method: computed-style-and-aria-selected, captured: "2026-07-13" }
+    "tokens.shadow.none": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.public-home-shell.type": { surface_id: home, source_id: product-home, method: selector-provenance, captured: "2026-07-13" }
+    "tokens.components.public-home-shell.bg": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.public-home-shell.radius": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.public-home-shell.shadow": { surface_id: home, source_id: product-home, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.public-home-shell.use": { surface_id: home, source_id: product-home, method: selector-provenance, captured: "2026-07-13" }
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  note: "primary = signature K bank Navy #0114a7 (sole brand primary); lime #b6f23d is the sparing energetic accent"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Product tokens are selector-backed values from the supplied six-route public-web capture. The official resource center corroborates the two blue brand colors and Pretendard K Edition as a brand font, but does not create extra product components or states."
   colors:
     primary: "#0114a7"
-    brand: "#0114a7"
-    accent-lime: "#b6f23d"
-    accent-sell: "#047af1"
+    secondary: "#4262ff"
     canvas: "#ffffff"
-    foreground: "#020616"
-    muted: "#67748e"
-    on-primary: "#ffffff"
-    surface: "#f7f9fd"
-    surface-strong: "#edf1f7"
-    hairline: "#e0e6f1"
-    body: "#252b37"
-    info: "#066ae5"
-    action: "#2539e9"
-    error: "#e23a32"
-    warning: "#e46f00"
-    success: "#69a305"
+    foreground: "#000000"
   typography:
-    family: { sans: "Pretendard K Edition", mono: "SF Mono" }
-    body:    { size: 14, weight: 400, lineHeight: "normal", use: "Standard body text" }
-    cta:     { size: 18, weight: 500, use: "Button label, medium weight not bold" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 24, xxl: 32 }
-  rounded: { sm: 0, md: 0, lg: 12, full: 9999 }
+    family: { ui: "Pretendard K Edition" }
+    body: { size: 16, weight: 400, lineHeight: "normal", use: "Observed public-web home body and compact action control; do not generalize to native or authenticated banking." }
+    product-display: { size: 44, weight: 700, lineHeight: "59.4px", tracking: "-0.22px", use: "Observed on the supplied public deposit-product pages only." }
+  spacing:
+    compact-action-inline: 14
+    wide-action-inline: 28
+  rounded:
+    compact-action: 8
+    primary-action: 10
+    selected-tab: 0
   shadow:
-    none: "Elevation conveyed through 1px borders and g200/g300 fills, not Z-axis"
+    none: "none"
   components_harvested: true
   components:
-    button-primary: { type: button, bg: "#0114a7", fg: "#ffffff", radius: "12px", height: "56px", font: "18px / 500", use: "Primary CTA, medium weight on navy fill" }
-    listItem-link: { type: listItem, fg: "#020616", use: "Nav/body links, underline on hover, dense 14px" }
-    card-tile: { type: card, bg: "#ffffff", border: "1px solid #e0e6f1", radius: "0px", shadow: "none", use: "Square-cornered product tiles separated by 1px borders" }
-    badge-info: { type: badge, bg: "#d1ecff", fg: "#066ae5", use: "Informational banner state" }
-    badge-action: { type: badge, bg: "#e6ebff", fg: "#2539e9", use: "Promo / opportunity callout" }
-    badge-neutral: { type: badge, bg: "#edf1f7", fg: "#4d596f", use: "Quiet badge / chip" }
-    badge-error: { type: badge, bg: "#ffe5e0", fg: "#e23a32", use: "Failure / fraud alert" }
+    public-home-shell: { type: card, bg: "transparent", radius: "0px", shadow: "none", use: "Observed static home shell at home::div.mainCardWrapper.css-x2jyed; not a general card family." }
 ---
 
 # K bank — Design Reference
 
-> 케이뱅크 — Korea's first internet-only bank (launched 2017). State-licensed digital-only commercial bank; sibling category to Toss Bank and Kakao Bank, but with the most "traditional bank" posture of the three: navy-led, document-forward, partnership-driven (KT, Woori, Bain, MBK).
-
-K bank reads as a **regulated bank that happens to be app-native**, not a fintech wearing a bank licence. The visual signal is conservative, the IA is product-catalog-first, and the language defaults to formal `~합니다` rather than the colloquial `~해요` of Toss. The interesting tension: an otherwise austere navy palette is paired with one shockingly bright lime (`#B6F23D`) reserved as the energetic accent — a calculated rule-breaker.
-
----
-
 ## 1. Visual Theme & Atmosphere
 
-**K bank** is South Korea's first internet-only bank (launched 2017, KT-led consortium → 2021 KT Strategic Investment recap → 2024 IPO preparation). The product surface reads as a neobank that refuses both fintech-startup playfulness and legacy-bank gravitas: a near-white canvas anchored by a single signature **K bank Navy `#0114A7`**, an energetic **Lime `#B6F23D`** accent used sparingly on activation states, and a tight Pretendard type ladder. Skip-link primary, body 16px / 400 #1A1A1A on white, fixed 1280px desktop canvas — the chrome is sober, mobile-first-translated-to-desktop, and image-replacement H1 (font-size:0) is still in use, which surfaces concrete a11y debt (`a11y_landmark_violation` documented in §8). Where the prior batch's Toss leans warm-trust and KakaoBank leans playful-yellow, K bank leans **executive-restraint**: the brand is the navy, the navy is the trust, and chrome elsewhere stays out of the way.
+K bank is South Korea’s first internet-only bank. Its official brand story describes a “pleasant financial life” built from the basics of banking—rates and fees—then carries that promise into everyday rewards, investment, safety, and connected services. The public-web product capture has a more restrained job than that broad marketing story: it uses a white canvas and black chrome with two blue actions, while product information pages mix the loaded K bank webfont with system-stack controls. K bank’s own resource center makes the blue pair and Pretendard K Edition part of its brand expression; its culture writing adds a participatory way of working. These sources explain the brand’s current public expression, but only the supplied selector-backed product capture establishes the tokens and components below.
 
-## 1.1 Foundation tokens (live-captured)
+The evidence covers five distinct public product URLs plus a duplicate home snapshot. It does not cover the authenticated app, transfer journeys, account management, documentation chrome, or native UI. Brand marketing, the resource center, and culture writing are therefore retained as context and asset evidence—not silently converted into generic banking components or product states.
 
+**Key characteristics:**
 
-All values pulled from `getComputedStyle(document.documentElement)` on `https://www.kbanknow.com` — see `assets/_reference/tokens.json` for the full machine-readable set and `assets/_reference/.live-inspect-proof.json` for raw samples.
+- White public-web canvas and black structural text
+- Official dark-blue `#0114A7` and secondary blue `#4262FF`, both observed on separate public actions
+- Pretendard K Edition is the loaded public-web family; selected product controls also expose an operating-system stack
+- Flat, selector-local controls: 8px and 10px action corners coexist with 0px tabs and utility controls
 
-### Color — brand
-| Token | Value | Role |
-|---|---|---|
-| `--color-navy` | `#0114A7` | Signature K bank navy. Sole brand-positive primary. Used on skip-link, CTAs, key labels. |
-| `--color-lime` | `#B6F23D` | Energetic accent. Sparingly applied — never on body text, never on form chrome. |
-| `--txt-pri-sell` | `#047AF1` | "Sell" / promo blue — used for product-detail callouts adjacent to navy primary. |
+## 2. Layout & Grid
 
-### Color — neutral ramp (11 stops, dual-emitted as `--color-g*` and `--txt-g*`)
-`g1000 #020616` → `g900 #252B37` → `g800 #3B4659` → `g700 #4D596F` → `g600 #67748E` → `g500 #8694B1` → `g400 #C8D2E4` → `g300 #E0E6F1` → `g200 #EDF1F7` → `g100 #F7F9FD` → `w100 #FFFFFF`. Cool-leaning grayscale (blue-tinted, not neutral) — keeps the ramp coherent with the navy primary.
+- The supplied collector uses a `1440×900` viewport on the home, product index, two deposit pages, and the ONE card page. The second home record is a duplicate URL, not a breakpoint or a distinct surface.
+- The home’s `mainCardWrapper` is a measured static shell (`1365px × 840px`, no padding, 0px radius), not a reusable product-card or grid contract.
+- Public product-page measurements include 44px tabs and 40px/48px action controls. No mobile breakpoint, authenticated layout, or responsive rule was captured.
 
-### Color — semantic state
-| State | Bg | Txt | Use |
-|---|---|---|---|
-| info | `#D1ECFF` | `#066AE5` | informational banner |
-| action | `#E6EBFF` | `#2539E9` | promo / opportunity callout |
-| neutral | `#EDF1F7` | `#4D596F` | quiet badge / chip |
-| error | `#FFE5E0` | `#E23A32` | failure / fraud alert |
+## 3. Color & Typography
 
-### Color — extended palette
-`bu800 #066AE5` · `re700 #E23A32` · `og600 #E46F00` · `yl600 #B78F01` · `lm600 #69A305` · `in700 #4262FF`. Six muted hues, each kept dark/saturated enough to pass AA against `#FFFFFF`.
+### Color tokens
 
-### Typography
-- **Primary**: `Pretendard K Edition` — the Korean-optimised cut of the open-source Pretendard family. Single global family; no serif/display split.
-- **Stack**: `Pretendard K Edition, -apple-system, system-ui, Roboto, Helvetica Neue, Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif`.
-- **Body**: 14px / 400 / line-height `normal`.
-- **CTA**: 18px / 500 (medium, not bold) / 56px height / 12px radius. This is the only widely-rounded surface — see §3.
+- `#0114A7` — official primary color in K bank’s resource center; also the computed fill of the 48px public primary action.
+- `#4262FF` — official secondary color in the same resource center; also the computed fill of the 40px compact action.
+- `#FFFFFF` — observed page canvas and action-label color.
+- `#000000` — observed public-web structural text and transparent-control border color.
 
-### Radius
-- CTA only: `12px`.
-- Everything else observed: `0px`. **Sharp orthogonal blocks dominate.** This is a deliberate, conservative-bank signal.
+The resource center additionally lists `#E0E6F1`, `#EDF1F7`, and `#F7F9FD` as brand grayscale and `#2848DF` for the icon’s dark-mode treatment. They are official brand/asset guidance, not tokens promoted from the supplied product capture.
 
-### Shadow
-- Not used on the marketing root. Elevation conveyed through 1px borders and `--color-g200/g300` background fills, not Z-axis.
+### Typography evidence classes
 
----
+- **Official product/brand-use:** K bank’s resource center designates Pretendard K Edition for its consistent brand image and permits Pretendard as an alternate. This is official brand guidance, not a license grant or proof of every app surface.
+- **Live computed surface-use:** Pretendard K Edition is `loaded` with high confidence, 58 observed uses, and four first-party WOFF2 sources on the supplied public-web routes. It is the sole UI-family token because both computed use and FontFaceSet/source evidence are present.
+- **Live system use:** `-apple-system` is a high-confidence operating-system stack on 181 observed public-page elements, including product-detail controls. It remains system evidence rather than a K bank family or a substitute for Pretendard K Edition.
+- **Declared-only:** `swiper-icons` has a data-URL `@font-face` declaration and zero visible uses. It is not a text-family token.
+- **Official distributed asset / license:** no separately downloadable K bank font asset or font-license terms were located in the official material reviewed. The resource-center font statement remains useful brand evidence but does not authorize rehosting or substitution.
 
-## 2. Layout & grid
+| Role | Size | Weight | Line height | Boundary |
+|---|---:|---:|---:|---|
+| Public-web body / compact action | 16px | 400 | normal | Home route; Pretendard K Edition loaded |
+| Public deposit display | 44px | 700 | 59.4px | Supplied public deposit-product pages; -0.22px tracking |
+| Selected product tab | 18px | 700 | 24.3px | Deposit index only; Pretendard K Edition |
 
-- **Fixed 1280px desktop canvas.** No fluid breakpoint observed on the marketing surface; mobile app is the primary product channel, web is the catalog/regulatory mirror.
-- Body width measured live at `1280px`, height `1126px` above-the-fold for the landing surface.
-- Three vertical bands: top utility row → primary nav → product-tile grid → 새소식/공지 list → footer-equivalent block.
-- No `<header>` / `<nav>` / `<footer>` / `<main>` landmarks — all chrome is `<div class="…">`. Logged as a11y debt in §11.
+## 4. Components
 
----
+### Public compact action
 
-## 3. Component DNA
+**Default**
+- Background: `#4262FF`
+- Text: `#FFFFFF`
+- Radius: `8px`
+- Padding: `0px 14px`
+- Height: `40px`
+- Font: `16px / 400 / Pretendard K Edition`
+- States: Default only; no hover, pressed, focus, or disabled state captured.
+- Use: `home::[data-omd-capture="3"]`; the same fingerprint occurs across the supplied public routes.
 
-**Buttons**: 56px tall × 12px radius × 18px / 500 type × navy (`#0114A7`) fill + white text. Medium weight, not bold — a small but distinctive choice; most KR finance peers default to 600/700.
+### Public primary action
 
-**Skip-link**: Renders visibly when focused as `padding: 10px 20px; background: #0114A7; color: #fff;` — a rare bank that ships a working "본문 바로가기" affordance.
+**Default**
+- Background: `#0114A7`
+- Text: `#FFFFFF`
+- Radius: `10px`
+- Padding: `0px 28px`
+- Height: `48px`
+- Font: `16px / 400 / system stack` on `product-curious::[data-omd-capture="19"]`; the duplicate home snapshot uses a 14px Pretendard K Edition instance.
+- States: Default only; no hover, pressed, focus, or disabled state captured.
+- Use: Supplied public deposit and card-product pages; this does not establish an authenticated-flow CTA.
 
-**Links**: Default to `g1000 #020616` body color, underline on hover (not inline-styled — relies on Pretendard's tight optical settings to keep dense 14px nav legible).
+### Product index tab
 
-**Cards / product tiles**: Square-cornered (`0px`), separated by 1px borders in `--color-g300 #E0E6F1`, internal padding generous. No drop-shadow.
+**Selected**
+- Text: `oklch(0.47 0.024 264.308)`
+- Radius: `0px`
+- Padding: `10px 4px 12px`
+- Height: `44px`
+- Font: `18px / 700 / Pretendard K Edition`
+- States: Selected is observed through `aria-selected="true"`; no transition or alternate tab state was captured.
+- Use: `product-index::[data-omd-capture="14"]` on the public deposit index.
 
-**Form chrome**: `<input>` elements observed but kept off-DOM until interaction (`display:none` on landing) — the marketing surface is read-only, transactional flows live in the app.
+### Product-index bordered choice
 
-**Logo treatment**: `<h1 class="logo">` with `font-size: 0` (image-replacement) — text content `개인 / 기업` is the persona switcher, the visible logo is an inline SVG.
+**Default**
+- Background: `oklch(1 0 0)`
+- Text: `oklch(0.301 0.016 264.308)`
+- Border: `1px solid oklch(0.87 0.02 267.27)`
+- Radius: `6px`
+- Padding: `0px 12px`
+- Height: `32px`
+- Font: `16px / 400 / system stack`
+- States: Default only; no interaction state captured.
+- Use: `product-index::[data-omd-capture="21"]`; medium-confidence collector fingerprint, retained with its exact source boundary.
 
----
+### Product-detail full-width text button
 
-## 4. Iconography & illustration
+**Default**
+- Text: `#000000`
+- Radius: `0px`
+- Padding: `16px 20px`
+- Height: `60px`
+- Font: `18.72px / 700 / system stack`
+- States: Default only; no expansion or pressed state captured.
+- Use: `product-curious::[data-omd-capture="14"]`, repeated on the supplied deposit and card product pages.
 
-- Minimal illustration on the marketing root (8 `<img>` total). The brand leans on type + flat color blocks for hierarchy, not custom artwork.
-- No icon system surfaced in `:root` tokens — icons are inlined or asset-based, not tokenised.
-
----
-
-## 5. Motion
-
-- No CSS transitions/animations declared at `:root` level (no `--motion-*` or `--duration-*` tokens). The marketing surface is static; in-app motion is out-of-scope for web inspection.
-
----
-
-## 6. Information architecture
-
-Four-tab primary nav: `개인 · 기업 · 은행소개 · 상품안내 · 고객센터 · 혜택`. Catalog-first IA, not task-first.
-
-| Group | Children |
-|---|---|
-| 은행소개 | 케이뱅크 · 투자정보 · 인재채용 · 새소식 |
-| 상품안내 | 예적금 · 대출 · 카드 · 투자 · 서비스 |
-| 고객센터 | 이용안내 · 소비자보호 · 금융사기대응 · 자료실 · 증명서 · 인증서 |
-| 혜택 | (single landing) |
-
-136 anchors on the landing surface. This is a **directory-style bank site**, not a product funnel. Compare Toss, which collapses everything into a single product narrative.
-
----
-
-## 7. Content patterns
-
-- **Notice-led hero**: top of the marketing root surfaces the most recent 공지사항 (e.g. K-패스 캐시백 지연 안내, 2026.05.06) — regulatory transparency placed above promotion.
-- **Date stamps everywhere**: every notice carries `YYYY.MM.DD` prefix. Provenance > excitement.
-- **Product naming**: short, formal nouns (`예적금 / 대출 / 카드 / 투자`) rather than benefit-led marketing names. Trust signal.
-
----
-
-## 8. Accessibility posture
-
-- ✓ Skip-link present and styled for focus visibility.
-- ✓ `lang="ko-KR"` declared.
-- ✓ Semantic heading outline H1→H2→H3 is logical.
-- ✗ No landmark elements (`<header>`, `<nav>`, `<main>`, `<footer>`).
-- ✗ `font-size: 0` logo pattern requires explicit `aria-label` — not verified on this pass.
-- ✗ Fixed 1280px canvas blocks responsive zoom on small viewports.
-
-Overall: meaningful effort on focus order and language tagging; structural semantics behind 2026 norms.
+The collector reports `interactionCount: 0` and no interaction records. The selected tab is an element-state observation, not an observed tab-change interaction. No menu, dialog, validation, toast, responsive, hover, focus, pressed, disabled, or authenticated-product variant is claimed.
 
 ---
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://www.kbanknow.com/web/web-home/home/main`, `https://www.kbanknow.com/web/product/info/list?tab=deposit`, `https://www.kbanknow.com/web/product/deposit/curious-saving`, `https://www.kbanknow.com/web/product/deposit/rolling-farm`, `https://www.kbanknow.com/web/product/card/one-card`, `https://brand.kbanknow.com/resource.html`, `https://brand.kbanknow.com/`, and `https://blog.kbanknow.com/%EC%BC%80%EB%AF%B8%EC%BD%94%EB%93%9C-1%ED%8E%B8-%EC%BC%80%EB%AF%B8%EC%BD%94%EB%93%9C-%ED%83%84%EC%83%9D-%EA%B8%B0%EB%A1%9D-%EC%9D%91%EC%95%A0%F0%9F%90%A3/`
+**Tier 2 sources:** `https://getdesign.md/kbank` and `https://styles.refero.design/?q=kbank` were both attempted with built-in web open and returned internal errors; corresponding built-in web searches returned no K bank-specific record.
+**Conflicts unresolved:** none
 
-## 9. Voice (fresh paraphrase — NOT verbatim)
+## 5. Elevation
 
-- Formal Korean, `~합니다` register throughout. K bank does not use Toss-style colloquial `~해요`.
-- Headlines are nouns or noun-phrases, not promises. "예적금" not "돈을 모아보세요".
-- Notices lead with the consequence and the date, then the explanation. Apology language is reserved and short.
+The selector-backed public-home shell and all promoted action/tab samples have `box-shadow: none`. This is a route-level flatness observation, not a shadow scale for native banking, brand marketing, or unobserved panels.
 
-**Don't write**: chatty contractions, emoji, second-person imperatives.
-**Do write**: dated, dispassionate, action-noun headers with a single supporting sentence.
+## 6. Spacing & Shape
 
----
+- The measured compact and primary actions use `0px 14px` / 8px and `0px 28px` / 10px respectively.
+- The selected product tab is square (`0px`) with `10px 4px 12px` padding; the product-index bordered choice is 6px with `0px 12px` padding.
+- The bundle also contains 2px, 3px, 4px, 6px, 8px, 10px, 12px, 16px, 20px, 24px, 28px, 32px, and 100px spacing observations. Their semantics are not promoted into a global scale.
 
-## 10. What to steal (and what not to)
+## 7. Iconography & Imagery
 
-**Steal**
-1. The dual-emitted token system (`--color-g*` and `--txt-g*` pointing at the same values) — lets product teams reason about role separately from value.
-2. The single navy + single lime accent. Disciplined two-color brand.
-3. Notice-above-promotion landing pattern. Trust-first IA.
-4. Cool-tinted neutral ramp — keeps grays from clashing with the navy primary.
-
-**Don't steal**
-1. The 0px radius everywhere except CTA — reads dated in 2026 unless you're deliberately signalling "regulated institution".
-2. Fixed 1280px canvas. Not viable for any modern surface.
-3. `<div>`-only chrome. Use real landmarks.
-4. `font-size: 0` image-replacement on H1 logo. Use SVG + `aria-label`.
-
----
-
-## 11. Open questions / gaps
-
-- **Tier 1 official DS lookup — negative result documented.** K bank does **not** publish a public design system site (no `design.kbanknow.com`, no Figma community kit, no GitHub `kbank-design` org as of 2026-05-14). The `:root` token system shipped in production CSS is the closest public artifact. Compared to Toss (Toss Design System site) or Kakao (Kakao Design site), K bank has chosen not to externalise its system.
-- Mobile-app token parity unknown — web tokens may diverge from in-app values.
-- Motion / animation tokens not exposed to web; would need APK inspection to confirm.
-
----
-
-## 12. Sources & verification
-
-- **Tier 1 — Live inspect (production)**: `https://www.kbanknow.com/ib20/mnu/PBKMAN000000` via CDP `:9222` / `Runtime.evaluate` / `getComputedStyle`. 6 raw element samples + 43 CSS variables + 7 observed color frequencies captured. See `assets/_reference/.live-inspect-proof.json`.
-- **Tier 1 — Official DS site**: **No public design system found.** Searched: `design.kbanknow.com` (no DNS), GitHub `kbanknow` / `kbank` orgs (no design-system repo), Figma Community (no official K bank kit). Negative result documented here as authoritative.
-- **Tier 2 — Third-party indexes**: `getdesign.md/kbank` empty; `styles.refero.design/?q=kbank` and `?q=케이뱅크` both empty. Consistent with the systemic finding logged in `2026-05-13-kr10.md` (Korean coverage is weak on English-tooling-oriented directories).
-- **Tier 2 — Press / corp**: `kbanknow.com/ib20/mnu/PBKINT000000` (은행소개), DART filings (regulated bank, public disclosures).
-- **Tier 3 — Reconciliation**: All §1-§3 tokens are Tier 1 live-captured. §6 IA is Tier 1 DOM-derived. §9 voice is Tier 1 observed (notices/headings on production), paraphrased only — no verbatim copy reused. §10-§11 are analyst interpretation.
-
-**Conflicts unresolved**: none — Tier 1 live capture is the single source of truth on this pass, with negative Tier 1 official-DS result explicitly documented.
-
-**Verified**: 2026-05-14.
-
----
-
-## 13. IP & guardrails
-
-- Brand assets (logo, name, navy `#0114A7`) referenced for inspiration only — not redistributed.
-- No verbatim taglines or copy lifted from kbanknow.com. §9 voice paragraph is a fresh analyst paraphrase of register and structure, not transcription.
-- Token values are facts (CSS custom property values) and not protectable expression; they are reproduced here for engineering reference under fair-use analytical purpose.
-
-## 14. Do's and Don'ts
+K bank’s official resource center publishes logo, K-bank identification icon, logo spacing, light/dark icon colors, and media-kit material. The icon guide says the K position is visually adjusted and should not be moved; it is brand-asset guidance for identifying K bank, including transfer screens, rather than a general application icon library. The supplied product collector does not identify a named SVG set, illustration ratio, or icon-component geometry. `swiper-icons` is declared but unused and must not be substituted for a K bank text or icon token.
 
 ### Do
-- Anchor the brand on the single signature navy #0114A7 as the sole positive primary across skip-link, CTAs, and key labels
-- Reserve the lime accent #B6F23D for sparing energetic activation states only, keeping it off body text and form chrome
-- Keep surfaces sharp and orthogonal at 0px radius and apply the 12px radius exclusively to the 56px CTA
-- Set CTAs in Pretendard K Edition at 18px / 500 medium weight with white text on navy fill, not the 600/700 most KR finance peers default to
-- Convey elevation through 1px borders and cool-tinted g200/g300 fills instead of drop-shadows, using the blue-leaning neutral ramp to stay coherent with the navy
-- Lead the page with dated notices (YYYY.MM.DD) above promotion and write formal ~합니다 noun-phrase headers with one supporting sentence
+
+- Keep the two blue action treatments tied to their public-web selector and surface provenance.
+- Use Pretendard K Edition only where loaded public-web evidence or official brand guidance applies.
+- Use the official resource center for logo and K icon treatment, keeping those assets separate from product-control tokens.
 
 ### Don't
-- Spread the lime #B6F23D accent across large areas or place it on body text and form chrome
-- Round corners broadly the way K bank reads dated with 0px everywhere except CTA — adopt the sharpness only when deliberately signalling a regulated institution
-- Lock layouts to the fixed 1280px canvas, which blocks responsive zoom and is not viable for modern surfaces
-- Build chrome out of bare <div> elements — use real <header>, <nav>, <main>, and <footer> landmarks
-- Hide the logo with the font-size: 0 image-replacement trick on the H1 — use inline SVG with an explicit aria-label
-- Write chatty contractions, emoji, or second-person imperatives, or swap the formal ~합니다 register for colloquial ~해요
+
+- Generalize captured public actions to transfer, account, login, or native-app flows.
+- Invent interaction states, a responsive grid, a general card family, or a documentation system from these static routes.
+- Render a system fallback or `swiper-icons` as a verified K bank-branded typeface.
+
+## 8. Accessibility
+
+- The compact and primary actions pair white text with `#4262FF` and `#0114A7`; this reference does not substitute for a contrast or accessibility audit.
+- No focus, keyboard, disabled, error, validation, or interaction snapshot was captured. A future implementation needs accessible focus and state treatments designed and verified on the relevant flow.
+- The official brand resource asks that logo visibility be considered against its background. That asset rule is not evidence for control contrast, accessible names, landmarks, or mobile behavior.
+
+## 9. Content & Voice
+
+The official brand story writes about rates, fees, everyday rewards, investment, and safety in short, conversational Korean: financial life should feel closer, easier, and more pleasant. It pairs that accessible public register with precise product explanations and terms on the public product pages. K bank-inspired public marketing can explain a concrete everyday benefit plainly, but this does not establish copy rules for regulated disclosures, transaction confirmations, eligibility decisions, or errors.
+
+## 10. Voice & Tone
+
+- **Everyday and benefit-led:** the brand story grounds financial features in shopping, meals, rewards, and daily situations.
+- **Reassuring but specific:** public pages pair cheerful benefit language with product conditions and legal information.
+- **Participatory internally:** the official culture story describes employees gathering perspectives to define a shared way of working.
+
+### Do
+
+- Explain a public benefit through a concrete financial situation.
+- Keep conditions and eligibility explicit when a product page needs them.
+- Separate public marketing language from regulated or operational copy.
+
+### Don't
+
+- Treat playful campaign language as the verified voice of every banking flow.
+- Fabricate executive quotations, customer promises, or error-state language.
+
+## 11. Brand Narrative
+
+K bank’s official culture story identifies the company as South Korea’s first internet-only bank. Its current brand story frames the evolution not as finance for finance’s sake, but as a pleasant daily financial life: better basics, rewards woven into ordinary moments, access to investment, and reassurance around customers’ assets.
+
+That public expression is supported by a resource center that gives the brand a consistent visual vocabulary—deep and secondary blue, a K identification icon, and Pretendard K Edition—while distinguishing logo/asset guidance from the public-web UI. The public product routes in this reference show only a bounded web slice of that system; they do not prove the design of protected banking work or the native app.
+
+## 12. Principles
+
+1. **Make the financial basics feel worthwhile.** The brand story foregrounds rates, fees, and practical benefits.
+   *UI implication:* lead public product pages with the customer value, then keep conditions readable.
+2. **Connect finance to daily life.** The brand explicitly places banking around shopping, meals, rewards, and ordinary routines.
+   *UI implication:* use concrete scenarios in public education without trivializing regulated detail.
+3. **Protect confidence while broadening access.** The brand combines approachable benefits with asset reassurance, IT, and AI-security messaging.
+   *UI implication:* do not reuse campaign exuberance as a substitute for clear security and transaction states.
+4. **Build shared language through participation.** The culture story documents collective input into K bank’s way of working.
+   *UI implication:* retain provenance and evidence boundaries so product, brand, and design teams can review decisions together.
+
+## 13. Personas
+
+These are source-grounded service audiences, not fictional user profiles.
+
+- **Everyday banking customer:** the brand story addresses spending, rewards, and routine money management; protected-flow requirements were not captured.
+- **Customer exploring savings, cards, or investment:** public product pages and the brand story cover these offerings, without establishing a unified dashboard UI.
+- **Customer seeking reassurance:** the brand story speaks to security and asset confidence; specific support or fraud-response flows remain unobserved.
+- **Internal contributor:** the culture story documents employees participating in defining shared working practices, an organizational stakeholder rather than an end user.
+
+## 14. States
+
+| Category | Evidence boundary |
+|---|---|
+| Empty | [FILL IN — no public product empty state captured] |
+| Loading | [FILL IN — no loading state captured] |
+| Error: validation | [FILL IN — no validation state captured] |
+| Error: transaction or service interruption | [FILL IN — no operational-error state captured] |
+| Success | [FILL IN — no public product success state captured] |
+| Skeleton | [FILL IN — no skeleton state captured] |
+| Disabled | [FILL IN — no disabled control captured] |
+| Focus | [FILL IN — no focus-visible state captured] |
+| Pressed | [FILL IN — no pressed state captured] |
+| Hover | [FILL IN — no hover state captured] |
+| Selected tab | Public deposit-index `aria-selected="true"` only; no selection-change interaction captured. |
+
+## 15. Motion & Easing
+
+No motion, transition, easing, or interaction expansion appears in the supplied raw evidence. Motion tokens and behavioral rules remain `[FILL IN]`; the observed selected tab is not proof of a tab transition or easing curve.

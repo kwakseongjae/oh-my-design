@@ -8,477 +8,258 @@ primary_color: "#FF5D00"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=class101.net&sz=128"
-verified: "2026-05-19"
+verified: "2026-07-13"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: product, url: "https://class101.net/ko?viewMode=svod", inspected: "2026-07-12" }
+    - { id: giftcard, kind: legal-document, url: "https://class101.net/ko/docs/terms/giftcard?viewMode=svod", inspected: "2026-07-12" }
+    - { id: privacy, kind: legal-document, url: "https://class101.net/ko/docs/terms/privacy?viewMode=svod", inspected: "2026-07-12" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://class101.net/ko?viewMode=svod", captured: "2026-07-12" }
+    - { id: giftcard-live, kind: product-surface, url: "https://class101.net/ko/docs/terms/giftcard?viewMode=svod", captured: "2026-07-12" }
+    - { id: privacy-live, kind: product-surface, url: "https://class101.net/ko/docs/terms/privacy?viewMode=svod", captured: "2026-07-12" }
+    - { id: subscription, kind: official-doc, url: "https://class101.net/ko/pages/subscription-year2", captured: "2026-07-13" }
+    - { id: creator, kind: official-doc, url: "https://creator.class101.net/", captured: "2026-07-13" }
+    - { id: pretendard, kind: license, url: "https://github.com/orioncactus/pretendard", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.brand": &live { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-12" }
+    "tokens.colors.canvas": *live
+    "tokens.colors.foreground": *live
+    "tokens.colors.foreground-strong": *live
+    "tokens.colors.muted": *live
+    "tokens.components.legal-list-item.bg": &privacy { surface_id: privacy, source_id: privacy-live, method: computed-style, captured: "2026-07-12" }
+    "tokens.components.legal-list-item.fg": *privacy
+    "tokens.components.legal-list-item.font": *privacy
+    "tokens.components.legal-list-item.padding": *privacy
+    "tokens.components.legal-list-item.type": *privacy
+    "tokens.components.legal-list-item.use": *privacy
+    "tokens.rounded.lg": *live
+    "tokens.rounded.md": *live
+    "tokens.rounded.sm": *live
+    "tokens.spacing.lg": *live
+    "tokens.spacing.md": *live
+    "tokens.spacing.sm": *live
+    "tokens.spacing.xl": *live
+    "tokens.spacing.xs": *live
+    "tokens.typography.body.lineHeight": *live
+    "tokens.typography.body.size": *live
+    "tokens.typography.body.use": *live
+    "tokens.typography.body.weight": *live
+    "tokens.typography.control.lineHeight": *live
+    "tokens.typography.control.size": *live
+    "tokens.typography.control.use": *live
+    "tokens.typography.control.weight": *live
+    "tokens.typography.display.lineHeight": *live
+    "tokens.typography.display.size": *live
+    "tokens.typography.display.tracking": *live
+    "tokens.typography.display.use": *live
+    "tokens.typography.display.weight": *live
+    "tokens.typography.family.sans": *live
+    "tokens.typography.page-title.lineHeight": *live
+    "tokens.typography.page-title.size": *live
+    "tokens.typography.page-title.tracking": *live
+    "tokens.typography.page-title.use": *live
+    "tokens.typography.page-title.weight": *live
+    "tokens.typography.section-heading.lineHeight": *live
+    "tokens.typography.section-heading.size": *live
+    "tokens.typography.section-heading.use": *live
+    "tokens.typography.section-heading.weight": *live
 tokens:
-  source: prose-derived
-  extracted: "2026-06-08"
-  note: "primary action button is near-black #202020 (the workhorse CTA); brand = orange spark #FF5D00 (= primary_color). Distinct roles, not a conflict."
-  colors:
-    primary: "#202020"
-    primary-hover: "#000000"
-    brand: "#FF5D00"
-    brand-tint: "#FFF1E8"
-    canvas: "#FFFFFF"
-    surface: "#F3F3F3"
-    surface-raised: "#FAFAFA"
-    foreground: "#000000"
-    body: "#333333"
-    muted: "#767676"
-    tertiary: "#AAAAAA"
-    hairline: "#E5E5E5"
-    border-strong: "#D1D1D1"
-    on-primary: "#FFFFFF"
-    success: "#22C55E"
-    error: "#FF3B30"
-    warning: "#FAAD14"
-  typography:
-    family: { sans: "Pretendard Variable", mono: "system-ui" }
-    hero:           { size: 36, weight: 700, lineHeight: 1.25, use: "Home hero, campaign headlines (32-40px)" }
-    section-heading: { size: 23, weight: 700, lineHeight: 1.35, use: "Category / row headers (22-24px)" }
-    card-title:     { size: 16, weight: 600, lineHeight: 1.40, use: "Class card titles" }
-    body:           { size: 16, weight: 400, lineHeight: 1.50, use: "Descriptions, marketing body" }
-    label:          { size: 16, weight: 600, lineHeight: 1.40, use: "Buttons, nav (CTA / label)" }
-    meta:           { size: 14, weight: 400, lineHeight: 1.40, use: "Creator names, class metadata" }
-    caption:        { size: 12, weight: 400, lineHeight: 1.40, use: "Badges, fine print" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 40, section: 40 }
-  rounded: { sm: 6, md: 8, lg: 12, xl: 16, full: 999 }
-  shadow:
-    hover: "rgba(0,0,0,0.06) 0px 2px 8px"
-    floating: "rgba(0,0,0,0.1) 0px 4px 16px"
-    modal: "rgba(0,0,0,0.16) 0px 8px 24px"
+  source: live-extract
+  extracted: "2026-07-13"
   components_harvested: true
+  note: "Values are limited to the supplied 2026-07-12 capture. Product home, legal-document chrome, and unobserved states remain separate evidence domains."
+  colors:
+    brand: "#FF5D00"
+    canvas: "#FFFFFF"
+    foreground: "#0C0C0C"
+    foreground-strong: "#000000"
+    muted: "#373737"
+  typography:
+    family:
+      sans: "Pretendard Variable"
+    display: { size: 40, weight: 800, lineHeight: 1.25, tracking: "-1.12px", use: "Home display heading" }
+    page-title: { size: 28, weight: 700, lineHeight: 1.29, tracking: "-0.616px", use: "Observed h1" }
+    section-heading: { size: 26, weight: 700, lineHeight: 1.38, use: "Observed h2" }
+    body: { size: 18, weight: 400, lineHeight: 1.67, use: "Observed reading text" }
+    control: { size: 16, weight: 400, lineHeight: 1, use: "Observed home controls and tabs" }
+  spacing: { xs: 4, sm: 8, md: 12, lg: 24, xl: 36 }
+  rounded: { sm: 4, md: 8, lg: 12 }
   components:
-    button-primary: { type: button, bg: "#202020", fg: "#FFFFFF", radius: "12px", height: "50px", padding: "15px 14px", font: "16px / 600", hover: "#000000", use: "Workhorse CTA — 시작하기 / 구독하기" }
-    button-brand: { type: button, bg: "#FF5D00", fg: "#FFFFFF", radius: "12px", padding: "15px 14px", font: "16px / 600", use: "High-energy promo moments only — the orange spark" }
-    button-secondary: { type: button, bg: "#FFFFFF", fg: "#202020", border: "1px solid #E5E5E5", radius: "12px", padding: "15px 14px", font: "16px / 600", use: "Secondary action beside black primary" }
-    button-ghost: { type: button, bg: "transparent", fg: "#333333", radius: "8px", font: "16px / 500", use: "Tertiary nav, 더보기" }
-    input: { type: input, bg: "#F3F3F3", fg: "#000000", radius: "8px", padding: "12px 16px", font: "16px / 400", focus: "border #202020", use: "Class search, form fields — #AAAAAA placeholder" }
-    class-card: { type: card, bg: "#FFFFFF", radius: "8px", padding: "0 + 12px text region", shadow: "rgba(0,0,0,0.06) 0px 2px 8px on hover", use: "Catalog atom — thumbnail top, title + creator + meta below" }
-    benefit-card: { type: card, bg: "#FFF1E8", radius: "8px", padding: "24px", use: "Subscription benefits, membership perks, value callouts" }
-    chip: { type: badge, bg: "#F3F3F3", fg: "#333333", radius: "999px", padding: "6px 14px", font: "13px / 500", use: "Category filters — 드로잉 / 베이킹 / 사진" }
-    badge-hot: { type: badge, bg: "#FF5D00", fg: "#FFFFFF", radius: "6px", padding: "2px 8px", font: "12px / 600", use: "NEW / 인기 high-energy emphasis on cards" }
-    top-nav-item: { type: tab, fg: "#767676", active: "#000000 weight 600", font: "16px / 500", use: "Category navigation" }
-    snackbar: { type: toast, bg: "#202020", fg: "#FFFFFF", radius: "8px", padding: "12px 16px", use: "찜한 클래스에 추가했어요 transient feedback" }
-    modal: { type: dialog, bg: "#FFFFFF", fg: "#000000", radius: "16px", padding: "24px", shadow: "backdrop rgba(0,0,0,0.5)", use: "Login, plan selection, class preview — bottom sheet top corners" }
+    legal-list-item: { type: listItem, bg: "transparent", fg: "#0C0C0C", padding: "0px 0px 0px 24px", font: "16px / 400 / Pretendard Variable", use: "Observed official privacy-document list item only" }
 ---
 
 # Design System Inspiration of Class101 (클래스101)
 
 ## 1. Visual Theme & Atmosphere
 
-Class101 is Korea's leading online-class subscription platform — "세상의 모든 클래스를 하나의 구독으로" (every class in the world, in one subscription). It built its name on creator-led hobby and skill classes (drawing, baking, photography, side-business) and now runs a Netflix-style subscription (CLASS101+) over that catalog. The interface is a bright, warm, motivational learning storefront: a clean white canvas (`#FFFFFF`) wall-to-wall with photographic class thumbnails, organized into editorial rows, with a single energetic orange doing all the brand work.
-
-That orange — observed live as `#FF5D00`, a vivid pure orange leaning red — is the emotional core. It's the color of enthusiasm, of "start now," of the spark of a new hobby. It marks brand accents, highlights, and key promotional moments. Notably, Class101's *primary action button* is not orange but a confident near-black (`#202020`) with a generous `12px` radius — the orange is reserved as the brand spark while black carries the workhorse "시작하기" CTA. This pairing (warm-orange brand identity + grounded black action) gives the platform an energetic-yet-trustworthy feel: motivating like a coach, dependable like a tool.
-
-Typography is Pretendard Variable (`"Pretendard Variable", "Pretendard JP Variable", Pretendard, system-ui, ...`), the modern Korean product sans, rendered in near-black on white with a friendly gray scale. Geometry is soft and rounded — `12px` on buttons, `8px` on surfaces — and the layout is image-forward, letting class thumbnails and creator faces carry the warmth. The atmosphere is "your motivated Sunday morning" — bright, hopeful, and gently pushing you to make something.
-
-**Key Characteristics:**
-- Energetic pure-orange brand spark (`#FF5D00`) — accents, highlights, promotions
-- Near-black primary CTA (`#202020`) with `12px` radius — grounded action vs. orange brand
-- Clean white canvas (`#FFFFFF`) — image-forward class storefront
-- Pretendard Variable type stack in near-black → gray on white
-- Soft rounded geometry — `12px` buttons, `8px` surfaces
-- Editorial class-thumbnail rows; creator faces and project photos carry warmth
-- Motivational, coach-like tone — "make something" energy
+Class101 is an online learning marketplace and subscription service. Its public CLASS101+ material describes a subscription that lets members use a range of existing Class101 content, while the official creator centre presents classes and products across hobbies, work skills, and side projects. The captured Korean home is a white, typographic storefront: black and near-black text dominate, with a small `#FF5D00` orange accent appearing in home-title text. Its live web interface uses Pretendard Variable and compact, neutral controls rather than a captured public design-system token set. The current record deliberately separates that product surface from the terms and privacy pages, whose legal-document chrome is evidence for those pages only.
 
 ## 2. Color Palette & Roles
 
-Colors below are extracted from live computed styles on class101.net/ko (2026-05-19). Class101 does not publish a public token layer; values are observed.
+Class101 does not publish a public token specification in the sources reviewed. These are raw computed values from the supplied capture, not a reconstructed palette.
 
-### Brand
-- **Class101 Orange** (`#FF5D00`): The brand spark — logo accent, highlights, key promotional moments, emphasis. Observed `rgb(255, 93, 0)`. *(Brief-provided value was `#FF5C00`; live observed `#FF5D00` — within one unit, use the live value.)*
-- **Orange Tint** (`#FFF1E8`): Light orange wash for highlight backgrounds and benefit blocks.
+- **Orange accent** (`#FF5D00`): observed on `home::[data-testid="title"]` text on the product home (3 medium-confidence occurrences). It is retained as the catalog primary color, but the capture does not establish a general CTA role.
+- **Canvas** (`#FFFFFF`): observed body background across product home and both official documents (3 high-confidence occurrences).
+- **Foreground** (`#0C0C0C`): high-confidence text on the product home and legal documents (498 occurrences); a `#000000` foreground is also widely observed in both domains.
+- **Muted text** (`#373737`): observed text / border value (12 high-confidence occurrences); one home title sample resolves to `rgba(55, 55, 55, 0.8)`.
 
-### Action (Neutral)
-- **Action Black** (`#202020`): Primary CTA background ("시작하기", "구독하기"). Observed `rgb(32, 32, 32)`, 12px radius, 50px tall. The grounded workhorse action.
-- **Action Black Hover** (`#000000`): Pressed/hover for the action button.
-
-### Surfaces
-- **Canvas White** (`#FFFFFF`): Page background, card surfaces. Observed body bg.
-- **Surface Gray** (`#F3F3F3`): Section bands, input fills, grouping surfaces. Observed `rgb(243, 243, 243)`.
-- **Surface Raised** (`#FAFAFA`): Subtle raised panels.
-
-### Text
-- **Text Primary** (`#000000`): Headings, primary labels, class titles. Observed `rgb(0, 0, 0)`.
-- **Text Body** (`#333333`): Body copy, descriptions.
-- **Text Secondary** (`#767676`): Metadata, creator names, captions.
-- **Text Tertiary** (`#AAAAAA`): Placeholder, disabled labels, fine print.
-
-### Borders & Dividers
-- **Border Default** (`#E5E5E5`): Card borders, dividers, input outlines.
-- **Border Strong** (`#D1D1D1`): Active/emphasized borders.
-
-### Semantic
-- **Success** (`#22C55E`): Completion, enrolled, download done.
-- **Error / Sale** (`#FF3B30`): Errors and (distinct from brand orange) hot sale tags.
-- **Warning** (`#FAAD14`): Pending, attention.
+No success, error, warning, CTA-background, hover, or shadow color is promoted: the supplied evidence does not establish those roles.
 
 ## 3. Typography Rules
 
-### Font Stack
-```
-"Pretendard Variable", "Pretendard JP Variable", "Pretendard JP", Pretendard, system-ui, -apple-system, Roboto, "Helvetica Neue", "Segoe UI", "Noto Sans KR", "Malgun Gothic", sans-serif
-```
+### Evidence classes
 
-Pretendard Variable leads (with JP variants for cross-market parity), the modern Korean product sans. All rendering is near-black to gray on white.
+- **Live product and document use — confirmed.** `Pretendard Variable` is the computed family on the captured home and official legal-document pages. It has 753 captured uses across body, controls, headings, list items, tabs, and text, and a matching loaded `FontFace` set with 92 jsDelivr source URLs. This is the only family promoted to `tokens.typography.family.sans`.
+- **Declared-only fallbacks — not promoted.** The computed stack also names `Pretendard JP Variable`, `Pretendard JP`, `Pretendard`, `system-ui`, platform UI fonts, Roboto, `Noto Sans KR`, and `Malgun Gothic`. The collector did not report a loaded match for these individual fallback faces, so they remain fallback declarations rather than UI-family claims.
+- **Official distributed font asset and license.** Pretendard’s official project documents its variable dynamic subset under the family name `"Pretendard Variable"`; it is distributed under the SIL Open Font License. That source confirms the font asset and licence boundary, not a separate Class101-owned font.
 
-### Type Scale (observed home + listing surfaces)
+### Observed type scale
 
-| Role | Size | Weight | Line Height | Use |
-|---|---|---|---|---|
-| Hero | 32–40px | 700 | 1.25 | Home hero, campaign headlines |
-| Section Heading | 22–24px | 700 | 1.35 | Category/row headers |
-| Card Title | 16px | 600 | 1.4 | Class card titles |
-| Body | 16px | 400 | 1.5 | Descriptions, marketing body (observed 16px/400) |
-| CTA / Label | 16px | 500–600 | 1.4 | Buttons (observed 16px), nav |
-| Creator / Meta | 14px | 400 | 1.4 | Creator names, class metadata |
-| Caption | 12px | 400 | 1.4 | Badges, fine print |
-
-### Conventions
-- **700 for headlines, 600 for card titles, 400–500 for body/labels** — friendly, readable, not heavy.
-- **Black headline, gray meta** — `#000000` → `#333333` → `#767676`.
-- **Larger base body (16px)** than typical dense apps — this is a reading/learning surface, legibility-first.
-- **Korean-primary** — Korean copy is first-class; English in titles only.
+| Role | Size | Weight | Line Height | Tracking | Provenance |
+|---|---:|---:|---:|---:|---|
+| Home display | 40px | 800 | 50px | -1.12px | `home::[data-testid="display"]` |
+| H1 | 28px | 700 | 36px | -0.616px | captured h1 aggregate |
+| H2 | 26px | 700 | 36px | normal | captured h2 aggregate |
+| Reading body | 18px | 400 | 30px | normal | 269 captured occurrences |
+| Control / tab | 16px | 400 | 16px / normal | normal | home control and tab samples |
 
 ## 4. Component Stylings
 
-### Buttons
+Only the following default-state components have selector and surface provenance. The collector recorded `interactionCount: 0`; hover, focus, pressed, disabled, error, dialog, toast, input, card, and selected-tab variants are not asserted.
 
-**Primary CTA (시작하기 / 구독하기)**
-- Background: `#202020`
-- Text: `#FFFFFF`
-- Border: none
-- Radius: 12px
-- Padding: 15px 14px
-- Font: 16px / 600 / Pretendard
-- Hover: background `#000000`
-- Use: Primary action — observed 50px tall, near-black grounded button
+### Home navigation button
 
-**Brand CTA (promotional / highlight)**
-- Background: `#FF5D00`
-- Text: `#FFFFFF`
-- Border: none
-- Radius: 12px
-- Padding: 15px 14px
-- Font: 16px / 600 / Pretendard
-- Use: High-energy promotional moments, "지금 구독하고 시작" campaigns — the orange spark
-
-**Secondary / Outline**
-- Background: `#FFFFFF`
-- Text: `#202020`
-- Border: 1px solid `#E5E5E5`
-- Radius: 12px
-- Padding: 15px 14px
-- Font: 16px / 600 / Pretendard
-- Use: Secondary action paired with the black primary
-
-**Ghost / Text**
+**Default — product home**
 - Background: transparent
-- Text: `#333333`
-- Border: none
-- Radius: 8px
-- Font: 16px / 500 / Pretendard
-- Use: Tertiary nav, "더보기"
-
-### Inputs
-
-**Search / Text Field**
-- Background: `#F3F3F3`
 - Text: `#000000`
-- Border: none (filled) — or 1px solid `#E5E5E5` on white
-- Radius: 8px
-- Padding: 12px 16px
-- Font: 16px / 400 / Pretendard
-- Placeholder: `#AAAAAA`
-- Focus: border `#202020`
-- Use: Class search, form fields
-
-### Cards
-
-**Class Card**
-- Background: `#FFFFFF`
-- Border: none (shadowless on white) / `0 2px 8px rgba(0,0,0,0.06)` on hover
-- Radius: 8px
-- Padding: 0 (image-led) + 12px text region
-- Use: The catalog atom — thumbnail top, title + creator + meta below
-
-**Highlight / Benefit Card**
-- Background: `#F3F3F3` (or `#FFF1E8` orange tint for benefit emphasis)
 - Border: none
 - Radius: 8px
-- Padding: 24px
-- Use: Subscription benefits, membership perks, value callouts
+- Font: 16px / 400 / Pretendard Variable
+- Use: Home control at `home::[data-omd-capture="6"]`; 108px × 38px observed
 
-### Badges / Chips
+### Home outlined button
 
-**Category Chip**
-- Background: `#F3F3F3`
-- Text: `#333333`
-- Border: none
-- Radius: 999px
-- Padding: 6px 14px
-- Font: 13px / 500 / Pretendard
-- Use: Category filters (드로잉 / 베이킹 / 사진 / 부업)
-
-**Hot / New Badge**
-- Background: `#FF5D00`
-- Text: `#FFFFFF`
-- Border: none
-- Radius: 6px
-- Padding: 2px 8px
-- Font: 12px / 600 / Pretendard
-- Use: "NEW", "인기", high-energy emphasis on cards
-
-### Tabs / Nav
-
-**Top Nav Item**
-- Active text: `#000000` (weight 600)
-- Inactive text: `#767676`
-- Indicator: weight + color shift (minimal)
-- Font: 16px / 500–600 / Pretendard
-- Use: Category navigation
-
-### Toasts
-
-**Snackbar**
-- Background: `#202020`
-- Text: `#FFFFFF`
-- Radius: 8px
-- Padding: 12px 16px
-- Use: "찜한 클래스에 추가했어요" transient feedback
-
-### Dialogs
-
-**Modal / Bottom Sheet**
-- Background: `#FFFFFF`
+**Default — product home**
+- Background: transparent
 - Text: `#000000`
-- Radius: 16px (top corners on sheet)
-- Padding: 24px
-- Backdrop: `rgba(0,0,0,0.5)`
-- Use: Login, plan selection, class preview
+- Border: 1px solid rgba(255,255,255,0.298)
+- Radius: 12px
+- Padding: 14px 13px
+- Font: 16px / 400 / Pretendard Variable
+- Use: Home button at `home::[data-omd-capture="28"]`; 240px × 50px observed
+
+### Home tab wrapper
+
+**Unselected — product home**
+- Background: transparent
+- Text: `#000000`
+- Border: none
+- Radius: 0px
+- Font: 16px / 400 / Pretendard Variable
+- Use: `div[role="tab"]` at `home::[data-omd-capture="7"]`; `aria-selected="false"`, 97px × 44px observed
+
+### Legal-document tab
+
+**Observed — official documentation chrome**
+- Background: transparent
+- Text: `#000000`
+- Border: 0px 0px 1px rgb(0,0,0)
+- Radius: 0px
+- Padding: 12px 0px 10px
+- Font: 16px / 400 / Pretendard Variable
+- Use: `button[role="tab"]` at `surface-2::[data-omd-capture="0"]`; 61px × 45px observed. This is document chrome, not evidence for product navigation.
+
+### Legal-document list item
+
+**Default — privacy document**
+- Background: transparent
+- Text: `#0C0C0C`
+- Border: none
+- Padding: 0px 0px 0px 24px
+- Font: 16px / 400 / Pretendard Variable
+- Use: `surface-3::li`; 28px line height and 4px bottom margin observed
 
 ---
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://class101.net/ko?viewMode=svod (captured product home); https://class101.net/ko/docs/terms/giftcard?viewMode=svod and https://class101.net/ko/docs/terms/privacy?viewMode=svod (captured official-document chrome); https://class101.net/ko/pages/subscription-year2; https://creator.class101.net/; https://github.com/orioncactus/pretendard
+**Tier 2 sources:** https://getdesign.md/class101 (attempted; unavailable to built-in web fetch and no indexed record returned); https://styles.refero.design/?q=class101 (attempted; unavailable to built-in web fetch and no indexed record returned)
+**Conflicts unresolved:** none
 
-**Verified:** 2026-05-19
-**Tier 1 sources:** class101.net/ko (live computed styles via Playwright — primary CTA `#202020` (rgb 32,32,32) / 12px radius / 16px / 50px tall / padding 15px 14px; brand orange `#FF5D00` (rgb 255,93,0) most-frequent saturated accent; surface gray `#F3F3F3` (rgb 243,243,243) / 8px; body bg white; font `"Pretendard Variable", "Pretendard JP Variable", Pretendard, system-ui, ...`).
-**Tier 2 sources:** getdesign.md/class101 — not checked; styles.refero.design — not checked.
-**Conflicts unresolved:** Brief-provided brand orange `#FF5C00` vs live observed `#FF5D00` — within 1 unit (rgb 92 vs 93 on green); live `#FF5D00` adopted as canonical. Black-vs-orange CTA: live primary action is black `#202020`; orange `#FF5D00` is the brand-spark accent — treated as distinct roles (action vs. brand), not a conflict.
+Legacy black `#202020` CTA, its hover, semantic palette, shadows, cards, inputs, snackbar, dialog, responsive rules, states, and motion were not supported by the supplied 2026-07-12 capture and were removed rather than promoted. Tier 2 was unavailable and supplied no contrary claim.
 
 ## 5. Layout Principles
 
-### Page Structure
-- Top nav (~64px) over a centered max-width content column (~1200px).
-- Home is a stack of horizontally-scrolling class rows by category and editorial theme.
-
-### Spacing
-- Base unit 8px; common values 4 / 8 / 12 / 16 / 24 / 32 / 40.
-- Card gutter ~16px; section vertical gap ~40px.
-- Page horizontal padding ~24px desktop, 16px mobile.
-
-### Density
-**Medium-density, image + reading forward.** Class cards pack 3–4 per row with prominent thumbnails. Class-detail pages are spacious and reading-optimized (curriculum, creator intro, reviews) — this is a learning surface, so legibility wins over density.
-
-### Border Radius Scale
-- Small (6px): badges
-- Standard (8px): cards, inputs, ghost buttons
-- Comfortable (12px): primary/brand buttons
-- Large (16px): modals, sheets
-- Pill (999px): category chips
+The supplied product-home capture is desktop `1440×900` and records a white body extending 6,121px vertically. It contains 16px controls/tabs and a 40px display heading. It does not establish a grid, max width, carousel behavior, card ratio, mobile layout, or sticky behavior; those remain unresolved.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|---|---|---|
-| Flat | no shadow | Page bg, inline, cards at rest |
-| Hover | `0 2px 8px rgba(0,0,0,0.06)` | Card hover lift |
-| Floating | `0 4px 16px rgba(0,0,0,0.1)` | Dropdowns, sticky CTA |
-| Modal | `0 8px 24px rgba(0,0,0,0.16)` | Dialogs, bottom sheets |
-
-Shadows are light and neutral. Separation comes primarily from the white-card / `#F3F3F3`-band contrast rather than heavy elevation — the warmth comes from imagery and the orange spark, not from dramatic depth.
+The representative captured controls and list items have `box-shadow: none`. No elevation scale is promoted; unobserved hover and overlay states are omitted.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use orange `#FF5D00` as the brand spark — accents, highlights, hot/promo moments.
-- Use black `#202020` for the everyday primary action button.
-- Keep the canvas white; let class thumbnails and creator faces carry warmth.
-- Use a larger 16px base body — this is a reading/learning surface.
-- Use 12px button radius, 8px cards, 999px chips.
+
+- Reuse the confirmed Pretendard Variable family when reproducing the captured web surface.
+- Keep product-home evidence distinct from legal-document chrome.
+- Treat `#FF5D00` as an observed orange title accent, not as evidence for an all-purpose action color.
 
 ### Don't
-- Don't make every primary button orange — orange is the spark, black is the action.
-- Don't add heavy shadows; use white/`#F3F3F3` contrast for separation.
-- Don't shrink body text below 16px on learning surfaces.
-- Don't pair orange with sale-red carelessly — keep error/sale red (`#FF3B30`) distinct from brand orange.
-- Don't crowd class-detail pages; curriculum and reviews need room.
+
+- Don't restore the legacy black CTA, orange CTA, semantic state colors, or hover shadows without new surface evidence.
+- Don't treat declared system-font fallbacks as loaded Class101 font assets.
+- Don't infer interaction variants from this capture: it recorded no interactions.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|---|---|---|
-| Mobile | <768px | Single-column feed, ~1.5 cards peeking, bottom nav, full-width sticky CTA |
-| Tablet | 768–1024px | 2–3 cards per row, condensed nav |
-| Desktop | >1024px | 3–4 cards per row, full nav, ~1200px content |
-
-### Touch & Media
-- Carousels swipeable on touch; chevron-driven on desktop.
-- Sticky bottom "구독하기" CTA with safe-area inset on class detail.
-- Min 44px tap targets.
-
-### Image Behavior
-- Class thumbnails 16:9 or 4:3, `object-fit: cover`, lazy-loaded, 8px rounded top.
-- Creator/hero images full-bleed with overlay text where used.
+No responsive transition was captured. The only recorded viewport is desktop `1440×900`; mobile, tablet, touch, safe-area, and media behavior are unresolved.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Brand spark: Orange `#FF5D00`; tint `#FFF1E8`
-- Primary action: Black `#202020` (hover `#000000`)
-- Canvas: White `#FFFFFF`; band `#F3F3F3`
-- Text: `#000000` → `#333333` → `#767676` → `#AAAAAA`
-- Border: `#E5E5E5`; focus `#202020`
-- Success `#22C55E`; error/sale `#FF3B30`; warning `#FAAD14`
+### Verified prompt fragments
 
-### Example Component Prompts
-- "Build a Class101 primary button: bg `#202020`, white text 16px weight 600, 12px radius, padding 15px 14px, 50px tall. Hover bg `#000000`."
-- "Create a Class101 brand/promo button: bg `#FF5D00`, white text 16px weight 600, 12px radius — for high-energy subscription campaigns only."
-- "Create a Class101 class card: white bg, no border, 8px radius. Thumbnail top (16:9, cover, rounded 8px top). Below: title (16px weight 600 `#000000`), creator name (14px `#767676`), category chip (bg `#F3F3F3`, `#333333`, 999px). Hover shadow `0 2px 8px rgba(0,0,0,0.06)`."
-- "Design a benefit card: bg `#FFF1E8` (orange tint), 8px radius, 24px padding, heading `#000000`, orange `#FF5D00` highlight number."
+- "Use `Pretendard Variable`; the captured home resolves it through a loaded FontFaceSet match."
+- "Create a neutral home navigation button: transparent background, `#000000` text, no border, 8px radius, 16px / 400, 38px observed height."
+- "Create the observed home outlined button only when its context warrants it: transparent background, `#000000` text, 1px `rgba(255,255,255,0.298)` border, 12px radius, 14px 13px padding, 50px observed height."
 
-### Iteration Guide
-1. Orange `#FF5D00` is the spark; black `#202020` is the action — don't swap their roles.
-2. White canvas; thumbnails and creators carry warmth.
-3. Pretendard Variable stack first.
-4. 16px base body — legibility on a learning surface.
-5. Radius: 12px buttons, 8px cards/inputs, 999px chips.
-6. Light shadows; white/`#F3F3F3` contrast separates.
-7. Keep sale-red distinct from brand orange.
-
----
+Do not request unverified cards, inputs, toasts, modal sheets, hover states, responsive behavior, or semantic colors as though they were observed Class101 specifications.
 
 ## 10. Voice & Tone
 
-Class101 speaks like an encouraging mentor who believes you can actually make the thing — warm, motivating, second-person, action-oriented. The register is friendly-polite Korean with `~요`/`~어요` endings (`오늘부터 시작해볼까요?`, `찜한 클래스에 추가했어요`), the supportive-coach voice, never the cold institutional `~습니다` except in policy. The brand premise — *every class in one subscription* — and its hobby/skill roots mean the copy is about *starting*, *making*, *your* potential: it nudges without pressure and celebrates small progress. Korean is primary; English in class titles only.
+The reviewed official material supports a creator-facing invitation to begin: the creator centre says "여러분이 사랑하는 일로 더 나은 세상을 만들어 보세요" and presents the English line "Live the way you love." It also addresses creators in a warm polite Korean register. That is insufficient to prescribe a universal consumer-product voice, error style, or system-message rules.
 
-| Context | Tone |
+| Evidence | Use boundary |
 |---|---|
-| CTAs | Encouraging Korean verb form (`시작하기`, `구독하기`, `수강하기`, `둘러보기`). |
-| Discovery | Motivational, second person (`오늘부터 시작해볼까요?`, `당신을 위한 클래스`). |
-| Success toasts | Past-tense soft ending (`찜한 클래스에 추가했어요`). No emoji on chrome. |
-| Error messages | Blameless, specific, one action (`영상을 불러올 수 없어요. 잠시 후 다시 시도해 주세요`). Never `오류가 발생했습니다`. |
-| Empty states | Warm + one action (`아직 수강 중인 클래스가 없어요. 관심 클래스를 찾아볼까요?`). |
-| Progress / completion | Celebratory but calm (`첫 강의를 완료했어요!`). |
-| Legal / billing | Formal `~합니다` register — the exception. |
-
-**Forbidden phrases.** `오류가 발생했습니다` (generic error), `죄송하지만` on non-destructive failures, guilt/pressure framing on lapsed learners (`아직도 안 하셨나요?` style), superlatives (`최고의 강의`) on UI chrome, English-first strings on Korean surfaces, emoji on system toasts (emoji belongs to creator/community content).
-
-**Voice samples.**
-- `시작하기` — primary CTA, observed live on the `#202020` button. <!-- verified: class101.net/ko via Playwright 2026-05-19 -->
-- `세상의 모든 클래스를 하나의 구독으로` — brand tagline (page title `CLASS101 | 세상의 모든 클래스를 하나의 구독으로`). <!-- verified: page title via Playwright 2026-05-19 -->
-- `오늘부터 시작해볼까요?` — illustrative motivational discovery line. <!-- illustrative: not verified verbatim -->
-- `찜한 클래스에 추가했어요` — illustrative wishlist toast, soft `~요`. <!-- illustrative: not verified verbatim -->
+| "여러분이 사랑하는 일로 더 나은 세상을 만들어 보세요" | Official creator-centre headline; creator acquisition context. |
+| "세상을 바꾸는 크리에이터로서의 여정, 클래스101에서 시작하세요" | Official creator-centre headline; creator journey context. |
+| "Live the way you love" | Official creator-centre mission line; do not treat as a universal UI string. |
 
 ## 11. Brand Narrative
 
-Class101 (클래스101) is operated by **Class101, Inc.**, founded by **Ko Ji-yoon (고지윤)** in 2018 (the company is registered with a US entity, 101 Inc., reflecting its global ambitions — footer business address in Wilmington, Delaware). It launched as an **online-class marketplace** where creators taught hobby and skill classes — drawing, calligraphy, baking, photography, side-business — often bundled with a *materials kit* shipped to the learner so they could actually make the project, not just watch a video. That "kit + class" model was the founding insight: learning a hobby should end in something you made with your hands. ([class101.net](https://class101.net/) — platform; footer corporate info)
+Class101’s official creator centre frames the service as a place where people can begin a creator journey and publish classes or products spanning hobbies, work skills, and side projects. It also says that completed classes can be translated to meet class members globally. The official CLASS101+ page describes the consumer offering as a subscription that provides access to varied existing Class101 classes. Together, these first-party surfaces establish a two-sided learning marketplace: an audience discovers and subscribes to learning content, while creators receive onboarding and publishing support.
 
-Over time Class101 evolved into **CLASS101+**, a Netflix-style flat-rate subscription giving access to the whole catalog — "세상의 모든 클래스를 하나의 구독으로." The brand shifted from one-off class purchase to all-you-can-learn, and the design followed: an editorial, image-forward storefront optimized for *browsing and starting* rather than *buying a single SKU*. The energetic orange is the throughline — it's the color of the spark that makes someone press "시작하기" on a Sunday and actually begin.
-
-What Class101 refuses: the dry, lecture-hall seriousness of academic e-learning (this is hobby and self-improvement, made joyful), the cold credential-mill aesthetic of certification platforms, and high-pressure "limited time only!" urgency that would betray the supportive-mentor tone. Class101 is a motivational learning storefront — bright, warm, and pushing you, gently, to make something.
+The reviewed sources do not establish founding history, named founders, rebrand chronology, or a comprehensive corporate manifesto. Those claims are omitted rather than reconstructed from secondary reporting.
 
 ## 12. Principles
 
-1. **The spark vs. the action.** Orange `#FF5D00` is the emotional spark (brand, promo, highlight); black `#202020` is the dependable action button. *UI implication:* Don't make every primary button orange. Reserve orange for the moments that should feel energizing.
+1. **Creator participation is a first-party stated focus.** The creator centre invites people to begin their creator journey with Class101. *UI implication:* creator-centre language belongs to creator acquisition, not automatically to learner checkout or account flows.
 
-2. **Learning is starting.** Copy and discovery push toward beginning, not toward buying. *UI implication:* `시작하기`, `오늘부터 시작해볼까요?` — lead with the verb of doing.
+2. **The catalogue spans multiple learning and product categories.** The creator centre names hobby, job, and side-project categories. *UI implication:* category navigation may be evidenced separately from generic marketing claims; this capture only confirms neutral 16px home controls.
 
-3. **Legibility is a learning feature.** Base body is 16px; reading surfaces breathe. *UI implication:* Never shrink class-detail body below 16px; curriculum and reviews get room.
-
-4. **Imagery carries the warmth.** Thumbnails and creator faces supply emotion; chrome stays near-monochrome. *UI implication:* White canvas, near-black text, gray meta. Don't compete with the creative work shown.
-
-5. **Encourage, never pressure.** The tone is a supportive mentor, not an urgency-marketing engine. *UI implication:* No guilt framing, no fake scarcity. Celebrate progress (`첫 강의를 완료했어요!`), invite return warmly.
+3. **CLASS101+ is a subscription offering.** The official subscription page describes access to a range of existing Class101 content. *UI implication:* subscription-specific benefits or purchase states require their own observed surface evidence.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by publicly described Class101 user segments (Korean hobby and skill learners), not individual people.*
-
-**서연 (Seo-yeon), 27, Seoul.** Office worker who wants a creative outlet. Subscribed to CLASS101+ for drawing and watercolor classes. Browses on weekends, picks by thumbnail and creator vibe. Loves that one subscription unlocks everything — low commitment to start any class.
-
-**도윤 (Do-yun), 33, Incheon.** Exploring a side business (online store, content creation). Uses Class101 for practical skill classes — Photoshop, marketing, photography. Values clear curriculum and real creator credibility over hype. Will finish a class if the structure is clear.
-
-**하은 (Ha-eun), 23, Busan.** University student learning a hobby (baking, calligraphy). Drawn in by the kit-and-class model — wants to actually make something. Motivated by progress tracking and the encouraging tone. Mobile-first, watches on commute.
+[FILL IN] No first-party user-research or persona material was found in the reviewed sources. Do not substitute fictional learners or creators for evidence.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no enrolled classes)** | Warm line `#767676` (`아직 수강 중인 클래스가 없어요`) + black CTA (`클래스 둘러보기`). |
-| **Empty (search no results)** | `#767676` caption (`검색 결과가 없어요. 다른 키워드로 찾아보세요`) + suggested categories. |
-| **Loading (feed first paint)** | Card-shaped skeletons at `#F3F3F3` matching layout, subtle shimmer. |
-| **Loading (video buffer)** | Centered ring spinner in `#FF5D00` over the dimmed player. |
-| **Error (playback)** | Centered line `#000000` (`영상을 불러올 수 없어요. 잠시 후 다시 시도해 주세요`) + retry (outline) button. |
-| **Error (inline field)** | Input border `#FF3B30`, caption below in red, one actionable sentence. |
-| **Success (wishlist add)** | Snackbar `#202020` + white text (`찜한 클래스에 추가했어요`), 3s dismiss. |
-| **Success (lesson complete)** | Inline celebration — green `#22C55E` check + `첫 강의를 완료했어요!` + progress bar advance. Calm, not confetti-spam. |
-| **Skeleton** | `#F3F3F3` blocks at exact card dimensions, 8px radius, ~1.2s shimmer. |
-| **Disabled (button)** | Black CTA drops to `rgba(32,32,32,0.4)`, white text; geometry stable. |
+[FILL IN] Empty, loading, success, error, disabled, skeleton, and validation states were not observed in the supplied capture. No state token or copy should be inferred from the default-state components.
 
 ## 15. Motion & Easing
 
-Class101's motion is friendly and encouraging — smooth reveals, gentle lifts, a small celebratory pop on progress. Energetic but never frantic.
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle/checkbox, heart fill |
-| `motion-fast` | 150ms | Hover lift, button press, chip select |
-| `motion-standard` | 250ms | Card hover, sheet open, tab switch |
-| `motion-slow` | 350ms | Page-to-detail, hero crossfade, progress celebration |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Default — most motion |
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Sheets, modals, toasts appearing |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-spring` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Reserved — progress/completion celebration only |
-
-**Spring stance.** Spring is licensed for one thing: the small pop on lesson-complete / progress milestones. Everywhere else (navigation, card hover, sheets) uses standard easing. The platform should feel encouraging at the moment of achievement and calm otherwise.
-
-**Signature motions.**
-1. **Card hover lift.** Card raises ~2px with `0 2px 8px rgba(0,0,0,0.06)` over `motion-standard / ease-standard`.
-2. **Progress milestone.** On lesson complete, the green check draws and pops to ~1.15 over `motion-slow / ease-spring` while the progress bar fills with `ease-standard`. The one spring moment.
-3. **Sheet/modal entrance.** Bottom sheet rises from `y+40px` over `motion-standard / ease-enter` with a backdrop fade to `rgba(0,0,0,0.5)`.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, lifts/slides/pops collapse to instant; skeletons go static `#F3F3F3`. No exceptions.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 (UI tokens, §1–9): class101.net/ko live computed styles via Playwright
-MCP, 2026-05-19. Confirmed: primary CTA `#202020` (rgb 32,32,32) 12px radius
-16px 50px tall padding 15px 14px; brand orange `#FF5D00` (rgb 255,93,0) the
-most-frequent saturated accent; surface gray `#F3F3F3` (rgb 243,243,243) 8px;
-white bg; font `"Pretendard Variable", "Pretendard JP Variable", Pretendard,
-system-ui, ...`. Page title `CLASS101 | 세상의 모든 클래스를 하나의 구독으로`.
-
-Brief brand orange `#FF5C00` vs live `#FF5D00` — within 1 unit; live adopted.
-Black-vs-orange CTA treated as distinct roles (action vs brand spark).
-
-Tier 2 (narrative): class101.net footer (corporate info, 101 Inc. Wilmington
-DE address) + general public knowledge of Class101's kit+class origin and
-CLASS101+ subscription pivot. Founder Ko Ji-yoon (고지윤), founded 2018 — widely
-documented; not re-verified against primary Class101 press in this pass.
-
-Voice samples: `시작하기` and tagline `세상의 모든 클래스를 하나의 구독으로`
-verified live (button + page title). `오늘부터 시작해볼까요?`,
-`찜한 클래스에 추가했어요`, `첫 강의를 완료했어요!`, empty/error copy are
-ILLUSTRATIVE patterns following Class101's encouraging `~요` register; not
-verbatim.
-
-Personas (§13) are fictional archetypes. Any resemblance to specific users is
-unintended.
--->
+[FILL IN] The supplied evidence contains no transition, animation, easing, or reduced-motion observations. Do not promote durations or curves.

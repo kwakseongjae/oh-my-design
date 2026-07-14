@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-const UPDATED = "2026년 6월 20일";
+const UPDATED = "2026년 7월 11일";
 
 export const metadata: Metadata = {
   title: "이용약관 — oh-my-design",
   description:
-    "oh-my-design(오픈소스 디자인 시스템 카탈로그·웹사이트·CLI·읽기 전용 Claude 커넥터) 이용약관을 쉬운 말로 안내합니다.",
+    "oh-my-design(오픈소스 디자인 시스템 카탈로그·웹사이트·CLI·레퍼런스 수집 스킬) 이용약관을 쉬운 말로 안내합니다.",
   alternates: {
     canonical: "/terms/ko",
     languages: { en: "/terms", ko: "/terms/ko" },
@@ -61,15 +61,14 @@ export default function TermsKoPage() {
 
         <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
           oh-my-design은 무료 오픈소스 프로젝트로, 디자인 시스템 레퍼런스 카탈로그,
-          본 웹사이트, CLI, 그리고 읽기 전용 Claude 커넥터를 제공합니다. 서비스는
+          본 웹사이트, CLI, 그리고 레퍼런스 수집 스킬을 제공합니다. 서비스는
           &ldquo;있는 그대로&rdquo; 제공되며, 본 약관은 이용에 관한 기본 사항을 안내합니다.
         </p>
 
         <Section n={1} title="목적 및 제공 서비스">
-          <p>본 약관은 oh-my-design.kr 웹사이트·카탈로그, 오픈소스 CLI 및 MCP 패키지,
-            그리고{" "}
-            <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/api/mcp</code>{" "}
-            의 공개·읽기 전용 Claude 커넥터 이용에 적용됩니다. 회원가입은 없으며 서비스는
+          <p>본 약관은 oh-my-design.kr 웹사이트·카탈로그, 오픈소스 CLI 및 레퍼런스 수집
+            스킬 이용에 적용됩니다. 기존 MCP 패키지와 공개 커넥터는 종료했으며 과거 소스
+            코드로만 보존합니다. 회원가입은 없으며 서비스는
             무료입니다. 운영자는 서비스의 전부 또는 일부를 언제든 변경·중단할 수 있습니다.</p>
         </Section>
 
@@ -90,9 +89,9 @@ export default function TermsKoPage() {
             부정확하거나 최신이 아닐 수 있습니다.</p>
         </Section>
 
-        <Section n={4} title="Claude 커넥터">
-          <p>커넥터는 공개 카탈로그에 대한 읽기 전용 인터페이스입니다. Anthropic이
-            운영하지 않으며, 디렉토리 등재가 보증을 의미하지 않습니다. 처리하는 데이터는{" "}
+        <Section n={4} title="종료된 커넥터">
+          <p>기존 읽기 전용 Claude 커넥터는 더 이상 제공하지 않습니다. 스킬과 에이전트는
+            로컬 파일 또는 공개 raw DESIGN.md URL을 직접 사용합니다. 과거 집계 기록의 처리는{" "}
             <Link href="/privacy/ko" className="underline underline-offset-2 hover:text-foreground">개인정보 처리방침</Link>
             을 참고하세요.</p>
         </Section>

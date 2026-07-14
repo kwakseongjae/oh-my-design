@@ -15,6 +15,7 @@
  */
 
 import { useState, useCallback } from "react";
+import Link from "next/link";
 import { Check, Copy, ExternalLink } from "lucide-react";
 import { getLogoUrl, getLogoFallbackUrl } from "@/lib/logos";
 import { isLight } from "@/lib/core/color";
@@ -27,22 +28,18 @@ import {
   type RadiusScaleItem,
   type BorderToken,
   type Guideline,
-  type ComponentBlock,
   type ComponentVariant,
   type ComponentType,
 } from "@/lib/extract-tokens";
 import { lookupFont } from "@/lib/font-registry";
+import { resolveRuntimeFont } from "@/lib/fonts/runtime-family";
 import { FontCard } from "./font-card";
+import { RuntimeFontLoader } from "./runtime-font-loader";
+import type { ReferenceDetailAstContract } from "@/lib/references/detail-projection";
+import { getSectionProvenance, type SectionProvenance } from "@/lib/references/provenance";
+import { orderSpacingScale } from "@/lib/references/token-order";
 
 /* ─────────── Shared utils ─────────── */
-
-function contrastFg(hex: string): string {
-  const m = hex.replace("#", "").match(/.{2}/g);
-  if (!m) return "#ffffff";
-  const [r, g, b] = m.map((x) => parseInt(x, 16));
-  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return lum > 0.6 ? "#0a0a0a" : "#ffffff";
-}
 
 function stripMd(text: string): string {
   return text
@@ -84,7 +81,21 @@ function useCopy() {
 }
 
 /* ─────────── Section frame ─────────── */
-function Section({ title, kicker, children }: { title: string; kicker?: string; children: React.ReactNode }) {
+function ProvenanceBadge({ provenance }: { provenance: SectionProvenance }) {
+  const verified = provenance.status === "verified_v2" && provenance.confidence === "high";
+  return (
+    <span
+      className={`inline-flex shrink-0 items-center rounded-4xl px-2 py-1 text-[10px] font-medium ${
+        verified ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
+      }`}
+      title={`${provenance.claimCount} linked claims · ${provenance.sourceCount} sources · checked ${provenance.checkedAt}`}
+    >
+      {verified ? "Verified" : "Partial"} · {provenance.claimCount} claims · {provenance.checkedAt}
+    </span>
+  );
+}
+
+function Section({ title, kicker, provenance, children }: { title: string; kicker?: string; provenance?: SectionProvenance | null; children: React.ReactNode }) {
   return (
     <section className="border-t border-border/40 py-12">
       <div className="mx-auto max-w-5xl px-6">
@@ -93,7 +104,10 @@ function Section({ title, kicker, children }: { title: string; kicker?: string; 
             {kicker}
           </div>
         )}
-        <h2 className="font-heading text-xl font-semibold tracking-tight mb-8">{title}</h2>
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-2">
+          <h2 className="font-heading text-xl font-semibold tracking-tight">{title}</h2>
+          {provenance ? <ProvenanceBadge provenance={provenance} /> : null}
+        </div>
         {children}
       </div>
     </section>
@@ -119,6 +133,9 @@ function HeroSection({ tokens, homepageUrl }: { tokens: ParsedTokens; homepageUr
   const logoUrl = identity.id ? getLogoUrl(identity.id, logoColor) : null;
   const fallbackLogoUrl = identity.id ? getLogoFallbackUrl(identity.id) : null;
   const [logoSrc, setLogoSrc] = useState<string | null>(logoUrl ?? fallbackLogoUrl);
+  const previewFamily = typography.family
+    ? resolveRuntimeFont(typography.family).cssFamily
+    : undefined;
 
   return (
     <div className="mx-auto max-w-5xl px-6 pt-10 pb-4">
@@ -149,7 +166,7 @@ function HeroSection({ tokens, homepageUrl }: { tokens: ParsedTokens; homepageUr
           )}
           <h1
             className="text-5xl font-bold tracking-tight text-foreground"
-            style={{ fontFamily: typography.family }}
+            style={{ fontFamily: previewFamily }}
           >
             {identity.name}
           </h1>
@@ -157,7 +174,7 @@ function HeroSection({ tokens, homepageUrl }: { tokens: ParsedTokens; homepageUr
         {mood && (
           <p
             className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground"
-            style={{ fontFamily: typography.family }}
+            style={{ fontFamily: previewFamily }}
           >
             {mood}
           </p>
@@ -224,16 +241,17 @@ function ColorSwatch({ role, copied, onCopy }: { role: ColorRole; copied: boolea
   );
 }
 
-function ColorPaletteSection({ tokens }: { tokens: ParsedTokens }) {
+function ColorPaletteSection({ tokens, provenance }: { tokens: ParsedTokens; provenance?: SectionProvenance | null }) {
   const { paletteRoles } = tokens;
   const { copied, copy } = useCopy();
+  if (paletteRoles.length === 0) return null;
   const grouped: Record<ColorCategory, ColorRole[]> = {
     brand: [], accent: [], neutral: [], semantic: [],
   };
   for (const r of paletteRoles) grouped[r.category].push(r);
 
   return (
-    <Section title="Color Palette" kicker="01">
+    <Section title="Color Palette" kicker="01" provenance={provenance}>
       <div className="space-y-8">
         {CATEGORY_ORDER.map((cat) => {
           const items = grouped[cat];
@@ -244,7 +262,7 @@ function ColorPaletteSection({ tokens }: { tokens: ParsedTokens }) {
               <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-4">
                 {items.map((role) => (
                   <ColorSwatch
-                    key={role.hex}
+                    key={`${role.category}:${role.name}:${role.hex}`}
                     role={role}
                     copied={copied === role.hex}
                     onCopy={() => copy(role.hex, role.hex)}
@@ -260,26 +278,40 @@ function ColorPaletteSection({ tokens }: { tokens: ParsedTokens }) {
 }
 
 /* ─────────── Typography ─────────── */
-function TypographySection({ tokens }: { tokens: ParsedTokens }) {
+function TypographySection({ tokens, provenance }: { tokens: ParsedTokens; provenance?: SectionProvenance | null }) {
   const { typography } = tokens;
-  const sysFamily = "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   const fonts = typography.fonts;
+  const runtimeFamilies = [typography.family, ...fonts.map((font) => font.raw), ...typography.hierarchy.map((tier) => tier.fontFamily)];
+  const renderableHierarchy = typography.hierarchy.filter(
+    (tier) => {
+      const family = tier.fontFamily ?? typography.family;
+      return !family || resolveRuntimeFont(family).mode !== "unavailable";
+    },
+  );
+  if (fonts.length === 0 && renderableHierarchy.length === 0) return null;
 
   return (
-    <Section title="Typography" kicker="02">
+    <Section title="Typography" kicker="02" provenance={provenance}>
+      <RuntimeFontLoader families={runtimeFamilies} />
       <div className="space-y-6">
         {/* Type Scale */}
-        <div className="space-y-3">
+        {renderableHierarchy.length > 0 && <div className="space-y-3">
           <div className="flex items-baseline justify-between gap-4 flex-wrap">
             <SubLabel>Type Scale</SubLabel>
             <p className="text-[11px] text-muted-foreground italic">
-              Rendered in system-ui to clearly show scale & weight.
+              Verified size, weight, line-height, and tracking. Family is omitted when unresolved.
             </p>
           </div>
           <div className="rounded-2xl border border-border/50 overflow-hidden divide-y divide-border/40">
-            {typography.hierarchy.map((tier) => {
+            {renderableHierarchy.map((tier) => {
               const tokenLabel = roleToTokenLabel(tier.role, tier.fontSize);
-              const lhStr = Number.isInteger(tier.lineHeight) ? `${tier.lineHeight}` : tier.lineHeight.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+              const lhStr = typeof tier.lineHeight === "string"
+                ? tier.lineHeight
+                : Number.isInteger(tier.lineHeight)
+                  ? `${tier.lineHeight}`
+                  : tier.lineHeight.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+              const family = tier.fontFamily ?? typography.family;
+              const runtimeFont = family ? resolveRuntimeFont(family) : null;
               return (
                 <div key={tier.role} className="px-4 py-3">
                   <div className="flex items-center justify-between mb-1">
@@ -293,7 +325,7 @@ function TypographySection({ tokens }: { tokens: ParsedTokens }) {
                   <div
                     className={`w-full truncate text-left ${tier.muted ? "text-muted-foreground" : "text-foreground"}`}
                     style={{
-                      fontFamily: sysFamily,
+                      fontFamily: runtimeFont?.cssFamily,
                       fontSize: tier.fontSize,
                       fontWeight: tier.fontWeight,
                       lineHeight: tier.lineHeight,
@@ -306,46 +338,43 @@ function TypographySection({ tokens }: { tokens: ParsedTokens }) {
               );
             })}
           </div>
-        </div>
+        </div>}
 
         {/* Fonts */}
-        <div className="space-y-3">
+        {fonts.length > 0 && <div className="space-y-3">
           <SubLabel>Fonts</SubLabel>
-          {fonts.length === 0 ? (
-            <div className="rounded-2xl border border-border/50 px-5 py-6 text-sm text-muted-foreground text-center">
-              No fonts mentioned in §3 Typography of this DESIGN.md.
-            </div>
-          ) : (
-            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-              {fonts.map((mention, i) => (
-                <FontCard key={`${mention.raw}-${i}`} font={lookupFont(mention.raw)} role={mention.role} />
-              ))}
-            </div>
-          )}
-        </div>
+          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+            {fonts.map((mention, i) => (
+              <FontCard
+                key={`${mention.raw}-${i}`}
+                font={lookupFont(mention.raw)}
+                role={mention.role}
+                fontFamilyForRender={resolveRuntimeFont(mention.raw).cssFamily}
+              />
+            ))}
+          </div>
+        </div>}
       </div>
     </Section>
   );
 }
 
 /* ─────────── Spacing & Shape ─────────── */
-function SpacingShapeSection({ tokens }: { tokens: ParsedTokens }) {
-  const { functionalSpacing, radiusScale, borders, shadows, identity } = tokens;
+function SpacingShapeSection({ tokens, provenance }: { tokens: ParsedTokens; provenance?: SectionProvenance | null }) {
+  const { spacingScale, radiusScale, borders, shadows, identity } = tokens;
   // Refero shows 5 functional roles instead of a raw scale — clearer at a
   // glance, matches how designers actually reason about layout density.
-  const fs = functionalSpacing;
-  const spacingRows: { purpose: string; value: string; preview: number | null }[] = [
-    { purpose: "Density",      value: fs.density,            preview: null },
-    { purpose: "Base unit",    value: `${fs.baseUnit}px`,    preview: fs.baseUnit },
-    { purpose: "Section gap",  value: `${fs.sectionGap}px`,  preview: fs.sectionGap },
-    { purpose: "Card padding", value: `${fs.cardPadding}px`, preview: fs.cardPadding },
-    { purpose: "Element gap",  value: `${fs.elementGap}px`,  preview: fs.elementGap },
-  ];
+  const spacingRows = orderSpacingScale(spacingScale).map((item, index) => ({
+    purpose: item.purpose ?? `token-${index + 1}`,
+    value: `${item.value}px`,
+    preview: item.value,
+  }));
+  if (spacingRows.length === 0 && radiusScale.length === 0 && borders.length === 0 && shadows.length === 0) return null;
   return (
-    <Section title="Spacing & Shape" kicker="03">
+    <Section title="Spacing & Shape" kicker="03" provenance={provenance}>
       <div className="space-y-6">
         {/* Spacing */}
-        <div className="space-y-3">
+        {spacingRows.length > 0 && <div className="space-y-3">
           <SubLabel>Spacing</SubLabel>
           <div className="overflow-hidden rounded-2xl border border-border/50">
             <table className="w-full table-fixed text-sm">
@@ -386,10 +415,10 @@ function SpacingShapeSection({ tokens }: { tokens: ParsedTokens }) {
               </tbody>
             </table>
           </div>
-        </div>
+        </div>}
 
         {/* Border Radius */}
-        <div className="space-y-3">
+        {radiusScale.length > 0 && <div className="space-y-3">
           <SubLabel>Border Radius</SubLabel>
           <div className="overflow-hidden rounded-2xl border border-border/50">
             <table className="w-full table-fixed text-sm">
@@ -421,7 +450,7 @@ function SpacingShapeSection({ tokens }: { tokens: ParsedTokens }) {
               </tbody>
             </table>
           </div>
-        </div>
+        </div>}
 
         {/* Borders */}
         {borders.length > 0 && (
@@ -1025,7 +1054,11 @@ function VariantSpec({ variant }: { variant: ComponentVariant }) {
           .map((tok) => (/^\d+(?:\.\d+)?$/.test(tok) ? `${tok}px` : tok))
           .join(" ");
       }
-      return { label, value };
+      const displayLabel =
+        key === "font" && value && /^\s*\d+(?:\.\d+)?px\s*\/\s*\d{3}(?:\s*\/.*)?\s*$/.test(value)
+          ? "Text style"
+          : label;
+      return { label: displayLabel, value };
     })
     .filter((r) => r.value);
   const extras = Object.entries(variant.extras);
@@ -1057,9 +1090,9 @@ function VariantSpec({ variant }: { variant: ComponentVariant }) {
  *  variant. When DESIGN.md hasn't been migrated to the canonical schema, the
  *  block list is empty and we fall back to a small "not yet migrated" notice
  *  so the gap is honest, not hidden behind generic dashboard mock. */
-function ComponentsSection({ tokens, kicker }: { tokens: ParsedTokens; kicker: string }) {
+function ComponentsSection({ tokens, kicker, provenance }: { tokens: ParsedTokens; kicker: string; provenance?: SectionProvenance | null }) {
   const { components, typography } = tokens;
-  const font = typography.family;
+  const font = typography.family ? resolveRuntimeFont(typography.family).cssFamily : undefined;
   const primary = tokens.identity.primary;
 
   // Some brand DESIGN.md files describe layout/spacing in §4 instead of
@@ -1068,7 +1101,7 @@ function ComponentsSection({ tokens, kicker }: { tokens: ParsedTokens; kicker: s
   if (components.length === 0) return null;
 
   return (
-    <Section title="Components" kicker={kicker}>
+    <Section title="Components" kicker={kicker} provenance={provenance}>
       <div className="space-y-8">
         {components.map((block, i) => (
           <div key={i} className="space-y-3">
@@ -1169,35 +1202,36 @@ export function ReferencePreview({
   overrides,
   embedded = false,
   homepageUrl,
+  referenceAst,
 }: {
   tokens: ParsedTokens;
   overrides?: PreviewOverrides;
   embedded?: boolean;
   homepageUrl?: string;
+  referenceAst?: ReferenceDetailAstContract;
 }) {
   const tokens = applyOverrides(rawTokens, overrides);
-  const prefs = overrides?.stylePreferences;
   const wrapperClass = embedded ? "" : "min-h-screen";
 
   return (
     <div className={wrapperClass}>
       <HeroSection tokens={tokens} homepageUrl={homepageUrl} />
-      <ColorPaletteSection tokens={tokens} />
-      <TypographySection tokens={tokens} />
-      <SpacingShapeSection tokens={tokens} />
+      <ColorPaletteSection tokens={tokens} provenance={getSectionProvenance(referenceAst, ["tokens.colors.", "tokens.color."])} />
+      <TypographySection tokens={tokens} provenance={getSectionProvenance(referenceAst, ["tokens.typography.", "tokens.font.", "tokens.text."])} />
+      <SpacingShapeSection tokens={tokens} provenance={getSectionProvenance(referenceAst, ["tokens.spacing.", "tokens.rounded.", "tokens.radius.", "tokens.shadow."])} />
       {tokens.guidelines.length > 0 ? (
         <>
           <GuidelinesSection guidelines={tokens.guidelines} kicker="04" />
-          <ComponentsSection tokens={tokens} kicker="05" />
+          <ComponentsSection tokens={tokens} kicker="05" provenance={getSectionProvenance(referenceAst, ["tokens.components."])} />
         </>
       ) : (
-        <ComponentsSection tokens={tokens} kicker="04" />
+        <ComponentsSection tokens={tokens} kicker="04" provenance={getSectionProvenance(referenceAst, ["tokens.components."])} />
       )}
       {!embedded && (
         <footer className="border-t border-border/40 py-8 mt-8">
           <div className="mx-auto max-w-5xl px-6 text-xs text-muted-foreground text-center">
             Generated by{" "}
-            <a href="/" className="underline hover:text-foreground">oh-my-design</a>{" "}
+            <Link href="/" className="underline hover:text-foreground">oh-my-design</Link>{" "}
             from <code className="font-mono">references/{tokens.identity.name.toLowerCase()}/DESIGN.md</code>
           </div>
         </footer>

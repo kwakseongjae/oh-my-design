@@ -122,7 +122,7 @@ const SECTIONS: QASection[] = [
       },
       {
         q: "getdesign.md 같은 다른 DESIGN.md 모음과 oh-my-design은 뭐가 다른가요?",
-        a: "getdesign.md는 Apple·BMW·Stripe·Figma 같은 서구권 브랜드의 DESIGN.md를 보기 좋게 모아둔 무료 카탈로그입니다. 영어 중심이고 browse→copy(둘러보고 복사)에 강합니다. oh-my-design은 세 가지가 다릅니다. (1) 한국 브랜드 깊이 — 토스·당근·배민·카카오·네이버·쿠팡·무신사·뱅크샐러드·29CM·컬리 등 getdesign.md에는 거의 없는 국내 디자인 시스템을 다룹니다. (2) 단순 카탈로그가 아니라 한 번 설치하면 동작하는 에이전트 레이어 — skills(omd:init/apply/harness/sync), 서브에이전트, MCP 서버를 제공해 DESIGN.md를 실제 UI 생성에 바로 적용합니다. (3) 더 깊은 스키마 — 기본 9개 섹션 위에 Voice·Narrative·Principles·Personas·States·Motion을 더한 15개 섹션 OmD v0.1 구조입니다. 정리하면, 서구권 브랜드를 빠르게 둘러보려면 getdesign.md가 좋고, 한국 브랜드 기반으로 실제 작업에 녹여 쓰려면 oh-my-design이 맞습니다.",
+        a: "getdesign.md는 Apple·BMW·Stripe·Figma 같은 서구권 브랜드의 DESIGN.md를 보기 좋게 모아둔 무료 카탈로그입니다. 영어 중심이고 browse→copy(둘러보고 복사)에 강합니다. oh-my-design은 세 가지가 다릅니다. (1) 한국 브랜드 깊이 — 토스·당근·배민·카카오·네이버·쿠팡·무신사·뱅크샐러드·29CM·컬리 등 getdesign.md에는 거의 없는 국내 디자인 시스템을 다룹니다. (2) 단순 카탈로그가 아니라 한 번 설치하면 동작하는 에이전트 레이어 — skills(omd:init/apply/harness/sync)와 서브에이전트를 제공해 DESIGN.md를 실제 UI 생성에 바로 적용합니다. (3) 더 깊은 스키마 — 기본 9개 섹션 위에 Voice·Narrative·Principles·Personas·States·Motion을 더한 15개 섹션 OmD v0.1 구조입니다. 정리하면, 서구권 브랜드를 빠르게 둘러보려면 getdesign.md가 좋고, 한국 브랜드 기반으로 실제 작업에 녹여 쓰려면 oh-my-design이 맞습니다.",
       },
       {
         q: "한국 브랜드(토스·당근·배민)도 있나요?",

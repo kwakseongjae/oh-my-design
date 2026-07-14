@@ -206,7 +206,24 @@ describe("applyOverridesToMd – baseline", () => {
 // ── applyOverridesToMd: Color prose sanitizer ─────────────────────
 
 describe("applyOverridesToMd – color prose sanitizer", () => {
-  const stripeMd = readRef("stripe");
+  // Keep the sanitizer contract independent from the continuously reverified
+  // Stripe catalog entry. The fixture captures the legacy prose shapes this
+  // compatibility path must still rewrite without forcing stale claims back
+  // into a live reference.
+  const stripeMd = `---
+id: stripe-fixture
+primary_color: "#533afd"
+---
+
+## 1. Visual Theme & Atmosphere
+
+Stripe Purple is the signature purple. A tinted shadow uses rgba(50,50,93,0.25), while the neutral layer uses rgba(0,0,0,0.1).
+
+## 2. Color Palette & Roles
+
+- **Ruby** (#ea2261): Accent only.
+- **Magenta** (#f96bee): Accent only.
+`;
 
   it("rewrites 'Stripe Purple' to 'Brand <NewFamily>' when user swaps to green", () => {
     const out = applyOverridesToMd(
@@ -320,9 +337,40 @@ describe("applyOverridesToMd – Philosophy Layer", () => {
 // ── applyOverridesToMd: inline subsection rewrites ────────────────
 
 describe("applyOverridesToMd – StylePreferences inline modifications", () => {
+  const styleFixture = [
+    "# Design System Inspiration of Vercel",
+    "",
+    "## 1. Visual Theme & Atmosphere",
+    "",
+    "Vercel uses #171717 and Geist.",
+    "",
+    "## 4. Component Stylings",
+    "",
+    "### Buttons",
+    "- Default buttons are pill-shaped with Radius: 9999px.",
+    "",
+    "### Inputs & Forms",
+    "- Border: 1px solid #ebebeb",
+    "- Radius: 6px",
+    "",
+    "### Navigation",
+    "- White header with standard navigation links.",
+    "",
+    "## 5. Layout Principles",
+    "",
+    "### Whitespace Philosophy",
+    "- **Gallery emptiness**: generous breathing room around focused content.",
+    "",
+    "### Border Radius",
+    "- Radius: 6px",
+    "",
+    "## 6. Depth & Elevation",
+    "",
+  ].join("\n");
+
   function withPrefs(prefs: StylePreferences, overrides: Partial<Overrides> = {}): string {
     return applyOverridesToMd(
-      vercelMd, "Vercel", "#171717", "Geist",
+      styleFixture, "Vercel", "#171717", "Geist",
       { ...baseOverrides, ...overrides },
       undefined, prefs,
     );
@@ -584,16 +632,16 @@ describe("applyOverridesToMd – appends", () => {
     expect(out).toContain("- Data table");
   });
 
-  it("always appends Iconography & SVG Guidelines section", () => {
+  it("does not invent generic iconography guidance", () => {
     const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides);
-    expect(out).toContain("## Iconography & SVG Guidelines");
-    expect(out).toContain("Lucide React");
+    expect(out).not.toContain("## Iconography & SVG Guidelines");
+    expect(out).not.toContain("Lucide React");
   });
 
-  it("always appends Document Policies section", () => {
+  it("does not invent generic document policies", () => {
     const out = applyOverridesToMd(vercelMd, "Vercel", "#171717", "Geist", baseOverrides);
-    expect(out).toContain("## Document Policies");
-    expect(out).toContain("No Emojis");
+    expect(out).not.toContain("## Document Policies");
+    expect(out).not.toContain("No Emojis");
   });
 
   it("appends Dark Mode Tokens section when darkMode=true", () => {
@@ -611,15 +659,14 @@ describe("applyOverridesToMd – appends", () => {
     expect(out).not.toContain("## Dark Mode Tokens");
   });
 
-  it("places Dark Mode Tokens before Iconography & SVG Guidelines", () => {
+  it("appends only the user-selected Dark Mode section", () => {
     const out = applyOverridesToMd(
       vercelMd, "Vercel", "#171717", "Geist",
       { ...baseOverrides, darkMode: true },
     );
     const darkIdx = out.indexOf("## Dark Mode Tokens");
-    const iconIdx = out.indexOf("## Iconography & SVG Guidelines");
     expect(darkIdx).toBeGreaterThan(0);
-    expect(iconIdx).toBeGreaterThan(darkIdx);
+    expect(out).not.toContain("## Iconography & SVG Guidelines");
   });
 
   it("does NOT embed shadcn CSS in the markdown body (CSS is exported separately)", () => {

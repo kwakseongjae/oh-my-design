@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "name": "codex-terra-chatgpt-subscription",
+  "billingMode": "subscription",
+  "command": {
+    "executable": "node",
+    "args": [
+      "web/scripts/adapters/run-codex-reverify.mjs",
+      "--packet", "{packet}",
+      "--reference", "{referenceId}",
+      "--evidence", "{evidenceArtifact}",
+      "--workspace", "{workspace}",
+      "--model", "{modelProfile}",
+      "--reasoning", "{reasoningEffort}"
+    ]
+  },
+  "passEnvironment": [],
+  "limits": {
+    "maxTasksPerRun": 1,
+    "maxPullRequestsPerRun": 1,
+    "maxRetries": 0,
+    "timeoutMinutes": 60,
+    "maxBudgetUsd": 0
+  }
+}

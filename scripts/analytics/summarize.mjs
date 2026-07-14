@@ -20,9 +20,9 @@ const up = load("upstash.json");
 if (up?.counters) {
   P("════════ UPSTASH — per-reference product funnel ════════");
   const c = up.counters;
-  const sel = c.select?.total ?? 0, gen = c.generate?.total ?? 0, dl = c.download?.total ?? 0, cp = c.copy?.total ?? 0;
-  P(`AGGREGATE  select ${sel} → generate ${gen} (${pct(gen, sel)}) → download ${dl} (${pct(dl, gen)}) | copy ${cp} (${pct(cp, gen)})`);
-  P(`distinct refs: select ${c.select?.distinct} / generate ${c.generate?.distinct} / download ${c.download?.distinct} / copy ${c.copy?.distinct}`);
+  const sel = c.select?.total ?? 0, gen = c.generate?.total ?? 0, dl = c.download?.total ?? 0, cp = c.copy?.total ?? 0, inst = c.install?.total ?? 0;
+  P(`AGGREGATE  select ${sel} → generate ${gen} (${pct(gen, sel)}) → download ${dl} (${pct(dl, gen)}) | copy ${cp} (${pct(cp, gen)}) | install ${inst} (${pct(inst, gen)})`);
+  P(`distinct refs: select ${c.select?.distinct} / generate ${c.generate?.distinct} / download ${c.download?.distinct} / copy ${c.copy?.distinct} / install ${c.install?.distinct}`);
   const f = up.funnel ?? [];
   P("\nTOP 15 by select (sel → sel2gen → gen2dl):");
   for (const r of f.slice(0, 15)) P(`  ${r.reference.padEnd(22)} sel ${String(r.select).padStart(5)}  gen ${String(r.generate).padStart(5)} (${r.sel2gen ?? "—"})  dl ${String(r.download).padStart(4)} (${r.gen2dl ?? "—"})`);
@@ -64,6 +64,19 @@ if (ga) {
   tbl("landing_pages", "landingPagePlusQueryString", ["sessions", "engagementRate", "bounceRate"], 12);
   tbl("pages", "pagePath", ["screenPageViews", "activeUsers"], 12);
   tbl("events", "eventName", ["eventCount", "totalUsers"], 30);
+  const multi = (name, dims, n = 20) => {
+    const report = ga[name];
+    if (!report?.rows) { P(`[${name}] ${report?.error ? "ERROR" : "no data"}`); return; }
+    P(`\n${name.toUpperCase()} (${report.rows.length} rows):`);
+    for (const row of report.rows.slice(0, n)) {
+      const label = dims.map((dim) => row[dim] || "—").join(" · ");
+      P(`  ${label.slice(0, 68).padEnd(69)} events=${row.eventCount}  users=${row.totalUsers}`);
+    }
+  };
+  multi("source_formats", ["eventName", "customEvent:format", "customEvent:action"]);
+  multi("collections", ["eventName", "customEvent:collection", "customEvent:color_family", "customEvent:origin"]);
+  multi("reference_shares", ["customEvent:reference", "customEvent:location", "customEvent:artifact"]);
+  multi("wall_references", ["customEvent:reference"], 30);
   tbl("country", "country", ["activeUsers", "engagementRate"], 12);
   tbl("device", "deviceCategory", ["activeUsers", "engagementRate"], 5);
 }

@@ -5,403 +5,294 @@ display_name_kr: Olive Young (올리브영)
 country: KR
 category: ecommerce
 homepage: "https://www.oliveyoung.co.kr"
-primary_color: "#9bce26"
+primary_color: "#82dc28"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=oliveyoung.co.kr&sz=256"
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: storefront-home, kind: storefront, url: "https://www.oliveyoung.co.kr/store/main/main.do?oy=0", inspected: "2026-07-13" }
+    - { id: corporate-home, kind: corporate, url: "https://corp.oliveyoung.com/ko", inspected: "2026-07-13" }
+  sources:
+    - { id: storefront-live, kind: product-surface, url: "https://www.oliveyoung.co.kr/store/main/main.do?oy=0", captured: "2026-07-13" }
+    - { id: corporate-live, kind: product-surface, url: "https://corp.oliveyoung.com/ko", captured: "2026-07-13" }
+    - { id: brand-resources, kind: brand-asset, url: "https://corp.oliveyoung.com/en/company/brand", captured: "2026-07-13" }
+    - { id: history-context, kind: official-doc, url: "https://corp.oliveyoung.com/en/company/history", captured: "2026-07-13" }
+    - { id: mission-context, kind: official-doc, url: "https://corp.oliveyoung.com/en/company/main", captured: "2026-07-13" }
+    - { id: vision-context, kind: official-doc, url: "https://corp.oliveyoung.com/en/company/vision", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.storefront-canvas": &storefront { surface_id: storefront-home, source_id: storefront-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.storefront-ink": *storefront
+    "tokens.colors.storefront-body": *storefront
+    "tokens.colors.storefront-muted": *storefront
+    "tokens.colors.storefront-line": *storefront
+    "tokens.colors.storefront-current": *storefront
+    "tokens.colors.corporate-brand-green": &corporate { surface_id: corporate-home, source_id: corporate-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.family.storefront": *storefront
+    "tokens.typography.family.corporate": *corporate
+    "tokens.typography.storefront-body.size": *storefront
+    "tokens.typography.storefront-body.weight": *storefront
+    "tokens.typography.storefront-body.lineHeight": *storefront
+    "tokens.typography.storefront-body.tracking": *storefront
+    "tokens.typography.storefront-body.use": *storefront
+    "tokens.typography.corporate-display.size": *corporate
+    "tokens.typography.corporate-display.weight": *corporate
+    "tokens.typography.corporate-display.lineHeight": *corporate
+    "tokens.typography.corporate-display.tracking": *corporate
+    "tokens.typography.corporate-display.use": *corporate
+    "tokens.spacing.search-x": *storefront
+    "tokens.spacing.search-end": *storefront
+    "tokens.rounded.outline-control": *storefront
+    "tokens.rounded.search-field": *storefront
+    "tokens.rounded.pagination-current": *storefront
+    "tokens.components.pagination-current.type": *storefront
+    "tokens.components.pagination-current.bg": *storefront
+    "tokens.components.pagination-current.fg": *storefront
+    "tokens.components.pagination-current.radius": *storefront
+    "tokens.components.pagination-current.font": *storefront
+    "tokens.components.pagination-current.active": *storefront
+    "tokens.components.pagination-current.use": *storefront
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  colors:
-    black: "#000000"
-    ink: "#131518"
-    muted: "#888888"
-    neutral-dark: "#2f3030"
-    neutral-alt: "#454c53"
-    neutral-alt-2: "#50585f"
-    chip-text: "#757d86"
-    canvas: "#ffffff"
-    paper: "#f6f7f9"
-    line: "#e5e7ea"
-    line-thin: "#ebebeb"
-    sale: "#f65c60"
-    best: "#f05a5e"
-    same-day: "#f374b7"
-    coupon: "#9bce26"
-    gift: "#6fcff7"
-    promo-salmon: "#f27370"
-  typography:
-    family: { sans: "Montserrat", mono: "Montserrat" }
-    h1: { size: 28, weight: 700, use: "Legacy main page title" }
-    title: { size: 16, weight: 700, use: "Card titles, emphasis" }
-    body: { size: 14, weight: 400, lineHeight: 1.4, use: "Standard reading text" }
-    caption: { size: 13, weight: 400, use: "Brand, meta" }
-    small: { size: 12, weight: 400, use: "Flags, fine print" }
-  spacing: { sm: 8, base: 16, lg: 18 }
-  rounded: { sm: 4, md: 9, lg: 20, full: 9999 }
-  shadow:
-    none: "none"
-  components:
-    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 4, padding: "12px 18px", font: "13.33px/700", use: "Filled black CTA (장바구니 담기)" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#454c53", radius: 4, padding: "10px 16px", font: "14px/500", use: "Secondary action (신상 더보기)" }
-    pagination-active: { type: button, bg: "#2f3030", fg: "#ffffff", radius: 9999, font: "14px/700", use: "Current page indicator" }
-    category-pill: { type: tab, bg: "#ffffff", fg: "#757d86", radius: 20, padding: "8px 14px", font: "14px/400", use: "Category shortcut", active: "#000000 bg, #ffffff text" }
-    filter-chip: { type: tab, bg: "#ffffff", fg: "#757d86", radius: 18, padding: "8px 14px", font: "14px/400", use: "Search facet filter" }
-    flag-sale: { type: badge, bg: "#f65c60", fg: "#ffffff", radius: 9, padding: "3px 6px", font: "12px/400", use: "세일 in-thumbnail pill" }
-    flag-same-day: { type: badge, bg: "#f374b7", fg: "#ffffff", radius: 9, font: "12px/400", use: "오늘드림 pill" }
-    flag-coupon: { type: badge, bg: "#9bce26", fg: "#ffffff", radius: 9, font: "12px/400", use: "쿠폰 pill" }
-    flag-gift: { type: badge, bg: "#6fcff7", fg: "#ffffff", radius: 9, font: "12px/400", use: "증정 pill" }
-    best-badge: { type: badge, bg: "#ffffff", fg: "#f05a5e", radius: 24, padding: "8px 18px", font: "14px/700", use: "베스트 sash on hero rails" }
-    search-input: { type: input, bg: "#ffffff", fg: "#131518", radius: 0, font: "13.33px/400", use: "Global GNB product search" }
-    product-card: { type: card, bg: "#ffffff", fg: "#131518", radius: 0, use: "Search/list product tile" }
+  source: reconciled
+  extracted: "2026-07-13"
   components_harvested: true
+  colors:
+    storefront-canvas: "#ffffff"
+    storefront-ink: "#131518"
+    storefront-body: "#666666"
+    storefront-muted: "#888888"
+    storefront-line: "#ebebeb"
+    storefront-current: "#2f3030"
+    corporate-brand-green: "#82dc28"
+  typography:
+    family: { storefront: "Montserrat", corporate: "CJONLYONENew" }
+    storefront-body: { size: 14, weight: 400, lineHeight: 20, tracking: -0.56, use: "Storefront home body and navigation text" }
+    corporate-display: { size: 25.2, weight: 700, lineHeight: 35.28, tracking: 0, use: "Corporate home display copy" }
+  spacing: { search-x: 14, search-end: 10 }
+  rounded: { outline-control: 4, search-field: 5, pagination-current: 12 }
+  components:
+    pagination-current: { type: tab, bg: "#2f3030", fg: "#ffffff", radius: 12, font: "14px/700/Montserrat", active: "Current carousel pagination item; selected markup observed", use: "24px current item in storefront home carousel pagination" }
 ---
+
+# Olive Young — Design Reference
 
 ## 1. Visual Theme & Atmosphere
 
-Olive Young presents as a **dense, scan-first H&B catalog**: a near-monochrome grayscale chrome (white surface, body ink `#666`, primary ink `#131518`) carries 90%+ of the surface, then snaps awake at the product card with a **five-color flag taxonomy** — `#F65C60` sale, `#F374B7` 오늘드림 same-day, `#9BCE26` coupon, `#6FCFF7` gift, plus the `#F05A5E` best-badge ring. Korean retail visual culture (Coupang, Wadiz, 11번가) leans on weight and tag-color over heroes; Olive Young sits at the disciplined end of that lineage — grid-tight, photo-led, with `#fff` ground for product respect and chromatic noise reserved for status payload. Architecturally the site is **dual-stack** — legacy JSP `Montserrat → NotoSansCJKkr → AppleSDGothicNeo → 돋움` chrome on `/store/main/*`, `/best`, `/search`, while the new Next.js subtree (visible on `/store/goods/getGoodsDetail.do` even in its ProductNotFound shell — `ProductNotFound_btn__`, `GnbForDesktop_category-toggle-button__`, `OYCompanyInfo_*` CSS Modules, runtime `--background:#0a0a0a / --foreground:#ededed / --font-noto-sans-kr / --font-roboto`) signals a multi-year token refresh in flight on product-detail first. Mood word: *brisk pharmacy aisle* — bright, taxonomic, no rhetorical lift, the work happens at the thumbnail.
+Olive Young is the CJ retail platform that grew from Korea’s first Beauty & Health store into an omnichannel beauty-and-wellness business. Its official history describes a move away from the traditional health-supplement drugstore model toward beauty, trend discovery, locally tailored assortments, stores, and digital services; its current mission is to help customers live healthier and more beautiful everyday lives. The supplied 2026 capture shows that this story is expressed very differently by two owned surfaces. The shopping storefront is an information-dense, white and charcoal retail interface dominated by `#666666` body copy, a loaded Montserrat web family, square product controls, and a compact 24px current-page marker. The corporate site is a separate brand-and-company presentation with loaded CJONLYONENew and the observed `#82dc28` brand green. These are not one interchangeable UI system: corporate identity context must not be used to fill gaps in the storefront, and the storefront capture does not establish an authenticated app, checkout, mobile, or documentation system.
 
-## 2. Color
+- **Storefront evidence:** a white canvas, low-radius controls, black-to-gray text hierarchy, and carousel/product-grid mechanics on the public home page.
+- **Corporate evidence:** the green aligns with the official brand-resources description of Olive Green, while corporate typography resolves to CJONLYONENew.
+- **Current brand evolution:** Olive Young’s official 2025 newsroom announcement says its renewed wordmark was designed for clearer visibility across online and offline global expansion; that is identity context, not a storefront component token.
 
-| Token | Value | Role |
-|---|---|---|
-| `ink/primary` | `rgb(19, 21, 24)` ≈ `#131518` | GNB items, nav, headings on white |
-| `ink/default` | `rgb(51, 51, 51)` ≈ `#333` | Card titles, mid-weight copy |
-| `ink/body` | `rgb(102, 102, 102)` ≈ `#666` | Body default (also `body` element color) |
-| `ink/muted` | `rgb(136, 136, 136)` ≈ `#888` | Meta lines, inactive pagination |
-| `ink/disabled` | `rgb(170, 170, 170)` ≈ `#AAA` | Disabled |
-| `ink/neutral-dark` | `rgb(47, 48, 48)` ≈ `#2F3030` | Active pagination fill |
-| `ink/neutral-alt` | `rgb(69, 76, 83)` ≈ `#454C53` | "신상 더보기" outline button text |
-| `ink/neutral-alt-2` | `rgb(80, 88, 95)` ≈ `#50585F` | Footer links / company-info button |
-| `ink/neutral-alt-3` | `rgb(117, 125, 134)` ≈ `#757D86` | Chip text |
-| `surface/white` | `#FFFFFF` | Ground (≈ all chrome) |
-| `surface/paper` | `rgb(246, 247, 249)` ≈ `#F6F7F9` | Filter strip / quiet panels |
-| `line/default` | `rgb(229, 231, 234)` ≈ `#E5E7EA` | Chip + card border |
-| `line/thin` | `rgb(235, 235, 235)` ≈ `#EBEBEB` | 1px tile separator (heart-button border) |
-| `flag/sale` | `rgb(246, 92, 96)` ≈ `#F65C60` | "세일" pill |
-| `flag/best` | `rgb(240, 90, 94)` ≈ `#F05A5E` | "베스트" badge ring + text |
-| `flag/same-day` | `rgb(243, 116, 183)` ≈ `#F374B7` | "오늘드림" |
-| `flag/coupon` | `rgb(155, 206, 38)` ≈ `#9BCE26` | "쿠폰" (closest live token to brand olive) |
-| `flag/gift` | `rgb(111, 207, 247)` ≈ `#6FCFF7` | "증정" |
-| `accent/promo-salmon` | `rgb(242, 115, 112)` ≈ `#F27370` | Promotional shelf accent on /best |
-| `nextjs/dark-bg` | `#0a0a0a` | Next.js subtree fallback background var |
-| `nextjs/dark-fg` | `#ededed` | Next.js subtree fallback foreground var |
+## 2. Color Palette & Roles
 
-**Discipline rule** (observed): Olive Young **does not put hue on its chrome**. Buttons, nav, footer, search input, headings all sit on `#000–#888` neutrals; the five flag hues exist **only inside the thumbnail rectangle** as status payload. Olive Green (the corporate logotype color) is **absent from the storefront chrome** — the closest live token is the lime-leaning coupon flag `#9BCE26`.
+### Observed storefront roles
 
-## 3. Typography
+- **Storefront canvas** (`#ffffff`): repeated page, button, and product-control surface on `storefront-home`.
+- **Storefront ink** (`#131518`): observed search-field text on `home::[data-omd-capture="8"]`; it is not a universal corporate text token.
+- **Storefront body** (`#666666`): dominant body and navigation color on the public home capture.
+- **Storefront muted** (`#888888`): inactive carousel pagination-button text.
+- **Storefront line** (`#ebebeb`): 1px border on the repeated `btn_zzim jeem` wishlist control.
+- **Storefront current** (`#2f3030`): current 24px carousel-pagination item.
 
-- **Stack (legacy JSP chrome):** `Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo, Roboto, dotum, 돋움, sans-serif`
-- **Stack (Next.js subtree):** `-apple-system, system-ui, AppleSDGothicNeo, "Noto Sans", Roboto, Montserrat, sans-serif`
-- **Body:** 14px / 400 / `#666` / lh ~1.4
-- **Size scale observed:** 12, 13, 13.33, 14, 15, 16, 20, 26, 28 px (no formal modular scale; the `13.333px` shows up in buttons converted from `0.833em`)
-- **Weight scale:** 200 (rare ornamental), 400, 500 (Next.js subtree), 700 (default emphasis)
-- **H1:** 28px / 700 (legacy main) — used sparingly; most surfaces are H-less
-- **Korean rendering:** intentional 4-stop fallback chain ending at `dotum / 돋움` preserves rendering for legacy WinXP/MacOS Korean readers (uncommon discipline in 2026 KR e-commerce — legacy retention not pruned)
+### Observed corporate-brand role
+
+- **Corporate brand green** (`#82dc28`): observed on the corporate home capture and also named Olive Green in Olive Young’s official Brand Resources. Its official counterpart is Coral Orange `#ff7878`, but Coral Orange was not a computed token in the supplied surfaces and is intentionally not added to `tokens.colors`.
+
+The source bundle also contains isolated browser/vendor-like blues, reds, and other local values. Without a repeated role or a first-party product token specification, they are not promoted to a semantic palette.
+
+## 3. Typography Rules
+
+### Evidence classes
+
+- **Live storefront use — Montserrat.** `Montserrat` is loaded with high confidence, has 528 visible uses across storefront body, list, menu, tab, button, and heading roles, and is corroborated by six Olive Young-hosted WOFF/WOFF2 sources. The observed home stack begins `Montserrat, -apple-system, NotoSansCJKkr, AppleSDGothicNeo, Roboto, …`; only the loaded Montserrat family is represented as the storefront family token.
+- **Live corporate use — CJONLYONENew.** `CJONLYONENew` is loaded with high confidence on the corporate home (176 visible uses) and is backed by six `corp.oliveyoung.com` WOFF2 assets. The captured corporate stack lists it first, before Pretendard and Korean system fallbacks. It is a corporate-surface family token, not evidence of storefront use.
+- **Loaded but not promoted.** `NotoSansCJKkr` has only three recorded visible uses on the storefront and stays a loaded fallback observation rather than a general primary family token. `Arial` is system-resolved in the one captured search input and is not an Olive Young font asset.
+- **Declared-only assets.** CJONLYONENewJP, CJONLYONENewOrigin, Dovemayo-Medium, Nanum Myeongjo, Noto Sans KR, OY Greta Sans, Pretendard, and PretendardJP have declared `@font-face` sources but zero recorded visible use in this bundle. They remain declared-only; no specimen or token substitutes them.
+- **Licence boundary.** First-party pages and the supplied bundle establish delivery of the corporate and storefront webfont files, but this update found no first-party standalone licence granting downstream reuse of CJONLYONENew or Montserrat assets. Asset delivery is not a redistribution licence.
+
+### Measured styles
+
+| Scope | Family | Size | Weight | Line height | Tracking | Evidence boundary |
+|---|---|---:|---:|---:|---:|---|
+| Storefront body/navigation | Montserrat | 14px | 400 | 20px | -0.56px | repeated `home` text/list/menu/tab samples |
+| Storefront carousel pagination | Montserrat | 14px | 700 | 24px | normal | `home::[data-omd-capture="174"]` and `"175"` |
+| Corporate display copy | CJONLYONENew | 25.2px | 700 | 35.28px | normal | repeated `surface-2` body samples |
 
 ## 4. Components
 
-### Button — Primary (filled black CTA, legacy chrome)
+All components below retain their captured surface and selector provenance. The supplied bundle reports `interactionCount: 0`; it does not establish hover, focus, pressed, disabled, dialog, menu, toast, cart, or checkout variants. The selected/current carousel relationship is static markup observed in the capture, not an interaction transition contract.
 
-**Default**
-- Background: `#000000`
-- Text: `#FFFFFF`
-- Border: 0
-- Radius: `4px`
-- Padding: ~`12px 18px` (h≈40)
-- Font: 13.33px / 700 / Montserrat→NotoSansCJKkr
-- Use: "장바구니 담기" / primary commit on legacy surfaces
+### Storefront carousel pagination
 
-### Button — Outline neutral
-
-**Default**
-- Background: `#FFFFFF`
-- Text: `#454C53`
-- Border: `1px solid #E5E7EA`
-- Radius: `4px`
-- Padding: ~`10px 16px` (h≈40)
-- Font: 14px / 500
-- Use: "신상 더보기" / secondary actions
-
-### Button — Pagination
-
-**Active**
+**Current item as captured**
 - Background: `#2F3030`
 - Text: `#FFFFFF`
 - Border: 0
-- Radius: `50%` (circular)
-- Size: 24×24
-- Font: 14px / 700
-- Use: Current page indicator
+- Radius: `12px`
+- Font: `14px / 700 / Montserrat`
+- Active: current 24px carousel item; evidence `home::[data-omd-capture="174"]`, with selected carousel markup at `home::#slick-slide10`
+- Use: public storefront-home carousel pagination
 
-**Default**
+**Other item as captured**
 - Background: transparent
 - Text: `#888888`
 - Border: 0
-- Radius: 0
-- Font: 14px / 700
-- Use: Other-page link
+- Radius: `0px`
+- Font: `14px / 700 / Montserrat`
+- Use: sibling 24px carousel-pagination button; evidence `home::[data-omd-capture="175"]`
 
-### Pill — Category (top-of-main shortcut)
+### Storefront wishlist control
 
-**Active**
-- Background: `#000000`
-- Text: `#FFFFFF`
-- Border: 0
-- Radius: `20px`
-- Padding: ~`8px 14px` (h≈34)
-- Font: 14px / 400
-- Use: Selected category shortcut
-
-**Default**
+**Default visual shell**
 - Background: `#FFFFFF`
-- Text: `#757D86`
-- Border: `1px solid #E5E7EA` (inferred — same chip family)
-- Radius: `20px`
-- Font: 14px / 400
-- Use: Unselected category shortcut
-
-### Chip — Filter (search results)
-
-**Default**
-- Background: `#FFFFFF`
-- Text: `#757D86`
-- Border: `1px solid #E5E7EA`
-- Radius: `18px`
-- Padding: ~`8px 14px` (h=36)
-- Font: 14px / 400
-- Use: 제품특징 / 가격대 / 색상 facet filters
-
-### Flag — Status pill (in-thumbnail status payload)
-
-**Sale**
-- Background: `#F65C60`
-- Text: `#FFFFFF`
-- Border: 0
-- Radius: `9px`
-- Padding: ~`3px 6px` (h=18)
-- Font: 12px / 400
-- Use: Active price discount
-
-**Same-day (오늘드림)**
-- Background: `#F374B7`
-- Text: `#FFFFFF`
-- Border: 0
-- Radius: `9px`
-- Font: 12px / 400
-- Use: Same-day quick-commerce eligibility
-
-**Coupon**
-- Background: `#9BCE26`
-- Text: `#FFFFFF`
-- Border: 0
-- Radius: `9px`
-- Font: 12px / 400
-- Use: Coupon-eligible SKU
-
-**Gift**
-- Background: `#6FCFF7`
-- Text: `#FFFFFF`
-- Border: 0
-- Radius: `9px`
-- Font: 12px / 400
-- Use: Gift-with-purchase
-
-### Badge — Best (large pill, sash-style)
-
-**Default**
-- Background: `#FFFFFF`
-- Text: `#F05A5E`
-- Border: `2px solid #F05A5E`
-- Radius: `24px` (pill)
-- Padding: ~`8px 18px` (h=48)
-- Font: 14px / 700
-- Use: Best-seller call-out on hero rails
-
-### Heart — Wishlist button
-
-**Idle (off)**
-- Background: `#FFFFFF`
-- Icon color: (icon-asset, color via SVG fill)
 - Border: `1px solid #EBEBEB`
-- Radius: 0 (square hit-box)
-- Size: 40×40
-- Use: 찜하기 toggle
+- Radius: `0px`
+- Size: `40px × 40px`
+- Use: repeated product-grid `btn_zzim jeem` control on storefront-home; evidence `home::[data-omd-capture="85"]` (29 occurrences)
 
-### Input — Search (GNB)
+The control’s visible glyph is not text (`font-size: 0px` in the representative sample); its active/selected icon treatment was not captured and is intentionally omitted.
 
-**Default**
-- Background: `#FFFFFF`
+### Storefront search field
+
+**Default visual shell**
 - Text: `#131518`
-- Border: bottom-only / inherited
-- Radius: 0
-- Height: 38
-- Font: 13.33px (legacy) / 16px (Next.js)
-- Use: Global product search
+- Radius: `5px`
+- Padding: `0px 10px 0px 14px`
+- Font: `14px / 400 / Arial` (system-resolved)
+- Use: `header_search_input` on storefront-home; evidence `home::[data-omd-capture="8"]`
 
-### Card — Product tile (search/list)
+No focused, typed, error, disabled, or autocomplete state was supplied.
 
-**Default**
-- Background: `#FFFFFF`
-- Thumbnail aspect: 1:1 square (standard for KR H&B grid)
-- Title: 14px / 400 / `#333`
-- Brand: 12px / 400 / `#888`
-- Price (active): 14–16px / 700 / `#131518`
-- Strike price: 12px / 400 / `#AAA` line-through
-- Flag area: 9px-radius pills inside thumb corner
-- Border: 0 (separated by `#EBEBEB` grid gap)
-- Use: Search result / category list / best list
+### Storefront outline control
 
+**Default visual shell**
+- Border: `1px solid #DDDDDD`
+- Radius: `4px`
+- Font: `13.3333px / 700 / Montserrat`
+- Use: `home::[data-omd-capture="66"]`, class `btn`, 335px × 40px
 
-## 16. Do's and Don'ts
+The sample’s transparent background and white computed foreground cannot identify its composited visual context, so no foreground or reusable button-color token is asserted.
 
-### Do
-- Keep all chrome — nav, header, footer, buttons, search input, headings — on the `#131518`–`#888` grayscale neutrals and reserve every hue for status payload
-- Confine the five flag hues (`#F65C60` sale, `#F374B7` 오늘드림, `#9BCE26` coupon, `#6FCFF7` gift, `#F05A5E` best) to inside the thumbnail rectangle as 9px-radius status pills
-- Map each flag color 1:1 to a single service fact (sale / same-day / coupon / gift / best) rather than to a marketing mood
-- Encode interactive state with ink-darkening plus shape change — e.g. flip active pagination from transparent/`#888` radius-0 to `#2F3030`/`#FFF` 50% circle — not with hue
-- Keep the Korean fallback chain ending at `dotum / 돋움` to preserve rendering for older Windows/macOS Korean readers
-- Write CTAs as factual `하기`-verb labels like "장바구니 담기" and "찜하기" in casual-polite declarative tone, not imperative urgency copy
+### Corporate skip link
 
-### Don't
-- Put any flag color or hue on a primary CTA or chrome surface — the filled CTA stays `#000000` background with `#FFFFFF` text
-- Introduce a sixth status color for a "new" or extra badge — reuse one of the existing five flag roles or skip the chrome
-- Add hover lift, shadow gain, or drop shadows to tiles, chips, or pills — depth in this system stays line-only and state is static-encoded
-- Spread Olive Green or the coupon lime `#9BCE26` across chrome or large backgrounds — corporate olive is absent from the storefront and the lime lives only in the coupon flag
-- Prune the Korean fallback chain down to system-ui only, dropping the deliberate `돋움` legacy-OS support floor
-- Reproduce verbatim Olive Young marketing taglines or write hard-sell copy like "지금 안 사면 손해예요" — copy works as neutral labels and offers
+**Default visual shell**
+- Background: `#0000FF`
+- Text: `#FFFFFF`
+- Radius: `6px`
+- Font: `13.5px / 400 / CJONLYONENew`
+- Use: off-canvas `btn_skip` accessibility link on corporate-home; evidence `surface-2::[data-omd-capture="0"]`
+
+This is corporate accessibility chrome, not storefront evidence or a general Olive Young primary-action token.
 
 ---
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://www.oliveyoung.co.kr/store/main/main.do?oy=0` (public storefront), `https://corp.oliveyoung.com/ko` (public corporate surface), `https://corp.oliveyoung.com/en/company/brand` (official brand resources), `https://corp.oliveyoung.com/en/company/history` (official history), `https://corp.oliveyoung.com/en/company/main` (official mission), `https://corp.oliveyoung.com/en/company/vision` (official vision)
+**Tier 2 sources:** `https://getdesign.md/oliveyoung` (attempted through built-in web open; internal error, no usable record), `https://styles.refero.design/?q=oliveyoung` (attempted through built-in web open; internal error, no usable record)
+**Conflicts unresolved:** none
 
-**Verified:** 2026-05-15
-**Tier 1 sources:** CDP `:9222` getComputedStyle on (a) `https://www.oliveyoung.co.kr/store/main/main.do` 65 distinct samples · (b) `/store/main/getBestList.do` 33 samples · (c) `/store/search/getSearchMain.do?query=선크림` 55 samples · (d) `/store/goods/getGoodsDetail.do?goodsNo=A000000167660` 26 samples on Next.js shell. Total **179 distinct DOM samples** across 4 surfaces. Artifacts: `assets/_reference/tokens.json`, `structure.json`, `fonts.json`, `.live-inspect-proof.json` (11 raw_samples — over the ≥5 floor).
-**Tier 1 official DS:** ✗ negative — `design.oliveyoung.co.kr` no DNS, `oliveyoung.design` no DNS, `corp.oliveyoung.com/*` 404, `cjoliveyoung.co.kr` ECONNREFUSED, no public Figma library, no `github.com/oliveyoung*` design-system repo. Documented authoritative negative. **Discovery**: production code reveals a **dual-stack migration in flight** (legacy JSP chrome + Next.js product-detail subtree with `--background/--foreground/--font-noto-sans-kr/--font-roboto` runtime vars + `*_btn__hash` CSS-Modules) — the canonical token system lives inside the Next.js bundle, not on a public docs surface.
-**Tier 2 sources:** ✗ getdesign.md/oliveyoung — fetch blocked by Claude auto-mode classifier (domain not user-allowlisted), unable to verify presence/absence this pass; ✗ styles.refero.design `?q=oliveyoung` — no result cards.
-**Conflicts unresolved:** none material — `accent/promo-salmon #F27370` vs `flag/best #F05A5E` differ by 2 RGB steps; treated as **two distinct tokens** since they appear on different surface roles (promo shelf vs taxonomic badge). Flagged for UPDATE pass: product-detail (real SKU), cart, my-page, mobile (`m.oliveyoung.co.kr`) — not captured this session.
+The previous legacy snapshot’s unrecaptured flag palette, inferred product states, product-detail migration account, cart/checkout claims, motion timings, and uncorroborated component variants were removed rather than carried forward.
 
-## 5. Layout & Grid
+## 5. Layout & Spacing
 
-- **Page width:** 1280px fixed container (legacy chrome); Next.js subtree fluid
-- **GNB:** 90px header inner + 119px design-area (banner row), fixed top
-- **Search input:** 38px height
-- **Card grid (search/best):** 4-up desktop, square thumbnails, ~16px gutter
-- **Filter strip (search):** 36px chips, paper bg `#F6F7F9`, top of result column
-- **Pagination:** 24×24 circular active dot, centered below grid
+- The supplied storefront capture is 1440×900 and records a 294px × 38px global search field with `0px 10px 0px 14px` padding.
+- Captured carousel pagination is 24px × 24px. The repeated wishlist control is 40px × 40px.
+- The collector’s spacing frequencies include 2, 5, 10, 12, 18, 22, 23, 24, 30, 35, 40, 45, 51, 60, and 80px. This is a capture-frequency record, not a published spacing scale.
+- No authenticated product layout, search-results layout, purchase funnel, responsive breakpoint, or mobile reflow is established by the two supplied desktop surfaces.
 
-## 6. Iconography
+## 6. Depth & Elevation
 
-- **Style:** Outlined line icons at 16–24px, monochrome ink (no two-tone). Stroke ~1.5px. Korean retail convention (cart/heart/coupon/gift glyphs) inherited rather than custom.
-- **Filled use:** Only in flag pills (no in-pill icon; pill itself is the icon).
-- **Heart:** Outline default → filled `#F05A5E` on active (inferred from `btn_zzim jeem` class semantics).
+The storefront carousel pagination, wishlist controls, search field, and outline control report `box-shadow: none`. The corporate `btn_top` is a distinct corporate-surface exception with `0px 10px 15px rgba(0, 0, 0, 0.1)`; it is not promoted to a shared elevation token.
 
-## 7. Motion & Easing
+## 7. Do's and Don'ts
 
-- **Carousel transitions:** `slick` carousel (legacy) on hero rails — default 300ms slide
-- **Hover states:** Catalog tiles use static hover (no lift / no shadow gain — depth is line-only in the system; corroborates the 0-shadow observation)
-- **Next.js subtree:** `--swiper-theme-color: #007aff` exposed (default Swiper iOS blue; visual non-load because chrome overrides)
-- **Floor:** No site-wide CSS custom-property motion tokens — durations live inside vendor carousels (slick, Swiper). Flagged as a follow-up: motion token harvest from product-detail page after a real SKU loads.
+### Do
 
-## 8. Accessibility & Density
+- Keep storefront implementation claims bounded to the observed home surface and its measured black-to-gray hierarchy.
+- Treat `#82dc28` as corporate brand evidence unless a storefront surface independently establishes that role.
+- Preserve the source-domain boundary between Montserrat storefront use and CJONLYONENew corporate use.
+- Keep current carousel pagination compact: the captured current item is `#2f3030` with white text and a 12px radius.
+- Label declared-only families as unavailable rather than rendering another family under their names.
 
-- **Body 14px / #666 on white** = ~5.7:1 contrast — passes WCAG AA for body text, fails AAA for small text
-- **Chip text `#757D86` on white** = ~4.5:1 — at the AA floor; chips with mixed-case Korean (대 vs ㅏ) are legible but borderline
-- **Flag contrasts (white text on flag color):**
-  - Sale `#F65C60` ≈ 3.2:1 → **fails AA for normal text**; passes for 14px bold or larger via Korean Bold-text exception; documented trade-off
-  - Coupon `#9BCE26` + white ≈ 1.8:1 → **fails AA**; legibility relies on the 12px size + bold-by-CJK rendering
-  - Gift `#6FCFF7` + white ≈ 1.6:1 → **fails AA**
-- **Touch targets:** Pagination 24×24 below WCAG 2.5.5 (44×44) — speed-over-floor decision typical of KR catalog UIs
-- **Korean fallback chain ends at 돋움** — explicit legacy-OS support, rare in 2026
+### Don't
 
-## 9. Voice & Tone
+- Do not turn the corporate skip link, top button, or Swiper chrome into storefront component tokens.
+- Do not infer cart, checkout, form-error, hover, focus, or motion behavior from this static, zero-interaction bundle.
+- Do not promote OY Greta Sans, Pretendard, Noto Sans KR, or other zero-use declarations to the UI family.
+- Do not use official logo colors as a storefront color system without a matching storefront observation.
 
-- **Voice adjectives (3):** *Direct · Functional · Promotional* — no rhetorical lift; copy works as labels and offers.
-- **Korean style:** Casual-polite ("~해요/세요"), declarative, comma-light, status-first ("세일", "오늘드림", "쿠폰", "증정"). Imperative-light — even CTAs read as factual ("장바구니 담기" not "지금 사세요").
-- **Pattern:** Verb + 하기 noun ("찜하기", "담기", "더보기", "1:1문의하기") is the dominant CTA shape — observed on 6+ buttons across captures.
-- **Do / Don't (fresh OmD illustrative — not Olive Young verbatim):**
+## 8. Accessibility & Evidence Limits
+
+- The corporate surface includes an off-canvas skip link, but the capture does not document keyboard traversal, focus-visible styling, or screen-reader behavior.
+- The storefront current carousel marker is 24px square and the captured wishlist shell is 40px square. This reference records dimensions only; it is not a touch-target or contrast conformance audit.
+- `#666666` body text, `#888888` muted pagination text, and white text on `#2f3030` are observed combinations. Each target implementation still needs its own contrast and state testing.
+- No design-system documentation, authenticated application, or mobile surface was supplied. Those domains remain unresolved rather than being filled from corporate marketing or legacy notes.
+
+## 9. Agent Prompt Guide
+
+Use this reference for a factual, dense Korean beauty-retail storefront moment: white ground, dark-gray reading hierarchy, square product-grid controls, Montserrat where the licensed/available target actually supplies it, and a compact dark current-page marker. For corporate storytelling, keep CJONLYONENew and Olive Green in the separate corporate lane. Do not present a system fallback, declared-only face, logo color, or unobserved cart interaction as an Olive Young storefront fact.
+
+## 10. Voice & Tone
+
+Olive Young’s official company language is optimistic, practical, and discovery-oriented: its mission centers a healthier and more beautiful everyday life, while the vision names Healthy Beauty and New Discoveries Everyday. The public storefront capture supports short functional labels and dense retail scanning, but it does not establish a complete product microcopy system.
 
 | Do | Don't |
 |---|---|
-| "쿠폰가 보기" | "지금 안 사면 손해예요" |
-| "내 피부톤에 맞는 쿠션 골라보기" | "당신을 위해 골랐어요" |
-| "오늘 받는 상품만 보기" | "오늘 안 받으면 후회해요" |
+| Connect a beauty or wellness action to a concrete everyday outcome. | Make unverifiable efficacy, delivery, or price promises. |
+| Describe discovery as a useful choice or service. | Replace a product fact with a vague lifestyle superlative. |
+| Keep commerce labels short and legible in a dense catalog. | Treat the corporate slogan as a verbatim checkout or error-copy pattern. |
 
-**Voice samples (3 fresh illustrative reconstructions — not Olive Young copy):**
-1. "오늘 도착 가능한 상품만 모았어요." — same-day filter affordance
-2. "회원이면 ₩2,000 더 저렴해요." — soft commercial nudge, declarative not imperative
-3. "이 색상은 다음 주에 다시 들어올 것 같아요." — OOS state, soft restock signal
+**Official wording samples**
+- *“Healthy Beauty”* — official brand essence.
+- *“New Discoveries Everyday”* — official core value.
+- *“ALL LIVE BETTER”* — official brand slogan.
 
-**IP guardrail:** No verbatim Olive Young marketing copy reproduced. Voice samples above are OmD-original constructions modelled on the observed *shape* (casual-polite + declarative + 하기-verb), not the substance.
+## 11. Brand Narrative
 
-## 10. Brand Narrative
+Olive Young’s official history places its beginning in 1999 as Korea’s first Beauty & Health store and describes a category shift from conventional supplement-led drugstores toward beauty, trend-led products, and locally tailored store designs and assortments. The company now presents itself as a lifestyle platform where customers encounter trends, not merely as a cosmetics shelf. Its official history records an independent official online store in 2017, same-day delivery in 2018, a 2019 BI renewal, and a 2025 logo renewal oriented toward global and omnichannel visibility. These are brand and business facts; they do not prove an unobserved application design system.
 
-CJ Olive Young is the H&B (Health & Beauty) retail arm of **CJ Group**, founded 1999 and operating as Korea's #1 omnichannel H&B chain — ~1,300 stores nationwide plus the `oliveyoung.co.kr` web/app and `global.oliveyoung.com` cross-border surface. Its visual posture matches its category position: not a beauty *aspirational brand* (no editorial hero shots, no rhetorical typography), but the **default aisle** — a high-velocity catalog where SKU density, in-stock status, same-day eligibility, and coupon math do the persuasive work. The recent migration of product-detail to Next.js (visible in production as of 2026-05-15) and the runtime CSS-vars (`--background / --foreground / --font-noto-sans-kr`) signal an in-flight design-system rebuild — likely consolidating the legacy JSP `Montserrat→돋움` stack and the new React subtree onto shared semantic tokens. *Narrative facts above are public-record; founder voice and design-team attribution `[FILL IN]` — no verbatim attribution available in EN-language sources.*
+## 12. Principles
 
-## 11. Principles
+1. **Healthy beauty joins beauty and wellbeing.** The official brand essence is Healthy Beauty. *UI implication:* frame choices as practical care or discovery, not as unsupported transformation claims.
+2. **Discovery belongs in everyday life.** The official core value names New Discoveries Everyday. *UI implication:* make catalog information scannable enough to compare products and services without forcing a narrative detour.
+3. **Omnichannel is a business context, not a copied UI pattern.** Olive Young’s history records online, store, pickup, returns, and same-day service milestones. *UI implication:* preserve service context where it is observed; do not invent cart or fulfilment controls from the corporate story alone.
+4. **Global clarity is a current identity objective.** The 2025 official logo-renewal announcement cites visibility and English readability across online and offline environments. *UI implication:* distinguish identity assets from product-interface tokens and keep type/asset licensing explicit.
 
-1. **Chrome stays gray; flags do the work.** Olive Young commits to neutral grayscale across nav/header/footer/buttons and reserves all five hues for in-thumbnail status. *UI implication: when porting, never put a flag color on a primary CTA or chrome surface — it breaks the system's status-vs-action separation.*
-2. **One flag = one fact.** Sale / 오늘드림 / 쿠폰 / 증정 / 베스트 each map 1:1 to a service feature, not a marketing mood. *UI implication: don't introduce a sixth color for a "new" badge; pick one of the existing flag roles or skip the chrome.*
-3. **Weight signals over hue.** Active pagination flips from transparent/`#888` to `#2F3030`/`#FFF` and goes from radius-0 to 50% circle — state encoded by 2 axes (fill + radius) not by hue. *UI implication: prefer ink-darkening + shape-change for state; reserve color for status payload.*
-4. **Korean rendering down to 돋움.** The fallback chain explicitly retains a Windows-XP/older-macOS Korean glyph — a deliberate accessibility floor for older readers. *UI implication: never prune the Korean fallback chain to system-ui only.*
-5. **Migrate in subtrees, not big-bang.** Product-detail Next.js + legacy JSP main coexist; the catalog shopper sees a consistent chrome despite two stacks underneath. *UI implication: design-system migrations should target one feature surface at a time and share visual tokens at the chrome level.*
+## 13. Personas
 
-## 12. Personas
+The official sources describe customers generally rather than publishing research-backed personas. The following are non-fictional stakeholder groups derived from the documented service model, not demographic profiles or behavioral claims.
 
-*Illustrative archetypes — not Olive Young user research; OmD-original for design framing.*
+- **Beauty & Health customers:** people the official mission says Olive Young aims to inspire and empower toward healthier, more beautiful everyday lives.
+- **Local-store and online shoppers:** customers served through the documented store, official-online-store, pickup, return, and same-day-delivery milestones.
+- **Brand and business partners:** stakeholders named in the company’s mission and sustainability materials through partnership and mutual-growth commitments.
 
-- **Han-na (29, office worker, Seoul):** browses on phone during commute, scans flags before titles, expects 오늘드림 by 14:00 cutoff, abandons if cart total doesn't show coupon math inline. Comfort with Korean copy, low patience for English-loanword decoration.
-- **Ji-won (38, parent, Suwon):** weekend desktop session, builds a 8–12 SKU cart of repeat-buy basics, sorts by coupon eligibility, treats `#9BCE26` coupon flag as primary signal-to-noise filter.
-- **Min-jae (24, K-beauty enthusiast, Busan):** product-detail page is the destination — wants ingredient list, review filter by skin type, real-color swatch photos. The Next.js detail-page rebuild is for this persona.
-- **Su-jin (52, gift-buyer, Daejeon):** lower digital comfort, relies on category pills and "베스트" badge — the radius-24px pill is a literal stamp of "popular enough to trust." Korean fallback to `돋움` is for this reader.
+## 14. States & Motion
 
-## 13. States
+- **Observed current carousel item:** `#2f3030`, white text, 12px radius, 24px square.
+- **Observed other carousel item:** transparent, `#888888` text, 0px radius, 24px square.
+- **Observed selected carousel markup:** `home::#slick-slide10` carries `aria-selected="true"`; the capture does not record a transition or interaction event.
+- **Unobserved:** loading, empty, error, success, form validation, disabled, hover, focus, pressed, cart feedback, menu, dialog, toast, and mobile states.
+- **Motion:** the bundle contains Slick and Swiper class names, but no captured duration, easing, or interaction sequence. No motion token is asserted.
 
-| State | Pattern |
-|---|---|
-| Empty (search 0-result) | Centered "이전 페이지 / 홈으로 가기" pair — outline white-bg + filled-black; observed on `getGoodsDetail.do` ProductNotFound shell (Next.js) |
-| Loading | No skeleton observed on legacy chrome; Next.js subtree presumed (not captured this pass — flagged) |
-| Error — 404 | `ProductNotFound_btn-area__Q_xDU` two-button shell, neutral chrome, no error red |
-| Error — form | Not captured this pass; flagged for UPDATE |
-| Success — added to cart | Toast pattern presumed; not captured |
-| Skeleton | Likely tile-shaped on Next.js detail; not captured |
-| Disabled (button) | Inferred — opacity-driven on legacy (no dedicated token) |
-| Hover (chip / pill) | Static — no shadow gain, no lift; depth stays line-only |
-| Active (pagination) | Fill flip `transparent → #2F3030` + radius `0 → 50%` + text flip `#888 → #FFF` |
-| Active (category pill) | Fill flip `#FFF → #000` + text flip `#757D86 → #FFF`, radius unchanged at 20px |
+## 15. References & Boundaries
 
-## 14. Motion & Easing
+### Tier 1 live evidence
 
-- **Carousel:** slick (legacy hero) — default 300ms slide, ease-in-out
-- **Carousel:** Swiper (Next.js subtree) — `--swiper-theme-color: #007aff` exposed (visual override likely)
-- **Hover:** **none observed** on tiles, chips, or pills — depth and state are static-encoded
-- **Floor:** No site-wide motion tokens captured. **Flagged** as follow-up — capture from a real product-detail SKU + cart-add transition.
+- `https://www.oliveyoung.co.kr/store/main/main.do?oy=0` — public storefront: 532 captured elements, Montserrat loaded/high with 528 uses, and the measured search, wishlist, outline-control, and carousel-pagination samples.
+- `https://corp.oliveyoung.com/ko` — public corporate surface: 176 captured elements, CJONLYONENew loaded/high with 176 uses, corporate skip-link and top-button samples, and declared-only corporate font assets.
 
-## 15. References & Footer
+### First-party context, brand, and font boundaries
 
-**Live capture (Tier 1):**
-- `https://www.oliveyoung.co.kr/store/main/main.do` (65 samples, legacy JSP)
-- `https://www.oliveyoung.co.kr/store/main/getBestList.do` (33 samples, legacy JSP, promo-salmon `#F27370`)
-- `https://www.oliveyoung.co.kr/store/search/getSearchMain.do?query=선크림` (55 samples, full 5-color flag taxonomy captured here)
-- `https://www.oliveyoung.co.kr/store/goods/getGoodsDetail.do?goodsNo=A000000167660` (26 samples, Next.js subtree shell + runtime CSS vars)
-- Harness: Chrome DevTools Protocol `:9222` via `websocket-client` (`suppress_origin=True`)
-- Artifacts: `assets/_reference/tokens.json` · `structure.json` · `fonts.json` · `.live-inspect-proof.json` (11 raw_samples)
+- `https://corp.oliveyoung.com/en/company/brand` — official brand name story, logo colors, 13° symbol meaning, and downloadable logo asset; it does not publish a storefront token specification.
+- `https://corp.oliveyoung.com/en/company/history` — official company/history and omnichannel milestones; it does not supply component values.
+- `https://corp.oliveyoung.com/en/company/main` and `/vision` — official mission, Healthy Beauty, New Discoveries Everyday, and ALL LIVE BETTER language; they do not establish transactional UI copy or states.
+- Olive Young-hosted WOFF/WOFF2 delivery URLs in the supplied collector corroborate the loaded families. No first-party standalone downstream-reuse licence was located in this update, so a target project must not assume permission to copy those font assets.
 
-**Tier 1 official DS:** ✗ negative (authoritative). No `design.oliveyoung.co.kr` / `oliveyoung.design` DNS; `corp.oliveyoung.com/*` 404; `cjoliveyoung.co.kr` ECONNREFUSED; no public Figma library or GitHub design-system repo at `github.com/oliveyoung*`. The canonical token system lives **inside the Next.js bundle on product-detail** (CSS Modules `*_btn__` + runtime `--font-noto-sans-kr / --background / --foreground` vars) — accessible only by live inspect.
+### Tier 2 cross-check boundary
 
-**Tier 2 sources:** ✗ getdesign.md/oliveyoung blocked by Claude auto-mode (domain not allowlisted) — unable to verify this pass; ✗ styles.refero.design `?q=oliveyoung` no result cards.
-
-**IP guardrails:**
-- Brand mark and product photography referenced for token harvest only — no asset stored beyond JSON observation records
-- No verbatim Olive Young marketing taglines reproduced (none observed in captures)
-- §9 voice samples are OmD-original illustrative — modelled on observed shape (declarative + 하기-verb + casual-polite), not substance
-- §12 personas are illustrative (no user research); flagged in section header
-
-**Conflicts unresolved:** none material. Promo-salmon `#F27370` vs flag-best `#F05A5E` treated as distinct (role-separated). Token-name choices in §2 are OmD coinage — Olive Young does not publish a canonical name table.
-
-**Follow-up UPDATE pass recommended:**
-- Real product-detail SKU (Next.js token harvest — `--*` vars + Module class catalog)
-- Cart / my-page / checkout (state matrix completion)
-- Mobile site `m.oliveyoung.co.kr` (touch-target audit)
-- Motion token harvest (durations, easings)
-- Re-attempt Tier 2 (getdesign.md with user-allowlisted fetch)
+Both required catalog checks were attempted through built-in web open on 2026-07-13. `getdesign.md/oliveyoung` and Refero’s Olive Young query each returned an internal error, so neither contributed a token, component, font, or conflict resolution.

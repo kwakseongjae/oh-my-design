@@ -3,7 +3,7 @@
 /**
  * Collection card grid — client island under the RSC collection page.
  * Reuses the directory's <DSCard> (same thumbnail cascade + analytics) with
- * ds_detail_open { source: "collection" } and live HOT badges.
+ * ds_detail_open { source: "collection" } (normalized to event_source) and live HOT badges.
  */
 
 import { useHotRefs } from "@/lib/hot-refs";

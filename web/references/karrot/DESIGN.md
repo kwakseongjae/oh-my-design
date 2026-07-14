@@ -8,316 +8,295 @@ primary_color: "#ff7e36"
 logo:
   type: github
   slug: daangn
-verified: "2026-05-15"
+verified: "2026-07-11"
 omd: "0.1"
 ds:
   name: SEED Design
-  url: "https://seed-design.io"
+  url: "https://v2.seed-design.io"
   type: system
   description: Karrot (Daangn)'s open-source design system for marketplace apps.
+verification_v2:
+  schema: 2
+  checked: "2026-07-11"
+  surfaces:
+    - { id: marketing-home, kind: marketing, url: "https://www.karrotmarket.com/", inspected: "2026-07-11" }
+    - { id: marketing-about, kind: marketing, url: "https://www.karrotmarket.com/about/", inspected: "2026-07-11" }
+    - { id: seed-system, kind: design-system, url: "https://v2.seed-design.io/", inspected: "2026-07-11" }
+  sources:
+    - { id: karrot-live, kind: product-surface, url: "https://www.karrotmarket.com/", captured: "2026-07-11" }
+    - { id: seed-source, kind: official-doc, url: "https://github.com/daangn/seed-design/blob/fb4459e90f84e049112395964319b163f980b821/packages/stylesheet/global.css", captured: "2026-07-11" }
+    - { id: seed-typography, kind: official-doc, url: "https://v2.seed-design.io/foundation/typography/", captured: "2026-07-11" }
+    - { id: seed-box-button, kind: official-doc, url: "https://v2.seed-design.io/component/box-button/usage/", captured: "2026-07-11" }
+    - { id: seed-text-field, kind: official-doc, url: "https://v2.seed-design.io/component/text-field/usage/", captured: "2026-07-11" }
+    - { id: seed-tabs, kind: official-doc, url: "https://v2.seed-design.io/component/tabs/usage/", captured: "2026-07-11" }
+    - { id: seed-snackbar, kind: official-doc, url: "https://v2.seed-design.io/component/snackbar/usage/", captured: "2026-07-11" }
+  claims:
+    "tokens.colors.primary": &seed_color { surface_id: seed-system, source_id: seed-source, method: official-source, captured: "2026-07-11" }
+    "tokens.colors.primary-hover": *seed_color
+    "tokens.colors.primary-pressed": *seed_color
+    "tokens.colors.canvas": *seed_color
+    "tokens.colors.background": *seed_color
+    "tokens.colors.surface": *seed_color
+    "tokens.colors.foreground": *seed_color
+    "tokens.colors.muted": *seed_color
+    "tokens.colors.on-primary": *seed_color
+    "tokens.colors.hairline": *seed_color
+    "tokens.colors.brand-tint": *seed_color
+    "tokens.colors.error": *seed_color
+    "tokens.colors.info": *seed_color
+    "tokens.colors.success": *seed_color
+    "tokens.colors.marketing": &karrot_live { surface_id: marketing-home, source_id: karrot-live, method: computed-style, captured: "2026-07-11" }
+    "tokens.typography.family.sans": *karrot_live
+    "tokens.typography.h1.size": &seed_type { surface_id: seed-system, source_id: seed-typography, method: official-doc, captured: "2026-07-11" }
+    "tokens.typography.h1.weight": *seed_type
+    "tokens.typography.h1.lineHeight": *seed_type
+    "tokens.typography.h2.size": *seed_type
+    "tokens.typography.h2.weight": *seed_type
+    "tokens.typography.h2.lineHeight": *seed_type
+    "tokens.typography.h3.size": *seed_type
+    "tokens.typography.h3.weight": *seed_type
+    "tokens.typography.h3.lineHeight": *seed_type
+    "tokens.typography.title.size": *seed_type
+    "tokens.typography.title.weight": *seed_type
+    "tokens.typography.title.lineHeight": *seed_type
+    "tokens.typography.body.size": *seed_type
+    "tokens.typography.body.weight": *seed_type
+    "tokens.typography.body.lineHeight": *seed_type
+    "tokens.typography.body-small.size": *seed_type
+    "tokens.typography.body-small.weight": *seed_type
+    "tokens.typography.body-small.lineHeight": *seed_type
+    "tokens.spacing.sm": *karrot_live
+    "tokens.spacing.md": *karrot_live
+    "tokens.spacing.lg": *karrot_live
+    "tokens.spacing.xl": *karrot_live
+    "tokens.spacing.section": *karrot_live
+    "tokens.rounded.sm": *karrot_live
+    "tokens.rounded.md": *karrot_live
+    "tokens.rounded.full": *karrot_live
+    "tokens.components.marketing-primary.type": *karrot_live
+    "tokens.components.marketing-primary.bg": *karrot_live
+    "tokens.components.marketing-primary.fg": *karrot_live
+    "tokens.components.marketing-primary.radius": *karrot_live
+    "tokens.components.marketing-primary.height": *karrot_live
+    "tokens.components.marketing-primary.padding": *karrot_live
+    "tokens.components.marketing-primary.font": *karrot_live
+    "tokens.components.marketing-primary.states": *karrot_live
+    "tokens.components.marketing-primary.use": *karrot_live
+    "tokens.components.box-button.type": &seed_box { surface_id: seed-system, source_id: seed-box-button, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.box-button.states": *seed_box
+    "tokens.components.box-button.use": *seed_box
+    "tokens.components.text-field.type": &seed_field { surface_id: seed-system, source_id: seed-text-field, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.text-field.states": *seed_field
+    "tokens.components.text-field.use": *seed_field
+    "tokens.components.tabs.type": &seed_tabs_claim { surface_id: seed-system, source_id: seed-tabs, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.tabs.states": *seed_tabs_claim
+    "tokens.components.tabs.use": *seed_tabs_claim
+    "tokens.components.snackbar.type": &seed_snackbar_claim { surface_id: seed-system, source_id: seed-snackbar, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.snackbar.states": *seed_snackbar_claim
+    "tokens.components.snackbar.use": *seed_snackbar_claim
+  conflicts: []
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-11"
   colors:
-    primary: "#ff6600"
-    primary-hover: "#e14d00"
-    brand: "#ff6600"
+    primary: "#ff6f0f"
+    primary-hover: "#ff9e66"
+    primary-pressed: "#ff9e66"
+    marketing: "#ff6600"
     canvas: "#ffffff"
-    foreground: "#1a1c20"
+    background: "#f2f3f6"
+    surface: "#f7f8fa"
+    foreground: "#212124"
     muted: "#868b94"
     on-primary: "#ffffff"
-    surface: "#f7f8f9"
-    surface-fill: "#f3f4f5"
-    hairline: "#dcdee3"
-    body: "#555d6d"
-    placeholder: "#b0b3ba"
-    brand-tint: "#fff2ec"
-    error: "#fa342c"
-    info: "#217cf9"
-    success: "#079171"
-    warning: "#9b7821"
-    focus: "#5e98fe"
+    hairline: "#eaebee"
+    brand-tint: "#fff5f0"
+    error: "#fa2314"
+    info: "#009ceb"
+    success: "#1aa174"
   typography:
-    family: { sans: "Pretendard Variable", mono: "SF Mono" }
-    display-xl:     { size: 26, weight: 700, lineHeight: 35, tracking: "0em", use: "Hero headlines, splash screens" }
-    display-large:  { size: 24, weight: 700, lineHeight: 32, tracking: "0em", use: "Section headers" }
-    heading-large:  { size: 20, weight: 700, lineHeight: 27, tracking: "0em", use: "Card headings, sub-sections" }
-    heading:        { size: 18, weight: 700, lineHeight: 24, tracking: "0em", use: "List section headers" }
-    title:          { size: 16, weight: 500, lineHeight: 22, tracking: "0em", use: "Navigation, standard titles" }
-    body:           { size: 14, weight: 400, lineHeight: 19, tracking: "0em", use: "Standard reading text, listings" }
-    body-small:     { size: 13, weight: 400, lineHeight: 18, tracking: "0em", use: "Secondary text, metadata" }
-    caption:        { size: 12, weight: 400, lineHeight: 16, tracking: "0em", use: "Timestamps, small labels" }
-    caption-small:  { size: 11, weight: 400, lineHeight: 15, tracking: "0em", use: "Fine print, badges" }
-  spacing: { xs: 2, sm: 4, md: 8, base: 16, lg: 20, xl: 24, xxl: 32, section: 64 }
-  rounded: { sm: 8, md: 12, lg: 16, full: 9999 }
-  shadow:
-    s1: "0px 1px 4px rgba(0,0,0,0.08)"
-    s2: "0px 2px 10px rgba(0,0,0,0.10)"
-    s3: "0px 4px 16px rgba(0,0,0,0.12)"
+    family: { sans: "System" }
+    h1: { size: 48, weight: 700, lineHeight: "135%" }
+    h2: { size: 42, weight: 700, lineHeight: "135%" }
+    h3: { size: 34, weight: 700, lineHeight: "135%" }
+    title: { size: 24, weight: 700, lineHeight: "135%" }
+    body: { size: 16, weight: 400, lineHeight: "150%" }
+    body-small: { size: 14, weight: 400, lineHeight: "150%" }
+  spacing: { sm: 4, md: 8, lg: 12, xl: 16, section: 64 }
+  rounded: { sm: 6, md: 8, full: 9999 }
   components_harvested: true
   components:
-    button-primary: { type: button, bg: "#ff6600", fg: "#ffffff", radius: "12px", height: "52px", font: "16px / 700", states: "pressed #e14d00", disabled: "bg #f3f4f5 fg #d1d3d8", use: "Primary CTA 판매하기 / 채팅하기" }
-    button-neutral: { type: button, bg: "#f3f4f5", fg: "#1a1c20", radius: "8px", states: "pressed #eeeff1", use: "Tertiary actions, filters" }
-    button-outline: { type: button, bg: "transparent", fg: "#1a1c20", border: "1px solid #dcdee3", radius: "8px", states: "pressed #f7f8f9", use: "Cancel, dismiss, low-emphasis" }
-    button-critical: { type: button, bg: "#fa342c", fg: "#ffffff", radius: "8px", use: "Destructive 삭제 / 신고" }
-    card: { type: card, bg: "#ffffff", border: "1px solid rgba(0,0,0,0.08)", radius: "8px", shadow: "0px 2px 10px rgba(0,0,0,0.10)", use: "Standard listing card" }
-    chip: { type: badge, bg: "#f3f4f5", fg: "#1a1c20", radius: "9999px", height: "32px", padding: "0 12px", font: "13px / 500", active: "bg #1a1c20 fg #ffffff", use: "Filter chips, tags" }
-    input: { type: input, bg: "#f7f8f9", fg: "#1a1c20", border: "1px solid #dcdee3", radius: "8px", focus: "2px solid #5e98fe", states: "error border #fa342c", use: "Text input, placeholder #b0b3ba" }
-    tab-bottom: { type: tab, bg: "#ffffff", fg: "#868b94", border: "subtle top border", active: "Karrot Orange icon + label", use: "Bottom tab bar nav" }
+    marketing-primary: { type: button, bg: "#ff6600", fg: "#ffffff", radius: "9999px", height: "36px", padding: "4px 12px", font: "14px / 500", states: "default on two public surfaces; hover not captured", use: "Karrot marketing-site CTA" }
+    box-button: { type: button, states: "primary, primary-low, secondary, danger, disabled, hover, keyboard", use: "SEED action with five documented sizes" }
+    text-field: { type: input, states: "outlined, underlined, focused, disabled, readonly, required, invalid", use: "SEED single-line form field" }
+    tabs: { type: tab, states: "selected, disabled, focus", use: "SEED category switching with indicator" }
+    snackbar: { type: toast, states: "default, success, warning, action focus", use: "SEED transient action feedback" }
 ---
 
 # Design System Inspiration of Karrot (당근)
 
 ## 1. Visual Theme & Atmosphere
 
-Karrot's interface is the digital equivalent of a friendly neighborhood bulletin board -- warm, approachable, and built for trust between strangers. The page opens on a clean white canvas (`#ffffff`) with warm near-black headings (`#1a1c20`) and the unmistakable Karrot Orange (`#ff6600`) that serves as the singular brand accent. This isn't the corporate orange of enterprise dashboards; it's the vivid, saturated orange of a fresh carrot -- energetic, trustworthy, and unmistakably local.
+Karrot is a hyperlocal platform built around the idea that technology should make neighborhood relationships feel more human, not more anonymous. Its design keeps community content dominant through warm orange accents, calm neutrals, direct language, and light interface chrome. Two related but non-identical public surfaces express that identity: the current SEED v2 product system defines semantic Primary as carrot-500 (`#ff6f0f`), while the public Karrot marketing site renders its CTA orange as `#ff6600`. Keeping those values separate preserves both product-system truth and the recognizable warmth of the brand.
 
-The design system, called **Seed Design**, is one of the most mature open-source systems in Korean tech. It operates on a strict 4px grid with a three-tier token architecture (palette → semantic → component) that ensures every measurement is intentional. Typography relies entirely on the platform's native font stack rather than a custom typeface -- Pretendard on web, system fonts on native -- putting community content first. The overall aesthetic is warm neutral: soft grays, generous whitespace, and that singular orange accent. Where Stripe uses shadows as brand expression, Karrot uses shadows as pure function -- minimal, neutral, and warm.
+SEED is the canonical source for product-system colors, type roles, and component behavior. The public marketing pages are evidence for the web font stack and marketing CTA geometry only. Both use warm neutrals, direct hierarchy, and restrained ornament so neighborhood content remains dominant.
 
 **Key Characteristics:**
-- Karrot Orange (`#ff6600`) as the singular brand accent -- warm, energetic, unmistakable
-- System font stack (Pretendard / Apple SD Gothic Neo) -- content takes center stage, no custom typeface
-- 4px base grid with precise spacing from 2px (x0.5) to 64px (x16)
-- Three-tier token system: palette → semantic → component for systematic theming
-- Full dark mode via semantic token remapping (not simple inversion)
-- 11-step gray scale (gray-00 through gray-1000) for nuanced depth
-- Three-level shadow system with separate light/dark mode intensities
-- Mobile-first at 375px baseline with `clamp()`-based accessibility font scaling
+- SEED semantic Primary: `#ff6f0f`; current marketing CTA: `#ff6600`
+- System-first web typography; `Pretendard Variable` is declared as a fallback but was not the computed first family in the inspected pages
+- Official SEED semantic roles backed by the open-source `global.css`
+- Components documented as behavior/state contracts, with marketing geometry kept surface-specific
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Karrot Orange** (`#ff6600`): `$color.palette.carrot-600`. Primary CTA, active states, brand solid backgrounds. The iconic orange that defines every Karrot touchpoint.
-- **Deep Orange** (`#e14d00`): `$color.palette.carrot-700`. Pressed/hover state for brand elements, dark mode brand solid.
-- **Near Black** (`#1a1c20`): `$color.palette.gray-1000`, `fg-neutral`. Primary heading and text color. Warm near-black that avoids harshness.
-- **Pure White** (`#ffffff`): `$color.palette.gray-00`, `bg-layer-default`. Page background, card surfaces.
+### SEED v2 product semantics
+- **Primary** (`#ff6f0f`): `--seed-semantic-color-primary`, mapped to carrot-500.
+- **Primary Hover / Pressed** (`#ff9e66`): current light-theme state mapping.
+- **Canvas** (`#ffffff`): gray-00 and `paper-default`.
+- **Background** (`#f2f3f6`): gray-100 and `paper-background`.
+- **Surface** (`#f7f8fa`): gray-50 and `paper-contents`.
+- **Foreground** (`#212124`): gray-900 and `ink-text`.
+- **Muted** (`#868b94`): gray-600 and `ink-text-low`.
+- **Hairline** (`#eaebee`): gray-200 and `divider-2`.
+- **Brand Tint** (`#fff5f0`): carrot-50 and `paper-accent`.
+- **Danger** (`#fa2314`): red-600.
+- **Accent / Info** (`#009ceb`): blue-500.
+- **Success** (`#1aa174`): green-500.
 
-### Brand Tints
-- **Orange Tint** (`#fff2ec`): `$color.palette.carrot-100`. Brand weak background, subtle orange-tinted surfaces.
-- **Orange Light** (`#ffb999`): `$color.palette.carrot-400`. Medium brand tint, progress indicators.
-- **Orange Deep** (`#b93901`): `$color.palette.carrot-800`. Deep orange for emphasis in dark contexts.
-
-### Semantic
-- **Critical Red** (`#fa342c`): `fg-critical`. Error foreground, destructive action labels.
-- **Informative Blue** (`#217cf9`): `fg-informative`. Links, informational highlights.
-- **Positive Green** (`#079171`): `fg-positive`. Success states, confirmation indicators.
-- **Warning Yellow** (`#9b7821`): `fg-warning`. Caution labels, attention-needed states.
-- **Focus Blue** (`#5e98fe`): `stroke-focus-ring`. Keyboard focus ring on interactive elements.
-
-### Neutral Scale
-- **Gray 100** (`#f7f8f9`): `bg-layer-fill`. Subtle background fill.
-- **Gray 200** (`#f3f4f5`): `bg-layer-basement`, `bg-disabled`. Secondary surfaces.
-- **Gray 400** (`#dcdee3`): `stroke-neutral-weak`. Standard borders, dividers.
-- **Gray 600** (`#b0b3ba`): `fg-placeholder`. Placeholder text, muted icons.
-- **Gray 700** (`#868b94`): `fg-neutral-subtle`. Captions, tertiary text.
-- **Gray 800** (`#555d6d`): `fg-neutral-muted`. Secondary body text.
-
-### Surface & Borders
-- **Border Subtle** (`rgba(0,0,0,0.08)`): `stroke-neutral-subtle`. Soft card borders, barely-there separation.
-- **Border Muted** (`rgba(0,0,0,0.12)`): `stroke-neutral-muted`. Moderate borders for definition.
-- **Overlay** (`rgba(0,0,0,0.7)`): `bg-overlay`. Modal/sheet backdrop.
-- **Overlay Muted** (`rgba(0,0,0,0.5)`): `bg-overlay-muted`. Bottom sheet scrims.
+### Marketing web exception
+- **Marketing CTA** (`#ff6600`): computed background on both inspected Karrot public pages. Do not label it carrot-500 or substitute it for SEED Primary.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Primary**: `"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", Roboto, "Noto Sans KR", sans-serif`
-- **Monospace**: `"SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace`
-- **Design Principle**: No custom brand typeface. Karrot intentionally uses the user's system font so community content feels native and personal, not branded.
+- **Observed web UI**: `System`. The computed first family was `-apple-system` across 420 visible elements.
+- **Declared fallback**: `Pretendard Variable` appeared in the stack and FontFace declarations but had no visible first-family usage in this capture.
+- **Monospace**: no canonical UI monospace claim; do not invent one.
 
 ### Hierarchy
 
 | Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
 |------|------|------|--------|-------------|----------------|-------|
-| Display XL | System | 26px (t10) | 700 | 35px | 0em | Hero headlines, splash screens |
-| Display Large | System | 24px (t9) | 700 | 32px | 0em | Section headers |
-| Heading Large | System | 20px (t7) | 700 | 27px | 0em | Card headings, sub-sections |
-| Heading | System | 18px (t6) | 700 | 24px | 0em | List section headers |
-| Title | System | 16px (t5) | 500 | 22px | 0em | Navigation, standard titles |
-| Body | System | 14px (t4) | 400 | 19px | 0em | Standard reading text, listings |
-| Body Small | System | 13px (t3) | 400 | 18px | 0em | Secondary text, metadata |
-| Caption | System | 12px (t2) | 400 | 16px | 0em | Timestamps, small labels |
-| Caption Small | System | 11px (t1) | 400 | 15px | 0em | Fine print, badges |
+| H1 | System | 48px | 700 | 135% | 0 | SEED semantic h1 |
+| H2 | System | 42px | 700 | 135% | 0 | SEED semantic h2 |
+| H3 | System | 34px | 700 | 135% | 0 | SEED semantic h3 |
+| Title 1 Bold | System | 24px | 700 | 135% | 0 | Section or chapter title |
+| Body L1 | System | 16px | 400 | 150% | -0.02em on web | Long-form body |
+| Body L2 | System | 14px | 400 | 150% | -0.02em on web | Compact body |
 
 ### Principles
-- **Three weights only**: Regular (400), Medium (500), Bold (700). No light or extra-bold -- the system is intentionally constrained.
-- **Platform-aware tracking**: iOS uses 0em throughout; Android uses tighter tracking (-0.02em to -0.04em) for system font metrics.
-- **Compact type scale**: 11px to 26px in 10 steps with no display sizes above 26px -- mobile-first, content-density over typographic drama.
-- **Accessibility scaling**: All sizes use `clamp()` with `--seed-font-size-multiplier`, supporting 80% to 150% of base size.
+- Official SEED exposes regular and bold semantic weights; do not infer a broad custom weight scale.
+- Web tracking differs by role: headings remain neutral while body roles use narrow tracking.
+- The previous 26px maximum was an old snapshot and is no longer canonical.
+
+| Evidence class | Karrot status |
+|---|---|
+| **Official product-use** | SEED v2 defines product typography roles around platform/system families rather than a branded display face |
+| **Live surface-use** | `-apple-system` was the visible first family across the inspected Karrot marketing surfaces |
+| **Official distributed asset** | SEED design tokens and components are published openly; no separate public Karrot typeface asset is asserted |
+| **Declared-only** | Pretendard Variable appeared in public stacks and FontFace declarations without visible first-family use in this capture |
+| **Unresolved** | Exact native-app runtime family resolution outside the published SEED semantic roles |
 
 ## 4. Component Stylings
 
-### Buttons
+### Marketing Web
 
-**Brand Solid (Primary CTA)**
-- Background: `#ff6600` (carrot-600)
+**Primary CTA**
+- Background: `#ff6600`
 - Text: `#ffffff`
-- Radius: 12px (large), 8px (medium/small), 9999px (xsmall pill)
-- Min-height: 52px (large), 40px (medium), 36px (small), 32px (xsmall)
-- Font: 16px weight 700 (large), 14px weight 700 (medium/small)
-- Pressed: `#e14d00` (carrot-700)
-- Disabled: `#f3f4f5` background, `#d1d3d8` text
-- Use: Primary actions ("판매하기", "채팅하기")
+- Radius: 9999px
+- Padding: 4px 12px
+- Height: 36px
+- Font: 14px / 500 / System
+- States: default observed on two public surfaces; hover not captured
+- Use: Header-level marketing action
 
-**Neutral Weak**
-- Background: `#f3f4f5` (gray-200)
-- Text: `#1a1c20` (gray-1000)
-- Pressed: `#eeeff1` (gray-300)
-- Use: Tertiary actions, filters
+### SEED Product Components
 
-**Neutral Outline**
-- Background: transparent
-- Text: `#1a1c20` (gray-1000)
-- Border: 1px solid `#dcdee3` (gray-400)
-- Pressed: `#f7f8f9` background
-- Use: Cancel, dismiss, low-emphasis
+**Box Button**
+- States: primary, primary-low, secondary, danger, disabled, hover, keyboard
+- Use: Action component with xsmall through xlarge sizes; medium is the documented default
 
-**Critical Solid**
-- Background: `#fa342c` (red-700)
-- Text: `#ffffff`
-- Use: Destructive actions ("삭제", "신고")
+**Text Field**
+- States: outlined, underlined, focused, disabled, readonly, required, invalid
+- Use: Single-line form input with label, description, error message, and optional prefix/suffix
 
-### Cards & Containers
-- Background: `#ffffff` (bg-layer-default)
-- Border: 1px solid `rgba(0,0,0,0.08)` (stroke-neutral-subtle) or no border with shadow
-- Radius: 8px (standard), 12px (featured), 16px (large cards)
-- Shadow: `0px 2px 10px rgba(0,0,0,0.1)` (s2) for standard cards
+**Tabs**
+- States: selected, disabled, focus
+- Use: Hug or fill category navigation with a current-selection indicator
 
-### Chips & Tags
-- Background: `#f3f4f5` (gray-200), Selected: `#1a1c20` (gray-1000) with white text
-- Radius: 9999px (pill)
-- Height: 32px, Padding: 0 12px, Font: 13px weight 500
-
-### Inputs & Forms
-- Background: `#f7f8f9` (gray-100)
-- Border: 1px solid `#dcdee3` (gray-400)
-- Radius: 8px
-- Focus: 2px solid `#5e98fe` (blue-600) focus ring
-- Text: `#1a1c20`, Placeholder: `#b0b3ba` (gray-600)
-- Error border: `#fa342c` (red-700)
-
-### Navigation
-- Bottom tab bar: white background, subtle top border
-- Active tab: Karrot Orange icon + label, Inactive: `#868b94` (gray-700)
-- App bar: white, centered title (16px weight 700), optional back arrow
+**Snackbar**
+- States: default, success, warning, action focus
+- Use: Brief action feedback with at most one related action
 
 ## 5. Layout Principles
 
 ### Spacing System
 - Base unit: 4px
-- Scale: 2px (x0.5), 4px (x1), 6px (x1.5), 8px (x2), 12px (x3), 16px (x4), 20px (x5), 24px (x6), 32px (x8), 40px (x10), 56px (x14), 64px (x16)
-- Global gutter: 16px (x4) on each side
-- Component default vertical: 12px (x3)
+- Observed public-web clusters: 4px, 8px, 12px, 16px, and 64px
+- Treat larger marketing gaps as surface composition, not universal product tokens
 
 ### Grid & Container
-- Mobile: full-width with 16px horizontal gutter
-- Content max-width: 640px for web
-- Listing cards: full-width with 16px horizontal padding
-- Card grid: 2-column on tablet, single column on mobile
+- Marketing pages use responsive full-width sections and a centered content column.
+- SEED components define their own layout constraints; for example, Box Button keeps a 16px mobile edge inset.
 
 ### Whitespace Philosophy
-- **Content-dense, chrome-light**: Users scan many listings quickly. Spacing breathes but keeps 3-4 items per viewport.
-- **Consistent gutter**: The 16px global gutter is sacred -- every screen edge, every card inset returns to this rhythm.
-- **Grouped by proximity**: Related items use 4-8px gaps; distinct sections use 16-24px gaps.
+- Keep content dominant and chrome quiet.
+- Use the observed 4/8/12/16 rhythm locally; do not extrapolate undocumented marketplace grid rules from the marketing site.
 
 ### Border Radius Scale
-- Micro (2px): Progress bars, inline indicators
-- Standard (8px): Buttons, inputs, standard cards
-- Comfortable (12px): Large buttons, featured cards
-- Large (16px): Image frames, prominent cards
-- Sheet (20px): Bottom sheet top corners
-- Dialog (24px): Modal dialogs
-- Pill (9999px): Chips, avatars, xsmall buttons
+- Small: 6px, observed on a public CTA.
+- Medium: 8px, observed on a public CTA.
+- Full: 9999px, dominant public-web button geometry.
+- Component-specific radii from SEED must be taken from that component's current style page, not inferred from this marketing scale.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline elements |
-| Subtle (s1) | `0px 1px 4px rgba(0,0,0,0.08)` | Slight lift, list item hover |
-| Standard (s2) | `0px 2px 10px rgba(0,0,0,0.10)` | Cards, dropdowns, popovers |
-| Prominent (s3) | `0px 4px 16px rgba(0,0,0,0.12)` | Floating action button, bottom sheets, modals |
-
-**Shadow Philosophy**: Only three levels -- enough for clear layering without visual clutter. Shadows use pure black with varying opacity (no brand-tinted shadows), keeping the system neutral so the orange accent remains the sole source of warmth. In dark mode, opacities increase dramatically (s1: 0.50, s2: 0.68, s3: 0.80) to remain perceptible on dark surfaces.
+The inspected public controls were flat and reported `box-shadow: none`. No universal shadow tokens are published in the canonical frontmatter until current component-style sources are captured claim by claim.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Karrot Orange (`#ff6600`) as the singular brand accent -- it should feel special, not overwhelming
-- Stick to the 4px spacing grid -- every measurement should be a multiple of 4px
-- Use semantic tokens (`fg-neutral`, `bg-layer-default`) over raw palette values in component code
-- Keep border-radius between 8px-12px for standard elements, pills (9999px) only for chips/avatars
-- Use the system font stack -- Pretendard on web, system fonts on native
-- Apply dark mode via semantic token remapping, not opacity tricks
-- Maintain the 16px global gutter on all screen edges
+- Use SEED Primary `#ff6f0f` for product-system work.
+- Use the system font result unless a target product surface proves another first family.
+- Follow each SEED component's documented states and accessibility behavior.
+- Keep marketing `#ff6600` explicitly scoped to the observed public website.
 
 ### Don't
-- Don't overuse orange -- it's for primary CTAs and brand moments only, not backgrounds or borders
-- Don't use shadows heavier than s3 -- the system intentionally avoids dramatic elevation
-- Don't introduce additional brand colors -- Karrot is a one-accent-color system
-- Don't exceed 26px for text sizes -- this is a mobile-first system with a compact type scale
-- Don't use pure black (`#000000`) for text -- use gray-1000 (`#1a1c20`) for warmth
-- Don't mix palette tokens and semantic tokens in the same component
-- Don't skip the `clamp()` wrapper on font sizes -- accessibility scaling is non-negotiable
+- Don't relabel marketing `#ff6600` as SEED carrot-500.
+- Don't treat a declared Pretendard face as proof of visible use.
+- Don't reuse the retired 26px maximum; current SEED heading roles reach 48px.
+- Don't invent marketplace cards, sheets, or native-app geometry from a marketing snapshot.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <480px | Full-width cards, single column, 16px gutter |
-| Tablet | 480-768px | 2-column listing grid, expanded cards |
-| Desktop (Web) | >768px | Max-width 640px content, centered layout |
-
-### Touch Targets
-- Buttons: 52px (large), 40px (medium), 36px (small), 32px (xsmall)
-- Tab bar items: 48px height with centered icon + label
-- List items: minimum 56px row height
-- Chips: 32px height minimum
-
-### Collapsing Strategy
-- Listing grid: 2-column → single column below 480px
-- Bottom tab bar persists across all sizes
-- Bottom CTA: sticky full-width button + safe area padding
-- Image carousels: horizontal scroll with page indicators
-
-### Image Behavior
-- Listing thumbnails: 1:1 aspect ratio, 8px radius
-- Profile avatars: circular (9999px), 36-48px diameter
-- Full-width hero images: edge-to-edge, no radius
+### Observed and documented behavior
+- Public marketing controls render as compact 36px pills in the header and larger 40–48px CTAs deeper in the page.
+- SEED Box Button documents five sizes and requires a 16px mobile edge inset.
+- SEED Tabs supports `hug` and `fill`; fill is limited to five stable top-level items, while hug is recommended for six or more or variable categories.
+- Text Field labels and descriptions may wrap; the input value itself remains one line and clips horizontally.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA: Karrot Orange (`#ff6600`)
-- CTA Pressed: Deep Orange (`#e14d00`)
-- Background: Pure White (`#ffffff`)
-- Heading text: Near Black (`#1a1c20`)
-- Body text: Dark Gray (`#555d6d`)
-- Caption text: Medium Gray (`#868b94`)
-- Placeholder: Light Gray (`#b0b3ba`)
-- Border: Soft Gray (`#dcdee3`)
-- Disabled bg: Light Fill (`#f3f4f5`)
-- Error: Red (`#fa342c`)
-- Success: Green (`#079171`)
-- Info: Blue (`#217cf9`)
-- Focus ring: Blue (`#5e98fe`)
+- Product Primary: `#ff6f0f`
+- Product Hover / Pressed: `#ff9e66`
+- Marketing CTA only: `#ff6600`
+- Canvas: `#ffffff`; Background: `#f2f3f6`; Surface: `#f7f8fa`
+- Foreground: `#212124`; Muted: `#868b94`; Hairline: `#eaebee`
+- Danger: `#fa2314`; Accent: `#009ceb`; Success: `#1aa174`
 
 ### Example Component Prompts
-- "Create a listing card: white background, 1px solid rgba(0,0,0,0.08) border, 8px radius. Horizontal layout with 1:1 thumbnail (8px radius) left. Title 16px weight 400, #1a1c20. Price 16px weight 700, #1a1c20. Location + time 13px weight 400, #868b94."
-- "Build a primary CTA button: #ff6600 background, white text, 16px weight 700, min-height 52px, 12px radius, full-width. Pressed: #e14d00. Disabled: #f3f4f5 bg, #d1d3d8 text."
-- "Design a filter chip bar: horizontal scroll, 8px gap. Each chip: #f3f4f5 bg, #1a1c20 text, 13px weight 500, 32px height, 9999px radius, 12px h-padding. Selected: #1a1c20 bg, #ffffff text."
-- "Create a bottom sheet: white bg, 20px top-left/right radius, shadow 0px 4px 16px rgba(0,0,0,0.12). Handle: 36px wide, 4px height, #dcdee3, centered. Content: 16px h-padding."
-- "Design a navigation bar: white bg, sticky top, 1px bottom border rgba(0,0,0,0.08). Centered title 16px weight 700, #1a1c20. Left: back arrow icon #1a1c20. Right: optional action icon. Height 56px."
+- "Build a SEED primary action using semantic Primary `#ff6f0f`; use the Box Button's documented size and state contract rather than inventing geometry."
+- "Build a Karrot marketing header CTA with observed `#ff6600`, white text, 14px/500 System type, 36px height, and full-pill radius."
+- "Create a SEED text field with outlined and underlined variants, explicit label, error message, focused, readonly, required, invalid, and disabled states."
 
 ### Iteration Guide
-1. Primary color is `#ff6600` only -- no secondary brand hue exists
-2. All spacing snaps to 4px grid: 4, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64
-3. Border-radius defaults: 8px buttons/inputs, 12px cards, 9999px chips/avatars
-4. Gray-1000 (`#1a1c20`) for headings, gray-800 (`#555d6d`) for body, gray-700 (`#868b94`) for captions
-5. Shadows are minimal: s1 for hover, s2 for cards, s3 for floating elements only
-6. Mobile-first: design at 375px width, 16px gutter, then scale up
-7. System font stack -- never embed a custom font for Karrot
+1. Choose the target surface first: SEED product system or Karrot marketing web.
+2. Keep `#ff6f0f` and `#ff6600` distinct.
+3. Start with System typography; Pretendard remains a fallback until target-surface use is proved.
+4. Use only the 4/8/12/16/64 spacing observations as canonical shared values.
+5. Source component behavior from the current SEED page for that component.
 
 ---
 
@@ -369,15 +348,12 @@ What Karrot refuses: the anonymity of nationwide marketplaces (eBay, Coupang), t
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by publicly described Karrot user segments, not individual people.*
+These are official product and stakeholder contexts, not invented demographic personas.
 
-**지우 (Jiwoo), 31, Seoul.** New mother in 망원동. Uses Karrot 3–4 times a week — mostly to sell outgrown baby gear and pick up a stroller from someone two blocks away. Expects the app to open on the local listings feed in <1s and remember her neighborhood without re-asking. Will walk 10 minutes for a good deal; won't drive 20.
-
-**민호 (Minho), 26, Busan.** Graduate student. Treats Karrot as a free Craigslist replacement for textbooks, a desk lamp, and the occasional IKEA handoff. Reads every listing's neighborhood tag before the title — if it's outside 동구, he scrolls past. Prefers chat over calls; never gives out his phone number.
-
-**Sarah, 34, Toronto.** Just moved to Leslieville from Manhattan. Installed Karrot after a neighbor mentioned it because Facebook Marketplace *"felt like strangers on the internet, and this feels like people on my street."* Expects English-first UI, imperial units, and the ability to set the pickup spot to a coffee shop without drama.
-
-**이선생님 (Mr. Lee), 58, Daegu.** Retired, primary Karrot user is his spouse who shares the account. Uses it for *동네생활* community posts ("who has a working lawnmower I can borrow") more than buying and selling. Trust in face-to-face transactions is his whole reason for tolerating an app at all.
+- **A neighbor buying or selling nearby:** needs location, distance, conversation, and handoff expectations to stay visible without marketplace-style complexity.
+- **A local resident sharing information or help:** needs plain community language and enough neighborhood context to judge relevance and trust.
+- **A local business connecting with nearby customers:** needs technology translated into familiar, human communication rather than enterprise marketing language.
+- **A person entering a new neighborhood:** needs recognizable local cues and low-pressure participation before the product asks for deeper commitment.
 
 ## 14. States
 
@@ -485,10 +461,10 @@ Interpretive claims (editorial, not documented Karrot statements):
 
 ---
 
-**Verified:** 2026-05-08 (omd:migrate run 30 — Apple-tier)
-**Tier 1 sources:** daangn.com/kr (consumer hyperlocal — Karrot Orange `#ff6600` 4px / 32px / 14px·600 Primary + neighborhood-pill `#f3f4f5` 9999px / 40px / 16px·400 + skip-nav split-radius `0 0 4px 4px` `#2a3038`); about.daangn.com (corporate — Deep Charcoal `#1a1c20` 999px / 50px / 16px·400 brand-led pill).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
+**Verified:** 2026-07-11 (CAP0 evidence v1 + SEED v2 source reconciliation)
+**Tier 1 sources:** https://www.karrotmarket.com/ (marketing live DOM); https://www.karrotmarket.com/about/ (second public surface); https://v2.seed-design.io/foundation/color/palette/ and https://v2.seed-design.io/foundation/typography/ (official SEED); https://github.com/daangn/seed-design/blob/fb4459e90f84e049112395964319b163f980b821/packages/stylesheet/global.css (official token source).
+**Tier 2 sources:** https://getdesign.md/karrot and https://styles.refero.design/?q=Karrot were attempted; neither yielded an importable Karrot claim in this run.
 **Tier 2 (Philosophy/founders):** Crunchbase (Karrot + Kim Jae-hyun + Kim Yong-hyun profiles), KED Global ($180M unicorn 2021), Korea Herald (Canada 2M), ZoomInfo (HQ Gangnam), KoreaTechDesk.
 **Style ref:** `toss` (KR neighbor tone, retained).
-**Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured only consumer chrome; corporate about.daangn.com is a separate Deep Charcoal `#1a1c20` 999px pill system that should be documented as a second canonical track.
-
+**Conflicts unresolved:** none
+**Resolved drift:** current SEED product Primary is `#ff6f0f`; current marketing-web CTA `#ff6600` is retained as a separate surface token. The prior 26px maximum and exact Pretendard/SF Mono claims were removed.

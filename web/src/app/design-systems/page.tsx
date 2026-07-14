@@ -1,28 +1,29 @@
 "use client";
 
 /**
- * Design Systems directory — dedicated page listing every verified public DS
- * and brand-guidelines page OMD tracks. Each card uses the site's own
+ * Design Systems directory — the complete reference catalog, with official DS
+ * and brand-guide links highlighted when available. Each card uses the site's
  * og:image as the thumbnail (harvested via scripts/fetch-og-images.mjs),
  * falling back to a gradient-logo thumbnail when the site doesn't publish
  * an OG image.
  */
 
 import Link from "next/link";
-import { ArrowLeft, Moon, Sun } from "lucide-react";
+import { ArrowLeft, ArrowRight, Moon, Sun } from "lucide-react";
 import { useHotRefs } from "@/lib/hot-refs";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { getAllDesignSystems } from "@/lib/design-systems";
+import { useMounted } from "@/lib/use-mounted";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { DSCard } from "@/components/ds-card";
 import { GithubStarButton } from "@/components/github-star-button";
 import { COLLECTIONS } from "@/lib/collections";
+import { REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
+import { CollectionInlineLink } from "@/app/collections/collection-inline-link";
 
 export default function DesignSystemsPage() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   const systems = getAllDesignSystems();
   const hotRefs = useHotRefs(5);
@@ -64,24 +65,35 @@ export default function DesignSystemsPage() {
         </div>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Design Systems</h1>
         <p className="text-muted-foreground mt-4 max-w-2xl leading-relaxed">
-          Jump to the company&apos;s canonical documentation — {REFERENCE_COUNT}{" "}
-          real company design systems and brand / trademark guideline pages.
+          Browse all {REFERENCE_COUNT} real-company DESIGN.md references. Trust is computed from evidence,
+          freshness, and conflicts — never inferred from a date stamp.
+        </p>
+        <p className="mt-3 font-mono text-xs text-muted-foreground">
+          {REFERENCE_QUALITY_COUNTS.verified_v2} Verified v2 · {REFERENCE_QUALITY_COUNTS.partial} Partial ·{" "}
+          {REFERENCE_QUALITY_COUNTS.legacy_snapshot} Legacy snapshots
         </p>
 
         {/* Curated collections — intent-keyword entry points (#5) */}
         <div className="mt-6">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground mb-2.5">
-            Collections
+          <div className="mb-2.5 flex items-center justify-between gap-4">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+              Collections
+            </div>
+            <Link href="/collections" className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline hover:underline-offset-2">
+              View all <ArrowRight className="h-3 w-3" />
+            </Link>
           </div>
           <div className="flex flex-wrap gap-2">
             {COLLECTIONS.map((c) => (
-              <Link
+              <CollectionInlineLink
                 key={c.slug}
-                href={`/collections/${c.slug}`}
+                slug={c.slug}
+                origin="directory"
+                colorFamily={c.colorFamily}
                 className="rounded-full border border-border/60 bg-card/50 px-3 py-1.5 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
               >
                 {c.titleEn}
-              </Link>
+              </CollectionInlineLink>
             ))}
           </div>
         </div>

@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "references": {
+    "apple": {
+      "maxRoutes": 4,
+      "routes": [
+        "https://www.apple.com/shop/product/mw5g3am/a/siri-remote",
+        "https://developer.apple.com/design/human-interface-guidelines/buttons",
+        "https://developer.apple.com/design/human-interface-guidelines/components"
+      ]
+    },
+    "alipay": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://open.alipay.com/?mobile=2",
+        "https://open.alipay.com/module/webApp",
+        "https://open.alipay.com/tool"
+      ]
+    },
+    "baemin": {
+      "maxRoutes": 4,
+      "routes": [
+        "https://www.woowahan.com/",
+        "https://www.woowahan.com/fonts",
+        "https://www.woowahan.com/fonts/license"
+      ]
+    },
+    "catchtable": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.catchtable.net/",
+        "https://biz.catchtable.co.kr/n/main",
+        "https://career.catchtable.co.kr/ko/service"
+      ]
+    },
+    "kakao": {
+      "maxRoutes": 4,
+      "routes": [
+        "https://www.kakaocorp.com/page/about/culture",
+        "https://www.kakaocorp.com/page/about/milestones",
+        "https://developers.kakao.com/docs/ko/kakaologin/design-guide"
+      ]
+    },
+    "karrot": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.karrotmarket.com/about/",
+        "https://v2.seed-design.io/"
+      ]
+    },
+    "toss": {
+      "maxRoutes": 5,
+      "routes": [
+        "https://toss.im/docs/10290",
+        "https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v3/",
+        "https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/"
+      ]
+    },
+    "toss-securities": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://home.tossinvest.com/en/corporate-info",
+        "https://home.tossinvest.com/en/investment-products"
+      ]
+    },
+    "tesla": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.tesla.com/support/getting-started-with-your-vehicle",
+        "https://www.tesla.com/model3?lang=en",
+        "https://www.tesla.com/ownersmanual/"
+      ]
+    },
+    "29cm": {
+      "maxRoutes": 5,
+      "routes": [
+        "https://www.29cm.co.kr/best-products",
+        "https://www.29cm.co.kr/content/29magazine",
+        "https://www.29cm.co.kr/store/showcase",
+        "https://www.29cm.co.kr/product/catalog/3970725"
+      ]
+    },
+    "krds": {
+      "maxRoutes": 8,
+      "routes": [
+        "https://www.krds.go.kr/html/site/style/style_03.html",
+        "https://www.krds.go.kr/html/site/style/style_02.html",
+        "https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "https://www.krds.go.kr/html/site/component/component_04_06.html"
+      ]
+    },
+    "line": {
+      "maxRoutes": 8,
+      "routes": [
+        "https://designsystem.line.me/",
+        "https://designsystem.line.me/LDSM/foundation/color/line-color-guide-ex-en/",
+        "https://designsystem.line.me/LDSM/foundation/typography-ex-en/",
+        "https://designsystem.line.me/LDSM/foundation/layout-ex-en/",
+        "https://designsystem.line.me/LDSM/components/box-button-ex-en/",
+        "https://designsystem.line.me/LDSM/components/input-ex-en/",
+        "https://designsystem.line.me/LDSM/components/popup-ex-en/"
+      ]
+    },
+    "yeogiotte": {
+      "maxRoutes": 8,
+      "routes": [
+        "https://www.yeogi.com/domestic-accommodations",
+        "https://designlibrary.yeogi.com/",
+        "https://designlibrary.yeogi.com/foudations/color/palette-color",
+        "https://designlibrary.yeogi.com/foudations/typography",
+        "https://designlibrary.yeogi.com/foudations/layout",
+        "https://designlibrary.yeogi.com/foudations/radius",
+        "https://designlibrary.yeogi.com/components/overview"
+      ]
+    },
+    "naver": {
+      "maxRoutes": 4,
+      "routes": [
+        "https://search.naver.com/search.naver?query=%EB%94%94%EC%9E%90%EC%9D%B8",
+        "https://www.navercorp.com/company/brandGuide",
+        "https://www.navercorp.com/company/about"
+      ]
+    },
+    "notion": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.notion.com/ko/product",
+        "https://www.notion.com/ko/help/guides"
+      ]
+    },
+    "claude": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.anthropic.com/",
+        "https://www.anthropic.com/claude",
+        "https://www.anthropic.com/pricing"
+      ]
+    },
+    "remember": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://career.rememberapp.co.kr/job/postings",
+        "https://corp.remember.co.kr/",
+        "https://dramancompany.github.io/remember-ui/"
+      ]
+    }
+  }
+}

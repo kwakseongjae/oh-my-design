@@ -4,498 +4,315 @@ name: Tesla
 country: US
 category: automotive
 homepage: "https://www.tesla.com"
-primary_color: "#cc0000"
+primary_color: "#3e6ae1"
 logo:
   type: simpleicons
   slug: tesla
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: support, url: "https://www.tesla.com/support/getting-started-with-your-vehicle", inspected: "2026-07-13" }
+    - { id: surface-2, kind: marketing, url: "https://www.tesla.com/model3?lang=en", inspected: "2026-07-13" }
+    - { id: surface-3, kind: documentation, url: "https://www.tesla.com/ownersmanual/", inspected: "2026-07-13" }
+  sources:
+    - { id: support-live, kind: official-doc, url: "https://www.tesla.com/support/getting-started-with-your-vehicle", captured: "2026-07-13" }
+    - { id: model3-live, kind: product-surface, url: "https://www.tesla.com/model3?lang=en", captured: "2026-07-13" }
+    - { id: manual-live, kind: official-doc, url: "https://www.tesla.com/ownersmanual/", captured: "2026-07-13" }
+    - { id: universal-text-asset, kind: brand-asset, url: "https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/text/Universal-Sans-Text-Regular.woff2", captured: "2026-07-13" }
+    - { id: universal-display-asset, kind: brand-asset, url: "https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/display/Universal-Sans-Display-Regular.woff2", captured: "2026-07-13" }
+    - { id: tesla-legal, kind: license, url: "https://www.tesla.com/legal/terms", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &model3 { surface_id: surface-2, source_id: model3-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.canvas": *model3
+    "tokens.colors.surface": *model3
+    "tokens.colors.foreground": *model3
+    "tokens.colors.body": *model3
+    "tokens.colors.muted": *model3
+    "tokens.colors.on-primary": *model3
+    "tokens.typography.family.ui": *model3
+    "tokens.typography.family.display": *model3
+    "tokens.spacing.unit": *model3
+    "tokens.spacing.gap": *model3
+    "tokens.spacing.nav-x": *model3
+    "tokens.spacing.card-x": *model3
+    "tokens.spacing.card-y": *model3
+    "tokens.spacing.card-bottom": *model3
+    "tokens.spacing.section": *model3
+    "tokens.rounded.control": *model3
+    "tokens.rounded.tab": *model3
+    "tokens.rounded.card": *model3
+    "tokens.shadow.carousel-navigation": *model3
+    "tokens.components.primary-cta.type": *model3
+    "tokens.components.primary-cta.bg": *model3
+    "tokens.components.primary-cta.fg": *model3
+    "tokens.components.primary-cta.radius": *model3
+    "tokens.components.primary-cta.padding": *model3
+    "tokens.components.primary-cta.font": *model3
+    "tokens.components.primary-cta.states": *model3
+    "tokens.components.primary-cta.use": *model3
+    "tokens.components.high-contrast-cta.type": *model3
+    "tokens.components.high-contrast-cta.bg": *model3
+    "tokens.components.high-contrast-cta.fg": *model3
+    "tokens.components.high-contrast-cta.radius": *model3
+    "tokens.components.high-contrast-cta.padding": *model3
+    "tokens.components.high-contrast-cta.font": *model3
+    "tokens.components.high-contrast-cta.states": *model3
+    "tokens.components.high-contrast-cta.use": *model3
+    "tokens.components.info-card.type": *model3
+    "tokens.components.info-card.bg": *model3
+    "tokens.components.info-card.fg": *model3
+    "tokens.components.info-card.radius": *model3
+    "tokens.components.info-card.padding": *model3
+    "tokens.components.info-card.use": *model3
+    "tokens.components.carousel-dot.type": *model3
+    "tokens.components.carousel-dot.bg": *model3
+    "tokens.components.carousel-dot.fg": *model3
+    "tokens.components.carousel-dot.radius": *model3
+    "tokens.components.carousel-dot.padding": *model3
+    "tokens.components.carousel-dot.states": *model3
+    "tokens.components.carousel-dot.use": *model3
+    "tokens.components.mode-tab.type": *model3
+    "tokens.components.mode-tab.fg": *model3
+    "tokens.components.mode-tab.radius": *model3
+    "tokens.components.mode-tab.padding": *model3
+    "tokens.components.mode-tab.states": *model3
+    "tokens.components.mode-tab.use": *model3
+    "tokens.components.carousel-navigation.type": *model3
+    "tokens.components.carousel-navigation.bg": *model3
+    "tokens.components.carousel-navigation.fg": *model3
+    "tokens.components.carousel-navigation.radius": *model3
+    "tokens.components.carousel-navigation.padding": *model3
+    "tokens.components.carousel-navigation.shadow": *model3
+    "tokens.components.carousel-navigation.states": *model3
+    "tokens.components.carousel-navigation.use": *model3
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
+  components_harvested: true
   colors:
     primary: "#3e6ae1"
-    brand: "#cc0000"
     canvas: "#ffffff"
     surface: "#f4f4f4"
-    carbon: "#171a20"
-    graphite: "#393c41"
-    pewter: "#5c5e62"
-    placeholder: "#8e8e8e"
-    border: "#eeeeee"
-    border-strong: "#d0d1d2"
+    foreground: "#171a20"
+    body: "#393c41"
+    muted: "#5c5e62"
     on-primary: "#ffffff"
   typography:
-    family: { sans: "Universal Sans Text", mono: "Universal Sans Text" }
-    hero:         { size: 40, weight: 500, lineHeight: 1.20, use: "Hero titles, white on dark imagery" }
-    product-name: { size: 17, weight: 500, lineHeight: 1.18, use: "Model names in nav panel and cards" }
-    nav:          { size: 14, weight: 500, lineHeight: 1.20, use: "Primary navigation labels" }
-    body:         { size: 14, weight: 400, lineHeight: 1.43, use: "Paragraph and descriptive content" }
-    button:       { size: 14, weight: 500, lineHeight: 1.20, use: "CTA button text" }
-    promo:        { size: 22, weight: 400, lineHeight: 0.91, use: "White promotional text on hero" }
-    category:     { size: 16, weight: 500, use: "White text labels on category cards" }
-  spacing: { xs: 4, sm: 8, md: 16, base: 24, lg: 32, xl: 48, xxl: 64 }
-  rounded: { sm: 4, md: 12, lg: 12, full: 9999 }
+    family: { ui: "Universal Sans Text", display: "Universal Sans Display" }
+  spacing: { unit: 4, gap: 8, nav-x: 16, card-x: 24, card-y: 32, card-bottom: 48, section: 64 }
+  rounded: { control: 4, tab: 8, card: 8 }
   shadow:
-    none: "none"
-  components_harvested: true
+    carousel-navigation: "rgba(0, 0, 0, 0.25) 0px 4px 4px 0px"
   components:
-    button-primary: { type: button, bg: "#3e6ae1", fg: "#ffffff", radius: 4, padding: "4px", font: "14/500", use: "Primary CTA Order Now, 200px wide, 40px min-height" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#393c41", radius: 4, padding: "4px", font: "14/500", use: "Alternative action, View Inventory" }
-    button-nav: { type: button, fg: "#171a20", radius: 4, padding: "4px 16px", font: "14/500", use: "Top navigation items" }
-    link-text: { type: button, fg: "#5c5e62", font: "14/400", use: "In-content text links" }
-    card-category: { type: card, radius: 12, use: "Full-bleed photography category card, white corner label" }
-    input-default: { type: input, fg: "#171a20", font: "14/400", use: "Form input, placeholder #8e8e8e" }
+    primary-cta: { type: button, bg: "#3e6ae1", fg: "#ffffff", radius: "4px", padding: "4px", font: "14px / 500 / Universal Sans Text", states: "pressed and focus computed snapshots", use: "Model 3 marketing CTA" }
+    high-contrast-cta: { type: button, bg: "#ffffff", fg: "#393c41", radius: "4px", padding: "4px", font: "14px / 500 / Universal Sans Text", states: "focus computed snapshot", use: "Paired Model 3 marketing CTA" }
+    info-card: { type: card, bg: "#f4f4f4", fg: "#393c41", radius: "8px", padding: "0px 24px", use: "Filled information card on Model 3 marketing page" }
+    carousel-dot: { type: tab, bg: "#ffffff", fg: "#d0d1d2", radius: "8px", padding: "4px", states: "default and focus computed snapshots", use: "Model 3 carousel dot" }
+    mode-tab: { type: tab, fg: "#171a20", radius: "4px", padding: "4px 8px", states: "default, pressed, and focus computed snapshots", use: "Model 3 carousel mode tab" }
+    carousel-navigation: { type: button, bg: "rgba(255, 255, 255, 0.75)", fg: "#393c41", radius: "4px", padding: "4px", shadow: "rgba(0, 0, 0, 0.25) 0px 4px 4px 0px", states: "default, pressed, and focus computed snapshots", use: "Inline Model 3 carousel arrow" }
 ---
 
-# Design System Inspiration of Tesla
+# Tesla — Design Reference
 
 ## 1. Visual Theme & Atmosphere
 
-Tesla's website is an exercise in radical subtraction — a digital showroom where the product is everything and the interface is almost nothing. The page opens with a full-viewport hero that fills the entire screen with cinematic car photography: three vehicles arranged on polished concrete against a hazy cityscape sky, with a single model name floating above in translucent white type. There are no decorative borders, no gradients, no patterns, no shadows. The UI exists only to provide just enough navigational structure to get out of the way. Every pixel that isn't product imagery is white space, and that restraint is the design system's most powerful statement.
+Tesla makes electric vehicles, charging, solar, and energy-storage products; its current public story extends that work toward what it calls sustainable abundance. On the captured Model 3 marketing page, that ambition is expressed through a largely neutral, image-led interface rather than a dense automotive dashboard: `#3e6ae1` appears on a primary call to action, while white, charcoal, and near-black carry most of the UI. Universal Sans Display creates the large product hierarchy and Universal Sans Text handles controls and supporting copy. This reference separates that marketing language from the supplied support page and owners-manual chrome: the latter do not authorize marketing tokens, while the former does not describe an authenticated vehicle, account, or in-car product interface.
 
-The color philosophy is almost ascetic: a single blue (`#3E6AE1`) for primary calls to action, three shades of dark gray for text hierarchy, and white for everything else. The entire emotional weight is carried by photography — sprawling landscape shots, studio-lit vehicle profiles, and atmospheric environmental compositions that stretch edge-to-edge across each viewport-height section. The UI chrome dissolves into the imagery. The navigation bar floats above the hero with no visible background, border, or shadow — the TESLA wordmark and five navigation labels simply exist in the space, trusting the content beneath them to provide sufficient contrast.
-
-Typography recently transitioned from Gotham to Universal Sans — a custom family split into "Display" for headlines and "Text" for body/UI elements — unifying the website, mobile app, and in-car software into a single typographic voice. The Display variant renders hero titles at 40px weight 500, while the Text variant handles everything from navigation (14px/500) to body copy (14px/400). The font carries a geometric precision with slightly humanist terminals that feels engineered rather than designed — exactly matching Tesla's brand identity of technology that doesn't need to announce itself. There are no text shadows, no text gradients, no decorative type treatments. Every letterform earns its place through clarity alone.
-
-**Key Characteristics:**
-- Full-viewport hero sections (100vh) dominated by cinematic car photography with minimal overlay UI
-- Near-zero UI decoration: no shadows, no gradients, no borders, no patterns anywhere on the page
-- Single accent color — Electric Blue (`#3E6AE1`) — used exclusively for primary CTA buttons
-- Universal Sans font family (Display + Text) unifying web, app, and in-car interfaces
-- Photography-first presentation where product imagery carries all emotional weight
-- Frosted-glass navigation concept with transparent/white nav that floats over hero content
-- 0.33s cubic-bezier transitions as the universal timing for all interactive state changes
-- Carousel-driven hero with dot indicators and edge arrow navigation for multiple vehicle showcases
-- "Ask a Question" persistent chatbot bar anchored to the viewport bottom
+- **Product-led marketing:** the captured Model 3 surface combines large display type, paired CTAs, carousel controls, and filled information cards.
+- **Restrained UI color:** the verified marketing palette is blue plus neutrals, not a general semantic-status palette.
+- **Distinct source domains:** support and documentation were captured, but their local typography and browser-like chrome are not promoted into the Model 3 system.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Electric Blue** (`#3E6AE1`): Primary CTA button background — a confident, mid-saturation blue (rgb 62, 106, 225) that stands alone as the only chromatic color in the entire interface. Used exclusively for "Order Now" and other primary action buttons
-- **Pure White** (`#FFFFFF`): Dominant background color for all surfaces, panels, navigation, and secondary button fills — the canvas that lets photography breathe
+### Observed Model 3 marketing roles
 
-### Secondary & Accent
-- **Promo Blue** (`#3E6AE1`): Blue also serves for promotional text ("0% APR Available") displayed over hero imagery in the same hue as the CTA — creating a visual link between incentive messaging and action
-- No secondary accent colors exist. Tesla deliberately avoids color variety to maintain extreme visual discipline
+- **Primary action** (`#3e6ae1`): Model 3 `tds-btn--primary` background at `surface-2::[data-omd-capture="11"]`.
+- **Canvas and on-primary** (`#ffffff`): high-contrast CTA fill and primary CTA text on the same surface.
+- **Filled card surface** (`#f4f4f4`): `tcl-info-card--filled` background.
+- **Foreground** (`#171a20`): selected mode-tab and information-card heading text.
+- **Body** (`#393c41`): high-contrast CTA text, card copy, and carousel-arrow icon color.
+- **Muted copy** (`#5c5e62`): Model 3 low-contrast display copy and inactive mode tabs.
 
-### Surface & Background
-- **White Canvas** (`#FFFFFF`): Page background, navigation panel, dropdown menus, and all surface containers
-- **Light Ash** (`#F4F4F4`): Subtle alternate surface for section differentiation — barely perceptible shift from pure white (rgb 244, 244, 244)
-- **Carbon Dark** (`#171A20`): Dark surface color for hero text overlays and potential dark-mode contexts (rgb 23, 26, 32) — a warm near-black with a blue undertone
-- **Frosted Glass** (`rgba(255, 255, 255, 0.75)`): Semi-transparent white for navigation backdrop-filter effects on scroll
-
-### Neutrals & Text
-- **Carbon Dark** (`#171A20`): Primary heading and navigation text — the darkest text value (rgb 23, 26, 32), used for model names, nav labels, and hero titles on light backgrounds
-- **Graphite** (`#393C41`): Body text and secondary content (rgb 57, 60, 65) — the default paragraph color, slightly warmer than pure gray
-- **Pewter** (`#5C5E62`): Tertiary text for sub-links, secondary navigation links like "Learn" and "Order" (rgb 92, 94, 98)
-- **Silver Fog** (`#8E8E8E`): Placeholder text in input fields and disabled states (rgb 142, 142, 142)
-- **Cloud Gray** (`#EEEEEE`): Light borders and divider lines (rgb 238, 238, 238)
-- **Pale Silver** (`#D0D1D2`): Subtle UI borders and delineation (rgb 208, 209, 210)
-
-### Semantic & Accent
-- Tesla's marketing site avoids semantic color coding (no green/red/yellow status indicators). Error, success, and warning states follow standard browser defaults in form contexts
-- The blue CTA (`#3E6AE1`) serves as the sole interactive color signal
-
-### Gradient System
-- No gradients are used anywhere in the interface
-- Depth is achieved entirely through photography, whitespace, and the binary contrast between full-bleed imagery and clean white surfaces
-- The navigation achieves layering through opacity (frosted glass effect) rather than gradient or shadow
+The capture also records local transparent and translucent fills, including `rgba(255, 255, 255, 0.75)` on carousel arrows. No success, warning, error, dark-mode, or account-product color role is inferred.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Display**: `Universal Sans Display`, -apple-system, Arial, sans-serif — used for hero titles and large model names. A geometric sans-serif with precisely engineered proportions, recently replacing Gotham to unify Tesla's digital ecosystem (website, mobile app, vehicle interface)
-- **Text/UI**: `Universal Sans Text`, -apple-system, Arial, sans-serif — used for navigation, body copy, buttons, and all UI text. Optimized for legibility at smaller sizes with slightly wider proportions than the Display variant
-- **No OpenType features** detected — typography is completely unembellished
-- **No italic variants** observed on the marketing site
+### Evidence classes
 
-### Hierarchy
+- **Live computed marketing use:** `Universal Sans Text` is loaded with high confidence, has 266 visible uses, and is backed by five Tesla-hosted WOFF2 sources. It appears in navigation, buttons, cards, tabs, dialogs, and supporting text on the supplied Tesla pages.
+- **Live computed marketing use:** `Universal Sans Display` is loaded with high confidence, has 65 visible uses, and is backed by five Tesla-hosted WOFF2 sources. It appears in Model 3 headings and display copy.
+- **Official distributed assets:** the two Universal Sans families are served from Tesla’s `digitalassets.tesla.com/tesla-design-system` paths. Those URLs corroborate the loaded-face source, not permission to reuse the files.
+- **Declared-only assets:** Blender TSL, CT Speed, Fira Code, Noto Sans variants, Open Sans, and PingFang variants were declared but had zero visible captured uses. They are not UI-family tokens.
+- **Documentation chrome and unresolved:** the owners-manual capture computes `Times` but supplies no matching loaded face or source. It remains unresolved and is not treated as a Tesla brand family.
+- **License boundary:** Tesla’s public legal material does not publish a Universal Sans web-font licence for downstream use. Keep the metadata and mark the specimen unavailable when the target project lacks its own licence; do not substitute a system font as Universal Sans.
 
-| Role | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|--------|-------------|----------------|-------|
-| Hero Title | 40px (2.50rem) | 500 | 48px (1.20) | normal | Universal Sans Display, white on dark hero imagery |
-| Product Name | 17px (1.06rem) | 500 | 20px (1.18) | normal | Universal Sans Text, model names in nav panel and cards |
-| Nav Item | 14px (0.88rem) | 500 | 16.8px (1.20) | normal | Universal Sans Text, primary navigation labels |
-| Body Text | 14px (0.88rem) | 400 | 20px (1.43) | normal | Universal Sans Text, paragraph and descriptive content |
-| Button Label | 14px (0.88rem) | 500 | 16.8px (1.20) | normal | Universal Sans Text, CTA button text |
-| Sub-link | 14px (0.88rem) | 400 | 20px (1.43) | normal | Tertiary links (Learn, Order, Experience) |
-| Promo Text | 22px (1.38rem) | 400 | 20px (0.91) | normal | White promotional text on hero ("0% APR Available") |
-| Category Label | 16px (est.) | 500 | — | normal | White text labels on category cards ("Sport Sedan") |
+### Measured Model 3 marketing hierarchy
 
-### Principles
-- **"Normal" letter-spacing everywhere**: Unlike most modern tech brands that use negative tracking for headlines, Tesla uses default letter-spacing at every level. This reflects a philosophy that the typeface should speak for itself without manipulation
-- **Weight restraint**: Only two weights appear — 500 (medium) for headings/UI and 400 (regular) for body. No bold (700), no light (300). The system avoids typographic drama
-- **Unified font sizing**: Most UI text clusters at 14px with only hero titles (40px) and promo text (22px) breaking away. This extreme uniformity creates a sense of engineered consistency
-- **Display vs Text split**: The two-variant system (Display for hero, Text for UI) creates subtle optical correction without visible stylistic difference — they appear as the same typeface at different sizes
-- **No text transforms**: No uppercase text appears in the main navigation or CTAs — the lowercase approach reinforces Tesla's understated confidence
+| Role | Family | Size | Weight | Line height | Provenance |
+|---|---|---:|---:|---:|---|
+| Large product heading | Universal Sans Display | 48px | 500 | 56px | `surface-2::h1` |
+| Information-card heading | Universal Sans Display | 34px | 500 | 44px | `.tcl-info-card__header` |
+| Display support copy | Universal Sans Display | 20px | 400 | 28px | `.tcl-info-card__description` |
+| Navigation and control text | Universal Sans Text | 14px | 500 | 20px | `.tds-site-nav-item` |
+| CTA label | Universal Sans Text | 14px | 500 | 16.8px | `.tds-btn--primary` |
+| Mode tab | Universal Sans Text | 17px | 500 | 20px | `.tds-tab` |
 
-## 4. Component Stylings
+## 4. Components
 
-### Buttons
-All buttons use barely-rounded rectangles (4px border-radius) — creating a sharp, technical aesthetic that mirrors the precision of the vehicles.
+All values in this section come from the captured Model 3 marketing surface (`surface-2`). The collector reports `interactionCount: 0`; focus and pressed rows below are computed pseudo-state snapshots, not evidence of transitions, menu behavior, or a complete accessibility contract.
 
-**Primary CTA** — The main action button:
-- Default: bg `#3E6AE1` (Electric Blue), text `#FFFFFF`, fontSize 14px, fontWeight 500, padding 4px with inner content centering, borderRadius 4px, minHeight 40px, width 200px
-- Border: 3px solid transparent (reserves space for focus/active border animation)
-- Box Shadow: `rgba(0,0,0,0) 0px 0px 0px 2px inset` (invisible at rest, animates to visible on focus)
-- Transition: `border-color 0.33s, background-color 0.33s, color 0.33s, box-shadow 0.25s`
-- Hover: subtle darkening of blue background
-- Used for: "Order Now" calls to action
+### CTA buttons
 
-**Secondary CTA** — The alternative action button:
-- Default: bg `#FFFFFF`, text `#393C41` (Graphite), same dimensions and border pattern as primary
-- Transition: identical timing to primary (0.33s)
-- Used for: "View Inventory" alongside primary CTA
+**Primary CTA**
+- Background: `#3e6ae1`
+- Text: `#ffffff`
+- Border: `3px solid transparent`
+- Radius: `4px`
+- Padding: `4px`
+- Font: `14px / 500 / Universal Sans Text`
+- Use: `surface-2::[data-omd-capture="11"]`, a Model 3 marketing CTA
+- Pressed: `#3e6ae0` background at `surface-2::[data-omd-capture="11"]::state-pressed`
+- Focus: `rgba(255, 255, 255, 0.05) 0px 0px 0px 2px inset` at `surface-2::[data-omd-capture="11"]::state-focus`
 
-**Nav Button** — Top navigation items:
-- Default: bg transparent, text `#171A20` (Carbon Dark), fontSize 14px, fontWeight 500, borderRadius 4px, padding 4px 16px, minHeight 32px
-- Transition: `color 0.33s, background-color 0.33s`
-- Active/expanded: subtle background highlight
-- Used for: "Vehicles", "Energy", "Charging", "Discover", "Shop"
+**High-contrast CTA**
+- Background: `#ffffff`
+- Text: `#393c41`
+- Border: `3px solid transparent`
+- Radius: `4px`
+- Padding: `4px`
+- Font: `14px / 500 / Universal Sans Text`
+- Use: `surface-2::[data-omd-capture="12"]`, paired with the primary Model 3 CTA
+- Focus: `rgba(57, 60, 65, 0.05) 0px 0px 0px 2px inset` at `surface-2::[data-omd-capture="12"]::state-focus`
 
-**Text Link** — In-content actions:
-- Default: text `#5C5E62` (Pewter), fontSize 14px, fontWeight 400, no background, no border
-- Hover: underline decoration with box-shadow transition
-- Transition: `box-shadow 0.33s cubic-bezier(0.5, 0, 0, 0.75), color 0.33s`
-- Used for: "Learn", "Order", "Experience", "New", "Pre-Owned" links in dropdown panel
+### Navigation item
 
-### Cards & Containers
+**Product-name navigation item**
+- Text: `#ffffff`
+- Radius: `4px`
+- Padding: `4px 16px`
+- Font: `14px / 500 / Universal Sans Text`
+- Use: Model 3 header item at `surface-2::[data-omd-capture="2"]`; the value is scoped to the captured light-on-image header treatment
 
-**Vehicle Card** (Navigation panel):
-- Background: transparent (inherits panel white)
-- Border: none
-- Shadow: none
-- Content: vehicle image (transparent PNG) + model name centered below + two text links
-- Layout: 3-column grid within the dropdown panel
-- No hover animation on the card itself — interaction is via the text links beneath
+### Carousel controls
 
-**Category Card** (Homepage lower section):
-- Background: full-bleed landscape photography
-- Border radius: approximately 12px (subtly rounded)
-- Overflow: hidden (clips image to rounded corners)
-- Text: white label in top-left corner ("Sport Sedan", "Midsize SUV")
-- Size: large format, approximately 2:1 aspect ratio
-- No shadow, no border, no overlay gradient — text relies on image darkness for contrast
+**Carousel dot**
+- Background: `#ffffff`
+- Text: `#d0d1d2`
+- Radius: `8px`
+- Padding: `4px`
+- Use: `surface-2::[data-omd-capture="13"]` active and `"14"` inactive dot controls
+- Focus: inactive dot becomes `#d8d9d9` at `surface-2::[data-omd-capture="14"]::state-focus`
 
-### Inputs & Forms
-- Background: transparent
-- Text color: `#171A20` (Carbon Dark)
-- Placeholder color: `#8E8E8E` (Silver Fog)
-- Border: minimal, inherits from browser defaults
-- Font: Universal Sans Text, 14px
-- The "Ask a Question" chatbot input bar sits at the viewport bottom with a clean white background and subtle border
+**Mode tab**
+- Text: `#171a20`
+- Radius: `4px`
+- Padding: `4px 8px`
+- Font: `17px / 500 / Universal Sans Text`
+- Use: selected Model 3 tab at `surface-2::[data-omd-capture="18"]`
+- Pressed: inactive tab is `#5b5d61` at `surface-2::[data-omd-capture="19"]::state-pressed`
+- Focus: inactive tab is `#57595d` at `surface-2::[data-omd-capture="19"]::state-focus`
 
-### Navigation
-- **Desktop**: Centered horizontal nav with TESLA wordmark (spaced uppercase letters) on the left, five category buttons center-aligned, and three icon buttons (help, globe/language, account) on the right
-- **Background**: White (transitions from transparent over dark hero to opaque white on scroll via class toggle `tds-site-header--white-background`)
-- **Dropdown panel**: Full-width white panel with 3-column vehicle grid + right sidebar text links, no shadow, no border — appears seamlessly below the nav
-- **Sticky behavior**: `sticky-without-slide` class — stays at top without slide-in animation
-- **Mobile**: Hamburger collapse pattern
-- **No visible separator** between nav and content — the nav blends with the hero
+**Carousel arrow**
+- Background: `rgba(255, 255, 255, 0.75)`
+- Text: `#393c41`
+- Border: `2px solid transparent`
+- Radius: `4px`
+- Padding: `4px`
+- Shadow: `rgba(0, 0, 0, 0.25) 0px 4px 4px 0px`
+- Use: inline Model 3 carousel navigation at `surface-2::[data-omd-capture="16"]` and `"17"`
+- Pressed: `#393c41` `0px 0px 0px 2px inset` at `surface-2::[data-omd-capture="16"]::state-pressed`
+- Focus: the same inset value at `surface-2::[data-omd-capture="17"]::state-focus`
 
-### Image Treatment
-- **Hero**: Full-viewport (100vh) sections with cinematic photography — edge-to-edge, no padding, no margin
-- **Vehicle images**: Transparent PNG renders on white background in dropdown panel, studio-quality 3/4 angle shots
-- **Category cards**: Landscape photography with approximately 2:1 ratio, rounded corners (12px)
-- **Carousel**: Auto-advancing with dot indicators (3 dots) and left/right arrow navigation on edges
-- **Lazy loading**: Below-fold sections use lazy loading, rendering as blank white until scrolled into view
+### Information card
 
-### Persistent Chat Bar
-- Anchored to viewport bottom, visible across all sections
-- White background with subtle border
-- Contains: chat icon + "Ask a Question" label + placeholder text ("What's Dog Mode?") + send icon + "Schedule a Drive Today" secondary CTA
-- Schedule CTA has a teal/blue icon accent
+**Filled information card**
+- Background: `#f4f4f4`
+- Text: `#393c41`
+- Radius: `8px`
+- Padding: `0px 24px`
+- Use: `surface-2::div.tcl-info-card.tcl-info-card--filled`; nested content is `32px 0px 48px`
 
 ## 5. Layout Principles
 
-### Spacing System
-- **Base unit**: 8px
-- **Common values**: 8px (0.5rem), 16px (1rem), 21.44px (1.34rem)
-- **Button padding**: 4px (minimal outer) with content centering via flexbox, 4px 16px for nav items
-- **Section padding**: Full-viewport sections with content centered vertically
-- **Card gap**: approximately 16px between category cards
-
-### Grid & Container
-- **Max width**: approximately 1383px (full viewport width used for most content)
-- **Hero**: Full-bleed, edge-to-edge, 100vh sections
-- **Navigation panel**: 3-column grid for vehicle cards with right-aligned text sidebar (~70/30 split)
-- **Category cards**: 2-up horizontal layout (large left card + smaller right card)
-
-### Whitespace Philosophy
-Tesla uses whitespace as a luxury signal. The generous vertical spacing between sections (each section is a full viewport height) means you can only see one "message" at a time — one car, one model name, one CTA pair. This creates a gallery-like browsing experience where each scroll is a deliberate transition, not a continuous feed. White space is not empty — it's the frame that elevates each vehicle to the status of art piece.
-
-### Border Radius Scale
-| Value | Context |
-|-------|---------|
-| 0px | Most elements — sharp edges are the default |
-| 4px | Buttons (primary, secondary, nav items) — barely perceptible rounding |
-| ~12px | Category cards — noticeable but restrained rounding on larger surfaces |
-| 50% | Carousel dot indicators — perfect circles |
+The supplied evidence is a 1440×900 desktop capture. On the Model 3 page, 4px and 8px recur in control padding and gaps; 16px is the product-navigation horizontal padding; filled-card shells use 24px horizontal padding; their nested content uses 32px top and 48px bottom padding. A 64px section margin is also observed. These are observed local measurements, not a public design-token release or a responsive specification.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Level 0 (Flat) | No shadow, no border | Default state for all elements — cards, panels, buttons at rest |
-| Level 1 (Frost) | `rgba(255,255,255,0.75)` backdrop | Navigation bar on scroll — frosted glass transparency |
-| Level 2 (Overlay) | `rgba(128,128,128,0.65)` | Modal overlays and region/cookie popups |
-| Level 3 (Subtle) | `rgba(0,0,0,0.05)` | Minimal shadow hints on rare hover states |
-
-### Shadow Philosophy
-Tesla's approach to elevation is essentially "none." The site avoids box-shadows entirely in its primary interface. Depth is communicated through three alternative strategies:
-1. **Z-index layering**: The sticky navigation sits above hero content through positioning, not shadow
-2. **Opacity-based transparency**: The frosted glass nav and overlay modals use background-color opacity rather than shadow to indicate layering
-3. **Photography-as-depth**: The full-bleed images create their own visual depth through perspective, lighting, and composition — making UI shadows redundant
-
-### Decorative Depth
-- No gradients, glows, or atmospheric effects on UI elements
-- The hero imagery itself provides all visual richness — sunset skies, reflected light on car surfaces, ground shadows from studio lighting
-- The carousel arrow buttons use a semi-transparent white background to float above the hero imagery without disrupting it
+The filled information cards report no box shadow. The captured inline carousel arrow is the exception: `rgba(0, 0, 0, 0.25) 0px 4px 4px 0px`. Its focus and pressed snapshots replace that with an inset outline. No global elevation scale, overlay system, or modal shadow is asserted.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Let photography dominate every screen — the product IS the design
-- Use Electric Blue (`#3E6AE1`) exclusively for primary CTAs — never for decorative purposes
-- Maintain viewport-height sections for major content blocks — one message per screen
-- Keep typography at weight 400-500 only — no bold, no light, no extremes
-- Use 4px border-radius for all interactive elements — precision over playfulness
-- Trust whitespace as a luxury signal — never fill available space just because it's empty
-- Keep all transitions at 0.33s — consistency in motion is as important as consistency in color
-- Use transparent PNG vehicle imagery on white backgrounds for product showcases
-- Center CTAs horizontally below model names — the vertical rhythm is model → subtitle → buttons
-- Maintain the Display/Text font split — Display for hero-scale text only, Text for everything else
+
+- Keep the observed Model 3 public-marketing base to `#3e6ae1`, white, and the measured neutral hierarchy.
+- Use Universal Sans Text and Display only when the target project has legitimate access to those families.
+- Preserve the exact captured surface boundary when using the 4px CTA, 8px card, and carousel-control patterns.
+- Treat pseudo-state rows as visual samples with their selectors, not as an interaction specification.
 
 ### Don't
-- Add shadows to any element — elevation through shadow contradicts the flat, gallery aesthetic
-- Use more than one chromatic color besides the blue CTA — the palette is intentionally monochrome-plus-one
-- Apply gradients, patterns, or decorative backgrounds to surfaces — white and photography are the only backgrounds
-- Use text larger than 40px on the web — the typography is deliberately restrained even at hero scale
-- Add borders to cards or containers — separation is achieved through spacing, not lines
-- Use uppercase text transforms — Tesla's confidence is expressed through lowercase calm
-- Introduce rounded-pill buttons or large border-radii — the 4px radius is deliberate and precise
-- Override the Universal Sans family with other typefaces — cross-platform consistency is a core brand value
-- Add hover animations with scale/translate transforms — Tesla's interactions are color-only (background and border transitions)
-- Clutter the viewport with multiple CTAs — every screen should have at most two action buttons
+
+- Do not transfer Model 3 marketing values into Tesla account, vehicle, service, support, or in-car product UI without evidence from that surface.
+- Do not promote declared-only Blender TSL, CT Speed, Fira Code, Noto, Open Sans, or PingFang faces to a live family.
+- Do not present Times from the owners-manual capture as a Tesla brand or documentation font.
+- Do not infer hover motion, breakpoints, dialog behavior, or semantic status colors from this bundle.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single-column layout, hamburger nav replaces horizontal labels, hero text scales to ~28px, CTA buttons stack vertically, category cards become full-width |
-| Tablet | 768-1024px | 2-column nav panel, hero maintains full-viewport height, CTAs remain side-by-side, reduced horizontal padding |
-| Desktop | 1024-1440px | Full horizontal nav, 3-column vehicle grid in dropdown, hero at 40px, side-by-side CTAs at 200px/160px width |
-| Large Desktop | >1440px | Content remains centered, hero photography scales to fill wider viewports, max-width container for nav panel content |
-
-### Touch Targets
-- Primary CTA buttons: 200px × 40px minimum (well above 44×44px WCAG requirement)
-- Nav buttons: minimum 32px height with 4px 16px padding — adequate touch targets
-- Carousel arrows: ~44px square white semi-transparent buttons at viewport edges
-- Text links ("Learn", "Order"): 14px text with adequate line-height spacing for touch
-
-### Collapsing Strategy
-- **Navigation**: Horizontal category buttons (Vehicles, Energy, Charging, Discover, Shop) collapse to a hamburger/drawer menu on mobile
-- **Hero CTA pair**: Side-by-side buttons on desktop stack vertically on mobile
-- **Category cards**: 2-up horizontal layout collapses to single-column full-width on mobile
-- **Vehicle grid**: 3-column grid in desktop nav panel becomes 2-column on tablet, single-column on mobile
-- **Spacing**: Section vertical padding remains generous (viewport-height sections) but horizontal padding reduces
-
-### Image Behavior
-- Hero images are fully responsive and fill the entire viewport at every breakpoint
-- Vehicle carousel images use `object-fit: cover` to maintain cinematic composition across widths
-- Transparent PNG vehicle images in the nav panel scale proportionally within their grid cells
-- Category card images maintain their landscape ratio and clip via `overflow: hidden` with border-radius
+Only a 1440×900 desktop capture was supplied. It records a desktop Model 3 header and carousel but does not establish Tesla’s mobile navigation, breakpoints, touch targets, reflow rules, or responsive image behavior.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: "Electric Blue (#3E6AE1)"
-- Background: "Pure White (#FFFFFF)"
-- Heading text: "Carbon Dark (#171A20)"
-- Body text: "Graphite (#393C41)"
-- Tertiary text: "Pewter (#5C5E62)"
-- Placeholder: "Silver Fog (#8E8E8E)"
-- Alternate surface: "Light Ash (#F4F4F4)"
-- Dark surface: "Carbon Dark (#171A20)"
-
-### Example Component Prompts
-- "Create a hero section with a full-viewport background image, centered 'Model Y' title in Universal Sans Display at 40px weight 500 in white, a subtitle line below, and two buttons side by side: a primary Electric Blue (#3E6AE1) 'Order Now' button and a secondary white 'View Inventory' button, both with 4px border-radius and 40px height"
-- "Design a navigation bar with a spaced-letter wordmark on the left, five text buttons (14px, weight 500, Carbon Dark #171A20) centered, and three icon buttons on the right, all on a white background with no shadow or border"
-- "Build a vehicle card grid with 3 columns, each card showing a transparent-background car image above a model name (17px, weight 500, Carbon Dark) and two text links (14px, weight 400, Pewter #5C5E62) labeled 'Learn' and 'Order', on a pure white surface with no borders or shadows"
-- "Create a category card with full-bleed landscape photography, 12px border-radius, overflow hidden, and a white text label ('Sport Sedan') positioned in the top-left corner with no overlay gradient"
-- "Design a persistent bottom bar with a chat input ('Ask a Question' placeholder), a send icon, and a secondary CTA ('Schedule a Drive Today') with a teal icon, anchored to the viewport bottom on a white background"
-
-### Iteration Guide
-When refining existing screens generated with this design system:
-1. Focus on ONE component at a time — Tesla's system is so minimal that each element must be pixel-perfect
-2. Reference specific color names and hex codes from this document — there are only 6-7 colors in the entire system
-3. Use natural language descriptions, not CSS values — "barely rounded corners" not "border-radius: 4px"
-4. Describe the desired "feel" alongside specific measurements — "gallery-like silence between sections" communicates the whitespace philosophy better than "margin-bottom: 100vh"
-5. Always verify that photography is doing the emotional heavy-lifting — if the UI itself feels "designed," it's too much
-
----
+Use this reference for a Tesla-like public vehicle-marketing panel, not for a Tesla product clone: a neutral image-led composition, one `#3e6ae1` primary action, a white paired action, 4px control corners, and 8px filled information cards. Keep support documentation, owners-manual chrome, and unavailable fonts outside the implementation unless the target work carries its own evidence and licence.
 
 ## 10. Voice & Tone
 
-Tesla writes the way an engineer briefs a room: short declarative sentences, nouns before adjectives, and no adjective that doesn't earn its place. The voice treats the reader as someone capable of assessing a specification, not a prospect to be convinced. Range, charge time, and price appear before any superlative — and usually instead of one. When Tesla does reach for scale, it reaches for numbers, not words ("1.66 million vehicles delivered" rather than "record-breaking"). Marketing copy and a technical release note read in the same register; the surface changes, the voice does not.
+Tesla’s official about page frames the company through energy, batteries, electric vehicles, safety, and scale; Master Plan Part IV extends that frame to “sustainable abundance.” That is a useful public positioning direction: concrete physical systems and direct claims of purpose. It is not evidence for a complete product-microcopy or error-message system.
 
-| Context | Tone |
+| Context | First-party direction |
 |---|---|
-| Headlines | Model name + single-word or short-phrase claim. "Model Y. Long Range." No verbs unless necessary. |
-| Primary CTA | Verb + noun, no modifier. "Order Now", "View Inventory", "Schedule a Drive". Never "Unlock", "Experience", "Discover". |
-| Vehicle specs | Number + unit, stated in isolation. "358 miles", "3.5 s 0–60 mph". No "up to" unless legally required; no "!". |
-| Mission / impact copy | Plain, declarative, direct from the filing. Reads like a prospectus paragraph, not a manifesto. |
-| Master Plan essays | First-principles reasoning in numbered steps. Long-form only when the argument actually requires it. |
-| Error (configurator / order) | States the blocker and the exact next step. No apologetic preamble. |
-| Service messaging | Time window, location, cost. Never "rest assured", never "our team is working hard". |
-| Legal / autonomy disclosures | Precise, regulator-ready. Capabilities and their conditions in the same sentence. |
-| Marketing email / announcement | Lowercase, under 12 words where possible. "Cybertruck Deliveries Begin." |
+| Company framing | Connect solar, batteries, and electric vehicles to a sustainable-energy mission. |
+| Long-form strategy | State a principle, then explain the engineering or scale rationale. |
+| Public product copy | Keep the copy concrete and product-led; the supplied capture does not verify a broader voice rule. |
 
-**Forbidden phrases.** "Revolutionary", "game-changer", "unleash", "next-generation", "reimagined", "elevate", "experience the future", "buckle up", "beyond". No exclamation marks on routine CTAs. No emoji in product copy, configurator flows, service updates, or legal surfaces. No lifestyle adjectives stacked on specifications ("luxurious premium performance" — pick at most one and only when measurable). No "simply" or "just" preceding any action verb. No asking-a-question patterns in CTAs ("Ready to change the world?") — Tesla asserts, it doesn't prompt.
+**Official wording samples**
 
-**Voice samples.**
-
-- Homepage hero CTA pair: "Order Now" / "View Inventory" <!-- verified: tesla.com homepage, 2026-04, observed via base DESIGN.md §1 live recon and cross-referenced in third-party UX audit -->
-- Vehicle card secondary links: "Learn" / "Order" <!-- verified: tesla.com navigation dropdown, 2026-04, base DESIGN.md §4 -->
-- Persistent bottom bar: "Ask a Question" / "Schedule a Drive Today" <!-- verified: tesla.com chat bar, 2026-04, base DESIGN.md §4 -->
-- Mission statement (Impact page): "Our mission is to accelerate the world's transition to sustainable energy." <!-- cited: [tesla.com/impact](https://www.tesla.com/impact) -->
-- Master Plan Part IV framing: "sustainable abundance" <!-- cited: [tesla.com/master-plan-part-4](https://www.tesla.com/master-plan-part-4), Sept 2025 -->
-- Order-flow error (illustrative pattern): "This configuration isn't available in your region. Change delivery location or select a different trim." <!-- illustrative: not verified as live Tesla copy; pattern follows the voice rules above — state blocker, state exact next step, no apology -->
+- *“Accelerating the World’s Transition to Sustainable Energy”* — Tesla About page.
+- *“The Future is Sustainable”* — Tesla About page.
+- *“Innovation removes constraints.”* — Master Plan Part IV.
+- *“Technology solves tangible problems.”* — Master Plan Part IV.
 
 ## 11. Brand Narrative
 
-Tesla Motors was incorporated in July 2003 by **Martin Eberhard** and **Marc Tarpenning**, two Silicon Valley engineers who had concluded that the binding constraint on electric transport was no longer physics but industrial will. Elon Musk joined in February 2004 as chairman and lead Series A investor; J.B. Straubel joined as CTO the same year. A 2009 settlement recognizes all five early contributors — Eberhard, Tarpenning, Ian Wright, Musk, and Straubel — as co-founders ([Wikipedia: Tesla, Inc.](https://en.wikipedia.org/wiki/Tesla,_Inc.)). The founding premise was blunt: build a car company that is a technology company, where the battery, software, and motor are treated as proprietary engineering problems rather than purchased components.
-
-The mission, as stated on the company's Impact page, is *"to accelerate the world's transition to sustainable energy"* ([tesla.com/impact](https://www.tesla.com/impact)). The 2006 original Master Plan described the mechanism — sell a premium low-volume car, use the margin to fund a mid-priced one, use that to fund a mass-market one, and bundle solar generation so personal transport becomes energy-positive. Master Plan Part 3 (April 2023) extended the logic from vehicles to a fully electrified global energy economy, modeled end-use-by-end-use in a 41-page technical paper rather than a keynote slide deck ([Tesla Master Plan Part 3 PDF](https://www.tesla.com/ns_videos/Tesla-Master-Plan-Part-3.pdf)). Master Plan Part IV (September 2025) reframes the destination as *"sustainable abundance"* and rests on five stated principles: growth is infinite; innovation removes constraints; technology solves tangible problems; autonomy benefits all humanity; greater access drives greater growth ([tesla.com/master-plan-part-4](https://www.tesla.com/master-plan-part-4)).
-
-What Tesla's brand refuses is the marketing grammar of its industry: no chrome badges, no "ultimate driving machine" mood films, no exterior wordmarks on most surfaces. **NASDAQ IPO June 29 2010** — first American car company to IPO since Ford in 1956 — issued **13.3M shares at $17/share, raised $226M** ([Tesla IR — IPO pricing](https://ir.tesla.com/press-release/tesla-announces-pricing-initial-public-offering)). **Roadster production began 2008**; **Tesla Factory opened October 2010** for **Model S production** (launched June 2012); Roadster ceased Jan 2012. **Straubel served 15 years as CTO** before moving to advisory role **July 2019** ([JB Straubel — Wikipedia](https://en.wikipedia.org/wiki/J._B._Straubel)). **Cybertruck delivery event November 30 2023**, base price now $60,990 (originally announced 2019 at $39,900) ([Tesla Cybertruck — Wikipedia](https://en.wikipedia.org/wiki/Tesla_Cybertruck)). Current vehicle lineup (April 2026): **Model 3, Model Y, Semi, Cybertruck, Cybercab**. It delivered 1.66 million vehicles in 2025 and deployed 46.7 GWh of battery storage <!-- source: [Wikipedia: Tesla, Inc.](https://en.wikipedia.org/wiki/Tesla,_Inc.), not re-verified against Tesla's own IR filings -->, and neither figure is presented with "more than ever" in any primary surface. The editorial decision is consistent: when the data is good, the data is the statement.
+Tesla’s official About page presents an integrated ecosystem of solar generation, batteries, and electric vehicles, and describes the systems as designed to scale. Master Plan Part IV, published by the Tesla team in 2025, positions the next chapter around sustainable abundance and links hardware, software, manufacturing, autonomy, mobility, energy, and robotics. Those first-party sources provide the product and strategic context for the sparse, product-led public marketing surface captured here. They do not establish unobserved history, vehicle-interface patterns, or claims about individual founders.
 
 ## 12. Principles
 
-1. **First principles over convention.** Every constraint should be re-derived from physics and cost before it is accepted. If the industry says "batteries must be assembled this way", the answer is a structural pack; if it says "a pickup needs a frame", the answer is a stainless exoskeleton. *UI implication:* do not carry over a control because "car configurators have one" — re-ask whether the user needs it to make the decision. A Tesla configurator has fewer steps than any peer because each step was justified from scratch.
-2. **The product is the hero; the UI is scaffolding.** Photography, specification, and vehicle render carry emotional weight. Chrome dissolves. *UI implication:* buttons are 4px-radius rectangles in a single accent blue; the hero image is 100vh with no overlay gradient. If a component competes with the product for attention, the component is wrong.
-3. **One action per screen.** Each viewport presents at most two CTAs, usually a primary and a secondary ("Order Now" / "View Inventory"), and one decision moves the user forward. *UI implication:* ban stacked CTA columns and in-page feature lists more than five items long; if more actions exist, they belong in the next section, not this one.
-4. **Specification beats adjective.** Numbers with units, in isolation, outperform "fast", "efficient", "long-range". *UI implication:* present spec tables with generous whitespace and a single weight (500) for the label, 400 for the value — no bars, no stars, no relative comparisons against anonymous peers.
-5. **Whitespace is a luxury claim.** The cost of empty space is implicitly the cost of restraint; filling it would dilute the product. *UI implication:* viewport-height section breaks, no sidebars on marketing pages, body text at 14px with 1.43 line-height — the typographic system is uniform so the photograph is not.
-6. **Monochrome plus one.** Exactly one chromatic accent (`#3E6AE1`) exists, and it is reserved for the primary CTA and the occasional promo label that should read as the same action class. *UI implication:* never introduce a second brand hue for status, marketing, or decoration; status colors default to neutral where the product doesn't warrant a signal color.
-7. **Cross-platform typographic unity.** Universal Sans was commissioned so the website, the mobile app, and the in-car display share a typographic voice. *UI implication:* when building any Tesla-adjacent surface, use the Display/Text split at weights 400/500 only; system-font fallbacks are `-apple-system`, not Inter or Roboto.
-8. **Quiet interactivity.** State changes happen through color and border-color transitions at `0.33s`, never scale, translate, or spring. *UI implication:* disallow `scale(1.02)` on hover, disallow any overshoot curve, and keep the single transition timing so the whole interface exhales in the same rhythm.
+1. **Unconstrained sustainability.** Master Plan Part IV describes this as Tesla’s north star. *Reference UI implication:* make the product and its physical outcome legible before adding decorative interface layers.
+2. **Innovation removes constraints.** Tesla’s strategy source links progress to solving battery and scale constraints. *Reference UI implication:* use precise hierarchy and measured controls to explain a technical choice.
+3. **Technology solves tangible problems.** The plan connects energy storage, transport, and autonomy to concrete outcomes. *Reference UI implication:* connect an interface claim to an observable product or task, rather than an abstract flourish.
+4. **Greater access drives greater growth.** The source ties scale and availability to its broader purpose. *Reference UI implication:* do not turn this marketing reference into an exclusionary premium-only visual language.
+
+The UI implications are this reference’s interpretation of Tesla’s published strategy, not Tesla design-system rules.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by publicly described Tesla customer segments (early-adopter engineers, sustainability-motivated households, performance buyers, and fleet operators), not individual people.*
-
-**Priya Narayan, 34, Sunnyvale.** Staff software engineer who reads the Master Plan Part 3 PDF before test-driving anything. Configures at 1am, refuses financing from any salesperson, and values that the configurator exposes kWh/mi instead of "long range" as a marketing word. Would leave the brand the first time a CTA says "Unleash".
-
-**The Parks family, Denver.** Two working parents with two kids and a rooftop solar install from 2023. Chose a Model Y because the Powerwall-plus-solar-plus-car math pencilled out on a spreadsheet and because they wanted the family's transport to run on the same electrons as the dishwasher. Engage with the app daily; ignore the marketing site entirely after purchase.
-
-**Dmitri Volkov, 41, Miami.** Bought a Plaid for the 0–60 figure and keeps it because the specs it quoted on day one are the specs it still hits. Does not care about autonomy marketing; does care that acceleration claims survive independent instrumented tests. Treats the vehicle as an engineering artifact, not a lifestyle.
-
-**Jamie Okonkwo, fleet manager, Atlanta.** Operates a 140-vehicle delivery fleet and evaluates Tesla quarterly against alternatives on cost-per-mile, uptime, and OTA update cadence. Needs dashboards that expose consumption by route and a service SLA that reads in operational terms, not consumer-marketing terms.
+No fictional personas are asserted. Tesla’s official public context addresses people considering electric vehicles, solar generation, and battery storage, while the Model 3 evidence is a vehicle-marketing surface. Support and owners-manual visitors are separate audiences with separate chrome; the capture does not justify collapsing them into the Model 3 marketing system.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (configurator, no trim selected)** | Full-viewport vehicle render centered on pure white (`#FFFFFF`). One Carbon Dark (`#171A20`) headline with the model name. No illustration, no "start here" arrow. The vehicle is the prompt. |
-| **Empty (inventory search, no matches)** | Single Graphite (`#393C41`) line at 14px/1.43: "No vehicles match these filters in your area." One Electric Blue (`#3E6AE1`) text link: "Broaden search". No empty-state illustration. |
-| **Loading (route / page transition)** | White surface with no spinner. Below-fold content renders as blank white until scrolled into view (lazy load). Hero imagery fades in at `0.33s`. Spinners are forbidden — silent white is the load state. |
-| **Loading (CTA press, order submission)** | Primary button keeps its Electric Blue fill; label swaps to a neutral verb ("Submitting…"). No spinner inside the button; the `0.33s` background-color transition is the only motion. |
-| **Skeleton (spec table, card grid)** | Cloud Gray (`#EEEEEE`) blocks sized to final dimensions. No shimmer gradient — static blocks only. Blue-tinted skeletons are banned; they introduce a chromatic color the system doesn't carry. |
-| **Error (configurator conflict)** | Inline below the conflicting option. Graphite text states the blocker and the exact next step. Example: "This wheel isn't available with Tow Package. Remove Tow Package or select 20-inch wheels." No icon, no red background, no apology. |
-| **Error (service / network)** | Light Ash (`#F4F4F4`) banner with Carbon Dark text: specific failure + recovery action. "Order couldn't be submitted. Try again, or contact Tesla Support with reference number #####." Never speculate about cause. |
-| **Error (input validation)** | Field border shifts to `#D0D1D2` → Carbon Dark on the invalid field. Message appears below at 14px Graphite. One sentence. No tooltip, no ⚠. |
-| **Success (order placed)** | Full-viewport white confirmation. Headline at 40px weight 500 Universal Sans Display: "Your Model Y is on order." Body states estimated delivery window as a date range in plain text. No checkmark illustration, no confetti, no toast. |
-| **Success (account / inline action)** | Field transitions to its resting state; one Graphite micro-line confirms the change at 14px. No toast component exists anywhere in the system. |
-| **Disabled (CTA)** | Button retains 4px radius and 40px height. Fill shifts to Cloud Gray (`#EEEEEE`), text to Silver Fog (`#8E8E8E`). Border remains `3px solid transparent` so geometry stays identical if re-enabled. |
+The only state evidence is the collector’s computed pseudo-state output for the captured Model 3 CTA, carousel dot, mode tab, and carousel arrow. It includes focus and pressed samples documented in §4. No authenticated empty, loading, success, error, disabled, order-flow, or vehicle-control state was supplied, so none is invented here.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Focus rings, toggle state commit |
-| `motion-fast` | 250ms | Box-shadow transitions, small property changes |
-| `motion-standard` | 330ms | Color, background-color, border-color — the signature Tesla timing |
-| `motion-slow` | 500ms | Hero carousel cross-fade, section-level photographic transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.5, 0, 0, 0.75)` | The observed default on text-link hover underlines and box-shadow transitions — pulls into and out of state with a slight settle |
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Panel and dropdown reveals — lands without overshoot |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Panel and dropdown dismissals — quiet removal |
-
-**Explicitly forbidden.** No spring or overshoot easings anywhere in the system. No `cubic-bezier(0.34, 1.56, 0.64, 1)`, no bounce, no rubber-banding on hover. Tesla's brand register is considered, not playful; a bouncing CTA reads as consumer-app exuberance and contradicts the engineering-first stance that carries every other design decision. The vehicle's acceleration curve may be exciting; the interface's state transition is not.
-
-**Signature motions.**
-
-1. **The 330ms color transition.** Every interactive state change — button hover, nav background on scroll, link underline, inventory filter selection — moves through the same `border-color 0.33s, background-color 0.33s, color 0.33s` triad. The uniformity is the signature; deviating for a single component breaks the rhythm of the whole site.
-2. **Hero cross-fade, not slide.** The carousel advances by opacity, not by horizontal translation. The photograph below the type-layer changes; the type-layer re-materializes. Sliding introduces a direction of travel the brand does not want to imply.
-3. **Scroll-triggered nav background.** The top nav transitions from transparent-over-hero to opaque white via the `tds-site-header--white-background` class toggle — a single property change at `motion-standard`, no translate, no scale, no blur beyond the already-declared backdrop-filter.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. The hero carousel stops auto-advancing and exposes its dot indicators as still buttons. The interface is fully functional without a single animated transition; Tesla's motion vocabulary is small enough that removing it loses nothing the product depends on.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Direct verification (2026-04-20):
-- https://en.wikipedia.org/wiki/Tesla,_Inc. — confirms founding (Eberhard, Tarpenning,
-  July 2003), Musk's Series A in Feb 2004, Straubel CTO May 2004, and the 2009
-  co-founder settlement. Also sources 2025 delivery figures (1.66M vehicles,
-  46.7 GWh storage) used in §11.
-- tesla.com is behind Cloudflare 403 for programmatic fetch; primary Tesla
-  surfaces (tesla.com/about, /impact, /mission, /blog, master-plan-part-4) were
-  verified through web search that returned confirmed on-page phrasing of:
-    · "Our mission is to accelerate the world's transition to sustainable energy"
-      (tesla.com/impact)
-    · "sustainable abundance" + five guiding principles (tesla.com/master-plan-part-4,
-      Sept 2025)
-    · Master Plan Part 3 (April 2023) as 41-page document modeling an electrified
-      global energy economy (tesla.com/ns_videos/Tesla-Master-Plan-Part-3.pdf)
-
-Base DESIGN.md (sections 1–9) is the direct source for token-level claims
-used in the Philosophy layer (Electric Blue #3E6AE1, Carbon Dark #171A20,
-Graphite #393C41, 0.33s transition, 4px radius, Universal Sans Display/Text,
-hero 100vh, lazy-load behavior, nav class toggle tds-site-header--white-background).
-
-Voice samples verification:
-- "Order Now", "View Inventory", "Learn", "Order", "Ask a Question",
-  "Schedule a Drive Today" — observed on tesla.com marketing surfaces during
-  base DESIGN.md §1 / §4 live recon; cross-referenced in third-party UX
-  audits (plerdy.com) that quote identical button labels.
-- Mission statement quoted from tesla.com/impact.
-- Master Plan Part IV framing "sustainable abundance" quoted from
-  tesla.com/master-plan-part-4 (Sept 2025).
-- The order-flow error example is explicitly marked illustrative; it follows
-  the documented voice rules but is not a verified string from live Tesla
-  configurator copy.
-
-Personas (§13) are fictional archetypes informed by publicly described Tesla
-customer segments (early-adopter engineers, sustainability-motivated
-households, performance buyers, fleet operators). Any resemblance to specific
-individuals is unintended.
-
-Interpretive claims — editorial readings, not official Tesla statements:
-- "The product is the hero; the UI is scaffolding" as a design principle
-  derived from the site's zero-decoration, 100vh-photography pattern.
-- The "engineering-first register contradicts bouncing motion" rationale for
-  the forbidden spring stance — extrapolated from the base DESIGN.md §7 Do's
-  and Don'ts ban on scale/translate hover transforms, not from an explicit
-  Tesla brand guideline.
-- Tesla ≠ Musk: the narrative is deliberately framed around the company's
-  founding (Eberhard/Tarpenning) and the published Master Plan documents,
-  not around Musk's individual persona.
--->
+The bundle reports `interactionCount: 0`. It contains no measured transition duration, easing curve, reduced-motion behavior, or recorded carousel interaction. Pseudo-state computed snapshots do not establish a motion system.
 
 ---
 
-**Verified:** 2026-05-08 (omd:migrate run 58 — Apple-tier)
-**Tier 1 sources:** tesla.com home + /model3 (live DOM via playwright — Primary **`#3e6ae1` Tesla Blue** + `#fff` text 4px / 40px / 4-square / 14px·**500** + Secondary `#fff` + **`#393c41` Tesla Charcoal** text 4px + Inactive locale `#f4f4f4` Light Gray + Mini dark-canvas `#000` + `#e2e3e3` Off-White 4px / 28px / 12px·500).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/IPO/Cybertruck):** Wikipedia (Tesla Inc. + Martin Eberhard + J.B. Straubel + Tesla Cybertruck), Britannica (Eberhard+Tarpenning, Tesla Motors), Tesla IR (IPO pricing), CNBC (Eberhard+Tarpenning interview).
-**Style ref:** retained. **Conflicts unresolved:** none. **Earlier addition:** canonical Primary `#3e6ae1` Tesla Blue + Charcoal `#393c41` Secondary palette + locale-selector + dark-canvas-mini variants missed by prior nav-only pass.
-
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://www.tesla.com/model3?lang=en` (captured public vehicle marketing), `https://www.tesla.com/support/getting-started-with-your-vehicle` (captured support), `https://www.tesla.com/ownersmanual/` (captured documentation chrome), `https://www.tesla.com/en_GB/about?redirect=no` (official context), `https://www.tesla.com/en_sa/master-plan-part-4` (official strategy), `https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/text/Universal-Sans-Text-Regular.woff2` and `https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/display/Universal-Sans-Display-Regular.woff2` (official font assets), `https://www.tesla.com/legal/terms` (legal boundary; not a font licence)
+**Tier 2 sources:** `https://getdesign.md/tesla` (Tesla record; broad direction only), `https://styles.refero.design/?q=tesla` and `https://styles.refero.design/style/7266b546-2fb0-465c-acd6-79001c39829a` (Tesla record; cross-check only)
+**Conflicts unresolved:** none

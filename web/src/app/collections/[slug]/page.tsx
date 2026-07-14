@@ -2,7 +2,7 @@
  * Collection page — /collections/<slug> (#5).
  *
  * RSC: collection definition + reference selection happen at build time
- * (generateStaticParams over the 8 slugs in lib/collections.ts), so the H1,
+ * (generateStaticParams over the collection registry), so the H1,
  * bilingual intro, ItemList JSON-LD, and related-collection links are all in
  * the static HTML. Client islands: <CollectionGrid> (HOT badges + card
  * analytics) and <InstallCta source="collection"> (install_copy funnel).
@@ -20,6 +20,9 @@ import {
 } from "@/lib/collections";
 import { InstallCta } from "@/components/install-cta";
 import { CollectionGrid } from "./collection-grid";
+import { CollectionViewTracker } from "../collection-view-tracker";
+import { CollectionBuilderLink } from "../collection-builder-link";
+import { CollectionInlineLink } from "../collection-inline-link";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -41,8 +44,8 @@ export async function generateMetadata({
   const c = COLLECTIONS_BY_SLUG[slug];
   if (!c) return {};
   const count = getCollectionEntries(slug).length;
-  const title = `${c.titleEn} — ${count} verified DESIGN.md references · oh-my-design`;
-  const description = `${c.introEn[0]} ${count} hand-verified references, raw markdown included.`.slice(0, 300);
+  const title = `${c.titleEn} — ${count} quality-graded DESIGN.md references · oh-my-design`;
+  const description = `${c.introEn[0]} ${count} evidence-graded references, raw markdown included.`.slice(0, 300);
   return {
     title,
     description,
@@ -52,6 +55,13 @@ export async function generateMetadata({
       description,
       url: `/collections/${slug}`,
       type: "article",
+      images: c.colorFamily ? [`/api/og/collection?color=${c.colorFamily}`] : ["/og-image.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: c.colorFamily ? [`/api/og/collection?color=${c.colorFamily}`] : ["/twitter-image.png"],
     },
   };
 }
@@ -88,6 +98,7 @@ export default async function CollectionPage({
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <CollectionViewTracker slug={c.slug} colorFamily={c.colorFamily} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -135,9 +146,20 @@ export default async function CollectionPage({
           <p>{c.introEn[1]}</p>
         </div>
 
-        {/* Install funnel — install_copy { source: "collection" } */}
+        {/* Install funnel — act_install_copy { surface: "collection" } */}
         <div className="mt-7 max-w-2xl">
-          <InstallCta source="collection" />
+          {c.colorFamily ? (
+            <div className="flex flex-wrap items-center gap-3">
+              <CollectionBuilderLink
+                slug={c.slug}
+                colorFamily={c.colorFamily}
+                title={c.titleKr}
+              />
+              <span className="text-xs text-muted-foreground">{items.length} references · shareable filter</span>
+            </div>
+          ) : (
+            <InstallCta source="collection" />
+          )}
         </div>
       </section>
 
@@ -154,14 +176,16 @@ export default async function CollectionPage({
           </h2>
           <div className="grid gap-2.5 sm:grid-cols-3">
             {related.map((r) => (
-              <Link
+              <CollectionInlineLink
                 key={r.slug}
-                href={`/collections/${r.slug}`}
+                slug={r.slug}
+                origin="related"
+                colorFamily={r.colorFamily}
                 className="group rounded-xl border border-border/60 bg-card/50 p-4 transition-all hover:-translate-y-0.5 hover:border-foreground/30 hover:shadow-sm dark:border-white/10 dark:bg-white/[0.04]"
               >
                 <div className="text-sm font-semibold leading-tight">{r.titleKr}</div>
                 <div className="mt-0.5 text-xs text-muted-foreground">{r.titleEn}</div>
-              </Link>
+              </CollectionInlineLink>
             ))}
           </div>
         </div>

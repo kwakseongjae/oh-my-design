@@ -1,5 +1,5 @@
 // Pull the per-reference popularity counters from Upstash Redis via the REST
-// API. Four sorted sets (omd:counter:{select,generate,download,copy}) hold
+// API. Five sorted sets (omd:counter:{select,generate,download,copy,install}) hold
 // `reference → count`. Writes data/analytics/raw/upstash.json with full
 // leaderboards plus a derived select→generate→download→copy funnel per reference.
 //
@@ -15,7 +15,7 @@ if (!URL_ || !TOKEN) {
   process.exit(1);
 }
 
-const EVENTS = ["select", "generate", "download", "copy"];
+const EVENTS = ["select", "generate", "download", "copy", "install"];
 
 async function cmd(args) {
   const res = await fetch(URL_, {
@@ -37,7 +37,8 @@ function toBoard(flat) {
 }
 
 const out = { _meta: { pulledAt: new Date().toISOString() }, counters: {}, funnel: [] };
-const byRef = new Map(); // reference -> {select,generate,download,copy}
+const byRef = new Map(); // reference -> {select,generate,download,copy,install}
+let failures = 0;
 
 for (const ev of EVENTS) {
   try {
@@ -45,7 +46,7 @@ for (const ev of EVENTS) {
     const board = toBoard(flat ?? []);
     out.counters[ev] = { total: board.reduce((s, r) => s + r.count, 0), distinct: board.length, board };
     for (const { reference, count } of board) {
-      const row = byRef.get(reference) ?? { reference, select: 0, generate: 0, download: 0, copy: 0 };
+      const row = byRef.get(reference) ?? { reference, select: 0, generate: 0, download: 0, copy: 0, install: 0 };
       row[ev] = count;
       byRef.set(reference, row);
     }
@@ -53,6 +54,7 @@ for (const ev of EVENTS) {
   } catch (e) {
     out.counters[ev] = { error: String(e.message || e) };
     console.error(`upstash:${ev} FAILED — ${e.message || e}`);
+    failures++;
   }
 }
 
@@ -62,6 +64,7 @@ out.funnel = [...byRef.values()]
     ...r,
     sel2gen: r.select ? +(r.generate / r.select).toFixed(3) : null,
     gen2dl: r.generate ? +(r.download / r.generate).toFixed(3) : null,
+    gen2install: r.generate ? +(r.install / r.generate).toFixed(3) : null,
   }))
   .sort((a, b) => b.select - a.select);
 
@@ -70,3 +73,4 @@ mkdirSync(dir, { recursive: true });
 const file = path.join(dir, "upstash.json");
 writeFileSync(file, JSON.stringify(out, null, 2));
 console.log(`\nwrote ${path.relative(repoRoot, file)} (${out.funnel.length} refs in funnel)`);
+if (failures > 0) process.exitCode = 1;

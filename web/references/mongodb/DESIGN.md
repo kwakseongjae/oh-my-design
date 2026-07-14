@@ -1,6 +1,6 @@
 ---
 id: mongodb
-name: Mongodb
+name: MongoDB
 country: US
 category: backend-devops
 homepage: "https://www.mongodb.com"
@@ -8,394 +8,297 @@ primary_color: "#00ed64"
 logo:
   type: simpleicons
   slug: mongodb
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: LeafyGreen
   url: "https://www.mongodb.design"
   type: system
-  description: MongoDB's open-source design system with an extensive React component library.
+  description: MongoDB's open-source design system and React component library.
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.mongodb.com/", inspected: "2026-07-13" }
+    - { id: surface-2, kind: design-system, url: "https://www.mongodb.design/", inspected: "2026-07-13" }
+    - { id: surface-3, kind: documentation, url: "https://www.mongodb.com/ko-kr/docs/", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.mongodb.com/", captured: "2026-07-13" }
+    - { id: leafygreen-live, kind: official-doc, url: "https://www.mongodb.design/", captured: "2026-07-13" }
+    - { id: docs-live, kind: official-doc, url: "https://www.mongodb.com/ko-kr/docs/", captured: "2026-07-13" }
+    - { id: typography-guidance, kind: official-doc, url: "https://www.mongodb.design/foundations/typography", captured: "2026-07-13" }
+    - { id: source-code-license, kind: license, url: "https://github.com/adobe-fonts/source-code-pro/blob/release/LICENSE.md", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.navy": *home
+    "tokens.colors.forest-chrome": *home
+    "tokens.colors.link": *home
+    "tokens.colors.docs-canvas": &docs { surface_id: surface-3, source_id: docs-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.docs-border": *docs
+    "tokens.colors.docs-muted": *docs
+    "tokens.colors.docs-inverse": &leafygreen { surface_id: surface-2, source_id: leafygreen-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.canvas": *home
+    "tokens.colors.ink": *home
+    "tokens.colors.feature-border": *home
+    "tokens.typography.family.ui": *home
+    "tokens.typography.family.display": *home
+    "tokens.typography.family.mono": *home
+    "tokens.typography.hero.size": *home
+    "tokens.typography.hero.weight": *home
+    "tokens.typography.hero.lineHeight": *home
+    "tokens.typography.hero.use": *home
+    "tokens.typography.primary-action.size": *home
+    "tokens.typography.primary-action.weight": *home
+    "tokens.typography.primary-action.lineHeight": *home
+    "tokens.typography.primary-action.tracking": *home
+    "tokens.typography.primary-action.use": *home
+    "tokens.typography.docs-control.size": *docs
+    "tokens.typography.docs-control.weight": *docs
+    "tokens.typography.docs-control.lineHeight": *docs
+    "tokens.typography.docs-control.use": *docs
+    "tokens.spacing.primary-action-y": *home
+    "tokens.spacing.primary-action-x": *home
+    "tokens.spacing.docs-side-y": *docs
+    "tokens.spacing.docs-side-x": *docs
+    "tokens.rounded.primary-action": *home
+    "tokens.rounded.docs-control": *docs
+    "tokens.rounded.docs-icon": *docs
+    "tokens.components.marketing-feature-panel.type": *home
+    "tokens.components.marketing-feature-panel.bg": *home
+    "tokens.components.marketing-feature-panel.fg": *home
+    "tokens.components.marketing-feature-panel.border": *home
+    "tokens.components.marketing-feature-panel.radius": *home
+    "tokens.components.marketing-feature-panel.padding": *home
+    "tokens.components.marketing-feature-panel.shadow": *home
+    "tokens.components.marketing-feature-panel.use": *home
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: live-extract
+  extracted: "2026-07-13"
+  components_harvested: true
   colors:
     primary: "#00ed64"
-    brand: "#00ed64"
-    primary-dark: "#00684a"
-    canvas: "#001e2b"
-    foreground: "#ffffff"
-    on-primary: "#000000"
-    accent-blue: "#006cfa"
-    accent-blue-hover: "#3860be"
-    accent-teal: "#1eaedb"
-    surface: "#1c2d38"
-    hairline: "#b8c4c2"
-    border-dark: "#3d4f58"
-    muted: "#5c6c75"
+    navy: "#001e2b"
+    forest-chrome: "#00684a"
+    link: "#006cfa"
+    canvas: "#ffffff"
+    ink: "#000000"
+    feature-border: "#e7eeec"
+    docs-canvas: "#f9fbfa"
+    docs-border: "#889397"
+    docs-muted: "#3d4f58"
+    docs-inverse: "#112733"
   typography:
-    family: { sans: "Euclid Circular A", mono: "Source Code Pro" }
-    display-hero:    { size: 96, weight: 400, lineHeight: 1.20, use: "Serif authority hero (MongoDB Value Serif)" }
-    display-secondary: { size: 64, weight: 400, lineHeight: 1.00, use: "Serif sub-hero (MongoDB Value Serif)" }
-    section:         { size: 36, weight: 500, lineHeight: 1.33, use: "Section heading" }
-    subheading:      { size: 24, weight: 500, lineHeight: 1.33, use: "Feature titles" }
-    body-lg:         { size: 20, weight: 400, lineHeight: 1.60, use: "Introductions" }
-    body:            { size: 18, weight: 400, lineHeight: 1.33, use: "Standard body" }
-    body-light:      { size: 16, weight: 300, lineHeight: 1.50, use: "Light-weight reading text" }
-    nav:             { size: 16, weight: 500, tracking: 0.16, use: "Navigation, emphasized" }
-    caption:         { size: 14, weight: 400, lineHeight: 1.71, use: "Metadata" }
-    code-label:      { size: 14, weight: 500, lineHeight: 1.14, tracking: 1, use: "Uppercase Source Code Pro labels" }
-  spacing: [4, 7, 8, 10, 12, 14, 16, 18, 20, 24, 32]
-  rounded: { sm: 4, md: 16, lg: 24, full: 9999 }
-  shadow:
-    subtle: "rgba(0,0,0,0.1) 0px 2px 4px"
-    standard: "rgba(0,0,0,0.15) 0px 3px 20px"
-    forest: "rgba(0,30,43,0.12) 0px 26px 44px, rgba(0,0,0,0.13) 0px 7px 13px"
-  components_harvested: true
+    family: { ui: "Euclid Circular A", display: "MongoDB Value Serif", mono: "Source Code Pro" }
+    hero: { size: 64, weight: 400, lineHeight: 72, use: "Public home marketing H1" }
+    primary-action: { size: 16, weight: 500, lineHeight: 16, tracking: 0.16, use: "Public home and documentation primary action" }
+    docs-control: { size: 13, weight: 500, lineHeight: 20, use: "Small documentation control" }
+  spacing: { primary-action-y: 15, primary-action-x: 24, docs-side-y: 16, docs-side-x: 24 }
+  rounded: { primary-action: 4, docs-control: 6, docs-icon: 9999 }
   components:
-    button-primary: { type: button, bg: "#00684a", fg: "#000000", border: "1px solid #00684a", radius: "100px", shadow: "rgba(0,0,0,0.06) 0px 1px 6px", states: "hover scale 1.1, active scale 0.85", use: "Primary green button on dark surface" }
-    button-dark-teal: { type: button, bg: "#1c2d38", fg: "#5c6c75", border: "1px solid #3d4f58", radius: "100px", states: "hover bg #1eaedb, text white, translateX(5px)", use: "Dark teal pill button" }
-    button-outlined: { type: button, bg: "transparent", fg: "#001e2b", border: "1px solid #b8c4c2", radius: "8px", states: "hover background tint", use: "Outlined button on light surface" }
-    card: { type: card, bg: "#ffffff", border: "1px solid #b8c4c2", radius: "16px", shadow: "rgba(0,30,43,0.12) 0px 26px 44px", use: "Light-mode card" }
-    card-dark: { type: card, bg: "#001e2b", border: "1px solid #3d4f58", radius: "16px", use: "Dark-mode card" }
-    input: { type: input, fg: "#e8edeb", border: "1px solid #b8c4c2", padding: "12px 12px 12px 8px", radius: "4px", use: "Textarea / form field" }
-    code-label: { type: badge, fg: "#00ed64", font: "14px / 500", use: "Uppercase Source Code Pro section label, 1-2px tracking" }
+    marketing-feature-panel: { type: card, bg: "#ffffff", fg: "#000000", border: "1px solid #e7eeec", radius: "40px", padding: "40px 48px", shadow: "rgba(0, 0, 0, 0.1) 0px 2px 4px 0px", use: "Observed public-home feature panel" }
 ---
 
 # Design System Inspiration of MongoDB
 
 ## 1. Visual Theme & Atmosphere
 
-MongoDB's website is a deep-forest-meets-terminal experience — a design system rooted in the darkest teal-black (`#001e2b`) that evokes both the density of a database and the depth of a forest canopy. Against this near-black canvas, a striking neon green (`#00ed64`) pulses as the brand accent — bright enough to feel electric, organic enough to feel alive. This isn't the cold neon of cyberpunk; it's the bioluminescent green of something growing in the dark.
+MongoDB is a developer data platform built around a flexible document model and services that let teams build and scale modern applications. Its origin story is equally developer-centred: the founders’ experience operating DoubleClick at high scale led them to establish 10gen in 2007, launch MongoDB in 2009, and rename the company after the product in 2013. Today Atlas joins data services into a unified developer data platform. Across the captured public marketing, LeafyGreen design-system, and documentation surfaces, that technical purpose is expressed through a navy-and-spring-green signal system, strong rectangular actions, and a deliberately mixed typographic voice: Value Serif for display authority, Euclid Circular A for UI clarity, and Source Code Pro for code-like labels. This reference keeps those three public domains separate rather than treating the public website as an authenticated Atlas UI.
 
-The typography system is architecturally ambitious: MongoDB Value Serif for massive hero headlines (96px) creates an editorial, authoritative presence — serif type at database-company scale is a bold choice that says "we're not just another tech company." Euclid Circular A handles the heavy lifting of body and UI text with an unusually wide weight range (300–700), while Source Code Pro serves as the code and label font with distinctive uppercase treatments featuring very wide letter-spacing (1px–3px). This three-font system creates a hierarchy that spans editorial elegance → geometric professionalism → engineering precision.
-
-What makes MongoDB distinctive is its dual-mode design: a dark hero/feature section world (`#001e2b` with neon green accents) and a light content world (white with teal-gray borders `#b8c4c2`). The transition between these modes creates dramatic contrast. The shadow system uses teal-tinted dark shadows (`rgba(0, 30, 43, 0.12)`) that maintain the forest-dark atmosphere even on light surfaces. Buttons use pill shapes (100px–999px radius) with MongoDB Green borders (`#00684a`), and the entire component system references the LeafyGreen design system.
-
-**Key Characteristics:**
-- Deep teal-black backgrounds (`#001e2b`) — forest-dark, not space-dark
-- Neon MongoDB Green (`#00ed64`) as the singular brand accent — electric and organic
-- MongoDB Value Serif for hero headlines — editorial authority at tech scale
-- Euclid Circular A for body with weight 300 (light) as a distinctive body weight
-- Source Code Pro with wide uppercase letter-spacing (1px–3px) for technical labels
-- Teal-tinted shadows: `rgba(0, 30, 43, 0.12)` — shadows carry the forest color
-- Dual-mode: dark teal hero sections + light white content sections
-- Pill buttons (100px radius) with green borders (`#00684a`)
-- Link Blue (`#006cfa`) and hover transition to `#3860be`
+- **High-signal green action:** `#00ed64` appears as a navy-text primary action on the public home and documentation headers.
+- **Dark technical field:** `#001e2b` anchors dark marketing sections and inverse actions; LeafyGreen’s captured design-system page uses a separate `#112733` dark canvas.
+- **Editorial plus operational typography:** Value Serif leads headings; Euclid and Source Code Pro support product reading and code/value notation.
+- **Domain boundary:** home is marketing, `mongodb.design` is the LeafyGreen design system, and `/docs/` is documentation chrome. No authenticated product screen was captured.
 
 ## 2. Color Palette & Roles
 
-### Primary Brand
-- **Forest Black** (`#001e2b`): Primary dark background — the deepest teal-black
-- **MongoDB Green** (`#00ed64`): Primary brand accent — neon green for highlights, underlines, gradients
-- **Dark Green** (`#00684a`): Button borders, link text on light — muted green for functional use
+### Observed public and documentation roles
 
-### Interactive
-- **Action Blue** (`#006cfa`): Secondary accent — links, interactive highlights
-- **Hover Blue** (`#3860be`): All link hover states transition to this blue
-- **Teal Active** (`#1eaedb`): Button hover background — bright teal
+- **Spring Green** (`#00ed64`): public home and documentation header primary-action background.
+- **MongoDB Navy** (`#001e2b`): primary-action text and border; dark marketing-section foreground/background use.
+- **Forest Green chrome** (`#00684a`): home announcement-strip background; it is not promoted to the canonical CTA fill.
+- **Link Blue** (`#006cfa`): observed home text-link color.
+- **Documentation canvas** (`#f9fbfa`): compact public documentation control background.
+- **Documentation border** (`#889397`): observed one-pixel compact-control border.
+- **Documentation muted text** (`#3d4f58`): documentation utility/control text.
+- **LeafyGreen inverse canvas** (`#112733`): captured design-system search-field background.
 
-### Neutral Scale
-- **Deep Teal** (`#1c2d38`): Dark button backgrounds, secondary dark surfaces
-- **Teal Gray** (`#3d4f58`): Dark borders on dark surfaces
-- **Dark Slate** (`#21313c`): Dark link text variant
-- **Cool Gray** (`#5c6c75`): Muted text on dark, secondary button text
-- **Silver Teal** (`#b8c4c2`): Borders on light surfaces, dividers
-- **Light Input** (`#e8edeb`): Input text on dark surfaces
-- **Pure White** (`#ffffff`): Light section background, button text on dark
-- **Black** (`#000000`): Text on light surfaces, darkest elements
-
-### Shadows
-- **Forest Shadow** (`rgba(0, 30, 43, 0.12) 0px 26px 44px, rgba(0, 0, 0, 0.13) 0px 7px 13px`): Primary card elevation — teal-tinted
-- **Standard Shadow** (`rgba(0, 0, 0, 0.15) 0px 3px 20px`): General elevation
-- **Subtle Shadow** (`rgba(0, 0, 0, 0.1) 0px 2px 4px`): Light card lift
+The captured white, gray, and local marketing-card surfaces remain local observations. They do not establish a complete application semantic palette.
 
 ## 3. Typography Rules
 
-### Font Families
-- **Display Serif**: `MongoDB Value Serif` — editorial hero headlines
-- **Body / UI**: `Euclid Circular A` — geometric sans-serif workhorse
-- **Code / Labels**: `Source Code Pro` — monospace with uppercase label treatments
-- **Fallbacks**: `Akzidenz-Grotesk Std` (with CJK: Noto Sans KR/SC/JP), `Times`, `Arial`, `system-ui`
+### Evidence classes
 
-### Hierarchy
+- **Official product-use:** LeafyGreen’s typography guidance says MongoDB Value Serif is used in the logo and primarily for H1/H2, Euclid Circular A is the frequently used product body font, and Source Code Pro displays code snippets and other values.
+- **Live computed surface-use:** the supplied capture reports all three families as loaded with high confidence: Euclid Circular A (287 visible uses), MongoDB Value Serif (5), and Source Code Pro (3). Euclid and Value Serif have MongoDB-hosted font sources; Source Code Pro is loaded from Google-hosted files.
+- **Official licence context:** Adobe licenses Source Code Pro under SIL Open Font License 1.1. That licence applies to Source Code Pro, not to MongoDB’s proprietary or brand-hosted font files.
+- **Loaded but not promoted:** Akzidenz-Grotesk Std has loaded visible use in the bundle but has no captured source URL or matching LeafyGreen product-role statement. It is retained as a live observation, not a machine UI-family token.
+- **Declared-only / system / unresolved:** icon fonts, Noto CJK fallback declarations, and Times/Arial system or unresolved fallbacks are not promoted. No substitute is rendered as a MongoDB font.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | MongoDB Value Serif | 96px (6.00rem) | 400 | 1.20 (tight) | normal | Serif authority |
-| Display Secondary | MongoDB Value Serif | 64px (4.00rem) | 400 | 1.00 (tight) | normal | Serif sub-hero |
-| Section Heading | Euclid Circular A | 36px (2.25rem) | 500 | 1.33 | normal | Geometric precision |
-| Sub-heading | Euclid Circular A | 24px (1.50rem) | 500 | 1.33 | normal | Feature titles |
-| Body Large | Euclid Circular A | 20px (1.25rem) | 400 | 1.60 (relaxed) | normal | Introductions |
-| Body | Euclid Circular A | 18px (1.13rem) | 400 | 1.33 | normal | Standard body |
-| Body Light | Euclid Circular A | 16px (1.00rem) | 300 | 1.50–2.00 | normal | Light-weight reading text |
-| Nav / UI | Euclid Circular A | 16px (1.00rem) | 500 | 1.00–1.88 | 0.16px | Navigation, emphasized |
-| Body Bold | Euclid Circular A | 15px (0.94rem) | 700 | 1.50 | normal | Strong emphasis |
-| Button | Euclid Circular A | 13.5px–16px | 500–700 | 1.00 | 0.135px–0.9px | CTA labels |
-| Caption | Euclid Circular A | 14px (0.88rem) | 400 | 1.71 (relaxed) | normal | Metadata |
-| Small | Euclid Circular A | 11px (0.69rem) | 600 | 1.82 (relaxed) | 0.2px | Tags, annotations |
-| Code Heading | Source Code Pro | 40px (2.50rem) | 400 | 1.60 (relaxed) | normal | Code showcase titles |
-| Code Body | Source Code Pro | 16px (1.00rem) | 400 | 1.50 | normal | Code blocks |
-| Code Label | Source Code Pro | 14px (0.88rem) | 400–500 | 1.14 (tight) | 1px–2px | `text-transform: uppercase` |
-| Code Micro | Source Code Pro | 9px (0.56rem) | 600 | 2.67 (relaxed) | 2.5px | `text-transform: uppercase` |
+### Measured public hierarchy
 
-### Principles
-- **Serif for authority**: MongoDB Value Serif at hero scale creates an editorial presence unusual in tech — it communicates that MongoDB is an institution, not a startup.
-- **Weight 300 as body default**: Euclid Circular A uses light (300) for body text, creating an airy reading experience that contrasts with the dense, dark backgrounds.
-- **Wide-tracked monospace labels**: Source Code Pro uppercase at 1px–3px letter-spacing creates technical signposts that feel like database field labels — systematic, structured, classified.
-- **Four-weight range**: 300 (light body) → 400 (standard) → 500 (UI/nav) → 700 (bold CTA) — a wider range than most systems, enabling fine-grained hierarchy.
+| Role | Font | Size | Weight | Line height | Tracking | Surface boundary |
+|---|---|---:|---:|---:|---:|---|
+| Public home hero | MongoDB Value Serif | 64px | 400 | 72px | normal | home marketing H1 |
+| Public primary action | Euclid Circular A | 16px | 500 | 16px | 0.16px | home and documentation header |
+| Public section heading | Euclid Circular A | 36px | 500 | 48px | normal | home marketing |
+| Public code/value label | Source Code Pro | 14px | 400–500 | 16–24px | 1–2px | home marketing |
+| LeafyGreen page title | MongoDB Value Serif | 48px | 400 | 64px | normal | design-system page |
+| Documentation compact control | Euclid Circular A | 13px | 500 | 20px | normal | public docs |
 
 ## 4. Component Stylings
 
-### Buttons
+All variants below are baseline observations from the supplied 2026-07-13 collector bundle. The bundle records `interactionCount: 0`; therefore it does not establish hover, pressed, focus, menu, modal, toast, form-error, or transition variants.
 
-**Primary Green (Dark Surface)**
-- Background: `#00684a` (muted MongoDB green)
-- Text: `#000000`
-- Radius: 50% (circular) or 100px (pill)
-- Border: `1px solid #00684a`
-- Shadow: `rgba(0,0,0,0.06) 0px 1px 6px`
-- Hover: scale 1.1
-- Active: scale 0.85
+### Public primary action
 
-**Dark Teal Button**
-- Background: `#1c2d38`
-- Text: `#5c6c75`
-- Radius: 100px (pill)
-- Border: `1px solid #3d4f58`
-- Hover: background `#1eaedb`, text white, translateX(5px)
-
-**Outlined Button (Light Surface)**
-- Background: transparent
+**Home and documentation header action**
+- Background: `#00ed64`
 - Text: `#001e2b`
-- Border: `1px solid #b8c4c2`
-- Radius: 4px–8px
-- Hover: background tint
+- Border: `1px solid #001e2b`
+- Radius: `4px`
+- Padding: `15px 24px`
+- Font: `16px / 500 / Euclid Circular A`
+- Use: public marketing and documentation header action; `home::[data-omd-capture="11"]`, also observed on `surface-3`
 
-### Cards & Containers
-- Light mode: white background with `1px solid #b8c4c2` border
-- Dark mode: `#001e2b` or `#1c2d38` background with `1px solid #3d4f58`
-- Radius: 16px (standard), 24px (medium), 48px (large/hero)
-- Shadow: `rgba(0,30,43,0.12) 0px 26px 44px` (forest-tinted)
-- Image containers: 30px–32px radius
+### Public marketing feature panel
 
-### Inputs & Forms
-- Textarea: text `#e8edeb`, padding 12px 12px 12px 8px
-- Borders: `1px solid #b8c4c2` on light, `1px solid #3d4f58` on dark
-- Input radius: 4px
+**Large white feature panel**
+- Background: `#ffffff`
+- Text: `#000000`
+- Border: `1px solid #e7eeec`
+- Radius: `40px`
+- Padding: `40px 48px`
+- Shadow: `rgba(0, 0, 0, 0.1) 0px 2px 4px 0px`
+- Use: home role-button feature panel; `home::[data-omd-capture="15"]`
 
-### Navigation
-- Dark header on forest-black background
-- Euclid Circular A 16px weight 500 for nav links
-- MongoDB logo (leaf icon + wordmark) left-aligned
-- Green CTA pill buttons right-aligned
-- Mega-menu dropdowns with product categories
+### Documentation compact control
 
-### Image Treatment
-- Dashboard screenshots on dark backgrounds
-- Green-accented UI elements in screenshots
-- 30px–32px radius on image containers
-- Full-width dark sections for product showcases
+**Small bordered control**
+- Background: `#f9fbfa`
+- Text: `#001e2b`
+- Border: `1px solid #889397`
+- Radius: `6px`
+- Font: `13px / 500 / Euclid Circular A`
+- Use: compact public documentation control; `surface-3::[data-omd-capture="21"]`
 
-### Distinctive Components
+### Documentation icon control
 
-**Neon Green Accent Underlines**
-- `0px 2px 2px 0px solid #00ed64` — bottom + right border creating accent underlines
-- Used on feature headings and highlighted text
-- Also appears as `#006cfa` (blue) variant
+**Circular icon control**
+- Background: `#ffffff`
+- Text: `#00684a`
+- Border: `1px solid #e8edeb`
+- Radius: `100%`
+- Padding: `1px 6px`
+- Shadow: `rgba(0, 30, 43, 0.1) 0px 3px 4px 0px`
+- Use: public documentation icon control; `surface-3::[data-omd-capture="22"]`
 
-**Source Code Label System**
-- 14px uppercase Source Code Pro with 1px–2px letter-spacing
-- Used as section category markers above headings
-- Creates a "database field label" aesthetic
+### LeafyGreen utility control
+
+**Dark compact control**
+- Background: `#3d4f58`
+- Text: `#ffffff`
+- Border: `1px solid #889397`
+- Radius: `50px`
+- Font: `13px / 500 / Euclid Circular A`
+- Use: LeafyGreen design-system utility control; `surface-2::[data-omd-capture="48"]`
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 1px, 4px, 7px, 8px, 10px, 12px, 14px, 15px, 16px, 18px, 20px, 24px, 32px
+### Measured spacing
 
-### Grid & Container
-- Max content width centered
-- Dark hero section with contained content
-- Light content sections below
-- Card grids: 2–3 columns
-- Full-width dark footer
+- Public primary action: `15px 24px` at `home::[data-omd-capture="11"]`.
+- Larger public primary actions: `16px 32px` at home CTA captures.
+- Documentation side-nav items: `16px 24px` on the captured public docs surface.
+- LeafyGreen navigation list item: `8px 16px` on the design-system surface.
 
-### Whitespace Philosophy
-- **Dramatic mode transitions**: The shift from dark teal sections to white content creates built-in visual breathing through contrast, not just space.
-- **Generous dark sections**: Dark hero and feature areas use extra vertical padding (80px+) to let the forest-dark background breathe.
-- **Compact light sections**: White content areas are denser, with tighter card grids and less vertical spacing.
+The evidence does not establish a full cross-product spacing scale. Use the recorded values only in their source-domain contexts.
 
-### Border Radius Scale
-- Minimal (1px–2px): Small spans, badges
-- Subtle (4px): Inputs, small buttons
-- Standard (8px): Cards, links
-- Card (16px): Standard cards, containers
-- Toggle (20px): Switch elements
-- Large (24px): Large panels
-- Image (30px–32px): Image containers
-- Hero (48px): Hero cards
-- Pill (100px–999px): Buttons, navigation pills
-- Full (9999px): Maximum pill
+### Shape boundary
+
+- Public primary action: 4px.
+- Documentation compact control: 6px.
+- Public marketing feature panel: 40px.
+- Documentation icon control: 100% circular.
+- LeafyGreen utility control: 50px pill.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Default surfaces |
-| Subtle (Level 1) | `rgba(0,0,0,0.1) 0px 2px 4px` | Light card lift |
-| Standard (Level 2) | `rgba(0,0,0,0.15) 0px 3px 9px` | Standard cards |
-| Prominent (Level 3) | `rgba(0,0,0,0.15) 0px 3px 20px` | Elevated panels |
-| Forest (Level 4) | `rgba(0,30,43,0.12) 0px 26px 44px, rgba(0,0,0,0.13) 0px 7px 13px` | Hero cards — teal-tinted |
-
-**Shadow Philosophy**: MongoDB's shadow system is unique in that the primary elevation shadow uses `rgba(0, 30, 43, 0.12)` — a teal-tinted shadow that carries the forest-dark brand color into the depth system. This means even on white surfaces, shadows feel like they belong to the MongoDB color world rather than being generic neutral black.
+Two shadows are directly observed: the public marketing feature panel uses `rgba(0, 0, 0, 0.1) 0px 2px 4px 0px`; the documentation icon control uses `rgba(0, 30, 43, 0.1) 0px 3px 4px 0px`. No general elevation ladder is promoted from those local instances.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use `#001e2b` (forest-black) for dark sections — not pure black
-- Apply MongoDB Green (`#00ed64`) sparingly for maximum electric impact
-- Use MongoDB Value Serif ONLY for hero/display headings — Euclid Circular A for everything else
-- Apply Source Code Pro uppercase with wide tracking (1px–3px) for technical labels
-- Use teal-tinted shadows (`rgba(0,30,43,0.12)`) for primary card elevation
-- Maintain the dark/light section duality — dramatic contrast between modes
-- Use weight 300 for body text — the light weight is the readable voice
-- Apply pill radius (100px) to primary action buttons
+
+- Use Spring Green (`#00ed64`) with MongoDB Navy (`#001e2b`) for the observed public primary-action pairing.
+- Keep Value Serif for the captured display hierarchy, Euclid for UI/body roles, and Source Code Pro for code/value labels.
+- Preserve the source-domain distinction between marketing, LeafyGreen, and documentation observations.
+- Carry selector and surface provenance forward when using the component examples.
 
 ### Don't
-- Don't use pure black (`#000000`) for dark backgrounds — always use teal-black (`#001e2b`)
-- Don't use MongoDB Green (`#00ed64`) on backgrounds — it's an accent for text, underlines, and small highlights
-- Don't use standard gray shadows — always use teal-tinted (`rgba(0,30,43,...)`)
-- Don't apply serif font to body text — MongoDB Value Serif is hero-only
-- Don't use narrow letter-spacing on Source Code Pro labels — the wide tracking IS the identity
-- Don't mix dark and light section treatments within the same section
-- Don't use warm colors — the palette is strictly cool (teal, green, blue)
-- Don't forget the green accent underlines — they're the signature decorative element
+
+- Do not substitute a system font for Euclid Circular A, MongoDB Value Serif, or Source Code Pro.
+- Do not reclassify Forest Green (`#00684a`) announcement chrome as the canonical CTA fill.
+- Do not infer interaction states, modal behavior, form errors, toasts, or component variants from this baseline-only bundle.
+- Do not generalize public-site styles into an authenticated Atlas product interface.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile Small | <425px | Tight single column |
-| Mobile | 425–768px | Standard mobile |
-| Tablet | 768–1024px | 2-column grids begin |
-| Desktop | 1024–1280px | Standard layout |
-| Large Desktop | 1280–1440px | Expanded layout |
-| Ultra-wide | >1440px | Maximum width, generous margins |
-
-### Touch Targets
-- Pill buttons with generous padding
-- Navigation links at 16px with adequate spacing
-- Card surfaces as full-area touch targets
-
-### Collapsing Strategy
-- Hero: MongoDB Value Serif 96px → 64px → scales further
-- Navigation: horizontal mega-menu → hamburger
-- Feature cards: multi-column → stacked
-- Dark/light sections maintain their mode at all sizes
-- Source Code Pro labels maintain uppercase treatment
-
-### Image Behavior
-- Dashboard screenshots scale proportionally
-- Dark section backgrounds maintained full-width
-- Image radius maintained across breakpoints
+The supplied evidence is a 1440×900 capture. It establishes no responsive breakpoint, mobile layout, touch-target, or collapse behavior claim.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Dark background: Forest Black (`#001e2b`)
-- Brand accent: MongoDB Green (`#00ed64`)
-- Functional green: Dark Green (`#00684a`)
-- Link blue: Action Blue (`#006cfa`)
-- Text on light: Black (`#000000`)
-- Text on dark: White (`#ffffff`) or Light Input (`#e8edeb`)
-- Border light: Silver Teal (`#b8c4c2`)
-- Border dark: Teal Gray (`#3d4f58`)
-
-### Example Component Prompts
-- "Create a hero on forest-black (#001e2b) background. Headline at 96px MongoDB Value Serif weight 400, line-height 1.20, white text with 'potential' highlighted in MongoDB Green (#00ed64). Subtitle at 18px Euclid Circular A weight 400. Green pill CTA (#00684a, 100px radius). Neon green gradient glow behind product screenshot."
-- "Design a card on white background: 1px solid #b8c4c2 border, 16px radius, shadow rgba(0,30,43,0.12) 0px 26px 44px. Title at 24px Euclid Circular A weight 500. Body at 16px weight 300. Source Code Pro 14px uppercase label above title with 2px letter-spacing."
-- "Build a dark section: #001e2b background, 1px solid #3d4f58 border on cards. White text. MongoDB Green (#00ed64) accent underlines on headings using bottom-border 2px solid."
-- "Create technical label: Source Code Pro 14px, text-transform uppercase, letter-spacing 2px, weight 500, #00ed64 color on dark background."
-- "Design a pill button: #1c2d38 background, 1px solid #3d4f58 border, 100px radius, #5c6c75 text. Hover: #1eaedb background, white text, translateX(5px)."
-
-### Iteration Guide
-1. Start with the mode decision: dark (#001e2b) for hero/features, white for content
-2. MongoDB Green (#00ed64) is electric — use once per section for maximum impact
-3. Serif headlines (MongoDB Value Serif) create the editorial authority — never use for body
-4. Weight 300 body text creates the airy reading experience — don't default to 400
-5. Source Code Pro uppercase with wide tracking for technical labels — the database voice
-6. Teal-tinted shadows keep everything in the MongoDB color world
+Use the reference as a source-bounded composition guide: a public marketing primary action can be `#00ed64` with `#001e2b` text/border, 4px radius, and Euclid Circular A 16px/500. Use MongoDB Value Serif for a measured public display headline and Source Code Pro for a code/value label. For LeafyGreen or documentation work, choose only the separately documented controls rather than importing marketing card geometry by default.
 
 ## 10. Voice & Tone
 
-MongoDB's voice is **enterprise-database-precise and developer-aware.** "The World's Leading Modern Data Platform" — confident enterprise positioning. Source Code Pro uppercase labels signal "database voice" — wide tracking, monospace authority.
+MongoDB’s first-party company story is developer-centred, practical, and ambitious: make a flexible data platform that helps developers build and scale. Its public writing pairs direct action language with concrete technical outcomes rather than generic database superlatives.
 
-| Context | Tone |
+| Context | Observed or official direction |
 |---|---|
-| CTA | Verb. "Try free", "Get started", "Talk to sales" |
-| Marketing | Enterprise-data-platform language. Atlas (cloud) is first-class brand |
-| Documentation | Code-first, query-heavy |
-| Error | Specific. "Invalid ObjectId. Check format: 24-char hex." |
+| Product mission | Empower innovators by unleashing the power of software and data. |
+| Founder story | Frame scale, flexibility, and developer productivity as the problem to solve. |
+| CTA | Use concise actions such as “Get Started” when supported by the captured public header. |
 
 **Voice samples**
-- Tagline: *"The World's Leading Modern Data Platform"* <!-- verified: mongodb.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary database". Generic NoSQL marketing.
+- “Get Started” — captured public primary action.
+- “Our journey” — official company-history framing.
+- “The needs of developers have always served as the company’s North Star.” — official story page.
 
 ## 11. Brand Narrative
 
-MongoDB was founded **2007 in New York City as 10gen** by **Dwight Merriman (former DoubleClick founder + CTO)**, **Eliot Horowitz (former DoubleClick engineer + ShopWiki CTO)**, and **Kevin P. Ryan (former DoubleClick CEO + Gilt Groupe founder)** — DoubleClick veterans who learned the limits of relational databases when scaling to **400,000+ ads/sec** ([MongoDB Inc. — Wikipedia](https://en.wikipedia.org/wiki/MongoDB_Inc.), [Eliot Horowitz — Wikipedia](https://en.wikipedia.org/wiki/Eliot_Horowitz)). 10gen originally aimed to build a PaaS on entirely open-source components but, finding no existing database that met their cloud-architecture principles, instead built the **document-oriented MongoDB**. **First public release 2009**. **Renamed 10gen → MongoDB Inc. on August 27 2013**. By 2017, MongoDB had raised **$311M in venture funding**. **NASDAQ IPO October 20 2017** under ticker **MDB**, raising **$192M** ([MongoDB — About](https://www.mongodb.com/company)). **Atlas (managed cloud) launched 2016**; by 2024-2025 Atlas accounts for **>70% of revenue** and the company's **market cap ranges $22B-$26B**. The brand voice — Spring Green CTAs `#00ed64` on Navy `#001e2b`, teal-tinted shadows, uppercase Source Code Pro labels — reflects the database-engineering register.
+MongoDB traces its start to Dwight Merriman, Eliot Horowitz, and Kevin Ryan’s experience at DoubleClick, where relational databases struggled at more than 400,000 ads per second. MongoDB’s official history says they founded the company, then called 10gen, in 2007 to make a more scalable and flexible approach to data.
+
+The team launched MongoDB in 2009 with a document model intended to manage large, unstructured data and scale for modern applications. The company renamed itself MongoDB in 2013 as the product gained traction. Its current account presents Atlas as the unified developer data platform that carries forward that developer-first direction across cloud providers and on-premises workloads.
 
 ## 12. Principles
 
-1. **Atlas is the cloud product.** *UI implication:* Atlas distinct from on-prem MongoDB in marketing nav.
-2. **Green primary `#00684a`.** *UI implication:* dark green as auth, never bright lime.
-3. **Source Code Pro for technical labels.** Uppercase + wide tracking. *UI implication:* preserve this for chip labels.
-4. **Teal-tinted shadows.** *UI implication:* all shadows have a slight teal undertone.
-5. **0px-radius hero buttons, 4px-radius nav.** *UI implication:* mixed radius is intentional — sharp for data, soft for UX.
+1. **Build for developer agility.** *UI implication:* explain the concrete action or data outcome before introducing platform breadth.
+2. **Make flexibility legible.** *UI implication:* distinguish a public marketing message, design-system rule, and documentation affordance instead of flattening them into one generic UI.
+3. **Use type by role.** *UI implication:* Value Serif belongs in display hierarchy, Euclid in product reading/UI, and Source Code Pro in code/value contexts.
+4. **Keep high-signal actions disciplined.** *UI implication:* reserve Spring Green primary actions for the observed navy-text pairing; Forest Green remains announcement chrome in this evidence set.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by MongoDB user segments (backend engineers, data architects, enterprise CTOs), not individual people.*
+These are stakeholder groups named by MongoDB’s official company and story materials, not fictional user profiles.
 
-**Sergey Volkov, 38, Berlin.** Backend engineer building geo-distributed app. Atlas Multi-region for low-latency reads.
+**Developers and builders.** MongoDB describes developers as the product’s North Star and the audience that needs a flexible way to manage and interact with data.
 
-**Aisha Patel, 41, San Francisco.** Data architect at Fortune 500. Manages 200+ MongoDB clusters across hybrid cloud.
+**Innovators and application teams.** The company mission addresses teams creating, transforming, and disrupting industries with modern applications.
 
-**Heinz Müller, 50, Munich.** CTO at industrial SaaS. MongoDB Atlas as the deciding factor for cloud-native pivot.
+**Organizations operating across environments.** Atlas is described as consolidating workloads through a unified experience for on-premises or preferred-cloud deployment.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no databases)** | "Create your first cluster" Atlas CTA |
-| **Empty (no collections)** | Inline shell command + create button |
-| **Loading (query)** | Per-stage execution explanation visible |
-| **Loading (cluster scaling)** | Progress with elapsed time, ETA |
-| **Error (query syntax)** | Inline below editor + line:column |
-| **Error (server)** | Specific MongoDB error code + docs link |
-| **Success (query)** | Results table + execution stats |
-| **Success (cluster created)** | Connection string + security checklist |
-| **Skeleton (cluster list)** | Teal-tinted placeholders |
-| **Disabled (read-only)** | Lock icon + role tooltip |
-| **Loading (long migration)** | Multi-step progress |
+No empty, loading, success, error, disabled, skeleton, or interactive transition treatment was captured. These states are intentionally omitted rather than reconstructed from public baseline screenshots.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
-
-Standard cubic-bezier; no bounce — enterprise register. `prefers-reduced-motion: reduce` removes hover transitions.
+No duration, easing curve, or reduced-motion behavior was captured. No motion token is asserted.
 
 ---
 
-**Verified:** 2026-05-08 (omd:migrate run 40 — Apple-tier)
-**Tier 1 sources:** mongodb.com home + /products/platform/atlas-database (live DOM via playwright — **Primary `#00ed64` Spring Green** 4px / Navy `#001e2b` text / 48-52px / 15-16×24-48 / 16px·**500** + **Inverse Primary `#001e2b` Navy** 4px on light canvas; **`#00684a` Forest Green is banner-strip chrome bg only, NOT a CTA**; cookie utility 2px / 12.195px·600 separate track).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/IPO):** Wikipedia (MongoDB Inc. + Eliot Horowitz), MongoDB About, MatrixBCG, PortersFiveForce, AlleyCorp, Medium (MongoDB IPO story).
-**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier mistake reverted (significant):** prior footer claimed Primary was `#00684a` 0px hero — actually `#00684a` is banner-strip chrome bg, canonical Primary is **Spring Green `#00ed64` 4px / Navy text**. §4 needs material correction.
+**Verified:** 2026-07-13
+**Tier 1 sources:** supplied collector evidence for https://www.mongodb.com/, https://www.mongodb.design/, and https://www.mongodb.com/ko-kr/docs/; official typography guidance https://www.mongodb.design/foundations/typography; official company context https://www.mongodb.com/company and https://www.mongodb.com/company/our-story.
+**Tier 2 sources:** https://getdesign.md/mongodb/design-md (opened; third-party analysis, no value promoted); https://styles.refero.design/?q=MongoDB (attempted; no usable result page).
+**Conflicts unresolved:** none

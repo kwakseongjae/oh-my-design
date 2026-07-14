@@ -1,5 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { applyOverrides, type ParsedTokens, type PreviewOverrides } from "./extract-tokens";
+import {
+  applyOverrides,
+  buildStructuredHierarchy,
+  extractTokens,
+  type ParsedTokens,
+  type PreviewOverrides,
+} from "./extract-tokens";
+import type { ReferenceAstTokens } from "./references/schema";
 
 // Minimal synthetic token set used for preview fidelity matrix. Keeps the
 // tests independent from reference DESIGN.md changes.
@@ -102,6 +109,8 @@ describe("applyOverrides (preview) – wizard fidelity matrix", () => {
   it("fontFamily override flows into typography.family", () => {
     const out = applyOverrides(base, { fontFamily: "Geist" });
     expect(out.typography.family).toBe("Geist");
+    expect(out.typography.fonts).toEqual([{ raw: "Geist", role: "builder override" }]);
+    expect(out.typography.hierarchy.every((tier) => tier.fontFamily === "Geist")).toBe(true);
   });
 
   it("headingWeight override applies to Display / Heading 1 / Heading 2 tiers only", () => {
@@ -198,5 +207,70 @@ describe("applyOverrides (preview) – wizard fidelity matrix", () => {
     expect(out.radii.card).toBe("16px");           // pill cap for cards
     expect(out.shadows[0]).toEqual({ name: "Flat", value: "none" }); // bordered
     expect(out.typography.hierarchy[0].fontWeight).toBe(700);
+  });
+});
+
+describe("buildStructuredHierarchy", () => {
+  it("renders exact frontmatter roles instead of a generic fallback scale", () => {
+    const value = (claimPath: string, scalar: string | number) => ({
+      value: scalar,
+      claimPath,
+      origin: "frontmatter" as const,
+      confidence: "high" as const,
+    });
+    const tiers = {
+      "marketing-hero": {
+        size: value("tokens.typography.marketing-hero.size", 70),
+        weight: value("tokens.typography.marketing-hero.weight", 700),
+        family: value("tokens.typography.marketing-hero.family", "Pretendard Variable"),
+        use: value("tokens.typography.marketing-hero.use", "Life on LINE"),
+      },
+      "body-1": {
+        size: value("tokens.typography.body-1.size", 16),
+        weight: value("tokens.typography.body-1.weight", 400),
+        use: value("tokens.typography.body-1.use", "Messenger body"),
+      },
+    } as ReferenceAstTokens["typography"]["tiers"];
+
+    expect(buildStructuredHierarchy(tiers)[0].fontFamily).toBe("Pretendard Variable");
+
+    expect(buildStructuredHierarchy(tiers)).toEqual([
+      expect.objectContaining({ role: "Marketing Hero", fontSize: 70, fontWeight: 700, sampleText: "Life on LINE" }),
+      expect.objectContaining({ role: "Body 1", fontSize: 16, fontWeight: 400, sampleText: "Messenger body", muted: false }),
+    ]);
+  });
+});
+
+describe("canonical preview absence policy", () => {
+  it("does not resurrect missing AST groups from persuasive prose", () => {
+    const tokens = extractTokens({
+      id: "unknown-brand",
+      designMd: `## 2. Color Palette\n- Primary \`#ff0000\`\n## 3. Typography Rules\n- **Primary**: \`Made Up Sans\`\n## 4. Component Stylings\n### Button\n**Primary**\n- Background: #ff0000`,
+      primary: "#ff0000",
+      background: "#ffffff",
+      foreground: "#111111",
+      fontFamily: "Made Up Sans",
+      headingWeight: "700",
+      radius: "8px",
+      mood: "",
+      referenceAst: {
+        tokens: {
+          colors: {},
+          typography: { families: {}, tiers: {} },
+          spacing: {},
+          rounded: {},
+          shadows: {},
+          components: {},
+        },
+      } as never,
+    });
+
+    expect(tokens.paletteRoles).toEqual([]);
+    expect(tokens.typography.fonts).toEqual([]);
+    expect(tokens.typography.hierarchy).toEqual([]);
+    expect(tokens.spacingScale).toEqual([]);
+    expect(tokens.radiusScale).toEqual([]);
+    expect(tokens.shadows).toEqual([]);
+    expect(tokens.components).toEqual([]);
   });
 });

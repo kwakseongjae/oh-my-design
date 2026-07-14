@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { trackReferenceSelect, trackSearch, trackCategoryFilter, trackCountryFilter, trackHotFilter, trackSortChange } from "@/lib/builder/analytics";
+import { trackReferenceSelect, trackSearch, trackCategoryFilter, trackCountryFilter, trackColorFilter, trackHotFilter, trackSortChange } from "@/lib/builder/analytics";
 import { sortRefs, SORT_MODES, resolveVisitorCountry, type SortMode } from "@/lib/builder/sort-refs";
-import { Loader2, ArrowRight, ChevronDown, Download } from "lucide-react";
+import { buildColorConceptGroups, colorFamilyForHex, type ColorFilter } from "@/lib/builder/color-family";
+import { Loader2, ChevronDown, Download } from "lucide-react";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 
 /** Inline SVG magnifier — bypasses lucide-react@1.8.0 rendering issues. */
@@ -52,8 +53,8 @@ import type { RefListItem } from "@/app/builder/page";
 
 /** Stable signature for a grid view (sort + active filters). Used to cache which
  *  views have already been computed so repeat visits swap instantly (no skeleton). */
-function viewSig(sort: SortMode, cat: string | null, country: string | null, hot: boolean): string {
-  return `${sort}|${cat ?? ""}|${country ?? ""}|${hot ? 1 : 0}`;
+function viewSig(sort: SortMode, cat: string | null, country: string | null, color: ColorFilter | null, hot: boolean): string {
+  return `${sort}|${cat ?? ""}|${country ?? ""}|${color ?? ""}|${hot ? 1 : 0}`;
 }
 
 /** Placeholder grid shown during initial load and while a sort/filter settles —
@@ -79,6 +80,8 @@ export function ReferenceSelector({
   onSelect,
   loading,
   initialLoading = false,
+  selectedColor,
+  onColorChange,
 }: {
   refs: RefListItem[];
   /** Picking a reference generates it as-is and jumps to the preview/export
@@ -86,6 +89,8 @@ export function ReferenceSelector({
   onSelect: (id: string) => void;
   loading: boolean;
   initialLoading?: boolean;
+  selectedColor: ColorFilter | null;
+  onColorChange: (color: ColorFilter | null) => void;
 }) {
   // Sort categories by reference count (most-populated first) so the visible
   // short list on mobile surfaces the highest-value chips. Long-tail
@@ -148,7 +153,7 @@ export function ReferenceSelector({
   const [recomputing, setRecomputing] = useState(false);
   const recomputeTimer = useRef<ReturnType<typeof setTimeout>>(null);
   // Seed with the initial view so returning to it never re-skeletons.
-  const seenViews = useRef<Set<string>>(new Set([viewSig("recommend", null, null, false)]));
+  const seenViews = useRef<Set<string>>(new Set([viewSig("recommend", null, null, null, false)]));
   const flagRecompute = useCallback((sig: string) => {
     if (seenViews.current.has(sig)) return; // already computed → instant swap
     seenViews.current.add(sig);
@@ -218,6 +223,16 @@ export function ReferenceSelector({
     }
   }, [refs]);
 
+  const colorConcepts = useMemo(
+    () => buildColorConceptGroups(refs.map((ref) => ref.primaryColor)),
+    [refs],
+  );
+  const selectedColorFamilies = useMemo(
+    () => colorConcepts.find((concept) => concept.key === selectedColor)?.families
+      ?? (selectedColor && selectedColor !== "etc" ? [selectedColor] : []),
+    [colorConcepts, selectedColor],
+  );
+
   // Filter, then sort by the chosen mode + visitor locale. Sorting is
   // client-side because "Recommended" is locale-aware (see lib/builder/sort-refs).
   const filtered = sortRefs(
@@ -225,6 +240,10 @@ export function ReferenceSelector({
       if (hotOnly && !r.hot) return false;
       if (selectedCat && r.category !== selectedCat) return false;
       if (selectedCountry && r.country !== selectedCountry) return false;
+      if (selectedColor) {
+        const family = colorFamilyForHex(r.primaryColor);
+        if (!family || !selectedColorFamilies.includes(family)) return false;
+      }
       if (filter && !refMatchesQuery(r, filter)) return false;
       return true;
     }),
@@ -235,7 +254,7 @@ export function ReferenceSelector({
   const handleSortChange = (mode: SortMode) => {
     setSortMode(mode);
     trackSortChange(mode);
-    flagRecompute(viewSig(mode, selectedCat, selectedCountry, hotOnly));
+    flagRecompute(viewSig(mode, selectedCat, selectedCountry, selectedColor, hotOnly));
   };
 
   return (
@@ -366,7 +385,7 @@ export function ReferenceSelector({
               label instead of "More" so the state stays legible. */}
           <div className="relative flex flex-wrap gap-1.5">
             <button
-              onClick={() => { setSelectedCat(null); flagRecompute(viewSig(sortMode, null, selectedCountry, hotOnly)); }}
+              onClick={() => { setSelectedCat(null); flagRecompute(viewSig(sortMode, null, selectedCountry, selectedColor, hotOnly)); }}
               className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 !selectedCat
                   ? "bg-primary text-primary-foreground shadow-sm"
@@ -379,7 +398,7 @@ export function ReferenceSelector({
             {primaryCategories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) trackCategoryFilter(next); flagRecompute(viewSig(sortMode, next, selectedCountry, hotOnly)); }}
+                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) trackCategoryFilter(next); flagRecompute(viewSig(sortMode, next, selectedCountry, selectedColor, hotOnly)); }}
                 className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                   selectedCat === cat
                     ? "bg-primary text-primary-foreground shadow-sm"
@@ -394,7 +413,7 @@ export function ReferenceSelector({
             {overflowCategories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) trackCategoryFilter(next); flagRecompute(viewSig(sortMode, next, selectedCountry, hotOnly)); }}
+                onClick={() => { const next = selectedCat === cat ? null : cat; setSelectedCat(next); if (next) trackCategoryFilter(next); flagRecompute(viewSig(sortMode, next, selectedCountry, selectedColor, hotOnly)); }}
                 className={`hidden sm:inline-flex rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                   selectedCat === cat
                     ? "bg-primary text-primary-foreground shadow-sm"
@@ -446,7 +465,7 @@ export function ReferenceSelector({
                               setSelectedCat(next);
                               setCatMoreOpen(false);
                               if (next) trackCategoryFilter(next);
-                              flagRecompute(viewSig(sortMode, next, selectedCountry, hotOnly));
+                              flagRecompute(viewSig(sortMode, next, selectedCountry, selectedColor, hotOnly));
                             }}
                             className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium transition-colors ${
                               active ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
@@ -522,7 +541,7 @@ export function ReferenceSelector({
                     onClick={() => {
                       setSelectedCountry(null);
                       setCountryMoreOpen(false);
-                      flagRecompute(viewSig(sortMode, selectedCat, null, hotOnly));
+                      flagRecompute(viewSig(sortMode, selectedCat, null, selectedColor, hotOnly));
                     }}
                     className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium transition-colors ${
                       !selectedCountry ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
@@ -542,7 +561,7 @@ export function ReferenceSelector({
                           setSelectedCountry(next);
                           setCountryMoreOpen(false);
                           if (next) trackCountryFilter(next);
-                          flagRecompute(viewSig(sortMode, selectedCat, next, hotOnly));
+                          flagRecompute(viewSig(sortMode, selectedCat, next, selectedColor, hotOnly));
                         }}
                         className={`flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium transition-colors ${
                           active ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
@@ -567,7 +586,7 @@ export function ReferenceSelector({
               when the response carries at least one hot ref. */}
           {hasHot && (
             <button
-              onClick={() => { const next = !hotOnly; setHotOnly(next); trackHotFilter(next); flagRecompute(viewSig(sortMode, selectedCat, selectedCountry, next)); }}
+              onClick={() => { const next = !hotOnly; setHotOnly(next); trackHotFilter(next); flagRecompute(viewSig(sortMode, selectedCat, selectedCountry, selectedColor, next)); }}
               aria-pressed={hotOnly}
               className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 hotOnly
@@ -591,6 +610,64 @@ export function ReferenceSelector({
               Hot
             </button>
           )}
+          </div>
+        </div>
+
+        <div className="space-y-2 pt-1" aria-label="Filter references by primary color family">
+          <div className="flex items-center justify-between gap-3">
+            <span className="text-xs font-medium text-foreground">Color concept</span>
+          </div>
+          <div className="flex gap-1.5 overflow-x-auto pb-1" role="radiogroup" aria-label="Color concept">
+            <button
+              type="button"
+              role="radio"
+              aria-checked={!selectedColor}
+              onClick={() => {
+                onColorChange(null);
+                flagRecompute(viewSig(sortMode, selectedCat, selectedCountry, null, hotOnly));
+              }}
+              className={`shrink-0 rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
+                !selectedColor
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "border border-border/40 text-muted-foreground hover:border-border hover:text-foreground"
+              }`}
+            >
+              All colors
+            </button>
+            {colorConcepts.map((group) => {
+              const active = selectedColor === group.key;
+              return (
+                <button
+                  key={group.key}
+                  type="button"
+                  role="radio"
+                  aria-checked={active}
+                  onClick={() => {
+                    const next = active ? null : group.key;
+                    onColorChange(next);
+                    if (next) trackColorFilter(next);
+                    flagRecompute(viewSig(sortMode, selectedCat, selectedCountry, next, hotOnly));
+                  }}
+                  className={`inline-flex shrink-0 items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
+                    active
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "border border-border/40 text-muted-foreground hover:border-border hover:text-foreground"
+                  }`}
+                >
+                  <span className="flex -space-x-1" aria-hidden="true">
+                    {group.samples.map((sample) => (
+                      <span
+                        key={sample}
+                        className="h-3 w-3 rounded-full border border-background/70"
+                        style={{ backgroundColor: sample }}
+                      />
+                    ))}
+                  </span>
+                  <span>{group.label}</span>
+                  <span className={active ? "text-primary-foreground/70" : "text-muted-foreground/70"}>{group.count}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </motion.div>

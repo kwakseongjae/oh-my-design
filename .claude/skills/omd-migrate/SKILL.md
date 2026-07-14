@@ -182,6 +182,15 @@ playwright로 brand의 **다른 컨텍스트 surface 2개 이상** navigate + ev
 
 **현재는 inline-handwritten freehand. 이 스킬에서는 다음을 강제:**
 
+### 6-0. Context depth gate (§1 + §3 포함)
+
+- §1은 audit scope가 아니라 product/category, distinctive expression, 역사/문화, current evolution을 공식 source로 연결한 브랜드 설명이어야 한다.
+- 검증 메타가 §1 첫 문단의 주어가 되면 G6 실패다. 검증 경계는 footer/verification notes로 이동한다.
+- §3은 `official product-use / live surface-use / official distributed asset / declared-only / unresolved`를 분리한다. 공식 product-use를 live webfont 부재 때문에 삭제하지 않으며 specimen availability와 family truth를 별도 판정한다.
+- 공식 배포 폰트 컬렉션은 current UI family와 구분한 뒤 기원·시각적 성격·license boundary를 설명한다.
+- §10–13은 공식 mission, principles, stakeholder/culture 자료를 우선 사용한다. 공식 자료가 존재하는데 generic 한 줄이나 `[FILL IN]`만 남으면 G6 실패다.
+- `.verification.md`에 `## Context and narrative evidence`와 최소 3개 first-party source가 있어야 한다.
+
 ### 6-1. Source minimum
 - WebFetch `<domain>/about`
 - WebFetch `<domain>/manifesto` 또는 `<domain>/mission` (있다면)

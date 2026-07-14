@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { trackCustomizeOpen, trackCustomizeChange } from "@/lib/builder/analytics";
 import { ArrowRight, ArrowLeft, Check, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useMounted } from "@/lib/use-mounted";
 import { generateColorScale, isLight, contrastForeground } from "@/lib/core/color";
 import type { Overrides } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
@@ -137,8 +138,7 @@ function ABCard({
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
   if (!mounted) return <div className="w-8" />;
   return (
     <button

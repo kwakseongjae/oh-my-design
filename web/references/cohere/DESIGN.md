@@ -4,406 +4,296 @@ name: Cohere
 country: US
 category: ai
 homepage: "https://cohere.com"
-primary_color: "#39594d"
+primary_color: "#17171c"
 logo:
   type: github
   slug: cohere-ai
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Cohere Newsroom
   url: "https://cohere.com/newsroom"
   type: brand
-  description: Cohere's press kit with logos, symbols, and media resources.
+  description: Cohere's official newsroom and press-kit entry point.
   og_image: "https://cdn.sanity.io/images/rjtqmwfu/web3-prod/0750efbc3db33b1a67bc77575525b076f0137f26-1200x630.jpg?w=1200&h=630"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://cohere.com/ko", inspected: "2026-07-13" }
+    - { id: pricing, kind: product-pricing, url: "https://cohere.com/ko/pricing", inspected: "2026-07-13" }
+    - { id: products, kind: product-marketing, url: "https://cohere.com/ko/products", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://cohere.com/ko", captured: "2026-07-13" }
+    - { id: pricing-live, kind: product-surface, url: "https://cohere.com/ko/pricing", captured: "2026-07-13" }
+    - { id: products-live, kind: product-surface, url: "https://cohere.com/ko/products", captured: "2026-07-13" }
+    - { id: cohere-about, kind: official-doc, url: "https://cohere.com/about", captured: "2026-07-13" }
+    - { id: cohere-careers, kind: official-doc, url: "https://cohere.com/careers", captured: "2026-07-13" }
+    - { id: lineto-unica77, kind: license, url: "https://lineto.com/api/front/font-families/393/document?index=1", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &all { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.canvas": *all
+    "tokens.colors.foreground": *all
+    "tokens.colors.foreground-soft": *all
+    "tokens.colors.muted": *all
+    "tokens.colors.inverse": *all
+    "tokens.colors.border": *all
+    "tokens.colors.border-dark": *all
+    "tokens.typography.family.ui": *all
+    "tokens.typography.family.display": *all
+    "tokens.typography.family.mono": *all
+    "tokens.typography.display.size": *all
+    "tokens.typography.display.weight": *all
+    "tokens.typography.display.lineHeight": *all
+    "tokens.typography.display.tracking": *all
+    "tokens.typography.display.use": *all
+    "tokens.typography.heading.size": *all
+    "tokens.typography.heading.weight": *all
+    "tokens.typography.heading.lineHeight": *all
+    "tokens.typography.heading.tracking": *all
+    "tokens.typography.heading.use": *all
+    "tokens.typography.body.size": *all
+    "tokens.typography.body.weight": *all
+    "tokens.typography.body.lineHeight": *all
+    "tokens.typography.body.use": *all
+    "tokens.typography.label.size": *all
+    "tokens.typography.label.weight": *all
+    "tokens.typography.label.lineHeight": *all
+    "tokens.typography.label.tracking": *all
+    "tokens.typography.label.use": *all
+    "tokens.spacing.xs": *all
+    "tokens.spacing.sm": *all
+    "tokens.spacing.md": *all
+    "tokens.spacing.lg": *all
+    "tokens.spacing.xl": *all
+    "tokens.spacing.xxl": *all
+    "tokens.spacing.xxxl": *all
+    "tokens.rounded.control": *all
+    "tokens.rounded.dialog": *all
+    "tokens.rounded.media": *all
+    "tokens.rounded.pill": *all
+    "tokens.components.pricing-tab.type": &pricing { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.components.pricing-tab.fg": *pricing
+    "tokens.components.pricing-tab.radius": *pricing
+    "tokens.components.pricing-tab.padding": *pricing
+    "tokens.components.pricing-tab.font": *pricing
+    "tokens.components.pricing-tab.states": *pricing
+    "tokens.components.pricing-tab.use": *pricing
+    "tokens.components.marketing-media-card.type": *all
+    "tokens.components.marketing-media-card.radius": *all
+    "tokens.components.marketing-media-card.use": *all
 tokens:
-  source: prose-derived
-  extracted: "2026-06-08"
-  note: "primary_color #39594d is the brand green token; live UI is near-monochrome — primary interactive accent is Interaction Blue #1863dc"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Only selector-backed observations from Cohere's public Korean marketing, pricing, and products routes are tokens. The capture contains no documentation chrome or authenticated product UI; declared-only font assets remain outside typography tokens."
   colors:
-    primary: "#1863dc"
-    primary-hover: "#1863dc"
-    brand: "#39594d"
+    primary: "#17171c"
     canvas: "#ffffff"
     foreground: "#000000"
-    muted: "#93939f"
-    on-primary: "#ffffff"
-    near-black: "#212121"
-    deep-dark: "#17171c"
-    ring-blue: "#4c6ee6"
-    focus-purple: "#9b60aa"
-    snow: "#fafafa"
-    surface-alt: "#f2f2f2"
-    hairline: "#f2f2f2"
-    border-cool: "#d9d9dd"
-    border-light: "#e5e7eb"
+    foreground-soft: "#212121"
+    muted: "#75758a"
+    inverse: "#fafafa"
+    border: "#e5e7eb"
+    border-dark: "#525260"
   typography:
-    family: { display: "CohereText", sans: "Unica77 Cohere Web", mono: "CohereMono" }
-    display-hero:    { size: 72, weight: 400, lineHeight: 1.00, tracking: -1.44, use: "Hero, serif authority" }
-    display-secondary: { size: 60, weight: 400, lineHeight: 1.00, tracking: -1.2, use: "Large section headings" }
-    section:         { size: 48, weight: 400, lineHeight: 1.20, tracking: -0.48, use: "Feature section titles" }
-    subheading:      { size: 32, weight: 400, lineHeight: 1.20, tracking: -0.32, use: "Card headings, feature names" }
-    feature-title:   { size: 24, weight: 400, lineHeight: 1.30, use: "Smaller section titles" }
-    body-lg:         { size: 18, weight: 400, lineHeight: 1.40, use: "Intro paragraphs" }
-    body:            { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body, button text" }
-    button-medium:   { size: 14, weight: 500, lineHeight: 1.71, use: "Smaller buttons, emphasized labels" }
-    caption:         { size: 14, weight: 400, lineHeight: 1.40, use: "Metadata, descriptions" }
-    uppercase-label: { size: 14, weight: 400, lineHeight: 1.40, tracking: 0.28, use: "Uppercase section labels" }
-    small:           { size: 12, weight: 400, lineHeight: 1.40, use: "Smallest text, footer links" }
-    code-micro:      { size: 8, weight: 400, lineHeight: 1.40, tracking: 0.16, use: "Tiny uppercase code labels" }
-  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 40, section: 60 }
-  rounded: { sm: 4, md: 8, lg: 16, xl: 20, signature: 22, full: 9999 }
-  shadow:
-    soft: "none — depth via background contrast and cool-gray borders"
-  components_harvested: true
+    family: { ui: "Unica77 Cohere Web", display: "CohereText", mono: "CohereMono" }
+    display: { size: 72, weight: 400, lineHeight: 1, tracking: -1.44, use: "Observed public h1 on the supplied routes" }
+    heading: { size: 48, weight: 400, lineHeight: 1.2, tracking: -0.48, use: "Observed public h3 on the supplied routes" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Repeated public navigation, body, and action text" }
+    label: { size: 14, weight: 400, lineHeight: 1.4, tracking: 0.28, use: "Observed CohereMono label text" }
+  spacing: { xs: 6, sm: 8, md: 12, lg: 16, xl: 24, xxl: 36, xxxl: 40 }
+  rounded: { control: 4, dialog: 8, media: 22, pill: 9999 }
   components:
-    button-ghost: { type: button, fg: "#000000", use: "Transparent fill; hover text shifts to #1863dc; focus 2px solid #1863dc outline — the base button style" }
-    button-dark-solid: { type: button, bg: "#000000", fg: "#ffffff", use: "Dark fill, pill or standard radius — CTA on light surfaces" }
-    button-outlined: { type: button, use: "Border-based containment for secondary actions" }
-    card: { type: card, bg: "#ffffff", radius: 22, use: "Signature radius, 1px solid #f2f2f2 border, shadow-free" }
-    input: { type: input, use: "Focus border #9b60aa 1px solid; focus outline 2px solid #1863dc" }
-    uppercase-code-tag: { type: badge, use: "CohereMono uppercase with positive letter-spacing as section markers" }
-    purple-hero-band: { type: card, radius: 22, use: "Full-width deep purple section housing product screenshots" }
+    pricing-tab: { type: tab, fg: "#212121", radius: 0, padding: "4px 0px", font: "16px/400 Unica77 Cohere Web", states: "selected only", use: "Observed selected public pricing tab" }
+    marketing-media-card: { type: card, radius: 22, use: "Observed home marketing-card container; no fill, border, or state is promoted" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Cohere
 
 ## 1. Visual Theme & Atmosphere
 
-Cohere's interface is a polished enterprise command deck — confident, clean, and designed to make AI feel like serious infrastructure rather than a consumer toy. The experience lives on a bright white canvas where content is organized into generously rounded cards (22px radius) that create an organic, cloud-like containment language. This is a site that speaks to CTOs and enterprise architects: professional without being cold, sophisticated without being intimidating.
+Cohere is an enterprise AI company that builds foundation models and end-to-end AI products for business use. Its official About page frames the work around improving human wellbeing by helping organizations scale innovation, productivity, and progress; its 2025 North launch extends that proposition into an agentic workplace product grounded in enterprise data. On the three supplied public Korean routes, that business-first posture appears as a quiet, high-contrast interface: white canvases, black and charcoal text, occasional inverse panels, and rounded pill actions. The capture records CohereText only for a small display tier, while the loaded Unica77 Cohere Web family carries the repeated navigation, body, card, input, tab, and action rhythm. The result is restrained rather than decorative: large editorial headlines introduce practical enterprise product and pricing content.
 
-The design language bridges two worlds with a dual-typeface system: CohereText, a custom display serif with tight tracking, gives headlines the gravitas of a technology manifesto, while Unica77 Cohere Web handles all body and UI text with geometric Swiss precision. This serif/sans pairing creates a "confident authority meets engineering clarity" personality that perfectly reflects an enterprise AI platform.
+This is a public-surface reference, not a claim about signed-in product UI or documentation chrome. The components and tokens below retain only the selectors, routes, and states in the supplied capture.
 
-Color is used with extreme restraint — the interface is almost entirely black-and-white with cool gray borders (`#d9d9dd`, `#e5e7eb`). Purple-violet appears only in photographic hero bands, gradient sections, and the interactive blue (`#1863dc`) that signals hover and focus states. This chromatic restraint means that when color DOES appear — in product screenshots, enterprise photography, and the deep purple section — it carries maximum visual weight.
+**Key characteristics:**
 
-**Key Characteristics:**
-- Bright white canvas with cool gray containment borders
-- 22px signature border-radius — the distinctive "Cohere card" roundness
-- Dual custom typeface: CohereText (display serif) + Unica77 (body sans)
-- Enterprise-grade chromatic restraint: black, white, cool grays, minimal purple-blue accent
-- Deep purple/violet hero sections providing dramatic contrast
-- Ghost/transparent buttons that shift to blue on hover
-- Enterprise photography showing diverse real-world applications
-- CohereMono for code and technical labels with uppercase transforms
+- White public canvas with black, charcoal, and soft-gray text.
+- CohereText at large display sizes; loaded Unica77 Cohere Web throughout the observed public UI.
+- Dark and inverse white 9999px pill actions, backed by multiple public routes.
+- A 22px rounded home marketing-card container, without a claim of a universal card recipe.
+- No hover, pressed, focus, menu, dialog, toast, or error state token: the capture recorded no interactions.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Cohere Black** (`#000000`): Primary headline text and maximum-emphasis elements.
-- **Near Black** (`#212121`): Standard body link color — slightly softer than pure black.
-- **Deep Dark** (`#17171c`): A blue-tinted near-black for navigation and dark-section text.
+### Observed public-route values
 
-### Secondary & Accent
-- **Interaction Blue** (`#1863dc`): The primary interactive accent — appears on button hover, focus states, and active links. The sole chromatic action color.
-- **Ring Blue** (`#4c6ee6` at 50%): Tailwind ring color for keyboard focus indicators.
-- **Focus Purple** (`#9b60aa`): Input focus border color — a muted violet.
+- **Dark action** (#17171c): observed dark pill background on public home, pricing, and products actions.
+- **Canvas** (#ffffff): observed page and inverse-action surface across all captured routes.
+- **Foreground** (#000000): repeated public text value.
+- **Foreground soft** (#212121): repeated public button, tab, and body value.
+- **Muted** (#75758a): repeated public secondary-text value.
+- **Inverse text** (#fafafa): observed text on dark public areas.
+- **Light border** (#e5e7eb): repeated computed border value across the three routes.
+- **Dark-section boundary** (#525260): observed one-pixel border on the home and products routes.
 
-### Surface & Background
-- **Pure White** (`#ffffff`): The primary page background and card surface.
-- **Snow** (`#fafafa`): Subtle elevated surfaces and light-section backgrounds.
-- **Lightest Gray** (`#f2f2f2`): Card borders and the softest containment lines.
+### Boundary
 
-### Neutrals & Text
-- **Muted Slate** (`#93939f`): De-emphasized footer links and tertiary text — a cool-toned gray with a slight blue-violet tint.
-- **Border Cool** (`#d9d9dd`): Standard section and list-item borders — a cool, slightly purple-tinted gray.
-- **Border Light** (`#e5e7eb`): Lighter border variant — Tailwind's standard gray-200.
-
-### Gradient System
-- **Purple-Violet Hero Band**: Deep purple gradient sections that create dramatic contrast against the white canvas. These appear as full-width bands housing product screenshots and key messaging.
-- **Dark Footer Gradient**: The page transitions through deep purple/charcoal to the black footer, creating a "dusk" effect.
+The artifact does not provide a selector-backed blue, purple, green, gradient, focus-ring, or error-color role for these routes. Those older claims are omitted rather than generalized from class names, asset names, or an adjacent surface.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Display**: `CohereText`, with fallbacks: `Space Grotesk, Inter, ui-sans-serif, system-ui`
-- **Body / UI**: `Unica77 Cohere Web`, with fallbacks: `Inter, Arial, ui-sans-serif, system-ui`
-- **Code**: `CohereMono`, with fallbacks: `Arial, ui-sans-serif, system-ui`
-- **Icons**: `CohereIconDefault` (custom icon font)
+### Evidence classes
 
-### Hierarchy
+| Evidence class | Family and boundary |
+|---|---|
+| Official product-use | Cohere’s official public pages establish the company/product context, but this research pass found no first-party typography guide that assigns a universal product role to a named Cohere family. |
+| Live computed surface-use | Unica77 Cohere Web is loaded/high with 1,262 uses across body, buttons, cards, dialogs, inputs, lists, tabs, and toggles. CohereText is loaded/high with five heading uses, and CohereMono is loaded/high with 29 label/body uses. Each has computed-family use plus FontFaceSet and browser-served source corroboration in the supplied artifact. |
+| Official distributed brand asset | The capture records Cohere-served WOFF/WOFF2/OTF assets. For Unica77, Lineto identifies LL Unica77 as an authorized digital Haas Unica version and publishes separate licensing terms; that does not grant reuse of Cohere’s served custom files. |
+| Declared-only | CohereColor, CohereHeadline, CohereIconDefault, CohereIconOutline, and CohereVariable have declared source assets but no visible computed use. They remain declared-only. KaTeX faces are also declared-only technical assets, not Cohere brand typography. |
+| System / unresolved | Inter, Arial, and system families occur in fallback stacks only. They are not substituted for or promoted as Cohere typefaces. |
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display / Hero | CohereText | 72px (4.5rem) | 400 | 1.00 (tight) | -1.44px | Maximum impact, serif authority |
-| Display Secondary | CohereText | 60px (3.75rem) | 400 | 1.00 (tight) | -1.2px | Large section headings |
-| Section Heading | Unica77 | 48px (3rem) | 400 | 1.20 (tight) | -0.48px | Feature section titles |
-| Sub-heading | Unica77 | 32px (2rem) | 400 | 1.20 (tight) | -0.32px | Card headings, feature names |
-| Feature Title | Unica77 | 24px (1.5rem) | 400 | 1.30 | normal | Smaller section titles |
-| Body Large | Unica77 | 18px (1.13rem) | 400 | 1.40 | normal | Intro paragraphs |
-| Body / Button | Unica77 | 16px (1rem) | 400 | 1.50 | normal | Standard body, button text |
-| Button Medium | Unica77 | 14px (0.88rem) | 500 | 1.71 (relaxed) | normal | Smaller buttons, emphasized labels |
-| Caption | Unica77 | 14px (0.88rem) | 400 | 1.40 | normal | Metadata, descriptions |
-| Uppercase Label | Unica77 / CohereMono | 14px (0.88rem) | 400 | 1.40 | 0.28px | Uppercase section labels |
-| Small | Unica77 | 12px (0.75rem) | 400 | 1.40 | normal | Smallest text, footer links |
-| Code Micro | CohereMono | 8px (0.5rem) | 400 | 1.40 | 0.16px | Tiny uppercase code labels |
+### Captured hierarchy
 
-### Principles
-- **Serif for declaration, sans for utility**: CohereText carries the brand voice at display scale — its serif terminals give headlines the authority of published research. Unica77 handles everything functional with Swiss-geometric neutrality.
-- **Negative tracking at scale**: CohereText uses -1.2px to -1.44px letter-spacing at 60–72px, creating dense, impactful text blocks.
-- **Single body weight**: Nearly all Unica77 usage is weight 400. Weight 500 appears only for small button emphasis. The system relies on size and spacing, not weight contrast.
-- **Uppercase code labels**: CohereMono uses uppercase with positive letter-spacing (0.16–0.28px) for technical tags and section markers.
+| Role | Family | Size | Weight | Line height | Evidence boundary |
+|---|---|---:|---:|---:|---|
+| Public h1 | CohereText | 72px | 400 | 72px | two observed headings |
+| Public h2 | CohereText | 60px | 400 | 60px | two observed headings |
+| Public h3 | Unica77 Cohere Web | 48px | 400 | 57.6px | ten observed headings |
+| Public heading | Unica77 Cohere Web | 32px | 400 | 38.4px | observed h2/h4 |
+| Repeated body/action | Unica77 Cohere Web | 16px | 400 | 24px | navigation, lists, and actions |
+| Secondary body | Unica77 Cohere Web | 14px | 400 | 19.6px | repeated public body text |
+| Technical label | CohereMono | 14px | 400 | 19.6px | 0.28px tracking on observed label text |
 
 ## 4. Component Stylings
 
-### Buttons
+### Public actions
 
-**Ghost / Transparent**
-- Background: transparent (`rgba(255, 255, 255, 0)`)
-- Text: Cohere Black (`#000000`)
-- No border visible
-- Hover: text shifts to Interaction Blue (`#1863dc`), opacity 0.8
-- Focus: solid 2px outline in Interaction Blue
-- The primary button style — invisible until interacted with
+**Dark solid**
+- Background: #17171c
+- Text: #ffffff
+- Radius: 9999px
+- Padding: 12px 24px
+- Font: 16px / 400 / Unica77 Cohere Web
+- Use: Home, pricing, and products public CTA; home selector home::[data-omd-capture="53"]
 
-**Dark Solid**
-- Background: dark/black
-- Text: Pure White
-- For CTA on light surfaces
-- Pill-shaped or standard radius
+**Inverse solid**
+- Background: #ffffff
+- Text: #17171c
+- Radius: 9999px
+- Padding: 12px 24px
+- Font: 16px / 400 / Unica77 Cohere Web
+- Use: Inverse public CTA on home and products; home selector home::[data-omd-capture="58"]
 
-**Outlined**
-- Border-based containment
-- Used in secondary actions
+**Outlined pricing action**
+- Text: #17171c
+- Border: 1px solid #17171c
+- Radius: 9999px
+- Padding: 12px 16px
+- Font: 16px / 400 / Unica77 Cohere Web
+- Use: Pricing-only secondary action; selector surface-2::[data-omd-capture="59"]
 
-### Cards & Containers
-- Background: Pure White (`#ffffff`)
-- Border: thin solid Lightest Gray (`1px solid #f2f2f2`) for subtle cards; Cool Border (`#d9d9dd`) for emphasized
-- Radius: **22px** — the signature Cohere radius for primary cards, images, and dialog containers. Also 4px, 8px, 16px, 20px for smaller elements
-- Shadow: minimal — Cohere relies on background color and borders rather than shadows
-- Special: `0px 0px 22px 22px` radius (bottom-only rounding) for section containers
-- Dialog: 8px radius for modal/dialog boxes
+### Public pricing navigation
 
-### Inputs & Forms
-- Text: white on dark input, black on light
-- Focus border: Focus Purple (`#9b60aa`) with `1px solid`
-- Focus shadow: red ring (`rgb(179, 0, 0) 0px 0px 0px 2px`) — likely for error state indication
-- Focus outline: Interaction Blue solid 2px
+**Selected tab**
+- Text: #212121
+- Radius: 0px
+- Padding: 4px 0px
+- Font: 16px / 400 / Unica77 Cohere Web
+- Selected: aria-selected=true observed
+- Use: Pricing-only tab; selector surface-2::[data-omd-capture="56"]
 
-### Navigation
-- Clean horizontal nav on white or dark background
-- Logo: Cohere wordmark (custom SVG)
-- Links: Dark text at 16px Unica77
-- CTA: Dark solid button
-- Mobile: hamburger collapse
+### Home marketing media
 
-### Image Treatment
-- Enterprise photography with diverse subjects and environments
-- Purple-tinted hero photography for dramatic sections
-- Product UI screenshots on dark surfaces
-- Images with 22px radius matching card system
-- Full-bleed purple gradient sections
+**Rounded container**
+- Radius: 22px
+- Use: Home-only interactive media-card container; selector home::div.group/card
 
-### Distinctive Components
-
-**22px Card System**
-- The 22px border-radius is Cohere's visual signature
-- All primary cards, images, and containers use this radius
-- Creates a cloud-like, organic softness that's distinctive from the typical 8–12px
-
-**Enterprise Trust Bar**
-- Company logos displayed in a horizontal strip
-- Demonstrates enterprise adoption
-- Clean, monochrome logo treatment
-
-**Purple Hero Bands**
-- Full-width deep purple sections housing product showcases
-- Create dramatic visual breaks in the white page flow
-- Product screenshots float within the purple environment
-
-**Uppercase Code Tags**
-- CohereMono in uppercase with letter-spacing
-- Used as section markers and categorization labels
-- Creates a technical, structured information hierarchy
+The supplied capture records no component hover, pressed, focus, expanded, dialog-open, toast, validation, or generic disabled treatment. A disabled 4px icon control is a route-local observation and is not promoted as an action variant.
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 2px, 6px, 8px, 10px, 12px, 16px, 20px, 22px, 24px, 28px, 32px, 36px, 40px, 56px, 60px
-- Button padding varies by variant
-- Card internal padding: approximately 24–32px
-- Section vertical spacing: generous (56–60px between sections)
+The capture shows 6px, 8px, 12px, 16px, 24px, 36px, and 40px spacing values. These are observed clusters rather than a documented Cohere spacing specification. Public actions use 12px vertical padding; the captured navigation has 16px vertical and 40px horizontal padding at the 1440px viewport. Treat route-specific card and section geometry as local until a selector-backed measurement establishes it.
 
-### Grid & Container
-- Max container width: up to 2560px (very wide) with responsive scaling
-- Hero: centered with dramatic typography
-- Feature sections: multi-column card grids
-- Enterprise sections: full-width purple bands
-- 26 breakpoints detected — extremely granular responsive system
-
-### Whitespace Philosophy
-- **Enterprise clarity**: Each section presents one clear proposition with breathing room between.
-- **Photography as hero**: Large photographic sections provide visual interest without requiring decorative design elements.
-- **Card grouping**: Related content is grouped into 22px-rounded cards, creating natural information clusters.
-
-### Border Radius Scale
-- Sharp (4px): Navigation elements, small tags, pagination
-- Comfortable (8px): Dialog boxes, secondary containers, small cards
-- Generous (16px): Featured containers, medium cards
-- Large (20px): Large feature cards
-- Signature (22px): Primary cards, hero images, main containers — THE Cohere radius
-- Pill (9999px): Buttons, tags, status indicators
+The home media-card container is 22px rounded, while a captured route-local dialog is 8px and compact controls can be 4px. Do not flatten that into a claim that every Cohere card, image, dialog, or form uses one radius.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, no border | Page background, text blocks |
-| Bordered (Level 1) | `1px solid #f2f2f2` or `#d9d9dd` | Standard cards, list separators |
-| Purple Band (Level 2) | Full-width dark purple background | Hero sections, feature showcases |
-
-**Shadow Philosophy**: Cohere is nearly shadow-free. Depth is communicated through **background color contrast** (white cards on purple bands, white surface on snow), **border containment** (cool gray borders), and the dramatic **light-to-dark section alternation**. When elements need elevation, they achieve it through being white-on-dark rather than through shadow casting.
+Most observed public controls are shadow-free. The capture also records a route-local floating control and dialog with a 0px 2px 8px rgba(0, 0, 0, 0.15) shadow. It is route-local chrome, not a general Cohere elevation token.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use 22px border-radius on all primary cards and containers — it's the visual signature
-- Use CohereText for display headings (72px, 60px) with negative letter-spacing
-- Use Unica77 for all body and UI text at weight 400
-- Keep the palette black-and-white with cool gray borders
-- Use Interaction Blue (#1863dc) only for hover/focus interactive states
-- Use deep purple sections for dramatic visual breaks and product showcases
-- Apply uppercase + letter-spacing on CohereMono for section labels
-- Maintain enterprise-appropriate photography with diverse subjects
+
+- Use the loaded CohereText / Unica77 / CohereMono hierarchy only when the deployment can legally load the named family.
+- Keep the captured public action geometry specific: dark or inverse 9999px pills, with 12px vertical padding.
+- Preserve the distinction between public marketing, public pricing, public product marketing, and route-local floating-dialog chrome.
+- Use the 22px radius only for the observed home media-card container unless another selector proves a broader rule.
 
 ### Don't
-- Don't use border-radius other than 22px on primary cards — the signature radius matters
-- Don't introduce warm colors — the palette is strictly cool-toned
-- Don't use heavy shadows — depth comes from color contrast and borders
-- Don't use bold (700+) weight on body text — 400–500 is the range
-- Don't skip the serif/sans hierarchy — CohereText for headlines, Unica77 for body
-- Don't use purple as a surface color for cards — purple is reserved for full-width sections
-- Don't reduce section spacing below 40px — enterprise layouts need breathing room
-- Don't use decoration on buttons by default — ghost/transparent is the base state
+
+- Do not substitute Inter, Arial, or system UI while naming the result as a Cohere typeface.
+- Do not promote the declared-only CohereHeadline, CohereColor, icon, variable, or KaTeX assets into visible UI tokens.
+- Do not invent hover, pressed, focus, error, dialog, toast, or accordion-expanded variants from class names.
+- Do not generalize the floating dialog’s 8px/shadow treatment into product cards or primary actions.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Small Mobile | <425px | Compact layout, minimal spacing |
-| Mobile | 425–640px | Single column, stacked cards |
-| Large Mobile | 640–768px | Minor spacing adjustments |
-| Tablet | 768–1024px | 2-column grids begin |
-| Desktop | 1024–1440px | Full multi-column layout |
-| Large Desktop | 1440–2560px | Maximum container width |
-
-*26 breakpoints detected — one of the most granularly responsive sites in the dataset.*
-
-### Touch Targets
-- Buttons adequately sized for touch interaction
-- Navigation links with comfortable spacing
-- Card surfaces as touch targets
-
-### Collapsing Strategy
-- **Navigation**: Full nav collapses to hamburger
-- **Feature grids**: Multi-column → 2-column → single column
-- **Hero text**: 72px → 48px → 32px progressive scaling
-- **Purple sections**: Maintain full-width, content stacks
-- **Card grids**: 3 → 2 → 1 column
-
-### Image Behavior
-- Photography scales proportionally within 22px-radius containers
-- Product screenshots maintain aspect ratio
-- Purple sections scale background proportionally
+The supplied capture is at 1440x900. It establishes desktop computed values only. The navigation class indicates responsive padding rules and the home media card includes responsive dimensions, but no smaller-viewport render or interaction was supplied; mobile breakpoints, collapsed navigation, and touch behavior therefore remain unclaimed.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary Text: "Cohere Black (#000000)"
-- Page Background: "Pure White (#ffffff)"
-- Secondary Text: "Near Black (#212121)"
-- Hover Accent: "Interaction Blue (#1863dc)"
-- Muted Text: "Muted Slate (#93939f)"
-- Card Borders: "Lightest Gray (#f2f2f2)"
-- Section Borders: "Border Cool (#d9d9dd)"
-
-### Example Component Prompts
-- "Create a hero section on Pure White (#ffffff) with CohereText at 72px weight 400, line-height 1.0, letter-spacing -1.44px. Cohere Black text. Subtitle in Unica77 at 18px weight 400, line-height 1.4."
-- "Design a feature card with 22px border-radius, 1px solid Lightest Gray (#f2f2f2) border on white. Title in Unica77 at 32px, letter-spacing -0.32px. Body in Unica77 at 16px, Muted Slate (#93939f)."
-- "Build a ghost button: transparent background, Cohere Black text in Unica77 at 16px. On hover, text shifts to Interaction Blue (#1863dc) with 0.8 opacity. Focus: 2px solid Interaction Blue outline."
-- "Create a deep purple full-width section with white text. CohereText at 60px for the heading. Product screenshot floats within using 22px border-radius."
-- "Design a section label using CohereMono at 14px, uppercase, letter-spacing 0.28px. Muted Slate (#93939f) text."
-
-### Iteration Guide
-1. Focus on ONE component at a time
-2. Always use 22px radius for primary cards — "the Cohere card roundness"
-3. Specify the typeface — CohereText for headlines, Unica77 for body, CohereMono for labels
-4. Interactive elements use Interaction Blue (#1863dc) on hover only
-5. Keep surfaces white with cool gray borders — no warm tones
-6. Purple is for full-width sections, never card backgrounds
+- Build a public marketing CTA with #17171c background, #ffffff text, 9999px radius, 12px 24px padding, and 16px / 400 Unica77 Cohere Web only when the licensed font is available.
+- Build the inverse counterpart only for a dark public section: #ffffff background, #17171c text, and the same observed pill geometry.
+- Use CohereText 72px / 400 / 72px for an observed public h1 treatment, not as a claim about the authenticated product.
+- Keep a pricing tab route-local: #212121 text, 0px radius, 4px vertical padding; selected is the only captured state.
 
 ## 10. Voice & Tone
 
-Cohere's voice is **enterprise-AI-careful** — formal but readable, security-aware, never breathless. Public messaging emphasizes "private, secure, customized" enterprise positioning over consumer-AI hype. Korean tagline ("개인, 보안, 맞춤형") tracks the same triple.
+Cohere’s official public voice is practical, enterprise-oriented, and human-purposeful. The About page describes foundation models and AI solutions that turn everyday effort into impact, while the public homepage leads with control over data and infrastructure. Careers names Momentum, Openness, and Autonomy as company values. These are official messaging and culture evidence, not a claim about every product microcopy string.
 
-| Context | Tone |
+| Context | Evidence-backed direction |
 |---|---|
-| CTA | Verb-noun. "Request demo", "Talk to sales", "Start free" |
-| Marketing | Enterprise-language. "Private, secure, customized" recurring triplet |
-| Onboarding | Documentation-first; quickstart with API keys |
-| Error | Formal. "Request denied: insufficient quota. Contact sales." |
-| Compliance | Heavy SOC 2 / ISO references; trust pages prominent |
+| Enterprise proposition | Emphasize control, security, flexibility, and customization. |
+| Product framing | Connect an AI capability to a work outcome or organization context. |
+| Culture | Use purposeful, direct language consistent with Momentum, Openness, and Autonomy. |
 
-**Voice samples**
-- *"엔터프라이즈 AI: 개인, 보안, 맞춤형"* <!-- verified: cohere.com/ko 2026-05 -->
-- *"데모 요청"* / *"Request a demo"* <!-- verified: cohere.com -->
+**Public samples**
 
-**Forbidden phrases.** "AGI", "superintelligence". Generic "AI revolution" framing. Casual emoji.
+- “Own your AI” (official homepage).
+- “Where enterprise AI meets real-world purpose” (official About page).
+- “Join the mission to scale intelligence” (official Careers page).
 
 ## 11. Brand Narrative
 
-Cohere was founded in **2019** in **Toronto, Canada** by **Aidan Gomez** (CEO), **Nick Frosst**, and **Ivan Zhang** ([Aidan Gomez — Wikipedia](https://en.wikipedia.org/wiki/Aidan_Gomez), [Cohere About](https://cohere.com/about)). **Aidan Gomez was 20 years old when he co-authored "Attention Is All You Need"** in 2017 as a Google Brain intern — the foundational Transformer architecture paper that every modern LLM descends from. Nick Frosst worked at **Google Brain Toronto** with **Geoffrey Hinton** (the "Godfather of AI", who later joined Cohere as advisor) ([Globe and Mail](https://www.theglobeandmail.com/business/article-toronto-ai-star-cohere-lands-tiger-led-125-million-venture-funding/)). The **first cheque came from Radical Ventures** (Toronto AI VC) ([U Toronto Centre for Entrepreneurship](https://www.entrepreneurship.artsci.utoronto.ca/news/how-cohere-ai-startup-co-founded-alumni-landed-170m-funding-year)). Cohere has raised **~US$1.6B at >$7B valuation** as of Sept 2025 ([Tracxn](https://tracxn.com/d/companies/cohere/__o4xfwmr3XwgsGEyH41XvwBm6Xd-SjsMlSld3d4ci6G0)) — Tiger Global led an earlier $125M round. Founding observation: enterprises needed customizable LLMs that respected data privacy. RAG-first, private deployment, on-prem available. **North** is Cohere's enterprise AI agent product.
+Cohere says it was founded in Toronto in 2019 to scale intelligence in service of humanity. Its official About page identifies co-founders Aidan Gomez, Nick Frosst, and Ivan Zhang, and describes a current enterprise focus on helping teams improve judgment, accelerate execution, and extend what they can achieve. The same source places the 2025 launch of North in that evolution: a turnkey workplace platform using agentic capabilities and retrieval with enterprise data.
+
+The company’s current public positioning centers on private, secure, customizable deployment across a customer’s infrastructure. That narrative explains the sober public presentation more reliably than the older snapshot’s unsupported claims about an all-purpose visual color story.
 
 ## 12. Principles
 
-1. **Privacy is the product, not a footnote.** *UI implication:* privacy guarantees first-class on landing pages.
-2. **RAG-first architecture.** *UI implication:* surfaces emphasize "your data + our models".
-3. **Enterprise doesn't mean stuffy.** *UI implication:* trust pages explain SOC 2 in plain English.
-4. **Interaction Blue on hover only.** *UI implication:* don't use brand blue for static CTAs.
-5. **Purple bands for sections, never cards.** *UI implication:* never apply purple to cards/buttons.
+1. **Scale intelligence to serve people.** *UI implication:* connect public product messaging to human and organizational outcomes rather than novelty alone.
+2. **Keep control with the enterprise.** *UI implication:* make security, deployment, and customization legible in public information architecture.
+3. **Support momentum.** *UI implication:* make a next action visible without relying on unobserved interaction effects.
+4. **Make room for autonomy and openness.** *UI implication:* prefer direct explanatory content and clear choice boundaries over opaque system behavior.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Cohere user segments (enterprise platform engineers, AI/ML platform leads, regulated-industry compliance), not individual people.*
-
-**Catherine Liu, 42, Toronto.** Director of AI/ML at a Canadian bank. Cohere is the only LLM vendor approved by their CISO.
-
-**Hiroshi Tanaka, 36, Tokyo.** Senior platform engineer at multinational logistics. Integrates Cohere Embed for 30+ language search.
-
-**David Mensah, 50, Johannesburg.** Head of risk at insurance carrier. On-prem deployment required.
+The official public sources identify enterprises, teams, workforces, and customers as the intended stakeholder groups, including organizations that need secure, private, and customizable AI deployment. They do not provide validated individual user personas. This reference intentionally does not fabricate named personas or behavioral metrics from that broad audience evidence.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no API keys)** | "Generate your first API key" CTA + quickstart code |
-| **Empty (no datasets)** | "Connect a data source" with provider grid |
-| **Loading (model inference)** | Per-token streaming visible; never just spinner |
-| **Loading (RAG retrieval)** | Two-phase: "Retrieving (12 docs)" → "Generating" |
-| **Error (rate limit)** | "Tier-1 limit reached (60 req/min). Upgrade or wait." |
-| **Error (auth)** | "API key expired. Generate a new key in Settings → API Keys." |
-| **Success (deployment)** | Endpoint URL + credentials, security reminder |
-| **Success (fine-tuned)** | Email + dashboard notification with eval metrics |
-| **Skeleton (deployments)** | White rows with cool-gray border skeletons |
-| **Disabled (no quota)** | 0.5 opacity + tooltip "Upgrade to enable" |
-| **Loading (long fine-tune)** | Persistent progress with ETA |
+No loading, empty, error, success, skeleton, or validation state was captured on the three supplied public routes. The only recorded stateful component evidence is a selected pricing tab and one disabled 4px-radius icon control. Do not extrapolate those observations into a general application-state system.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle |
-| `motion-fast` | 150ms | Hover (Interaction Blue color shift) |
-| `motion-standard` | 250ms | Modal, panel |
-| `motion-streaming` | continuous | Token-by-token model output |
-
-Standard cubic-bezier. **No bouncy springs** — enterprise register. `prefers-reduced-motion: reduce` removes hover transitions and panel slide-ins.
+The supplied public capture contains transition-related class names on actions and a floating control, but no measured transition duration, easing value, reduced-motion behavior, or before/after interaction observation. No motion token is asserted.
 
 ---
 
-**Verified:** 2026-05-08 (B1 loop)
-**Tier 1 sources:** cohere.com/ko (live DOM via playwright — Dark `#17171c` Primary 9999px / 12×16-24 / 44-49px / 16px·400)
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 1 (Philosophy):** cohere.com homepage; founder bios; Trust + Security pages.
-**Style ref:** `stripe`. **Conflicts unresolved:** none.
+**Verified:** 2026-07-13
+**Tier 1 sources:** supplied capture of https://cohere.com/ko, https://cohere.com/ko/pricing, and https://cohere.com/ko/products; official context at https://cohere.com/about and https://cohere.com/careers; Unica77 source/license context at https://lineto.com/api/front/font-families/393/document?index=1 and https://lineto.com/information/legal/legal/lineto-eula.
+**Tier 2 sources:** https://getdesign.md/cohere/design-md (independent high-level analysis); https://styles.refero.design/?q=Cohere (attempted; built-in web open returned an internal error, so no positive or negative Refero assertion is made).
+**Conflicts unresolved:** none

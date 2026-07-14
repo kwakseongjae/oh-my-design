@@ -8,424 +8,281 @@ primary_color: "#0055ff"
 logo:
   type: simpleicons
   slug: framer
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Framer Brand Guidelines
-  url: "https://www.framer.com/brand"
+  url: "https://www.framer.com/brand?page=1"
   type: brand
-  description: Framer's brand and trademark guidelines with logo rules and color palette.
+  description: Official mark, color, and trademark-use guidance.
   og_image: "https://framerusercontent.com/assets/MFmOCFlEnwFAS9IP2HbUEH68axo.jpg"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.framer.com/", inspected: "2026-07-13" }
+    - { id: surface-2, kind: community, url: "https://www.framer.com/community/marketplace/components/", inspected: "2026-07-13" }
+    - { id: surface-3, kind: marketing, url: "https://www.framer.com/pricing", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.framer.com/", captured: "2026-07-13" }
+    - { id: marketplace-live, kind: product-surface, url: "https://www.framer.com/community/marketplace/components/", captured: "2026-07-13" }
+    - { id: pricing-live, kind: product-surface, url: "https://www.framer.com/pricing", captured: "2026-07-13" }
+    - { id: brand-guidelines, kind: brand-asset, url: "https://www.framer.com/brand?page=1", captured: "2026-07-13" }
+    - { id: inter-license, kind: license, url: "https://github.com/rsms/inter/blob/master/LICENSE.txt", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.canvas": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.foreground": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.muted": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.marketplace-surface": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.accent": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.family.ui": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.family.display": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.public-body.size": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.public-body.weight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.public-body.lineHeight": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.public-body.tracking": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.typography.public-body.use": { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.spacing.compact-x": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.spacing.menu-inset": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.rounded.compact": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.rounded.menu": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.rounded.category-card": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.shadow.marketplace-menu": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-filter.type": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-filter.bg": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-filter.fg": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-filter.radius": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-filter.padding": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-filter.font": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-filter.states": { surface_id: surface-2, source_id: marketplace-live, method: interaction-capture, captured: "2026-07-13" }
+    "tokens.components.marketplace-filter.use": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-category.type": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-category.bg": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-category.fg": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-category.radius": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.marketplace-category.use": { surface_id: surface-2, source_id: marketplace-live, method: computed-style, captured: "2026-07-13" }
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
+  components_harvested: true
   colors:
     canvas: "#000000"
-    on-dark: "#ffffff"
+    foreground: "#ffffff"
+    muted: "#999999"
+    marketplace-surface: "#242424"
     accent: "#0099ff"
-    muted: "#a6a6a6"
-    surface-elevated: "#090909"
-    link-default: "#0000ee"
   typography:
-    family: { sans: "GT Walsheim Framer Medium", mono: "Azeret Mono" }
-    display-hero:    { size: 110, weight: 500, lineHeight: 0.85, tracking: -5.5, use: "Hero display, extreme compressed tracking" }
-    section-display: { size: 85, weight: 500, lineHeight: 0.95, tracking: -4.25, use: "Section display headlines" }
-    section-heading: { size: 62, weight: 500, lineHeight: 1.00, tracking: -3.1, use: "Section headings" }
-    feature-heading: { size: 32, weight: 500, lineHeight: 1.13, tracking: -1, use: "Feature headings" }
-    card-title:      { size: 24, weight: 400, lineHeight: 1.30, tracking: -0.01, use: "Card titles, Inter" }
-    feature-title:   { size: 22, weight: 700, lineHeight: 1.20, tracking: -0.8, use: "Feature titles, Inter" }
-    body-lg:         { size: 18, weight: 400, lineHeight: 1.30, tracking: -0.01, use: "Large body, Inter" }
-    body:            { size: 15, weight: 400, lineHeight: 1.30, tracking: -0.01, use: "Standard body / nav, Inter" }
-    caption:         { size: 14, weight: 400, lineHeight: 1.40, use: "Captions, Inter" }
-    label:           { size: 13, weight: 500, lineHeight: 1.60, use: "Labels, Inter" }
-    code:            { size: 10.4, weight: 400, lineHeight: 1.60, use: "Micro code, Azeret Mono" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 15, lg: 20, xl: 30, section: 80 }
-  rounded: { sm: 5, md: 8, lg: 15, full: 9999 }
+    family: { ui: "Inter", display: "GT Walsheim Medium" }
+    public-body: { size: 14, weight: 400, lineHeight: 14, tracking: -0.01, use: "Observed public-home body text" }
+  spacing: { compact-x: 10, menu-inset: 5 }
+  rounded: { compact: 8, menu: 13, category-card: 20 }
   shadow:
-    ring-blue: "rgba(0,153,255,0.15) 0px 0px 0px 1px"
-    ring-dark: "rgb(9,9,9) 0px 0px 0px 2px"
-    floating: "rgba(255,255,255,0.1) 0px 0.5px 0px 0.5px, rgba(0,0,0,0.25) 0px 10px 30px"
+    marketplace-menu: "rgba(0,0,0,0.08) 0px 3px 6px 0px"
   components:
-    button-primary: { type: button, bg: "#ffffff", fg: "#000000", radius: "100px", padding: "10px 15px", font: "15px / 400", use: "Solid white pill, primary CTA on dark" }
-    button-frosted: { type: button, bg: "rgba(255,255,255,0.1)", fg: "#ffffff", radius: "40px", padding: "10px 15px", font: "15px / 400", use: "Glass-effect frosted pill on dark" }
-    button-ghost: { type: button, bg: "transparent", fg: "#ffffff", radius: "40px", padding: "10px 15px", use: "Tertiary text-only action, frosted on hover" }
-    input-dark: { type: input, bg: "#090909", fg: "#ffffff", radius: "8px", padding: "10px 12px", use: "Dark theme form input; focus #0099ff ring + blue glow" }
-    card-dark: { type: card, bg: "#090909", fg: "#ffffff", radius: "12px", padding: "24px", use: "Standard dark surface card with blue ring border" }
-    card-elevated: { type: card, bg: "#090909", fg: "#ffffff", radius: "12px", padding: "24px", use: "Elevated card, white top highlight + deep ambient shadow" }
-    badge-default: { type: badge, bg: "rgba(255,255,255,0.1)", fg: "#ffffff", radius: "9999px", padding: "4px 10px", font: "12px / 400", use: "Frosted pill badge on dark" }
-  components_harvested: true
+    marketplace-filter: { type: button, bg: "#242424", fg: "#ffffff", radius: "8px", padding: "0px 10px", font: "12px / 500", states: "expanded and menu-open captured on the Marketplace filter", use: "Marketplace filter trigger on the public community surface" }
+    marketplace-category: { type: card, bg: "#111111", fg: "#ffffff", radius: "20px", use: "Marketplace category card on the public community surface" }
 ---
 
-# Design System Inspiration of Framer
+# Framer — Design Reference
 
 ## 1. Visual Theme & Atmosphere
 
-Framer's website is a cinematic, tool-obsessed dark canvas that radiates the confidence of a design tool built by designers who worship craft. The entire experience is drenched in pure black — not a warm charcoal or a cozy dark gray, but an absolute void (`#000000`) that makes every element, every screenshot, every typographic flourish feel like it's floating in deep space. This is a website that treats its own product UI as the hero art, embedding full-fidelity screenshots and interactive demos directly into the narrative flow.
+Framer is a platform for designing and publishing websites. Its current careers page describes the mission as building the best tool for designing and publishing incredible sites, while its public product copy positions AI-assisted website creation alongside design, collaboration, CMS, hosting, and publishing. The supplied 2026-07-13 evidence captures three public domains of that ecosystem: the main marketing site, a community Marketplace components listing, and pricing. Across those captures, the clearest recurring visual expression is an achromatic black-and-white public canvas with a small blue accent, compact rounded Marketplace controls, and a more editorial display face on the home page. This reference preserves those domains separately: it does not turn public marketing, community browsing chrome, or pricing into a claim about the authenticated editor, generated sites, or documentation UI.
 
-The typography is the signature move: GT Walsheim with aggressively tight letter-spacing (as extreme as -5.5px on 110px display text) creates headlines that feel compressed, kinetic, almost spring-loaded — like words under pressure that might expand at any moment. The transition to Inter for body text is seamless, with extensive OpenType feature usage (`cv01`, `cv05`, `cv09`, `cv11`, `ss03`, `ss07`) that gives even small text a refined, custom feel. Framer Blue (`#0099ff`) is deployed sparingly but decisively — as link color, border accents, and subtle ring shadows — creating a cold, electric throughline against the warm-less black.
-
-The overall effect is a nightclub for web designers: dark, precise, seductive, and unapologetically product-forward. Every section exists to showcase what the tool can do, with the website itself serving as proof of concept.
-
-**Key Characteristics:**
-- Pure black (`#000000`) void canvas — absolute dark, not warm or gray-tinted
-- GT Walsheim display font with extreme negative letter-spacing (-5.5px at 110px)
-- Framer Blue (`#0099ff`) as the sole accent color — cold, electric, precise
-- Pill-shaped buttons (40px–100px radius) — no sharp corners on interactive elements
-- Product screenshots as hero art — the tool IS the marketing
-- Frosted glass button variants using `rgba(255, 255, 255, 0.1)` on dark surfaces
-- Extensive OpenType feature usage across Inter for refined micro-typography
+- **Public canvas:** `#000000` is observed as the home and pricing page background; `#ffffff` is the recurring foreground.
+- **Community layer:** the Marketplace components page introduces `#111111` and `#242424` surfaces, 8px compact controls, 20px category cards, and 13px menu panels.
+- **Blue as local evidence:** `#0099ff` is observed in Marketplace and pricing controls and is also published by Framer as “Framer Blue”; it is not promoted as a universal product-state color.
+- **Official brand assets:** Framer separately publishes Black, White, Framer Blue (`#0099FF`), and Framer Deep Blue (`#0055FF`) for marks. Brand-asset colors are not automatically public-web CSS tokens.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Pure Black** (`#000000`): Primary background, the void canvas that defines Framer's dark-first identity
-- **Pure White** (`#ffffff`): Primary text color on dark surfaces, button text on accent backgrounds
-- **Framer Blue** (`#0099ff`): Primary accent color — links, borders, ring shadows, interactive highlights
+### Observed public-web roles
 
-### Secondary & Accent
-- **Muted Silver** (`#a6a6a6`): Secondary text, subdued labels, dimmed descriptions on dark surfaces
-- **Near Black** (`#090909`): Elevated dark surface, shadow ring color for subtle depth separation
+- **Black canvas** (`#000000`): computed background on the captured home and pricing pages.
+- **White foreground** (`#ffffff`): repeated visible text and border value across all three captured surfaces.
+- **Muted label gray** (`#999999`): repeated text and border value on home and Marketplace; it is a lower-emphasis public-web value, not an accessibility-state definition.
+- **Marketplace mid surface** (`#242424`): filter-trigger and open-menu panel background on the Marketplace components page.
+- **Marketplace card surface** (`#111111`): category-card background on the Marketplace components page.
+- **Framer Blue** (`#0099ff`): observed Marketplace/pricing background and home text/border value; official brand guidance also lists the same color.
 
-### Surface & Background
-- **Void Black** (`#000000`): Page background, primary canvas
-- **Frosted White** (`rgba(255, 255, 255, 0.1)`): Translucent button backgrounds, glass-effect surfaces on dark
-- **Subtle White** (`rgba(255, 255, 255, 0.5)`): Slightly more opaque frosted elements for hover states
-
-### Neutrals & Text
-- **Pure White** (`#ffffff`): Heading text, high-emphasis body text
-- **Muted Silver** (`#a6a6a6`): Body text, descriptions, secondary information
-- **Ghost White** (`rgba(255, 255, 255, 0.6)`): Tertiary text, placeholders on dark surfaces
-
-### Semantic & Accent
-- **Framer Blue** (`#0099ff`): Links, interactive borders, focus rings
-- **Blue Glow** (`rgba(0, 153, 255, 0.15)`): Focus ring shadow, subtle blue halo around interactive elements
-- **Default Link Blue** (`#0000ee`): Standard browser link color (used sparingly in content areas)
-
-### Gradient System
-- No prominent gradient usage — Framer relies on pure flat black surfaces with occasional blue-tinted glows for depth
-- Subtle radial glow effects behind product screenshots using Framer Blue at very low opacity
+`#0055FF` remains an official brand-asset color from the brand guidelines, but it was not a measured token in the supplied live samples. Other isolated colors in the raw bundle are route- or content-local and are not raised into a system palette.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Display**: `GT Walsheim Framer Medium` / `GT Walsheim Medium` — custom geometric sans-serif, weight 500. Fallbacks: `GT Walsheim Framer Medium Placeholder`, system sans-serif
-- **Body/UI**: `Inter Variable` / `Inter` — variable sans-serif with extensive OpenType features. Fallbacks: `Inter Placeholder`, `-apple-system`, `system-ui`
-- **Accent**: `Mona Sans` — GitHub's open-source font, used for select elements at ultra-light weight (100)
-- **Monospace**: `Azeret Mono` — companion mono for code and technical labels
-- **Rounded**: `Open Runde` — small rounded companion font for micro-labels
+### Evidence classes
 
-### Hierarchy
+- **Live computed public-web use:** `Inter` is loaded/high with 512 visible uses and two Framer-hosted Inter Variable WOFF2 source URLs. `Inter Variable` is separately loaded/high with 392 visible uses. The Marketplace’s `inter, "inter Fallback"` computed stack is therefore represented by the canonical UI family `Inter`, rather than by a fallback name.
+- **Live computed display use:** `GT Walsheim Medium` is loaded/high with 11 visible heading uses; the collector reports FontFaceSet corroboration but no source URL. It is recorded as the public-home display family, not as a reusable distributed asset.
+- **Live local monospace use:** `Input Mono Regular` and `Input Mono Bold` are loaded/high in a small number of visible public samples. They are not made general UI or code tokens because the capture does not establish a component-level role. Input’s official licence says published/distributed use needs the appropriate licence.
+- **Source-backed local mono:** `jetBrainsMono` has one loaded visible use and two Framer-hosted source URLs. JetBrains Mono’s official project is OFL-1.1; this license context does not grant use of Framer-hosted files.
+- **Declared-only:** Azeret Mono, Chillax, EB Garamond, Geist, additional GT Walsheim faces, numerous Inter aliases/placeholders, and other declared faces have zero visible uses in this bundle. They remain declared-only and are not UI-family tokens.
+- **Unobserved domains:** no authenticated Framer editor/product surface or docs chrome font capture was supplied. No web family is substituted into either domain.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | GT Walsheim Framer Medium | 110px | 500 | 0.85 | -5.5px | Extreme negative tracking, compressed impact |
-| Section Display | GT Walsheim Medium | 85px | 500 | 0.95 | -4.25px | OpenType: ss02, tnum |
-| Section Heading | GT Walsheim Medium | 62px | 500 | 1.00 | -3.1px | OpenType: ss02 |
-| Feature Heading | GT Walsheim Medium | 32px | 500 | 1.13 | -1px | Tightest of the smaller headings |
-| Accent Display | Mona Sans | 61.5px | 100 | 1.00 | -3.1px | Ultra-light weight, ethereal |
-| Card Title | Inter Variable | 24px | 400 | 1.30 | -0.01px | OpenType: cv01, cv05, cv09, cv11, ss03, ss07 |
-| Feature Title | Inter | 22px | 700 | 1.20 | -0.8px | OpenType: cv05 |
-| Sub-heading | Inter | 20px | 600 | 1.20 | -0.8px | OpenType: cv01, cv09 |
-| Body Large | Inter Variable | 18px | 400 | 1.30 | -0.01px | OpenType: cv01, cv05, cv09, cv11, ss03, ss07 |
-| Body | Inter Variable | 15px | 400 | 1.30 | -0.01px | OpenType: cv11 |
-| Nav/UI | Inter Variable | 15px | 400 | 1.00 | -0.15px | OpenType: cv06, cv11, dlig, ss03 |
-| Body Readable | Inter Framer Regular | 14px | 400 | 1.60 | normal | Long-form body text |
-| Caption | Inter Variable | 14px | 400 | 1.40 | normal | OpenType: cv01, cv06, cv09, cv11, ss03, ss07 |
-| Label | Inter | 13px | 500 | 1.60 | normal | OpenType: cv06, cv11, ss03 |
-| Small Caption | Inter Variable | 12px | 400 | 1.40 | normal | OpenType: cv01, cv06, cv09, cv11, ss03, ss07 |
-| Micro Code | Azeret Mono | 10.4px | 400 | 1.60 | normal | OpenType: cv06, cv11, ss03 |
-| Badge | Open Runde | 9px | 600 | 1.11 | normal | OpenType: cv01, cv09 |
-| Micro Uppercase | Inter Variable | 7px | 400 | 1.00 | 0.21px | uppercase transform |
+### Measured public hierarchy
 
-### Principles
-- **Compression as personality**: GT Walsheim's extreme negative letter-spacing (-5.5px at 110px) is the defining typographic gesture — headlines feel spring-loaded, urgent, almost breathless
-- **OpenType maximalism**: Inter is deployed with 6+ OpenType features simultaneously (`cv01`, `cv05`, `cv09`, `cv11`, `ss03`, `ss07`), creating a subtly custom feel even at body sizes
-- **Weight restraint on display**: All GT Walsheim usage is weight 500 (medium) — never bold, never regular. This creates a confident-but-not-aggressive display tone
-- **Ultra-tight line heights**: Display text at 0.85 line-height means letters nearly overlap vertically — intentional density that rewards reading at arm's length
+| Role | Family | Size | Weight | Line height | Tracking | Evidence boundary |
+|---|---|---:|---:|---:|---:|---|
+| Public home body | Inter Variable | 14px | 400 | 14px | -0.01px | `home::p` |
+| Public home display heading | GT Walsheim Medium | 54px | 500 | 54px | -2.16px | captured `home::h1` |
+| Public home section heading | GT Walsheim Medium | 44px | 500 | 48.4px | -1.76px | captured `home::h2` |
+| Marketplace compact control | Inter | 12px | 500 | 12px | normal | `surface-2::[data-omd-capture="26"]` |
+| Marketplace category label | Inter | 13px | 600 | 18.2px | normal | `surface-2::span.category-card-module-scss-module__VfU1Xq__name` |
 
-## 4. Component Stylings
+## 4. Components
 
-### Buttons
+All variants below are selector-backed observations from public surfaces. The capture records three interaction expansions: two Marketplace menus and one home form-error sample. It does not capture an authenticated editor, documentation chrome, hover, pressed, focus, modal, or product-toast contract beyond the exact rows called out below.
 
-**Solid White Pill**
-- Background: `#ffffff`
-- Text: `#000000`
-- Radius: 100px (pill)
-- Padding: 10px 15px
-- Font: 15px / 400 / Inter
-- Use: Primary CTA — clean, high-contrast on dark
+### Marketplace action
 
-**Frosted Pill**
-- Background: `rgba(255, 255, 255, 0.1)`
+**Filter trigger, menu-open capture**
+- Background: `#242424`
 - Text: `#ffffff`
-- Radius: 40px
-- Padding: 10px 15px
-- Font: 15px / 400 / Inter
-- Use: Glass-effect button on dark surfaces — translucent, ambient
+- Border: `1px solid transparent`
+- Radius: `8px`
+- Padding: `0px 10px`
+- Font: `12px / 500 / Inter`
+- Use: public Marketplace components filter trigger; `surface-2::[data-omd-capture="26"]`, `aria-haspopup="menu"`, captured with `expanded` and `menu-open`
 
-**Ghost**
-- Background: transparent
+**Accent action**
+- Background: `#0099ff`
 - Text: `#ffffff`
-- Radius: 40px
-- Padding: 10px 15px
-- Hover: frosted background `rgba(255, 255, 255, 0.1)`
-- Use: Tertiary action — text-only
+- Border: `1px solid transparent`
+- Radius: `8px`
+- Padding: `0px 10px`
+- Font: `12px / 600 / Inter`
+- Use: public Marketplace action; `surface-2::[data-omd-capture="15"]`
 
-### Inputs
+### Marketplace menu
 
-**Dark Input**
-- Background: `#090909`
+**Open panel**
+- Background: `#242424`
 - Text: `#ffffff`
-- Border: 1px solid `rgba(255, 255, 255, 0.1)`
-- Radius: 8px
-- Padding: 10px 12px
-- Focus: 1px solid `#0099ff` ring with `rgba(0, 153, 255, 0.15)` glow
-- Placeholder: `rgba(255, 255, 255, 0.4)`
-- Use: Form input on dark theme (marketing site has minimal forms)
+- Border: `1px solid #333333`
+- Radius: `13px`
+- Padding: `5px`
+- Font: `12px / 400 / Inter`
+- Shadow: `rgba(0, 0, 0, 0.08) 0px 3px 6px 0px`
+- Use: expanded public Marketplace menu; `surface-2::[data-omd-interaction-capture="menu-0-0"]`
 
-### Cards
-
-**Dark Surface Card**
-- Background: `#090909`
+**Unchecked menu option**
 - Text: `#ffffff`
-- Radius: 12px
-- Padding: 24px
-- Shadow: `rgba(0, 153, 255, 0.15) 0px 0px 0px 1px` (Framer Blue ring border)
-- Use: Standard dark surface card with blue ring border
+- Radius: `8px`
+- Padding: `0px 10px 0px 0px`
+- Font: `13px / 500 / Inter`
+- Use: `role="menuitemcheckbox"`, `aria-checked="false"`, captured only in the expanded Marketplace menu at `surface-2::[data-omd-interaction-capture="menu-0-2"]`
 
-**Elevated Card**
-- Background: `#090909`
-- Text: `#ffffff`
-- Radius: 12px
-- Padding: 24px
-- Shadow: `rgba(255, 255, 255, 0.1) 0px 0.5px 0px 0.5px, rgba(0, 0, 0, 0.25) 0px 10px 30px`
-- Use: Elevated card — subtle top highlight + deep ambient shadow
-
-**Product Screenshot**
-- Background: transparent (or `#090909`)
-- Radius: 10px
-- Padding: 0px
-- Use: Software UI preview frame within dark containers
-
-### Badges
+### Marketplace category card
 
 **Default**
-- Background: `rgba(255, 255, 255, 0.1)`
+- Background: `#111111`
 - Text: `#ffffff`
-- Radius: 9999px (pill)
-- Padding: 4px 10px
-- Font: 12px / 400 / Inter
-- Use: Inferred from §1-§2 baseline (no explicit DS variant in source) — frosted pill badge on dark theme.
+- Radius: `20px`
+- Font: `12px / 500 / Inter`
+- Use: public Marketplace category-card root; `surface-2::[data-omd-capture="21"]`
 
-### Navigation
-- **Dark floating nav bar**: Black background with frosted glass effect, white text links
-- **Nav links**: Inter at 15px, weight 400, white text with subtle hover opacity change
-- **CTA button**: Pill-shaped, white or frosted, positioned at right end of nav
-- **Mobile**: Collapses to hamburger menu, maintains dark theme
-- **Sticky behavior**: Nav remains fixed at top on scroll
+### Marketplace tab
 
-### Image Treatment
-- **Product screenshots as hero art**: Full-width embedded UI screenshots with rounded corners (8px–12px)
-- **Dark-on-dark composition**: Screenshots placed on black backgrounds with subtle shadow for depth separation
-- **16:9 and custom aspect ratios**: Product demos fill their containers
-- **No decorative imagery**: All images are functional — showing the tool, the output, or the workflow
+**Disabled**
+- Text: `#666666`
+- Radius: `8px`
+- Padding: `0px 10px`
+- Font: `12px / 500 / Inter`
+- Use: disabled, coming-soon public Marketplace tab; `surface-2::[data-omd-capture="13"]`
 
-### Trust & Social Proof
-- Customer logos and testimonials in muted gray on dark surfaces
-- Minimal ornamentation — the product screenshots serve as the trust signal
+### Home form field
+
+**Error capture**
+- Text: `#dee6ff`
+- Font: `14px / 500 / Inter`
+- Use: home textarea error sample; `home::[data-omd-interaction-capture="form-error-0-0"]`. The collector records the error state but does not supply a reusable field shell, label, or transition contract.
+
+---
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://www.framer.com/` (public marketing), `https://www.framer.com/community/marketplace/components/` (public community Marketplace), `https://www.framer.com/pricing` (public pricing), `https://www.framer.com/brand?page=1` (official brand assets), `https://www.framer.com/careers/` and `https://www.framer.com/blog/framer-next-generation-of-designers/` (official context), `https://github.com/rsms/inter/blob/master/LICENSE.txt`, `https://input.djr.com/license/`, and `https://github.com/jetbrains/jetbrainsmono` (font/license context)
+**Tier 2 sources:** `https://getdesign.md/framer` (one independent design record; broad direction only), `https://styles.refero.design/style/242db326-a6f3-482a-b12e-5e7f8af94981` and `https://styles.refero.design/style/d417b42f-824d-45ba-a02e-cbef3b8ea0d8` (independent generated records; no generated-only values used)
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- **Base unit**: 8px
-- **Scale**: 1px, 2px, 3px, 4px, 5px, 6px, 8px, 10px, 12px, 15px, 20px, 30px, 35px
-- **Section padding**: Large vertical spacing (80px–120px between sections)
-- **Card padding**: 15px–30px internal padding
-- **Component gaps**: 8px–20px between related elements
-
-### Grid & Container
-- **Max width**: ~1200px container, centered
-- **Column patterns**: Full-width hero, 2-column feature sections, single-column product showcases
-- **Asymmetric layouts**: Feature sections often pair text (40%) with screenshot (60%)
-
-### Whitespace Philosophy
-- **Breathe through darkness**: Generous vertical spacing between sections — the black background means whitespace manifests as void, creating dramatic pauses between content blocks
-- **Dense within, spacious between**: Individual components are tightly composed (tight line-heights, compressed text) but float in generous surrounding space
-- **Product-first density**: Screenshot areas are allowed to be dense and information-rich, contrasting with the sparse marketing text
-
-### Border Radius Scale
-- **1px**: Micro-elements, nearly squared precision edges
-- **5px–7px**: Small UI elements, image thumbnails — subtly softened
-- **8px**: Standard component radius — code blocks, buttons, interactive elements
-- **10px–12px**: Cards, product screenshots — comfortably rounded
-- **15px–20px**: Large containers, feature cards — generously rounded
-- **30px–40px**: Navigation pills, pagination — noticeably rounded
-- **100px**: Full pill shape — primary CTAs, tag elements
+- The supplied evidence is desktop-only (`1440×900`). It supports local spacing observations, not a responsive grid, breakpoint, container-width, or editor-layout claim.
+- Marketplace compact filter and tab controls use `0px 10px` padding; the open menu uses 5px inset padding.
+- Category-card text has 15px padding in the captured Marketplace DOM. This is a card-local observation, not a global spacing scale.
+- The raw spacing aggregation also repeats 5px, 10px, 14px, 15px, and 40px values. Without semantic selector coverage for a universal scale, they remain aggregate evidence rather than prescribed tokens.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Level 0 (Flat) | No shadow, pure black surface | Page background, empty areas |
-| Level 1 (Ring) | `rgba(0, 153, 255, 0.15) 0px 0px 0px 1px` | Card borders, interactive element outlines — Framer Blue glow ring |
-| Level 2 (Contained) | `rgb(9, 9, 9) 0px 0px 0px 2px` | Near-black ring for subtle containment on dark surfaces |
-| Level 3 (Floating) | `rgba(255, 255, 255, 0.1) 0px 0.5px 0px 0.5px, rgba(0, 0, 0, 0.25) 0px 10px 30px` | Elevated cards, floating elements — subtle white top-edge highlight + deep ambient shadow |
-
-### Shadow Philosophy
-Framer's elevation system is inverted from traditional light-theme designs. Instead of darker shadows on light backgrounds, Framer uses:
-- **Blue-tinted ring shadows** at very low opacity (0.15) for containment — a signature move that subtly brands every bordered element
-- **White edge highlights** (0.5px) on the top edge of elevated elements — simulating light hitting the top surface
-- **Deep ambient shadows** for true floating elements — `rgba(0, 0, 0, 0.25)` at large spread (30px)
-
-### Decorative Depth
-- **Blue glow auras**: Subtle Framer Blue (`#0099ff`) radial gradients behind key interactive areas
-- **No background blur/glassmorphism**: Despite the frosted button effect, there's no heavy glass blur usage — the translucency is achieved through simple rgba opacity
+- **Marketplace open menu:** the only selector-backed elevated panel is `surface-2::[data-omd-interaction-capture="menu-0-0"]`, with `rgba(0,0,0,0.08) 0px 3px 6px 0px`.
+- **Home utility controls:** individual home buttons `data-omd-capture="31"` through `"33"` have `rgba(0,0,0,0.2) 0px 2px 6px 0px`; their semantic role is not identified, so the value is not a system elevation level.
+- No general blue glow, card-shadow hierarchy, or authenticated-product elevation rule is asserted.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use pure black (`#000000`) as the primary background — not dark gray, not charcoal
-- Apply extreme negative letter-spacing on GT Walsheim display text (-3px to -5.5px)
-- Keep all buttons pill-shaped (40px+ radius) — never use squared or slightly-rounded buttons
-- Use Framer Blue (`#0099ff`) exclusively for interactive accents — links, borders, focus states
-- Deploy `rgba(255, 255, 255, 0.1)` for frosted glass surfaces on dark backgrounds
-- Maintain GT Walsheim at weight 500 only — the medium weight IS the brand
-- Use extensive OpenType features on Inter text (cv01, cv05, cv09, cv11, ss03, ss07)
-- Let product screenshots be the visual centerpiece — the tool markets itself
-- Apply blue ring shadows (`rgba(0, 153, 255, 0.15) 0px 0px 0px 1px`) for card containment
+
+- Keep generated work scoped to the observed public domain: black/white marketing or the separate dark Marketplace surface.
+- Use the observed Marketplace compact geometry—8px controls, 13px menu panels, 20px category cards—only when recreating the corresponding public patterns.
+- Use Inter for UI/body and GT Walsheim Medium only for public display contexts when the font licensing and asset availability are appropriate.
+- Treat `#0099ff` as a documented public/brand accent, with route-level component provenance rather than a universal semantic-state guarantee.
 
 ### Don't
-- Use warm dark backgrounds (no `#1a1a1a`, `#2d2d2d`, or brownish blacks)
-- Apply bold (700+) weight to GT Walsheim display text — medium 500 only
-- Introduce additional accent colors beyond Framer Blue — this is a one-accent-color system
-- Use large border-radius on non-interactive elements (cards use 10px–15px, only buttons get 40px+)
-- Add decorative imagery, illustrations, or icons — the product IS the illustration
-- Use positive letter-spacing on headlines — everything is compressed, negative tracking
-- Create heavy drop shadows — depth is communicated through subtle rings and minimal ambients
-- Place light/white backgrounds behind content sections — the void is sacred
-- Use serif or display-weight fonts — the system is geometric sans-serif only
+
+- Do not infer Framer editor, publishing, CMS, collaboration, or docs components from these public captures.
+- Do not turn declared-only faces into live UI tokens or substitute a system font as an unavailable family.
+- Do not claim hover, pressed, focus, responsive, modal, or motion variants that the collector did not capture.
+- Do not treat official brand-asset colors or third-party font licences as permission to reuse Framer-hosted assets.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <809px | Single column, stacked feature sections, reduced hero text (62px→40px), hamburger nav |
-| Tablet | 809px–1199px | 2-column features begin, nav links partially visible, screenshots scale down |
-| Desktop | >1199px | Full layout, expanded nav with all links + CTA, 110px display hero, side-by-side features |
-
-### Touch Targets
-- Pill buttons: minimum 40px height with 10px vertical padding — exceeds 44px WCAG minimum
-- Nav links: 15px text with generous padding for touch accessibility
-- Mobile CTA buttons: Full-width pills on mobile for easy thumb reach
-
-### Collapsing Strategy
-- **Navigation**: Full horizontal nav → hamburger menu at mobile breakpoint
-- **Hero text**: 110px display → 85px → 62px → ~40px across breakpoints, maintaining extreme negative tracking proportionally
-- **Feature sections**: Side-by-side (text + screenshot) → stacked vertically on mobile
-- **Product screenshots**: Scale responsively within containers, maintaining aspect ratios
-- **Section spacing**: Reduces proportionally — 120px desktop → 60px mobile
-
-### Image Behavior
-- Product screenshots are responsive, scaling within their container boundaries
-- No art direction changes — same crops across breakpoints
-- Dark background ensures screenshots maintain visual impact at any size
-- Screenshots lazy-load as user scrolls into view
+Only a `1440×900` capture was supplied. The public pages may be responsive, but this packet does not measure a breakpoint, mobile navigation, touch target, image crop, or a responsive state transition. Those fields remain unresolved rather than being extrapolated from the desktop DOM.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary Background: Void Black (`#000000`)
-- Primary Text: Pure White (`#ffffff`)
-- Accent/CTA: Framer Blue (`#0099ff`)
-- Secondary Text: Muted Silver (`#a6a6a6`)
-- Frosted Surface: Translucent White (`rgba(255, 255, 255, 0.1)`)
-- Elevation Ring: Blue Glow (`rgba(0, 153, 255, 0.15)`)
+Use this reference as a public-web direction, not an app-kit specification:
 
-### Example Component Prompts
-- "Create a hero section on pure black background with 110px GT Walsheim heading in white, letter-spacing -5.5px, line-height 0.85, and a pill-shaped white CTA button (100px radius) with black text"
-- "Design a feature card on black background with a 1px Framer Blue ring shadow border (rgba(0,153,255,0.15)), 12px border-radius, white heading in Inter at 22px weight 700, and muted silver (a6a6a6) body text"
-- "Build a navigation bar with black background, white Inter text links at 15px, and a frosted pill button (rgba(255,255,255,0.1) background, 40px radius) as the CTA"
-- "Create a product showcase section with a full-width screenshot embedded on black, 10px border-radius, subtle multi-layer shadow (white 0.5px top highlight + rgba(0,0,0,0.25) 30px ambient)"
-- "Design a pricing card using pure black surface, Framer Blue (#0099ff) accent for the selected plan border, white text hierarchy (24px Inter bold heading, 14px regular body), and a solid white pill CTA button"
-
-### Iteration Guide
-When refining existing screens generated with this design system:
-1. Focus on ONE component at a time — the dark canvas makes each element precious
-2. Always verify letter-spacing on GT Walsheim headings — the extreme negative tracking is non-negotiable
-3. Check that Framer Blue appears ONLY on interactive elements — never as decorative background or text color for non-links
-4. Ensure all buttons are pill-shaped — any squared corner immediately breaks the Framer aesthetic
-5. Test frosted glass surfaces by checking they have exactly `rgba(255, 255, 255, 0.1)` — too opaque looks like a bug, too transparent disappears
+- “Create a public marketing section on `#000000` with `#ffffff` foreground, Inter UI text, and a `#0099ff` accent only where a selector-backed public component warrants it.”
+- “For a Marketplace-like filter, use `#242424`, white 12px/500 Inter text, 8px radius, and `0px 10px` padding; pair it only with the observed 13px-radius menu panel if an open-menu surface is needed.”
+- “For the public home’s editorial hierarchy, use GT Walsheim Medium only when its licensed asset is available; the captured examples are 54px/500 and 44px/500, not an unbounded display scale.”
 
 ## 10. Voice & Tone
 
-Framer's voice is **designer-warm and craft-confident** — speaks like a tool team that genuinely loves design conventions. Marketing emphasizes the joy of building professional websites without code. Hero copy keeps lower-case for warmth, headline-as-statement.
+Framer’s first-party careers page leads with “Make the web more creative” and describes a mission to build the best tool for designing and publishing incredible sites. The product blog says the enduring mission is to turn ideas into stunning websites quickly. That supports a direct, maker-facing public voice; it does not establish editor error copy or a complete product-content style guide.
 
-| Context | Tone |
+| Context | Supported direction |
 |---|---|
-| CTA | Verb. "Start for free", "Get started", "Sign up" |
-| Marketing | Single claim, big screenshots dominate |
-| Documentation | Visual-first, screenshots, clearly linked tutorials |
-| Error (publishing) | Specific. "Domain SSL provisioning. Try again in 5 minutes." |
-
-**Voice samples**
-- Marketing tagline: *"Create a professional website, free."* <!-- verified: framer.com homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary website builder", "magic". Aggressive "compete with Webflow" framing.
+| Public headline | Short outcome-led statement, as in “Make the web more creative.” |
+| Public CTA | Direct account/start action; captured pages expose “Sign up.” |
+| Community | Label-led browsing and filters on the Marketplace components surface. |
 
 ## 11. Brand Narrative
 
-Framer was founded **2014** in **Amsterdam** by **Koen Bok (CEO)** and **Jorn van Dijk** — both Dutch ex-Facebook designer-engineers who **previously co-founded the design studio Sofa**, acquired by Facebook in 2011 (where they shipped Messages, Ads, Video, Photos product surfaces) ([Tracxn — Framer](https://tracxn.com/d/companies/framer/__WwABy6r40KPszbW9ZaEHR6v4BX_MP8437KgHYLns7fo), [Jorn van Dijk personal](https://jornvandijk.com/)). Originally a **code-based prototyping tool** for designers at Apple/Google/Facebook (and the parent of the **Framer Motion** animation library now used across the React ecosystem). **Major pivot 2022-2023** to a no-code website builder competing with Webflow, while preserving the Framer Motion craft DNA. Funding ladder: **$1.35M Seed (Dec 2014)** → **€25.5M Series B (2022)** → **$27M Series C (Sep 2023)** led by **Meritech Capital** with **Atomico, Accel, Foundation Capital** → **$100M Series D (Aug 13 2025)** led by **Meritech + Atomico** with **WiL + HV Capital**, valuing Framer at **$2B "double-unicorn"** ([TechCrunch — Framer $2B](https://techcrunch.com/2025/08/28/no-code-website-builder-framer-reaches-2b-valuation/), [Sifted](https://sifted.eu/articles/framer-raises-100m), [I amsterdam — double unicorn](https://www.iamsterdam.com/en/business/framer-raises-100m-becoming-a-double-unicorn)). **Total raised ~$163M.** The brand voice tracks this evolution — design-tool-first identity, now a website tool that hasn't lost the craft register.
+Framer’s present public framing is a web-design and publishing platform: the careers page ties the company to the future of the web, and the product blog describes the continuing goal as moving from an idea to a polished website quickly. Its public navigation also spans design, collaboration, CMS, hosting, performance, SEO, conversion, and publishing. The visually distinctive expression in this packet comes from the current public surfaces—not a claim that every Framer product surface uses the same components or palette.
 
 ## 12. Principles
 
-1. **Designer aesthetic, not engineer aesthetic.** *UI implication:* visual-first interfaces; canvas + properties, never code-only views in chrome.
-2. **Pill shapes signal "polished".** Any squared corner breaks the Framer aesthetic. *UI implication:* nav, buttons, cards — all pill-radius (24-36px).
-3. **Frosted glass for depth.** `rgba(255,255,255,0.1)` overlays. *UI implication:* layered floating panels never opaque.
-4. **Motion is the brand.** Framer Motion library. *UI implication:* every interaction has spring physics; static UIs feel un-Framer.
-5. **Live publish.** *UI implication:* "Publish" CTA shows live preview URL + redeploys without page reload.
+1. **Make the publishing outcome legible.** *UI implication:* public copy should foreground the site-building/publishing task rather than inventing technical workflow claims.
+2. **Keep brand assets recognizable.** *UI implication:* follow the official guidance not to alter, recolor, distort, or create substitute Framer marks.
+3. **Preserve source-domain boundaries.** *UI implication:* use public marketing and Marketplace evidence only for those surfaces; do not synthesize editor or docs patterns.
+4. **Prefer measured compactness over generic pills.** *UI implication:* the supported compact controls are 8px-rounded Marketplace controls, not a site-wide full-pill rule.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Framer user segments (independent designers, design teams shipping marketing sites, agencies), not individual people.*
+These are audience archetypes derived from Framer’s public positioning, not synthetic test users or claims about private product behavior.
 
-**Sofia Russo, 32, Milan.** Indie designer shipping client marketing sites. Replaced Webflow workflow with Framer for the better animation defaults.
-
-**Henrik Sondergaard, 38, Copenhagen.** Lead designer at SaaS startup. Builds the public marketing site in Framer; engineers handle product app separately.
-
-**Alex Park, 24, Seoul.** Junior designer building portfolio site. Framer template ecosystem made first launch possible without engineering help.
+- **Website creator:** uses the public design-and-publish proposition and may enter through marketing or templates.
+- **Community browser:** explores the public Marketplace components surface through category cards, tabs, and filters.
+- **Developer/documentation reader:** encounters a separately structured developer/docs domain; this packet does not use its chrome as visual-token evidence.
 
 ## 14. States
 
-| State | Treatment |
+| State | Evidence boundary |
 |---|---|
-| **Empty (canvas)** | "Add a section" CTA + template gallery |
-| **Empty (no projects)** | "Create your first project" + template browser |
-| **Loading (publishing)** | Spring-animated progress chip with build status |
-| **Loading (asset)** | Per-asset placeholder with shimmer |
-| **Error (publish)** | Specific reason + retry, never blocking |
-| **Error (CMS)** | Field-level inline message |
-| **Success (published)** | Spring-bounce confirmation + URL copy |
-| **Success (asset uploaded)** | Inline preview replaces placeholder |
-| **Skeleton (project list)** | Frosted glass placeholders |
-| **Disabled (free plan limit)** | 0.5 opacity + upgrade link |
-| **Loading (collaborator typing)** | Avatar + cursor indicator on canvas |
+| Form error | Home textarea captured in `error` state with `#dee6ff` text; field shell and message copy are not captured. |
+| Menu open | Two Marketplace menu expansions are captured, including one `#242424` panel and unchecked menu option. |
+| Disabled tab | One Marketplace coming-soon tab is disabled with `#666666` text and 8px radius. |
+| Toast viewport | A Marketplace toast viewport element is present, but no visible message, lifecycle, or style contract is captured. |
+| Empty/loading/success/product failure | Not captured; no editor or authenticated-product state recipe is asserted. |
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-spring` | variable | Click → action commits with spring physics |
-| `motion-standard` | 250ms | Modal, panel |
-
-Easings: spring physics is the signature. **Spring on every commit** — buttons, modals, panels. `prefers-reduced-motion: reduce` collapses spring to opacity-only fade.
-
----
-
-**Verified:** 2026-05-08 (omd:migrate run 25 — Apple-tier)
-**Tier 1 sources:** framer.com home + /pricing (live DOM via playwright — Primary `#fff` 100px full-pill three-tier {hero 35px / pricing-compact 29px / header-utility 15px-radius 28px} 10×14 / 12px·400; Translucent Secondary `rgba(255,255,255,0.10-0.15)` same geometry; **Framer Blue `#0099ff`** featured-pricing-tier accent).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders):** Tracxn, Silicon Canals, TechCrunch (2025-08 $2B), Sifted, I amsterdam, Crunchbase.
-**Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured only header utility 15px-rect; canonical Hero Primary is 100px full-pill 35px height + Framer Blue `#0099ff` featured accent.
+The capture records structural menu and form-error expansions but supplies no measured duration, easing, transition, or reduced-motion behavior. Framer’s historical association with motion does not license a motion-token claim for the currently captured public surfaces; motion values remain unresolved.

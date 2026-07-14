@@ -4,421 +4,332 @@ name: ClickHouse
 country: US
 category: backend-devops
 homepage: "https://clickhouse.com"
-primary_color: "#fff100"
+primary_color: "#faff69"
 logo:
   type: simpleicons
   slug: clickhouse
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: ClickHouse Design
   url: "https://clickhouse.design"
   type: system
-  description: ClickHouse brand hub plus the Click UI design system and component library.
+  description: Official brand foundations plus the separate Click UI design system and component library.
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://clickhouse.com/", inspected: "2026-07-13" }
+    - { id: pricing, kind: public-calculator, url: "https://clickhouse.com/pricing", inspected: "2026-07-13" }
+    - { id: story, kind: editorial, url: "https://clickhouse.com/blog/corsearch-replaces-mysql-with-clickhouse-for-content-and-brand-protection", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://clickhouse.com/", captured: "2026-07-13" }
+    - { id: pricing-live, kind: product-surface, url: "https://clickhouse.com/pricing", captured: "2026-07-13" }
+    - { id: story-live, kind: product-surface, url: "https://clickhouse.com/blog/corsearch-replaces-mysql-with-clickhouse-for-content-and-brand-protection", captured: "2026-07-13" }
+    - { id: brand-guide, kind: official-doc, url: "https://clickhouse.design/brand", captured: "2026-07-13" }
+    - { id: click-ui, kind: official-doc, url: "https://clickhouse.design/click-ui", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.canvas": *home
+    "tokens.colors.overlay": *home
+    "tokens.colors.on-primary": *home
+    "tokens.colors.surface": &pricing { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.foreground": *pricing
+    "tokens.colors.foreground-strong": *pricing
+    "tokens.colors.hairline": *pricing
+    "tokens.colors.accent-border": *pricing
+    "tokens.typography.family.ui": *home
+    "tokens.typography.family.display": &story { surface_id: story, source_id: story-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.typography.family.mono": *story
+    "tokens.typography.display.size": *story
+    "tokens.typography.display.weight": *story
+    "tokens.typography.display.lineHeight": *story
+    "tokens.typography.display.use": *story
+    "tokens.typography.heading.size": *story
+    "tokens.typography.heading.weight": *story
+    "tokens.typography.heading.lineHeight": *story
+    "tokens.typography.heading.use": *story
+    "tokens.typography.body.size": *home
+    "tokens.typography.body.weight": *home
+    "tokens.typography.body.lineHeight": *home
+    "tokens.typography.body.use": *home
+    "tokens.typography.control.size": *home
+    "tokens.typography.control.weight": *home
+    "tokens.typography.control.lineHeight": *home
+    "tokens.typography.control.use": *home
+    "tokens.typography.code.size": *story
+    "tokens.typography.code.weight": *story
+    "tokens.typography.code.lineHeight": *story
+    "tokens.typography.code.use": *story
+    "tokens.spacing.xs": *pricing
+    "tokens.spacing.sm": *pricing
+    "tokens.spacing.md": *pricing
+    "tokens.spacing.control": *pricing
+    "tokens.spacing.lg": *pricing
+    "tokens.spacing.xl": *pricing
+    "tokens.spacing.xxl": *pricing
+    "tokens.spacing.section": *pricing
+    "tokens.rounded.sm": *home
+    "tokens.rounded.md": *pricing
+    "tokens.rounded.lg": *home
+    "tokens.rounded.dialog": *home
+    "tokens.rounded.full": *pricing
+    "tokens.components.public-list-item.type": *home
+    "tokens.components.public-list-item.fg": *home
+    "tokens.components.public-list-item.radius": *home
+    "tokens.components.public-list-item.padding": *home
+    "tokens.components.public-list-item.font": *home
+    "tokens.components.public-list-item.use": *home
 tokens:
-  source: prose-derived
-  extracted: "2026-06-08"
-  note: "primary = live interactive Neon Volt (#faff69); brand = documented logo/marketing yellow (#fff100)"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Public marketing, pricing-calculator, editorial, Click UI documentation, and declared font assets remain separate evidence domains. Values below are selector-backed public-surface observations only."
   colors:
     primary: "#faff69"
-    primary-hover: "#f4f692"
-    brand: "#fff100"
-    canvas: "#000000"
-    foreground: "#ffffff"
-    muted: "#a0a0a0"
-    on-primary: "#151515"
-    surface: "#141414"
-    surface-hover: "#3a3a3a"
+    canvas: "#131312"
+    surface: "#282828"
+    overlay: "#141414"
+    foreground: "#dfdfdf"
+    foreground-strong: "#ffffff"
     hairline: "#414141"
-    hairline-deep: "#343434"
-    cta-green: "#166534"
-    cta-green-dark: "#14572f"
-    active: "#f4f692"
-    border-olive: "#4f5100"
-    olive-dark: "#161600"
+    accent-border: "#4f5101"
+    on-primary: "#151515"
   typography:
-    family: { sans: "Inter", display: "Basier", mono: "Inconsolata" }
-    display-mega:    { size: 96, weight: 900, lineHeight: 1.00, use: "Hero headline, maximum impact extra-heavy" }
-    display-hero:    { size: 72, weight: 700, lineHeight: 1.00, use: "Section hero titles" }
-    feature-heading: { size: 36, weight: 600, lineHeight: 1.30, use: "Feature section anchors (Basier)" }
-    subheading:      { size: 24, weight: 600, lineHeight: 1.17, use: "Card headings" }
-    feature-title:   { size: 20, weight: 600, lineHeight: 1.40, use: "Small feature titles" }
-    body-lg:         { size: 18, weight: 400, lineHeight: 1.56, use: "Intro paragraphs, button text" }
-    body:            { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body, nav, buttons" }
-    caption:         { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, descriptions, links" }
-    uppercase-label: { size: 14, weight: 600, lineHeight: 1.43, tracking: 1.4, use: "Section overlines, wide-tracked uppercase" }
-    code:            { size: 16, weight: 600, lineHeight: 1.50, use: "Code blocks, commands (Inconsolata)" }
-    small:           { size: 12, weight: 500, lineHeight: 1.33, use: "Smallest text" }
-    micro:           { size: 11.2, weight: 500, lineHeight: 1.79, use: "Tags, tiny labels" }
-  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 8, full: 9999 }
-  shadow:
-    subtle: "rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px"
-    elevated: "rgba(0,0,0,0.1) 0px 10px 15px -3px, rgba(0,0,0,0.1) 0px 4px 6px -4px"
-    inset: "rgba(0,0,0,0.06) 0px 4px 4px, rgba(0,0,0,0.14) 0px 4px 25px inset"
-  components_harvested: true
+    family: { ui: "Inter", display: "Basier", mono: "Inconsolata" }
+    display: { size: 36, weight: 600, lineHeight: 1.25, use: "Basier h2 observed on public routes" }
+    heading: { size: 20, weight: 600, lineHeight: 1.25, use: "Basier h3 observed on public routes" }
+    body: { size: 16, weight: 400, lineHeight: 1.50, use: "Inter public-route body and list items" }
+    control: { size: 14, weight: 500, lineHeight: 1.43, use: "Inter primary-action controls" }
+    code: { size: 18, weight: 400, lineHeight: 1.50, use: "Single observed Inconsolata body sample; not a general code-scale claim" }
+  spacing: { xs: 4, sm: 6, md: 8, control: 10, lg: 12, xl: 16, xxl: 24, section: 32 }
+  rounded: { sm: 4, md: 6, lg: 8, dialog: 10, full: 9999 }
   components:
-    button-neon-primary: { type: button, bg: "#faff69", fg: "#151515", radius: 4, padding: "0px 16px", use: "Neon Volt fill; hover darkens, active text pale yellow" }
-    button-dark-solid: { type: button, bg: "#141414", fg: "#ffffff", radius: 4, padding: "12px 16px", use: "Near-black fill; hover #3a3a3a" }
-    button-forest-green: { type: button, bg: "#166534", fg: "#ffffff", use: "Forest green fill — primary conversion CTA" }
-    button-ghost: { type: button, fg: "#ffffff", radius: 4, use: "Transparent fill, 1px solid #4f5100 olive border" }
-    card: { type: card, bg: "#141414", radius: 4, use: "Near-black surface, 1px charcoal border" }
-    card-neon-highlight: { type: card, bg: "#141414", radius: 4, use: "Dark card with 1px solid #faff69 neon border for featured/selected treatment" }
-    performance-stat: { type: card, fg: "#faff69", use: "Oversized number 72px+ weight 700-900, neon accents, brief description beneath" }
+    public-list-item: { type: listItem, fg: "#dfdfdf", radius: 0, padding: "0px", font: "16px/400 Inter", use: "Repeated public-route list item; 155 observed occurrences" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of ClickHouse
 
 ## 1. Visual Theme & Atmosphere
 
-ClickHouse's interface is a high-performance cockpit rendered in acid yellow-green on obsidian black — a design that screams "speed" before you read a single word. The entire experience lives in darkness: pure black backgrounds (`#000000`) with dark charcoal cards (`#414141` borders) creating a terminal-grade aesthetic where the only chromatic interruption is the signature neon yellow-green (`#faff69`) that slashes across CTAs, borders, and highlighted moments like a highlighter pen on a dark console.
+ClickHouse is a column-oriented analytics database built for real-time SQL reporting, and its public expression treats speed as something users should see as well as measure. The official brand guidelines describe a direct, technically confident character: yellow leads the brand while dark neutrals, hard rules, and compact controls keep the message legible. The supplied public surfaces—marketing home, pricing calculator, and an editorial customer story—pair the live `#faff69` action yellow with a near-black field of `#131312`/`#282828`, Inter for the repeated UI rhythm, and Basier for larger headings. That high-contrast treatment belongs to public communication and the calculator, not proof of an authenticated product console. ClickHouse’s separate Click UI documentation confirms a themeable product system whose yellow is intentionally used more selectively in product UI.
 
-The typography is aggressively heavy — Inter at weight 900 (Black) for the hero headline at 96px creates text blocks that feel like they have physical mass. This "database for AI" site communicates raw power through visual weight: thick type, high-contrast neon accents, and performance stats displayed as oversized numbers. There's nothing subtle about ClickHouse's design, and that's entirely the point — it mirrors the product's promise of extreme speed and performance.
-
-What makes ClickHouse distinctive is the electrifying tension between the near-black canvas and the neon yellow-green accent. This color combination (`#faff69` on `#000000`) creates one of the highest-contrast pairings in any tech brand, making every CTA button, every highlighted card, and every accent border impossible to miss. Supporting this is a forest green (`#166534`) for secondary CTAs that adds depth to the action hierarchy without competing with the neon.
-
-**Key Characteristics:**
-- Pure black canvas (#000000) with neon yellow-green (#faff69) accent — maximum contrast
-- Extra-heavy display typography: Inter at weight 900 (Black) up to 96px
-- Dark charcoal card system with #414141 borders at 80% opacity
-- Forest green (#166534) secondary CTA buttons
-- Performance stats as oversized display numbers
-- Uppercase labels with wide letter-spacing (1.4px) for navigation structure
-- Active/pressed state shifts text to pale yellow (#f4f692)
-- All links hover to neon yellow-green — unified interactive signal
-- Inset shadows on select elements creating "pressed into the surface" depth
+**Key characteristics:**
+- Yellow-led public action treatment: `#faff69` on `#151515`.
+- Dark public surfaces: `#131312` canvas and `#282828` calculator/menu surfaces.
+- Compact Inter controls; Basier headings on the captured public routes.
+- 4px, 6px, 8px, and 10px radii each have selector-backed uses; none is universal.
+- Product, marketing, editorial, privacy-dialog, and Click UI documentation evidence are separate.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Neon Volt** (`#faff69`): The signature brand color — a vivid acid yellow-green that's the sole chromatic accent on the black canvas. Used for primary CTAs, accent borders, link hovers, and highlighted moments.
-- **Forest Green** (`#166534`): Secondary CTA color — a deep, saturated green for "Get Started" and primary action buttons that need distinction from the neon.
-- **Dark Forest** (`#14572f`): A darker green variant for borders and secondary accents.
+### Selector-backed public surfaces
+- **Action Yellow** (`#faff69`): primary public action background and selected/expanded border on the home and pricing calculator.
+- **Canvas** (`#131312`): observed public page background; do not generalize it to every ClickHouse product surface.
+- **Control Surface** (`#282828`): public pricing input and expanded select-menu background.
+- **Overlay Surface** (`#141414`): observed cookie-dialog surface only; not promoted as a general product surface token.
+- **Primary Public Text** (`#dfdfdf`): computed neutral text on repeated public controls and lists.
+- **Strong/Modal Text** (`#ffffff`): observed in public secondary actions and the cookie dialog.
+- **Hairline** (`#414141`): pricing number-field border.
+- **Accent Border** (`#4f5101`): public secondary-action border.
+- **On Action Yellow** (`#151515`): primary-action text.
 
-### Secondary & Accent
-- **Pale Yellow** (`#f4f692`): Active/pressed state text color — a softer, more muted version of Neon Volt for state feedback.
-- **Border Olive** (`#4f5100`): A dark olive-yellow for ghost button borders — the neon's muted sibling.
-- **Olive Dark** (`#161600`): The darkest neon-tinted color for subtle brand text.
+### Official brand and product boundary
 
-### Surface & Background
-- **Pure Black** (`#000000`): The primary page background — absolute black for maximum contrast.
-- **Near Black** (`#141414`): Button backgrounds and slightly elevated dark surfaces.
-- **Charcoal** (`#414141`): The primary border color at 80% opacity — the workhorse for card and container containment.
-- **Deep Charcoal** (`#343434`): Darker border variant for subtle division lines.
-- **Hover Gray** (`#3a3a3a`): Button hover state background — slightly lighter than Near Black.
-
-### Neutrals & Text
-- **Pure White** (`#ffffff`): Primary text on dark surfaces.
-- **Silver** (`#a0a0a0`): Secondary body text and muted content.
-- **Mid Gray** (`#585858` at 28%): Subtle gray overlay for depth effects.
-- **Border Gray** (`#e5e7eb`): Light border variant (used in rare light contexts).
-
-### Gradient System
-- **None in the traditional sense.** ClickHouse uses flat color blocks and high-contrast borders. The "gradient" is the contrast itself — neon yellow-green against pure black creates a visual intensity that gradients would dilute.
+The official brand guidelines say yellow is primary in brand work and a more selective accent in product work; they name neutral dark-theme chrome and slate light-theme chrome, but this packet does not turn undocumented scale steps into hex tokens. Cookie-consent green (`#166534`) and its hover value were observed in a privacy dialog, so they are intentionally excluded from the ClickHouse action palette.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Primary**: `Inter` (Next.js optimized variant `__Inter_d1b8ee`)
-- **Secondary Display**: `Basier` (`__basier_a58b65`), with fallbacks: `Arial, Helvetica`
-- **Code**: `Inconsolata` (`__Inconsolata_a25f62`)
+### Evidence classes
 
-### Hierarchy
+| Evidence class | Family and boundary |
+|---|---|
+| Official product-use | ClickHouse Design says **Inter** can serve as both title and body copy in the product. |
+| Live computed surface-use | **Inter** is loaded/high with 1,215 observed uses across the three public routes; **Basier** is loaded/high with 66 uses, including 36px/600 h2 and 20px/600 h3 samples; **Inconsolata** is loaded/medium with one 18px/400 sample. Each has a FontFaceSet/source-URL match in the supplied artifact. |
+| Official distributed brand asset | ClickHouse names **Söhne** as its display voice for marketing and calls it marketing-only; the Klim Type Foundry source identifies WOFF2 web formats and commercial availability. This is brand/font context, not a product-UI token. |
+| Declared-only | `fontSohne`, `fontSohneBreit`, their fallback faces, and `basier Fallback` are declared in captured CSS but had no visible computed use in this packet. |
+| System / unresolved | `ui-sans-serif` is an operating-system stack, not a ClickHouse-family substitute. `ui-monospace` had one unresolved computed occurrence and is not promoted. |
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Mega | Inter | 96px (6rem) | 900 | 1.00 (tight) | normal | Maximum impact, extra-heavy |
-| Display / Hero | Inter | 72px (4.5rem) | 700 | 1.00 (tight) | normal | Section hero titles |
-| Feature Heading | Basier | 36px (2.25rem) | 600 | 1.30 (tight) | normal | Feature section anchors |
-| Sub-heading | Inter / Basier | 24px (1.5rem) | 600–700 | 1.17–1.38 | normal | Card headings |
-| Feature Title | Inter / Basier | 20px (1.25rem) | 600–700 | 1.40 | normal | Small feature titles |
-| Body Large | Inter | 18px (1.13rem) | 400–700 | 1.56 | normal | Intro paragraphs, button text |
-| Body / Button | Inter | 16px (1rem) | 400–700 | 1.50 | normal | Standard body, nav, buttons |
-| Caption | Inter | 14px (0.88rem) | 400–700 | 1.43 | normal | Metadata, descriptions, links |
-| Uppercase Label | Inter | 14px (0.88rem) | 600 | 1.43 | 1.4px | Section overlines, wide-tracked |
-| Code | Inconsolata | 16px (1rem) | 600 | 1.50 | normal | Code blocks, commands |
-| Small | Inter | 12px (0.75rem) | 500 | 1.33 | normal | Smallest text |
-| Micro | Inter | 11.2px (0.7rem) | 500 | 1.79 (relaxed) | normal | Tags, tiny labels |
+### Captured hierarchy
 
-### Principles
-- **Weight 900 is the weapon**: The display headline uses Inter Black (900) — a weight most sites never touch. Combined with 96px size, this creates text with a physical, almost architectural presence.
-- **Full weight spectrum**: The system uses 400, 500, 600, 700, and 900 — covering the full gamut. Weight IS hierarchy.
-- **Uppercase with maximum tracking**: Section overlines use 1.4px letter-spacing — wider than most systems — creating bold structural labels that stand out against the dense dark background.
-- **Dual sans-serif**: Inter handles display and body; Basier handles feature section headings at 600 weight. This creates a subtle personality shift between "data/performance" (Inter) and "product/feature" (Basier) contexts.
+| Role | Family | Size | Weight | Line Height | Evidence boundary |
+|---|---|---:|---:|---:|---|
+| Public h1 | Basier | 48px (also one 96px sample) | 600 | 60px (96px sample: 96px) | public routes; not a complete display scale |
+| Public h2 | Basier | 36px | 600 | 45px | 18 observed samples |
+| Public h3 | Basier | 20px | 600 | 25px | 20 observed samples |
+| Body / list | Inter | 16px | 400 | 24px | repeated public-route body/list samples |
+| Control | Inter | 14px | 500 | 20px or 17.5px | action/control samples; preserve route value |
+| Code-adjacent body | Inconsolata | 18px | 400 | 27px | one observed sample only |
+
+Do not render a system fallback as Söhne, Basier, or Inconsolata. Söhne remains useful official marketing-font context but is excluded from `tokens.typography.family` because the packet records no visible computed Söhne use.
 
 ## 4. Component Stylings
 
-### Buttons
+### Public Actions
 
-**Neon Primary**
-- Background: Neon Volt (`#faff69`)
-- Text: Near Black (`#151515`)
-- Padding: 0px 16px
-- Radius: sharp (4px)
-- Border: `1px solid #faff69`
-- Hover: background shifts to dark (`rgb(29, 29, 29)`), text stays
-- Active: text shifts to Pale Yellow (`#f4f692`)
-- The eye-catching CTA — neon on black
-
-**Dark Solid**
-- Background: Near Black (`#141414`)
-- Text: Pure White (`#ffffff`)
-- Padding: 12px 16px
-- Radius: 4px or 8px
-- Border: `1px solid #141414`
-- Hover: bg shifts to Hover Gray (`#3a3a3a`), text to 80% opacity
-- Active: text to Pale Yellow
-- The standard action button
-
-**Forest Green**
-- Background: Forest Green (`#166534`)
-- Text: Pure White (`#ffffff`)
-- Padding: 12px 16px
-- Border: `1px solid #141414`
-- Hover: same dark shift
-- Active: Pale Yellow text
-- The "Get Started" / primary conversion button
-
-**Ghost / Outlined**
-- Background: transparent
-- Text: Pure White (`#ffffff`)
-- Padding: 0px 32px
+**Primary Action — home and pricing calculator**
+- Background: `#faff69`
+- Text: `#151515`
+- Border: 1px solid `#faff69`
 - Radius: 4px
-- Border: `1px solid #4f5100` (olive-tinted)
-- Hover: dark bg shift
-- Active: Pale Yellow text
-- Secondary actions with neon-tinted border
+- Padding: 10px 16px on `home::[data-omd-capture="55"]`; 12px 24px on pricing `surface-2::[data-omd-capture="102"]`
+- Font: 14px / 500 / Inter
+- Use: Public action controls captured on the home and pricing calculator.
 
-**Pill Toggle**
-- Background: transparent
-- Radius: pill (9999px)
-- Used for toggle/switch elements
+**Secondary Action — pricing calculator**
+- Background: `oklab(0.1957 -0.0000019595 0.00000458956 / 0.00999999)`
+- Text: `#ffffff`
+- Border: 1px solid `#4f5101`
+- Radius: 4px
+- Padding: 12px 24px
+- Font: 14px / 500 / Inter
+- Use: `surface-2::[data-omd-capture="103"]`; route-local secondary action.
 
-### Cards & Containers
-- Background: transparent or Near Black
-- Border: `1px solid rgba(65, 65, 65, 0.8)` — the signature charcoal containment
-- Radius: 4px (small elements) or 8px (cards, containers)
-- Shadow Level 1: subtle (`rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px 1px 2px -1px`)
-- Shadow Level 2: medium (`rgba(0,0,0,0.1) 0px 10px 15px -3px, rgba(0,0,0,0.1) 0px 4px 6px -4px`)
-- Shadow Level 3: inset (`rgba(0,0,0,0.06) 0px 4px 4px, rgba(0,0,0,0.14) 0px 4px 25px inset`) — the "pressed" effect
-- Neon-highlighted cards: selected/active cards get neon yellow-green border or accent
+**Navigation Item — public home**
+- Radius: 8px
+- Padding: 10px 12px
+- Font: 14px / 500 / Inter
+- Hover: collector recorded a public home focus/hover/pressed state; raw state styling is retained in the verification record rather than promoted as a global rule.
+- Use: `home::[data-omd-capture="1"]`; public navigation/menu item.
 
-### Navigation
-- Dark nav on black background
-- Logo: ClickHouse wordmark + icon in yellow/neon
-- Links: white text, hover to Neon Volt (#faff69)
-- CTA: Neon Volt button or Forest Green button
-- Uppercase labels for categories
+### Pricing Calculator Form Chrome
 
-### Distinctive Components
+**Number Field**
+- Background: `#282828`
+- Text: `#dfdfdf`
+- Border: 1px solid `#414141`
+- Radius: 4px
+- Padding: 0px 12px
+- Font: 14px / 400 / Inter
+- Use: `surface-2::[data-omd-capture="93"]`; public pricing-calculator number input.
 
-**Performance Stats**
-- Oversized numbers (72px+, weight 700–900)
-- Brief descriptions beneath
-- High-contrast neon accents on key metrics
-- The primary visual proof of performance claims
+**Select Trigger — expanded**
+- Background: `#282828`
+- Text: `#dfdfdf`
+- Border: 1px solid `#414141`
+- Radius: 4px
+- Padding: 0px 28px 0px 12px
+- Font: 14px / 400 / Inter
+- Use: `surface-2::[data-omd-capture="63"]`; trigger for an observed open pricing select.
 
-**Neon-Highlighted Card**
-- Standard dark card with neon yellow-green border highlight
-- Creates "selected" or "featured" treatment
-- The accent border makes the card pop against the dark canvas
+**Select Menu — expanded**
+- Background: `#282828`
+- Text: `#dfdfdf`
+- Border: 0px 1px 1px solid `#faff69`
+- Radius: 0px 0px 6px 6px
+- Padding: 4px 0px
+- Font: 14px / 400 / Inter
+- Use: `surface-2::[data-omd-interaction-capture="menu-0-0"]`; three pricing menus exposed the same expanded/menu-open treatment.
 
-**Code Blocks**
-- Dark surface with Inconsolata at weight 600
-- Neon and white syntax highlighting
-- Terminal-like aesthetic
+**Radio-like Toggle**
+- Background: `#1f1f1c`
+- Border: 1px solid `#414141`
+- Radius: 9999px
+- Use: `surface-2::[data-omd-capture="96"]`; checked and unchecked states were recorded, but no different checked value is asserted.
 
-**Trust Bar**
-- Company logos on dark background
-- Monochrome/white logo treatment
-- Horizontal layout
+### Separate Public Privacy Dialog
+
+**Cookie Dialog**
+- Background: `#141414`
+- Text: `#ffffff`
+- Border: 1px solid `#393939`
+- Radius: 10px
+- Use: `home::[data-omd-interaction-capture="dialog-0-0"]`; consent chrome, excluded from product/calculator components.
+
+Click UI documents broader Button, IconButton, SplitButton, Text Field, and Select APIs separately. Its documented variants are not copied here unless the supplied public capture exposed their visual values.
+
+---
+**Verified:** 2026-07-13
+**Tier 1 sources:** [ClickHouse home](https://clickhouse.com/), [public pricing calculator](https://clickhouse.com/pricing?service=clickhouse&pg.plan=scale&pg.provider=aws&pg.profile=memory&pg.architecture=arm&pg.standby=0&pg.region=us-east-1&plan=scale&provider=aws&region=us-east-1&hours=8&storageCompressed=false), [public customer story](https://clickhouse.com/blog/corsearch-replaces-mysql-with-clickhouse-for-content-and-brand-protection?loc=carousel), [official Click UI](https://clickhouse.design/click-ui), [official brand guidelines](https://clickhouse.design/brand)
+**Tier 2 sources:** [getdesign ClickHouse directory](https://getdesign.md/clickhouse/design-md); Refero query attempted at `https://styles.refero.design/?q=ClickHouse`, but returned an internal error and is not treated as a positive or negative result.
+**Resolution note:** Earlier claims of universal forest-green conversion CTAs, 4px/8px card rules, and a universal neon-on-black product system were rolled back. The fresh packet ties green to cookie consent, gives each component a route/selector boundary, and keeps official Click UI documentation separate from public-surface measurements.
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 2px, 6px, 7px, 8px, 10px, 12px, 16px, 20px, 24px, 25px, 32px, 40px, 44px, 48px, 64px
-- Button padding: 12px 16px (standard), 0px 16px (compact), 0px 32px (wide ghost)
-- Section vertical spacing: generous (48–64px)
-
-### Grid & Container
-- Max container width: up to 2200px (extra-wide) with responsive scaling
-- Hero: full-width dark with massive typography
-- Feature sections: multi-column card grids with dark borders
-- Stats: horizontal metric bar
-- Full-dark page — no light sections
-
-### Whitespace Philosophy
-- **Dark void as canvas**: The pure black background provides infinite depth — elements float in darkness.
-- **Dense information**: Feature cards and stats are packed with data, reflecting the database product's performance focus.
-- **Neon highlights as wayfinding**: Yellow-green accents guide the eye through the dark interface like runway lights.
-
-### Border Radius Scale
-- Sharp (4px): Buttons, badges, small elements, code blocks
-- Comfortable (8px): Cards, containers, dividers
-- Pill (9999px): Toggle buttons, status indicators
+The supplied 1440×900 captures repeat 4, 6, 8, 10, 12, 16, 20, 24, and 32px spacing values. They support a compact public-control rhythm, but do not establish a complete grid or responsive layout specification. The public home body measures a dark `#131312` canvas; the calculator puts fields and menus on `#282828`; editorial content keeps its own article layout. Do not infer authenticated-console density, dashboard grids, or mobile collapse behavior from these routes.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Black background, text blocks |
-| Bordered (Level 1) | `1px solid rgba(65,65,65,0.8)` | Standard cards, containers |
-| Subtle (Level 2) | `0px 1px 3px rgba(0,0,0,0.1)` | Subtle card lift |
-| Elevated (Level 3) | `0px 10px 15px -3px rgba(0,0,0,0.1)` | Feature cards, hover states |
-| Pressed/Inset (Level 4) | `0px 4px 25px rgba(0,0,0,0.14) inset` | Active/pressed elements — "sunk into the surface" |
-| Neon Highlight (Level 5) | Neon Volt border (`#faff69`) | Featured/selected cards, maximum emphasis |
-
-**Shadow Philosophy**: ClickHouse uses shadows on a black canvas, where they're barely visible — they exist more for subtle dimensionality than obvious elevation. The most distinctive depth mechanism is the **inset shadow** (Level 4), which creates a "pressed into the surface" effect unique to ClickHouse. The neon border highlight (Level 5) is the primary attention-getting depth mechanism.
+Most observed public controls report `box-shadow: none`; hierarchy comes from dark-surface changes, thin rules, and the yellow action/border. The expanded pricing select is the recorded exception: it includes `rgba(0,0,0,0.1) 0px 10px 15px -3px` and `rgba(0,0,0,0.1) 0px 4px 6px -4px`. The cookie dialog and public menus are not evidence for a universal application-overlay scale.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Neon Volt (#faff69) as the sole chromatic accent — it must pop against pure black
-- Use Inter at weight 900 for hero display text — the extreme weight IS the personality
-- Keep everything on pure black (#000000) — never use dark gray as the page background
-- Use charcoal borders (rgba(65,65,65,0.8)) for all card containment
-- Apply Forest Green (#166534) for primary CTA buttons — distinct from neon for action hierarchy
-- Show performance stats as oversized display numbers — it's the core visual argument
-- Use uppercase with wide letter-spacing (1.4px) for section labels
-- Apply Pale Yellow (#f4f692) for active/pressed text states
-- Link hovers should ALWAYS shift to Neon Volt — unified interactive feedback
+- Use yellow as a decisive public action or attention signal, while keeping it selective on product-oriented UI.
+- Write direct, technically specific labels and support performance claims with a number, benchmark, or concrete example.
+- Preserve the captured selector/surface boundary when using primary actions, calculator fields, or expanded menus.
+- Use Inter for the observed public UI patterns; reserve Söhne for its official marketing-only role.
+- Treat Click UI’s system documentation as component-intent guidance, not a substitute for unmeasured public CSS values.
 
 ### Don't
-- Don't introduce additional colors — the palette is strictly black, neon, green, and gray
-- Don't use the neon as a background fill — it's an accent and border color only (except on CTA buttons)
-- Don't reduce display weight below 700 — heavy weight is core to the personality
-- Don't use light/white backgrounds anywhere — the entire experience is dark
-- Don't round corners beyond 8px — the sharp geometry reflects database precision
-- Don't use soft/diffused shadows on black — they're invisible. Use border-based depth instead
-- Don't skip the inset shadow on active states — the "pressed" effect is distinctive
-- Don't use warm neutrals — all grays are perfectly neutral
+- Do not promote cookie-consent green, its hover state, or privacy-dialog layout into the ClickHouse product palette.
+- Do not present Söhne, `fontSohneBreit`, a fallback face, or a system stack as a verified live product family.
+- Do not convert the yellow public marketing treatment into a claim that all product UI is neon-on-black.
+- Do not invent calculator error, loading, disabled, success, mobile, or authenticated-console states.
+- Do not copy Click UI API variants as if they were observed on the three supplied public routes.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, stacked cards |
-| Small Tablet | 640–768px | Minor adjustments |
-| Tablet | 768–1024px | 2-column grids |
-| Desktop | 1024–1280px | Standard layout |
-| Large Desktop | 1280–1536px | Expanded content |
-| Ultra-wide | 1536–2200px | Maximum container width |
-
-### Touch Targets
-- Buttons with 12px 16px padding minimum
-- Card surfaces as touch targets
-- Adequate nav link spacing
-
-### Collapsing Strategy
-- **Hero text**: 96px → 72px → 48px → 36px
-- **Feature grids**: Multi-column → 2 → 1 column
-- **Stats**: Horizontal → stacked
-- **Navigation**: Full → hamburger
-
-### Image Behavior
-- Product screenshots maintain aspect ratio
-- Code blocks use horizontal scroll on narrow screens
-- All images on dark backgrounds
+No viewport comparison is available in this packet. All three supplied surfaces were captured at 1440×900. Preserve accessibility and responsive implementation requirements, but do not claim ClickHouse-specific mobile menu behavior, breakpoints, touch targets, or grid columns without another direct observation.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Brand Accent: "Neon Volt (#faff69)"
-- Page Background: "Pure Black (#000000)"
-- CTA Green: "Forest Green (#166534)"
-- Card Border: "Charcoal (rgba(65,65,65,0.8))"
-- Primary Text: "Pure White (#ffffff)"
-- Secondary Text: "Silver (#a0a0a0)"
-- Active State: "Pale Yellow (#f4f692)"
-- Button Surface: "Near Black (#141414)"
+### Quick reference
+- Public primary action: `#faff69` / `#151515`, 1px yellow border, 4px radius; 10px 16px on the home sample or 12px 24px on the pricing sample.
+- Pricing number field: `#282828`, `#dfdfdf`, 1px `#414141`, 4px radius, 0px 12px padding.
+- Pricing select menu when expanded: `#282828`, `#dfdfdf`, lower 6px corners, 0px/1px/1px yellow border, 4px 0px padding.
+- Public body/list: Inter 16px / 400 / 24px; observed Basier headings include 36px / 600 / 45px.
 
-### Example Component Prompts
-- "Create a hero section on Pure Black (#000000) with a massive headline at 96px Inter weight 900, line-height 1.0. Pure White text. Add a Neon Volt (#faff69) CTA button (dark text, 4px radius, 0px 16px padding) and a ghost button (transparent, 1px solid #4f5100 border)."
-- "Design a feature card on black with 1px solid rgba(65,65,65,0.8) border and 8px radius. Title at 24px Inter weight 700, body at 16px in Silver (#a0a0a0). Add a neon-highlighted variant with 1px solid #faff69 border."
-- "Build a performance stats bar: large numbers at 72px Inter weight 700 in Pure White. Brief descriptions at 14px in Silver. On black background."
-- "Create a Forest Green (#166534) CTA button: white text, 12px 16px padding, 4px radius, 1px solid #141414 border. Hover: bg shifts to #3a3a3a, text to 80% opacity."
-- "Design an uppercase section label: 14px Inter weight 600, letter-spacing 1.4px, uppercase. Silver (#a0a0a0) text on black background."
+### Boundary-aware prompt
 
-### Iteration Guide
-1. Keep everything on pure black — no dark gray alternatives
-2. Neon Volt (#faff69) is for accents and CTAs only — never large backgrounds
-3. Weight 900 for hero, 700 for headings, 600 for labels, 400-500 for body
-4. Active states use Pale Yellow (#f4f692) — not just opacity changes
-5. All links hover to Neon Volt — consistent interactive feedback
-6. Charcoal borders (rgba(65,65,65,0.8)) are the primary depth mechanism
+“Create a public pricing-calculator action using only the captured ClickHouse pattern: `#faff69` background, `#151515` text, 1px matching border, 4px radius, 12px 24px padding, and Inter 14px/500. Pair it only with the selector-backed `#282828` number field; do not invent product-console status, error, or mobile behavior.”
 
 ## 10. Voice & Tone
 
-ClickHouse's voice is **benchmark-driven and engineer-pragmatic.** Marketing emphasizes raw performance numbers ("100x faster", "petabyte-scale") and open-source heritage. Closer to research paper than marketing — measured claims with citations.
+ClickHouse’s official guidance calls the voice raw, confident, exacting, technical, and direct. Its stated aim is to empower developers and data teams with speed, performance, and control; the writing guidance asks teams to get to the point, avoid generic marketing language, and prove claims with numbers, benchmarks, or examples. Use active, short sentences and practical error language. [Brand guidelines](https://clickhouse.design/brand) · [Voice and tone](https://clickhouse.design/brand/guidelines/voice-and-tone)
 
-| Context | Tone |
+| Context | Treatment |
 |---|---|
-| CTA | Verb. "Sign up", "Get a demo", "Start building" |
-| Marketing | Numeric. Always lead with benchmark |
-| Documentation | SQL-first, code-heavy, terse |
-| Error (query) | SQL error + line number, never wrapped friendly |
-| Onboarding | Choose: managed cloud / self-host / try in browser |
-
-**Voice samples**
-- *"Sign up"* / *"Get a demo"* <!-- verified: clickhouse.com homepage 2026-05 -->
-
-**Forbidden phrases.** Adjectival superlatives without numbers. "Magic" / "AI-powered" framing.
+| Action | Use a direct verb and name the outcome. |
+| Performance claim | State the measured result, then link the benchmark or example. |
+| Technical explanation | Lead with the practical consequence before implementation detail. |
+| Error or warning | State what happened and what to try next; do not blame the user or use cutesy copy. |
 
 ## 11. Brand Narrative
 
-ClickHouse was originally developed at **Yandex** (Russia's largest tech company) starting in **2009** as an experimental real-time analytics project, with first production deployment in **2012** ([ClickHouse — Wikipedia](https://en.wikipedia.org/wiki/ClickHouse), [Introducing ClickHouse Inc. (2021 blog)](https://clickhouse.com/blog/introducing-click-house-inc)). Used internally for **Yandex.Metrica** (web analytics). **Open-sourced under Apache 2.0 in 2016** — adoption by Uber, Cloudflare, eBay quickly followed. **ClickHouse, Inc. incorporated September 2021** by **Aaron Katz (CEO)** and **Yury Izrailevsky** (co-founder). Funding: **Series A ~$50M (Sept 2021)** led by Index Ventures + Benchmark, with Yandex N.V. participating ([BusinessWire](https://www.businesswire.com/news/home/20210920005219/en/ClickHouse-Inc.-Announces-Incorporation-Along-With-%2450M-In-Series-A-Funding)); **Series B $250M @ $2B (Oct 28, 2021)** led by Coatue + Altimeter; **Series C $350M @ $6.35B (May 2025)** led by Khosla Ventures + BOND + IVP + Battery + Bessemer; **total raised >$650M** ([Forkable](https://www.forkable.io/p/open-source-database-company-clickhouse), [Index Ventures retrospective](https://www.indexventures.com/perspectives/the-fast-and-the-furious-how-clickhouse-the-worlds-fastest-open-source-database-is-creating-the-first-real-time-data-warehouse/)). Brand voice carries original Yandex engineering culture — performance-first, benchmark-cited, SQL-purist.
+ClickHouse began in 2009 as an experiment to generate analytical reports in real time from non-aggregated data. The company’s official history records a 2012 production launch, the 2016 Apache 2 release, and the 2021 incorporation of ClickHouse, Inc.; its current story also frames ClickHouse as a distributed company serving data work that must stay fast as it grows. [Our story](https://clickhouse.com/company/our-story)
+
+That engineering origin gives the present brand its useful tension: a public identity that is intentionally bold and yellow-led, paired with a product system that uses yellow more selectively. The official brand guidelines call this “direct minimalism”—clarity and purpose before decoration—and describe the company as built for engineers and trusted by leaders. [Official brand guidelines](https://clickhouse.design/brand) The 2026 open-source history reinforces the operating principle behind the tone: modular, well-documented work and an open contribution culture rather than performance theater. [Ten years of ClickHouse in open source](https://clickhouse.com/blog/open-source-10)
 
 ## 12. Principles
 
-1. **Performance is the headline.** *UI implication:* hero modules contain a metric, not a tagline.
-2. **SQL is sacred.** *UI implication:* query interfaces accept standard SQL; extensions clearly labeled.
-3. **Open source is the default.** *UI implication:* "Self-host" and "Cloud" entry points equal prominence.
-4. **Charcoal borders, not shadows.** *UI implication:* never shadow on dark theme cards.
-5. **Pale yellow is the active state.** *UI implication:* selected = explicit yellow, not opacity.
+1. **Prove speed rather than decorate it.** The official voice guidance asks for numbers, benchmarks, and examples. *UI implication:* pair a performance claim with a concrete result or source.
+2. **Function over frills.** ClickHouse’s brand values favor what works over what trends. *UI implication:* keep controls compact and purposeful; avoid decorative component states not established by the surface.
+3. **Be technical, not generic.** The guidelines ask teams to speak to builders with precise language. *UI implication:* use direct action labels and explain technical consequences plainly.
+4. **Keep brand and product roles distinct.** Official color guidance says yellow is primary for brand and selective for product. *UI implication:* do not blanket an application in yellow just because a public campaign uses it prominently.
+5. **Design for an open engineering community.** The official open-source history emphasizes code, documentation, review, and contributors. *UI implication:* expose meaningful technical context and avoid claims the interface cannot substantiate.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by ClickHouse user segments (data engineers, observability builders, analytics leads), not individual people.*
+The reviewed first-party material identifies developers and data teams as the intended audience, but it does not provide validated demographic or task-research personas suitable for named archetypes. Do not invent them.
 
-**Sergey Volkov, 38, Berlin.** Senior data engineer at ad-tech. Self-hosted on K8s for 50PB+.
-
-**Aisha Patel, 31, San Francisco.** Founding engineer at observability startup using ClickHouse Cloud.
-
-**Rui Chen, 45, Singapore.** Data platform lead at regional bank. Evaluating vs Snowflake.
+- **[FILL IN: validated developer workflow audience]** — add only with a first-party product-research or workflow source.
+- **[FILL IN: validated data-team decision audience]** — add only with a first-party product-research or workflow source.
 
 ## 14. States
 
-| State | Treatment |
+| State | Evidence boundary |
 |---|---|
-| **Empty (no databases)** | "Create your first database" with SQL CREATE snippet |
-| **Empty (query result)** | "0 rows returned in 12ms" — query-stat focused |
-| **Loading (query)** | Inline spinner + estimated rows scanned |
-| **Loading (table scan)** | Progress bar with rows/sec + bytes/sec |
-| **Error (SQL syntax)** | Inline below editor with line:column |
-| **Error (server)** | "Server error (200): table not found." |
-| **Success (query)** | Result table appears, query stats line |
-| **Success (cluster created)** | Connection string visible, copy-button |
-| **Skeleton (cluster list)** | Charcoal-border placeholder rows |
-| **Disabled (read-only role)** | 0.5 opacity + lock icon |
-| **Loading (long query)** | Pause/cancel after 5s; partial results stream |
+| Public primary action — default | Home/pricing actions: `#faff69`, `#151515`, 4px radius; exact padding varies by selector. |
+| Public navigation item — focus/hover/pressed | Home `data-omd-capture="4"` recorded all three states; the raw style is retained in verification notes because no one global state color was established. |
+| Pricing select — expanded/menu-open | Three captured menus: `#282828`, `#dfdfdf`, lower 6px corners, yellow lower/side border. |
+| Pricing menu option — selected | Collector recorded selected targets within the expanded menu; no unobserved selected fill is claimed. |
+| Pricing toggle — checked/unchecked | Both state labels were captured on one radio-like control; no different checked visual value is asserted. |
+| Cookie dialog — open | Separate consent dialog: `#141414`, `#ffffff`, 1px `#393939`, 10px radius. |
+| Loading, error, empty, disabled, success, skeleton | Not captured on these public routes; intentionally unspecified. |
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Result row select |
-| `motion-fast` | 150ms | Hover, link to Neon Volt |
-| `motion-standard` | 250ms | Modal |
-| `motion-active-pulse` | 300ms | Pale yellow active appearance |
-
-Standard cubic-bezier; no bounce. Charcoal borders never animate. `prefers-reduced-motion: reduce` makes link hover instant.
-
----
-
-**Verified:** 2026-05-08 (B1 loop)
-**Tier 1 sources:** clickhouse.com (live DOM via playwright — dark `#141414` ghost; cookie banner `#166534` Allow / `#141414` Dismiss; nav 8px / 14px·500)
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 1 (Philosophy):** clickhouse.com homepage benchmarks; ClickHouse, Inc. corporate history; Aaron Katz public talks.
-**Style ref:** `stripe`. **Conflicts unresolved:** none.
+The supplied evidence records interaction outcomes (public navigation focus/hover/pressed, pricing-menu expansion, toggle state labels, and dialogs) but no duration, easing, transition-property, or reduced-motion measurement. Do not infer a ClickHouse motion scale from static public states or Click UI documentation. **[FILL IN: motion tokens only after direct surface or official token evidence.]**

@@ -149,7 +149,7 @@ export default function RootLayout({
                   softwareVersion: CLI_VERSION,
                   license: "https://opensource.org/licenses/MIT",
                   description:
-                    "Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 18 skills + 16 sub-agents + 400 reference DESIGN.md files. Install once, then talk to your agent in natural language.",
+                    "Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 18 skills + 16 sub-agents + 440 reference DESIGN.md files. Install once, then talk to your agent in natural language.",
                   offers: {
                     "@type": "Offer",
                     price: "0",
@@ -159,7 +159,7 @@ export default function RootLayout({
                     "18 skills: core flow (apply / init / harness / remember / learn / sync / taste) + capture/assets + v0.2 agent layer (orchestrator / kr-writer / locale-adapter / designer-review / final-qa / codex-image) + omd:feel (quantified interface-feel — apply + audit) + standalone claude-design",
                     "16 sub-agents: master orchestrator + 15 specialists with advisor/generator pairs",
                     "10-phase design pipeline (Plan → System → Make → Validate)",
-                    "400 reference DESIGN.md files (Stripe, Toss, Linear, Vercel, Anthropic, Notion, etc.)",
+                    "440 reference DESIGN.md files (Stripe, Toss, Linear, Vercel, Anthropic, Notion, etc.)",
                     "Zero AI calls during install — pure markdown copy",
                     "Supports Claude Code, Codex, OpenCode, Cursor",
                     "Brand-philosophy layer on every reference — voice, narrative, principles, personas, states, motion",
@@ -192,7 +192,7 @@ export default function RootLayout({
                       "@type": "HowToStep",
                       position: 2,
                       name: "Bootstrap a DESIGN.md",
-                      text: 'Open Claude Code / Codex / OpenCode / Cursor and say: "Set up the design system for [your project description]." The agent picks one of 400 references, proposes a hybrid DESIGN.md, asks for confirmation, writes the file plus shims (CLAUDE.md / AGENTS.md / .cursor/rules).',
+                      text: 'Open Claude Code / Codex / OpenCode / Cursor and say: "Set up the design system for [your project description]." The agent picks one of 440 references, proposes a hybrid DESIGN.md, asks for confirmation, writes the file plus shims (CLAUDE.md / AGENTS.md / .cursor/rules).',
                     },
                     {
                       "@type": "HowToStep",
@@ -227,12 +227,14 @@ export default function RootLayout({
         <AnalyticsConsent />
         {GA_ID && (
           <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
             {/* Consent Mode v2 defaults run BEFORE config (same inline script =
                 guaranteed order): EEA/UK/CH denied until the banner grants;
                 everywhere else granted. AnalyticsConsent flips EEA visitors to
                 granted on Accept via gtag('consent','update'). */}
-            <Script id="gtag-init" strategy="afterInteractive">
+            {/* beforeInteractive defines the queue before client mount effects.
+                Without it, first-load events such as bld_open can fire before
+                window.gtag exists and are silently lost. */}
+            <Script id="gtag-init" strategy="beforeInteractive">
               {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}` +
                 `gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:${JSON.stringify(EEA_REGION_CODES)},wait_for_update:500});` +
                 `gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});` +
@@ -241,6 +243,7 @@ export default function RootLayout({
                 `gtag('set','url_passthrough',true);` +
                 `gtag('js',new Date());gtag('config','${GA_ID}');`}
             </Script>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
           </>
         )}
       </body>

@@ -4,451 +4,253 @@ name: Clay
 country: US
 category: design-tools
 homepage: "https://www.clay.com"
-primary_color: "#ffd23f"
+primary_color: "#000000"
 logo:
   type: github
   slug: clay-run
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
-ds:
-  name: Clay Newsroom
-  url: "https://www.clay.com/press"
-  type: brand
-  description: Clay's official press kit and co-branding guidelines.
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.clay.com/", inspected: "2026-07-13" }
+    - { id: surface-2, kind: marketing, url: "https://www.clay.com/partners/solutions", inspected: "2026-07-13" }
+    - { id: surface-3, kind: marketing, url: "https://www.clay.com/pricing", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.clay.com/", captured: "2026-07-13" }
+    - { id: partners-live, kind: product-surface, url: "https://www.clay.com/partners/solutions", captured: "2026-07-13" }
+    - { id: pricing-live, kind: product-surface, url: "https://www.clay.com/pricing", captured: "2026-07-13" }
+    - { id: roobert-license, kind: license, url: "https://displaay.net/help/licenses", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.canvas": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.ink": *home
+    "tokens.colors.oat-action": *home
+    "tokens.colors.nav-muted": *home
+    "tokens.colors.tab-default": *home
+    "tokens.colors.tab-active": *home
+    "tokens.typography.family.ui": *home
+    "tokens.typography.compact-action.size": *home
+    "tokens.typography.compact-action.weight": *home
+    "tokens.typography.compact-action.lineHeight": *home
+    "tokens.typography.compact-action.tracking": *home
+    "tokens.typography.compact-action.use": *home
+    "tokens.spacing.action-y": *home
+    "tokens.spacing.action-x": *home
+    "tokens.rounded.action": *home
+    "tokens.rounded.tab": *home
+    "tokens.rounded.logo-card": *home
+    "tokens.components.logo-card.type": *home
+    "tokens.components.logo-card.bg": *home
+    "tokens.components.logo-card.radius": *home
+    "tokens.components.logo-card.padding": *home
+    "tokens.components.logo-card.use": *home
 tokens:
-  source: prose-derived
-  extracted: "2026-06-08"
-  note: "primary = live interactive/text Clay Black (#000000, Tier 1); brand = Lemon-gold marketing swatch (#fbbd41). primary_color field #ffd23f is the press-kit gold, not present verbatim in prose."
+  source: live-extract
+  extracted: "2026-07-13"
+  components_harvested: false
   colors:
-    primary: "#000000"
-    brand: "#fbbd41"
-    canvas: "#faf9f7"
-    foreground: "#000000"
-    muted: "#9f9b93"
-    on-primary: "#ffffff"
-    surface: "#ffffff"
-    hairline: "#dad4c8"
-    body: "#55534e"
-    link: "#333333"
-    accent-matcha: "#078a52"
-    accent-slushie: "#3bd3fd"
-    accent-lemon: "#fbbd41"
-    accent-ube: "#43089f"
-    accent-pomegranate: "#fc7981"
-    accent-blueberry: "#01418d"
-    error: "#ef4444"
-    badge-bg: "#f0f8ff"
-    badge-text: "#3859f9"
+    canvas: "#fefdfb"
+    ink: "#000000"
+    oat-action: "#f3f2ed"
+    nav-muted: "#79756d"
+    tab-default: "#f4f3f0"
+    tab-active: "#aaebfd"
   typography:
-    family: { sans: "Roobert", mono: "Space Mono" }
-    display-hero:      { size: 80, weight: 600, lineHeight: 1.00, tracking: -3.2, use: "Hero headlines, all 5 stylistic sets" }
-    display-secondary: { size: 60, weight: 600, lineHeight: 1.00, tracking: -2.4, use: "Secondary hero headlines" }
-    section:           { size: 44, weight: 600, lineHeight: 1.10, tracking: -1.32, use: "Section headings" }
-    card-heading:      { size: 32, weight: 600, lineHeight: 1.10, tracking: -0.64, use: "Card headings" }
-    feature-title:     { size: 20, weight: 600, lineHeight: 1.40, tracking: -0.4, use: "Feature titles" }
-    subheading:        { size: 20, weight: 500, lineHeight: 1.50, tracking: -0.16, use: "Sub-headings, no ss01" }
-    body-large:        { size: 20, weight: 400, lineHeight: 1.40, use: "Large body text" }
-    body:              { size: 18, weight: 400, lineHeight: 1.60, tracking: -0.36, use: "Relaxed body text" }
-    body-standard:     { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
-    button:            { size: 16, weight: 500, lineHeight: 1.50, tracking: -0.16, use: "Button label" }
-    button-large:      { size: 24, weight: 400, lineHeight: 1.50, use: "Large button label" }
-    nav-link:          { size: 15, weight: 500, lineHeight: 1.60, use: "Navigation links" }
-    caption:           { size: 14, weight: 400, lineHeight: 1.50, tracking: -0.14, use: "Captions" }
-    small:             { size: 12, weight: 400, lineHeight: 1.50, use: "Small text" }
-    uppercase-label:   { size: 12, weight: 600, lineHeight: 1.20, tracking: 1.08, use: "Uppercase wayfinding labels" }
-    badge:             { size: 9.6, weight: 600, use: "Pill badges" }
-  spacing: { xs: 4, sm: 8, md: 16, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 8, badge: 11, card: 12, feature: 24, section: 40, full: 1584 }
-  shadow:
-    clay: "rgba(0,0,0,0.1) 0px 1px 1px, rgba(0,0,0,0.04) 0px -1px 1px inset, rgba(0,0,0,0.05) 0px -0.5px 1px"
-    hard-offset: "rgb(0,0,0) -7px 7px"
-  components_harvested: true
+    family: { ui: "Roobertvf" }
+    compact-action: { size: 13.92, weight: 500, lineHeight: 20.88, tracking: -0.1392, use: "Compact public-marketing header action" }
+  spacing: { action-y: 8, action-x: 16 }
+  rounded: { action: 12, tab: 12, logo-card: 18 }
   components:
-    button-primary: { type: button, fg: "#000000", use: "Transparent fill, black text, hover rotateZ(-8deg) + hard offset shadow" }
-    button-white-solid: { type: button, bg: "#ffffff", fg: "#000000", radius: 12, use: "White fill, animated rotation hover — CTA on colored sections" }
-    button-ghost: { type: button, fg: "#000000", radius: 4, use: "Transparent fill, 1px border, dragonfruit hover" }
-    card: { type: card, bg: "#ffffff", radius: 12, use: "White surface on cream, 1px solid #dad4c8 oat border, multi-layer clay shadow with inset highlight" }
-    swatch-section: { type: card, use: "Full-width swatch-colored background (matcha/slushie/ube/lemon), white or black text by contrast" }
-    dashed-border: { type: card, use: "1px dashed #dad4c8 for secondary/decorative containers — hand-drawn craft quality" }
-    uppercase-label: { type: badge, fg: "#000000", font: "12/600", use: "Uppercase, 1.08px tracking — wayfinding system" }
+    logo-card: { type: card, bg: "#fefdfb", radius: "18px", padding: "16px 20px", use: "Customer-logo card on the public home marketing surface" }
 ---
 
-# Design System Inspiration of Clay
+# Clay — Design Reference
 
 ## 1. Visual Theme & Atmosphere
 
-Clay's website is a warm, playful celebration of color that treats B2B data enrichment like a craft rather than an enterprise chore. The design language is built on a foundation of warm cream backgrounds (`#faf9f7`) and oat-toned borders (`#dad4c8`, `#eee9df`) that give every surface the tactile quality of handmade paper. Against this artisanal canvas, a vivid swatch palette explodes with personality — Matcha green, Slushie cyan, Lemon gold, Ube purple, Pomegranate pink, Blueberry navy, and Dragonfruit magenta — each named like flavors at a juice bar, not colors in an enterprise UI kit.
+Clay is a go-to-market infrastructure company for teams that build revenue systems from data, agents, orchestration, execution, and governance. Its current public homepage frames that work as infrastructure rather than a single enrichment tool, while Clay’s own account of the 2026 redesign says the old page no longer represented the breadth of the product. The captured public pages answer that technical story with a light, almost paper-white field, black type and actions, rounded compact controls, and unusually cheerful color moments in tabs, cards, and pricing. Clay describes the intended tension directly: make infrastructure and engineering feel fun and creative. This reference is deliberately bounded to the three captured public marketing pages—home, partner solutions, and pricing. It does not generalize their visual system into the authenticated product or documentation chrome, neither of which was supplied as evidence.
 
-The typography is anchored by Roobert, a geometric sans-serif with character, loaded with an extensive set of OpenType stylistic sets (`"ss01"`, `"ss03"`, `"ss10"`, `"ss11"`, `"ss12"`) that give the text a distinctive, slightly quirky personality. At display scale (80px, weight 600), Roobert uses aggressive negative letter-spacing (-3.2px) that compresses headlines into punchy, billboard-like statements. Space Mono serves as the monospace companion for code and technical labels, completing the craft-meets-tech duality.
-
-What makes Clay truly distinctive is its hover micro-animations: buttons on hover rotate slightly (`rotateZ(-8deg)`), translate upward (`translateY(-80%)`), change background to a contrasting swatch color, and cast a hard offset shadow (`rgb(0,0,0) -7px 7px`). This playful hover behavior — where a button literally tilts and jumps on interaction — creates a sense of physical delight that's rare in B2B software. Combined with generously rounded containers (24px–40px radius), dashed borders alongside solid ones, and a multi-layer shadow system that includes inset highlights, Clay feels like a design system that was made by people who genuinely enjoy making things.
-
-**Key Characteristics:**
-- Warm cream canvas (`#faf9f7`) with oat-toned borders (`#dad4c8`) — artisanal, not clinical
-- Named swatch palette: Matcha, Slushie, Lemon, Ube, Pomegranate, Blueberry, Dragonfruit
-- Roobert font with 5 OpenType stylistic sets — quirky geometric character
-- Playful hover animations: rotateZ(-8deg) + translateY(-80%) + hard offset shadow
-- Space Mono for code and technical labels
-- Generous border radius: 24px cards, 40px sections, 1584px pills
-- Mixed border styles: solid + dashed in the same interface
-- Multi-layer shadow with inset highlight: `0px 1px 1px` + `-1px inset` + `-0.5px`
+- **Crisp neutral base:** the most repeated visible pair is `#fefdfb` and `#000000`, rather than a broad semantic application palette.
+- **Playful local accents:** `#aaebfd` is an observed active tab fill; pricing and partner cards introduce additional local colors without establishing a global app-color scale.
+- **Soft geometry:** small actions and tabs are 12px-rounded; a home customer-logo card is 18px-rounded.
+- **System-plus-illustration story:** Clay’s first-party redesign account describes a playful Rube Goldberg visual for an interconnected GTM system; that is brand context, not a token claim.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Clay Black** (`#000000`): Text, headings, pricing card text, `--_theme--pricing-cards---text`
-- **Pure White** (`#ffffff`): Card backgrounds, button backgrounds, inverse text
-- **Warm Cream** (`#faf9f7`): Page background — the warm, paper-like canvas
+### Observed public-marketing roles
 
-### Swatch Palette — Named Colors
+- **Paper canvas** (`#fefdfb`): home customer-logo card fill (`home::div.logo-card`); it is an observed card surface, not a claim about an authenticated app canvas.
+- **Ink** (`#000000`): body, navigation, and the compact dark header action across all three captured pages.
+- **Oat action** (`#f3f2ed`): compact light header action on home, partner-solutions, and pricing.
+- **Muted navigation label** (`#79756d`): home navigation-content label text.
+- **Default tab fill** (`#f4f3f0`): home `.tab-btn` default.
+- **Active tab fill** (`#aaebfd`): home `.tab-btn.cc-active`.
 
-**Matcha (Green)**
-- **Matcha 300** (`#84e7a5`): `--_swatches---color--matcha-300`, light green accent
-- **Matcha 600** (`#078a52`): `--_swatches---color--matcha-600`, mid green
-- **Matcha 800** (`#02492a`): `--_swatches---color--matcha-800`, deep green for dark sections
-
-**Slushie (Cyan)**
-- **Slushie 500** (`#3bd3fd`): `--_swatches---color--slushie-500`, bright cyan accent
-- **Slushie 800** (`#0089ad`): `--_swatches---color--slushie-800`, deep teal
-
-**Lemon (Gold)**
-- **Lemon 400** (`#f8cc65`): `--_swatches---color--lemon-400`, warm pale gold
-- **Lemon 500** (`#fbbd41`): `--_swatches---color--lemon-500`, primary gold
-- **Lemon 700** (`#d08a11`): `--_swatches---color--lemon-700`, deep amber
-- **Lemon 800** (`#9d6a09`): `--_swatches---color--lemon-800`, dark amber
-
-**Ube (Purple)**
-- **Ube 300** (`#c1b0ff`): `--_swatches---color--ube-300`, soft lavender
-- **Ube 800** (`#43089f`): `--_swatches---color--ube-800`, deep purple
-- **Ube 900** (`#32037d`): `--_swatches---color--ube-900`, darkest purple
-
-**Pomegranate (Pink/Red)**
-- **Pomegranate 400** (`#fc7981`): `--_swatches---color--pomegranate-400`, warm coral-pink
-
-**Blueberry (Navy Blue)**
-- **Blueberry 800** (`#01418d`): `--_swatches---color--blueberry-800`, deep navy
-
-### Neutral Scale (Warm)
-- **Warm Silver** (`#9f9b93`): Secondary/muted text, footer links
-- **Warm Charcoal** (`#55534e`): Tertiary text, dark muted links
-- **Dark Charcoal** (`#333333`): Link text on light backgrounds
-
-### Surface & Border
-- **Oat Border** (`#dad4c8`): Primary border — warm, cream-toned structural lines
-- **Oat Light** (`#eee9df`): Secondary lighter border
-- **Cool Border** (`#e6e8ec`): Cool-toned border for contrast sections
-- **Dark Border** (`#525a69`): Border on dark sections
-- **Light Frost** (`#eff1f3`): Subtle button background (at 0% opacity on hover)
-
-### Badges
-- **Badge Blue Bg** (`#f0f8ff`): Blue-tinted badge surface
-- **Badge Blue Text** (`#3859f9`): Vivid blue badge text
-- **Focus Ring** (`rgb(20, 110, 245) solid 2px`): Accessibility focus indicator
-
-### Shadows
-- **Clay Shadow** (`rgba(0,0,0,0.1) 0px 1px 1px, rgba(0,0,0,0.04) 0px -1px 1px inset, rgba(0,0,0,0.05) 0px -0.5px 1px`): Multi-layer with inset highlight — the signature
-- **Hard Offset** (`rgb(0,0,0) -7px 7px`): Hover state — playful hard shadow
+Other bright surfaces appear in the bundle—for example partner testimonial fills and pricing-plan colors—but each is local to its observed component. They are not promoted to a universal status or product palette.
 
 ## 3. Typography Rules
 
-### Font Families
-- **Primary**: `Roobert`, fallback: `Arial`
-- **Monospace**: `Space Mono`
-- **OpenType Features**: `"ss01"`, `"ss03"`, `"ss10"`, `"ss11"`, `"ss12"` on all Roobert text (display uses all 5; body/UI uses `"ss03"`, `"ss10"`, `"ss11"`, `"ss12"`)
+### Evidence classes
 
-### Hierarchy
+- **Live computed public-web use:** visible text on the three captured marketing pages resolves to `Roobertvf, Arial, sans-serif`. The collector reports `Roobertvf` as loaded with high confidence, 1,564 visible uses, and two Clay-hosted WOFF2 sources. It is the sole machine UI-family token here because computed usage, FontFaceSet status, and source URLs agree.
+- **Official foundry and licence context:** Displaay identifies Roobert as a mono-linear geometric sans with variable weight, slant, and mono axes. Its web licence covers WOFF/WOFF2 use through `@font-face`; that licence describes the foundry’s terms, not a reusable Clay asset licence.
+- **Declared-only families:** Canela, Canela Web, Inter, Roobert (static family name), Roobert mono, Space Mono, Phosphor, and Webflow icon faces appear in declarations, but the supplied collector found no visible loaded use for them. They remain declared-only and are not substituted or promoted to UI tokens.
+- **Unobserved domains:** no authenticated product surface or documentation chrome was captured, so this reference makes no product-font or docs-font claim.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | Roobert | 80px (5.00rem) | 600 | 1.00 (tight) | -3.2px | All 5 stylistic sets |
-| Display Secondary | Roobert | 60px (3.75rem) | 600 | 1.00 (tight) | -2.4px | All 5 stylistic sets |
-| Section Heading | Roobert | 44px (2.75rem) | 600 | 1.10 (tight) | -0.88px to -1.32px | All 5 stylistic sets |
-| Card Heading | Roobert | 32px (2.00rem) | 600 | 1.10 (tight) | -0.64px | All 5 stylistic sets |
-| Feature Title | Roobert | 20px (1.25rem) | 600 | 1.40 | -0.4px | All 5 stylistic sets |
-| Sub-heading | Roobert | 20px (1.25rem) | 500 | 1.50 | -0.16px | 4 stylistic sets (no ss01) |
-| Body Large | Roobert | 20px (1.25rem) | 400 | 1.40 | normal | 4 stylistic sets |
-| Body | Roobert | 18px (1.13rem) | 400 | 1.60 (relaxed) | -0.36px | 4 stylistic sets |
-| Body Standard | Roobert | 16px (1.00rem) | 400 | 1.50 | normal | 4 stylistic sets |
-| Body Medium | Roobert | 16px (1.00rem) | 500 | 1.20–1.40 | -0.16px to -0.32px | 4–5 stylistic sets |
-| Button | Roobert | 16px (1.00rem) | 500 | 1.50 | -0.16px | 4 stylistic sets |
-| Button Large | Roobert | 24px (1.50rem) | 400 | 1.50 | normal | 4 stylistic sets |
-| Button Small | Roobert | 12.8px (0.80rem) | 500 | 1.50 | -0.128px | 4 stylistic sets |
-| Nav Link | Roobert | 15px (0.94rem) | 500 | 1.60 (relaxed) | normal | 4 stylistic sets |
-| Caption | Roobert | 14px (0.88rem) | 400 | 1.50–1.60 | -0.14px | 4 stylistic sets |
-| Small | Roobert | 12px (0.75rem) | 400 | 1.50 | normal | 4 stylistic sets |
-| Uppercase Label | Roobert | 12px (0.75rem) | 600 | 1.20 (tight) | 1.08px | `text-transform: uppercase`, 4 sets |
-| Badge | Roobert | 9.6px | 600 | — | — | Pill badges |
+### Measured public-marketing hierarchy
 
-### Principles
-- **Five stylistic sets as identity**: The combination of `"ss01"`, `"ss03"`, `"ss10"`, `"ss11"`, `"ss12"` on Roobert creates a distinctive typographic personality. `ss01` is reserved for headings and emphasis — body text omits it, creating a subtle hierarchy through glyph variation.
-- **Aggressive display compression**: -3.2px at 80px, -2.4px at 60px — the most compressed display tracking alongside the most generous body spacing (1.60 line-height), creating dramatic contrast.
-- **Weight 600 for headings, 500 for UI, 400 for body**: Clean three-tier system where each weight has a strict role.
-- **Uppercase labels with positive tracking**: 12px uppercase at 1.08px letter-spacing creates the systematic wayfinding pattern.
+| Role | Font | Size | Weight | Line height | Tracking | Evidence boundary |
+|---|---|---:|---:|---:|---:|---|
+| Compact header action | Roobertvf | 13.92px | 500 | 20.88px | -0.1392px | `home::[data-omd-capture="9"]` and `"10"` |
+| Tab control | Roobertvf | 16px | 500 | 24px | normal | `home::[data-omd-capture="116"]` |
+| Logo card text context | Roobertvf | 16px | 400 | 24px | normal | `home::div.logo-card` |
 
-## 4. Component Stylings
+## 4. Components
 
-### Buttons
+All variants below are public-marketing observations. Selectors, surface IDs, and pseudo-state snapshots are retained so that the values are not mistaken for a general Clay product component library. The bundle reports `interactionCount: 0`; pseudo-state values are visual snapshots, not evidence of motion, transition timing, or a full interaction contract.
 
-**Primary (Transparent with Hover Animation)**
-- Background: transparent (`rgba(239, 241, 243, 0)`)
+### Header action
+
+**Dark compact action**
+- Background: `#000000`
+- Text: `#ffffff`
+- Border: `1px solid transparent`
+- Radius: `12px`
+- Padding: `8px 16px`
+- Font: `13.92px / 500 / Roobertvf`
+- Use: compact public header action on `home`, `surface-2`, and `surface-3`; default evidence `home::[data-omd-capture="10"]`
+- Pressed: `rgb(9, 10, 12)` background at `home::[data-omd-capture="10"]::state-pressed`
+- Focus: `rgb(2, 2, 2)` background at `home::[data-omd-capture="10"]::state-focus`
+
+**Oat compact action**
+- Background: `#f3f2ed`
 - Text: `#000000`
-- Padding: 6.4px 12.8px
-- Border: none (or `1px solid #717989` for outlined variant)
-- Hover: background shifts to swatch color (e.g., `#434346`), text to white, `rotateZ(-8deg)`, `translateY(-80%)`, hard shadow `rgb(0,0,0) -7px 7px`
-- Focus: `rgb(20, 110, 245) solid 2px` outline
+- Border: `1px solid transparent`
+- Radius: `12px`
+- Padding: `8px 16px`
+- Font: `13.92px / 500 / Roobertvf`
+- Use: paired compact public header action; default evidence `home::[data-omd-capture="9"]`
+- Hover: `rgb(237, 234, 227)` background at `home::[data-omd-capture="9"]::state-hover`
+- Pressed: `rgb(233, 229, 221)` background at `home::[data-omd-capture="9"]::state-pressed`
+- Focus: `rgb(242, 241, 236)` background at `home::[data-omd-capture="9"]::state-focus`
 
-**White Solid**
+### Marketing tab
+
+**Default**
+- Background: `#f4f3f0`
+- Text: `#1b1a18`
+- Radius: `12px`
+- Padding: `10px 16px`
+- Font: `16px / 500 / Roobertvf`
+- Use: public home tab; evidence `home::[data-omd-capture="116"]`
+
+**Active color variant**
+- Background: `#aaebfd`
+- Text: `#1b1a18`
+- Radius: `12px`
+- Padding: `10px 16px`
+- Font: `16px / 500 / Roobertvf`
+- Use: active public home tab; evidence `home::[data-omd-capture="123"]`
+
+### Customer-logo card
+
+**Default**
+- Background: `#fefdfb`
+- Border: `1px 0px solid` with observed mixed border colors
+- Radius: `18px`
+- Padding: `16px 20px`
+- Font: `16px / 400 / Roobertvf`
+- Use: customer-logo card on the public home page; evidence `home::div.logo-card`
+
+### Pricing select
+
+**Default**
 - Background: `#ffffff`
-- Text: `#000000`
-- Padding: 6.4px
-- Hover: oat-200 swatch color, animated rotation + shadow
-- Use: Primary CTA on colored sections
+- Border: `1px solid #d1cdc7`
+- Radius: `8px`
+- Padding: `12px 16px 12px 40px`
+- Font: `14px / 400 / Roobertvf`
+- Use: pricing-page select; evidence `surface-3::[data-omd-capture="104"]`
+- Disabled: `rgb(244, 243, 240)` background at `surface-3::[data-omd-capture="100"]`
 
-**Ghost Outlined**
-- Background: transparent
-- Text: `#000000`
-- Padding: 8px
-- Border: `1px solid #717989`
-- Radius: 4px
-- Hover: dragonfruit swatch color, white text, animated rotation
+---
 
-### Cards & Containers
-- Background: `#ffffff` on cream canvas
-- Border: `1px solid #dad4c8` (warm oat) or `1px dashed #dad4c8`
-- Radius: 12px (standard cards), 24px (feature cards/images), 40px (section containers/footer)
-- Shadow: `rgba(0,0,0,0.1) 0px 1px 1px, rgba(0,0,0,0.04) 0px -1px 1px inset, rgba(0,0,0,0.05) 0px -0.5px 1px`
-- Colorful section backgrounds using swatch palette (matcha, slushie, ube, lemon)
-
-### Inputs & Forms
-- Text: `#000000`
-- Border: `1px solid #717989`
-- Radius: 4px
-- Focus: `rgb(20, 110, 245) solid 2px` outline
-
-### Navigation
-- Sticky top nav on cream background
-- Roobert 15px weight 500 for nav links
-- Clay logo left-aligned
-- CTA buttons right-aligned with pill radius
-- Border bottom: `1px solid #dad4c8`
-- Mobile: hamburger collapse at 767px
-
-### Image Treatment
-- Product screenshots in white cards with oat borders
-- Colorful illustrated sections with swatch background colors
-- 8px–24px radius on images
-- Full-width colorful section backgrounds
-
-### Distinctive Components
-
-**Swatch Color Sections**
-- Full-width sections with swatch-colored backgrounds (matcha green, slushie cyan, ube purple, lemon gold)
-- White text on dark swatches, black text on light swatches
-- Each section tells a distinct product story through its color
-
-**Playful Hover Buttons**
-- Rotate -8deg + translate upward on hover
-- Hard offset shadow (`-7px 7px`) instead of soft blur
-- Background transitions to contrasting swatch color
-- Creates a physical, toy-like interaction quality
-
-**Dashed Border Elements**
-- Dashed borders (`1px dashed #dad4c8`) alongside solid borders
-- Used for secondary containers and decorative elements
-- Adds a hand-drawn, craft-like quality
+**Verified:** 2026-07-13
+**Tier 1 sources:** `https://www.clay.com/` (public marketing), `https://www.clay.com/partners/solutions` (public marketing), `https://www.clay.com/pricing` (public marketing), `https://www.clay.com/blog/new-homepage-2026` (official positioning and design context), `https://displaay.net/typeface/roobert` and `https://displaay.net/help/licenses` (font and licence context)
+**Tier 2 sources:** `https://getdesign.md/clay` (record exists but identifies an unrelated creative agency; no Clay GTM token value used), `https://styles.refero.design/?q=Clay` (attempted; safe open returned an internal error, no usable record)
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 1px, 2px, 4px, 6.4px, 8px, 12px, 12.8px, 16px, 18px, 20px, 24px
-
-### Grid & Container
-- Max content width centered
-- Feature sections alternate between white cards and colorful swatch backgrounds
-- Card grids: 2–3 columns on desktop
-- Full-width colorful sections break the grid
-- Footer with generous 40px radius container
-
-### Whitespace Philosophy
-- **Warm, generous breathing**: The cream background provides a warm rest between content blocks. Spacing is generous but not austere — it feels inviting, like a well-set table.
-- **Color as spatial rhythm**: The alternating swatch-colored sections create visual rhythm through hue rather than just whitespace. Each color section is its own "room."
-- **Craft-like density inside cards**: Within cards, content is compact and well-organized, contrasting with the generous outer spacing.
-
-### Border Radius Scale
-- Sharp (4px): Ghost buttons, inputs
-- Standard (8px): Small cards, images, links
-- Badge (11px): Tag badges
-- Card (12px): Standard cards, buttons
-- Feature (24px): Feature cards, images, panels
-- Section (40px): Large sections, footer, containers
-- Pill (1584px): CTAs, pill-shaped buttons
+- **Header controls:** the repeated compact header pair uses 8px vertical and 16px horizontal padding at the captured 1440×900 viewport.
+- **Local grouping:** observed home tabs use 10px 16px padding; logo cards use 16px 20px. No site-wide spacing scale is asserted from those local values.
+- **Bounded scope:** the supplied capture has one desktop viewport. It does not establish responsive breakpoints, authenticated-product tables, or documentation layouts.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, cream canvas | Page background |
-| Clay Shadow (Level 1) | `rgba(0,0,0,0.1) 0px 1px 1px, rgba(0,0,0,0.04) 0px -1px inset, rgba(0,0,0,0.05) 0px -0.5px` | Cards, buttons — multi-layer with inset highlight |
-| Hover Hard (Level 2) | `rgb(0,0,0) -7px 7px` | Hover state — playful hard offset shadow |
-| Focus (Level 3) | `rgb(20, 110, 245) solid 2px` | Keyboard focus ring |
-
-**Shadow Philosophy**: Clay's shadow system is uniquely three-layered: a downward cast (`0px 1px 1px`), an upward inset highlight (`0px -1px 1px inset`), and a subtle edge (`0px -0.5px 1px`). This creates a "pressed into clay" quality where elements feel both raised AND embedded — like a clay tablet where content is stamped into the surface. The hover hard shadow (`-7px 7px`) is deliberately retro-graphic, referencing print-era drop shadows and adding physical playfulness.
-
-### Decorative Depth
-- Full-width swatch-colored sections create dramatic depth through color contrast
-- Dashed borders add visual texture alongside solid borders
-- Product illustrations with warm, organic art style
+The captured customer-logo card, tabs, and header actions report `boxShadow: none`. No reusable elevation ladder or shadow token is established. Color, border treatment, and corner radius—not shadow—carry the observed separation on these public surfaces.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use warm cream (`#faf9f7`) as the page background — the warmth is the identity
-- Apply all 5 OpenType stylistic sets on Roobert headings: `"ss01", "ss03", "ss10", "ss11", "ss12"`
-- Use the named swatch palette (Matcha, Slushie, Lemon, Ube, Pomegranate, Blueberry) for section backgrounds
-- Apply the playful hover animation: `rotateZ(-8deg)`, `translateY(-80%)`, hard shadow `-7px 7px`
-- Use warm oat borders (`#dad4c8`) — not neutral gray
-- Mix solid and dashed borders for visual variety
-- Use generous radius: 24px for cards, 40px for sections
-- Use weight 600 exclusively for headings, 500 for UI, 400 for body
+
+- Keep the public-marketing neutral base (`#fefdfb`, `#000000`, and oat action `#f3f2ed`) crisp and legible.
+- Treat bright tab, partner, and pricing colors as local story accents unless another surface verifies a broader role.
+- Use the measured 12px compact-action and tab corners only in the public contexts documented above.
+- Preserve Roobertvf as the observed web family; disclose unavailable or declared-only faces rather than substituting them.
 
 ### Don't
-- Don't use cool gray backgrounds — the warm cream (`#faf9f7`) is non-negotiable
-- Don't use neutral gray borders (`#ccc`, `#ddd`) — always use the warm oat tones
-- Don't mix more than 2 swatch colors in the same section
-- Don't skip the OpenType stylistic sets — they define Roobert's character
-- Don't use subtle hover effects — the rotation + hard shadow is the signature interaction
-- Don't use small border radius (<12px) on feature cards — the generous rounding is structural
-- Don't use standard shadows (blur-based) — Clay uses hard offset and multi-layer inset
-- Don't forget the uppercase labels with 1.08px tracking — they're the wayfinding system
+
+- Do not apply public marketing colors or components to Clay’s authenticated product without product-surface evidence.
+- Do not turn the recorded pseudo-state snapshots into claims about animation, focus-ring behavior, or accessibility support.
+- Do not promote Canela, Inter, Space Mono, or Roobert Mono from declarations to live UI fonts without a computed loaded-use match.
+- Do not infer mobile breakpoints or a universal card radius from the single captured viewport.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile Small | <479px | Single column, tight padding |
-| Mobile | 479–767px | Standard mobile, stacked layout |
-| Tablet | 768–991px | 2-column grids, condensed nav |
-| Desktop | 992px+ | Full layout, 3-column grids, expanded sections |
-
-### Touch Targets
-- Buttons: minimum 6.4px + 12.8px padding for adequate touch area
-- Nav links: 15px font with generous spacing
-- Mobile: full-width buttons for easy tapping
-
-### Collapsing Strategy
-- Hero: 80px → 60px → smaller display text
-- Navigation: horizontal → hamburger at 767px
-- Feature sections: multi-column → stacked
-- Colorful sections: maintain full-width but compress padding
-- Card grids: 3-column → 2-column → single column
-
-### Image Behavior
-- Product screenshots scale proportionally
-- Colorful section illustrations adapt to viewport width
-- Rounded corners maintained across breakpoints
+Only a 1440×900 desktop capture was supplied. The public pages may of course be responsive, but no breakpoint, reflow, touch-target, or mobile-navigation behavior is recorded here.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Background: Warm Cream (`#faf9f7`)
-- Text: Clay Black (`#000000`)
-- Secondary text: Warm Silver (`#9f9b93`)
-- Border: Oat Border (`#dad4c8`)
-- Green accent: Matcha 600 (`#078a52`)
-- Cyan accent: Slushie 500 (`#3bd3fd`)
-- Gold accent: Lemon 500 (`#fbbd41`)
-- Purple accent: Ube 800 (`#43089f`)
-- Pink accent: Pomegranate 400 (`#fc7981`)
-
-### Example Component Prompts
-- "Create a hero on warm cream (#faf9f7) background. Headline at 80px Roobert weight 600, line-height 1.00, letter-spacing -3.2px, OpenType 'ss01 ss03 ss10 ss11 ss12', black text. Subtitle at 20px weight 400, line-height 1.40, #9f9b93 text. Two buttons: white solid pill (12px radius) and ghost outlined (4px radius, 1px solid #717989)."
-- "Design a colorful section with Matcha 800 (#02492a) background. Heading at 44px Roobert weight 600, letter-spacing -1.32px, white text. Body at 18px weight 400, line-height 1.60, #84e7a5 text. White card inset with oat border (#dad4c8), 24px radius."
-- "Build a button with playful hover: default transparent background, black text, 16px Roobert weight 500. On hover: background #434346, text white, transform rotateZ(-8deg) translateY(-80%), hard shadow rgb(0,0,0) -7px 7px."
-- "Create a card: white background, 1px solid #dad4c8 border, 24px radius. Shadow: rgba(0,0,0,0.1) 0px 1px 1px, rgba(0,0,0,0.04) 0px -1px 1px inset. Title at 32px Roobert weight 600, letter-spacing -0.64px."
-- "Design an uppercase label: 12px Roobert weight 600, text-transform uppercase, letter-spacing 1.08px, OpenType 'ss03 ss10 ss11 ss12'."
-
-### Iteration Guide
-1. Start with warm cream (#faf9f7) — never cool white
-2. Swatch colors are for full sections, not small accents — go bold with matcha, slushie, ube
-3. Oat borders (#dad4c8) everywhere — dashed variants for decoration
-4. OpenType stylistic sets are mandatory — they make Roobert look like Roobert
-5. Hover animations are the signature — rotation + hard shadow, not subtle fades
-6. Generous radius: 24px cards, 40px sections — nothing looks sharp or corporate
-7. Three weights: 600 (headings), 500 (UI), 400 (body) — strict roles
+Use this reference for a Clay-like **public GTM-infrastructure marketing moment**, not as a clone of Clay’s authenticated application: paper-white cards, black compact calls to action, 12px control corners, and one locally meaningful bright tab or plan accent. Keep the typography to the observed Roobertvf web family only when it is actually available and licensed for the target project; otherwise leave the family unresolved rather than presenting a substitute as Roobert.
 
 ## 10. Voice & Tone
 
-Clay's voice is **playfully irreverent + sales-team-fluent.** Marketing mixes GTM jargon ("outbound-sourced pipeline", "CRM enrichment") with disarming humor and motion (cards rotate on hover). The combination: "we know GTM is dry, we made the tool fun."
+Clay’s official redesign account balances systems language with creative explanation: data, agents, orchestration, execution, and governance are presented as connected building blocks rather than opaque AI magic. The same post describes the desired brand world as playful, expansive, creative, and precise. That is useful public-marketing guidance; it is not a documented product-error-copy system.
 
-| Context | Tone |
+| Context | Observed direction |
 |---|---|
-| CTA | Direct verb. "Get started", "Book a demo", "Start building for free" |
-| Marketing | Customer-quote-driven. "How Clay uses Clay" |
-| Error | Specific. "LinkedIn rate limit hit. Resume in 4 hours or upgrade plan." |
-| Documentation | Recipe-style, copy-paste examples |
+| Positioning | State the infrastructure and the outcome plainly. |
+| Explanation | Name the building blocks and show their relationship. |
+| Brand story | Pair technical clarity with a playful visual metaphor. |
 
-**Voice samples**
-- *"Start building for free"* <!-- verified: clay.com homepage 2026-05 -->
-- *"How Clay uses Clay"* <!-- verified: clay.com case studies -->
-
-**Forbidden phrases.** "AI-powered" without explanation. "10× your outbound" superlative. Aggressive sales pressure.
+**Official wording samples**
+- *“Clay is the infrastructure GTM engineers build on.”* — official homepage-relaunch account.
+- *“Data” / “Agents” / “Orchestration” / “Execution” / “Governance”* — five official primitives.
+- *“fun and creative”* — Clay’s stated design challenge for the infrastructure story.
 
 ## 11. Brand Narrative
 
-Clay was founded in **2017** by **Kareem Amin** (CEO) in New York ([Sequoia — Partnering with Clay](https://sequoiacap.com/article/partnering-with-clay-on-a-mission-to-grow/), [Kareem Amin LinkedIn](https://www.linkedin.com/in/kareemamin)). **Varun Anand** joined as **co-founder + Head of Operations in 2021** ([Inside Clay's unconventional path to $1.25B — First Round Review podcast](https://review.firstround.com/podcast/inside-clays-unconventional-path-to-1-25b/)). Pivot from no-code-platform to **GTM-data-platform** around 2021 when sales/RevOps teams emerged as the actual customers — "Spreadsheet for outbound" → GTM-specific Airtable. Now: **10,000+ customers**, **150+ integrated data sources**. Funding: **Series B expansion $40M at $1.25B valuation**, then **Series C $100M led by CapitalG** (Alphabet's independent growth fund) on 2025-08-05 ([BusinessWire](https://www.businesswire.com/news/home/20250805719448/en/AI-GTM-Leader-Clay-Raises-$100M-Series-C-to-Fuel-GTM-Engineering-Roles-Industrywide)). Clay coined the **"GTM Engineering"** role category — published for it as a signature marketing position.
+Clay’s official 2026 homepage account says the prior site primarily represented a data-enrichment product and no longer reflected the breadth of the current offer. The new public position is GTM infrastructure: teams combine data, agents, orchestration, execution, and governance to build their own revenue systems. Clay explains the visual transition as continuity rather than a reset, using a Rube Goldberg machine to make an interconnected engineered system feel playful and understandable. The source is a first-party marketing narrative; it does not establish unobserved product-interface rules or historical company facts beyond that account.
 
 ## 12. Principles
 
-1. **Cells are the unit.** *UI implication:* table-first canvas, no tabs above data plane.
-2. **Recipe-style, not magic.** Workflows show every step + provider. *UI implication:* every step editable, never opaque.
-3. **Hover is the play.** Cards rotate, shadows pop. *UI implication:* generous hover transitions on cards (rotate ~3deg + hard shadow `4px 4px 0 #000`).
-4. **Customer voice over marketing voice.** *UI implication:* case studies first-class nav.
-5. **Three weights, strict roles.** *UI implication:* never introduce 700 or 300.
+1. **Systems over a single feature.** Clay’s published five-primitives framing connects data through governance. *Reference UI implication:* explain relationships and flow before decorating isolated widgets.
+2. **Customer-specific building blocks.** Clay says each GTM system looks different. *Reference UI implication:* favor composable examples over a one-size-fits-all outcome claim.
+3. **Technical clarity with play.** Clay describes the challenge of making infrastructure fun and creative. *Reference UI implication:* use an intentional, concrete visual metaphor only when it clarifies the system.
+
+The UI implications are this reference’s interpretation of official positioning, not published Clay product principles.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Clay user segments (RevOps, BDR managers, founders), not individual people.*
-
-**Yusuf Khan, 32, NYC.** RevOps lead at B2B SaaS. 15 nightly enrichment workflows.
-
-**Sarah Yoon, 27, San Francisco.** Founding BDR at Series A startup. Clay for list building + AI personalization.
-
-**Olivia Bennett, 45, London.** Agency founder running outbound for 12 clients. Workflow templates across clients.
+No named or fictional personas are asserted. First-party positioning identifies GTM engineers and GTM leaders as the public audience for systems built from the five primitives; its examples span revenue-critical work such as RevOps, growth, customer success, and data-oriented operations. This is an audience boundary, not a substitute for Clay’s user research.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no workflows)** | Centered illustration + "Create your first workflow" CTA |
-| **Empty (no data in table)** | Inline "+ Add a column" / "+ Add a row" with playful arrows |
-| **Loading (enrichment)** | Per-cell spinner with elapsed time, cancellable |
-| **Loading (workflow run)** | Top-bar progress with step count |
-| **Error (provider failed)** | Cell shows red `#ef4444` border + tooltip with provider name |
-| **Error (rate limit)** | Banner with countdown to next-allowed time + upgrade CTA |
-| **Success (enrichment)** | Subtle green border pulse on cells, no toast |
-| **Success (workflow ran)** | Notification chip top-right, dismissible |
-| **Skeleton (table loading)** | Rotating skeleton cards (signature motion) |
-| **Disabled (preview-only)** | 0.6 opacity + lock icon overlay |
-| **Loading (AI generation)** | Per-row "AI is writing..." with cancel link |
+No authenticated product, empty, loading, success, or error-state surface was captured. The only state evidence retained in §4 is the collector’s public-marketing pseudo-state snapshots for the header actions and the pricing select; it must not be extrapolated into application-state guidance.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Cell commit |
-| `motion-fast` | 200ms | Hover (slower for rotation effect) |
-| `motion-rotate` | 300ms | Card rotation on hover |
-| `motion-shadow-snap` | 100ms | Hard shadow pop-in |
-| `motion-standard` | 300ms | Modal, panel |
-
-Easings: `ease-rotate cubic-bezier(0.4, 0, 0.2, 1)`, slight overshoot. **Hover rotation is the signature** — never disable except under `prefers-reduced-motion: reduce`.
-
----
-
-**Verified:** 2026-05-08 (B1 loop)
-**Tier 1 sources:** clay.com (live DOM via playwright — Black `#000000` Primary 12px / 8×16 / 42px / 16px·500; content cards 16px radius)
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 1 (Philosophy):** clay.com homepage; founder LinkedIn / podcast appearances.
-**Style ref:** `stripe`. **Conflicts unresolved:** none.
+The evidence bundle contains no observed interaction actions (`interactionCount: 0`) and no measured transition or easing values. Although pseudo-state snapshots exist for some public actions, no motion token, duration, or reduced-motion rule is established.

@@ -6,6 +6,16 @@
 import { event, trackRef } from "@/lib/gtag";
 
 export type InstallSurface = "hero" | "ref_detail" | "collection" | "builder";
+export type HandoffKind = "designmd_copy" | "designmd_download" | "prompt_copy" | "install_copy";
+
+/** Canonical activation event. Legacy detail events dual-fire for continuity. */
+export function trackHandoff(args: { kind: HandoffKind; surface: InstallSurface; reference?: string }) {
+  event("act_handoff", {
+    kind: args.kind,
+    surface: args.surface,
+    ...(args.reference ? { reference: args.reference } : {}),
+  });
+}
 
 /** Copied the `npx oh-my-design-cli` install command. KEY EVENT. */
 export function trackInstallCopy(args: { surface: InstallSurface; reference?: string }) {
@@ -13,6 +23,7 @@ export function trackInstallCopy(args: { surface: InstallSurface; reference?: st
     surface: args.surface,
     ...(args.reference ? { reference: args.reference } : {}),
   });
+  trackHandoff({ kind: "install_copy", surface: args.surface, reference: args.reference });
   // Per-reference install-intent counter — kept OUT of the `copy` counter so
   // the install command (identical for every reference) never pollutes
   // content-copy popularity.
@@ -20,7 +31,8 @@ export function trackInstallCopy(args: { surface: InstallSurface; reference?: st
 }
 
 /** Copied the per-brand first prompt. */
-export function trackPromptCopy(reference: string) {
-  event("act_prompt_copy", { reference });
-  trackRef("copy", reference);
+export function trackPromptCopy(args: { reference: string; surface: InstallSurface }) {
+  event("act_prompt_copy", { reference: args.reference, surface: args.surface });
+  trackHandoff({ kind: "prompt_copy", surface: args.surface, reference: args.reference });
+  trackRef("copy", args.reference);
 }

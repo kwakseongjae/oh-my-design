@@ -1,4 +1,4 @@
-# Funnel analytics — redesign (2026-06-23)
+# Funnel analytics — v2 activation cutover (2026-07-10)
 
 Authoritative tracking plan for the **two core product paths**. Supersedes the
 ad-hoc `reference_select` / `generation_complete` / `builder_export` / `ds_*` /
@@ -39,7 +39,9 @@ The current taxonomy conflates intents that must be measured apart:
 
 - `bld_` — the builder (`/builder`)
 - `ds_` — the design-system directory (`/design-systems/[id]`)
-- `act_` — activation (install hand-off; shared across surfaces)
+- `act_` — activation hand-offs shared across surfaces
+- `col_` — collection discovery and builder transfer
+- `ref_` — cross-surface reference sharing
 
 ID parameter is **always `reference`** (finite catalog ~400 → safe dimension).
 
@@ -49,11 +51,12 @@ ID parameter is **always `reference`** (finite catalog ~400 → safe dimension).
 
 ### Builder (`bld_`) — the generator
 ```
-bld_open            land on /builder
+bld_open            {entry_step}                    land on /builder
 bld_reference_select{reference, category, entry}   pick a reference
 bld_generate        {reference, mode}              DESIGN.md generated = preview reached
 bld_export          {reference, channel}           actually grab the .md (download|copy)
 act_install_copy    {reference, surface}           copy the npx install command  ← KEY EVENT
+act_handoff         {kind, surface, reference?}    canonical activation event    ← PRIMARY KPI
 ```
 `mode = as_is | customize`. `channel = download | copy`. `entry = search | browse | hot | deeplink`.
 
@@ -62,6 +65,7 @@ act_install_copy    {reference, surface}           copy the npx install command 
 ds_detail_view      {reference, channel}           open a reference page
 ds_export           {reference, channel}           copy/download the canonical .md as-is
 act_install_copy    {reference, surface}           (if a directory install CTA exists)
+act_handoff         {kind, surface, reference?}    export/prompt/install handoff
 ```
 `channel` on `ds_detail_view` = bucketed referrer enum (`direct|search|social|ai|referral|internal`), NOT the raw referrer.
 
@@ -71,7 +75,7 @@ act_install_copy    {reference, surface}           (if a directory install CTA e
 
 | Target event | Status | Replaces | Params | Fires when |
 |---|---|---|---|---|
-| `bld_open` | **add** | — | — | /builder mounts |
+| `bld_open` | keep+fix | — | entry_step | /builder mounts; differentiates select/customize/preview deep links |
 | `bld_reference_select` | rename | `reference_select` | reference, category, entry | a reference is picked |
 | `bld_generate` | rename+merge | `generation_complete` (+`builder_export`) | reference, **mode** | DESIGN.md generated / preview reached |
 | `bld_export` | rename+merge | `download_designmd`, `copy_designmd` | reference, channel | user downloads/copies the generated .md |
@@ -84,9 +88,16 @@ act_install_copy    {reference, surface}           (if a directory install CTA e
 | `ds_external_click` | keep | `ds_external_click` | reference, destination | outbound to official DS |
 | `ds_md_view_toggle` | merge | `ds_view_toggle`, `md_view_toggle` | reference, view | rendered/raw toggle |
 | `ds_philosophy_toggle` | rename | `philosophy_toggle` | reference, on | philosophy section toggled |
-| `ds_prompt_copy` | rename | `prompt_copy` | reference | copy the agent prompt |
+| `act_prompt_copy` | rename | `prompt_copy` | reference, surface | copy the agent prompt |
 | `ds_browse` | merge | `browse_ds_directory`, `browse_open`, `hot_filter` | filter | directory browse / filter |
 | `act_install_copy` | rename | `install_copy` | reference, surface | npx install command copied ← **KEY EVENT** |
+| `act_handoff` | **add** | dual-fired from export/prompt/install | kind, surface, reference? | canonical deduplicated activation audience |
+| `bld_source_format_view` | add | — | reference, format | DESIGN.md/Tailwind/CSS/DTCG source tab selected |
+| `bld_source_format_export` | add | — | reference, format, action | selected source artifact copied/downloaded |
+| `col_view` | add | — | collection, color_family? | collection landing rendered |
+| `col_open` | add | — | collection, origin, color_family? | collection opened from index/builder/directory/related |
+| `col_builder_click` | add | — | collection, color_family | color collection transferred into builder filter |
+| `ref_share_copy` | add | — | reference, location, artifact | detail/evolution share URL copied |
 | — | **remove** | `curation_*` (10), `shared_view_*` (3) | — | curation surfaces deleted |
 | — | **remove** | `builder_export` | — | redundant with `bld_generate` (1:1 auto-fire) |
 
@@ -104,13 +115,23 @@ Generic collisions to namespace in a follow-up (likely landing-scope, out of thi
 | `channel` (view) | enum `direct\|search\|social\|ai\|referral\|internal` | 6 | on `ds_detail_view` — bucketed referrer |
 | `entry` | enum `search\|browse\|hot\|deeplink` | 4 | how the reference was reached |
 | `surface` (install) | enum `hero\|ref_detail\|collection\|builder` | 4 | where the install command was copied (matches `InstallSurface` in `lib/activation/analytics.ts`) |
+| `kind` (handoff) | enum `designmd_copy\|designmd_download\|prompt_copy\|install_copy` | 4 | one activation vocabulary across builder/detail/CTA |
+| `entry_step` | enum `select\|customize\|preview` | 3 | separates normal builder entry from deep links |
+| `taxonomy_version` | constant | 1 per cutover | attached centrally by `lib/gtag.ts` |
 | `category` | enum (catalog categories) | ~12 | finite |
 | `token` | enum `color\|font\|weight\|radius\|dark\|components` | 6 | which style was customized |
 | `query_len_bucket` | enum (`0`,`1-5`,…) | 7 | replaces raw search query |
 | `has_results` / `on` | boolean | 2 | `has_*`/`is_*` style |
 | `destination` | enum `official_ds\|homepage\|github` | ~3 | outbound target |
+| `format` | enum `designmd\|tailwind\|css\|dtcg` | 4 | source artifact format |
+| `action` | enum `copy\|download` | 2 | source artifact action |
+| `collection` | collection slug | 17, finite | color/curated collection join key |
+| `color_family` | enum `neutral\|red\|orange\|yellow\|green\|teal\|blue\|purple\|pink` | 9 | deterministic primary-color family |
+| `origin` | enum `index\|builder\|directory\|related` | 4 | internal collection entry point |
+| `location` | enum `builder\|ref_detail\|evolution` | 3 | share affordance surface |
+| `artifact` | enum `detail\|evolution` | 2 | copied share target |
 
-**Banned:** raw `query`, `referrer`/`url`, `brand_name`, array `.join(",")` of free text.
+**Banned:** raw `query`, `referrer`/`url`, `brand_name`, array `.join(",")` of free text, and GA acquisition-reserved event keys (`source`, `medium`, `campaign`, etc.). The shared emitter remaps legacy reserved keys under `event_*` during the cutover.
 
 ---
 
@@ -129,8 +150,9 @@ or consent being granted.
 - Server: `POST /api/active` → `PFADD omd:active:YYYYMMDD <vid>` (+ 35-day TTL).
   One HyperLogLog per UTC day; Redis keeps an aggregate cardinality sketch only,
   never the individual ids.
-- Read: `GET /api/active` → `{ dau, wau, mau }`. DAU = today's sketch; rolling
-  WAU/MAU = `PFCOUNT` *union* of the trailing 7 / 30 day keys (no per-window
+- Read: `GET /api/active` → `{ dau, wau, mau }`. The analytics pull reports the
+  last complete UTC DAU separately from the current partial day; rolling WAU/MAU
+  = `PFCOUNT` *union* of the trailing 7 / 30 complete-day keys (no per-window
   writes). CLI: `node scripts/analytics/pull-active.mjs` (writes
   `data/analytics/raw/active.json` incl. a 30-day per-day DAU series).
 
@@ -174,9 +196,19 @@ Data API (these are currently 400-erroring):
 | Export channel | `channel` | Event |
 | Entry | `entry` | Event |
 | Install surface | `surface` | Event |
+| Handoff kind | `kind` | Event |
+| Builder entry step | `entry_step` | Event |
+| Taxonomy version | `taxonomy_version` | Event |
+| Source format | `format` | Event |
+| Source action | `action` | Event |
+| Collection | `collection` | Event |
+| Color family | `color_family` | Event |
+| Collection origin | `origin` | Event |
+| Share location | `location` | Event |
+| Share artifact | `artifact` | Event |
 
-**Key events (conversions):** `bld_generate`, `act_install_copy`. (Optionally
-`bld_export` as a mid-funnel conversion.)
+**Key events (conversions):** `bld_generate`, `act_install_copy`, `act_handoff`.
+Use weekly unique `act_handoff` users as the product activation KPI.
 
 **Annotation:** add a GA4 annotation on the cutover date marking the taxonomy reset.
 
@@ -185,15 +217,27 @@ Data API (these are currently 400-erroring):
 ## Funnel Exploration specs (GA4 UI)
 
 **Builder activation funnel** (open → select → generate → export → install):
-`bld_open` → `bld_reference_select` → `bld_generate` → `bld_export` → `act_install_copy`,
+`bld_open` → `bld_reference_select` → `bld_generate` → `act_handoff(surface=builder)`,
 breakdown by `mode` and `entry`.
 
-**Directory as-is funnel:** `ds_detail_view` → `ds_export` → `act_install_copy`,
+**Directory as-is funnel:** `ds_detail_view` → `act_handoff(surface=ref_detail)`,
 breakdown by `channel`.
 
 **As-is vs customize:** segment `bld_generate` by `mode`; compare downstream
-`bld_export` + `act_install_copy` rates → answers "do customizers convert better?"
+`act_handoff` rates → answers "do customizers convert better?"
 (the question we currently can't answer).
+
+**Source-format adoption:** `bld_generate` → `bld_source_format_view` →
+`bld_source_format_export`, breakdown by `format` and `action`. This measures
+whether non-DESIGN.md exports are discovery-only or genuine handoff artifacts.
+
+**Color discovery:** `col_view` → `col_builder_click` → `bld_generate`, breakdown
+by `color_family`; use `origin` on `col_open` to compare builder, directory,
+related, and the collection index as acquisition surfaces.
+
+**Reference sharing:** `ref_share_copy`, breakdown by `artifact` and `location`;
+compare evolution shares against downstream `/design-systems/*/evolution` landing
+sessions and builder opens.
 
 ---
 
@@ -214,6 +258,17 @@ counter. **No raw `event("...")` left at any callsite.**
 
 ## Implementation status (2026-06-23 — DONE, staged)
 
+### 2026-07-13 discovery/share extension — code complete
+
+- Added canonical source-format events (`bld_source_format_*`), collection
+  discovery (`col_*`), and reference sharing (`ref_share_copy`).
+- GA4 pull now emits optional `source_formats`, `collections`, and
+  `reference_shares` reports; the digest prints each block even before data is
+  available.
+- `setup-ga4.mjs` declares the seven finite dimensions needed by those reports.
+  Apply only after deployment and first event observation.
+- Baseline and removal/expansion rules live in `spec/v2-measurement.md`.
+
 ✅ **Shipped in this changeset** (tsc clean · `next build` green · 553 tests pass):
 1. **Curation removed** — deleted `/curation`, `/result/[typeCode]`, all of
    `components/survey/`; 308 redirects added (`/curation`→`/builder`,
@@ -228,14 +283,15 @@ counter. **No raw `event("...")` left at any callsite.**
    `Customize` button on the preview screen opens the wizard; `bld_customize_*`
    measures the opt-in path.
 
-✅ **GA4 admin config DONE (2026-06-23)** — via `scripts/analytics/setup-ga4.mjs --apply`
-(idempotent; needs the Admin API enabled + the SA at Editor). Created the 5 custom
-dimensions (`reference`, `mode`, `channel`, `entry`, `surface`) and the 2 key events
-(`bld_generate`, `act_install_copy`). The old key events (`copy_designmd`,
+✅ **Original GA4 admin config DONE (2026-06-23)** — via `scripts/analytics/setup-ga4.mjs --apply`
+(idempotent; needs the Admin API enabled + the SA at Editor). The 2026-07-10 script
+also declares `entry_step`, `kind`, `taxonomy_version`, and `act_handoff`; run it
+again with `--apply` after deploying the v2 event once. The old key events (`copy_designmd`,
 `download_designmd`, `ds_copy_md`, `ds_download_md`, `cli_install_cta_click`) go
 stale after deploy — harmless; optionally prune later.
 
 ⏭️ **Remaining (post-deploy):**
+- **Admin sync** — run `node scripts/analytics/setup-ga4.mjs --apply` after GA4 has seen `act_handoff`.
 - **Cutover annotation** — add a GA4 reporting annotation on the DEPLOY date
   (UI, ~10s) marking the taxonomy reset. (Do it after deploy, not now.)
 - **DebugView verify** — confirm `bld_generate{mode}` / `bld_export{channel}` /
@@ -255,5 +311,7 @@ stale after deploy — harmless; optionally prune later.
       → `act_install_copy{surface}` all fire once per interaction.
 - [ ] `bld_generate` carries `mode=as_is` on direct pick, `mode=customize` after a tweak.
 - [ ] No raw query/referrer in any payload.
+- [ ] No event payload contains acquisition-reserved `source`/`medium`/`campaign`; every event carries `taxonomy_version=v2-2026-07-10`.
+- [ ] Each export/prompt/install action emits exactly one matching `act_handoff`.
 - [ ] Upstash: copying npx increments `omd:counter:install`, NOT `:copy`.
 - [ ] No `curation_*` / `shared_view_*` / `builder_export` events appear.

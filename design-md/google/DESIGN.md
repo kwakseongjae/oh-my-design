@@ -8,492 +8,384 @@ primary_color: "#1a73e8"
 logo:
   type: simpleicons
   slug: google
-verified: "2026-06-11"
+verified: "2026-07-13"
 added: "2026-06-11"
 omd: "0.1"
 ds:
   name: Material Design 3
   url: "https://m3.material.io"
   type: system
-  description: "Google's open-source design system — color roles, type scale, shape and motion tokens used across Android and Google products."
+  description: "Google's public design system. Its documentation and baseline guidance are context, not a substitute for observed Google product tokens."
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: public-search-product-dark, url: "https://www.google.com/", inspected: "2026-07-13" }
+    - { id: advanced-search, kind: public-search-product-form, url: "https://www.google.com/advanced_search?hl=ko", inspected: "2026-07-13" }
+    - { id: business-profile, kind: public-business-product-marketing, url: "https://business.google.com/kr/business-profile/", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.google.com/", captured: "2026-07-13" }
+    - { id: advanced-search-live, kind: product-surface, url: "https://www.google.com/advanced_search?hl=ko", captured: "2026-07-13" }
+    - { id: business-profile-live, kind: product-surface, url: "https://business.google.com/kr/business-profile/", captured: "2026-07-13" }
+    - { id: google-story, kind: official-doc, url: "https://about.google/company-info/our-story/", captured: "2026-07-13" }
+    - { id: google-philosophy, kind: official-doc, url: "https://about.google/company-info/philosophy/", captured: "2026-07-13" }
+    - { id: google-sans-context, kind: official-doc, url: "https://design.google/library/google-sans-flex-font", captured: "2026-07-13" }
+    - { id: google-brand-guidance, kind: brand-asset, url: "https://about.google/brand-resource-center/guidance/", captured: "2026-07-13" }
+    - { id: material-typography, kind: official-doc, url: "https://m3.material.io/styles/typography/overview", captured: "2026-07-13" }
+    - { id: google-sans-code-license, kind: license, url: "https://github.com/googlefonts/googlesans-code", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &business_live { surface_id: business-profile, source_id: business-profile-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.canvas": &advanced_live { surface_id: advanced-search, source_id: advanced-search-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.canvas-dark": &home_live { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.foreground": *business_live
+    "tokens.colors.foreground-inverse": *home_live
+    "tokens.colors.muted": *business_live
+    "tokens.colors.outline": *business_live
+    "tokens.typography.family.ui": *business_live
+    "tokens.typography.family.text": *business_live
+    "tokens.typography.family.display": *business_live
+    "tokens.typography.family.search-system": *home_live
+    "tokens.typography.display.size": *business_live
+    "tokens.typography.display.weight": *business_live
+    "tokens.typography.display.lineHeight": *business_live
+    "tokens.typography.display.tracking": *business_live
+    "tokens.typography.display.use": *business_live
+    "tokens.typography.body.size": *business_live
+    "tokens.typography.body.weight": *business_live
+    "tokens.typography.body.lineHeight": *business_live
+    "tokens.typography.body.use": *business_live
+    "tokens.typography.action.size": *business_live
+    "tokens.typography.action.weight": *business_live
+    "tokens.typography.action.lineHeight": *business_live
+    "tokens.typography.action.tracking": *business_live
+    "tokens.typography.action.use": *business_live
+    "tokens.typography.search-field.size": *advanced_live
+    "tokens.typography.search-field.weight": *advanced_live
+    "tokens.typography.search-field.lineHeight": *advanced_live
+    "tokens.typography.search-field.use": *advanced_live
+    "tokens.spacing.xs": *home_live
+    "tokens.spacing.sm": *home_live
+    "tokens.spacing.md": *business_live
+    "tokens.spacing.lg": *business_live
+    "tokens.spacing.xl": *business_live
+    "tokens.rounded.nav": *business_live
+    "tokens.rounded.search-key": *home_live
+    "tokens.rounded.card": *business_live
+    "tokens.rounded.full": *business_live
+    "tokens.shadow.flat": *business_live
+    "tokens.shadow.search-key-hover": *home_live
+    "tokens.components.business-primary.type": *business_live
+    "tokens.components.business-primary.bg": *business_live
+    "tokens.components.business-primary.fg": *business_live
+    "tokens.components.business-primary.radius": *business_live
+    "tokens.components.business-primary.padding": *business_live
+    "tokens.components.business-primary.height": *business_live
+    "tokens.components.business-primary.font": *business_live
+    "tokens.components.business-primary.states": *business_live
+    "tokens.components.business-primary.use": *business_live
+    "tokens.components.business-secondary.type": *business_live
+    "tokens.components.business-secondary.bg": *business_live
+    "tokens.components.business-secondary.fg": *business_live
+    "tokens.components.business-secondary.border": *business_live
+    "tokens.components.business-secondary.radius": *business_live
+    "tokens.components.business-secondary.padding": *business_live
+    "tokens.components.business-secondary.height": *business_live
+    "tokens.components.business-secondary.font": *business_live
+    "tokens.components.business-secondary.states": *business_live
+    "tokens.components.business-secondary.use": *business_live
+    "tokens.components.business-nav.type": *business_live
+    "tokens.components.business-nav.fg": *business_live
+    "tokens.components.business-nav.radius": *business_live
+    "tokens.components.business-nav.padding": *business_live
+    "tokens.components.business-nav.height": *business_live
+    "tokens.components.business-nav.font": *business_live
+    "tokens.components.business-nav.states": *business_live
+    "tokens.components.business-nav.use": *business_live
+    "tokens.components.business-card.type": *business_live
+    "tokens.components.business-card.bg": *business_live
+    "tokens.components.business-card.fg": *business_live
+    "tokens.components.business-card.radius": *business_live
+    "tokens.components.business-card.padding": *business_live
+    "tokens.components.business-card.font": *business_live
+    "tokens.components.business-card.states": *business_live
+    "tokens.components.business-card.use": *business_live
+    "tokens.components.search-key.type": *home_live
+    "tokens.components.search-key.bg": *home_live
+    "tokens.components.search-key.fg": *home_live
+    "tokens.components.search-key.border": *home_live
+    "tokens.components.search-key.radius": *home_live
+    "tokens.components.search-key.padding": *home_live
+    "tokens.components.search-key.height": *home_live
+    "tokens.components.search-key.font": *home_live
+    "tokens.components.search-key.states": *home_live
+    "tokens.components.search-key.use": *home_live
 tokens:
   source: reconciled
-  extracted: "2026-06-11"
-  note: "primary = Google Blue 600 (#1a73e8), the deployed marketing/interactive blue on about.google; #0b57d0 is the newer GM3 sign-in pill blue live on google.com. M3 baseline tokens (#6750a4 family) come from the official material-tokens repo; m3.material.io site itself runs an expressive purple (#6442d6)."
+  extracted: "2026-07-13"
+  note: "Only values in the supplied three-surface capture are machine tokens. Search is a captured dark public product surface; Advanced Search and Business Profile are separate light product domains. Material documentation, logo guidance, and declared-only font faces remain context rather than product-token substitutes."
   colors:
     primary: "#1a73e8"
-    primary-hover: "#1967d2"
-    primary-gm3: "#0b57d0"
-    primary-tint: "#e8f0fe"
-    ink: "#202124"
-    ink-search: "#1f1f1f"
-    graphite: "#3c4043"
-    muted: "#5f6368"
-    muted-alt: "#70757a"
-    faint: "#9aa0a6"
     canvas: "#ffffff"
-    surface: "#f8f9fa"
-    hairline: "#dadce0"
-    serp-link: "#1a0dab"
-    on-primary: "#ffffff"
-    success: "#188038"
-    m3-primary: "#6750a4"
-    m3-primary-container: "#eaddff"
-    m3-on-surface: "#1c1b1f"
-    m3-surface: "#fffbfe"
-    m3-outline: "#79747e"
-    m3-error: "#b3261e"
-    m3-site-primary: "#6442d6"
-    m3-site-surface: "#f8f1f6"
+    canvas-dark: "#22242a"
+    foreground: "#3c4043"
+    foreground-inverse: "#e8e8e8"
+    muted: "#5f6368"
+    outline: "#dadce0"
   typography:
-    family: { display: "Google Sans", body: "Google Sans Text", search: "Arial", m3-default: "Roboto" }
-    display-hero: { size: 60, weight: 400, lineHeight: 1.20, use: "about.google display headlines, Google Sans" }
-    display:      { size: 48, weight: 400, lineHeight: 1.17, use: "Secondary display headlines, Google Sans" }
-    headline:     { size: 36, weight: 400, lineHeight: 1.22, use: "Sub-section heads, Google Sans" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text, Google Sans Text" }
-    body-compact: { size: 14, weight: 400, use: "google.com utilitarian UI, Arial" }
-    button:       { size: 16, weight: 500, use: "Marketing CTA pill label, Google Sans" }
-    button-compact: { size: 14, weight: 500, use: "google.com sign-in pill / search key buttons" }
-    label-m3:     { size: 14, weight: 500, lineHeight: 1.43, tracking: 0.1, use: "M3 label-large — buttons, tabs (Roboto baseline)" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { xs: 4, sm: 8, md: 12, lg: 16, xl: 28, full: 9999 }
+    family: { ui: "Google Sans", text: "Google Sans Text", display: "Google Sans Display", search-system: "Arial" }
+    display: { size: 48, weight: 400, lineHeight: "56px", tracking: "-0.5px", use: "Business Profile section heading only." }
+    body: { size: 16, weight: 400, lineHeight: "24px", use: "Business Profile cards, lists, and body copy." }
+    action: { size: 16, weight: 500, lineHeight: "24px", tracking: "0.5px", use: "Business Profile CTA and action labels." }
+    search-field: { size: 16, weight: 400, lineHeight: "22px", use: "Advanced Search text input; Arial system face." }
+  spacing: { xs: 4, sm: 8, md: 16, lg: 24, xl: 32 }
+  rounded: { nav: 4, search-key: 8, card: 24, full: 1000 }
   shadow:
-    level1: "rgba(0,0,0,0.3) 0px 1px 2px 0px, rgba(0,0,0,0.15) 0px 1px 3px 1px"
-  components:
-    button-primary: { type: button, bg: "#1a73e8", fg: "#ffffff", radius: "48px", padding: "12px 24px", height: "50px", font: "16px / 500 Google Sans", hover: "#1967d2", use: "Marketing primary CTA pill (about.google)" }
-    button-gm3-signin: { type: button, bg: "#0b57d0", fg: "#ffffff", radius: "100px", padding: "10px 12px", height: "40px", font: "14px / 500 Google Sans Text", use: "google.com sign-in pill — newer GM3 blue" }
-    button-tonal: { type: button, bg: "#e8f0fe", fg: "#1967d2", radius: "48px", padding: "12px 24px", height: "50px", font: "16px / 500 Google Sans", use: "Tonal secondary pill (Subscribe)" }
-    button-search-key: { type: button, bg: "#f8f9fa", fg: "#3c4043", radius: "8px", height: "36px", padding: "0 16px", border: "1px solid #f8f9fa", font: "14px / 500 Arial", use: "Google Search / I'm Feeling Lucky keys" }
-    card-feature: { type: card, bg: "#ffffff", fg: "#202124", radius: "8px", use: "about.google feature/story card, flat on #f8f9fa band" }
-    card-m3-doc: { type: card, bg: "#f8f1f6", fg: "#1c1b1f", radius: "24px", use: "m3.material.io tonal doc card — M3 expressive shape" }
-    nav-link: { type: tab, fg: "#5f6368", active: "text #202124", font: "16px / 500 Google Sans", use: "about.google top nav item, 48px row" }
-    footer-link: { type: listItem, bg: "#f8f9fa", fg: "#5f6368", font: "16px / 500 Google Sans", use: "Footer resource link on tonal surface" }
+    flat: "none"
+    search-key-hover: "rgba(23,23,23,0.24) 0px 1px 3px 0px"
   components_harvested: true
+  components:
+    business-primary: { type: button, bg: "#1a73e8", fg: "#ffffff", radius: "1000px", padding: "8px 16px", height: "42px", font: "16px / 500 / Google Sans", states: "default, hover, pressed, and focus observed on Business Profile high-emphasis action", use: "Business Profile high-emphasis action only." }
+    business-secondary: { type: button, bg: "#ffffff", fg: "#1a73e8", border: "1px solid #dadce0", radius: "1000px", padding: "8px 16px", height: "42px", font: "16px / 500 / Google Sans", states: "default, hover, pressed, and focus observed on Business Profile medium-emphasis action", use: "Business Profile medium-emphasis action only." }
+    business-nav: { type: button, fg: "#202124", radius: "4px", padding: "0px 10px", height: "48px", font: "14px / 500 / Google Sans", states: "default, hover, pressed, and focus observed on Business Profile menu item", use: "Business Profile global navigation menu item." }
+    business-card: { type: card, bg: "#ffffff", fg: "#3c4043", radius: "24px", padding: "18px 18px 32px", font: "16px / 400 / Google Sans Text", states: "disabled observed on the captured inactive image card", use: "Business Profile scrolling image card only." }
+    search-key: { type: button, bg: "#303134", fg: "#e8eaed", border: "1px solid #303134", radius: "8px", padding: "0px 16px", height: "36px", font: "14px / 500 / Arial", states: "default, hover, pressed, and focus observed on dark Search submit controls", use: "Captured dark Search homepage submit key only." }
 ---
 
 # Design System Inspiration of Google
 
 ## 1. Visual Theme & Atmosphere
 
-Google's visual language is the most widely deployed design system on earth — Material Design 3 operating at brand scale — yet its flagship surface remains radically empty: a pure white (`#ffffff`) canvas, a four-color logotype, one search bar, and almost nothing else. That emptiness is the brand. Where competitors decorate, Google subtracts, trusting the utility of the product to carry the visual experience. Text sits in soft near-blacks (`#202124` on marketing surfaces, `#1f1f1f` on Search) rather than pure black, and a single confident hue — Google Blue (`#1a73e8`) — does all the interactive talking.
-
-The typographic system is a three-font hierarchy with clear jobs: **Google Sans** (a geometric sans derived from the Product Sans logo lineage) owns display headlines and buttons, rendered at an unusually calm weight 400 even at 60px; **Google Sans Text** carries body copy at 16px/24px; and on the Search homepage, plain **Arial** persists as a deliberate utilitarian fossil — the fastest-rendering font for the fastest page on the web. Material 3's baseline type scale (Roboto) underpins product UI. Headlines never shout with weight; hierarchy comes from size and space, which gives Google's marketing pages a friendly, almost academic calm.
-
-Geometry is where the personality lives. Interactive elements are pills — the about.google CTA runs a 48px radius, the google.com sign-in button a full 100px pill in the newer GM3 blue (`#0b57d0`) — while containers stay gently rounded (8px cards on marketing, 24px tonal cards on the M3 docs site, following the M3 shape scale of 4/8/12/16/28px). Depth is nearly absent: marketing surfaces use flat tonal shifts (white against `#f8f9fa`) and `#dadce0` hairlines instead of shadows, reserving M3's tinted elevation for product UI. The result is a system that feels effortless, optimistic, and engineered — color used sparingly, geometry friendly, and whitespace doing the work of luxury.
+Google began as a search engine and now describes a product family used by billions; its stated mission is to organize the world's information and make it universally accessible and useful. That scope is expressed through an unusually disciplined split between task surfaces and brand-bearing product pages. The supplied July capture shows a dark public Search homepage that uses Arial and tight utility controls, alongside light Advanced Search and Business Profile surfaces that use Google Sans families, generous 24px cards, and rounded blue actions. The identity stays recognizable through a restrained blue action color, soft charcoal text, rounded controls, and the familiar multicolor mark rather than through one universal page theme. Google Design describes the same evolution in type: Product Sans served product lockups, Google Sans became the broader display/UI face, and Google Sans Text was developed for smaller, more legible reading sizes.
 
 **Key Characteristics:**
-- Radical emptiness on the flagship surface — white canvas, one search bar, utility as brand
-- Google Blue (`#1a73e8`) as the single interactive hue; newer GM3 surfaces shift to `#0b57d0`
-- Pill geometry for every action — 48px-100px radii on buttons, full-round chips
-- Google Sans display at weight 400 — large, calm headlines that never use bold to shout
-- Flat tonal layering: `#ffffff` against `#f8f9fa` with `#dadce0` hairlines, almost no shadow
-- Soft near-black text (`#202124`) instead of pure black
-- Material Design 3 as the public, open-source token vocabulary (color roles, type scale, shape, motion)
-- The four-color logotype (blue, red, yellow, green) as the only place the brand is loud
+
+- Search, Advanced Search, and Business Profile are separate observed product domains, not one interchangeable template.
+- The captured Search homepage is dark (#22242a), while the two other captured surfaces are light.
+- Google Sans, Google Sans Text, and Google Sans Display are live loaded faces on the Business Profile surface; Arial is live system typography on Search and Advanced Search.
+- Business Profile actions use Google Blue (#1a73e8), full pills, and 42px or 50px heights.
+- The captured inactive Business Profile card is white, 24px-rounded, and shadowless.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Google Blue** (`#1a73e8`): The canonical interactive blue — primary CTA pills, links, icons, and tab indicators across about.google and most marketing surfaces. Google Blue 600 in the legacy GM palette.
-- **Blue Hover** (`#1967d2`): Blue 700 — hover/pressed states for primary actions, and text color on tonal blue surfaces.
-- **GM3 Blue** (`#0b57d0`): The newer Material 3 era Google Blue, live on the google.com sign-in pill. A generational evolution of `#1a73e8`, not a competitor.
-- **Blue Tint** (`#e8f0fe`): Tonal container blue — secondary/tonal button backgrounds (e.g. the about.google "Subscribe" pill).
+### Observed product colors
 
-### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, card surfaces, text on blue. The dominant color of the brand.
-- **Tonal Surface** (`#f8f9fa`): The signature Google grey — footer bands, section backgrounds, search key buttons. Separation without shadow.
-- **Hairline** (`#dadce0`): Borders, dividers, input strokes.
-- **Ink** (`#202124`): Primary text on marketing surfaces — a soft near-black.
-- **Search Ink** (`#1f1f1f`): Body text on the google.com homepage (GM3 neutral).
-- **Graphite** (`#3c4043`): Strong secondary text; the label color of the search key buttons.
-- **Muted** (`#5f6368`): Secondary body text, nav links, footer links.
-- **Muted Alt** (`#70757a`): Quieter metadata text on Search surfaces.
-- **Faint** (`#9aa0a6`): Lowest-emphasis labels, placeholder-grade grey.
+- **Primary action blue** (#1a73e8): Business Profile high-emphasis actions and focus-ring source color.
+- **Light canvas** (#ffffff): Advanced Search and Business Profile white surfaces.
+- **Dark Search canvas** (#22242a): Captured Google Search homepage body background.
+- **Business foreground** (#3c4043): Repeated Business Profile body and card text.
+- **Search inverse foreground** (#e8e8e8): Repeated dark Search text and menu foreground.
+- **Muted** (#5f6368): Search utility treatment and Business Profile secondary text.
+- **Outline** (#dadce0): Observed Business Profile medium-emphasis action border.
 
-### Semantic & Heritage
-- **Success Green** (`#188038`): Green 700 — success states and the Classroom brand mark (Tier 2 verified).
-- **SERP Link Blue** (`#1a0dab`): The classic search-results link blue, still live on google.com — a 25-year-old fossil token and one of the most recognizable colors on the web.
+### Source-domain boundary
 
-### Material 3 Baseline (official DS tokens)
-- **M3 Primary** (`#6750a4`): The baseline seed purple of Material 3 — `md.sys.color.primary` in the public token set. The default theme of the system Google ships to the world, distinct from Google's own deployed blue.
-- **M3 Primary Container** (`#eaddff`): Tonal container for the baseline primary.
-- **M3 On-Surface** (`#1c1b1f`): Baseline text color (neutral10).
-- **M3 Surface** (`#fffbfe`): Baseline surface (neutral99) — warm-tinted white.
-- **M3 Outline** (`#79747e`): Baseline outline (neutral-variant50).
-- **M3 Error** (`#b3261e`): Baseline error red (error40).
-- **M3 Site Purple** (`#6442d6`): The expressive primary used by m3.material.io itself — hero CTA and link color on the DS docs site.
-- **M3 Site Surface** (`#f8f1f6`): The tonal card background on m3.material.io, at 24px radius.
+Material Design 3 publishes its own typography guidance, but no Material documentation chrome or baseline palette is promoted here as a Google Search or Business Profile product token. Google logo and brand-resource guidance are identity context, not evidence for application component values.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Display / UI**: `Google Sans` — headlines, nav, buttons. Descended from Product Sans (the logo face); geometric, friendly, only ever 400-500 weight on marketing surfaces.
-- **Body**: `Google Sans Text` — reading text at 16px/24px; tuned for small sizes.
-- **Search utility**: `Arial` — the google.com homepage body and search UI run plain Arial, a deliberate speed-first choice.
-- **Product baseline**: `Roboto` — the Material 3 baseline type scale; `Google Sans Flex` (variable) and `Google Sans Display` appear on newer surfaces such as store.google.com.
+### Evidence classes
 
-### Hierarchy
+- **Official product-use context:** Google Design says Google Sans was built for product and marketing display use and Google Sans Text was developed for smaller, longer reading contexts.
+- **Live computed surface-use:** The supplied capture records Google Sans (107 uses), Google Sans Text (145 uses), and Google Sans Display (4 uses) with matching loaded FontFaceSet entries and fonts.gstatic.com sources. Google Sans and Google Sans Text are therefore usable live UI families for the captured Business Profile surface; Google Sans Display is retained only for the captured 48px heading role.
+- **Live system use:** Arial is the observed system family for the captured dark Search homepage and Advanced Search. It is not replaced with a branded fallback.
+- **Declared-only or non-text assets:** Product Sans, Google Symbols, and Material Icons have declared faces but zero visible usage in this capture. Material Symbols Outlined was loaded once as an icon font, not promoted to a text family.
+- **Official distributed asset and license boundary:** Google Sans Code is an official Google Fonts repository asset under the SIL Open Font License 1.1 and is described there as a code face for contexts including Gemini and Android Studio. It was not observed on the three supplied surfaces, so it is not a UI token. The supplied evidence does not establish a license URL for the loaded Google Sans, Google Sans Text, or Google Sans Display webfont files.
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display Hero | Google Sans | 60px (3.75rem) | 400 | 1.20 (72px) | about.google section displays |
-| Display | Google Sans | 48px (3.00rem) | 400 | 1.17 (56px) | Secondary displays |
-| Headline | Google Sans | 36px (2.25rem) | 400 | 1.22 (44px) | Sub-section heads |
-| Title | Google Sans Text | 16px (1.00rem) | 500 | 1.50 (24px) | Footer column heads, card titles |
-| Body | Google Sans Text | 16px (1.00rem) | 400 | 1.50 (24px) | Standard reading text |
-| Body Compact | Arial | 14px (0.88rem) | 400 | normal | google.com utilitarian UI |
-| Button | Google Sans | 16px (1.00rem) | 500 | 1.00 | Marketing CTA pills |
-| Button Compact | Google Sans Text | 14px (0.88rem) | 500 | 1.00 | Sign-in pill, search keys |
+### Observed hierarchy
 
-### M3 Baseline Type Scale (official tokens, Roboto)
-Display-large 57/64/400 (-0.25 tracking), display-medium 45/52/400, display-small 36/44/400; headline 32/28/24px at 400; title-large 22/28/400, title-medium 16/24/500; body-large 16/24/400 (0.5 tracking), body-medium 14/20/400; label-large 14/20/500 (0.1 tracking), label-medium 12/16/500, label-small 11/16/500.
-
-### Principles
-- **Weight 400 at display sizes**: Google headlines are big, not bold. Hierarchy comes from size and whitespace, giving marketing pages a calm, unhurried register.
-- **Three fonts, three jobs**: Google Sans persuades, Google Sans Text informs, Arial (on Search) performs. Roboto remains the M3 product baseline.
-- **Positive tracking at small sizes**: M3's body and label tokens add tracking (0.25-0.5px) for legibility — the opposite of fashion-brand tightness.
-- **Type as token**: every size/weight/line-height pair is a named `md.sys.typescale` token, not an ad-hoc choice.
+| Role | Family | Size | Weight | Line Height | Surface |
+|---|---|---:|---:|---:|---|
+| Business heading | Google Sans Display | 48px | 400 | 56px | Business Profile |
+| Business action | Google Sans | 16px | 500 | 24px | Business Profile |
+| Business body | Google Sans Text | 16px | 400 | 24px | Business Profile |
+| Business navigation | Google Sans | 14px | 500 | 20px | Business Profile |
+| Search field | Arial | 16px | 400 | 22px | Advanced Search |
+| Search compact control | Arial | 14px | 500 | normal | dark Search homepage |
 
 ## 4. Component Stylings
 
-### Buttons
+### Business Profile high-emphasis action
 
-**Filled Pill (Primary)**
-- Background: `#1a73e8`
-- Text: `#ffffff`
-- Radius: 48px
-- Padding: 12px 24px
-- Height: 50px
+**Default**
+
+- Background: #1a73e8
+- Text: #ffffff
+- Border: 1px solid transparent
+- Radius: 1000px
+- Padding: 8px 16px
+- Height: 42px
 - Font: 16px / 500 / Google Sans
-- Hover: `#1967d2` background
-- Use: Marketing primary CTA on about.google ("See what's new", "Explore", "Check it out")
+- Hover: #1a72e7 background observed
+- Pressed: #185abc background observed
+- Focus: #185abc background with 2px same-color outer ring observed
+- Use: Business Profile high-emphasis action at surface-3 selector [data-omd-capture="11"]; hover, pressed, and focus were captured.
 
-**GM3 Sign-in Pill**
-- Background: `#0b57d0`
-- Text: `#ffffff`
-- Radius: 100px
-- Padding: 10px 12px
-- Height: 40px
-- Font: 14px / 500 / Google Sans Text
-- Use: google.com header sign-in — the newer Material 3 era Google Blue
+### Business Profile medium-emphasis action
 
-**Tonal Pill (Secondary)**
-- Background: `#e8f0fe`
-- Text: `#1967d2`
-- Radius: 48px
-- Padding: 12px 24px
-- Height: 50px
+**Default**
+
+- Background: #ffffff
+- Text: #1a73e8
+- Border: 1px solid #dadce0
+- Radius: 1000px
+- Padding: 8px 16px
+- Height: 42px
 - Font: 16px / 500 / Google Sans
-- Use: Secondary CTA ("Subscribe") — M3 tonal-button pattern, blue-on-blue
+- Hover: #ffffff background and #1a73e8 border observed
+- Pressed: #e8f1fd background observed
+- Focus: #e4eefc background with 2px #1a73e8 outer ring observed
+- Use: Business Profile medium-emphasis action at surface-3 selector [data-omd-capture="10"]; hover, pressed, and focus were captured.
 
-**Search Key Button**
-- Background: `#f8f9fa`
-- Text: `#3c4043`
-- Border: 1px solid `#f8f9fa`
+### Business Profile navigation menu item
+
+**Default**
+
+- Text: #202124
+- Radius: 4px
+- Padding: 0px 10px
+- Height: 48px
+- Font: 14px / 500 / Google Sans
+- Use: Business Profile global navigation menu item at surface-3 selector [data-omd-capture="2"]; hover, pressed, and focus were captured without a retained changed token value.
+
+### Business Profile inactive image card
+
+**Disabled**
+
+- Background: #ffffff
+- Text: #3c4043
+- Radius: 24px
+- Padding: 18px 18px 32px
+- Font: 16px / 400 / Google Sans Text
+- Use: Inactive Business Profile scrolling image card at surface-3 div. The disabled state was observed; no enabled-card substitution is asserted.
+
+### Dark Search submit key
+
+**Default**
+
+- Background: #303134
+- Text: #e8eaed
+- Border: 1px solid #303134
 - Radius: 8px
 - Padding: 0px 16px
 - Height: 36px
 - Font: 14px / 500 / Arial
-- Use: "Google Search" / "I'm Feeling Lucky" keys on the homepage
+- Hover: 1px #5f6368 border and rgba(23,23,23,0.24) 0px 1px 3px 0px shadow observed
+- Use: Dark Search submit control at home selector [data-omd-capture="12"]; focus, hover, and pressed were captured.
 
-### Cards & Containers
+### Advanced Search text field
 
-**Feature Card (Marketing)**
-- Background: `#ffffff`
-- Text: `#202124`
-- Radius: 8px
-- Use: about.google product/story cards sitting flat on the `#f8f9fa` band — no shadow
+**Default**
 
-**M3 Tonal Doc Card**
-- Background: `#f8f1f6`
-- Text: `#1c1b1f`
-- Radius: 24px
-- Use: m3.material.io content cards — the expressive M3 shape scale in practice
-
-### Navigation
-
-**Top Nav Link**
-- Text: `#5f6368`
-- Active: `#202124` text on `#ffffff`
-- Radius: 4px
-- Padding: 0px 12px
+- Text: #474747
+- Padding: 12px 16px
 - Height: 48px
-- Font: 16px / 500 / Google Sans
-- Use: about.google header ("About", "Products", "Company Info", "News")
-
-### Inputs
-
-**Search Field Text**
-- Text: 16px / 400 / Arial
-- Padding: 14px 0px 0px
-- Use: The google.com search textarea — the single most-used input on the web; container draws the pill chrome
-
-### Footer
-
-**Footer Resource Link**
-- Background: `#f8f9fa`
-- Text: `#5f6368`
-- Radius: 4px
-- Font: 16px / 500 / Google Sans
-- Use: about.google footer columns ("Blog", "Careers", "Brand Resource Center")
+- Font: 16px / 400 / Arial
+- Use: Advanced Search input at surface-2 selector [data-omd-capture="2"]. The visible input itself was transparent; no container background or radius is asserted.
 
 ---
-**Verified:** 2026-06-11
-**Tier 1 sources:** https://m3.material.io (official DS, live inspect), https://www.google.com (live inspect), https://about.google (live inspect), https://store.google.com (live inspect, region-gate surface), https://github.com/material-foundation/material-tokens (official M3 color/typography tokens), https://github.com/material-components/material-web (official M3 shape/motion tokens)
-**Tier 2 sources:** getdesign.md/google — 404 (not listed); styles.refero.design/style/c57ba3f8-1d76-4660-8ba4-48ddce26e759 (Google for Education)
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.google.com/ (captured dark Search product), https://www.google.com/advanced_search?hl=ko (captured Advanced Search product), https://business.google.com/kr/business-profile/ (captured Business Profile product), https://about.google/company-info/our-story/, https://about.google/company-info/philosophy/, https://design.google/library/google-sans-flex-font, https://about.google/brand-resource-center/guidance/, https://m3.material.io/styles/typography/overview, https://github.com/googlefonts/googlesans-code
+**Tier 2 sources:** https://getdesign.md/google (direct fetch unavailable; no value adopted), https://styles.refero.design/?q=google (query fetch unavailable; no value adopted)
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 4px (M3 grid)
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Measured: CTA padding 12px 24px; search keys 0 16px; nav items 0 12px; google.com link padding 5-8px
-
-### Grid & Container
-- google.com: a single centered column — logo, search bar, two keys. The grid is the absence of a grid.
-- about.google: full-width hero media, then alternating white and `#f8f9fa` bands with 2-3 column card grids
-- m3.material.io: generous tonal cards in a 2-3 column masonry, 24px radii
-- Footer: multi-column link lists on the `#f8f9fa` tonal surface
-
-### Whitespace Philosophy
-- **Emptiness as trust**: the homepage's restraint signals speed and focus; whitespace is the product's promise that it will not waste your time.
-- **Tonal banding over borders**: sections alternate white/`#f8f9fa` instead of drawing lines.
-- **Air around actions**: pill CTAs always float in generous space — never stacked tightly, rarely more than one filled pill per viewport.
-
-### Border Radius Scale (M3 shape tokens)
-- Extra-small (4px): links, inline focus targets
-- Small (8px): cards, search key buttons, nav containers
-- Medium (12px): larger containers
-- Large (16px): prominent containers
-- Extra-large (28px): hero sheets, large M3 surfaces (docs cards run 24px)
-- Full (9999px / 48-200px computed): every button pill, chips, avatar circles
+- **Search homepage:** Captured as a dark, centered utility surface with compact 36px submit keys and a 50px text area.
+- **Advanced Search:** Captured as a light form surface with 48px text inputs and 12px vertical / 16px horizontal field padding.
+- **Business Profile:** Captured as a light public business-product page with 42px and 50px pill actions, 48px navigation rows, and 24px image cards.
+- **Observed spacing values:** 4, 8, 12, 16, 24, 32, and 48px recur in the capture. These are observations, not a universal Google grid declaration.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Marketing pages, search homepage, cards on tonal bands |
-| Tonal (Level 1) | `#f8f9fa` background shift | Section/footer separation without elevation |
-| Hairline | `1px solid #dadce0` | Input strokes, dividers |
-| M3 Elevation 1 | `rgba(0,0,0,0.3) 0px 1px 2px 0px, rgba(0,0,0,0.15) 0px 1px 3px 1px` | Floating controls in product UI (measured on m3.material.io media button) |
+| Treatment | Observed use |
+|---|---|
+| Flat | Business Profile high-emphasis and medium-emphasis actions, navigation, and inactive card default styles are shadowless. |
+| State shadow | Dark Search submit-key hover uses rgba(23,23,23,0.24) 0px 1px 3px 0px. |
+| Focus ring | Business Profile medium-emphasis and low-emphasis focus examples use a 2px blue outer ring. |
 
-**Shadow Philosophy**: Google's marketing and search surfaces are essentially shadowless — live inspection found `box-shadow: none` across about.google CTAs, cards, nav, and the google.com chrome. Separation is tonal (`#ffffff` vs `#f8f9fa`) and linear (`#dadce0` hairlines). Real elevation belongs to Material 3's product layer, where shadows are paired with tonal color shifts and kept physically plausible — soft, short, and layered. In M3, elevation is as much a *color* concept (surface tint) as a shadow concept; on the open web Google barely uses either.
+The capture does not support a claim that all Google product surfaces are shadowless or that Material documentation elevation is a Google product token.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Google Blue (`#1a73e8`) as the single interactive hue; shift to `#0b57d0` for GM3-era surfaces
-- Make every action a pill — 48px+ radius on buttons, full-round chips
-- Set display headlines in Google Sans at weight 400 — big, never bold
-- Separate sections with tonal bands (`#ffffff` / `#f8f9fa`) and `#dadce0` hairlines, not shadows
-- Use soft near-black (`#202124`) for text
-- Use the tonal blue pair (`#e8f0fe` bg + `#1967d2` text) for secondary actions
-- Follow the M3 shape scale: 4 / 8 / 12 / 16 / 28px, full for pills
-- Treat whitespace as the primary luxury — one filled CTA per viewport
+
+- Keep the product surface boundary explicit: dark Search, light Advanced Search, and Business Profile use different observed treatments.
+- Use Google Blue #1a73e8 only where the captured Business Profile action context supports it.
+- Preserve Google Sans family roles where loaded usage and a matching FontFaceSet entry were captured.
+- Keep Advanced Search in its observed Arial system typography.
+- Reuse the measured full-pill, 4px navigation, 8px search-key, and 24px card geometry only in their observed contexts.
 
 ### Don't
-- Use multiple saturated hues for interaction — blue is the only action color; red/yellow/green live in the logo and semantic states
-- Use bold (700) display headlines on marketing surfaces — weight 400 is the voice
-- Add drop shadows to marketing cards — tonal separation only
-- Use pure black `#000000` for body text
-- Square off buttons — sharp-cornered actions read as foreign to the system
-- Invent ad-hoc type sizes — every step should map to a typescale token
-- Crowd the canvas — density is for product UI (Gmail, Drive), never for marketing or Search
-- Replace Arial on the Search homepage with a brand font — utility surfaces optimize for speed, not flair
+
+- Replace Arial on Search or Advanced Search with a brand face.
+- Treat Product Sans, Google Symbols, Material Icons, or Google Sans Code as a live UI family for the captured surfaces.
+- Promote Material documentation chrome or baseline palette values to Search or Business Profile tokens.
+- Reuse the captured disabled Business Profile card as an enabled-card specification.
+- Generalize the dark Search submit-key shadow to all Google actions.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Compact | <600px | Single column, nav collapses to drawer/hamburger, display drops to ~36-40px |
-| Medium | 600-905px | 2-column card grids, moderate margins |
-| Expanded | 905-1240px | Full layout, 3-column grids |
-| Large | >1240px | Centered content, max-width containers, generous margins |
-
-M3 defines canonical window size classes (compact/medium/expanded) that Google's web surfaces follow loosely.
-
-### Touch Targets
-- Minimum 48x48dp interactive targets (M3 accessibility baseline) — nav rows measure 48px, CTA pills 50px
-- Search keys at 36px height are a desktop-only exception
-- Pill geometry inherently signals tappability
-
-### Collapsing Strategy
-- about.google: 60px displays compress, weight 400 maintained; card grids stack to single column
-- google.com: already minimal — the layout barely changes, the search bar simply narrows
-- Footer link columns stack vertically on compact widths
-- Tonal bands stay full-width at every size
-
-### Image Behavior
-- Marketing media uses large rounded containers (8-28px radius) without shadows
-- Product screenshots sit flat on tonal bands
-- The four-color logo never distorts; it scales or swaps to the "G" mark
+The supplied collector evidence is desktop-only (1440x900). It confirms 48px Business Profile navigation rows, 42px and 50px Business Profile actions, 36px dark Search keys, and 48px Advanced Search inputs at that viewport. No mobile breakpoint, layout-collapse rule, or touch-target baseline is asserted from this packet.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: Google Blue (`#1a73e8`), hover Blue 700 (`#1967d2`)
-- GM3-era CTA: `#0b57d0`
-- Tonal secondary: `#e8f0fe` bg + `#1967d2` text
-- Background: Pure White (`#ffffff`)
-- Tonal surface: `#f8f9fa`
-- Text: Ink (`#202124`); secondary `#5f6368`; faint `#9aa0a6`
-- Hairline: `#dadce0`
-- Success: `#188038`; Error (M3): `#b3261e`
-- M3 baseline seed: `#6750a4` with container `#eaddff`
+### Quick reference
 
-### Example Component Prompts
-- "Create a hero on white background. Headline at 60px Google Sans weight 400, line-height 1.2, color #202124. Sub-copy 16px Google Sans Text, #5f6368, line-height 1.5. One filled pill CTA: #1a73e8 background, white text, 48px radius, 12px 24px padding, 16px Google Sans weight 500; hover #1967d2."
-- "Design a feature card row on a #f8f9fa band: white #ffffff cards, 8px radius, no shadow. Card title 16px Google Sans Text weight 500 #202124, body 16px weight 400 #5f6368, link 'Learn more' in #1a73e8."
-- "Build the google.com search page: white canvas, centered logo, pill search bar with #dadce0 hairline, two grey keys (#f8f9fa bg, #3c4043 text, 8px radius, 36px height, 14px Arial weight 500), sign-in pill top-right (#0b57d0, white text, 100px radius, 40px height)."
-- "Create a tonal secondary button: #e8f0fe background, #1967d2 text, 48px radius pill, 12px 24px padding, 16px Google Sans weight 500."
-- "Design an M3 doc card: #f8f1f6 background, 24px radius, #1c1b1f text, 16px Google Sans Text; headline in Google Sans weight 475 if variable, else 500."
-
-### Iteration Guide
-1. Blue (`#1a73e8`) is the only interactive color — semantic colors stay in states, the rainbow stays in the logo
-2. Every button is a pill; every card is gently rounded (8-28px)
-3. Display type is large and weight 400 — increase size, never weight
-4. Separate with tonal bands and hairlines, never shadows, on marketing surfaces
-5. Map all radii to the M3 shape scale (4/8/12/16/28/full)
-6. Body text is `#202124` on white, `#5f6368` for secondary — never pure black
-7. Keep one filled CTA per viewport; secondary actions go tonal (`#e8f0fe`)
-8. For product-UI density, switch to the M3 baseline tokens (Roboto typescale, `#6750a4` seed or brand-blue theme)
-
----
+- For a Business Profile action: #1a73e8 on white, 42px full pill, 8px 16px padding, Google Sans 16px/500.
+- For a Business Profile secondary action: white, #1a73e8 text, #dadce0 border, 42px full pill.
+- For dark Search submit keys: #303134, #e8eaed, 8px radius, 36px height, Arial 14px/500.
+- For Advanced Search fields: transparent input, #474747 text, 12px 16px padding, 48px height, Arial 16px/400.
+- For Business Profile body/cards: Google Sans Text 16px/400/24px; use the observed 24px card only where an inactive image card is intended.
 
 ## 10. Voice & Tone
 
-Google's voice is **helpful, plain, and optimistic** — a brilliant engineer who explains things simply and never talks down. The founding register was set by "Ten things we know to be true" ("Focus on the user and all else will follow", "Fast is better than slow", "You can be serious without a suit") and it still governs the copy: short declarative sentences, user benefit first, technology second. Even at planetary scale the voice stays first-person-plural and concrete; the quirkiest the brand gets is a single button — "I'm Feeling Lucky" — left on the most valuable page on the internet as a 25-year wink.
+Google's official philosophy leads with usefulness, focus, and speed. The current source language is concise and user-directed: Google says to focus on the user, to do one thing well, and that fast is better than slow. The product implication is a short, plain register that names the task and next action without inventing urgency or decorative brand voice.
 
 | Context | Tone |
 |---|---|
-| Search homepage | Nearly silent. Two buttons, no marketing copy at all. |
-| Marketing headlines | Benefit-led, plain verbs. "Explore our products and features across Search, Google Workspace and more." |
-| CTAs | Short imperatives: "Learn more", "Explore", "See what's new", "Subscribe". |
-| Product UI | Functional, terse, sentence case. Helpful defaults over explanations. |
-| Mission/company copy | Earnest and global: organize, access, useful — economist nouns, no hype. |
-| Error/help text | Plain-language cause + next step; apologetic only when Google is at fault. |
+| Search and forms | Brief, functional, task-first |
+| Product marketing | Helpful and direct |
+| Help or error content | Plain-language cause and next step |
 
-**Voice samples (verbatim, verified 2026-06-11):**
-- "Our mission is to organize the world's information and make it universally accessible and useful" — about.google company info.
-- "Focus on the user and all else will follow." — Ten things we know to be true, #1.
-- "Fast is better than slow." — Ten things we know to be true, #3.
-- "I'm Feeling Lucky" — google.com homepage button, live.
-- "Explore our products and features across Search, Google Workspace and more" — about.google homepage card.
+**Source-grounded voice samples:**
 
-**Forbidden register**: hype superlatives ("revolutionary", "game-changing"), exclamation-heavy enthusiasm, jargon without explanation, fear-based urgency, and any copy that makes the user feel stupid.
+- "Focus on the user and all else will follow." — Google, Ten things we know to be true.
+- "It is best to do one thing really, really well." — Google, Ten things we know to be true.
+- "Fast is better than slow." — Google, Ten things we know to be true.
 
 ## 11. Brand Narrative
 
-Google was founded in **1998** by **Larry Page and Sergey Brin**, two Stanford PhD students whose PageRank algorithm reframed search as a citation problem. The product's first interface decision became the brand's permanent one: while portals of the era (Yahoo, AOL) packed every pixel with links and banners, Google shipped a white page with a logo and a box. Speed and focus were the marketing. The famous homepage stayed empty because, as the company's stated philosophy puts it, "Focus on the user and all else will follow" — and the user came to search, not to browse.
+Google's official company history traces the company from Larry Page and Sergey Brin's Stanford work through the 1998 founding of Google, whose name reflected the mission to organize the world's information and make it universally accessible and useful. The same history identifies Search, YouTube, Android, Gmail, and other products as a broad global product ecosystem.
 
-The design language matured in public: the 2014 launch of **Material Design** turned Google's internal visual grammar into an open-source system, and **Material Design 3** (2021, with the 2025-26 "Expressive" wave) extended it into dynamic color, tonal surfaces, and a full token vocabulary — color roles, a typescale, shape and motion tokens — that any developer can adopt. Alphabet-era Google thus runs a two-layer identity: the **brand layer** (four-color logo, Google Sans, Google Blue `#1a73e8`, pill buttons, white space) and the **system layer** (M3's baseline `#6750a4` seed, Roboto typescale, 4-28px shape scale) that powers Android and a million third-party apps. The mission — "to organize the world's information and make it universally accessible and useful" — is visible in the design system itself: it is documented, tokenized, and given away.
-
-What Google refuses: visual noise on utility surfaces, bold-weight shouting, decorative shadows, and gating function behind marketing. What it embraces: emptiness as respect for the user's time, one blue for every action, friendly geometry, and a belief that "great just isn't good enough" — the system keeps shipping new waves (dynamic color, variable Google Sans Flex, expressive motion physics) rather than freezing.
+Google Design's account of Google Sans explains the visual bridge between that scale and a coherent interface language: Product Sans addressed product lockups after the 2015 identity update, Google Sans expanded the display/UI role, and Google Sans Text addressed smaller, longer reading. The supplied live evidence confirms that these roles remain separated rather than collapsed into a generic system-font fallback on the Business Profile surface.
 
 ## 12. Principles
 
-1. **Focus on the user and all else will follow.** (Stated philosophy, #1.) *UI implication:* the interface ships only what the task needs — the search page has two buttons; marketing pages get one filled CTA per viewport.
-2. **Fast is better than slow.** (Stated philosophy, #3.) *UI implication:* Arial on the homepage, near-zero imagery on utility surfaces, flat rendering without shadows — every visual choice defers to load time and scanability.
-3. **Tokens over taste.** Material 3 turns every design decision into a named token (`md.sys.color.primary`, `md.sys.typescale.body-large`, `corner-extra-large`). *UI implication:* never hard-code an ad-hoc value; map choices to the published scale so themes (dynamic color, dark) derive automatically.
-4. **One hue acts, the rainbow identifies.** The four-color logo is the only polychrome element; interaction is monogamously blue. *UI implication:* reserve `#1a73e8` for actionable elements; semantic red/green appear only as states, never decoration.
-5. **Calm scale, friendly shape.** Hierarchy by size at weight 400; warmth by pill and rounded-corner geometry. *UI implication:* when something needs more emphasis, make it bigger or rounder — not bolder or louder.
-6. **You can be serious without a suit.** (Stated philosophy, #9.) *UI implication:* room for play — a doodle on the logo, "I'm Feeling Lucky" — inside an otherwise rigorous system.
+1. **Focus on the user.** Google states this directly. *UI implication:* lead with the task and use compact, comprehensible actions.
+2. **Do one thing well.** Google states this directly. *UI implication:* do not add decorative controls where a Search or form task needs only input and a submit action.
+3. **Fast is better than slow.** Google states this directly. *UI implication:* preserve the observed system-font treatment on Search-domain surfaces instead of forcing a visual substitution.
+4. **Keep type role-specific.** Google Design documents distinct display and small-text design problems behind Google Sans and Google Sans Text. *UI implication:* use the captured family only in its observed role and surface.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Google user segments, not individual people.*
-
-**Maya Chen, 34, Seattle.** Android developer at a mid-size startup. Builds her app's UI entirely from M3 tokens because dynamic color and dark theme come free. Reads m3.material.io the way she reads API docs and trusts a component more when its spec page shows the exact dp values.
-
-**Tunde Adeyemi, 22, Lagos.** Student on a low-end Android phone and patchy data. Google's emptiness is not an aesthetic to him — it is the only search page that loads instantly on 3G. Judges every product by how fast it answers.
-
-**Hannah Park, 41, Toronto.** Workspace admin for a 900-person company. Lives in dense product UI (Admin console, Gmail, Drive) all day; values that the same blue, the same typescale, and the same patterns repeat across every Google product so her training docs stay short.
-
-**Diego Ramírez, 58, Madrid.** Searches in Spanish, navigates by voice, needs large tap targets. The 48dp touch minimums and plain-language UI mean he never feels the product was built for someone younger.
+No first-party user-research or stakeholder-segment source was supplied for this packet. Do not infer named personas from Search, Advanced Search, or Business Profile traffic. [FILL IN: user-provided or first-party-researched audience segment.]
 
 ## 14. States
 
-| State | Treatment |
+| State | Evidence boundary |
 |---|---|
-| **Empty (Drive/Photos-style, no items)** | White canvas, friendly line illustration, one sentence in `#5f6368` ("A place for all of your files" pattern), single blue action. Empty states teach, never scold. |
-| **Empty (search, no results)** | Plain text: what was searched, why nothing matched, suggestions to broaden. No illustration on Search — speed surface stays lean. |
-| **Loading (product UI)** | M3 circular progress indicator in primary blue, or linear bar under the app bar. Motion uses standard easing, never bouncy. |
-| **Loading (content)** | Skeleton blocks in `#f8f9fa`/`#dadce0` at final dimensions; shimmer subtle and brief. |
-| **Error (form validation)** | M3 pattern: `#b3261e` error text + outlined field switches to error color; message says what is wrong and what valid looks like. |
-| **Error (page-level, 404/offline)** | Plain-language heading, short explanation, a path back. Famously playful artifacts (the offline Dino game) keep failure human. |
-| **Success (action saved)** | Quiet snackbar bottom-left, sentence case, past tense ("Saved"), auto-dismiss; optional single action ("Undo"). Never a modal celebration. |
-| **Success (semantic)** | Green `#188038` icon/text inline; reserved strictly for genuine success, not decoration. |
-| **Skeleton** | Tonal grey blocks, M3 shape radii preserved (8-16px), no white-on-white flashes. |
-| **Disabled** | M3 spec: content at 38% opacity, container at 12% — elements dim as a whole, color identity preserved rather than swapped to grey. |
+| Default action | Business Profile high- and medium-emphasis actions were captured. |
+| Hover | Captured for Business Profile actions and dark Search submit keys; component-specific values are in §4 and .verification.md. |
+| Pressed | Captured for Business Profile actions and dark Search submit keys; do not extrapolate to unobserved components. |
+| Focus | Captured for Business Profile actions and dark Search submit keys; blue focus rings are recorded only where observed. |
+| Disabled | Captured only for the Business Profile inactive image card. |
+| Expanded menu | Captured on the dark Search homepage language/menu interaction. |
+| Empty | [FILL IN: no empty-state surface was observed.] |
+| Loading | [FILL IN: no loading-state surface was observed.] |
+| Error | [FILL IN: no error-state surface was observed.] |
+| Success | [FILL IN: no success-state surface was observed.] |
 
 ## 15. Motion & Easing
 
-**Durations (official `md.sys.motion.duration` tokens):**
-
-| Token | Value | Use |
-|---|---|---|
-| `short1-short4` | 50 / 100 / 150 / 200ms | Hover, focus, selection ticks, small component changes |
-| `medium1-medium4` | 250 / 300 / 350 / 400ms | Dialogs, sheets, card expansion |
-| `long1-long4` | 450 / 500 / 550 / 600ms | Large surface transitions, container transforms |
-| `extra-long1-4` | 700 / 800 / 900 / 1000ms | Full-screen and choreographed transitions |
-
-**Easings (official `md.sys.motion.easing` tokens):**
-
-| Token | Curve | Use |
-|---|---|---|
-| `emphasized` | cubic-bezier(0.2, 0, 0, 1) | Default for most transitions — expressive deceleration |
-| `emphasized-decelerate` | cubic-bezier(0.05, 0.7, 0.1, 1) | Elements entering the screen |
-| `emphasized-accelerate` | cubic-bezier(0.3, 0, 0.8, 0.15) | Elements leaving the screen |
-| `standard` | cubic-bezier(0.2, 0, 0, 1) | Utility transitions, simple state changes |
-| `standard-decelerate` | cubic-bezier(0, 0, 0, 1) | Simple entries |
-| `standard-accelerate` | cubic-bezier(0.3, 0, 1, 1) | Simple exits |
-| `legacy` | cubic-bezier(0.4, 0, 0.2, 1) | Material 2 compatibility |
-
-**Motion rules**: M3 motion is physical and asymmetric — entries decelerate longer than exits accelerate, so arriving content feels placed rather than thrown. Container-transform is the signature pattern: a card morphs into the page it opens, preserving spatial continuity. The 2026 "Expressive" wave adds spring-based motion physics for product UI, but marketing surfaces stay almost motionless — a fade and a scroll. Under `prefers-reduced-motion: reduce`, transitions collapse to simple fades; nothing essential is conveyed by motion alone.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-11) via playwright getComputedStyle on
-https://www.google.com, https://about.google, https://store.google.com,
-https://m3.material.io — see web/references/google/.verification.md for raw samples.
-
-Official token sources fetched 2026-06-11:
-- material-foundation/material-tokens (GitHub): md-ref-palette values — primary40
-  #6750a4, primary90 #eaddff, neutral10 #1c1b1f, neutral99 #fffbfe,
-  neutral-variant50 #79747e, error40 #b3261e; sys-color mapping (light).
-- material-components/material-web (GitHub) tokens/versions/v0_192:
-  md-sys-shape corner tokens (4/8/12/16/28/9999px) and md-sys-motion durations
-  (50-1000ms) + easings (emphasized cubic-bezier(0.2,0,0,1) etc) — quoted verbatim in §15.
-- material-tokens css/typography.css: full Roboto baseline typescale in §3.
-
-Verified verbatim via WebFetch (2026-06-11):
-- https://about.google/company-info/ — mission statement: "Our mission is to
-  organize the world's information and make it universally accessible and useful".
-- https://about.google/company-info/philosophy/ — "Ten things we know to be true"
-  headlines, quoted in §10/§12 ("Focus on the user and all else will follow",
-  "Fast is better than slow", "You can be serious without a suit",
-  "Great just isn't good enough").
-- https://about.google/ — marketing copy samples in §10.
-
-Not independently verified this turn — widely documented public facts:
-- Founding (1998, Larry Page and Sergey Brin, Stanford, PageRank).
-- Material Design launch 2014; Material 3 announced 2021; "Expressive" wave 2025-26
-  (the m3.material.io homepage live this turn shows "M3 Expressive: Design with
-  emotion" and Google I/O 2026 content, supporting the latter).
-- Google Sans' lineage from Product Sans.
-- M3 disabled-state opacity spec (38%/12%) and container-transform pattern are
-  cited from Material guidelines as general knowledge, not fetched this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Google
-user segments (Android developers, low-bandwidth mobile users, Workspace admins,
-accessibility-dependent users). Names are illustrative; they do not refer to
-real people.
-
-Interpretive claims (e.g., "emptiness as trust", "one hue acts, the rainbow
-identifies", Arial as a deliberate speed fossil) are editorial readings
-connecting Google's stated philosophy to its observed design, not directly
-sourced Google statements.
--->
+The supplied capture records interaction states but no duration or easing measurement. Material Design 3 typography guidance is official design-system context, not evidence for a motion token on the captured Search or Business Profile pages. [FILL IN: first-party product motion source or measured product motion values.]

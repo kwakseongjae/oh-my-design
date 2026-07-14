@@ -1,0 +1,107 @@
+name: Reverify Queue
+
+on:
+  schedule:
+    - cron: "37 1 * * 1"
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Optional comma-separated reference ids"
+        required: false
+        type: string
+      limit:
+        description: "Maximum task packets"
+        required: true
+        default: "20"
+        type: string
+      horizon_days:
+        description: "Queue verified references this many days before expiry"
+        required: true
+        default: "30"
+        type: string
+      model_profile:
+        description: "Provider-neutral execution profile"
+        required: true
+        default: "frontier-high-reasoning"
+        type: string
+      reasoning_effort:
+        description: "Requested runner reasoning effort"
+        required: true
+        default: "xhigh"
+        type: string
+      execute:
+        description: "Invoke the configured paid-model adapter for exactly one reference"
+        required: true
+        default: false
+        type: boolean
+      reference_id:
+        description: "Required when execute=true; must be present in the generated queue"
+        required: false
+        type: string
+      budget_usd:
+        description: "Per-reference runner budget; must not exceed adapter maxBudgetUsd"
+        required: true
+        default: "1"
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reverify-queue-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  queue:
+    name: Build model-ready reverify queue
+    runs-on: ubuntu-latest
+    env:
+      IDS: ${{ inputs.reference_id || inputs.ids || '' }}
+      REFERENCE_ID: ${{ inputs.reference_id || '' }}
+      LIMIT: ${{ inputs.limit || '20' }}
+      HORIZON_DAYS: ${{ inputs.horizon_days || '30' }}
+      MODEL_PROFILE: ${{ inputs.model_profile || 'frontier-high-reasoning' }}
+      REASONING_EFFORT: ${{ inputs.reasoning_effort || 'xhigh' }}
+      BUDGET_USD: ${{ inputs.budget_usd || '1' }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+        working-directory: web
+      - run: npm run build-registry
+        working-directory: web
+      - run: npm run quality:references
+        working-directory: web
+      - name: Build queue and task packets
+        working-directory: web
+        run: >-
+          npm run reverify:queue --
+          --ids "$IDS"
+          --limit "$LIMIT"
+          --horizon-days "$HORIZON_DAYS"
+          --demand ../data/reference-demand.json
+          --model-profile "$MODEL_PROFILE"
+          --reasoning-effort "$REASONING_EFFORT"
+      - name: Execute one provider-adapter task
+        if: ${{ inputs.execute == true }}
+        working-directory: web
+        env:
+          OMD_REVERIFY_ADAPTER_JSON: ${{ secrets.OMD_REVERIFY_ADAPTER_JSON }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          test -n "$REFERENCE_ID"
+          test -n "$OMD_REVERIFY_ADAPTER_JSON"
+          npm run reverify:run -- --id "$REFERENCE_ID" --budget-usd "$BUDGET_USD" --execute
+      - name: Publish queue summary
+        run: cat artifacts/reverify/queue.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reverify-queue-${{ github.run_id }}
+          path: artifacts/reverify/
+          if-no-files-found: error
+          retention-days: 30

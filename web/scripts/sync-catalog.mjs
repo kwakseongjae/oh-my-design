@@ -18,7 +18,7 @@
  * NOT done here (still the orchestrator's call): CHANGELOG entry, package.json
  * version bump, git commit.
  */
-import { readFileSync, writeFileSync, existsSync, readdirSync, cpSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync, cpSync, mkdirSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
@@ -97,6 +97,7 @@ const ids = readdirSync(REFS, { withFileTypes: true })
 
 // ── 1. registry ────────────────────────────────────────────────────────
 if (!DRY) execSync('node scripts/build-registry.mjs', { cwd: WEB, stdio: 'inherit' });
+if (!DRY) execSync('node scripts/build-reference-quality.mjs', { cwd: WEB, stdio: 'inherit' });
 
 // ── 2. fingerprints ×3 ─────────────────────────────────────────────────
 const fp = JSON.parse(readFileSync(FP_PATHS[0], 'utf-8'));
@@ -125,7 +126,7 @@ for (const rid of missing) {
 fp.items.sort((a, b) => a.id.localeCompare(b.id));
 fp.count = fp.items.length;
 fp.generated_at = new Date().toISOString().slice(0, 10) + 'T00:00:00Z';
-if (!DRY && missing.length) {
+if (!DRY) {
   const body = JSON.stringify(fp, null, 1) + '\n';
   for (const p of FP_PATHS) writeFileSync(p, body);
 }
@@ -133,8 +134,11 @@ console.log(`[fingerprints] count ${oldCount} -> ${fp.count} (${missing.length} 
 
 // ── 3. design-md mirror ────────────────────────────────────────────────
 if (!DRY) {
-  rmSync(join(ROOT, 'design-md'), { recursive: true, force: true });
-  cpSync(REFS, join(ROOT, 'design-md'), { recursive: true, dereference: true });
+  const mirror = join(ROOT, 'design-md');
+  mkdirSync(mirror, { recursive: true });
+  // References are append/update-only, so an in-place overwrite is sufficient
+  // and avoids macOS ENOTEMPTY races from deleting a 400-directory tree first.
+  cpSync(REFS, mirror, { recursive: true, dereference: true, force: true });
 }
 console.log('[mirror] design-md re-synced');
 

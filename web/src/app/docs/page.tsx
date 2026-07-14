@@ -121,7 +121,7 @@ const SKILLS: Skill[] = [
     trigger: "Live brand fetch",
     title: "Capture live design context",
     desc:
-      "Navigates the brand's live site via CDP and writes assets/_reference/<id>/ with tokens.json, structure.json, fonts.json, screenshots, and .live-inspect-proof.json. Phase 3.9 browser-harness fast-path auto-detected — 3-5x faster than playwright MCP when the user has it set up.",
+      "Navigates multiple public brand surfaces with the MCP-free evidence collector and writes a versioned evidence.json plus tokens, structure, fonts, and proof projections under assets/_reference/<id>/. browser-harness can supplement authenticated interactions.",
     icon: Search,
   },
   {

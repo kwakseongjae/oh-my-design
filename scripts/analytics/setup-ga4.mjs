@@ -18,9 +18,19 @@ const DIMENSIONS = [
   { parameterName: "mode", displayName: "Build mode", scope: "EVENT" },
   { parameterName: "channel", displayName: "Channel", scope: "EVENT" },
   { parameterName: "entry", displayName: "Entry", scope: "EVENT" },
+  { parameterName: "entry_step", displayName: "Builder entry step", scope: "EVENT" },
   { parameterName: "surface", displayName: "Install surface", scope: "EVENT" },
+  { parameterName: "kind", displayName: "Handoff kind", scope: "EVENT" },
+  { parameterName: "taxonomy_version", displayName: "Taxonomy version", scope: "EVENT" },
+  { parameterName: "format", displayName: "Source format", scope: "EVENT" },
+  { parameterName: "action", displayName: "Source action", scope: "EVENT" },
+  { parameterName: "collection", displayName: "Collection slug", scope: "EVENT" },
+  { parameterName: "color_family", displayName: "Color family", scope: "EVENT" },
+  { parameterName: "origin", displayName: "Collection origin", scope: "EVENT" },
+  { parameterName: "location", displayName: "Share location", scope: "EVENT" },
+  { parameterName: "artifact", displayName: "Share artifact", scope: "EVENT" },
 ];
-const KEY_EVENTS = ["bld_generate", "act_install_copy"];
+const KEY_EVENTS = ["bld_generate", "act_install_copy", "act_handoff"];
 
 async function api(path, init) {
   const res = await fetch(`${BASE}${path}`, {

@@ -9,457 +9,255 @@ primary_color: "#000000"
 logo:
   type: simpleicons
   slug: samsung
-verified: "2026-06-22"
+verified: "2026-07-13"
 omd: "0.1"
-tokens:
-  source: live-extract
-  extracted: "2026-06-22"
-  note: "primary = live e-commerce CTA black (#000000) — Samsung.com KR uses pure black pill buttons as the dominant action color across all product pages. One UI primary blue (#0381fe) governs the mobile OS layer, not the web commerce surface."
-  colors:
-    primary: "#000000"
-    primary-alt: "#212425"
-    canvas: "#ffffff"
-    surface: "#f7f7f7"
-    foreground: "#000000"
-    muted: "#707070"
-    muted-alt: "#555555"
-    on-primary: "#ffffff"
-    hairline: "#dddddd"
-    interactive-blue: "#0381fe"
-    interactive-blue-dark: "#0072de"
-    link-blue: "#007aff"
-    link-blue-alt: "#2189ff"
-    error: "#ef3434"
-    error-alt: "#fa2337"
-    badge-red: "#ef3434"
-  typography:
-    family: { display: "Samsung Sharp Sans", body: "SamsungOneKorean", fallback: "Dotum, 돋움, sans-serif" }
-    display-hero:   { size: 56, weight: 700, lineHeight: 1.2, use: "Hero section headline, Samsung Sharp Sans Bold" }
-    display-section: { size: 40, weight: 700, lineHeight: 1.2, use: "Section hero headline, Samsung Sharp Sans" }
-    card-heading:   { size: 24, weight: 700, lineHeight: 1.3, use: "Product card heading, Samsung Sharp Sans" }
-    nav-primary:    { size: 16, weight: 700, lineHeight: 1.5, use: "Top nav category links, SamsungOneKorean Bold" }
-    nav-secondary:  { size: 14, weight: 700, lineHeight: 1.5, use: "Sub-nav links, SamsungOneKorean" }
-    body:           { size: 16, weight: 400, lineHeight: 1.5, use: "Body copy, SamsungOneKorean Regular" }
-    caption:        { size: 14, weight: 400, lineHeight: 1.5, use: "Captions, labels, metadata" }
-    button:         { size: 14, weight: 700, lineHeight: 1.0, use: "Button label, SamsungOneKorean Bold" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 8, md: 20, lg: 40, full: 9999 }
-  shadow:
-    card: "0 2px 8px rgba(0,0,0,0.08)"
-    elevated: "0 4px 16px rgba(0,0,0,0.12)"
-  components:
-    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "20px", padding: "0px 24px", height: "40px", font: "14px / 700 SamsungOneKorean", border: "1px solid #000000", states: "hover bg #212425", use: "Primary CTA: 구매하기, 더 알아보기, 제품 모두 보기" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#000000", radius: "20px", padding: "0px 24px", height: "40px", font: "14px / 700 SamsungOneKorean", border: "1px solid #000000", use: "Secondary outline CTA on light backgrounds" }
-    button-chip: { type: button, bg: "#f7f7f7", fg: "#000000", radius: "40px", padding: "9px 16px", height: "36px", font: "16px / 400 SamsungOneKorean", border: "1px solid #f7f7f7", use: "Product series filter chip (갤럭시 S26 울트라, etc.)" }
-    filter-button: { type: button, bg: "#ffffff", fg: "#000000", radius: "8px", padding: "1px 15px", height: "40px", font: "14px / 700 SamsungOneKorean", border: "1px solid #dddddd", use: "Filter/facet button on product listing pages" }
-    product-card: { type: card, bg: "#ffffff", radius: "0px", use: "Product listing card — frameless, image-led, no border or shadow on standard listing" }
-    input-default: { type: input, bg: "#ffffff", fg: "#000000", border: "1px solid #dddddd", radius: "0px", font: "16px / 400 SamsungOneKorean", use: "Search and form input on e-commerce pages" }
-    badge-error: { type: badge, bg: "#ef3434", fg: "#ffffff", radius: "9999px", font: "12px / 700 SamsungOneKorean", use: "Notification badge, error indicator" }
-    nav-tab: { type: tab, fg: "#000000", font: "16px / 700 SamsungOneKorean", active: "text #000000 + 2px bottom border #000000", use: "Top horizontal nav category tab" }
-  components_harvested: true
 ds:
   name: Samsung One UI Design System
   url: "https://developer.samsung.com/one-ui"
   type: system
-  description: "Samsung's official mobile OS design language for Galaxy devices — principles, color system, motion, typography, and component specs for One UI apps."
+  description: Samsung's official platform design guidance. Its component and color rules are a separate evidence domain from the captured Samsung Korea public web surfaces.
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.samsung.com/sec/", inspected: "2026-07-13" }
+    - { id: ai-products, kind: public-product, url: "https://www.samsung.com/sec/ai-products/", inspected: "2026-07-13" }
+    - { id: brand-identity, kind: official-doc, url: "https://www.samsung.com/sec/about-us/brand-identity/", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.samsung.com/sec/", captured: "2026-07-13" }
+    - { id: ai-live, kind: product-surface, url: "https://www.samsung.com/sec/ai-products/", captured: "2026-07-13" }
+    - { id: brand-live, kind: product-surface, url: "https://www.samsung.com/sec/about-us/brand-identity/", captured: "2026-07-13" }
+    - { id: one-ui-color, kind: official-doc, url: "https://developer.samsung.com/one-ui/color/system.html", captured: "2026-07-13" }
+    - { id: samsungone-font, kind: official-doc, url: "https://developer.samsung.com/design-system/font", captured: "2026-07-13" }
+    - { id: sharp-sans-brand, kind: official-doc, url: "https://www.samsung.com/bd/about-us/brand-identity/color-and-typo/", captured: "2026-07-13" }
+    - { id: brand-story, kind: official-doc, url: "https://www.samsung.com/sec/about-us/brand-identity/brand-story/", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.canvas": *home
+    "tokens.colors.surface": &ai { surface_id: ai-products, source_id: ai-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.foreground": *ai
+    "tokens.colors.muted": *home
+    "tokens.colors.border": *home
+    "tokens.colors.link": *home
+    "tokens.colors.one-ui-primary": &oneui { surface_id: brand-identity, source_id: one-ui-color, method: official-doc, captured: "2026-07-13" }
+    "tokens.typography.family.display": &sharp { surface_id: home, source_id: home-live, method: fontfaceset-and-computed-style, captured: "2026-07-13" }
+    "tokens.typography.family.ui": &ui { surface_id: home, source_id: home-live, method: fontfaceset-and-computed-style, captured: "2026-07-13" }
+    "tokens.typography.display.size": *sharp
+    "tokens.typography.display.weight": *sharp
+    "tokens.typography.display.lineHeight": *sharp
+    "tokens.typography.display.use": *sharp
+    "tokens.typography.body.size": *ai
+    "tokens.typography.body.weight": *ai
+    "tokens.typography.body.lineHeight": *ai
+    "tokens.typography.body.use": *ai
+    "tokens.typography.action.size": *home
+    "tokens.typography.action.weight": *home
+    "tokens.typography.action.lineHeight": *home
+    "tokens.typography.action.use": *home
+    "tokens.spacing.nav-inline": *home
+    "tokens.spacing.action-inline": *home
+    "tokens.spacing.card-inset": *ai
+    "tokens.rounded.sharp": *ai
+    "tokens.rounded.pill": *home
+    "tokens.rounded.chip": *ai
+    "tokens.shadow.flat": *ai
+    "tokens.components.ai-product-tabs.type": *ai
+    "tokens.components.ai-product-tabs.fg": *ai
+    "tokens.components.ai-product-tabs.radius": *ai
+    "tokens.components.ai-product-tabs.padding": *ai
+    "tokens.components.ai-product-tabs.font": *ai
+    "tokens.components.ai-product-tabs.states": *ai
+    "tokens.components.ai-product-tabs.use": *ai
+tokens:
+  source: live-extract
+  extracted: "2026-07-13"
+  colors:
+    primary: "#000000"
+    canvas: "#ffffff"
+    surface: "#f7f7f7"
+    foreground: "#000000"
+    muted: "#707070"
+    border: "#dddddd"
+    link: "#007aff"
+    one-ui-primary: "#0381fe"
+  typography:
+    family: { display: "Samsung Sharp Sans", ui: "SamsungOneKorean" }
+    display: { size: 24, weight: 700, lineHeight: 32, use: "Observed product-card heading on the AI products surface" }
+    body: { size: 16, weight: 400, lineHeight: 21.2798, use: "Observed product-card body on the AI products surface" }
+    action: { size: 14, weight: 700, lineHeight: 19, use: "Observed contained CTA label on the Samsung Korea homepage" }
+  spacing: { nav-inline: 12, action-inline: 24, card-inset: 32 }
+  rounded: { sharp: 0, pill: 20, chip: 40 }
+  shadow:
+    flat: "none"
+  components:
+    ai-product-tabs: { type: tab, fg: "#000000", radius: 0, padding: "4px 0px", font: "18px/700 SamsungOneKorean", states: "selected / tab-selected observed", use: "AI products `tab__item-title`; selector surface-2::[data-omd-capture=\"25\"]" }
+  components_harvested: true
 ---
 
 # Design System Inspiration of Samsung
 
 ## 1. Visual Theme & Atmosphere
 
-Samsung's web commerce and device branding operate under a single, unwavering visual principle: black leads. The Samsung Korea e-commerce surface (`samsung.com/sec`) is built on a pure white canvas (`#ffffff`) intersected with a light cool-grey surface (`#f7f7f7`), with virtually every headline, body copy, and interactive element anchored in pure black (`#000000`). This is not minimalism for minimalism's sake — it is a deliberate assertion of premium hardware confidence. Samsung's products are the hero; the UI frame must be neutral enough to disappear.
+Samsung Electronics presents consumer devices, services, and its Galaxy ecosystem across a broad public web estate. Its Korean public commerce and AI-product pages use a quiet product frame: white or pale-gray surfaces, black typography, contained black calls to action, and large device imagery. Samsung’s official brand story frames this product work within human-driven innovation and describes its expression as bold, genuine, contemporary, and playful; the captured commerce treatment is one restrained application of that wider identity rather than a substitute for it. The official One UI system is a separate platform domain, designed for comfortable and responsive experiences across Galaxy devices. This reference therefore preserves the observed public-web grammar while keeping One UI’s documented blue and component guidance separate from web-commerce claims. [Samsung brand story](https://www.samsung.com/sec/about-us/brand-identity/brand-story/) · [One UI overview](https://developer.samsung.com/one-ui/index.html)
 
-Two typefaces carry the entire brand's voice. **Samsung Sharp Sans** — Samsung's proprietary display typeface — handles all headlines and section titles at weights 700 and sizes from 24px to 56px, its geometric, architectural letterforms lending the product catalog a crisp, engineered quality. For body text, navigation labels, and button copy, **SamsungOneKorean** (part of the SamsungOne global typeface family) takes over, delivering clean, legible Korean Hangul at 14–16px weights 400–700. Together they create a typographic voice that is simultaneously global and deeply Korean.
+The supplied 2026-07-13 evidence covers a Korean homepage, an AI-products page, and the Korean brand-identity page at one desktop viewport. The homepage provides the measured contained and outlined CTA patterns; the AI page provides the product-card and selected-tab patterns; the brand-identity page is retained as an official brand/documentation surface. It does not cover checkout, sign-in, native Galaxy apps, or a general Samsung component library.
 
-The CTA system is strikingly economical. The primary purchase button ("구매하기") is a 40px-tall black pill — `#000000` background, white text, `20px` radius, `0px 24px` padding — applied identically across every product listing and category page. There is no secondary brand color for action; black is the action color. A lighter outline variant (white bg, 1px black border, matching 20px radius) serves secondary calls. This duality — black vs. white pill — is the entire button grammar. Filter chips and facet selectors switch to a `#f7f7f7` light-grey pill at 40px radius, visually distinguishing selection from action.
-
-**Key Characteristics:**
-- Samsung Sharp Sans Bold at large display sizes — geometric, Korean-premium, hardware-confident
-- SamsungOneKorean for all body, nav, and UI copy — dense Hangul legibility at scale
-- Pure black (`#000000`) as the sole primary action color — no colorful CTA
-- 20px radius on primary pill buttons — restrained rounding for a premium feel
-- White (`#ffffff`) and cool-grey (`#f7f7f7`) canvas — product photography as the only decoration
-- Interactive blue (`#0381fe`) reserved for One UI mobile OS and link text on commerce pages
-- Error/notification red (`#ef3434`) for badges and error states
-- Link blue (`#007aff`) for informational links and highlights, inherited from iOS-adjacent patterns on Korean market pages
+**Key characteristics:**
+- Black `#000000` contained CTA and primary text on the captured Korean public web surfaces
+- White `#ffffff` canvas and `#f7f7f7` product/search surface, with no representative box shadow
+- Samsung Sharp Sans for observed display headings and SamsungOneKorean for observed Korean UI/body text
+- 20px contained-CTA and AI-product media-card corners; 0px selected-tab title treatment
+- One UI blue `#0381fe` is an official mobile-system token, not a substitute for the captured commerce CTA
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Primary Black** (`#000000`): The dominant action color. All primary CTA buttons, navigation text, headings. Samsung's e-commerce color philosophy is monochrome: black on white, white on black.
-- **Primary Alt** (`#212425`): Near-black for hover states and dark UI surfaces (error page CTAs, dark overlays).
-- **Pure White** (`#ffffff`): Page background, button text on dark. The default canvas.
+### Captured Korean public web surfaces
+- **Primary action and foreground** (`#000000`): observed on the homepage contained CTA and across the AI-product card/title treatments.
+- **Canvas** (`#ffffff`): observed homepage and product-card background.
+- **Product/search surface** (`#f7f7f7`): observed on the AI page’s pressed search control and on official/commerce surface treatments.
+- **Muted text** (`#707070`): repeated computed text color in the supplied capture; retain for secondary content only.
+- **Border** (`#dddddd`): observed on homepage carousel-control chrome; not promoted as a universal product-card border.
+- **Link** (`#007aff`): observed homepage text/link color; it is separate from the black contained CTA.
 
-### Surface & Borders
-- **Surface Grey** (`#f7f7f7`): Secondary surface for tinted sections, filter chip backgrounds, alternating content zones.
-- **Hairline** (`#dddddd`): Border color for filter buttons, input fields, and UI dividers.
-
-### Text Hierarchy
-- **Foreground** (`#000000`): All headings and primary body text.
-- **Muted** (`#707070`): Secondary text, captions, metadata below product prices.
-- **Muted Alt** (`#555555`): Tertiary text, fine print.
-
-### Interactive / Brand Blue (One UI & links)
-- **Interactive Blue** (`#0381fe`): Samsung One UI primary — used for floating action buttons, sliders, and key interactive elements in the Galaxy mobile OS. Also appears as link/accent blue on web.
-- **Interactive Blue Dark** (`#0072de`): One UI primary button background in light mode.
-- **Link Blue** (`#007aff`): Hyperlinks and highlighted text on Samsung Korea commerce pages.
-- **Link Blue Alt** (`#2189ff`): Stronger blue accent for hover or emphasis.
-
-### Semantic
-- **Error / Badge Red** (`#ef3434`): Notification badges, error states, "sale" indicators. A saturated warm red.
-- **Error Alt** (`#fa2337`): Secondary error/warning accent.
+### One UI documentation boundary
+- **One UI primary** (`#0381fe`): Samsung’s official One UI color guidance assigns it to floating action buttons and sliders. It belongs to the platform design-system source, not to the captured Korean commerce CTA. [Color system and usage](https://developer.samsung.com/one-ui/color/system.html)
 
 ## 3. Typography Rules
 
-### Font Family
-- **Display**: `Samsung Sharp Sans` — Samsung's proprietary geometric typeface, with `SamsungOneKorean` as Korean companion.
-- **Body/UI**: `SamsungOneKorean, Dotum, 돋움, sans-serif` — the primary Korean web typeface for all navigation, body, and button text.
+### Evidence classes
 
-### Hierarchy
+**Official product-use and brand context.** Samsung’s design-system font page describes SamsungOne as the family that gives its products a consistent voice, with localized fonts supporting a universal Samsung experience. Samsung’s official brand-identity typography page separately identifies Samsung Sharp Sans Bold and Medium as brand type specimens. Those pages establish family and brand context; they do not turn every official face into a public-web UI token. [Samsung fonts](https://developer.samsung.com/design-system/font) · [Samsung Sharp Sans specimens](https://www.samsung.com/bd/about-us/brand-identity/color-and-typo/)
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display Hero | Samsung Sharp Sans | 56px | 700 | 1.2 | Main hero headline |
-| Display Section | Samsung Sharp Sans | 40px | 700 | 1.2 | Section hero or promo headline |
-| Card Heading | Samsung Sharp Sans | 24px | 700 | 1.3 | Product card title (e.g. "Galaxy S26 \| S26+") |
-| Nav Primary | SamsungOneKorean | 16px | 700 | 1.5 | Category nav (모바일, TV/영상∙음향) |
-| Nav Secondary | SamsungOneKorean | 14px | 700 | 1.5 | Sub-nav, utility links (고객지원, 비즈니스) |
-| Body | SamsungOneKorean | 16px | 400 | 1.5 | Body copy |
-| Caption / Button | SamsungOneKorean | 14px | 700 | 1.0–1.5 | Button labels, captions, metadata |
+**Live computed surface-use.** The supplied capture records `SamsungOneKorean` as loaded/high with 1,297 visible uses across body, button, menu, tab, card, and heading roles, with `@font-face` sources on Samsung domains. `SamsungSharpSans` is likewise loaded/high with 76 visible heading/text uses and Samsung-hosted FontFace sources. On the AI-products page, a repeated heading is 24px/700/32px Samsung Sharp Sans; a repeated product-card body is approximately 16px/400/21.2798px SamsungOneKorean. The homepage contained CTA is 14px/700/19px SamsungOneKorean.
 
-### Principles
-- **Two typefaces, two registers**: Samsung Sharp Sans for product and brand identity; SamsungOneKorean for UI and reading. They never swap roles.
-- **Bold everywhere at display sizes**: Weight 700 is the default for all headlines and nav labels — Samsung's voice is confident and direct.
-- **Korean-first sizing**: 14–16px body size provides generous Hangul legibility in dense product listing contexts.
-- **Zero decorative typefaces**: The system uses no italic, condensed, or script styles. Samsung communicates through geometry and weight alone.
+**Official distributed brand asset / license boundary.** Samsung Design publishes SamsungOne specimens and a PDF download, but the first-party sources reviewed here do not provide a transferable public font-license grant. Keep official specimen and history material as context; do not infer permission to redistribute the webfont files or substitute a system font. [SamsungOne](https://design.samsung.com/global/contents/samsungone/index.html)
+
+**Declared-only.** The artifact found Samsung Korea Sans, SamsungOne, SamsungSharpGraphic, SamsungSSBody, SamsungSSHead, Samsung Sharp Sans mixed/normal, NanumBarunBold, and several icon faces declared with `@font-face` but without visible computed use. They remain declared assets, not UI-family tokens.
+
+**System/unresolved.** Dotum, Apple SD Gothic Neo, Arial, and `sans-serif` occur only as fallbacks in the captured computed stacks. No runtime availability authorizes their use as Samsung substitutes. Additional locales, native One UI font behavior, and all uncaptured pages remain unresolved.
 
 ## 4. Component Stylings
 
-### Buttons
+### Homepage calls to action
 
-**Primary (구매하기 / 더 알아보기)**
+**Contained CTA — Korean homepage**
 - Background: `#000000`
 - Text: `#ffffff`
-- Radius: 20px
-- Padding: 0px 24px
-- Height: 40px
-- Font: 14px SamsungOneKorean weight 700
 - Border: 1px solid `#000000`
-- Hover: background shifts to `#212425`
-- Use: All primary purchase and learn-more CTAs on product and listing pages
-
-**Outline (Secondary)**
-- Background: `#ffffff`
-- Text: `#000000`
 - Radius: 20px
-- Padding: 0px 24px
+- Padding: 10px 24px 9px
 - Height: 40px
-- Font: 14px SamsungOneKorean weight 700
+- Font: 14px / 700 / SamsungOneKorean
+- Use: `home::[data-omd-capture="26"]`, class `cta cta-ntrns-fild`; 36 occurrences on the captured homepage.
+
+**Outlined CTA — Korean homepage**
+- Text: `#000000`
 - Border: 1px solid `#000000`
-- Use: Secondary CTA on dark backgrounds or alongside a primary button
-
-**Filter Chip**
-- Background: `#f7f7f7`
-- Text: `#000000`
-- Radius: 40px
-- Padding: 9px 16px
-- Height: 36px
-- Font: 16px SamsungOneKorean weight 400
-- Border: 1px solid `#f7f7f7`
-- Use: Product series selector (갤럭시 S26 울트라, 갤럭시 Z, 갤럭시 A 등)
-
-### Inputs
-
-**Default Form Input**
-- Background: `#ffffff`
-- Text: `#000000`
-- Border: 1px solid `#dddddd`
-- Radius: 0px
-- Font: 16px SamsungOneKorean weight 400
-- Use: Search field and form inputs on e-commerce and support pages
-
-**Filter Button (faceted search)**
-- Background: `#ffffff`
-- Text: `#000000`
-- Border: 1px solid `#dddddd`
-- Radius: 8px
-- Padding: 1px 15px
+- Radius: 20px
+- Padding: 10px 24px 9px
 - Height: 40px
-- Font: 14px SamsungOneKorean weight 700
-- Use: Category filter dropdowns on all-products listing (배송 유형, 유형, 스토리지 등)
+- Font: 14px / 700 / SamsungOneKorean
+- Use: `home::[data-omd-capture="20"]`, class `cta cta-outl`; six homepage occurrences. Its computed background is transparent, so no white fill is asserted.
 
-### Cards & Containers
+### AI-product content
 
-**Product Listing Card**
+**Product media card — AI products**
 - Background: `#ffffff`
-- Radius: 0px
-- Use: Standard product card on listing pages — frameless, photography-led, no border or shadow; product image bleeds to card edge
+- Radius: 20px
+- Use: `surface-2::div`, class `showcase-card-tab-card__img-wrap`; a 330px-square observed media wrapper. The surrounding card is not asserted as a universal commerce-card pattern.
 
-**Tinted Section Card**
-- Background: `#f7f7f7`
-- Radius: 0px
-- Use: Feature/promotional content zones on the homepage alternating with white sections
-
-### Badges
-
-**Error / Notification Badge**
-- Background: `#ef3434`
-- Text: `#ffffff`
-- Radius: 9999px
-- Font: 12px SamsungOneKorean weight 700
-- Use: Red notification dot, badge count, error indicators
-
-### Navigation
-
-**Top Category Tab**
+**Selected product tab title — AI products**
 - Text: `#000000`
-- Font: 16px SamsungOneKorean weight 700
-- Active: text `#000000` with 2px bottom border `#000000`
-- Height: 47px header
-- Background: `#ffffff`
-- Use: Top horizontal nav (AI 구독클럽, 모바일, TV/영상∙음향, 주방가전, 리빙가전, PC/주변기기)
+- Radius: 0px
+- Padding: 4px 0px
+- Font: 18px / 700 / SamsungOneKorean
+- Use: `surface-2::[data-omd-capture="25"]`, class `tab__item-title`.
+- Selected: `selected` and `tab-selected` were observed by three collector tab interactions. No selected underline, panel geometry, or unmeasured color is inferred.
+
+### Observed state boundaries
+
+The capture records a pressed underlined CTA on the homepage, pressed search controls on the AI and brand-identity surfaces, disabled carousel arrows on the homepage, three selected-tab interactions on the AI-products surface, and an expanded/menu-open brand-identity menu. Only the selected product-tab state has enough matching component provenance to be represented in the machine-readable component token. No generic hover, focus, error, dialog, toast, or checkout state is asserted.
 
 ---
-
-**Verified:** 2026-06-22 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://www.samsung.com/sec/, https://www.samsung.com/sec/smartphones/, https://developer.samsung.com/one-ui/color/system.html
-**Tier 2 sources:** getdesign.md/samsung — 404 (not in catalog); styles.refero.design/?q=samsung — no Samsung style found
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.samsung.com/sec/, https://www.samsung.com/sec/ai-products/, https://www.samsung.com/sec/about-us/brand-identity/, https://developer.samsung.com/one-ui/color/system.html, https://developer.samsung.com/design-system/font
+**Tier 2 sources:** https://getdesign.md/samsung and https://styles.refero.design/?q=samsung were both attempted through built-in web retrieval; both returned an internal error, so neither supplied a value or an absence determination.
+**Resolution note:** The prior universal e-commerce filter/input/card/shadow/state rules were removed because this packet did not observe their matching current component provenance. One UI blue remains documentation-only rather than a commerce CTA token.
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Notable: Product listing cards use generous 48–64px vertical section gaps; horizontal padding at content edges is typically 24–32px
-
-### Grid & Container
-- Max content width: approximately 1440px on desktop (full-bleed hero images)
-- Hero sections: full-bleed photography with text overlay; headline and CTA in the lower-left or centered
-- Product listing: 3–4 column grid on desktop, collapsing to 2 then 1 on mobile
-- Category nav is sticky below the top utility bar
-
-### Whitespace Philosophy
-- **Product as hero**: extreme whitespace around product photography — the UI disappears, the device shines
-- **Flat segmentation**: white and `#f7f7f7` alternating sections divide content without elevation or shadow
-- **Dense nav, spacious content**: the 47px header is functionally dense (bold 16px labels at 14px 12px padding each side), while main content areas breathe
-
-### Border Radius Scale
-- Sharp (0px): Product cards, image containers, section backgrounds
-- Soft (8px): Filter dropdowns, utility UI elements
-- Pill-moderate (20px): Primary and outline CTA buttons — the signature rounding
-- Pill-generous (40px): Filter chip selectors
-- Full pill (9999px): Notification badges, color swatches
+The one captured desktop viewport repeatedly exposes 12px navigation insets, 24px horizontal CTA padding, and a 32px product-card text inset. Treat these as local, observed spacing values rather than a complete Samsung grid scale. The capture does not compare breakpoints, measure a checkout layout, or establish a universal product-listing grid.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Product cards, page background, nav |
-| Surface (Level 1) | `#f7f7f7` background shift | Section separation without elevation |
-| Ambient (Level 2) | `0 2px 8px rgba(0,0,0,0.08)` | Dropdowns, floating search panels |
-| Standard (Level 3) | `0 4px 16px rgba(0,0,0,0.12)` | Modals, expanded menus |
-
-**Shadow Philosophy**: Samsung's commerce surface is near-shadowless. Depth and content grouping come from alternating flat backgrounds (`#ffffff` vs `#f7f7f7`) and thin `#dddddd` hairlines. This keeps the visual focus on product hardware photography. When elevation does appear — dropdowns, quick-view panels — it uses a neutral grey shadow without any brand-colored tinting.
+Representative contained CTAs, AI-product cards, tabs, and menu structures in the artifact report `box-shadow: none`. Hierarchy in these observed surfaces comes from product imagery, white versus `#f7f7f7` planes, typography, and borders. No modal, tooltip, or floating-panel elevation is claimed.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Samsung Sharp Sans Bold (weight 700) for all product headings and display text
-- Use SamsungOneKorean for all body, UI, and button label text
-- Use pure black (`#000000`) pill buttons (20px radius) for all primary purchase CTAs
-- Apply `#f7f7f7` surface grey to alternate section backgrounds for flat separation
-- Use `#0381fe` interactive blue only for One UI mobile contexts and hyperlinks
-- Use `#ef3434` red for error badges and notification indicators
-- Let product photography fill the card — frame it with minimal chrome
-- Maintain the 20px radius pill shape for all primary buttons across platforms
+- Use the contained homepage CTA only with the measured black/white, 20px-corner, 40px-high treatment.
+- Keep SamsungOneKorean and Samsung Sharp Sans tied to their recorded live-use roles and loaded FontFace evidence.
+- Treat the AI-product selected tab as its own 18px/700, 0px-radius pattern with the observed selected state.
+- Keep One UI documentation values visibly separate from Korean public-commerce measurements.
 
 ### Don't
-- Use a colorful brand CTA — Samsung's action color is black, not a brand hue
-- Apply drop shadows to product cards — the system is flat; shadows cheapen the premium feel
-- Use Samsung Sharp Sans for body copy — it belongs exclusively to display and headlines
-- Break the black-and-white CTA duality with a third button color
-- Apply large, decorative border-radius (60px+) to primary CTAs — 20px is the upper bound for e-commerce
-- Mix `#0381fe` blue into e-commerce buttons — blue is for links and the mobile OS layer only
-- Use weight 400 for nav labels — Samsung navigation is always bold (weight 700)
-- Introduce competing accent colors — the system's palette is intentionally near-monochrome
+- Do not promote declared-only faces or system fallbacks as loaded Samsung UI fonts.
+- Do not apply One UI `#0381fe` as a replacement for the captured black public-web CTA.
+- Do not infer a product-card shadow, checkout field, generic filter control, or error state from unobserved variants.
+- Do not treat the brand-identity documentation page as native Galaxy-app evidence.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single-column product grid, hamburger nav, stacked hero text |
-| Tablet | 640–1024px | 2-column product grid, condensed nav labels |
-| Desktop | 1024–1440px | 3–4 column grid, sticky full horizontal nav |
-| Wide | >1440px | Centered content with generous lateral margins |
-
-### Touch Targets
-- Primary buttons at 40px height — comfortably tappable
-- Category nav at 47px header — full-width tap area per nav item
-- Filter chips at 36px — adequate touch target on mobile
-- Color swatch buttons at 24px with 2px outer ring indicator
-
-### Collapsing Strategy
-- Hero: 56px Sharp Sans headline → compresses proportionally on mobile
-- Nav: full horizontal category row → hamburger toggle
-- Product grid: 4-column → 2-column → single-column stacked
-- CTA: button pill maintained at 40px height across all breakpoints
-
-### Image Behavior
-- Product images maintain aspect ratio at all sizes; no shadow added at any breakpoint
-- Hero full-bleed images crop from center on narrow viewports
-- Samsung maintains `alt` text in Korean for all product imagery
+No viewport comparison was included in the supplied artifact. The values above describe the captured desktop surfaces only; no Samsung-specific mobile navigation, grid collapse, touch target, or breakpoint geometry is asserted.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: Black (`#000000`)
-- CTA Hover: Near-black (`#212425`)
-- Background: White (`#ffffff`)
-- Surface grey: `#f7f7f7`
-- Text: Black (`#000000`)
-- Muted text: `#707070`
-- Hairline borders: `#dddddd`
-- Link / One UI blue: `#0381fe`
-- Error / badge red: `#ef3434`
+### Quick reference
+- Homepage contained CTA: `#000000` background, `#ffffff` text, 1px black border, 20px radius, 10px 24px 9px padding, 40px height, SamsungOneKorean 14px/700.
+- AI-product selected tab: black 18px/700 SamsungOneKorean text, 4px 0px padding, sharp corners; selected/tab-selected is observed.
+- AI-product media wrapper: white, 20px radius, no observed shadow.
 
-### Example Component Prompts
-- "Create a Samsung-style product hero: white background, full-bleed device image. Headline at 56px Samsung Sharp Sans weight 700, color #000000. Black pill CTA button — #000000 bg, white text, 20px radius, 0px 24px padding, 40px height, 14px SamsungOneKorean weight 700. Link text 'AI 구독클럽' in #000000."
-- "Design a product listing card: white background, no border, no shadow. Product heading at 24px Samsung Sharp Sans weight 700, color #000000. Price in SamsungOneKorean 16px weight 400. Black purchase button at bottom."
-- "Build a top nav: white background, 47px height. Category tabs in 16px SamsungOneKorean weight 700, color #000000, active tab with 2px solid #000000 bottom border."
-- "Create a filter bar: #f7f7f7 background filter chips with 40px radius, 36px height, 16px SamsungOneKorean weight 400. Separate facet filter buttons with 8px radius, #dddddd border."
-
-### Iteration Guide
-1. Black pill buttons are always the primary action — never color them blue or any brand hue
-2. Samsung Sharp Sans is display-only; SamsungOneKorean handles all UI text
-3. Separate sections with flat `#f7f7f7` backgrounds, not shadows or borders
-4. 20px radius on buttons, 40px on filter chips, 0px on cards — consistent scale
-5. Interactive blue (`#0381fe`) is for mobile OS (One UI) and links only, not e-commerce CTAs
-6. Error/badge states use `#ef3434` red
-7. Weight 700 dominates — Samsung is bold, direct, confident
-
----
+### Boundary-aware prompt
+- "Create a Korean public-web CTA using Samsung’s captured homepage treatment: black background, white text, 20px radius, 40px height, 10px 24px 9px padding, and SamsungOneKorean 14px/700. Do not use One UI blue or infer hover/focus values."
 
 ## 10. Voice & Tone
 
-Samsung's brand voice is **confident, efficient, and aspirational** — the voice of a company that has defined global consumer electronics for decades and knows it. Copy on Samsung Korea's e-commerce surface is declarative and product-forward: "갤럭시 S26 | S26+" is the headline, not a tagline. Navigation labels are functional (모바일, TV/영상∙음향, PC/주변기기), never whimsical. CTAs are direct imperatives ("구매하기", "더 알아보기") that respect the user's time without urgency tricks.
-
-The brand shifts register by channel. The `design.samsung.com` editorial surface uses English and a more expansive, philosophical voice — "Where Design Meets Reality," "Samsung Design Vision," "Designed to Be Seen" — positioning Samsung as a cultural and aesthetic force, not just a hardware company. The One UI design system documentation speaks in precise, developer-respecting technical prose. These three voices (commerce = direct Korean, design editorial = expansive English, OS documentation = technical) coexist without contradiction because each serves a distinct audience.
-
-| Context | Tone |
-|---|---|
-| E-commerce nav / CTAs | Direct, Korean, zero decoration. "구매하기", "더 알아보기". |
-| Product headlines | Bold brand + model names as the headline. No superlatives. |
-| Design editorial (design.samsung.com) | Visionary, philosophical, English-primary. "Where Design Meets Reality." |
-| One UI documentation | Technical, precise, developer-respecting. Principles before pixel specs. |
-| Sustainability / CSR | Earnest, global-citizen register. Data-backed claims. |
-| Galaxy AI features | Forward-looking, benefit-first. "AI 구독클럽" as a product category, not a description. |
-
-**Voice samples (verbatim from live www.samsung.com/sec, 2026-06-22):**
-- "AI 구독클럽" — nav category label for AI subscription services *(verified live 2026-06-22)*
-- "구매하기" — universal primary CTA across all product pages *(verified live 2026-06-22)*
-- "삼닷 Live 보기" — live-commerce CTA on homepage featured products *(verified live 2026-06-22)*
-
-**Forbidden register**: vague superlatives ("world's most innovative"), fear-based urgency, emoji in e-commerce CTAs, informal Korean honorifics (반말) on any branded surface.
+Samsung’s official brand story calls its expression bold, genuine, contemporary, and playful. On the captured Korean public surfaces, that broader tone becomes direct category and action language rather than a claim about every channel or locale. Use concise, specific labels that name the product or action; do not invent marketing superlatives, price claims, or product benefits. [Samsung brand story](https://www.samsung.com/sec/about-us/brand-identity/brand-story/)
 
 ## 11. Brand Narrative
 
-Samsung Electronics was established in **1969** as Samsung-Sanyo Electronics (renamed Samsung Electronics in 1974), emerging from the Samsung Group founded by **이병철 (Lee Byung-chul)** in 1938. Headquartered in **Suwon, South Korea** (with global HQ functions in Seoul), Samsung Electronics became the world's largest producer of memory chips, smartphones, and televisions — a position held continuously since the 2010s. The flagship **Galaxy** mobile line, launched in 2009 with the original Galaxy smartphone, grew into the world's best-selling Android device family, anchoring Samsung's identity as a consumer-facing premium brand.
+Samsung’s official Korean brand story dates the company’s story to 1969 and states a purpose of creating human-driven innovations that overcome barriers for a better world. It also describes people and their concerns as central to what Samsung creates, and names values around people, excellence, change, integrity, and co-prosperity. This provides context for the consumer-device and service ecosystem; it does not prove a specific public-web token. [Samsung brand story](https://www.samsung.com/sec/about-us/brand-identity/brand-story/)
 
-Samsung's design philosophy crystallized in the **One UI** design language, introduced with One UI 1.0 in 2018. One UI's founding premise — "Focus on the task at hand, interact naturally, be visibly comfortable, make things responsive" — represented Samsung's explicit rejection of feature-packed, visually busy interfaces in favor of content-forward, thumb-friendly layouts. The design team's stated rationale: "simple, intuitive designs to help users focus on content" rather than chrome. This principle extended to the visual language: calm backgrounds, a primary blue that "symbolizes trust, hope, and stability" drawn from Samsung's heritage, and dark mode support as a first-class feature rather than an afterthought.
-
-What Samsung's e-commerce design refuses: brand-colored CTA buttons (Samsung runs pure black purchase buttons, not blue), decorative shadows, and any visual element that competes with the hardware being sold. What it embraces: Samsung Sharp Sans as a proprietary display font that signals ownership of the premium display space, the Galaxy brand name as the sole hero element in product headlines, and a near-monochrome palette that makes product photography the only color in the room. The result is a design system that defers to the product at every turn — a confidence move that only a brand with genuinely iconic hardware can afford.
+The current design expression spans more than the captured commerce pages. Samsung’s brand material treats color, typography, logo, and sound as distinct visual/experiential assets, while One UI documents a platform system for phones, tablets, wearables, earbuds, and PCs. This reference retains those domains separately so a marketplace CTA is not presented as a native One UI control. [Brand identity](https://www.samsung.com/sec/about-us/brand-identity/) · [One UI overview](https://developer.samsung.com/one-ui/index.html)
 
 ## 12. Principles
 
-1. **Product is the hero.** Every design decision on samsung.com defers to product photography. White canvas, no shadows, minimal chrome — the device fills the frame. *UI implication:* product cards are frameless and shadowless; the only decor is the hardware.
-2. **Black is the action color.** Unlike most consumer-tech brands that reach for a colorful primary CTA, Samsung's purchase buttons are pure black. This signals premium confidence: the product sells itself, the CTA doesn't need to shout. *UI implication:* all primary buttons are the black pill system — no exceptions.
-3. **Bold type, calm palette.** Samsung Sharp Sans at weight 700 declares the headline; the surrounding space is white silence. *UI implication:* reserve Samsung Sharp Sans for product names and section titles; let white space amplify the typography.
-4. **Design comfort at scale.** One UI's foundational principle — "be visibly comfortable" — extends to all Samsung surfaces. Dark mode, variable font sizes, high contrast: accessibility is baked in, not bolted on. *UI implication:* all interactive states must support high-contrast mode and the full font-size range.
-5. **Global identity, Korean at heart.** SamsungOneKorean is the UI typeface because the Korean market is Samsung's home market and the standard bearer for Galaxy design quality. *UI implication:* Hangul legibility at 14–16px is non-negotiable; Korean copy drives spacing and rhythm decisions.
+1. **Put people and tasks first.** Samsung’s brand story and One UI guidance both center human experience and focused tasks. *UI implication:* state the action clearly and avoid decorative flow interruptions.
+2. **Use a connected typographic voice.** Samsung positions SamsungOne as a localized, universal family. *UI implication:* preserve the observed SamsungOneKorean UI role; do not substitute a system face as if it were SamsungOne.
+3. **Keep surface domains distinct.** The public Korean web and One UI are both official but have different evidence and component contexts. *UI implication:* use `#0381fe` only when implementing the documented One UI platform context, not as a generic Samsung-commerce action color.
+4. **Retain observed component boundaries.** The packet has exact evidence for CTA, media-card, and selected-tab treatments only. *UI implication:* leave unobserved variants absent instead of filling them from a generic Samsung pattern.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Samsung user segments (Galaxy device owners, Korean premium electronics buyers, Galaxy AI early adopters), not individual people.*
+No first-party audience research suitable for named personas was collected in this packet. Do not invent demographic personas.
 
-**김민준, 33, 서울 강남.** A tech-forward software engineer upgrading to Galaxy S26 Ultra. Visits samsung.com/sec directly, comparing camera specs. Values the clean product listing — he doesn't want marketing noise, just specs, price, and a clear "구매하기." Trusts the black CTA as a signal of seriousness, not as persuasion.
-
-**박지현, 47, 부산.** A homeowner replacing a QLED TV and pairing it with a Bespoke AI refrigerator. Navigates the "주방가전" and "TV/영상∙음향" categories. Appreciates that the Samsung.com KR e-commerce experience doesn't feel different from a premium department store — clean, authoritative, product-first.
-
-**이수아, 26, 서울 종로.** A Galaxy Z Fold early adopter who follows samsung.com/design for design vision content. Reads "Where Design Meets Reality" editorials and follows Samsung Design's Instagram. Connects the hardware design to the One UI software aesthetic — she experiences them as the same brand promise.
-
-**George Whitmore, 38, London.** An IT procurement manager choosing Galaxy smartphones for a 500-seat enterprise deployment. Uses Samsung's business portal. Values the consistency between One UI and Samsung's global brand presence — the same confident, low-decoration design language in every market signals enterprise-grade reliability.
+- **[FILL IN: validated Samsung Korea public-web audience]** — add only with a Samsung first-party audience or product-research source.
+- **[FILL IN: validated Galaxy platform audience]** — add only with a Samsung first-party audience or product-research source.
 
 ## 14. States
 
-| State | Treatment |
+| State | Captured evidence boundary |
 |---|---|
-| **Empty (no search results)** | White canvas. Single line in black `#000000` at 16px SamsungOneKorean: "검색 결과가 없습니다." One black pill CTA to return home or adjust filters. No illustration, no decorative element. |
-| **Empty (comparison, no products added)** | `#f7f7f7` surface card with a neutral message in `#707070` muted text. Thin `#dddddd` hairline card outline. |
-| **Loading (product listing)** | `#f7f7f7` skeleton blocks at exact final dimensions for product image, title, price areas. No shimmer animation — static flat grey consistent with shadowless system. |
-| **Loading (page navigation)** | Thin black progress bar at top of viewport. Samsung's commerce pages use native browser load with no custom loader overlay. |
-| **Error (form validation)** | Field-level red text in `#ef3434` below the input. Plain Korean description of what is invalid. No inline icon — text is the signal. |
-| **Error (API / add to cart fail)** | Inline banner below the action button. `#ef3434`-tinted background, `#000000` text. Message states the issue concretely (재고 없음, 결제 오류 등). |
-| **Success (order placed)** | Dedicated confirmation page with order number. Clean white layout, black typography. No animation or confetti — the confirmation is the hero, presented directly. |
-| **Skeleton** | `#f7f7f7` flat rectangle at content dimensions, no pulse shimmer. Consistent with the near-shadowless, flat visual language. |
-| **Disabled** | Opacity 0.4 on button surface and text together. Black CTA fades to `rgba(0,0,0,0.4)` rather than switching to grey — preserves brand read. |
-| **Out of stock** | Product card retains image and title; "구매하기" button replaced by `#707070` muted text "일시품절" (temporary out of stock). No color change to the card itself. |
+| Selected tab | AI-products `tab__item-title` records `selected` and `tab-selected`; color/padding/type are retained in §4. |
+| Pressed text CTA | Homepage underlined CTA records `pressed`; it is a distinct text-link treatment, not a primary-CTA state value. |
+| Pressed search control | AI-products and brand-identity search controls record `pressed`; their values are not promoted into a generic search component. |
+| Disabled carousel arrow | Homepage carousel arrows record `disabled`; no opacity or disabled-button rule is asserted. |
+| Expanded menu | Brand-identity navigation records `expanded` / `menu-open`; panel geometry and shadow were not promoted. |
+
+No current capture evidence supports universal loading, empty, form-error, success, skeleton, or modal-state rules.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | State commits, selection ticks, radio/checkbox |
-| `motion-fast` | 150ms | Button press, hover, focus ring |
-| `motion-standard` | 250ms | Dropdown open, tab switch, modal |
-| `motion-slow` | 400ms | Page-level hero reveal, carousel slide |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, menus, panels |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Hover, two-way transitions |
-
-**Signature motions**:
-
-1. **Hero carousel**: Full-bleed product images slide horizontally at `motion-slow / ease-standard`. The image is always in motion (auto-advancing at 5s intervals); text overlay fades rather than slides to reduce cognitive noise.
-2. **Button press**: Black CTA shifts background to `#212425` in `motion-fast` with no scale transform — Samsung's press state is color-only, not kinetic. Consumer electronics gravity demands steadiness.
-3. **Product card hover**: A subtle shadow lift (`0 4px 16px rgba(0,0,0,0.12)`) emerges at `motion-standard / ease-enter` on desktop product listing hover states — the only elevation in an otherwise flat system.
-4. **One UI transitions**: On the mobile OS layer, Samsung uses `ease-enter` curves at 300ms for screen transitions, consistent with Android Material principles but calibrated to Samsung's more restrained tempo.
-5. **Reduce motion**: Under `prefers-reduced-motion: reduce`, hero carousel pauses auto-advance, button hover is instant, and all transitions collapse to `motion-instant`. The commerce surface remains fully navigable without motion.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-22) via playwright getComputedStyle on:
-- https://www.samsung.com/sec/ (homepage, primary surface)
-- https://www.samsung.com/sec/smartphones/ (smartphones listing page)
-
-Key raw measurements:
-- body: font-family SamsungOneKorean, Dotum, 돋움, sans-serif; color rgb(0,0,0); font-size 16px
-- nav links (모바일, TV/영상∙음향): 16px / 700 / SamsungOneKorean; color #000000; padding 14px 12px; height 47px
-- H2 hero headline: 56px / 700 / "Samsung Sharp Sans", SamsungOneKorean; color #000000
-- H2 product card (Galaxy S26 | S26+): 24px / 700 / "Samsung Sharp Sans"; color #000000
-- Primary CTA "구매하기": bg rgb(0,0,0) / color rgb(255,255,255) / radius 20px / padding 0px 24px / height 40px / 14px/700 SamsungOneKorean
-- "삼닷 Live 보기" button: same spec as 구매하기 (black pill)
-- "더 알아보기" link: 14px / 700 / transparent bg / underline on hover
-- Filter chips: bg #f7f7f7 / radius 40px / height 36px / 16px/400
-- Filter buttons: bg #ffffff / border 1px #dddddd / radius 8px / height 40px / 14px/700
-
-From developer.samsung.com/one-ui/color/system.html:
-- Primary Dark (light theme): #0072de
-- Primary (interactive): #0381fe
-- Color Control Activated: #3e91ff
-- Quote: "Blue symbolizes trust, hope, and stability, and it's also a key part of Samsung's heritage and brand identity."
-
-Brand narrative: Samsung Electronics founded 1969 (publicly documented); Galaxy line launched 2009; One UI introduced 2018; HQ Suwon/Seoul Korea — widely documented public facts.
-
-Voice samples (§10) verbatim from live homepage 2026-06-22.
-Personas (§13) are fictional archetypes informed by publicly observable Samsung user segments. Names are illustrative; they do not refer to real people.
--->
+The artifact records state and interaction kinds, not timing curves or transition durations. One UI documentation includes a separate motion section, but no motion token is promoted here without a matching captured surface/value. Preserve reduced-motion and accessibility requirements in an implementation without presenting them as measured Samsung commerce motion.

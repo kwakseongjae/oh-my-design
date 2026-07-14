@@ -9,6 +9,7 @@
  *   → act_install_copy        (activation, see lib/activation/analytics.ts)
  */
 import { event, trackRef } from "@/lib/gtag";
+import { trackHandoff } from "@/lib/activation/analytics";
 
 export type DsExportChannel = "download" | "copy";
 // Covers both the rendered/raw source toggle and the mobile preview/markdown
@@ -44,6 +45,11 @@ export function trackDetailView(args: { reference: string; referrer: string }) {
 /** Copy/download the canonical DESIGN.md as-is. */
 export function trackExport(args: { reference: string; channel: DsExportChannel }) {
   event("ds_export", { reference: args.reference, channel: args.channel });
+  trackHandoff({
+    kind: args.channel === "copy" ? "designmd_copy" : "designmd_download",
+    surface: "ref_detail",
+    reference: args.reference,
+  });
   trackRef(args.channel, args.reference);
 }
 
@@ -66,4 +72,16 @@ export function trackOpenInBuilder(reference: string) {
 
 export function trackRawMdOpen(reference: string) {
   event("ds_raw_md_open", { reference });
+}
+
+export function trackReferenceShare(args: {
+  reference: string;
+  location: "builder" | "ref_detail" | "evolution";
+  artifact: "detail" | "evolution";
+}) {
+  event("ref_share_copy", {
+    reference: args.reference,
+    location: args.location,
+    artifact: args.artifact,
+  });
 }

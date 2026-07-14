@@ -94,8 +94,22 @@ For ad-hoc UI work (component changes, microcopy edits, color tweaks) not runnin
 
 This mirrors the `omd:apply` Claude Code skill behavior.
 
+## Product surface ownership (mandatory)
+
+- The user-facing creation funnel is Home `시작하기` → **`/builder`**.
+- In product discussions, “preview”, “미리보기”, “사용자가 보는 화면”, and “시작하기 이후” mean the builder preview unless the user explicitly names another route.
+- `/reference/[id]` is the catalog/detail and reference-data diagnostic surface. Do not treat it as the primary user preview and do not validate a builder task only on this route.
+- `ReferencePreview` is currently a shared renderer used by both consumers. Shared-renderer changes are allowed, but every builder request must be entered and acceptance-tested through `/builder`; route ownership is determined by the consumer journey, not the component filename.
+- Before finishing builder UI work, verify Home → `/builder` → brand selection → preview, including user overrides when relevant.
+
 ## Hard rules (apply across channels)
 
+- **Unknown means absent — at the smallest unresolved field/group boundary.** oh-my-design is a reference delivery product, not a fallback generator. Never promote a plausible substitute, heuristic parse, generic component, system font, or adjacent corporate/marketing surface as a brand/product fact. Omit only the unresolved field, item, or wholly empty group in `/builder` and `/reference/[id]`; preserve every other verified value, metric, description, and section from the canonical reference.
+- Never enforce absence by deleting or replacing the canonical reference body, collapsing a useful reference into a status document, or adding `Partial`/warning chrome in place of its content. A missing font family removes that family/specimen, not verified typography metrics, spacing, colors, components, or explanations.
+- **Reference depth is part of correctness.** §1 must explain the company/product, distinctive brand expression, and current evolution using first-party history/rebrand/culture evidence; it must not read like an audit-scope disclaimer. §3 must distinguish official product-use, live surface-use, official distributed font assets, declared-only faces, and unresolved claims. A browser-unloadable but officially confirmed product font keeps its metadata and loses only the live specimen.
+- Narrative evidence and UI-token evidence are related but not identical. An official font's history, visual character, or license can belong in the reference without being promoted to `tokens.typography.family.ui`. Do not delete useful brand context merely because it is not a machine token.
+- Public marketing, corporate, font-catalog, and product/app surfaces are separate evidence domains. Observation on one domain cannot populate another domain's reference tokens without explicit evidence linking them.
+- Runtime font availability does not authorize substitution. A known but non-loadable font may be labeled unavailable; do not render Inter/system-ui as though it were that font.
 - Never fabricate DESIGN.md §11-13 (Brand Narrative / Principles / Personas) facts. Use `[FILL IN]` placeholders if user-provided facts are absent.
 - Never introduce a token absent from DESIGN.md without going through Phase 5 (system extension with checkpoint #2 approval).
 - Never download from Pinterest. Pinterest URLs are listed for the user to download manually.
@@ -103,10 +117,15 @@ This mirrors the `omd:apply` Claude Code skill behavior.
 - Never auto-skip user checkpoints.
 - Never delete a run directory. They are permanent learning artifacts.
 
+## 세션 연속성 프로토콜
+- 시작: `scripts/context_restore.sh` 실행(또는 docs/CURRENT_STATE.md 읽기) → 막힘/대기부터 처리.
+- 체크포인트: 작업 단위 완료·결정 확정마다 CURRENT_STATE.md를 먼저 갱신하고 나서 보고한다.
+- 종료: JOURNAL.md 맨 위에 항목 추가(한 일/열린 것/다음, 5줄 이내). 채팅에만 있는 맥락은 잃어버린 것으로 간주.
+- 컨텍스트가 요약(compact)된 채 재개되면: 첫 행동으로 context_restore.sh를 실행해 복원한다.
+
 ## Pre-existing OmD shims (managed by `omd sync`)
 
 Below this line, `omd sync` may add a managed block with shim content for Claude Code / Cursor compat. Do not edit between the markers.
 
 <!-- omd:start version=1 -->
 <!-- omd:end -->
-

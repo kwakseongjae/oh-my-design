@@ -1,9 +1,33 @@
 {
  "schema_version": 1,
- "generated_at": "2026-07-02T00:00:00Z",
+ "generated_at": "2026-07-13T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 400,
+ "count": 440,
  "items": [
+  {
+   "id": "104",
+   "primary_color_hex": "#ff9100",
+   "category": "productivity",
+   "visual_theme": "104人力銀行 is Taiwan’s job-and-talent platform: its corporate materials describe a service that helps jobseekers find direction as well as work, and helps employers manage talent rather than merely fill a vacancy. Founded as an online matching service in 1996, it",
+   "voice_fingerprint": {
+    "register": "productivity",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "dense",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "productivity"
+  },
   {
    "id": "11st",
    "primary_color_hex": "#ff0038",
@@ -283,6 +307,28 @@
    ],
    "antipatterns": [
     "monochrome"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "acer",
+   "primary_color_hex": "#80c343",
+   "category": "consumer-tech",
+   "visual_theme": "宏碁 (Acer) is a Taiwan-founded technology company whose public portfolio spans computers, displays, and newer businesses, while its corporate mission is to break barriers between people and technology. The captured public web language is practical rather than o",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
    ],
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
@@ -571,6 +617,28 @@
    "category_raw": "ecommerce"
   },
   {
+   "id": "au",
+   "primary_color_hex": "#eb5505",
+   "category": "consumer-tech",
+   "visual_theme": "au is KDDI’s consumer communications brand: it began as a mobile-phone brand and, in 2012, expanded to consumer services alongside mobile service. Its public product routes turn that broad offer into a deliberately practical, information-rich telecom experienc",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "autopedia",
    "primary_color_hex": "#7A00FF",
    "category": "automotive",
@@ -593,6 +661,30 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "automotive"
+  },
+  {
+   "id": "aws-cloudscape",
+   "primary_color_hex": "#295eff",
+   "category": "backend-devops",
+   "visual_theme": "AWS Cloudscape is an open-source design system for cloud application experiences, created for and used by AWS services since 2016. Its recognisable expression is deliberately operational rather than ornamental: white and near-white working surfaces, near-black",
+   "voice_fingerprint": {
+    "register": "backend-devops",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dense",
+    "flat",
+    "approachable"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "backend-devops"
   },
   {
    "id": "baemin",
@@ -1071,6 +1163,30 @@
    "category_raw": "finance"
   },
   {
+   "id": "cgv",
+   "primary_color_hex": "#121212",
+   "category": "consumer-tech",
+   "visual_theme": "CGV is Korea’s multiplex cinema brand and a consumer-facing service for finding films, choosing a theatre, and moving toward a viewing experience. Its recognizable expression pairs the practical density of a ticketing and programme surface with cinema-oriented",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "flat",
+    "immersive"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "channeltalk",
    "primary_color_hex": "#4f46e5",
    "category": "Productivity",
@@ -1085,6 +1201,30 @@
    "has_official_ds": true,
    "ds_name": "Bezier",
    "ds_url": "https://github.com/channel-io/bezier-react"
+  },
+  {
+   "id": "china-airlines",
+   "primary_color_hex": "#23569d",
+   "category": "consumer-tech",
+   "visual_theme": "China Airlines is Taiwan’s international carrier, founded in 1959, whose public passenger site connects ticketing and travel-service tasks with a broader corporate story of safe, reliable global connection. Its digital surface is deliberately more utilitarian ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "calm",
+    "utilitarian"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "chunghwa",
@@ -2092,6 +2232,28 @@
    "category_raw": "fintech"
   },
   {
+   "id": "elastic",
+   "primary_color_hex": "#0b64dd",
+   "category": "developer-tools",
+   "visual_theme": "Elastic UI (EUI) is Elastic’s public React component framework: its documentation presents themed components, setup guidance, and implementation patterns for software interfaces. The captured EUI home, components index, and card documentation route feel delibe",
+   "voice_fingerprint": {
+    "register": "developer-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "developer-tools"
+  },
+  {
    "id": "elevenlabs",
    "primary_color_hex": "#ffffff",
    "category": "AI",
@@ -2139,6 +2301,30 @@
    "category_raw": "education"
   },
   {
+   "id": "eslite",
+   "primary_color_hex": "#917e57",
+   "category": "ecommerce",
+   "visual_theme": "誠品 began as a Taiwan cultural-bookstore project and has developed into an ecosystem spanning books, design goods, food, events, physical stores, and online commerce. Its own 35th-anniversary material presents the current chapter as “Live your Dream”: encounter",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "flat",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
    "id": "esunbank",
    "primary_color_hex": "#00a19b",
    "category": "fintech",
@@ -2163,6 +2349,27 @@
    "category_raw": "fintech"
   },
   {
+   "id": "evaair",
+   "primary_color_hex": "#4b7d6b",
+   "category": "consumer-tech",
+   "visual_theme": "EVA Air is Taiwan’s international airline, created by Evergreen Group founder Chang Yung-Fa in 1989 and flying its first service in 1991. Its public web presence combines a travel-planning utility surface with corporate material about safety, service, and a gl",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "brand-appropriate"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "expo",
    "primary_color_hex": "#000000",
    "category": "Developer Tools",
@@ -2183,6 +2390,29 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "developer-tools"
+  },
+  {
+   "id": "familymart-tw",
+   "primary_color_hex": "#00b347",
+   "category": "ecommerce",
+   "visual_theme": "Taiwan FamilyMart (全家便利商店) is a convenience-retail business that began with its first Taipei shop in 1988 and has developed a nationwide store, supply-chain, fresh-food, and digital-service network. Its own corporate history frames the current period as digita",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "farfetch",
@@ -3627,6 +3857,30 @@
    "category_raw": "customer service / AI helpdesk SaaS"
   },
   {
+   "id": "intuit",
+   "primary_color_hex": "#0d333f",
+   "category": "fintech",
+   "visual_theme": "QuickBooks is Intuit’s small-business financial-management product and brand program: the official hub describes its job as helping teams craft experiences that champion small businesses, while Intuit situates QuickBooks inside a broader financial-technology p",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "playful",
+    "flat",
+    "modern"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "ipassmoney",
    "primary_color_hex": "#53b232",
    "category": "fintech",
@@ -3821,6 +4075,28 @@
    "category_raw": "internet-only bank"
   },
   {
+   "id": "kakaogames",
+   "primary_color_hex": "#000000",
+   "category": "consumer-tech",
+   "visual_theme": "카카오게임즈 is a Korean publisher and developer that operates mobile, PC online, and console games across casual, subculture, and hardcore MMORPG genres. Founded in Korea in 2016, the company’s current official account describes a global studio-and-partnership mode",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "kakaopage",
    "primary_color_hex": "#ffd618",
    "category": "consumer-tech",
@@ -3924,6 +4200,30 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "consumer / hyperlocal marketplace"
+  },
+  {
+   "id": "kb-kookmin",
+   "primary_color_hex": "#ffcc00",
+   "category": "fintech",
+   "visual_theme": "KB국민은행 is a Korean retail and business bank whose public web presence carries a long institutional role into everyday digital banking. KB Financial Group’s history traces the bank’s modern formation to the Kookmin Bank and Housing & Commercial Bank merger, whi",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "friendly",
+    "modern"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
   },
   {
    "id": "kbank",
@@ -4474,6 +4774,27 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "lguplus",
+   "primary_color_hex": "#e6007e",
+   "category": "consumer-tech",
+   "visual_theme": "LG유플러스 is a Korean telecommunications and consumer-technology company, established in 1996, with public services for mobile, home internet and IPTV, smart home, and people-centred AI as well as enterprise offerings. Its recognizable public expression combines ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "brand-appropriate"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "likelion",
    "primary_color_hex": "#ff6000",
    "category": "education",
@@ -4599,6 +4920,28 @@
    "signature_motion": "Carousel arrows on white circular icon-buttons with soft multi-layer shadows; energetic but unobtrusive.",
    "has_personas": false,
    "category_raw": "async video messaging / productivity SaaS"
+  },
+  {
+   "id": "lotteon",
+   "primary_color_hex": "#000000",
+   "category": "ecommerce",
+   "visual_theme": "롯데ON은 롯데 계열 상품과 오픈마켓 상품을 한 곳에서 검색·구매하도록 만든 통합 이커머스 플랫폼이며, 백화점·그로서리·전자제품·브랜드 상품을 발견하는 흐름을 함께 다룬다. 공식 기업 소개는 1996년 롯데닷컴에서 시작한 온라인 종합쇼핑의 계보와 2020년 4월 롯데ON 출범을 연결하고, 현재 서비스는 오프라인 유통 인프라와 온라인 경험을 결합한 쇼핑을 지향한다. 그 결과로 보이는 화면의 인상은 과장된 브랜드 색보다 상품·카테고리·혜택을 빠르게 읽게 하는 흰 바",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
   },
   {
    "id": "lovable",
@@ -4779,6 +5122,27 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "healthcare"
+  },
+  {
+   "id": "megabox",
+   "primary_color_hex": "#503396",
+   "category": "consumer-tech",
+   "visual_theme": "메가박스는 영화 상영을 중심에 두면서도 사람들이 이야기를 만나고, 함께 놀고, 경험을 공유하는 공간을 표방하는 한국의 멀티플렉스 브랜드다. 회사의 공식 연혁은 2000년 코엑스점을 출발점으로 삼고, 2011년 씨너스와의 합병을 거쳐 더 좋은 영화관을 향한 확장을 설명한다. 현재의 브랜드 표현은 2017년에 공개한 Life Theater BI에서 분명해진다. 일곱 개의 황금비율 박스와 보라 계열 인디고는 공간과 창의적 콘텐츠를 연결하는 공식 설명이다. 반면 공급된",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "meituan",
@@ -5130,6 +5494,29 @@
    "category_raw": "AI platform"
   },
   {
+   "id": "mixi",
+   "primary_color_hex": "#000000",
+   "category": "consumer-tech",
+   "visual_theme": "MIXI is a Japanese communication and entertainment company that began with the Find Job! service in 1997, launched the social network mixi in 2004, and has since expanded through services and businesses including MONSTER STRIKE, family sharing, sports, and liv",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "modusign",
    "primary_color_hex": "#fed05f",
    "category": "saas",
@@ -5414,6 +5801,28 @@
    "signature_motion": "0.4s cubic-bezier(.47,1.64,.41,.8) spring toast bounce-in; 0.25s ease-out standard sheet/fade",
    "has_personas": true,
    "category_raw": "luxury resale ecommerce / secondhand luxury marketplace (KR)"
+  },
+  {
+   "id": "mynavi",
+   "primary_color_hex": "#0071bb",
+   "category": "productivity",
+   "visual_theme": "マイナビ is a Japanese information and service company that supports people across work, learning, and everyday life: its public company material names employment, career change, part-time work, recruitment, and media among those domains. The corporate web presenc",
+   "voice_fingerprint": {
+    "register": "productivity",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "productivity"
   },
   {
    "id": "myrealtrip",
@@ -5971,6 +6380,28 @@
    "category_raw": "marketing"
   },
   {
+   "id": "onestore",
+   "primary_color_hex": "#2a1f60",
+   "category": "ecommerce",
+   "visual_theme": "원스토어 is a Korean mobile-content marketplace spanning games, apps, and story content. It was launched in 2016 by combining the three mobile-carrier app markets with Naver App Store, after the T Store business moved from SK Planet to One store Co., Ltd. Its offi",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "modern"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
    "id": "openai",
    "primary_color_hex": "#10a37f",
    "category": "AI",
@@ -6043,6 +6474,49 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "palantir",
+   "primary_color_hex": "#2d72d2",
+   "category": "developer-tools",
+   "visual_theme": "Blueprint is Palantir’s open-source React toolkit for complex, data-dense desktop web interfaces. Its public face is unusually direct for a design-system site: the landing page presents a dark wireframe field, sparse white type, and restrained actions, while t",
+   "voice_fingerprint": {
+    "register": "developer-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "developer-tools"
+  },
+  {
+   "id": "panasonic",
+   "primary_color_hex": "#0041c0",
+   "category": "consumer-tech",
+   "visual_theme": "Panasonic is a Japan-founded technology group whose public offer spans consumer products, business solutions, technology, and corporate initiatives. Its Holdings site communicates that breadth with a quiet, document-like public-web language: pale-gray canvas, ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "brand-appropriate"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "patreon",
    "primary_color_hex": "#000000",
    "category": "consumer-tech",
@@ -6065,6 +6539,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "patternfly",
+   "primary_color_hex": "#0066cc",
+   "category": "developer-tools",
+   "visual_theme": "PatternFly is Red Hat’s sponsored, open-source design system for teams building consistent, usable enterprise software. Its recognizable expression is less a campaign aesthetic than a deliberately practical interface language: legible Red Hat typefaces, dark t",
+   "voice_fingerprint": {
+    "register": "developer-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "developer-tools"
   },
   {
    "id": "payco",
@@ -6193,6 +6689,28 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "e-commerce"
+  },
+  {
+   "id": "pega",
+   "primary_color_hex": "#1a3a5c",
+   "category": "saas",
+   "visual_theme": "Pega is an enterprise AI decisioning and workflow-automation company whose public UX system is built for people completing consequential, guided work. The system’s recognizable expression is deliberately prescribed rather than a loose sticker sheet: it directs",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "calm"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "peoplefund",
@@ -6555,6 +7073,30 @@
    "category_raw": "consumer-tech"
   },
   {
+   "id": "poya",
+   "primary_color_hex": "#dd006f",
+   "category": "ecommerce",
+   "visual_theme": "POYA 寶雅 is a Taiwanese specialty retailer for personal beauty and daily-living goods. Its first store opened in Tainan in 1985; the brand later adopted the 寶雅 trademark in 1998 and has grown from a store network into a retail, membership, payment, and online-s",
+   "voice_fingerprint": {
+    "register": "ecommerce",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "dense",
+    "vivid"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "ecommerce"
+  },
+  {
    "id": "pozalabs",
    "primary_color_hex": "#aba1fa",
    "category": "ai",
@@ -6910,6 +7452,30 @@
    "category_raw": "ai"
   },
   {
+   "id": "recruit",
+   "primary_color_hex": "#0065bd",
+   "category": "productivity",
+   "visual_theme": "Recruit is a Japanese matching and productivity business whose public group materials describe services that connect individuals with business clients across work, housing, beauty, dining, travel, and SaaS operations. The company’s first offering was a univers",
+   "voice_fingerprint": {
+    "register": "productivity",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "flat",
+    "editorial",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "productivity"
+  },
+  {
    "id": "reddit",
    "primary_color_hex": "#FF4500",
    "category": "consumer-tech",
@@ -7251,6 +7817,30 @@
    "category_raw": "consumer"
   },
   {
+   "id": "sakura-internet",
+   "primary_color_hex": "#ff5577",
+   "category": "backend-devops",
+   "visual_theme": "さくらインターネット is a Japanese internet-infrastructure company whose public story began in 1996, when its founder started by building servers and lending them to friends. Today its public ecosystem spans hosting, cloud, data centres, and newer AI-oriented infrastruc",
+   "voice_fingerprint": {
+    "register": "backend-devops",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "warm",
+    "dark",
+    "editorial",
+    "human"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "backend-devops"
+  },
+  {
    "id": "salesforce",
    "primary_color_hex": "#0176d3",
    "category": "saas",
@@ -7492,6 +8082,27 @@
    "category_raw": "developer-tools"
   },
   {
+   "id": "servicenow",
+   "primary_color_hex": "#102c40",
+   "category": "saas",
+   "visual_theme": "ServiceNow began as Fred Luddy's 2004 effort to make enterprise work easier to route and complete; Horizon is the design system that now gives the Now Platform a shared experience language. Its official description is not a marketing palette masquerading as a ",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
+  },
+  {
    "id": "shiftee",
    "primary_color_hex": "#004dc1",
    "category": "saas",
@@ -7636,6 +8247,27 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ai"
+  },
+  {
+   "id": "sktelecom",
+   "primary_color_hex": "#3a46cd",
+   "category": "consumer-tech",
+   "visual_theme": "SK텔레콤 is a Korean connectivity and consumer-technology company whose public ecosystem joins telecommunications with AI services and infrastructure. Its current corporate expression is less about a single consumer-app shell than a clear transition from the lega",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "skyscanner",
@@ -7801,6 +8433,27 @@
    "category_raw": "Mobility / Car-Sharing (SOCAR Blue approximation — exact hex unpublished)"
   },
   {
+   "id": "softbank",
+   "primary_color_hex": "#333333",
+   "category": "consumer-tech",
+   "visual_theme": "SoftBank Corp. is the operating telecommunications company established in 1986, providing mobile communications, devices, fixed-line services, and internet access. Its official history traces a route through Japan Telecom, J-Phone, Vodafone K.K., and the 2006 ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "solapi",
    "primary_color_hex": "#4541ff",
    "category": "developer-tools",
@@ -7825,6 +8478,29 @@
    "category_raw": "developer-tools"
   },
   {
+   "id": "sony",
+   "primary_color_hex": "#000000",
+   "category": "consumer-tech",
+   "visual_theme": "Sony Group is a Japanese creative-entertainment and technology company whose businesses span games and network services, music, pictures, electronics, imaging and sensing. Its public English corporate portal lets that breadth sit behind a notably restrained fr",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dense",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "soomgo",
    "primary_color_hex": "#693bf2",
    "category": "consumer-tech",
@@ -7843,6 +8519,28 @@
    ],
    "antipatterns": [
     "corporate-cold"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "soop",
+   "primary_color_hex": "#0182ff",
+   "category": "consumer-tech",
+   "visual_theme": "SOOP is a Korean live-streaming and creator platform whose public ecosystem brings live channels, community discovery, esports, and developer-linked services under one service name. The company changed its name from AfreecaTV to SOOP in 2024, and its official ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dense",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
    ],
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
@@ -8407,6 +9105,30 @@
    "category_raw": "Mobility"
   },
   {
+   "id": "taishinbank",
+   "primary_color_hex": "#0056b3",
+   "category": "fintech",
+   "visual_theme": "台新銀行 is a Taiwanese commercial bank serving personal, corporate, wealth-management, and digital-finance customers. Founded in 1992, it has expanded a conventional banking offer through digital banking, payments, data-enabled service, and the Richart consumer b",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "clean",
+    "dark",
+    "dense",
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "taiwanmobile",
    "primary_color_hex": "#ff6700",
    "category": "consumer-tech",
@@ -8453,6 +9175,27 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "teamlab",
+   "primary_color_hex": "#212121",
+   "category": "design-tools",
+   "visual_theme": "teamLab is an interdisciplinary art collective formed in 2001, bringing artists, programmers, engineers, CG animators, mathematicians, architects, and graphic designers together around work that crosses art, science, technology, and creativity. Its public web ",
+   "voice_fingerprint": {
+    "register": "design-tools",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "brand-appropriate"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "design-tools"
   },
   {
    "id": "teamsparta",
@@ -8548,6 +9291,48 @@
    "signature_motion": "*Durations** (named):",
    "has_personas": true,
    "category_raw": "marketing"
+  },
+  {
+   "id": "thsr",
+   "primary_color_hex": "#ca4f0f",
+   "category": "consumer-tech",
+   "visual_theme": "Taiwan High Speed Rail (THSR, 台灣高鐵) operates Taiwan’s north–south high-speed rail service and frames itself as more than transport: a life-service platform built around safer, faster, more comfortable travel. Its official history places incorporation in 1998, ",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "flat"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
+   "id": "thumbtack",
+   "primary_color_hex": "#009fd9",
+   "category": "consumer-tech",
+   "visual_theme": "Thumbtack helps homeowners identify, plan, and complete home projects with local professionals; its current public framing is a continuing relationship with the home rather than a one-time directory search. That practical, confidence-building premise comes thr",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
   },
   {
    "id": "timee",
@@ -8686,6 +9471,30 @@
    "signature_motion": "Balance updates slide-and-fade (never cross-fade money); daily-interest triggers a blue50 flash + spring number tick-up.",
    "has_personas": true,
    "category_raw": "Fintech"
+  },
+  {
+   "id": "toyota",
+   "primary_color_hex": "#034f6d",
+   "category": "automotive",
+   "visual_theme": "Toyota is an automotive and mobility company whose public Global site brings corporate history, production knowledge, vehicle stories, and current mobility work into one information-dense editorial surface. The captured pages are distinguished less by a promot",
+   "voice_fingerprint": {
+    "register": "automotive",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "dark",
+    "dense",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "automotive"
   },
   {
    "id": "trainline",
@@ -8931,6 +9740,29 @@
    "category_raw": "healthcare"
   },
   {
+   "id": "udn",
+   "primary_color_hex": "#2f76aa",
+   "category": "consumer-tech",
+   "visual_theme": "聯合新聞網 (udn) is United Daily News Group’s public platform for immediate news and diverse editorial content. The group says udn launched in 1999, connected its original reporting operation, and brought 24-hour news to a digital audience. Its public news pages di",
+   "voice_fingerprint": {
+    "register": "consumer-tech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dense",
+    "flat",
+    "editorial"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "consumer-tech"
+  },
+  {
    "id": "uniqlo",
    "primary_color_hex": "#ed1d24",
    "category": "Commerce",
@@ -8981,6 +9813,29 @@
    "has_personas": true,
    "category_raw": "AI / LLM (Solar)",
    "country": "KR"
+  },
+  {
+   "id": "uswds",
+   "primary_color_hex": "#005ea2",
+   "category": "government",
+   "visual_theme": "The U.S. Web Design System (USWDS) is the General Services Administration’s open-source system for helping federal teams build familiar, accessible, and mobile-friendly public websites and services. Its visual character is deliberately civic rather than propri",
+   "voice_fingerprint": {
+    "register": "government",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "friendly",
+    "vivid"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "government"
   },
   {
    "id": "velog",
@@ -9440,6 +10295,28 @@
    "category_raw": "marketing"
   },
   {
+   "id": "wooribank",
+   "primary_color_hex": "#0067ac",
+   "category": "fintech",
+   "visual_theme": "Woori Bank is a Korean bank whose public narrative links a long institutional history with the promise of financial innovation. Its museum identifies Daehancheonil Bank, founded in 1899, as the predecessor of today’s Woori Bank, while the current corporate sit",
+   "voice_fingerprint": {
+    "register": "fintech",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "flat",
+    "utilitarian"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "fintech"
+  },
+  {
    "id": "workday",
    "primary_color_hex": "#0057ae",
    "category": "saas",
@@ -9699,6 +10576,30 @@
    "signature_motion": "Inset orange underline marks active tabs; sand underline previews hover.",
    "has_personas": false,
    "category_raw": "saas-tool"
+  },
+  {
+   "id": "zendesk",
+   "primary_color_hex": "#1f73b7",
+   "category": "saas",
+   "visual_theme": "Zendesk builds customer-service software, and Garden is its public design system: the company calls it the source of truth for the tools, standards, and practices used to build Zendesk products. The system’s distinctive expression is deliberate rather than orn",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "dark",
+    "dense",
+    "editorial",
+    "calm"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "zepeto",

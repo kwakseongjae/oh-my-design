@@ -8,48 +8,138 @@ primary_color: "#000000"
 logo:
   type: simpleicons
   slug: uber
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Base Web
-  url: "https://baseweb.design"
+  url: "https://github.com/uber/baseweb"
   type: system
-  description: Uber's React implementation of Base — a living component system.
+  description: Uber's public React component library implementing the Base design language; its repository license does not establish the current public-site runtime.
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.uber.com/kr/ko/", inspected: "2026-07-13" }
+    - { id: about, kind: corporate, url: "https://www.uber.com/kr/ko/about/", inspected: "2026-07-13" }
+    - { id: accessibility, kind: official-content, url: "https://www.uber.com/kr/ko/about/accessibility/", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.uber.com/kr/ko/", captured: "2026-07-13" }
+    - { id: about-live, kind: product-surface, url: "https://www.uber.com/kr/ko/about/", captured: "2026-07-13" }
+    - { id: accessibility-live, kind: product-surface, url: "https://www.uber.com/kr/ko/about/accessibility/", captured: "2026-07-13" }
+    - { id: new-look, kind: official-doc, url: "https://www.uber.com/us/en/blog/a-new-look/", captured: "2026-07-13" }
+    - { id: advertising-guide, kind: official-doc, url: "https://www.uber.com/us/en/advertising/specs/guidelines/", captured: "2026-07-13" }
+    - { id: baseweb, kind: official-doc, url: "https://github.com/uber/baseweb", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.canvas": &home { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.foreground": *home
+    "tokens.colors.muted": *home
+    "tokens.colors.on-primary": *home
+    "tokens.colors.primary": *home
+    "tokens.colors.subtle": *home
+    "tokens.colors.surface-hover": &about { surface_id: about, source_id: about-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.surface-soft": *home
+    "tokens.components.header-dark-control.bg": *home
+    "tokens.components.header-dark-control.fg": *home
+    "tokens.components.header-dark-control.font": *home
+    "tokens.components.header-dark-control.padding": *home
+    "tokens.components.header-dark-control.radius": *home
+    "tokens.components.header-dark-control.states": *home
+    "tokens.components.header-dark-control.type": *home
+    "tokens.components.header-dark-control.use": *home
+    "tokens.components.header-light-menu-control.bg": *home
+    "tokens.components.header-light-menu-control.fg": *home
+    "tokens.components.header-light-menu-control.font": *home
+    "tokens.components.header-light-menu-control.padding": *home
+    "tokens.components.header-light-menu-control.radius": *home
+    "tokens.components.header-light-menu-control.states": *home
+    "tokens.components.header-light-menu-control.type": *home
+    "tokens.components.header-light-menu-control.use": *home
+    "tokens.components.soft-pill-control.bg": *home
+    "tokens.components.soft-pill-control.fg": *home
+    "tokens.components.soft-pill-control.font": *home
+    "tokens.components.soft-pill-control.padding": *home
+    "tokens.components.soft-pill-control.radius": *home
+    "tokens.components.soft-pill-control.states": *home
+    "tokens.components.soft-pill-control.type": *home
+    "tokens.components.soft-pill-control.use": *home
+    "tokens.rounded.card": *home
+    "tokens.rounded.none": *home
+    "tokens.rounded.pill": *home
+    "tokens.shadow.menu": *home
+    "tokens.spacing.base": *home
+    "tokens.spacing.control-wide": *home
+    "tokens.spacing.control-x": *home
+    "tokens.spacing.control-y": *home
+    "tokens.spacing.lg": *home
+    "tokens.spacing.md": *home
+    "tokens.spacing.sm": *home
+    "tokens.spacing.xl": *home
+    "tokens.spacing.xs": *home
+    "tokens.typography.body-strong.lineHeight": *home
+    "tokens.typography.body-strong.size": *home
+    "tokens.typography.body-strong.use": *home
+    "tokens.typography.body-strong.weight": *home
+    "tokens.typography.body.lineHeight": *home
+    "tokens.typography.body.size": *home
+    "tokens.typography.body.use": *home
+    "tokens.typography.body.weight": *home
+    "tokens.typography.caption.lineHeight": *home
+    "tokens.typography.caption.size": *home
+    "tokens.typography.caption.use": *home
+    "tokens.typography.caption.weight": *home
+    "tokens.typography.display.lineHeight": *home
+    "tokens.typography.display.size": *home
+    "tokens.typography.display.use": *home
+    "tokens.typography.display.weight": *home
+    "tokens.typography.family.display": *home
+    "tokens.typography.family.ui": *home
+    "tokens.typography.fine-print.lineHeight": *home
+    "tokens.typography.fine-print.size": *home
+    "tokens.typography.fine-print.use": *home
+    "tokens.typography.fine-print.weight": *home
+    "tokens.typography.heading.lineHeight": *home
+    "tokens.typography.heading.size": *home
+    "tokens.typography.heading.use": *home
+    "tokens.typography.heading.weight": *home
+    "tokens.typography.label.lineHeight": *home
+    "tokens.typography.label.size": *home
+    "tokens.typography.label.use": *home
+    "tokens.typography.label.weight": *home
+    "tokens.typography.section.lineHeight": *about
+    "tokens.typography.section.size": *about
+    "tokens.typography.section.use": *about
+    "tokens.typography.section.weight": *about
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
   colors:
     primary: "#000000"
     canvas: "#ffffff"
-    hover-gray: "#e2e2e2"
-    hover-light: "#f3f3f3"
-    chip-gray: "#efefef"
-    body: "#4b4b4b"
-    muted: "#afafaf"
-    link: "#0000ee"
     on-primary: "#ffffff"
+    surface-soft: "#efefef"
+    surface-hover: "#e2e2e2"
+    foreground: "#000000"
+    muted: "#757575"
+    subtle: "#afafaf"
   typography:
-    family: { sans: "UberMove", mono: "system-ui" }
-    display:    { size: 52, weight: 700, lineHeight: 1.23, use: "Hero, billboard presence" }
-    section:    { size: 36, weight: 700, lineHeight: 1.22, use: "Major section anchors" }
-    card-title: { size: 32, weight: 700, lineHeight: 1.25, use: "Card and feature headings" }
-    subheading: { size: 24, weight: 700, lineHeight: 1.33, use: "Secondary section headers" }
-    nav:        { size: 18, weight: 500, lineHeight: 1.33, use: "Navigation links, prominent UI" }
-    body:       { size: 16, weight: 400, lineHeight: 1.50, use: "Body text, button labels" }
-    caption:    { size: 14, weight: 400, lineHeight: 1.43, use: "Metadata, small links" }
-    micro:      { size: 12, weight: 400, lineHeight: 1.67, use: "Fine print, legal" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 8, lg: 12, full: 9999 }
+    family: { display: "UberMove", ui: "UberMoveText" }
+    display: { size: 52, weight: 700, lineHeight: 1.23, use: "Public marketing/corporate h1" }
+    section: { size: 36, weight: 700, lineHeight: 1.22, use: "Public marketing/corporate h2" }
+    heading: { size: 24, weight: 700, lineHeight: 1.33, use: "Observed h2/h3" }
+    body: { size: 16, weight: 400, lineHeight: 1.50, use: "Observed body copy" }
+    body-strong: { size: 16, weight: 500, lineHeight: 1.25, use: "Observed UI text" }
+    label: { size: 14, weight: 500, lineHeight: 1.14, use: "Header button labels" }
+    caption: { size: 14, weight: 400, lineHeight: 1.43, use: "Menu item labels" }
+    fine-print: { size: 12, weight: 400, lineHeight: 1.67, use: "Observed small body copy" }
+  spacing: { xs: 4, sm: 8, control-x: 10, control-y: 12, md: 14, base: 16, lg: 20, control-wide: 25, xl: 48 }
+  rounded: { none: 0, card: 8, pill: 999 }
   shadow:
-    light: "rgba(0,0,0,0.12) 0px 4px 16px 0px"
-    medium: "rgba(0,0,0,0.16) 0px 2px 8px 0px"
+    menu: "rgba(0,0,0,0.16) 0px 4px 16px 0px"
   components:
-    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: 9999, padding: "10px 12px", font: "16px/500", use: "Primary CTA — bold high-contrast pill" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#000000", radius: 9999, padding: "10px 12px", use: "Secondary action; hover #e2e2e2" }
-    chip-filter: { type: tab, bg: "#efefef", fg: "#000000", radius: 9999, padding: "14px 16px", use: "Nav chips / category selectors", active: "black bg #000000 with white #ffffff text" }
-    button-floating: { type: button, bg: "#ffffff", fg: "#000000", radius: 9999, padding: "14px", use: "Map controls, FAB; shadow rgba(0,0,0,0.16)" }
-    card: { type: card, bg: "#ffffff", radius: 8, use: "Content card defined by shadow not stroke" }
-    input: { type: input, bg: "#ffffff", fg: "#000000", radius: 8, use: "Form input, 1px solid #000000 border" }
+    header-dark-control: { type: button, bg: "#000000", fg: "#ffffff", radius: 999, padding: "10px 12px", font: "14px/500", states: "hover white 0.1 inset overlay; pressed white 0.2 inset overlay", use: "Public-site header control" }
+    header-light-menu-control: { type: button, bg: "#ffffff", fg: "#000000", radius: 999, padding: "10px 12px", font: "14px/500", states: "focus #fbfbfb/#fdfdfd; pressed white 0.2 inset overlay", use: "Public-site header menu trigger" }
+    soft-pill-control: { type: button, bg: "#efefef", fg: "#000000", radius: 999, padding: "14px 16px", font: "16px/500", states: "hover black 0.04 inset overlay; pressed black 0.08 inset overlay", use: "Home public-surface control" }
   components_harvested: true
 ---
 
@@ -57,367 +147,200 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Uber's design language is a masterclass in confident minimalism -- a black-and-white universe where every pixel serves a purpose and nothing decorates without earning its place. The entire experience is built on a stark duality: jet black (`#000000`) and pure white (`#ffffff`), with virtually no mid-tone grays diluting the message. This isn't the sterile minimalism of a startup that hasn't finished designing -- it's the deliberate restraint of a brand so established it can afford to whisper.
-
-The signature typeface, UberMove, is a proprietary geometric sans-serif with a distinctly square, engineered quality. Headlines in UberMove Bold at 52px carry the weight of a billboard -- authoritative, direct, unapologetic. The companion face UberMoveText handles body copy and buttons with a slightly softer, more readable character at medium weight (500). Together, they create a typographic system that feels like a transit map: clear, efficient, built for scanning at speed.
-
-What makes Uber's design truly distinctive is its use of full-bleed photography and illustration paired with pill-shaped interactive elements (999px border-radius). Navigation chips, CTA buttons, and category selectors all share this capsule shape, creating a tactile, thumb-friendly interface language that's unmistakably Uber. The illustrations -- warm, slightly stylized scenes of drivers, riders, and cityscapes -- inject humanity into what could otherwise be a cold, monochrome system. The site alternates between white content sections and a full-black footer, with card-based layouts using the gentlest possible shadows (rgba(0,0,0,0.12-0.16)) to create subtle lift without breaking the flat aesthetic.
-
-**Key Characteristics:**
-- Pure black-and-white foundation with virtually no mid-tone grays in the UI chrome
-- UberMove (headlines) + UberMoveText (body/UI) -- proprietary geometric sans-serif family
-- Pill-shaped everything: buttons, chips, nav items all use 999px border-radius
-- Warm, human illustrations contrasting the stark monochrome interface
-- Card-based layout with whisper-soft shadows (0.12-0.16 opacity)
-- 8px spacing grid with compact, information-dense layouts
-- Bold photography integrated as full-bleed hero backgrounds
-- Black footer anchoring the page with a dark, high-contrast environment
+Uber operates a marketplace that connects people who ride, earn, eat, deliver, and sell; its stated mission is to reimagine how the world moves for the better. The current Korean public web capture expresses that broad mobility role through high-contrast black navigation, white type, and compact capsule controls rather than a broad decorative palette. Across the home, About, and Accessibility pages, the same header geometry recurs: black or white 999px controls set in UberMoveText, with an 8px-radius menu panel appearing when a header menu is expanded. Uber's 2018 official “A new look” announcement framed a new logo and mission around clearer recognition for riders, while the current capture confirms the sober black-and-white public chrome is still live. This reference documents that public marketing/corporate surface only; it does not claim the authenticated rider, earner, courier, or merchant product UI uses the same tokens.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Uber Black** (`#000000`): The defining brand color -- used for primary buttons, headlines, navigation text, and the footer. Not "near-black" or "off-black," but true, uncompromising black.
-- **Pure White** (`#ffffff`): The primary surface color and inverse text. Used for page backgrounds, card surfaces, and text on black elements.
+### Observed public-site foundation
 
-### Interactive & Button States
-- **Hover Gray** (`#e2e2e2`): White button hover state -- a clean, cool light gray that provides clear feedback without warmth.
-- **Hover Light** (`#f3f3f3`): Subtle hover for elevated white buttons -- barely-there gray for gentle interaction feedback.
-- **Chip Gray** (`#efefef`): Background for secondary/filter buttons and navigation chips -- a neutral, ultra-light gray.
+- **Ink** (`#000000`): Header background, dark capsule controls, foreground text, and borders in the 2026-07-13 capture.
+- **Paper** (`#ffffff`): Inverse text on dark header controls, light control fill, and expanded menu surface.
+- **Soft control** (`#efefef`): Home-only capsule-control fill at `home::[data-omd-capture="9"]`.
+- **Interactive light gray** (`#e2e2e2`): Observed on the light header menu control on About and Accessibility capture states.
+- **Muted** (`#757575`) and **subtle** (`#afafaf`): Repeated public-site text/border observations; use only where the local component evidence calls for de-emphasis.
 
-### Text & Content
-- **Body Gray** (`#4b4b4b`): Secondary text and footer links -- a true mid-gray with no warm or cool bias.
-- **Muted Gray** (`#afafaf`): Tertiary text, de-emphasized footer links, and placeholder content.
-
-### Borders & Separation
-- **Border Black** (`#000000`): Thin 1px borders for structural containment -- used sparingly on dividers and form containers.
-
-### Shadows & Depth
-- **Shadow Light** (`rgba(0, 0, 0, 0.12)`): Standard card elevation -- a featherweight lift for content cards.
-- **Shadow Medium** (`rgba(0, 0, 0, 0.16)`): Slightly stronger elevation for floating action buttons and overlays.
-- **Button Press** (`rgba(0, 0, 0, 0.08)`): Inset shadow for active/pressed states on secondary buttons.
-
-### Link States
-- **Default Link Blue** (`#0000ee`): Standard browser blue for text links with underline -- used in body content.
-- **Link White** (`#ffffff`): Links on dark surfaces -- used in footer and dark sections.
-- **Link Black** (`#000000`): Links on light surfaces with underline decoration.
-
-### Gradient System
-- Uber's design is **entirely gradient-free**. The black/white duality and flat color blocks create all visual hierarchy. No gradients appear anywhere in the system -- every surface is a solid color, every transition is a hard edge or a shadow.
+The capture also contains `#0000ee` in Accessibility-page link content and a single red pressed-link observation. They are content/link observations, not promoted as Uber brand or semantic-status tokens.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Headline / Display**: `UberMove`, with fallbacks: `UberMoveText, system-ui, Helvetica Neue, Helvetica, Arial, sans-serif`
-- **Body / UI**: `UberMoveText`, with fallbacks: `system-ui, Helvetica Neue, Helvetica, Arial, sans-serif`
+### Evidence classes
 
-*Note: UberMove and UberMoveText are proprietary typefaces. For external implementations, use `system-ui` or Inter as the closest available substitute. The geometric, square-proportioned character of UberMove can be approximated with Inter or DM Sans.*
+- **Live computed surface-use — UberMoveText:** Computed on 414 visible public-surface elements and corroborated by the collector's loaded FontFaceSet result. It appears on body, headings, controls, inputs, and menu text.
+- **Live computed surface-use — UberMove:** Computed on 31 visible public-surface elements and corroborated by a loaded FontFaceSet result. Observed on public h1/h2/h3 text, including 52px/700 and 36px/700 headings.
+- **System use:** `sans-serif` is also computed on 121 public-surface elements, including the expanded menu. It remains system text and is not a substitute rendered as either Uber family.
+- **Declared-only:** `Book`, `Medium`, `NarrowBook`, `NarrowMedium`, `NarrowNews`, `NarrowThin`, `News`, and `Thin` have `@font-face` declarations in the capture but no visible use; no relationship to the UberMove families is asserted.
+- **Official product-use and license:** The reviewed first-party brand and corporate sources establish Uber's mission and public design/code context, but did not provide a public font-license term or an app/product font-use declaration. The collector contains no font source URL. Do not infer redistribution permission or browser-loadable external specimens from the loaded-family result.
 
-### Hierarchy
+### Observed public-surface hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display / Hero | UberMove | 52px (3.25rem) | 700 | 1.23 (tight) | Maximum impact, billboard presence |
-| Section Heading | UberMove | 36px (2.25rem) | 700 | 1.22 (tight) | Major section anchors |
-| Card Title | UberMove | 32px (2rem) | 700 | 1.25 (tight) | Card and feature headings |
-| Sub-heading | UberMove | 24px (1.5rem) | 700 | 1.33 | Secondary section headers |
-| Small Heading | UberMove | 20px (1.25rem) | 700 | 1.40 | Compact headings, list titles |
-| Nav / UI Large | UberMoveText | 18px (1.13rem) | 500 | 1.33 | Navigation links, prominent UI text |
-| Body / Button | UberMoveText | 16px (1rem) | 400-500 | 1.25-1.50 | Standard body text, button labels |
-| Caption | UberMoveText | 14px (0.88rem) | 400-500 | 1.14-1.43 | Metadata, descriptions, small links |
-| Micro | UberMoveText | 12px (0.75rem) | 400 | 1.67 (relaxed) | Fine print, legal text |
+| Role | Family | Size | Weight | Line height | Surface boundary |
+|---|---|---:|---:|---:|---|
+| Hero h1 | UberMove | 52px | 700 | 64px | Public home/About/Accessibility capture |
+| Section h2 | UberMove | 36px | 700 | 44px | Public capture |
+| Small heading | UberMove | 24px | 700 | 32px | Public capture |
+| Body | UberMoveText | 16px | 400 | 24px | Public capture |
+| Strong UI text | UberMoveText | 16px | 500 | 20px | Public capture |
+| Header control | UberMoveText | 14px | 500 | 16px | Public header |
+| Menu/caption | UberMoveText | 14px | 400 | 20px | Public header menu |
+| Fine print | UberMoveText | 12px | 400 | 20px | Public capture |
 
-### Principles
-- **Bold headlines, medium body**: UberMove headings are exclusively weight 700 (bold) -- every headline hits with billboard force. UberMoveText body and UI text uses 400-500, creating a clear visual hierarchy through weight contrast.
-- **Tight heading line-heights**: All headlines use line-heights between 1.22-1.40 -- compact and punchy, designed for scanning rather than reading.
-- **Functional typography**: There is no decorative type treatment anywhere. No letter-spacing, no text-transform, no ornamental sizing. Every text element serves a direct communication purpose.
-- **Two fonts, strict roles**: UberMove is exclusively for headings. UberMoveText is exclusively for body, buttons, links, and UI. The boundary is never crossed.
+Base Web is an Uber-published React component library under an MIT repository license. That code license is separate from UberMove/UberMoveText licensing and does not prove the current public-site font runtime or product UI implementation.
 
 ## 4. Component Stylings
 
-### Buttons
+### Public header controls
 
-**Primary Black (CTA)**
-- Background: Uber Black (`#000000`)
-- Text: Pure White (`#ffffff`)
-- Padding: 10px 12px
-- Radius: 999px (full pill)
-- Outline: none
-- Focus: inset ring `rgb(255,255,255) 0px 0px 0px 2px`
-- The primary action button -- bold, high-contrast, unmissable
+**Dark capsule control**
+- Background: `#000000`
+- Text: `#ffffff`
+- Radius: `999px`
+- Padding: `10px 12px`
+- Font: `14px / 500 / UberMoveText`
+- Hover: `rgba(255,255,255,0.1) 999px 999px 0px 0px inset`
+- Pressed: `rgba(255,255,255,0.2) 999px 999px 0px 0px inset`
+- Use: Public-site header control on home, About, and Accessibility; representative selector `home::[data-omd-capture="3"]`.
 
-**Secondary White**
-- Background: Pure White (`#ffffff`)
-- Text: Uber Black (`#000000`)
-- Padding: 10px 12px
-- Radius: 999px (full pill)
-- Hover: background shifts to Hover Gray (`#e2e2e2`)
-- Focus: background shifts to Hover Gray, inset ring appears
-- Used on dark surfaces or as a secondary action alongside Primary Black
+**Light capsule menu control**
+- Background: `#ffffff`
+- Text: `#000000`
+- Radius: `999px`
+- Padding: `10px 12px`
+- Font: `14px / 500 / UberMoveText`
+- Focus: `#fbfbfb` on the home capture; `#fbfbfb`/`#fdfdfd` on captured About/Accessibility focus states.
+- Hover: `rgba(255,255,255,0.1) 999px 999px 0px 0px inset`
+- Pressed: `rgba(255,255,255,0.2) 999px 999px 0px 0px inset`
+- Use: Public-site header menu trigger; representative selector `home::[data-omd-capture="7"]`.
 
-**Chip / Filter**
-- Background: Chip Gray (`#efefef`)
-- Text: Uber Black (`#000000`)
-- Padding: 14px 16px
-- Radius: 999px (full pill)
-- Active: inset shadow `rgba(0,0,0,0.08)`
-- Navigation chips, category selectors, filter toggles
+### Home control
 
-**Floating Action**
-- Background: Pure White (`#ffffff`)
-- Text: Uber Black (`#000000`)
-- Padding: 14px
-- Radius: 999px (full pill)
-- Shadow: `rgba(0,0,0,0.16) 0px 2px 8px 0px`
-- Transform: `translateY(2px)` slight offset
-- Hover: background shifts to `#f3f3f3`
-- Map controls, scroll-to-top, floating CTAs
+**Soft capsule control**
+- Background: `#efefef`
+- Text: `#000000`
+- Radius: `999px`
+- Padding: `14px 16px`
+- Font: `16px / 500 / UberMoveText`
+- Hover: `rgba(0,0,0,0.04) 999px 999px 0px 0px inset`
+- Pressed: `rgba(0,0,0,0.08) 999px 999px 0px 0px inset`
+- Use: Home public-surface control; representative selector `home::[data-omd-capture="9"]`.
 
-### Cards & Containers
-- Background: Pure White (`#ffffff`) on white pages; no distinct card background differentiation
-- Border: none by default -- cards are defined by shadow, not stroke
-- Radius: 8px for standard content cards; 12px for featured/promoted cards
-- Shadow: `rgba(0,0,0,0.12) 0px 4px 16px 0px` for standard lift
-- Cards are content-dense with minimal internal padding
-- Image-led cards use full-bleed imagery with text overlay or below
+### Expanded header menu
 
-### Inputs & Forms
-- Text: Uber Black (`#000000`)
-- Background: Pure White (`#ffffff`)
-- Border: 1px solid Black (`#000000`) -- the only place visible borders appear prominently
-- Radius: 8px
-- Padding: standard comfortable spacing
-- Focus: no extracted custom focus state -- relies on standard browser focus ring
+**Menu panel**
+- Background: `#ffffff`
+- Text: `#000000`
+- Radius: `8px`
+- Padding: `8px 0px`
+- Shadow: `rgba(0,0,0,0.16) 0px 4px 16px 0px`
+- Font: `16px / 400 / sans-serif`
+- Use: Expanded header menu on home, About, and Accessibility; representative selector `surface-2::[data-omd-interaction-capture="menu-0-0"]`.
 
-### Navigation
-- Sticky top navigation with white background
-- Logo: Uber wordmark/icon at 24x24px in black
-- Links: UberMoveText at 14-18px, weight 500, in Uber Black
-- Pill-shaped nav chips with Chip Gray (`#efefef`) background for category navigation ("Ride", "Drive", "Business", "Uber Eats")
-- Menu toggle: circular button with 50% border-radius
-- Mobile: hamburger menu pattern
-
-### Image Treatment
-- Warm, hand-illustrated scenes (not photographs for feature sections)
-- Illustration style: slightly stylized people, warm color palette within illustrations, contemporary vibe
-- Hero sections use bold photography or illustration as full-width backgrounds
-- QR codes for app download CTAs
-- All imagery uses standard 8px or 12px border-radius when contained in cards
-
-### Distinctive Components
-
-**Category Pill Navigation**
-- Horizontal row of pill-shaped buttons for top-level navigation ("Ride", "Drive", "Business", "Uber Eats", "About")
-- Each pill: Chip Gray background, black text, 999px radius
-- Active state indicated by black background with white text (inversion)
-
-**Hero with Dual Action**
-- Split hero: text/CTA on left, map/illustration on right
-- Two input fields side by side for pickup/destination
-- "See prices" CTA button in black pill
-
-**Plan-Ahead Cards**
-- Cards promoting features like "Uber Reserve" and trip planning
-- Illustration-heavy with warm, human-centric imagery
-- Black CTA buttons with white text at bottom
+No authenticated ride-request form, trip card, map control, checkout, or error-state component was present in the supplied public capture, so none is specified here.
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 6px, 8px, 10px, 12px, 14px, 16px, 18px, 20px, 24px, 32px
-- Button padding: 10px 12px (compact) or 14px 16px (comfortable)
-- Card internal padding: approximately 24-32px
-- Section vertical spacing: generous but efficient -- approximately 64-96px between major sections
-
-### Grid & Container
-- Max container width: approximately 1136px, centered
-- Hero: split layout with text left, visual right
-- Feature sections: 2-column card grids or full-width single-column
-- Footer: multi-column link grid on black background
-- Full-width sections extending to viewport edges
-
-### Whitespace Philosophy
-- **Efficient, not airy**: Uber's whitespace is functional -- enough to separate, never enough to feel empty. This is transit-system spacing: compact, clear, purpose-driven.
-- **Content-dense cards**: Cards pack information tightly with minimal internal spacing, relying on shadow and radius to define boundaries.
-- **Section breathing room**: Major sections get generous vertical spacing, but within sections, elements are closely grouped.
-
-### Border Radius Scale
-- Sharp (0px): No square corners used in interactive elements
-- Standard (8px): Content cards, input fields, listboxes
-- Comfortable (12px): Featured cards, larger containers, link cards
-- Full Pill (999px): All buttons, chips, navigation items, pills
-- Circle (50%): Avatar images, icon containers, circular controls
+- The captured desktop public header is 64px tall with `12px 0px` padding and a black background at `home::nav`.
+- The capture was taken at 1440×900; it provides no canonical container width, breakpoint, or mobile-grid value.
+- The observed pattern is compact horizontal public navigation: 14px labels inside 36–38px capsule controls, with an expanded 8px-radius menu panel.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, solid background | Page background, inline content, text sections |
-| Subtle (Level 1) | `rgba(0,0,0,0.12) 0px 4px 16px` | Standard content cards, feature blocks |
-| Medium (Level 2) | `rgba(0,0,0,0.16) 0px 4px 16px` | Elevated cards, overlay elements |
-| Floating (Level 3) | `rgba(0,0,0,0.16) 0px 2px 8px` + translateY(2px) | Floating action buttons, map controls |
-| Pressed (Level 4) | `rgba(0,0,0,0.08) inset` (999px spread) | Active/pressed button states |
-| Focus Ring | `rgb(255,255,255) 0px 0px 0px 2px inset` | Keyboard focus indicators |
+| Level | Treatment | Observed use |
+|---|---|---|
+| Flat | No shadow | Header controls and soft capsule control |
+| Menu | `rgba(0,0,0,0.16) 0px 4px 16px 0px` | Expanded header menu on About and Accessibility |
 
-**Shadow Philosophy**: Uber uses shadow purely as a structural tool, never decoratively. Shadows are always black at very low opacity (0.08-0.16), creating the bare minimum lift needed to separate content layers. The blur radii are moderate (8-16px) -- enough to feel natural but never dramatic. There are no colored shadows, no layered shadow stacks, and no ambient glow effects. Depth is communicated more through the black/white section contrast than through shadow elevation.
+No broader card-elevation scale is claimed from this capture.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use true black (`#000000`) and pure white (`#ffffff`) as the primary palette -- the stark contrast IS Uber
-- Use 999px border-radius for all buttons, chips, and pill-shaped navigation elements
-- Keep all headings in UberMove Bold (700) for billboard-level impact
-- Use whisper-soft shadows (0.12-0.16 opacity) for card elevation -- barely visible
-- Maintain the compact, information-dense layout style -- Uber prioritizes efficiency over airiness
-- Use warm, human-centric illustrations to soften the monochrome interface
-- Apply 8px radius for content cards and 12px for featured containers
-- Use UberMoveText at weight 500 for navigation and prominent UI text
-- Pair black primary buttons with white secondary buttons for dual-action layouts
+
+- Use the observed ink/paper polarity for the public-header controls.
+- Preserve the measured 999px radius and 10px × 12px geometry for the documented header capsules.
+- Keep the loaded UberMove display role and UberMoveText UI role separate when those fonts are available from an authorized source.
+- Treat Base Web's MIT code license independently from the UberMove font license boundary.
+- Use sentence case and direct, comprehensible CTA language when working within the scope of Uber's published advertising guidance.
 
 ### Don't
-- Don't introduce color into the UI chrome -- Uber's interface is strictly black, white, and gray
-- Don't use rounded corners less than 999px on buttons -- the full-pill shape is a core identity element
-- Don't apply heavy shadows or drop shadows with high opacity -- depth is whisper-subtle
-- Don't use serif fonts anywhere -- Uber's typography is exclusively geometric sans-serif
-- Don't create airy, spacious layouts with excessive whitespace -- Uber's density is intentional
-- Don't use gradients or color overlays -- every surface is a flat, solid color
-- Don't mix UberMove into body text or UberMoveText into headlines -- the hierarchy is strict
-- Don't use decorative borders -- borders are functional (inputs, dividers) or absent entirely
-- Don't soften the black/white contrast with off-whites or near-blacks -- the duality is deliberate
+
+- Don't present a system font or Inter as UberMove or UberMoveText.
+- Don't extend the public-web component observations into authenticated rider, earner, courier, merchant, or checkout UI.
+- Don't promote the Accessibility-page default-link colors into a general brand or status palette.
+- Don't add an unobserved card, input, toast, modal, map, or form-error variant to this reference.
+- Don't infer a public redistribution license for UberMove or UberMoveText.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile Small | 320px | Minimum layout, single column, stacked inputs, compact typography |
-| Mobile | 600px | Standard mobile, stacked layout, hamburger nav |
-| Tablet Small | 768px | Two-column grids begin, expanded card layouts |
-| Tablet | 1119px | Full tablet layout, side-by-side hero content |
-| Desktop Small | 1120px | Desktop grid activates, horizontal nav pills |
-| Desktop | 1136px | Full desktop layout, maximum container width, split hero |
-
-### Touch Targets
-- All pill buttons: minimum 44px height (10-14px vertical padding + line-height)
-- Navigation chips: generous 14px 16px padding for comfortable thumb tapping
-- Circular controls (menu, close): 50% radius ensures large, easy-to-hit targets
-- Card surfaces serve as full-area touch targets on mobile
-
-### Collapsing Strategy
-- **Navigation**: Horizontal pill nav collapses to hamburger menu with circular toggle
-- **Hero**: Split layout (text + map/visual) stacks to single column -- text above, visual below
-- **Input fields**: Side-by-side pickup/destination inputs stack vertically
-- **Feature cards**: 2-column grid collapses to full-width stacked cards
-- **Headings**: 52px display scales down through 36px, 32px, 24px, 20px
-- **Footer**: Multi-column link grid collapses to accordion or stacked single column
-- **Category pills**: Horizontal scroll with overflow on smaller screens
-
-### Image Behavior
-- Illustrations scale proportionally within their containers
-- Hero imagery maintains aspect ratio, may crop on smaller screens
-- QR code sections hide on mobile (app download shifts to direct store links)
-- Card imagery maintains 8-12px border radius at all sizes
+The supplied evidence records a 1440×900 public-web capture only. It confirms an expandable header menu on all three captured URLs, but it does not provide measured breakpoint, touch-target, stacking, or mobile-layout rules. Those values remain outside this reference.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary Button: "Uber Black (#000000)"
-- Page Background: "Pure White (#ffffff)"
-- Button Text (on black): "Pure White (#ffffff)"
-- Button Text (on white): "Uber Black (#000000)"
-- Secondary Text: "Body Gray (#4b4b4b)"
-- Tertiary Text: "Muted Gray (#afafaf)"
-- Chip Background: "Chip Gray (#efefef)"
-- Hover State: "Hover Gray (#e2e2e2)"
-- Card Shadow: "rgba(0,0,0,0.12) 0px 4px 16px"
-- Footer Background: "Uber Black (#000000)"
+
+- Dark public-header control: `#000000` background with `#ffffff` text, 999px radius, `10px 12px` padding.
+- Light public-header menu control: `#ffffff` background with `#000000` text, 999px radius, `10px 12px` padding.
+- Home soft capsule control: `#efefef` background with `#000000` text, 999px radius, `14px 16px` padding.
+- Expanded menu: `#ffffff` surface, 8px radius, `8px 0px` padding, `rgba(0,0,0,0.16) 0px 4px 16px 0px` shadow.
 
 ### Example Component Prompts
-- "Create a hero section on Pure White (#ffffff) with a headline at 52px UberMove Bold (700), line-height 1.23. Use Uber Black (#000000) text. Add a subtitle in Body Gray (#4b4b4b) at 16px UberMoveText weight 400 with 1.50 line-height. Place an Uber Black (#000000) pill CTA button with Pure White text, 999px radius, padding 10px 12px."
-- "Design a category navigation bar with horizontal pill buttons. Each pill: Chip Gray (#efefef) background, Uber Black (#000000) text, 14px 16px padding, 999px border-radius. Active pill inverts to Uber Black background with Pure White text. Use UberMoveText at 14px weight 500."
-- "Build a feature card on Pure White (#ffffff) with 8px border-radius and shadow rgba(0,0,0,0.12) 0px 4px 16px. Title in UberMove at 24px weight 700, description in Body Gray (#4b4b4b) at 16px UberMoveText. Add a black pill CTA button at the bottom."
-- "Create a dark footer on Uber Black (#000000) with Pure White (#ffffff) heading text in UberMove at 20px weight 700. Footer links in Muted Gray (#afafaf) at 14px UberMoveText. Links hover to Pure White. Multi-column grid layout."
-- "Design a floating action button with Pure White (#ffffff) background, 999px radius, 14px padding, and shadow rgba(0,0,0,0.16) 0px 2px 8px. Hover shifts background to #f3f3f3. Use for scroll-to-top or map controls."
 
-### Iteration Guide
-1. Focus on ONE component at a time
-2. Reference the strict black/white palette -- "use Uber Black (#000000)" not "make it dark"
-3. Always specify 999px radius for buttons and pills -- this is non-negotiable for the Uber identity
-4. Describe the font family explicitly -- "UberMove Bold for the heading, UberMoveText Medium for the label"
-5. For shadows, use "whisper shadow (rgba(0,0,0,0.12) 0px 4px 16px)" -- never heavy drop shadows
-6. Keep layouts compact and information-dense -- Uber is efficient, not airy
-7. Illustrations should be warm and human -- describe "stylized people in warm tones" not abstract shapes
-8. Pair black CTAs with white secondaries for balanced dual-action layouts
+- “Create a public-site header action using the observed dark capsule: `#000000` background, `#ffffff` label, 999px radius, 10px 12px padding, UberMoveText 14px/500. On hover use the measured white 0.1 inset overlay.”
+- “Create an expanded public navigation menu with a white 8px-radius panel, 8px 0px padding, and the observed `rgba(0,0,0,0.16) 0px 4px 16px` shadow. Do not represent it as an in-app ride menu.”
 
 ## 10. Voice & Tone
 
-Uber's voice is **mobility-platform-direct and dual-audience-aware.** Two parallel audiences — riders ("차량 서비스") and drivers ("운전") — with distinct CTAs. Pure black `#000` primary CTA + 999px pill nav signals "modern mobility company."
+Uber's current public corporate source describes movement across going, getting, and earning, while its advertising guidance asks for sentence case, friendly language, simple comprehensible promotions, and clear destination-aware CTAs. The latter is advertising guidance, not a universal product-content specification.
 
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Sign up to ride", "Sign up to drive", "Get started" |
-| Marketing | Dual-audience. Rider page ≠ Driver page |
-| Documentation | Sparse — consumer product |
-| Error | Polite. "Pickup location unavailable. Try a different address." |
-
-**Voice samples**
-- Marketing nav (KR): *"차량 서비스"* / *"운전"* <!-- verified: uber.com/kr/ko 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary mobility". Aggressive Lyft-comparison framing.
+| Context | Supported direction | Boundary |
+|---|---|---|
+| Corporate mission | Movement, access, and marketplace participants | From the 2024 proxy statement |
+| Advertising copy | Sentence case, friendly, simple, comprehensible | Applies to Uber advertising guidance |
+| Public navigation | Concise Korean labels in the supplied capture | Does not establish app microcopy |
 
 ## 11. Brand Narrative
 
-Uber was founded **2009** in San Francisco — originally as **UberCab** — by **Garrett Camp** (Canadian entrepreneur, **co-founder of StumbleUpon**) and **Travis Kalanick** ([Travis Kalanick — Wikipedia](https://en.wikipedia.org/wiki/Travis_Kalanick), [Garrett Camp — Wikipedia](https://en.wikipedia.org/wiki/Garrett_Camp)). **Camp had become frustrated with SF taxis and expensive black-car services**, conceived a smartphone-app to hail luxury vehicles directly; discussed with Kalanick who joined as "mega advisor." Neither founder wanted to run the company directly; **Ryan Graves brought on as launch CEO** for **10 months** before being replaced by **Kalanick** (Camp + Graves transferred a large portion of shares to Kalanick on transition). Pioneered ride-hailing → expanded to **Eats / Freight / Delivery**. **2018 rebrand by Wolff Olins** + Uber in-house team — 10 months development, introduced bespoke **Uber Move** typeface + monochrome black-on-white identity + bespoke **Safety Blue** accent ([Design Week — Uber rebrand 2018](https://www.designweek.co.uk/issues/17-23-september-2018/uber-rebrand-looks-to-reflect-how-the-taxi-app-is-changing/), [Dezeen — Uber brings back the U](https://www.dezeen.com/2018/09/14/uber-rebrand-wolff-olins-black-white-wordmark-logo-typography/), [Wolff Olins — Views](https://www.wolffolins.com/views/the-medias-take-on-ubers-new-brand)). **NYSE IPO May 10 2019** under ticker **UBER** at **$45/share** raising **$8.1B** at **~$75B valuation** — biggest IPO of 2019, top-10 ever; closed first day at **$41.57 = biggest first-day dollar loss in U.S. IPO history** ([Uber IR — IPO pricing](https://investor.uber.com/news-events/news/press-release-details/2019/Uber-Announces-Pricing-of-Initial-Public-Offering/default.aspx), [Bloomberg — Uber drops after $8.1B IPO](https://www.bloomberg.com/news/articles/2019-05-10/uber-drops-after-raising-8-1-billion-in-biggest-ipo-of-2019)). The brand evolution post-2017 shifted from aggressive growth-at-all-costs to "platform for mobility" with operational + safety focus — **Dara Khosrowshahi** (current CEO, ex-Expedia) succeeded Kalanick **August 2017**.
+Uber's 2024 proxy statement describes the company's mission as reimagining how the world moves for the better and names a marketplace of earners, riders, eaters, couriers, and merchants. Its 2018 official “A new look” post introduced a new mission and logo, emphasizing easier recognition for riders and a more dependable partnership with drivers. Together, these official sources frame the public site as a movement marketplace with multiple participants, not merely a rider-facing transport page.
+
+The July 2026 public capture carries that framing through a restrained header system: dark and light capsule controls, compact labels, and a menu that opens into a neutral white panel. This is evidence of public marketing/corporate chrome. It is not evidence for a private trip workflow or operational product screen.
 
 ## 12. Principles
 
-1. **Dual-audience.** Riders and drivers are first-class. *UI implication:* segment nav clearly separated.
-2. **Pure black `#000` primary.** *UI implication:* preserve achromatic primary; don't introduce brand color.
-3. **999px pill nav.** *UI implication:* nav buttons fully pill on white.
-4. **Black + white dual-action.** *UI implication:* paired CTAs use black/white for balance.
-5. **Warm illustrations.** *UI implication:* never abstract shapes; warm humans.
+1. **See every marketplace side.** Uber's corporate source names earners, riders, eaters, couriers, and merchants. *UI implication:* identify the audience and product surface before applying a public-web pattern.
+2. **Keep movement legible.** The official mission centers movement, going, getting, and earning. *UI implication:* favor direct labels and clear action outcomes over decorative phrasing.
+3. **Use public chrome precisely.** The capture repeats ink/paper capsule controls and a neutral menu panel. *UI implication:* retain measured geometry only on the public-site header patterns documented here.
+4. **Respect source domains.** Advertising guidelines, public marketing pages, and authenticated product interfaces are distinct evidence domains. *UI implication:* do not transfer advertising-copy or public-header rules into a product flow without direct evidence.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Uber user segments (urban riders, drivers, business travelers), not individual people.*
+*These are official stakeholder groups, not invented personas; the source does not provide individual biographies or task narratives.*
 
-**Sofia Park, 31, Seoul.** Daily Uber rider. Cares about ETA accuracy + driver rating.
+- **Riders and eaters:** People seeking movement or goods through the marketplace.
+- **Earners, couriers, and merchants:** Participants who provide services, deliveries, or commerce through the marketplace.
 
-**Marcus Webb, 38, San Francisco.** Business traveler. Uber for client meetings + airport transfers.
-
-**Henrik Nielsen, 45, Copenhagen.** Part-time Uber driver. Cares about earnings transparency + cancellation fees.
+The supplied public capture does not establish distinct interface needs, journeys, or success criteria for these groups.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no rides)** | "Request your first ride" CTA |
-| **Empty (no driver activity)** | "Go online" CTA for drivers |
-| **Loading (matching)** | Real-time map with car icon |
-| **Loading (price)** | Surge indicator if active |
-| **Error (no drivers)** | "No drivers nearby. Try Uber Comfort instead." |
-| **Error (payment)** | "Payment failed. Try a different method." |
-| **Success (booked)** | Driver info + ETA + map |
-| **Success (rated)** | Subtle confirmation |
-| **Skeleton (ride history)** | Black/white placeholders |
-| **Disabled (account verification)** | Verify link |
-| **Loading (long match)** | Persistent progress with cancel option |
+| State | Observed treatment | Provenance |
+|---|---|---|
+| Header menu expanded | White 8px-radius panel with menu items | `home`, `surface-2`, `surface-3` menu interaction capture |
+| Dark capsule hover | White 0.1 inset overlay | `home::[data-omd-capture="3"]::state-hover` |
+| Dark capsule pressed | White 0.2 inset overlay | `home::[data-omd-capture="3"]::state-pressed` |
+| Light capsule focus | `#fbfbfb` or `#fdfdfd` fill | Captured home/About/Accessibility focus states |
+| Light capsule pressed | White 0.2 inset overlay | `home::[data-omd-capture="7"]::state-pressed` |
+| Soft capsule hover | Black 0.04 inset overlay | `home::[data-omd-capture="9"]::state-hover` |
+| Soft capsule pressed | Black 0.08 inset overlay | `home::[data-omd-capture="9"]::state-pressed` |
+
+Loading, validation, payment, booking, and map states were not observed and are intentionally omitted.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
-| `motion-map-tracking` | continuous | Real-time map updates |
-
-Standard cubic-bezier; no bounce — operational register. `prefers-reduced-motion: reduce` removes map auto-pan.
+The supplied evidence records menu expansion and hover/focus/pressed visual results, but no transition duration, easing curve, animation, or reduced-motion rule. No motion token is claimed.
 
 ---
 
-**Verified:** 2026-05-08 (omd:migrate run 60 — Apple-tier)
-**Tier 1 sources:** uber.com/kr/ko home + /about (live DOM via playwright — **all-pill 999px chrome with three-fill canvas-awareness**: Header `#000` Black + `#fff` text 999px / 36-38px / 10×12 / 14px·500; Header Inverse `#fff` + `#000` text (Sign-up); Hero `#addec9` **Uber Mint Green** + `#000` text 999px / 48px / 14×16 / 16px·500 soft-pastel signature).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/rebrand/IPO):** Wikipedia (Travis Kalanick, Garrett Camp), Britannica, Design Week / Dezeen / Wolff Olins Views (2018 rebrand), Uber IR (IPO pricing), Bloomberg (2019-05-10 first-day loss), CNBC.
-**Style ref:** `apple` (luxury minimal). **Conflicts unresolved:** none. **Earlier addition:** Inverse White Sign-up + Mint Green `#addec9` hero accent + 48px hero tier missed by prior pass.
+**Verified:** 2026-07-13
+**Tier 1 sources:** Raw computed-style and FontFaceSet evidence from `https://www.uber.com/kr/ko/`, `https://www.uber.com/kr/ko/about/`, and `https://www.uber.com/kr/ko/about/accessibility/`; official context/design sources: `https://www.uber.com/us/en/blog/a-new-look/`, `https://tb-static.uber.com/prod/uber-static/uber-sites/_pdf/22789bea-a413-4014-99e4-31144c54ef56.pdf`, `https://www.uber.com/us/en/advertising/specs/guidelines/`, and `https://github.com/uber/baseweb`.
+**Tier 2 sources:** `https://getdesign.md/uber`, `https://getdesign.md/design-md/uber/preview`, and `https://styles.refero.design/style/caf8d2ef-4173-4431-9d26-05be0272e9f8`.
+**Evidence boundary:** No public rider/earner/courier/merchant product-surface capture or first-party public UberMove/UberMoveText license term was located. Tier 2's unobserved `#9dcdd6` and substitute-font advice are not canonicalized.
+**Conflicts unresolved:** none

@@ -1,0 +1,11 @@
+{
+  "componentTypes": ["button", "input", "tab", "menu", "listItem", "dialog", "toast"],
+  "states": ["hover", "focus", "pressed", "expanded", "menu-open", "dialog-open", "selected", "tab-selected", "error", "toast-visible"],
+  "fonts": [
+    { "family": "Arial", "status": "system" },
+    { "family": "Fixture Declared", "status": "declared" }
+  ],
+  "colors": ["#111827", "#f7f8fc", "#ffffff", "#2d6cdf", "#1f57b8", "#173f87", "#e6ebf5", "#d92d20", "#fff6f5", "#147d64", "#d1fae5"],
+  "interactions": { "count": 5, "kinds": ["menu", "dialog", "tab", "form-error", "toast"] },
+  "thresholds": { "precision": 0.95, "recall": 0.95, "f1": 0.95 }
+}

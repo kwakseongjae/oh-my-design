@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-07-12",
+  "demandSource": "data/reference-demand.json",
+  "policy": {
+    "introWordRange": [80, 160],
+    "requiredContextSources": 3,
+    "requiredEvidenceClasses": [
+      "official product-use",
+      "live surface-use",
+      "official distributed asset",
+      "declared-only",
+      "unresolved"
+    ],
+    "preserveVerifiedTokens": true,
+    "builderAcceptanceRoute": "/builder?step=preview&ref=<id>",
+    "onConflict": "hold-for-reconcile"
+  },
+  "batches": [
+    { "id": "A", "references": ["toss", "apple", "karrot", "baemin", "kakao"] },
+    { "id": "B", "references": ["krds", "naver", "yeogiotte", "29cm", "line"] },
+    { "id": "C", "references": ["banksalad", "socar", "channeltalk", "wanted", "figma"] },
+    { "id": "D", "references": ["linear.app", "airbnb", "kakaobank", "vercel", "ably"] }
+  ]
+}

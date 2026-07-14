@@ -16,6 +16,13 @@
 import { REGISTRY, REGISTRY_BY_ID, type RefEntry } from "@/data/registry.generated";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import type { DesignSystemInfo } from "@/lib/design-systems";
+import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
+import {
+  COLOR_FAMILIES,
+  COLOR_FAMILY_LABELS,
+  colorFamilyForHex,
+  type ColorFamily,
+} from "@/lib/builder/color-family";
 
 export interface Collection {
   slug: string;
@@ -28,6 +35,7 @@ export interface Collection {
   select: (registry: readonly RefEntry[]) => RefEntry[];
   /** Slugs shown in the "related collections" block. */
   related: [string, string, string];
+  colorFamily?: ColorFamily;
 }
 
 const byIds = (ids: string[]) => () =>
@@ -53,18 +61,18 @@ function isDarkCanvas(e: RefEntry): boolean {
   return lum < 0.25;
 }
 
-export const COLLECTIONS: readonly Collection[] = [
+const BASE_COLLECTIONS: readonly Collection[] = [
   {
     slug: "claude-code-design-md",
     titleKr: "Claude Code용 DESIGN.md 스타터 팩",
     titleEn: "DESIGN.md for Claude Code",
     introKr: [
       "Claude Code는 코드를 잘 짜지만, 디자인 취향은 남의 것입니다. DESIGN.md 한 파일을 프로젝트에 두면 에이전트가 매 UI 작업 전에 브랜드의 색·타이포·보이스를 ground truth로 읽습니다.",
-      `이 컬렉션은 Claude Code 사용자들이 가장 먼저 적용해 보는 검증된 레퍼런스 모음입니다. 카드를 열어 DESIGN.md를 그대로 복사하거나, 한 줄 설치로 ${REFERENCE_COUNT}개 전부를 스킬과 함께 들여올 수 있습니다.`,
+      `이 컬렉션은 Claude Code 사용자들이 가장 먼저 적용해 보는 품질 등급형 레퍼런스 모음입니다. 카드를 열어 DESIGN.md와 근거 상태를 확인하거나, 한 줄 설치로 ${REFERENCE_COUNT}개 전부를 스킬과 함께 들여올 수 있습니다.`,
     ],
     introEn: [
       "Claude Code ships beautiful code with someone else's design taste. Drop one DESIGN.md in your project and the agent reads your brand's color, type, and voice as ground truth before every UI task.",
-      `These are the verified references Claude Code users reach for first. Open a card to copy the DESIGN.md raw, or install all ${REFERENCE_COUNT} with skills in one command.`,
+      `These are the quality-graded references Claude Code users reach for first. Open a card to inspect the DESIGN.md and evidence status, or install all ${REFERENCE_COUNT} with skills in one command.`,
     ],
     select: byIds([
       "toss",
@@ -115,11 +123,11 @@ export const COLLECTIONS: readonly Collection[] = [
     titleKr: "한국 핀테크 디자인 시스템",
     titleEn: "Korean Fintech Design Systems",
     introKr: [
-      "토스가 바꿔 놓은 한국 핀테크 UI — 큰 타이포, 한 화면 한 행동, 금융 용어 없는 카피. 토스·카카오뱅크·뱅크샐러드·업비트까지, 실서비스에서 라이브 추출·검증한 DESIGN.md로 모았습니다.",
+      "토스가 바꿔 놓은 한국 핀테크 UI — 큰 타이포, 한 화면 한 행동, 금융 용어 없는 카피. 토스·카카오뱅크·뱅크샐러드·업비트까지, 출처와 품질 등급을 함께 표시한 DESIGN.md로 모았습니다.",
       "각 문서는 색·타이포 토큰뿐 아니라 보이스와 금지 표현까지 담습니다. 핀테크 제품을 만드는 에이전트에게 그대로 먹이세요.",
     ],
     introEn: [
-      "Korean fintech UI after Toss: big type, one action per screen, copy without banking jargon. Toss, KakaoBank, Banksalad, Upbit — every DESIGN.md live-extracted and verified from the production service.",
+      "Korean fintech UI after Toss: big type, one action per screen, copy without banking jargon. Toss, KakaoBank, Banksalad, and Upbit are presented with source and quality status for each DESIGN.md.",
       "Each file carries voice and forbidden phrases, not just color and type tokens. Feed it straight to the agent building your fintech product.",
     ],
     select: byCountryCategory(["KR"], ["fintech", "finance"]),
@@ -130,12 +138,12 @@ export const COLLECTIONS: readonly Collection[] = [
     titleKr: "한국 앱 디자인 시스템",
     titleEn: "Korean App Design Systems",
     introKr: [
-      "당근·배민·29CM·무신사 — 한국 소비자 앱의 디자인 언어는 영어권 레퍼런스로는 절대 안 나옵니다. 한국 시장의 밀도와 톤을 담은 검증된 DESIGN.md 모음입니다.",
-      "커머스·커뮤니티·콘텐츠·교육까지, 국내 주요 서비스의 실제 토큰과 컴포넌트 패턴을 라이브 추출했습니다. 한국 사용자 대상 제품이라면 여기서 시작하세요.",
+      "당근·배민·29CM·무신사 — 한국 소비자 앱의 디자인 언어는 영어권 레퍼런스로는 절대 안 나옵니다. 한국 시장의 밀도와 톤을 담고 품질 상태를 공개한 DESIGN.md 모음입니다.",
+      "커머스·커뮤니티·콘텐츠·교육까지, 국내 주요 서비스의 토큰과 컴포넌트 패턴을 출처 상태와 함께 제공합니다. 한국 사용자 대상 제품이라면 여기서 시작하세요.",
     ],
     introEn: [
-      "Karrot, Baemin, 29CM, Musinsa — the design language of Korean consumer apps never falls out of English-market references. Verified DESIGN.md files carrying the density and tone of the Korean market.",
-      "Commerce, community, content, education: real tokens and component patterns live-extracted from Korea's major services. Building for Korean users? Start here.",
+      "Karrot, Baemin, 29CM, Musinsa — the design language of Korean consumer apps never falls out of English-market references. These DESIGN.md files expose their quality status alongside the density and tone of the Korean market.",
+      "Commerce, community, content, education: tokens and component patterns from Korea's major services with source status attached. Building for Korean users? Start here.",
     ],
     select: byCountryCategory(
       ["KR"],
@@ -156,7 +164,7 @@ export const COLLECTIONS: readonly Collection[] = [
     titleKr: "일본 브랜드 디자인 시스템",
     titleEn: "Japanese Brand Design Systems",
     introKr: [
-      "LINE·메루카리·쿡패드·freee·SmartHR — 일본 디지털 프로덕트 특유의 절제와 친절함을 담은 레퍼런스 모음입니다. 일본어 타이포그래피 운용까지 실서비스에서 검증했습니다.",
+      "LINE·메루카리·쿡패드·freee·SmartHR — 일본 디지털 프로덕트 특유의 절제와 친절함을 담은 레퍼런스 모음입니다. 일본어 타이포그래피 운용 근거와 품질 상태도 함께 확인할 수 있습니다.",
       "일본 시장용 제품을 만들거나, JP 톤의 차분한 UI가 필요할 때 에이전트에게 그대로 전달하세요.",
     ],
     introEn: [
@@ -171,11 +179,11 @@ export const COLLECTIONS: readonly Collection[] = [
     titleKr: "개발자 도구 디자인 시스템",
     titleEn: "Developer Tool Design Systems",
     introKr: [
-      "GitHub·Sentry·MongoDB·ClickHouse — 개발자 도구의 UI는 정보 밀도와 신뢰가 전부입니다. 모노스페이스 운용, 코드 블록, 대시보드 패턴까지 검증한 DESIGN.md를 모았습니다.",
+      "GitHub·Sentry·MongoDB·ClickHouse — 개발자 도구의 UI는 정보 밀도와 신뢰가 전부입니다. 모노스페이스 운용, 코드 블록, 대시보드 패턴의 근거 상태를 표시한 DESIGN.md를 모았습니다.",
       "데브툴·인프라 제품을 만든다면 이 톤에서 시작하는 것이 가장 빠릅니다.",
     ],
     introEn: [
-      "GitHub, Sentry, MongoDB, ClickHouse — dev-tool UI is information density and trust. DESIGN.md files verified down to monospace usage, code blocks, and dashboard patterns.",
+      "GitHub, Sentry, MongoDB, ClickHouse — dev-tool UI is information density and trust. These DESIGN.md files expose evidence status for monospace usage, code blocks, and dashboard patterns.",
       "Building developer or infra products? Starting from this tone is the shortest path.",
     ],
     select: byCountryCategory(null, ["developer-tools", "backend-devops"]),
@@ -186,11 +194,11 @@ export const COLLECTIONS: readonly Collection[] = [
     titleKr: "클린 SaaS 디자인 시스템",
     titleEn: "Clean SaaS Design Systems",
     introKr: [
-      "Notion·Slack·Airtable류의 SaaS 디자인 — 여백, 위계, 절제된 색 운용이 핵심입니다. 생산성·SaaS 카테고리에서 검증된 레퍼런스를 모았습니다.",
+      "Notion·Slack·Airtable류의 SaaS 디자인 — 여백, 위계, 절제된 색 운용이 핵심입니다. 생산성·SaaS 카테고리의 품질 등급형 레퍼런스를 모았습니다.",
       "B2B 대시보드나 협업 도구를 만들 때, '깔끔하게'라는 모호한 요청 대신 이 컬렉션의 DESIGN.md 하나를 지정하세요.",
     ],
     introEn: [
-      "SaaS design in the Notion / Slack / Airtable family — whitespace, hierarchy, restrained color. Verified references across the productivity and SaaS categories.",
+      "SaaS design in the Notion / Slack / Airtable family — whitespace, hierarchy, restrained color. Quality-graded references across the productivity and SaaS categories.",
       "Building a B2B dashboard or collaboration tool? Point your agent at one DESIGN.md here instead of saying \"make it clean\".",
     ],
     select: byCountryCategory(null, ["saas", "productivity"]),
@@ -202,16 +210,55 @@ export const COLLECTIONS: readonly Collection[] = [
     titleEn: "Dark-Mode-Native Design Systems",
     introKr: [
       "Linear·Vercel·Supabase·Raycast — 다크를 '반전'이 아니라 기본 캔버스로 설계한 브랜드들입니다. 레지스트리 토큰의 캔버스 휘도로 자동 선별했습니다.",
-      "다크 UI는 회색 단계와 글로우 운용이 전부입니다. 어설픈 #000 배경 대신, 검증된 다크 팔레트를 에이전트에게 주세요.",
+      "다크 UI는 회색 단계와 글로우 운용이 전부입니다. 어설픈 #000 배경 대신, 근거 상태가 표시된 다크 팔레트를 에이전트에게 주세요.",
     ],
     introEn: [
       "Linear, Vercel, Supabase, Raycast — brands that design dark as the default canvas, not an inversion. Auto-selected by canvas luminance from the registry tokens.",
-      "Dark UI is all gray scales and glow discipline. Give your agent a verified dark palette instead of a naive #000 background.",
+      "Dark UI is all gray scales and glow discipline. Give your agent a quality-graded dark palette instead of a naive #000 background.",
     ],
     select: (registry) => registry.filter(isDarkCanvas),
     related: ["dev-tools", "cursor-design-md", "korean-apps"],
   },
 ];
+
+const COLOR_RELATED: Record<ColorFamily, [ColorFamily, ColorFamily, ColorFamily]> = {
+  neutral: ["blue", "green", "purple"],
+  red: ["pink", "orange", "neutral"],
+  orange: ["yellow", "red", "neutral"],
+  yellow: ["orange", "green", "neutral"],
+  green: ["teal", "yellow", "blue"],
+  teal: ["blue", "green", "neutral"],
+  blue: ["purple", "teal", "neutral"],
+  purple: ["blue", "pink", "neutral"],
+  pink: ["red", "purple", "neutral"],
+};
+
+export function colorCollectionSlug(family: ColorFamily): string {
+  return `color-${family}`;
+}
+
+const COLOR_COLLECTIONS: readonly Collection[] = COLOR_FAMILIES.map((family) => {
+  const label = COLOR_FAMILY_LABELS[family];
+  return {
+    slug: colorCollectionSlug(family),
+    titleKr: `${label} 계열 디자인 시스템`,
+    titleEn: `${label} Design System References`,
+    introKr: [
+      `${label}을 대표색으로 사용하는 실제 기업 DESIGN.md를 모았습니다. 색상 이름의 인상으로 고른 목록이 아니라 canonical primary color의 hue를 같은 규칙으로 분류한 결과입니다.`,
+      "각 레퍼런스의 품질 상태와 원문을 확인한 뒤, 같은 색상 컨셉이 적용된 Builder 목록으로 바로 이동할 수 있습니다.",
+    ],
+    introEn: [
+      `Real-company DESIGN.md references whose canonical primary color falls in the ${label.toLowerCase()} hue family. The set is derived from one deterministic color rule, not visual guesswork.`,
+      "Inspect each reference and its quality status, then open the same color concept directly in the Builder.",
+    ],
+    select: (registry: readonly RefEntry[]) =>
+      registry.filter((entry) => colorFamilyForHex(entry.primaryColor) === family),
+    related: COLOR_RELATED[family].map(colorCollectionSlug) as [string, string, string],
+    colorFamily: family,
+  };
+});
+
+export const COLLECTIONS: readonly Collection[] = [...BASE_COLLECTIONS, ...COLOR_COLLECTIONS];
 
 export const COLLECTIONS_BY_SLUG: Readonly<Record<string, Collection>> =
   Object.freeze(Object.fromEntries(COLLECTIONS.map((c) => [c.slug, c])));
@@ -232,6 +279,8 @@ export function getCollectionEntries(slug: string): RefEntry[] {
 /** Adapt a registry entry to the DSCard shape — ds-block fields when present,
  *  honest registry-derived fallbacks otherwise (homepage, brand type). */
 export function toCardInfo(e: RefEntry): DesignSystemInfo {
+  const quality = REFERENCE_QUALITY_BY_ID[e.id];
+  if (!quality) throw new Error(`reference quality missing for ${e.id}`);
   if (e.ds) {
     return {
       refId: e.id,
@@ -240,6 +289,8 @@ export function toCardInfo(e: RefEntry): DesignSystemInfo {
       type: e.ds.type,
       description: e.ds.description,
       ogImage: e.ds.ogImage,
+      qualityStatus: quality.status,
+      verifiedAt: quality.verifiedAt,
     };
   }
   const name = e.displayName || e.name;
@@ -247,7 +298,9 @@ export function toCardInfo(e: RefEntry): DesignSystemInfo {
     refId: e.id,
     name,
     url: e.homepage,
-    type: "brand",
-    description: `${name} — verified DESIGN.md reference (${e.category.replace(/-/g, " ")}, ${e.country}).`,
+    type: "reference",
+    description: `${name} — quality-graded DESIGN.md reference (${e.category.replace(/-/g, " ")}, ${e.country}).`,
+    qualityStatus: quality.status,
+    verifiedAt: quality.verifiedAt,
   };
 }

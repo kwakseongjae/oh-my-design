@@ -173,18 +173,23 @@ export function applyOverridesToMd(
   // Direct replacement — AI agents need one source of truth, no ambiguity.
   let result = md;
 
-  // OmD v0.1 Philosophy Layer opt-out.
-  // When disabled, strip sections 10–15 (Voice, Narrative, Principles,
-  // Personas, States, Motion) plus the HTML-comment Sources block that
-  // follows. The range is anchored by the "## 10. Voice & Tone" header
-  // and the "OmD v0.1 Sources" comment end — if the file doesn't carry
-  // a Philosophy Layer, the regex simply doesn't match and nothing is
-  // stripped.
+  // OmD v0.1 Philosophy Layer opt-out. Older references put a horizontal
+  // rule before §10 and ended with an HTML Sources comment; Verified v2
+  // references use ordinary §10–15 headings followed by a verification
+  // footer. Locate the section/footer boundaries instead of coupling export
+  // behavior to either document generation.
   if (!includePhilosophyLayer) {
-    result = result.replace(
-      /\n+---\n+## 10\. Voice & Tone[\s\S]*?OmD v0\.1 Sources[\s\S]*?-->\n?/,
-      '\n'
-    );
+    const sectionStart = result.indexOf("\n## 10. Voice & Tone");
+    if (sectionStart >= 0) {
+      const precedingRule = result.lastIndexOf("\n---\n", sectionStart);
+      const cutStart = precedingRule >= 0 && sectionStart - precedingRule < 12
+        ? precedingRule
+        : sectionStart;
+      const footerStart = result.indexOf("\n---\n", sectionStart + 1);
+      result = footerStart >= 0
+        ? `${result.slice(0, cutStart)}${result.slice(footerStart)}`
+        : result.slice(0, cutStart);
+    }
   }
 
   // Strip emojis. The unicode range covers ✅ (U+2705) and ❌ (U+274C) too,
@@ -363,9 +368,6 @@ export function applyOverridesToMd(
     result += buildDarkModeSection(overrides.primaryColor || originalPrimary);
   }
 
-  // Append additional sections
-  result += buildIconographySection();
-  result += buildDocumentPolicies();
   return result;
 }
 
@@ -503,84 +505,5 @@ neutrals stay on-brand.
   on white often disappears entirely on a near-black surface.
 - Images and illustrations: supply a dark variant or apply a subtle overlay.
   Transparent PNGs with dark silhouettes will vanish on dark backgrounds.
-`;
-}
-
-function buildIconographySection(): string {
-  return `
-
----
-
-## Iconography & SVG Guidelines
-
-### Icon Library
-
-Use a single, consistent icon library throughout the project. Recommended options:
-
-- **Lucide React** (\`lucide-react\`): Default for shadcn/ui projects. 1,400+ icons, tree-shakeable, consistent 24x24 grid.
-- **Radix Icons** (\`@radix-ui/react-icons\`): 300+ icons, 15x15 grid, minimal and geometric.
-- **Heroicons** (\`@heroicons/react\`): 300+ icons by Tailwind team, outline and solid variants.
-
-Pick ONE library and use it everywhere. Do not mix icon libraries within the same project.
-
-### SVG Usage Rules
-
-- All icons must be inline SVG components (not \`<img>\` tags) for color and size control.
-- Icon size follows the type scale: 16px (inline), 20px (buttons), 24px (standalone).
-- Icon color inherits from \`currentColor\` -- never hard-code fill/stroke colors.
-- For custom/brand icons, export as SVG components with \`currentColor\` fills.
-- Stroke width: 1.5px-2px for outline icons. Keep consistent across the project.
-
-### Icon Sizing Scale
-
-| Context | Size | Usage |
-|---------|------|-------|
-| Inline text | 16px (1rem) | Badges, labels, breadcrumbs |
-| Button icon | 18px (1.125rem) | Icon buttons, CTA icons |
-| Standalone | 24px (1.5rem) | Navigation, card icons |
-| Feature | 32-48px | Hero sections, empty states |
-
-### SVG Optimization
-
-- Run all custom SVGs through SVGO before committing.
-- Remove unnecessary attributes: \`xmlns\`, \`xml:space\`, editor metadata.
-- Use \`viewBox\` instead of fixed \`width\`/\`height\` for scalability.
-`;
-}
-
-function buildDocumentPolicies(): string {
-  return `
-
----
-
-## Document Policies
-
-### No Emojis
-
-This design system must not use emojis in any UI element, component, label, status indicator, or documentation.
-Use SVG icons from the chosen icon library instead. Emojis render inconsistently across platforms and break visual coherence.
-
-- Status indicators: use colored dots or icon components, not emoji.
-- Section markers: use text prefixes ("DO:" / "DON'T:") or icons, not checkmark/cross emojis.
-- Navigation: use icon components, not emoji.
-
-### Format Compliance
-
-This document follows the Google Stitch DESIGN.md 9-section format:
-1. Visual Theme & Atmosphere
-2. Color Palette & Roles
-3. Typography Rules
-4. Component Stylings
-5. Layout Principles
-6. Depth & Elevation
-7. Do's and Don'ts
-8. Responsive Behavior
-9. Agent Prompt Guide
-
-Extended with:
-- Iconography & SVG Guidelines
-- Document Policies
-
-Total target length: 250-400 lines. Keep sections concise and actionable.
 `;
 }

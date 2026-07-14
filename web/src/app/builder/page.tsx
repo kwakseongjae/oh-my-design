@@ -14,6 +14,9 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { encodeConfig, decodeConfig } from "@/lib/core/config-hash";
 import { buildBuilderPrompt, DEFAULT_BUILDER_COMPONENTS } from "@/lib/core/builder-prompt";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
+import type { ReferenceDetailAstContract } from "@/lib/references/detail-projection";
+import { isColorFilter, type ColorFilter } from "@/lib/builder/color-family";
+import { useMounted } from "@/lib/use-mounted";
 
 type Step = "select" | "customize" | "preview";
 
@@ -51,13 +54,26 @@ export interface RefDetail {
   mood: string;
   accent?: string;
   border?: string;
+  /** Present on the default AST API path; optional only for the rollback flag. */
+  referenceAst?: ReferenceDetailAstContract;
 }
 
 const DEFAULT_COMPONENTS = DEFAULT_BUILDER_COMPONENTS;
 
+async function fetchRef(id: string): Promise<RefDetail | null> {
+  try {
+    const res = await fetch(`/api/references/${id}`);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    trackApiError("reference_detail");
+    return null;
+  }
+}
+
 export default function BuilderPage() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const [step, setStep] = useState<Step>("select");
   const [refs, setRefs] = useState<RefListItem[]>([]);
   const [detail, setDetail] = useState<RefDetail | null>(null);
@@ -71,6 +87,7 @@ export default function BuilderPage() {
   });
   const [activeComponents, setActiveComponents] = useState<string[]>(DEFAULT_COMPONENTS);
   const [stylePreferences, setStylePreferences] = useState<StylePreferences>({});
+  const [selectedColor, setSelectedColor] = useState<ColorFilter | null>(null);
 
   const [refsLoading, setRefsLoading] = useState(true);
 
@@ -86,8 +103,14 @@ export default function BuilderPage() {
   const firedGenerations = useRef<Set<string>>(new Set());
 
   useEffect(() => {
-    setMounted(true);
-    trackBuilderOpen();
+    const params = new URLSearchParams(window.location.search);
+    const requestedStep = params.get("step");
+    const entryStep = requestedStep === "preview" || requestedStep === "customize"
+      ? requestedStep
+      : params.has("ref")
+        ? "customize"
+        : "select";
+    trackBuilderOpen({ entryStep });
   }, []);
 
   // ── URL hydration ────────────────────────────────────────────────
@@ -107,6 +130,8 @@ export default function BuilderPage() {
     const rawStep = (params.get("step") as Step | null) ?? null;
     const refParam = params.get("ref");
     const cfgParam = params.get("cfg");
+    const colorParam = params.get("color");
+    setSelectedColor(isColorFilter(colorParam) ? colorParam : null);
 
     const resolvedStep: Step =
       rawStep === "preview" || rawStep === "customize" || rawStep === "select"
@@ -211,27 +236,17 @@ export default function BuilderPage() {
 
   // ── URL writers ──────────────────────────────────────────────────
 
-  function pushUrl(nextStep: Step, ref?: string, cfg?: string) {
+  const pushUrl = useCallback((nextStep: Step, ref?: string, cfg?: string) => {
     if (hydrating.current) return; // don't write during hydration
     const params = new URLSearchParams();
     if (nextStep !== "select") params.set("step", nextStep);
     if (ref) params.set("ref", ref);
     if (cfg) params.set("cfg", cfg);
+    if (selectedColor) params.set("color", selectedColor);
     const qs = params.toString();
     const url = qs ? `/builder?${qs}` : `/builder`;
     window.history.pushState({}, "", url);
-  }
-
-  async function fetchRef(id: string): Promise<RefDetail | null> {
-    try {
-      const res = await fetch(`/api/references/${id}`);
-      if (!res.ok) return null;
-      return await res.json();
-    } catch {
-      trackApiError("reference_detail");
-      return null;
-    }
-  }
+  }, [selectedColor]);
 
   // Reference grid pick → always as-is (the single primary path). Load the ref
   // but hold overrides at their empty-string
@@ -263,7 +278,7 @@ export default function BuilderPage() {
       trackGenerate({ reference: id, mode: "as_is" });
     }
     pushUrl("preview", id, cfg);
-  }, []);
+  }, [pushUrl]);
 
   const goToPreview = useCallback(() => {
     if (!detail) return;
@@ -275,7 +290,7 @@ export default function BuilderPage() {
     }
     setStep("preview");
     pushUrl("preview", detail.id, cfg);
-  }, [detail, overrides, activeComponents, stylePreferences]);
+  }, [detail, overrides, activeComponents, stylePreferences, pushUrl]);
 
   const goToCustomize = useCallback(() => {
     if (!detail) return;
@@ -295,11 +310,24 @@ export default function BuilderPage() {
     );
     setStep("customize");
     pushUrl("customize", detail.id);
-  }, [detail]);
+  }, [detail, pushUrl]);
 
   const goToSelect = useCallback(() => {
     setStep("select");
     pushUrl("select");
+  }, [pushUrl]);
+
+  const changeColor = useCallback((color: ColorFilter | null) => {
+    setSelectedColor(color);
+    if (hydrating.current) return;
+    const params = new URLSearchParams(window.location.search);
+    params.delete("step");
+    params.delete("ref");
+    params.delete("cfg");
+    if (color) params.set("color", color);
+    else params.delete("color");
+    const query = params.toString();
+    window.history.replaceState({}, "", query ? `/builder?${query}` : "/builder");
   }, []);
 
   const goToStepFromNav = useCallback((next: Step) => {
@@ -375,6 +403,8 @@ export default function BuilderPage() {
             onSelect={selectRefAsIs}
             loading={loading}
             initialLoading={refsLoading}
+            selectedColor={selectedColor}
+            onColorChange={changeColor}
           />
         )}
         {step === "customize" && detail && (
@@ -401,7 +431,7 @@ export default function BuilderPage() {
             {/* Builder is the main funnel surface — close the loop from preview
                 into the install command. Same sticky bottom bar as the reference
                 detail pages (#19); the main's pb-24 above keeps content clear of
-                it. Fires install_copy{source:'builder'} / prompt_copy{reference}
+                it. Fires act_install_copy{surface:'builder'} / act_prompt_copy{reference,surface}
                 (see InstallCta). The first prompt is composed from the LIVE
                 builder config (not a generic brand line) so the user's step-2
                 customizations survive the handoff to the agent; the URL we

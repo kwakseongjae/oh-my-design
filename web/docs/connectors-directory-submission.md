@@ -1,4 +1,9 @@
-# Connectors Directory submission — oh-my-design (fill-in-the-form reference)
+# Connectors Directory submission — archived historical plan
+
+> **Retired 2026-07-11. Do not submit or follow the setup steps below.** The public
+> `/api/mcp` endpoint now returns HTTP 410 and the MCP package is archive-only.
+> Skills, the local catalog, and raw `/<id>/design.md` URLs replaced this transport.
+> The remainder of this document is preserved only as decision history.
 
 Mapped field-by-field to the **actual** submission flow (Anthropic docs, 2026-06).
 The in-app portal has **11 steps**; the standalone form

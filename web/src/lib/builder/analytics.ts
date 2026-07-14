@@ -11,10 +11,14 @@
  *   → act_install_copy    (activation, see lib/activation/analytics.ts)
  */
 import { event, trackRef } from "@/lib/gtag";
+import { trackHandoff } from "@/lib/activation/analytics";
 
 export type BuildMode = "as_is" | "customize";
 export type ExportChannel = "download" | "copy";
 export type MdView = "rendered" | "raw";
+export type SourceFormat = "designmd" | "tailwind" | "css" | "dtcg";
+export type SourceAction = "copy" | "download";
+export type BuilderEntryStep = "select" | "customize" | "preview";
 /** Which style facet was changed in the (demoted) customize wizard. */
 export type CustomizeToken = "color" | "font" | "weight" | "radius" | "dark" | "components" | "philosophy" | string;
 
@@ -29,8 +33,8 @@ function lenBucket(n: number): string {
   return "121+";
 }
 
-export function trackBuilderOpen() {
-  event("bld_open");
+export function trackBuilderOpen(args: { entryStep: BuilderEntryStep }) {
+  event("bld_open", { entry_step: args.entryStep });
 }
 
 export function trackReferenceSelect(args: { reference: string; category: string }) {
@@ -47,6 +51,11 @@ export function trackGenerate(args: { reference: string; mode: BuildMode }) {
 /** The actual export action — download/copy the generated DESIGN.md. */
 export function trackExport(args: { reference: string; channel: ExportChannel }) {
   event("bld_export", { reference: args.reference, channel: args.channel });
+  trackHandoff({
+    kind: args.channel === "copy" ? "designmd_copy" : "designmd_download",
+    surface: "builder",
+    reference: args.reference,
+  });
   trackRef(args.channel, args.reference);
 }
 
@@ -74,6 +83,30 @@ export function trackSortChange(mode: string) {
 
 export function trackCountryFilter(country: string) {
   event("bld_country_filter", { country });
+}
+
+export function trackColorFilter(colorFamily: string) {
+  event("bld_color_filter", { color_family: colorFamily });
+}
+
+export function trackEvidenceToggle(args: { reference: string; open: boolean }) {
+  event("bld_evidence_toggle", { reference: args.reference, open: args.open });
+}
+
+export function trackSourceFormatView(args: { reference: string; format: SourceFormat }) {
+  event("bld_source_format_view", { reference: args.reference, format: args.format });
+}
+
+export function trackSourceFormatExport(args: {
+  reference: string;
+  format: SourceFormat;
+  action: SourceAction;
+}) {
+  event("bld_source_format_export", {
+    reference: args.reference,
+    format: args.format,
+    action: args.action,
+  });
 }
 
 export function trackHotFilter(on: boolean) {

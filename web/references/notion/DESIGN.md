@@ -4,59 +4,110 @@ name: Notion
 country: US
 category: productivity
 homepage: "https://www.notion.so"
-primary_color: "#000000"
+primary_color: "#0075de"
 logo:
   type: simpleicons
   slug: notion
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.notion.com/ko", inspected: "2026-07-13" }
+    - { id: product, kind: public-product-marketing, url: "https://www.notion.com/ko/product", inspected: "2026-07-13" }
+    - { id: help, kind: documentation-chrome, url: "https://www.notion.com/ko/help", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.notion.com/ko", captured: "2026-07-13" }
+    - { id: product-live, kind: product-surface, url: "https://www.notion.com/ko/product", captured: "2026-07-13" }
+    - { id: help-live, kind: product-surface, url: "https://www.notion.com/ko/help", captured: "2026-07-13" }
+    - { id: about, kind: official-doc, url: "https://www.notion.com/about", captured: "2026-07-13" }
+    - { id: careers, kind: official-doc, url: "https://www.notion.com/careers", captured: "2026-07-13" }
+    - { id: ai-story, kind: official-doc, url: "https://www.notion.com/blog/behind-the-scenes-notion-ai", captured: "2026-07-13" }
+    - { id: notioninter-assets, kind: brand-asset, url: "https://www.notion.com/front-static/fonts/NotionInter-Regular.woff2", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &marketing { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.canvas": *marketing
+    "tokens.colors.ink": *marketing
+    "tokens.colors.muted": *marketing
+    "tokens.colors.docs-layer": &docs { surface_id: help, source_id: help-live, method: live-inspect, captured: "2026-07-13" }
+    "tokens.colors.primary-hover": *marketing
+    "tokens.typography.family.sans": *marketing
+    "tokens.typography.hero.size": *marketing
+    "tokens.typography.hero.weight": *marketing
+    "tokens.typography.hero.lineHeight": *marketing
+    "tokens.typography.hero.tracking": *marketing
+    "tokens.typography.hero.use": *marketing
+    "tokens.typography.heading.size": *marketing
+    "tokens.typography.heading.weight": *marketing
+    "tokens.typography.heading.lineHeight": *marketing
+    "tokens.typography.heading.tracking": *marketing
+    "tokens.typography.heading.use": *marketing
+    "tokens.typography.body.size": *marketing
+    "tokens.typography.body.weight": *marketing
+    "tokens.typography.body.lineHeight": *marketing
+    "tokens.typography.body.use": *marketing
+    "tokens.typography.action.size": *marketing
+    "tokens.typography.action.weight": *marketing
+    "tokens.typography.action.lineHeight": *marketing
+    "tokens.typography.action.use": *marketing
+    "tokens.typography.label.size": *marketing
+    "tokens.typography.label.weight": *marketing
+    "tokens.typography.label.lineHeight": *marketing
+    "tokens.typography.label.use": *marketing
+    "tokens.spacing.xs": *marketing
+    "tokens.spacing.sm": *marketing
+    "tokens.spacing.md": *marketing
+    "tokens.spacing.lg": *marketing
+    "tokens.spacing.xl": *marketing
+    "tokens.rounded.control": *marketing
+    "tokens.rounded.card": *marketing
+    "tokens.rounded.docs-input": *docs
+    "tokens.rounded.pill": *marketing
+    "tokens.shadow.floating-action": *marketing
+    "tokens.components.marketing-primary-action.type": *marketing
+    "tokens.components.marketing-primary-action.bg": *marketing
+    "tokens.components.marketing-primary-action.fg": *marketing
+    "tokens.components.marketing-primary-action.radius": *marketing
+    "tokens.components.marketing-primary-action.padding": *marketing
+    "tokens.components.marketing-primary-action.height": *marketing
+    "tokens.components.marketing-primary-action.font": *marketing
+    "tokens.components.marketing-primary-action.states": *marketing
+    "tokens.components.marketing-primary-action.use": *marketing
+    "tokens.components.help-search.type": *docs
+    "tokens.components.help-search.fg": *docs
+    "tokens.components.help-search.border": *docs
+    "tokens.components.help-search.radius": *docs
+    "tokens.components.help-search.padding": *docs
+    "tokens.components.help-search.height": *docs
+    "tokens.components.help-search.font": *docs
+    "tokens.components.help-search.states": *docs
+    "tokens.components.help-search.use": *docs
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: live-extract
+  extracted: "2026-07-13"
   colors:
-    ink: "#000000"
-    canvas: "#ffffff"
     primary: "#0075de"
-    primary-active: "#005bab"
-    navy: "#213183"
-    warm-white: "#f6f5f4"
-    warm-dark: "#31302e"
-    warm-gray-500: "#615d59"
-    warm-gray-300: "#a39e98"
-    teal: "#2a9d99"
-    green: "#1aae39"
-    orange: "#dd5b00"
-    pink: "#ff64c8"
-    purple: "#391c57"
-    brown: "#523410"
-    link-light: "#62aef0"
-    focus: "#097fe8"
-    badge-bg: "#f2f9ff"
-    border: "#dddddd"
+    primary-hover: "#005bab"
+    canvas: "#ffffff"
+    ink: "#000000"
+    muted: "#615d59"
+    docs-layer: "#f9f9f8"
   typography:
-    family: { sans: "NotionInter", mono: "NotionInter" }
-    display-hero: { size: 64, weight: 700, lineHeight: 1.0, tracking: -2.125, use: "Billboard headlines" }
-    display-secondary: { size: 54, weight: 700, lineHeight: 1.04, tracking: -1.875, use: "Secondary hero" }
-    section: { size: 48, weight: 700, lineHeight: 1.0, tracking: -1.5, use: "Feature section titles" }
-    subheading-lg: { size: 40, weight: 700, lineHeight: 1.5, use: "Card headings, metric numbers" }
-    subheading: { size: 26, weight: 700, lineHeight: 1.23, tracking: -0.625, use: "Section sub-titles" }
-    card-title: { size: 22, weight: 700, lineHeight: 1.27, tracking: -0.25, use: "Feature cards, list titles" }
-    body-lg: { size: 20, weight: 600, lineHeight: 1.4, tracking: -0.125, use: "Intros, feature descriptions" }
-    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading text" }
-    nav-button: { size: 15, weight: 600, lineHeight: 1.33, use: "Navigation links, button text" }
-    caption: { size: 14, weight: 500, lineHeight: 1.43, use: "Metadata, secondary labels" }
-    badge: { size: 12, weight: 600, lineHeight: 1.33, tracking: 0.125, use: "Pill badges, tags, status" }
-  spacing: { sm: 8, base: 16 }
-  rounded: { sm: 4, md: 12, lg: 16, full: 9999 }
+    family: { sans: "NotionInter" }
+    hero: { size: 96, weight: 600, lineHeight: 100, tracking: -4.6, use: "Observed marketing h1 at the captured viewport" }
+    heading: { size: 54, weight: 700, lineHeight: 56, tracking: -1.875, use: "Observed public marketing/product h2" }
+    body: { size: 16, weight: 400, lineHeight: 24, use: "Observed navigation, cards, and Help chrome" }
+    action: { size: 16, weight: 500, lineHeight: 24, use: "Observed public marketing CTA" }
+    label: { size: 14, weight: 500, lineHeight: 20, use: "Observed menu trigger and Help dialog control" }
+  spacing: { xs: 4, sm: 8, md: 12, lg: 16, xl: 24 }
+  rounded: { docs-input: 5, control: 8, card: 12, pill: 9999 }
   shadow:
-    card: "rgba(0,0,0,0.04) 0px 4px 18px, rgba(0,0,0,0.027) 0px 2.025px 7.84688px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.01) 0px 0.175px 1.04062px"
+    floating-action: "rgba(0,0,0,0.01) 0px 0.175px 1.041px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.027) 0px 2.025px 7.847px, rgba(0,0,0,0.04) 0px 4px 18px"
   components:
-    button-primary: { type: button, bg: "#0075de", fg: "#ffffff", radius: 4, padding: "8px 16px", use: "Primary CTA (Get Notion free)" }
-    button-secondary: { type: button, bg: "rgba(0,0,0,0.05)", fg: "#000000", radius: 4, padding: "8px 16px", use: "Secondary actions, form submit" }
-    button-ghost: { type: button, bg: "transparent", fg: "#000000", use: "Tertiary actions, inline links" }
-    badge: { type: badge, bg: "#f2f9ff", fg: "#097fe8", radius: 9999, padding: "4px 8px", font: "12px/600", use: "Status badges, feature labels, New tags" }
-    card: { type: card, bg: "#ffffff", radius: 12, use: "Standard content card, whisper border" }
-    input: { type: input, bg: "#ffffff", fg: "#000000", radius: 4, padding: "6px", use: "Forms, fields" }
+    marketing-primary-action: { type: button, bg: "#0075de", fg: "#ffffff", radius: 8, padding: "4px 14px", height: 36, font: "16px/500 NotionInter", states: "hover/pressed/focus captured on marketing; values remain selector-specific", use: "Global marketing CTA" }
+    help-search: { type: input, fg: "#000000", border: "1px solid rgba(0,0,0,0.08)", radius: 5, padding: "7px 10px 7px 30px", height: 36, font: "16px/400 NotionInter", states: "dialog-open focus style captured", use: "Help language-picker search field" }
   components_harvested: true
 ---
 
@@ -64,494 +115,239 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Notion's website embodies the philosophy of the tool itself: a blank canvas that gets out of your way. The design system is built on warm neutrals rather than cold grays, creating a distinctly approachable minimalism that feels like quality paper rather than sterile glass. The page canvas is pure white (`#ffffff`) but the text isn't pure black -- it's a warm near-black (`rgba(0,0,0,0.95)`) that softens the reading experience imperceptibly. The warm gray scale (`#f6f5f4`, `#31302e`, `#615d59`, `#a39e98`) carries subtle yellow-brown undertones, giving the interface a tactile, almost analog warmth.
+Notion is an all-in-one workspace for notes, docs, project work, knowledge, and AI-assisted workflows. Its public web expression makes a flexible “toolbox of software building blocks” feel legible rather than enterprise-heavy: white canvas, near-black type, modest 4–12px corners, and a restrained blue action color. The supplied July 2026 capture shows this language across Korean marketing, a public product-marketing route, and the Help-center shell. Notion’s own history frames the product as a response to fragmented work tools; its current careers page extends that idea to teams of people and AI agents. The most recognizable visual move is therefore reduction: sturdy typography and quiet borders let the page’s content, screenshots, and user-defined workspace structure carry the personality. [About Notion](https://www.notion.com/about) · [Careers](https://www.notion.com/careers)
 
-The custom NotionInter font (a modified Inter) is the backbone of the system. At display sizes (64px), it uses aggressive negative letter-spacing (-2.125px), creating headlines that feel compressed and precise. The weight range is broader than typical systems: 400 for body, 500 for UI elements, 600 for semi-bold labels, and 700 for display headings. OpenType features `"lnum"` (lining numerals) and `"locl"` (localized forms) are enabled on larger text, adding typographic sophistication that rewards close reading.
+The capture is deliberately narrower than an authenticated workspace or a complete internal system. Marketing and public-product promotion share the blue CTA and NotionInter family. The Help route adds its own documentation controls and muted `#f9f9f8` hover layer; it is documented as Help chrome rather than promoted as a universal workspace pattern.
 
-What makes Notion's visual language distinctive is its border philosophy. Rather than heavy borders or shadows, Notion uses ultra-thin `1px solid rgba(0,0,0,0.1)` borders -- borders that exist as whispers, barely perceptible division lines that create structure without weight. The shadow system is equally restrained: multi-layer stacks with cumulative opacity never exceeding 0.05, creating depth that's felt rather than seen.
-
-**Key Characteristics:**
-- NotionInter (modified Inter) with negative letter-spacing at display sizes (-2.125px at 64px)
-- Warm neutral palette: grays carry yellow-brown undertones (`#f6f5f4` warm white, `#31302e` warm dark)
-- Near-black text via `rgba(0,0,0,0.95)` -- not pure black, creating micro-warmth
-- Ultra-thin borders: `1px solid rgba(0,0,0,0.1)` throughout -- whisper-weight division
-- Multi-layer shadow stacks with sub-0.05 opacity for barely-there depth
-- Notion Blue (`#0075de`) as the singular accent color for CTAs and interactive elements
-- Pill badges (9999px radius) with tinted blue backgrounds for status indicators
-- 8px base spacing unit with an organic, non-rigid scale
+**Key characteristics:**
+- White canvas with `rgba(0,0,0,0.95)` / `#000000` reading color
+- `#0075de` public CTA, with darker selector-specific interaction states
+- NotionInter loaded on all three captured public routes
+- 4–8px controls, 12px marketing cards, and a pill-shaped language menu trigger
+- Public components are flat or whisper-bordered; the observed circular action is the only captured soft-shadow control
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Notion Black** (`rgba(0,0,0,0.95)` / `#000000f2`): Primary text, headings, body copy. The 95% opacity softens pure black without sacrificing readability.
-- **Pure White** (`#ffffff`): Page background, card surfaces, button text on blue.
-- **Notion Blue** (`#0075de`): Primary CTA, link color, interactive accent -- the only saturated color in the core UI chrome.
+### Observed public marketing and product palette
+- **Primary action** (`#0075de`): observed on the global navigation CTA and hero CTA across the marketing and public product-marketing routes.
+- **Primary interaction states** (`#005bab`, `#0073d9`, `#0071d6`): hover, pressed, and focus backgrounds on the captured CTA selectors; these are state evidence, not a general color ramp.
+- **Canvas** (`#ffffff`): repeated white page, card, and menu-button surface.
+- **Ink** (`#000000` / `rgba(0,0,0,0.95)`): observed primary text treatment.
+- **Muted text** (`#615d59` and route-local `rgba(0,0,0,0.54)`): secondary copy/control treatment; neither is a substitute for primary ink.
+- **Whisper border** (`rgba(0,0,0,0.1)`): observed on the white language-picker trigger and compact card.
 
-### Brand Secondary
-- **Deep Navy** (`#213183`): Secondary brand color, used sparingly for emphasis and dark feature sections.
-- **Active Blue** (`#005bab`): Button active/pressed state -- darker variant of Notion Blue.
-
-### Warm Neutral Scale
-- **Warm White** (`#f6f5f4`): Background surface tint, section alternation, subtle card fill. The yellow undertone is key.
-- **Warm Dark** (`#31302e`): Dark surface background, dark section text. Warmer than standard grays.
-- **Warm Gray 500** (`#615d59`): Secondary text, descriptions, muted labels.
-- **Warm Gray 300** (`#a39e98`): Placeholder text, disabled states, caption text.
-
-### Semantic Accent Colors
-- **Teal** (`#2a9d99`): Success states, positive indicators.
-- **Green** (`#1aae39`): Confirmation, completion badges.
-- **Orange** (`#dd5b00`): Warning states, attention indicators.
-- **Pink** (`#ff64c8`): Decorative accent, feature highlights.
-- **Purple** (`#391c57`): Premium features, deep accents.
-- **Brown** (`#523410`): Earthy accent, warm feature sections.
-
-### Interactive
-- **Link Blue** (`#0075de`): Primary link color with underline-on-hover.
-- **Link Light Blue** (`#62aef0`): Lighter link variant for dark backgrounds.
-- **Focus Blue** (`#097fe8`): Focus ring on interactive elements.
-- **Badge Blue Bg** (`#f2f9ff`): Pill badge background, tinted blue surface.
-- **Badge Blue Text** (`#097fe8`): Pill badge text, darker blue for readability.
-
-### Shadows & Depth
-- **Card Shadow** (`rgba(0,0,0,0.04) 0px 4px 18px, rgba(0,0,0,0.027) 0px 2.025px 7.84688px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.01) 0px 0.175px 1.04062px`): Multi-layer card elevation.
-- **Deep Shadow** (`rgba(0,0,0,0.01) 0px 1px 3px, rgba(0,0,0,0.02) 0px 3px 7px, rgba(0,0,0,0.02) 0px 7px 15px, rgba(0,0,0,0.04) 0px 14px 28px, rgba(0,0,0,0.05) 0px 23px 52px`): Five-layer deep elevation for modals and featured content.
-- **Whisper Border** (`1px solid rgba(0,0,0,0.1)`): Standard division border -- cards, dividers, sections.
+### Documentation-chrome boundary
+- **Help hover layer** (`#f9f9f8`): observed only on the Help toggle’s hover state.
+- **Help focus treatment** (`rgba(35,131,226,0.57)` inset plus `rgba(35,131,226,0.35)` outer ring): observed only on the language-picker search input after its dialog opened.
 
 ## 3. Typography Rules
 
-### Font Family
-- **Primary**: `NotionInter`, with fallbacks: `Inter, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, Segoe UI Emoji, Segoe UI Symbol`
-- **OpenType Features**: `"lnum"` (lining numerals) and `"locl"` (localized forms) enabled on display and heading text.
+### Evidence classes
 
-### Hierarchy
+**Official product-use.** Notion describes its core product as an all-in-one workspace made from configurable building blocks and says its mission is to make software toolmaking ubiquitous. Those are product and brand facts; they do not by themselves specify a webfont. [About](https://www.notion.com/about) · [Notion AI story](https://www.notion.com/blog/behind-the-scenes-notion-ai)
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | NotionInter | 64px (4.00rem) | 700 | 1.00 (tight) | -2.125px | Maximum compression, billboard headlines |
-| Display Secondary | NotionInter | 54px (3.38rem) | 700 | 1.04 (tight) | -1.875px | Secondary hero, feature headlines |
-| Section Heading | NotionInter | 48px (3.00rem) | 700 | 1.00 (tight) | -1.5px | Feature section titles, with `"lnum"` |
-| Sub-heading Large | NotionInter | 40px (2.50rem) | 700 | 1.50 | normal | Card headings, feature sub-sections |
-| Sub-heading | NotionInter | 26px (1.63rem) | 700 | 1.23 (tight) | -0.625px | Section sub-titles, content headers |
-| Card Title | NotionInter | 22px (1.38rem) | 700 | 1.27 (tight) | -0.25px | Feature cards, list titles |
-| Body Large | NotionInter | 20px (1.25rem) | 600 | 1.40 | -0.125px | Introductions, feature descriptions |
-| Body | NotionInter | 16px (1.00rem) | 400 | 1.50 | normal | Standard reading text |
-| Body Medium | NotionInter | 16px (1.00rem) | 500 | 1.50 | normal | Navigation, emphasized UI text |
-| Body Semibold | NotionInter | 16px (1.00rem) | 600 | 1.50 | normal | Strong labels, active states |
-| Body Bold | NotionInter | 16px (1.00rem) | 700 | 1.50 | normal | Headlines at body size |
-| Nav / Button | NotionInter | 15px (0.94rem) | 600 | 1.33 | normal | Navigation links, button text |
-| Caption | NotionInter | 14px (0.88rem) | 500 | 1.43 | normal | Metadata, secondary labels |
-| Caption Light | NotionInter | 14px (0.88rem) | 400 | 1.43 | normal | Body captions, descriptions |
-| Badge | NotionInter | 12px (0.75rem) | 600 | 1.33 | 0.125px | Pill badges, tags, status labels |
-| Micro Label | NotionInter | 12px (0.75rem) | 400 | 1.33 | 0.125px | Small metadata, timestamps |
+**Live computed surface-use.** `NotionInter` is computed on visible marketing, public product-marketing, and Help-chrome elements. The supplied artifact reports it loaded/high for 906 elements with matching FontFaceSet/source evidence. Measured examples include a 96px/600/100px/-4.6px marketing h1, 54px/700/56px/-1.875px h2, 16px/400/24px reading text, and 16px/500/24px CTA text.
 
-### Principles
-- **Compression at scale**: NotionInter at display sizes uses -2.125px letter-spacing at 64px, progressively relaxing to -0.625px at 26px and normal at 16px. The compression creates density at headlines while maintaining readability at body sizes.
-- **Four-weight system**: 400 (body/reading), 500 (UI/interactive), 600 (emphasis/navigation), 700 (headings/display). The broader weight range compared to most systems allows nuanced hierarchy.
-- **Warm scaling**: Line height tightens as size increases -- 1.50 at body (16px), 1.23-1.27 at sub-headings, 1.00-1.04 at display. This creates denser, more impactful headlines.
-- **Badge micro-tracking**: The 12px badge text uses positive letter-spacing (0.125px) -- the only positive tracking in the system, creating wider, more legible small text.
+**Official distributed brand asset.** The capture finds Notion-controlled `NotionInter` `.woff` and `.woff2` files at `www.notion.com` URLs. They support browser delivery on these routes, but the research found no first-party public font-license or redistribution grant. Treat the files as service assets, not a font package to redistribute.
+
+**Declared-only.** `iA Writer Mono`, `Lyon Text`, `Noto Sans Arabic`, `Noto Sans Hebrew`, and `Permanent Marker` have `@font-face` sources in the capture but no visible computed use. They remain declared assets, not UI-family tokens.
+
+**System/unresolved.** `Inter`, `-apple-system`, `system-ui`, `Segoe UI`, Helvetica, Arial, and emoji faces appear as fallback members in the computed stack. No fallback is rendered or labeled as NotionInter. Authenticated workspace typography, local app typography, and a public NotionInter license remain unresolved.
 
 ## 4. Component Stylings
 
-### Buttons
+### Public marketing actions
 
-**Primary Blue**
-- Background: `#0075de` (Notion Blue)
+**Global CTA — default**
+- Background: `#0075de`
 - Text: `#ffffff`
-- Padding: 8px 16px
-- Radius: 4px (subtle)
-- Border: `1px solid transparent`
-- Hover: background darkens to `#005bab`
-- Active: scale(0.9) transform
-- Focus: `2px solid` focus outline, `var(--shadow-level-200)` shadow
-- Use: Primary CTA ("Get Notion free", "Try it")
+- Border: 1px solid transparent
+- Radius: 8px
+- Padding: 4px 14px
+- Height: 36px
+- Font: 16px / 500 / NotionInter
+- Use: `home::[data-omd-capture="9"]`, class `button_buttonVariantPrimary__mUFQZ globalNavigation_tryFreeCta__mNYk6`; also observed on the other two captured routes.
+- Hover: `#005bab` at `home::[data-omd-capture="9"]::state-hover`.
+- Pressed: state captured for this selector; only the raw state observation is retained in `.verification.md`.
+- Focus: state captured for this selector; only the raw state observation is retained in `.verification.md`.
 
-**Secondary / Tertiary**
-- Background: `rgba(0,0,0,0.05)` (translucent warm gray)
-- Text: `#000000` (near-black)
-- Padding: 8px 16px
-- Radius: 4px
-- Hover: text color shifts, scale(1.05)
-- Active: scale(0.9) transform
-- Use: Secondary actions, form submissions
+**Hero CTA — default**
+- Background: `#0075de`
+- Text: `#ffffff`
+- Border: 1px solid transparent
+- Radius: 8px
+- Padding: 6px 15px
+- Height: 38px
+- Font: 16px / 500 / NotionInter
+- Use: `home::[data-omd-capture="11"]`, class `HeroCTA_cta__hOE_c button_primary__k0`; public marketing and product-marketing only.
+- Pressed: `#0073d9` at `home::[data-omd-capture="11"]::state-pressed`.
+- Focus: `#0071d6` at `home::[data-omd-capture="11"]::state-focus`.
 
-**Ghost / Link Button**
+**Hero secondary action — observed focus state**
+- Background: `#e6f3fe`
+- Text: `#005bab`
+- Border: 1px solid transparent
+- Radius: 8px
+- Padding: 6px 15px
+- Height: 38px
+- Font: 16px / 500 / NotionInter
+- Use: `home::[data-omd-capture="12"]`, class `HeroCTA_cta__hOE_c button_secondary__`; a focus observation, not a universal secondary-button default.
+- Focus: `#e7f3fe` background at the same selector’s focus capture.
+
+### Marketing content structures
+
+**Compact card — default**
+- Background: `#ffffff`
+- Text: `rgba(0,0,0,0.898)`
+- Border: 1px solid `rgba(0,0,0,0.1)`
+- Radius: 12px
+- Padding: 24px
+- Font: 16px / 400 / NotionInter
+- Use: `home::div`, class `cardCompact_cardCompact__W2i4I`; observed on marketing and public product-marketing routes.
+
+**Bento feature tab — selected and unselected**
 - Background: transparent
+- Radius: 8px
+- Padding: 12px 16px
+- Font: 16px / 400 / NotionInter
+- Use: `home::[data-omd-capture="27"]` / `home::[data-omd-capture="28"]`, role `tab`; three tab interactions recorded on marketing and public product-marketing routes.
+- Selected: `rgba(0,0,0,0.95)` text at `home::[data-omd-interaction-capture="tab-1-0"]`.
+- Unselected: `rgba(0,0,0,0.54)` text at `home::[data-omd-capture="28"]`.
+
+**Circular carousel action — default**
+- Background: `#ffffff`
 - Text: `rgba(0,0,0,0.95)`
-- Decoration: underline on hover
-- Use: Tertiary actions, inline links
+- Radius: 9999px
+- Height: 40px
+- Font: 20px / 400 / NotionInter
+- Shadow: `rgba(0,0,0,0.01) 0px 0.175px 1.041px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.027) 0px 2.025px 7.847px, rgba(0,0,0,0.04) 0px 4px 18px`
+- Use: `home::[data-omd-capture="31"]`, a marketing carousel arrow; do not generalize this elevation to cards or dialogs.
 
-**Pill Badge Button**
-- Background: `#f2f9ff` (tinted blue)
-- Text: `#097fe8`
-- Padding: 4px 8px
-- Radius: 9999px (full pill)
-- Font: 12px weight 600
-- Use: Status badges, feature labels, "New" tags
+### Help documentation chrome
 
-### Cards & Containers
+**Language picker trigger — dialog opener**
 - Background: `#ffffff`
-- Border: `1px solid rgba(0,0,0,0.1)` (whisper border)
-- Radius: 12px (standard cards), 16px (featured/hero cards)
-- Shadow: `rgba(0,0,0,0.04) 0px 4px 18px, rgba(0,0,0,0.027) 0px 2.025px 7.84688px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.01) 0px 0.175px 1.04062px`
-- Hover: subtle shadow intensification
-- Image cards: 12px top radius, image fills top half
+- Text: `rgba(0,0,0,0.95)`
+- Border: 1px solid `rgba(0,0,0,0.1)`
+- Radius: 9999px
+- Padding: 8px 16px
+- Height: 38px
+- Font: 14px / 500 / NotionInter
+- Use: `home::[data-omd-capture="60"]` and equivalent product/Help selectors; the collector opened a dialog on all three routes.
+- Dialog-open: language-list targets were captured; no dialog container elevation is asserted because its representative style was transparent.
 
-### Inputs & Forms
-- Background: `#ffffff`
-- Text: `rgba(0,0,0,0.9)`
-- Border: `1px solid #dddddd`
-- Padding: 6px
-- Radius: 4px
-- Focus: blue outline ring
-- Placeholder: warm gray `#a39e98`
+**Language-picker search — focused dialog field**
+- Text: `rgba(0,0,0,0.95)`
+- Border: 1px solid `rgba(0,0,0,0.08)`
+- Radius: 5px
+- Padding: 7px 10px 7px 30px
+- Height: 36px
+- Font: 16px / 400 / NotionInter
+- Use: `home::[data-omd-interaction-capture="dialog-0-1"]`, class `input_input__PoidJ languagePicker_searchInput__Jrbry`.
+- Focus: inset `rgba(35,131,226,0.57) 0px 0px 0px 1px` plus outer `rgba(35,131,226,0.35) 0px 0px 0px 2px` shadow.
 
-### Navigation
-- Clean horizontal nav on white, not sticky
-- Brand logo left-aligned (33x34px icon + wordmark)
-- Links: NotionInter 15px weight 500-600, near-black text
-- Hover: color shift to `var(--color-link-primary-text-hover)`
-- CTA: blue pill button ("Get Notion free") right-aligned
-- Mobile: hamburger menu collapse
-- Product dropdowns with multi-level categorized menus
-
-### Image Treatment
-- Product screenshots with `1px solid rgba(0,0,0,0.1)` border
-- Top-rounded images: `12px 12px 0px 0px` radius
-- Dashboard/workspace preview screenshots dominate feature sections
-- Warm gradient backgrounds behind hero illustrations (decorative character illustrations)
-
-### Distinctive Components
-
-**Feature Cards with Illustrations**
-- Large illustrative headers (The Great Wave, product UI screenshots)
-- 12px radius card with whisper border
-- Title at 22px weight 700, description at 16px weight 400
-- Warm white (`#f6f5f4`) background variant for alternating sections
-
-**Trust Bar / Logo Grid**
-- Company logos (trusted teams section) in their brand colors
-- Horizontal scroll or grid layout with team counts
-- Metric display: large number + description pattern
-
-**Metric Cards**
-- Large number display (e.g., "$4,200 ROI")
-- NotionInter 40px+ weight 700 for the metric
-- Description below in warm gray body text
-- Whisper-bordered card container
-
-### Interactive States
-
-Consolidated state behavior across all interactive components.
-
-- **Default**: Standard appearance with whisper border (`1px solid rgba(0,0,0,0.1)`)
-- **Hover**: Color shift on text, `scale(1.05)` transform on buttons, underline on links
-- **Active / Pressed**: `scale(0.9)` transform, darker background variant (e.g. `#005bab` for Notion Blue)
-- **Focus**: `2px solid` focus ring in Focus Blue (`#097fe8`) + shadow level 200 reinforcement; supported on all interactive elements via keyboard tab navigation
-- **Disabled**: Warm gray (`#a39e98`) text, primary actions reduce to `rgba(0,117,222,0.3)`, ultra-thin border preserved
+**Help toggle — default and hover**
+- Text: `rgba(0,0,0,0.54)`
+- Padding: 6px 8px
+- Height: 32px
+- Font: 16px / 400 / NotionInter
+- Use: `surface-3::[data-omd-capture="11"]`, class `toggleList_toggleButtonWrapper__79NEe`; Help documentation chrome only.
+- Hover: `#f9f9f8` background and 4px radius at `surface-3::[data-omd-capture="11"]::state-hover`.
+- Pressed: captured for the selector; no raw pressed value is promoted as a system token.
 
 ---
-
-**Verified:** 2026-05-08
-**Tier 1 sources:** notion.com/ko (live DOM via playwright — dropdown nav items 8px radius / 16px·400 / `rgba(0,0,0,0.95)` text; nav menu trigger 4px / 16px·400 / 30px height / 5×10 padding)
-**Tier 2 sources:** styles.refero.design — no Notion record at `?q=Notion`. getdesign.md/notion — entry exists but only directory snippet ("Warm minimalism, serif headings, soft surfaces.").
-**Tier 2 status:** unavailable; Tier 1 (notion.com live inspect) authoritative.
-**Conflicts unresolved:** none. Notion's modest 4–8px radius spectrum and Geist-like nav typography confirmed in live DOM.
+**Verified:** 2026-07-13
+**Tier 1 sources:** [Korean marketing](https://www.notion.com/ko), [public product marketing](https://www.notion.com/ko/product), [Korean Help](https://www.notion.com/ko/help); supplied deterministic evidence artifact only.
+**Tier 2 sources:** [getdesign Notion directory](https://getdesign.md/notion); Refero query attempted at `https://styles.refero.design/?q=Notion`, but the built-in web fetch returned an internal error and is not treated as an absence claim.
+**Resolution note:** The prior `#455dd3` primary-CTA claim and unobserved generic controls were removed. Fresh three-route evidence measures `#0075de` on public CTAs and records selector-specific states separately.
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 2px, 3px, 4px, 5px, 6px, 7px, 8px, 11px, 12px, 14px, 16px, 24px, 32px
-- Non-rigid organic scale with fractional values (5.6px, 6.4px) for micro-adjustments
-
-### Grid & Container
-- Max content width: approximately 1200px
-- Hero: centered single-column with generous top padding (80-120px)
-- Feature sections: 2-3 column grids for cards
-- Full-width warm white (`#f6f5f4`) section backgrounds for alternation
-- Code/dashboard screenshots as contained with whisper border
-
-### Whitespace Philosophy
-- **Generous vertical rhythm**: 64-120px between major sections. Notion lets content breathe with vast vertical padding.
-- **Warm alternation**: White sections alternate with warm white (`#f6f5f4`) sections, creating gentle visual rhythm without harsh color breaks.
-- **Content-first density**: Body text blocks are compact (line-height 1.50) but surrounded by ample margin, creating islands of readable content in a sea of white space.
-
-### Border Radius Scale
-- Micro (4px): Buttons, inputs, functional interactive elements
-- Subtle (5px): Links, list items, menu items
-- Standard (8px): Small cards, containers, inline elements
-- Comfortable (12px): Standard cards, feature containers, image tops
-- Large (16px): Hero cards, featured content, promotional blocks
-- Full Pill (9999px): Badges, pills, status indicators
-- Circle (100%): Tab indicators, avatars
+The supplied desktop capture exposes an 4, 8, 12, 16, and 24px rhythm across public marketing and Help controls. Marketing content combines wide bento cards with 12px corners and generous page-level whitespace; Help uses narrower, denser controls. No second viewport or authenticated workspace was inspected, so responsive grid columns, exact page gutters, and native-app layout are intentionally absent.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow, no border | Page background, text blocks |
-| Whisper (Level 1) | `1px solid rgba(0,0,0,0.1)` | Standard borders, card outlines, dividers |
-| Soft Card (Level 2) | 4-layer shadow stack (max opacity 0.04) | Content cards, feature blocks |
-| Deep Card (Level 3) | 5-layer shadow stack (max opacity 0.05, 52px blur) | Modals, featured panels, hero elements |
-| Focus (Accessibility) | `2px solid var(--focus-color)` outline | Keyboard focus on all interactive elements |
-
-**Shadow Philosophy**: Notion's shadow system uses multiple layers with extremely low individual opacity (0.01 to 0.05) that accumulate into soft, natural-looking elevation. The 4-layer card shadow spans from 1.04px to 18px blur, creating a gradient of depth rather than a single hard shadow. The 5-layer deep shadow extends to 52px blur at 0.05 opacity, producing ambient occlusion that feels like natural light rather than computer-generated depth. This layered approach makes elements feel embedded in the page rather than floating above it.
-
-### Decorative Depth
-- Hero section: decorative character illustrations (playful, hand-drawn style)
-- Section alternation: white to warm white (`#f6f5f4`) background shifts
-- No hard section borders -- separation comes from background color changes and spacing
+The observed public surfaces are chiefly flat. The compact card uses a `1px rgba(0,0,0,0.1)` boundary with no shadow. One circular carousel control carries a four-layer low-opacity shadow; its measured stack is retained in §4. The Help dialog’s representative container is transparent and its elevation is therefore not asserted. No generic modal, popover, or toast elevation system is inferred from this packet.
 
 ## 7. Do's and Don'ts
 
-### Brand Rules
+### Do
+- Use `#0075de` only where the captured public CTA pattern is appropriate, and preserve the observed 8px action corners.
+- Keep NotionInter evidence-bound: use it only when it can be loaded from an authorized source in an implementation.
+- Separate white marketing cards from Help-specific controls and focus treatment.
+- Preserve tab, dialog, hover, pressed, and focus provenance rather than converting observed states into a generic component library.
 
-- **DO** use warm near-black for text via `rgba(0,0,0,0.95)` — pure `#000000` reads as cold and clinical against Notion's warm canvas.
-- **DON'T** use cold grays (`#9ca3af`, `#6b7280`) — they break the warm yellow-brown undertone that defines Notion's analog feel.
-- **DO** apply aggressive negative tracking (-2.125px at 64px) on display headlines using NotionInter (or standard Inter).
-- **DON'T** use default tracking on display sizes — Notion's typography is precisely engineered, not casual.
-- **DO** use ultra-thin `1px solid rgba(0,0,0,0.1)` borders as the dominant separation pattern — they exist as whispers.
-- **DON'T** use heavy borders, opaque colors, or visible shadows — Notion's depth is felt, not seen.
-- **DO** stack multi-layer shadows with each layer below 0.05 opacity for cumulative depth.
-- **DON'T** use single-layer drop shadows over 0.1 opacity — they read as heavy and break the analog warmth.
-- **DO** reserve Notion Blue `#0075de` for CTAs and interactive elements only — it's the singular accent.
-- **DON'T** scatter blue across borders, dividers, or decorative elements — the brand uses blue surgically.
-- **DO** enable OpenType `"lnum"` and `"locl"` features on larger text — they reward close reading.
-- **DON'T** disable these features for Latin-only contexts — they're part of Notion's typographic refinement.
-
-### Accessibility
-
-- **DO** ensure visible focus indicators on every interactive element — `2px solid` outline in Focus Blue (`#097fe8`) plus shadow level 200 reinforcement. Tab navigation must work everywhere.
-- **DO** maintain WCAG AA-or-better contrast ratios:
-  - Primary text (`rgba(0,0,0,0.95)`) on white: ~18:1 (exceeds WCAG AAA)
-  - Secondary text (`#615d59`) on white: ~5.5:1 (WCAG AA)
-  - Blue CTA (`#0075de`) on white: ~4.6:1 (WCAG AA for large text)
-  - Badge text (`#097fe8`) on badge background (`#f2f9ff`): ~4.5:1 (WCAG AA for large text)
-- **DON'T** drop focus rings to "look cleaner" — they are mandatory across the system, not decoration.
-- **DON'T** use Notion Blue at less than ~4.5:1 against any background — the brand color carries an accessibility floor.
+### Don't
+- Do not restore the earlier `#455dd3` primary CTA or treat `#005bab` as its universal default.
+- Do not use declared-only iA Writer Mono, Lyon Text, Noto, or Permanent Marker as visible web typography.
+- Do not claim an authenticated Notion workspace, native-app controls, dashboard states, or a complete design-system API from these public routes.
+- Do not invent error, disabled, toast, menu, modal, or responsive variants beyond the raw observations described here.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile Small | <400px | Tight single column, minimal padding |
-| Mobile | 400-600px | Standard mobile, stacked layout |
-| Tablet Small | 600-768px | 2-column grids begin |
-| Tablet | 768-1080px | Full card grids, expanded padding |
-| Desktop Small | 1080-1200px | Standard desktop layout |
-| Desktop | 1200-1440px | Full layout, maximum content width |
-| Large Desktop | >1440px | Centered, generous margins |
-
-### Touch Targets
-- Buttons use comfortable padding (8px-16px vertical)
-- Navigation links at 15px with adequate spacing
-- Pill badges have 8px horizontal padding for tap targets
-- Mobile menu toggle uses standard hamburger button
-
-### Collapsing Strategy
-- Hero: 64px display -> scales to 40px -> 26px on mobile, maintains proportional letter-spacing
-- Navigation: horizontal links + blue CTA -> hamburger menu
-- Feature cards: 3-column -> 2-column -> single column stacked
-- Product screenshots: maintain aspect ratio with responsive images
-- Trust bar logos: grid -> horizontal scroll on mobile
-- Footer: multi-column -> stacked single column
-- Section spacing: 80px+ -> 48px on mobile
-
-### Image Behavior
-- Workspace screenshots maintain whisper border at all sizes
-- Hero illustrations scale proportionally
-- Product screenshots use responsive images with consistent border radius
-- Full-width warm white sections maintain edge-to-edge treatment
+No viewport comparison was captured. The public controls in §4 were measured in the supplied capture only, so Notion-specific breakpoint values, mobile navigation transformation, and touch-target rules remain unverified. Implement responsive accessibility normally, but do not present it as a Notion measurement without a dedicated capture.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: Notion Blue (`#0075de`)
-- Background: Pure White (`#ffffff`)
-- Alt Background: Warm White (`#f6f5f4`)
-- Heading text: Near-Black (`rgba(0,0,0,0.95)`)
-- Body text: Near-Black (`rgba(0,0,0,0.95)`)
-- Secondary text: Warm Gray 500 (`#615d59`)
-- Muted text: Warm Gray 300 (`#a39e98`)
-- Border: `1px solid rgba(0,0,0,0.1)`
-- Link: Notion Blue (`#0075de`)
-- Focus ring: Focus Blue (`#097fe8`)
+### Quick reference
+- Public CTA: `#0075de` / white, 8px radius, 16px / 500 / 24px NotionInter; use 36px global-nav or 38px hero geometry only in the captured marketing contexts.
+- Public card: white, 1px `rgba(0,0,0,0.1)` border, 12px radius, 24px padding, no shadow.
+- Help search: transparent field, 5px radius, 7px 10px 7px 30px padding; its blue double-ring is a focused language-picker observation only.
 
-### Example Component Prompts
-- "Create a hero section on white background. Headline at 64px NotionInter weight 700, line-height 1.00, letter-spacing -2.125px, color rgba(0,0,0,0.95). Subtitle at 20px weight 600, line-height 1.40, color #615d59. Blue CTA button (#0075de, 4px radius, 8px 16px padding, white text) and ghost button (transparent bg, near-black text, underline on hover)."
-- "Design a card: white background, 1px solid rgba(0,0,0,0.1) border, 12px radius. Use shadow stack: rgba(0,0,0,0.04) 0px 4px 18px, rgba(0,0,0,0.027) 0px 2.025px 7.85px, rgba(0,0,0,0.02) 0px 0.8px 2.93px, rgba(0,0,0,0.01) 0px 0.175px 1.04px. Title at 22px NotionInter weight 700, letter-spacing -0.25px. Body at 16px weight 400, color #615d59."
-- "Build a pill badge: #f2f9ff background, #097fe8 text, 9999px radius, 4px 8px padding, 12px NotionInter weight 600, letter-spacing 0.125px."
-- "Create navigation: white header. NotionInter 15px weight 600 for links, near-black text. Blue pill CTA 'Get Notion free' right-aligned (#0075de bg, white text, 4px radius)."
-- "Design an alternating section layout: white sections alternate with warm white (#f6f5f4) sections. Each section has 64-80px vertical padding, max-width 1200px centered. Section heading at 48px weight 700, line-height 1.00, letter-spacing -1.5px."
-
-### Iteration Guide
-1. Always use warm neutrals -- Notion's grays have yellow-brown undertones (#f6f5f4, #31302e, #615d59, #a39e98), never blue-gray
-2. Letter-spacing scales with font size: -2.125px at 64px, -1.875px at 54px, -0.625px at 26px, normal at 16px
-3. Four weights: 400 (read), 500 (interact), 600 (emphasize), 700 (announce)
-4. Borders are whispers: 1px solid rgba(0,0,0,0.1) -- never heavier
-5. Shadows use 4-5 layers with individual opacity never exceeding 0.05
-6. The warm white (#f6f5f4) section background is essential for visual rhythm
-7. Pill badges (9999px) for status/tags, 4px radius for buttons and inputs
-8. Notion Blue (#0075de) is the only saturated color in core UI -- use it sparingly for CTAs and links
-
----
+### Implementation boundary
+Use the public marketing, public product-marketing, and Help patterns as three related but separate surfaces. Do not make a NotionInter fallback appear to be the real font and do not fill missing authenticated-workspace components with generic substitutes.
 
 ## 10. Voice & Tone
 
-Notion's voice operates on two registers. Current marketing copy — *"The AI workspace that works for you."*, *"Meet the night shift."*, *"More productivity. Fewer tools."* — is terse, imperative, and confidently practical. But when Notion writes about itself at length (careers, about, long-form blog), the voice shifts to **lineage**: Alan Kay quotes, references to "early computing pioneers", and the now-famous LEGO metaphor *"a set of Legos (if Legos were designed by The New York Times)"*. The dual register is the signature — pragmatic at the surface, intellectual at the foundation.
+Notion’s official voice pairs direct utility with an expansive “tools for thought” frame. Public CTA copy is concise and action-led (“Get Notion free”); the About page explains the product through the history of work tools and early computing; the current careers page speaks about teams of humans and AI agents with craft, judgment, and customer focus. [About](https://www.notion.com/about) · [Careers](https://www.notion.com/careers)
 
-| Context | Tone |
+| Do | Don't |
 |---|---|
-| Hero headlines | Short, confident, promise-driven. "The AI workspace that works for you." |
-| Product feature copy | Consolidation-framed. "More productivity. Fewer tools." Not feature-listy. |
-| CTAs | Imperative verb + noun. "Get Notion free", "Contact sales", "Request a demo". |
-| Empty states | Encouraging without being perky. Guide the first action, never congratulatory. |
-| Docs / help | Neutral, thorough, respects reader's time. Screenshots are high-fidelity and unnarrated. |
-| Careers / about | Lineage voice. References pioneers, craft, the LEGO-by-NYT metaphor. |
-| Changelog / Release notes | Ship-proud but understated. Past tense, specific, unglamorous. |
-| Blog / long-form | Essayistic. Ideas-first; screenshots illustrating ideas, not decorating them. |
+| Name the job or next action plainly. | Promise undefined transformation or use hype as a substitute for an outcome. |
+| Explain a complex capability through a concrete workflow. | Treat AI as a separate, magical product layer. |
+| Be direct and kind when giving guidance. | Use synthetic congratulations, blame, or invented brand aphorisms. |
 
-**Forbidden phrases.** "Revolutionary", "game-changer", "unleash", "next-generation", "10x". Toast strings like "You're amazing! 🎉". Corporate verbs like "leverage", "synergize", "optimize" as self-descriptors. Emoji at the start of product-surface strings — Notion treats emoji as first-class block icons for *users*; the product's own voice is not emoji-spammy. Adjective stacks on capabilities ("powerful, flexible, intuitive").
+Official voice examples: “Get Notion free” (public CTA); “Solve your problems your way” (About); “Customer in every room” and “Why not today” (Careers values). These examples are source-bound, not a license to reproduce product copy wholesale.
 
 ## 11. Brand Narrative
 
-Notion was founded **March 8, 2013** in San Francisco by **Ivan Zhao** (CEO, designer/photographer background) and **Simon Last** (CTO, software engineer) ([founderoo.co — Ivan Zhao, Simon Last](https://www.founderoo.co/playbooks/ivan-zhao-simon-last-notion), [Frederick.ai](https://www.frederick.ai/blog/ivan-zhao-notion)). The first version (2013-2015) was Notion Beta, a no-code programming tool; the team raised ~$2M from angels and hired 4 employees. **In 2015 they hit a crisis** — parted ways with all 4 employees, Ivan borrowed **$150,000 from his mother**, and the two co-founders moved from San Francisco to **Kyoto, Japan** (less than half the cost). They worked **18 hours per day** in a two-story rented house with a Shoji screen between bedrooms, rebuilding Notion from scratch ([KITRUM — Ivan Zhao](https://kitrum.com/blog/the-phenomenal-journey-of-ivan-zhao-notions-founder/), [Sequoia Capital — Notion Spotlight](https://sequoiacap.com/article/notion-spotlight/)). **Notion 1.0 launched in 2016; Notion 2.0 launched on Product Hunt in March 2018** to immediate productivity-game-changer reception. The user base passed **1 million by 2019** through viral Reddit/TikTok template-sharing communities. The founding thesis — still centered in Notion's careers and about pages — inherits from the "tools for thought" lineage of Douglas Engelbart and Alan Kay: software as a medium that, in Notion's own phrasing, *"amplify[s] our imagination, extend[s] our intellect, and help[s] us model information in ways never before seen."* Alan Kay is quoted directly on Notion's about page: *"The best way to predict the future is to invent it."* Notion frames itself explicitly as a continuation of that intellectual project.
+Notion’s own About page locates the company in a critique of fragmented office tools: people stitch together email, chat, documents, and storage rather than shaping software around the work at hand. Its stated response is an all-in-one workspace composed from building blocks that can be adapted to a task list, roadmap, or design repository. The page explicitly connects this goal to computing pioneers who imagined computers amplifying imagination and augmenting intellect. [About](https://www.notion.com/about)
 
-The product metaphor is **building blocks** — what Notion's own careers page calls *"a set of Legos (if Legos were designed by The New York Times)."* That sentence captures the whole aesthetic in one line: modularity like Lego, but composed with the taste of a high editorial design desk. Every block (text, page, database, embed, toggle) is treated as a small typographic object with the care a New York Times story would get, not a spreadsheet cell.
-
-What Notion refuses: the rigid schemas of traditional productivity software (Jira-style workflows, SharePoint-style wikis), the cold-glass aesthetic of enterprise SaaS (blue-gray palettes, generic illustrations of laptops), and playful-at-the-expense-of-serious design (cartoon mascots, decorative emoji applied by the product itself). What it embraces: warm neutrals with yellow-brown undertones, NotionInter as a modified but restrained Inter, whisper-thin `1px solid rgba(0,0,0,0.1)` borders, and the user's own emoji choices as the primary source of color and personality on any given page.
+That founding frame now includes AI. In Ivan Zhao’s official account of Notion AI, the company describes its mission as making software toolmaking ubiquitous and positions AI as a way for people to mold computers to their needs. Current careers copy describes Notion as helping teams of people and AI agents think and work together. These are current first-party framing statements, not evidence for a particular authenticated product UI. [Notion AI story](https://www.notion.com/blog/behind-the-scenes-notion-ai) · [Careers](https://www.notion.com/careers)
 
 ## 12. Principles
 
-1. **Empower every person to use software their way.** *(Notion values, verbatim.)* The product's job is to bend to the user's shape, not the other way around. Designs that force a workflow (forms, wizards, linear "steps") exist only in onboarding.
-2. **Be a truth seeker.** *(Notion values, verbatim.)* Design decisions are backed by evidence or by an explicit opinion — never by hand-wave. When the truth changes, the design changes.
-3. **Be kind and direct.** *(Notion values, verbatim.)* Product copy treats users as peers; error messages are specific and blameless; help docs don't patronize. Warmth does not require hedging.
-4. **Be a pace setter.** *(Notion values, verbatim.)* Ship rhythm matters more than big unveils. Changelog entries are frequent and specific, not seasonal marketing events.
-5. **Blocks are the product.** Every surface — page, doc, database, kanban — is a composition of the same small primitives. The visual treatment of a block is *slightly-smaller-than-invisible*: ultra-thin borders, near-zero shadows, warm neutrals. The block stays out of the way so the user's content can be the thing.
-6. **LEGO, but by The New York Times.** The careers page's own phrase is the whole aesthetic guidance. Modular like Lego; composed with editorial taste. Never cartoonish; never sterile.
-7. **Warmth is tone, not decoration.** The yellow-brown undertones in every gray (`#f6f5f4`, `#31302e`, `#615d59`) are the warmth. Illustrations and stickers are user-supplied; the product's own chrome provides warmth through color temperature alone.
-8. **Notion Blue is the one color.** `#0075de` anchors CTAs and primary interactive moments. Everything else lives in the warm-neutral scale. Rainbow-accent design would betray the block-as-canvas philosophy.
-9. **The user's emoji is the brand's color.** Page icons, cover images, emoji-as-bullet — these are first-class design surfaces, but they are *user-supplied*, not part of Notion's own voice. The product's own copy, buttons, and marketing do not emoji-spam.
+1. **Software should be moldable.** Notion’s official mission is to make software toolmaking ubiquitous. *UI implication:* prefer composable structures and clear primitives over forced linear workflows.
+2. **Customer outcomes are the point.** “Customer in every room” is a current careers value. *UI implication:* explain benefits in the user’s task language and make the next action concrete.
+3. **Own the outcome.** Notion names agency and initiative as a current value. *UI implication:* give people understandable controls, consequences, and recovery paths rather than opaque automation.
+4. **Move with judgment and urgency.** “Why not today” describes the company’s speed value. *UI implication:* keep routine actions short without removing necessary context or accessibility.
+5. **Humans remain central to AI.** The official AI narrative describes AI as a companion that users can mold. *UI implication:* surface user intent, sources, and control rather than presenting autonomous output as unquestionable.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Notion user segments (knowledge workers, startup operators, writers, researchers, small-team leaders), not individual people.*
+The following are product-role archetypes inferred from the first-party product categories and stated mission; they are not claims about research participants or user counts.
 
-**Sophie Tremblay, 29, Montreal.** Operations manager at a 40-person B2B startup. Notion is her single workspace — company wiki, project tracker, personal second brain. Has ~60 pages arranged in a nested hierarchy she has built over three years. Notices immediately when a Notion release subtly shifts the line-height of body text because she reads in Notion for 5 hours a day. Would be horrified by any "redesign" that removed the warm neutral palette.
-
-**Hiroshi Tanaka, 37, Osaka.** Independent researcher and academic writer. Uses Notion for literature review, manuscript drafting, and citation management. Values the block-level typography because his notes include Japanese, English, and occasional LaTeX — NotionInter's `"lnum"` and `"locl"` features matter to him directly. Reads long-form essays on the Notion blog for their ideas-first voice; ignores promotional posts.
-
-**Amaka Obi, 25, Lagos.** Solo founder building a creator-economy SaaS. Uses Notion as internal docs, a public customer FAQ (via publishing), and a public customer-facing changelog. Uses emoji as page icons extensively — the page icons are effectively her brand's color scheme. Notices immediately when a SaaS competitor uses a Notion-clone layout without the "LEGO-by-NYT" taste, and writes them off.
-
-**Priscilla Mendes, 42, Lisbon.** Chief of Staff at a Series-C SaaS company. Runs her CEO's weekly meeting off a Notion database, an embedded calendar, and a toggled prep doc. Does not use Notion AI by default — prefers the empty canvas because it forces her to write the agenda, not delegate it. Would not use Notion if the product copy sounded like it was selling her productivity.
+- **Individual organizer.** Uses configurable pages and blocks to make personal work legible. Needs an approachable starting point and room to adapt it.
+- **Project or knowledge-team member.** Coordinates docs, projects, and shared information with others. Needs clear structure, findability, and trustworthy handoff.
+- **Toolmaking operator.** Shapes a workspace around a team’s process rather than accepting a fixed workflow. Needs composability and understandable control.
+- **AI-assisted collaborator.** Works alongside AI features or agents while retaining ownership of work. Needs explicit intent, review, and source-aware guidance.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (new page)** | White canvas. Single placeholder string in warm gray (`#a39e98`) at body size: "Press `space` for AI, `/` for commands…". Blinking cursor in warm near-black. No illustration, no onboarding tour. The blank page is the welcome. |
-| **Empty (database, no rows)** | Warm gray (`#615d59`) caption: "No items yet." One link ("Add a row") in Notion Blue. Database schema visible above, so the user can see what to add to. |
-| **Empty (search, no results)** | Warm gray caption: "No results for `<query>`." Nothing else — Notion trusts users to rephrase or move on without illustration. |
-| **Loading (page first paint)** | Warm neutral (`#f6f5f4`) skeleton blocks matching the block-level structure of the page. Ultra-thin border maintained on skeleton blocks. 1.5s shimmer in a lighter warm tone. |
-| **Loading (block rendering, real-time)** | Individual block renders with a 180ms opacity fade from 0.6 → 1.0. Cursor position preserved. Never a spinner on an individual block. |
-| **Error (sync failed)** | Top-right inline indicator — small warm-gray dot that transitions to a muted red when sync fails. Tooltip on hover: specific failure reason + retry action. Never a modal; Notion does not block the document. |
-| **Error (form validation, database property)** | Field-level. 13px caption below the property in muted red (not bright). States what is invalid and what would be valid. |
-| **Error (AI response failure)** | Inline under the AI action. One line of warm-gray text: "Couldn't complete that. Try again." + reason if known. Blameless, concise. |
-| **Success (comment added)** | Comment appears inline with a 300ms fade. No toast, no celebratory emoji. The comment's presence is the confirmation. |
-| **Success (page published to web)** | Toast at bottom-left with warm-gray background and near-black text: "Published to web." Link + copy-URL action inline. 5s auto-dismiss. |
-| **Skeleton** | Warm neutral `#f6f5f4` blocks at exact block dimensions. Ultra-thin border preserved. Shimmer uses a lighter warm tone, never cool blue. |
-| **Disabled** | Opacity on text and ultra-thin border together. Primary Notion Blue actions become `rgba(0,117,222,0.3)`. |
-| **AI thinking (Notion AI)** | A small waveform / "thinking" indicator inline at the AI invocation point. Stays within the block flow — never floats over the document. |
+Only the following states are evidenced in this packet. Empty, loading, error, success, skeleton, and disabled patterns were not captured and are deliberately not specified.
+
+| State | Observed surface | Evidence boundary |
+|---|---|---|
+| CTA hover | Marketing | `#005bab` on global CTA selector only. |
+| CTA pressed | Marketing | `#0073d9` on hero CTA selector only. |
+| CTA focus | Marketing | `#0071d6` on hero CTA selector only. |
+| Secondary CTA focus | Marketing | `#e7f3fe` / `#005bab` pair only. |
+| Tab selected | Marketing/product marketing | Selected and unselected tab targets recorded by three interactions. |
+| Language dialog open | Marketing/product marketing/Help | Trigger opens dialog; no container elevation asserted. |
+| Help input focus | Help chrome | Blue double-ring on language-picker search only. |
+| Help toggle hover | Help chrome | `#f9f9f8`, 4px radius. |
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection, toggle commit, keyboard shortcut confirm |
-| `motion-fast` | 150ms | Hover, focus, block drag-handle reveal |
-| `motion-standard` | 220ms | Sheet, popover, database view switch |
-| `motion-slow` | 360ms | Page transitions on marketing surfaces, rare hero reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — popovers, sheets, toggle expand |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-| `ease-gentle` | `cubic-bezier(0.2, 0.4, 0.2, 1)` | Block opacity fades, toggle-content reveals — slightly softer entry for in-document changes |
-
-**Explicitly forbidden.** No spring, no bounce, no overshoot. Blocks never "pop" into view. A bouncing callout block would undermine the "document as medium" feeling that underwrites the whole product.
-
-**Signature motions.**
-
-1. **Block drag-handle reveal.** On hover over a block's left gutter, the drag handle (`⋮⋮` six-dot icon) fades in at `motion-fast` with `ease-gentle`. This is Notion's single most recognizable motion — the "handle that appears when you look at it" is the tactile proof that everything is a block.
-2. **Toggle expand.** When a toggle block opens, its content expands over `motion-standard` with `ease-gentle`, height animating from 0 to natural. No scale, no fade — just height. The toggle's content feels physical, not theatrical.
-3. **Slash menu reveal.** The `/` command menu appears at `motion-fast` with `ease-enter`. Keyboard-driven, so speed matters; 150ms is deliberately close to instant.
-4. **Cursor-follow comments.** Live collaboration cursors update position at raw frame rate (no easing) — accurate position is more important than smooth motion when multiple people are typing simultaneously.
-5. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`. Toggle expansions become instantaneous. Drag handles appear immediately on hover. The document remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Direct verification via WebFetch (2026-04-19):
-- https://www.notion.com/ — confirms current marketing positioning and voice:
-    "The AI workspace that works for you." (current tagline)
-    "Meet the night shift."
-    "Keep work moving 24/7."
-    "More productivity. Fewer tools."
-    "Bring all your work together."
-  Confirms Notion's current AI-forward positioning and headline register
-  (terse, imperative, consolidation-framed).
-- https://www.notion.com/about — confirms the lineage framing:
-    "break away from today's tools—and bring back some of the ideas of
-     those early pioneers"
-    "all-in-one workspace"
-    Alan Kay quote: "The best way to predict the future is to invent it."
-  Confirms "building blocks" metaphor ("dozens of building blocks") used
-  in the product positioning.
-- https://www.notion.com/careers — confirms Notion's stated company values
-  (verbatim), used as direct source for §12 Principles #1–#4:
-    "We are drivers of our mission. We're driven by our commitment to
-     empower every person on the planet to use software exactly the way
-     they want."
-    "Be a pace setter."
-    "Be a truth seeker."
-    "Be kind and direct."
-  Also confirms the famous self-description verbatim:
-    "a set of Legos (if Legos were designed by The New York Times)"
-  And the pioneers framing:
-    "Early computing pioneers envisioned a future where machines on our
-     desks could amplify our imagination, extend our intellect, and help
-     us model information in ways never before seen."
-
-Base DESIGN.md (sections 1–9) is the source for all token-level claims
-(NotionInter typeface, warm neutral palette with yellow-brown undertones,
-#0075de Notion Blue as the sole accent, `1px solid rgba(0,0,0,0.1)`
-whisper borders, multi-layer shadow stacks with sub-0.05 opacity,
-four-weight system 400/500/600/700).
-
-Not independently verified via WebFetch — widely documented public facts used:
-- Notion is headquartered in San Francisco.
-- Notion was founded by Ivan Zhao (CEO) and Simon Last (CTO).
-- The company had an earlier product iteration before the current Notion
-  was rebuilt (widely reported in founder interviews).
-- "Tools for thought" as an intellectual lineage is associated with
-  Douglas Engelbart and Alan Kay; Notion's public positioning invokes
-  this tradition without always citing the phrase itself.
-
-Personas (§13) are fictional archetypes informed by publicly observable
-Notion user segments (operations managers, researchers, solo founders,
-chief-of-staff roles). Names are illustrative; they do not refer to real
-people.
-
-Interpretive claims (e.g., "LEGO, but by The New York Times as the whole
-aesthetic guidance", "user's emoji is the brand's color", "blocks are
-slightly-smaller-than-invisible") are editorial readings connecting
-Notion's stated positioning to the design system, not directly sourced
-Notion statements.
--->
-
+The supplied evidence records state snapshots but no duration, easing, transition-property, or animation timing values. Motion tokens are therefore unresolved. Do not manufacture a Notion motion scale from the visual state changes above.

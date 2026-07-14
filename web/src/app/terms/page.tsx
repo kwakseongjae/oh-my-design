@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-const UPDATED = "June 20, 2026";
+const UPDATED = "July 11, 2026";
 
 export const metadata: Metadata = {
   title: "Terms of Service — oh-my-design",
   description:
-    "Plain-language terms for using oh-my-design — the open-source design-systems catalog, website, CLI, and read-only Claude connector.",
+    "Plain-language terms for using oh-my-design — the open-source design-systems catalog, website, CLI, and reference skills.",
   alternates: {
     canonical: "/terms",
     languages: { en: "/terms", ko: "/terms/ko" },
@@ -62,8 +62,7 @@ export default function TermsPage() {
         <Section title="The short version">
           <p>
             oh-my-design is a free, open-source project: a catalog of design-system
-            references, this website, a CLI, and a read-only{" "}
-            <Link href="/docs/connector" className="underline underline-offset-2 hover:text-foreground">Claude connector</Link>.
+            references, this website, a CLI, and reference-collection skills.
             Use it freely and reasonably. It&apos;s provided &ldquo;as is,&rdquo; with no
             warranty, and these terms explain the basics.
           </p>
@@ -71,9 +70,9 @@ export default function TermsPage() {
 
         <Section title="What we offer">
           <p>
-            The website and catalog at oh-my-design.kr, the open-source CLI and MCP
-            packages, and a public, read-only Claude connector at{" "}
-            <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/api/mcp</code>.
+            The website and catalog at oh-my-design.kr, the open-source CLI, and
+            reference-collection skills. The former MCP package and public connector
+            are retired and retained only as historical source code.
             There are no accounts and the service is free. We may change, pause, or
             discontinue any part at any time.
           </p>
@@ -100,13 +99,13 @@ export default function TermsPage() {
           </p>
         </Section>
 
-        <Section title="The Claude connector">
+        <Section title="Retired connector">
           <p>
-            The connector is a read-only interface to our public catalog. It is not
-            operated by Anthropic, and listing in any directory does not imply
-            endorsement. See the{" "}
+            The former read-only Claude connector is no longer an offered service.
+            Skills and agents use local files or public raw DESIGN.md URLs instead.
+            See the{" "}
             <Link href="/privacy" className="underline underline-offset-2 hover:text-foreground">privacy policy</Link>{" "}
-            for what little data it handles.
+            for the treatment of historical aggregate records.
           </p>
         </Section>
 

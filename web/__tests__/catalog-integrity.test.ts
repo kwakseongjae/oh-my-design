@@ -12,7 +12,9 @@ import { KNOWN_FIELD_KEYS } from "../src/lib/extract-tokens";
 
 const WEB_ROOT = resolve(__dirname, "..");
 const ROOT = resolve(WEB_ROOT, "..");
-const REFS_DIR = join(ROOT, "references");
+// Canonical source lives under web/ and is present in a clean Vercel/CI
+// checkout. The root references symlink is a gitignored local convenience.
+const REFS_DIR = join(WEB_ROOT, "references");
 const DESIGN_MD_MIRROR = join(ROOT, "design-md");
 const FINGERPRINTS_ROOT = join(ROOT, "data", "reference-fingerprints.json");
 const FINGERPRINTS_CLAUDE = join(ROOT, ".claude", "data", "reference-fingerprints.json");

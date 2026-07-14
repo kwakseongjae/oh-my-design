@@ -8,467 +8,346 @@ primary_color: "#ff4f00"
 logo:
   type: simpleicons
   slug: zapier
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Zapier Brand
   url: "https://brand.zapier.com"
   type: brand
-  description: Zapier's official brand guidelines 1.0.
-  og_image: "https://firebasestorage.googleapis.com/v0/b/standards-site-beta.appspot.com/o/documents%2F279072ea39f%2F8fc2c38ae5f%2Fmeta%2Fthumbnail_1_2.jpg?alt=media&token=0d0ea63f-6a32-4e46-b516-9db3c6c6ffe4"
+  description: Zapier's official brand guidelines.
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://zapier.com/", inspected: "2026-07-13" }
+    - { id: pricing, kind: marketing, url: "https://zapier.com/pricing", inspected: "2026-07-13" }
+    - { id: customer-support, kind: marketing, url: "https://zapier.com/solutions/customer-support", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://zapier.com/", captured: "2026-07-13" }
+    - { id: pricing-live, kind: product-surface, url: "https://zapier.com/pricing", captured: "2026-07-13" }
+    - { id: customer-support-live, kind: product-surface, url: "https://zapier.com/solutions/customer-support", captured: "2026-07-13" }
+    - { id: rebrand, kind: official-doc, url: "https://zapier.com/blog/zapiers-new-look/", captured: "2026-07-13" }
+    - { id: about, kind: official-doc, url: "https://zapier.com/about", captured: "2026-07-13" }
+    - { id: product-definition, kind: official-doc, url: "https://help.zapier.com/hc/en-us/articles/37518970271245-What-is-Zapier", captured: "2026-07-13" }
+    - { id: degular-license, kind: license, url: "https://fonts.adobe.com/fonts/degular", captured: "2026-07-13" }
+    - { id: getdesign-tier2, kind: official-doc, url: "https://getdesign.md/zapier/design-md", captured: "2026-07-13" }
+    - { id: refero-tier2, kind: official-doc, url: "https://styles.refero.design/?q=Zapier", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &home { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.canvas": *home
+    "tokens.colors.ink": *home
+    "tokens.colors.body": *home
+    "tokens.colors.ink-muted": *home
+    "tokens.colors.surface-soft": *home
+    "tokens.colors.divider": *home
+    "tokens.colors.sand": *home
+    "tokens.colors.on-primary": *home
+    "tokens.typography.family.ui": *home
+    "tokens.typography.family.display": *home
+    "tokens.typography.family.mono": *home
+    "tokens.typography.display.size": *home
+    "tokens.typography.display.weight": *home
+    "tokens.typography.display.lineHeight": *home
+    "tokens.typography.display.use": *home
+    "tokens.typography.heading.size": *home
+    "tokens.typography.heading.weight": *home
+    "tokens.typography.heading.lineHeight": *home
+    "tokens.typography.heading.use": *home
+    "tokens.typography.body.size": *home
+    "tokens.typography.body.weight": *home
+    "tokens.typography.body.lineHeight": *home
+    "tokens.typography.body.use": *home
+    "tokens.typography.action.size": *home
+    "tokens.typography.action.weight": *home
+    "tokens.typography.action.use": *home
+    "tokens.typography.code-control.size": *home
+    "tokens.typography.code-control.weight": *home
+    "tokens.typography.code-control.lineHeight": *home
+    "tokens.typography.code-control.use": *home
+    "tokens.spacing.xs": *home
+    "tokens.spacing.sm": *home
+    "tokens.spacing.md": *home
+    "tokens.spacing.control": *home
+    "tokens.spacing.lg": *home
+    "tokens.spacing.xl": *home
+    "tokens.spacing.xxl": *home
+    "tokens.spacing.section": *home
+    "tokens.rounded.icon": *home
+    "tokens.rounded.control": *home
+    "tokens.rounded.card": *home
+    "tokens.rounded.header-pill": *home
+    "tokens.components.marketing-primary-action.type": *home
+    "tokens.components.marketing-primary-action.bg": *home
+    "tokens.components.marketing-primary-action.fg": *home
+    "tokens.components.marketing-primary-action.border": *home
+    "tokens.components.marketing-primary-action.radius": *home
+    "tokens.components.marketing-primary-action.padding": *home
+    "tokens.components.marketing-primary-action.height": *home
+    "tokens.components.marketing-primary-action.font": *home
+    "tokens.components.marketing-primary-action.states": *home
+    "tokens.components.marketing-primary-action.use": *home
+    "tokens.components.marketing-dark-action.type": *home
+    "tokens.components.marketing-dark-action.bg": *home
+    "tokens.components.marketing-dark-action.fg": *home
+    "tokens.components.marketing-dark-action.border": *home
+    "tokens.components.marketing-dark-action.radius": *home
+    "tokens.components.marketing-dark-action.padding": *home
+    "tokens.components.marketing-dark-action.height": *home
+    "tokens.components.marketing-dark-action.font": *home
+    "tokens.components.marketing-dark-action.states": *home
+    "tokens.components.marketing-dark-action.use": *home
+    "tokens.components.header-sign-up.type": *home
+    "tokens.components.header-sign-up.bg": *home
+    "tokens.components.header-sign-up.fg": *home
+    "tokens.components.header-sign-up.border": *home
+    "tokens.components.header-sign-up.radius": *home
+    "tokens.components.header-sign-up.padding": *home
+    "tokens.components.header-sign-up.height": *home
+    "tokens.components.header-sign-up.font": *home
+    "tokens.components.header-sign-up.states": *home
+    "tokens.components.header-sign-up.use": *home
+    "tokens.components.product-gallery-tab.type": *home
+    "tokens.components.product-gallery-tab.bg": *home
+    "tokens.components.product-gallery-tab.fg": *home
+    "tokens.components.product-gallery-tab.border": *home
+    "tokens.components.product-gallery-tab.radius": *home
+    "tokens.components.product-gallery-tab.padding": *home
+    "tokens.components.product-gallery-tab.font": *home
+    "tokens.components.product-gallery-tab.states": *home
+    "tokens.components.product-gallery-tab.use": *home
+    "tokens.components.pricing-menu-option.type": &pricing { surface_id: pricing, source_id: pricing-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.components.pricing-menu-option.bg": *pricing
+    "tokens.components.pricing-menu-option.fg": *pricing
+    "tokens.components.pricing-menu-option.radius": *pricing
+    "tokens.components.pricing-menu-option.padding": *pricing
+    "tokens.components.pricing-menu-option.font": *pricing
+    "tokens.components.pricing-menu-option.states": *pricing
+    "tokens.components.pricing-menu-option.use": *pricing
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Selector-backed observations from three current public marketing surfaces. Authenticated product UI, Help/docs chrome, and declared-only font assets are not token sources."
   colors:
     primary: "#ff4f00"
-    ink: "#201515"
     canvas: "#fffefb"
-    surface-alt: "#fffdf9"
-    charcoal: "#36342e"
-    warm-gray: "#939084"
+    ink: "#201515"
+    body: "#605d52"
+    ink-muted: "#36342e"
+    surface-soft: "#f8f4f0"
+    divider: "#eceae3"
     sand: "#c5c0b1"
-    light-sand: "#eceae3"
-    mid-warm: "#b5b2aa"
     on-primary: "#fffefb"
   typography:
-    family: { sans: "Inter", mono: "Arial" }
-    display-hero-xl: { size: 80, weight: 500, lineHeight: 0.90, use: "Maximum-impact hero (Degular Display)" }
-    display-hero:    { size: 56, weight: 500, lineHeight: 0.90, tracking: -1.12, use: "Primary hero headlines (Degular Display)" }
-    section:         { size: 48, weight: 500, lineHeight: 1.04, use: "Major section titles (Inter)" }
-    editorial:       { size: 48, weight: 250, tracking: -1.92, use: "Thin editorial headlines (GT Alpina)" }
-    card-title:      { size: 24, weight: 600, tracking: -0.48, use: "Card headings" }
-    body-lg:         { size: 20, weight: 400, lineHeight: 1.2, tracking: -0.2, use: "Feature descriptions" }
-    body:            { size: 16, weight: 400, lineHeight: 1.25, tracking: -0.16, use: "Standard reading text" }
-    button:          { size: 16, weight: 600, use: "Standard button label" }
-    caption:         { size: 14, weight: 500, lineHeight: 1.43, use: "Labels, metadata" }
-    micro:           { size: 12, weight: 600, lineHeight: 0.9, tracking: 0.5, use: "Tiny uppercase labels" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 5, lg: 8, full: 9999 }
-  shadow:
-    tab-active: "rgb(255, 79, 0) 0px -4px 0px 0px inset"
-    tab-hover: "rgb(197, 192, 177) 0px -4px 0px 0px inset"
+    family: { ui: "Inter", display: "Degular Display", mono: "JetBrains Mono" }
+    display: { size: 56, weight: 500, lineHeight: 1, use: "Observed public-marketing h1" }
+    heading: { size: 48, weight: 500, lineHeight: 1, use: "Observed public-marketing h2" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Repeated public-marketing body and list content" }
+    action: { size: 18, weight: 600, use: "48px public marketing actions" }
+    code-control: { size: 14, weight: 400, lineHeight: 1.5, use: "Observed code-copy control only" }
+  spacing: { xs: 4, sm: 6, md: 8, control: 10, lg: 12, xl: 16, xxl: 24, section: 32 }
+  rounded: { icon: 2, control: 4, card: 8, header-pill: 18 }
   components_harvested: true
   components:
-    button-primary: { type: button, bg: "#ff4f00", fg: "#fffefb", radius: 4, padding: "8px 16px", use: "Primary CTA — Start free with email, Sign up free" }
-    button-dark: { type: button, bg: "#201515", fg: "#fffefb", radius: 8, padding: "20px 24px", use: "Large secondary CTA" }
-    button-ghost: { type: button, bg: "#eceae3", fg: "#36342e", radius: 8, padding: "20px 24px", use: "Tertiary / filter buttons" }
-    pill-button: { type: button, bg: "#fffefb", fg: "#36342e", radius: 20, padding: "0px 16px", use: "Tag-like filter pills" }
-    tab-nav: { type: tab, bg: "#fffefb", fg: "#201515", padding: "12px 16px", active: "inset underline rgb(255, 79, 0) 0px -4px 0px 0px", use: "Horizontal tab navigation" }
-    card: { type: card, bg: "#fffefb", radius: 5, use: "Borders define containment — 1px sand border, no default shadow" }
-    input: { type: input, bg: "#fffefb", fg: "#201515", radius: 5, use: "Form field — orange focus border, sand default" }
-    social-icon: { type: avatar, radius: 14, use: "Circular social-follow icon buttons in footer, sand border" }
+    marketing-primary-action: { type: button, bg: "#ff4f00", fg: "#fffefb", border: "1px solid #ff4f00", radius: "4px", padding: "12px 24px", height: "48px", font: "18px / 600 / Inter", states: "focus, hover, and pressed observed", use: "Public home and customer-support marketing action; representative home::[data-omd-capture=\"25\"]" }
+    marketing-dark-action: { type: button, bg: "#201515", fg: "#fffefb", border: "1px solid #201515", radius: "4px", padding: "12px 24px", height: "48px", font: "18px / 600 / Inter", states: "focus, hover, pressed, selected, and tab-selected observed", use: "Public marketing action across all supplied surfaces; representative home::[data-omd-capture=\"22\"]" }
+    header-sign-up: { type: button, bg: "#ff4f00", fg: "#fffefb", border: "1px solid #ff4f00", radius: "18px", padding: "6px 12px", height: "36px", font: "14px / 600 / Inter", states: "focus, hover, and pressed observed", use: "Compact public header sign-up action across supplied surfaces; representative home::[data-omd-capture=\"10\"]" }
+    product-gallery-tab: { type: tab, bg: "transparent", fg: "#201515", border: "0px", radius: "0px", padding: "10px 16px", font: "14px / 600 / Inter", states: "selected and tab-selected observed", use: "Selected public home gallery tab; representative home::[data-omd-capture=\"26\"]" }
+    pricing-menu-option: { type: tab, bg: "transparent", fg: "#36342e", radius: "4px", padding: "8px 12px", font: "16px / 400 / Inter", states: "expanded and menu-open observed", use: "Pricing menu option after the captured menu interaction; representative surface-2::[data-omd-interaction-capture=\"menu-0-1\"]" }
 ---
 
 # Design System Inspiration of Zapier
 
 ## 1. Visual Theme & Atmosphere
 
-Zapier's website radiates warm, approachable professionalism. It rejects the cold monochrome minimalism of developer tools in favor of a cream-tinted canvas (`#fffefb`) that feels like unbleached paper -- the digital equivalent of a well-organized notebook. The near-black (`#201515`) text has a faint reddish-brown warmth, creating an atmosphere more human than mechanical. This is automation designed to feel effortless, not technical.
+Zapier is an automation platform that connects apps, data, and processes so teams can build and run workflows where they already work. Its public marketing surfaces give that broad infrastructure role a human, energetic expression: a warm-cream field, coffee-dark text, one emphatic orange, and display typography that turns large claims into approachable signposts. That visual language stems from the 2022 rebrand, when Zapier described the orange platform mark and Degular typeface as ways to represent the possibilities its customers set in motion. The current capture covers only the public home, pricing, and customer-support solution pages; it does not establish an authenticated editor, product dashboard, or Help-center design system.
 
-The typographic system is a deliberate interplay of two distinct personalities. **Degular Display** -- a geometric, wide-set display face -- handles hero-scale headlines at 56-80px with medium weight (500) and extraordinarily tight line-heights (0.90), creating headlines that compress vertically like stacked blocks. **Inter** serves as the workhorse for everything else, from section headings to body text and navigation, with fallbacks to Helvetica and Arial. **GT Alpina**, an elegant thin-weight serif with aggressive negative letter-spacing (-1.6px to -1.92px), makes occasional appearances for softer editorial moments. This three-font system gives Zapier the ability to shift register -- from bold and punchy (Degular) to clean and functional (Inter) to refined and literary (GT Alpina).
-
-The brand's signature orange (`#ff4f00`) is unmistakable -- a vivid, saturated red-orange that sits precisely between traffic-cone urgency and sunset warmth. It's used sparingly but decisively: primary CTA buttons, active state underlines, and accent borders. Against the warm cream background, this orange creates a color relationship that feels energetic without being aggressive.
-
-**Key Characteristics:**
-- Warm cream canvas (`#fffefb`) instead of pure white -- organic, paper-like warmth
-- Near-black with reddish undertone (`#201515`) -- text that breathes rather than dominates
-- Degular Display for hero headlines at 0.90 line-height -- compressed, impactful, modern
-- Inter as the universal UI font across all functional typography
-- GT Alpina for editorial accents -- thin-weight serif with extreme negative tracking
-- Zapier Orange (`#ff4f00`) as the single accent -- vivid, warm, sparingly applied
-- Warm neutral palette: borders (`#c5c0b1`), muted text (`#939084`), surface tints (`#eceae3`)
-- 8px base spacing system with generous padding on CTAs (20px 24px)
-- Border-forward design: `1px solid` borders in warm grays define structure over shadows
+- **Warm contrast:** `#fffefb` canvas with `#201515` ink is the repeated public-marketing base.
+- **Single decisive accent:** `#ff4f00` appears on high-priority public actions and header sign-up.
+- **Role-led type:** Inter carries repeated UI content; loaded Degular Display carries public headings.
+- **Compact geometry:** current repeated controls are 4px-rounded, with a distinct 18px header sign-up pill.
+- **Domain boundary:** marketing, pricing, solution pages, Help/docs chrome, and authenticated product UI are separate evidence domains.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Zapier Black** (`#201515`): Primary text, headings, dark button backgrounds. A warm near-black with reddish undertones -- never cold.
-- **Cream White** (`#fffefb`): Page background, card surfaces, light button fills. Not pure white; the yellowish warmth is intentional.
-- **Off-White** (`#fffdf9`): Secondary background surface, subtle alternate tint. Nearly indistinguishable from cream white but creates depth.
+### Selector-backed public-marketing roles
 
-### Brand Accent
-- **Zapier Orange** (`#ff4f00`): Primary CTA buttons, active underline indicators, accent borders. The signature color -- vivid and warm.
+- **Zapier Orange** (`#ff4f00`): filled primary action background and header sign-up border across the supplied marketing surfaces.
+- **Warm Canvas** (`#fffefb`): repeated public page and card surface; also the label color on dark and orange actions.
+- **Coffee Ink** (`#201515`): dominant public text, border, and dark-action background.
+- **Body Brown** (`#605d52`): repeated supporting text and tab-label color.
+- **Muted Ink** (`#36342e`): pricing menu-option text.
+- **Soft Cream** (`#f8f4f0`): observed local public surface, not an authenticated-product canvas claim.
+- **Divider** (`#eceae3`) and **Sand** (`#c5c0b1`): observed borders and menu/control containment.
 
-### Neutral Scale
-- **Dark Charcoal** (`#36342e`): Secondary text, footer text, border color for strong dividers. A warm dark gray-brown with 70% opacity variant.
-- **Warm Gray** (`#939084`): Tertiary text, muted labels, timestamp-style content. Mid-range with greenish-warm undertone.
-- **Sand** (`#c5c0b1`): Primary border color, hover state backgrounds, divider lines. The backbone of Zapier's structural elements.
-- **Light Sand** (`#eceae3`): Secondary button backgrounds, light borders, subtle card surfaces.
-- **Mid Warm** (`#b5b2aa`): Alternate border tone, used on specific span elements.
-
-### Interactive
-- **Orange CTA** (`#ff4f00`): Primary action buttons and active tab underlines.
-- **Dark CTA** (`#201515`): Secondary dark buttons with sand hover state.
-- **Light CTA** (`#eceae3`): Tertiary/ghost buttons with sand hover.
-- **Link Default** (`#201515`): Standard link color, matching body text.
-- **Hover Underline**: Links remove `text-decoration: underline` on hover (inverse pattern).
-
-### Overlay & Surface
-- **Semi-transparent Dark** (`rgba(45, 45, 46, 0.5)`): Overlay button variant, backdrop-like elements.
-- **Pill Surface** (`#fffefb`): White pill buttons with sand borders.
-
-### Shadows & Depth
-- **Inset Underline** (`rgb(255, 79, 0) 0px -4px 0px 0px inset`): Active tab indicator -- orange underline using inset box-shadow.
-- **Hover Underline** (`rgb(197, 192, 177) 0px -4px 0px 0px inset`): Inactive tab hover -- sand-colored underline.
+The capture includes anti-aliased neighboring orange and ink values; they are not promoted into a semantic scale. Help-center chrome, product integrations, social-brand icons, and third-party app colors are likewise outside this token set.
 
 ## 3. Typography Rules
 
-### Font Families
-- **Display**: `Degular Display` -- wide geometric display face for hero headlines
-- **Primary**: `Inter`, with fallbacks: `Helvetica, Arial`
-- **Editorial**: `GT Alpina` -- thin-weight serif for editorial moments
-- **System**: `Arial` -- fallback for form elements and system UI
+### Evidence classes
 
-### Hierarchy
+- **Official brand/product-use:** Zapier’s rebrand announcement names Degular as its new brand typeface. That establishes brand context, not a blanket rule for every product surface.
+- **Live computed public-web use:** Inter is loaded with high confidence and 1,161 visible uses across the three supplied marketing pages. DegularDisplay is likewise loaded with high confidence and 24 visible heading uses; rendered computed samples resolve to `Degular Display`. JetBrains Mono is loaded with high confidence for six code-control uses.
+- **Official font and licence context:** Adobe Fonts lists Degular and directs additional licensing/services to OH no Type Co. That is a typeface licensing boundary, not permission to redistribute Zapier’s loaded files.
+- **System and declared-only:** Arial is an observed system family on a small set of form elements. `DegularDisplay Fallback`, `Inter Fallback`, `JetBrains Mono Fallback`, and `Serrif Fallback` are declarations without visible use. `Serrif` itself is loaded for a few headings, but this evidence does not identify it as GT Alpina; it remains unnamed and is not a token.
+- **Unobserved domains:** no authenticated product page or documentation chrome was captured, so no product-UI or Help-UI family is inferred.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero XL | Degular Display | 80px (5.00rem) | 500 | 0.90 (tight) | normal | Maximum impact, compressed block |
-| Display Hero | Degular Display | 56px (3.50rem) | 500 | 0.90-1.10 (tight) | 0-1.12px | Primary hero headlines |
-| Display Hero SM | Degular Display | 40px (2.50rem) | 500 | 0.90 (tight) | normal | Smaller hero variant |
-| Display Button | Degular Display | 24px (1.50rem) | 600 | 1.00 (tight) | 1px | Large CTA button text |
-| Section Heading | Inter | 48px (3.00rem) | 500 | 1.04 (tight) | normal | Major section titles |
-| Editorial Heading | GT Alpina | 48px (3.00rem) | 250 | normal | -1.92px | Thin editorial headlines |
-| Editorial Sub | GT Alpina | 40px (2.50rem) | 300 | 1.08 (tight) | -1.6px | Editorial subheadings |
-| Sub-heading LG | Inter | 36px (2.25rem) | 500 | normal | -1px | Large sub-sections |
-| Sub-heading | Inter | 32px (2.00rem) | 400 | 1.25 (tight) | normal | Standard sub-sections |
-| Sub-heading MD | Inter | 28px (1.75rem) | 500 | normal | normal | Medium sub-headings |
-| Card Title | Inter | 24px (1.50rem) | 600 | normal | -0.48px | Card headings |
-| Body Large | Inter | 20px (1.25rem) | 400-500 | 1.00-1.20 (tight) | -0.2px | Feature descriptions |
-| Body Emphasis | Inter | 18px (1.13rem) | 600 | 1.00 (tight) | normal | Emphasized body text |
-| Body | Inter | 16px (1.00rem) | 400-500 | 1.20-1.25 | -0.16px | Standard reading text |
-| Body Semibold | Inter | 16px (1.00rem) | 600 | 1.16 (tight) | normal | Strong labels |
-| Button | Inter | 16px (1.00rem) | 600 | normal | normal | Standard buttons |
-| Button SM | Inter | 14px (0.88rem) | 600 | normal | normal | Small buttons |
-| Caption | Inter | 14px (0.88rem) | 500 | 1.25-1.43 | normal | Labels, metadata |
-| Caption Upper | Inter | 14px (0.88rem) | 600 | normal | 0.5px | Uppercase section labels |
-| Micro | Inter | 12px (0.75rem) | 600 | 0.90-1.33 | 0.5px | Tiny labels, often uppercase |
-| Micro SM | Inter | 13px (0.81rem) | 500 | 1.00-1.54 | normal | Small metadata text |
+### Measured public-marketing hierarchy
 
-### Principles
-- **Three-font system, clear roles**: Degular Display commands attention at hero scale only. Inter handles everything functional. GT Alpina adds editorial warmth sparingly.
-- **Compressed display**: Degular at 0.90 line-height creates vertically compressed headline blocks that feel modern and architectural.
-- **Weight as hierarchy signal**: Inter uses 400 (reading), 500 (navigation/emphasis), 600 (headings/CTAs). Degular uses 500 (display) and 600 (buttons).
-- **Uppercase for labels**: Section labels (like "01 / Colors") and small categorization use `text-transform: uppercase` with 0.5px letter-spacing.
-- **Negative tracking for elegance**: GT Alpina uses -1.6px to -1.92px letter-spacing for its thin-weight editorial headlines.
+| Role | Family | Size | Weight | Line height | Evidence boundary |
+|---|---|---:|---:|---:|---|
+| Display | Degular Display | 56px | 500 | 56px | public h1 samples |
+| Heading | Degular Display | 48px | 500 | 48px | public h2 samples |
+| Body | Inter | 16px | 400 | 24px | repeated body/list content |
+| Primary action | Inter | 18px | 600 | normal | 48px public action selectors |
+| Code copy control | JetBrains Mono | 14px | 400 | 21px | home code-copy selector only |
 
 ## 4. Component Stylings
 
-### Buttons
+All variants below are selector-backed public-marketing observations from the supplied capture. They are not a reconstructed Zapier product component library. State labels record the collector’s captured pseudo/interacted states only; no transition duration, disabled behavior, or unobserved variant is inferred.
 
-**Primary Orange**
+### Marketing actions
+
+**Primary orange action**
 - Background: `#ff4f00`
 - Text: `#fffefb`
-- Padding: 8px 16px
-- Radius: 4px
 - Border: `1px solid #ff4f00`
-- Use: Primary CTA ("Start free with email", "Sign up free")
+- Radius: `4px`
+- Padding: `12px 24px`
+- Height: `48px`
+- Font: `18px / 600 / Inter`
+- Hover: observed at `home::[data-omd-capture="25"]::state-hover`
+- Pressed: observed at `home::[data-omd-capture="25"]::state-pressed`
+- Focus: observed at `surface-3::[data-omd-capture="11"]::state-focus`
+- Use: public home and customer-support action; default evidence `home::[data-omd-capture="25"]`
 
-**Primary Dark**
+**Dark marketing action**
 - Background: `#201515`
 - Text: `#fffefb`
-- Padding: 20px 24px
-- Radius: 8px
 - Border: `1px solid #201515`
-- Hover: background shifts to `#c5c0b1`, text to `#201515`
-- Use: Large secondary CTA buttons
+- Radius: `4px`
+- Padding: `12px 24px`
+- Height: `48px`
+- Font: `18px / 600 / Inter`
+- Hover: observed at `surface-3::[data-omd-capture="15"]::state-hover`
+- Pressed: observed at `surface-3::[data-omd-capture="15"]::state-pressed`
+- Focus: observed at `surface-3::[data-omd-capture="15"]::state-focus`
+- Use: public marketing action across home, pricing, and customer-support; default evidence `home::[data-omd-capture="22"]`
 
-**Light / Ghost**
-- Background: `#eceae3`
-- Text: `#36342e`
-- Padding: 20px 24px
-- Radius: 8px
-- Border: `1px solid #c5c0b1`
-- Hover: background shifts to `#c5c0b1`, text to `#201515`
-- Use: Tertiary actions, filter buttons
-
-**Pill Button**
-- Background: `#fffefb`
-- Text: `#36342e`
-- Padding: 0px 16px
-- Radius: 20px
-- Border: `1px solid #c5c0b1`
-- Use: Tag-like selections, filter pills
-
-**Overlay Semi-transparent**
-- Background: `rgba(45, 45, 46, 0.5)`
+**Header sign-up**
+- Background: `#ff4f00`
 - Text: `#fffefb`
-- Radius: 20px
-- Hover: background becomes fully opaque `#2d2d2e`
-- Use: Video play buttons, floating actions
+- Border: `1px solid #ff4f00`
+- Radius: `18px`
+- Padding: `6px 12px`
+- Height: `36px`
+- Font: `14px / 600 / Inter`
+- Hover: `rgb(254, 79, 0)` at `home::[data-omd-capture="10"]::state-hover`
+- Focus: observed at `surface-3::[data-omd-capture="10"]::state-focus`
+- Pressed: captured for this selector family
+- Use: compact public header action across the supplied marketing surfaces; default evidence `home::[data-omd-capture="10"]`
 
-**Tab / Navigation (Inset Shadow)**
+### Public selection controls
+
+**Selected product-gallery tab**
 - Background: transparent
 - Text: `#201515`
-- Padding: 12px 16px
-- Shadow: `rgb(255, 79, 0) 0px -4px 0px 0px inset` (active orange underline)
-- Hover shadow: `rgb(197, 192, 177) 0px -4px 0px 0px inset` (sand underline)
-- Use: Horizontal tab navigation
+- Border: `0px`
+- Radius: `0px`
+- Padding: `10px 16px`
+- Font: `14px / 600 / Inter`
+- Selected: `aria-selected="true"` at `home::[data-omd-capture="26"]`
+- Use: selected home product-gallery tab; its unselected sibling is separately observed at `home::[data-omd-capture="27"]`
 
-### Cards & Containers
-- Background: `#fffefb`
-- Border: `1px solid #c5c0b1` (warm sand border)
-- Radius: 5px (standard), 8px (featured)
-- No shadow elevation by default -- borders define containment
-- Hover: subtle border color intensification
-
-### Inputs & Forms
-- Background: `#fffefb`
-- Text: `#201515`
-- Border: `1px solid #c5c0b1`
-- Radius: 5px
-- Focus: border color shifts to `#ff4f00` (orange)
-- Placeholder: `#939084`
-
-### Navigation
-- Clean horizontal nav on cream background
-- Zapier logotype left-aligned, 104x28px
-- Links: Inter 16px weight 500, `#201515` text
-- CTA: Orange button ("Start free with email")
-- Tab navigation uses inset box-shadow underline technique
-- Mobile: hamburger collapse
-
-### Image Treatment
-- Product screenshots with `1px solid #c5c0b1` border
-- Rounded corners: 5-8px
-- Dashboard/workflow screenshots prominent in feature sections
-- Light gradient backgrounds behind hero content
-
-### Distinctive Components
-
-**Workflow Integration Cards**
-- Display connected app icons in pairs
-- Arrow or connection indicator between apps
-- Sand border containment
-- Inter weight 500 for app names
-
-**Stat Counter**
-- Large display number using Inter 48px weight 500
-- Muted description below in `#36342e`
-- Used for social proof metrics
-
-**Social Proof Icons**
-- Circular icon buttons: 14px radius
-- Sand border: `1px solid #c5c0b1`
-- Used for social media follow links in footer
+**Pricing menu option**
+- Background: transparent
+- Text: `#36342e`
+- Radius: `4px`
+- Padding: `8px 12px`
+- Font: `16px / 400 / Inter`
+- Expanded: observed after the pricing menu interaction
+- Menu-open: `surface-2::[data-omd-interaction-capture="menu-0-1"]`
+- Use: option within the captured pricing menu, not a general tab token
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 1px, 4px, 6px, 8px, 10px, 12px, 16px, 20px, 24px, 32px, 40px, 48px, 56px, 64px, 72px
-- CTA buttons use generous padding: 20px 24px for large, 8px 16px for standard
-- Section padding: 64px-80px vertical
-
-### Grid & Container
-- Max content width: approximately 1200px
-- Hero: centered single-column with large top padding
-- Feature sections: 2-3 column grids for integration cards
-- Full-width sand-bordered dividers between sections
-- Footer: multi-column dark background (`#201515`)
-
-### Whitespace Philosophy
-- **Warm breathing room**: Generous vertical spacing between sections (64px-80px), but content areas are relatively dense -- Zapier packs information efficiently within its cream canvas.
-- **Architectural compression**: Degular Display headlines at 0.90 line-height compress vertically, contrasting with the open spacing around them.
-- **Section rhythm**: Cream background throughout, with sections separated by sand-colored borders rather than background color changes.
-
-### Border Radius Scale
-- Tight (3px): Small inline spans
-- Standard (4px): Buttons (orange CTA), tags, small elements
-- Content (5px): Cards, links, general containers
-- Comfortable (8px): Featured cards, large buttons, tabs
-- Social (14px): Social icon buttons, pill-like elements
-- Pill (20px): Play buttons, large pill buttons, floating actions
+The supplied public pages repeatedly use a compact 4px ladder in control spacing: 4, 6, 8, 10, 12, 16, 24, and 32px all appear in the capture. Larger layout grids, maximum widths, and responsive breakpoints were not measured here and are omitted. The 18px header pill is a local utility shape; 4px is the more repeated action geometry in this public-marketing sample.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, text blocks |
-| Bordered (Level 1) | `1px solid #c5c0b1` | Standard cards, containers, inputs |
-| Strong Border (Level 1b) | `1px solid #36342e` | Dark dividers, emphasized sections |
-| Active Tab (Level 2) | `rgb(255, 79, 0) 0px -4px 0px 0px inset` | Active tab underline (orange) |
-| Hover Tab (Level 2b) | `rgb(197, 192, 177) 0px -4px 0px 0px inset` | Hover tab underline (sand) |
-| Focus (Accessibility) | `1px solid #ff4f00` outline | Focus ring on interactive elements |
-
-**Shadow Philosophy**: Zapier deliberately avoids traditional shadow-based elevation. Structure is defined almost entirely through borders -- warm sand (`#c5c0b1`) borders for standard containment, dark charcoal (`#36342e`) borders for emphasis. The only shadow-like technique is the inset box-shadow used for tab underlines, where a `0px -4px 0px 0px inset` shadow creates a bottom-bar indicator. This border-first approach keeps the design grounded and tangible rather than floating.
-
-### Decorative Depth
-- Orange inset underline on active tabs creates visual "weight" at the bottom of elements
-- Sand hover underlines provide preview states without layout shifts
-- No background gradients in main content -- the cream canvas is consistent
-- Footer uses full dark background (`#201515`) for contrast reversal
+Public containment comes primarily from warm surface contrast and 1px borders. The capture records no reusable drop-shadow token. Do not convert the observed local backgrounds or anti-aliased borders into a generalized elevation scale.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Degular Display exclusively for hero-scale headlines (40px+) with 0.90 line-height for compressed impact
-- Use Inter for all functional UI -- navigation, body text, buttons, labels
-- Apply warm cream (`#fffefb`) as the background, never pure white
-- Use `#201515` for text, never pure black -- the reddish warmth matters
-- Keep Zapier Orange (`#ff4f00`) reserved for primary CTAs and active state indicators
-- Use sand (`#c5c0b1`) borders as the primary structural element instead of shadows
-- Apply generous button padding (20px 24px) for large CTAs to match Zapier's spacious button style
-- Use inset box-shadow underlines for tab navigation rather than border-bottom
-- Apply uppercase with 0.5px letter-spacing for section labels and micro-categorization
+
+- Use the warm public pair of `#fffefb` canvas and `#201515` ink when following these marketing observations.
+- Reserve `#ff4f00` for selector-backed high-priority public actions.
+- Pair Inter UI copy with loaded Degular Display only for observed public display roles.
+- Keep an observed component’s surface and state provenance alongside its values.
 
 ### Don't
-- Don't use Degular Display for body text or UI elements -- it's display-only
-- Don't use pure white (`#ffffff`) or pure black (`#000000`) -- Zapier's palette is warm-shifted
-- Don't apply box-shadow elevation to cards -- use borders instead
-- Don't scatter Zapier Orange across the UI -- it's reserved for CTAs and active states
-- Don't use tight padding on large CTA buttons -- Zapier's buttons are deliberately spacious
-- Don't ignore the warm neutral system -- borders should be `#c5c0b1`, not gray
-- Don't use GT Alpina for functional UI -- it's an editorial accent at thin weights only
-- Don't apply positive letter-spacing to GT Alpina -- it uses aggressive negative tracking (-1.6px to -1.92px)
-- Don't use rounded pill shapes (9999px) for primary buttons -- pills are for tags and social icons
+
+- Treat these marketing, pricing, and solution-page values as authenticated-editor or Help-center tokens.
+- Substitute a system font for a named loaded family, or rename `Serrif` to GT Alpina without source corroboration.
+- Invent a universal pill, shadow, hover color, error state, or responsive breakpoint from this capture.
+- Promote third-party app/logo colors into the Zapier palette.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile Small | <450px | Tight single column, reduced hero text |
-| Mobile | 450-600px | Standard mobile, stacked layout |
-| Mobile Large | 600-640px | Slight horizontal breathing room |
-| Tablet Small | 640-680px | 2-column grids begin |
-| Tablet | 680-768px | Card grids expand |
-| Tablet Large | 768-991px | Full card grids, expanded padding |
-| Desktop Small | 991-1024px | Desktop layout initiates |
-| Desktop | 1024-1280px | Full layout, maximum content width |
-| Large Desktop | >1280px | Centered with generous margins |
-
-### Touch Targets
-- Large CTA buttons: 20px 24px padding (comfortable 60px+ height)
-- Standard buttons: 8px 16px padding
-- Navigation links: 16px weight 500 with adequate spacing
-- Social icons: 14px radius circular buttons
-- Tab items: 12px 16px padding
-
-### Collapsing Strategy
-- Hero: Degular 80px display scales to 40-56px on smaller screens
-- Navigation: horizontal links + CTA collapse to hamburger menu
-- Feature cards: 3-column grid to 2-column to single-column stacked
-- Integration workflow illustrations: maintain aspect ratio, may simplify
-- Footer: multi-column dark section collapses to stacked
-- Section spacing: 64-80px reduces to 40-48px on mobile
-
-### Image Behavior
-- Product screenshots maintain sand border treatment at all sizes
-- Integration app icons maintain fixed sizes within responsive containers
-- Hero illustrations scale proportionally
-- Full-width sections maintain edge-to-edge treatment
+Responsive behavior was not captured as a separate viewport comparison. The only safe statement is that the supplied public pages contain compact 36px header sign-up and 48px marketing-action variants; mobile collapse, touch targets, and breakpoint thresholds remain unverified.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: Zapier Orange (`#ff4f00`)
-- Background: Cream White (`#fffefb`)
-- Heading text: Zapier Black (`#201515`)
-- Body text: Dark Charcoal (`#36342e`)
-- Border: Sand (`#c5c0b1`)
-- Secondary surface: Light Sand (`#eceae3`)
-- Muted text: Warm Gray (`#939084`)
-
-### Example Component Prompts
-- "Create a hero section on cream background (`#fffefb`). Headline at 56px Degular Display weight 500, line-height 0.90, color `#201515`. Subtitle at 20px Inter weight 400, line-height 1.20, color `#36342e`. Orange CTA button (`#ff4f00`, 4px radius, 8px 16px padding, white text) and dark button (`#201515`, 8px radius, 20px 24px padding, white text)."
-- "Design a card: cream background (`#fffefb`), `1px solid #c5c0b1` border, 5px radius. Title at 24px Inter weight 600, letter-spacing -0.48px, `#201515`. Body at 16px weight 400, `#36342e`. No box-shadow."
-- "Build a tab navigation: transparent background. Inter 16px weight 500, `#201515` text. Active tab: `box-shadow: rgb(255, 79, 0) 0px -4px 0px 0px inset`. Hover: `box-shadow: rgb(197, 192, 177) 0px -4px 0px 0px inset`. Padding 12px 16px."
-- "Create navigation: cream sticky header (`#fffefb`). Inter 16px weight 500 for links, `#201515` text. Orange pill CTA 'Start free with email' right-aligned (`#ff4f00`, 4px radius, 8px 16px padding)."
-- "Design a footer with dark background (`#201515`). Text `#fffefb`. Links in `#c5c0b1` with hover to `#fffefb`. Multi-column layout. Social icons as 14px-radius circles with sand borders."
-
-### Iteration Guide
-1. Always use warm cream (`#fffefb`) background, never pure white -- the warmth defines Zapier
-2. Borders (`1px solid #c5c0b1`) are the structural backbone -- avoid shadow elevation
-3. Zapier Orange (`#ff4f00`) is the only accent color; everything else is warm neutrals
-4. Three fonts, strict roles: Degular Display (hero), Inter (UI), GT Alpina (editorial)
-5. Large CTA buttons need generous padding (20px 24px) -- Zapier buttons feel spacious
-6. Tab navigation uses inset box-shadow underlines, not border-bottom
-7. Text is always warm: `#201515` for dark, `#36342e` for body, `#939084` for muted
-8. Uppercase labels at 12-14px with 0.5px letter-spacing for section categorization
+Use this reference as a public-marketing starting point only: warm cream `#fffefb`, coffee ink `#201515`, orange `#ff4f00`, Inter UI text, and Degular Display for measured public headings. Keep a 4px action radius for the recorded 48px action, or 18px only for the compact header sign-up. Do not claim the result matches Zapier’s logged-in automation editor or Help-center chrome.
 
 ## 10. Voice & Tone
 
-Zapier's voice is **automation-friendly and SMB-empathetic.** "Automate AI Workflows, Agents, and Apps" — capability-driven with a focus on small business outcomes. Warm typography (`#201515` text on cream) signals "approachable, not corporate."
+Zapier’s official About page frames its mission as making automation work for everyone and publishes values including default to action, transparency, feedback, empathy, and building the robot. Its public product definition speaks directly about connecting apps, data, and processes so teams can build where they work. Use direct, enabling language that describes an outcome and the work it removes; avoid claiming capabilities or product mechanics not present in the task.
 
-| Context | Tone |
-|---|---|
-| CTA | Verb. "Sign up free", "Get started", "Start automating" |
-| Marketing | Use-case-driven. Real workflow templates as social proof |
-| Documentation | Step-by-step screenshot tutorials |
-| Error | Specific. "Trigger filter conditions not met. Check filter rules." |
+### Do
 
-**Voice samples**
-- Tagline: *"Automate AI Workflows, Agents, and Apps"* <!-- verified: zapier.com homepage 2026-05 -->
+- Lead with a concrete workflow outcome.
+- Prefer plain, active verbs such as connect, automate, build, and run.
+- Make space for users of varying technical backgrounds.
 
-**Forbidden phrases.** "Revolutionary automation". Generic Make-comparison framing.
+### Don't
+
+- Overstate automation as magical without explaining the work it enables.
+- Turn brand language into a claim about an unverified product feature.
 
 ## 11. Brand Narrative
 
-Zapier was **founded 2011 in Columbia, Missouri** by **Wade Foster** (CEO), **Bryan Helmig**, and **Mike Knoop** — three University of Missouri grads who built a working prototype during a Columbia startup weekend. **Foster left his job December 2011**, **Helmig followed April 2012**, **Knoop joined full-time May 2012** — same month they shipped public beta. **Y Combinator initially rejected** the trio (janky weekend prototype, no customers, no track record); they were **accepted on second application**, relocated to Mountain View, and graduated **YC W12 batch June 2012**. **Seed $1.2M October 2012** led by **Bessemer Venture Partners + Draper Fisher Jurvetson** + angels — and famously little outside funding thereafter (uncommon for SaaS at scale). **Remote-first since founding** (no office, fully distributed). Pioneered "if-this-then-that" SMB workflow automation. **2024-2025 evolution**: AI agents and MCP integration alongside classic Zaps. The brand identity — **`#ff4f00` Zapier Orange Primary** + **`#201515` Plum-Black** + **`#fffefb` warm cream canvas** + **4px Buttons** + **Inter 600 body** — reflects "warm, approachable workflow automation." <!-- citations: Wikipedia (Zapier), YC company page, Wade Foster YC Q&A, Founders Talk #55 -->
-
-**Sources:**
-- [Zapier — Wikipedia](https://en.wikipedia.org/wiki/Zapier)
-- [Zapier — Y Combinator](https://www.ycombinator.com/companies/zapier)
-- [Q&A with Wade Foster, Cofounder of Zapier — Y Combinator](https://www.ycombinator.com/blog/qa-with-wade-foster-cofounder-of-zapier/)
-- [Side hustle to $35M ARR at Zapier with Bryan Helmig — Founders Talk #55](https://changelog.com/founderstalk/55)
+Zapier describes itself as automation infrastructure that connects apps, data, and processes, and says its mission is to make automation work for everyone. The 2022 rebrand translated that product role into an orange platform mark, a new Degular brand typeface, and a system intended to tell customers’ stories of possibility. The current public pages retain the warm-cream, coffee-ink, orange, and display-led expression documented above, while the authenticated product remains outside this evidence set.
 
 ## 12. Principles
 
-1. **Workflows over code.** *UI implication:* canvas + properties layout; never code-only views.
-2. **Warm typography.** `#201515` / `#36342e`. *UI implication:* avoid pure black text.
-3. **Uppercase labels 12-14px / 0.5px tracking.** *UI implication:* preserve for section categorization.
-4. **Use-case templates first.** *UI implication:* lead with templates, not feature lists.
-5. **AI agents alongside Zaps.** *UI implication:* don't deprecate classic Zaps; AI agents are additive.
+1. **Make automation legible.** Present the outcome and the connected work plainly.
+   *UI implication:* prefer a single, specific action label over an abstract slogan.
+2. **Keep the human in the loop.** Zapier’s public values emphasize empathy and feedback.
+   *UI implication:* make review, edit, and support paths clear when a workflow needs judgment.
+3. **Use brand energy selectively.** Orange and display type are strong public signals, not a substitute for hierarchy.
+   *UI implication:* give the primary action the orange role; let warm neutrals carry structure.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Zapier user segments (SMB owners, RevOps, marketing automation), not individual people.*
+The following are stakeholder groups, not synthetic scored personas. Zapier’s own public materials address businesses and teams working across existing apps and processes.
 
-**Sofia Russo, 35, Milan.** Indie agency owner. 40+ Zaps automating client onboarding.
-
-**Marcus Chen, 41, San Francisco.** RevOps lead at Series C SaaS. Zapier as glue between Salesforce + Slack + Notion.
-
-**Priya Krishnan, 28, Bengaluru.** Marketing ops. Email → CRM automation flows.
+- **Workflow builder:** connects tools and data into repeatable work.
+- **Team operator:** needs an understandable automation outcome without leaving the systems already in use.
+- **Business owner or lead:** evaluates automation by time saved, reliability, and fit with the team’s stack.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no Zaps)** | "Create your first Zap" CTA + template gallery |
-| **Empty (no triggers)** | App picker with search |
-| **Loading (Zap running)** | Per-step trace with status |
-| **Loading (test)** | Test data per step visible |
-| **Error (auth)** | "Reconnect [App]" with OAuth flow |
-| **Error (filter)** | "Filter conditions not met — view test data" |
-| **Success (Zap published)** | Confirmation + Zap History link |
-| **Success (test passed)** | Step-by-step green checks |
-| **Skeleton (Zap list)** | Warm-cream placeholders |
-| **Disabled (free plan limit)** | Upgrade link |
-| **Loading (long task)** | Persistent progress |
+Only selected, expanded/menu-open, hover, pressed, and focus states were observed in the supplied capture. Empty, loading, error, success, skeleton, and disabled-system behavior were not established as a reusable public pattern and should be designed from the target product’s own requirements.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
-
-Standard cubic-bezier; minimal bounce — workflow register. `prefers-reduced-motion: reduce` removes hover transitions.
+No motion timing, easing curve, or reduced-motion rule was measured in the supplied evidence. Do not infer a motion system from static or pseudo-state snapshots.
 
 ---
 
-**Verified:** 2026-05-09 (Apple-tier full migration)
-**Tier 1 sources:** zapier.com/, zapier.com/pricing (live DOM via playwright)
-- **Primary `#ff4f00` Zapier Orange + `#fffefb` cream text** 4px / 40px / 8×16 / 16px·600 (Start free with email / Learn more about MCP — canonical hero CTA)
-- **Header sign-up — Compact Pill** `#ff4f00` / `#fffefb` / **18px** / 36px / 6×12 / 14px·600 (header utility — slight pill variant)
-- **Inverse Primary `#201515` Plum-Black + `#fffefb` text** 4px / 48px / 12×24 / 18px·600 (Explore Zapier for Enterprise — section CTA)
-- **Top nav** transparent / `#201515` / 4px / 36px / 6×10 / 14px·400
-- **Skip-to-content** `rgb(56,25,51)` `#381933` Deep Plum / `#fffefb` / radius 0-0-6-6 / 33px / 4×16-8 / 14px·400
-- **Pricing tier card header** `#201515` / `#fffefb` / 8px / 64px / 0×20 / 24px·600
-- Canvas warm cream `#fffefb` (not pure white) — distinctive warm-cast off-white
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 1 (Philosophy):** Wikipedia (Zapier), Y Combinator company page, Wade Foster YC Q&A, Founders Talk #55.
-**Style ref:** `stripe`. **Conflicts unresolved:** **Earlier mistake reverted** — prior footer cited `#9fe870` lime which is **wise's brand color** (copy-paste error). Canonical is **`#ff4f00` Zapier Orange**.
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://zapier.com/, https://zapier.com/pricing, https://zapier.com/solutions/customer-support, https://zapier.com/blog/zapiers-new-look/, https://zapier.com/about, https://help.zapier.com/hc/en-us/articles/37518970271245-What-is-Zapier
+**Tier 2 sources:** https://getdesign.md/zapier/design-md, https://styles.refero.design/?q=Zapier
+**Conflicts unresolved:** none

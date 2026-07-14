@@ -3,6 +3,7 @@
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import type { PortableReferenceAst, PortableReferenceAstManifest, ReferenceQualityStatus } from './reference-ast.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -47,6 +48,34 @@ export interface Reference {
   frontmatter: Frontmatter;
   body: string;
   sections: string[];
+  ast: PortableReferenceAst | null;
+}
+
+function referenceAstEnabled(value = process.env.REFERENCE_AST_V2): boolean {
+  if (value === undefined || value.trim() === '') return true;
+  return !['0', 'false', 'off'].includes(value.trim().toLowerCase());
+}
+
+let astCache: Map<string, PortableReferenceAst> | null = null;
+
+function loadPortableAst(): Map<string, PortableReferenceAst> {
+  if (astCache) return astCache;
+  const map = new Map<string, PortableReferenceAst>();
+  if (!referenceAstEnabled()) {
+    astCache = map;
+    return map;
+  }
+  const astPath = path.join(path.dirname(DATA_DIR), 'reference-ast.json');
+  if (!existsSync(astPath)) {
+    throw new Error(`portable Reference AST is missing: ${astPath}`);
+  }
+  const manifest = JSON.parse(readFileSync(astPath, 'utf8')) as PortableReferenceAstManifest;
+  if (manifest.schemaVersion !== 1 || manifest.count !== manifest.references.length) {
+    throw new Error('portable Reference AST manifest is invalid');
+  }
+  for (const reference of manifest.references) map.set(reference.identity.id, reference);
+  astCache = map;
+  return map;
 }
 
 // Minimal YAML frontmatter parser — handles flat key:value, quoted strings,
@@ -125,6 +154,7 @@ export function loadAllReferences(): Map<string, Reference> {
     cache = map;
     return map;
   }
+  const portable = loadPortableAst();
   const ids = readdirSync(DATA_DIR, { withFileTypes: true })
     .filter((e) => e.isDirectory())
     .map((e) => e.name);
@@ -134,6 +164,8 @@ export function loadAllReferences(): Map<string, Reference> {
     const raw = readFileSync(filePath, 'utf8');
     const { fm, body } = parseFrontmatter(raw);
     const sections = extractSections(body);
+    const ast = portable.get(id) ?? null;
+    if (referenceAstEnabled() && !ast) throw new Error(`portable Reference AST is missing ${id}`);
     map.set(id, {
       id,
       filePath,
@@ -141,6 +173,7 @@ export function loadAllReferences(): Map<string, Reference> {
       frontmatter: fm,
       body,
       sections,
+      ast,
     });
   }
   cache = map;
@@ -156,6 +189,7 @@ export function listReferenceIds(): string[] {
 }
 
 export function getDisplayName(ref: Reference): string {
+  if (ref.ast) return ref.ast.identity.displayName || ref.ast.identity.name || ref.id;
   const fm = ref.frontmatter;
   return (fm.displayName as string) || (fm.name as string) || ref.id;
 }
@@ -173,6 +207,7 @@ export interface Provenance {
   source: 'oh-my-design.kr';
   url: string;
   verified: string | null;
+  qualityStatus: ReferenceQualityStatus | null;
   attribution: string;
 }
 
@@ -180,18 +215,23 @@ export interface Provenance {
 // pure in-chat answer still plants a citation (and a reason to visit for the
 // Proof block, regional sourcing, and the latest verification).
 export function provenance(ref: Reference): Provenance {
-  const verified = (ref.frontmatter.verified as string | undefined) ?? null;
+  const verified = ref.ast?.quality.verifiedAt ?? (ref.frontmatter.verified as string | undefined) ?? null;
+  const qualityStatus = ref.ast?.quality.status ?? null;
   const url = permalink(ref);
-  const stamp = verified ? `, verified ${verified}` : '';
+  const stamp = qualityStatus
+    ? `, quality ${qualityStatus}${verified ? `, checked ${verified}` : ''}`
+    : verified ? `, checked ${verified}` : '';
   return {
     source: 'oh-my-design.kr',
     url,
     verified,
+    qualityStatus,
     attribution: `${getDisplayName(ref)} design reference — curated by oh-my-design.kr${stamp}. ${url}`,
   };
 }
 
 export function hasOfficialDs(ref: Reference): boolean {
+  if (ref.ast) return Boolean(ref.ast.identity.officialDesignSystem);
   const ds = ref.frontmatter.ds;
   return !!(ds && (ds.name || ds.url));
 }

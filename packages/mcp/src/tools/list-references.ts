@@ -29,6 +29,9 @@ export async function runListReferences(input: z.infer<typeof InputSchema>) {
     country: string | null;
     category: string | null;
     primaryColor: string | null;
+    brandColor: string | null;
+    qualityStatus: string | null;
+    verifiedAt: string | null;
     hasOfficialDs: boolean;
   }> = [];
 
@@ -42,11 +45,14 @@ export async function runListReferences(input: z.infer<typeof InputSchema>) {
     if (input.has_official_ds === true && !officialDs) continue;
     out.push({
       id: ref.id,
-      name: (fm.name as string) ?? ref.id,
+      name: ref.ast?.identity.name ?? (fm.name as string) ?? ref.id,
       displayName: getDisplayName(ref),
-      country: c,
-      category: cat,
-      primaryColor: (fm.primary_color as string | undefined) ?? null,
+      country: ref.ast?.identity.country ?? c,
+      category: ref.ast?.identity.category ?? cat,
+      primaryColor: ref.ast?.foundations.primary?.value ?? null,
+      brandColor: ref.ast?.foundations.brandColor.value ?? (fm.primary_color as string | undefined) ?? null,
+      qualityStatus: ref.ast?.quality.status ?? null,
+      verifiedAt: ref.ast?.quality.verifiedAt ?? null,
       hasOfficialDs: officialDs,
     });
   }

@@ -4,11 +4,11 @@ name: SOCAR
 country: KR
 category: consumer-tech
 homepage: "https://www.socar.kr"
-primary_color: "#000000"
+primary_color: "#0078ff"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=socar.kr&sz=256"
-verified: "2026-05-15"
+verified: "2026-07-12"
 omd: "0.1"
 ds:
   name: SOCAR Design
@@ -16,41 +16,120 @@ ds:
   type: system
   description: SOCAR's design system hub — Space Frame, SOCAR Blue, Sandoll Gothic Neo2 + Avenir typography, and mobility-flow component patterns.
   og_image: "https://design.socar.kr/og.jpg"
+verification_v2:
+  schema: 2
+  checked: "2026-07-12"
+  surfaces:
+    - { id: home, kind: marketing-product, url: "https://www.socar.kr/", inspected: "2026-07-12" }
+    - { id: service, kind: product-directory, url: "https://www.socar.kr/service", inspected: "2026-07-12" }
+    - { id: guide, kind: product-guide, url: "https://www.socar.kr/guide", inspected: "2026-07-12" }
+    - { id: brand, kind: brand-center, url: "https://design.socar.kr/", inspected: "2026-07-12" }
+    - { id: fare, kind: product-guide, url: "https://www.socar.kr/fare", inspected: "2026-07-12" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.socar.kr/", captured: "2026-07-12" }
+    - { id: service-live, kind: product-surface, url: "https://www.socar.kr/service", captured: "2026-07-12" }
+    - { id: guide-live, kind: product-surface, url: "https://www.socar.kr/guide", captured: "2026-07-12" }
+    - { id: brand-live, kind: brand-asset, url: "https://design.socar.kr/", captured: "2026-07-12" }
+    - { id: fare-live, kind: product-surface, url: "https://www.socar.kr/fare", captured: "2026-07-12" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &guide_evidence { surface_id: guide, source_id: guide-live, method: live-inspect, captured: "2026-07-12" }
+    "tokens.colors.canvas": &home_evidence { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-12" }
+    "tokens.colors.foreground": *home_evidence
+    "tokens.colors.secondary": *home_evidence
+    "tokens.colors.muted": *home_evidence
+    "tokens.colors.on-primary": *guide_evidence
+    "tokens.colors.surface": *home_evidence
+    "tokens.colors.hairline": *home_evidence
+    "tokens.typography.family.product": *home_evidence
+    "tokens.typography.family.brand-center": &brand_evidence { surface_id: brand, source_id: brand-live, method: live-inspect, captured: "2026-07-12" }
+    "tokens.typography.h1.size": *home_evidence
+    "tokens.typography.h1.weight": *home_evidence
+    "tokens.typography.h1.lineHeight": *home_evidence
+    "tokens.typography.h1.use": *home_evidence
+    "tokens.typography.h2.size": *home_evidence
+    "tokens.typography.h2.weight": *home_evidence
+    "tokens.typography.h2.lineHeight": *home_evidence
+    "tokens.typography.h2.use": *home_evidence
+    "tokens.typography.body.size": *home_evidence
+    "tokens.typography.body.weight": *home_evidence
+    "tokens.typography.body.lineHeight": *home_evidence
+    "tokens.typography.body.use": *home_evidence
+    "tokens.typography.caption.size": *home_evidence
+    "tokens.typography.caption.weight": *home_evidence
+    "tokens.typography.caption.lineHeight": *home_evidence
+    "tokens.typography.caption.use": *home_evidence
+    "tokens.spacing.xs": *home_evidence
+    "tokens.spacing.sm": *home_evidence
+    "tokens.spacing.md": *home_evidence
+    "tokens.spacing.base": *home_evidence
+    "tokens.spacing.lg": *home_evidence
+    "tokens.rounded.sm": *home_evidence
+    "tokens.rounded.action": *guide_evidence
+    "tokens.rounded.card": *home_evidence
+    "tokens.rounded.full": *home_evidence
+    "tokens.shadow.flat": *home_evidence
+    "tokens.shadow.floating": *home_evidence
+    "tokens.components.primary-action.type": *guide_evidence
+    "tokens.components.primary-action.bg": *guide_evidence
+    "tokens.components.primary-action.fg": *guide_evidence
+    "tokens.components.primary-action.radius": *guide_evidence
+    "tokens.components.primary-action.padding": *guide_evidence
+    "tokens.components.primary-action.font": *guide_evidence
+    "tokens.components.primary-action.states": *guide_evidence
+    "tokens.components.primary-action.use": *guide_evidence
+    "tokens.components.search-action.type": *home_evidence
+    "tokens.components.search-action.bg": *home_evidence
+    "tokens.components.search-action.fg": *home_evidence
+    "tokens.components.search-action.radius": *home_evidence
+    "tokens.components.search-action.padding": *home_evidence
+    "tokens.components.search-action.font": *home_evidence
+    "tokens.components.search-action.states": *home_evidence
+    "tokens.components.search-action.use": *home_evidence
+    "tokens.components.region-list.type": *home_evidence
+    "tokens.components.region-list.bg": *home_evidence
+    "tokens.components.region-list.fg": *home_evidence
+    "tokens.components.region-list.radius": *home_evidence
+    "tokens.components.region-list.padding": *home_evidence
+    "tokens.components.region-list.use": *home_evidence
+    "tokens.components.floating-control.type": *home_evidence
+    "tokens.components.floating-control.bg": *home_evidence
+    "tokens.components.floating-control.fg": *home_evidence
+    "tokens.components.floating-control.radius": *home_evidence
+    "tokens.components.floating-control.padding": *home_evidence
+    "tokens.components.floating-control.font": *home_evidence
+    "tokens.components.floating-control.states": *home_evidence
+    "tokens.components.floating-control.use": *home_evidence
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
-  note: "SOCAR Blue brand hex unpublished; web chrome intentionally achromatic, so primary maps to ink #000000 / neutral scale"
+  source: reconciled
+  extracted: "2026-07-12"
+  note: "Five current first-party surfaces. Product web uses loaded Pretendard; the brand center separately loads IBM Plex Sans KR. swiper-icons is declared-only."
   colors:
-    primary: "#000000"
+    primary: "#0078ff"
     canvas: "#ffffff"
     foreground: "#354153"
-    body: "#354153"
+    secondary: "#697383"
     muted: "#b4bbcb"
     on-primary: "#ffffff"
     surface: "#f2f3f8"
-    surface-footer: "#f5f5f5"
     hairline: "#e5e8ef"
   typography:
-    family: { sans: "Pretendard", mono: "Pretendard" }
-    h1:     { size: 26, weight: 700, lineHeight: 1.38, use: "Single hero line" }
-    h2:     { size: 22, weight: 700, lineHeight: 1.36, use: "Section titles" }
-    h3:     { size: 16, weight: 600, lineHeight: 1.50, use: "City names, card headings" }
-    nav:    { size: 16, weight: 600, use: "Header navigation items" }
-    body:   { size: 16, weight: 400, use: "Card descriptions, copy" }
-    button: { size: 14, weight: 600, use: "Search CTA label" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
-  rounded: { sm: 12, md: 14, lg: 16, full: 9999 }
+    family: { product: "Pretendard", brand-center: "IBM Plex Sans KR" }
+    h1: { size: 26, weight: 700, lineHeight: 1.38, use: "Large current product heading" }
+    h2: { size: 22, weight: 700, lineHeight: 1.36, use: "Section heading" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Product body and list text" }
+    caption: { size: 14, weight: 400, lineHeight: 1.57, use: "Supporting product copy" }
+  spacing: { xs: 4, sm: 10, md: 14, base: 16, lg: 20 }
+  rounded: { sm: 4, action: 14, card: 12, full: 48 }
   shadow:
-    card: "rgba(0,0,0,0.1) 0px 4px 8px 0px"
+    flat: "none"
+    floating: "rgba(38,47,60,0.04) 0px 0px 6px, rgba(38,47,60,0.04) 0px 3px 2px, rgba(38,47,60,0.08) 0px 2px 8px"
   components_harvested: true
   components:
-    button-primary: { type: button, fg: "#ffffff", radius: "12px", padding: "12px 18px", font: "14px / 600", use: "Primary booking CTA (SOCAR Blue in funnel)" }
-    button-search: { type: button, bg: "#f2f3f8", fg: "#b4bbcb", radius: "12px", padding: "12px 18px", font: "14px / 600", use: "Neutral search trigger, state-swaps when complete" }
-    link-nav: { type: button, bg: "transparent", fg: "#354153", font: "16px / 600", use: "Top nav text link, no underline/hover bg" }
-    card: { type: card, bg: "#ffffff", radius: "16px", shadow: "rgba(0,0,0,0.1) 0px 4px 8px 0px", use: "Article / promo tile" }
-    card-region: { type: card, bg: "#ffffff", border: "1px solid #e5e8ef", radius: "14px", padding: "20px", fg: "#354153", use: "Location/region booking entry tile" }
-    chip-timerange: { type: badge, bg: "#ffffff", border: "1px solid #e5e8ef", radius: "14px", padding: "0 12px", font: "16px / 400", use: "Date-time range selector chip" }
-    input: { type: input, bg: "#ffffff", fg: "#354153", border: "1px solid #e5e8ef", radius: "12px", padding: "0 13px", font: "16px / 400", use: "Search field; placeholder #b4bbcb" }
+    primary-action: { type: button, bg: "#0078ff", fg: "#ffffff", radius: "14px", padding: "16px 22px", font: "16px / 600", states: "default captured; no safe active expansion", use: "Prominent guide/product action" }
+    search-action: { type: button, bg: "#f2f3f8", fg: "#b4bbcb", radius: "12px", padding: "12px 18px", font: "14px / 600", states: "disabled appearance captured", use: "Home search action before required values are complete" }
+    region-list: { type: listItem, bg: "#f9f9fb", fg: "#354153", radius: "12px", padding: "24px 16px", use: "Home region or destination collection item" }
+    floating-control: { type: button, bg: "#ffffff", fg: "#354153", radius: "48px", padding: "11px", font: "14px / 600", states: "default and pressed snapshots observed", use: "Floating circular navigation/control button" }
 ---
 
 # Design System Inspiration of SOCAR
@@ -59,7 +138,7 @@ tokens:
 
 SOCAR (쏘카) is Korea's dominant car-sharing platform, and its web surface reads exactly like the product it sells: clean, calm, gently confident — a service that wants to disappear out of the user's way the moment a car has to be reserved. The site opens on pure white, runs body text in **Pretendard** (the de-facto Korean web sans), and keeps the entire chrome in a soft cool-grey palette anchored by `#354153` for body text and `#e5e8ef` for borders. Nothing about the home page asks for attention except the action you came for: pick a time, pick a location, see a car.
 
-The 2024 SOCAR rebrand is the explicit context. The company replaced its earlier playful identity with the **SOCAR Space Frame** — a trapezoidal symbol below the wordmark, intended to read as *"a vessel that carries new experiences"* — and shifted its primary color to **SOCAR Blue**, deliberately chosen *to convey gravity and seriousness* ([abocado.kr 리브랜딩 케이스](https://abocado.kr/brand_news/news_detail?no=52)). Web surfaces inherit that posture: an achromatic chrome that lets the blue do the brand-flagging work where it matters (CTAs, the symbol, the app store badges), and stays out of the way everywhere else.
+The current SOCAR brand center frames the company around flexible, clear-and-bold, and expanding mobility, with “Lifetime Mobility” extending the brand beyond a single car-sharing task. Product web surfaces translate that posture into a restrained cool-grey interface and a directly observed action blue `#0078ff`. The brand center is a separate evidence surface: it loaded IBM Plex Sans KR, while the main product web used Pretendard.
 
 What distinguishes SOCAR from other Korean transportation apps (Kakao Mobility's yellow, Tada's coral) is the **uniform 12–16px radius scale**. Search inputs round at 12px, search-row chips at 14px, content cards at 14–16px — a consistent, mid-rounded geometry that reads as friendly without tipping into consumer-app cuteness. Cards float on a single light shadow (`rgba(0,0,0,0.1) 0 4px 8px`), never the multi-layer chromatic stacks of fintech-grade UIs. The entire system feels like a thoughtful product page that has been quietly tuned for months.
 
@@ -79,14 +158,16 @@ What distinguishes SOCAR from other Korean transportation apps (Kakao Mobility's
 ## 2. Color Palette & Roles
 
 ### Primary (Brand)
-- **SOCAR Blue** (brand primary): The signature post-rebrand color. Used on the Space Frame symbol, app store badges, primary product CTAs in the booking flow. Public hex not published; widely read as a saturated mid-blue. ([abocado.kr](https://abocado.kr/brand_news/news_detail?no=52))
+- **SOCAR Blue / current action** (`#0078ff`): repeated live text/border color and filled guide action across current product surfaces.
 - **Pure White** (`#ffffff`): Page background, card surface, header background.
 
 ### Neutral Scale (verified live)
 - **Text Default** (`#354153` / `rgb(53, 65, 83)`): All body text, all heading text, all nav links. Not black. A cool blue-grey that does the work black would do in another system.
+- **Text Secondary** (`#697383` / `rgb(105, 115, 131)`): repeated supporting copy across home, service, guide, and fare.
 - **Footer Grey** (`#f5f5f5`): Footer background — the only sustained off-white on the page.
 - **Border Default** (`#e5e8ef` / `rgb(229, 232, 239)`): Card and tile borders.
 - **Input Fill** (`#f2f3f8` / `rgb(242, 243, 248)`): Search button / filled input background.
+- **Region Surface** (`#f9f9fb`): observed background for home destination/region collection items.
 - **Placeholder / Disabled Text** (`#b4bbcb` / `rgb(180, 187, 203)`): Search-button label, placeholder states.
 
 ### Supporting (post-rebrand brand system)
@@ -98,9 +179,21 @@ What distinguishes SOCAR from other Korean transportation apps (Kakao Mobility's
 
 ## 3. Typography Rules
 
+### Font evidence boundary
+
+| Evidence class | Resolution |
+|---|---|
+| Official product-use | Current brand-center and product surfaces are kept as separate typography domains. |
+| Live surface-use | Product web visibly used loaded Pretendard on 569 elements; the brand center loaded IBM Plex Sans KR. |
+| Official distributed asset | The brand center served IBM Plex Sans KR webfont assets from `design.socar.kr`. |
+| Declared-only | `swiper-icons` was declared with zero visible text usage. |
+| Unresolved | Native app typography remains unresolved until directly inspected. |
+
+Specimen availability is evaluated independently for brand and live web surfaces.
+
 ### Font Family
-- **Primary (web)**: `Pretendard, PretendardVariable, "PretendardVariable Fallback"`. Inspected live on socar.kr ([live, 2026-05-13](https://www.socar.kr/)). The full SOCAR brand standard names **산돌고딕네오2 (Sandoll Gothic Neo2)** for Korean and **Avenir** for Latin in official brand documents ([abocado.kr](https://abocado.kr/brand_news/news_detail?no=52)); on the public site these are substituted with Pretendard, the open-licensed Korean web variant that pairs naturally with Avenir-style Latin glyphs.
-- **No custom typeface on web** — unlike SOCAR's print/brand materials.
+- **Product web**: `Pretendard`, loaded/high confidence on home, service, guide, and fare.
+- **Brand center**: `IBM Plex Sans KR`, loaded from official brand-center assets. It is not substituted into product web roles.
 
 ### Hierarchy (verified computed values)
 
@@ -214,8 +307,8 @@ What distinguishes SOCAR from other Korean transportation apps (Kakao Mobility's
 
 ---
 
-**Verified:** 2026-05-13
-**Tier 1 sources:**
+**Verified:** 2026-07-12 (omd:migrate)
+**Tier 1 sources:** https://www.socar.kr/ ; https://www.socar.kr/service ; https://www.socar.kr/guide ; https://design.socar.kr/ ; https://www.socar.kr/fare
 - `https://www.socar.kr/` — live computed-style inspect (Pretendard family, `#354153` body, `#e5e8ef` borders, `#f2f3f8` input fill, `#b4bbcb` placeholder, 12/14/16px radii, `rgba(0,0,0,0.1) 0 4px 8px` card shadow, footer `#f5f5f5`, H1 26/700, H2 22/700, H3 16/600, nav 16/600)
 - `https://design.socar.kr/` — SOCAR Brand Center, navigated (SPA shell only via static fetch; live inspect of the booking flow's primary CTA could not be completed in this session because a shared browser session bounced between unrelated tabs after the first inspection)
 
@@ -227,7 +320,7 @@ What distinguishes SOCAR from other Korean transportation apps (Kakao Mobility's
 - `https://tech.socarcorp.kr/design/2020/06/23/socar-design-system-01.html` — SOCAR FRAME series #1 (process narrative; no hex specifics)
 - `https://tech.socarcorp.kr/fe/2026/02/23/socar-frame2-web.html` — SOCAR FRAME 2.0 web rollout (system architecture; no token table)
 
-**Conflicts unresolved:**
+**Conflicts unresolved:** none
 - Brand-document typefaces (Sandoll Gothic Neo2 / Avenir) vs. actual web fonts (Pretendard / PretendardVariable). Treated as intentional: brand print system uses the licensed faces; the public web substitutes Pretendard. Documented in §3.
 - Exact SOCAR Blue hex not publicly published. §1–§2 reference the color by its brand name; §9 lists it as "SOCAR Blue (brand-published hex pending — use Brand Center reference)" rather than guess.
 - SOCAR FRAME 2.0 component-level tokens (button height variants, dark-mode palette) live behind the internal SOCAR Frame docs and were not extracted in this run.

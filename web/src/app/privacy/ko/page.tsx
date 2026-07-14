@@ -157,22 +157,12 @@ export default function PrivacyKoPage() {
           </ul>
         </Section>
 
-        <Section n={12} title="Claude 커넥터(MCP)">
-          <p>oh-my-design은{" "}
+        <Section n={12} title="종료된 Claude 커넥터(MCP)">
+          <p>기존{" "}
             <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">oh-my-design.kr/api/mcp</code>{" "}
-            에서 읽기 전용 Claude 커넥터(MCP)를 제공합니다. Claude에서 사용할 때
-            Claude의 서버가 이 엔드포인트를 호출하여 공개 디자인 시스템 카탈로그를
-            검색·조회합니다.</p>
-          <p>우리는 익명 집계 카운트(어떤 도구가 호출되었는지, 조회 시 공개
-            레퍼런스 ID)만 기록합니다. 검색어 텍스트, IP 주소, 계정 정보는
-            기록하지 않으며 로그인 절차도 없습니다.</p>
-          <p>다만 vibe 검색의 순위를 매기기 위해, 검색어 문구는 임베딩 제공자인{" "}
-            <strong className="font-medium text-foreground">OpenRouter</strong>(미국)로 전송되어 숫자
-            벡터로 변환됩니다. 이는 일치하는 레퍼런스를 찾는 데에만 사용되며
-            저장되지 않습니다.</p>
-          <p>이 커넥터는 우리의 공개 카탈로그만 읽으며, 이용자의 Claude 메모리·대화
-            기록·프롬프트·파일에 접근하거나 저장하지 않습니다. 읽기 전용이며 인증이
-            필요 없습니다.</p>
+            읽기 전용 커넥터는 종료되어 HTTP 410을 반환합니다. 더 이상 검색 요청을 받거나,
+            검색 문구를 임베딩 제공자에게 전송하거나, 커넥터 사용량을 기록하지 않습니다.
+            과거 익명 집계 지표는 위 보유기간 정책에 따라 운영 백업에 남을 수 있습니다.</p>
         </Section>
 
         <Section n={13} title="처리방침의 변경">

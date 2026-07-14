@@ -22,6 +22,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
+import { evaluateReferenceQuality } from './lib/reference-quality.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REFS = resolve(__dirname, '..', 'references');
@@ -158,7 +159,21 @@ if (GUIDELINE_MARKER.test(md)) pass('guideline-markers'); else fail('guideline-m
 const philSections = (md.match(/^## 1[0-5]\. /gm) ?? []).length;
 if (philSections === 6) pass('sections-10-15'); else fail('sections-10-15', `found ${philSections}/6 philosophy sections`);
 
-// ── 7. Logo liveness (network) ─────────────────────────────────────────
+// ── 7. Verified v2 graph quality ───────────────────────────────────────
+if (fm) {
+  const verificationPath = join(dir, '.verification.md');
+  const quality = evaluateReferenceQuality({
+    id,
+    markdown: md,
+    frontmatter: fm,
+    verificationMarkdown: existsSync(verificationPath) ? readFileSync(verificationPath, 'utf8') : '',
+    asOf: new Date().toISOString().slice(0, 10),
+  });
+  if (quality.status === 'verified_v2') pass('quality-verified-v2', `${quality.evidenceClaimCount}/${quality.claimCount} claims`);
+  else fail('quality-verified-v2', `${quality.status}: ${quality.reasonCodes.join(', ')}`);
+}
+
+// ── 8. Logo liveness (network) ─────────────────────────────────────────
 if (!NO_NET && fm?.logo && VALID_LOGO_TYPES.includes(fm.logo.type)) {
   const { type, slug } = fm.logo;
   const url = type === 'github' ? `https://github.com/${slug}.png?size=64`

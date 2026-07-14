@@ -5,8 +5,12 @@
  * `npm run build-registry`.
  */
 import { REGISTRY, REGISTRY_BY_ID } from "@/data/registry.generated";
+import {
+  REFERENCE_QUALITY_BY_ID,
+  type ReferenceQualityStatus,
+} from "@/data/reference-quality.generated";
 
-export type DesignSystemType = "system" | "brand";
+export type DesignSystemType = "system" | "brand" | "reference";
 
 export interface DesignSystemInfo {
   refId: string;
@@ -14,6 +18,8 @@ export interface DesignSystemInfo {
   url: string;
   type: DesignSystemType;
   description: string;
+  qualityStatus: ReferenceQualityStatus;
+  verifiedAt: string | null;
   /** og:image / twitter:image harvested from the site (scripts/fetch-og-images.mjs).
    *  Missing when the site doesn't publish one — UI falls back to a logo thumbnail. */
   ogImage?: string;
@@ -22,6 +28,8 @@ export interface DesignSystemInfo {
 export function getDesignSystem(refId: string): DesignSystemInfo | null {
   const e = REGISTRY_BY_ID[refId];
   if (!e?.ds) return null;
+  const quality = REFERENCE_QUALITY_BY_ID[refId];
+  if (!quality) return null;
   return {
     refId,
     name: e.ds.name,
@@ -29,6 +37,8 @@ export function getDesignSystem(refId: string): DesignSystemInfo | null {
     type: e.ds.type,
     description: e.ds.description,
     ogImage: e.ds.ogImage,
+    qualityStatus: quality.status,
+    verifiedAt: quality.verifiedAt,
   };
 }
 
@@ -83,20 +93,28 @@ export function getRelatedReferences(id: string, n = 6): RelatedRef[] {
   }));
 }
 
-/** All design-system entries, full systems first (alphabetical within each type). */
+/** All 400 references; official systems first, then brand guides, then refs. */
 export function getAllDesignSystems(): DesignSystemInfo[] {
   return REGISTRY
-    .filter(e => e.ds)
-    .map(e => ({
-      refId: e.id,
-      name: e.ds!.name,
-      url: e.ds!.url,
-      type: e.ds!.type,
-      description: e.ds!.description,
-      ogImage: e.ds!.ogImage,
-    }))
+    .map<DesignSystemInfo>(e => {
+      const quality = REFERENCE_QUALITY_BY_ID[e.id];
+      if (!quality) throw new Error(`reference quality missing for ${e.id}`);
+      const name = e.displayName || e.name;
+      return {
+        refId: e.id,
+        name: e.ds?.name ?? name,
+        url: e.ds?.url ?? e.homepage,
+        type: (e.ds?.type ?? "reference") as DesignSystemType,
+        description: e.ds?.description
+          ?? `${name} DESIGN.md reference · ${e.category.replace(/-/g, " ")} · ${e.country}`,
+        ogImage: e.ds?.ogImage,
+        qualityStatus: quality.status,
+        verifiedAt: quality.verifiedAt,
+      };
+    })
     .sort((a, b) => {
-      if (a.type !== b.type) return a.type === "system" ? -1 : 1;
+      const order: Record<DesignSystemType, number> = { system: 0, brand: 1, reference: 2 };
+      if (a.type !== b.type) return order[a.type] - order[b.type];
       return a.name.localeCompare(b.name);
     });
 }

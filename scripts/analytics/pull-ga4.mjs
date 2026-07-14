@@ -8,6 +8,7 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { getAccessToken } from "./_google-auth.mjs";
 import { env, requireEnv, repoRoot } from "./_env.mjs";
+import { ga4CompleteDateRange } from "./_dates.mjs";
 
 const arg = (n, d) => {
   const i = process.argv.indexOf(`--${n}`);
@@ -18,7 +19,7 @@ const PROPERTY = requireEnv("GA4_PROPERTY_ID").replace(/^properties\//, "");
 const SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"];
 const API = `https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY}:runReport`;
 
-const dateRange = { startDate: `${DAYS}daysAgo`, endDate: "today" };
+const dateRange = ga4CompleteDateRange(DAYS);
 const dims = (...names) => names.map((name) => ({ name }));
 const mets = (...names) => names.map((name) => ({ name }));
 
@@ -79,6 +80,67 @@ const REPORTS = {
     limit: 200,
     optional: true,
   },
+  handoff: {
+    dimensions: dims("customEvent:kind", "customEvent:surface"),
+    metrics: mets("eventCount", "totalUsers"),
+    dimensionFilter: { filter: { fieldName: "eventName", stringFilter: { value: "act_handoff", matchType: "EXACT" } } },
+    orderBys: [{ metric: { metricName: "totalUsers" }, desc: true }],
+    limit: 50,
+    optional: true,
+  },
+  taxonomy_versions: {
+    dimensions: dims("customEvent:taxonomy_version"),
+    metrics: mets("eventCount", "totalUsers"),
+    orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
+    limit: 20,
+    optional: true,
+  },
+  source_formats: {
+    dimensions: dims("eventName", "customEvent:format", "customEvent:action"),
+    metrics: mets("eventCount", "totalUsers"),
+    dimensionFilter: {
+      filter: {
+        fieldName: "eventName",
+        inListFilter: { values: ["bld_source_format_view", "bld_source_format_export"] },
+      },
+    },
+    orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
+    limit: 50,
+    optional: true,
+  },
+  collections: {
+    dimensions: dims("eventName", "customEvent:collection", "customEvent:color_family", "customEvent:origin"),
+    metrics: mets("eventCount", "totalUsers"),
+    dimensionFilter: {
+      filter: {
+        fieldName: "eventName",
+        inListFilter: { values: ["col_view", "col_open", "col_builder_click"] },
+      },
+    },
+    orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
+    limit: 100,
+    optional: true,
+  },
+  reference_shares: {
+    dimensions: dims("customEvent:reference", "customEvent:location", "customEvent:artifact"),
+    metrics: mets("eventCount", "totalUsers"),
+    dimensionFilter: {
+      filter: { fieldName: "eventName", stringFilter: { value: "ref_share_copy", matchType: "EXACT" } },
+    },
+    orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
+    limit: 100,
+    optional: true,
+  },
+  wall_references: {
+    dimensions: dims("customEvent:reference"),
+    metrics: mets("eventCount", "totalUsers"),
+    dimensionFilter: {
+      filter: { fieldName: "eventName", stringFilter: { value: "wall_reference_open", matchType: "EXACT" } },
+    },
+    orderBys: [{ metric: { metricName: "totalUsers" }, desc: true }],
+    limit: 400,
+    optional: true,
+  },
 };
 
 async function runReport(token, spec) {
@@ -86,6 +148,7 @@ async function runReport(token, spec) {
     dateRanges: [dateRange],
     dimensions: spec.dimensions,
     metrics: spec.metrics,
+    ...(spec.dimensionFilter ? { dimensionFilter: spec.dimensionFilter } : {}),
     ...(spec.orderBys ? { orderBys: spec.orderBys } : {}),
     ...(spec.limit ? { limit: spec.limit } : {}),
     keepEmptyRows: false,
@@ -109,7 +172,8 @@ async function runReport(token, spec) {
 }
 
 const token = await getAccessToken(SCOPES);
-const out = { _meta: { property: PROPERTY, days: DAYS, pulledAt: new Date().toISOString() } };
+const out = { _meta: { property: PROPERTY, days: DAYS, dateRange, completeDaysOnly: true, pulledAt: new Date().toISOString() } };
+let requiredFailures = 0;
 for (const [name, spec] of Object.entries(REPORTS)) {
   try {
     out[name] = await runReport(token, spec);
@@ -117,6 +181,7 @@ for (const [name, spec] of Object.entries(REPORTS)) {
   } catch (e) {
     out[name] = { error: String(e.message || e) };
     console.error(`ga4:${name} FAILED${spec.optional ? " (optional)" : ""} — ${e.message || e}`);
+    if (!spec.optional) requiredFailures++;
   }
 }
 
@@ -125,3 +190,4 @@ mkdirSync(dir, { recursive: true });
 const file = path.join(dir, "ga4.json");
 writeFileSync(file, JSON.stringify(out, null, 2));
 console.log(`\nwrote ${path.relative(repoRoot, file)}`);
+if (requiredFailures > 0) process.exitCode = 1;

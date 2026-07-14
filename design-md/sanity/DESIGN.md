@@ -4,11 +4,11 @@ name: Sanity
 country: US
 category: backend-devops
 homepage: "https://www.sanity.io"
-primary_color: "#f03e2f"
+primary_color: "#ff5500"
 logo:
   type: simpleicons
   slug: sanity
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Sanity UI
@@ -17,414 +17,299 @@ ds:
   description: Sanity's accessible React toolkit for building apps with design tokens.
   og_image: "https://cdn.sanity.io/images/mos42crl/production/f378d0067c1406f4e3d3ed6874cd715c72f52d2c-1920x1080.png"
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
   colors:
-    canvas: "#0b0b0b"
-    black: "#000000"
-    cta: "#f36458"
-    interactive: "#0052ef"
-    blue-light: "#55beff"
-    blue-dim: "#afe3ff"
-    green: "#19d600"
+    brand-srgb-approx: "#ff5500"
+    canvas: "#ffffff"
+    foreground: "#0b0b0b"
     surface: "#212121"
-    border: "#353535"
-    white: "#ffffff"
-    light-gray: "#ededed"
-    silver: "#b9b9b9"
-    medium-gray: "#797979"
-    error: "#dd0000"
-    gpc-green: "#37cd84"
+    surface-subtle: "#ededed"
+    on-dark: "#ffffff"
+    muted: "#b9b9b9"
+    divider: "#d6d6d6"
+    focus-blue: "#0052ef"
   typography:
-    family: { sans: "waldenburgNormal", mono: "IBM Plex Mono" }
-    display-hero: { size: 112, weight: 400, lineHeight: 1.00, tracking: -4.48, use: "Maximum impact, compressed tracking" }
-    hero-secondary: { size: 72, weight: 400, lineHeight: 1.05, tracking: -2.88, use: "Large section headers" }
-    section:      { size: 48, weight: 400, lineHeight: 1.08, tracking: -1.68, use: "Primary section anchors" }
-    heading-lg:   { size: 38, weight: 400, lineHeight: 1.10, tracking: -1.14, use: "Feature section titles" }
-    heading-md:   { size: 32, weight: 425, lineHeight: 1.24, tracking: -0.32, use: "Card titles, subsection headers" }
-    heading-sm:   { size: 24, weight: 425, lineHeight: 1.24, tracking: -0.24, use: "Smaller feature headings" }
-    subheading:   { size: 20, weight: 425, lineHeight: 1.13, tracking: -0.2, use: "Sub-section markers" }
-    body-lg:      { size: 18, weight: 400, lineHeight: 1.50, tracking: -0.18, use: "Intro paragraphs, descriptions" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard body text" }
-    caption:      { size: 13, weight: 400, lineHeight: 1.30, tracking: -0.13, use: "Metadata, descriptions, tags" }
-    micro:        { size: 11, weight: 600, lineHeight: 1.00, use: "Uppercase labels, tiny badges" }
-    code:         { size: 15, weight: 400, lineHeight: 1.50, use: "Code blocks, technical content" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 96 }
-  rounded: { sm: 4, md: 6, lg: 12, full: 9999 }
-  shadow:
-    ring: "0px 0px 0px 1px #212121"
-    focus: "0 0 0 2px #0052ef"
+    family: { sans: "Waldenburg-75357948a2b6a39b", mono: "IBM Plex Mono-eea356736565d76d" }
+    display-hero: { size: 112, weight: 400, lineHeight: 112, tracking: -4.48, use: "Home H1" }
+    section: { size: 48, weight: 400, lineHeight: 51.84, tracking: -1.68, use: "Home section heading" }
+    body: { size: 15, weight: 400, lineHeight: 22.5, tracking: -0.15, use: "Repeated body and input text" }
+    control: { size: 13, weight: 400, lineHeight: 16.9, use: "Compact action labels" }
+  spacing: { xs: 4, sm: 8, md: 12, lg: 24, xl: 32 }
+  rounded: { input: 3, control: 99999 }
   components:
-    button-primary: { type: button, bg: "#f36458", fg: "#ffffff", radius: 9999, padding: "8px 16px", font: "16px/400 waldenburgNormal", use: "Primary CTA pill, hover #0052ef" }
-    button-secondary: { type: button, bg: "#0b0b0b", fg: "#b9b9b9", radius: 9999, padding: "8px 12px", use: "Dark pill, hover #0052ef" }
-    button-outlined: { type: button, bg: "#ffffff", fg: "#0b0b0b", radius: 9999, padding: "8px", use: "Light pill, 1px #0b0b0b border, hover #0052ef" }
-    button-ghost: { type: button, bg: "#212121", fg: "#b9b9b9", radius: 6, padding: "0px 12px", use: "Subtle button, 1px #212121 border, hover #0052ef" }
-    button-label: { type: button, bg: "#212121", fg: "#b9b9b9", font: "11px/600 waldenburgNormal", use: "Uppercase tab-like nav and filters" }
-    card-dark: { type: card, bg: "#212121", fg: "#ffffff", radius: 6, padding: "24px", use: "Dark content card, 1px #353535 border" }
-    card-feature: { type: card, bg: "#0b0b0b", radius: 12, padding: "32px", use: "Full-bleed feature card with overlaid text" }
-    input-text: { type: input, bg: "#0b0b0b", fg: "#b9b9b9", radius: 3, padding: "8px 12px", use: "Text input, 1px #212121 border, focus 2px #0052ef ring" }
-    badge-subtle: { type: badge, bg: "#ffffff", fg: "#0b0b0b", radius: 9999, padding: "8px", font: "13px", use: "Neutral subtle pill" }
-    badge-filled: { type: badge, bg: "#0b0b0b", fg: "#ffffff", radius: 9999, padding: "8px", font: "13px", use: "Neutral filled pill" }
+    button-brand: { type: button, fg: "#0b0b0b", radius: 99999, padding: "4px 12px", font: "13px/400 IBM Plex Mono-eea356736565d76d", hover: "near-black fill with P3-orange text", use: "P3 orange pill; home + pricing surfaces" }
+    button-inverse: { type: button, bg: "#0b0b0b", fg: "#ffffff", radius: 99999, padding: "4px 12px", font: "13px/400 IBM Plex Mono-eea356736565d76d", hover: "near-black fill with white text", use: "Compact inverse pill" }
+    button-light: { type: button, bg: "#ededed", fg: "#0b0b0b", radius: 99999, padding: "4px 12px", font: "13px/400 IBM Plex Mono-eea356736565d76d", hover: "light-gray fill with near-black text", pressed: "light-gray fill with near-black text", use: "Compact light pill" }
+    input-text: { type: input, bg: "#0b0b0b", fg: "#b9b9b9", radius: 3, padding: "8px 12px", font: "15px/400 Waldenburg-75357948a2b6a39b", focus: "P3-orange border, #212121 fill, white text", use: "Home textarea" }
   components_harvested: true
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, url: "https://www.sanity.io/", inspected: "2026-07-13" }
+    - { id: surface-2, url: "https://www.sanity.io/pricing", inspected: "2026-07-13" }
+    - { id: surface-3, url: "https://www.sanity.io/pricing?ref=navbar", inspected: "2026-07-13" }
+  sources:
+    - { id: home, url: "https://www.sanity.io/", kind: product-surface, captured: "2026-07-13" }
+    - { id: pricing, url: "https://www.sanity.io/pricing", kind: product-surface, captured: "2026-07-13" }
+    - { id: pricing-navbar, url: "https://www.sanity.io/pricing?ref=navbar", kind: product-surface, captured: "2026-07-13" }
+  claims:
+    "tokens.colors.brand-srgb-approx": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.colors.canvas": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.colors.foreground": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.colors.surface": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.colors.surface-subtle": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.colors.on-dark": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.colors.muted": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.colors.divider": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.colors.focus-blue": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.family.sans": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.family.mono": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.display-hero.size": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.display-hero.weight": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.display-hero.lineHeight": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.display-hero.tracking": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.display-hero.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.section.size": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.section.weight": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.section.lineHeight": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.section.tracking": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.section.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.body.size": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.body.weight": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.body.lineHeight": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.body.tracking": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.body.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.control.size": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.control.weight": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.control.lineHeight": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.typography.control.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.rounded.input": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.rounded.control": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.spacing.xs": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.spacing.sm": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.spacing.md": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.spacing.lg": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.spacing.xl": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-brand.type": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-brand.fg": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-brand.radius": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-brand.padding": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-brand.font": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-brand.hover": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-brand.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-inverse.type": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-inverse.bg": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-inverse.fg": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-inverse.radius": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-inverse.padding": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-inverse.font": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-inverse.hover": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-inverse.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-light.type": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-light.bg": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-light.fg": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-light.radius": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-light.padding": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-light.font": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-light.hover": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-light.pressed": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-light.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.input-text.type": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.input-text.bg": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.input-text.fg": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.input-text.radius": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.input-text.padding": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.input-text.font": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.input-text.focus": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.input-text.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
+  conflicts: []
 ---
 
 # Design System Inspiration of Sanity
 
 ## 1. Visual Theme & Atmosphere
 
-Sanity's website is a developer-content platform rendered as a nocturnal command center -- dark, precise, and deeply structured. The entire experience sits on a near-black canvas (`#0b0b0b`) that reads less like a "dark mode toggle" and more like the natural state of a tool built for people who live in terminals. Where most CMS marketing pages reach for friendly pastels and soft illustration, Sanity leans into the gravity of its own product: structured content deserves a structured stage.
+Sanity is a configurable backend and content platform for teams building content-driven websites, apps, and AI experiences. Its current positioning is the Content Operating System: structured content, an extensible Studio, and APIs/automation that let organizations shape the content workflow around their own business. The public site makes that engineering posture tangible with a deliberately spare mix of editorial-sized Waldenburg type, compact IBM Plex Mono controls, and hard-edged light/dark panels rather than a decorative CMS aesthetic.
 
-The signature typographic voice is waldenburgNormal -- a distinctive, slightly geometric sans-serif with tight negative letter-spacing (-0.32px to -4.48px at display sizes) that gives headlines a compressed, engineered quality. At 112px hero scale with -4.48px tracking, the type feels almost machined -- like precision-cut steel letterforms. This is paired with IBM Plex Mono for code and technical labels, creating a dual-register voice: editorial authority meets developer credibility.
-
-What makes Sanity distinctive is the interplay between its monochromatic dark palette and vivid, saturated accent punctuation. The neutral scale runs from pure black through a tightly controlled gray ramp (`#0b0b0b` -> `#212121` -> `#353535` -> `#797979` -> `#b9b9b9` -> `#ededed` -> `#ffffff`) with no warm or cool bias -- just pure, achromatic precision. Against this disciplined backdrop, a neon green accent (display-p3 green) and electric blue (`#0052ef`) land with the impact of signal lights in a dark control room. The orange-red CTA (`#f36458`) provides the only warm touch in an otherwise cool system.
+The observed marketing surface uses a white base (`#ffffff`) and near-black foreground (`#0b0b0b`), with the P3 orange `color(display-p3 1 0.3333 0)` as the conspicuous action color. That P3 value is the primary live value; `#ff5500` is included below only as an sRGB approximation for consumers that require hex. Pills recur in compact navigation/pricing actions, while the home hero has a larger 24px Waldenburg action. Sanity’s 2025 launch framed this product direction as a move from CMS category language toward a Content Operating System, with AI and workflow automation as part of the platform rather than a separate visual theme.
 
 **Key Characteristics:**
-- Near-black canvas (`#0b0b0b`) as the default, natural environment -- not a dark "mode" but the primary identity
-- waldenburgNormal with extreme negative tracking at display sizes, creating a precision-engineered typographic voice
-- Pure achromatic gray scale -- no warm or cool undertones, pure neutral discipline
-- Vivid accent punctuation: neon green, electric blue (`#0052ef`), and coral-red (`#f36458`) against the dark field
-- Pill-shaped primary buttons (99999px radius) contrasting with subtle rounded rectangles (3-6px) for secondary actions
-- IBM Plex Mono as the technical counterweight to the editorial display face
-- Full-bleed dark sections with content contained in measured max-width containers
-- Hover states that shift to electric blue (`#0052ef`) across all interactive elements -- a consistent "activation" signal
+- White and near-black base surfaces with a P3-orange action signal
+- Loaded Waldenburg for editorial content and loaded IBM Plex Mono for compact controls
+- Strongly rounded action pills (99999px in the observed product-marketing controls)
+- Small, exact spacing increments: 4px/8px/12px recur in controls; 24px/32px appear in hero actions
+- Light/dark inversion is an observed hover treatment for the P3-orange action, not a general rule for every control
 
 ## 2. Color Palette & Roles
 
-### Primary Brand
-- **Sanity Black** (`#0b0b0b`): The primary canvas and dominant surface color. Not pure black but close enough to feel absolute. The foundation of the entire visual identity.
-- **Pure Black** (`#000000`): Used for maximum-contrast moments, deep overlays, and certain border accents.
-- **Sanity Red** (`#f36458`): The primary CTA and brand accent -- a warm coral-red that serves as the main call-to-action color. Used for "Get Started" buttons and primary conversion points.
+### Brand Action
+- **Sanity Orange (live P3)** (`color(display-p3 1 0.3333 0)`): Observed as background and border on home and pricing action pills. The hex `#ff5500` is an sRGB approximation retained for token consumers; it is not a replacement for the P3 source value.
+- **Near Black** (`#0b0b0b`): Primary foreground, dark button fill, and the hover inversion partner for the orange action.
 
-### Accent & Interactive
-- **Electric Blue** (`#0052ef`): The universal hover/active state color across the entire system. Buttons, links, and interactive elements all shift to this blue on hover. Also used as `--color-blue-700` for focus rings and active states.
-- **Light Blue** (`#55beff` / `#afe3ff`): Secondary blue variants used for accent backgrounds, badges, and dimmed blue surfaces.
-- **Neon Green** (`color(display-p3 .270588 1 0)`): A vivid, wide-gamut green used as `--color-fg-accent-green` for success states and premium feature highlights. Falls back to `#19d600` in sRGB.
-- **Accent Magenta** (`color(display-p3 .960784 0 1)`): A vivid wide-gamut magenta for specialized accent moments.
+### Surfaces & Text
+- **White** (`#ffffff`): Observed base background and text on inverse controls.
+- **Dark Gray** (`#212121`): Observed textarea background and a dark secondary surface.
+- **Light Gray** (`#ededed`): Compact light-pill fill across home and pricing.
+- **Silver** (`#b9b9b9`): Muted text and the observed hover fill of one pricing control.
+- **Divider Gray** (`#d6d6d6`): Observed dialog border.
 
-### Surface & Background
-- **Near Black** (`#0b0b0b`): Default page background and primary surface.
-- **Dark Gray** (`#212121`): Elevated surface color for cards, secondary containers, input backgrounds, and subtle layering above the base canvas.
-- **Medium Dark** (`#353535`): Tertiary surface and border color for creating depth between dark layers.
-- **Pure White** (`#ffffff`): Used for inverted sections, light-on-dark text, and specific button surfaces.
-- **Light Gray** (`#ededed`): Light surface for inverted/light sections and subtle background tints.
-
-### Neutrals & Text
-- **White** (`#ffffff`): Primary text color on dark surfaces, maximum legibility.
-- **Silver** (`#b9b9b9`): Secondary text, body copy on dark surfaces, muted descriptions, and placeholder text.
-- **Medium Gray** (`#797979`): Tertiary text, metadata, timestamps, and de-emphasized content.
-- **Charcoal** (`#212121`): Text on light/inverted surfaces.
-- **Near Black Text** (`#0b0b0b`): Primary text on white/light button surfaces.
-
-### Semantic
-- **Error Red** (`#dd0000`): Destructive actions, validation errors, and critical warnings -- a pure, high-saturation red.
-- **GPC Green** (`#37cd84`): Privacy/compliance indicator green.
-- **Focus Ring Blue** (`#0052ef`): Focus ring color for accessibility, matching the interactive blue.
-
-### Border System
-- **Dark Border** (`#0b0b0b`): Primary border on dark containers -- barely visible, maintaining minimal containment.
-- **Subtle Border** (`#212121`): Standard border for inputs, textareas, and card edges on dark surfaces.
-- **Medium Border** (`#353535`): More visible borders for emphasized containment and dividers.
-- **Light Border** (`#ffffff`): Border on inverted/light elements or buttons needing contrast separation.
-- **Orange Border** (`color(display-p3 1 0.3333 0)`): Special accent border for highlighted/featured elements.
+### State-specific Evidence
+- **Blue** (`#0052ef`): Observed as a border/background in the captured surfaces; its exact component assignment is not generalized here.
+- The focused home textarea uses the P3-orange border. No error/success palette is promoted because this capture did not observe those states.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display / Headline**: `waldenburgNormal`, fallback: `waldenburgNormal Fallback, ui-sans-serif, system-ui`
-- **Body / UI**: `waldenburgNormal`, fallback: `waldenburgNormal Fallback, ui-sans-serif, system-ui`
-- **Code / Technical**: `IBM Plex Mono`, fallback: `ibmPlexMono Fallback, ui-monospace`
-- **Fallback / CJK**: `Helvetica`, fallback: `Arial, Hiragino Sans GB, STXihei, Microsoft YaHei, WenQuanYi Micro Hei`
-
-*Note: waldenburgNormal is a custom typeface. For external implementations, use Inter or Space Grotesk as the sans substitute (geometric, slightly condensed feel). IBM Plex Mono is available on Google Fonts.*
+- **Live product/marketing sans:** `Waldenburg-75357948a2b6a39b` is both computed and loaded (832 observed uses across body, headings, buttons, inputs, and dialogs). The current evidence exposes no browser-loadable source URL, so the family is preserved by its delivered family name only; no substitute is authorized.
+- **Live product/marketing mono:** `IBM Plex Mono-eea356736565d76d` is both computed and loaded (568 observed uses across controls, labels, and content). The upstream IBM Plex family is distributed under the SIL Open Font License 1.1 by IBM; that license source does not establish a separate Sanity font asset.
+- **Declared only:** Inter/Inter var appear in third-party `assets.qualified.com` declarations with zero visible uses; they are excluded from the UI family tokens.
+- **System/embedded chrome:** Helvetica is present only in the cookie-consent dialog (three uses); it is system/embedded chrome, not a Sanity product or marketing type token.
 
 ### Hierarchy
 
 | Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
 |------|------|------|--------|-------------|----------------|-------|
-| Display / Hero | waldenburgNormal | 112px (7rem) | 400 | 1.00 (tight) | -4.48px | Maximum impact, compressed tracking |
-| Hero Secondary | waldenburgNormal | 72px (4.5rem) | 400 | 1.05 (tight) | -2.88px | Large section headers |
-| Section Heading | waldenburgNormal | 48px (3rem) | 400 | 1.08 (tight) | -1.68px | Primary section anchors |
-| Heading Large | waldenburgNormal | 38px (2.38rem) | 400 | 1.10 (tight) | -1.14px | Feature section titles |
-| Heading Medium | waldenburgNormal | 32px (2rem) | 425 | 1.24 (tight) | -0.32px | Card titles, subsection headers |
-| Heading Small | waldenburgNormal | 24px (1.5rem) | 425 | 1.24 (tight) | -0.24px | Smaller feature headings |
-| Subheading | waldenburgNormal | 20px (1.25rem) | 425 | 1.13 (tight) | -0.2px | Sub-section markers |
-| Body Large | waldenburgNormal | 18px (1.13rem) | 400 | 1.50 | -0.18px | Intro paragraphs, descriptions |
-| Body | waldenburgNormal | 16px (1rem) | 400 | 1.50 | normal | Standard body text |
-| Body Small | waldenburgNormal | 15px (0.94rem) | 400 | 1.50 | -0.15px | Compact body text |
-| Caption | waldenburgNormal | 13px (0.81rem) | 400-500 | 1.30-1.50 | -0.13px | Metadata, descriptions, tags |
-| Small Caption | waldenburgNormal | 12px (0.75rem) | 400 | 1.50 | -0.12px | Footnotes, timestamps |
-| Micro / Label | waldenburgNormal | 11px (0.69rem) | 500-600 | 1.00-1.50 | normal | Uppercase labels, tiny badges |
-| Code Body | IBM Plex Mono | 15px (0.94rem) | 400 | 1.50 | normal | Code blocks, technical content |
-| Code Caption | IBM Plex Mono | 13px (0.81rem) | 400-500 | 1.30-1.50 | normal | Inline code, small technical labels |
-| Code Micro | IBM Plex Mono | 10-12px | 400 | 1.30-1.50 | normal | Tiny code labels, uppercase tags |
+| Display / Hero | Waldenburg | 112px | 400 | 112px | -4.48px | One home H1 observation |
+| Hero / CTA | Waldenburg | 24px | 400 | 26.4px | -0.24px | Home action pill |
+| Section heading | Waldenburg | 48px | 400 | 51.84px | -1.68px | Home heading observation |
+| Body compact | Waldenburg | 15px | 400 | 22.5px | -0.15px | Repeated body/input observation |
+| Body | Waldenburg | 16px | 400 | 24px | normal | Repeated content observation |
+| Control label | IBM Plex Mono | 13px | 400 | 16.9px | normal | Repeated compact action and label observation |
 
 ### Principles
-- **Extreme negative tracking at scale**: Display headings at 72px+ use aggressive negative letter-spacing (-2.88px to -4.48px), creating a tight, engineered quality that distinguishes Sanity from looser editorial typography.
-- **Single font, multiple registers**: waldenburgNormal handles both editorial display and functional UI text. The weight range is narrow (400-425 for most, 500-600 only for tiny labels), keeping the voice consistent.
-- **OpenType feature control**: Typography uses deliberate feature settings including `"cv01", "cv11", "cv12", "cv13", "ss07"` for display sizes and `"calt" 0` for body text, fine-tuning character alternates for different contexts.
-- **Tight headings, relaxed body**: Headings use 1.00-1.24 line-height (extremely tight), while body text breathes at 1.50. This contrast creates clear visual hierarchy.
-- **Uppercase for technical labels**: IBM Plex Mono captions and small labels frequently use `text-transform: uppercase` with tight line-heights, creating a "system readout" aesthetic for technical metadata.
+- **Two delivered registers**: Waldenburg handles the editorial scale; IBM Plex Mono is the dense utility/control register.
+- **Tracking is evidence-bound**: The capture shows increasingly negative tracking at the observed 24px, 48px, 72px, and 112px sizes. It does not establish a global OpenType-feature policy.
+- **No fallback substitution**: a loaded but source-less Waldenburg delivery is still a live family fact; external implementations must label it unavailable rather than silently render Inter or a system font as Waldenburg.
 
 ## 4. Component Stylings
 
-### Buttons
+### Actions
 
-**Primary CTA (Pill)**
-- Background: Sanity Red (`#f36458`)
-- Text: White (`#ffffff`)
-- Padding: 8px 16px
-- Border Radius: 99999px (full pill)
-- Border: none
-- Hover: Electric Blue (`#0052ef`) background, white text
-- Font: 16px waldenburgNormal, weight 400
+**Brand compact pill**
+- Background: `color(display-p3 1 0.3333 0)`
+- Text: `#0b0b0b`
+- Border: 1px solid `color(display-p3 1 0.3333 0)`
+- Radius: 99999px
+- Padding: 4px 12px
+- Font: 13px / 400 / IBM Plex Mono-eea356736565d76d
+- Hover: Background `#0b0b0b`; Text `color(display-p3 1 0.3333 0)`
+- Use: Home and pricing action links; `home::[data-omd-capture="14"]`, `surface-2::[data-omd-capture="10"]`, and `surface-3::[data-omd-capture="10"]`.
 
-**Secondary (Dark Pill)**
-- Background: Near Black (`#0b0b0b`)
-- Text: Silver (`#b9b9b9`)
-- Padding: 8px 12px
-- Border Radius: 99999px (full pill)
-- Border: none
-- Hover: Electric Blue (`#0052ef`) background, white text
+**Brand hero pill**
+- Background: `color(display-p3 1 0.3333 0)`
+- Text: `#0b0b0b`
+- Border: 1px solid `color(display-p3 1 0.3333 0)`
+- Radius: 99999px
+- Padding: 8px 32px
+- Font: 24px / 400 / Waldenburg-75357948a2b6a39b
+- Hover: Background `#0b0b0b`; Text `color(display-p3 1 0.3333 0)`
+- Pressed: Background `#0b0b0b`; Text `#0b0b0b`
+- Use: Home hero action only; `home::[data-omd-capture="15"]`.
 
-**Outlined (Light Pill)**
-- Background: White (`#ffffff`)
-- Text: Near Black (`#0b0b0b`)
-- Padding: 8px
-- Border Radius: 99999px (full pill)
-- Border: 1px solid `#0b0b0b`
-- Hover: Electric Blue (`#0052ef`) background, white text
-
-**Ghost / Subtle**
-- Background: Dark Gray (`#212121`)
-- Text: Silver (`#b9b9b9`)
-- Padding: 0px 12px
-- Border Radius: 5px
-- Border: 1px solid `#212121`
-- Hover: Electric Blue (`#0052ef`) background, white text
-
-**Uppercase Label Button**
-- Font: 11px waldenburgNormal, weight 600, uppercase
-- Background: transparent or `#212121`
-- Text: Silver (`#b9b9b9`)
-- Letter-spacing: normal
-- Used for tab-like navigation and filter controls
-
-### Cards
-
-**Dark Content Card**
-- Background: `#212121`
-- Border: 1px solid `#353535` or `#212121`
-- Border Radius: 6px
-- Padding: 24px
-- Text: White (`#ffffff`) for titles, Silver (`#b9b9b9`) for body
-- Hover: subtle border color shift or elevation change
-
-**Feature Card (Full-bleed)**
-- Background: `#0b0b0b` or full-bleed image/gradient
-- Border: none or 1px solid `#212121`
-- Border Radius: 12px
-- Padding: 32-48px
-- Contains large imagery with overlaid text
-
-### Inputs
-
-**Text Input / Textarea**
-- Background: Near Black (`#0b0b0b`)
-- Text: Silver (`#b9b9b9`)
-- Border: 1px solid `#212121`
-- Padding: 8px 12px
-- Border Radius: 3px
-- Focus: outline with `var(--focus-ring-color)` (blue), 2px solid
-- Focus background: shifts to deep cyan (`#072227`)
-
-**Search Input**
+**Inverse compact pill**
 - Background: `#0b0b0b`
-- Text: Silver (`#b9b9b9`)
-- Padding: 0px 12px
-- Border Radius: 3px
-- Placeholder: Medium Gray (`#797979`)
+- Text: `#ffffff`
+- Border: 1px solid `#0b0b0b`
+- Radius: 99999px
+- Padding: 4px 12px
+- Font: 13px / 400 / IBM Plex Mono-eea356736565d76d
+- Hover: Background `#0b0b0b`; Text `#ffffff`
+- Use: Home and pricing compact inverse actions; `home::[data-omd-capture="13"]` and matching pricing surfaces.
 
-### Navigation
+**Light compact pill**
+- Background: `#ededed`
+- Text: `#0b0b0b`
+- Radius: 99999px
+- Padding: 4px 12px
+- Font: 13px / 400 / IBM Plex Mono-eea356736565d76d
+- Hover: Background `#ededed`; Text `#0b0b0b`
+- Pressed: Background `#ededed`; Text `#0b0b0b`
+- Use: Repeated home/pricing compact control; `home::[data-omd-capture="6"]` and matching pricing surfaces.
 
-**Top Navigation**
-- Background: Near Black (`#0b0b0b`) with backdrop blur
-- Height: auto, compact padding
-- Logo: left-aligned, Sanity wordmark
-- Links: waldenburgNormal 16px, Silver (`#b9b9b9`)
-- Link Hover: Electric Blue via `--color-fg-accent-blue`
-- CTA Button: Sanity Red pill button right-aligned
-- Separator: 1px border-bottom `#212121`
+### Form field
 
-**Footer**
-- Background: Near Black (`#0b0b0b`)
-- Multi-column link layout
-- Links: Silver (`#b9b9b9`), hover to blue
-- Section headers: White (`#ffffff`), 13px uppercase IBM Plex Mono
+**Home textarea**
+- Background: `#0b0b0b`
+- Text: `#b9b9b9`
+- Border: 1px solid `#212121`
+- Radius: 3px
+- Padding: 8px 12px
+- Font: 15px / 400 / Waldenburg-75357948a2b6a39b
+- Focus: Border `color(display-p3 1 0.3333 0)`; Background `#212121`; Text `#ffffff`
+- Use: Home form only; `home::[data-omd-capture="22"]` and `::state-focus`.
 
-### Badges / Pills
+### Dialog
 
-**Neutral Subtle**
-- Background: White (`#ffffff`)
-- Text: Near Black (`#0b0b0b`)
-- Padding: 8px
-- Font: 13px
-- Border Radius: 99999px
-
-**Neutral Filled**
-- Background: Near Black (`#0b0b0b`)
-- Text: White (`#ffffff`)
-- Padding: 8px
-- Font: 13px
-- Border Radius: 99999px
+**Pricing dialog**
+- Background: `#ffffff`
+- Text: `#0b0b0b`
+- Border: 1px solid `#d6d6d6`
+- Padding: 16px
+- Font: 14px / 400 / Waldenburg-75357948a2b6a39b
+- Use: Observed open after pricing controls; `surface-2::[data-omd-interaction-capture="dialog-0-0"]` and repeated on the query-ref pricing capture.
 
 ## 5. Layout Principles
 
-### Spacing System
-Base unit: **8px**
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| space-1 | 1px | Hairline gaps, border-like spacing |
-| space-2 | 2px | Minimal internal padding |
-| space-3 | 4px | Tight component internal spacing |
-| space-4 | 6px | Small element gaps |
-| space-5 | 8px | Base unit -- button padding, input padding, badge padding |
-| space-6 | 12px | Standard component gap, button horizontal padding |
-| space-7 | 16px | Section internal padding, card spacing |
-| space-8 | 24px | Large component padding, card internal spacing |
-| space-9 | 32px | Section padding, container gutters |
-| space-10 | 48px | Large section vertical spacing |
-| space-11 | 64px | Major section breaks |
-| space-12 | 96-120px | Hero vertical padding, maximum section spacing |
-
-### Grid & Container
-- Max content width: ~1440px (inferred from breakpoints)
-- Page gutter: 32px on desktop, 16px on mobile
-- Content sections use full-bleed backgrounds with centered, max-width content
-- Multi-column layouts: 2-3 columns on desktop, single column on mobile
-- Card grids: CSS Grid with consistent gaps (16-24px)
-
-### Whitespace Philosophy
-Sanity uses aggressive vertical spacing between sections (64-120px) to create breathing room on the dark canvas. Within sections, spacing is tighter (16-32px), creating dense information clusters separated by generous voids. This rhythm gives the page a "slides" quality -- each section feels like its own focused frame.
-
-### Border Radius Scale
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| radius-xs | 3px | Inputs, textareas, subtle rounding |
-| radius-sm | 4-5px | Secondary buttons, small cards, tags |
-| radius-md | 6px | Standard cards, containers |
-| radius-lg | 12px | Large cards, feature containers, forms |
-| radius-pill | 99999px | Primary buttons, badges, nav pills |
+The retained spacing observations are 4px, 8px, 12px, 24px, and 32px. They occur in the selector-bound controls documented in §4; they do not establish a global scale, grid, content width, gutter, or card layout. The retained radii are 3px for the home textarea and 99999px for the observed compact and hero action pills. No other radius scale is canonical.
 
 ## 6. Depth & Elevation
 
-### Shadow System
-
-| Level | Value | Usage |
-|-------|-------|-------|
-| Level 0 (Flat) | none | Default state for most elements -- dark surfaces create depth through color alone |
-| Level 1 (Subtle) | 0px 0px 0px 1px `#212121` | Border-like shadow for minimal containment without visible borders |
-| Level 2 (Focus) | 0 0 0 2px `var(--color-blue-500)` | Focus ring for inputs and interactive elements |
-| Level 3 (Overlay) | Backdrop blur + semi-transparent dark | Navigation overlay, modal backgrounds |
-
-### Depth Philosophy
-Sanity's depth system is almost entirely **colorimetric** rather than shadow-based. Elevation is communicated through surface color shifts: `#0b0b0b` (ground) -> `#212121` (elevated) -> `#353535` (prominent) -> `#ffffff` (inverted/highest). This approach is native to dark interfaces where traditional drop shadows would be invisible. The few shadows that exist are ring-based (0px 0px 0px Npx) or blur-based (backdrop-filter) rather than offset shadows, maintaining the flat, precision-engineered aesthetic.
-
-Border-based containment (1px solid `#212121` or `#353535`) serves as the primary spatial separator, with the border darkness calibrated to be visible but not dominant. The system avoids "floating card" aesthetics -- everything feels mounted to the surface rather than hovering above it.
+The only retained elevation observation is the pricing dialog: `rgba(0, 0, 0, 0.1) 0px 10px 15px -3px` and `rgba(0, 0, 0, 0.1) 0px 4px 6px -4px`, alongside its `#ffffff` surface and `#d6d6d6` border. No general shadow scale, overlay, focus ring, card elevation, or depth philosophy is promoted from this packet.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use the achromatic gray scale as the foundation -- maintain pure neutral discipline with no warm/cool tinting
-- Apply Electric Blue (`#0052ef`) consistently as the universal hover/active state across all interactive elements
-- Use extreme negative letter-spacing (-2px to -4.48px) on display headings 48px and above
-- Keep primary CTAs as full-pill shapes (99999px radius) with the coral-red (`#f36458`)
-- Use IBM Plex Mono uppercase for technical labels, tags, and system metadata
-- Communicate depth through surface color (dark-to-light) rather than shadows
-- Maintain generous vertical section spacing (64-120px) on the dark canvas
-- Use `"cv01", "cv11", "cv12", "cv13", "ss07"` OpenType features for display typography
+- Preserve `color(display-p3 1 0.3333 0)` as the source value for the observed orange actions; use `#ff5500` only where an sRGB hex is technically required.
+- Keep the observed compact action geometry together: 99999px radius, 4px 12px padding, and 13px / 400 IBM Plex Mono.
+- Keep the observed hero action separate from compact controls: 8px 32px padding and 24px / 400 Waldenburg.
+- Use the captured light/dark inversion only for the listed P3-orange action variants.
+- Preserve the home textarea's 3px radius and captured P3-orange focus border when reproducing that field.
 
 ### Don't
-- Don't introduce warm or cool color tints to the neutral scale -- Sanity's grays are pure achromatic
-- Don't use drop shadows for elevation -- dark interfaces demand colorimetric depth
-- Don't apply border-radius between 13px and 99998px -- the system jumps from 12px (large card) directly to pill (99999px)
-- Don't mix the coral-red CTA with the electric blue interactive color in the same element
-- Don't use heavy font weights (700+) -- the system maxes out at 600 and only for 11px uppercase labels
-- Don't place light text on light surfaces or dark text on dark surfaces without checking the gray-on-gray contrast ratio
-- Don't use traditional offset box-shadows -- ring shadows (0 0 0 Npx) or border-based containment only
-- Don't break the tight line-height on headings -- 1.00-1.24 is the range, never go to 1.5+ for display text
+- Don't replace loaded Waldenburg with Inter, a system stack, or another plausible substitute.
+- Don't promote the cookie dialog's Helvetica or declared-only Inter assets into Sanity UI typography.
+- Don't treat the pricing dialog or marketing controls as Sanity Studio application components.
+- Don't generalize `#0052ef`, cards, responsive breakpoints, or unobserved error/success states from this capture.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-
-| Name | Width | Behavior |
-|------|-------|----------|
-| Desktop XL | >= 1640px | Full layout, maximum content width |
-| Desktop | >= 1440px | Standard desktop layout |
-| Desktop Compact | >= 1200px | Slightly condensed desktop |
-| Laptop | >= 1100px | Reduced column widths |
-| Tablet Landscape | >= 960px | 2-column layouts begin collapsing |
-| Tablet | >= 768px | Transition zone, some elements stack |
-| Mobile Large | >= 720px | Near-tablet layout |
-| Mobile | >= 480px | Single-column, stacked layout |
-| Mobile Small | >= 376px | Minimum supported width |
-
-### Collapsing Strategy
-- **Navigation**: Horizontal links collapse to hamburger menu below 768px
-- **Hero typography**: Scales from 112px -> 72px -> 48px -> 38px across breakpoints, maintaining tight letter-spacing ratios
-- **Grid layouts**: 3-column -> 2-column at ~960px, single-column below 768px
-- **Card grids**: Horizontal scrolling on mobile instead of wrapping (preserving card aspect ratios)
-- **Section spacing**: Vertical padding reduces by ~40% on mobile (120px -> 64px -> 48px)
-- **Button sizing**: CTA pills maintain padding but reduce font size; ghost buttons stay fixed
-- **Code blocks**: Horizontal scroll with preserved monospace formatting
-
-### Mobile-Specific Adjustments
-- Full-bleed sections extend edge-to-edge with 16px internal gutters
-- Touch targets: minimum 44px for all interactive elements
-- Heading letter-spacing relaxes slightly at mobile sizes (less aggressive negative tracking)
-- Image containers switch from fixed aspect ratios to full-width with auto height
+This packet contains desktop `1440×900` captures only. No breakpoint, collapse, mobile type, gutter, touch-target, or responsive component claim is retained. A future responsive capture must establish those values independently.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
 ```
-Background:      #0b0b0b (near-black canvas)
-Surface:         #212121 (elevated cards/containers)
-Border:          #353535 (visible) / #212121 (subtle)
-Text Primary:    #ffffff (white on dark)
-Text Secondary:  #b9b9b9 (silver on dark)
-Text Tertiary:   #797979 (medium gray)
-CTA:             #f36458 (coral-red)
-Interactive:     #0052ef (electric blue, all hovers)
-Success:         #19d600 (green, sRGB fallback)
-Error:           #dd0000 (pure red)
-Light Surface:   #ededed / #ffffff (inverted sections)
+Base:            #ffffff (observed home background)
+Foreground:      #0b0b0b
+Dark surface:    #212121 (observed textarea focus fill)
+Light pill:      #ededed
+Muted text:      #b9b9b9
+Orange action:   color(display-p3 1 0.3333 0) (source value)
+Orange fallback: #ff5500 (sRGB approximation only)
+Blue:            #0052ef (observed, role not generalized)
 ```
 
 ### Example Prompts
 
 **Landing page section:**
-"Create a feature section with a near-black (#0b0b0b) background. Use a 48px heading in Inter with -1.68px letter-spacing, white text. Below it, 16px body text in #b9b9b9 with 1.50 line-height. Include a coral-red (#f36458) pill button with white text and a secondary dark (#0b0b0b) pill button with #b9b9b9 text. Both buttons hover to #0052ef blue."
+"Create a public marketing action using the captured P3-orange source value, #0b0b0b text, 99999px radius, 4px 12px padding, and 13px/400 IBM Plex Mono. On hover, invert it to #0b0b0b with P3-orange text."
 
 **Card grid:**
-"Build a 3-column card grid on a #0b0b0b background. Each card has a #212121 surface, 1px solid #353535 border, 6px border-radius, and 24px padding. Card titles are 24px white with -0.24px letter-spacing. Body text is 13px #b9b9b9. Add a 13px IBM Plex Mono uppercase tag in #797979 at the top of each card."
+"Do not generate a canonical Sanity card grid from this reference. The supplied evidence did not establish a reusable marketing card variant."
 
 **Form section:**
-"Design a contact form on a #0b0b0b background. Inputs have #0b0b0b background, 1px solid #212121 border, 3px border-radius, 8px 12px padding, and #b9b9b9 placeholder text. Focus state shows a 2px blue (#0052ef) ring. Submit button is a full-width coral-red (#f36458) pill. Include a 13px #797979 helper text below each field."
+"Reproduce the observed home textarea only: #0b0b0b fill, 1px #212121 border, 3px radius, 8px 12px padding, 15px/400 Waldenburg, and a P3-orange focus border with #212121 focus fill."
 
 **Navigation bar:**
-"Create a sticky top navigation on #0b0b0b with backdrop blur. Left: brand text in 15px white. Center/right: nav links in 16px #b9b9b9 that hover to blue. Far right: a coral-red (#f36458) pill CTA button. Bottom border: 1px solid #212121."
+"Keep navigation claims to the captured compact pill controls; sticky behavior, backdrop blur, and a universal link-hover rule were not retained as canonical evidence."
 
 ### Iteration Guide
-1. **Start dark**: Begin with `#0b0b0b` background, `#ffffff` primary text, `#b9b9b9` secondary text
-2. **Add structure**: Use `#212121` surfaces and `#353535` borders for containment -- no shadows
-3. **Apply typography**: Inter (or Space Grotesk) with tight letter-spacing on headings, 1.50 line-height on body
-4. **Color punctuation**: Add `#f36458` for CTAs and `#0052ef` for all hover/interactive states
-5. **Refine spacing**: 8px base unit, 24-32px within sections, 64-120px between sections
-6. **Technical details**: Add IBM Plex Mono uppercase labels for tags and metadata
-7. **Polish**: Ensure all interactive elements hover to `#0052ef`, all buttons are pills or subtle 5px radius, borders are hairline (1px)
+1. Start from an observed family and selector, not a broad visual impression.
+2. Keep the P3 orange in P3-capable output; disclose the hex approximation when using it.
+3. Keep Waldenburg and IBM Plex Mono distinct and do not substitute a system or declared-only family.
+4. Add only a listed interaction state to its matching component variant.
 
 ## 10. Voice & Tone
 
@@ -444,56 +329,37 @@ Sanity's voice is **content-platform-confident and developer-warm.** "The Conten
 
 ## 11. Brand Narrative
 
-Sanity was **founded 2016 in Norway** with the **public launch November 2017** by four co-founders: **Magnus Kongsli Hillestad**, **Even Westvang**, **Øyvind Rostad**, and **Simen Svale Skogsrud** ([Threshold Ventures — Magnus Hillestad founder Q&A](https://medium.com/threshold-ventures/magnus-hillestad-sanity-founder-story-80b7e97952d), [Sanity — Magnus profile](https://www.sanity.io/exchange/community/magnus)). **Dual-headquartered in Oslo and San Francisco** with remote team across four continents. Headless CMS positioned as content infrastructure — **Studio** (editor) + **Dataset** (storage) + **Content Lake** (queryable). Founding insight: content must be **structured data**, easily queried + distributed across APIs (vs traditional page-bound CMS). **Series B $39M (2021)** led by **ICONIQ Growth** with **Lead Edge Capital** + existing investors — ICONIQ's portfolio includes **Datadog, Snowflake, Notion, Airtable, Zoom** ([Sanity blog — It takes a village (Series B)](https://www.sanity.io/blog/it-takes-a-village), [TechStartups — Sanity $39M Series B](https://techstartups.com/2021/06/24/norwegian-tech-startup-sanity-raises-39-million-grow-unified-content-platform-building-data-driven-content-solutions/)). Strong adoption among design-first SaaS + e-commerce. The **2024-2025 evolution to "Content Operating System for AI era"** positions Sanity as the structured-content layer for AI applications — confirmed via live `<title>` "The Content Operating System for the AI era | Sanity" 2026-05.
+Sanity describes the current platform as a Content Operating System rather than a conventional CMS: a structured content foundation with a configurable Studio, APIs/SDKs, automation, and AI-oriented tools. The first-party 2025 platform launch describes Content Lake, Studio, custom content applications, automation, an AI agent, Media Library, Canvas, and Dashboard as parts of that connected direction. This narrative describes product scope and evolution; it does not turn the marketing-site controls in §4 into Studio application components.
 
 ## 12. Principles
 
-1. **Content as code.** Schemas, GROQ queries, deploys as code. *UI implication:* schema-first approach surfaces.
-2. **Studio is the canvas.** Customizable React-based editor. *UI implication:* showcase Studio screenshots as primary marketing asset.
-3. **Hairline borders, no shadow.** *UI implication:* depth via 1px borders + color contrast.
-4. **Pills + 5px subtle.** *UI implication:* primary CTAs pill; secondary 5px radius.
-5. **Hover to `#0052ef` blue.** *UI implication:* preserve hover blue across all interactive elements.
+1. **Structured content, configurable workflow.** *UI implication:* public messaging emphasizes adapting content systems to how an organization works.
+2. **Developer affordances remain visible.** *UI implication:* retain the editorial/technical typography contrast when reproducing observed marketing controls.
+3. **Accessibility and composability in Sanity UI.** *UI implication:* Sanity UI is an official React toolkit, but its documentation chrome is not a source for the marketing component measurements here.
+4. **Evidence-domain discipline.** *UI implication:* reuse only listed P3, inverse, light-pill, textarea, and dialog variants; leave other components absent.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Sanity user segments (developers, content teams, e-commerce marketers), not individual people.*
-
-**Henrik Sondergaard, 35, Copenhagen.** Senior engineer at e-commerce SaaS. Sanity Studio for product content management.
-
-**Sofia Russo, 30, Milan.** Indie SaaS shipping editorial sites. Sanity for headless CMS + Next.js integration.
-
-**Marcus Chen, 38, San Francisco.** Content lead at growth-stage SaaS. Owns the marketing site CMS.
+No fictional personas are asserted. First-party public navigation identifies developers, content editors, product owners, and business leaders as relevant audiences; this reference does not infer demographics, locations, jobs, or workflows beyond those published groups.
 
 ## 14. States
 
 | State | Treatment |
 |---|---|
-| **Empty (no content)** | "Create your first document" CTA + schema picker |
-| **Empty (no schemas)** | "Define a schema" with code example |
-| **Loading (query)** | GROQ query result inline |
-| **Loading (publishing)** | Per-document progress |
-| **Error (schema)** | Specific. "Field X validation failed." |
-| **Error (deploy)** | Token + permission diagnostic |
-| **Success (published)** | Subtle confirmation + revision history |
-| **Success (preview)** | Inline preview link |
-| **Skeleton (document list)** | Hairline-border placeholders |
-| **Disabled (no permission)** | Role tooltip |
-| **Loading (long deploy)** | Persistent progress |
+| Product empty/loading/error/success states | Not captured on an authenticated Sanity product surface; no state recipe is claimed. |
+| Marketing interaction states | Only the §4 hover, pressed, focus, and dialog-open observations are retained. |
 
 ## 15. Motion & Easing
 
 | Token | Value | Use |
 |---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
+| Motion tokens | Not measured in the supplied capture |
 
-Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover transitions.
+No duration, easing, or reduced-motion rule is promoted without a measured source.
 
 ---
 
-**Verified:** 2026-05-08 (omd:migrate run 53 — Apple-tier)
-**Tier 1 sources:** sanity.io home + /pricing (live DOM via playwright — Primary **`color(display-p3 1 0.3333 0)`** Sanity Orange-Red (~`#ff5500` sRGB / wide-gamut P3) 99999px full-pill / 35px (page 13px·400 ALL CAPS) or 55px (hero 24px·400) / 4×12 or 8×32; Inverse `#0b0b0b` Near-Black; Light Secondary `#ededed`; A11y skip-nav `#0052ef` Sanity Blue. **`display-p3()` wide-gamut color-space — most advanced in corpus**).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/funding):** Threshold Ventures (Magnus Hillestad Q&A), Sanity profile pages (Magnus + Simen), Sanity blog (Series B "It takes a village"), TechStartups, Nordic 9, Crunchbase.
-**Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier mistake reverted (significant):** prior footer claimed Primary was `#0b0b0b` 0px (announcement-banner strip) — canonical is **wide-gamut display-p3 Orange-Red 99999px full-pill**. Massive correction.
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://www.sanity.io/ · https://www.sanity.io/pricing · https://www.sanity.io/ui · https://www.sanity.io/blog/why-the-age-of-cms-is-over
+**Tier 2 sources:** https://getdesign.md/sanity/design-md · https://styles.refero.design/?q=Sanity (direct built-in access unavailable; no indexed result observed)
+**Conflicts unresolved:** none

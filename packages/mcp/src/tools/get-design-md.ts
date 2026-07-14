@@ -24,6 +24,10 @@ export async function runGetDesignMd(input: z.infer<typeof InputSchema>) {
     url: permalink(ref),
     provenance: provenance(ref),
     frontmatter: ref.frontmatter,
+    referenceAst: ref.ast,
+    quality: ref.ast?.quality ?? null,
+    foundations: ref.ast?.foundations ?? null,
+    tokens: ref.ast?.tokens ?? null,
     sections: ref.sections,
     content: ref.raw,
   };

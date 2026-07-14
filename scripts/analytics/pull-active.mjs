@@ -9,6 +9,7 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { env, repoRoot } from "./_env.mjs";
+import { trailingCompleteUtcBuckets, utcDayBucket } from "./_dates.mjs";
 
 const URL_ = env("OMD_KV_REST_API_URL") ?? env("UPSTASH_REDIS_REST_URL");
 const TOKEN = env("OMD_KV_REST_API_TOKEN") ?? env("UPSTASH_REDIS_REST_TOKEN");
@@ -29,27 +30,19 @@ async function cmd(args) {
   return json.result;
 }
 
-const dayBucket = (d) => d.toISOString().slice(0, 10).replace(/-/g, "");
-const trailing = (n) => {
-  const out = [];
-  const now = new Date();
-  for (let i = 0; i < n; i++) {
-    const d = new Date(now);
-    d.setUTCDate(d.getUTCDate() - i);
-    out.push(dayBucket(d));
-  }
-  return out;
-};
 const key = (b) => `omd:active:${b}`;
 
-const days30 = trailing(30);
+const now = new Date();
+const currentPartialDay = utcDayBucket(now);
+const days30 = trailingCompleteUtcBuckets(30, now);
 const days7 = days30.slice(0, 7);
 
 const DEVICES = ["mobile", "tablet", "desktop"];
 const dkey = (b, d) => `omd:active:${b}:${d}`;
 
-const [dau, wau, mau, ...devCounts] = await Promise.all([
+const [dau, currentPartialDau, wau, mau, ...devCounts] = await Promise.all([
   cmd(["PFCOUNT", key(days30[0])]),
+  cmd(["PFCOUNT", key(currentPartialDay)]),
   cmd(["PFCOUNT", ...days7.map(key)]),
   cmd(["PFCOUNT", ...days30.map(key)]),
   // Today's per-device DAU + rolling-7d per-device (mobile share for W-3).
@@ -69,6 +62,10 @@ for (const b of [...days30].reverse()) {
 const out = {
   _meta: { pulledAt: new Date().toISOString(), note: "HLL approx; rolling WAU/MAU = union of trailing 7/30 day sketches" },
   dau: Number(dau),
+  dau_last_complete: Number(dau),
+  dau_current_partial: Number(currentPartialDau),
+  last_complete_day: `${days30[0].slice(0, 4)}-${days30[0].slice(4, 6)}-${days30[0].slice(6, 8)}`,
+  current_partial_day: `${currentPartialDay.slice(0, 4)}-${currentPartialDay.slice(4, 6)}-${currentPartialDay.slice(6, 8)}`,
   wau_rolling7: Number(wau),
   mau_rolling30: Number(mau),
   dau_by_device: dauByDevice,
@@ -80,6 +77,6 @@ const dir = path.join(repoRoot, "data", "analytics", "raw");
 mkdirSync(dir, { recursive: true });
 const file = path.join(dir, "active.json");
 writeFileSync(file, JSON.stringify(out, null, 2));
-console.log(`DAU ${out.dau} · WAU(7d) ${out.wau_rolling7} · MAU(30d) ${out.mau_rolling30}`);
+console.log(`DAU(last complete) ${out.dau_last_complete} · current partial ${out.dau_current_partial} · WAU(7d) ${out.wau_rolling7} · MAU(30d) ${out.mau_rolling30}`);
 console.log(`DAU by device — mobile ${dauByDevice.mobile} · tablet ${dauByDevice.tablet} · desktop ${dauByDevice.desktop}`);
 console.log(`wrote ${path.relative(repoRoot, file)}`);

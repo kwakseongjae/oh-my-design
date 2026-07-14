@@ -4,6 +4,25 @@ Status: build target. Single source of truth for the fleet implementing the
 next-generation reference preview. Read this file end-to-end before touching
 code. Where this spec and the current monoliths disagree, this spec wins.
 
+Implementation checkpoint — 2026-07-12: builder step 3 exposes a compact
+claim-level Evidence drawer backed by the canonical `verification_v2` graph.
+It shows computed quality, checked date, claim coverage, source/surface counts,
+conflicts, method, confidence, and the exact source URL. Evidence graphs are
+generated into a server-only manifest so they do not inflate the client registry.
+Verified token-linked Color, Typography, Spacing & Shape, and Components
+sections now carry claim/source/date provenance badges; narrative-only Hero and
+Guidelines intentionally do not claim token provenance. The builder Source panel
+now exports canonical high-confidence DESIGN.md, Tailwind v4, CSS Variables, and
+DTCG JSON artifacts. Missing groups stay absent; explicit builder choices update
+only the matching canonical claim paths.
+
+> Surface ownership clarification: the product's primary user journey is Home
+> `시작하기` → `/builder`. Builder step 3 is the user-facing preview and its
+> acceptance path. `/reference/[id]` is a catalog/detail diagnostic consumer.
+> Both may share the same renderer, but “preview” defaults to builder and must
+> be tested through the builder route unless the task explicitly names the
+> reference detail page.
+
 Grounded against (current implementation): `reference-preview.tsx` (1207L,
 `/reference/[id]`, 5 sections), `preview.tsx` (869L, builder step-3),
 `extract-tokens.ts` (1335L, `ParsedTokens` + prose-regex parser), `font-registry.ts`
@@ -15,6 +34,19 @@ Grounded against (current implementation): `reference-preview.tsx` (1207L,
 Quality bar = getdesign.md `preview.html`: a per-brand specimen sheet that looks
 generated from the brand's own tokens, not a generic component gallery.
 
+### Non-negotiable truth policy
+
+**Unknown means absent.** This product delivers references; it does not fill
+them with plausible defaults. Only canonical, high-confidence facts for the
+exact target surface may render. Absence is applied at the smallest unresolved
+field or item; a group returns `null` only when no verified values remain.
+Existing verified descriptions, metrics, tokens, and components must not be
+deleted to enforce this policy. Prose guesses, generic components, synthetic
+spacing/radius/shadow, system/Inter font substitution, and cross-surface
+promotion are forbidden. Evidence from marketing, corporate, font-catalog,
+and product/app surfaces remains separate until an explicit verified claim
+connects it.
+
 ---
 
 ## 1. Goals / Non-Goals
@@ -24,12 +56,11 @@ generated from the brand's own tokens, not a generic component gallery.
   fidelity for all **400** references, generated entirely from tokens. No
   hand-built HTML per brand. One factory renders every reference.
 - **G2 — Frontmatter tokens are first-class.** The DESIGN.md frontmatter
-  `tokens:` block (DTCG-lite) is the authoritative input. Prose regex parsing
-  (`extract-tokens.ts`) becomes a **fallback** and its outputs are marked
-  low-confidence.
+  `tokens:` block (DTCG-lite) is the authoritative input. Prose regex and
+  low-confidence values are excluded from user-facing previews.
 - **G3 — Real brand type, honestly.** Load the actual brand webfont when it is
-  legitimately installable; otherwise render a documented substitute with a
-  visible label. Never silently fall back to Inter.
+  legitimately installable; otherwise label it unavailable and omit its live
+  specimen. Never render a substitute.
 - **G4 — Provenance surfaced.** Every token group carries a confidence/provenance
   badge derived from the reference's verification metadata.
 - **G5 — One factory, two consumers.** `/reference/[id]` (full sheet) and builder
@@ -46,7 +77,7 @@ generated from the brand's own tokens, not a generic component gallery.
   ephemeral, session-scoped (as today via `applyOverrides`).
 - **NG3** — Runtime hosting of proprietary fonts. We only load fonts from public,
   license-clean sources (Google Fonts, foundry-open GitHub). No self-hosted
-  Söhne/Circular/Airbnb Cereal binaries — those render as labeled substitutes.
+  Söhne/Circular/Airbnb Cereal binaries and no visual substitutes.
 - **NG4** — Re-theming the OMD site chrome. Preview surfaces render brand tokens
   *inside* the site; the site's own oklch tokens (`globals.css`) are untouched.
 
@@ -97,9 +128,9 @@ generated from the brand's own tokens, not a generic component gallery.
 
 ## 3. Specimen Sections (≈14, in order)
 
-Each section is a `SectionRenderer` (see §7). Sections that have no data for a
-given reference render an honest empty state ("No dark tokens defined", "No
-component specs"), never fabricated content. Section headers carry a
+Each section is a `SectionRenderer` (see §7). Sections that have no canonical
+data for a given reference are omitted entirely, never fabricated or filled
+with an empty-state specimen. Section headers carry a
 `ProvenanceBadge` (§5) for the token group they draw from.
 
 1. **Palette** — (a) a thin full-width horizontal strip: every color in
@@ -194,121 +225,42 @@ choices flow through as they do today.
 
 ---
 
-## 4. Webfont Loading Policy (differentiator #1)
+## 4. Webfont Loading Policy
 
-For every font resolved from the sheet, classify via `lookupFont(name)`
-(`font-registry.ts`) into exactly one of three render modes. **Never silently
-fall back to Inter.**
+A family enters the preview only when it is a canonical high-confidence fact for the exact target surface. Runtime resolution has three modes:
 
-Let `info = lookupFont(name)`.
+- **REAL** — the exact requested family has a verified public browser-loadable source. Load and render it.
+- **SYSTEM** — the canonical target-surface claim explicitly names a system stack. Render that exact stack.
+- **UNAVAILABLE** — the family is known but the exact face is proprietary, private, or lacks a verified loadable source. Show factual metadata only; omit the live specimen.
 
-- **REAL** — load and apply the brand's actual webfont. Condition:
-  `info.installable === true` **and** `info.source` is a *loadable web source*.
-  "Loadable web source" = Google Fonts (`fonts.google.com/...`) or a foundry-open
-  GitHub/CDN with a known CSS URL. Known-loadable families include the Korean
-  brand fonts on Google Fonts — e.g. **Jua** (주아체), **Do Hyeon** (도현체),
-  **Black Han Sans**, **Gothic A1**, **Nanum** families, plus **Pretendard**,
-  **Noto Sans KR**, **Inter**, **Geist**, **Roboto**, **IBM Plex**, etc. Loader
-  builds a `<link>`/`@font-face` from `info.source`.
-  - Label: none required (it's the real thing). Optional muted "Google Fonts"
-    provenance chip.
-- **SUBSTITUTE** — the brand font is `installable: false` or `Brand-proprietary`
-  or `Proprietary` with no web-loadable source. Render the documented substitute
-  (default: **Inter** for sans, a mono equivalent for mono, a serif for serif)
-  **with a visible label**:
-  `substitute: Inter (Söhne not publicly licensed)`.
-  The parenthetical reason derives from `info.license` + `info.notes`
-  (e.g. `Brand-proprietary` → "not publicly distributed"; `Proprietary` →
-  "not publicly licensed"). Never omit the label.
-  - Special case: registry entries whose `source` explicitly points at an
-    open near-match (e.g. `Notion Inter`, `freee-logo` → Noto Sans JP) are
-    treated as REAL-of-the-substitute and labeled
-    `substitute: Noto Sans JP (freee wordmark uses Noto Sans CJK JP)`.
-- **SYSTEM** — `info.license === "System"` (e.g. `-apple-system`,
-  `system-ui`, `Apple SD Gothic Neo`, `SF Pro` when used as system stack). Render
-  with the real system stack and label it **"System UI"**. Do not substitute
-  Inter; do not attempt to web-load.
-  - For CJK system stacks (baemin `ui` family = `-apple-system, …, 'Apple SD
-    Gothic Neo', 'Noto Sans KR', sans-serif`), render the stack verbatim so the
-    OS picks the native Korean face; label "System UI".
+There is no SUBSTITUTE mode. Do not map proprietary faces to Inter, adjacent open fonts, or near matches. A font catalog proves asset availability, not product usage. Marketing, corporate, catalog, and product/app font observations remain separate evidence domains.
 
-### 4a. BMHANNA Pro / brand fonts on Google Fonts
+Loader rules:
 
-The type-scale section maps each *brand* typography family to its best REAL
-source before deciding SUBSTITUTE. Mapping table (extend as needed):
-
-| DESIGN.md family token | Google Fonts family (REAL) | Notes |
-|------------------------|----------------------------|-------|
-| BMHANNA Pro / 한나체    | Jua *(nearest OFL)* or Black Han Sans | Woowa's 한나 not on GF; use Jua and label |
-| BMJua / 주아체          | **Jua**                    | exact, OFL on GF |
-| BM도현 / 도현체         | **Do Hyeon**               | exact, OFL on GF |
-| Toss Product Sans      | — (Brand-proprietary)      | SUBSTITUTE: Inter, labeled |
-| Pretendard(Variable)   | Pretendard (jsDelivr CSS)  | REAL |
-
-Where the exact brand face is not on a web source but a documented OFL sibling
-exists (Woowa's own family is OFL but not all faces are on GF), render the
-sibling as REAL and add a substitute-note ("한나체 Pro → Jua (nearest hosted
-Woowa-family face)"). The acceptance criteria (§9) codify the zero-Inter-in-DOM
-requirement for baemin.
-
-### 4b. Loader implementation notes
-- Load fonts client-side, deduped per sheet, via a `useBrandFonts(sheet)` hook
-  that injects one `<link rel="stylesheet">` per REAL Google font and
-  `@font-face` for foundry-open GitHub sources. Respect
-  `font-display: swap`.
-- Guard against layout shift: reserve metrics via the substitute until `swap`.
-- The resolved mode per family (`REAL | SUBSTITUTE | SYSTEM`) plus label string
-  is exposed on the `TokenSheet` (`typography.families[].render`) so every
-  section renders consistently and the label appears once per family.
+- Deduplicate exact REAL font stylesheets and respect `font-display: swap`.
+- Never construct a loader from a guessed family name.
+- Never apply a different family while labeling it as the requested family.
+- If typography has verified metric tiers but no verified family, render the metrics without a family claim or live font specimen. Suppress Typography only when neither verified tiers nor a verified family remains.
 
 ---
 
-## 5. Provenance Badges (differentiator #2)
+## 5. Provenance and visibility
 
-Every token-group section header shows a small badge with one of three values.
-Derivation is deterministic from existing frontmatter + footer metadata — no new
-schema is required.
+Provenance is a visibility gate, not decoration:
 
-### 5a. Inputs (already present in DESIGN.md)
-- `tokens.source` — `"reconciled" | "prose-derived" | "extracted" | ...`
-  (toss = `reconciled`, baemin = `prose-derived`).
-- `verified` — ISO date (both examples `2026-05-15`).
-- `ds:` block presence — a Tier-1 official design-system link
-  (toss has `ds: { name: TDS, url: ... }`).
-- `## Proof` block presence in the doc body (proof-gate refs, ≥2026-06-01).
-- HTML source footer (`<!-- OmD ... Sources -->`) presence/verification lines.
+- `verified` — canonical high-confidence claim connected to current Tier-1 evidence; render with badge.
+- `reconciled` — canonical high-confidence frontmatter claim cross-checked against its exact target surface; render with badge.
+- `low-confidence` / `prose_fallback` / missing — do not render that unresolved field/item; do not hide verified siblings. Hide the group only when nothing verified remains.
 
-### 5b. Badge values + mapping
-
-| Badge value          | Condition (first match wins) |
-|----------------------|------------------------------|
-| `verified`           | `tokens.source ∈ {reconciled, verified}` **AND** (`ds.url` present **OR** `## Proof` present) **AND** `verified` date parses. |
-| `reconciled`         | `tokens.source === "reconciled"` **OR** `tokens.source === "extracted"` with a `ds`/footer source but no Proof block. |
-| `prose-parsed(low)`  | `tokens.source === "prose-derived"`, **OR** the group was produced by `extract-tokens.ts` prose fallback (no frontmatter token for that group), **OR** no `tokens:` block at all. |
-
-Per-group override: a badge is computed per token group, not just per doc. If a
-group (e.g. `components`) is present in frontmatter but another (e.g. `shadow`)
-is prose-fallback, the shadow section shows `prose-parsed(low)` even when the doc
-is otherwise `verified`. Rule: **frontmatter-sourced group inherits the doc-level
-badge; prose-fallback group is capped at `prose-parsed(low)`.**
-
-### 5c. Rendering
-- `verified` — solid accent (green) dot + text, tooltip: "Reconciled against
-  Tier-1 DS / Proof block, verified <date>".
-- `reconciled` — amber dot, tooltip: "Cross-checked, source <ds.name/footer>".
-- `prose-parsed(low)` — muted/dashed dot, tooltip: "Heuristically parsed from
-  prose — may be approximate."
-- Badge component = `ProvenanceBadge` shared primitive (§7).
+Low-confidence evidence remains available to the re-verification pipeline and diagnostics, but no badge can make it preview-eligible. Visibility is computed per group so one verified group never promotes an unresolved neighbor.
 
 ---
 
 ## 6. Data Contract
 
 ### 6a. Precedence
-1. **Frontmatter `tokens:` block (DTCG-lite)** — FIRST-CLASS, authoritative.
-2. **Prose parse (`extract-tokens.ts`)** — FALLBACK only, per-group. Any value it
-   produces is tagged `confidence: "low"` and forces `prose-parsed(low)` badge
-   for that group.
+1. **Canonical high-confidence frontmatter claim for the exact surface** — preview-eligible.
+2. **Anything else** — evidence/reconciliation input only; preview-ineligible.
 
 Today only `tokens.components` is read from frontmatter (`componentsFromTokens`);
 `colors/typography/spacing/rounded/shadow` are prose-parsed and `detail.*` on the
@@ -339,19 +291,19 @@ tokens:
 are derivable without re-deriving source.
 
 ```ts
-type Provenance = "verified" | "reconciled" | "prose-parsed(low)";
-type Confidence = "high" | "low";           // high = frontmatter, low = prose
+type Provenance = "verified" | "reconciled";
+type Confidence = "high";
 
 interface Prov { provenance: Provenance; confidence: Confidence; }
 
-type FontRenderMode = "REAL" | "SUBSTITUTE" | "SYSTEM";
+type FontRenderMode = "REAL" | "SYSTEM" | "UNAVAILABLE";
 interface ResolvedFamily {
   role: "sans" | "mono" | "brand" | "display" | "serif" | "emoji" | "ui" | "playful";
   requested: string;          // as written in frontmatter (first token of stack)
   stack: string;              // full CSS font-family stack to apply
   render: FontRenderMode;
-  applied: string;            // family actually applied (real or substitute)
-  label?: string;             // "substitute: Inter (Söhne not publicly licensed)" | "System UI"
+  applied?: string;           // absent when render = UNAVAILABLE
+  label?: string;             // "font unavailable" | "System UI"
   source?: { name: string; url: string };   // from font-registry, when REAL
 }
 
@@ -417,14 +369,18 @@ interface TokenSheet {
 }
 ```
 
-### 6d. Fallback wiring
-- For each group, if the frontmatter key exists → build tokens with
-  `confidence: "high"`, `provenance` = doc-level badge.
-- Else call the matching `extract-tokens.ts` function
-  (`extractPalette`/`buildHierarchy`/`extractSpacing`/`extractShadows`/…),
-  wrap results with `confidence: "low"`, `provenance: "prose-parsed(low)"`.
-- `extract-tokens.ts` is **retained as the fallback engine**, not deleted. Its
-  public `ParsedTokens` type stays until both monoliths are migrated (see §8).
+### 6d. Absence wiring
+- A group renders when its canonical AST contains at least one
+  `origin: frontmatter`, `confidence: high` value for the target surface.
+- Missing, prose-fallback, or low-confidence fields/items are filtered out
+  individually. A section renderer returns `null` only when the resulting group
+  is empty.
+- Filtering is a renderer/export projection. It must not delete, replace, or
+  collapse the canonical reference document or unrelated verified groups.
+- Heuristic parsers may remain for offline reconciliation and legacy rollback,
+  but their output must never enter the user-facing builder/reference preview.
+- No runtime font substitution: non-loadable faces are labeled unavailable and
+  their live specimen is omitted.
 
 ---
 
@@ -517,14 +473,13 @@ Ordered. Each step ships independently; user-visible output must not regress
 between steps (verify with `next build` + a visual smoke on toss + baemin +
 one prose-only ref).
 
-1. **Add `token-sheet.ts`** — implement `parseTokenSheet(designMd)`:
-   frontmatter-first, prose fallback via existing `extract-tokens.ts`. Add unit
-   tests: toss (reconciled), baemin (prose-derived), and one ref with **no**
-   `tokens:` block (pure fallback). No UI wiring yet. **Retires nothing.**
+1. **Add `token-sheet.ts`** — implement `parseTokenSheet(designMd)` with
+   canonical high-confidence AST input only. Add unit tests for reconciled data
+   and for a persuasive prose-only document that must produce empty groups.
+   No UI wiring yet. **Retires nothing.**
 2. **Add `use-brand-fonts.ts` + font-note** — resolve `ResolvedFamily[]` using
-   `lookupFont`/`parseFontStack`; unit-test REAL/SUBSTITUTE/SYSTEM classification
-   for toss (Toss Product Sans → SUBSTITUTE), baemin (BMJua → REAL Jua, ui →
-   SYSTEM), a Google-font ref (Inter → REAL). No UI yet.
+   `lookupFont`/`parseFontStack`; unit-test REAL/UNAVAILABLE/SYSTEM classification.
+   Proprietary fonts are UNAVAILABLE and never substituted. No UI yet.
 3. **Add primitives + generators** — `SpecimenLabel`, `CopyChip`,
    `ProvenanceBadge`, `to-tailwind-v4`, `to-css-vars`, `to-dtcg-json`. Snapshot
    tests on toss sheet output.
@@ -545,73 +500,31 @@ one prose-only ref).
    moves into the shell's builder mode. `applyOverrides` is reused (still applied
    before/inside `parseTokenSheet` resolution for builder).
 7. **Cleanup** — remove now-unused exports from `extract-tokens.ts` that only the
-   old monoliths consumed; keep the prose-parse functions (still the fallback
-   engine). `FontCard`/`FontStackGrid` either fold into `type-scale.tsx` or are
+   old monoliths consumed; keep prose parsers only for offline reconciliation
+   and explicit legacy rollback. `FontCard`/`FontStackGrid` either fold into `type-scale.tsx` or are
    re-exported from primitives.
 
 Retirement summary: `reference-preview.tsx` retired at step 5; `preview.tsx`
-retired at step 6. `extract-tokens.ts` **kept** (fallback engine); `font-registry.ts`
+retired at step 6. `extract-tokens.ts` **kept** (offline reconciliation only); `font-registry.ts`
 **kept** (unchanged); `globals.css` **unchanged**.
 
 ---
 
 ## 9. Per-Section Acceptance Criteria (checkable)
 
-General: `next build` passes; no console errors; `prefers-reduced-motion` honored
-(reuse globals.css safety net); no CLS > 0.05 from font swap on the smoke set.
+General: `next build` passes; no console errors; sections render only canonical high-confidence AST values.
 
-- **Palette** — For toss, exactly the frontmatter `tokens.colors` values render
-  as swatches (14 entries incl. `#3182f6` primary, `#0064ff` brand, `#f04452`
-  error). The horizontal fingerprint strip has one band per color, zero gaps.
-  Each swatch copy chip yields the exact lowercase hex. Badge = `verified`.
-- **Type scale** — For **baemin**: display/heading tiers render via **Jua** and
-  **Do Hyeon** (Google Fonts) where the brand family maps (`BMJua`→Jua,
-  `BM도현`→Do Hyeon; `BMHANNA Pro`→Jua with substitute-note). Body/ui tiers
-  render in the system stack labeled "System UI". **Zero occurrences of `Inter`
-  in the rendered DOM** for baemin (assert via `getComputedStyle`/DOM query in
-  test). Each row's metrics label matches `^\d+px · \d{3} · [\d.]+( · -?[\d.]+em)?$`.
-  Sample copy is Korean (`country: KR`).
-  For **toss**: display tier shows `substitute: Inter (Toss Product Sans not
-  publicly distributed)` label exactly once per family; the substitute IS Inter
-  here and is labeled (this is the allowed labeled case, distinct from the
-  baemin silent-Inter prohibition).
-- **Buttons** — toss renders 3 button variants; each shows rest + hover + active
-  + disabled. `button-fill-primary` rest bg = `#3182f6`, radius `16px`; disabled
-  state is visually distinct. Synthesized hover states carry a "derived" marker.
-- **Forms** — baemin `search-bar` (radius 20px, bg `#f8f9fa`) and `input`
-  render; at least one input shows a focus ring `2px solid #2ac1bc` matching the
-  frontmatter `focus` token.
-- **Cards** — baemin `restaurant-card` renders bg `#fff`, radius `12px`, with its
-  documented type treatment; `card` variant shows its `1px solid #dee2e6` border
-  + shadow.
-- **Signature** — baemin `floating-cart-button` (pill, `#2ac1bc`, shadow),
-  `toast` (`#212529`), `tag`, `badge` all render distinctly. Count of rendered
-  variants equals count of non-button/input/card entries in `tokens.components`.
-- **Tabs/nav** — baemin `bottom-tab-bar` + `top-app-bar` render as nav strips
-  with active color `#2ac1bc`.
-- **Spacing** — toss renders 7 bars (xs 4 … xxl 48) with px labels; bar widths
-  are proportional to values.
-- **Radius** — toss renders 4 boxes (sm 4, md 8, lg 16, full 9999→pill). The
-  `full` box is visibly a pill/circle.
-- **Elevation** — toss renders 3 shadow cards (subtle/standard/elevated) with the
-  exact raw recipe shown as caption.
-- **CTA band** — primary CTA renders on brand canvas using display tier + primary
-  button variant; readable contrast (auto fg).
-- **Responsive** — six frames at 375/600/768/1024/1280/1440 present + a
-  breakpoint table with matching rows.
-- **Light/Dark** — for a ref **with** dark tokens, toggling recolors all sections
-  from `modes.dark`. For toss/baemin (no `modes.dark` in frontmatter today) the
-  toggle is **disabled** with "No dark tokens defined" — no synthesized dark.
-- **Do/Don't** — renders guidelines when present; honest empty state otherwise.
-- **Source panel** — `DESIGN.md` Copy yields text starting with
-  ` ```markdown ` and ending ` ``` `; `.md` download filename = `<id>.DESIGN.md`;
-  `Tailwind v4` tab shows a valid `@theme { … }` block containing
-  `--color-primary` for toss; `DTCG JSON` tab is valid JSON with `$value` leaves;
-  `Source ⇄ Preview` toggles without remounting the specimen pane.
-- **Provenance** — toss doc-level badge = `verified` (source reconciled + `ds.url`
-  present); baemin = `prose-parsed(low)`/`reconciled` per group (`source:
-  prose-derived` → low). A group present only via prose fallback always shows
-  `prose-parsed(low)` regardless of doc-level badge.
+- Reference hero/§1 is useful brand context, not verification-status copy: it explains the product, distinctive expression, and current evolution from first-party sources.
+- Typography separates official product-use, measured surface-use, distributed brand assets, and specimen availability. An officially confirmed product family remains visible as metadata when its live specimen is unavailable.
+- A persuasive prose-only or low-confidence group produces no specimen section.
+- No generic hierarchy, spacing, radius, shadow, component, iconography, or document-policy block is appended.
+- A missing group suppresses its section; it does not show an illustrative empty card.
+- REAL fonts load the exact verified face. SYSTEM renders only an explicitly canonical system stack. UNAVAILABLE renders metadata but no live specimen or substitute stylesheet.
+- Baemin renders its verified Palette, typography metrics, Spacing & Shape, Components, and explanations. Only its unresolved font-family claim and live font specimen are absent; no Pretendard/System/Arial product-font claim appears in builder output.
+- Missing data does not add `Partial`, `Reference Evidence`, or other warning chrome unless product requirements explicitly request it.
+- Toss Product Sans may be named as a known family but has no Inter substitute, no substitute stylesheet, and no live type specimen until an exact public loader is authorized.
+- Builder acceptance always follows Home `시작하기` → `/builder` → brand selection → preview.
+- Source/download output obeys the same absence policy as the visual specimen; generic Included Components/Iconography/Document Policies are not synthesized.
 
 ---
 
@@ -620,8 +533,7 @@ General: `next build` passes; no console errors; `prefers-reduced-motion` honore
   (`componentsFromTokens` hand-parses flow-maps). v2 needs a small, dependency-
   free frontmatter reader (extend the existing hand-parser) OR a vetted
   lightweight YAML lib — decide in step 1; do not pull a heavy dependency.
-- Not all 400 refs have a `tokens:` block; the fallback path (§6d) is load-bearing
-  and must be exercised in tests, not treated as an edge case.
-- Korean brand-font → Google Fonts mapping (§4a) is curated, not exhaustive;
-  extend the table as refs are audited. Missing mapping → SUBSTITUTE + label
-  (never silent Inter).
+- Not all 400 refs have canonical token groups. Empty/suppressed sections are
+  the correct product state until re-verification fills them.
+- Korean brand-font hosting is curated, not exhaustive. Missing or non-exact
+  mapping → UNAVAILABLE; a near-match is never promoted as the brand font.

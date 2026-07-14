@@ -4,316 +4,318 @@ name: Miro
 country: US
 category: design-tools
 homepage: "https://miro.com"
-primary_color: "#ffd02f"
+primary_color: "#fde050"
 logo:
   type: simpleicons
   slug: miro
-verified: "2026-05-15"
+verified: "2026-07-13"
 omd: "0.1"
 ds:
   name: Mirotone
-  url: "https://mirotone.xyz"
+  url: "https://www.mirotone.xyz"
   type: system
-  description: Miro's CSS component library for apps built on the Miro platform.
+  description: Miro's base CSS component library for applications on the Miro platform.
   og_image: "https://www.mirotone.xyz/cover.png"
+verification_v2:
+  schema: 2
+  checked: "2026-07-13"
+  surfaces:
+    - { id: home, kind: public-marketing, url: "https://miro.com/ko/", inspected: "2026-07-13" }
+    - { id: pricing-desktop, kind: public-pricing, url: "https://miro.com/ko/pricing/", inspected: "2026-07-13" }
+    - { id: pricing-repeat, kind: public-pricing-repeat, url: "https://miro.com/ko/pricing/", inspected: "2026-07-13" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://miro.com/ko/", captured: "2026-07-13" }
+    - { id: pricing-live, kind: product-surface, url: "https://miro.com/ko/pricing/", captured: "2026-07-13" }
+    - { id: miro-about, kind: official-doc, url: "https://miro.com/about/", captured: "2026-07-13" }
+    - { id: miro-aura, kind: brand-asset, url: "https://miro.com/aura/", captured: "2026-07-13" }
+    - { id: miro-identity, kind: brand-asset, url: "https://miro.com/blog/miro-vis/", captured: "2026-07-13" }
+    - { id: mirotone-docs, kind: official-doc, url: "https://developers.miro.com/docs/design-guidelines", captured: "2026-07-13" }
+    - { id: roobert-foundry, kind: brand-asset, url: "https://displaay.net/typeface/roobert", captured: "2026-07-13" }
+    - { id: roobert-license, kind: license, url: "https://displaay.net/help/licenses", captured: "2026-07-13" }
+  conflicts: []
+  claims:
+    "tokens.colors.brand-yellow": &home_live { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.action-blue": &pricing_live { surface_id: pricing-desktop, source_id: pricing-live, method: computed-style, captured: "2026-07-13" }
+    "tokens.colors.action-blue-border": *pricing_live
+    "tokens.colors.ink": *home_live
+    "tokens.colors.canvas": *pricing_live
+    "tokens.colors.border-input": *home_live
+    "tokens.colors.border-control": *pricing_live
+    "tokens.colors.border-subtle": *pricing_live
+    "tokens.colors.muted": *pricing_live
+    "tokens.typography.family.ui": &font_live { surface_id: home, source_id: home-live, method: computed-style-fontfaceset-and-source-url, captured: "2026-07-13" }
+    "tokens.typography.family.display": *font_live
+    "tokens.typography.display-hero.size": *font_live
+    "tokens.typography.display-hero.weight": *font_live
+    "tokens.typography.display-hero.lineHeight": *font_live
+    "tokens.typography.display-hero.tracking": *font_live
+    "tokens.typography.display-hero.use": *font_live
+    "tokens.typography.display-section.size": *font_live
+    "tokens.typography.display-section.weight": *font_live
+    "tokens.typography.display-section.lineHeight": *font_live
+    "tokens.typography.display-section.tracking": *font_live
+    "tokens.typography.display-section.use": *font_live
+    "tokens.typography.body.size": *pricing_live
+    "tokens.typography.body.weight": *pricing_live
+    "tokens.typography.body.lineHeight": *pricing_live
+    "tokens.typography.body.use": *pricing_live
+    "tokens.typography.action.size": *pricing_live
+    "tokens.typography.action.weight": *pricing_live
+    "tokens.typography.action.lineHeight": *pricing_live
+    "tokens.typography.action.use": *pricing_live
+    "tokens.spacing.xs": *home_live
+    "tokens.spacing.sm": *home_live
+    "tokens.spacing.md": *home_live
+    "tokens.spacing.lg": *home_live
+    "tokens.spacing.xl": *home_live
+    "tokens.spacing.xxl": *home_live
+    "tokens.rounded.control": *pricing_live
+    "tokens.rounded.segmented": *pricing_live
+    "tokens.components.pricing-period-toggle.type": &toggle { surface_id: pricing-desktop, source_id: pricing-live, method: computed-style-and-observed-state, captured: "2026-07-13" }
+    "tokens.components.pricing-period-toggle.radius": *toggle
+    "tokens.components.pricing-period-toggle.height": *toggle
+    "tokens.components.pricing-period-toggle.padding": *toggle
+    "tokens.components.pricing-period-toggle.states": *toggle
+    "tokens.components.pricing-period-toggle.use": *toggle
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: reconciled
+  extracted: "2026-07-13"
+  note: "Machine tokens are limited to supplied public marketing/pricing capture. Mirotone, Aura, and documentation establish context only; they do not supply unobserved live variants."
+  components_harvested: true
   colors:
-    brand-yellow: "#ffd02f"
+    brand-yellow: "#fde050"
+    action-blue: "#3859ff"
+    action-blue-border: "#7a90fe"
     ink: "#1c1c1e"
     canvas: "#ffffff"
-    blue: "#5b76fe"
-    blue-pressed: "#2a41b6"
-    coral: "#ffc6c6"
-    teal: "#c3faf5"
-    teal-dark: "#187574"
-    orange: "#ffe6cd"
-    rose: "#ffd8f4"
-    pink: "#fde0f0"
-    red: "#fbd4d4"
-    success: "#00b473"
-    slate: "#555a6a"
-    placeholder: "#a5a8b5"
-    border: "#c7cad5"
     border-input: "#e9eaef"
+    border-control: "#c7cad5"
+    border-subtle: "#e0e2e8"
+    muted: "#555a6a"
   typography:
-    family: { sans: "Roobert PRO", mono: "Roobert PRO" }
-    display-hero: { size: 56, weight: 400, lineHeight: 1.15, tracking: -1.68, use: "Hero, Roobert PRO Medium" }
-    section:      { size: 48, weight: 400, lineHeight: 1.15, tracking: -1.44, use: "Section heading, Roobert PRO Medium" }
-    card-title:   { size: 24, weight: 400, lineHeight: 1.15, tracking: -0.72, use: "Card title, Roobert PRO Medium" }
-    subheading:   { size: 22, weight: 400, lineHeight: 1.35, tracking: -0.44, use: "Sub-heading, Noto Sans" }
-    feature:      { size: 18, weight: 600, lineHeight: 1.35, use: "Feature, Roobert PRO Medium" }
-    body:         { size: 18, weight: 400, lineHeight: 1.45, use: "Body, Noto Sans" }
-    body-std:     { size: 16, weight: 400, lineHeight: 1.50, tracking: -0.16, use: "Standard body, Noto Sans" }
-    button:       { size: 17.5, weight: 700, lineHeight: 1.29, tracking: 0.175, use: "Button, Roobert PRO Medium" }
-    caption:      { size: 14, weight: 400, lineHeight: 1.71, use: "Caption, Roobert PRO Medium" }
-    micro:        { size: 10.5, weight: 400, lineHeight: 0.90, use: "Uppercase micro label, Roobert PRO" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 8, md: 12, lg: 24, full: 9999 }
-  shadow:
-    ring: "rgb(224,226,232) 0px 0px 0px 1px"
+    family: { ui: "Noto Sans", display: "Roobert PRO Medium" }
+    display-hero: { size: 56, weight: 500, lineHeight: 56, tracking: -1.68, use: "Observed public home display headline" }
+    display-section: { size: 48, weight: 400, lineHeight: 55.2, tracking: -1.44, use: "Observed public home section heading" }
+    body: { size: 14, weight: 400, lineHeight: 20, use: "Observed public pricing control and list text" }
+    action: { size: 16, weight: 600, lineHeight: 24, use: "Observed public pricing action" }
+  spacing: { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 }
+  rounded: { control: 8, segmented: 40 }
   components:
-    button-primary: { type: button, bg: "#5b76fe", fg: "#ffffff", radius: 8, padding: "7px 12px", font: "17.5px/700", use: "Primary CTA, blue" }
-    button-outline: { type: button, bg: "transparent", fg: "#1c1c1e", radius: 8, padding: "7px 12px", font: "17.5px/700", use: "Secondary outlined button" }
-    button-circle: { type: button, bg: "#ffffff", radius: 9999, padding: "12px", use: "Circular icon button, ring shadow" }
-    input: { type: input, bg: "#ffffff", fg: "#1c1c1e", radius: 8, padding: "16px", font: "16px/400", use: "Standard input" }
-    card: { type: card, bg: "#ffffff", radius: 12, padding: "16px", use: "Default card with ring-shadow border" }
-    card-pastel: { type: card, bg: "#ffc6c6", fg: "#1c1c1e", radius: 12, padding: "24px", use: "Feature card with pastel surface" }
-    badge: { type: badge, bg: "#5b76fe", fg: "#ffffff", radius: 8, padding: "4px 8px", font: "12px/400", use: "Default badge" }
-    badge-success: { type: badge, bg: "#00b473", fg: "#ffffff", radius: 8, padding: "4px 8px", use: "Success badge" }
-  components_harvested: true
+    pricing-period-toggle: { type: toggle, radius: 40, height: 34, padding: "6px 16px", states: "checked, unchecked", use: "Public pricing billing-period selector" }
 ---
 
 # Design System Inspiration of Miro
 
 ## 1. Visual Theme & Atmosphere
 
-Miro's website is a clean, collaborative-tool-forward platform that communicates "visual thinking" through generous whitespace, pastel accent colors, and a confident geometric font. The design uses a predominantly white canvas with near-black text (`#1c1c1e`) and a distinctive pastel color palette — coral, rose, teal, orange, yellow, moss — each representing different collaboration contexts.
+Miro is a collaborative canvas for teams that want to move from an early idea to a shared outcome. Its first version, RealtimeBoard, began in 2011 as a way for Andrey Khusid’s design agency to communicate with clients at a distance; Miro now describes the service as a place for teams and AI to develop strategy, design products and services, and manage the innovation lifecycle. The public presentation connects that expansive canvas metaphor to a deliberately vivid visual language: an optimistic yellow brand signal, restrained white and near-black functional surfaces, and blue conversion actions in the captured pricing flow. Miro’s 2023 identity work says yellow should be the protagonist rather than paint every surface, while the current Aura material expands the palette for colorful board work and pairs it with a broad-language body face.
 
-The typography uses Roobert PRO Medium as the primary display font with OpenType character variants (`"blwf", "cv03", "cv04", "cv09", "cv11"`) and negative letter-spacing (-1.68px at 56px). Noto Sans handles body text with its own stylistic set (`"liga" 0, "ss01", "ss04", "ss05"`). The design is built with Framer, giving it smooth animations and modern component patterns.
-
-**Key Characteristics:**
-- White canvas with near-black (`#1c1c1e`) text
-- Roobert PRO Medium with multiple OpenType character variants
-- Pastel accent palette: coral, rose, teal, orange, yellow, moss (light + dark pairs)
-- Blue 450 (`#5b76fe`) as primary interactive color
-- Success green (`#00b473`) for positive states
-- Generous border-radius: 8px–50px range
-- Framer-built with smooth motion patterns
-- Ring shadow border: `rgb(224,226,232) 0px 0px 0px 1px`
+- **Yellow as a signal:** the official identity story calls yellow iconic and sparing; the supplied public capture observes `#fde050` on a 40px promo action.
+- **Canvas before chrome:** white surfaces and near-black `#1c1c1e` text dominate the captured public controls, leaving color to mark a moment rather than fill the whole page.
+- **Workroom energy:** Miro’s own language foregrounds collaborative, canvas-first work; brand imagery can be expressive, while functional pricing controls remain compact and measured.
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Near Black** (`#1c1c1e`): Primary text
-- **White** (`#ffffff`): `--tw-color-white`, primary surface
-- **Blue 450** (`#5b76fe`): `--tw-color-blue-450`, primary interactive
-- **Actionable Pressed** (`#2a41b6`): `--tw-color-actionable-pressed`
+### Observed public-surface roles
 
-### Pastel Accents (Light/Dark pairs)
-- **Coral**: Light `#ffc6c6` / Dark `#600000`
-- **Rose**: Light `#ffd8f4` / Dark (implied)
-- **Teal**: Light `#c3faf5` / Dark `#187574`
-- **Orange**: Light `#ffe6cd`
-- **Yellow**: Dark `#746019`
-- **Moss**: Dark `#187574`
-- **Pink** (`#fde0f0`): Soft pink surface
-- **Red** (`#fbd4d4`): Light red surface
-- **Dark Red** (`#e3c5c5`): Muted red
+- **Miro Yellow / promo accent** (`#fde050`): live 40px marketing/promo action on home and pricing; Miro’s brand story establishes yellow as the central identity color, but no general primary-action role is inferred.
+- **Action Blue** (`#3859ff`): repeated public-pricing CTA fill with white text.
+- **Action Blue border** (`#7a90fe`): observed 1px border/inset edge on the blue pricing CTA.
+- **Ink** (`#1c1c1e`): repeated public text and control color.
+- **Canvas** (`#ffffff`): observed public surface and selected pricing-period fill.
+- **Input border** (`#e9eaef`): observed on the single public-home email field.
+- **Control border** (`#c7cad5`): observed outlined public pricing action border.
+- **Subtle border** (`#e0e2e8`): observed pricing badge/control border.
+- **Muted text** (`#555a6a`): observed unchecked pricing-period label.
 
-### Semantic
-- **Success** (`#00b473`): `--tw-color-success-accent`
-
-### Neutral
-- **Slate** (`#555a6a`): Secondary text
-- **Input Placeholder** (`#a5a8b5`): `--tw-color-input-placeholder`
-- **Border** (`#c7cad5`): Button borders
-- **Ring** (`rgb(224,226,232)`): Shadow-as-border
+Miro’s Aura material names a broader accent palette—Coral, Cyan, Lilac, Lime, Sunshine, Orange, Pink, Moss, and Teal—but the supplied capture does not establish their exact current public-web values or semantic component roles. They remain narrative context, not machine tokens.
 
 ## 3. Typography Rules
 
-### Font Families
-- **Display**: `Roobert PRO Medium`, fallback: Placeholder — `"blwf", "cv03", "cv04", "cv09", "cv11"`
-- **Display Variants**: `Roobert PRO SemiBold`, `Roobert PRO SemiBold Italic`, `Roobert PRO`
-- **Body**: `Noto Sans` — `"liga" 0, "ss01", "ss04", "ss05"`
+### Evidence classes
 
-### Hierarchy
+- **Official product-use:** Miro Aura calls Noto Sans its new body-text font, citing broad language and writing-system support for multilingual hybrid teams.
+- **Live computed public-surface use:** `Noto Sans` is loaded/high confidence with 882 visible uses and 24 font-source URLs in the supplied bundle. `Roobert PRO Medium` is loaded/high confidence with 46 visible uses; the bundle also records the loaded `roobertPROLocal` face with three Miro-hosted WOFF2 source URLs. These FontFaceSet-backed families are the only typography families promoted to tokens.
+- **Official distributed font asset and licence boundary:** Displaay identifies Roobert as a geometric sans with weight, slant, and mono axes. Displaay’s licence describes paid usage, including web self-hosting via `@font-face`; it is the foundry’s licence, not evidence that Miro grants third parties permission to redistribute its hosted files.
+- **Declared-only:** Fragment Mono, Inter Placeholder, M PLUS 1, Nanum Pen Script, Vazirmatn, and placeholder/fallback faces are declared with zero visible use in this capture. They are not substitutes or UI tokens.
+- **System/unresolved:** `sans-serif` is a system stack. Computed `Roobert PRO` has visible uses but no matching loaded-font record, so it is not separately tokenized.
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing |
-|------|------|------|--------|-------------|----------------|
-| Display Hero | Roobert PRO Medium | 56px | 400 | 1.15 | -1.68px |
-| Section Heading | Roobert PRO Medium | 48px | 400 | 1.15 | -1.44px |
-| Card Title | Roobert PRO Medium | 24px | 400 | 1.15 | -0.72px |
-| Sub-heading | Noto Sans | 22px | 400 | 1.35 | -0.44px |
-| Feature | Roobert PRO Medium | 18px | 600 | 1.35 | normal |
-| Body | Noto Sans | 18px | 400 | 1.45 | normal |
-| Body Standard | Noto Sans | 16px | 400–600 | 1.50 | -0.16px |
-| Button | Roobert PRO Medium | 17.5px | 700 | 1.29 | 0.175px |
-| Caption | Roobert PRO Medium | 14px | 400 | 1.71 | normal |
-| Small | Roobert PRO Medium | 12px | 400 | 1.15 | -0.36px |
-| Micro Uppercase | Roobert PRO | 10.5px | 400 | 0.90 | uppercase |
+### Measured public hierarchy
+
+| Role | Family | Size | Weight | Line height | Tracking | Provenance |
+|---|---|---:|---:|---:|---:|---|
+| Public display hero | Roobert PRO Medium | 56px | 500 | 56px | -1.68px | `home::h1` |
+| Public section heading | Roobert PRO Medium | 48px | 400 | 55.2px | -1.44px | `home::h2` |
+| Public pricing action | Noto Sans | 16px | 600 | 24px | normal | `surface-2::[data-omd-capture="136"]` |
+| Pricing control/list text | Noto Sans | 14px | 400 | 20px | normal | `surface-2::[data-omd-capture="89"]` |
 
 ## 4. Component Stylings
 
-### Buttons
+All variants below are constrained to the supplied public marketing/pricing capture. Selector, surface, and observed-state provenance are kept with each entry; Mirotone documentation establishes a broader app-library context but does not turn undocumented or unobserved variants into tokens.
 
-**Blue Primary**
-- Background: `#5b76fe` (`--tw-color-blue-450`)
+### Public actions
+
+**Yellow promo action**
+- Background: `#fde050`
+- Text: `#1c1c1e`
+- Radius: `8px`
+- Padding: `8px 12px`
+- Height: `40px`
+- Font: `16px / 900 / Roobert PRO Medium`
+- Use: public promo/banner action; `home::[data-omd-capture="0"]`, repeated at `surface-2::[data-omd-capture="76"]`
+
+**Blue pricing action**
+- Background: `#3859ff`
 - Text: `#ffffff`
-- Radius: 8px
-- Padding: 7px 12px
-- Font: 17.5px / 700 / Roobert PRO Medium
-- Hover: `#2a41b6` (`--tw-color-actionable-pressed`)
-- Use: Primary CTA — implied from interactive blue
+- Border: `1px solid #7a90fe`
+- Radius: `8px`
+- Padding: `11px 15px`
+- Height: `48px`
+- Font: `16px / 600 / Noto Sans`
+- Use: public pricing CTA; `surface-2::[data-omd-capture="136"]`, repeated on `surface-3`
 
-**Outlined**
+**Outlined pricing action**
 - Background: transparent
 - Text: `#1c1c1e`
-- Border: 1px solid `#c7cad5`
-- Radius: 8px
-- Padding: 7px 12px
-- Font: 17.5px / 700 / Roobert PRO Medium
-- Use: Secondary outlined button
+- Border: `1px solid #c7cad5`
+- Radius: `8px`
+- Padding: `11px 15px`
+- Height: `48px`
+- Font: `16px / 600 / Noto Sans`
+- Use: public pricing action; `surface-2::[data-omd-capture="137"]`, repeated on `surface-3`
 
-**White Circle**
-- Background: `#ffffff`
-- Radius: 50%
-- Padding: 12px (icon button)
-- Shadow: `rgb(224,226,232) 0px 0px 0px 1px` (ring shadow)
-- Use: Circular icon button
+### Public form and choice controls
 
-### Inputs
-
-**Default**
+**Email input**
 - Background: `#ffffff`
 - Text: `#1c1c1e`
-- Border: 1px solid `#e9eaef`
-- Radius: 8px
-- Padding: 16px
-- Font: 16px / 400 / Noto Sans
-- Placeholder: `#a5a8b5` (`--tw-color-input-placeholder`)
-- Use: Standard input
+- Border: `1px solid #e9eaef`
+- Radius: `8px`
+- Padding: `16px`
+- Height: `48px`
+- Font: `16px / 400 / Noto Sans`
+- Use: public home email field; `home::[data-omd-capture="82"]` (one observed instance)
 
-### Cards
+**Pricing-period toggle**
+- Radius: `40px`
+- Padding: `6px 16px`
+- Height: `34px`
+- Font: `16px / 600 / Noto Sans`
+- Checked: white background with `#1c1c1e` text; `surface-2::[data-omd-capture="86"]`
+- Unchecked: transparent background with `#555a6a` text at `16px / 400`; `surface-2::[data-omd-capture="85"]`
+- Use: public pricing billing-period selector; both states observed
 
-**Standard**
-- Background: `#ffffff`
-- Radius: 12px
-- Padding: 16px
-- Shadow: `rgb(224,226,232) 0px 0px 0px 1px` (ring shadow)
-- Use: Default card with ring-shadow border
+### Captured dialog boundary
 
-**Pastel Surface**
-- Background: pastel accent (e.g., `#ffc6c6` Coral, `#c3faf5` Teal, `#ffe6cd` Orange, `#fde0f0` Pink)
+**Pricing dialog**
+- Background: `oklch(1 0 0)`
 - Text: `#1c1c1e`
-- Radius: 12-24px
-- Padding: 24px
-- Use: Feature card with pastel surface
-
-**Large Panel**
-- Background: `#ffffff`
-- Radius: 24px
-- Padding: 32px
-- Shadow: `rgb(224,226,232) 0px 0px 0px 1px`
-- Use: Large containers
-
-### Badges
-
-**Default**
-- Background: `#5b76fe`
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 4px 8px
-- Font: 12px / 400 / Roobert PRO Medium
-- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
-
-**Success**
-- Background: `#00b473` (`--tw-color-success-accent`)
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 4px 8px
-- Use: Inferred from §1-§2 baseline (no explicit DS variant in source).
+- Padding: `20px 24px`
+- Font: `16px / 400 / roobertPROLocal`
+- Dialog-open: `surface-2::[data-omd-interaction-capture="dialog-0-8"]`; shadow includes `rgba(0, 0, 0, 0.1) 0px 10px 15px -3px`
+- Use: dialog opened by a captured public-pricing interaction; no global modal token or further state contract is inferred
 
 ## 5. Layout Principles
-- Spacing: 1–24px base scale
-- Radius: 8px (buttons), 10px–12px (cards), 20px–24px (panels), 40px–50px (large containers)
-- Ring shadow: `rgb(224,226,232) 0px 0px 0px 1px`
+
+### Observed spacing scale
+
+The supplied public capture repeatedly uses 4, 8, 12, 16, 24, and 32px values. This reference retains only those observed values as its spacing tokens.
+
+### Observed shape scale
+
+- **Public action and email input:** `8px`
+- **Pricing-period option:** `40px`
+- **Circular controls:** `50%` was observed locally on home controls; it is intentionally not normalized into a general-purpose radius token.
 
 ## 6. Depth & Elevation
-Minimal — ring shadow + pastel surface contrast
+
+No global elevation scale is established. The captured pricing dialog has a local two-part black shadow, while public buttons are largely flat; retain that shadow only when reproducing the recorded dialog context.
 
 ## 7. Do's and Don'ts
+
 ### Do
-- Use pastel light/dark pairs for feature sections
-- Apply Roobert PRO with OpenType character variants
-- Use Blue 450 (#5b76fe) for interactive elements
+
+- Use yellow as a deliberate public-brand signal rather than a blanket surface fill.
+- Use the supplied blue CTA geometry only for public pricing/conversion contexts.
+- Default to the evidence-backed Noto Sans body/UI family where multilingual readability is needed.
+- Keep public actions compact, with the observed 8px control corners.
+
 ### Don't
-- Don't use heavy shadows
-- Don't mix more than 2 pastel accents per section
+
+- Don’t turn the observed yellow promo button into Miro’s universal primary action.
+- Don’t promote declared-only scripts, placeholders, or a system stack to Miro typography.
+- Don’t apply Mirotone app-library components to Miro marketing/pricing tokens without direct live evidence.
+- Don’t invent hover, pressed, focus, error, loading, toast, or animation variants from the captured dialog/toggle states.
 
 ## 8. Responsive Behavior
-Breakpoints: 425px, 576px, 768px, 896px, 1024px, 1200px, 1280px, 1366px, 1700px, 1920px
+
+The supplied capture is desktop-only (`1440x900`) for the home and two pricing records. It does not establish a mobile breakpoint, layout transition, or responsive component variant.
 
 ## 9. Agent Prompt Guide
-### Quick Color Reference
-- Text: Near Black (`#1c1c1e`)
-- Background: White (`#ffffff`)
-- Interactive: Blue 450 (`#5b76fe`)
-- Success: `#00b473`
-- Border: `#c7cad5`
-### Example Component Prompts
-- "Create hero: white background. Roobert PRO Medium 56px, line-height 1.15, letter-spacing -1.68px. Blue CTA (#5b76fe). Outlined secondary (1px solid #c7cad5, 8px radius)."
+
+### Evidence-safe prompts
+
+- “Create a public pricing CTA using the observed `#3859ff` fill, white text, `#7a90fe` 1px border, 8px radius, 11px 15px padding, and 48px height. Keep it scoped to a pricing/conversion context.”
+- “Use Miro Yellow `#fde050` only for a compact public promo action with `#1c1c1e` text, 8px radius, 8px 12px padding, and 40px height; do not assume it is the default app CTA.”
+- “Set functional body/UI text in Noto Sans. Reserve FontFaceSet-backed Roobert display use for short public headings; do not substitute a declared-only or system family.”
+- “For the pricing-period selector, use only the captured checked and unchecked treatments; do not invent transition or focus behavior.”
 
 ## 10. Voice & Tone
 
-Miro's voice is **collaboration-warm and workshop-confident.** "AI 이노베이션 워크스페이스" (homepage 2026-05) — brand evolution from "online whiteboard" to "AI innovation workspace". Marketing copy emphasizes team workshops + collaborative moments. Yellow `#fde050` CTA signals "playful, sticky-note inspired."
+Miro’s first-party language is collaborative, expansive, and outcome-oriented: teams come together on a canvas to dream, design, and build. Its recent AI positioning keeps the emphasis on shared work rather than an individual assistant.
 
-| Context | Tone |
+| Context | Supported voice evidence |
 |---|---|
-| CTA | Verb. "Sign up free", "Save your spot", "Start free" |
-| Marketing | Workshop-language. Customer co-creation moments |
-| Documentation | Visual-heavy, screenshot-driven |
-| Error | Specific. "Board permissions changed. Refresh to see updates." |
+| Mission | “empower teams to create the next big thing” — Miro About |
+| Product metaphor | “canvas-first” / “from idea to outcome” — Miro newsroom |
+| Accessibility | “Everyone should be able to collaborate … without barriers” — Miro Accessibility |
 
-**Voice samples**
-- Marketing CTA: *"SAVE YOUR SPOT"* <!-- verified: miro.com/ko homepage 2026-05 -->
-
-**Forbidden phrases.** "Revolutionary whiteboard". Aggressive Mural-comparison framing.
+No invented error copy or prohibition list is asserted.
 
 ## 11. Brand Narrative
 
-Miro was founded **2011 as RealtimeBoard** in **Perm, Russia** (~1,150 km east of Moscow) by **Andrey Khusid** and **Oleg Shardin** ([Miro — Wikipedia](https://en.wikipedia.org/wiki/Miro_(collaboration_platform)), [bne IntelliNews — Miro $17.5B](https://www.intellinews.com/founded-in-russia-11-years-ago-the-miro-visual-collaboration-software-startup-is-now-valued-at-17-5bn-231861/)). Khusid + Shardin had previously **founded the design agency Vitamin Group in 2005** offering web/product/app design services; **2012 they left Vitamin to focus on RealtimeBoard full-time**. Funding ladder: **$25M Series A (2018)** led by **Accel** with Altair Capital + Scale Venture Partners → **$50M Series B (April 2020)**, after which user base grew **5×** (5M → 30M) and paying customers **5.5×** (20K → 130K) → **$400M Series C (January 2022)** co-led by **ICONIQ Growth + Accel + Atlassian + Dragoneer + GIC + Scale Venture Partners** at **$17.5B post-money valuation**, total funding ~**$476M** ([Miro Newsroom — $400M Series C](https://miro.com/newsroom/miro-series-c/), [BusinessWire — Series B $50M April 2020](https://www.businesswire.com/news/home/20200427005109/en/Miro-Secures-%2450-Million-in-Series-B-Funding-for-Virtual-Whiteboarding-for-Remote-Teams)). **Rebranded RealtimeBoard → Miro in 2019** reflecting a global identity. Strong adoption in design teams, agile workshops, and consulting. AI features added 2024-2025 to position Miro as the **"AI innovation workspace"** (live `miro.com/ko` page-title confirms 2026-05).
+Miro’s own account traces the product to a 2011 RealtimeBoard experiment built so a design agency could communicate with distant clients. The company now describes the product as a visual workspace where teams work with AI across strategy, product design, and innovation delivery.
+
+Its 2023 identity work explains the expression behind the public brand: yellow had always been iconic, but the brand team chose to use it with moderation and supporting colors rather than flood every interface. Aura extends that evolution into a richer board palette and Noto Sans body text for multilingual collaboration. The result is a useful split for this reference: lively brand expression belongs to marketing and board context, while only the supplied live public controls become implementation tokens.
 
 ## 12. Principles
 
-1. **Yellow signals action.** `#fde050` CTA inherited from sticky-note culture. *UI implication:* primary actions yellow on white.
-2. **Roobert PRO is the type voice.** Medium weight throughout. *UI implication:* don't substitute system fonts.
-3. **Workshop > toolbox.** *UI implication:* product positioning treats Miro as a meeting/workshop space, not a static design tool.
-4. **Generous radius for warmth.** *UI implication:* 8px+ on cards, 16px+ on hero modules.
-5. **AI as workshop participant.** *UI implication:* AI features framed as joining the workshop, not replacing humans.
+1. **The canvas keeps work shared.** *UI implication:* prioritize surfaces that let teams move among ideas, structure, and outcomes without treating the workspace as a document-only flow.
+2. **Yellow is an intentional identity signal.** *UI implication:* use a yellow accent to focus attention, not as a default fill for every public or product action.
+3. **Multilingual clarity is a product concern.** *UI implication:* use Noto Sans for body/UI content where the live and official evidence supports it.
+4. **Accessible collaboration is part of the experience.** *UI implication:* support keyboard access, named colors, readable contrast, and reduced-motion behavior when implementing product work with separate surface evidence.
 
 ## 13. Personas
 
-*Personas are fictional archetypes informed by Miro user segments (UX designers, agile coaches, consulting partners), not individual people.*
+*These are first-party stakeholder groups, not fictional individual personas.*
 
-**Yuki Tanaka, 32, Tokyo.** UX designer at agency. Runs client workshops in Miro 3× per week.
-
-**Marcus Chen, 41, San Francisco.** Agile coach at Series C SaaS. Sprint planning + retros in Miro.
-
-**Sofia Russo, 36, Milan.** Independent design consultant. Miro for client research + brainstorming.
+- **Cross-functional innovation teams:** Miro describes teams using the canvas to develop strategy, design products and services, and manage the innovation lifecycle.
+- **Multilingual, hybrid collaborators:** Aura explicitly positions Noto Sans around broad language support for distributed teams.
+- **People with access needs:** Miro’s accessibility work addresses keyboard, screen-reader, voice-control, color, and motion-sensitive collaboration.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no boards)** | "Create your first board" CTA + template gallery |
-| **Empty (no team)** | "Invite teammates" with email picker |
-| **Loading (board opening)** | Skeleton with sticky-note placeholders |
-| **Loading (cursor sync)** | Cursor avatars appear with name labels |
-| **Error (sync)** | Banner + retry; never block editing |
-| **Error (permission)** | "Read-only — request edit access" inline link |
-| **Success (saved)** | Implicit; auto-save with subtle indicator |
-| **Success (export)** | Download triggered + toast confirmation |
-| **Skeleton (board grid)** | Yellow-tinted placeholders |
-| **Disabled (free plan limit)** | Upgrade link |
-| **Loading (long export)** | Persistent progress chip |
+Only the following states are observed or officially described in this pass:
+
+| State | Treatment | Provenance |
+|---|---|---|
+| Checked | White pricing-period option with `#1c1c1e` text | `surface-2::[data-omd-capture="86"]` |
+| Unchecked | Transparent pricing-period option with `#555a6a` text | `surface-2::[data-omd-capture="85"]` |
+| Dialog open | White pricing dialog with local shadow | captured pricing dialog interactions |
+| Disabled | 36px circular home control was captured disabled | `home::[data-omd-capture="100"]` |
+| Reduced motion | Animations and transitions removed | official Miro Accessibility page |
+
+No public evidence in this pass establishes a loading, empty, success, error, hover, pressed, or focus treatment.
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
-| `motion-cursor` | continuous | Live cursor sync |
-
-Standard cubic-bezier; minimal bounce. Cursor sync motion is signature. `prefers-reduced-motion: reduce` removes hover transitions; cursor sync becomes step-discrete.
+The supplied raw capture contains no timing, easing, or transition values. Miro’s accessibility documentation says reduced motion removes animations and transition effects; that establishes a behavioral boundary, not motion tokens. No duration or easing value is asserted.
 
 ---
 
-**Verified:** 2026-05-08 (omd:migrate run 38 — Apple-tier)
-**Tier 1 sources:** miro.com/ko home + /pricing (live DOM via playwright — **three-color 8px Primary**: Yellow banner `#fde050` 40px / 16px·**900** ALL CAPS (banner-only) + Charcoal `#1c1c1e` 42-44px / 16px·**600** (canonical default) + Miro Blue `#3859ff` 48px / 18px·600 (featured-tier accent); Outline transparent / Charcoal text).
-**Tier 2 sources:** styles.refero.design / getdesign.md — no record.
-**Tier 2 (Philosophy/founders/funding):** Wikipedia (Miro), bne IntelliNews ($17.5B), Crunchbase, Miro Newsroom (Series C $400M Jan 2022), BusinessWire (Series B $50M Apr 2020), Contrary Research, EWDN.
-**Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured Yellow banner only; canonical default Primary is **Charcoal `#1c1c1e`** with Miro Blue `#3859ff` featured-tier accent — three-color discipline was undocumented.
+**Verified:** 2026-07-13
+**Tier 1 sources:** https://miro.com/ko/ | https://miro.com/ko/pricing/ | https://miro.com/about/ | https://miro.com/aura/ | https://miro.com/blog/miro-vis/ | https://developers.miro.com/docs/design-guidelines | https://displaay.net/typeface/roobert | https://displaay.net/help/licenses
+**Tier 2 sources:** https://getdesign.md/miro/design-md (third-party independent analysis; summary only) | https://styles.refero.design/?q=Miro (attempted search; service returned an internal error)
+**Conflicts unresolved:** none
+
+Legacy `#5b76fe`/pastel/card/badge tokens and unobserved state variants were removed because the supplied July 2026 capture did not support them; repeated live public pricing actions resolve to `#3859ff`, while `#fde050` is retained only as a promo/brand-accent action.
