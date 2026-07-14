@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-07-14 (Codex) · v2/440 production release
+- v2 누적 변경을 `main`에 배포했고 custom domain에서 440개 catalog와 신규 레퍼런스를 확인했다.
+- CLI 57/57, Web 790/790, TypeScript, ESLint 0 errors, 1,411-page build와 builder desktop/mobile smoke가 green이다.
+- npm 10 CI lockfile 호환 문제를 동일 버전으로 재현·수정했으며 README/About의 catalog 표기를 400+로 통일한다.
+
 ## 2026-07-13 (Codex) · Global 40 net-new CREATE complete
 - 한국·대만·일본·미국 각 10개를 신규 탐색·수집해 40/40 deterministic acceptance를 통과했다.
 - Catalog 440개(Verified v2 141), 1,704 claims·89 components; Web 790 tests와 1,411-page build가 green이다.
