@@ -10,7 +10,7 @@
 
 - v2 누적 변경 931개 파일을 `d4bb3ac`(`release v2 reference catalog and builder`)로 `main`에 배포했다. Vercel Production과 custom domain `oh-my-design.kr`에서 catalog 440개 및 신규 KB/Acer 레퍼런스를 확인했다.
 - 최종 gate는 CLI 57/57, Web 45 files/790 tests, TypeScript, ESLint 0 errors(기존 warning 42), production build 1,411/1,411 pages다. Home → `/builder` → Toss preview를 desktop/mobile에서 통과했고 overflow·console error·fallback warning은 0이다.
-- GitHub Actions의 Node 22/npm 10 환경에서만 드러난 lockfile optional dependency 누락(`@emnapi/core`, `@emnapi/runtime`)을 npm 10.9.8로 재생성했고 동일 버전 `npm ci`가 통과했다. 이 잠금파일 보정 커밋을 배포하고 CI green을 확인하는 단계다.
+- GitHub Actions의 Node 22/npm 10 환경에서만 드러난 lockfile optional dependency 누락(`@emnapi/core`, `@emnapi/runtime`)을 npm 10.9.8로 재생성했고 동일 버전 `npm ci`가 통과했다. 후속 CI에서 로컬 전용 root `references` symlink를 읽던 테스트 2곳도 정본 `web/references` 경로로 교정했다.
 - README/README.ko의 catalog 표기는 400+/400개 이상으로 갱신했다. GitHub repository About description도 같은 400+ 메시지로 맞춘다.
 
 - 한국·대만·일본·미국 각 10개, 총 40개 신규 레퍼런스를 탐색→공식 경로 수집→`gpt-5.6-terra/high` CREATE/repair→결정론 acceptance까지 완료했다. 정본은 `web/references/<id>/{DESIGN.md,.verification.md,_research.md}`이며 40/40 모두 Verified v2다.

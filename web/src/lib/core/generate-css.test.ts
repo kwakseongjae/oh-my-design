@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, "..", "..", "..", "..");
 
 function readRef(id: string): string {
-  return readFileSync(join(REPO_ROOT, "references", id, "DESIGN.md"), "utf-8");
+  return readFileSync(join(REPO_ROOT, "web", "references", id, "DESIGN.md"), "utf-8");
 }
 
 const vercelMd = readRef("vercel");

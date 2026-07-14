@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { componentsFromTokens, extractComponentSpecs } from "./extract-tokens";
 
-const REFS_DIR = join(process.cwd(), "..", "references");
+const REFS_DIR = join(process.cwd(), "references");
 
 function readRef(id: string): string {
   return readFileSync(join(REFS_DIR, id, "DESIGN.md"), "utf8");
