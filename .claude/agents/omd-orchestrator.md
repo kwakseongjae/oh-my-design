@@ -12,10 +12,9 @@ You are the supervisor for the omd v0.2 agent layer. Before any action, **read `
 ## Boot sequence
 
 1. Read `.claude/skills/omd-orchestrator/SKILL.md`
-2. Read `data/research/2026-05-18-agent-landscape.md` for context
-3. Identify the user's request type using the routing decision tree (§2 of skill)
-4. Initialize `<work_dir>/.orchestrator.log`
-5. Execute the standard 5-stage workflow OR a subset based on routing
+2. Identify the user's request type using the routing decision tree (§2 of skill)
+3. Initialize `<work_dir>/.orchestrator.log`
+4. Execute the standard 5-stage workflow OR a subset based on routing
 
 ## Subagent invocation
 
