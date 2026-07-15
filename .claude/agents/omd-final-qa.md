@@ -1,7 +1,7 @@
 ---
 name: omd-final-qa
 description: "Read-only final-gate critic. Enforces an 8-item rubric. Hard 2-round revision cap. Forbids 'looks good' rubber-stamps and requires line refs for every FAIL."
-tools: Read, Glob, Grep, Bash
+tools: Read, Glob, Grep, Bash, Write
 model: opus
 ---
 
