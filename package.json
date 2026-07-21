@@ -65,6 +65,7 @@
     "bench:ui:record": "node benchmarks/ui-resolve-bench/scripts/record-in-app-run.mjs",
     "bench:ui:evaluate": "node benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
     "bench:ui:summarize": "node benchmarks/ui-resolve-bench/scripts/summarize-pilot.mjs",
+    "bench:ui:aggregate": "node benchmarks/ui-resolve-bench/scripts/aggregate-results.mjs",
     "bench:ui:gallery": "node benchmarks/ui-resolve-bench/scripts/build-gallery.mjs",
     "postinstall": "node scripts/postinstall.cjs"
   },

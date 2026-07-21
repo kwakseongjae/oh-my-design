@@ -34,17 +34,29 @@ reported beside it as `Ship Preference`; it is not silently folded into the
 pass gate. When a task provides a visual target, target fidelity remains an
 objective task-specific critical gate.
 
-## Fair comparison tracks
+## Benchmark families
 
-1. **Skill Layer** — same model, agent runtime, repository, core task prompt,
+1. **Model Track** — no portable skill; same agent runtime, task, tool and
+   reasoning budget, environment, and prompt. Only the model snapshot changes.
+2. **Skill Lift** — same model, agent runtime, repository, core task prompt,
    context budget, and tool budget. Compare no-skill, raw `DESIGN.md`, and
    exactly one installed skill using a preregistered, minimal activation delta.
-2. **Full System** — allow each product's documented orchestration, browser
+3. **Harness Track** — allow each product's documented orchestration, browser
    loop, hooks, and specialist agents. Publish quality and cost together; never
-   mix this table with the Skill Layer table.
-3. **Evidence & Unknown** — evaluate collection provenance, protected unknown
+   mix this table with the Skill Lift table.
+4. **Prompt Arena** — repeat the rough prompts people share on X/Threads, keep a
+   small objective floor, and rank only blinded run-level visual preference.
+   It is legible and shareable, but not the controlled capability leaderboard.
+5. **Transfer Matrix** — sample model×skill combinations to measure whether
+   skill lift generalizes instead of merely fitting one anchor model.
+6. **Evidence & Unknown** — evaluate collection provenance, protected unknown
    fields, and unsupported design claims. This track is intentionally absent
    from screenshot-only tasks.
+
+See [`BENCHMARK-FAMILIES.md`](./BENCHMARK-FAMILIES.md) and
+[`STATISTICS.md`](./STATISTICS.md). The future public result browser is specified
+in [`PUBLIC-SITE.md`](./PUBLIC-SITE.md), and the `1.9.1 → 2.0.0` experiment train
+is in [`RELEASE-TRAIN.md`](./RELEASE-TRAIN.md).
 
 ## Local pilot
 
@@ -67,6 +79,24 @@ node benchmarks/ui-resolve-bench/scripts/run-codex.mjs \
 node benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs \
   --workspace /tmp/ui-resolve-runs/anthropic-frontend-design
 ```
+
+Once repeated runs are exported as
+[`run-record.schema.json`](./run-record.schema.json) records, aggregate them
+without hiding failed or timed-out trials:
+
+```bash
+npm run bench:ui:aggregate -- \
+  --input /tmp/ui-resolve-runs/runs.jsonl \
+  --out /tmp/ui-resolve-runs/aggregate.json \
+  --baseline-system no-skill \
+  --reliability 5 \
+  --bootstrap 2000
+```
+
+The aggregate includes completion, `UI-Resolved`, hierarchical confidence
+intervals, Reliability@k, objective min/mean/median/max and percentiles,
+median-representative/best/worst run IDs, plus paired Skill Lift where a control
+is supplied. Min and max are descriptive and never determine rank.
 
 The direct CLI path is designed to record model/runtime metadata, hashes, wall
 time, and raw output. When a host security policy blocks nested execution, the

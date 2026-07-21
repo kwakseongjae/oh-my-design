@@ -26,7 +26,20 @@ general UI capability.
 
 ## 2. Tracks
 
-### Skill Layer
+The public benchmark has separate Model, Skill Lift, and Harness leaderboards,
+plus a non-ranked Prompt Arena and model×skill Transfer Matrix. Their fixed and
+variable factors are defined in
+[`BENCHMARK-FAMILIES.md`](./BENCHMARK-FAMILIES.md); results from different
+families are never merged into one global rank.
+
+### Model Track
+
+Only the model snapshot changes. No third-party portable skill, harness, vendor
+hook, or hidden candidate-specific system prompt is allowed. The agent shell,
+tools, reasoning and context budgets, starter, task order, and environment stay
+fixed. Model-native and model-plus-raw-`DESIGN.md` are separate conditions.
+
+### Skill Lift Track
 
 Only the skill changes. Pin all of the following:
 
@@ -44,9 +57,9 @@ Minimum ablation for oh-my-design:
 1. model only
 2. model + raw `DESIGN.md`
 3. model + portable OmD skill
-4. OmD full harness (reported in Full System, not ranked here)
+4. OmD full harness (reported in Harness Track, not ranked here)
 
-### Full System
+### Harness Track
 
 Use the vendor's documented recommended workflow. Hooks, browser iteration,
 specialist agents, checkpoints, and generated context files are allowed. Record
@@ -83,8 +96,10 @@ task into a failure. This separation keeps `UI-Resolved@1` reproducible across
 the full private set while still exposing whether practitioners would ship the
 result.
 
-`Reliability@3` is the share of tasks that pass all three independent runs. A
-mean score is diagnostic only and must not allow polish to cancel a functional
+`Reliability@k` is the share of tasks that pass all `k` preregistered independent
+runs. Pilot reports may name `Reliability@3`; internal candidates use
+`Reliability@5`, and a Verified public result uses `Reliability@10`. A mean
+score is diagnostic only and must not allow polish to cancel a functional
 failure.
 
 ## 4. Diagnostic vector (100 points)
@@ -119,7 +134,7 @@ general WCAG claim.
 - repeat a subset with A/B swapped
 - allow ties and “both fail”
 - ask “Would you ship this for the stated task?” before asking for taste
-- use at least five independent practitioners on the public evaluation set
+- use at least five independent practitioners for Preview and ten for Verified
 - publish Bradley–Terry or TrueSkill estimates with 95% confidence intervals
 - publish judge agreement and order-reversal rates
 
@@ -165,13 +180,16 @@ above.
 
 ## 8. Pilot-to-public sequence
 
-1. Internal P0 discovery: 12 tasks × every eligible condition × 1 run.
-2. Internal P1 reliability: the same 12 tasks × every eligible arm × 3 trials.
-3. Public v0.1: 24 hidden tasks × 4 eligible systems × 3 trials.
-4. Include EN (8) and KO/JA/ZH-CN/ZH-TW (4 each) tasks.
-5. Blind-evaluate eight representative tasks with at least five practitioners
-   and report `Ship Preference` separately.
-6. Calibrate automatic thresholds against human verdicts.
-7. Publish task failures and limitations, not only wins.
-8. Expand beyond 60 tasks and add a quarterly live set before calling the suite
+1. Patch smoke: 3 tasks × candidate and control × 3 runs.
+2. Internal P0 discovery: 12 tasks × every eligible condition × 1 run.
+3. Internal candidate: the same 12 tasks × every eligible arm × 5 trials.
+4. Public Preview: 24 hidden tasks × eligible systems × 5 trials.
+5. Verified public: at least 24 hidden tasks × eligible systems × 10 trials.
+6. Include EN (8) and KO/JA/ZH-CN/ZH-TW (4 each) tasks in the first 24.
+7. Blind-evaluate representative tasks with five practitioners for Preview and
+   ten for Verified; report `Visual Ship Preference` separately.
+8. Publish min/median/mean/max, IQR, distribution intervals, every scheduled
+   failure, and the hierarchical-bootstrap policy in
+   [`STATISTICS.md`](./STATISTICS.md).
+9. Expand beyond 60 tasks and add a quarterly live set before calling the suite
    an industry benchmark.

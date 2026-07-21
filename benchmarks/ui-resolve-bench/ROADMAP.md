@@ -1,5 +1,9 @@
 # UI-Resolve Bench execution roadmap
 
+The product reaches its `2.0.0` frontier target through the patch experiments in
+[`RELEASE-TRAIN.md`](./RELEASE-TRAIN.md). This file remains the benchmark
+execution queue; product versions do not redefine score semantics.
+
 ## Internal P0 — 12 tasks
 
 | ID | Locale | Track | Ground truth | Primary hidden failure |
@@ -58,11 +62,11 @@ Remaining before a paired 12-task run:
 8. Add valid solutions plus adversarial mutants and calibrate thresholds before
    interpreting arm scores.
 
-### Queue B — paired Skill Layer pilot
+### Queue B — paired Skill Lift pilot
 
 First run one diagnostic discovery trial for every track-eligible arm on all 12
-tasks. After task/mutant calibration, run three independent reliability trials
-in Latin-square arm order:
+tasks. After task/mutant calibration, run five independent candidate trials in
+Latin-square arm order:
 
 1. no context / no skill
 2. raw `DESIGN.md`
@@ -73,11 +77,12 @@ in Latin-square arm order:
 7. OmD apply skill
 8. Vercel review as a second-pass repair arm, not greenfield generation
 
-Publish medians, IQR, `UI-Resolved@1`, `Reliability@3`, and the separate blind
-pairwise `Ship Preference`. Never rank an off-label arm as though the vendor
-claimed support.
+Publish completion, min/mean/median/max, IQR, `UI-Resolved@1`,
+`Reliability@5`, hierarchical-bootstrap intervals, paired lift against the
+no-skill control, and separate blind pairwise `Visual Ship Preference`. Never
+rank an off-label arm as though the vendor claimed support.
 
-### Queue C — Full System pilot
+### Queue C — Harness pilot
 
 The OmD harness has mandatory human checkpoints and cannot be honestly reduced
 to a headless single prompt. A benchmark operator must attend each checkpoint,
@@ -92,22 +97,26 @@ Compare:
 
 Report quality, elapsed time, model/tool calls, human interventions, and
 iteration count on a Pareto chart rather than mixing these systems into the
-Skill Layer leaderboard.
+Skill Lift leaderboard.
 
 ### Queue D — public standardization
 
-1. 24 hidden tasks × 4 eligible systems × 3 trials.
-2. Five-language semantic QA.
-3. Five practitioner blind reviews on eight representative tasks.
-4. Automatic/human correlation and order-bias audit.
-5. Public spec, dev set, task QA log, failure gallery, and signed run manifests.
-6. Quarterly live tasks and a public process for retiring broken tasks.
+1. 24 hidden tasks × eligible systems × 5 trials for Preview.
+2. 24 hidden tasks × eligible systems × 10 trials for Verified.
+3. Five-language semantic QA.
+4. Five practitioner blind reviews for Preview; ten for Verified.
+5. Automatic/human correlation and order-bias audit.
+6. Public spec, dev set, task QA log, median/best/worst example gallery, failure
+   gallery, and signed run manifests.
+7. Separate Model, Skill Lift, and Harness leaderboards; Prompt Arena remains a
+   labelled social comparison surface rather than the capability rank.
+8. Quarterly live tasks and a public process for retiring broken tasks.
 
 ## Go/no-go gates for an X launch
 
 Do not frame the project as a benchmark launch until:
 
-- at least 12 tasks and three trials are complete;
+- at least 12 tasks and five trials are complete;
 - all skills are pinned and track-eligible;
 - run manifests and failures are downloadable;
 - blind visual review has at least five practitioners;
@@ -116,3 +125,15 @@ Do not frame the project as a benchmark launch until:
 
 Before that point, call it an “open benchmark design and internal pilot.” That is
 still a credible X narrative and invites practitioners to challenge the rubric.
+
+## Queue E — benchmark product surface
+
+1. Implement the run-distribution aggregator and paired Skill Lift report.
+2. Materialize `/benchmarks/models`, `/skills`, `/harnesses`, `/prompt-arena`,
+   task, run, methodology, and changelog routes from signed result packages.
+3. Default examples to the run nearest the median objective score; expose the
+   actual best and worst instead of curating a hero screenshot.
+4. Launch fresh models as Internal 3×3 Prompt Arena cards, then promote through
+   12×5 Preview and 24×10 Verified gates.
+5. Track benchmark view → blind vote → artifact inspection → qualified install,
+   without allowing acquisition metrics to alter benchmark scoring.

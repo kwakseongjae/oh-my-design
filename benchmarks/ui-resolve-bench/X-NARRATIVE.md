@@ -45,8 +45,24 @@ Recommended media:
    trials; diagnostic only”;
 3. a screenshot or diff proving the pre-fix OmD arm was unchanged, beside the
    post-fix contract/contrast failures;
-4. a roadmap card: harden runner → 12 tasks × 3 trials → blind review → public
-   v0.1.
+4. a roadmap card: harden runner → 12 tasks × 5 trials → blind review → public
+   Preview → 24 tasks × 10 trials → Verified.
+
+## Two-stage social format
+
+When a new model or UI skill ships, separate the shareable comparison from the
+capability claim:
+
+1. **Prompt Arena card within one day** — exact rough prompt, fixed comparison
+   mode, at least 3×3 Internal smoke, median-representative surfaces, objective
+   floor badges, blind vote link, and explicit Internal/Preview label.
+2. **Resolve Suite follow-up** — controlled task pack, every scheduled run,
+   `UI-Resolved`, Reliability, paired Skill Lift where applicable, confidence
+   intervals, and failure examples.
+
+Never post the luckiest output as though it were the candidate's expected
+result. The social card defaults to the median-representative run and links to
+the actual best and worst generations.
 
 ## Thread guardrails
 

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-21 (Codex) · benchmark families + 1.9.1→2.0.0 release train
+- Model/Skill Lift/Harness leaderboard와 비랭킹 Prompt Arena·Transfer Matrix를 분리해 모델·스킬·하네스 효과의 혼합을 막았다.
+- 1.9.1부터 0.0.1 단위 가설·승격·롤백 실험을 거쳐 gated 2.0.0으로 가는 release train과 공개 사이트 IA를 고정했다.
+- aggregate runner가 분포 통계, Reliability@k, 계층적 bootstrap CI, paired lift, median/best/worst run을 fail-closed로 계산한다.
+- focused 24 tests, JSON/syntax/diff가 green이며 다음은 1.9.1 measurement kernel 3×3 smoke다.
+
 ## 2026-07-21 (Codex) · UI-Resolve Bench v0.1 + corrected activation pilot
 - frontier UI skills 5종을 pinned source·정확한 activation/platform bundle로 sandbox 비교하는 runner와 객관 게이트를 구축했다.
 - corrected 1-task 진단은 Taste/UIUX 81(접근성 fail), OmD 85(pass)였으나 단일 관측이므로 순위가 아닌 method calibration으로 잠갔다.

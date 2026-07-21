@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oh-my-design.kr/schemas/ui-resolve-run-record-v0.2.json",
+  "title": "UI-Resolve run record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "run_id",
+    "benchmark_family",
+    "suite_version",
+    "system_id",
+    "task_id",
+    "trial_index",
+    "run_status",
+    "validity"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "benchmark_family": { "enum": ["model", "skill", "harness", "prompt-arena", "factorial"] },
+    "suite_version": { "type": "string", "minLength": 1 },
+    "system_id": { "type": "string", "minLength": 1 },
+    "model_id": { "type": ["string", "null"] },
+    "skill_id": { "type": ["string", "null"] },
+    "harness_id": { "type": ["string", "null"] },
+    "budget_tier": { "type": "string", "default": "standard" },
+    "task_id": { "type": "string", "minLength": 1 },
+    "trial_index": { "type": "integer", "minimum": 1 },
+    "run_status": { "enum": ["complete", "failed", "timed_out", "incomplete"] },
+    "validity": { "enum": ["valid", "invalid-infrastructure", "invalid-attribution", "invalid-task"] },
+    "ui_resolved": { "type": "boolean" },
+    "objective_score": { "type": "number", "minimum": 0 },
+    "objective_max": { "type": "number", "exclusiveMinimum": 0 },
+    "wall_time_ms": { "type": "number", "minimum": 0 },
+    "tokens": { "type": "number", "minimum": 0 },
+    "tool_calls": { "type": "number", "minimum": 0 },
+    "human_interventions": { "type": "number", "minimum": 0 }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "validity": { "const": "valid" } } },
+      "then": { "required": ["ui_resolved"] }
+    },
+    {
+      "if": { "required": ["objective_score"] },
+      "then": { "required": ["objective_max"] }
+    }
+  ]
+}

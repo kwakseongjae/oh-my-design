@@ -8,6 +8,8 @@ import { treeManifest } from "../../../benchmarks/ui-resolve-bench/scripts/_lib.
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const prepare = join(repoRoot, "benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs");
 const competitors = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/competitors.json"), "utf8"));
+const families = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/benchmark-families.json"), "utf8"));
+const releaseTrain = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/release-train.json"), "utf8"));
 const pinnedVendors = "/tmp/omd-ui-skills-bench/vendors";
 
 function prepareVariant(variant, { vendors = null, offLabel = false } = {}) {
@@ -36,6 +38,33 @@ function installedSkillName(path) {
 }
 
 describe("UI-Resolve Bench sandbox preparation", () => {
+  it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
+    expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
+    expect(families.families.model.skills_allowed).toBe(false);
+    expect(families.families.skill.paired_baseline).toBe("no-skill");
+    expect(families.families.harness.rank_mode).toBe("pareto");
+    expect(families.families["prompt-arena"].public_rank).toBe(false);
+    expect(families.sample_policy).toMatchObject({
+      patch_smoke: { tasks: 3, runs_per_task: 3 },
+      internal_candidate: { tasks: 12, runs_per_task: 5 },
+      verified_public: { minimum_tasks: 24, runs_per_task: 10 },
+    });
+  });
+
+  it("defines every 0.0.1 patch experiment without allowing the calendar to force 2.0.0", () => {
+    expect(releaseTrain.releases.map((release) => release.version)).toEqual([
+      "1.9.1", "1.9.2", "1.9.3", "1.9.4", "1.9.5",
+      "1.9.6", "1.9.7", "1.9.8", "1.9.9", "2.0.0",
+    ]);
+    expect(releaseTrain.releases.at(-1)).toMatchObject({ status: "gated", experiment: "frontier-release" });
+    expect(releaseTrain.rules).toMatchObject({
+      benchmark_and_product_versions_are_separate: true,
+      failed_experiments_remain_visible: true,
+      score_rule_change_requires_suite_version: true,
+      calendar_can_force_2_0_0: false,
+    });
+  });
+
   it("separates no-context and raw DESIGN.md controls", () => {
     const baseline = prepareVariant("baseline");
     const raw = prepareVariant("raw-design-md");

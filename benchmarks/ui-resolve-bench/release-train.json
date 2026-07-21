@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "product_baseline": "1.9.0",
+  "frontier_target": "2.0.0",
+  "releases": [
+    { "version": "1.9.1", "experiment": "measurement-kernel", "status": "planned" },
+    { "version": "1.9.2", "experiment": "task-pack-calibration", "status": "planned" },
+    { "version": "1.9.3", "experiment": "fast-first-result", "status": "planned" },
+    { "version": "1.9.4", "experiment": "inspection-loop", "status": "planned" },
+    { "version": "1.9.5", "experiment": "reference-query-layer", "status": "planned" },
+    { "version": "1.9.6", "experiment": "model-transfer", "status": "planned" },
+    { "version": "1.9.7", "experiment": "harness-efficiency", "status": "planned" },
+    { "version": "1.9.8", "experiment": "public-preview", "status": "planned" },
+    { "version": "1.9.9", "experiment": "independent-challenge", "status": "planned" },
+    { "version": "2.0.0", "experiment": "frontier-release", "status": "gated" }
+  ],
+  "rules": {
+    "one_bounded_hypothesis_per_patch": true,
+    "benchmark_and_product_versions_are_separate": true,
+    "failed_experiments_remain_visible": true,
+    "score_rule_change_requires_suite_version": true,
+    "calendar_can_force_2_0_0": false
+  }
+}

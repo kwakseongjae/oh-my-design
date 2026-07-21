@@ -81,12 +81,13 @@ must say “440 quality-graded references,” not “440 verified design systems
 
 | Horizon | Benchmark | OmD target |
 |---|---|---|
-| Immediate | Skill Layer paired pilot | raw `DESIGN.md` + OmD must improve design-grounding and unknown-abstention gates without functional regressions |
+| Immediate | Skill Lift paired pilot | raw `DESIGN.md` + OmD must improve design-grounding and unknown-abstention gates without functional regressions |
 | Near-term | Existing UI repair | match Impeccable's deterministic detector clarity and produce a one-command inspect → fix → reverify loop |
 | Near-term | First-run activation | make the visual delta and first useful command as legible as Taste while retaining evidence honesty |
-| Medium-term | Full System reliability | demonstrate higher `Reliability@3` and state/locale coverage at a transparently higher cost class |
+| Medium-term | Harness reliability | demonstrate higher `Reliability@5` and state/locale coverage at a transparently higher cost class |
 | Medium-term | Evidence & Unknown | achieve zero unsupported protected fields while preserving all verified neighboring content |
-| Public launch | UI-Resolve Bench v0.1 | 24 hidden tasks, 3 trials, blind practitioner review, calibrated thresholds, and published failures |
+| Public Preview | UI-Resolve Bench v0.1 | 24 hidden tasks, 5 trials, blind practitioner review, calibrated thresholds, and published failures |
+| Public Verified | UI-Resolve Bench v0.1 | 24+ hidden tasks, 10 trials, ten practitioners, signed raw packages, and hierarchical confidence intervals |
 
 ## Research anchors
 

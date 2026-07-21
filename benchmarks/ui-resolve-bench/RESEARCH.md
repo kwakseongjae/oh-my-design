@@ -33,3 +33,22 @@ protected unknowns, responsive behavior, accessibility, and blind
 ship-readiness as one all-or-nothing resolution criterion. A systematic novelty
 claim would require a published search protocol. This observed gap—not an
 OmD-specific score—is the reason for exploring UI-Resolved@1.
+
+## Statistical and publication extensions
+
+- HELM's scenario taxonomy and multi-metric reporting support keeping product
+  resolution, visual preference, and efficiency separate rather than hiding
+  tradeoffs in one score.
+- Chatbot Arena's pairwise preference and Bradley–Terry/bootstrap method informs
+  `Visual Ship Preference`, with ties, reversed duplicates, and reviewer-level
+  uncertainty retained.
+- GeneBench's independent repeated runs and hierarchical resampling over tasks
+  and runs informs UI-Resolve confidence intervals.
+- MLPerf's comparable divisions, submission checker, and full run packages
+  inform separate Model/Skill/Harness leaderboards and Internal/Preview/Verified
+  result labels.
+- OpenAI's SWE-bench task audit reinforces the requirement to accept multiple
+  valid solutions, reject mutants, and retire ambiguous tasks before ranking.
+
+The concrete policy and source links live in
+[`STATISTICS.md`](./STATISTICS.md).
