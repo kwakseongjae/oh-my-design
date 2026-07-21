@@ -2,6 +2,7 @@
 
 import { Star } from "lucide-react";
 import { useGithubStars, formatStars } from "@/lib/use-github-stars";
+import { cn } from "@/lib/utils";
 
 const REPO_URL = "https://github.com/kwakseongjae/oh-my-design";
 
@@ -20,7 +21,13 @@ function GithubMark({ className }: { className?: string }) {
  * uses theme tokens so it reads in both light and dark. The count is shared
  * with the nav via the module-cached useGithubStars hook (one fetch total).
  */
-export function GithubStarButton({ className = "" }: { className?: string }) {
+export function GithubStarButton({
+  className = "",
+  variant = "pill",
+}: {
+  className?: string;
+  variant?: "pill" | "control";
+}) {
   const stars = useGithubStars();
 
   return (
@@ -29,7 +36,13 @@ export function GithubStarButton({ className = "" }: { className?: string }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={stars != null ? `GitHub — ${formatStars(stars)} stars` : "GitHub"}
-      className={`inline-flex h-8 items-center gap-2 rounded-full border border-border/60 bg-card/50 px-3 text-xs font-medium text-foreground/80 transition-colors hover:bg-accent hover:text-foreground dark:border-border dark:bg-card/60 ${className}`}
+      className={cn(
+        "inline-flex items-center gap-2 border text-xs font-medium text-foreground/80 transition-colors focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
+        variant === "control"
+          ? "h-9 rounded-lg border-border/70 bg-background px-3 hover:border-foreground/20 hover:bg-muted/60"
+          : "h-8 rounded-full border-border/60 bg-card/50 px-3 hover:bg-accent hover:text-foreground dark:border-border dark:bg-card/60",
+        className,
+      )}
     >
       <GithubMark className="h-4 w-4 shrink-0" />
       {stars != null && (

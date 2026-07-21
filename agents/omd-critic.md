@@ -92,14 +92,13 @@ The master MUST re-enter these phases (lowest first):
 
 Phases NOT in this list must be carried forward unchanged. Do not surface-patch.
 
-## 4. omd remember entries (auto-call)
+## 4. omd:remember entries (required)
 
-The master will Bash these:
-
-```bash
-omd remember "<root cause finding 1>" --context "<artifact path>"
-omd remember "<root cause finding 2>" --context "..."
-```
+The master must invoke the installed `omd:remember` skill once per root-cause
+finding, with the affected artifact path as context. If the host has no explicit
+skill-invocation surface, follow the installed skill schema and append the same
+scoped entries to `.omd/preferences.md`. Never call a nonexistent
+`omd remember` shell command.
 
 ## 5. Fragility watchlist (next iteration)
 

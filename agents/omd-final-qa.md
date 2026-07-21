@@ -11,7 +11,7 @@ Final gate before user handoff. Read-only. Closed rubric.
 
 ## Boot
 
-1. Read `.claude/skills/omd-final-qa/SKILL.md` in full
+1. Read the installed `omd-final-qa/SKILL.md` from the active host's skill root in full
 2. Read every artifact in `artifact_paths`
 3. **Re-read `design_md_path`** — record timestamp
 4. Read `prior_reviews` (designer-review reports) if present

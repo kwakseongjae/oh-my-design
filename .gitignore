@@ -1,5 +1,7 @@
 node_modules/
 dist/
+# Generated during `npm ci`/`npm run build` and included by package.json files.
+/skills/omd-reference-capture/scripts/
 .next/
 *.tsbuildinfo
 .DS_Store
@@ -33,17 +35,30 @@ experiments/
 # npm pack tarball outputs (build artifacts)
 *.tgz
 
+# Self-contained reference collector and bundled third-party notices. Generated
+# by `npm run build`; package.json `files` includes them after prepare/pack.
+/skills/omd-reference-capture/scripts/
+
 # Self-install test artifacts inside web/ (regenerable via npx)
 web/.claude/
 web/.codex/
 web/.omd/
 web/.husky/
+web/.sundae/
 
 # Self-install artifacts at repo root (canonical sources: skills/, agents/, .claude/).
 # `omd install-skills` writes installed-skill-marked copies here when dogfooding
 # the codex / generic-agent channels locally.
 .codex/
+# Keep the canonical Codex agent mirror reviewable in clean clones while
+# continuing to ignore dogfooded skills, data, and other installer output.
+!.codex/
+.codex/*
+!.codex/agents/
+.codex/agents/*
+!.codex/agents/*.toml
 .agents/skills/omd*/
+.agents/skills/claude-design/
 
 # Claude scheduled-task lock (per-machine runtime state)
 .claude/scheduled_tasks.lock

@@ -25,7 +25,48 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  node18-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 18
+
+      - run: npm ci
+
+      - name: Build the Node 18 package artifacts
+        run: npm run build
+
+      - name: Verify the packed reference collector is self-contained
+        shell: bash
+        run: |
+          set -euo pipefail
+          PACK_JSON=$(npm pack --json)
+          TARBALL=$(node -e 'const fs=require("fs"); const p=JSON.parse(fs.readFileSync(0,"utf8")); process.stdout.write(p[0].filename)' <<<"$PACK_JSON")
+          mkdir packed
+          tar -xzf "$TARBALL" -C packed
+          # Exercise the artifact exactly as the installer leaves it: outside
+          # the npm package's `type: module` boundary and with no package.json
+          # or node_modules available in any copied skill directory.
+          STANDALONE=$(mktemp -d)
+          cp -R packed/package/skills/omd-reference-capture "$STANDALONE/omd-reference-capture"
+          COLLECTOR="$STANDALONE/omd-reference-capture/scripts/capture-reference-evidence.mjs"
+          test -f "$COLLECTOR"
+          set +e
+          OUTPUT=$(node "$COLLECTOR" 2>&1)
+          STATUS=$?
+          set -e
+          test "$STATUS" -eq 1
+          grep -q "Usage:" <<<"$OUTPUT"
+          if grep -Eq "ERR_MODULE_NOT_FOUND|Unknown file extension|Cannot use import statement outside a module|experimental-strip-types" <<<"$OUTPUT"; then
+            echo "$OUTPUT"
+            exit 1
+          fi
+
   publish:
+    needs: node18-smoke
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -53,7 +94,26 @@ jobs:
       - name: Verify canonical reference pipeline
         run: npm run check:catalog
 
-      - run: npm test
+      - name: Test CLI runtime
+        run: npm test
+
+      - name: Type-check CLI runtime
+        run: npm run lint
+
+      - name: Verify public counts
+        run: npm run check-counts
+
+      - name: Test web product
+        run: npm test
+        working-directory: web
+
+      - name: Type-check web product
+        run: npm run typecheck
+        working-directory: web
+
+      - name: Build web product
+        run: npm run build
+        working-directory: web
 
       # prepublishOnly가 build + gen-llms-full + release-hygiene(pack)을 다시 돌린다
       - name: Publish

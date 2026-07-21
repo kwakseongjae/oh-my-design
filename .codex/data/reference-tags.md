@@ -80,6 +80,17 @@ Use this table to match user descriptions to reference candidates. Pick 3-6 refe
 | wise | #9fe870 | Fintech | bold, fresh, optimistic, nature-inspired, lime, green |
 | x.ai | #ffffff | AI | brutalist, dark, minimal, terminal, engineering, restrained |
 | zapier | #ff4f00 | Productivity | warm, approachable, professional, organic, energetic, orange |
+| coupang | #E94B22 | E-commerce | direct, transactional, deal-driven, results-first, utility, dense |
+| kakaobank | #FFE300 | Fintech | friendly, plain-spoken, warm, formal-when-needed, personal, trustworthy |
+| krds | #256EF4 | Government | polite, predictable, accessible, clear, neutral, civic |
+| kurly | #5F0080 | E-commerce | calm, curated, operational, warm, restrained, editorial |
+| musinsa | #000000 | E-commerce | editorial, compact, declarative, monochrome, magazine |
+| naver | #03C75A | Consumer | pragmatic, neutral, factual, clinical, utility |
+| ohouse | #35C5F0 | Consumer | warm, observational, sensory, spatial, aspirational, calm |
+| qanda | #FF5500 | Consumer | warm, encouraging, low-pressure, calm, reassuring, tutor-like |
+| ridi | #3D3D3D | Consumer | calm, literate, editorial, low-pressure, bookish, respectful |
+| yanolja | #F54B1E | Travel | friendly, casual, energetic, playful, conversational, leisure |
+| yeogiotte | #1D8BFF | Travel | plain, polite, hospitable, confident, factual |
 
 ## Shortcut Mappings
 
@@ -95,7 +106,10 @@ Common user descriptions → recommended references:
 - "크리에이티브, 디자인" → figma, framer, clay, replicate, miro
 - "럭셔리, 프리미엄" → apple, stripe, superhuman, ferrari, resend
 - "AI, LLM 서비스" → claude, cohere, mistral.ai, together.ai, x.ai
-- "한국 서비스" → toss, karrot, baemin, kakao
+- "한국 서비스" → toss, karrot, baemin, kakao, naver, kakaobank, ohouse, ridi, qanda
+- "한국 이커머스" → coupang, musinsa, kurly
+- "한국 여행" → yeogiotte, yanolja
+- "공공, 행정, 정부" → krds
 - "대만 서비스" → pinkoi, dcard
 - "일본 서비스" → line, mercari, freee
 - "아시아 커머스, 디자이너 마켓" → pinkoi, airbnb, karrot, pinterest

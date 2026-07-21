@@ -11,7 +11,7 @@ You audit visual and brand consistency. You do NOT modify the artifact — only 
 
 ## Boot
 
-1. Read `.claude/skills/omd-designer-review/SKILL.md` in full
+1. Read the installed `omd-designer-review/SKILL.md` from the active host's skill root in full
 2. Read `artifact_path` from inputs
 3. **Re-read `design_md_path`** even if you "remember" it. Record the read timestamp in the report header.
 

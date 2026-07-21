@@ -1,40 +1,57 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 18 skills + 16 sub-agents + 440 reference DESIGN.md files. Install once, then talk to your agent in natural language — no more commands needed.
+> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode can receive the full 20-skill + 18-sub-agent bundle; Cursor receives a project rule and local catalog, not OmD skills or sub-agents. The quality-graded catalog contains 440 DESIGN.md references: 141 verified_v2, 159 partial, and 140 legacy. Use verified_v2 references for public demos.
 
 ## What
 
-`oh-my-design-cli` is an npm package (MIT licensed) that installs a deterministic design harness into AI coding agents. It writes `.claude/skills/`, `.codex/skills/`, `.opencode/agents/`, `.claude/agents/`, hooks, and 440 reference DESIGN.md files into your project. After restart, the agent picks up the skills and routes natural-language design intent automatically.
+`oh-my-design-cli` is an npm package (MIT licensed) that installs a deterministic design harness into AI coding agents. Claude Code, Codex, and OpenCode receive channel-correct skills, sub-agent roles, and catalog data; supported project hooks are Claude-only. Cursor receives `.cursor/rules/omd-design.mdc` plus the shared `.claude/data` catalog. OpenCode is a full native channel: project installs use `.opencode/skills/`, `.opencode/agents/`, and `.opencode/data/`; global installs use `~/.config/opencode/skills/`, `~/.config/opencode/agents/`, and `~/.config/opencode/data/`. The bundled catalog contains 440+ reference DESIGN.md files. After restart, each agent uses only the capabilities installed for its channel.
 
-The package is zero-cost: install runs no AI calls, ships no telemetry, requires no API key. Your AI coding agent (Claude Code, Codex, OpenCode, or Cursor) provides the inference; this package teaches it where the brand spec lives.
+The core installer runs no AI calls, ships no telemetry, and requires no API key, daemon, or MCP server. Your coding-agent session provides inference. The optional `claude-design` skill opens the user's logged-in claude.ai/design session in Chrome rather than calling an OmD API.
 
-## Install (the only command)
+## Install and verify
 
 ```bash
-npx oh-my-design-cli install-skills
+npx oh-my-design-cli@latest
 ```
 
-Then restart your AI coding agent (Cmd+Q in Claude Code, then relaunch).
+Then restart your AI coding agent and verify the channel-specific bundle once:
 
-## How users invoke it (natural language, no slash commands needed)
+```bash
+npx oh-my-design-cli@latest doctor
+```
+
+For a global installation, run `npx oh-my-design-cli@latest install-skills --global`, then diagnose it with `npx oh-my-design-cli@latest doctor --global`. Channel-native roots are `~/.claude`, `~/.agents` + `~/.codex`, and `~/.config/opencode`; Cursor rules remain project-scoped.
+
+The CLI only installs and diagnoses. Product design work happens through natural-language prompts inside the coding agent.
+
+## How users invoke the full bundle (Claude Code, Codex, OpenCode)
 
 - `"Set up the design system for a calm B2B fintech dashboard."` → triggers `omd:init`, bootstraps a hybrid DESIGN.md from one of the bundled references.
 - `"Make the empty-state for the search results page."` → triggers `omd:apply`, builds with brand tokens + voice from DESIGN.md.
 - `"Design the entire onboarding from scratch."` → triggers `omd:harness`, runs the 10-phase pipeline with sub-agents.
-- `"그럴싸한 랜딩페이지 만들어줘"` / `"프로토타입이라도 구색 갖춰서"` → **v1.6.0** triggers `omd:harness` automatically on natural-language landing/prototype phrasings (no slash command, no design jargon needed).
+- `"그럴싸한 랜딩페이지 만들어줘"` / `"프로토타입이라도 구색 갖춰서"` → Since **v1.6.0**, `omd:harness` triggers automatically on natural-language landing/prototype phrasings (no slash command, no design jargon needed).
 - `"We never use uppercase CTAs."` → triggers `omd:remember`, writes the correction to `.omd/preferences.md`.
 
-## v1.6.0 conversational deepening (latest)
+## Cursor path (rule + catalog only)
+
+Cursor does not run `omd:init`, `omd:feel`, `omd:harness`, or OmD sub-agents. Create the project spec through one of these paths:
+
+1. Choose/customize a reference in https://oh-my-design.kr/builder, download `DESIGN.md`, and save it at the project root; or
+2. ask Cursor: `Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md for this product using confirmed values only. Keep unknown facts absent.`
+
+Then ask Cursor: `Read @DESIGN.md and redesign the home screen without changing behavior.` The installed rule applies root `DESIGN.md` first, pending `.omd/preferences.md` corrections second, and framework defaults last.
+
+## Current v1.9.0 activation flow
 
 When `omd:harness` activates, it runs three new steps **before** any reference question:
 
-1. **Subagent auto-recovery** — if `omd-master` isn't loaded in the session, the skill copies the agent file from `$(npm root -g)/oh-my-design-cli/agents/` into `.claude/agents/` and continues. No "restart Claude Code" dead-end.
+1. **Channel-safe role recovery** — the skill validates the native Claude, Codex, or OpenCode role schema, repairs the exact channel through the installer, and continues inline when the already-running session has a stale role list. It never copies one channel's role format into another channel's path.
 2. **CTX-PRIME** — `scripts/ctx-prime.cjs` runs a sub-50ms deterministic scan of the working directory: framework detection (Next/Vite/Astro/etc.), dominant brand color (most-cited hex literal), font families, voice keywords from README + commit messages, surface inventory (every routing page classified as landing/product/dashboard/docs/onboarding), and `audience_hypothesis` (3 candidates with confidence + evidence). Emits `<RUN_DIR>/ctx-prime.json`.
 3. **Single-question persona picker + Interview-lite** — one `AskUserQuestion` confirms the audience hypothesis, then a batched four-question picker resolves `exit_scope`, `wow_moment`, `cta_primary`, and `visual_grounding`. Answers write to `<RUN_DIR>/handoff/.handoff.json` as `prefilled_slots`.
 
 The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
-## The 18 skills
+## The 20 skills (Claude Code, Codex, OpenCode)
 
 Core flow (7):
 - **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
@@ -50,18 +67,23 @@ Live capture + assets (3):
 - **omd:asset-fetch** — Free-license asset catalog (DiceBear CC0 / Lucide ISC / Picsum CC0 / SIL OFL display fonts). Handcrafted character SVG forbidden.
 - **omd:experiment-gallery** — N-brand experiments → single comparison index.html with iframe previews, ratings, per-brand IP audit.
 
-Localization + review layer (6):
+Localization + review layer (7):
 - **omd:orchestrator** — Coordinates multi-agent writing/review workflows with a revision cap and handoff log.
 - **omd:kr-writer** — Korean long-form / blog writer with multiple voice presets (default toss-tech-design).
 - **omd:locale-adapter** — Adapts (not translates) Korean canonical content into EN / JP / ZH-TW with cultural reference swaps.
+- **omd:humanize** — Rewrites product and documentation copy for KO / EN / JA / ZH-CN / ZH-TW while preserving commands, facts, and evidence boundaries.
 - **omd:designer-review** — Visual + brand-consistency audit against DESIGN.md (typography, color budget, radius scale, states, responsiveness).
-- **omd:final-qa** — Read-only final-gate critic enforcing a 9-item rubric with a hard revision cap.
+- **omd:final-qa** — Read-only final-gate critic enforcing an 8-item rubric with a hard revision cap.
 - **omd:codex-image** — Channel-aware image materializer for `omd:gen-image` spec blocks (Codex native gen / asset fallback / user queue).
+
+Interface quality (2):
+- **omd:feel** — Applies and audits 113 provenance-graded HIG / Material / WCAG rules for motion, spacing, typography, and accessibility.
+- **omd:slop-audit** — Finds clusters of context-free UI and copy defaults without guessing authorship, then separates slop, quality failures, and preference.
 
 Standalone (1):
 - **claude-design** — Analyzes the current codebase into a design-context brief and drives claude.ai/design (via logged-in Chrome) to generate a design, returning a result link.
 
-## The 16 sub-agents (master orchestrator + 15 specialists)
+## The 18 sub-agents (Claude Code, Codex, OpenCode)
 
 Specialists pair as advisor ↔ generator:
 
@@ -78,6 +100,8 @@ Specialists pair as advisor ↔ generator:
 - **omd-orchestrator** — Routes between the writing/review specialists with a 2-round revision cap.
 - **omd-kr-writer** — Korean long-form writer with voice presets.
 - **omd-locale-adapter** — KR → EN / JP / ZH-TW cultural adaptation.
+- **omd-humanizer** — Native-sounding KO / EN / JA / ZH-CN / ZH-TW copy review with protected facts and commands.
+- **omd-slop-auditor** — Evidence-backed UI and UX-copy convergence audit that keeps accessibility and taste separate.
 - **omd-designer-review** — Visual + brand consistency reviewer (BLOCK / WARN / FYI with line refs).
 - **omd-final-qa** — Final-gate rubric critic.
 - **omd-codex-image** — Image materializer across Codex / asset-fallback / user-queue channels.
@@ -91,9 +115,9 @@ Grouped in 4 stages:
 3. **Make** (parallel): Asset sourcing + Microcopy
 4. **Validate & Ship**: Validation → Handoff
 
-3 mandatory user checkpoints: after Discovery (brief), after Components (system locked), before Handoff (ship-ready).
+3 mandatory user checkpoints: after IA/Journey, after the proposed `DESIGN.md.patch`, and after validation. A live demo never skips them.
 
-## 440 reference brands bundled
+## 440+ reference brands bundled
 
 Each ships a full DESIGN.md (Google Stitch format + OmD brand-philosophy layer: Voice, Narrative, Principles, Personas, States, Motion).
 
@@ -548,12 +572,13 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 
 ## Resources
 
-- [Live demo + docs](https://oh-my-design.kr): https://oh-my-design.kr
-- [Documentation](https://oh-my-design.kr/docs): how the harness works in detail
+- [Live demo runbook](https://oh-my-design.kr/docs/en/demo): 5-, 15-, and 30-minute truthful demo formats
+- [AI slop definition and comparisons](https://oh-my-design.kr/docs/en/anti-slop): observable criteria, before/after examples, and the OmD review direction
+- [Documentation](https://oh-my-design.kr/docs/en): how the harness works in detail
 - [Builder](https://oh-my-design.kr/builder): generate DESIGN.md from any bundled reference
 - [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all references
 - [npm package](https://www.npmjs.com/package/oh-my-design-cli)
-- [oh-my-design-mcp](https://www.npmjs.com/package/oh-my-design-mcp): drop-in MCP server exposing the references as resources, tools, and prompts
+- [Retired connector notice](https://oh-my-design.kr/docs/connector): the old MCP transport is archived; skills use local catalogs and raw DESIGN.md endpoints
 - [GitHub](https://github.com/kwakseongjae/oh-my-design)
 - [License: MIT](https://github.com/kwakseongjae/oh-my-design/blob/main/LICENSE)
 
@@ -561,12 +586,12 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 
 ```
 oh-my-design/
-├── skills/              # 15 SKILL.md files (source of truth)
-├── agents/              # 16 sub-agent definitions
+├── skills/              # 20 shipped product skills (source of truth)
+├── agents/              # 18 sub-agent definitions
 ├── web/references/      # 440 reference DESIGN.md files (canonical)
 ├── data/                # reference fingerprints, vocabulary, opt-out corpus
 ├── .claude/hooks/       # UserPromptSubmit / SessionStart / PostToolUse hooks
-├── src/cli/             # install-skills entry point
+├── src/cli/             # installer + doctor entry points
 └── web/                 # marketing + docs site (oh-my-design.kr)
 ```
 

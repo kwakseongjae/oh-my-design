@@ -1,7 +1,7 @@
 {
   "name": "oh-my-design-cli",
-  "version": "1.8.8",
-  "description": "Bootstrap oh-my-design skills + agents into your project. After install, talk to your AI coding agent in natural language — no other CLI commands.",
+  "version": "1.9.0",
+  "description": "Give your AI coding agent a project-owned DESIGN.md workflow with a guided installer, doctor, and 440+ quality-graded references.",
   "type": "module",
   "bin": {
     "oh-my-design": "dist/bin/oh-my-design.js",
@@ -22,9 +22,11 @@
     "skills/omd-orchestrator",
     "skills/omd-kr-writer",
     "skills/omd-locale-adapter",
+    "skills/omd-humanize",
     "skills/omd-designer-review",
     "skills/omd-final-qa",
     "skills/omd-feel",
+    "skills/omd-slop-audit",
     "skills/omd-codex-image",
     "skills/claude-design",
     "agents",
@@ -34,12 +36,14 @@
     "data/reference-fingerprints.json",
     "data/reference-tags.md",
     "web/references/*/DESIGN.md",
-    "web/scripts/capture-reference-evidence.ts",
-    "web/src/lib/references/evidence.ts",
     ".claude/hooks/*.cjs",
     ".claude/hooks/lib/*.cjs",
     ".claude/settings.json",
     "AGENTS.md",
+    "CHANGELOG.md",
+    "MIGRATION.md",
+    "docs/CLI_QUICKSTART.md",
+    ".github/assets/logo-bg.png",
     "scripts/postinstall.cjs",
     "scripts/context.cjs",
     "scripts/ctx-prime.cjs"
@@ -64,14 +68,17 @@
     "ai-agent",
     "claude-code",
     "codex",
+    "opencode",
+    "cursor",
     "skills",
+    "design-skills",
     "google-stitch",
     "vibe-coding"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kwakseongjae/oh-my-design"
+    "url": "git+https://github.com/kwakseongjae/oh-my-design.git"
   },
   "engines": {
     "node": ">=18"
@@ -81,13 +88,21 @@
     "commander": "^13.1.0",
     "picocolors": "^1.1.1"
   },
-  "optionalDependencies": {
-    "playwright-core": "^1.61.1"
-  },
   "devDependencies": {
     "@types/node": "^22.13.10",
+    "playwright-core": "^1.61.1",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
     "vitest": "^3.1.1"
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/kwakseongjae/oh-my-design/issues"
+  },
+  "homepage": "https://oh-my-design.kr/docs/en"
 }

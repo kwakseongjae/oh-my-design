@@ -1,0 +1,4 @@
+interface:
+  display_name: "OmD Slop Audit"
+  short_description: "Audit context-free UI and copy patterns with evidence"
+  default_prompt: "Audit this real product route for clustered UI and copy slop, cite evidence, and propose focused fixes."

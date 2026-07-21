@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "caseId": "applepresso-controlled-concept",
+  "title": "Applepresso — controlled cafe-ordering redesign",
+  "createdAt": "2026-05-19",
+  "publishedAt": "2026-07-17",
+  "caseType": "controlled-concept",
+  "disclosure": "The before screen is a deliberately generic baseline, not a customer product. Applepresso is a repository-owned fictional concept used to test the OmD workflow. It is not affiliated with Apple, Baemin, or Banapresso and uses no official production assets or logos from those companies.",
+  "runtime": {
+    "codingAgent": "Codex",
+    "omdVersion": "1.4.x historical run",
+    "currentVersionNote": "OmD v1.9 uses native channel paths and does not require MCP."
+  },
+  "inputs": {
+    "baseReference": "apple",
+    "secondaryReference": "baemin",
+    "locale": "ko",
+    "voicePreset": "kakao-warm-product",
+    "archivedPrompt": "/showcase/applepresso/archived-prompt.md"
+  },
+  "skillsUsed": [
+    "omd-orchestrator",
+    "omd-kr-writer",
+    "omd-designer-review",
+    "omd-final-qa",
+    "omd-codex-image",
+    "omd-asset-curator"
+  ],
+  "outputs": {
+    "pages": 3,
+    "imageSpecs": 34,
+    "imagesMaterialized": 34,
+    "initialGenerationTimeMinutes": 18
+  },
+  "presentation": {
+    "producedAt": "2026-05-21",
+    "description": "The mobile flow frames and 20-second walkthrough are an edited presentation assembled after the initial three-page, 34-asset run. The video is not a real-time Codex screen recording."
+  },
+  "validation": {
+    "block": 0,
+    "warn": 2,
+    "fyi": 2
+  },
+  "limitations": [
+    "Native contact-sheet crops are less consistent than campaign photography.",
+    "The controlled baseline was authored for the experiment and is not production telemetry.",
+    "This historical prompt predates the current MCP-free installer contract.",
+    "The 18-minute measurement covers the initial three-page and 34-asset generation only, not the later mobile presentation edit."
+  ],
+  "currentRunbook": "/docs/en/demo",
+  "artifacts": [
+    {
+      "path": "/showcase/applepresso/01-controlled-baseline.png",
+      "sha256": "4d2169fefb3e160f49f3345204df4963a4d2a9005ff1867917db94f9ea277b92"
+    },
+    {
+      "path": "/showcase/applepresso/02-design-system.png",
+      "sha256": "1d8caacaa5795efe0ad4cf1b43e61bb3dfc2a22da4f8b167330088d8900e23cc"
+    },
+    {
+      "path": "/showcase/applepresso/03-order-flow.png",
+      "sha256": "6c9e44bcbdee986fdb8ae8b620516ce6f51b55ccec937afc8d5c1cba44f474a3"
+    },
+    {
+      "path": "/showcase/applepresso/04-complete.png",
+      "sha256": "6dba316a19502d8f3b4efd88598dfff625698ce93692a5c431794a92d4717251"
+    },
+    {
+      "path": "/showcase/applepresso/applepresso.mp4",
+      "sha256": "8eaa1e6fa9939053736a1ca8f841f2c6bc41370226abe620147b455df2b904c8"
+    },
+    {
+      "path": "/showcase/applepresso/archived-prompt.md",
+      "sha256": "3a2ce0cc3d530e89602e9288a71e6f5a57af572e18ef4d3b7d00a086592680b9"
+    }
+  ]
+}

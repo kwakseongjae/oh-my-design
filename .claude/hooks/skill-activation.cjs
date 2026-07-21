@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// omd:installed-hook sha256=3ac226a3cd7d9579d44c0d760fbb5a0b806208132e546c35c0d226dda3552338
 // UserPromptSubmit hook — DESIGN.md existence gate.
 //
 // Scope (2026-05-07, simplified from the prior keyword/regex forced-eval

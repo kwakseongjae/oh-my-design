@@ -1,8 +1,10 @@
 ---
 name: omd:orchestrator
-description: "멀티 에이전트 디자인 워크플로우 supervisor. omd-kr-writer, omd-locale-adapter, omd-designer-review, omd-final-qa, omd-codex-image를 routing. 2-round revision cap 유지. 블로그/컴포넌트/아티클 등 multi-role 작업에 트리거 ('블로그 글 작성', 'KR+EN 동시 발행', '디자인 리뷰 받고 다듬어줘')."
+description: "멀티 에이전트 디자인 워크플로우 supervisor. writer, locale adaptation, humanize, UI slop audit, designer review, final QA, image materialization을 routing한다. 2-round revision cap을 유지하며 다국어 문서·UI 개선·출간 준비처럼 여러 역할이 필요한 요청에 사용한다."
 user-invocable: true
 ---
+<!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
+
 
 # omd:orchestrator
 
@@ -17,7 +19,9 @@ omd v0.2 agent layer의 **supervisor**. 한 글/한 컴포넌트가 여러 speci
 | 역할 | subagent | 용도 |
 |---|---|---|
 | Writer | `omd-kr-writer` | 한국어 본문 작성. `preset_id` 인자로 voice 결정. |
-| Localizer | `omd-locale-adapter` | KR → EN/JP/ZH-TW **adaptation** (번역 아님) |
+| Localizer | `omd-locale-adapter` | KR → EN/JA/ZH-CN/ZH-TW **adaptation** (번역 아님) |
+| Copy finalizer | `omd-humanizer` | locale별 번역투·기계적 구조를 국소 수정하고 보호 구간 대조 |
+| Slop auditor | `omd-slop-auditor` | 실제 route의 context-free UI/copy cluster를 품질·취향과 분리해 감사 |
 | Visual reviewer | `omd-designer-review` | DESIGN.md 대비 typo/색/spacing/state 검수 |
 | Critic | `omd-final-qa` | Read-only rubric verdict. 2-round cap 강제. |
 | Image materializer | `omd-codex-image` | `<!-- omd:gen-image -->` 블록을 채널별로 실체화 (Codex native gen / asset-curator fallback / OpenCode user-queue) |
@@ -34,7 +38,9 @@ omd v0.2 agent layer의 **supervisor**. 한 글/한 컴포넌트가 여러 speci
 ```
 사용자 요청 도착
 ├─ "글 작성" 키워드 → Stage 1: omd-kr-writer
-├─ 다국어 요청 ("EN", "영문", "JP") → Stage 3 추가
+├─ "AI 티/번역투/문장이 기계적" → omd-humanizer
+├─ 다국어 요청 ("EN", "영문", "JA", "간체", "대만어") → Stage 3 + locale별 humanize 추가
+├─ "AI slop/템플릿 같음" → omd-slop-auditor → 수정은 omd:apply
 ├─ artifact 첨부 + "리뷰" → Stage 2부터 진입
 └─ "출간 ready" → Stage 4 final-qa로 직행
 ```
@@ -43,9 +49,11 @@ omd v0.2 agent layer의 **supervisor**. 한 글/한 컴포넌트가 여러 speci
 
 ```
 Stage 1  WRITE       omd-kr-writer  (preset=toss-tech-design)
+Stage 1h HUMANIZE    omd-humanizer  (KO 보호 구간 + 자연스러움 검증)
 Stage 2  REVIEW      omd-designer-review  (artifact + brand DESIGN.md)
 Stage 2r REVISION    omd-kr-writer  (review feedback 반영)  ← max 2 round
-Stage 3  LOCALIZE    omd-locale-adapter  (KR → EN/JP)
+Stage 3  LOCALIZE    omd-locale-adapter  (KR → EN/JA/ZH-CN/ZH-TW)
+Stage 3h HUMANIZE    omd-humanizer  (각 locale 독립 검증)
 Stage 4  CRITIC      omd-final-qa  (rubric, read-only)
 Stage 4r REVISION    omd-kr-writer  (final-qa feedback)  ← max 2 round (Stage 2와 별도 카운트)
 Stage 4i IMAGES      omd-codex-image  (`<!-- omd:gen-image -->` 블록 처리, 채널별 분기)
@@ -114,7 +122,7 @@ prior_review: null  # 또는 review report 경로
 
 ## 9. 병렬화 허용 케이스
 
-- KR이 PASS된 뒤 EN/JP/ZH-TW **localization은 병렬** (각각 다른 파일이라 conflict 없음)
+- KR이 PASS된 뒤 EN/JA/ZH-CN/ZH-TW **adaptation은 병렬** (각각 다른 파일이라 conflict 없음). ZH-TW는 ZH-CN을 상속하지 않는다.
 - DESIGN.md re-read는 stage마다 강제 (Anthropic best practice — memory hallucination 방지)
 
 ## 10. 종료 조건

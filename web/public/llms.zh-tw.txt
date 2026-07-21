@@ -1,0 +1,43 @@
+# oh-my-design
+
+> 把有品質分級的設計依據交給 AI 程式代理的開源工作流程。Claude Code、Codex、OpenCode 可安裝包含 20 個產品 skills 與 18 個專業代理的完整套件；Cursor 只安裝專案 rule 與本地目錄，不安裝 OmD skills 或子代理。440 份 DESIGN.md 中 verified_v2 141 份、partial 159 份、legacy 140 份；公開示範請使用 verified_v2。
+
+## 產品模型
+
+`經過驗證的參考 → 專案 DESIGN.md → 真實實作 → 一致性複驗`
+
+CLI 是啟動器，不是第二套設計應用。Claude Code、Codex、OpenCode 會取得依渠道區分的 skills、專業角色與本地目錄；Cursor 會取得 `.cursor/rules/omd-design.mdc` 與共用 `.claude/data` 目錄。`doctor` 檢查真實檔案。實際設計工作只能使用目前渠道已安裝的能力。核心安裝與本地流程無需額外 API Key、daemon 或 MCP 伺服器。
+
+```bash
+npx oh-my-design-cli@latest
+npx oh-my-design-cli@latest doctor
+```
+
+第一個提示詞（Claude Code / Codex / OpenCode）:
+
+```text
+為這個產品建立設計系統。推薦經過驗證的參考，說明差異，
+並在寫入 DESIGN.md 前讓我確認。
+```
+
+Cursor 不會執行 `omd:init`、`omd:feel`、`omd:harness` 或 OmD 子代理。請從 https://oh-my-design.kr/builder 下載 `DESIGN.md` 到專案根目錄，或明確要求 Cursor：
+
+```text
+Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md
+for this product using confirmed values only. Keep unknown facts absent.
+```
+
+接著提示：`讀取 @DESIGN.md，在不改變行為的前提下重新設計首頁。` rule 的優先順序是 `DESIGN.md` → `.omd/preferences.md` 中待處理的修正 → 框架預設值。
+
+核心契約:
+
+- `DESIGN.md` 是專案設計真源。
+- 未知參考值保持空缺，不用看似合理的 fallback 代替。
+- Builder 是視覺參考選擇與預覽的主要路徑。
+- 驗證真實產品路由與狀態後才算完成。
+
+Docs: https://oh-my-design.kr/docs/zh-tw
+Live demo: https://oh-my-design.kr/docs/zh-tw/demo
+AI slop 判定與對照: https://oh-my-design.kr/docs/zh-tw/anti-slop
+Full context: https://oh-my-design.kr/llms-full.txt
+Raw reference: `https://oh-my-design.kr/<id>/design.md`

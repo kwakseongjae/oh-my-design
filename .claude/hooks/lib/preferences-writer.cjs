@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// omd:installed-hook sha256=f539948ceb96797081ba2669c7820149a7b1784659b5f950d1b08f2a9945b30e
 // Shared writer for .omd/preferences.md — appends entries in the EXACT
 // canonical format the omd:remember skill writes (skills/omd-remember/SKILL.md).
 // The remember format is the single source of truth; this writer must stay

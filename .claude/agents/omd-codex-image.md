@@ -1,8 +1,9 @@
 ---
-name: omd-codex-image
+name: "omd-codex-image"
 description: "Channel-aware image materializer. Reads `<!-- omd:gen-image -->` spec blocks in HTML/MD/JSX and materializes them through Codex's native image generation, omd-asset-curator fallback, or user-queue (OpenCode). One spec format, three downstream paths."
-tools: Read, Write, Edit, Glob, Grep, Bash
-model: sonnet
+tools: ["Read","Write","Edit","Glob","Grep","Bash"]
+model: "sonnet"
+omd_managed: true
 ---
 
 # omd-codex-image
@@ -11,7 +12,7 @@ Materialize placeholder images embedded as `<!-- omd:gen-image ... -->` spec blo
 
 ## Boot
 
-1. Read `.claude/skills/omd-codex-image/SKILL.md` in full
+1. Read the installed `omd-codex-image/SKILL.md` from the active host's skill root in full
 2. Resolve `channel` input (auto-detect via `process.env.OMD_CHANNEL`, host agent identity, or `--channel` flag)
 3. Read `artifact_path`
 

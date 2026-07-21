@@ -2,18 +2,17 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Docs — oh-my-design",
-  description:
-    "How the oh-my-design harness works: 18 skills, 16 sub-agents, 10-phase pipeline with 7 hero archetypes. Install once, talk to your AI agent in natural language.",
-  alternates: {
-    canonical: "/docs",
+  title: {
+    default: "oh-my-design CLI Docs",
+    template: "%s",
   },
+  description:
+    "Outcome-first documentation for oh-my-design: deploy channel-compatible assets from 20 skills and 18 specialist definitions, choose a quality-graded reference, run doctor, and improve a real product route.",
   openGraph: {
     title: "oh-my-design — Docs",
     description:
       "Skill-driven design harness for Claude Code, Codex, OpenCode, Cursor.",
     type: "article",
-    url: "/docs",
   },
 };
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// omd:installed-hook sha256=44ceaf346dc7238f92f127699d9b985940f77c68a461752d15f10b930ecea4ca
 // Shared parser for .omd/preferences.md — the CANONICAL format written by the
 // omd:remember skill (skills/omd-remember/SKILL.md). The remember format is the
 // single source of truth; these hooks read it, they never change it.

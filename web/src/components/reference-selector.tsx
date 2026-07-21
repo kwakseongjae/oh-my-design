@@ -51,6 +51,8 @@ import { StatusBadge } from "@/components/status-badge";
 import { refMatchesQuery } from "@/lib/search-aliases";
 import type { RefListItem } from "@/app/builder/page";
 
+const VISIBLE_BATCH_SIZE = 60;
+
 /** Stable signature for a grid view (sort + active filters). Used to cache which
  *  views have already been computed so repeat visits swap instantly (no skeleton). */
 function viewSig(sort: SortMode, cat: string | null, country: string | null, color: ColorFilter | null, hot: boolean): string {
@@ -250,6 +252,35 @@ export function ReferenceSelector({
     sortMode,
     visitorCountry,
   );
+  const visibilityKey = `${viewSig(sortMode, selectedCat, selectedCountry, selectedColor, hotOnly)}|${filter}|${visitorCountry}|${refs.length}`;
+  const [visibility, setVisibility] = useState({ key: visibilityKey, count: VISIBLE_BATCH_SIZE });
+  const visibleCount = visibility.key === visibilityKey ? visibility.count : VISIBLE_BATCH_SIZE;
+  const visibleRefs = filtered.slice(0, visibleCount);
+  const loadMoreSentinel = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const sentinel = loadMoreSentinel.current;
+    if (!sentinel || recomputing || visibleRefs.length >= filtered.length) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setVisibility((current) => {
+          const currentCount = current.key === visibilityKey
+            ? current.count
+            : VISIBLE_BATCH_SIZE;
+          return {
+            key: visibilityKey,
+            count: Math.min(currentCount + VISIBLE_BATCH_SIZE, filtered.length),
+          };
+        });
+      },
+      { rootMargin: "600px 0px" },
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [filtered.length, recomputing, visibilityKey, visibleRefs.length]);
 
   const handleSortChange = (mode: SortMode) => {
     setSortMode(mode);
@@ -268,8 +299,8 @@ export function ReferenceSelector({
         <div>
           <h2 className="text-3xl font-bold tracking-tight">Choose a reference</h2>
           <p className="mt-2 text-muted-foreground">
-            {REFERENCE_COUNT} design systems from real companies. Picking one
-            jumps straight to the original DESIGN.md.
+            {REFERENCE_COUNT} quality-graded company references. Pick one to
+            preview and export its original DESIGN.md.
           </p>
         </div>
       </motion.div>
@@ -688,11 +719,11 @@ export function ReferenceSelector({
       {(initialLoading && refs.length === 0) || recomputing ? (
         // Size the skeleton to the result count so its height matches the cards
         // it replaces — no layout shift / page push during the swap.
-        <SkeletonGrid count={initialLoading ? 12 : filtered.length || 12} />
+        <SkeletonGrid count={initialLoading ? 12 : Math.min(filtered.length || 12, VISIBLE_BATCH_SIZE)} />
       ) : (
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         <AnimatePresence mode="popLayout">
-          {filtered.map((ref, i) => {
+          {visibleRefs.map((ref, i) => {
             return (
               <motion.button
                 key={ref.id}
@@ -754,6 +785,14 @@ export function ReferenceSelector({
           })}
         </AnimatePresence>
       </div>
+      )}
+
+      {visibleRefs.length < filtered.length && !recomputing && (
+        <div
+          ref={loadMoreSentinel}
+          className="h-px w-full"
+          aria-hidden="true"
+        />
       )}
 
       {/* True empty state (after loading, with filter applied) */}

@@ -1,124 +1,93 @@
 ---
 name: omd:locale-adapter
-description: "한국어 본문을 EN/JP/ZH-TW로 **번역이 아닌 adaptation**. 문화 레퍼런스 swap, JP honorific 정합, ZH-TW 번체 idiom. KR은 항상 source of truth. '다국어 적용', 'EN 버전 만들어줘', 'JP로 옮겨줘' 류 트리거."
-user-invocable: true
+description: "한국어 canonical 문서·UX copy를 EN/JA/ZH-CN/ZH-TW로 번역이 아니라 locale adaptation한다. thesis·사실·명령어는 보존하되 문장 순서, 주어, register, 제품 용어와 호흡은 각 언어에서 다시 쓴다. '다국어 적용', '영문/일문/간체/대만어 버전', 'locale 문서 만들어줘' 요청에 사용한다."
 ---
+<!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
+
 
 # omd:locale-adapter
 
-KR 본문을 받아 EN/JP/ZH-TW로 **adapt**한다. 직역이 아니라 각 문화의 디자인 블로그 voice로 다시 쓴다.
+한국어 canonical의 뜻과 사실을 다른 언어에서 **같이 이해되게** 만든다. 문장 단위 대응표를 만들지 않는다. EN, JA, ZH-CN, ZH-TW는 서로 독립된 원고다.
 
-참조: Frontitude brand-voice translation model, LINE localization playbook.
+## 0. Source contract
 
-## 0. Source of truth
+- KO가 canonical이다. 다른 locale은 `source_revision` 또는 canonical content hash를 가진다.
+- KO가 바뀌면 파생 locale을 stale로 표시하고 변경된 의미 단위를 다시 adapt한다.
+- 공유하는 것은 thesis, 사실, 정보 계층, 명령, URL, 제품 동작이다.
+- 공유하지 않는 것은 문장 순서, 비유, 인사, 주어, 문장 길이, 문장부호, 설명용 용어다.
+- canonical에 없는 사실은 어떤 locale에도 추가하지 않는다.
 
-**KR이 canonical**. EN/JP/ZH-TW는 derivative. KR이 갱신되면 다른 locale도 무효화.
+## 1. Target locale
 
-## 1. 대상 locale별 룰
+### EN (`en`)
 
-### 1.1 EN (en)
+- 행동과 관찰 가능한 결과를 먼저 쓴다.
+- repeated `not X, but Y`, 3단 슬로건, 추상 찬사를 원문의 구조 그대로 옮기지 않는다.
+- 제품이 이미 쓰는 US/UK spelling을 유지한다.
+- 한국 서비스는 첫 등장에만 독자에게 필요한 짧은 설명을 붙인다.
 
-- Voice baseline: Stripe Press / Linear changelog / Vercel blog
-- 문장 길이: 15~25 words (KR 35~50자 ≈ EN 15~25 words)
-- 1인칭: "we" or "I" 자연스럽게
-- 문화 swap:
-  - "토스" → "Toss (Korea's leading fintech)" (첫 출현만)
-  - "당근" → "Karrot (a hyperlocal Korean marketplace)"
-  - 김치/돌잔치 등 강한 KR-only ref → 영미권 equivalent or 짧은 gloss
-  - "안녕하세요" 인사 → "Hi, I'm [name]." 또는 informal opener
-- 분량: KR 자수의 0.45~0.55 (영어가 짧음)
-- 헤더: KR 짧은 헤더 → EN은 좀 더 descriptive OK ("토스 느낌의 시작" → "What gives Toss its 'feel'")
+### JA (`ja`)
 
-### 1.2 JP (ja)
+- 설명문은 です・ます調를 기본으로 하고 같은 섹션에서 register를 섞지 않는다.
+- 필요 없는 `私たちは / あなたは`는 생략한다.
+- 제목은 짧게 쓰고 마침표를 붙이지 않는다.
+- `正本 / 実ルート / 強いプロンプト` 같은 직역 대신 `唯一の基準 / 実際の製品画面 / 作業依頼`처럼 뜻이 통하는 제품 용어를 쓴다.
 
-- Voice baseline: note.com デザイン カテゴリ, クックパッド開発者ブログ
-- 종결: です・ます 일관 (敬体)
-- 격식 register: 영미보다 한 단계 더 정중
-- 문화 swap:
-  - "토스" → "Toss (韓国最大級のフィンテック)"
-  - 한국 특유의 이웃문화 ref → 일본식 「ご近所」 비유
-  - 존경어/겸양어 자연스럽게 ("저는 ~한다고 생각해요" → "私は〜と考えています")
-- 분량: KR 자수의 0.85~1.0
-- 헤더: 한국어 짧은 헤더와 비슷한 호흡 ("토스 느낌の始まり")
-- 한자: 常用漢字 위주. 어려운 한자는 仮名 병기.
+### ZH-CN (`zh-CN`)
 
-### 1.3 ZH-TW (zh-tw)
+- 사용자-facing AI는 `AI 编程助手`, 기술 역할은 문맥에 따라 `智能体角色`로 구분한다.
+- `赋能 / 无缝 / 全新升级 / 打造闭环` 같은 찬사를 기능 설명 대신 쓰지 않는다.
+- `项目唯一设计依据 / 实际产品页面 / 可重复执行的检查 / 空状态`처럼 간결한 제품 용어를 쓴다.
+- 행동과 결과를 먼저 쓰고 영어 정보 순서를 복제하지 않는다.
 
-- Voice baseline: 數位時代, INSIDE 硬塞網
-- **번체** (簡体 금지). 「設計」「顯示」「優化」.
-- 문화 swap:
-  - "토스" → "Toss (南韓金融科技龍頭)"
-  - "당근" → "Karrot (南韓地區型二手交易平台)"
-  - 한국 idiom → 中華圈 idiom (가능한 경우)
-- 분량: KR 자수의 0.6~0.75
-- 인용부호: 「」 사용
-- 헤더: KR 짧은 헤더와 비슷한 호흡 (「Toss 給人的感覺，從何而來」)
+### ZH-TW (`zh-TW`)
 
-## 2. Adaptation 7단계 절차
+- ZH-CN의 글자를 번체로 바꾸지 않고 대만 제품 문체로 다시 쓴다.
+- `軟體 / 資訊 / 使用者 / 影片 / 預設 / 介面 / 專案 / 儲存 / 設定 / 登入 / 資料`를 우선한다.
+- 사용자-facing AI는 `AI 程式助理`, 저장소는 `程式碼儲存庫` 또는 `專案儲存庫`로 쓴다.
+- 일반 UI QA는 `檢查`, 규정·공식 audit만 `稽核`을 쓴다.
 
-1. KR canonical 본문 + 출간된 frontmatter 읽기
-2. 글 전체 thesis 한 줄로 추출 (locale 다 동일해야 함)
-3. 각 H2 섹션을 1개씩 옮김 — **문장 단위 직역 금지**, 단락 단위 의역
-4. 문화 ref 발견 시 위 swap 룰 적용 + 첫 출현에 gloss
-5. 인용/코드/URL/figure src는 그대로 보존
-6. 헤더 number 일관성 유지 (KR=5 H2면 다른 locale도 5)
-7. frontmatter `title_<locale>`, `subtitle_<locale>` 채우기
+세부 후편집 규칙은 설치된 `omd-humanize/references/locale-playbooks.md`에서 대상 locale만 읽는다.
 
-## 3. 보존 (절대 변경 금지)
+## 2. Adaptation workflow
 
-- 코드 블록 내부 (변수명, 함수명, 주석 영문 유지)
-- URL, 파일 경로
-- 사람 이름 / 회사명 (단, 첫 출현에 gloss는 OK)
-- figure src
-- frontmatter slug
-- 수치 / 통계
+1. KO canonical, frontmatter, DESIGN.md §10, 승인된 제품 용어를 읽는다.
+2. 문서의 thesis 1–3개와 보호 구간(수치·명령·URL·ID·인용·제품 동작)을 적는다.
+3. 문서 구조를 의미 단위로 나눈다. H2 개수는 정보 parity를 확인하는 보조 지표일 뿐 강제로 맞추지 않는다.
+4. target locale에서 사용자가 읽을 순서로 문단을 새로 구성한다.
+5. 문화 맥락이 없으면 첫 등장에만 짧게 설명한다. 등가 비유가 없으면 억지로 새 비유를 만들지 않는다.
+6. code, command, URL, path, slug, skill/agent ID를 원문과 대조한다.
+7. `omd:humanize`의 target-locale audit으로 번역투, locale 혼입, 기계적 구조를 검증한다.
+8. UI copy면 실제 locale route에서 줄바꿈, overflow, CTA 동작, aria label을 확인한다.
 
-## 4. 비전형 케이스
+## 3. Output metadata
 
-| 원문 | 대응 |
-|---|---|
-| KR 특유의 이모지 사용 패턴 (`ㅎㅎ`, `^^`) | EN/JP/ZH-TW에서 제거. 톤은 다른 방식으로 표현. |
-| 한자어 농담 | locale 등가 농담 없으면 그냥 의미만 유지하고 농담 톤 표시 |
-| `안녕하세요` 같은 의례 인사 | EN은 informal greeting, JP는 「こんにちは」, ZH-TW는 「大家好」 |
-| Toss/당근 같은 회사명 인지도 차이 | 첫 등장에서 1줄 gloss, 이후 그대로 |
+문서 파일에는 가능한 경우 아래를 기록한다.
 
-## 5. 출력 형식
-
-```
-content/posts/<slug>/index.ko.md    ← source
-content/posts/<slug>/index.en.md    ← this skill 생성
-content/posts/<slug>/index.ja.md
-content/posts/<slug>/index.zh-tw.md
-```
-
-각 파일 frontmatter에:
 ```yaml
-locale: en
+locale: ja
 source_locale: ko
-source_revision: <git sha of ko at time of adaptation>
+source_revision: <ko content hash or git sha>
 adapted_at: <ISO date>
 ```
 
-## 6. 품질 체크 (self-audit)
+코드 dictionary처럼 frontmatter가 없으면 locale manifest 또는 테스트 fixture에 같은 revision을 기록한다.
 
-각 locale 생성 후 writer가 직접 검증:
-- H2 카운트가 KR과 일치
-- 인용 / 통계 누락 0건
-- figure src 경로 일치
-- 분량이 위 1.x의 비율 범위
-- 첫 출현 회사명 모두 gloss 처리됨
-- 코드 블록 변경 0건
+## 4. Quality gate
 
-미달 시 동일 locale 재작성 (orchestrator round 카운터 증가).
+- 보호 구간 변경 0
+- 다른 locale의 사용자-facing 용어 혼입 0
+- 제거된 기능·섹션을 소개하는 stale copy 0
+- target locale에서 반복되는 기계적 대조·추상 찬사 cluster 0
+- UI route의 horizontal overflow와 잘린 label 0
+- canonical이 바뀌었는데 revision이 그대로인 파생 원고 0
 
-## 7. KR 갱신 시 staleness
+미달 locale만 다시 작업한다. 영어 원고나 ZH-CN 원고를 fallback으로 노출하지 않는다.
 
-KR이 수정되면 EN/JP/ZH-TW의 `source_revision`이 outdated. orchestrator가 다시 호출. 부분 갱신 가능 (수정된 H2 섹션만 re-adapt).
+## 금지
 
-## 8. Anti-patterns
-
-- ❌ Google Translate 톤 — 직역 흔적
-- ❌ KR-only ref를 그대로 둠 (예: "강남에서 일하는데" → 영어판에 그대로)
-- ❌ 분량 mismatch (EN이 KR과 같은 자수)
-- ❌ 헤더 number 불일치
-- ❌ KR 없이 EN을 먼저 작성 (KR=canonical 원칙 위배)
+- 영어 문장을 모든 locale object의 prose fallback으로 사용
+- ZH-TW가 ZH-CN prose를 상속
+- 단락별 1:1 직역, 문장 순서 강제, 길이 비율을 품질 점수로 사용
+- 고유명사를 알리기 위해 원문에 없는 시장 지위·성과를 추가
+- `fallback`, `shim`, `truth source`, `strong prompt` 같은 설명용 영어를 그대로 노출

@@ -1,0 +1,4 @@
+interface:
+  display_name: "OmD Humanize"
+  short_description: "Preserve meaning while making product copy native to its locale"
+  default_prompt: "Humanize this product copy in its target locale without changing facts, commands, or brand voice."

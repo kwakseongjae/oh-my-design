@@ -5,7 +5,7 @@
  */
 import { event, trackRef } from "@/lib/gtag";
 
-export type InstallSurface = "hero" | "ref_detail" | "collection" | "builder";
+export type InstallSurface = "hero" | "ref_detail" | "collection" | "builder" | "docs" | "cli";
 export type HandoffKind = "designmd_copy" | "designmd_download" | "prompt_copy" | "install_copy";
 
 /** Canonical activation event. Legacy detail events dual-fire for continuity. */

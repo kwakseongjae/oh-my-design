@@ -141,7 +141,6 @@ export async function GET() {
         pop: popMap.get(e.id) ?? 0,        // select-counter score, for Popular sort + blend
         added: e.added ?? null,            // first-added date, for New sort + recency boost
         quality: qualityScore(e),          // 0..1 content-completeness (marquee proxy)
-        tokens: e.tokens ?? null,
       };
     });
 

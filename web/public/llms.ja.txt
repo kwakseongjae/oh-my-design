@@ -1,0 +1,43 @@
+# oh-my-design
+
+> 品質グレード付きのデザイン根拠を AI コーディングエージェントへ渡すオープンソース・ハーネス。Claude Code、Codex、OpenCode には20の製品スキルと18の専門エージェントのフルバンドルを導入でき、Cursor には OmD スキルやサブエージェントではなくプロジェクト rule とローカルカタログを導入します。440件の DESIGN.md は verified_v2 141件、partial 159件、legacy 140件で、公開デモには verified_v2 を使います。
+
+## モデル
+
+`検証済みリファレンス → プロジェクト DESIGN.md → 実装 → 整合性の再検証`
+
+CLI はデザインアプリではなくブートストラッパーです。Claude Code、Codex、OpenCode にはチャネル別スキル、専門ロール、カタログを導入し、Cursor には `.cursor/rules/omd-design.mdc` と共有 `.claude/data` カタログを導入します。`doctor` は実ファイルを診断します。実際の作業は各チャネルに導入された機能の範囲で自然言語で行います。コアのインストールとローカルフローに別の API キー、デーモン、MCP サーバーは不要です。
+
+```bash
+npx oh-my-design-cli@latest
+npx oh-my-design-cli@latest doctor
+```
+
+最初のプロンプト（Claude Code / Codex / OpenCode）:
+
+```text
+この製品のデザインシステムを設定してください。検証済みリファレンスを推薦し、
+差分を説明して、DESIGN.md を書く前に確認してください。
+```
+
+Cursor は `omd:init`、`omd:feel`、`omd:harness`、OmD サブエージェントを実行しません。https://oh-my-design.kr/builder から `DESIGN.md` をプロジェクトルートへダウンロードするか、Cursor に次のように依頼します。
+
+```text
+Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md
+for this product using confirmed values only. Keep unknown facts absent.
+```
+
+その後、`@DESIGN.md を読み、動作を変えずにホーム画面を再設計して` と依頼します。rule の優先順位は `DESIGN.md` → `.omd/preferences.md` の保留中修正 → フレームワーク既定値です。
+
+契約:
+
+- `DESIGN.md` がプロジェクトの正本です。
+- 不明な参照値をもっともらしい fallback で埋めません。
+- Builder が視覚リファレンス選択とプレビューの主経路です。
+- 実際の製品ルートと状態を確認して完了です。
+
+Docs: https://oh-my-design.kr/docs/ja
+Live demo: https://oh-my-design.kr/docs/ja/demo
+AI slop の判定基準と比較: https://oh-my-design.kr/docs/ja/anti-slop
+Full context: https://oh-my-design.kr/llms-full.txt
+Raw reference: `https://oh-my-design.kr/<id>/design.md`

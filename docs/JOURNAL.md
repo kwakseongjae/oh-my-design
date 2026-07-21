@@ -5,6 +5,120 @@
 
 ---
 
+## 2026-07-21 (Codex) · CLI v1.9 final release gate
+- CLI 101/Web 820 tests·TS·ESLint·catalog/counts·1,458-page build를 통과했다.
+- Node 18.20.8 clean tarball에서 20 skills/18 roles/440 refs, 전 채널 doctor와 독립 collector를 확인했다.
+- npm 1.9.0은 비어 있으나 로컬 npm/gh 인증은 만료됐다.
+- `21a908d`를 remote branch에 push했다. PR은 gh invalid/app 403으로 미생성이고, 다음은 web deploy/200 smoke → npm publish다.
+
+## 2026-07-21 (Codex) · Builder handoff clarity + auto catalog loading
+- Builder catalog의 `Show more`를 제거하고 60개 단위 IntersectionObserver 자동 확장으로 교체했다.
+- handoff 3단계를 project root·project terminal·agent chat 목적지로 명시하고 restart 뒤 doctor 안내를 추가했다.
+- 실제 390px Builder에서 60→120 자동 로딩, handoff 문구/clipboard/overflow를 통과했다.
+- Web 50 files/820 tests, TypeScript, touched ESLint, production build, diff check가 green이다.
+
+## 2026-07-21 (Codex) · CLI activation implementation
+- `ee89e46`과 rollback tag를 만든 뒤 Home CLI copy/정직한 결과, Builder mobile 3-step handoff, 60-item progressive catalog를 구현했다.
+- README 4개 locale와 npm metadata/logo package를 outcome-first로 교정하고 과장된 reference copy를 제거했다.
+- API 89,288B·tokens absent, 실제 clipboard/390px handoff, CLI 101/Web 820 tests·TS·ESLint·1,458-page build·npm hygiene가 green이다.
+- 변경분은 미커밋 상태이며 다음은 final diff commit → Node 18 clean-install → publish/deploy다.
+
+## 2026-07-20 (Codex) · CLI-first launch audit
+- Home CLI section을 Live Proof 위로 이동하고 desktop/mobile 실제 route 순서를 확인했다.
+- 28d GA/GSC/npm을 대조해 docs reach 2.5%, install-copy 282 users, Builder mobile handoff 부재를 확인했다.
+- CLI 101/Web 820 tests·TS·ESLint·1,458-page build와 1.9.0 clean tarball install→Codex→doctor가 green이다.
+- 다음은 승인 후 Home real copy CTA, Builder 3-part mobile handoff, README/npm truth+locale parity 순으로 구현한다.
+
+## 2026-07-20 (Codex) · Fluid docs desktop grid
+- fixed 780px article track을 fluid main track으로 바꾸고 xl grid gap을 40px로 줄였다.
+- 1580px에서 본문 912px·TOC 뒤 여백 24px, 1280/1024/390px overflow 0을 브라우저에서 확인했다.
+- TypeScript, touched ESLint, docs focused 17 tests가 green이다.
+
+## 2026-07-20 (Codex) · Concrete anti-slop atlas + continuous TOC
+- stale RAF scroll-spy를 고쳐 수동 스크롤에서도 `On this page`가 읽는 섹션을 계속 따라가게 했다.
+- 10개 추상 비교를 dashboard/settings/table/states/mobile/notification 등 실제 UI before/better specimen으로 교체하고 5 locale label을 붙였다.
+- Primer/Carbon/Fluent/USWDS/GOV.UK/Atlassian 공식 근거를 추가했으며 Web 820 tests/TS/ESLint/build 1,458 pages가 green이다.
+- 다음은 로컬 `/docs/ko/anti-slop#atlas` 시각 확인 후 기존 CLI v1.9 release candidate의 publish/deploy 결정이다.
+
+## 2026-07-18 (Codex) · AI slop 10-lens visual guide
+- hierarchy부터 interaction까지 10개 review lens와 anti-slop≠minimalism 3방향 비교를 5 locale 문서에 추가했다.
+- Impeccable/Taste/Anthropic/Vercel/Carbon/W3C/GOV.UK/Apple/Atlassian 근거를 taxonomy·skill·agent용 catalog에 반영했다.
+- desktop/mobile 5 locale overflow 0, console 0, Web 815 tests/TS/ESLint/build 1,458 pages가 green이다.
+- 다음은 기존 CLI v1.9 release candidate의 최종 tarball clean-install 감사와 publish/deploy 결정이다.
+
+## 2026-07-18 (Codex) · Humanize + AI slop system
+- im-not-ai/Humanizer/stop-slop/Impeccable/Taste와 locale style guide를 근거로 OmD taxonomy를 정의했다.
+- `omd:humanize`·`omd:slop-audit`, humanizer/slop-auditor agents, 5-locale `/anti-slop` 비교 문서를 추가했다.
+- locale별 visible specimen/consent copy, desktop+390px overflow 0, 440/20/18 counts, tests/TS/ESLint/build가 green이다.
+- 다음은 final 20/18 npm tarball clean-install 감사 후 publish/web deploy다.
+
+## 2026-07-18 (Codex) · Docs locale scroll-jump fixed
+- Base UI Select modal scroll lock이 메뉴 open 시 `scrollY 1000→0`을 만드는 것을 재현했다.
+- locale menu를 non-modal/fixed popup으로 바꾸고 route transition의 scroll을 보존했다.
+- KO↔EN pointer test에서 y 2856 유지, header top 0, TS/ESLint/11 tests/diff green이다.
+
+## 2026-07-18 (Codex) · Setup card height alignment
+- prerequisite 카드 높이를 longest rightmost label 기준 224px로 통일하고 title slot을 2줄로 예약했다.
+- KO desktop에서 3개 카드 높이/footer 위치 동일, title/footer overlap 0을 확인했다.
+- TypeScript, touched ESLint, diff check가 green이다.
+
+## 2026-07-18 (Codex) · Docs direct copy actions
+- Copy page split menu와 llms.txt navigation을 제거하고 직접 복사 버튼 2개로 바꿨다.
+- page/locale llms 원문을 서버에서 주입하고 clipboard fallback까지 추가했다.
+- 실제 KO browser에서 copied feedback/URL 유지, TS, 11 tests, ESLint, diff check가 green이다.
+
+## 2026-07-18 (Codex) · Showcase redundant case removed
+- Showcase의 docs-rebuild case 시작점부터 verification까지 모두 제거했다.
+- Applepresso product case만 남기고 TOC와 Markdown/AI copy도 같은 범위로 축약했다.
+- KO browser/Markdown, TS, focused 11 tests, ESLint, diff check가 green이다.
+
+## 2026-07-18 (Codex) · Docs decorative left bars removed
+- Overview callout과 2개 단계 목록의 비기능적 left accent/timeline border를 제거했다.
+- callout은 icon+neutral surface, 단계 목록은 번호+editorial divider로 재구성했다.
+- 기능적 TOC/split-control 선은 유지했고 3 routes/mobile, TS, 10 tests, ESLint, diff check가 green이다.
+
+## 2026-07-18 (Codex) · Outcome cards visual result previews
+- 3개 outcome card를 Prompt 다음 Result가 오는 세로 흐름으로 바꿨다.
+- DESIGN.md tokens/onboarding/UI audit를 설명하는 responsive CSS 미니 프리뷰를 추가했다.
+- locale 상태 라벨, dark/desktop/390px, overflow 0, TS, 10 tests, ESLint, diff check가 green이다.
+
+## 2026-07-18 (Codex) · Docs header controls cleanup
+- locale code 대신 선택 option과 동일한 전체 현지어 라벨을 trigger에 표시한다.
+- 언어/GitHub 버튼을 한 control 체계로 다듬고 docs의 Open Builder CTA를 제거했다.
+- KO↔EN 실제 전환, desktop/mobile, TS, focused 10 tests, touched ESLint, diff check가 green이다.
+
+## 2026-07-18 (Codex) · Docs TOC scroll-spy
+- 오른쪽 페이지 목차에 스크롤 기반 활성 섹션 추적과 클릭 앵커 이동을 추가했다.
+- 활성 항목은 product primary 색상·배경·라인과 `aria-current`로 구분한다.
+- `/docs/ko/demo` 클릭/수동 스크롤, TS, focused tests, touched ESLint, diff check가 green이다.
+
+## 2026-07-18 (Codex) · Docs sidebar cleanup
+- left sidebar의 quality/pipeline summary card를 제거하고 navigation만 남겼다.
+- visible aside text와 DOM snapshot에서 해당 문구가 사라진 것을 확인했다.
+- focused 10 tests, TS, touched ESLint와 diff check가 green이다.
+
+## 2026-07-18 (Codex) · Channel install tabs
+- 4개 channel install cards를 한 개의 Base UI tab panel로 축약했다.
+- Claude Code를 첫 탭/기본값으로 고정하고 선택 패널만 DOM에 남도록 확인했다.
+- focused 11 tests, TS, touched ESLint, diff check와 Claude→Codex browser interaction이 green이다.
+
+## 2026-07-18 (Codex) · Getting Started setup card visual pass
+- prerequisite plain text boxes를 icon/progress/status/marker가 있는 setup cards로 재구성했다.
+- Ready 상태를 EN/KO/JA/ZH-CN/ZH-TW로 현지화하고 사용자 교정을 preferences에 기록했다.
+- focused 11 tests, TS, touched ESLint, diff check와 desktop/mobile browser smoke가 green이다.
+
+## 2026-07-18 (Codex) · CLI docs page tools + custom locale UI
+- Docs 언어 선택기를 Base UI custom popover로 바꾸고 헤더 GitHub를 live star pill로 통일했다.
+- 40개 localized page에 Copy page, Markdown 원문, AI agent copy, locale llms.txt 진입을 추가했다.
+- `/docs-md/<locale>/<page>.md`는 rendered docs와 같은 dictionary에서 Markdown을 생성한다.
+- focused 11 tests, TS, ESLint 0 errors, 1,453-page build와 모바일 browser smoke가 green이다.
+
+## 2026-07-17 (Codex) · CLI v1.9 + multilingual docs release candidate
+- Home scrollbar gutter를 0으로 만들고 scroll-only overlay thumb를 실제 브라우저에서 검증했다.
+- guided install/doctor/targeted hook repair와 Claude·Codex·OpenCode·Cursor native 계약을 완성했다.
+- 5개 언어 × 8개 docs, honest Applepresso showcase, human/AI llms entry를 구축했다.
+- Node18 self-contained collector와 clean tarball을 독립 감사했고 CLI 100/Web 813/build 1,453 gates가 green이다.
+
 ## 2026-07-14 (Codex) · v2/440 release gates closed
 - npm 10 lockfile과 canonical test path를 보정해 GitHub Quality의 CLI/Web jobs를 모두 green으로 닫았다.
 - Vercel Production과 custom domain에서 catalog 440, KB/Acer, Home/Builder 200, GitHub About 400+를 확인했다.

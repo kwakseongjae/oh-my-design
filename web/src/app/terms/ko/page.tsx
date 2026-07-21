@@ -37,7 +37,7 @@ export default function TermsKoPage() {
             <img src="/logo-white.png" alt="oh-my-design" className="h-6 sm:h-7 hidden dark:block" />
           </Link>
           <nav className="flex items-center gap-4 text-xs sm:text-sm">
-            <Link href="/docs" className="text-muted-foreground hover:text-foreground">Docs</Link>
+            <Link href="/docs/ko" className="text-muted-foreground hover:text-foreground">Docs</Link>
             <Link href="/privacy/ko" className="text-muted-foreground hover:text-foreground">개인정보</Link>
             <Link href="/terms" className="text-muted-foreground hover:text-foreground">EN</Link>
             <a href="https://github.com/kwakseongjae/oh-my-design" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub</a>

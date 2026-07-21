@@ -8,7 +8,6 @@ import Link from "next/link";
 import { ReferenceSelector } from "@/components/reference-selector";
 import { DesignWizard } from "@/components/design-wizard";
 import { PreviewExportView } from "@/components/preview-export-view";
-import { InstallCta } from "@/components/install-cta";
 import { GithubStarButton } from "@/components/github-star-button";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { encodeConfig, decodeConfig } from "@/lib/core/config-hash";
@@ -393,10 +392,7 @@ export default function BuilderPage() {
         </div>
       </header>
 
-      {/* Content. Preview gets extra bottom padding so the last content row
-          stays reachable above the fixed install bar (same pb pattern as the
-          reference detail pages). */}
-      <main className={`mx-auto max-w-7xl px-4 py-8 sm:px-6 ${step === "preview" ? "sm:pb-24" : ""}`}>
+      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
         {step === "select" && (
           <ReferenceSelector
             refs={refs}
@@ -427,24 +423,7 @@ export default function BuilderPage() {
               components={activeComponents}
               onComponentsChange={setActiveComponents}
               stylePreferences={stylePreferences}
-            />
-            {/* Builder is the main funnel surface — close the loop from preview
-                into the install command. Same sticky bottom bar as the reference
-                detail pages (#19); the main's pb-24 above keeps content clear of
-                it. Fires act_install_copy{surface:'builder'} / act_prompt_copy{reference,surface}
-                (see InstallCta). The first prompt is composed from the LIVE
-                builder config (not a generic brand line) so the user's step-2
-                customizations survive the handoff to the agent; the URL we
-                append matches the cfg replaceState sync above (same encoder). */}
-            {/* Hidden on mobile (sm:block) — the fixed install bar crowds the
-                small-screen preview; desktop keeps it as the funnel close. */}
-            <div className="hidden sm:block">
-            <InstallCta
-              variant="bar"
-              source="builder"
-              reference={detail.id}
-              brandName={detail.id}
-              prompt={buildBuilderPrompt({
+              handoffPrompt={buildBuilderPrompt({
                 brandName: detail.id,
                 overrides,
                 components: activeComponents,
@@ -458,7 +437,6 @@ export default function BuilderPage() {
                 url: `${typeof window !== "undefined" ? window.location.origin : "https://oh-my-design.kr"}/builder?step=preview&ref=${detail.id}&cfg=${encodeConfig(detail.id, overrides, activeComponents, stylePreferences)}`,
               })}
             />
-            </div>
             {/* Bridge the client funnel to the server-rendered, indexable
                 artifacts: the canonical reference page (where Claude/Brave land)
                 and its raw .md (what agents fetch). Keeps shared builder URLs
@@ -485,11 +463,9 @@ export default function BuilderPage() {
         )}
       </main>
 
-      {/* Floating scroll-to-top on the long-scrolling steps (select grid + preview).
-          On preview it lifts above the fixed install bar (bottom-4 + pill height)
-          so the two floating controls never overlap on narrow viewports. */}
+      {/* Floating scroll-to-top on the long-scrolling steps (select grid + preview). */}
       {(step === "select" || step === "preview") && (
-        <ScrollToTop bottomClass={step === "preview" ? "bottom-5 sm:bottom-20" : "bottom-5"} />
+        <ScrollToTop bottomClass="bottom-5" />
       )}
     </div>
   );

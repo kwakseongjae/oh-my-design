@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Star, Check, Copy, Pause } from "lucide-react";
+import { AlertCircle, ArrowRight, Star, Check, Copy, Pause } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { trackInstallCopy } from "@/lib/activation/analytics";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
+import { copyText } from "@/lib/clipboard";
 import { V2 } from "./tokens";
 
-const INSTALL_CMD = "npx oh-my-design-cli install-skills";
+const INSTALL_CMD = "npx oh-my-design-cli@latest";
 
 interface BrandSpec {
   id: string;
@@ -111,17 +112,14 @@ const BRANDS_HERO: BrandSpec[] = [
 const AUTO_CYCLE_MS = 3000;
 
 export function HeroV2() {
-  const [copied, setCopied] = useState(false);
-  const onCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(INSTALL_CMD);
-      // Funnel event (#4): landing hero is the `hero` source of install_copy.
-      trackInstallCopy({ surface: "hero" });
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
-    } catch {
-      /* noop */
-    }
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "failed">("idle");
+  const onCopy = async (button: HTMLButtonElement) => {
+    const copied = await copyText(INSTALL_CMD, {
+      restoreTarget: button,
+      onSuccess: () => trackInstallCopy({ surface: "hero" }),
+    });
+    setCopyStatus(copied ? "copied" : "failed");
+    setTimeout(() => setCopyStatus("idle"), copied ? 1600 : 2400);
   };
 
   return (
@@ -183,7 +181,7 @@ export function HeroV2() {
                 color: "transparent",
               }}
             >
-              from {REFERENCE_COUNT} real company design systems.
+              from {REFERENCE_COUNT} quality-graded references.
             </span>
           </motion.h1>
 
@@ -194,9 +192,10 @@ export function HeroV2() {
             className="mt-5 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg"
           >
             One <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm">DESIGN.md</code>{" "}
-            spec. {REFERENCE_COUNT} real brands extracted. Any AI coding agent (Claude
-            Code, Cursor, Codex, OpenCode) ships UI that actually looks like
-            Stripe, Toss, Linear — not slop. Free, MIT, zero AI calls during install.
+            spec, {REFERENCE_COUNT} company references with explicit quality grades,
+            and local workflows for Claude Code, Cursor, Codex, and OpenCode. Use
+            confirmed patterns without filling unknown brand facts. Free, MIT, and
+            no AI calls during install.
           </motion.p>
 
           {/* install snippet */}
@@ -211,20 +210,25 @@ export function HeroV2() {
             <code className="flex-1 truncate text-white/85">{INSTALL_CMD}</code>
             <button
               type="button"
-              onClick={onCopy}
-              aria-label={copied ? "Copied" : "Copy install command"}
+              onClick={(event) => onCopy(event.currentTarget)}
+              aria-label={copyStatus === "copied" ? "Copied" : copyStatus === "failed" ? "Copy failed" : "Copy install command"}
               className="inline-flex h-7 w-7 items-center justify-center rounded-md text-white/55 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2"
               style={{
                 // @ts-expect-error css var
                 "--tw-ring-color": V2.accent,
               }}
             >
-              {copied ? (
+              {copyStatus === "copied" ? (
                 <Check className="h-3.5 w-3.5" style={{ color: V2.accent }} />
+              ) : copyStatus === "failed" ? (
+                <AlertCircle className="h-3.5 w-3.5 text-red-400" />
               ) : (
                 <Copy className="h-3.5 w-3.5" />
               )}
             </button>
+            <span className="sr-only" role="status" aria-live="polite">
+              {copyStatus === "copied" ? "Install command copied" : copyStatus === "failed" ? "Copy failed" : ""}
+            </span>
           </motion.div>
 
           <motion.div

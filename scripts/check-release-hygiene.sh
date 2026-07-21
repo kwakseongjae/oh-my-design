@@ -24,8 +24,8 @@ mode="${1:-staged}"
 if [ "$mode" = "pack" ]; then
   manifest=$(npm pack --dry-run --json 2>/dev/null)
   if [ -z "$manifest" ]; then
-    echo "[hygiene] ⚠ could not read 'npm pack --dry-run' output; skipping tarball check."
-    exit 0
+    echo "[hygiene] ✗ could not read 'npm pack --dry-run' output; refusing to publish without a verified tarball."
+    exit 1
   fi
   leaked=$(printf '%s' "$manifest" \
     | grep -oE '"path": *"[^"]*"' \

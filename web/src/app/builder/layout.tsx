@@ -5,14 +5,14 @@ const siteUrl = "https://oh-my-design.kr";
 export const metadata: Metadata = {
   title: "Design System Builder — oh-my-design",
   description:
-    "Build your DESIGN.md from 440 real company design systems. Choose from Stripe, Vercel, Linear, Apple, and more. Customize colors, typography, radius, and spacing with an interactive A/B wizard — each ref ships a full brand philosophy (voice, principles, personas) for AI coding agents.",
+    "Build a project-owned DESIGN.md from 440 quality-graded company references. Preview confirmed colors, typography, spacing, components, and context while unresolved fields stay absent.",
   alternates: {
     canonical: `${siteUrl}/builder`,
   },
   openGraph: {
     title: "Design System Builder — oh-my-design",
     description:
-      "Build your DESIGN.md from 440 real company design systems, each with a full brand philosophy. Interactive A/B wizard.",
+      "Build a project-owned DESIGN.md from 440 quality-graded company references. Confirmed evidence stays visible; unresolved fields stay absent.",
     type: "website",
     url: `${siteUrl}/builder`,
     siteName: "oh-my-design",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Design System Builder — oh-my-design",
     description:
-      "Build your DESIGN.md from 440 real company design systems. Every ref ships a full brand philosophy. A/B wizard.",
+      "Preview and export a project-owned DESIGN.md from 440 quality-graded company references.",
     images: ["/og-image.png"],
   },
 };

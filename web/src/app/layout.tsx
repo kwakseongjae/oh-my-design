@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -7,7 +7,6 @@ import { AnalyticsConsent } from "@/components/analytics-consent";
 import { GA_ID } from "@/lib/gtag";
 import { EEA_REGION_CODES } from "@/lib/eea";
 import pkg from "../../../package.json" with { type: "json" };
-import { FAQ_EN } from "@/data/faq";
 import "./globals.css";
 
 // Single source of truth for displayed CLI version. Pulled from the root
@@ -37,7 +36,7 @@ export const viewport = {
 export const metadata: Metadata = {
   title: "oh-my-design — DESIGN.md for AI coding agents",
   description:
-    "One DESIGN.md spec. 400 real brands extracted. Make Claude Code, Codex, OpenCode, and Cursor ship UI that actually looks like Stripe, Toss, or Linear — not slop. 18 skills · 16 sub-agents · zero AI calls during install. MIT open source.",
+    "One DESIGN.md spec. 440 quality-graded brand references: 141 verified_v2, 159 partial, and 140 legacy snapshots. The bundle ships 20 skills and 18 specialist definitions; Cursor receives a project rule and catalog. MIT open source.",
   keywords: [
     "design system",
     "DESIGN.md",
@@ -77,7 +76,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "oh-my-design — DESIGN.md for AI coding agents",
     description:
-      "400 real brands extracted into one DESIGN.md spec your AI coding agent reads as ground truth before it codes. 18 skills, 16 sub-agents, zero AI calls during install.",
+      "440 quality-graded references: 141 verified_v2, 159 partial, 140 legacy snapshots. Channel-compatible skills and roles for Claude Code, Codex, and OpenCode; a project rule and catalog for Cursor.",
     // og:url intentionally omitted — same inheritance reason as canonical.
     siteName: "oh-my-design",
     images: [
@@ -93,7 +92,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "oh-my-design — DESIGN.md for AI coding agents",
     description:
-      "400 real brands extracted. 18 skills · 16 sub-agents · zero AI calls during install. Talk to Claude Code, Codex, OpenCode, or Cursor in your brand.",
+      "440 quality-graded references: 141 verified_v2, 159 partial, 140 legacy. 20 shipped skills · 18 specialist definitions · channel-aware install.",
     images: ["/twitter-image.png"],
   },
 };
@@ -105,7 +104,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="ko"
+      lang="en"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
@@ -131,7 +131,7 @@ export default function RootLayout({
                   name: "oh-my-design",
                   url: siteUrl,
                   description:
-                    "DESIGN.md as ground truth for AI coding agents. 400 real brand references, 18 skills, 16 sub-agents — installed in one npx command.",
+                    "DESIGN.md as ground truth for AI coding agents. 440 quality-graded references: 141 verified_v2, 159 partial, and 140 legacy snapshots.",
                   potentialAction: {
                     "@type": "SearchAction",
                     target: `${siteUrl}/design-systems?q={search_term_string}`,
@@ -149,72 +149,21 @@ export default function RootLayout({
                   softwareVersion: CLI_VERSION,
                   license: "https://opensource.org/licenses/MIT",
                   description:
-                    "Skill-driven design harness for AI coding agents (Claude Code, Codex, OpenCode, Cursor). One npx command bundles 18 skills + 16 sub-agents + 440 reference DESIGN.md files. Install once, then talk to your agent in natural language.",
+                    "Skill-driven design workflows for Claude Code, Codex, OpenCode, and Cursor. One npx command installs compatible skills, specialist roles, and an offline catalog of 440 quality-graded DESIGN.md references.",
                   offers: {
                     "@type": "Offer",
                     price: "0",
                     priceCurrency: "USD",
                   },
                   featureList: [
-                    "18 skills: core flow (apply / init / harness / remember / learn / sync / taste) + capture/assets + v0.2 agent layer (orchestrator / kr-writer / locale-adapter / designer-review / final-qa / codex-image) + omd:feel (quantified interface-feel — apply + audit) + standalone claude-design",
-                    "16 sub-agents: master orchestrator + 15 specialists with advisor/generator pairs",
-                    "10-phase design pipeline (Plan → System → Make → Validate)",
-                    "440 reference DESIGN.md files (Stripe, Toss, Linear, Vercel, Anthropic, Notion, etc.)",
-                    "Zero AI calls during install — pure markdown copy",
-                    "Supports Claude Code, Codex, OpenCode, Cursor",
-                    "Brand-philosophy layer on every reference — voice, narrative, principles, personas, states, motion",
-                    "v1.6.0+: natural-language auto-trigger for landing-page / prototype requests (no slash command needed)",
-                    "v1.6.0+: CTX-PRIME — sub-50ms deterministic repo scan (stack, brand color, voice, surface inventory) before any question",
-                    "v1.6.0+: Interview-lite — single batched picker for audience / scope / wow-moment / CTA / visual-grounding, then master skips slot-gate",
+                    "20 product skills and 18 specialist agent definitions",
+                    "Native project installs for Claude Code, Codex, and OpenCode; Cursor receives a project rule shim",
+                    "440 quality-graded references: 141 verified_v2, 159 partial, and 140 legacy snapshots",
+                    "verified_v2 references recommended for public demos",
+                    "Channel-aware doctor diagnostics and deterministic installation checks",
+                    "Zero AI calls during install",
+                    "DESIGN.md-driven implementation, review, preference capture, and final QA workflows",
                   ],
-                },
-                {
-                  "@type": "HowTo",
-                  name: "Install oh-my-design and ship brand-aware UI",
-                  description:
-                    "Install oh-my-design-cli once and your AI coding agent ships UI in your brand voice — no further commands needed.",
-                  totalTime: "PT2M",
-                  tool: [
-                    { "@type": "HowToTool", name: "Node.js (>=18)" },
-                    {
-                      "@type": "HowToTool",
-                      name: "Claude Code, Codex, OpenCode, or Cursor",
-                    },
-                  ],
-                  step: [
-                    {
-                      "@type": "HowToStep",
-                      position: 1,
-                      name: "Install in your project",
-                      text: "Run `npx oh-my-design-cli install-skills` at your project root. Restart your AI coding agent (Cmd+Q in Claude Code) so the new skills + sub-agents load.",
-                    },
-                    {
-                      "@type": "HowToStep",
-                      position: 2,
-                      name: "Bootstrap a DESIGN.md",
-                      text: 'Open Claude Code / Codex / OpenCode / Cursor and say: "Set up the design system for [your project description]." The agent picks one of 440 references, proposes a hybrid DESIGN.md, asks for confirmation, writes the file plus shims (CLAUDE.md / AGENTS.md / .cursor/rules).',
-                    },
-                    {
-                      "@type": "HowToStep",
-                      position: 3,
-                      name: "Talk in natural language",
-                      text: 'Just describe what you want. "Make the empty-state for the search results page." "Improve the landing page." "Render a 3D water glass for the hero." The agent reads DESIGN.md as ground truth and ships brand-aware UI.',
-                    },
-                  ],
-                },
-                {
-                  "@type": "FAQPage",
-                  // Q&A content is single-sourced from src/data/faq.ts (the
-                  // jsonLd-flagged subset) — the /docs FAQ section renders the
-                  // full list from the same module (issue #28).
-                  mainEntity: FAQ_EN.filter((f) => f.jsonLd).map((f) => ({
-                    "@type": "Question",
-                    name: f.q,
-                    acceptedAnswer: {
-                      "@type": "Answer",
-                      text: f.a,
-                    },
-                  })),
                 },
               ],
             }),

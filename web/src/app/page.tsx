@@ -12,6 +12,7 @@ import {
   FinalCtaFooter,
 } from "@/components/landing-v2/sections";
 import { V2 } from "@/components/landing-v2/tokens";
+import { OverlayPageScrollbar } from "@/components/landing-v2/overlay-page-scrollbar";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ const geistMono = Geist_Mono({
 export default function LandingV2() {
   return (
     <div
+      data-landing-overlay-scroll
       className={`${geist.variable} ${geistMono.variable}`}
       style={{
         fontFamily: "var(--font-geist-v2), system-ui, sans-serif",
@@ -35,14 +37,18 @@ export default function LandingV2() {
         color: V2.textOnDark,
       }}
     >
+      <noscript>
+        <style>{`html { scrollbar-width: auto !important; } html::-webkit-scrollbar { width: 6px !important; height: 6px !important; }`}</style>
+      </noscript>
+      <OverlayPageScrollbar />
       <V2Nav />
 
       {/* Sections — render after mount to avoid SSR hydration drift on motion libs */}
       <HeroV2 />
+      <CliStrip />
       <LiveProof />
       <TheWall />
       <SideBySide />
-      <CliStrip />
       <PhilosophyBand />
       <FinalCtaFooter />
     </div>

@@ -4,6 +4,7 @@ import { COLLECTIONS } from "@/lib/collections";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { REGISTRY } from "@/data/registry.generated";
 import { ENGLISH_REFERENCE_IDS } from "@/lib/references/editorial";
+import { DOC_LOCALES, DOC_PAGES, docsHref } from "@/lib/docs/locales";
 
 const siteUrl = "https://oh-my-design.kr";
 
@@ -12,12 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: siteUrl, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    {
-      url: `${siteUrl}/docs`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
     {
       url: `${siteUrl}/builder`,
       lastModified: now,
@@ -92,6 +87,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const cliDocsRoutes: MetadataRoute.Sitemap = DOC_LOCALES.flatMap((locale) =>
+    DOC_PAGES.map((page) => ({
+      url: `${siteUrl}${docsHref(locale, page)}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: page === "overview" ? 0.94 : 0.82,
+    })),
+  );
+
   // Curated collections (#5). Raw .md twins (/<id>/design.md) are
   // intentionally NOT listed — the HTML detail pages stay canonical.
   const collectionRoutes: MetadataRoute.Sitemap = COLLECTIONS.map((c) => ({
@@ -135,6 +139,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticRoutes,
+    ...cliDocsRoutes,
     ...collectionRoutes,
     ...referenceRoutes,
     ...evolutionRoutes,

@@ -182,12 +182,12 @@ export function TheWall() {
             The wall
           </div>
           <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
-            {REFERENCE_COUNT} systems. All real.{" "}
-            <span style={{ color: V2.primary }}>All extracted.</span>
+            {REFERENCE_COUNT} references.{" "}
+            <span style={{ color: V2.primary }}>Quality-graded.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm text-white/55">
-            Every tile is a real brand with a full DESIGN.md your AI agent can
-            read — browse them all in the catalog.
+            Each tile opens an evidence-backed company reference in Builder.
+            Unknown fields stay absent instead of being replaced with guesses.
           </p>
         </div>
 

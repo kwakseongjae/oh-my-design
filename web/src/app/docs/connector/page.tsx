@@ -21,7 +21,7 @@ export default function RetiredConnectorPage() {
           https://oh-my-design.kr/&lt;reference-id&gt;/design.md
         </div>
         <div className="mt-6 flex flex-wrap gap-2">
-          <Link href="/docs" className="rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground">
+          <Link href="/docs/en" className="rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground">
             Open skill documentation
           </Link>
           <Link href="/design-systems" className="rounded-lg border border-border bg-background px-3 py-2 text-sm font-medium">
