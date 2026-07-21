@@ -20,15 +20,15 @@
 import { useState } from "react";
 import { Check, Copy, Sparkles, Terminal } from "lucide-react";
 import { trackInstallCopy, trackPromptCopy } from "@/lib/activation/analytics";
-import { REFERENCE_COUNT } from "@/lib/catalog-count";
+import { REFERENCE_COUNT, SKILL_COUNT } from "@/lib/catalog-count";
 import {
   firstPromptFor,
   stripBuilderProvenance,
 } from "@/lib/core/builder-prompt";
 
-export const INSTALL_CMD = "npx oh-my-design-cli install-skills";
+export const INSTALL_CMD = "npx oh-my-design-cli@latest";
 
-export type InstallCtaSource = "hero" | "ref_detail" | "collection" | "builder";
+export type InstallCtaSource = "hero" | "ref_detail" | "collection" | "builder" | "docs" | "cli";
 
 export { firstPromptFor };
 
@@ -121,7 +121,7 @@ export function InstallCta({
         Use these design systems in your AI coding agent
       </div>
       <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-        One command installs {REFERENCE_COUNT} quality-graded DESIGN.md references + 17
+        One command installs {REFERENCE_COUNT} quality-graded DESIGN.md references + {SKILL_COUNT}
         skills into Claude Code, Cursor, Codex, or OpenCode. Free, MIT, zero AI calls.
       </p>
       <div className="mt-3 flex flex-wrap items-center gap-2">

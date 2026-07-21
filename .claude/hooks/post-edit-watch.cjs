@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// omd:installed-hook sha256=f471b2b322fbbedf5a1a311819827a55aedcc1cd660617df2b2d130153467974
 // PostToolUse hook — runs after Edit/Write on .tsx/.jsx/.css/.scss files.
 // Detects if the change introduced a hex / radius / motion-duration value
 // that's NOT in DESIGN.md, surfaces a one-line suggestion to capture as

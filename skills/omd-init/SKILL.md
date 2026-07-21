@@ -7,7 +7,7 @@ description: "프로젝트 루트에 DESIGN.md를 부트스트랩 — 실제 기
 
 프로젝트에 DESIGN.md + AI 코딩 에이전트용 shim 3종을 한 번에 세팅. 레퍼런스 톤&매너는 **preserve**하고, 사용자 프로젝트 맥락은 controlled-vocabulary delta_set으로만 반영.
 
-**CLI 호출 없음** — Read/Write/Bash(파일 작업만) 툴로 직접 처리. (이전 버전은 `omd init recommend` 등 CLI subcommand를 호출했으나 현재 CLI binary는 `install-skills`만 노출. 이 skill은 self-contained하게 동작.)
+**런타임 CLI subcommand 호출 없음** — Read/Write/Bash(파일 작업만) 툴로 직접 처리한다. CLI의 사용자 표면은 bare `npx oh-my-design-cli`(대화형 installer)와 `npx oh-my-design-cli doctor`(설치 진단)이며, `omd init recommend` 같은 init subcommand는 제공하지 않는다. 이 skill은 설치 뒤 host agent 안에서 self-contained하게 동작한다.
 
 ## 전체 플로우
 
@@ -38,15 +38,19 @@ Phase 7: 요약 출력
 
 다음 파일을 Read 툴로 전체 로드 (있는 순서대로 fallback):
 
-1. `.claude/data/reference-fingerprints.json` (사용자 프로젝트에 설치된 카탈로그 — 표준 경로)
-2. `node_modules/oh-my-design-cli/data/reference-fingerprints.json` (npm 설치 직접 경로)
-3. `data/reference-fingerprints.json` (개발 환경)
+1. `.codex/data/reference-fingerprints.json` (Codex 설치 카탈로그)
+2. `.claude/data/reference-fingerprints.json` (Claude Code / Cursor 설치 카탈로그)
+3. `.opencode/data/reference-fingerprints.json` (OpenCode 설치 카탈로그)
+4. `node_modules/oh-my-design-cli/data/reference-fingerprints.json` (npm 설치 직접 경로)
+5. `data/reference-fingerprints.json` (개발 환경)
 
 스키마: `{ count, items: [{ id, primary_color_hex, category, visual_theme, voice_fingerprint, tone_keywords, antipatterns, signature_motion, has_personas, category_raw }] }`.
 
 추가 보조 파일 (있으면 같이 로드):
-- `.claude/data/vocabulary.json` — controlled vocab axes/keywords
-- `.claude/data/reference-tags.md` — human-readable keyword matrix
+- 위에서 실제 선택된 data dir의 `vocabulary.json` — controlled vocab axes/keywords
+- 같은 data dir의 `reference-tags.md` — human-readable keyword matrix
+
+채널을 알 수 있으면 해당 채널 data dir을 우선 사용하되, 파일이 없으면 위 1→5 순서로 fallback한다. 서로 다른 설치 채널의 fingerprint와 보조 파일을 섞지 말 것.
 
 ### 2.2 task 분석 (silent, in-head)
 
@@ -126,12 +130,14 @@ Phase 4.2~6은 건너뛴다.
 
 <!-- omd:catalog-resolution-order — omd-harness/omd-reference-capture SKILL.md + agents/omd-master.md 와 동일 순서 강제. drift guard: test/unit/core/catalog-resolution-order.test.ts -->
 
-1. `.claude/data/references/<id>/DESIGN.md` (installer가 복사 — npx 설치 기본 경로)
-2. `node_modules/oh-my-design-cli/web/references/<id>/DESIGN.md` (로컬 npm 설치 직접 경로)
-3. `web/references/<id>/DESIGN.md` (개발 레포)
-4. `https://oh-my-design.kr/<id>/design.md` 를 fetch (WebFetch 또는 `curl -fsSL`) — 1~3 로컬 경로가 전부 없을 때 (npx 설치가 기본 경로라 흔한 상황). 200이면 응답 본문이 곧 reference DESIGN.md다. 가져온 내용을 `.claude/data/references/<id>/DESIGN.md`로 저장해 다음 실행부터는 로컬 캐시(경로 1)로 잡히게 한다.
+1. `.codex/data/references/<id>/DESIGN.md` (Codex installer가 복사)
+2. `.claude/data/references/<id>/DESIGN.md` (Claude Code / Cursor installer가 복사)
+3. `.opencode/data/references/<id>/DESIGN.md` (OpenCode installer가 복사)
+4. `node_modules/oh-my-design-cli/web/references/<id>/DESIGN.md` (로컬 npm 설치 직접 경로)
+5. `web/references/<id>/DESIGN.md` (개발 레포)
+6. `https://oh-my-design.kr/<id>/design.md` 를 fetch (WebFetch 또는 `curl -fsSL`) — 1~5 로컬 경로가 전부 없을 때. 200이면 응답 본문이 곧 reference DESIGN.md다. 가져온 내용은 **활성 채널의 첫 writable data dir** (`.codex/data`, `.claude/data`, `.opencode/data`) 아래 `references/<id>/DESIGN.md`에 저장한다. 채널을 판별할 수 없으면 1→3 중 먼저 존재하고 쓸 수 있는 dir을 사용하고, 모두 없으면 활성 host 채널 dir을 생성한다.
 
-4까지 전부 실패하면 **절대 DESIGN.md를 임의로 지어내지 말 것.** 사용자에게
+6까지 전부 실패하면 **절대 DESIGN.md를 임의로 지어내지 말 것.** 사용자에게
 "레퍼런스 `<id>` 원문을 찾지 못했어요 (오프라인이거나 카탈로그 미배포).
 네트워크 연결 후 재시도하거나 다른 레퍼런스를 골라주세요"라고 보고하고 종료.
 
@@ -311,4 +317,4 @@ Next:
 - 레퍼런스에 없는 section/heading을 추가하지 말 것.
 - `.omd/init-context.json`을 직접 편집할 때 schema 어기지 말 것.
 - DESIGN.md가 이미 있는데 백업 없이 덮어쓰지 말 것 (Phase 4.2 rename 절차 준수).
-- **존재하지 않는 CLI subcommand (`omd init recommend`, `omd init prepare`, `omd sync`)를 호출하지 말 것** — 현 CLI binary는 `install-skills`만 제공.
+- **존재하지 않는 CLI subcommand (`omd init recommend`, `omd init prepare`, `omd sync`)를 호출하지 말 것** — CLI는 bare installer와 `install-skills`, `doctor`만 제공한다.

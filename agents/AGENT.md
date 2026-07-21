@@ -9,16 +9,17 @@ A 60-line operational context card. Loaded into the project at install via `omd 
 
 ## Stack & commands
 - Build: `npm run build` (tsup) · Lint: `npm run lint` (tsc --noEmit) · Test: `npm test` (vitest)
-- Hidden internal helper: `omd harness "<task>" --internal` (slug + run dir; emits single JSON line)
+- The harness skill bootstraps run directories directly; the CLI exposes installation and diagnostics only.
 - User-facing entry: `/omd-harness <task>` (Claude Code or Codex skill)
 
 ## Directory map
-- `agents/` — canonical 11 sub-agent definitions (master + 10 specialists; source-of-truth, generates `.claude/agents/` and `.codex/agents/`)
+- `agents/` — canonical sub-agent definitions (master + specialists; source-of-truth, generates channel-native Claude Code, Codex, and OpenCode roles)
 - `skills/omd-harness/` — entry skill that calls master orchestrator
-- `skills/omd-init/`, `skills/omd-apply/`, `skills/omd-remember/`, `skills/omd-learn/`, `skills/omd-sync/` — existing OmD skills
-- `data/reference-fingerprints.json` — 67-reference voice fingerprint manifest (skill-side semantic match)
+- `skills/omd-init/`, `skills/omd-apply/`, `skills/omd-remember/`, `skills/omd-learn/`, `skills/omd-sync/` — project design-system skills
+- `skills/omd-humanize/`, `skills/omd-slop-audit/` — locale-native copy editing and evidence-based anti-slop audit
+- `data/reference-fingerprints.json` — resolved-catalog voice fingerprint manifest (skill-side semantic match)
 - `data/vocabulary.json`, `data/synonyms.json`, `data/reference-tags.md` — controlled vocab + tagging
-- `references/<id>/DESIGN.md` × 67 — bundled reference design systems
+- `references/<id>/DESIGN.md` — bundled reference design systems resolved from the catalog
 - `spec/omd-v0.1.md` — OmD spec (15-section DESIGN.md format)
 - `.omd/runs/run-<ts>-<slug>/` — every harness run; permanent archive
 - `skills/omd-lab-02-design-harness/runs/v<N>-...` — Lab #02 versioned experiments
@@ -34,6 +35,7 @@ A 60-line operational context card. Loaded into the project at install via `omd 
 - No Inter on white. No purple-on-white. No gradient backgrounds. No unjustified emoji.
 - Korean and Latin script co-equal (this is a bilingual project).
 - Hex + name together for every color: `Toss Blue (#3182f6)`, never just `#3182f6`.
+- AI slop means context-free pattern convergence, not proof that AI authored a screen. Audit clusters, quality issues, and preferences separately.
 
 ## Numbered-9s (re-read at every iteration boundary)
 - 9 → re-read sub-agent output before acting
@@ -41,7 +43,7 @@ A 60-line operational context card. Loaded into the project at install via `omd 
 - 999 → never fabricate §11–13 facts
 - 9999 → never invent tokens absent from DESIGN.md
 - 99999 → never auto-skip user checkpoints
-- 999999 → never invent reference ids; 67-only catalog
+- 999999 → never invent reference ids; use only IDs present in the resolved catalog
 - 9999999 → never claim success when output is empty; Read the file
 - 99999999 → never overwrite previous iteration; snapshot to `iteration-<N>/`
 
@@ -50,4 +52,3 @@ A 60-line operational context card. Loaded into the project at install via `omd 
 - `research/harness-design/07-poc-spec.md` — Scenario A/B/C
 - `skills/omd-lab-02-design-harness/runs/live-*.md` — accumulated live-run insights
 - `research/harness-design/docs-todo.md` — pending docs/blogs queue
-

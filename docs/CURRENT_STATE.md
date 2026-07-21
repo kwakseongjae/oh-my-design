@@ -3,10 +3,45 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7646072` (`main`, production)
-- 갱신: 2026-07-14 · v2/440 production release
+- 기준 커밋: `7646072` (`main`, production) + 미커밋 CLI/docs v1.9 release candidate
+- 갱신: 2026-07-20 · CLI-first landing order / release audit / activation UX proposal queue
 
 ## 지금 (현재 위치)
+
+- Home section order는 요청대로 Hero → **CLI** → Live Proof → Wall로 변경했다. desktop 1280px에서 section top `57→995→1639`, horizontal overflow 0이며 390px CLI section 자체는 정상이다. 승인되지 않은 CTA/copy 변경은 아직 적용하지 않았다.
+- 2026-06-22~07-19 complete 28d 기준 GA는 7,402 users, legacy `/docs` 186 users(2.5%), `act_install_copy` 282 users(3.8%; 475 events), `act_prompt_copy` 192 users다. Builder는 install-copy 229 events/135 users로 최대 surface이며 desktop handoff는 보이지만 mobile은 0×0로 완전 비노출이다. npm은 같은 기간 2,667 downloads라 web copy event의 5.6×이나 npm download는 unique install이 아니다.
+- CLI/docs/harness release gate는 root 6 files/101 tests, Web 50 files/820 tests, 양쪽 TypeScript, Web ESLint 0 errors(기존 warning 40), production build 1,458 pages, npm tarball hygiene가 green이다. `/tmp` clean project에서 candidate `1.9.0` install → Codex 20 skills/18 roles/440 refs → `doctor`까지 통과했다. tarball은 5,537,621B packed / 20,460,287B unpacked / 532 entries, SHA-256 `df537590d1330c0a60ae0b6cace573a54671205125dcbc4705f2eeb6926e0f45`다.
+- 승인 대기 제안 queue: P0 Home CLI terminal을 성공 기반 실제 copy CTA로 만들고 Cursor에도 정직한 결과 문구 사용; Builder Export에 mobile 포함 `Download → Install → Restart/doctor → first prompt` handoff; Builder list API `tokens` 제거+progressive rendering. P1 clipboard 성공 후에만 activation event 발화, landing entry attribution/custom dimensions sync, README/npm outcome-first·locale parity·npm logo asset/homepage 정리. P2 Home comparison 39px mobile overflow와 Builder error/Retry 상태 교정.
+- CLI docs desktop grid의 780px fixed main track을 fluid `minmax(0,1fr)`로 바꾸고 xl gap을 56→40px로 줄였다. 1580px viewport에서 main 780→912px, TOC 이후 버려지던 공간은 약 140→24px로 감소했다. 1280/1024/390px에서 main 706/690/384px, visible sidebars 2/1/0, horizontal overflow 0을 확인했다.
+- CLI docs의 `On this page` scroll-spy에서 Strict Mode/HMR 재마운트 뒤 RAF ref가 stale 상태로 남아 자연 스크롤 업데이트를 막던 원인을 제거했다. canonical scrolling element와 reading line/page-end 판정을 분리했고 5개 회귀 테스트를 추가했다. 실제 pointer-wheel scroll에서 KO 목차가 원칙→10관점→minimalism→비교→분류→워크플로→리서치 순으로 연속 갱신된다.
+- `/docs/{en,ko,ja,zh-cn,zh-tw}/anti-slop`의 10개 lens를 익명 막대/도형에서 실제 과업형 before/better UI로 교체했다: dashboard/release, nested settings/flat rows, promo/docs type, glass/semantic checkout, fake metric/build proof, cards/table, happy path/state set, clipped desktop/mobile checkout, scattered/anchored notification, pills/role-correct controls. 각 specimen의 UI label도 5 locale 원문을 사용한다.
+- 공식 리서치를 Primer product patterns·empty/loading, Carbon data table, Fluent Card/Shapes, USWDS Card, GOV.UK error summary, Atlassian empty state까지 확장하고 `docs/AI_SLOP_RESEARCH.md`와 세 skill mirror source catalog에 반영했다. desktop 1280×720/mobile 390×844 overflow 0, 10 lenses/19 sources, Web 50 files/820 tests, TypeScript, touched ESLint, production build 1,458 pages green이다.
+- AI slop을 작성 도구나 단일 시각 특징의 판정이 아니라 **제품 근거를 대신하는 context-free default pattern cluster**로 정의했다. `SLOP`(패턴 수렴), `QUALITY`(측정 가능한 결함), `PREFERENCE`(유효한 선택)를 분리하며, 정본 리서치는 `docs/AI_SLOP_RESEARCH.md`다.
+- 신규 제품 스킬 `omd:humanize`, `omd:slop-audit`와 전문 에이전트 `omd-humanizer`, `omd-slop-auditor`를 canonical + Claude/Codex/OpenCode mirror에 추가했다. 현재 배포 계약은 references 440 / product skills 20 / specialist agents 18이다.
+- `/docs/{en,ko,ja,zh-cn,zh-tw}/anti-slop`은 정의·4원칙·10개 UI lens·3개 유효한 디자인 방향·화면/문장/다국어 전후 탭·SLOP/QUALITY/PREFERENCE·5단계 재검증·출처를 시각적으로 제공한다. 문서 카탈로그는 5 locale × 9 pages = 45 routes다.
+- KO/JA/ZH-CN/ZH-TW 원고는 영어 sentence skeleton을 상속하지 않고 독립 편집했다. visible specimen의 `NEXT-GEN/verified/reference/output/next step`과 analytics consent도 route locale별 문구를 사용하며 zh-TW는 대만 용어를 별도 유지한다.
+- 실제 in-app browser에서 5개 locale의 `lang`, H1, tabs, localized specimen label을 확인했다. desktop과 390×844 모두 horizontal overflow 0, KO locale switch scrollY 유지, comparison tabs 정상, console error 0이다. 사용자 확인용 KO 탭은 `/docs/ko/anti-slop`에 열어 뒀다.
+- 검증: 신규 2 skills quick validation, counts 440/20/18, root 6 files/101 tests, Web 49 files/815 tests, Web TypeScript/ESLint, production build 1,458 pages가 green이다. 마지막 원고 교정 후 focused Web 17 tests와 TypeScript/ESLint를 다시 통과했다.
+- CLI docs locale menu scroll-jump bug is fixed. Base UI Select's default modal state was locking the document and reproduced `scrollY 1000 → 0`; the docs switcher is now non-modal, its sticky-header popup uses fixed positioning, same-locale selection is ignored, and locale routing uses `scroll:false`. Real pointer acceptance on KO↔EN kept `scrollY 2856 → 2856`, header top 0, body overflow visible, and the correct document lang.
+- Getting Started prerequisite cards now reserve a two-line title slot and use a shared 224px card height, matching the longest rightmost label. In the KO desktop route all three cards measure 224px, share the same footer top, and report zero title/footer overlap.
+- CLI docs page tools를 direct copy 2개로 단순화했다. `Copy page`의 split dropdown/Markdown 새 탭/AI-copy 중복 옵션을 제거했고, `llms.txt`도 link가 아니라 locale별 원문 즉시 복사 버튼이다. 두 원문은 server render 시 주입돼 click 후 fetch가 없으며 Clipboard API 실패 시 execCommand fallback이 작동한다. KO demo에서 두 버튼 모두 copied feedback, URL unchanged, dropdown/link 0을 확인했다.
+- CLI docs Showcase에서 second docs-rebuild case(`기능 나열 문서에서 5개 언어 활성화 경로로`)부터 before/after, files, verification까지 전부 제거했다. 페이지에는 Applepresso product case만 남고 TOC도 `#real-case` 하나다. 같은 내용은 locale Markdown/AI copy 원문에서도 제외했으며 KO route/Markdown에서 제거 문구 count 0을 확인했다.
+- CLI docs content의 비기능적 left accent bar를 전수 제거했다. Overview truth callout은 icon + neutral surface로, Getting Started quick-start와 Demo runbook은 left-border timeline 대신 번호 + horizontal editorial dividers로 바꿨다. 기능적 split-button separator와 scroll-spy active line은 유지했다. KO 3 routes와 390px에서 decorative bar/timeline 0, overflow 0을 확인했다.
+- CLI docs Overview의 3개 outcome card를 `Prompt → Result` 세로 흐름으로 교정하고 오른쪽에 각각 DESIGN.md token sheet, onboarding surface, before/after UI audit 미니 프리뷰를 추가했다. 생성 이미지 대신 theme token 기반 CSS UI라 locale/theme/반응형과 내용 정합을 유지하며, 상태 문구도 현재 locale dictionary를 쓴다. KO desktop/390px에서 결과 순서, `준비 완료`, overflow 0을 확인했다.
+- CLI docs 헤더의 locale trigger를 현재 선택 option과 같은 전체 localized label로 고정했다(`ko`가 아니라 `한국어`). 언어/GitHub control을 동일한 36px·10px radius·token border 체계로 정리하고 `Open Builder` CTA를 제거했다. KO→EN 전환 시 `한국어`→`English`와 route가 함께 바뀌며 Builder 링크 count 0임을 실제 브라우저에서 확인했다.
+- CLI docs 오른쪽 `On this page` 목차를 scroll-spy 내비게이션으로 전환했다. 현재 읽는 섹션은 primary 색상·옅은 배경·활성 라인·`aria-current=location`으로 표시되며 클릭 시 앵커 이동과 선택 상태가 즉시 동기화된다. `/docs/ko/demo`에서 `#runbook` 클릭 이동과 수동 스크롤 후 `#proof` 자동 전환을 확인했다.
+- CLI docs left sidebar의 quality-graded reference/pipeline summary card를 전 언어에서 제거했다. 실제 브라우저의 visible aside text는 product label + 8개 docs nav만 남고 pipeline/demo copy는 DOM snapshot에서 absent다.
+- Getting Started의 4개 non-interactive channel install card를 단일 Base UI Tabs panel로 축약했다. tab order/default는 Claude Code → Codex → OpenCode → Cursor이며, 선택한 채널의 설명/명령어만 DOM에 존재한다. 실제 브라우저에서 Claude default와 Codex 전환 시 Claude panel count 0을 확인했다.
+- Getting Started의 prerequisite 3개를 plain text box에서 icon/01–03 progress/locale-aware ready state/18+·git·AI marker를 가진 product-native setup card로 재구성했다. 데스크톱 3열은 longest-label 기준 동일한 224px 높이, 모바일은 1열이며 horizontal overflow 0을 실제 브라우저에서 확인했다.
+- 다국어 CLI docs 헤더의 native `<select>`를 Base UI custom Select로 교체했고, plain GitHub 링크는 기존 live `/api/github-stars`를 쓰는 star pill로 통일했다. 실제 로컬에서 한국어 label과 5개 locale menu, GitHub 346 stars를 확인했다.
+- 45개 localized docs route 모두 direct `Copy page`와 locale별 `llms.txt` 복사를 제공한다. `/docs-md/<locale>/<page>.md`는 같은 locale dictionary에서 생성된 `text/markdown` 원문을 반환하므로 사람 화면과 agent handoff가 별도 원고로 drift하지 않는다.
+- 검증: docs/markdown focused 11 tests, TypeScript, ESLint 0 errors(기존 warning 40), `git diff --check`, production build 1,453/1,453 pages green. 모바일 in-app browser에서 custom locale popover, star pill, page actions menu, copy success state, locale llms link를 확인했다.
+- Home은 native scrollbar gutter를 제거하고 scroll 중에만 나타나는 fixed overlay thumb를 쓴다. 실제 브라우저에서 `innerWidth=clientWidth`, gutter 0, idle opacity 0, console error 0을 확인했다.
+- CLI v1.9은 bare `npx oh-my-design-cli@latest` guided install, `doctor`, Claude hook drift용 `--repair-hooks`, symlink/path fail-closed 보호를 제공한다. Claude Code·Codex·OpenCode는 20 skills/18 roles/440 refs, Cursor는 의도적으로 rule+catalog/0 skills/0 roles다.
+- Taste Skill·Impeccable·Next.js docs 패턴을 outcome-first 구조로 재해석해 `/docs/{en,ko,ja,zh-cn,zh-tw}` 5개 언어 × 9페이지(45 routes), 홈 CLI activation section, 사람/AI 공용 llms 문서를 구축했다. Applepresso는 저장소 소유 controlled concept이며 provenance 6개 hash가 일치한다.
+- `omd-reference-capture`는 Node 18 대상 self-contained `.mjs` sidecar다. Playwright runtime과 Apache-2.0 고지를 번들하고 npm cache/node_modules/TypeScript/MCP에 의존하지 않는다. 독립 감사에서 tarball→package.json 없는 clean target→Node 18.20.8→system Chrome 실캡처를 통과했다.
+- 현재 implementation gate: CLI 6 files/101 tests, Web 49 files/815 tests, 양쪽 TypeScript, Web ESLint 0 errors, production build 1,458 pages, counts 440/20/18이 green이다. 신규 2 skills/2 agents를 포함한 최종 npm tarball clean-install/Node 18 audit은 publish 전에 한 번 더 실행해야 한다.
+- 후보 tarball은 5.52MB packed / 20.42MB unpacked / 522 entries이며 로컬 최종 artifact SHA-256은 `d586c421e5f1f1d59307dd8507ae072c68f3fe3e3c2f0a806e7ae5df66a93d4b`다. npm publish와 web deploy는 아직 실행하지 않았다.
 
 - v2 누적 변경 931개 파일을 `d4bb3ac`(`release v2 reference catalog and builder`)로 `main`에 배포했다. Vercel Production과 custom domain `oh-my-design.kr`에서 catalog 440개 및 신규 KB/Acer 레퍼런스를 확인했다.
 - 최종 gate는 CLI 57/57, Web 45 files/790 tests, TypeScript, ESLint 0 errors(기존 warning 42), production build 1,411/1,411 pages다. Home → `/builder` → Toss preview를 desktop/mobile에서 통과했고 overflow·console error·fallback warning은 0이다.
@@ -165,17 +200,17 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 변경을 merge/deploy하고 GA4가 새 이벤트를 1회 본 뒤 `node scripts/analytics/setup-ga4.mjs --apply`를 실행한다.
-2. 다음 complete UTC day를 baseline day 1로 표시하고 7일 뒤 `pull-all --days 7` + digest로 first read를 만든다.
-3. Batch 03 Sentry → SmartHR, Batch 04 Supabase → Tossbank, Batch 02 Mercari 순으로 강한 evidence 후보를 reconcile한다. 단일-surface 항목은 browser-harness exception 또는 공식 context source 추가 후 재진입한다.
-4. `I18N1/VIRAL1`: 실제 demand/search 기준 Apple → KRDS → 29CM → Banksalad → Channel Talk 순으로 grounded evolution 후보를 감사한다.
-5. `AST0-A5`는 두 release + 14 clean days 뒤 legacy parser 제거 조건을 평가한다.
+1. 신규 20 skills/18 agents가 들어간 final npm tarball을 다시 만들고 Node 18 clean install에서 Claude/Codex/OpenCode install·doctor·collector를 검증한다.
+2. 미커밋 release candidate를 최종 diff review 후 커밋하고 `oh-my-design-cli@1.9.0`을 publish한다. 태그 release workflow의 별도 Node 18 standalone-collector gate를 반드시 통과시킨다.
+3. web을 배포하고 Home gutter 0, 5-locale `/docs/{locale}/anti-slop`, locale switch, Copy page/llms direct copy, Showcase, Builder 연결을 production에서 smoke한다.
+4. Applepresso의 historical 1.4 run을 보완할 current v1.9 full-trace 사례 1개와 실제 기존 제품 route rescue 사례 1개를 추가한다.
+5. 배포 후 `docs_open → install_copy → doctor_ready → first DESIGN.md → verified route` activation funnel을 측정해 첫 7일 이탈 지점을 고친다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- 구현 차단은 없음.
-- 완료 판정은 merge/deploy 권한과 clean observation window가 필요하다.
-- nested Terra subprocess는 사용자 승인 후에도 현재 agent 보안 정책이 workspace 재전송을 거부한다. adapter/model probe는 작동하며, capture/inline reconcile/deterministic validation에는 차단이 없다.
+- 구현 차단은 없음. publish 전 final 20/18 tarball clean-install 재감사만 남았다.
+- npm publish, git commit/tag, web deploy는 이번 작업에서 의도적으로 실행하지 않았으며 다음 단계의 외부 상태 변경이다.
+- browser-harness는 이번 로컬 Chrome attachment에서 사용할 수 없어 브라우저 acceptance는 Playwright fallback으로 수행했다. packaged collector 자체의 system Chrome 실행은 Node 18 독립 감사에서 통과했다.
 
 ## 진행 중 레인 (병렬 작업 시에만)
 

@@ -2,7 +2,22 @@
 
 User-facing changes to `oh-my-design-cli` and the bundled skill / agent files.
 
-After any release: `npx oh-my-design-cli@latest install-skills`. Managed files (those carrying the `<!-- omd:installed-skill -->` marker) refresh automatically; your edits outside the marker block are preserved. See `Upgrading` in `README.md`.
+After any release: run `npx oh-my-design-cli@latest`, keep the detected channels selected, then verify with `npx oh-my-design-cli@latest doctor`. Managed files refresh automatically; user-authored files outside OmD ownership are preserved. See `Upgrading` in `README.md`.
+
+---
+
+## 1.9.0 — 2026-07-17
+
+**CLI re-onboarding: one guided entrypoint, an exact repair doctor, safer managed upgrades, and outcome-first documentation in five languages.**
+
+- Bare `npx oh-my-design-cli@latest` now opens the guided installer. `doctor` checks the complete 18-skill product bundle, 16 specialist roles, channel-local catalog, hooks, fingerprint coverage, and `DESIGN.md`, then prints a repair command scoped only to the broken channels.
+- Claude Code, Codex, and OpenCode receive channel-native skills, supported specialist roles, and a local catalog; Cursor receives its project rule shim plus the shared catalog. The installer and docs no longer imply identical host capabilities.
+- Managed reference sync now records content hashes. It refreshes only unchanged installer-owned `DESIGN.md` files, preserves same-ID user edits and private references, and removes retired managed files without deleting user sidecars in their directories. Existing non-OmD hooks remain untouched. Reinstalling Codex also removes OmD-owned legacy `.codex/skills` entrypoints automatically while preserving private skills.
+- `doctor` now validates exact Claude hook event/command mappings, distinguishes Cursor's shared catalog from a Claude installation, detects stale or locally modified hooks, and can execute a scoped `--repair-hooks` recovery. Unmarked OmD-reserved conflicts use an explicit `--force`; symlinked managed paths and unmanaged legacy Codex entries fail closed for manual review. Installer drift exits non-zero instead of reporting a false success.
+- Generated Codex/OpenCode roles now carry the correct project/global offline-catalog root. OpenCode role bodies use native hyphenated skill ids, while Cursor's rule embeds a small evidence-safe DESIGN.md bootstrap/apply contract without pretending named skills or sub-agents were installed.
+- The package now ships `docs/CLI_QUICKSTART.md`. The website adds 40 static CLI docs routes across English, Korean, Japanese, Simplified Chinese, and Traditional Chinese (Taiwan), including an outcome-first live-demo runbook, plus localized human and agent-readable `llms` guides.
+- Tag publishing is gated by CLI lint/tests/counts plus web tests/typecheck/build, and tarball hygiene now fails closed when it cannot inspect the package.
+- MCP is no longer part of the recommended runtime. Installation remains a local markdown/data copy with zero OmD AI API calls; the user’s existing coding-agent subscription remains the inference layer.
 
 ---
 

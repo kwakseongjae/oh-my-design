@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// omd:installed-hook sha256=e5c62304db69247f7deb2237b9b4c559b65e56c0b9d2a9f095f41fa6598d4f4c
 // SessionStart hook — load .omd/state.md (and a recent timeline tail) into the
 // session as additionalContext. If state.md is missing or stale, recompute
 // best-effort from preferences.md + timeline.md.

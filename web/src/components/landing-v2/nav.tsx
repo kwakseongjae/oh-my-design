@@ -90,7 +90,7 @@ export function V2Nav() {
         {/* RIGHT — docs + github + cta */}
         <div className="flex items-center gap-2 justify-self-end">
           <Link
-            href="/docs"
+            href="/docs/en"
             onClick={() => event("nav_click", { location: "v2_docs" })}
             className="hidden items-center gap-1.5 rounded-full h-9 sm:h-10 px-3 text-xs font-medium text-white/70 transition-colors hover:text-white sm:inline-flex"
           >

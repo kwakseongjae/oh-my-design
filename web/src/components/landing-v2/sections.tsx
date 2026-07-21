@@ -459,17 +459,27 @@ export function CliStrip() {
             sees the same brand.
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-white/55">
-            That&apos;s the only command you&apos;ll run. After that, you just
-            talk to your agent.
+            Install once, verify with doctor, then design by talking to your
+            agent.
           </p>
-          <Link
-            href="/docs"
-            className="group mt-5 inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white/85 transition-colors hover:bg-white/5 hover:text-white"
-            style={{ borderColor: V2.borderDark }}
-          >
-            Read the docs
-            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-          </Link>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/docs/en/demo"
+              className="group inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white transition-colors"
+              style={{ background: V2.primary }}
+            >
+              Live demo playbook
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/docs/en"
+              className="group inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white/85 transition-colors hover:bg-white/5 hover:text-white"
+              style={{ borderColor: V2.borderDark }}
+            >
+              Read the docs
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
         </div>
 
         <div
@@ -494,7 +504,7 @@ export function CliStrip() {
             <div>
               <span style={{ color: V2.accent }}>$</span>{" "}
               <span className="omd-v2-typing inline-block overflow-hidden whitespace-nowrap align-bottom">
-                npx oh-my-design-cli install-skills
+                npx oh-my-design-cli@latest
               </span>
               <span
                 className="omd-v2-cursor2 ml-0.5 inline-block h-[14px] w-[8px] translate-y-[2px]"
@@ -506,13 +516,13 @@ export function CliStrip() {
                 ✓ Installed {SKILL_COUNT} skills + {SUBAGENT_COUNT} sub-agents
               </div>
               <div style={{ color: V2.accent }}>
-                ✓ Wrote .claude/skills, .agents/skills, .opencode/skills, .cursor/rules
+                ✓ Installed the channels you selected
               </div>
               <div style={{ color: V2.accent }}>
                 ✓ Bundled {REFERENCE_COUNT} reference DESIGN.md files
               </div>
               <div style={{ color: V2.accent }}>
-                ✓ Hooked CLAUDE.md, AGENTS.md, .cursor/rules
+                → Next: npx oh-my-design-cli@latest doctor
               </div>
               <div className="mt-2 text-white/50">
                 Restart your agent. Then just talk: &ldquo;Set up the design
@@ -867,13 +877,13 @@ export function FinalCtaFooter() {
                 }}
               >
                 <span style={{ color: V2.accent }}>$</span>
-                <code>npx oh-my-design-cli install-skills</code>
+                <code>npx oh-my-design-cli@latest</code>
               </div>
               <Link
-                href="/docs"
+                href="/docs/en/demo"
                 className="group inline-flex items-center gap-1.5 text-xs font-medium text-white/55 transition-colors hover:text-white"
               >
-                or read the docs
+                or run the 5-minute demo
                 <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
@@ -960,6 +970,14 @@ export function FinalCtaFooter() {
               <ul className="space-y-2.5">
                 <li>
                   <Link
+                    href="/docs/en/demo"
+                    className="text-sm text-white/85 transition-colors hover:text-white"
+                  >
+                    Live Demo
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/builder"
                     className="text-sm text-white/85 transition-colors hover:text-white"
                   >
@@ -993,7 +1011,7 @@ export function FinalCtaFooter() {
               <ul className="space-y-2.5">
                 <li>
                   <Link
-                    href="/docs"
+                    href="/docs/en"
                     className="text-sm text-white/85 transition-colors hover:text-white"
                   >
                     Docs

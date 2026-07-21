@@ -11,7 +11,7 @@ Materialize placeholder images embedded as `<!-- omd:gen-image ... -->` spec blo
 
 ## Boot
 
-1. Read `.claude/skills/omd-codex-image/SKILL.md` in full
+1. Read the installed `omd-codex-image/SKILL.md` from the active host's skill root in full
 2. Resolve `channel` input (auto-detect via `process.env.OMD_CHANNEL`, host agent identity, or `--channel` flag)
 3. Read `artifact_path`
 

@@ -3,6 +3,8 @@ name: omd:codex-image
 description: "이미지 placeholder를 동적으로 materialize. Codex 채널에서는 내장 image-generation primitive 호출, Claude Code 채널에서는 omd-asset-curator로 fall back, OpenCode에서는 spec dump. HTML/MD의 `<!-- omd:gen-image -->` 블록을 단일 source of truth로 사용. '이미지 생성해줘', '플레이스홀더 채워줘', '코덱스로 이미지 만들어' 류 트리거."
 user-invocable: true
 ---
+<!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
+
 
 # omd:codex-image
 

@@ -8,7 +8,7 @@ import { trackInstallCopy } from "@/lib/activation/analytics";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { V2 } from "./tokens";
 
-const INSTALL_CMD = "npx oh-my-design-cli install-skills";
+const INSTALL_CMD = "npx oh-my-design-cli@latest";
 
 interface BrandSpec {
   id: string;

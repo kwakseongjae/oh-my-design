@@ -11,7 +11,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
-import { REFERENCE_COUNT } from "@/lib/catalog-count";
+import { REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -62,7 +62,7 @@ const SECTIONS: QASection[] = [
       },
       {
         q: "oh-my-design은 뭔가요?",
-        a: "oh-my-design(OmD)은 DESIGN.md 스펙 + 그 스펙대로 동작하는 skill·sub-agent 번들입니다. `npx oh-my-design-cli install-skills` 한 줄로 Claude Code·Codex·Cursor·OpenCode에 17개 skill + 16개 sub-agent를 설치합니다. /docs 페이지에서 전체 파이프라인을 볼 수 있습니다.",
+        a: "oh-my-design(OmD)은 DESIGN.md 스펙과 그 스펙을 실제 제품 작업에 적용하는 워크플로 번들입니다. `npx oh-my-design-cli@latest`를 실행하면 사용 중인 도구를 감지해 " + SKILL_COUNT + "개 제품 스킬, " + SUBAGENT_COUNT + "개 전문 역할 정의, " + REFERENCE_COUNT + "개 레퍼런스 중 각 채널이 지원하는 구성을 설치합니다. /docs 페이지에서 결과별 사용법과 전체 파이프라인을 볼 수 있습니다.",
       },
       {
         q: "일반 디자인 시스템과 뭐가 다른가요?",
@@ -84,11 +84,11 @@ const SECTIONS: QASection[] = [
     items: [
       {
         q: "어떻게 설치하나요?",
-        a: "프로젝트 루트에서 `npx oh-my-design-cli install-skills`만 실행하면 됩니다. skill·sub-agent·hook·" + REFERENCE_COUNT + " reference DESIGN.md가 모두 설치되며 외부 API 호출은 발생하지 않습니다. 설치 후 agent를 한 번 재시작하면 새 skill이 로드됩니다. 자세한 흐름은 /docs를 참조하세요.",
+        a: "프로젝트 루트에서 `npx oh-my-design-cli@latest`를 실행하고 감지된 코딩 에이전트 채널을 고르세요. 설치 중 외부 AI API 호출은 발생하지 않습니다. 이어서 `npx oh-my-design-cli@latest doctor`로 구성을 확인하고 에이전트를 한 번 재시작하면 됩니다. 자세한 흐름은 /docs를 참조하세요.",
       },
       {
         q: "Cursor에서도 됩니까?",
-        a: "네. `install-skills`가 `.cursor/rules/omd-design.mdc` shim을 함께 작성하므로 Cursor가 매 요청마다 DESIGN.md를 읽도록 강제됩니다. skill의 핵심 로직은 SKILL.md markdown이라 Cursor·Claude Code·Codex 모두 동일한 결과를 냅니다.",
+        a: "네. Cursor 채널은 `.cursor/rules/omd-design.mdc` 규칙 shim과 공유 레퍼런스 카탈로그를 설치해 DESIGN.md를 프로젝트 맥락으로 연결합니다. 다만 전문 에이전트 역할까지 설치하는 Claude Code·Codex와 채널 기능이 같다고 과장하지 않습니다. 설치 후 doctor가 Cursor 구성을 따로 검사합니다.",
       },
       {
         q: "무료인가요?",
@@ -201,7 +201,7 @@ export default function FaqPage() {
           </Link>
           <nav className="flex items-center gap-4 text-xs sm:text-sm">
             <Link
-              href="/docs"
+              href="/docs/en"
               className="text-muted-foreground hover:text-foreground"
             >
               Docs
@@ -242,7 +242,7 @@ export default function FaqPage() {
         </h1>
         <p className="text-muted-foreground mt-4 max-w-2xl leading-relaxed">
           오해되기 쉬운 질문을 한 곳에 모았습니다. 설치 흐름은{" "}
-          <Link href="/docs" className="underline underline-offset-4">
+          <Link href="/docs/en" className="underline underline-offset-4">
             /docs
           </Link>
           , {REFERENCE_COUNT} 레퍼런스는{" "}

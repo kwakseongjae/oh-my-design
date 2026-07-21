@@ -7,14 +7,35 @@ import {
   existsSync,
   mkdirSync,
   cpSync,
+  rmSync,
+  rmdirSync,
+  statSync,
+  renameSync,
 } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
 import { homedir } from 'node:os';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { detectInstalledAgents } from '../core/agent-detect.js';
+import {
+  CLAUDE_HOOK_PATHS,
+  isKnownLegacyHook,
+  isSelfConsistentManagedHook,
+  renderManagedHook,
+} from './hook-contract.js';
+import { unsafeManagedPath } from './install-path.js';
 
 export type SkillTarget = 'claude-code' | 'codex' | 'opencode' | 'cursor';
+
+const VALID_SKILL_TARGETS = ['claude-code', 'codex', 'opencode', 'cursor'] as const;
+const DEVELOPMENT_ONLY_SKILLS = new Set(['omd-lab-02-design-harness']);
+
+export function targetsAvailableForScope(
+  targets: SkillTarget[],
+  scope: 'project' | 'global',
+): SkillTarget[] {
+  return scope === 'global' ? targets.filter((target) => target !== 'cursor') : targets;
+}
 
 /** Channels that host SKILL.md trees. Cursor is NOT one — it consumes a
  *  `.cursor/rules` shim + the shared `.claude/data` catalog (issue #20). */
@@ -24,6 +45,10 @@ export interface InstallSkillsOptions {
   dir?: string;
   agents?: SkillTarget[];
   force?: boolean;
+  /** Refresh the project-scoped Claude hook bundle without granting permission
+   *  to overwrite any other unmarked user files. Intended for `omd doctor`
+   *  repairs when a hook is stale or locally modified. */
+  repairHooks?: boolean;
   /** Non-interactive: install all skills + all agents without TUI prompt.
    *  Default false → interactive multiselect when TTY available. */
   all?: boolean;
@@ -35,7 +60,8 @@ export interface InstallSkillsOptions {
   /** Minimal install: only the named skill files — skip sub-agents, data files,
    *  hooks, and settings.json. Ideal for shipping a single standalone skill. */
   skillsOnly?: boolean;
-  /** Install to the user-level dir (~/.claude/skills) instead of this project.
+  /** Install to each channel's user-level directory instead of this project
+   *  (`~/.claude`, `~/.agents` + `~/.codex`, or `~/.config/opencode`).
    *  Writes skills + sub-agents (+ data); never touches global hooks/settings.
    *  When unset and interactive, the TUI asks project-vs-global. */
   global?: boolean;
@@ -62,7 +88,11 @@ function listShippedSkills(packageRoot: string): string[] {
   const skillsDir = join(packageRoot, 'skills');
   if (!existsSync(skillsDir)) return [];
   return readdirSync(skillsDir)
-    .filter((name) => existsSync(join(skillsDir, name, 'SKILL.md')))
+    .filter(
+      (name) =>
+        !DEVELOPMENT_ONLY_SKILLS.has(name) &&
+        existsSync(join(skillsDir, name, 'SKILL.md')),
+    )
     .sort();
 }
 
@@ -102,7 +132,22 @@ function parseCanonicalAgent(packageRoot: string, filename: string): ParsedAgent
   const grab = (key: string): string => {
     const re = new RegExp(`^${key}:\\s*(.+)$`, 'm');
     const m = re.exec(fm);
-    return m ? m[1].trim().replace(/^["']|["']$/g, '') : '';
+    if (!m) return '';
+    const value = m[1].trim();
+    if (value.startsWith('"') && value.endsWith('"')) {
+      try {
+        const decoded: unknown = JSON.parse(value);
+        if (typeof decoded === 'string') return decoded;
+      } catch {
+        // Fall through to the conservative scalar handling below. The generated
+        // channel file will still be valid even if a hand-edited description has
+        // malformed escaping in the canonical YAML.
+      }
+    }
+    if (value.startsWith("'") && value.endsWith("'")) {
+      return value.slice(1, -1).replace(/''/g, "'");
+    }
+    return value;
   };
   return {
     name: grab('name') || filename.replace(/\.md$/, ''),
@@ -116,37 +161,6 @@ function parseCanonicalAgent(packageRoot: string, filename: string): ParsedAgent
   };
 }
 
-/** Map Claude tool names to Codex tool names (best-effort). */
-function claudeToolsToCodex(tools: string[]): string[] {
-  const m: Record<string, string> = {
-    Read: 'read_file',
-    Write: 'write_file',
-    Edit: 'edit_file',
-    Bash: 'shell',
-    Glob: 'search',
-    Grep: 'search',
-    WebFetch: 'web_fetch',
-    WebSearch: 'search',
-    Agent: 'spawn_agent',
-    TaskCreate: 'task',
-    TaskUpdate: 'task',
-    TaskList: 'task',
-  };
-  const out = new Set<string>();
-  for (const t of tools) out.add(m[t] ?? t.toLowerCase());
-  return [...out].sort();
-}
-
-/** Map Claude model alias to Codex/OpenAI model id (best-effort). */
-function claudeModelToCodex(model: string): string {
-  const m: Record<string, string> = {
-    haiku: 'gpt-4.1-mini',
-    sonnet: 'gpt-4.1',
-    opus: 'gpt-4.1',
-  };
-  return m[model.toLowerCase()] ?? 'gpt-4.1';
-}
-
 /** Render a canonical agent as a Claude Code subagent file.
  *  IMPORTANT: Claude Code's subagent parser requires YAML frontmatter (`---`)
  *  as the FIRST line of the file. Any preceding content (HTML comments, blank
@@ -156,10 +170,10 @@ function claudeModelToCodex(model: string): string {
 function renderClaudeAgent(a: ParsedAgent): string {
   const fm = [
     '---',
-    `name: ${a.name}`,
-    `description: ${a.description}`,
-    `tools: ${a.tools.join(', ')}`,
-    `model: ${a.model}`,
+    `name: ${JSON.stringify(a.name)}`,
+    `description: ${JSON.stringify(a.description)}`,
+    `tools: ${JSON.stringify(a.tools)}`,
+    `model: ${JSON.stringify(a.model)}`,
     `omd_managed: true`,
     '---',
     '',
@@ -167,34 +181,130 @@ function renderClaudeAgent(a: ParsedAgent): string {
   return fm + a.body;
 }
 
-/** Render a canonical agent as a Codex TOML file (declarative pointer). */
-function renderCodexAgent(a: ParsedAgent): string {
-  const tools = claudeToolsToCodex(a.tools);
-  const model = claudeModelToCodex(a.model);
-  const desc = a.description.replace(/"/g, '\\"');
+type NativeAgentChannel = 'codex' | 'opencode';
+
+/**
+ * Canonical roles are authored once and historically used Claude Code paths and
+ * tool names.  A generated non-Claude role must be executable using only the
+ * channel it was installed for: otherwise a perfectly healthy Codex/OpenCode
+ * install tells the agent to read a sibling `.claude/skills` tree that does not
+ * exist in a single-channel project.
+ */
+function nativeAgentBody(
+  body: string,
+  channel: NativeAgentChannel,
+  scope: 'project' | 'global',
+): string {
+  const skillRoot = channel === 'codex'
+    ? scope === 'global' ? '~/.agents/skills' : '.agents/skills'
+    : scope === 'global' ? '~/.config/opencode/skills' : '.opencode/skills';
+
+  const nativeBody = body
+    .replace(/(?:~\/)?\.claude\/skills\//g, `${skillRoot}/`)
+    .replace(/You are spawned as a Claude Code subagent/g, 'You run as a host-managed subagent')
+    .replace(/Claude Code subagent/g, 'host-managed subagent')
+    .replace(/the Agent tool/g, "the host's native sub-agent mechanism")
+    .replace(/Agent tool/g, 'host-native sub-agent mechanism')
+    .replace(/AskUserQuestion-compatible/g, 'host question-interface compatible')
+    .replace(
+      /launcher calls AskUserQuestion\(questions_file\)/g,
+      'launcher presents questions from `questions_file` to the user',
+    )
+    .replace(/launcher calls AskUserQuestion/g, 'launcher presents the questions to the user')
+    .replace(/no AskUserQuestion/g, 'without direct user-question tools');
+  return channel === 'opencode'
+    ? nativeBody.replace(/\bomd:([a-z0-9-]+)/g, 'omd-$1')
+    : nativeBody;
+}
+
+function nativeSkillRoot(
+  channel: NativeAgentChannel,
+  scope: 'project' | 'global',
+): string {
+  if (channel === 'codex') {
+    return scope === 'global' ? '~/.agents/skills' : '.agents/skills';
+  }
+  return scope === 'global' ? '~/.config/opencode/skills' : '.opencode/skills';
+}
+
+/** OpenCode uses Markdown agents whose id is the filename. */
+function renderOpenCodeAgent(
+  a: ParsedAgent,
+  scope: 'project' | 'global',
+  dataRoot: string,
+): string {
+  const skillRoot = nativeSkillRoot('opencode', scope);
   return [
-    `[agent]`,
-    `name = "${a.name}"`,
-    `description = "${desc}"`,
-    `model = "${model}"`,
-    `max_threads = 1`,
-    `allowed_tools = [${tools.map((t) => `"${t}"`).join(', ')}]`,
+    '---',
+    `description: ${JSON.stringify(a.description)}`,
+    'mode: subagent',
+    '---',
     '',
-    `instructions = """`,
-    `Source of truth: agents/${a.name}.md (canonical). The full role spec is`,
-    `mirrored to .claude/agents/${a.name}.md when installed for Claude Code.`,
-    `Follow that spec verbatim regardless of channel.`,
+    '## Installed role runtime contract',
     '',
-    `Codex notes:`,
-    `- Spawn sub-agents via spawn_agent with names matching .codex/agents/<name>.toml`,
-    `- Use shell to invoke CLI helpers (omd init prepare, omd remember, git apply, npx axe-core, npx lighthouse)`,
-    `- All artifacts go inside .omd/runs/run-<latest>/ (or skills/omd-lab-02-design-harness/runs/<lab-version>-...)`,
-    `"""`,
+    `- Resolve referenced OmD skills from \`${skillRoot}/<skill>/SKILL.md\`.`,
+    `- Resolve the installed offline catalog from \`${dataRoot}\`.`,
+    "- Use OpenCode's native sub-agent mechanism for specialist handoffs.",
+    '',
+    nativeAgentBody(a.body, 'opencode', scope).trimEnd(),
+    '',
+    '<!-- omd:installed-agent — generated from the canonical OmD role. -->',
     '',
   ].join('\n');
 }
 
-function planForTarget(projectRoot: string, target: SkillChannel): InstallPlan {
+/**
+ * Canonical agents predate the skill-only CLI and a few bodies still describe
+ * retired shell helpers. Codex receives the full role body, but those obsolete
+ * invocations must not be executable instructions in the generated agent.
+ */
+function codexSafeAgentBody(body: string): string {
+  return body
+    .replace(/`omd init prepare`/g, '`omd:init` skill flow')
+    .replace(/^omd remember .*$/gm, 'Use the `omd:remember` skill directly with the same finding and context.')
+    .replace(/`omd remember [^`]+`/g, 'the `omd:remember` skill with the same correction details')
+    .replace(/\bomd remember\b/g, 'omd:remember skill');
+}
+
+/** Render a canonical agent as a self-contained Codex TOML definition. */
+function renderCodexAgent(
+  a: ParsedAgent,
+  scope: 'project' | 'global',
+  dataRoot: string,
+): string {
+  const name = a.name.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  const desc = a.description.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  const skillRoot = nativeSkillRoot('codex', scope);
+  const instructions = [
+    '## Codex runtime contract',
+    '',
+    '- Execute the OmD behavior directly from these instructions and the installed skills.',
+    `- Resolve referenced OmD skills from \`${skillRoot}/<skill>/SKILL.md\`.`,
+    `- Resolve the installed offline catalog from \`${dataRoot}\`.`,
+    "- Use Codex's native sub-agent mechanism for specialist handoffs.",
+    '- The OmD CLI exposes installation and diagnostics only. Do not invent or invoke removed helper subcommands.',
+    '',
+    codexSafeAgentBody(nativeAgentBody(a.body, 'codex', scope)).trimEnd(),
+  ].join('\n');
+  if (instructions.includes("'''")) {
+    throw new Error(`agents/${a.name}.md: cannot encode triple single quote in Codex TOML`);
+  }
+  return [
+    `name = "${name}"`,
+    `description = "${desc}"`,
+    '',
+    `developer_instructions = '''`,
+    instructions,
+    `'''`,
+    '',
+  ].join('\n');
+}
+
+function planForTarget(
+  projectRoot: string,
+  target: SkillChannel,
+  scope: 'project' | 'global',
+): InstallPlan {
   switch (target) {
     case 'claude-code':
       return {
@@ -212,12 +322,13 @@ function planForTarget(projectRoot: string, target: SkillChannel): InstallPlan {
         layout: 'folder',
       };
     case 'opencode':
-      // OpenCode loads `.opencode/skills/<name>/SKILL.md` (opencode.ai/docs/skills)
-      // as folder skills — the old flat `.opencode/agents/<name>.md` couldn't host
-      // a skill's scripts/references.
+      // OpenCode loads project skills from `.opencode/skills/<name>/SKILL.md`
+      // and global skills from `~/.config/opencode/skills/<name>/SKILL.md`.
       return {
         target,
-        destDir: join(projectRoot, '.opencode', 'skills'),
+        destDir: scope === 'global'
+          ? join(projectRoot, '.config', 'opencode', 'skills')
+          : join(projectRoot, '.opencode', 'skills'),
         layout: 'folder',
       };
   }
@@ -228,16 +339,17 @@ function planForTarget(projectRoot: string, target: SkillChannel): InstallPlan {
  * (catalog JSONs, reference DESIGN.md catalog, ctx-prime helper scripts).
  * Single lookup table replacing the repeated if-else/ternary chains (issue #28).
  * `null` = the channel hosts no data dir of its own:
- *   - opencode ships skills only (no data channel yet);
  *   - cursor reads the SHARED `.claude/data` path (issue #20) — resolved by
  *     `dataDirFor()` below, which also applies the claude-code dedup guard.
- *     (Helper scripts intentionally stay claude-code/codex only — a cursor-only
+ *     (Helper scripts intentionally stay skill-channel-only — a cursor-only
  *     install gets the catalog + JSONs but no ctx-prime, matching the shim's scope.)
  */
-const CHANNEL_DATA_DIRS: Record<SkillTarget, '.claude' | '.codex' | null> = {
+type DataChannelDir = '.claude' | '.codex' | '.opencode' | '.config/opencode';
+
+const CHANNEL_DATA_DIRS: Record<SkillTarget, DataChannelDir | null> = {
   'claude-code': '.claude',
   codex: '.codex',
-  opencode: null,
+  opencode: '.opencode',
   cursor: null,
 };
 
@@ -250,11 +362,20 @@ const CHANNEL_DATA_DIRS: Record<SkillTarget, '.claude' | '.codex' | null> = {
 export function dataDirFor(
   target: SkillTarget,
   targets: SkillTarget[]
-): '.claude' | '.codex' | null {
+): DataChannelDir | null {
   if (target === 'cursor') {
     return targets.includes('claude-code') ? null : '.claude';
   }
   return CHANNEL_DATA_DIRS[target];
+}
+
+function dataDirForScope(
+  target: SkillTarget,
+  targets: SkillTarget[],
+  scope: 'project' | 'global',
+): DataChannelDir | null {
+  if (scope === 'global' && target === 'opencode') return '.config/opencode';
+  return dataDirFor(target, targets);
 }
 
 const MANAGED_HEADER =
@@ -296,15 +417,110 @@ function isManagedSkillFile(content: string): boolean {
   return head.includes(MANAGED_MARKER_SUBSTR);
 }
 
+function withGlobalDataHint(src: string, globalDataRoot: string | null): string {
+  if (!globalDataRoot) return src;
+  const hint = [
+    `> **Installed global data root (highest priority):** \`${globalDataRoot}\`.`,
+    '> Resolve catalog JSON, references, and helper scripts there before project-relative fallbacks.',
+    '',
+  ].join('\n');
+  const fm = /^(---\r?\n[\s\S]*?\r?\n---\r?\n)([\s\S]*)$/.exec(src);
+  return fm ? fm[1] + hint + fm[2] : hint + src;
+}
+
+function renderSkillForChannel(
+  src: string,
+  folderName: string,
+  target: SkillChannel,
+): string {
+  // Canonical skill sources may use either the repository's historical
+  // namespaced form (`omd:apply`) or portable Agent Skills hyphen-case
+  // (`omd-apply`). Always derive the installed name from the folder so every
+  // channel gets the contract it actually accepts.
+  const installedName = target === 'opencode'
+    ? folderName
+    : folderName.replace(/^omd-/, 'omd:');
+  const rendered = src.replace(
+    /^name:\s*[^\r\n]+$/m,
+    `name: ${installedName}`,
+  );
+  return target === 'opencode'
+    ? rendered.replace(/\bomd:([a-z0-9][a-z0-9-]*)\b/g, 'omd-$1')
+    : rendered;
+}
+
 interface InstallResult {
   target: SkillTarget;
   skill: string;
   destPath: string;
-  status: 'created' | 'updated' | 'unchanged' | 'skipped-drift' | 'skipped-incompat';
+  status: 'created' | 'updated' | 'removed' | 'unchanged' | 'skipped-drift' | 'skipped-incompat';
+  reason?: 'unsafe-path';
+}
+
+/**
+ * Codex used `.codex/skills` before the official cross-agent skill path settled
+ * on `.agents/skills`. Current Codex still scans the legacy tree, so an old
+ * marker-first SKILL.md can produce loader errors even after the new copy is
+ * healthy. Remove only OmD-owned legacy entrypoints; preserve user files and
+ * every sidecar in the directory.
+ */
+function removeManagedLegacyCodexSkills(root: string): InstallResult[] {
+  const legacyRoot = join(root, '.codex', 'skills');
+  if (!existsSync(legacyRoot)) return [];
+  const results: InstallResult[] = [];
+  for (const entry of readdirSync(legacyRoot, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const skillPath = join(legacyRoot, entry.name, 'SKILL.md');
+    if (!existsSync(skillPath)) continue;
+    const content = readFileSync(skillPath, 'utf8');
+    if (!isManagedSkillFile(content)) continue;
+    rmSync(skillPath, { force: true });
+    const dir = dirname(skillPath);
+    if (readdirSync(dir).length === 0) rmdirSync(dir);
+    results.push({
+      target: 'codex',
+      skill: `legacy-skill:${entry.name}`,
+      destPath: skillPath,
+      status: 'removed',
+    });
+  }
+  return results;
 }
 
 // Skill-tree entries that must never be installed (runtime state, caches, OS cruft).
 const IGNORED_SKILL_ENTRIES = new Set(['.runtime', '__pycache__', '.DS_Store']);
+
+function isIgnoredSkillTreeEntry(name: string): boolean {
+  return IGNORED_SKILL_ENTRIES.has(name) || name.endsWith('.pyc');
+}
+
+/** Compare only package-owned entries. Destination-only sidecars are user
+ * content and deliberately do not make an otherwise current install dirty. */
+function shippedSkillTreeMatches(sourceDir: string, destinationDir: string): boolean {
+  if (!existsSync(destinationDir)) return false;
+  for (const entry of readdirSync(sourceDir, { withFileTypes: true })) {
+    if (entry.name === 'SKILL.md' || isIgnoredSkillTreeEntry(entry.name)) continue;
+    const source = join(sourceDir, entry.name);
+    const destination = join(destinationDir, entry.name);
+    if (!existsSync(destination)) return false;
+    try {
+      const destinationStat = statSync(destination);
+      if (entry.isDirectory()) {
+        if (!destinationStat.isDirectory() || !shippedSkillTreeMatches(source, destination)) {
+          return false;
+        }
+      } else if (
+        !destinationStat.isFile() ||
+        !readFileSync(source).equals(readFileSync(destination))
+      ) {
+        return false;
+      }
+    } catch {
+      return false;
+    }
+  }
+  return true;
+}
 
 /**
  * A skill may restrict itself to specific agent channels via a frontmatter line
@@ -342,14 +558,23 @@ function skillSupportedChannels(packageRoot: string, skill: string): SkillChanne
 
 function installOne(
   packageRoot: string,
+  installRoot: string,
   plan: InstallPlan,
   skill: string,
-  force: boolean
+  force: boolean,
+  globalDataRoot: string | null,
 ): InstallResult {
   const skillDir = join(packageRoot, 'skills', skill);
   const src = readFileSync(join(skillDir, 'SKILL.md'), 'utf8');
+  // Project installs keep the canonical cross-channel fallback order intact.
+  // Global installs need one absolute, machine-local root because their skills
+  // execute from arbitrary project working directories.
+  const channelSrc = withGlobalDataHint(
+    renderSkillForChannel(src, skill, plan.target),
+    globalDataRoot,
+  );
   // Marker goes AFTER frontmatter so `---` stays line 1 (issue #17).
-  const managed = withManagedMarker(src);
+  const managed = withManagedMarker(channelSrc);
 
   // Respect a skill's declared channel restriction (frontmatter `x-omd-channels:`).
   const channels = parseSkillChannels(src);
@@ -368,8 +593,8 @@ function installOne(
   );
   const isMultiFile = extras.length > 0;
 
-  // Flat channels (codex/opencode) store a skill as a single <skill>.md and cannot
-  // host a multi-file skill's scripts/references — such skills are claude-code only.
+  // Retained for compatibility with any future flat-layout channel. All current
+  // skill channels use folder layout and therefore keep scripts/references.
   if (plan.layout !== 'folder' && isMultiFile) {
     return {
       target: plan.target,
@@ -384,13 +609,24 @@ function installOne(
       ? join(plan.destDir, skill, 'SKILL.md')
       : join(plan.destDir, skill + '.md');
 
+  if (unsafeManagedPath(installRoot, destPath)) {
+    return { target: plan.target, skill, destPath, status: 'skipped-drift', reason: 'unsafe-path' };
+  }
+
   const exists = existsSync(destPath);
   const existing = exists ? readFileSync(destPath, 'utf8') : '';
 
-  // Drift protection guards the user-editable SKILL.md. Single-file skills can
-  // short-circuit on "unchanged"; multi-file skills always re-sync their tree.
-  if (exists && existing === managed && !isMultiFile) {
-    return { target: plan.target, skill, destPath, status: 'unchanged' };
+  // Drift protection guards the user-editable SKILL.md. Multi-file skills also
+  // compare every shipped sidecar, while ignoring destination-only user files.
+  // This keeps a second install genuinely idempotent without hiding stale tools.
+  if (exists && existing === managed) {
+    const extrasCurrent = !isMultiFile || shippedSkillTreeMatches(
+      skillDir,
+      join(plan.destDir, skill),
+    );
+    if (extrasCurrent) {
+      return { target: plan.target, skill, destPath, status: 'unchanged' };
+    }
   }
   // Drift = a file we didn't write. Detect the marker anywhere in the head
   // (new after-frontmatter position OR legacy line-1 position) so pre-v1.7.2
@@ -425,7 +661,7 @@ function installOne(
 function installHookFile(
   packageRoot: string,
   projectRoot: string,
-  filename: string,
+  filename: (typeof CLAUDE_HOOK_PATHS)[number],
   force: boolean
 ): InstallResult {
   const target: SkillTarget = 'claude-code';
@@ -436,26 +672,131 @@ function installHookFile(
   if (!existsSync(srcPath)) {
     return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
   }
+  if (unsafeManagedPath(projectRoot, destPath)) {
+    return { target, skill: skillLabel, destPath, status: 'skipped-drift', reason: 'unsafe-path' };
+  }
   const src = readFileSync(srcPath, 'utf8');
+  const managed = renderManagedHook(src);
   const exists = existsSync(destPath);
   const existing = exists ? readFileSync(destPath, 'utf8') : '';
-  if (exists && existing === src) {
+  if (exists && existing === managed) {
     return { target, skill: skillLabel, destPath, status: 'unchanged' };
   }
-  if (exists && !force) {
+  if (
+    exists &&
+    !force &&
+    !isSelfConsistentManagedHook(existing) &&
+    !isKnownLegacyHook(filename, existing)
+  ) {
     return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
   }
   mkdirSync(dirname(destPath), { recursive: true });
-  writeFileSync(destPath, src);
+  const tempPath = `${destPath}.omd-${process.pid}-${Date.now()}.tmp`;
+  try {
+    writeFileSync(tempPath, managed, { encoding: 'utf8', flag: 'wx' });
+    renameSync(tempPath, destPath);
+  } catch (error) {
+    rmSync(tempPath, { force: true });
+    throw error;
+  }
   return { target, skill: skillLabel, destPath, status: exists ? 'updated' : 'created' };
 }
 
+type JsonObject = Record<string, unknown>;
+
+function isJsonObject(value: unknown): value is JsonObject {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function parseJsonObject(value: string): JsonObject | null {
+  try {
+    const parsed: unknown = JSON.parse(value);
+    return isJsonObject(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function isOmdHook(value: unknown): boolean {
+  if (!isJsonObject(value) || typeof value.command !== 'string') return false;
+  const command = value.command;
+  const ownedHookPaths = [
+    '${CLAUDE_PROJECT_DIR}/.claude/hooks/skill-activation.cjs',
+    '${CLAUDE_PROJECT_DIR}/.claude/hooks/session-state-loader.cjs',
+    '${CLAUDE_PROJECT_DIR}/.claude/hooks/post-edit-watch.cjs',
+    '${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-foldin.cjs',
+    // Pre-v1.8 installs briefly registered this repository-only helper.
+    '${CLAUDE_PROJECT_DIR}/scripts/context_restore.sh',
+  ];
+  return ownedHookPaths.some((path) => command.includes(path));
+}
+
+const REPOSITORY_ONLY_CONTEXT_RESTORE_COMMAND =
+  'bash ${CLAUDE_PROJECT_DIR}/scripts/context_restore.sh';
+
 /**
- * Install / merge .claude/settings.json. We MERGE hooks (don't clobber user
- * customizations) by checking if the omd-managed `_doc` field is present.
- * Without --force, if a user-edited settings.json exists (no _doc field),
- * we skip with `skipped-drift`.
+ * This hook belongs to the oh-my-design repository continuity protocol. The
+ * npm package does not ship scripts/context_restore.sh, so it must never be
+ * copied into a consumer project from the repository's source settings.
  */
+function isRepositoryOnlySourceHook(value: unknown): boolean {
+  return isJsonObject(value) &&
+    typeof value.command === 'string' &&
+    value.command === REPOSITORY_ONLY_CONTEXT_RESTORE_COMMAND;
+}
+
+function stripHookEntries(
+  groups: unknown[],
+  shouldStrip: (hook: unknown) => boolean,
+): unknown[] {
+  const retained: unknown[] = [];
+  for (const group of groups) {
+    if (!isJsonObject(group) || !Array.isArray(group.hooks)) {
+      retained.push(group);
+      continue;
+    }
+    const hooks = group.hooks.filter((hook) => !shouldStrip(hook));
+    if (hooks.length > 0) retained.push({ ...group, hooks });
+  }
+  return retained;
+}
+
+/** Remove only OmD command entries while preserving user hooks in the same group. */
+function stripInstalledOmdHooks(groups: unknown[]): unknown[] {
+  return stripHookEntries(groups, isOmdHook);
+}
+
+/** Remove repository-only hooks from the package settings template. */
+function stripRepositoryOnlySourceHooks(source: JsonObject): JsonObject {
+  if (!isJsonObject(source.hooks)) return source;
+  const hooks: JsonObject = {};
+  for (const [event, groups] of Object.entries(source.hooks)) {
+    hooks[event] = Array.isArray(groups)
+      ? stripHookEntries(groups, isRepositoryOnlySourceHook)
+      : groups;
+  }
+  return { ...source, hooks };
+}
+
+/** Merge OmD hook groups into a user's settings without replacing other keys/hooks. */
+function mergeClaudeSettings(existing: JsonObject, source: JsonObject): JsonObject {
+  const installableSource = stripRepositoryOnlySourceHooks(source);
+  const existingHooks = isJsonObject(existing.hooks) ? existing.hooks : {};
+  const sourceHooks = isJsonObject(installableSource.hooks) ? installableSource.hooks : {};
+  const mergedHooks: JsonObject = { ...existingHooks };
+
+  for (const event of new Set([...Object.keys(existingHooks), ...Object.keys(sourceHooks)])) {
+    const userGroups = Array.isArray(existingHooks[event]) ? existingHooks[event] : [];
+    const omdGroups = Array.isArray(sourceHooks[event]) ? sourceHooks[event] : [];
+    mergedHooks[event] = [...stripInstalledOmdHooks(userGroups), ...omdGroups];
+  }
+
+  // Existing user settings win for every non-hook key. The source supplies
+  // schema/metadata only when the user did not already define them.
+  return { ...installableSource, ...existing, hooks: mergedHooks };
+}
+
+/** Install .claude/settings.json via a structural, user-preserving hook merge. */
 function installSettingsJson(
   packageRoot: string,
   projectRoot: string,
@@ -468,27 +809,29 @@ function installSettingsJson(
   if (!existsSync(srcPath)) {
     return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
   }
+  if (unsafeManagedPath(projectRoot, destPath)) {
+    return { target, skill: skillLabel, destPath, status: 'skipped-drift', reason: 'unsafe-path' };
+  }
   const src = readFileSync(srcPath, 'utf8');
+  const sourceSettings = parseJsonObject(src);
+  if (!sourceSettings) {
+    return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
+  }
   const exists = existsSync(destPath);
   const existing = exists ? readFileSync(destPath, 'utf8') : '';
-  if (exists && existing === src) {
+  const existingSettings = exists ? parseJsonObject(existing) : {};
+  if (exists && !existingSettings && !force) {
+    // Invalid JSON cannot be merged safely. --force remains the explicit escape hatch.
+    return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
+  }
+  const merged = existingSettings
+    ? mergeClaudeSettings(existingSettings, sourceSettings)
+    : stripRepositoryOnlySourceHooks(sourceSettings);
+  if (exists && existingSettings && JSON.stringify(existingSettings) === JSON.stringify(merged)) {
     return { target, skill: skillLabel, destPath, status: 'unchanged' };
   }
-  if (exists && !force) {
-    // Check if it's the omd-managed version
-    try {
-      const parsed = JSON.parse(existing);
-      if (typeof parsed._doc === 'string' && parsed._doc.includes('OmD')) {
-        // managed — overwrite
-      } else {
-        return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
-      }
-    } catch {
-      return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
-    }
-  }
   mkdirSync(dirname(destPath), { recursive: true });
-  writeFileSync(destPath, src);
+  writeFileSync(destPath, JSON.stringify(merged, null, 2) + '\n', 'utf8');
   return { target, skill: skillLabel, destPath, status: exists ? 'updated' : 'created' };
 }
 
@@ -502,7 +845,7 @@ function installDataFile(
   projectRoot: string,
   channelDir: string,
   dataFilename: string,
-  force: boolean,
+  _force: boolean,
   // Cursor reuses the `.claude` data dir (single catalog path) — callers pass
   // an explicit target so the results table reports the real channel.
   target: SkillTarget
@@ -515,6 +858,9 @@ function installDataFile(
   if (!existsSync(srcPath)) {
     return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
   }
+  if (unsafeManagedPath(projectRoot, destPath)) {
+    return { target, skill: skillLabel, destPath, status: 'skipped-drift', reason: 'unsafe-path' };
+  }
 
   const src = readFileSync(srcPath, 'utf8');
   const exists = existsSync(destPath);
@@ -524,11 +870,9 @@ function installDataFile(
   if (exists && existing === src) {
     return { target, skill: skillLabel, destPath, status: 'unchanged' };
   }
-  if (exists && !force) {
-    // Honor user customization unless --force
-    return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
-  }
-
+  // This directory is a package-managed read-only cache, not a customization
+  // surface. Refresh stale catalog metadata on every upgrade; otherwise the
+  // skill and copied reference set can silently disagree until --force is used.
   mkdirSync(dirname(destPath), { recursive: true });
   writeFileSync(destPath, src, 'utf8');
   return {
@@ -548,22 +892,45 @@ function installDataFile(
 function installAgentFile(
   packageRoot: string,
   projectRoot: string,
-  channel: 'claude' | 'codex',
+  channel: 'claude' | 'codex' | 'opencode',
   filename: string,
-  force: boolean
+  force: boolean,
+  scope: 'project' | 'global',
 ): InstallResult {
-  const target: SkillTarget = channel === 'claude' ? 'claude-code' : 'codex';
+  const target: SkillTarget = channel === 'claude'
+    ? 'claude-code'
+    : channel === 'codex'
+      ? 'codex'
+      : 'opencode';
   const skillLabel = `agent:${filename}`;
 
   const parsed = parseCanonicalAgent(packageRoot, filename);
-  const rendered =
-    channel === 'claude' ? renderClaudeAgent(parsed) : renderCodexAgent(parsed);
+  const nativeDataRoot = scope === 'global'
+    ? channel === 'codex'
+      ? join(projectRoot, '.codex', 'data')
+      : join(projectRoot, '.config', 'opencode', 'data')
+    : channel === 'codex'
+      ? '.codex/data'
+      : '.opencode/data';
+  const rendered = channel === 'claude'
+    ? renderClaudeAgent(parsed)
+    : channel === 'codex'
+      ? renderCodexAgent(parsed, scope, nativeDataRoot)
+      : renderOpenCodeAgent(parsed, scope, nativeDataRoot);
 
-  const destFilename =
-    channel === 'claude' ? filename : filename.replace(/\.md$/, '.toml');
+  const destFilename = channel === 'codex'
+    ? filename.replace(/\.md$/, '.toml')
+    : filename;
+  const channelRoot = channel === 'claude'
+    ? '.claude'
+    : channel === 'codex'
+      ? '.codex'
+      : scope === 'global'
+        ? join('.config', 'opencode')
+        : '.opencode';
   const destPath = join(
     projectRoot,
-    channel === 'claude' ? '.claude' : '.codex',
+    channelRoot,
     'agents',
     destFilename
   );
@@ -572,13 +939,16 @@ function installAgentFile(
   // frontmatter (rendered above) — no HTML comment can precede `---` or the
   // subagent loader rejects the file.
   // For Codex: TOML allows leading comments, so `# omd:installed-agent ...` is fine.
-  const managed =
-    channel === 'claude'
+  const managed = channel === 'claude' || channel === 'opencode'
       ? rendered
       : '# omd:installed-agent — generated from agents/' +
         filename +
         ' by `omd install-skills`. Do not edit; rerun the command to refresh.\n\n' +
         rendered;
+
+  if (unsafeManagedPath(projectRoot, destPath)) {
+    return { target, skill: skillLabel, destPath, status: 'skipped-drift', reason: 'unsafe-path' };
+  }
 
   const exists = existsSync(destPath);
   const existing = exists ? readFileSync(destPath, 'utf8') : '';
@@ -590,10 +960,11 @@ function installAgentFile(
   // Drift detection sentinels:
   //   Claude — look for `omd_managed: true` line inside frontmatter
   //   Codex  — look for `# omd:installed-agent` comment
-  const isManaged =
-    channel === 'claude'
-      ? /\nomd_managed:\s*true\b/.test(existing)
-      : existing.startsWith('# omd:installed-agent');
+  const isManaged = channel === 'claude'
+    ? /\nomd_managed:\s*true\b/.test(existing)
+    : channel === 'codex'
+      ? existing.startsWith('# omd:installed-agent')
+      : existing.includes('<!-- omd:installed-agent');
 
   if (exists && !isManaged && !force) {
     return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
@@ -616,7 +987,9 @@ function installAgentFile(
  *
  * Only DESIGN.md per id is copied (not _promo.json/_research.md/screenshots) to
  * keep the install lean. Idempotent: skips ids whose DESIGN.md already matches.
- * Returns the number of catalog files written (created or updated).
+ * Returns the number of catalog entries available at the destination after
+ * the sync (including already-current files), so an idempotent upgrade never
+ * reports the misleading "0 catalog refs installed".
  */
 function installReferenceCatalog(
   packageRoot: string,
@@ -627,23 +1000,95 @@ function installReferenceCatalog(
   const srcRoot = join(packageRoot, 'web', 'references');
   if (!existsSync(srcRoot)) return 0;
   const destRoot = join(installRoot, channelDir, 'data', 'references');
+  if (unsafeManagedPath(installRoot, destRoot)) return 0;
+  const manifestPath = join(destRoot, '.omd-managed.json');
 
-  let written = 0;
+  let previouslyManaged = new Set<string>();
+  let previousHashes = new Map<string, string>();
+  if (existsSync(manifestPath)) {
+    try {
+      const parsed: unknown = JSON.parse(readFileSync(manifestPath, 'utf8'));
+      if (
+        isJsonObject(parsed) &&
+        Array.isArray(parsed.managedIds) &&
+        parsed.managedIds.every((id) => typeof id === 'string')
+      ) {
+        previouslyManaged = new Set(parsed.managedIds as string[]);
+        if (isJsonObject(parsed.managedDesignHashes)) {
+          previousHashes = new Map(
+            Object.entries(parsed.managedDesignHashes)
+              .filter((entry): entry is [string, string] => typeof entry[1] === 'string'),
+          );
+        }
+      }
+    } catch {
+      // A corrupt/missing manifest must fail safe: refresh known canonical IDs,
+      // but never infer ownership of unknown destination directories.
+    }
+  }
+
+  let available = 0;
+  const sourceIds = new Set<string>();
+  const managedDesignHashes: Record<string, string> = {};
   for (const id of readdirSync(srcRoot)) {
     const srcDesign = join(srcRoot, id, 'DESIGN.md');
     if (!existsSync(srcDesign)) continue;
+    sourceIds.add(id);
+    available++;
     const destDesign = join(destRoot, id, 'DESIGN.md');
     const src = readFileSync(srcDesign, 'utf8');
+    const srcHash = createHash('sha256').update(src).digest('hex');
     if (existsSync(destDesign)) {
       const existing = readFileSync(destDesign, 'utf8');
-      if (existing === src) continue;
-      if (!force) continue; // honor user edits unless --force
+      if (existing === src) {
+        managedDesignHashes[id] = srcHash;
+        continue;
+      }
+      const previousHash = previousHashes.get(id);
+      const unchangedSinceLastInstall = previousHash !== undefined &&
+        createHash('sha256').update(existing).digest('hex') === previousHash;
+      if (!force && !unchangedSinceLastInstall) {
+        // Same-id files can be user-curated references. Without a matching
+        // installer hash, preserve them and stop claiming ownership.
+        continue;
+      }
     }
     mkdirSync(dirname(destDesign), { recursive: true });
     writeFileSync(destDesign, src, 'utf8');
-    written++;
+    managedDesignHashes[id] = srcHash;
   }
-  return written;
+  // Prune only IDs that a prior OmD manifest explicitly claimed. Unknown IDs
+  // can be local/private references and must survive an installer upgrade.
+  if (existsSync(destRoot)) {
+    for (const id of readdirSync(destRoot)) {
+      if (previouslyManaged.has(id) && !sourceIds.has(id)) {
+        const retiredRoot = join(destRoot, id);
+        const retiredDesign = join(retiredRoot, 'DESIGN.md');
+        const previousHash = previousHashes.get(id);
+        const safeToRemove = existsSync(retiredDesign) && (
+          force || (
+            previousHash !== undefined &&
+            createHash('sha256').update(readFileSync(retiredDesign, 'utf8')).digest('hex') === previousHash
+          )
+        );
+        if (safeToRemove) rmSync(retiredDesign, { force: true });
+        if (existsSync(retiredRoot) && readdirSync(retiredRoot).length === 0) {
+          rmdirSync(retiredRoot);
+        }
+      }
+    }
+  }
+  mkdirSync(destRoot, { recursive: true });
+  writeFileSync(
+    manifestPath,
+    JSON.stringify({
+      schemaVersion: 2,
+      managedIds: Object.keys(managedDesignHashes).sort(),
+      managedDesignHashes,
+    }, null, 2) + '\n',
+    'utf8',
+  );
+  return available;
 }
 
 /**
@@ -660,6 +1105,15 @@ const CURSOR_RULE_BODY = [
   'Pending preference corrections: `@.omd/preferences.md`.',
   '',
   'Precedence: DESIGN.md > preferences.md > framework defaults.',
+  '',
+  'If DESIGN.md is missing and the user asks to establish a design system:',
+  '1. Inspect the existing product, routes, and constraints.',
+  '2. Read `.claude/data/reference-fingerprints.json` and only recommend ids present there.',
+  '3. Load the chosen `.claude/data/references/<id>/DESIGN.md`, explain the project-specific delta, and ask before writing root DESIGN.md.',
+  '4. Unknown reference fields stay absent; never substitute a system font, generic component, or guessed token as a brand fact.',
+  '',
+  'When applying DESIGN.md, preserve existing behavior and user copy unless asked, then verify the actual product route and accessibility before reporting completion.',
+  'Cursor receives this rule and the catalog, not OmD named skills or sub-agents; execute the contract directly from natural-language requests.',
 ].join('\n');
 
 function renderCursorRule(): string {
@@ -693,6 +1147,10 @@ function installCursorRule(installRoot: string, force: boolean): InstallResult {
   const destPath = join(installRoot, '.cursor', 'rules', 'omd-design.mdc');
   const rendered = renderCursorRule();
 
+  if (unsafeManagedPath(installRoot, destPath)) {
+    return { target, skill: skillLabel, destPath, status: 'skipped-drift', reason: 'unsafe-path' };
+  }
+
   const exists = existsSync(destPath);
   const existing = exists ? readFileSync(destPath, 'utf8') : '';
   if (exists && existing === rendered) {
@@ -711,6 +1169,7 @@ function installCursorRule(installRoot: string, force: boolean): InstallResult {
 const STATUS_LABEL: Record<InstallResult['status'], string> = {
   created: pc.green('created'),
   updated: pc.cyan('updated'),
+  removed: pc.magenta('removed'),
   unchanged: pc.dim('unchanged'),
   'skipped-drift': pc.yellow('skipped'),
   'skipped-incompat': pc.yellow('skipped (claude-code only)'),
@@ -732,6 +1191,7 @@ function autoDetectTargets(projectRoot: string): SkillTarget[] {
     // even without explicit signal. Idempotent so cost is low.
     return ['claude-code', 'codex', 'opencode'];
   }
+
   return targets;
 }
 
@@ -752,10 +1212,55 @@ export async function runInstallSkills(
   }
   const allAgents = listCanonicalAgents(packageRoot);
 
+  if (opts.agents) {
+    const invalidTargets = (opts.agents as string[]).filter(
+      (target) => !(VALID_SKILL_TARGETS as readonly string[]).includes(target),
+    );
+    if (invalidTargets.length > 0) {
+      console.error(
+        pc.red(
+          `omd install-skills: invalid agent channel(s): ${invalidTargets.join(', ')}. ` +
+          `Choose from ${VALID_SKILL_TARGETS.join(', ')}.`,
+        ),
+      );
+      return 1;
+    }
+    if (opts.agents.length === 0) {
+      console.error(pc.red('omd install-skills: no agent channel selected'));
+      return 1;
+    }
+  }
+
+  if (opts.skillsFilter) {
+    const unknownSkills = opts.skillsFilter.filter((skill) => !allSkills.includes(skill));
+    if (unknownSkills.length > 0) {
+      console.error(
+        pc.red(`omd install-skills: unknown skill(s): ${unknownSkills.join(', ')}`),
+      );
+      return 1;
+    }
+    if (opts.skillsFilter.length === 0) {
+      console.error(pc.red('omd install-skills: no skill selected'));
+      return 1;
+    }
+  }
+
+  if (opts.agentsFilter) {
+    const availableAgentIds = new Set(allAgents.map((name) => name.replace(/\.md$/, '')));
+    const unknownAgents = opts.agentsFilter.filter((agent) => !availableAgentIds.has(agent));
+    if (unknownAgents.length > 0) {
+      console.error(
+        pc.red(`omd install-skills: unknown sub-agent(s): ${unknownAgents.join(', ')}`),
+      );
+      return 1;
+    }
+  }
+
   const force = opts.force ?? false;
   const minimal = opts.skillsOnly === true;
-  // Install scope: 'project' (<cwd>/.claude/…) or 'global' (~/.claude/…). --global
-  // forces it; otherwise the interactive TUI asks. Global writes skills + sub-agents
+  // Install scope: 'project' (channel-local dirs under cwd) or 'global'
+  // (channel-specific user dirs). --global forces it; otherwise the interactive
+  // TUI asks. Global writes skills + sub-agents
   // (+ data) to the user-level dir but never touches global hooks/settings.json.
   let scope: 'project' | 'global' = opts.global ? 'global' : 'project';
 
@@ -787,8 +1292,8 @@ export async function runInstallSkills(
     const scopeResult = await p.select({
       message: 'Install scope · 어디에 설치할까요?',
       options: [
-        { value: 'project', label: 'Project', hint: `${relative(process.cwd(), projectRoot) || '.'}/.claude/skills · 이 프로젝트만` },
-        { value: 'global', label: 'Global', hint: '~/.claude/skills · 모든 프로젝트 (skills + sub-agents, hooks/settings 제외)' },
+        { value: 'project', label: 'Project', hint: `${relative(process.cwd(), projectRoot) || '.'} · 이 프로젝트만` },
+        { value: 'global', label: 'Global', hint: '~/.claude · ~/.agents · ~/.config/opencode (hooks/settings 제외)' },
       ],
       initialValue: 'project',
     });
@@ -841,7 +1346,10 @@ export async function runInstallSkills(
     // Cursor consumes no skills — its channel install (.cursor/rules shim +
     // shared .claude/data catalog) is skill-independent, so always offer it.
     set.add('cursor');
-    return (['claude-code', 'codex', 'opencode', 'cursor'] as SkillTarget[]).filter((t) => set.has(t));
+    return targetsAvailableForScope(
+      (['claude-code', 'codex', 'opencode', 'cursor'] as SkillTarget[]).filter((t) => set.has(t)),
+      scope,
+    );
   })();
   const channelLabel: Record<SkillTarget, string> = {
     'claude-code': 'Claude Code',
@@ -884,20 +1392,42 @@ export async function runInstallSkills(
     if (narrowed.length > 0) targets = narrowed;
   }
 
-  // Global scope roots everything at the home dir, so plan dirs resolve to
-  // ~/.claude/skills, ~/.claude/agents, etc. Project scope uses cwd (or --dir).
+  if (targets.length === 0) {
+    console.error(pc.red('omd install-skills: no compatible agent channel selected'));
+    return 1;
+  }
+
+  if (scope === 'global' && targets.includes('cursor')) {
+    console.error(
+      pc.red('omd install-skills: Cursor rules are project-scoped. Run the Cursor install from the project root without --global.'),
+    );
+    return 1;
+  }
+  if (
+    opts.repairHooks &&
+    (scope !== 'project' || minimal || !targets.includes('claude-code'))
+  ) {
+    console.error(
+      pc.red('omd install-skills: --repair-hooks requires a project-scoped Claude Code target and cannot be combined with --skills-only.'),
+    );
+    return 1;
+  }
+
+  // Global scope roots everything at the home dir, so channel plans resolve to
+  // ~/.claude, ~/.agents + ~/.codex, or ~/.config/opencode. Project scope uses
+  // cwd (or --dir).
   const installRoot = scope === 'global' ? homedir() : projectRoot;
   // Cursor hosts no SKILL.md tree — it's excluded from skill plans and handled
   // below via the .cursor/rules shim + shared data copies (issue #20).
   const skillChannelTargets = targets.filter(
     (t): t is SkillChannel => t !== 'cursor'
   );
-  const plans = skillChannelTargets.map((t) => planForTarget(installRoot, t));
+  const plans = skillChannelTargets.map((t) => planForTarget(installRoot, t, scope));
 
   p.log.message(
     pc.bold('Scope: ') +
       pc.cyan(scope) +
-      pc.dim(scope === 'global' ? '  (~/.claude)' : `  (${relative(process.cwd(), projectRoot) || '.'})`)
+      pc.dim(scope === 'global' ? '  (channel user directories)' : `  (${relative(process.cwd(), projectRoot) || '.'})`)
   );
   p.log.message(
     pc.bold(`Skills (${skills.length}): `) +
@@ -922,10 +1452,19 @@ export async function runInstallSkills(
   // Count of reference-catalog DESIGN.md files copied (issue #16) — surfaced in
   // the install summary. Declared here so the outro (outside `if (!minimal)`) sees it.
   let catalogCount = 0;
+  const catalogDestinations = new Set<string>();
   for (const plan of plans) {
+    const dataDir = dataDirForScope(plan.target, targets, scope);
+    const globalDataRoot = scope === 'global' && dataDir
+      ? join(installRoot, dataDir, 'data')
+      : null;
     for (const skill of skills) {
-      results.push(installOne(packageRoot, plan, skill, force));
+      results.push(installOne(packageRoot, installRoot, plan, skill, force, globalDataRoot));
     }
+  }
+
+  if (targets.includes('codex')) {
+    results.push(...removeManagedLegacyCodexSkills(installRoot));
   }
 
   // Generate per-channel sub-agent definitions from the canonical `agents/`.
@@ -934,14 +1473,17 @@ export async function runInstallSkills(
   for (const target of targets) {
     if (target === 'claude-code') {
       for (const filename of canonicalAgents) {
-        results.push(installAgentFile(packageRoot, installRoot, 'claude', filename, force));
+        results.push(installAgentFile(packageRoot, installRoot, 'claude', filename, force, scope));
       }
     } else if (target === 'codex') {
       for (const filename of canonicalAgents) {
-        results.push(installAgentFile(packageRoot, installRoot, 'codex', filename, force));
+        results.push(installAgentFile(packageRoot, installRoot, 'codex', filename, force, scope));
+      }
+    } else if (target === 'opencode') {
+      for (const filename of canonicalAgents) {
+        results.push(installAgentFile(packageRoot, installRoot, 'opencode', filename, force, scope));
       }
     }
-    // OpenCode currently has no agent-definition channel — skills only.
   }
 
   if (!minimal) {
@@ -966,7 +1508,7 @@ export async function runInstallSkills(
   // Channel→dir resolution (incl. the cursor shared-`.claude/data` dedup guard,
   // issue #20) lives in dataDirFor — single source for all three copy loops.
   for (const target of targets) {
-    const dataDir = dataDirFor(target, targets);
+    const dataDir = dataDirForScope(target, targets, scope);
     if (!dataDir) continue;
     for (const dataFile of dataFiles) {
       results.push(installDataFile(packageRoot, installRoot, dataDir, dataFile, force, target));
@@ -980,24 +1522,48 @@ export async function runInstallSkills(
   // Same dataDirFor single-path rule as the data JSONs above — Cursor reads
   // .claude/data/references, never a second catalog location.
   for (const target of targets) {
-    const dataDir = dataDirFor(target, targets);
+    const dataDir = dataDirForScope(target, targets, scope);
     if (dataDir) {
-      catalogCount += installReferenceCatalog(packageRoot, installRoot, dataDir, force);
+      const catalogRoot = join(installRoot, dataDir, 'data', 'references');
+      if (unsafeManagedPath(installRoot, catalogRoot)) {
+        results.push({
+          target,
+          skill: 'data:references',
+          destPath: catalogRoot,
+          status: 'skipped-drift',
+          reason: 'unsafe-path',
+        });
+        continue;
+      }
+      const count = installReferenceCatalog(packageRoot, installRoot, dataDir, force);
+      catalogCount = Math.max(catalogCount, count);
+      if (count > 0) {
+        catalogDestinations.add(`${dataDir}/data/references/<id>/DESIGN.md`);
+      }
     }
   }
 
-  // Copy ctx-prime.cjs (+ its companion context.cjs) into .claude/data/scripts/
-  // so /omd-harness CTX-PRIME works without the package dir on npx installs
-  // (issue #18 / harness OMD_DIR resolution).
-  // Note: base table (no cursor special-case) — helper scripts are
-  // claude-code/codex only; a cursor-only install ships no ctx-prime.
+  // Copy ctx-prime.cjs (+ its companion context.cjs) into each selected skill
+  // channel's scoped data tree so /omd-harness works after either a project or
+  // global install. Cursor has no skill runtime and intentionally gets no helper.
   for (const target of targets) {
-    const cd = CHANNEL_DATA_DIRS[target];
+    if (target === 'cursor') continue;
+    const cd = dataDirForScope(target, targets, scope);
     if (!cd) continue;
     for (const helper of ['ctx-prime.cjs', 'context.cjs']) {
       const srcHelper = join(packageRoot, 'scripts', helper);
       if (!existsSync(srcHelper)) continue;
       const destHelper = join(installRoot, cd, 'data', 'scripts', helper);
+      if (unsafeManagedPath(installRoot, destHelper)) {
+        results.push({
+          target,
+          skill: `data-script:${helper}`,
+          destPath: destHelper,
+          status: 'skipped-drift',
+          reason: 'unsafe-path',
+        });
+        continue;
+      }
       const srcTxt = readFileSync(srcHelper, 'utf8');
       if (existsSync(destHelper) && readFileSync(destHelper, 'utf8') === srcTxt) continue;
       mkdirSync(dirname(destHelper), { recursive: true });
@@ -1008,18 +1574,15 @@ export async function runInstallSkills(
   // Hooks + settings.json are PROJECT-SCOPED only — a global install must not
   // mutate the user's global Claude config / make hooks fire in every project.
   if (scope === 'project' && targets.includes('claude-code')) {
-    for (const hookFile of [
-      'skill-activation.cjs',
-      'session-state-loader.cjs',
-      'post-edit-watch.cjs',
-      'session-end-foldin.cjs',
-      // Shared modules required by the fold-in / state-loader / watch hooks.
-      // Live in a lib/ subdir; installHookFile preserves the relative path
-      // under .claude/hooks/.
-      join('lib', 'preferences-parser.cjs'),
-      join('lib', 'preferences-writer.cjs'),
-    ]) {
-      results.push(installHookFile(packageRoot, installRoot, hookFile, force));
+    for (const hookFile of CLAUDE_HOOK_PATHS) {
+      results.push(
+        installHookFile(
+          packageRoot,
+          installRoot,
+          hookFile,
+          force || opts.repairHooks === true,
+        ),
+      );
     }
     // settings.json (with merge, never clobber user)
     results.push(installSettingsJson(packageRoot, installRoot, force));
@@ -1035,17 +1598,30 @@ export async function runInstallSkills(
   }
 
   const driftCount = results.filter((r) => r.status === 'skipped-drift').length;
-  const writtenCount = results.filter(
-    (r) => r.status === 'created' || r.status === 'updated'
+  const changedCount = results.filter(
+    (r) => r.status === 'created' || r.status === 'updated' || r.status === 'removed'
   ).length;
+  const currentCount = results.filter((r) => r.status === 'unchanged').length;
 
   if (driftCount > 0) {
+    const unsafeCount = results.filter(
+      (result) => result.status === 'skipped-drift' && result.reason === 'unsafe-path',
+    ).length;
+    const hookDrift = results.some(
+      (result) =>
+        result.status === 'skipped-drift' && result.skill.startsWith('hook:'),
+    );
+    const repairHint = unsafeCount > 0
+      ? ` ${unsafeCount} unsafe symlinked managed path(s) were refused; replace them with project-local files and run doctor. --force will not bypass this safety check.`
+      : hookDrift
+        ? ' Use --repair-hooks for Claude hooks only, or --force to overwrite all unmarked files.'
+        : ' Rerun with --force to overwrite.';
     p.outro(
       pc.yellow(
-        `${writtenCount} written, ${driftCount} skipped (existing files lack the omd marker — rerun with --force to overwrite).`
+        `${changedCount} changed, ${currentCount} already current, ${driftCount} skipped (existing files lack a valid omd ownership marker).${repairHint}`
       )
     );
-    return 0;
+    return 2;
   }
 
   // Minimal single-skill install (--skills-only): no omd onboarding, no agents/hooks.
@@ -1058,7 +1634,7 @@ export async function runInstallSkills(
       );
     }
     const installed = results.filter(
-      (r) => r.status === 'created' || r.status === 'updated'
+      (r) => r.status === 'created' || r.status === 'updated' || r.status === 'unchanged'
     );
     if (installed.length === 0) {
       p.outro(pc.yellow('Nothing installed — no compatible skill/channel match.'));
@@ -1066,7 +1642,7 @@ export async function runInstallSkills(
     }
     p.outro(
       pc.green(
-        `Done. Installed ${skills.map((s) => pc.bold(s)).join(', ')} ${scope === 'global' ? 'globally (~/.claude/skills)' : `for ${targets.join(', ')}`}.`
+        `Done. Installed ${skills.map((s) => pc.bold(s)).join(', ')} ${scope === 'global' ? `globally for ${targets.join(', ')}` : `for ${targets.join(', ')}`}.`
       ) +
         pc.dim('  →  restart your agent, then use the skill (e.g. ') +
         pc.cyan('/claude-design') +
@@ -1080,20 +1656,33 @@ export async function runInstallSkills(
   // block so the README, the terminal, and the postinstall message all teach
   // the same activation moment. Bilingual (EN + KR) so an English reader is not
   // handed a Korean-only outro.
-  const nextSteps = [
-    `${pc.bold('Restart your agent, then type your first prompt:')}`,
-    '',
-    `  ${pc.cyan('EN')}  ${pc.dim('Set up our design system — Toss-style, for a family meal-tracking app.')}`,
-    `  ${pc.cyan('KR')}  ${pc.dim('토스 스타일로 가족 식단 공유 앱 디자인 시스템 잡아줘')}`,
-    '',
-    `${pc.dim('Your agent runs omd:init and writes DESIGN.md. Then build against it:')}`,
-    `  ${pc.cyan('EN')}  ${pc.dim('Design the home screen.')}   ${pc.cyan('KR')}  ${pc.dim('홈 화면 디자인해줘')}`,
-    '',
-    `${pc.dim('Full walkthrough → "Your first 60 seconds" in the README. Routing is automatic — no slash command needed.')}`,
-    `${pc.dim('Power user: ')}${pc.cyan('/omd-harness <task>')}${pc.dim(' — jump straight into the pipeline.')}`,
-    '',
-    `${pc.yellow('⚠ Already-running session?')} ${pc.dim('Run `/agents` to reload — or quit (Cmd+Q on macOS) and relaunch. Without reload, hooks/agents do not load.')}`,
-  ].join('\n');
+  const cursorOnly = targets.length === 1 && targets[0] === 'cursor';
+  const nextSteps = cursorOnly
+    ? [
+        `${pc.bold('Restart Cursor, then establish or apply DESIGN.md:')}`,
+        '',
+        `  ${pc.cyan('EN')}  ${pc.dim('Set up our design system — Toss-style, for a family meal-tracking app. Ask before writing DESIGN.md.')}`,
+        `  ${pc.cyan('KR')}  ${pc.dim('토스 스타일로 가족 식단 공유 앱 디자인 시스템을 제안하고 DESIGN.md 작성 전에 확인해줘')}`,
+        '',
+        `${pc.dim('Cursor uses the installed rule + local catalog directly. It does not receive OmD named skills or sub-agents.')}`,
+        `${pc.dim('You can also choose a reference in the Builder and download DESIGN.md before asking Cursor to build.')}`,
+        '',
+        `${pc.yellow('⚠ Already-running session?')} ${pc.dim('Restart Cursor so it reloads the project rule.')}`,
+      ].join('\n')
+    : [
+        `${pc.bold('Restart your agent, then type your first prompt:')}`,
+        '',
+        `  ${pc.cyan('EN')}  ${pc.dim('Set up our design system — Toss-style, for a family meal-tracking app.')}`,
+        `  ${pc.cyan('KR')}  ${pc.dim('토스 스타일로 가족 식단 공유 앱 디자인 시스템 잡아줘')}`,
+        '',
+        `${pc.dim('Your agent routes through omd:init and writes DESIGN.md after confirmation. Then build against it:')}`,
+        `  ${pc.cyan('EN')}  ${pc.dim('Design the home screen.')}   ${pc.cyan('KR')}  ${pc.dim('홈 화면 디자인해줘')}`,
+        '',
+        `${pc.dim('Full walkthrough → "Your first 60 seconds" in the README. Routing is automatic — no slash command needed.')}`,
+        `${pc.dim('Power user: ')}${pc.cyan('/omd-harness <task>')}${pc.dim(' — jump straight into the pipeline.')}`,
+        '',
+        `${pc.yellow('⚠ Already-running session?')} ${pc.dim('Restart the coding agent after install. Codex must also trust the project before it loads project-local .codex/agents roles.')}`,
+      ].join('\n');
   p.note(nextSteps, 'Next');
 
   // Counts derived from what was actually resolved/installed — never hardcoded,
@@ -1103,14 +1692,15 @@ export async function runInstallSkills(
     p.log.message(
       pc.bold('Reference catalog: ') +
         pc.cyan(`${catalogCount}`) +
-        pc.dim(' DESIGN.md copied → .claude/data/references/<id>/DESIGN.md'),
+        pc.dim(` DESIGN.md synced → ${[...catalogDestinations].join(' + ')}`),
     );
   }
+  const reportedSkillCount = skillChannelTargets.length > 0 ? skills.length : 0;
+  const reportedAgentCount = skillChannelTargets.length > 0 ? canonicalAgents.length : 0;
   p.outro(
     pc.green(
-      `Done. ${skills.length} skills · ${canonicalAgents.length} sub-agents · ${hookCount} hooks · ${catalogCount} catalog refs installed (${writtenCount} files)${scope === 'global' ? ' globally (~/.claude)' : ''}.`,
+      `Done. ${reportedSkillCount} skills · ${reportedAgentCount} sub-agents · ${hookCount} hooks · ${catalogCount} catalog refs ready (${changedCount} changed · ${currentCount} already current)${scope === 'global' ? ' globally (channel user directories)' : ''}.`,
     ),
   );
   return 0;
 }
-

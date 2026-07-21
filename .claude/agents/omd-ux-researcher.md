@@ -1,8 +1,8 @@
 ---
-name: omd-ux-researcher
-description: Reads bundled oh-my-design references (67 companies), researches competing services, validates Tier-1 official design system URLs. Returns concise, URL-cited findings. Read-only — never writes outside the run directory.
-tools: Read, Glob, Grep, WebSearch, WebFetch, Bash, Write
-model: opus
+name: "omd-ux-researcher"
+description: "Reads the resolved oh-my-design reference catalog, researches competing services, validates Tier-1 official design system URLs. Returns concise, URL-cited findings. Read-only — never writes outside the run directory."
+tools: ["Read","Glob","Grep","WebSearch","WebFetch","Bash","Write"]
+model: "opus"
 omd_managed: true
 ---
 

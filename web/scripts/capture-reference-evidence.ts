@@ -28,7 +28,7 @@ function slugFromUrl(value: string): string {
 
 const target = process.argv.slice(2).find((value) => !value.startsWith("--") && !process.argv[process.argv.indexOf(value) - 1]?.startsWith("--"));
 if (!target) {
-  console.error("usage: capture-reference-evidence.ts <reference-id|url> [--url <url>] [--max-routes 3] [--out <file>] [--json] [--no-interactions] [--baseline-only]");
+  console.error("Usage: capture-reference-evidence <reference-id|url> [--url <url>] [--max-routes 3] [--out <file>] [--json] [--no-interactions] [--baseline-only]");
   process.exit(1);
 }
 
@@ -225,7 +225,8 @@ async function captureStates(page: Page, surfaceId: string, elements: readonly R
     const capture = (state: string, value: Awaited<ReturnType<typeof read>>) => {
       if (!base || !value || JSON.stringify(value) === JSON.stringify(base)) return;
       states.push(state);
-      const { transform: _transform, ...style } = value;
+      const { transform, ...style } = value;
+      void transform; // state detection uses transform; raw token evidence deliberately excludes it
       const selector = `${element.selector}::state-${state}`;
       captured.push({ ...element, selector, style });
       result[selector] = [state];

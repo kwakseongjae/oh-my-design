@@ -1,25 +1,24 @@
-<!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
-
 ---
 name: omd:learn
-description: "누적된 preference 교정사항을 DESIGN.md에 반영합니다. '프리퍼런스 정리해줘', 'DESIGN.md 업데이트', 'preference 반영', 'fold preferences', 'learn from corrections' 같은 요청에 트리거됩니다."
+description: ".omd/preferences.md의 status:pending 항목을 DESIGN.md에 정식 merge하고 status를 applied로 플립. '프리퍼런스 정리해줘', 'fold preferences', 'apply all corrections', 「好みをDESIGN.mdに反映」, 「套用偏好」류의 요청에 트리거. 단발성 교정 기록은 omd:remember."
 ---
+<!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
+
 
 # omd:learn — Preference Fold into DESIGN.md
 
-`.omd/preferences.md`에 누적된 `status: pending` 교정사항을 DESIGN.md에 반영하고, 반영된 엔트리의 상태를 `applied`로 플립한다.
+`.omd/preferences.md`에 누적된 `status: pending` 교정사항을 DESIGN.md에 반영하고, 반영된 엔트리의 상태를 `applied`로 플립한다. **CLI 호출 없음** — Read/Edit 툴로 직접 처리.
 
 ## Phase 1 — 검토
 
-Bash 툴로:
+`Read .omd/preferences.md` → frontmatter + 엔트리들 파싱:
 
-```bash
-omd learn
-```
+- 엔트리 분리: `## ` heading 기준 split
+- 각 엔트리의 `omd-meta` 코드블록에서 `id`, `scope`, `status` 추출
+- `status: pending`만 필터
 
-실행하면 pending 엔트리를 scope별로 그룹화해서 보여준다. 출력을 읽고 사용자에게 **그룹별 요약**을 제시한다 (각 엔트리를 나열하지 말고, scope당 2-3줄로 의도 정리).
+scope별로 그룹화해서 사용자에게 요약:
 
-예시 출력 형식:
 ```
 components.button (3 pending):
   - CTAs never uppercase (pref_xxx, pref_yyy)
@@ -29,55 +28,96 @@ spacing (1 pending):
   - 8pt grid, not 4pt (pref_aaa)
 ```
 
+엔트리당 한 줄이 아니라 **scope당 2-3줄로 의도 정리**.
+
 ## Phase 2 — 사용자 확인
 
-"이 교정들을 DESIGN.md에 반영할까요?" 묻는다. 사용자가 동의하면 Phase 3.
+"이 교정들을 DESIGN.md에 반영할까요?" 묻기. 동의 → Phase 3.
 
-## Phase 3 — 적용
+거부 → 어떤 scope를 reject할지 묻고 Phase 4 reject 분기로.
 
-1. **DESIGN.md를 Read 툴로 로드**한다.
-2. scope별로 묶어서 **하나의 coherent edit**을 생성한다 (엔트리당 하나의 edit이 아니라, 한 scope의 교정들을 종합).
-3. Edit 툴로 DESIGN.md의 해당 섹션을 수정.
-4. **voice 섹션이나 내러티브를 수정할 때는 DESIGN.md의 기존 문체를 preserve**한다 — 교정 내용만 반영하되 문장 스타일, 길이, 톤은 유지.
-5. 수정 후 `DESIGN.md`의 새 hash를 계산. Bash:
-   ```bash
-   omd sync --force  # shim들의 hash 갱신 (DESIGN.md 해시는 pointer라 바뀌지 않지만 lock만 업데이트)
-   ```
+## Phase 3 — DESIGN.md 적용
+
+1. `Read DESIGN.md` 로드
+2. scope별로 묶어서 **하나의 coherent edit** 생성 (엔트리당 하나가 아니라 한 scope의 교정들을 종합)
+3. Edit 툴로 DESIGN.md의 해당 섹션 수정:
+   - `components.button` → DESIGN.md §8 (Components → Button) 또는 §13 (Components 상세)
+   - `color` → §2 (Color Palette)
+   - `typography` → §3
+   - `spacing` → §4 (Spacing scale)
+   - `voice` → §10 (Voice & Tone)
+   - `motion` → §15 (Motion & Easing)
+   - `visualTheme` → §1 (Visual Theme)
+4. **voice/내러티브 수정 시 DESIGN.md의 기존 문체 preserve** — 교정 내용만 반영, 문장 스타일/길이/톤 유지
+5. **§10-15 (Brand Philosophy 레이어)는 reference voice 보존이 우선** — preference가 §10-15 본문 자체를 다시 쓰라고 하지 않는 한 본문은 건드리지 않고 §1-9의 axes만 수정
 
 ## Phase 4 — 상태 플립
 
-반영한 각 엔트리에 대해:
+반영한 엔트리: 해당 엔트리의 omd-meta 블록을 Edit 툴로:
+- `status: pending` → `status: applied`
+- `applied_at: <ISO timestamp>` 라인 추가
+- (선택) `applied_design_md_hash: <DESIGN.md sha256>` 추가. hash 계산:
+  ```bash
+  node -e "console.log(require('crypto').createHash('sha256').update(require('fs').readFileSync('DESIGN.md')).digest('hex').slice(0,12))"
+  ```
 
-```bash
-omd learn --mark-applied <pref_id>
-```
+거부한 엔트리:
+- `status: pending` → `status: rejected`
+- `rejected_reason: "<짧은 이유>"` 라인 추가
 
-반영 안 한 엔트리(충돌, 거부)는:
-
-```bash
-omd learn --mark-rejected <pref_id> --reason "<짧은 이유>"
-```
+상위 엔트리가 누적된 작은 교정을 통합·대체했으면:
+- 작은 엔트리들은 `status: superseded`
+- `superseded_by: <상위 pref_id>` 추가
 
 ## Phase 5 — 결과 요약
 
-한 문단으로:
+한 문단:
 - 반영된 교정 수 (scope별)
 - 거부된 교정 수 + 이유
-- 사용자에게 `.omd/preferences.md` 직접 확인 링크 안내
+- 사용자에게 `.omd/preferences.md` 직접 확인 안내
 
-예시:
 ```
-✓ 4 preferences applied to DESIGN.md
+4 preferences applied to DESIGN.md
   - components.button: CTAs never uppercase, primary brand-500
   - spacing: 8pt grid
-✗ 1 rejected (conflicts with base reference radius)
+1 rejected (conflicts with base reference radius)
 
 Review .omd/preferences.md for details.
 ```
 
+## Fold-in 제안에서 호출된 경우 (`.omd/foldin-proposal.json`)
+
+SessionStart 컨텍스트의 OMD FOLD-IN PROPOSAL → AskUserQuestion 승인 경로로 호출되었으면 Phase 2 확인은 이미 끝난 것 — 다시 묻지 말 것.
+
+제안 없이 사용자가 직접 omd:learn을 부른 경우에도 `.omd/foldin-proposal.json`이
+`"status": "proposed"`로 존재하면: 그 scopes를 이번 폴드 대상에 포함할지 Phase 2에서
+함께 확인하고, 처리 후 아래와 동일하게 status를 갱신한다 (proposed인 채로 방치 금지 —
+다음 세션이 또 물어본다).
+
+- **승인된 scope만** Phase 3-4로 처리. 미승인 scope의 pending 엔트리는 건드리지 않는다
+- 처리 후 `.omd/foldin-proposal.json`의 status를 Edit 툴로 갱신:
+  - 전부 반영 → `"status": "applied"` + `"applied_at": "<ISO timestamp>"` 필드 추가
+  - 일부만 반영 → `"status": "partial"` + `scopes` 배열을 **남은(미승인) scope만**으로 갱신
+  - 전부 거절("나중에") → `"status": "snoozed"` + `"snoozed_at": "<ISO timestamp>"` 필드 추가
+  - status 값은 **JSON 계약상 영문 고정** (`proposed`/`applied`/`partial`/`snoozed`) —
+    번역·한글화 금지 (훅이 문자열 비교로 읽는다)
+
+## 옵션 패턴
+
+사용자가 특정 작업만 요청하는 경우:
+
+- **"pending만 보여줘"** → Phase 1만, Phase 2-5 생략
+- **"X scope만 반영"** → 해당 scope만 Phase 3에서 처리
+- **"<pref_id>를 applied로 표시"** → Phase 4의 single-entry 플립만
+- **"<pref_id>를 rejected로 표시 + 이유"** → 동일
+- 플립 전 현재 status를 먼저 Read로 확인: 이미 같은 값이면 no-op 보고,
+  `superseded`/`rejected` → `applied` 전환은 **금지** (이력 오염 — 사용자에게
+  "이 항목은 X 상태예요. 되살리려면 omd:remember로 재캡처하세요"라고 안내)
+
 ## 금지
 
-- LLM으로 엔트리별 개별 diff를 생성하지 말 것 — scope별 합쳐서 하나의 coherent edit.
-- DESIGN.md의 section 구조(heading 계층)를 바꾸지 말 것.
-- 교정과 관계없는 부분을 "개선"하지 말 것.
-- pending을 건너뛰지 말 것 — 모든 pending에 대해 applied or rejected 플립해야 한다.
+- LLM으로 엔트리별 개별 diff를 생성하지 말 것 — scope별 합쳐서 하나의 coherent edit
+- DESIGN.md의 section heading 계층을 바꾸지 말 것
+- 교정과 관계없는 부분을 "개선"하지 말 것
+- pending을 건너뛰지 말 것 — 모든 pending에 applied/rejected/superseded 중 하나로 플립
+- omd-meta 블록 외부 (body) 수정 금지 — 교정 본문은 영구 기록

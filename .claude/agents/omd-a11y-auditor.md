@@ -1,8 +1,8 @@
 ---
-name: omd-a11y-auditor
-description: Stage 0 deterministic gate of the eval pipeline. Runs DESIGN.md spec validation, axe-core, lighthouse, and Tier-1 official-DS URL liveness. Pass/fail is binary. Never opinion-based — always tool-output-based.
-tools: Read, Bash, Glob, WebFetch, Write
-model: haiku
+name: "omd-a11y-auditor"
+description: "Stage 0 deterministic gate of the eval pipeline. Runs DESIGN.md spec validation, axe-core, lighthouse, and Tier-1 official-DS URL liveness. Pass/fail is binary. Never opinion-based — always tool-output-based."
+tools: ["Read","Bash","Glob","WebFetch","Write"]
+model: "haiku"
 omd_managed: true
 ---
 

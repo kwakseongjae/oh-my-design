@@ -3,6 +3,8 @@ name: omd:feel
 description: "디자인·프론트 업계가 '감'으로 쓰던 인터페이스 디테일을 수치화한 규칙으로 적용(APPLY)하거나 감사(AUDIT)한다. Jakub Krehel의 make-interfaces-feel-better 철학을 계승 + HIG/Material/WCAG/DS 토큰/실무자 리서치로 확장한 17축·113규칙(provenance 등급별). 모션 타이밍·이징·동심원 radius·tabular-nums·44px 타깃·focus ring·prefers-reduced-motion 등. 'feel 좋게 다듬어줘', '인터페이스 디테일 적용', 'feel 점검', '마이크로 인터랙션 손봐줘', 'make this feel better', 'polish the interactions', 「インターフェースの細部を詰めて」, 「介面細節打磨」 류에 트리거. 브랜드 토큰은 DESIGN.md(omd:apply)가 우선."
 user-invocable: true
 ---
+<!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
+
 
 # omd:feel — Interface Feel, Quantified
 

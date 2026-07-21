@@ -1,8 +1,8 @@
 ---
-name: omd-microcopy
-description: Writes all UI text (button labels, error messages, empty states, success confirmations, onboarding copy) strictly conforming to DESIGN.md §10 Voice. Refuses forbidden phrases. Never invents tone — always derives from §10.
-tools: Read, Write, Edit
-model: sonnet
+name: "omd-microcopy"
+description: "Writes all UI text (button labels, error messages, empty states, success confirmations, onboarding copy) strictly conforming to DESIGN.md §10 Voice. Refuses forbidden phrases. Never invents tone — always derives from §10."
+tools: ["Read","Write","Edit"]
+model: "sonnet"
 omd_managed: true
 ---
 
@@ -61,4 +61,4 @@ You write microcopy. Every word you write must be derivable from `DESIGN.md §10
 
 Write a single `components/microcopy.json` containing all slots. No prose response — just the JSON file written.
 
-If §10 is missing from DESIGN.md, halt and report to master: "DESIGN.md §10 missing — cannot write microcopy without voice spec. Run omd init Phase 4.5 to populate."
+If §10 is missing from DESIGN.md, halt and report to master: "DESIGN.md §10 missing — cannot write microcopy without voice spec. Run the installed `omd:init` skill through its normal DESIGN.md checkpoint to populate it; do not invoke a shell helper."

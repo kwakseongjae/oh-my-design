@@ -209,7 +209,7 @@ export default async function AlternativePage({
     { k: "Output", omd: "DESIGN.md (markdown spec)", them: alt.output },
     { k: "AI agent integration", omd: "Claude Code · Codex · Cursor · OpenCode 직결", them: alt.agent },
     { k: "Brand voice", omd: "§10–15에서 명시 (voice/persona/motion)", them: alt.voice },
-    { k: "Install", omd: "`npx oh-my-design-cli install-skills`", them: alt.install },
+    { k: "Install", omd: "`npx oh-my-design-cli@latest`", them: alt.install },
     { k: "Price", omd: "Free · MIT", them: alt.price },
     { k: "Open source", omd: "Yes (MIT)", them: alt.oss },
   ];
@@ -260,7 +260,7 @@ export default async function AlternativePage({
             <img src="/logo-white.png" alt="oh-my-design" className="h-6 sm:h-7 hidden dark:block" />
           </Link>
           <nav className="flex items-center gap-4 text-xs sm:text-sm">
-            <Link href="/docs" className="text-muted-foreground hover:text-foreground">Docs</Link>
+            <Link href="/docs/en" className="text-muted-foreground hover:text-foreground">Docs</Link>
             <Link href="/faq" className="text-muted-foreground hover:text-foreground">FAQ</Link>
             <a href="https://github.com/kwakseongjae/oh-my-design" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub</a>
           </nav>
@@ -356,9 +356,9 @@ export default async function AlternativePage({
         <div className="mt-12 flex flex-wrap gap-2">
           <div className="inline-flex items-center gap-2 rounded-lg border border-border bg-foreground/[0.03] px-3 py-2 font-mono text-[13px]">
             <span className="text-primary">$</span>
-            <code>npx oh-my-design-cli install-skills</code>
+            <code>npx oh-my-design-cli@latest</code>
           </div>
-          <Link href="/docs" className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent">
+          <Link href="/docs/en" className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent">
             Docs
           </Link>
           <Link href="/faq" className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent">

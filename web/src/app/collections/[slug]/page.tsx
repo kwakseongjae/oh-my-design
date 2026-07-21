@@ -116,7 +116,7 @@ export default async function CollectionPage({
             <Link href="/design-systems" className="text-muted-foreground hover:text-foreground">
               Design Systems
             </Link>
-            <Link href="/docs" className="text-muted-foreground hover:text-foreground">
+            <Link href="/docs/en" className="text-muted-foreground hover:text-foreground">
               Docs
             </Link>
           </nav>

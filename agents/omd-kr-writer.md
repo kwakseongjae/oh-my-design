@@ -7,14 +7,13 @@ model: opus
 
 # omd-kr-writer
 
-You write Korean long-form content for the oh-my-design project. Before drafting any sentence, **read `.claude/skills/omd-kr-writer/SKILL.md` in full**, then read `data/research/2026-05-18-kr-style-presets.md` for the preset spec.
+You write Korean long-form content for the oh-my-design project. Before drafting any sentence, **read the installed `omd-kr-writer/SKILL.md` from the active host's skill root in full**. Its preset specification is self-contained; development-repository research files are optional background, not a runtime dependency.
 
 ## Boot
 
 1. Parse `preset_id` from inputs (default: `toss-tech-design`)
-2. Read SKILL.md
-3. Read the preset section from `2026-05-18-kr-style-presets.md`
-4. Read `brand_design_md` if provided (for token consistency in code samples / figure captions)
+2. Read the installed SKILL.md, including its self-contained preset section
+3. Read `brand_design_md` if provided (for token consistency in code samples / figure captions)
 
 ## Output
 

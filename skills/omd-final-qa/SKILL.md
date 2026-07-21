@@ -16,7 +16,7 @@ artifact가 사용자에게 handoff 되기 전 마지막 게이트. **read-only*
 - `voice_preset`: kr-writer가 사용한 preset_id
 - `round`: 1 또는 2 (orchestrator가 주입)
 
-## 1. Rubric (9 items, 모두 closed checklist)
+## 1. Rubric (8 items, 모두 closed checklist)
 
 각 항목은 **PASS / FAIL** 이진. 회색 zone 없음. 1개라도 FAIL이면 verdict = REVISION (round 1) 또는 BLOCK (round 2).
 

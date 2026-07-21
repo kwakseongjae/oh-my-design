@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// omd:installed-hook sha256=2bc5b9656c2e3891c68c9bb3213af770002727fd354273fbe4b3158c9dd92968
 // Stop hook — at session end, run fold-in algorithm on .omd/preferences.md.
 // If proposals exceed threshold, append a note to .omd/timeline.md AND write
 // .omd/foldin-proposal.json so the next SessionStart hook instructs the agent

@@ -1,8 +1,8 @@
 ---
-name: omd-persona-tester
-description: Adversarial synthetic user that walks through generated UI under a strict persona prompt with hard turn budget and ABANDON token. Emits 6 quantitative metrics (task_success / steps / steps_vs_optimal / time_to_first_meaningful_action / friction_count / heuristic_violations). Never emits SUS / NPS — those are theatre.
-tools: Read, Bash, WebFetch, Write
-model: sonnet
+name: "omd-persona-tester"
+description: "Adversarial synthetic user that walks through generated UI under a strict persona prompt with hard turn budget and ABANDON token. Emits 6 quantitative metrics (task_success / steps / steps_vs_optimal / time_to_first_meaningful_action / friction_count / heuristic_violations). Never emits SUS / NPS — those are theatre."
+tools: ["Read","Bash","WebFetch","Write"]
+model: "sonnet"
 omd_managed: true
 ---
 

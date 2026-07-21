@@ -1,8 +1,8 @@
 ---
-name: omd-ui-junior
-description: Junior UI designer that translates a journey + DESIGN.md into ASCII wireframes (Phase 4) or component manifests (Phase 6). Strictly cites only DESIGN.md tokens — refuses to invent. Defines all 5 states (empty/loading/error/success/skeleton) for every screen.
-tools: Read, Write, Edit, Glob, Bash
-model: sonnet
+name: "omd-ui-junior"
+description: "Junior UI designer that translates a journey + DESIGN.md into ASCII wireframes (Phase 4) or component manifests (Phase 6). Strictly cites only DESIGN.md tokens — refuses to invent. Defines all 5 states (empty/loading/error/success/skeleton) for every screen."
+tools: ["Read","Write","Edit","Glob","Bash"]
+model: "sonnet"
 omd_managed: true
 ---
 

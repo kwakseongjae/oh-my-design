@@ -1,130 +1,93 @@
 # oh-my-design
 
-> AI 코딩 에이전트(Claude Code / Codex / OpenCode / Cursor)를 위한 스킬 기반 디자인 하네스. 한 번의 `npx` 명령으로 15개 스킬 + 16개 sub-agent + 100+ 실제 브랜드 DESIGN.md 레퍼런스가 설치됩니다. 설치 후엔 슬래시 명령 없이 자연어로 에이전트와 대화하면 됩니다.
+> AI 코딩 에이전트에 품질 등급이 표시된 디자인 근거를 연결하는 오픈소스 하네스. Claude Code, Codex, OpenCode에는 제품 스킬 20개와 전문 에이전트 18개 전체 번들을 설치할 수 있고, Cursor에는 OmD 스킬·서브에이전트가 아닌 프로젝트 rule과 로컬 카탈로그를 설치합니다. DESIGN.md 440개 중 verified_v2 141개, partial 159개, legacy 140개이며 공개 데모에는 verified_v2를 사용합니다.
 
-## 무엇인가
+## 제품 모델
 
-`oh-my-design-cli`는 결정론적 디자인 하네스를 AI 코딩 에이전트에 설치하는 npm 패키지(MIT)입니다. `.claude/skills/`, `.codex/skills/`, `.opencode/agents/`, `.claude/agents/`, hooks, 100+ 레퍼런스 DESIGN.md를 프로젝트에 기록합니다. 에이전트를 재시작하면 description-routing으로 자연어 디자인 요청이 적절한 스킬로 자동 라우팅됩니다.
+oh-my-design의 고유한 흐름은 다음과 같습니다.
 
-설치 시 AI 호출 0회, 텔레메트리 0, API 키 불필요. 추론은 사용자 본인의 AI 코딩 에이전트가 수행하고, 이 패키지는 *브랜드 스펙이 어디 있는지*만 가르칩니다.
+`검증된 레퍼런스 → 프로젝트 DESIGN.md → 실제 구현 → 정합성 재검증`
 
-## 설치 (유일한 명령어)
+CLI는 두 번째 디자인 앱이 아니라 부트스트래퍼입니다. Claude Code, Codex, OpenCode에는 채널별 스킬·전문 역할·로컬 카탈로그를, Cursor에는 `.cursor/rules/omd-design.mdc`와 공용 `.claude/data` 카탈로그를 설치하고 상태를 진단합니다. 실제 디자인 작업은 각 채널에 설치된 기능 범위 안에서 자연어로 요청합니다. 코어 설치와 로컬 흐름에는 별도 AI 호출, API 키, 데몬, MCP 서버가 필요하지 않습니다.
+
+## 설치와 진단
 
 ```bash
-npx oh-my-design-cli install-skills
+npx oh-my-design-cli@latest
 ```
 
-이후 AI 코딩 에이전트 재시작 (Claude Code는 Cmd+Q 후 재실행).
+에이전트를 재시작한 뒤 한 번 검증합니다.
 
-## 사용자가 부르는 방식 (자연어, 슬래시 명령 불필요)
+```bash
+npx oh-my-design-cli@latest doctor
+```
 
-- `"차분한 B2B 핀테크 대시보드용 디자인 시스템 잡아줘."` → `omd:init` 발동, 카탈로그 레퍼런스 기반으로 hybrid DESIGN.md 부트스트랩.
-- `"검색 결과 페이지 empty-state 만들어줘."` → `omd:apply` 발동, DESIGN.md 토큰 + voice로 작업.
-- `"온보딩 전체 처음부터 디자인해줘."` → `omd:harness` 발동, 10-phase 파이프라인 + sub-agent 실행.
-- `"그럴싸한 랜딩페이지 만들어줘"` / `"프로토타입이라도 구색 갖춰서"` → **v1.6.0**부터 자연어 랜딩/프로토타입 발화에서 `omd:harness` 자동 트리거 (슬래시 불필요, 디자인 용어 불필요).
-- `"CTA는 대문자 절대 안 써."` → `omd:remember` 발동, `.omd/preferences.md`에 교정 기록.
+채널별 비대화형 설치:
 
-## v1.6.0 conversational deepening (최신)
+```bash
+npx oh-my-design-cli@latest install-skills --agent codex --all
+npx oh-my-design-cli@latest install-skills --agent claude-code --all
+npx oh-my-design-cli@latest install-skills --agent opencode --all
+npx oh-my-design-cli@latest install-skills --agent cursor --all
+```
 
-`omd:harness`가 발동하면 reference 질문 *이전에* 세 단계가 먼저 돕니다:
+## 첫 프롬프트 — Claude Code, Codex, OpenCode
 
-1. **Sub-agent 자동 복구** — 세션에 `omd-master`가 로드 안 되어 있으면 `$(npm root -g)/oh-my-design-cli/agents/`에서 `.claude/agents/`로 자동 복사. "Claude Code 재시작" 데드엔드 없음.
-2. **CTX-PRIME** — `scripts/ctx-prime.cjs`가 작업 디렉토리를 결정론적으로 sub-50ms 스캔: 프레임워크 검출 (Next/Vite/Astro 등), dominant 브랜드 컬러(가장 많이 등장하는 hex literal), 폰트 family, README + commit msg에서 voice keyword, surface 인벤토리 (라우팅 페이지 전수를 landing/product/dashboard/docs/onboarding으로 분류), `audience_hypothesis` (신뢰도 + 근거 포함 3 후보). `<RUN_DIR>/ctx-prime.json`에 emit.
-3. **단일 페르소나 picker + Interview-lite** — `AskUserQuestion` 1개로 audience 확정, 이어서 batched 4-question picker로 `exit_scope`, `wow_moment`, `cta_primary`, `visual_grounding` 결정. 답을 `<RUN_DIR>/handoff/.handoff.json`에 `prefilled_slots`로 작성.
+```text
+가족 자산관리 앱에 차분하고 신뢰감 있는 디자인 시스템을 잡아줘.
+검증된 레퍼런스를 추천하고 차이를 설명한 뒤 DESIGN.md 작성 전에 확인해줘.
+```
 
-`omd-master` sub-agent는 INTAKE에서 `prefilled_slots`를 읽고 SLOT_GATE를 완전히 건너뛰어 PROPOSE_PLAN으로 직행. 결과적으로 대화가 *심문*이 아니라 *이미 레포 한 번 읽고 온 시니어 디자이너*의 톤이 됩니다.
+그다음에는 구체적인 제품 화면을 요청합니다.
 
-## 15개 스킬
+```text
+DESIGN.md를 적용해 홈 화면을 개선해줘.
+기존 라우트와 동작은 보존하고 결과를 검증해줘.
+```
 
-핵심 흐름 (6):
-- **omd:apply** — 모든 UI 작업의 authoritative DESIGN.md 컨텍스트. 복잡한 요청은 specialist sub-agent로 라우팅.
-- **omd:init** — 레퍼런스 기반 DESIGN.md 부트스트랩. Hybrid variation으로 reference voice는 보존하면서 사용자 명시 axis만 shift.
-- **omd:harness** — `/omd-harness <task>`로 10-phase 파이프라인 실행. 7개 hero archetype을 brand vibe에 매칭. Wordmark-only logo, reveal safety net, container-inner consistency. **v1.6.0**: 자연어 자동 트리거 + CTX-PRIME pre-phase + Interview-lite picker.
-- **omd:remember** — 사용자 교정을 자동으로 `.omd/preferences.md`에 캡처.
-- **omd:learn** — Pending preference를 scope별로 DESIGN.md에 fold.
-- **omd:sync** — Shim 파일 유지 (CLAUDE.md / AGENTS.md / .cursor/rules) — 모든 에이전트가 같은 spec을 읽도록.
+## Cursor 경로 — rule + catalog 전용
 
-Live capture + asset (3):
-- **omd:reference-capture** — 라이브 brand 사이트 CDP/Playwright inspect → tokens + structure + fonts + screenshots + proof.
-- **omd:asset-fetch** — 무료 라이선스 자산 카탈로그 (DiceBear CC0 / Lucide ISC / Picsum CC0 / SIL OFL display 폰트). 손으로 그린 캐릭터 SVG 금지.
-- **omd:experiment-gallery** — N-brand 실험 → 단일 비교 index.html (iframe preview, 평점, brand별 IP audit).
+Cursor는 `omd:init`, `omd:feel`, `omd:harness`, OmD 서브에이전트를 실행하지 않습니다.
 
-Localization + review (6):
-- **omd:orchestrator** — Multi-agent 작성/리뷰 워크플로우 조율. 2-round revision cap + handoff log.
-- **omd:kr-writer** — 한국어 long-form 작성. 12개 voice preset (toss-tech-design / karrot-neighborly / brunch-maker / naver-d2 / biz-report / academic / journalism / kakao-warm / line-global / academic-lecture / emotional-brand / legal-disclosure).
-- **omd:locale-adapter** — 한국어 → EN / JP / ZH-TW **adaptation** (cultural reference swap, JP 존경어 정합, ZH-TW 번체 idiom). KR이 항상 source of truth.
-- **omd:designer-review** — DESIGN.md 대비 visual + brand 일관성 audit (typography, color budget, radius scale, state, 모바일 반응형). Severity BLOCK / WARN / FYI + line ref.
-- **omd:final-qa** — 출간 직전 read-only critic. 8-item rubric 강제, 2-round revision hard cap, "looks good" rubber-stamp 금지.
-- **omd:codex-image** — Channel-aware 이미지 materialization. `<!-- omd:gen-image -->` spec → Codex native generation / `omd-asset-curator` fallback (Claude Code) / OpenCode user-queue.
+1. https://oh-my-design.kr/builder 에서 레퍼런스를 선택·조정하고 `DESIGN.md`를 프로젝트 루트에 내려받거나,
+2. Cursor에게 `Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md for this product using confirmed values only. Keep unknown facts absent.`라고 요청합니다.
 
-## 16개 sub-agent (master orchestrator + 15 specialist)
+이후 `@DESIGN.md를 읽고 동작은 유지한 채 홈 화면을 다시 디자인해줘`라고 요청합니다. rule의 우선순위는 `DESIGN.md` → `.omd/preferences.md`의 대기 중 교정 → 프레임워크 기본값입니다.
 
-- **omd-master** (opus) — Conversational design partner. 8-16 turn 평균. State machine: INTAKE → CONTEXT_DETECT → SLOT_GATE ⇄ ASK_TEST → PROPOSE_PLAN → PLAN_REVIEW ⇄ DESIGN_GENERATION → SHIP_GATE → ARCHIVE_RUN.
-- **omd-ux-researcher** (opus) — 카탈로그 read, Tier-1 공식 DS URL 검증, 브리프 작성.
-- **omd-ui-junior** (sonnet) — *Generator.* DESIGN.md 기반 wireframe + 컴포넌트 manifest.
-- **omd-ux-engineer** (opus) — *Advisor.* 섹션 단위 UX audit (NN/g + Refactoring UI + Web Vitals + WAI-ARIA), 코드 단위 fix.
-- **omd-asset-curator** (sonnet) — asset medium 픽 (inline SVG / chart 라이브러리 / Lottie / Rive / Unsplash / 3D), stack-aware.
-- **omd-microcopy** (sonnet) — *Generator.* DESIGN.md §10에 묶인 voice-consistent copy.
-- **omd-ux-writer** (opus) — *Advisor.* 섹션 단위 copy audit + alternative + A/B 가설.
-- **omd-a11y-auditor** (haiku) — 결정론적 WCAG 체크 (axe-core + lighthouse).
-- **omd-persona-tester** (sonnet) — 4-persona adversarial walkthrough + 정량 metric.
-- **omd-critic** (opus) — Iteration root-cause analysis.
-- **omd-orchestrator** — 작성/리뷰 specialist 간 라우팅, 2-round revision cap.
-- **omd-kr-writer** — 한국어 long-form writer (voice preset).
-- **omd-locale-adapter** — KR → EN / JP / ZH-TW 문화 적응.
-- **omd-designer-review** — Visual + brand 일관성 reviewer (BLOCK / WARN / FYI + line ref).
-- **omd-final-qa** — 최종 게이트 rubric critic.
-- **omd-codex-image** — Codex / asset-fallback / user-queue 채널별 이미지 materializer.
+## 20개 제품 스킬 — Claude Code, Codex, OpenCode
 
-## 10-phase 디자인 파이프라인 (`omd:harness` 발동 시)
+- 시스템: `omd:init`, `omd:apply`, `omd:sync`, `omd:remember`, `omd:learn`, `omd:taste`
+- 화면 구축: `omd:harness`, `omd:orchestrator`, `omd:asset-fetch`, `omd:codex-image`, `claude-design`
+- 품질 검증: `omd:feel`, `omd:slop-audit`, `omd:designer-review`, `omd:final-qa`, `omd:experiment-gallery`
+- 콘텐츠: `omd:kr-writer`, `omd:locale-adapter`, `omd:humanize`
+- 레퍼런스 증거: `omd:reference-capture`
 
-4 stage:
+## 핵심 계약
 
-1. **Plan**: Discovery → Research → IA
-2. **System**: Wireframe → 디자인 시스템 → Component
-3. **Make** (병렬): Asset sourcing + Microcopy
-4. **Validate & Ship**: Validation → Handoff
+1. 프로젝트 `DESIGN.md`가 UI 작업의 정본입니다.
+2. 모르는 레퍼런스 데이터는 그럴듯한 폴백으로 채우지 않고, 가장 작은 미확정 필드·항목·빈 그룹만 생략합니다.
+3. 마케팅·기업·폰트 카탈로그·제품 화면은 서로 다른 증거 도메인입니다.
+4. `/builder`가 사용자의 시각 레퍼런스 선택 및 미리보기 주 경로입니다.
+5. UI 작업은 실제 제품 라우트와 상태를 검증한 뒤 완료합니다.
+6. 사용자 교정은 `.omd/preferences.md`에 범위 있는 선호로 남깁니다.
 
-사용자 mandatory checkpoint 3개: Discovery 직후(brief), Component 직후(system lock), Handoff 직전(ship-ready).
+## 사람용 문서
 
-## 100+ 레퍼런스 브랜드 번들
-
-각 brand에 Google Stitch format + OmD brand-philosophy layer(Voice, Narrative, Principles, Personas, States, Motion)가 적용된 full DESIGN.md 포함.
-
-예시: Stripe · Toss · Linear · Vercel · Notion · Anthropic · Apple · Spotify · Airbnb · Uber · Pinterest · Tesla · Figma · Framer · Cursor · Raycast · Supabase · MongoDB · Sentry · PostHog · Resend · Mintlify · Cal.com · Kakao · LINE · Mercari · Karrot (당근) · Pinkoi · Dcard · 배민 · freee · Wise · Coinbase · Revolut · ElevenLabs · Mistral · Ollama · Replicate · KREAM · Upbit · Channel Talk · SmartNews · Xiaohongshu · Bilibili · Alipay · Meituan · DJI · Gogoro · Cookpad · SmartHR · Watcha · Yogiyo
-
-## 자주 묻는 질문 (한국어)
-
-**Q. vibe coding이 뭔가요?**
-프롬프트만으로 코드를 빠르게 생성하는 워크플로우. AI 코딩 에이전트(Cursor / Claude Code 등)에 자연어로 요청해 UI/feature를 즉시 만드는 방식. OmD는 vibe coding 결과물이 *brand-consistent*하게 나오도록 DESIGN.md를 ground truth로 주입합니다.
-
-**Q. shadcn/ui와 어떻게 다른가요?**
-shadcn/ui는 카피-앤-페이스트 컴포넌트 라이브러리(브랜드 의견 없음). OmD는 *브랜드 스펙*을 설치합니다 — 어떤 컴포넌트를 쓸지가 아니라 *어떤 톤·색·voice로 만들지*. 둘은 보완적: shadcn/ui로 컴포넌트 베이스 + OmD로 브랜드 입히기.
-
-**Q. v0.dev와 어떻게 다른가요?**
-v0.dev는 프롬프트 → UI snippet 직접 생성. OmD는 *에이전트에게 가르치는* 도구 — 에이전트가 어떤 컨텍스트에서든 일관된 브랜드로 작업하도록. v0 결과물에도 OmD를 적용해 톤을 통일시킬 수 있습니다.
-
-**Q. Cursor에서도 됨?**
-네. `.cursor/rules` shim이 자동 생성됩니다. Claude Code / Codex / OpenCode / Cursor 모두 지원.
-
-**Q. 무료인가요?**
-패키지 자체 MIT 라이선스, 완전 무료. 추론 비용은 사용자 본인의 AI 코딩 에이전트(Claude / Codex / OpenAI 등)에 따라 발생.
-
-## Resources
-
-- 라이브 데모 + docs: https://oh-my-design.kr
-- Documentation: https://oh-my-design.kr/docs
-- Builder: https://oh-my-design.kr/builder — 카탈로그 레퍼런스에서 DESIGN.md 생성
+- 한국어: https://oh-my-design.kr/docs/ko
+- 한국어 라이브 데모 실행표: https://oh-my-design.kr/docs/ko/demo
+- AI slop 판정 기준과 비교: https://oh-my-design.kr/docs/ko/anti-slop
+- English: https://oh-my-design.kr/docs/en
+- 日本語: https://oh-my-design.kr/docs/ja
+- 简体中文: https://oh-my-design.kr/docs/zh-cn
+- 繁體中文: https://oh-my-design.kr/docs/zh-tw
+- Builder: https://oh-my-design.kr/builder
 - Catalog: https://oh-my-design.kr/design-systems
-- FAQ: https://oh-my-design.kr/faq
-- Alternatives 비교: https://oh-my-design.kr/alternatives/shadcn (외 v0, anima, locofy)
-- DESIGN.md 정의: https://oh-my-design.kr/what-is-design-md
-- Changelog: https://oh-my-design.kr/changelog
-- npm: https://www.npmjs.com/package/oh-my-design-cli
-- oh-my-design-mcp (MCP server): https://www.npmjs.com/package/oh-my-design-mcp
 - GitHub: https://github.com/kwakseongjae/oh-my-design
-- License: MIT
 
-## Citation
+## 머신 리더블 원본
 
-oh-my-design은 Kwak Seongjae(https://github.com/kwakseongjae)가 구축·유지합니다. 패키지는 MIT 라이선스 오픈소스. 레퍼런스 brand의 DESIGN.md는 교육 목적의 reference로 reproduce되며 각 회사의 자산은 해당 회사 소유입니다.
+- 전체 컨텍스트: https://oh-my-design.kr/llms-full.txt
+- 레퍼런스 원문: `https://oh-my-design.kr/<id>/design.md`
+- 예시: https://oh-my-design.kr/toss/design.md
+
+이전 MCP connector는 폐기되었습니다. 로컬 카탈로그와 raw DESIGN.md 경로를 사용합니다.
