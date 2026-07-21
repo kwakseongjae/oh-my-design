@@ -3,24 +3,26 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: release implementation `21a908d`가 `origin/agent/v2-440-release`에 push됨 + local rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-21 · CLI v1.9 push-ready gate + Node 18 clean install
+- 기준 커밋: `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-21 · CLI v1.9 production deploy + npm publish 완료
 
 ## 지금 (현재 위치)
 
+- PR #47에서 CLI-first activation release를 `main`에 병합했고 Vercel Production 배포를 완료했다. `https://oh-my-design.kr/docs/{en,ko,ja,zh-cn,zh-tw}`는 모두 HTTP 200이다.
+- `v1.9.0` release workflow는 첫 실행에서 npm 10의 `prepare` stdout이 `npm pack --json` 앞에 섞여 parser가 실패했다. PR #48에서 standalone `[` line부터 JSON을 읽도록 수정했고 Node 18 smoke, 전체 CLI/Web/catalog/build, provenance publish가 모두 통과했다.
+- npm `latest`는 `oh-my-design-cli@1.9.0`이다. 빈 임시 폴더의 공개 registry install에서 package metadata와 `omd --version` 모두 `1.9.0`을 반환했다. 현재 공개 계약은 440 references / 20 skills / 18 roles / Node >=18이다.
 - Home은 Hero → **CLI** → Live Proof → Wall 순서이며 CLI terminal에 성공 기반 실제 installer copy, live-run/install docs 진입, channel별 정직한 install 결과, restart+doctor 다음 행동을 넣었다. 과장된 `all real/full design system/full philosophy` 문구는 quality-graded/evidence-backed/unknown-absent 계약으로 교정했다.
 - Builder preview는 고정 desktop bar 대신 모든 breakpoint에 3-step handoff를 inline으로 제공한다. 각 단계는 목적지를 `project root → project terminal → agent chat`으로 명시하고, installer 뒤 같은 Terminal에서 `doctor`를 실행하도록 안내한다. 390×844에서 세 카드 overflow 0, installer/prompt clipboard와 exact Toss builder URL을 확인했다.
 - 공용 clipboard helper가 Clipboard API 실패 시 textarea fallback을 쓰며 copy 성공 후에만 activation event를 발화한다. Home copy는 실제 clipboard `npx oh-my-design-cli@latest`와 `Copied` 상태를 production build에서 통과했다.
 - Builder list API는 불필요한 `tokens`를 제거해 440개 응답을 89,288B로 축소했다. selector는 최초 60개를 렌더한 뒤 600px 전방 sentinel이 보이면 60개씩 자동 확장하며 수동 `Show more` 버튼은 없다. production build 브라우저에서 60→120 자동 확장과 scrollHeight 증가를 확인했다.
 - 최종 `oh-my-design-cli@1.9.0` tarball은 5,747,433B packed / 20,770,035B unpacked / 533 entries다. Node 18.20.8의 clean target에서 Claude Code·Codex·OpenCode 20 skills/18 roles/440 refs, Cursor 0/0/440, 전 채널 doctor ready와 독립 collector usage gate를 통과했다.
 - 릴리스 게이트는 CLI 6 files/101 tests, Web 50 files/820 tests, 양쪽 TypeScript, Web ESLint 0 errors(기존 warning 40), catalog/counts, 1,458-page production build, `git diff --check` green이다.
-- npm 공개 레지스트리에 `1.9.0`은 아직 없지만 로컬 npm 인증은 E401로 만료됐다. GitHub CLI token도 invalid라 PR 생성은 재로그인이 필요할 수 있다. 일반 git push 자격증명은 별도 검증한다.
-- final QA round 1은 코드/패키지 7개 항목 PASS, 링크 1개 REVISION이다. 현재 production의 `/docs/{en,ko,ja,zh-cn,zh-tw}`가 404이므로 **web merge/deploy → locale 200 smoke → npm publish/tag** 순서를 지킨다.
+- final QA round 1의 유일한 REVISION이던 production locale link 404는 배포 후 다섯 경로 200으로 닫혔다. 코드/패키지/링크 8개 항목이 모두 PASS다.
 - README EN/KO/JA/ZH-TW와 npm metadata를 outcome-first·quality-graded·MCP-free local workflow 기준으로 교정했다. npm dry-run tarball은 5,747,433B packed / 20,770,035B unpacked / 533 entries이며 README, logo asset, dist CLI가 모두 포함되고 internal-only docs는 없다.
-- CLI-first implementation commit과 branch push는 완료했다. web merge/deploy와 npm publish/tag는 아직 하지 않았다.
+- CLI-first implementation, web merge/deploy, npm publish/tag까지 완료했다. 릴리스 워크플로우: https://github.com/kwakseongjae/oh-my-design/actions/runs/29811360657
 - 2026-06-22~07-19 complete 28d 기준 GA는 7,402 users, legacy `/docs` 186 users(2.5%), `act_install_copy` 282 users(3.8%; 475 events), `act_prompt_copy` 192 users다. Builder는 install-copy 229 events/135 users로 최대 surface이며 desktop handoff는 보이지만 mobile은 0×0로 완전 비노출이다. npm은 같은 기간 2,667 downloads라 web copy event의 5.6×이나 npm download는 unique install이 아니다.
 - 이전 clean-install gate는 `/tmp` candidate `1.9.0` install → Codex 20 skills/18 roles/440 refs → `doctor`까지 통과했다. 이번 변경은 package metadata/README와 web activation layer이며 publish 직전 동일 tarball clean-install을 한 번 더 수행한다.
-- 다음 queue: web merge/deploy → 5 locale route 200 smoke → npm 재로그인 후 1.9.0 publish/tag → production activation funnel 관찰. P2 Home comparison mobile overflow와 Builder error/Retry 상태 교정은 후속이다.
+- 다음 queue: production activation funnel 관찰 → current v1.9 full-trace 사례 → 기존 route rescue 사례 → P2 Home comparison mobile overflow와 Builder error/Retry 상태 교정이다.
 - CLI docs desktop grid의 780px fixed main track을 fluid `minmax(0,1fr)`로 바꾸고 xl gap을 56→40px로 줄였다. 1580px viewport에서 main 780→912px, TOC 이후 버려지던 공간은 약 140→24px로 감소했다. 1280/1024/390px에서 main 706/690/384px, visible sidebars 2/1/0, horizontal overflow 0을 확인했다.
 - CLI docs의 `On this page` scroll-spy에서 Strict Mode/HMR 재마운트 뒤 RAF ref가 stale 상태로 남아 자연 스크롤 업데이트를 막던 원인을 제거했다. canonical scrolling element와 reading line/page-end 판정을 분리했고 5개 회귀 테스트를 추가했다. 실제 pointer-wheel scroll에서 KO 목차가 원칙→10관점→minimalism→비교→분류→워크플로→리서치 순으로 연속 갱신된다.
 - `/docs/{en,ko,ja,zh-cn,zh-tw}/anti-slop`의 10개 lens를 익명 막대/도형에서 실제 과업형 before/better UI로 교체했다: dashboard/release, nested settings/flat rows, promo/docs type, glass/semantic checkout, fake metric/build proof, cards/table, happy path/state set, clipped desktop/mobile checkout, scattered/anchored notification, pills/role-correct controls. 각 specimen의 UI label도 5 locale 원문을 사용한다.
@@ -209,16 +211,14 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. web을 merge/deploy하고 Home gutter 0, 5-locale `/docs/{locale}`, locale switch, Copy page/llms direct copy, Showcase, Builder 연결을 production에서 smoke한다.
-2. npm 재로그인 후 `oh-my-design-cli@1.9.0`을 publish/tag한다. 태그 release workflow의 Node 18 standalone-collector gate를 다시 통과시킨다.
-3. Applepresso의 historical 1.4 run을 보완할 current v1.9 full-trace 사례 1개와 실제 기존 제품 route rescue 사례 1개를 추가한다.
-4. 배포 후 `docs_open → install_copy → doctor_ready → first DESIGN.md → verified route` activation funnel을 측정해 첫 7일 이탈 지점을 고친다.
+1. `docs_open → install_copy → doctor_ready → first DESIGN.md → verified route` activation funnel을 첫 7일 관찰해 가장 큰 이탈 지점을 고친다.
+2. Applepresso의 historical 1.4 run을 보완할 current v1.9 full-trace 사례 1개와 실제 기존 제품 route rescue 사례 1개를 추가한다.
+3. Home comparison mobile overflow와 Builder error/Retry 상태를 production route에서 교정한다.
+4. 나머지 reference fleet은 demand-ranked reverify queue에 따라 점진 처리한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- npm publish는 로컬 npm E401과 production locale docs 404 때문에 보류한다. web을 먼저 배포하고 locale route 200을 확인해야 한다.
-- branch push는 성공했다. GitHub CLI token은 invalid이고 연결 앱의 draft PR 생성도 403이라, PR은 `gh auth login -h github.com` 후 생성해야 한다.
-- browser-harness는 이번 로컬 Chrome attachment에서 사용할 수 없어 브라우저 acceptance는 Playwright fallback으로 수행했다. packaged collector 자체의 system Chrome 실행은 Node 18 독립 감사에서 통과했다.
+- 없음. 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 배포·publish를 완료했다.
 
 ## 진행 중 레인 (병렬 작업 시에만)
 

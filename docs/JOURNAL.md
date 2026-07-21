@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-21 (Codex) · CLI v1.9 production release
+- PR #47을 병합하고 Vercel Production 및 5개 locale docs 200을 확인했다.
+- npm 10 `prepare` stdout 때문에 실패한 pack JSON parser를 PR #48로 수정해 Node 18 smoke를 복구했다.
+- `v1.9.0` workflow 전체 gate와 provenance publish가 통과했고 npm `latest`가 1.9.0이다.
+- 빈 폴더 public install에서 package/CLI version 1.9.0을 확인했다. 다음은 activation funnel 관찰이다.
+
 ## 2026-07-21 (Codex) · CLI v1.9 final release gate
 - CLI 101/Web 820 tests·TS·ESLint·catalog/counts·1,458-page build를 통과했다.
 - Node 18.20.8 clean tarball에서 20 skills/18 roles/440 refs, 전 채널 doctor와 독립 collector를 확인했다.
