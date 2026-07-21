@@ -44,7 +44,9 @@ jobs:
         run: |
           set -euo pipefail
           PACK_JSON=$(npm pack --json)
-          TARBALL=$(node -e 'const fs=require("fs"); const p=JSON.parse(fs.readFileSync(0,"utf8")); process.stdout.write(p[0].filename)' <<<"$PACK_JSON")
+          # npm 10 can prepend `prepare` output before the JSON payload. Parse
+          # from the first standalone `[` line instead of assuming byte 0.
+          TARBALL=$(node -e 'const fs=require("fs"); const raw=fs.readFileSync(0,"utf8"); const start=raw.search(/^\[\s*$/m); if(start<0) throw new Error("npm pack JSON payload not found"); const p=JSON.parse(raw.slice(start)); process.stdout.write(p[0].filename)' <<<"$PACK_JSON")
           mkdir packed
           tar -xzf "$TARBALL" -C packed
           # Exercise the artifact exactly as the installer leaves it: outside
