@@ -1,5 +1,5 @@
 ---
-name: omd:apply
+name: omd-apply
 description: "프로젝트 DESIGN.md를 UI/시각 작업의 brand context로 적용. 컴포넌트·색상·폰트·레이아웃 수정 같은 구체적 요청과 톤·분위기 표현 — KR '좀 더 따뜻하게', EN 'make it warmer/cooler', 日本語「もう少し暖かく」, 繁體中文「更溫暖一點」 — 모두에 트리거. DESIGN.md 부재 시 omd:init 우선. 화면 전체 신규 디자인은 omd:harness, 교정 기록은 omd:remember."
 ---
 
@@ -62,6 +62,40 @@ dispatch 전에 실제 역할 가용성을 확인하고 아래 첫 번째 가능
 
 implement/change 요청은 어떤 recovery 경로에서도 본 에이전트가 자문을 반영해 실제 파일을 편집하고 검증한다. audit/advice 요청만 자문 결과 요약으로 종료할 수 있다.
 
+### Work packet — 역할 수보다 먼저 고정
+
+복합 작업은 dispatch 전에 아래 필드를 인라인으로 고정한다. 2개 이상 specialist를 쓰거나 다음 턴으로 이어질 때만 `.omd/work/<timestamp>-<slug>.json`에 기록한다. 단일 변경에 파일을 만들지 않는다.
+
+```yaml
+intent: audit | implement
+task: <사용자가 원하는 결과>
+consumer_route: <사용자가 실제로 진입하는 route>
+acceptance: [<관찰 가능한 완료 조건>]
+protected_behaviors: [<깨지면 안 되는 동작>]
+evidence: [DESIGN.md, screenshot, code, browser observation]
+unknowns: [<확인되지 않은 정보 — fallback으로 채우지 않음>]
+implementation_owner: main-agent | none
+verification:
+  routes: []
+  viewports: []
+  states: []
+  commands: []
+```
+
+설치된 채널 data root에 `workflow-capabilities.json`이 있으면 선언된 workflow와 필드명을 사용한다. 파일이 없어도 위 계약으로 계속하며 설치를 강요하지 않는다.
+
+specialist handoff에는 전체 대화 대신 이 packet과 필요한 파일·스크린샷만 전달한다. specialist 응답은 다음 shape로 제한한다.
+
+```yaml
+finding: <무엇이 문제인가>
+evidence: <route·line·DOM·screenshot 근거>
+smallest_useful_change: <최소 유효 수정>
+acceptance_check: <어떻게 통과를 확인할지>
+unresolved: [<확인 불가 항목>]
+```
+
+서로 다른 specialist가 같은 제품 파일을 동시에 수정하지 않는다. `implementation_owner: main-agent`만 자문을 합치고 코드를 편집한다.
+
 ## Phase 1 — DESIGN.md 로드
 
 실제 변경 또는 디자인 판단 전에 진행:
@@ -94,7 +128,8 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 - Component 섹션 명시된 규칙 따름 (variant / state / sizes).
 - 없는 토큰 지어내지 않음. 필요 시 사용자에게 "이건 DESIGN.md에 없는데, 어떻게 할까요?" 묻기.
 - advisory dispatch 결과가 read-only 제안이어도 implement/change 요청에서는 본 에이전트가 최소 유효 변경을 직접 적용.
-- 변경 후 요청에 비례한 빌드·테스트·실제 route 검증을 수행. 자문 완료를 구현 완료로 간주하지 않음.
+- 변경 전 `consumer_route`의 viewport·state·핵심 동작을 기록하고, 변경 후 **같은 consumer route·viewport·state**를 다시 연다. 공유 renderer나 진단 route만 확인해 통과 처리하지 않는다.
+- 변경 후 요청에 비례한 빌드·테스트·실제 route 검증을 수행. 동작, 시각 계약, 접근성, overflow를 확인한다. 실행하지 못한 검증은 통과로 표현하지 않고 `unresolved`에 남긴다. 자문 완료를 구현 완료로 간주하지 않음.
 
 ## Phase 3 — 교정 캡처
 

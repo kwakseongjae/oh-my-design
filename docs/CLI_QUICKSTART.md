@@ -7,6 +7,14 @@ oh-my-design gives your existing AI coding environment two things it can reuse a
 
 The CLI is the installer and health check. It does not generate a UI by itself and it does not call a separate AI service. Claude Code, Codex, and OpenCode receive OmD skills and specialist roles. Cursor is intentionally narrower: it receives a project rule and catalog, not OmD skills or sub-agents.
 
+When you do not know what to ask next, route one sentence locally:
+
+```bash
+npx oh-my-design-cli@latest workflows "이 가격 페이지를 검수하고 고쳐줘" --lang ko
+```
+
+The output tells you exactly what to paste into the coding-agent chat. Only installer, doctor, and workflows belong in the terminal; product prompts belong in Claude Code, Codex, OpenCode, or Cursor.
+
 ## Your first 60 seconds — Claude Code, Codex, or OpenCode
 
 Run this from the root of the project you want to design:
@@ -119,6 +127,8 @@ Once installed, prompts—not repeated CLI commands—are the main interface. Na
 
 The full harness includes explicit user checkpoints. It does not silently approve information architecture, design-system changes, or final validation.
 
+Across these paths, specialist roles are advisory. A single main agent owns product edits, and implementation is complete only after the same consumer route, viewport, and state have been checked again. `omd workflows --json` exposes this capability graph for automation and benchmark attribution.
+
 ## Diagnose and recover
 
 Run the doctor whenever a skill, role, or reference does not appear:
@@ -154,4 +164,4 @@ Common recovery paths:
 - [Migration guide for 0.1.x](../MIGRATION.md)
 - [GitHub repository](https://github.com/kwakseongjae/oh-my-design)
 
-For command flags, run `npx oh-my-design-cli@latest --help` or `npx oh-my-design-cli@latest doctor --help`.
+For command flags, run `npx oh-my-design-cli@latest --help`, `npx oh-my-design-cli@latest doctor --help`, or `npx oh-my-design-cli@latest workflows --help`.

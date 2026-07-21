@@ -150,13 +150,19 @@ fabricated satisfaction score.
 3. Keep the prompt, evaluator, oracle, and run manifest in a read-only control
    plane outside the submission's readable and writable tree.
 4. Record a filesystem manifest before execution and verify control-plane plus
-   submission hashes afterward.
+   submission hashes afterward. Record a second product-only manifest that
+   excludes installed skills, agent definitions, benchmark control files, and
+   run-state directories; only this diff can prove delivery changed the UI.
 5. Disable network at the OS/container boundary after dependencies are present.
 6. Never expose SSH agents, real browser profiles, credentials, or project data.
 7. Record hooks and executable files added by installers.
 8. Keep prompt-only and hook/browser-enabled arms separate.
 9. Preserve every scheduled success, failure, crash, timeout, and raw artifact;
    never overwrite or silently drop a trial.
+10. Reject dirty candidate or vendor source trees by default. An explicitly
+    allowed dirty diagnostic remains non-publishable and invalid for attribution.
+11. Export every completed workspace through the normalized run-record schema
+    before aggregation; do not hand-edit leaderboard rows.
 
 The repository's current preparation script deliberately copies reviewed source
 files instead of running third-party installation commands. It is a local pilot

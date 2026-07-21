@@ -39,7 +39,14 @@ Then restart your agent so it discovers the newly installed channel files, and v
 npx oh-my-design-cli@latest doctor
 ```
 
-The CLI only bootstraps and diagnoses the bundle. Every design task after that is natural language to your agent.
+The CLI bootstraps and diagnoses the bundle. Every design task after that is natural language to your agent. If you are unsure what to say—or whether it belongs in the terminal—ask the local route guide:
+
+```bash
+npx oh-my-design-cli@latest workflows "improve our existing pricing page"
+# Korean output: add --lang ko
+```
+
+It prints one prompt to paste into your coding agent and the workflow that will own delivery. It does not run a second AI service.
 
 The installer asks **where** to install: **Project** (channel-local files in this repository, the default) or **Global** (user-level files available across projects). OpenCode uses `.opencode/` for project installs and `~/.config/opencode/` for global installs. Global installation leaves hooks/settings untouched. Use `npx oh-my-design-cli@latest install-skills --global` to select that scope non-interactively, then verify it with `npx oh-my-design-cli@latest doctor --global`.
 
@@ -62,6 +69,8 @@ This is the shortest path from install to a visible result.
    > Read DESIGN.md and design the home screen. Preserve the current behavior and logo.
 
    The agent reads `DESIGN.md`, works against the recorded decisions, and leaves a result you can inspect in the project.
+
+OmD keeps one implementation owner for that result. Specialist roles provide evidence and focused recommendations; the main agent changes the product and reverifies the same route, viewport, and state. A full new-surface harness uses its three required checkpoints, then hands approved artifacts back to the main agent for product integration when implementation was requested.
 
 Don't want Toss? Any brand works — `Stripe-style`, `Linear-clone B2B SaaS`, `Karrot-style marketplace`. Browse the full catalog at [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems).
 

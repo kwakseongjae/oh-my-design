@@ -25,6 +25,13 @@ CLI 의존 없음. 모든 부트스트랩은 Bash + Write 툴로 직접 실행�
 shape: "[도메인] + [톤/스타일] + [핵심 화면]" — 예: "토스 스타일 가족용 식단 앱 메인 화면"
 ```
 
+task에서 delivery intent도 함께 고정한다.
+
+- `디자인/와이어프레임/기획/시안`만 요청 → `delivery_intent: design-only`
+- `구현/만들어/적용/build/implement/production-ready` 포함 → `delivery_intent: implement`
+
+`implement`여도 mandatory checkpoint를 건너뛰지 않는다. 차이는 승인된 handoff 뒤 실제 제품 코드 통합까지 이어지는지다.
+
 ## Step 1 — Channel-safe role activation + inline recovery (v1.9.0+)
 
 먼저 Agent 도구의 사용 가능 role 목록에서 `omd-master`를 확인한다. 있으면 Step 2로 간다. 없을 때는 Markdown을 임의 폴더에 복사하지 않는다. Claude와 Codex의 role schema가 다르고, `.agents/`는 Codex에서 skill 경로이지 role 경로가 아니다.
@@ -357,6 +364,7 @@ task: <user task>
 chosen_ref_id: <id>
 surface_signal: marketing | product | docs | onboarding | null
 reference_capture_dir: assets/_reference/<id>/ | null
+delivery_intent: implement | design-only
 ```
 
 reference_capture_dir이 존재하면 master는 그 디렉토리의 `tokens.json`, `structure.json`, `screenshots/*.png` 를 **모두 활용**한다 (canonical DESIGN.md만 보지 말 것).
@@ -655,7 +663,7 @@ while spawn_count < 12 (safety cap):
   if handoff.user_prose:
     print handoff.user_prose to user
 
-  if handoff.status == "done": halt
+  if handoff.status == "done": break to Step 5
   if handoff.status == "error": halt + show
   if handoff.status == "ask_user":
     questions = JSON.parse(Read(handoff.questions_file))
@@ -664,6 +672,40 @@ while spawn_count < 12 (safety cap):
     Write(answers_file, JSON.stringify({checkpoint_id, answers}))
     prompt = "continue checkpoint:" + handoff.checkpoint_id + " — answers at " + answers_file
 ```
+
+## Step 5 — Delivery bridge (checkpoint #3 이후만)
+
+master가 `ARCHIVE_RUN`에서 `<RUN_DIR>/handoff/delivery.json`을 작성해야 한다. launcher는 `status: done`을 받으면 이 파일을 읽는다.
+
+- `delivery_intent: design-only` → artifact와 unresolved를 사용자에게 전달하고 종료.
+- `delivery_intent: implement` → 현재 main agent가 `implementation_owner`를 이어받아 `omd:apply`의 implement/change 경로로 제품 파일을 편집한다.
+
+delivery packet 최소 shape:
+
+```json
+{
+  "intent": "implement",
+  "task": "<user outcome>",
+  "consumer_route": "<real route or null>",
+  "acceptance": [],
+  "protected_behaviors": [],
+  "evidence": [],
+  "unknowns": [],
+  "implementation_owner": "main-agent-after-checkpoint-3",
+  "artifacts": [],
+  "verification": { "routes": [], "viewports": [], "states": [], "commands": [] }
+}
+```
+
+main agent는 다음 순서를 지킨다.
+
+1. delivery packet과 승인된 artifact를 읽는다.
+2. `consumer_route`가 null이면 코드에서 실제 사용자 진입 경로를 찾는다. 추정 route로 대체하지 않는다.
+3. 제품 동작을 보존하며 승인 범위만 통합한다.
+4. 변경 전과 **같은 route·viewport·state**에서 다시 검증한다.
+5. `<RUN_DIR>/handoff/delivery-verification.json`에 changed product files, 실행한 checks, unresolved를 기록한다.
+
+제품 파일 변경과 실제 route 검증 전에는 `status: done`을 최종 delivery 완료로 해석하지 않는다. 그것은 design archive 완료일 뿐이다.
 
 ### Safety cap
 
@@ -720,6 +762,7 @@ Master가 체크포인트에서 turn을 종료한 후 다음 사용자 메시지
 - Sub-agent 직접 spawn (master)
 - 사용자 응답 해석/라우팅 (master)
 - DESIGN.md 직접 수정 (Phase 5에서 master)
+- specialist 자문을 제품 구현 완료로 간주
 
 ## 금지
 

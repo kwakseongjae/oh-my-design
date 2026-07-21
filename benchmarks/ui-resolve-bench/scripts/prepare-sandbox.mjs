@@ -21,7 +21,7 @@ const out = args.get("out") ? resolve(String(args.get("out"))) : null;
 const vendorsRoot = args.get("vendors") ? resolve(String(args.get("vendors"))) : null;
 
 if (!taskId || !variantId || !out) {
-  console.error("usage: prepare-sandbox.mjs --task <id> --variant <id> --out <new-dir> [--vendors <dir>] [--allow-off-label]");
+  console.error("usage: prepare-sandbox.mjs --task <id> --variant <id> --out <new-dir> [--vendors <dir>] [--allow-off-label] [--allow-dirty-source]");
   process.exit(2);
 }
 if (existsSync(out)) throw new Error(`refusing to overwrite an existing run: ${out}`);
@@ -72,6 +72,15 @@ function assertSkillContract(skillFile, expectedName) {
     throw new Error(`skill name mismatch at ${skillFile}: expected ${expectedName}, received ${receivedName}`);
   }
   return receivedName;
+}
+
+function renderInstalledSkillName(skillFile, expectedName) {
+  const source = readFileSync(skillFile, "utf8");
+  const rendered = source.replace(/^name:\s*[^\r\n]+$/m, `name: ${expectedName}`);
+  if (rendered === source && frontmatterName(skillFile) !== expectedName) {
+    throw new Error(`could not render installed skill name at ${skillFile}`);
+  }
+  writeFileSync(skillFile, rendered, "utf8");
 }
 
 function renderFrontmatter(frontmatter) {
@@ -140,6 +149,7 @@ if (variant.declared_name) {
   let sourceRoot;
   let sourceCommit;
   let vendorRoot = null;
+  let sourceGitRoot;
   if (variant.vendor_dir) {
     if (!vendorsRoot) throw new Error(`${variantId} requires --vendors`);
     vendorRoot = assertInside(vendorsRoot, join(vendorsRoot, variant.vendor_dir));
@@ -148,9 +158,23 @@ if (variant.declared_name) {
       throw new Error(`${variantId} commit mismatch: expected ${variant.commit}, received ${sourceCommit}`);
     }
     sourceRoot = assertInside(vendorRoot, join(vendorRoot, variant.source_path));
+    sourceGitRoot = vendorRoot;
   } else {
     sourceRoot = assertInside(repoRoot, join(repoRoot, variant.source_path));
     sourceCommit = execFileSync("git", ["-C", repoRoot, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+    sourceGitRoot = repoRoot;
+  }
+  const sourceStatus = execFileSync(
+    "git",
+    ["-C", sourceGitRoot, "status", "--porcelain=v1", "--untracked-files=all"],
+    { encoding: "utf8" },
+  );
+  const sourceDirty = sourceStatus.trim().length > 0;
+  const dirtySourceOptIn = args.get("allow-dirty-source") === true || args.get("allow-dirty-source") === "true";
+  if (sourceDirty && !dirtySourceOptIn) {
+    throw new Error(
+      `${variantId} source tree is dirty at ${sourceGitRoot}. Commit/stash it, or use --allow-dirty-source for a non-publishable diagnostic run.`,
+    );
   }
   const installRoot = assertInside(out, join(out, variant.install_root));
   const destination = assertInside(installRoot, join(installRoot, variant.install_dir));
@@ -160,6 +184,11 @@ if (variant.declared_name) {
     bundledSkills = installOfficialUiUxCodexBundle(vendorRoot, destination, installRoot, variant);
   } else {
     copyReviewedTree(sourceRoot, destination);
+    if (variant.install_adapter === "omd-channel-name-v1") {
+      renderInstalledSkillName(join(destination, "SKILL.md"), variant.declared_name);
+    } else if (variant.install_adapter) {
+      throw new Error(`unsupported install adapter: ${variant.install_adapter}`);
+    }
   }
   const declaredName = assertSkillContract(join(destination, "SKILL.md"), variant.declared_name);
   const skillTree = treeManifest(installRoot);
@@ -172,6 +201,14 @@ if (variant.declared_name) {
     bundled_skills: bundledSkills,
     source_path: variant.source_path,
     source_commit: sourceCommit,
+    source_attestation: {
+      vcs: "git",
+      dirty: sourceDirty,
+      explicit_dirty_opt_in: sourceDirty && dirtySourceOptIn,
+      status_entries: sourceStatus.trim() ? sourceStatus.trim().split("\n").length : 0,
+      status_sha256: sha256(sourceStatus),
+      publishable: !sourceDirty,
+    },
     sha256: skillTree.sha256,
     files: skillTree.files.length,
   };
@@ -196,6 +233,16 @@ writeFileSync(
 );
 
 const initialTree = treeManifest(out, { ignore: [".benchmark"] });
+const productIgnore = [...new Set([
+  ".benchmark",
+  ".omd",
+  ".agents",
+  ".claude",
+  ".codex",
+  ".opencode",
+  "AGENTS.md",
+])];
+const initialProductTree = treeManifest(out, { ignore: productIgnore });
 const manifest = {
   schema_version: "0.1",
   prepared_at: new Date().toISOString(),
@@ -226,6 +273,9 @@ const manifest = {
     name: basename(out),
     initial_sha256: initialTree.sha256,
     initial_files: initialTree.files.length,
+    product_ignore: productIgnore,
+    product_initial_sha256: initialProductTree.sha256,
+    product_initial_files: initialProductTree.files,
   },
   safety: {
     third_party_installer_executed: false,

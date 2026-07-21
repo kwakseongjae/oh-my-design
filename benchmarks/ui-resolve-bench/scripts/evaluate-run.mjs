@@ -168,6 +168,18 @@ export function evaluateViewportGeometry(viewport) {
   };
 }
 
+export function evaluateFontOracle(observation, oracle) {
+  const matchesAny = (actual, expected) =>
+    typeof actual === "string" &&
+    Array.isArray(expected) &&
+    expected.length > 0 &&
+    expected.some((family) => actual.toLocaleLowerCase().includes(String(family).toLocaleLowerCase()));
+  return {
+    body: matchesAny(observation?.body_font, oracle?.body_any),
+    display: matchesAny(observation?.display_font, oracle?.display_any),
+  };
+}
+
 const everyCheckPass = (checks) =>
   Boolean(checks) && Object.values(checks).length > 0 && Object.values(checks).every((value) => value === true);
 
@@ -698,6 +710,7 @@ async function main() {
     language: typeof semantics?.lang === "string" && semantics.lang.toLowerCase().startsWith(task.locale),
   };
   const oracle = task.design_oracle ?? {};
+  const fontChecks = evaluateFontOracle(design, oracle.font_family);
   const designChecks = {
     page_background:
       typeof design?.page_background === "string" &&
@@ -713,11 +726,7 @@ async function main() {
       Number.isFinite(design?.control_radius_px) &&
       Number.isFinite(oracle.control_radius_px) &&
       Math.abs(design.control_radius_px - oracle.control_radius_px) <= 1,
-    fonts:
-      typeof design?.body_font === "string" &&
-      typeof design?.display_font === "string" &&
-      /Arial/i.test(design.body_font) &&
-      /Georgia/i.test(design.display_font),
+    fonts: everyCheckPass(fontChecks),
   };
   const unsupportedClaims = findUnsupportedClaims(evidenceSources, task.protected_unknown_patterns);
   const evidenceChecks = {
@@ -788,6 +797,7 @@ async function main() {
       accessibility: accessibilityChecks,
       keyboard,
       design: designChecks,
+      font_oracle: fontChecks,
       evidence: evidenceChecks,
     },
     observations: {

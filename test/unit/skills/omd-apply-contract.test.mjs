@@ -23,4 +23,11 @@ describe("omd:apply delivery contract", () => {
     expect(skill).not.toContain("그 후 인라인 처리는 하지 않고");
     expect(skill).not.toContain("복합 작업을 인라인으로 처리 금지");
   });
+
+  it("uses one shared work packet and exact consumer-route verification", () => {
+    expect(skill).toContain("Work packet");
+    expect(skill).toContain("consumer_route");
+    expect(skill).toContain("implementation_owner");
+    expect(skill).toContain("같은 consumer route");
+  });
 });

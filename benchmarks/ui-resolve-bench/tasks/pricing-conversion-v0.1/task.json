@@ -64,6 +64,10 @@
     "border": "#D9D8D1",
     "muted_text": "#667085",
     "card_radius_px": 16,
-    "control_radius_px": 10
+    "control_radius_px": 10,
+    "font_family": {
+      "body_any": ["Arial"],
+      "display_any": ["Georgia"]
+    }
   }
 }

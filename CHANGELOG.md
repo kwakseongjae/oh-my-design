@@ -6,6 +6,15 @@ After any release: run `npx oh-my-design-cli@latest`, keep the detected channels
 
 ---
 
+## Unreleased — 1.9.1 candidate
+
+**Natural-language workflow routing, one implementation owner, and same-surface verification for UI delivery.**
+
+- `omd workflows [task]` (alias `omd route`) now turns a rough product request into the smallest capable OmD workflow and a ready-to-paste coding-agent prompt. The command explicitly separates terminal steps (install and doctor) from agent-chat work.
+- `omd:apply`, `omd:harness`, and `omd:orchestrator` now share one work-packet contract. Specialists return evidence and advice to a single implementation owner; completion requires the real consumer route, viewport, and state to be reverified after the product edit.
+- Full-harness runs now bridge approved artifacts back into the product after checkpoint #3 instead of treating an archived run directory as delivery. The package ships portable OpenAI skill metadata for the three core workflows.
+- The 1.9.1 benchmark kernel records dirty-source attribution, product-only diffs, task-owned font oracles, and normalized run records so skill, harness, and model results cannot be promoted from contaminated or non-product runs.
+
 ## 1.9.0 — 2026-07-17
 
 **CLI re-onboarding: one guided entrypoint, an exact repair doctor, safer managed upgrades, and outcome-first documentation in five languages.**

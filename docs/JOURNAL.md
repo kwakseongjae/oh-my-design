@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-21 (Codex) · 1.9.1 frontier workflow + measurement kernel candidate
+- rough task를 최소 workflow로 라우팅하는 `omd workflows|route`와 배포 가능한 workflow capability manifest를 추가했다.
+- apply/harness/orchestrator를 공통 work packet·단일 구현 책임자·동일 consumer surface 재검증 계약으로 연결했다.
+- harness checkpoint #3 이후 실제 제품 delivery bridge와 OpenAI skill metadata를 추가했다.
+- 141 tests, TypeScript/build, KO actual route, 539-file pack dry-run, dirty-source attestation이 green이며 다음은 clean 3×2×3 paired smoke다.
+
 ## 2026-07-21 (Codex) · benchmark families + 1.9.1→2.0.0 release train
 - Model/Skill Lift/Harness leaderboard와 비랭킹 Prompt Arena·Transfer Matrix를 분리해 모델·스킬·하네스 효과의 혼합을 막았다.
 - 1.9.1부터 0.0.1 단위 가설·승격·롤백 실험을 거쳐 gated 2.0.0으로 가는 release train과 공개 사이트 IA를 고정했다.

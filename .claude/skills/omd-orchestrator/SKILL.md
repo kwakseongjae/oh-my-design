@@ -1,7 +1,6 @@
 ---
 name: omd:orchestrator
 description: "멀티 에이전트 디자인 워크플로우 supervisor. writer, locale adaptation, humanize, UI slop audit, designer review, final QA, image materialization을 routing한다. 2-round revision cap을 유지하며 다국어 문서·UI 개선·출간 준비처럼 여러 역할이 필요한 요청에 사용한다."
-user-invocable: true
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 
@@ -23,6 +22,9 @@ omd v0.2 agent layer의 **supervisor**. 한 글/한 컴포넌트가 여러 speci
 | Copy finalizer | `omd-humanizer` | locale별 번역투·기계적 구조를 국소 수정하고 보호 구간 대조 |
 | Slop auditor | `omd-slop-auditor` | 실제 route의 context-free UI/copy cluster를 품질·취향과 분리해 감사 |
 | Visual reviewer | `omd-designer-review` | DESIGN.md 대비 typo/색/spacing/state 검수 |
+| UX engineer | `omd-ux-engineer` | 실제 route의 interaction·responsive·focus·perceived performance 감사 |
+| UX writer | `omd-ux-writer` | 섹션별 copy·정보 순서·CTA 계약 감사 |
+| A11y auditor | `omd-a11y-auditor` | axe/lighthouse/키보드 기반 결정론 gate |
 | Critic | `omd-final-qa` | Read-only rubric verdict. 2-round cap 강제. |
 | Image materializer | `omd-codex-image` | `<!-- omd:gen-image -->` 블록을 채널별로 실체화 (Codex native gen / asset-curator fallback / OpenCode user-queue) |
 
@@ -40,10 +42,38 @@ omd v0.2 agent layer의 **supervisor**. 한 글/한 컴포넌트가 여러 speci
 ├─ "글 작성" 키워드 → Stage 1: omd-kr-writer
 ├─ "AI 티/번역투/문장이 기계적" → omd-humanizer
 ├─ 다국어 요청 ("EN", "영문", "JA", "간체", "대만어") → Stage 3 + locale별 humanize 추가
-├─ "AI slop/템플릿 같음" → omd-slop-auditor → 수정은 omd:apply
+├─ "AI slop/템플릿 같음" + audit만 → omd-slop-auditor
+├─ 기존 UI "고쳐/개선/구현" → UI delivery lane → 수정은 caller의 omd:apply
 ├─ artifact 첨부 + "리뷰" → Stage 2부터 진입
 └─ "출간 ready" → Stage 4 final-qa로 직행
 ```
+
+## 2.1 UI delivery lane — advice와 delivery를 분리
+
+기존 UI의 변경 요청에서는 orchestrator가 제품 파일을 직접 편집하지 않는다. 다음 work packet을 먼저 고정하고 필요한 specialist를 최대 3개까지만 선택해 read-only로 실행한다.
+
+```yaml
+intent: audit | implement
+task: <user outcome>
+consumer_route: <real user route>
+acceptance: []
+protected_behaviors: []
+evidence: []
+unknowns: []
+implementation_owner: caller-main-agent
+verification:
+  routes: []
+  viewports: []
+  states: []
+  commands: []
+```
+
+각 specialist에게는 packet과 필요한 artifact만 전달한다. 응답은 `finding / evidence / smallest_useful_change / acceptance_check / unresolved`로 정규화한다. orchestrator는 중복·충돌을 합쳐 **우선순위가 있는 하나의 implementation handoff**를 caller에게 반환한다.
+
+- `intent: audit`이면 report로 종료 가능.
+- `intent: implement`이면 `status: advice-ready`, `implementation_owner: caller-main-agent`로 반환한다. 완료·수정됨·검증됨이라고 표현하지 않는다.
+- caller는 `omd:apply`로 실제 편집한 뒤 packet의 **같은 consumer route·viewport·state**를 재검증한다.
+- specialist와 caller가 같은 제품 파일을 병렬 수정하지 않는다.
 
 ## 3. 표준 5-stage 워크플로우 (블로그 글 기준)
 
@@ -101,6 +131,16 @@ Claude Code subagent 호출 시 다음 envelope:
 ```yaml
 agent: omd-kr-writer
 inputs:
+  work_packet:
+    intent: publish
+    task: "당근 디자인 분석 글 작성"
+    consumer_route: null
+    acceptance: ["KO article passes final QA"]
+    protected_behaviors: ["facts and source URLs remain unchanged"]
+    evidence: ["references/karrot/DESIGN.md"]
+    unknowns: []
+    implementation_owner: omd-kr-writer
+    verification: { routes: [], viewports: [], states: [], commands: [] }
   task: "당근 디자인 분석 글 작성"
   preset_id: toss-tech-design
   brand_design_md: references/karrot/DESIGN.md
@@ -119,6 +159,7 @@ prior_review: null  # 또는 review report 경로
 - **Stage skip** — designer-review 없이 final-qa 진입 금지 (rubric 불충분).
 - **병렬 stage 같은 artifact 수정** — race condition. writer/locale-adapter는 직렬.
 - **rubber-stamp** — final-qa가 "looks good" 응답 시 orchestrator는 rejected로 처리.
+- **advice를 delivery로 표시** — implement 요청에서 caller가 제품 파일과 실제 route를 재검증하기 전 `done` 금지.
 
 ## 9. 병렬화 허용 케이스
 

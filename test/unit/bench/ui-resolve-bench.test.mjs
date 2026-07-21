@@ -18,6 +18,9 @@ function prepareVariant(variant, { vendors = null, offLabel = false } = {}) {
   const command = [prepare, "--task", "pricing-conversion-v0.1", "--variant", variant, "--out", out];
   if (vendors) command.push("--vendors", vendors);
   if (offLabel) command.push("--allow-off-label");
+  if (competitors.variants[variant]?.declared_name && !competitors.variants[variant]?.vendor_dir) {
+    command.push("--allow-dirty-source");
+  }
   execFileSync(
     process.execPath,
     command,
@@ -92,7 +95,18 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       install_platform: "agents",
       install_root: ".agents/skills",
       install_dir: "omd-apply",
+      install_adapter: "omd-channel-name-v1",
+      source_attestation: expect.objectContaining({
+        vcs: "git",
+        dirty: expect.any(Boolean),
+        explicit_dirty_opt_in: expect.any(Boolean),
+        publishable: expect.any(Boolean),
+      }),
     });
+    expect(manifest.skill.source_attestation.explicit_dirty_opt_in)
+      .toBe(manifest.skill.source_attestation.dirty);
+    expect(manifest.skill.source_attestation.publishable)
+      .toBe(!manifest.skill.source_attestation.dirty);
     expect(manifest.task.core_prompt_sha256).toMatch(/^[a-f0-9]{64}$/);
     expect(manifest.task.prompt_sha256).toMatch(/^[a-f0-9]{64}$/);
     expect(manifest.task.prompt_sha256).not.toBe(manifest.task.core_prompt_sha256);
@@ -119,6 +133,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     expect(competitors.variants["omd-full-harness"]).toMatchObject({
       install_dir: "omd-harness",
+      install_adapter: "omd-channel-name-v1",
       declared_name: "omd:harness",
       activation: expect.stringContaining("$omd:harness"),
     });

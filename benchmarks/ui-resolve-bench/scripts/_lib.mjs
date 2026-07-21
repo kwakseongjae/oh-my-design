@@ -78,6 +78,22 @@ export function treeManifest(root, { ignore = [] } = {}) {
   };
 }
 
+export function diffTreeManifests(before, after) {
+  const beforeByPath = new Map((before?.files ?? []).map((file) => [file.path, file]));
+  const afterByPath = new Map((after?.files ?? []).map((file) => [file.path, file]));
+  const paths = [...new Set([...beforeByPath.keys(), ...afterByPath.keys()])].sort();
+  return paths.flatMap((path) => {
+    const left = beforeByPath.get(path);
+    const right = afterByPath.get(path);
+    if (!left) return [{ path, status: "added", before_sha256: null, after_sha256: right.sha256 }];
+    if (!right) return [{ path, status: "removed", before_sha256: left.sha256, after_sha256: null }];
+    if (left.sha256 !== right.sha256 || left.mode !== right.mode) {
+      return [{ path, status: "modified", before_sha256: left.sha256, after_sha256: right.sha256 }];
+    }
+    return [];
+  });
+}
+
 export function copyReviewedTree(source, destination) {
   if (existsSync(destination)) throw new Error(`destination already exists: ${destination}`);
   mkdirSync(destination, { recursive: true });

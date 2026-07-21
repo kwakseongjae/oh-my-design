@@ -35,6 +35,7 @@
     "data/vocabulary.json",
     "data/reference-fingerprints.json",
     "data/reference-tags.md",
+    "data/workflow-capabilities.json",
     "web/references/*/DESIGN.md",
     ".claude/hooks/*.cjs",
     ".claude/hooks/lib/*.cjs",
@@ -66,7 +67,9 @@
     "bench:ui:evaluate": "node benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
     "bench:ui:summarize": "node benchmarks/ui-resolve-bench/scripts/summarize-pilot.mjs",
     "bench:ui:aggregate": "node benchmarks/ui-resolve-bench/scripts/aggregate-results.mjs",
+    "bench:ui:export": "node benchmarks/ui-resolve-bench/scripts/export-run-record.mjs",
     "bench:ui:gallery": "node benchmarks/ui-resolve-bench/scripts/build-gallery.mjs",
+    "workflows": "node dist/bin/oh-my-design.js workflows",
     "postinstall": "node scripts/postinstall.cjs"
   },
   "keywords": [

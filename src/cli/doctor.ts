@@ -91,6 +91,7 @@ const REQUIRED_DATA_FILES = [
   'reference-fingerprints.json',
   'reference-tags.md',
   'vocabulary.json',
+  'workflow-capabilities.json',
 ] as const;
 const REQUIRED_CLAUDE_HOOKS = [
   'skill-activation.cjs',
@@ -257,6 +258,29 @@ function coreIssues(
       }
     } catch {
       issues.push('reference-fingerprints.json is not valid JSON');
+    }
+  }
+  const workflowsPath = join(dataRoot, 'workflow-capabilities.json');
+  if (existsSync(workflowsPath)) {
+    try {
+      const workflows: unknown = JSON.parse(readFileSync(workflowsPath, 'utf8'));
+      if (
+        !isJsonObject(workflows) ||
+        workflows.schema_version !== 1 ||
+        !Array.isArray(workflows.workflows) ||
+        workflows.workflows.length === 0 ||
+        workflows.workflows.some(
+          (workflow) =>
+            !isJsonObject(workflow) ||
+            typeof workflow.id !== 'string' ||
+            typeof workflow.entry_skill !== 'string' ||
+            !Array.isArray(workflow.stages),
+        )
+      ) {
+        issues.push('workflow-capabilities.json has an invalid workflow contract');
+      }
+    } catch {
+      issues.push('workflow-capabilities.json is not valid JSON');
     }
   }
   return issues;

@@ -61,8 +61,12 @@ is in [`RELEASE-TRAIN.md`](./RELEASE-TRAIN.md).
 ## Local pilot
 
 The preparation step copies a frozen starter and only the selected skill
-directory into a new sandbox. It verifies the source commit before copying and
-does not execute third-party installers or hooks.
+directory into a new sandbox. It verifies the source commit and clean-tree
+attestation before copying and does not execute third-party installers or hooks.
+`--allow-dirty-source` exists only for non-publishable diagnostics; the exporter
+marks that run `invalid-attribution`. Product changes are hashed separately from
+installed skill/runtime files so editing only the harness cannot masquerade as
+delivery.
 
 ```bash
 node benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs \
@@ -78,6 +82,12 @@ node benchmarks/ui-resolve-bench/scripts/run-codex.mjs \
 
 node benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs \
   --workspace /tmp/ui-resolve-runs/anthropic-frontend-design
+
+node benchmarks/ui-resolve-bench/scripts/export-run-record.mjs \
+  --workspace /tmp/ui-resolve-runs/anthropic-frontend-design \
+  --family skill \
+  --system anthropic-frontend-design \
+  --trial 1
 ```
 
 Once repeated runs are exported as
@@ -98,8 +108,10 @@ intervals, Reliability@k, objective min/mean/median/max and percentiles,
 median-representative/best/worst run IDs, plus paired Skill Lift where a control
 is supplied. Min and max are descriptive and never determine rank.
 
-The direct CLI path is designed to record model/runtime metadata, hashes, wall
-time, and raw output. When a host security policy blocks nested execution, the
+The direct CLI path records model/runtime metadata, full and product-only
+hashes, changed product files, source attestation, wall time, and raw output.
+Every task owns its design oracle, including typography; the evaluator contains
+no candidate-specific font fallback. When a host security policy blocks nested execution, the
 manual in-app fallback must be labelled as an observation and excluded from
 causal or efficiency claims. Generated workspaces stay in `/tmp`; only curated,
 explicitly labelled pilot reports are committed.

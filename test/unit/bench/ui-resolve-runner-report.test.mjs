@@ -81,6 +81,7 @@ describe("UI-Resolve Bench runner and reports", () => {
       "--variant", "omd-full-harness",
       "--out", allowedOut,
       "--allow-off-label",
+      "--allow-dirty-source",
     ], { cwd: repoRoot, encoding: "utf8" });
     const manifest = JSON.parse(readFileSync(join(allowedOut, ".benchmark/manifest.json"), "utf8"));
     expect(manifest.task.track).toBe("landing-redesign");

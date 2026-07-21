@@ -65,10 +65,15 @@ describe('omd doctor', () => {
       'reference-fingerprints.json',
       'reference-tags.md',
       'vocabulary.json',
+      'workflow-capabilities.json',
     ]) {
       writeFileSync(
         join(dataRoot, file),
-        file === 'reference-fingerprints.json' ? '{"count":1,"items":[{"id":"toss"}]}' : '{}',
+        file === 'reference-fingerprints.json'
+          ? '{"count":1,"items":[{"id":"toss"}]}'
+          : file === 'workflow-capabilities.json'
+            ? '{"schema_version":1,"workflows":[{"id":"repair-existing-ui","entry_skill":"omd:apply","stages":["inspect","implement","verify"]}]}'
+            : '{}',
       );
     }
   }

@@ -2,7 +2,7 @@
 import { spawn } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
+import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
 
 const args = parseArgs();
 const workspace = args.get("workspace") ? resolve(String(args.get("workspace"))) : null;
@@ -104,6 +104,15 @@ const events = stdout.split("\n").filter(Boolean).flatMap((line) => {
 });
 const usageEvents = events.filter((event) => event.type?.includes("usage") || event.usage || event.token_usage);
 const finalTree = treeManifest(workspace, { ignore: [".benchmark"] });
+const initialProductTree = {
+  sha256: manifest.workspace.product_initial_sha256,
+  files: manifest.workspace.product_initial_files ?? [],
+};
+const finalProductTree = treeManifest(workspace, {
+  ignore: manifest.workspace.product_ignore ?? [".benchmark"],
+});
+const changedProductFiles = diffTreeManifests(initialProductTree, finalProductTree);
+const productChanged = initialProductTree.sha256 !== finalProductTree.sha256;
 const result = {
   schema_version: "0.1",
   task_id: manifest.task.id,
@@ -136,7 +145,12 @@ const result = {
     initial_sha256: manifest.workspace.initial_sha256,
     final_sha256: finalTree.sha256,
     final_files: finalTree.files.length,
-    changed: manifest.workspace.initial_sha256 !== finalTree.sha256,
+    full_tree_changed: manifest.workspace.initial_sha256 !== finalTree.sha256,
+    product_initial_sha256: initialProductTree.sha256,
+    product_final_sha256: finalProductTree.sha256,
+    product_changed: productChanged,
+    changed_product_files: changedProductFiles,
+    changed: productChanged,
   },
 };
 writeJson(resultPath, result);

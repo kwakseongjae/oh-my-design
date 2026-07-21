@@ -5,6 +5,7 @@ import {
   evaluateBillingObservation,
   evaluateFaqObservations,
   evaluateFormObservation,
+  evaluateFontOracle,
   evaluateKeyboardTraversal,
   evaluateProtectedHookCounts,
   evaluateViewportGeometry,
@@ -229,5 +230,21 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
     expect(evaluator).toContain("automated_gate_pass");
     expect(evaluator).not.toContain("provisional_ui_resolved");
     expect(evaluator).not.toContain("public_ui_resolved");
+  });
+
+  it("loads typography expectations from the task-specific oracle", () => {
+    expect(evaluateFontOracle({
+      body_font: "Arial, sans-serif",
+      display_font: "Georgia, serif",
+    }, task.design_oracle.font_family)).toEqual({ body: true, display: true });
+
+    expect(evaluateFontOracle({
+      body_font: "Inter, sans-serif",
+      display_font: "Arial, sans-serif",
+    }, task.design_oracle.font_family)).toEqual({ body: false, display: false });
+
+    const evaluator = readFileSync(evaluatorPath, "utf8");
+    expect(evaluator).not.toContain("/Arial/i");
+    expect(evaluator).not.toContain("/Georgia/i");
   });
 });

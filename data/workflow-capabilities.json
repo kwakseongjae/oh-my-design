@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "product_version": "1.9.1-candidate",
+  "principles": [
+    "natural-language-first",
+    "smallest-capable-workflow",
+    "one-implementation-owner",
+    "specialists-are-advisory",
+    "unknown-means-absent",
+    "same-surface-reverification"
+  ],
+  "work_packet": {
+    "required": [
+      "intent",
+      "task",
+      "consumer_route",
+      "acceptance",
+      "protected_behaviors",
+      "evidence",
+      "unknowns",
+      "implementation_owner",
+      "verification"
+    ],
+    "intents": ["audit", "implement", "create", "publish"],
+    "implementation_owner": "main-agent",
+    "specialist_response": [
+      "finding",
+      "evidence",
+      "smallest_useful_change",
+      "acceptance_check",
+      "unresolved"
+    ]
+  },
+  "workflows": [
+    {
+      "id": "repair-existing-ui",
+      "label": "Improve an existing UI",
+      "label_ko": "기존 UI 개선",
+      "entry_skill": "omd:apply",
+      "implementation_owner": "main-agent",
+      "specialists": [
+        "omd-ux-engineer",
+        "omd-ux-writer",
+        "omd-slop-auditor",
+        "omd-designer-review",
+        "omd-a11y-auditor"
+      ],
+      "stages": ["inspect", "contract", "advise", "implement", "reverify", "handoff"],
+      "prompt_en": "Improve the existing pricing page using our DESIGN.md. Preserve behavior, implement the smallest high-impact changes, then verify the same route on desktop and mobile.",
+      "prompt_ko": "기존 가격 페이지를 DESIGN.md에 맞게 개선해줘. 동작은 보존하고 효과가 큰 최소 변경을 구현한 뒤 같은 경로를 데스크톱과 모바일에서 다시 검증해줘.",
+      "route_suffix_en": "Use our DESIGN.md, preserve existing behavior, implement the smallest high-impact changes, then reverify the same route, viewport, and state.",
+      "route_suffix_ko": "DESIGN.md를 적용하고 기존 동작을 보존해. 효과가 큰 최소 변경을 구현한 뒤 같은 경로·viewport·state를 다시 검증해줘."
+    },
+    {
+      "id": "audit-existing-ui",
+      "label": "Audit without changing code",
+      "label_ko": "코드 변경 없는 UI 진단",
+      "entry_skill": "omd:slop-audit",
+      "implementation_owner": "none",
+      "specialists": ["omd-slop-auditor", "omd-designer-review", "omd-ux-engineer"],
+      "stages": ["inspect", "collect-evidence", "classify", "report"],
+      "prompt_en": "Audit the existing onboarding route. Separate AI-slop patterns, measurable defects, and valid design preferences. Do not change code.",
+      "prompt_ko": "기존 온보딩 경로를 검수해줘. AI slop 패턴, 측정 가능한 결함, 유효한 디자인 취향을 구분하고 코드는 바꾸지 마.",
+      "route_suffix_en": "Separate AI-slop patterns, measurable defects, and valid design preferences. Cite evidence and do not change code.",
+      "route_suffix_ko": "AI slop 패턴, 측정 가능한 결함, 유효한 디자인 취향을 구분하고 근거를 남겨. 코드는 바꾸지 마."
+    },
+    {
+      "id": "create-new-surface",
+      "label": "Create a new product surface",
+      "label_ko": "새 제품 화면 설계",
+      "entry_skill": "omd:harness",
+      "implementation_owner": "main-agent-after-checkpoint-3",
+      "specialists": [
+        "omd-master",
+        "omd-ux-researcher",
+        "omd-ui-junior",
+        "omd-microcopy",
+        "omd-a11y-auditor",
+        "omd-persona-tester"
+      ],
+      "stages": ["discover", "journey-checkpoint", "system-checkpoint", "generate", "validate-checkpoint", "deliver"],
+      "prompt_en": "Design and implement a new family meal-planning home screen from scratch. Use the OmD harness, stop at its required checkpoints, then integrate the approved result into the real route.",
+      "prompt_ko": "가족 식단 앱의 새 홈 화면을 처음부터 디자인하고 구현해줘. OmD 하네스를 사용하고 필수 체크포인트에서 멈춘 뒤 승인된 결과를 실제 경로에 반영해줘.",
+      "route_suffix_en": "Use the OmD harness, stop at every required checkpoint, then integrate the approved result into the real product route.",
+      "route_suffix_ko": "OmD 하네스를 사용하고 모든 필수 체크포인트에서 멈춘 뒤 승인된 결과를 실제 제품 경로에 반영해줘."
+    },
+    {
+      "id": "establish-design-system",
+      "label": "Create or refresh DESIGN.md",
+      "label_ko": "DESIGN.md 구축·갱신",
+      "entry_skill": "omd:init",
+      "implementation_owner": "main-agent",
+      "specialists": ["omd-ux-researcher"],
+      "stages": ["inspect-project", "match-reference", "declare-deltas", "write-design-md", "sync"],
+      "prompt_en": "Set up a project-owned design system for this repository. Match a verified reference, keep unknown product facts absent, and create DESIGN.md with explicit deltas.",
+      "prompt_ko": "이 저장소에 프로젝트 소유 디자인 시스템을 구축해줘. 검증된 레퍼런스를 매칭하고 모르는 제품 사실은 비워둔 채 명시적 차이를 담은 DESIGN.md를 만들어줘.",
+      "route_suffix_en": "Match a verified reference, keep unknown product facts absent, and create a project-owned DESIGN.md with explicit deltas.",
+      "route_suffix_ko": "검증된 레퍼런스를 매칭하고 모르는 제품 사실은 비워둔 채 명시적 차이가 있는 프로젝트 소유 DESIGN.md를 만들어줘."
+    },
+    {
+      "id": "localize-product-language",
+      "label": "Adapt product language",
+      "label_ko": "제품 언어 현지화",
+      "entry_skill": "omd:orchestrator",
+      "implementation_owner": "main-agent",
+      "specialists": ["omd-locale-adapter", "omd-humanizer", "omd-ux-writer"],
+      "stages": ["lock-facts", "adapt", "humanize", "implement", "locale-verify"],
+      "prompt_en": "Adapt this product flow into Korean, English, Japanese, Simplified Chinese, and Traditional Chinese. Preserve facts and behavior, then verify every real locale route.",
+      "prompt_ko": "이 제품 흐름을 한국어·영어·일본어·중국어 간체·번체로 현지화해줘. 사실과 동작을 보존하고 실제 locale 경로를 각각 검증해줘.",
+      "route_suffix_en": "Preserve facts and behavior, adapt rather than translate literally, then verify every real locale route.",
+      "route_suffix_ko": "사실과 동작을 보존하고 직역이 아닌 현지화를 적용한 뒤 실제 locale 경로를 각각 검증해줘."
+    }
+  ]
+}

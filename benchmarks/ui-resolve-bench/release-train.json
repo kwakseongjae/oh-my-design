@@ -3,7 +3,12 @@
   "product_baseline": "1.9.0",
   "frontier_target": "2.0.0",
   "releases": [
-    { "version": "1.9.1", "experiment": "measurement-kernel", "status": "planned" },
+    {
+      "version": "1.9.1",
+      "experiment": "measurement-delivery-contract-kernel",
+      "status": "candidate",
+      "product_capability": "natural-language routing + shared work packet + single implementation owner + exact-route reverify"
+    },
     { "version": "1.9.2", "experiment": "task-pack-calibration", "status": "planned" },
     { "version": "1.9.3", "experiment": "fast-first-result", "status": "planned" },
     { "version": "1.9.4", "experiment": "inspection-loop", "status": "planned" },
@@ -20,5 +25,13 @@
     "failed_experiments_remain_visible": true,
     "score_rule_change_requires_suite_version": true,
     "calendar_can_force_2_0_0": false
-  }
+  },
+  "frontier_product_contract": [
+    "smallest-capable-workflow",
+    "evidence-backed-specialist-handoffs",
+    "one-implementation-owner",
+    "unknown-means-absent",
+    "same-surface-reverification",
+    "harness-to-product-delivery"
+  ]
 }

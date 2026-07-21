@@ -253,7 +253,7 @@ Each turn you are in one state. Determine current state from `.handoff.json` `st
 - **PLAN_REVIEW**: User said go → DESIGN_GENERATION. User edited file → re-read OMD-PLAN.md, ask one more confirm. Restart → reset slots, back to SLOT_GATE.
 - **DESIGN_GENERATION**: Spawn ux-researcher (parallel × 2-3), ui-junior, microcopy. Write `wireframes/`, `DESIGN.md.patch`, `components/manifest.json`, `components/microcopy.json`. Each phase ends with handoff status=ask_user (validation summary).
 - **SHIP_GATE**: All artifacts ready? Spawn a11y-auditor + persona-tester × 4 + jury. Present summary → user picker (go ship / iterate / stop).
-- **ARCHIVE_RUN**: Build handoff zips, write postmortem.md, update timeline.md.
+- **ARCHIVE_RUN**: Build handoff zips, write postmortem.md, update timeline.md, and emit `handoff/delivery.json`. The delivery packet preserves the original `delivery_intent`, actual consumer route (or null), acceptance, protected behavior, evidence, unknowns, artifacts, and exact-route verification plan. For `implement`, set `implementation_owner: main-agent-after-checkpoint-3`; never claim that archived design artifacts already changed the product.
 - **FAST_EXIT**: Skip remaining probes. Use safe defaults for unfilled slots. Jump to PROPOSE_PLAN with placeholder warnings. User can edit in OMD-PLAN.md.
 
 ## 2. Slot definitions
@@ -506,6 +506,25 @@ Decision logic:
 - `go` → ARCHIVE_RUN
 - `iterate` → spawn `omd-critic` → write `critique.md` → re-enter at lowest broken phase (cap 3 iterations total)
 - `stop` → ARCHIVE_RUN without zip
+
+ARCHIVE_RUN must write `<run_dir>/handoff/delivery.json` before `.handoff.json` reports `status: done`. Use this minimum contract:
+
+```json
+{
+  "intent": "implement | design-only",
+  "task": "<original task>",
+  "consumer_route": "<verified route or null>",
+  "acceptance": [],
+  "protected_behaviors": [],
+  "evidence": [],
+  "unknowns": [],
+  "implementation_owner": "main-agent-after-checkpoint-3 | none",
+  "artifacts": [],
+  "verification": { "routes": [], "viewports": [], "states": [], "commands": [] }
+}
+```
+
+Do not invent a consumer route. If it cannot be proven from the repository, keep it null and add the route lookup to `unknowns`.
 
 ## 9. Tools you call (Bash / Agent)
 

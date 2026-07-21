@@ -26,7 +26,7 @@ change creates a new suite version and re-evaluates every public candidate.
 
 | Product | Experiment | Benchmark evidence | Product evidence | Promotion gate |
 |---|---|---|---|---|
-| 1.9.1 | measurement kernel | family/run schema, distribution stats, CIs | no user-facing regression | aggregate fixture and fail-closed tests pass |
+| 1.9.1 | measurement + delivery contract kernel | family/run schema, clean-source attestation, product-only diffs, normalized exporter | natural-language route guide, shared work packet, one implementation owner, harness→product delivery bridge | aggregate/export fixtures, skill contracts, and fail-closed tests pass |
 | 1.9.2 | task-pack calibration | 12 tasks, 2 valid oracles, mutants | none | valid implementations pass; mutants fail |
 | 1.9.3 | fast first result | Prompt Arena + Skill Lift smoke | install → first useful surface | faster first result with no resolved-rate regression |
 | 1.9.4 | inspection loop | repair/reverify task slice | inspect → fix → reverify completion | higher repair success; time budget held |
@@ -62,6 +62,9 @@ All must pass:
    flagged tasks are retired before ranking.
 8. Install → first resolved surface and seven-day reuse improve against 1.9.0
    without accessibility, evidence-honesty, or builder regressions.
+9. Natural-language routing selects the smallest capable workflow; specialists
+   return evidence-backed advice, one main agent owns edits, and implementation
+   is not complete until the same consumer route is reverified.
 
 If the gates are not met at 1.9.9, continue with a prerelease or another 1.9.x
 patch. The calendar does not force `2.0.0`.

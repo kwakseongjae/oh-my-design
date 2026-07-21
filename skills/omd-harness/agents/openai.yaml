@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design a new product surface"
+  short_description: "Run the full design harness and deliver approved UI"
+  default_prompt: "Use $omd-harness to design this new surface through the required checkpoints and prepare it for product delivery."

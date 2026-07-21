@@ -1504,6 +1504,7 @@ export async function runInstallSkills(
     'vocabulary.json',
     'synonyms.json',
     'opt-out-corpus.json',
+    'workflow-capabilities.json',
   ];
   // Channel→dir resolution (incl. the cursor shared-`.claude/data` dedup guard,
   // issue #20) lives in dataDirFor — single source for all three copy loops.

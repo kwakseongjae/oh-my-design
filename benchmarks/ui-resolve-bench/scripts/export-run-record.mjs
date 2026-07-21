@@ -1,0 +1,120 @@
+#!/usr/bin/env node
+import { existsSync } from "node:fs";
+import { basename, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { parseArgs, readJson, writeJson } from "./_lib.mjs";
+
+const FAMILIES = new Set(["model", "skill", "harness", "prompt-arena", "factorial"]);
+
+export function classifyRunStatus(run, score) {
+  if (run?.process?.timed_out === true) return "timed_out";
+  if (run?.process?.exit_code !== 0) return "failed";
+  if (!score) return "incomplete";
+  return "complete";
+}
+
+export function classifyValidity(manifest, runStatus, score) {
+  if (manifest?.variant?.track_eligibility?.off_label === true) return "invalid-task";
+  if (manifest?.skill?.source_attestation?.publishable === false) return "invalid-attribution";
+  if (runStatus !== "complete" || !score) return "invalid-infrastructure";
+  return "valid";
+}
+
+export function buildRunRecord({
+  workspace,
+  manifest,
+  run,
+  score,
+  family,
+  systemId,
+  trialIndex,
+  suiteVersion,
+  budgetTier,
+}) {
+  if (!FAMILIES.has(family)) throw new Error(`unsupported benchmark family: ${family}`);
+  if (!Number.isInteger(trialIndex) || trialIndex < 1) throw new Error("trial index must be a positive integer");
+  const runStatus = classifyRunStatus(run, score);
+  const validity = classifyValidity(manifest, runStatus, score);
+  const automatedPass = score?.status?.automated_gate_pass === true;
+  return {
+    run_id: basename(workspace),
+    benchmark_family: family,
+    suite_version: suiteVersion,
+    system_id: systemId,
+    model_id: run?.runtime?.model ?? null,
+    skill_id: family === "skill" || family === "factorial"
+      ? manifest?.skill?.declared_name ?? null
+      : null,
+    harness_id: family === "harness" || family === "factorial"
+      ? manifest?.variant?.id ?? null
+      : null,
+    budget_tier: budgetTier,
+    task_id: manifest.task.id,
+    trial_index: trialIndex,
+    run_status: runStatus,
+    validity,
+    ui_resolved: validity === "valid" ? automatedPass : false,
+    objective_score: score?.points?.deterministic_total ?? 0,
+    objective_max: score?.points?.deterministic_max ?? 85,
+    wall_time_ms: run?.process?.wall_ms ?? 0,
+    attribution: {
+      source_commit: manifest?.skill?.source_commit ?? null,
+      source_attestation: manifest?.skill?.source_attestation ?? null,
+      activation_delta_sha256: manifest?.variant?.activation_delta_sha256 ?? null,
+      track_eligibility: manifest?.variant?.track_eligibility ?? null,
+    },
+    delivery: {
+      product_changed: run?.workspace?.product_changed ?? run?.workspace?.changed ?? false,
+      changed_product_files: run?.workspace?.changed_product_files ?? [],
+    },
+    evidence: {
+      manifest: ".benchmark/manifest.json",
+      run_result: ".benchmark/run-result.json",
+      score: score ? ".benchmark/score.json" : null,
+      screenshots: score ? ".benchmark/screenshots" : null,
+    },
+  };
+}
+
+async function main() {
+  const args = parseArgs();
+  const workspace = args.get("workspace") ? resolve(String(args.get("workspace"))) : null;
+  const family = String(args.get("family") ?? "");
+  const systemId = String(args.get("system") ?? "");
+  const trialIndex = Number(args.get("trial") ?? 0);
+  if (!workspace || !family || !systemId || !trialIndex) {
+    console.error("usage: export-run-record.mjs --workspace <dir> --family <family> --system <id> --trial <n> [--out <file>] [--suite-version <v>] [--budget-tier <tier>]");
+    process.exitCode = 2;
+    return;
+  }
+  const benchmarkDir = join(workspace, ".benchmark");
+  const manifestPath = join(benchmarkDir, "manifest.json");
+  const runPath = join(benchmarkDir, "run-result.json");
+  const scorePath = join(benchmarkDir, "score.json");
+  if (!existsSync(manifestPath) || !existsSync(runPath)) {
+    throw new Error("workspace must contain .benchmark/manifest.json and run-result.json");
+  }
+  const manifest = readJson(manifestPath);
+  const run = readJson(runPath);
+  const score = existsSync(scorePath) ? readJson(scorePath) : null;
+  const record = buildRunRecord({
+    workspace,
+    manifest,
+    run,
+    score,
+    family,
+    systemId,
+    trialIndex,
+    suiteVersion: String(args.get("suite-version") ?? manifest.task.version),
+    budgetTier: String(args.get("budget-tier") ?? "standard"),
+  });
+  const out = args.get("out")
+    ? resolve(String(args.get("out")))
+    : join(benchmarkDir, "run-record.json");
+  writeJson(out, record);
+  console.log(JSON.stringify(record, null, 2));
+}
+
+if (resolve(process.argv[1] ?? "") === fileURLToPath(import.meta.url)) {
+  await main();
+}
