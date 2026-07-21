@@ -9,7 +9,7 @@
 - CLI 101/Web 820 tests·TS·ESLint·catalog/counts·1,458-page build를 통과했다.
 - Node 18.20.8 clean tarball에서 20 skills/18 roles/440 refs, 전 채널 doctor와 독립 collector를 확인했다.
 - npm 1.9.0은 비어 있으나 로컬 npm/gh 인증은 만료됐다.
-- release commit을 만들었다. production locale docs가 아직 404이므로 branch push → web deploy/200 smoke → npm publish 순서로 진행한다.
+- `21a908d`를 remote branch에 push했다. PR은 gh invalid/app 403으로 미생성이고, 다음은 web deploy/200 smoke → npm publish다.
 
 ## 2026-07-21 (Codex) · Builder handoff clarity + auto catalog loading
 - Builder catalog의 `Show more`를 제거하고 60개 단위 IntersectionObserver 자동 확장으로 교체했다.
