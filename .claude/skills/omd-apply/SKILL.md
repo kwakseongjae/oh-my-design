@@ -5,14 +5,15 @@ description: "프로젝트 DESIGN.md를 UI/시각 작업의 brand context로 적
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 
 
-# omd:apply — Brand Context Injection + Dispatch Router
+# omd:apply — Brand Context Injection + Delivery Router
 
-DESIGN.md를 모든 UI/디자인 작업의 권위 있는 컨텍스트로 사용한다. 단일 책임은 두 가지:
+DESIGN.md를 모든 UI/디자인 작업의 권위 있는 컨텍스트로 사용한다. 책임은 세 가지:
 
 1. **인라인 처리** — 작은 단일 변경 (1 component, 1 token, 1 카피 라인)은 직접 Edit 툴로 처리
-2. **Dispatch** — 복합 작업은 적합한 서브에이전트로 즉시 라우팅 (master 거치지 않음)
+2. **Advisory dispatch** — 복합 작업은 적합한 전문 역할의 의견을 먼저 받음 (master 거치지 않음)
+3. **Delivery ownership** — 사용자가 구현·수정을 요청했다면 본 에이전트가 실제 편집과 검증을 끝까지 소유
 
-복합 작업을 인라인으로 처리하면 안 된다. 이 스킬의 가장 중요한 책임은 *언제 dispatch할지 정확히 판단하는 것*.
+전문 역할은 자문자다. 역할이 없거나 자문이 read-only여도 구현 요청을 감사 결과로 끝내거나 아무 변경 없이 종료하지 않는다.
 
 ## 트리거 조건
 
@@ -26,31 +27,46 @@ DESIGN.md를 모든 UI/디자인 작업의 권위 있는 컨텍스트로 사용�
 - 에셋 (아이콘, 차트, 일러스트, 3D 렌더) 요청
 - 디자인 시스템 관련 질문
 
-## Phase 0 — Dispatch decision tree (가장 먼저)
+## Phase 0 — Intent + dispatch decision tree (가장 먼저)
+
+먼저 요청의 완료 조건을 구분한다.
+
+- **audit/advice**: 분석, 리뷰, 의견, 대안만 요청. 자문 결과로 종료 가능.
+- **implement/change**: 만들어, 고쳐, 바꿔, 적용해, 개선해. 본 에이전트가 편집과 검증을 완료해야 함.
+
+기존 화면의 수정·리디자인은 규모가 커도 `omd:apply`의 implement/change다. `/omd-harness`는 새 surface를 처음부터 설계하거나 사용자가 명시적으로 요청한 경우에만 추천한다.
 
 작업 시작 전에 어떤 처리 경로인지 결정한다. 다음 표를 위에서부터 순차 매칭, 첫 번째 매칭 행으로 진행:
 
 | 사용자 요청 패턴 | 처리 경로 | 이유 |
 |---|---|---|
 | "에셋 / 아이콘 / 일러스트 / 차트 / 사진 / 로고 / 그래프 / SVG 만들어" | dispatch `omd-asset-curator` | 매체 선택 + 스택 매칭이 전문 영역 |
-| "메인 화면 / landing / 전체 디자인 / 처음부터 / 와이어프레임" | 사용자에게 `/omd-harness` 추천 | 10-phase 파이프라인이 적합 |
+| "새 메인 화면 / 새 landing / 새 surface / 처음부터 / 와이어프레임" | 사용자에게 `/omd-harness` 추천 | 10-phase 파이프라인이 적합 |
 | "접근성 / a11y / 색약 / 키보드 네비" 감사 | dispatch `omd-a11y-auditor` | 전문 감사 |
 | "마이크로카피만 다듬어 / 카피 톤 정리 / empty state 문구 전부" 복수 | dispatch `omd-microcopy` | voice 일관성 |
 | "사용자 시나리오 / 페르소나 walk through / 4명 입장에서 검토" | dispatch `omd-persona-tester` | adversarial 4-페르소나 |
 | "이 카피 좋은지 / hero 카피 약점 / 섹션별 카피 전문가 의견 / A/B 후보" | dispatch `omd-ux-writer` | UX writing 분석 + 대안 + 근거 |
 | "이 인터랙션 / 모션 / 포커스 / 모바일 / 지각 성능 / 섹션별 UX 약점" | dispatch `omd-ux-engineer` | 코드 레벨 인터랙션 감사 + fix |
-| "랜딩 / 메인 화면 / 페이지 *전체*를 전문가 의견으로 개선" | dispatch `omd-ux-writer` + `omd-ux-engineer` (병렬) | 두 트랙 동시 — writing + engineering |
+| "기존 랜딩 / 메인 화면 / 페이지 *전체*를 전문가 의견으로 개선" | advisory dispatch `omd-ux-writer` + `omd-ux-engineer` (병렬) | 두 트랙 자문 후 본 에이전트가 구현 |
 | "이게 왜 안 좋은지 critique / postmortem / root cause" | dispatch `omd-critic` | 비판적 분석 |
 | "DESIGN.md 만들어 / reference 골라 / 카탈로그에서 추천" | dispatch `omd-init` skill (또는 omd-add-reference) | reference 매칭 |
 | "preference 정리 / 누적된 교정 반영 / DESIGN.md 업데이트" | dispatch `omd-learn` skill | fold-in 로직 |
 | "이 한 줄 / 이 컬러 / 이 spacing 좀" 단발 명확 | **인라인 처리** | 분명한 단일 변경 |
-| 위 어디에도 안 맞는 자유로운 디자인 작업 | 인라인 처리 후 Phase 3 (교정 캡처) | 일반 케이스 |
+| 위 어디에도 안 맞는 자유로운 디자인 작업 | 본 에이전트가 처리 후 Phase 3 (교정 캡처) | 일반 케이스 |
 
-dispatch가 정해지면 즉시 Agent 툴 호출 (master 경유 X — 우리가 omd-apply로 트리거됐다는 건 master 컨텍스트 밖이라는 의미). 그 후 인라인 처리는 하지 않고, 서브에이전트가 반환한 결과를 사용자에게 정리만 해서 전달.
+### Capability preflight + recovery
 
-## Phase 1 — DESIGN.md 로드 (인라인 처리 분기 한정)
+dispatch 전에 실제 역할 가용성을 확인하고 아래 첫 번째 가능한 경로를 사용한다.
 
-dispatch가 아니라 인라인 처리로 분기됐을 때만 진행:
+1. **런타임 역할 사용 가능** → Agent 툴로 dispatch하고 결과를 자문으로 수집.
+2. **런타임 목록에는 없지만 유효한 로컬 역할 파일 존재** → 현재 채널의 역할 파일을 전체 읽고 그 관점을 인라인 자문 렌즈로 적용. 역할을 실행했다고 표현하지 않음.
+3. **역할과 유효한 역할 파일 모두 없음** → 전문 역할이 실행되지 않았음을 숨기지 않고 Phase 1-2의 DESIGN.md 계약으로 계속 진행. 역할 부재만으로 작업을 중단하거나 사용자에게 설치를 요구하지 않음.
+
+implement/change 요청은 어떤 recovery 경로에서도 본 에이전트가 자문을 반영해 실제 파일을 편집하고 검증한다. audit/advice 요청만 자문 결과 요약으로 종료할 수 있다.
+
+## Phase 1 — DESIGN.md 로드
+
+실제 변경 또는 디자인 판단 전에 진행:
 
 1. 프로젝트 루트의 `DESIGN.md`를 **전체 읽는다**. 요약 금지, Read 툴로 직접 로드.
 2. `.omd/preferences.md`가 있으면 같이 읽는다. `status: pending` 엔트리는 아직 DESIGN.md에 반영 안 된 교정 — DESIGN.md보다 **우선** 적용.
@@ -79,6 +95,8 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 - Voice 섹션을 마이크로카피에 적용. 문장 길이, 어휘 register, 은유 밀도 일치.
 - Component 섹션 명시된 규칙 따름 (variant / state / sizes).
 - 없는 토큰 지어내지 않음. 필요 시 사용자에게 "이건 DESIGN.md에 없는데, 어떻게 할까요?" 묻기.
+- advisory dispatch 결과가 read-only 제안이어도 implement/change 요청에서는 본 에이전트가 최소 유효 변경을 직접 적용.
+- 변경 후 요청에 비례한 빌드·테스트·실제 route 검증을 수행. 자문 완료를 구현 완료로 간주하지 않음.
 
 ## Phase 3 — 교정 캡처
 
@@ -103,7 +121,8 @@ Logged to .omd/preferences.md — say "preference 정리해줘" later to fold in
 ## 금지
 
 - DESIGN.md 없는데 임의 생성 금지 (사용자에게 omd:init 제안)
-- 복합 작업을 인라인으로 처리 금지 (Phase 0 dispatch table 따라 라우팅)
+- 전문 역할 부재 또는 read-only 자문을 이유로 implement/change 요청을 무변경 종료 금지
+- 전문 역할 파일을 인라인으로 읽었을 때 해당 역할이 실제 실행됐다고 주장 금지
 - 교정 감지 시 "기록할까요?" 묻지 말 것 — 자동 기록 + 한 줄 알림
 - 같은 턴 내 같은 교정 중복 기록 금지
 - CLI 호출 (`omd remember`, `omd learn` 등) 금지 — 1.0.0부터 모두 스킬 prose

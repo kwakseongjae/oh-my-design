@@ -1,0 +1,113 @@
+{
+  "schema_version": "0.1",
+  "generated_at": "2026-07-21T10:33:48.378Z",
+  "status": "internal-pilot",
+  "disclaimer": "One public fixture with nonuniform exploratory trials cannot support a best-skill or public leaderboard claim. Ship Preference and efficiency remain unscored.",
+  "rows": [
+    {
+      "directory": "taste-skill",
+      "variant_id": "taste-skill",
+      "label": "Taste Skill v2",
+      "preregistered_order": 3,
+      "run_status": "complete",
+      "skill_sha256": "0efdbd19a3b0a386594d0c185ba3878e1d96f96a6e78c6b16332760f88b5ec15",
+      "runtime": {
+        "agent": "codex-app-isolated-worker",
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "network_for_task": false
+      },
+      "changed": true,
+      "automated_gate_pass": false,
+      "deterministic_score": 81,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": true,
+        "state_journey": true,
+        "responsive": true,
+        "accessibility": false,
+        "design_grounding": true,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "valid-skill-observation",
+        "reason": "Pinned frontmatter, install directory, and $design-taste-frontend activation matched."
+      }
+    },
+    {
+      "directory": "ui-ux-pro-max",
+      "variant_id": "ui-ux-pro-max",
+      "label": "UI UX Pro Max",
+      "preregistered_order": 5,
+      "run_status": "complete",
+      "skill_sha256": "ed2913b51f95663dcce1d1705924c7e7800679a678819664dc80611aac0b49b3",
+      "runtime": {
+        "agent": "codex-app-isolated-worker",
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "network_for_task": false
+      },
+      "changed": true,
+      "automated_gate_pass": false,
+      "deterministic_score": 81,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": true,
+        "state_journey": true,
+        "responsive": true,
+        "accessibility": false,
+        "design_grounding": true,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "valid-skill-observation",
+        "reason": "The pinned official Codex template was rendered into .codex/skills with reviewed local data, scripts, and bundled skills."
+      }
+    },
+    {
+      "directory": "omd-portable",
+      "variant_id": "omd-portable",
+      "label": "oh-my-design apply skill",
+      "preregistered_order": 7,
+      "run_status": "complete",
+      "skill_sha256": "56d457d041c52e413b2f49b8d69af2d0b11fdd34152f71048b675e9dac9c82a5",
+      "runtime": {
+        "agent": "codex-app-isolated-worker",
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "network_for_task": false
+      },
+      "changed": true,
+      "automated_gate_pass": true,
+      "deterministic_score": 85,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": true,
+        "state_journey": true,
+        "responsive": true,
+        "accessibility": true,
+        "design_grounding": true,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "valid-skill-observation",
+        "reason": "Pinned omd-apply folder shim declared omd:apply and was invoked as $omd:apply."
+      }
+    }
+  ]
+}

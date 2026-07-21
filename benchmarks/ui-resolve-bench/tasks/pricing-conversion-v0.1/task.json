@@ -1,0 +1,69 @@
+{
+  "id": "pricing-conversion-v0.1",
+  "version": "0.1.0",
+  "track": "landing-redesign",
+  "grounding": "design-md",
+  "locale": "en",
+  "review_brief": "A calm, trustworthy pricing page for a release-coordination product. Compare how clearly each result explains the product, differentiates three plans, and leads a small product team toward a plan decision.",
+  "network": "disabled",
+  "entry": "index.html",
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='billing-toggle']",
+    "[data-bench='price']",
+    "[data-bench='faq-button']",
+    "[data-bench='signup-form']",
+    "[data-bench='email']",
+    "[data-bench='form-status']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='billing-toggle']": 1,
+    "[data-bench='price']": 3,
+    "[data-bench='faq-button']": 2,
+    "[data-bench='signup-form']": 1,
+    "[data-bench='email']": 1,
+    "[data-bench='form-status']": 1
+  },
+  "billing_expectations": {
+    "monthly": ["$0", "$18", "$32"],
+    "annual": ["$0", "$14", "$26"]
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|number[ -]?one|guaranteed|revolutionary|revolutionize|supercharge|magical|seamless)\\b",
+    "(?:^|\\s)#1\\b",
+    "\\b(?:best|fastest|leading|top-rated|award-winning)\\s+(?:release|product|project|team|workspace|coordination|management|software|tool|platform)\\b",
+    "\\btrusted by\\b",
+    "\\b(?:save|increase|improve|boost|reduce|cut|ship)\\w*\\s+(?:[^.!?]{0,32}\\s)?\\d+(?:\\.\\d+)?%\\b",
+    "\\b\\d+(?:\\.\\d+)?[x×]\\s+(?:faster|better|more|improvement|productivity)\\b",
+    "\\b(?:faster|more productive|higher converting)\\s+than\\b",
+    "\\b\\d[\\d,]*\\+?\\s+(?:customers|companies|teams|users|reviews|five-star reviews)\\b",
+    "\\b(?:rated|rating)\\s+\\d(?:\\.\\d+)?(?:\\s*\\/\\s*5|\\s+stars?)?\\b",
+    "\\b(?:what customers say|customer stories|loved by|teams at|used by|chosen by|companies like)\\b",
+    "[★☆]{3,}"
+  ],
+  "protected_unknown_selectors": [
+    "blockquote",
+    "[class*='testimonial' i]",
+    "[id*='testimonial' i]",
+    "[data-testid*='testimonial' i]",
+    "[class*='customer-logo' i]",
+    "[class*='logo-wall' i]",
+    "[class*='social-proof' i]"
+  ],
+  "design_oracle": {
+    "page_background": "#F7F5EF",
+    "primary_action": "#3157D5",
+    "accent": "#E7683D",
+    "ink": "#172033",
+    "surface": "#FFFFFF",
+    "border": "#D9D8D1",
+    "muted_text": "#667085",
+    "card_radius_px": 16,
+    "control_radius_px": 10
+  }
+}

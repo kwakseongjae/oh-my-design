@@ -1,0 +1,126 @@
+{
+  "schema_version": "0.1",
+  "observed_at": "2026-07-21",
+  "preregistered_variant_order": [
+    "baseline",
+    "raw-design-md",
+    "anthropic-frontend-design",
+    "taste-skill",
+    "impeccable-prompt-only",
+    "ui-ux-pro-max",
+    "vercel-web-design-guidelines",
+    "omd-portable",
+    "omd-full-harness"
+  ],
+  "variants": {
+    "baseline": {
+      "label": "No skill",
+      "kind": "control",
+      "include_design_contract": false,
+      "eligible_tracks": ["creation", "landing-redesign", "repair", "audit"],
+      "activation": null
+    },
+    "raw-design-md": {
+      "label": "Raw DESIGN.md",
+      "kind": "control",
+      "include_design_contract": true,
+      "eligible_tracks": ["creation", "landing-redesign", "repair"],
+      "activation": null
+    },
+    "anthropic-frontend-design": {
+      "label": "Anthropic Frontend Design",
+      "kind": "portable-skill",
+      "vendor_dir": "anthropic-skills",
+      "source_path": "skills/frontend-design",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "frontend-design",
+      "declared_name": "frontend-design",
+      "commit": "fa0fa64bdc967915dc8399e803be67759e1e62b8",
+      "license": "Apache-2.0 (skill-specific)",
+      "eligible_tracks": ["creation", "landing-redesign", "repair"],
+      "activation": "Use the installed $frontend-design skill for this task."
+    },
+    "taste-skill": {
+      "label": "Taste Skill v2",
+      "kind": "portable-skill-experimental",
+      "vendor_dir": "taste-skill",
+      "source_path": "skills/taste-skill",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "design-taste-frontend",
+      "declared_name": "design-taste-frontend",
+      "commit": "98565e65bc3274ddf6eb0838734341714057178b",
+      "license": "MIT",
+      "eligible_tracks": ["creation", "landing-redesign"],
+      "activation": "Use the installed $design-taste-frontend skill for this task."
+    },
+    "impeccable-prompt-only": {
+      "label": "Impeccable (prompt-only)",
+      "kind": "portable-skill",
+      "vendor_dir": "impeccable",
+      "source_path": ".agents/skills/impeccable",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "impeccable",
+      "declared_name": "impeccable",
+      "commit": "4d849eb75f216109ea7053ed21530a11fafcc786",
+      "license": "Apache-2.0",
+      "eligible_tracks": ["creation", "landing-redesign", "repair", "audit"],
+      "activation": "Use the installed $impeccable skill, but do not enable or install hooks and do not use network access."
+    },
+    "ui-ux-pro-max": {
+      "label": "UI UX Pro Max",
+      "kind": "official-codex-bundle",
+      "vendor_dir": "ui-ux-pro-max",
+      "source_path": "cli/assets",
+      "install_adapter": "official-codex-template-v2.5.0",
+      "install_platform": "codex",
+      "install_root": ".codex/skills",
+      "install_dir": "ui-ux-pro-max",
+      "declared_name": "ui-ux-pro-max",
+      "commit": "5c0946f66120079258e1efc8e436d78ec793877c",
+      "license": "MIT",
+      "eligible_tracks": ["creation", "landing-redesign", "repair"],
+      "activation": "Use the installed $ui-ux-pro-max skill for this task."
+    },
+    "vercel-web-design-guidelines": {
+      "label": "Vercel Web Design Guidelines",
+      "kind": "review-skill",
+      "vendor_dir": "vercel-agent-skills",
+      "source_path": "skills/web-design-guidelines",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "web-design-guidelines",
+      "declared_name": "web-design-guidelines",
+      "commit": "4559f18a20c1691c744b4395194290db6a0df5e9",
+      "license": "MIT",
+      "eligible_tracks": ["audit", "repair-second-pass"],
+      "activation": "Use the installed $web-design-guidelines skill to review and repair this implementation. Do not fetch remote rules; use only the pinned local skill snapshot."
+    },
+    "omd-portable": {
+      "label": "oh-my-design apply skill",
+      "kind": "local-skill",
+      "source_path": "skills/omd-apply",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-apply",
+      "declared_name": "omd:apply",
+      "license": "MIT",
+      "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
+      "activation": "Use the installed $omd:apply skill for this task."
+    },
+    "omd-full-harness": {
+      "label": "oh-my-design full harness",
+      "kind": "full-system",
+      "source_path": "skills/omd-harness",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-harness",
+      "declared_name": "omd:harness",
+      "license": "MIT",
+      "eligible_tracks": ["full-system"],
+      "activation": "Use the installed $omd:harness skill for this task."
+    }
+  }
+}

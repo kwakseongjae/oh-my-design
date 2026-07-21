@@ -60,6 +60,12 @@
     "gen:llms-full": "node scripts/gen-llms-full.cjs",
     "check-counts": "node scripts/check-counts.mjs",
     "check:catalog": "npm --prefix web run check:reference-pipeline",
+    "bench:ui:prepare": "node benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs",
+    "bench:ui:run": "node benchmarks/ui-resolve-bench/scripts/run-codex.mjs",
+    "bench:ui:record": "node benchmarks/ui-resolve-bench/scripts/record-in-app-run.mjs",
+    "bench:ui:evaluate": "node benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
+    "bench:ui:summarize": "node benchmarks/ui-resolve-bench/scripts/summarize-pilot.mjs",
+    "bench:ui:gallery": "node benchmarks/ui-resolve-bench/scripts/build-gallery.mjs",
     "postinstall": "node scripts/postinstall.cjs"
   },
   "keywords": [
@@ -90,6 +96,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.13.10",
+    "axe-core": "4.11.2",
     "playwright-core": "^1.61.1",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",

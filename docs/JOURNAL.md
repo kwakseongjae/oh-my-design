@@ -5,6 +5,18 @@
 
 ---
 
+## 2026-07-21 (Codex) · UI-Resolve Bench v0.1 + corrected activation pilot
+- frontier UI skills 5종을 pinned source·정확한 activation/platform bundle로 sandbox 비교하는 runner와 객관 게이트를 구축했다.
+- corrected 1-task 진단은 Taste/UIUX 81(접근성 fail), OmD 85(pass)였으나 단일 관측이므로 순위가 아닌 method calibration으로 잠갔다.
+- fail-closed evaluator·keyboard exact sequence/focus delta·blind gallery·`omd:apply` 기존 UI 구현 계약을 보강했다.
+- 전체 121 tests + opt-in browser E2E, TypeScript, build, syntax/diff와 독립 재감사가 green이며 다음은 12-task P0다.
+
+## 2026-07-21 (Codex) · UI-Resolve benchmark runner/report/gallery hardening
+- track eligibility를 정규화·강제하고 off-label 진단은 explicit opt-in으로만 허용했다.
+- summary가 실패/timeout/incomplete를 누락하지 않고 preregistered order + automated gate status로 보고한다.
+- gallery를 reviewer별 blind pairwise A/B, hidden reverse repeat, tie/both-fail, local export로 재구축하고 reveal을 gallery 밖으로 격리했다.
+- focused 6 tests, TypeScript, Node syntax/registry validation이 green이다.
+
 ## 2026-07-21 (Codex) · CLI v1.9 production release
 - PR #47을 병합하고 Vercel Production 및 5개 locale docs 200을 확인했다.
 - npm 10 `prepare` stdout 때문에 실패한 pack JSON parser를 PR #48로 수정해 Node 18 smoke를 복구했다.

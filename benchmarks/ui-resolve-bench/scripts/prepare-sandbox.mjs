@@ -1,0 +1,237 @@
+#!/usr/bin/env node
+import { execFileSync } from "node:child_process";
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { basename, dirname, join, resolve } from "node:path";
+import {
+  assertInside,
+  benchRoot,
+  copyReviewedTree,
+  parseArgs,
+  readJson,
+  repoRoot,
+  sha256,
+  treeManifest,
+  writeJson,
+} from "./_lib.mjs";
+
+const args = parseArgs();
+const taskId = args.get("task");
+const variantId = args.get("variant");
+const out = args.get("out") ? resolve(String(args.get("out"))) : null;
+const vendorsRoot = args.get("vendors") ? resolve(String(args.get("vendors"))) : null;
+
+if (!taskId || !variantId || !out) {
+  console.error("usage: prepare-sandbox.mjs --task <id> --variant <id> --out <new-dir> [--vendors <dir>] [--allow-off-label]");
+  process.exit(2);
+}
+if (existsSync(out)) throw new Error(`refusing to overwrite an existing run: ${out}`);
+
+const competitors = readJson(join(benchRoot, "competitors.json"));
+const variant = competitors.variants[variantId];
+if (!variant) throw new Error(`unknown variant: ${variantId}`);
+
+const taskRoot = assertInside(join(benchRoot, "tasks"), join(benchRoot, "tasks", taskId));
+const starterRoot = join(taskRoot, "starter");
+const task = readJson(join(taskRoot, "task.json"));
+const promptFile = readFileSync(join(taskRoot, "PROMPT.md"), "utf8");
+const promptSource = promptFile.trim();
+
+const normalizeTrack = (value) => String(value ?? "")
+  .trim()
+  .toLowerCase()
+  .replace(/[\s_]+/g, "-");
+const taskTrack = normalizeTrack(task.track);
+const eligibleTracks = [...new Set((variant.eligible_tracks ?? []).map(normalizeTrack).filter(Boolean))];
+const trackEligible = eligibleTracks.includes(taskTrack);
+const offLabelOptIn = args.get("allow-off-label") === true || args.get("allow-off-label") === "true";
+if (!taskTrack) throw new Error(`${taskId} does not declare a track`);
+if (!trackEligible && !offLabelOptIn) {
+  throw new Error(
+    `${variantId} is not eligible for the ${taskTrack} track (eligible: ${eligibleTracks.join(", ") || "none"}). ` +
+    "Use --allow-off-label only for an explicitly labelled diagnostic run.",
+  );
+}
+
+copyReviewedTree(starterRoot, out);
+if (variant.include_design_contract === false) rmSync(join(out, "DESIGN.md"), { force: true });
+
+function frontmatterName(skillFile) {
+  const content = readFileSync(skillFile, "utf8");
+  const frontmatter = content.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+  if (!frontmatter) throw new Error(`skill is missing YAML frontmatter: ${skillFile}`);
+  const name = frontmatter[1].match(/^name:\s*(.+?)\s*$/m)?.[1];
+  if (!name) throw new Error(`skill frontmatter is missing name: ${skillFile}`);
+  return name.replace(/^(?:"([\s\S]*)"|'([\s\S]*)')$/, (_, doubleQuoted, singleQuoted) => (
+    doubleQuoted ?? singleQuoted
+  ));
+}
+
+function assertSkillContract(skillFile, expectedName) {
+  const receivedName = frontmatterName(skillFile);
+  if (receivedName !== expectedName) {
+    throw new Error(`skill name mismatch at ${skillFile}: expected ${expectedName}, received ${receivedName}`);
+  }
+  return receivedName;
+}
+
+function renderFrontmatter(frontmatter) {
+  const lines = ["---"];
+  for (const [key, value] of Object.entries(frontmatter ?? {})) {
+    const serialized = /[:"\n]/.test(value)
+      ? `"${value.replace(/"/g, '\\"')}"`
+      : value;
+    lines.push(`${key}: ${serialized}`);
+  }
+  lines.push("---", "");
+  return lines.join("\n");
+}
+
+function installOfficialUiUxCodexBundle(vendorRoot, destination, installRoot, variantConfig) {
+  const assetsRoot = assertInside(vendorRoot, join(vendorRoot, variantConfig.source_path));
+  const platformConfig = readJson(join(assetsRoot, "templates", "platforms", "codex.json"));
+  const configuredInstallRoot = join(platformConfig.folderStructure.root, dirname(platformConfig.folderStructure.skillPath));
+  const configuredInstallDir = basename(platformConfig.folderStructure.skillPath);
+  if (
+    platformConfig.platform !== "codex" ||
+    platformConfig.installType !== "full" ||
+    configuredInstallRoot !== variantConfig.install_root ||
+    configuredInstallDir !== variantConfig.install_dir ||
+    platformConfig.frontmatter?.name !== variantConfig.declared_name
+  ) {
+    throw new Error("UI UX Pro Max pinned Codex template no longer matches the preregistered install contract");
+  }
+
+  const template = readFileSync(join(assetsRoot, "templates", "base", "skill-content.md"), "utf8");
+  const quickReference = platformConfig.sections.quickReference
+    ? readFileSync(join(assetsRoot, "templates", "base", "quick-reference.md"), "utf8")
+    : "";
+  const rendered = renderFrontmatter(platformConfig.frontmatter) + template
+    .replace(/\{\{TITLE\}\}/g, platformConfig.title)
+    .replace(/\{\{DESCRIPTION\}\}/g, platformConfig.description)
+    .replace(/\{\{SCRIPT_PATH\}\}/g, platformConfig.scriptPath)
+    .replace(/\{\{SKILL_OR_WORKFLOW\}\}/g, platformConfig.skillOrWorkflow)
+    .replace(/\{\{QUICK_REFERENCE\}\}/g, quickReference ? `\n${quickReference}` : "");
+  mkdirSync(destination, { recursive: true });
+  writeFileSync(join(destination, platformConfig.folderStructure.filename), rendered, "utf8");
+  copyReviewedTree(join(assetsRoot, "data"), join(destination, "data"));
+  copyReviewedTree(join(assetsRoot, "scripts"), join(destination, "scripts"));
+
+  const bundledSkillsRoot = join(assetsRoot, "skills");
+  const bundled = readdirSync(bundledSkillsRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+  for (const bundledName of bundled) {
+    const bundledDestination = join(installRoot, bundledName);
+    copyReviewedTree(join(bundledSkillsRoot, bundledName), bundledDestination);
+    assertSkillContract(join(bundledDestination, "SKILL.md"), bundledName);
+  }
+  return bundled;
+}
+
+let skill = null;
+if (variant.declared_name) {
+  if (!variant.install_root || !variant.install_dir || !variant.install_platform) {
+    throw new Error(`${variantId} has an incomplete install contract`);
+  }
+  if (!variant.activation?.includes(`$${variant.declared_name}`)) {
+    throw new Error(`${variantId} activation must name the declared skill exactly: $${variant.declared_name}`);
+  }
+  let sourceRoot;
+  let sourceCommit;
+  let vendorRoot = null;
+  if (variant.vendor_dir) {
+    if (!vendorsRoot) throw new Error(`${variantId} requires --vendors`);
+    vendorRoot = assertInside(vendorsRoot, join(vendorsRoot, variant.vendor_dir));
+    sourceCommit = execFileSync("git", ["-C", vendorRoot, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+    if (sourceCommit !== variant.commit) {
+      throw new Error(`${variantId} commit mismatch: expected ${variant.commit}, received ${sourceCommit}`);
+    }
+    sourceRoot = assertInside(vendorRoot, join(vendorRoot, variant.source_path));
+  } else {
+    sourceRoot = assertInside(repoRoot, join(repoRoot, variant.source_path));
+    sourceCommit = execFileSync("git", ["-C", repoRoot, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+  }
+  const installRoot = assertInside(out, join(out, variant.install_root));
+  const destination = assertInside(installRoot, join(installRoot, variant.install_dir));
+  let bundledSkills = [];
+  if (variant.install_adapter === "official-codex-template-v2.5.0") {
+    if (!vendorRoot) throw new Error(`${variantId} adapter requires a pinned vendor checkout`);
+    bundledSkills = installOfficialUiUxCodexBundle(vendorRoot, destination, installRoot, variant);
+  } else {
+    copyReviewedTree(sourceRoot, destination);
+  }
+  const declaredName = assertSkillContract(join(destination, "SKILL.md"), variant.declared_name);
+  const skillTree = treeManifest(installRoot);
+  skill = {
+    declared_name: declaredName,
+    install_platform: variant.install_platform,
+    install_root: variant.install_root,
+    install_dir: variant.install_dir,
+    install_adapter: variant.install_adapter ?? null,
+    bundled_skills: bundledSkills,
+    source_path: variant.source_path,
+    source_commit: sourceCommit,
+    sha256: skillTree.sha256,
+    files: skillTree.files.length,
+  };
+}
+
+const activationDelta = variant.activation ?? null;
+const activation = activationDelta ? `\n\n## Variant activation\n\n${activationDelta}` : "";
+const prompt = `${promptSource}${activation}\n`;
+mkdirSync(join(out, ".benchmark"), { recursive: true });
+writeFileSync(join(out, ".benchmark", "PROMPT.md"), prompt, "utf8");
+writeFileSync(
+  join(out, "AGENTS.md"),
+  [
+    "# UI-Resolve Bench sandbox",
+    "",
+    "Work only in this directory. Do not install packages, access the network, or read files outside this workspace.",
+    "Follow the task in `.benchmark/PROMPT.md`. If it names an installed skill, read that skill completely and apply it.",
+    "Do not alter `.benchmark/`, `AGENTS.md`, or any `data-bench` hook.",
+    "",
+  ].join("\n"),
+  "utf8",
+);
+
+const initialTree = treeManifest(out, { ignore: [".benchmark"] });
+const manifest = {
+  schema_version: "0.1",
+  prepared_at: new Date().toISOString(),
+  task: {
+    id: task.id,
+    version: task.version,
+    track: taskTrack,
+    core_prompt_sha256: sha256(promptFile),
+    prompt_sha256: sha256(prompt),
+    starter_sha256: treeManifest(starterRoot).sha256,
+  },
+  variant: {
+    id: variantId,
+    label: variant.label,
+    kind: variant.kind,
+    include_design_contract: variant.include_design_contract !== false,
+    eligible_tracks: eligibleTracks,
+    activation_delta: activationDelta,
+    activation_delta_sha256: activationDelta ? sha256(activationDelta) : null,
+    track_eligibility: {
+      eligible: trackEligible,
+      off_label: !trackEligible,
+      explicit_opt_in: !trackEligible && offLabelOptIn,
+    },
+  },
+  skill,
+  workspace: {
+    name: basename(out),
+    initial_sha256: initialTree.sha256,
+    initial_files: initialTree.files.length,
+  },
+  safety: {
+    third_party_installer_executed: false,
+    hooks_enabled: false,
+    source_symlinks_allowed: false,
+  },
+};
+writeJson(join(out, ".benchmark", "manifest.json"), manifest);
+console.log(JSON.stringify({ workspace: out, manifest }, null, 2));

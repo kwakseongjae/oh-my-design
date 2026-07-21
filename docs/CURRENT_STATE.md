@@ -8,6 +8,10 @@
 
 ## 지금 (현재 위치)
 
+- `benchmarks/ui-resolve-bench/`에 **UI-Resolve Bench v0.1 내부 method draft**를 구축했다. `UI-Resolved@1`은 build·hidden journey·DESIGN.md contract·responsive·accessibility·evidence honesty의 all-or-nothing 객관 게이트이고, `Ship Preference`는 별도 blind practitioner 지표다. competitor source commit·정확한 skill name/activation/platform bundle을 고정하고, sandbox prepare→Codex/in-app record→fail-closed Chrome/axe 평가→누락 없는 summary→secret-salt blind gallery까지 실행 가능하다.
+- 1-task corrected activation 진단은 같은 core prompt/starter/DESIGN.md와 `gpt-5.6-terra/xhigh`에서 Taste 81/85(contrast fail), UI UX Pro Max 81/85(ARIA fail), OmD 85/85(automated gate pass)였다. 기존 valid 관측은 baseline 65/85·61/85, raw DESIGN.md 79/85, Anthropic 85/85, Impeccable prompt-only 85/85다. 단일 public fixture·각 1회·비정규화된 실행이므로 순위나 우월성 증거가 아니며 X 성능표는 NO-SHIP이다.
+- benchmark/skill focused 20 tests와 전체 121 tests가 통과했고, opt-in malformed-DOM browser E2E 1건도 별도 강제 실행해 통과했다. TypeScript, build, Node syntax, registry validation, `git diff --check`가 green이며 독립 재감사에서 이전 5 blockers(skill attribution·fail-closed·keyboard focus·metric definition·blind gallery)가 모두 해소됐다.
+- 다음 benchmark queue는 task-specific oracle/dirty-tree attestation/product-file-only changed 판정을 먼저 넣고, 12개 task fixture·mutant·visual oracle을 완성한 뒤 P0 `12×eligible arms×1`, P1 `12×eligible arms×3`, 마지막에 public v0.1 `24×4×3`과 영구 raw evidence package를 실행하는 것이다.
 - PR #47에서 CLI-first activation release를 `main`에 병합했고 Vercel Production 배포를 완료했다. `https://oh-my-design.kr/docs/{en,ko,ja,zh-cn,zh-tw}`는 모두 HTTP 200이다.
 - `v1.9.0` release workflow는 첫 실행에서 npm 10의 `prepare` stdout이 `npm pack --json` 앞에 섞여 parser가 실패했다. PR #48에서 standalone `[` line부터 JSON을 읽도록 수정했고 Node 18 smoke, 전체 CLI/Web/catalog/build, provenance publish가 모두 통과했다.
 - npm `latest`는 `oh-my-design-cli@1.9.0`이다. 빈 임시 폴더의 공개 registry install에서 package metadata와 `omd --version` 모두 `1.9.0`을 반환했다. 현재 공개 계약은 440 references / 20 skills / 18 roles / Node >=18이다.
