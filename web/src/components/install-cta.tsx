@@ -17,10 +17,11 @@
  * - act_prompt_copy  { reference } — bumps the Redis `copy` counter.
  */
 
-import { useState } from "react";
-import { Check, Copy, Sparkles, Terminal } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { AlertCircle, Check, Copy, Sparkles, Terminal } from "lucide-react";
 import { trackInstallCopy, trackPromptCopy } from "@/lib/activation/analytics";
 import { REFERENCE_COUNT, SKILL_COUNT } from "@/lib/catalog-count";
+import { copyText } from "@/lib/clipboard";
 import {
   firstPromptFor,
   stripBuilderProvenance,
@@ -52,30 +53,49 @@ export function InstallCta({
   prompt?: string;
   variant?: "bar" | "block";
 }) {
-  const [copied, setCopied] = useState<"install" | "prompt" | null>(null);
+  const [copyState, setCopyState] = useState<{
+    kind: "install" | "prompt";
+    status: "copied" | "failed";
+  } | null>(null);
+  const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  function copy(kind: "install" | "prompt", text: string) {
-    navigator.clipboard.writeText(text);
-    if (kind === "install") {
-      trackInstallCopy({ surface: source, reference });
-    } else if (reference) {
-      trackPromptCopy({ reference, surface: source });
-    }
-    setCopied(kind);
-    setTimeout(() => setCopied(null), 2000);
+  useEffect(() => () => {
+    if (resetTimer.current) clearTimeout(resetTimer.current);
+  }, []);
+
+  async function copy(
+    kind: "install" | "prompt",
+    text: string,
+    restoreTarget: HTMLButtonElement,
+  ) {
+    const copied = await copyText(text, {
+      restoreTarget,
+      onSuccess: () => {
+        if (kind === "install") {
+          trackInstallCopy({ surface: source, reference });
+        } else if (reference) {
+          trackPromptCopy({ reference, surface: source });
+        }
+      },
+    });
+    setCopyState({ kind, status: copied ? "copied" : "failed" });
+    if (resetTimer.current) clearTimeout(resetTimer.current);
+    resetTimer.current = setTimeout(() => setCopyState(null), copied ? 1600 : 2400);
   }
 
   const installBtn = (
     <button
       type="button"
-      onClick={() => copy("install", INSTALL_CMD)}
+      onClick={(event) => copy("install", INSTALL_CMD, event.currentTarget)}
       className="inline-flex min-w-0 items-center gap-2 rounded-full bg-foreground px-3.5 py-2 font-mono text-xs font-medium text-background transition-all hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
       aria-label="Copy install command"
     >
       <Terminal className="h-3.5 w-3.5 shrink-0" />
       <span className="truncate">{INSTALL_CMD}</span>
-      {copied === "install" ? (
+      {copyState?.kind === "install" && copyState.status === "copied" ? (
         <Check className="h-3.5 w-3.5 shrink-0 text-green-500" />
+      ) : copyState?.kind === "install" && copyState.status === "failed" ? (
+        <AlertCircle className="h-3.5 w-3.5 shrink-0 text-red-400" />
       ) : (
         <Copy className="h-3.5 w-3.5 shrink-0 opacity-60" />
       )}
@@ -90,14 +110,16 @@ export function InstallCta({
   const promptBtn = promptText ? (
     <button
       type="button"
-      onClick={() => copy("prompt", promptText)}
+      onClick={(event) => copy("prompt", promptText, event.currentTarget)}
       className="inline-flex min-w-0 max-w-[24rem] items-center gap-2 rounded-full border border-border/60 bg-card/80 px-3.5 py-2 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
       aria-label={brandName ? `Copy first prompt for ${brandName}` : "Copy first prompt"}
     >
       <Sparkles className="h-3.5 w-3.5 shrink-0 text-primary" />
       <span className="truncate">&ldquo;{promptDisplay}&rdquo;</span>
-      {copied === "prompt" ? (
+      {copyState?.kind === "prompt" && copyState.status === "copied" ? (
         <Check className="h-3.5 w-3.5 shrink-0 text-green-500" />
+      ) : copyState?.kind === "prompt" && copyState.status === "failed" ? (
+        <AlertCircle className="h-3.5 w-3.5 shrink-0 text-red-400" />
       ) : (
         <Copy className="h-3.5 w-3.5 shrink-0 opacity-60" />
       )}
@@ -110,6 +132,9 @@ export function InstallCta({
         <div className="pointer-events-auto flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-border/60 bg-background/85 p-1.5 shadow-lg backdrop-blur-xl dark:border-border">
           {installBtn}
           <span className="hidden sm:block">{promptBtn}</span>
+          <span className="sr-only" role="status" aria-live="polite">
+            {copyState?.status === "copied" ? "Copied" : copyState?.status === "failed" ? "Copy failed" : ""}
+          </span>
         </div>
       </div>
     );
@@ -128,6 +153,9 @@ export function InstallCta({
         {installBtn}
         {promptBtn}
       </div>
+      <span className="sr-only" role="status" aria-live="polite">
+        {copyState?.status === "copied" ? "Copied" : copyState?.status === "failed" ? "Copy failed" : ""}
+      </span>
     </div>
   );
 }

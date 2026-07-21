@@ -8,7 +8,7 @@ import {
   trackSourceFormatExport,
   trackSourceFormatView,
 } from "@/lib/builder/analytics";
-import { FileText, Copy, Check, ChevronRight, ArrowLeft, Download, ArrowUpRight, Eye, SlidersHorizontal } from "lucide-react";
+import { AlertCircle, FileText, Copy, Check, ChevronRight, ArrowLeft, Download, ArrowUpRight, Eye, SlidersHorizontal, FolderOpen, MessageSquare, Terminal } from "lucide-react";
 import { ReferencePreview } from "@/components/reference-preview";
 import { extractTokens } from "@/lib/extract-tokens";
 import { applyOverridesToMd } from "@/lib/core/generate-css";
@@ -26,6 +26,9 @@ import {
   type ReferenceFormatArtifact,
 } from "@/lib/references/export-formats";
 import { ReferenceShareButton } from "@/components/reference-share-button";
+import { INSTALL_CMD } from "@/components/install-cta";
+import { copyText } from "@/lib/clipboard";
+import { trackInstallCopy, trackPromptCopy } from "@/lib/activation/analytics";
 
 type MdView = "rendered" | "raw";
 
@@ -36,6 +39,7 @@ export function PreviewExportView({
   onCustomize,
   components,
   stylePreferences,
+  handoffPrompt,
 }: {
   detail: RefDetail;
   overrides: Overrides;
@@ -45,10 +49,14 @@ export function PreviewExportView({
   components: string[];
   onComponentsChange: (c: string[]) => void;
   stylePreferences?: StylePreferences;
+  handoffPrompt: string;
 }) {
   const [mdView, setMdView] = useState<MdView>("rendered");
   const [sourceFormat, setSourceFormat] = useState<ReferenceFormat>("designmd");
-  const [copied, setCopied] = useState<string | null>(null);
+  const [copyState, setCopyState] = useState<{
+    target: string;
+    status: "copied" | "failed";
+  } | null>(null);
   // Mobile-only: which panel is shown (desktop shows both side-by-side via lg: classes).
   const [mobileView, setMobileView] = useState<"preview" | "designmd">("preview");
   const tokens = useMemo(() => extractTokens(detail), [detail]);
@@ -118,25 +126,54 @@ export function PreviewExportView({
   const refName = detail.id.charAt(0).toUpperCase() + detail.id.slice(1);
   const ds = getDesignSystem(detail.id);
   const homepageUrl = getHomepageUrl(detail.id);
+  const handoffPromptPreview = handoffPrompt.split(" (builder config:")[0];
 
-  function download() {
-    const blob = new Blob([activeArtifact.content], { type: activeArtifact.mime });
+  function setCopyFeedback(target: string, copied: boolean) {
+    setCopyState({ target, status: copied ? "copied" : "failed" });
+    window.setTimeout(() => setCopyState(null), copied ? 1600 : 2400);
+  }
+
+  function downloadArtifact(artifact: ReferenceFormatArtifact, format: ReferenceFormat) {
+    const blob = new Blob([artifact.content], { type: artifact.mime });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = activeArtifact.filename;
+    a.download = artifact.filename;
     a.click();
     URL.revokeObjectURL(url);
-    if (sourceFormat === "designmd") trackExport({ reference: detail.id, channel: "download" });
-    trackSourceFormatExport({ reference: detail.id, format: sourceFormat, action: "download" });
+    if (format === "designmd") trackExport({ reference: detail.id, channel: "download" });
+    trackSourceFormatExport({ reference: detail.id, format, action: "download" });
   }
 
-  function copyMd() {
-    navigator.clipboard.writeText(activeArtifact.content);
-    if (sourceFormat === "designmd") trackExport({ reference: detail.id, channel: "copy" });
-    trackSourceFormatExport({ reference: detail.id, format: sourceFormat, action: "copy" });
-    setCopied(sourceFormat);
-    setTimeout(() => setCopied(null), 2000);
+  function download() {
+    downloadArtifact(activeArtifact, sourceFormat);
+  }
+
+  async function copyMd(button: HTMLButtonElement) {
+    const copied = await copyText(activeArtifact.content, {
+      restoreTarget: button,
+      onSuccess: () => {
+        if (sourceFormat === "designmd") trackExport({ reference: detail.id, channel: "copy" });
+        trackSourceFormatExport({ reference: detail.id, format: sourceFormat, action: "copy" });
+      },
+    });
+    setCopyFeedback(sourceFormat, copied);
+  }
+
+  async function copyInstall(button: HTMLButtonElement) {
+    const copied = await copyText(INSTALL_CMD, {
+      restoreTarget: button,
+      onSuccess: () => trackInstallCopy({ surface: "builder", reference: detail.id }),
+    });
+    setCopyFeedback("install", copied);
+  }
+
+  async function copyPrompt(button: HTMLButtonElement) {
+    const copied = await copyText(handoffPrompt, {
+      restoreTarget: button,
+      onSuccess: () => trackPromptCopy({ surface: "builder", reference: detail.id }),
+    });
+    setCopyFeedback("prompt", copied);
   }
 
   function selectSourceFormat(format: ReferenceFormat) {
@@ -280,12 +317,14 @@ export function PreviewExportView({
                 inline + right-aligned from sm up. */}
             <div className="ml-auto flex w-full items-center gap-2 sm:w-auto">
               <button
-                onClick={copyMd}
+                onClick={(event) => copyMd(event.currentTarget)}
                 className="flex flex-1 items-center justify-center gap-1.5 rounded-[0.5rem] border border-primary/25 bg-primary/10 px-3 py-2 text-xs font-semibold text-primary transition-colors duration-150 hover:bg-primary/20 dark:border-primary/30 sm:flex-none"
               >
-                {copied === sourceFormat
+                {copyState?.target === sourceFormat && copyState.status === "copied"
                   ? <><Check className="h-3.5 w-3.5 text-emerald-500" /> Copied</>
-                  : <><Copy className="h-3.5 w-3.5" /> Copy</>}
+                  : copyState?.target === sourceFormat && copyState.status === "failed"
+                    ? <><AlertCircle className="h-3.5 w-3.5 text-red-500" /> Try again</>
+                    : <><Copy className="h-3.5 w-3.5" /> Copy</>}
               </button>
 
               <button
@@ -339,6 +378,108 @@ export function PreviewExportView({
           </div>
         </div>
       </div>
+
+      <section className="rounded-xl border border-border/50 bg-card/40 p-4 sm:p-5 dark:border-border dark:bg-card/60" aria-labelledby="builder-handoff-title">
+        <div className="max-w-2xl">
+          <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
+            Continue in your project
+          </div>
+          <h2 id="builder-handoff-title" className="mt-1 text-xl font-semibold tracking-tight">
+            Use this DESIGN.md with your coding agent
+          </h2>
+          <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+            Three actions, three destinations: save the file in your project, run the command in Terminal, then paste the prompt into your coding-agent chat.
+          </p>
+        </div>
+
+        <ol className="mt-5 grid gap-3 md:grid-cols-3">
+          <li className="flex min-w-0 flex-col rounded-xl border border-border/50 bg-background p-4 dark:border-border">
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-mono text-[11px] font-semibold text-primary">01 / 03</span>
+              <FolderOpen className="h-4 w-4 text-muted-foreground" aria-hidden />
+            </div>
+            <div className="mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              Save to · project root
+            </div>
+            <h3 className="mt-1.5 text-sm font-semibold">Put DESIGN.md in your project</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Download the file, then move it into the top-level folder you open with your coding agent.
+            </p>
+            <div className="mt-3 rounded-lg bg-muted/60 px-3 py-2 font-mono text-[11px] text-foreground/70">
+              your-project/DESIGN.md
+            </div>
+            <div className="mt-auto pt-4">
+              <button
+                type="button"
+                onClick={() => downloadArtifact(designMdArtifact, "designmd")}
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-3 text-xs font-semibold transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+              >
+                <Download className="h-3.5 w-3.5" /> Download DESIGN.md
+              </button>
+            </div>
+          </li>
+
+          <li className="flex min-w-0 flex-col rounded-xl border border-border/50 bg-background p-4 dark:border-border">
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-mono text-[11px] font-semibold text-primary">02 / 03</span>
+              <Terminal className="h-4 w-4 text-muted-foreground" aria-hidden />
+            </div>
+            <div className="mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              Run in · project terminal
+            </div>
+            <h3 className="mt-1.5 text-sm font-semibold">Install OmD from Terminal</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Open Terminal in the same project folder, paste this command, and press Enter. Restart your agent when it finishes.
+            </p>
+            <div className="mt-3 truncate rounded-lg bg-muted/60 px-3 py-2 font-mono text-[11px] text-foreground/70">
+              $ {INSTALL_CMD}
+            </div>
+            <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+              After restart, run <code className="font-mono text-foreground/75">{INSTALL_CMD} doctor</code> once in the same Terminal.
+            </p>
+            <div className="mt-auto pt-4">
+              <button
+                type="button"
+                onClick={(event) => copyInstall(event.currentTarget)}
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-foreground px-3 font-mono text-[11px] font-semibold text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+              >
+                {copyState?.target === "install" && copyState.status === "copied" ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : copyState?.target === "install" && copyState.status === "failed" ? <AlertCircle className="h-3.5 w-3.5 text-red-400" /> : <Copy className="h-3.5 w-3.5" />}
+                {copyState?.target === "install" && copyState.status === "copied" ? "Command copied" : copyState?.target === "install" && copyState.status === "failed" ? "Copy failed" : "Copy Terminal command"}
+              </button>
+            </div>
+          </li>
+
+          <li className="flex min-w-0 flex-col rounded-xl border border-border/50 bg-background p-4 dark:border-border">
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-mono text-[11px] font-semibold text-primary">03 / 03</span>
+              <MessageSquare className="h-4 w-4 text-muted-foreground" aria-hidden />
+            </div>
+            <div className="mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              Paste in · agent chat
+            </div>
+            <h3 className="mt-1.5 text-sm font-semibold">Tell your coding agent what to do</h3>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Open Claude Code, Codex, OpenCode, or Cursor for this project. Paste the prompt into its chat and send it.
+            </p>
+            <div className="mt-3 line-clamp-2 rounded-lg bg-muted/60 px-3 py-2 text-[11px] leading-relaxed text-foreground/70">
+              &ldquo;{handoffPromptPreview}&rdquo;
+            </div>
+            <div className="mt-auto pt-4">
+              <button
+                type="button"
+                onClick={(event) => copyPrompt(event.currentTarget)}
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary px-3 text-xs font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+              >
+                {copyState?.target === "prompt" && copyState.status === "copied" ? <Check className="h-3.5 w-3.5" /> : copyState?.target === "prompt" && copyState.status === "failed" ? <AlertCircle className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                {copyState?.target === "prompt" && copyState.status === "copied" ? "Agent prompt copied" : copyState?.target === "prompt" && copyState.status === "failed" ? "Copy failed" : "Copy prompt for agent"}
+              </button>
+            </div>
+          </li>
+        </ol>
+        <span className="sr-only" role="status" aria-live="polite">
+          {copyState?.status === "copied" ? "Copied" : copyState?.status === "failed" ? "Copy failed" : ""}
+        </span>
+      </section>
     </div>
   );
 }

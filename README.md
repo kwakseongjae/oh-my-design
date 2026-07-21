@@ -1,11 +1,11 @@
 <p align="center">
-  <img src=".github/assets/logo-bg.png" width="480" alt="oh-my-design" />
+  <img src="https://raw.githubusercontent.com/kwakseongjae/oh-my-design/main/.github/assets/logo-bg.png" width="480" alt="oh-my-design" />
 </p>
 
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>One-command bootstrap for skill-driven design with your AI coding agent.</strong> 440+ real company design systems. Zero AI calls in the install. Then you just talk to your agent.
+  <strong>Give your coding agent a project-owned DESIGN.md workflow.</strong> Guided installer + doctor, 20 reusable skills, 18 specialist roles, and 440+ quality-graded company references. Local workflows need no separate API key or MCP server.
 </p>
 
 <p align="center">
@@ -25,7 +25,7 @@
 
 ## What is oh-my-design?
 
-**oh-my-design (OmD)** is a design system for AI coding agents. Claude Code, Codex, and OpenCode receive reusable skills and specialist roles; Cursor receives a focused project rule that makes it apply the same `DESIGN.md`. Install once, then describe the component, screen, copy, asset, or chart you want. `DESIGN.md` is the portable brand spec ([Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens + a brand-philosophy layer: Voice / Narrative / Principles / Personas / States / Motion), and 440+ real-company DESIGN.md files ship in this package. **Core install and local workflows need no separate API key, daemon, or MCP server; inference uses your existing coding-agent session. The optional `claude-design` skill opens your logged-in claude.ai/design session in Chrome.**
+**oh-my-design (OmD)** installs local design workflows into the coding tool you already use. Claude Code, Codex, and OpenCode receive reusable skills and specialist roles; Cursor receives a focused project rule that applies the same `DESIGN.md`. The file is a portable brand specification built from [Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens plus Voice, Narrative, Principles, Personas, States, and Motion. The package also includes 440+ quality-graded company references. **Core install and local workflows need no separate API key, daemon, or MCP server; inference stays inside your existing coding-agent session. The optional `claude-design` skill opens your logged-in claude.ai/design session in Chrome.**
 
 ## Install
 
@@ -45,23 +45,23 @@ The installer asks **where** to install: **Project** (channel-local files in thi
 
 ## Your first 60 seconds — Claude Code, Codex, or OpenCode
 
-This is the whole point: one prompt turns into a `DESIGN.md` your agent remembers across every future session.
+This is the shortest path from install to a visible result.
 
 1. Install (above), then **restart your agent** (Cmd+Q, relaunch) so it loads the new skills.
 
 2. In your project, type your first prompt — copy this exactly:
 
-   > Set up our design system — Toss-style, for a family meal-tracking app.
+   > Create a project-owned DESIGN.md for a family meal-tracking app. Use Toss as a reference, keep only verified reference facts, and ask before deciding product-specific facts.
 
-   Your skill-enabled agent runs **`omd:init`**: it recommends a reference from the 440+ real-company catalog, asks you to confirm, and writes **`DESIGN.md`** to your project root. (`omd:sync` can then update the managed agent-instruction shims.)
+   Your skill-enabled agent runs **`omd:init`**: it recommends a reference from the 440+ quality-graded company catalog, asks you to confirm, and writes **`DESIGN.md`** to your project root. (`omd:sync` can then update the managed agent-instruction shims.)
 
-   **That `DESIGN.md` is your activation — your agent now remembers your brand.**
+   **That file is the handoff.** It stays in your repository, so later sessions can read the same decisions again.
 
 3. Now build against it:
 
-   > Design the home screen.
+   > Read DESIGN.md and design the home screen. Preserve the current behavior and logo.
 
-   The agent reads `DESIGN.md` and ships brand-correct UI. No re-explaining your design system, ever again.
+   The agent reads `DESIGN.md`, works against the recorded decisions, and leaves a result you can inspect in the project.
 
 Don't want Toss? Any brand works — `Stripe-style`, `Linear-clone B2B SaaS`, `Karrot-style marketplace`. Browse the full catalog at [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems).
 
@@ -91,7 +91,7 @@ Then prompt Cursor: `Read @DESIGN.md and redesign the home screen without changi
 
 - **Skills** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the writing and review layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), interface quality (`omd:feel` / `omd:slop-audit`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
 - **Sub-agents** — `omd-master` + 17 specialists (UX research, UI generation, asset curation, copy humanization, slop auditing, a11y audit, persona testing, critique, …).
-- **References** — 440+ real-company `DESIGN.md` files with explicit evidence/quality status. Every reference is also served as raw markdown at `oh-my-design.kr/<id>/design.md`, so agents can fetch it directly.
+- **References** — 440+ company `DESIGN.md` files with explicit evidence and quality status. Every reference is also served as raw markdown at `oh-my-design.kr/<id>/design.md`, so agents can fetch it directly.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse activation so the skills trigger on natural language, not just slash commands.
 
 Outcome-first workflows, reproducible examples, and all five locales: **[oh-my-design.kr/docs/en](https://oh-my-design.kr/docs/en)** · [한국어](https://oh-my-design.kr/docs/ko) · [日本語](https://oh-my-design.kr/docs/ja) · [简体中文](https://oh-my-design.kr/docs/zh-cn) · [繁體中文](https://oh-my-design.kr/docs/zh-tw).

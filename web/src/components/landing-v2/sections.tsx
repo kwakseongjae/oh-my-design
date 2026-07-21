@@ -6,15 +6,23 @@ import { PKG_VERSION } from "@/data/version.generated";
 import { REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 import { motion, useInView } from "framer-motion";
 import {
+  AlertCircle,
   ArrowRight,
   Bug,
+  Check,
+  Copy,
   Heart,
   Lightbulb,
   Mail,
+  ShieldCheck,
   Sparkles,
   Star,
 } from "lucide-react";
 import { getLogoUrl, getLogoFallbackUrl } from "@/lib/logos";
+import { copyText } from "@/lib/clipboard";
+import { event } from "@/lib/gtag";
+import { trackInstallCopy } from "@/lib/activation/analytics";
+import { INSTALL_CMD } from "@/components/install-cta";
 import { V2 } from "./tokens";
 
 /* ──────────────────────── shared logo chip ──────────────────────── */
@@ -438,8 +446,26 @@ function StripRow({ strip, index }: { strip: Strip; index: number }) {
 /* ─────────────────────────── 06 — CLI STRIP ─────────────────────────── */
 
 export function CliStrip() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isVisible = useInView(sectionRef, { once: true, amount: 0.3 });
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "failed">("idle");
+
+  useEffect(() => {
+    if (isVisible) event("landing_cli_view", { surface: "home" });
+  }, [isVisible]);
+
+  async function copyInstaller(button: HTMLButtonElement) {
+    const copied = await copyText(INSTALL_CMD, {
+      restoreTarget: button,
+      onSuccess: () => trackInstallCopy({ surface: "cli" }),
+    });
+    setCopyStatus(copied ? "copied" : "failed");
+    window.setTimeout(() => setCopyStatus("idle"), copied ? 1600 : 2400);
+  }
+
   return (
     <section
+      ref={sectionRef}
       className="py-24 px-4 sm:px-6"
       style={{ background: V2.bgDark, color: V2.textOnDark }}
     >
@@ -452,31 +478,31 @@ export function CliStrip() {
             CLI
           </div>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            One install.{" "}
-            <span style={{ color: V2.accent }}>
-              Every AI coding agent
-            </span>{" "}
-            sees the same brand.
+            Install the workflow.{" "}
+            <span style={{ color: V2.accent }}>Your agent does the design work.</span>
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-white/55">
-            Install once, verify with doctor, then design by talking to your
-            agent.
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/55">
+            The guided installer detects your coding tools, writes only the capabilities
+            each channel supports, and stores the reference catalog locally. Doctor checks
+            the result before you start.
           </p>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
             <Link
-              href="/docs/en/demo"
+              href="/docs/en/demo#runbook"
+              onClick={() => event("landing_cli_docs_click", { destination: "demo" })}
               className="group inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white transition-colors"
               style={{ background: V2.primary }}
             >
-              Live demo playbook
+              See a live run
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
-              href="/docs/en"
+              href="/docs/en/getting-started#quick-start"
+              onClick={() => event("landing_cli_docs_click", { destination: "getting_started" })}
               className="group inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white/85 transition-colors hover:bg-white/5 hover:text-white"
               style={{ borderColor: V2.borderDark }}
             >
-              Read the docs
+              Install guide
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
@@ -499,12 +525,28 @@ export function CliStrip() {
             <span className="ml-3 font-mono text-[11px] text-white/40">
               ~/project
             </span>
+            <button
+              type="button"
+              onClick={(clickEvent) => copyInstaller(clickEvent.currentTarget)}
+              className="ml-auto inline-flex min-h-9 items-center gap-1.5 rounded-lg border px-3 font-mono text-[11px] font-medium text-white/70 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2"
+              style={{ borderColor: V2.borderDark, "--tw-ring-color": V2.accent } as React.CSSProperties}
+              aria-label="Copy guided installer"
+            >
+              {copyStatus === "copied" ? (
+                <Check className="h-3.5 w-3.5" style={{ color: V2.accent }} />
+              ) : copyStatus === "failed" ? (
+                <AlertCircle className="h-3.5 w-3.5 text-red-400" />
+              ) : (
+                <Copy className="h-3.5 w-3.5" />
+              )}
+              {copyStatus === "copied" ? "Copied" : copyStatus === "failed" ? "Try again" : "Copy installer"}
+            </button>
           </div>
           <div className="px-6 py-7 font-mono text-sm leading-[1.85]">
             <div>
               <span style={{ color: V2.accent }}>$</span>{" "}
               <span className="omd-v2-typing inline-block overflow-hidden whitespace-nowrap align-bottom">
-                npx oh-my-design-cli@latest
+                {INSTALL_CMD}
               </span>
               <span
                 className="omd-v2-cursor2 ml-0.5 inline-block h-[14px] w-[8px] translate-y-[2px]"
@@ -513,24 +555,34 @@ export function CliStrip() {
             </div>
             <div className="mt-3 omd-v2-output">
               <div style={{ color: V2.accent }}>
-                ✓ Installed {SKILL_COUNT} skills + {SUBAGENT_COUNT} sub-agents
+                ✓ Installed supported capabilities for selected channels
               </div>
               <div style={{ color: V2.accent }}>
-                ✓ Installed the channels you selected
+                ✓ Synced {REFERENCE_COUNT} quality-graded DESIGN.md references
               </div>
               <div style={{ color: V2.accent }}>
-                ✓ Bundled {REFERENCE_COUNT} reference DESIGN.md files
+                ✓ Preserved files outside OmD-managed paths
               </div>
               <div style={{ color: V2.accent }}>
-                → Next: npx oh-my-design-cli@latest doctor
+                → Restart your agent, then run: {INSTALL_CMD} doctor
               </div>
               <div className="mt-2 text-white/50">
-                Restart your agent. Then just talk: &ldquo;Set up the design
-                system for a calm B2B fintech dashboard.&rdquo;
+                First prompt: &ldquo;Set up the design system for a calm B2B fintech
+                dashboard.&rdquo;
               </div>
             </div>
           </div>
         </div>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] text-white/45">
+          <span className="inline-flex items-center gap-1.5">
+            <ShieldCheck className="h-3.5 w-3.5" /> Project or global scope
+          </span>
+          <span>No separate API key or MCP server</span>
+          <span>MIT licensed</span>
+        </div>
+        <span className="sr-only" role="status" aria-live="polite">
+          {copyStatus === "copied" ? "Installer command copied" : copyStatus === "failed" ? "Copy failed" : ""}
+        </span>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
@@ -668,11 +720,11 @@ export function PhilosophyBand() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mx-auto mt-10 max-w-2xl text-sm sm:text-base opacity-65"
         >
-          Every reference ships with a full brand-philosophy layer —{" "}
+          When the evidence exists, a reference can preserve more than tokens —{" "}
           <span className="font-semibold text-foreground" style={{ color: V2.textOnLight }}>
             Voice · Narrative · Principles · Personas · States · Motion
           </span>
-          .
+          . Unknown fields stay absent.
         </motion.p>
 
         <motion.div
@@ -925,8 +977,7 @@ export function FinalCtaFooter() {
                 />
               </Link>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/55">
-                Design systems from the world&apos;s best. Pick a reference,
-                customize, and export
+                Quality-graded company references. Pick one, customize, and export
                 <code
                   className="mx-1 rounded px-1.5 py-0.5 text-[11px] font-mono"
                   style={{
@@ -936,7 +987,7 @@ export function FinalCtaFooter() {
                 >
                   DESIGN.md
                 </code>
-                your AI coding agent (Claude Code, Codex, OpenCode, Cursor) reads as ground truth.
+                as project context for Claude Code, Codex, OpenCode, or Cursor.
               </p>
               <div className="mt-5 flex items-center gap-2">
                 <a

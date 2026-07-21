@@ -1,7 +1,7 @@
 {
   "name": "oh-my-design-cli",
   "version": "1.9.0",
-  "description": "Bootstrap and verify oh-my-design skills, agents, and 440+ DESIGN.md references for your AI coding agent.",
+  "description": "Give your AI coding agent a project-owned DESIGN.md workflow with a guided installer, doctor, and 440+ quality-graded references.",
   "type": "module",
   "bin": {
     "oh-my-design": "dist/bin/oh-my-design.js",
@@ -43,6 +43,7 @@
     "CHANGELOG.md",
     "MIGRATION.md",
     "docs/CLI_QUICKSTART.md",
+    ".github/assets/logo-bg.png",
     "scripts/postinstall.cjs",
     "scripts/context.cjs",
     "scripts/ctx-prime.cjs"
@@ -67,7 +68,10 @@
     "ai-agent",
     "claude-code",
     "codex",
+    "opencode",
+    "cursor",
     "skills",
+    "design-skills",
     "google-stitch",
     "vibe-coding"
   ],
@@ -100,5 +104,5 @@
   "bugs": {
     "url": "https://github.com/kwakseongjae/oh-my-design/issues"
   },
-  "homepage": "https://github.com/kwakseongjae/oh-my-design#readme"
+  "homepage": "https://oh-my-design.kr/docs/en"
 }

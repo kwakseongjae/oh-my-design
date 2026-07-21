@@ -4,8 +4,12 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { Check, Copy } from "lucide-react";
 import { event } from "@/lib/gtag";
 import { trackInstallCopy } from "@/lib/activation/analytics";
+import {
+  copyTextWithTextarea,
+  runCopyAttempt,
+} from "@/lib/clipboard";
 
-type ClipboardWriter = (text: string) => Promise<void>;
+export { copyTextWithTextarea, runCopyAttempt } from "@/lib/clipboard";
 
 export function copyStatusMessage(
   status: "idle" | "copying" | "copied" | "failed",
@@ -15,69 +19,6 @@ export function copyStatusMessage(
   if (status === "copied") return copiedLabel;
   if (status === "failed") return failureLabel;
   return "";
-}
-
-export async function runCopyAttempt({
-  text,
-  writeText,
-  fallback,
-  onSuccess,
-}: {
-  text: string;
-  writeText?: ClipboardWriter;
-  fallback: () => boolean;
-  onSuccess: () => void;
-}): Promise<boolean> {
-  let copied = false;
-  if (writeText) {
-    try {
-      await writeText(text);
-      copied = true;
-    } catch {
-      // Permission and browser-policy failures may still support the synchronous
-      // selection fallback while the original click activation is available.
-    }
-  }
-  if (!copied) {
-    try {
-      copied = fallback();
-    } catch {
-      copied = false;
-    }
-  }
-  if (copied) {
-    try {
-      onSuccess();
-    } catch {
-      // Telemetry must never turn a completed copy into a visible failure.
-    }
-  }
-  return copied;
-}
-
-export function copyTextWithTextarea(
-  text: string,
-  restoreTarget: Pick<HTMLElement, "focus"> | null,
-  clipboardDocument: Pick<Document, "body" | "createElement" | "execCommand"> = document,
-): boolean {
-  const textarea = clipboardDocument.createElement("textarea");
-  let appended = false;
-  try {
-    textarea.value = text;
-    textarea.setAttribute("readonly", "");
-    textarea.style.position = "fixed";
-    textarea.style.opacity = "0";
-    textarea.style.pointerEvents = "none";
-    clipboardDocument.body.appendChild(textarea);
-    appended = true;
-    textarea.select();
-    return clipboardDocument.execCommand("copy");
-  } catch {
-    return false;
-  } finally {
-    if (appended) textarea.remove();
-    restoreTarget?.focus({ preventScroll: true });
-  }
 }
 
 export function CopyCode({

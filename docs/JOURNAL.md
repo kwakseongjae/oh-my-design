@@ -5,6 +5,24 @@
 
 ---
 
+## 2026-07-21 (Codex) · CLI v1.9 final release gate
+- CLI 101/Web 820 tests·TS·ESLint·catalog/counts·1,458-page build를 통과했다.
+- Node 18.20.8 clean tarball에서 20 skills/18 roles/440 refs, 전 채널 doctor와 독립 collector를 확인했다.
+- npm 1.9.0은 비어 있으나 로컬 npm/gh 인증은 만료됐다.
+- release commit을 만들었다. production locale docs가 아직 404이므로 branch push → web deploy/200 smoke → npm publish 순서로 진행한다.
+
+## 2026-07-21 (Codex) · Builder handoff clarity + auto catalog loading
+- Builder catalog의 `Show more`를 제거하고 60개 단위 IntersectionObserver 자동 확장으로 교체했다.
+- handoff 3단계를 project root·project terminal·agent chat 목적지로 명시하고 restart 뒤 doctor 안내를 추가했다.
+- 실제 390px Builder에서 60→120 자동 로딩, handoff 문구/clipboard/overflow를 통과했다.
+- Web 50 files/820 tests, TypeScript, touched ESLint, production build, diff check가 green이다.
+
+## 2026-07-21 (Codex) · CLI activation implementation
+- `ee89e46`과 rollback tag를 만든 뒤 Home CLI copy/정직한 결과, Builder mobile 3-step handoff, 60-item progressive catalog를 구현했다.
+- README 4개 locale와 npm metadata/logo package를 outcome-first로 교정하고 과장된 reference copy를 제거했다.
+- API 89,288B·tokens absent, 실제 clipboard/390px handoff, CLI 101/Web 820 tests·TS·ESLint·1,458-page build·npm hygiene가 green이다.
+- 변경분은 미커밋 상태이며 다음은 final diff commit → Node 18 clean-install → publish/deploy다.
+
 ## 2026-07-20 (Codex) · CLI-first launch audit
 - Home CLI section을 Live Proof 위로 이동하고 desktop/mobile 실제 route 순서를 확인했다.
 - 28d GA/GSC/npm을 대조해 docs reach 2.5%, install-copy 282 users, Builder mobile handoff 부재를 확인했다.
