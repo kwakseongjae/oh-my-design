@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.14 authority recovery preregistered
+- packet=checklist/result, no verify/check/probe script·CDP automation 계약을 source에 고정했다.
+- focused 26/26, full 207/1 skip, lint/build가 green이다.
+- fresh Operations harness 1셀은 85/85·first write≤450s·specialists 2/2·verifier 0을 요구한다.
+- pass 시에만 1.9.15 full matrix를 열며 retry가 없다.
+
 ## 2026-07-23 (Codex) · 1.9.13 stopped on authored verifier
 - cell 11 harness가 `$TMPDIR/verify.mjs` Chrome CDP 검증기를 새로 작성해 executor가 중단했다.
 - 18 scheduled / 11 attempted / 10 valid / 1 stopped / 7 not-started이며 retry하지 않는다.

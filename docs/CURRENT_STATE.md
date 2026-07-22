@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `ad3c3b6` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.13 stopped/failed on authored verifier
+- 기준 커밋: `dc27f8f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.14 verification-authority recovery preregistered
 
 ## 지금 (현재 위치)
 
@@ -17,6 +17,8 @@
 - stopped provider는 exit 0·final·first write 242,904ms·Opus specialists 2/2였고 post-stop frozen evaluator 85/85였지만 verifier 저작으로 invalid다. forensic 점수는 denominator 밖이다.
 - 완성 5 pairs는 objective 0 win/5 tie/0 loss, UI-Resolved와 Evidence 10/10이다. valid-only median은 portable 535,415ms·107,777 tokens, harness 478,509ms·133,443 tokens(0.894×/1.238×)지만 incomplete matrix라 Pareto/reliability/promotion 주장은 금지한다.
 - root cause는 `acceptance packet`을 실행 파일 저작 권한으로 해석해 direct Chrome block 뒤 새 CDP runner를 만든 것이다. 1.9.14는 packet=checklist/result, no `verify/check/probe` script·inline shell file·CDP automation, existing check 실패 시 unresolved+deliver를 계약 최전방에 잠근다.
+- 1.9.14 source `dc27f8f`은 canonical `omd:apply`와 harness activation에 동일 authority 계약을 추가했다. focused 26/26, 전체 207 pass/1 conditional skip, TypeScript/build/count-drift가 green이다.
+- fresh recovery는 `/tmp/u1914`의 Operations harness 단일 셀, exact Opus/xhigh, first write≤450,000ms, verifier 저작 0, frozen 85/85, specialists 2/2를 요구하며 retry가 없다. full pass만 1.9.15를 연다.
 - 1.9.10 report는 retained 3 traces와 unit/full gates를 근거로 classifier calibration complete다. provider generation은 없었고 1.9.9 run-result는 소급 수정하지 않았다.
 - 1.9.10 patch는 tool-result 문구만 보지 않고 연결된 Bash tool-use command를 함께 읽는다. `qlmanage`/headless Chrome의 known environment block은 optional verifier recoverable로 분리하고 cwd/built-in permission denial은 계속 infrastructure fail-closed다.
 - replacement detector는 real-browser `verify.html`/`probe.html`을 허용하고 JS/TS/Python verifier script, explicit DOM shim/mock-browser, DOM implementation을 차단한다. retained trace replay는 1.9.7 replacement true, 1.9.8 false, 1.9.9 false이며 1.9.9 tool errors는 2 recoverable / 0 infra / optional renderer 1로 분리된다.
@@ -281,9 +283,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.14 verification-authority 계약을 canonical skill과 harness activation에 좁게 적용하고 회귀 테스트한다.
-2. 동일 Operations harness의 fresh single-cell recovery를 preregister하고 exact Opus/xhigh로 한 번 실행한다.
-3. recovery pass 후에만 1.9.15 fresh full matrix를 등록한다; `/tmp/u1913`은 재개하지 않는다.
+1. 1.9.14 recovery를 `/tmp/u1914`에 prepare하고 exact Opus preflight를 통과시킨다.
+2. Operations harness single cell을 한 번 실행하고 authority·quality·delivery를 판정한다.
+3. full pass 후에만 1.9.15 fresh full matrix를 등록한다; `/tmp/u1913`은 재개하지 않는다.
 4. 그 뒤 locale/evidence → public benchmark UX → activation → independent challenge로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
