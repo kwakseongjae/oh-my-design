@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  CLAUDE_PERMISSION_MODE,
   buildClaudeChildEnv,
   buildClaudeRunnerSettings,
   inspectClaudeRunner,
@@ -16,6 +17,10 @@ const execFor = (auth) => (command, args) => {
 };
 
 describe("Claude print runner preflight", () => {
+  it("uses acceptEdits inside the fail-closed native sandbox", () => {
+    expect(CLAUDE_PERMISSION_MODE).toBe("acceptEdits");
+  });
+
   it("isolates print runs from auto-memory and background state", () => {
     const result = buildClaudeChildEnv({
       env: { HOME: "/Users/example", PATH: "/bin", TMPDIR: "/host/tmp" },

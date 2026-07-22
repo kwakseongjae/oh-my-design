@@ -13,6 +13,8 @@ const CREDENTIAL_ENV = [
   "CLAUDE_CODE_USE_FOUNDRY",
 ];
 
+export const CLAUDE_PERMISSION_MODE = "acceptEdits";
+
 export function buildClaudeRunnerSettings({ workspace, runTempRoot, protectedHome = null }) {
   const sandboxRoots = [workspace, runTempRoot];
   const workspaceRules = ["./**", `${workspace}/**`];

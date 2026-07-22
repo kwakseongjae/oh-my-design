@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from
 import { join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
 import {
+  CLAUDE_PERMISSION_MODE,
   buildClaudeChildEnv,
   buildClaudeRunnerSettings,
   inspectClaudeRunner,
@@ -57,7 +58,7 @@ const command = [
   "--strict-mcp-config",
   "--mcp-config", '{"mcpServers":{}}',
   "--settings", runnerSettings,
-  "--permission-mode", "dontAsk",
+  "--permission-mode", CLAUDE_PERMISSION_MODE,
   "--tools", "Read,Edit,Write,Glob,Grep,Bash",
 ];
 

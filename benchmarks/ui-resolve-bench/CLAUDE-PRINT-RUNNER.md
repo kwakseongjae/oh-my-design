@@ -119,15 +119,18 @@ Do not pair that boundary with `Read(../**)` or `Edit(../**)` deny rules. Claude
 merges those permission rules into the native filesystem sandbox, and a parent
 glob also contains the current workspace. The 2026-07-22 post-login probe
 identified this runner-policy collision when cwd bookkeeping under `.t` was
-denied despite an explicit allow-write. `dontAsk` plus workspace-scoped allow
-rules already fails closed for built-in file tools outside the workspace.
+denied despite an explicit allow-write. Workspace-scoped allow rules and the
+native filesystem boundary still fail closed outside the workspace.
 
 Allow rules include both `./**` and the canonical absolute workspace path.
 Claude may send an absolute `file_path` to built-in Edit/Write even when its
-working directory is already the workspace; a relative-only rule makes
-`dontAsk` deny that otherwise sandbox-safe operation. Built-in file-tool
-permission denial is an infrastructure failure, not a recoverable verifier
-failure.
+working directory is already the workspace. The runner uses `acceptEdits`
+inside the fail-closed native sandbox: this grants normal built-in file edits
+without allowing an unsandboxed escape, while sandboxed Bash remains governed
+by the same filesystem boundary. `dontAsk` is not used because a long run
+demonstrated that a first absolute Write could succeed and a later Edit of the
+same file could still be denied. Built-in file-tool permission denial remains
+an infrastructure failure, not a recoverable verifier failure.
 
 `--safe-mode` is intentionally absent from scored skill runs because it disables
 project Skills. The same `--setting-sources project` isolation is used for both
