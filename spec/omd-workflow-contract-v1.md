@@ -31,6 +31,13 @@ acceptance:
   - <observable outcome>
 protected_behaviors:
   - <must not regress>
+protected_contract:
+  cardinality:
+    - <behavior-bearing control/row/form/disclosure count and allowed delta>
+  state_transitions:
+    - <before → action → after>
+  facts:
+    - <copy, value, hook, or field name that must remain true>
 evidence:
   - <DESIGN.md, screenshot, code, browser observation>
 unknowns:
@@ -55,9 +62,13 @@ verification:
 4. 동작, 시각 계약, 접근성, overflow를 확인한다.
 5. 실행하지 못한 검증은 통과로 표시하지 않고 unresolved로 남긴다.
 
+기존 UI 개선은 첫 편집 전에 behavior-bearing element의 identity·개수·state를 잠근다. 요청에 없는 hook 복제나 상태 확장은 회귀다. 최종 검증은 같은 route에서 contrast, 320px reflow, 200% zoom, focusable control의 clip/overlap까지 포함한다.
+
 ## 5. Release progression
 
 - 1.9.1: capability graph, work packet, route helper, exact-route verification 계약
-- 1.9.2+: 짧은 fast path와 전문 역할 조합을 UI-Resolve Skill Lift로 비교
+- 1.9.2: task contract calibration
+- 1.9.3: fast-first-result calibration — first write/time은 개선됐지만 resolved lift 0pp
+- 1.9.4: protected contract + contrast/reflow inspection loop
 - 1.10.x: 실패 유형별 recovery와 자동 증거 패키지
 - 2.0.0: 대표 task family에서 frontier 후보 대비 우위 또는 통계적 동률, 동시에 실제 작업의 end-to-end delivery 계약 통과

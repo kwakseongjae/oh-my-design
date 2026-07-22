@@ -34,9 +34,11 @@ describe('omd workflows', () => {
   it('makes one implementation owner and same-surface verification explicit', () => {
     expect(manifest.principles).toContain('one-implementation-owner');
     expect(manifest.principles).toContain('same-surface-reverification');
+    expect(manifest.principles).toContain('preserve-observable-contract');
     expect(manifest.work_packet.implementation_owner).toBe('main-agent');
     expect(manifest.work_packet.required).toContain('consumer_route');
     expect(manifest.work_packet.required).toContain('unknowns');
+    expect(manifest.work_packet.required).toContain('protected_contract');
   });
 
   it('wraps the actual user task instead of returning an unrelated canned example', () => {

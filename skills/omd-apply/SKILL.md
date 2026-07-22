@@ -72,6 +72,10 @@ task: <사용자가 원하는 결과>
 consumer_route: <사용자가 실제로 진입하는 route>
 acceptance: [<관찰 가능한 완료 조건>]
 protected_behaviors: [<깨지면 안 되는 동작>]
+protected_contract:
+  cardinality: [<동작을 가진 control/row/form/disclosure의 현재 개수와 허용 변화>]
+  state_transitions: [<before → action → after>]
+  facts: [<보존할 값·카피·hook·필드명>]
 evidence: [DESIGN.md, screenshot, code, browser observation]
 unknowns: [<확인되지 않은 정보 — fallback으로 채우지 않음>]
 implementation_owner: main-agent | none
@@ -135,11 +139,27 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 - 변경 전 `consumer_route`의 viewport·state·핵심 동작을 기록하고, 변경 후 **같은 consumer route·viewport·state**를 다시 연다. 공유 renderer나 진단 route만 확인해 통과 처리하지 않는다.
 - 변경 후 요청에 비례한 빌드·테스트·실제 route 검증을 수행. 동작, 시각 계약, 접근성, overflow를 확인한다. 실행하지 못한 검증은 통과로 표현하지 않고 `unresolved`에 남긴다. 자문 완료를 구현 완료로 간주하지 않음.
 
+## Phase 2.25 — Contract-first edit + acceptance packet
+
+시각적 확장보다 먼저 기존 제품 계약을 잠근다. 목적은 디자인을 보수적으로 만드는 것이 아니라, 더 나은 화면을 만들면서 이미 동작하는 제품을 다른 제품으로 바꾸지 않는 것이다.
+
+1. **첫 편집 전 protected ledger를 만든다.** 기존 DOM·코드·요청에서 동작을 가진 control, form, disclosure, row/list, 상태 출력의 identity와 개수를 기록한다. 각 항목은 `current_count`, `allowed_delta`, `states`, `facts`를 가진다. 사용자가 추가·삭제를 요청하지 않았다면 `allowed_delta: 0`이다.
+2. **탐색 종료 조건을 둔다.** DESIGN.md, consumer route, protected ledger, 최소 acceptance를 확인했다면 optional research나 미적 아이디어 수집을 더 하지 않고 가장 작은 end-to-end 편집을 시작한다. specialist 자문이 꼭 필요한 위험을 해결하지 않는 한 첫 편집을 막지 않는다.
+3. **장식을 위해 제품 hook을 복제하지 않는다.** 가격 비교, 요약 카드, 모바일 사본처럼 같은 값을 다시 보여줘야 해도 기존 behavior hook·form field·live region·ID를 복제하지 않는다. 새 hook이나 상태를 추가하려면 요청 또는 제품 계약의 근거가 있어야 한다.
+4. **최종 acceptance packet을 한 번 실행한다.** 같은 route에서 다음을 묶어 확인하고, 고칠 수 없는 항목은 `unresolved`로 전달한다.
+   - protected ledger의 identity·개수·before/action/after가 변경 전 계약과 일치
+   - 일반 텍스트 contrast 4.5:1, 큰 텍스트와 비텍스트 경계·focus 3:1. accent token이라는 이유만으로 작은 텍스트 색으로 쓰지 않음
+   - desktop, 390px, 320px, 200% zoom/reflow 또는 제품이 지원하는 가장 가까운 동등 조건에서 horizontal overflow·clipped control·control overlap 없음
+   - focusable skip/navigation control을 큰 음수 좌표에 방치하지 않으며, keyboard focus 시 viewport 안에서 보이고 다른 control과 겹치지 않음
+5. 브라우저나 contrast 계산기가 없으면 통과를 추정하지 않는다. 가능한 정적 검사와 같은-route 상태 검증을 수행하고 나머지는 `unresolved`로 남긴다.
+
+이 packet은 benchmark selector를 맞추는 절차가 아니다. 실제 제품에서 사용자 동작과 접근성·reflow 계약을 보존하기 위한 일반 acceptance layer다.
+
 ## Phase 2.5 — Bounded verification + guaranteed delivery
 
 검증은 결과 전달을 막지 않는 범위에서 fail-closed로 수행한다.
 
-1. work packet에서 **필수 검증**(acceptance를 증명하는 최소 명령·route)과 **선택 검증**(추가 screenshot, 보조 브라우저, 중복 lint)을 먼저 분리한다.
+1. work packet의 protected ledger와 acceptance packet을 **필수 검증**으로 두고, acceptance를 증명하는 최소 명령·route와 **선택 검증**(추가 screenshot, 보조 브라우저, 중복 lint)을 분리한다.
 2. 가장 결정론적이고 값싼 검증부터 실행한다. 이미 같은 계약을 증명한 검증을 “더 확실하게” 만들기 위해 반복하지 않는다.
 3. sandbox permission, quota, browser attach, missing executable/dependency 같은 **infrastructure error**는 제품 결함과 분리한다. 원인을 확인하는 보정 시도는 한 번만 허용하며, 같은 mechanism이 두 번 연속 실패하면 중단하고 다른 이미 가용한 검증으로 이동한다.
 4. 네트워크 다운로드·새 도구 설치·권한 완화·sandbox 해제는 사용자가 요청하거나 work packet에 사전 승인된 경우가 아니면 검증 우회책으로 사용하지 않는다.

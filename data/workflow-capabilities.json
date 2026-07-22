@@ -1,12 +1,13 @@
 {
   "schema_version": 1,
-  "product_version": "1.9.1-candidate",
+  "product_version": "1.9.4-candidate",
   "principles": [
     "natural-language-first",
     "smallest-capable-workflow",
     "one-implementation-owner",
     "specialists-are-advisory",
     "unknown-means-absent",
+    "preserve-observable-contract",
     "same-surface-reverification"
   ],
   "work_packet": {
@@ -16,6 +17,7 @@
       "consumer_route",
       "acceptance",
       "protected_behaviors",
+      "protected_contract",
       "evidence",
       "unknowns",
       "implementation_owner",
@@ -45,11 +47,11 @@
         "omd-designer-review",
         "omd-a11y-auditor"
       ],
-      "stages": ["inspect", "contract", "advise", "implement", "reverify", "handoff"],
-      "prompt_en": "Improve the existing pricing page using our DESIGN.md. Preserve behavior, implement the smallest high-impact changes, then verify the same route on desktop and mobile.",
-      "prompt_ko": "기존 가격 페이지를 DESIGN.md에 맞게 개선해줘. 동작은 보존하고 효과가 큰 최소 변경을 구현한 뒤 같은 경로를 데스크톱과 모바일에서 다시 검증해줘.",
-      "route_suffix_en": "Use our DESIGN.md, preserve existing behavior, implement the smallest high-impact changes, then reverify the same route, viewport, and state.",
-      "route_suffix_ko": "DESIGN.md를 적용하고 기존 동작을 보존해. 효과가 큰 최소 변경을 구현한 뒤 같은 경로·viewport·state를 다시 검증해줘."
+      "stages": ["inspect", "lock-protected-contract", "advise", "implement", "reverify", "handoff"],
+      "prompt_en": "Improve the existing pricing page using our DESIGN.md. Preserve behavior-bearing controls and states, implement the smallest high-impact changes, then verify the same route at desktop, mobile, 320px, and 200% zoom.",
+      "prompt_ko": "기존 가격 페이지를 DESIGN.md에 맞게 개선해줘. 동작을 가진 control과 state를 보존하고 효과가 큰 최소 변경을 구현한 뒤 같은 경로를 데스크톱·모바일·320px·200% zoom에서 다시 검증해줘.",
+      "route_suffix_en": "Use our DESIGN.md, lock the observable behavior contract before editing, implement the smallest high-impact changes, then reverify the same route, states, contrast, 320px, and 200% zoom.",
+      "route_suffix_ko": "DESIGN.md를 적용하고 편집 전에 관찰 가능한 동작 계약을 잠가. 효과가 큰 최소 변경을 구현한 뒤 같은 경로·viewport·state에서 contrast·320px·200% zoom을 다시 검증해줘."
     },
     {
       "id": "audit-existing-ui",

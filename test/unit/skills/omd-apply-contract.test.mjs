@@ -38,4 +38,14 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("implemented / verified / unresolved");
     expect(skill).toContain("final response를 잃는 것은 실패");
   });
+
+  it("locks observable behavior before visual expansion", () => {
+    expect(skill).toContain("Contract-first edit + acceptance packet");
+    expect(skill).toContain("current_count");
+    expect(skill).toContain("allowed_delta");
+    expect(skill).toContain("장식을 위해 제품 hook을 복제하지 않는다");
+    expect(skill).toContain("일반 텍스트 contrast 4.5:1");
+    expect(skill).toContain("320px, 200% zoom/reflow");
+    expect(skill).toContain("큰 음수 좌표");
+  });
 });
