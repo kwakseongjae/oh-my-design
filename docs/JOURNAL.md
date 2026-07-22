@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-22 (Codex) · 1.9.5 quality-aware reference query complete
+- model in-head scorer를 local deterministic query + 440-entry quality manifest로 교체했다.
+- 5 locale 5/5, exact id 440/440, unsafe promotion/fallback/mismatch 0, 3-run determinism을 통과했다.
+- installer/doctor/package와 missing-quality fail-close를 연결하고 extracted tarball 실행까지 확인했다.
+- 1.9.9를 마감으로 보지 않는 1.9.10+ train을 추가했다. 다음은 1.9.6 three-model transfer다.
+
 ## 2026-07-22 (Codex) · 1.9.4 all-Opus repair harness complete
 - protected-contract repair loop와 model-pinned Agent attribution을 구현했다.
 - timeout/cardinality failure와 mixed-model attribution failure를 보존한 뒤 원인을 닫았다.

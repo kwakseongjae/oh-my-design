@@ -3,19 +3,25 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `002499f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-22 · 1.9.4 all-Opus repair harness smoke complete
+- 기준 커밋: `4d29347` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-22 · 1.9.5 deterministic reference query product contract complete
 
 ## 지금 (현재 위치)
 
+- 1.9.5는 model in-head reference scorer를 dependency-free Node 18 local query로 교체했다. exact brand→semantic match→quality→stable id 순서를 고정하고, 모호한 요청은 후보 0/clarification, Partial·Legacy는 reverify 전 context-only, unknown은 smallest unresolved field omission으로 fail closed한다.
+- 440-entry canonical quality manifest를 패키지·installer·doctor에 연결했다. Claude/Codex/OpenCode/Cursor는 같은 manifest를 받고 folder skill 채널은 query sidecar도 받는다. missing/stale/duplicate/status/id mismatch는 doctor와 CLI가 복구 명령을 포함해 차단한다.
+- frozen Evidence & Unknown evaluator는 5 locale 5/5, exact id 440/440, 3-run determinism/unsafe promotion/generic fallback/quality mismatch 모두 0, missing-quality fail-close pass다. 전체 440×3 cell wall 960.5ms, installed query payload 532,633B이며 정본은 `reports/reference-query-1.9.5/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
+- 최종 tarball은 5,775,747B이며 추출본 helper가 KO 동네 중고거래 질의에서 `karrot`/Verified v2/evidence-qualified policy를 반환했다. 이 결과는 product-contract calibration일 뿐 model/skill lift·UI-Resolved·frontier 우월성 주장이 아니다.
+- 1.9.5 최종 검증은 root 190 pass / 1 conditional skip, TypeScript, build, generated-data/JSON/syntax/count/diff와 extracted-tarball query가 모두 green이다.
+- release train은 1.9.10 benchmark robustness, 1.9.11 failure recovery, 1.9.12 locale/evidence, 1.9.13 public benchmark UX, 1.9.14 activation/reuse와 필요 수만큼의 1.9.x를 포함한다. 다음 bounded patch는 1.9.6 three-model transfer다.
 - 1.9.4 all-Opus repair harness replacement 2는 exact `claude-opus-4-8`/xhigh/Claude Code 2.1.217에서 정상 완료했다. parent와 `omd-ux-writer`·`omd-ux-engineer` 두 Agent call 모두 Opus selector를 사용했고 Agent/infrastructure/sandbox/cwd error 0, Sonnet usage 0이다. internal Haiku helper만 별도 기록했다.
 - 최종 artifact는 frozen browser evaluator 85/85·UI-Resolved를 통과했다. protected FAQ는 정확히 2개이며 billing/FAQ/form state, desktop·390px·320px·200% zoom geometry, keyboard/focus, axe, DESIGN.md grounding, evidence honesty가 모두 green이다. 정본은 `reports/opus-agent-repair-harness-1.9.4-replacement-2/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
 - 실행은 550,644ms, first/last product write 330,364/495,469ms, input/output 108,251/49,738, cached input 921,722, provider price equivalent $2.6374다. self-authored scratch verifier 오류 2개는 수정 후 종료된 recoverable error이며 frozen evaluator 실패가 아니다.
 - 첫 unbounded smoke는 timeout+FAQ 2→6 계약 파괴, bounded replacement는 85/85지만 specialist Sonnet 요청으로 attribution invalid였다. 두 실패를 보존한 뒤 immutable `change_authority: original-user-task-only`, finding≤5/~600 words bounded advisory, requested Agent model fail-close로 원인을 닫았다.
 - `omd:apply`와 workflow manifest는 protected contract, same-route deterministic acceptance, 320px/200% zoom/contrast/focus geometry를 1.9.4 계약으로 공유한다. repair harness는 복합·계약 민감 repair의 opt-in 경로이며 portable Skill Lift 기본 경로를 대체하지 않는다.
 - 1.9.3 exact Opus replacement matrix는 3 tasks에서 raw/OmD 각각 1 resolved, lift 0pp, OmD mean objective +0.67점, wall -33.3%, uncached tokens -25.2%였다. 공표 불가 internal patch-selection calibration이며 정본은 `reports/opus-paired-matrix-1.9.3-replacement-2/`다.
-- 최신 검증은 전체 170 pass / 1 conditional skip, focused harness/workflow 35/35, TypeScript, build, JSON, `git diff --check`, count-drift hook이 green이다.
-- 다음 product patch는 release train 순서대로 1.9.5 reference query layer를 설계·사전등록한다. Agent-enabled harness의 3-task×반복 trial과 Pareto 평가는 1.9.7에서 진행하며, 그 전에는 단일 smoke를 효율·우월성 주장에 사용하지 않는다.
+- 1.9.5 직전 1.9.4 검증은 전체 170 pass / 1 conditional skip, focused harness/workflow 35/35, TypeScript, build, JSON, `git diff --check`, count-drift hook이 green이었다.
+- 다음 product patch는 release train 순서대로 1.9.6 model transfer를 사전등록한다. Agent-enabled harness의 3-task×반복 trial과 Pareto 평가는 1.9.7에서 진행하며, 그 전에는 단일 smoke를 효율·우월성 주장에 사용하지 않는다.
 - 1.9.2는 raw 81/85 artifact와 OmD 85/85 artifact에도 2.1.212 sandbox 오류/OmD timeout으로 0 valid였던 폐기 calibration이다. 정본은 `reports/opus-transfer-1.9.2/{FINDINGS.md,SUMMARY.final.json}`이며 1.9.3이 이를 소급 유효화하지 않는다.
 - clean `6d7edc6` paired-smoke의 Terra/xhigh 18/18을 `/tmp/ui-resolve-paired-smoke-1.9.1-6d7edc6`에서 실행·평가·export했다. Raw 3/9, OmD 4/9 UI-Resolved, 9 matched pairs 1 win / 8 ties / 0 losses, paired lift +11.1pp(CI 0~44.4), Reliability@3는 양쪽 모두 0/3이다. OmD mean token volume은 +82.8%, wall time은 +7.4%다.
 - 1.9.1은 완결됐지만 superiority 공표 불가 calibration이다. lift CI가 0을 포함하고 8/9가 tie이며 semantic contract 결함 2개가 있다. 영구 정본은 `reports/paired-smoke-1.9.1/{FINDINGS.md,SUMMARY.final.json}`이고 `/tmp`에는 `records.final.json`·`aggregate.final.{json,md}`가 있다.
@@ -33,7 +39,7 @@
 - 1-task corrected activation 진단은 같은 core prompt/starter/DESIGN.md와 `gpt-5.6-terra/xhigh`에서 Taste 81/85(contrast fail), UI UX Pro Max 81/85(ARIA fail), OmD 85/85(automated gate pass)였다. 기존 valid 관측은 baseline 65/85·61/85, raw DESIGN.md 79/85, Anthropic 85/85, Impeccable prompt-only 85/85다. 단일 public fixture·각 1회·비정규화된 실행이므로 순위나 우월성 증거가 아니며 X 성능표는 NO-SHIP이다.
 - benchmark/skill focused 24 tests와 전체 125 tests가 통과했고, opt-in malformed-DOM browser E2E 1건도 별도 강제 실행해 통과했다. TypeScript, build, Node syntax, registry validation, `git diff --check`가 green이며 독립 재감사에서 이전 5 blockers(skill attribution·fail-closed·keyboard focus·metric definition·blind gallery)가 모두 해소됐다.
 - UI-Resolve를 Model Track(무스킬), Skill Lift(고정 모델 paired control), Harness Track(품질/시간/개입 Pareto), 비랭킹 Prompt Arena(러프 프롬프트 blind visual), Transfer Matrix(model×skill 일반화)로 분리했다. 서로 다른 family 결과는 한 글로벌 순위로 합치지 않으며 Internal→Preview→Verified→Retired 상태를 가진다.
-- `1.9.1 → 1.9.9 → 2.0.0` patch experiment train을 고정했다. 매 0.0.1은 하나의 bounded hypothesis·benchmark slice·product activation metric·rollback gate를 가지며, product version과 benchmark suite version은 분리한다. 2.0.0은 3-model positive paired lift, Skill Lift 통계적 공동 1위 이상, Harness Pareto non-dominated, 24 hidden tasks×10 runs, 10 practitioner blind review, 독립 task audit가 모두 통과할 때만 승격한다.
+- `1.9.1 → 1.9.n → 2.0.0` patch experiment train을 고정했다. 매 0.0.1은 하나의 bounded hypothesis·benchmark slice·product activation metric·rollback gate를 가지며, product version과 benchmark suite version은 분리한다. 2.0.0은 3-model positive paired lift, Skill Lift 통계적 공동 1위 이상, Harness Pareto non-dominated, 24 hidden tasks×10 runs, 10 practitioner blind review, 독립 task audit가 모두 통과할 때만 승격한다.
 - 신규 `bench:ui:aggregate`는 run schema의 실패/timeout을 resolved 분모에 보존하고 completion, min/mean/median/max·P10/P25/P75/P90·IQR, Reliability@k, task→run hierarchical bootstrap 95% CI, median/best/worst representative IDs, no-skill 대비 paired lift와 win/tie/loss를 계산한다. focused benchmark/skill 24 tests(conditional browser E2E 1 skip), JSON/syntax/diff checks가 green이다.
 - 다음 benchmark queue는 **auto-memory-off fresh task-contract 0.3.0 paired matrix → 별도 agent-enabled Harness Track 설계**다. 다음 단일 patch hypothesis는 OmD의 늦은 first product write(6:05)를 줄이는 bounded discovery/first-edit milestone이며, recoverable verification failure와 infrastructure failure를 acceptance에서 분리해야 한다. 이후 12개 task fixture·patch train으로 확장한다.
 - PR #47에서 CLI-first activation release를 `main`에 병합했고 Vercel Production 배포를 완료했다. `https://oh-my-design.kr/docs/{en,ko,ja,zh-cn,zh-tw}`는 모두 HTTP 200이다.
