@@ -195,6 +195,9 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(competitors.variants["omd-repair-harness"].activation).toContain("before 450 seconds");
     expect(competitors.variants["omd-repair-harness"].activation).toContain("before 810 seconds");
     expect(competitors.variants["omd-repair-harness"].activation).toContain("do not write a DOM shim");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("checklist and observed result, not an executable artifact");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("CDP/browser automation");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("direct browser command that writes no verification program");
     expect(competitors.variants["omd-full-harness"]).toMatchObject({
       install_dir: "omd-harness",
       install_adapter: "omd-channel-name-v1",

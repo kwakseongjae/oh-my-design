@@ -148,6 +148,8 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 
 시각적 확장보다 먼저 기존 제품 계약을 잠근다. 목적은 디자인을 보수적으로 만드는 것이 아니라, 더 나은 화면을 만들면서 이미 동작하는 제품을 다른 제품으로 바꾸지 않는 것이다.
 
+**Acceptance packet은 실행 파일이 아니라 체크리스트와 관찰 결과다.** 이 표현은 `verify.*`, `verifier.*`, `check.*`, `probe.*`, 임시 shell 파일, CDP/browser automation, 새 test runner를 작성할 권한을 주지 않는다. 새 프로그램이 실제 Chrome을 실행하더라도 replacement verifier다. 저장소에 이미 있는 테스트·평가기 또는 파일을 만들지 않는 직접 browser command만 실행하고, 그런 수단이 한 번 막히면 browser proof를 `unresolved`로 남기고 전달을 시작한다.
+
 1. **첫 편집 전 protected ledger를 만든다.** 기존 DOM·코드·요청에서 동작을 가진 control, form, disclosure, row/list, 상태 출력의 identity와 개수를 기록한다. 각 항목은 `current_count`, `allowed_delta`, `states`, `facts`를 가진다. 사용자가 원 요청에서 추가·삭제를 명시하지 않았다면 언제나 `allowed_delta: 0`이다. agent, specialist, DESIGN.md, 미적 아이디어, “production-ready” 같은 품질 표현은 변경 권한이 아니다. 부모가 handoff를 만들 때도 이 값을 완화할 수 없다.
 2. **탐색 종료 조건을 둔다.** DESIGN.md, consumer route, protected ledger, 최소 acceptance를 확인했다면 optional research나 미적 아이디어 수집을 더 하지 않고 가장 작은 end-to-end 편집을 시작한다. specialist 자문이 꼭 필요한 위험을 해결하지 않는 한 첫 편집을 막지 않는다. specialist를 호출해도 전체 페이지 감사를 요청하지 않고, 이미 확인한 위험 질문 1-2개만 `bounded-repair-advisory`로 보낸다.
 3. **delivery clock을 먼저 잠근다.** 런타임이나 작업 packet에 timeout이 있으면 첫 제품 편집을 총 예산의 50% 전, 선택 검증 종료를 80% 전, 최종 전달 시작을 90% 전으로 둔다. 필수 specialist가 있으면 결과가 도착한 직후 별도의 2차 분석 pass 없이 편집한다. timeout을 알 수 없어도 ledger와 필수 자문이 준비된 뒤 optional 탐색을 한 번 더 돌리지 않는다. deadline을 놓치면 기능을 더 추가하지 않고 가장 작은 완성 diff와 정직한 `unresolved` 전달을 우선한다.
@@ -169,7 +171,7 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 2. 가장 결정론적이고 값싼 검증부터 실행한다. 이미 같은 계약을 증명한 검증을 “더 확실하게” 만들기 위해 반복하지 않는다.
 3. sandbox permission, quota, browser attach, missing executable/dependency 같은 **infrastructure error**는 제품 결함과 분리한다. verification mechanism은 종류별로 한 번만 시도한다. 실패 원인을 읽는 보정 명령은 제품을 다시 실행하지 않는 범위에서 한 번만 허용하고, 같은 browser/runtime mechanism을 변형해 재시도하지 않는다.
 4. 네트워크 다운로드·새 도구 설치·권한 완화·sandbox 해제는 사용자가 요청하거나 work packet에 사전 승인된 경우가 아니면 검증 우회책으로 사용하지 않는다.
-5. browser/DOM/runtime을 흉내 내는 새 shim, mock browser, replacement verifier를 검증 우회책으로 작성하지 않는다. 저장소에 이미 있는 테스트·검증기·정적 검사만 사용하고, 없는 증명은 `unresolved`로 남긴다. 사용자가 테스트 인프라 구현 자체를 요청한 경우만 예외다.
+5. browser/DOM/runtime을 흉내 내는 새 shim, mock browser, replacement verifier를 검증 우회책으로 작성하지 않는다. `verify.*`, `verifier.*`, `check.*`, `probe.*`, 임시 shell 파일, CDP/browser automation, 새 test runner도 작성하지 않는다. 새 프로그램이 실제 browser를 실행해도 금지다. 저장소에 이미 있는 테스트·검증기·정적 검사 또는 파일을 만들지 않는 직접 browser command만 사용하고, 없는 증명은 `unresolved`로 남긴다. 사용자가 테스트 인프라 구현 자체를 요청한 경우만 예외다.
 6. 제품 변경이 acceptance를 충족하고 필수 검증 결과를 확보했으면 선택 검증보다 **최종 전달을 우선**한다. 알려진 시간 예산의 80%에서 선택 검증을 끝내고 90% 전에는 최종 응답을 시작한다. 잔여 예산을 알 수 없으면 첫 제품 편집 이후 acceptance packet 한 번 또는 첫 infrastructure error를 delivery reserve로 간주한다.
 7. 검증 인프라가 막혀도 구현을 지우거나 무한 재시도하지 않는다. 최종 응답을 `implemented / verified / unresolved`로 나눠 무엇이 완성됐고 무엇이 실행되지 못했는지 명시한다.
 
