@@ -226,6 +226,49 @@ if (variant.declared_name) {
   };
 }
 
+let agents = null;
+if ((variant.agent_bundle ?? []).length) {
+  if (runtime !== "claude-code") {
+    throw new Error(`${variantId} agent bundle currently has only a reviewed Claude Code adapter`);
+  }
+  if (!skill) throw new Error(`${variantId} agent bundle requires an installed primary skill`);
+  const agentRoot = assertInside(out, join(out, ".claude/agents"));
+  mkdirSync(agentRoot, { recursive: true });
+  const installed = [];
+  for (const descriptor of variant.agent_bundle) {
+    if (!descriptor?.id || !descriptor?.source_path) {
+      throw new Error(`${variantId} has an invalid agent bundle descriptor`);
+    }
+    const sourceFile = assertInside(repoRoot, join(repoRoot, descriptor.source_path));
+    if (frontmatterName(sourceFile) !== descriptor.id) {
+      throw new Error(`${variantId} agent name mismatch: expected ${descriptor.id}`);
+    }
+    const source = readFileSync(sourceFile, "utf8");
+    const inheritedModel = /^model:\s*.+$/m.test(source)
+      ? source.replace(/^model:\s*.+$/m, "model: inherit")
+      : source.replace(/^(tools:\s*.+)$/m, "$1\nmodel: inherit");
+    const rendered = `${inheritedModel.trim()}\n\n## Benchmark advisory boundary\n\nThis is an advisory-only Harness Track run. Do not use Write or Edit and do not modify product files. Return concise evidence, risks, and acceptance checks to the main agent; the main agent remains the only implementation owner.\n`;
+    const destination = join(agentRoot, `${descriptor.id}.md`);
+    writeFileSync(destination, rendered, "utf8");
+    installed.push({
+      id: descriptor.id,
+      source_path: descriptor.source_path,
+      model_adapter: "inherit-parent-exact-model",
+      advisory_only: true,
+    });
+  }
+  const agentTree = treeManifest(agentRoot);
+  agents = {
+    runtime: "claude-code",
+    install_root: ".claude/agents",
+    source_commit: skill.source_commit,
+    source_attestation: skill.source_attestation,
+    installed,
+    sha256: agentTree.sha256,
+    files: agentTree.files.length,
+  };
+}
+
 const activationDelta = variant.activation ?? null;
 const activation = activationDelta ? `\n\n## Variant activation\n\n${activationDelta}` : "";
 const prompt = `${promptSource}${activation}\n`;
@@ -280,6 +323,7 @@ const manifest = {
     },
   },
   skill,
+  agents,
   workspace: {
     name: basename(out),
     initial_sha256: initialTree.sha256,
@@ -291,6 +335,7 @@ const manifest = {
   safety: {
     third_party_installer_executed: false,
     hooks_enabled: false,
+    agent_tool_enabled: agents !== null,
     source_symlinks_allowed: false,
   },
 };

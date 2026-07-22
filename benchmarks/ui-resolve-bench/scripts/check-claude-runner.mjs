@@ -15,7 +15,7 @@ const CREDENTIAL_ENV = [
 
 export const CLAUDE_PERMISSION_MODE = "acceptEdits";
 
-export function buildClaudeRunnerSettings({ workspace, runTempRoot, protectedHome = null }) {
+export function buildClaudeRunnerSettings({ workspace, runTempRoot, protectedHome = null, enableAgents = false }) {
   const sandboxRoots = [workspace, runTempRoot];
   const workspaceRules = ["./**", `${workspace}/**`];
   return {
@@ -40,6 +40,7 @@ export function buildClaudeRunnerSettings({ workspace, runTempRoot, protectedHom
           `Grep(${root})`,
         ]),
         "Bash",
+        ...(enableAgents ? ["Agent"] : []),
       ],
       // In dontAsk mode, non-allowlisted file-tool requests already fail closed.
       // Do not add ../** denies: Claude merges Edit/Read denies into its native
@@ -48,6 +49,45 @@ export function buildClaudeRunnerSettings({ workspace, runTempRoot, protectedHom
     },
     includeCoAuthoredBy: false,
     includeGitInstructions: false,
+  };
+}
+
+export function claudeToolsForManifest(manifest = {}) {
+  const agentHarness = manifest?.variant?.kind === "agent-harness";
+  if (agentHarness && !manifest?.agents?.installed?.length) {
+    throw new Error("agent-harness manifest is missing its reviewed agent bundle");
+  }
+  return {
+    agent_harness: agentHarness,
+    tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash", ...(agentHarness ? ["Agent"] : [])],
+  };
+}
+
+export function summarizeClaudeAgentUsage(events = []) {
+  const calls = [];
+  const errorsByToolUseId = new Set();
+  for (const event of events) {
+    if (event?.type === "assistant" && Array.isArray(event?.message?.content)) {
+      for (const item of event.message.content) {
+        if (item?.type !== "tool_use" || item?.name !== "Agent") continue;
+        calls.push({
+          tool_use_id: item.id ?? null,
+          agent_id: item?.input?.subagent_type ?? item?.input?.agent ?? item?.input?.name ?? null,
+        });
+      }
+    }
+    if (event?.type === "user" && Array.isArray(event?.message?.content)) {
+      for (const item of event.message.content) {
+        if (item?.type === "tool_result" && item?.is_error === true && item?.tool_use_id) {
+          errorsByToolUseId.add(item.tool_use_id);
+        }
+      }
+    }
+  }
+  return {
+    agent_tool_call_count: calls.length,
+    agent_tool_error_count: calls.filter((call) => errorsByToolUseId.has(call.tool_use_id)).length,
+    requested_agent_ids: [...new Set(calls.map((call) => call.agent_id).filter(Boolean))].sort(),
   };
 }
 

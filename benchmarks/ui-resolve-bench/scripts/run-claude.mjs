@@ -7,7 +7,9 @@ import {
   CLAUDE_PERMISSION_MODE,
   buildClaudeChildEnv,
   buildClaudeRunnerSettings,
+  claudeToolsForManifest,
   inspectClaudeRunner,
+  summarizeClaudeAgentUsage,
   summarizeClaudeMilestones,
   summarizeClaudeToolErrors,
   summarizeClaudeUsage,
@@ -38,6 +40,7 @@ const readiness = inspectClaudeRunner({ model });
 if (!readiness.ready) throw new Error(readiness.next_action ?? "Claude runner preflight failed");
 
 const prompt = readFileSync(join(benchmarkDir, "PROMPT.md"), "utf8");
+const toolContract = claudeToolsForManifest(manifest);
 const finalMessagePath = join(benchmarkDir, "final-message.txt");
 // Claude Code's shell wrapper must record cwd inside a writable per-session temp
 // directory. Keep the root inside the prepared workspace and deliberately short.
@@ -45,7 +48,12 @@ const runTempRoot = join(workspace, ".t");
 mkdirSync(runTempRoot, { recursive: true });
 const protectedHome = process.env.HOME ? realpathSync(process.env.HOME) : null;
 const maxLogBytes = 50 * 1024 * 1024;
-const runnerSettings = JSON.stringify(buildClaudeRunnerSettings({ workspace, runTempRoot, protectedHome }));
+const runnerSettings = JSON.stringify(buildClaudeRunnerSettings({
+  workspace,
+  runTempRoot,
+  protectedHome,
+  enableAgents: toolContract.agent_harness,
+}));
 const command = [
   "-p",
   "--model", model,
@@ -59,7 +67,8 @@ const command = [
   "--mcp-config", '{"mcpServers":{}}',
   "--settings", runnerSettings,
   "--permission-mode", CLAUDE_PERMISSION_MODE,
-  "--tools", "Read,Edit,Write,Glob,Grep,Bash",
+  "--tools", toolContract.tools.join(","),
+  ...(toolContract.agent_harness ? ["--forward-subagent-text"] : []),
 ];
 
 const startedAt = new Date();
@@ -113,6 +122,7 @@ const events = stdout.split("\n").filter(Boolean).flatMap((line) => {
   try { return [JSON.parse(line)]; } catch { return []; }
 });
 const toolErrors = summarizeClaudeToolErrors(events);
+const agentUsage = summarizeClaudeAgentUsage(events);
 const observedMilestones = summarizeClaudeMilestones(events, {
   workspace,
   startedAt: startedAt.toISOString(),
@@ -158,6 +168,7 @@ const result = {
     ephemeral: true,
     setting_sources: ["project"],
     mcp_disabled: true,
+    agent_harness_enabled: toolContract.agent_harness,
   },
   process: {
     exit_code: exit.code === 0 && toolErrors.sandbox_error_count > 0 ? 1 : exit.code,
@@ -180,6 +191,7 @@ const result = {
     result_subtype: resultEvent?.subtype ?? null,
     result_is_error: resultEvent?.is_error ?? null,
     ...toolErrors,
+    ...agentUsage,
   },
   workspace: {
     initial_sha256: manifest.workspace.initial_sha256,

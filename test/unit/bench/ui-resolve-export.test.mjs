@@ -100,6 +100,9 @@ describe("UI-Resolve normalized run exporter", () => {
         infrastructure_tool_error_count: 0,
         sandbox_error_count: 0,
         sandbox_cwd_error_count: 0,
+        agent_tool_call_count: 0,
+        agent_tool_error_count: 0,
+        requested_agent_ids: [],
         milestones: {
           first_builtin_product_write_ms: 400,
           last_builtin_product_write_ms: 900,
@@ -168,5 +171,24 @@ describe("UI-Resolve normalized run exporter", () => {
     expect(record.validity).toBe("valid");
     expect(record.delivery.product_changed).toBe(false);
     expect(record.ui_resolved).toBe(false);
+  });
+
+  it("fails closed when an agent harness skips a preregistered specialist", () => {
+    const harnessManifest = structuredClone(manifest);
+    harnessManifest.variant.kind = "agent-harness";
+    harnessManifest.agents = {
+      installed: [{ id: "omd-ux-writer" }, { id: "omd-ux-engineer" }],
+      sha256: "agent-bundle-sha",
+    };
+    const partialHarnessRun = structuredClone(run);
+    partialHarnessRun.output.requested_agent_ids = ["omd-ux-writer"];
+    partialHarnessRun.output.agent_tool_call_count = 1;
+    partialHarnessRun.output.agent_tool_error_count = 0;
+    expect(classifyValidity(harnessManifest, "complete", score, partialHarnessRun))
+      .toBe("invalid-attribution");
+
+    partialHarnessRun.output.requested_agent_ids.push("omd-ux-engineer");
+    partialHarnessRun.output.agent_tool_call_count = 2;
+    expect(classifyValidity(harnessManifest, "complete", score, partialHarnessRun)).toBe("valid");
   });
 });

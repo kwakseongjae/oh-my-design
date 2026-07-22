@@ -130,6 +130,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(manifest.safety).toEqual({
       third_party_installer_executed: false,
       hooks_enabled: false,
+      agent_tool_enabled: false,
       source_symlinks_allowed: false,
     });
   });
@@ -173,6 +174,15 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       declared_name: "omd:apply",
       activation: expect.stringContaining("$omd:apply"),
     });
+    expect(competitors.variants["omd-repair-harness"]).toMatchObject({
+      kind: "agent-harness",
+      declared_name: "omd:apply",
+      agent_bundle: [
+        { id: "omd-ux-writer" },
+        { id: "omd-ux-engineer" },
+      ],
+      activation: expect.stringContaining("Agent tool"),
+    });
     expect(competitors.variants["omd-full-harness"]).toMatchObject({
       install_dir: "omd-harness",
       install_adapter: "omd-channel-name-v1",
@@ -183,6 +193,36 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       expect(variant.activation).toContain(`$${variant.declared_name}`);
       expect(variant.install_dir).not.toContain("/");
     }
+  });
+
+  it("installs the repair harness as a separate Claude agent-enabled arm", () => {
+    const parent = mkdtempSync(join(tmpdir(), "ui-resolve-harness-"));
+    const out = join(parent, "omd-repair-harness");
+    execFileSync(process.execPath, [
+      prepare,
+      "--task", "pricing-conversion-v0.1",
+      "--variant", "omd-repair-harness",
+      "--out", out,
+      "--runtime", "claude-code",
+      "--allow-dirty-source",
+    ], { cwd: repoRoot, encoding: "utf8" });
+    const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+    const writer = readFileSync(join(out, ".claude/agents/omd-ux-writer.md"), "utf8");
+    const engineer = readFileSync(join(out, ".claude/agents/omd-ux-engineer.md"), "utf8");
+
+    expect(existsSync(join(out, ".claude/skills/omd-apply/SKILL.md"))).toBe(true);
+    expect(writer).toContain("model: inherit");
+    expect(engineer).toContain("model: inherit");
+    expect(writer).toContain("advisory-only Harness Track run");
+    expect(manifest.variant.kind).toBe("agent-harness");
+    expect(manifest.agents.installed.map((agent) => agent.id)).toEqual([
+      "omd-ux-writer",
+      "omd-ux-engineer",
+    ]);
+    expect(manifest.safety).toMatchObject({
+      hooks_enabled: false,
+      agent_tool_enabled: true,
+    });
   });
 
   it("keeps the OmD harness folder shim separate from its declared activation name", () => {

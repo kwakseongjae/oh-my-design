@@ -58,7 +58,14 @@
         "recoverable_tool_error_count": { "type": "integer", "minimum": 0 },
         "infrastructure_tool_error_count": { "type": "integer", "minimum": 0 },
         "sandbox_error_count": { "type": "integer", "minimum": 0 },
-        "sandbox_cwd_error_count": { "type": "integer", "minimum": 0 }
+        "sandbox_cwd_error_count": { "type": "integer", "minimum": 0 },
+        "agent_tool_call_count": { "type": "integer", "minimum": 0 },
+        "agent_tool_error_count": { "type": "integer", "minimum": 0 },
+        "requested_agent_ids": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
       }
     },
     "token_usage": {

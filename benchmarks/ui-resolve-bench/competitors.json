@@ -10,6 +10,7 @@
     "ui-ux-pro-max",
     "vercel-web-design-guidelines",
     "omd-portable",
+    "omd-repair-harness",
     "omd-full-harness"
   ],
   "variants": {
@@ -110,6 +111,23 @@
       "license": "MIT",
       "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
       "activation": "Use the installed $omd:apply skill for this task."
+    },
+    "omd-repair-harness": {
+      "label": "oh-my-design repair harness",
+      "kind": "agent-harness",
+      "source_path": "skills/omd-apply",
+      "install_adapter": "omd-channel-name-v1",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-apply",
+      "declared_name": "omd:apply",
+      "agent_bundle": [
+        { "id": "omd-ux-writer", "source_path": "agents/omd-ux-writer.md" },
+        { "id": "omd-ux-engineer", "source_path": "agents/omd-ux-engineer.md" }
+      ],
+      "license": "MIT",
+      "eligible_tracks": ["landing-redesign", "repair"],
+      "activation": "Use the installed $omd:apply skill. Before the main implementation, use the Agent tool once for $omd-ux-writer and once for $omd-ux-engineer, in parallel when possible. Give each the same protected-contract work packet and ask for concise, evidence-backed advice only. Specialists must not edit files; the main agent owns all product edits, integrates only relevant advice, and runs the final same-route acceptance packet."
     },
     "omd-full-harness": {
       "label": "oh-my-design full harness",

@@ -3,8 +3,10 @@ import {
   CLAUDE_PERMISSION_MODE,
   buildClaudeChildEnv,
   buildClaudeRunnerSettings,
+  claudeToolsForManifest,
   inspectClaudeRunner,
   summarizeClaudeMilestones,
+  summarizeClaudeAgentUsage,
   summarizeClaudeToolErrors,
   summarizeClaudeUsage,
 } from "../../../benchmarks/ui-resolve-bench/scripts/check-claude-runner.mjs";
@@ -51,6 +53,27 @@ describe("Claude print runner preflight", () => {
     expect(result.permissions.allow).toContain("Edit(/private/tmp/ubp1/**)");
     expect(result.permissions.deny).toEqual(["WebFetch", "WebSearch"]);
     expect(result.permissions.deny.some((rule) => rule.includes("../**"))).toBe(false);
+  });
+
+  it("enables Agent only for a manifest with a reviewed harness bundle", () => {
+    expect(claudeToolsForManifest({ variant: { kind: "local-skill" } })).toEqual({
+      agent_harness: false,
+      tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash"],
+    });
+    expect(claudeToolsForManifest({
+      variant: { kind: "agent-harness" },
+      agents: { installed: [{ id: "omd-ux-writer" }] },
+    })).toEqual({
+      agent_harness: true,
+      tools: ["Read", "Edit", "Write", "Glob", "Grep", "Bash", "Agent"],
+    });
+    expect(() => claudeToolsForManifest({ variant: { kind: "agent-harness" } }))
+      .toThrow(/missing its reviewed agent bundle/);
+    expect(buildClaudeRunnerSettings({
+      workspace: "/tmp/run",
+      runTempRoot: "/tmp/run/.t",
+      enableAgents: true,
+    }).permissions.allow).toContain("Agent");
   });
 
   it("accepts exact Opus 4.8 with unshadowed first-party subscription auth", () => {
@@ -209,6 +232,31 @@ describe("Claude print runner preflight", () => {
       first_builtin_product_write_ms: 4000,
       last_builtin_product_write_ms: 4000,
       final_result_ms: 9000,
+    });
+  });
+
+  it("records requested specialist roles and agent-tool failures", () => {
+    const events = [{
+      type: "assistant",
+      message: { content: [{
+        type: "tool_use",
+        name: "Agent",
+        id: "tool-1",
+        input: { subagent_type: "omd-ux-writer" },
+      }, {
+        type: "tool_use",
+        name: "Agent",
+        id: "tool-2",
+        input: { subagent_type: "omd-ux-engineer" },
+      }] },
+    }, {
+      type: "user",
+      message: { content: [{ type: "tool_result", tool_use_id: "tool-2", is_error: true }] },
+    }];
+    expect(summarizeClaudeAgentUsage(events)).toEqual({
+      agent_tool_call_count: 2,
+      agent_tool_error_count: 1,
+      requested_agent_ids: ["omd-ux-engineer", "omd-ux-writer"],
     });
   });
 });

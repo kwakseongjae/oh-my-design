@@ -18,9 +18,15 @@ export function classifyRunStatus(run, score) {
   return "complete";
 }
 
-export function classifyValidity(manifest, runStatus, score) {
+export function classifyValidity(manifest, runStatus, score, run = null) {
   if (manifest?.variant?.track_eligibility?.off_label === true) return "invalid-task";
   if (manifest?.skill?.source_attestation?.publishable === false) return "invalid-attribution";
+  if (manifest?.variant?.kind === "agent-harness" && run) {
+    const required = (manifest?.agents?.installed ?? []).map((agent) => agent.id);
+    const requested = new Set(run?.output?.requested_agent_ids ?? []);
+    if (!required.length || required.some((agentId) => !requested.has(agentId))) return "invalid-attribution";
+    if (Number(run?.output?.agent_tool_error_count ?? 0) > 0) return "invalid-attribution";
+  }
   if (runStatus !== "complete" || !score) return "invalid-infrastructure";
   return "valid";
 }
@@ -55,7 +61,7 @@ export function buildRunRecord({
   if (!FAMILIES.has(family)) throw new Error(`unsupported benchmark family: ${family}`);
   if (!Number.isInteger(trialIndex) || trialIndex < 1) throw new Error("trial index must be a positive integer");
   const runStatus = classifyRunStatus(run, score);
-  const validity = classifyValidity(manifest, runStatus, score);
+  const validity = classifyValidity(manifest, runStatus, score, run);
   const automatedPass = score?.status?.automated_gate_pass === true;
   const productChanged = run?.workspace?.product_changed ?? run?.workspace?.changed ?? false;
   const tokenUsage = summarizeTokenUsage(run);
@@ -95,11 +101,15 @@ export function buildRunRecord({
       infrastructure_tool_error_count: Number(run?.output?.infrastructure_tool_error_count ?? 0),
       sandbox_error_count: Number(run?.output?.sandbox_error_count ?? 0),
       sandbox_cwd_error_count: Number(run?.output?.sandbox_cwd_error_count ?? 0),
+      agent_tool_call_count: Number(run?.output?.agent_tool_call_count ?? 0),
+      agent_tool_error_count: Number(run?.output?.agent_tool_error_count ?? 0),
+      requested_agent_ids: run?.output?.requested_agent_ids ?? [],
       milestones: run?.output?.milestones ?? null,
     },
     attribution: {
       source_commit: manifest?.skill?.source_commit ?? null,
       source_attestation: manifest?.skill?.source_attestation ?? null,
+      agent_bundle_sha256: manifest?.agents?.sha256 ?? null,
       activation_delta_sha256: manifest?.variant?.activation_delta_sha256 ?? null,
       track_eligibility: manifest?.variant?.track_eligibility ?? null,
     },
