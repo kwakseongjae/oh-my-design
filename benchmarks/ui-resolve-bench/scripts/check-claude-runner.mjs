@@ -250,14 +250,19 @@ export function summarizeClaudeToolErrors(events = []) {
         .map((item) => [item.id, item])
       : []
   )));
-  const toolErrors = events.flatMap((event) => (
+  const toolResults = events.flatMap((event) => (
     event?.type === "user" && Array.isArray(event?.message?.content)
       ? event.message.content
-        .filter((item) => item?.type === "tool_result" && item?.is_error === true)
+        .filter((item) => item?.type === "tool_result")
         .map((item) => ({ item, tool: toolUses.get(item.tool_use_id) ?? null }))
       : []
   ));
-  const optionalRendererErrors = toolErrors.filter(({ item, tool }) => {
+  const toolErrors = toolResults.filter(({ item }) => item?.is_error === true);
+  // Shell pipelines can mask a renderer's non-zero exit status. Keep the
+  // provider's explicit tool-error totals intact, but observe known renderer
+  // environment blocks in every linked result so benchmark telemetry cannot
+  // silently miss a failed Chrome/qlmanage probe reported as is_error:false.
+  const optionalRendererErrors = toolResults.filter(({ item, tool }) => {
     const command = String(tool?.input?.command ?? "");
     const content = String(item?.content ?? "");
     const isRenderer = /\bqlmanage\b|(?:Google Chrome|Chromium|Chrome)[^\n]*--headless|--headless[^\n]*(?:Google Chrome|Chromium|Chrome)/i

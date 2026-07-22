@@ -257,6 +257,39 @@ describe("Claude print runner preflight", () => {
     });
   });
 
+  it("observes a shell-masked optional renderer block without inflating tool errors", () => {
+    expect(summarizeClaudeToolErrors([{
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          id: "tool-chrome",
+          name: "Bash",
+          input: {
+            command: "Google Chrome --headless=new --dump-dom file://$PWD/index.html 2>&1 | tail -20",
+          },
+        }],
+      },
+    }, {
+      type: "user",
+      message: {
+        content: [{
+          type: "tool_result",
+          tool_use_id: "tool-chrome",
+          is_error: false,
+          content: "crashpad: Operation not permitted\nFailed to create a ProcessSingleton for your profile directory.",
+        }],
+      },
+    }])).toEqual({
+      tool_error_count: 0,
+      recoverable_tool_error_count: 0,
+      infrastructure_tool_error_count: 0,
+      optional_verifier_environment_error_count: 1,
+      sandbox_error_count: 0,
+      sandbox_cwd_error_count: 0,
+    });
+  });
+
   it("records built-in product writes without counting benchmark or skill files", () => {
     const events = [{
       type: "assistant",
