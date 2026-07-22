@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.11 inconclusive, 1.9.12 observability complete
+- 1.9.11 product는 exact Opus 85/85지만 shell-masked Chrome block을 frozen counter가 놓쳤다.
+- prereg대로 1.9.11은 inconclusive로 보존하고 retry·소급 pass하지 않았다.
+- 1.9.12는 explicit error totals를 유지한 채 linked result의 renderer block을 관찰한다.
+- retained replay, focused 24/24, full 207/1 skip, lint/build가 green이며 1.9.13이 unlock됐다.
+
 ## 2026-07-23 (Codex) · 1.9.11 classifier recovery preregistered
 - failed 1.9.9 Pricing portable 계약을 fresh single cell로 재구성했다.
 - optional renderer error가 실제 재현되고 recoverable-only여야 pass다.
