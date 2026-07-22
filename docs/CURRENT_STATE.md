@@ -3,11 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `4d29347` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-22 · 1.9.5 deterministic reference query product contract complete
+- 기준 커밋: `f1f75f9` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-22 · 1.9.6 three-model/runtime transfer smoke preregistered; generation awaits explicit provider-disclosure approval
 
 ## 지금 (현재 위치)
 
+- 1.9.6은 pricing task contract 0.3.0에서 Terra/Codex, Fable 5/Claude Code, Opus 4.8/Claude Code × raw DESIGN.md/OmD의 6-cell Evidence & Unknown transfer smoke로 사전등록했다. 서로 다른 agent runtime이 섞이므로 cross-row model ranking이 아니라 model+runtime compatibility 관측이며, row 내부 raw/OmD만 paired다.
+- Claude preflight가 immutable `claude-fable-5`를 숫자 segment shape 때문에 거부하던 결함을 `a6be981`에서 수정하고 alias `fable`은 계속 fail-close하는 회귀 테스트를 추가했다. first-party subscription auth에서 Fable 5와 Opus 4.8 모두 ready다.
+- `/tmp/u196/{t,f,o}-{raw,omd}` 6개 fresh workspace는 동일 task/starter hash, clean publishable OmD source `f1f75f9`, no MCP/hooks/network 조건으로 준비됐다. 생성 결과는 아직 0/6이다.
+- 생성 시 격리된 fictional fixture(`index.html`, `DESIGN.md`, prompt, OmD condition의 apply skill)가 OpenAI/Anthropic으로 전송된다. 안전 게이트가 이 외부 전송에 대한 명시적 사용자 승인을 요구해 첫 Terra cell 전에 중단했으며, 승인 후 preregistration stop rule 그대로 재개한다.
 - 1.9.5는 model in-head reference scorer를 dependency-free Node 18 local query로 교체했다. exact brand→semantic match→quality→stable id 순서를 고정하고, 모호한 요청은 후보 0/clarification, Partial·Legacy는 reverify 전 context-only, unknown은 smallest unresolved field omission으로 fail closed한다.
 - 440-entry canonical quality manifest를 패키지·installer·doctor에 연결했다. Claude/Codex/OpenCode/Cursor는 같은 manifest를 받고 folder skill 채널은 query sidecar도 받는다. missing/stale/duplicate/status/id mismatch는 doctor와 CLI가 복구 명령을 포함해 차단한다.
 - frozen Evidence & Unknown evaluator는 5 locale 5/5, exact id 440/440, 3-run determinism/unsafe promotion/generic fallback/quality mismatch 모두 0, missing-quality fail-close pass다. 전체 440×3 cell wall 960.5ms, installed query payload 532,633B이며 정본은 `reports/reference-query-1.9.5/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.

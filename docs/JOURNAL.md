@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-22 (Codex) · 1.9.6 transfer smoke ready, provider approval pending
+- Fable 5 exact-id preflight를 고치고 Fable/Opus subscription readiness를 확인했다.
+- Terra·Fable·Opus × raw/OmD 6-cell Evidence & Unknown smoke를 결과 전에 사전등록했다.
+- `/tmp/u196` 6개 clean workspace를 준비했으며 생성 결과는 아직 0/6이다.
+- 격리 fixture의 OpenAI/Anthropic 전송에 대한 명시적 승인 후 첫 Terra cell부터 재개한다.
+
 ## 2026-07-22 (Codex) · 1.9.5 quality-aware reference query complete
 - model in-head scorer를 local deterministic query + 440-entry quality manifest로 교체했다.
 - 5 locale 5/5, exact id 440/440, unsafe promotion/fallback/mismatch 0, 3-run determinism을 통과했다.
