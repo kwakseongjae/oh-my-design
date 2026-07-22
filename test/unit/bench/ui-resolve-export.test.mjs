@@ -96,6 +96,8 @@ describe("UI-Resolve normalized run exporter", () => {
       runtime_diagnostics: {
         child_exit_code: 0,
         tool_error_count: 0,
+        recoverable_tool_error_count: 0,
+        infrastructure_tool_error_count: 0,
         sandbox_error_count: 0,
         sandbox_cwd_error_count: 0,
         milestones: {

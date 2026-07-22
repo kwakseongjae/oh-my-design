@@ -18,8 +18,9 @@ the no-repository probe returned exactly `OMD_OPUS_48_PROBE` from
 must not shadow the intended interactive subscription login.
 
 Switching from the npm-distributed `2.1.212` binary to the native `2.1.217`
-binary cleared the local login session. A fresh `claude auth login` is required
-before the post-update sandbox probe; the preflight reports this as not ready.
+binary cleared the local login session. The user completed a fresh
+`claude auth login`, and the corrected post-update sandbox probe passed with
+the exact model and zero tool or sandbox errors.
 
 ## Quota finding
 
@@ -95,6 +96,13 @@ provider price-equivalent telemetry when supplied are written to the existing
 run-result schema. A sandbox error invalidates the run even when Claude's
 top-level child process exits zero. The price-equivalent value is not a claim
 that the subscription account was billed that amount.
+
+Tool results use two non-overlapping diagnostic classes. Sandbox/cwd denials
+are `infrastructure_tool_error_count` and invalidate the cell. A failed local
+audit or verifier that the agent repairs before a normal final delivery is
+`recoverable_tool_error_count`; it remains visible but does not invalidate an
+otherwise complete cell. Process exit, timeout, auth/model preflight, final
+delivery, and frozen evaluator output remain separate fail-closed gates.
 
 Print runs set `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`, disable background tasks,
 and disable IDE auto-connect. This prevents machine-local memory and ambient IDE

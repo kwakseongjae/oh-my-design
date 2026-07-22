@@ -204,8 +204,15 @@ export function summarizeClaudeToolErrors(events = []) {
     /\b(?:EPERM|operation not permitted)\b|requested permissions to (?:read from|write to)/i
       .test(String(item?.content ?? ""))
   ));
+  // A red verifier is useful implementation feedback when the agent repairs it,
+  // completes normally, and the frozen evaluator still runs. Keep that signal,
+  // but do not collapse it into the same failure class as a sandbox breach.
+  // Process/auth/model/timeout failures are recorded outside tool results.
+  const infrastructureToolErrors = sandboxErrors;
   return {
     tool_error_count: toolErrors.length,
+    recoverable_tool_error_count: toolErrors.length - infrastructureToolErrors.length,
+    infrastructure_tool_error_count: infrastructureToolErrors.length,
     sandbox_error_count: sandboxErrors.length,
     sandbox_cwd_error_count: sandboxCwdErrors.length,
   };

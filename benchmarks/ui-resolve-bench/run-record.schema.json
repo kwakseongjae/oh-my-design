@@ -55,6 +55,8 @@
       "properties": {
         "child_exit_code": { "type": ["integer", "null"] },
         "tool_error_count": { "type": "integer", "minimum": 0 },
+        "recoverable_tool_error_count": { "type": "integer", "minimum": 0 },
+        "infrastructure_tool_error_count": { "type": "integer", "minimum": 0 },
         "sandbox_error_count": { "type": "integer", "minimum": 0 },
         "sandbox_cwd_error_count": { "type": "integer", "minimum": 0 }
       }

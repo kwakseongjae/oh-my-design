@@ -87,6 +87,8 @@ export function buildRunRecord({
     runtime_diagnostics: {
       child_exit_code: run?.process?.child_exit_code ?? run?.process?.exit_code ?? null,
       tool_error_count: Number(run?.output?.tool_error_count ?? 0),
+      recoverable_tool_error_count: Number(run?.output?.recoverable_tool_error_count ?? 0),
+      infrastructure_tool_error_count: Number(run?.output?.infrastructure_tool_error_count ?? 0),
       sandbox_error_count: Number(run?.output?.sandbox_error_count ?? 0),
       sandbox_cwd_error_count: Number(run?.output?.sandbox_cwd_error_count ?? 0),
       milestones: run?.output?.milestones ?? null,

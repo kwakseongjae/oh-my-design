@@ -152,6 +152,8 @@ describe("Claude print runner preflight", () => {
     }]);
     expect(result).toEqual({
       tool_error_count: 2,
+      recoverable_tool_error_count: 1,
+      infrastructure_tool_error_count: 1,
       sandbox_error_count: 1,
       sandbox_cwd_error_count: 1,
     });
