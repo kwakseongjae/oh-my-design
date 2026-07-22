@@ -8,6 +8,7 @@
 
 ## 지금 (현재 위치)
 
+- Opus 4.8 1-task Transfer Matrix runtime calibration을 결과 확인 전 `reports/opus-transfer-1.9.2/PREREGISTRATION.md`에 고정했다. `incident-operations-v0.1` task contract 0.3.0, raw→OmD 각 1회, exact Opus 4.8/xhigh, Claude Code 2.1.212, family factorial이며 순위·우월성 용도가 아니다.
 - clean `6d7edc6` paired-smoke의 Terra/xhigh 18/18을 `/tmp/ui-resolve-paired-smoke-1.9.1-6d7edc6`에서 실행·평가·export했다. Raw 3/9, OmD 4/9 UI-Resolved, 9 matched pairs 1 win / 8 ties / 0 losses, paired lift +11.1pp(CI 0~44.4), Reliability@3는 양쪽 모두 0/3이다. OmD mean token volume은 +82.8%, wall time은 +7.4%다.
 - 1.9.1은 완결됐지만 superiority 공표 불가 calibration이다. lift CI가 0을 포함하고 8/9가 tie이며 semantic contract 결함 2개가 있다. 영구 정본은 `reports/paired-smoke-1.9.1/{FINDINGS.md,SUMMARY.final.json}`이고 `/tmp`에는 `records.final.json`·`aggregate.final.{json,md}`가 있다.
 - 1.9.1에서 task contract 결함 2개를 발견했다: onboarding은 task에 없는 nav landmark를 evaluator가 강제하고, operations는 “4 incidents shown” 같은 task-derived count를 unsupported social proof로 오탐한다. 현재 결과는 non-publishable calibration이며 1.9.2의 단일 변수는 task-owned semantic contract다. `reports/paired-smoke-1.9.1/FINDINGS.md`가 정본이다.

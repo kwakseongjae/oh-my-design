@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-07-22 (Codex) · Opus 4.8 Transfer Matrix preregistered
+- `incident-operations-v0.1`의 raw→OmD 각 1회를 exact Opus 4.8/xhigh로 고정했다.
+- Claude Code project-only skill, native sandbox, no MCP/Chrome, clean attribution을 양쪽 공통 계약으로 둔다.
+- 2회 모두 local evaluator/export까지 닫되 단일 task 결과는 순위나 우월성에 쓰지 않는다.
+
 ## 2026-07-22 (Codex) · paired smoke 18/18 + Opus 4.8 runner ready
 - Terra/xhigh matrix를 18/18로 닫아 Raw 3/9, OmD 4/9, 1 win/8 ties/0 losses를 영구 기록했다.
 - lift CI가 0을 포함하고 Reliability@3가 양쪽 0이므로 1.9.1은 non-publishable calibration으로 유지했다.
