@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-22 (Codex) · 1.9.6 three-model transfer complete
+- Terra/Fable/Opus × raw/OmD 6개를 exact model/xhigh로 실행해 6/6 valid·attributable로 닫았다.
+- Raw 1/3 → OmD 3/3, paired 2 win/1 tie/0 loss, Evidence & Unknown 6/6이었다.
+- OmD는 세 row 모두 wall/token이 늘어 효율 주장은 보류했고 결과는 Internal one-task smoke로 잠갔다.
+- 정본 `d90a58a`; 다음은 반복 multi-task specialist Harness Track 1.9.7 사전등록이다.
+
 ## 2026-07-22 (Codex) · 1.9.6 transfer smoke ready, provider approval pending
 - Fable 5 exact-id preflight를 고치고 Fable/Opus subscription readiness를 확인했다.
 - Terra·Fable·Opus × raw/OmD 6-cell Evidence & Unknown smoke를 결과 전에 사전등록했다.

@@ -3,21 +3,23 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `f1f75f9` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-22 · 1.9.6 three-model/runtime transfer smoke preregistered; generation awaits explicit provider-disclosure approval
+- 기준 커밋: `d90a58a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-22 · 1.9.6 three-model/runtime transfer smoke 6/6 완료; bounded hypothesis accepted
 
 ## 지금 (현재 위치)
 
-- 1.9.6은 pricing task contract 0.3.0에서 Terra/Codex, Fable 5/Claude Code, Opus 4.8/Claude Code × raw DESIGN.md/OmD의 6-cell Evidence & Unknown transfer smoke로 사전등록했다. 서로 다른 agent runtime이 섞이므로 cross-row model ranking이 아니라 model+runtime compatibility 관측이며, row 내부 raw/OmD만 paired다.
-- Claude preflight가 immutable `claude-fable-5`를 숫자 segment shape 때문에 거부하던 결함을 `a6be981`에서 수정하고 alias `fable`은 계속 fail-close하는 회귀 테스트를 추가했다. first-party subscription auth에서 Fable 5와 Opus 4.8 모두 ready다.
-- `/tmp/u196/{t,f,o}-{raw,omd}` 6개 fresh workspace는 동일 task/starter hash, clean publishable OmD source `f1f75f9`, no MCP/hooks/network 조건으로 준비됐다. 생성 결과는 아직 0/6이다.
-- 생성 시 격리된 fictional fixture(`index.html`, `DESIGN.md`, prompt, OmD condition의 apply skill)가 OpenAI/Anthropic으로 전송된다. 안전 게이트가 이 외부 전송에 대한 명시적 사용자 승인을 요구해 첫 Terra cell 전에 중단했으며, 승인 후 preregistration stop rule 그대로 재개한다.
+- 1.9.6은 pricing task contract 0.3.0에서 Terra/Codex, Fable 5/Claude Code, Opus 4.8/Claude Code × raw DESIGN.md/OmD의 6-cell Evidence & Unknown transfer smoke를 완료했다. 6/6 valid·attributable, Evidence & Unknown 6/6, infrastructure/sandbox/cwd failure 0이다.
+- UI-Resolved는 Raw 1/3 → OmD 3/3, row 내부 paired 2 win / 1 tie / 0 loss다. Terra는 85→85 tie, Fable은 66→85, Opus는 61→85다. 정본은 `reports/three-model-transfer-1.9.6/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
+- Fable Raw는 FAQ 2→3과 3.25:1 contrast, Opus Raw는 price 3→6·FAQ 2→4와 같은 contrast를 만들었다. 두 OmD cell은 protected cardinality와 모든 critical gate를 보존했다. Terra Raw가 이미 해결돼 OmD는 회귀 없이 동률이었다.
+- OmD wall/token은 Terra +28.49%/+47.20%, Fable +5.85%/+10.33%, Opus +20.49%/+29.86%였다. 단일 task·trial이라 overhead·효율·model ranking·frontier 우월성 주장은 금지한다. 이 task는 downstream evidence honesty만 측정하며 catalog ranking/status transfer는 측정하지 않는다.
+- Claude preflight가 immutable `claude-fable-5`를 숫자 segment shape 때문에 거부하던 결함을 `a6be981`에서 수정했고 alias `fable`은 계속 fail-close한다. first-party subscription auth에서 Fable 5와 Opus 4.8 exact 사용이 기록됐고 내부 Haiku helper allocation은 별도 보존했다.
+- 최종 검증은 focused benchmark 29/29, 전체 root 191 pass / 1 conditional skip, TypeScript, CLI build, JSON/diff/count-drift gate가 green이다.
 - 1.9.5는 model in-head reference scorer를 dependency-free Node 18 local query로 교체했다. exact brand→semantic match→quality→stable id 순서를 고정하고, 모호한 요청은 후보 0/clarification, Partial·Legacy는 reverify 전 context-only, unknown은 smallest unresolved field omission으로 fail closed한다.
 - 440-entry canonical quality manifest를 패키지·installer·doctor에 연결했다. Claude/Codex/OpenCode/Cursor는 같은 manifest를 받고 folder skill 채널은 query sidecar도 받는다. missing/stale/duplicate/status/id mismatch는 doctor와 CLI가 복구 명령을 포함해 차단한다.
 - frozen Evidence & Unknown evaluator는 5 locale 5/5, exact id 440/440, 3-run determinism/unsafe promotion/generic fallback/quality mismatch 모두 0, missing-quality fail-close pass다. 전체 440×3 cell wall 960.5ms, installed query payload 532,633B이며 정본은 `reports/reference-query-1.9.5/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
 - 최종 tarball은 5,775,747B이며 추출본 helper가 KO 동네 중고거래 질의에서 `karrot`/Verified v2/evidence-qualified policy를 반환했다. 이 결과는 product-contract calibration일 뿐 model/skill lift·UI-Resolved·frontier 우월성 주장이 아니다.
 - 1.9.5 최종 검증은 root 190 pass / 1 conditional skip, TypeScript, build, generated-data/JSON/syntax/count/diff와 extracted-tarball query가 모두 green이다.
-- release train은 1.9.10 benchmark robustness, 1.9.11 failure recovery, 1.9.12 locale/evidence, 1.9.13 public benchmark UX, 1.9.14 activation/reuse와 필요 수만큼의 1.9.x를 포함한다. 다음 bounded patch는 1.9.6 three-model transfer다.
+- release train은 1.9.10 benchmark robustness, 1.9.11 failure recovery, 1.9.12 locale/evidence, 1.9.13 public benchmark UX, 1.9.14 activation/reuse와 필요 수만큼의 1.9.x를 포함한다. 다음 bounded patch는 1.9.7 harness efficiency다.
 - 1.9.4 all-Opus repair harness replacement 2는 exact `claude-opus-4-8`/xhigh/Claude Code 2.1.217에서 정상 완료했다. parent와 `omd-ux-writer`·`omd-ux-engineer` 두 Agent call 모두 Opus selector를 사용했고 Agent/infrastructure/sandbox/cwd error 0, Sonnet usage 0이다. internal Haiku helper만 별도 기록했다.
 - 최종 artifact는 frozen browser evaluator 85/85·UI-Resolved를 통과했다. protected FAQ는 정확히 2개이며 billing/FAQ/form state, desktop·390px·320px·200% zoom geometry, keyboard/focus, axe, DESIGN.md grounding, evidence honesty가 모두 green이다. 정본은 `reports/opus-agent-repair-harness-1.9.4-replacement-2/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
 - 실행은 550,644ms, first/last product write 330,364/495,469ms, input/output 108,251/49,738, cached input 921,722, provider price equivalent $2.6374다. self-authored scratch verifier 오류 2개는 수정 후 종료된 recoverable error이며 frozen evaluator 실패가 아니다.
@@ -25,7 +27,7 @@
 - `omd:apply`와 workflow manifest는 protected contract, same-route deterministic acceptance, 320px/200% zoom/contrast/focus geometry를 1.9.4 계약으로 공유한다. repair harness는 복합·계약 민감 repair의 opt-in 경로이며 portable Skill Lift 기본 경로를 대체하지 않는다.
 - 1.9.3 exact Opus replacement matrix는 3 tasks에서 raw/OmD 각각 1 resolved, lift 0pp, OmD mean objective +0.67점, wall -33.3%, uncached tokens -25.2%였다. 공표 불가 internal patch-selection calibration이며 정본은 `reports/opus-paired-matrix-1.9.3-replacement-2/`다.
 - 1.9.5 직전 1.9.4 검증은 전체 170 pass / 1 conditional skip, focused harness/workflow 35/35, TypeScript, build, JSON, `git diff --check`, count-drift hook이 green이었다.
-- 다음 product patch는 release train 순서대로 1.9.6 model transfer를 사전등록한다. Agent-enabled harness의 3-task×반복 trial과 Pareto 평가는 1.9.7에서 진행하며, 그 전에는 단일 smoke를 효율·우월성 주장에 사용하지 않는다.
+- 다음 product patch는 release train 순서대로 1.9.7 harness efficiency다. Agent-enabled harness의 multi-task×반복 trial과 Pareto 평가는 새 preregistration으로 분리하며, 1.9.6 단일 smoke를 효율·우월성 주장에 사용하지 않는다.
 - 1.9.2는 raw 81/85 artifact와 OmD 85/85 artifact에도 2.1.212 sandbox 오류/OmD timeout으로 0 valid였던 폐기 calibration이다. 정본은 `reports/opus-transfer-1.9.2/{FINDINGS.md,SUMMARY.final.json}`이며 1.9.3이 이를 소급 유효화하지 않는다.
 - clean `6d7edc6` paired-smoke의 Terra/xhigh 18/18을 `/tmp/ui-resolve-paired-smoke-1.9.1-6d7edc6`에서 실행·평가·export했다. Raw 3/9, OmD 4/9 UI-Resolved, 9 matched pairs 1 win / 8 ties / 0 losses, paired lift +11.1pp(CI 0~44.4), Reliability@3는 양쪽 모두 0/3이다. OmD mean token volume은 +82.8%, wall time은 +7.4%다.
 - 1.9.1은 완결됐지만 superiority 공표 불가 calibration이다. lift CI가 0을 포함하고 8/9가 tie이며 semantic contract 결함 2개가 있다. 영구 정본은 `reports/paired-smoke-1.9.1/{FINDINGS.md,SUMMARY.final.json}`이고 `/tmp`에는 `records.final.json`·`aggregate.final.{json,md}`가 있다.
@@ -249,14 +251,14 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 사용자가 native Claude Code에서 `claude auth login`을 완료하면 2.1.217 exact Opus 4.8 low-effort read-only sandbox probe를 zero tool/sandbox errors로 닫는다.
-2. clean probe 뒤 1.9.3 candidate를 커밋·preregister하고 same task raw→OmD xhigh 각 1회 replacement calibration을 수행한다.
-3. replacement가 delivery complete이면 fresh task-contract 0.3.0 paired matrix로 진입하고, 아니면 runner와 verification budget을 한 변수씩 다시 교정한다.
-4. 기존 product queue인 activation funnel 관찰 → v1.9 full-trace/rescue 사례 → Home mobile/Builder error 상태는 benchmark lane 다음에 유지한다.
+1. 1.9.7 Harness Track의 단일 bounded hypothesis, task set, 반복 수, specialist bundle attribution, 시간·token budget, Pareto acceptance를 결과 전에 사전등록한다.
+2. portable skill-only와 agent-enabled harness를 같은 모델/runtime·task·trial 안에서 비교하되, 1.9.6 결과나 generated artifact를 재사용하지 않는다.
+3. 반복 trial은 품질뿐 아니라 first write/final delivery, recoverable·infrastructure error, human intervention, specialist call attribution을 함께 기록한다.
+4. 1.9.7 뒤 기존 product queue인 activation funnel 관찰 → v1.9 full-trace/rescue 사례 → Home mobile/Builder error 상태로 복귀한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- Claude Code 2.1.217 native 설치 후 first-party subscription OAuth 재로그인이 필요하다. 사용자가 로컬 터미널에서 `claude auth login`을 완료하면 나머지는 추가 승인 없이 재개 가능하다.
+- 1.9.7 로컬 설계·사전등록에는 막힘 없음. 새 OpenAI/Anthropic generation batch는 실제 실행 직전에 frozen disclosure 범위와 현재 승인을 다시 확인한다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 
 ## 진행 중 레인 (병렬 작업 시에만)
