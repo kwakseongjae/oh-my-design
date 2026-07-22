@@ -66,6 +66,7 @@
     "query:references:data:check": "node scripts/build-reference-quality-data.mjs --check",
     "bench:ui:prepare": "node benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs",
     "bench:ui:prepare-matrix": "node benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs",
+    "bench:ui:run-matrix": "node benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs",
     "bench:ui:run": "node benchmarks/ui-resolve-bench/scripts/run-codex.mjs",
     "bench:ui:claude:check": "node benchmarks/ui-resolve-bench/scripts/check-claude-runner.mjs",
     "bench:ui:claude:run": "node benchmarks/ui-resolve-bench/scripts/run-claude.mjs",
