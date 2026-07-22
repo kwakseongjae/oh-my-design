@@ -75,5 +75,8 @@ specialist가 참여해도 제품 편집은 한 implementation owner만 수행�
 - 1.9.2: task contract calibration
 - 1.9.3: fast-first-result calibration — first write/time은 개선됐지만 resolved lift 0pp
 - 1.9.4: protected contract + bounded repair advisory + contrast/reflow inspection loop
-- 1.10.x: 실패 유형별 recovery와 자동 증거 패키지
+- 1.9.5: 로컬 quality index 기반 결정론 reference query — 모호한 요청은 fallback 없이 clarification, Partial/Legacy는 reverify 전 context-only
+- 1.9.6–1.9.9: model transfer, harness efficiency, public Preview, independent challenge
+- 1.9.10 이후: `2.0.0` frontier gate를 모두 통과할 때까지 patch 번호를 계속 증가시킨다. 9는 마감 숫자가 아니다.
+- 후속 patch: 실패 유형별 recovery, 자동 증거 패키지, locale/evidence 확장, public benchmark UX를 각각 독립 가설로 검증한다.
 - 2.0.0: 대표 task family에서 frontier 후보 대비 우위 또는 통계적 동률, 동시에 실제 작업의 end-to-end delivery 계약 통과

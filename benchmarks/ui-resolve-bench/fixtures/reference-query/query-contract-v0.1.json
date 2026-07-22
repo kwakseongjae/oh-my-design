@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "en-fintech",
+      "locale": "en",
+      "task": "A calm, trustworthy fintech product",
+      "expected_status": "ok",
+      "required_category": "fintech"
+    },
+    {
+      "id": "ko-consumer",
+      "locale": "ko",
+      "task": "따뜻하고 친근한 동네 중고거래 앱",
+      "expected_status": "ok",
+      "required_category": "consumer"
+    },
+    {
+      "id": "ja-developer",
+      "locale": "ja",
+      "task": "精密でミニマルな開発者向けダッシュボード",
+      "expected_status": "ok",
+      "required_category": "developer"
+    },
+    {
+      "id": "zh-cn-productivity",
+      "locale": "zh-CN",
+      "task": "清晰专业的企业协作工具",
+      "expected_status": "ok",
+      "required_category": "productivity"
+    },
+    {
+      "id": "zh-tw-fintech",
+      "locale": "zh-TW",
+      "task": "可信賴、清晰的金融服務",
+      "expected_status": "ok",
+      "required_category": "fintech"
+    },
+    {
+      "id": "vague-no-fallback",
+      "locale": "en",
+      "task": "make it nice",
+      "expected_status": "needs_clarification"
+    }
+  ]
+}

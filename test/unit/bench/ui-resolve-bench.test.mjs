@@ -70,16 +70,21 @@ describe("UI-Resolve Bench sandbox preparation", () => {
   });
 
   it("defines every 0.0.1 patch experiment without allowing the calendar to force 2.0.0", () => {
-    expect(releaseTrain.releases.map((release) => release.version)).toEqual([
-      "1.9.1", "1.9.2", "1.9.3", "1.9.4", "1.9.5",
-      "1.9.6", "1.9.7", "1.9.8", "1.9.9", "2.0.0",
-    ]);
+    const patchVersions = releaseTrain.releases
+      .map((release) => release.version)
+      .filter((version) => version.startsWith('1.9.'));
+    expect(patchVersions.length).toBeGreaterThanOrEqual(14);
+    expect(patchVersions).toEqual(
+      Array.from({ length: patchVersions.length }, (_, index) => `1.9.${index + 1}`),
+    );
     expect(releaseTrain.releases.at(-1)).toMatchObject({ status: "gated", experiment: "frontier-release" });
     expect(releaseTrain.rules).toMatchObject({
       benchmark_and_product_versions_are_separate: true,
       failed_experiments_remain_visible: true,
       score_rule_change_requires_suite_version: true,
       calendar_can_force_2_0_0: false,
+      number_9_can_force_2_0_0: false,
+      continue_patch_train_until_frontier_gates: true,
     });
   });
 

@@ -279,6 +279,8 @@ describe('install-skills', () => {
     // where omd:init resolution step 1 looks.
     const tossDesign = join(root, '.claude/data/references/toss/DESIGN.md');
     expect(existsSync(tossDesign), 'toss DESIGN.md copied').toBe(true);
+    expect(existsSync(join(root, '.claude/data/reference-quality.json'))).toBe(true);
+    expect(existsSync(join(root, '.claude/skills/omd-init/scripts/query-references.mjs'))).toBe(true);
     // Only DESIGN.md per id — keep install lean (no _promo.json/_research.md).
     expect(existsSync(join(root, '.claude/data/references/toss/_promo.json'))).toBe(false);
     // ctx-prime helper copied so harness CTX-PRIME works without the package dir.
@@ -296,6 +298,8 @@ describe('install-skills', () => {
 
     const init = readFileSync(join(root, '.agents/skills/omd-init/SKILL.md'), 'utf8');
     expect(init).toContain('.codex/data/reference-fingerprints.json');
+    expect(existsSync(join(root, '.codex/data/reference-quality.json'))).toBe(true);
+    expect(existsSync(join(root, '.agents/skills/omd-init/scripts/query-references.mjs'))).toBe(true);
     expect(existsSync(join(root, '.codex/data/references/toss/DESIGN.md'))).toBe(true);
 
     const master = readFileSync(join(root, '.codex/agents/omd-master.toml'), 'utf8');
@@ -389,6 +393,8 @@ describe('install-skills', () => {
 
     const init = readFileSync(join(root, '.opencode/skills/omd-init/SKILL.md'), 'utf8');
     expect(init).toContain('.opencode/data/reference-fingerprints.json');
+    expect(existsSync(join(root, '.opencode/data/reference-quality.json'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/skills/omd-init/scripts/query-references.mjs'))).toBe(true);
     expect(existsSync(join(root, '.opencode/data/references/toss/DESIGN.md'))).toBe(true);
     expect(existsSync(join(root, '.opencode/data/scripts/ctx-prime.cjs'))).toBe(true);
     expect(dataDirFor('opencode', ['opencode'])).toBe('.opencode');
@@ -467,6 +473,7 @@ describe('install-skills', () => {
       expect(master).not.toContain('.claude/skills');
       expect(existsSync(join(root, '.claude', 'skills'))).toBe(false);
       expect(existsSync(join(globalRoot, 'data', 'reference-fingerprints.json'))).toBe(true);
+      expect(existsSync(join(globalRoot, 'data', 'reference-quality.json'))).toBe(true);
       expect(existsSync(join(globalRoot, 'data', 'references', 'toss', 'DESIGN.md'))).toBe(true);
       expect(existsSync(join(globalRoot, 'data', 'scripts', 'ctx-prime.cjs'))).toBe(true);
       expect(existsSync(join(root, '.opencode'))).toBe(false);
@@ -767,6 +774,7 @@ describe('install-skills', () => {
     // cursor agents read it; no second catalog location is invented.
     expect(existsSync(join(root, '.claude/data/references/toss/DESIGN.md'))).toBe(true);
     expect(existsSync(join(root, '.claude/data/reference-fingerprints.json'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/reference-quality.json'))).toBe(true);
 
     // No Claude-specific surfaces for a cursor-only install.
     expect(existsSync(join(root, '.claude/skills'))).toBe(false);

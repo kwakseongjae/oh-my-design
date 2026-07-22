@@ -50,30 +50,56 @@ Phase 7: 요약 출력
 - 위에서 실제 선택된 data dir의 `vocabulary.json` — controlled vocab axes/keywords
 - 같은 data dir의 `reference-tags.md` — human-readable keyword matrix
 
+필수 품질 파일:
+- 같은 data dir의 `reference-quality.json` — `verified_v2 | partial | legacy_snapshot`
+
+fingerprint는 있는데 품질 파일이 없거나 두 파일의 `count`/id 집합이 다르면 다른
+채널 파일로 섞어 보완하지 않는다. `omd install-skills`를 다시 실행하고 `omd doctor`로
+확인하라고 안내한 뒤 reference 추천을 중단한다.
+
 채널을 알 수 있으면 해당 채널 data dir을 우선 사용하되, 파일이 없으면 위 1→5 순서로 fallback한다. 서로 다른 설치 채널의 fingerprint와 보조 파일을 섞지 말 것.
 
-### 2.2 task 분석 (silent, in-head)
+### 2.2 task 분석 (silent)
 
 사용자의 description에서 다음 추출:
 - **명시 brand hint**: 한글/영문 brand 이름 직접 언급 (예: "토스 같은" → `toss`, "뱅크샐러드 톤" → `banksalad`, "Linear-clone" → `linear.app`). brand 이름과 id 매핑은 일반 지식 사용 + `items[].id` 또는 `items[].category_raw`에서 cross-check.
 - **vocab 키워드**: warm / minimal / dense / playful / formal / editorial / clinical 등 (vocabulary.json 참조)
 - **카테고리 추측**: Consumer Tech / Fintech / Productivity / E-commerce / Design Tools / Developer Tools / AI & LLM / Mobility / HR / Real Estate / Healthcare / Government
 
-### 2.3 점수 계산 (in-head, deterministic)
+### 2.3 로컬 query helper 실행 (deterministic)
 
-각 item에 대해:
-- brand hint match → **+5점**
-- `tone_keywords` ∩ task vocab 키워드 → 매칭당 **+1점**
-- `category` 일치 → **+1점**
+현재 `SKILL.md`와 같은 skill directory의
+`scripts/query-references.mjs`를 사용한다. Phase 2.1에서 선택한 단일 data dir을
+`--data-root`로 넘기고, 사용자 원문을 `--task`, catalog에서 cross-check한 명시 brand
+id가 있으면 `--brand`로 넘긴다.
 
-Top 5 정렬. 모든 추천 id는 `items[].id`에 **반드시** 존재 — hallucination 금지.
+```bash
+node <active-omd-init-skill-dir>/scripts/query-references.mjs \
+  --data-root <selected-data-dir> \
+  --task "<original user description>" \
+  --limit 5 \
+  --json
+```
+
+helper가 찾히지 않으면 과거 in-head scorer로 조용히 fallback하지 않는다. 설치가
+stale한 것이므로 `omd install-skills` → `omd doctor`를 안내하고 중단한다.
+
+결과 계약:
+
+- `status: ok` → ordered `candidates`를 그대로 사용. 모델이 순서를 다시 매기지 않음.
+- `status: needs_clarification` → 후보를 채워 넣지 말고 brand/category/tone 중 하나를 묻는다.
+- 모든 candidate는 `quality.status`와 `promotion.token_policy`를 함께 표시한다.
+- `verified_v2`도 증거가 있는 field만 사용하고 unknown은 가장 작은 단위로 생략한다.
+- `partial`/`legacy_snapshot`은 `context-only-reverify-first`; reverify 없이 machine token이나
+  product fact로 승격하지 않는다.
+- Vercel/Linear/Notion 같은 “safe fallback”을 임의로 추가하지 않는다.
 
 ### 2.4 사용자에게 제시
 
 prose로:
 
 ```
-"<task 핵심 한 줄>"을 보니 <top1.id>가 가장 잘 맞을 것 같아요 — <visual_theme 핵심 한 줄 + 매칭 키워드 1-2개>.
+"<task 핵심 한 줄>"을 보니 <top1.id>가 가장 잘 맞을 것 같아요 — <matched category/tone 핵심 한 줄> · <quality.status>.
 
 이대로 가시려면 go (또는 <top1.id>).
 다른 후보: <top2.id> (한 줄 이유) · <top3.id> (...) · <top4.id> (...) · <top5.id> (...)
@@ -87,7 +113,7 @@ vocab axis conflict 있으면 (예: formal ↔ playful) 먼저 알리고 우선�
 ```
 question: ""<task 핵심 한 줄>"에 맞는 레퍼런스를 골라주세요"
 header: "Reference"
-options: top1~top5 각각 → label = <id>, description = fingerprint 기반 1줄 (<category> · <tone_keywords 1-2개>)
+options: top1~top5 각각 → label = <id>, description = query 근거 1줄 (<category> · <tone_keywords 1-2개> · <quality.status>)
   - top1에는 label에 "(추천)" 표시
 ```
 
@@ -99,6 +125,11 @@ options: top1~top5 각각 → label = <id>, description = fingerprint 기반 1�
 - top-5 밖이지만 카탈로그 안 id → 그대로 채택
 - 카탈로그에 없는 id → "해당 id는 카탈로그에 없어요. top-5 중에서 골라주세요."
 - "중단" → 종료
+
+선택된 candidate가 `partial` 또는 `legacy_snapshot`이면 곧바로 Phase 5로 가지 않는다.
+“참고용 저장” 또는 “먼저 reverify”만 제시한다. 사용자가 명시적으로 참고용을
+선택하면 narrative inspiration으로만 저장하고, 해당 reference의 font/color/component를
+프로젝트 brand fact나 machine token으로 표기하지 않는다.
 
 ## Phase 3.5 — 적용 형태 확인
 

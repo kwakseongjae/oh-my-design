@@ -35,6 +35,13 @@ describe('omd doctor', () => {
         join(channelRoot, skill, 'SKILL.md'),
         `---\nname: ${name}\ndescription: Test skill\n---\n<!-- omd:installed-skill -->\n# ${skill}\n`,
       );
+      if (skill === 'omd-init') {
+        mkdirSync(join(channelRoot, skill, 'scripts'), { recursive: true });
+        writeFileSync(
+          join(channelRoot, skill, 'scripts', 'query-references.mjs'),
+          '#!/usr/bin/env node\n',
+        );
+      }
     }
   }
 
@@ -63,6 +70,7 @@ describe('omd doctor', () => {
     writeFileSync(join(dataRoot, 'references', 'toss', 'DESIGN.md'), '# Toss');
     for (const file of [
       'reference-fingerprints.json',
+      'reference-quality.json',
       'reference-tags.md',
       'vocabulary.json',
       'workflow-capabilities.json',
@@ -71,6 +79,8 @@ describe('omd doctor', () => {
         join(dataRoot, file),
         file === 'reference-fingerprints.json'
           ? '{"count":1,"items":[{"id":"toss"}]}'
+          : file === 'reference-quality.json'
+            ? '{"count":1,"items":[{"id":"toss","status":"verified_v2"}]}'
           : file === 'workflow-capabilities.json'
             ? '{"schema_version":1,"workflows":[{"id":"repair-existing-ui","entry_skill":"omd:apply","stages":["inspect","implement","verify"]}]}'
             : '{}',
@@ -389,6 +399,45 @@ describe('omd doctor', () => {
     expect(report.state).toBe('incomplete');
     expect(opencode?.issues).toContain(
       'reference-fingerprints.json is empty while references are installed',
+    );
+  });
+
+  it('fails closed when the reference quality manifest is missing', () => {
+    installProductSkills(join(root, '.opencode', 'skills'), 'opencode');
+    installCatalog(join(root, '.opencode', 'data'));
+    rmSync(join(root, '.opencode', 'data', 'reference-quality.json'));
+
+    const report = collectDoctorReport({ dir: root });
+    const opencode = report.channels.find((channel) => channel.id === 'opencode');
+    expect(report.state).toBe('incomplete');
+    expect(opencode?.issues).toContain('missing catalog data: reference-quality.json');
+  });
+
+  it('rejects quality ids that do not match the fingerprint catalog', () => {
+    installProductSkills(join(root, '.opencode', 'skills'), 'opencode');
+    installCatalog(join(root, '.opencode', 'data'));
+    writeFileSync(
+      join(root, '.opencode', 'data', 'reference-quality.json'),
+      '{"count":1,"items":[{"id":"not-toss","status":"verified_v2"}]}',
+    );
+
+    const report = collectDoctorReport({ dir: root });
+    const opencode = report.channels.find((channel) => channel.id === 'opencode');
+    expect(report.state).toBe('incomplete');
+    expect(opencode?.issues).toContain('catalog quality ids mismatch: 1 missing / 1 unknown');
+  });
+
+  it('requires the deterministic query sidecar beside omd-init', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex', 'agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    rmSync(join(root, '.agents', 'skills', 'omd-init', 'scripts', 'query-references.mjs'));
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.issues).toContain(
+      'missing codex skill sidecars: omd-init/scripts/query-references.mjs',
     );
   });
 

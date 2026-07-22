@@ -7,7 +7,8 @@ Use this table to match user descriptions to reference candidates. Pick 3-6 refe
 1. Extract key signals from user conversation: project type, mood adjectives, color preferences, target audience
 2. Match against keywords below
 3. Prioritize references that match multiple signals
-4. Include at least one "safe" reference (vercel, linear.app, notion) if uncertain
+4. If no signal is strong enough, ask for a brand, category, or tone. Never add
+   a generic “safe” reference merely to fill the list.
 
 ## Reference Characteristics
 

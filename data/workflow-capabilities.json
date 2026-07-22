@@ -1,12 +1,13 @@
 {
   "schema_version": 1,
-  "product_version": "1.9.4-candidate",
+  "product_version": "1.9.5-candidate",
   "principles": [
     "natural-language-first",
     "smallest-capable-workflow",
     "one-implementation-owner",
     "specialists-are-advisory",
     "unknown-means-absent",
+    "quality-graded-reference-query",
     "preserve-observable-contract",
     "same-surface-reverification"
   ],
@@ -41,6 +42,17 @@
       "acceptance_check",
       "unresolved"
     ]
+  },
+  "reference_query": {
+    "entry_skill": "omd:init",
+    "engine": "skills/omd-init/scripts/query-references.mjs",
+    "network": "none",
+    "model_call": "none",
+    "ranking": ["exact-brand", "semantic-match", "quality-status", "stable-id"],
+    "verified_policy": "evidence-qualified-fields-only",
+    "non_verified_policy": "context-only-reverify-first",
+    "unknown_policy": "omit-smallest-unresolved-field",
+    "no_signal_policy": "ask-for-brand-category-or-tone"
   },
   "workflows": [
     {
@@ -102,11 +114,11 @@
       "entry_skill": "omd:init",
       "implementation_owner": "main-agent",
       "specialists": ["omd-ux-researcher"],
-      "stages": ["inspect-project", "match-reference", "declare-deltas", "write-design-md", "sync"],
-      "prompt_en": "Set up a project-owned design system for this repository. Match a verified reference, keep unknown product facts absent, and create DESIGN.md with explicit deltas.",
-      "prompt_ko": "이 저장소에 프로젝트 소유 디자인 시스템을 구축해줘. 검증된 레퍼런스를 매칭하고 모르는 제품 사실은 비워둔 채 명시적 차이를 담은 DESIGN.md를 만들어줘.",
-      "route_suffix_en": "Match a verified reference, keep unknown product facts absent, and create a project-owned DESIGN.md with explicit deltas.",
-      "route_suffix_ko": "검증된 레퍼런스를 매칭하고 모르는 제품 사실은 비워둔 채 명시적 차이가 있는 프로젝트 소유 DESIGN.md를 만들어줘."
+      "stages": ["inspect-project", "query-quality-index", "select-evidence-policy", "declare-deltas", "write-design-md", "sync"],
+      "prompt_en": "Set up a project-owned design system for this repository. Query the local quality-graded catalog, use non-verified matches only as context until reverified, keep unknown product facts absent, and create DESIGN.md with explicit deltas.",
+      "prompt_ko": "이 저장소에 프로젝트 소유 디자인 시스템을 구축해줘. 로컬 품질 등급 카탈로그를 조회하고, 미검증 매치는 재검증 전까지 맥락으로만 사용하며, 모르는 제품 사실은 비워둔 채 명시적 차이를 담은 DESIGN.md를 만들어줘.",
+      "route_suffix_en": "Query the local quality-graded catalog, use non-verified matches only as context until reverified, keep unknown product facts absent, and create a project-owned DESIGN.md with explicit deltas.",
+      "route_suffix_ko": "로컬 품질 등급 카탈로그를 조회하고 미검증 매치는 재검증 전까지 맥락으로만 사용해. 모르는 제품 사실은 비워둔 채 명시적 차이가 있는 프로젝트 소유 DESIGN.md를 만들어줘."
     },
     {
       "id": "localize-product-language",

@@ -6,17 +6,22 @@
     {
       "version": "1.9.1",
       "experiment": "measurement-delivery-contract-kernel",
-      "status": "candidate",
+      "status": "calibration_complete",
       "product_capability": "natural-language routing + shared work packet + single implementation owner + exact-route reverify"
     },
-    { "version": "1.9.2", "experiment": "task-pack-calibration", "status": "planned" },
-    { "version": "1.9.3", "experiment": "fast-first-result", "status": "planned" },
-    { "version": "1.9.4", "experiment": "inspection-loop", "status": "planned" },
-    { "version": "1.9.5", "experiment": "reference-query-layer", "status": "planned" },
+    { "version": "1.9.2", "experiment": "task-pack-calibration", "status": "calibration_complete" },
+    { "version": "1.9.3", "experiment": "fast-first-result", "status": "calibration_complete" },
+    { "version": "1.9.4", "experiment": "inspection-loop", "status": "calibration_complete" },
+    { "version": "1.9.5", "experiment": "reference-query-layer", "status": "candidate" },
     { "version": "1.9.6", "experiment": "model-transfer", "status": "planned" },
     { "version": "1.9.7", "experiment": "harness-efficiency", "status": "planned" },
     { "version": "1.9.8", "experiment": "public-preview", "status": "planned" },
     { "version": "1.9.9", "experiment": "independent-challenge", "status": "planned" },
+    { "version": "1.9.10", "experiment": "benchmark-robustness", "status": "planned" },
+    { "version": "1.9.11", "experiment": "failure-recovery", "status": "planned" },
+    { "version": "1.9.12", "experiment": "locale-evidence-expansion", "status": "planned" },
+    { "version": "1.9.13", "experiment": "public-benchmark-ux", "status": "planned" },
+    { "version": "1.9.14", "experiment": "activation-reuse", "status": "planned" },
     { "version": "2.0.0", "experiment": "frontier-release", "status": "gated" }
   ],
   "rules": {
@@ -24,13 +29,16 @@
     "benchmark_and_product_versions_are_separate": true,
     "failed_experiments_remain_visible": true,
     "score_rule_change_requires_suite_version": true,
-    "calendar_can_force_2_0_0": false
+    "calendar_can_force_2_0_0": false,
+    "number_9_can_force_2_0_0": false,
+    "continue_patch_train_until_frontier_gates": true
   },
   "frontier_product_contract": [
     "smallest-capable-workflow",
     "evidence-backed-specialist-handoffs",
     "one-implementation-owner",
     "unknown-means-absent",
+    "quality-graded-reference-query",
     "same-surface-reverification",
     "harness-to-product-delivery"
   ]

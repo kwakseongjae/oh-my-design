@@ -89,9 +89,13 @@ export const REQUIRED_AGENT_IDS = [
 ] as const;
 const REQUIRED_DATA_FILES = [
   'reference-fingerprints.json',
+  'reference-quality.json',
   'reference-tags.md',
   'vocabulary.json',
   'workflow-capabilities.json',
+] as const;
+const REQUIRED_SKILL_SIDECARS = [
+  ['omd-init', 'scripts/query-references.mjs'],
 ] as const;
 const REQUIRED_CLAUDE_HOOKS = [
   'skill-activation.cjs',
@@ -124,6 +128,7 @@ function skillContractIssues(
 ): string[] {
   const malformed: string[] = [];
   const unsafe: string[] = [];
+  const missingSidecars: string[] = [];
   for (const skill of REQUIRED_PRODUCT_SKILLS) {
     const path = join(skillsRoot, skill, 'SKILL.md');
     if (!existsSync(path)) continue;
@@ -150,12 +155,23 @@ function skillContractIssues(
       malformed.push(skill);
     }
   }
+  for (const [skill, sidecar] of REQUIRED_SKILL_SIDECARS) {
+    if (
+      existsSync(join(skillsRoot, skill, 'SKILL.md')) &&
+      !existsSync(join(skillsRoot, skill, sidecar))
+    ) {
+      missingSidecars.push(`${skill}/${sidecar}`);
+    }
+  }
   return [
     ...(unsafe.length > 0
       ? [`unsafe symlinked ${channel} skill paths: ${unsafe.join(', ')}`]
       : []),
     ...(malformed.length > 0
       ? [`invalid ${channel} skill definitions: ${malformed.join(', ')}`]
+      : []),
+    ...(missingSidecars.length > 0
+      ? [`missing ${channel} skill sidecars: ${missingSidecars.join(', ')}`]
       : []),
   ];
 }
@@ -187,6 +203,7 @@ function coreIssues(
   issues.push(...skillContractIssues(installRoot, skillsRoot, channel));
   if (missingData.length > 0) issues.push(`missing catalog data: ${missingData.join(', ')}`);
   if (referenceIds.size === 0) issues.push('reference catalog is empty');
+  let fingerprintIdsForQuality: Set<string> | null = null;
   const fingerprintsPath = join(dataRoot, 'reference-fingerprints.json');
   if (existsSync(fingerprintsPath)) {
     try {
@@ -213,6 +230,7 @@ function coreIssues(
             .filter((item): item is { id: string } => !invalidItems.includes(item))
             .map((item) => item.id);
           const uniqueFingerprintIds = new Set(fingerprintIds);
+          fingerprintIdsForQuality = uniqueFingerprintIds;
           if (invalidItems.length > 0) {
             issues.push(`reference-fingerprints.json has ${invalidItems.length} item(s) without an id`);
           }
@@ -258,6 +276,51 @@ function coreIssues(
       }
     } catch {
       issues.push('reference-fingerprints.json is not valid JSON');
+    }
+  }
+  const qualityPath = join(dataRoot, 'reference-quality.json');
+  if (existsSync(qualityPath)) {
+    try {
+      const quality: unknown = JSON.parse(readFileSync(qualityPath, 'utf8'));
+      if (!isJsonObject(quality) || !Array.isArray(quality.items) || typeof quality.count !== 'number') {
+        issues.push('reference-quality.json has an invalid quality contract');
+      } else {
+        const validStatuses = new Set(['verified_v2', 'partial', 'legacy_snapshot']);
+        const qualityIds: string[] = [];
+        let invalidItems = 0;
+        for (const item of quality.items) {
+          if (
+            !isJsonObject(item) ||
+            typeof item.id !== 'string' ||
+            !validStatuses.has(String(item.status))
+          ) {
+            invalidItems += 1;
+          } else {
+            qualityIds.push(item.id);
+          }
+        }
+        const uniqueQualityIds = new Set(qualityIds);
+        if (invalidItems > 0) {
+          issues.push(`reference-quality.json has ${invalidItems} invalid item(s)`);
+        }
+        if (quality.count !== quality.items.length) {
+          issues.push(`quality mismatch: declared ${quality.count} entries but items contains ${quality.items.length}`);
+        }
+        if (uniqueQualityIds.size !== qualityIds.length) {
+          issues.push('reference-quality.json contains duplicate ids');
+        }
+        if (fingerprintIdsForQuality) {
+          const missingQuality = [...fingerprintIdsForQuality].filter((id) => !uniqueQualityIds.has(id));
+          const unknownQuality = [...uniqueQualityIds].filter((id) => !fingerprintIdsForQuality.has(id));
+          if (missingQuality.length > 0 || unknownQuality.length > 0) {
+            issues.push(
+              `catalog quality ids mismatch: ${missingQuality.length} missing / ${unknownQuality.length} unknown`,
+            );
+          }
+        }
+      }
+    } catch {
+      issues.push('reference-quality.json is not valid JSON');
     }
   }
   const workflowsPath = join(dataRoot, 'workflow-capabilities.json');

@@ -1,4 +1,4 @@
-# Product release train: 1.9.1 → 2.0.0
+# Product release train: 1.9.1 → 1.9.n → 2.0.0
 
 Version `2.0.0` means “frontier-grade UI skill and harness backed by reproducible
 evidence,” not merely a large feature release. We reach it through one bounded
@@ -35,6 +35,12 @@ change creates a new suite version and re-evaluates every public candidate.
 | 1.9.7 | harness efficiency | Harness Track Pareto run | checkpoint completion/abandonment | non-dominated quality/time/intervention result |
 | 1.9.8 | public Preview | 12-task × 5-run packages | benchmark page → qualified install | complete artifacts, failures, and examples public |
 | 1.9.9 | independent challenge | 24 hidden tasks, blind review, external audit | seven-day activation guardrails | no unresolved benchmark blocker; losses published |
+| 1.9.10 | benchmark robustness | evaluator mutation and contamination suite | reproducible local run package | every known false-green/false-red mutant has a named disposition |
+| 1.9.11 | failure recovery | timeout, tool, browser, install, and attribution failure cells | actionable doctor/recovery path | recovery improves valid completion without weakening fail-closed gates |
+| 1.9.12 | locale and evidence expansion | five-locale evidence/unknown and open-brief slices | locale-correct query→build handoff | no material negative locale slice; unsupported facts remain zero |
+| 1.9.13 | public benchmark UX | downloadable run packages and blind comparison gallery | benchmark page → qualified install | methods, failures, examples, and uncertainty are legible without a global rank |
+| 1.9.14 | activation and reuse | install→first-resolved and seven-day reuse cohort | CLI/docs/builder connected funnel | activation and reuse improve with no accessibility or evidence regression |
+| 1.9.n | additional bounded patch experiments | whichever frontier gate remains unresolved | corresponding product contract | preregister, test, retain failure evidence, repeat |
 | 2.0.0 | frontier release | Verified Model/Skill/Harness evidence | durable activation and retention | all frontier gates below pass |
 
 The hypothesis may change after each patch, but the version is not skipped just
@@ -81,5 +87,6 @@ All must pass:
    return evidence-backed advice, one main agent owns edits, and implementation
    is not complete until the same consumer route is reverified.
 
-If the gates are not met at 1.9.9, continue with a prerelease or another 1.9.x
-patch. The calendar does not force `2.0.0`.
+`1.9.9` is a checkpoint, not a deadline. If any gate remains unresolved, continue
+with `1.9.10`, `1.9.11`, and as many bounded `1.9.x` experiments as required.
+The calendar and the number 9 do not force `2.0.0`.

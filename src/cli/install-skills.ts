@@ -1500,6 +1500,7 @@ export async function runInstallSkills(
   // on the host CLI's own model — no external API keys.
   const dataFiles = [
     'reference-fingerprints.json',
+    'reference-quality.json',
     'reference-tags.md',
     'vocabulary.json',
     'synonyms.json',
