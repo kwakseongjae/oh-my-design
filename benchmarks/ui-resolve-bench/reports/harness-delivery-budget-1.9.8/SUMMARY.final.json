@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.3",
+  "experiment_id": "harness-delivery-budget-1.9.8",
+  "run_date": "2026-07-23",
+  "status": "calibration_complete",
+  "decision": "pass-recovery-unlock-fresh-1.9.9-matrix",
+  "claim_status": "Internal",
+  "source_commit": "d039150dd3c6c95b3c9b915dcb6633b86f1f6d6c",
+  "runtime": {
+    "agent": "claude-code",
+    "agent_version": "2.1.217",
+    "model": "claude-opus-4-8",
+    "effort": "xhigh",
+    "timeout_seconds": 900
+  },
+  "cell": {
+    "run_id": "onboarding-recovery-t1-harness",
+    "task_id": "onboarding-setup-v0.1",
+    "task_contract": "0.3.0",
+    "system_id": "omd-repair-harness-delivery-budget",
+    "run_status": "complete",
+    "validity": "valid",
+    "ui_resolved": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 456045,
+    "first_product_write_ms": 313484,
+    "last_product_write_ms": 415072,
+    "final_message_present": true,
+    "uncached_tokens": 127533,
+    "cached_input_tokens": 448552,
+    "provider_price_equivalent_usd": 1.9935985,
+    "recoverable_tool_errors": 1,
+    "infrastructure_tool_errors": 0,
+    "sandbox_errors": 0,
+    "cwd_errors": 0
+  },
+  "attribution": {
+    "agent_tool_calls": 2,
+    "agent_tool_errors": 0,
+    "requested_agents": [
+      "omd-ux-writer",
+      "omd-ux-engineer"
+    ],
+    "requested_agent_models": [
+      "opus",
+      "opus"
+    ],
+    "agent_bundle_sha256": "49d29f446aa5450f2951c17ec65c465818d42696ff13123889890ec714ba8cf3",
+    "skill_sha256": "809ece696e189758795ab793193daa9880aa5c493ffc57e2bb8782421bc4f7b6"
+  },
+  "acceptance_gates": {
+    "normal_exit_final_before_timeout": true,
+    "frozen_evaluator_85_ui_resolved": true,
+    "all_critical_gates": true,
+    "evidence_and_unknown": true,
+    "exact_two_opus_agents": true,
+    "first_product_write_at_or_before_450000ms": true,
+    "product_diff_allowed_only": true,
+    "replacement_verifier_absent": true,
+    "overall": true
+  },
+  "delivery": {
+    "changed_product_files": [
+      "index.html"
+    ],
+    "replacement_verifier_files": [],
+    "browser_proof_in_parent": "unresolved-sandbox-blocked",
+    "external_frozen_browser_evaluator": "pass"
+  },
+  "historical_timeout_diagnostic": {
+    "comparator_run_id": "onboarding-t3-harness",
+    "comparator_counted_as_valid": false,
+    "first_write_delta_percent": -45.99,
+    "last_write_delta_percent": -52.62,
+    "final_delivery_delta_percent": -49.33,
+    "uncached_token_delta_percent": -36.63,
+    "causal_or_efficiency_claim_allowed": false
+  },
+  "artifacts": {
+    "execution_state": "/tmp/u198/execution-state.json",
+    "run_record": "/tmp/u198/onboarding-recovery-t1-harness/.benchmark/run-record.json",
+    "run_result": "/tmp/u198/onboarding-recovery-t1-harness/.benchmark/run-result.json",
+    "score": "/tmp/u198/onboarding-recovery-t1-harness/.benchmark/score.json",
+    "preregistration": "PREREGISTRATION.md",
+    "run_matrix": "RUN-MATRIX.json"
+  },
+  "reporting_limits": [
+    "fresh single-cell internal recovery",
+    "no retry or replacement of 1.9.7",
+    "no public quality or efficiency claim",
+    "no model, skill, harness, or frontier rank"
+  ]
+}

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.8 delivery recovery passed
+- fresh exact Opus cell은 456.0초·85/85·first edit 313.5초로 모든 acceptance를 통과했다.
+- writer/engineer Opus attribution 2/2, product diff `index.html` only, Evidence & Unknown pass다.
+- Chrome block 뒤 대체 verifier를 만들지 않았고 external frozen evaluator가 전 view/state를 통과했다.
+- 1.9.8은 calibration complete; 다음은 fresh 1.9.9 repeated matrix preregistration이다.
+
 ## 2026-07-23 (Codex) · 1.9.8 delivery recovery preregistered
 - first edit 50%·verification 1회·final reserve 계약을 `e348c81`에 구현했다.
 - failed 1.9.7 cell은 건드리지 않고 fresh onboarding single cell을 `/tmp/u198`에 잠갔다.
