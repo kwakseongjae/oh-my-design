@@ -144,6 +144,10 @@ describe("UI-Resolve normalized run exporter", () => {
       process: { exit_code: 0 },
       output: { sandbox_error_count: 1 },
     }, score)).toBe("failed");
+    expect(classifyRunStatus({
+      process: { exit_code: 0 },
+      output: { infrastructure_tool_error_count: 1 },
+    }, score)).toBe("failed");
   });
 
   it("does not count an unchanged starter as a resolved product delivery", () => {

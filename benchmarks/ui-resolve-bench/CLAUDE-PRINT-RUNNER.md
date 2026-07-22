@@ -122,6 +122,13 @@ identified this runner-policy collision when cwd bookkeeping under `.t` was
 denied despite an explicit allow-write. `dontAsk` plus workspace-scoped allow
 rules already fails closed for built-in file tools outside the workspace.
 
+Allow rules include both `./**` and the canonical absolute workspace path.
+Claude may send an absolute `file_path` to built-in Edit/Write even when its
+working directory is already the workspace; a relative-only rule makes
+`dontAsk` deny that otherwise sandbox-safe operation. Built-in file-tool
+permission denial is an infrastructure failure, not a recoverable verifier
+failure.
+
 `--safe-mode` is intentionally absent from scored skill runs because it disables
 project Skills. The same `--setting-sources project` isolation is used for both
 raw and OmD conditions, so user-global Skills are not loaded.

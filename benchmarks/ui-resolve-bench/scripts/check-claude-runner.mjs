@@ -15,6 +15,7 @@ const CREDENTIAL_ENV = [
 
 export function buildClaudeRunnerSettings({ workspace, runTempRoot, protectedHome = null }) {
   const sandboxRoots = [workspace, runTempRoot];
+  const workspaceRules = ["./**", `${workspace}/**`];
   return {
     sandbox: {
       enabled: true,
@@ -29,11 +30,13 @@ export function buildClaudeRunnerSettings({ workspace, runTempRoot, protectedHom
     },
     permissions: {
       allow: [
-        "Read(./**)",
-        "Edit(./**)",
-        "Write(./**)",
-        "Glob(./**)",
-        "Grep(./**)",
+        ...workspaceRules.flatMap((root) => [
+          `Read(${root})`,
+          `Edit(${root})`,
+          `Write(${root})`,
+          `Glob(${root})`,
+          `Grep(${root})`,
+        ]),
         "Bash",
       ],
       // In dontAsk mode, non-allowlisted file-tool requests already fail closed.
@@ -201,7 +204,7 @@ export function summarizeClaudeToolErrors(events = []) {
     /operation not permitted:\s+\S*\/cwd-[\w-]+/i.test(String(item?.content ?? ""))
   ));
   const sandboxErrors = toolErrors.filter((item) => (
-    /\b(?:EPERM|operation not permitted)\b|requested permissions to (?:read from|write to)/i
+    /\b(?:EPERM|operation not permitted)\b|requested permissions to (?:read from|write to)|permission to use (?:Read|Edit|Write|Glob|Grep|Bash) has been denied/i
       .test(String(item?.content ?? ""))
   ));
   // A red verifier is useful implementation feedback when the agent repairs it,

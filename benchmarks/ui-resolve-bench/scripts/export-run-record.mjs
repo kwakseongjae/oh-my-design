@@ -9,7 +9,11 @@ const FAMILIES = new Set(["model", "skill", "harness", "prompt-arena", "factoria
 
 export function classifyRunStatus(run, score) {
   if (run?.process?.timed_out === true) return "timed_out";
-  if (run?.process?.exit_code !== 0 || Number(run?.output?.sandbox_error_count ?? 0) > 0) return "failed";
+  if (
+    run?.process?.exit_code !== 0
+    || Number(run?.output?.infrastructure_tool_error_count ?? 0) > 0
+    || Number(run?.output?.sandbox_error_count ?? 0) > 0
+  ) return "failed";
   if (!score) return "incomplete";
   return "complete";
 }

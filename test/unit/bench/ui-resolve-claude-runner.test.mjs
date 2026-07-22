@@ -43,6 +43,7 @@ describe("Claude print runner preflight", () => {
       "/private/tmp/ubp1/.t",
     ]);
     expect(result.permissions.allow).toContain("Edit(./**)");
+    expect(result.permissions.allow).toContain("Edit(/private/tmp/ubp1/**)");
     expect(result.permissions.deny).toEqual(["WebFetch", "WebSearch"]);
     expect(result.permissions.deny.some((rule) => rule.includes("../**"))).toBe(false);
   });
@@ -156,6 +157,25 @@ describe("Claude print runner preflight", () => {
       infrastructure_tool_error_count: 1,
       sandbox_error_count: 1,
       sandbox_cwd_error_count: 1,
+    });
+  });
+
+  it("classifies built-in file-tool permission denials as infrastructure errors", () => {
+    expect(summarizeClaudeToolErrors([{
+      type: "user",
+      message: {
+        content: [{
+          type: "tool_result",
+          is_error: true,
+          content: "Permission to use Edit has been denied because Claude Code is running in don't ask mode.",
+        }],
+      },
+    }])).toEqual({
+      tool_error_count: 1,
+      recoverable_tool_error_count: 0,
+      infrastructure_tool_error_count: 1,
+      sandbox_error_count: 1,
+      sandbox_cwd_error_count: 0,
     });
   });
 
