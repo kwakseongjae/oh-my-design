@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-22 (Codex) · Opus 1.9.3 replacement complete
+- Claude 2.1.217 cwd 정책 충돌을 고쳐 zero-error Opus probe를 통과했다.
+- raw 75/85, OmD 85/85를 얻었지만 frozen blanket tool-error 기준상 0 strict-valid로 보존했다.
+- OmD는 552초에 final을 전달해 1.9.2 timeout을 해소했고 skill-only role fallback도 정직하게 동작했다.
+- auto-memory/background/IDE state를 끄고 first-write/final milestone을 계측했다. 다음은 fresh 0.3.0 matrix다.
+
 ## 2026-07-22 (Codex) · Opus runtime invalidated + delivery budget hardened
 - 첫 Opus cell은 raw 81/85·OmD 85/85 artifact에도 sandbox 오류로 0 valid 처리했다.
 - exporter를 tool-level fail-closed로 바꾸고 Claude Code 2.1.217 minimum/native install을 적용했다.

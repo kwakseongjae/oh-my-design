@@ -3,17 +3,18 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `181803f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-22 · Opus 4.8 runtime calibration + 1.9.3 delivery-budget contract
+- 기준 커밋: `705c79b` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-22 · Opus 4.8 1.9.3 replacement calibration complete
 
 ## 지금 (현재 위치)
 
-- Opus 4.8 1-task Transfer Matrix는 **2/2 artifact 평가 완료, 0 valid**로 닫혔다. raw는 81/85지만 tool error 6/sandbox error 4, OmD는 85/85지만 tool error 8/sandbox error 6과 900s timeout이므로 둘 다 `invalid-infrastructure`; 비교·순위·lift 공표 불가다. 정본은 `reports/opus-transfer-1.9.2/{FINDINGS.md,SUMMARY.final.json}`이다.
-- post-run audit에서 Claude Code 2.1.212의 macOS absolute `sandbox.filesystem.allowWrite` 결함을 공식 changelog와 대조해 확정했다. exporter는 이제 `events.jsonl`의 tool/sandbox error를 보존하고 child exit 0이어도 fail-closed한다. provider cost는 subscription 청구액이 아니라 API price-equivalent telemetry로 분리한다.
-- Claude Code native 2.1.217 설치는 완료됐고 preflight 최소 버전도 2.1.217로 고정했다. native 설치가 구독 세션을 초기화해 **사용자 재로그인 대기** 중이다. 로그인 후 zero-error read-only sandbox probe를 먼저 통과해야 scored rerun을 허용한다.
-- `omd:apply` 1.9.3 candidate에 bounded verification + guaranteed delivery 계약을 추가했다. 필수/선택 검증 분리, 동일 infrastructure mechanism 2회 실패 시 중단, network/install/sandbox 완화 금지, 잔여 예산 15% final reserve, `implemented/verified/unresolved` 전달을 강제한다.
-- 최신 검증은 전체 158 pass / 1 conditional skip, TypeScript, build, JSON schema/report, `git diff --check` green이다.
-- Opus 4.8 1-task Transfer Matrix runtime calibration을 결과 확인 전 `reports/opus-transfer-1.9.2/PREREGISTRATION.md`에 고정했다. `incident-operations-v0.1` task contract 0.3.0, raw→OmD 각 1회, exact Opus 4.8/xhigh, Claude Code 2.1.212, family factorial이며 순위·우월성 용도가 아니다.
+- Opus 4.8 1.9.3 replacement는 exact `claude-opus-4-8`/xhigh/Claude Code 2.1.217에서 raw→OmD 각 1회 완료했다. 둘 다 child/process 0, timeout 없음, sandbox/cwd error 0, final message 있음이다. raw 75/85·UI-Resolved fail, OmD 85/85·UI-Resolved pass였으나 양쪽 recoverable tool error 2 때문에 frozen prereg의 blanket zero-error 기준상 **0 strict-valid / 공표 불가**다. 정본은 `reports/opus-transfer-1.9.3/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
+- 표준 run schema는 두 셀을 valid로 보지만 보고서는 사전등록 기준을 우선해 비교를 막았다. 산출물 진단상 raw는 mobile/320/200% skip-link overlap과 primary action computed color를 놓쳤고, OmD는 전 결정론 게이트를 통과했다. 단일 task 관측이므로 10-point delta를 lift·win·우월성으로 사용하지 않는다.
+- post-login 첫 probe의 cwd 실패는 Claude Code가 아니라 runner의 `Read/Edit(../**)` parent glob이 workspace까지 deny한 정책 충돌이었다. 중복 deny 제거 후 exact Opus probe는 tool/sandbox/cwd error 0, product diff 0으로 통과했다.
+- 다음 Claude runner는 `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`, background task off, IDE auto-connect off를 적용하고 first/last built-in product write와 final-result timing을 기록한다. 이번 기존 event backfill은 raw first/last 237,840/491,968ms, OmD 364,767/523,692ms다.
+- `omd:apply` 1.9.3 bounded verification + 15% delivery reserve는 OmD가 이전 timeout 대신 552,355ms에 `implemented/verified/unresolved` final을 반환하게 했다. isolated skill-only cell에는 specialist roles를 의도적으로 설치하지 않았고 skill이 부재를 숨기지 않고 recovery path로 완료했다. agent dispatch 효과는 별도 Harness Track에서 측정한다.
+- 최신 검증은 전체 161 pass / 1 conditional skip, TypeScript, build, JSON report, focused runner/export 13/13, `git diff --check` green이다.
+- 1.9.2는 raw 81/85 artifact와 OmD 85/85 artifact에도 2.1.212 sandbox 오류/OmD timeout으로 0 valid였던 폐기 calibration이다. 정본은 `reports/opus-transfer-1.9.2/{FINDINGS.md,SUMMARY.final.json}`이며 1.9.3이 이를 소급 유효화하지 않는다.
 - clean `6d7edc6` paired-smoke의 Terra/xhigh 18/18을 `/tmp/ui-resolve-paired-smoke-1.9.1-6d7edc6`에서 실행·평가·export했다. Raw 3/9, OmD 4/9 UI-Resolved, 9 matched pairs 1 win / 8 ties / 0 losses, paired lift +11.1pp(CI 0~44.4), Reliability@3는 양쪽 모두 0/3이다. OmD mean token volume은 +82.8%, wall time은 +7.4%다.
 - 1.9.1은 완결됐지만 superiority 공표 불가 calibration이다. lift CI가 0을 포함하고 8/9가 tie이며 semantic contract 결함 2개가 있다. 영구 정본은 `reports/paired-smoke-1.9.1/{FINDINGS.md,SUMMARY.final.json}`이고 `/tmp`에는 `records.final.json`·`aggregate.final.{json,md}`가 있다.
 - 1.9.1에서 task contract 결함 2개를 발견했다: onboarding은 task에 없는 nav landmark를 evaluator가 강제하고, operations는 “4 incidents shown” 같은 task-derived count를 unsupported social proof로 오탐한다. 현재 결과는 non-publishable calibration이며 1.9.2의 단일 변수는 task-owned semantic contract다. `reports/paired-smoke-1.9.1/FINDINGS.md`가 정본이다.
@@ -32,7 +33,7 @@
 - UI-Resolve를 Model Track(무스킬), Skill Lift(고정 모델 paired control), Harness Track(품질/시간/개입 Pareto), 비랭킹 Prompt Arena(러프 프롬프트 blind visual), Transfer Matrix(model×skill 일반화)로 분리했다. 서로 다른 family 결과는 한 글로벌 순위로 합치지 않으며 Internal→Preview→Verified→Retired 상태를 가진다.
 - `1.9.1 → 1.9.9 → 2.0.0` patch experiment train을 고정했다. 매 0.0.1은 하나의 bounded hypothesis·benchmark slice·product activation metric·rollback gate를 가지며, product version과 benchmark suite version은 분리한다. 2.0.0은 3-model positive paired lift, Skill Lift 통계적 공동 1위 이상, Harness Pareto non-dominated, 24 hidden tasks×10 runs, 10 practitioner blind review, 독립 task audit가 모두 통과할 때만 승격한다.
 - 신규 `bench:ui:aggregate`는 run schema의 실패/timeout을 resolved 분모에 보존하고 completion, min/mean/median/max·P10/P25/P75/P90·IQR, Reliability@k, task→run hierarchical bootstrap 95% CI, median/best/worst representative IDs, no-skill 대비 paired lift와 win/tie/loss를 계산한다. focused benchmark/skill 24 tests(conditional browser E2E 1 skip), JSON/syntax/diff checks가 green이다.
-- 다음 benchmark queue는 **1-task raw/OmD Opus 4.8 Transfer Matrix → fresh task-contract 0.3.0 paired matrix**다. Claude 로그인·no-repo probe는 완료했고, 1.9.2 semantic calibration도 완료됐다. 이후 12개 task fixture·1.9.3의 12×5 patch candidate로 확장한다.
+- 다음 benchmark queue는 **auto-memory-off fresh task-contract 0.3.0 paired matrix → 별도 agent-enabled Harness Track 설계**다. 다음 단일 patch hypothesis는 OmD의 늦은 first product write(6:05)를 줄이는 bounded discovery/first-edit milestone이며, recoverable verification failure와 infrastructure failure를 acceptance에서 분리해야 한다. 이후 12개 task fixture·patch train으로 확장한다.
 - PR #47에서 CLI-first activation release를 `main`에 병합했고 Vercel Production 배포를 완료했다. `https://oh-my-design.kr/docs/{en,ko,ja,zh-cn,zh-tw}`는 모두 HTTP 200이다.
 - `v1.9.0` release workflow는 첫 실행에서 npm 10의 `prepare` stdout이 `npm pack --json` 앞에 섞여 parser가 실패했다. PR #48에서 standalone `[` line부터 JSON을 읽도록 수정했고 Node 18 smoke, 전체 CLI/Web/catalog/build, provenance publish가 모두 통과했다.
 - npm `latest`는 `oh-my-design-cli@1.9.0`이다. 빈 임시 폴더의 공개 registry install에서 package metadata와 `omd --version` 모두 `1.9.0`을 반환했다. 현재 공개 계약은 440 references / 20 skills / 18 roles / Node >=18이다.
