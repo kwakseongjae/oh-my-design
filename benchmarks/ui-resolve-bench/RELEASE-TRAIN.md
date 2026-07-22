@@ -32,14 +32,15 @@ change creates a new suite version and re-evaluates every public candidate.
 | 1.9.4 | inspection loop | repair/reverify task slice | inspect → fix → reverify completion | higher repair success; time budget held |
 | 1.9.5 | reference query layer | evidence/unknown and open-brief slices | reference search → selection → build | positive paired lift without fabricated claims |
 | 1.9.6 | model transfer | 3-model transfer matrix | cross-agent install/doctor | lift generalizes beyond one anchor model |
-| 1.9.7 | harness efficiency | Harness Track Pareto run | checkpoint completion/abandonment | non-dominated quality/time/intervention result |
-| 1.9.8 | public Preview | 12-task × 5-run packages | benchmark page → qualified install | complete artifacts, failures, and examples public |
-| 1.9.9 | independent challenge | 24 hidden tasks, blind review, external audit | seven-day activation guardrails | no unresolved benchmark blocker; losses published |
+| 1.9.7 | harness efficiency | Harness Track Pareto run | checkpoint completion/abandonment | **failed calibration:** preregistered timeout at 12/18; retained and not promoted |
+| 1.9.8 | harness delivery-budget recovery | same stopped-task fresh cell | first edit/final delivery milestones | valid 85/85 cell, first edit by 50% budget, exact attribution, no replacement browser harness |
+| 1.9.9 | harness efficiency replacement | fresh repeated Harness Track matrix | checkpoint completion/abandonment | complete non-dominated quality/time/intervention result |
 | 1.9.10 | benchmark robustness | evaluator mutation and contamination suite | reproducible local run package | every known false-green/false-red mutant has a named disposition |
 | 1.9.11 | failure recovery | timeout, tool, browser, install, and attribution failure cells | actionable doctor/recovery path | recovery improves valid completion without weakening fail-closed gates |
 | 1.9.12 | locale and evidence expansion | five-locale evidence/unknown and open-brief slices | locale-correct query→build handoff | no material negative locale slice; unsupported facts remain zero |
 | 1.9.13 | public benchmark UX | downloadable run packages and blind comparison gallery | benchmark page → qualified install | methods, failures, examples, and uncertainty are legible without a global rank |
 | 1.9.14 | activation and reuse | install→first-resolved and seven-day reuse cohort | CLI/docs/builder connected funnel | activation and reuse improve with no accessibility or evidence regression |
+| 1.9.15 | independent challenge | 24 hidden tasks, blind review, external audit | seven-day activation guardrails | no unresolved benchmark blocker; losses published |
 | 1.9.n | additional bounded patch experiments | whichever frontier gate remains unresolved | corresponding product contract | preregister, test, retain failure evidence, repeat |
 | 2.0.0 | frontier release | Verified Model/Skill/Harness evidence | durable activation and retention | all frontier gates below pass |
 

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.7 harness matrix stopped and rejected
+- exact Opus matrix는 11 valid 뒤 onboarding harness trial 3의 900초 timeout으로 preregistered stop했다.
+- 5 complete pairs는 2 win/3 tie였지만 6 cells 미실행이라 promotion·Pareto·public claim을 reject했다.
+- timeout artifact의 사후 frozen 85/85는 forensic으로만 보존했고, late first edit+browser workaround 폭주를 원인으로 고정했다.
+- broken scratch symlink collector를 고쳤다. 다음은 fresh 1.9.8 delivery-budget recovery cell이다.
+
 ## 2026-07-22 (Codex) · 1.9.7 harness matrix prepared
 - portable vs Opus-pinned 2-specialist harness를 3 tasks × 3 trials = 18 cells로 사전등록했다.
 - Pareto/attribution/budget gate와 결정론 matrix preparer를 추가해 `/tmp/u197` 18/18을 clean 준비했다.

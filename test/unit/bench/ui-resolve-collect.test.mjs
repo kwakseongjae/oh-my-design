@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, symlinkSync, writeFileSync } from "node:fs";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -35,5 +35,16 @@ describe("UI-Resolve run record collector", () => {
     writeRecord(root, "two", "same-run");
 
     expect(() => collectRunRecords(root)).toThrow("duplicate run ids");
+  });
+
+  it("ignores broken runtime symlinks while traversing workspaces", async () => {
+    const root = await mkdtemp(join(tmpdir(), "ui-resolve-collect-"));
+    roots.push(root);
+    writeRecord(root, "workspace", "kept-run");
+    const scratch = join(root, "workspace", ".t");
+    mkdirSync(scratch, { recursive: true });
+    symlinkSync(join(root, "missing-task-output"), join(scratch, "expired.output"));
+
+    expect(collectRunRecords(root).map((record) => record.run_id)).toEqual(["kept-run"]);
   });
 });

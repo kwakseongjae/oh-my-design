@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { existsSync, readdirSync, statSync } from "node:fs";
+import { existsSync, lstatSync, readdirSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, writeJson } from "./_lib.mjs";
@@ -12,7 +12,11 @@ export function findRunRecordPaths(root) {
   const visit = (directory) => {
     for (const name of readdirSync(directory).sort()) {
       const absolute = join(directory, name);
-      const info = statSync(absolute);
+      const info = lstatSync(absolute);
+      // Claude and other runtimes may leave task-output symlinks whose targets
+      // disappear when the child session exits. Records always live in real
+      // workspace directories, so never follow symlinks while collecting.
+      if (info.isSymbolicLink()) continue;
       if (info.isDirectory()) visit(absolute);
       else if (name === "run-record.json" && directory.endsWith("/.benchmark")) paths.push(absolute);
     }

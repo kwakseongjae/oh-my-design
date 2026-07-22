@@ -14,14 +14,15 @@
     { "version": "1.9.4", "experiment": "inspection-loop", "status": "calibration_complete" },
     { "version": "1.9.5", "experiment": "reference-query-layer", "status": "candidate" },
     { "version": "1.9.6", "experiment": "model-transfer", "status": "calibration_complete" },
-    { "version": "1.9.7", "experiment": "harness-efficiency", "status": "preregistered" },
-    { "version": "1.9.8", "experiment": "public-preview", "status": "planned" },
-    { "version": "1.9.9", "experiment": "independent-challenge", "status": "planned" },
+    { "version": "1.9.7", "experiment": "harness-efficiency", "status": "calibration_failed" },
+    { "version": "1.9.8", "experiment": "harness-delivery-budget-recovery", "status": "planned" },
+    { "version": "1.9.9", "experiment": "harness-efficiency-replacement", "status": "planned" },
     { "version": "1.9.10", "experiment": "benchmark-robustness", "status": "planned" },
     { "version": "1.9.11", "experiment": "failure-recovery", "status": "planned" },
     { "version": "1.9.12", "experiment": "locale-evidence-expansion", "status": "planned" },
     { "version": "1.9.13", "experiment": "public-benchmark-ux", "status": "planned" },
     { "version": "1.9.14", "experiment": "activation-reuse", "status": "planned" },
+    { "version": "1.9.15", "experiment": "independent-challenge", "status": "planned" },
     { "version": "2.0.0", "experiment": "frontier-release", "status": "gated" }
   ],
   "rules": {

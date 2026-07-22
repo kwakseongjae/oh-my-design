@@ -3,16 +3,17 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `96b0d02` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-22 · 1.9.7 Harness Track 사전등록·18/18 workspace 준비 완료; Claude 재로그인 대기
+- 기준 커밋: `0500317` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.7 Harness Track preregistered timeout으로 promotion reject; 1.9.8 delivery-budget recovery 착수점
 
 ## 지금 (현재 위치)
 
-- 1.9.7은 exact Opus 4.8/xhigh/Claude Code에서 `omd-portable`과 `omd-repair-harness`를 3 public task × 3 trials = 18 cells로 비교하는 repeated Harness Track으로 사전등록했다. trial 2는 실행 순서를 반전하고, Reliability@3·paired W/T/L·median/P90 wall/token·agent attribution을 함께 기록한다.
-- promotion gate는 harness 9/9 valid+attributable, aggregate UI-Resolved 비열세, wins>losses+최소 1 win, task Reliability@3 무손실, Evidence 전부 pass, median wall≤1.5×, token≤1.75×, human intervention 0이다. quality tie+wall/token 동시 증가면 portable이 strict dominate한다.
-- `bench:ui:prepare-matrix`가 frozen JSON을 검증해 `/tmp/u197`의 18개 fresh workspace를 만들었다. 18/18 prepared, source `96b0d02`, publishable source, task contract 0.3.0, skill hash 1종, harness agent bundle hash 1종, harness 9/portable 9가 일치한다.
-- 실제 provider generation은 시작하지 않았다. Claude Code 2.1.217은 설치돼 있으나 `claude auth status --json`이 `loggedIn:false`를 반환한다. `claude auth login` 후 exact model preflight가 ready면 frozen schedule 첫 cell부터 실행한다.
-- 1.9.7 준비 변경 검증은 focused 21/21, 전체 root 195 pass / 1 conditional skip, TypeScript, CLI build, JSON/diff/count-drift gate가 green이다. 정본은 `reports/harness-efficiency-1.9.7/{PREREGISTRATION.md,RUN-MATRIX.json}`이다.
+- 1.9.7 exact Opus 4.8/xhigh repeated Harness Track은 cell 12 `onboarding-t3-harness`가 900초 timeout에 걸려 사전등록대로 즉시 중단했다. 18 scheduled / 12 attempted / 11 valid / 1 timeout / 6 not-started이며 promotion은 reject다.
+- 완전한 5 pairs는 harness 2 win / 3 tie / 0 loss, valid Evidence 11/11이다. valid-only median은 portable 685,112ms·139,096 tokens, harness 717,338ms·179,402 tokens(1.047×/1.290×)지만 incomplete matrix라 Pareto·lift·frontier 주장은 금지한다.
+- timeout 셀은 exact Opus specialists 2/2를 호출하고 product-only diff까지 만들었으나 first product write 580,406ms, last 876,047ms, final 900,027ms에 중단됐다. 사후 frozen evaluator 85/85는 artifact forensic일 뿐 valid run으로 합산하지 않는다.
+- root cause는 specialist 이후 늦은 첫 편집과 sandbox-blocked Chrome 반복 뒤 20,840B replacement verifier 작성이다. 1.9.8은 같은 onboarding cell의 fresh delivery-budget recovery(첫 편집≤50%, verification mechanism 1회, final reserve), 1.9.9는 fresh full matrix replacement다.
+- 정본은 `reports/harness-efficiency-1.9.7/{PREREGISTRATION,RUN-MATRIX,FINDINGS.md,SUMMARY.final.json}`이며 `/tmp/u197`에 실행 state·12 normalized records·partial aggregate가 남아 있다.
+- normalization 중 broken Claude scratch symlink를 따라가던 collector 결함을 발견해 symlink skip과 회귀 테스트를 추가했다.
 - 1.9.6은 pricing task contract 0.3.0에서 Terra/Codex, Fable 5/Claude Code, Opus 4.8/Claude Code × raw DESIGN.md/OmD의 6-cell Evidence & Unknown transfer smoke를 완료했다. 6/6 valid·attributable, Evidence & Unknown 6/6, infrastructure/sandbox/cwd failure 0이다.
 - UI-Resolved는 Raw 1/3 → OmD 3/3, row 내부 paired 2 win / 1 tie / 0 loss다. Terra는 85→85 tie, Fable은 66→85, Opus는 61→85다. 정본은 `reports/three-model-transfer-1.9.6/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
 - Fable Raw는 FAQ 2→3과 3.25:1 contrast, Opus Raw는 price 3→6·FAQ 2→4와 같은 contrast를 만들었다. 두 OmD cell은 protected cardinality와 모든 critical gate를 보존했다. Terra Raw가 이미 해결돼 OmD는 회귀 없이 동률이었다.
@@ -256,14 +257,14 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 사용자가 `claude auth login`을 완료하면 `bench:ui:claude:check -- --model claude-opus-4-8`로 first-party exact-model readiness를 다시 확인한다.
-2. `/tmp/u197/RUN-MATRIX.locked.json` 순서 그대로 18개를 실행하며 auth/quota/model/sandbox/cwd/Agent attribution 실패면 즉시 stop하고 artifact failure는 계속 보존한다.
-3. 각 cell을 frozen evaluator→normalized Harness Track record로 export한 뒤 Reliability@3, paired lift, Pareto budget을 집계해 1.9.7 accept/reject를 영구 기록한다.
-4. 1.9.7 뒤 기존 product queue인 activation funnel 관찰 → v1.9 full-trace/rescue 사례 → Home mobile/Builder error 상태로 복귀한다.
+1. 1.9.8 delivery-budget recovery를 새 preregistration으로 잠근다. 1.9.7 timeout cell은 재시도하거나 대체하지 않는다.
+2. `omd:apply`/Harness activation에 first-edit 50%, verification mechanism 1회, final reserve를 추가하고 focused contract test를 만든다.
+3. 같은 onboarding task의 fresh exact Opus cell 1개가 valid 85/85·first write≤450s·exact agents를 통과하면 1.9.9 full repeated matrix를 새로 사전등록한다.
+4. 그 뒤 activation funnel 관찰 → v1.9 full-trace/rescue 사례 → Home mobile/Builder error 상태로 복귀한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- Claude Code 2.1.217은 현재 로그아웃 상태다. 사용자가 로컬 터미널에서 `claude auth login`을 완료해야 `/tmp/u197` generation을 시작할 수 있다.
+- 없음. Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight가 통과했다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 
 ## 진행 중 레인 (병렬 작업 시에만)
