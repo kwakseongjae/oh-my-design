@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.15 complete, promotion rejected
+- exact Opus/xhigh 18/18 valid complete; UI-Resolved portable 7/9→harness 8/9다.
+- paired 2 win/6 tie/1 loss, wall 0.802x, tokens 1.119x지만 Pricing Reliability 3/3→2/3다.
+- 실패는 13px orange-on-white 3.25:1 contrast 한 건이며 authority/verifier 위반은 0이다.
+- 다음 1.9.16은 unmeasured semantic accent text를 fail-closed하는 fresh recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.15 full replacement preregistered
 - `/tmp/u1915`의 3 tasks×3 trials×portable/harness 18 fresh cells를 고정했다.
 - exact Opus/xhigh, first write≤450s, verifier program 0, specialists 2/2를 요구한다.

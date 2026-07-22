@@ -4,9 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `dc27f8f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.15 fresh repeated Harness Track preregistered
+- 갱신: 2026-07-23 · 1.9.15 full matrix complete, promotion rejected
 
 ## 지금 (현재 위치)
+
+- 1.9.15는 `/tmp/u1915`의 exact Opus/xhigh 18 fresh cells를 retry·resume·개입 없이 18/18 valid complete했다. candidate specialists 18/18, Agent/infra/sandbox/cwd error 0, first write max 364,193ms, verifier/authority violation 0이다.
+- UI-Resolved는 portable 7/9→harness 8/9, paired objective 2 win/6 tie/1 loss, mean score 82.67→84.11이다. median wall은 474,092→380,104ms(0.802x), tokens는 104,232→116,653(1.119x)다.
+- task Reliability@3는 Onboarding 3/3 tie, Operations 1/3→3/3 win, Pricing 3/3→2/3 loss다. `no Reliability@3 task loss`가 false라 efficiency·overall lift와 무관하게 promotion을 reject했다.
+- binding failure는 `pricing-t3-harness`의 `#E7683D` 13px status text on white다. axe가 3.25:1을 측정해 accessibility critical gate를 실패했고 81/85였다; 다른 모든 contract/state/responsive/design/evidence check는 pass다.
+- 1.9.16은 unmeasured semantic accent를 small text로 ship하지 않고 ink label+non-text accent로 강제하는 bounded recovery다. source patch+focused regression 뒤 fresh Pricing harness 1셀 85/85가 full replacement 재시험을 여는 유일한 gate다.
 
 - 1.9.11 fresh Pricing portable은 exact Opus/xhigh에서 정상 종료하고 frozen 85/85·critical 6/6·Evidence & Unknown pass다. first/last write 258,593/332,121ms, wall 505,230ms, product diff는 `index.html` 하나며 replacement verifier는 없다.
 - headless Chrome은 실제 Crashpad/ProcessSingleton 환경 차단을 출력했지만 `| tail` 파이프라인이 exit status를 가려 tool result가 `is_error:false`로 저장됐다. frozen classifier의 optional count가 0이라 prereg대로 1.9.11은 `inconclusive-path-not-observed`; retry·소급 pass하지 않는다.
@@ -287,9 +293,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.15 matrix를 `/tmp/u1915`에 prepare하고 exact Opus preflight를 통과시킨다.
-2. 3 tasks×3 trials×portable/harness를 사전등록 순서로 실행한다.
-3. 완주 시에만 Reliability@3·paired quality·wall/token Pareto와 promotion rule을 판정한다.
+1. 1.9.16 semantic-color safety를 canonical `omd:apply`와 harness activation에 동일하게 잠근다.
+2. focused/full tests·lint·build 뒤 fresh Pricing harness recovery를 preregister한다.
+3. recovery 85/85·Evidence pass·specialists 2/2·first write≤450s·verifier 0일 때만 새 full matrix를 연다.
 4. 그 뒤 locale/evidence → public benchmark UX → activation → independent challenge로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")

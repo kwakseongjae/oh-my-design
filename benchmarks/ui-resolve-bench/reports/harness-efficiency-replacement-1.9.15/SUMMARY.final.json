@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.3",
+  "experiment_id": "harness-efficiency-replacement-1.9.15",
+  "run_date": "2026-07-23",
+  "status": "calibration_failed",
+  "decision": "reject-promotion-semantic-color-recovery-required",
+  "claim_status": "Internal",
+  "source_commit": "45691b8",
+  "product_authority_basis": "dc27f8f",
+  "provider_generation_run": true,
+  "scheduled_cells": 18,
+  "attempted_cells": 18,
+  "valid_completed_cells": 18,
+  "stopped_cells": 0,
+  "not_started_cells": 0,
+  "paired_objective": {
+    "harness_wins": 2,
+    "ties": 6,
+    "harness_losses": 1,
+    "mean_lift_percentage_points": 1.6993
+  },
+  "ui_resolved": {
+    "portable": 7,
+    "harness": 8,
+    "runs_per_system": 9,
+    "lift_percentage_points": 11.1111,
+    "confidence_95_lower": -33.3333,
+    "confidence_95_upper": 66.6667
+  },
+  "reliability_at_3": {
+    "portable_tasks_passed": 2,
+    "harness_tasks_passed": 2,
+    "tasks_total": 3,
+    "pricing": { "portable": 3, "harness": 2 },
+    "onboarding": { "portable": 3, "harness": 3 },
+    "incident_operations": { "portable": 1, "harness": 3 },
+    "candidate_has_task_loss": true
+  },
+  "portable": {
+    "mean_objective_score": 82.6667,
+    "median_objective_score": 85,
+    "median_wall_ms": 474092,
+    "p90_wall_ms": 570040,
+    "median_uncached_tokens": 104232,
+    "p90_uncached_tokens": 116690,
+    "median_first_product_write_ms": 301489,
+    "evidence_unknown_pass": 8
+  },
+  "harness": {
+    "mean_objective_score": 84.1111,
+    "median_objective_score": 85,
+    "median_wall_ms": 380104,
+    "p90_wall_ms": 413304,
+    "median_uncached_tokens": 116653,
+    "p90_uncached_tokens": 130952,
+    "median_first_product_write_ms": 322733,
+    "p90_first_product_write_ms": 349138,
+    "max_first_product_write_ms": 364193,
+    "evidence_unknown_pass": 9,
+    "required_specialist_calls": 18,
+    "agent_errors": 0,
+    "authority_violations": 0,
+    "replacement_verifiers": 0
+  },
+  "efficiency_ratios": {
+    "median_wall": 0.8018,
+    "median_tokens": 1.1192
+  },
+  "binding_failure": {
+    "cell_id": "pricing-t3-harness",
+    "score": 81,
+    "max": 85,
+    "critical_gate": "accessibility",
+    "axe_rule": "color-contrast",
+    "selector": ".is-blocked",
+    "foreground": "#E7683D",
+    "background": "#FFFFFF",
+    "measured_ratio": 3.25,
+    "required_ratio": 4.5
+  },
+  "promotion_gates": {
+    "all_candidate_cells_valid": true,
+    "paired_wins_greater_than_losses": true,
+    "at_least_one_win": true,
+    "no_reliability_task_loss": false,
+    "evidence_unknown_9_of_9": true,
+    "median_wall_within_1_5x": true,
+    "median_tokens_within_1_75x": true,
+    "zero_unplanned_intervention": true,
+    "promoted": false
+  },
+  "reporting_limits": [
+    "internal harness calibration only",
+    "no frontier, best-skill, model, or global-rank claim",
+    "no retry, resume, or retroactive repair",
+    "future recovery does not change this result"
+  ]
+}
