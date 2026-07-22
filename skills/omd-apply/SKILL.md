@@ -80,6 +80,10 @@ verification:
   viewports: []
   states: []
   commands: []
+  budget:
+    required: []
+    optional: []
+    delivery_reserve: true
 ```
 
 설치된 채널 data root에 `workflow-capabilities.json`이 있으면 선언된 workflow와 필드명을 사용한다. 파일이 없어도 위 계약으로 계속하며 설치를 강요하지 않는다.
@@ -130,6 +134,19 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 - advisory dispatch 결과가 read-only 제안이어도 implement/change 요청에서는 본 에이전트가 최소 유효 변경을 직접 적용.
 - 변경 전 `consumer_route`의 viewport·state·핵심 동작을 기록하고, 변경 후 **같은 consumer route·viewport·state**를 다시 연다. 공유 renderer나 진단 route만 확인해 통과 처리하지 않는다.
 - 변경 후 요청에 비례한 빌드·테스트·실제 route 검증을 수행. 동작, 시각 계약, 접근성, overflow를 확인한다. 실행하지 못한 검증은 통과로 표현하지 않고 `unresolved`에 남긴다. 자문 완료를 구현 완료로 간주하지 않음.
+
+## Phase 2.5 — Bounded verification + guaranteed delivery
+
+검증은 결과 전달을 막지 않는 범위에서 fail-closed로 수행한다.
+
+1. work packet에서 **필수 검증**(acceptance를 증명하는 최소 명령·route)과 **선택 검증**(추가 screenshot, 보조 브라우저, 중복 lint)을 먼저 분리한다.
+2. 가장 결정론적이고 값싼 검증부터 실행한다. 이미 같은 계약을 증명한 검증을 “더 확실하게” 만들기 위해 반복하지 않는다.
+3. sandbox permission, quota, browser attach, missing executable/dependency 같은 **infrastructure error**는 제품 결함과 분리한다. 원인을 확인하는 보정 시도는 한 번만 허용하며, 같은 mechanism이 두 번 연속 실패하면 중단하고 다른 이미 가용한 검증으로 이동한다.
+4. 네트워크 다운로드·새 도구 설치·권한 완화·sandbox 해제는 사용자가 요청하거나 work packet에 사전 승인된 경우가 아니면 검증 우회책으로 사용하지 않는다.
+5. 제품 변경이 acceptance를 충족하고 필수 검증 결과를 확보했으면 선택 검증보다 **최종 전달을 우선**한다. 런타임이 잔여 예산을 제공하면 최소 15%를 최종 응답에 남긴다. 잔여 예산을 알 수 없으면 동일 인프라 오류 2회 또는 필수 검증 완료 시점을 delivery reserve로 간주한다.
+6. 검증 인프라가 막혀도 구현을 지우거나 무한 재시도하지 않는다. 최종 응답을 `implemented / verified / unresolved`로 나눠 무엇이 완성됐고 무엇이 실행되지 못했는지 명시한다.
+
+timeout 직전까지 optional verification을 계속해 final response를 잃는 것은 실패다. artifact가 만들어졌더라도 사용자가 결과·근거·남은 위험을 전달받지 못하면 delivery complete로 처리하지 않는다.
 
 ## Phase 3 — 교정 캡처
 

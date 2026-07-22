@@ -1,14 +1,15 @@
 #!/usr/bin/env node
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { basename, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, writeJson } from "./_lib.mjs";
+import { summarizeClaudeToolErrors } from "./check-claude-runner.mjs";
 
 const FAMILIES = new Set(["model", "skill", "harness", "prompt-arena", "factorial"]);
 
 export function classifyRunStatus(run, score) {
   if (run?.process?.timed_out === true) return "timed_out";
-  if (run?.process?.exit_code !== 0) return "failed";
+  if (run?.process?.exit_code !== 0 || Number(run?.output?.sandbox_error_count ?? 0) > 0) return "failed";
   if (!score) return "incomplete";
   return "complete";
 }
@@ -77,6 +78,18 @@ export function buildRunRecord({
     wall_time_ms: run?.process?.wall_ms ?? 0,
     tokens: tokenUsage?.total_tokens ?? null,
     token_usage: tokenUsage,
+    provider_cost_equivalent_usd: Number.isFinite(Number(run?.output?.total_cost_usd))
+      ? Number(run.output.total_cost_usd)
+      : null,
+    runtime_model_usage: Array.isArray(run?.output?.model_usage)
+      ? run.output.model_usage
+      : null,
+    runtime_diagnostics: {
+      child_exit_code: run?.process?.child_exit_code ?? run?.process?.exit_code ?? null,
+      tool_error_count: Number(run?.output?.tool_error_count ?? 0),
+      sandbox_error_count: Number(run?.output?.sandbox_error_count ?? 0),
+      sandbox_cwd_error_count: Number(run?.output?.sandbox_cwd_error_count ?? 0),
+    },
     attribution: {
       source_commit: manifest?.skill?.source_commit ?? null,
       source_attestation: manifest?.skill?.source_attestation ?? null,
@@ -116,6 +129,13 @@ async function main() {
   }
   const manifest = readJson(manifestPath);
   const run = readJson(runPath);
+  const eventsPath = join(benchmarkDir, "events.jsonl");
+  if (existsSync(eventsPath)) {
+    const events = readFileSync(eventsPath, "utf8").split("\n").filter(Boolean).flatMap((line) => {
+      try { return [JSON.parse(line)]; } catch { return []; }
+    });
+    run.output = { ...run.output, ...summarizeClaudeToolErrors(events) };
+  }
   const score = existsSync(scorePath) ? readJson(scorePath) : null;
   const record = buildRunRecord({
     workspace,

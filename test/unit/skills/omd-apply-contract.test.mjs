@@ -30,4 +30,12 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("implementation_owner");
     expect(skill).toContain("같은 consumer route");
   });
+
+  it("bounds verification and preserves a final delivery reserve", () => {
+    expect(skill).toContain("Bounded verification + guaranteed delivery");
+    expect(skill).toContain("같은 mechanism이 두 번 연속 실패하면 중단");
+    expect(skill).toContain("최소 15%를 최종 응답에 남긴다");
+    expect(skill).toContain("implemented / verified / unresolved");
+    expect(skill).toContain("final response를 잃는 것은 실패");
+  });
 });

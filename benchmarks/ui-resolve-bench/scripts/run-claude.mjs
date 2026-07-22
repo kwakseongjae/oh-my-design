@@ -1,12 +1,17 @@
 #!/usr/bin/env node
 import { spawn } from "node:child_process";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
-import { inspectClaudeRunner, summarizeClaudeUsage } from "./check-claude-runner.mjs";
+import {
+  inspectClaudeRunner,
+  summarizeClaudeToolErrors,
+  summarizeClaudeUsage,
+} from "./check-claude-runner.mjs";
 
 const args = parseArgs();
-const workspace = args.get("workspace") ? resolve(String(args.get("workspace"))) : null;
+const workspaceInput = args.get("workspace") ? resolve(String(args.get("workspace"))) : null;
+const workspace = workspaceInput && existsSync(workspaceInput) ? realpathSync(workspaceInput) : workspaceInput;
 const model = String(args.get("model") ?? "claude-opus-4-8");
 const effort = String(args.get("effort") ?? "xhigh");
 const timeoutMs = Number(args.get("timeout-ms") ?? 900_000);
@@ -30,6 +35,12 @@ if (!readiness.ready) throw new Error(readiness.next_action ?? "Claude runner pr
 
 const prompt = readFileSync(join(benchmarkDir, "PROMPT.md"), "utf8");
 const finalMessagePath = join(benchmarkDir, "final-message.txt");
+// Claude Code's shell wrapper must record cwd inside a writable per-session temp
+// directory. Keep the root inside the prepared workspace and deliberately short.
+const runTempRoot = join(workspace, ".t");
+mkdirSync(runTempRoot, { recursive: true });
+const sandboxRoots = [workspace, runTempRoot];
+const protectedHome = process.env.HOME ? realpathSync(process.env.HOME) : null;
 const maxLogBytes = 50 * 1024 * 1024;
 const runnerSettings = JSON.stringify({
   sandbox: {
@@ -37,6 +48,11 @@ const runnerSettings = JSON.stringify({
     failIfUnavailable: true,
     autoAllowBashIfSandboxed: true,
     allowUnsandboxedCommands: false,
+    filesystem: {
+      allowRead: sandboxRoots,
+      allowWrite: sandboxRoots,
+      ...(protectedHome ? { denyRead: [protectedHome] } : {}),
+    },
   },
   permissions: {
     allow: [
@@ -88,7 +104,8 @@ for (const key of ["HOME", "PATH", "TMPDIR", "LANG", "LC_ALL", "TERM", "USER", "
   if (process.env[key]) childEnv[key] = process.env[key];
 }
 Object.assign(childEnv, {
-  CLAUDE_CODE_SUBPROCESS_ENV_SCRUB: "1",
+  TMPDIR: runTempRoot,
+  CLAUDE_CODE_TMPDIR: runTempRoot,
   DISABLE_TELEMETRY: "1",
   DO_NOT_TRACK: "1",
   CI: "1",
@@ -135,6 +152,7 @@ writeFileSync(join(benchmarkDir, "stderr.log"), stderr, "utf8");
 const events = stdout.split("\n").filter(Boolean).flatMap((line) => {
   try { return [JSON.parse(line)]; } catch { return []; }
 });
+const toolErrors = summarizeClaudeToolErrors(events);
 const resultEvent = [...events].reverse().find((event) => event.type === "result") ?? null;
 const initEvent = events.find((event) => event.type === "system" && event.subtype === "init") ?? null;
 const normalizedUsage = summarizeClaudeUsage(resultEvent);
@@ -145,13 +163,13 @@ const usageEvents = normalizedUsage.totals ? [{
 const finalMessage = typeof resultEvent?.result === "string" ? resultEvent.result : "";
 if (finalMessage) writeFileSync(finalMessagePath, finalMessage, "utf8");
 
-const finalTree = treeManifest(workspace, { ignore: [".benchmark"] });
+const finalTree = treeManifest(workspace, { ignore: [".benchmark", ".t"] });
 const initialProductTree = {
   sha256: manifest.workspace.product_initial_sha256,
   files: manifest.workspace.product_initial_files ?? [],
 };
 const finalProductTree = treeManifest(workspace, {
-  ignore: manifest.workspace.product_ignore ?? [".benchmark"],
+  ignore: [...new Set([...(manifest.workspace.product_ignore ?? [".benchmark"]), ".t"])],
 });
 const changedProductFiles = diffTreeManifests(initialProductTree, finalProductTree);
 const productChanged = initialProductTree.sha256 !== finalProductTree.sha256;
@@ -173,7 +191,8 @@ const result = {
     mcp_disabled: true,
   },
   process: {
-    exit_code: exit.code,
+    exit_code: exit.code === 0 && toolErrors.sandbox_error_count > 0 ? 1 : exit.code,
+    child_exit_code: exit.code,
     signal: exit.signal,
     timed_out: timedOut,
     wall_ms: Math.round(wallMs),
@@ -190,6 +209,7 @@ const result = {
     logs_truncated: logsTruncated,
     result_subtype: resultEvent?.subtype ?? null,
     result_is_error: resultEvent?.is_error ?? null,
+    ...toolErrors,
   },
   workspace: {
     initial_sha256: manifest.workspace.initial_sha256,
@@ -205,4 +225,4 @@ const result = {
 };
 writeJson(resultPath, result);
 console.log(JSON.stringify(result, null, 2));
-if (exit.code !== 0 || timedOut || resultEvent?.is_error === true) process.exitCode = 1;
+if (result.process.exit_code !== 0 || timedOut || resultEvent?.is_error === true) process.exitCode = 1;

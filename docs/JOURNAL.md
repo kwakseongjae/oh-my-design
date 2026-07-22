@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-22 (Codex) · Opus runtime invalidated + delivery budget hardened
+- 첫 Opus cell은 raw 81/85·OmD 85/85 artifact에도 sandbox 오류로 0 valid 처리했다.
+- exporter를 tool-level fail-closed로 바꾸고 Claude Code 2.1.217 minimum/native install을 적용했다.
+- `omd:apply`에 bounded verification·15% final reserve·infra retry cap을 추가했다.
+- 전체 158 pass/1 skip, lint/build green; native 구독 재로그인 뒤 clean probe에서 재개한다.
+
 ## 2026-07-22 (Codex) · Opus 4.8 Transfer Matrix preregistered
 - `incident-operations-v0.1`의 raw→OmD 각 1회를 exact Opus 4.8/xhigh로 고정했다.
 - Claude Code project-only skill, native sandbox, no MCP/Chrome, clean attribution을 양쪽 공통 계약으로 둔다.

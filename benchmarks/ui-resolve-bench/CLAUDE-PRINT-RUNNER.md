@@ -1,6 +1,7 @@
 # Claude Code print-mode runner
 
-Verified locally on 2026-07-22 with Claude Code `2.1.212`.
+Initial model/auth smoke verified locally on 2026-07-22 with Claude Code
+`2.1.212`. Scored sandbox runs require `2.1.217` or newer.
 
 ## Decision
 
@@ -15,6 +16,10 @@ the no-repository probe returned exactly `OMD_OPUS_48_PROBE` from
 `claude-opus-4-8`. `ANTHROPIC_API_KEY`,
 `ANTHROPIC_AUTH_TOKEN`, provider flags, or a separate OAuth-token environment
 must not shadow the intended interactive subscription login.
+
+Switching from the npm-distributed `2.1.212` binary to the native `2.1.217`
+binary cleared the local login session. A fresh `claude auth login` is required
+before the post-update sandbox probe; the preflight reports this as not ready.
 
 ## Quota finding
 
@@ -36,8 +41,23 @@ Sources:
 - https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan
 - https://code.claude.com/docs/en/authentication
 - https://code.claude.com/docs/en/errors
+- https://code.claude.com/docs/en/sandboxing
+- https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md
 
 ## Implemented local path
+
+### Runtime floor
+
+Claude Code `2.1.212` has a macOS sandbox defect that made absolute
+`sandbox.filesystem.allowWrite` entries ineffective. Anthropic's later
+changelog records fixes for absolute allow-write paths and redirection into
+allowlisted temp directories. The preflight therefore refuses versions older
+than `2.1.217`.
+
+The first frozen Opus cell exposed this defect: both raw and OmD artifacts were
+generated, but both contained tool-level sandbox failures and OmD timed out.
+The corrected disposition is `invalid-infrastructure`, not a raw/OmD
+comparison. See `reports/opus-transfer-1.9.2/FINDINGS.md`.
 
 The preparation adapter installs the same frozen OmD source into
 `.claude/skills/` and writes a `CLAUDE.md` sandbox contract:
@@ -47,7 +67,7 @@ node benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs \
   --task incident-operations-v0.1 \
   --variant omd-portable \
   --runtime claude-code \
-  --out /tmp/ui-resolve-claude/incident-omd-1
+  --out /tmp/ub/incident-o1
 ```
 
 Preflight refuses unauthenticated, API-key-shadowed, provider-routed, or moving
@@ -61,7 +81,7 @@ After login, run the prepared workspace:
 
 ```text
 npm run bench:ui:claude:run -- \
-  --workspace /tmp/ui-resolve-claude/incident-omd-1 \
+  --workspace /tmp/ub/incident-o1 \
   --model claude-opus-4-8 \
   --effort xhigh
 ```
@@ -70,8 +90,16 @@ The runner loads only project setting sources, disables Chrome and MCP, pins
 the exact model, requires Claude's native OS sandbox, blocks its unsandboxed
 escape hatch, denies web tools, strips provider credentials from Bash children,
 and disables session persistence. Raw events, normalized token usage, reported
-model, wall time, product-only diff, and provider cost when supplied are written
-to the existing run-result schema.
+model, wall time, product-only diff, tool-level sandbox diagnostics, and
+provider price-equivalent telemetry when supplied are written to the existing
+run-result schema. A sandbox error invalidates the run even when Claude's
+top-level child process exits zero. The price-equivalent value is not a claim
+that the subscription account was billed that amount.
+
+`CLAUDE_CODE_TMPDIR` points to a short `.t` directory inside the prepared
+workspace. This keeps cwd tracking inside the same write boundary and avoids
+Unix socket path-length fallback. Use short `/tmp/ub/<run>` output paths for
+scored cells.
 
 `--safe-mode` is intentionally absent from scored skill runs because it disables
 project Skills. The same `--setting-sources project` isolation is used for both
@@ -95,7 +123,9 @@ This confirmed authentication, exact model access, print-mode JSON, and quota
 behavior without exposing repository content. The JSON also reported a small
 Claude Code helper-model allocation in addition to Opus. The runner therefore
 records and sums every `modelUsage` entry, while preserving per-model cost and
-context fields. The Claude Transfer Matrix may now begin.
+context fields. The model path is proven, but scored Transfer Matrix work
+resumes only after a post-update read-only sandbox probe reports zero tool and
+sandbox errors.
 
 ## Benchmark classification
 

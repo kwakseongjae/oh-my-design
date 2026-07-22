@@ -32,6 +32,33 @@
     "objective_max": { "type": "number", "exclusiveMinimum": 0 },
     "wall_time_ms": { "type": "number", "minimum": 0 },
     "tokens": { "type": "number", "minimum": 0 },
+    "provider_cost_equivalent_usd": { "type": ["number", "null"], "minimum": 0 },
+    "runtime_model_usage": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "required": ["model", "input_tokens", "cached_input_tokens", "output_tokens"],
+        "properties": {
+          "model": { "type": "string", "minLength": 1 },
+          "input_tokens": { "type": "number", "minimum": 0 },
+          "cached_input_tokens": { "type": "number", "minimum": 0 },
+          "output_tokens": { "type": "number", "minimum": 0 },
+          "cost_usd": { "type": ["number", "null"], "minimum": 0 },
+          "context_window": { "type": ["number", "null"], "minimum": 0 },
+          "max_output_tokens": { "type": ["number", "null"], "minimum": 0 }
+        }
+      }
+    },
+    "runtime_diagnostics": {
+      "type": "object",
+      "required": ["child_exit_code", "tool_error_count", "sandbox_error_count", "sandbox_cwd_error_count"],
+      "properties": {
+        "child_exit_code": { "type": ["integer", "null"] },
+        "tool_error_count": { "type": "integer", "minimum": 0 },
+        "sandbox_error_count": { "type": "integer", "minimum": 0 },
+        "sandbox_cwd_error_count": { "type": "integer", "minimum": 0 }
+      }
+    },
     "token_usage": {
       "type": ["object", "null"],
       "properties": {

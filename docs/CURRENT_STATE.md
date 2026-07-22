@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-21 · CLI v1.9 production deploy + npm publish 완료
+- 갱신: 2026-07-22 · Opus 4.8 runtime calibration + 1.9.3 delivery-budget contract
 
 ## 지금 (현재 위치)
 
+- Opus 4.8 1-task Transfer Matrix는 **2/2 artifact 평가 완료, 0 valid**로 닫혔다. raw는 81/85지만 tool error 6/sandbox error 4, OmD는 85/85지만 tool error 8/sandbox error 6과 900s timeout이므로 둘 다 `invalid-infrastructure`; 비교·순위·lift 공표 불가다. 정본은 `reports/opus-transfer-1.9.2/{FINDINGS.md,SUMMARY.final.json}`이다.
+- post-run audit에서 Claude Code 2.1.212의 macOS absolute `sandbox.filesystem.allowWrite` 결함을 공식 changelog와 대조해 확정했다. exporter는 이제 `events.jsonl`의 tool/sandbox error를 보존하고 child exit 0이어도 fail-closed한다. provider cost는 subscription 청구액이 아니라 API price-equivalent telemetry로 분리한다.
+- Claude Code native 2.1.217 설치는 완료됐고 preflight 최소 버전도 2.1.217로 고정했다. native 설치가 구독 세션을 초기화해 **사용자 재로그인 대기** 중이다. 로그인 후 zero-error read-only sandbox probe를 먼저 통과해야 scored rerun을 허용한다.
+- `omd:apply` 1.9.3 candidate에 bounded verification + guaranteed delivery 계약을 추가했다. 필수/선택 검증 분리, 동일 infrastructure mechanism 2회 실패 시 중단, network/install/sandbox 완화 금지, 잔여 예산 15% final reserve, `implemented/verified/unresolved` 전달을 강제한다.
+- 최신 검증은 전체 158 pass / 1 conditional skip, TypeScript, build, JSON schema/report, `git diff --check` green이다.
 - Opus 4.8 1-task Transfer Matrix runtime calibration을 결과 확인 전 `reports/opus-transfer-1.9.2/PREREGISTRATION.md`에 고정했다. `incident-operations-v0.1` task contract 0.3.0, raw→OmD 각 1회, exact Opus 4.8/xhigh, Claude Code 2.1.212, family factorial이며 순위·우월성 용도가 아니다.
 - clean `6d7edc6` paired-smoke의 Terra/xhigh 18/18을 `/tmp/ui-resolve-paired-smoke-1.9.1-6d7edc6`에서 실행·평가·export했다. Raw 3/9, OmD 4/9 UI-Resolved, 9 matched pairs 1 win / 8 ties / 0 losses, paired lift +11.1pp(CI 0~44.4), Reliability@3는 양쪽 모두 0/3이다. OmD mean token volume은 +82.8%, wall time은 +7.4%다.
 - 1.9.1은 완결됐지만 superiority 공표 불가 calibration이다. lift CI가 0을 포함하고 8/9가 tie이며 semantic contract 결함 2개가 있다. 영구 정본은 `reports/paired-smoke-1.9.1/{FINDINGS.md,SUMMARY.final.json}`이고 `/tmp`에는 `records.final.json`·`aggregate.final.{json,md}`가 있다.
@@ -231,14 +236,15 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `docs_open → install_copy → doctor_ready → first DESIGN.md → verified route` activation funnel을 첫 7일 관찰해 가장 큰 이탈 지점을 고친다.
-2. Applepresso의 historical 1.4 run을 보완할 current v1.9 full-trace 사례 1개와 실제 기존 제품 route rescue 사례 1개를 추가한다.
-3. Home comparison mobile overflow와 Builder error/Retry 상태를 production route에서 교정한다.
-4. 나머지 reference fleet은 demand-ranked reverify queue에 따라 점진 처리한다.
+1. 사용자가 native Claude Code에서 `claude auth login`을 완료하면 2.1.217 exact Opus 4.8 low-effort read-only sandbox probe를 zero tool/sandbox errors로 닫는다.
+2. clean probe 뒤 1.9.3 candidate를 커밋·preregister하고 same task raw→OmD xhigh 각 1회 replacement calibration을 수행한다.
+3. replacement가 delivery complete이면 fresh task-contract 0.3.0 paired matrix로 진입하고, 아니면 runner와 verification budget을 한 변수씩 다시 교정한다.
+4. 기존 product queue인 activation funnel 관찰 → v1.9 full-trace/rescue 사례 → Home mobile/Builder error 상태는 benchmark lane 다음에 유지한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- 없음. 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 배포·publish를 완료했다.
+- Claude Code 2.1.217 native 설치 후 first-party subscription OAuth 재로그인이 필요하다. 사용자가 로컬 터미널에서 `claude auth login`을 완료하면 나머지는 추가 승인 없이 재개 가능하다.
+- 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 
 ## 진행 중 레인 (병렬 작업 시에만)
 

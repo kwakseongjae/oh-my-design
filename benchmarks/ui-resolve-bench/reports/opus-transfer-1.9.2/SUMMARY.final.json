@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1",
+  "report": "opus-transfer-1.9.2",
+  "benchmark_family": "factorial",
+  "task_contract": "0.3.0",
+  "task_id": "incident-operations-v0.1",
+  "runtime": {
+    "agent": "claude-code",
+    "agent_version_during_run": "2.1.212",
+    "model": "claude-opus-4-8",
+    "effort": "xhigh",
+    "authentication": "first-party-subscription-oauth"
+  },
+  "scheduled_runs": 2,
+  "artifact_evaluations_completed": 2,
+  "valid_runs": 0,
+  "comparison_allowed": false,
+  "publication_allowed": false,
+  "disposition": "invalid-infrastructure",
+  "conditions": [
+    {
+      "variant_id": "raw-design-md",
+      "run_status": "failed",
+      "validity": "invalid-infrastructure",
+      "ui_resolved": false,
+      "objective_score": 81,
+      "objective_max": 85,
+      "wall_time_ms": 663305,
+      "wall_time_censored": false,
+      "input_tokens": 75942,
+      "cached_input_tokens": 1402319,
+      "output_tokens": 55831,
+      "provider_cost_equivalent_usd": 2.8483005,
+      "tool_error_count": 6,
+      "sandbox_error_count": 4,
+      "product_changed": true,
+      "final_message_present": true
+    },
+    {
+      "variant_id": "omd-portable",
+      "run_status": "timed_out",
+      "validity": "invalid-infrastructure",
+      "ui_resolved": false,
+      "objective_score": 85,
+      "objective_max": 85,
+      "wall_time_ms": 900062,
+      "wall_time_censored": true,
+      "input_tokens": 86962,
+      "cached_input_tokens": 1718082,
+      "output_tokens": 61826,
+      "provider_cost_equivalent_usd": 3.265486,
+      "tool_error_count": 8,
+      "sandbox_error_count": 6,
+      "product_changed": true,
+      "final_message_present": false
+    }
+  ],
+  "diagnostic_deltas_raw_to_omd": {
+    "uncached_input_plus_output_percent": 12.9124,
+    "cached_input_percent": 22.5172,
+    "output_percent": 10.7378,
+    "provider_cost_equivalent_percent": 14.6468,
+    "wall_percent_censored": 35.6935
+  },
+  "root_cause": [
+    "claude-code-2.1.212-absolute-sandbox-allowWrite-defect",
+    "runner-did-not-fail-on-tool-level-sandbox-errors",
+    "omd-verification-retried-without-a-final-delivery-reserve"
+  ],
+  "remediation": {
+    "claude_code_installed": "2.1.217",
+    "runner_event_diagnostics": "implemented",
+    "scored_rerun_allowed": false,
+    "next_gate": "zero-error-read-only-sandbox-probe"
+  }
+}

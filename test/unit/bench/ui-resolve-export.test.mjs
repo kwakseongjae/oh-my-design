@@ -25,6 +25,16 @@ const run = {
   process: { exit_code: 0, timed_out: false, wall_ms: 1200 },
   output: {
     usage_events: [{ usage: { input_tokens: 100, cached_input_tokens: 60, output_tokens: 25, reasoning_output_tokens: 5 } }],
+    total_cost_usd: 1.25,
+    model_usage: [{
+      model: "gpt-5.6-terra",
+      input_tokens: 100,
+      cached_input_tokens: 60,
+      output_tokens: 25,
+      cost_usd: 1.25,
+      context_window: 1000000,
+      max_output_tokens: 128000,
+    }],
   },
   workspace: {
     product_changed: true,
@@ -71,6 +81,19 @@ describe("UI-Resolve normalized run exporter", () => {
         reasoning_output_tokens: 5,
         total_tokens: 125,
       },
+      provider_cost_equivalent_usd: 1.25,
+      runtime_model_usage: [{
+        model: "gpt-5.6-terra",
+        input_tokens: 100,
+        cached_input_tokens: 60,
+        output_tokens: 25,
+      }],
+      runtime_diagnostics: {
+        child_exit_code: 0,
+        tool_error_count: 0,
+        sandbox_error_count: 0,
+        sandbox_cwd_error_count: 0,
+      },
       delivery: {
         product_changed: true,
         changed_product_files: [{ path: "index.html", status: "modified" }],
@@ -105,6 +128,10 @@ describe("UI-Resolve normalized run exporter", () => {
     expect(classifyValidity(offLabel, "complete", score)).toBe("invalid-task");
     expect(classifyRunStatus({ process: { timed_out: true } }, null)).toBe("timed_out");
     expect(classifyRunStatus({ process: { exit_code: 1 } }, null)).toBe("failed");
+    expect(classifyRunStatus({
+      process: { exit_code: 0 },
+      output: { sandbox_error_count: 1 },
+    }, score)).toBe("failed");
   });
 
   it("does not count an unchanged starter as a resolved product delivery", () => {

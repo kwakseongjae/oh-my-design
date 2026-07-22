@@ -15,10 +15,18 @@ const CREDENTIAL_ENV = [
 
 export function inspectClaudeRunner({
   model = "claude-opus-4-8",
+  minimumVersion = "2.1.217",
   env = process.env,
   exec = execFileSync,
 } = {}) {
   const version = exec("claude", ["--version"], { encoding: "utf8" }).trim();
+  const versionNumber = version.match(/\d+\.\d+\.\d+/)?.[0] ?? "0.0.0";
+  const versionParts = (value) => value.split(".").map((part) => Number(part));
+  const received = versionParts(versionNumber);
+  const required = versionParts(minimumVersion);
+  const firstVersionDifference = received.findIndex((part, index) => part !== required[index]);
+  const sandboxVersionSafe = firstVersionDifference === -1
+    || received[firstVersionDifference] > required[firstVersionDifference];
   let auth;
   try {
     auth = JSON.parse(exec("claude", ["auth", "status"], { encoding: "utf8" }));
@@ -36,6 +44,7 @@ export function inspectClaudeRunner({
     && !competingCredentials.length;
   const checks = {
     claude_available: Boolean(version),
+    sandbox_version_safe: sandboxVersionSafe,
     authenticated: auth.loggedIn === true,
     first_party_provider: auth.apiProvider === "firstParty",
     subscription_credentials_unshadowed: competingCredentials.length === 0,
@@ -46,6 +55,7 @@ export function inspectClaudeRunner({
     ready: Object.values(checks).every(Boolean) && subscriptionAuth,
     model,
     version,
+    minimum_version: minimumVersion,
     auth: {
       logged_in: auth.loggedIn === true,
       method: auth.authMethod ?? null,
@@ -54,7 +64,9 @@ export function inspectClaudeRunner({
     competing_credential_env: competingCredentials,
     checks,
     next_action: auth.loggedIn === true
-      ? (competingCredentials.length ? "Unset competing provider credentials before a subscription run." : null)
+      ? (!sandboxVersionSafe
+        ? `Update Claude Code to ${minimumVersion} or newer before a sandboxed benchmark run.`
+        : (competingCredentials.length ? "Unset competing provider credentials before a subscription run." : null))
       : "Run `claude auth login`, choose the Claude subscription account, then rerun this check.",
   };
 }
@@ -93,6 +105,26 @@ export function summarizeClaudeUsage(resultEvent) {
       reasoning_output_tokens: Number(usage.reasoning_output_tokens ?? 0),
     },
     models: [],
+  };
+}
+
+export function summarizeClaudeToolErrors(events = []) {
+  const toolErrors = events.flatMap((event) => (
+    event?.type === "user" && Array.isArray(event?.message?.content)
+      ? event.message.content.filter((item) => item?.type === "tool_result" && item?.is_error === true)
+      : []
+  ));
+  const sandboxCwdErrors = toolErrors.filter((item) => (
+    /operation not permitted:\s+\S*\/cwd-[\w-]+/i.test(String(item?.content ?? ""))
+  ));
+  const sandboxErrors = toolErrors.filter((item) => (
+    /\b(?:EPERM|operation not permitted)\b|requested permissions to (?:read from|write to)/i
+      .test(String(item?.content ?? ""))
+  ));
+  return {
+    tool_error_count: toolErrors.length,
+    sandbox_error_count: sandboxErrors.length,
+    sandbox_cwd_error_count: sandboxCwdErrors.length,
   };
 }
 
