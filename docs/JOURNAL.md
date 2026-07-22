@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.16 semantic-color source complete
+- unmeasured accent-on-surface normal text를 금지하는 semantic color ledger를 추가했다.
+- text-role label + adjacent non-text accent가 fail-closed default다.
+- specialist risk question과 harness activation도 같은 authority 계약으로 동기화했다.
+- focused 18/18, full 207/1 skip, lint/build가 green; 다음은 fresh Pricing recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.15 complete, promotion rejected
 - exact Opus/xhigh 18/18 valid complete; UI-Resolved portable 7/9→harness 8/9다.
 - paired 2 win/6 tie/1 loss, wall 0.802x, tokens 1.119x지만 Pricing Reliability 3/3→2/3다.

@@ -198,6 +198,9 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(competitors.variants["omd-repair-harness"].activation).toContain("checklist and observed result, not an executable artifact");
     expect(competitors.variants["omd-repair-harness"].activation).toContain("CDP/browser automation");
     expect(competitors.variants["omd-repair-harness"].activation).toContain("direct browser command that writes no verification program");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("semantic_color_ledger");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("never ship it as meaningful normal text");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("ink-label plus non-text-accent default");
     expect(competitors.variants["omd-full-harness"]).toMatchObject({
       install_dir: "omd-harness",
       install_adapter: "omd-channel-name-v1",

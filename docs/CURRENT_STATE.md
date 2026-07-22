@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `dc27f8f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.15 full matrix complete, promotion rejected
+- 갱신: 2026-07-23 · 1.9.16 semantic-color source patch complete
 
 ## 지금 (현재 위치)
+
+- 1.9.16 source patch는 `semantic_color_ledger`를 protected ledger와 함께 첫 편집 전에 잠근다. unmeasured accent-on-surface는 meaningful normal text에서 금지하고, DESIGN.md text-role label + adjacent non-text accent로 fail-closed한다.
+- `unresolved` disclosure는 위험 pair 출고 권한이 아니며, specialist engineer 질문 하나가 state/status/accent token의 planned foreground/background pair를 text/non-text로 분류해야 한다. 자문 뒤 새 pair도 같은 보수적 기본값을 적용한다.
+- canonical skill과 benchmark activation의 계약을 동기화했고 focused 18/18, 전체 207 pass/1 conditional skip, TypeScript, CLI build, JSON/diff가 green이다.
 
 - 1.9.15는 `/tmp/u1915`의 exact Opus/xhigh 18 fresh cells를 retry·resume·개입 없이 18/18 valid complete했다. candidate specialists 18/18, Agent/infra/sandbox/cwd error 0, first write max 364,193ms, verifier/authority violation 0이다.
 - UI-Resolved는 portable 7/9→harness 8/9, paired objective 2 win/6 tie/1 loss, mean score 82.67→84.11이다. median wall은 474,092→380,104ms(0.802x), tokens는 104,232→116,653(1.119x)다.
@@ -293,9 +297,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.16 semantic-color safety를 canonical `omd:apply`와 harness activation에 동일하게 잠근다.
-2. focused/full tests·lint·build 뒤 fresh Pricing harness recovery를 preregister한다.
-3. recovery 85/85·Evidence pass·specialists 2/2·first write≤450s·verifier 0일 때만 새 full matrix를 연다.
+1. fresh Pricing harness recovery를 새 workspace에 preregister한다.
+2. exact Opus/xhigh preflight 뒤 한 번 실행하고 85/85·Evidence·specialists·delivery·authority를 판정한다.
+3. full pass일 때만 새 repeated matrix를 연다; failed 1.9.15는 immutable하게 유지한다.
 4. 그 뒤 locale/evidence → public benchmark UX → activation → independent challenge로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")

@@ -50,6 +50,10 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("allowed_delta");
     expect(skill).toContain("장식을 위해 제품 hook을 복제하지 않는다");
     expect(skill).toContain("일반 텍스트 contrast 4.5:1");
+    expect(skill).toContain("semantic_color_ledger");
+    expect(skill).toContain("measured proof가 없는 accent-on-surface pair는 의미 있는 normal text에 쓰지 않는다");
+    expect(skill).toContain("text-role token + 인접 non-text accent");
+    expect(skill).toContain("unresolved인 pair 자체는 남기지 않는다");
     expect(skill).toContain("320px, 200% zoom/reflow");
     expect(skill).toContain("큰 음수 좌표");
     expect(skill).toContain("change_authority: original-user-task-only");

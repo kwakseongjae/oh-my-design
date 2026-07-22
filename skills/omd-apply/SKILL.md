@@ -151,15 +151,17 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 **Acceptance packet은 실행 파일이 아니라 체크리스트와 관찰 결과다.** 이 표현은 `verify.*`, `verifier.*`, `check.*`, `probe.*`, 임시 shell 파일, CDP/browser automation, 새 test runner를 작성할 권한을 주지 않는다. 새 프로그램이 실제 Chrome을 실행하더라도 replacement verifier다. 저장소에 이미 있는 테스트·평가기 또는 파일을 만들지 않는 직접 browser command만 실행하고, 그런 수단이 한 번 막히면 browser proof를 `unresolved`로 남기고 전달을 시작한다.
 
 1. **첫 편집 전 protected ledger를 만든다.** 기존 DOM·코드·요청에서 동작을 가진 control, form, disclosure, row/list, 상태 출력의 identity와 개수를 기록한다. 각 항목은 `current_count`, `allowed_delta`, `states`, `facts`를 가진다. 사용자가 원 요청에서 추가·삭제를 명시하지 않았다면 언제나 `allowed_delta: 0`이다. agent, specialist, DESIGN.md, 미적 아이디어, “production-ready” 같은 품질 표현은 변경 권한이 아니다. 부모가 handoff를 만들 때도 이 값을 완화할 수 없다.
-2. **탐색 종료 조건을 둔다.** DESIGN.md, consumer route, protected ledger, 최소 acceptance를 확인했다면 optional research나 미적 아이디어 수집을 더 하지 않고 가장 작은 end-to-end 편집을 시작한다. specialist 자문이 꼭 필요한 위험을 해결하지 않는 한 첫 편집을 막지 않는다. specialist를 호출해도 전체 페이지 감사를 요청하지 않고, 이미 확인한 위험 질문 1-2개만 `bounded-repair-advisory`로 보낸다.
-3. **delivery clock을 먼저 잠근다.** 런타임이나 작업 packet에 timeout이 있으면 첫 제품 편집을 총 예산의 50% 전, 선택 검증 종료를 80% 전, 최종 전달 시작을 90% 전으로 둔다. 필수 specialist가 있으면 결과가 도착한 직후 별도의 2차 분석 pass 없이 편집한다. timeout을 알 수 없어도 ledger와 필수 자문이 준비된 뒤 optional 탐색을 한 번 더 돌리지 않는다. deadline을 놓치면 기능을 더 추가하지 않고 가장 작은 완성 diff와 정직한 `unresolved` 전달을 우선한다.
-4. **장식을 위해 제품 hook을 복제하지 않는다.** 가격 비교, 요약 카드, 모바일 사본처럼 같은 값을 다시 보여줘야 해도 기존 behavior hook·form field·live region·ID를 복제하지 않는다. 새 hook이나 상태를 추가하려면 요청 또는 제품 계약의 근거가 있어야 한다.
-5. **최종 acceptance packet을 한 번 실행한다.** 같은 route에서 다음을 묶어 확인하고, 고칠 수 없는 항목은 `unresolved`로 전달한다.
+2. **첫 편집 전 `semantic_color_ledger`를 잠근다.** 현재 화면과 계획한 변경에서 의미를 전달하는 모든 foreground/background pair를 `token`, `surface`, `content_type(normal-text|large-text|non-text)`, `contrast_proof(measured|unresolved)`로 기록한다. measured proof가 없는 accent-on-surface pair는 의미 있는 normal text에 쓰지 않는다. 그 상태의 글자는 DESIGN.md의 `ink`/text-role token으로 두고, accent는 인접한 non-text dot·bar·ring·icon에만 써서 브랜드 표현을 보존한다. 색만으로 상태를 구분하지 않는다. DESIGN.md에 어두운 대체 token이 없으면 새 색을 만들지 않는다. `unresolved`는 위험한 pair를 출고해도 된다는 뜻이 아니라, 그 pair를 제거하고 보수적인 text+non-text 조합으로 바꾸라는 fail-closed 신호다.
+3. **탐색 종료 조건을 둔다.** DESIGN.md, consumer route, protected ledger, semantic color ledger, 최소 acceptance를 확인했다면 optional research나 미적 아이디어 수집을 더 하지 않고 가장 작은 end-to-end 편집을 시작한다. specialist 자문이 꼭 필요한 위험을 해결하지 않는 한 첫 편집을 막지 않는다. specialist를 호출해도 전체 페이지 감사를 요청하지 않고, 이미 확인한 위험 질문 1-2개만 `bounded-repair-advisory`로 보낸다. state/status/accent token이 있으면 engineer 질문 중 하나는 semantic color ledger의 모든 planned pair를 normal text와 non-text 역할로 분리하고 unmeasured pair를 지적해야 한다. 자문 뒤 새 pair를 추가하면 별도 2차 audit 대신 위 fail-closed text+non-text 기본값을 적용한다.
+4. **delivery clock을 먼저 잠근다.** 런타임이나 작업 packet에 timeout이 있으면 첫 제품 편집을 총 예산의 50% 전, 선택 검증 종료를 80% 전, 최종 전달 시작을 90% 전으로 둔다. 필수 specialist가 있으면 결과가 도착한 직후 별도의 2차 분석 pass 없이 편집한다. timeout을 알 수 없어도 ledger와 필수 자문이 준비된 뒤 optional 탐색을 한 번 더 돌리지 않는다. deadline을 놓치면 기능을 더 추가하지 않고 가장 작은 완성 diff와 정직한 `unresolved` 전달을 우선한다.
+5. **장식을 위해 제품 hook을 복제하지 않는다.** 가격 비교, 요약 카드, 모바일 사본처럼 같은 값을 다시 보여줘야 해도 기존 behavior hook·form field·live region·ID를 복제하지 않는다. 새 hook이나 상태를 추가하려면 요청 또는 제품 계약의 근거가 있어야 한다.
+6. **최종 acceptance packet을 한 번 실행한다.** 같은 route에서 다음을 묶어 확인하고, 고칠 수 없는 항목은 `unresolved`로 전달한다.
    - protected ledger의 identity·개수·before/action/after가 변경 전 계약과 일치
    - 일반 텍스트 contrast 4.5:1, 큰 텍스트와 비텍스트 경계·focus 3:1. accent token이라는 이유만으로 작은 텍스트 색으로 쓰지 않음
+   - semantic color ledger의 모든 normal-text pair에 measured proof가 있거나, text-role token + 인접 non-text accent로 fail-closed 처리됨
    - desktop, 390px, 320px, 200% zoom/reflow 또는 제품이 지원하는 가장 가까운 동등 조건에서 horizontal overflow·clipped control·control overlap 없음
    - focusable skip/navigation control을 큰 음수 좌표에 방치하지 않으며, keyboard focus 시 viewport 안에서 보이고 다른 control과 겹치지 않음
-6. 브라우저나 contrast 계산기가 없으면 통과를 추정하지 않는다. 가능한 정적 검사와 같은-route 상태 검증을 수행하고 나머지는 `unresolved`로 남긴다.
+7. 브라우저나 contrast 계산기가 없으면 통과를 추정하지 않는다. 가능한 정적 검사와 같은-route 상태 검증을 수행하고 나머지는 `unresolved`로 남긴다. 단, 의미 있는 normal text의 contrast가 unresolved인 pair 자체는 남기지 않는다. text-role token + non-text accent 조합으로 먼저 교체한 뒤 계측하지 못한 나머지 route 검증만 unresolved로 보고한다.
 
 이 packet은 benchmark selector를 맞추는 절차가 아니다. 실제 제품에서 사용자 동작과 접근성·reflow 계약을 보존하기 위한 일반 acceptance layer다.
 
