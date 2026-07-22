@@ -39,6 +39,10 @@ describe('omd workflows', () => {
     expect(manifest.work_packet.required).toContain('consumer_route');
     expect(manifest.work_packet.required).toContain('unknowns');
     expect(manifest.work_packet.required).toContain('protected_contract');
+    expect(manifest.work_packet.required).toContain('protected_contract.change_authority');
+    expect(manifest.work_packet.change_authority).toBe('original-user-task-only');
+    expect(manifest.work_packet.repair_advisory.mode).toBe('bounded-repair-advisory');
+    expect(manifest.work_packet.repair_advisory.findings_max).toBe(5);
   });
 
   it('wraps the actual user task instead of returning an unrelated canned example', () => {

@@ -38,6 +38,7 @@ protected_contract:
     - <before → action → after>
   facts:
     - <copy, value, hook, or field name that must remain true>
+  change_authority: original-user-task-only
 evidence:
   - <DESIGN.md, screenshot, code, browser observation>
 unknowns:
@@ -52,6 +53,8 @@ verification:
 
 전문 역할은 `finding`, `evidence`, `smallest_useful_change`, `acceptance_check`, `unresolved`만 반환한다. 자문 결과가 곧 구현 완료를 의미하지 않는다.
 
+기존 화면 repair에서 protected contract를 완화할 권한은 원래 사용자 요청에만 있다. main agent나 specialist가 새로운 FAQ, control, row, state, fact를 “개선”으로 추가할 수 없다. specialist 자문은 기본적으로 위험 영역 1–2개, finding 최대 5개, 약 600단어의 `bounded-repair-advisory`로 제한하고, 계약 밖 제안은 `rejected_contract_drift`로 기록한다. 전면 감사와 아이디어 발산은 사용자가 별도로 요청한 audit 작업에서만 수행한다.
+
 ## 4. Same-surface reverify
 
 검증은 최초 사용 경로와 같은 consumer route에서 수행한다. 공유 renderer나 진단용 route만 확인해서는 통과하지 않는다.
@@ -64,11 +67,13 @@ verification:
 
 기존 UI 개선은 첫 편집 전에 behavior-bearing element의 identity·개수·state를 잠근다. 요청에 없는 hook 복제나 상태 확장은 회귀다. 최종 검증은 같은 route에서 contrast, 320px reflow, 200% zoom, focusable control의 clip/overlap까지 포함한다.
 
+specialist가 참여해도 제품 편집은 한 implementation owner만 수행한다. 최종 acceptance는 specialist의 자기 보고가 아니라 동일 route의 결정론 검증 결과로 닫는다. 실행한 검증과 agent/model attribution은 별도로 보존한다.
+
 ## 5. Release progression
 
 - 1.9.1: capability graph, work packet, route helper, exact-route verification 계약
 - 1.9.2: task contract calibration
 - 1.9.3: fast-first-result calibration — first write/time은 개선됐지만 resolved lift 0pp
-- 1.9.4: protected contract + contrast/reflow inspection loop
+- 1.9.4: protected contract + bounded repair advisory + contrast/reflow inspection loop
 - 1.10.x: 실패 유형별 recovery와 자동 증거 패키지
 - 2.0.0: 대표 task family에서 frontier 후보 대비 우위 또는 통계적 동률, 동시에 실제 작업의 end-to-end delivery 계약 통과

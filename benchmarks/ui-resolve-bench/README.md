@@ -28,6 +28,17 @@ Pro Max each reached 81 and failed different accessibility checks. Those remain
 single in-app observations, not comparative proof. See
 [`reports/corrected-rerun-2026-07-21/FINDINGS.md`](./reports/corrected-rerun-2026-07-21/FINDINGS.md).
 
+The first exact Opus 4.8 replacement matrix is also internal: across three
+tasks, raw `DESIGN.md` and OmD each resolved one task, while OmD was faster and
+slightly higher on mean objective score. It supports patch selection, not a
+public lift claim. The separate 1.9.4 repair-harness smoke then passed 85/85 with
+an Opus parent and two Opus-pinned specialists after an earlier timeout and a
+mixed-model attribution defect were preserved and corrected. One task × one
+trial is still insufficient for a Harness Track rank. See
+[`reports/opus-paired-matrix-1.9.3-replacement-2/FINDINGS.md`](./reports/opus-paired-matrix-1.9.3-replacement-2/FINDINGS.md)
+and
+[`reports/opus-agent-repair-harness-1.9.4-replacement-2/FINDINGS.md`](./reports/opus-agent-repair-harness-1.9.4-replacement-2/FINDINGS.md).
+
 Each task owns its state adapter and design oracle. Known-good implementations
 must pass every gate, while injected pricing, toggle, and filtering mutants must
 fail their intended state gate before model runs begin.
@@ -115,6 +126,23 @@ npm run bench:ui:claude:run -- \
   --effort xhigh
 ```
 
+The opt-in repair harness uses a different variant and benchmark family. It
+installs the portable repair skill plus model-pinned, read-only UX writer and UX
+engineer agents. Do not compare this row directly with a Skill Lift row:
+
+```bash
+node benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs \
+  --task pricing-conversion-v0.1 \
+  --variant omd-repair-harness \
+  --runtime claude-code \
+  --out /tmp/ui-resolve-runs/claude-omd-repair
+
+npm run bench:ui:claude:run -- \
+  --workspace /tmp/ui-resolve-runs/claude-omd-repair \
+  --model claude-opus-4-8 \
+  --effort xhigh
+```
+
 See [`CLAUDE-PRINT-RUNNER.md`](./CLAUDE-PRINT-RUNNER.md) for isolation, quota,
 and login-probe details.
 
@@ -154,6 +182,7 @@ explicitly labelled pilot reports are committed.
 - UI UX Pro Max
 - Vercel Web Design Guidelines (review track only)
 - oh-my-design portable skill
+- oh-my-design repair harness (opt-in Harness Track only)
 - oh-my-design full harness (Full System track only)
 
 Pinned sources and track eligibility live in

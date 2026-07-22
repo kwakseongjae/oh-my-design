@@ -85,6 +85,13 @@ Hooks, browser iteration, specialist agents, checkpoints, persistent memory,
 and generated context are allowed only when they are part of the documented
 workflow. Record planned checkpoints separately from unplanned rescue.
 
+For repair tasks, the current OmD harness adapter locks control cardinality,
+state transitions, hooks, and product facts before dispatch. The original user
+task is the only change authority. Specialists are read-only, receive the same
+ledger, and return bounded findings; one main agent owns product edits and the
+frozen evaluator owns acceptance. Agent IDs, requested models, observed runtime
+models, and errors are attribution gates rather than descriptive metadata.
+
 Do not rank harnesses on one blended score. Publish a Pareto view of:
 
 - UI-Resolved rate and `Reliability@k`;
@@ -94,6 +101,10 @@ Do not rank harnesses on one blended score. Publish a Pareto view of:
 - planned checkpoint count;
 - unplanned operator interventions;
 - task abandonment and timeout rate.
+
+The adapter is opt-in while it has only a single valid smoke. It must not replace
+the portable Skill Lift condition or become a default product path until repeated
+Harness Track runs show a non-dominated quality/time/intervention tradeoff.
 
 ## 6. Transfer Matrix — model × skill interaction
 

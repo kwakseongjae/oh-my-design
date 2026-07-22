@@ -158,6 +158,31 @@ context fields. The model path is proven, but scored Transfer Matrix work
 resumes only after a post-update read-only sandbox probe reports zero tool and
 sandbox errors.
 
+## Agent-enabled repair harness
+
+Claude Code print mode can also expose the native Agent tool to a prepared
+Harness Track cell. The `omd-repair-harness` variant installs canonical
+`omd:apply` plus read-only `omd-ux-writer` and `omd-ux-engineer` envelopes. The
+activation locks the current behavior/fact ledger, limits each specialist to
+one or two risk questions, five findings, and roughly 600 words, and leaves all
+product edits with the parent.
+
+Specialist attribution is fail-closed. The manifest preregisters the required
+selector, the activation explicitly passes `model: opus`, the event normalizer
+records every Agent call's ID and requested model, and the exporter invalidates
+missing, failed, or mismatched specialists. Claude Code's small internal Haiku
+helper allocation remains visible in runtime bookkeeping but is not a requested
+product specialist.
+
+The first all-Opus smoke timed out after unbounded specialists encouraged a
+protected FAQ expansion. A bounded replacement passed the product gates but
+requested Sonnet and was invalid for all-Opus attribution. The fresh model-pinned
+replacement completed at 85/85 with two Opus Agent calls and no Sonnet usage.
+These retained failures are part of the calibration evidence. The successful
+one-task smoke proves the local execution path, not Harness Track efficiency or
+superiority. See
+`reports/opus-agent-repair-harness-1.9.4-replacement-2/`.
+
 ## Benchmark classification
 
 Do not merge Opus results into the Terra Skill Lift estimate. Record Claude Code

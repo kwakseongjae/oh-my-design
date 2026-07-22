@@ -25,6 +25,14 @@ export interface WorkflowManifest {
     required: string[];
     intents: string[];
     implementation_owner: string;
+    change_authority: string;
+    repair_advisory: {
+      mode: string;
+      risk_areas_max: number;
+      findings_max: number;
+      target_words: number;
+      contract_drift_disposition: string;
+    };
     specialist_response: string[];
   };
   workflows: WorkflowDefinition[];

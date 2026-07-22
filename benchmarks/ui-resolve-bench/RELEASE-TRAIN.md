@@ -41,6 +41,21 @@ The hypothesis may change after each patch, but the version is not skipped just
 to hide a failed experiment. A failed patch remains documented and its product
 change is reverted or redesigned before the next candidate.
 
+## Current 1.9.4 calibration
+
+The portable repair skill now locks an immutable protected-contract ledger and
+requires contrast, 320px, 200% zoom, and focused-control geometry checks. A
+separate opt-in Harness Track adapter adds two bounded, read-only repair
+specialists while keeping one implementation owner.
+
+The first unbounded all-Opus smoke timed out and expanded a two-item FAQ to six.
+The bounded replacement reached 85/85 but was invalid for its all-Opus claim
+because the parent requested Sonnet specialists. The fresh model-pinned
+replacement completed in 550,644ms at 85/85 with both specialist calls requesting
+Opus, no Agent/infrastructure/sandbox/cwd error, and no Sonnet usage. This closes
+the execution and attribution path only. One task × one trial remains Internal;
+Harness efficiency and Pareto claims wait for the 1.9.7 repeated matrix.
+
 ## 2.0.0 frontier gates
 
 All must pass:

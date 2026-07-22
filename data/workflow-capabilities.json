@@ -18,6 +18,7 @@
       "acceptance",
       "protected_behaviors",
       "protected_contract",
+      "protected_contract.change_authority",
       "evidence",
       "unknowns",
       "implementation_owner",
@@ -25,6 +26,14 @@
     ],
     "intents": ["audit", "implement", "create", "publish"],
     "implementation_owner": "main-agent",
+    "change_authority": "original-user-task-only",
+    "repair_advisory": {
+      "mode": "bounded-repair-advisory",
+      "risk_areas_max": 2,
+      "findings_max": 5,
+      "target_words": 600,
+      "contract_drift_disposition": "rejected_contract_drift"
+    },
     "specialist_response": [
       "finding",
       "evidence",
