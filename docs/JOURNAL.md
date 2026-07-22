@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.16 semantic-color recovery complete
+- exact Opus/xhigh Pricing recovery는 85/85·axe serious 0·Evidence pass다.
+- orange는 non-text dot+ink label로 제한했고 line control boundary도 declared muted로 교체했다.
+- first write 361s, specialists 2/2, authority/verifier/infra error 0이다.
+- 1.9.15는 failed로 유지하며 1.9.17 fresh repeated matrix만 unlock한다.
+
 ## 2026-07-23 (Codex) · 1.9.16 semantic-color recovery preregistered
 - `/tmp/u1916` fresh Pricing harness 1셀, exact Opus/xhigh를 고정했다.
 - 85/85·axe serious 0·Evidence·specialists 2/2·first write≤450s·verifier 0이 gate다.
