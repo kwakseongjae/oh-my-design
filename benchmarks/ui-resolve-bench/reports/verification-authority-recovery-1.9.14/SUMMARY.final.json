@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.3",
+  "experiment_id": "verification-authority-recovery-1.9.14",
+  "run_date": "2026-07-23",
+  "status": "calibration_complete",
+  "decision": "fresh-repeated-matrix-unlocked",
+  "claim_status": "Internal",
+  "source_commit": "dc27f8f",
+  "provider_generation_run": true,
+  "scheduled_cells": 1,
+  "attempted_cells": 1,
+  "valid_cells": 1,
+  "acceptance": {
+    "exact_model": "claude-opus-4-8",
+    "effort": "xhigh",
+    "provider_and_child_exit_zero": true,
+    "final_response_present": true,
+    "frozen_evaluator_score": 85,
+    "frozen_evaluator_max": 85,
+    "ui_resolved": true,
+    "critical_gates_passed": 6,
+    "evidence_unknown_pass": true,
+    "first_product_write_ms": 408324,
+    "last_product_write_ms": 408324,
+    "wall_ms": 476800,
+    "uncached_tokens": 134824,
+    "required_specialist_calls": 2,
+    "agent_errors": 0,
+    "tool_errors": 0,
+    "infrastructure_errors": 0,
+    "sandbox_errors": 0,
+    "sandbox_cwd_errors": 0,
+    "replacement_verifier_authored": false,
+    "verification_program_authored": false,
+    "allowed_product_files_only": true
+  },
+  "browser_boundary": {
+    "direct_attempts": 1,
+    "authored_programs": 0,
+    "provider_reported_browser_proof": "unresolved",
+    "external_frozen_evaluator_passed": true
+  },
+  "verification": {
+    "focused_tests_passed": 26,
+    "full_tests_passed": 207,
+    "conditional_tests_skipped": 1,
+    "typescript": "pass",
+    "build": "pass",
+    "diff_check": "pass"
+  },
+  "reporting_limits": [
+    "single recovery cell",
+    "no retroactive 1.9.13 pass",
+    "no quality, efficiency, reliability, Pareto, model, harness, or frontier claim"
+  ]
+}

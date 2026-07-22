@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.14 authority recovery complete
+- exact Opus/xhigh recovery는 85/85, first write 408s, specialists 2/2로 통과했다.
+- direct Chrome 1회 뒤 새 verifier/CDP runner 없이 browser proof를 unresolved로 전달했다.
+- Agent/tool/infra/sandbox/cwd error 0, product diff `index.html` 하나다.
+- 1.9.13은 failed로 유지하며 fresh 1.9.15 full matrix만 unlock한다.
+
 ## 2026-07-23 (Codex) · 1.9.14 authority recovery preregistered
 - packet=checklist/result, no verify/check/probe script·CDP automation 계약을 source에 고정했다.
 - focused 26/26, full 207/1 skip, lint/build가 green이다.
