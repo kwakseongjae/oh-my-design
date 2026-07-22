@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.11 classifier recovery preregistered
+- failed 1.9.9 Pricing portable 계약을 fresh single cell로 재구성했다.
+- optional renderer error가 실제 재현되고 recoverable-only여야 pass다.
+- 85/85·exact Opus·replacement verifier 0·no retry를 함께 요구한다.
+- pass 시에만 1.9.12 full repeated matrix를 연다.
+
 ## 2026-07-23 (Codex) · 1.9.10 benchmark robustness complete
 - context-aware optional renderer 분류와 narrow replacement-verifier detector를 고정했다.
 - retained 3 traces, focused 23/23, full 206/1 skip, lint/build가 green이다.

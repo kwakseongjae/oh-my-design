@@ -18,11 +18,12 @@
     { "version": "1.9.8", "experiment": "harness-delivery-budget-recovery", "status": "calibration_complete" },
     { "version": "1.9.9", "experiment": "harness-efficiency-replacement", "status": "calibration_failed" },
     { "version": "1.9.10", "experiment": "benchmark-robustness", "status": "calibration_complete" },
-    { "version": "1.9.11", "experiment": "failure-recovery", "status": "planned" },
-    { "version": "1.9.12", "experiment": "locale-evidence-expansion", "status": "planned" },
-    { "version": "1.9.13", "experiment": "public-benchmark-ux", "status": "planned" },
-    { "version": "1.9.14", "experiment": "activation-reuse", "status": "planned" },
-    { "version": "1.9.15", "experiment": "independent-challenge", "status": "planned" },
+    { "version": "1.9.11", "experiment": "classifier-integration-recovery", "status": "preregistered" },
+    { "version": "1.9.12", "experiment": "harness-efficiency-replacement-2", "status": "gated-on-1.9.11" },
+    { "version": "1.9.13", "experiment": "locale-evidence-expansion", "status": "planned" },
+    { "version": "1.9.14", "experiment": "public-benchmark-ux", "status": "planned" },
+    { "version": "1.9.15", "experiment": "activation-reuse", "status": "planned" },
+    { "version": "1.9.16", "experiment": "independent-challenge", "status": "planned" },
     { "version": "2.0.0", "experiment": "frontier-release", "status": "gated" }
   ],
   "rules": {

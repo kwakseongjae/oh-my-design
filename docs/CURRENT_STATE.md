@@ -3,11 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `67df331` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.10 benchmark robustness calibration complete; fresh 1.9.11 설계 가능
+- 기준 커밋: `1265342` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.11 fresh classifier integration recovery preregistered
 
 ## 지금 (현재 위치)
 
+- 1.9.11은 1.9.9에서 실패한 Pricing portable 계약의 fresh single cell이다. optional renderer environment error≥1, recoverable only, infra/sandbox/cwd 0, frozen 85/85, replacement verifier 0을 모두 요구한다.
+- renderer block이 재현되지 않으면 product run이 valid여도 classifier recovery는 inconclusive이며 1.9.12 full matrix를 열지 않는다. output은 `/tmp/u1911`, exact Opus/xhigh, no retry다.
 - 1.9.10 report는 retained 3 traces와 unit/full gates를 근거로 classifier calibration complete다. provider generation은 없었고 1.9.9 run-result는 소급 수정하지 않았다.
 - 1.9.10 patch는 tool-result 문구만 보지 않고 연결된 Bash tool-use command를 함께 읽는다. `qlmanage`/headless Chrome의 known environment block은 optional verifier recoverable로 분리하고 cwd/built-in permission denial은 계속 infrastructure fail-closed다.
 - replacement detector는 real-browser `verify.html`/`probe.html`을 허용하고 JS/TS/Python verifier script, explicit DOM shim/mock-browser, DOM implementation을 차단한다. retained trace replay는 1.9.7 replacement true, 1.9.8 false, 1.9.9 false이며 1.9.9 tool errors는 2 recoverable / 0 infra / optional renderer 1로 분리된다.
@@ -272,9 +274,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.10 report를 커밋한다.
-2. 1.9.11 failure-recovery는 새 preregistration과 fresh workspaces로 full repeated matrix replacement를 고정한다.
-3. exact Opus preflight 뒤 interleaved schedule을 실행하고 fail-closed stop/aggregate를 판정한다.
+1. 1.9.11 preregistration을 커밋하고 `/tmp/u1911` clean workspace를 준비한다.
+2. exact Opus preflight 뒤 single provider cell을 한 번 실행한다.
+3. full pass면 1.9.12 fresh repeated matrix, path 미관찰이면 targeted activation 없이 다음 robustness 방법을 설계한다.
 4. 그 뒤 activation funnel 관찰 → v1.9 full-trace/rescue 사례 → Home mobile/Builder error 상태로 복귀한다.
 
 ## 막힘 / 대기 (없으면 "없음")
