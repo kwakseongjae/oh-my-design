@@ -22,7 +22,7 @@
     { "version": "1.9.12", "experiment": "renderer-observability", "status": "calibration_complete" },
     { "version": "1.9.13", "experiment": "harness-efficiency-replacement-2", "status": "calibration_failed" },
     { "version": "1.9.14", "experiment": "verification-authority-recovery", "status": "calibration_complete" },
-    { "version": "1.9.15", "experiment": "harness-efficiency-replacement-3", "status": "unlocked" },
+    { "version": "1.9.15", "experiment": "harness-efficiency-replacement-3", "status": "preregistered" },
     { "version": "1.9.16", "experiment": "locale-evidence-expansion", "status": "planned" },
     { "version": "1.9.17", "experiment": "public-benchmark-ux", "status": "planned" },
     { "version": "1.9.18", "experiment": "activation-reuse", "status": "planned" },

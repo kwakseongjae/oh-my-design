@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.15 full replacement preregistered
+- `/tmp/u1915`의 3 tasks×3 trials×portable/harness 18 fresh cells를 고정했다.
+- exact Opus/xhigh, first write≤450s, verifier program 0, specialists 2/2를 요구한다.
+- source basis는 `dc27f8f`; prior artifacts는 denominator 밖이고 retry가 없다.
+- 다음은 prepare → preflight → preregistered execution이다.
+
 ## 2026-07-23 (Codex) · 1.9.14 authority recovery complete
 - exact Opus/xhigh recovery는 85/85, first write 408s, specialists 2/2로 통과했다.
 - direct Chrome 1회 뒤 새 verifier/CDP runner 없이 browser proof를 unresolved로 전달했다.
