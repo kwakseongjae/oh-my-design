@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-22 (Codex) · 1.9.4 all-Opus repair harness complete
+- protected-contract repair loop와 model-pinned Agent attribution을 구현했다.
+- timeout/cardinality failure와 mixed-model attribution failure를 보존한 뒤 원인을 닫았다.
+- 최종 fresh cell은 Opus parent+2 specialists, 85/85, 550.6초, infra error 0이다.
+- 전체 170 pass/1 skip, lint/build green. 다음은 1.9.5 reference query layer다.
+
 ## 2026-07-22 (Codex) · Opus 1.9.3 replacement complete
 - Claude 2.1.217 cwd 정책 충돌을 고쳐 zero-error Opus probe를 통과했다.
 - raw 75/85, OmD 85/85를 얻었지만 frozen blanket tool-error 기준상 0 strict-valid로 보존했다.

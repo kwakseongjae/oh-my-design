@@ -3,17 +3,19 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `705c79b` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-22 · Opus 4.8 1.9.3 replacement calibration complete
+- 기준 커밋: `002499f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-22 · 1.9.4 all-Opus repair harness smoke complete
 
 ## 지금 (현재 위치)
 
-- Opus 4.8 1.9.3 replacement는 exact `claude-opus-4-8`/xhigh/Claude Code 2.1.217에서 raw→OmD 각 1회 완료했다. 둘 다 child/process 0, timeout 없음, sandbox/cwd error 0, final message 있음이다. raw 75/85·UI-Resolved fail, OmD 85/85·UI-Resolved pass였으나 양쪽 recoverable tool error 2 때문에 frozen prereg의 blanket zero-error 기준상 **0 strict-valid / 공표 불가**다. 정본은 `reports/opus-transfer-1.9.3/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
-- 표준 run schema는 두 셀을 valid로 보지만 보고서는 사전등록 기준을 우선해 비교를 막았다. 산출물 진단상 raw는 mobile/320/200% skip-link overlap과 primary action computed color를 놓쳤고, OmD는 전 결정론 게이트를 통과했다. 단일 task 관측이므로 10-point delta를 lift·win·우월성으로 사용하지 않는다.
-- post-login 첫 probe의 cwd 실패는 Claude Code가 아니라 runner의 `Read/Edit(../**)` parent glob이 workspace까지 deny한 정책 충돌이었다. 중복 deny 제거 후 exact Opus probe는 tool/sandbox/cwd error 0, product diff 0으로 통과했다.
-- 다음 Claude runner는 `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`, background task off, IDE auto-connect off를 적용하고 first/last built-in product write와 final-result timing을 기록한다. 이번 기존 event backfill은 raw first/last 237,840/491,968ms, OmD 364,767/523,692ms다.
-- `omd:apply` 1.9.3 bounded verification + 15% delivery reserve는 OmD가 이전 timeout 대신 552,355ms에 `implemented/verified/unresolved` final을 반환하게 했다. isolated skill-only cell에는 specialist roles를 의도적으로 설치하지 않았고 skill이 부재를 숨기지 않고 recovery path로 완료했다. agent dispatch 효과는 별도 Harness Track에서 측정한다.
-- 최신 검증은 전체 161 pass / 1 conditional skip, TypeScript, build, JSON report, focused runner/export 13/13, `git diff --check` green이다.
+- 1.9.4 all-Opus repair harness replacement 2는 exact `claude-opus-4-8`/xhigh/Claude Code 2.1.217에서 정상 완료했다. parent와 `omd-ux-writer`·`omd-ux-engineer` 두 Agent call 모두 Opus selector를 사용했고 Agent/infrastructure/sandbox/cwd error 0, Sonnet usage 0이다. internal Haiku helper만 별도 기록했다.
+- 최종 artifact는 frozen browser evaluator 85/85·UI-Resolved를 통과했다. protected FAQ는 정확히 2개이며 billing/FAQ/form state, desktop·390px·320px·200% zoom geometry, keyboard/focus, axe, DESIGN.md grounding, evidence honesty가 모두 green이다. 정본은 `reports/opus-agent-repair-harness-1.9.4-replacement-2/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
+- 실행은 550,644ms, first/last product write 330,364/495,469ms, input/output 108,251/49,738, cached input 921,722, provider price equivalent $2.6374다. self-authored scratch verifier 오류 2개는 수정 후 종료된 recoverable error이며 frozen evaluator 실패가 아니다.
+- 첫 unbounded smoke는 timeout+FAQ 2→6 계약 파괴, bounded replacement는 85/85지만 specialist Sonnet 요청으로 attribution invalid였다. 두 실패를 보존한 뒤 immutable `change_authority: original-user-task-only`, finding≤5/~600 words bounded advisory, requested Agent model fail-close로 원인을 닫았다.
+- `omd:apply`와 workflow manifest는 protected contract, same-route deterministic acceptance, 320px/200% zoom/contrast/focus geometry를 1.9.4 계약으로 공유한다. repair harness는 복합·계약 민감 repair의 opt-in 경로이며 portable Skill Lift 기본 경로를 대체하지 않는다.
+- 1.9.3 exact Opus replacement matrix는 3 tasks에서 raw/OmD 각각 1 resolved, lift 0pp, OmD mean objective +0.67점, wall -33.3%, uncached tokens -25.2%였다. 공표 불가 internal patch-selection calibration이며 정본은 `reports/opus-paired-matrix-1.9.3-replacement-2/`다.
+- 최신 검증은 전체 170 pass / 1 conditional skip, focused harness/workflow 35/35, TypeScript, build, JSON, `git diff --check`, count-drift hook이 green이다.
+- 다음 product patch는 release train 순서대로 1.9.5 reference query layer를 설계·사전등록한다. Agent-enabled harness의 3-task×반복 trial과 Pareto 평가는 1.9.7에서 진행하며, 그 전에는 단일 smoke를 효율·우월성 주장에 사용하지 않는다.
 - 1.9.2는 raw 81/85 artifact와 OmD 85/85 artifact에도 2.1.212 sandbox 오류/OmD timeout으로 0 valid였던 폐기 calibration이다. 정본은 `reports/opus-transfer-1.9.2/{FINDINGS.md,SUMMARY.final.json}`이며 1.9.3이 이를 소급 유효화하지 않는다.
 - clean `6d7edc6` paired-smoke의 Terra/xhigh 18/18을 `/tmp/ui-resolve-paired-smoke-1.9.1-6d7edc6`에서 실행·평가·export했다. Raw 3/9, OmD 4/9 UI-Resolved, 9 matched pairs 1 win / 8 ties / 0 losses, paired lift +11.1pp(CI 0~44.4), Reliability@3는 양쪽 모두 0/3이다. OmD mean token volume은 +82.8%, wall time은 +7.4%다.
 - 1.9.1은 완결됐지만 superiority 공표 불가 calibration이다. lift CI가 0을 포함하고 8/9가 tie이며 semantic contract 결함 2개가 있다. 영구 정본은 `reports/paired-smoke-1.9.1/{FINDINGS.md,SUMMARY.final.json}`이고 `/tmp`에는 `records.final.json`·`aggregate.final.{json,md}`가 있다.
