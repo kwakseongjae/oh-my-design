@@ -16,7 +16,7 @@
     { "version": "1.9.6", "experiment": "model-transfer", "status": "calibration_complete" },
     { "version": "1.9.7", "experiment": "harness-efficiency", "status": "calibration_failed" },
     { "version": "1.9.8", "experiment": "harness-delivery-budget-recovery", "status": "calibration_complete" },
-    { "version": "1.9.9", "experiment": "harness-efficiency-replacement", "status": "preregistered" },
+    { "version": "1.9.9", "experiment": "harness-efficiency-replacement", "status": "calibration_failed" },
     { "version": "1.9.10", "experiment": "benchmark-robustness", "status": "planned" },
     { "version": "1.9.11", "experiment": "failure-recovery", "status": "planned" },
     { "version": "1.9.12", "experiment": "locale-evidence-expansion", "status": "planned" },

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.9 stopped on classifier defect
+- first portable cell은 provider success/final present였지만 qlmanage sandbox block이 infra로 오분류됐다.
+- matrix는 1 attempted / 0 valid / 17 not-started로 fail-closed 보존한다.
+- post-stop frozen 85/85는 forensic only; real-browser verify.html도 detector가 오탐했다.
+- 다음은 1.9.10 context-aware renderer/replacement-verifier classification patch다.
+
 ## 2026-07-23 (Codex) · 1.9.9 full replacement preregistered
 - portable vs delivery-budget harness 3 tasks×3 trials=18 fresh cells를 잠갔다.
 - task families를 trial round별로 교차하고 pair 선행 순서를 5:4로 균형화했다.
