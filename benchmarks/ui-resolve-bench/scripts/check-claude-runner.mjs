@@ -73,6 +73,7 @@ export function summarizeClaudeAgentUsage(events = []) {
         calls.push({
           tool_use_id: item.id ?? null,
           agent_id: item?.input?.subagent_type ?? item?.input?.agent ?? item?.input?.name ?? null,
+          requested_model: item?.input?.model ?? null,
         });
       }
     }
@@ -88,6 +89,7 @@ export function summarizeClaudeAgentUsage(events = []) {
     agent_tool_call_count: calls.length,
     agent_tool_error_count: calls.filter((call) => errorsByToolUseId.has(call.tool_use_id)).length,
     requested_agent_ids: [...new Set(calls.map((call) => call.agent_id).filter(Boolean))].sort(),
+    agent_calls: calls.map(({ agent_id, requested_model }) => ({ agent_id, requested_model })),
   };
 }
 

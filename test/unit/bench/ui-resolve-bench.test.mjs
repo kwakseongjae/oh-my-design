@@ -181,6 +181,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         { id: "omd-ux-writer" },
         { id: "omd-ux-engineer" },
       ],
+      required_agent_model: "opus",
       activation: expect.stringContaining("Agent tool"),
     });
     expect(competitors.variants["omd-repair-harness"].activation).toContain("allowed_delta 0");
@@ -214,10 +215,11 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     const engineer = readFileSync(join(out, ".claude/agents/omd-ux-engineer.md"), "utf8");
 
     expect(existsSync(join(out, ".claude/skills/omd-apply/SKILL.md"))).toBe(true);
-    expect(writer).toContain("model: inherit");
-    expect(engineer).toContain("model: inherit");
+    expect(writer).toContain("model: opus");
+    expect(engineer).toContain("model: opus");
     expect(writer).toContain("advisory-only Harness Track run");
     expect(manifest.variant.kind).toBe("agent-harness");
+    expect(manifest.agents.required_model).toBe("opus");
     expect(manifest.agents.installed.map((agent) => agent.id)).toEqual([
       "omd-ux-writer",
       "omd-ux-engineer",

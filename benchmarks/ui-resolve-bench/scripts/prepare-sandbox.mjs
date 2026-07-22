@@ -244,16 +244,17 @@ if ((variant.agent_bundle ?? []).length) {
       throw new Error(`${variantId} agent name mismatch: expected ${descriptor.id}`);
     }
     const source = readFileSync(sourceFile, "utf8");
-    const inheritedModel = /^model:\s*.+$/m.test(source)
-      ? source.replace(/^model:\s*.+$/m, "model: inherit")
-      : source.replace(/^(tools:\s*.+)$/m, "$1\nmodel: inherit");
-    const rendered = `${inheritedModel.trim()}\n\n## Benchmark advisory boundary\n\nThis is an advisory-only Harness Track run. Do not use Write or Edit and do not modify product files. Return concise evidence, risks, and acceptance checks to the main agent; the main agent remains the only implementation owner.\n`;
+    const requiredAgentModel = String(variant.required_agent_model ?? "inherit");
+    const pinnedModel = /^model:\s*.+$/m.test(source)
+      ? source.replace(/^model:\s*.+$/m, `model: ${requiredAgentModel}`)
+      : source.replace(/^(tools:\s*.+)$/m, `$1\nmodel: ${requiredAgentModel}`);
+    const rendered = `${pinnedModel.trim()}\n\n## Benchmark advisory boundary\n\nThis is an advisory-only Harness Track run. Do not use Write or Edit and do not modify product files. Return concise evidence, risks, and acceptance checks to the main agent; the main agent remains the only implementation owner. The parent Agent call must request model: ${requiredAgentModel}; another selector invalidates attribution.\n`;
     const destination = join(agentRoot, `${descriptor.id}.md`);
     writeFileSync(destination, rendered, "utf8");
     installed.push({
       id: descriptor.id,
       source_path: descriptor.source_path,
-      model_adapter: "inherit-parent-exact-model",
+      model_adapter: `fixed-${requiredAgentModel}`,
       advisory_only: true,
     });
   }
@@ -261,6 +262,7 @@ if ((variant.agent_bundle ?? []).length) {
   agents = {
     runtime: "claude-code",
     install_root: ".claude/agents",
+    required_model: String(variant.required_agent_model ?? "inherit"),
     source_commit: skill.source_commit,
     source_attestation: skill.source_attestation,
     installed,

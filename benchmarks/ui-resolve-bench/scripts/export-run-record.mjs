@@ -26,6 +26,11 @@ export function classifyValidity(manifest, runStatus, score, run = null) {
     const requested = new Set(run?.output?.requested_agent_ids ?? []);
     if (!required.length || required.some((agentId) => !requested.has(agentId))) return "invalid-attribution";
     if (Number(run?.output?.agent_tool_error_count ?? 0) > 0) return "invalid-attribution";
+    const requiredModel = manifest?.agents?.required_model;
+    const agentCalls = run?.output?.agent_calls ?? [];
+    if (requiredModel && required.some((agentId) => !agentCalls.some((call) => (
+      call.agent_id === agentId && call.requested_model === requiredModel
+    )))) return "invalid-attribution";
   }
   if (runStatus !== "complete" || !score) return "invalid-infrastructure";
   return "valid";
@@ -104,6 +109,7 @@ export function buildRunRecord({
       agent_tool_call_count: Number(run?.output?.agent_tool_call_count ?? 0),
       agent_tool_error_count: Number(run?.output?.agent_tool_error_count ?? 0),
       requested_agent_ids: run?.output?.requested_agent_ids ?? [],
+      agent_calls: run?.output?.agent_calls ?? [],
       milestones: run?.output?.milestones ?? null,
     },
     attribution: {

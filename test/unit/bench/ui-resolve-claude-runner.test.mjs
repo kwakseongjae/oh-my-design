@@ -242,12 +242,12 @@ describe("Claude print runner preflight", () => {
         type: "tool_use",
         name: "Agent",
         id: "tool-1",
-        input: { subagent_type: "omd-ux-writer" },
+        input: { subagent_type: "omd-ux-writer", model: "opus" },
       }, {
         type: "tool_use",
         name: "Agent",
         id: "tool-2",
-        input: { subagent_type: "omd-ux-engineer" },
+        input: { subagent_type: "omd-ux-engineer", model: "opus" },
       }] },
     }, {
       type: "user",
@@ -257,6 +257,10 @@ describe("Claude print runner preflight", () => {
       agent_tool_call_count: 2,
       agent_tool_error_count: 1,
       requested_agent_ids: ["omd-ux-engineer", "omd-ux-writer"],
+      agent_calls: [
+        { agent_id: "omd-ux-writer", requested_model: "opus" },
+        { agent_id: "omd-ux-engineer", requested_model: "opus" },
+      ],
     });
   });
 });

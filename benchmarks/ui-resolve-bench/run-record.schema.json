@@ -65,6 +65,17 @@
           "type": "array",
           "items": { "type": "string", "minLength": 1 },
           "uniqueItems": true
+        },
+        "agent_calls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["agent_id", "requested_model"],
+            "properties": {
+              "agent_id": { "type": ["string", "null"] },
+              "requested_model": { "type": ["string", "null"] }
+            }
+          }
         }
       }
     },

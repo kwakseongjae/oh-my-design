@@ -103,6 +103,7 @@ describe("UI-Resolve normalized run exporter", () => {
         agent_tool_call_count: 0,
         agent_tool_error_count: 0,
         requested_agent_ids: [],
+        agent_calls: [],
         milestones: {
           first_builtin_product_write_ms: 400,
           last_builtin_product_write_ms: 900,
@@ -178,17 +179,23 @@ describe("UI-Resolve normalized run exporter", () => {
     harnessManifest.variant.kind = "agent-harness";
     harnessManifest.agents = {
       installed: [{ id: "omd-ux-writer" }, { id: "omd-ux-engineer" }],
+      required_model: "opus",
       sha256: "agent-bundle-sha",
     };
     const partialHarnessRun = structuredClone(run);
     partialHarnessRun.output.requested_agent_ids = ["omd-ux-writer"];
     partialHarnessRun.output.agent_tool_call_count = 1;
     partialHarnessRun.output.agent_tool_error_count = 0;
+    partialHarnessRun.output.agent_calls = [{ agent_id: "omd-ux-writer", requested_model: "opus" }];
     expect(classifyValidity(harnessManifest, "complete", score, partialHarnessRun))
       .toBe("invalid-attribution");
 
     partialHarnessRun.output.requested_agent_ids.push("omd-ux-engineer");
     partialHarnessRun.output.agent_tool_call_count = 2;
+    partialHarnessRun.output.agent_calls.push({ agent_id: "omd-ux-engineer", requested_model: "sonnet" });
+    expect(classifyValidity(harnessManifest, "complete", score, partialHarnessRun))
+      .toBe("invalid-attribution");
+    partialHarnessRun.output.agent_calls[1].requested_model = "opus";
     expect(classifyValidity(harnessManifest, "complete", score, partialHarnessRun)).toBe("valid");
   });
 });
