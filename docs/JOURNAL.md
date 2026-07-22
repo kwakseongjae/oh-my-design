@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.10 classifier patch ready
+- optional qlmanage/Chrome environment block을 recoverable로 분리했다.
+- cwd/file-tool permission denial은 infra fail-closed를 유지한다.
+- real-browser HTML probe는 허용, `.t/verify.js` DOM shim은 계속 차단한다.
+- retained 1.9.7/1.9.8/1.9.9 replay와 focused 23/23이 green이다.
+
 ## 2026-07-23 (Codex) · 1.9.9 stopped on classifier defect
 - first portable cell은 provider success/final present였지만 qlmanage sandbox block이 infra로 오분류됐다.
 - matrix는 1 attempted / 0 valid / 17 not-started로 fail-closed 보존한다.

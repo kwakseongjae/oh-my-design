@@ -3,11 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `a638a33` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.9 first-cell classification stop; 1.9.10 benchmark robustness patch 필요
+- 기준 커밋: `4146154` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.10 context-aware verifier classification 구현 및 retained-trace replay 통과
 
 ## 지금 (현재 위치)
 
+- 1.9.10 patch는 tool-result 문구만 보지 않고 연결된 Bash tool-use command를 함께 읽는다. `qlmanage`/headless Chrome의 known environment block은 optional verifier recoverable로 분리하고 cwd/built-in permission denial은 계속 infrastructure fail-closed다.
+- replacement detector는 real-browser `verify.html`/`probe.html`을 허용하고 JS/TS/Python verifier script, explicit DOM shim/mock-browser, DOM implementation을 차단한다. retained trace replay는 1.9.7 replacement true, 1.9.8 false, 1.9.9 false이며 1.9.9 tool errors는 2 recoverable / 0 infra / optional renderer 1로 분리된다.
+- focused Claude runner + matrix tests 23/23과 Node syntax/diff가 green이다. 1.9.9 result JSON은 immutable이며 소급 유효화하지 않는다.
 - 1.9.9는 first `pricing-t1-portable`에서 `process-failure`로 fail-closed stop했다. 18 scheduled / 1 attempted / 0 valid / 17 not-started이며 `/tmp/u199`은 재개·재분류하지 않는다.
 - provider는 child exit 0·success·final present였지만 optional `qlmanage` preview의 `sandbox initialization failed`를 runner가 infrastructure로 오분류해 normalized exit 1을 만들었다. post-stop frozen 85/85는 forensic only다.
 - replacement detector도 real-browser `verify.html`을 path 이름만으로 substitute verifier라 오탐했다. 1.9.10은 optional renderer error를 recoverable로 분리하고 HTML browser probe는 허용하되 `.t/verify.js` DOM shim은 계속 차단해야 한다.
@@ -268,9 +271,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.9 failure report를 커밋한다.
-2. 1.9.10에서 tool-use context 기반 optional renderer sandbox 분류와 narrow replacement-verifier detector를 구현한다.
-3. retained 1.9.7/1.9.8/1.9.9 traces로 classifier regression을 고정한 뒤 다음 fresh matrix를 별도 사전등록한다.
+1. 전체 tests/lint/build 뒤 1.9.10 classifier source patch를 독립 커밋한다.
+2. retained-trace deterministic calibration report를 고정하고 1.9.10을 complete 처리한다.
+3. 1.9.11 failure-recovery는 새 preregistration과 fresh workspaces만 사용한다.
 4. 그 뒤 activation funnel 관찰 → v1.9 full-trace/rescue 사례 → Home mobile/Builder error 상태로 복귀한다.
 
 ## 막힘 / 대기 (없으면 "없음")

@@ -115,6 +115,18 @@ describe("UI-Resolve prepared matrix execution", () => {
       },
     }];
     expect(replacementVerifierAuthorship(probe)).toEqual({ detected: false });
+
+    const realBrowserHtml = [{
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          name: "Bash",
+          input: { command: "python3 - verify.html <<'EOF'\nopen('verify.html','w').write('<script>document.querySelectorAll(\"button\")</script>')\nEOF\n/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --headless verify.html" },
+        }],
+      },
+    }];
+    expect(replacementVerifierAuthorship(realBrowserHtml)).toEqual({ detected: false });
   });
 
   it("fails closed when replacement-verifier authorship is observed", () => {

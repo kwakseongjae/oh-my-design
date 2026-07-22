@@ -200,6 +200,7 @@ describe("Claude print runner preflight", () => {
       tool_error_count: 2,
       recoverable_tool_error_count: 1,
       infrastructure_tool_error_count: 1,
+      optional_verifier_environment_error_count: 0,
       sandbox_error_count: 1,
       sandbox_cwd_error_count: 1,
     });
@@ -219,7 +220,39 @@ describe("Claude print runner preflight", () => {
       tool_error_count: 1,
       recoverable_tool_error_count: 0,
       infrastructure_tool_error_count: 1,
+      optional_verifier_environment_error_count: 0,
       sandbox_error_count: 1,
+      sandbox_cwd_error_count: 0,
+    });
+  });
+
+  it("keeps a sandbox-blocked optional renderer recoverable using tool-use context", () => {
+    expect(summarizeClaudeToolErrors([{
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          id: "tool-render",
+          name: "Bash",
+          input: { command: "qlmanage -t -s 1440 -o $TMPDIR $TMPDIR/preview.html" },
+        }],
+      },
+    }, {
+      type: "user",
+      message: {
+        content: [{
+          type: "tool_result",
+          tool_use_id: "tool-render",
+          is_error: true,
+          content: "Exit code 1\nsandbox initialization failed: Operation not permitted",
+        }],
+      },
+    }])).toEqual({
+      tool_error_count: 1,
+      recoverable_tool_error_count: 1,
+      infrastructure_tool_error_count: 0,
+      optional_verifier_environment_error_count: 1,
+      sandbox_error_count: 0,
       sandbox_cwd_error_count: 0,
     });
   });

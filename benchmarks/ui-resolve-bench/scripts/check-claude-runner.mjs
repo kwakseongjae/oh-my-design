@@ -243,15 +243,35 @@ export function summarizeClaudeUsage(resultEvent) {
 }
 
 export function summarizeClaudeToolErrors(events = []) {
+  const toolUses = new Map(events.flatMap((event) => (
+    event?.type === "assistant" && Array.isArray(event?.message?.content)
+      ? event.message.content
+        .filter((item) => item?.type === "tool_use" && item?.id)
+        .map((item) => [item.id, item])
+      : []
+  )));
   const toolErrors = events.flatMap((event) => (
     event?.type === "user" && Array.isArray(event?.message?.content)
-      ? event.message.content.filter((item) => item?.type === "tool_result" && item?.is_error === true)
+      ? event.message.content
+        .filter((item) => item?.type === "tool_result" && item?.is_error === true)
+        .map((item) => ({ item, tool: toolUses.get(item.tool_use_id) ?? null }))
       : []
   ));
-  const sandboxCwdErrors = toolErrors.filter((item) => (
+  const optionalRendererErrors = toolErrors.filter(({ item, tool }) => {
+    const command = String(tool?.input?.command ?? "");
+    const content = String(item?.content ?? "");
+    const isRenderer = /\bqlmanage\b|(?:Google Chrome|Chromium|Chrome)[^\n]*--headless|--headless[^\n]*(?:Google Chrome|Chromium|Chrome)/i
+      .test(command);
+    const isEnvironmentBlock = /sandbox initialization failed|ProcessSingleton|crashpad|Failed to create socket directory/i
+      .test(content);
+    return tool?.name === "Bash" && isRenderer && isEnvironmentBlock;
+  });
+  const optionalRendererItems = new Set(optionalRendererErrors.map(({ item }) => item));
+  const sandboxCwdErrors = toolErrors.filter(({ item }) => (
     /operation not permitted:\s+\S*\/cwd-[\w-]+/i.test(String(item?.content ?? ""))
   ));
-  const sandboxErrors = toolErrors.filter((item) => (
+  const sandboxErrors = toolErrors.filter(({ item }) => (
+    !optionalRendererItems.has(item) &&
     /\b(?:EPERM|operation not permitted)\b|requested permissions to (?:read from|write to)|permission to use (?:Read|Edit|Write|Glob|Grep|Bash) has been denied/i
       .test(String(item?.content ?? ""))
   ));
@@ -264,6 +284,7 @@ export function summarizeClaudeToolErrors(events = []) {
     tool_error_count: toolErrors.length,
     recoverable_tool_error_count: toolErrors.length - infrastructureToolErrors.length,
     infrastructure_tool_error_count: infrastructureToolErrors.length,
+    optional_verifier_environment_error_count: optionalRendererErrors.length,
     sandbox_error_count: sandboxErrors.length,
     sandbox_cwd_error_count: sandboxCwdErrors.length,
   };
