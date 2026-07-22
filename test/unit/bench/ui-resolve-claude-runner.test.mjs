@@ -89,6 +89,23 @@ describe("Claude print runner preflight", () => {
     });
   });
 
+  it("accepts the exact Fable 5 id without accepting its moving alias", () => {
+    const exact = inspectClaudeRunner({
+      model: "claude-fable-5",
+      env: {},
+      exec: execFor({ loggedIn: true, authMethod: "claudeAiOauth", apiProvider: "firstParty" }),
+    });
+    const alias = inspectClaudeRunner({
+      model: "fable",
+      env: {},
+      exec: execFor({ loggedIn: true, authMethod: "claudeAiOauth", apiProvider: "firstParty" }),
+    });
+    expect(exact.ready).toBe(true);
+    expect(exact.checks.exact_model_pinned).toBe(true);
+    expect(alias.ready).toBe(false);
+    expect(alias.checks.exact_model_pinned).toBe(false);
+  });
+
   it("fails closed when an API key would shadow subscription OAuth", () => {
     const result = inspectClaudeRunner({
       model: "claude-opus-4-8",

@@ -168,7 +168,11 @@ export function inspectClaudeRunner({
     }
   }
   const competingCredentials = CREDENTIAL_ENV.filter((key) => Boolean(env[key]));
-  const exactModelPinned = /^claude-[a-z]+-\d+-\d+(?:-\d+)?$/.test(model);
+  // Anthropic model families do not share one numeric shape: Opus 4.8 is
+  // `claude-opus-4-8`, while Fable 5 is `claude-fable-5`. Accept immutable
+  // full IDs with one or more numeric segments, but continue to reject moving
+  // aliases such as `opus`, `fable`, or `latest`.
+  const exactModelPinned = /^claude-[a-z]+-\d+(?:-\d+)*$/.test(model);
   const subscriptionAuth = auth.loggedIn === true
     && auth.apiProvider === "firstParty"
     && !competingCredentials.length;
