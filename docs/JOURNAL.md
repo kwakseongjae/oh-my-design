@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.8 delivery recovery preregistered
+- first edit 50%·verification 1회·final reserve 계약을 `e348c81`에 구현했다.
+- failed 1.9.7 cell은 건드리지 않고 fresh onboarding single cell을 `/tmp/u198`에 잠갔다.
+- 85/85·첫 편집≤450초·Opus agents 2/2·replacement verifier 0이 모두 필수다.
+- 다음은 clean prepare → exact-model preflight → no-retry provider run이다.
+
 ## 2026-07-23 (Codex) · 1.9.7 harness matrix stopped and rejected
 - exact Opus matrix는 11 valid 뒤 onboarding harness trial 3의 900초 timeout으로 preregistered stop했다.
 - 5 complete pairs는 2 win/3 tie였지만 6 cells 미실행이라 promotion·Pareto·public claim을 reject했다.

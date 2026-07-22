@@ -3,11 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `0500317` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.7 Harness Track preregistered timeout으로 promotion reject; 1.9.8 delivery-budget recovery 착수점
+- 기준 커밋: `e348c81` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.8 delivery-budget recovery source patch 완료 및 fresh single-cell preregistration 잠금
 
 ## 지금 (현재 위치)
 
+- 1.9.8 source patch `e348c81`은 `omd:apply`와 repair-harness activation에 first edit≤50%, optional verification stop≤80%, final reserve≥10%, verification mechanism 1회, replacement verifier 금지 계약을 추가했다. focused 22/22, 전체 201 pass/1 conditional skip, TypeScript와 build가 green이다.
+- fresh `onboarding-recovery-t1-harness` 단일 셀을 `/tmp/u198`에 사전등록했다. exact `claude-opus-4-8`/xhigh, 900초, first write≤450,000ms, specialists 2/2 Opus, 85/85, final response, replacement verifier 0을 전부 통과해야 1.9.9 full repeated matrix를 열 수 있다.
 - 1.9.7 exact Opus 4.8/xhigh repeated Harness Track은 cell 12 `onboarding-t3-harness`가 900초 timeout에 걸려 사전등록대로 즉시 중단했다. 18 scheduled / 12 attempted / 11 valid / 1 timeout / 6 not-started이며 promotion은 reject다.
 - 완전한 5 pairs는 harness 2 win / 3 tie / 0 loss, valid Evidence 11/11이다. valid-only median은 portable 685,112ms·139,096 tokens, harness 717,338ms·179,402 tokens(1.047×/1.290×)지만 incomplete matrix라 Pareto·lift·frontier 주장은 금지한다.
 - timeout 셀은 exact Opus specialists 2/2를 호출하고 product-only diff까지 만들었으나 first product write 580,406ms, last 876,047ms, final 900,027ms에 중단됐다. 사후 frozen evaluator 85/85는 artifact forensic일 뿐 valid run으로 합산하지 않는다.
@@ -257,9 +259,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.8 delivery-budget recovery를 새 preregistration으로 잠근다. 1.9.7 timeout cell은 재시도하거나 대체하지 않는다.
-2. `omd:apply`/Harness activation에 first-edit 50%, verification mechanism 1회, final reserve를 추가하고 focused contract test를 만든다.
-3. 같은 onboarding task의 fresh exact Opus cell 1개가 valid 85/85·first write≤450s·exact agents를 통과하면 1.9.9 full repeated matrix를 새로 사전등록한다.
+1. preregistration을 별도 커밋한 뒤 `/tmp/u198` clean workspace를 준비한다.
+2. exact Opus preflight를 다시 확인하고 fresh recovery cell을 한 번만 실행한다. 실패·timeout은 재시도 없이 보존한다.
+3. valid 85/85·first write≤450s·exact agents·replacement verifier 0을 통과하면 1.9.9 full repeated matrix를 새로 사전등록한다.
 4. 그 뒤 activation funnel 관찰 → v1.9 full-trace/rescue 사례 → Home mobile/Builder error 상태로 복귀한다.
 
 ## 막힘 / 대기 (없으면 "없음")
