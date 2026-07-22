@@ -14,7 +14,7 @@
     { "version": "1.9.4", "experiment": "inspection-loop", "status": "calibration_complete" },
     { "version": "1.9.5", "experiment": "reference-query-layer", "status": "candidate" },
     { "version": "1.9.6", "experiment": "model-transfer", "status": "calibration_complete" },
-    { "version": "1.9.7", "experiment": "harness-efficiency", "status": "planned" },
+    { "version": "1.9.7", "experiment": "harness-efficiency", "status": "preregistered" },
     { "version": "1.9.8", "experiment": "public-preview", "status": "planned" },
     { "version": "1.9.9", "experiment": "independent-challenge", "status": "planned" },
     { "version": "1.9.10", "experiment": "benchmark-robustness", "status": "planned" },
