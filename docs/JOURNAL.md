@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.17 full replacement preregistered
+- `/tmp/u1917` 3 tasks×3 trials×portable/harness 18 fresh cells를 고정했다.
+- exact Opus/xhigh, first write≤450s, axe serious 0, specialists 2/2, verifier 0이 gate다.
+- pair order는 1.9.15 반대로 counterbalance했고 source basis는 `5e8379b`다.
+- 다음은 prepare → preflight → preregistered execution이다.
+
 ## 2026-07-23 (Codex) · 1.9.16 semantic-color recovery complete
 - exact Opus/xhigh Pricing recovery는 85/85·axe serious 0·Evidence pass다.
 - orange는 non-text dot+ink label로 제한했고 line control boundary도 declared muted로 교체했다.

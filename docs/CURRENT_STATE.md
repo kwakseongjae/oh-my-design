@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `dc27f8f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.16 semantic-color recovery complete
+- 갱신: 2026-07-23 · 1.9.17 full replacement matrix preregistered
 
 ## 지금 (현재 위치)
+
+- 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
+- schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
 
 - 1.9.16 fresh Pricing recovery는 exact Opus/xhigh에서 520,232ms에 정상 종료, frozen 85/85·UI-Resolved·critical 6/6·Evidence pass·4 viewport axe serious/critical 0이다.
 - first/last product write 360,838/462,269ms, tokens 155,312, specialists 2/2, Agent/infra/sandbox/cwd error 0, product diff `index.html` 하나, verifier 0이다. Chrome block 1건은 recoverable이고 live browser proof는 정직하게 unresolved였다.
@@ -305,8 +308,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.17 fresh repeated matrix를 새 root·balanced schedule로 preregister한다.
-2. exact Opus/xhigh 3 tasks×3 trials×portable/harness를 중단 규칙과 함께 실행한다.
+1. `/tmp/u1917`을 fresh prepare하고 exact Opus/xhigh preflight를 통과시킨다.
+2. 3 tasks×3 trials×portable/harness를 사전등록 순서와 중단 규칙으로 실행한다.
 3. 완주 뒤 task Reliability@3·paired quality·wall/token Pareto로 promotion을 다시 판정한다.
 4. 그 뒤 locale/evidence → public benchmark UX → activation → independent challenge로 이동한다.
 
