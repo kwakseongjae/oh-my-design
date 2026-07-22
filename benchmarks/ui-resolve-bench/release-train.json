@@ -20,7 +20,7 @@
     { "version": "1.9.10", "experiment": "benchmark-robustness", "status": "calibration_complete" },
     { "version": "1.9.11", "experiment": "classifier-integration-recovery", "status": "inconclusive" },
     { "version": "1.9.12", "experiment": "renderer-observability", "status": "calibration_complete" },
-    { "version": "1.9.13", "experiment": "harness-efficiency-replacement-2", "status": "unlocked" },
+    { "version": "1.9.13", "experiment": "harness-efficiency-replacement-2", "status": "preregistered" },
     { "version": "1.9.14", "experiment": "locale-evidence-expansion", "status": "planned" },
     { "version": "1.9.15", "experiment": "public-benchmark-ux", "status": "planned" },
     { "version": "1.9.16", "experiment": "activation-reuse", "status": "planned" },

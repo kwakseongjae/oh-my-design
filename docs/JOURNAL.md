@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.13 harness replacement preregistered
+- 3 tasks×3 trials×portable/harness 18 fresh cells를 `/tmp/u1913`에 고정했다.
+- exact Opus/xhigh, 900s, first write≤450s, replacement verifier 0을 요구한다.
+- prior failed/recovery/inconclusive artifacts는 denominator 밖이며 retry가 없다.
+- 다음은 clean prepare → exact preflight → preregistered sequential execution이다.
+
 ## 2026-07-23 (Codex) · 1.9.11 inconclusive, 1.9.12 observability complete
 - 1.9.11 product는 exact Opus 85/85지만 shell-masked Chrome block을 frozen counter가 놓쳤다.
 - prereg대로 1.9.11은 inconclusive로 보존하고 retry·소급 pass하지 않았다.

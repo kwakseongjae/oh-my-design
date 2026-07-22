@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `ad3c3b6` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.11 inconclusive 보존 + 1.9.12 renderer observability complete
+- 갱신: 2026-07-23 · 1.9.13 fresh repeated Harness Track preregistered
 
 ## 지금 (현재 위치)
 
@@ -12,6 +12,7 @@
 - headless Chrome은 실제 Crashpad/ProcessSingleton 환경 차단을 출력했지만 `| tail` 파이프라인이 exit status를 가려 tool result가 `is_error:false`로 저장됐다. frozen classifier의 optional count가 0이라 prereg대로 1.9.11은 `inconclusive-path-not-observed`; retry·소급 pass하지 않는다.
 - 1.9.12 source `ad3c3b6`은 explicit tool-error 총계를 바꾸지 않고 모든 linked result에서 known renderer environment block을 별도 관찰한다. retained 1.9.11 replay는 tool 3/recoverable 3/infra 0을 유지하며 optional renderer 0→1이다.
 - focused 24/24, 전체 207 pass/1 conditional skip, TypeScript/build/diff/count-drift가 green이다. 1.9.12 calibration complete로 fresh 1.9.13 repeated Harness Track matrix가 unlock됐다.
+- 1.9.13은 `/tmp/u1913`의 18 fresh cells(3 tasks×3 trials×portable/harness), exact Opus 4.8/xhigh, 900s timeout, first-write≤450,000ms, replacement verifier 0을 사전등록했다. 1.9.7/1.9.8/1.9.9/1.9.11은 denominator 밖이며 retry가 없다.
 - 1.9.10 report는 retained 3 traces와 unit/full gates를 근거로 classifier calibration complete다. provider generation은 없었고 1.9.9 run-result는 소급 수정하지 않았다.
 - 1.9.10 patch는 tool-result 문구만 보지 않고 연결된 Bash tool-use command를 함께 읽는다. `qlmanage`/headless Chrome의 known environment block은 optional verifier recoverable로 분리하고 cwd/built-in permission denial은 계속 infrastructure fail-closed다.
 - replacement detector는 real-browser `verify.html`/`probe.html`을 허용하고 JS/TS/Python verifier script, explicit DOM shim/mock-browser, DOM implementation을 차단한다. retained trace replay는 1.9.7 replacement true, 1.9.8 false, 1.9.9 false이며 1.9.9 tool errors는 2 recoverable / 0 infra / optional renderer 1로 분리된다.
@@ -276,8 +277,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.13 fresh repeated Harness Track matrix를 preregister한다.
-2. exact Opus preflight와 새 `/tmp` workspace로 3 tasks×3 trials×portable/harness를 실행한다.
+1. 1.9.13 matrix를 `/tmp/u1913`에 prepare하고 exact Opus preflight를 통과시킨다.
+2. 3 tasks×3 trials×portable/harness 18 cells를 preregistered order로 실행한다.
 3. fail-closed stop 없이 완주하면 paired quality·reliability·wall/token Pareto를 산출하고 1.9.14 locale/evidence로 이동한다.
 4. 그 뒤 public benchmark UX → activation funnel 관찰 → 독립 challenge → Home mobile/Builder error 상태로 복귀한다.
 
