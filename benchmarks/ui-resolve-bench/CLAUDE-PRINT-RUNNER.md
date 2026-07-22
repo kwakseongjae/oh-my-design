@@ -101,6 +101,13 @@ workspace. This keeps cwd tracking inside the same write boundary and avoids
 Unix socket path-length fallback. Use short `/tmp/ub/<run>` output paths for
 scored cells.
 
+Do not pair that boundary with `Read(../**)` or `Edit(../**)` deny rules. Claude
+merges those permission rules into the native filesystem sandbox, and a parent
+glob also contains the current workspace. The 2026-07-22 post-login probe
+identified this runner-policy collision when cwd bookkeeping under `.t` was
+denied despite an explicit allow-write. `dontAsk` plus workspace-scoped allow
+rules already fails closed for built-in file tools outside the workspace.
+
 `--safe-mode` is intentionally absent from scored skill runs because it disables
 project Skills. The same `--setting-sources project` isolation is used for both
 raw and OmD conditions, so user-global Skills are not loaded.

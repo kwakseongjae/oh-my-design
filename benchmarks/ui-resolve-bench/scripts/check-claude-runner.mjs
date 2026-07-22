@@ -13,6 +13,39 @@ const CREDENTIAL_ENV = [
   "CLAUDE_CODE_USE_FOUNDRY",
 ];
 
+export function buildClaudeRunnerSettings({ workspace, runTempRoot, protectedHome = null }) {
+  const sandboxRoots = [workspace, runTempRoot];
+  return {
+    sandbox: {
+      enabled: true,
+      failIfUnavailable: true,
+      autoAllowBashIfSandboxed: true,
+      allowUnsandboxedCommands: false,
+      filesystem: {
+        allowRead: sandboxRoots,
+        allowWrite: sandboxRoots,
+        ...(protectedHome ? { denyRead: [protectedHome] } : {}),
+      },
+    },
+    permissions: {
+      allow: [
+        "Read(./**)",
+        "Edit(./**)",
+        "Write(./**)",
+        "Glob(./**)",
+        "Grep(./**)",
+        "Bash",
+      ],
+      // In dontAsk mode, non-allowlisted file-tool requests already fail closed.
+      // Do not add ../** denies: Claude merges Edit/Read denies into its native
+      // sandbox and the parent glob also covers the workspace itself.
+      deny: ["WebFetch", "WebSearch"],
+    },
+    includeCoAuthoredBy: false,
+    includeGitInstructions: false,
+  };
+}
+
 export function inspectClaudeRunner({
   model = "claude-opus-4-8",
   minimumVersion = "2.1.217",

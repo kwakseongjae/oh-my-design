@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from
 import { join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
 import {
+  buildClaudeRunnerSettings,
   inspectClaudeRunner,
   summarizeClaudeToolErrors,
   summarizeClaudeUsage,
@@ -39,43 +40,9 @@ const finalMessagePath = join(benchmarkDir, "final-message.txt");
 // directory. Keep the root inside the prepared workspace and deliberately short.
 const runTempRoot = join(workspace, ".t");
 mkdirSync(runTempRoot, { recursive: true });
-const sandboxRoots = [workspace, runTempRoot];
 const protectedHome = process.env.HOME ? realpathSync(process.env.HOME) : null;
 const maxLogBytes = 50 * 1024 * 1024;
-const runnerSettings = JSON.stringify({
-  sandbox: {
-    enabled: true,
-    failIfUnavailable: true,
-    autoAllowBashIfSandboxed: true,
-    allowUnsandboxedCommands: false,
-    filesystem: {
-      allowRead: sandboxRoots,
-      allowWrite: sandboxRoots,
-      ...(protectedHome ? { denyRead: [protectedHome] } : {}),
-    },
-  },
-  permissions: {
-    allow: [
-      "Read(./**)",
-      "Edit(./**)",
-      "Write(./**)",
-      "Glob(./**)",
-      "Grep(./**)",
-      "Bash",
-    ],
-    deny: [
-      "Read(../**)",
-      "Edit(../**)",
-      "Write(../**)",
-      "Glob(../**)",
-      "Grep(../**)",
-      "WebFetch",
-      "WebSearch",
-    ],
-  },
-  includeCoAuthoredBy: false,
-  includeGitInstructions: false,
-});
+const runnerSettings = JSON.stringify(buildClaudeRunnerSettings({ workspace, runTempRoot, protectedHome }));
 const command = [
   "-p",
   "--model", model,

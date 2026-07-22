@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  buildClaudeRunnerSettings,
   inspectClaudeRunner,
   summarizeClaudeToolErrors,
   summarizeClaudeUsage,
@@ -13,6 +14,21 @@ const execFor = (auth) => (command, args) => {
 };
 
 describe("Claude print runner preflight", () => {
+  it("keeps the workspace writable without a parent-glob sandbox collision", () => {
+    const result = buildClaudeRunnerSettings({
+      workspace: "/private/tmp/ubp1",
+      runTempRoot: "/private/tmp/ubp1/.t",
+      protectedHome: "/Users/example",
+    });
+    expect(result.sandbox.filesystem.allowWrite).toEqual([
+      "/private/tmp/ubp1",
+      "/private/tmp/ubp1/.t",
+    ]);
+    expect(result.permissions.allow).toContain("Edit(./**)");
+    expect(result.permissions.deny).toEqual(["WebFetch", "WebSearch"]);
+    expect(result.permissions.deny.some((rule) => rule.includes("../**"))).toBe(false);
+  });
+
   it("accepts exact Opus 4.8 with unshadowed first-party subscription auth", () => {
     const result = inspectClaudeRunner({
       model: "claude-opus-4-8",
