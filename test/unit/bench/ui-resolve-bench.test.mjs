@@ -192,6 +192,9 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(competitors.variants["omd-repair-harness"].activation).toContain("allowed_delta 0");
     expect(competitors.variants["omd-repair-harness"].activation).toContain("bounded-repair-advisory");
     expect(competitors.variants["omd-repair-harness"].activation).toContain("about 600 words");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("before 450 seconds");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("before 810 seconds");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("do not write a DOM shim");
     expect(competitors.variants["omd-full-harness"]).toMatchObject({
       install_dir: "omd-harness",
       install_adapter: "omd-channel-name-v1",

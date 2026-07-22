@@ -33,8 +33,10 @@ describe("omd:apply delivery contract", () => {
 
   it("bounds verification and preserves a final delivery reserve", () => {
     expect(skill).toContain("Bounded verification + guaranteed delivery");
-    expect(skill).toContain("같은 mechanism이 두 번 연속 실패하면 중단");
-    expect(skill).toContain("최소 15%를 최종 응답에 남긴다");
+    expect(skill).toContain("첫 제품 편집을 총 예산의 50% 전");
+    expect(skill).toContain("verification mechanism은 종류별로 한 번만 시도");
+    expect(skill).toContain("replacement verifier");
+    expect(skill).toContain("80%에서 선택 검증을 끝내고 90% 전에는 최종 응답을 시작");
     expect(skill).toContain("implemented / verified / unresolved");
     expect(skill).toContain("final response를 잃는 것은 실패");
   });
