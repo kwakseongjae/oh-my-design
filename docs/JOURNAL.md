@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.13 stopped on authored verifier
+- cell 11 harness가 `$TMPDIR/verify.mjs` Chrome CDP 검증기를 새로 작성해 executor가 중단했다.
+- 18 scheduled / 11 attempted / 10 valid / 1 stopped / 7 not-started이며 retry하지 않는다.
+- complete 5 pairs는 5 ties; valid-only harness wall 0.894×, tokens 1.238×지만 승격 근거가 아니다.
+- 다음 1.9.14는 acceptance packet을 비실행 checklist/result로 잠그고 fresh recovery만 허용한다.
+
 ## 2026-07-23 (Codex) · 1.9.13 harness replacement preregistered
 - 3 tasks×3 trials×portable/harness 18 fresh cells를 `/tmp/u1913`에 고정했다.
 - exact Opus/xhigh, 900s, first write≤450s, replacement verifier 0을 요구한다.
