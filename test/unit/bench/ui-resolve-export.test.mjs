@@ -35,6 +35,11 @@ const run = {
       context_window: 1000000,
       max_output_tokens: 128000,
     }],
+    milestones: {
+      first_builtin_product_write_ms: 400,
+      last_builtin_product_write_ms: 900,
+      final_result_ms: 1180,
+    },
   },
   workspace: {
     product_changed: true,
@@ -93,6 +98,11 @@ describe("UI-Resolve normalized run exporter", () => {
         tool_error_count: 0,
         sandbox_error_count: 0,
         sandbox_cwd_error_count: 0,
+        milestones: {
+          first_builtin_product_write_ms: 400,
+          last_builtin_product_write_ms: 900,
+          final_result_ms: 1180,
+        },
       },
       delivery: {
         product_changed: true,

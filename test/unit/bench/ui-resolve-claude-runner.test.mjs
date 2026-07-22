@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+  buildClaudeChildEnv,
   buildClaudeRunnerSettings,
   inspectClaudeRunner,
+  summarizeClaudeMilestones,
   summarizeClaudeToolErrors,
   summarizeClaudeUsage,
 } from "../../../benchmarks/ui-resolve-bench/scripts/check-claude-runner.mjs";
@@ -14,6 +16,22 @@ const execFor = (auth) => (command, args) => {
 };
 
 describe("Claude print runner preflight", () => {
+  it("isolates print runs from auto-memory and background state", () => {
+    const result = buildClaudeChildEnv({
+      env: { HOME: "/Users/example", PATH: "/bin", TMPDIR: "/host/tmp" },
+      runTempRoot: "/private/tmp/run/.t",
+    });
+    expect(result).toMatchObject({
+      HOME: "/Users/example",
+      PATH: "/bin",
+      TMPDIR: "/private/tmp/run/.t",
+      CLAUDE_CODE_TMPDIR: "/private/tmp/run/.t",
+      CLAUDE_CODE_DISABLE_AUTO_MEMORY: "1",
+      CLAUDE_CODE_DISABLE_BACKGROUND_TASKS: "1",
+      CLAUDE_CODE_AUTO_CONNECT_IDE: "false",
+    });
+  });
+
   it("keeps the workspace writable without a parent-glob sandbox collision", () => {
     const result = buildClaudeRunnerSettings({
       workspace: "/private/tmp/ubp1",
@@ -136,6 +154,34 @@ describe("Claude print runner preflight", () => {
       tool_error_count: 2,
       sandbox_error_count: 1,
       sandbox_cwd_error_count: 1,
+    });
+  });
+
+  it("records built-in product writes without counting benchmark or skill files", () => {
+    const events = [{
+      type: "assistant",
+      timestamp: "2026-07-22T00:00:02.000Z",
+      message: { content: [{ type: "tool_use", name: "Read", input: { file_path: "/tmp/run/index.html" } }] },
+    }, {
+      type: "assistant",
+      timestamp: "2026-07-22T00:00:03.000Z",
+      message: { content: [{ type: "tool_use", name: "Write", input: { file_path: "/tmp/run/.benchmark/note" } }] },
+    }, {
+      type: "assistant",
+      timestamp: "2026-07-22T00:00:04.000Z",
+      message: { content: [{ type: "tool_use", name: "Edit", input: { file_path: "/tmp/run/index.html" } }] },
+    }, {
+      type: "result",
+      timestamp: "2026-07-22T00:00:09.000Z",
+    }];
+    expect(summarizeClaudeMilestones(events, {
+      workspace: "/tmp/run",
+      startedAt: "2026-07-22T00:00:00.000Z",
+      productIgnore: [".benchmark", ".claude"],
+    })).toEqual({
+      first_builtin_product_write_ms: 4000,
+      last_builtin_product_write_ms: 4000,
+      final_result_ms: 9000,
     });
   });
 });

@@ -89,6 +89,7 @@ export function buildRunRecord({
       tool_error_count: Number(run?.output?.tool_error_count ?? 0),
       sandbox_error_count: Number(run?.output?.sandbox_error_count ?? 0),
       sandbox_cwd_error_count: Number(run?.output?.sandbox_cwd_error_count ?? 0),
+      milestones: run?.output?.milestones ?? null,
     },
     attribution: {
       source_commit: manifest?.skill?.source_commit ?? null,

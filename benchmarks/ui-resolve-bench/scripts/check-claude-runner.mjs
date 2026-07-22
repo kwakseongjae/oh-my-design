@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { resolve } from "node:path";
+import { relative, resolve } from "node:path";
 import { parseArgs } from "./_lib.mjs";
 
 const CREDENTIAL_ENV = [
@@ -43,6 +43,56 @@ export function buildClaudeRunnerSettings({ workspace, runTempRoot, protectedHom
     },
     includeCoAuthoredBy: false,
     includeGitInstructions: false,
+  };
+}
+
+export function buildClaudeChildEnv({ env = process.env, runTempRoot }) {
+  const childEnv = {};
+  for (const key of ["HOME", "PATH", "LANG", "LC_ALL", "TERM", "USER", "SHELL"]) {
+    if (env[key]) childEnv[key] = env[key];
+  }
+  return {
+    ...childEnv,
+    TMPDIR: runTempRoot,
+    CLAUDE_CODE_TMPDIR: runTempRoot,
+    CLAUDE_CODE_DISABLE_AUTO_MEMORY: "1",
+    CLAUDE_CODE_DISABLE_BACKGROUND_TASKS: "1",
+    CLAUDE_CODE_AUTO_CONNECT_IDE: "false",
+    DISABLE_TELEMETRY: "1",
+    DO_NOT_TRACK: "1",
+    CI: "1",
+  };
+}
+
+export function summarizeClaudeMilestones(events = [], {
+  workspace,
+  startedAt,
+  productIgnore = [],
+} = {}) {
+  const startedMs = Date.parse(startedAt);
+  const ignored = new Set(productIgnore);
+  const writeTimes = [];
+  for (const event of events) {
+    if (event?.type !== "assistant" || !Array.isArray(event?.message?.content)) continue;
+    for (const item of event.message.content) {
+      if (item?.type !== "tool_use" || !["Edit", "Write", "NotebookEdit"].includes(item?.name)) continue;
+      const rawPath = item?.input?.file_path ?? item?.input?.filePath ?? item?.input?.notebook_path;
+      if (!rawPath) continue;
+      const absolutePath = resolve(workspace, String(rawPath));
+      const productPath = relative(workspace, absolutePath);
+      if (!productPath || productPath.startsWith("..") || productPath.split("/").some((part) => ignored.has(part))) {
+        continue;
+      }
+      const timestamp = Date.parse(event.timestamp);
+      if (Number.isFinite(timestamp) && Number.isFinite(startedMs)) writeTimes.push(timestamp - startedMs);
+    }
+  }
+  const resultEvent = [...events].reverse().find((event) => event?.type === "result");
+  const resultMs = Date.parse(resultEvent?.timestamp);
+  return {
+    first_builtin_product_write_ms: writeTimes.length ? Math.min(...writeTimes) : null,
+    last_builtin_product_write_ms: writeTimes.length ? Math.max(...writeTimes) : null,
+    final_result_ms: Number.isFinite(resultMs) && Number.isFinite(startedMs) ? resultMs - startedMs : null,
   };
 }
 

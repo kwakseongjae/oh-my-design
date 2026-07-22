@@ -96,6 +96,12 @@ run-result schema. A sandbox error invalidates the run even when Claude's
 top-level child process exits zero. The price-equivalent value is not a claim
 that the subscription account was billed that amount.
 
+Print runs set `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`, disable background tasks,
+and disable IDE auto-connect. This prevents machine-local memory and ambient IDE
+state from contaminating a project-only condition. The runner also records the
+first/last built-in product write and final-result milestone so delivery-budget
+experiments can distinguish analysis delay from verification delay.
+
 `CLAUDE_CODE_TMPDIR` points to a short `.t` directory inside the prepared
 workspace. This keeps cwd tracking inside the same write boundary and avoids
 Unix socket path-length fallback. Use short `/tmp/ub/<run>` output paths for

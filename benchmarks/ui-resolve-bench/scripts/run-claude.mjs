@@ -4,8 +4,10 @@ import { existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from
 import { join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
 import {
+  buildClaudeChildEnv,
   buildClaudeRunnerSettings,
   inspectClaudeRunner,
+  summarizeClaudeMilestones,
   summarizeClaudeToolErrors,
   summarizeClaudeUsage,
 } from "./check-claude-runner.mjs";
@@ -66,17 +68,7 @@ let stderr = "";
 let timedOut = false;
 let logsTruncated = false;
 
-const childEnv = {};
-for (const key of ["HOME", "PATH", "TMPDIR", "LANG", "LC_ALL", "TERM", "USER", "SHELL"]) {
-  if (process.env[key]) childEnv[key] = process.env[key];
-}
-Object.assign(childEnv, {
-  TMPDIR: runTempRoot,
-  CLAUDE_CODE_TMPDIR: runTempRoot,
-  DISABLE_TELEMETRY: "1",
-  DO_NOT_TRACK: "1",
-  CI: "1",
-});
+const childEnv = buildClaudeChildEnv({ runTempRoot });
 
 const appendCapped = (current, chunk) => {
   if (Buffer.byteLength(current) >= maxLogBytes) {
@@ -120,6 +112,15 @@ const events = stdout.split("\n").filter(Boolean).flatMap((line) => {
   try { return [JSON.parse(line)]; } catch { return []; }
 });
 const toolErrors = summarizeClaudeToolErrors(events);
+const observedMilestones = summarizeClaudeMilestones(events, {
+  workspace,
+  startedAt: startedAt.toISOString(),
+  productIgnore: manifest.workspace.product_ignore ?? [],
+});
+const milestones = {
+  ...observedMilestones,
+  final_result_ms: observedMilestones.final_result_ms ?? Math.round(wallMs),
+};
 const resultEvent = [...events].reverse().find((event) => event.type === "result") ?? null;
 const initEvent = events.find((event) => event.type === "system" && event.subtype === "init") ?? null;
 const normalizedUsage = summarizeClaudeUsage(resultEvent);
@@ -174,6 +175,7 @@ const result = {
     final_message_present: Boolean(finalMessage),
     stderr_bytes: Buffer.byteLength(stderr),
     logs_truncated: logsTruncated,
+    milestones,
     result_subtype: resultEvent?.subtype ?? null,
     result_is_error: resultEvent?.is_error ?? null,
     ...toolErrors,
