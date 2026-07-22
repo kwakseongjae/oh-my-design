@@ -3,11 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `d039150` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.8 fresh delivery-budget recovery PASS; 1.9.9 full repeated matrix 설계 가능
+- 기준 커밋: `55c66b7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.8 recovery PASS; 1.9.9 자동 delivery fail-closed gate 구현 완료
 
 ## 지금 (현재 위치)
 
+- 1.9.9 준비로 matrix executor에 optional `harness_delivery_gates`를 추가했다. first product write milestone missing/late와 authored verifier·DOM shim·mock browser를 evaluator 전에 자동 정지하며 completed state에도 first write와 replacement-verifier 여부를 남긴다.
+- classifier는 1.9.8 events를 clean으로, 보존된 1.9.7 timeout의 `.t/verify.js`를 `suspicious-verifier-path`로 판별한다. 실제 Chrome probe는 허용하며 focused prepare/run-matrix 13/13과 Node syntax/diff gate가 green이다.
 - 1.9.8 fresh onboarding recovery는 exact Opus 4.8/xhigh에서 456,045ms에 정상 종료, frozen evaluator 85/85·UI-Resolved·critical 6/6·Evidence & Unknown pass다. first/last write 313,484/415,072ms, uncached tokens 127,533이며 Opus specialists 2/2, Agent/infra/sandbox/cwd error 0이다.
 - Chrome sandbox 실패 뒤 parent는 replacement verifier·DOM shim·mock browser를 만들지 않고 browser proof를 unresolved로 보고했다. product diff는 `index.html` 하나며 external frozen browser evaluator가 desktop/390/320/200%와 interaction/a11y를 독립 통과시켰다.
 - 1.9.8 acceptance 6/6이므로 release status는 `calibration_complete`; fresh 1.9.9 full repeated matrix 사전등록이 unlock됐다. 단일 recovery라 1.9.7을 소급 유효화하거나 efficiency/frontier/public claim에 쓰지 않는다.
@@ -261,8 +263,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.8 결과를 커밋한 뒤 1.9.9 fresh full repeated matrix를 결과 확인 전에 사전등록한다.
-2. 1.9.9는 portable vs delivery-budget harness, 3 tasks×3 trials, exact Opus/xhigh, 900초, 모든 harness cell에 first write≤450초·replacement verifier 0을 추가 gate로 적용한다.
+1. executor gate를 커밋한 뒤 1.9.9 fresh full repeated matrix를 결과 확인 전에 사전등록한다.
+2. 1.9.9는 portable vs delivery-budget harness, 3 tasks×3 trials, exact Opus/xhigh, 900초, 모든 harness cell에 first write≤450초·replacement verifier 0을 자동 gate로 적용한다.
 3. clean workspaces와 exact model preflight 뒤 frozen 순서로 실행하며 timeout/auth/attribution failure는 재시도 없이 정지·보존한다.
 4. 그 뒤 activation funnel 관찰 → v1.9 full-trace/rescue 사례 → Home mobile/Builder error 상태로 복귀한다.
 

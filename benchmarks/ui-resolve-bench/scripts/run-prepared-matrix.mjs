@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { spawnSync } from "node:child_process";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
@@ -35,6 +35,56 @@ export function preregisteredStopReason(cell, manifest, run) {
     }
   }
   return null;
+}
+
+const SUSPICIOUS_VERIFIER_PATH = /(?:^|[/\\._-])(?:verify|verifier|verification|dom[-_]?shim|mock[-_]?browser)(?:[/\\._-]|$)/i;
+const SHELL_OR_SCRIPT_WRITE = /(?:^|[\s;&|])(?:cat|tee)\b[^\n]*(?:>|>>)|(?:>|>>)\s*[^\s]+|\b(?:writeFile|writeFileSync)\s*\(|\bopen\s*\([^\n]*["']w["']/i;
+const DOM_OR_BROWSER_SHIM = /\bclass\s+(?:Element|Document|Node|Window)\b|\bglobalThis\.(?:document|window)\s*=|\b(?:document|window)\s*=\s*(?:new\b|\{)|\bmock(?:Document|Window|Browser)\b/i;
+
+function toolUses(event) {
+  if (event?.type !== "assistant" || !Array.isArray(event.message?.content)) return [];
+  return event.message.content.filter((block) => block?.type === "tool_use");
+}
+
+export function replacementVerifierAuthorship(events) {
+  for (const [eventIndex, event] of events.entries()) {
+    for (const block of toolUses(event)) {
+      const name = String(block.name ?? "");
+      const input = block.input ?? {};
+      const path = String(input.file_path ?? input.path ?? input.filename ?? "");
+      const command = String(input.command ?? "");
+      const content = String(input.content ?? input.new_string ?? "");
+      const payload = `${path}\n${command}\n${content}`;
+      const writes = name === "Write" || name === "Edit" || SHELL_OR_SCRIPT_WRITE.test(command);
+      if (!writes) continue;
+      if (SUSPICIOUS_VERIFIER_PATH.test(path) || SUSPICIOUS_VERIFIER_PATH.test(command)) {
+        return { detected: true, event_index: eventIndex, tool: name, reason: "suspicious-verifier-path" };
+      }
+      if (DOM_OR_BROWSER_SHIM.test(payload)) {
+        return { detected: true, event_index: eventIndex, tool: name, reason: "dom-or-browser-shim" };
+      }
+    }
+  }
+  return { detected: false };
+}
+
+export function harnessDeliveryStopReason(manifest, run, gates, events = []) {
+  if (manifest.variant?.kind !== "agent-harness" || gates === undefined) return null;
+  const firstWrite = run.output?.milestones?.first_builtin_product_write_ms;
+  if (!Number.isFinite(firstWrite)) return "missing-first-product-write-milestone";
+  if (firstWrite > gates.first_product_write_ms_max) return "late-first-product-write";
+  if (gates.forbid_replacement_verifier && replacementVerifierAuthorship(events).detected) {
+    return "replacement-verifier-authored";
+  }
+  return null;
+}
+
+function readEvents(path) {
+  if (!existsSync(path)) return [];
+  return readFileSync(path, "utf8")
+    .split("\n")
+    .filter(Boolean)
+    .map((line) => JSON.parse(line));
 }
 
 export function runArgsForCell(cell, workspace) {
@@ -114,6 +164,7 @@ export function executePreparedMatrix(root) {
     const benchmarkDir = join(workspace, ".benchmark");
     const manifest = readJson(join(benchmarkDir, "manifest.json"));
     const resultPath = join(benchmarkDir, "run-result.json");
+    const eventsPath = join(benchmarkDir, "events.jsonl");
     const scorePath = join(benchmarkDir, "score.json");
     const recordPath = join(benchmarkDir, "run-record.json");
 
@@ -136,7 +187,8 @@ export function executePreparedMatrix(root) {
     }
 
     const run = readJson(resultPath);
-    const stopReason = preregisteredStopReason(cell, manifest, run);
+    const stopReason = preregisteredStopReason(cell, manifest, run)
+      ?? harnessDeliveryStopReason(manifest, run, plan.harness_delivery_gates, readEvents(eventsPath));
     if (stopReason) {
       state.status = "stopped-preregistered";
       state.stop_reason = stopReason;
@@ -192,6 +244,8 @@ export function executePreparedMatrix(root) {
       recoverable_tool_errors: record.runtime_diagnostics?.recoverable_tool_error_count ?? 0,
       agent_tool_calls: record.runtime_diagnostics?.agent_tool_call_count ?? 0,
       evidence_and_unknown_pass: score.critical_gates?.evidence_honesty === true,
+      first_product_write_ms: record.runtime_diagnostics?.milestones?.first_builtin_product_write_ms ?? null,
+      replacement_verifier_authored: replacementVerifierAuthorship(readEvents(eventsPath)).detected,
     };
     upsertCell(state, summary);
     state.completed_cells = state.cells.filter((entry) => entry.status === "complete").length;
@@ -221,4 +275,3 @@ async function main() {
 if (resolve(process.argv[1] ?? "") === fileURLToPath(import.meta.url)) {
   await main();
 }
-

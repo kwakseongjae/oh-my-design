@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
+  harnessDeliveryStopReason,
   preregisteredStopReason,
+  replacementVerifierAuthorship,
   runArgsForCell,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
 
@@ -31,6 +33,7 @@ const validRun = {
       { agent_id: "omd-ux-writer", requested_model: "opus" },
       { agent_id: "omd-ux-engineer", requested_model: "opus" },
     ],
+    milestones: { first_builtin_product_write_ms: 313484 },
   },
 };
 
@@ -73,5 +76,59 @@ describe("UI-Resolve prepared matrix execution", () => {
       "--timeout-ms", "900000",
     ]);
   });
-});
 
+  it("stops a harness on a late or missing first product write", () => {
+    const gates = { first_product_write_ms_max: 450000, forbid_replacement_verifier: true };
+    const late = structuredClone(validRun);
+    late.output.milestones.first_builtin_product_write_ms = 450001;
+    expect(harnessDeliveryStopReason(manifest, late, gates)).toBe("late-first-product-write");
+
+    const missing = structuredClone(validRun);
+    delete missing.output.milestones;
+    expect(harnessDeliveryStopReason(manifest, missing, gates)).toBe("missing-first-product-write-milestone");
+  });
+
+  it("detects an authored replacement verifier but allows a real-browser probe", () => {
+    const shim = [{
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          name: "Bash",
+          input: { command: "cat > .t/verify.js <<'EOF'\nclass Element {}\nglobalThis.document = {}\nEOF" },
+        }],
+      },
+    }];
+    expect(replacementVerifierAuthorship(shim)).toMatchObject({
+      detected: true,
+      reason: "suspicious-verifier-path",
+    });
+
+    const probe = [{
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          name: "Bash",
+          input: { command: "python3 - probe.html <<'EOF'\nopen('probe.html','w').write('<script>document.querySelectorAll(\"button\")</script>')\nEOF" },
+        }],
+      },
+    }];
+    expect(replacementVerifierAuthorship(probe)).toEqual({ detected: false });
+  });
+
+  it("fails closed when replacement-verifier authorship is observed", () => {
+    const gates = { first_product_write_ms_max: 450000, forbid_replacement_verifier: true };
+    const events = [{
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          name: "Write",
+          input: { file_path: ".t/dom-shim.mjs", content: "class Document {}" },
+        }],
+      },
+    }];
+    expect(harnessDeliveryStopReason(manifest, validRun, gates, events)).toBe("replacement-verifier-authored");
+  });
+});

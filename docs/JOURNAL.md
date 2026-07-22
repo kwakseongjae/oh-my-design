@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.9 delivery gates automated
+- matrix plan에 harness first-write/replacement-verifier fail-closed gate를 추가했다.
+- 1.9.8 event는 clean, 보존된 1.9.7 `.t/verify.js`는 정확히 detected다.
+- 실제 browser probe는 허용하고 DOM shim·mock·verifier 작성만 차단한다.
+- focused 13/13과 syntax/diff가 green; 다음은 1.9.9 matrix preregistration이다.
+
 ## 2026-07-23 (Codex) · 1.9.8 delivery recovery passed
 - fresh exact Opus cell은 456.0초·85/85·first edit 313.5초로 모든 acceptance를 통과했다.
 - writer/engineer Opus attribution 2/2, product diff `index.html` only, Evidence & Unknown pass다.

@@ -44,6 +44,23 @@ describe("UI-Resolve run matrix preparation", () => {
     expect(() => validateRunMatrixPlan(value)).toThrow("effort is invalid");
   });
 
+  it("validates optional harness delivery gates before workspace preparation", () => {
+    const value = plan({
+      harness_delivery_gates: {
+        first_product_write_ms_max: 450000,
+        forbid_replacement_verifier: true,
+      },
+    });
+    expect(validateRunMatrixPlan(value).harness_delivery_gates.first_product_write_ms_max).toBe(450000);
+
+    expect(() => validateRunMatrixPlan(plan({
+      harness_delivery_gates: {
+        first_product_write_ms_max: 0,
+        forbid_replacement_verifier: true,
+      },
+    }))).toThrow("first_product_write_ms_max");
+  });
+
   it("maps a cell to the isolated sandbox preparer without provider execution", () => {
     expect(prepareArgsForCell(plan().cells[0], "/tmp/u197/pricing-t1-portable")).toEqual([
       "--task", "pricing-conversion-v0.1",
@@ -53,4 +70,3 @@ describe("UI-Resolve run matrix preparation", () => {
     ]);
   });
 });
-
