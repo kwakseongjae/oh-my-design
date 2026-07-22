@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `dc27f8f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.16 semantic-color source patch complete
+- 갱신: 2026-07-23 · 1.9.16 semantic-color recovery preregistered
 
 ## 지금 (현재 위치)
+
+- fresh recovery는 `/tmp/u1916`의 Pricing harness 단일 셀, exact Opus/xhigh, 900s, first write≤450,000ms, specialists 2/2, frozen 85/85, all critical/Evidence pass, serious/critical axe 0, verifier 0을 요구하며 retry가 없다.
+- source/activation basis는 `5e8379b`; 1.9.15 artifacts와 workspace는 immutable하며 recovery denominator에 들어오지 않는다. full pass만 1.9.17 fresh repeated matrix를 unlock한다.
 
 - 1.9.16 source patch는 `semantic_color_ledger`를 protected ledger와 함께 첫 편집 전에 잠근다. unmeasured accent-on-surface는 meaningful normal text에서 금지하고, DESIGN.md text-role label + adjacent non-text accent로 fail-closed한다.
 - `unresolved` disclosure는 위험 pair 출고 권한이 아니며, specialist engineer 질문 하나가 state/status/accent token의 planned foreground/background pair를 text/non-text로 분류해야 한다. 자문 뒤 새 pair도 같은 보수적 기본값을 적용한다.
@@ -297,9 +300,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fresh Pricing harness recovery를 새 workspace에 preregister한다.
-2. exact Opus/xhigh preflight 뒤 한 번 실행하고 85/85·Evidence·specialists·delivery·authority를 판정한다.
-3. full pass일 때만 새 repeated matrix를 연다; failed 1.9.15는 immutable하게 유지한다.
+1. `/tmp/u1916`을 fresh prepare하고 exact Opus/xhigh preflight를 통과시킨다.
+2. Pricing recovery를 한 번 실행하고 85/85·Evidence·specialists·delivery·authority를 판정한다.
+3. full pass일 때만 1.9.17 repeated matrix를 연다; failed 1.9.15는 immutable하게 유지한다.
 4. 그 뒤 locale/evidence → public benchmark UX → activation → independent challenge로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")

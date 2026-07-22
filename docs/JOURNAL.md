@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.16 semantic-color recovery preregistered
+- `/tmp/u1916` fresh Pricing harness 1셀, exact Opus/xhigh를 고정했다.
+- 85/85·axe serious 0·Evidence·specialists 2/2·first write≤450s·verifier 0이 gate다.
+- source basis는 `5e8379b`; retry와 1.9.15 소급 수정은 없다.
+- full pass만 1.9.17 fresh repeated matrix를 연다.
+
 ## 2026-07-23 (Codex) · 1.9.16 semantic-color source complete
 - unmeasured accent-on-surface normal text를 금지하는 semantic color ledger를 추가했다.
 - text-role label + adjacent non-text accent가 fail-closed default다.
