@@ -3,11 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `55c66b7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.8 recovery PASS; 1.9.9 자동 delivery fail-closed gate 구현 완료
+- 기준 커밋: `eb3a300` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.9 fresh full repeated matrix preregistered; clean prepare 직전
 
 ## 지금 (현재 위치)
 
+- 1.9.9 replacement를 `/tmp/u199`의 18 fresh cells로 사전등록했다. exact Opus/xhigh, 3 tasks×3 trials×portable/harness, candidate first write≤450,000ms·replacement verifier 0을 executor가 자동 정지 조건으로 적용한다.
+- schedule은 trial round마다 Pricing→Onboarding→Operations를 교차하고 pair order를 portable-first 5 / harness-first 4로 균형화했다. 1.9.7/1.9.8 결과는 denominator에 포함하지 않는다.
 - 1.9.9 준비로 matrix executor에 optional `harness_delivery_gates`를 추가했다. first product write milestone missing/late와 authored verifier·DOM shim·mock browser를 evaluator 전에 자동 정지하며 completed state에도 first write와 replacement-verifier 여부를 남긴다.
 - classifier는 1.9.8 events를 clean으로, 보존된 1.9.7 timeout의 `.t/verify.js`를 `suspicious-verifier-path`로 판별한다. 실제 Chrome probe는 허용하며 focused prepare/run-matrix 13/13과 Node syntax/diff gate가 green이다.
 - 1.9.8 fresh onboarding recovery는 exact Opus 4.8/xhigh에서 456,045ms에 정상 종료, frozen evaluator 85/85·UI-Resolved·critical 6/6·Evidence & Unknown pass다. first/last write 313,484/415,072ms, uncached tokens 127,533이며 Opus specialists 2/2, Agent/infra/sandbox/cwd error 0이다.
@@ -263,9 +265,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. executor gate를 커밋한 뒤 1.9.9 fresh full repeated matrix를 결과 확인 전에 사전등록한다.
-2. 1.9.9는 portable vs delivery-budget harness, 3 tasks×3 trials, exact Opus/xhigh, 900초, 모든 harness cell에 first write≤450초·replacement verifier 0을 자동 gate로 적용한다.
-3. clean workspaces와 exact model preflight 뒤 frozen 순서로 실행하며 timeout/auth/attribution failure는 재시도 없이 정지·보존한다.
+1. preregistration을 별도 커밋하고 `/tmp/u199` 18개 clean workspace를 준비한다.
+2. exact Opus model/auth preflight 뒤 frozen 순서로 실행하며 timeout/auth/attribution/delivery failure는 재시도 없이 정지·보존한다.
+3. 완료되면 scheduled denominator 전체로 Reliability@3·paired lift·Pareto·delivery gates를 판정하고 1.9.10 robustness queue를 연다.
 4. 그 뒤 activation funnel 관찰 → v1.9 full-trace/rescue 사례 → Home mobile/Builder error 상태로 복귀한다.
 
 ## 막힘 / 대기 (없으면 "없음")

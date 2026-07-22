@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.9 full replacement preregistered
+- portable vs delivery-budget harness 3 tasks×3 trials=18 fresh cells를 잠갔다.
+- task families를 trial round별로 교차하고 pair 선행 순서를 5:4로 균형화했다.
+- candidate는 first edit≤450초·replacement verifier 0을 자동 fail-closed로 요구한다.
+- 다음은 `/tmp/u199` clean prepare → exact Opus preflight → no-retry frozen run이다.
+
 ## 2026-07-23 (Codex) · 1.9.9 delivery gates automated
 - matrix plan에 harness first-write/replacement-verifier fail-closed gate를 추가했다.
 - 1.9.8 event는 clean, 보존된 1.9.7 `.t/verify.js`는 정확히 detected다.
