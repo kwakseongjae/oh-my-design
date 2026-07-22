@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-22 (Codex) · 1.9.7 harness matrix prepared
+- portable vs Opus-pinned 2-specialist harness를 3 tasks × 3 trials = 18 cells로 사전등록했다.
+- Pareto/attribution/budget gate와 결정론 matrix preparer를 추가해 `/tmp/u197` 18/18을 clean 준비했다.
+- focused 21/21, 전체 195 pass/1 skip, lint/build green이며 정본은 `96b0d02`다.
+- Claude 2.1.217 auth가 loggedOut라 provider 실행 전 stop; `claude auth login` 뒤 frozen 순서로 재개한다.
+
 ## 2026-07-22 (Codex) · 1.9.6 three-model transfer complete
 - Terra/Fable/Opus × raw/OmD 6개를 exact model/xhigh로 실행해 6/6 valid·attributable로 닫았다.
 - Raw 1/3 → OmD 3/3, paired 2 win/1 tie/0 loss, Evidence & Unknown 6/6이었다.
