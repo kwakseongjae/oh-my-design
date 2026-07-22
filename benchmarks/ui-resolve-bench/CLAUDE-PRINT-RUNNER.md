@@ -1,62 +1,105 @@
-# Claude Code print-mode runner feasibility
+# Claude Code print-mode runner
 
 Verified locally on 2026-07-22 with Claude Code `2.1.212`.
 
-## Short answer
+## Decision
 
-Yes. Claude Code supports non-interactive `-p/--print` execution, a pinned
-`--model`, `--effort`, JSON or streaming JSON output, `--max-budget-usd`,
-`--no-session-persistence`, tool allowlists, and non-interactive permission
-modes. It can therefore become a UI-Resolve runner after authentication and a
-separate runtime calibration.
+Claude Code can run a subscription-backed UI-Resolve cell non-interactively.
+The exact model id is **`claude-opus-4-8`**; `opus` is a moving alias and is not
+accepted by the benchmark preflight. Local usage history contains real
+`claude-opus-4-8` and `claude-fable-5` entries, and Anthropic's current model
+configuration documents the same Opus id.
 
-The current machine is not authenticated (`claude auth status` reports
-`loggedIn: false`). The currently documented first-party Opus model is **Opus
-4.7**, not 4.8. A future 4.8 run must use its exact released model id rather
-than the moving `opus` alias.
+The machine was authenticated with the Claude subscription on 2026-07-22, and
+the no-repository probe returned exactly `OMD_OPUS_48_PROBE` from
+`claude-opus-4-8`. `ANTHROPIC_API_KEY`,
+`ANTHROPIC_AUTH_TOKEN`, provider flags, or a separate OAuth-token environment
+must not shadow the intended interactive subscription login.
 
-## Subscription-safe shape
+## Quota finding
 
-For subscription usage, sign in through Claude Code and keep
-`ANTHROPIC_API_KEY` unset. An environment API key takes precedence and creates
-pay-as-you-go API charges. Do not use `--bare` for this path: bare mode does not
-read OAuth or keychain credentials. Use an isolated prepared workspace,
-`--safe-mode`, a tool allowlist without web tools, and no session persistence.
+`claude -p` shifts these runs away from Codex/OpenAI quota, but it does not make
+the work token-free. Anthropic announced a separate monthly Agent SDK credit,
+then paused that change on June 15, 2026. **For now `claude -p` still draws from
+the subscription's usage limits.** Claude can expose session, weekly, and Opus
+limits separately; use `/usage` after login as the account-specific source of
+truth. Higher effort consumes limits faster.
 
-Illustrative invocation after login and model pinning:
+This still makes Opus useful for the project when its available allowance is
+underused, but the scheduler must record quota state rather than assume that
+Fable and Opus are independent pools.
+
+Sources:
+
+- https://www.anthropic.com/news/claude-opus-4-8
+- https://support.claude.com/en/articles/11940350-claude-code-model-configuration
+- https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan
+- https://code.claude.com/docs/en/authentication
+- https://code.claude.com/docs/en/errors
+
+## Implemented local path
+
+The preparation adapter installs the same frozen OmD source into
+`.claude/skills/` and writes a `CLAUDE.md` sandbox contract:
 
 ```text
-claude -p \
-  --model claude-opus-4-7 \
+node benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs \
+  --task incident-operations-v0.1 \
+  --variant omd-portable \
+  --runtime claude-code \
+  --out /tmp/ui-resolve-claude/incident-omd-1
+```
+
+Preflight refuses unauthenticated, API-key-shadowed, provider-routed, or moving
+model-alias runs:
+
+```text
+npm run bench:ui:claude:check -- --model claude-opus-4-8
+```
+
+After login, run the prepared workspace:
+
+```text
+npm run bench:ui:claude:run -- \
+  --workspace /tmp/ui-resolve-claude/incident-omd-1 \
+  --model claude-opus-4-8 \
+  --effort xhigh
+```
+
+The runner loads only project setting sources, disables Chrome and MCP, pins
+the exact model, requires Claude's native OS sandbox, blocks its unsandboxed
+escape hatch, denies web tools, strips provider credentials from Bash children,
+and disables session persistence. Raw events, normalized token usage, reported
+model, wall time, product-only diff, and provider cost when supplied are written
+to the existing run-result schema.
+
+`--safe-mode` is intentionally absent from scored skill runs because it disables
+project Skills. The same `--setting-sources project` isolation is used for both
+raw and OmD conditions, so user-global Skills are not loaded.
+
+## Login smoke before repository work
+
+The first no-tools call was made from an empty temporary directory with:
+
+```text
+claude -p "Return exactly OMD_OPUS_48_PROBE" \
+  --model claude-opus-4-8 \
   --effort xhigh \
   --output-format json \
   --no-session-persistence \
   --safe-mode \
-  --permission-mode acceptEdits \
-  --tools Read Edit Write Glob Grep
+  --tools ""
 ```
 
-The benchmark runner should pass `PROMPT.md` through stdin, execute inside an
-ephemeral prepared workspace, hash product-only diffs, and normalize Claude's
-JSON usage/cost fields into the existing run-record schema. Exact tool names
-and candidate-skill activation must be calibration-tested before a scored run.
-
-## What it saves — and what it does not
-
-- It can reduce **Codex/OpenAI quota consumption** by moving runs to the Claude
-  subscription's rolling allowance.
-- It does not reduce the model's actual token work merely because `-p` is used.
-- Opus may consume subscription allowance faster than a smaller model. The
-  cheapest reliable pipeline is deterministic local collection/evaluation,
-  lower-cost model passes for routine work, and Opus only for ambiguous design
-  judgment or a deliberately measured Opus benchmark cell.
-- Prompt caching can reduce provider cost or quota pressure, but benchmark
-  records must still preserve cached and uncached token fields separately.
+This confirmed authentication, exact model access, print-mode JSON, and quota
+behavior without exposing repository content. The JSON also reported a small
+Claude Code helper-model allocation in addition to Opus. The runner therefore
+records and sums every `modelUsage` entry, while preserving per-model cost and
+context fields. The Claude Transfer Matrix may now begin.
 
 ## Benchmark classification
 
-Do not merge Claude Opus results into the current Terra Skill Lift estimate.
-First add it as a **Transfer Matrix** cell with the same raw DESIGN.md and OmD
-conditions. Claude Code and Codex differ in both model and agent runtime, so a
-cross-provider result is a model×runtime observation unless a runtime-neutral
-runner is later established.
+Do not merge Opus results into the Terra Skill Lift estimate. Record Claude Code
+as a separate **Transfer Matrix** cell with raw DESIGN.md and OmD conditions.
+Until the same model is available through a runtime-neutral runner, it is a
+model×agent-runtime observation, not a pure model effect.

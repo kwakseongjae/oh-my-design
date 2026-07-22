@@ -63,6 +63,8 @@
     "check:catalog": "npm --prefix web run check:reference-pipeline",
     "bench:ui:prepare": "node benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs",
     "bench:ui:run": "node benchmarks/ui-resolve-bench/scripts/run-codex.mjs",
+    "bench:ui:claude:check": "node benchmarks/ui-resolve-bench/scripts/check-claude-runner.mjs",
+    "bench:ui:claude:run": "node benchmarks/ui-resolve-bench/scripts/run-claude.mjs",
     "bench:ui:record": "node benchmarks/ui-resolve-bench/scripts/record-in-app-run.mjs",
     "bench:ui:evaluate": "node benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
     "bench:ui:summarize": "node benchmarks/ui-resolve-bench/scripts/summarize-pilot.mjs",

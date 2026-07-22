@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-22 (Codex) · paired smoke 18/18 + Opus 4.8 runner ready
+- Terra/xhigh matrix를 18/18로 닫아 Raw 3/9, OmD 4/9, 1 win/8 ties/0 losses를 영구 기록했다.
+- lift CI가 0을 포함하고 Reliability@3가 양쪽 0이므로 1.9.1은 non-publishable calibration으로 유지했다.
+- Claude Code exact `claude-opus-4-8`을 확인하고 project-only skill·sandbox·no-MCP 구독 runner를 추가했다.
+- Claude 구독 로그인과 no-repo Opus 4.8 probe까지 성공했다. 다음은 1-task Transfer Matrix → fresh 0.3.0 matrix다.
+
 ## 2026-07-22 (Codex) · 1.9.2 task-owned semantic contract calibrated
 - universal nav rule을 task-owned landmark oracle로 교체하고 exact operations live count를 known fact로 분리했다.
 - 저장 출력 복사본 5개는 예상 4 pass + 실제 contrast fail 1개를 유지했다.

@@ -134,6 +134,33 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("adapts the same OmD source contract to Claude Code without loading Codex shims", () => {
+    const parent = mkdtempSync(join(tmpdir(), "ui-resolve-claude-"));
+    const out = join(parent, "omd-portable");
+    execFileSync(process.execPath, [
+      prepare,
+      "--task", "pricing-conversion-v0.1",
+      "--variant", "omd-portable",
+      "--out", out,
+      "--runtime", "claude-code",
+      "--allow-dirty-source",
+    ], { cwd: repoRoot, encoding: "utf8" });
+    const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+
+    expect(existsSync(join(out, ".claude/skills/omd-apply/SKILL.md"))).toBe(true);
+    expect(existsSync(join(out, ".agents/skills/omd-apply/SKILL.md"))).toBe(false);
+    expect(existsSync(join(out, "CLAUDE.md"))).toBe(true);
+    expect(existsSync(join(out, "AGENTS.md"))).toBe(false);
+    expect(manifest).toMatchObject({
+      runtime_target: "claude-code",
+      skill: {
+        declared_name: "omd:apply",
+        install_platform: "claude-code",
+        install_root: ".claude/skills",
+      },
+    });
+  });
+
   it("preregisters declared names separately from install directories", () => {
     expect(competitors.variants["taste-skill"]).toMatchObject({
       install_root: ".agents/skills",

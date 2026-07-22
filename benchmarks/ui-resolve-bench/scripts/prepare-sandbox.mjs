@@ -19,10 +19,14 @@ const taskId = args.get("task");
 const variantId = args.get("variant");
 const out = args.get("out") ? resolve(String(args.get("out"))) : null;
 const vendorsRoot = args.get("vendors") ? resolve(String(args.get("vendors"))) : null;
+const runtime = String(args.get("runtime") ?? "codex");
 
 if (!taskId || !variantId || !out) {
-  console.error("usage: prepare-sandbox.mjs --task <id> --variant <id> --out <new-dir> [--vendors <dir>] [--allow-off-label] [--allow-dirty-source]");
+  console.error("usage: prepare-sandbox.mjs --task <id> --variant <id> --out <new-dir> [--runtime codex|claude-code] [--vendors <dir>] [--allow-off-label] [--allow-dirty-source]");
   process.exit(2);
+}
+if (!new Set(["codex", "claude-code"]).has(runtime)) {
+  throw new Error(`unsupported runtime: ${runtime}`);
 }
 if (existsSync(out)) throw new Error(`refusing to overwrite an existing run: ${out}`);
 
@@ -176,7 +180,15 @@ if (variant.declared_name) {
       `${variantId} source tree is dirty at ${sourceGitRoot}. Commit/stash it, or use --allow-dirty-source for a non-publishable diagnostic run.`,
     );
   }
-  const installRoot = assertInside(out, join(out, variant.install_root));
+  const runtimeInstall = runtime === "claude-code" && variant.install_platform === "agents"
+    ? { platform: "claude-code", root: ".claude/skills" }
+    : { platform: variant.install_platform, root: variant.install_root };
+  if (runtime === "claude-code" && runtimeInstall.platform !== "claude-code") {
+    throw new Error(
+      `${variantId} has no reviewed Claude Code install adapter (declared platform: ${variant.install_platform})`,
+    );
+  }
+  const installRoot = assertInside(out, join(out, runtimeInstall.root));
   const destination = assertInside(installRoot, join(installRoot, variant.install_dir));
   let bundledSkills = [];
   if (variant.install_adapter === "official-codex-template-v2.5.0") {
@@ -194,8 +206,8 @@ if (variant.declared_name) {
   const skillTree = treeManifest(installRoot);
   skill = {
     declared_name: declaredName,
-    install_platform: variant.install_platform,
-    install_root: variant.install_root,
+    install_platform: runtimeInstall.platform,
+    install_root: runtimeInstall.root,
     install_dir: variant.install_dir,
     install_adapter: variant.install_adapter ?? null,
     bundled_skills: bundledSkills,
@@ -219,18 +231,15 @@ const activation = activationDelta ? `\n\n## Variant activation\n\n${activationD
 const prompt = `${promptSource}${activation}\n`;
 mkdirSync(join(out, ".benchmark"), { recursive: true });
 writeFileSync(join(out, ".benchmark", "PROMPT.md"), prompt, "utf8");
-writeFileSync(
-  join(out, "AGENTS.md"),
-  [
-    "# UI-Resolve Bench sandbox",
-    "",
-    "Work only in this directory. Do not install packages, access the network, or read files outside this workspace.",
-    "Follow the task in `.benchmark/PROMPT.md`. If it names an installed skill, read that skill completely and apply it.",
-    "Do not alter `.benchmark/`, `AGENTS.md`, or any `data-bench` hook.",
-    "",
-  ].join("\n"),
-  "utf8",
-);
+const instructionFile = runtime === "claude-code" ? "CLAUDE.md" : "AGENTS.md";
+writeFileSync(join(out, instructionFile), [
+  "# UI-Resolve Bench sandbox",
+  "",
+  "Work only in this directory. Do not install packages, access the network, or read files outside this workspace.",
+  "Follow the task in `.benchmark/PROMPT.md`. If it names an installed skill, read that skill completely and apply it.",
+  `Do not alter \`.benchmark/\`, \`${instructionFile}\`, or any \`data-bench\` hook.`,
+  "",
+].join("\n"), "utf8");
 
 const initialTree = treeManifest(out, { ignore: [".benchmark"] });
 const productIgnore = [...new Set([
@@ -241,11 +250,13 @@ const productIgnore = [...new Set([
   ".codex",
   ".opencode",
   "AGENTS.md",
+  "CLAUDE.md",
 ])];
 const initialProductTree = treeManifest(out, { ignore: productIgnore });
 const manifest = {
   schema_version: "0.1",
   prepared_at: new Date().toISOString(),
+  runtime_target: runtime,
   task: {
     id: task.id,
     version: task.version,

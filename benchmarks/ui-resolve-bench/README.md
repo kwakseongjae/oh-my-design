@@ -96,6 +96,28 @@ node benchmarks/ui-resolve-bench/scripts/export-run-record.mjs \
   --trial 1
 ```
 
+Claude Code is a separate Transfer Matrix runtime, not a replacement row in the
+Terra Skill Lift estimate. Prepare with `--runtime claude-code`, verify
+subscription auth without shadowing API credentials, then pin the exact model:
+
+```bash
+npm run bench:ui:claude:check -- --model claude-opus-4-8
+
+node benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs \
+  --task pricing-conversion-v0.1 \
+  --variant omd-portable \
+  --runtime claude-code \
+  --out /tmp/ui-resolve-runs/claude-omd
+
+npm run bench:ui:claude:run -- \
+  --workspace /tmp/ui-resolve-runs/claude-omd \
+  --model claude-opus-4-8 \
+  --effort xhigh
+```
+
+See [`CLAUDE-PRINT-RUNNER.md`](./CLAUDE-PRINT-RUNNER.md) for isolation, quota,
+and login-probe details.
+
 Once repeated runs are exported as
 [`run-record.schema.json`](./run-record.schema.json) records, aggregate them
 without hiding failed or timed-out trials:
