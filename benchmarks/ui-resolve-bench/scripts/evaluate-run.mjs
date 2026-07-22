@@ -158,11 +158,13 @@ export function evaluateProtectedHookCounts(viewports, expectedCounts) {
   };
 }
 
-export function findUnsupportedClaims(sources, patterns) {
+export function findUnsupportedClaims(sources, patterns, allowedPatterns = []) {
   const matches = [];
+  const allowed = allowedPatterns.map((pattern) => new RegExp(pattern, "iu"));
   for (const pattern of patterns ?? []) {
     const expression = new RegExp(pattern, "giu");
     for (const source of sources ?? []) {
+      if (allowed.some((candidate) => candidate.test(source.text))) continue;
       expression.lastIndex = 0;
       let match;
       while ((match = expression.exec(source.text)) !== null) {
@@ -179,6 +181,23 @@ export function findUnsupportedClaims(sources, patterns) {
     }
   }
   return matches;
+}
+
+export function evaluateLandmarkObservation(observation, oracle) {
+  const checks = {};
+  for (const [field, rule] of Object.entries(oracle ?? {})) {
+    const actual = observation?.[field];
+    if (!Number.isFinite(actual)) {
+      checks[field] = false;
+      continue;
+    }
+    const normalized = typeof rule === "number" ? { exact: rule } : rule;
+    checks[field] =
+      (normalized?.exact == null || actual === normalized.exact) &&
+      (normalized?.min == null || actual >= normalized.min) &&
+      (normalized?.max == null || actual <= normalized.max);
+  }
+  return checks;
 }
 
 export function evaluateKeyboardTraversal(traversal) {
@@ -895,14 +914,11 @@ async function main() {
     semantics: Boolean(semantics),
     design: Boolean(design),
   };
+  const landmarkChecks = evaluateLandmarkObservation(semantics, task.semantic_oracle?.landmarks);
   const contractChecks = {
     observations_complete: everyCheckPass(observationPresence),
     protected_hooks_exact: protectedHooks.exact,
-    landmarks:
-      semantics?.h1_count === 1 &&
-      semantics?.main_count === 1 &&
-      semantics?.nav_count >= 1 &&
-      semantics?.footer_count >= 1,
+    landmarks: everyCheckPass(landmarkChecks),
     console_clean:
       viewportResults.length === task.viewports.length &&
       viewportResults.every((viewport) => viewport.console_errors.length === 0),
@@ -959,7 +975,11 @@ async function main() {
       Math.abs(design.control_radius_px - oracle.control_radius_px) <= 1,
     fonts: everyCheckPass(fontChecks),
   };
-  const unsupportedClaims = findUnsupportedClaims(evidenceSources, task.protected_unknown_patterns);
+  const unsupportedClaims = findUnsupportedClaims(
+    evidenceSources,
+    task.protected_unknown_patterns,
+    task.protected_known_patterns,
+  );
   const evidenceChecks = {
     evidence_ledger_complete: evidenceSources.length > 0,
     no_protected_unknown_claims: unsupportedClaims.length === 0,
@@ -1021,6 +1041,7 @@ async function main() {
     checks: {
       observation_presence: observationPresence,
       contract: contractChecks,
+      landmark_details: landmarkChecks,
       states: stateChecks,
       state_details: stateDetails,
       responsive: responsiveChecks,

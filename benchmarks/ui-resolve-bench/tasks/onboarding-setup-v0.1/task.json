@@ -1,6 +1,6 @@
 {
   "id": "onboarding-setup-v0.1",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "track": "repair",
   "grounding": "design-md",
   "locale": "en",
@@ -8,6 +8,14 @@
   "review_brief": "A focused first-run setup flow for a small research workspace. Compare whether the result explains the next decision, keeps role and preference state legible, and makes creating the first workspace feel safe and reversible.",
   "network": "disabled",
   "entry": "index.html",
+  "semantic_oracle": {
+    "landmarks": {
+      "h1_count": { "exact": 1 },
+      "main_count": { "exact": 1 },
+      "nav_count": { "min": 0 },
+      "footer_count": { "min": 1 }
+    }
+  },
   "viewports": [
     { "name": "desktop", "width": 1440, "height": 1000 },
     { "name": "mobile", "width": 390, "height": 844 },

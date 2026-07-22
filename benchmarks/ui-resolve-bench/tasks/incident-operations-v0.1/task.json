@@ -1,6 +1,6 @@
 {
   "id": "incident-operations-v0.1",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "track": "repair",
   "grounding": "design-md",
   "locale": "en",
@@ -8,6 +8,14 @@
   "review_brief": "A compact incident operations console for a small platform team. Compare whether the result makes severity, ownership, current state, and the next safe action scannable without turning every datum into a card.",
   "network": "disabled",
   "entry": "index.html",
+  "semantic_oracle": {
+    "landmarks": {
+      "h1_count": { "exact": 1 },
+      "main_count": { "exact": 1 },
+      "nav_count": { "min": 1 },
+      "footer_count": { "min": 1 }
+    }
+  },
   "viewports": [
     { "name": "desktop", "width": 1440, "height": 1000 },
     { "name": "mobile", "width": 390, "height": 844 },
@@ -53,6 +61,9 @@
     "\\b(?:zero downtime|always available|never fails|instant recovery)\\b",
     "\\b\\d[\\d,]*\\+?\\s+(?:customers|companies|teams|users|incidents)\\b",
     "[★☆]{3,}"
+  ],
+  "protected_known_patterns": [
+    "^(?:Showing all )?4 incidents(?: shown)?\\.?$"
   ],
   "protected_unknown_selectors": [
     "blockquote",

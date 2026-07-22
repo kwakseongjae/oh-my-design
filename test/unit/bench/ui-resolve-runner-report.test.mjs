@@ -9,6 +9,10 @@ const scriptsRoot = join(repoRoot, "benchmarks/ui-resolve-bench/scripts");
 const prepare = join(scriptsRoot, "prepare-sandbox.mjs");
 const summarize = join(scriptsRoot, "summarize-pilot.mjs");
 const buildGallery = join(scriptsRoot, "build-gallery.mjs");
+const canonicalPricingTask = JSON.parse(readFileSync(
+  join(repoRoot, "benchmarks/ui-resolve-bench/tasks/pricing-conversion-v0.1/task.json"),
+  "utf8",
+));
 
 function writeJson(path, value) {
   mkdirSync(resolve(path, ".."), { recursive: true });
@@ -23,7 +27,7 @@ function makeRun(runsRoot, {
   score,
   screenshots = false,
   taskId = "pricing-conversion-v0.1",
-  taskVersion = "0.1.0",
+  taskVersion = canonicalPricingTask.version,
   corePromptSha256 = "core-prompt-sha256-fixture",
 }) {
   const benchmarkDir = join(runsRoot, directory, ".benchmark");
@@ -209,7 +213,7 @@ describe("UI-Resolve Bench runner and reports", () => {
     expect(first.assignment.assignment_count).toBe(4);
     expect(first.assignment.task).toMatchObject({
       id: "pricing-conversion-v0.1",
-      version: "0.1.0",
+      version: canonicalPricingTask.version,
       core_prompt_sha256: "core-prompt-sha256-fixture",
       review_brief: expect.stringContaining("release-coordination product"),
     });

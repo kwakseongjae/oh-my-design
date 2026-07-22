@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-22 (Codex) · 1.9.2 task-owned semantic contract calibrated
+- universal nav rule을 task-owned landmark oracle로 교체하고 exact operations live count를 known fact로 분리했다.
+- 저장 출력 복사본 5개는 예상 4 pass + 실제 contrast fail 1개를 유지했다.
+- annual-price/toggle/filter mutant 3개도 각각 원래 state gate에서 계속 실패했다.
+- task contract 0.3.0, focused 12 tests green; 다음은 fresh paired matrix다.
+
 ## 2026-07-22 (Codex) · paired smoke 16/18 + Claude print-mode audit
 - Terra/xhigh 16회를 평가·export했고 Raw 3/9, OmD 2/7 UI-Resolved; 완성 7쌍은 1 win/6 ties/0 losses다.
 - onboarding nav 강제와 operations live-count 오탐을 찾아 결과를 non-publishable calibration으로 잠갔다.

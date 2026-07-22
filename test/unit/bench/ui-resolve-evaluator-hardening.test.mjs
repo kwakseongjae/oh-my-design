@@ -10,6 +10,7 @@ import {
   evaluateFormObservation,
   evaluateFontOracle,
   evaluateKeyboardTraversal,
+  evaluateLandmarkObservation,
   evaluateProtectedHookCounts,
   evaluateToggleObservation,
   evaluateViewportGeometry,
@@ -79,6 +80,25 @@ function validKeyboardTraversal() {
 }
 
 describe("UI-Resolve benchmark evaluator hardening", () => {
+  it("uses task-owned landmark requirements instead of a universal nav rule", () => {
+    const observation = { h1_count: 1, main_count: 1, nav_count: 0, footer_count: 1 };
+    expect(evaluateLandmarkObservation(observation, {
+      h1_count: { exact: 1 },
+      main_count: { exact: 1 },
+      nav_count: { min: 0 },
+      footer_count: { min: 1 },
+    })).toEqual({ h1_count: true, main_count: true, nav_count: true, footer_count: true });
+    expect(evaluateLandmarkObservation(observation, { nav_count: { min: 1 } }).nav_count).toBe(false);
+  });
+
+  it("allows only task-owned live counts while retaining unsupported proof detection", () => {
+    const patterns = ["\\b\\d[\\d,]*\\+?\\s+(?:customers|companies|teams|users|incidents)\\b"];
+    const allowed = ["^(?:Showing all )?4 incidents(?: shown)?\\.?$"];
+    expect(findUnsupportedClaims([{ source: "text:p", text: "Showing all 4 incidents." }], patterns, allowed)).toEqual([]);
+    expect(findUnsupportedClaims([{ source: "text:p", text: "Trusted by 400 teams" }], patterns, allowed)).toHaveLength(1);
+    expect(findUnsupportedClaims([{ source: "text:p", text: "Showing all 400 incidents." }], patterns, allowed)).toHaveLength(1);
+  });
+
   it("requires exact monthly and annual prices for every plan and a full round trip", () => {
     const passing = evaluateBillingObservation(validBillingObservation(), task.billing_expectations);
     expect(Object.values(passing).every(Boolean)).toBe(true);
