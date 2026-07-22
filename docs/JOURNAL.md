@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.10 benchmark robustness complete
+- context-aware optional renderer 분류와 narrow replacement-verifier detector를 고정했다.
+- retained 3 traces, focused 23/23, full 206/1 skip, lint/build가 green이다.
+- 1.9.9는 invalid로 유지하며 historical result를 소급 수정하지 않았다.
+- 다음 provider work는 fresh 1.9.11 preregistration만 허용한다.
+
 ## 2026-07-23 (Codex) · 1.9.10 classifier patch ready
 - optional qlmanage/Chrome environment block을 recoverable로 분리했다.
 - cwd/file-tool permission denial은 infra fail-closed를 유지한다.

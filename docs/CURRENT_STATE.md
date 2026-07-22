@@ -3,11 +3,12 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `4146154` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.10 context-aware verifier classification 구현 및 retained-trace replay 통과
+- 기준 커밋: `67df331` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.10 benchmark robustness calibration complete; fresh 1.9.11 설계 가능
 
 ## 지금 (현재 위치)
 
+- 1.9.10 report는 retained 3 traces와 unit/full gates를 근거로 classifier calibration complete다. provider generation은 없었고 1.9.9 run-result는 소급 수정하지 않았다.
 - 1.9.10 patch는 tool-result 문구만 보지 않고 연결된 Bash tool-use command를 함께 읽는다. `qlmanage`/headless Chrome의 known environment block은 optional verifier recoverable로 분리하고 cwd/built-in permission denial은 계속 infrastructure fail-closed다.
 - replacement detector는 real-browser `verify.html`/`probe.html`을 허용하고 JS/TS/Python verifier script, explicit DOM shim/mock-browser, DOM implementation을 차단한다. retained trace replay는 1.9.7 replacement true, 1.9.8 false, 1.9.9 false이며 1.9.9 tool errors는 2 recoverable / 0 infra / optional renderer 1로 분리된다.
 - focused Claude runner + matrix tests 23/23과 Node syntax/diff가 green이다. 1.9.9 result JSON은 immutable이며 소급 유효화하지 않는다.
@@ -271,9 +272,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 전체 tests/lint/build 뒤 1.9.10 classifier source patch를 독립 커밋한다.
-2. retained-trace deterministic calibration report를 고정하고 1.9.10을 complete 처리한다.
-3. 1.9.11 failure-recovery는 새 preregistration과 fresh workspaces만 사용한다.
+1. 1.9.10 report를 커밋한다.
+2. 1.9.11 failure-recovery는 새 preregistration과 fresh workspaces로 full repeated matrix replacement를 고정한다.
+3. exact Opus preflight 뒤 interleaved schedule을 실행하고 fail-closed stop/aggregate를 판정한다.
 4. 그 뒤 activation funnel 관찰 → v1.9 full-trace/rescue 사례 → Home mobile/Builder error 상태로 복귀한다.
 
 ## 막힘 / 대기 (없으면 "없음")
