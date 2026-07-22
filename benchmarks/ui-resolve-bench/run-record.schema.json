@@ -32,6 +32,16 @@
     "objective_max": { "type": "number", "exclusiveMinimum": 0 },
     "wall_time_ms": { "type": "number", "minimum": 0 },
     "tokens": { "type": "number", "minimum": 0 },
+    "token_usage": {
+      "type": ["object", "null"],
+      "properties": {
+        "input_tokens": { "type": "number", "minimum": 0 },
+        "cached_input_tokens": { "type": "number", "minimum": 0 },
+        "output_tokens": { "type": "number", "minimum": 0 },
+        "reasoning_output_tokens": { "type": "number", "minimum": 0 },
+        "total_tokens": { "type": "number", "minimum": 0 }
+      }
+    },
     "tool_calls": { "type": "number", "minimum": 0 },
     "human_interventions": { "type": "number", "minimum": 0 }
   },

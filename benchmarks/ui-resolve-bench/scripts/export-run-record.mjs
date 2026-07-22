@@ -20,6 +20,22 @@ export function classifyValidity(manifest, runStatus, score) {
   return "valid";
 }
 
+export function summarizeTokenUsage(run) {
+  const totals = { input_tokens: 0, cached_input_tokens: 0, output_tokens: 0, reasoning_output_tokens: 0 };
+  let observed = false;
+  for (const event of run?.output?.usage_events ?? []) {
+    const usage = event?.usage ?? event?.token_usage;
+    if (!usage) continue;
+    observed = true;
+    for (const field of Object.keys(totals)) {
+      const value = Number(usage[field] ?? 0);
+      if (Number.isFinite(value) && value >= 0) totals[field] += value;
+    }
+  }
+  if (!observed) return null;
+  return { ...totals, total_tokens: totals.input_tokens + totals.output_tokens };
+}
+
 export function buildRunRecord({
   workspace,
   manifest,
@@ -37,6 +53,7 @@ export function buildRunRecord({
   const validity = classifyValidity(manifest, runStatus, score);
   const automatedPass = score?.status?.automated_gate_pass === true;
   const productChanged = run?.workspace?.product_changed ?? run?.workspace?.changed ?? false;
+  const tokenUsage = summarizeTokenUsage(run);
   return {
     run_id: basename(workspace),
     benchmark_family: family,
@@ -58,6 +75,8 @@ export function buildRunRecord({
     objective_score: score?.points?.deterministic_total ?? 0,
     objective_max: score?.points?.deterministic_max ?? 85,
     wall_time_ms: run?.process?.wall_ms ?? 0,
+    tokens: tokenUsage?.total_tokens ?? null,
+    token_usage: tokenUsage,
     attribution: {
       source_commit: manifest?.skill?.source_commit ?? null,
       source_attestation: manifest?.skill?.source_attestation ?? null,

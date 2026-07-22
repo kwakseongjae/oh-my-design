@@ -67,6 +67,7 @@
     "bench:ui:evaluate": "node benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
     "bench:ui:summarize": "node benchmarks/ui-resolve-bench/scripts/summarize-pilot.mjs",
     "bench:ui:aggregate": "node benchmarks/ui-resolve-bench/scripts/aggregate-results.mjs",
+    "bench:ui:collect": "node benchmarks/ui-resolve-bench/scripts/collect-run-records.mjs",
     "bench:ui:export": "node benchmarks/ui-resolve-bench/scripts/export-run-record.mjs",
     "bench:ui:gallery": "node benchmarks/ui-resolve-bench/scripts/build-gallery.mjs",
     "workflows": "node dist/bin/oh-my-design.js workflows",

@@ -3,6 +3,7 @@ import {
   buildRunRecord,
   classifyRunStatus,
   classifyValidity,
+  summarizeTokenUsage,
 } from "../../../benchmarks/ui-resolve-bench/scripts/export-run-record.mjs";
 
 const manifest = {
@@ -22,6 +23,9 @@ const manifest = {
 const run = {
   runtime: { model: "gpt-5.6-terra" },
   process: { exit_code: 0, timed_out: false, wall_ms: 1200 },
+  output: {
+    usage_events: [{ usage: { input_tokens: 100, cached_input_tokens: 60, output_tokens: 25, reasoning_output_tokens: 5 } }],
+  },
   workspace: {
     product_changed: true,
     changed_product_files: [{ path: "index.html", status: "modified" }],
@@ -59,10 +63,35 @@ describe("UI-Resolve normalized run exporter", () => {
       validity: "valid",
       ui_resolved: true,
       objective_score: 81,
+      tokens: 125,
+      token_usage: {
+        input_tokens: 100,
+        cached_input_tokens: 60,
+        output_tokens: 25,
+        reasoning_output_tokens: 5,
+        total_tokens: 125,
+      },
       delivery: {
         product_changed: true,
         changed_product_files: [{ path: "index.html", status: "modified" }],
       },
+    });
+  });
+
+  it("sums usage without double-counting cached input or reasoning subsets", () => {
+    expect(summarizeTokenUsage({
+      output: {
+        usage_events: [
+          { usage: { input_tokens: 10, cached_input_tokens: 7, output_tokens: 4, reasoning_output_tokens: 2 } },
+          { token_usage: { input_tokens: 6, cached_input_tokens: 3, output_tokens: 2, reasoning_output_tokens: 1 } },
+        ],
+      },
+    })).toEqual({
+      input_tokens: 16,
+      cached_input_tokens: 10,
+      output_tokens: 6,
+      reasoning_output_tokens: 3,
+      total_tokens: 22,
     });
   });
 

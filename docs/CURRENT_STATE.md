@@ -8,9 +8,13 @@
 
 ## 지금 (현재 위치)
 
+- clean `6d7edc6`의 paired-smoke 18개 중 Terra/xhigh 16개를 `/tmp/ui-resolve-paired-smoke-1.9.1-6d7edc6`에 실행·평가·export했다. 남은 것은 `incident-operations × omd-portable` trial 2·3이며 외부 전송 안전 정책이 재차 차단해 시작하지 않았다. 우회하지 말고 명시적 재승인 뒤 같은 prepared workspace에서만 재개한다.
+- 부분 결과는 Raw 3/9, OmD 2/7 UI-Resolved이고 완성된 7 matched pairs는 1 win / 6 ties / 0 losses, objective median lift 0pp다. OmD matched mean token volume은 Raw보다 +73.5%였고 wall time은 비슷했다. 18/18 전에는 unmatched rate나 superiority를 공표하지 않는다.
+- 1.9.1에서 task contract 결함 2개를 발견했다: onboarding은 task에 없는 nav landmark를 evaluator가 강제하고, operations는 “4 incidents shown” 같은 task-derived count를 unsupported social proof로 오탐한다. 현재 결과는 non-publishable calibration이며 1.9.2의 단일 변수는 task-owned semantic contract다. `reports/paired-smoke-1.9.1/FINDINGS.md`가 정본이다.
+- Claude Code 2.1.212는 `-p`, pinned model, effort, JSON, budget cap을 지원하지만 로컬 auth는 현재 false이고 공식 current Opus는 4.7이다. 구독 사용은 API key를 비우고 OAuth login 후 가능하며 결과는 Terra와 섞지 않고 Transfer Matrix로 분리한다. 정본은 `benchmarks/ui-resolve-bench/CLAUDE-PRINT-RUNNER.md`다.
 - 1.9.1 paired smoke의 선행 결함을 수정했다. 기존 suite는 pricing 1개와 hardcoded journey뿐이어서 onboarding setup(`onboarding-v1`)·incident operations(`dashboard-v1`) 과제를 추가하고 evaluator를 task adapter/design selector 기반으로 일반화했다.
 - 세 oracle implementation은 실제 Chrome/axe/keyboard/320px/200% zoom에서 각각 85/85를 통과했다. annual-price 오류, preference-toggle no-op, severity-filter no-op mutant는 각각 의도한 state gate에서 80/85로 탈락했다. no-op starter는 product diff가 없어 UI-Resolved로 집계되지 않는다.
-- `reports/paired-smoke-1.9.1/PREREGISTRATION.md`에 Terra/xhigh, raw DESIGN.md 대조군, OmD portable, 3 tasks×3 trials=18 runs를 결과 확인 전에 고정했다. 다음 행동은 clean-source commit 후 전체 18회 실행·export·aggregate다.
+- `reports/paired-smoke-1.9.1/PREREGISTRATION.md`에 Terra/xhigh, raw DESIGN.md 대조군, OmD portable, 3 tasks×3 trials=18 runs를 결과 확인 전에 고정했다. 16개는 보존됐고 남은 2개를 같은 계약으로 끝내기 전에는 final aggregate를 만들지 않는다.
 - `1.9.1-candidate`에 benchmark 밖의 frontier-product contract를 구현했다. `omd workflows|route <rough task>`가 자연어 요청을 repair/audit/create/init/localize 중 가장 작은 workflow로 라우팅하고, 터미널은 install/doctor에만 쓰며 실제 작업 prompt는 coding-agent chat에 넣도록 안내한다.
 - `omd:apply`·`omd:harness`·`omd:orchestrator`는 공통 work packet, 한 명의 implementation owner, specialist advisory handoff, 실제 consumer route·viewport·state 재검증 계약을 공유한다. full harness는 checkpoint #3 뒤 `handoff/delivery.json`을 만들고 main agent가 실제 제품에 통합한 뒤 `delivery-verification.json`을 남겨야 완료된다.
 - package는 `workflow-capabilities.json`과 세 core skill의 OpenAI metadata를 포함하며 installer/doctor가 이를 배포·검증한다. canonical skills는 portable hyphen name을 유지하고 Claude/Codex 설치 시 channel-native colon name으로 렌더링한다.
@@ -21,7 +25,7 @@
 - UI-Resolve를 Model Track(무스킬), Skill Lift(고정 모델 paired control), Harness Track(품질/시간/개입 Pareto), 비랭킹 Prompt Arena(러프 프롬프트 blind visual), Transfer Matrix(model×skill 일반화)로 분리했다. 서로 다른 family 결과는 한 글로벌 순위로 합치지 않으며 Internal→Preview→Verified→Retired 상태를 가진다.
 - `1.9.1 → 1.9.9 → 2.0.0` patch experiment train을 고정했다. 매 0.0.1은 하나의 bounded hypothesis·benchmark slice·product activation metric·rollback gate를 가지며, product version과 benchmark suite version은 분리한다. 2.0.0은 3-model positive paired lift, Skill Lift 통계적 공동 1위 이상, Harness Pareto non-dominated, 24 hidden tasks×10 runs, 10 practitioner blind review, 독립 task audit가 모두 통과할 때만 승격한다.
 - 신규 `bench:ui:aggregate`는 run schema의 실패/timeout을 resolved 분모에 보존하고 completion, min/mean/median/max·P10/P25/P75/P90·IQR, Reliability@k, task→run hierarchical bootstrap 95% CI, median/best/worst representative IDs, no-skill 대비 paired lift와 win/tie/loss를 계산한다. focused benchmark/skill 24 tests(conditional browser E2E 1 skip), JSON/syntax/diff checks가 green이다.
-- 다음 benchmark queue는 **1.9.1 paired smoke**다: clean-source commit을 기준으로 3 tasks×candidate/control×3을 수행해 skill lift와 workflow attribution을 확인한다. 이후 1.9.2에서 12개 task fixture·valid oracle·mutant calibration, 1.9.3부터 12×5 patch candidate를 순차 실행한다.
+- 다음 benchmark queue는 **1.9.1의 남은 OmD operations 2회 보존 실행 → 1.9.2 task-owned semantic contract 교정**이다. 1.9.2에서 oracle·mutant를 다시 calibration한 뒤 paired matrix를 재실행하고, 이후 12개 task fixture·1.9.3의 12×5 patch candidate로 확장한다.
 - PR #47에서 CLI-first activation release를 `main`에 병합했고 Vercel Production 배포를 완료했다. `https://oh-my-design.kr/docs/{en,ko,ja,zh-cn,zh-tw}`는 모두 HTTP 200이다.
 - `v1.9.0` release workflow는 첫 실행에서 npm 10의 `prepare` stdout이 `npm pack --json` 앞에 섞여 parser가 실패했다. PR #48에서 standalone `[` line부터 JSON을 읽도록 수정했고 Node 18 smoke, 전체 CLI/Web/catalog/build, provenance publish가 모두 통과했다.
 - npm `latest`는 `oh-my-design-cli@1.9.0`이다. 빈 임시 폴더의 공개 registry install에서 package metadata와 `omd --version` 모두 `1.9.0`을 반환했다. 현재 공개 계약은 440 references / 20 skills / 18 roles / Node >=18이다.

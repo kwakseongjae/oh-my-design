@@ -5,6 +5,18 @@
 
 ---
 
+## 2026-07-22 (Codex) · paired smoke 16/18 + Claude print-mode audit
+- Terra/xhigh 16회를 평가·export했고 Raw 3/9, OmD 2/7 UI-Resolved; 완성 7쌍은 1 win/6 ties/0 losses다.
+- onboarding nav 강제와 operations live-count 오탐을 찾아 결과를 non-publishable calibration으로 잠갔다.
+- 남은 operations/OmD 2회는 외부 전송 정책 재차단으로 보존 중이며 우회하지 않는다.
+- Claude 2.1.212의 `-p`는 가능하지만 auth=false, current Opus는 4.7; 구독 runner는 Transfer Matrix로 분리한다.
+
+## 2026-07-22 (Codex) · paired smoke execution paused for scoped approval
+- clean `6d7edc6`에서 18 workspaces를 준비했고 OmD source attestation은 publishable=true다.
+- pricing/raw trial 1은 Terra/xhigh 355s, 81/85, accessibility fail, valid UI-Resolved=false였다.
+- 나머지 17회는 fictional fixture+OmD skill snapshot의 OpenAI 전송에 대한 새 명시 승인이 필요해 중단했다.
+- production source/reference/credential/user data는 전송 대상이 아니며 승인 후 prepared workspaces에서 재개한다.
+
 ## 2026-07-22 (Codex) · three-task smoke calibration lock
 - pricing-only evaluator를 pricing/onboarding/operations task adapter와 task-owned design selector로 일반화했다.
 - 세 valid fixture는 Chrome 85/85, 세 state mutant는 80/85 fail로 calibration됐다.
