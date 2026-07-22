@@ -11,9 +11,11 @@ one of the systems under test, not the definition of a passing result.
 
 ## Status
 
-`v0.1` is an internal method draft. It currently contains one public development
-fixture used to find defects in the runner and score contract. The fixture,
-evaluator, and oracle are inspectable, and the in-app fallback runs do not have
+`v0.2` is an internal method draft. It currently contains three inspectable
+development fixtures covering pricing, first-run onboarding, and incident
+operations. They are used to calibrate the runner and score contract; they are
+not a hidden or representative public task set. The fixtures, evaluator, and
+oracles are inspectable, and the in-app fallback runs do not have
 immutable transcripts or normalized budgets. It is not sufficient for causal
 skill comparisons, `UI-Resolved@1`, a public leaderboard, or a “best UI skill”
 claim.
@@ -25,6 +27,10 @@ conditions: OmD passed the current 85 objective points, while Taste and UI UX
 Pro Max each reached 81 and failed different accessibility checks. Those remain
 single in-app observations, not comparative proof. See
 [`reports/corrected-rerun-2026-07-21/FINDINGS.md`](./reports/corrected-rerun-2026-07-21/FINDINGS.md).
+
+Each task owns its state adapter and design oracle. Known-good implementations
+must pass every gate, while injected pricing, toggle, and filtering mutants must
+fail their intended state gate before model runs begin.
 
 The eventual public result is `UI-Resolved@1`: the share of private evaluation
 tasks that pass every objective critical gate on the first run. A visually

@@ -77,4 +77,24 @@ describe("UI-Resolve normalized run exporter", () => {
     expect(classifyRunStatus({ process: { timed_out: true } }, null)).toBe("timed_out");
     expect(classifyRunStatus({ process: { exit_code: 1 } }, null)).toBe("failed");
   });
+
+  it("does not count an unchanged starter as a resolved product delivery", () => {
+    const unchangedRun = structuredClone(run);
+    unchangedRun.workspace.product_changed = false;
+    unchangedRun.workspace.changed_product_files = [];
+    const record = buildRunRecord({
+      workspace: "/tmp/run-noop",
+      manifest,
+      run: unchangedRun,
+      score,
+      family: "skill",
+      systemId: "omd-portable",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "standard",
+    });
+    expect(record.validity).toBe("valid");
+    expect(record.delivery.product_changed).toBe(false);
+    expect(record.ui_resolved).toBe(false);
+  });
 });

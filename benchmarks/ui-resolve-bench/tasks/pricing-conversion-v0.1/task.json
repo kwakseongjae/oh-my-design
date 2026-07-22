@@ -4,6 +4,7 @@
   "track": "landing-redesign",
   "grounding": "design-md",
   "locale": "en",
+  "behavior_adapter": "pricing-v1",
   "review_brief": "A calm, trustworthy pricing page for a release-coordination product. Compare how clearly each result explains the product, differentiates three plans, and leads a small product team toward a plan decision.",
   "network": "disabled",
   "entry": "index.html",
@@ -68,6 +69,11 @@
     "font_family": {
       "body_any": ["Arial"],
       "display_any": ["Georgia"]
+    },
+    "selectors": {
+      "primary_action": "[data-bench='signup-form'] button[type='submit']",
+      "card": ".plan",
+      "display": "h1"
     }
   }
 }

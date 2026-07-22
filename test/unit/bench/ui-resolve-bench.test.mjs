@@ -11,6 +11,7 @@ const competitors = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolv
 const families = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/benchmark-families.json"), "utf8"));
 const releaseTrain = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/release-train.json"), "utf8"));
 const pinnedVendors = "/tmp/omd-ui-skills-bench/vendors";
+const taskIds = ["pricing-conversion-v0.1", "onboarding-setup-v0.1", "incident-operations-v0.1"];
 
 function prepareVariant(variant, { vendors = null, offLabel = false } = {}) {
   const parent = mkdtempSync(join(tmpdir(), "ui-resolve-test-"));
@@ -41,6 +42,20 @@ function installedSkillName(path) {
 }
 
 describe("UI-Resolve Bench sandbox preparation", () => {
+  it("locks a three-task smoke slice with distinct state adapters and task-owned design oracles", () => {
+    const tasks = taskIds.map((taskId) => JSON.parse(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", taskId, "task.json"),
+      "utf8",
+    )));
+    expect(tasks.map((task) => task.behavior_adapter)).toEqual([
+      "pricing-v1",
+      "onboarding-v1",
+      "dashboard-v1",
+    ]);
+    expect(tasks.every((task) => task.design_oracle?.selectors && task.design_oracle?.font_family)).toBe(true);
+    expect(tasks.every((task) => task.viewports.some((viewport) => viewport.name === "css-zoom-surrogate-200"))).toBe(true);
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);

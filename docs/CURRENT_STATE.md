@@ -8,6 +8,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.1 paired smoke의 선행 결함을 수정했다. 기존 suite는 pricing 1개와 hardcoded journey뿐이어서 onboarding setup(`onboarding-v1`)·incident operations(`dashboard-v1`) 과제를 추가하고 evaluator를 task adapter/design selector 기반으로 일반화했다.
+- 세 oracle implementation은 실제 Chrome/axe/keyboard/320px/200% zoom에서 각각 85/85를 통과했다. annual-price 오류, preference-toggle no-op, severity-filter no-op mutant는 각각 의도한 state gate에서 80/85로 탈락했다. no-op starter는 product diff가 없어 UI-Resolved로 집계되지 않는다.
+- `reports/paired-smoke-1.9.1/PREREGISTRATION.md`에 Terra/xhigh, raw DESIGN.md 대조군, OmD portable, 3 tasks×3 trials=18 runs를 결과 확인 전에 고정했다. 다음 행동은 clean-source commit 후 전체 18회 실행·export·aggregate다.
 - `1.9.1-candidate`에 benchmark 밖의 frontier-product contract를 구현했다. `omd workflows|route <rough task>`가 자연어 요청을 repair/audit/create/init/localize 중 가장 작은 workflow로 라우팅하고, 터미널은 install/doctor에만 쓰며 실제 작업 prompt는 coding-agent chat에 넣도록 안내한다.
 - `omd:apply`·`omd:harness`·`omd:orchestrator`는 공통 work packet, 한 명의 implementation owner, specialist advisory handoff, 실제 consumer route·viewport·state 재검증 계약을 공유한다. full harness는 checkpoint #3 뒤 `handoff/delivery.json`을 만들고 main agent가 실제 제품에 통합한 뒤 `delivery-verification.json`을 남겨야 완료된다.
 - package는 `workflow-capabilities.json`과 세 core skill의 OpenAI metadata를 포함하며 installer/doctor가 이를 배포·검증한다. canonical skills는 portable hyphen name을 유지하고 Claude/Codex 설치 시 channel-native colon name으로 렌더링한다.

@@ -2,12 +2,16 @@ import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
+  evaluateAcknowledgementObservation,
   evaluateBillingObservation,
+  evaluateChoiceObservation,
   evaluateFaqObservations,
+  evaluateFilterObservation,
   evaluateFormObservation,
   evaluateFontOracle,
   evaluateKeyboardTraversal,
   evaluateProtectedHookCounts,
+  evaluateToggleObservation,
   evaluateViewportGeometry,
   findUnsupportedClaims,
 } from "../../../benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs";
@@ -132,8 +136,90 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
     const extraHiddenPrice = evaluateProtectedHookCounts(viewports, task.protected_hook_counts);
     expect(extraHiddenPrice.exact).toBe(false);
     expect(extraHiddenPrice.mismatches).toEqual([
-      expect.objectContaining({ viewport: "narrow-320", expected: 3, total: 4, visible: 3 }),
+      expect.objectContaining({ viewport: "narrow-320", expected: { total: 3, visible: 3 }, total: 4, visible: 3 }),
     ]);
+  });
+
+  it("calibrates onboarding choice, toggle, and generic form mutants", () => {
+    const choice = {
+      nodes: [
+        { value: "founder", visible: true },
+        { value: "designer", visible: true },
+        { value: "engineer", visible: true },
+      ],
+      initial: {
+        selected: "founder",
+        body_value: "founder",
+        pressed: { founder: "true", designer: "false", engineer: "false" },
+      },
+      selected: {
+        selected: "designer",
+        body_value: "designer",
+        pressed: { founder: "false", designer: "true", engineer: "false" },
+      },
+      restored: {
+        selected: "founder",
+        body_value: "founder",
+        pressed: { founder: "true", designer: "false", engineer: "false" },
+      },
+    };
+    const expected = { values: ["founder", "designer", "engineer"], count: 3, initial: "founder", selected: "designer" };
+    expect(Object.values(evaluateChoiceObservation(choice, expected)).every(Boolean)).toBe(true);
+    const stalePressed = structuredClone(choice);
+    stalePressed.selected.pressed.founder = "true";
+    expect(evaluateChoiceObservation(stalePressed, expected).selection_exact).toBe(false);
+
+    expect(Object.values(evaluateToggleObservation({ present: true, visible: true, initial: "false", enabled: "true", restored: "false" })).every(Boolean)).toBe(true);
+    expect(evaluateToggleObservation({ present: true, visible: true, initial: "false", enabled: "false", restored: "false" }).turns_on).toBe(false);
+
+    const genericForm = evaluateFormObservation({
+      presence: { form: true, field: true, status: true },
+      invalid: { aria_invalid: "true", status: "Enter a name.", focused: true },
+      valid: { aria_invalid: "false", status: "Ready." },
+    });
+    expect(Object.values(genericForm).every(Boolean)).toBe(true);
+  });
+
+  it("calibrates dashboard filter and acknowledgement mutants", () => {
+    const filter = {
+      nodes: [
+        { value: "all", visible: true },
+        { value: "critical", visible: true },
+        { value: "warning", visible: true },
+      ],
+      initial: {
+        selected: "all",
+        body_filter: "all",
+        pressed: { all: "true", critical: "false", warning: "false" },
+        visible_rows: 4,
+      },
+      filtered: {
+        selected: "critical",
+        body_filter: "critical",
+        pressed: { all: "false", critical: "true", warning: "false" },
+        visible_rows: 2,
+      },
+      restored: {
+        selected: "all",
+        body_filter: "all",
+        pressed: { all: "true", critical: "false", warning: "false" },
+        visible_rows: 4,
+      },
+    };
+    const expected = { count: 3, initial: "all", selected: "critical", initial_visible_rows: 4, selected_visible_rows: 2 };
+    expect(Object.values(evaluateFilterObservation(filter, expected)).every(Boolean)).toBe(true);
+    const leakyFilter = structuredClone(filter);
+    leakyFilter.filtered.visible_rows = 4;
+    expect(evaluateFilterObservation(leakyFilter, expected).filtered_exact).toBe(false);
+
+    const acknowledgement = {
+      presence: { button: true, status: true },
+      initial: { status: "Not acknowledged.", pressed: "false", disabled: false },
+      acknowledged: { status: "Acknowledged.", pressed: "true", disabled: true },
+    };
+    expect(Object.values(evaluateAcknowledgementObservation(acknowledgement)).every(Boolean)).toBe(true);
+    acknowledgement.acknowledged.status = acknowledgement.initial.status;
+    expect(evaluateAcknowledgementObservation(acknowledgement).status_changes).toBe(false);
   });
 
   it("records unsupported claims from visible copy, accessible names, and metadata", () => {

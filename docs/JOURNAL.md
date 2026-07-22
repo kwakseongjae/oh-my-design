@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-22 (Codex) · three-task smoke calibration lock
+- pricing-only evaluator를 pricing/onboarding/operations task adapter와 task-owned design selector로 일반화했다.
+- 세 valid fixture는 Chrome 85/85, 세 state mutant는 80/85 fail로 calibration됐다.
+- product file no-op는 UI-Resolved로 집계하지 않으며 raw DESIGN.md를 paired control로 고정했다.
+- Terra/xhigh 3 tasks×2 conditions×3 trials를 preregister했으며 다음은 clean commit에서 18회 실행이다.
+
 ## 2026-07-21 (Codex) · 1.9.1 frontier workflow + measurement kernel candidate
 - rough task를 최소 workflow로 라우팅하는 `omd workflows|route`와 배포 가능한 workflow capability manifest를 추가했다.
 - apply/harness/orchestrator를 공통 work packet·단일 구현 책임자·동일 consumer surface 재검증 계약으로 연결했다.

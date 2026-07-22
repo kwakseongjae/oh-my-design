@@ -36,6 +36,7 @@ export function buildRunRecord({
   const runStatus = classifyRunStatus(run, score);
   const validity = classifyValidity(manifest, runStatus, score);
   const automatedPass = score?.status?.automated_gate_pass === true;
+  const productChanged = run?.workspace?.product_changed ?? run?.workspace?.changed ?? false;
   return {
     run_id: basename(workspace),
     benchmark_family: family,
@@ -53,7 +54,7 @@ export function buildRunRecord({
     trial_index: trialIndex,
     run_status: runStatus,
     validity,
-    ui_resolved: validity === "valid" ? automatedPass : false,
+    ui_resolved: validity === "valid" ? automatedPass && productChanged : false,
     objective_score: score?.points?.deterministic_total ?? 0,
     objective_max: score?.points?.deterministic_max ?? 85,
     wall_time_ms: run?.process?.wall_ms ?? 0,
@@ -64,7 +65,7 @@ export function buildRunRecord({
       track_eligibility: manifest?.variant?.track_eligibility ?? null,
     },
     delivery: {
-      product_changed: run?.workspace?.product_changed ?? run?.workspace?.changed ?? false,
+      product_changed: productChanged,
       changed_product_files: run?.workspace?.changed_product_files ?? [],
     },
     evidence: {

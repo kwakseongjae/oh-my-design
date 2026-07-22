@@ -62,11 +62,12 @@ export function evaluateFaqObservations(entries, expectedCount) {
 }
 
 export function evaluateFormObservation(observation) {
+  const presence = observation?.presence ?? {};
   return {
     required_elements_present:
-      observation?.presence?.form === true &&
-      observation?.presence?.email === true &&
-      observation?.presence?.status === true,
+      presence.form === true &&
+      (presence.field === true || presence.email === true) &&
+      presence.status === true,
     invalid_marks_field: observation?.invalid?.aria_invalid === "true",
     invalid_has_status: Boolean(observation?.invalid?.status),
     invalid_focuses_email: observation?.invalid?.focused === true,
@@ -79,12 +80,74 @@ export function evaluateFormObservation(observation) {
   };
 }
 
+export function evaluateChoiceObservation(observation, expected = {}) {
+  const values = observation?.nodes?.map((node) => node.value) ?? [];
+  const allVisible = observation?.nodes?.every((node) => node.visible) ?? false;
+  const pressedOnly = (state, value) =>
+    state?.selected === value &&
+    state?.body_value === value &&
+    values.every((candidate) => state?.pressed?.[candidate] === String(candidate === value));
+  return {
+    exact_count: values.length === expected.count,
+    every_choice_visible: values.length > 0 && allVisible,
+    values_exact: exactList(values, expected.values ?? []),
+    initial_exact: pressedOnly(observation?.initial, expected.initial),
+    selection_exact: pressedOnly(observation?.selected, expected.selected),
+    restored_exact: pressedOnly(observation?.restored, expected.initial),
+  };
+}
+
+export function evaluateToggleObservation(observation) {
+  return {
+    present_and_visible: observation?.present === true && observation?.visible === true,
+    initially_off: observation?.initial === "false",
+    turns_on: observation?.enabled === "true",
+    restores_off: observation?.restored === "false",
+  };
+}
+
+export function evaluateFilterObservation(observation, expected = {}) {
+  const exactPressed = (state, value) =>
+    state?.selected === value &&
+    state?.body_filter === value &&
+    Object.entries(state?.pressed ?? {}).every(([candidate, pressed]) => pressed === String(candidate === value));
+  return {
+    exact_filter_count: observation?.nodes?.length === expected.count,
+    every_filter_visible: observation?.nodes?.length > 0 && observation.nodes.every((node) => node.visible),
+    initial_exact:
+      exactPressed(observation?.initial, expected.initial) &&
+      observation?.initial?.visible_rows === expected.initial_visible_rows,
+    filtered_exact:
+      exactPressed(observation?.filtered, expected.selected) &&
+      observation?.filtered?.visible_rows === expected.selected_visible_rows,
+    restored_exact:
+      exactPressed(observation?.restored, expected.initial) &&
+      observation?.restored?.visible_rows === expected.initial_visible_rows,
+  };
+}
+
+export function evaluateAcknowledgementObservation(observation) {
+  return {
+    required_elements_present:
+      observation?.presence?.button === true && observation?.presence?.status === true,
+    status_changes:
+      Boolean(observation?.initial?.status) &&
+      Boolean(observation?.acknowledged?.status) &&
+      observation.initial.status !== observation.acknowledged.status,
+    acknowledgement_state:
+      observation?.acknowledged?.pressed === "true" || observation?.acknowledged?.disabled === true,
+  };
+}
+
 export function evaluateProtectedHookCounts(viewports, expectedCounts) {
   const mismatches = [];
   for (const viewport of viewports ?? []) {
-    for (const [selector, expected] of Object.entries(expectedCounts ?? {})) {
+    for (const [selector, rawExpected] of Object.entries(expectedCounts ?? {})) {
+      const expected = typeof rawExpected === "number"
+        ? { total: rawExpected, visible: rawExpected }
+        : { total: rawExpected?.total ?? 0, visible: rawExpected?.visible ?? rawExpected?.total ?? 0 };
       const actual = viewport.protected?.[selector] ?? { total: 0, visible: 0 };
-      if (actual.total !== expected || actual.visible !== expected) {
+      if (actual.total !== expected.total || actual.visible !== expected.visible) {
         mismatches.push({ viewport: viewport.name, selector, expected, ...actual });
       }
     }
@@ -210,6 +273,7 @@ async function main() {
   const manifest = readJson(join(benchmarkDir, "manifest.json"));
   const taskRoot = resolve(new URL(`../tasks/${manifest.task.id}/`, import.meta.url).pathname);
   const task = readJson(join(taskRoot, "task.json"));
+  const behaviorAdapter = task.behavior_adapter ?? "pricing-v1";
   const entry = join(workspace, task.entry);
   if (!existsSync(entry)) throw new Error(`entry file not found: ${entry}`);
 
@@ -313,6 +377,12 @@ async function main() {
           violations: result.violations.length,
           serious_or_critical: serious.length,
           serious_or_critical_ids: serious.map((violation) => violation.id),
+          serious_or_critical_nodes: serious.flatMap((violation) => violation.nodes.map((node) => ({
+            id: violation.id,
+            target: node.target,
+            html: node.html,
+            failure_summary: node.failureSummary,
+          }))),
         };
       });
 
@@ -502,7 +572,7 @@ async function main() {
       });
 
       if (viewport.name === "desktop") {
-        behavior = await page.evaluate(async () => {
+        if (behaviorAdapter === "pricing-v1") behavior = await page.evaluate(async () => {
           const visible = (element) => {
             const style = getComputedStyle(element);
             const rect = element.getBoundingClientRect();
@@ -579,21 +649,147 @@ async function main() {
           };
           return { billing, faq, form: { presence, invalid, valid } };
         });
+        else if (behaviorAdapter === "onboarding-v1") behavior = await page.evaluate(async (oracle) => {
+          const visible = (element) => {
+            const style = getComputedStyle(element);
+            const rect = element.getBoundingClientRect();
+            return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+          };
+          const choiceConfig = oracle.choice;
+          const choices = [...document.querySelectorAll(choiceConfig.selector)];
+          const valueFor = (node) => node.getAttribute(choiceConfig.value_attribute);
+          const choiceState = () => ({
+            selected: document.body.dataset[choiceConfig.body_dataset],
+            body_value: document.body.dataset[choiceConfig.body_dataset],
+            pressed: Object.fromEntries(choices.map((node) => [valueFor(node), node.getAttribute("aria-pressed")])),
+          });
+          const choice = {
+            nodes: choices.map((node) => ({ value: valueFor(node), visible: visible(node) })),
+            initial: choiceState(),
+          };
+          choices.find((node) => valueFor(node) === choiceConfig.selected)?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          choice.selected = choiceState();
+          choices.find((node) => valueFor(node) === choiceConfig.initial)?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          choice.restored = choiceState();
+
+          const toggleNode = document.querySelector(oracle.toggle.selector);
+          const toggle = {
+            present: toggleNode instanceof HTMLElement,
+            visible: toggleNode ? visible(toggleNode) : false,
+            initial: toggleNode?.getAttribute("aria-pressed"),
+          };
+          toggleNode?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          toggle.enabled = toggleNode?.getAttribute("aria-pressed");
+          toggleNode?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          toggle.restored = toggleNode?.getAttribute("aria-pressed");
+
+          const form = document.querySelector(oracle.form.form_selector);
+          const field = document.querySelector(oracle.form.field_selector);
+          const status = document.querySelector(oracle.form.status_selector);
+          const presence = {
+            form: form instanceof HTMLFormElement,
+            field: field instanceof HTMLInputElement,
+            status: status instanceof HTMLElement,
+          };
+          if (!Object.values(presence).every(Boolean)) {
+            return { choice, toggle, form: { presence, invalid: null, valid: null } };
+          }
+          field.value = oracle.form.invalid_value;
+          form.requestSubmit();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          const invalid = {
+            aria_invalid: field.getAttribute("aria-invalid"),
+            status: status.textContent.trim(),
+            focused: document.activeElement === field,
+          };
+          field.value = oracle.form.valid_value;
+          form.requestSubmit();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          const valid = {
+            aria_invalid: field.getAttribute("aria-invalid"),
+            status: status.textContent.trim(),
+          };
+          return { choice, toggle, form: { presence, invalid, valid } };
+        }, task.journey_oracle);
+        else if (behaviorAdapter === "dashboard-v1") behavior = await page.evaluate(async (oracle) => {
+          const visible = (element) => {
+            const style = getComputedStyle(element);
+            const rect = element.getBoundingClientRect();
+            return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+          };
+          const filterConfig = oracle.filter;
+          const filters = [...document.querySelectorAll(filterConfig.selector)];
+          const valueFor = (node) => node.getAttribute(filterConfig.value_attribute);
+          const filterState = () => ({
+            selected: document.body.dataset[filterConfig.body_dataset],
+            body_filter: document.body.dataset[filterConfig.body_dataset],
+            pressed: Object.fromEntries(filters.map((node) => [valueFor(node), node.getAttribute("aria-pressed")])),
+            visible_rows: [...document.querySelectorAll(filterConfig.row_selector)].filter(visible).length,
+          });
+          const filter = {
+            nodes: filters.map((node) => ({ value: valueFor(node), visible: visible(node) })),
+            initial: filterState(),
+          };
+          filters.find((node) => valueFor(node) === filterConfig.selected)?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          filter.filtered = filterState();
+          filters.find((node) => valueFor(node) === filterConfig.initial)?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          filter.restored = filterState();
+
+          const disclosure = [];
+          for (const button of document.querySelectorAll(oracle.disclosure.selector)) {
+            const controls = button.getAttribute("aria-controls");
+            const target = controls ? document.getElementById(controls) : null;
+            const state = () => ({ expanded: button.getAttribute("aria-expanded"), hidden: target?.hidden });
+            const entry = { controls, target_exists: Boolean(target), button_visible: visible(button), initial: state() };
+            button.click();
+            await new Promise((resolve) => setTimeout(resolve, 20));
+            entry.opened = state();
+            button.click();
+            await new Promise((resolve) => setTimeout(resolve, 20));
+            entry.closed = state();
+            disclosure.push(entry);
+          }
+
+          const button = document.querySelector(oracle.acknowledgement.button_selector);
+          const status = document.querySelector(oracle.acknowledgement.status_selector);
+          const acknowledgement = {
+            presence: { button: button instanceof HTMLButtonElement, status: status instanceof HTMLElement },
+            initial: { status: status?.textContent.trim(), pressed: button?.getAttribute("aria-pressed"), disabled: button?.disabled },
+          };
+          button?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          acknowledgement.acknowledged = {
+            status: status?.textContent.trim(),
+            pressed: button?.getAttribute("aria-pressed"),
+            disabled: button?.disabled,
+          };
+          return { filter, disclosure, acknowledgement };
+        }, task.journey_oracle);
+        else throw new Error(`unsupported behavior adapter: ${behaviorAdapter}`);
 
         semantics = snapshot;
-        design = await page.evaluate(() => {
-          const primary = document.querySelector('[data-bench="signup-form"] button[type="submit"], .button.primary, [data-primary-action]');
-          const price = document.querySelector('[data-bench="price"]');
-          const plan = price?.closest("article, [data-plan], .plan");
-          const h1 = document.querySelector("h1");
+        design = await page.evaluate((selectors) => {
+          const primary = document.querySelector(selectors.primary_action);
+          const plan = document.querySelector(selectors.card);
+          const display = document.querySelector(selectors.display);
           return {
             page_background: getComputedStyle(document.body).backgroundColor,
             primary_action: primary ? getComputedStyle(primary).backgroundColor : null,
             card_radius_px: plan ? parseFloat(getComputedStyle(plan).borderRadius) : null,
             control_radius_px: primary ? parseFloat(getComputedStyle(primary).borderRadius) : null,
             body_font: getComputedStyle(document.body).fontFamily,
-            display_font: h1 ? getComputedStyle(h1).fontFamily : null,
+            display_font: display ? getComputedStyle(display).fontFamily : null,
           };
+        }, task.design_oracle.selectors ?? {
+          primary_action: '[data-bench="signup-form"] button[type="submit"], .button.primary, [data-primary-action]',
+          card: ".plan",
+          display: "h1",
         });
         evidenceSources = await page.evaluate(() => {
           const sources = [];
@@ -644,12 +840,52 @@ async function main() {
   const zoomSurrogate = viewportResults.find((viewport) => viewport.name === "css-zoom-surrogate-200") ??
     viewportResults.find((viewport) => viewport.name === "zoom-reflow-200");
   const protectedHooks = evaluateProtectedHookCounts(viewportResults, task.protected_hook_counts);
-  const billingChecks = evaluateBillingObservation(behavior?.billing, task.billing_expectations);
-  const faqChecks = evaluateFaqObservations(
-    behavior?.faq,
-    task.protected_hook_counts['[data-bench=\'faq-button\']'],
-  );
-  const formChecks = evaluateFormObservation(behavior?.form);
+  let stateChecks;
+  let stateDetails;
+  if (behaviorAdapter === "pricing-v1") {
+    const billingChecks = evaluateBillingObservation(behavior?.billing, task.billing_expectations);
+    const faqExpected = task.protected_hook_counts['[data-bench=\'faq-button\']'];
+    const faqChecks = evaluateFaqObservations(
+      behavior?.faq,
+      typeof faqExpected === "number" ? faqExpected : faqExpected?.total,
+    );
+    const formChecks = evaluateFormObservation(behavior?.form);
+    stateChecks = {
+      billing: everyCheckPass(billingChecks),
+      faq: everyCheckPass(faqChecks),
+      form: everyCheckPass(formChecks),
+    };
+    stateDetails = { billing: billingChecks, faq: faqChecks, form: formChecks };
+  } else if (behaviorAdapter === "onboarding-v1") {
+    const choiceChecks = evaluateChoiceObservation(behavior?.choice, task.journey_oracle?.choice);
+    const toggleChecks = evaluateToggleObservation(behavior?.toggle);
+    const formChecks = evaluateFormObservation(behavior?.form);
+    stateChecks = {
+      choice: everyCheckPass(choiceChecks),
+      toggle: everyCheckPass(toggleChecks),
+      form: everyCheckPass(formChecks),
+    };
+    stateDetails = { choice: choiceChecks, toggle: toggleChecks, form: formChecks };
+  } else if (behaviorAdapter === "dashboard-v1") {
+    const filterChecks = evaluateFilterObservation(behavior?.filter, task.journey_oracle?.filter);
+    const disclosureChecks = evaluateFaqObservations(
+      behavior?.disclosure,
+      task.journey_oracle?.disclosure?.count,
+    );
+    const acknowledgementChecks = evaluateAcknowledgementObservation(behavior?.acknowledgement);
+    stateChecks = {
+      filter: everyCheckPass(filterChecks),
+      disclosure: everyCheckPass(disclosureChecks),
+      acknowledgement: everyCheckPass(acknowledgementChecks),
+    };
+    stateDetails = {
+      filter: filterChecks,
+      disclosure: disclosureChecks,
+      acknowledgement: acknowledgementChecks,
+    };
+  } else {
+    throw new Error(`unsupported behavior adapter: ${behaviorAdapter}`);
+  }
   const geometry = Object.fromEntries(viewportResults.map((viewport) => [viewport.name, evaluateViewportGeometry(viewport)]));
   const keyboard = Object.fromEntries(viewportResults.map((viewport) => [viewport.name, evaluateKeyboardTraversal(viewport.keyboard)]));
   const observationPresence = {
@@ -673,11 +909,6 @@ async function main() {
     localhost_only:
       viewportResults.length === task.viewports.length &&
       viewportResults.every((viewport) => viewport.external_requests.length === 0),
-  };
-  const stateChecks = {
-    billing: everyCheckPass(billingChecks),
-    faq: everyCheckPass(faqChecks),
-    form: everyCheckPass(formChecks),
   };
   const responsiveChecks = {
     desktop_geometry: everyCheckPass(geometry.desktop),
@@ -791,7 +1022,7 @@ async function main() {
       observation_presence: observationPresence,
       contract: contractChecks,
       states: stateChecks,
-      state_details: { billing: billingChecks, faq: faqChecks, form: formChecks },
+      state_details: stateDetails,
       responsive: responsiveChecks,
       geometry,
       accessibility: accessibilityChecks,
