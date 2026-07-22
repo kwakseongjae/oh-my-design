@@ -76,6 +76,7 @@ protected_contract:
   cardinality: [<동작을 가진 control/row/form/disclosure의 현재 개수와 허용 변화>]
   state_transitions: [<before → action → after>]
   facts: [<보존할 값·카피·hook·필드명>]
+  change_authority: original-user-task-only
 evidence: [DESIGN.md, screenshot, code, browser observation]
 unknowns: [<확인되지 않은 정보 — fallback으로 채우지 않음>]
 implementation_owner: main-agent | none
@@ -92,7 +93,7 @@ verification:
 
 설치된 채널 data root에 `workflow-capabilities.json`이 있으면 선언된 workflow와 필드명을 사용한다. 파일이 없어도 위 계약으로 계속하며 설치를 강요하지 않는다.
 
-specialist handoff에는 전체 대화 대신 이 packet과 필요한 파일·스크린샷만 전달한다. specialist 응답은 다음 shape로 제한한다.
+specialist handoff에는 전체 대화 대신 이 packet과 필요한 파일·스크린샷만 전달한다. 기존 UI repair의 specialist는 기본적으로 `mode: bounded-repair-advisory`를 사용하고 **요청된 위험 영역 1-2개, finding 최대 5개, 약 600단어**로 제한한다. 전 섹션 audit, 8/10항목 전수평가, A/B 옵션, 추가 아이디어 발산은 별도 full audit 요청에서만 한다. specialist 응답은 다음 shape로 제한한다.
 
 ```yaml
 finding: <무엇이 문제인가>
@@ -103,6 +104,7 @@ unresolved: [<확인 불가 항목>]
 ```
 
 서로 다른 specialist가 같은 제품 파일을 동시에 수정하지 않는다. `implementation_owner: main-agent`만 자문을 합치고 코드를 편집한다.
+specialist는 protected ledger를 수정·완화할 권한이 없다. handoff는 `current_count`, `allowed_delta`, `states`, `facts`, `change_authority`를 그대로 복사해야 하며, 이를 벗어난 제안은 implementation 후보가 아니라 `rejected_contract_drift`로 폐기한다.
 
 ## Phase 1 — DESIGN.md 로드
 
@@ -143,8 +145,8 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 
 시각적 확장보다 먼저 기존 제품 계약을 잠근다. 목적은 디자인을 보수적으로 만드는 것이 아니라, 더 나은 화면을 만들면서 이미 동작하는 제품을 다른 제품으로 바꾸지 않는 것이다.
 
-1. **첫 편집 전 protected ledger를 만든다.** 기존 DOM·코드·요청에서 동작을 가진 control, form, disclosure, row/list, 상태 출력의 identity와 개수를 기록한다. 각 항목은 `current_count`, `allowed_delta`, `states`, `facts`를 가진다. 사용자가 추가·삭제를 요청하지 않았다면 `allowed_delta: 0`이다.
-2. **탐색 종료 조건을 둔다.** DESIGN.md, consumer route, protected ledger, 최소 acceptance를 확인했다면 optional research나 미적 아이디어 수집을 더 하지 않고 가장 작은 end-to-end 편집을 시작한다. specialist 자문이 꼭 필요한 위험을 해결하지 않는 한 첫 편집을 막지 않는다.
+1. **첫 편집 전 protected ledger를 만든다.** 기존 DOM·코드·요청에서 동작을 가진 control, form, disclosure, row/list, 상태 출력의 identity와 개수를 기록한다. 각 항목은 `current_count`, `allowed_delta`, `states`, `facts`를 가진다. 사용자가 원 요청에서 추가·삭제를 명시하지 않았다면 언제나 `allowed_delta: 0`이다. agent, specialist, DESIGN.md, 미적 아이디어, “production-ready” 같은 품질 표현은 변경 권한이 아니다. 부모가 handoff를 만들 때도 이 값을 완화할 수 없다.
+2. **탐색 종료 조건을 둔다.** DESIGN.md, consumer route, protected ledger, 최소 acceptance를 확인했다면 optional research나 미적 아이디어 수집을 더 하지 않고 가장 작은 end-to-end 편집을 시작한다. specialist 자문이 꼭 필요한 위험을 해결하지 않는 한 첫 편집을 막지 않는다. specialist를 호출해도 전체 페이지 감사를 요청하지 않고, 이미 확인한 위험 질문 1-2개만 `bounded-repair-advisory`로 보낸다.
 3. **장식을 위해 제품 hook을 복제하지 않는다.** 가격 비교, 요약 카드, 모바일 사본처럼 같은 값을 다시 보여줘야 해도 기존 behavior hook·form field·live region·ID를 복제하지 않는다. 새 hook이나 상태를 추가하려면 요청 또는 제품 계약의 근거가 있어야 한다.
 4. **최종 acceptance packet을 한 번 실행한다.** 같은 route에서 다음을 묶어 확인하고, 고칠 수 없는 항목은 `unresolved`로 전달한다.
    - protected ledger의 identity·개수·before/action/after가 변경 전 계약과 일치

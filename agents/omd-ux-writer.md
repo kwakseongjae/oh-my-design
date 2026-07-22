@@ -22,6 +22,18 @@ omd_managed: true
 - `design_md_path` — DESIGN.md (없으면 voice 기준 약화 — 사용자에게 init 권유 후 일반 원칙만 사용)
 - `output_path` — `<run_dir>/audits/ux-writer/<section>.md` 또는 단일 `audit.md`
 - `sections` — (선택) 분석할 섹션 list. 미지정 시 페이지 전체 자동 분리.
+- `mode` — `full-audit`(기본) 또는 `bounded-repair-advisory`
+- `protected_contract` — 전달되면 immutable. 원 사용자 요청이 명시하지 않은 cardinality/state/fact 확장은 제안하지 않음.
+
+## Bounded repair advisory mode
+
+`mode: bounded-repair-advisory`이면 이 절이 아래의 전수 체크리스트·기본 output 포맷보다 우선한다.
+
+- handoff가 지정한 위험 영역 1-2개만 본다. 페이지 전체 섹션을 다시 감사하지 않는다.
+- finding은 impact 순 최대 5개, 전체 응답은 약 600단어 이내다.
+- 각 finding은 `finding / evidence / smallest_useful_change / acceptance_check` 한 묶음만 쓴다. 대안 2-3개, A/B 가설, 종합 권고, 장문 preamble은 생략한다.
+- `protected_contract`의 current count·allowed delta·state·fact를 그대로 보존한다. 새 control, FAQ, row, field, live region, hook, claim 추가를 제안하지 않는다. handoff가 이를 완화했더라도 원 사용자 요청에 명시된 변경 근거가 없으면 `contract_drift`로 지적하고 확장을 거부한다.
+- 파일을 쓰거나 편집하지 않고 main agent에게 자문만 반환한다.
 
 ## 섹션 분리 알고리즘
 
@@ -34,7 +46,7 @@ target이 wireframe markdown이면 `## Section` heading으로 분리.
 
 ## 섹션별 평가 체크리스트
 
-각 섹션은 다음 8개 항목 모두 평가. 통과/실패만이 아니라 *왜*를 명시.
+`full-audit`에서는 각 섹션의 다음 8개 항목을 모두 평가한다. 통과/실패만이 아니라 *왜*를 명시.
 
 ### 1. Promise clarity (5-second test)
 - 사용자가 5초 안에 "이게 뭘 해주는지" 파악 가능한가?

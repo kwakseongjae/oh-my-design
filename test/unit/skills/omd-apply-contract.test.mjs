@@ -47,5 +47,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("일반 텍스트 contrast 4.5:1");
     expect(skill).toContain("320px, 200% zoom/reflow");
     expect(skill).toContain("큰 음수 좌표");
+    expect(skill).toContain("change_authority: original-user-task-only");
+    expect(skill).toContain("bounded-repair-advisory");
+    expect(skill).toContain("finding 최대 5개, 약 600단어");
+    expect(skill).toContain("rejected_contract_drift");
   });
 });

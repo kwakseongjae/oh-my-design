@@ -127,7 +127,7 @@
       ],
       "license": "MIT",
       "eligible_tracks": ["landing-redesign", "repair"],
-      "activation": "Use the installed $omd:apply skill. Before the main implementation, use the Agent tool once for $omd-ux-writer and once for $omd-ux-engineer, in parallel when possible. Give each the same protected-contract work packet and ask for concise, evidence-backed advice only. Specialists must not edit files; the main agent owns all product edits, integrates only relevant advice, and runs the final same-route acceptance packet."
+      "activation": "Use the installed $omd:apply skill. First lock the current protected-contract ledger: every current control, row, form, disclosure, hook, state, and fact has allowed_delta 0 unless the original user prompt explicitly requests adding or removing it. Neither you nor a specialist may relax that ledger. Then use the Agent tool once for $omd-ux-writer and once for $omd-ux-engineer, in parallel when possible, with mode bounded-repair-advisory. Give each the identical immutable ledger, only one or two named risk questions, at most five ranked findings, and about 600 words. Do not request general section audits, new controls, new FAQ items, or new facts. Specialists must not edit files; the main agent owns all product edits, rejects contract-drift advice, and runs the final same-route acceptance packet."
     },
     "omd-full-harness": {
       "label": "oh-my-design full harness",

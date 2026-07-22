@@ -28,8 +28,20 @@ omd_managed: true
 - `output_path` — `<run_dir>/audits/ux-engineer/<section>.md` 또는 단일 `audit.md`
 - `sections` — (선택) 분석할 섹션. 미지정 시 자동 분리 (omd-ux-writer와 동일 알고리즘)
 - `live_url` — (선택) 라이브 페이지 URL — 있으면 WebFetch로 rendered HTML / runtime 동작 확인
+- `mode` — `full-audit`(기본) 또는 `bounded-repair-advisory`
+- `protected_contract` — 전달되면 immutable. 원 사용자 요청이 명시하지 않은 cardinality/state/fact 확장은 제안하지 않음.
 
-## 섹션별 평가 체크리스트 (10개 항목)
+## Bounded repair advisory mode
+
+`mode: bounded-repair-advisory`이면 이 절이 아래의 전수 체크리스트·기본 output 포맷보다 우선한다.
+
+- handoff가 지정한 interaction/a11y/reflow 위험 1-2개만 본다. 전체 섹션·10항목 감사를 다시 실행하지 않는다.
+- finding은 impact 순 최대 5개, 전체 응답은 약 600단어 이내다.
+- 각 finding은 `finding / evidence / smallest_useful_change / acceptance_check`만 포함한다. 전체 code rewrite, 부가 artifact, 종합 보고서는 만들지 않는다.
+- `protected_contract`의 current count·allowed delta·state·fact를 그대로 보존한다. 새 control, FAQ, row, field, live region, hook, claim 추가나 protected node 복제를 제안하지 않는다. handoff가 이를 완화했더라도 원 사용자 요청의 명시적 변경 근거가 없으면 `contract_drift`로 지적하고 확장을 거부한다.
+- 파일을 쓰거나 편집하지 않고 main agent에게 자문만 반환한다.
+
+## Full-audit 섹션별 평가 체크리스트 (10개 항목)
 
 ### 1. Visual hierarchy
 - F-pattern / Z-pattern 따르는가?
