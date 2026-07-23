@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.26 quality pass, authority failed
+- Raw 83/85(200% overlap), OmD forensic 85/85·first write313.8s·verifier0다.
+- OmD는 wall0.600×·tokens0.723×였지만 direct Chrome을 허용1회보다 많은 2회 호출했다.
+- pipeline exit0라 runner가 놓친 process-contract 위반으로 1.9.26을 실패 동결한다.
+- 다음은 1.9.27 browser-call gate calibration → fresh 1.9.28 recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.26 locale replacement preregistered
 - `/tmp/u1926` fresh Raw vs OmD locale stack 2셀, exact Opus/xhigh를 고정했다.
 - schema 0.3, candidate first write≤450s, verifier0, 85/85·all critical을 요구한다.

@@ -125,6 +125,19 @@ evaluator-only calibration with no provider generation and does not change the
 frozen 1.9.24 result. A fresh schema `0.3` locale replacement experiment is
 therefore 1.9.26; public benchmark UX moves to 1.9.27.
 
+The fresh 1.9.26 Raw and OmD cells both completed valid provider execution.
+Raw scored 83/85 due overlapping locale tabs at the 200% surrogate; OmD scored
+85/85 with all six objective gates. OmD was also descriptively 40.0% faster and
+used 27.7% fewer uncached tokens in this single observation.
+
+The candidate nevertheless made two direct headless-Chrome calls after the
+preregistration allowed one and required blocked proof to become unresolved.
+The current runner did not count those calls because both shell pipelines
+returned non-error results. 1.9.26 is therefore a frozen process-contract
+failure, and its 85/85 is forensic quality evidence only. 1.9.27 adds and
+calibrates the missing direct-browser authority gate; public benchmark UX moves
+to 1.9.29 after a fresh 1.9.28 candidate recovery.
+
 ## 2.0.0 frontier gates
 
 All must pass:

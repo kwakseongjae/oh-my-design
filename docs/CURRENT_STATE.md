@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b128aef` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.25 locale oracle standards calibration complete
+- 갱신: 2026-07-23 · 1.9.26 quality pass / direct-browser authority failed
 
 ## 지금 (현재 위치)
 
@@ -60,6 +60,10 @@
 - 다음은 schema 0.3 기반 1.9.26 fresh locale replacement experiment다. public benchmark UX는 1.9.27, activation/reuse는 1.9.28, independent challenge는 1.9.29로 이동한다.
 - 1.9.26은 `/tmp/u1926` fresh Raw DESIGN.md vs OmD locale stack 2셀로 사전등록했다. exact Opus/xhigh, 900s, retry/resume 0이며 task/evaluator basis는 `b128aef`·schema 0.3이다.
 - candidate는 first write≤450s, replacement verifier 0, 85/85·critical 6/6·5-locale click/roving/root-lang·terms/facts·4 geometry·Evidence·axe 0과 Raw 이상 점수를 모두 요구한다. full pass도 단일 execution path calibration일 뿐 일반 locale lift 주장이 아니다.
+- 1.9.26은 2/2 fresh cells가 provider/evaluator/export를 완료했다. Raw는 83/85로 200% surrogate tab overlap 하나를 실패했고, candidate는 85/85·critical 6/6·Evidence·axe0, first write 313,841ms, verifier0이다.
+- 단일 관측 candidate는 Raw 대비 wall 0.600×, uncached tokens 0.723×, first write 0.881×지만 efficiency 추정이 아니다. exact Opus, final, product diff, infra/sandbox/cwd0는 양쪽 모두 충족했다.
+- candidate가 허용된 direct browser 1회를 넘어 headless Chrome을 2회 호출했다. 첫 call은 no output, 두 번째는 Crashpad/ProcessSingleton block이며 pipeline exit0라 기존 runner가 잡지 못했다. 따라서 85/85는 forensic quality evidence이고 1.9.26은 `calibration_failed`로 동결한다.
+- 1.9.27은 실제 direct headless-browser invocation을 Bash tool-use에서 세고 variant-kind별 max gate로 fail-closed하는 classifier calibration이다. retained candidate count2 replay와 0/1/2 mutation test 뒤 fresh 1.9.28 recovery만 연다. public UX는 1.9.29로 이동한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -361,11 +365,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.26 preregistration을 clean commit으로 고정한다.
-2. 새 `/tmp/u1926`에서 exact Opus/xhigh provider 2셀만 실행하고 retry/resume하지 않는다.
-3. locale facts/terms, roving keyboard, root lang, 4 geometry, Evidence, axe, delivery authority를 함께 판정한다.
-4. fresh 결과를 고정한 뒤 1.9.27 public benchmark UX를 구현한다.
-5. 이후 1.9.28 activation/reuse → 1.9.29 independent challenge로 이동한다.
+1. 1.9.26 findings/summary를 검증하고 commit한다.
+2. direct-browser invocation counter와 `max_direct_browser_commands` gate를 runner에 추가한다.
+3. 0/1/2-call mutation test와 retained 1.9.26 replay count2 fail을 검증한다.
+4. 1.9.27 classifier calibration을 고정한 뒤 fresh 1.9.28 candidate recovery를 사전등록한다.
+5. 이후 1.9.29 public UX → 1.9.30 activation/reuse → 1.9.31 independent challenge로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
