@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.18 recovery preregistered
+- fresh `/tmp/u1918` Pricing harness 1셀, exact Opus/xhigh를 고정했다.
+- first write≤450s와 last advisory→targeted Edit 0–90s를 자동 gate로 추가했다.
+- first transaction은 acceptance-relevant non-no-op Edit여야 하고 whole-file Write는 실패다.
+- 다음은 fresh prepare → auth/model preflight → no-retry execution이다.
+
 ## 2026-07-23 (Codex) · 1.9.17 stopped + 1.9.18 source complete
 - cell 8 Pricing harness가 first write 511s로 delivery gate를 넘겨 matrix를 동결했다.
 - root cause는 last advisory 뒤 229s parent synthesis/whole-file generation 지연이다.

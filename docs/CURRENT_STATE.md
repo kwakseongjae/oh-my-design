@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `dc27f8f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.17 stopped, 1.9.18 advisory-to-edit source complete
+- 기준 커밋: `d3bf7a4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.18 advisory-to-edit recovery preregistered
 
 ## 지금 (현재 위치)
 
@@ -14,6 +14,7 @@
 - root cause는 로그인·Opus·Agent가 아니라 parent의 advisory-to-edit scheduler다. 자문 완료 후 163s 재종합 + 66s whole-file Write 생성으로 first edit가 늦어졌다; 이전 valid candidate도 last-advisory→write 119–165s였다.
 - 1.9.18 source는 bounded repair advisory를 3 findings/~300 words로 줄이고 각 specialist가 exact target의 `first_safe_edit`를 먼저 반환한다. parent는 last advisory 뒤 90s 안에 recap/plan/재독해 없이 acceptance-relevant targeted Edit를 먼저 적용하며 no-op clock touch와 안전한 snippet이 있는데 whole-file Write를 첫 transaction으로 쓰는 것을 금지한다.
 - canonical skill·두 specialist·workflow manifest·Claude benchmark activation을 동기화했다. focused 29/29, 전체 207 pass/1 conditional skip, TypeScript와 CLI build, JSON/diff가 green이다.
+- `/tmp/u1918` fresh Pricing recovery 1셀을 exact Opus/xhigh, first write≤450s, last advisory→first write 0–90s, first transaction targeted non-no-op Edit, 85/85·all critical/Evidence·axe serious 0·specialists 2/2·verifier 0으로 사전등록했다. retry가 없고 full pass만 1.9.19를 연다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -315,8 +316,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.18 fresh Pricing harness 1셀을 `/tmp/u1918`에 사전등록한다: exact Opus/xhigh, 900s, first write≤450s, last-advisory→first-write≤90s, 85/85, all critical/Evidence, axe serious/critical 0, specialists 2/2, verifier 0.
-2. clean source attestation과 first-party Claude preflight 뒤 retry 없이 실행한다.
+1. `/tmp/u1918`을 fresh prepare하고 clean source attestation을 확인한다.
+2. first-party Claude auth와 exact Opus/xhigh preflight 뒤 retry 없이 실행한다.
 3. full pass만 1.9.19 fresh 18-cell replacement matrix를 열고, 실패하면 같은 root를 재사용하지 않는다.
 4. harness gate 뒤 locale/evidence → public benchmark UX → activation → independent challenge로 이동한다.
 
