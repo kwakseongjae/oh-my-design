@@ -192,6 +192,15 @@ the standard Clipboard API and changed localized status. 1.9.32 remains
 failed; 1.9.33 replaces the hidden marker with direct clipboard behavior.
 Public benchmark UX moves to 1.9.35 after a fresh 1.9.34 recovery.
 
+1.9.33 now grants clipboard permissions only inside the independent locale
+evaluator, clears state before each action, and requires the exact protected
+command after every click plus a localized live-status transition. No-write,
+wrong-value, status-only, and attribute-only mutations fail. The unchanged
+1.9.32 artifact replays at 85/85 under schema `0.4`, while the 1.9.30 overlap
+control remains 83/85 and the invalid starter remains 57/85. Full tests,
+TypeScript, build, three browser replays, and clean preparation pass,
+unlocking a fresh 1.9.34 recovery.
+
 ## 2.0.0 frontier gates
 
 All must pass:

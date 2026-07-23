@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `3474e04` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.32 geometry recovered, clipboard oracle failed
+- 기준 커밋: `3990ff1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.33 standard Clipboard API oracle calibrated
 
 ## 지금 (현재 위치)
 
@@ -98,6 +98,11 @@
 - 실패는 task에 없는 starter-only `data-copied=true`를 evaluator가 요구했기 때문이다. 별도 read-only Chrome 진단에서 5 locale 모두 standard Clipboard API로 exact command를 복사하고 localized status가 바뀜을 확인했다.
 - 1.9.32는 schema0.3 판정을 소급 변경하지 않고 `calibration_failed`로 고정한다. 1.9.33은 evaluator가 실제 clipboard value를 읽도록 바꾸고 no-write/wrong-value/status-only/attribute-only mutation으로 방어한다.
 - provider browser authority는 계속 0이다. fresh provider recovery는 1.9.34와 새 root에서만 가능하며 public benchmark UX는 1.9.35로 이동한다.
+- 1.9.33 source `3990ff1`은 locale evaluator context에만 clipboard read/write permission을 부여하고 각 action 전 clear→click→read로 exact protected command를 검증한다. `data-copied` marker는 점수 권한이 없다.
+- no-write/wrong-value/status-only/attribute-only mutation은 전부 fail한다. task는0.4.0, evaluator schema는0.4로 올렸다.
+- unchanged 1.9.32 artifact는 85/85·critical6/6, 1.9.30 overlap control은 83/85·responsive fail, seeded starter는 57/85·4 gates fail로 정확히 분리됐다.
+- focused27/27, full217/1skip, TypeScript/build/syntax/JSON/diff와 3 real-browser replay, clean `/tmp/u1933-activation-proof`가 green이다.
+- 1.9.33은 provider generation 없는 `calibration_complete`다. 다음은 `/tmp/u1934` fresh exact Opus/xhigh recovery다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -399,11 +404,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.32 findings/summary를 clean commit으로 고정한다.
-2. 1.9.33 clipboard standards oracle과 negative mutations를 구현한다.
-3. frozen 1.9.32 artifact는 actual clipboard+status로 85/85가 되고 starter/mutants는 계속 실패하는지 검증한다.
-4. fresh 1.9.34 recovery를 새 root에 사전등록한다.
-5. 이후 public UX 1.9.35 → activation/reuse 1.9.36 → independent challenge 1.9.37로 이동한다.
+1. 1.9.33 findings/summary를 clean commit으로 고정한다.
+2. fresh 1.9.34 exact Opus/xhigh candidate-only recovery를 `/tmp/u1934`에 사전등록한다.
+3. first write≤450s, browser0, verifier0, 85/85·critical6/6·actual clipboard·all geometry/Evidence를 함께 요구한다.
+4. full recovery면 repeated locale matrix 또는 public UX 1.9.35의 최소 증거 계약을 정한다.
+5. 이후 activation/reuse 1.9.36 → independent challenge 1.9.37로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

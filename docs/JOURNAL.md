@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.33 standard clipboard oracle
+- evaluator만 actual clipboard clear→click→exact read로 바꾸고 provider browser0을 유지했다.
+- no-write/wrong/status-only/marker-only mutation이 모두 fail한다.
+- retained1.9.32=85, overlap1.9.30=83, starter=57; full217/1skip·build/type green이다.
+- 다음은 `/tmp/u1934` fresh exact Opus/xhigh recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.32 geometry pass, clipboard marker fail
 - valid exact Opus, first write377.9s·browser0·verifier0, 4 geometry와 axe0를 통과했다.
 - frozen 80/85는 task에 없는 starter-only `data-copied` marker 요구 때문에 handoff만 실패했다.
