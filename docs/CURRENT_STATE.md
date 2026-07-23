@@ -78,6 +78,8 @@
 - skills는 static source + protected facts/terminology/register/repetition만 VERIFY하며 browser proof는 시도 없이 unresolved로 둔다. canonical production skills의 real-route inspection 능력은 변경하지 않았다.
 - max0 mutation은 count0 pass/count1 fail이고 기존 max1 0/1/2도 pass/pass/fail이다. clean `/tmp/u1929-activation-proof`에서 manifest/prompt activation exact, source publishable을 확인했다.
 - focused27/27, full217/1skip, TypeScript/build/JSON/diff green이다. provider generation 없는 `calibration_complete`로 fresh `/tmp/u1930` recovery를 연다.
+- 1.9.30은 `/tmp/u1930` fresh candidate-only recovery로 사전등록했다. exact Opus/xhigh, 900s, task/evaluator `b128aef`, gate `9df4eca`, zero-browser activation `2249736`, retry/resume/manual edit 0이다.
+- first write≤450s, direct browser exactly0, verifier0, final/valid, 85/85·critical6/6·locale click/roving/root-lang·terms/facts·4 geometry·Evidence·axe0를 모두 요구한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -379,8 +381,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.29 findings/summary를 clean commit으로 고정한다.
-2. fresh `/tmp/u1930` candidate recovery를 exact Opus/xhigh, max browser0로 사전등록한다.
+1. 1.9.30 preregistration을 clean commit으로 고정한다.
+2. fresh `/tmp/u1930` candidate를 exact Opus/xhigh로 실행하고 retry/resume하지 않는다.
 3. first write≤450s, verifier0, browser0, 85/85·all critical을 함께 판정한다.
 4. full recovery 뒤 1.9.31 public benchmark UX로 이동한다.
 5. 이후 1.9.32 activation/reuse → 1.9.33 independent challenge로 이동한다.

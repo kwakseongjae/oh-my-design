@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.30 zero-browser recovery preregistered
+- `/tmp/u1930` fresh OmD locale candidate, exact Opus/xhigh를 고정했다.
+- first write≤450s, direct browser0, verifier0, 85/85·critical6/6을 요구한다.
+- retry/resume/manual edit 없이 process/delivery failure 즉시 stop한다.
+- 다음은 clean commit → preflight → fresh candidate 실행이다.
+
 ## 2026-07-23 (Codex) · 1.9.29 external evaluator authority
 - locale benchmark provider browser authority를 0으로 바꾸고 external evaluator로 일원화했다.
 - canonical skills는 그대로이며 benchmark activation만 static/content VERIFY로 제한한다.
