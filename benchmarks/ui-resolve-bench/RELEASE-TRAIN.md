@@ -181,6 +181,17 @@ static wrapped-row audit whose vertical gap covers edge selection treatments.
 A clean prepared sandbox, 217 tests, TypeScript, build, and browser replays are
 green, unlocking a fresh 1.9.32 recovery.
 
+The fresh 1.9.32 candidate completed valid exact-Opus execution with first
+product write at 377.9 seconds, zero provider browser commands, and no
+replacement verifier. It resolved all four geometry profiles, including the
+200% hit-area overlap, and passed locale content, navigation, accessibility,
+design, and Evidence & Unknown. The frozen result is still 80/85 because the
+evaluator required the starter-only `data-copied` marker. A read-only browser
+diagnostic confirmed that all five actions copied the exact command through
+the standard Clipboard API and changed localized status. 1.9.32 remains
+failed; 1.9.33 replaces the hidden marker with direct clipboard behavior.
+Public benchmark UX moves to 1.9.35 after a fresh 1.9.34 recovery.
+
 ## 2.0.0 frontier gates
 
 All must pass:

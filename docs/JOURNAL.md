@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.32 geometry pass, clipboard marker fail
+- valid exact Opus, first write377.9s·browser0·verifier0, 4 geometry와 axe0를 통과했다.
+- frozen 80/85는 task에 없는 starter-only `data-copied` marker 요구 때문에 handoff만 실패했다.
+- 별도 browser 진단은 5 locale actual clipboard exact + localized status를 확인했다.
+- 다음은 1.9.33 standard Clipboard API oracle calibration이다.
+
 ## 2026-07-23 (Codex) · 1.9.32 wrapped-control recovery preregistered
 - `/tmp/u1932` fresh OmD locale candidate, exact Opus/xhigh를 고정했다.
 - task0.3.0, first write≤450s, browser0, verifier0, 85/85·critical6/6을 요구한다.

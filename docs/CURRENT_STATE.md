@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `0991a69` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.31 locale concept/wrap calibration complete
+- 기준 커밋: `3474e04` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.32 geometry recovered, clipboard oracle failed
 
 ## 지금 (현재 위치)
 
@@ -93,6 +93,11 @@
 - 1.9.31은 provider generation 없는 `calibration_complete`다. 다음은 `/tmp/u1932` fresh exact Opus/xhigh candidate recovery이며 browser0/verifier0/85·critical6/6을 다시 요구한다.
 - 1.9.32는 `/tmp/u1932` fresh candidate-only recovery로 사전등록했다. task0.3.0/source `0991a69`, exact Opus/xhigh, 900s, retry/resume/manual edit 0이다.
 - first write≤450s, browser exactly0, verifier0, final/valid, 85/85·critical6/6·five-locale click/roving/root-lang·bounded concepts/facts·4 geometry·200% no-overlap·Evidence·axe0를 모두 요구한다.
+- 1.9.32는 1/1 valid complete했다. wall517,279ms, tokens113,725, first write377,911ms, browser0, verifier0, final/product diff, 모든 infra/sandbox/cwd0다.
+- frozen score는 80/85·critical5/6이다. 200% overlap을 포함한 4 geometry, locale navigation/content, a11y, design, Evidence는 전부 pass했고 state handoff만 실패했다.
+- 실패는 task에 없는 starter-only `data-copied=true`를 evaluator가 요구했기 때문이다. 별도 read-only Chrome 진단에서 5 locale 모두 standard Clipboard API로 exact command를 복사하고 localized status가 바뀜을 확인했다.
+- 1.9.32는 schema0.3 판정을 소급 변경하지 않고 `calibration_failed`로 고정한다. 1.9.33은 evaluator가 실제 clipboard value를 읽도록 바꾸고 no-write/wrong-value/status-only/attribute-only mutation으로 방어한다.
+- provider browser authority는 계속 0이다. fresh provider recovery는 1.9.34와 새 root에서만 가능하며 public benchmark UX는 1.9.35로 이동한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -394,11 +399,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.32 preregistration을 clean commit으로 고정한다.
-2. fresh `/tmp/u1932` exact Opus/xhigh candidate를 retry/resume 없이 실행한다.
-3. first write≤450s, browser0, verifier0, 85/85·critical6/6·all locale/fact/geometry/Evidence를 함께 판정한다.
-4. full recovery면 repeated locale matrix 또는 public UX 1.9.33의 최소 증거 계약을 정한다.
-5. 이후 activation/reuse 1.9.34 → independent challenge 1.9.35로 이동한다.
+1. 1.9.32 findings/summary를 clean commit으로 고정한다.
+2. 1.9.33 clipboard standards oracle과 negative mutations를 구현한다.
+3. frozen 1.9.32 artifact는 actual clipboard+status로 85/85가 되고 starter/mutants는 계속 실패하는지 검증한다.
+4. fresh 1.9.34 recovery를 새 root에 사전등록한다.
+5. 이후 public UX 1.9.35 → activation/reuse 1.9.36 → independent challenge 1.9.37로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
