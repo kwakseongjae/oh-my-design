@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.22 fresh replacement preregistered
+- `/tmp/u1922`의 3 tasks×3 trials×portable/harness 18 fresh cells를 고정했다.
+- 1.9.19/1.9.20 결과는 denominator 밖이며 classifier basis만 `d422186`이다.
+- exact Opus/xhigh와 delivery·axe·authority gates, retry 0을 유지한다.
+- 다음은 validate/commit → prepare → auth preflight → full execution이다.
+
 ## 2026-07-23 (Codex) · 1.9.21 recovered scratch-path classifier calibrated
 - 1.9.20은 첫 셀의 recovered literal `/tmp` denial 오분류로 0 valid에서 stop했다.
 - provider/product는 success였고 post-stop frozen evaluator는 forensic 85/85다.
