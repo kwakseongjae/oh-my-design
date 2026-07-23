@@ -258,6 +258,7 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
       locale,
       active: locale,
       body_locale: locale,
+      root_lang: locale,
       visible_panels: [locale],
       pressed: Object.fromEntries(locales.map((candidate) => [candidate, String(candidate === locale)])),
     });
@@ -267,11 +268,22 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
       initial: state("ko"),
       states: locales.map(state),
       restored: state("ko"),
+      keyboard_tabs: {
+        start_focus: "ko",
+        forward: [...locales.slice(1), "ko"].map((locale) => ({
+          focused: locale,
+          ...state(locale),
+        })),
+        reverse: {
+          focused: "zh-TW",
+          ...state("zh-TW"),
+        },
+      },
       handoffs: locales.map((locale) => ({
         locale,
         action_present: true,
         action_visible: true,
-        before: `before-${locale}`,
+        before: "",
         after: `after-${locale}`,
         copied: "true",
       })),
@@ -310,6 +322,25 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
       localeTask.locale_oracle,
     ).navigation.every_locale_reachable).toBe(false);
 
+    const staleRootLanguage = structuredClone(observation);
+    staleRootLanguage.states[1].root_lang = "ko";
+    expect(evaluateLocaleSwitchObservation(
+      staleRootLanguage,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).navigation.every_locale_reachable).toBe(false);
+
+    const brokenRovingTabs = structuredClone(observation);
+    brokenRovingTabs.keyboard_tabs.forward[0] = {
+      focused: "ko",
+      ...state("ko"),
+    };
+    expect(evaluateLocaleSwitchObservation(
+      brokenRovingTabs,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).navigation.roving_keyboard_forward).toBe(false);
+
     const falseCopy = structuredClone(observation);
     falseCopy.handoffs[0].after = falseCopy.handoffs[0].before;
     expect(evaluateLocaleSwitchObservation(
@@ -317,6 +348,13 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
       localeTask.journey_oracle.locale_switch,
       localeTask.locale_oracle,
     ).handoff.every_status_changes).toBe(false);
+
+    const emptyInitialStatus = structuredClone(observation);
+    expect(evaluateLocaleSwitchObservation(
+      emptyInitialStatus,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).handoff.every_status_changes).toBe(true);
   });
 
   it("records unsupported claims from visible copy, accessible names, and metadata", () => {
@@ -409,8 +447,11 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
 
     const evaluator = readFileSync(evaluatorPath, "utf8");
     expect(evaluator).toContain("css_zoom_surrogate_200_geometry");
+    expect(evaluator).toContain("element.tabIndex >= 0");
+    expect(evaluator).not.toContain("[tabindex]:not([tabindex='-1'])");
     expect(evaluator).not.toContain("zoom_reflow_geometry");
     expect(evaluator).toContain("automated_gate_pass");
+    expect(evaluator).toContain('schema_version: "0.3"');
     expect(evaluator).not.toContain("provisional_ui_resolved");
     expect(evaluator).not.toContain("public_ui_resolved");
   });

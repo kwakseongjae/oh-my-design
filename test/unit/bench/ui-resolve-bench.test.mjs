@@ -68,7 +68,9 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ));
     expect(task).toMatchObject({
       behavior_adapter: "locale-switch-v1",
-      locale: "en",
+      version: "0.2.0",
+      locale: "ko",
+      browser_locale: "ko-KR",
       journey_oracle: {
         locale_switch: {
           locales: ["ko", "en", "ja", "zh-CN", "zh-TW"],
@@ -89,6 +91,11 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "PROMPT.md"),
       "utf8",
     )).toContain("ZH-TW must not inherit ZH-CN copy");
+    expect(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "PROMPT.md"),
+      "utf8",
+    )).toContain("standard roving-tabindex tabs pattern");
+    expect(task.semantic_oracle.landmarks.nav_count).toBeUndefined();
     const starter = readFileSync(
       join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "starter/index.html"),
       "utf8",

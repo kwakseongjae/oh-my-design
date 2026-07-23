@@ -157,6 +157,7 @@ export function evaluateLocaleSwitchObservation(observation, journeyOracle = {},
   const statePasses = (state, locale) =>
     state?.active === locale &&
     state?.body_locale === locale &&
+    state?.root_lang?.toLowerCase() === locale.toLowerCase() &&
     exactList(state?.visible_panels, [locale]) &&
     locales.every((candidate) => state?.pressed?.[candidate] === String(candidate === locale));
   const panelByLocale = Object.fromEntries(panels.map((panel) => [panel.locale, panel]));
@@ -172,6 +173,17 @@ export function evaluateLocaleSwitchObservation(observation, journeyOracle = {},
         states.length === locales.length &&
         locales.every((locale) => statePasses(states.find((state) => state.locale === locale), locale)),
       restored_exact: statePasses(observation?.restored, expectedInitial),
+      roving_keyboard_forward:
+        observation?.keyboard_tabs?.start_focus === expectedInitial &&
+        exactList(
+          observation?.keyboard_tabs?.forward?.map((entry) => entry.focused),
+          [...locales.slice(1), expectedInitial],
+        ) &&
+        (observation?.keyboard_tabs?.forward ?? []).every((entry) =>
+          statePasses(entry, entry.focused)),
+      roving_keyboard_reverse:
+        observation?.keyboard_tabs?.reverse?.focused === locales.at(-1) &&
+        statePasses(observation?.keyboard_tabs?.reverse, locales.at(-1)),
     },
     content: {
       exact_panel_locales: exactList(panels.map((panel) => panel.locale), locales),
@@ -204,7 +216,11 @@ export function evaluateLocaleSwitchObservation(observation, journeyOracle = {},
       every_action_visible: handoffs.length > 0 && handoffs.every((entry) => entry.action_visible === true),
       every_status_changes:
         handoffs.length > 0 &&
-        handoffs.every((entry) => Boolean(entry.before) && Boolean(entry.after) && entry.before !== entry.after),
+        handoffs.every((entry) =>
+          typeof entry.before === "string" &&
+          typeof entry.after === "string" &&
+          Boolean(entry.after.trim()) &&
+          entry.before !== entry.after),
       every_action_marks_copied: handoffs.length > 0 && handoffs.every((entry) => entry.copied === "true"),
     },
   };
@@ -483,9 +499,13 @@ async function main() {
           if (typeof element.checkVisibility === "function" && !element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true })) return false;
           return style.display !== "none" && style.visibility !== "hidden" && style.opacity !== "0" && rect.width > 0 && rect.height > 0;
         };
-        const focusableSelector = "button, a[href], input, select, textarea, [tabindex]:not([tabindex='-1'])";
-        const controls = [...document.querySelectorAll(focusableSelector)].filter(visible);
-        const measuredControls = controls.filter((element) =>
+        const interactiveSelector = "button, a[href], input, select, textarea, [tabindex]";
+        const interactiveControls = [...document.querySelectorAll(interactiveSelector)].filter(visible);
+        const controls = interactiveControls.filter((element) =>
+          element.tabIndex >= 0 &&
+          !element.matches(":disabled, [aria-disabled='true']"),
+        );
+        const measuredControls = interactiveControls.filter((element) =>
           element.matches("button, input, select, textarea, [role='button'], a.button, a[class*='btn'], a[data-primary-action]"),
         );
         const accessibleName = (element) => {
@@ -496,11 +516,12 @@ async function main() {
           }
           return (element.textContent || element.getAttribute("value") || element.getAttribute("title") || "").trim();
         };
-        const controlDetails = controls.map((element, index) => {
+        controls.forEach((element, index) => {
           element.dataset.benchEvaluatorFocusId = String(index);
+        });
+        const controlDetails = interactiveControls.map((element) => {
           const rect = element.getBoundingClientRect();
           return {
-            id: String(index),
             tag: element.tagName,
             text: accessibleName(element).slice(0, 80),
             left: rect.left,
@@ -536,7 +557,7 @@ async function main() {
           nav_count: document.querySelectorAll("nav").length,
           footer_count: document.querySelectorAll("footer").length,
           lang: document.documentElement.lang,
-          unnamed_controls: controls.filter((element) => !accessibleName(element)).length,
+          unnamed_controls: interactiveControls.filter((element) => !accessibleName(element)).length,
           unlabeled_inputs: [...document.querySelectorAll("input, select, textarea")].filter((element) => !accessibleName(element)).length,
           images_without_alt: [...document.images].filter((image) => !image.hasAttribute("alt")).length,
           small_targets: measuredControls.filter((element) => {
@@ -878,6 +899,7 @@ async function main() {
           const state = () => ({
             active: document.body.dataset[config.body_dataset],
             body_locale: document.body.dataset[config.body_dataset],
+            root_lang: document.documentElement.lang,
             pressed: Object.fromEntries(buttons.map((button) => [
               valueFor(button),
               button.getAttribute("aria-selected") ?? button.getAttribute("aria-pressed"),
@@ -894,6 +916,44 @@ async function main() {
             initial: state(),
             states: [],
             handoffs: [],
+          };
+          const initialButton = buttons.find((button) => valueFor(button) === config.initial);
+          initialButton?.click();
+          initialButton?.focus();
+          result.keyboard_tabs = {
+            start_focus: document.activeElement instanceof Element
+              ? valueFor(document.activeElement)
+              : null,
+            forward: [],
+            reverse: null,
+          };
+          for (let index = 0; index < config.locales.length; index += 1) {
+            document.activeElement?.dispatchEvent(new KeyboardEvent("keydown", {
+              key: "ArrowRight",
+              bubbles: true,
+              cancelable: true,
+            }));
+            await new Promise((resolve) => setTimeout(resolve, 20));
+            result.keyboard_tabs.forward.push({
+              focused: document.activeElement instanceof Element
+                ? valueFor(document.activeElement)
+                : null,
+              ...state(),
+            });
+          }
+          initialButton?.click();
+          initialButton?.focus();
+          document.activeElement?.dispatchEvent(new KeyboardEvent("keydown", {
+            key: "ArrowLeft",
+            bubbles: true,
+            cancelable: true,
+          }));
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          result.keyboard_tabs.reverse = {
+            focused: document.activeElement instanceof Element
+              ? valueFor(document.activeElement)
+              : null,
+            ...state(),
           };
           for (const locale of config.locales) {
             buttons.find((button) => valueFor(button) === locale)?.click();
@@ -1161,7 +1221,7 @@ async function main() {
   };
 
   const score = {
-    schema_version: "0.2",
+    schema_version: "0.3",
     task_id: task.id,
     variant_id: manifest.variant.id,
     evaluated_at: new Date().toISOString(),

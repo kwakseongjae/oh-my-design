@@ -27,9 +27,14 @@ Preserve and polish these working journeys:
 1. switch among all five locale tabs with one visible panel and correct
    selected state;
 2. keep every locale panel associated with its tab and language;
-3. copy the protected command from the visible panel and announce the result;
-4. keep keyboard focus visible and respect reduced motion;
-5. render without horizontal overflow at 320, 390, 640-at-200%-surrogate, and
+3. keep the document root language synchronized with the active locale and
+   restore it to KO with the initial tab;
+4. use the standard roving-tabindex tabs pattern: one tab in the sequential
+   Tab order, with Left/Right Arrow navigation across all five tabs;
+5. copy the protected command from the visible panel and announce a localized
+   result; the status region may be empty before the action;
+6. keep keyboard focus visible and respect reduced motion;
+7. render without horizontal overflow at 320, 390, 640-at-200%-surrogate, and
    1440 pixels.
 
 Do not explain a plan. Inspect the files, implement the page, exercise the

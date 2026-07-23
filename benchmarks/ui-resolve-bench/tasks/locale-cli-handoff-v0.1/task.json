@@ -1,10 +1,10 @@
 {
   "id": "locale-cli-handoff-v0.1",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "track": "repair",
   "grounding": "design-md",
-  "locale": "en",
-  "browser_locale": "en-US",
+  "locale": "ko",
+  "browser_locale": "ko-KR",
   "behavior_adapter": "locale-switch-v1",
   "review_brief": "A five-locale setup handoff for a local UI workflow. Compare whether each locale preserves the same command and product facts while reading as an independent product interface rather than a mechanically translated English template.",
   "network": "disabled",
@@ -13,7 +13,6 @@
     "landmarks": {
       "h1_count": { "exact": 1 },
       "main_count": { "exact": 1 },
-      "nav_count": { "min": 1 },
       "footer_count": { "min": 1 }
     }
   },
