@@ -8,8 +8,10 @@ describe("OmD bounded repair advisory contract", () => {
     it(`${file} preserves the parent contract under a bounded response`, () => {
       const agent = read(file);
       expect(agent).toContain("mode: bounded-repair-advisory");
-      expect(agent).toContain("최대 5개");
-      expect(agent).toContain("약 600단어");
+      expect(agent).toContain("최대 3개");
+      expect(agent).toContain("약 300단어");
+      expect(agent).toContain("first_safe_edit");
+      expect(agent).toContain("targeted Edit");
       expect(agent).toContain("protected_contract");
       expect(agent).toContain("contract_drift");
       expect(agent).toContain("파일을 쓰거나 편집하지 않고");

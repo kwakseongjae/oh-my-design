@@ -80,7 +80,7 @@ protected_contract:
 evidence: [DESIGN.md, screenshot, code, browser observation]
 unknowns: [<확인되지 않은 정보 — fallback으로 채우지 않음>]
 implementation_owner: main-agent | none
-verification:
+  verification:
   routes: []
   viewports: []
   states: []
@@ -90,19 +90,32 @@ verification:
     optional: []
     delivery_reserve: true
     first_product_edit: 50%
+    advisory_to_first_edit: min(90s, 10%)
     stop_optional_verification: 80%
     begin_final_delivery: 90%
+  first_safe_edit:
+    target: <기존 파일의 정확한 snippet 또는 selector>
+    smallest_useful_change: <acceptance에 기여하는 실제 변경>
+    protected_contract_effect: none
+    acceptance_check: <변경 직후 확인할 한 가지>
 ```
 
 설치된 채널 data root에 `workflow-capabilities.json`이 있으면 선언된 workflow와 필드명을 사용한다. 파일이 없어도 위 계약으로 계속하며 설치를 강요하지 않는다.
 
-specialist handoff에는 전체 대화 대신 이 packet과 필요한 파일·스크린샷만 전달한다. 기존 UI repair의 specialist는 기본적으로 `mode: bounded-repair-advisory`를 사용하고 **요청된 위험 영역 1-2개, finding 최대 5개, 약 600단어**로 제한한다. 전 섹션 audit, 8/10항목 전수평가, A/B 옵션, 추가 아이디어 발산은 별도 full audit 요청에서만 한다. specialist 응답은 다음 shape로 제한한다.
+specialist handoff에는 전체 대화 대신 이 packet과 필요한 파일·스크린샷만 전달한다. 기존 UI repair의 specialist는 기본적으로 `mode: bounded-repair-advisory`를 사용하고 **요청된 위험 영역 1-2개, finding 최대 3개, 약 300단어**로 제한한다. 전 섹션 audit, 8/10항목 전수평가, A/B 옵션, 추가 아이디어 발산은 별도 full audit 요청에서만 한다. specialist 응답은 main agent가 설명 없이 바로 적용할 수 있는 `first_safe_edit`를 맨 앞에 두고 다음 shape로 제한한다.
 
 ```yaml
-finding: <무엇이 문제인가>
-evidence: <route·line·DOM·screenshot 근거>
-smallest_useful_change: <최소 유효 수정>
-acceptance_check: <어떻게 통과를 확인할지>
+first_safe_edit:
+  target: <기존 파일의 정확한 snippet 또는 selector>
+  evidence: <route·line·DOM·screenshot 근거>
+  smallest_useful_change: <완료 조건에 기여하는 최소 유효 수정>
+  protected_contract_effect: none
+  acceptance_check: <적용 직후 어떻게 확인할지>
+findings:
+  - finding: <무엇이 문제인가>
+    evidence: <근거>
+    smallest_useful_change: <최소 유효 수정>
+    acceptance_check: <어떻게 통과를 확인할지>
 unresolved: [<확인 불가 항목>]
 ```
 
@@ -153,7 +166,7 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 1. **첫 편집 전 protected ledger를 만든다.** 기존 DOM·코드·요청에서 동작을 가진 control, form, disclosure, row/list, 상태 출력의 identity와 개수를 기록한다. 각 항목은 `current_count`, `allowed_delta`, `states`, `facts`를 가진다. 사용자가 원 요청에서 추가·삭제를 명시하지 않았다면 언제나 `allowed_delta: 0`이다. agent, specialist, DESIGN.md, 미적 아이디어, “production-ready” 같은 품질 표현은 변경 권한이 아니다. 부모가 handoff를 만들 때도 이 값을 완화할 수 없다.
 2. **첫 편집 전 `semantic_color_ledger`를 잠근다.** 현재 화면과 계획한 변경에서 의미를 전달하는 모든 foreground/background pair를 `token`, `surface`, `content_type(normal-text|large-text|non-text)`, `contrast_proof(measured|unresolved)`로 기록한다. measured proof가 없는 accent-on-surface pair는 의미 있는 normal text에 쓰지 않는다. 그 상태의 글자는 DESIGN.md의 `ink`/text-role token으로 두고, accent는 인접한 non-text dot·bar·ring·icon에만 써서 브랜드 표현을 보존한다. 색만으로 상태를 구분하지 않는다. DESIGN.md에 어두운 대체 token이 없으면 새 색을 만들지 않는다. `unresolved`는 위험한 pair를 출고해도 된다는 뜻이 아니라, 그 pair를 제거하고 보수적인 text+non-text 조합으로 바꾸라는 fail-closed 신호다.
 3. **탐색 종료 조건을 둔다.** DESIGN.md, consumer route, protected ledger, semantic color ledger, 최소 acceptance를 확인했다면 optional research나 미적 아이디어 수집을 더 하지 않고 가장 작은 end-to-end 편집을 시작한다. specialist 자문이 꼭 필요한 위험을 해결하지 않는 한 첫 편집을 막지 않는다. specialist를 호출해도 전체 페이지 감사를 요청하지 않고, 이미 확인한 위험 질문 1-2개만 `bounded-repair-advisory`로 보낸다. state/status/accent token이 있으면 engineer 질문 중 하나는 semantic color ledger의 모든 planned pair를 normal text와 non-text 역할로 분리하고 unmeasured pair를 지적해야 한다. 자문 뒤 새 pair를 추가하면 별도 2차 audit 대신 위 fail-closed text+non-text 기본값을 적용한다.
-4. **delivery clock을 먼저 잠근다.** 런타임이나 작업 packet에 timeout이 있으면 첫 제품 편집을 총 예산의 50% 전, 선택 검증 종료를 80% 전, 최종 전달 시작을 90% 전으로 둔다. 필수 specialist가 있으면 결과가 도착한 직후 별도의 2차 분석 pass 없이 편집한다. timeout을 알 수 없어도 ledger와 필수 자문이 준비된 뒤 optional 탐색을 한 번 더 돌리지 않는다. deadline을 놓치면 기능을 더 추가하지 않고 가장 작은 완성 diff와 정직한 `unresolved` 전달을 우선한다.
+4. **delivery clock을 먼저 잠근다.** 런타임이나 작업 packet에 timeout이 있으면 첫 제품 편집을 총 예산의 50% 전, 선택 검증 종료를 80% 전, 최종 전달 시작을 90% 전으로 둔다. 필수 specialist가 있으면 마지막 결과가 도착한 뒤 `min(90초, 총 예산의 10%)` 안에 `first_safe_edit` 하나를 먼저 적용한다. 그 사이 사용자-facing ledger recap, 자문 요약, 계획 설명, 전체 파일 재독해, 2차 분석 pass를 출력하지 않는다. 기존 snippet을 안전하게 바꿀 수 있으면 첫 transaction은 targeted `Edit`이며 whole-file `Write`가 아니다. 첫 transaction은 원 요청의 acceptance에 기여하고 protected ledger를 보존하는 실제 제품 변경이어야 한다. 공백·주석·timestamp·동일값 치환 같은 no-op으로 clock만 찍지 않는다. specialist의 `first_safe_edit`가 ledger를 어기면 폐기하고, 이미 읽은 DESIGN.md와 원 요청이 직접 허용하는 가장 작은 계약-중립 변경을 같은 방식으로 적용한다. timeout을 알 수 없어도 ledger와 필수 자문이 준비된 뒤 optional 탐색을 한 번 더 돌리지 않는다. deadline을 놓치면 기능을 더 추가하지 않고 가장 작은 완성 diff와 정직한 `unresolved` 전달을 우선한다.
 5. **장식을 위해 제품 hook을 복제하지 않는다.** 가격 비교, 요약 카드, 모바일 사본처럼 같은 값을 다시 보여줘야 해도 기존 behavior hook·form field·live region·ID를 복제하지 않는다. 새 hook이나 상태를 추가하려면 요청 또는 제품 계약의 근거가 있어야 한다.
 6. **최종 acceptance packet을 한 번 실행한다.** 같은 route에서 다음을 묶어 확인하고, 고칠 수 없는 항목은 `unresolved`로 전달한다.
    - protected ledger의 identity·개수·before/action/after가 변경 전 계약과 일치

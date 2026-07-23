@@ -191,7 +191,11 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     expect(competitors.variants["omd-repair-harness"].activation).toContain("allowed_delta 0");
     expect(competitors.variants["omd-repair-harness"].activation).toContain("bounded-repair-advisory");
-    expect(competitors.variants["omd-repair-harness"].activation).toContain("about 600 words");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("about 300 words");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("first_safe_edit");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("targeted Edit within 90 seconds");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("do not make a whole-file Write the first transaction");
+    expect(competitors.variants["omd-repair-harness"].activation).toContain("never use whitespace, comments, timestamps, or same-value replacement");
     expect(competitors.variants["omd-repair-harness"].activation).toContain("before 450 seconds");
     expect(competitors.variants["omd-repair-harness"].activation).toContain("before 810 seconds");
     expect(competitors.variants["omd-repair-harness"].activation).toContain("do not write a DOM shim");

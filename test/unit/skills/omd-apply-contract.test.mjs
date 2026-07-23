@@ -58,7 +58,11 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("큰 음수 좌표");
     expect(skill).toContain("change_authority: original-user-task-only");
     expect(skill).toContain("bounded-repair-advisory");
-    expect(skill).toContain("finding 최대 5개, 약 600단어");
+    expect(skill).toContain("finding 최대 3개, 약 300단어");
+    expect(skill).toContain("first_safe_edit");
+    expect(skill).toContain("min(90초, 총 예산의 10%)");
+    expect(skill).toContain("첫 transaction은 targeted `Edit`");
+    expect(skill).toContain("공백·주석·timestamp·동일값 치환 같은 no-op");
     expect(skill).toContain("rejected_contract_drift");
   });
 });

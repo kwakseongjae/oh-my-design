@@ -42,7 +42,13 @@ describe('omd workflows', () => {
     expect(manifest.work_packet.required).toContain('protected_contract.change_authority');
     expect(manifest.work_packet.change_authority).toBe('original-user-task-only');
     expect(manifest.work_packet.repair_advisory.mode).toBe('bounded-repair-advisory');
-    expect(manifest.work_packet.repair_advisory.findings_max).toBe(5);
+    expect(manifest.work_packet.repair_advisory.findings_max).toBe(3);
+    expect(manifest.work_packet.repair_advisory.target_words).toBe(300);
+    expect(manifest.work_packet.repair_advisory.first_safe_edit_required).toBe(true);
+    expect(manifest.work_packet.repair_advisory.advisory_to_first_edit_seconds_max).toBe(90);
+    expect(manifest.work_packet.repair_advisory.first_transaction)
+      .toBe('targeted-acceptance-relevant-edit');
+    expect(manifest.work_packet.specialist_response).toContain('first_safe_edit');
   });
 
   it('wraps the actual user task instead of returning an unrelated canned example', () => {

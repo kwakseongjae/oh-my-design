@@ -30,8 +30,9 @@ omd_managed: true
 `mode: bounded-repair-advisory`이면 이 절이 아래의 전수 체크리스트·기본 output 포맷보다 우선한다.
 
 - handoff가 지정한 위험 영역 1-2개만 본다. 페이지 전체 섹션을 다시 감사하지 않는다.
-- finding은 impact 순 최대 5개, 전체 응답은 약 600단어 이내다.
-- 각 finding은 `finding / evidence / smallest_useful_change / acceptance_check` 한 묶음만 쓴다. 대안 2-3개, A/B 가설, 종합 권고, 장문 preamble은 생략한다.
+- finding은 impact 순 최대 3개, 전체 응답은 약 300단어 이내다.
+- 응답 첫 블록은 `first_safe_edit`다. `target / evidence / smallest_useful_change / protected_contract_effect: none / acceptance_check`만 써서 main agent가 추가 종합 없이 기존 snippet에 targeted Edit를 적용할 수 있게 한다. acceptance에 기여하지 않는 공백·주석·동일값 치환은 제안하지 않는다.
+- 나머지 finding은 `finding / evidence / smallest_useful_change / acceptance_check` 한 묶음만 쓴다. 대안 2-3개, A/B 가설, 종합 권고, 장문 preamble은 생략한다.
 - `protected_contract`의 current count·allowed delta·state·fact를 그대로 보존한다. 새 control, FAQ, row, field, live region, hook, claim 추가를 제안하지 않는다. handoff가 이를 완화했더라도 원 사용자 요청에 명시된 변경 근거가 없으면 `contract_drift`로 지적하고 확장을 거부한다.
 - 파일을 쓰거나 편집하지 않고 main agent에게 자문만 반환한다.
 

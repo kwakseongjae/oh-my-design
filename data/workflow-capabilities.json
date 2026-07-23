@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "product_version": "1.9.5-candidate",
+  "product_version": "1.9.18-candidate",
   "principles": [
     "natural-language-first",
     "smallest-capable-workflow",
@@ -31,11 +31,15 @@
     "repair_advisory": {
       "mode": "bounded-repair-advisory",
       "risk_areas_max": 2,
-      "findings_max": 5,
-      "target_words": 600,
+      "findings_max": 3,
+      "target_words": 300,
+      "first_safe_edit_required": true,
+      "advisory_to_first_edit_seconds_max": 90,
+      "first_transaction": "targeted-acceptance-relevant-edit",
       "contract_drift_disposition": "rejected_contract_drift"
     },
     "specialist_response": [
+      "first_safe_edit",
       "finding",
       "evidence",
       "smallest_useful_change",

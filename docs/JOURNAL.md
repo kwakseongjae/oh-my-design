@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.17 stopped + 1.9.18 source complete
+- cell 8 Pricing harness가 first write 511s로 delivery gate를 넘겨 matrix를 동결했다.
+- root cause는 last advisory 뒤 229s parent synthesis/whole-file generation 지연이다.
+- bounded advisory를 3 findings/300 words + `first_safe_edit`/90s targeted Edit로 교체했다.
+- full 207 pass/1 skip, lint/build green; 다음은 fresh `/tmp/u1918` recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.17 full replacement preregistered
 - `/tmp/u1917` 3 tasks×3 trials×portable/harness 18 fresh cells를 고정했다.
 - exact Opus/xhigh, first write≤450s, axe serious 0, specialists 2/2, verifier 0이 gate다.

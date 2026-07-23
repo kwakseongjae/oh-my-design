@@ -31,6 +31,9 @@ export interface WorkflowManifest {
       risk_areas_max: number;
       findings_max: number;
       target_words: number;
+      first_safe_edit_required: boolean;
+      advisory_to_first_edit_seconds_max: number;
+      first_transaction: string;
       contract_drift_disposition: string;
     };
     specialist_response: string[];
