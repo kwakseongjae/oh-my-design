@@ -126,7 +126,9 @@ export function firstProductWriteTransaction(run, events = []) {
 }
 
 export function harnessDeliveryStopReason(manifest, run, gates, events = []) {
-  if (manifest.variant?.kind !== "agent-harness" || gates === undefined) return null;
+  if (gates === undefined) return null;
+  const variantKinds = gates.variant_kinds ?? ["agent-harness"];
+  if (!variantKinds.includes(manifest.variant?.kind)) return null;
   const firstWrite = run.output?.milestones?.first_builtin_product_write_ms;
   if (!Number.isFinite(firstWrite)) return "missing-first-product-write-milestone";
   if (firstWrite > gates.first_product_write_ms_max) return "late-first-product-write";

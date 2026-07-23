@@ -254,6 +254,27 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       ],
       activation: expect.stringContaining("$omd:humanize"),
     });
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "VERIFY means comparing protected facts",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "does not authorize writing verification software",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "before 450 seconds",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "by 720 seconds",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "before 810 seconds",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "Never author verify.*",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "CDP/browser automation",
+    );
     expect(competitors.variants["omd-repair-harness"]).toMatchObject({
       kind: "agent-harness",
       declared_name: "omd:apply",

@@ -236,4 +236,41 @@ describe("UI-Resolve prepared matrix execution", () => {
     }];
     expect(harnessDeliveryStopReason(manifest, validRun, gates, events)).toBe("replacement-verifier-authored");
   });
+
+  it("applies delivery authority to an explicitly named non-agent skill stack", () => {
+    const localeManifest = { variant: { kind: "locale-skill-stack" } };
+    const gates = {
+      variant_kinds: ["locale-skill-stack"],
+      first_product_write_ms_max: 450000,
+      forbid_replacement_verifier: true,
+    };
+    const run = {
+      output: { milestones: { first_builtin_product_write_ms: 339542 } },
+      workspace: { changed_product_files: [{ path: "index.html" }] },
+    };
+    const productWrite = {
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          name: "Write",
+          input: { file_path: "index.html", content: "<main>done</main>" },
+        }],
+      },
+    };
+    expect(harnessDeliveryStopReason(localeManifest, run, gates, [productWrite])).toBeNull();
+    expect(harnessDeliveryStopReason(localeManifest, run, gates, [
+      productWrite,
+      {
+        type: "assistant",
+        message: {
+          content: [{
+            type: "tool_use",
+            name: "Write",
+            input: { file_path: ".t/verify.mjs", content: "export const ok = true" },
+          }],
+        },
+      },
+    ])).toBe("replacement-verifier-authored");
+  });
 });

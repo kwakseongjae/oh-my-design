@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `c063a2d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.23 locale/evidence smoke failed at candidate timeout
+- 갱신: 2026-07-23 · 1.9.24 locale delivery-authority recovery source ready
 
 ## 지금 (현재 위치)
 
@@ -47,6 +47,8 @@
 - Raw는 Evidence pass지만 locale required term, 전 viewport geometry, keyboard를 실패했다. wall 710,140ms, tokens 141,364, first write 338,306ms이며 replacement verifier도 저작했다.
 - candidate는 exact parent Opus, tool/infra/sandbox/cwd error 0, first write 339,542ms였지만 final이 없다. 두 skill은 18s 안에 읽었고 이후 `.t` verifier 6개, Chrome/CDP 6회, verification 관련 17 calls, 834–849s product edits 뒤 timeout됐다.
 - binding failure는 locale `VERIFY`의 권한과 delivery clock 부재다. 1.9.24는 skill linguistic rule/task/evaluator를 바꾸지 않고 verifier 금지, browser mechanism 1회, optional stop 720s, final begin 810s를 activation에 추가한 fresh candidate recovery다.
+- 1.9.24 source patch는 `VERIFY`를 protected fact/locale terminology/register/repetition 대조로 제한하고 verification software 권한을 명시적으로 제거했다. first edit<450s, optional verification≤720s, final begin<810s와 repo-existing check 또는 program을 쓰지 않는 direct browser 1회만 허용한다.
+- delivery gate는 기존 agent-harness 기본 동작을 보존하면서 preregistered `variant_kinds`가 있을 때 `locale-skill-stack`에도 first-write/replacement-verifier fail-closed를 적용한다. focused 30/30이 green이다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -348,9 +350,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.23 stopped report·summary·release decision을 검증하고 커밋한다.
-2. `omd-locale-handoff` activation에 bounded verification authority/delivery clock을 추가하고 regression한다.
-3. 1.9.24 fresh candidate recovery를 사전등록해 `/tmp/u1924`에서 retry 없이 실행한다.
+1. 1.9.24 source patch를 full regression하고 커밋한다.
+2. fresh candidate recovery를 source basis와 함께 사전등록한다.
+3. `/tmp/u1924`에서 retry 없이 실행하고 85/85·critical 6/6·verifier 0을 판정한다.
 4. 통과 시 multi-task repeated locale matrix를 사전등록하고 negative locale slice·unsupported fact 0을 판정한다.
 5. 이후 1.9.25 public benchmark UX → 1.9.26 activation/reuse → 1.9.27 independent challenge로 이동한다.
 

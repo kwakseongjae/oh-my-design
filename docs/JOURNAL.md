@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.24 locale recovery source
+- locale VERIFY를 content comparison으로 제한하고 verification software 권한을 제거했다.
+- first edit<450s, verification≤720s, final<810s와 browser mechanism 1회를 고정했다.
+- delivery gate가 명시된 `locale-skill-stack`에도 verifier 저작을 fail-closed한다.
+- focused 30/30 green; 다음은 full regression/commit → fresh recovery preregistration이다.
+
 ## 2026-07-23 (Codex) · 1.9.23 locale smoke failed
 - Raw는 valid 70/85; candidate는 exact Opus에서 900,040ms timeout으로 stop했다.
 - candidate first write 339,542ms 뒤 verifier 6개·Chrome/CDP 6회에 예산을 소진했다.
