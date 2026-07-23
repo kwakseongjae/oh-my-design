@@ -26,7 +26,7 @@
     { "version": "1.9.16", "experiment": "semantic-color-safety-recovery", "status": "calibration_complete" },
     { "version": "1.9.17", "experiment": "harness-efficiency-replacement-4", "status": "calibration_failed" },
     { "version": "1.9.18", "experiment": "advisory-to-edit-recovery", "status": "calibration_complete" },
-    { "version": "1.9.19", "experiment": "harness-efficiency-replacement-5", "status": "planned" },
+    { "version": "1.9.19", "experiment": "harness-efficiency-replacement-5", "status": "preregistered" },
     { "version": "1.9.20", "experiment": "locale-evidence-expansion", "status": "planned" },
     { "version": "1.9.21", "experiment": "public-benchmark-ux", "status": "planned" },
     { "version": "1.9.22", "experiment": "activation-reuse", "status": "planned" },

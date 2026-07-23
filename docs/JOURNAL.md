@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.19 full replacement preregistered
+- `/tmp/u1919` 3 tasks×3 trials×portable/harness 18 fresh cells를 고정했다.
+- candidate first write≤450s, last advisory→targeted Edit≤90s, axe serious/verifier 0이 gate다.
+- 1.9.15 schedule로 1.9.17 attempted order를 counterbalance하며 retry가 없다.
+- 다음은 prepare → first-party exact Opus preflight → full execution이다.
+
 ## 2026-07-23 (Codex) · 1.9.18 recovery complete
 - exact Opus/xhigh Pricing recovery가 85/85·axe serious 0·Evidence pass로 완료됐다.
 - first write 248s, last advisory→targeted Edit 10.5s, specialists 2/2·error/verifier 0이다.

@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `d3bf7a4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.18 advisory-to-edit recovery complete
+- 기준 커밋: `0df7b83` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.19 full replacement matrix preregistered
 
 ## 지금 (현재 위치)
 
@@ -18,6 +18,8 @@
 - 1.9.18 recovery는 550,607ms에 정상 종료하고 frozen 85/85·UI-Resolved·critical 6/6·Evidence pass·4 viewport axe serious/critical 0이다. first/last write 247,569/498,016ms, tokens 167,299, specialists 2/2, 모든 error 0, verifier 0, product diff `index.html` 하나다.
 - last advisory 237,043ms 뒤 targeted Edit가 10,526ms 만에 실행됐다. 첫 edit는 inline anchor CTA가 44px min-height를 실제 적용받도록 `.button`을 inline-flex로 바꾼 acceptance-relevant change이며 no-op이 아니다.
 - 1.9.17 stopped trace 대비 first-write -51.5%, advisory→write -95.4%, wall -16.7%, tokens -2.4%지만 process recovery 1셀이라 efficiency/lift 주장은 금지한다. full pass로 fresh 1.9.19 repeated matrix가 unlock됐다.
+- 1.9.19는 `/tmp/u1919`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450s, last advisory→first targeted Edit 0–90s, serious/critical axe 0, verifier 0을 사전등록했다. 1.9.17/1.9.18은 denominator 밖이고 retry가 없다.
+- schedule은 1.9.15 순서를 사용해 attempted 1.9.17 pair order를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -319,8 +321,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.19 fresh 18-cell replacement matrix를 preregister한다: 3 tasks×3 trials×portable/harness, exact Opus/xhigh, first write≤450s, candidate last advisory→first targeted Edit≤90s, axe serious 0, verifier 0.
-2. `/tmp/u1919` fresh prepare와 first-party auth/model preflight 뒤 retry 없이 실행한다.
+1. `/tmp/u1919` fresh prepare와 clean source attestation을 확인한다.
+2. first-party Claude auth와 exact Opus/xhigh preflight 뒤 retry 없이 18셀을 실행한다.
 3. complete matrix에서 Reliability@3, paired quality, wall/token Pareto와 transaction compliance를 판정한다.
 4. harness gate 뒤 locale/evidence → public benchmark UX → activation → independent challenge로 이동한다.
 
