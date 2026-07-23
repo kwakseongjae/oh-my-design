@@ -116,6 +116,15 @@ compared with static EN metadata, and an unstated navigation landmark was
 required. 1.9.24 remains failed. 1.9.25 is an evaluator-standards recovery;
 public benchmark UX moves to 1.9.26.
 
+1.9.25 aligned the evaluator with the standard roving-tab pattern, computed
+sequential `tabIndex`, empty initial live regions, and active-locale document
+language. The exact retained 1.9.24 artifact now passes 85/85 under evaluator
+schema `0.3`, while the seeded invalid starter remains rejected at 57/85 across
+state, responsive, accessibility, and evidence gates. This was an
+evaluator-only calibration with no provider generation and does not change the
+frozen 1.9.24 result. A fresh schema `0.3` locale replacement experiment is
+therefore 1.9.26; public benchmark UX moves to 1.9.27.
+
 ## 2.0.0 frontier gates
 
 All must pass:

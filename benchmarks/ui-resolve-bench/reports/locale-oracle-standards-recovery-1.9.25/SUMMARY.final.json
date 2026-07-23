@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "locale-oracle-standards-recovery-1.9.25",
+  "run_date": "2026-07-23",
+  "status": "calibration_complete",
+  "provider_generation": false,
+  "source_commit": "b128aef",
+  "evaluator_schema": "0.3",
+  "task_version": "0.2.0",
+  "retained_run_mutated": false,
+  "historical_decision_changed": false,
+  "positive_replay": {
+    "source": "/tmp/u1924",
+    "workspace": "/tmp/u1925-retained-replay",
+    "product_sha256_prefix": "25ff118e",
+    "original_frozen_score": 72,
+    "schema_0_3_score": 85,
+    "schema_0_3_max": 85,
+    "automated_gate_pass": true,
+    "critical_gates_passed": 6,
+    "critical_gates_total": 6
+  },
+  "negative_replay": {
+    "source": "locale-cli-handoff-v0.1/starter",
+    "workspace": "/tmp/u1925-seeded-mutant",
+    "score": 57,
+    "max": 85,
+    "automated_gate_pass": false,
+    "failed_critical_gates": [
+      "state_journey",
+      "responsive",
+      "accessibility",
+      "evidence_honesty"
+    ]
+  },
+  "standards_corrections": [
+    "computed-tabindex-sequential-focus",
+    "explicit-roving-arrow-navigation",
+    "empty-initial-live-region-allowed",
+    "active-locale-root-language",
+    "unstated-nav-oracle-removed"
+  ],
+  "verification": {
+    "focused_tests_passed": 27,
+    "full_tests_passed": 215,
+    "conditional_tests_skipped": 1,
+    "typescript": "pass",
+    "build": "pass",
+    "node_syntax": "pass",
+    "diff_check": "pass",
+    "positive_real_browser": "pass",
+    "negative_real_browser": "fail_as_expected"
+  },
+  "reporting_limits": [
+    "evaluator and task calibration only",
+    "no new provider generation",
+    "no retroactive 1.9.24 pass",
+    "no quality lift, model, skill, efficiency, or frontier claim"
+  ],
+  "next_fresh_experiment_version": "1.9.26",
+  "next_fresh_root": "/tmp/u1926"
+}

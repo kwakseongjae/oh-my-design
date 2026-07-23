@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.25 locale oracle calibrated
+- schema 0.3은 actual tabIndex, roving arrows, active root lang, empty live status를 검증한다.
+- exact retained 1.9.24 artifact는 85/85, seeded invalid starter는 57/85로 실패했다.
+- focused 27/27, full 215/1 skip, TypeScript/build/syntax/diff가 green이다.
+- 다음은 `/tmp/u1926` fresh locale replacement preregistration과 실행이다.
+
 ## 2026-07-23 (Codex) · 1.9.24 process recovered, oracle failed
 - valid 450,127ms·99,905 tokens·first write 355,947ms·final/verifier0로 process 회복.
 - locale facts/terms, 4 geometry, design, Evidence, axe0는 모두 pass했지만 72/85다.

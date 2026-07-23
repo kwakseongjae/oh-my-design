@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `c063a2d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.24 process recovered / frozen quality gate failed
+- 기준 커밋: `b128aef` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.25 locale oracle standards calibration complete
 
 ## 지금 (현재 위치)
 
@@ -54,6 +54,10 @@
 - 1.9.24 recovery는 valid complete, exact Opus, wall 450,127ms, tokens 99,905, first/last write 355,947/421,593ms, final present, verifier 0, infra/sandbox/cwd 0이다. 1.9.23 대비 wall -50.0%, tokens -41.4%로 process binding은 회복됐다.
 - frozen score는 72/85라 1.9.24를 실패로 유지한다. 다만 locale required/forbidden, protected literals, 5 panels/lang, 4 viewport geometry, design, Evidence, axe serious/critical 0는 전부 pass했다.
 - 실패는 roving tab을 모든 button Tab stop으로 세는 selector bug, empty initial live region 거부, active KO root lang을 static EN과 비교, prompt에 없는 nav landmark 요구다. 다음은 1.9.25 evaluator/task suite standards recovery이며 retained replay는 calibration에만 쓰고 1.9.24 판정을 바꾸지 않는다.
+- 1.9.25 source `b128aef`은 실제 sequential control을 computed `tabIndex>=0`로 제한하고, roving tabs의 Right/Left Arrow wrap, active locale root lang, empty initial live status를 별도 검증한다. task는 KO/ko-KR·version 0.2.0이며 prompt 밖 nav oracle은 제거했다.
+- exact 1.9.24 `index.html` retained replay는 schema 0.3에서 85/85·critical 6/6, seeded invalid starter는 57/85로 state/responsive/a11y/evidence를 실패했다. positive artifact hash는 원본과 동일하고 provider generation은 없다.
+- focused 27/27, 전체 215 pass/1 conditional skip, TypeScript/build/syntax/diff가 green이다. 1.9.24 frozen 72/85는 변경하지 않고 1.9.25를 `calibration_complete`로 닫는다.
+- 다음은 schema 0.3 기반 1.9.26 fresh locale replacement experiment다. public benchmark UX는 1.9.27, activation/reuse는 1.9.28, independent challenge는 1.9.29로 이동한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -355,11 +359,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.24 findings/summary/release decision을 검증하고 커밋한다.
-2. keyboard actual tabIndex + roving arrows, empty live status, dynamic root lang, explicit landmark contract를 evaluator/task vNext로 고친다.
-3. mutant unit tests와 retained 1.9.24 replay로 false-negative 제거와 known-invalid fail을 함께 검증한다.
-4. 새 suite를 커밋한 뒤 fresh provider matrix를 사전등록한다.
-5. 이후 1.9.26 public benchmark UX → 1.9.27 activation/reuse → 1.9.28 independent challenge로 이동한다.
+1. schema 0.3 기반 1.9.26 fresh locale replacement experiment를 사전등록한다.
+2. 새 `/tmp/u1926`에서 exact Opus/xhigh provider cells만 실행하고 retry/resume하지 않는다.
+3. locale facts/terms, roving keyboard, root lang, 4 geometry, Evidence, axe, delivery authority를 함께 판정한다.
+4. fresh 결과를 고정한 뒤 1.9.27 public benchmark UX를 구현한다.
+5. 이후 1.9.28 activation/reuse → 1.9.29 independent challenge로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
