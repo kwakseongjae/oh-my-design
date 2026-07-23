@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.34 clipboard recovery preregistered
+- `/tmp/u1934` fresh OmD locale candidate, exact Opus/xhigh를 고정했다.
+- task0.4/evaluator0.4, first write≤450s, browser0, verifier0, 85/85를 요구한다.
+- actual clipboard+localized status와 200% no-overlap을 함께 판정하고 retry/resume하지 않는다.
+- 다음은 clean commit → preflight → fresh candidate 실행이다.
+
 ## 2026-07-23 (Codex) · 1.9.33 standard clipboard oracle
 - evaluator만 actual clipboard clear→click→exact read로 바꾸고 provider browser0을 유지했다.
 - no-write/wrong/status-only/marker-only mutation이 모두 fail한다.

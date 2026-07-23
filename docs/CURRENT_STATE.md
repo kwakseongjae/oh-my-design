@@ -103,6 +103,8 @@
 - unchanged 1.9.32 artifact는 85/85·critical6/6, 1.9.30 overlap control은 83/85·responsive fail, seeded starter는 57/85·4 gates fail로 정확히 분리됐다.
 - focused27/27, full217/1skip, TypeScript/build/syntax/JSON/diff와 3 real-browser replay, clean `/tmp/u1933-activation-proof`가 green이다.
 - 1.9.33은 provider generation 없는 `calibration_complete`다. 다음은 `/tmp/u1934` fresh exact Opus/xhigh recovery다.
+- 1.9.34는 `/tmp/u1934` fresh candidate-only recovery로 사전등록했다. task0.4.0/evaluator0.4/source `3990ff1`, exact Opus/xhigh, 900s, retry/resume/manual edit 0이다.
+- first write≤450s, browser exactly0, verifier0, final/valid, 85/85·critical6/6·five-locale click/roving/root-lang·bounded concepts/facts·actual clipboard/status·4 geometry·200% no-overlap·Evidence·axe0를 모두 요구한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -404,9 +406,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.33 findings/summary를 clean commit으로 고정한다.
-2. fresh 1.9.34 exact Opus/xhigh candidate-only recovery를 `/tmp/u1934`에 사전등록한다.
-3. first write≤450s, browser0, verifier0, 85/85·critical6/6·actual clipboard·all geometry/Evidence를 함께 요구한다.
+1. 1.9.34 preregistration을 clean commit으로 고정한다.
+2. fresh `/tmp/u1934` exact Opus/xhigh candidate를 retry/resume 없이 실행한다.
+3. first write≤450s, browser0, verifier0, 85/85·critical6/6·actual clipboard·all geometry/Evidence를 함께 판정한다.
 4. full recovery면 repeated locale matrix 또는 public UX 1.9.35의 최소 증거 계약을 정한다.
 5. 이후 activation/reuse 1.9.36 → independent challenge 1.9.37로 이동한다.
 
