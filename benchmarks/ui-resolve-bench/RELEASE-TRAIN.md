@@ -145,6 +145,14 @@ frozen maximum of 1. Focused 0/1/2-call mutations and the full suite pass. This
 classifier-only calibration generated no provider output and unlocks a fresh
 candidate recovery as 1.9.28.
 
+The fresh 1.9.28 candidate repeated the same silent-first-call then diagnostic
+retry pattern. The new gate stopped it automatically at count 2 before
+evaluation or export; `/tmp/u1928` remains unscored and immutable. Because a
+one-call allowance has failed to bind twice and the external evaluator already
+owns browser acceptance, 1.9.29 removes provider browser authority from this
+locale benchmark track and freezes the maximum at zero. A new candidate
+recovery moves to 1.9.30; public benchmark UX moves to 1.9.31.
+
 ## 2.0.0 frontier gates
 
 All must pass:

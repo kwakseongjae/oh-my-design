@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.28 stopped at browser budget
+- provider exit0·first write338.9s·final·verifier0지만 direct Chrome count2다.
+- 새 runner가 evaluator/export 전에 자동 stop했고 `/tmp/u1928`은 unscored frozen이다.
+- one-call allowance가 두 번 불안정해 locale benchmark browser authority를 0으로 바꾼다.
+- 다음은 1.9.29 activation/gate calibration → fresh 1.9.30 recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.28 browser-authority recovery preregistered
 - `/tmp/u1928` fresh OmD locale candidate 1셀, exact Opus/xhigh를 고정했다.
 - first write≤450s, direct browser≤1, verifier0, 85/85·critical6/6을 요구한다.
