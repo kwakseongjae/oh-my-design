@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.24 process recovered, oracle failed
+- valid 450,127ms·99,905 tokens·first write 355,947ms·final/verifier0로 process 회복.
+- locale facts/terms, 4 geometry, design, Evidence, axe0는 모두 pass했지만 72/85다.
+- roving tabs, empty live region, dynamic KO lang, unstated nav가 false-negative/ambiguity다.
+- 다음은 1.9.25 evaluator standards recovery; 1.9.24는 frozen 실패로 유지한다.
+
 ## 2026-07-23 (Codex) · 1.9.24 locale recovery preregistered
 - task/evaluator `07ac960`, recovery source `c572cd7`, exact Opus/xhigh를 고정했다.
 - `/tmp/u1924` fresh candidate 1셀, first write≤450s, verifier 0을 요구한다.

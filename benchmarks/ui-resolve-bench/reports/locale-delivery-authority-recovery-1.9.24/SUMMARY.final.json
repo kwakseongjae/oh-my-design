@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "locale-delivery-authority-recovery-1.9.24",
+  "status": "calibration_failed",
+  "binding_process_recovered": true,
+  "binding_quality_failure": "locale-oracle-standards-false-negatives",
+  "output_root": "/tmp/u1924",
+  "scheduled_cells": 1,
+  "attempted_cells": 1,
+  "valid_complete_cells": 1,
+  "retry_or_resume_allowed": false,
+  "candidate": {
+    "validity": "valid",
+    "exact_parent_model": "claude-opus-4-8",
+    "objective_score": 72,
+    "objective_max": 85,
+    "ui_resolved": false,
+    "wall_time_ms": 450127,
+    "uncached_tokens": 99905,
+    "first_product_write_ms": 355947,
+    "last_product_write_ms": 421593,
+    "final_message_present": true,
+    "replacement_verifier_authored": false,
+    "recoverable_tool_errors": 2,
+    "infrastructure_errors": 0,
+    "sandbox_errors": 0,
+    "cwd_errors": 0,
+    "evidence_and_unknown_pass": true,
+    "axe_serious_or_critical": 0,
+    "product_changed_files": [
+      "index.html"
+    ]
+  },
+  "critical_gates": {
+    "task_contract": false,
+    "state_journey": false,
+    "responsive": true,
+    "accessibility": false,
+    "design_grounding": true,
+    "evidence_honesty": true
+  },
+  "locale_content": {
+    "every_required_pattern": true,
+    "no_forbidden_patterns": true,
+    "protected_literals_preserved": true,
+    "locale_copy_distinct": true
+  },
+  "frozen_oracle_failures": [
+    "roving-tabindex-counted-as-sequential-tab-stop",
+    "empty-initial-live-region-rejected",
+    "active-ko-document-lang-rejected-by-static-en-oracle",
+    "unstated-nav-landmark-required"
+  ],
+  "promotion_decision": "rejected_frozen_quality_gate"
+}

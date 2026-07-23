@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `c063a2d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.24 locale delivery-authority recovery preregistered
+- 갱신: 2026-07-23 · 1.9.24 process recovered / frozen quality gate failed
 
 ## 지금 (현재 위치)
 
@@ -51,6 +51,9 @@
 - delivery gate는 기존 agent-harness 기본 동작을 보존하면서 preregistered `variant_kinds`가 있을 때 `locale-skill-stack`에도 first-write/replacement-verifier fail-closed를 적용한다. focused 30/30이 green이다.
 - recovery source는 `c572cd7`로 커밋했다. 전체 215 pass/1 conditional skip, TypeScript, Node syntax, diff가 green이다.
 - `/tmp/u1924` fresh candidate 1셀을 exact Opus/xhigh로 사전등록했다. first write≤450s, verifier 0, final+valid, 85/85·critical 6/6·locale terms/facts·Evidence·axe 0만 calibration complete다.
+- 1.9.24 recovery는 valid complete, exact Opus, wall 450,127ms, tokens 99,905, first/last write 355,947/421,593ms, final present, verifier 0, infra/sandbox/cwd 0이다. 1.9.23 대비 wall -50.0%, tokens -41.4%로 process binding은 회복됐다.
+- frozen score는 72/85라 1.9.24를 실패로 유지한다. 다만 locale required/forbidden, protected literals, 5 panels/lang, 4 viewport geometry, design, Evidence, axe serious/critical 0는 전부 pass했다.
+- 실패는 roving tab을 모든 button Tab stop으로 세는 selector bug, empty initial live region 거부, active KO root lang을 static EN과 비교, prompt에 없는 nav landmark 요구다. 다음은 1.9.25 evaluator/task suite standards recovery이며 retained replay는 calibration에만 쓰고 1.9.24 판정을 바꾸지 않는다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -352,11 +355,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.24 preregistration/matrix를 검증하고 커밋한다.
-2. `/tmp/u1924` fresh root 준비와 exact Opus auth/model preflight를 확인한다.
-3. candidate 1셀을 retry 없이 실행하고 85/85·critical 6/6·verifier 0을 판정한다.
-4. 통과 시 multi-task repeated locale matrix를 사전등록하고 negative locale slice·unsupported fact 0을 판정한다.
-5. 이후 1.9.25 public benchmark UX → 1.9.26 activation/reuse → 1.9.27 independent challenge로 이동한다.
+1. 1.9.24 findings/summary/release decision을 검증하고 커밋한다.
+2. keyboard actual tabIndex + roving arrows, empty live status, dynamic root lang, explicit landmark contract를 evaluator/task vNext로 고친다.
+3. mutant unit tests와 retained 1.9.24 replay로 false-negative 제거와 known-invalid fail을 함께 검증한다.
+4. 새 suite를 커밋한 뒤 fresh provider matrix를 사전등록한다.
+5. 이후 1.9.26 public benchmark UX → 1.9.27 activation/reuse → 1.9.28 independent challenge로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

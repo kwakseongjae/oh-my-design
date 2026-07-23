@@ -104,6 +104,18 @@ as protected-fact and terminology comparison, forbids replacement verification
 software, stops optional checking by 720 seconds, and reserves final delivery
 by 810 seconds. Public benchmark UX moves to 1.9.25.
 
+The recovery completed in 450 seconds with a final response, first write at 356
+seconds, and no replacement verifier. It passed every locale terminology and
+protected-fact check, all responsive geometry, design grounding, Evidence &
+Unknown, and axe serious/critical zero. The frozen score was still 72/85.
+
+The remaining failures expose evaluator assumptions rather than a locale-copy
+failure: standard roving tabs were counted as five sequential Tab stops, an
+empty initial live region was rejected, dynamic KO document language was
+compared with static EN metadata, and an unstated navigation landmark was
+required. 1.9.24 remains failed. 1.9.25 is an evaluator-standards recovery;
+public benchmark UX moves to 1.9.26.
+
 ## 2.0.0 frontier gates
 
 All must pass:

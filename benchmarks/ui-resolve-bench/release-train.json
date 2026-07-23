@@ -31,10 +31,11 @@
     { "version": "1.9.21", "experiment": "sandbox-scratch-recovery", "status": "calibration_complete" },
     { "version": "1.9.22", "experiment": "harness-efficiency-replacement-7", "status": "calibration_complete" },
     { "version": "1.9.23", "experiment": "locale-evidence-expansion", "status": "calibration_failed" },
-    { "version": "1.9.24", "experiment": "locale-delivery-authority-recovery", "status": "preregistered" },
-    { "version": "1.9.25", "experiment": "public-benchmark-ux", "status": "planned" },
-    { "version": "1.9.26", "experiment": "activation-reuse", "status": "planned" },
-    { "version": "1.9.27", "experiment": "independent-challenge", "status": "planned" },
+    { "version": "1.9.24", "experiment": "locale-delivery-authority-recovery", "status": "calibration_failed" },
+    { "version": "1.9.25", "experiment": "locale-oracle-standards-recovery", "status": "planned" },
+    { "version": "1.9.26", "experiment": "public-benchmark-ux", "status": "planned" },
+    { "version": "1.9.27", "experiment": "activation-reuse", "status": "planned" },
+    { "version": "1.9.28", "experiment": "independent-challenge", "status": "planned" },
     { "version": "2.0.0", "experiment": "frontier-release", "status": "gated" }
   ],
   "rules": {
