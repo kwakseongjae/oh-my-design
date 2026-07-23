@@ -37,7 +37,13 @@ Preserve and polish these working journeys:
 7. render without horizontal overflow at 320, 390, 640-at-200%-surrogate, and
    1440 pixels. Wrapped tab or control rows must keep non-overlapping hit
    areas; reserve vertical row gap for any border, underline, or selection
-   treatment that extends to the control edge.
+   treatment that extends to the control edge;
+8. when `overflow: auto` or `overflow: scroll` can make useful content
+   scrollable, keep that content keyboard reachable: either include a
+   reachable control or give the scroll region an explicit focus target with
+   a visible `:focus-visible` treatment. Give an explicit target a useful
+   accessible name when its content does not already provide one. Do not add
+   unnecessary Tab stops to decorative or non-scrollable containers.
 
 Do not explain a plan. Inspect the files, implement the page, exercise the
 locale and handoff interactions locally, and leave the repository finished.

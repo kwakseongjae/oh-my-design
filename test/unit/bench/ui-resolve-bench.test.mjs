@@ -68,7 +68,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ));
     expect(task).toMatchObject({
       behavior_adapter: "locale-switch-v1",
-      version: "0.4.0",
+      version: "0.5.0",
       locale: "ko",
       browser_locale: "ko-KR",
       journey_oracle: {
@@ -102,6 +102,18 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "PROMPT.md"),
       "utf8",
     )).toContain("standard roving-tabindex tabs pattern");
+    expect(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "PROMPT.md"),
+      "utf8",
+    )).toContain("keep that content keyboard reachable");
+    expect(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "PROMPT.md"),
+      "utf8",
+    )).toContain("visible `:focus-visible` treatment");
+    expect(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "PROMPT.md"),
+      "utf8",
+    )).toContain("unnecessary Tab stops to decorative or non-scrollable containers");
     expect(readFileSync(
       join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "PROMPT.md"),
       "utf8",
@@ -301,6 +313,15 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     );
     expect(competitors.variants["omd-locale-handoff"].activation).toContain(
       "vertical row gap must be at least as large",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "overflow auto or scroll region",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "explicit keyboard focus target with visible focus-visible treatment",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "Do not add unnecessary Tab stops",
     );
     expect(competitors.variants["omd-locale-handoff"].activation).not.toContain(
       "one direct browser command",

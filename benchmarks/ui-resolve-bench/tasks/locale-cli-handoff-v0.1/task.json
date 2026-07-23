@@ -1,6 +1,6 @@
 {
   "id": "locale-cli-handoff-v0.1",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "track": "repair",
   "grounding": "design-md",
   "locale": "ko",
