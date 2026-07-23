@@ -92,6 +92,18 @@ is those two locally installed skills and their sequential activation. A full
 pass only validates the execution path and unlocks a repeated locale matrix;
 it cannot support a public best-skill or general locale-lift claim.
 
+The smoke stopped on the candidate's 900-second timeout. The valid Raw control
+scored 70/85; the candidate wrote the product by 340 seconds but then authored
+six replacement verification programs, made repeated Chrome/CDP attempts, and
+had no final response at 900 seconds. No stopped-candidate evaluator was run.
+The binding issue is verification authority and delivery scheduling, not skill
+loading: both installed skills were read by 18 seconds.
+
+1.9.24 is therefore a candidate-only fresh recovery. It defines locale VERIFY
+as protected-fact and terminology comparison, forbids replacement verification
+software, stops optional checking by 720 seconds, and reserves final delivery
+by 810 seconds. Public benchmark UX moves to 1.9.25.
+
 ## 2.0.0 frontier gates
 
 All must pass:

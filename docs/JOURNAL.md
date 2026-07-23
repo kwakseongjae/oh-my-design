@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.23 locale smoke failed
+- Raw는 valid 70/85; candidate는 exact Opus에서 900,040ms timeout으로 stop했다.
+- candidate first write 339,542ms 뒤 verifier 6개·Chrome/CDP 6회에 예산을 소진했다.
+- stopped candidate는 final/score가 없고 `/tmp/u1923`은 resume·retry하지 않는다.
+- 다음은 1.9.24 verification-authority/delivery-budget fresh recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.23 locale smoke preregistered
 - source basis `07ac960`, exact Opus/xhigh, one task×two systems을 고정했다.
 - Raw DESIGN.md와 locale-adapter→humanize만 비교하며 다른 조건은 동일하다.
