@@ -35,7 +35,9 @@ Preserve and polish these working journeys:
    result; the status region may be empty before the action;
 6. keep keyboard focus visible and respect reduced motion;
 7. render without horizontal overflow at 320, 390, 640-at-200%-surrogate, and
-   1440 pixels.
+   1440 pixels. Wrapped tab or control rows must keep non-overlapping hit
+   areas; reserve vertical row gap for any border, underline, or selection
+   treatment that extends to the control edge.
 
 Do not explain a plan. Inspect the files, implement the page, exercise the
 locale and handoff interactions locally, and leave the repository finished.

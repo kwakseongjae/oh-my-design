@@ -1,6 +1,6 @@
 {
   "id": "locale-cli-handoff-v0.1",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "track": "repair",
   "grounding": "design-md",
   "locale": "ko",
@@ -60,11 +60,11 @@
         "forbidden_patterns": ["(?:用户|使用者|ユーザー)", "AI 编程助手", "AI 程式助理"]
       },
       "en": {
-        "required_patterns": ["coding agent", "repository", "command"],
+        "required_patterns": ["(?:coding agent|coding assistant)", "(?:repository|project folder|codebase)", "command"],
         "forbidden_patterns": ["[가-힣ぁ-んァ-ン一-龯]"]
       },
       "ja": {
-        "required_patterns": ["コーディングエージェント", "プロジェクト", "コマンド"],
+        "required_patterns": ["(?:コーディングエージェント|コーディングアシスタント)", "プロジェクト", "コマンド"],
         "forbidden_patterns": ["(?:用户|使用者|코딩 에이전트)", "AI 编程助手", "AI 程式助理"]
       },
       "zh-CN": {

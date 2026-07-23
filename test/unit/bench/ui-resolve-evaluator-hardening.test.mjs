@@ -297,6 +297,40 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
     expect(Object.values(passing.content).every(Boolean)).toBe(true);
     expect(Object.values(passing.handoff).every(Boolean)).toBe(true);
 
+    const naturalAlternatives = structuredClone(observation);
+    naturalAlternatives.panels.find((panel) => panel.locale === "en").text =
+      naturalAlternatives.panels.find((panel) => panel.locale === "en").text
+        .replace("coding agent", "coding assistant")
+        .replace("repository", "project folder");
+    naturalAlternatives.panels.find((panel) => panel.locale === "ja").text =
+      naturalAlternatives.panels.find((panel) => panel.locale === "ja").text
+        .replace("コーディングエージェント", "コーディングアシスタント");
+    expect(evaluateLocaleSwitchObservation(
+      naturalAlternatives,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).content.every_required_pattern).toBe(true);
+
+    const missingRepositoryConcept = structuredClone(naturalAlternatives);
+    missingRepositoryConcept.panels.find((panel) => panel.locale === "en").text =
+      missingRepositoryConcept.panels.find((panel) => panel.locale === "en").text
+        .replace("project folder", "workspace");
+    expect(evaluateLocaleSwitchObservation(
+      missingRepositoryConcept,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).content.every_required_pattern).toBe(false);
+
+    const missingJapaneseAgentConcept = structuredClone(naturalAlternatives);
+    missingJapaneseAgentConcept.panels.find((panel) => panel.locale === "ja").text =
+      missingJapaneseAgentConcept.panels.find((panel) => panel.locale === "ja").text
+        .replace("コーディングアシスタント", "ツール");
+    expect(evaluateLocaleSwitchObservation(
+      missingJapaneseAgentConcept,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).content.every_required_pattern).toBe(false);
+
     const mainlandCopyInTaiwan = structuredClone(observation);
     mainlandCopyInTaiwan.panels.find((panel) => panel.locale === "zh-TW").text += " 用户 项目 AI 编程助手";
     expect(evaluateLocaleSwitchObservation(

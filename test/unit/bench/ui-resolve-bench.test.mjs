@@ -68,7 +68,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ));
     expect(task).toMatchObject({
       behavior_adapter: "locale-switch-v1",
-      version: "0.2.0",
+      version: "0.3.0",
       locale: "ko",
       browser_locale: "ko-KR",
       journey_oracle: {
@@ -87,6 +87,12 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]));
     expect(task.locale_oracle.locales["zh-CN"].required_patterns).toContain("AI 编程助手");
     expect(task.locale_oracle.locales["zh-TW"].required_patterns).toContain("AI 程式助理");
+    expect(task.locale_oracle.locales.en.required_patterns).toContain(
+      "(?:repository|project folder|codebase)",
+    );
+    expect(task.locale_oracle.locales.ja.required_patterns).toContain(
+      "(?:コーディングエージェント|コーディングアシスタント)",
+    );
     expect(readFileSync(
       join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "PROMPT.md"),
       "utf8",
@@ -95,6 +101,10 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "PROMPT.md"),
       "utf8",
     )).toContain("standard roving-tabindex tabs pattern");
+    expect(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "PROMPT.md"),
+      "utf8",
+    )).toContain("non-overlapping hit");
     expect(task.semantic_oracle.landmarks.nav_count).toBeUndefined();
     const starter = readFileSync(
       join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "starter/index.html"),
@@ -287,6 +297,9 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     );
     expect(competitors.variants["omd-locale-handoff"].activation).toContain(
       "external evaluator is the only browser acceptance authority",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "vertical row gap must be at least as large",
     );
     expect(competitors.variants["omd-locale-handoff"].activation).not.toContain(
       "one direct browser command",
