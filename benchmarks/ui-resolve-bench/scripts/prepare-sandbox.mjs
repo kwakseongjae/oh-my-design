@@ -150,6 +150,19 @@ if (variant.declared_name) {
   if (!variant.activation?.includes(`$${variant.declared_name}`)) {
     throw new Error(`${variantId} activation must name the declared skill exactly: $${variant.declared_name}`);
   }
+  for (const descriptor of variant.skill_bundle ?? []) {
+    if (!descriptor?.declared_name || !descriptor?.source_path || !descriptor?.install_dir) {
+      throw new Error(`${variantId} has an invalid skill bundle descriptor`);
+    }
+    if (descriptor.install_dir.includes("/")) {
+      throw new Error(`${variantId} bundled skill install_dir must be a single directory`);
+    }
+    if (!variant.activation?.includes(`$${descriptor.declared_name}`)) {
+      throw new Error(
+        `${variantId} activation must name the bundled skill exactly: $${descriptor.declared_name}`,
+      );
+    }
+  }
   let sourceRoot;
   let sourceCommit;
   let vendorRoot = null;
@@ -203,6 +216,20 @@ if (variant.declared_name) {
     }
   }
   const declaredName = assertSkillContract(join(destination, "SKILL.md"), variant.declared_name);
+  for (const descriptor of variant.skill_bundle ?? []) {
+    const bundledSource = assertInside(repoRoot, join(repoRoot, descriptor.source_path));
+    const bundledDestination = assertInside(installRoot, join(installRoot, descriptor.install_dir));
+    copyReviewedTree(bundledSource, bundledDestination);
+    if (descriptor.install_adapter === "omd-channel-name-v1") {
+      renderInstalledSkillName(join(bundledDestination, "SKILL.md"), descriptor.declared_name);
+    } else if (descriptor.install_adapter) {
+      throw new Error(`unsupported bundled skill install adapter: ${descriptor.install_adapter}`);
+    }
+    bundledSkills.push(assertSkillContract(
+      join(bundledDestination, "SKILL.md"),
+      descriptor.declared_name,
+    ));
+  }
   const skillTree = treeManifest(installRoot);
   skill = {
     declared_name: declaredName,

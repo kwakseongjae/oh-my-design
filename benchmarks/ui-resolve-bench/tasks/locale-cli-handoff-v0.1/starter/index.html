@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northstar setup</title>
+  <meta name="description" content="Install Northstar locally and continue with the same verified setup facts in five locales.">
+  <style>
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { color-scheme: light; }
+    body {
+      margin: 0;
+      background: #fafafa;
+      color: #0a0a0f;
+      font: 16px/1.6 system-ui, sans-serif;
+    }
+    button { min-height: 44px; font: inherit; cursor: pointer; }
+    button:focus-visible, a:focus-visible {
+      outline: 3px solid #5546ff;
+      outline-offset: 3px;
+    }
+    nav, main, footer { width: min(1080px, calc(100% - 32px)); margin-inline: auto; }
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-bottom: 1px solid #e5e3ea;
+    }
+    nav a { color: inherit; font-weight: 650; text-decoration: none; }
+    nav span { color: #66636f; font-size: 14px; }
+    main { min-height: calc(100vh - 144px); padding: 72px 0 88px; }
+    header { max-width: 760px; }
+    .kicker {
+      margin: 0 0 12px;
+      color: #5546ff;
+      font: 650 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font: 600 clamp(40px, 7vw, 76px)/1.02 system-ui, sans-serif;
+      letter-spacing: -.045em;
+    }
+    .intro { max-width: 62ch; margin: 22px 0 0; color: #66636f; }
+    [role="tablist"] {
+      display: flex;
+      gap: 6px;
+      margin: 48px 0 14px;
+      padding: 4px;
+      overflow-x: auto;
+      border: 1px solid #e5e3ea;
+      border-radius: 10px;
+      background: #f3f1f8;
+    }
+    [role="tab"] {
+      flex: 1 0 auto;
+      padding: 10px 14px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: #66636f;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    [role="tab"][aria-selected="true"] {
+      background: #fff;
+      color: #0a0a0f;
+      box-shadow: 0 1px 2px rgba(10, 10, 15, .08);
+    }
+    [data-bench="locale-panel"] {
+      min-height: 360px;
+      padding: clamp(24px, 5vw, 56px);
+      border: 1px solid #e5e3ea;
+      border-radius: 14px;
+      background: #fff;
+    }
+    .step {
+      margin: 0 0 12px;
+      color: #5546ff;
+      font: 650 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: .1em;
+    }
+    h2 { margin: 0; font-size: clamp(26px, 4vw, 42px); line-height: 1.12; letter-spacing: -.025em; }
+    .copy { max-width: 66ch; color: #66636f; }
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      margin: 28px 0;
+      overflow: hidden;
+      border: 1px solid #e5e3ea;
+      border-radius: 10px;
+      background: #e5e3ea;
+    }
+    .facts div { padding: 16px; background: #fff; }
+    .facts strong { display: block; font-size: 20px; }
+    .command {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      margin-top: 26px;
+    }
+    code {
+      min-width: 0;
+      overflow-x: auto;
+      padding: 14px 16px;
+      border: 1px solid #e5e3ea;
+      border-radius: 10px;
+      background: #f7f6fa;
+      font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+      white-space: nowrap;
+    }
+    [data-bench="copy-command"] {
+      padding: 10px 18px;
+      border: 1px solid #5546ff;
+      border-radius: 10px;
+      background: #5546ff;
+      color: #fff;
+      font-weight: 650;
+    }
+    [data-bench="copy-status"] { min-height: 26px; margin: 10px 0 0; color: #66636f; }
+    footer {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid #e5e3ea;
+      color: #66636f;
+      font-size: 14px;
+    }
+    @media (max-width: 620px) {
+      nav { min-height: 60px; }
+      nav span { display: none; }
+      main { padding: 42px 0 56px; }
+      [role="tablist"] { margin-top: 34px; }
+      [data-bench="locale-panel"] { min-height: 0; padding: 24px 18px; }
+      .facts, .command { grid-template-columns: 1fr; }
+      [data-bench="copy-command"] { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
+      }
+    }
+  </style>
+</head>
+<body data-locale="ko">
+  <nav aria-label="Primary">
+    <a href="#setup">Northstar</a>
+    <span>Local setup · five locales</span>
+  </nav>
+  <main id="setup">
+    <header>
+      <p class="kicker">LOCAL WORKFLOW HANDOFF</p>
+      <h1>One setup contract, written for each locale.</h1>
+      <p class="intro">Choose a language and finish setup 10x faster with the same command in every market.</p>
+    </header>
+
+    <div role="tablist" aria-label="Language">
+      <button id="tab-ko" role="tab" type="button" data-bench="locale-tab" data-locale="ko" aria-selected="true" aria-controls="panel-ko">한국어</button>
+      <button id="tab-en" role="tab" type="button" data-bench="locale-tab" data-locale="en" aria-selected="false" aria-controls="panel-en">English</button>
+      <button id="tab-ja" role="tab" type="button" data-bench="locale-tab" data-locale="ja" aria-selected="false" aria-controls="panel-ja">日本語</button>
+      <button id="tab-zh-cn" role="tab" type="button" data-bench="locale-tab" data-locale="zh-CN" aria-selected="false" aria-controls="panel-zh-cn">简体中文</button>
+      <button id="tab-zh-tw" role="tab" type="button" data-bench="locale-tab" data-locale="zh-TW" aria-selected="false" aria-controls="panel-zh-tw">繁體中文（台灣）</button>
+    </div>
+
+    <section id="panel-ko" role="tabpanel" lang="ko" data-bench="locale-panel" data-locale-panel="ko" aria-labelledby="tab-ko">
+      <p class="step">01 / 프로젝트 터미널</p>
+      <h2>코딩 에이전트가 쓸 기준을 프로젝트에 설치하세요</h2>
+      <p class="copy">명령을 실행하면 확인된 레퍼런스 팩 12개와 로컬 워크플로 3개가 준비되고, 현재 프로젝트에 DESIGN.md가 생성됩니다. API 키는 필요하지 않습니다.</p>
+      <div class="facts"><div><strong>12</strong>확인된 레퍼런스 팩</div><div><strong>3</strong>로컬 워크플로</div></div>
+      <div class="command"><code>npx northstar-ui@1.4 setup --agent claude-code</code><button type="button" data-bench="copy-command">명령 복사</button></div>
+      <p data-bench="copy-status" role="status" aria-live="polite">아직 복사하지 않았습니다.</p>
+    </section>
+
+    <section id="panel-en" role="tabpanel" lang="en" data-bench="locale-panel" data-locale-panel="en" aria-labelledby="tab-en" hidden>
+      <p class="step">01 / PROJECT TERMINAL</p>
+      <h2>Install the local source your coding agent will use</h2>
+      <p class="copy">Run the command in your repository to add 12 checked reference packs and 3 local workflows. Setup writes DESIGN.md in the current project and requires no API key.</p>
+      <div class="facts"><div><strong>12</strong>checked reference packs</div><div><strong>3</strong>local workflows</div></div>
+      <div class="command"><code>npx northstar-ui@1.4 setup --agent claude-code</code><button type="button" data-bench="copy-command">Copy command</button></div>
+      <p data-bench="copy-status" role="status" aria-live="polite">Command not copied yet.</p>
+    </section>
+
+    <section id="panel-ja" role="tabpanel" lang="ja" data-bench="locale-panel" data-locale-panel="ja" aria-labelledby="tab-ja" hidden>
+      <p class="step">01 / プロジェクトのターミナル</p>
+      <h2>AI コーディングアシスタントのためにデザインの基準を追加します</h2>
+      <p class="copy">プロジェクトでコマンドを実行すると、確認済みのリファレンスパック12件とローカルワークフロー3件が追加され、DESIGN.mdが作成されます。APIキーは不要です。</p>
+      <div class="facts"><div><strong>12</strong>確認済みリファレンス</div><div><strong>3</strong>ローカルワークフロー</div></div>
+      <div class="command"><code>npx northstar-ui@1.4 setup --agent claude-code</code><button type="button" data-bench="copy-command">コマンドをコピー</button></div>
+      <p data-bench="copy-status" role="status" aria-live="polite">まだコピーしていません。</p>
+    </section>
+
+    <section id="panel-zh-cn" role="tabpanel" lang="zh-CN" data-bench="locale-panel" data-locale-panel="zh-CN" aria-labelledby="tab-zh-cn" hidden>
+      <p class="step">01 / 專案終端機</p>
+      <h2>把專案設計依據交給 AI 程式助理</h2>
+      <p class="copy">在程式碼儲存庫執行指令後，會加入12個已檢查的參考套件與3個本機工作流程，並在目前專案建立 DESIGN.md。無須 API 金鑰。</p>
+      <div class="facts"><div><strong>12</strong>个已检查的参考包</div><div><strong>3</strong>个本地工作流</div></div>
+      <div class="command"><code>npx northstar-ui@1.4 setup --agent claude-code</code><button type="button" data-bench="copy-command">复制命令</button></div>
+      <p data-bench="copy-status" role="status" aria-live="polite">尚未复制命令。</p>
+    </section>
+
+    <section id="panel-zh-tw" role="tabpanel" lang="zh-TW" data-bench="locale-panel" data-locale-panel="zh-TW" aria-labelledby="tab-zh-tw" hidden>
+      <p class="step">01 / 项目终端</p>
+      <h2>为 AI 编程助手添加项目设计依据</h2>
+      <p class="copy">在代码仓库中运行命令，即可添加12个已检查的参考包和3个本地工作流，并在当前项目中生成 DESIGN.md。无需 API 密钥。</p>
+      <div class="facts"><div><strong>12</strong>個已檢查的參考套件</div><div><strong>3</strong>個本機工作流程</div></div>
+      <div class="command"><code>npx northstar-ui@1.4 setup --agent claude-code</code><button type="button" data-bench="copy-command">複製指令</button></div>
+      <p data-bench="copy-status" role="status" aria-live="polite">尚未複製指令。</p>
+    </section>
+  </main>
+  <footer>Northstar · local files only</footer>
+
+  <script>
+    const tabs = [...document.querySelectorAll('[data-bench="locale-tab"]')];
+    const panels = [...document.querySelectorAll('[data-bench="locale-panel"]')];
+    const command = 'npx northstar-ui@1.4 setup --agent claude-code';
+    const copied = {
+      ko: '명령을 복사했습니다.',
+      en: 'Command copied.',
+      ja: 'コマンドをコピーしました。',
+      'zh-CN': '命令已复制。',
+      'zh-TW': '已複製指令。'
+    };
+    function selectLocale(locale) {
+      document.body.dataset.locale = locale;
+      tabs.forEach((tab) => tab.setAttribute('aria-selected', String(tab.dataset.locale === locale)));
+      panels.forEach((panel) => { panel.hidden = panel.dataset.localePanel !== locale; });
+    }
+    tabs.forEach((tab) => tab.addEventListener('click', () => selectLocale(tab.dataset.locale)));
+    document.querySelectorAll('[data-bench="copy-command"]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const panel = button.closest('[data-locale-panel]');
+        try { await navigator.clipboard?.writeText(command); } catch { /* status remains truthful about the requested action */ }
+        button.dataset.copied = 'true';
+        panel.querySelector('[data-bench="copy-status"]').textContent = copied[panel.dataset.localePanel];
+      });
+    });
+  </script>
+</body>
+</html>

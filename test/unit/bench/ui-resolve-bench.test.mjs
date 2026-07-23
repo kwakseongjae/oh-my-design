@@ -12,11 +12,16 @@ const families = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-b
 const releaseTrain = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/release-train.json"), "utf8"));
 const pinnedVendors = "/tmp/omd-ui-skills-bench/vendors";
 const taskIds = ["pricing-conversion-v0.1", "onboarding-setup-v0.1", "incident-operations-v0.1"];
+const localeTaskId = "locale-cli-handoff-v0.1";
 
-function prepareVariant(variant, { vendors = null, offLabel = false } = {}) {
+function prepareVariant(variant, {
+  vendors = null,
+  offLabel = false,
+  task = "pricing-conversion-v0.1",
+} = {}) {
   const parent = mkdtempSync(join(tmpdir(), "ui-resolve-test-"));
   const out = join(parent, variant);
-  const command = [prepare, "--task", "pricing-conversion-v0.1", "--variant", variant, "--out", out];
+  const command = [prepare, "--task", task, "--variant", variant, "--out", out];
   if (vendors) command.push("--vendors", vendors);
   if (offLabel) command.push("--allow-off-label");
   if (competitors.variants[variant]?.declared_name && !competitors.variants[variant]?.vendor_dir) {
@@ -54,6 +59,45 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]);
     expect(tasks.every((task) => task.design_oracle?.selectors && task.design_oracle?.font_family)).toBe(true);
     expect(tasks.every((task) => task.viewports.some((viewport) => viewport.name === "css-zoom-surrogate-200"))).toBe(true);
+  });
+
+  it("adds a five-locale evidence task without treating locale copy as English fallback", () => {
+    const task = JSON.parse(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "task.json"),
+      "utf8",
+    ));
+    expect(task).toMatchObject({
+      behavior_adapter: "locale-switch-v1",
+      locale: "en",
+      journey_oracle: {
+        locale_switch: {
+          locales: ["ko", "en", "ja", "zh-CN", "zh-TW"],
+          initial: "ko",
+        },
+      },
+    });
+    expect(Object.keys(task.locale_oracle.locales)).toEqual(["ko", "en", "ja", "zh-CN", "zh-TW"]);
+    expect(task.locale_oracle.protected_literals).toEqual(expect.arrayContaining([
+      "npx northstar-ui@1.4 setup --agent claude-code",
+      "12",
+      "3",
+      "DESIGN.md",
+    ]));
+    expect(task.locale_oracle.locales["zh-CN"].required_patterns).toContain("AI 编程助手");
+    expect(task.locale_oracle.locales["zh-TW"].required_patterns).toContain("AI 程式助理");
+    expect(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "PROMPT.md"),
+      "utf8",
+    )).toContain("ZH-TW must not inherit ZH-CN copy");
+    const starter = readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localeTaskId, "starter/index.html"),
+      "utf8",
+    );
+    expect(starter).toContain("10x faster");
+    expect(starter).toContain("data-locale-panel=\"zh-CN\"");
+    expect(starter).toContain("把專案設計依據交給 AI 程式助理");
+    expect(starter).toContain("data-locale-panel=\"zh-TW\"");
+    expect(starter).toContain("为 AI 编程助手添加项目设计依据");
   });
 
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
@@ -140,6 +184,26 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("installs the locale adapter and humanizer as one reviewed skill stack", () => {
+    const out = prepareVariant("omd-locale-handoff", { task: localeTaskId });
+    const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+    const prompt = readFileSync(join(out, ".benchmark/PROMPT.md"), "utf8");
+
+    expect(installedSkillName(
+      join(out, ".agents/skills/omd-locale-adapter/SKILL.md"),
+    )).toBe("omd:locale-adapter");
+    expect(installedSkillName(
+      join(out, ".agents/skills/omd-humanize/SKILL.md"),
+    )).toBe("omd:humanize");
+    expect(prompt).toContain("$omd:locale-adapter");
+    expect(prompt).toContain("$omd:humanize");
+    expect(manifest.skill).toMatchObject({
+      declared_name: "omd:locale-adapter",
+      bundled_skills: ["omd:humanize"],
+    });
+    expect(manifest.safety.agent_tool_enabled).toBe(false);
+  });
+
   it("adapts the same OmD source contract to Claude Code without loading Codex shims", () => {
     const parent = mkdtempSync(join(tmpdir(), "ui-resolve-claude-"));
     const out = join(parent, "omd-portable");
@@ -179,6 +243,17 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       declared_name: "omd:apply",
       activation: expect.stringContaining("$omd:apply"),
     });
+    expect(competitors.variants["omd-locale-handoff"]).toMatchObject({
+      kind: "locale-skill-stack",
+      declared_name: "omd:locale-adapter",
+      skill_bundle: [
+        {
+          install_dir: "omd-humanize",
+          declared_name: "omd:humanize",
+        },
+      ],
+      activation: expect.stringContaining("$omd:humanize"),
+    });
     expect(competitors.variants["omd-repair-harness"]).toMatchObject({
       kind: "agent-harness",
       declared_name: "omd:apply",
@@ -214,6 +289,10 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     for (const variant of Object.values(competitors.variants).filter((item) => item.declared_name)) {
       expect(variant.activation).toContain(`$${variant.declared_name}`);
       expect(variant.install_dir).not.toContain("/");
+      for (const bundled of variant.skill_bundle ?? []) {
+        expect(variant.activation).toContain(`$${bundled.declared_name}`);
+        expect(bundled.install_dir).not.toContain("/");
+      }
     }
   });
 

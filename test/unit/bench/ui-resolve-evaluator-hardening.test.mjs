@@ -11,6 +11,7 @@ import {
   evaluateFontOracle,
   evaluateKeyboardTraversal,
   evaluateLandmarkObservation,
+  evaluateLocaleSwitchObservation,
   evaluateProtectedHookCounts,
   evaluateToggleObservation,
   evaluateViewportGeometry,
@@ -19,8 +20,10 @@ import {
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const taskPath = join(repoRoot, "benchmarks/ui-resolve-bench/tasks/pricing-conversion-v0.1/task.json");
+const localeTaskPath = join(repoRoot, "benchmarks/ui-resolve-bench/tasks/locale-cli-handoff-v0.1/task.json");
 const evaluatorPath = join(repoRoot, "benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs");
 const task = JSON.parse(readFileSync(taskPath, "utf8"));
+const localeTask = JSON.parse(readFileSync(localeTaskPath, "utf8"));
 
 function validBillingObservation() {
   return {
@@ -240,6 +243,80 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
     expect(Object.values(evaluateAcknowledgementObservation(acknowledgement)).every(Boolean)).toBe(true);
     acknowledgement.acknowledged.status = acknowledgement.initial.status;
     expect(evaluateAcknowledgementObservation(acknowledgement).status_changes).toBe(false);
+  });
+
+  it("calibrates five-locale navigation, terminology, protected facts, and handoff mutants", () => {
+    const locales = localeTask.journey_oracle.locale_switch.locales;
+    const texts = {
+      ko: "코딩 에이전트 프로젝트 명령 npx northstar-ui@1.4 setup --agent claude-code 12 3 DESIGN.md",
+      en: "coding agent repository command npx northstar-ui@1.4 setup --agent claude-code 12 3 DESIGN.md",
+      ja: "コーディングエージェント プロジェクト コマンド npx northstar-ui@1.4 setup --agent claude-code 12 3 DESIGN.md",
+      "zh-CN": "AI 编程助手 项目 代码仓库 npx northstar-ui@1.4 setup --agent claude-code 12 3 DESIGN.md",
+      "zh-TW": "AI 程式助理 專案 程式碼儲存庫 npx northstar-ui@1.4 setup --agent claude-code 12 3 DESIGN.md",
+    };
+    const state = (locale) => ({
+      locale,
+      active: locale,
+      body_locale: locale,
+      visible_panels: [locale],
+      pressed: Object.fromEntries(locales.map((candidate) => [candidate, String(candidate === locale)])),
+    });
+    const observation = {
+      buttons: locales.map((locale) => ({ locale, visible: true })),
+      panels: locales.map((locale) => ({ locale, lang: locale, text: texts[locale] })),
+      initial: state("ko"),
+      states: locales.map(state),
+      restored: state("ko"),
+      handoffs: locales.map((locale) => ({
+        locale,
+        action_present: true,
+        action_visible: true,
+        before: `before-${locale}`,
+        after: `after-${locale}`,
+        copied: "true",
+      })),
+    };
+    const passing = evaluateLocaleSwitchObservation(
+      observation,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    );
+    expect(Object.values(passing.navigation).every(Boolean)).toBe(true);
+    expect(Object.values(passing.content).every(Boolean)).toBe(true);
+    expect(Object.values(passing.handoff).every(Boolean)).toBe(true);
+
+    const mainlandCopyInTaiwan = structuredClone(observation);
+    mainlandCopyInTaiwan.panels.find((panel) => panel.locale === "zh-TW").text += " 用户 项目 AI 编程助手";
+    expect(evaluateLocaleSwitchObservation(
+      mainlandCopyInTaiwan,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).content.no_forbidden_patterns).toBe(false);
+
+    const changedCommand = structuredClone(observation);
+    changedCommand.panels.find((panel) => panel.locale === "ja").text =
+      changedCommand.panels.find((panel) => panel.locale === "ja").text.replace("@1.4", "@latest");
+    expect(evaluateLocaleSwitchObservation(
+      changedCommand,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).content.protected_literals_preserved).toBe(false);
+
+    const leakyPanels = structuredClone(observation);
+    leakyPanels.states[2].visible_panels = ["ko", "ja"];
+    expect(evaluateLocaleSwitchObservation(
+      leakyPanels,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).navigation.every_locale_reachable).toBe(false);
+
+    const falseCopy = structuredClone(observation);
+    falseCopy.handoffs[0].after = falseCopy.handoffs[0].before;
+    expect(evaluateLocaleSwitchObservation(
+      falseCopy,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).handoff.every_status_changes).toBe(false);
   });
 
   it("records unsupported claims from visible copy, accessible names, and metadata", () => {

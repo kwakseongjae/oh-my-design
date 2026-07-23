@@ -10,6 +10,7 @@
     "ui-ux-pro-max",
     "vercel-web-design-guidelines",
     "omd-portable",
+    "omd-locale-handoff",
     "omd-repair-harness",
     "omd-full-harness"
   ],
@@ -111,6 +112,27 @@
       "license": "MIT",
       "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
       "activation": "Use the installed $omd:apply skill for this task."
+    },
+    "omd-locale-handoff": {
+      "label": "oh-my-design locale handoff",
+      "kind": "locale-skill-stack",
+      "source_path": "skills/omd-locale-adapter",
+      "install_adapter": "omd-channel-name-v1",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-locale-adapter",
+      "declared_name": "omd:locale-adapter",
+      "skill_bundle": [
+        {
+          "source_path": "skills/omd-humanize",
+          "install_adapter": "omd-channel-name-v1",
+          "install_dir": "omd-humanize",
+          "declared_name": "omd:humanize"
+        }
+      ],
+      "license": "MIT",
+      "eligible_tracks": ["repair", "evidence-unknown"],
+      "activation": "Use the installed $omd:locale-adapter skill first: treat KO as canonical, lock every protected fact and literal before editing, and adapt EN, JA, ZH-CN, and ZH-TW as independent product copy rather than sentence-aligned translations. Then use the installed $omd:humanize skill in VERIFY mode across all five locales. Preserve the command, numbers, DESIGN.md, product capabilities, and interaction contract exactly; reject cross-locale terminology, unsupported claims, and edits that merely make every locale share the same English information order."
     },
     "omd-repair-harness": {
       "label": "oh-my-design repair harness",

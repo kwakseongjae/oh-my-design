@@ -139,6 +139,77 @@ export function evaluateAcknowledgementObservation(observation) {
   };
 }
 
+const matchesPattern = (text, pattern) => {
+  try {
+    return new RegExp(pattern, "iu").test(String(text ?? ""));
+  } catch {
+    return false;
+  }
+};
+
+export function evaluateLocaleSwitchObservation(observation, journeyOracle = {}, localeOracle = {}) {
+  const locales = journeyOracle.locales ?? [];
+  const buttons = observation?.buttons ?? [];
+  const panels = observation?.panels ?? [];
+  const states = observation?.states ?? [];
+  const handoffs = observation?.handoffs ?? [];
+  const expectedInitial = journeyOracle.initial;
+  const statePasses = (state, locale) =>
+    state?.active === locale &&
+    state?.body_locale === locale &&
+    exactList(state?.visible_panels, [locale]) &&
+    locales.every((candidate) => state?.pressed?.[candidate] === String(candidate === locale));
+  const panelByLocale = Object.fromEntries(panels.map((panel) => [panel.locale, panel]));
+  const rulesByLocale = localeOracle.locales ?? {};
+  const normalizedCopies = panels.map((panel) => String(panel.text ?? "").replace(/\s+/g, " ").trim());
+
+  return {
+    navigation: {
+      exact_button_locales: exactList(buttons.map((button) => button.locale), locales),
+      every_button_visible: buttons.length > 0 && buttons.every((button) => button.visible === true),
+      initial_exact: statePasses(observation?.initial, expectedInitial),
+      every_locale_reachable:
+        states.length === locales.length &&
+        locales.every((locale) => statePasses(states.find((state) => state.locale === locale), locale)),
+      restored_exact: statePasses(observation?.restored, expectedInitial),
+    },
+    content: {
+      exact_panel_locales: exactList(panels.map((panel) => panel.locale), locales),
+      every_panel_lang_exact:
+        panels.length === locales.length &&
+        locales.every((locale) => panelByLocale[locale]?.lang?.toLowerCase() === locale.toLowerCase()),
+      every_required_pattern:
+        locales.length > 0 &&
+        locales.every((locale) =>
+          (rulesByLocale[locale]?.required_patterns ?? []).every((pattern) =>
+            matchesPattern(panelByLocale[locale]?.text, pattern))),
+      no_forbidden_patterns:
+        locales.length > 0 &&
+        locales.every((locale) =>
+          (rulesByLocale[locale]?.forbidden_patterns ?? []).every((pattern) =>
+            !matchesPattern(panelByLocale[locale]?.text, pattern))),
+      protected_literals_preserved:
+        locales.length > 0 &&
+        locales.every((locale) =>
+          (localeOracle.protected_literals ?? []).every((literal) =>
+            String(panelByLocale[locale]?.text ?? "").includes(literal))),
+      locale_copy_distinct:
+        normalizedCopies.length === locales.length &&
+        normalizedCopies.every(Boolean) &&
+        new Set(normalizedCopies).size === locales.length,
+    },
+    handoff: {
+      exact_count: handoffs.length === locales.length,
+      every_action_present: handoffs.length > 0 && handoffs.every((entry) => entry.action_present === true),
+      every_action_visible: handoffs.length > 0 && handoffs.every((entry) => entry.action_visible === true),
+      every_status_changes:
+        handoffs.length > 0 &&
+        handoffs.every((entry) => Boolean(entry.before) && Boolean(entry.after) && entry.before !== entry.after),
+      every_action_marks_copied: handoffs.length > 0 && handoffs.every((entry) => entry.copied === "true"),
+    },
+  };
+}
+
 export function evaluateProtectedHookCounts(viewports, expectedCounts) {
   const mismatches = [];
   for (const viewport of viewports ?? []) {
@@ -360,7 +431,7 @@ async function main() {
     for (const viewport of task.viewports) {
       const context = await browser.newContext({
         viewport: { width: viewport.width, height: viewport.height },
-        locale: "en-US",
+        locale: task.browser_locale ?? (task.locale === "en" ? "en-US" : task.locale),
         timezoneId: "UTC",
         colorScheme: "light",
         reducedMotion: "reduce",
@@ -790,6 +861,64 @@ async function main() {
           };
           return { filter, disclosure, acknowledgement };
         }, task.journey_oracle);
+        else if (behaviorAdapter === "locale-switch-v1") behavior = await page.evaluate(async (oracle) => {
+          const visible = (element) => {
+            const style = getComputedStyle(element);
+            const rect = element.getBoundingClientRect();
+            if (typeof element.checkVisibility === "function" &&
+              !element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true })) return false;
+            return style.display !== "none" && style.visibility !== "hidden" &&
+              style.opacity !== "0" && rect.width > 0 && rect.height > 0;
+          };
+          const config = oracle.locale_switch;
+          const buttons = [...document.querySelectorAll(config.button_selector)];
+          const panels = [...document.querySelectorAll(config.panel_selector)];
+          const valueFor = (node) => node.getAttribute(config.value_attribute);
+          const panelLocale = (node) => node.getAttribute(config.panel_value_attribute);
+          const state = () => ({
+            active: document.body.dataset[config.body_dataset],
+            body_locale: document.body.dataset[config.body_dataset],
+            pressed: Object.fromEntries(buttons.map((button) => [
+              valueFor(button),
+              button.getAttribute("aria-selected") ?? button.getAttribute("aria-pressed"),
+            ])),
+            visible_panels: panels.filter(visible).map(panelLocale),
+          });
+          const result = {
+            buttons: buttons.map((button) => ({ locale: valueFor(button), visible: visible(button) })),
+            panels: panels.map((panel) => ({
+              locale: panelLocale(panel),
+              lang: panel.getAttribute("lang"),
+              text: panel.textContent.replace(/\s+/g, " ").trim(),
+            })),
+            initial: state(),
+            states: [],
+            handoffs: [],
+          };
+          for (const locale of config.locales) {
+            buttons.find((button) => valueFor(button) === locale)?.click();
+            await new Promise((resolve) => setTimeout(resolve, 20));
+            result.states.push({ locale, ...state() });
+            const panel = panels.find((candidate) => panelLocale(candidate) === locale);
+            const action = panel?.querySelector(config.action_selector);
+            const status = panel?.querySelector(config.status_selector);
+            const before = status?.textContent.trim();
+            action?.click();
+            await new Promise((resolve) => setTimeout(resolve, 20));
+            result.handoffs.push({
+              locale,
+              action_present: action instanceof HTMLElement,
+              action_visible: action ? visible(action) : false,
+              before,
+              after: status?.textContent.trim(),
+              copied: action?.getAttribute("data-copied"),
+            });
+          }
+          buttons.find((button) => valueFor(button) === config.initial)?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          result.restored = state();
+          return result;
+        }, task.journey_oracle);
         else throw new Error(`unsupported behavior adapter: ${behaviorAdapter}`);
 
         semantics = snapshot;
@@ -902,6 +1031,18 @@ async function main() {
       disclosure: disclosureChecks,
       acknowledgement: acknowledgementChecks,
     };
+  } else if (behaviorAdapter === "locale-switch-v1") {
+    const localeChecks = evaluateLocaleSwitchObservation(
+      behavior,
+      task.journey_oracle?.locale_switch,
+      task.locale_oracle,
+    );
+    stateChecks = {
+      navigation: everyCheckPass(localeChecks.navigation),
+      content: everyCheckPass(localeChecks.content),
+      handoff: everyCheckPass(localeChecks.handoff),
+    };
+    stateDetails = localeChecks;
   } else {
     throw new Error(`unsupported behavior adapter: ${behaviorAdapter}`);
   }
