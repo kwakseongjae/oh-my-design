@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.22 full replacement promoted
+- exact Opus/xhigh 18/18 valid; retry·intervention·authority failure 0이다.
+- UI-Resolved 5/9→8/9, paired 4W/4T/1L, Reliability@3 1/3→2/3이다.
+- harness median wall 0.850×, tokens 1.141×이며 process gate 9/9를 통과했다.
+- 내부 harness contract를 승격했고 다음은 1.9.23 locale/evidence preregistration이다.
+
 ## 2026-07-23 (Codex) · 1.9.22 fresh replacement preregistered
 - `/tmp/u1922`의 3 tasks×3 trials×portable/harness 18 fresh cells를 고정했다.
 - 1.9.19/1.9.20 결과는 denominator 밖이며 classifier basis만 `d422186`이다.

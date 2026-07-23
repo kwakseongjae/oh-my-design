@@ -63,6 +63,22 @@ Opus, no Agent/infrastructure/sandbox/cwd error, and no Sonnet usage. This close
 the execution and attribution path only. One task × one trial remains Internal;
 Harness efficiency and Pareto claims wait for the 1.9.7 repeated matrix.
 
+## Current 1.9.22 harness checkpoint
+
+The seventh fresh Harness Track replacement completed 18/18 valid exact
+Opus/xhigh cells without retry or intervention. The bounded repair harness
+reached UI-Resolved 8/9 versus portable 5/9, paired 4 wins / 4 ties / 1 loss,
+and task Reliability@3 2/3 versus 1/3. It was about 15% faster at the median
+while using about 14% more uncached tokens, so the quality/time/token result is
+non-dominated.
+
+All nine candidate cells used both read-only specialists, made a targeted
+non-no-op first Edit within both delivery clocks, preserved Evidence & Unknown,
+and authored no replacement verifier. The internal harness process contract is
+promoted. The confidence interval still includes zero and the slice remains
+three tasks × three trials, so this is not a public frontier or best-skill
+claim. The next bounded lane is 1.9.23 locale and evidence expansion.
+
 ## 2.0.0 frontier gates
 
 All must pass:
