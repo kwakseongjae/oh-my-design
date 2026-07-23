@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   harnessDeliveryStopReason,
+  lastAdvisoryToFirstProductWriteMs,
   preregisteredStopReason,
   replacementVerifierAuthorship,
   runArgsForCell,
@@ -19,6 +20,7 @@ const manifest = {
   },
 };
 const validRun = {
+  started_at: "2026-07-23T00:00:00.000Z",
   process: { exit_code: 0, child_exit_code: 0, timed_out: false },
   runtime: { model: "claude-opus-4-8" },
   output: {
@@ -86,6 +88,52 @@ describe("UI-Resolve prepared matrix execution", () => {
     const missing = structuredClone(validRun);
     delete missing.output.milestones;
     expect(harnessDeliveryStopReason(manifest, missing, gates)).toBe("missing-first-product-write-milestone");
+  });
+
+  it("measures and gates the last advisory to first useful product edit", () => {
+    const events = [
+      {
+        type: "assistant",
+        timestamp: "2026-07-23T00:01:00.000Z",
+        message: { content: [{ type: "tool_use", id: "writer", name: "Agent", input: {} }] },
+      },
+      {
+        type: "assistant",
+        timestamp: "2026-07-23T00:01:01.000Z",
+        message: { content: [{ type: "tool_use", id: "engineer", name: "Agent", input: {} }] },
+      },
+      {
+        type: "user",
+        timestamp: "2026-07-23T00:03:30.000Z",
+        message: { content: [{ type: "tool_result", tool_use_id: "writer", content: "done" }] },
+      },
+      {
+        type: "user",
+        timestamp: "2026-07-23T00:04:00.000Z",
+        message: { content: [{ type: "tool_result", tool_use_id: "engineer", content: "done" }] },
+      },
+    ];
+    const run = structuredClone(validRun);
+    run.output.milestones.first_builtin_product_write_ms = 313484;
+    expect(lastAdvisoryToFirstProductWriteMs(run, events)).toBe(73484);
+
+    const gates = {
+      first_product_write_ms_max: 450000,
+      last_advisory_to_first_product_write_ms_max: 90000,
+      forbid_replacement_verifier: true,
+    };
+    expect(harnessDeliveryStopReason(manifest, run, gates, events)).toBeNull();
+
+    run.output.milestones.first_builtin_product_write_ms = 330001;
+    expect(harnessDeliveryStopReason(manifest, run, gates, events))
+      .toBe("late-advisory-to-first-product-write");
+
+    run.output.milestones.first_builtin_product_write_ms = 200000;
+    expect(harnessDeliveryStopReason(manifest, run, gates, events))
+      .toBe("product-write-before-last-advisory");
+
+    expect(harnessDeliveryStopReason(manifest, validRun, gates, []))
+      .toBe("missing-advisory-to-first-write-milestone");
   });
 
   it("detects an authored replacement verifier but allows a real-browser probe", () => {

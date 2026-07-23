@@ -74,11 +74,46 @@ export function replacementVerifierAuthorship(events) {
   return { detected: false };
 }
 
+export function lastAdvisoryToFirstProductWriteMs(run, events = []) {
+  const startedAt = Date.parse(run?.started_at ?? "");
+  const firstWrite = run?.output?.milestones?.first_builtin_product_write_ms;
+  if (!Number.isFinite(startedAt) || !Number.isFinite(firstWrite)) return null;
+
+  const advisoryIds = new Set();
+  for (const event of events) {
+    for (const block of toolUses(event)) {
+      if (block.name === "Agent" && typeof block.id === "string") advisoryIds.add(block.id);
+    }
+  }
+  if (!advisoryIds.size) return null;
+
+  const resultTimes = [];
+  for (const event of events) {
+    if (event?.type !== "user" || !Array.isArray(event.message?.content)) continue;
+    for (const block of event.message.content) {
+      if (block?.type !== "tool_result" || !advisoryIds.has(block.tool_use_id)) continue;
+      const resultAt = Date.parse(event.timestamp ?? "");
+      if (Number.isFinite(resultAt)) resultTimes.push(resultAt);
+    }
+  }
+  if (resultTimes.length !== advisoryIds.size) return null;
+  const lastAdvisoryMs = Math.max(...resultTimes) - startedAt;
+  return firstWrite - lastAdvisoryMs;
+}
+
 export function harnessDeliveryStopReason(manifest, run, gates, events = []) {
   if (manifest.variant?.kind !== "agent-harness" || gates === undefined) return null;
   const firstWrite = run.output?.milestones?.first_builtin_product_write_ms;
   if (!Number.isFinite(firstWrite)) return "missing-first-product-write-milestone";
   if (firstWrite > gates.first_product_write_ms_max) return "late-first-product-write";
+  if (gates.last_advisory_to_first_product_write_ms_max !== undefined) {
+    const advisoryToWrite = lastAdvisoryToFirstProductWriteMs(run, events);
+    if (!Number.isFinite(advisoryToWrite)) return "missing-advisory-to-first-write-milestone";
+    if (advisoryToWrite < 0) return "product-write-before-last-advisory";
+    if (advisoryToWrite > gates.last_advisory_to_first_product_write_ms_max) {
+      return "late-advisory-to-first-product-write";
+    }
+  }
   if (gates.forbid_replacement_verifier && replacementVerifierAuthorship(events).detected) {
     return "replacement-verifier-authored";
   }
@@ -251,6 +286,10 @@ export function executePreparedMatrix(root) {
       agent_tool_calls: record.runtime_diagnostics?.agent_tool_call_count ?? 0,
       evidence_and_unknown_pass: score.critical_gates?.evidence_honesty === true,
       first_product_write_ms: record.runtime_diagnostics?.milestones?.first_builtin_product_write_ms ?? null,
+      last_advisory_to_first_product_write_ms: lastAdvisoryToFirstProductWriteMs(
+        run,
+        readEvents(eventsPath),
+      ),
       replacement_verifier_authored: replacementVerifierAuthorship(readEvents(eventsPath)).detected,
     };
     upsertCell(state, summary);

@@ -48,10 +48,12 @@ describe("UI-Resolve run matrix preparation", () => {
     const value = plan({
       harness_delivery_gates: {
         first_product_write_ms_max: 450000,
+        last_advisory_to_first_product_write_ms_max: 90000,
         forbid_replacement_verifier: true,
       },
     });
     expect(validateRunMatrixPlan(value).harness_delivery_gates.first_product_write_ms_max).toBe(450000);
+    expect(validateRunMatrixPlan(value).harness_delivery_gates.last_advisory_to_first_product_write_ms_max).toBe(90000);
 
     expect(() => validateRunMatrixPlan(plan({
       harness_delivery_gates: {
@@ -59,6 +61,14 @@ describe("UI-Resolve run matrix preparation", () => {
         forbid_replacement_verifier: true,
       },
     }))).toThrow("first_product_write_ms_max");
+
+    expect(() => validateRunMatrixPlan(plan({
+      harness_delivery_gates: {
+        first_product_write_ms_max: 450000,
+        last_advisory_to_first_product_write_ms_max: 0,
+        forbid_replacement_verifier: true,
+      },
+    }))).toThrow("last_advisory_to_first_product_write_ms_max");
   });
 
   it("maps a cell to the isolated sandbox preparer without provider execution", () => {

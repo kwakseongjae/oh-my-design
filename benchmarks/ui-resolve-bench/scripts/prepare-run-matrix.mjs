@@ -26,6 +26,15 @@ export function validateRunMatrixPlan(plan) {
     if (!Number.isInteger(gates.first_product_write_ms_max) || gates.first_product_write_ms_max < 1) {
       throw new Error("matrix harness_delivery_gates.first_product_write_ms_max must be a positive integer");
     }
+    if (
+      gates.last_advisory_to_first_product_write_ms_max !== undefined
+      && (
+        !Number.isInteger(gates.last_advisory_to_first_product_write_ms_max)
+        || gates.last_advisory_to_first_product_write_ms_max < 1
+      )
+    ) {
+      throw new Error("matrix harness_delivery_gates.last_advisory_to_first_product_write_ms_max must be a positive integer");
+    }
     if (typeof gates.forbid_replacement_verifier !== "boolean") {
       throw new Error("matrix harness_delivery_gates.forbid_replacement_verifier must be boolean");
     }
