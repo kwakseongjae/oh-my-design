@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  directBrowserCommandCount,
   harnessDeliveryStopReason,
   firstProductWriteTransaction,
   lastAdvisoryToFirstProductWriteMs,
@@ -220,6 +221,82 @@ describe("UI-Resolve prepared matrix execution", () => {
       },
     }];
     expect(replacementVerifierAuthorship(realBrowserHtml)).toEqual({ detected: false });
+  });
+
+  it("counts actual headless browser invocations without counting discovery", () => {
+    const discovery = {
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          name: "Bash",
+          input: {
+            command: 'ls "/Applications/Google Chrome.app/Contents/MacOS/" 2>/dev/null; which chromium',
+          },
+        }],
+      },
+    };
+    const oneBrowser = {
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          name: "Bash",
+          input: {
+            command: '"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --dump-dom index.html',
+          },
+        }],
+      },
+    };
+    const twoBrowsersOneCall = {
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          name: "Bash",
+          input: {
+            command: "chromium --headless --dump-dom index.html; google-chrome-stable --headless=new --dump-dom index.html",
+          },
+        }],
+      },
+    };
+    expect(directBrowserCommandCount([discovery])).toBe(0);
+    expect(directBrowserCommandCount([discovery, oneBrowser])).toBe(1);
+    expect(directBrowserCommandCount([twoBrowsersOneCall])).toBe(2);
+  });
+
+  it("fails closed when the direct-browser command budget is exceeded", () => {
+    const localeManifest = { variant: { kind: "locale-skill-stack" } };
+    const gates = {
+      variant_kinds: ["locale-skill-stack"],
+      first_product_write_ms_max: 450000,
+      forbid_replacement_verifier: true,
+      max_direct_browser_commands: 1,
+    };
+    const run = {
+      output: { milestones: { first_builtin_product_write_ms: 313841 } },
+      workspace: { changed_product_files: [{ path: "index.html" }] },
+    };
+    const invocation = (suffix) => ({
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          name: "Bash",
+          input: {
+            command: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --dump-dom index.html ${suffix}`,
+          },
+        }],
+      },
+    });
+    expect(harnessDeliveryStopReason(localeManifest, run, gates, [])).toBeNull();
+    expect(harnessDeliveryStopReason(localeManifest, run, gates, [invocation("2>/dev/null")])).toBeNull();
+    expect(harnessDeliveryStopReason(
+      localeManifest,
+      run,
+      gates,
+      [invocation("2>/dev/null"), invocation("2>&1")],
+    )).toBe("direct-browser-command-budget-exceeded");
   });
 
   it("fails closed when replacement-verifier authorship is observed", () => {

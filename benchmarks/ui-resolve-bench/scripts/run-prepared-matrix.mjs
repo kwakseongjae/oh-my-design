@@ -41,6 +41,7 @@ const SUSPICIOUS_SCRIPT_VERIFIER_PATH = /(?:^|[/\\])(?:verify|verifier|verificat
 const EXPLICIT_SHIM_PATH = /(?:^|[/\\._-])(?:dom[-_]?shim|mock[-_]?browser)(?:[/\\._-]|$)/i;
 const SHELL_OR_SCRIPT_WRITE = /(?:^|[\s;&|])(?:cat|tee)\b[^\n]*(?:>|>>)|(?:>|>>)\s*[^\s]+|\b(?:writeFile|writeFileSync)\s*\(|\bopen\s*\([^\n]*["']w["']/i;
 const DOM_OR_BROWSER_SHIM = /\bclass\s+(?:Element|Document|Node|Window)\b|\bglobalThis\.(?:document|window)\s*=|\b(?:document|window)\s*=\s*(?:new\b|\{)|\bmock(?:Document|Window|Browser)\b/i;
+const DIRECT_HEADLESS_BROWSER = /(?:"[^"\n]*(?:Google Chrome|Chromium)[^"\n]*"|'[^'\n]*(?:Google Chrome|Chromium)[^'\n]*'|(?:[^\s;&|]|\\\s)*(?:google-chrome(?:-stable)?|chromium(?:-browser)?|Google\\ Chrome|Chromium)(?:[^\s;&|]|\\\s)*)(?:\s+[^;&|\n]*?)*?\s+--headless(?:=[^\s;&|]+)?/gi;
 
 function toolUses(event) {
   if (event?.type !== "assistant" || !Array.isArray(event.message?.content)) return [];
@@ -72,6 +73,18 @@ export function replacementVerifierAuthorship(events) {
     }
   }
   return { detected: false };
+}
+
+export function directBrowserCommandCount(events) {
+  let count = 0;
+  for (const event of events) {
+    for (const block of toolUses(event)) {
+      if (block.name !== "Bash") continue;
+      const command = String(block.input?.command ?? "");
+      count += [...command.matchAll(DIRECT_HEADLESS_BROWSER)].length;
+    }
+  }
+  return count;
 }
 
 export function lastAdvisoryToFirstProductWriteMs(run, events = []) {
@@ -148,6 +161,12 @@ export function harnessDeliveryStopReason(manifest, run, gates, events = []) {
   }
   if (gates.forbid_replacement_verifier && replacementVerifierAuthorship(events).detected) {
     return "replacement-verifier-authored";
+  }
+  if (
+    gates.max_direct_browser_commands !== undefined &&
+    directBrowserCommandCount(events) > gates.max_direct_browser_commands
+  ) {
+    return "direct-browser-command-budget-exceeded";
   }
   return null;
 }
@@ -324,6 +343,7 @@ export function executePreparedMatrix(root) {
       ),
       first_product_write_transaction: firstProductWriteTransaction(run, readEvents(eventsPath)),
       replacement_verifier_authored: replacementVerifierAuthorship(readEvents(eventsPath)).detected,
+      direct_browser_command_count: directBrowserCommandCount(readEvents(eventsPath)),
     };
     upsertCell(state, summary);
     state.completed_cells = state.cells.filter((entry) => entry.status === "complete").length;
