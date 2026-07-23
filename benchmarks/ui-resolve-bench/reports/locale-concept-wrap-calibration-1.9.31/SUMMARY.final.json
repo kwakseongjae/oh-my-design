@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "locale-concept-wrap-calibration-1.9.31",
+  "run_date": "2026-07-23",
+  "status": "calibration_complete",
+  "provider_generation": false,
+  "source_commit": "0991a69",
+  "evaluator_schema": "0.3",
+  "task_version": "0.3.0",
+  "retained_run_mutated": false,
+  "historical_decision_changed": false,
+  "positive_replay": {
+    "source": "/tmp/u1930",
+    "workspace": "/tmp/u1931-retained",
+    "original_frozen_score": 78,
+    "task_0_3_0_score": 83,
+    "max": 85,
+    "automated_gate_pass": false,
+    "critical_gates_passed": 5,
+    "critical_gates_total": 6,
+    "locale_content_pass": true,
+    "css_zoom_200_geometry_pass": false
+  },
+  "negative_replay": {
+    "source": "locale-cli-handoff-v0.1/starter",
+    "workspace": "/tmp/u1931-starter",
+    "score": 57,
+    "max": 85,
+    "automated_gate_pass": false,
+    "failed_critical_gates": [
+      "state_journey",
+      "responsive",
+      "accessibility",
+      "evidence_honesty"
+    ]
+  },
+  "concept_mutations": {
+    "natural_english_and_japanese_alternatives": "pass",
+    "missing_english_code_source_concept": "fail",
+    "missing_japanese_agent_concept": "fail"
+  },
+  "prepared_activation_proof": {
+    "workspace": "/tmp/u1931-activation-proof",
+    "source_clean": true,
+    "source_publishable": true,
+    "source_commit": "0991a69cfc5451de6e8e146ce87278821e9564e6",
+    "task_version": "0.3.0",
+    "manifest_activation_exact": true,
+    "wrap_safety_present": true,
+    "zero_browser_authority_preserved": true
+  },
+  "verification": {
+    "focused_tests_passed": 27,
+    "full_tests_passed": 217,
+    "conditional_tests_skipped": 1,
+    "typescript": "pass",
+    "build": "pass",
+    "node_syntax": "pass",
+    "json": "pass",
+    "diff_check": "pass",
+    "positive_real_browser": "layout_fail_retained",
+    "negative_real_browser": "fail_as_expected",
+    "prepared_activation": "pass"
+  },
+  "reporting_limits": [
+    "task and benchmark activation calibration only",
+    "no new provider generation",
+    "no retroactive 1.9.30 pass",
+    "no model, skill, locale-lift, efficiency, or frontier claim"
+  ],
+  "next_fresh_experiment_version": "1.9.32",
+  "next_fresh_root": "/tmp/u1932"
+}

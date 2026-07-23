@@ -172,6 +172,15 @@ row gap and a 2px selection border. 1.9.30 remains failed. 1.9.31 calibrates
 bounded semantic alternatives and a static wrapped-control safety contract;
 public benchmark UX moves to 1.9.33 after a fresh 1.9.32 recovery.
 
+1.9.31 now accepts bounded English and Japanese product-term alternatives
+while retaining missing-concept and cross-locale negative mutations. The
+unchanged 1.9.30 artifact replays at 83/85: locale content recovers, but the
+real 200% tab overlap remains the sole failed critical gate. The invalid
+starter remains 57/85. The task and zero-browser activation also require a
+static wrapped-row audit whose vertical gap covers edge selection treatments.
+A clean prepared sandbox, 217 tests, TypeScript, build, and browser replays are
+green, unlocking a fresh 1.9.32 recovery.
+
 ## 2.0.0 frontier gates
 
 All must pass:

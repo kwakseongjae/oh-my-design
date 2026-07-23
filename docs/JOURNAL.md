@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.31 locale concept/wrap calibration
+- bounded EN/JA 동등어는 통과하고 missing-concept mutation은 계속 실패한다.
+- frozen 1.9.30 replay는 83/85로 terminology만 회복, 200% overlap은 유지됐다.
+- starter57/85, full217/1skip, build/type/browser replay와 clean activation proof가 green이다.
+- 다음은 `/tmp/u1932` fresh exact Opus/xhigh recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.30 process recovered, quality failed
 - valid exact Opus, browser0·verifier0·first write366.8s로 authority binding은 회복됐다.
 - frozen 78/85·critical4/6: EN/JA exact synonym oracle과 200% tab 2px overlap이 실패했다.

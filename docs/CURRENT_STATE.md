@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `84272de` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.30 zero-browser recovery frozen as quality failure
+- 기준 커밋: `0991a69` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.31 locale concept/wrap calibration complete
 
 ## 지금 (현재 위치)
 
@@ -86,6 +86,11 @@
 - 200% surrogate는 wrap flex `row-gap:0` + 2px selection border 때문에 두 tab row의 실제 hit rectangle이 정확히 2px 겹쳤다. detector 오차가 아니므로 geometry 실패를 유지한다.
 - 1.9.31은 bounded semantic-alternative oracle + missing-concept mutant와 static wrapped-control safety 계약만 보정한다. frozen artifact replay에서 terminology false negative만 제거하고 200% 실패는 유지해야 한다.
 - fresh provider recovery는 새 1.9.32와 `/tmp/u1932`에서만 가능하다. public benchmark UX는 1.9.33으로 이동한다.
+- 1.9.31 source `0991a69`은 EN coding-agent/repository와 JA coding-agent 개념에 bounded natural alternatives를 허용한다. 개념 자체를 제거한 EN/JA mutation은 계속 실패하고 forbidden/protected ledger는 바꾸지 않았다.
+- task/activation은 wrap 가능한 flex/grid control row의 vertical gap이 edge border/underline/transform보다 작지 않아야 한다고 명시한다. provider browser authority는 여전히 0이고 external evaluator가 단독 acceptance authority다.
+- exact 1.9.30 artifact replay는 78→83/85로 terminology/state만 회복했고 실제 200% overlap/responsive 실패는 유지했다. seeded invalid starter는 57/85로 state/responsive/a11y/evidence를 계속 실패했다.
+- clean `/tmp/u1931-activation-proof`는 task0.3.0, manifest/prompt activation exact, publishable source를 확인했다. focused27/27, full217/1skip, TypeScript/build/syntax/JSON/diff와 두 real-browser replay가 green이다.
+- 1.9.31은 provider generation 없는 `calibration_complete`다. 다음은 `/tmp/u1932` fresh exact Opus/xhigh candidate recovery이며 browser0/verifier0/85·critical6/6을 다시 요구한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -387,11 +392,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.30 findings/summary를 clean commit으로 고정한다.
-2. 1.9.31 semantic-alternative oracle과 static wrapped-control safety 계약을 한 bounded calibration으로 구현한다.
-3. frozen 1.9.30 replay는 terminology false negative만 회복하고 200% overlap 실패를 유지하는지 검증한다.
-4. seeded invalid/missing-concept/unsafe-wrap mutation과 전체 test/build를 통과시킨다.
-5. fresh 1.9.32 recovery를 새 root에 사전등록한다. 이후 public UX 1.9.33 → activation/reuse 1.9.34 → independent challenge 1.9.35로 이동한다.
+1. 1.9.31 findings/summary를 clean commit으로 고정한다.
+2. fresh 1.9.32 exact Opus/xhigh candidate-only recovery를 `/tmp/u1932`에 사전등록한다.
+3. first write≤450s, browser0, verifier0, 85/85·critical6/6·all locale/fact/geometry/Evidence를 함께 요구한다.
+4. full recovery면 repeated locale matrix 또는 public UX 1.9.33의 최소 증거 계약을 정한다.
+5. 이후 activation/reuse 1.9.34 → independent challenge 1.9.35로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
