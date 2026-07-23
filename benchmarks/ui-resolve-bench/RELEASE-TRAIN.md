@@ -211,6 +211,15 @@ real accessibility defect, not an oracle issue. 1.9.34 remains failed; 1.9.35
 adds a static scrollable-region focus contract before a fresh recovery.
 Public benchmark UX moves beyond that recovery.
 
+1.9.35 now requires useful `overflow: auto|scroll` regions to contain a
+reachable control or become explicit keyboard focus targets with visible focus
+treatment, while decorative and non-scrollable containers remain outside the
+Tab order. The evaluator and provider browser-zero authority are unchanged.
+The retained 1.9.34 copy still scores 79/85 with the accessibility failure; a
+minimal focus-control copy scores 85/85 with axe serious/critical zero and
+complete keyboard traversal at all four viewports. This provider-free
+calibration unlocks a fresh 1.9.36 recovery in a new root.
+
 ## 2.0.0 frontier gates
 
 All must pass:

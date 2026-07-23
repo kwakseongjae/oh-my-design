@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.35 scroll-focus calibration complete
+- task0.5는 useful overflow region의 focus target·visible focus를 요구하고 불필요한 Tab stop은 금지한다.
+- unchanged 1.9.34 replay는79/85 fail, minimal focus control은85/85·axe0·keyboard pass다.
+- evaluator0.4/provider browser0은 그대로며 full217/1skip·build·clean activation이 green이다.
+- 다음은 `/tmp/u1936` fresh exact Opus/xhigh recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.34 scroll-region accessibility failed
 - valid exact Opus, first write371.4s·browser0·verifier0, clipboard/geometry는 전부 pass했다.
 - frozen79/85는 narrow command overflow region의 explicit focus/focus-visible 부재다.

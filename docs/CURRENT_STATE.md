@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `d3aa4ff` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.34 clipboard/geometry pass, scroll accessibility failed
+- 기준 커밋: `a20076e` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.35 scrollable-region focus calibration complete
 
 ## 지금 (현재 위치)
 
@@ -110,6 +110,10 @@
 - 좁은 화면에서 `overflow-x:auto` command `<code>`가 scrollable region이지만 explicit focus target/focus-visible이 없어 axe serious `scrollable-region-focusable`이 mobile/320/200%에서 발생했다. keyboard traversal도 같은 원인으로 fail했다.
 - 이는 evaluator ambiguity가 아닌 실제 a11y defect다. 1.9.34는 `calibration_failed`로 고정하고 evaluator는 유지한다.
 - 1.9.35는 task/activation에 overflow auto|scroll region의 conditional focusability + visible focus + accessible name 계약만 추가한다. fresh recovery는 이후 새 version/root에서 수행한다.
+- 1.9.35 source `a20076e`은 task0.5.0에서 clipped useful overflow region을 reachable control 또는 explicit focus target+focus-visible로 요구하고 decorative/non-scrollable container의 불필요한 Tab stop은 금지한다. evaluator0.4와 provider browser0은 그대로다.
+- unchanged 1.9.34 replay는 79/85·a11y fail을 재현했고, command code에 `tabindex=0`+focus-visible만 더한 control은 85/85·critical6/6·4 viewport axe0·keyboard pass다.
+- focused14/14, full217/1skip, TypeScript/build/syntax/JSON/diff, clean publishable activation이 green이다. 1.9.35는 provider generation 없는 `calibration_complete`다.
+- 다음은 `/tmp/u1936` fresh exact Opus/xhigh candidate recovery이며 task0.5/evaluator0.4/browser0/verifier0/85·critical6/6을 다시 요구한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -411,10 +415,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.34 findings/summary를 clean commit으로 고정한다.
-2. 1.9.35 scrollable-region focus 계약과 focused regression을 구현한다.
-3. retained 1.9.34 failure와 known-good focus mutation을 real browser에서 분리 검증한다.
-4. fresh 1.9.36 recovery를 새 root에 사전등록한다.
+1. 1.9.35 findings/summary와 continuity를 clean commit으로 고정한다.
+2. fresh 1.9.36 recovery를 새 root `/tmp/u1936`에 사전등록한다.
+3. exact Opus/xhigh preflight 뒤 retry/resume 없이 candidate 1셀을 실행한다.
+4. pass면 locale repeated matrix 또는 minimum public benchmark UX evidence contract를 결정한다.
 5. 이후 public UX 1.9.37 → activation/reuse 1.9.38 → independent challenge 1.9.39로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
