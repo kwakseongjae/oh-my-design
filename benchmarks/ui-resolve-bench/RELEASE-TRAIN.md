@@ -161,6 +161,17 @@ external evaluator. A clean prepared sandbox and max-zero mutation tests pass.
 This benchmark-only calibration changes no general production skill authority
 and unlocks a fresh 1.9.30 candidate recovery.
 
+The fresh 1.9.30 candidate completed valid exact-Opus execution with zero
+provider browser commands, no replacement verifier, first product write at
+366.8 seconds, and no infrastructure failure. External browser authority is
+therefore recovered. The objective result was still 78/85 and failed two of
+six critical gates. English “project folder” and Japanese “AI coding
+assistant” were rejected by overly literal synonym oracles, while the 200%
+surrogate exposed a genuine 2px hit-area overlap from wrapped tabs with zero
+row gap and a 2px selection border. 1.9.30 remains failed. 1.9.31 calibrates
+bounded semantic alternatives and a static wrapped-control safety contract;
+public benchmark UX moves to 1.9.33 after a fresh 1.9.32 recovery.
+
 ## 2.0.0 frontier gates
 
 All must pass:

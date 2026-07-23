@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `2249736` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.29 external-evaluator authority calibration complete
+- 기준 커밋: `84272de` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.30 zero-browser recovery frozen as quality failure
 
 ## 지금 (현재 위치)
 
@@ -80,6 +80,12 @@
 - focused27/27, full217/1skip, TypeScript/build/JSON/diff green이다. provider generation 없는 `calibration_complete`로 fresh `/tmp/u1930` recovery를 연다.
 - 1.9.30은 `/tmp/u1930` fresh candidate-only recovery로 사전등록했다. exact Opus/xhigh, 900s, task/evaluator `b128aef`, gate `9df4eca`, zero-browser activation `2249736`, retry/resume/manual edit 0이다.
 - first write≤450s, direct browser exactly0, verifier0, final/valid, 85/85·critical6/6·locale click/roving/root-lang·terms/facts·4 geometry·Evidence·axe0를 모두 요구한다.
+- 1.9.30은 1/1 valid complete했다. exact Opus/xhigh, wall471,976ms, tokens105,886, first write366,818ms, final/product diff, browser0, verifier0, 모든 infra/sandbox/cwd0로 external-evaluator browser authority binding은 회복됐다.
+- frozen score는 78/85·critical4/6이라 `calibration_failed`다. click/roving/root-lang/handoff/facts/forbidden patterns/desktop·390·320/target/axe0/design/Evidence는 pass했다.
+- EN `project folder` 대 exact `repository`, JA `AI コーディングアシスタント` 대 exact `コーディングエージェント`는 자연스러운 의미 동등어를 거부한 evaluator ambiguity다.
+- 200% surrogate는 wrap flex `row-gap:0` + 2px selection border 때문에 두 tab row의 실제 hit rectangle이 정확히 2px 겹쳤다. detector 오차가 아니므로 geometry 실패를 유지한다.
+- 1.9.31은 bounded semantic-alternative oracle + missing-concept mutant와 static wrapped-control safety 계약만 보정한다. frozen artifact replay에서 terminology false negative만 제거하고 200% 실패는 유지해야 한다.
+- fresh provider recovery는 새 1.9.32와 `/tmp/u1932`에서만 가능하다. public benchmark UX는 1.9.33으로 이동한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -381,11 +387,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.30 preregistration을 clean commit으로 고정한다.
-2. fresh `/tmp/u1930` candidate를 exact Opus/xhigh로 실행하고 retry/resume하지 않는다.
-3. first write≤450s, verifier0, browser0, 85/85·all critical을 함께 판정한다.
-4. full recovery 뒤 1.9.31 public benchmark UX로 이동한다.
-5. 이후 1.9.32 activation/reuse → 1.9.33 independent challenge로 이동한다.
+1. 1.9.30 findings/summary를 clean commit으로 고정한다.
+2. 1.9.31 semantic-alternative oracle과 static wrapped-control safety 계약을 한 bounded calibration으로 구현한다.
+3. frozen 1.9.30 replay는 terminology false negative만 회복하고 200% overlap 실패를 유지하는지 검증한다.
+4. seeded invalid/missing-concept/unsafe-wrap mutation과 전체 test/build를 통과시킨다.
+5. fresh 1.9.32 recovery를 새 root에 사전등록한다. 이후 public UX 1.9.33 → activation/reuse 1.9.34 → independent challenge 1.9.35로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

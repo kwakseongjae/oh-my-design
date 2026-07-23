@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.30 process recovered, quality failed
+- valid exact Opus, browser0·verifier0·first write366.8s로 authority binding은 회복됐다.
+- frozen 78/85·critical4/6: EN/JA exact synonym oracle과 200% tab 2px overlap이 실패했다.
+- synonym은 evaluator ambiguity, overlap은 실제 hit-area 결함으로 분리했다.
+- 다음은 1.9.31 bounded oracle/wrap calibration → fresh 1.9.32 recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.30 zero-browser recovery preregistered
 - `/tmp/u1930` fresh OmD locale candidate, exact Opus/xhigh를 고정했다.
 - first write≤450s, direct browser0, verifier0, 85/85·critical6/6을 요구한다.
