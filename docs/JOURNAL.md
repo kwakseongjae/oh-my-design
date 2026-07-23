@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.23 locale smoke preregistered
+- source basis `07ac960`, exact Opus/xhigh, one task×two systems을 고정했다.
+- Raw DESIGN.md와 locale-adapter→humanize만 비교하며 다른 조건은 동일하다.
+- candidate 6 critical gate·fact/term preservation·unsupported 0·axe 0을 요구한다.
+- 다음은 clean commit → `/tmp/u1923` fresh prepare/preflight/execution이다.
+
 ## 2026-07-23 (Codex) · 1.9.23 locale evaluator calibrated
 - 5-locale command/fact/terminology/journey oracle와 Chrome adapter를 추가했다.
 - valid fixture는 85/85·critical 6/6, seeded mutant는 63/85로 4개 gate를 실패했다.

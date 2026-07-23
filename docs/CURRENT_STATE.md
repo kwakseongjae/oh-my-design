@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `c063a2d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.23 locale/evidence evaluator calibrated
+- 갱신: 2026-07-23 · 1.9.23 locale/evidence smoke preregistered
 
 ## 지금 (현재 위치)
 
@@ -41,7 +41,8 @@
 - 1.9.23 첫 task `locale-cli-handoff-v0.1`은 KO/EN/JA/ZH-CN/ZH-TW 5개 locale, 동일 command·12/3·DESIGN.md 보존, 독립 용어, one-panel/tab/copy journey, 320/390/200%/1440 geometry, Evidence & Unknown을 함께 고정한다.
 - evaluator의 `locale-switch-v1` adapter와 locale oracle을 추가했다. valid fixture는 실제 Chrome에서 85/85·critical 6/6·axe serious/critical 0, seeded starter mutant는 63/85로 content/responsive/accessibility/evidence gate를 정확히 실패했다.
 - `omd-locale-handoff` variant는 `$omd:locale-adapter` 뒤 `$omd:humanize` VERIFY를 실행하는 reviewed two-skill stack이며 installer/hook/agent/network 없이 동일 sandbox에 두 skill을 설치한다.
-- 다음은 이 calibration source를 커밋한 뒤 exact Opus/xhigh raw DESIGN.md vs locale handoff 2-cell smoke를 사전등록·fresh 실행한다. smoke는 실행 경로와 방향성만 판정하며 public locale lift나 frontier claim을 만들지 않는다.
+- calibration source는 `07ac960`으로 커밋했다. 전체 214 pass/1 conditional skip, TypeScript, Node syntax, diff가 green이다.
+- exact Opus/xhigh raw DESIGN.md vs locale handoff 2-cell smoke를 `/tmp/u1923` fresh root로 사전등록했다. retry·resume·수동개입이 없고, candidate 6 critical gate·5-locale protected fact/terminology·unsupported claim 0·axe serious/critical 0·control 이상 점수만 calibration complete다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -343,9 +344,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.23 evaluator/task/locale-skill-stack source를 full regression 후 커밋한다.
-2. exact Opus/xhigh raw DESIGN.md vs `omd-locale-handoff` 2-cell smoke를 사전등록한다.
-3. fresh root를 준비해 retry·resume 없이 실행하고 locale/content/responsive/a11y/evidence 결과를 동결한다.
+1. 1.9.23 preregistration·matrix·continuity를 검증하고 커밋한다.
+2. `/tmp/u1923` fresh root를 준비하고 exact Opus 4.8 auth/model preflight를 확인한다.
+3. 2셀을 retry·resume 없이 실행하고 locale/content/responsive/a11y/evidence 결과를 동결한다.
 4. 통과 시 multi-task repeated locale matrix를 사전등록하고 negative locale slice·unsupported fact 0을 판정한다.
 5. 이후 1.9.24 public benchmark UX → 1.9.25 activation/reuse → 1.9.26 independent challenge로 이동한다.
 

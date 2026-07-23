@@ -79,6 +79,19 @@ promoted. The confidence interval still includes zero and the slice remains
 three tasks × three trials, so this is not a public frontier or best-skill
 claim. The next bounded lane is 1.9.23 locale and evidence expansion.
 
+## Current 1.9.23 locale checkpoint
+
+The first five-locale task and evaluator are calibrated. A known-good
+implementation passes 85/85 with all six critical gates; the seeded starter
+scores 63/85 and fails the intended locale-content, responsive, accessibility,
+and unsupported-claim checks.
+
+A two-cell exact Opus/xhigh smoke is preregistered: Raw DESIGN.md versus the
+reviewed `omd:locale-adapter` → `omd:humanize` stack. The only candidate delta
+is those two locally installed skills and their sequential activation. A full
+pass only validates the execution path and unlocks a repeated locale matrix;
+it cannot support a public best-skill or general locale-lift claim.
+
 ## 2.0.0 frontier gates
 
 All must pass:
