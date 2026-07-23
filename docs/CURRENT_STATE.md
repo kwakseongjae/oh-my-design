@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `b128aef` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.26 quality pass / direct-browser authority failed
+- 기준 커밋: `9df4eca` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.27 direct-browser authority calibration complete
 
 ## 지금 (현재 위치)
 
@@ -64,6 +64,10 @@
 - 단일 관측 candidate는 Raw 대비 wall 0.600×, uncached tokens 0.723×, first write 0.881×지만 efficiency 추정이 아니다. exact Opus, final, product diff, infra/sandbox/cwd0는 양쪽 모두 충족했다.
 - candidate가 허용된 direct browser 1회를 넘어 headless Chrome을 2회 호출했다. 첫 call은 no output, 두 번째는 Crashpad/ProcessSingleton block이며 pipeline exit0라 기존 runner가 잡지 못했다. 따라서 85/85는 forensic quality evidence이고 1.9.26은 `calibration_failed`로 동결한다.
 - 1.9.27은 실제 direct headless-browser invocation을 Bash tool-use에서 세고 variant-kind별 max gate로 fail-closed하는 classifier calibration이다. retained candidate count2 replay와 0/1/2 mutation test 뒤 fresh 1.9.28 recovery만 연다. public UX는 1.9.29로 이동한다.
+- 1.9.27 source `9df4eca`은 Bash tool-use의 실제 `--headless` Chrome/Chromium invocation을 exit flag와 독립적으로 센다. `ls`/`which` discovery는 0, 한 call 안의 복수 invocation도 각각 센다.
+- `max_direct_browser_commands`를 preregistered variant kind에만 적용하고 초과 시 `direct-browser-command-budget-exceeded`로 fail-closed한다. matrix summary에도 count를 보존한다.
+- 0/1/2 mutation은 0 pass/1 pass/2 fail, retained 1.9.26 candidate는 count2·same stop reason을 재현했다. focused13/13, full217/1skip, TypeScript/build/syntax/diff green이다.
+- 1.9.27은 provider generation 없는 `calibration_complete`이며 `/tmp/u1926`은 그대로 실패다. 다음은 fresh `/tmp/u1928` candidate-only locale recovery다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -365,11 +369,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.26 findings/summary를 검증하고 commit한다.
-2. direct-browser invocation counter와 `max_direct_browser_commands` gate를 runner에 추가한다.
-3. 0/1/2-call mutation test와 retained 1.9.26 replay count2 fail을 검증한다.
-4. 1.9.27 classifier calibration을 고정한 뒤 fresh 1.9.28 candidate recovery를 사전등록한다.
-5. 이후 1.9.29 public UX → 1.9.30 activation/reuse → 1.9.31 independent challenge로 이동한다.
+1. 1.9.27 findings/summary를 clean commit으로 고정한다.
+2. fresh `/tmp/u1928` candidate-only locale recovery를 exact Opus/xhigh로 사전등록한다.
+3. max direct browser1, first write≤450s, verifier0, 85/85·all critical을 함께 강제한다.
+4. 결과를 고정한 뒤 1.9.29 public benchmark UX로 이동한다.
+5. 이후 1.9.30 activation/reuse → 1.9.31 independent challenge로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

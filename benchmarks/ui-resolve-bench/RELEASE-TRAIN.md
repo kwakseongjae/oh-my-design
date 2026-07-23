@@ -138,6 +138,13 @@ failure, and its 85/85 is forensic quality evidence only. 1.9.27 adds and
 calibrates the missing direct-browser authority gate; public benchmark UX moves
 to 1.9.29 after a fresh 1.9.28 candidate recovery.
 
+1.9.27 now counts actual headless Chrome/Chromium Bash invocations regardless
+of shell-result error flags, while browser discovery remains count zero. The
+retained 1.9.26 candidate deterministically replays as count 2 and fails at the
+frozen maximum of 1. Focused 0/1/2-call mutations and the full suite pass. This
+classifier-only calibration generated no provider output and unlocks a fresh
+candidate recovery as 1.9.28.
+
 ## 2.0.0 frontier gates
 
 All must pass:

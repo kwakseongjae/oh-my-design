@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.27 browser authority calibrated
+- actual headless invocation counter와 max gate를 runner에 추가했다.
+- discovery0/one1/two2 mutation, retained 1.9.26 count2 fail이 통과했다.
+- focused13/13, full217/1skip, TypeScript/build/syntax/diff가 green이다.
+- 다음은 `/tmp/u1928` fresh candidate-only locale recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.26 quality pass, authority failed
 - Raw 83/85(200% overlap), OmD forensic 85/85·first write313.8s·verifier0다.
 - OmD는 wall0.600×·tokens0.723×였지만 direct Chrome을 허용1회보다 많은 2회 호출했다.
