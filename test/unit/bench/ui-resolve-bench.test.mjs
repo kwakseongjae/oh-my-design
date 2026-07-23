@@ -282,6 +282,15 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(competitors.variants["omd-locale-handoff"].activation).toContain(
       "CDP/browser automation",
     );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "Do not run Chrome, Chromium, Playwright, browser-harness",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).toContain(
+      "external evaluator is the only browser acceptance authority",
+    );
+    expect(competitors.variants["omd-locale-handoff"].activation).not.toContain(
+      "one direct browser command",
+    );
     expect(competitors.variants["omd-repair-harness"]).toMatchObject({
       kind: "agent-harness",
       declared_name: "omd:apply",

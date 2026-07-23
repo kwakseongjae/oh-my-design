@@ -297,6 +297,15 @@ describe("UI-Resolve prepared matrix execution", () => {
       gates,
       [invocation("2>/dev/null"), invocation("2>&1")],
     )).toBe("direct-browser-command-budget-exceeded");
+
+    const zeroGate = { ...gates, max_direct_browser_commands: 0 };
+    expect(harnessDeliveryStopReason(localeManifest, run, zeroGate, [])).toBeNull();
+    expect(harnessDeliveryStopReason(
+      localeManifest,
+      run,
+      zeroGate,
+      [invocation("2>/dev/null")],
+    )).toBe("direct-browser-command-budget-exceeded");
   });
 
   it("fails closed when replacement-verifier authorship is observed", () => {
