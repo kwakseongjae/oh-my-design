@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `9df4eca` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.28 stopped by browser authority gate
+- 기준 커밋: `2249736` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.29 external-evaluator authority calibration complete
 
 ## 지금 (현재 위치)
 
@@ -74,6 +74,10 @@
 - runner가 `direct-browser-command-budget-exceeded`로 evaluator/export 전에 자동 stop했다. `/tmp/u1928`은 1 attempted / 0 complete이며 resume/retry/post-stop score를 금지한다.
 - 1.9.26과 동일하게 silent first call 뒤 5.7s 후 diagnostic retry가 반복됐다. one-call allowance는 안정적으로 bind되지 않으며 external evaluator가 이미 browser acceptance를 소유한다.
 - 1.9.29는 locale benchmark activation에서 provider browser authority를 0으로 만들고 Chrome/Chromium/Playwright/browser-harness/screenshot/renderer를 금지한다. max direct browser0 classifier test 뒤 fresh 1.9.30 recovery만 연다. public UX는 1.9.31로 이동한다.
+- 1.9.29 source `2249736`은 locale benchmark provider의 Chrome/Chromium/Playwright/browser-harness/screenshot/qlmanage/renderer 권한을 제거하고 external evaluator를 유일한 browser acceptance authority로 정한다.
+- skills는 static source + protected facts/terminology/register/repetition만 VERIFY하며 browser proof는 시도 없이 unresolved로 둔다. canonical production skills의 real-route inspection 능력은 변경하지 않았다.
+- max0 mutation은 count0 pass/count1 fail이고 기존 max1 0/1/2도 pass/pass/fail이다. clean `/tmp/u1929-activation-proof`에서 manifest/prompt activation exact, source publishable을 확인했다.
+- focused27/27, full217/1skip, TypeScript/build/JSON/diff green이다. provider generation 없는 `calibration_complete`로 fresh `/tmp/u1930` recovery를 연다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -375,9 +379,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.28 findings/summary를 clean commit으로 고정한다.
-2. locale benchmark activation에서 provider browser authority를 제거하고 max0 gate test를 추가한다.
-3. 1.9.29 classifier/activation calibration을 고정한 뒤 fresh 1.9.30 recovery를 사전등록한다.
+1. 1.9.29 findings/summary를 clean commit으로 고정한다.
+2. fresh `/tmp/u1930` candidate recovery를 exact Opus/xhigh, max browser0로 사전등록한다.
+3. first write≤450s, verifier0, browser0, 85/85·all critical을 함께 판정한다.
 4. full recovery 뒤 1.9.31 public benchmark UX로 이동한다.
 5. 이후 1.9.32 activation/reuse → 1.9.33 independent challenge로 이동한다.
 

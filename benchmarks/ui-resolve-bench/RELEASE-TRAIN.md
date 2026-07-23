@@ -153,6 +153,14 @@ owns browser acceptance, 1.9.29 removes provider browser authority from this
 locale benchmark track and freezes the maximum at zero. A new candidate
 recovery moves to 1.9.30; public benchmark UX moves to 1.9.31.
 
+1.9.29 now forbids all provider Chrome, Chromium, Playwright, browser-harness,
+screenshot, and renderer commands in the locale benchmark activation. Static
+content verification stays with the installed language skills; geometry,
+keyboard, language-state, axe, and rendered-journey proof stay with the
+external evaluator. A clean prepared sandbox and max-zero mutation tests pass.
+This benchmark-only calibration changes no general production skill authority
+and unlocks a fresh 1.9.30 candidate recovery.
+
 ## 2.0.0 frontier gates
 
 All must pass:

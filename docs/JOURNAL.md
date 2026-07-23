@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.29 external evaluator authority
+- locale benchmark provider browser authority를 0으로 바꾸고 external evaluator로 일원화했다.
+- canonical skills는 그대로이며 benchmark activation만 static/content VERIFY로 제한한다.
+- focused27/27, full217/1skip, build/type/JSON/diff와 clean activation proof가 green이다.
+- 다음은 `/tmp/u1930` fresh max0 locale recovery다.
+
 ## 2026-07-23 (Codex) · 1.9.28 stopped at browser budget
 - provider exit0·first write338.9s·final·verifier0지만 direct Chrome count2다.
 - 새 runner가 evaluator/export 전에 자동 stop했고 `/tmp/u1928`은 unscored frozen이다.
