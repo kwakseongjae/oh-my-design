@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.32 wrapped-control recovery preregistered
+- `/tmp/u1932` fresh OmD locale candidate, exact Opus/xhigh를 고정했다.
+- task0.3.0, first write≤450s, browser0, verifier0, 85/85·critical6/6을 요구한다.
+- 200% no-overlap과 five-locale/facts/Evidence를 함께 판정하고 retry/resume하지 않는다.
+- 다음은 clean commit → preflight → fresh candidate 실행이다.
+
 ## 2026-07-23 (Codex) · 1.9.31 locale concept/wrap calibration
 - bounded EN/JA 동등어는 통과하고 missing-concept mutation은 계속 실패한다.
 - frozen 1.9.30 replay는 83/85로 terminology만 회복, 200% overlap은 유지됐다.
