@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.36 scroll-focus recovery preregistered
+- `/tmp/u1936` fresh candidate, exact Opus/xhigh, task0.5/evaluator0.4를 고정했다.
+- first write≤450s, browser0, verifier0, 85/85·clipboard·geometry·scroll focus·axe0가 gate다.
+- retry/resume/manual edit 없이 실패 시 그대로 freeze한다.
+- 다음은 clean commit → preflight → fresh 1셀 실행이다.
+
 ## 2026-07-23 (Codex) · 1.9.35 scroll-focus calibration complete
 - task0.5는 useful overflow region의 focus target·visible focus를 요구하고 불필요한 Tab stop은 금지한다.
 - unchanged 1.9.34 replay는79/85 fail, minimal focus control은85/85·axe0·keyboard pass다.

@@ -220,6 +220,13 @@ minimal focus-control copy scores 85/85 with axe serious/critical zero and
 complete keyboard traversal at all four viewports. This provider-free
 calibration unlocks a fresh 1.9.36 recovery in a new root.
 
+1.9.36 is preregistered as one fresh candidate-only exact-Opus/xhigh recovery
+under task `0.5.0` and evaluator schema `0.4`. The new root is `/tmp/u1936`;
+retry, resume, manual product edits, provider browser commands, and replacement
+verifiers remain forbidden. Promotion requires 85/85, all six critical gates,
+exact Clipboard API handoff, all four geometry profiles, visible keyboard
+focus for every useful scroll region, and axe serious/critical zero.
+
 ## 2.0.0 frontier gates
 
 All must pass:

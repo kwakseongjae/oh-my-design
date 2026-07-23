@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `a20076e` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.35 scrollable-region focus calibration complete
+- 기준 커밋: `4efa549` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.36 locale scroll-focus recovery preregistered
 
 ## 지금 (현재 위치)
 
@@ -114,6 +114,8 @@
 - unchanged 1.9.34 replay는 79/85·a11y fail을 재현했고, command code에 `tabindex=0`+focus-visible만 더한 control은 85/85·critical6/6·4 viewport axe0·keyboard pass다.
 - focused14/14, full217/1skip, TypeScript/build/syntax/JSON/diff, clean publishable activation이 green이다. 1.9.35는 provider generation 없는 `calibration_complete`다.
 - 다음은 `/tmp/u1936` fresh exact Opus/xhigh candidate recovery이며 task0.5/evaluator0.4/browser0/verifier0/85·critical6/6을 다시 요구한다.
+- 1.9.36은 `/tmp/u1936` fresh candidate 1셀로 사전등록했다. exact `claude-opus-4-8`/xhigh, task0.5/evaluator0.4, 900s, retry/resume/manual edit 0이다.
+- first write≤450s, browser exactly0, verifier0, final/valid, 85/85·critical6/6·actual clipboard/status·4 geometry·useful scroll focus·axe0를 모두 요구한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -415,9 +417,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.35 findings/summary와 continuity를 clean commit으로 고정한다.
-2. fresh 1.9.36 recovery를 새 root `/tmp/u1936`에 사전등록한다.
-3. exact Opus/xhigh preflight 뒤 retry/resume 없이 candidate 1셀을 실행한다.
+1. 1.9.36 preregistration을 clean commit으로 고정한다.
+2. exact Opus/xhigh preflight 뒤 retry/resume 없이 candidate 1셀을 실행한다.
+3. 결과를 freeze하고 findings/summary를 기록한다.
 4. pass면 locale repeated matrix 또는 minimum public benchmark UX evidence contract를 결정한다.
 5. 이후 public UX 1.9.37 → activation/reuse 1.9.38 → independent challenge 1.9.39로 이동한다.
 
