@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `c063a2d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.24 locale delivery-authority recovery source ready
+- 갱신: 2026-07-23 · 1.9.24 locale delivery-authority recovery preregistered
 
 ## 지금 (현재 위치)
 
@@ -49,6 +49,8 @@
 - binding failure는 locale `VERIFY`의 권한과 delivery clock 부재다. 1.9.24는 skill linguistic rule/task/evaluator를 바꾸지 않고 verifier 금지, browser mechanism 1회, optional stop 720s, final begin 810s를 activation에 추가한 fresh candidate recovery다.
 - 1.9.24 source patch는 `VERIFY`를 protected fact/locale terminology/register/repetition 대조로 제한하고 verification software 권한을 명시적으로 제거했다. first edit<450s, optional verification≤720s, final begin<810s와 repo-existing check 또는 program을 쓰지 않는 direct browser 1회만 허용한다.
 - delivery gate는 기존 agent-harness 기본 동작을 보존하면서 preregistered `variant_kinds`가 있을 때 `locale-skill-stack`에도 first-write/replacement-verifier fail-closed를 적용한다. focused 30/30이 green이다.
+- recovery source는 `c572cd7`로 커밋했다. 전체 215 pass/1 conditional skip, TypeScript, Node syntax, diff가 green이다.
+- `/tmp/u1924` fresh candidate 1셀을 exact Opus/xhigh로 사전등록했다. first write≤450s, verifier 0, final+valid, 85/85·critical 6/6·locale terms/facts·Evidence·axe 0만 calibration complete다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -350,9 +352,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.24 source patch를 full regression하고 커밋한다.
-2. fresh candidate recovery를 source basis와 함께 사전등록한다.
-3. `/tmp/u1924`에서 retry 없이 실행하고 85/85·critical 6/6·verifier 0을 판정한다.
+1. 1.9.24 preregistration/matrix를 검증하고 커밋한다.
+2. `/tmp/u1924` fresh root 준비와 exact Opus auth/model preflight를 확인한다.
+3. candidate 1셀을 retry 없이 실행하고 85/85·critical 6/6·verifier 0을 판정한다.
 4. 통과 시 multi-task repeated locale matrix를 사전등록하고 negative locale slice·unsupported fact 0을 판정한다.
 5. 이후 1.9.25 public benchmark UX → 1.9.26 activation/reuse → 1.9.27 independent challenge로 이동한다.
 

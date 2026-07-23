@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.24 locale recovery preregistered
+- task/evaluator `07ac960`, recovery source `c572cd7`, exact Opus/xhigh를 고정했다.
+- `/tmp/u1924` fresh candidate 1셀, first write≤450s, verifier 0을 요구한다.
+- 85/85·critical 6/6·locale facts/terms·Evidence·axe 0만 recovery pass다.
+- 다음은 clean commit → prepare/preflight → retry 없는 단일 recovery 실행이다.
+
 ## 2026-07-23 (Codex) · 1.9.24 locale recovery source
 - locale VERIFY를 content comparison으로 제한하고 verification software 권한을 제거했다.
 - first edit<450s, verification≤720s, final<810s와 browser mechanism 1회를 고정했다.
