@@ -227,6 +227,14 @@ verifiers remain forbidden. Promotion requires 85/85, all six critical gates,
 exact Clipboard API handoff, all four geometry profiles, visible keyboard
 focus for every useful scroll region, and axe serious/critical zero.
 
+The fresh 1.9.36 candidate passed that contract at 85/85 with all six critical
+gates. It completed in 476.3 seconds, made its first product write at 404.5
+seconds, used zero provider browser commands, authored no replacement
+verifier, copied the exact command in all five locales, and reached axe
+serious/critical zero plus complete keyboard traversal at all four viewports.
+This closes a single execution-path calibration only. 1.9.37 defines the
+minimum honest public benchmark UX evidence contract before any run is exposed.
+
 ## 2.0.0 frontier gates
 
 All must pass:

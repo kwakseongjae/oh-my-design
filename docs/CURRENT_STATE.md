@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `4efa549` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.36 locale scroll-focus recovery preregistered
+- 기준 커밋: `9675fe4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.36 locale scroll-focus recovery passed
 
 ## 지금 (현재 위치)
 
@@ -116,6 +116,10 @@
 - 다음은 `/tmp/u1936` fresh exact Opus/xhigh candidate recovery이며 task0.5/evaluator0.4/browser0/verifier0/85·critical6/6을 다시 요구한다.
 - 1.9.36은 `/tmp/u1936` fresh candidate 1셀로 사전등록했다. exact `claude-opus-4-8`/xhigh, task0.5/evaluator0.4, 900s, retry/resume/manual edit 0이다.
 - first write≤450s, browser exactly0, verifier0, final/valid, 85/85·critical6/6·actual clipboard/status·4 geometry·useful scroll focus·axe0를 모두 요구한다.
+- 1.9.36은 1/1 valid complete, 85/85·UI-Resolved·critical6/6이다. wall476,284ms, tokens108,075, first/last write404,471ms, browser0, verifier0, final/product diff, 모든 error0다.
+- actual clipboard/status 5/5, locale click/roving/root-lang, bounded concepts/facts, 4 geometry, keyboard focus/traversal, axe serious/critical0, design, Evidence가 전부 pass했다.
+- `/tmp/u1936`은 frozen이며 retry/resume/manual edit하지 않는다. 이 결과는 single-path calibration일 뿐 locale lift/model/skill/efficiency/frontier claim이 아니다.
+- 다음 bounded patch는 1.9.37 minimum public benchmark UX evidence contract다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -417,11 +421,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.36 preregistration을 clean commit으로 고정한다.
-2. exact Opus/xhigh preflight 뒤 retry/resume 없이 candidate 1셀을 실행한다.
-3. 결과를 freeze하고 findings/summary를 기록한다.
-4. pass면 locale repeated matrix 또는 minimum public benchmark UX evidence contract를 결정한다.
-5. 이후 public UX 1.9.37 → activation/reuse 1.9.38 → independent challenge 1.9.39로 이동한다.
+1. 1.9.36 findings/summary와 continuity를 clean commit으로 고정한다.
+2. 1.9.37에서 public benchmark page가 요구할 minimum evidence/status/failure/uncertainty contract를 정의한다.
+3. 현재 web benchmark surface와 run-record/export schema의 gap을 감사한다.
+4. smallest public UX slice를 구현하고 local browser acceptance한다.
+5. 이후 activation/reuse 1.9.38 → independent challenge 1.9.39로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

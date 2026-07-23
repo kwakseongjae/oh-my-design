@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.36 locale scroll-focus recovery passed
+- fresh exact Opus/xhigh가476.3s에85/85·critical6/6으로 완료됐다.
+- first write404.5s, browser0, verifier0, error0이며 clipboard·4 geometry·keyboard·axe0가 pass했다.
+- `/tmp/u1936`은 frozen이고 single-path calibration 외 claim은 금지한다.
+- 다음은 1.9.37 minimum public benchmark UX evidence contract다.
+
 ## 2026-07-23 (Codex) · 1.9.36 scroll-focus recovery preregistered
 - `/tmp/u1936` fresh candidate, exact Opus/xhigh, task0.5/evaluator0.4를 고정했다.
 - first write≤450s, browser0, verifier0, 85/85·clipboard·geometry·scroll focus·axe0가 gate다.
