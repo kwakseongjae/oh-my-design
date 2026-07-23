@@ -272,11 +272,48 @@ export function summarizeClaudeToolErrors(events = []) {
     return tool?.name === "Bash" && isRenderer && isEnvironmentBlock;
   });
   const optionalRendererItems = new Set(optionalRendererErrors.map(({ item }) => item));
+  // Claude's strict sandbox exposes a writable per-run TMPDIR, but models may
+  // occasionally try a simple literal `/tmp/file` first and immediately repeat
+  // the same scratch operation under `$TMPDIR`. Treat only that fully observed
+  // recovery as recoverable:
+  // - Bash (never a built-in file tool)
+  // - a direct-child `/tmp/<simple-name>` permission failure
+  // - a later successful Bash call that references the same basename and TMPDIR
+  // - a successful provider result
+  //
+  // Arbitrary paths, cwd bookkeeping failures, built-in permission denials,
+  // unrecovered attempts, and runs without a successful final result remain
+  // infrastructure failures.
+  const providerCompletedSuccessfully = events.some((event) => (
+    event?.type === "result"
+    && event?.subtype === "success"
+    && event?.is_error === false
+  ));
+  const recoveredTempPathItems = new Set();
+  if (providerCompletedSuccessfully) {
+    toolResults.forEach(({ item, tool }, index) => {
+      if (item?.is_error !== true || tool?.name !== "Bash") return;
+      const content = String(item?.content ?? "");
+      const command = String(tool?.input?.command ?? "");
+      const match = content.match(
+        /(?:PermissionError:[^\n]*|operation not permitted:)\s*['"]?(\/tmp\/([A-Za-z0-9][A-Za-z0-9._-]{0,127}))(?![\/A-Za-z0-9._-])['"]?/i,
+      );
+      if (!match || !command.includes(match[1])) return;
+      const basename = match[2];
+      const recovered = toolResults.slice(index + 1).some(({ item: laterItem, tool: laterTool }) => {
+        if (laterItem?.is_error === true || laterTool?.name !== "Bash") return false;
+        const laterCommand = String(laterTool?.input?.command ?? "");
+        return laterCommand.includes(basename) && /\bTMPDIR\b/.test(laterCommand);
+      });
+      if (recovered) recoveredTempPathItems.add(item);
+    });
+  }
   const sandboxCwdErrors = toolErrors.filter(({ item }) => (
     /operation not permitted:\s+\S*\/cwd-[\w-]+/i.test(String(item?.content ?? ""))
   ));
   const sandboxErrors = toolErrors.filter(({ item }) => (
     !optionalRendererItems.has(item) &&
+    !recoveredTempPathItems.has(item) &&
     /\b(?:EPERM|operation not permitted)\b|requested permissions to (?:read from|write to)|permission to use (?:Read|Edit|Write|Glob|Grep|Bash) has been denied/i
       .test(String(item?.content ?? ""))
   ));
@@ -290,6 +327,7 @@ export function summarizeClaudeToolErrors(events = []) {
     recoverable_tool_error_count: toolErrors.length - infrastructureToolErrors.length,
     infrastructure_tool_error_count: infrastructureToolErrors.length,
     optional_verifier_environment_error_count: optionalRendererErrors.length,
+    recovered_temp_path_error_count: recoveredTempPathItems.size,
     sandbox_error_count: sandboxErrors.length,
     sandbox_cwd_error_count: sandboxCwdErrors.length,
   };

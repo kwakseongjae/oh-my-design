@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "harness-efficiency-replacement-1.9.20",
+  "status": "calibration_failed",
+  "stop_reason": "process-failure",
+  "binding_failure": "recovered-literal-tmp-denial-misclassified-as-infrastructure",
+  "output_root": "/tmp/u1920",
+  "scheduled_cells": 18,
+  "attempted_cells": 1,
+  "valid_complete_cells": 0,
+  "stopped_cells": 1,
+  "not_started_cells": 17,
+  "retry_or_resume_allowed": false,
+  "stopped_cell": "pricing-t1-portable",
+  "provider_forensics": {
+    "child_exit_code": 0,
+    "result_subtype": "success",
+    "final_message_present": true,
+    "exact_model": "claude-opus-4-8",
+    "first_product_write_ms": 353011,
+    "wall_time_ms": 461139,
+    "uncached_tokens": 94296,
+    "product_changed_files": [
+      "index.html"
+    ]
+  },
+  "original_classifier": {
+    "tool_errors": 1,
+    "recoverable_tool_errors": 0,
+    "infrastructure_tool_errors": 1,
+    "sandbox_errors": 1
+  },
+  "post_stop_frozen_evaluator": {
+    "forensic_only": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "critical_gates_passed": 6,
+    "critical_gates_total": 6,
+    "evidence_and_unknown_pass": true,
+    "axe_serious_or_critical": 0
+  },
+  "promotion_decision": "rejected_incomplete_matrix"
+}

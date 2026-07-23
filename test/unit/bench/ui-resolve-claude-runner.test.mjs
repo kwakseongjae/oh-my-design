@@ -201,6 +201,7 @@ describe("Claude print runner preflight", () => {
       recoverable_tool_error_count: 1,
       infrastructure_tool_error_count: 1,
       optional_verifier_environment_error_count: 0,
+      recovered_temp_path_error_count: 0,
       sandbox_error_count: 1,
       sandbox_cwd_error_count: 1,
     });
@@ -221,6 +222,7 @@ describe("Claude print runner preflight", () => {
       recoverable_tool_error_count: 0,
       infrastructure_tool_error_count: 1,
       optional_verifier_environment_error_count: 0,
+      recovered_temp_path_error_count: 0,
       sandbox_error_count: 1,
       sandbox_cwd_error_count: 0,
     });
@@ -252,6 +254,7 @@ describe("Claude print runner preflight", () => {
       recoverable_tool_error_count: 1,
       infrastructure_tool_error_count: 0,
       optional_verifier_environment_error_count: 1,
+      recovered_temp_path_error_count: 0,
       sandbox_error_count: 0,
       sandbox_cwd_error_count: 0,
     });
@@ -285,7 +288,106 @@ describe("Claude print runner preflight", () => {
       recoverable_tool_error_count: 0,
       infrastructure_tool_error_count: 0,
       optional_verifier_environment_error_count: 1,
+      recovered_temp_path_error_count: 0,
       sandbox_error_count: 0,
+      sandbox_cwd_error_count: 0,
+    });
+  });
+
+  it("keeps a literal /tmp scratch denial recoverable only after a successful TMPDIR fallback", () => {
+    expect(summarizeClaudeToolErrors([{
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          id: "tool-literal-tmp",
+          name: "Bash",
+          input: {
+            command: "python3 -c \"open('/tmp/relay_check.js','w').write('ok')\"",
+          },
+        }],
+      },
+    }, {
+      type: "user",
+      message: {
+        content: [{
+          type: "tool_result",
+          tool_use_id: "tool-literal-tmp",
+          is_error: true,
+          content: "PermissionError: [Errno 1] Operation not permitted: '/tmp/relay_check.js'",
+        }],
+      },
+    }, {
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          id: "tool-tmpdir-fallback",
+          name: "Bash",
+          input: {
+            command: "python3 -c \"import os; open(os.path.join(os.environ['TMPDIR'],'relay_check.js'),'w').write('ok')\"",
+          },
+        }],
+      },
+    }, {
+      type: "user",
+      message: {
+        content: [{
+          type: "tool_result",
+          tool_use_id: "tool-tmpdir-fallback",
+          is_error: false,
+          content: "/private/tmp/run/.t/relay_check.js",
+        }],
+      },
+    }, {
+      type: "result",
+      subtype: "success",
+      is_error: false,
+    }])).toEqual({
+      tool_error_count: 1,
+      recoverable_tool_error_count: 1,
+      infrastructure_tool_error_count: 0,
+      optional_verifier_environment_error_count: 0,
+      recovered_temp_path_error_count: 1,
+      sandbox_error_count: 0,
+      sandbox_cwd_error_count: 0,
+    });
+  });
+
+  it("keeps an unrecovered literal /tmp denial fail-closed", () => {
+    expect(summarizeClaudeToolErrors([{
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          id: "tool-literal-tmp",
+          name: "Bash",
+          input: {
+            command: "python3 -c \"open('/tmp/relay_check.js','w').write('ok')\"",
+          },
+        }],
+      },
+    }, {
+      type: "user",
+      message: {
+        content: [{
+          type: "tool_result",
+          tool_use_id: "tool-literal-tmp",
+          is_error: true,
+          content: "PermissionError: [Errno 1] Operation not permitted: '/tmp/relay_check.js'",
+        }],
+      },
+    }, {
+      type: "result",
+      subtype: "success",
+      is_error: false,
+    }])).toEqual({
+      tool_error_count: 1,
+      recoverable_tool_error_count: 0,
+      infrastructure_tool_error_count: 1,
+      optional_verifier_environment_error_count: 0,
+      recovered_temp_path_error_count: 0,
+      sandbox_error_count: 1,
       sandbox_cwd_error_count: 0,
     });
   });

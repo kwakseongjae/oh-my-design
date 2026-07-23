@@ -27,11 +27,13 @@
     { "version": "1.9.17", "experiment": "harness-efficiency-replacement-4", "status": "calibration_failed" },
     { "version": "1.9.18", "experiment": "advisory-to-edit-recovery", "status": "calibration_complete" },
     { "version": "1.9.19", "experiment": "harness-efficiency-replacement-5", "status": "interrupted" },
-    { "version": "1.9.20", "experiment": "harness-efficiency-replacement-6", "status": "preregistered" },
-    { "version": "1.9.21", "experiment": "locale-evidence-expansion", "status": "planned" },
-    { "version": "1.9.22", "experiment": "public-benchmark-ux", "status": "planned" },
-    { "version": "1.9.23", "experiment": "activation-reuse", "status": "planned" },
-    { "version": "1.9.24", "experiment": "independent-challenge", "status": "planned" },
+    { "version": "1.9.20", "experiment": "harness-efficiency-replacement-6", "status": "calibration_failed" },
+    { "version": "1.9.21", "experiment": "sandbox-scratch-recovery", "status": "calibration_complete" },
+    { "version": "1.9.22", "experiment": "harness-efficiency-replacement-7", "status": "planned" },
+    { "version": "1.9.23", "experiment": "locale-evidence-expansion", "status": "planned" },
+    { "version": "1.9.24", "experiment": "public-benchmark-ux", "status": "planned" },
+    { "version": "1.9.25", "experiment": "activation-reuse", "status": "planned" },
+    { "version": "1.9.26", "experiment": "independent-challenge", "status": "planned" },
     { "version": "2.0.0", "experiment": "frontier-release", "status": "gated" }
   ],
   "rules": {

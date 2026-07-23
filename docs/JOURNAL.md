@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.21 recovered scratch-path classifier calibrated
+- 1.9.20은 첫 셀의 recovered literal `/tmp` denial 오분류로 0 valid에서 stop했다.
+- provider/product는 success였고 post-stop frozen evaluator는 forensic 85/85다.
+- same-basename `$TMPDIR` recovery+provider success가 모두 있을 때만 recoverable로 좁혔다.
+- full 211 pass/1 skip·lint/build green; 다음은 fresh 1.9.22 `/tmp/u1922`다.
+
 ## 2026-07-23 (Codex) · 1.9.20 fresh replacement preregistered
 - 사용자 중단된 1.9.19를 재개하지 않고 `/tmp/u1920` 18 fresh cells를 새로 고정했다.
 - source/system/evaluator delta는 없고 1.9.19 결과는 새 denominator에 포함하지 않는다.

@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `09f3aa4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.20 fresh full replacement preregistered
+- 기준 커밋: `72e27a7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.21 recovered scratch-path classifier calibrated
 
 ## 지금 (현재 위치)
 
@@ -25,6 +25,11 @@
 - 재개는 source 변경 없이 새 1.9.20 preregistration과 `/tmp/u1920` 18 fresh cells로 처음부터 수행한다. 1.9.19 결과는 새 denominator에 합치지 않는다.
 - 1.9.20은 1.9.19의 operational replacement로 사전등록했다. product/skill/agent/evaluator/gate delta는 없고 `/tmp/u1920`의 18 fresh cells만 새 denominator다.
 - exact Opus/xhigh, 3 tasks×3 trials×portable/harness, first write≤450s, last advisory→targeted Edit≤90s, serious/critical axe 0, verifier 0, retry 0을 동일하게 고정했다.
+- 1.9.20은 첫 `pricing-t1-portable`에서 `process-failure`로 fail-closed stop했다. 18 scheduled / 1 attempted / 0 valid / 17 not-started이며 `/tmp/u1920`은 resume·retry하지 않는다.
+- provider는 child exit 0·success·final·exact Opus·product diff `index.html`·first write 353,011ms였지만 literal `/tmp/relay_check.js` write가 1회 차단돼 runner가 infrastructure 1로 정규화했다. agent는 즉시 `$TMPDIR/.t/relay_check.js`로 같은 검사에 성공했다.
+- post-stop frozen evaluator는 forensic 85/85·critical 6/6·Evidence pass·axe serious 0이지만 1.9.20을 소급 유효화하지 않는다.
+- 1.9.21 classifier는 Bash direct-child `/tmp/<simple-file>` denial + same basename의 later successful `TMPDIR` Bash + provider success가 모두 있을 때만 recoverable로 분리한다. built-in denial, cwd, nested/arbitrary path, unrecovered/provider failure는 계속 fail-closed다.
+- retained trace replay는 tool 1 / recoverable 1 / infrastructure 0 / sandbox 0 / recovered-temp 1이다. focused 33/33, full 211 pass/1 skip, TypeScript/build/syntax/diff가 green이며 fresh 1.9.22를 unlock한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -326,9 +331,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.20 사전등록 JSON/tests/diff를 검증하고 실행 전 커밋으로 잠근다.
-2. `/tmp/u1920` fresh prepare와 clean source attestation을 확인한다.
-3. first-party exact Opus/xhigh preflight 뒤 18셀을 처음부터 retry 없이 실행한다.
+1. 1.9.21 source patch와 report를 커밋한다.
+2. 1.9.22 full replacement를 새 `/tmp/u1922` 18셀로 사전등록하고 실행 전 커밋한다.
+3. clean source attestation과 first-party exact Opus/xhigh preflight 뒤 처음부터 retry 없이 실행한다.
 4. complete matrix에서 Reliability@3, paired quality, wall/token Pareto와 transaction compliance를 판정한다.
 5. harness gate 뒤 locale/evidence → public benchmark UX → activation → independent challenge로 이동한다.
 

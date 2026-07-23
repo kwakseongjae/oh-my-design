@@ -98,6 +98,8 @@ describe("UI-Resolve normalized run exporter", () => {
         tool_error_count: 0,
         recoverable_tool_error_count: 0,
         infrastructure_tool_error_count: 0,
+        optional_verifier_environment_error_count: 0,
+        recovered_temp_path_error_count: 0,
         sandbox_error_count: 0,
         sandbox_cwd_error_count: 0,
         agent_tool_call_count: 0,
