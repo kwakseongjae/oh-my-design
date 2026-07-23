@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.28 browser-authority recovery preregistered
+- `/tmp/u1928` fresh OmD locale candidate 1셀, exact Opus/xhigh를 고정했다.
+- first write≤450s, direct browser≤1, verifier0, 85/85·critical6/6을 요구한다.
+- retry/resume/manual edit 없이 process/delivery failure 즉시 stop한다.
+- 다음은 clean commit → preflight → fresh candidate 실행이다.
+
 ## 2026-07-23 (Codex) · 1.9.27 browser authority calibrated
 - actual headless invocation counter와 max gate를 runner에 추가했다.
 - discovery0/one1/two2 mutation, retained 1.9.26 count2 fail이 통과했다.

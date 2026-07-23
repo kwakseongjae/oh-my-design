@@ -68,6 +68,8 @@
 - `max_direct_browser_commands`를 preregistered variant kind에만 적용하고 초과 시 `direct-browser-command-budget-exceeded`로 fail-closed한다. matrix summary에도 count를 보존한다.
 - 0/1/2 mutation은 0 pass/1 pass/2 fail, retained 1.9.26 candidate는 count2·same stop reason을 재현했다. focused13/13, full217/1skip, TypeScript/build/syntax/diff green이다.
 - 1.9.27은 provider generation 없는 `calibration_complete`이며 `/tmp/u1926`은 그대로 실패다. 다음은 fresh `/tmp/u1928` candidate-only locale recovery다.
+- 1.9.28은 `/tmp/u1928` fresh candidate-only recovery로 사전등록했다. exact Opus/xhigh, 900s, task/evaluator `b128aef`, runner `9df4eca`, retry/resume/manual edit 0이다.
+- first write≤450s, direct headless browser≤1, replacement verifier0, final/valid, 85/85·critical6/6·locale click/roving/root-lang·terms/facts·4 geometry·Evidence·axe0를 모두 요구한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -369,9 +371,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.27 findings/summary를 clean commit으로 고정한다.
-2. fresh `/tmp/u1928` candidate-only locale recovery를 exact Opus/xhigh로 사전등록한다.
-3. max direct browser1, first write≤450s, verifier0, 85/85·all critical을 함께 강제한다.
+1. 1.9.28 preregistration을 clean commit으로 고정한다.
+2. fresh `/tmp/u1928` candidate를 exact Opus/xhigh로 실행하고 retry/resume하지 않는다.
+3. max direct browser1, first write≤450s, verifier0, 85/85·all critical을 함께 판정한다.
 4. 결과를 고정한 뒤 1.9.29 public benchmark UX로 이동한다.
 5. 이후 1.9.30 activation/reuse → 1.9.31 independent challenge로 이동한다.
 
