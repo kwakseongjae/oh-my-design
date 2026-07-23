@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "locale-standards-replacement-1.9.26",
+  "output_root": "/tmp/u1926",
+  "family": "skill",
+  "baseline_system": "raw-design-md",
+  "candidate_system": "omd-locale-handoff",
+  "bootstrap_samples": 0,
+  "bootstrap_seed": 20260806,
+  "reliability_k": 1,
+  "harness_delivery_gates": {
+    "variant_kinds": [
+      "locale-skill-stack"
+    ],
+    "first_product_write_ms_max": 450000,
+    "forbid_replacement_verifier": true
+  },
+  "cells": [
+    {
+      "id": "locale-standards-t1-raw",
+      "task_id": "locale-cli-handoff-v0.1",
+      "variant_id": "raw-design-md",
+      "system_id": "raw-design-md",
+      "runtime": "claude-code",
+      "model_id": "claude-opus-4-8",
+      "effort": "xhigh",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    },
+    {
+      "id": "locale-standards-t1-omd",
+      "task_id": "locale-cli-handoff-v0.1",
+      "variant_id": "omd-locale-handoff",
+      "system_id": "omd-locale-handoff",
+      "runtime": "claude-code",
+      "model_id": "claude-opus-4-8",
+      "effort": "xhigh",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    }
+  ]
+}

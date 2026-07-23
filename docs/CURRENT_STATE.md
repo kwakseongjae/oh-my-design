@@ -58,6 +58,8 @@
 - exact 1.9.24 `index.html` retained replay는 schema 0.3에서 85/85·critical 6/6, seeded invalid starter는 57/85로 state/responsive/a11y/evidence를 실패했다. positive artifact hash는 원본과 동일하고 provider generation은 없다.
 - focused 27/27, 전체 215 pass/1 conditional skip, TypeScript/build/syntax/diff가 green이다. 1.9.24 frozen 72/85는 변경하지 않고 1.9.25를 `calibration_complete`로 닫는다.
 - 다음은 schema 0.3 기반 1.9.26 fresh locale replacement experiment다. public benchmark UX는 1.9.27, activation/reuse는 1.9.28, independent challenge는 1.9.29로 이동한다.
+- 1.9.26은 `/tmp/u1926` fresh Raw DESIGN.md vs OmD locale stack 2셀로 사전등록했다. exact Opus/xhigh, 900s, retry/resume 0이며 task/evaluator basis는 `b128aef`·schema 0.3이다.
+- candidate는 first write≤450s, replacement verifier 0, 85/85·critical 6/6·5-locale click/roving/root-lang·terms/facts·4 geometry·Evidence·axe 0과 Raw 이상 점수를 모두 요구한다. full pass도 단일 execution path calibration일 뿐 일반 locale lift 주장이 아니다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -359,8 +361,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. schema 0.3 기반 1.9.26 fresh locale replacement experiment를 사전등록한다.
-2. 새 `/tmp/u1926`에서 exact Opus/xhigh provider cells만 실행하고 retry/resume하지 않는다.
+1. 1.9.26 preregistration을 clean commit으로 고정한다.
+2. 새 `/tmp/u1926`에서 exact Opus/xhigh provider 2셀만 실행하고 retry/resume하지 않는다.
 3. locale facts/terms, roving keyboard, root lang, 4 geometry, Evidence, axe, delivery authority를 함께 판정한다.
 4. fresh 결과를 고정한 뒤 1.9.27 public benchmark UX를 구현한다.
 5. 이후 1.9.28 activation/reuse → 1.9.29 independent challenge로 이동한다.
