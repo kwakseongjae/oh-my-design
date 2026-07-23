@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `0d15619` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.19 user-requested interruption preserved
+- 기준 커밋: `09f3aa4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.20 fresh full replacement preregistered
 
 ## 지금 (현재 위치)
 
@@ -23,6 +23,8 @@
 - 사용자 요청으로 cell 8 `pricing-t2-portable` 실행 중 SIGINT(130)로 중단했다. 18 scheduled / 8 attempted / 7 valid complete / 1 interrupted / 10 not-started이며 `/tmp/u1919`은 resume·retry·평가하지 않는다.
 - 완료 7셀은 전부 85/85·UI-Resolved·Evidence pass다. 완료 후보 4셀은 specialists 2/2, targeted non-no-op Edit, first write 221–309s, last advisory→Edit 7.5–14.6s, verifier 0으로 process gate를 통과했지만 incomplete matrix라 promotion·Reliability@3·Pareto 근거가 아니다.
 - 재개는 source 변경 없이 새 1.9.20 preregistration과 `/tmp/u1920` 18 fresh cells로 처음부터 수행한다. 1.9.19 결과는 새 denominator에 합치지 않는다.
+- 1.9.20은 1.9.19의 operational replacement로 사전등록했다. product/skill/agent/evaluator/gate delta는 없고 `/tmp/u1920`의 18 fresh cells만 새 denominator다.
+- exact Opus/xhigh, 3 tasks×3 trials×portable/harness, first write≤450s, last advisory→targeted Edit≤90s, serious/critical axe 0, verifier 0, retry 0을 동일하게 고정했다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -324,9 +326,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.19의 `/tmp/u1919`은 보존하고 절대 재개하지 않는다.
-2. 1.9.20 full replacement를 새 `/tmp/u1920` 18셀로 사전등록한다. 사용자 중단뿐이므로 source delta는 만들지 않는다.
-3. clean source attestation과 first-party exact Opus/xhigh preflight 뒤 처음부터 retry 없이 실행한다.
+1. 1.9.20 사전등록 JSON/tests/diff를 검증하고 실행 전 커밋으로 잠근다.
+2. `/tmp/u1920` fresh prepare와 clean source attestation을 확인한다.
+3. first-party exact Opus/xhigh preflight 뒤 18셀을 처음부터 retry 없이 실행한다.
 4. complete matrix에서 Reliability@3, paired quality, wall/token Pareto와 transaction compliance를 판정한다.
 5. harness gate 뒤 locale/evidence → public benchmark UX → activation → independent challenge로 이동한다.
 

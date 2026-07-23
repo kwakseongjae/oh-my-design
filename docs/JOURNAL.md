@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.20 fresh replacement preregistered
+- 사용자 중단된 1.9.19를 재개하지 않고 `/tmp/u1920` 18 fresh cells를 새로 고정했다.
+- source/system/evaluator delta는 없고 1.9.19 결과는 새 denominator에 포함하지 않는다.
+- exact Opus/xhigh와 first-safe-edit·axe·authority gates, retry 0을 유지한다.
+- 다음은 validate/commit → prepare → auth preflight → full execution이다.
+
 ## 2026-07-23 (Codex) · 1.9.19 paused and preserved
 - 사용자 요청으로 cell 8 실행 중 SIGINT(130); 7 valid / 1 interrupted / 10 not-started다.
 - 완료 후보 4셀은 85/85와 first-safe-edit process gate를 모두 통과했다.
