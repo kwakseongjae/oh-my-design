@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `d3bf7a4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.18 advisory-to-edit recovery preregistered
+- 갱신: 2026-07-23 · 1.9.18 advisory-to-edit recovery complete
 
 ## 지금 (현재 위치)
 
@@ -15,6 +15,9 @@
 - 1.9.18 source는 bounded repair advisory를 3 findings/~300 words로 줄이고 각 specialist가 exact target의 `first_safe_edit`를 먼저 반환한다. parent는 last advisory 뒤 90s 안에 recap/plan/재독해 없이 acceptance-relevant targeted Edit를 먼저 적용하며 no-op clock touch와 안전한 snippet이 있는데 whole-file Write를 첫 transaction으로 쓰는 것을 금지한다.
 - canonical skill·두 specialist·workflow manifest·Claude benchmark activation을 동기화했다. focused 29/29, 전체 207 pass/1 conditional skip, TypeScript와 CLI build, JSON/diff가 green이다.
 - `/tmp/u1918` fresh Pricing recovery 1셀을 exact Opus/xhigh, first write≤450s, last advisory→first write 0–90s, first transaction targeted non-no-op Edit, 85/85·all critical/Evidence·axe serious 0·specialists 2/2·verifier 0으로 사전등록했다. retry가 없고 full pass만 1.9.19를 연다.
+- 1.9.18 recovery는 550,607ms에 정상 종료하고 frozen 85/85·UI-Resolved·critical 6/6·Evidence pass·4 viewport axe serious/critical 0이다. first/last write 247,569/498,016ms, tokens 167,299, specialists 2/2, 모든 error 0, verifier 0, product diff `index.html` 하나다.
+- last advisory 237,043ms 뒤 targeted Edit가 10,526ms 만에 실행됐다. 첫 edit는 inline anchor CTA가 44px min-height를 실제 적용받도록 `.button`을 inline-flex로 바꾼 acceptance-relevant change이며 no-op이 아니다.
+- 1.9.17 stopped trace 대비 first-write -51.5%, advisory→write -95.4%, wall -16.7%, tokens -2.4%지만 process recovery 1셀이라 efficiency/lift 주장은 금지한다. full pass로 fresh 1.9.19 repeated matrix가 unlock됐다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -316,9 +319,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `/tmp/u1918`을 fresh prepare하고 clean source attestation을 확인한다.
-2. first-party Claude auth와 exact Opus/xhigh preflight 뒤 retry 없이 실행한다.
-3. full pass만 1.9.19 fresh 18-cell replacement matrix를 열고, 실패하면 같은 root를 재사용하지 않는다.
+1. 1.9.19 fresh 18-cell replacement matrix를 preregister한다: 3 tasks×3 trials×portable/harness, exact Opus/xhigh, first write≤450s, candidate last advisory→first targeted Edit≤90s, axe serious 0, verifier 0.
+2. `/tmp/u1919` fresh prepare와 first-party auth/model preflight 뒤 retry 없이 실행한다.
+3. complete matrix에서 Reliability@3, paired quality, wall/token Pareto와 transaction compliance를 판정한다.
 4. harness gate 뒤 locale/evidence → public benchmark UX → activation → independent challenge로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")

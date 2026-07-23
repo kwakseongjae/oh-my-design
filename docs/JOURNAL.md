@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.18 recovery complete
+- exact Opus/xhigh Pricing recovery가 85/85·axe serious 0·Evidence pass로 완료됐다.
+- first write 248s, last advisory→targeted Edit 10.5s, specialists 2/2·error/verifier 0이다.
+- 첫 Edit는 anchor CTA의 44px touch target을 실제 적용한 acceptance-relevant 변경이다.
+- 단일 recovery는 process gate만 닫았고 fresh 1.9.19 repeated matrix를 unlock한다.
+
 ## 2026-07-23 (Codex) · 1.9.18 recovery preregistered
 - fresh `/tmp/u1918` Pricing harness 1셀, exact Opus/xhigh를 고정했다.
 - first write≤450s와 last advisory→targeted Edit 0–90s를 자동 gate로 추가했다.
