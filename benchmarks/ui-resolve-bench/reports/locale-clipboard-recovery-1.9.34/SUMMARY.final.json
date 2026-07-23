@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "locale-clipboard-recovery-1.9.34",
+  "status": "calibration_failed",
+  "output_root": "/tmp/u1934",
+  "scheduled_cells": 1,
+  "attempted_cells": 1,
+  "completed_cells": 1,
+  "retry_or_resume_allowed": false,
+  "candidate": {
+    "matrix_status": "complete",
+    "validity": "valid",
+    "exact_parent_model": "claude-opus-4-8",
+    "provider_exit_code": 0,
+    "child_exit_code": 0,
+    "timed_out": false,
+    "wall_time_ms": 530552,
+    "uncached_tokens": 121357,
+    "first_product_write_ms": 371381,
+    "final_message_present": true,
+    "product_changed_files": [
+      "index.html"
+    ],
+    "direct_browser_command_count": 0,
+    "direct_browser_command_max": 0,
+    "replacement_verifier_authored": false,
+    "tool_errors": 0,
+    "recoverable_tool_errors": 0,
+    "infrastructure_errors": 0,
+    "sandbox_errors": 0,
+    "cwd_errors": 0,
+    "external_evaluator_run": true,
+    "run_record_exported": true,
+    "objective_score": 79,
+    "objective_max": 85,
+    "ui_resolved": false,
+    "critical_gates_passed": 5,
+    "critical_gates_total": 6,
+    "clipboard_exact_all_locales": true,
+    "responsive_geometry_all_pass": true
+  },
+  "accessibility_failure": {
+    "axe_rule": "scrollable-region-focusable",
+    "impact": "serious",
+    "viewports": [
+      "mobile",
+      "narrow-320",
+      "css-zoom-surrogate-200"
+    ],
+    "target": "#panel-ko > .command > code",
+    "keyboard_traversal_pass": false
+  },
+  "promotion_decision": "rejected_accessibility_contract",
+  "reporting_limits": [
+    "single candidate recovery cell",
+    "no retry, resume, or manual product edit",
+    "no model, skill, locale-lift, efficiency, or frontier claim"
+  ],
+  "next_version": "1.9.35",
+  "next_action": "add-static-scrollable-region-focus-contract"
+}

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.34 scroll-region accessibility failed
+- valid exact Opus, first write371.4s·browser0·verifier0, clipboard/geometry는 전부 pass했다.
+- frozen79/85는 narrow command overflow region의 explicit focus/focus-visible 부재다.
+- axe serious scrollable-region-focusable과 keyboard traversal이 mobile/320/200%에서 함께 fail했다.
+- 다음은 1.9.35 static scrollable-region focus contract다.
+
 ## 2026-07-23 (Codex) · 1.9.34 clipboard recovery preregistered
 - `/tmp/u1934` fresh OmD locale candidate, exact Opus/xhigh를 고정했다.
 - task0.4/evaluator0.4, first write≤450s, browser0, verifier0, 85/85를 요구한다.

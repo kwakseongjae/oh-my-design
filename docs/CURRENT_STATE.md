@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `3990ff1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.33 standard Clipboard API oracle calibrated
+- 기준 커밋: `d3aa4ff` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-23 · 1.9.34 clipboard/geometry pass, scroll accessibility failed
 
 ## 지금 (현재 위치)
 
@@ -105,6 +105,11 @@
 - 1.9.33은 provider generation 없는 `calibration_complete`다. 다음은 `/tmp/u1934` fresh exact Opus/xhigh recovery다.
 - 1.9.34는 `/tmp/u1934` fresh candidate-only recovery로 사전등록했다. task0.4.0/evaluator0.4/source `3990ff1`, exact Opus/xhigh, 900s, retry/resume/manual edit 0이다.
 - first write≤450s, browser exactly0, verifier0, final/valid, 85/85·critical6/6·five-locale click/roving/root-lang·bounded concepts/facts·actual clipboard/status·4 geometry·200% no-overlap·Evidence·axe0를 모두 요구한다.
+- 1.9.34는 1/1 valid complete했다. wall530,552ms, tokens121,357, first write371,381ms, browser0, verifier0, final/product diff, 모든 infra/sandbox/cwd0다.
+- frozen score는 79/85·critical5/6이다. actual clipboard/status, locale journey/content, 4 geometry/200% no-overlap, design, Evidence는 전부 pass했다.
+- 좁은 화면에서 `overflow-x:auto` command `<code>`가 scrollable region이지만 explicit focus target/focus-visible이 없어 axe serious `scrollable-region-focusable`이 mobile/320/200%에서 발생했다. keyboard traversal도 같은 원인으로 fail했다.
+- 이는 evaluator ambiguity가 아닌 실제 a11y defect다. 1.9.34는 `calibration_failed`로 고정하고 evaluator는 유지한다.
+- 1.9.35는 task/activation에 overflow auto|scroll region의 conditional focusability + visible focus + accessible name 계약만 추가한다. fresh recovery는 이후 새 version/root에서 수행한다.
 
 - 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
 - schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
@@ -406,11 +411,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.34 preregistration을 clean commit으로 고정한다.
-2. fresh `/tmp/u1934` exact Opus/xhigh candidate를 retry/resume 없이 실행한다.
-3. first write≤450s, browser0, verifier0, 85/85·critical6/6·actual clipboard·all geometry/Evidence를 함께 판정한다.
-4. full recovery면 repeated locale matrix 또는 public UX 1.9.35의 최소 증거 계약을 정한다.
-5. 이후 activation/reuse 1.9.36 → independent challenge 1.9.37로 이동한다.
+1. 1.9.34 findings/summary를 clean commit으로 고정한다.
+2. 1.9.35 scrollable-region focus 계약과 focused regression을 구현한다.
+3. retained 1.9.34 failure와 known-good focus mutation을 real browser에서 분리 검증한다.
+4. fresh 1.9.36 recovery를 새 root에 사전등록한다.
+5. 이후 public UX 1.9.37 → activation/reuse 1.9.38 → independent challenge 1.9.39로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

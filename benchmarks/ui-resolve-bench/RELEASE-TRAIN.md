@@ -201,6 +201,16 @@ control remains 83/85 and the invalid starter remains 57/85. Full tests,
 TypeScript, build, three browser replays, and clean preparation pass,
 unlocking a fresh 1.9.34 recovery.
 
+The fresh 1.9.34 candidate completed valid exact-Opus execution with first
+product write at 371.4 seconds, browser zero, verifier zero, exact clipboard
+handoff, and all responsive geometry. It scored 79/85 because its horizontally
+scrollable command block was not explicitly keyboard focusable on constrained
+viewports. Axe reported serious `scrollable-region-focusable` at 390px, 320px,
+and 200%, and keyboard traversal lost its declared focus sequence. This is a
+real accessibility defect, not an oracle issue. 1.9.34 remains failed; 1.9.35
+adds a static scrollable-region focus contract before a fresh recovery.
+Public benchmark UX moves beyond that recovery.
+
 ## 2.0.0 frontier gates
 
 All must pass:
