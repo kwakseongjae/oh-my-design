@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "harness-efficiency-replacement-1.9.19",
+  "status": "interrupted_by_user",
+  "output_root": "/tmp/u1919",
+  "scheduled_cells": 18,
+  "attempted_cells": 8,
+  "valid_complete_cells": 7,
+  "interrupted_cells": 1,
+  "not_started_cells": 10,
+  "current_cell_at_interruption": "pricing-t2-portable",
+  "process_exit_code": 130,
+  "retry_or_resume_allowed": false,
+  "completed_candidate_cells": 4,
+  "completed_candidate_delivery_gate_passes": 4,
+  "completed_quality_pairs": 3,
+  "partial_paired_result": {
+    "candidate_wins": 0,
+    "ties": 3,
+    "candidate_losses": 0
+  },
+  "promotion_decision": "unavailable_incomplete_matrix",
+  "next_fresh_root": "/tmp/u1920"
+}

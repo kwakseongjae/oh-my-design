@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-23 (Codex) · 1.9.19 paused and preserved
+- 사용자 요청으로 cell 8 실행 중 SIGINT(130); 7 valid / 1 interrupted / 10 not-started다.
+- 완료 후보 4셀은 85/85와 first-safe-edit process gate를 모두 통과했다.
+- incomplete matrix라 promotion·Reliability·Pareto 판단은 하지 않는다.
+- `/tmp/u1919` 재개 금지; 다음은 새 1.9.20·`/tmp/u1920`에서 18셀 처음부터다.
+
 ## 2026-07-23 (Codex) · 1.9.19 full replacement preregistered
 - `/tmp/u1919` 3 tasks×3 trials×portable/harness 18 fresh cells를 고정했다.
 - candidate first write≤450s, last advisory→targeted Edit≤90s, axe serious/verifier 0이 gate다.
