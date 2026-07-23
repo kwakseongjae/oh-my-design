@@ -101,6 +101,30 @@ export function lastAdvisoryToFirstProductWriteMs(run, events = []) {
   return firstWrite - lastAdvisoryMs;
 }
 
+export function firstProductWriteTransaction(run, events = []) {
+  const changedPaths = (run?.workspace?.changed_product_files ?? [])
+    .map((entry) => entry?.path)
+    .filter((path) => typeof path === "string" && path.length > 0);
+  if (!changedPaths.length) return null;
+
+  for (const [eventIndex, event] of events.entries()) {
+    for (const block of toolUses(event)) {
+      if (block.name !== "Edit" && block.name !== "Write") continue;
+      const input = block.input ?? {};
+      const toolPath = String(input.file_path ?? input.path ?? "");
+      const productPath = changedPaths.find((path) => toolPath === path || toolPath.endsWith(`/${path}`));
+      if (!productPath) continue;
+      return {
+        event_index: eventIndex,
+        tool: block.name,
+        path: productPath,
+        no_op: block.name === "Edit" && String(input.old_string ?? "") === String(input.new_string ?? ""),
+      };
+    }
+  }
+  return null;
+}
+
 export function harnessDeliveryStopReason(manifest, run, gates, events = []) {
   if (manifest.variant?.kind !== "agent-harness" || gates === undefined) return null;
   const firstWrite = run.output?.milestones?.first_builtin_product_write_ms;
@@ -113,6 +137,12 @@ export function harnessDeliveryStopReason(manifest, run, gates, events = []) {
     if (advisoryToWrite > gates.last_advisory_to_first_product_write_ms_max) {
       return "late-advisory-to-first-product-write";
     }
+  }
+  if (gates.require_targeted_first_product_edit === true) {
+    const transaction = firstProductWriteTransaction(run, events);
+    if (!transaction) return "missing-first-product-write-transaction";
+    if (transaction.tool !== "Edit") return "non-targeted-first-product-write";
+    if (transaction.no_op) return "no-op-first-product-edit";
   }
   if (gates.forbid_replacement_verifier && replacementVerifierAuthorship(events).detected) {
     return "replacement-verifier-authored";
@@ -290,6 +320,7 @@ export function executePreparedMatrix(root) {
         run,
         readEvents(eventsPath),
       ),
+      first_product_write_transaction: firstProductWriteTransaction(run, readEvents(eventsPath)),
       replacement_verifier_authored: replacementVerifierAuthorship(readEvents(eventsPath)).detected,
     };
     upsertCell(state, summary);

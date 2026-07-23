@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   harnessDeliveryStopReason,
+  firstProductWriteTransaction,
   lastAdvisoryToFirstProductWriteMs,
   preregisteredStopReason,
   replacementVerifierAuthorship,
@@ -36,6 +37,9 @@ const validRun = {
       { agent_id: "omd-ux-engineer", requested_model: "opus" },
     ],
     milestones: { first_builtin_product_write_ms: 313484 },
+  },
+  workspace: {
+    changed_product_files: [{ path: "index.html", status: "modified" }],
   },
 };
 
@@ -134,6 +138,47 @@ describe("UI-Resolve prepared matrix execution", () => {
 
     expect(harnessDeliveryStopReason(manifest, validRun, gates, []))
       .toBe("missing-advisory-to-first-write-milestone");
+  });
+
+  it("requires the first product transaction to be a real targeted Edit", () => {
+    const edit = [{
+      type: "assistant",
+      message: {
+        content: [{
+          type: "tool_use",
+          name: "Edit",
+          input: {
+            file_path: "/tmp/workspace/index.html",
+            old_string: "min-height: 40px",
+            new_string: "min-height: 44px",
+          },
+        }],
+      },
+    }];
+    expect(firstProductWriteTransaction(validRun, edit)).toMatchObject({
+      tool: "Edit",
+      path: "index.html",
+      no_op: false,
+    });
+    const gates = {
+      first_product_write_ms_max: 450000,
+      require_targeted_first_product_edit: true,
+      forbid_replacement_verifier: true,
+    };
+    expect(harnessDeliveryStopReason(manifest, validRun, gates, edit)).toBeNull();
+
+    const write = structuredClone(edit);
+    write[0].message.content[0].name = "Write";
+    expect(harnessDeliveryStopReason(manifest, validRun, gates, write))
+      .toBe("non-targeted-first-product-write");
+
+    const noOp = structuredClone(edit);
+    noOp[0].message.content[0].input.new_string = "min-height: 40px";
+    expect(harnessDeliveryStopReason(manifest, validRun, gates, noOp))
+      .toBe("no-op-first-product-edit");
+
+    expect(harnessDeliveryStopReason(manifest, validRun, gates, []))
+      .toBe("missing-first-product-write-transaction");
   });
 
   it("detects an authored replacement verifier but allows a real-browser probe", () => {

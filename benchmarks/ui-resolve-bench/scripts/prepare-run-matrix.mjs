@@ -35,6 +35,12 @@ export function validateRunMatrixPlan(plan) {
     ) {
       throw new Error("matrix harness_delivery_gates.last_advisory_to_first_product_write_ms_max must be a positive integer");
     }
+    if (
+      gates.require_targeted_first_product_edit !== undefined
+      && typeof gates.require_targeted_first_product_edit !== "boolean"
+    ) {
+      throw new Error("matrix harness_delivery_gates.require_targeted_first_product_edit must be boolean");
+    }
     if (typeof gates.forbid_replacement_verifier !== "boolean") {
       throw new Error("matrix harness_delivery_gates.forbid_replacement_verifier must be boolean");
     }
