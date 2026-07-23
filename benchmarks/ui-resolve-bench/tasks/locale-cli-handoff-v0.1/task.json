@@ -1,6 +1,6 @@
 {
   "id": "locale-cli-handoff-v0.1",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "track": "repair",
   "grounding": "design-md",
   "locale": "ko",
@@ -44,7 +44,8 @@
       "action_selector": "[data-bench='copy-command']",
       "status_selector": "[data-bench='copy-status']",
       "locales": ["ko", "en", "ja", "zh-CN", "zh-TW"],
-      "initial": "ko"
+      "initial": "ko",
+      "clipboard_literal": "npx northstar-ui@1.4 setup --agent claude-code"
     }
   },
   "locale_oracle": {

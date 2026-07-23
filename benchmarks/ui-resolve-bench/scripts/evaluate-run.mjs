@@ -221,7 +221,14 @@ export function evaluateLocaleSwitchObservation(observation, journeyOracle = {},
           typeof entry.after === "string" &&
           Boolean(entry.after.trim()) &&
           entry.before !== entry.after),
-      every_action_marks_copied: handoffs.length > 0 && handoffs.every((entry) => entry.copied === "true"),
+      every_action_copies_exact:
+        typeof journeyOracle.clipboard_literal === "string" &&
+        Boolean(journeyOracle.clipboard_literal) &&
+        handoffs.length > 0 &&
+        handoffs.every((entry) =>
+          typeof entry.clipboard_before === "string" &&
+          entry.clipboard_before !== journeyOracle.clipboard_literal &&
+          entry.clipboard_after === journeyOracle.clipboard_literal),
     },
   };
 }
@@ -453,6 +460,9 @@ async function main() {
         reducedMotion: "reduce",
         deviceScaleFactor: 1,
       });
+      if (behaviorAdapter === "locale-switch-v1") {
+        await context.grantPermissions(["clipboard-read", "clipboard-write"], { origin });
+      }
       const page = await context.newPage();
       const consoleErrors = [];
       const externalRequests = [];
@@ -963,15 +973,30 @@ async function main() {
             const action = panel?.querySelector(config.action_selector);
             const status = panel?.querySelector(config.status_selector);
             const before = status?.textContent.trim();
+            let clipboardBefore = null;
+            let clipboardAfter = null;
+            try {
+              await navigator.clipboard.writeText("");
+              clipboardBefore = await navigator.clipboard.readText();
+            } catch {
+              clipboardBefore = null;
+            }
             action?.click();
-            await new Promise((resolve) => setTimeout(resolve, 20));
+            await new Promise((resolve) => setTimeout(resolve, 40));
+            try {
+              clipboardAfter = await navigator.clipboard.readText();
+            } catch {
+              clipboardAfter = null;
+            }
             result.handoffs.push({
               locale,
               action_present: action instanceof HTMLElement,
               action_visible: action ? visible(action) : false,
               before,
               after: status?.textContent.trim(),
-              copied: action?.getAttribute("data-copied"),
+              clipboard_before: clipboardBefore,
+              clipboard_after: clipboardAfter,
+              copied_marker: action?.getAttribute("data-copied"),
             });
           }
           buttons.find((button) => valueFor(button) === config.initial)?.click();
@@ -1221,7 +1246,7 @@ async function main() {
   };
 
   const score = {
-    schema_version: "0.3",
+    schema_version: "0.4",
     task_id: task.id,
     variant_id: manifest.variant.id,
     evaluated_at: new Date().toISOString(),

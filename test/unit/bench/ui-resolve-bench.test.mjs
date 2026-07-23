@@ -68,13 +68,14 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ));
     expect(task).toMatchObject({
       behavior_adapter: "locale-switch-v1",
-      version: "0.3.0",
+      version: "0.4.0",
       locale: "ko",
       browser_locale: "ko-KR",
       journey_oracle: {
         locale_switch: {
           locales: ["ko", "en", "ja", "zh-CN", "zh-TW"],
           initial: "ko",
+          clipboard_literal: "npx northstar-ui@1.4 setup --agent claude-code",
         },
       },
     });

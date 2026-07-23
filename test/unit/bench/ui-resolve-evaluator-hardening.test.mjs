@@ -285,7 +285,9 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
         action_visible: true,
         before: "",
         after: `after-${locale}`,
-        copied: "true",
+        clipboard_before: "",
+        clipboard_after: "npx northstar-ui@1.4 setup --agent claude-code",
+        copied_marker: null,
       })),
     };
     const passing = evaluateLocaleSwitchObservation(
@@ -382,6 +384,40 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
       localeTask.journey_oracle.locale_switch,
       localeTask.locale_oracle,
     ).handoff.every_status_changes).toBe(false);
+
+    const noClipboardWrite = structuredClone(observation);
+    noClipboardWrite.handoffs[0].clipboard_after = "";
+    expect(evaluateLocaleSwitchObservation(
+      noClipboardWrite,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).handoff.every_action_copies_exact).toBe(false);
+
+    const wrongClipboardValue = structuredClone(observation);
+    wrongClipboardValue.handoffs[0].clipboard_after = "npx northstar-ui@latest setup";
+    expect(evaluateLocaleSwitchObservation(
+      wrongClipboardValue,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).handoff.every_action_copies_exact).toBe(false);
+
+    const statusOnly = structuredClone(observation);
+    statusOnly.handoffs[0].clipboard_after = statusOnly.handoffs[0].clipboard_before;
+    statusOnly.handoffs[0].after = "Command copied.";
+    expect(evaluateLocaleSwitchObservation(
+      statusOnly,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).handoff.every_action_copies_exact).toBe(false);
+
+    const markerOnly = structuredClone(observation);
+    markerOnly.handoffs[0].clipboard_after = "";
+    markerOnly.handoffs[0].copied_marker = "true";
+    expect(evaluateLocaleSwitchObservation(
+      markerOnly,
+      localeTask.journey_oracle.locale_switch,
+      localeTask.locale_oracle,
+    ).handoff.every_action_copies_exact).toBe(false);
 
     const emptyInitialStatus = structuredClone(observation);
     expect(evaluateLocaleSwitchObservation(
@@ -485,7 +521,7 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
     expect(evaluator).not.toContain("[tabindex]:not([tabindex='-1'])");
     expect(evaluator).not.toContain("zoom_reflow_geometry");
     expect(evaluator).toContain("automated_gate_pass");
-    expect(evaluator).toContain('schema_version: "0.3"');
+    expect(evaluator).toContain('schema_version: "0.4"');
     expect(evaluator).not.toContain("provisional_ui_resolved");
     expect(evaluator).not.toContain("public_ui_resolved");
   });
