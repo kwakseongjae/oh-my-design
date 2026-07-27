@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.54 clean preparation complete
+- committed source worktree에서 `/tmp/u1954` 9/9를 clean-prepare했다.
+- source attestation은 publishable이며 matrix SHA는 `ef641e08…`다.
+- starter/DESIGN.md/skill hash와 8-file transmission boundary를 확인했다.
+- standing approval로 다음은 paced provider execution이다.
+
 ## 2026-07-28 (Codex) · 1.9.54 paced Composer replacement locked
 - Composer 2.5 동일 9셀 denominator를 fresh `/tmp/u1954`로 고정했다.
 - 유일한 execution delta는 120초 fixed inter-cell pacing이다.

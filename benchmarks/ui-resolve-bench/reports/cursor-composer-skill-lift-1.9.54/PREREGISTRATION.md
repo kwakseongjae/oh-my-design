@@ -1,6 +1,6 @@
 # Cursor/Composer paced fixed-model Skill Lift replacement — 1.9.54
 
-Status: **LOCKED; fresh preparation pending**.
+Status: **LOCKED and PREPARED; provider execution authorized**.
 
 ## Frontier gate and bounded hypothesis
 
