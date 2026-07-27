@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.2",
+  "product_version": "1.9.42",
+  "status": "prepared_awaiting_explicit_transmission_approval",
+  "output_root": "/tmp/u1942",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "matrix_sha256": "feeb0a6a4a393aa9c4793516c4c88841d323a46b40cdb5aeae2a6e3091e27e79",
+  "representative_cell": {
+    "id": "pricing-t1-grok",
+    "files": [
+      ".benchmark/PROMPT.md",
+      ".benchmark/manifest.json",
+      ".benchmark/matrix-cell.json",
+      "AGENTS.md",
+      "DESIGN.md",
+      "index.html"
+    ],
+    "manifest_sha256": "ed3a829353de8ee3628ea3f7d95951d57146fa10595d050f44a12d6e1c52cf81",
+    "prompt_sha256": "62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+    "starter_sha256": "07c3374778a21511822ca710d7018b1cd3b1a3dd449242e8063fcd73c8423705",
+    "design_md_sha256": "9521d3ef10d6f25823d6591ea8bab45967ec7ad0a078cac2de28a87b570ca721"
+  },
+  "provider_execution_started": false,
+  "approval_required": "Send the named six-file prepared workspace for each of six cells to Cursor Grok 4.5 / Composer 2.5."
+}

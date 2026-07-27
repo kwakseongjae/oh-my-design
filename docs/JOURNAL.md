@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-27 (Codex) · 1.9.42 Cursor pilot prepared
+- Pricing+Raw DESIGN.md, Grok/Composer 각3회인 6-cell matrix를 `/tmp/u1942`에 fresh prepare했다.
+- 각 cell 전송 파일은 prompt/manifest/matrix-cell/AGENTS/DESIGN/index 6개로 고정했다.
+- repository history/catalog/user docs/credentials/llms-full은 포함되지 않는다.
+- provider execution은 미시작이며 named file scope의 구체적 외부 전송 승인 대기다.
+
 ## 2026-07-27 (Codex) · 1.9.41 Cursor no-write attribution
 - 빈 `/tmp`+고정문구로 Grok4.5/Composer2.5를 호출했고 둘 다 exit0/tool0/exact response다.
 - stream은 immutable ID가 아닌 `Cursor Grok 4.5 High`/`Composer 2.5` 표시명만 보고했다.

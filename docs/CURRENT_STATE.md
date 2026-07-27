@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b64fa5d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-27 · 1.9.41 Grok/Composer no-write attribution complete at Internal tier
+- 갱신: 2026-07-27 · 1.9.42 six-cell Cursor pilot prepared; provider execution awaits explicit file-transmission approval
 
 ## 지금 (현재 위치)
 
@@ -34,6 +34,8 @@
 - 1.9.41 no-write probe는 새 빈 `/tmp` workspace와 고정 문구만 전송했다. repository/diff/DESIGN.md/user content는 전송하지 않았다. Grok 4.5와 Composer 2.5 모두 exit 0, tool 0, exact `OMD_ATTRIBUTION_OK`를 반환했다.
 - Cursor stream은 requested immutable ID를 되돌려주지 않고 `Cursor Grok 4.5 High`와 `Composer 2.5` 표시명만 보고했다. 따라서 `runtime-reported-display-name`으로 기록하고 public validity는 `invalid-attribution`, Internal pilot eligibility만 true다.
 - 실제 stream usage는 Grok 15,040 input/4,480 cached/44 output, Composer 10,840/6,369/48로 보존했지만 1회 no-write probe이므로 속도·토큰·비용 비교나 우열 주장은 하지 않는다.
+- 1.9.42 Internal pilot은 Cursor runtime 고정, Pricing+Raw DESIGN.md, Grok/Composer 각 3회(6셀), 900s/cell로 사전등록했다. `/tmp/u1942`는 6/6 prepared이며 provider execution은 아직 시작하지 않았다.
+- 각 workspace 전송 범위는 `.benchmark/{PROMPT,manifest,matrix-cell}`, `AGENTS.md`, `DESIGN.md`, `index.html` 6개뿐이다. repository history/catalog/user docs/credentials/`llms-full.txt`는 포함하지 않는다. 대표 cell hash와 locked matrix hash를 PREPARATION.json에 기록했다.
 - 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
 - stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.
 - 완성 3 pairs는 objective 0 win/3 tie/0 loss이고 Pricing/Onboarding 85/85, Operations 81/85로 양 시스템이 동률이다. paired-only median은 portable 430,140ms·105,380 tokens, harness 500,022ms·152,485 tokens(1.162×/1.447×)지만 incomplete matrix라 reliability/Pareto/promotion 근거가 아니다.
@@ -447,10 +449,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.42 Internal two-model pilot의 task/variants/trials/acceptance를 사전등록한다.
-2. private benchmark task/workspace를 Cursor 모델에 전송하는 구체적 승인을 받으면 Grok 4.5/Composer 2.5를 한 task×3 trials로 실행한다.
-3. display-name attribution·failure retention이 안정적일 때만 standard task set으로 확장한다.
-4. 이후 1.9.43 Cursor Agent Skill channel → 1.9.44 Skill Lift 순으로 진행한다.
+1. 사용자가 named six-file workspace × six cells의 Cursor 전송을 명시 승인하면 `/tmp/u1942`를 한 번만 실행한다.
+2. 실행 중 첫 failure는 matrix를 동결하고 뒤 셀을 `not-started`로 보존한다. retry/resume/manual edit은 하지 않는다.
+3. 6/6 complete 후에도 display-name attribution이므로 Internal diagnostics만 정리하고 public winner/W-T-L은 만들지 않는다.
+4. 안정적이면 1.9.43 Cursor Agent Skill channel → 1.9.44 Skill Lift로 진행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
