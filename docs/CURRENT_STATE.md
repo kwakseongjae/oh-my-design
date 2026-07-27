@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.53 pacing controller accepted; fresh paced Composer replacement unlocked
+- 갱신: 2026-07-28 · 1.9.54 paced Composer replacement LOCKED; fresh preparation next
 
 ## 지금 (현재 위치)
 
@@ -14,6 +14,7 @@
 - 1.9.53 capacity-pacing controller calibration이 ACCEPTED됐다. schema 0.3은 `none|fixed-inter-cell`, adjacent cell ID·duration·timestamps·completion evidence, cell wall-time 밖의 wait를 fail-closed 검증한다.
 - 2-cell fake matrix는 정확히 1회/120,000ms wait와 retained history를, 기존 no-pacing 경로는 wait 0회를 증명했다. focused 21/21, lint/build/syntax/diff green이며 broader bench의 기존 `/tmp` vendor Git metadata 환경 실패 2건만 불변이다.
 - pacing은 task/prompt/condition/model/evaluator/score/timeout/retry/fallback을 바꾸지 않는다. 1.9.54 fresh Composer 9-cell replacement를 동일 denominator와 120초 inter-cell cooldown으로 새 root에 여는 것만 허용한다.
+- 1.9.54를 동일 Composer 2.5·pricing task·baseline/Raw/OmD×3·balanced order·schema 0.5·900s timeout으로 LOCKED했다. 유일한 1.9.52 대비 execution delta는 accepted 120초 fixed inter-cell pacing이며 새 root는 `/tmp/u1954`다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -503,8 +504,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.54 fresh Composer 9-cell replacement를 동일 task/evaluator/Raw/order/acceptance로 preregister한다.
-2. pacing 외 candidate delta 0을 확인하고 `/tmp/u1954`를 fresh prepare한다.
+1. pacing 외 candidate delta 0을 확인하고 `/tmp/u1954`를 fresh prepare한다.
+2. representative file/hash와 source cleanliness를 PREPARATION에 고정한다.
 3. 120초 inter-cell cooldown으로 serial 실행하며 retained wait/provider/evaluator evidence를 확인한다.
 4. Kimi K3는 stable immutable selector와 usage attribution을 가진 별도 runtime이 확보될 때 Model Track canary로 추가한다.
 

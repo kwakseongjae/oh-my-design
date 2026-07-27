@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.54 paced Composer replacement locked
+- Composer 2.5 동일 9셀 denominator를 fresh `/tmp/u1954`로 고정했다.
+- 유일한 execution delta는 120초 fixed inter-cell pacing이다.
+- 재시도·fallback·resume 없이 첫 failure에서 freeze한다.
+- 다음은 clean-source preparation과 retained hash 검증이다.
+
 ## 2026-07-28 (Codex) · 1.9.53 pacing controller accepted
 - schema 0.3에 fixed inter-cell cooldown과 retained wait evidence를 추가했다.
 - fake 2-cell은 120초 wait 1회, historical no-pacing은 wait 0회를 통과했다.
