@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.54 frozen on local evaluator dependency; 1.9.55 preflight LOCKED
+- 갱신: 2026-07-28 · 1.9.55 evaluator preflight accepted; fresh dependency-safe Composer replacement unlocked
 
 ## 지금 (현재 위치)
 
@@ -19,7 +19,9 @@
 - representative OmD cell은 승인된 8개 파일만 포함하고 starter/DESIGN.md/skill/sidecar hash가 1.9.52와 동일하다. standing benchmark authorization으로 provider execution은 승인 상태다.
 - 1.9.54 첫 baseline provider generation은 Composer 2.5/exit 0/348,795ms/usage complete/index.html-only diff로 정상 완료했지만, detached controller worktree에 `axe-core`가 없어 score 전 evaluator-failure로 freeze됐다. 0 completed/1 stopped/8 not-started이며 quota/model failure가 아니다.
 - 1.9.54 output은 재평가·resume·replacement reuse하지 않고 모든 denominator 밖이다. clean-source preparation과 dependency-complete controller 위치를 분리해야 한다.
-- 1.9.55 evaluator dependency preflight를 LOCKED했다. exact `playwright-core`/`axe-core` 로드를 provider 시작 전에 검증하고 missing dependency면 모든 셀을 not-started로 남기는 provider-free calibration이다.
+- 1.9.55 evaluator dependency preflight가 ACCEPTED됐다. exact `playwright-core`/`axe-core`를 browser/workspace 없이 provider 시작 전에 로드하고, missing dependency면 provider invocation 0·모든 셀 not-started로 fail-close한다.
+- primary preflight, focused 22/22, lint/build/syntax/diff가 green이다. broader bench는 94 pass/1 skip이며 기존 `/tmp` vendor Git metadata 환경 실패 2건만 불변이다.
+- 다음 fresh matrix는 clean committed source에서 workspace만 prepare하고, controller/evaluator는 dependency-complete primary workspace에서 실행해야 한다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -509,16 +511,16 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.55 evaluator dependency preflight를 provider-free로 구현·검증한다.
-2. clean preparation과 dependency-complete primary controller 분리를 acceptance로 고정한다.
-3. 통과 뒤 fresh paced Composer replacement를 새 root에만 preregister한다.
+1. 1.9.56 fresh paced Composer replacement를 동일 denominator로 preregister한다.
+2. clean committed source에서 새 root를 prepare하고 primary workspace preflight를 재확인한다.
+3. dependency-complete primary controller에서 120초 pacing으로 9셀을 실행한다.
 4. Kimi K3는 stable immutable selector와 usage attribution을 가진 별도 runtime이 확보될 때 Model Track canary로 추가한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
 - Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
 - Cursor Composer Provider가 두 fresh matrix에서 연속 `resource_exhausted`를 반환했다. account-wide quota는 no-write Composer/Grok probes로 배제했고 pacing calibration은 통과했지만, 120초 pacing의 실효성은 fresh 1.9.54 완료 전까지 미확인이다.
-- 1.9.54는 provider capacity가 아니라 detached worktree의 evaluator dependency 부재로 무효화됐다. preflight 1.9.55 전 추가 provider matrix 실행은 금지한다.
+- 1.9.54는 provider capacity가 아니라 detached worktree의 evaluator dependency 부재로 무효화됐고 1.9.55 preflight로 재발 방지가 완료됐다.
 - Kimi K3는 현재 로그인된 Cursor CLI model catalog에 selector가 없어 Cursor lane 실행이 blocked다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.

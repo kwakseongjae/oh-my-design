@@ -106,6 +106,10 @@ console.log(JSON.stringify({type:"usage",model,usage:{input_tokens:13,cached_inp
 import fs from "node:fs";
 import path from "node:path";
 const argv = process.argv.slice(2);
+if (argv.includes("--preflight")) {
+  console.log(JSON.stringify({event:"fake-evaluator-preflight-complete"}));
+  process.exit(0);
+}
 const workspace = argv[argv.indexOf("--workspace") + 1];
 fs.writeFileSync(path.join(workspace, ".benchmark", "score.json"), JSON.stringify({
   status:{automated_gate_pass:false},
@@ -239,6 +243,8 @@ describe("provider-neutral prepared matrix contract", () => {
     prepareRunMatrix(current);
     const waits = [];
     const timestamps = [
+      "2026-07-27T23:59:58.000Z",
+      "2026-07-27T23:59:59.000Z",
       "2026-07-28T00:00:00.000Z",
       "2026-07-28T00:02:00.000Z",
     ];
@@ -258,6 +264,25 @@ describe("provider-neutral prepared matrix contract", () => {
       started_at: "2026-07-28T00:00:00.000Z",
       finished_at: "2026-07-28T00:02:00.000Z",
     }]);
+  });
+
+  it("fails evaluator preflight before invoking any provider runtime", () => {
+    const temp = mkdtempSync(join(tmpdir(), "omd-provider-preflight-"));
+    const root = join(temp, "matrix");
+    installFakeRuntimes(temp);
+    process.env.OMD_BENCH_CALIBRATION_EVALUATOR = executable(join(temp, "missing-dependency-evaluator.mjs"), `
+if (process.argv.includes("--preflight")) {
+  console.error("missing axe-core");
+  process.exit(1);
+}
+`);
+    prepareRunMatrix(calibrationPlan(root));
+    expect(() => executePreparedMatrix(root)).toThrow("evaluator-preflight-failure:missing axe-core");
+    expect(readFileSync(join(root, "execution-state.json"), "utf8")).toContain('"status": "not-started"');
+    expect(() => readFileSync(join(root, "fake-claude", ".benchmark", "fake-claude-invocation.json")))
+      .toThrow();
+    expect(() => readFileSync(join(root, "fake-codex", ".benchmark", "fake-codex-invocation.json")))
+      .toThrow();
   });
 
   it("freezes later cells as not-started after the first fake runtime failure", () => {

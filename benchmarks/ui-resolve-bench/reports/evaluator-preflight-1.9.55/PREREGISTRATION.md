@@ -1,6 +1,6 @@
 # Evaluator dependency preflight calibration — 1.9.55
 
-Status: **LOCKED; provider-free implementation pending**.
+Status: **EXECUTED; provider-free calibration accepted**.
 
 ## Problem and bounded hypothesis
 

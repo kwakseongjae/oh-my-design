@@ -92,6 +92,10 @@ console.log(JSON.stringify({type:"result",model,result:"fake cursor complete"}))
 import fs from "node:fs";
 import path from "node:path";
 const argv = process.argv.slice(2);
+if (argv.includes("--preflight")) {
+  console.log(JSON.stringify({event:"fake-evaluator-preflight-complete"}));
+  process.exit(0);
+}
 const workspace = argv[argv.indexOf("--workspace") + 1];
 fs.writeFileSync(path.join(workspace, ".benchmark", "score.json"), JSON.stringify({
   status:{automated_gate_pass:false},

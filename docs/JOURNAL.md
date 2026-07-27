@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.55 evaluator preflight accepted
+- exact Playwright/axe dependency를 provider 시작 전에 fail-close한다.
+- missing fixture는 provider invocation 0·모든 셀 not-started를 통과했다.
+- focused 22/22와 lint/build/syntax/diff가 green이다.
+- 다음은 clean-prepare + primary-controller의 fresh 1.9.56이다.
+
 ## 2026-07-28 (Codex) · 1.9.54 frozen; 1.9.55 preflight locked
 - 첫 Composer cell은 정상 완료했지만 detached evaluator가 `axe-core`를 못 찾아 멈췄다.
 - 0 scored/1 stopped/8 not-started로 freeze하고 output 재사용을 금지했다.

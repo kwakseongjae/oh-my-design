@@ -379,7 +379,7 @@ export function evaluateFontOracle(observation, oracle) {
 const everyCheckPass = (checks) =>
   Boolean(checks) && Object.values(checks).length > 0 && Object.values(checks).every((value) => value === true);
 
-async function main() {
+export function loadEvaluatorDependencies() {
   let playwright;
   let axeCore;
   try {
@@ -392,9 +392,21 @@ async function main() {
   } catch {
     axeCore = createRequire(join(repoRoot, "web", "package.json"))("axe-core");
   }
+  return { playwright, axeCore };
+}
+
+async function main() {
+  const args = parseArgs();
+  const { playwright, axeCore } = loadEvaluatorDependencies();
+  if (args.get("preflight") === true || args.get("preflight") === "true") {
+    console.log(JSON.stringify({
+      event: "evaluator-preflight-complete",
+      dependencies: ["playwright-core", "axe-core"],
+    }));
+    return;
+  }
   const { chromium } = playwright;
 
-  const args = parseArgs();
   const workspace = args.get("workspace") ? resolve(String(args.get("workspace"))) : null;
   if (!workspace) {
     console.error("usage: evaluate-run.mjs --workspace <completed-dir>");

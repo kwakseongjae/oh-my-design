@@ -79,6 +79,9 @@ Every schema `0.3` matrix must lock:
 - provider pacing as either `none` or a fixed preregistered inter-cell delay;
   the delay occurs only between completed cells, is retained in matrix state,
   and is excluded from each provider cell's wall-time record;
+- evaluator dependency preflight before the first provider cell; preflight
+  failure retains every cell as `not-started`, and its orchestration time is
+  excluded from provider cell wall time;
 - hard or observed-only step and token budgets, never a fictional hard cap;
 - fresh workspace and independent trial state;
 - no primary retry; a task timeout is a valid failure;

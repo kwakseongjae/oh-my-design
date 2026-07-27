@@ -290,6 +290,31 @@ export function executePreparedMatrix(root, {
     ? resolve(process.env.OMD_BENCH_CALIBRATION_EVALUATOR)
     : resolve(fileURLToPath(new URL("./evaluate-run.mjs", import.meta.url)));
   const exportScript = resolve(fileURLToPath(new URL("./export-run-record.mjs", import.meta.url)));
+  const preflightStartedAt = nowFn();
+  const evaluatorPreflight = runNode(evaluateScript, ["--preflight"], repo);
+  const preflightFinishedAt = nowFn();
+  state.evaluator_preflight = {
+    status: evaluatorPreflight.status === 0 ? "complete" : "failed",
+    started_at: preflightStartedAt,
+    finished_at: preflightFinishedAt,
+    dependencies: ["playwright-core", "axe-core"],
+  };
+  if (evaluatorPreflight.status !== 0) {
+    const reason = `evaluator-preflight-failure:${evaluatorPreflight.stderr?.trim() || `exit-${evaluatorPreflight.status}`}`;
+    state.status = "stopped-preregistered";
+    state.stop_reason = reason;
+    state.current_cell = null;
+    state.cells = plan.cells.map((cell, index) => ({
+      id: cell.id,
+      order: index + 1,
+      status: "not-started",
+      workspace: join(matrixRoot, cell.id),
+      reason,
+    }));
+    writeJson(executionStatePath, state);
+    throw new Error(reason);
+  }
+  writeJson(executionStatePath, state);
 
   for (const [index, cell] of plan.cells.entries()) {
     const pacingDelayMs = interCellDelayMs(plan, index);
