@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.50 Composer color recovery passed
+- fresh candidate는 85/85, critical 6/6, Evidence pass, 4 viewport axe serious/critical 0이다.
+- signal-orange normal-text 사용은 0이고 non-text decoration에만 남았다.
+- retry/fallback/manual edit 없이 index.html만 바뀌었으며 1.9.48 결정은 동결한다.
+- 다음은 fresh balanced Composer 9-cell replacement 1.9.51이다.
+
 ## 2026-07-28 (Codex) · 1.9.49 semantic-color closure accepted locally
 - changed foreground 전수 closure와 exact 4.5:1 없는 accent normal-text fail-close를 skill에 추가했다.
 - contract/install/Cursor adaptation 55개 통과; vendor Git metadata 2건만 기존 환경 실패다.

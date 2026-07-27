@@ -3,7 +3,7 @@
   "suite_version": "ui-resolve-v0.2",
   "evaluator_schema": "0.5",
   "product_version": "1.9.50",
-  "status": "prepared_approved_for_execution",
+  "status": "execution_complete_candidate_passed",
   "output_root": "/tmp/u1950",
   "scheduled_cells": 1,
   "prepared_cells": 1,
@@ -18,7 +18,8 @@
     "installed_skill_sha256": "938c6f0a7bb2ce172786274599b56591f01a82ee8e6bd1bf3d54bef03c74e4c7",
     "skill_sidecar_sha256": "f0ad5294de3f599bbed124708c61988be9098e20d4723ce3574023144751253e"
   },
-  "provider_execution_started": false,
+  "provider_execution_started": true,
+  "provider_execution_completed": true,
   "approval": {
     "received_for_this_fresh_root": true,
     "scope": "One Cursor Composer 2.5 OmD candidate cell in /tmp/u1950 using only the locked per-cell file boundary.",

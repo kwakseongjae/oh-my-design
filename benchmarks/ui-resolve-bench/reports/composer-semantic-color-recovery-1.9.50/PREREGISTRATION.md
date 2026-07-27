@@ -1,6 +1,6 @@
 # Composer semantic-color candidate recovery — 1.9.50
 
-Status: **LOCKED; fresh preparation pending**.
+Status: **EXECUTED; candidate recovery passed**.
 
 ## Hypothesis
 
@@ -34,3 +34,15 @@ Stop and freeze on the first provider/controller/evaluator/export failure.
 This candidate-only result is outside every Skill Lift denominator. A pass
 only unlocks a fresh full Composer replacement; a repeat of the same
 semantic-color root cause triggers the hard-pause audit.
+
+## Frozen decision
+
+The fresh Composer candidate completed without retry, fallback, manual product
+edit, timeout, or controller failure. It scored 85/85, passed all six critical
+gates and Evidence & Unknown, produced zero serious/critical axe violations at
+all four viewports, and changed only `index.html`. `signal-orange` remains only
+as non-text decoration; text uses declared ink/muted/danger/success roles.
+
+The candidate-only recovery therefore passes and unlocks a fresh nine-cell
+Composer replacement. It remains outside every Skill Lift denominator and
+does not revise the rejected 1.9.48 result.

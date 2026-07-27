@@ -4,13 +4,16 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.49 semantic-color closure local acceptance passed
+- 갱신: 2026-07-28 · 1.9.50 Composer semantic-color candidate recovery passed
 
 ## 지금 (현재 위치)
 
+- 1.9.50 fresh Composer candidate-only recovery는 retry/fallback/manual edit 없이 85/85, critical 6/6, Evidence & Unknown pass, 4 viewports axe serious/critical 0, `index.html`-only diff로 통과했다. `signal-orange`는 non-text decoration 2곳에만 남고 normal text 0곳이다.
+- Composer는 immutable ID가 아닌 `Composer 2.5` 표시명만 반환하므로 public validity는 계속 `invalid-attribution`이다. 이 1셀은 모든 Skill Lift denominator 밖이며 1.9.48 rejected 결정을 바꾸지 않는다.
+- 다음 의미 있는 patch는 1.9.51 fresh Composer 9-cell replacement다. 동일 task/evaluator/Raw/control과 balanced order를 유지하며 통과해야 Composer bounded Skill Lift replication을 닫는다.
 - 1.9.49는 canonical `omd-apply`에 mandatory post-edit `foreground closure`를 추가했다. changed foreground 선언과 실제 text를 전수해 token semantic은 proof가 아니며 exact 4.5:1이 없으면 declared text-role로 fail-close하고 accent는 인접 non-text에만 남긴다. 대체 token이 없어도 새 hex를 만들지 않는다.
 - contract 6/6, install-skills 36/36, focused Cursor adaptation 포함 7/7, TypeScript/build/diff가 green이다. selected 55/57에서 기존 `/tmp` competitor vendor Git metadata 2건만 환경 실패다. evaluator/task/Raw/historical score는 불변이다.
-- local repair만 pass했으며 다음은 fresh Composer candidate-only recovery 1셀이다. 통과 시 full 9-cell replacement를 새 denominator로 실행한다.
+- local repair와 fresh Composer candidate-only recovery가 모두 pass했으며 full 9-cell replacement가 unlock됐다.
 - 1.9.48 fresh Cursor/Composer 2.5 matrix는 9/9 완료했다. baseline 65/59/61(0/3), Raw 81/79/85(1/3), OmD 85/85/81(2/3), paired +4/+6/-4로 3/3·zero-loss·accessibility gate를 실패해 replication rejected다.
 - sole OmD failure는 evaluator 문제가 아니라 `.check-state.blocked` 13px bold에 `signal-orange #E7683D`를 white 위 foreground로 써 3.25:1이 난 실제 semantic-color defect다. mobile/320/200%에서 axe color-contrast가 fail했다.
 - skill에 unmeasured accent normal-text 금지가 이미 있으나 ledger/checklist라 Composer 1/3에서 closure를 생략했다. 다음 1.9.49는 changed foreground declaration 전수 분류→measured 4.5:1 없으면 text-role token으로 교체하고 accent는 non-text에만 보존하는 mandatory closure 하나만 강화한다.
