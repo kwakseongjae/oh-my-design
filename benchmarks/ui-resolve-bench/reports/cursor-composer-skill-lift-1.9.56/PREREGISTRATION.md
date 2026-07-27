@@ -1,6 +1,6 @@
 # Cursor/Composer dependency-safe paced Skill Lift replacement — 1.9.56
 
-Status: **LOCKED and PREPARED; provider execution authorized**.
+Status: **EXECUTION STOPPED; Composer provider capacity deferred**.
 
 ## Frontier gate and bounded hypothesis
 
@@ -71,3 +71,15 @@ Cursor Preview slice. A provider-capacity stop despite pacing defers Composer
 instead of creating another immediate replacement. Neither outcome establishes
 a public model winner, confidence interval, three-family generality,
 efficiency, or frontier status.
+
+## Frozen decision
+
+Dependency preflight passed. The first baseline provider cell then returned
+Cursor Provider `resource_exhausted` after 26,563 ms, three provider-managed
+reconnection attempts, no usage event, no final response, and no product
+change. The remaining eight cells were retained as `not-started`.
+
+This is the same provider-capacity condition as 1.9.51 and 1.9.52, now occurring
+before the first inter-cell wait can apply. The matrix is frozen and outside
+every denominator. Composer is deferred; no immediate replacement, model
+substitution, or output reuse is allowed.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.56 capacity stop; Composer deferred
+- evaluator preflight는 통과했지만 첫 Composer cell이 26.6초에 `resource_exhausted`였다.
+- usage/final/product change 0, 1 stopped/8 not-started로 freeze했다.
+- inter-cell pacing 전 실패라 immediate replacement와 model substitution을 금지했다.
+- 다음은 별도 Grok multi-task slice; Kimi는 stable selector 대기다.
+
 ## 2026-07-28 (Codex) · 1.9.56 clean preparation complete
 - committed source에서 `/tmp/u1956` 9/9를 clean-prepare했다.
 - primary controller의 Playwright/axe preflight도 통과했다.

@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.56 dependency-safe paced Composer replacement clean-prepared
+- 갱신: 2026-07-28 · Composer lane deferred after 1.9.56 provider capacity stop
 
 ## 지금 (현재 위치)
 
@@ -25,6 +25,10 @@
 - 1.9.56을 동일 Composer 2.5·9셀·order·control·acceptance로 LOCKED했다. root는 `/tmp/u1956`이며 1.9.54 대비 benchmark denominator delta는 0, orchestration correction은 accepted primary-workspace evaluator preflight뿐이다.
 - committed `a623c0b` detached source에서 `/tmp/u1956` 9/9를 clean-prepare했고 source dirty false/publishable true다. primary workspace evaluator preflight도 `playwright-core`/`axe-core` 모두 통과했다.
 - locked matrix SHA는 `77f14fb6…`; starter/DESIGN.md/skill/sidecar hash는 이전 denominator와 동일하다. standing authorization으로 provider execution은 승인 상태다.
+- 1.9.56 primary evaluator preflight는 통과했지만 첫 Composer baseline이 26,563ms 뒤 동일 `resource_exhausted`로 stop됐다. reconnect 3회, usage/final/product change 0이며 8셀은 not-started다.
+- inter-cell pacing 전에 실패했으므로 pacing이 완화할 수 있는 구간이 아니다. 1.9.51/1.9.52와 같은 provider-capacity condition으로 Composer lane을 defer하고 즉시 replacement/resume/model substitution을 금지한다.
+- account-wide quota 고갈은 short Composer/Grok no-write probes가 반증하지만, 현재 long-form Composer workload는 시작 신뢰성이 없다. 별도 Grok task lane은 진행 가능하다.
+- Kimi K3는 현재 `cursor-agent models`에 selector가 없고 local OpenCode/Kimi/Moonshot runtime도 없다. stable selector+usage/model attribution이 생길 때 독립 Model Track canary로만 추가한다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -514,15 +518,15 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. dependency-complete primary controller에서 `/tmp/u1956` 9셀을 120초 pacing으로 실행한다.
-2. 8개 retained wait와 provider/evaluator/export evidence를 확인한다.
-3. 완료 시 Composer replication을 판정하고, infrastructure stop이면 Composer를 defer한다.
+1. 1.9.57 fresh multi-task Cursor/Grok Preview slice를 별도 denominator로 preregister한다.
+2. pricing 단일-task를 넘어 task diversity를 늘리되 frozen evaluator/task contracts만 사용한다.
+3. Kimi K3 runtime selector가 실제 catalog에 나타나면 repository-free attribution canary부터 별도 실행한다.
 4. Kimi K3는 stable immutable selector와 usage attribution을 가진 별도 runtime이 확보될 때 Model Track canary로 추가한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
 - Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
-- Cursor Composer Provider가 두 fresh matrix에서 연속 `resource_exhausted`를 반환했다. account-wide quota는 no-write Composer/Grok probes로 배제했고 pacing calibration은 통과했지만, 120초 pacing의 실효성은 fresh 1.9.54 완료 전까지 미확인이다.
+- Cursor Composer Provider가 1.9.51/1.9.52와 1.9.56에서 `resource_exhausted`를 반환했다. account-wide quota는 short Composer/Grok probes로 배제했지만 long-form Composer lane은 deferred다.
 - 1.9.54는 provider capacity가 아니라 detached worktree의 evaluator dependency 부재로 무효화됐고 1.9.55 preflight로 재발 방지가 완료됐다.
 - Kimi K3는 현재 로그인된 Cursor CLI model catalog에 selector가 없어 Cursor lane 실행이 blocked다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
