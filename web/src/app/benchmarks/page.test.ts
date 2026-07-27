@@ -25,5 +25,19 @@ describe("/benchmarks", () => {
     expect(html).toContain("Internal is a stage, not a softer word for verified.");
     expect(html).toContain("24+ tasks");
   });
-});
 
+  it("keeps activation after method and source inspection", () => {
+    const methodIndex = html.indexOf('id="method"');
+    const sourcesIndex = html.indexOf("Inspect the source, not just the chart.");
+    const activationIndex = html.indexOf("Inspect first. Then continue in your own project.");
+
+    expect(methodIndex).toBeGreaterThan(-1);
+    expect(sourcesIndex).toBeGreaterThan(methodIndex);
+    expect(activationIndex).toBeGreaterThan(sourcesIndex);
+    expect(html).toContain('href="/docs/en/demo#runbook"');
+    expect(html).toContain('href="/builder"');
+    expect(html).toContain("This result remains Internal.");
+    expect(html).toContain("$ npx oh-my-design-cli@latest");
+    expect(html).toContain("Copy Terminal command");
+  });
+});

@@ -1,9 +1,17 @@
 "use client";
 
-import type { MouseEvent } from "react";
+import { useRef, type MouseEvent } from "react";
+import { trackBenchmarkInspect } from "@/lib/benchmarks/analytics";
 
 export function BenchmarkMethodLink() {
+  const tracked = useRef(false);
+
   function navigateToMethod(event: MouseEvent<HTMLAnchorElement>) {
+    if (!tracked.current) {
+      tracked.current = true;
+      trackBenchmarkInspect("method");
+    }
+
     const target = document.getElementById("method");
 
     if (!target) return;

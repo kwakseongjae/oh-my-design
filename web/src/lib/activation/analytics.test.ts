@@ -37,6 +37,25 @@ describe("canonical activation handoff", () => {
     expect(mockedTrackRef).toHaveBeenCalledWith("copy", "toss");
   });
 
+  it("keeps benchmark activation version-isolated through the canonical bridge", () => {
+    trackInstallCopy({ surface: "benchmark", experimentVersion: "1.9.38" });
+
+    expect(mockedEvent.mock.calls).toEqual([
+      [
+        "act_install_copy",
+        { surface: "benchmark", experiment_version: "1.9.38" },
+      ],
+      [
+        "act_handoff",
+        {
+          kind: "install_copy",
+          surface: "benchmark",
+          experiment_version: "1.9.38",
+        },
+      ],
+    ]);
+  });
+
   it("maps builder and detail exports onto one handoff taxonomy", () => {
     trackBuilderExport({ reference: "toss", channel: "copy" });
     trackDetailExport({ reference: "apple", channel: "download" });

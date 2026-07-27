@@ -265,6 +265,15 @@ lift, or reuse. A production-hostname query, empty Testing-filter dimension,
 and confirmed Active internal-traffic exclusion are fail-closed measurement
 prerequisites.
 
+1.9.38 passed deterministic acceptance. Sol high review exposed and closed the
+hidden-command and unreachable-mobile-denominator defects. Terra xhigh verified
+830/830 web tests, the 1,459-page production build, exact success/failure event
+paths, clean Docs/Builder proxies, and 1440/390/320/200%-equivalent geometry.
+A serious keyboard-focus defect on the horizontally scrollable Terminal command
+was retained, fixed, and reverified at axe serious/critical 0/0 with console
+errors 0. The patch is `calibration_complete`; its 14–28 day production decision
+remains pending and does not block the provider-neutral 1.9.39 contract.
+
 ## 2.0.0 frontier gates
 
 All must pass:

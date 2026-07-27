@@ -6,7 +6,6 @@ import {
   Check,
   CircleDashed,
   Clock3,
-  Code2,
   FileCheck2,
   FlaskConical,
   Gauge,
@@ -15,7 +14,10 @@ import {
   TriangleAlert,
 } from "lucide-react";
 import benchmark from "@/data/ui-benchmark-public.generated.json";
+import { BenchmarkActivation } from "./benchmark-activation";
 import { BenchmarkMethodLink } from "./benchmark-method-link";
+import { BenchmarkSourceLink } from "./benchmark-source-link";
+import { BenchmarkTracker } from "./benchmark-tracker";
 
 const SITE_URL = "https://oh-my-design.kr";
 const REPOSITORY_URL = "https://github.com/kwakseongjae/oh-my-design";
@@ -82,20 +84,6 @@ function MetricBar({
   );
 }
 
-function SourceLink({ path, children }: { path: string; children: React.ReactNode }) {
-  return (
-    <a
-      href={reportUrl(path)}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex min-h-11 items-center justify-between gap-3 rounded-lg border border-border bg-card px-4 py-2.5 text-sm font-medium transition-colors hover:border-foreground/25 hover:bg-secondary active:translate-y-px focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-    >
-      <span>{children}</span>
-      <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
-    </a>
-  );
-}
-
 export default function BenchmarksPage() {
   const harness = benchmark.harnessCheckpoint;
   const locale = benchmark.localeCheckpoint;
@@ -103,6 +91,7 @@ export default function BenchmarksPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <BenchmarkTracker />
       <header className="border-b border-border bg-background/95">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
           <Link
@@ -503,28 +492,49 @@ export default function BenchmarksPage() {
                   CI rejects a stale derived file or a changed denominator.
                 </p>
                 <div className="mt-7 grid gap-3">
-                  <SourceLink path={benchmark.sourcePaths.harnessSummary}>Harness summary</SourceLink>
-                  <SourceLink path={benchmark.sourcePaths.harnessAggregate}>Aggregate statistics</SourceLink>
-                  <SourceLink path={benchmark.sourcePaths.localeFailure}>Visible failed run</SourceLink>
-                  <SourceLink path={benchmark.sourcePaths.focusCalibration}>Focus contract calibration</SourceLink>
-                  <SourceLink path={benchmark.sourcePaths.localeRecovery}>Fresh recovery</SourceLink>
-                  <a
-                    href={`${REPOSITORY_URL}/blob/main/benchmarks/ui-resolve-bench/PROTOCOL.md`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center justify-between gap-3 rounded-lg bg-foreground px-4 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-85 active:translate-y-px active:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                  <BenchmarkSourceLink
+                    href={reportUrl(benchmark.sourcePaths.harnessSummary)}
+                    target="harness_summary"
                   >
-                    <span className="inline-flex items-center gap-2">
-                      <Code2 className="h-4 w-4" aria-hidden="true" />
-                      Full methodology
-                    </span>
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
+                    Harness summary
+                  </BenchmarkSourceLink>
+                  <BenchmarkSourceLink
+                    href={reportUrl(benchmark.sourcePaths.harnessAggregate)}
+                    target="aggregate_statistics"
+                  >
+                    Aggregate statistics
+                  </BenchmarkSourceLink>
+                  <BenchmarkSourceLink
+                    href={reportUrl(benchmark.sourcePaths.localeFailure)}
+                    target="failed_run"
+                  >
+                    Visible failed run
+                  </BenchmarkSourceLink>
+                  <BenchmarkSourceLink
+                    href={reportUrl(benchmark.sourcePaths.focusCalibration)}
+                    target="focus_calibration"
+                  >
+                    Focus contract calibration
+                  </BenchmarkSourceLink>
+                  <BenchmarkSourceLink
+                    href={reportUrl(benchmark.sourcePaths.localeRecovery)}
+                    target="fresh_recovery"
+                  >
+                    Fresh recovery
+                  </BenchmarkSourceLink>
+                  <BenchmarkSourceLink
+                    href={`${REPOSITORY_URL}/blob/main/benchmarks/ui-resolve-bench/PROTOCOL.md`}
+                    target="protocol"
+                    protocol
+                  >
+                    Full methodology
+                  </BenchmarkSourceLink>
                 </div>
               </aside>
             </div>
           </div>
         </section>
+        <BenchmarkActivation />
       </main>
 
       <footer className="border-t border-border">

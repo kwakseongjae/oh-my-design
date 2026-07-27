@@ -5,25 +5,48 @@
  */
 import { event, trackRef } from "@/lib/gtag";
 
-export type InstallSurface = "hero" | "ref_detail" | "collection" | "builder" | "docs" | "cli";
+export type InstallSurface =
+  | "hero"
+  | "ref_detail"
+  | "collection"
+  | "builder"
+  | "docs"
+  | "cli"
+  | "benchmark";
 export type HandoffKind = "designmd_copy" | "designmd_download" | "prompt_copy" | "install_copy";
 
 /** Canonical activation event. Legacy detail events dual-fire for continuity. */
-export function trackHandoff(args: { kind: HandoffKind; surface: InstallSurface; reference?: string }) {
+export function trackHandoff(args: {
+  kind: HandoffKind;
+  surface: InstallSurface;
+  reference?: string;
+  experimentVersion?: string;
+}) {
   event("act_handoff", {
     kind: args.kind,
     surface: args.surface,
     ...(args.reference ? { reference: args.reference } : {}),
+    ...(args.experimentVersion ? { experiment_version: args.experimentVersion } : {}),
   });
 }
 
 /** Copied the `npx oh-my-design-cli` install command. KEY EVENT. */
-export function trackInstallCopy(args: { surface: InstallSurface; reference?: string }) {
+export function trackInstallCopy(args: {
+  surface: InstallSurface;
+  reference?: string;
+  experimentVersion?: string;
+}) {
   event("act_install_copy", {
     surface: args.surface,
     ...(args.reference ? { reference: args.reference } : {}),
+    ...(args.experimentVersion ? { experiment_version: args.experimentVersion } : {}),
   });
-  trackHandoff({ kind: "install_copy", surface: args.surface, reference: args.reference });
+  trackHandoff({
+    kind: "install_copy",
+    surface: args.surface,
+    reference: args.reference,
+    experimentVersion: args.experimentVersion,
+  });
   // Per-reference install-intent counter — kept OUT of the `copy` counter so
   // the install command (identical for every reference) never pollutes
   // content-copy popularity.

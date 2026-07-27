@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-27 (Codex) · 1.9.38 activation accepted
+- Home evidence entry와 Method/Sources 뒤 3-way handoff, typed `bm_*`/GA report를 구현했다.
+- Sol high가 exact command·모바일 분모 BLOCK을 잡아 수정 후 PASS했다.
+- Terra xhigh는 Web830/830·build1,459·4 viewport·event paths를 통과했다.
+- scrollable command axe serious 1건을 고쳐 fresh axe 0/0·console 0으로 닫았다.
+
 ## 2026-07-27 (Codex) · 1.9.38 activation preregistered
 - Home은 claim-free tertiary evidence link만, activation은 Method/Sources 뒤에만 둔다.
 - 주 지표는 version-isolated installer copy 성공, Docs/Builder 이동은 탐색 proxy로 고정했다.

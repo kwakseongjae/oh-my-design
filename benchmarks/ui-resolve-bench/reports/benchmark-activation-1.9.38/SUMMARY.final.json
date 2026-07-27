@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.38",
+  "experiment": "benchmark-qualified-activation",
+  "status": "calibration_complete",
+  "provider_generation": false,
+  "design_review": {
+    "model": "gpt-5.6-sol",
+    "effort": "high",
+    "verdict": "pass"
+  },
+  "qa": {
+    "model": "gpt-5.6-terra",
+    "effort": "xhigh",
+    "web_tests": 830,
+    "focused_tests": 10,
+    "production_pages": 1459,
+    "viewports": [1440, 390, 320, 720],
+    "axe_serious": 0,
+    "axe_critical": 0,
+    "console_or_page_errors": 0
+  },
+  "production_decision": "pending_complete_days"
+}
