@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b64fa5d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-27 · 1.9.39 provider-neutral challenge contract preregistered
+- 갱신: 2026-07-27 · Cursor account gateway connected and model lane corrected
 
 ## 지금 (현재 위치)
 
@@ -20,6 +20,10 @@
 - 1.9.38 구현은 Sol high BLOCK 2건(숨겨진 exact command, 모바일에서 도달 불가능한 whole-section 50% 분모)을 수정하고 재검수 PASS했다. Terra xhigh는 Web 830/830, production 1,459 pages, 1440/390/320/200%-equivalent geometry, 성공/실패/Docs/Builder event path를 통과했다.
 - exact command의 가로 스크롤 영역에서 axe serious `scrollable-region-focusable` 1건이 발견됐고 labelled `tabIndex=0`+visible focus ring으로 수정 후 fresh axe serious/critical 0/0, console/page error 0을 통과했다. 1.9.38은 `calibration_complete`; production 14–28일 판단은 별도 pending이다.
 - 1.9.39 설계 감사에서 matrix가 `cell.runtime=codex`여도 `run-claude.mjs`와 `--effort`를 하드코딩하는 provider-neutral 위반을 확인했다. live model 없이 fake Claude/Codex로 no-fallback dispatch, common provenance, failure retention을 교정하도록 사전등록했다.
+- 다중 모델은 이미 Model Track·Skill Lift·Harness·Transfer Matrix로 분리돼 있으며 1.9.6에서 Terra/Fable/Opus 1-task compatibility smoke를 완료했다. 이는 runtime-neutral leaderboard가 아니라 model×runtime 내부 관측이다.
+- Cursor Agent `2026.07.23-e383d2b`을 `cursor-agent` 전용 경로로 collision-safe 설치하고 사용자 계정 브라우저 로그인을 완료했다. 기존 `agent`는 Grok 0.2.33 그대로다.
+- 실제 계정 catalog에서 `cursor-grok-4.5-high`, `composer-2.5`, `gpt-5.3-codex-xhigh`를 fixed-runtime model pilot 후보로 고정했다. Auto는 routing-policy condition, Fast는 별도 속도 변형, label 없는 `claude-opus-5-thinki`는 attribution 전까지 제외한다.
+- Cursor gateway model test가 우선이며 Cursor 제품 통합은 별도다. 1.9.41 fake adapter → 1.9.42 3-model no-write attribution → 1.9.43 fixed-runtime Model Track → 1.9.44 real Agent Skill channel → 1.9.45 Skill Lift 순이다.
 - 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
 - stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.
 - 완성 3 pairs는 objective 0 win/3 tie/0 loss이고 Pricing/Onboarding 85/85, Operations 81/85로 양 시스템이 동률이다. paired-only median은 portable 430,140ms·105,380 tokens, harness 500,022ms·152,485 tokens(1.162×/1.447×)지만 incomplete matrix라 reliability/Pareto/promotion 근거가 아니다.
@@ -436,6 +440,7 @@
 1. fake Claude/Codex runtime만으로 1.9.39 no-fallback dispatch·runtime provenance·failure retention을 구현·교정한다.
 2. Sol high contract review와 Terra xhigh deterministic test를 통과하면 1.9.39를 checkpoint한다.
 3. 통과하면 1.9.40 fresh live runtime attribution smoke를 별도 사전등록한다.
+4. 이후 1.9.41 fake Cursor adapter → 1.9.42 three-model attribution → 1.9.43 fixed-runtime model pilot → 1.9.44 Cursor skill channel → 1.9.45 Skill Lift 순으로 진행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

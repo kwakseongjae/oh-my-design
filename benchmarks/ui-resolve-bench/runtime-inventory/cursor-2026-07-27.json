@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-07-27",
+  "purpose": "account-visible Cursor model inventory; no benchmark score",
+  "runtime": {
+    "id": "cursor-agent",
+    "version": "2026.07.23-e383d2b",
+    "binary_sha256": "eed61c5224668c9236334c4c68936a16aecc37374b592f59e31eb50433817831",
+    "platform": "darwin-arm64",
+    "authenticated": true,
+    "account_identifier_recorded": false
+  },
+  "models": [
+    { "id": "auto", "label": "Auto", "default": true },
+    { "id": "gpt-5.3-codex-low", "label": "Codex 5.3 Low" },
+    { "id": "gpt-5.3-codex-low-fast", "label": "Codex 5.3 Low Fast" },
+    { "id": "gpt-5.3-codex", "label": "Codex 5.3" },
+    { "id": "gpt-5.3-codex-fast", "label": "Codex 5.3 Fast" },
+    { "id": "gpt-5.3-codex-high", "label": "Codex 5.3 High" },
+    { "id": "gpt-5.3-codex-high-fast", "label": "Codex 5.3 High Fast" },
+    { "id": "gpt-5.3-codex-xhigh", "label": "Codex 5.3 Extra High" },
+    { "id": "gpt-5.3-codex-xhigh-fast", "label": "Codex 5.3 Extra High Fast" },
+    { "id": "gpt-5.2", "label": "GPT-5.2" },
+    { "id": "cursor-grok-4.5-high", "label": "Cursor Grok 4.5" },
+    { "id": "cursor-grok-4.5-high-fast", "label": "Cursor Grok 4.5 Fast" },
+    { "id": "composer-2.5", "label": "Composer 2.5" },
+    { "id": "claude-opus-5-thinki", "label": null }
+  ],
+  "selected_fixed_runtime_pilot": [
+    "cursor-grok-4.5-high",
+    "composer-2.5",
+    "gpt-5.3-codex-xhigh"
+  ],
+  "excluded_from_fixed_model_pilot": {
+    "auto": "dynamic routing policy, not an immutable named model",
+    "fast_variants": "separate speed configuration; do not mix with non-Fast rows",
+    "claude-opus-5-thinki": "unlabelled and apparently incomplete CLI catalog entry; current user policy also excludes Opus"
+  },
+  "claim_boundary": "Availability snapshot only. No live attribution probe, quality comparison, token/cost claim, or model ranking."
+}

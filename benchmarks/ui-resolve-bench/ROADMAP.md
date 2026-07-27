@@ -61,6 +61,11 @@ Remaining before a paired 12-task run:
    occlusion, and tab-order checks against valid and defective fixtures.
 8. Add valid solutions plus adversarial mutants and calibrate thresholds before
    interpreting arm scores.
+9. Complete the connected Cursor account-gateway lane in
+   [`CURSOR-RUNTIME-PLAN.md`](./CURSOR-RUNTIME-PLAN.md): fake stream contract,
+   exact-model attribution, fixed-runtime Grok/Composer/Codex pilot, and a
+   separate modern Agent Skill install channel. Never invoke the ambiguous local
+   `agent` command and never mix Cursor Auto/Router with named-model rows.
 
 ### Queue B — paired Skill Lift pilot
 

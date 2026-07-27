@@ -5,6 +5,18 @@
 
 ---
 
+## 2026-07-27 (Codex) · Cursor account gateway connected
+- `cursor-agent`만 collision-safe 설치하고 Cursor 계정 로그인을 완료했으며 Grok `agent`는 보존했다.
+- 계정 catalog에서 Grok4.5/Composer2.5/Codex5.3-xhigh를 fixed-runtime 후보로 확정했다.
+- gateway benchmark를 우선하고 Cursor OmD skill 설치 고도화는 별도 1.9.44로 분리했다.
+- 다음은 기존 순서대로 1.9.39 controller 교정부터 진행한다.
+
+## 2026-07-27 (Codex) · Cursor runtime/model lane staged
+- desktop 3.12.17은 있으나 Cursor Agent CLI는 없고 로컬 `agent`는 Grok 0.2.33임을 확인했다.
+- 공식 installer가 기존 `agent`를 삭제하므로 `cursor-agent` 전용 collision-safe 설치를 채택했다.
+- 1.9.41 fake adapter → 1.9.42 skill channel → 1.9.43 attribution → 1.9.44 model pilot로 분리했다.
+- Auto/Router는 named-model leaderboard가 아닌 routing-policy condition으로 고정했다.
+
 ## 2026-07-27 (Codex) · 1.9.39 provider-neutral contract preregistered
 - Codex 셀도 Claude runner/`--effort`로 실행되는 controller 하드코딩을 확인했다.
 - live provider 없이 fake Claude/Codex no-fallback dispatch 교정으로 범위를 고정했다.
