@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.56 dependency-safe replacement locked
+- Composer 2.5 동일 9셀/order/control을 `/tmp/u1956`으로 고정했다.
+- 1.9.54 대비 benchmark denominator delta는 0이다.
+- accepted primary-workspace preflight만 orchestration correction으로 적용한다.
+- 다음은 clean preparation과 exact hash lock이다.
+
 ## 2026-07-28 (Codex) · 1.9.55 evaluator preflight accepted
 - exact Playwright/axe dependency를 provider 시작 전에 fail-close한다.
 - missing fixture는 provider invocation 0·모든 셀 not-started를 통과했다.
