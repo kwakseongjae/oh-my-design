@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.48 Composer replication rejected; semantic-color closure next
+- 갱신: 2026-07-28 · 1.9.49 semantic-color closure local acceptance passed
 
 ## 지금 (현재 위치)
 
+- 1.9.49는 canonical `omd-apply`에 mandatory post-edit `foreground closure`를 추가했다. changed foreground 선언과 실제 text를 전수해 token semantic은 proof가 아니며 exact 4.5:1이 없으면 declared text-role로 fail-close하고 accent는 인접 non-text에만 남긴다. 대체 token이 없어도 새 hex를 만들지 않는다.
+- contract 6/6, install-skills 36/36, focused Cursor adaptation 포함 7/7, TypeScript/build/diff가 green이다. selected 55/57에서 기존 `/tmp` competitor vendor Git metadata 2건만 환경 실패다. evaluator/task/Raw/historical score는 불변이다.
+- local repair만 pass했으며 다음은 fresh Composer candidate-only recovery 1셀이다. 통과 시 full 9-cell replacement를 새 denominator로 실행한다.
 - 1.9.48 fresh Cursor/Composer 2.5 matrix는 9/9 완료했다. baseline 65/59/61(0/3), Raw 81/79/85(1/3), OmD 85/85/81(2/3), paired +4/+6/-4로 3/3·zero-loss·accessibility gate를 실패해 replication rejected다.
 - sole OmD failure는 evaluator 문제가 아니라 `.check-state.blocked` 13px bold에 `signal-orange #E7683D`를 white 위 foreground로 써 3.25:1이 난 실제 semantic-color defect다. mobile/320/200%에서 axe color-contrast가 fail했다.
 - skill에 unmeasured accent normal-text 금지가 이미 있으나 ledger/checklist라 Composer 1/3에서 closure를 생략했다. 다음 1.9.49는 changed foreground declaration 전수 분류→measured 4.5:1 없으면 text-role token으로 교체하고 accent는 non-text에만 보존하는 mandatory closure 하나만 강화한다.
@@ -484,10 +487,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.48 frozen failure report를 commit한다.
-2. 1.9.49 semantic-color closure를 skill/channel mirror에 한정해 구현하고 deterministic acceptance를 추가한다.
-3. local acceptance 통과 시 fresh Composer candidate-only recovery를 새 root에서 실행한다.
-4. recovery가 통과하면 full Composer 9-cell replacement 또는 다음 multi-task Preview slice를 preregister한다. 같은 root-cause가 fresh replacement에서 다시 실패하면 hard pause 조건을 평가한다.
+1. 1.9.49 local repair checkpoint를 commit한다.
+2. 1.9.50 fresh Composer candidate-only recovery를 새 root에서 prepare/execute한다.
+3. recovery가 85/85·a11y·named cluster 0으로 통과하면 full Composer 9-cell replacement를 새 denominator로 preregister한다.
+4. 같은 root-cause가 fresh recovery에서 다시 실패하면 stop policy에 따라 방향 hard pause를 평가한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

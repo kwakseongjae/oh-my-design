@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.49",
+  "experiment_id": "semantic-color-closure-repair-1.9.49",
+  "status": "local_deterministic_acceptance_passed",
+  "provider_generation": false,
+  "candidate_delta": [
+    "mandatory post-edit foreground declaration inventory",
+    "semantic token names do not count as contrast proof",
+    "unmeasured accent normal text fails closed to declared text role",
+    "adjacent non-text accent preserved without invented color",
+    "zero unresolved normal-text accent pairs before acceptance"
+  ],
+  "unchanged": [
+    "benchmark evaluator schema 0.5",
+    "ui-resolve-v0.2 task and starter",
+    "Raw DESIGN.md control",
+    "runtime and model selectors",
+    "frozen 1.9.48 result"
+  ],
+  "verification": {
+    "canonical_skill_contract_passed": 6,
+    "cursor_adaptation_focused_passed": 1,
+    "install_skills_passed": 36,
+    "selected_total_passed": 55,
+    "selected_environment_failures": 2,
+    "focused_final_passed": 7,
+    "typescript": "pass",
+    "build": "pass",
+    "diff_check": "pass"
+  },
+  "environment_failures": [
+    "external /tmp taste-skill checkout lacks Git metadata",
+    "external /tmp ui-ux-pro-max checkout lacks Git metadata"
+  ],
+  "decision": {
+    "local_repair_passed": true,
+    "next_patch": "1.9.50 fresh Composer candidate-only recovery"
+  },
+  "claim_boundary": "Local procedural contract repair only; no provider output, Skill Lift, model, efficiency, or frontier claim."
+}

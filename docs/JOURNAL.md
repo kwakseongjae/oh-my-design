@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.49 semantic-color closure accepted locally
+- changed foreground 전수 closure와 exact 4.5:1 없는 accent normal-text fail-close를 skill에 추가했다.
+- contract/install/Cursor adaptation 55개 통과; vendor Git metadata 2건만 기존 환경 실패다.
+- TypeScript/build/diff green, evaluator/task/Raw는 불변이다.
+- 다음은 fresh Composer candidate-only recovery 1.9.50이다.
+
 ## 2026-07-28 (Codex) · 1.9.48 Composer replication rejected
 - Composer 9/9: Raw 81/79/85, OmD 85/85/81, paired +4/+6/-4.
 - OmD trial 3의 13px signal-orange text가 white 위 3.25:1이라 실제 a11y fail이었다.

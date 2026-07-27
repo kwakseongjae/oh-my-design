@@ -779,6 +779,8 @@ describe('install-skills', () => {
     expect(applySkill).toMatch(/^name:\s*omd-apply$/m);
     expect(applySkill).toContain('omd:installed-skill');
     expect(applySkill).not.toMatch(/\bomd:apply\b/);
+    expect(applySkill).toContain('foreground closure');
+    expect(applySkill).toContain('unresolved normal-text accent pair');
 
     // The always-on rule is a small bootstrap; procedural instructions live in
     // the dynamically discovered native skill tree.

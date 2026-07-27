@@ -52,6 +52,11 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("일반 텍스트 contrast 4.5:1");
     expect(skill).toContain("semantic_color_ledger");
     expect(skill).toContain("measured proof가 없는 accent-on-surface pair는 의미 있는 normal text에 쓰지 않는다");
+    expect(skill).toContain("foreground closure");
+    expect(skill).toContain("추가·변경한 모든 `color`/foreground 선언");
+    expect(skill).toContain("의미 역할을 선언한 것 자체는 contrast proof가 아니다");
+    expect(skill).toContain("unresolved normal-text accent pair");
+    expect(skill).toContain("새 hex를 만들지 않는다");
     expect(skill).toContain("text-role token + 인접 non-text accent");
     expect(skill).toContain("unresolved인 pair 자체는 남기지 않는다");
     expect(skill).toContain("320px, 200% zoom/reflow");
