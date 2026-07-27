@@ -1,0 +1,135 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.48",
+  "execution_purpose": "internal-cursor-composer-skill-lift-schema-0.5",
+  "experiment_id": "cursor-skill-lift-1.9.48",
+  "output_root": "/tmp/u1948",
+  "family": "skill",
+  "status": "locked-awaiting-fresh-preparation",
+  "control_contract": {
+    "comparison_mode": "native-capability",
+    "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+    "temperature_policy": "runtime-default-frozen",
+    "timeout_seconds": 900,
+    "max_concurrency": 1,
+    "latency_comparison": "eligible",
+    "retry_policy": "none-primary",
+    "timeout_policy": "count-as-valid-failure",
+    "infrastructure_policy": "retain-freeze-and-repreregister",
+    "task_order_policy": "balanced-rotation",
+    "token_budget": {
+      "mode": "observed-only",
+      "limit_tokens": null,
+      "usage_required": true,
+      "account_components": ["input", "cached_input", "output", "reasoning_output"],
+      "cached_input_separate": true,
+      "cost_policy": "provider-reported-or-pinned-price-equivalent"
+    },
+    "step_budget": {
+      "mode": "observed-only",
+      "limit_steps": null
+    }
+  },
+  "cells": [
+    {
+      "id": "pricing-t1-baseline",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "baseline",
+      "system_id": "composer-2.5-no-skill",
+      "runtime": "cursor",
+      "model_id": "composer-2.5",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    },
+    {
+      "id": "pricing-t1-raw",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "raw-design-md",
+      "system_id": "composer-2.5-raw-design-md",
+      "runtime": "cursor",
+      "model_id": "composer-2.5",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    },
+    {
+      "id": "pricing-t1-omd",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "composer-2.5-omd-apply",
+      "runtime": "cursor",
+      "model_id": "composer-2.5",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    },
+    {
+      "id": "pricing-t2-omd",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "composer-2.5-omd-apply",
+      "runtime": "cursor",
+      "model_id": "composer-2.5",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 2
+    },
+    {
+      "id": "pricing-t2-baseline",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "baseline",
+      "system_id": "composer-2.5-no-skill",
+      "runtime": "cursor",
+      "model_id": "composer-2.5",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 2
+    },
+    {
+      "id": "pricing-t2-raw",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "raw-design-md",
+      "system_id": "composer-2.5-raw-design-md",
+      "runtime": "cursor",
+      "model_id": "composer-2.5",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 2
+    },
+    {
+      "id": "pricing-t3-raw",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "raw-design-md",
+      "system_id": "composer-2.5-raw-design-md",
+      "runtime": "cursor",
+      "model_id": "composer-2.5",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 3
+    },
+    {
+      "id": "pricing-t3-omd",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "composer-2.5-omd-apply",
+      "runtime": "cursor",
+      "model_id": "composer-2.5",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 3
+    },
+    {
+      "id": "pricing-t3-baseline",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "baseline",
+      "system_id": "composer-2.5-no-skill",
+      "runtime": "cursor",
+      "model_id": "composer-2.5",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 3
+    }
+  ]
+}
