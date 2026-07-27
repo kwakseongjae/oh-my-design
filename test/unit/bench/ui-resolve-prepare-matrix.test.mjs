@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   prepareArgsForCell,
+  validateControlContract,
   validateRunMatrixPlan,
 } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs";
 
@@ -26,6 +27,34 @@ function plan(overrides = {}) {
   };
 }
 
+function controlContract(overrides = {}) {
+  return {
+    comparison_mode: "native-capability",
+    effort_semantics: "runtime-native-ordinal-not-cross-provider-equivalent",
+    temperature_policy: "runtime-default-frozen",
+    timeout_seconds: 900,
+    max_concurrency: 1,
+    latency_comparison: "eligible",
+    retry_policy: "none-primary",
+    timeout_policy: "count-as-valid-failure",
+    infrastructure_policy: "retain-freeze-and-repreregister",
+    task_order_policy: "balanced-rotation",
+    token_budget: {
+      mode: "observed-only",
+      limit_tokens: null,
+      usage_required: true,
+      account_components: ["input", "cached_input", "output", "reasoning_output"],
+      cached_input_separate: true,
+      cost_policy: "provider-reported-or-pinned-price-equivalent",
+    },
+    step_budget: {
+      mode: "observed-only",
+      limit_steps: null,
+    },
+    ...overrides,
+  };
+}
+
 describe("UI-Resolve run matrix preparation", () => {
   it("accepts a frozen, unique matrix plan", () => {
     expect(validateRunMatrixPlan(plan()).cells).toHaveLength(1);
@@ -41,6 +70,50 @@ describe("UI-Resolve run matrix preparation", () => {
     expect(validateRunMatrixPlan(current).product_version).toBe("1.9.39");
     delete current.execution_purpose;
     expect(() => validateRunMatrixPlan(current)).toThrow("execution_purpose");
+  });
+
+  it("requires a compute-control contract for cross-runtime schema 0.3", () => {
+    const current = plan({
+      schema_version: "0.3",
+      suite_version: "ui-resolve-v0.1",
+      product_version: "1.9.45",
+      execution_purpose: "internal-model-comparison",
+      family: "model",
+      control_contract: controlContract(),
+    });
+    expect(validateRunMatrixPlan(current).control_contract.comparison_mode)
+      .toBe("native-capability");
+    expect(validateControlContract(current).latency_comparison).toBe("eligible");
+
+    const missing = structuredClone(current);
+    delete missing.control_contract;
+    expect(() => validateRunMatrixPlan(missing)).toThrow("control_contract");
+  });
+
+  it("rejects false effort equivalence and unenforceable budget claims", () => {
+    const current = plan({
+      schema_version: "0.3",
+      suite_version: "ui-resolve-v0.1",
+      product_version: "1.9.45",
+      execution_purpose: "internal-model-comparison",
+      family: "model",
+      control_contract: controlContract(),
+    });
+
+    current.control_contract.effort_semantics = "high-is-equal-everywhere";
+    expect(() => validateRunMatrixPlan(current)).toThrow("cross-provider effort equivalence");
+
+    current.control_contract = controlContract({
+      token_budget: {
+        ...controlContract().token_budget,
+        mode: "hard-cap",
+        limit_tokens: null,
+      },
+    });
+    expect(() => validateRunMatrixPlan(current)).toThrow("limit_tokens");
+
+    current.control_contract = controlContract({ max_concurrency: 2 });
+    expect(() => validateRunMatrixPlan(current)).toThrow("max_concurrency 1");
   });
 
   it("rejects duplicate task/trial/system cells", () => {

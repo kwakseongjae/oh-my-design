@@ -42,6 +42,7 @@ export function classifyValidity(manifest, runStatus, score, run = null) {
 export function summarizeTokenUsage(run) {
   const totals = { input_tokens: 0, cached_input_tokens: 0, output_tokens: 0, reasoning_output_tokens: 0 };
   let observed = false;
+  const observedComponents = new Set();
   const aliases = {
     input_tokens: ["input_tokens", "inputTokens"],
     cached_input_tokens: [
@@ -60,12 +61,19 @@ export function summarizeTokenUsage(run) {
     observed = true;
     for (const field of Object.keys(totals)) {
       const sourceField = aliases[field].find((alias) => usage[alias] !== undefined);
+      if (sourceField) observedComponents.add(field);
       const value = Number(sourceField ? usage[sourceField] : 0);
       if (Number.isFinite(value) && value >= 0) totals[field] += value;
     }
   }
   if (!observed) return null;
-  return { ...totals, total_tokens: totals.input_tokens + totals.output_tokens };
+  return {
+    ...totals,
+    total_tokens: totals.input_tokens + totals.output_tokens,
+    observed_components: [...observedComponents].sort(),
+    input_output_complete:
+      observedComponents.has("input_tokens") && observedComponents.has("output_tokens"),
+  };
 }
 
 export function buildRunRecord({
@@ -78,6 +86,7 @@ export function buildRunRecord({
   trialIndex,
   suiteVersion,
   budgetTier,
+  executionControl = null,
 }) {
   if (!FAMILIES.has(family)) throw new Error(`unsupported benchmark family: ${family}`);
   if (!Number.isInteger(trialIndex) || trialIndex < 1) throw new Error("trial index must be a positive integer");
@@ -120,6 +129,19 @@ export function buildRunRecord({
     provider_cost_equivalent_usd: Number.isFinite(Number(run?.output?.total_cost_usd))
       ? Number(run.output.total_cost_usd)
       : null,
+    execution_control: executionControl,
+    usage_completeness: {
+      evidence_mode: run?.output?.usage_attribution?.evidence_mode ?? null,
+      available: tokenUsage !== null,
+      input_output_complete: tokenUsage?.input_output_complete ?? false,
+      observed_components: tokenUsage?.observed_components ?? [],
+      reasoning_visibility: tokenUsage?.observed_components?.includes("reasoning_output_tokens")
+        ? "reported"
+        : "not-reported",
+      cached_input_visibility: tokenUsage?.observed_components?.includes("cached_input_tokens")
+        ? "reported"
+        : "not-reported",
+    },
     runtime_model_usage: Array.isArray(run?.output?.model_usage)
       ? run.output.model_usage
       : null,
@@ -214,6 +236,8 @@ async function main() {
     run.output = { ...run.output, ...summarizeClaudeToolErrors(events) };
   }
   const score = existsSync(scorePath) ? readJson(scorePath) : null;
+  const matrixCellPath = join(benchmarkDir, "matrix-cell.json");
+  const matrixCell = existsSync(matrixCellPath) ? readJson(matrixCellPath) : null;
   const record = buildRunRecord({
     workspace,
     manifest,
@@ -224,6 +248,7 @@ async function main() {
     trialIndex,
     suiteVersion: String(args.get("suite-version") ?? manifest.task.version),
     budgetTier: String(args.get("budget-tier") ?? "standard"),
+    executionControl: matrixCell?.execution_control ?? null,
   });
   const out = args.get("out")
     ? resolve(String(args.get("out")))

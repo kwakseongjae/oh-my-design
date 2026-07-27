@@ -85,6 +85,13 @@ describe("UI-Resolve normalized run exporter", () => {
         output_tokens: 25,
         reasoning_output_tokens: 5,
         total_tokens: 125,
+        observed_components: [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens",
+        ],
+        input_output_complete: true,
       },
       provider_cost_equivalent_usd: 1.25,
       runtime_model_usage: [{
@@ -112,6 +119,12 @@ describe("UI-Resolve normalized run exporter", () => {
           final_result_ms: 1180,
         },
       },
+      usage_completeness: {
+        available: true,
+        input_output_complete: true,
+        reasoning_visibility: "reported",
+        cached_input_visibility: "reported",
+      },
       delivery: {
         product_changed: true,
         changed_product_files: [{ path: "index.html", status: "modified" }],
@@ -133,6 +146,13 @@ describe("UI-Resolve normalized run exporter", () => {
       output_tokens: 6,
       reasoning_output_tokens: 3,
       total_tokens: 22,
+      observed_components: [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens",
+      ],
+      input_output_complete: true,
     });
   });
 
@@ -155,6 +175,12 @@ describe("UI-Resolve normalized run exporter", () => {
       output_tokens: 16_383,
       reasoning_output_tokens: 0,
       total_tokens: 56_818,
+      observed_components: [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+      ],
+      input_output_complete: true,
     });
   });
 

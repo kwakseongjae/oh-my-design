@@ -32,6 +32,11 @@ variable factors are defined in
 [`BENCHMARK-FAMILIES.md`](./BENCHMARK-FAMILIES.md); results from different
 families are never merged into one global rank.
 
+Cross-runtime effort, wall-time, step, token, and cost controls follow
+[`COMPUTE-CONTROL.md`](./COMPUTE-CONTROL.md). In particular, provider-native
+effort labels are ordinal within a runtime and are never treated as equivalent
+compute across providers.
+
 ### Model Track
 
 Only the model snapshot changes. No third-party portable skill, harness, vendor

@@ -71,7 +71,9 @@ objective task-specific critical gate.
    from screenshot-only tasks.
 
 See [`BENCHMARK-FAMILIES.md`](./BENCHMARK-FAMILIES.md) and
-[`STATISTICS.md`](./STATISTICS.md). The future public result browser is specified
+[`STATISTICS.md`](./STATISTICS.md). Cross-runtime effort, timeout, step, token,
+and cost controls are fixed in
+[`COMPUTE-CONTROL.md`](./COMPUTE-CONTROL.md). The future public result browser is specified
 in [`PUBLIC-SITE.md`](./PUBLIC-SITE.md), and the `1.9.1 → 2.0.0` experiment train
 is in [`RELEASE-TRAIN.md`](./RELEASE-TRAIN.md).
 

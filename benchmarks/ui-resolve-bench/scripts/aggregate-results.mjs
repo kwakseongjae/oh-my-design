@@ -41,7 +41,13 @@ function validateRecord(record, index) {
       throw new Error(`${label}.objective score range is invalid`);
     }
   }
-  for (const field of ["wall_time_ms", "tokens", "tool_calls", "human_interventions"]) {
+  for (const field of [
+    "wall_time_ms",
+    "tokens",
+    "provider_cost_equivalent_usd",
+    "tool_calls",
+    "human_interventions",
+  ]) {
     if (record[field] != null && finite(record[field], `${label}.${field}`) < 0) throw new Error(`${label}.${field} must be non-negative`);
   }
   return record;
@@ -222,6 +228,23 @@ function summarizeGroup(records, options) {
     .filter((record) => record.objective_score != null)
     .map((record) => (record.objective_score / record.objective_max) * 100);
   const resolvedValues = valid.map((record) => record.ui_resolved ? 1 : 0);
+  const usageAvailable = valid.filter((record) => record.usage_completeness?.available === true);
+  const usageComplete = valid.filter(
+    (record) => record.usage_completeness?.input_output_complete === true,
+  );
+  const costValues = valid
+    .map((record) => record.provider_cost_equivalent_usd)
+    .filter((value) => value != null);
+  const controlValues = valid
+    .map((record) => record.execution_control)
+    .filter((value) => value != null)
+    .map((value) => JSON.stringify(value));
+  const controlConsistent = (
+    valid.length > 0
+    && controlValues.length === valid.length
+    && new Set(controlValues).size === 1
+  );
+  const resolvedCount = resolvedValues.reduce((sum, value) => sum + value, 0);
   return {
     benchmark_family: sample.benchmark_family,
     suite_version: sample.suite_version,
@@ -242,18 +265,54 @@ function summarizeGroup(records, options) {
       completion_rate: valid.length ? round(complete.length / valid.length) : null,
     },
     ui_resolved: {
-      passed: resolvedValues.reduce((sum, value) => sum + value, 0),
+      passed: resolvedCount,
       rate: resolvedValues.length ? round(mean(resolvedValues)) : null,
       confidence_95: hierarchicalInterval(valid, (record) => record.ui_resolved ? 1 : 0, options),
     },
     reliability: reliability(valid, options.reliabilityK),
     objective_percent: describe(objective),
-    wall_time_ms: describe(complete.map((record) => record.wall_time_ms).filter((value) => value != null)),
-    tokens: describe(complete.map((record) => record.tokens).filter((value) => value != null)),
-    tool_calls: describe(complete.map((record) => record.tool_calls).filter((value) => value != null)),
-    human_interventions: describe(complete.map((record) => record.human_interventions).filter((value) => value != null)),
+    wall_time_ms: describe(valid.map((record) => record.wall_time_ms).filter((value) => value != null)),
+    tokens: describe(valid.map((record) => record.tokens).filter((value) => value != null)),
+    provider_cost_equivalent_usd: {
+      ...describe(costValues),
+      total: costValues.length === valid.length ? round(costValues.reduce((sum, value) => sum + value, 0)) : null,
+      per_resolved_run:
+        costValues.length === valid.length && resolvedCount > 0
+          ? round(costValues.reduce((sum, value) => sum + value, 0) / resolvedCount)
+          : null,
+    },
+    tool_calls: describe(valid.map((record) => record.tool_calls).filter((value) => value != null)),
+    human_interventions: describe(
+      valid.map((record) => record.human_interventions).filter((value) => value != null),
+    ),
+    usage_telemetry: {
+      scheduled_valid_runs: valid.length,
+      available_runs: usageAvailable.length,
+      input_output_complete_runs: usageComplete.length,
+      availability_rate: valid.length ? round(usageAvailable.length / valid.length) : null,
+      input_output_complete_rate: valid.length ? round(usageComplete.length / valid.length) : null,
+      reasoning_reported_runs: valid.filter(
+        (record) => record.usage_completeness?.reasoning_visibility === "reported",
+      ).length,
+      cached_input_reported_runs: valid.filter(
+        (record) => record.usage_completeness?.cached_input_visibility === "reported",
+      ).length,
+    },
+    execution_control: {
+      complete: controlValues.length === valid.length,
+      consistent: controlConsistent,
+      latency_comparable:
+        controlConsistent
+        && valid[0]?.execution_control?.latency_comparison === "eligible"
+        && valid[0]?.execution_control?.max_concurrency === 1,
+    },
     representative_runs: selectRepresentatives(complete),
     publication_ready: trials.unreplaced.length === 0 && valid.length === trials.scheduledTrials,
+    efficiency_publication_ready:
+      trials.unreplaced.length === 0
+      && valid.length === trials.scheduledTrials
+      && usageComplete.length === valid.length
+      && controlConsistent,
   };
 }
 

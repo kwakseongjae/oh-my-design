@@ -1,10 +1,16 @@
 # Cursor fixed-model Skill Lift — 1.9.44 draft
 
-Status: **draft; blocked on explicit live discovery-canary approval**.
+Status: **draft; blocked on exact four-file Cursor/Grok transmission
+approval**.
 
 This document does not authorize provider execution. It becomes locked only
 after the 1.9.43 automatic-discovery and explicit-invocation canaries pass and
 the candidate source commit plus prepared workspace hashes are recorded.
+
+The user's general instruction to execute was not accepted by the host's
+external-transmission review as approval for the exact four-file payload and
+Cursor/Grok destination. The 2026-07-28 call was stopped before transmission;
+no canary or matrix denominator is open.
 
 ## Question
 
