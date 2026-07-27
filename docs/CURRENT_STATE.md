@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b64fa5d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-27 · 1.9.42 six-cell Cursor pilot prepared; provider execution awaits explicit file-transmission approval
+- 갱신: 2026-07-27 · 1.9.42 six-cell Cursor pilot complete; accessibility acceptance failed; 1.9.43 Cursor Agent Skill channel next
 
 ## 지금 (현재 위치)
 
@@ -34,8 +34,11 @@
 - 1.9.41 no-write probe는 새 빈 `/tmp` workspace와 고정 문구만 전송했다. repository/diff/DESIGN.md/user content는 전송하지 않았다. Grok 4.5와 Composer 2.5 모두 exit 0, tool 0, exact `OMD_ATTRIBUTION_OK`를 반환했다.
 - Cursor stream은 requested immutable ID를 되돌려주지 않고 `Cursor Grok 4.5 High`와 `Composer 2.5` 표시명만 보고했다. 따라서 `runtime-reported-display-name`으로 기록하고 public validity는 `invalid-attribution`, Internal pilot eligibility만 true다.
 - 실제 stream usage는 Grok 15,040 input/4,480 cached/44 output, Composer 10,840/6,369/48로 보존했지만 1회 no-write probe이므로 속도·토큰·비용 비교나 우열 주장은 하지 않는다.
-- 1.9.42 Internal pilot은 Cursor runtime 고정, Pricing+Raw DESIGN.md, Grok/Composer 각 3회(6셀), 900s/cell로 사전등록했다. `/tmp/u1942`는 6/6 prepared이며 provider execution은 아직 시작하지 않았다.
+- 1.9.42 Internal pilot은 Cursor runtime 고정, Pricing+Raw DESIGN.md, Grok/Composer 각 3회(6셀), 900s/cell로 사전등록했고 재시도·fallback·수동 product edit 없이 6/6 provider/evaluator 실행을 완료했다.
 - 각 workspace 전송 범위는 `.benchmark/{PROMPT,manifest,matrix-cell}`, `AGENTS.md`, `DESIGN.md`, `index.html` 6개뿐이다. repository history/catalog/user docs/credentials/`llms-full.txt`는 포함하지 않는다. 대표 cell hash와 locked matrix hash를 PREPARATION.json에 기록했다.
+- Grok은 81/85×3, Composer는 81/85×2·79/85×1이다. 6개 모두 task/state/responsive/design/evidence gate는 통과했지만 accessibility critical gate를 실패했고 display-name attribution이므로 public winner/W-T-L/Reliability@3를 만들지 않는다.
+- 공통 실패는 선언된 `signal-orange #E7683D`를 paper/white 위 작은 status text로 사용해 2.98–3.25:1 대비가 난 것이다. 추가로 Grok 1셀은 ARIA table row parent를 누락했고 Composer 1셀은 horizontal comparison을 keyboard-reachable하게 만들지 못했다.
+- Cursor usage event의 camelCase를 common exporter가 0으로 합산하던 정규화 결함을 교정했다. retained `run-result.json`만 재-export했고 provider 실행·score·product는 바꾸지 않았다. 1.9.43은 frozen Raw control을 수정하지 않고 Cursor Agent Skill에 semantic-color/semantic-structure safety를 넣는다.
 - 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
 - stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.
 - 완성 3 pairs는 objective 0 win/3 tie/0 loss이고 Pricing/Onboarding 85/85, Operations 81/85로 양 시스템이 동률이다. paired-only median은 portable 430,140ms·105,380 tokens, harness 500,022ms·152,485 tokens(1.162×/1.447×)지만 incomplete matrix라 reliability/Pareto/promotion 근거가 아니다.
@@ -449,14 +452,14 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 사용자가 named six-file workspace × six cells의 Cursor 전송을 명시 승인하면 `/tmp/u1942`를 한 번만 실행한다.
-2. 실행 중 첫 failure는 matrix를 동결하고 뒤 셀을 `not-started`로 보존한다. retry/resume/manual edit은 하지 않는다.
-3. 6/6 complete 후에도 display-name attribution이므로 Internal diagnostics만 정리하고 public winner/W-T-L은 만들지 않는다.
-4. 안정적이면 1.9.43 Cursor Agent Skill channel → 1.9.44 Skill Lift로 진행한다.
+1. 1.9.43에서 Cursor project skill path, reviewed skill copy, always-on bootstrap rule, version/drift doctor를 구현한다.
+2. Cursor CLI에서 deterministic discovery/manual invocation canary를 통과시키고 rule-only compatibility를 보존한다.
+3. 1.9.44는 frozen Raw DESIGN.md vs OmD Skill을 동일 Cursor model로 비교하도록 별도 사전등록한다.
+4. display-name attribution인 동안 결과는 Internal diagnostics로만 유지하고 public winner/W-T-L은 만들지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- 1.9.42 품질 pilot은 benchmark task와 prepared workspace를 Cursor 서비스에 전송하므로 별도의 구체적 외부 전송 승인이 필요하다.
+- Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 

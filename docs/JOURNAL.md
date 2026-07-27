@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-07-27 (Codex) · 1.9.42 Cursor pilot complete
+- 승인된 6셀을 retry/fallback 없이 완료했고 Grok 81×3, Composer 81×2·79×1을 기록했다.
+- 6/6 task/state/responsive/design/evidence pass지만 signal-orange text 대비로 a11y acceptance는 0/6이다.
+- display-name attribution이라 public winner/W-T-L은 금지하고 Internal diagnostics로만 고정했다.
+- Cursor camelCase usage를 exporter가 0으로 기록하던 결함을 교정하고 retained records만 재-export했다.
+- 다음은 1.9.43 Cursor Agent Skill+doctor, 이후 1.9.44 fixed-model Skill Lift다.
+
 ## 2026-07-27 (Codex) · 1.9.42 Cursor pilot prepared
 - Pricing+Raw DESIGN.md, Grok/Composer 각3회인 6-cell matrix를 `/tmp/u1942`에 fresh prepare했다.
 - 각 cell 전송 파일은 prompt/manifest/matrix-cell/AGENTS/DESIGN/index 6개로 고정했다.

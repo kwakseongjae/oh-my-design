@@ -136,6 +136,28 @@ describe("UI-Resolve normalized run exporter", () => {
     });
   });
 
+  it("normalizes Cursor camelCase usage without counting cached input twice", () => {
+    expect(summarizeTokenUsage({
+      output: {
+        usage_events: [
+          {
+            usage: {
+              inputTokens: 40_435,
+              cacheReadTokens: 500_992,
+              outputTokens: 16_383,
+            },
+          },
+        ],
+      },
+    })).toEqual({
+      input_tokens: 40_435,
+      cached_input_tokens: 500_992,
+      output_tokens: 16_383,
+      reasoning_output_tokens: 0,
+      total_tokens: 56_818,
+    });
+  });
+
   it("invalidates dirty attribution and off-label tasks without hiding run status", () => {
     const dirty = structuredClone(manifest);
     dirty.skill.source_attestation.publishable = false;

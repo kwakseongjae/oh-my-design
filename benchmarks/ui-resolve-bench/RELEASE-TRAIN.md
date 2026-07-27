@@ -316,6 +316,23 @@ The adapter therefore records `runtime-reported-display-name`; the cells unlock
 an Internal fixed-runtime pilot but remain `invalid-attribution` for a public
 Verified Model Track.
 
+1.9.42 completed the six-cell Internal fixed-runtime pilot without retry,
+fallback, timeout, Auto/Router, or provider effort arguments. Both selectors
+produced three distinct scored artifacts and preserved task, state, responsive,
+design-grounding, and Evidence & Unknown gates. Grok scored 81/85 three times;
+Composer scored 81/85 twice and 79/85 once. These are not ranking results:
+immutable attribution is still unavailable and all six artifacts failed the
+accessibility critical gate.
+
+The shared failure was semantic-color safety. Every artifact used declared
+`signal-orange #E7683D` as small text on paper or white, yielding only
+2.98–3.25:1 contrast. One Grok result also broke ARIA table parentage and one
+Composer result left a horizontal comparison region keyboard-unreachable.
+The raw DESIGN.md stays frozen as the future control; 1.9.43 moves these
+procedural corrections into the Cursor Agent Skill channel before 1.9.44 opens
+a fixed-model Skill Lift pilot. Cursor camelCase usage normalization was also
+repaired from retained provider events without rerunning or rescoring cells.
+
 The final comparison target is Luna/Terra/Sol on Codex, Opus 5/Fable 5/Sonnet 5
 on Claude Code, and Composer 2.5/Grok 4.5 on Cursor Agent. Cross-runtime results
 are labelled model×runtime systems; only within-runtime slices are model-only

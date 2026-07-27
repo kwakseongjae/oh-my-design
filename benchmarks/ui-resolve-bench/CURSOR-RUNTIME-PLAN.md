@@ -1,7 +1,7 @@
 # Cursor runtime and model evaluation plan
 
-Status: fake runner calibrated; Grok 4.5 and Composer 2.5 no-write account
-probes completed with runtime-reported display names only.
+Status: fake runner calibrated; no-write attribution completed; six-cell
+fixed-runtime Internal pilot completed but failed accessibility acceptance.
 
 ## 0. Primary intent
 
@@ -122,6 +122,14 @@ pilot because Luna, Terra, and Sol will be evaluated through the Codex runtime
 in the final system matrix. The account catalog emitted a bare, apparently
 incomplete `claude-opus-5-thinki` entry without a label; it remains excluded
 until Cursor reports an attributable immutable ID in an initialization event.
+
+The 1.9.42 pilot completed 6/6 provider and evaluator runs. Grok returned
+81/85 in all three cells; Composer returned 81/85, 81/85, and 79/85. Expansion
+is blocked because all six failed the accessibility critical gate and model
+evidence remains display-name-only. The common failure was declared
+`signal-orange #E7683D` used as small status text on light surfaces. This is a
+procedural Skill Lift target, not grounds to alter the frozen Raw DESIGN.md
+control after observing results.
 
 ### Final eight-system matrix
 

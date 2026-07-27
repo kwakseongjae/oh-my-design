@@ -42,12 +42,25 @@ export function classifyValidity(manifest, runStatus, score, run = null) {
 export function summarizeTokenUsage(run) {
   const totals = { input_tokens: 0, cached_input_tokens: 0, output_tokens: 0, reasoning_output_tokens: 0 };
   let observed = false;
+  const aliases = {
+    input_tokens: ["input_tokens", "inputTokens"],
+    cached_input_tokens: [
+      "cached_input_tokens",
+      "cachedInputTokens",
+      "cacheReadTokens",
+      "cache_read_input_tokens",
+      "cacheReadInputTokens",
+    ],
+    output_tokens: ["output_tokens", "outputTokens"],
+    reasoning_output_tokens: ["reasoning_output_tokens", "reasoningOutputTokens"],
+  };
   for (const event of run?.output?.usage_events ?? []) {
     const usage = event?.usage ?? event?.token_usage;
     if (!usage) continue;
     observed = true;
     for (const field of Object.keys(totals)) {
-      const value = Number(usage[field] ?? 0);
+      const sourceField = aliases[field].find((alias) => usage[alias] !== undefined);
+      const value = Number(sourceField ? usage[sourceField] : 0);
       if (Number.isFinite(value) && value >= 0) totals[field] += value;
     }
   }
