@@ -42,7 +42,7 @@ export const FAQ_EN: FaqEntry[] = [
   },
   {
     q: "Which AI coding agents are supported?",
-    a: "Claude Code, Codex, OpenCode, and Cursor — Cursor has a dedicated install channel (--agent cursor) that writes the .cursor/rules shim plus the shared reference catalog. The skill markdown files are agent-agnostic; hooks ship for Claude Code specifically.",
+    a: "Claude Code, Codex, OpenCode, and Cursor — Cursor 2.4+ gets 19 compatible Agent Skills in .cursor/skills, a small DESIGN.md bootstrap rule, and the shared reference catalog. OmD sub-agent definitions are not installed in Cursor; hooks ship for Claude Code specifically.",
     jsonLd: true,
   },
   {

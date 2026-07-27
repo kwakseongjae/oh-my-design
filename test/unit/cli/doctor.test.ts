@@ -24,11 +24,14 @@ describe('omd doctor', () => {
 
   function installProductSkills(
     channelRoot: string,
-    channel: 'claude-code' | 'codex' | 'opencode',
+    channel: 'claude-code' | 'codex' | 'opencode' | 'cursor',
   ): void {
-    for (const skill of REQUIRED_PRODUCT_SKILLS) {
+    const skills = channel === 'cursor'
+      ? REQUIRED_PRODUCT_SKILLS.filter((skill) => skill !== 'claude-design')
+      : REQUIRED_PRODUCT_SKILLS;
+    for (const skill of skills) {
       mkdirSync(join(channelRoot, skill), { recursive: true });
-      const name = channel === 'opencode' || skill === 'claude-design'
+      const name = channel === 'opencode' || channel === 'cursor' || skill === 'claude-design'
         ? skill
         : skill.replace(/^omd-/, 'omd:');
       writeFileSync(
@@ -277,6 +280,50 @@ describe('omd doctor', () => {
     expect(report.channels.find((channel) => channel.id === 'cursor')).toMatchObject({
       installed: true,
       ready: true,
+      skills: 19,
+      references: 440,
+      issues: [],
+    });
+  });
+
+  it('detects a missing native Cursor skill and points repair at Cursor only', async () => {
+    expect(await runInstallSkills({ dir: root, agents: ['cursor'], all: true })).toBe(0);
+    rmSync(join(root, '.cursor', 'skills', 'omd-apply'), { recursive: true });
+
+    const report = collectDoctorReport({ dir: root });
+    const cursor = report.channels.find((channel) => channel.id === 'cursor');
+    expect(report.state).toBe('incomplete');
+    expect(cursor?.ready).toBe(false);
+    expect(cursor?.issues.join('\n')).toContain('missing product skills: omd-apply');
+    expect(report.nextCommand).toBe(
+      `npx oh-my-design-cli@latest install-skills --agent cursor --all --dir '${root}'`,
+    );
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['cursor'],
+      all: true,
+      force: true,
+    })).toBe(0);
+    expect(collectDoctorReport({ dir: root }).channels.find(
+      (channel) => channel.id === 'cursor',
+    )?.ready).toBe(true);
+  });
+
+  it('accepts an explicit Cursor rule-only compatibility install without native skills', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['cursor'],
+      all: true,
+      cursorRuleOnly: true,
+    })).toBe(0);
+
+    const report = collectDoctorReport({ dir: root });
+    expect(report.state).toBe('needs-design-md');
+    expect(report.channels.find((channel) => channel.id === 'cursor')).toMatchObject({
+      installed: true,
+      ready: true,
+      skills: 0,
       references: 440,
       issues: [],
     });

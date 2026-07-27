@@ -333,6 +333,17 @@ procedural corrections into the Cursor Agent Skill channel before 1.9.44 opens
 a fixed-model Skill Lift pilot. Cursor camelCase usage normalization was also
 repaired from retained provider events without rerunning or rescoring cells.
 
+1.9.43 passed deterministic product-channel acceptance. Cursor 2.4+ now
+receives 19 compatible native Agent Skills under `.cursor/skills`, a small
+always-on DESIGN.md bootstrap rule, and the shared 440-reference catalog. It
+still receives zero separately generated OmD sub-agent definitions and zero
+hooks, and the installer now reports those actual counts. `doctor` validates
+the native skill tree, sidecars, markers, mode conflict, and Cursor-only repair;
+`--cursor-rule-only` preserves the former behavior explicitly. The reviewed
+skill now binds semantic-color contrast and semantic table/scroll-region
+safety observed in 1.9.42. This is installation evidence only: the live Cursor
+discovery canary and fixed-model 1.9.44 Skill Lift remain separate.
+
 The final comparison target is Luna/Terra/Sol on Codex, Opus 5/Fable 5/Sonnet 5
 on Claude Code, and Composer 2.5/Grok 4.5 on Cursor Agent. Cross-runtime results
 are labelled model×runtime systems; only within-runtime slices are model-only

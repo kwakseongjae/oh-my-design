@@ -37,9 +37,8 @@ export function targetsAvailableForScope(
   return scope === 'global' ? targets.filter((target) => target !== 'cursor') : targets;
 }
 
-/** Channels that host SKILL.md trees. Cursor is NOT one — it consumes a
- *  `.cursor/rules` shim + the shared `.claude/data` catalog (issue #20). */
-type SkillChannel = Exclude<SkillTarget, 'cursor'>;
+/** Channels that host Agent Skills-compatible SKILL.md trees. */
+type SkillChannel = SkillTarget;
 
 export interface InstallSkillsOptions {
   dir?: string;
@@ -60,6 +59,9 @@ export interface InstallSkillsOptions {
   /** Minimal install: only the named skill files — skip sub-agents, data files,
    *  hooks, and settings.json. Ideal for shipping a single standalone skill. */
   skillsOnly?: boolean;
+  /** Compatibility mode for Cursor clients without Agent Skills support.
+   *  Installs only the legacy project rule + shared catalog for Cursor. */
+  cursorRuleOnly?: boolean;
   /** Install to each channel's user-level directory instead of this project
    *  (`~/.claude`, `~/.agents` + `~/.codex`, or `~/.config/opencode`).
    *  Writes skills + sub-agents (+ data); never touches global hooks/settings.
@@ -331,6 +333,15 @@ function planForTarget(
           : join(projectRoot, '.opencode', 'skills'),
         layout: 'folder',
       };
+    case 'cursor':
+      // Cursor 2.4+ discovers project Agent Skills from
+      // `.cursor/skills/<name>/SKILL.md`. Keep the native path instead of
+      // relying on cross-runtime `.agents/skills` discovery.
+      return {
+        target,
+        destDir: join(projectRoot, '.cursor', 'skills'),
+        layout: 'folder',
+      };
   }
 }
 
@@ -339,10 +350,9 @@ function planForTarget(
  * (catalog JSONs, reference DESIGN.md catalog, ctx-prime helper scripts).
  * Single lookup table replacing the repeated if-else/ternary chains (issue #28).
  * `null` = the channel hosts no data dir of its own:
- *   - cursor reads the SHARED `.claude/data` path (issue #20) — resolved by
+ *   - Cursor skills read the SHARED `.claude/data` path (issue #20) — resolved by
  *     `dataDirFor()` below, which also applies the claude-code dedup guard.
- *     (Helper scripts intentionally stay skill-channel-only — a cursor-only
- *     install gets the catalog + JSONs but no ctx-prime, matching the shim's scope.)
+ *     Modern Cursor installs receive the shared helper scripts there too.
  */
 type DataChannelDir = '.claude' | '.codex' | '.opencode' | '.config/opencode';
 
@@ -437,14 +447,15 @@ function renderSkillForChannel(
   // namespaced form (`omd:apply`) or portable Agent Skills hyphen-case
   // (`omd-apply`). Always derive the installed name from the folder so every
   // channel gets the contract it actually accepts.
-  const installedName = target === 'opencode'
+  const usesPortableSkillNames = target === 'opencode' || target === 'cursor';
+  const installedName = usesPortableSkillNames
     ? folderName
     : folderName.replace(/^omd-/, 'omd:');
   const rendered = src.replace(
     /^name:\s*[^\r\n]+$/m,
     `name: ${installedName}`,
   );
-  return target === 'opencode'
+  return usesPortableSkillNames
     ? rendered.replace(/\bomd:([a-z0-9][a-z0-9-]*)\b/g, 'omd-$1')
     : rendered;
 }
@@ -534,7 +545,7 @@ function parseSkillChannels(skillMd: string): SkillChannel[] | null {
   if (!fm) return null;
   const m = /^x-omd-channels:\s*(.+)$/m.exec(fm[1]);
   if (!m) return null;
-  const valid: SkillChannel[] = ['claude-code', 'codex', 'opencode'];
+  const valid: SkillChannel[] = ['claude-code', 'codex', 'opencode', 'cursor'];
   const list = m[1]
     .split(/[,\s]+/)
     .map((s) => s.trim())
@@ -552,7 +563,7 @@ function parseSkillChannels(skillMd: string): SkillChannel[] | null {
 function skillSupportedChannels(packageRoot: string, skill: string): SkillChannel[] {
   return (
     parseSkillChannels(readFileSync(join(packageRoot, 'skills', skill, 'SKILL.md'), 'utf8')) ??
-    (['claude-code', 'codex', 'opencode'] as SkillChannel[])
+    (['claude-code', 'codex', 'opencode', 'cursor'] as SkillChannel[])
   );
 }
 
@@ -1092,14 +1103,30 @@ function installReferenceCatalog(
 }
 
 /**
- * Cursor channel shim — Cursor has no skill/agent surface; it consumes a
- * project rule at `.cursor/rules/omd-design.mdc`. Frontmatter, body, and the
- * body-hash marker below mirror the omd:sync skill's cursor template EXACTLY
- * (skills/omd-sync/SKILL.md, "whole" mode: hash = sha256 of the body text,
- * 12-char hex prefix), so a later omd:sync run reads the installer-written
- * file as `clean` rather than drifted (issue #20).
+ * Cursor Agent Skills need only a small always-on bootstrap. The procedural
+ * workflow lives under `.cursor/skills`; this rule establishes DESIGN.md
+ * precedence and the fail-closed unknown boundary before dynamic discovery.
  */
-const CURSOR_RULE_BODY = [
+const CURSOR_SKILL_BOOTSTRAP_BODY = [
+  '<!-- omd:cursor-channel=skills -->',
+  'The authoritative design spec lives at `@DESIGN.md` (repo root). Open and read before generating/modifying UI.',
+  '',
+  'Pending preference corrections: `@.omd/preferences.md`.',
+  '',
+  'Precedence: DESIGN.md > preferences.md > framework defaults.',
+  '',
+  'OmD Agent Skills live under `.cursor/skills/`. Use the smallest relevant `omd-*` skill automatically, or invoke it from Cursor with `/omd-<name>`.',
+  '',
+  'Unknown fields stay absent. Never substitute a system font, generic component, guessed token, or adjacent surface as a product fact.',
+].join('\n');
+
+/**
+ * Explicit compatibility mode for Cursor clients that cannot load Agent
+ * Skills. It retains the historical rule-driven behavior behind
+ * `--cursor-rule-only` rather than silently weakening the modern install.
+ */
+const CURSOR_RULE_ONLY_BODY = [
+  '<!-- omd:cursor-channel=rule-only -->',
   'The authoritative design spec lives at `@DESIGN.md` (repo root). Open and read before generating/modifying UI.',
   '',
   'Pending preference corrections: `@.omd/preferences.md`.',
@@ -1113,11 +1140,12 @@ const CURSOR_RULE_BODY = [
   '4. Unknown reference fields stay absent; never substitute a system font, generic component, or guessed token as a brand fact.',
   '',
   'When applying DESIGN.md, preserve existing behavior and user copy unless asked, then verify the actual product route and accessibility before reporting completion.',
-  'Cursor receives this rule and the catalog, not OmD named skills or sub-agents; execute the contract directly from natural-language requests.',
+  'Compatibility mode provides the rule and catalog only; OmD named skills and sub-agents are not installed.',
 ].join('\n');
 
-function renderCursorRule(): string {
-  const hash = createHash('sha256').update(CURSOR_RULE_BODY).digest('hex').slice(0, 12);
+function renderCursorRule(ruleOnly: boolean): string {
+  const body = ruleOnly ? CURSOR_RULE_ONLY_BODY : CURSOR_SKILL_BOOTSTRAP_BODY;
+  const hash = createHash('sha256').update(body).digest('hex').slice(0, 12);
   return [
     '---',
     'description: Authoritative brand & UI design system. Read DESIGN.md before UI work.',
@@ -1131,21 +1159,25 @@ function renderCursorRule(): string {
     '  - "**/tailwind.config.*"',
     '  - "**/components/**"',
     '  - "**/app/**/page.*"',
-    'alwaysApply: false',
+    `alwaysApply: ${ruleOnly ? 'false' : 'true'}`,
     '---',
     '',
     `<!-- omd:start v=1 hash=${hash} -->`,
-    CURSOR_RULE_BODY,
+    body,
     '<!-- omd:end -->',
     '',
   ].join('\n');
 }
 
-function installCursorRule(installRoot: string, force: boolean): InstallResult {
+function installCursorRule(
+  installRoot: string,
+  force: boolean,
+  ruleOnly: boolean,
+): InstallResult {
   const target: SkillTarget = 'cursor';
   const skillLabel = 'rule:omd-design.mdc';
   const destPath = join(installRoot, '.cursor', 'rules', 'omd-design.mdc');
-  const rendered = renderCursorRule();
+  const rendered = renderCursorRule(ruleOnly);
 
   if (unsafeManagedPath(installRoot, destPath)) {
     return { target, skill: skillLabel, destPath, status: 'skipped-drift', reason: 'unsafe-path' };
@@ -1156,8 +1188,8 @@ function installCursorRule(installRoot: string, force: boolean): InstallResult {
   if (exists && existing === rendered) {
     return { target, skill: skillLabel, destPath, status: 'unchanged' };
   }
-  // The omd marker block doubles as the managed sentinel (matching omd:sync's
-  // whole-mode rules): a file without it is user content → drift unless --force.
+  // The omd marker block doubles as the managed sentinel. A file without it is
+  // user content → drift unless --force.
   if (exists && !existing.includes('<!-- omd:start') && !force) {
     return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
   }
@@ -1181,10 +1213,9 @@ function autoDetectTargets(projectRoot: string): SkillTarget[] {
   if (presence.claudeCode) targets.push('claude-code');
   if (presence.codex) targets.push('codex');
   if (presence.opencode) targets.push('opencode');
-  // Cursor hosts no skills — its channel writes the .cursor/rules shim + the
-  // shared .claude/data catalog (issue #20). Only when .cursor is detected;
-  // the no-signal fallback below stays skill-channel-only so we never drop a
-  // .cursor dir into projects that don't use Cursor.
+  // Cursor gets native project Agent Skills plus the small DESIGN.md bootstrap
+  // rule. Only select it when .cursor is detected; the no-signal fallback below
+  // must not introduce Cursor configuration into unrelated projects.
   if (presence.cursor) targets.push('cursor');
   if (targets.length === 0) {
     // Fallback: install for all three skill channels so user gets coverage
@@ -1343,8 +1374,8 @@ export async function runInstallSkills(
   // picker shows just Claude Code). Non-TTY / --all falls back to auto-resolution.
   const supportedTargets = ((): SkillTarget[] => {
     const set = new Set<SkillTarget>(skills.flatMap((s) => skillSupportedChannels(packageRoot, s)));
-    // Cursor consumes no skills — its channel install (.cursor/rules shim +
-    // shared .claude/data catalog) is skill-independent, so always offer it.
+    // Cursor supports native Agent Skills, and explicit rule-only compatibility
+    // mode still needs to remain selectable even for a filtered skill set.
     set.add('cursor');
     return targetsAvailableForScope(
       (['claude-code', 'codex', 'opencode', 'cursor'] as SkillTarget[]).filter((t) => set.has(t)),
@@ -1412,17 +1443,39 @@ export async function runInstallSkills(
     );
     return 1;
   }
+  if (opts.cursorRuleOnly && !targets.includes('cursor')) {
+    console.error(
+      pc.red('omd install-skills: --cursor-rule-only requires the cursor target.'),
+    );
+    return 1;
+  }
+  if (opts.cursorRuleOnly && minimal) {
+    console.error(
+      pc.red('omd install-skills: --cursor-rule-only cannot be combined with --skills-only.'),
+    );
+    return 1;
+  }
 
   // Global scope roots everything at the home dir, so channel plans resolve to
   // ~/.claude, ~/.agents + ~/.codex, or ~/.config/opencode. Project scope uses
   // cwd (or --dir).
   const installRoot = scope === 'global' ? homedir() : projectRoot;
-  // Cursor hosts no SKILL.md tree — it's excluded from skill plans and handled
-  // below via the .cursor/rules shim + shared data copies (issue #20).
+  // Modern Cursor installs native Agent Skills. The explicit compatibility
+  // flag is the only path that suppresses the Cursor skill tree.
   const skillChannelTargets = targets.filter(
-    (t): t is SkillChannel => t !== 'cursor'
+    (target): target is SkillChannel => !(target === 'cursor' && opts.cursorRuleOnly),
   );
   const plans = skillChannelTargets.map((t) => planForTarget(installRoot, t, scope));
+  const compatibleSkills = skills.filter((skill) =>
+    skillChannelTargets.some((target) =>
+      skillSupportedChannels(packageRoot, skill).includes(target),
+    ),
+  );
+  // Cursor currently consumes project Agent Skills, not OmD's separately
+  // generated sub-agent definitions. Do not claim those roles were installed.
+  if (targets.every((target) => target === 'cursor')) {
+    canonicalAgents = [];
+  }
 
   p.log.message(
     pc.bold('Scope: ') +
@@ -1430,8 +1483,8 @@ export async function runInstallSkills(
       pc.dim(scope === 'global' ? '  (channel user directories)' : `  (${relative(process.cwd(), projectRoot) || '.'})`)
   );
   p.log.message(
-    pc.bold(`Skills (${skills.length}): `) +
-      skills.map((s) => pc.cyan(s)).join(', ')
+    pc.bold(`Skills (${compatibleSkills.length}): `) +
+      compatibleSkills.map((s) => pc.cyan(s)).join(', ')
   );
   if (minimal) {
     // --skills-only: sub-agents are intentionally skipped (minimal single-skill
@@ -1487,12 +1540,11 @@ export async function runInstallSkills(
   }
 
   if (!minimal) {
-  // Cursor channel: write the `.cursor/rules` shim (the exact content omd:sync
-  // renders for .cursor/rules/omd-design.mdc) so Cursor reads DESIGN.md before
-  // UI work. No skills/agents/hooks — the shim plus the shared .claude/data
-  // copies below are the whole Cursor install (issue #20).
+  // Cursor channel: keep a small always-on DESIGN.md bootstrap beside native
+  // Agent Skills. `--cursor-rule-only` deliberately installs the fuller legacy
+  // rule for older Cursor clients.
   if (targets.includes('cursor')) {
-    results.push(installCursorRule(installRoot, force));
+    results.push(installCursorRule(installRoot, force, opts.cursorRuleOnly === true));
   }
 
   // Ship the read-only data assets (reference fingerprints, controlled vocab,
@@ -1547,9 +1599,8 @@ export async function runInstallSkills(
 
   // Copy ctx-prime.cjs (+ its companion context.cjs) into each selected skill
   // channel's scoped data tree so /omd-harness works after either a project or
-  // global install. Cursor has no skill runtime and intentionally gets no helper.
+  // global install. Cursor shares `.claude/data`, including these helpers.
   for (const target of targets) {
-    if (target === 'cursor') continue;
     const cd = dataDirForScope(target, targets, scope);
     if (!cd) continue;
     for (const helper of ['ctx-prime.cjs', 'context.cjs']) {
@@ -1666,7 +1717,9 @@ export async function runInstallSkills(
         `  ${pc.cyan('EN')}  ${pc.dim('Set up our design system — Toss-style, for a family meal-tracking app. Ask before writing DESIGN.md.')}`,
         `  ${pc.cyan('KR')}  ${pc.dim('토스 스타일로 가족 식단 공유 앱 디자인 시스템을 제안하고 DESIGN.md 작성 전에 확인해줘')}`,
         '',
-        `${pc.dim('Cursor uses the installed rule + local catalog directly. It does not receive OmD named skills or sub-agents.')}`,
+        opts.cursorRuleOnly
+          ? `${pc.dim('Compatibility mode uses the installed rule + local catalog directly.')}`
+          : `${pc.dim('Cursor loads OmD Agent Skills from .cursor/skills and keeps DESIGN.md precedence in a small bootstrap rule.')}`,
         `${pc.dim('You can also choose a reference in the Builder and download DESIGN.md before asking Cursor to build.')}`,
         '',
         `${pc.yellow('⚠ Already-running session?')} ${pc.dim('Restart Cursor so it reloads the project rule.')}`,
@@ -1697,7 +1750,7 @@ export async function runInstallSkills(
         pc.dim(` DESIGN.md synced → ${[...catalogDestinations].join(' + ')}`),
     );
   }
-  const reportedSkillCount = skillChannelTargets.length > 0 ? skills.length : 0;
+  const reportedSkillCount = compatibleSkills.length;
   const reportedAgentCount = skillChannelTargets.length > 0 ? canonicalAgents.length : 0;
   p.outro(
     pc.green(

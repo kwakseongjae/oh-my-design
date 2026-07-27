@@ -104,10 +104,18 @@ const REQUIRED_CLAUDE_HOOKS = [
   'session-end-foldin.cjs',
 ] as const;
 
-type SkillChannelId = 'claude-code' | 'codex' | 'opencode';
+type SkillChannelId = 'claude-code' | 'codex' | 'opencode' | 'cursor';
 
-function missingProductSkills(skillsRoot: string): string[] {
-  return REQUIRED_PRODUCT_SKILLS.filter(
+function requiredProductSkills(channel: SkillChannelId): readonly string[] {
+  // claude-design requires a browser bridge that the Cursor channel does not
+  // install. Every other shipped product skill is portable to Cursor.
+  return channel === 'cursor'
+    ? REQUIRED_PRODUCT_SKILLS.filter((skill) => skill !== 'claude-design')
+    : REQUIRED_PRODUCT_SKILLS;
+}
+
+function missingProductSkills(skillsRoot: string, channel: SkillChannelId): string[] {
+  return requiredProductSkills(channel).filter(
     (skill) => !existsSync(join(skillsRoot, skill, 'SKILL.md')),
   );
 }
@@ -117,7 +125,7 @@ function missingDataFiles(dataRoot: string): string[] {
 }
 
 function expectedSkillName(skill: string, channel: SkillChannelId): string {
-  if (channel === 'opencode' || skill === 'claude-design') return skill;
+  if (channel === 'opencode' || channel === 'cursor' || skill === 'claude-design') return skill;
   return skill.replace(/^omd-/, 'omd:');
 }
 
@@ -129,7 +137,7 @@ function skillContractIssues(
   const malformed: string[] = [];
   const unsafe: string[] = [];
   const missingSidecars: string[] = [];
-  for (const skill of REQUIRED_PRODUCT_SKILLS) {
+  for (const skill of requiredProductSkills(channel)) {
     const path = join(skillsRoot, skill, 'SKILL.md');
     if (!existsSync(path)) continue;
     if (unsafeManagedPath(installRoot, path)) {
@@ -147,7 +155,8 @@ function skillContractIssues(
     if (
       !parsed ||
       rawName !== expectedSkillName(skill, channel) ||
-      (channel === 'opencode' && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(rawName ?? '')) ||
+      ((channel === 'opencode' || channel === 'cursor') &&
+        !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(rawName ?? '')) ||
       !hasDescription ||
       !parsed[2].trim() ||
       !content.includes('omd:installed-skill')
@@ -195,7 +204,7 @@ function coreIssues(
         .join(', ')}`,
     );
   }
-  const missingSkills = missingProductSkills(skillsRoot);
+  const missingSkills = missingProductSkills(skillsRoot, channel);
   const missingData = missingDataFiles(dataRoot);
   if (missingSkills.length > 0) {
     issues.push(`missing product skills: ${missingSkills.join(', ')}`);
@@ -381,8 +390,8 @@ function referenceIdsAt(dataRoot: string): Set<string> {
   );
 }
 
-function countRequiredSkills(skillsRoot: string): number {
-  return REQUIRED_PRODUCT_SKILLS.filter(
+function countRequiredSkills(skillsRoot: string, channel: SkillChannelId): number {
+  return requiredProductSkills(channel).filter(
     (skill) => existsSync(join(skillsRoot, skill, 'SKILL.md')),
   ).length;
 }
@@ -749,9 +758,21 @@ function openCodeAgentIssues(root: string, agentsRoot: string): string[] {
   return issues;
 }
 
-function cursorRuleIssues(root: string): string[] {
+type CursorChannelMode = 'skills' | 'rule-only' | 'invalid' | 'missing';
+
+function cursorChannelMode(root: string): CursorChannelMode {
   const path = join(root, '.cursor', 'rules', 'omd-design.mdc');
-  if (!existsSync(path)) return [];
+  if (!existsSync(path)) return 'missing';
+  const content = readFileSync(path, 'utf8');
+  if (content.includes('<!-- omd:cursor-channel=skills -->')) return 'skills';
+  if (content.includes('<!-- omd:cursor-channel=rule-only -->')) return 'rule-only';
+  return 'invalid';
+}
+
+function cursorRuleIssues(root: string, installedSkills: number): string[] {
+  const path = join(root, '.cursor', 'rules', 'omd-design.mdc');
+  const mode = cursorChannelMode(root);
+  if (mode === 'missing') return ['Cursor DESIGN.md bootstrap rule is missing'];
   const unsafe = unsafeManagedPath(root, path);
   if (unsafe) return [`unsafe Cursor rule path (${unsafe})`];
   const content = readFileSync(path, 'utf8');
@@ -760,9 +781,16 @@ function cursorRuleIssues(root: string): string[] {
     !content.includes('description: Authoritative brand & UI design system.') ||
     !/<!-- omd:start v=1 hash=[a-f0-9]{12} -->/.test(content) ||
     !content.includes('The authoritative design spec lives at `@DESIGN.md` (repo root). Open and read before generating/modifying UI.') ||
+    !/<!-- omd:cursor-channel=(?:skills|rule-only) -->/.test(content) ||
     !content.includes('<!-- omd:end -->')
   ) {
     return ['Cursor rule is not an OmD-managed design-system shim'];
+  }
+  if (mode === 'skills' && !/^alwaysApply:\s*true\s*$/m.test(content)) {
+    return ['Cursor Agent Skill bootstrap must be alwaysApply: true'];
+  }
+  if (mode === 'rule-only' && installedSkills > 0) {
+    return ['Cursor rule-only compatibility mode conflicts with installed Cursor Agent Skills'];
   }
   return [];
 }
@@ -776,15 +804,17 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
     ? join(root, '.config', 'opencode')
     : join(root, '.opencode');
   const opencodeSkillsRoot = join(opencodeRoot, 'skills');
+  const cursorSkillsRoot = join(root, '.cursor', 'skills');
   const claudeAgentsRoot = join(root, '.claude', 'agents');
   const codexAgentsRoot = join(root, '.codex', 'agents');
   const opencodeAgentsRoot = join(opencodeRoot, 'agents');
   const claudeDataRoot = join(root, '.claude', 'data');
   const codexDataRoot = join(root, '.codex', 'data');
   const opencodeDataRoot = join(opencodeRoot, 'data');
-  const claudeSkills = countRequiredSkills(claudeSkillsRoot);
-  const codexSkills = countRequiredSkills(codexSkillsRoot);
-  const opencodeSkills = countRequiredSkills(opencodeSkillsRoot);
+  const claudeSkills = countRequiredSkills(claudeSkillsRoot, 'claude-code');
+  const codexSkills = countRequiredSkills(codexSkillsRoot, 'codex');
+  const opencodeSkills = countRequiredSkills(opencodeSkillsRoot, 'opencode');
+  const cursorSkills = countRequiredSkills(cursorSkillsRoot, 'cursor');
   const claudeAgents = countRequiredAgents(claudeAgentsRoot, '.md');
   const codexAgents = countRequiredAgents(codexAgentsRoot, '.toml');
   const opencodeAgents = countRequiredAgents(opencodeAgentsRoot, '.md');
@@ -811,7 +841,8 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
     existsSync(join(codexDataRoot, 'reference-fingerprints.json'));
   const opencodeInstalled = opencodeSkills > 0 || opencodeAgents > 0 ||
     existsSync(join(opencodeDataRoot, 'reference-fingerprints.json'));
-  const cursorInstalled = !opts.global && existsSync(join(root, '.cursor', 'rules', 'omd-design.mdc'));
+  const cursorMode = opts.global ? 'missing' : cursorChannelMode(root);
+  const cursorInstalled = !opts.global && (cursorMode !== 'missing' || cursorSkills > 0);
 
   const claudeIssues = claudeInstalled
     ? [
@@ -851,15 +882,25 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
         ]
     : [];
   const cursorIssues = cursorInstalled
-      ? coreIssues(
-        root,
-        join(root, '.cursor', '__no_skills__'),
-        claudeDataRoot,
-        claudeReferenceIds,
-        'claude-code',
-      ).filter((issue) => !issue.startsWith('missing product skills:'))
-        .filter((issue) => !issue.startsWith('invalid claude-code skill definitions:'))
-        .concat(cursorRuleIssues(root))
+      ? (
+        cursorMode === 'rule-only'
+          ? coreIssues(
+            root,
+            join(root, '.cursor', '__rule_only__'),
+            claudeDataRoot,
+            claudeReferenceIds,
+            'cursor',
+          )
+            .filter((issue) => !issue.startsWith('missing product skills:'))
+            .filter((issue) => !issue.startsWith('invalid cursor skill definitions:'))
+          : coreIssues(
+            root,
+            cursorSkillsRoot,
+            claudeDataRoot,
+            claudeReferenceIds,
+            'cursor',
+          )
+      ).concat(cursorRuleIssues(root, cursorSkills))
     : [];
 
   const channels: DoctorChannel[] = [
@@ -894,7 +935,7 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
       id: 'cursor',
       installed: cursorInstalled,
       ready: cursorInstalled && cursorIssues.length === 0,
-      skills: 0,
+      skills: cursorSkills,
       agents: 0,
       references: claudeReferences,
       issues: cursorIssues,

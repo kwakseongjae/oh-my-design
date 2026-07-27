@@ -375,7 +375,7 @@ const en: CliDocsDictionary = {
     title: "Your agent already writes code. Give it design judgment and ground truth.",
     lead: "oh-my-design brings a quality-graded reference catalog and reusable design workflows into the coding tool you already use, with specialist agent roles on channels that support them. Then you work in natural language.",
     truthTitle: "The CLI prepares the environment your coding agent works in.",
-    truthBody: "The bundle contains 20 skills, 18 agent definitions, and 440 quality-graded DESIGN.md references: 141 verified_v2, 159 partial, and 140 legacy snapshots. Use verified_v2 references for public demos. Claude Code, Codex, and OpenCode receive compatible skills, roles, and catalog data; Cursor receives a project rule and catalog.",
+    truthBody: "The bundle contains 20 skills, 18 agent definitions, and 440 quality-graded DESIGN.md references: 141 verified_v2, 159 partial, and 140 legacy snapshots. Use verified_v2 references for public demos. Cursor 2.4+ receives 19 compatible Agent Skills plus a small project rule; separately generated specialist roles remain available on channels that support them.",
     proof: "20 product skills · 18 specialist agents · 141 verified_v2 / 159 partial / 140 legacy · zero AI calls during install",
     outcomesTitle: "Start with the result you need",
     outcomesLead: "You do not need to memorize skill names. Describe the product surface; the installed skill layer routes the work.",
@@ -428,7 +428,7 @@ const en: CliDocsDictionary = {
       { name: "Codex", body: "Installs skills, embedded agent roles, helpers, and the local reference catalog.", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "Claude Code", body: "Installs skills, sub-agents, catalog, and safely merged project hooks.", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "OpenCode", body: "Installs skills, native sub-agents, and the offline catalog. Project files live under `.opencode`; `--global` uses `~/.config/opencode`, verified with `doctor --global`.", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "Installs the rules shim and shared catalog used by the editor workflow.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "Installs 19 native Agent Skills, a small DESIGN.md bootstrap rule, and the shared catalog. Use `--cursor-rule-only` only for older clients.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ],
     doneTitle: "You are done when the product changed, not when installation succeeded.",
     doneBody: "A healthy first run leaves a visible UI improvement, a project DESIGN.md, and a clear next prompt. The installer is only activation infrastructure.",
@@ -745,7 +745,7 @@ const ko: CliDocsDictionary = {
     title: "코드는 이미 잘 씁니다. 이제 디자인 판단에 근거를 더하세요.",
     lead: "품질 등급이 표시된 레퍼런스와 반복 가능한 디자인 작업 흐름을 Claude Code·Codex·OpenCode·Cursor에 설치합니다. 이후에는 만들 화면과 지킬 조건만 말하면 됩니다.",
     truthTitle: "CLI는 에이전트가 일할 환경을 준비합니다.",
-    truthBody: "번들은 제품 스킬 20개, 에이전트 정의 18개, 품질 등급이 표시된 DESIGN.md 레퍼런스 440개를 담습니다. 현재 verified_v2 141개, partial 159개, legacy snapshot 140개이며 공개 데모에는 verified_v2를 사용합니다. Claude Code·Codex·OpenCode에는 호환되는 스킬·역할·카탈로그가 들어가고, Cursor에는 프로젝트 규칙과 카탈로그가 들어갑니다.",
+    truthBody: "번들은 제품 스킬 20개, 에이전트 정의 18개, 품질 등급이 표시된 DESIGN.md 레퍼런스 440개를 담습니다. 현재 verified_v2 141개, partial 159개, legacy snapshot 140개이며 공개 데모에는 verified_v2를 사용합니다. Cursor 2.4+에는 호환 Agent Skills 19개와 작은 프로젝트 규칙이 들어가며, 별도 전문 역할은 이를 지원하는 채널에만 설치됩니다.",
     proof: "제품 스킬 20개 · 전문 에이전트 18개 · verified_v2 141 / partial 159 / legacy 140 · 설치 중 AI 호출 0회",
     outcomesTitle: "필요한 결과부터 고르세요",
     outcomesLead: "스킬 이름을 외울 필요가 없습니다. 만들 화면과 지킬 조건을 말하면 필요한 스킬이 선택됩니다.",
@@ -778,7 +778,7 @@ const ko: CliDocsDictionary = {
       { name: "Codex", body: "스킬, 본문이 내장된 에이전트 역할, 헬퍼, 로컬 레퍼런스 카탈로그를 설치합니다.", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "Claude Code", body: "스킬, 서브에이전트, 카탈로그와 안전하게 병합되는 프로젝트 훅을 설치합니다.", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "OpenCode", body: "스킬·네이티브 서브에이전트·오프라인 카탈로그를 설치합니다. 프로젝트는 `.opencode`, `--global`은 `~/.config/opencode`를 사용하며 `doctor --global`로 진단합니다.", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "에디터 흐름에서 쓰는 규칙 shim과 공유 카탈로그를 설치합니다.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "네이티브 Agent Skills 19개, 작은 DESIGN.md bootstrap rule, 공유 카탈로그를 설치합니다. 구형 클라이언트만 `--cursor-rule-only`를 사용하세요.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ],
     doneTitle: "첫 실행의 완료 기준은 눈에 보이는 UI 변화입니다.",
     doneBody: "좋은 첫 실행은 눈에 보이는 UI 개선, 프로젝트 DESIGN.md, 명확한 다음 프롬프트를 남깁니다. 설치기는 활성화 인프라일 뿐입니다.",
@@ -1095,7 +1095,7 @@ const ja = translatedLocale(
   { overview: "概要", "getting-started": "はじめに", demo: "ライブデモ", workflows: "ワークフロー", skills: "スキル", "anti-slop": "AI slop の判断基準", showcase: "実例", troubleshooting: "トラブルシューティング", ai: "AI 向けドキュメント" },
   {
     ui: { product: "oh-my-design CLI", docs: "ドキュメント", language: "言語", copy: "コピー", copied: "コピー済み", openBuilder: "Builder を開く", github: "GitHub", onThisPage: "このページ", previous: "前へ", next: "次へ", actualOutput: "実際のプロジェクト成果", prompt: "プロンプト", result: "結果", files: "変更ファイル", verified: "検証", homeAria: "oh-my-design ホーム", pagination: "ドキュメントのページ移動", skillsLabel: "スキル", pipeline: "品質グレード付きリファレンス → DESIGN.md → 実装 → 検証", pipelineNote: "verified_v2 141件 · partial 159件 · legacy 140件。公開デモには verified_v2 を使います。", skipContent: "本文へスキップ", copyFailed: "コピーできませんでした", copyPage: "ページをコピー", pageCopied: "コピーしました", pageTools: "ページツール", morePageActions: "その他のページ操作", viewMarkdown: "Markdown で表示", copyForAgent: "AI エージェント用にコピー", ready: "準備済み" },
-    overview: { ...en.overview, eyebrow: "コーディングエージェントのためのデザイン文脈", title: "コードを書けるエージェントに、デザイン判断と根拠を渡す。", lead: "oh-my-design は、品質グレード付きリファレンスと再利用できるデザインワークフローを、普段使っているコーディングツールへ導入します。対応するツールには専門エージェントの役割も追加されます。導入後は、作りたい画面を自然言語で依頼できます。", truthTitle: "CLI はコーディングエージェントの作業環境を整えます。", truthBody: "バンドルには20の製品スキル、18のエージェント定義、品質グレード付き DESIGN.md 440件があります。内訳は verified_v2 141件、partial 159件、legacy snapshot 140件で、公開デモには verified_v2 を使います。Claude Code、Codex、OpenCode には互換スキル・役割・カタログが入り、Cursor にはプロジェクトルールとカタログが入ります。", proof: "製品スキル20個 · 専門エージェント18個 · verified_v2 141 / partial 159 / legacy 140 · インストール時の AI 呼び出し0回", outcomesTitle: "必要な成果から始める", outcomesLead: "スキル名を覚える必要はありません。作りたい画面と守る条件を伝えると、適切なワークフローが選ばれます。", outcomes: [
+    overview: { ...en.overview, eyebrow: "コーディングエージェントのためのデザイン文脈", title: "コードを書けるエージェントに、デザイン判断と根拠を渡す。", lead: "oh-my-design は、品質グレード付きリファレンスと再利用できるデザインワークフローを、普段使っているコーディングツールへ導入します。対応するツールには専門エージェントの役割も追加されます。導入後は、作りたい画面を自然言語で依頼できます。", truthTitle: "CLI はコーディングエージェントの作業環境を整えます。", truthBody: "バンドルには20の製品スキル、18のエージェント定義、品質グレード付き DESIGN.md 440件があります。内訳は verified_v2 141件、partial 159件、legacy snapshot 140件で、公開デモには verified_v2 を使います。Cursor 2.4+ には互換 Agent Skills 19 個と小さなプロジェクトルールが入り、別個の専門ロールは対応チャネルにのみ導入されます。", proof: "製品スキル20個 · 専門エージェント18個 · verified_v2 141 / partial 159 / legacy 140 · インストール時の AI 呼び出し0回", outcomesTitle: "必要な成果から始める", outcomesLead: "スキル名を覚える必要はありません。作りたい画面と守る条件を伝えると、適切なワークフローが選ばれます。", outcomes: [
       { title: "デザインシステムを作る", description: "製品ブリーフと verified_v2 リファレンスから、プロジェクト所有の DESIGN.md を作ります。不明な事実は補完しません。", prompt: "家族向け資産管理アプリに、落ち着きと信頼感のあるデザインシステムを設定して。Toss を参考にしつつ、既存のロゴとコピーは維持して。", result: "DESIGN.md、エージェント用 shim、明示的なトークン差分、確認済みの最初の画面。" },
       { title: "完全な画面を作る", description: "Discovery、IA、ワイヤーフレーム、コンポーネント、コピー、アクセシビリティ、検証を一つのチェックポイント付きフローで進めます。", prompt: "このアプリのオンボーディングを設計・実装して。現在のスタックを維持し、DESIGN.md を正本として使って。", result: "動く画面、状態網羅、検証記録、リポジトリ内のハンドオフ成果物。" },
       { title: "既存UIを改善する", description: "製品の挙動を保ったまま、階層、リズム、アクセシビリティ、典型的なAI UIパターンを修正します。", prompt: "URLとフォーム名は変えずに料金ページを改善して。影響の大きい修正を適用し、結果を検証して。", result: "焦点を絞ったコード変更、前後の根拠、決定論的な品質チェック。" },
@@ -1109,7 +1109,7 @@ const ja = translatedLocale(
       { name: "Codex", body: "スキル、本文を内蔵したエージェント定義、ヘルパー、ローカル参照カタログを導入します。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "Claude Code", body: "スキル、サブエージェント、カタログ、安全にマージされるプロジェクトフックを導入します。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "OpenCode", body: "スキル、ネイティブのサブエージェント、オフライン対応カタログを導入します。プロジェクトは `.opencode`、`--global` は `~/.config/opencode` を使い、`doctor --global` で診断します。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "エディタ用ルール shim と共有カタログを導入します。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "ネイティブ Agent Skills 19 個、小さな DESIGN.md bootstrap rule、共有カタログを導入します。旧クライアントのみ `--cursor-rule-only` を使用します。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ], doneTitle: "最初の変更が製品画面に反映されたら完了です", doneBody: "初回実行では、目に見える UI 改善、プロジェクトの DESIGN.md、次に依頼する内容まで確認します。" },
     demo: {
       eyebrow: "ライブデモの進行ガイド",
@@ -1325,7 +1325,7 @@ const zhCn = translatedLocale(
   { overview: "概览", "getting-started": "快速开始", demo: "现场演示", workflows: "工作流", skills: "技能", "anti-slop": "AI slop 判定", showcase: "案例", troubleshooting: "故障排查", ai: "面向 AI 的文档" },
   {
     ui: { product: "oh-my-design CLI", docs: "文档", language: "语言", copy: "复制", copied: "已复制", openBuilder: "打开 Builder", github: "GitHub", onThisPage: "本页内容", previous: "上一页", next: "下一页", actualOutput: "实际项目产出", prompt: "提示词", result: "结果", files: "变更文件", verified: "验证", homeAria: "oh-my-design 首页", pagination: "文档翻页", skillsLabel: "技能", pipeline: "质量分级参考 → DESIGN.md → 实现 → 验证", pipelineNote: "verified_v2 141 个 · partial 159 个 · legacy 140 个。公开演示请使用 verified_v2。", skipContent: "跳到文档正文", copyFailed: "复制失败", copyPage: "复制本页", pageCopied: "已复制本页", pageTools: "页面工具", morePageActions: "更多页面操作", viewMarkdown: "以 Markdown 查看", copyForAgent: "复制给 AI 编程助手", ready: "准备就绪" },
-    overview: { ...en.overview, eyebrow: "给 AI 编程助手的设计上下文", title: "让会写代码的助手，也能读懂设计依据", lead: "oh-my-design 会把带质量等级的参考库和可复用设计工作流装进你正在使用的编程工具。支持的工具还会获得专业智能体角色。安装后，直接描述要改的产品界面即可。", truthTitle: "CLI 为 AI 编程助手准备工作环境", truthBody: "套件包含 20 个产品技能、18 个智能体定义和 440 份带质量等级的 DESIGN.md：verified_v2 141 份、partial 159 份、legacy snapshot 140 份。公开演示请使用 verified_v2。Claude Code、Codex 和 OpenCode 会获得兼容技能、角色与目录；Cursor 会获得项目规则和目录。", proof: "20 个产品技能 · 18 个专业智能体 · verified_v2 141 / partial 159 / legacy 140 · 安装过程 0 次 AI 调用", outcomesTitle: "从你要的结果开始", outcomesLead: "无需记住技能名。说明要改的界面和不能动的内容，系统会选择合适的工作流。", outcomes: [
+    overview: { ...en.overview, eyebrow: "给 AI 编程助手的设计上下文", title: "让会写代码的助手，也能读懂设计依据", lead: "oh-my-design 会把带质量等级的参考库和可复用设计工作流装进你正在使用的编程工具。支持的工具还会获得专业智能体角色。安装后，直接描述要改的产品界面即可。", truthTitle: "CLI 为 AI 编程助手准备工作环境", truthBody: "套件包含 20 个产品技能、18 个智能体定义和 440 份带质量等级的 DESIGN.md：verified_v2 141 份、partial 159 份、legacy snapshot 140 份。公开演示请使用 verified_v2。Cursor 2.4+ 会获得 19 个兼容 Agent Skills 和精简的项目规则；独立专业角色仅安装到支持它们的渠道。", proof: "20 个产品技能 · 18 个专业智能体 · verified_v2 141 / partial 159 / legacy 140 · 安装过程 0 次 AI 调用", outcomesTitle: "从你要的结果开始", outcomesLead: "无需记住技能名。说明要改的界面和不能动的内容，系统会选择合适的工作流。", outcomes: [
       { title: "建立设计系统", description: "把产品需求和 verified_v2 参考转成项目自有的 DESIGN.md；未知事实不会被补写。", prompt: "为家庭财务应用建立冷静、可信的设计系统。参考 Toss，但保留现有标志和文案。", result: "DESIGN.md、代理连接文件、明确的 token 差异和已确认的首个界面。" },
       { title: "交付完整界面", description: "把调研、IA、线框、组件、文案、无障碍和验证串成带检查点的流程。", prompt: "设计并实现这个应用的引导流程。保留当前技术栈，以 DESIGN.md 为唯一依据。", result: "可运行界面、完整状态、验证记录和仓库内交付物。" },
       { title: "改进现有 UI", description: "保留产品行为，同时修复层级、节奏、无障碍和缺少产品依据的重复模式。", prompt: "不要更改 URL 或字段名，改进定价页。先应用影响最大的修复并验证结果。", result: "聚焦的代码改动、前后依据和确定性质量检查。" },
@@ -1339,7 +1339,7 @@ const zhCn = translatedLocale(
       { name: "Codex", body: "安装技能、内嵌完整正文的代理角色、辅助脚本和本地参考目录。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "Claude Code", body: "安装技能、子代理、目录和安全合并的项目 hooks。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "OpenCode", body: "安装技能、原生子代理和离线参考目录。项目安装使用 `.opencode`，`--global` 使用 `~/.config/opencode`，并通过 `doctor --global` 检查。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "安装编辑器规则 shim 和共享目录。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "安装 19 个原生 Agent Skills、精简的 DESIGN.md bootstrap 规则和共享目录。仅旧版客户端使用 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ], doneTitle: "产品发生变化才算完成，而不是安装成功。", doneBody: "良好的首次运行会留下可见的 UI 改进、项目 DESIGN.md 和清晰的下一条提示词。" },
     demo: {
       eyebrow: "现场演示手册",
@@ -1555,7 +1555,7 @@ const zhTw = translatedLocale(
   { overview: "總覽", "getting-started": "快速開始", demo: "現場示範", workflows: "工作流程", skills: "技能", "anti-slop": "AI slop 判定", showcase: "案例", troubleshooting: "問題排解", ai: "給 AI 的文件" },
   {
     ui: { product: "oh-my-design CLI", docs: "文件", language: "語言", copy: "複製", copied: "已複製", openBuilder: "開啟 Builder", github: "GitHub", onThisPage: "本頁內容", previous: "上一頁", next: "下一頁", actualOutput: "實際專案產出", prompt: "提示詞", result: "結果", files: "變更檔案", verified: "驗證", homeAria: "oh-my-design 首頁", pagination: "文件換頁", skillsLabel: "技能", pipeline: "品質分級參考 → DESIGN.md → 實作 → 驗證", pipelineNote: "verified_v2 141 份 · partial 159 份 · legacy 140 份。公開示範請使用 verified_v2。", skipContent: "跳到文件正文", copyFailed: "複製失敗", copyPage: "複製本頁", pageCopied: "已複製本頁", pageTools: "頁面工具", morePageActions: "更多頁面操作", viewMarkdown: "以 Markdown 檢視", copyForAgent: "複製給 AI 程式助理", ready: "準備完成" },
-    overview: { ...zhCn.overview, eyebrow: "給 AI 程式助理的設計脈絡", title: "讓會寫程式的助理，也能讀懂設計依據", lead: "oh-my-design 會把有品質分級的參考庫與可重複使用的設計工作流程，安裝到你正在用的程式工具。支援的工具還會加入專業角色。安裝完成後，直接說明要調整的產品介面即可。", truthTitle: "CLI 先把 AI 程式助理需要的環境準備好", truthBody: "套件包含 20 個產品技能、18 個代理定義與 440 份有品質分級的 DESIGN.md：verified_v2 141 份、partial 159 份、legacy snapshot 140 份。公開示範請使用 verified_v2。Claude Code、Codex 與 OpenCode 會取得相容技能、角色與參考目錄；Cursor 會取得專案規則與參考目錄。", proof: "20 個產品技能 · 18 個專業代理 · verified_v2 141 / partial 159 / legacy 140 · 安裝期間 0 次 AI 呼叫", outcomesTitle: "從想完成的成果開始", outcomesLead: "不用記技能名稱。說明要調整的介面與不能更動的內容，系統會選擇適合的工作流程。", outcomes: [
+    overview: { ...zhCn.overview, eyebrow: "給 AI 程式助理的設計脈絡", title: "讓會寫程式的助理，也能讀懂設計依據", lead: "oh-my-design 會把有品質分級的參考庫與可重複使用的設計工作流程，安裝到你正在用的程式工具。支援的工具還會加入專業角色。安裝完成後，直接說明要調整的產品介面即可。", truthTitle: "CLI 先把 AI 程式助理需要的環境準備好", truthBody: "套件包含 20 個產品技能、18 個代理定義與 440 份有品質分級的 DESIGN.md：verified_v2 141 份、partial 159 份、legacy snapshot 140 份。公開示範請使用 verified_v2。Cursor 2.4+ 會取得 19 個相容 Agent Skills 與精簡的專案規則；獨立專業角色只安裝到支援它們的通道。", proof: "20 個產品技能 · 18 個專業代理 · verified_v2 141 / partial 159 / legacy 140 · 安裝期間 0 次 AI 呼叫", outcomesTitle: "從想完成的成果開始", outcomesLead: "不用記技能名稱。說明要調整的介面與不能更動的內容，系統會選擇適合的工作流程。", outcomes: [
       { title: "建立設計系統", description: "把產品需求和 verified_v2 參考轉成專案自有 DESIGN.md；未知事實不會被補寫。", prompt: "為家庭財務 App 建立沉穩、可信的設計系統。參考 Toss，但保留現有標誌與文案。", result: "DESIGN.md、代理連接檔、清楚的 token 差異與確認過的第一個介面。" },
       { title: "交付完整介面", description: "把研究、IA、線框、元件、文案、無障礙與驗證串成有檢查點的流程。", prompt: "設計並實作這個 App 的 onboarding。保留目前技術堆疊，以 DESIGN.md 為唯一依據。", result: "可運作介面、完整狀態、驗證紀錄與程式庫內交付物。" },
       { title: "改善既有 UI", description: "保留產品行為，同時修正層級、節奏、無障礙與缺少產品依據的重複模式。", prompt: "不要改 URL 或欄位名稱，改善定價頁。先套用影響最大的修正並驗證。", result: "聚焦的程式變更、前後依據與確定性品質檢查。" },
@@ -1564,7 +1564,7 @@ const zhTw = translatedLocale(
       { name: "Codex", body: "安裝技能、內嵌完整內容的代理角色、輔助腳本與本地參考目錄。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "Claude Code", body: "安裝技能、子代理、目錄與安全合併的專案 hooks。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "OpenCode", body: "安裝技能、原生子代理與離線參考目錄。專案安裝使用 `.opencode`，`--global` 使用 `~/.config/opencode`，並以 `doctor --global` 檢查。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "安裝編輯器規則 shim 與共享目錄。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "安裝 19 個原生 Agent Skills、精簡的 DESIGN.md bootstrap 規則與共享目錄。僅舊版用戶端使用 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ], doneTitle: "產品發生改變才算完成，而不是安裝成功。", doneBody: "良好的第一次執行會留下可見 UI 改善、專案 DESIGN.md 與清楚的下一個提示詞。" },
     demo: {
       eyebrow: "現場示範指南",

@@ -57,15 +57,20 @@ globs:
   - "**/tailwind.config.*"
   - "**/components/**"
   - "**/app/**/page.*"
-alwaysApply: false
+alwaysApply: true
 ---
 
 <!-- omd:start v=1 hash=<HASH> -->
+<!-- omd:cursor-channel=skills -->
 The authoritative design spec lives at `@DESIGN.md` (repo root). Open and read before generating/modifying UI.
 
 Pending preference corrections: `@.omd/preferences.md`.
 
 Precedence: DESIGN.md > preferences.md > framework defaults.
+
+OmD Agent Skills live under `.cursor/skills/`. Use the smallest relevant `omd-*` skill automatically, or invoke it from Cursor with `/omd-<name>`.
+
+Unknown fields stay absent. Never substitute a system font, generic component, guessed token, or adjacent surface as a product fact.
 <!-- omd:end -->
 ```
 

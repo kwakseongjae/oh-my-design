@@ -47,6 +47,7 @@ program
   .option('--skills <names>', 'Comma-separated skill names to install (overrides TUI)', (v) => v.split(',').map((s) => s.trim()).filter(Boolean))
   .option('--agents-only <names>', 'Comma-separated agent names to install (overrides TUI). Use --agents-only to disambiguate from --agent (channel selector).', (v) => v.split(',').map((s) => s.trim()).filter(Boolean))
   .option('--skills-only', 'Install only the named skill files — skip sub-agents, hooks, and settings.json (minimal single-skill install, e.g. --skills claude-design --skills-only)')
+  .option('--cursor-rule-only', 'Cursor compatibility mode: install the legacy rule + catalog without Cursor Agent Skills')
   .option('--global', 'Install to each channel\'s user-level discovery directory instead of this project. Writes skills + sub-agents + catalog; never touches global hooks/settings.')
   .action(
     async (opts: {
@@ -58,6 +59,7 @@ program
       skills?: string[];
       agentsOnly?: string[];
       skillsOnly?: boolean;
+      cursorRuleOnly?: boolean;
       global?: boolean;
     }) => {
       const { runInstallSkills } = await import('../src/cli/install-skills.js');
@@ -74,6 +76,7 @@ program
         skillsFilter: opts.skills,
         agentsFilter: opts.agentsOnly,
         skillsOnly: opts.skillsOnly,
+        cursorRuleOnly: opts.cursorRuleOnly,
         global: opts.global,
       });
       if (code !== 0) process.exit(code);

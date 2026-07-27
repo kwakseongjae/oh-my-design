@@ -25,7 +25,7 @@
 
 ## oh-my-design とは?
 
-**oh-my-design (OmD)** は、普段使っている AI コーディングツールにローカルのデザインワークフローを導入します。Claude Code / Codex / OpenCode には再利用可能なスキルと専門ロールを、Cursor には同じ `DESIGN.md` を適用するプロジェクト rule をインストールします。`DESIGN.md` は、[Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) のトークンに Voice、Narrative、Principles、Personas、States、Motion を加えた移植可能なブランド仕様です。パッケージには品質と根拠の状態を明示した企業リファレンス 440 件以上も含まれます。**コアのインストールとローカルワークフローに別の API キー、デーモン、MCP サーバーは不要です。推論には既存のコーディングエージェントのセッションを使います。任意の `claude-design` スキルは、Chrome でログイン済みの claude.ai/design セッションを開きます。**
+**oh-my-design (OmD)** は、普段使っている AI コーディングツールにローカルのデザインワークフローを導入します。Claude Code / Codex / OpenCode には再利用可能なスキルと専門ロールを、Cursor 2.4+ にはネイティブ Agent Skills と同じ `DESIGN.md` を適用する小さなプロジェクト rule をインストールします。`DESIGN.md` は、[Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) のトークンに Voice、Narrative、Principles、Personas、States、Motion を加えた移植可能なブランド仕様です。パッケージには品質と根拠の状態を明示した企業リファレンス 440 件以上も含まれます。**コアのインストールとローカルワークフローに別の API キー、デーモン、MCP サーバーは不要です。推論には既存のコーディングエージェントのセッションを使います。任意の `claude-design` スキルは、Chrome でログイン済みの claude.ai/design セッションを開きます。**
 
 ## インストール
 
@@ -68,22 +68,19 @@ CLI の役割はバンドルの導入と診断までです。その後のデザ�
 | **Claude Code** | `--agent claude-code` (デフォルト) | フルバンドル — `.claude/` 配下のスキル、18 サブエージェント、hooks、data |
 | **Codex** | `--agent codex` | `.agents/skills/` のスキル、`.codex/agents/` の埋め込みサブエージェント定義、`.codex/data/` のローカルカタログ |
 | **OpenCode** | `--agent opencode` | Project: `.opencode/{skills,agents,data}/` のスキル・ネイティブのサブエージェント・カタログ。Global: `~/.config/opencode/{skills,agents,data}/` の同じバンドル |
-| **Cursor** | `--agent cursor` | プロジェクト rule `.cursor/rules/omd-design.mdc` + 共有 `.claude/data` カタログ。OmD スキル、サブエージェント、hooks は導入しない |
+| **Cursor** | `--agent cursor` | `.cursor/skills/` の互換 Agent Skills 19 個、小さな `.cursor/rules/omd-design.mdc` bootstrap、共有 `.claude/data` カタログ。別個のサブエージェント定義と hooks は導入しない |
 
 デフォルトでは検出されたすべてのエージェントにインストールします。単一チャネルを非対話で導入するには `npx oh-my-design-cli@latest install-skills --agent <name> --all` を実行します。
 
 ### Cursor の正しい利用経路
 
-Cursor は rules-only チャネルであり、`omd:init`、`omd:feel`、OmD サブエージェントは実行しません。プロジェクト仕様は次のいずれかで用意します。
+Cursor 2.4+ は `.cursor/skills/` から互換 OmD Agent Skills 19 個を読み込みます。導入後に Cursor を再起動し、自然言語でデザインシステムの作成を依頼するか `/omd-init` を明示的に呼び出してください。小さな常時 rule は、`DESIGN.md` を最優先し、`.omd/preferences.md` 修正を次に適用し、未知の事実は補わないという契約だけを維持します。
 
-1. [Builder](https://oh-my-design.kr/builder) でリファレンスを選択・調整し、`DESIGN.md` をダウンロードしてプロジェクトルートに保存する。
-2. Cursor に `Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md for this product using confirmed values only. Keep unknown facts absent.` と明示的に依頼する。
-
-その後、`@DESIGN.md を読み、動作を変えずにホーム画面を再設計して` と依頼します。導入される rule の最小契約は、`DESIGN.md` を最優先し、保留中の `.omd/preferences.md` 修正を次に適用し、フレームワークの既定値を最後に使うことです。
+旧 Cursor では `--cursor-rule-only` で従来の rule + カタログ互換モードを導入できます。OmD の別個の専門サブエージェント定義と hooks は Cursor には導入しません。
 
 ## パッケージの中身
 
-**20 スキル · 18 サブエージェント · 品質・根拠ステータス付きの 440 件以上のリファレンス · 起動 hooks** がスキル対応チャネルのフルバンドルです。Cursor には意図的に rule とカタログのみを導入します。
+**20 スキル · 18 サブエージェント · 品質・根拠ステータス付きの 440 件以上のリファレンス · 起動 hooks** がフルバンドルです。Cursor には移植可能な 19 スキルを導入し、`claude-design`、別個のサブエージェント定義、起動 hooks はチャネル固有です。
 
 すべてのリファレンスは `oh-my-design.kr/<id>/design.md` から raw markdown としても取得でき、エージェントが直接 fetch できます。スキル・エージェントごとの詳細リファレンス: **[oh-my-design.kr/docs/ja](https://oh-my-design.kr/docs/ja)**。
 

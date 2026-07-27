@@ -25,7 +25,7 @@
 
 ## 什麼是 oh-my-design?
 
-**oh-my-design (OmD)** 會把本機設計工作流程安裝到你原本使用的 AI 程式助理。Claude Code / Codex / OpenCode 會取得可重複使用的 skills 與專業角色；Cursor 則取得套用同一份 `DESIGN.md` 的專案 rule。`DESIGN.md` 是可攜式品牌規格，內容結合 [Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens 與 Voice、Narrative、Principles、Personas、States、Motion。套件另附 440 個以上標示品質與依據狀態的企業參考。**核心安裝與本機工作流程不需要額外 API 金鑰、daemon 或 MCP 伺服器；推論會留在既有的 AI 程式助理工作階段。選用的 `claude-design` skill 會在 Chrome 開啟已登入的 claude.ai/design 工作階段。**
+**oh-my-design (OmD)** 會把本機設計工作流程安裝到你原本使用的 AI 程式助理。Claude Code / Codex / OpenCode 會取得可重複使用的 skills 與專業角色；Cursor 2.4+ 則取得原生 Agent Skills，以及套用同一份 `DESIGN.md` 的精簡專案 rule。`DESIGN.md` 是可攜式品牌規格，內容結合 [Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens 與 Voice、Narrative、Principles、Personas、States、Motion。套件另附 440 個以上標示品質與依據狀態的企業參考。**核心安裝與本機工作流程不需要額外 API 金鑰、daemon 或 MCP 伺服器；推論會留在既有的 AI 程式助理工作階段。選用的 `claude-design` skill 會在 Chrome 開啟已登入的 claude.ai/design 工作階段。**
 
 ## 安裝
 
@@ -68,22 +68,19 @@ CLI 只負責安裝與檢查套件。之後的設計工作都以自然語言交�
 | **Claude Code** | `--agent claude-code` (預設) | 完整套件 — `.claude/` 下的 skills、18 個子代理、hooks、data |
 | **Codex** | `--agent codex` | `.agents/skills/` 技能、`.codex/agents/` 內嵌子代理角色，以及 `.codex/data/` 本機參考目錄 |
 | **OpenCode** | `--agent opencode` | 專案：`.opencode/{skills,agents,data}/` 內的技能、原生子代理與參考目錄；全域：`~/.config/opencode/{skills,agents,data}/` 內的相同套件 |
-| **Cursor** | `--agent cursor` | 專案 rule `.cursor/rules/omd-design.mdc` + 共用 `.claude/data` 目錄；不安裝 OmD skills、子代理或 hooks |
+| **Cursor** | `--agent cursor` | `.cursor/skills/` 中 19 個相容 Agent Skills、精簡 `.cursor/rules/omd-design.mdc` bootstrap 與共用 `.claude/data` 目錄；不安裝獨立子代理定義或 hooks |
 
 預設會安裝到所有偵測到的 AI 程式助理。若要以非互動方式安裝單一通道，請執行 `npx oh-my-design-cli@latest install-skills --agent <name> --all`。
 
 ### Cursor 的正確使用路徑
 
-Cursor 是 rules-only 通道，不會執行 `omd:init`、`omd:feel` 或 OmD 子代理。請用下列任一路徑建立專案規格：
+Cursor 2.4+ 會從 `.cursor/skills/` 載入 19 個相容 OmD Agent Skills。安裝後重新啟動 Cursor，以自然語言要求建立設計系統，或直接呼叫 `/omd-init`。精簡的常駐 rule 只維持必要契約：`DESIGN.md` 優先、`.omd/preferences.md` 修正其次、框架預設最後，未知事實保持缺省。
 
-1. 在 [Builder](https://oh-my-design.kr/builder) 選擇、調整參考，下載 `DESIGN.md` 並存到專案根目錄。
-2. 明確要求 Cursor：`Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md for this product using confirmed values only. Keep unknown facts absent.`
-
-接著要求 Cursor：`讀取 @DESIGN.md，在不改變行為的前提下重新設計首頁。` 安裝的 rule 只負責最小契約：優先使用 `DESIGN.md`，其次套用待處理的 `.omd/preferences.md` 修正，最後才使用框架預設值。
+舊版 Cursor 可使用 `--cursor-rule-only` 安裝既有 rule + 目錄相容模式。OmD 的獨立專業子代理定義與 hooks 不會安裝到 Cursor。
 
 ## 套件內容
 
-**20 個 skills · 18 個子代理角色 · 440 個以上附品質與依據狀態的參考 · 啟動 hooks** 是支援 skills 通道的完整套件。Cursor 則刻意只安裝 rule 與參考目錄。
+**20 個 skills · 18 個子代理角色 · 440 個以上附品質與依據狀態的參考 · 啟動 hooks** 是完整套件。Cursor 會取得 19 個可攜 skills；`claude-design`、獨立子代理定義與啟動 hooks 仍依通道而定。
 
 每個參考也以 raw markdown 形式提供於 `oh-my-design.kr/<id>/design.md`，AI 程式助理可以直接讀取。完整的 skill 與 agent 參考文件：**[oh-my-design.kr/docs/zh-tw](https://oh-my-design.kr/docs/zh-tw)**。
 

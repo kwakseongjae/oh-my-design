@@ -174,7 +174,8 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
    - semantic color ledger의 모든 normal-text pair에 measured proof가 있거나, text-role token + 인접 non-text accent로 fail-closed 처리됨
    - desktop, 390px, 320px, 200% zoom/reflow 또는 제품이 지원하는 가장 가까운 동등 조건에서 horizontal overflow·clipped control·control overlap 없음
    - focusable skip/navigation control을 큰 음수 좌표에 방치하지 않으며, keyboard focus 시 viewport 안에서 보이고 다른 control과 겹치지 않음
-7. 브라우저나 contrast 계산기가 없으면 통과를 추정하지 않는다. 가능한 정적 검사와 같은-route 상태 검증을 수행하고 나머지는 `unresolved`로 남긴다. 단, 의미 있는 normal text의 contrast가 unresolved인 pair 자체는 남기지 않는다. text-role token + non-text accent 조합으로 먼저 교체한 뒤 계측하지 못한 나머지 route 검증만 unresolved로 보고한다.
+7. **semantic structure를 시각 grid로 대체하지 않는다.** 비교 데이터는 가능하면 native `<table>`·`<th scope>`를 사용한다. ARIA table/grid를 쓰면 `table/grid > row > columnheader|rowheader|cell` parentage를 완성한 뒤 출고한다. 좁은 화면에서 의미상 필요한 horizontal scroll region은 이름을 제공하고, 내부에 자연스러운 focus target이 없으면 region 자체를 `tabindex="0"`으로 keyboard-reachable하게 만든다. 장식용 wrapper에 table/grid role을 붙이지 않는다.
+8. 브라우저나 contrast 계산기가 없으면 통과를 추정하지 않는다. 가능한 정적 검사와 같은-route 상태 검증을 수행하고 나머지는 `unresolved`로 남긴다. 단, 의미 있는 normal text의 contrast가 unresolved인 pair 자체는 남기지 않는다. text-role token + non-text accent 조합으로 먼저 교체한 뒤 계측하지 못한 나머지 route 검증만 unresolved로 보고한다.
 
 이 packet은 benchmark selector를 맞추는 절차가 아니다. 실제 제품에서 사용자 동작과 접근성·reflow 계약을 보존하기 위한 일반 acceptance layer다.
 

@@ -5,7 +5,7 @@ oh-my-design gives your existing AI coding environment two things it can reuse a
 - a local catalog of 440+ real-company `DESIGN.md` references; and
 - skills and specialist roles for creating, applying, reviewing, and maintaining your own `DESIGN.md`.
 
-The CLI is the installer and health check. It does not generate a UI by itself and it does not call a separate AI service. Claude Code, Codex, and OpenCode receive OmD skills and specialist roles. Cursor is intentionally narrower: it receives a project rule and catalog, not OmD skills or sub-agents.
+The CLI is the installer and health check. It does not generate a UI by itself and it does not call a separate AI service. Claude Code, Codex, and OpenCode receive OmD skills and specialist roles. Cursor 2.4+ receives 19 compatible Agent Skills, a small project bootstrap rule, and the catalog; it does not receive OmD's separately generated sub-agent definitions.
 
 When you do not know what to ask next, route one sentence locally:
 
@@ -56,7 +56,7 @@ Install the Cursor project channel explicitly:
 npx oh-my-design-cli@latest install-skills --agent cursor --all
 ```
 
-Restart Cursor, then verify the project rule and 440-reference catalog:
+Restart Cursor, then verify the native skills, project rule, and 440-reference catalog:
 
 ```bash
 npx oh-my-design-cli@latest doctor
@@ -64,23 +64,13 @@ npx oh-my-design-cli@latest doctor
 
 Before a root `DESIGN.md` exists, `doctor` correctly reports that the bundle is installed but the project still needs activation.
 
-Cursor does **not** receive `omd:init`, `omd:feel`, `/omd-harness`, or OmD sub-agents. Create the root `DESIGN.md` by either supported path:
-
-1. Open the [Builder](https://oh-my-design.kr/builder), choose and customize a reference, then download `DESIGN.md` into the project root; or
-2. use the installed catalog with an explicit prompt:
-
-   ```text
-   Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md
-   for this product using confirmed values only. Keep unknown facts absent.
-   ```
-
-Then build with a normal Cursor prompt:
+Cursor receives `omd-init`, `omd-feel`, `omd-harness`, and the other portable skills under `.cursor/skills/`. Start naturally or invoke a skill explicitly:
 
 ```text
-Read @DESIGN.md and redesign the home screen without changing behavior.
+Set up our design system — Toss-style, for a family meal-tracking app.
 ```
 
-The rule's minimal contract is deliberate: `DESIGN.md` has first priority, pending `.omd/preferences.md` corrections come next, and framework defaults come last. Do not substitute a plausible brand fact for an unresolved one.
+The rule's minimal contract is deliberate: `DESIGN.md` has first priority, pending `.omd/preferences.md` corrections come next, and framework defaults come last. Do not substitute a plausible brand fact for an unresolved one. Older Cursor clients can opt into the former rule-only behavior with `--cursor-rule-only`.
 
 ## What is installed
 
@@ -89,7 +79,7 @@ The rule's minimal contract is deliberate: `DESIGN.md` has first priority, pendi
 | Claude Code | `.claude/skills/`, `.claude/agents/`, `.claude/data/`, and managed hooks | Skills, specialist roles, local references, and natural-language activation |
 | Codex | `.agents/skills/`, `.codex/agents/`, and `.codex/data/` | Skills, embedded specialist-role definitions, and local references |
 | OpenCode | `.opencode/skills/`, `.opencode/agents/`, and `.opencode/data/` | Skills, native sub-agents, and an offline-capable local reference catalog |
-| Cursor | `.cursor/rules/omd-design.mdc` and shared references in `.claude/data/` | A project rule that makes Cursor read `DESIGN.md`; no OmD skill, sub-agent, or hook channel is installed |
+| Cursor | `.cursor/skills/`, `.cursor/rules/omd-design.mdc`, and shared references in `.claude/data/` | 19 native Agent Skills plus a small DESIGN.md bootstrap; no OmD sub-agent definitions or hooks |
 
 The interactive installer detects available channels. To select one explicitly:
 
@@ -113,16 +103,15 @@ Global installation does not modify global hooks or settings. Each project still
 
 ## Work inside your agent
 
-Once installed, prompts—not repeated CLI commands—are the main interface. Named OmD skills in the table below require Claude Code, Codex, or OpenCode.
+Once installed, prompts—not repeated CLI commands—are the main interface.
 
 | Goal | Available in | Example prompt |
 |---|---|---|
-| Create the project system | Claude Code / Codex / OpenCode | `Set up our design system — Linear-style, for a B2B operations dashboard.` |
-| Create the project system | Cursor | Download from the Builder, or use the explicit local-catalog prompt above |
+| Create the project system | All skill-enabled channels | `Set up our design system — Linear-style, for a B2B operations dashboard.` |
 | Apply it to existing UI | All channels, once root `DESIGN.md` exists | `Redesign the billing page using our DESIGN.md. Preserve all behavior.` |
-| Run the full design pipeline | Claude Code / Codex / OpenCode | `/omd-harness Checkout completion screen — success, failure, and partial-success states` |
-| Review interface quality | Claude Code / Codex / OpenCode | `Audit this screen with omd:feel and fix the high-confidence issues.` |
-| Keep a correction | Claude Code / Codex / OpenCode | `Remember this preference: cards should use borders, not decorative shadows.` |
+| Run the full design pipeline | All skill-enabled channels | `/omd-harness Checkout completion screen — success, failure, and partial-success states` |
+| Review interface quality | All skill-enabled channels | `Audit this screen with omd:feel and fix the high-confidence issues.` |
+| Keep a correction | All skill-enabled channels | `Remember this preference: cards should use borders, not decorative shadows.` |
 | Capture a new reference | Claude Code / Codex / OpenCode | `Capture a design reference from this first-party product URL and keep unresolved facts absent.` |
 
 The full harness includes explicit user checkpoints. It does not silently approve information architecture, design-system changes, or final validation.

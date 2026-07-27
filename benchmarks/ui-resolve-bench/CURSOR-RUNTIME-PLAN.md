@@ -1,7 +1,8 @@
 # Cursor runtime and model evaluation plan
 
-Status: fake runner calibrated; no-write attribution completed; six-cell
-fixed-runtime Internal pilot completed but failed accessibility acceptance.
+Status: fake runner calibrated; no-write attribution and six-cell fixed-runtime
+Internal pilot completed; Cursor native Agent Skill channel deterministically
+accepted; live discovery canary and 1.9.44 Skill Lift pending.
 
 ## 0. Primary intent
 
@@ -10,10 +11,10 @@ gateway to several frontier models. Keeping those models inside the same Cursor
 Agent runtime makes an initial Model Track comparison cleaner than comparing a
 Codex-hosted model with a Claude-Code-hosted model.
 
-Cursor product integration remains a second, separately measured outcome:
-install OmD's actual Agent Skills into Cursor rather than only a legacy rule
-shim. The gateway experiment and the product capability must never share one
-score or release hypothesis.
+Cursor product integration remains a second, separately measured outcome.
+Patch 1.9.43 installs actual Agent Skills rather than only a legacy rule shim.
+The gateway experiment and the product capability never share one score or
+release hypothesis.
 
 ## 1. What is being integrated
 
@@ -75,16 +76,17 @@ Model Track row.
 
 ## 4. Cursor skill-channel modernization
 
-The current OmD Cursor channel installs a `.cursor/rules` shim and catalog only.
-That reflects an older Cursor capability boundary. Cursor now supports Agent
-Skills in its editor and CLI, so a separate product patch should:
+Patch 1.9.43 modernizes the older rule-only Cursor capability boundary:
 
-1. install reviewed OmD skills into Cursor's supported project skill path;
-2. preserve the existing always-on DESIGN.md rule as a small bootstrap;
-3. keep Claude-only hooks out unless Cursor parity is explicitly implemented;
-4. add Cursor-aware `doctor` checks for skill discovery and version drift;
-5. verify manual slash invocation and automatic discovery in Cursor CLI;
-6. retain the rule-only channel behind a compatibility flag for older clients.
+1. 19 compatible reviewed OmD skills install under `.cursor/skills`;
+2. a small always-on DESIGN.md bootstrap rule remains;
+3. Claude-only hooks and separately generated sub-agent definitions stay out;
+4. Cursor-aware `doctor` checks native skill contracts and drift;
+5. `--cursor-rule-only` retains explicit compatibility for older clients.
+
+Manual slash invocation and automatic discovery in live Cursor remain a
+separately approved external-transmission canary. Deterministic install success
+does not imply provider discovery or quality lift.
 
 This product capability must be tested independently from benchmark quality.
 Installing more OmD capability is not evidence that Cursor or a model scored

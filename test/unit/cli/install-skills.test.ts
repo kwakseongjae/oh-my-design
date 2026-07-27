@@ -754,20 +754,35 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.claude/data/references'))).toBe(false);
   });
 
-  it('cursor channel installs the .cursor/rules shim + shared catalog (issue #20)', async () => {
+  it('cursor channel installs native Agent Skills + bootstrap rule + shared catalog', async () => {
     const code = await runInstallSkills({ dir: root, agents: ['cursor'] });
     expect(code).toBe(0);
 
-    // The shim mirrors omd:sync's cursor template — frontmatter first, then
-    // the hash-marked body block.
+    const skillsRoot = join(root, '.cursor/skills');
+    const installedSkills = readdirSync(skillsRoot)
+      .filter((skill) => existsSync(join(skillsRoot, skill, 'SKILL.md')))
+      .sort();
+    expect(installedSkills).toHaveLength(19);
+    expect(installedSkills).not.toContain('claude-design');
+    expect(installedSkills).toContain('omd-apply');
+    const applySkill = readFileSync(join(skillsRoot, 'omd-apply', 'SKILL.md'), 'utf8');
+    expect(applySkill.startsWith('---\n')).toBe(true);
+    expect(applySkill).toMatch(/^name:\s*omd-apply$/m);
+    expect(applySkill).toContain('omd:installed-skill');
+    expect(applySkill).not.toMatch(/\bomd:apply\b/);
+
+    // The always-on rule is a small bootstrap; procedural instructions live in
+    // the dynamically discovered native skill tree.
     const rule = join(root, '.cursor/rules/omd-design.mdc');
     expect(existsSync(rule), 'cursor rule shim').toBe(true);
     const content = readFileSync(rule, 'utf8');
     expect(content.startsWith('---\n')).toBe(true);
     expect(content).toMatch(/<!-- omd:start v=1 hash=[0-9a-f]{12} -->/);
+    expect(content).toContain('alwaysApply: true');
+    expect(content).toContain('<!-- omd:cursor-channel=skills -->');
     expect(content).toContain('`@DESIGN.md`');
-    expect(content).toContain('Cursor receives this rule and the catalog, not OmD named skills or sub-agents');
-    expect(content).toContain('Unknown reference fields stay absent');
+    expect(content).toContain('OmD Agent Skills live under `.cursor/skills/`');
+    expect(content).toContain('Unknown fields stay absent');
     expect(content).toContain('<!-- omd:end -->');
 
     // Catalog + data JSONs land in the single shared path (.claude/data) —
@@ -783,6 +798,36 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.claude/agents'))).toBe(false);
   });
 
+  it('cursor --cursor-rule-only preserves the explicit legacy compatibility mode', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['cursor'],
+      cursorRuleOnly: true,
+    })).toBe(0);
+
+    expect(existsSync(join(root, '.cursor/skills'))).toBe(false);
+    const rule = readFileSync(join(root, '.cursor/rules/omd-design.mdc'), 'utf8');
+    expect(rule).toContain('alwaysApply: false');
+    expect(rule).toContain('<!-- omd:cursor-channel=rule-only -->');
+    expect(rule).toContain('Compatibility mode provides the rule and catalog only');
+    expect(existsSync(join(root, '.claude/data/references/toss/DESIGN.md'))).toBe(true);
+  });
+
+  it('rejects invalid --cursor-rule-only flag combinations before writing files', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['codex'],
+      cursorRuleOnly: true,
+    })).toBe(1);
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['cursor'],
+      cursorRuleOnly: true,
+      skillsOnly: true,
+    })).toBe(1);
+    expect(existsSync(join(root, '.cursor'))).toBe(false);
+  });
+
   it('cursor + claude-code combined install does not double-copy the catalog (issue #28)', async () => {
     const code = await runInstallSkills({ dir: root, agents: ['claude-code', 'cursor'] });
     expect(code).toBe(0);
@@ -794,6 +839,7 @@ describe('install-skills', () => {
     // No second catalog location is invented for cursor.
     expect(existsSync(join(root, '.cursor/data'))).toBe(false);
     expect(existsSync(join(root, '.codex/data'))).toBe(false);
+    expect(existsSync(join(root, '.cursor/skills/omd-apply/SKILL.md'))).toBe(true);
 
     // The dedup guard itself: cursor resolves to NO data dir when claude-code
     // is also selected (its pass already wrote .claude/data); standalone cursor

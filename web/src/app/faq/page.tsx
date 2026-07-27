@@ -70,7 +70,7 @@ const SECTIONS: QASection[] = [
       },
       {
         q: "어떤 AI agent와 호환되나요?",
-        a: "Claude Code, Codex, OpenCode, Cursor가 1차 타깃이고 Gemini CLI도 동작합니다. skill 파일은 agent-agnostic markdown이라 새 agent가 등장해도 동일한 DESIGN.md를 그대로 읽을 수 있도록 설계됐습니다. Cursor는 전용 설치 채널(`--agent cursor`)로 `.cursor/rules/omd-design.mdc` shim + 공용 레퍼런스 카탈로그가 설치됩니다.",
+        a: "Claude Code, Codex, OpenCode, Cursor가 1차 타깃이고 Gemini CLI도 동작합니다. skill 파일은 agent-agnostic markdown이라 새 agent가 등장해도 동일한 DESIGN.md를 그대로 읽도록 설계됐습니다. Cursor 2.4+에는 전용 채널(`--agent cursor`)로 호환 스킬 19개, 작은 DESIGN.md bootstrap rule, 공용 레퍼런스 카탈로그가 설치됩니다.",
       },
       {
         q: "Vibe coding이 뭔가요?",
@@ -88,7 +88,7 @@ const SECTIONS: QASection[] = [
       },
       {
         q: "Cursor에서도 됩니까?",
-        a: "네. Cursor 채널은 `.cursor/rules/omd-design.mdc` 규칙 shim과 공유 레퍼런스 카탈로그를 설치해 DESIGN.md를 프로젝트 맥락으로 연결합니다. 다만 전문 에이전트 역할까지 설치하는 Claude Code·Codex와 채널 기능이 같다고 과장하지 않습니다. 설치 후 doctor가 Cursor 구성을 따로 검사합니다.",
+        a: "네. Cursor 2.4+ 채널은 `.cursor/skills/`에 호환 Agent Skills 19개를 설치하고, 작은 `.cursor/rules/omd-design.mdc` bootstrap과 공유 레퍼런스 카탈로그를 더합니다. 별도 전문 에이전트 정의와 hooks는 설치하지 않습니다. 구형 Cursor는 `--cursor-rule-only` 호환 모드를 쓸 수 있고, doctor가 두 구성을 각각 검사합니다.",
       },
       {
         q: "무료인가요?",

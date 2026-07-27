@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `b64fa5d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-27 · 1.9.42 six-cell Cursor pilot complete; accessibility acceptance failed; 1.9.43 Cursor Agent Skill channel next
+- 기준 커밋: `59d66b8` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-27 · 1.9.43 Cursor native Agent Skill channel deterministic acceptance complete; live discovery canary와 1.9.44 next
 
 ## 지금 (현재 위치)
 
@@ -39,6 +39,11 @@
 - Grok은 81/85×3, Composer는 81/85×2·79/85×1이다. 6개 모두 task/state/responsive/design/evidence gate는 통과했지만 accessibility critical gate를 실패했고 display-name attribution이므로 public winner/W-T-L/Reliability@3를 만들지 않는다.
 - 공통 실패는 선언된 `signal-orange #E7683D`를 paper/white 위 작은 status text로 사용해 2.98–3.25:1 대비가 난 것이다. 추가로 Grok 1셀은 ARIA table row parent를 누락했고 Composer 1셀은 horizontal comparison을 keyboard-reachable하게 만들지 못했다.
 - Cursor usage event의 camelCase를 common exporter가 0으로 합산하던 정규화 결함을 교정했다. retained `run-result.json`만 재-export했고 provider 실행·score·product는 바꾸지 않았다. 1.9.43은 frozen Raw control을 수정하지 않고 Cursor Agent Skill에 semantic-color/semantic-structure safety를 넣는다.
+- 1.9.43은 Cursor 2.4+ 기본 설치를 `.cursor/skills/` 네이티브 Agent Skills 19개 + 작은 always-on DESIGN.md bootstrap + 공유 440-reference catalog로 전환했다. 별도 OmD sub-agent 정의와 hooks는 0개이며 installer summary도 실제 수량을 표시한다.
+- `doctor`는 Cursor skills/rule-only 두 mode, 19개 skill contract·sidecar·drift, mode conflict를 검사하고 Cursor-only repair를 제안한다. 구형 클라이언트는 명시적 `--cursor-rule-only`로 기존 동작을 유지한다.
+- `omd-apply`에는 1.9.42에서 드러난 semantic accent text 대비 검증과 native table/ARIA parentage/focusable labelled horizontal scroll 계약을 추가했다. frozen Raw DESIGN.md control은 변경하지 않았다.
+- deterministic acceptance는 focused 74/74, CLI TypeScript/build, web TypeScript와 830/830, network-enabled production 1,459-page build가 green이다. root는 230 pass/1 skip이며 기존 `/tmp` vendor Git metadata 부재 2건만 환경 실패로 남겼다.
+- live Cursor automatic discovery/manual invocation은 provider 전송이므로 별도 canary로 남았다. 1.9.44는 그 canary 뒤 fixed-model Raw DESIGN.md vs OmD Skill Lift를 새 denominator로 사전등록한다.
 - 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
 - stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.
 - 완성 3 pairs는 objective 0 win/3 tie/0 loss이고 Pricing/Onboarding 85/85, Operations 81/85로 양 시스템이 동률이다. paired-only median은 portable 430,140ms·105,380 tokens, harness 500,022ms·152,485 tokens(1.162×/1.447×)지만 incomplete matrix라 reliability/Pareto/promotion 근거가 아니다.
@@ -452,10 +457,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.43에서 Cursor project skill path, reviewed skill copy, always-on bootstrap rule, version/drift doctor를 구현한다.
-2. Cursor CLI에서 deterministic discovery/manual invocation canary를 통과시키고 rule-only compatibility를 보존한다.
+1. 1.9.43 변경을 commit하고 user-owned `web/public/llms-full.txt`는 제외한다.
+2. Cursor CLI live discovery/manual invocation canary는 전송 파일과 prompt를 고정해 별도 승인 후 실행한다.
 3. 1.9.44는 frozen Raw DESIGN.md vs OmD Skill을 동일 Cursor model로 비교하도록 별도 사전등록한다.
-4. display-name attribution인 동안 결과는 Internal diagnostics로만 유지하고 public winner/W-T-L은 만들지 않는다.
+4. display-name attribution인 동안 결과는 Internal diagnostics로만 유지하고 public winner/W-T/L은 만들지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

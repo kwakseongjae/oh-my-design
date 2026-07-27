@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-07-27 (Codex) · 1.9.43 Cursor native Agent Skills accepted
+- Cursor 기본 채널을 `.cursor/skills`의 호환 스킬 19개+작은 bootstrap rule로 전환했다.
+- doctor가 native/rule-only mode, skill contract·drift·repair를 검사하고 실제 19/0/0 수량을 표시한다.
+- 1.9.42 대비·ARIA·scroll-region 실패를 reviewed skill 계약에 넣고 Raw control은 동결했다.
+- focused 74/74, CLI lint/build, web typecheck+830/830이 green이다.
+- 다음은 별도 승인된 live discovery canary 후 1.9.44 fixed-model Skill Lift다.
+
 ## 2026-07-27 (Codex) · 1.9.42 Cursor pilot complete
 - 승인된 6셀을 retry/fallback 없이 완료했고 Grok 81×3, Composer 81×2·79×1을 기록했다.
 - 6/6 task/state/responsive/design/evidence pass지만 signal-orange text 대비로 a11y acceptance는 0/6이다.
