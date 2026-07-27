@@ -1,6 +1,6 @@
 # Cursor/Composer fixed-model Skill Lift replacement — 1.9.51
 
-Status: **LOCKED; fresh preparation pending**.
+Status: **EXECUTION STOPPED; provider resource exhausted**.
 
 ## Frontier gate and bounded hypothesis
 
@@ -57,3 +57,17 @@ resume, score-rule change, or failed-cell replacement is allowed.
 Passing closes the bounded Composer replication and unlocks a fresh multi-task
 Cursor Preview slice. It does not establish a public model winner, confidence
 interval, three-family generality, efficiency, or frontier status.
+
+## Frozen decision
+
+Six cells completed without retry or fallback. The seventh cell,
+`pricing-t3-raw`, exited after 25,541 ms with Cursor Provider
+`RetriableError: [resource_exhausted] Error`. Its retained stream shows three
+provider-managed reconnection attempts, no usage event, no final response, no
+product change, and no evaluator score. The final two cells were not started.
+
+The matrix is frozen and outside every Skill Lift denominator. The first two
+OmD cells were 85/85 and the first two Raw cells were 79/85, but no W/T/L,
+Reliability@3, efficiency, or replication decision may be computed from an
+incomplete matrix. The preregistered infrastructure policy permits only a
+fresh-root operational replacement.

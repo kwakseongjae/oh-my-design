@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.50 Composer semantic-color candidate recovery passed
+- 갱신: 2026-07-28 · 1.9.51 Composer matrix frozen on provider resource exhaustion
 
 ## 지금 (현재 위치)
 
+- 1.9.51 fresh Composer 9-cell replacement는 6셀 완료 뒤 7번째 Raw가 Cursor Provider `resource_exhausted`로 25,541ms에 process-failure가 나 frozen됐다. provider-managed reconnect 3회, usage/final/product change 0이며 마지막 2셀은 not-started다.
+- 완료 6셀은 baseline 69/63, Raw 79/79, OmD 85/85이고 Evidence & Unknown 6/6이다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 W/T/L·Reliability@3·efficiency·replication 판단은 전부 금지한다.
+- 1.9.51은 skill 실패가 아닌 infrastructure-invalid execution이다. `/tmp/u1951`은 resume하지 않으며 preregistered infrastructure policy에 따라 1.9.52 fresh operational replacement만 허용한다.
 - 1.9.50 fresh Composer candidate-only recovery는 retry/fallback/manual edit 없이 85/85, critical 6/6, Evidence & Unknown pass, 4 viewports axe serious/critical 0, `index.html`-only diff로 통과했다. `signal-orange`는 non-text decoration 2곳에만 남고 normal text 0곳이다.
 - Composer는 immutable ID가 아닌 `Composer 2.5` 표시명만 반환하므로 public validity는 계속 `invalid-attribution`이다. 이 1셀은 모든 Skill Lift denominator 밖이며 1.9.48 rejected 결정을 바꾸지 않는다.
 - 1.9.51 fresh Composer 9-cell replacement를 LOCKED했다. 동일 task/evaluator/Raw/control과 balanced order를 유지하며 통과해야 Composer bounded Skill Lift replication을 닫는다.
@@ -490,10 +493,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.51 fresh Composer 9-cell replacement를 `/tmp/u1951`에 prepare한다.
-2. locked hashes와 standing-approved transmission boundary를 기록한다.
-3. retry 없이 serial 9셀을 실행하고 3/3·zero-loss·a11y·Evidence gates를 판정한다.
-4. 통과하면 multi-task Cursor Preview slice를 사전등록하고, 실패하면 새 root cause만 bounded repair한다.
+1. 1.9.51 provider-resource exhaustion stop을 report/commit한다.
+2. 1.9.52 fresh Composer operational replacement를 새 root에 preregister/prepare한다.
+3. 동일 9셀을 retry 없이 serial 실행하고 3/3·zero-loss·a11y·Evidence gates를 판정한다.
+4. 통과하면 multi-task Cursor Preview slice를 사전등록하고, 같은 quota stop이 반복되면 provider capacity hard-pause를 평가한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

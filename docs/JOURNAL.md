@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.51 stopped by provider capacity
+- 6셀 완료 후 Raw t3가 Cursor `resource_exhausted`로 25.5초에 process-failure했다.
+- 완료분은 baseline 69/63, Raw 79/79, OmD 85/85지만 incomplete라 비교하지 않는다.
+- provider reconnect 3회 뒤 usage/final/product change 없이 stop됐고 마지막 2셀은 not-started다.
+- `/tmp/u1951`은 동결하고 fresh operational replacement 1.9.52로 간다.
+
 ## 2026-07-28 (Codex) · 1.9.50 Composer color recovery passed
 - fresh candidate는 85/85, critical 6/6, Evidence pass, 4 viewport axe serious/critical 0이다.
 - signal-orange normal-text 사용은 0이고 non-text decoration에만 남았다.
