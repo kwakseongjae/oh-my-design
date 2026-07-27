@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.54 frozen; 1.9.55 preflight locked
+- 첫 Composer cell은 정상 완료했지만 detached evaluator가 `axe-core`를 못 찾아 멈췄다.
+- 0 scored/1 stopped/8 not-started로 freeze하고 output 재사용을 금지했다.
+- quota/model 문제가 아닌 local orchestration failure다.
+- 다음은 provider 전에 실패하는 evaluator dependency preflight다.
+
 ## 2026-07-28 (Codex) · 1.9.54 clean preparation complete
 - committed source worktree에서 `/tmp/u1954` 9/9를 clean-prepare했다.
 - source attestation은 publishable이며 matrix SHA는 `ef641e08…`다.

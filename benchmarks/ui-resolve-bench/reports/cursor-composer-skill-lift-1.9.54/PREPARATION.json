@@ -3,7 +3,7 @@
   "suite_version": "ui-resolve-v0.2",
   "evaluator_schema": "0.5",
   "product_version": "1.9.54",
-  "status": "prepared_authorized_awaiting_provider_execution",
+  "status": "execution_stopped_local_evaluator_dependency_failure",
   "output_root": "/tmp/u1954",
   "scheduled_cells": 9,
   "prepared_cells": 9,
@@ -39,7 +39,12 @@
     "planned_wait_count": 8,
     "counts_toward_cell_wall_time": false
   },
-  "provider_execution_started": false,
+  "provider_execution_started": true,
+  "provider_execution_completed": false,
+  "completed_cells": 0,
+  "stopped_cell": "pricing-t1-baseline",
+  "not_started_cells": 8,
+  "stop_reason": "evaluator-failure: missing axe-core in detached controller worktree",
   "approval": {
     "received_for_this_fresh_root": true,
     "scope": "Nine serial Cursor Composer 2.5 cells in /tmp/u1954 using only the locked per-cell file boundary and eight retained 120-second inter-cell waits.",

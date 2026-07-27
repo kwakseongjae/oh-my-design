@@ -1,6 +1,6 @@
 # Cursor/Composer paced fixed-model Skill Lift replacement — 1.9.54
 
-Status: **LOCKED and PREPARED; provider execution authorized**.
+Status: **EXECUTION STOPPED; local evaluator dependency failure**.
 
 ## Frontier gate and bounded hypothesis
 
@@ -70,3 +70,15 @@ Cursor Preview slice. A provider-capacity stop despite pacing is classified as
 infrastructure-invalid and defers Composer; it does not trigger another
 immediate clone. Neither outcome creates a public model winner, confidence
 interval, three-family generality, efficiency, or frontier claim.
+
+## Frozen decision
+
+The first baseline provider cell completed successfully with the requested
+`composer-2.5` selector and reported `Composer 2.5`. Before a score could be
+produced, the evaluator process failed because the detached clean-source
+worktree did not have local `axe-core` dependencies installed. The remaining
+eight cells were retained as `not-started`.
+
+This is a local orchestration error, not a quota, model, product, task, or
+skill failure. The matrix is frozen and excluded from every denominator. Its
+provider output must not be evaluated later or reused in a replacement.
