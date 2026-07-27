@@ -179,8 +179,12 @@ describe("provider-neutral prepared matrix contract", () => {
     const root = join(temp, "matrix");
     installFakeRuntimes(temp);
     prepareRunMatrix(calibrationPlan(root));
-    const state = executePreparedMatrix(root);
+    const waits = [];
+    const state = executePreparedMatrix(root, {
+      waitFn: (milliseconds) => waits.push(milliseconds),
+    });
     expect(state.status).toBe("complete");
+    expect(waits).toEqual([]);
 
     const claudeArgs = JSON.parse(readFileSync(join(root, "fake-claude", ".benchmark", "fake-claude-invocation.json")));
     const codexArgs = JSON.parse(readFileSync(join(root, "fake-codex", ".benchmark", "fake-codex-invocation.json")));
@@ -217,6 +221,43 @@ describe("provider-neutral prepared matrix contract", () => {
     });
     expect(readFileSync(join(root, "fake-claude", ".benchmark", "events.jsonl"), "utf8"))
       .not.toBe(readFileSync(join(root, "fake-codex", ".benchmark", "events.jsonl"), "utf8"));
+  });
+
+  it("waits exactly once between two cells and retains pacing evidence", () => {
+    const temp = mkdtempSync(join(tmpdir(), "omd-provider-pacing-"));
+    const root = join(temp, "matrix");
+    installFakeRuntimes(temp);
+    const current = calibrationPlan(root);
+    current.control_contract = {
+      pacing: {
+        policy: "fixed-inter-cell",
+        inter_cell_delay_seconds: 120,
+        applies_between_cells_only: true,
+        counts_toward_cell_wall_time: false,
+      },
+    };
+    prepareRunMatrix(current);
+    const waits = [];
+    const timestamps = [
+      "2026-07-28T00:00:00.000Z",
+      "2026-07-28T00:02:00.000Z",
+    ];
+    const state = executePreparedMatrix(root, {
+      waitFn: (milliseconds) => waits.push(milliseconds),
+      nowFn: () => timestamps.shift(),
+    });
+    expect(waits).toEqual([120000]);
+    expect(state.pacing).toBeNull();
+    expect(state.pacing_history).toEqual([{
+      policy: "fixed-inter-cell",
+      after_cell_id: "fake-claude",
+      before_cell_id: "fake-codex",
+      delay_seconds: 120,
+      counts_toward_cell_wall_time: false,
+      status: "complete",
+      started_at: "2026-07-28T00:00:00.000Z",
+      finished_at: "2026-07-28T00:02:00.000Z",
+    }]);
   });
 
   it("freezes later cells as not-started after the first fake runtime failure", () => {

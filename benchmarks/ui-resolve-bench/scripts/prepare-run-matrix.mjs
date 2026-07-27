@@ -10,6 +10,7 @@ const VALID_EFFORTS = new Set(["low", "medium", "high", "xhigh"]);
 const VALID_BENCHMARK_FAMILIES = new Set(["model", "skill", "harness", "prompt-arena", "factorial"]);
 const VALID_COMPARISON_MODES = new Set(["native-capability", "iso-external-budget", "effort-scaling"]);
 const VALID_BUDGET_MODES = new Set(["hard-cap", "observed-only"]);
+const VALID_PACING_POLICIES = new Set(["none", "fixed-inter-cell"]);
 
 function validateBudgetControl(value, label, limitField) {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -64,6 +65,33 @@ export function validateControlContract(plan) {
   }
   if (!["balanced-rotation", "fixed-preregistered"].includes(control.task_order_policy)) {
     throw new Error("matrix control_contract.task_order_policy is invalid");
+  }
+  if (control.pacing !== undefined) {
+    const pacing = control.pacing;
+    if (!pacing || typeof pacing !== "object" || Array.isArray(pacing)) {
+      throw new Error("matrix control_contract.pacing must be an object");
+    }
+    if (!VALID_PACING_POLICIES.has(pacing.policy)) {
+      throw new Error("matrix control_contract.pacing.policy is invalid");
+    }
+    if (!Number.isInteger(pacing.inter_cell_delay_seconds) || pacing.inter_cell_delay_seconds < 0) {
+      throw new Error("matrix control_contract.pacing.inter_cell_delay_seconds must be a non-negative integer");
+    }
+    if (pacing.policy === "none" && pacing.inter_cell_delay_seconds !== 0) {
+      throw new Error("matrix control_contract.pacing none policy requires zero delay");
+    }
+    if (pacing.policy === "fixed-inter-cell" && pacing.inter_cell_delay_seconds < 1) {
+      throw new Error("matrix control_contract.pacing fixed-inter-cell policy requires a positive delay");
+    }
+    if (pacing.inter_cell_delay_seconds > 3600) {
+      throw new Error("matrix control_contract.pacing delay must not exceed 3600 seconds");
+    }
+    if (pacing.applies_between_cells_only !== true) {
+      throw new Error("matrix control_contract.pacing must apply between cells only");
+    }
+    if (pacing.counts_toward_cell_wall_time !== false) {
+      throw new Error("matrix control_contract.pacing must stay outside per-cell wall time");
+    }
   }
 
   validateBudgetControl(control.token_budget, "token_budget", "limit_tokens");

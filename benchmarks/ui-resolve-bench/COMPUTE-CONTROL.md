@@ -76,6 +76,9 @@ Every schema `0.3` matrix must lock:
 - one wall-clock timeout per matrix;
 - serial execution (`max_concurrency=1`) for comparable wall latency, otherwise
   latency is `descriptive-only`;
+- provider pacing as either `none` or a fixed preregistered inter-cell delay;
+  the delay occurs only between completed cells, is retained in matrix state,
+  and is excluded from each provider cell's wall-time record;
 - hard or observed-only step and token budgets, never a fictional hard cap;
 - fresh workspace and independent trial state;
 - no primary retry; a task timeout is a valid failure;

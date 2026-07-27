@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.53",
+  "experiment_id": "cursor-capacity-pacing-1.9.53",
+  "status": "accepted_provider_free_calibration",
+  "provider_generation": false,
+  "source_scope": {
+    "pacing_policies": [
+      "none",
+      "fixed-inter-cell"
+    ],
+    "waits_between_cells_only": true,
+    "waits_count_toward_cell_wall_time": false,
+    "task_changed": false,
+    "evaluator_changed": false,
+    "score_changed": false,
+    "retry_or_fallback_added": false
+  },
+  "acceptance": {
+    "invalid_contracts_fail_closed": true,
+    "two_cell_fixed_wait_count": 1,
+    "fixed_wait_duration_ms": 120000,
+    "state_retains_completed_wait_evidence": true,
+    "absent_pacing_wait_count": 0,
+    "focused_tests_passed": 21,
+    "focused_tests_failed": 0,
+    "typescript_lint_passed": true,
+    "cli_build_passed": true,
+    "node_syntax_passed": true,
+    "diff_check_passed": true
+  },
+  "broader_benchmark_slice": {
+    "passed": 93,
+    "skipped": 1,
+    "failed": 2,
+    "failure_class": "pre_existing_environment_fixture_missing_git_metadata",
+    "pacing_related_failures": 0
+  },
+  "decision": {
+    "bounded_hypothesis_passed": true,
+    "fresh_paced_composer_replacement_unlocked": true,
+    "historical_runs_mutated": false,
+    "next_action": "preregister a fresh nine-cell Composer replacement with fixed inter-cell pacing"
+  },
+  "claim_boundary": "Provider-free controller calibration only. The result does not prove that pacing prevents capacity exhaustion and creates no capacity, quality, efficiency, model, skill, or frontier claim."
+}

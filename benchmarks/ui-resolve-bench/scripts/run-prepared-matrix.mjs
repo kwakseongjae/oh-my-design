@@ -233,7 +233,23 @@ function assertUnstartedWorkspace(workspace, manifest) {
   }
 }
 
-export function executePreparedMatrix(root) {
+export function interCellDelayMs(plan, index) {
+  if (index <= 0 || index >= (plan.cells?.length ?? 0)) return 0;
+  const pacing = plan.control_contract?.pacing;
+  if (pacing?.policy !== "fixed-inter-cell") return 0;
+  return Number(pacing.inter_cell_delay_seconds) * 1000;
+}
+
+function waitSynchronously(milliseconds) {
+  if (milliseconds <= 0) return;
+  const signal = new Int32Array(new SharedArrayBuffer(4));
+  Atomics.wait(signal, 0, 0, milliseconds);
+}
+
+export function executePreparedMatrix(root, {
+  waitFn = waitSynchronously,
+  nowFn = () => new Date().toISOString(),
+} = {}) {
   const matrixRoot = resolve(root);
   const lockedPlanPath = join(matrixRoot, "RUN-MATRIX.locked.json");
   const preparationStatePath = join(matrixRoot, "matrix-state.json");
@@ -276,6 +292,32 @@ export function executePreparedMatrix(root) {
   const exportScript = resolve(fileURLToPath(new URL("./export-run-record.mjs", import.meta.url)));
 
   for (const [index, cell] of plan.cells.entries()) {
+    const pacingDelayMs = interCellDelayMs(plan, index);
+    if (pacingDelayMs > 0) {
+      const pacingEntry = {
+        policy: plan.control_contract.pacing.policy,
+        after_cell_id: plan.cells[index - 1].id,
+        before_cell_id: cell.id,
+        delay_seconds: plan.control_contract.pacing.inter_cell_delay_seconds,
+        counts_toward_cell_wall_time: false,
+        status: "waiting",
+        started_at: nowFn(),
+        finished_at: null,
+      };
+      state.current_cell = null;
+      state.pacing = pacingEntry;
+      state.pacing_history ??= [];
+      state.pacing_history.push(pacingEntry);
+      writeJson(executionStatePath, state);
+      console.log(JSON.stringify({ event: "pacing-wait-start", ...pacingEntry }));
+      waitFn(pacingDelayMs);
+      pacingEntry.status = "complete";
+      pacingEntry.finished_at = nowFn();
+      state.pacing = null;
+      writeJson(executionStatePath, state);
+      console.log(JSON.stringify({ event: "pacing-wait-complete", ...pacingEntry }));
+    }
+
     const workspace = join(matrixRoot, cell.id);
     const benchmarkDir = join(workspace, ".benchmark");
     const manifest = readJson(join(benchmarkDir, "manifest.json"));

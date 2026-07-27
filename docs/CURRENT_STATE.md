@@ -4,14 +4,16 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · Cursor capacity diagnosis complete; account-wide quota exhaustion ruled out
+- 갱신: 2026-07-28 · 1.9.53 pacing controller accepted; fresh paced Composer replacement unlocked
 
 ## 지금 (현재 위치)
 
 - repeated-capacity stop 뒤 repository/file/tool 0인 no-write probe를 Composer 2.5와 Grok 4.5 High에 각각 실행했고 둘 다 exact `OMD_CAPACITY_OK`, exit 0, usage event를 반환했다. Cursor 로그인/계정 전체 quota/model availability가 완전히 막힌 상태는 아니다.
 - 따라서 1.9.51/1.9.52의 `resource_exhausted`는 5–6개의 장시간 셀을 연속 실행한 뒤 생기는 provider burst/long-run capacity condition으로 분류한다. 모델 스위치는 원인 해결이 아니며 Composer replication을 다른 모델로 대체할 수 없다.
 - 2026-07-28 현재 로그인된 `cursor-agent models`에는 `composer-2.5`와 `cursor-grok-4.5-high`가 있지만 Kimi K3/Kimi/Moonshot selector는 없다. Kimi K3는 Cursor subscription lane에서 당장 실행할 수 없으며 stable selector 또는 별도 provider/OpenCode runtime이 생길 때 독립 Model Track으로만 편입한다.
-- 1.9.53 capacity-pacing controller calibration을 LOCKED했다. 동일 fixed-model denominator를 보존하면서 명시적 inter-cell cooldown을 compute-control에 잠그고 fake acceptance 뒤 fresh Composer replacement를 연다.
+- 1.9.53 capacity-pacing controller calibration이 ACCEPTED됐다. schema 0.3은 `none|fixed-inter-cell`, adjacent cell ID·duration·timestamps·completion evidence, cell wall-time 밖의 wait를 fail-closed 검증한다.
+- 2-cell fake matrix는 정확히 1회/120,000ms wait와 retained history를, 기존 no-pacing 경로는 wait 0회를 증명했다. focused 21/21, lint/build/syntax/diff green이며 broader bench의 기존 `/tmp` vendor Git metadata 환경 실패 2건만 불변이다.
+- pacing은 task/prompt/condition/model/evaluator/score/timeout/retry/fallback을 바꾸지 않는다. 1.9.54 fresh Composer 9-cell replacement를 동일 denominator와 120초 inter-cell cooldown으로 새 root에 여는 것만 허용한다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -501,15 +503,15 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.53 capacity-pacing controller calibration을 preregister한다.
-2. schema에 explicit inter-cell cooldown/shard-window contract와 retained execution evidence를 추가하고 fake acceptance를 통과시킨다.
-3. fresh Composer replacement는 동일 9셀·순서·acceptance에서 pacing만 명시해 새 root로 실행한다.
+1. 1.9.54 fresh Composer 9-cell replacement를 동일 task/evaluator/Raw/order/acceptance로 preregister한다.
+2. pacing 외 candidate delta 0을 확인하고 `/tmp/u1954`를 fresh prepare한다.
+3. 120초 inter-cell cooldown으로 serial 실행하며 retained wait/provider/evaluator evidence를 확인한다.
 4. Kimi K3는 stable immutable selector와 usage attribution을 가진 별도 runtime이 확보될 때 Model Track canary로 추가한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
 - Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
-- Cursor Composer Provider가 두 fresh matrix에서 연속 `resource_exhausted`를 반환했다. account-wide quota는 no-write Composer/Grok probes로 배제했으며, pacing calibration 전 full matrix 재실행만 hard-pause 상태다.
+- Cursor Composer Provider가 두 fresh matrix에서 연속 `resource_exhausted`를 반환했다. account-wide quota는 no-write Composer/Grok probes로 배제했고 pacing calibration은 통과했지만, 120초 pacing의 실효성은 fresh 1.9.54 완료 전까지 미확인이다.
 - Kimi K3는 현재 로그인된 Cursor CLI model catalog에 selector가 없어 Cursor lane 실행이 blocked다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.

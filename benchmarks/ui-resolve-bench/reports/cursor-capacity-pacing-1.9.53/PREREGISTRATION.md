@@ -1,6 +1,6 @@
 # Cursor sustained-capacity pacing calibration — 1.9.53
 
-Status: **LOCKED; provider-free implementation pending**.
+Status: **EXECUTED; provider-free calibration accepted**.
 
 ## Problem and bounded hypothesis
 

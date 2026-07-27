@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.53 pacing controller accepted
+- schema 0.3에 fixed inter-cell cooldown과 retained wait evidence를 추가했다.
+- fake 2-cell은 120초 wait 1회, historical no-pacing은 wait 0회를 통과했다.
+- focused 21/21과 lint/build/syntax/diff가 green이다.
+- 다음은 동일 denominator의 1.9.54 paced Composer fresh matrix다.
+
 ## 2026-07-28 (Codex) · Cursor account quota exhaustion ruled out
 - Composer/Grok no-write probes가 모두 exact OK·exit 0·usage를 반환했다.
 - 반복 stop은 account-wide limit가 아니라 sustained serial provider capacity로 진단했다.
