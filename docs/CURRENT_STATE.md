@@ -42,7 +42,7 @@
 - 1.9.43은 Cursor 2.4+ 기본 설치를 `.cursor/skills/` 네이티브 Agent Skills 19개 + 작은 always-on DESIGN.md bootstrap + 공유 440-reference catalog로 전환했다. 별도 OmD sub-agent 정의와 hooks는 0개이며 installer summary도 실제 수량을 표시한다.
 - `doctor`는 Cursor skills/rule-only 두 mode, 19개 skill contract·sidecar·drift, mode conflict를 검사하고 Cursor-only repair를 제안한다. 구형 클라이언트는 명시적 `--cursor-rule-only`로 기존 동작을 유지한다.
 - `omd-apply`에는 1.9.42에서 드러난 semantic accent text 대비 검증과 native table/ARIA parentage/focusable labelled horizontal scroll 계약을 추가했다. frozen Raw DESIGN.md control은 변경하지 않았다.
-- deterministic acceptance는 focused 74/74, CLI TypeScript/build, web TypeScript와 830/830, network-enabled production 1,459-page build가 green이다. root는 230 pass/1 skip이며 기존 `/tmp` vendor Git metadata 부재 2건만 환경 실패로 남겼다.
+- deterministic acceptance는 focused 75/75, CLI TypeScript/build, web TypeScript와 830/830, network-enabled production 1,459-page build가 green이다. root는 230 pass/1 skip이며 기존 `/tmp` vendor Git metadata 부재 2건만 환경 실패로 남겼다.
 - live Cursor automatic discovery/manual invocation은 provider 전송이므로 별도 canary로 남았다. 1.9.44는 그 canary 뒤 fixed-model Raw DESIGN.md vs OmD Skill Lift를 새 denominator로 사전등록한다.
 - 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
 - stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.

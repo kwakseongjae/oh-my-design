@@ -37,6 +37,15 @@ export function targetsAvailableForScope(
   return scope === 'global' ? targets.filter((target) => target !== 'cursor') : targets;
 }
 
+export function skillInvocationName(
+  skill: string,
+  target: SkillTarget,
+): string {
+  return target === 'opencode' || target === 'cursor' || skill === 'claude-design'
+    ? skill
+    : skill.replace(/^omd-/, 'omd:');
+}
+
 /** Channels that host Agent Skills-compatible SKILL.md trees. */
 type SkillChannel = SkillTarget;
 
@@ -1698,7 +1707,7 @@ export async function runInstallSkills(
         `Done. Installed ${skills.map((s) => pc.bold(s)).join(', ')} ${scope === 'global' ? `globally for ${targets.join(', ')}` : `for ${targets.join(', ')}`}.`
       ) +
         pc.dim('  →  restart your agent, then use the skill (e.g. ') +
-        pc.cyan('/claude-design') +
+        pc.cyan(`/${skillInvocationName(compatibleSkills[0] ?? skills[0], targets[0])}`) +
         pc.dim(').')
     );
     return 0;

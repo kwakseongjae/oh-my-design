@@ -32,7 +32,7 @@ measurable lift is not answered by this patch.
 
 ## Deterministic evidence
 
-- focused Cursor installer/doctor/runtime/export: 74/74;
+- focused Cursor installer/doctor/runtime/export: 75/75;
 - root TypeScript and CLI build: pass;
 - root suite: 230 pass, 1 conditional skip, with 2 unrelated environment
   failures because two retained `/tmp` external-vendor folders lack Git

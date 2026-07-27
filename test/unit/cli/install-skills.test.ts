@@ -16,6 +16,7 @@ import { stripManagedHookMarker } from '../../../src/cli/hook-contract.js';
 import {
   runInstallSkills,
   dataDirFor,
+  skillInvocationName,
   targetsAvailableForScope,
 } from '../../../src/cli/install-skills.js';
 
@@ -45,6 +46,14 @@ describe('install-skills', () => {
       'opencode',
     ]);
     expect(targetsAvailableForScope([...channels], 'project')).toEqual(channels);
+  });
+
+  it('renders channel-native minimal-install invocation names', () => {
+    expect(skillInvocationName('omd-apply', 'cursor')).toBe('omd-apply');
+    expect(skillInvocationName('omd-apply', 'opencode')).toBe('omd-apply');
+    expect(skillInvocationName('omd-apply', 'claude-code')).toBe('omd:apply');
+    expect(skillInvocationName('omd-apply', 'codex')).toBe('omd:apply');
+    expect(skillInvocationName('claude-design', 'claude-code')).toBe('claude-design');
   });
 
   it('installs all 5 skills × 3 agents when no agents detected (fallback)', async () => {
