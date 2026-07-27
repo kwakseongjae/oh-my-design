@@ -105,6 +105,9 @@ jobs:
       - name: Verify public counts
         run: npm run check-counts
 
+      - name: Verify public benchmark data
+        run: npm run bench:ui:public-data:check
+
       - name: Test web product
         run: npm test
         working-directory: web

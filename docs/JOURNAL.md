@@ -5,6 +5,18 @@
 
 ---
 
+## 2026-07-27 (Codex) · 1.9.37 public benchmark UX accepted
+- Sol high 디자인 검수 BLOCK0, Terra xhigh 최종 QA PASS로 닫았다.
+- Web827/827·focused6/6·TS·lint·data·1,459-page production build가 green이다.
+- Browser Harness 1440/390/320/200%에서 overflow·console·axe serious/critical 0, 9-link focus/anchor를 통과했다.
+- `/benchmarks`는 열린 상태이며 다음은 별도 1.9.38 activation/reuse다.
+
+## 2026-07-23 (Codex) · 1.9.37 public benchmark UX acceptance pending
+- `/benchmarks`와 canonical-report→web generated-data/CI gate를 구현했다.
+- Internal/no-rank, 5/9→8/9+CI+loss, 1.9.34→36 recovery와 publication ladder를 노출한다.
+- Web827/827·root217/1skip·TS·lint·CLI build·data check가 green이다.
+- network build와 browser-harness가 Codex usage allowance로 막혀 final/commit은 다음 재개점이다.
+
 ## 2026-07-23 (Codex) · 1.9.36 locale scroll-focus recovery passed
 - fresh exact Opus/xhigh가476.3s에85/85·critical6/6으로 완료됐다.
 - first write404.5s, browser0, verifier0, error0이며 clipboard·4 geometry·keyboard·axe0가 pass했다.

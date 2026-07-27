@@ -3,11 +3,18 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `9675fe4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-23 · 1.9.36 locale scroll-focus recovery passed
+- 기준 커밋: `fb10c99` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-27 · 1.9.37 public benchmark UX accepted, checkpoint commit pending
 
 ## 지금 (현재 위치)
 
+- 1.9.37 minimum public evidence slice를 `/benchmarks`에 구현·수락했다. 페이지는 `Internal evidence`/`Not a leaderboard`를 먼저 노출하고 Model/Skill/Harness를 분리하며, 1.9.22의 5/9→8/9·W/T/L 4/4/1·CI -22.22→100pp·77/85 loss와 1.9.34 실패→1.9.35 contract→1.9.36 fresh recovery를 함께 보여준다.
+- canonical report→`web/src/data/ui-benchmark-public.generated.json` 생성기를 추가했다. denominator/claim/CI/source 전제를 assert하고 stale artifact를 CI와 release workflow에서 fail-closed한다. 화면 source에는 benchmark 수치를 다시 하드코딩하지 않는다.
+- public UX contract/findings, sitemap, metadata, route/data/render tests를 추가했다. Web full 827/827, final focused 6/6, TypeScript, changed-file ESLint, root 217 pass/1 skip, CLI TypeScript/build, public-data check와 diff check가 green이다.
+- network-enabled production build는 1,459 pages로 통과했고 `/benchmarks`는 static이다. Browser Harness에서 1440/390/320/200%-equivalent 720 모두 overflow/clipping 0, console error 0, axe serious/critical 0, 9 anchors visible keyboard focus, Method pointer/Enter scroll를 통과했다.
+- Sol high 디자인 검수는 BLOCK 0·PASS, Terra xhigh 최종 검수는 PASS다. 대비가 부족한 failed-score badge와 전역 smooth-scroll에 흔들리던 Method anchor는 발견 후 수정했고 전체 증거를 최신 리비전에서 다시 수집했다.
+- 사용자 실행 정책: 작업 설계·디자인 판정은 `gpt-5.6-sol` high, 테스트·브라우저 acceptance는 `gpt-5.6-terra` xhigh를 사용한다. Opus는 현재 사용하지 않으며 실제 필요 시 실행 전에 사용자에게 알린다.
+- homepage/nav/install activation은 의도적으로 건드리지 않았다. 다음은 1.9.38 activation/reuse를 별도 사전등록해 진행한다.
 - 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
 - stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.
 - 완성 3 pairs는 objective 0 win/3 tie/0 loss이고 Pricing/Onboarding 85/85, Operations 81/85로 양 시스템이 동률이다. paired-only median은 portable 430,140ms·105,380 tokens, harness 500,022ms·152,485 tokens(1.162×/1.447×)지만 incomplete matrix라 reliability/Pareto/promotion 근거가 아니다.
@@ -421,15 +428,15 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.36 findings/summary와 continuity를 clean commit으로 고정한다.
-2. 1.9.37에서 public benchmark page가 요구할 minimum evidence/status/failure/uncertainty contract를 정의한다.
-3. 현재 web benchmark surface와 run-record/export schema의 gap을 감사한다.
-4. smallest public UX slice를 구현하고 local browser acceptance한다.
-5. 이후 activation/reuse 1.9.38 → independent challenge 1.9.39로 이동한다.
+1. 1.9.37 public UX/data/CI/continuity를 clean checkpoint commit으로 고정한다.
+2. 1.9.38 activation/reuse를 별도 사전등록해 homepage/docs/builder에서 benchmark→qualified CLI activation만 실험한다.
+3. activation은 `benchmark_view → methodology/source inspection → CLI/docs/builder handoff`를 분리 측정하며 leaderboard 오인을 만들지 않는다.
+4. 이후 independent challenge 1.9.39로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- 없음. Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight가 통과했다.
+- 없음.
+- Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 
 ## 진행 중 레인 (병렬 작업 시에만)

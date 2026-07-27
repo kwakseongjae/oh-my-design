@@ -31,6 +31,7 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run check-counts
+      - run: npm run bench:ui:public-data:check
 
   web-reference:
     name: Web and reference integrity

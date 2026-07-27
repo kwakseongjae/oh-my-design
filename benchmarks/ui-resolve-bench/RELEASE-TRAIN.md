@@ -235,6 +235,21 @@ serious/critical zero plus complete keyboard traversal at all four viewports.
 This closes a single execution-path calibration only. 1.9.37 defines the
 minimum honest public benchmark UX evidence contract before any run is exposed.
 
+1.9.37 has accepted that minimum evidence slice at `/benchmarks`. A
+deterministic generated-data layer binds the route to the committed 1.9.22 and
+1.9.34–1.9.36 reports and fails CI on changed denominators or stale public data.
+The page explicitly separates Model, Skill Lift, and Harness questions, shows
+the Harness interval and candidate loss, preserves the locale failure →
+contract → fresh-recovery sequence, and labels the result Internal / not a
+leaderboard. Web 827/827, root 217/1-skip, TypeScript, changed-file ESLint, CLI
+build, data checks, and the 1,459-page production build pass. Design review has
+zero BLOCK findings. Designated Browser Harness acceptance passes at 1440,
+390, 320, and 200%-equivalent 720 CSS pixels with no horizontal overflow,
+console errors, or axe serious/critical findings; all nine links expose visible
+keyboard focus and the Method anchor works by pointer and Enter. Activation and
+homepage promotion remain out of scope and move to a separately bounded 1.9.38
+experiment.
+
 ## 2.0.0 frontier gates
 
 All must pass:
