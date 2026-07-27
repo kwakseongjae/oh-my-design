@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.2",
+  "product_version": "1.9.40",
+  "status": "calibration_complete",
+  "execution_purpose": "runtime-contract-calibration",
+  "provider_generation": false,
+  "network_used": false,
+  "real_cursor_executable_used": false,
+  "cursor_account_accessed": false,
+  "accepted_contracts": {
+    "dedicated_cursor_runner": true,
+    "expected_agent": "cursor-agent",
+    "provider_effort_argument": null,
+    "live_model_allowlist": [
+      "cursor-grok-4.5-high",
+      "composer-2.5"
+    ],
+    "auto_router_excluded": true,
+    "gpt_codex_models_excluded": true,
+    "binary_version_and_sha256_retained": true,
+    "requested_and_reported_models_retained": true,
+    "wrong_reported_model_freezes_matrix": true,
+    "later_cells_retained_as_not_started": true,
+    "unsupported_diagnostics_are_null": true
+  },
+  "deterministic_acceptance": {
+    "focused_files": 5,
+    "focused_tests": 31,
+    "focused_failures": 0,
+    "node_syntax": "pass",
+    "typescript": "pass",
+    "cli_build": "pass"
+  },
+  "full_root_regression": {
+    "passed": 225,
+    "failed": 2,
+    "skipped": 1,
+    "failure_class": "external-vendor-fixture-unavailable",
+    "changed_code_implicated": false
+  },
+  "claim_boundary": "Deterministic fake Cursor adapter routing, provenance, allowlist, and failure retention only."
+}

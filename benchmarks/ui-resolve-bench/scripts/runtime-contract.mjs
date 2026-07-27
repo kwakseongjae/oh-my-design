@@ -1,6 +1,15 @@
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+export const CURSOR_LIVE_MODEL_ALLOWLIST = Object.freeze([
+  "cursor-grok-4.5-high",
+  "composer-2.5",
+]);
+
+export function isCursorLiveModelAllowed(model) {
+  return CURSOR_LIVE_MODEL_ALLOWLIST.includes(model);
+}
+
 export const RUNTIME_REGISTRY = Object.freeze({
   "claude-code": Object.freeze({
     runner: "run-claude.mjs",
@@ -12,6 +21,12 @@ export const RUNTIME_REGISTRY = Object.freeze({
     expected_agent: "codex-cli",
     effort_flag: "--reasoning",
   }),
+  cursor: Object.freeze({
+    runner: "run-cursor.mjs",
+    expected_agent: "cursor-agent",
+    effort_flag: "--effort",
+    provider_effort_flag: null,
+  }),
 });
 
 export function runnerSpecForCell(cell, workspace) {
@@ -22,6 +37,9 @@ export function runnerSpecForCell(cell, workspace) {
     runner: resolve(fileURLToPath(new URL(`./${registered.runner}`, import.meta.url))),
     expected_agent: registered.expected_agent,
     effort_flag: registered.effort_flag,
+    provider_effort_flag: Object.hasOwn(registered, "provider_effort_flag")
+      ? registered.provider_effort_flag
+      : registered.effort_flag,
     args: [
       "--workspace", workspace,
       "--model", cell.model_id,

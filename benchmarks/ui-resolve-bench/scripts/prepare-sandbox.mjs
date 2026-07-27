@@ -22,10 +22,10 @@ const vendorsRoot = args.get("vendors") ? resolve(String(args.get("vendors"))) :
 const runtime = String(args.get("runtime") ?? "codex");
 
 if (!taskId || !variantId || !out) {
-  console.error("usage: prepare-sandbox.mjs --task <id> --variant <id> --out <new-dir> [--runtime codex|claude-code] [--vendors <dir>] [--allow-off-label] [--allow-dirty-source]");
+  console.error("usage: prepare-sandbox.mjs --task <id> --variant <id> --out <new-dir> [--runtime codex|claude-code|cursor] [--vendors <dir>] [--allow-off-label] [--allow-dirty-source]");
   process.exit(2);
 }
-if (!new Set(["codex", "claude-code"]).has(runtime)) {
+if (!new Set(["codex", "claude-code", "cursor"]).has(runtime)) {
   throw new Error(`unsupported runtime: ${runtime}`);
 }
 if (existsSync(out)) throw new Error(`refusing to overwrite an existing run: ${out}`);

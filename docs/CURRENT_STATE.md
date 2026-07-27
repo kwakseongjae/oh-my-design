@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b64fa5d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-27 · 1.9.39 provider-neutral calibration complete; Cursor fake adapter next
+- 갱신: 2026-07-27 · 1.9.40 fake Cursor adapter complete; live attribution awaits explicit transmission approval
 
 ## 지금 (현재 위치)
 
@@ -28,6 +28,9 @@
 - fake 2-cell acceptance 28/28, Node syntax, TypeScript, CLI build가 green이다. 전체 root는 222 pass/1 skip이며 `/tmp` external vendor checkout 두 개의 Git metadata 부재로 기존 preparation 테스트 2개만 환경 실패했다.
 - Grok 4.5 read-only review 호출은 host가 private repository diff의 외부 전송에 대한 구체적 승인을 요구해 실행되지 않았다. 코드나 credentials는 전송하지 않았고, 승인 전까지 Grok/Composer live lane은 대기한다.
 - Cursor 실행 큐는 사용자 범위에 맞춰 1.9.40 fake adapter → 1.9.41 Grok/Composer no-write attribution → 1.9.42 fixed-runtime Model Track → 1.9.43 Agent Skill channel → 1.9.44 Skill Lift로 당겼다.
+- 1.9.40 fake Cursor adapter calibration도 완료됐다. `cursor` cell은 dedicated `run-cursor.mjs`만 사용하고 provider CLI에는 별도 effort flag를 넘기지 않는다. binary version/SHA, requested/reported model, sandbox/workspace, raw stream/stderr를 보존한다.
+- live Cursor model allowlist는 코드에서 `cursor-grok-4.5-high`와 `composer-2.5`만 허용한다. Auto/Router와 GPT/Codex IDs는 차단된다. wrong-model 첫 셀은 stop되고 뒤 셀은 `not-started`로 남는다.
+- 1.9.40 focused 31/31, syntax, TypeScript, build가 green이다. 전체 root는 225 pass/1 skip이고 동일한 external vendor Git metadata 환경 실패 2건만 남는다.
 - 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
 - stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.
 - 완성 3 pairs는 objective 0 win/3 tie/0 loss이고 Pricing/Onboarding 85/85, Operations 81/85로 양 시스템이 동률이다. paired-only median은 portable 430,140ms·105,380 tokens, harness 500,022ms·152,485 tokens(1.162×/1.447×)지만 incomplete matrix라 reliability/Pareto/promotion 근거가 아니다.
@@ -441,10 +444,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.40 fake Cursor adapter를 사전등록하고 `cursor-agent` stream contract·no fallback·failure retention을 결정론 교정한다.
-2. private repository의 필요한 최소 파일을 Cursor/Grok에 전송하는 구체적 승인을 받으면 Grok 4.5 read-only contract review를 실행한다.
-3. 통과하면 1.9.41에서 Grok 4.5/Composer 2.5 no-write attribution을 각각 별도 fresh cell로 실행한다.
-4. 이후 1.9.42 two-model pilot → 1.9.43 Cursor Agent Skill channel → 1.9.44 Skill Lift 순으로 진행한다.
+1. private repository의 필요한 최소 파일을 Cursor/Grok에 전송하는 구체적 승인을 받으면 Grok 4.5 read-only contract review를 실행한다.
+2. 1.9.41에서 Grok 4.5/Composer 2.5 no-write attribution을 각각 별도 fresh cell로 실행한다.
+3. 1.9.42 two-model pilot을 한 task×3 trials부터 시작하고 attribution/failure retention green 후에만 확장한다.
+4. 이후 1.9.43 Cursor Agent Skill channel → 1.9.44 Skill Lift 순으로 진행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

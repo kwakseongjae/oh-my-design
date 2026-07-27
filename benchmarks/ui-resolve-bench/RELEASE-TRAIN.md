@@ -300,6 +300,14 @@ Lift pilot. Cursor Auto/Router remains a separate routing policy condition and
 never becomes a named-model row. The full contract is in
 [`CURSOR-RUNTIME-PLAN.md`](./CURSOR-RUNTIME-PLAN.md).
 
+1.9.40 passed deterministic fake-runtime acceptance. Cursor cells now use only
+`run-cursor.mjs` and the collision-safe `cursor-agent` binary path, retain
+binary version/hash plus requested/reported model evidence, pass no provider
+effort flag, and reject every live model except `cursor-grok-4.5-high` and
+`composer-2.5`. Wrong-model execution freezes the matrix and preserves later
+cells as `not-started`. No Cursor account, keychain, network, or provider was
+touched, so this is not live model evidence.
+
 The final comparison target is Luna/Terra/Sol on Codex, Opus 5/Fable 5/Sonnet 5
 on Claude Code, and Composer 2.5/Grok 4.5 on Cursor Agent. Cross-runtime results
 are labelled model×runtime systems; only within-runtime slices are model-only

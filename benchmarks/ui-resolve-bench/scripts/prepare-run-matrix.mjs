@@ -5,7 +5,7 @@ import { isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, writeJson } from "./_lib.mjs";
 
-const VALID_RUNTIMES = new Set(["codex", "claude-code"]);
+const VALID_RUNTIMES = new Set(["codex", "claude-code", "cursor"]);
 const VALID_EFFORTS = new Set(["low", "medium", "high", "xhigh"]);
 
 export function validateRunMatrixPlan(plan) {

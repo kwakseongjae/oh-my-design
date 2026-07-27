@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-07-27 (Codex) · 1.9.40 fake Cursor adapter complete
+- dedicated `run-cursor.mjs`가 stream/model/sandbox/workspace와 binary version/SHA provenance를 보존한다.
+- live allowlist는 Grok4.5/Composer2.5뿐이며 Auto/GPT/Codex는 차단했다.
+- fake wrong-model stop과 later `not-started` retention, focused31/31, lint/build가 green이다.
+- full root 225 pass/1 skip; 동일 external vendor Git metadata 2건만 환경 실패다.
+- 다음 live Grok/Composer 전송은 사용자의 구체적 외부 전송 승인 후 실행한다.
+
 ## 2026-07-27 (Codex) · 1.9.39 provider-neutral calibration complete
 - schema 0.2 runtime registry가 Claude/Codex native flag와 common provenance를 fail-closed로 강제한다.
 - fake 2-cell 28/28, syntax, TypeScript, build green; 첫 실패 뒤 later cells는 `not-started`로 보존된다.
