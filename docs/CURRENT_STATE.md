@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b64fa5d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-27 · 1.9.38 benchmark-qualified activation accepted
+- 갱신: 2026-07-27 · 1.9.39 provider-neutral challenge contract preregistered
 
 ## 지금 (현재 위치)
 
@@ -19,6 +19,7 @@
 - Terra xhigh 사전등록 감사에서 typed `benchmark` surface, canonical `experiment_version` bridge, GA4 4개 dimension+결정론 report, production host/testing-filter/Active internal-traffic exclusion을 구현 gate로 추가한 뒤 PASS했다.
 - 1.9.38 구현은 Sol high BLOCK 2건(숨겨진 exact command, 모바일에서 도달 불가능한 whole-section 50% 분모)을 수정하고 재검수 PASS했다. Terra xhigh는 Web 830/830, production 1,459 pages, 1440/390/320/200%-equivalent geometry, 성공/실패/Docs/Builder event path를 통과했다.
 - exact command의 가로 스크롤 영역에서 axe serious `scrollable-region-focusable` 1건이 발견됐고 labelled `tabIndex=0`+visible focus ring으로 수정 후 fresh axe serious/critical 0/0, console/page error 0을 통과했다. 1.9.38은 `calibration_complete`; production 14–28일 판단은 별도 pending이다.
+- 1.9.39 설계 감사에서 matrix가 `cell.runtime=codex`여도 `run-claude.mjs`와 `--effort`를 하드코딩하는 provider-neutral 위반을 확인했다. live model 없이 fake Claude/Codex로 no-fallback dispatch, common provenance, failure retention을 교정하도록 사전등록했다.
 - 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
 - stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.
 - 완성 3 pairs는 objective 0 win/3 tie/0 loss이고 Pricing/Onboarding 85/85, Operations 81/85로 양 시스템이 동률이다. paired-only median은 portable 430,140ms·105,380 tokens, harness 500,022ms·152,485 tokens(1.162×/1.447×)지만 incomplete matrix라 reliability/Pareto/promotion 근거가 아니다.
@@ -432,8 +433,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.39 provider-neutral challenge contract를 사전등록한다.
-2. fake Claude/Codex runtime만으로 no-fallback dispatch·runtime provenance·failure retention을 교정한다.
+1. fake Claude/Codex runtime만으로 1.9.39 no-fallback dispatch·runtime provenance·failure retention을 구현·교정한다.
+2. Sol high contract review와 Terra xhigh deterministic test를 통과하면 1.9.39를 checkpoint한다.
 3. 통과하면 1.9.40 fresh live runtime attribution smoke를 별도 사전등록한다.
 
 ## 막힘 / 대기 (없으면 "없음")

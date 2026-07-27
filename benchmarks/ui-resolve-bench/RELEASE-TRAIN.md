@@ -274,6 +274,13 @@ was retained, fixed, and reverified at axe serious/critical 0/0 with console
 errors 0. The patch is `calibration_complete`; its 14–28 day production decision
 remains pending and does not block the provider-neutral 1.9.39 contract.
 
+1.9.39 is preregistered as a provider-free runtime-contract calibration. It
+fixes the discovered controller defect where every prepared cell is dispatched
+to the Claude runner regardless of `cell.runtime`. Fake Claude/Codex executables
+must prove native argument routing, explicit provenance, no fallback, and
+failure retention before any fresh live runtime smoke. It produces no quality,
+provider, model, speed, token, Cursor, or independent-audit claim.
+
 ## 2.0.0 frontier gates
 
 All must pass:

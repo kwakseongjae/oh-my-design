@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-27 (Codex) · 1.9.39 provider-neutral contract preregistered
+- Codex 셀도 Claude runner/`--effort`로 실행되는 controller 하드코딩을 확인했다.
+- live provider 없이 fake Claude/Codex no-fallback dispatch 교정으로 범위를 고정했다.
+- common provenance·null diagnostics·failure retention을 구현 gate로 삼았다.
+- 다음은 구현 → Sol contract review → Terra deterministic acceptance다.
+
 ## 2026-07-27 (Codex) · 1.9.38 activation accepted
 - Home evidence entry와 Method/Sources 뒤 3-way handoff, typed `bm_*`/GA report를 구현했다.
 - Sol high가 exact command·모바일 분모 BLOCK을 잡아 수정 후 PASS했다.
