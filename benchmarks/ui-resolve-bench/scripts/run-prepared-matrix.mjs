@@ -19,7 +19,7 @@ export function preregisteredStopReason(cell, manifest, run, { schemaVersion = "
   if (Number(run.output?.infrastructure_tool_error_count ?? 0) > 0) return "infrastructure-tool-error";
   if (Number(run.output?.sandbox_error_count ?? 0) > 0) return "sandbox-error";
   if (Number(run.output?.sandbox_cwd_error_count ?? 0) > 0) return "sandbox-cwd-error";
-  if (schemaVersion === "0.2") {
+  if (schemaVersion === "0.2" || schemaVersion === "0.3") {
     const attributionReason = runtimeAttributionStopReason(cell, manifest, run);
     if (attributionReason) return attributionReason;
   } else {

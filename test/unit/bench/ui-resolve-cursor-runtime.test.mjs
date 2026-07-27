@@ -9,7 +9,10 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { prepareRunMatrix } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs";
-import { executePreparedMatrix } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
+import {
+  executePreparedMatrix,
+  preregisteredStopReason,
+} from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
 import {
   CURSOR_LIVE_MODEL_ALLOWLIST,
   CURSOR_RUNTIME_DISPLAY_LABELS,
@@ -115,6 +118,47 @@ describe("Cursor Agent fake runtime contract", () => {
     expect(CURSOR_RUNTIME_DISPLAY_LABELS["cursor-grok-4.5-high"]).toBe("Cursor Grok 4.5 High");
     expect(cursorModelEvidenceMode("composer-2.5", "Composer 2.5"))
       .toBe("runtime-reported-display-name");
+  });
+
+  it("uses the provider-neutral attribution contract for schema 0.3", () => {
+    const liveCell = cell("cursor-schema-03", "cursor-grok-4.5-high");
+    const liveManifest = { runtime_target: "cursor", variant: { kind: "local-skill" } };
+    const liveRun = {
+      runtime: {
+        runtime_target: "cursor",
+        agent: "cursor-agent",
+        model_requested: "cursor-grok-4.5-high",
+        model_reported: "Cursor Grok 4.5 High",
+        model_evidence_mode: "runtime-reported-display-name",
+        effort_requested: "high",
+        auth_mode: "cursor-account",
+        provider_route: "cursor",
+      },
+      process: {
+        exit_code: 0,
+        child_exit_code: 0,
+        timed_out: false,
+        spawn_error: null,
+      },
+      output: {
+        final_message_present: true,
+        infrastructure_tool_error_count: null,
+        sandbox_error_count: null,
+        sandbox_cwd_error_count: null,
+        usage_attribution: { available: true, evidence_mode: "provider-event" },
+        usage_events: [{
+          usage: { inputTokens: 100, cacheReadTokens: 20, outputTokens: 10 },
+        }],
+        diagnostic_availability: { available: false, fields: [], reason: "unsupported" },
+      },
+    };
+
+    expect(preregisteredStopReason(
+      liveCell,
+      liveManifest,
+      liveRun,
+      { schemaVersion: "0.3" },
+    )).toBeNull();
   });
 
   it("retains exact Cursor runtime, binary, model, and effort provenance", () => {

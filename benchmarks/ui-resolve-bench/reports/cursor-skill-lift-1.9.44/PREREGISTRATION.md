@@ -1,7 +1,11 @@
 # Cursor fixed-model Skill Lift — 1.9.44
 
-Status: **LOCKED; fresh 9-cell workspace prepared; exact expanded-payload
-approval received; matrix provider execution not started**.
+Status: **STOPPED at cell 1; 0 valid cells; denominator closed**.
+
+The first provider run returned successfully, but the schema 0.3 controller
+misrouted Cursor display-name attribution through a legacy direct-ID check.
+The remaining eight cells were frozen as `not-started`. See `FINDINGS.md`;
+this root is never resumed or retried.
 
 The 1.9.43 automatic-discovery and explicit `/omd-apply` Cursor canaries both
 passed with `Cursor Grok 4.5 High`. After the host rejected the broader

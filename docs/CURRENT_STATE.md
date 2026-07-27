@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `e331c45` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · Cursor live skill discovery accepted; exact 1.9.44 9-cell transmission approved
+- 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-28 · 1.9.44 stopped on controller defect; schema 0.3 attribution repair green
 
 ## 지금 (현재 위치)
 
@@ -14,6 +14,8 @@
 - focused compute/runtime 23/23, CLI TypeScript/build, syntax/diff가 green이다. 전체 bench는 88 pass/1 skip이고 기존 `/tmp` vendor Git metadata 부재 2건만 환경 실패다.
 - 2026-07-28 Cursor automatic discovery와 explicit `/omd-apply` canary가 정확한 4-file 전송 승인 뒤 모두 통과했다. 두 응답 모두 `Cursor Grok 4.5 High`, `omd-apply`, semantic color/structure 규칙을 확인했고 edit/shell/browser/MCP/network는 0이다.
 - 1.9.44는 Cursor Grok 4.5 High 고정, baseline/raw DESIGN.md/OmD skill 각 3회인 fresh 9-cell을 schema 0.3 compute-control로 LOCKED·prepared했다. `/tmp/u1944`, matrix SHA `412efd7d…`, serial/900s/no-retry/first-failure-stop이다. 사용자가 각 셀의 exact file boundary를 명시해 expanded 9-cell 전송을 승인했다.
+- 1.9.44는 첫 baseline provider run이 exit 0, `Cursor Grok 4.5 High`, 401,042ms, input 92,125/cache 652,160/output 27,907, product diff index.html-only로 끝났지만 controller가 schema 0.3을 legacy direct-ID 비교로 잘못 보내 `observed-model-mismatch`로 stop했다. 0 valid / 1 stopped / 8 not-started이며 `/tmp/u1944`는 폐쇄했다.
+- 실제 model mismatch가 아니라 `schemaVersion === "0.2"` 하드코딩 결함이다. schema 0.2와 0.3 모두 provider-neutral `runtimeAttributionStopReason`을 사용하도록 고치고 exact Cursor display-label fixture를 추가했다. focused runtime/matrix 21/21 green이며 다음은 fresh 1.9.45다.
 - 1.9.37 minimum public evidence slice를 `/benchmarks`에 구현·수락했다. 페이지는 `Internal evidence`/`Not a leaderboard`를 먼저 노출하고 Model/Skill/Harness를 분리하며, 1.9.22의 5/9→8/9·W/T/L 4/4/1·CI -22.22→100pp·77/85 loss와 1.9.34 실패→1.9.35 contract→1.9.36 fresh recovery를 함께 보여준다.
 - canonical report→`web/src/data/ui-benchmark-public.generated.json` 생성기를 추가했다. denominator/claim/CI/source 전제를 assert하고 stale artifact를 CI와 release workflow에서 fail-closed한다. 화면 source에는 benchmark 수치를 다시 하드코딩하지 않는다.
 - public UX contract/findings, sitemap, metadata, route/data/render tests를 추가했다. Web full 827/827, final focused 6/6, TypeScript, changed-file ESLint, root 217 pass/1 skip, CLI TypeScript/build, public-data check와 diff check가 green이다.
