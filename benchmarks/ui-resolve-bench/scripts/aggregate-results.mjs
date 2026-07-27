@@ -331,6 +331,7 @@ function pairedComparisons(groupedRecords, baselineSystem, options) {
     const baselineByTrial = new Map(baseline.map((record) => [trialKey(record), record]));
     for (const [systemId, records] of systems) {
       if (systemId === baselineSystem) continue;
+      if (!records.length) continue;
       const pairs = records.flatMap((candidate) => {
         const control = baselineByTrial.get(trialKey(candidate));
         if (!control) return [];

@@ -97,12 +97,12 @@ payload remains a hard pause condition.
 
 ## Immediate queue
 
-1. Complete fresh Cursor Grok 4.5 Skill Lift 1.9.45.
-2. If valid, diagnose the bounded OmD-vs-Raw result and repair only a named
-   failure cluster.
-3. Calibrate the second Cursor model (`composer-2.5`) on the same controller.
-4. Expand within-runtime model slices before cross-runtime presentation.
-5. Fill the 12-task internal pack and mutation/audit blockers.
-6. Run Preview scale (12 tasks × 5) before Verified scale (24 × 10).
-7. Stop at the first external-only gate package and hand the user a concrete
+1. Run the fresh schema `0.5` / suite `ui-resolve-v0.2` Cursor Grok 4.5 Skill
+   Lift replacement as 1.9.47.
+2. If the bounded Skill Lift passes, calibrate `composer-2.5` on the same
+   controller and evaluator; otherwise repair only the newly named cluster.
+3. Expand within-runtime model slices before cross-runtime presentation.
+4. Fill the 12-task internal pack and mutation/audit blockers.
+5. Run Preview scale (12 tasks × 5) before Verified scale (24 × 10).
+6. Stop at the first external-only gate package and hand the user a concrete
    recruitment/deployment checklist, not another internal patch number.

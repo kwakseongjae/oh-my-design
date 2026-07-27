@@ -175,4 +175,46 @@ describe("UI-Resolve aggregate statistics", () => {
       stdio: "pipe",
     })).toThrow(/multiple valid attempts/i);
   });
+
+  it("reports invalid-only systems without crashing paired aggregation", () => {
+    const dir = mkdtempSync(join(tmpdir(), "ui-resolve-aggregate-invalid-only-"));
+    const input = join(dir, "runs.json");
+    const out = join(dir, "summary.json");
+    const records = [
+      record({
+        system: "raw",
+        task: "a",
+        trial: 1,
+        resolved: false,
+        score: 81,
+        validity: "invalid-attribution",
+      }),
+      record({
+        system: "omd",
+        task: "a",
+        trial: 1,
+        resolved: false,
+        score: 85,
+        validity: "invalid-attribution",
+      }),
+    ];
+    writeFileSync(input, `${JSON.stringify(records, null, 2)}\n`, "utf8");
+
+    execFileSync(process.execPath, [
+      aggregate,
+      "--input", input,
+      "--out", out,
+      "--baseline-system", "raw",
+      "--reliability", "1",
+    ], { cwd: repoRoot, encoding: "utf8" });
+
+    const summary = JSON.parse(readFileSync(out, "utf8"));
+    expect(summary.groups).toHaveLength(2);
+    expect(summary.groups.every((group) => (
+      group.runs.valid_trials === 0
+      && group.runs.invalid_attempts === 1
+      && group.publication_ready === false
+    ))).toBe(true);
+    expect(summary.paired_comparisons).toEqual([]);
+  });
 });

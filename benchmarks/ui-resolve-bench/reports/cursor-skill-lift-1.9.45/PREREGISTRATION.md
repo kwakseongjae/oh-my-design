@@ -1,7 +1,7 @@
 # Cursor fixed-model Skill Lift — 1.9.45
 
-Status: **LOCKED; fresh `/tmp/u1945` preparation complete; standing benchmark
-transmission authorization applies; provider execution not started**.
+Status: **EXECUTED; nine cells complete; bounded candidate rejected under the
+frozen schema `0.4` evaluator**.
 
 This is the operational replacement for 1.9.44. The prior root is outside this
 denominator: it stopped before evaluation because schema `0.3` was routed
@@ -99,3 +99,16 @@ The candidate passes the bounded hypothesis only when:
 
 No public winner, model claim, general skill superiority, confidence interval,
 or frontier claim follows from one task × three trials.
+
+## Frozen decision
+
+All nine provider runs and frozen evaluations completed without retry. OmD
+passed the automated gate in 2/3 trials and recorded paired objective deltas of
+`+4`, `+6`, and `-2` versus Raw. The candidate therefore failed the locked
+3/3, zero-loss, and accessibility 3/3 gates. The denominator stays closed.
+
+Post-run diagnosis found that the sole OmD loss was caused by a schema `0.4`
+keyboard oracle requiring the complete bounding box of a tall focusable scroll
+region to fit inside the viewport. That is stricter than WCAG 2.4.11. The
+standards correction is calibrated separately in 1.9.46 and does not
+retroactively promote this result.

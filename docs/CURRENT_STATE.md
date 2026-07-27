@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 2.0 frontier stop policy locked; 1.9.45 approved and ready
+- 갱신: 2026-07-28 · 1.9.45 executed/rejected; 1.9.46 evaluator calibration complete
 
 ## 지금 (현재 위치)
 
+- 1.9.45 fresh Cursor/Grok 4.5 High Skill Lift는 9/9 serial 실행을 retry 없이 완료했다. frozen schema 0.4에서 baseline 53/51/65(0/3), Raw 81/79/85(1/3), OmD 85/85/83(2/3)이며 Raw→OmD paired delta +4/+6/-2다. OmD는 median 85였지만 3/3·zero-loss·accessibility 3/3 gate를 실패해 candidate rejected다.
+- Cursor immutable model ID가 없어 9셀 모두 public `invalid-attribution`이며 Internal descriptive evidence만 허용한다. median wall Raw 261,879ms vs OmD 275,592ms(+5.2%), non-cached tokens 56,405 vs 72,052(+27.7%)다. 1 task×3이므로 efficiency/Pareto claim은 금지한다.
+- 1.9.45의 유일한 OmD loss는 tall focusable scroll region의 전체 bounding box가 viewport 안에 있어야 한다는 schema 0.4 evaluator false negative였다. WCAG 2.4.11 minimum에 맞춰 partial viewport intersection을 critical로, full visibility를 advisory로 분리했다.
+- 1.9.46 provider-free calibration은 unchanged OmD artifact를 85/85 all gates pass로 회복하고, unchanged Raw `scrollable-region-focusable` defect를 79/85 accessibility fail로 유지했다. evaluator schema는 0.5, 다음 suite는 `ui-resolve-v0.2`; 1.9.45 소급 승격은 없다.
+- invalid-attribution-only aggregate가 empty candidate에서 crash하던 문제도 zero-row/empty-pairs로 fail-safe 처리했다. focused evaluator/aggregate/runtime 25/25, Node syntax, diff check가 green이다.
 - 모델 비교 compute-control을 schema 0.3으로 구현했다. `high`/`xhigh`는 runtime-native ordinal이며 provider 간 동일 effort로 간주할 수 없다. native-capability / iso-external-budget / effort-scaling을 분리하고, wall timeout·serial latency·temperature policy·retry/timeout/infra 정책·hard-cap vs observed-only token/step budget을 matrix lock 전에 검증한다.
 - run record는 fresh/cached input, output, reasoning visibility, usage completeness, execution control을 보존한다. aggregator는 timeout/failed를 포함한 모든 valid scheduled run의 wall/token/tool/intervention/cost를 집계하며 usage 100%와 동일 control contract 없이는 efficiency publication-ready를 false로 둔다.
 - 공식 method 근거는 SkillsBench, Harness-Bench, OSWorld, SWE-bench, METR, OpenAI benchmark audit, Agentic Benchmark Checklist이며 정본은 `benchmarks/ui-resolve-bench/COMPUTE-CONTROL.md`다.
@@ -472,14 +477,14 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. Cursor CLI live automatic discovery/manual invocation canary는 합성 DESIGN/index + omd-apply SKILL/openai.yaml 4개를 Cursor/Grok 외부 서비스로 보내는 두 read-only 목적의 정확한 명시 승인 후 실행한다.
-2. canary 통과 뒤 1.9.44 draft에 candidate commit/prepared hashes를 기록하고 `LOCKED`로 전환한다.
-3. 승인된 범위로 fresh 9-cell을 실행하고 first failure에서 stop한다.
-4. 후속 Model Track은 schema 0.3 compute-control로 Luna/Terra/Sol, Opus5/Fable5/Sonnet5, Composer2.5/Grok4.5의 model×runtime system을 비교한다. display-name attribution인 동안 Cursor 결과는 Internal diagnostics로만 유지하고 public winner/W-T/L은 만들지 않는다.
+1. 1.9.46 code/report checkpoint를 commit한다.
+2. `/tmp/u1947` fresh 9-cell을 evaluator schema 0.5 + suite `ui-resolve-v0.2`, Cursor Grok 4.5 High 고정으로 prepare/lock/execute한다.
+3. 1.9.47이 3/3·zero-loss를 통과하면 Composer 2.5 Skill Lift calibration으로 자동 진입한다. 실패하면 새로 확인된 cluster 하나만 bounded repair한다.
+4. 이후 12-task Preview scale과 model-family expansion을 진행하며, display-name attribution인 Cursor 결과는 계속 Internal diagnostics로만 유지한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. 또한 4-file live canary는 exact external-transmission approval 전까지 blocked다.
+- Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 

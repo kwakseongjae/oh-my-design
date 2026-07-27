@@ -333,6 +333,26 @@ export function evaluateKeyboardTraversal(traversal) {
   };
 }
 
+export function focusViewportVisibility(rect, viewport) {
+  if (!rect || !viewport) return { partially_visible: false, fully_visible: false };
+  const partiallyVisible = (
+    rect.right > 0
+    && rect.left < viewport.width
+    && rect.bottom > 0
+    && rect.top < viewport.height
+  );
+  const fullyVisible = (
+    rect.left >= -1
+    && rect.right <= viewport.width + 1
+    && rect.top >= -1
+    && rect.bottom <= viewport.height + 1
+  );
+  return {
+    partially_visible: partiallyVisible,
+    fully_visible: fullyVisible,
+  };
+}
+
 export function evaluateViewportGeometry(viewport) {
   return {
     no_horizontal_overflow:
@@ -653,7 +673,16 @@ async function main() {
             matches_focus_visible: matchesFocusVisible,
             focus_style_delta: focusStyleDelta,
             focus_visible: matchesFocusVisible && focusStyleDelta,
+            // WCAG 2.4.11 (AA) requires the focused component to remain at
+            // least partially visible. Requiring the full bounding box makes a
+            // focusable scroll region taller than the viewport impossible to
+            // pass and confuses the AAA enhanced criterion with the AA gate.
             in_view:
+              rect.right > 0 &&
+              rect.left < document.documentElement.clientWidth &&
+              rect.bottom > 0 &&
+              rect.top < document.documentElement.clientHeight,
+            fully_in_view:
               rect.left >= -1 &&
               rect.right <= document.documentElement.clientWidth + 1 &&
               rect.top >= -1 &&
@@ -672,6 +701,7 @@ async function main() {
           stalled: ids.some((id, index) => index > 0 && id === ids[index - 1]),
           all_focus_visible: keyboardRecords.every((record) => record.focus_visible),
           all_in_view: keyboardRecords.every((record) => record.in_view),
+          all_fully_in_view: keyboardRecords.every((record) => record.fully_in_view),
           records: keyboardRecords,
         };
       })();
@@ -1246,7 +1276,7 @@ async function main() {
   };
 
   const score = {
-    schema_version: "0.4",
+    schema_version: "0.5",
     task_id: task.id,
     variant_id: manifest.variant.id,
     evaluated_at: new Date().toISOString(),

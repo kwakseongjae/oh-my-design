@@ -9,6 +9,7 @@ import {
   evaluateFilterObservation,
   evaluateFormObservation,
   evaluateFontOracle,
+  focusViewportVisibility,
   evaluateKeyboardTraversal,
   evaluateLandmarkObservation,
   evaluateLocaleSwitchObservation,
@@ -509,6 +510,23 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
     });
   });
 
+  it("uses WCAG 2.4.11 partial visibility for the AA focus gate", () => {
+    expect(focusViewportVisibility(
+      { left: 24, right: 696, top: 120, bottom: 980 },
+      { width: 720, height: 700 },
+    )).toEqual({
+      partially_visible: true,
+      fully_visible: false,
+    });
+    expect(focusViewportVisibility(
+      { left: 24, right: 696, top: 701, bottom: 980 },
+      { width: 720, height: 700 },
+    )).toEqual({
+      partially_visible: false,
+      fully_visible: false,
+    });
+  });
+
   it("defines 320px and an explicitly labelled CSS-zoom surrogate without claiming reflow", () => {
     expect(task.viewports).toEqual(expect.arrayContaining([
       expect.objectContaining({ name: "narrow-320", width: 320 }),
@@ -521,7 +539,7 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
     expect(evaluator).not.toContain("[tabindex]:not([tabindex='-1'])");
     expect(evaluator).not.toContain("zoom_reflow_geometry");
     expect(evaluator).toContain("automated_gate_pass");
-    expect(evaluator).toContain('schema_version: "0.4"');
+    expect(evaluator).toContain('schema_version: "0.5"');
     expect(evaluator).not.toContain("provisional_ui_resolved");
     expect(evaluator).not.toContain("public_ui_resolved");
   });

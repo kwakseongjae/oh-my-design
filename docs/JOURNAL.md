@@ -951,3 +951,8 @@
 - collector-first / browser-harness exception / in-app builder acceptance 최종 프로세스를 skill+spec+preflight로 고정.
 - builder에 canonical primary 기반 9개 color concept filter, 실제 색 swatch/count, GA event 추가.
 - Home → Blue 130 → Toss preview desktop/mobile green; 712 tests, typecheck, focused lint, production build green. 다음 PAGE0 → COLOR1.
+## 2026-07-28 (Codex) · 1.9.45 rejected; 1.9.46 evaluator calibration complete
+- Cursor/Grok Skill Lift 9/9 완료: Raw 81/79/85, OmD 85/85/83, paired +4/+6/-2.
+- frozen 3/3·zero-loss gate 실패로 1.9.45는 승격하지 않았다.
+- WCAG 2.4.11 기준 focus visibility를 schema 0.5로 교정하고 실제 Raw 결함은 계속 reject했다.
+- 다음은 fresh `/tmp/u1947`, suite `ui-resolve-v0.2` 9-cell replacement다.

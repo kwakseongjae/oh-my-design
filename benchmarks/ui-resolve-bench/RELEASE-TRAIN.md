@@ -9,6 +9,24 @@ The finite continuation and pause policy is
 [`FRONTIER-STOP-CONDITIONS.md`](./FRONTIER-STOP-CONDITIONS.md). A patch number
 without new gate evidence is not progress and must not be created.
 
+## Current 1.9.45–1.9.46 Cursor Skill Lift checkpoint
+
+The fresh Cursor/Grok 4.5 High Skill Lift matrix completed 9/9 cells without
+retry. Under the frozen schema `0.4` evaluator, Raw DESIGN.md scored
+81/79/85 and passed 1/3 automated gates; OmD scored 85/85/83 and passed 2/3.
+Raw→OmD paired deltas were +4/+6/-2, so the preregistered 3/3 and zero-loss
+candidate was rejected. Display-name-only attribution keeps the entire slice
+Internal.
+
+The sole OmD loss exposed an evaluator false negative: a tall, focusable,
+labelled scroll region was partially visible and accepted by axe, but the
+oracle required its full bounding box to fit inside the viewport. The
+provider-free 1.9.46 calibration aligns the critical rule with WCAG 2.4.11,
+keeps full visibility as an advisory, and preserves the known Raw
+`scrollable-region-focusable` failure. Evaluator schema is now `0.5`; no
+schema `0.4` result is retroactively promoted. A fresh `ui-resolve-v0.2`
+matrix is required.
+
 ## Patch experiment contract
 
 Every `0.0.1` product release records:
