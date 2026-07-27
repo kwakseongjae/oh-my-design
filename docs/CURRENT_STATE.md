@@ -11,7 +11,7 @@
 - repeated-capacity stop 뒤 repository/file/tool 0인 no-write probe를 Composer 2.5와 Grok 4.5 High에 각각 실행했고 둘 다 exact `OMD_CAPACITY_OK`, exit 0, usage event를 반환했다. Cursor 로그인/계정 전체 quota/model availability가 완전히 막힌 상태는 아니다.
 - 따라서 1.9.51/1.9.52의 `resource_exhausted`는 5–6개의 장시간 셀을 연속 실행한 뒤 생기는 provider burst/long-run capacity condition으로 분류한다. 모델 스위치는 원인 해결이 아니며 Composer replication을 다른 모델로 대체할 수 없다.
 - 2026-07-28 현재 로그인된 `cursor-agent models`에는 `composer-2.5`와 `cursor-grok-4.5-high`가 있지만 Kimi K3/Kimi/Moonshot selector는 없다. Kimi K3는 Cursor subscription lane에서 당장 실행할 수 없으며 stable selector 또는 별도 provider/OpenCode runtime이 생길 때 독립 Model Track으로만 편입한다.
-- 다음 의미 있는 patch는 1.9.53 capacity-pacing controller calibration이다. 동일 fixed-model denominator를 보존하면서 명시적 inter-cell cooldown/shard window를 compute-control에 잠그고 fake acceptance 뒤 fresh Composer replacement를 연다.
+- 1.9.53 capacity-pacing controller calibration을 LOCKED했다. 동일 fixed-model denominator를 보존하면서 명시적 inter-cell cooldown을 compute-control에 잠그고 fake acceptance 뒤 fresh Composer replacement를 연다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
