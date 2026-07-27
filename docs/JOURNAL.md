@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.57 clean preparation complete
+- onboarding/incident/locale Raw↔OmD 6셀을 `/tmp/u1957`에 clean-prepare했다.
+- primary evaluator preflight와 source publishability가 통과했다.
+- matrix SHA `805b40d1…`와 3-task representative hashes를 고정했다.
+- 다음은 Grok 4.5 High paced provider execution이다.
+
 ## 2026-07-28 (Codex) · Grok-first policy; 1.9.57 locked
 - Cursor catalog에서 Kimi K3와 GLM 5.2 selector가 실제 열린 것을 확인했다.
 - 2× event 동안 Grok 4.5 High를 우선하고 Kimi→GLM은 후순위로 고정했다.

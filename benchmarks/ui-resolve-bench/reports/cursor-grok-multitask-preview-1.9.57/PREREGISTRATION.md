@@ -1,6 +1,6 @@
 # Cursor/Grok multi-task Skill Lift Preview — 1.9.57
 
-Status: **LOCKED; fresh preparation pending**.
+Status: **LOCKED and PREPARED; provider execution authorized**.
 
 ## Frontier gate and bounded hypothesis
 

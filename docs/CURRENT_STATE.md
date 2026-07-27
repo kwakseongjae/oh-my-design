@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · Grok-first policy fixed; 1.9.57 multi-task Preview LOCKED
+- 갱신: 2026-07-28 · 1.9.57 Grok multi-task Preview clean-prepared
 
 ## 지금 (현재 위치)
 
@@ -30,6 +30,8 @@
 - account-wide quota 고갈은 short Composer/Grok no-write probes가 반증하지만, 현재 long-form Composer workload는 시작 신뢰성이 없다. 별도 Grok task lane은 진행 가능하다.
 - Kimi K3와 GLM 5.2는 selector가 열렸지만 아직 no-write display-name/usage canary와 controller allowlist acceptance 전이다. Grok workload에 섞지 않고 Grok 우선 큐 뒤 독립 Model Track으로만 추가한다.
 - 1.9.57 Grok multi-task Preview를 LOCKED했다. pricing 외 onboarding/incident/5-locale handoff 3개 frozen task에서 Raw DESIGN.md와 OmD를 각 1회 비교하는 6셀 slice이며 `/tmp/u1957`, 120초 pacing, evaluator preflight, no retry다.
+- committed `670487b` source에서 `/tmp/u1957` 6/6을 clean-prepare했다. source publishable true, primary evaluator preflight pass, matrix SHA `805b40d1…`이며 3개 task별 starter/DESIGN.md/manifest hash를 고정했다.
+- OmD 3셀은 동일 canonical skill/sidecar hash를 사용한다. standing approval과 Grok-first 정책으로 provider execution은 승인 상태다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -519,9 +521,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. committed clean source에서 `/tmp/u1957` 6셀을 prepare하고 exact hashes를 고정한다.
-2. dependency-complete primary controller에서 Grok 4.5 High 6셀을 실행한다.
-3. Grok Preview 판정 뒤 잔여 event budget이 있으면 repeated-trial task slice를 우선한다.
+1. dependency-complete primary controller에서 Grok 4.5 High 6셀을 실행한다.
+2. task별 Raw↔OmD delta와 5개 retained wait를 판정한다.
+3. 통과 뒤 잔여 event budget이 있으면 repeated-trial task slice를 우선한다.
 4. 이후 Kimi K3 → GLM 5.2 repository-free attribution canary와 별도 Model Track을 연다.
 
 ## 막힘 / 대기 (없으면 "없음")
