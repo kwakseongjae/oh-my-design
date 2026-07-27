@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.56 dependency-safe paced Composer replacement LOCKED
+- 갱신: 2026-07-28 · 1.9.56 dependency-safe paced Composer replacement clean-prepared
 
 ## 지금 (현재 위치)
 
@@ -23,6 +23,8 @@
 - primary preflight, focused 22/22, lint/build/syntax/diff가 green이다. broader bench는 94 pass/1 skip이며 기존 `/tmp` vendor Git metadata 환경 실패 2건만 불변이다.
 - 다음 fresh matrix는 clean committed source에서 workspace만 prepare하고, controller/evaluator는 dependency-complete primary workspace에서 실행해야 한다.
 - 1.9.56을 동일 Composer 2.5·9셀·order·control·acceptance로 LOCKED했다. root는 `/tmp/u1956`이며 1.9.54 대비 benchmark denominator delta는 0, orchestration correction은 accepted primary-workspace evaluator preflight뿐이다.
+- committed `a623c0b` detached source에서 `/tmp/u1956` 9/9를 clean-prepare했고 source dirty false/publishable true다. primary workspace evaluator preflight도 `playwright-core`/`axe-core` 모두 통과했다.
+- locked matrix SHA는 `77f14fb6…`; starter/DESIGN.md/skill/sidecar hash는 이전 denominator와 동일하다. standing authorization으로 provider execution은 승인 상태다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -512,9 +514,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. clean committed source에서 `/tmp/u1956`을 prepare하고 primary workspace preflight를 재확인한다.
-2. representative hashes와 exact transmission boundary를 고정한다.
-3. dependency-complete primary controller에서 120초 pacing으로 9셀을 실행한다.
+1. dependency-complete primary controller에서 `/tmp/u1956` 9셀을 120초 pacing으로 실행한다.
+2. 8개 retained wait와 provider/evaluator/export evidence를 확인한다.
+3. 완료 시 Composer replication을 판정하고, infrastructure stop이면 Composer를 defer한다.
 4. Kimi K3는 stable immutable selector와 usage attribution을 가진 별도 runtime이 확보될 때 Model Track canary로 추가한다.
 
 ## 막힘 / 대기 (없으면 "없음")
