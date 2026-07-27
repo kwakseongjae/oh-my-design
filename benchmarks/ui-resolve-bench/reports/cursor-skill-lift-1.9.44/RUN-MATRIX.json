@@ -1,12 +1,41 @@
 {
-  "schema_version": "0.2",
+  "schema_version": "0.3",
   "suite_version": "ui-resolve-v0.1",
   "product_version": "1.9.44",
   "execution_purpose": "internal-cursor-skill-lift-calibration",
   "experiment_id": "cursor-skill-lift-1.9.44",
   "output_root": "/tmp/u1944",
   "family": "skill",
-  "status": "draft-blocked-on-live-discovery-approval",
+  "status": "locked-awaiting-fresh-preparation",
+  "control_contract": {
+    "comparison_mode": "native-capability",
+    "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+    "temperature_policy": "runtime-default-frozen",
+    "timeout_seconds": 900,
+    "max_concurrency": 1,
+    "latency_comparison": "eligible",
+    "retry_policy": "none-primary",
+    "timeout_policy": "count-as-valid-failure",
+    "infrastructure_policy": "retain-freeze-and-repreregister",
+    "task_order_policy": "balanced-rotation",
+    "token_budget": {
+      "mode": "observed-only",
+      "limit_tokens": null,
+      "usage_required": true,
+      "account_components": [
+        "input",
+        "cached_input",
+        "output",
+        "reasoning_output"
+      ],
+      "cached_input_separate": true,
+      "cost_policy": "provider-reported-or-pinned-price-equivalent"
+    },
+    "step_budget": {
+      "mode": "observed-only",
+      "limit_steps": null
+    }
+  },
   "cells": [
     {
       "id": "pricing-t1-baseline",

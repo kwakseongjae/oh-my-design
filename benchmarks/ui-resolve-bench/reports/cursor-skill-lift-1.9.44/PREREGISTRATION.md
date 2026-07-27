@@ -1,16 +1,18 @@
-# Cursor fixed-model Skill Lift — 1.9.44 draft
+# Cursor fixed-model Skill Lift — 1.9.44
 
-Status: **draft; blocked on exact four-file Cursor/Grok transmission
-approval**.
+Status: **LOCKED; fresh 9-cell workspace prepared; explicit execution approval
+received; matrix provider execution not yet started**.
 
-This document does not authorize provider execution. It becomes locked only
-after the 1.9.43 automatic-discovery and explicit-invocation canaries pass and
-the candidate source commit plus prepared workspace hashes are recorded.
+The 1.9.43 automatic-discovery and explicit `/omd-apply` Cursor canaries both
+passed with `Cursor Grok 4.5 High`. The user then explicitly approved the
+canary → lock → fresh 9-cell sequence in the Codex conversation. No input in
+Cursor is required from the user.
 
-The user's general instruction to execute was not accepted by the host's
-external-transmission review as approval for the exact four-file payload and
-Cursor/Grok destination. The 2026-07-28 call was stopped before transmission;
-no canary or matrix denominator is open.
+The frozen source commit is
+`e331c451b510e7f3c64ca7219fbbf0c870e76057`; the compute-control implementation
+is `05cf4dbd50c0d02cb2481012df1a6a3b46d0f165`. The locked matrix SHA-256 is
+`412efd7dcfde44768ab1095a57a37aaf718c474fda8362243f838e7cc019eba3`.
+Prepared workspace hashes are recorded in `PREPARATION.json`.
 
 ## Question
 
@@ -21,7 +23,7 @@ task behavior, evidence honesty, responsive behavior, or accessibility?
 The no-skill arm is a context floor. The primary Skill Lift comparison is Raw
 DESIGN.md versus OmD; no blended model/runtime/skill score is allowed.
 
-## Draft matrix
+## Locked matrix
 
 - Runtime: Cursor Agent `2026.07.23-e383d2b`
 - Model selector: `cursor-grok-4.5-high`
@@ -67,8 +69,8 @@ Provider execution may transmit only each prepared workspace:
 
 It excludes repository history, unrelated source, the 440-reference catalog,
 user documents, credentials, `web/public/llms-full.txt`, and every other OmD
-skill. Explicit user approval for this named scope is required before the
-first provider call.
+skill. Explicit user approval for this named scope was received before the
+first matrix provider call.
 
 ## Fail-closed execution
 
@@ -77,7 +79,7 @@ process, timeout, product-diff, evaluator, or exporter failure. Preserve the
 failed cell and mark later cells `not-started`. No retry, resume, fallback,
 manual product edit, or failed-cell replacement is allowed.
 
-## Draft acceptance
+## Acceptance
 
 Execution is complete only when all nine cells are valid and preserve:
 

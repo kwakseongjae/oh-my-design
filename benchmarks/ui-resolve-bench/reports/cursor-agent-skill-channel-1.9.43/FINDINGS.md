@@ -1,7 +1,6 @@
 # Cursor Agent Skill channel 1.9.43 — findings
 
-Status: **deterministic acceptance complete; live discovery canary blocked
-before provider execution**.
+Status: **deterministic and live Cursor acceptance complete**.
 
 ## Outcome
 
@@ -54,6 +53,9 @@ transmits only a temporary canary project and installed skill text. Then
 preregister 1.9.44 as fixed-model Raw DESIGN.md vs OmD Skill Lift. Display-name
 model attribution still keeps any resulting comparison Internal.
 
-The 2026-07-28 attempt was blocked by the host external-transmission review
-before Cursor started. No file was transmitted. The exact scope and required
-approval are preserved in [`LIVE-CANARY.md`](./LIVE-CANARY.md).
+After an initial pre-transmission approval block, the user approved the exact
+four-file Cursor/Grok scope. Automatic discovery and explicit `/omd-apply`
+invocation both selected `omd-apply` and confirmed the semantic-color and
+semantic-structure contracts without writes or prohibited tools. Exact payload
+hashes, sessions, usage, and the retained initial block are in
+[`LIVE-CANARY.md`](./LIVE-CANARY.md).

@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `05cf4db` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · cross-runtime compute-control schema 0.3 complete; Cursor live canary exact approval blocked
+- 기준 커밋: `e331c45` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-28 · Cursor live skill discovery accepted; 1.9.44 fresh 9-cell locked and prepared
 
 ## 지금 (현재 위치)
 
@@ -12,7 +12,8 @@
 - run record는 fresh/cached input, output, reasoning visibility, usage completeness, execution control을 보존한다. aggregator는 timeout/failed를 포함한 모든 valid scheduled run의 wall/token/tool/intervention/cost를 집계하며 usage 100%와 동일 control contract 없이는 efficiency publication-ready를 false로 둔다.
 - 공식 method 근거는 SkillsBench, Harness-Bench, OSWorld, SWE-bench, METR, OpenAI benchmark audit, Agentic Benchmark Checklist이며 정본은 `benchmarks/ui-resolve-bench/COMPUTE-CONTROL.md`다.
 - focused compute/runtime 23/23, CLI TypeScript/build, syntax/diff가 green이다. 전체 bench는 88 pass/1 skip이고 기존 `/tmp` vendor Git metadata 부재 2건만 환경 실패다.
-- 2026-07-28 Cursor automatic discovery canary는 host external-transmission review에서 Cursor 시작 전에 차단됐다. 합성 DESIGN/index + omd-apply SKILL/openai.yaml 4개를 Cursor/Grok에 보내는 목적을 정확히 명시한 별도 승인이 필요하다. 전송/응답은 0이며 1.9.44는 draft 그대로다.
+- 2026-07-28 Cursor automatic discovery와 explicit `/omd-apply` canary가 정확한 4-file 전송 승인 뒤 모두 통과했다. 두 응답 모두 `Cursor Grok 4.5 High`, `omd-apply`, semantic color/structure 규칙을 확인했고 edit/shell/browser/MCP/network는 0이다.
+- 1.9.44는 Cursor Grok 4.5 High 고정, baseline/raw DESIGN.md/OmD skill 각 3회인 fresh 9-cell을 schema 0.3 compute-control로 LOCKED·prepared했다. `/tmp/u1944`, matrix SHA `412efd7d…`, serial/900s/no-retry/first-failure-stop이며 사용자 실행 승인을 받았다.
 - 1.9.37 minimum public evidence slice를 `/benchmarks`에 구현·수락했다. 페이지는 `Internal evidence`/`Not a leaderboard`를 먼저 노출하고 Model/Skill/Harness를 분리하며, 1.9.22의 5/9→8/9·W/T/L 4/4/1·CI -22.22→100pp·77/85 loss와 1.9.34 실패→1.9.35 contract→1.9.36 fresh recovery를 함께 보여준다.
 - canonical report→`web/src/data/ui-benchmark-public.generated.json` 생성기를 추가했다. denominator/claim/CI/source 전제를 assert하고 stale artifact를 CI와 release workflow에서 fail-closed한다. 화면 source에는 benchmark 수치를 다시 하드코딩하지 않는다.
 - public UX contract/findings, sitemap, metadata, route/data/render tests를 추가했다. Web full 827/827, final focused 6/6, TypeScript, changed-file ESLint, root 217 pass/1 skip, CLI TypeScript/build, public-data check와 diff check가 green이다.
