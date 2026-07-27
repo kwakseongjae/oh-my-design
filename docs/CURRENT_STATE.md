@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `fb10c99` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-27 · 1.9.37 public benchmark UX accepted, checkpoint commit pending
+- 기준 커밋: `b64fa5d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-27 · 1.9.37 public benchmark UX accepted and checkpointed
 
 ## 지금 (현재 위치)
 
@@ -428,10 +428,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.37 public UX/data/CI/continuity를 clean checkpoint commit으로 고정한다.
-2. 1.9.38 activation/reuse를 별도 사전등록해 homepage/docs/builder에서 benchmark→qualified CLI activation만 실험한다.
-3. activation은 `benchmark_view → methodology/source inspection → CLI/docs/builder handoff`를 분리 측정하며 leaderboard 오인을 만들지 않는다.
-4. 이후 independent challenge 1.9.39로 이동한다.
+1. 1.9.38 activation/reuse를 별도 사전등록해 homepage/docs/builder에서 benchmark→qualified CLI activation만 실험한다.
+2. activation은 `benchmark_view → methodology/source inspection → CLI/docs/builder handoff`를 분리 측정하며 leaderboard 오인을 만들지 않는다.
+3. 이후 independent challenge 1.9.39로 이동한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
