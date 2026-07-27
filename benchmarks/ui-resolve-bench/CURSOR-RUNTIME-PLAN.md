@@ -192,7 +192,7 @@ leaderboard row and are not mixed with fixed-model trials.
 | `1.9.41` | Live no-write attribution for Grok 4.5 and Composer 2.5 |
 | `1.9.42` | Internal Cursor fixed-runtime two-model Model Track pilot |
 | `1.9.43` | Cursor OmD skill-channel modernization and deterministic doctor tests |
-| `1.9.44` | Fixed-model no-skill/raw DESIGN.md/OmD Skill Lift pilot |
+| `1.9.44` | Drafted 9-cell fixed-Grok no-skill/raw DESIGN.md/OmD Skill Lift calibration; provider execution unopened |
 | later | Eight-system attribution, runtime-labelled comparison, then the repeated transfer matrix |
 
 Every patch is preregistered separately. Authentication, quota, missing model,

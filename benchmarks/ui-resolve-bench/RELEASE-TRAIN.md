@@ -344,6 +344,15 @@ skill now binds semantic-color contrast and semantic table/scroll-region
 safety observed in 1.9.42. This is installation evidence only: the live Cursor
 discovery canary and fixed-model 1.9.44 Skill Lift remain separate.
 
+1.9.44 is drafted, not opened. Its first Internal calibration fixes Cursor
+Grok 4.5 High and one pricing task across no-skill, frozen Raw DESIGN.md, and
+Cursor-native OmD apply, three fresh trials each. Preparation now adapts the
+reviewed skill to `.cursor/skills/omd-apply`, hyphenated frontmatter and
+`/omd-apply` activation, scopes source cleanliness to the copied skill tree,
+and excludes `.cursor` capability files from product diffs. A local proof is
+publishable and installer-free. Live execution remains blocked until the user
+explicitly approves the named four-file discovery canary payload.
+
 The final comparison target is Luna/Terra/Sol on Codex, Opus 5/Fable 5/Sonnet 5
 on Claude Code, and Composer 2.5/Grok 4.5 on Cursor Agent. Cross-runtime results
 are labelled model×runtime systems; only within-runtime slices are model-only

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
-import { basename, dirname, join, resolve } from "node:path";
+import { basename, dirname, join, relative, resolve } from "node:path";
 import {
   assertInside,
   benchRoot,
@@ -181,9 +181,10 @@ if (variant.declared_name) {
     sourceCommit = execFileSync("git", ["-C", repoRoot, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
     sourceGitRoot = repoRoot;
   }
+  const sourcePathspec = variant.vendor_dir ? "." : relative(sourceGitRoot, sourceRoot);
   const sourceStatus = execFileSync(
     "git",
-    ["-C", sourceGitRoot, "status", "--porcelain=v1", "--untracked-files=all"],
+    ["-C", sourceGitRoot, "status", "--porcelain=v1", "--untracked-files=all", "--", sourcePathspec],
     { encoding: "utf8" },
   );
   const sourceDirty = sourceStatus.trim().length > 0;
@@ -194,8 +195,18 @@ if (variant.declared_name) {
     );
   }
   const runtimeInstall = runtime === "claude-code" && variant.install_platform === "agents"
-    ? { platform: "claude-code", root: ".claude/skills" }
-    : { platform: variant.install_platform, root: variant.install_root };
+    ? { platform: "claude-code", root: ".claude/skills", declaredName: variant.declared_name }
+    : runtime === "cursor" && variant.install_platform === "agents"
+      ? {
+          platform: "cursor",
+          root: ".cursor/skills",
+          declaredName: variant.declared_name.replace(/^omd:/, "omd-"),
+        }
+      : {
+          platform: variant.install_platform,
+          root: variant.install_root,
+          declaredName: variant.declared_name,
+        };
   if (runtime === "claude-code" && runtimeInstall.platform !== "claude-code") {
     throw new Error(
       `${variantId} has no reviewed Claude Code install adapter (declared platform: ${variant.install_platform})`,
@@ -210,24 +221,29 @@ if (variant.declared_name) {
   } else {
     copyReviewedTree(sourceRoot, destination);
     if (variant.install_adapter === "omd-channel-name-v1") {
-      renderInstalledSkillName(join(destination, "SKILL.md"), variant.declared_name);
+      renderInstalledSkillName(join(destination, "SKILL.md"), runtimeInstall.declaredName);
     } else if (variant.install_adapter) {
       throw new Error(`unsupported install adapter: ${variant.install_adapter}`);
     }
   }
-  const declaredName = assertSkillContract(join(destination, "SKILL.md"), variant.declared_name);
+  const declaredName = assertSkillContract(join(destination, "SKILL.md"), runtimeInstall.declaredName);
   for (const descriptor of variant.skill_bundle ?? []) {
     const bundledSource = assertInside(repoRoot, join(repoRoot, descriptor.source_path));
     const bundledDestination = assertInside(installRoot, join(installRoot, descriptor.install_dir));
     copyReviewedTree(bundledSource, bundledDestination);
     if (descriptor.install_adapter === "omd-channel-name-v1") {
-      renderInstalledSkillName(join(bundledDestination, "SKILL.md"), descriptor.declared_name);
+      const bundledDeclaredName = runtime === "cursor"
+        ? descriptor.declared_name.replace(/^omd:/, "omd-")
+        : descriptor.declared_name;
+      renderInstalledSkillName(join(bundledDestination, "SKILL.md"), bundledDeclaredName);
     } else if (descriptor.install_adapter) {
       throw new Error(`unsupported bundled skill install adapter: ${descriptor.install_adapter}`);
     }
     bundledSkills.push(assertSkillContract(
       join(bundledDestination, "SKILL.md"),
-      descriptor.declared_name,
+      runtime === "cursor"
+        ? descriptor.declared_name.replace(/^omd:/, "omd-")
+        : descriptor.declared_name,
     ));
   }
   const skillTree = treeManifest(installRoot);
@@ -298,7 +314,14 @@ if ((variant.agent_bundle ?? []).length) {
   };
 }
 
-const activationDelta = variant.activation ?? null;
+const activationDelta = variant.activation
+  ? runtime === "cursor"
+    ? variant.activation.replace(
+        /\$([a-z0-9][a-z0-9:-]*)/gi,
+        (_, name) => `/${name.replace(/:/g, "-")}`,
+      )
+    : variant.activation
+  : null;
 const activation = activationDelta ? `\n\n## Variant activation\n\n${activationDelta}` : "";
 const prompt = `${promptSource}${activation}\n`;
 mkdirSync(join(out, ".benchmark"), { recursive: true });
@@ -320,6 +343,7 @@ const productIgnore = [...new Set([
   ".agents",
   ".claude",
   ".codex",
+  ".cursor",
   ".opencode",
   "AGENTS.md",
   "CLAUDE.md",

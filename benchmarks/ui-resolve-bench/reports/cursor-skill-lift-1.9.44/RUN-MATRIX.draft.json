@@ -1,0 +1,111 @@
+{
+  "schema_version": "0.2",
+  "suite_version": "ui-resolve-v0.1",
+  "product_version": "1.9.44",
+  "execution_purpose": "internal-cursor-skill-lift-calibration",
+  "experiment_id": "cursor-skill-lift-1.9.44",
+  "output_root": "/tmp/u1944",
+  "family": "skill",
+  "status": "draft-blocked-on-live-discovery-approval",
+  "cells": [
+    {
+      "id": "pricing-t1-baseline",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "baseline",
+      "system_id": "cursor-grok-4.5-high-no-skill",
+      "runtime": "cursor",
+      "model_id": "cursor-grok-4.5-high",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    },
+    {
+      "id": "pricing-t1-raw",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "raw-design-md",
+      "system_id": "cursor-grok-4.5-high-raw-design-md",
+      "runtime": "cursor",
+      "model_id": "cursor-grok-4.5-high",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    },
+    {
+      "id": "pricing-t1-omd",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "cursor-grok-4.5-high-omd-apply",
+      "runtime": "cursor",
+      "model_id": "cursor-grok-4.5-high",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    },
+    {
+      "id": "pricing-t2-omd",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "cursor-grok-4.5-high-omd-apply",
+      "runtime": "cursor",
+      "model_id": "cursor-grok-4.5-high",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 2
+    },
+    {
+      "id": "pricing-t2-baseline",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "baseline",
+      "system_id": "cursor-grok-4.5-high-no-skill",
+      "runtime": "cursor",
+      "model_id": "cursor-grok-4.5-high",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 2
+    },
+    {
+      "id": "pricing-t2-raw",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "raw-design-md",
+      "system_id": "cursor-grok-4.5-high-raw-design-md",
+      "runtime": "cursor",
+      "model_id": "cursor-grok-4.5-high",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 2
+    },
+    {
+      "id": "pricing-t3-raw",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "raw-design-md",
+      "system_id": "cursor-grok-4.5-high-raw-design-md",
+      "runtime": "cursor",
+      "model_id": "cursor-grok-4.5-high",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 3
+    },
+    {
+      "id": "pricing-t3-omd",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "cursor-grok-4.5-high-omd-apply",
+      "runtime": "cursor",
+      "model_id": "cursor-grok-4.5-high",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 3
+    },
+    {
+      "id": "pricing-t3-baseline",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "baseline",
+      "system_id": "cursor-grok-4.5-high-no-skill",
+      "runtime": "cursor",
+      "model_id": "cursor-grok-4.5-high",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 3
+    }
+  ]
+}

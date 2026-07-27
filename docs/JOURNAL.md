@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-07-27 (Codex) · 1.9.44 Cursor Skill Lift drafted
+- live discovery는 새 4-file payload 명시 승인이 없어 safety review에서 차단됐고 우회하지 않았다.
+- canary 준비 중 Cursor minimal outro의 잘못된 `/claude-design` 예시를 `/omd-apply`로 교정했다.
+- Grok 고정 baseline/raw/OmD ×3의 fresh 9-cell balanced draft를 만들었다.
+- prepare가 `.cursor/skills`, hyphen name, slash activation, `.cursor` product-ignore를 보장한다.
+- local Cursor prep proof와 targeted 3/3은 green; provider execution은 unopened다.
+
 ## 2026-07-27 (Codex) · 1.9.43 Cursor native Agent Skills accepted
 - Cursor 기본 채널을 `.cursor/skills`의 호환 스킬 19개+작은 bootstrap rule로 전환했다.
 - doctor가 native/rule-only mode, skill contract·drift·repair를 검사하고 실제 19/0/0 수량을 표시한다.

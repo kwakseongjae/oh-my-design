@@ -44,6 +44,10 @@
 - `omd-apply`에는 1.9.42에서 드러난 semantic accent text 대비 검증과 native table/ARIA parentage/focusable labelled horizontal scroll 계약을 추가했다. frozen Raw DESIGN.md control은 변경하지 않았다.
 - deterministic acceptance는 focused 75/75, CLI TypeScript/build, web TypeScript와 830/830, network-enabled production 1,459-page build가 green이다. root는 230 pass/1 skip이며 기존 `/tmp` vendor Git metadata 부재 2건만 환경 실패로 남겼다.
 - live Cursor automatic discovery/manual invocation은 provider 전송이므로 별도 canary로 남았다. 1.9.44는 그 canary 뒤 fixed-model Raw DESIGN.md vs OmD Skill Lift를 새 denominator로 사전등록한다.
+- 1.9.43 live discovery canary는 합성 DESIGN 287B, 합성 index 343B, installed omd-apply SKILL 22.5KB, openai.yaml 262B만 보내도록 고정했지만 이전 승인 범위를 넘는 새 외부 payload라 host safety review에서 차단됐다. 우회하지 않았고 명시 승인 대기다.
+- canary 준비 중 Cursor `--skills-only` 설치의 next-step이 `/claude-design`으로 하드코딩된 결함을 발견해 channel-native invocation helper와 5-case test로 `/omd-apply`를 출력하게 고쳤다(`6845cad`).
+- 1.9.44는 Cursor Grok 고정, pricing 1 task, baseline/raw/OmD 각 3회인 fresh 9-cell balanced draft로 준비했다. 1.9.42 결과는 denominator 밖이다.
+- benchmark prepare는 Cursor에서 `.cursor/skills/omd-apply`, `name: omd-apply`, `/omd-apply` activation을 생성하고 `.cursor`를 product diff에서 제외한다. local proof는 source scoped-clean/publishable, hooks·agents·installer 0이며 targeted prep tests 3/3이 green이다.
 - 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
 - stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.
 - 완성 3 pairs는 objective 0 win/3 tie/0 loss이고 Pricing/Onboarding 85/85, Operations 81/85로 양 시스템이 동률이다. paired-only median은 portable 430,140ms·105,380 tokens, harness 500,022ms·152,485 tokens(1.162×/1.447×)지만 incomplete matrix라 reliability/Pareto/promotion 근거가 아니다.
@@ -457,9 +461,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.43 변경을 commit하고 user-owned `web/public/llms-full.txt`는 제외한다.
-2. Cursor CLI live discovery/manual invocation canary는 전송 파일과 prompt를 고정해 별도 승인 후 실행한다.
-3. 1.9.44는 frozen Raw DESIGN.md vs OmD Skill을 동일 Cursor model로 비교하도록 별도 사전등록한다.
+1. Cursor CLI live automatic discovery/manual invocation canary는 고정한 4-file payload의 명시 승인 후 실행한다.
+2. canary 통과 뒤 1.9.44 draft에 candidate commit/prepared hashes를 기록하고 `LOCKED`로 전환한다.
+3. 승인된 범위로 fresh 9-cell을 실행하고 first failure에서 stop한다.
 4. display-name attribution인 동안 결과는 Internal diagnostics로만 유지하고 public winner/W-T/L은 만들지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")

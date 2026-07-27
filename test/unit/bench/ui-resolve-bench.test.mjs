@@ -18,10 +18,21 @@ function prepareVariant(variant, {
   vendors = null,
   offLabel = false,
   task = "pricing-conversion-v0.1",
+  runtime = "codex",
 } = {}) {
   const parent = mkdtempSync(join(tmpdir(), "ui-resolve-test-"));
   const out = join(parent, variant);
-  const command = [prepare, "--task", task, "--variant", variant, "--out", out];
+  const command = [
+    prepare,
+    "--task",
+    task,
+    "--variant",
+    variant,
+    "--out",
+    out,
+    "--runtime",
+    runtime,
+  ];
   if (vendors) command.push("--vendors", vendors);
   if (offLabel) command.push("--allow-off-label");
   if (competitors.variants[variant]?.declared_name && !competitors.variants[variant]?.vendor_dir) {
@@ -212,6 +223,37 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       agent_tool_enabled: false,
       source_symlinks_allowed: false,
     });
+  });
+
+  it("adapts the canonical OmD skill to Cursor's native project skill contract", () => {
+    const out = prepareVariant("omd-portable", { runtime: "cursor" });
+    const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+    const prompt = readFileSync(join(out, ".benchmark/PROMPT.md"), "utf8");
+
+    expect(existsSync(join(out, ".cursor/skills/omd-apply/SKILL.md"))).toBe(true);
+    expect(installedSkillName(join(out, ".cursor/skills/omd-apply/SKILL.md"))).toBe("omd-apply");
+    expect(existsSync(join(out, ".agents/skills"))).toBe(false);
+    expect(prompt).toContain("Use the installed /omd-apply skill");
+    expect(prompt).not.toContain("$omd:apply");
+    expect(manifest).toMatchObject({
+      runtime_target: "cursor",
+      skill: {
+        declared_name: "omd-apply",
+        install_platform: "cursor",
+        install_root: ".cursor/skills",
+      },
+      variant: {
+        activation_delta: expect.stringContaining("/omd-apply"),
+      },
+      workspace: {
+        product_ignore: expect.arrayContaining([".cursor"]),
+      },
+    });
+    expect(manifest.workspace.product_initial_files).not.toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ path: expect.stringContaining(".cursor/skills") }),
+      ]),
+    );
   });
 
   it("installs the locale adapter and humanizer as one reviewed skill stack", () => {
