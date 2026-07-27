@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.3",
+  "product_version": "1.9.45",
+  "status": "prepared_awaiting_exact_fresh_root_transmission_approval",
+  "output_root": "/tmp/u1945",
+  "scheduled_cells": 9,
+  "prepared_cells": 9,
+  "matrix_sha256": "5078369c094b427aed8e2697c7a711fa039f4deffb1c399f847b74d81dc84ad3",
+  "source_commit": "c726741ed943459c143467e8d880dc3794cd6df3",
+  "representative_cell": {
+    "id": "pricing-t1-omd",
+    "files": [
+      ".benchmark/PROMPT.md",
+      ".benchmark/manifest.json",
+      ".benchmark/matrix-cell.json",
+      ".cursor/skills/omd-apply/SKILL.md",
+      ".cursor/skills/omd-apply/agents/openai.yaml",
+      "AGENTS.md",
+      "DESIGN.md",
+      "index.html"
+    ],
+    "manifest_sha256": "58849dd19a63763650434a6e72f332f852378cfef9117a67b247105449446445",
+    "matrix_cell_sha256": "e632c158125154f99d148a8272981dd631eae81cd50390839126f3f18a035848",
+    "starter_sha256": "07c3374778a21511822ca710d7018b1cd3b1a3dd449242e8063fcd73c8423705",
+    "design_md_sha256": "9521d3ef10d6f25823d6591ea8bab45967ec7ad0a078cac2de28a87b570ca721",
+    "installed_skill_sha256": "86671addde729ccb1bbfa3a1a04e1e912b71e3cd1eca182dcceea7f7f7b2d0a0",
+    "skill_sidecar_sha256": "f0ad5294de3f599bbed124708c61988be9098e20d4723ce3574023144751253e"
+  },
+  "provider_execution_started": false,
+  "approval": {
+    "received_for_this_fresh_root": false,
+    "scope": "Nine serial Cursor Grok 4.5 High cells in /tmp/u1945 using only the locked per-cell file boundary.",
+    "retry_policy": "none-primary",
+    "stop_policy": "first-failure"
+  }
+}

@@ -9,7 +9,7 @@
 - 첫 baseline은 provider success였으나 controller가 display label을 legacy ID로 비교해 stop했다.
 - 0 valid / 1 stopped / 8 not-started; `/tmp/u1944`는 retry·resume하지 않는다.
 - schema 0.3도 provider-neutral attribution을 사용하도록 고치고 exact fixture를 추가했다.
-- focused 21/21 green; 다음은 fresh 1.9.45 preregistration/preparation이다.
+- focused 21/21 green; `/tmp/u1945` fresh 9/9 prepared, exact fresh-root 승인 대기다.
 
 ## 2026-07-28 (Codex) · Cursor skill canary passed; 1.9.44 locked
 - automatic discovery와 explicit `/omd-apply` canary가 Grok 4.5 High에서 모두 통과했다.
