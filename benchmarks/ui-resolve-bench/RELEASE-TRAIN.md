@@ -5,6 +5,10 @@ evidence,” not merely a large feature release. We reach it through one bounded
 hypothesis per patch. Benchmark protocol and product package versions remain
 separate and are both recorded in every run.
 
+The finite continuation and pause policy is
+[`FRONTIER-STOP-CONDITIONS.md`](./FRONTIER-STOP-CONDITIONS.md). A patch number
+without new gate evidence is not progress and must not be created.
+
 ## Patch experiment contract
 
 Every `0.0.1` product release records:

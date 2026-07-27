@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.44 stopped on controller defect; schema 0.3 attribution repair green
+- 갱신: 2026-07-28 · 2.0 frontier stop policy locked; 1.9.45 approved and ready
 
 ## 지금 (현재 위치)
 
@@ -17,6 +17,8 @@
 - 1.9.44는 첫 baseline provider run이 exit 0, `Cursor Grok 4.5 High`, 401,042ms, input 92,125/cache 652,160/output 27,907, product diff index.html-only로 끝났지만 controller가 schema 0.3을 legacy direct-ID 비교로 잘못 보내 `observed-model-mismatch`로 stop했다. 0 valid / 1 stopped / 8 not-started이며 `/tmp/u1944`는 폐쇄했다.
 - 실제 model mismatch가 아니라 `schemaVersion === "0.2"` 하드코딩 결함이다. schema 0.2와 0.3 모두 provider-neutral `runtimeAttributionStopReason`을 사용하도록 고치고 exact Cursor display-label fixture를 추가했다. focused runtime/matrix 21/21 green이며 다음은 fresh 1.9.45다.
 - 1.9.45 operational replacement를 `/tmp/u1945`에 fresh 9/9 prepare했다. matrix SHA `5078369c…`, source `c726741`, product/skill/evaluator/order는 동일하며 1.9.44는 denominator 밖이다. 이 새 root의 exact transmission approval 전 provider execution은 0이다.
+- `FRONTIER-STOP-CONDITIONS.md`가 2.0의 9개 completion gate, 의미 없는 patch 금지, autonomous continuation, hard pause, 현재 gate map을 정본으로 고정한다. 현재 Harness Pareto·routing/reverify는 Partial이고 Verified Skill Lift/3-model lower bound/24×10/task audit/blind panel/production reuse는 미달이다.
+- 사용자는 locked benchmark provider workspace의 향후 외부 전송을 포괄 승인했다. credentials/secrets/관련 없는 user docs/repo history/payment/`llms-full.txt`와 사전등록 범위 밖 파일은 계속 제외하며, 범위가 materially 넓어질 때만 hard pause한다.
 - 1.9.37 minimum public evidence slice를 `/benchmarks`에 구현·수락했다. 페이지는 `Internal evidence`/`Not a leaderboard`를 먼저 노출하고 Model/Skill/Harness를 분리하며, 1.9.22의 5/9→8/9·W/T/L 4/4/1·CI -22.22→100pp·77/85 loss와 1.9.34 실패→1.9.35 contract→1.9.36 fresh recovery를 함께 보여준다.
 - canonical report→`web/src/data/ui-benchmark-public.generated.json` 생성기를 추가했다. denominator/claim/CI/source 전제를 assert하고 stale artifact를 CI와 release workflow에서 fail-closed한다. 화면 source에는 benchmark 수치를 다시 하드코딩하지 않는다.
 - public UX contract/findings, sitemap, metadata, route/data/render tests를 추가했다. Web full 827/827, final focused 6/6, TypeScript, changed-file ESLint, root 217 pass/1 skip, CLI TypeScript/build, public-data check와 diff check가 green이다.

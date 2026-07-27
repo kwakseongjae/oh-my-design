@@ -1,7 +1,7 @@
 # Cursor fixed-model Skill Lift — 1.9.45
 
-Status: **LOCKED; fresh `/tmp/u1945` preparation complete; exact fresh-root
-transmission approval pending**.
+Status: **LOCKED; fresh `/tmp/u1945` preparation complete; standing benchmark
+transmission authorization applies; provider execution not started**.
 
 This is the operational replacement for 1.9.44. The prior root is outside this
 denominator: it stopped before evaluation because schema `0.3` was routed

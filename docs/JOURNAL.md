@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 2.0 frontier stop policy locked
+- 2.0은 9개 evidence gate 전체 통과 전 승격하지 않으며 patch count는 진척으로 보지 않는다.
+- autonomous continuation과 user-direction hard pause 조건을 문서화했다.
+- locked benchmark workspace 외부 전송은 standing-approved; secrets/unrelated files는 항상 제외한다.
+- `/tmp/u1945` fresh 9셀은 실행 승인 상태이며 다음은 serial Grok 4.5 run이다.
+
 ## 2026-07-28 (Codex) · 1.9.44 fail-closed; schema 0.3 attribution fixed
 - 첫 baseline은 provider success였으나 controller가 display label을 legacy ID로 비교해 stop했다.
 - 0 valid / 1 stopped / 8 not-started; `/tmp/u1944`는 retry·resume하지 않는다.
