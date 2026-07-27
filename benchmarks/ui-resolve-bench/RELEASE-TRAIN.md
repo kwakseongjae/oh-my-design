@@ -27,6 +27,13 @@ keeps full visibility as an advisory, and preserves the known Raw
 schema `0.4` result is retroactively promoted. A fresh `ui-resolve-v0.2`
 matrix is required.
 
+That fresh 1.9.47 matrix completed 9/9. Raw scored 79/85, 85/85, and 79/85;
+OmD scored 85/85 in all three trials. Paired deltas were +6/0/+6, so the
+bounded one-task hypothesis passed with zero losses and OmD accessibility
+3/3. This remains Internal display-name-attributed evidence and does not close
+the statistical or cross-model frontier gate. Composer 2.5 replication is
+next.
+
 ## Patch experiment contract
 
 Every `0.0.1` product release records:

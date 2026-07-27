@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.47 Cursor/Grok bounded Skill Lift passed
+- 1.9.45는 +4/+6/-2로 reject; 1.9.46은 WCAG focus oracle을 schema 0.5로 교정했다.
+- fresh 1.9.47은 Raw 79/85/79, OmD 85/85/85, paired +6/0/+6으로 pass했다.
+- one-task Internal evidence일 뿐 public/statistical frontier gate는 open이다.
+- 다음은 동일 controller의 Composer 2.5 replication 1.9.48이다.
+
 ## 2026-07-28 (Codex) · 2.0 frontier stop policy locked
 - 2.0은 9개 evidence gate 전체 통과 전 승격하지 않으며 patch count는 진척으로 보지 않는다.
 - autonomous continuation과 user-direction hard pause 조건을 문서화했다.
@@ -951,8 +957,3 @@
 - collector-first / browser-harness exception / in-app builder acceptance 최종 프로세스를 skill+spec+preflight로 고정.
 - builder에 canonical primary 기반 9개 color concept filter, 실제 색 swatch/count, GA event 추가.
 - Home → Blue 130 → Toss preview desktop/mobile green; 712 tests, typecheck, focused lint, production build green. 다음 PAGE0 → COLOR1.
-## 2026-07-28 (Codex) · 1.9.45 rejected; 1.9.46 evaluator calibration complete
-- Cursor/Grok Skill Lift 9/9 완료: Raw 81/79/85, OmD 85/85/83, paired +4/+6/-2.
-- frozen 3/3·zero-loss gate 실패로 1.9.45는 승격하지 않았다.
-- WCAG 2.4.11 기준 focus visibility를 schema 0.5로 교정하고 실제 Raw 결함은 계속 reject했다.
-- 다음은 fresh `/tmp/u1947`, suite `ui-resolve-v0.2` 9-cell replacement다.

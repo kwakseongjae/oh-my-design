@@ -3,7 +3,7 @@
   "suite_version": "ui-resolve-v0.2",
   "evaluator_schema": "0.5",
   "product_version": "1.9.47",
-  "status": "prepared_approved_for_execution",
+  "status": "execution_complete_bounded_hypothesis_passed",
   "output_root": "/tmp/u1947",
   "scheduled_cells": 9,
   "prepared_cells": 9,
@@ -33,7 +33,12 @@
     "publishable": true,
     "status_entries": 0
   },
-  "provider_execution_started": false,
+  "provider_execution_started": true,
+  "provider_execution_completed": true,
+  "completed_cells": 9,
+  "public_valid_cells": 0,
+  "internal_diagnostic_cells": 9,
+  "decision": "bounded_one_task_skill_lift_passed_expand_to_composer",
   "approval": {
     "received_for_this_fresh_root": true,
     "scope": "Nine serial Cursor Grok 4.5 High cells in /tmp/u1947 using only the locked per-cell file boundary.",

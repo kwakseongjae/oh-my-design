@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.45 executed/rejected; 1.9.46 evaluator calibration complete
+- 갱신: 2026-07-28 · 1.9.47 Cursor/Grok bounded Skill Lift passed
 
 ## 지금 (현재 위치)
 
+- 1.9.47 fresh schema 0.5 / suite `ui-resolve-v0.2` Cursor/Grok matrix는 9/9 serial 실행을 retry 없이 완료했다. baseline 61/63/65(0/3), Raw 79/85/79(1/3), OmD 85/85/85(3/3)이며 paired +6/0/+6, zero loss다.
+- OmD는 accessibility와 모든 critical gate를 3/3, Evidence & Unknown을 9/9 통과했다. signal-orange small text, invalid ARIA parentage, keyboard-unreachable comparison도 OmD 0/3이다. bounded one-task Skill Lift 가설은 pass다.
+- median wall Raw 289,735ms vs OmD 224,473ms(-22.5%), non-cached tokens 61,228 vs 100,583(+64.3%)다. 1 task×3과 display-name attribution이므로 Internal descriptive일 뿐 efficiency/Pareto/public winner/frontier claim은 금지한다.
+- 다음 의미 있는 patch는 같은 schema/controller/task에서 `composer-2.5`로 replication하는 1.9.48이다. 통과 뒤에야 within-runtime model slice 확장 또는 12-task pack으로 진입한다.
 - 1.9.45 fresh Cursor/Grok 4.5 High Skill Lift는 9/9 serial 실행을 retry 없이 완료했다. frozen schema 0.4에서 baseline 53/51/65(0/3), Raw 81/79/85(1/3), OmD 85/85/83(2/3)이며 Raw→OmD paired delta +4/+6/-2다. OmD는 median 85였지만 3/3·zero-loss·accessibility 3/3 gate를 실패해 candidate rejected다.
 - Cursor immutable model ID가 없어 9셀 모두 public `invalid-attribution`이며 Internal descriptive evidence만 허용한다. median wall Raw 261,879ms vs OmD 275,592ms(+5.2%), non-cached tokens 56,405 vs 72,052(+27.7%)다. 1 task×3이므로 efficiency/Pareto claim은 금지한다.
 - 1.9.45의 유일한 OmD loss는 tall focusable scroll region의 전체 bounding box가 viewport 안에 있어야 한다는 schema 0.4 evaluator false negative였다. WCAG 2.4.11 minimum에 맞춰 partial viewport intersection을 critical로, full visibility를 advisory로 분리했다.
@@ -477,10 +481,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.46 code/report checkpoint를 commit한다.
-2. `/tmp/u1947` fresh 9-cell을 evaluator schema 0.5 + suite `ui-resolve-v0.2`, Cursor Grok 4.5 High 고정으로 prepare/lock/execute한다.
-3. 1.9.47이 3/3·zero-loss를 통과하면 Composer 2.5 Skill Lift calibration으로 자동 진입한다. 실패하면 새로 확인된 cluster 하나만 bounded repair한다.
-4. 이후 12-task Preview scale과 model-family expansion을 진행하며, display-name attribution인 Cursor 결과는 계속 Internal diagnostics로만 유지한다.
+1. 1.9.47 result/report checkpoint를 commit한다.
+2. 1.9.48 `/tmp/u1948` fresh 9-cell을 evaluator schema 0.5 + suite `ui-resolve-v0.2`, Cursor Composer 2.5 고정으로 preregister/prepare/execute한다.
+3. Composer replication 통과 시 12-task Preview pack 중 다음 task slice를 선택해 Grok/Composer paired expansion을 진행한다. 실패하면 새 failure cluster 하나만 bounded repair한다.
+4. display-name attribution인 Cursor 결과는 계속 Internal diagnostics로만 유지한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

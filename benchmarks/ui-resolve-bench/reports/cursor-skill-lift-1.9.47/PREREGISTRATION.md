@@ -1,6 +1,6 @@
 # Cursor fixed-model Skill Lift — 1.9.47
 
-Status: **LOCKED; fresh preparation pending**.
+Status: **EXECUTED; bounded one-task Skill Lift hypothesis passed**.
 
 ## Frontier gate and bounded hypothesis
 
@@ -61,3 +61,11 @@ replacement is allowed.
 Passing one task × three trials unlocks Composer calibration and broader task
 expansion. It does not establish a public winner, confidence interval,
 cross-model generality, efficiency, or frontier status.
+
+## Frozen decision
+
+All nine cells completed without retry. Raw scored 79/85, 85/85, and 79/85;
+OmD scored 85/85 in all three trials. Raw→OmD paired deltas were `+6`, `0`,
+and `+6`. OmD therefore passed the 3/3, zero-loss, accessibility, median, and
+named-regression gates. The bounded hypothesis passes and unlocks a
+Composer 2.5 replication under a new root.
