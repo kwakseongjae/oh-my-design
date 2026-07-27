@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.52 repeated capacity hard-pause
+- 5셀 완료 후 Raw t2가 다시 Cursor `resource_exhausted`로 26.4초에 stop됐다.
+- 완료분은 baseline 53/67, Raw 79, OmD 85/85지만 incomplete라 비교하지 않는다.
+- 1.9.51과 동일한 provider failure가 연속되어 immediate clone 금지 hard-pause가 발동했다.
+- 다음은 Cursor capacity 확인 또는 Composer defer 방향 결정이다.
+
 ## 2026-07-28 (Codex) · 1.9.51 stopped by provider capacity
 - 6셀 완료 후 Raw t3가 Cursor `resource_exhausted`로 25.5초에 process-failure했다.
 - 완료분은 baseline 69/63, Raw 79/79, OmD 85/85지만 incomplete라 비교하지 않는다.

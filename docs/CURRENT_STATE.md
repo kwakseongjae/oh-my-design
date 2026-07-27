@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.52 fresh Composer operational replacement locked
+- 갱신: 2026-07-28 · 1.9.52 repeated Cursor capacity hard-pause active
 
 ## 지금 (현재 위치)
 
+- 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
+- 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
+- 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 preregistered hard-pause가 발동했다. 즉시 1.9.53 clone은 금지하며 Cursor capacity 확인 또는 Composer lane 명시적 defer가 필요하다.
 - 1.9.51 fresh Composer 9-cell replacement는 6셀 완료 뒤 7번째 Raw가 Cursor Provider `resource_exhausted`로 25,541ms에 process-failure가 나 frozen됐다. provider-managed reconnect 3회, usage/final/product change 0이며 마지막 2셀은 not-started다.
 - 완료 6셀은 baseline 69/63, Raw 79/79, OmD 85/85이고 Evidence & Unknown 6/6이다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 W/T/L·Reliability@3·efficiency·replication 판단은 전부 금지한다.
 - 1.9.51은 skill 실패가 아닌 infrastructure-invalid execution이다. `/tmp/u1951`은 resume하지 않으며 preregistered infrastructure policy에 따라 1.9.52 fresh operational replacement만 허용한다.
@@ -494,14 +497,15 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.52 fresh Composer operational replacement를 `/tmp/u1952`에 prepare한다.
-2. locked hashes와 standing-approved transmission boundary를 기록한다.
-3. 동일 9셀을 retry 없이 serial 실행하고 3/3·zero-loss·a11y·Evidence gates를 판정한다.
-4. 통과하면 multi-task Cursor Preview slice를 사전등록하고, 같은 quota stop이 반복되면 provider capacity hard-pause한다.
+1. Cursor Composer capacity reset/availability를 확인하거나 Composer lane defer 방향을 정한다.
+2. capacity가 회복되면 새 root의 Composer 9-cell replacement를 다시 사전등록한다.
+3. Composer를 defer하면 별도 Grok multi-task Preview slice를 사전등록하되 Composer replication gate는 open으로 남긴다.
+4. 어떤 경우에도 1.9.51/1.9.52 incomplete scores는 새 denominator에 포함하지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
 - Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
+- Cursor Composer Provider가 두 fresh matrix에서 연속 `resource_exhausted`를 반환해 capacity hard-pause 상태다. 재실행 전 capacity reset 확인 또는 Composer lane defer 결정이 필요하다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 

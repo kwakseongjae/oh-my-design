@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "evaluator_schema": "0.5",
+  "product_version": "1.9.52",
+  "experiment_id": "cursor-composer-skill-lift-1.9.52",
+  "status": "execution_stopped_repeated_provider_resource_exhausted",
+  "provider_generation": true,
+  "verified_model_attribution": false,
+  "public_comparison_eligible": false,
+  "scheduled_cells": 9,
+  "completed_cells": 5,
+  "stopped_cells": 1,
+  "not_started_cells": 3,
+  "public_valid_cells": 0,
+  "runtime": {
+    "agent": "cursor-agent",
+    "version": "2026.07.23-e383d2b",
+    "model_requested": "composer-2.5",
+    "model_reported": "Composer 2.5",
+    "model_evidence_mode": "runtime-reported-display-name",
+    "provider_effort_argument": null,
+    "auto_router_used": false
+  },
+  "locked_matrix_sha256": "f2532dbd6cdff176d40551be11c9e2a85d0adf7f05466aa78a5667158300813b",
+  "completed_conditions": {
+    "baseline": {
+      "scores": [53, 67],
+      "automated_gate_passes": 0
+    },
+    "raw-design-md": {
+      "scores": [79],
+      "automated_gate_passes": 0
+    },
+    "omd-portable": {
+      "scores": [85, 85],
+      "automated_gate_passes": 2
+    }
+  },
+  "stop": {
+    "cell": "pricing-t2-raw",
+    "reason": "process-failure",
+    "provider_error": "RetriableError: [resource_exhausted] Error",
+    "wall_ms": 26433,
+    "provider_managed_reconnect_attempts": 3,
+    "usage_available": false,
+    "final_message_present": false,
+    "product_changed": false,
+    "same_condition_as_1_9_51": true
+  },
+  "acceptance": {
+    "provider_execution_9_of_9": false,
+    "paired_analysis_allowed": false,
+    "reliability_at_3_allowed": false,
+    "efficiency_analysis_allowed": false,
+    "evidence_and_unknown_completed_5_of_5": true
+  },
+  "decision": {
+    "bounded_hypothesis_passed": null,
+    "historical_decisions_frozen": true,
+    "repeated_capacity_hard_pause": true,
+    "immediate_clone_allowed": false,
+    "next_action": "confirm Cursor capacity or explicitly defer Composer before a new preregistered lane"
+  },
+  "claim_boundary": "Second consecutive incomplete Internal matrix stopped by provider resource exhaustion. Completed-cell scores are diagnostics only; no Skill Lift, replication, reliability, efficiency, confidence, model, or frontier claim follows."
+}

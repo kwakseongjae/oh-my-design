@@ -1,6 +1,6 @@
 # Cursor/Composer fixed-model Skill Lift replacement — 1.9.52
 
-Status: **LOCKED; fresh preparation pending**.
+Status: **EXECUTION STOPPED; repeated provider capacity hard-pause**.
 
 ## Frontier gate and bounded hypothesis
 
@@ -61,3 +61,18 @@ Cursor Preview slice. It does not establish a public model winner, confidence
 interval, three-family generality, efficiency, or frontier status. A second
 provider-capacity stop in this fresh replacement triggers a capacity hard-pause
 instead of another immediate matrix.
+
+## Frozen decision
+
+Five cells completed without retry or fallback. The sixth cell,
+`pricing-t2-raw`, exited after 26,433 ms with the same Cursor Provider
+`RetriableError: [resource_exhausted] Error` seen in 1.9.51. Its retained
+stream again shows three provider-managed reconnection attempts, no usage
+event, no final response, no product change, and no evaluator score. The final
+three cells were not started.
+
+This is the second consecutive fresh matrix stopped by the same provider
+capacity condition, so the preregistered capacity hard-pause is active. The
+matrix is outside every Skill Lift denominator. Its two completed OmD cells
+were 85/85 and the completed Raw cell was 79/85, but no W/T/L,
+Reliability@3, efficiency, or replication decision may be computed.
