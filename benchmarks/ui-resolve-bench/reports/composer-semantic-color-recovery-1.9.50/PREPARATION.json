@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "evaluator_schema": "0.5",
+  "product_version": "1.9.50",
+  "status": "prepared_approved_for_execution",
+  "output_root": "/tmp/u1950",
+  "scheduled_cells": 1,
+  "prepared_cells": 1,
+  "matrix_sha256": "24812fc6abe421f0abb2e6d95174958bcfcce8c92f4d42ab8fe2ffbf6464138a",
+  "source_commit": "09a6bf45c458c723dc8e84800e2aff873d889d80",
+  "representative_cell": {
+    "id": "pricing-recovery-omd",
+    "manifest_sha256": "def4a07bfa4db3295db2d60af463e16d5f27052d3e4cc5d9b8ff0fa06a06cf18",
+    "matrix_cell_sha256": "339ea43c2dbc161eb368d4cfc80cb053bb190021a50d80ad384f9f179bf55db4",
+    "starter_sha256": "07c3374778a21511822ca710d7018b1cd3b1a3dd449242e8063fcd73c8423705",
+    "design_md_sha256": "9521d3ef10d6f25823d6591ea8bab45967ec7ad0a078cac2de28a87b570ca721",
+    "installed_skill_sha256": "938c6f0a7bb2ce172786274599b56591f01a82ee8e6bd1bf3d54bef03c74e4c7",
+    "skill_sidecar_sha256": "f0ad5294de3f599bbed124708c61988be9098e20d4723ce3574023144751253e"
+  },
+  "provider_execution_started": false,
+  "approval": {
+    "received_for_this_fresh_root": true,
+    "scope": "One Cursor Composer 2.5 OmD candidate cell in /tmp/u1950 using only the locked per-cell file boundary.",
+    "authorization_basis": "The user granted standing approval for all future locked benchmark external transmissions in the Codex conversation.",
+    "retry_policy": "none-primary",
+    "stop_policy": "first-failure"
+  }
+}
