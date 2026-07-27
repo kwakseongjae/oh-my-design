@@ -10,7 +10,7 @@
 
 - 1.9.50 fresh Composer candidate-only recovery는 retry/fallback/manual edit 없이 85/85, critical 6/6, Evidence & Unknown pass, 4 viewports axe serious/critical 0, `index.html`-only diff로 통과했다. `signal-orange`는 non-text decoration 2곳에만 남고 normal text 0곳이다.
 - Composer는 immutable ID가 아닌 `Composer 2.5` 표시명만 반환하므로 public validity는 계속 `invalid-attribution`이다. 이 1셀은 모든 Skill Lift denominator 밖이며 1.9.48 rejected 결정을 바꾸지 않는다.
-- 다음 의미 있는 patch는 1.9.51 fresh Composer 9-cell replacement다. 동일 task/evaluator/Raw/control과 balanced order를 유지하며 통과해야 Composer bounded Skill Lift replication을 닫는다.
+- 1.9.51 fresh Composer 9-cell replacement를 LOCKED했다. 동일 task/evaluator/Raw/control과 balanced order를 유지하며 통과해야 Composer bounded Skill Lift replication을 닫는다.
 - 1.9.49는 canonical `omd-apply`에 mandatory post-edit `foreground closure`를 추가했다. changed foreground 선언과 실제 text를 전수해 token semantic은 proof가 아니며 exact 4.5:1이 없으면 declared text-role로 fail-close하고 accent는 인접 non-text에만 남긴다. 대체 token이 없어도 새 hex를 만들지 않는다.
 - contract 6/6, install-skills 36/36, focused Cursor adaptation 포함 7/7, TypeScript/build/diff가 green이다. selected 55/57에서 기존 `/tmp` competitor vendor Git metadata 2건만 환경 실패다. evaluator/task/Raw/historical score는 불변이다.
 - local repair와 fresh Composer candidate-only recovery가 모두 pass했으며 full 9-cell replacement가 unlock됐다.
@@ -490,10 +490,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.49 local repair checkpoint를 commit한다.
-2. 1.9.50 fresh Composer candidate-only recovery를 새 root에서 prepare/execute한다.
-3. recovery가 85/85·a11y·named cluster 0으로 통과하면 full Composer 9-cell replacement를 새 denominator로 preregister한다.
-4. 같은 root-cause가 fresh recovery에서 다시 실패하면 stop policy에 따라 방향 hard pause를 평가한다.
+1. 1.9.51 fresh Composer 9-cell replacement를 `/tmp/u1951`에 prepare한다.
+2. locked hashes와 standing-approved transmission boundary를 기록한다.
+3. retry 없이 serial 9셀을 실행하고 3/3·zero-loss·a11y·Evidence gates를 판정한다.
+4. 통과하면 multi-task Cursor Preview slice를 사전등록하고, 실패하면 새 root cause만 bounded repair한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
