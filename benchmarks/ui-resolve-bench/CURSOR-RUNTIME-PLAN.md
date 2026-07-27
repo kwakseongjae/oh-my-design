@@ -1,7 +1,7 @@
 # Cursor runtime and model evaluation plan
 
-Status: account gateway connected; runner work remains gated behind the
-provider-neutral `1.9.39` contract.
+Status: fake runner calibrated; Grok 4.5 and Composer 2.5 no-write account
+probes completed with runtime-reported display names only.
 
 ## 0. Primary intent
 
@@ -97,6 +97,12 @@ better.
 The version and account model inventory are now snapshotted. After the fake
 adapter passes, run one no-write probe per selected model and require the
 initialization event to match the requested ID. No quality score is produced.
+
+The 1.9.41 probes accepted both exact CLI selectors and returned
+`OMD_ATTRIBUTION_OK`, but the stream reported only `Cursor Grok 4.5 High` and
+`Composer 2.5`. These are stored as `runtime-reported-display-name`, not
+provider-observed immutable IDs. Both cells may enter an Internal pilot, while
+public Model Track eligibility remains `invalid-attribution`.
 
 ### B. Cursor Model Track pilot
 

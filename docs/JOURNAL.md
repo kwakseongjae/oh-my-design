@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-07-27 (Codex) · 1.9.41 Cursor no-write attribution
+- 빈 `/tmp`+고정문구로 Grok4.5/Composer2.5를 호출했고 둘 다 exit0/tool0/exact response다.
+- stream은 immutable ID가 아닌 `Cursor Grok 4.5 High`/`Composer 2.5` 표시명만 보고했다.
+- adapter는 display-name evidence를 public `invalid-attribution`으로 fail-closed한다.
+- Internal pilot만 unlock하며 quality/speed/token winner 주장은 없다.
+- 다음 품질 pilot은 benchmark 파일의 Cursor 전송에 대한 구체적 승인 후 실행한다.
+
 ## 2026-07-27 (Codex) · 1.9.40 fake Cursor adapter complete
 - dedicated `run-cursor.mjs`가 stream/model/sandbox/workspace와 binary version/SHA provenance를 보존한다.
 - live allowlist는 Grok4.5/Composer2.5뿐이며 Auto/GPT/Codex는 차단했다.

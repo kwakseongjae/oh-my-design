@@ -154,6 +154,11 @@ describe("UI-Resolve normalized run exporter", () => {
       process: { exit_code: 0 },
       output: { infrastructure_tool_error_count: 1 },
     }, score)).toBe("failed");
+
+    const displayNameOnly = structuredClone(run);
+    displayNameOnly.runtime.model_evidence_mode = "runtime-reported-display-name";
+    expect(classifyValidity(manifest, "complete", score, displayNameOnly))
+      .toBe("invalid-attribution");
   });
 
   it("does not count an unchanged starter as a resolved product delivery", () => {

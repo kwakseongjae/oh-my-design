@@ -308,6 +308,14 @@ effort flag, and reject every live model except `cursor-grok-4.5-high` and
 cells as `not-started`. No Cursor account, keychain, network, or provider was
 touched, so this is not live model evidence.
 
+1.9.41 completed two live no-write account probes from empty `/tmp` workspaces
+without transmitting repository content. Both exact CLI selectors exited zero
+and returned `OMD_ATTRIBUTION_OK` with no tools. Cursor reported display names
+(`Cursor Grok 4.5 High`, `Composer 2.5`) rather than immutable requested IDs.
+The adapter therefore records `runtime-reported-display-name`; the cells unlock
+an Internal fixed-runtime pilot but remain `invalid-attribution` for a public
+Verified Model Track.
+
 The final comparison target is Luna/Terra/Sol on Codex, Opus 5/Fable 5/Sonnet 5
 on Claude Code, and Composer 2.5/Grok 4.5 on Cursor Agent. Cross-runtime results
 are labelled model×runtime systems; only within-runtime slices are model-only

@@ -12,6 +12,8 @@ import { prepareRunMatrix } from "../../../benchmarks/ui-resolve-bench/scripts/p
 import { executePreparedMatrix } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
 import {
   CURSOR_LIVE_MODEL_ALLOWLIST,
+  CURSOR_RUNTIME_DISPLAY_LABELS,
+  cursorModelEvidenceMode,
   isCursorLiveModelAllowed,
   runnerSpecForCell,
 } from "../../../benchmarks/ui-resolve-bench/scripts/runtime-contract.mjs";
@@ -110,6 +112,9 @@ describe("Cursor Agent fake runtime contract", () => {
     expect(CURSOR_LIVE_MODEL_ALLOWLIST).toEqual(["cursor-grok-4.5-high", "composer-2.5"]);
     expect(isCursorLiveModelAllowed("gpt-5.3-codex-xhigh")).toBe(false);
     expect(isCursorLiveModelAllowed("auto")).toBe(false);
+    expect(CURSOR_RUNTIME_DISPLAY_LABELS["cursor-grok-4.5-high"]).toBe("Cursor Grok 4.5 High");
+    expect(cursorModelEvidenceMode("composer-2.5", "Composer 2.5"))
+      .toBe("runtime-reported-display-name");
   });
 
   it("retains exact Cursor runtime, binary, model, and effort provenance", () => {

@@ -10,7 +10,10 @@ import {
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
-import { isCursorLiveModelAllowed } from "./runtime-contract.mjs";
+import {
+  cursorModelEvidenceMode,
+  isCursorLiveModelAllowed,
+} from "./runtime-contract.mjs";
 
 const args = parseArgs();
 const workspaceInput = args.get("workspace") ? resolve(String(args.get("workspace"))) : null;
@@ -145,7 +148,12 @@ const modelUsage = usageEvents.flatMap((event) => {
   return [{
     model: event?.model ?? event?.model_id ?? modelReported ?? model,
     input_tokens: Number(usage.input_tokens ?? usage.inputTokens ?? 0),
-    cached_input_tokens: Number(usage.cached_input_tokens ?? usage.cachedInputTokens ?? 0),
+    cached_input_tokens: Number(
+      usage.cached_input_tokens
+      ?? usage.cachedInputTokens
+      ?? usage.cacheReadTokens
+      ?? 0,
+    ),
     output_tokens: Number(usage.output_tokens ?? usage.outputTokens ?? 0),
     cost_usd: Number.isFinite(Number(usage.cost_usd ?? usage.costUSD))
       ? Number(usage.cost_usd ?? usage.costUSD)
@@ -178,7 +186,7 @@ const result = {
     binary_sha256: binarySha256,
     model_requested: model,
     model_reported: modelReported,
-    model_evidence_mode: modelReported ? "provider-observed" : "cli-argument",
+    model_evidence_mode: cursorModelEvidenceMode(model, modelReported),
     effort_requested: effort,
     provider_effort_argument: null,
     auth_mode: fakeRuntime ? "fake-calibration" : "cursor-account",

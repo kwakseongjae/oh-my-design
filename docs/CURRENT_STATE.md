@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b64fa5d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-27 · 1.9.40 fake Cursor adapter complete; live attribution awaits explicit transmission approval
+- 갱신: 2026-07-27 · 1.9.41 Grok/Composer no-write attribution complete at Internal tier
 
 ## 지금 (현재 위치)
 
@@ -31,6 +31,9 @@
 - 1.9.40 fake Cursor adapter calibration도 완료됐다. `cursor` cell은 dedicated `run-cursor.mjs`만 사용하고 provider CLI에는 별도 effort flag를 넘기지 않는다. binary version/SHA, requested/reported model, sandbox/workspace, raw stream/stderr를 보존한다.
 - live Cursor model allowlist는 코드에서 `cursor-grok-4.5-high`와 `composer-2.5`만 허용한다. Auto/Router와 GPT/Codex IDs는 차단된다. wrong-model 첫 셀은 stop되고 뒤 셀은 `not-started`로 남는다.
 - 1.9.40 focused 31/31, syntax, TypeScript, build가 green이다. 전체 root는 225 pass/1 skip이고 동일한 external vendor Git metadata 환경 실패 2건만 남는다.
+- 1.9.41 no-write probe는 새 빈 `/tmp` workspace와 고정 문구만 전송했다. repository/diff/DESIGN.md/user content는 전송하지 않았다. Grok 4.5와 Composer 2.5 모두 exit 0, tool 0, exact `OMD_ATTRIBUTION_OK`를 반환했다.
+- Cursor stream은 requested immutable ID를 되돌려주지 않고 `Cursor Grok 4.5 High`와 `Composer 2.5` 표시명만 보고했다. 따라서 `runtime-reported-display-name`으로 기록하고 public validity는 `invalid-attribution`, Internal pilot eligibility만 true다.
+- 실제 stream usage는 Grok 15,040 input/4,480 cached/44 output, Composer 10,840/6,369/48로 보존했지만 1회 no-write probe이므로 속도·토큰·비용 비교나 우열 주장은 하지 않는다.
 - 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
 - stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.
 - 완성 3 pairs는 objective 0 win/3 tie/0 loss이고 Pricing/Onboarding 85/85, Operations 81/85로 양 시스템이 동률이다. paired-only median은 portable 430,140ms·105,380 tokens, harness 500,022ms·152,485 tokens(1.162×/1.447×)지만 incomplete matrix라 reliability/Pareto/promotion 근거가 아니다.
@@ -444,14 +447,14 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. private repository의 필요한 최소 파일을 Cursor/Grok에 전송하는 구체적 승인을 받으면 Grok 4.5 read-only contract review를 실행한다.
-2. 1.9.41에서 Grok 4.5/Composer 2.5 no-write attribution을 각각 별도 fresh cell로 실행한다.
-3. 1.9.42 two-model pilot을 한 task×3 trials부터 시작하고 attribution/failure retention green 후에만 확장한다.
+1. 1.9.42 Internal two-model pilot의 task/variants/trials/acceptance를 사전등록한다.
+2. private benchmark task/workspace를 Cursor 모델에 전송하는 구체적 승인을 받으면 Grok 4.5/Composer 2.5를 한 task×3 trials로 실행한다.
+3. display-name attribution·failure retention이 안정적일 때만 standard task set으로 확장한다.
 4. 이후 1.9.43 Cursor Agent Skill channel → 1.9.44 Skill Lift 순으로 진행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- Grok/Composer live 호출은 선택한 repository 파일/프롬프트를 Cursor 서비스에 전송한다. host policy상 구체적 외부 전송 승인이 필요하다.
+- 1.9.42 품질 pilot은 benchmark task와 prepared workspace를 Cursor 서비스에 전송하므로 별도의 구체적 외부 전송 승인이 필요하다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 

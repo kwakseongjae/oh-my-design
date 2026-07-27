@@ -6,8 +6,21 @@ export const CURSOR_LIVE_MODEL_ALLOWLIST = Object.freeze([
   "composer-2.5",
 ]);
 
+export const CURSOR_RUNTIME_DISPLAY_LABELS = Object.freeze({
+  "cursor-grok-4.5-high": "Cursor Grok 4.5 High",
+  "composer-2.5": "Composer 2.5",
+});
+
 export function isCursorLiveModelAllowed(model) {
   return CURSOR_LIVE_MODEL_ALLOWLIST.includes(model);
+}
+
+export function cursorModelEvidenceMode(requested, reported) {
+  if (reported === requested) return "provider-observed";
+  if (CURSOR_RUNTIME_DISPLAY_LABELS[requested] === reported) {
+    return "runtime-reported-display-name";
+  }
+  return reported ? "provider-observed" : "cli-argument";
 }
 
 export const RUNTIME_REGISTRY = Object.freeze({
@@ -61,7 +74,7 @@ export function runtimeAttributionStopReason(cell, manifest, run) {
   if (run.runtime.effort_requested !== cell.effort) return "requested-effort-mismatch";
 
   const evidenceMode = run.runtime.model_evidence_mode;
-  if (!["provider-observed", "cli-argument"].includes(evidenceMode)) {
+  if (!["provider-observed", "runtime-reported-display-name", "cli-argument"].includes(evidenceMode)) {
     return "incomplete-runtime-attribution";
   }
   if (
@@ -75,6 +88,15 @@ export function runtimeAttributionStopReason(cell, manifest, run) {
   }
   if (evidenceMode === "cli-argument" && run.runtime.model_reported !== null) {
     return "incomplete-runtime-attribution";
+  }
+  if (
+    evidenceMode === "runtime-reported-display-name"
+    && (
+      cell.runtime !== "cursor"
+      || CURSOR_RUNTIME_DISPLAY_LABELS[cell.model_id] !== run.runtime.model_reported
+    )
+  ) {
+    return "reported-model-mismatch";
   }
   if (
     !Object.hasOwn(run.runtime, "auth_mode")

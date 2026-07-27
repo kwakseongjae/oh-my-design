@@ -21,6 +21,9 @@ export function classifyRunStatus(run, score) {
 export function classifyValidity(manifest, runStatus, score, run = null) {
   if (manifest?.variant?.track_eligibility?.off_label === true) return "invalid-task";
   if (manifest?.skill?.source_attestation?.publishable === false) return "invalid-attribution";
+  if (run?.runtime?.model_evidence_mode === "runtime-reported-display-name") {
+    return "invalid-attribution";
+  }
   if (manifest?.variant?.kind === "agent-harness" && run) {
     const required = (manifest?.agents?.installed ?? []).map((agent) => agent.id);
     const requested = new Set(run?.output?.requested_agent_ids ?? []);
