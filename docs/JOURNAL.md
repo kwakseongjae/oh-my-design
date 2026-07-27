@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-27 (Codex) · 1.9.38 activation preregistered
+- Home은 claim-free tertiary evidence link만, activation은 Method/Sources 뒤에만 둔다.
+- 주 지표는 version-isolated installer copy 성공, Docs/Builder 이동은 탐색 proxy로 고정했다.
+- Terra xhigh 감사 후 typed/GA report/traffic filter 구현 gate까지 PASS했다.
+- 다음은 구현 → Sol high review → Terra xhigh browser/test acceptance다.
+
 ## 2026-07-27 (Codex) · 1.9.37 public benchmark UX accepted
 - Sol high 디자인 검수 BLOCK0, Terra xhigh 최종 QA PASS로 닫았다.
 - Web827/827·focused6/6·TS·lint·data·1,459-page production build가 green이다.

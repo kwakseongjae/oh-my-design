@@ -250,6 +250,21 @@ keyboard focus and the Method anchor works by pointer and Enter. Activation and
 homepage promotion remain out of scope and move to a separately bounded 1.9.38
 experiment.
 
+1.9.38 is preregistered as a benchmark-qualified web activation experiment.
+Home receives one tertiary, claim-free evidence link in the existing CLI trust
+row; all activation controls remain after Method and canonical Sources on
+`/benchmarks`. Typed `bm_*` events separate entry, evidence inspection,
+handoff-module exposure, navigation, and clipboard outcome, while successful
+installer copy also uses the existing `act_handoff` taxonomy with
+`surface: benchmark`. Production promotion requires 200 exposed users, at
+least 10 version-isolated successful installer copies, a 5% rate with Wilson
+lower bound at least 2.5%, and no evidence, accessibility, duplicate, or
+false-success regression. Docs/Builder navigation remains an exploratory proxy.
+This measures qualified web handoff only—not installation, resolved UI, causal
+lift, or reuse. A production-hostname query, empty Testing-filter dimension,
+and confirmed Active internal-traffic exclusion are fail-closed measurement
+prerequisites.
+
 ## 2.0.0 frontier gates
 
 All must pass:
