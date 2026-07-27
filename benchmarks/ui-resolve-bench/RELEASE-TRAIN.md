@@ -34,6 +34,13 @@ bounded one-task hypothesis passed with zero losses and OmD accessibility
 the statistical or cross-model frontier gate. Composer 2.5 replication is
 next.
 
+The fresh 1.9.48 Composer replication completed 9/9 but was rejected. Raw
+scored 81/79/85 and OmD 85/85/81; paired deltas were +4/+6/-4. The sole OmD
+loss was a real 3.25:1 semantic-orange normal-text contrast defect, not an
+evaluator issue. One bounded semantic-color closure repair is allowed before a
+fresh Composer replacement; the Raw control and frozen result remain
+unchanged.
+
 ## Patch experiment contract
 
 Every `0.0.1` product release records:

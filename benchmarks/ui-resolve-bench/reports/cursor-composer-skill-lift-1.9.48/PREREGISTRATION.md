@@ -1,6 +1,6 @@
 # Cursor/Composer fixed-model Skill Lift — 1.9.48
 
-Status: **LOCKED; fresh preparation pending**.
+Status: **EXECUTED; Composer replication rejected**.
 
 ## Frontier gate and bounded hypothesis
 
@@ -60,3 +60,14 @@ resume, score-rule change, or failed-cell replacement is allowed.
 Passing unlocks a multi-task Cursor Preview slice. It does not establish a
 public model winner, confidence interval, three-family generality, efficiency,
 or frontier status.
+
+## Frozen decision
+
+All nine cells completed without retry. Raw scored 81/85, 79/85, and 85/85;
+OmD scored 85/85, 85/85, and 81/85. Paired deltas were `+4`, `+6`, and `-4`.
+The third OmD output used unmeasured `signal-orange` as 13px status text on
+white, producing 3.25:1 contrast at three constrained viewports. The frozen
+3/3, zero-loss, and accessibility gates fail, so the replication is rejected.
+
+The next patch may strengthen only semantic-color closure. It may not change
+the evaluator, Raw control, task, or frozen 1.9.48 decision.

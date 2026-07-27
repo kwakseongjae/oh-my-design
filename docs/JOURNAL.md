@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.48 Composer replication rejected
+- Composer 9/9: Raw 81/79/85, OmD 85/85/81, paired +4/+6/-4.
+- OmD trial 3의 13px signal-orange text가 white 위 3.25:1이라 실제 a11y fail이었다.
+- evaluator/Raw는 고정하고 semantic-color closure 한 가지를 1.9.49에서 강화한다.
+- local calibration 뒤 fresh Composer recovery로 이어간다.
+
 ## 2026-07-28 (Codex) · 1.9.47 Cursor/Grok bounded Skill Lift passed
 - 1.9.45는 +4/+6/-2로 reject; 1.9.46은 WCAG focus oracle을 schema 0.5로 교정했다.
 - fresh 1.9.47은 Raw 79/85/79, OmD 85/85/85, paired +6/0/+6으로 pass했다.

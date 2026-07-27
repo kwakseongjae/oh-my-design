@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.47 Cursor/Grok bounded Skill Lift passed
+- 갱신: 2026-07-28 · 1.9.48 Composer replication rejected; semantic-color closure next
 
 ## 지금 (현재 위치)
 
+- 1.9.48 fresh Cursor/Composer 2.5 matrix는 9/9 완료했다. baseline 65/59/61(0/3), Raw 81/79/85(1/3), OmD 85/85/81(2/3), paired +4/+6/-4로 3/3·zero-loss·accessibility gate를 실패해 replication rejected다.
+- sole OmD failure는 evaluator 문제가 아니라 `.check-state.blocked` 13px bold에 `signal-orange #E7683D`를 white 위 foreground로 써 3.25:1이 난 실제 semantic-color defect다. mobile/320/200%에서 axe color-contrast가 fail했다.
+- skill에 unmeasured accent normal-text 금지가 이미 있으나 ledger/checklist라 Composer 1/3에서 closure를 생략했다. 다음 1.9.49는 changed foreground declaration 전수 분류→measured 4.5:1 없으면 text-role token으로 교체하고 accent는 non-text에만 보존하는 mandatory closure 하나만 강화한다.
 - 1.9.47 fresh schema 0.5 / suite `ui-resolve-v0.2` Cursor/Grok matrix는 9/9 serial 실행을 retry 없이 완료했다. baseline 61/63/65(0/3), Raw 79/85/79(1/3), OmD 85/85/85(3/3)이며 paired +6/0/+6, zero loss다.
 - OmD는 accessibility와 모든 critical gate를 3/3, Evidence & Unknown을 9/9 통과했다. signal-orange small text, invalid ARIA parentage, keyboard-unreachable comparison도 OmD 0/3이다. bounded one-task Skill Lift 가설은 pass다.
 - median wall Raw 289,735ms vs OmD 224,473ms(-22.5%), non-cached tokens 61,228 vs 100,583(+64.3%)다. 1 task×3과 display-name attribution이므로 Internal descriptive일 뿐 efficiency/Pareto/public winner/frontier claim은 금지한다.
@@ -481,10 +484,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.47 result/report checkpoint를 commit한다.
-2. 1.9.48 `/tmp/u1948` fresh 9-cell을 evaluator schema 0.5 + suite `ui-resolve-v0.2`, Cursor Composer 2.5 고정으로 preregister/prepare/execute한다.
-3. Composer replication 통과 시 12-task Preview pack 중 다음 task slice를 선택해 Grok/Composer paired expansion을 진행한다. 실패하면 새 failure cluster 하나만 bounded repair한다.
-4. display-name attribution인 Cursor 결과는 계속 Internal diagnostics로만 유지한다.
+1. 1.9.48 frozen failure report를 commit한다.
+2. 1.9.49 semantic-color closure를 skill/channel mirror에 한정해 구현하고 deterministic acceptance를 추가한다.
+3. local acceptance 통과 시 fresh Composer candidate-only recovery를 새 root에서 실행한다.
+4. recovery가 통과하면 full Composer 9-cell replacement 또는 다음 multi-task Preview slice를 preregister한다. 같은 root-cause가 fresh replacement에서 다시 실패하면 hard pause 조건을 평가한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
