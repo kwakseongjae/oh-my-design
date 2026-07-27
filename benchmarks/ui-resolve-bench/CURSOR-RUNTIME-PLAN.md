@@ -100,22 +100,46 @@ initialization event to match the requested ID. No quality score is produced.
 
 ### B. Cursor Model Track pilot
 
-Use one Cursor runtime version and these three exact, manually selected
-non-Fast model IDs:
+Use one Cursor runtime version and these two exact, manually selected non-Fast
+model IDs:
 
 - `cursor-grok-4.5-high`;
-- `composer-2.5`;
-- `gpt-5.3-codex-xhigh`.
+- `composer-2.5`.
 
 Run model-only and model-plus-raw-DESIGN.md as separate conditions. Start with
 one calibrated task and three trials per model; expand to the standard task set
 only after attribution and failure retention are stable.
 
-This first trio samples xAI/Cursor Grok, Cursor Composer, and OpenAI Codex while
-holding the Cursor runtime constant. It does not include Opus under the current
-user policy. The account catalog emitted a bare, apparently incomplete
-`claude-opus-5-thinki` entry without a label; it remains excluded until Cursor
-reports an attributable immutable ID in an initialization event.
+This pair compares xAI/Cursor Grok and Cursor Composer while holding the Cursor
+runtime constant. OpenAI models are intentionally excluded from this Cursor
+pilot because Luna, Terra, and Sol will be evaluated through the Codex runtime
+in the final system matrix. The account catalog emitted a bare, apparently
+incomplete `claude-opus-5-thinki` entry without a label; it remains excluded
+until Cursor reports an attributable immutable ID in an initialization event.
+
+### Final eight-system matrix
+
+The eventual public comparison targets these named model/runtime systems:
+
+| Runtime family | Model labels to preflight |
+|---|---|
+| Codex | Luna, Terra, Sol |
+| Claude Code | Opus 5, Fable 5, Sonnet 5 |
+| Cursor Agent | Composer 2.5, Grok 4.5 |
+
+Exact immutable IDs, runtime versions, reasoning settings, and availability are
+frozen only after a no-write attribution preflight. Because the three runtime
+families expose different harnesses and possibly different provider snapshots,
+the public cross-family view is labelled **model × runtime system**, not a pure
+model leaderboard.
+
+The benchmark publishes two complementary cuts:
+
+1. within-runtime model comparisons where the shell and tools are fixed;
+2. end-to-end system comparisons where each named model uses its documented
+   runtime, with runtime provenance shown beside every result.
+
+No blended global score may hide the runtime distinction.
 
 ### C. Runtime crossover
 
@@ -150,11 +174,11 @@ leaderboard row and are not mixed with fixed-model trials.
 | `1.9.39` | Fake Claude/Codex no-fallback dispatch and common provenance |
 | `1.9.40` | Fresh live Claude/Codex attribution smoke; no quality comparison |
 | `1.9.41` | Fake Cursor stream contract, runtime dispatch, and failure retention |
-| `1.9.42` | Live no-write attribution for Grok 4.5, Composer 2.5, and Codex 5.3 xhigh |
-| `1.9.43` | Internal Cursor fixed-runtime three-model Model Track pilot |
+| `1.9.42` | Live no-write attribution for Grok 4.5 and Composer 2.5 |
+| `1.9.43` | Internal Cursor fixed-runtime two-model Model Track pilot |
 | `1.9.44` | Cursor OmD skill-channel modernization and deterministic doctor tests |
 | `1.9.45` | Fixed-model no-skill/raw DESIGN.md/OmD Skill Lift pilot |
-| later | Runtime crossover when snapshots match, then the repeated transfer matrix |
+| later | Eight-system attribution, runtime-labelled comparison, then the repeated transfer matrix |
 
 Every patch is preregistered separately. Authentication, quota, missing model,
 model fallback, or attribution ambiguity stops the patch and remains visible.

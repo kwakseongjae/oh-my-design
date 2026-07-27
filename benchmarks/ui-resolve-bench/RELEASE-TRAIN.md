@@ -286,14 +286,19 @@ live Claude/Codex attribution smoke after the provider-neutral contract passes.
 `1.9.41` adds a fake Cursor stream adapter and proves dispatch, provenance, and
 failure retention without generation. The Cursor account gateway has already
 been connected collision-safely and its model catalog snapshotted without
-producing a score. `1.9.42` runs no-write attribution for exact Grok 4.5,
-Composer 2.5, and Codex 5.3 xhigh IDs. `1.9.43` may then run an Internal
-three-model pilot with Cursor runtime fixed. `1.9.44` separately modernizes the
+producing a score. `1.9.42` runs no-write attribution for exact Grok 4.5 and
+Composer 2.5 IDs. `1.9.43` may then run an Internal two-model pilot with Cursor
+runtime fixed. `1.9.44` separately modernizes the
 product Cursor install channel from its legacy rule-only shim to reviewed Agent
 Skills plus deterministic doctor checks, and `1.9.45` opens a fixed-model Skill
 Lift pilot. Cursor Auto/Router remains a separate routing policy condition and
 never becomes a named-model row. The full contract is in
 [`CURSOR-RUNTIME-PLAN.md`](./CURSOR-RUNTIME-PLAN.md).
+
+The final comparison target is Luna/Terra/Sol on Codex, Opus 5/Fable 5/Sonnet 5
+on Claude Code, and Composer 2.5/Grok 4.5 on Cursor Agent. Cross-runtime results
+are labelled model×runtime systems; only within-runtime slices are model-only
+comparisons.
 
 ## 2.0.0 frontier gates
 

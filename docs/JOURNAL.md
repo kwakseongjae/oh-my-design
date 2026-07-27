@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-27 (Codex) · final model universe corrected
+- Cursor fixed-runtime pilot은 Grok4.5/Composer2.5만 사용하고 Codex5.3은 제외했다.
+- 최종 대상은 Luna/Terra/Sol, Opus5/Fable5/Sonnet5, Composer2.5/Grok4.5다.
+- cross-runtime 결과는 model×runtime system, within-runtime 결과만 model cut으로 표시한다.
+- 다음은 1.9.39 provider-neutral runner 구현이다.
+
 ## 2026-07-27 (Codex) · Cursor account gateway connected
 - `cursor-agent`만 collision-safe 설치하고 Cursor 계정 로그인을 완료했으며 Grok `agent`는 보존했다.
 - 계정 catalog에서 Grok4.5/Composer2.5/Codex5.3-xhigh를 fixed-runtime 후보로 확정했다.

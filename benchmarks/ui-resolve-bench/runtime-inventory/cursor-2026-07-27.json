@@ -28,12 +28,12 @@
   ],
   "selected_fixed_runtime_pilot": [
     "cursor-grok-4.5-high",
-    "composer-2.5",
-    "gpt-5.3-codex-xhigh"
+    "composer-2.5"
   ],
   "excluded_from_fixed_model_pilot": {
     "auto": "dynamic routing policy, not an immutable named model",
     "fast_variants": "separate speed configuration; do not mix with non-Fast rows",
+    "gpt-5.3-codex-xhigh": "user-scoped out of the Cursor pilot; OpenAI model families are evaluated through the Codex runtime",
     "claude-opus-5-thinki": "unlabelled and apparently incomplete CLI catalog entry; current user policy also excludes Opus"
   },
   "claim_boundary": "Availability snapshot only. No live attribution probe, quality comparison, token/cost claim, or model ranking."
