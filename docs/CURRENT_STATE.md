@@ -3,11 +3,16 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `59d66b8` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-27 · 1.9.43 Cursor native Agent Skill channel deterministic acceptance complete; live discovery canary와 1.9.44 next
+- 기준 커밋: `05cf4db` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-28 · cross-runtime compute-control schema 0.3 complete; Cursor live canary exact approval blocked
 
 ## 지금 (현재 위치)
 
+- 모델 비교 compute-control을 schema 0.3으로 구현했다. `high`/`xhigh`는 runtime-native ordinal이며 provider 간 동일 effort로 간주할 수 없다. native-capability / iso-external-budget / effort-scaling을 분리하고, wall timeout·serial latency·temperature policy·retry/timeout/infra 정책·hard-cap vs observed-only token/step budget을 matrix lock 전에 검증한다.
+- run record는 fresh/cached input, output, reasoning visibility, usage completeness, execution control을 보존한다. aggregator는 timeout/failed를 포함한 모든 valid scheduled run의 wall/token/tool/intervention/cost를 집계하며 usage 100%와 동일 control contract 없이는 efficiency publication-ready를 false로 둔다.
+- 공식 method 근거는 SkillsBench, Harness-Bench, OSWorld, SWE-bench, METR, OpenAI benchmark audit, Agentic Benchmark Checklist이며 정본은 `benchmarks/ui-resolve-bench/COMPUTE-CONTROL.md`다.
+- focused compute/runtime 23/23, CLI TypeScript/build, syntax/diff가 green이다. 전체 bench는 88 pass/1 skip이고 기존 `/tmp` vendor Git metadata 부재 2건만 환경 실패다.
+- 2026-07-28 Cursor automatic discovery canary는 host external-transmission review에서 Cursor 시작 전에 차단됐다. 합성 DESIGN/index + omd-apply SKILL/openai.yaml 4개를 Cursor/Grok에 보내는 목적을 정확히 명시한 별도 승인이 필요하다. 전송/응답은 0이며 1.9.44는 draft 그대로다.
 - 1.9.37 minimum public evidence slice를 `/benchmarks`에 구현·수락했다. 페이지는 `Internal evidence`/`Not a leaderboard`를 먼저 노출하고 Model/Skill/Harness를 분리하며, 1.9.22의 5/9→8/9·W/T/L 4/4/1·CI -22.22→100pp·77/85 loss와 1.9.34 실패→1.9.35 contract→1.9.36 fresh recovery를 함께 보여준다.
 - canonical report→`web/src/data/ui-benchmark-public.generated.json` 생성기를 추가했다. denominator/claim/CI/source 전제를 assert하고 stale artifact를 CI와 release workflow에서 fail-closed한다. 화면 source에는 benchmark 수치를 다시 하드코딩하지 않는다.
 - public UX contract/findings, sitemap, metadata, route/data/render tests를 추가했다. Web full 827/827, final focused 6/6, TypeScript, changed-file ESLint, root 217 pass/1 skip, CLI TypeScript/build, public-data check와 diff check가 green이다.
@@ -461,14 +466,14 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. Cursor CLI live automatic discovery/manual invocation canary는 고정한 4-file payload의 명시 승인 후 실행한다.
+1. Cursor CLI live automatic discovery/manual invocation canary는 합성 DESIGN/index + omd-apply SKILL/openai.yaml 4개를 Cursor/Grok 외부 서비스로 보내는 두 read-only 목적의 정확한 명시 승인 후 실행한다.
 2. canary 통과 뒤 1.9.44 draft에 candidate commit/prepared hashes를 기록하고 `LOCKED`로 전환한다.
 3. 승인된 범위로 fresh 9-cell을 실행하고 first failure에서 stop한다.
-4. display-name attribution인 동안 결과는 Internal diagnostics로만 유지하고 public winner/W-T/L은 만들지 않는다.
+4. 후속 Model Track은 schema 0.3 compute-control로 Luna/Terra/Sol, Opus5/Fable5/Sonnet5, Composer2.5/Grok4.5의 model×runtime system을 비교한다. display-name attribution인 동안 Cursor 결과는 Internal diagnostics로만 유지하고 public winner/W-T/L은 만들지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다.
+- Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. 또한 4-file live canary는 exact external-transmission approval 전까지 blocked다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 

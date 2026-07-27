@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-07-28 (Codex) · cross-runtime compute control implemented
+- SkillsBench/Harness-Bench/OSWorld/SWE-bench/METR와 benchmark audit의 resource 통제를 조사했다.
+- schema 0.3이 effort false equivalence, unenforceable token cap, hidden retry를 fail-closed한다.
+- aggregator가 timeout 포함 wall/token/cost와 usage completeness를 보존한다; focused 23/23·lint/build green.
+- Cursor 4-file canary는 host review에서 전송 전 차단됐고 우회하지 않았다.
+- 다음은 exact external-transmission 승인 → 2 canary → locked 1.9.44 fresh 9-cell이다.
+
 ## 2026-07-27 (Codex) · 1.9.44 Cursor Skill Lift drafted
 - live discovery는 새 4-file payload 명시 승인이 없어 safety review에서 차단됐고 우회하지 않았다.
 - canary 준비 중 Cursor minimal outro의 잘못된 `/claude-design` 예시를 `/omd-apply`로 교정했다.
