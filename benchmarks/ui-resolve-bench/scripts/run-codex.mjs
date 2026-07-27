@@ -21,6 +21,9 @@ if (!existsSync(manifestPath)) throw new Error(`not a prepared benchmark workspa
 if (existsSync(resultPath)) throw new Error(`refusing to overwrite completed run: ${resultPath}`);
 
 const manifest = readJson(manifestPath);
+if (manifest.runtime_target !== "codex") {
+  throw new Error("workspace was not prepared with --runtime codex");
+}
 const prompt = readFileSync(join(benchmarkDir, "PROMPT.md"), "utf8");
 const finalMessagePath = join(benchmarkDir, "final-message.txt");
 const maxLogBytes = 50 * 1024 * 1024;
@@ -49,6 +52,7 @@ let stdout = "";
 let stderr = "";
 let timedOut = false;
 let logsTruncated = false;
+let spawnError = null;
 
 const childEnv = {};
 for (const key of ["HOME", "PATH", "CODEX_HOME", "TMPDIR", "LANG", "LC_ALL", "TERM", "USER", "SHELL"]) {
@@ -71,8 +75,8 @@ const appendCapped = (current, chunk) => {
   return Buffer.from(next).subarray(0, maxLogBytes).toString("utf8");
 };
 
-const exit = await new Promise((resolveExit, reject) => {
-  const child = spawn("codex", command, {
+const exit = await new Promise((resolveExit) => {
+  const child = spawn(process.env.OMD_BENCH_CODEX_BIN ?? "codex", command, {
     cwd: workspace,
     env: childEnv,
     detached: true,
@@ -86,7 +90,8 @@ const exit = await new Promise((resolveExit, reject) => {
   child.stderr.on("data", (chunk) => { stderr = appendCapped(stderr, chunk); });
   child.on("error", (error) => {
     clearTimeout(timer);
-    reject(error);
+    spawnError = error.message;
+    resolveExit({ code: null, signal: null });
   });
   child.on("close", (code, signal) => {
     clearTimeout(timer);
@@ -103,6 +108,24 @@ const events = stdout.split("\n").filter(Boolean).flatMap((line) => {
   try { return [JSON.parse(line)]; } catch { return []; }
 });
 const usageEvents = events.filter((event) => event.type?.includes("usage") || event.usage || event.token_usage);
+const modelReported = events
+  .map((event) => event?.model ?? event?.model_id ?? event?.session?.model ?? null)
+  .find((value) => typeof value === "string" && value.length > 0) ?? null;
+const modelUsage = usageEvents.flatMap((event) => {
+  const usage = event?.usage ?? event?.token_usage;
+  if (!usage) return [];
+  return [{
+    model: event?.model ?? event?.model_id ?? modelReported ?? model,
+    input_tokens: Number(usage.input_tokens ?? usage.inputTokens ?? 0),
+    cached_input_tokens: Number(usage.cached_input_tokens ?? usage.cachedInputTokens ?? 0),
+    output_tokens: Number(usage.output_tokens ?? usage.outputTokens ?? 0),
+    cost_usd: Number.isFinite(Number(usage.cost_usd ?? usage.costUSD))
+      ? Number(usage.cost_usd ?? usage.costUSD)
+      : null,
+    context_window: null,
+    max_output_tokens: null,
+  }];
+});
 const finalTree = treeManifest(workspace, { ignore: [".benchmark"] });
 const initialProductTree = {
   sha256: manifest.workspace.product_initial_sha256,
@@ -114,14 +137,21 @@ const finalProductTree = treeManifest(workspace, {
 const changedProductFiles = diffTreeManifests(initialProductTree, finalProductTree);
 const productChanged = initialProductTree.sha256 !== finalProductTree.sha256;
 const result = {
-  schema_version: "0.1",
+  schema_version: "0.2",
   task_id: manifest.task.id,
   variant_id: manifest.variant.id,
   started_at: startedAt.toISOString(),
   finished_at: new Date().toISOString(),
   runtime: {
+    runtime_target: "codex",
     agent: "codex-cli",
     agent_version: process.env.CODEX_VERSION ?? null,
+    model_requested: model,
+    model_reported: modelReported,
+    model_evidence_mode: modelReported ? "provider-observed" : "cli-argument",
+    effort_requested: reasoning,
+    auth_mode: null,
+    provider_route: null,
     model,
     reasoning,
     sandbox: "workspace-write",
@@ -130,13 +160,37 @@ const result = {
   },
   process: {
     exit_code: exit.code,
+    child_exit_code: exit.code,
     signal: exit.signal,
     timed_out: timedOut,
+    spawn_error: spawnError,
     wall_ms: Math.round(wallMs),
   },
   output: {
     event_count: events.length,
     usage_events: usageEvents,
+    model_usage: modelUsage,
+    usage_attribution: {
+      available: modelUsage.length > 0,
+      evidence_mode: modelUsage.length > 0 ? "provider-event" : "unavailable",
+      reason: modelUsage.length > 0 ? null : "provider-stream-contained-no-usage",
+    },
+    diagnostic_availability: {
+      available: false,
+      fields: [],
+      reason: "codex-stream-diagnostic-normalization-not-supported",
+    },
+    tool_error_count: null,
+    recoverable_tool_error_count: null,
+    infrastructure_tool_error_count: null,
+    optional_verifier_environment_error_count: null,
+    recovered_temp_path_error_count: null,
+    sandbox_error_count: null,
+    sandbox_cwd_error_count: null,
+    agent_tool_call_count: null,
+    agent_tool_error_count: null,
+    requested_agent_ids: [],
+    agent_calls: [],
     final_message_present: existsSync(finalMessagePath),
     stderr_bytes: Buffer.byteLength(stderr),
     logs_truncated: logsTruncated,
@@ -155,4 +209,4 @@ const result = {
 };
 writeJson(resultPath, result);
 console.log(JSON.stringify(result, null, 2));
-if (exit.code !== 0 || timedOut) process.exitCode = 1;
+if (exit.code !== 0 || timedOut || spawnError) process.exitCode = 1;

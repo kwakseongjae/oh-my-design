@@ -4,10 +4,14 @@ import { existsSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
+import {
+  runnerSpecForCell,
+  runtimeAttributionStopReason,
+} from "./runtime-contract.mjs";
 
 const MAX_BUFFER = 64 * 1024 * 1024;
 
-export function preregisteredStopReason(cell, manifest, run) {
+export function preregisteredStopReason(cell, manifest, run, { schemaVersion = "0.1" } = {}) {
   if (!run) return "missing-run-result";
   if (run.process?.timed_out === true) return "timeout";
   if (run.process?.exit_code !== 0 || run.process?.child_exit_code !== 0) return "process-failure";
@@ -15,9 +19,14 @@ export function preregisteredStopReason(cell, manifest, run) {
   if (Number(run.output?.infrastructure_tool_error_count ?? 0) > 0) return "infrastructure-tool-error";
   if (Number(run.output?.sandbox_error_count ?? 0) > 0) return "sandbox-error";
   if (Number(run.output?.sandbox_cwd_error_count ?? 0) > 0) return "sandbox-cwd-error";
-  if (run.runtime?.model !== cell.model_id) return "parent-model-mismatch";
-  if (!(run.output?.model_usage ?? []).some((usage) => usage.model === cell.model_id)) {
-    return "observed-model-mismatch";
+  if (schemaVersion === "0.2") {
+    const attributionReason = runtimeAttributionStopReason(cell, manifest, run);
+    if (attributionReason) return attributionReason;
+  } else {
+    if (run.runtime?.model !== cell.model_id) return "parent-model-mismatch";
+    if (!(run.output?.model_usage ?? []).some((usage) => usage.model === cell.model_id)) {
+      return "observed-model-mismatch";
+    }
   }
 
   if (manifest.variant?.kind === "agent-harness") {
@@ -180,12 +189,7 @@ function readEvents(path) {
 }
 
 export function runArgsForCell(cell, workspace) {
-  return [
-    "--workspace", workspace,
-    "--model", cell.model_id,
-    "--effort", cell.effort,
-    "--timeout-ms", String(cell.timeout_seconds * 1000),
-  ];
+  return runnerSpecForCell(cell, workspace).args;
 }
 
 function runNode(script, args, cwd) {
@@ -201,6 +205,19 @@ function upsertCell(state, value) {
   const index = state.cells.findIndex((cell) => cell.id === value.id);
   if (index === -1) state.cells.push(value);
   else state.cells[index] = value;
+}
+
+function freezeRemainingCells(state, plan, stoppedIndex, matrixRoot, reason) {
+  for (const [index, cell] of plan.cells.entries()) {
+    if (index <= stoppedIndex) continue;
+    upsertCell(state, {
+      id: cell.id,
+      order: index + 1,
+      status: "not-started",
+      workspace: join(matrixRoot, cell.id),
+      reason: `matrix-frozen-after:${plan.cells[stoppedIndex].id}:${reason}`,
+    });
+  }
 }
 
 function assertUnstartedWorkspace(workspace, manifest) {
@@ -235,8 +252,11 @@ export function executePreparedMatrix(root) {
     throw new Error(`matrix is frozen after preregistered stop: ${existing.stop_reason}`);
   }
   const state = existing ?? {
-    schema_version: "0.1",
+    schema_version: plan.schema_version ?? "0.1",
     experiment_id: plan.experiment_id,
+    suite_version: plan.suite_version ?? null,
+    product_version: plan.product_version ?? null,
+    execution_purpose: plan.execution_purpose ?? null,
     status: "running",
     scheduled_cells: plan.cells.length,
     completed_cells: 0,
@@ -247,8 +267,12 @@ export function executePreparedMatrix(root) {
   writeJson(executionStatePath, state);
 
   const repo = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
-  const runScript = resolve(fileURLToPath(new URL("./run-claude.mjs", import.meta.url)));
-  const evaluateScript = resolve(fileURLToPath(new URL("./evaluate-run.mjs", import.meta.url)));
+  const evaluateScript = (
+    plan.execution_purpose === "runtime-contract-calibration"
+    && process.env.OMD_BENCH_CALIBRATION_EVALUATOR
+  )
+    ? resolve(process.env.OMD_BENCH_CALIBRATION_EVALUATOR)
+    : resolve(fileURLToPath(new URL("./evaluate-run.mjs", import.meta.url)));
   const exportScript = resolve(fileURLToPath(new URL("./export-run-record.mjs", import.meta.url)));
 
   for (const [index, cell] of plan.cells.entries()) {
@@ -267,24 +291,29 @@ export function executePreparedMatrix(root) {
 
     if (!existsSync(resultPath)) {
       assertUnstartedWorkspace(workspace, manifest);
-      const executed = runNode(runScript, runArgsForCell(cell, workspace), repo);
+      const runnerSpec = runnerSpecForCell(cell, workspace);
+      const executed = runNode(runnerSpec.runner, runnerSpec.args, repo);
       if (!existsSync(resultPath)) {
         const reason = `runner-no-result:${executed.error?.message ?? executed.stderr?.trim() ?? `exit-${executed.status}`}`;
         state.status = "stopped-preregistered";
         state.stop_reason = reason;
         upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason });
+        freezeRemainingCells(state, plan, index, matrixRoot, reason);
         writeJson(executionStatePath, state);
         throw new Error(reason);
       }
     }
 
     const run = readJson(resultPath);
-    const stopReason = preregisteredStopReason(cell, manifest, run)
+    const stopReason = preregisteredStopReason(cell, manifest, run, {
+      schemaVersion: plan.schema_version ?? "0.1",
+    })
       ?? harnessDeliveryStopReason(manifest, run, plan.harness_delivery_gates, readEvents(eventsPath));
     if (stopReason) {
       state.status = "stopped-preregistered";
       state.stop_reason = stopReason;
       upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason: stopReason });
+      freezeRemainingCells(state, plan, index, matrixRoot, stopReason);
       writeJson(executionStatePath, state);
       throw new Error(`preregistered stop at ${cell.id}: ${stopReason}`);
     }
@@ -296,6 +325,7 @@ export function executePreparedMatrix(root) {
         state.status = "stopped-preregistered";
         state.stop_reason = reason;
         upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason });
+        freezeRemainingCells(state, plan, index, matrixRoot, reason);
         writeJson(executionStatePath, state);
         throw new Error(reason);
       }
@@ -307,7 +337,7 @@ export function executePreparedMatrix(root) {
         "--family", plan.family,
         "--system", cell.system_id,
         "--trial", String(cell.trial_index),
-        "--suite-version", "1.9.7",
+        "--suite-version", plan.suite_version ?? "1.9.7",
         "--budget-tier", cell.effort,
       ], repo);
       if (exported.status !== 0 || !existsSync(recordPath)) {
@@ -315,6 +345,7 @@ export function executePreparedMatrix(root) {
         state.status = "stopped-preregistered";
         state.stop_reason = reason;
         upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason });
+        freezeRemainingCells(state, plan, index, matrixRoot, reason);
         writeJson(executionStatePath, state);
         throw new Error(reason);
       }
@@ -333,8 +364,8 @@ export function executePreparedMatrix(root) {
       objective_max: record.objective_max,
       wall_time_ms: record.wall_time_ms,
       tokens: record.tokens,
-      recoverable_tool_errors: record.runtime_diagnostics?.recoverable_tool_error_count ?? 0,
-      agent_tool_calls: record.runtime_diagnostics?.agent_tool_call_count ?? 0,
+      recoverable_tool_errors: record.runtime_diagnostics?.recoverable_tool_error_count ?? null,
+      agent_tool_calls: record.runtime_diagnostics?.agent_tool_call_count ?? null,
       evidence_and_unknown_pass: score.critical_gates?.evidence_honesty === true,
       first_product_write_ms: record.runtime_diagnostics?.milestones?.first_builtin_product_write_ms ?? null,
       last_advisory_to_first_product_write_ms: lastAdvisoryToFirstProductWriteMs(

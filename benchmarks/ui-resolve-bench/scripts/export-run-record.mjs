@@ -70,12 +70,20 @@ export function buildRunRecord({
   const automatedPass = score?.status?.automated_gate_pass === true;
   const productChanged = run?.workspace?.product_changed ?? run?.workspace?.changed ?? false;
   const tokenUsage = summarizeTokenUsage(run);
+  const diagnosticsDeclared = run?.output?.diagnostic_availability !== undefined;
+  const diagnosticAvailable = run?.output?.diagnostic_availability?.available === true;
+  const diagnosticNumber = (field) => {
+    if (run?.output?.[field] !== undefined && run?.output?.[field] !== null) {
+      return Number(run.output[field]);
+    }
+    return diagnosticsDeclared && !diagnosticAvailable ? null : 0;
+  };
   return {
     run_id: basename(workspace),
     benchmark_family: family,
     suite_version: suiteVersion,
     system_id: systemId,
-    model_id: run?.runtime?.model ?? null,
+    model_id: run?.runtime?.model_requested ?? run?.runtime?.model ?? null,
     skill_id: family === "skill" || family === "factorial"
       ? manifest?.skill?.declared_name ?? null
       : null,
@@ -101,22 +109,40 @@ export function buildRunRecord({
       : null,
     runtime_diagnostics: {
       child_exit_code: run?.process?.child_exit_code ?? run?.process?.exit_code ?? null,
-      tool_error_count: Number(run?.output?.tool_error_count ?? 0),
-      recoverable_tool_error_count: Number(run?.output?.recoverable_tool_error_count ?? 0),
-      infrastructure_tool_error_count: Number(run?.output?.infrastructure_tool_error_count ?? 0),
-      optional_verifier_environment_error_count: Number(
-        run?.output?.optional_verifier_environment_error_count ?? 0,
-      ),
-      recovered_temp_path_error_count: Number(run?.output?.recovered_temp_path_error_count ?? 0),
-      sandbox_error_count: Number(run?.output?.sandbox_error_count ?? 0),
-      sandbox_cwd_error_count: Number(run?.output?.sandbox_cwd_error_count ?? 0),
-      agent_tool_call_count: Number(run?.output?.agent_tool_call_count ?? 0),
-      agent_tool_error_count: Number(run?.output?.agent_tool_error_count ?? 0),
+      diagnostic_availability: run?.output?.diagnostic_availability ?? {
+        available: true,
+        fields: "legacy-assumed",
+        reason: null,
+      },
+      tool_error_count: diagnosticNumber("tool_error_count"),
+      recoverable_tool_error_count: diagnosticNumber("recoverable_tool_error_count"),
+      infrastructure_tool_error_count: diagnosticNumber("infrastructure_tool_error_count"),
+      optional_verifier_environment_error_count: diagnosticNumber("optional_verifier_environment_error_count"),
+      recovered_temp_path_error_count: diagnosticNumber("recovered_temp_path_error_count"),
+      sandbox_error_count: diagnosticNumber("sandbox_error_count"),
+      sandbox_cwd_error_count: diagnosticNumber("sandbox_cwd_error_count"),
+      agent_tool_call_count: diagnosticNumber("agent_tool_call_count"),
+      agent_tool_error_count: diagnosticNumber("agent_tool_error_count"),
       requested_agent_ids: run?.output?.requested_agent_ids ?? [],
       agent_calls: run?.output?.agent_calls ?? [],
       milestones: run?.output?.milestones ?? null,
     },
     attribution: {
+      runtime: {
+        runtime_target: run?.runtime?.runtime_target ?? null,
+        agent: run?.runtime?.agent ?? null,
+        agent_version: run?.runtime?.agent_version ?? null,
+        model_requested: run?.runtime?.model_requested ?? run?.runtime?.model ?? null,
+        model_reported: run?.runtime?.model_reported ?? null,
+        model_evidence_mode: run?.runtime?.model_evidence_mode ?? null,
+        effort_requested: run?.runtime?.effort_requested
+          ?? run?.runtime?.effort
+          ?? run?.runtime?.reasoning
+          ?? null,
+        auth_mode: run?.runtime?.auth_mode ?? null,
+        provider_route: run?.runtime?.provider_route ?? null,
+        usage_attribution: run?.output?.usage_attribution ?? null,
+      },
       source_commit: manifest?.skill?.source_commit ?? null,
       source_attestation: manifest?.skill?.source_attestation ?? null,
       agent_bundle_sha256: manifest?.agents?.sha256 ?? null,
@@ -157,7 +183,13 @@ async function main() {
   const manifest = readJson(manifestPath);
   const run = readJson(runPath);
   const eventsPath = join(benchmarkDir, "events.jsonl");
-  if (existsSync(eventsPath)) {
+  if (
+    existsSync(eventsPath)
+    && (
+      run?.runtime?.runtime_target === "claude-code"
+      || run?.output?.diagnostic_availability === undefined
+    )
+  ) {
     const events = readFileSync(eventsPath, "utf8").split("\n").filter(Boolean).flatMap((line) => {
       try { return [JSON.parse(line)]; } catch { return []; }
     });

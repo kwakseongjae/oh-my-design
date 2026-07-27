@@ -172,12 +172,11 @@ leaderboard row and are not mixed with fixed-model trials.
 | Patch | Bounded outcome |
 |---|---|
 | `1.9.39` | Fake Claude/Codex no-fallback dispatch and common provenance |
-| `1.9.40` | Fresh live Claude/Codex attribution smoke; no quality comparison |
-| `1.9.41` | Fake Cursor stream contract, runtime dispatch, and failure retention |
-| `1.9.42` | Live no-write attribution for Grok 4.5 and Composer 2.5 |
-| `1.9.43` | Internal Cursor fixed-runtime two-model Model Track pilot |
-| `1.9.44` | Cursor OmD skill-channel modernization and deterministic doctor tests |
-| `1.9.45` | Fixed-model no-skill/raw DESIGN.md/OmD Skill Lift pilot |
+| `1.9.40` | Fake Cursor stream contract, runtime dispatch, and failure retention |
+| `1.9.41` | Live no-write attribution for Grok 4.5 and Composer 2.5 |
+| `1.9.42` | Internal Cursor fixed-runtime two-model Model Track pilot |
+| `1.9.43` | Cursor OmD skill-channel modernization and deterministic doctor tests |
+| `1.9.44` | Fixed-model no-skill/raw DESIGN.md/OmD Skill Lift pilot |
 | later | Eight-system attribution, runtime-labelled comparison, then the repeated transfer matrix |
 
 Every patch is preregistered separately. Authentication, quota, missing model,

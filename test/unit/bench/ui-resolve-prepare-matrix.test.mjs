@@ -31,6 +31,18 @@ describe("UI-Resolve run matrix preparation", () => {
     expect(validateRunMatrixPlan(plan()).cells).toHaveLength(1);
   });
 
+  it("accepts schema 0.2 only with suite, product, and purpose provenance", () => {
+    const current = plan({
+      schema_version: "0.2",
+      suite_version: "ui-resolve-v0.1",
+      product_version: "1.9.39",
+      execution_purpose: "runtime-contract-calibration",
+    });
+    expect(validateRunMatrixPlan(current).product_version).toBe("1.9.39");
+    delete current.execution_purpose;
+    expect(() => validateRunMatrixPlan(current)).toThrow("execution_purpose");
+  });
+
   it("rejects duplicate task/trial/system cells", () => {
     const value = plan();
     value.cells.push({ ...value.cells[0], id: "pricing-t1-portable-copy" });

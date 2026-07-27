@@ -9,7 +9,16 @@ const VALID_RUNTIMES = new Set(["codex", "claude-code"]);
 const VALID_EFFORTS = new Set(["low", "medium", "high", "xhigh"]);
 
 export function validateRunMatrixPlan(plan) {
-  if (plan?.schema_version !== "0.1") throw new Error("matrix schema_version must be 0.1");
+  if (!["0.1", "0.2"].includes(plan?.schema_version)) {
+    throw new Error("matrix schema_version must be 0.1 or 0.2");
+  }
+  if (plan.schema_version === "0.2") {
+    for (const field of ["suite_version", "product_version", "execution_purpose"]) {
+      if (typeof plan[field] !== "string" || !plan[field]) {
+        throw new Error(`matrix ${field} is required for schema 0.2`);
+      }
+    }
+  }
   if (typeof plan.experiment_id !== "string" || !plan.experiment_id) {
     throw new Error("matrix experiment_id is required");
   }
@@ -74,6 +83,9 @@ export function validateRunMatrixPlan(plan) {
     if (!Number.isInteger(cell.timeout_seconds) || cell.timeout_seconds < 1) {
       throw new Error(`${label}.timeout_seconds must be a positive integer`);
     }
+    if (cell.allow_dirty_source !== undefined && typeof cell.allow_dirty_source !== "boolean") {
+      throw new Error(`${label}.allow_dirty_source must be boolean`);
+    }
     const pairKey = `${cell.task_id}\0${cell.trial_index}\0${cell.system_id}`;
     if (pairKeys.has(pairKey)) throw new Error(`duplicate task/trial/system cell: ${pairKey.replaceAll("\0", "/")}`);
     pairKeys.add(pairKey);
@@ -87,6 +99,7 @@ export function prepareArgsForCell(cell, workspace) {
     "--variant", cell.variant_id,
     "--runtime", cell.runtime,
     "--out", workspace,
+    ...(cell.allow_dirty_source === true ? ["--allow-dirty-source"] : []),
   ];
 }
 
@@ -97,8 +110,11 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
   mkdirSync(root, { recursive: true });
 
   const state = {
-    schema_version: "0.1",
+    schema_version: plan.schema_version,
     experiment_id: plan.experiment_id,
+    suite_version: plan.suite_version ?? null,
+    product_version: plan.product_version ?? null,
+    execution_purpose: plan.execution_purpose ?? null,
     status: "preparing",
     output_root: root,
     scheduled_cells: plan.cells.length,

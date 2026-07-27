@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-07-27 (Codex) · 1.9.39 provider-neutral calibration complete
+- schema 0.2 runtime registry가 Claude/Codex native flag와 common provenance를 fail-closed로 강제한다.
+- fake 2-cell 28/28, syntax, TypeScript, build green; 첫 실패 뒤 later cells는 `not-started`로 보존된다.
+- full root 222 pass/1 skip; 외부 vendor checkout Git metadata 부재 2건만 환경 실패다.
+- Grok review는 private repo 파일의 Cursor 전송에 대한 구체적 승인 전까지 미실행이다.
+- 다음은 1.9.40 fake Cursor adapter → Grok/Composer attribution이다.
+
 ## 2026-07-27 (Codex) · final model universe corrected
 - Cursor fixed-runtime pilot은 Grok4.5/Composer2.5만 사용하고 Codex5.3은 제외했다.
 - 최종 대상은 Luna/Terra/Sol, Opus5/Fable5/Sonnet5, Composer2.5/Grok4.5다.

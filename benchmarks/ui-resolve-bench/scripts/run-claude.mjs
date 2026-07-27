@@ -36,7 +36,15 @@ const manifest = readJson(manifestPath);
 if (manifest.runtime_target !== "claude-code") {
   throw new Error("workspace was not prepared with --runtime claude-code");
 }
-const readiness = inspectClaudeRunner({ model });
+const claudeBinary = process.env.OMD_BENCH_CLAUDE_BIN ?? "claude";
+const fakeRuntimeCalibration = process.env.OMD_BENCH_FAKE_RUNTIME === "1";
+const readiness = fakeRuntimeCalibration
+  ? {
+      ready: true,
+      version: process.env.OMD_BENCH_FAKE_CLAUDE_VERSION ?? "fake-claude-runtime",
+      auth: { method: "fake-calibration", provider: "fake-calibration" },
+    }
+  : inspectClaudeRunner({ model });
 if (!readiness.ready) throw new Error(readiness.next_action ?? "Claude runner preflight failed");
 
 const prompt = readFileSync(join(benchmarkDir, "PROMPT.md"), "utf8");
@@ -77,6 +85,7 @@ let stdout = "";
 let stderr = "";
 let timedOut = false;
 let logsTruncated = false;
+let spawnError = null;
 
 const childEnv = buildClaudeChildEnv({ runTempRoot });
 
@@ -91,8 +100,8 @@ const appendCapped = (current, chunk) => {
   return Buffer.from(next).subarray(0, maxLogBytes).toString("utf8");
 };
 
-const exit = await new Promise((resolveExit, reject) => {
-  const child = spawn("claude", command, {
+const exit = await new Promise((resolveExit) => {
+  const child = spawn(claudeBinary, command, {
     cwd: workspace,
     env: childEnv,
     detached: true,
@@ -106,7 +115,8 @@ const exit = await new Promise((resolveExit, reject) => {
   child.stderr.on("data", (chunk) => { stderr = appendCapped(stderr, chunk); });
   child.on("error", (error) => {
     clearTimeout(timer);
-    reject(error);
+    spawnError = error.message;
+    resolveExit({ code: null, signal: null });
   });
   child.on("close", (code, signal) => {
     clearTimeout(timer);
@@ -153,16 +163,22 @@ const finalProductTree = treeManifest(workspace, {
 const changedProductFiles = diffTreeManifests(initialProductTree, finalProductTree);
 const productChanged = initialProductTree.sha256 !== finalProductTree.sha256;
 const result = {
-  schema_version: "0.1",
+  schema_version: "0.2",
   task_id: manifest.task.id,
   variant_id: manifest.variant.id,
   started_at: startedAt.toISOString(),
   finished_at: new Date().toISOString(),
   runtime: {
+    runtime_target: "claude-code",
     agent: "claude-code",
     agent_version: readiness.version,
-    model,
+    model_requested: model,
     model_reported: initEvent?.model ?? resultEvent?.model ?? null,
+    model_evidence_mode: initEvent?.model || resultEvent?.model ? "provider-observed" : "cli-argument",
+    effort_requested: effort,
+    auth_mode: readiness.auth?.method ?? null,
+    provider_route: readiness.auth?.provider ?? null,
+    model,
     effort,
     sandbox: "claude-native-strict",
     ephemeral: true,
@@ -175,11 +191,32 @@ const result = {
     child_exit_code: exit.code,
     signal: exit.signal,
     timed_out: timedOut,
+    spawn_error: spawnError,
     wall_ms: Math.round(wallMs),
   },
   output: {
     event_count: events.length,
     usage_events: usageEvents,
+    usage_attribution: {
+      available: normalizedUsage.totals !== null && normalizedUsage.models.length > 0,
+      evidence_mode: normalizedUsage.totals !== null ? "provider-event" : "unavailable",
+      reason: normalizedUsage.totals !== null ? null : "provider-stream-contained-no-usage",
+    },
+    diagnostic_availability: {
+      available: true,
+      fields: [
+        "tool_error_count",
+        "recoverable_tool_error_count",
+        "infrastructure_tool_error_count",
+        "optional_verifier_environment_error_count",
+        "recovered_temp_path_error_count",
+        "sandbox_error_count",
+        "sandbox_cwd_error_count",
+        "agent_tool_call_count",
+        "agent_tool_error_count",
+      ],
+      reason: null,
+    },
     total_cost_usd: Number.isFinite(Number(resultEvent?.total_cost_usd))
       ? Number(resultEvent.total_cost_usd)
       : null,
@@ -207,4 +244,4 @@ const result = {
 };
 writeJson(resultPath, result);
 console.log(JSON.stringify(result, null, 2));
-if (result.process.exit_code !== 0 || timedOut || resultEvent?.is_error === true) process.exitCode = 1;
+if (result.process.exit_code !== 0 || timedOut || spawnError || resultEvent?.is_error === true) process.exitCode = 1;

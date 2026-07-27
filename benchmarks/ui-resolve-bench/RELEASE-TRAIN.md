@@ -281,16 +281,21 @@ must prove native argument routing, explicit provenance, no fallback, and
 failure retention before any fresh live runtime smoke. It produces no quality,
 provider, model, speed, token, Cursor, or independent-audit claim.
 
-The next provider lane is intentionally staged. `1.9.40` performs one fresh
-live Claude/Codex attribution smoke after the provider-neutral contract passes.
-`1.9.41` adds a fake Cursor stream adapter and proves dispatch, provenance, and
-failure retention without generation. The Cursor account gateway has already
+The deterministic calibration passed. Schema `0.2` now selects the runner from
+an explicit no-default registry, preserves each native effort flag and common
+runtime provenance, exports the locked suite version, keeps unsupported
+diagnostics as `null`, and retains later cells as explicit `not-started` entries
+after the first stop. This remains fake-runtime evidence only.
+
+The next provider lane is intentionally staged. Per the fixed Cursor pilot
+scope, `1.9.40` adds a fake Cursor stream adapter and proves dispatch,
+provenance, and failure retention without generation. The Cursor account gateway has already
 been connected collision-safely and its model catalog snapshotted without
-producing a score. `1.9.42` runs no-write attribution for exact Grok 4.5 and
-Composer 2.5 IDs. `1.9.43` may then run an Internal two-model pilot with Cursor
-runtime fixed. `1.9.44` separately modernizes the
+producing a score. `1.9.41` runs no-write attribution for exact Grok 4.5 and
+Composer 2.5 IDs. `1.9.42` may then run an Internal two-model pilot with Cursor
+runtime fixed. `1.9.43` separately modernizes the
 product Cursor install channel from its legacy rule-only shim to reviewed Agent
-Skills plus deterministic doctor checks, and `1.9.45` opens a fixed-model Skill
+Skills plus deterministic doctor checks, and `1.9.44` opens a fixed-model Skill
 Lift pilot. Cursor Auto/Router remains a separate routing policy condition and
 never becomes a named-model row. The full contract is in
 [`CURSOR-RUNTIME-PLAN.md`](./CURSOR-RUNTIME-PLAN.md).

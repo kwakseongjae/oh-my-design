@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b64fa5d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-27 · Cursor pilot reduced to Grok/Composer; final eight-system matrix fixed
+- 갱신: 2026-07-27 · 1.9.39 provider-neutral calibration complete; Cursor fake adapter next
 
 ## 지금 (현재 위치)
 
@@ -13,7 +13,7 @@
 - public UX contract/findings, sitemap, metadata, route/data/render tests를 추가했다. Web full 827/827, final focused 6/6, TypeScript, changed-file ESLint, root 217 pass/1 skip, CLI TypeScript/build, public-data check와 diff check가 green이다.
 - network-enabled production build는 1,459 pages로 통과했고 `/benchmarks`는 static이다. Browser Harness에서 1440/390/320/200%-equivalent 720 모두 overflow/clipping 0, console error 0, axe serious/critical 0, 9 anchors visible keyboard focus, Method pointer/Enter scroll를 통과했다.
 - Sol high 디자인 검수는 BLOCK 0·PASS, Terra xhigh 최종 검수는 PASS다. 대비가 부족한 failed-score badge와 전역 smooth-scroll에 흔들리던 Method anchor는 발견 후 수정했고 전체 증거를 최신 리비전에서 다시 수집했다.
-- 사용자 실행 정책: 작업 설계·디자인 판정은 `gpt-5.6-sol` high, 테스트·브라우저 acceptance는 `gpt-5.6-terra` xhigh를 사용한다. Opus는 현재 사용하지 않으며 실제 필요 시 실행 전에 사용자에게 알린다.
+- 사용자 실행 정책: 설계는 Sol high를 유지하되 외부 review/acceptance는 가능한 한 Cursor Grok 4.5를 우선한다. 이전 정합성·결정론 비교가 필요한 경우에만 Terra/Luna를 보조로 쓴다. Opus는 현재 실행하지 않는다.
 - homepage/nav/install activation은 의도적으로 건드리지 않았다. 다음은 1.9.38 activation/reuse를 별도 사전등록해 진행한다.
 - 1.9.38은 Home CLI trust row의 claim-free tertiary evidence link → `/benchmarks` evidence inspection → Method/Sources 이후 installer/docs/Builder handoff로 범위를 고정했다. 주 지표는 version-isolated installer copy 성공이며 Docs/Builder 이동은 탐색 proxy다. `bm_*`와 기존 `act_handoff(surface=benchmark)`를 분리하고, 웹 handoff만 측정하며 install/reuse라고 부르지 않는다.
 - Terra xhigh 사전등록 감사에서 typed `benchmark` surface, canonical `experiment_version` bridge, GA4 4개 dimension+결정론 report, production host/testing-filter/Active internal-traffic exclusion을 구현 gate로 추가한 뒤 PASS했다.
@@ -24,7 +24,10 @@
 - Cursor Agent `2026.07.23-e383d2b`을 `cursor-agent` 전용 경로로 collision-safe 설치하고 사용자 계정 브라우저 로그인을 완료했다. 기존 `agent`는 Grok 0.2.33 그대로다.
 - Cursor fixed-runtime pilot은 `cursor-grok-4.5-high`와 `composer-2.5`만 사용한다. `gpt-5.3-codex-xhigh`는 제외하고 OpenAI 계열은 최종 Codex runtime의 Luna/Terra/Sol로 측정한다.
 - 최종 비교 universe는 Codex Luna/Terra/Sol, Claude Code Opus5/Fable5/Sonnet5, Cursor Composer2.5/Grok4.5다. cross-runtime 표는 pure model leaderboard가 아니라 model×runtime system으로 표시하고 within-runtime cut을 병행한다.
-- Cursor gateway model test가 우선이며 Cursor 제품 통합은 별도다. 1.9.41 fake adapter → 1.9.42 Grok/Composer no-write attribution → 1.9.43 fixed-runtime Model Track → 1.9.44 real Agent Skill channel → 1.9.45 Skill Lift 순이다.
+- 1.9.39 provider-neutral controller 구현·결정론 calibration이 완료됐다. schema 0.2는 Claude/Codex native flag, runtime/model/effort provenance, provider-observed 대 CLI argument 구분, locked suite export, unsupported diagnostics `null`, 첫 실패 뒤 명시적 `not-started` retention을 강제한다.
+- fake 2-cell acceptance 28/28, Node syntax, TypeScript, CLI build가 green이다. 전체 root는 222 pass/1 skip이며 `/tmp` external vendor checkout 두 개의 Git metadata 부재로 기존 preparation 테스트 2개만 환경 실패했다.
+- Grok 4.5 read-only review 호출은 host가 private repository diff의 외부 전송에 대한 구체적 승인을 요구해 실행되지 않았다. 코드나 credentials는 전송하지 않았고, 승인 전까지 Grok/Composer live lane은 대기한다.
+- Cursor 실행 큐는 사용자 범위에 맞춰 1.9.40 fake adapter → 1.9.41 Grok/Composer no-write attribution → 1.9.42 fixed-runtime Model Track → 1.9.43 Agent Skill channel → 1.9.44 Skill Lift로 당겼다.
 - 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
 - stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.
 - 완성 3 pairs는 objective 0 win/3 tie/0 loss이고 Pricing/Onboarding 85/85, Operations 81/85로 양 시스템이 동률이다. paired-only median은 portable 430,140ms·105,380 tokens, harness 500,022ms·152,485 tokens(1.162×/1.447×)지만 incomplete matrix라 reliability/Pareto/promotion 근거가 아니다.
@@ -438,14 +441,14 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fake Claude/Codex runtime만으로 1.9.39 no-fallback dispatch·runtime provenance·failure retention을 구현·교정한다.
-2. Sol high contract review와 Terra xhigh deterministic test를 통과하면 1.9.39를 checkpoint한다.
-3. 통과하면 1.9.40 fresh live runtime attribution smoke를 별도 사전등록한다.
-4. 이후 1.9.41 fake Cursor adapter → 1.9.42 Grok/Composer attribution → 1.9.43 two-model pilot → 1.9.44 Cursor skill channel → 1.9.45 Skill Lift 순으로 진행한다.
+1. 1.9.40 fake Cursor adapter를 사전등록하고 `cursor-agent` stream contract·no fallback·failure retention을 결정론 교정한다.
+2. private repository의 필요한 최소 파일을 Cursor/Grok에 전송하는 구체적 승인을 받으면 Grok 4.5 read-only contract review를 실행한다.
+3. 통과하면 1.9.41에서 Grok 4.5/Composer 2.5 no-write attribution을 각각 별도 fresh cell로 실행한다.
+4. 이후 1.9.42 two-model pilot → 1.9.43 Cursor Agent Skill channel → 1.9.44 Skill Lift 순으로 진행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- 없음.
+- Grok/Composer live 호출은 선택한 repository 파일/프롬프트를 Cursor 서비스에 전송한다. host policy상 구체적 외부 전송 승인이 필요하다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 

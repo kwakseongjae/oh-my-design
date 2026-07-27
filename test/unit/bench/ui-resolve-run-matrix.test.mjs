@@ -10,6 +10,7 @@ import {
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
 
 const cell = {
+  runtime: "claude-code",
   model_id: "claude-opus-4-8",
   effort: "xhigh",
   timeout_seconds: 900,
