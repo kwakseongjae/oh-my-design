@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · Cursor account quota exhaustion ruled out
+- Composer/Grok no-write probes가 모두 exact OK·exit 0·usage를 반환했다.
+- 반복 stop은 account-wide limit가 아니라 sustained serial provider capacity로 진단했다.
+- Cursor model catalog에 Kimi K3 selector는 아직 없어서 현 계정 lane에서는 실행 불가다.
+- 다음은 1.9.53 explicit pacing controller calibration이다.
+
 ## 2026-07-28 (Codex) · 1.9.52 repeated capacity hard-pause
 - 5셀 완료 후 Raw t2가 다시 Cursor `resource_exhausted`로 26.4초에 stop됐다.
 - 완료분은 baseline 53/67, Raw 79, OmD 85/85지만 incomplete라 비교하지 않는다.
