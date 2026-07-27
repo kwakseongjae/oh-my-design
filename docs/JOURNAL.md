@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · Grok-first policy; 1.9.57 locked
+- Cursor catalog에서 Kimi K3와 GLM 5.2 selector가 실제 열린 것을 확인했다.
+- 2× event 동안 Grok 4.5 High를 우선하고 Kimi→GLM은 후순위로 고정했다.
+- onboarding/incident/locale Raw↔OmD 6셀 Preview를 1.9.57로 사전등록했다.
+- 다음은 clean prepare 후 Grok provider execution이다.
+
 ## 2026-07-28 (Codex) · 1.9.56 capacity stop; Composer deferred
 - evaluator preflight는 통과했지만 첫 Composer cell이 26.6초에 `resource_exhausted`였다.
 - usage/final/product change 0, 1 stopped/8 not-started로 freeze했다.
