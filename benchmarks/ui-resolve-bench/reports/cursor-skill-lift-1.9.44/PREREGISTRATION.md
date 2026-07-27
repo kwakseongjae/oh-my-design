@@ -1,13 +1,13 @@
 # Cursor fixed-model Skill Lift — 1.9.44
 
 Status: **LOCKED; fresh 9-cell workspace prepared; exact expanded-payload
-approval required; matrix provider execution not started**.
+approval received; matrix provider execution not started**.
 
 The 1.9.43 automatic-discovery and explicit `/omd-apply` Cursor canaries both
-passed with `Cursor Grok 4.5 High`. The host accepted the user's approval for
-those two four-file canaries only. It blocked the expanded nine-cell payload
-before transmission and requires approval that names the per-cell boundary
-below. No input in Cursor is required from the user.
+passed with `Cursor Grok 4.5 High`. After the host rejected the broader
+interpretation of the canary approval, the user explicitly approved the full
+nine-cell per-workspace file boundary below. No input in Cursor is required
+from the user.
 
 The frozen source commit is
 `e331c451b510e7f3c64ca7219fbbf0c870e76057`; the compute-control implementation
@@ -70,7 +70,7 @@ Provider execution may transmit only each prepared workspace:
 
 It excludes repository history, unrelated source, the 440-reference catalog,
 user documents, credentials, `web/public/llms-full.txt`, and every other OmD
-skill. Exact user approval for this expanded named scope is required before
+skill. Exact user approval for this expanded named scope was received before
 the first matrix provider call.
 
 ## Fail-closed execution

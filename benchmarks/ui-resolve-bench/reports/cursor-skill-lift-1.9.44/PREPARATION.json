@@ -1,7 +1,7 @@
 {
   "schema_version": "0.3",
   "product_version": "1.9.44",
-  "status": "prepared_awaiting_exact_nine_cell_transmission_approval",
+  "status": "prepared_approved_for_execution",
   "output_root": "/tmp/u1944",
   "scheduled_cells": 9,
   "prepared_cells": 9,
@@ -29,9 +29,9 @@
   },
   "provider_execution_started": false,
   "approval": {
-    "received_in_codex_conversation": false,
+    "received_in_codex_conversation": true,
     "scope": "Nine serial Cursor Grok 4.5 High cells using only the locked per-cell file boundary.",
-    "last_review": "The host accepted the user's approval for the two four-file canaries only and blocked the expanded nine-cell payload before transmission.",
+    "last_review": "The user explicitly approved the full nine-cell per-workspace file boundary in the Codex conversation before matrix execution.",
     "retry_policy": "none-primary",
     "stop_policy": "first-failure"
   }

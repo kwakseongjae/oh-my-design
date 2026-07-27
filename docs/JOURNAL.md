@@ -9,7 +9,7 @@
 - automatic discovery와 explicit `/omd-apply` canary가 Grok 4.5 High에서 모두 통과했다.
 - 사용자 승인은 Codex 대화에서 받았으며 Cursor에 별도 입력은 필요 없다.
 - baseline/raw/OmD ×3 fresh 9-cell을 `/tmp/u1944`에 준비하고 exact hash/scope를 고정했다.
-- host가 expanded 9-cell payload를 전송 전에 차단했다; exact 9-cell 승인이 다음 gate다.
+- 사용자가 expanded 9-cell의 exact file boundary 전송을 명시적으로 승인했다.
 
 ## 2026-07-28 (Codex) · cross-runtime compute control implemented
 - SkillsBench/Harness-Bench/OSWorld/SWE-bench/METR와 benchmark audit의 resource 통제를 조사했다.
