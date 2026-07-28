@@ -76,6 +76,10 @@
 - 다음 미충족 gate인 repeated reliability를 위해 1.9.66 Grok Reliability@3 Preview를 LOCKED했다. fresh `/tmp/u1966`, onboarding/incident/locale × Raw/OmD × trial 1–3의 balanced 18셀, max-new-cells 1, 120–125초 pacing, no retry이며 matrix SHA는 `f25a9838…`, control SHA는 `9418f3cc…`다.
 - 1.9.65 frozen output은 새 denominator에 합치지 않는다. candidate/evaluator/product delta는 0이고, 1.9.64 skill만 Raw 대비 candidate다. 18/18, OmD≥Raw 9/9, paired median>0, OmD automated/a11y/all-critical 9/9가 acceptance다.
 - committed clean source `a21a2f3`에서 `/tmp/u1966` 18/18을 fresh prepare했다. source dirty false/publishable true, matrix `f25a9838…`, preparation `aefdeba9…`, 6개 task×variant group의 trial input과 skill/root/subtree hash가 모두 동일하다. primary evaluator dependency와 Cursor/Grok runtime도 통과했다.
+- 1.9.66 Grok Reliability@3 Preview가 18/18 cells·17/17 waits를 quota/capacity/retry 없이 완료했다. Raw task scores는 onboarding 85/85/81, incident 85/85/77, locale 85/85/85이고 OmD는 85/85/85, 81/85/81, 85/85/85다.
+- paired delta는 0/0/+4, -4/0/+4, 0/0/0으로 W/T/L 2/6/1, mean +0.44, median 0이다. OmD automated/all-critical은 9/9, Raw automated 7/9, task Reliability@3는 OmD 2/3 대 Raw 1/3이지만 zero-loss와 positive-median acceptance를 실패해 bounded hypothesis는 REJECTED다.
+- incident OmD의 `card_radius` design-grounding loss가 2/3 반복된 다음 repair cluster다. hidden-focusable defect는 OmD 9셀에서 0이고 4 viewport keyboard visible/in-view/full-in-view가 모두 pass했다.
+- 다음은 provider-free geometry-token closure만 추가하고, fresh incident candidate recovery를 통과한 뒤에만 반복 matrix replacement를 연다. Grok quota가 소진되지 않아 Terra/Luna lane은 열지 않았다. `/tmp/u1966`은 complete frozen root다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.

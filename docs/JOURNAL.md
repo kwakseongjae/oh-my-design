@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.66 Grok Reliability@3 rejected
+- Grok 18/18 cells·17/17 waits를 capacity failure 없이 완료했다.
+- Raw→OmD W/T/L 2/6/1, mean +0.44, median 0; OmD gates 9/9이다.
+- incident OmD card-radius loss가 2/3 반복돼 zero-loss 가설을 실패했다.
+- 다음은 provider-free geometry-token closure와 fresh incident recovery다.
+
 ## 2026-07-28 (Codex) · 1.9.66 Grok Reliability@3 prepared
 - committed `a21a2f3`에서 `/tmp/u1966` 18/18을 clean-prepare했다.
 - matrix `f25a9838…`, preparation `aefdeba9…`, 6개 trial input group이 동일하다.
