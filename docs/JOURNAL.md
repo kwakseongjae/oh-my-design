@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.70 Grok replacement locked
+- no-write Grok probe가 exact OK로 통과해 Luna lane은 열지 않았다.
+- fresh three-task Raw/OmD×3의 18셀을 `/tmp/u1970`에 잠갔다.
+- Reliability와 Skill Lift를 별도 판정하도록 1.9.66의 잘못된 결합 gate를 제거했다.
+- Arena의 pairwise/BT/CI/category 방식을 OmD용 adoption report로 고정했다.
+
 ## 2026-07-28 (Codex) · next queue aligned after 1.9.69
 - 다음은 fresh three-task × Raw/OmD × 3 replacement다.
 - Reliability@3와 Skill Lift를 PROTOCOL대로 별도 판정한다.
