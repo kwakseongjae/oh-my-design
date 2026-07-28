@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.68 Grok geometry recovery passed
+- Grok incident OmD 1/1이 85/85·critical 6/6·Evidence로 완료됐다.
+- console 14px/control 10px exact token과 4 viewport focus 7/7이 pass했다.
+- quota/capacity/retry는 없고 public attribution은 표시명-only로 계속 invalid다.
+- repeated replacement를 fresh preregistration으로 여는 단계가 다음이다.
+
 ## 2026-07-28 (Codex) · 1.9.68 Grok recovery prepared
 - committed clean source `e996c99`에서 `/tmp/u1968` 1/1을 준비했다.
 - matrix `04b34616…`, preparation `ab2a2b2b…`, source dirty false다.
