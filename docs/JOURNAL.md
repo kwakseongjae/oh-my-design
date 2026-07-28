@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.69 Grok incident Reliability@3 locked
+- fresh `/tmp/u1969`에 incident Raw/OmD × 3의 6셀을 잠갔다.
+- OmD≥Raw 3/3·exact radius 3/3·hidden-focusable 0이 acceptance다.
+- one-cell checkpoint와 120–125초 retained pacing을 유지한다.
+- 다음은 matrix hash 확정, clean preparation, serial execution이다.
+
 ## 2026-07-28 (Codex) · 1.9.68 Grok geometry recovery passed
 - Grok incident OmD 1/1이 85/85·critical 6/6·Evidence로 완료됐다.
 - console 14px/control 10px exact token과 4 viewport focus 7/7이 pass했다.

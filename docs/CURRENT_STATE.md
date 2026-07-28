@@ -93,6 +93,8 @@
 - generated radius는 console 14px/control 10px로 DESIGN.md role token과 exact 일치하며 card/control radius가 모두 pass했다. 각 viewport의 focusable은 7/7 visible/in-view/fully-in-view라 hidden-focusable 회귀도 0이다.
 - runtime은 `Cursor Grok 4.5 High` 표시명만 보고해 public validity는 invalid-attribution을 유지한다. bounded Internal candidate recovery는 PASSED하며 fresh repeated replacement matrix만 unlock됐다.
 - Grok quota가 소진되지 않아 Terra/Luna lane은 열지 않았다. `/tmp/u1968`은 complete frozen root이며 resume/replay/manual score edit하지 않는다.
+- 1.9.69 incident-only Grok Reliability@3 replacement를 fresh `/tmp/u1969`에 LOCKED했다. Raw/OmD × trial 1–3의 6셀, balanced order, one-cell checkpoint, 120–125초 pacing, no retry이며 1.9.66/1.9.68 artifact는 denominator 밖이다.
+- acceptance는 OmD≥Raw 3/3, paired median≥0, OmD automated/a11y/all-critical/exact radius/Evidence 3/3, hidden-focusable 0이다. 통과해도 incident cluster 반복성만 증명하고 general/three-task Skill Lift는 주장하지 않는다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
