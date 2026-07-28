@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.68 Grok geometry recovery locked
+- fresh `/tmp/u1968` incident OmD 단일 복구 셀을 잠갔다.
+- 1.9.67 geometry closure 외 task/evaluator/runtime delta는 0이다.
+- 85/85·exact card radius·hidden-focusable 0 전부가 acceptance다.
+- 다음은 clean commit preparation 뒤 Grok one-cell 실행이다.
+
 ## 2026-07-28 (Codex) · 1.9.67 geometry closure accepted
 - exact product-role radius token closure를 canonical `omd-apply`에 추가했다.
 - contract 6/6, install 36/36, Cursor 1/1, lint/build/diff가 green이다.
