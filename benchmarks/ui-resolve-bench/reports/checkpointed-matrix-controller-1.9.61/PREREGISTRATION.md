@@ -1,6 +1,6 @@
 # Checkpointed matrix controller calibration — 1.9.61
 
-Status: **LOCKED; provider-free implementation pending**.
+Status: **LOCKED with pre-implementation pacing amendment; provider-free implementation pending**.
 
 ## Frontier gate and bounded hypothesis
 
@@ -25,8 +25,11 @@ provider call, evaluator, exporter, or inter-cell cooldown.
   untouched cell;
 - execute each required adjacent-cell cooldown exactly once;
 - retain invocation/checkpoint history and completed-cell provenance;
-- treat fixed pacing as a minimum cooldown, record monotonic elapsed time, and
-  fail if the observed wait is shorter than the lock;
+- freeze the pacing acceptance window at 120,000–125,000 ms, record monotonic
+  and wall elapsed time, and fail before the next provider when either clock is
+  outside that window or the clocks disagree by more than 5,000 ms;
+- check a root-local cancellation sentinel after pacing and immediately before
+  provider invocation;
 - reject resume from `stopped-preregistered`, incomplete running cells, drifted
   workspaces, or completed matrices;
 - expose the bound through `--max-new-cells <positive integer>`;
@@ -47,8 +50,9 @@ Pass only when:
 3. the first cell's run, score, record, hashes, and invocation count are
    unchanged after continuation;
 4. a third invocation cannot replay a complete matrix;
-5. stopped, dirty, invalid-bound, short-wait, and incomplete-running fixtures
-   fail closed before another provider call;
+5. stopped, dirty, invalid-bound, short/overshot/disagreeing wait,
+   cancellation, and incomplete-running fixtures fail closed before another
+   provider call;
 6. legacy unbounded and no-pacing paths remain unchanged;
 7. focused tests, Node syntax, TypeScript, build, and diff checks pass.
 

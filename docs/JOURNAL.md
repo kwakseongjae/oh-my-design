@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.61 pacing amendment
+- Sol High audits before implementation found oversleep must fail before the next provider.
+- 120–125s monotonic/wall window, ≤5s clock disagreement, cancel sentinel을 고정했다.
+- shared Cursor provider runs stay globally serial; local QA/preparation only parallelize.
+- task/model/evaluator/score delta는 없다.
+
 ## 2026-07-28 (Codex) · 1.9.61 checkpoint controller locked
 - user resume 뒤 long matrix의 durable one-cell checkpoint를 다음 bounded repair로 고정했다.
 - 완료 cell·평가·export·cooldown 중복 없이 이어가는 것이 acceptance다.

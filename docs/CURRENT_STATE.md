@@ -50,6 +50,7 @@
 - `/tmp/u1960` resume·failed-cell replacement·model substitution은 금지한다. GLM 5.2와 모든 다음 provider 실행은 별도 사용자 요청 전까지 pause한다. 이후 요청은 사용자 지정대로 Sol High Fast를 기본으로 한다.
 - 사용자가 재개와 병렬 테스트를 승인했다. 로컬 준비·결정론 QA는 Sol High 레인으로 병렬화하되, 공유 Cursor account의 provider 셀은 capacity/latency 오염을 막기 위해 모델별 독립 matrix 안에서 직렬 실행한다.
 - 1.9.61은 장시간 controller를 셀 단위 durable checkpoint로 바꾸는 provider-free calibration이다. `max_new_cells=1`이면 valid run+score+record 뒤에만 멈추고, 다음 invocation은 완료 셀·cooldown을 중복하지 않아야 한다. 통과 전에는 새 GLM/Kimi provider matrix를 시작하지 않는다.
+- pre-implementation Sol High 감사로 pacing을 120,000–125,000ms bounded window로 좁혔다. monotonic/wall clock 중 하나라도 범위를 벗어나거나 5초 넘게 불일치하거나 root-local cancellation이 있으면 다음 provider 호출 전에 freeze한다. 이 amendment는 구현·provider 실행 전에 고정됐다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
