@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.65 Grok interactive-closure Preview PREPARED
+- 기준 커밋: `8412b01` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-28 · 1.9.65 Grok interactive-closure Preview COMPLETE/PASSED
 
 ## 지금 (현재 위치)
 
@@ -69,6 +69,10 @@
 - 1.9.65 fresh Grok Preview를 `/tmp/u1965`에 LOCKED했다. schema 0.3/suite v0.2/evaluator 0.5, onboarding Raw → incident OmD → locale Raw → onboarding OmD → incident Raw → locale OmD, 900초/no retry/120–125초 pacing/max-new-cells 1이며 matrix SHA `857b87d5…`, control SHA `9418f3cc…`다.
 - 유일한 candidate delta는 1.9.64 interactive closure다. starter/DESIGN/prompt는 이전 3-task denominator와 동일하고 skill SHA만 `c63ba1e4…`로 바뀐다. Grok capacity/quota stop 시 Terra/Luna는 이 denominator 대체가 아니라 별도 lane으로만 연다.
 - committed clean source `de306fe`에서 `/tmp/u1965` 6/6을 fresh prepare했다. source dirty false/publishable true, matrix `857b87d5…`, preparation `318006af…`, frozen starter/DESIGN/prompt와 new skill/sidecar/root/subtree hash가 모두 일치한다. evaluator preflight와 Cursor/Grok runtime allowlist도 통과했고 provider output은 0이다.
+- 1.9.65 Grok Preview가 6/6 cells·5/5 waits로 retry/fallback/capacity failure 없이 완료됐다. Raw 81/81/85, OmD 85/85/85, paired delta +4/+4/0, median +4, Evidence & Unknown 6/6, task-owned `index.html` diff 6/6이다.
+- 1.9.64 interactive closure의 bounded 가설은 PASSED다. OmD 3셀 모두 automated/all-critical pass이고, 4개 viewport에서 관측 focusable을 exact 순회했으며 hidden/clipped/invisible/unresolved focus target은 0이다. GLM 1.9.62의 permanently clipped skip-link defect는 재발하지 않았다.
+- Cursor가 immutable model ID 대신 `Cursor Grok 4.5 High` 표시명만 제공해 public validity는 계속 invalid-attribution이다. 이 결과는 one-trial Internal Preview이며 Reliability@3, confidence, public leaderboard, cross-model/frontier/일반 efficiency 주장을 허용하지 않는다.
+- Grok quota/capacity가 이번 matrix에서 소진되지 않았으므로 Terra High/Luna High substitute lane은 열지 않았다. `/tmp/u1965`은 complete frozen root이며 resume/replay/manual score edit하지 않는다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.

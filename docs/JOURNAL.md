@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.65 Grok Preview complete/passed
+- Grok 6/6 cells·5/5 waits를 retry/capacity failure 없이 완료했다.
+- Raw 81/81/85, OmD 85/85/85; paired +4/+4/0, Evidence 6/6이다.
+- hidden/clipped focus regression 0으로 interactive closure bounded 가설이 통과했다.
+- Internal one-trial/display-name-only 결과라 public/reliability/frontier 주장은 보류한다.
+
 ## 2026-07-28 (Codex) · 1.9.65 Grok Preview prepared
 - committed `de306fe`에서 `/tmp/u1965` 6/6을 clean-prepare했다.
 - matrix `857b87d5…`, preparation `318006af…`, frozen input/new skill hash가 일치한다.
