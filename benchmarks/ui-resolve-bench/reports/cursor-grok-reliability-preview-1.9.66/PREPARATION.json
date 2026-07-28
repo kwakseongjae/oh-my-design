@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "evaluator_schema": "0.5",
+  "product_version": "1.9.66",
+  "status": "prepared_authorized_awaiting_provider_execution",
+  "output_root": "/tmp/u1966",
+  "scheduled_cells": 18,
+  "prepared_cells": 18,
+  "matrix_sha256": "f25a9838ab62c57edc09295cd3b0ae5eaa576ec93e5bbe52edac0e00891619a8",
+  "preparation_state_sha256": "aefdeba913e4d61ca8e469415ddbd554cfa4f0ab0e97312e419cb0e17ad2db54",
+  "source_commit": "a21a2f3d97364f1b4eb24529e9f3dbddd45adfe8",
+  "representative_omd_cells": [
+    {
+      "id": "onboarding-t1-omd",
+      "manifest_sha256": "dd678e7794bdaef368b7dab17aeff0b228c429429abf820c6fbd13fda97d28e5",
+      "matrix_cell_sha256": "c9a1a9f833849fae45959d1a54cc4faa35740a178a9393ef6c8b36ba241ee0ca",
+      "starter_sha256": "ac9e78666ee78bf270e62e0aff79b8510081bf50e05312d557979ca00aabe652",
+      "design_md_sha256": "f4f241e042004655c960df1edbc28b92ddb287d39af9edfcc65f2ceb7d471e3e",
+      "prompt_sha256": "6acc53665ba591a76cc1a6656b3318f16156582f0f380f679b2d34eedd2a0774"
+    },
+    {
+      "id": "incident-t1-omd",
+      "manifest_sha256": "f4b71f68d9d7df4344fb1abd8f249e077b7dd3364c0f4dae8507da2d90d8c04f",
+      "matrix_cell_sha256": "7132f60bc793d7236e5ec7945e2d37bbaa4f98bfbc85400c555f0c5a5e00ebb4",
+      "starter_sha256": "0ea045c3b297e86dbee9a094da113e2b85f2d109daaf2c25631c2432d545217b",
+      "design_md_sha256": "bbeab902a6a23d0de5ce8c7d804923844f1e87f96a960d32f04f8e52de041b3a",
+      "prompt_sha256": "7b1b16cca519c9abb4f0779919909d68812e2f66cb28eb24e92493610ea50f2d"
+    },
+    {
+      "id": "locale-t1-omd",
+      "manifest_sha256": "192f4b1235dca9387503e61709c6a878c4f432ac9b28892680c0c2471c3c42a8",
+      "matrix_cell_sha256": "cf3cce6b41e29985050e5bd170762ae613d114d56665781c6dd87274915d801c",
+      "starter_sha256": "a4c2916ecd58ff750a8948e687bc3da2a489c8848cb394568118131ed31a6586",
+      "design_md_sha256": "4c1228e1a6a237e6a4b73017ff7b4ad41e48aefec5e5c5553cb94f1721c4050f",
+      "prompt_sha256": "029708a6f6d17aeee2c824db30e4b79bd0e243df2d695a4cc21bcf2ae3b693ff"
+    }
+  ],
+  "trial_input_equality": {
+    "checked_cells": 18,
+    "checked_task_variant_groups": 6,
+    "starter_design_prompt_equal_within_each_group": true,
+    "omd_skill_equal_within_each_group": true
+  },
+  "shared_skill": {
+    "installed_skill_sha256": "c63ba1e47fe1466c03299c475d8e51f0d6ce376b6631893d703bb110296a3e03",
+    "skill_sidecar_sha256": "f0ad5294de3f599bbed124708c61988be9098e20d4723ce3574023144751253e",
+    "cursor_skills_root_tree_sha256": "b57f2364afa2d8532e7a1a28dfa2c6b7dd789e39e125beb35956b1527012a832",
+    "omd_apply_subtree_sha256": "1cc600dc98b42c7c0c19982e82c47d5c1e862f2636c303bd936edc27464d55a9"
+  },
+  "generated_agents_md_sha256": "ae41238bb704a4a7d86647789d0055634f41c7c1fae7cdcf7953006b36e4b848",
+  "source_attestation": {
+    "dirty": false,
+    "publishable": true,
+    "status_entries": 0
+  },
+  "runtime": {
+    "binary": "/Users/kwakseongjae/.local/bin/cursor-agent",
+    "version": "2026.07.23-e383d2b",
+    "binary_sha256": "eed61c5224668c9236334c4c68936a16aecc37374b592f59e31eb50433817831",
+    "selector": "cursor-grok-4.5-high",
+    "expected_display_name": "Cursor Grok 4.5 High"
+  },
+  "controller": {
+    "workspace": "dependency-complete-primary",
+    "checkpoint_mode": "checkpoint-bounded",
+    "max_new_cells": 1,
+    "root_exclusive_lease": true,
+    "global_provider_lock": "/tmp/omd-cursor-live-global.lock",
+    "evaluator_preflight_passed": true,
+    "dependencies": [
+      "playwright-core",
+      "axe-core"
+    ]
+  },
+  "pacing": {
+    "policy": "fixed-inter-cell",
+    "inter_cell_delay_seconds": 120,
+    "accepted_min_ms": 120000,
+    "accepted_max_ms": 125000,
+    "max_clock_disagreement_ms": 5000,
+    "planned_wait_count": 17,
+    "counts_toward_cell_wall_time": false
+  },
+  "provider_execution_started": false,
+  "approval": {
+    "received_for_this_fresh_root": true,
+    "scope": "Eighteen globally serial Cursor Grok 4.5 High cells in /tmp/u1966 using only the locked per-cell file boundary, one durable cell per invocation, and seventeen retained 120-second inter-cell waits.",
+    "authorization_basis": "The user granted standing approval for locked benchmark transmissions and requested Grok-first test resumption with Terra/Luna only after actual Grok exhaustion.",
+    "retry_policy": "none-primary",
+    "stop_policy": "first failure freezes the matrix; no same-root resume after a stop and no failed-cell replacement"
+  }
+}

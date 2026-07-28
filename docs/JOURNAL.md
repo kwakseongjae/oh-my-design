@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.66 Grok Reliability@3 prepared
+- committed `a21a2f3`에서 `/tmp/u1966` 18/18을 clean-prepare했다.
+- matrix `f25a9838…`, preparation `aefdeba9…`, 6개 trial input group이 동일하다.
+- source clean, evaluator dependencies, Cursor/Grok runtime이 통과했다.
+- 다음은 18개의 one-cell checkpoint execution이다.
+
 ## 2026-07-28 (Codex) · 1.9.66 Grok Reliability@3 locked
 - 3 tasks × Raw/OmD × 3 trials인 fresh 18셀 denominator를 잠갔다.
 - matrix `f25a9838…`, control `9418f3cc…`, root `/tmp/u1966`다.

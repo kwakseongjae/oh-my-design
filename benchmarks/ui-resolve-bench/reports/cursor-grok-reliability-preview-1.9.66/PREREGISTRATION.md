@@ -1,6 +1,6 @@
 # Cursor/Grok three-task Reliability@3 Preview — 1.9.66
 
-Status: **LOCKED; fresh preparation pending**.
+Status: **PREPARED; authorized provider execution pending**.
 
 ## Frontier gate and bounded hypothesis
 
