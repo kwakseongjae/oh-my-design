@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.62 GLM Preview locked
+- GLM 5.2 High onboarding/incident/locale Raw↔OmD 6셀을 독립 denominator로 고정했다.
+- one-cell checkpoint, 900s/no retry, 120–125s pacing, global serial만 허용한다.
+- 1.9.60과 같은 input/skill hash를 preparation acceptance로 둔다.
+- 다음은 committed clean source에서 `/tmp/u1962` preparation이다.
+
 ## 2026-07-28 (Codex) · 1.9.61 checkpoint controller accepted
 - atomic lease와 one-cell durable checkpoint를 구현했다.
 - dirty/corrupt prefix·suffix·history·timing은 provider 전에 fail-close한다.
