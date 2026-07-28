@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · next queue aligned after 1.9.69
+- 다음은 fresh three-task × Raw/OmD × 3 replacement다.
+- Reliability@3와 Skill Lift를 PROTOCOL대로 별도 판정한다.
+- Grok capacity stop 전 Terra/Luna는 열지 않고 모델 denominator를 섞지 않는다.
+- Cursor 표시명-only evidence는 계속 Internal로 제한한다.
+
 ## 2026-07-28 (Codex) · 1.9.69 Grok incident Reliability passed
 - 6/6 cells·5/5 cooldown을 quota/capacity/retry 없이 완료했다.
 - Raw와 OmD 모두 85/85/85; OmD exact radius/focus/critical 3/3이다.

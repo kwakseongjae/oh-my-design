@@ -591,10 +591,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. Grok 셀을 `--max-new-cells 1` checkpoint/global serial로 실행하고 invocation마다 lease/artifact/state를 검사한다.
-2. terminal 상태를 동결하고 interactive-closure incident 결과를 별도 확인한다.
-3. Grok이 실제 capacity/quota로 동결될 때만 Terra High와 Luna High를 별도 denominator로 연다.
-4. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
+1. 1.9.70 fresh three-task × Raw/OmD × trial 1–3 replacement를 사전등록한다. `Reliability@3`와 paired `Skill Lift` 결론을 PROTOCOL대로 분리하고, ceiling tie를 failure로 오판하지 않는다.
+2. Grok 셀을 `--max-new-cells 1` checkpoint/global serial로 실행하고 invocation마다 lease/artifact/state를 검사한다.
+3. Grok이 실제 capacity/quota로 동결될 때만 Terra High와 Luna High를 별도 denominator로 연다. Grok root를 다른 모델이 완성하지 않는다.
+4. Cursor 표시명-only 결과는 계속 Internal model×runtime evidence로만 남기며 public model attribution을 주장하지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
