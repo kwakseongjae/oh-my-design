@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.62 GLM Preview COMPLETE / REJECTED
+- 갱신: 2026-07-28 · 1.9.63 Kimi replacement LOCKED
 
 ## 지금 (현재 위치)
 
@@ -57,6 +57,8 @@
 - committed clean source `1b85f95`에서 `/tmp/u1962` 6/6을 prepare했다. source dirty false/publishable true, locked matrix SHA `358b0fa7…`, preparation state SHA `41a84371…`이며 task starter/DESIGN.md/prompt와 OmD skill/sidecar hash가 1.9.60 frozen input과 동일하다. primary evaluator preflight와 Cursor binary/version/allowlist도 통과했다.
 - 1.9.62 GLM Preview가 capacity/DNS failure 없이 6/6 complete됐다. Raw는 83/81/79(median 81), OmD는 85/77/85(median 85), paired delta는 +2/-4/+6(median +2), Evidence 6/6, waits 5/5다. incident OmD가 Raw 대비 -4이고 accessibility/all-critical은 2/3라 zero-loss·a11y 3/3 가설은 REJECTED다.
 - incident loss는 artifact가 새로 추가한 focusable `Skip to operations`를 `.sr-only`로 영구 clipping하고 focus 시 reveal하지 않아 전 viewport keyboard-in-view와 200% zoom geometry를 함께 실패한 실제 candidate defect다. frozen skill은 이미 미요청 control `allowed_delta:0`, 320px/200% clipped-control, focus 시 skip control in-view를 명시했으므로 규칙 부재가 아니라 실행·검증 미준수다.
+- 1.9.63 Kimi K3 High operational replacement를 fresh `/tmp/u1963`에 LOCKED했다. 1.9.60의 workspace/output/state는 전부 denominator 밖이며, 1.9.62와 동일한 onboarding Raw → incident OmD → locale Raw → onboarding OmD → incident Raw → locale OmD 순서·입력·skill·평가기준을 유지한다. matrix SHA는 `7152888e…`, control-contract SHA는 `9418f3cc…`다.
+- 실행은 1.9.61 checkpoint controller의 `--max-new-cells 1`, 120–125초 retained pacing, invocation별 evaluator preflight, root lease + cross-root global serial lock을 사용한다. retry/replacement/model substitution은 없으며 첫 실패에서 root를 동결한다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -546,10 +548,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. Kimi K3 High operational replacement를 `/tmp/u1960`이 아닌 fresh root에 같은 frozen denominator로 사전등록한다.
-2. Kimi terminal 뒤 기존 hidden-focusable 규칙의 실행 compliance와 결정론 검증을 provider-free patch로 강화한다.
-3. model Preview 뒤에는 screenshot-grounded/open-brief task와 evaluator scale로 이동한다.
-4. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
+1. committed 1.9.63 lock source에서 `/tmp/u1963` 6셀을 clean-prepare하고 evaluator/runtime/hash preflight를 동결한다.
+2. Kimi 6셀을 `--max-new-cells 1`로 global serial 실행하고 각 invocation 뒤 checkpoint/lease/artifact를 검사한다.
+3. Kimi terminal 뒤 기존 hidden-focusable 규칙의 실행 compliance와 결정론 검증을 provider-free patch로 강화한다.
+4. model Preview 뒤에는 screenshot-grounded/open-brief task와 evaluator scale로 이동한다.
+5. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

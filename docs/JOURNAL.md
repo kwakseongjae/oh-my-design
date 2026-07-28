@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.63 Kimi replacement locked
+- frozen 3-task Raw↔OmD 6셀을 fresh `/tmp/u1963`에 사전등록했다.
+- 1.9.60 artifact 재사용을 전면 금지하고 matrix `7152888e…`를 고정했다.
+- checkpoint bound 1·120–125초 pacing·global serial·no retry를 유지한다.
+- 다음은 committed source에서 clean preparation 후 6셀 실행이다.
+
 ## 2026-07-28 (Codex) · 1.9.62 GLM Preview complete/rejected
 - 6/6 cells와 5/5 waits를 one-cell checkpoint로 완료했다.
 - Raw 83/81/79, OmD 85/77/85; paired +2/-4/+6, Evidence 6/6이다.
