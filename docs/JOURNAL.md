@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.71 pacing clock repair accepted
+- monotonic duration을 120–125초 authority로 고정하고 wall은 disagreement 검증에 남겼다.
+- 실제 120,002/119,998 경계 회귀가 통과했다.
+- focused 40/40, lint/build/syntax/diff green, provider generation 0이다.
+- 다음은 fresh 1.9.72 full replacement다.
+
 ## 2026-07-28 (Codex) · 1.9.70 frozen; 1.9.71 clock repair locked
 - 1.9.70은 7/18 뒤 monotonic 120,002ms/wall 119,998ms 경계에서 동결됐다.
 - 8번째 provider는 시작되지 않았고 Grok capacity stop도 아니다.

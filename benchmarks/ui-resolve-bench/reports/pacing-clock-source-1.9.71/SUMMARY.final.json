@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.71",
+  "experiment_id": "pacing-clock-source-1.9.71",
+  "status": "accepted_provider_free_calibration",
+  "provider_generation": false,
+  "change": {
+    "authoritative_duration_clock": "monotonic",
+    "monotonic_window_ms": [120000, 125000],
+    "wall_clock_requirements": ["finite", "non-negative", "chronological", "within-5000ms-of-monotonic"],
+    "task_changed": false,
+    "prompt_changed": false,
+    "model_changed": false,
+    "skill_changed": false,
+    "evaluator_changed": false,
+    "score_changed": false,
+    "retry_or_fallback_added": false
+  },
+  "acceptance": {
+    "observed_boundary_monotonic_ms": 120002,
+    "observed_boundary_wall_ms": 119998,
+    "observed_boundary_accepted": true,
+    "early_monotonic_rejected": true,
+    "overshoot_rejected": true,
+    "greater_than_5000ms_disagreement_rejected": true,
+    "operator_stop_rejected_before_provider": true,
+    "focused_controller_tests_passed": 40,
+    "focused_controller_tests_failed": 0,
+    "typescript_lint_passed": true,
+    "cli_build_passed": true,
+    "node_syntax_passed": true,
+    "diff_check_passed": true
+  },
+  "decision": {
+    "bounded_hypothesis_passed": true,
+    "historical_root_resumed": false,
+    "fresh_full_replacement_unlocked": true
+  },
+  "claim_boundary": "Provider-free orchestration calibration only. This result changes no task, evaluator, score, model, skill, or historical artifact and creates no quality, reliability, efficiency, or frontier claim."
+}

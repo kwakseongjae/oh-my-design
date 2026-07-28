@@ -730,8 +730,6 @@ function pacingStopReason(monotonicElapsedMs, wallElapsedMs, requestedDelayMs) {
   if (
     monotonicElapsedMs < requestedDelayMs
     || monotonicElapsedMs > requestedDelayMs + PACING_MAX_OVERSHOOT_MS
-    || wallElapsedMs < requestedDelayMs
-    || wallElapsedMs > requestedDelayMs + PACING_MAX_OVERSHOOT_MS
   ) {
     return `pacing-window-violation:monotonic-${monotonicElapsedMs}:wall-${wallElapsedMs}`;
   }

@@ -954,6 +954,37 @@ describe("provider-neutral prepared matrix contract", () => {
     });
   });
 
+  it("uses monotonic duration when the wall clock steps back inside the disagreement bound", () => {
+    const temp = mkdtempSync(join(tmpdir(), "omd-provider-pacing-wall-step-"));
+    const root = join(temp, "matrix");
+    installFakeRuntimes(temp);
+    prepareRunMatrix(pacedCalibrationPlan(root));
+    executePreparedMatrix(root, {
+      maxNewCells: 1,
+      ...injectedClock(),
+    });
+
+    const clock = injectedClock({
+      wallAdvanceMs: 119998,
+      monotonicAdvanceMs: 120002,
+    });
+    const state = executePreparedMatrix(root, {
+      maxNewCells: 1,
+      waitFn: clock.waitFn,
+      nowFn: clock.nowFn,
+      monotonicNowFn: clock.monotonicNowFn,
+    });
+    expect(state.status).toBe("complete");
+    expect(clock.waits).toEqual([120000]);
+    expect(invocationCount(root, "fake-codex", "codex")).toBe(1);
+    expect(state.pacing_history.at(-1)).toMatchObject({
+      status: "complete",
+      wall_elapsed_ms: 119998,
+      monotonic_elapsed_ms: 120002,
+      clock_disagreement_ms: 4,
+    });
+  });
+
   it("honors a root STOP written during cooldown before the next provider", () => {
     const temp = mkdtempSync(join(tmpdir(), "omd-provider-stop-"));
     const root = join(temp, "matrix");
