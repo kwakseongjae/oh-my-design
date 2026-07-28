@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.66 Grok Reliability@3 locked
+- 3 tasks × Raw/OmD × 3 trials인 fresh 18셀 denominator를 잠갔다.
+- matrix `f25a9838…`, control `9418f3cc…`, root `/tmp/u1966`다.
+- 1.9.65 output은 합치지 않고 one-cell checkpoint·120–125초 pacing을 유지한다.
+- 다음은 clean committed source preparation이다.
+
 ## 2026-07-28 (Codex) · 1.9.65 Grok Preview complete/passed
 - Grok 6/6 cells·5/5 waits를 retry/capacity failure 없이 완료했다.
 - Raw 81/81/85, OmD 85/85/85; paired +4/+4/0, Evidence 6/6이다.
