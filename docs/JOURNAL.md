@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.61 checkpoint controller locked
+- user resume 뒤 long matrix의 durable one-cell checkpoint를 다음 bounded repair로 고정했다.
+- 완료 cell·평가·export·cooldown 중복 없이 이어가는 것이 acceptance다.
+- provider 생성과 task/evaluator/score 변경은 없다.
+- 통과 뒤 GLM fresh Preview → Kimi fresh replacement 순으로 간다.
+
 ## 2026-07-28 (Codex) · 1.9.60 Kimi Preview frozen
 - user pause 뒤 3/6 complete, 4번째 DNS failure, 2 not-started로 동결했다.
 - 완료 3셀은 모두 85/85지만 complete pair가 0이라 Skill Lift 판단은 금지한다.
