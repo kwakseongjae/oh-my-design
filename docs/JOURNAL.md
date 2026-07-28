@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.72 Grok replacement complete
+- Grok으로 18/18 cells·17/17 cooldown을 retry/fallback 없이 완료했고 Luna는 열지 않았다.
+- OmD Internal Reliability@3 3/3, Raw 2/3; paired W/T/L 2/7/0, mean +1.33, median 0이다.
+- incident t3 radius는 양쪽 모두 inner-panel marker 선택 오류로 확인했다.
+- Arena pairwise/BT/CI/category/epoch/Pareto 차용안을 다음 blind preference plane으로 고정했다.
+
 ## 2026-07-28 (Codex) · 1.9.72 fresh replacement prepared
 - committed clean source `24a7d05`에서 `/tmp/u1972` 18/18을 준비했다.
 - matrix `1ea07403…`, preparation `76248024…`, source dirty false다.

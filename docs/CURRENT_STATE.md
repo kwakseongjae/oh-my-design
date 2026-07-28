@@ -3,11 +3,17 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `8412b01` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.70 Grok three-task replacement LOCKED
+- 기준 커밋: `24a7d05` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-28 · 1.9.72 Grok three-task replacement COMPLETE
 
 ## 지금 (현재 위치)
 
+- 1.9.72 Grok three-task replacement가 18/18 cells·17/17 cooldown을 global serial로 완료했다. provider failure/retry/fallback/quota stop은 0이며 Grok 한도가 남아 Luna lane은 열지 않았다.
+- OmD는 Internal critical-gate 9/9·Evidence & Unknown 9/9·task Reliability@3 3/3, Raw는 7/9·2/3이다. exact Raw→OmD delta는 `0,+8,+4,0,0,0,0,0,0`, W/T/L 2/7/0, mean +1.33, median 0으로 bounded positive/no-loss다.
+- Cursor 표시명-only attribution 때문에 exported 18 records는 public `invalid-attribution`이고 public UI-Resolved/leaderboard claim은 금지한다. Reliability 수치는 Internal critical-gate eligibility로만 기록한다.
+- incident t3의 shared radius diagnostic은 두 조건 모두 14px outer console 대신 0px inner panel에 `data-dashboard-card`를 붙인 measurement-target ambiguity다. OmD regression은 아니며 다음은 provider-free geometry target-role audit이다.
+- 1.9.71 clock repair는 invocation 15의 monotonic 120,004.898ms / wall 119,989ms 실제 backward step을 정상 수락해 live 검증됐다.
+- Arena 공식 방법론에서 Functionality/Usability/Fidelity pairwise, Bradley–Terry+95% CI+votes+rank spread, category slice, epoch reset, Pareto view를 차용한다. 결정론 contract plane과 blind Ship Preference plane은 계속 분리한다.
 - 1.9.70은 7/18 provider cells·6 completed cooldown 뒤 8번째 provider 전 pacing fail-close로 동결됐다. monotonic 120,002.078ms는 valid였지만 wall timestamp 119,998ms가 하한보다 2ms 짧아 `pacing-window-violation`이 발생했다.
 - 8번째 `locale-t2-omd` provider는 시작되지 않았고 workspace는 untouched다. Grok quota/capacity failure가 아니므로 Luna lane은 열지 않으며 `/tmp/u1970` resume/re-evaluate/failed-cell replacement를 금지한다.
 - retained partial은 trial 1 Raw→OmD onboarding 85→85, incident 81→85, locale 75→85이고 7/7 Evidence pass다. incomplete이므로 Reliability@3와 Skill Lift는 not estimable이다.
