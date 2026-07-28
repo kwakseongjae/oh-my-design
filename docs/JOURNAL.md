@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.58 Kimi/GLM canary locked
+- `kimi-k3-high`와 `glm-5.2-high`가 live catalog에 있음을 확인했다.
+- empty workspace·fixed exact response·tool/write 0의 2-cell canary를 고정했다.
+- display-name/usage가 통과하기 전 controller allowlist 확장은 금지한다.
+- 다음은 Kimi → GLM 순 no-write provider 실행이다.
+
 ## 2026-07-28 (Codex) · 1.9.57 Grok capacity stop
 - Grok 4셀은 81/85/85/85, wait 4회, Evidence 4/4로 완료했다.
 - onboarding complete pair는 Raw 81 → OmD 85, +4다.

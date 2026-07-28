@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.57 Grok capacity stop after four cells; Kimi/GLM canary next
+- 갱신: 2026-07-28 · 1.9.58 Kimi K3 / GLM 5.2 no-write attribution canary LOCKED
 
 ## 지금 (현재 위치)
 
@@ -35,6 +35,7 @@
 - 1.9.57은 Grok 4.5 High 4셀과 120초 wait 4회를 정상 완료했다: onboarding Raw 81, incident OmD 85, locale Raw 85, onboarding OmD 85. completed 4/4 Evidence & Unknown pass, 85점 3셀은 critical all pass다.
 - 유일한 complete pair는 onboarding Raw→OmD +4다. incident Raw가 24,563ms 뒤 `resource_exhausted`(reconnect 3, usage/final/product change 0)로 stop됐고 locale OmD는 not-started다.
 - incomplete라 multi-task Preview/paired median/reliability/efficiency 결론은 금지한다. Grok을 immediate replacement하지 않고 현재 window의 long-form capacity를 소진한 것으로 분류한다.
+- 1.9.58은 `kimi-k3-high` → `glm-5.2-high` 순으로 empty `/tmp` workspace와 exact `OMD_ATTRIBUTION_OK`만 사용하는 repository-free canary다. exit 0, display name, usage numeric, exact final, tool/write 0 전에는 controller allowlist에 넣지 않는다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -524,10 +525,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. Kimi K3 High와 GLM 5.2 High repository-free no-write attribution canary를 preregister한다.
-2. exact selector/display-name/usage/tool-0을 확인하고 controller allowlist 확장 여부를 판정한다.
-3. Kimi K3가 통과하면 별도 Model Track Preview를 먼저 열고 GLM 5.2는 다음 순서로 둔다.
-4. Grok은 provider capacity window가 바뀐 뒤에만 fresh replacement를 고려한다.
+1. Kimi K3 High no-write canary를 실행·판정한다.
+2. 이어서 GLM 5.2 High no-write canary를 실행·판정한다.
+3. 통과 selector만 controller allowlist fixture로 확장한다.
+4. Kimi K3 별도 Model Track Preview를 먼저 열고 GLM 5.2는 다음 순서로 둔다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
