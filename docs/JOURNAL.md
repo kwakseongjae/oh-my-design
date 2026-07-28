@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.65 Grok Preview prepared
+- committed `de306fe`에서 `/tmp/u1965` 6/6을 clean-prepare했다.
+- matrix `857b87d5…`, preparation `318006af…`, frozen input/new skill hash가 일치한다.
+- source clean, evaluator preflight, Cursor/Grok runtime이 통과했다.
+- 다음은 six one-cell checkpoint invocations다.
+
 ## 2026-07-28 (Codex) · 1.9.65 Grok Preview locked
 - 1.9.64 interactive closure만 candidate delta인 fresh 6셀 Grok lane을 잠갔다.
 - matrix `857b87d5…`, control `9418f3cc…`, root `/tmp/u1965`다.
