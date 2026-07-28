@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.58 Kimi/GLM canaries accepted
+- Kimi K3 High와 GLM 5.2 High 모두 exact final·exit 0·usage를 반환했다.
+- tool 0, empty workspace write 0을 확인했다.
+- display-name attribution이라 Internal only이며 scored matrix는 아직 금지다.
+- 다음은 exact selector/display fixture의 1.9.59 controller adaptation이다.
+
 ## 2026-07-28 (Codex) · 1.9.58 Kimi/GLM canary locked
 - `kimi-k3-high`와 `glm-5.2-high`가 live catalog에 있음을 확인했다.
 - empty workspace·fixed exact response·tool/write 0의 2-cell canary를 고정했다.

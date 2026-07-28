@@ -1,6 +1,6 @@
 # Cursor Kimi K3 / GLM 5.2 attribution canary — 1.9.58
 
-Status: **LOCKED; no-write provider execution pending**.
+Status: **EXECUTED; both no-write canaries accepted**.
 
 ## Purpose
 
