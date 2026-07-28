@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.59 Kimi/GLM adapter locked
+- canary에서 확인된 High selector와 exact display만 allowlist 후보로 고정했다.
+- low/max/fast/K2.7/Auto는 범위 밖이며 계속 거부한다.
+- crossed display fail-close와 Grok/Composer regression을 acceptance로 둔다.
+- 다음은 provider-free controller 구현·검증이다.
+
 ## 2026-07-28 (Codex) · 1.9.58 Kimi/GLM canaries accepted
 - Kimi K3 High와 GLM 5.2 High 모두 exact final·exit 0·usage를 반환했다.
 - tool 0, empty workspace write 0을 확인했다.

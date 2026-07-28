@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.58 Kimi K3 / GLM 5.2 no-write canaries accepted
+- 갱신: 2026-07-28 · 1.9.59 Kimi K3 / GLM 5.2 controller adapter LOCKED
 
 ## 지금 (현재 위치)
 
@@ -39,6 +39,7 @@
 - 1.9.58 Kimi K3 High와 GLM 5.2 High canary가 모두 exit 0/exact final/usage/tool 0/write 0으로 통과했다. reported display는 각각 `Kimi K3 High`, `GLM 5.2 High`다.
 - Cursor init은 process launch directory 대신 account home을 cwd로 보고했지만 tool/write 0이라 no-write acceptance에는 영향이 없다. requested workspace와 runtime-reported cwd는 provenance에서 계속 분리한다.
 - 둘 다 immutable model ID가 아니라 display-name attribution이므로 Internal only다. scored matrix 전 1.9.59 controller allowlist+exact display fixture acceptance가 필요하다.
+- 1.9.59는 provider-free로 `kimi-k3-high`/`glm-5.2-high`와 exact display label만 Cursor allowlist에 추가한다. low/max/fast/K2.7/Auto는 계속 차단하고 Grok/Composer regression과 crossed display fail-close를 검증한다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -528,9 +529,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.59 provider-free Cursor controller adaptation을 preregister한다.
-2. `kimi-k3-high`/`glm-5.2-high`와 exact display fixtures만 allowlist에 추가한다.
-3. wrong display/model fail-close와 existing Grok/Composer regression을 통과시킨다.
+1. 1.9.59 exact allowlist/display fixtures를 구현한다.
+2. wrong/crossed display와 Auto/Fast/Low/Max rejection을 검증한다.
+3. focused tests/lint/build를 통과시킨다.
 4. Kimi K3 별도 Model Track Preview를 먼저 열고 GLM 5.2는 다음 순서로 둔다.
 
 ## 막힘 / 대기 (없으면 "없음")
