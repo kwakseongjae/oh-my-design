@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · provider execution paused
+- 사용자 요청으로 1.9.63 첫 Kimi 셀을 즉시 종료했다.
+- completed/score/usage/final/checkpoint는 0이고 partial product write만 보존된다.
+- `/tmp/u1963`은 lease 포함 forensic frozen root이며 재개하지 않는다.
+- 다음 재개는 `sol medium` provider-free compliance 강화부터다.
+
 ## 2026-07-28 (Codex) · 1.9.63 Kimi replacement prepared
 - committed `cd79433`에서 `/tmp/u1963` 6/6을 fresh prepare했다.
 - matrix `7152888e…`, preparation `e84935d4…`, frozen input/skill hash가 일치한다.

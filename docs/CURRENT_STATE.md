@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.63 Kimi replacement PREPARED
+- 갱신: 2026-07-28 · provider 실행 중단 / sol medium 재개 준비
 
 ## 지금 (현재 위치)
 
@@ -60,6 +60,8 @@
 - 1.9.63 Kimi K3 High operational replacement를 fresh `/tmp/u1963`에 LOCKED했다. 1.9.60의 workspace/output/state는 전부 denominator 밖이며, 1.9.62와 동일한 onboarding Raw → incident OmD → locale Raw → onboarding OmD → incident Raw → locale OmD 순서·입력·skill·평가기준을 유지한다. matrix SHA는 `7152888e…`, control-contract SHA는 `9418f3cc…`다.
 - 실행은 1.9.61 checkpoint controller의 `--max-new-cells 1`, 120–125초 retained pacing, invocation별 evaluator preflight, root lease + cross-root global serial lock을 사용한다. retry/replacement/model substitution은 없으며 첫 실패에서 root를 동결한다.
 - committed clean source `cd79433`에서 `/tmp/u1963` 6/6을 fresh prepare했다. source dirty false/publishable true, matrix SHA `7152888e…`, preparation state SHA `e84935d4…`이며 task starter/DESIGN.md/prompt와 OmD skill/sidecar/root/subtree hash가 frozen denominator와 일치한다. primary evaluator preflight와 Kimi runtime binary/version/allowlist도 통과했다.
+- 사용자의 즉시 중단 요청으로 1.9.63 첫 `onboarding-t1-raw` 실행을 종료했다. 완료 셀·score·usage·final·run record·checkpoint는 0이며, 중단 전 `index.html`, 테스트 helper 2개, 빈 Chrome log가 부분 작성됐다. 남아 있던 Cursor child까지 명시적으로 종료해 provider/controller process와 global lock owner는 없고, execution state의 `running` 및 root lease는 forensic evidence로 보존한다.
+- `/tmp/u1963`은 user-interrupted execution-invalid root로 동결했다. same-root resume, stale lease 삭제, 부분 artifact 평가, interrupted-cell replacement, 1.9.60과의 결합은 금지한다. 이후 작업 레인은 사용자 지정대로 `sol medium`이며, Kimi 재실행이 필요해지면 fresh preregistered root부터 다시 연다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -549,9 +551,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. Kimi 6셀을 `--max-new-cells 1`로 global serial 실행하고 각 invocation 뒤 checkpoint/lease/artifact를 검사한다.
-2. Kimi terminal 뒤 기존 hidden-focusable 규칙의 실행 compliance와 결정론 검증을 provider-free patch로 강화한다.
-3. model Preview 뒤에는 screenshot-grounded/open-brief task와 evaluator scale로 이동한다.
+1. 다음 사용자 재개 요청에서 `sol medium`으로 provider-free hidden-focusable compliance·결정론 검증 강화부터 시작한다.
+2. 그 회귀가 통과하면 screenshot-grounded/open-brief task와 evaluator scale 설계를 이어간다.
+3. Kimi provider 재실행은 별도 필요가 생길 때만 fresh root로 사전등록한다.
 4. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
 
 ## 막힘 / 대기 (없으면 "없음")
@@ -560,6 +562,7 @@
 - Cursor Composer Provider가 1.9.51/1.9.52와 1.9.56에서 `resource_exhausted`를 반환했다. account-wide quota는 short Composer/Grok probes로 배제했지만 long-form Composer lane은 deferred다.
 - Cursor Grok 4.5 High도 1.9.57에서 4개 long-form cell 뒤 `resource_exhausted`로 stop됐다. immediate Grok replacement는 금지한다.
 - Kimi 1.9.60은 3/6 완료 뒤 user pause와 DNS failure로 frozen됐다. complete pair 0, third pacing nonconformance 때문에 Preview 판단과 same-root resume가 금지된다.
+- Kimi 1.9.63은 첫 셀 도중 사용자 즉시 중단으로 completed cell 0인 채 frozen됐다. partial product write와 stale root lease를 그대로 보존하며 `/tmp/u1963` 재개는 금지된다.
 - 1.9.54는 provider capacity가 아니라 detached worktree의 evaluator dependency 부재로 무효화됐고 1.9.55 preflight로 재발 방지가 완료됐다.
 - Kimi K3/GLM 5.2 controller acceptance는 통과했지만 Kimi scored Preview는 incomplete/infrastructure-invalid로 frozen됐고 GLM 실행은 user-paused다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.

@@ -1,6 +1,6 @@
 # Cursor/Kimi K3 multi-task Skill Lift Preview replacement — 1.9.63
 
-Status: **LOCKED; awaiting fresh preparation and provider execution**.
+Status: **EXECUTION INTERRUPTED BY USER; first cell incomplete, root frozen**.
 
 ## Operational replacement and bounded hypothesis
 
