@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.60 Kimi Preview frozen
+- user pause 뒤 3/6 complete, 4번째 DNS failure, 2 not-started로 동결했다.
+- 완료 3셀은 모두 85/85지만 complete pair가 0이라 Skill Lift 판단은 금지한다.
+- third pacing도 120초 lock을 벗어나 execution-control invalid다.
+- GLM/다음 patch는 중단하고, 재개 시 Sol High Fast를 기본으로 한다.
+
 ## 2026-07-28 (Codex) · 1.9.60 Kimi Preview prepared
 - committed `2148a28`에서 `/tmp/u1960` 6/6을 clean-prepare했다.
 - matrix `e64c5070…`, task별 입력과 shared skill hash를 고정했다.

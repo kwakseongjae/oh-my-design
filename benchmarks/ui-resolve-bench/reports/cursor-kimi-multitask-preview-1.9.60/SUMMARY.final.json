@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "evaluator_schema": "0.5",
+  "product_version": "1.9.60",
+  "experiment_id": "cursor-kimi-multitask-preview-1.9.60",
+  "status": "execution_stopped_infrastructure_invalid",
+  "provider_generation": true,
+  "verified_model_attribution": false,
+  "public_comparison_eligible": false,
+  "scheduled_cells": 6,
+  "completed_cells": 3,
+  "stopped_cells": 1,
+  "not_started_cells": 2,
+  "completed_pacing_waits": 3,
+  "conformant_pacing_waits": 2,
+  "public_valid_cells": 0,
+  "runtime": {
+    "agent": "cursor-agent",
+    "version": "2026.07.23-e383d2b",
+    "model_requested": "kimi-k3-high",
+    "model_reported_on_completed_cells": "Kimi K3 High",
+    "model_evidence_mode": "runtime-reported-display-name",
+    "provider_effort_argument": null,
+    "auto_router_used": false
+  },
+  "locked_matrix_sha256": "e64c5070e27ee4e52434fbb48890a948d8d1e47afd39cf918b4655745fbbae18",
+  "completed_results": [
+    {
+      "task": "onboarding-setup-v0.1",
+      "condition": "raw-design-md",
+      "score": 85,
+      "automated_gate_pass": true,
+      "evidence_and_unknown_pass": true,
+      "wall_ms": 496617,
+      "non_cached_tokens": 73509
+    },
+    {
+      "task": "incident-operations-v0.1",
+      "condition": "omd-portable",
+      "score": 85,
+      "automated_gate_pass": true,
+      "evidence_and_unknown_pass": true,
+      "wall_ms": 174601,
+      "non_cached_tokens": 50043
+    },
+    {
+      "task": "locale-cli-handoff-v0.1",
+      "condition": "raw-design-md",
+      "score": 85,
+      "automated_gate_pass": true,
+      "evidence_and_unknown_pass": true,
+      "wall_ms": 357062,
+      "non_cached_tokens": 65986
+    }
+  ],
+  "complete_pairs": [],
+  "stop": {
+    "cell": "onboarding-t1-omd",
+    "reason": "process-failure",
+    "provider_error": "Error: [unavailable] getaddrinfo ENOTFOUND api2.cursor.sh",
+    "wall_ms": 395,
+    "usage_available": false,
+    "final_message_present": false,
+    "product_changed": false,
+    "user_pause_requested": true
+  },
+  "pacing": {
+    "policy": "fixed-inter-cell",
+    "locked_delay_seconds": 120,
+    "first_two_waits_conform": true,
+    "third_wait_elapsed_ms": 659462,
+    "third_wait_conforms": false
+  },
+  "acceptance": {
+    "provider_execution_6_of_6": false,
+    "execution_control_valid": false,
+    "multitask_preview_decision_allowed": false,
+    "paired_median_allowed": false,
+    "reliability_at_3_allowed": false,
+    "efficiency_analysis_allowed": false
+  },
+  "decision": {
+    "bounded_hypothesis_passed": null,
+    "matrix_frozen": true,
+    "resume_same_root_allowed": false,
+    "failed_cell_replacement_allowed": false,
+    "model_substitution_allowed": false,
+    "glm_execution_paused": true,
+    "next_action": "wait for explicit user resume; use Sol High Fast for subsequent requested work"
+  },
+  "claim_boundary": "Incomplete infrastructure-invalid Internal matrix with zero complete pairs. No Skill Lift, reliability, efficiency, confidence, cross-model, or frontier claim follows."
+}
