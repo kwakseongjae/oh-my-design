@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.62 GLM Preview prepared
+- committed `1b85f95`에서 `/tmp/u1962` 6/6 clean-prepare했다.
+- matrix `358b0fa7…`, preparation `41a84371…`, frozen input/skill hash가 일치한다.
+- source clean, primary evaluator preflight, Cursor binary/allowlist가 통과했다.
+- 다음은 GLM 6셀 one-cell checkpoint 실행이다.
+
 ## 2026-07-28 (Codex) · 1.9.62 GLM Preview locked
 - GLM 5.2 High onboarding/incident/locale Raw↔OmD 6셀을 독립 denominator로 고정했다.
 - one-cell checkpoint, 900s/no retry, 120–125s pacing, global serial만 허용한다.

@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "evaluator_schema": "0.5",
+  "product_version": "1.9.62",
+  "status": "prepared_authorized_awaiting_provider_execution",
+  "output_root": "/tmp/u1962",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "matrix_sha256": "358b0fa720ece591e2379e612c1287c0d504e852125c18ade86ef3dc249acd1d",
+  "preparation_state_sha256": "41a8437106b9ab9b1f254f6023849514ab312ae828a8dee39e7479227eeb35c5",
+  "source_commit": "1b85f95ec635ae69ef772b9ab49f3a333e9bd323",
+  "representative_omd_cells": [
+    {
+      "id": "onboarding-t1-omd",
+      "manifest_sha256": "19e2aef5c57b8c9abd45fdfc5d74eedd45156ae74c48b1d71f2780215c818fc2",
+      "matrix_cell_sha256": "92ebf605b87eab806eecf0de905677d5ba144b05d781f85feb38f8e74da8caef",
+      "starter_sha256": "ac9e78666ee78bf270e62e0aff79b8510081bf50e05312d557979ca00aabe652",
+      "design_md_sha256": "f4f241e042004655c960df1edbc28b92ddb287d39af9edfcc65f2ceb7d471e3e",
+      "prompt_sha256": "6acc53665ba591a76cc1a6656b3318f16156582f0f380f679b2d34eedd2a0774"
+    },
+    {
+      "id": "incident-t1-omd",
+      "manifest_sha256": "9ce940f8c2f7f6ada0cfbb698ed5dbdbe019d28cf4e4bc5f4a7b7e7bb40047ca",
+      "matrix_cell_sha256": "9f39ac60071deac2ccc287c742874a70eab71b699f8776dff5112f70a88e7013",
+      "starter_sha256": "0ea045c3b297e86dbee9a094da113e2b85f2d109daaf2c25631c2432d545217b",
+      "design_md_sha256": "bbeab902a6a23d0de5ce8c7d804923844f1e87f96a960d32f04f8e52de041b3a",
+      "prompt_sha256": "7b1b16cca519c9abb4f0779919909d68812e2f66cb28eb24e92493610ea50f2d"
+    },
+    {
+      "id": "locale-t1-omd",
+      "manifest_sha256": "70c65757039fad2a9cfa1b0be5828b744fb93a377f88780c86b132935b7e90fc",
+      "matrix_cell_sha256": "36b7c8c3c77bf9cceb169af855fc534f52dd43c4164d7b03076066010ac5e62c",
+      "starter_sha256": "a4c2916ecd58ff750a8948e687bc3da2a489c8848cb394568118131ed31a6586",
+      "design_md_sha256": "4c1228e1a6a237e6a4b73017ff7b4ad41e48aefec5e5c5553cb94f1721c4050f",
+      "prompt_sha256": "029708a6f6d17aeee2c824db30e4b79bd0e243df2d695a4cc21bcf2ae3b693ff"
+    }
+  ],
+  "shared_skill": {
+    "installed_skill_sha256": "938c6f0a7bb2ce172786274599b56591f01a82ee8e6bd1bf3d54bef03c74e4c7",
+    "skill_sidecar_sha256": "f0ad5294de3f599bbed124708c61988be9098e20d4723ce3574023144751253e",
+    "installed_skill_tree_sha256": "497ff12a9858b2cacc9cf183050c45ee3dc42eae5b183e046edbbc1d0479fe19"
+  },
+  "generated_agents_md_sha256": "ae41238bb704a4a7d86647789d0055634f41c7c1fae7cdcf7953006b36e4b848",
+  "source_attestation": {
+    "dirty": false,
+    "publishable": true,
+    "status_entries": 0
+  },
+  "runtime": {
+    "binary": "/Users/kwakseongjae/.local/bin/cursor-agent",
+    "version": "2026.07.23-e383d2b",
+    "binary_sha256": "eed61c5224668c9236334c4c68936a16aecc37374b592f59e31eb50433817831",
+    "selector": "glm-5.2-high",
+    "expected_display_name": "GLM 5.2 High"
+  },
+  "controller": {
+    "workspace": "dependency-complete-primary",
+    "checkpoint_mode": "checkpoint-bounded",
+    "max_new_cells": 1,
+    "root_exclusive_lease": true,
+    "evaluator_preflight_passed": true,
+    "dependencies": [
+      "playwright-core",
+      "axe-core"
+    ]
+  },
+  "pacing": {
+    "policy": "fixed-inter-cell",
+    "inter_cell_delay_seconds": 120,
+    "accepted_min_ms": 120000,
+    "accepted_max_ms": 125000,
+    "max_clock_disagreement_ms": 5000,
+    "planned_wait_count": 5,
+    "counts_toward_cell_wall_time": false
+  },
+  "provider_execution_started": false,
+  "approval": {
+    "received_for_this_fresh_root": true,
+    "scope": "Six globally serial Cursor GLM 5.2 High cells in /tmp/u1962 using only the locked per-cell file boundary, one durable cell per invocation, and five retained 120-second inter-cell waits.",
+    "authorization_basis": "The user granted standing approval for locked benchmark transmissions and explicitly instructed autonomous continuation.",
+    "retry_policy": "none-primary",
+    "stop_policy": "first failure freezes the matrix; no same-root resume after a stop and no failed-cell replacement"
+  }
+}

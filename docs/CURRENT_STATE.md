@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.62 GLM Preview LOCKED
+- 갱신: 2026-07-28 · 1.9.62 GLM Preview PREPARED
 
 ## 지금 (현재 위치)
 
@@ -54,6 +54,7 @@
 - 1.9.61 checkpointed controller가 ACCEPTED됐다. atomic root lease, immutable `max_new_cells`, completed-prefix 재검증, untouched-suffix attestation, execution/history/timing corruption fail-close, 120–125초 pacing과 STOP sentinel을 구현했다. related 56/56(전용 39/39), lint/build/syntax/diff가 green이며 provider generation은 0이다.
 - 다음 live denominator는 fresh `/tmp/u1962`의 GLM 5.2 High 3-task Raw↔OmD 6셀 Preview다. 모든 호출은 `--max-new-cells 1`, shared Cursor provider global serial, no retry/replacement, Internal display-name attribution으로 실행한다. GLM이 terminal로 동결된 뒤에만 fresh Kimi replacement를 연다.
 - 1.9.62 GLM Preview를 LOCKED했다. schema 0.3/suite v0.2/evaluator 0.5, onboarding Raw → incident OmD → locale Raw → onboarding OmD → incident Raw → locale OmD 순서, 900초/no retry/120초 pacing이며 matrix file SHA는 `358b0fa7…`다. 1.9.60과 같은 starter/DESIGN.md/skill hash만 허용하고 preparation 전 provider generation은 0이다.
+- committed clean source `1b85f95`에서 `/tmp/u1962` 6/6을 prepare했다. source dirty false/publishable true, locked matrix SHA `358b0fa7…`, preparation state SHA `41a84371…`이며 task starter/DESIGN.md/prompt와 OmD skill/sidecar hash가 1.9.60 frozen input과 동일하다. primary evaluator preflight와 Cursor binary/version/allowlist도 통과했다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -543,8 +544,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.62 GLM 5.2 High를 fresh 독립 denominator `/tmp/u1962`에 clean-prepare한다.
-2. 준비 hash/preflight가 통과하면 GLM 6셀을 `--max-new-cells 1`로 global serial 실행하고 terminal 상태를 동결한다.
+1. 1.9.62 GLM 6셀을 `--max-new-cells 1`로 global serial 실행하고 terminal 상태를 동결한다.
+2. 각 invocation 뒤 checkpoint/lease/artifact를 검사하며 첫 실패에서 즉시 freeze한다.
 3. GLM 동결 뒤 Kimi K3 High operational replacement를 `/tmp/u1960`이 아닌 fresh root에서 실행한다.
 4. model Preview 뒤에는 provider 확장 대신 screenshot-grounded/open-brief task와 evaluator scale로 이동한다.
 5. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
