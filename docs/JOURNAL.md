@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.70 frozen; 1.9.71 clock repair locked
+- 1.9.70은 7/18 뒤 monotonic 120,002ms/wall 119,998ms 경계에서 동결됐다.
+- 8번째 provider는 시작되지 않았고 Grok capacity stop도 아니다.
+- partial trial 1은 Raw→OmD 0/+4/+10이나 Reliability/Lift 결론은 금지한다.
+- 다음은 monotonic-authoritative pacing 판정의 provider-free repair다.
+
 ## 2026-07-28 (Codex) · 1.9.70 Grok replacement prepared
 - committed clean source `033255f`에서 `/tmp/u1970` 18/18을 준비했다.
 - matrix `97d5a73c…`, preparation `d3a3736a…`, source dirty false다.
