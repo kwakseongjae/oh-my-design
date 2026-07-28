@@ -14,7 +14,8 @@
 - 1.9.71 provider-free pacing clock-source repair를 LOCKED했다. duration은 monotonic 120–125초를 authority로 유지하고 wall은 finite/non-negative chronology와 기존 5초 clock-disagreement만 검증한다. 실제 120,002/119,998 경계를 regression으로 추가하되 genuine early monotonic/overshoot/disagreement/cancellation은 계속 fail-close한다.
 - 1.9.71 pacing clock-source repair가 provider-free ACCEPTED됐다. monotonic 120–125초만 duration authority로 사용하고 wall은 finite/non-negative chronology와 5초 disagreement를 유지한다. 실제 120,002/119,998 경계가 pass했다.
 - focused controller 40/40, lint/build/Node syntax/diff가 green이고 early monotonic 119,999, 659,462 overshoot, >5초 disagreement, operator STOP은 계속 provider 전에 fail-close한다.
-- `/tmp/u1970`은 동결 상태를 유지한다. 다음은 동일 denominator의 fresh 1.9.72 full replacement preregistration과 clean preparation이다.
+- `/tmp/u1970`은 동결 상태를 유지한다. 동일 denominator의 fresh 1.9.72 full replacement를 `/tmp/u1972`에 LOCKED했다. matrix SHA는 `1ea07403…`이며 유일한 orchestration delta는 accepted 1.9.71 clock-source repair다.
+- 다음은 clean committed source에서 `/tmp/u1972` 18/18 preparation과 hash/equality/preflight 확인이다.
 - 2026-07-28 fresh repository/file/tool-free Grok probe가 exact `OMD_CAPACITY_OK`, exit 0, usage를 반환했다. 실제 quota/capacity stop이 아니므로 1.9.70은 Grok 4.5 High로 진행하고 Luna High lane은 열지 않는다.
 - 1.9.70 fresh three-task replacement를 `/tmp/u1970`에 LOCKED했다. onboarding/incident/locale × Raw/OmD × trials 1–3의 18셀, balanced order, one-cell checkpoint, global serial, 120–125초 pacing, no retry/fallback/substitution이다.
 - Reliability@3와 Skill Lift는 `PROTOCOL.md`대로 별도 판정한다. Reliability는 task별 3회 전부 gate pass를 보고하고, Skill Lift는 exact pair UI-Resolved/objective lift와 W/T/L를 보고한다. ceiling tie나 median 0을 Reliability 실패로 재정의하지 않는다.

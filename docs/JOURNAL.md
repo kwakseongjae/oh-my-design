@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.72 fresh replacement locked
+- `/tmp/u1972`에 동일 18셀 denominator를 새로 잠갔다.
+- matrix `1ea07403…`; 1.9.70 output/state는 전부 제외한다.
+- 유일한 orchestration delta는 accepted 1.9.71 clock-source repair다.
+- 다음은 clean preparation과 provider preflight다.
+
 ## 2026-07-28 (Codex) · 1.9.71 pacing clock repair accepted
 - monotonic duration을 120–125초 authority로 고정하고 wall은 disagreement 검증에 남겼다.
 - 실제 120,002/119,998 경계 회귀가 통과했다.
