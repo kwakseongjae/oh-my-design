@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.59 Kimi K3 / GLM 5.2 controller adapter accepted
+- 갱신: 2026-07-28 · 1.9.60 Kimi K3 multi-task Preview LOCKED
 
 ## 지금 (현재 위치)
 
@@ -42,6 +42,7 @@
 - 1.9.59는 provider-free로 `kimi-k3-high`/`glm-5.2-high`와 exact display label만 Cursor allowlist에 추가한다. low/max/fast/K2.7/Auto는 계속 차단하고 Grok/Composer regression과 crossed display fail-close를 검증한다.
 - 1.9.59가 ACCEPTED됐다. live allowlist는 Grok 4.5 High, Composer 2.5, Kimi K3 High, GLM 5.2 High 정확히 4개이며 crossed Kimi/GLM display는 `reported-model-mismatch`다.
 - Auto/Grok Fast/Kimi Max/GLM Max/low/fast/K2.7은 계속 차단된다. focused 23/23, lint/build/syntax/diff green, provider generation 0이다.
+- 1.9.60 Kimi K3 High scored Preview를 LOCKED했다. onboarding/incident/locale 3-task Raw↔OmD 6셀, order는 Grok 1.9.57과 동일, `/tmp/u1960`, 120초 pacing, no retry이며 Grok incomplete denominator와 독립이다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -531,8 +532,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.60 Kimi K3 High 별도 Model Track Preview를 preregister한다.
-2. Grok incomplete denominator와 섞지 않는 fresh task/condition slice를 prepare한다.
+1. committed clean source에서 `/tmp/u1960` 6셀을 prepare하고 hashes를 고정한다.
+2. dependency-complete primary controller에서 Kimi K3 High 6셀을 실행한다.
 3. Kimi result 또는 capacity stop을 freeze한 뒤 GLM 5.2 High를 다음 순서로 연다.
 4. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
 

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.60 Kimi Preview locked
+- Kimi K3 High의 첫 scored 3-task Raw↔OmD 6셀을 사전등록했다.
+- order/task/control은 Grok Preview와 같지만 denominator는 독립이다.
+- display-name attribution이라 Internal only다.
+- 다음은 clean preparation 후 Kimi provider execution이다.
+
 ## 2026-07-28 (Codex) · 1.9.59 Kimi/GLM adapter accepted
 - canary High selector 두 개만 exact display fixture와 allowlist에 추가했다.
 - crossed display, Auto/Fast/Low/Max/K2.7 rejection을 통과했다.
