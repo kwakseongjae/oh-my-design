@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.63 Kimi replacement prepared
+- committed `cd79433`에서 `/tmp/u1963` 6/6을 fresh prepare했다.
+- matrix `7152888e…`, preparation `e84935d4…`, frozen input/skill hash가 일치한다.
+- source clean, evaluator preflight, Kimi runtime/allowlist가 통과했다.
+- 다음은 Kimi 6셀 one-cell checkpoint 실행이다.
+
 ## 2026-07-28 (Codex) · 1.9.63 Kimi replacement locked
 - frozen 3-task Raw↔OmD 6셀을 fresh `/tmp/u1963`에 사전등록했다.
 - 1.9.60 artifact 재사용을 전면 금지하고 matrix `7152888e…`를 고정했다.
