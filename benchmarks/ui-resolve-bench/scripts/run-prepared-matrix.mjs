@@ -1,15 +1,35 @@
 #!/usr/bin/env node
 import { spawnSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { randomUUID } from "node:crypto";
+import {
+  closeSync,
+  existsSync,
+  openSync,
+  readFileSync,
+  unlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { join, resolve } from "node:path";
+import { performance } from "node:perf_hooks";
+import { isDeepStrictEqual } from "node:util";
 import { fileURLToPath } from "node:url";
-import { parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
+import {
+  parseArgs,
+  readJson,
+  sha256,
+  treeManifest,
+  writeJson,
+} from "./_lib.mjs";
 import {
   runnerSpecForCell,
   runtimeAttributionStopReason,
 } from "./runtime-contract.mjs";
 
 const MAX_BUFFER = 64 * 1024 * 1024;
+const PACING_MAX_OVERSHOOT_MS = 5_000;
+const PACING_MAX_CLOCK_DISAGREEMENT_MS = 5_000;
+const STOP_SENTINEL = "STOP";
+const INVOCATION_LEASE = ".matrix-execution.lock";
 
 export function preregisteredStopReason(cell, manifest, run, { schemaVersion = "0.1" } = {}) {
   if (!run) return "missing-run-result";
@@ -246,26 +266,537 @@ function waitSynchronously(milliseconds) {
   Atomics.wait(signal, 0, 0, milliseconds);
 }
 
-export function executePreparedMatrix(root, {
+function acquireInvocationLease(matrixRoot) {
+  const path = join(matrixRoot, INVOCATION_LEASE);
+  const token = randomUUID();
+  let descriptor;
+  try {
+    descriptor = openSync(path, "wx", 0o600);
+  } catch (error) {
+    if (error?.code === "EEXIST") {
+      throw new Error("matrix invocation lease exists (contention or stale)");
+    }
+    throw error;
+  }
+  const value = {
+    token,
+    pid: process.pid,
+    acquired_at: new Date().toISOString(),
+  };
+  try {
+    writeFileSync(descriptor, `${JSON.stringify(value)}\n`, "utf8");
+  } catch (error) {
+    closeSync(descriptor);
+    try {
+      if (readFileSync(path, "utf8") === `${JSON.stringify(value)}\n`) unlinkSync(path);
+    } catch {
+      // A failed acquisition remains fail-closed when ownership cannot be proven.
+    }
+    throw error;
+  }
+  return { path, descriptor, serialized: `${JSON.stringify(value)}\n` };
+}
+
+function releaseInvocationLease(lease) {
+  closeSync(lease.descriptor);
+  try {
+    if (readFileSync(lease.path, "utf8") === lease.serialized) {
+      unlinkSync(lease.path);
+    }
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+}
+
+function fileSha256(path) {
+  return sha256(readFileSync(path));
+}
+
+function cellArtifactHashes(benchmarkDir) {
+  const resultPath = join(benchmarkDir, "run-result.json");
+  const scorePath = join(benchmarkDir, "score.json");
+  const recordPath = join(benchmarkDir, "run-record.json");
+  return {
+    run_result_sha256: fileSha256(resultPath),
+    score_sha256: fileSha256(scorePath),
+    run_record_sha256: fileSha256(recordPath),
+    benchmark_tree_sha256: treeManifest(benchmarkDir).sha256,
+  };
+}
+
+function completedCellSummary(
+  cell,
+  index,
+  workspace,
+  { completedInInvocation, includeArtifactHashes = true } = {},
+) {
+  const benchmarkDir = join(workspace, ".benchmark");
+  const resultPath = join(benchmarkDir, "run-result.json");
+  const scorePath = join(benchmarkDir, "score.json");
+  const recordPath = join(benchmarkDir, "run-record.json");
+  const run = readJson(resultPath);
+  const score = readJson(scorePath);
+  const record = readJson(recordPath);
+  const events = readEvents(join(benchmarkDir, "events.jsonl"));
+  const summary = {
+    id: cell.id,
+    order: index + 1,
+    status: "complete",
+    workspace,
+    validity: record.validity,
+    ui_resolved: record.ui_resolved,
+    objective_score: record.objective_score,
+    objective_max: record.objective_max,
+    wall_time_ms: record.wall_time_ms,
+    tokens: record.tokens,
+    recoverable_tool_errors: record.runtime_diagnostics?.recoverable_tool_error_count ?? null,
+    agent_tool_calls: record.runtime_diagnostics?.agent_tool_call_count ?? null,
+    evidence_and_unknown_pass: score.critical_gates?.evidence_honesty === true,
+    first_product_write_ms: record.runtime_diagnostics?.milestones?.first_builtin_product_write_ms ?? null,
+    last_advisory_to_first_product_write_ms: lastAdvisoryToFirstProductWriteMs(run, events),
+    first_product_write_transaction: firstProductWriteTransaction(run, events),
+    replacement_verifier_authored: replacementVerifierAuthorship(events).detected,
+    direct_browser_command_count: directBrowserCommandCount(events),
+  };
+  if (includeArtifactHashes) summary.artifact_hashes = cellArtifactHashes(benchmarkDir);
+  if (completedInInvocation !== undefined) {
+    summary.completed_in_invocation = completedInInvocation;
+  }
+  return summary;
+}
+
+function positiveIntegerOrThrow(value, label = "maxNewCells") {
+  if (!Number.isSafeInteger(value) || value < 1) {
+    throw new Error(`${label} must be a positive integer`);
+  }
+  return value;
+}
+
+function untouchedCellPaths(workspace) {
+  const benchmarkDir = join(workspace, ".benchmark");
+  return [
+    join(benchmarkDir, "run-result.json"),
+    join(benchmarkDir, "score.json"),
+    join(benchmarkDir, "run-record.json"),
+    join(benchmarkDir, "events.jsonl"),
+    join(benchmarkDir, "stderr.log"),
+    join(benchmarkDir, "final-message.txt"),
+  ];
+}
+
+function preparedCellAttestation(workspace) {
+  const manifest = readJson(join(workspace, ".benchmark", "manifest.json"));
+  const currentProduct = treeManifest(workspace, {
+    ignore: [...new Set([...(manifest.workspace?.product_ignore ?? [".benchmark"]), ".t"])],
+  });
+  return {
+    benchmark_tree_sha256: treeManifest(join(workspace, ".benchmark")).sha256,
+    product_tree_sha256: currentProduct.sha256,
+  };
+}
+
+function assertUntouchedCell(workspace, expectedAttestation = undefined) {
+  const manifest = readJson(join(workspace, ".benchmark", "manifest.json"));
+  if (untouchedCellPaths(workspace).some((path) => existsSync(path))) {
+    throw new Error(`untouched checkpoint cell has execution artifacts: ${workspace}`);
+  }
+  assertUnstartedWorkspace(workspace, manifest);
+  if (
+    expectedAttestation !== undefined
+    && !isDeepStrictEqual(preparedCellAttestation(workspace), expectedAttestation)
+  ) {
+    throw new Error(`untouched checkpoint cell preparation drifted: ${workspace}`);
+  }
+}
+
+function assertCompletedCell(entry, cell, index, matrixRoot) {
+  const workspace = join(matrixRoot, cell.id);
+  if (
+    entry?.id !== cell.id
+    || entry.order !== index + 1
+    || entry.status !== "complete"
+    || entry.workspace !== workspace
+  ) {
+    throw new Error(`checkpoint completed prefix is invalid at cell ${cell.id}`);
+  }
+  const benchmarkDir = join(workspace, ".benchmark");
+  const resultPath = join(benchmarkDir, "run-result.json");
+  const scorePath = join(benchmarkDir, "score.json");
+  const recordPath = join(benchmarkDir, "run-record.json");
+  if (![resultPath, scorePath, recordPath].every((path) => existsSync(path))) {
+    throw new Error(`checkpoint completed cell is missing run, score, or record: ${cell.id}`);
+  }
+  const hashes = cellArtifactHashes(benchmarkDir);
+  if (entry.artifact_hashes?.benchmark_tree_sha256 !== hashes.benchmark_tree_sha256) {
+    throw new Error(`checkpoint completed cell benchmark tree drifted: ${cell.id}`);
+  }
+  if (!isDeepStrictEqual(entry.artifact_hashes, hashes)) {
+    throw new Error(`checkpoint completed cell artifact drifted: ${cell.id}`);
+  }
+  const derivedSummary = completedCellSummary(cell, index, workspace, {
+    completedInInvocation: entry.completed_in_invocation,
+  });
+  if (!isDeepStrictEqual(entry, derivedSummary)) {
+    throw new Error(`checkpoint completed cell summary drifted: ${cell.id}`);
+  }
+  const manifest = readJson(join(benchmarkDir, "manifest.json"));
+  const run = readJson(resultPath);
+  const currentProduct = treeManifest(workspace, {
+    ignore: [...new Set([...(manifest.workspace?.product_ignore ?? [".benchmark"]), ".t"])],
+  });
+  if (currentProduct.sha256 !== run.workspace?.product_final_sha256) {
+    throw new Error(`checkpoint completed cell product tree drifted: ${cell.id}`);
+  }
+}
+
+function expectedCompletedPacing(plan, completedCells) {
+  const expected = [];
+  for (let index = 1; index < completedCells; index += 1) {
+    if (interCellDelayMs(plan, index) <= 0) continue;
+    expected.push({
+      index,
+      after_cell_id: plan.cells[index - 1].id,
+      before_cell_id: plan.cells[index].id,
+      delay_ms: interCellDelayMs(plan, index),
+    });
+  }
+  return expected;
+}
+
+function validTimestampRange(startedAt, finishedAt) {
+  const started = Date.parse(startedAt);
+  const finished = Date.parse(finishedAt);
+  return Number.isFinite(started) && Number.isFinite(finished) && finished >= started;
+}
+
+function assertInvocationHistory(state) {
+  const invocations = state.invocation_history;
+  let completed = 0;
+  let priorFinishedAt = null;
+  for (const [index, invocation] of invocations.entries()) {
+    const expectedNumber = index + 1;
+    const startedAt = Date.parse(invocation.started_at);
+    if (
+      invocation.invocation !== expectedNumber
+      || invocation.status !== "checkpointed"
+      || !Number.isInteger(invocation.max_new_cells)
+      || invocation.max_new_cells < 1
+      || invocation.max_new_cells !== state.execution_contract?.max_new_cells
+      || invocation.completed_cells_before !== completed
+      || !Number.isInteger(invocation.new_cells_completed)
+      || invocation.new_cells_completed < 1
+      || invocation.new_cells_completed > invocation.max_new_cells
+      || invocation.completed_cells_after !== completed + invocation.new_cells_completed
+      || !validTimestampRange(invocation.started_at, invocation.finished_at)
+      || (priorFinishedAt !== null && startedAt < priorFinishedAt)
+    ) {
+      throw new Error("checkpoint invocation history is invalid");
+    }
+    const invocationCells = state.cells.slice(completed, invocation.completed_cells_after);
+    if (
+      invocationCells.length !== invocation.new_cells_completed
+      || invocationCells.some((cell) => cell.completed_in_invocation !== expectedNumber)
+    ) {
+      throw new Error("checkpoint invocation history is invalid");
+    }
+    completed = invocation.completed_cells_after;
+    priorFinishedAt = Date.parse(invocation.finished_at);
+  }
+  if (completed !== state.completed_cells) {
+    throw new Error("checkpoint invocation history is invalid");
+  }
+}
+
+function assertCheckpointHistory(state, plan) {
+  if (state.checkpoint_history.length !== state.invocation_history.length) {
+    throw new Error("checkpoint history chain is invalid");
+  }
+  for (const [index, checkpoint] of state.checkpoint_history.entries()) {
+    const invocation = state.invocation_history[index];
+    if (
+      checkpoint.checkpoint !== index + 1
+      || checkpoint.invocation !== invocation.invocation
+      || checkpoint.status !== "checkpointed"
+      || checkpoint.completed_cells !== invocation.completed_cells_after
+      || checkpoint.after_cell_id !== plan.cells[checkpoint.completed_cells - 1]?.id
+      || checkpoint.created_at !== invocation.finished_at
+    ) {
+      throw new Error("checkpoint history chain is invalid");
+    }
+  }
+  if (!isDeepStrictEqual(state.checkpoint, state.checkpoint_history.at(-1))) {
+    throw new Error("checkpoint history chain is invalid");
+  }
+}
+
+function assertPreflightHistory(state) {
+  if (state.evaluator_preflight_history.length !== state.invocation_history.length) {
+    throw new Error("checkpoint preflight history is invalid");
+  }
+  for (const [index, preflight] of state.evaluator_preflight_history.entries()) {
+    const invocation = state.invocation_history[index];
+    const preflightStartedAt = Date.parse(preflight.started_at);
+    const preflightFinishedAt = Date.parse(preflight.finished_at);
+    if (
+      preflight.invocation !== index + 1
+      || preflight.status !== "complete"
+      || !validTimestampRange(preflight.started_at, preflight.finished_at)
+      || preflightStartedAt < Date.parse(invocation.started_at)
+      || preflightFinishedAt > Date.parse(invocation.finished_at)
+      || !isDeepStrictEqual(preflight.dependencies, ["playwright-core", "axe-core"])
+    ) {
+      throw new Error("checkpoint preflight history is invalid");
+    }
+  }
+  if (!isDeepStrictEqual(state.evaluator_preflight, state.evaluator_preflight_history.at(-1))) {
+    throw new Error("checkpoint preflight history is invalid");
+  }
+}
+
+function invocationFinishContainsEvidence(state, invocation, finishedAt) {
+  if (!validTimestampRange(invocation.started_at, finishedAt)) return false;
+  const evidenceFinishedAt = [
+    ...state.evaluator_preflight_history
+      .filter((entry) => entry.invocation === invocation.invocation)
+      .map((entry) => entry.finished_at),
+    ...state.pacing_history
+      .filter((entry) => entry.invocation === invocation.invocation)
+      .map((entry) => entry.finished_at),
+  ];
+  return evidenceFinishedAt.every((timestamp) => (
+    Number.isFinite(Date.parse(timestamp))
+    && Date.parse(timestamp) <= Date.parse(finishedAt)
+  ));
+}
+
+function validCompletedPacingEntry(entry, expected, state, plan) {
+  const wallFromTimestamps = Date.parse(entry.finished_at) - Date.parse(entry.started_at);
+  const monotonicFromTimestamps = entry.monotonic_finished_ms - entry.monotonic_started_ms;
+  const expectedDisagreement = Math.abs(entry.monotonic_elapsed_ms - entry.wall_elapsed_ms);
+  const invocation = state.invocation_history[entry.invocation - 1];
+  return (
+    entry.policy === plan.control_contract.pacing.policy
+    && entry.after_cell_id === expected.after_cell_id
+    && entry.before_cell_id === expected.before_cell_id
+    && entry.delay_seconds === expected.delay_ms / 1000
+    && entry.counts_toward_cell_wall_time === false
+    && entry.status === "complete"
+    && entry.invocation === state.cells[expected.index].completed_in_invocation
+    && invocation?.invocation === entry.invocation
+    && validTimestampRange(entry.started_at, entry.finished_at)
+    && Date.parse(entry.started_at) >= Date.parse(invocation.started_at)
+    && Date.parse(entry.finished_at) <= Date.parse(invocation.finished_at)
+    && entry.wall_elapsed_ms === wallFromTimestamps
+    && entry.monotonic_elapsed_ms === monotonicFromTimestamps
+    && entry.clock_disagreement_ms === expectedDisagreement
+    && entry.clock_difference_ms === expectedDisagreement
+    && isDeepStrictEqual(entry.acceptance_window_ms, {
+      min: expected.delay_ms,
+      max: expected.delay_ms + PACING_MAX_OVERSHOOT_MS,
+      max_clock_disagreement: PACING_MAX_CLOCK_DISAGREEMENT_MS,
+    })
+    && pacingStopReason(
+      entry.monotonic_elapsed_ms,
+      entry.wall_elapsed_ms,
+      expected.delay_ms,
+    ) === null
+  );
+}
+
+function assertCheckpointedResume(state, plan, matrixRoot, planSha, preparationSha) {
+  if (state.status !== "checkpointed") {
+    throw new Error(`matrix execution state is not resumable: ${state.status ?? "unknown"}`);
+  }
+  if (
+    state.experiment_id !== plan.experiment_id
+    || state.scheduled_cells !== plan.cells.length
+    || state.locked_plan_sha256 !== planSha
+    || state.preparation_state_sha256 !== preparationSha
+  ) {
+    throw new Error("checkpoint execution metadata drifted");
+  }
+  if (state.current_cell !== null || state.pacing !== null) {
+    throw new Error("checkpoint contains incomplete running work");
+  }
+  if (
+    !Number.isInteger(state.completed_cells)
+    || state.completed_cells < 1
+    || state.completed_cells >= plan.cells.length
+    || !Array.isArray(state.cells)
+    || state.cells.length !== state.completed_cells
+  ) {
+    throw new Error("checkpoint completed prefix is invalid");
+  }
+  if (
+    !Array.isArray(state.invocation_history)
+    || state.invocation_history.length < 1
+    || !Array.isArray(state.checkpoint_history)
+    || state.checkpoint_history.length < 1
+    || !Array.isArray(state.evaluator_preflight_history)
+    || state.evaluator_preflight_history.length < 1
+    || !Array.isArray(state.pacing_history)
+  ) {
+    throw new Error("checkpoint evidence history is incomplete");
+  }
+  const expectedAttestationIds = plan.cells.map((cell) => cell.id).sort();
+  const receivedAttestationIds = Object.keys(state.prepared_cell_attestations ?? {}).sort();
+  const validAttestationValue = (value) => (
+    value
+    && typeof value === "object"
+    && !Array.isArray(value)
+    && isDeepStrictEqual(
+      Object.keys(value).sort(),
+      ["benchmark_tree_sha256", "product_tree_sha256"],
+    )
+    && /^[a-f0-9]{64}$/.test(value.benchmark_tree_sha256)
+    && /^[a-f0-9]{64}$/.test(value.product_tree_sha256)
+  );
+  if (
+    !isDeepStrictEqual(receivedAttestationIds, expectedAttestationIds)
+    || expectedAttestationIds.some(
+      (id) => !validAttestationValue(state.prepared_cell_attestations[id]),
+    )
+  ) {
+    throw new Error("checkpoint preparation attestations are incomplete");
+  }
+
+  for (let index = 0; index < state.completed_cells; index += 1) {
+    assertCompletedCell(state.cells[index], plan.cells[index], index, matrixRoot);
+  }
+  for (let index = state.completed_cells; index < plan.cells.length; index += 1) {
+    const cell = plan.cells[index];
+    assertUntouchedCell(
+      join(matrixRoot, cell.id),
+      state.prepared_cell_attestations[cell.id],
+    );
+  }
+
+  assertInvocationHistory(state);
+  assertCheckpointHistory(state, plan);
+  assertPreflightHistory(state);
+
+  const completedPacing = state.pacing_history;
+  const expectedPacing = expectedCompletedPacing(plan, state.completed_cells);
+  if (
+    completedPacing.length !== expectedPacing.length
+    || expectedPacing.some((expected, index) => (
+      !validCompletedPacingEntry(completedPacing[index], expected, state, plan)
+    ))
+  ) {
+    throw new Error("checkpoint pacing prefix is invalid");
+  }
+  return state.completed_cells;
+}
+
+function stopBeforeProvider(
+  state,
+  plan,
+  index,
+  matrixRoot,
+  reason,
+  executionStatePath,
+  invocation,
+  finishedAt,
+) {
+  state.status = "stopped-preregistered";
+  state.stop_reason = reason;
+  state.current_cell = null;
+  for (let cursor = index; cursor < plan.cells.length; cursor += 1) {
+    const cell = plan.cells[cursor];
+    upsertCell(state, {
+      id: cell.id,
+      order: cursor + 1,
+      status: "not-started",
+      workspace: join(matrixRoot, cell.id),
+      reason,
+    });
+  }
+  if (invocation) {
+    invocation.status = "stopped-preregistered";
+    invocation.stop_reason = reason;
+    invocation.finished_at = finishedAt;
+  }
+  writeJson(executionStatePath, state);
+  throw new Error(reason);
+}
+
+function pacingStopReason(monotonicElapsedMs, wallElapsedMs, requestedDelayMs) {
+  if (!Number.isFinite(monotonicElapsedMs) || monotonicElapsedMs < 0) {
+    return "pacing-monotonic-clock-invalid";
+  }
+  if (!Number.isFinite(wallElapsedMs) || wallElapsedMs < 0) {
+    return "pacing-wall-clock-invalid";
+  }
+  if (
+    monotonicElapsedMs < requestedDelayMs
+    || monotonicElapsedMs > requestedDelayMs + PACING_MAX_OVERSHOOT_MS
+    || wallElapsedMs < requestedDelayMs
+    || wallElapsedMs > requestedDelayMs + PACING_MAX_OVERSHOOT_MS
+  ) {
+    return `pacing-window-violation:monotonic-${monotonicElapsedMs}:wall-${wallElapsedMs}`;
+  }
+  if (Math.abs(monotonicElapsedMs - wallElapsedMs) > PACING_MAX_CLOCK_DISAGREEMENT_MS) {
+    return `pacing-clock-disagreement:monotonic-${monotonicElapsedMs}:wall-${wallElapsedMs}`;
+  }
+  return null;
+}
+
+function executePreparedMatrixWithLease(root, {
   waitFn = waitSynchronously,
   nowFn = () => new Date().toISOString(),
+  monotonicNowFn = () => performance.now(),
+  maxNewCells,
 } = {}) {
   const matrixRoot = resolve(root);
   const lockedPlanPath = join(matrixRoot, "RUN-MATRIX.locked.json");
   const preparationStatePath = join(matrixRoot, "matrix-state.json");
   const executionStatePath = join(matrixRoot, "execution-state.json");
+  const bounded = maxNewCells !== undefined;
+  if (bounded) positiveIntegerOrThrow(maxNewCells);
   if (!existsSync(lockedPlanPath) || !existsSync(preparationStatePath)) {
     throw new Error("matrix root is missing locked plan or preparation state");
   }
   const plan = readJson(lockedPlanPath);
   const preparation = readJson(preparationStatePath);
+  const lockedPlanSha256 = fileSha256(lockedPlanPath);
+  const preparationStateSha256 = fileSha256(preparationStatePath);
   if (preparation.status !== "prepared" || preparation.prepared_cells !== plan.cells.length) {
     throw new Error("matrix preparation is incomplete");
   }
 
   const existing = existsSync(executionStatePath) ? readJson(executionStatePath) : null;
-  if (existing?.status === "stopped-preregistered") {
+  const freshPreparedCellAttestations = {};
+  const existingCheckpointBounded = existing?.execution_contract?.mode === "checkpoint-bounded";
+  if (existingCheckpointBounded && !bounded) {
+    throw new Error("checkpoint-bounded matrix requires maxNewCells on every continuation");
+  }
+  if (
+    existingCheckpointBounded
+    && existing.execution_contract.max_new_cells !== maxNewCells
+  ) {
+    throw new Error(
+      `checkpoint-bounded matrix maxNewCells is immutable: ${existing.execution_contract.max_new_cells}`,
+    );
+  }
+  if (bounded && existing && !existingCheckpointBounded) {
+    throw new Error("cannot change an existing matrix to checkpoint-bounded execution");
+  }
+  if (bounded && existing) {
+    assertCheckpointedResume(
+      existing,
+      plan,
+      matrixRoot,
+      lockedPlanSha256,
+      preparationStateSha256,
+    );
+  } else if (existing?.status === "stopped-preregistered") {
     throw new Error(`matrix is frozen after preregistered stop: ${existing.stop_reason}`);
+  } else if (bounded) {
+    for (const cell of plan.cells) {
+      const workspace = join(matrixRoot, cell.id);
+      assertUntouchedCell(workspace);
+      freshPreparedCellAttestations[cell.id] = preparedCellAttestation(workspace);
+    }
   }
   const state = existing ?? {
     schema_version: plan.schema_version ?? "0.1",
@@ -279,7 +810,55 @@ export function executePreparedMatrix(root, {
     current_cell: null,
     cells: [],
   };
+  if (bounded && !existing) {
+    state.execution_contract = {
+      mode: "checkpoint-bounded",
+      max_new_cells: maxNewCells,
+    };
+    state.locked_plan_sha256 = lockedPlanSha256;
+    state.preparation_state_sha256 = preparationStateSha256;
+    state.invocation_history = [];
+    state.checkpoint_history = [];
+    state.evaluator_preflight_history = [];
+    state.pacing_history = [];
+    state.pacing = null;
+    state.prepared_cell_attestations = freshPreparedCellAttestations;
+  }
+  const startingCompletedCells = bounded ? state.completed_cells : 0;
+  const invocationStartedAt = bounded ? nowFn() : null;
+  const priorInvocation = bounded ? state.invocation_history.at(-1) : null;
+  if (
+    bounded
+    && (
+      !Number.isFinite(Date.parse(invocationStartedAt))
+      || (
+        priorInvocation
+        && Date.parse(invocationStartedAt) < Date.parse(priorInvocation.finished_at)
+      )
+    )
+  ) {
+    throw new Error("checkpoint invocation clock regressed");
+  }
+  const invocation = bounded ? {
+    invocation: state.invocation_history.length + 1,
+    max_new_cells: maxNewCells,
+    started_at: invocationStartedAt,
+    finished_at: null,
+    status: "running",
+    completed_cells_before: startingCompletedCells,
+    completed_cells_after: startingCompletedCells,
+    new_cells_completed: 0,
+  } : null;
+  if (invocation) state.invocation_history.push(invocation);
+  const stopCurrentInvocation = (reason) => {
+    if (!invocation) return;
+    invocation.status = "stopped-preregistered";
+    invocation.stop_reason = reason;
+    invocation.completed_cells_after = state.completed_cells;
+    invocation.finished_at = nowFn();
+  };
   state.status = "running";
+  delete state.stop_reason;
   writeJson(executionStatePath, state);
 
   const repo = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
@@ -299,24 +878,51 @@ export function executePreparedMatrix(root, {
     finished_at: preflightFinishedAt,
     dependencies: ["playwright-core", "axe-core"],
   };
-  if (evaluatorPreflight.status !== 0) {
-    const reason = `evaluator-preflight-failure:${evaluatorPreflight.stderr?.trim() || `exit-${evaluatorPreflight.status}`}`;
+  if (bounded) {
+    state.evaluator_preflight.invocation = invocation.invocation;
+    state.evaluator_preflight_history.push({ ...state.evaluator_preflight });
+  }
+  const preflightClockInvalid = bounded && (
+    !validTimestampRange(preflightStartedAt, preflightFinishedAt)
+    || Date.parse(preflightStartedAt) < Date.parse(invocation.started_at)
+  );
+  if (evaluatorPreflight.status !== 0 || preflightClockInvalid) {
+    const reason = preflightClockInvalid
+      ? "evaluator-preflight-clock-invalid"
+      : `evaluator-preflight-failure:${evaluatorPreflight.stderr?.trim() || `exit-${evaluatorPreflight.status}`}`;
     state.status = "stopped-preregistered";
     state.stop_reason = reason;
     state.current_cell = null;
-    state.cells = plan.cells.map((cell, index) => ({
-      id: cell.id,
-      order: index + 1,
-      status: "not-started",
-      workspace: join(matrixRoot, cell.id),
-      reason,
-    }));
+    if (bounded) {
+      invocation.status = "stopped-preregistered";
+      invocation.stop_reason = reason;
+      invocation.finished_at = nowFn();
+      for (let index = startingCompletedCells; index < plan.cells.length; index += 1) {
+        const cell = plan.cells[index];
+        upsertCell(state, {
+          id: cell.id,
+          order: index + 1,
+          status: "not-started",
+          workspace: join(matrixRoot, cell.id),
+          reason,
+        });
+      }
+    } else {
+      state.cells = plan.cells.map((cell, index) => ({
+        id: cell.id,
+        order: index + 1,
+        status: "not-started",
+        workspace: join(matrixRoot, cell.id),
+        reason,
+      }));
+    }
     writeJson(executionStatePath, state);
     throw new Error(reason);
   }
   writeJson(executionStatePath, state);
 
-  for (const [index, cell] of plan.cells.entries()) {
+  for (let index = startingCompletedCells; index < plan.cells.length; index += 1) {
+    const cell = plan.cells[index];
     const pacingDelayMs = interCellDelayMs(plan, index);
     if (pacingDelayMs > 0) {
       const pacingEntry = {
@@ -329,18 +935,118 @@ export function executePreparedMatrix(root, {
         started_at: nowFn(),
         finished_at: null,
       };
+      const pacingMonotonicStartedAt = bounded ? monotonicNowFn() : null;
+      if (bounded) {
+        pacingEntry.invocation = invocation.invocation;
+        pacingEntry.monotonic_started_ms = pacingMonotonicStartedAt;
+      }
       state.current_cell = null;
       state.pacing = pacingEntry;
       state.pacing_history ??= [];
       state.pacing_history.push(pacingEntry);
       writeJson(executionStatePath, state);
       console.log(JSON.stringify({ event: "pacing-wait-start", ...pacingEntry }));
-      waitFn(pacingDelayMs);
+      if (
+        bounded
+        && (
+          !Number.isFinite(Date.parse(pacingEntry.started_at))
+          || Date.parse(pacingEntry.started_at) < Date.parse(invocation.started_at)
+        )
+      ) {
+        const reason = "pacing-invocation-clock-invalid";
+        pacingEntry.status = "failed";
+        pacingEntry.reason = reason;
+        state.pacing = null;
+        stopBeforeProvider(
+          state,
+          plan,
+          index,
+          matrixRoot,
+          reason,
+          executionStatePath,
+          invocation,
+          nowFn(),
+        );
+      }
+      if (!bounded) {
+        waitFn(pacingDelayMs);
+      } else {
+        try {
+          waitFn(pacingDelayMs);
+        } catch (error) {
+          const reason = `pacing-wait-failure:${error instanceof Error ? error.message : String(error)}`;
+          pacingEntry.status = "failed";
+          pacingEntry.reason = reason;
+          pacingEntry.finished_at = nowFn();
+          state.pacing = null;
+          stopBeforeProvider(
+            state,
+            plan,
+            index,
+            matrixRoot,
+            reason,
+            executionStatePath,
+            invocation,
+            nowFn(),
+          );
+        }
+      }
       pacingEntry.status = "complete";
       pacingEntry.finished_at = nowFn();
+      if (bounded) {
+        pacingEntry.monotonic_finished_ms = monotonicNowFn();
+        pacingEntry.monotonic_elapsed_ms = (
+          pacingEntry.monotonic_finished_ms - pacingEntry.monotonic_started_ms
+        );
+        pacingEntry.wall_elapsed_ms = (
+          Date.parse(pacingEntry.finished_at) - Date.parse(pacingEntry.started_at)
+        );
+        pacingEntry.clock_disagreement_ms = Math.abs(
+          pacingEntry.monotonic_elapsed_ms - pacingEntry.wall_elapsed_ms
+        );
+        // Retained for schema compatibility with accepted 1.9.53 pacing evidence.
+        pacingEntry.clock_difference_ms = pacingEntry.clock_disagreement_ms;
+        const reason = pacingStopReason(
+          pacingEntry.monotonic_elapsed_ms,
+          pacingEntry.wall_elapsed_ms,
+          pacingDelayMs,
+        );
+        if (reason) {
+          pacingEntry.status = "failed";
+          pacingEntry.reason = reason;
+          state.pacing = null;
+          stopBeforeProvider(
+            state,
+            plan,
+            index,
+            matrixRoot,
+            reason,
+            executionStatePath,
+            invocation,
+            nowFn(),
+          );
+        }
+        pacingEntry.acceptance_window_ms = {
+          min: pacingDelayMs,
+          max: pacingDelayMs + PACING_MAX_OVERSHOOT_MS,
+          max_clock_disagreement: PACING_MAX_CLOCK_DISAGREEMENT_MS,
+        };
+      }
       state.pacing = null;
       writeJson(executionStatePath, state);
       console.log(JSON.stringify({ event: "pacing-wait-complete", ...pacingEntry }));
+      if (bounded && existsSync(join(matrixRoot, STOP_SENTINEL))) {
+        stopBeforeProvider(
+          state,
+          plan,
+          index,
+          matrixRoot,
+          "cancellation-sentinel",
+          executionStatePath,
+          invocation,
+          nowFn(),
+        );
+      }
     }
 
     const workspace = join(matrixRoot, cell.id);
@@ -359,11 +1065,24 @@ export function executePreparedMatrix(root, {
     if (!existsSync(resultPath)) {
       assertUnstartedWorkspace(workspace, manifest);
       const runnerSpec = runnerSpecForCell(cell, workspace);
+      if (bounded && existsSync(join(matrixRoot, STOP_SENTINEL))) {
+        stopBeforeProvider(
+          state,
+          plan,
+          index,
+          matrixRoot,
+          "cancellation-sentinel",
+          executionStatePath,
+          invocation,
+          nowFn(),
+        );
+      }
       const executed = runNode(runnerSpec.runner, runnerSpec.args, repo);
       if (!existsSync(resultPath)) {
         const reason = `runner-no-result:${executed.error?.message ?? executed.stderr?.trim() ?? `exit-${executed.status}`}`;
         state.status = "stopped-preregistered";
         state.stop_reason = reason;
+        stopCurrentInvocation(reason);
         upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason });
         freezeRemainingCells(state, plan, index, matrixRoot, reason);
         writeJson(executionStatePath, state);
@@ -379,6 +1098,7 @@ export function executePreparedMatrix(root, {
     if (stopReason) {
       state.status = "stopped-preregistered";
       state.stop_reason = stopReason;
+      stopCurrentInvocation(stopReason);
       upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason: stopReason });
       freezeRemainingCells(state, plan, index, matrixRoot, stopReason);
       writeJson(executionStatePath, state);
@@ -391,6 +1111,7 @@ export function executePreparedMatrix(root, {
         const reason = `evaluator-failure:${evaluated.stderr?.trim() || `exit-${evaluated.status}`}`;
         state.status = "stopped-preregistered";
         state.stop_reason = reason;
+        stopCurrentInvocation(reason);
         upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason });
         freezeRemainingCells(state, plan, index, matrixRoot, reason);
         writeJson(executionStatePath, state);
@@ -411,6 +1132,7 @@ export function executePreparedMatrix(root, {
         const reason = `export-failure:${exported.stderr?.trim() || `exit-${exported.status}`}`;
         state.status = "stopped-preregistered";
         state.stop_reason = reason;
+        stopCurrentInvocation(reason);
         upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason });
         freezeRemainingCells(state, plan, index, matrixRoot, reason);
         writeJson(executionStatePath, state);
@@ -418,54 +1140,113 @@ export function executePreparedMatrix(root, {
       }
     }
 
-    const score = readJson(scorePath);
-    const record = readJson(recordPath);
-    const summary = {
-      id: cell.id,
-      order: index + 1,
-      status: "complete",
+    const summary = completedCellSummary(
+      cell,
+      index,
       workspace,
-      validity: record.validity,
-      ui_resolved: record.ui_resolved,
-      objective_score: record.objective_score,
-      objective_max: record.objective_max,
-      wall_time_ms: record.wall_time_ms,
-      tokens: record.tokens,
-      recoverable_tool_errors: record.runtime_diagnostics?.recoverable_tool_error_count ?? null,
-      agent_tool_calls: record.runtime_diagnostics?.agent_tool_call_count ?? null,
-      evidence_and_unknown_pass: score.critical_gates?.evidence_honesty === true,
-      first_product_write_ms: record.runtime_diagnostics?.milestones?.first_builtin_product_write_ms ?? null,
-      last_advisory_to_first_product_write_ms: lastAdvisoryToFirstProductWriteMs(
-        run,
-        readEvents(eventsPath),
-      ),
-      first_product_write_transaction: firstProductWriteTransaction(run, readEvents(eventsPath)),
-      replacement_verifier_authored: replacementVerifierAuthorship(readEvents(eventsPath)).detected,
-      direct_browser_command_count: directBrowserCommandCount(readEvents(eventsPath)),
-    };
+      bounded
+        ? { completedInInvocation: invocation.invocation }
+        : { includeArtifactHashes: false },
+    );
     upsertCell(state, summary);
     state.completed_cells = state.cells.filter((entry) => entry.status === "complete").length;
     state.current_cell = null;
+    if (bounded) {
+      invocation.new_cells_completed += 1;
+      invocation.completed_cells_after = state.completed_cells;
+    }
     writeJson(executionStatePath, state);
     console.log(JSON.stringify({ event: "cell-complete", ...summary }));
+
+    if (
+      bounded
+      && invocation.new_cells_completed >= maxNewCells
+      && state.completed_cells < plan.cells.length
+    ) {
+      const checkpointedAt = nowFn();
+      if (!invocationFinishContainsEvidence(state, invocation, checkpointedAt)) {
+        const reason = "checkpoint-invocation-clock-invalid";
+        state.status = "stopped-preregistered";
+        state.stop_reason = reason;
+        invocation.status = "stopped-preregistered";
+        invocation.stop_reason = reason;
+        invocation.finished_at = checkpointedAt;
+        freezeRemainingCells(state, plan, index, matrixRoot, reason);
+        writeJson(executionStatePath, state);
+        throw new Error(reason);
+      }
+      const checkpoint = {
+        checkpoint: state.checkpoint_history.length + 1,
+        invocation: invocation.invocation,
+        status: "checkpointed",
+        after_cell_id: cell.id,
+        completed_cells: state.completed_cells,
+        created_at: checkpointedAt,
+      };
+      state.status = "checkpointed";
+      state.checkpoint = checkpoint;
+      state.checkpoint_history.push(checkpoint);
+      invocation.status = "checkpointed";
+      invocation.finished_at = checkpointedAt;
+      writeJson(executionStatePath, state);
+      console.log(JSON.stringify({ event: "matrix-checkpointed", ...checkpoint }));
+      return state;
+    }
   }
 
   state.status = "complete";
   state.current_cell = null;
+  if (bounded) {
+    const finishedAt = nowFn();
+    if (!invocationFinishContainsEvidence(state, invocation, finishedAt)) {
+      const reason = "complete-invocation-clock-invalid";
+      state.status = "stopped-preregistered";
+      state.stop_reason = reason;
+      invocation.status = "stopped-preregistered";
+      invocation.stop_reason = reason;
+      invocation.finished_at = finishedAt;
+      writeJson(executionStatePath, state);
+      throw new Error(reason);
+    }
+    invocation.status = "complete";
+    invocation.completed_cells_after = state.completed_cells;
+    invocation.finished_at = finishedAt;
+  }
   writeJson(executionStatePath, state);
   console.log(JSON.stringify({ event: "matrix-complete", completed_cells: state.completed_cells }));
   return state;
+}
+
+export function executePreparedMatrix(root, options = {}) {
+  const matrixRoot = resolve(root);
+  const lease = acquireInvocationLease(matrixRoot);
+  try {
+    return executePreparedMatrixWithLease(matrixRoot, options);
+  } finally {
+    releaseInvocationLease(lease);
+  }
 }
 
 async function main() {
   const args = parseArgs();
   const root = args.get("root") ? resolve(String(args.get("root"))) : null;
   if (!root) {
-    console.error("usage: run-prepared-matrix.mjs --root <prepared-matrix-root>");
+    console.error(
+      "usage: run-prepared-matrix.mjs --root <prepared-matrix-root> [--max-new-cells <positive-integer>]",
+    );
     process.exitCode = 2;
     return;
   }
-  executePreparedMatrix(root);
+  const maxNewCellsArg = args.get("max-new-cells");
+  let maxNewCells;
+  if (maxNewCellsArg !== undefined) {
+    const raw = String(maxNewCellsArg);
+    if (!/^[1-9]\d*$/.test(raw)) {
+      throw new Error("--max-new-cells must be a positive integer");
+    }
+    maxNewCells = positiveIntegerOrThrow(Number(raw), "--max-new-cells");
+  }
+  executePreparedMatrix(root, maxNewCells === undefined ? undefined : { maxNewCells });
 }
 
 if (resolve(process.argv[1] ?? "") === fileURLToPath(import.meta.url)) {

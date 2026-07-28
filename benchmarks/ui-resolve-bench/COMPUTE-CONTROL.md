@@ -79,6 +79,10 @@ Every schema `0.3` matrix must lock:
 - provider pacing as either `none` or a fixed preregistered inter-cell delay;
   the delay occurs only between completed cells, is retained in matrix state,
   and is excluded from each provider cell's wall-time record;
+- checkpoint-bounded execution, when enabled, as a positive
+  `max_new_cells` value (`maxNewCells` in the programmatic controller and
+  `--max-new-cells` on the CLI); the absent value retains the legacy unbounded
+  execution path;
 - evaluator dependency preflight before the first provider cell; preflight
   failure retains every cell as `not-started`, and its orchestration time is
   excluded from provider cell wall time;
@@ -88,6 +92,56 @@ Every schema `0.3` matrix must lock:
 - infrastructure failure retention followed by matrix freeze and a newly
   preregistered replacement, never an invisible retry;
 - balanced task/order rotation and unchanged evaluator.
+
+### Durable checkpoint and pacing contract
+
+A bounded invocation may become `checkpointed` only after its last new cell has
+a preregistration-valid run result, evaluator score, exported run record, and
+retained artifact hashes, including an attestation of the complete
+`.benchmark` tree. The execution state retains chained invocation, checkpoint,
+evaluator-preflight, and pacing histories. Continuation re-derives every
+completed summary field from the retained run, score, record, and events, then
+requires the history chains, completed product tree, complete benchmark tree,
+and the exact plan-cell-keyed prepared-suffix attestations to match. Invocation
+timestamps must form a non-overlapping chain, and each linked preflight and
+pacing interval must remain inside its invocation interval. A continuation
+skips that prefix and its completed cooldowns; it must not replay the provider,
+evaluator, exporter, or wait. `complete`, `stopped-preregistered`, or incomplete
+`running` state is not resumable.
+
+Prepared attestations are mandatory two-hash records
+(`benchmark_tree_sha256`, `product_tree_sha256`) for every and only the locked
+plan cell IDs. History collections, including an empty first-checkpoint
+`pacing_history`, must retain their declared array shape; null or missing
+evidence never means an empty history.
+
+Every controller call, bounded or legacy-unbounded, owns the root-local
+`.matrix-execution.lock` for its full duration. Acquisition uses exclusive
+atomic creation. Any existing lock—whether active contention or apparently
+stale—fails closed and requires operator resolution; the controller never
+guesses that a lease is abandoned. Finalization removes the lock only when its
+retained owner token still matches, so one invocation cannot release another
+invocation's lease.
+
+The first bounded invocation persists the execution mode and
+`max_new_cells`. Every continuation must supply the same bound. Omitting or
+changing it fails before preflight, pacing, or provider invocation; a
+previously unbounded matrix cannot be converted in place. Every retained
+invocation entry must also carry that exact immutable bound.
+
+For checkpoint-bounded fixed pacing, both monotonic and wall elapsed time must
+be between the preregistered delay and that delay plus 5,000 ms inclusive, and
+the clocks may disagree by at most 5,000 ms. The 1.9.61 controller calibration
+locks a 120,000 ms delay and therefore a 120,000–125,000 ms acceptance window.
+Early return, oversleep, invalid clocks, or excess clock disagreement freezes
+the matrix before the next provider. Retained pacing evidence records
+`clock_disagreement_ms` alongside wall and monotonic elapsed time (and preserves
+the accepted 1.9.53 `clock_difference_ms` compatibility field). The controller
+also checks the
+matrix-root-local `STOP` sentinel immediately after pacing and immediately
+before provider invocation; cancellation freezes the untouched suffix. Pacing
+remains outside provider cell wall time and is executed exactly once per
+completed adjacent-cell boundary.
 
 ## Token and cost accounting
 

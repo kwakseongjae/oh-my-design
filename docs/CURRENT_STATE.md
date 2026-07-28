@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.61 checkpointed controller LOCKED
+- 갱신: 2026-07-28 · 1.9.61 checkpointed controller ACCEPTED
 
 ## 지금 (현재 위치)
 
@@ -51,6 +51,8 @@
 - 사용자가 재개와 병렬 테스트를 승인했다. 로컬 준비·결정론 QA는 Sol High 레인으로 병렬화하되, 공유 Cursor account의 provider 셀은 capacity/latency 오염을 막기 위해 모델별 독립 matrix 안에서 직렬 실행한다.
 - 1.9.61은 장시간 controller를 셀 단위 durable checkpoint로 바꾸는 provider-free calibration이다. `max_new_cells=1`이면 valid run+score+record 뒤에만 멈추고, 다음 invocation은 완료 셀·cooldown을 중복하지 않아야 한다. 통과 전에는 새 GLM/Kimi provider matrix를 시작하지 않는다.
 - pre-implementation Sol High 감사로 pacing을 120,000–125,000ms bounded window로 좁혔다. monotonic/wall clock 중 하나라도 범위를 벗어나거나 5초 넘게 불일치하거나 root-local cancellation이 있으면 다음 provider 호출 전에 freeze한다. 이 amendment는 구현·provider 실행 전에 고정됐다.
+- 1.9.61 checkpointed controller가 ACCEPTED됐다. atomic root lease, immutable `max_new_cells`, completed-prefix 재검증, untouched-suffix attestation, execution/history/timing corruption fail-close, 120–125초 pacing과 STOP sentinel을 구현했다. related 56/56(전용 39/39), lint/build/syntax/diff가 green이며 provider generation은 0이다.
+- 다음 live denominator는 fresh `/tmp/u1962`의 GLM 5.2 High 3-task Raw↔OmD 6셀 Preview다. 모든 호출은 `--max-new-cells 1`, shared Cursor provider global serial, no retry/replacement, Internal display-name attribution으로 실행한다. GLM이 terminal로 동결된 뒤에만 fresh Kimi replacement를 연다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -540,10 +542,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.61 checkpointed controller를 provider-free로 구현·검증한다.
-2. 통과하면 GLM 5.2 High를 fresh 독립 denominator에서 셀 단위 실행한다.
+1. 1.9.62 GLM 5.2 High를 fresh 독립 denominator `/tmp/u1962`에 사전등록·준비한다.
+2. GLM 6셀을 `--max-new-cells 1`로 global serial 실행하고 terminal 상태를 동결한다.
 3. GLM 동결 뒤 Kimi K3 High operational replacement를 `/tmp/u1960`이 아닌 fresh root에서 실행한다.
-4. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
+4. model Preview 뒤에는 provider 확장 대신 screenshot-grounded/open-brief task와 evaluator scale로 이동한다.
+5. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

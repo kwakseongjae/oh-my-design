@@ -1,6 +1,6 @@
 # Checkpointed matrix controller calibration — 1.9.61
 
-Status: **LOCKED with pre-implementation pacing amendment; provider-free implementation pending**.
+Status: **EXECUTED; provider-free checkpoint controller accepted**.
 
 ## Frontier gate and bounded hypothesis
 

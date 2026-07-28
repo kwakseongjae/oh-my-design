@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.61 checkpoint controller accepted
+- atomic lease와 one-cell durable checkpoint를 구현했다.
+- dirty/corrupt prefix·suffix·history·timing은 provider 전에 fail-close한다.
+- related 56/56, lint/build/syntax/diff green; provider generation은 0이다.
+- 다음은 fresh GLM 6-cell Preview를 `/tmp/u1962`에 연다.
+
 ## 2026-07-28 (Codex) · 1.9.61 pacing amendment
 - Sol High audits before implementation found oversleep must fail before the next provider.
 - 120–125s monotonic/wall window, ≤5s clock disagreement, cancel sentinel을 고정했다.
