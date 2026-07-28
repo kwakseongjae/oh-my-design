@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.72 fresh replacement prepared
+- committed clean source `24a7d05`에서 `/tmp/u1972` 18/18을 준비했다.
+- matrix `1ea07403…`, preparation `76248024…`, source dirty false다.
+- 6개 group input과 OmD skill/sidecar equality, evaluator preflight가 통과했다.
+- 다음은 fresh global-serial execution이다.
+
 ## 2026-07-28 (Codex) · 1.9.72 fresh replacement locked
 - `/tmp/u1972`에 동일 18셀 denominator를 새로 잠갔다.
 - matrix `1ea07403…`; 1.9.70 output/state는 전부 제외한다.
