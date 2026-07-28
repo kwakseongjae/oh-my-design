@@ -116,11 +116,23 @@ describe("Cursor Agent fake runtime contract", () => {
     expect(spec.provider_effort_flag).toBeNull();
     expect(spec.args).toContain("--effort");
     expect(spec.args).not.toContain("--reasoning");
-    expect(CURSOR_LIVE_MODEL_ALLOWLIST).toEqual(["cursor-grok-4.5-high", "composer-2.5"]);
+    expect(CURSOR_LIVE_MODEL_ALLOWLIST).toEqual([
+      "cursor-grok-4.5-high",
+      "composer-2.5",
+      "kimi-k3-high",
+      "glm-5.2-high",
+    ]);
     expect(isCursorLiveModelAllowed("gpt-5.3-codex-xhigh")).toBe(false);
     expect(isCursorLiveModelAllowed("auto")).toBe(false);
+    expect(isCursorLiveModelAllowed("kimi-k3-max")).toBe(false);
+    expect(isCursorLiveModelAllowed("glm-5.2-max")).toBe(false);
+    expect(isCursorLiveModelAllowed("cursor-grok-4.5-high-fast")).toBe(false);
     expect(CURSOR_RUNTIME_DISPLAY_LABELS["cursor-grok-4.5-high"]).toBe("Cursor Grok 4.5 High");
     expect(cursorModelEvidenceMode("composer-2.5", "Composer 2.5"))
+      .toBe("runtime-reported-display-name");
+    expect(cursorModelEvidenceMode("kimi-k3-high", "Kimi K3 High"))
+      .toBe("runtime-reported-display-name");
+    expect(cursorModelEvidenceMode("glm-5.2-high", "GLM 5.2 High"))
       .toBe("runtime-reported-display-name");
   });
 
@@ -163,6 +175,17 @@ describe("Cursor Agent fake runtime contract", () => {
       liveRun,
       { schemaVersion: "0.3" },
     )).toBeNull();
+
+    const kimiCell = { ...liveCell, model_id: "kimi-k3-high" };
+    const crossedDisplay = structuredClone(liveRun);
+    crossedDisplay.runtime.model_requested = "kimi-k3-high";
+    crossedDisplay.runtime.model_reported = "GLM 5.2 High";
+    expect(preregisteredStopReason(
+      kimiCell,
+      liveManifest,
+      crossedDisplay,
+      { schemaVersion: "0.3" },
+    )).toBe("reported-model-mismatch");
   });
 
   it("retains exact Cursor runtime, binary, model, and effort provenance", () => {

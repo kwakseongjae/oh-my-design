@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.59 Kimi K3 / GLM 5.2 controller adapter LOCKED
+- 갱신: 2026-07-28 · 1.9.59 Kimi K3 / GLM 5.2 controller adapter accepted
 
 ## 지금 (현재 위치)
 
@@ -40,6 +40,8 @@
 - Cursor init은 process launch directory 대신 account home을 cwd로 보고했지만 tool/write 0이라 no-write acceptance에는 영향이 없다. requested workspace와 runtime-reported cwd는 provenance에서 계속 분리한다.
 - 둘 다 immutable model ID가 아니라 display-name attribution이므로 Internal only다. scored matrix 전 1.9.59 controller allowlist+exact display fixture acceptance가 필요하다.
 - 1.9.59는 provider-free로 `kimi-k3-high`/`glm-5.2-high`와 exact display label만 Cursor allowlist에 추가한다. low/max/fast/K2.7/Auto는 계속 차단하고 Grok/Composer regression과 crossed display fail-close를 검증한다.
+- 1.9.59가 ACCEPTED됐다. live allowlist는 Grok 4.5 High, Composer 2.5, Kimi K3 High, GLM 5.2 High 정확히 4개이며 crossed Kimi/GLM display는 `reported-model-mismatch`다.
+- Auto/Grok Fast/Kimi Max/GLM Max/low/fast/K2.7은 계속 차단된다. focused 23/23, lint/build/syntax/diff green, provider generation 0이다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -529,10 +531,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.59 exact allowlist/display fixtures를 구현한다.
-2. wrong/crossed display와 Auto/Fast/Low/Max rejection을 검증한다.
-3. focused tests/lint/build를 통과시킨다.
-4. Kimi K3 별도 Model Track Preview를 먼저 열고 GLM 5.2는 다음 순서로 둔다.
+1. 1.9.60 Kimi K3 High 별도 Model Track Preview를 preregister한다.
+2. Grok incomplete denominator와 섞지 않는 fresh task/condition slice를 prepare한다.
+3. Kimi result 또는 capacity stop을 freeze한 뒤 GLM 5.2 High를 다음 순서로 연다.
+4. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
@@ -540,7 +542,7 @@
 - Cursor Composer Provider가 1.9.51/1.9.52와 1.9.56에서 `resource_exhausted`를 반환했다. account-wide quota는 short Composer/Grok probes로 배제했지만 long-form Composer lane은 deferred다.
 - Cursor Grok 4.5 High도 1.9.57에서 4개 long-form cell 뒤 `resource_exhausted`로 stop됐다. immediate Grok replacement는 금지한다.
 - 1.9.54는 provider capacity가 아니라 detached worktree의 evaluator dependency 부재로 무효화됐고 1.9.55 preflight로 재발 방지가 완료됐다.
-- Kimi K3/GLM 5.2 attribution canary는 통과했지만 controller live allowlist acceptance가 아직 없어 scored matrix는 대기다.
+- Kimi K3/GLM 5.2 controller acceptance는 통과했으며 Kimi-first scored Preview preregistration만 남았다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 

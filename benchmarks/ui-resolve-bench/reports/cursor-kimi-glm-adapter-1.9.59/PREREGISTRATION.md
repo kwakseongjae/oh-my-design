@@ -1,6 +1,6 @@
 # Cursor Kimi K3 / GLM 5.2 adapter calibration — 1.9.59
 
-Status: **LOCKED; provider-free implementation pending**.
+Status: **EXECUTED; provider-free calibration accepted**.
 
 ## Bounded hypothesis
 

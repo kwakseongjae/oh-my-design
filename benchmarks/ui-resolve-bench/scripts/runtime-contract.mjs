@@ -4,11 +4,15 @@ import { fileURLToPath } from "node:url";
 export const CURSOR_LIVE_MODEL_ALLOWLIST = Object.freeze([
   "cursor-grok-4.5-high",
   "composer-2.5",
+  "kimi-k3-high",
+  "glm-5.2-high",
 ]);
 
 export const CURSOR_RUNTIME_DISPLAY_LABELS = Object.freeze({
   "cursor-grok-4.5-high": "Cursor Grok 4.5 High",
   "composer-2.5": "Composer 2.5",
+  "kimi-k3-high": "Kimi K3 High",
+  "glm-5.2-high": "GLM 5.2 High",
 });
 
 export function isCursorLiveModelAllowed(model) {

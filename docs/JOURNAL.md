@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.59 Kimi/GLM adapter accepted
+- canary High selector 두 개만 exact display fixture와 allowlist에 추가했다.
+- crossed display, Auto/Fast/Low/Max/K2.7 rejection을 통과했다.
+- focused 23/23과 lint/build/syntax/diff가 green이다.
+- 다음은 Kimi K3 High 별도 scored Preview다.
+
 ## 2026-07-28 (Codex) · 1.9.59 Kimi/GLM adapter locked
 - canary에서 확인된 High selector와 exact display만 allowlist 후보로 고정했다.
 - low/max/fast/K2.7/Auto는 범위 밖이며 계속 거부한다.
