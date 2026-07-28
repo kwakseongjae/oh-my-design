@@ -95,6 +95,8 @@
 - Grok quota가 소진되지 않아 Terra/Luna lane은 열지 않았다. `/tmp/u1968`은 complete frozen root이며 resume/replay/manual score edit하지 않는다.
 - 1.9.69 incident-only Grok Reliability@3 replacement를 fresh `/tmp/u1969`에 LOCKED했다. Raw/OmD × trial 1–3의 6셀, balanced order, one-cell checkpoint, 120–125초 pacing, no retry이며 1.9.66/1.9.68 artifact는 denominator 밖이다.
 - acceptance는 OmD≥Raw 3/3, paired median≥0, OmD automated/a11y/all-critical/exact radius/Evidence 3/3, hidden-focusable 0이다. 통과해도 incident cluster 반복성만 증명하고 general/three-task Skill Lift는 주장하지 않는다.
+- committed clean source `691e4c1`에서 `/tmp/u1969` 6/6을 fresh prepare했다. source dirty false/publishable true, matrix `5383519d…`, preparation `615d2e5a…`, 6셀의 starter/DESIGN과 Raw/OmD prompt가 동일하며 OmD 3셀 skill `2ce11fb1…`/sidecar가 일치한다.
+- provider output은 0이다. 다음은 global serial `--max-new-cells 1` 실행 6회와 retained 120–125초 cooldown 5회다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.

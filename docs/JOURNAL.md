@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.69 Grok incident Reliability prepared
+- committed clean source `691e4c1`에서 `/tmp/u1969` 6/6을 준비했다.
+- matrix `5383519d…`, preparation `615d2e5a…`, source dirty false다.
+- 6셀 input equality와 OmD skill/sidecar 3/3 동일성을 확인했다.
+- 다음은 six one-cell invocations와 five retained cooldowns다.
+
 ## 2026-07-28 (Codex) · 1.9.69 Grok incident Reliability@3 locked
 - fresh `/tmp/u1969`에 incident Raw/OmD × 3의 6셀을 잠갔다.
 - OmD≥Raw 3/3·exact radius 3/3·hidden-focusable 0이 acceptance다.

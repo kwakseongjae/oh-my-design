@@ -1,6 +1,6 @@
 # Cursor/Grok incident geometry Reliability@3 replacement — 1.9.69
 
-Status: **LOCKED; awaiting clean preparation**.
+Status: **PREPARED; authorized and awaiting provider execution**.
 
 ## Bounded hypothesis
 
