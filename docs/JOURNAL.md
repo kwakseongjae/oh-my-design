@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.62 GLM Preview complete/rejected
+- 6/6 cells와 5/5 waits를 one-cell checkpoint로 완료했다.
+- Raw 83/81/79, OmD 85/77/85; paired +2/-4/+6, Evidence 6/6이다.
+- incident OmD가 기존 hidden-focusable acceptance를 지키지 않아 a11y/zoom을 실패했다.
+- 다음은 fresh Kimi replacement 뒤 기존 규칙의 실행 compliance 강화다.
+
 ## 2026-07-28 (Codex) · 1.9.62 GLM Preview prepared
 - committed `1b85f95`에서 `/tmp/u1962` 6/6 clean-prepare했다.
 - matrix `358b0fa7…`, preparation `41a84371…`, frozen input/skill hash가 일치한다.

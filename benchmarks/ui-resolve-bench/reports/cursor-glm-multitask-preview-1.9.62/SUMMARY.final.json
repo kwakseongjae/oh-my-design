@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "evaluator_schema": "0.5",
+  "product_version": "1.9.62",
+  "experiment_id": "cursor-glm-multitask-preview-1.9.62",
+  "status": "complete_candidate_rejected",
+  "execution": {
+    "scheduled_cells": 6,
+    "completed_cells": 6,
+    "stopped_cells": 0,
+    "not_started_cells": 0,
+    "checkpointed_invocations": 5,
+    "total_invocations": 6,
+    "completed_waits": 5,
+    "planned_waits": 5,
+    "retry_count": 0,
+    "provider_display_name_match": 6,
+    "provider_usage_present": 6,
+    "product_diff_index_html_only": 6,
+    "evidence_and_unknown_pass": 6,
+    "execution_state_sha256": "d30b19d1cbf8e77e07c2139822e3077382f12042e9f6d07aceaa071c52b9fc50"
+  },
+  "scores": {
+    "raw": {
+      "onboarding-setup-v0.1": 83,
+      "incident-operations-v0.1": 81,
+      "locale-cli-handoff-v0.1": 79,
+      "median": 81
+    },
+    "omd": {
+      "onboarding-setup-v0.1": 85,
+      "incident-operations-v0.1": 77,
+      "locale-cli-handoff-v0.1": 85,
+      "median": 85
+    },
+    "paired_deltas": {
+      "onboarding-setup-v0.1": 2,
+      "incident-operations-v0.1": -4,
+      "locale-cli-handoff-v0.1": 6,
+      "median": 2,
+      "wins": 2,
+      "ties": 0,
+      "losses": 1
+    },
+    "omd_accessibility_pass": 2,
+    "omd_all_critical_pass": 2
+  },
+  "descriptive_compute": {
+    "raw_median_wall_time_ms": 165074,
+    "omd_median_wall_time_ms": 112071,
+    "omd_wall_time_delta_percent": -32.1,
+    "raw_median_non_cached_tokens": 33477,
+    "omd_median_non_cached_tokens": 46295,
+    "omd_non_cached_token_delta_percent": 38.3,
+    "efficiency_publication_eligible": false
+  },
+  "failure_analysis": {
+    "task": "incident-operations-v0.1",
+    "introduced_control": "Skip to operations",
+    "defect": "permanently clipped focusable skip link did not reveal itself on focus",
+    "failed_critical_gates": [
+      "responsive",
+      "accessibility"
+    ],
+    "evaluator_false_negative": false,
+    "existing_skill_rules_present": true,
+    "existing_skill_rules_followed": false,
+    "existing_skill_rules_violated": [
+      "protected-ledger allowed_delta:0 for unrequested controls",
+      "320px and 200% zoom clipped-control acceptance",
+      "skip/navigation focus reveal and in-view acceptance"
+    ],
+    "next_input": "Strengthen execution compliance and deterministic verification of the existing hidden-focusable rules; do not classify this as a missing rule."
+  },
+  "decision": {
+    "all_cells_complete": true,
+    "paired_median_non_negative": true,
+    "zero_loss_passed": false,
+    "omd_accessibility_3_of_3_passed": false,
+    "bounded_hypothesis_passed": false,
+    "fresh_kimi_replacement_unlocked": true,
+    "public_model_attribution_unlocked": false
+  },
+  "claim_boundary": "Complete Internal display-name-attributed GLM Preview only. No reliability, confidence interval, efficiency, public model ranking, cross-model superiority, or frontier claim follows."
+}

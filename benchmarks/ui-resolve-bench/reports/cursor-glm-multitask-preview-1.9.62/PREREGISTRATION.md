@@ -1,6 +1,6 @@
 # Cursor/GLM 5.2 multi-task Skill Lift Preview — 1.9.62
 
-Status: **LOCKED; fresh preparation pending**.
+Status: **EXECUTED; complete matrix, bounded hypothesis rejected**.
 
 ## Frontier gate and bounded hypothesis
 
