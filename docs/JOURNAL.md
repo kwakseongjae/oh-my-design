@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.65 Grok Preview locked
+- 1.9.64 interactive closure만 candidate delta인 fresh 6셀 Grok lane을 잠갔다.
+- matrix `857b87d5…`, control `9418f3cc…`, root `/tmp/u1965`다.
+- max-new-cells 1·120–125초 pacing·global serial·no retry를 유지한다.
+- 다음은 clean committed source preparation이다.
+
 ## 2026-07-28 (Codex) · 1.9.64 interactive closure accepted
 - actual focusable diff↔ledger reconciliation과 3개 zero condition을 skill에 추가했다.
 - skill SHA `c63ba1e4…`; sidecar/evaluator/task/provider delta는 0이다.
