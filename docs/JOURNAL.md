@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.67 geometry closure locked
+- incident OmD card-radius miss 2/3를 다음 bounded repair로 고정했다.
+- changed radius surface↔exact DESIGN role token reconciliation만 추가한다.
+- unknown role/token은 임의 반경 대신 pre-edit geometry를 보존한다.
+- 다음은 provider-free skill/test 구현과 회귀검증이다.
+
 ## 2026-07-28 (Codex) · 1.9.66 Grok Reliability@3 rejected
 - Grok 18/18 cells·17/17 waits를 capacity failure 없이 완료했다.
 - Raw→OmD W/T/L 2/6/1, mean +0.44, median 0; OmD gates 9/9이다.
