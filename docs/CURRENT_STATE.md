@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · provider 실행 중단 / sol medium 재개 준비
+- 갱신: 2026-07-28 · 1.9.64 hidden-focusable compliance LOCKED
 
 ## 지금 (현재 위치)
 
@@ -62,6 +62,8 @@
 - committed clean source `cd79433`에서 `/tmp/u1963` 6/6을 fresh prepare했다. source dirty false/publishable true, matrix SHA `7152888e…`, preparation state SHA `e84935d4…`이며 task starter/DESIGN.md/prompt와 OmD skill/sidecar/root/subtree hash가 frozen denominator와 일치한다. primary evaluator preflight와 Kimi runtime binary/version/allowlist도 통과했다.
 - 사용자의 즉시 중단 요청으로 1.9.63 첫 `onboarding-t1-raw` 실행을 종료했다. 완료 셀·score·usage·final·run record·checkpoint는 0이며, 중단 전 `index.html`, 테스트 helper 2개, 빈 Chrome log가 부분 작성됐다. 남아 있던 Cursor child까지 명시적으로 종료해 provider/controller process와 global lock owner는 없고, execution state의 `running` 및 root lease는 forensic evidence로 보존한다.
 - `/tmp/u1963`은 user-interrupted execution-invalid root로 동결했다. same-root resume, stale lease 삭제, 부분 artifact 평가, interrupted-cell replacement, 1.9.60과의 결합은 금지한다. 이후 작업 레인은 사용자 지정대로 `sol medium`이며, Kimi 재실행이 필요해지면 fresh preregistered root부터 다시 연다.
+- 사용자가 테스트 재개를 승인했고 Grok 우선, 실제 용량 소진 뒤 Terra High/Luna High 순의 독립 lane을 요청했다. `/tmp/u1963`은 계속 제외하며 새 provider root 전에 1.9.64 provider-free compliance repair를 먼저 통과시킨다.
+- 1.9.64는 기존 accessibility 규칙을 추가하는 패치가 아니라, 실제 focusable diff를 protected ledger와 대조하는 mandatory `interactive closure`를 추가하는 bounded repair다. canonical skill SHA `938c6f0a…`, sidecar `f0ad5294…`, evaluator/provider/task delta 0으로 LOCKED했다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -551,10 +553,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 다음 사용자 재개 요청에서 `sol medium`으로 provider-free hidden-focusable compliance·결정론 검증 강화부터 시작한다.
-2. 그 회귀가 통과하면 screenshot-grounded/open-brief task와 evaluator scale 설계를 이어간다.
-3. Kimi provider 재실행은 별도 필요가 생길 때만 fresh root로 사전등록한다.
-4. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
+1. 1.9.64 mandatory interactive closure와 결정론 contract test를 구현한다.
+2. focused/install/Cursor prepare/TypeScript/build 회귀를 통과시키고 provider-free 결과를 동결한다.
+3. fresh Grok preview를 사전등록·prepare·checkpoint 실행한다.
+4. Grok이 실제 capacity/quota로 동결될 때만 Terra High와 Luna High를 별도 denominator로 연다.
+5. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

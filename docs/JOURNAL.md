@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.64 compliance repair locked
+- Grok 우선, 용량 소진 뒤 Terra/Luna 전환 정책으로 테스트를 재개했다.
+- `/tmp/u1963`은 제외하고 provider-free interactive closure를 먼저 잠갔다.
+- candidate는 focusable diff↔ledger reconciliation만 추가하며 evaluator/task delta는 0이다.
+- 다음은 skill/test 구현과 회귀 검증이다.
+
 ## 2026-07-28 (Codex) · provider execution paused
 - 사용자 요청으로 1.9.63 첫 Kimi 셀을 즉시 종료했다.
 - completed/score/usage/final/checkpoint는 0이고 partial product write만 보존된다.
