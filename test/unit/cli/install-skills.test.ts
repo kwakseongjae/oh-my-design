@@ -781,6 +781,10 @@ describe('install-skills', () => {
     expect(applySkill).not.toMatch(/\bomd:apply\b/);
     expect(applySkill).toContain('foreground closure');
     expect(applySkill).toContain('unresolved normal-text accent pair');
+    expect(applySkill).toContain('geometry-token closure');
+    expect(applySkill).toContain('mismatched_declared_radius: 0');
+    expect(applySkill).toContain('invented_radius_value: 0');
+    expect(applySkill).toContain('unresolved_changed_radius: 0');
     expect(applySkill).toContain('interactive closure');
     expect(applySkill).toContain('unauthorized_focusable_delta: 0');
     expect(applySkill).toContain('permanently_clipped_focusable: 0');

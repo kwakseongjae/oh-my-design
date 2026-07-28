@@ -1,6 +1,6 @@
 # Geometry-token execution compliance — 1.9.67
 
-Status: **LOCKED; provider-free implementation pending**.
+Status: **ACCEPTED; provider-free**.
 
 ## Frontier gate and bounded hypothesis
 

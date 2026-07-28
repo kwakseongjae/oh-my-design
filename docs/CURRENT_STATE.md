@@ -82,6 +82,9 @@
 - 다음은 provider-free geometry-token closure만 추가하고, fresh incident candidate recovery를 통과한 뒤에만 반복 matrix replacement를 연다. Grok quota가 소진되지 않아 Terra/Luna lane은 열지 않았다. `/tmp/u1966`은 complete frozen root다.
 - 1.9.67 provider-free geometry-token compliance를 LOCKED했다. actual changed radius surface를 product role과 exact DESIGN.md radius token에 대조하고 mismatch를 고치며, role/token unknown이면 plausible radius를 만들지 않고 pre-edit geometry를 보존하는 단일 delta다.
 - source skill `c63ba1e4…`, sidecar `f0ad5294…`; evaluator/task/provider/foreground/interactive closure delta는 0이다. local contract/channel tests 통과 뒤 fresh incident OmD recovery만 연다.
+- 1.9.67 geometry-token closure가 provider-free ACCEPTED됐다. foreground correction 뒤 final interactive closure 전에 actual changed `border-radius` surface를 기존 product role과 exact DESIGN.md role token에 대조하고, role/token unknown이면 pre-edit geometry를 복원한다.
+- skill SHA는 `c63ba1e4…`에서 `2ce11fb1…`로 바뀌었고 sidecar `f0ad5294…`는 불변이다. contract 6/6, install 36/36, Cursor adaptation 1/1, selected 55/57(기존 vendor Git metadata 2건 제외), lint/build/diff가 green이며 provider generation은 0이다.
+- 다음은 clean commit에서 fresh incident OmD Grok 1셀 복구다. 85/85, all gates, exact card radius, hidden-focusable 0을 모두 통과하기 전 repeated replacement matrix는 열지 않는다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.

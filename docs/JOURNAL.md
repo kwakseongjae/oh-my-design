@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.67 geometry closure accepted
+- exact product-role radius token closure를 canonical `omd-apply`에 추가했다.
+- contract 6/6, install 36/36, Cursor 1/1, lint/build/diff가 green이다.
+- selected 55/57의 2건은 기존 competitor vendor Git metadata 환경 실패다.
+- 다음은 clean commit의 fresh incident OmD Grok 1셀 복구다.
+
 ## 2026-07-28 (Codex) · 1.9.67 geometry closure locked
 - incident OmD card-radius miss 2/3를 다음 bounded repair로 고정했다.
 - changed radius surface↔exact DESIGN role token reconciliation만 추가한다.

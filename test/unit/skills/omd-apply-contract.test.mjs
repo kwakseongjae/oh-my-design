@@ -56,6 +56,15 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("추가·변경한 모든 `color`/foreground 선언");
     expect(skill).toContain("의미 역할을 선언한 것 자체는 contrast proof가 아니다");
     expect(skill).toContain("unresolved normal-text accent pair");
+    expect(skill).toContain("geometry-token closure");
+    expect(skill).toContain("추가·변경한 모든 `border-radius` 선언");
+    expect(skill).toContain("모양이 비슷하다는 이유로 역할을 추측하지 않는다");
+    expect(skill).toContain("source-token|computed-value|unresolved");
+    expect(skill).toContain("exact token 값과 일치");
+    expect(skill).toContain("pre-edit geometry를 복원");
+    expect(skill).toContain("mismatched_declared_radius: 0");
+    expect(skill).toContain("invented_radius_value: 0");
+    expect(skill).toContain("unresolved_changed_radius: 0");
     expect(skill).toContain("interactive closure");
     expect(skill).toContain("이번 product diff에서 추가·변경한 모든 focusable element");
     expect(skill).toContain("접근성 개선 의도");
