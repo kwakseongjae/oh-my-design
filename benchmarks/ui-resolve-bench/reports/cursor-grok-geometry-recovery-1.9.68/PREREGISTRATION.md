@@ -1,6 +1,6 @@
 # Cursor/Grok incident geometry candidate recovery — 1.9.68
 
-Status: **LOCKED; awaiting clean preparation**.
+Status: **PREPARED; authorized and awaiting provider execution**.
 
 ## Bounded hypothesis
 

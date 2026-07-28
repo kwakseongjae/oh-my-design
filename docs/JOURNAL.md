@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.68 Grok recovery prepared
+- committed clean source `e996c99`에서 `/tmp/u1968` 1/1을 준비했다.
+- matrix `04b34616…`, preparation `ab2a2b2b…`, source dirty false다.
+- frozen incident input과 new geometry skill/sidecar hash가 일치한다.
+- 다음은 one-cell Grok execution이다.
+
 ## 2026-07-28 (Codex) · 1.9.68 Grok geometry recovery locked
 - fresh `/tmp/u1968` incident OmD 단일 복구 셀을 잠갔다.
 - 1.9.67 geometry closure 외 task/evaluator/runtime delta는 0이다.
