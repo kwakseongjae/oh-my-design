@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.69 Grok incident Reliability passed
+- 6/6 cells·5/5 cooldown을 quota/capacity/retry 없이 완료했다.
+- Raw와 OmD 모두 85/85/85; OmD exact radius/focus/critical 3/3이다.
+- repeated incident geometry cluster는 bounded Internal 기준으로 닫혔다.
+- 다음은 fresh three-task replacement 또는 새 failure-cluster audit다.
+
 ## 2026-07-28 (Codex) · 1.9.69 Grok incident Reliability prepared
 - committed clean source `691e4c1`에서 `/tmp/u1969` 6/6을 준비했다.
 - matrix `5383519d…`, preparation `615d2e5a…`, source dirty false다.
