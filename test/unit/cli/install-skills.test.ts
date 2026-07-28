@@ -781,6 +781,10 @@ describe('install-skills', () => {
     expect(applySkill).not.toMatch(/\bomd:apply\b/);
     expect(applySkill).toContain('foreground closure');
     expect(applySkill).toContain('unresolved normal-text accent pair');
+    expect(applySkill).toContain('interactive closure');
+    expect(applySkill).toContain('unauthorized_focusable_delta: 0');
+    expect(applySkill).toContain('permanently_clipped_focusable: 0');
+    expect(applySkill).toContain('unresolved_focus_reveal: 0');
 
     // The always-on rule is a small bootstrap; procedural instructions live in
     // the dynamically discovered native skill tree.

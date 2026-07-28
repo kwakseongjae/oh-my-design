@@ -56,6 +56,15 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("추가·변경한 모든 `color`/foreground 선언");
     expect(skill).toContain("의미 역할을 선언한 것 자체는 contrast proof가 아니다");
     expect(skill).toContain("unresolved normal-text accent pair");
+    expect(skill).toContain("interactive closure");
+    expect(skill).toContain("이번 product diff에서 추가·변경한 모든 focusable element");
+    expect(skill).toContain("접근성 개선 의도");
+    expect(skill).toContain("source-level `:focus`/`:focus-visible` reveal path");
+    expect(skill).toContain("base `.sr-only`/visually-hidden 규칙만 있고 focus reveal이 없으면 영구 clipping");
+    expect(skill).toContain("browser proof가 불가능한 새 hidden focusable은 `unresolved`로 출고하지 않고");
+    expect(skill).toContain("unauthorized_focusable_delta: 0");
+    expect(skill).toContain("permanently_clipped_focusable: 0");
+    expect(skill).toContain("unresolved_focus_reveal: 0");
     expect(skill).toContain("새 hex를 만들지 않는다");
     expect(skill).toContain("text-role token + 인접 non-text accent");
     expect(skill).toContain("unresolved인 pair 자체는 남기지 않는다");

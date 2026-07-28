@@ -1,6 +1,6 @@
 # Hidden-focusable execution compliance — 1.9.64
 
-Status: **LOCKED; provider-free implementation pending**.
+Status: **ACCEPTED; provider-free contract and channel adaptation green**.
 
 ## Frontier gate and bounded hypothesis
 

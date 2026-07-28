@@ -233,6 +233,10 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(existsSync(join(out, ".cursor/skills/omd-apply/SKILL.md"))).toBe(true);
     expect(installedSkillName(join(out, ".cursor/skills/omd-apply/SKILL.md"))).toBe("omd-apply");
     expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain("foreground closure");
+    expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain("interactive closure");
+    expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
+      "unauthorized_focusable_delta: 0",
+    );
     expect(existsSync(join(out, ".agents/skills"))).toBe(false);
     expect(prompt).toContain("Use the installed /omd-apply skill");
     expect(prompt).not.toContain("$omd:apply");

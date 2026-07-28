@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.64 interactive closure accepted
+- actual focusable diff↔ledger reconciliation과 3개 zero condition을 skill에 추가했다.
+- skill SHA `c63ba1e4…`; sidecar/evaluator/task/provider delta는 0이다.
+- contract 6/6, install 36/36, Cursor 1/1, TS/build/diff가 green이다.
+- 다음은 clean commit 기반 fresh Grok Preview 1.9.65다.
+
 ## 2026-07-28 (Codex) · 1.9.64 compliance repair locked
 - Grok 우선, 용량 소진 뒤 Terra/Luna 전환 정책으로 테스트를 재개했다.
 - `/tmp/u1963`은 제외하고 provider-free interactive closure를 먼저 잠갔다.
