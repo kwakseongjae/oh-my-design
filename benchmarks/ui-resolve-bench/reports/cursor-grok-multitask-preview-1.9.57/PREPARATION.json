@@ -3,7 +3,7 @@
   "suite_version": "ui-resolve-v0.2",
   "evaluator_schema": "0.5",
   "product_version": "1.9.57",
-  "status": "prepared_authorized_awaiting_provider_execution",
+  "status": "execution_stopped_provider_resource_exhausted",
   "output_root": "/tmp/u1957",
   "scheduled_cells": 6,
   "prepared_cells": 6,
@@ -55,7 +55,13 @@
     "planned_wait_count": 5,
     "counts_toward_cell_wall_time": false
   },
-  "provider_execution_started": false,
+  "provider_execution_started": true,
+  "provider_execution_completed": false,
+  "completed_cells": 4,
+  "stopped_cell": "incident-t1-raw",
+  "not_started_cells": 1,
+  "completed_pacing_waits": 4,
+  "stop_reason": "process-failure: Cursor Provider resource_exhausted",
   "approval": {
     "received_for_this_fresh_root": true,
     "scope": "Six serial Cursor Grok 4.5 High cells in /tmp/u1957 using only the locked per-cell file boundary and five retained 120-second inter-cell waits.",

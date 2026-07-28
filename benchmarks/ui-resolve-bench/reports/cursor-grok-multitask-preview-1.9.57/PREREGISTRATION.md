@@ -1,6 +1,6 @@
 # Cursor/Grok multi-task Skill Lift Preview — 1.9.57
 
-Status: **LOCKED and PREPARED; provider execution authorized**.
+Status: **EXECUTION STOPPED; Grok provider capacity after four completed cells**.
 
 ## Frontier gate and bounded hypothesis
 
@@ -69,3 +69,17 @@ Passing establishes only bounded Internal multi-task Preview evidence and
 unlocks a separately preregistered repeated-trial task slice. It does not
 establish Reliability@3, confidence intervals, efficiency, cross-model
 superiority, a public winner, or frontier status.
+
+## Frozen decision
+
+Four cells and four 120-second waits completed. The fifth cell,
+`incident-t1-raw`, returned Cursor Provider `resource_exhausted` after 24,563
+ms, three provider-managed reconnection attempts, no usage event, no final
+response, and no product change. The final locale OmD cell was retained as
+`not-started`.
+
+Completed diagnostics were onboarding Raw 81/85, incident OmD 85/85, locale
+Raw 85/85, and onboarding OmD 85/85. The only complete pair is onboarding
+Raw→OmD +4. The matrix is incomplete, so no multi-task Preview acceptance,
+paired median, reliability, efficiency, or superiority decision is allowed.
+No immediate Grok replacement is permitted.

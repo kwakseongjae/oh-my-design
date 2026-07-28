@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.57 Grok capacity stop
+- Grok 4셀은 81/85/85/85, wait 4회, Evidence 4/4로 완료했다.
+- onboarding complete pair는 Raw 81 → OmD 85, +4다.
+- incident Raw가 `resource_exhausted`, locale OmD는 not-started라 matrix를 freeze했다.
+- 다음은 Kimi K3 → GLM 5.2 no-write attribution canary다.
+
 ## 2026-07-28 (Codex) · 1.9.57 clean preparation complete
 - onboarding/incident/locale Raw↔OmD 6셀을 `/tmp/u1957`에 clean-prepare했다.
 - primary evaluator preflight와 source publishability가 통과했다.
