@@ -12,7 +12,9 @@
 - 1.9.70 fresh three-task replacement를 `/tmp/u1970`에 LOCKED했다. onboarding/incident/locale × Raw/OmD × trials 1–3의 18셀, balanced order, one-cell checkpoint, global serial, 120–125초 pacing, no retry/fallback/substitution이다.
 - Reliability@3와 Skill Lift는 `PROTOCOL.md`대로 별도 판정한다. Reliability는 task별 3회 전부 gate pass를 보고하고, Skill Lift는 exact pair UI-Resolved/objective lift와 W/T/L를 보고한다. ceiling tie나 median 0을 Reliability 실패로 재정의하지 않는다.
 - Arena Code/WebDev 공식 방법론을 `benchmarks/ui-resolve-bench/reports/arena-code-benchmark-research-2026-07/RESEARCH.md`에 정리했다. OmD는 결정론 contract plane과 blind pairwise Ship Preference plane을 분리하고, 후자에 Bradley–Terry rating·95% CI·votes·rank spread를 적용하는 방향이 적합하다.
-- 다음은 matrix hash 확정과 clean committed source에서 `/tmp/u1970` 18/18 fresh preparation이다. 그 뒤 shared provider global serial `--max-new-cells 1` 18회만 허용한다.
+- committed clean source `033255f`에서 `/tmp/u1970` 18/18을 fresh prepare했다. source dirty false/publishable true, report matrix `97d5a73c…`, locked matrix `d5a22259…`, preparation `d3a3736a…`이며 6개 task×variant group의 starter/DESIGN/prompt와 OmD skill/sidecar hash가 모두 동일하다.
+- primary evaluator preflight가 `playwright-core`/`axe-core` 모두 통과했고 Cursor binary/version/selector와 no-write capacity probe를 고정했다. provider output은 0이다.
+- 다음은 shared provider global serial `--max-new-cells 1` 18회와 retained 120–125초 cooldown 17회다.
 - repeated-capacity stop 뒤 repository/file/tool 0인 no-write probe를 Composer 2.5와 Grok 4.5 High에 각각 실행했고 둘 다 exact `OMD_CAPACITY_OK`, exit 0, usage event를 반환했다. Cursor 로그인/계정 전체 quota/model availability가 완전히 막힌 상태는 아니다.
 - 따라서 1.9.51/1.9.52의 `resource_exhausted`는 5–6개의 장시간 셀을 연속 실행한 뒤 생기는 provider burst/long-run capacity condition으로 분류한다. 모델 스위치는 원인 해결이 아니며 Composer replication을 다른 모델로 대체할 수 없다.
 - 2026-07-28 최신 로그인 catalog에는 `cursor-grok-4.5-high`, `kimi-k3-high|max`, `glm-5.2-high|max`가 실제 노출된다. 사용자 정책은 Grok 4.5 High를 2× event 동안 우선 사용하고, 잔여량이 있으면 Kimi K3 → GLM 5.2 순으로 별도 Model Track을 여는 것이다.

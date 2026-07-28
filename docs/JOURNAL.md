@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.70 Grok replacement prepared
+- committed clean source `033255f`에서 `/tmp/u1970` 18/18을 준비했다.
+- matrix `97d5a73c…`, preparation `d3a3736a…`, source dirty false다.
+- 6개 task×variant group input과 OmD skill/sidecar equality를 확인했다.
+- 다음은 18 one-cell invocations와 17 retained cooldown이다.
+
 ## 2026-07-28 (Codex) · 1.9.70 Grok replacement locked
 - no-write Grok probe가 exact OK로 통과해 Luna lane은 열지 않았다.
 - fresh three-task Raw/OmD×3의 18셀을 `/tmp/u1970`에 잠갔다.
