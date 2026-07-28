@@ -1,6 +1,6 @@
 # Cursor/Kimi K3 multi-task Skill Lift Preview — 1.9.60
 
-Status: **LOCKED; fresh preparation pending**.
+Status: **LOCKED and PREPARED; provider execution authorized**.
 
 ## Frontier gate and bounded hypothesis
 

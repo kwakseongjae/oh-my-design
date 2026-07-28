@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `a112314` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.60 Kimi K3 multi-task Preview LOCKED
+- 갱신: 2026-07-28 · 1.9.60 Kimi K3 multi-task Preview PREPARED
 
 ## 지금 (현재 위치)
 
@@ -43,6 +43,8 @@
 - 1.9.59가 ACCEPTED됐다. live allowlist는 Grok 4.5 High, Composer 2.5, Kimi K3 High, GLM 5.2 High 정확히 4개이며 crossed Kimi/GLM display는 `reported-model-mismatch`다.
 - Auto/Grok Fast/Kimi Max/GLM Max/low/fast/K2.7은 계속 차단된다. focused 23/23, lint/build/syntax/diff green, provider generation 0이다.
 - 1.9.60 Kimi K3 High scored Preview를 LOCKED했다. onboarding/incident/locale 3-task Raw↔OmD 6셀, order는 Grok 1.9.57과 동일, `/tmp/u1960`, 120초 pacing, no retry이며 Grok incomplete denominator와 독립이다.
+- committed clean source `2148a28`에서 `/tmp/u1960` 6/6을 prepare했다. source dirty false/publishable true, primary evaluator preflight pass, matrix SHA `e64c5070…`이며 3개 task의 starter/DESIGN.md/manifest와 shared skill/sidecar hash를 고정했다.
+- standing authorization과 Grok-first capacity stop 뒤의 Kimi 순서에 따라 provider execution은 승인 상태다. 다음은 primary controller에서 Kimi 6셀을 실행하고 첫 실패면 즉시 freeze하며, 완주하면 3개 Raw↔OmD pair만 독립 Preview로 판정한다.
 - 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
 - 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
 - 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
@@ -532,9 +534,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. committed clean source에서 `/tmp/u1960` 6셀을 prepare하고 hashes를 고정한다.
-2. dependency-complete primary controller에서 Kimi K3 High 6셀을 실행한다.
-3. Kimi result 또는 capacity stop을 freeze한 뒤 GLM 5.2 High를 다음 순서로 연다.
+1. dependency-complete primary controller에서 prepared `/tmp/u1960` Kimi K3 High 6셀을 실행한다.
+2. Kimi result 또는 capacity stop을 freeze하고 1.9.60 결과를 commit한다.
+3. GLM 5.2 High를 독립 denominator의 다음 scored Preview로 연다.
 4. public model attribution은 계속 금지하고 Internal model×runtime evidence만 생성한다.
 
 ## 막힘 / 대기 (없으면 "없음")
@@ -543,7 +545,7 @@
 - Cursor Composer Provider가 1.9.51/1.9.52와 1.9.56에서 `resource_exhausted`를 반환했다. account-wide quota는 short Composer/Grok probes로 배제했지만 long-form Composer lane은 deferred다.
 - Cursor Grok 4.5 High도 1.9.57에서 4개 long-form cell 뒤 `resource_exhausted`로 stop됐다. immediate Grok replacement는 금지한다.
 - 1.9.54는 provider capacity가 아니라 detached worktree의 evaluator dependency 부재로 무효화됐고 1.9.55 preflight로 재발 방지가 완료됐다.
-- Kimi K3/GLM 5.2 controller acceptance는 통과했으며 Kimi-first scored Preview preregistration만 남았다.
+- Kimi K3/GLM 5.2 controller acceptance는 통과했으며 Kimi-first scored Preview는 clean-prepared·authorized 상태다.
 - Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
 - 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 

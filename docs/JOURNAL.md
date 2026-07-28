@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-28 (Codex) · 1.9.60 Kimi Preview prepared
+- committed `2148a28`에서 `/tmp/u1960` 6/6을 clean-prepare했다.
+- matrix `e64c5070…`, task별 입력과 shared skill hash를 고정했다.
+- primary evaluator dependency preflight가 통과했다.
+- 다음은 Kimi K3 High 6셀 provider execution이다.
+
 ## 2026-07-28 (Codex) · 1.9.60 Kimi Preview locked
 - Kimi K3 High의 첫 scored 3-task Raw↔OmD 6셀을 사전등록했다.
 - order/task/control은 Grok Preview와 같지만 denominator는 독립이다.
