@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.90 live automated review 6/54
+- fresh root에서 incident trial 1의 3 judges×좌우 반전을 모두 닫았다.
+- provider/cache/registry/strict JSON 실패는 0이다.
+- 네 axes 모두 3/3 동일 actual candidate, reversal 12/12, tie/both-fail 0이다.
+- 아직 Diagnostic이며 다음은 incident trial 2다.
+
 ## 2026-07-30 (Codex) · 1.9.90 Cursor Internal alias plane
 - 1.9.89는 registry 기본명/이벤트 High명 불일치로 첫 call에서 frozen됐다.
 - 같은 selector의 두 관찰·등록 alias만 Internal state에 잠그도록 교정했다.
