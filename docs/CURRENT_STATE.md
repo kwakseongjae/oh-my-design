@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `619d8ce` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.85 fresh replacement matrix COMPLETE
+- 기준 커밋: `7f800dc` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-30 · 1.9.86 automated blind review preparation ACCEPTED
 
 ## 지금 (현재 위치)
 
@@ -58,6 +58,10 @@
 - 여섯 task×arm 그룹 모두 Reliability@3 3/3이다. 동일 task/trial exact pair의 deterministic W/T/L은 0/9/0이고 mean/median objective delta는 0이다.
 - 이 결과는 deterministic contract ceiling만 증명한다. 시각적 선호 동등성이나 공개 model claim은 성립하지 않으며 Internal runtime display-name attribution은 계속 `public_model_attribution_eligible:false`다.
 - 다음은 산출물 identity를 가린 anonymous automated multi-judge를 좌우 반전으로 실행하고, 불일치·반전 비일관·both-fail·tie uncertainty·감사 표본만 사람에게 올리는 reduced-human ladder다.
+- 1.9.86 provider-free automated blind review preparation이 ACCEPTED됐다. 반복 trial을 서로 다른 후보로 섞지 않고 same task×trial의 두 arms만 exact pair로 묶는다.
+- 실제 `/tmp/u1986`은 complete 1.9.85 state hash `0537faae…`에서 9 pairs×3 opaque judges×2 separate side orders = 27 review units/54 invocations/216 screenshots를 만들었다. 공개 packet identity leak은 0이다.
+- focused reviewer tests 6/6, Node syntax, lint, build가 green이며 provider generation은 0이다. 자동 judge는 practitioner 수에 포함되지 않고 public model attribution도 만들지 않는다.
+- 다음은 one-invocation fail-closed runner와 no-repair strict JSON intake를 provider-free acceptance한 뒤 54-invocation root를 여는 것이다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.

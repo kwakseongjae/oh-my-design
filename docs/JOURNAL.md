@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.86 automated review preparation
+- 1.9.85의 9 exact pairs를 3 judges×분리 좌우 반전 54 packets로 익명화했다.
+- trial 간 비교 혼합과 arm/commit/score/reversal 공개 누출을 차단했다.
+- 실제 `/tmp/u1986`은 27 units/216 screenshots, identity leak 0이다.
+- 6/6 focused tests·lint·build green; 다음은 strict one-invocation runner다.
+
 ## 2026-07-30 (Codex) · 1.9.85 matrix complete 18/18
 - 마지막 incident slate도 valid/UI-Resolved/85, 333s/193,887 tokens로 완료됐다.
 - 18/18 cells와 17/17 pacing이 통과했고 failure/retry/substitution은 0이다.
