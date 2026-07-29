@@ -1,6 +1,6 @@
 {
   "id": "incident-operations-v0.1",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "track": "repair",
   "grounding": "design-md",
   "locale": "en",
@@ -27,14 +27,16 @@
     "[data-bench='incident-row']",
     "[data-bench='details-button']",
     "[data-bench='acknowledge']",
-    "[data-bench='operation-status']"
+    "[data-bench='operation-status']",
+    "[data-bench-design-role='main-console']"
   ],
   "protected_hook_counts": {
     "[data-bench='filter-button']": 3,
     "[data-bench='incident-row']": 4,
     "[data-bench='details-button']": 2,
     "[data-bench='acknowledge']": 1,
-    "[data-bench='operation-status']": 1
+    "[data-bench='operation-status']": 1,
+    "[data-bench-design-role='main-console']": 1
   },
   "journey_oracle": {
     "filter": {
@@ -84,7 +86,7 @@
     "font_family": { "body_any": ["Arial"], "display_any": ["Georgia"] },
     "selectors": {
       "primary_action": "[data-bench='acknowledge']",
-      "card": "[data-dashboard-card]",
+      "card": "[data-bench-design-role='main-console']",
       "display": "h1"
     }
   }

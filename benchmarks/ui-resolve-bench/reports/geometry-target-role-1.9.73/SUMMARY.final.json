@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.5",
+  "product_experiment": "1.9.73",
+  "experiment_id": "geometry-target-role-1.9.73",
+  "status": "accepted_provider_free",
+  "provider_generation": 0,
+  "task": {
+    "id": "incident-operations-v0.1",
+    "previous_version": "0.3.0",
+    "candidate_version": "0.4.0",
+    "task_sha256": "8bdce2cbc1b2f2e01a7419bc709cece33ff909aca184928963b343e675302e13",
+    "prompt_sha256": "84cf70bc7d45123d4f626d486ca98829e7bfe219f3a2fd6f1116eac8e7925a3c",
+    "starter_sha256": "56049c01bbf29c0d446f7b38969e540e0259b50c579e14e458e7ba61f86d08c1"
+  },
+  "candidate_delta": {
+    "removed_selector": "[data-dashboard-card]",
+    "added_selector": "[data-bench-design-role='main-console']",
+    "protected_exact_count": 1,
+    "oracle_card_radius_px": 14,
+    "radius_tolerance_px": 1,
+    "score_or_threshold_change": false,
+    "skill_change": false,
+    "historical_rescore": false
+  },
+  "mutations": {
+    "exact_visible_marker": "pass",
+    "missing_marker": "fail",
+    "duplicate_marker": "fail",
+    "main_console_radius_14px": "pass",
+    "subordinate_panel_radius_0px": "fail"
+  },
+  "browser_calibration": {
+    "workspace": "/tmp/omd-u1973-calibration",
+    "deterministic_score": 85,
+    "deterministic_max": 85,
+    "automated_gate_pass": true,
+    "critical_gates": "6/6",
+    "design_checks": "5/5",
+    "marker_visible_exact": "4/4 viewports",
+    "axe_serious_or_critical": 0
+  },
+  "validation": {
+    "focused_tests": "56/56",
+    "typescript": "pass",
+    "build": "pass",
+    "node_syntax": "pass",
+    "diff_check": "pass",
+    "known_unrelated_environment_failures": [
+      "taste-skill vendor checkout missing .git metadata",
+      "ui-ux-pro-max vendor checkout missing .git metadata"
+    ]
+  },
+  "decision": "accept",
+  "next_action": "Use task 0.4.0 only in a fresh denominator; then calibrate the separate Arena-inspired blind Ship Preference plane."
+}

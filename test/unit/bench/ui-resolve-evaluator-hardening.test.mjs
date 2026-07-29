@@ -5,6 +5,7 @@ import {
   evaluateAcknowledgementObservation,
   evaluateBillingObservation,
   evaluateChoiceObservation,
+  evaluateDesignObservation,
   evaluateFaqObservations,
   evaluateFilterObservation,
   evaluateFormObservation,
@@ -22,9 +23,11 @@ import {
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const taskPath = join(repoRoot, "benchmarks/ui-resolve-bench/tasks/pricing-conversion-v0.1/task.json");
 const localeTaskPath = join(repoRoot, "benchmarks/ui-resolve-bench/tasks/locale-cli-handoff-v0.1/task.json");
+const incidentTaskPath = join(repoRoot, "benchmarks/ui-resolve-bench/tasks/incident-operations-v0.1/task.json");
 const evaluatorPath = join(repoRoot, "benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs");
 const task = JSON.parse(readFileSync(taskPath, "utf8"));
 const localeTask = JSON.parse(readFileSync(localeTaskPath, "utf8"));
+const incidentTask = JSON.parse(readFileSync(incidentTaskPath, "utf8"));
 
 function validBillingObservation() {
   return {
@@ -558,5 +561,57 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
     const evaluator = readFileSync(evaluatorPath, "utf8");
     expect(evaluator).not.toContain("/Arial/i");
     expect(evaluator).not.toContain("/Georgia/i");
+  });
+
+  it("binds incident geometry to one protected main-console role instead of a generic card", () => {
+    const marker = "[data-bench-design-role='main-console']";
+    expect(incidentTask).toMatchObject({
+      version: "0.4.0",
+      protected_hook_counts: { [marker]: 1 },
+      design_oracle: {
+        card_radius_px: 14,
+        selectors: { card: marker },
+      },
+    });
+
+    const prompt = readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks/incident-operations-v0.1/PROMPT.md"),
+      "utf8",
+    );
+    expect(prompt).toContain('exactly one\n`data-bench-design-role="main-console"` marker');
+    expect(prompt).toContain("move the marker with that overall role");
+    expect(prompt).toContain("do not copy or move it onto a subordinate");
+
+    const starter = readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks/incident-operations-v0.1/starter/index.html"),
+      "utf8",
+    );
+    expect(starter.match(/data-bench-design-role="main-console"/g)).toHaveLength(2);
+    expect(starter).not.toContain("data-dashboard-card");
+
+    const exactObservation = {
+      page_background: "rgb(13, 20, 18)",
+      primary_action: "rgb(70, 199, 142)",
+      card_radius_px: 14,
+      control_radius_px: 10,
+      body_font: "Arial, sans-serif",
+      display_font: "Georgia, serif",
+    };
+    expect(Object.values(
+      evaluateDesignObservation(exactObservation, incidentTask.design_oracle),
+    ).every(Boolean)).toBe(true);
+    expect(evaluateDesignObservation({
+      ...exactObservation,
+      card_radius_px: 0,
+    }, incidentTask.design_oracle).card_radius).toBe(false);
+
+    const exact = [{ name: "desktop", protected: { [marker]: { total: 1, visible: 1 } } }];
+    expect(evaluateProtectedHookCounts(exact, { [marker]: 1 }).exact).toBe(true);
+    expect(evaluateProtectedHookCounts([
+      { name: "desktop", protected: { [marker]: { total: 0, visible: 0 } } },
+    ], { [marker]: 1 }).exact).toBe(false);
+    expect(evaluateProtectedHookCounts([
+      { name: "desktop", protected: { [marker]: { total: 2, visible: 2 } } },
+    ], { [marker]: 1 }).exact).toBe(false);
   });
 });

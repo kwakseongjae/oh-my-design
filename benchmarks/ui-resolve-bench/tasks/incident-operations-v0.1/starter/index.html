@@ -22,7 +22,7 @@
     .filters { display: flex; flex-wrap: wrap; gap: 8px; }
     .filters button, [data-bench="details-button"] { border: 1px solid #2b3933; border-radius: 10px; padding: 10px 16px; background: transparent; color: #ecf4f0; }
     .filters button[aria-pressed="true"] { background: #2b3933; border-color: #9aa9a2; }
-    [data-dashboard-card] { overflow: hidden; border: 1px solid #2b3933; border-radius: 14px; background: #15211d; }
+    [data-bench-design-role="main-console"] { overflow: hidden; border: 1px solid #2b3933; border-radius: 14px; background: #15211d; }
     .table-head, [data-bench="incident-row"] { display: grid; grid-template-columns: 112px 1.6fr 1fr 120px; gap: 18px; align-items: center; padding: 15px 20px; }
     .table-head { color: #9aa9a2; font-size: 12px; font-weight: 700; letter-spacing: .06em; border-bottom: 1px solid #2b3933; }
     [data-bench="incident-row"] { min-height: 68px; border-bottom: 1px solid #2b3933; }
@@ -65,7 +65,7 @@
         <button type="button" data-bench="filter-button" data-filter="warning" aria-pressed="false">Warning</button>
       </div>
     </header>
-    <section data-dashboard-card aria-label="Current incidents">
+    <section data-bench-design-role="main-console" aria-label="Current incidents">
       <div class="table-head" aria-hidden="true"><span>Severity</span><span>Surface</span><span>Owner</span><span>State</span></div>
       <div data-bench="incident-row" data-severity="critical"><strong class="severity critical">CRITICAL</strong><span>Checkout API</span><span>Payments</span><span>Investigating</span></div>
       <div data-bench="incident-row" data-severity="warning"><strong class="severity warning">WARNING</strong><span>Event pipeline</span><span>Data</span><span>Monitoring</span></div>

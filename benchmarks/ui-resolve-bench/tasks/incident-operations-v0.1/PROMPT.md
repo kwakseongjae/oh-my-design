@@ -9,8 +9,13 @@ Treat it as the product contract, not optional inspiration. Do not add external
 dependencies, network calls, remote fonts, images, or unverified reliability
 or performance claims.
 
-Keep the existing incident facts and every `data-bench` hook. Preserve and
-polish these working journeys:
+Keep the existing incident facts, every `data-bench` hook, and exactly one
+`data-bench-design-role="main-console"` marker. That marker identifies the
+overall incident console whose radius belongs to the DESIGN.md main-console
+role. If you reorganize the markup, move the marker with that overall role;
+do not copy or move it onto a subordinate table, panel, row, or note.
+
+Preserve and polish these working journeys:
 
 1. filter the incident list between all, critical, and warning states;
 2. open and close both incident detail disclosures with correct

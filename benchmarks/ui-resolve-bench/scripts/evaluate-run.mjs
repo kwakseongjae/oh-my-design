@@ -376,6 +376,27 @@ export function evaluateFontOracle(observation, oracle) {
   };
 }
 
+export function evaluateDesignObservation(observation, oracle = {}) {
+  const fontChecks = evaluateFontOracle(observation, oracle.font_family);
+  return {
+    page_background:
+      typeof observation?.page_background === "string" &&
+      normalizeColor(observation.page_background) === String(oracle.page_background ?? "").toUpperCase(),
+    primary_action:
+      typeof observation?.primary_action === "string" &&
+      normalizeColor(observation.primary_action) === String(oracle.primary_action ?? "").toUpperCase(),
+    card_radius:
+      Number.isFinite(observation?.card_radius_px) &&
+      Number.isFinite(oracle.card_radius_px) &&
+      Math.abs(observation.card_radius_px - oracle.card_radius_px) <= 1,
+    control_radius:
+      Number.isFinite(observation?.control_radius_px) &&
+      Number.isFinite(oracle.control_radius_px) &&
+      Math.abs(observation.control_radius_px - oracle.control_radius_px) <= 1,
+    fonts: everyCheckPass(fontChecks),
+  };
+}
+
 const everyCheckPass = (checks) =>
   Boolean(checks) && Object.values(checks).length > 0 && Object.values(checks).every((value) => value === true);
 
@@ -1226,23 +1247,7 @@ async function main() {
   };
   const oracle = task.design_oracle ?? {};
   const fontChecks = evaluateFontOracle(design, oracle.font_family);
-  const designChecks = {
-    page_background:
-      typeof design?.page_background === "string" &&
-      normalizeColor(design.page_background) === String(oracle.page_background ?? "").toUpperCase(),
-    primary_action:
-      typeof design?.primary_action === "string" &&
-      normalizeColor(design.primary_action) === String(oracle.primary_action ?? "").toUpperCase(),
-    card_radius:
-      Number.isFinite(design?.card_radius_px) &&
-      Number.isFinite(oracle.card_radius_px) &&
-      Math.abs(design.card_radius_px - oracle.card_radius_px) <= 1,
-    control_radius:
-      Number.isFinite(design?.control_radius_px) &&
-      Number.isFinite(oracle.control_radius_px) &&
-      Math.abs(design.control_radius_px - oracle.control_radius_px) <= 1,
-    fonts: everyCheckPass(fontChecks),
-  };
+  const designChecks = evaluateDesignObservation(design, oracle);
   const unsupportedClaims = findUnsupportedClaims(
     evidenceSources,
     task.protected_unknown_patterns,

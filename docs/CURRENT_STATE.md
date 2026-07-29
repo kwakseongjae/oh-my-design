@@ -3,11 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `fefdec4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-29 · 1.9.73 geometry target-role contract LOCKED
+- 기준 커밋: `ccfc033` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-29 · 1.9.73 geometry target-role contract ACCEPTED
 
 ## 지금 (현재 위치)
 
+- 1.9.73 provider-free geometry target-role calibration이 ACCEPTED됐다. incident task는 `0.4.0`이며 exact protected `data-bench-design-role="main-console"` 1개가 기존 14px oracle의 유일한 측정 대상이다.
+- exact/missing/duplicate marker와 14px main-console/0px subordinate-panel mutation이 각각 pass/fail/fail/pass/fail했다. live starter는 85/85, critical 6/6, design 5/5, marker 4-viewports 1/1 visible, axe serious/critical 0이다.
+- focused 56/56, lint/build/Node syntax/diff가 green이고 provider generation은 0이다. 기존 `/tmp` Taste/UI UX Pro Max checkout의 Git metadata 부재 2건은 불변 환경 실패다.
+- 다음은 deterministic correctness와 분리된 Arena-style blind Ship Preference plane의 provider-free schema/assignment/scoring calibration이다. historical scores는 재평가하지 않는다.
 - 1.9.73 provider-free geometry target-role calibration을 LOCKED했다. incident task `0.3.0`의 ambiguous `data-dashboard-card`를 task `0.4.0`의 exact protected `data-bench-design-role="main-console"`로 교체하되 14px oracle/tolerance/score는 유지한다.
 - historical 1.9.66–1.9.72 score는 재평가하지 않는다. missing/duplicate marker와 0px subordinate-panel marker mutation을 fail-closed한 뒤에만 fresh denominator를 연다.
 - 1.9.72 Grok three-task replacement가 18/18 cells·17/17 cooldown을 global serial로 완료했다. provider failure/retry/fallback/quota stop은 0이며 Grok 한도가 남아 Luna lane은 열지 않았다.

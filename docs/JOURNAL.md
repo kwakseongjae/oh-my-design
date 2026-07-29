@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.73 target-role contract accepted
+- incident task 0.4.0이 exact protected main-console marker를 사용한다.
+- 14px starter는 85/85, 0px inner-panel mutation과 missing/duplicate marker는 fail한다.
+- focused 56/56, lint/build/syntax/diff green, provider generation 0이다.
+- 다음은 별도 Arena-style blind Ship Preference calibration이다.
+
 ## 2026-07-29 (Codex) · 1.9.73 target-role contract locked
 - incident radius recurrence를 generic marker의 measurement-role ambiguity로 확정했다.
 - task 0.4.0에서 exact protected `main-console` marker만 도입하도록 delta를 잠갔다.

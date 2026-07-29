@@ -1,6 +1,6 @@
 # Geometry target-role contract — 1.9.73
 
-Status: **LOCKED; provider-free implementation pending**.
+Status: **ACCEPTED; provider-free**.
 
 ## Frontier gate and bounded hypothesis
 
