@@ -47,7 +47,8 @@
 - checkpoint 9/18 `locale-t2-slate`도 valid/UI-Resolved/85점, 300,780ms/234,305 tokens로 완료됐다. slate locale trial 1/2 token 분산 66,384→234,305은 trial 3 전 해석하지 않는다.
 - checkpoint 10/18 `onboarding-t2-slate`도 valid/UI-Resolved/85점, 133,607ms/106,603 tokens로 완료됐다. 1.9.83이 EPERM으로 멈춘 exact cell boundary를 cache preflight green 뒤 정상 통과해 1.9.84 live closure가 성립했다.
 - onboarding trial 2 pair도 objective ceiling tie다. checkpoint 11/18 `incident-t2-ember`도 valid/UI-Resolved/85점, 256,573ms/71,872 tokens로 완료돼 incident trial 2 pair 역시 ceiling tie다.
-- 다음은 `locale-t2-ember`다. 이 셀이 trial 2 전체를 닫는다.
+- checkpoint 12/18 `locale-t2-ember`도 valid/UI-Resolved/85점, 230,040ms/127,127 tokens로 완료돼 locale trial 2 pair도 ceiling tie다.
+- trial 1/2의 12/12 cells가 valid/UI-Resolved/85다. 다음은 trial 3 `locale-t3-ember`이며 마지막 6셀을 동일 checkpoint 규칙으로 진행한다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.

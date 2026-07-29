@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.85 checkpoint 12/18 · trial 2 complete
+- locale trial 2 ember가 valid/UI-Resolved/85로 완료됐다.
+- pacing/cache green, 230s/127,127 tokens다.
+- trial 1/2의 12/12 cells가 deterministic ceiling을 통과했다.
+- 다음 trial 3 locale ember, 6 cells remaining이다.
+
 ## 2026-07-30 (Codex) · 1.9.85 checkpoint 11/18
 - incident trial 2 ember가 valid/UI-Resolved/85로 완료됐다.
 - pacing/cache green, 257s/71,872 tokens다.
