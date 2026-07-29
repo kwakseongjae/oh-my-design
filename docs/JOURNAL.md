@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.77 reviewer operations locked
+- plan+salt-file 기반 public gallery/private reveal 분리 preparation을 잠갔다.
+- incomplete intake는 exact missing units만 내고 preference를 계산하지 않는다.
+- complete intake는 aggregate+hash lock, unchanged recheck와 mutation fail을 요구한다.
+- provider/reviewer simulation 0이며 실제 사람 투입 전 운영 dry-run까지만 진행한다.
+
 ## 2026-07-29 (Codex) · 1.9.76 preference readiness accepted
 - schema 0.3 reviewer×task unit으로 multi-task reviewer identity를 바로잡았다.
 - complete pair/axis coverage와 disconnected BT graph suppression을 추가했다.

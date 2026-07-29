@@ -3,11 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `09b8520` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-29 · 1.9.76 preference readiness gate ACCEPTED
+- 기준 커밋: `82e098e` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-29 · 1.9.77 reviewer operations package LOCKED
 
 ## 지금 (현재 위치)
 
+- 1.9.77 provider-free reviewer operations package를 LOCKED했다. frozen plan+salt file에서 public galleries/private reveals/private manifest를 분리 생성하고 incomplete progress→complete aggregate→hash lock을 운영한다.
+- 2 tasks×2 reviewers synthetic dry-run으로 stable reviewer/multi-task units, 3/4 resume, complete lock, unchanged recheck, mutation rejection을 검증한다. 실제 reviewer simulation이나 provider generation은 하지 않는다.
 - 1.9.76 provider-free readiness gate가 ACCEPTED됐다. schema 0.3은 stable reviewer identity와 reviewer×task `review_unit_id`를 분리해 같은 사람이 여러 task를 검수해도 사람 수를 부풀리지 않는다.
 - 모든 task×candidate-pair×axis의 unique reviewer/BT-valid vote와 graph connectivity를 검사한다. preference-plane Preview는 24 tasks×5, Verified는 24×10 완전 커버리지이며 overall benchmark publication gate와 분리한다.
 - disconnected axis는 rating/rank/CI를 null로 억제하고 exact deficit/next review unit을 출력한다. synthetic 24×4/5/10이 diagnostic/preview/verified를 정확히 냈고 both-fail dominant edge는 diagnostic에 남았다.
