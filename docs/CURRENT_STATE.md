@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `fefdec4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-28 · 1.9.72 Grok three-task replacement COMPLETE
+- 갱신: 2026-07-29 · 1.9.73 geometry target-role contract LOCKED
 
 ## 지금 (현재 위치)
 
+- 1.9.73 provider-free geometry target-role calibration을 LOCKED했다. incident task `0.3.0`의 ambiguous `data-dashboard-card`를 task `0.4.0`의 exact protected `data-bench-design-role="main-console"`로 교체하되 14px oracle/tolerance/score는 유지한다.
+- historical 1.9.66–1.9.72 score는 재평가하지 않는다. missing/duplicate marker와 0px subordinate-panel marker mutation을 fail-closed한 뒤에만 fresh denominator를 연다.
 - 1.9.72 Grok three-task replacement가 18/18 cells·17/17 cooldown을 global serial로 완료했다. provider failure/retry/fallback/quota stop은 0이며 Grok 한도가 남아 Luna lane은 열지 않았다.
 - OmD는 Internal critical-gate 9/9·Evidence & Unknown 9/9·task Reliability@3 3/3, Raw는 7/9·2/3이다. exact Raw→OmD delta는 `0,+8,+4,0,0,0,0,0,0`, W/T/L 2/7/0, mean +1.33, median 0으로 bounded positive/no-loss다.
 - Cursor 표시명-only attribution 때문에 exported 18 records는 public `invalid-attribution`이고 public UI-Resolved/leaderboard claim은 금지한다. Reliability 수치는 Internal critical-gate eligibility로만 기록한다.

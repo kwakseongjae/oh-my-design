@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.73 target-role contract locked
+- incident radius recurrence를 generic marker의 measurement-role ambiguity로 확정했다.
+- task 0.4.0에서 exact protected `main-console` marker만 도입하도록 delta를 잠갔다.
+- 14px oracle/score/history/skill은 불변이며 provider generation은 0이다.
+- 다음은 task/evaluator helper/mutation tests의 provider-free 구현이다.
+
 ## 2026-07-28 (Codex) · 1.9.72 Grok replacement complete
 - Grok으로 18/18 cells·17/17 cooldown을 retry/fallback 없이 완료했고 Luna는 열지 않았다.
 - OmD Internal Reliability@3 3/3, Raw 2/3; paired W/T/L 2/7/0, mean +1.33, median 0이다.
