@@ -159,6 +159,11 @@ describe("UI-Resolve run matrix preparation", () => {
   it("rejects relative output roots and unsupported effort labels", () => {
     expect(() => validateRunMatrixPlan(plan({ output_root: "tmp/u197" }))).toThrow("absolute path");
     expect(() => validateRunMatrixPlan(plan({ vendors_root: "tmp/vendors" }))).toThrow("vendors_root");
+    expect(() => validateRunMatrixPlan(plan({ attribution_scope: "public-display-name" })))
+      .toThrow("attribution_scope");
+    expect(validateRunMatrixPlan(plan({
+      attribution_scope: "internal-registered-display-name",
+    })).attribution_scope).toBe("internal-registered-display-name");
     const value = plan();
     value.cells[0].effort = "ultra";
     expect(() => validateRunMatrixPlan(value)).toThrow("effort is invalid");

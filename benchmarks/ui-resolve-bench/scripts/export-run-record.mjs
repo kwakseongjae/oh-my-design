@@ -4,6 +4,7 @@ import { basename, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, writeJson } from "./_lib.mjs";
 import { summarizeClaudeToolErrors } from "./check-claude-runner.mjs";
+import { CURSOR_RUNTIME_DISPLAY_LABELS } from "./runtime-contract.mjs";
 
 const FAMILIES = new Set(["model", "skill", "harness", "prompt-arena", "factorial"]);
 
@@ -18,11 +19,22 @@ export function classifyRunStatus(run, score) {
   return "complete";
 }
 
-export function classifyValidity(manifest, runStatus, score, run = null) {
+export function classifyValidity(
+  manifest,
+  runStatus,
+  score,
+  run = null,
+  { attributionScope = "provider-observed-only" } = {},
+) {
   if (manifest?.variant?.track_eligibility?.off_label === true) return "invalid-task";
   if (manifest?.skill?.source_attestation?.publishable === false) return "invalid-attribution";
   if (run?.runtime?.model_evidence_mode === "runtime-reported-display-name") {
-    return "invalid-attribution";
+    const internalRegisteredDisplayName = (
+      attributionScope === "internal-registered-display-name"
+      && run.runtime.runtime_target === "cursor"
+      && CURSOR_RUNTIME_DISPLAY_LABELS[run.runtime.model_requested] === run.runtime.model_reported
+    );
+    if (!internalRegisteredDisplayName) return "invalid-attribution";
   }
   if (manifest?.variant?.kind === "agent-harness" && run) {
     const required = (manifest?.agents?.installed ?? []).map((agent) => agent.id);
@@ -87,11 +99,12 @@ export function buildRunRecord({
   suiteVersion,
   budgetTier,
   executionControl = null,
+  attributionScope = "provider-observed-only",
 }) {
   if (!FAMILIES.has(family)) throw new Error(`unsupported benchmark family: ${family}`);
   if (!Number.isInteger(trialIndex) || trialIndex < 1) throw new Error("trial index must be a positive integer");
   const runStatus = classifyRunStatus(run, score);
-  const validity = classifyValidity(manifest, runStatus, score, run);
+  const validity = classifyValidity(manifest, runStatus, score, run, { attributionScope });
   const automatedPass = score?.status?.automated_gate_pass === true;
   const productChanged = run?.workspace?.product_changed ?? run?.workspace?.changed ?? false;
   const tokenUsage = summarizeTokenUsage(run);
@@ -120,6 +133,10 @@ export function buildRunRecord({
     trial_index: trialIndex,
     run_status: runStatus,
     validity,
+    attribution_scope: attributionScope,
+    public_model_attribution_eligible:
+      attributionScope === "provider-observed-only"
+      && run?.runtime?.model_evidence_mode === "provider-observed",
     ui_resolved: validity === "valid" ? automatedPass && productChanged : false,
     objective_score: score?.points?.deterministic_total ?? 0,
     objective_max: score?.points?.deterministic_max ?? 85,
@@ -249,6 +266,7 @@ async function main() {
     suiteVersion: String(args.get("suite-version") ?? manifest.task.version),
     budgetTier: String(args.get("budget-tier") ?? "standard"),
     executionControl: matrixCell?.execution_control ?? null,
+    attributionScope: matrixCell?.attribution_scope ?? "provider-observed-only",
   });
   const out = args.get("out")
     ? resolve(String(args.get("out")))

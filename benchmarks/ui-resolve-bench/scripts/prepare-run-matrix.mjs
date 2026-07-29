@@ -11,6 +11,10 @@ const VALID_BENCHMARK_FAMILIES = new Set(["model", "skill", "harness", "prompt-a
 const VALID_COMPARISON_MODES = new Set(["native-capability", "iso-external-budget", "effort-scaling"]);
 const VALID_BUDGET_MODES = new Set(["hard-cap", "observed-only"]);
 const VALID_PACING_POLICIES = new Set(["none", "fixed-inter-cell"]);
+const VALID_ATTRIBUTION_SCOPES = new Set([
+  "provider-observed-only",
+  "internal-registered-display-name",
+]);
 
 function validateBudgetControl(value, label, limitField) {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -150,6 +154,12 @@ export function validateRunMatrixPlan(plan) {
   ) {
     throw new Error("matrix vendors_root must be an absolute path");
   }
+  if (
+    plan.attribution_scope !== undefined
+    && !VALID_ATTRIBUTION_SCOPES.has(plan.attribution_scope)
+  ) {
+    throw new Error("matrix attribution_scope is invalid");
+  }
   if (!Array.isArray(plan.cells) || !plan.cells.length) throw new Error("matrix cells are required");
 
   if (plan.harness_delivery_gates !== undefined) {
@@ -265,6 +275,7 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
       const matrixCell = {
         ...cell,
         execution_control: plan.control_contract ?? null,
+        attribution_scope: plan.attribution_scope ?? "provider-observed-only",
         workspace,
         task_version: manifest.task.version,
         task_prompt_sha256: manifest.task.core_prompt_sha256,

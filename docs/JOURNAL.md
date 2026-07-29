@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.82 attribution planes accepted
+- matrix-cell/run-record에 explicit attribution scope를 추가했다.
+- registered exact Cursor label은 Internal에서만 valid다.
+- Internal row는 public_model_attribution_eligible:false, drift/default는 invalid다.
+- 16/16·lint/build green, provider 0; fresh replacement만 허용한다.
+
 ## 2026-07-29 (Codex) · 1.9.82 attribution planes locked
 - execution validity와 public model attribution eligibility를 분리한다.
 - default/public display-name-only는 계속 invalid다.

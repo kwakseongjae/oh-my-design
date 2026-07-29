@@ -204,9 +204,58 @@ describe("UI-Resolve normalized run exporter", () => {
     }, score)).toBe("failed");
 
     const displayNameOnly = structuredClone(run);
-    displayNameOnly.runtime.model_evidence_mode = "runtime-reported-display-name";
+    displayNameOnly.runtime = {
+      ...displayNameOnly.runtime,
+      runtime_target: "cursor",
+      model_requested: "cursor-grok-4.5-high",
+      model_reported: "Cursor Grok 4.5 High",
+      model_evidence_mode: "runtime-reported-display-name",
+    };
     expect(classifyValidity(manifest, "complete", score, displayNameOnly))
       .toBe("invalid-attribution");
+    expect(classifyValidity(
+      manifest,
+      "complete",
+      score,
+      displayNameOnly,
+      { attributionScope: "internal-registered-display-name" },
+    )).toBe("valid");
+
+    const driftedDisplayName = structuredClone(displayNameOnly);
+    driftedDisplayName.runtime.model_reported = "Grok 4.5";
+    expect(classifyValidity(
+      manifest,
+      "complete",
+      score,
+      driftedDisplayName,
+      { attributionScope: "internal-registered-display-name" },
+    )).toBe("invalid-attribution");
+  });
+
+  it("surfaces Internal attribution scope without making it public-eligible", () => {
+    const displayNameOnly = structuredClone(run);
+    displayNameOnly.runtime = {
+      ...displayNameOnly.runtime,
+      runtime_target: "cursor",
+      model_requested: "cursor-grok-4.5-high",
+      model_reported: "Cursor Grok 4.5 High",
+      model_evidence_mode: "runtime-reported-display-name",
+    };
+    const record = buildRunRecord({
+      workspace: "/tmp/internal-display-name",
+      manifest,
+      run: displayNameOnly,
+      score,
+      family: "skill",
+      systemId: "omd-portable",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "high",
+      attributionScope: "internal-registered-display-name",
+    });
+    expect(record.validity).toBe("valid");
+    expect(record.attribution_scope).toBe("internal-registered-display-name");
+    expect(record.public_model_attribution_eligible).toBe(false);
   });
 
   it("does not count an unchanged starter as a resolved product delivery", () => {

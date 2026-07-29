@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "status": "provider-free-accepted",
+  "patch": "1.9.82",
+  "contract": {
+    "default_scope": "provider-observed-only",
+    "internal_scope": "internal-registered-display-name",
+    "public_model_attribution_eligible_for_internal_scope": false,
+    "historical_rescore_allowed": false
+  },
+  "acceptance": {
+    "focused_tests": {
+      "passed": 16,
+      "failed": 0
+    },
+    "default_display_name_invalid": true,
+    "registered_internal_mapping_valid": true,
+    "drifted_label_invalid": true,
+    "unsupported_scope_rejected": true,
+    "lint": "passed",
+    "build": "passed",
+    "provider_calls": 0
+  },
+  "frozen_root": "/tmp/u1980",
+  "next_step": "Preregister and prepare a fresh replacement matrix with explicit internal-registered-display-name scope.",
+  "claim_limit": "Internal execution validity only; public and Verified model attribution still require provider-observed identity."
+}
