@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.87 automated judge runner
+- one-invocation checkpoint, 30s pacing, strict no-repair JSON runner를 완성했다.
+- primary/reversal 두 호출 전에는 review-unit judgment가 생성되지 않는다.
+- invalid JSON·model drift·process failure는 즉시 root를 freeze한다.
+- focused 9/9·lint·build green; 다음은 fixed Grok 54-call live root다.
+
 ## 2026-07-30 (Codex) · 1.9.86 automated review preparation
 - 1.9.85의 9 exact pairs를 3 judges×분리 좌우 반전 54 packets로 익명화했다.
 - trial 간 비교 혼합과 arm/commit/score/reversal 공개 누출을 차단했다.

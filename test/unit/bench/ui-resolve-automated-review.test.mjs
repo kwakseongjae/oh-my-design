@@ -11,6 +11,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { prepareAutomatedReviewRound } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-automated-review-round.mjs";
+import { runAutomatedReviewRound } from "../../../benchmarks/ui-resolve-bench/scripts/run-automated-review-round.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const task = JSON.parse(readFileSync(
@@ -163,5 +164,104 @@ describe("UI-Resolve automated blind review preparation", () => {
       manifestOut: join(existing.root, "other-manifest.json"),
       methodologyEpoch: "auto-review-fixture-v1",
     })).toThrow(/packets output already exists/i);
+  });
+});
+
+function fakeInvocation(response) {
+  return async ({ packetRoot }) => {
+    const packet = JSON.parse(readFileSync(join(packetRoot, "packet.json"), "utf8"));
+    const document = typeof response === "function" ? response(packet) : response;
+    return {
+      stdout: `${JSON.stringify({ model: "Cursor Grok 4.5 High" })}\n${JSON.stringify({
+        type: "result",
+        result: typeof document === "string" ? document : JSON.stringify(document ?? {
+          assignment_id: packet.assignment_id,
+          axes: {
+            functionality: "a",
+            usability: "a",
+            fidelity: "a",
+            ship_preference: "a",
+          },
+          reason: "A exposes the clearer hierarchy and next action.",
+        }),
+      })}\n`,
+      stderr: "",
+      exit_code: 0,
+      signal: null,
+      timed_out: false,
+      spawn_error: null,
+      wall_ms: 123,
+    };
+  };
+}
+
+async function runOne(round, invoke = fakeInvocation()) {
+  return runAutomatedReviewRound({
+    manifestPath: round.manifest,
+    packetsRoot: round.packets,
+    resultsRoot: join(round.documentRoot, "results"),
+    statePath: join(round.documentRoot, "state.json"),
+    model: "cursor-grok-4.5-high",
+    timeoutMs: 300_000,
+    pacingMs: 30_000,
+    maxNewInvocations: 1,
+    invoke,
+    preflight: () => ({ pass: true, project_root: "fixture" }),
+    now: () => 100_000,
+    wait: async () => {},
+  });
+}
+
+function executableRound() {
+  const data = fixture();
+  const prepared = prepare(data);
+  return { ...prepared, documentRoot: data.root };
+}
+
+describe("UI-Resolve automated blind review runner", () => {
+  it("executes one invocation at a time and assembles a unit only after its isolated reversal", async () => {
+    const round = executableRound();
+    const first = await runOne(round);
+    expect(first).toMatchObject({ status: "prepared", completed_invocations: 1 });
+    const judgmentPath = join(round.documentRoot, "results", "judgments", `${first.invocations[0].review_unit_id}.json`);
+    expect(existsSync(judgmentPath)).toBe(false);
+
+    const second = await runOne(round);
+    expect(second.completed_invocations).toBe(2);
+    expect(existsSync(judgmentPath)).toBe(true);
+    const judgment = JSON.parse(readFileSync(judgmentPath, "utf8"));
+    expect(judgment.judgments).toHaveLength(2);
+    expect(new Set(judgment.judgments.map((item) => item.assignment_id)).size).toBe(2);
+  });
+
+  it("freezes strict invalid JSON without repair and refuses resume", async () => {
+    const round = executableRound();
+    const state = await runOne(round, fakeInvocation("```json\n{}\n```"));
+    expect(state.status).toBe("frozen");
+    expect(state.completed_invocations).toBe(0);
+    expect(state.stop.reason).toBe("strict-response-invalid");
+    await expect(runOne(round)).rejects.toThrow(/root is frozen/i);
+  });
+
+  it("freezes display-name drift and provider process failure", async () => {
+    const drift = executableRound();
+    const driftInvoke = async ({ packetRoot }) => {
+      const base = await fakeInvocation()({ packetRoot });
+      base.stdout = base.stdout.replace("Cursor Grok 4.5 High", "Unexpected Model");
+      return base;
+    };
+    expect((await runOne(drift, driftInvoke)).stop.reason).toBe("runtime-display-label-mismatch");
+
+    const process = executableRound();
+    const processInvoke = async () => ({
+      stdout: "",
+      stderr: "quota",
+      exit_code: 1,
+      signal: null,
+      timed_out: false,
+      spawn_error: null,
+      wall_ms: 50,
+    });
+    expect((await runOne(process, processInvoke)).stop.reason).toBe("provider-process-failure");
   });
 });
