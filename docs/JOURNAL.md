@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.83 checkpoint 5/18
+- incident trial 1 pair도 두 arm valid/UI-Resolved/85로 완성됐다.
+- slate/ember는 283s·109,680 / 515s·253,121 tokens다.
+- 두 pair 모두 objective tie, ember compute 증가는 efficiency 후보로만 기록한다.
+- 다음 locale ember가 trial 1 세 번째 pair를 닫는다.
+
 ## 2026-07-29 (Codex) · 1.9.83 checkpoint 4/18
 - onboarding trial 1 slate/ember pair가 모두 valid/UI-Resolved/85로 완성됐다.
 - wall time은 219s/222s, tokens는 59,501/221,846이다.
