@@ -26,6 +26,8 @@
 - checkpoint 5/18 incident-t1-slate도 valid/UI-Resolved/85점, 283,282ms/109,680 tokens로 완료됐다. incident trial 1도 objective tie이며 ember 515,439ms/253,121 tokens가 더 큰 compute를 사용했다.
 - checkpoint 6/18 locale-t1-ember도 valid/UI-Resolved/85점, 397,060ms/282,273 tokens로 완료됐다. locale slate는 208,324ms/106,904 tokens다.
 - trial 1의 3 task×2 arms가 모두 valid/UI-Resolved/85 ceiling tie다. ember가 세 task 모두 더 많은 tokens를 사용했지만 visual preference는 automated blind judge 전까지 해석 금지다. 다음은 onboarding-t2-ember다.
+- checkpoint 7/18 onboarding-t2-ember도 valid/UI-Resolved/85점, 240,001ms/176,051 tokens로 완료됐다. trial 1 ember 221,846 대비 usage 분산이 있으므로 trial 3 전 efficiency 결론은 보류한다.
+- 다음은 incident-t2-slate다. owner/human input 없이 remaining automatic cells를 checkpoint-bounded로 계속하며 첫 failure에만 freeze한다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
