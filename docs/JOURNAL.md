@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.90 live automated review 10/54
+- incident trial 2의 judge-001/002 primary+reversal까지 추가 완료했다.
+- 10 calls 모두 provider/cache/registry/strict JSON green, retry/fallback/repair 0이다.
+- registry 기본명에 event High명이 10/10이지만 locked Internal alias로 기록됐다.
+- 다음은 judge-003 두 calls와 12/54 aggregate다.
+
 ## 2026-07-30 (Codex) · 1.9.90 live automated review 6/54
 - fresh root에서 incident trial 1의 3 judges×좌우 반전을 모두 닫았다.
 - provider/cache/registry/strict JSON 실패는 0이다.
