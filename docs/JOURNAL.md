@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.83 frozen at 9/18
+- cell 10 pacing은 green이었지만 Cursor cache mkdir EPERM으로 process-failure가 났다.
+- 398ms/event 0/product change 0; 모델 생성·평가 전 실패다.
+- `/tmp/u1983`은 STOP, retry/resume/rescore/substitution 금지다.
+- 다음은 provider 전 cache-write preflight + fresh replacement다.
+
 ## 2026-07-29 (Codex) · 1.9.83 checkpoint 9/18
 - locale trial 2 slate가 valid/UI-Resolved/85로 완료됐다.
 - 268s/97,899 tokens; slate trial 1/2 quality는 동일하다.
