@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.85 checkpoint 7/18
+- onboarding trial 2 ember가 valid/UI-Resolved/85로 완료됐다.
+- pacing/cache green, 238s/182,626 tokens다.
+- trial 간 usage 분산은 trial 3 전 해석하지 않는다.
+- 다음 incident trial 2 slate다.
+
 ## 2026-07-29 (Codex) · 1.9.85 checkpoint 6/18 · trial 1 complete
 - locale pair까지 두 arm valid/UI-Resolved/85로 trial 1이 완성됐다.
 - locale slate/ember는 313s·66,384 / 273s·224,401 tokens다.
