@@ -3,11 +3,26 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `8db2753` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-29 · 1.9.77 reviewer operations package ACCEPTED
+- 기준 커밋: `f6893bd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-29 · 1.9.77 owner blind diagnostic LOCKED + 1.9.78 visual equity preregistered
 
 ## 지금 (현재 위치)
 
+- 마지막 locale unit을 intake해 owner round가 `3/3 complete`됐고 aggregate+hash lock을 생성했다. unchanged 재실행은 `lock_status: unchanged`로 통과했다.
+- primary votes는 Raw가 Functionality 3/3, Usability 3/3, Fidelity 2/3, Ship Preference 3/3이다. hidden reversal consistency는 8/12(66.7%); onboarding/locale 4/4, incident 0/4라 incident task-level preference는 position-sensitive다.
+- six candidates 모두 deterministic 85/85였으므로 preference plane은 objective ceiling이 보지 못한 visual judgment 차이를 드러냈다. 그러나 1 practitioner×3 historical tasks의 Diagnostic일 뿐 Preview/Verified/public rank가 아니다.
+- 화면 대조에서 OmD가 onboarding의 reversibility callout/selected-state, locale의 active accent, incident의 task-oriented spatial separation을 평평하게 만들 수 있음이 bounded missing contract로 확인됐다.
+- 1.9.78 `visual equity preservation`을 LOCKED했다. 최대 5개의 task-helpful 기존 시각 결정을 `identity/user_value/before_evidence/decision/change_authority`로 기록하고, 사용자 원 요청·explicit DESIGN.md·same-route measured defect 없이 hierarchy/state/reassurance/decision boundary를 약화하지 않는 provider-free patch다.
+- 다음은 canonical `skills/omd-apply/SKILL.md`와 focused distribution tests에만 visual equity ledger/closure를 구현하고 provider generation 0으로 acceptance하는 것이다.
+- owner judgment `review-unit-74e87da2abc03545`를 정상 intake했다. incident schema/epoch/reviewer/task/unit은 manifest와 일치한다.
+- 라운드는 `2/3 complete`, aggregate/lock은 incomplete 상태로 계속 억제했다. 마지막 locale unit `review-unit-3d61c9cb12e23b21`만 남았고 해당 평가 탭을 foreground했다.
+- owner judgment `review-unit-a763b1d7e8ef5953`를 정상 intake했다. onboarding의 base pair와 좌우 반전 duplicate가 4축 모두 동일 candidate를 선택해 내부 일관성도 성립한다.
+- 라운드는 `1/3 complete`, aggregate/lock은 incomplete 상태라 아직 생성하지 않았다. 남은 unit은 incident `review-unit-74e87da2abc03545`, locale `review-unit-3d61c9cb12e23b21`이다.
+- 한 task 화면의 2개 비교는 두 개의 별도 task가 아니라 동일 Raw↔OmD pair의 원본/좌우 반전 reliability check다. incident 탭을 다음 평가 화면으로 foreground했다.
+- 실제 owner practitioner judgment 단계가 열렸다. `/tmp/u1972`의 paired trial 1 Raw/OmD를 onboarding/incident/locale 세 task에 대해 익명화한 1-reviewer×3-task 라운드를 `/tmp/omd-human-review-1977`에 만들었다.
+- 실행물은 task contract 0.3.0이므로 현재 0.4.0으로 위장하지 않고 당시 task snapshot과 current 1.9.77 reviewer operations를 결합한 historical internal epoch `u1972-internal-diagnostic-v1`로 격리했다. 공개 rank/preference claim에는 사용하지 않는다.
+- localhost `127.0.0.1:4777`에 세 블라인드 gallery가 열려 있다. user가 각 축 Functionality/Usability/Fidelity/Ship Preference를 A/B/tie/both-fail로 판단하고 각 task의 `Export judgments`를 내려받는 것이 다음 입력이다.
+- exports가 확보되면 private manifest/reveal은 계속 비공개로 둔 채 1.9.77 intake→complete aggregate→hash lock을 실행한다. 그 전에는 결과를 해석하거나 identity를 reveal하지 않는다.
 - 1.9.77 provider-free reviewer operations package가 ACCEPTED됐다. frozen plan+salt file에서 public galleries/private reveals/private manifest를 staging 후 분리 생성하고 incomplete progress→complete aggregate→hash lock을 운영한다.
 - 2 tasks×2 reviewers dry-run은 public 4/private 4, stable reviewer/multi-task units, 3/4 exact resume, complete lock, unchanged recheck, one-choice mutation rejection을 통과했다.
 - public tree에는 raw reviewer id/salt/candidate label이 없고 salt 값은 subprocess argv에도 들어가지 않는다. focused 18/18, lint/build/4 Node syntax/diff green, provider generation 0이다.

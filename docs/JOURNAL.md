@@ -5,6 +5,29 @@
 
 ---
 
+## 2026-07-29 (Codex) · blind diagnostic locked · 1.9.78 preregistered
+- owner round 3/3을 aggregate+hash lock했고 unchanged recheck도 통과했다.
+- Raw primary votes는 F 3/3·U 3/3·Fidelity 2/3·Ship 3/3, reversal은 8/12였다.
+- one reviewer diagnostic으로만 제한하고 visual-equity missing contract를 도출했다.
+- 1.9.78 visual equity ledger/closure provider-free patch를 preregister했다.
+
+## 2026-07-29 (Codex) · owner blind review 2/3
+- incident judgment의 schema/epoch/reviewer/task/unit 무결성을 확인해 intake했다.
+- complete 2/3이며 aggregate/lock은 계속 생성하지 않았다.
+- 마지막 locale unit 하나가 남아 해당 평가 탭을 표시했다.
+
+## 2026-07-29 (Codex) · owner blind review 1/3
+- onboarding judgment를 정상 intake했고 좌우 반전 응답은 candidate 기준 일치했다.
+- 화면의 2개 비교는 same-pair reversal reliability check임을 확인했다.
+- aggregate/lock은 incomplete로 억제했고 incident·locale 2 units가 남았다.
+- incident 평가 탭을 다음 화면으로 표시했다.
+
+## 2026-07-29 (Codex) · first owner blind-review round ready
+- `/tmp/u1972` paired trial 1의 Raw/OmD를 3-task blind gallery로 패키징했다.
+- task 0.3.0 snapshot을 보존한 internal historical epoch로 current 0.4.0과 격리했다.
+- onboarding/incident/locale 평가 탭 3개를 localhost:4777에 열었다.
+- 다음은 owner의 4-axis 판단과 task별 `Export judgments` 3개다.
+
 ## 2026-07-29 (Codex) · 1.9.77 reviewer operations accepted
 - staged public gallery/private reveal/private manifest round preparer를 추가했다.
 - 3/4 exact resume, 4/4 aggregate+hash lock, unchanged recheck를 검증했다.
