@@ -40,7 +40,10 @@ Completed in the current internal pilot:
   traversal, axe, and expanded unsupported-claim checks;
 - reviewer-specific blind pairwise assignments, hidden A/B reversal repeat,
   ties, both-fail, local judgment export, and a reveal map kept outside the
-  gallery.
+  gallery;
+- strict multi-reviewer judgment/reveal aggregation with identity-normalized
+  votes, reversal consistency, tie/both-fail/modal-agreement diagnostics,
+  regularized Bradley–Terry ratings, and seeded task→reviewer intervals.
 
 Remaining before a paired 12-task run:
 

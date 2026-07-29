@@ -1,6 +1,6 @@
 # Arena-style preference aggregation — 1.9.75
 
-Status: **LOCKED; provider-free implementation pending**.
+Status: **ACCEPTED; provider-free implementation complete**.
 
 ## Frontier gate and bounded hypothesis
 

@@ -166,6 +166,29 @@ intervals, Reliability@k, objective min/mean/median/max and percentiles,
 median-representative/best/worst run IDs, plus paired Skill Lift where a control
 is supplied. Min and max are descriptive and never determine rank.
 
+Blind Ship Preference uses a separate evidence plane. Build one schema `0.2`
+gallery per reviewer, lock their exported judgment JSON, and keep the reveal
+maps outside the galleries. After every reviewer has exactly one matching
+judgment and reveal:
+
+```bash
+npm run bench:ui:preference -- \
+  --judgments /tmp/ui-resolve-review/judgments \
+  --reveals /tmp/ui-resolve-review/reveals \
+  --out /tmp/ui-resolve-review/preference.json \
+  --bootstrap 2000 \
+  --seed 20260729
+```
+
+The command fails closed on schema, epoch, reviewer, task, assignment, axis, or
+choice mismatch. It normalizes A/B to revealed candidate identity, excludes
+hidden reversed duplicates from primary votes, reports reversal consistency,
+ties, both-fail and modal agreement, then writes regularized Bradley–Terry
+ratings with task→reviewer bootstrap rating and rank intervals. The JSON and
+Markdown companion contain no generated timestamp, so the same inputs, seed,
+and iteration count are byte-stable. Synthetic calibration output is not a
+public preference result.
+
 The direct CLI path records model/runtime metadata, full and product-only
 hashes, changed product files, source attestation, wall time, and raw output.
 Every task owns its design oracle, including typography; the evaluator contains

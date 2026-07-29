@@ -77,6 +77,7 @@
     "bench:ui:collect": "node benchmarks/ui-resolve-bench/scripts/collect-run-records.mjs",
     "bench:ui:export": "node benchmarks/ui-resolve-bench/scripts/export-run-record.mjs",
     "bench:ui:gallery": "node benchmarks/ui-resolve-bench/scripts/build-gallery.mjs",
+    "bench:ui:preference": "node benchmarks/ui-resolve-bench/scripts/aggregate-ship-preference.mjs",
     "bench:ui:public-data": "node scripts/build-ui-benchmark-public-data.mjs",
     "bench:ui:public-data:check": "node scripts/build-ui-benchmark-public-data.mjs --check",
     "bench:reference-query": "node benchmarks/ui-resolve-bench/scripts/evaluate-reference-query.mjs",

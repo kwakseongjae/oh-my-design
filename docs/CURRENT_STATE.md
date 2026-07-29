@@ -3,13 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7155795` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-29 · 1.9.75 Arena-style preference aggregation LOCKED
+- 기준 커밋: `a252e3c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-29 · 1.9.75 Arena-style preference aggregation ACCEPTED
 
 ## 지금 (현재 위치)
 
-- 1.9.75 provider-free multi-reviewer aggregator를 LOCKED했다. schema/epoch/reviewer/task/assignment/axis/choice를 strict validate하고 side choice를 candidate identity로 정규화한다.
-- hidden reversal은 consistency에만 사용하고 primary vote/BT에서 제외한다. ties=half win, both-fail=별도 rate, seeded task→reviewer bootstrap으로 rating 95% CI와 rank interval을 만든다.
+- 1.9.75 provider-free multi-reviewer aggregator가 ACCEPTED됐다. schema/epoch/reviewer/task/assignment/axis/choice를 strict validate하고 side choice를 candidate identity로 정규화한다.
+- hidden reversal은 consistency에만 사용하고 primary vote/BT에서 제외한다. ties=half win, both-fail=별도 rate, seeded task→reviewer bootstrap으로 rating 95% CI와 rank interval을 만든다. 동일 input/seed/iteration JSON은 byte-stable하다.
+- 합성 3-reviewer calibration은 primary assignment 3, hidden reverse 3, axis consistency 11/12를 정확히 냈고 majority order 및 all-tie symmetry가 통과했다. focused 8/8, lint/build/Node syntax/diff green, provider generation 0이다.
+- 전체 suite는 280 pass/2 fail/1 skip이었다. 2 fail은 `/tmp/omd-ui-skills-bench/vendors/{taste-skill,ui-ux-pro-max}`에 `.git`이 없는 기존 외부 fixture 상태이며 이번 1.9.75 변경과 무관하다.
 - 1.9.74 Arena-style Ship Preference contract가 provider-free ACCEPTED됐다. schema 0.2는 epoch를 필수로 하고 Functionality/Usability/Fidelity/Ship Preference 각 축에 A/B/tie/both-fail을 모두 요구한다.
 - deterministic automated gate pass artifact만 pair에 들어간다. calibration은 eligible 3/ineligible 1에서 base pair 3 + hidden reversal 1을 만들었고 identity/score/gate/reversal은 reviewer에게 노출되지 않았다.
 - same salt/reviewer/epoch는 deterministic, reviewer/epoch 변화는 order/identity를 바꾼다. focused 18/18, lint/build/Node syntax/diff green, provider generation 0이다.

@@ -80,6 +80,15 @@ Never compare unpaired means as a skill-effect estimate.
   reviewers and task-level comparisons;
 - publish agreement, order-reversal, abstention, and both-fail rates.
 
+The accepted offline implementation is
+`scripts/aggregate-ship-preference.mjs`. Schema `0.2` treats hidden reversed
+duplicates as an order-consistency probe only; they never enter primary vote
+counts or Bradley–Terry fitting. Ties contribute half a win per candidate,
+both-fail is reported and excluded from the fit, and an observed-pair Jeffreys
+prior keeps sparse synthetic calibration finite. Internal confidence intervals
+use a seeded task→reviewer hierarchical bootstrap with 2,000 resamples; a
+verified public result requires the 10,000-resample protocol above.
+
 The visual leaderboard uses `Visual Ship Preference`, not a generic “quality”
 label. It cannot overrule objective task failures.
 

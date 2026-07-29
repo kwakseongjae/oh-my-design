@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.75 preference aggregator accepted
+- strict multi-reviewer judgment/reveal aggregator와 CLI JSON/Markdown 출력을 추가했다.
+- identity normalization, reversal-only consistency, tie/both-fail, modal agreement, regularized BT를 분리했다.
+- seeded task→reviewer bootstrap rating/rank interval과 byte stability를 검증했다.
+- focused 8/8·lint·build·syntax green; 전체 2 fail은 `/tmp` vendor `.git` 부재다.
+- 다음은 real-reviewer frozen-epoch calibration과 coverage/public-package gate다.
+
 ## 2026-07-29 (Codex) · 1.9.75 preference aggregator locked
 - strict judgment/reveal validation과 identity-normalized 집계를 잠갔다.
 - reversal은 bias 진단에만 쓰고 primary rating에서 제외한다.
