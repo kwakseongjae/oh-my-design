@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `32b90ad` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.89 Cursor registry lock ACCEPTED
+- 기준 커밋: `9425800` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-30 · 1.9.90 Cursor Internal alias plane ACCEPTED
 
 ## 지금 (현재 위치)
 
@@ -70,7 +70,10 @@
 - `/tmp/u1988-private`는 14/54 성공 뒤 invocation 15에서 registered display label이 `Cursor Grok 4.5 High`→`Cursor Grok 4.5`로 바뀌어 FROZEN됐다. selector `cursor-grok-4.5-high`는 동일했고 process/assistant JSON은 성공했지만 attribution contract drift로 judgment를 거절했다.
 - retained 14 calls는 incident trial 1의 3 judges와 trial 2의 3 judges, trial 3 judge-001 primary/reversal이다. trial 1/2에서 usability·ship은 각각 3/3 합의지만 두 trial 승자가 반대라 partial aggregate가 tie였고, 이 진단은 fresh denominator로 이전하지 않는다.
 - 1.9.89 provider-free registry lock이 ACCEPTED됐다. fresh root 생성 시 `cursor-agent models` exact selector row의 label을 state에 잠그고 매 invocation 전 다시 조회해 변화하면 provider 전 freeze한다.
-- focused reviewer tests 11/11, Node syntax, lint, build가 green이다. 다음은 commit 뒤 현재 registry label `Cursor Grok 4.5`를 잠근 fresh 54-invocation root다.
+- `/tmp/u1989-private` 첫 call은 registry `Cursor Grok 4.5`를 잠갔지만 provider event가 같은 selector의 이전 label `Cursor Grok 4.5 High`를 보고해 0/54 frozen됐다. exact JSON은 retained/rejected이고 resume하지 않는다.
+- 1.9.90 Internal alias plane이 ACCEPTED됐다. exact selector의 current registry label+source-registered historical label만 private state에 잠그고 둘 중 하나 또는 exact selector만 허용한다. unknown label과 registry drift는 계속 freeze한다.
+- evidence scope는 `internal-selector-plus-registered-alias`, public model attribution false다. focused reviewer tests 12/12, Node syntax, lint, build가 green이다.
+- 다음은 commit 뒤 partial judgment 이전 없이 fresh 54-invocation root를 다시 여는 것이다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.90 Cursor Internal alias plane
+- 1.9.89는 registry 기본명/이벤트 High명 불일치로 첫 call에서 frozen됐다.
+- 같은 selector의 두 관찰·등록 alias만 Internal state에 잠그도록 교정했다.
+- unknown label/registry drift는 계속 차단하고 public attribution은 false다.
+- focused 12/12·lint·build green; fresh 54 root가 다음이다.
+
 ## 2026-07-30 (Codex) · 1.9.89 Cursor registry lock
 - 1.9.88은 14/54 뒤 Cursor label이 High→기본명으로 바뀌어 frozen됐다.
 - selector는 같지만 partial 14 judgments는 fresh denominator로 이전하지 않는다.

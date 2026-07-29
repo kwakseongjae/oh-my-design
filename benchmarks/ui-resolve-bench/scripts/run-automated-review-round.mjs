@@ -13,7 +13,7 @@ import { homedir } from "node:os";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, sha256, writeJson } from "./_lib.mjs";
-import { isCursorLiveModelAllowed } from "./runtime-contract.mjs";
+import { CURSOR_RUNTIME_DISPLAY_LABELS, isCursorLiveModelAllowed } from "./runtime-contract.mjs";
 
 const AXES = Object.freeze(["functionality", "usability", "fidelity", "ship_preference"]);
 const CHOICES = new Set(["a", "b", "tie", "both_fail"]);
@@ -207,7 +207,7 @@ function scheduledInvocations(manifest) {
   })));
 }
 
-function initialState(manifest, model, registeredDisplayLabel, timeoutMs, pacingMs) {
+function initialState(manifest, model, registeredDisplayLabel, registeredDisplayAliases, timeoutMs, pacingMs) {
   return {
     schema_version: "0.1",
     round_id: manifest.round_id,
@@ -215,7 +215,8 @@ function initialState(manifest, model, registeredDisplayLabel, timeoutMs, pacing
     status: "prepared",
     model,
     registered_display_label: registeredDisplayLabel,
-    attribution_scope: "internal-registered-display-name",
+    registered_display_aliases: registeredDisplayAliases,
+    attribution_scope: "internal-selector-plus-registered-alias",
     public_model_attribution_eligible: false,
     timeout_ms: timeoutMs,
     pacing_ms: pacingMs,
@@ -293,7 +294,11 @@ export async function runAutomatedReviewRound({
   } else {
     const registry = registryProbe(model);
     if (registry.selector !== model || !registry.label?.trim()) fail("invalid Cursor model registry evidence");
-    state = initialState(manifest, model, registry.label, timeoutMs, pacingMs);
+    const aliases = [...new Set([
+      registry.label,
+      CURSOR_RUNTIME_DISPLAY_LABELS[model],
+    ].filter((value) => typeof value === "string" && value.trim()))].sort();
+    state = initialState(manifest, model, registry.label, aliases, timeoutMs, pacingMs);
     state.manifest_sha256 = sha256(readFileSync(manifestPath));
     writeJson(statePath, state);
   }
@@ -341,12 +346,12 @@ export async function runAutomatedReviewRound({
     writeFileSync(join(resultDir, "events.jsonl"), raw.stdout ?? "", "utf8");
     writeFileSync(join(resultDir, "stderr.log"), raw.stderr ?? "", "utf8");
     const parsed = finalMessageFromEvents(raw.stdout ?? "");
-    const expectedLabel = state.registered_display_label;
+    const acceptedLabels = new Set([model, ...state.registered_display_aliases]);
     let stopReason = null;
     if (raw.timed_out) stopReason = "provider-timeout";
     else if (raw.spawn_error) stopReason = "provider-spawn-failure";
     else if (raw.exit_code !== 0) stopReason = "provider-process-failure";
-    else if (parsed.modelReported !== expectedLabel && parsed.modelReported !== model) {
+    else if (!acceptedLabels.has(parsed.modelReported)) {
       stopReason = "runtime-display-label-mismatch";
     }
     let judgment = null;
@@ -364,6 +369,7 @@ export async function runAutomatedReviewRound({
       assignment_id: invocation.assignment_id,
       model_requested: model,
       model_reported: parsed.modelReported,
+      accepted_internal_display_aliases: state.registered_display_aliases,
       public_model_attribution_eligible: false,
       process: {
         exit_code: raw.exit_code,

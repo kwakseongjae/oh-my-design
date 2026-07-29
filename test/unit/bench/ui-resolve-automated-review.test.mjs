@@ -344,4 +344,38 @@ describe("UI-Resolve automated blind review runner", () => {
     });
     expect(invoked).toBe(1);
   });
+
+  it("accepts only the exact selector's locked Internal display aliases", async () => {
+    const round = executableRound();
+    const invoke = async ({ packetRoot }) => {
+      const base = await fakeInvocation()({ packetRoot });
+      return base;
+    };
+    const state = await runAutomatedReviewRound({
+      manifestPath: round.manifest,
+      packetsRoot: round.packets,
+      resultsRoot: join(round.documentRoot, "results"),
+      statePath: join(round.documentRoot, "state.json"),
+      model: "cursor-grok-4.5-high",
+      timeoutMs: 300_000,
+      pacingMs: 30_000,
+      maxNewInvocations: 1,
+      invoke,
+      preflight: () => ({ pass: true, project_root: "fixture" }),
+      registryProbe: (model) => ({ selector: model, label: "Cursor Grok 4.5" }),
+      now: () => 100_000,
+      wait: async () => {},
+    });
+    expect(state.status).toBe("prepared");
+    expect(state.registered_display_aliases).toEqual([
+      "Cursor Grok 4.5",
+      "Cursor Grok 4.5 High",
+    ]);
+    const record = JSON.parse(readFileSync(
+      join(round.documentRoot, "results", "invocation-001", "run-record.json"),
+      "utf8",
+    ));
+    expect(record.model_reported).toBe("Cursor Grok 4.5 High");
+    expect(record.public_model_attribution_eligible).toBe(false);
+  });
 });
