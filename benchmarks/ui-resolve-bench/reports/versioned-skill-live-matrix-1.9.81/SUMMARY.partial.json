@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1",
+  "status": "frozen-invalid-attribution",
+  "patch": "1.9.81",
+  "output_root": "/tmp/u1980",
+  "scheduled_cells": 18,
+  "completed_cells": 1,
+  "resumable": false,
+  "failed_cell": {
+    "id": "onboarding-t1-slate",
+    "validity": "invalid-attribution",
+    "ui_resolved": false,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 386611,
+    "tokens": 66043,
+    "model_requested": "cursor-grok-4.5-high",
+    "model_reported": "Cursor Grok 4.5 High",
+    "model_evidence_mode": "runtime-reported-display-name",
+    "usage_evidence": "provider-event",
+    "process_exit_code": 0,
+    "timed_out": false,
+    "changed_product_files": [
+      "index.html"
+    ]
+  },
+  "root_cause": "The exporter categorically invalidates runtime-reported-display-name even when the matrix is preregistered as Internal and the runtime contract confirms the registered selector-to-display-label mapping.",
+  "claim_limit": "No skill-lift, reliability, preference, or public model claim. Diagnostic infrastructure evidence only.",
+  "next_step": "Provider-free attribution-plane separation, then a newly preregistered and freshly prepared replacement root."
+}

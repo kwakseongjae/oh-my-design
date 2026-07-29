@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.81 frozen after cell 1
+- Grok cell 1은 process/edit/85/85를 완료했지만 invalid-attribution으로 제외됐다.
+- exporter가 registered display-name evidence를 Internal scope와 무관하게 전부 무효화한다.
+- `/tmp/u1980/STOP`; resume/rescore/substitution 금지다.
+- 다음은 provider-free internal/public attribution-plane 분리와 fresh replacement다.
+
 ## 2026-07-29 (Codex) · 1.9.81 matrix prepared
 - `/tmp/u1980` 18/18을 exact detached slate/ember로 준비했다.
 - task input equality·distinct skill hash·untouched product tree를 확인했다.
