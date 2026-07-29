@@ -88,4 +88,33 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("공백·주석·timestamp·동일값 치환 같은 no-op");
     expect(skill).toContain("rejected_contract_drift");
   });
+
+  it("preserves task-helpful visual equity under explicit change authority", () => {
+    expect(skill).toContain("visual equity ledger");
+    expect(skill).toContain("최대 5개");
+    expect(skill).toContain(
+      "`identity`, `user_value`, `before_evidence`, `decision(preserve|reinforce|replace)`, `change_authority`",
+    );
+    expect(skill).toContain(
+      "`original user task`, `explicit DESIGN.md rule`, `same consumer route measured defect`",
+    );
+    expect(skill).toContain("`visual_equity: []`와 `visual-equity closure: N/A`");
+    expect(skill).toContain("`visual_equity: []`이면 desktop/mobile 대조 없이");
+    expect(skill).toContain("충돌하면 더 엄격한 계약이 이긴다");
+    expect(skill).toContain("visual-equity closure");
+    expect(skill).toContain("unsupported_hierarchy_loss: 0");
+    expect(skill).toContain("unsupported_state_signal_weakening: 0");
+    expect(skill).toContain("unsupported_reassurance_removal: 0");
+    expect(skill).toContain("unsupported_decision_boundary_collapse: 0");
+
+    // The new closure must remain additive to the previously accepted safety
+    // and delivery contracts.
+    expect(skill).toContain("foreground closure");
+    expect(skill).toContain("geometry-token closure");
+    expect(skill).toContain("interactive closure");
+    expect(skill).toContain("protected ledger");
+    expect(skill).toContain("확인되지 않은 정보 — fallback으로 채우지 않음");
+    expect(skill).toContain("replacement verifier");
+    expect(skill).toContain("delivery_reserve: true");
+  });
 });

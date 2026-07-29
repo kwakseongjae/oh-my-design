@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.78 visual equity accepted
+- canonical omd-apply에 max-5 visual equity ledger와 post-edit closure를 추가했다.
+- visual authority보다 protected/foreground/geometry/interactive의 stricter contract가 우선한다.
+- empty ledger N/A fast path로 low-salience inline tax를 제거했다.
+- 43/43+Cursor 1/1·lint·build·diff green, provider 0; 다음은 fresh old/new skill comparison이다.
+
 ## 2026-07-29 (Codex) · blind diagnostic locked · 1.9.78 preregistered
 - owner round 3/3을 aggregate+hash lock했고 unchanged recheck도 통과했다.
 - Raw primary votes는 F 3/3·U 3/3·Fidelity 2/3·Ship 3/3, reversal은 8/12였다.

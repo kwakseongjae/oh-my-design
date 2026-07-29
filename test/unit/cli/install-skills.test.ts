@@ -789,6 +789,22 @@ describe('install-skills', () => {
     expect(applySkill).toContain('unauthorized_focusable_delta: 0');
     expect(applySkill).toContain('permanently_clipped_focusable: 0');
     expect(applySkill).toContain('unresolved_focus_reveal: 0');
+    expect(applySkill).toContain('visual equity ledger');
+    expect(applySkill).toContain(
+      '`identity`, `user_value`, `before_evidence`, `decision(preserve|reinforce|replace)`, `change_authority`',
+    );
+    expect(applySkill).toContain(
+      '`original user task`, `explicit DESIGN.md rule`, `same consumer route measured defect`',
+    );
+    expect(applySkill).toContain('visual-equity closure');
+    expect(applySkill).toContain('unsupported_hierarchy_loss: 0');
+    expect(applySkill).toContain('unsupported_state_signal_weakening: 0');
+    expect(applySkill).toContain('unsupported_reassurance_removal: 0');
+    expect(applySkill).toContain('unsupported_decision_boundary_collapse: 0');
+    expect(applySkill).toContain('protected ledger');
+    expect(applySkill).toContain('확인되지 않은 정보 — fallback으로 채우지 않음');
+    expect(applySkill).toContain('replacement verifier');
+    expect(applySkill).toContain('delivery_reserve: true');
 
     // The always-on rule is a small bootstrap; procedural instructions live in
     // the dynamically discovered native skill tree.

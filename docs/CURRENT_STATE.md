@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `f6893bd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-29 · 1.9.77 owner blind diagnostic LOCKED + 1.9.78 visual equity preregistered
+- 갱신: 2026-07-29 · 1.9.78 visual equity preservation ACCEPTED
 
 ## 지금 (현재 위치)
 
+- 1.9.78 provider-free visual equity preservation이 ACCEPTED됐다. canonical `omd-apply`는 task-helpful 기존 시각 결정 최대 5개를 visual equity ledger로 잠그고 original user task/explicit DESIGN.md/same-route measured defect 없이 약화·교체하지 않는다.
+- post-edit visual-equity closure는 non-empty ledger에서 same route/state desktop+mobile을 대조하고 hierarchy/state signal/reassurance/decision boundary의 unsupported regression 4종을 0으로 요구한다. empty ledger는 `visual_equity: []` + closure N/A로 inline tax를 피한다.
+- visual authority는 protected behavior/foreground/geometry-token/interactive 계약을 override하지 않고 stricter contract가 우선한다. generic cleanup/minimalism/consolidation/model taste는 authority가 아니며 새 token/fallback/verifier/specialist pass를 만들지 않는다.
+- canonical+install 43/43, Cursor adaptation 1/1, lint/build/diff green, skill 238 lines/SHA `22eb96d8…`, provider generation 0이다. broader bench의 기존 vendor Git-metadata fixture 2 failures는 불변이다.
+- 다음 valid live step은 current-version task에서 pre-1.9.78 old skill과 1.9.78 new skill을 고정 provider·balanced order·repeated trials로 비교하는 fresh denominator다. Raw는 anchor일 수 있지만 patch lift control을 대체하지 않는다.
 - 마지막 locale unit을 intake해 owner round가 `3/3 complete`됐고 aggregate+hash lock을 생성했다. unchanged 재실행은 `lock_status: unchanged`로 통과했다.
 - primary votes는 Raw가 Functionality 3/3, Usability 3/3, Fidelity 2/3, Ship Preference 3/3이다. hidden reversal consistency는 8/12(66.7%); onboarding/locale 4/4, incident 0/4라 incident task-level preference는 position-sensitive다.
 - six candidates 모두 deterministic 85/85였으므로 preference plane은 objective ceiling이 보지 못한 visual judgment 차이를 드러냈다. 그러나 1 practitioner×3 historical tasks의 Diagnostic일 뿐 Preview/Verified/public rank가 아니다.

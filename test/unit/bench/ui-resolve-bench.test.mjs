@@ -241,6 +241,41 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
       "unauthorized_focusable_delta: 0",
     );
+    expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
+      "visual equity ledger",
+    );
+    expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
+      "`identity`, `user_value`, `before_evidence`, `decision(preserve|reinforce|replace)`, `change_authority`",
+    );
+    expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
+      "`original user task`, `explicit DESIGN.md rule`, `same consumer route measured defect`",
+    );
+    expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
+      "visual-equity closure",
+    );
+    for (const zeroRegression of [
+      "unsupported_hierarchy_loss: 0",
+      "unsupported_state_signal_weakening: 0",
+      "unsupported_reassurance_removal: 0",
+      "unsupported_decision_boundary_collapse: 0",
+    ]) {
+      expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
+        zeroRegression,
+      );
+    }
+    for (const preservedContract of [
+      "foreground closure",
+      "geometry-token closure",
+      "interactive closure",
+      "protected ledger",
+      "확인되지 않은 정보 — fallback으로 채우지 않음",
+      "replacement verifier",
+      "delivery_reserve: true",
+    ]) {
+      expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
+        preservedContract,
+      );
+    }
     expect(existsSync(join(out, ".agents/skills"))).toBe(false);
     expect(prompt).toContain("Use the installed /omd-apply skill");
     expect(prompt).not.toContain("$omd:apply");
