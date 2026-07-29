@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1",
+  "status": "provider-free-accepted",
+  "patch": "1.9.80",
+  "contract": {
+    "name": "versioned matrix vendor propagation",
+    "optional_plan_field": "vendors_root",
+    "absolute_path_required": true,
+    "legacy_argument_shape_preserved": true,
+    "per_cell_forwarding": "--vendors <vendors_root>"
+  },
+  "acceptance": {
+    "focused_tests": {
+      "passed": 5,
+      "failed": 0
+    },
+    "real_two_arm_matrix_preparation": "passed",
+    "exact_commit_attestation": "passed",
+    "detached_head_attestation": "passed",
+    "paired_task_and_activation_equality": "passed",
+    "distinct_skill_hashes": "passed",
+    "relative_root_rejection": "passed",
+    "lint": "passed",
+    "build": "passed",
+    "syntax": "passed",
+    "diff_check": "passed",
+    "provider_calls": 0
+  },
+  "next_step": "Freeze and prepare the preregistered 18-cell /tmp/u1980 versioned OmD matrix, then lock provider preflight before cell 1.",
+  "claim_limit": "Controller and preparation acceptance only; no patch-effect or preference claim."
+}

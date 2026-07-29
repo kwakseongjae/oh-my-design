@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.80 versioned matrix preparation accepted
+- matrix plan의 absolute vendors_root를 cell preparer까지 fail-closed 전달한다.
+- 기존 plan argument shape는 그대로이고 relative root는 사전 거절한다.
+- real detached slate/ember matrix·focused 5/5·lint/build/syntax/diff green, provider 0이다.
+- 다음은 fresh `/tmp/u1980` 18-cell root와 runtime preflight lock이다.
+
 ## 2026-07-29 (Codex) · 1.9.80 versioned matrix preparation locked
 - single-cell pinned vendor install은 되지만 matrix controller 전달 경로가 없음을 확인했다.
 - optional absolute vendors_root 전달과 fail-closed 검증만 허용했다.

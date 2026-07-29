@@ -144,6 +144,12 @@ export function validateRunMatrixPlan(plan) {
   if (typeof plan.output_root !== "string" || !isAbsolute(plan.output_root)) {
     throw new Error("matrix output_root must be an absolute path");
   }
+  if (
+    plan.vendors_root !== undefined
+    && (typeof plan.vendors_root !== "string" || !plan.vendors_root || !isAbsolute(plan.vendors_root))
+  ) {
+    throw new Error("matrix vendors_root must be an absolute path");
+  }
   if (!Array.isArray(plan.cells) || !plan.cells.length) throw new Error("matrix cells are required");
 
   if (plan.harness_delivery_gates !== undefined) {
@@ -212,11 +218,12 @@ export function validateRunMatrixPlan(plan) {
   return plan;
 }
 
-export function prepareArgsForCell(cell, workspace) {
+export function prepareArgsForCell(cell, workspace, { vendorsRoot = null } = {}) {
   return [
     "--task", cell.task_id,
     "--variant", cell.variant_id,
     "--runtime", cell.runtime,
+    ...(vendorsRoot ? ["--vendors", vendorsRoot] : []),
     "--out", workspace,
     ...(cell.allow_dirty_source === true ? ["--allow-dirty-source"] : []),
   ];
@@ -247,7 +254,10 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
   for (const cell of plan.cells) {
     const workspace = join(root, cell.id);
     try {
-      execFileSync(process.execPath, [prepareScript, ...prepareArgsForCell(cell, workspace)], {
+      execFileSync(process.execPath, [
+        prepareScript,
+        ...prepareArgsForCell(cell, workspace, { vendorsRoot: plan.vendors_root ?? null }),
+      ], {
         cwd: resolve(fileURLToPath(new URL("../../..", import.meta.url))),
         stdio: "pipe",
       });

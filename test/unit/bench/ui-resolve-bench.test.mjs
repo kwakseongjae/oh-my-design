@@ -3,6 +3,7 @@ import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, 
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import { prepareRunMatrix } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs";
 import { treeManifest } from "../../../benchmarks/ui-resolve-bench/scripts/_lib.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
@@ -378,6 +379,51 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       ], { cwd: repoRoot, encoding: "utf8" });
       expect(attempted.status).not.toBe(0);
       expect(attempted.stderr).toMatch(/detached HEAD/i);
+    });
+  });
+
+  it("prepares a versioned two-arm matrix through the reviewed vendors root", () => {
+    withVersionedOmdVendors((vendors) => {
+      const parent = mkdtempSync(join(tmpdir(), "omd-versioned-matrix-"));
+      const root = join(parent, "matrix");
+      try {
+        const state = prepareRunMatrix({
+          schema_version: "0.1",
+          experiment_id: "versioned-matrix-fixture",
+          output_root: root,
+          vendors_root: vendors,
+          cells: versionedOmdVariants.map((variantId, index) => ({
+            id: index === 0 ? "cell-a" : "cell-b",
+            task_id: "onboarding-setup-v0.1",
+            variant_id: variantId,
+            system_id: variantId,
+            runtime: "cursor",
+            model_id: "fixture-model",
+            effort: "high",
+            timeout_seconds: 900,
+            trial_index: 1,
+          })),
+        });
+        expect(state.status).toBe("prepared");
+        expect(state.prepared_cells).toBe(2);
+        const manifests = ["cell-a", "cell-b"].map((cell) => JSON.parse(readFileSync(
+          join(root, cell, ".benchmark/manifest.json"),
+          "utf8",
+        )));
+        expect(manifests.map((manifest) => manifest.skill.source_commit)).toEqual([
+          competitors.variants["omd-portable-slate"].commit,
+          competitors.variants["omd-portable-ember"].commit,
+        ]);
+        expect(manifests.every((manifest) => (
+          manifest.skill.source_attestation.detached === true
+          && manifest.skill.source_attestation.publishable === true
+        ))).toBe(true);
+        expect(manifests[0].task.core_prompt_sha256).toBe(manifests[1].task.core_prompt_sha256);
+        expect(manifests[0].variant.activation_delta).toBe(manifests[1].variant.activation_delta);
+        expect(manifests[0].skill.sha256).not.toBe(manifests[1].skill.sha256);
+      } finally {
+        rmSync(parent, { recursive: true, force: true });
+      }
     });
   });
 

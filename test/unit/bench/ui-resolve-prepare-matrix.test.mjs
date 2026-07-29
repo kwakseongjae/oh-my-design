@@ -158,6 +158,7 @@ describe("UI-Resolve run matrix preparation", () => {
 
   it("rejects relative output roots and unsupported effort labels", () => {
     expect(() => validateRunMatrixPlan(plan({ output_root: "tmp/u197" }))).toThrow("absolute path");
+    expect(() => validateRunMatrixPlan(plan({ vendors_root: "tmp/vendors" }))).toThrow("vendors_root");
     const value = plan();
     value.cells[0].effort = "ultra";
     expect(() => validateRunMatrixPlan(value)).toThrow("effort is invalid");
@@ -215,6 +216,17 @@ describe("UI-Resolve run matrix preparation", () => {
       "--task", "pricing-conversion-v0.1",
       "--variant", "omd-portable",
       "--runtime", "claude-code",
+      "--out", "/tmp/u197/pricing-t1-portable",
+    ]);
+    expect(prepareArgsForCell(
+      plan().cells[0],
+      "/tmp/u197/pricing-t1-portable",
+      { vendorsRoot: "/tmp/pinned-vendors" },
+    )).toEqual([
+      "--task", "pricing-conversion-v0.1",
+      "--variant", "omd-portable",
+      "--runtime", "claude-code",
+      "--vendors", "/tmp/pinned-vendors",
       "--out", "/tmp/u197/pricing-t1-portable",
     ]);
   });
