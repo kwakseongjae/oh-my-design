@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.85 replacement prepared
+- `/tmp/u1985` 18/18 + exact arms + task equality + untouched trees가 통과했다.
+- evaluator와 authorized Cursor cache preflight가 green이다.
+- no-file/tool Grok probe도 exact OMD_CAPACITY_OK를 반환했다.
+- preparation commit 뒤 cell 1을 연다.
+
 ## 2026-07-29 (Codex) · 1.9.85 fresh replacement locked
 - `/tmp/u1985`에 same 18-cell denominator를 새로 고정했다.
 - 유일한 orchestration delta는 accepted Cursor cache preflight다.
