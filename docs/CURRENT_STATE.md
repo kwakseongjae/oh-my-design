@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `f6893bd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-29 · 1.9.78 visual equity preservation ACCEPTED
+- 갱신: 2026-07-29 · 1.9.78 ACCEPTED + 1.9.79 versioned skill control LOCKED
 
 ## 지금 (현재 위치)
 
+- 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
+- prompt/artifact가 old/new/control/candidate/version을 model 또는 blind reviewer에게 노출하면 reject한다. provider-free acceptance commit 전 provider를 열지 않는다.
+- 통과 뒤 live denominator는 current onboarding 0.3/incident 0.4/locale 0.5 × old/new OmD × 3 trials = 18 cells이며 Raw는 patch-isolation matrix에서 제외한다.
 - 1.9.78 provider-free visual equity preservation이 ACCEPTED됐다. canonical `omd-apply`는 task-helpful 기존 시각 결정 최대 5개를 visual equity ledger로 잠그고 original user task/explicit DESIGN.md/same-route measured defect 없이 약화·교체하지 않는다.
 - post-edit visual-equity closure는 non-empty ledger에서 same route/state desktop+mobile을 대조하고 hierarchy/state signal/reassurance/decision boundary의 unsupported regression 4종을 0으로 요구한다. empty ledger는 `visual_equity: []` + closure N/A로 inline tax를 피한다.
 - visual authority는 protected behavior/foreground/geometry-token/interactive 계약을 override하지 않고 stricter contract가 우선한다. generic cleanup/minimalism/consolidation/model taste는 authority가 아니며 새 token/fallback/verifier/specialist pass를 만들지 않는다.

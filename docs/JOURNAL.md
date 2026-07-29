@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.79 versioned skill control locked
+- Raw가 아닌 pre-1.9.78 OmD vs 1.9.78 OmD로 patch lift를 분리한다.
+- exact clean commits·same declared skill/activation·distinct hashes를 요구한다.
+- prompt/version identity leak과 provider-before-acceptance를 금지했다.
+- 통과 뒤 current 3 tasks×2 skill versions×3 trials fresh matrix를 연다.
+
 ## 2026-07-29 (Codex) · 1.9.78 visual equity accepted
 - canonical omd-apply에 max-5 visual equity ledger와 post-edit closure를 추가했다.
 - visual authority보다 protected/foreground/geometry/interactive의 stricter contract가 우선한다.
