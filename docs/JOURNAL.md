@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.85 checkpoint 9/18
+- locale trial 2 slate가 valid/UI-Resolved/85로 완료됐다.
+- pacing/cache green, 301s/234,305 tokens다.
+- trial 간 usage 분산은 trial 3 전 해석하지 않는다.
+- 다음 onboarding trial 2 slate다.
+
 ## 2026-07-29 (Codex) · 1.9.85 checkpoint 8/18
 - incident trial 2 slate가 valid/UI-Resolved/85로 완료됐다.
 - pacing/cache green, 265s/126,406 tokens다.
