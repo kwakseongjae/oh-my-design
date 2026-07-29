@@ -3,11 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `a252e3c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-29 · 1.9.75 Arena-style preference aggregation ACCEPTED
+- 기준 커밋: `4cae74a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-29 · 1.9.76 preference readiness gate LOCKED
 
 ## 지금 (현재 위치)
 
+- 1.9.76 provider-free readiness gate를 LOCKED했다. schema 0.2의 one-reviewer/one-task 제약을 고치기 위해 stable reviewer identity와 reviewer×task `review_unit_id`를 분리한 schema 0.3을 도입한다.
+- 모든 task×candidate-pair×axis의 unique reviewer/BT-valid vote와 graph connectivity를 검사한다. preference-plane preview는 24 tasks×5, verified는 24×10 완전 커버리지이며 overall benchmark publication gate와 분리한다.
+- disconnected axis는 rating/rank/CI를 null로 억제하고 정확한 deficit/next review unit을 출력한다. provider generation은 0으로 유지한다.
 - 1.9.75 provider-free multi-reviewer aggregator가 ACCEPTED됐다. schema/epoch/reviewer/task/assignment/axis/choice를 strict validate하고 side choice를 candidate identity로 정규화한다.
 - hidden reversal은 consistency에만 사용하고 primary vote/BT에서 제외한다. ties=half win, both-fail=별도 rate, seeded task→reviewer bootstrap으로 rating 95% CI와 rank interval을 만든다. 동일 input/seed/iteration JSON은 byte-stable하다.
 - 합성 3-reviewer calibration은 primary assignment 3, hidden reverse 3, axis consistency 11/12를 정확히 냈고 majority order 및 all-tie symmetry가 통과했다. focused 8/8, lint/build/Node syntax/diff green, provider generation 0이다.

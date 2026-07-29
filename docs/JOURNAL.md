@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.76 preference readiness locked
+- schema 0.2가 동일 reviewer의 multi-task review를 막는 결함을 확인했다.
+- schema 0.3은 stable reviewer와 reviewer×task review unit을 분리한다.
+- 24 tasks×5/10 reviewers, pair/axis valid-vote, connected graph gate를 잠갔다.
+- disconnected rating은 null로 억제하고 exact deficit을 내며 overall publication과 분리한다.
+
 ## 2026-07-29 (Codex) · 1.9.75 preference aggregator accepted
 - strict multi-reviewer judgment/reveal aggregator와 CLI JSON/Markdown 출력을 추가했다.
 - identity normalization, reversal-only consistency, tie/both-fail, modal agreement, regularized BT를 분리했다.
