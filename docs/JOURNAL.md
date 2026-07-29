@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.85 checkpoint 10/18
+- onboarding trial 2 slate가 valid/UI-Resolved/85로 완료됐다.
+- 134s/106,603 tokens; 이전 EPERM exact boundary를 정상 통과했다.
+- 1.9.84 cache preflight live closure가 성립했다.
+- 다음 incident trial 2 ember다.
+
 ## 2026-07-30 (Codex) · 1.9.85 checkpoint 9/18
 - locale trial 2 slate가 valid/UI-Resolved/85로 완료됐다.
 - pacing/cache green, 301s/234,305 tokens다.

@@ -45,7 +45,8 @@
 - checkpoint 7/18 `onboarding-t2-ember`도 valid/UI-Resolved/85점, 238,377ms/182,626 tokens로 완료됐다. ember onboarding trial 1/2 token 분산 285,933→182,626은 trial 3 전 결론을 보류한다.
 - checkpoint 8/18 `incident-t2-slate`도 valid/UI-Resolved/85점, 265,350ms/126,406 tokens로 완료됐다.
 - checkpoint 9/18 `locale-t2-slate`도 valid/UI-Resolved/85점, 300,780ms/234,305 tokens로 완료됐다. slate locale trial 1/2 token 분산 66,384→234,305은 trial 3 전 해석하지 않는다.
-- 다음은 `onboarding-t2-slate`다. 동일 one-cell checkpoint를 계속한다.
+- checkpoint 10/18 `onboarding-t2-slate`도 valid/UI-Resolved/85점, 133,607ms/106,603 tokens로 완료됐다. 1.9.83이 EPERM으로 멈춘 exact cell boundary를 cache preflight green 뒤 정상 통과해 1.9.84 live closure가 성립했다.
+- onboarding trial 2 pair도 objective ceiling tie다. 다음은 `incident-t2-ember`다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
