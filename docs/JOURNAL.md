@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.83 replacement prepared
+- `/tmp/u1983` 18/18 + explicit Internal scope를 검증했다.
+- exact detached arms·task equality·untouched trees가 통과했다.
+- evaluator와 no-file/tool Grok capacity probe가 green이다.
+- preparation commit 뒤 cell 1부터 checkpoint-bounded 실행한다.
+
 ## 2026-07-29 (Codex) · 1.9.83 fresh replacement locked
 - `/tmp/u1983`에 same 18-cell denominator + explicit Internal scope를 고정했다.
 - 전 셀 사람 검수 대신 deterministic→multi-judge→disagreement/sample human ladder다.
