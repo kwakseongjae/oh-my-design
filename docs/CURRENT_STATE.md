@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `ccfc033` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-29 · 1.9.73 geometry target-role contract ACCEPTED
+- 갱신: 2026-07-29 · 1.9.74 Arena-style Ship Preference contract LOCKED
 
 ## 지금 (현재 위치)
 
+- 1.9.74 provider-free Arena-style Ship Preference contract를 LOCKED했다. deterministic gate-eligible artifact만 blind pair에 넣고 Functionality/Usability/Fidelity/Ship Preference 4축을 A/B/tie/both-fail로 수집하며 methodology epoch를 고정한다.
+- identity/score/gate/reversal metadata는 reviewer payload에서 계속 숨기고 reveal map은 gallery 밖에 둔다. Bradley–Terry와 multi-reviewer aggregation은 judgment schema가 accepted된 다음 별도 patch다.
 - 1.9.73 provider-free geometry target-role calibration이 ACCEPTED됐다. incident task는 `0.4.0`이며 exact protected `data-bench-design-role="main-console"` 1개가 기존 14px oracle의 유일한 측정 대상이다.
 - exact/missing/duplicate marker와 14px main-console/0px subordinate-panel mutation이 각각 pass/fail/fail/pass/fail했다. live starter는 85/85, critical 6/6, design 5/5, marker 4-viewports 1/1 visible, axe serious/critical 0이다.
 - focused 56/56, lint/build/Node syntax/diff가 green이고 provider generation은 0이다. 기존 `/tmp` Taste/UI UX Pro Max checkout의 Git metadata 부재 2건은 불변 환경 실패다.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.74 Ship Preference contract locked
+- 기존 blind gallery를 재사용해 4-axis Arena-style judgment schema를 잠갔다.
+- deterministic gate-eligible artifact만 pair에 들어가며 epoch를 필수로 한다.
+- identity/score/gate/reversal은 reviewer에게 숨기고 reveal은 외부 파일로 유지한다.
+- 다음은 provider-free gallery/export contract 구현이다.
+
 ## 2026-07-29 (Codex) · 1.9.73 target-role contract accepted
 - incident task 0.4.0이 exact protected main-console marker를 사용한다.
 - 14px starter는 85/85, 0px inner-panel mutation과 missing/duplicate marker는 fail한다.
