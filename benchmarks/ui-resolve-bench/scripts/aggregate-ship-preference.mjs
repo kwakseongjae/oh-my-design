@@ -47,6 +47,20 @@ function taskKey(task) {
   return `${task.id}@${task.version}:${task.core_prompt_sha256}`;
 }
 
+function pairKey(left, right) {
+  return [left, right].sort().join("\0");
+}
+
+function allPairs(candidateIds) {
+  const pairs = [];
+  for (let left = 0; left < candidateIds.length; left += 1) {
+    for (let right = left + 1; right < candidateIds.length; right += 1) {
+      pairs.push([candidateIds[left], candidateIds[right]]);
+    }
+  }
+  return pairs;
+}
+
 function percentile(values, probability) {
   if (values.length === 0) return null;
   const sorted = [...values].sort((left, right) => left - right);
@@ -155,51 +169,94 @@ function ranksFromRatings(ratings, candidateIds) {
   return ranks;
 }
 
+function graphComponents(candidateIds, votes) {
+  const adjacency = new Map(candidateIds.map((id) => [id, new Set()]));
+  for (const vote of votes.filter((item) => item.outcome !== "both_fail")) {
+    adjacency.get(vote.a).add(vote.b);
+    adjacency.get(vote.b).add(vote.a);
+  }
+  const seen = new Set();
+  const components = [];
+  for (const start of candidateIds) {
+    if (seen.has(start)) continue;
+    const component = [];
+    const queue = [start];
+    seen.add(start);
+    while (queue.length) {
+      const current = queue.shift();
+      component.push(current);
+      for (const next of [...adjacency.get(current)].sort()) {
+        if (seen.has(next)) continue;
+        seen.add(next);
+        queue.push(next);
+      }
+    }
+    components.push(component.sort());
+  }
+  return components.sort((left, right) => left[0].localeCompare(right[0]));
+}
+
 function validateAndNormalize(judgmentFiles, revealFiles) {
-  const judgmentsByReviewer = new Map();
-  const revealsByReviewer = new Map();
+  const judgmentsByUnit = new Map();
+  const revealsByUnit = new Map();
   const epochs = new Set();
 
   for (const path of judgmentFiles) {
     const document = readJson(path);
     assertRecord(document, `judgment ${path}`);
-    if (document.schema_version !== "0.2") fail(`judgment ${path} schema_version must be 0.2`);
-    if (!document.methodology_epoch || !document.reviewer_hash) fail(`judgment ${path} is missing epoch or reviewer hash`);
-    if (judgmentsByReviewer.has(document.reviewer_hash)) fail(`duplicate reviewer judgment: ${document.reviewer_hash}`);
+    if (document.schema_version !== "0.3") fail(`judgment ${path} schema_version must be 0.3`);
+    if (!document.methodology_epoch || !document.reviewer_hash || !document.review_unit_id) {
+      fail(`judgment ${path} is missing epoch, reviewer hash, or review unit`);
+    }
+    assertRecord(document.task, `judgment ${path} task`);
+    if (judgmentsByUnit.has(document.review_unit_id)) fail(`duplicate review unit judgment: ${document.review_unit_id}`);
     if (!Array.isArray(document.judgments)) fail(`judgment ${path} must contain judgments[]`);
     epochs.add(document.methodology_epoch);
-    judgmentsByReviewer.set(document.reviewer_hash, { path, document });
+    judgmentsByUnit.set(document.review_unit_id, { path, document });
   }
 
   for (const path of revealFiles) {
     const document = readJson(path);
     assertRecord(document, `reveal ${path}`);
-    if (document.schema_version !== "0.2") fail(`reveal ${path} schema_version must be 0.2`);
-    if (!document.methodology_epoch || !document.reviewer_hash) fail(`reveal ${path} is missing epoch or reviewer hash`);
-    if (revealsByReviewer.has(document.reviewer_hash)) fail(`duplicate reviewer reveal: ${document.reviewer_hash}`);
+    if (document.schema_version !== "0.3") fail(`reveal ${path} schema_version must be 0.3`);
+    if (!document.methodology_epoch || !document.reviewer_hash || !document.review_unit_id) {
+      fail(`reveal ${path} is missing epoch, reviewer hash, or review unit`);
+    }
+    if (revealsByUnit.has(document.review_unit_id)) fail(`duplicate review unit reveal: ${document.review_unit_id}`);
     assertRecord(document.task, `reveal ${path} task`);
     assertRecord(document.candidates, `reveal ${path} candidates`);
     assertRecord(document.assignments, `reveal ${path} assignments`);
     epochs.add(document.methodology_epoch);
-    revealsByReviewer.set(document.reviewer_hash, { path, document });
+    revealsByUnit.set(document.review_unit_id, { path, document });
   }
 
   if (epochs.size !== 1) fail(`all inputs must share one methodology epoch; found ${[...epochs].sort().join(", ")}`);
-  exactStringSet(judgmentsByReviewer.keys(), revealsByReviewer.keys(), "judgment/reveal reviewer set");
+  exactStringSet(judgmentsByUnit.keys(), revealsByUnit.keys(), "judgment/reveal review-unit set");
 
   const candidates = new Map();
   const tasks = new Map();
+  const taskCandidateSets = new Map();
+  const reviewerTaskUnits = new Set();
+  const reviewers = new Set();
   const primaryVotes = [];
   const reversalChecks = [];
-  for (const reviewerHash of [...judgmentsByReviewer.keys()].sort()) {
-    const judgment = judgmentsByReviewer.get(reviewerHash).document;
-    const reveal = revealsByReviewer.get(reviewerHash).document;
-    if (judgment.methodology_epoch !== reveal.methodology_epoch) fail(`epoch mismatch for reviewer ${reviewerHash}`);
+  for (const reviewUnitId of [...judgmentsByUnit.keys()].sort()) {
+    const judgment = judgmentsByUnit.get(reviewUnitId).document;
+    const reveal = revealsByUnit.get(reviewUnitId).document;
+    if (judgment.methodology_epoch !== reveal.methodology_epoch) fail(`epoch mismatch for review unit ${reviewUnitId}`);
+    if (judgment.reviewer_hash !== reveal.reviewer_hash) fail(`reviewer mismatch for review unit ${reviewUnitId}`);
+    if (judgment.review_unit_id !== reveal.review_unit_id) fail(`review-unit mismatch for ${reviewUnitId}`);
+    const reviewerHash = reveal.reviewer_hash;
     const task = reveal.task;
     for (const field of ["id", "version", "core_prompt_sha256"]) {
-      if (typeof task[field] !== "string" || !task[field]) fail(`task.${field} missing for reviewer ${reviewerHash}`);
+      if (typeof task[field] !== "string" || !task[field]) fail(`task.${field} missing for review unit ${reviewUnitId}`);
+      if (judgment.task[field] !== task[field]) fail(`task.${field} mismatch for review unit ${reviewUnitId}`);
     }
     const key = taskKey(task);
+    const reviewerTaskKey = `${reviewerHash}\0${key}`;
+    if (reviewerTaskUnits.has(reviewerTaskKey)) fail(`duplicate reviewer-task: ${reviewerHash} / ${key}`);
+    reviewerTaskUnits.add(reviewerTaskKey);
+    reviewers.add(reviewerHash);
     tasks.set(key, { id: task.id, version: task.version, core_prompt_sha256: task.core_prompt_sha256 });
 
     const candidateByOpaque = new Map();
@@ -216,6 +273,13 @@ function validateAndNormalize(judgmentFiles, revealFiles) {
       candidates.set(candidate.variant_id, { id: candidate.variant_id, label: candidate.label });
       candidateByOpaque.set(opaque, candidate);
     }
+    const candidateIdsForUnit = [...reviewerVariantIds].sort();
+    if (candidateIdsForUnit.length < 2) fail(`review unit ${reviewUnitId} must contain at least two candidates`);
+    const existingTaskSet = taskCandidateSets.get(key);
+    if (existingTaskSet && JSON.stringify(existingTaskSet) !== JSON.stringify(candidateIdsForUnit)) {
+      fail(`inconsistent candidate set for task ${key}`);
+    }
+    taskCandidateSets.set(key, candidateIdsForUnit);
 
     const assignments = new Map();
     for (const [assignmentId, assignment] of Object.entries(reveal.assignments)) {
@@ -242,6 +306,21 @@ function validateAndNormalize(judgmentFiles, revealFiles) {
         fail(`reversed assignment ${assignmentId} does not reverse ${assignment.reversal_of}`);
       }
     }
+    if (reversedSources.size !== 1) fail(`review unit ${reviewUnitId} must contain exactly one reversed duplicate`);
+
+    const primaryPairKeys = [];
+    for (const assignment of assignments.values()) {
+      if (assignment.reversed_duplicate) continue;
+      primaryPairKeys.push(pairKey(
+        candidateByOpaque.get(assignment.a).variant_id,
+        candidateByOpaque.get(assignment.b).variant_id,
+      ));
+    }
+    exactStringSet(
+      primaryPairKeys,
+      allPairs(candidateIdsForUnit).map(([left, right]) => pairKey(left, right)),
+      `primary candidate pairs for review unit ${reviewUnitId}`,
+    );
 
     const judgments = new Map();
     for (const item of judgment.judgments) {
@@ -266,7 +345,8 @@ function validateAndNormalize(judgmentFiles, revealFiles) {
           primaryVotes.push({
             task_key: key,
             reviewer_hash: reviewerHash,
-            pair_key: [a, b].sort().join("\0"),
+            review_unit_id: reviewUnitId,
+            pair_key: pairKey(a, b),
             axis,
             a,
             b,
@@ -283,6 +363,7 @@ function validateAndNormalize(judgmentFiles, revealFiles) {
         reversalChecks.push({
           task_key: key,
           reviewer_hash: reviewerHash,
+          review_unit_id: reviewUnitId,
           axis,
           original_assignment_id: assignment.reversal_of,
           reversed_assignment_id: assignmentId,
@@ -297,9 +378,11 @@ function validateAndNormalize(judgmentFiles, revealFiles) {
     methodologyEpoch: [...epochs][0],
     candidates: [...candidates.values()].sort((left, right) => left.id.localeCompare(right.id)),
     tasks: [...tasks.values()].sort((left, right) => taskKey(left).localeCompare(taskKey(right))),
+    taskCandidateSets: Object.fromEntries([...taskCandidateSets.entries()].sort(([left], [right]) => left.localeCompare(right))),
     primaryVotes,
     reversalChecks,
-    reviewerCount: judgmentsByReviewer.size,
+    reviewerCount: reviewers.size,
+    reviewUnitCount: judgmentsByUnit.size,
   };
 }
 
@@ -371,6 +454,160 @@ function bootstrapIntervals(primaryVotes, candidateIds, iterations, seed) {
   }))]));
 }
 
+function buildCoverage(normalized, candidateIds) {
+  const taskKeys = normalized.tasks.map((task) => taskKey(task));
+  const globalPairs = allPairs(candidateIds);
+  const pairAxes = [];
+  for (const currentTask of taskKeys) {
+    const taskCandidates = new Set(normalized.taskCandidateSets[currentTask] ?? []);
+    for (const [left, right] of globalPairs) {
+      const key = pairKey(left, right);
+      const pairPresent = taskCandidates.has(left) && taskCandidates.has(right);
+      for (const axis of AXES) {
+        const votes = normalized.primaryVotes.filter((vote) => (
+          vote.task_key === currentTask && vote.pair_key === key && vote.axis === axis
+        ));
+        const uniqueReviewers = new Set(votes.map((vote) => vote.reviewer_hash)).size;
+        const validVotes = votes.filter((vote) => vote.outcome !== "both_fail").length;
+        const bothFail = votes.length - validVotes;
+        pairAxes.push({
+          task_key: currentTask,
+          pair: [left, right],
+          axis,
+          candidate_pair_present: pairPresent,
+          unique_reviewers: uniqueReviewers,
+          primary_votes: votes.length,
+          bradley_terry_valid_votes: validVotes,
+          both_fail_votes: bothFail,
+          both_fail_rate: votes.length ? rounded(bothFail / votes.length) : null,
+        });
+      }
+    }
+  }
+
+  const candidates = Object.fromEntries(candidateIds.map((id) => {
+    const presentTasks = taskKeys.filter((key) => (normalized.taskCandidateSets[key] ?? []).includes(id));
+    const votes = normalized.primaryVotes.filter((vote) => vote.a === id || vote.b === id);
+    return [id, {
+      tasks_present: presentTasks.length,
+      tasks_missing: taskKeys.filter((key) => !presentTasks.includes(key)),
+      unique_reviewers: new Set(votes.map((vote) => vote.reviewer_hash)).size,
+      primary_comparisons: votes.length / AXES.length,
+    }];
+  }));
+
+  const graphs = Object.fromEntries(AXES.map((axis) => {
+    const components = graphComponents(
+      candidateIds,
+      normalized.primaryVotes.filter((vote) => vote.axis === axis),
+    );
+    return [axis, {
+      connected: components.length === 1,
+      component_count: components.length,
+      components,
+    }];
+  }));
+
+  const readinessFor = (minimumReviewers) => {
+    const taskDeficits = [];
+    for (const currentTask of taskKeys) {
+      const rows = pairAxes.filter((row) => row.task_key === currentTask);
+      const validDeficit = rows.length
+        ? Math.max(...rows.map((row) => Math.max(0, minimumReviewers - row.bradley_terry_valid_votes)))
+        : minimumReviewers;
+      const reviewerCount = new Set(
+        normalized.primaryVotes
+          .filter((vote) => vote.task_key === currentTask)
+          .map((vote) => vote.reviewer_hash),
+      ).size;
+      taskDeficits.push({
+        task_key: currentTask,
+        unique_reviewers: reviewerCount,
+        additional_unique_reviewers: Math.max(0, minimumReviewers - reviewerCount),
+        minimum_additional_non_both_fail_review_units: validDeficit,
+      });
+    }
+    const missingTasks = Math.max(0, 24 - taskKeys.length);
+    const pairAxisDeficits = pairAxes
+      .filter((row) => (
+        !row.candidate_pair_present ||
+        row.unique_reviewers < minimumReviewers ||
+        row.bradley_terry_valid_votes < minimumReviewers
+      ))
+      .map((row) => ({
+        task_key: row.task_key,
+        pair: row.pair,
+        axis: row.axis,
+        candidate_pair_present: row.candidate_pair_present,
+        unique_reviewers: row.unique_reviewers,
+        bradley_terry_valid_votes: row.bradley_terry_valid_votes,
+        additional_unique_reviewers: Math.max(0, minimumReviewers - row.unique_reviewers),
+        additional_non_both_fail_votes: Math.max(0, minimumReviewers - row.bradley_terry_valid_votes),
+      }));
+    const disconnectedAxes = AXES.filter((axis) => !graphs[axis].connected);
+    const missingCandidateTasks = Object.entries(candidates)
+      .flatMap(([candidate, value]) => value.tasks_missing.map((missingTask) => ({
+        candidate,
+        task_key: missingTask,
+      })));
+    const uniqueReviewerDeficit = Math.max(0, minimumReviewers - normalized.reviewerCount);
+    const blockers = [];
+    if (missingTasks) blockers.push(`requires ${missingTasks} more tasks to reach 24`);
+    if (uniqueReviewerDeficit) blockers.push(`requires ${uniqueReviewerDeficit} more unique reviewers`);
+    if (missingCandidateTasks.length) blockers.push(`${missingCandidateTasks.length} candidate-task cells are missing`);
+    if (pairAxisDeficits.length) blockers.push(`${pairAxisDeficits.length} task-pair-axis cells are under-covered`);
+    if (disconnectedAxes.length) blockers.push(`disconnected rating graph: ${disconnectedAxes.join(", ")}`);
+    return {
+      met: blockers.length === 0,
+      minimum_reviewers: minimumReviewers,
+      minimum_tasks: 24,
+      blockers,
+      deficits: {
+        additional_tasks: missingTasks,
+        additional_unique_reviewers: uniqueReviewerDeficit,
+        missing_candidate_tasks: missingCandidateTasks,
+        undercovered_pair_axes: pairAxisDeficits,
+        disconnected_axes: disconnectedAxes,
+      },
+      next_review_units: {
+        existing_tasks: taskDeficits,
+        missing_tasks: {
+          count: missingTasks,
+          minimum_review_units_each: minimumReviewers,
+        },
+        minimum_total_assuming_non_both_fail: (
+          taskDeficits.reduce((sum, item) => sum + item.minimum_additional_non_both_fail_review_units, 0) +
+          missingTasks * minimumReviewers
+        ),
+      },
+    };
+  };
+
+  const preview = readinessFor(5);
+  const verified = readinessFor(10);
+  return {
+    tasks: taskKeys.length,
+    unique_reviewers: normalized.reviewerCount,
+    review_units: normalized.reviewUnitCount,
+    candidates,
+    pair_axes: pairAxes,
+    graphs,
+    readiness: {
+      grade: verified.met ? "verified" : preview.met ? "preview" : "diagnostic",
+      scope: "preference_plane_only",
+      preview,
+      verified,
+      overall_benchmark_publishable: false,
+      external_requirements: [
+        "automated run and trial coverage",
+        "runtime and skill attribution",
+        "task-quality and mutation acceptance",
+        "deterministic critical-gate eligibility",
+      ],
+    },
+  };
+}
+
 export function aggregatePreference({
   judgmentFiles,
   revealFiles,
@@ -383,11 +620,13 @@ export function aggregatePreference({
   const normalized = validateAndNormalize(judgmentFiles, revealFiles);
   const candidateIds = normalized.candidates.map((candidate) => candidate.id);
   const intervals = bootstrapIntervals(normalized.primaryVotes, candidateIds, bootstrapIterations, seed);
+  const coverage = buildCoverage(normalized, candidateIds);
   const axes = {};
   for (const axis of AXES) {
     const votes = normalized.primaryVotes.filter((vote) => vote.axis === axis);
-    const ratings = fitBradleyTerry(votes, candidateIds);
-    const ranks = ranksFromRatings(ratings, candidateIds);
+    const connected = coverage.graphs[axis].connected;
+    const fittedRatings = fitBradleyTerry(votes, candidateIds);
+    const fittedRanks = ranksFromRatings(fittedRatings, candidateIds);
     const tieCount = votes.filter((vote) => vote.outcome === "tie").length;
     const bothFailCount = votes.filter((vote) => vote.outcome === "both_fail").length;
     axes[axis] = {
@@ -397,25 +636,31 @@ export function aggregatePreference({
       both_fail_count: bothFailCount,
       both_fail_rate: votes.length ? rounded(bothFailCount / votes.length) : null,
       modal_agreement: modalAgreement(votes),
+      graph: coverage.graphs[axis],
       candidates: Object.fromEntries(candidateIds.map((id) => [id, {
-        rating: ratings[id],
-        rank: ranks[id],
-        ...intervals[axis][id],
+        rating: connected ? fittedRatings[id] : null,
+        rank: connected ? fittedRanks[id] : null,
+        rating_95_ci: connected ? intervals[axis][id].rating_95_ci : [null, null],
+        rank_95_interval: connected ? intervals[axis][id].rank_95_interval : [null, null],
       }])),
     };
   }
   const consistent = normalized.reversalChecks.filter((check) => check.consistent).length;
+  const { readiness, ...coverageSummary } = coverage;
   return {
-    schema_version: "0.2",
-    aggregation_version: "1.9.75",
+    schema_version: "0.3",
+    aggregation_version: "1.9.76",
     methodology_epoch: normalized.methodologyEpoch,
     inputs: {
       reviewers: normalized.reviewerCount,
+      review_units: normalized.reviewUnitCount,
       tasks: normalized.tasks,
       candidates: normalized.candidates,
       primary_assignments: normalized.primaryVotes.length / AXES.length,
       reversed_assignments: normalized.reversalChecks.length / AXES.length,
     },
+    coverage: coverageSummary,
+    readiness,
     method: {
       axes: AXES,
       choices: [...CHOICES],
@@ -447,7 +692,7 @@ export function aggregatePreference({
       })),
     },
     axes,
-    claim_limit: "Synthetic calibration proves only the aggregation pipeline; real blind judgments are required before any public preference or rank claim.",
+    claim_limit: "Preference readiness is only one evidence plane; overall benchmark publication still requires automated run/trial, attribution, task-quality, and deterministic-gate acceptance.",
   };
 }
 
@@ -457,10 +702,15 @@ function markdown(summary) {
     "",
     `- Methodology epoch: \`${summary.methodology_epoch}\``,
     `- Reviewers: ${summary.inputs.reviewers}`,
+    `- Review units: ${summary.inputs.review_units}`,
     `- Tasks: ${summary.inputs.tasks.length}`,
+    `- Preference evidence grade: **${summary.readiness.grade}**`,
     `- Reversal consistency: ${summary.reversal_consistency.consistent}/${summary.reversal_consistency.comparisons} (${rounded(summary.reversal_consistency.rate * 100, 2)}%)`,
     "",
   ];
+  if (summary.readiness.preview.blockers.length) {
+    lines.push("## Preview deficits", "", ...summary.readiness.preview.blockers.map((item) => `- ${item}`), "");
+  }
   for (const axis of AXES) {
     const result = summary.axes[axis];
     lines.push(`## ${axis}`, "", "| Candidate | Rating | 95% CI | Rank | 95% rank interval |", "|---|---:|---:|---:|---:|");
@@ -507,6 +757,8 @@ if (isMain) {
     markdown: markdownPath,
     methodology_epoch: summary.methodology_epoch,
     reviewers: summary.inputs.reviewers,
+    review_units: summary.inputs.review_units,
     tasks: summary.inputs.tasks.length,
+    preference_grade: summary.readiness.grade,
   }, null, 2));
 }

@@ -43,7 +43,10 @@ Completed in the current internal pilot:
   gallery;
 - strict multi-reviewer judgment/reveal aggregation with identity-normalized
   votes, reversal consistency, tie/both-fail/modal-agreement diagnostics,
-  regularized Bradley–Terry ratings, and seeded task→reviewer intervals.
+  regularized Bradley–Terry ratings, and seeded task→reviewer intervals;
+- stable reviewer×task review units, exact pair coverage, connected-rating
+  suppression, deterministic deficits, and 24-task×5/10 preference-plane
+  Preview/Verified readiness gates.
 
 Remaining before a paired 12-task run:
 

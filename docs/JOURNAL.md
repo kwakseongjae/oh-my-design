@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.76 preference readiness accepted
+- schema 0.3 reviewer×task unit으로 multi-task reviewer identity를 바로잡았다.
+- complete pair/axis coverage와 disconnected BT graph suppression을 추가했다.
+- 24×4/5/10은 diagnostic/preview/verified, both-fail edge는 diagnostic을 냈다.
+- focused 15/15·lint·build·syntax green; provider 0, 기존 vendor fixture fail 2다.
+- 다음은 frozen-epoch internal reviewer operations dry-run package다.
+
 ## 2026-07-29 (Codex) · 1.9.76 preference readiness locked
 - schema 0.2가 동일 reviewer의 multi-task review를 막는 결함을 확인했다.
 - schema 0.3은 stable reviewer와 reviewer×task review unit을 분리한다.

@@ -13,6 +13,10 @@ const canonicalPricingTask = JSON.parse(readFileSync(
   join(repoRoot, "benchmarks/ui-resolve-bench/tasks/pricing-conversion-v0.1/task.json"),
   "utf8",
 ));
+const canonicalIncidentTask = JSON.parse(readFileSync(
+  join(repoRoot, "benchmarks/ui-resolve-bench/tasks/incident-operations-v0.1/task.json"),
+  "utf8",
+));
 
 function writeJson(path, value) {
   mkdirSync(resolve(path, ".."), { recursive: true });
@@ -193,12 +197,12 @@ describe("UI-Resolve Bench runner and reports", () => {
       screenshots: true,
     });
 
-    const build = (suffix, reviewer, epoch = "ship-preview-2026q3") => {
+    const build = (suffix, reviewer, epoch = "ship-preview-2026q3", sourceRunsRoot = runsRoot) => {
       const out = join(parent, `gallery-${suffix}`);
       const reveal = join(parent, `reveal-${suffix}.json`);
       const stdout = execFileSync(process.execPath, [
         buildGallery,
-        "--runs", runsRoot,
+        "--runs", sourceRunsRoot,
         "--out", out,
         "--reveal-out", reveal,
         "--reviewer", reviewer,
@@ -219,13 +223,35 @@ describe("UI-Resolve Bench runner and reports", () => {
     const repeated = build("two", "reviewer-17");
     const otherReviewer = build("three", "reviewer-42");
     const otherEpoch = build("four", "reviewer-17", "ship-preview-2026q4");
+    const incidentRunsRoot = join(parent, "incident-runs");
+    mkdirSync(incidentRunsRoot);
+    for (const [variantId, label] of [
+      ["baseline", "No skill"],
+      ["raw-design-md", "Raw DESIGN.md"],
+    ]) {
+      makeRun(incidentRunsRoot, {
+        directory: variantId,
+        variantId,
+        label,
+        run: successfulRun,
+        score: scored(70, { task_contract: true }),
+        screenshots: true,
+        taskId: "incident-operations-v0.1",
+        taskVersion: canonicalIncidentTask.version,
+        corePromptSha256: "incident-core-prompt-sha256-fixture",
+      });
+    }
+    const otherTask = build("five", "reviewer-17", "ship-preview-2026q3", incidentRunsRoot);
     expect(repeated.assignment).toEqual(first.assignment);
     expect(otherReviewer.assignment.assignments).not.toEqual(first.assignment.assignments);
     expect(otherEpoch.assignment.assignments).not.toEqual(first.assignment.assignments);
+    expect(otherTask.assignment.reviewer_hash).toBe(first.assignment.reviewer_hash);
+    expect(otherTask.assignment.review_unit_id).not.toBe(first.assignment.review_unit_id);
     expect(first.assignment.assignment_count).toBe(4);
     expect(first.assignment).toMatchObject({
-      schema_version: "0.2",
+      schema_version: "0.3",
       methodology_epoch: "ship-preview-2026q3",
+      review_unit_id: expect.stringMatching(/^review-unit-/),
       rubric: [
         { id: "functionality" },
         { id: "usability" },
@@ -234,6 +260,8 @@ describe("UI-Resolve Bench runner and reports", () => {
       ],
     });
     expect(first.stdout).toMatchObject({ candidates: 3, excluded_ineligible: 1 });
+    expect(first.stdout.review_unit_id).toBe(first.assignment.review_unit_id);
+    expect(first.revealMap.review_unit_id).toBe(first.assignment.review_unit_id);
     expect(first.assignment.task).toMatchObject({
       id: "pricing-conversion-v0.1",
       version: canonicalPricingTask.version,

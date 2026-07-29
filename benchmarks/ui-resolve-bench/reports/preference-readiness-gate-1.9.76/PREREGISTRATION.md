@@ -1,6 +1,6 @@
 # Preference coverage and readiness gate — 1.9.76
 
-Status: **LOCKED; provider-free implementation pending**.
+Status: **ACCEPTED; provider-free implementation complete**.
 
 ## Problem found after 1.9.75
 

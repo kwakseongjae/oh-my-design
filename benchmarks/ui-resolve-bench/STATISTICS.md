@@ -81,13 +81,22 @@ Never compare unpaired means as a skill-effect estimate.
 - publish agreement, order-reversal, abstention, and both-fail rates.
 
 The accepted offline implementation is
-`scripts/aggregate-ship-preference.mjs`. Schema `0.2` treats hidden reversed
-duplicates as an order-consistency probe only; they never enter primary vote
-counts or Bradley–Terry fitting. Ties contribute half a win per candidate,
-both-fail is reported and excluded from the fit, and an observed-pair Jeffreys
-prior keeps sparse synthetic calibration finite. Internal confidence intervals
-use a seeded task→reviewer hierarchical bootstrap with 2,000 resamples; a
-verified public result requires the 10,000-resample protocol above.
+`scripts/aggregate-ship-preference.mjs`. Schema `0.3` separates stable reviewer
+identity from the reviewer×task review unit, so a person can evaluate multiple
+tasks without inflating practitioner count. Hidden reversed duplicates are an
+order-consistency probe only; they never enter primary vote counts or
+Bradley–Terry fitting. Ties contribute half a win per candidate, both-fail is
+reported and excluded from the fit, and an observed-pair Jeffreys prior keeps
+sparse synthetic calibration finite. Internal confidence intervals use a
+seeded task→reviewer hierarchical bootstrap with 2,000 resamples; a verified
+public result requires the 10,000-resample protocol above.
+
+Ratings are identifiable only when non-`both_fail` comparisons connect every
+candidate. A disconnected axis emits null rating, rank, and confidence/rank
+intervals. Preference-plane Preview requires at least 24 tasks and five valid
+unique-reviewer votes for every task×pair×axis; Verified requires ten. These
+grades do not replace automated trial, attribution, task-quality, or objective
+critical-gate requirements.
 
 The visual leaderboard uses `Visual Ship Preference`, not a generic “quality”
 label. It cannot overrule objective task failures.

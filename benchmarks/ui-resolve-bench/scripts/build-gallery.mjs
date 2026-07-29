@@ -59,7 +59,7 @@ for (const directory of readdirSync(runsRoot).sort()) {
     continue;
   }
 
-  const opaque = `candidate-${sha256(`${salt}:${epoch}:${directory}:${manifest.variant.id}`).slice(0, 10)}`;
+  const opaque = `candidate-${sha256(`${salt}:${epoch}:${manifest.task.id}:${manifest.task.version}:${directory}:${manifest.variant.id}`).slice(0, 10)}`;
   if (usedOpaqueIds.has(opaque)) throw new Error(`opaque candidate collision: ${opaque}`);
   usedOpaqueIds.add(opaque);
   candidates.push({
@@ -96,6 +96,9 @@ if (task.version !== taskVersions[0]) {
 if (!task.review_brief?.trim()) {
   throw new Error(`task ${task.id} must define a neutral review_brief`);
 }
+const reviewUnitId = `review-unit-${sha256(
+  `${salt}:${epoch}:${reviewerHash}:${task.id}:${task.version}:${corePromptHashes[0]}`,
+).slice(0, 16)}`;
 
 mkdirSync(join(out, "assets"), { recursive: true });
 for (const candidate of candidates) {
@@ -110,7 +113,7 @@ for (let left = 0; left < candidates.length; left += 1) {
     const sideHash = sha256(`${salt}:${epoch}:${reviewer}:sides:${pair.join(":")}`);
     const [a, b] = Number.parseInt(sideHash[0], 16) % 2 === 0 ? pair : pair.reverse();
     basePairs.push({
-      assignment_id: `assignment-${sha256(`${salt}:${epoch}:${reviewer}:pair:${pair.slice().sort().join(":")}`).slice(0, 12)}`,
+      assignment_id: `assignment-${sha256(`${salt}:${epoch}:${reviewUnitId}:pair:${pair.slice().sort().join(":")}`).slice(0, 12)}`,
       a,
       b,
       reversed_duplicate: false,
@@ -125,7 +128,7 @@ basePairs.sort((left, right) => (
 
 const repeatedSource = basePairs[0];
 const reversedDuplicate = {
-  assignment_id: `assignment-${sha256(`${salt}:${epoch}:${reviewer}:reversed:${repeatedSource.assignment_id}`).slice(0, 12)}`,
+  assignment_id: `assignment-${sha256(`${salt}:${epoch}:${reviewUnitId}:reversed:${repeatedSource.assignment_id}`).slice(0, 12)}`,
   a: repeatedSource.b,
   b: repeatedSource.a,
   reversed_duplicate: true,
@@ -159,9 +162,10 @@ const rubric = [
   },
 ];
 const blindAssignment = {
-  schema_version: "0.2",
+  schema_version: "0.3",
   methodology_epoch: epoch,
   reviewer_hash: reviewerHash,
+  review_unit_id: reviewUnitId,
   task: {
     id: task.id,
     version: task.version,
@@ -174,11 +178,12 @@ const blindAssignment = {
 };
 writeJson(join(out, "assignment.json"), blindAssignment);
 writeJson(revealOut, {
-  schema_version: "0.2",
+  schema_version: "0.3",
   methodology_epoch: epoch,
   warning: "Keep this file separate from blind reviewers until their verdicts are locked.",
   salt_sha256: sha256(salt),
   reviewer_hash: reviewerHash,
+  review_unit_id: reviewUnitId,
   task: {
     id: task.id,
     version: task.version,
@@ -237,9 +242,10 @@ const html = `<!doctype html>
 <footer><button type="button" id="export">Export judgments</button><span id="export-status" role="status" aria-live="polite"></span></footer>
 <script>
 const assignment = ${JSON.stringify({
-  schema_version: "0.2",
+  schema_version: "0.3",
   methodology_epoch: epoch,
   reviewer_hash: reviewerHash,
+  review_unit_id: reviewUnitId,
   task: { id: task.id, version: task.version, core_prompt_sha256: corePromptHashes[0] },
   rubric: rubric.map(({ id }) => ({ id })),
   assignments: publicAssignments,
@@ -256,9 +262,9 @@ document.getElementById('export').addEventListener('click',()=>{
     }
     judgments.push({assignment_id:item.assignment_id,axes});
   }
-  const payload={schema_version:'0.2',methodology_epoch:assignment.methodology_epoch,exported_at:new Date().toISOString(),reviewer_hash:assignment.reviewer_hash,judgments};
+  const payload={schema_version:'0.3',methodology_epoch:assignment.methodology_epoch,exported_at:new Date().toISOString(),reviewer_hash:assignment.reviewer_hash,review_unit_id:assignment.review_unit_id,task:assignment.task,judgments};
   const blob=new Blob([JSON.stringify(payload,null,2)+'\\n'],{type:'application/json'});
-  const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='ui-resolve-judgments-'+assignment.reviewer_hash+'.json';link.click();URL.revokeObjectURL(url);document.getElementById('export-status').textContent='Judgments exported locally.';
+  const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='ui-resolve-judgments-'+assignment.review_unit_id+'.json';link.click();URL.revokeObjectURL(url);document.getElementById('export-status').textContent='Judgments exported locally.';
 });
 </script></body></html>`;
 writeFileSync(join(out, "index.html"), html, "utf8");
@@ -266,6 +272,7 @@ console.log(JSON.stringify({
   gallery: join(out, "index.html"),
   reveal: revealOut,
   reviewer_hash: reviewerHash,
+  review_unit_id: reviewUnitId,
   methodology_epoch: epoch,
   candidates: candidates.length,
   excluded_ineligible: excludedIneligible,

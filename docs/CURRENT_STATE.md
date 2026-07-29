@@ -3,14 +3,16 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `4cae74a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-29 · 1.9.76 preference readiness gate LOCKED
+- 기준 커밋: `09b8520` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-29 · 1.9.76 preference readiness gate ACCEPTED
 
 ## 지금 (현재 위치)
 
-- 1.9.76 provider-free readiness gate를 LOCKED했다. schema 0.2의 one-reviewer/one-task 제약을 고치기 위해 stable reviewer identity와 reviewer×task `review_unit_id`를 분리한 schema 0.3을 도입한다.
-- 모든 task×candidate-pair×axis의 unique reviewer/BT-valid vote와 graph connectivity를 검사한다. preference-plane preview는 24 tasks×5, verified는 24×10 완전 커버리지이며 overall benchmark publication gate와 분리한다.
-- disconnected axis는 rating/rank/CI를 null로 억제하고 정확한 deficit/next review unit을 출력한다. provider generation은 0으로 유지한다.
+- 1.9.76 provider-free readiness gate가 ACCEPTED됐다. schema 0.3은 stable reviewer identity와 reviewer×task `review_unit_id`를 분리해 같은 사람이 여러 task를 검수해도 사람 수를 부풀리지 않는다.
+- 모든 task×candidate-pair×axis의 unique reviewer/BT-valid vote와 graph connectivity를 검사한다. preference-plane Preview는 24 tasks×5, Verified는 24×10 완전 커버리지이며 overall benchmark publication gate와 분리한다.
+- disconnected axis는 rating/rank/CI를 null로 억제하고 exact deficit/next review unit을 출력한다. synthetic 24×4/5/10이 diagnostic/preview/verified를 정확히 냈고 both-fail dominant edge는 diagnostic에 남았다.
+- focused 15/15, lint/build/Node syntax/diff green, provider generation 0이다. 전체 suite는 287 pass/2 기존 `/tmp` vendor Git-metadata fail/1 opt-in skip이다.
+- 다음은 1.9.77 frozen-epoch internal reviewer operations package다. 실제 24×5를 즉시 요구하지 않고 작은 내부 dry-run에서 assignment delivery, locked export intake, reviewer progress와 deficit resume를 먼저 검증한다.
 - 1.9.75 provider-free multi-reviewer aggregator가 ACCEPTED됐다. schema/epoch/reviewer/task/assignment/axis/choice를 strict validate하고 side choice를 candidate identity로 정규화한다.
 - hidden reversal은 consistency에만 사용하고 primary vote/BT에서 제외한다. ties=half win, both-fail=별도 rate, seeded task→reviewer bootstrap으로 rating 95% CI와 rank interval을 만든다. 동일 input/seed/iteration JSON은 byte-stable하다.
 - 합성 3-reviewer calibration은 primary assignment 3, hidden reverse 3, axis consistency 11/12를 정확히 냈고 majority order 및 all-tie symmetry가 통과했다. focused 8/8, lint/build/Node syntax/diff green, provider generation 0이다.
@@ -18,9 +20,6 @@
 - 1.9.74 Arena-style Ship Preference contract가 provider-free ACCEPTED됐다. schema 0.2는 epoch를 필수로 하고 Functionality/Usability/Fidelity/Ship Preference 각 축에 A/B/tie/both-fail을 모두 요구한다.
 - deterministic automated gate pass artifact만 pair에 들어간다. calibration은 eligible 3/ineligible 1에서 base pair 3 + hidden reversal 1을 만들었고 identity/score/gate/reversal은 reviewer에게 노출되지 않았다.
 - same salt/reviewer/epoch는 deterministic, reviewer/epoch 변화는 order/identity를 바꾼다. focused 18/18, lint/build/Node syntax/diff green, provider generation 0이다.
-- 다음은 strict multi-reviewer judgment/reveal aggregator, identity-normalized reversal consistency, axis distribution, agreement, both-fail, Bradley–Terry와 reviewer/task bootstrap CI의 provider-free calibration이다.
-- 1.9.74 provider-free Arena-style Ship Preference contract를 LOCKED했다. deterministic gate-eligible artifact만 blind pair에 넣고 Functionality/Usability/Fidelity/Ship Preference 4축을 A/B/tie/both-fail로 수집하며 methodology epoch를 고정한다.
-- identity/score/gate/reversal metadata는 reviewer payload에서 계속 숨기고 reveal map은 gallery 밖에 둔다. Bradley–Terry와 multi-reviewer aggregation은 judgment schema가 accepted된 다음 별도 patch다.
 - 1.9.73 provider-free geometry target-role calibration이 ACCEPTED됐다. incident task는 `0.4.0`이며 exact protected `data-bench-design-role="main-console"` 1개가 기존 14px oracle의 유일한 측정 대상이다.
 - exact/missing/duplicate marker와 14px main-console/0px subordinate-panel mutation이 각각 pass/fail/fail/pass/fail했다. live starter는 85/85, critical 6/6, design 5/5, marker 4-viewports 1/1 visible, axe serious/critical 0이다.
 - focused 56/56, lint/build/Node syntax/diff가 green이고 provider generation은 0이다. 기존 `/tmp` Taste/UI UX Pro Max checkout의 Git metadata 부재 2건은 불변 환경 실패다.
