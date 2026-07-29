@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.81 matrix prepared
+- `/tmp/u1980` 18/18을 exact detached slate/ember로 준비했다.
+- task input equality·distinct skill hash·untouched product tree를 확인했다.
+- evaluator preflight와 no-file/tool Grok capacity probe가 통과했다.
+- 다음은 checkpoint-bounded cell 1; 첫 실패 시 root freeze다.
+
 ## 2026-07-29 (Codex) · 1.9.81 versioned live matrix locked
 - fresh `/tmp/u1980` 3 tasks×slate/ember×3 trials=18 cells을 고정했다.
 - task별 arm-first를 2/1로 균형화하고 Grok High·120s·global serial을 잠갔다.
