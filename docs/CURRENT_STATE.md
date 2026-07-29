@@ -49,7 +49,8 @@
 - onboarding trial 2 pair도 objective ceiling tie다. checkpoint 11/18 `incident-t2-ember`도 valid/UI-Resolved/85점, 256,573ms/71,872 tokens로 완료돼 incident trial 2 pair 역시 ceiling tie다.
 - checkpoint 12/18 `locale-t2-ember`도 valid/UI-Resolved/85점, 230,040ms/127,127 tokens로 완료돼 locale trial 2 pair도 ceiling tie다.
 - trial 1/2의 12/12 cells가 valid/UI-Resolved/85다. checkpoint 13/18 `locale-t3-ember`도 valid/UI-Resolved/85점, 250,894ms/126,453 tokens로 완료됐다.
-- 다음은 `onboarding-t3-slate`다. 마지막 5셀을 동일 checkpoint 규칙으로 진행한다.
+- checkpoint 14/18 `onboarding-t3-slate`도 valid/UI-Resolved/85점, 230,743ms/65,468 tokens로 완료됐다. slate onboarding 3/3 deterministic ceiling이다.
+- 다음은 `incident-t3-ember`다. 마지막 4셀을 동일 checkpoint 규칙으로 진행한다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
