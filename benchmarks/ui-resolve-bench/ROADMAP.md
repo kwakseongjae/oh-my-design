@@ -46,7 +46,9 @@ Completed in the current internal pilot:
   regularized Bradley–Terry ratings, and seeded task→reviewer intervals;
 - stable reviewer×task review units, exact pair coverage, connected-rating
   suppression, deterministic deficits, and 24-task×5/10 preference-plane
-  Preview/Verified readiness gates.
+  Preview/Verified readiness gates;
+- staged reviewer-round preparation with public/private separation, resumable
+  missing-unit intake, complete aggregation, and immutable hash rechecks.
 
 Remaining before a paired 12-task run:
 

@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.77 reviewer operations accepted
+- staged public gallery/private reveal/private manifest round preparer를 추가했다.
+- 3/4 exact resume, 4/4 aggregate+hash lock, unchanged recheck를 검증했다.
+- one-choice mutation·unexpected/duplicate/task mismatch/schema 0.2를 fail-close했다.
+- focused 18/18·lint·build·4 syntax green; public leak/provider/reviewer simulation 0이다.
+- STOP: 다음 입력은 frozen epoch의 실제 practitioner judgment다.
+
 ## 2026-07-29 (Codex) · 1.9.77 reviewer operations locked
 - plan+salt-file 기반 public gallery/private reveal 분리 preparation을 잠갔다.
 - incomplete intake는 exact missing units만 내고 preference를 계산하지 않는다.

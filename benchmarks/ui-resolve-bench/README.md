@@ -197,6 +197,37 @@ task-quality, and deterministic-gate evidence. The JSON and Markdown companion
 contain no generated timestamp, so the same inputs, seed, and iteration count
 are byte-stable.
 
+For a multi-task reviewer round, declare opaque reviewer slots and frozen task
+run directories in a private plan. Keep the salt in a permission-controlled
+file; the round preparer does not put its value on the command line:
+
+```bash
+npm run bench:ui:review:prepare -- \
+  --plan /tmp/ui-review/plan.json \
+  --blind-salt-file /tmp/ui-review/secret-salt.txt \
+  --galleries-out /tmp/ui-review/public-galleries \
+  --reveals-out /tmp/ui-review/private-reveals \
+  --manifest-out /tmp/ui-review/private-round-manifest.json
+```
+
+Distribute only `public-galleries`. Collect exported judgment JSON in a
+separate directory, then run intake repeatedly:
+
+```bash
+npm run bench:ui:review:intake -- \
+  --manifest /tmp/ui-review/private-round-manifest.json \
+  --judgments /tmp/ui-review/judgments \
+  --reveals /tmp/ui-review/private-reveals \
+  --out /tmp/ui-review/progress.json \
+  --aggregate-out /tmp/ui-review/preference.json \
+  --lock-out /tmp/ui-review/intake-lock.json
+```
+
+Incomplete intake writes exact missing reviewer-task units and does not
+calculate preference. Complete intake writes the accepted aggregate and a hash
+lock over the round manifest, judgments, reveals, and aggregate. Rechecking the
+same lock succeeds only if every byte is unchanged.
+
 The direct CLI path records model/runtime metadata, full and product-only
 hashes, changed product files, source attestation, wall time, and raw output.
 Every task owns its design oracle, including typography; the evaluator contains

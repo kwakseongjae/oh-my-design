@@ -1,6 +1,6 @@
 # Frozen-epoch reviewer operations package — 1.9.77
 
-Status: **LOCKED; provider-free implementation pending**.
+Status: **ACCEPTED; provider-free implementation complete**.
 
 ## Bounded problem
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { copyFileSync, existsSync, mkdirSync, readdirSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative, resolve, sep } from "node:path";
 import { benchRoot, parseArgs, readJson, sha256, writeJson } from "./_lib.mjs";
 
@@ -8,12 +8,15 @@ const runsRoot = args.get("runs") ? resolve(String(args.get("runs"))) : null;
 const out = args.get("out") ? resolve(String(args.get("out"))) : null;
 const revealOut = args.get("reveal-out") ? resolve(String(args.get("reveal-out"))) : null;
 const reviewer = args.get("reviewer") ? String(args.get("reviewer")).trim() : null;
-const salt = args.get("blind-salt") ? String(args.get("blind-salt")) : null;
+const saltArgument = args.get("blind-salt") ? String(args.get("blind-salt")) : null;
+const saltFile = args.get("blind-salt-file") ? resolve(String(args.get("blind-salt-file"))) : null;
+if (saltArgument && saltFile) throw new Error("use only one of --blind-salt or --blind-salt-file");
+const salt = saltFile ? readFileSync(saltFile, "utf8").trim() : saltArgument;
 const epoch = args.get("epoch") ? String(args.get("epoch")).trim() : null;
 if (!runsRoot || !out || !revealOut || !reviewer || !salt || !epoch) {
   console.error(
     "usage: build-gallery.mjs --runs <parent-dir> --out <new-dir> --reveal-out <outside-file.json> " +
-    "--reviewer <opaque-reviewer-id> --blind-salt <secret-at-least-16-characters> " +
+    "--reviewer <opaque-reviewer-id> (--blind-salt <secret> | --blind-salt-file <secret-file>) " +
     "--epoch <methodology-epoch>",
   );
   process.exit(2);
