@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.85 checkpoint 5/18
+- incident trial 1 pair도 두 arm valid/UI-Resolved/85로 완성됐다.
+- slate/ember는 202s·160,832 / 276s·70,603 tokens다.
+- objective tie, time/token 신호는 엇갈려 결론을 보류한다.
+- 다음 locale trial 1 ember다.
+
 ## 2026-07-29 (Codex) · 1.9.85 checkpoint 4/18
 - onboarding trial 1 pair가 두 arm valid/UI-Resolved/85로 완성됐다.
 - slate/ember는 186s·54,195 / 365s·285,933 tokens다.
