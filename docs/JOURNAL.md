@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.83 fresh replacement locked
+- `/tmp/u1983`에 same 18-cell denominator + explicit Internal scope를 고정했다.
+- 전 셀 사람 검수 대신 deterministic→multi-judge→disagreement/sample human ladder다.
+- 준비·preflight commit 뒤 cell 1을 열며 첫 실패 시 freeze한다.
+
 ## 2026-07-29 (Codex) · 1.9.82 attribution planes accepted
 - matrix-cell/run-record에 explicit attribution scope를 추가했다.
 - registered exact Cursor label은 Internal에서만 valid다.

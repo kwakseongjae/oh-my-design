@@ -18,6 +18,7 @@
 - 1.9.82 attribution-plane separation을 LOCKED했다. default/public은 provider-observed-only를 유지하고, explicit `internal-registered-display-name` scope에서만 registered Cursor selector↔display label을 internal-valid로 허용한다. `/tmp/u1980` rescore는 금지한다.
 - 1.9.82 provider-free attribution-plane separation이 ACCEPTED됐다. scope가 matrix-cell/run-record에 고정되고 Internal display-name row는 valid execution이어도 `public_model_attribution_eligible:false`다. default·unknown/drifted label은 invalid, focused 16/16·lint/build green, provider 0이다.
 - 다음은 explicit Internal scope를 가진 fresh replacement matrix다. `/tmp/u1980`은 계속 frozen이며 어떤 rescore도 하지 않는다.
+- 1.9.83 fresh replacement를 LOCKED했다. `/tmp/u1983`, exact 1.9.81 order/denominator, explicit Internal scope이며 자동 deterministic→anonymous multi-judge reversal→불일치/감사표본만 human review하는 reduced-human ladder를 고정했다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
