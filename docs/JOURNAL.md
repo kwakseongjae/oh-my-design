@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.82 attribution planes locked
+- execution validity와 public model attribution eligibility를 분리한다.
+- default/public display-name-only는 계속 invalid다.
+- explicit Internal + registered exact mapping만 internal-valid 후보가 된다.
+- `/tmp/u1980` rescore 금지, provider 0 patch 뒤 fresh replacement다.
+
 ## 2026-07-29 (Codex) · 1.9.81 frozen after cell 1
 - Grok cell 1은 process/edit/85/85를 완료했지만 invalid-attribution으로 제외됐다.
 - exporter가 registered display-name evidence를 Internal scope와 무관하게 전부 무효화한다.
