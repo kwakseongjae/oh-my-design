@@ -9,6 +9,7 @@
 ## 지금 (현재 위치)
 
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
+- preparation amendment: prereg commit으로 current HEAD가 `8a3e2f0`까지 이동했으므로 mutable current variant는 candidate provenance로 쓰지 않는다. old/new 모두 exact detached vendor checkout과 identity-neutral versioned entry를 사용한다. denominator 변화는 0이다.
 - prompt/artifact가 old/new/control/candidate/version을 model 또는 blind reviewer에게 노출하면 reject한다. provider-free acceptance commit 전 provider를 열지 않는다.
 - 통과 뒤 live denominator는 current onboarding 0.3/incident 0.4/locale 0.5 × old/new OmD × 3 trials = 18 cells이며 Raw는 patch-isolation matrix에서 제외한다.
 - 1.9.78 provider-free visual equity preservation이 ACCEPTED됐다. canonical `omd-apply`는 task-helpful 기존 시각 결정 최대 5개를 visual equity ledger로 잠그고 original user task/explicit DESIGN.md/same-route measured defect 없이 약화·교체하지 않는다.
