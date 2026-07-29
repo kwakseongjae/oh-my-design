@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.74 Ship Preference contract accepted
+- gate-eligible artifact만 4축 A/B/tie/both-fail blind review에 들어간다.
+- schema 0.2가 epoch와 모든 축의 완료를 강제한다.
+- identity/score/gate/reversal은 hidden이고 reveal은 gallery 밖에 유지된다.
+- focused 18/18 green; 다음은 multi-reviewer BT aggregator다.
+
 ## 2026-07-29 (Codex) · 1.9.74 Ship Preference contract locked
 - 기존 blind gallery를 재사용해 4-axis Arena-style judgment schema를 잠갔다.
 - deterministic gate-eligible artifact만 pair에 들어가며 epoch를 필수로 한다.

@@ -3,11 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `ccfc033` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-29 · 1.9.74 Arena-style Ship Preference contract LOCKED
+- 기준 커밋: `7155795` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-29 · 1.9.74 Arena-style Ship Preference contract ACCEPTED
 
 ## 지금 (현재 위치)
 
+- 1.9.74 Arena-style Ship Preference contract가 provider-free ACCEPTED됐다. schema 0.2는 epoch를 필수로 하고 Functionality/Usability/Fidelity/Ship Preference 각 축에 A/B/tie/both-fail을 모두 요구한다.
+- deterministic automated gate pass artifact만 pair에 들어간다. calibration은 eligible 3/ineligible 1에서 base pair 3 + hidden reversal 1을 만들었고 identity/score/gate/reversal은 reviewer에게 노출되지 않았다.
+- same salt/reviewer/epoch는 deterministic, reviewer/epoch 변화는 order/identity를 바꾼다. focused 18/18, lint/build/Node syntax/diff green, provider generation 0이다.
+- 다음은 strict multi-reviewer judgment/reveal aggregator, identity-normalized reversal consistency, axis distribution, agreement, both-fail, Bradley–Terry와 reviewer/task bootstrap CI의 provider-free calibration이다.
 - 1.9.74 provider-free Arena-style Ship Preference contract를 LOCKED했다. deterministic gate-eligible artifact만 blind pair에 넣고 Functionality/Usability/Fidelity/Ship Preference 4축을 A/B/tie/both-fail로 수집하며 methodology epoch를 고정한다.
 - identity/score/gate/reversal metadata는 reviewer payload에서 계속 숨기고 reveal map은 gallery 밖에 둔다. Bradley–Terry와 multi-reviewer aggregation은 judgment schema가 accepted된 다음 별도 patch다.
 - 1.9.73 provider-free geometry target-role calibration이 ACCEPTED됐다. incident task는 `0.4.0`이며 exact protected `data-bench-design-role="main-console"` 1개가 기존 14px oracle의 유일한 측정 대상이다.

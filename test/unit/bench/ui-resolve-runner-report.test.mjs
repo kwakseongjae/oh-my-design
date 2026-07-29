@@ -184,17 +184,26 @@ describe("UI-Resolve Bench runner and reports", () => {
         screenshots: true,
       });
     }
+    makeRun(runsRoot, {
+      directory: "ineligible",
+      variantId: "impeccable-prompt-only",
+      label: "Ineligible visual result",
+      run: successfulRun,
+      score: scored(84, { task_contract: true, accessibility: false }),
+      screenshots: true,
+    });
 
-    const build = (suffix, reviewer) => {
+    const build = (suffix, reviewer, epoch = "ship-preview-2026q3") => {
       const out = join(parent, `gallery-${suffix}`);
       const reveal = join(parent, `reveal-${suffix}.json`);
-      execFileSync(process.execPath, [
+      const stdout = execFileSync(process.execPath, [
         buildGallery,
         "--runs", runsRoot,
         "--out", out,
         "--reveal-out", reveal,
         "--reviewer", reviewer,
         "--blind-salt", "fixed-test-salt-v1",
+        "--epoch", epoch,
       ], { cwd: repoRoot, encoding: "utf8" });
       return {
         out,
@@ -202,15 +211,29 @@ describe("UI-Resolve Bench runner and reports", () => {
         assignment: JSON.parse(readFileSync(join(out, "assignment.json"), "utf8")),
         revealMap: JSON.parse(readFileSync(reveal, "utf8")),
         html: readFileSync(join(out, "index.html"), "utf8"),
+        stdout: JSON.parse(stdout),
       };
     };
 
     const first = build("one", "reviewer-17");
     const repeated = build("two", "reviewer-17");
     const otherReviewer = build("three", "reviewer-42");
+    const otherEpoch = build("four", "reviewer-17", "ship-preview-2026q4");
     expect(repeated.assignment).toEqual(first.assignment);
     expect(otherReviewer.assignment.assignments).not.toEqual(first.assignment.assignments);
+    expect(otherEpoch.assignment.assignments).not.toEqual(first.assignment.assignments);
     expect(first.assignment.assignment_count).toBe(4);
+    expect(first.assignment).toMatchObject({
+      schema_version: "0.2",
+      methodology_epoch: "ship-preview-2026q3",
+      rubric: [
+        { id: "functionality" },
+        { id: "usability" },
+        { id: "fidelity" },
+        { id: "ship_preference" },
+      ],
+    });
+    expect(first.stdout).toMatchObject({ candidates: 3, excluded_ineligible: 1 });
     expect(first.assignment.task).toMatchObject({
       id: "pricing-conversion-v0.1",
       version: canonicalPricingTask.version,
@@ -229,6 +252,14 @@ describe("UI-Resolve Bench runner and reports", () => {
     expect(existsSync(join(first.out, "reveal.json"))).toBe(false);
     expect(first.html).toContain("Tie");
     expect(first.html).toContain("Both fail");
+    expect(first.html).toContain("Functionality");
+    expect(first.html).toContain("Usability");
+    expect(first.html).toContain("Fidelity");
+    expect(first.html).toContain("Ship Preference");
+    expect(first.html).toContain("Complete every axis before exporting.");
+    expect(first.html).toContain("methodology_epoch");
+    expect(first.html).not.toContain("automated_gate_pass");
+    expect(first.html).not.toContain("reversed_duplicate");
     expect(first.html).toContain("A calm, trustworthy pricing page");
     expect(first.html).toContain("new Blob");
     expect(first.html).not.toContain("Raw DESIGN.md");
@@ -241,6 +272,7 @@ describe("UI-Resolve Bench runner and reports", () => {
       "--reveal-out", join(invalidOut, "reveal.json"),
       "--reviewer", "reviewer-17",
       "--blind-salt", "fixed-test-salt-v1",
+      "--epoch", "ship-preview-2026q3",
     ], { cwd: repoRoot, encoding: "utf8", stdio: "pipe" })).toThrow(/outside the gallery directory/i);
 
     const mixedRuns = join(parent, "mixed-runs");
@@ -269,6 +301,7 @@ describe("UI-Resolve Bench runner and reports", () => {
       "--reveal-out", join(parent, "mixed-reveal.json"),
       "--reviewer", "reviewer-17",
       "--blind-salt", "fixed-test-salt-v1",
+      "--epoch", "ship-preview-2026q3",
     ], { cwd: repoRoot, encoding: "utf8", stdio: "pipe" })).toThrow(/exactly one shared task/i);
 
     const missingSaltRuns = join(parent, "missing-salt-runs");
@@ -289,7 +322,17 @@ describe("UI-Resolve Bench runner and reports", () => {
       "--out", join(parent, "missing-salt-gallery"),
       "--reveal-out", join(parent, "missing-salt-reveal.json"),
       "--reviewer", "reviewer-17",
+      "--epoch", "ship-preview-2026q3",
     ], { cwd: repoRoot, encoding: "utf8", stdio: "pipe" })).toThrow(/blind-salt/i);
+
+    expect(() => execFileSync(process.execPath, [
+      buildGallery,
+      "--runs", missingSaltRuns,
+      "--out", join(parent, "missing-epoch-gallery"),
+      "--reveal-out", join(parent, "missing-epoch-reveal.json"),
+      "--reviewer", "reviewer-17",
+      "--blind-salt", "fixed-test-salt-v1",
+    ], { cwd: repoRoot, encoding: "utf8", stdio: "pipe" })).toThrow(/epoch/i);
 
     const mismatchedPromptRuns = join(parent, "mismatched-prompt-runs");
     mkdirSync(mismatchedPromptRuns);
@@ -318,6 +361,7 @@ describe("UI-Resolve Bench runner and reports", () => {
       "--reveal-out", join(parent, "mismatched-prompt-reveal.json"),
       "--reviewer", "reviewer-17",
       "--blind-salt", "fixed-test-salt-v1",
+      "--epoch", "ship-preview-2026q3",
     ], { cwd: repoRoot, encoding: "utf8", stdio: "pipe" })).toThrow(/core prompt hash/i);
   });
 });

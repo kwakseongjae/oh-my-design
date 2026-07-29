@@ -1,6 +1,6 @@
 # Arena-style Ship Preference contract — 1.9.74
 
-Status: **LOCKED; provider-free implementation pending**.
+Status: **ACCEPTED; provider-free**.
 
 ## Frontier gate and bounded hypothesis
 

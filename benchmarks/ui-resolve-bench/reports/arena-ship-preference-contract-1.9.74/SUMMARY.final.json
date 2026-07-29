@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.2",
+  "product_experiment": "1.9.74",
+  "experiment_id": "arena-ship-preference-contract-1.9.74",
+  "status": "accepted_provider_free",
+  "provider_generation": 0,
+  "builder_sha256": "116a8230db8a45cb14a9d55a521742905872e72c8d282dc5b4e6031a2a30be82",
+  "judgment_contract": {
+    "methodology_epoch_required": true,
+    "gate_eligibility": "score.status.automated_gate_pass === true",
+    "axes": [
+      "functionality",
+      "usability",
+      "fidelity",
+      "ship_preference"
+    ],
+    "choices": [
+      "a",
+      "b",
+      "tie",
+      "both_fail"
+    ],
+    "all_axes_required_before_export": true
+  },
+  "blindness": {
+    "opaque_candidate_ids": true,
+    "randomized_side_order": true,
+    "reversed_duplicate": true,
+    "reversal_metadata_reviewer_visible": false,
+    "variant_labels_reviewer_visible": false,
+    "automatic_scores_reviewer_visible": false,
+    "gate_results_reviewer_visible": false,
+    "reveal_outside_gallery": true
+  },
+  "calibration": {
+    "eligible_candidates": 3,
+    "excluded_ineligible": 1,
+    "base_pairs": 3,
+    "hidden_reversed_duplicates": 1,
+    "assignments": 4,
+    "same_reviewer_salt_epoch_deterministic": true,
+    "reviewer_change_reorders": true,
+    "epoch_change_reidentifies_assignments": true,
+    "missing_epoch": "fail",
+    "reveal_inside_gallery": "fail"
+  },
+  "validation": {
+    "focused_tests": "18/18",
+    "typescript": "pass",
+    "build": "pass",
+    "node_syntax": "pass",
+    "diff_check": "pass"
+  },
+  "decision": "accept",
+  "next_action": "Implement strict multi-reviewer reveal/judgment aggregation, reversal consistency, axis distributions, agreement, both-fail rate, and Bradley-Terry bootstrap intervals as a separate provider-free patch."
+}
