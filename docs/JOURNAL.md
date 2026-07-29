@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.89 Cursor registry lock
+- 1.9.88은 14/54 뒤 Cursor label이 High→기본명으로 바뀌어 frozen됐다.
+- selector는 같지만 partial 14 judgments는 fresh denominator로 이전하지 않는다.
+- root 생성/매 호출 전 exact registry row를 잠그고 drift를 provider 전에 차단했다.
+- focused 11/11·lint·build green; fresh 54 root가 다음이다.
+
 ## 2026-07-30 (Codex) · 1.9.88 live automated review 2/54
 - fresh root 첫 incident pair의 judge-001 primary/reversal을 별도 호출로 닫았다.
 - 54s/42s, exact assistant JSON/display/cache 모두 green이다.

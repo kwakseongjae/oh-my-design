@@ -13,7 +13,7 @@ import { homedir } from "node:os";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, sha256, writeJson } from "./_lib.mjs";
-import { CURSOR_RUNTIME_DISPLAY_LABELS, isCursorLiveModelAllowed } from "./runtime-contract.mjs";
+import { isCursorLiveModelAllowed } from "./runtime-contract.mjs";
 
 const AXES = Object.freeze(["functionality", "usability", "fidelity", "ship_preference"]);
 const CHOICES = new Set(["a", "b", "tie", "both_fail"]);
@@ -181,6 +181,19 @@ async function liveCursorInvocation({ packetRoot, model, timeoutMs }) {
   };
 }
 
+function liveCursorRegistryProbe(model) {
+  const cursorBinary = process.env.OMD_CURSOR_AGENT_BIN ?? join(homedir(), ".local", "bin", "cursor-agent");
+  const probe = spawnSync(cursorBinary, ["models"], { encoding: "utf8" });
+  if (probe.status !== 0) fail("cursor-agent model registry probe failed");
+  const entries = probe.stdout.split("\n").flatMap((line) => {
+    const match = /^(\S+)\s+-\s+(.+?)(?:\s+\(current\))?\s*$/.exec(line.trim());
+    return match ? [{ selector: match[1], label: match[2] }] : [];
+  });
+  const exact = entries.filter((entry) => entry.selector === model);
+  if (exact.length !== 1) fail(`Cursor registry must contain exact selector once: ${model}`);
+  return exact[0];
+}
+
 function scheduledInvocations(manifest) {
   return manifest.units.flatMap((unit) => unit.invocations.map((invocation) => ({
     id: `${unit.review_unit_id}:${invocation.assignment_id}`,
@@ -194,13 +207,14 @@ function scheduledInvocations(manifest) {
   })));
 }
 
-function initialState(manifest, model, timeoutMs, pacingMs) {
+function initialState(manifest, model, registeredDisplayLabel, timeoutMs, pacingMs) {
   return {
     schema_version: "0.1",
     round_id: manifest.round_id,
     methodology_epoch: manifest.methodology_epoch,
     status: "prepared",
     model,
+    registered_display_label: registeredDisplayLabel,
     attribution_scope: "internal-registered-display-name",
     public_model_attribution_eligible: false,
     timeout_ms: timeoutMs,
@@ -253,6 +267,7 @@ export async function runAutomatedReviewRound({
   maxNewInvocations = 1,
   invoke = liveCursorInvocation,
   preflight = cursorCachePreflight,
+  registryProbe = liveCursorRegistryProbe,
   now = () => Date.now(),
   wait = (ms) => new Promise((done) => setTimeout(done, ms)),
 }) {
@@ -276,7 +291,9 @@ export async function runAutomatedReviewRound({
     if (state.status === "frozen") fail(`root is frozen: ${state.stop?.reason ?? "unknown"}`);
     if (state.status === "complete") return state;
   } else {
-    state = initialState(manifest, model, timeoutMs, pacingMs);
+    const registry = registryProbe(model);
+    if (registry.selector !== model || !registry.label?.trim()) fail("invalid Cursor model registry evidence");
+    state = initialState(manifest, model, registry.label, timeoutMs, pacingMs);
     state.manifest_sha256 = sha256(readFileSync(manifestPath));
     writeJson(statePath, state);
   }
@@ -287,6 +304,18 @@ export async function runAutomatedReviewRound({
     const packetRoot = resolve(packetsRoot, invocation.relative_packet);
     const packet = readJson(join(packetRoot, "packet.json"));
     if (packet.assignment_id !== invocation.assignment_id) fail("packet assignment mismatch");
+    const registry = registryProbe(model);
+    if (registry.selector !== model || registry.label !== state.registered_display_label) {
+      state.status = "frozen";
+      state.stop = {
+        reason: "registered-display-label-drift",
+        invocation_id: invocation.id,
+        expected: state.registered_display_label,
+        observed: registry.label ?? null,
+      };
+      writeJson(statePath, state);
+      return state;
+    }
     if (state.last_started_at !== null) {
       const elapsed = now() - state.last_started_at;
       if (elapsed < pacingMs) await wait(pacingMs - elapsed);
@@ -312,7 +341,7 @@ export async function runAutomatedReviewRound({
     writeFileSync(join(resultDir, "events.jsonl"), raw.stdout ?? "", "utf8");
     writeFileSync(join(resultDir, "stderr.log"), raw.stderr ?? "", "utf8");
     const parsed = finalMessageFromEvents(raw.stdout ?? "");
-    const expectedLabel = CURSOR_RUNTIME_DISPLAY_LABELS[model];
+    const expectedLabel = state.registered_display_label;
     let stopReason = null;
     if (raw.timed_out) stopReason = "provider-timeout";
     else if (raw.spawn_error) stopReason = "provider-spawn-failure";

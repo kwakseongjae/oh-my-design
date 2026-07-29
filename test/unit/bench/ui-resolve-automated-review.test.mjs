@@ -207,6 +207,7 @@ async function runOne(round, invoke = fakeInvocation()) {
     maxNewInvocations: 1,
     invoke,
     preflight: () => ({ pass: true, project_root: "fixture" }),
+    registryProbe: (model) => ({ selector: model, label: "Cursor Grok 4.5 High" }),
     now: () => 100_000,
     wait: async () => {},
   });
@@ -305,5 +306,42 @@ describe("UI-Resolve automated blind review runner", () => {
     ));
     expect(record.final_message_source).toBe("assistant-content");
     expect(record.judgment.axes.ship_preference).toBe("b");
+  });
+
+  it("locks the registry label at root creation and freezes drift before provider use", async () => {
+    const round = executableRound();
+    let label = "Cursor Grok 4.5 High";
+    let invoked = 0;
+    const options = {
+      manifestPath: round.manifest,
+      packetsRoot: round.packets,
+      resultsRoot: join(round.documentRoot, "results"),
+      statePath: join(round.documentRoot, "state.json"),
+      model: "cursor-grok-4.5-high",
+      timeoutMs: 300_000,
+      pacingMs: 30_000,
+      maxNewInvocations: 1,
+      invoke: async (args) => {
+        invoked += 1;
+        return fakeInvocation()(args);
+      },
+      preflight: () => ({ pass: true, project_root: "fixture" }),
+      registryProbe: (model) => ({ selector: model, label }),
+      now: () => 100_000,
+      wait: async () => {},
+    };
+    const first = await runAutomatedReviewRound(options);
+    expect(first.registered_display_label).toBe("Cursor Grok 4.5 High");
+    expect(invoked).toBe(1);
+    label = "Cursor Grok 4.5";
+    const frozen = await runAutomatedReviewRound(options);
+    expect(frozen.status).toBe("frozen");
+    expect(frozen.completed_invocations).toBe(1);
+    expect(frozen.stop).toMatchObject({
+      reason: "registered-display-label-drift",
+      expected: "Cursor Grok 4.5 High",
+      observed: "Cursor Grok 4.5",
+    });
+    expect(invoked).toBe(1);
   });
 });
