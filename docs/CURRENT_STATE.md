@@ -20,6 +20,8 @@
 - 다음은 explicit Internal scope를 가진 fresh replacement matrix다. `/tmp/u1980`은 계속 frozen이며 어떤 rescore도 하지 않는다.
 - 1.9.83 fresh replacement를 LOCKED했다. `/tmp/u1983`, exact 1.9.81 order/denominator, explicit Internal scope이며 자동 deterministic→anonymous multi-judge reversal→불일치/감사표본만 human review하는 reduced-human ladder를 고정했다.
 - `/tmp/u1983` 18/18 preparation, explicit Internal scope propagation, exact detached arms, task input equality, untouched product trees, evaluator preflight, no-file/tool Grok capacity probe를 통과했다. 다음은 committed preparation 뒤 checkpoint-bounded cell 1이다.
+- `/tmp/u1983` checkpoint 2/18까지 valid/UI-Resolved/85점으로 완료됐다: onboarding-t1-slate 219,238ms/59,501 tokens, incident-t1-ember 515,439ms/253,121 tokens. 둘 다 Internal scope이며 public attribution false, pacing 120.002s green이다.
+- 아직 같은 task의 slate↔ember pair는 없으므로 patch lift 해석은 금지한다. 다음은 locale-t1-slate이며 첫 실패 시 root freeze다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.

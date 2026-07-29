@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.83 checkpoint 2/18
+- onboarding slate와 incident ember가 valid/UI-Resolved/85로 완료됐다.
+- Internal valid + public attribution false가 실제 provider에서 유지됐다.
+- pacing 120.002s green; incident usage 253,121은 효율 신호로 보존한다.
+- 아직 paired task 없음; 다음 locale slate다.
+
 ## 2026-07-29 (Codex) · 1.9.83 replacement prepared
 - `/tmp/u1983` 18/18 + explicit Internal scope를 검증했다.
 - exact detached arms·task equality·untouched trees가 통과했다.
