@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, relative, resolve } from "node:path";
 import {
@@ -76,6 +76,19 @@ function assertSkillContract(skillFile, expectedName) {
     throw new Error(`skill name mismatch at ${skillFile}: expected ${expectedName}, received ${receivedName}`);
   }
   return receivedName;
+}
+
+function gitHeadDetached(gitRoot) {
+  const result = spawnSync(
+    "git",
+    ["-C", gitRoot, "symbolic-ref", "-q", "HEAD"],
+    { encoding: "utf8" },
+  );
+  if (result.status === 0) return false;
+  if (result.status === 1) return true;
+  throw new Error(
+    `failed to inspect Git HEAD attachment at ${gitRoot}: ${result.stderr?.trim() || `exit ${result.status}`}`,
+  );
 }
 
 function renderInstalledSkillName(skillFile, expectedName) {
@@ -167,9 +180,14 @@ if (variant.declared_name) {
   let sourceCommit;
   let vendorRoot = null;
   let sourceGitRoot;
+  let sourceDetached;
   if (variant.vendor_dir) {
     if (!vendorsRoot) throw new Error(`${variantId} requires --vendors`);
     vendorRoot = assertInside(vendorsRoot, join(vendorsRoot, variant.vendor_dir));
+    sourceDetached = gitHeadDetached(vendorRoot);
+    if (!sourceDetached) {
+      throw new Error(`${variantId} vendor source must use a detached HEAD`);
+    }
     sourceCommit = execFileSync("git", ["-C", vendorRoot, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
     if (sourceCommit !== variant.commit) {
       throw new Error(`${variantId} commit mismatch: expected ${variant.commit}, received ${sourceCommit}`);
@@ -180,6 +198,7 @@ if (variant.declared_name) {
     sourceRoot = assertInside(repoRoot, join(repoRoot, variant.source_path));
     sourceCommit = execFileSync("git", ["-C", repoRoot, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
     sourceGitRoot = repoRoot;
+    sourceDetached = gitHeadDetached(repoRoot);
   }
   const sourcePathspec = variant.vendor_dir ? "." : relative(sourceGitRoot, sourceRoot);
   const sourceStatus = execFileSync(
@@ -263,6 +282,7 @@ if (variant.declared_name) {
       status_entries: sourceStatus.trim() ? sourceStatus.trim().split("\n").length : 0,
       status_sha256: sha256(sourceStatus),
       publishable: !sourceDirty,
+      detached: sourceDetached,
     },
     sha256: skillTree.sha256,
     files: skillTree.files.length,

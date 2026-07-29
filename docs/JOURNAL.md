@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.79 versioned control accepted
+- opaque slate/ember arm으로 exact detached old/new OmD source를 고정했다.
+- attached clean exact-commit source를 reject하고 detached attestation을 추가했다.
+- Codex·Cursor prompt/activation/instructions 동일성과 distinct skill hash를 증명했다.
+- focused 2/2·lint/build·BLOCK 0/WARN 0, provider 0; 다음은 fresh 18-cell matrix다.
+
 ## 2026-07-29 (Codex) · 1.9.79 versioned skill control locked
 - Raw가 아닌 pre-1.9.78 OmD vs 1.9.78 OmD로 patch lift를 분리한다.
 - exact clean commits·same declared skill/activation·distinct hashes를 요구한다.

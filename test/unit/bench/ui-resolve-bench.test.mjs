@@ -1,5 +1,5 @@
-import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, mkdirSync, readFileSync, symlinkSync, writeFileSync } from "node:fs";
+import { execFileSync, spawnSync } from "node:child_process";
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -13,15 +13,17 @@ const releaseTrain = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resol
 const pinnedVendors = "/tmp/omd-ui-skills-bench/vendors";
 const taskIds = ["pricing-conversion-v0.1", "onboarding-setup-v0.1", "incident-operations-v0.1"];
 const localeTaskId = "locale-cli-handoff-v0.1";
+const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
   vendors = null,
   offLabel = false,
   task = "pricing-conversion-v0.1",
   runtime = "codex",
+  outputName = variant,
 } = {}) {
   const parent = mkdtempSync(join(tmpdir(), "ui-resolve-test-"));
-  const out = join(parent, variant);
+  const out = join(parent, outputName);
   const command = [
     prepare,
     "--task",
@@ -55,6 +57,55 @@ function installedSkillName(path) {
   return value.replace(/^(?:"([\s\S]*)"|'([\s\S]*)')$/, (_, doubleQuoted, singleQuoted) => (
     doubleQuoted ?? singleQuoted
   ));
+}
+
+function cloneVersionedOmdVendor(vendors, variantId, { detached = true } = {}) {
+  const variant = competitors.variants[variantId];
+  const vendor = join(vendors, variant.vendor_dir);
+  execFileSync("git", [
+    "clone",
+    "--quiet",
+    "--no-checkout",
+    "--local",
+    "--no-hardlinks",
+    repoRoot,
+    vendor,
+  ], {
+    cwd: repoRoot,
+    encoding: "utf8",
+  });
+  execFileSync(
+    "git",
+    detached
+      ? ["-C", vendor, "checkout", "--quiet", "--detach", variant.commit]
+      : ["-C", vendor, "checkout", "--quiet", "-B", "fixture-branch", variant.commit],
+    { cwd: repoRoot, encoding: "utf8" },
+  );
+}
+
+function withVersionedOmdVendors(callback) {
+  const providedVendors = process.env.OMD_UI_RESOLVE_VERSIONED_VENDORS;
+  if (providedVendors) return callback(resolve(providedVendors));
+
+  const vendors = mkdtempSync(join(tmpdir(), "omd-versioned-skill-vendors-"));
+  try {
+    for (const variantId of versionedOmdVariants) {
+      cloneVersionedOmdVendor(vendors, variantId);
+    }
+    return callback(vendors);
+  } finally {
+    rmSync(vendors, { recursive: true, force: true });
+  }
+}
+
+function withAttachedOmdVendor(variantId, callback) {
+  const vendors = mkdtempSync(join(tmpdir(), "omd-attached-skill-vendor-"));
+  try {
+    cloneVersionedOmdVendor(vendors, variantId, { detached: false });
+    return callback(vendors);
+  } finally {
+    rmSync(vendors, { recursive: true, force: true });
+  }
 }
 
 describe("UI-Resolve Bench sandbox preparation", () => {
@@ -222,6 +273,111 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       hooks_enabled: false,
       agent_tool_enabled: false,
       source_symlinks_allowed: false,
+    });
+  });
+
+  it("prepares clean pinned OmD skill versions without prompt identity leakage", () => {
+    const expectedCommits = {
+      "omd-portable-slate": "1aa81ddb1aa15defbd12b4af36b4dd6784131c9f",
+      "omd-portable-ember": "c285d25515ec8959e66ceeb7703417aad531cd95",
+    };
+    const identityLeak = /\b(?:old|new|control|candidate)\b|1\.9\.(?:77|78)/i;
+
+    withVersionedOmdVendors((vendors) => {
+      for (const runtime of ["codex", "cursor"]) {
+        const prepared = Object.fromEntries(
+          Object.entries(expectedCommits).map(([variantId, expectedCommit], index) => {
+            expect(competitors.variants[variantId].commit).toBe(expectedCommit);
+            const out = prepareVariant(variantId, {
+              vendors,
+              runtime,
+              outputName: index === 0 ? "cell-a" : "cell-b",
+            });
+            const skillRoot = runtime === "cursor" ? ".cursor" : ".agents";
+            return [variantId, {
+              manifest: JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8")),
+              prompt: readFileSync(join(out, ".benchmark/PROMPT.md"), "utf8"),
+              instructions: readFileSync(join(out, "AGENTS.md"), "utf8"),
+              relativePaths: treeManifest(out).files.map((file) => file.path),
+              installedName: installedSkillName(
+                join(out, skillRoot, "skills/omd-apply/SKILL.md"),
+              ),
+            }];
+          }),
+        );
+        const slate = prepared["omd-portable-slate"];
+        const ember = prepared["omd-portable-ember"];
+
+        for (const [index, [variantId, expectedCommit]] of Object.entries(expectedCommits).entries()) {
+          const result = prepared[variantId];
+          expect(result.installedName).toBe(runtime === "cursor" ? "omd-apply" : "omd:apply");
+          expect(result.manifest).toMatchObject({
+            runtime_target: runtime,
+            skill: {
+              declared_name: runtime === "cursor" ? "omd-apply" : "omd:apply",
+              source_commit: expectedCommit,
+              source_attestation: {
+                vcs: "git",
+                detached: true,
+                dirty: false,
+                explicit_dirty_opt_in: false,
+                status_entries: 0,
+                publishable: true,
+              },
+            },
+            workspace: {
+              name: index === 0 ? "cell-a" : "cell-b",
+            },
+          });
+          for (const path of result.relativePaths) {
+            expect(path).not.toMatch(identityLeak);
+          }
+          expect(result.prompt).not.toMatch(identityLeak);
+          expect(result.instructions).not.toMatch(identityLeak);
+          expect(JSON.stringify(result.manifest)).not.toMatch(identityLeak);
+        }
+
+        expect(slate.manifest.variant.label).toBe(ember.manifest.variant.label);
+        expect(slate.manifest.variant.activation_delta)
+          .toBe(ember.manifest.variant.activation_delta);
+        expect(slate.manifest.variant.activation_delta_sha256)
+          .toBe(ember.manifest.variant.activation_delta_sha256);
+        expect(slate.prompt).toBe(ember.prompt);
+        expect(slate.instructions).toBe(ember.instructions);
+        expect(slate.manifest.skill.sha256).not.toBe(ember.manifest.skill.sha256);
+      }
+    });
+  });
+
+  it("rejects a clean attached branch at an exact pinned OmD commit", () => {
+    const variantId = "omd-portable-slate";
+    const variant = competitors.variants[variantId];
+    withAttachedOmdVendor(variantId, (vendors) => {
+      const vendor = join(vendors, variant.vendor_dir);
+      expect(execFileSync("git", ["-C", vendor, "rev-parse", "HEAD"], {
+        encoding: "utf8",
+      }).trim()).toBe(variant.commit);
+      expect(execFileSync("git", ["-C", vendor, "symbolic-ref", "--short", "HEAD"], {
+        encoding: "utf8",
+      }).trim()).toBe("fixture-branch");
+      expect(execFileSync("git", [
+        "-C",
+        vendor,
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+      ], { encoding: "utf8" })).toBe("");
+      const out = join(mkdtempSync(join(tmpdir(), "ui-resolve-test-")), "cell-a");
+      const attempted = spawnSync(process.execPath, [
+        prepare,
+        "--task", "pricing-conversion-v0.1",
+        "--variant", variantId,
+        "--out", out,
+        "--runtime", "codex",
+        "--vendors", vendors,
+      ], { cwd: repoRoot, encoding: "utf8" });
+      expect(attempted.status).not.toBe(0);
+      expect(attempted.stderr).toMatch(/detached HEAD/i);
     });
   });
 

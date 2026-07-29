@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `f6893bd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-29 · 1.9.78 ACCEPTED + 1.9.79 versioned skill control LOCKED
+- 갱신: 2026-07-29 · 1.9.79 versioned skill control ACCEPTED
 
 ## 지금 (현재 위치)
 
+- 1.9.79 provider-free versioned skill control이 ACCEPTED됐다. exact detached commits `1aa81ddb…`/`c285d255…`를 opaque `slate`/`ember` arm으로 설치하고 attached clean exact-commit source를 fail-closed 한다.
+- Codex와 Cursor에서 paired prompt/instructions/activation은 runtime별 byte-identical이고 skill hash만 다르다. path/PROMPT/AGENTS/full manifest identity leak scan, focused 2/2, lint/build, independent BLOCK 0/WARN 0, provider 0이다.
+- 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
 - preparation amendment: prereg commit으로 current HEAD가 `8a3e2f0`까지 이동했으므로 mutable current variant는 candidate provenance로 쓰지 않는다. old/new 모두 exact detached vendor checkout과 identity-neutral versioned entry를 사용한다. denominator 변화는 0이다.
 - prompt/artifact가 old/new/control/candidate/version을 model 또는 blind reviewer에게 노출하면 reject한다. provider-free acceptance commit 전 provider를 열지 않는다.
