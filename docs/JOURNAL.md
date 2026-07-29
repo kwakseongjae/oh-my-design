@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.85 fresh replacement locked
+- `/tmp/u1985`에 same 18-cell denominator를 새로 고정했다.
+- 유일한 orchestration delta는 accepted Cursor cache preflight다.
+- preparation/equality/preflight commit 뒤 cell 1을 연다.
+
 ## 2026-07-29 (Codex) · 1.9.84 Cursor cache preflight accepted
 - Cursor matrix는 invocation/pacing/provider 전에 cache mkdir/write/remove를 증명한다.
 - 실제 restricted EPERM과 authorized writable 경계를 모두 확인했다.
