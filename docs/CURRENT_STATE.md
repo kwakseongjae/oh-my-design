@@ -38,7 +38,8 @@
 - `/tmp/u1985` checkpoint 1/18 `onboarding-t1-slate`가 cache preflight green 뒤 valid/UI-Resolved/85점, 186,400ms/54,195 tokens로 완료됐다.
 - checkpoint 2/18 `incident-t1-ember`도 valid/UI-Resolved/85점, 276,202ms/70,603 tokens로 완료됐다. cross-root compute 차이는 진단 신호일 뿐 trial 3 전 효율 결론은 보류한다.
 - checkpoint 3/18 `locale-t1-slate`도 valid/UI-Resolved/85점, 312,985ms/66,384 tokens로 완료됐다. 세 task에 trial 1 arm 하나씩이 있으나 paired comparison은 아직 없다.
-- 다음은 `onboarding-t1-ember`다. authorized environment에서 one-cell checkpoint를 계속하며 첫 failure에만 freeze하고 동일 root retry/resume/substitution은 금지한다.
+- checkpoint 4/18 `onboarding-t1-ember`도 valid/UI-Resolved/85점, 364,708ms/285,933 tokens로 완료됐다. onboarding trial 1은 objective ceiling tie이며 slate 186,400ms/54,195 tokens 대비 ember compute가 크다.
+- 다음은 `incident-t1-slate`다. visual preference는 blind judge 전까지 해석하지 않고 one-cell checkpoint를 계속한다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
