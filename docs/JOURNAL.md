@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.84 Cursor cache preflight accepted
+- Cursor matrix는 invocation/pacing/provider 전에 cache mkdir/write/remove를 증명한다.
+- 실제 restricted EPERM과 authorized writable 경계를 모두 확인했다.
+- focused 59/59, lint/build/syntax green, provider generation 0이다.
+- 다음은 fresh 1.9.85 18-cell replacement 준비다.
+
 ## 2026-07-29 (Codex) · 1.9.83 frozen at 9/18
 - cell 10 pacing은 green이었지만 Cursor cache mkdir EPERM으로 process-failure가 났다.
 - 398ms/event 0/product change 0; 모델 생성·평가 전 실패다.

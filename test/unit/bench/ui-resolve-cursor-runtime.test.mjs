@@ -1,6 +1,7 @@
 import {
   chmodSync,
   mkdtempSync,
+  mkdirSync,
   readFileSync,
   realpathSync,
   writeFileSync,
@@ -25,6 +26,7 @@ const ORIGINAL_ENV = {
   cursor: process.env.OMD_CURSOR_AGENT_BIN,
   fake: process.env.OMD_BENCH_FAKE_RUNTIME,
   evaluator: process.env.OMD_BENCH_CALIBRATION_EVALUATOR,
+  projects: process.env.OMD_BENCH_CURSOR_PROJECTS_ROOT,
 };
 
 afterEach(() => {
@@ -32,6 +34,7 @@ afterEach(() => {
     OMD_CURSOR_AGENT_BIN: ORIGINAL_ENV.cursor,
     OMD_BENCH_FAKE_RUNTIME: ORIGINAL_ENV.fake,
     OMD_BENCH_CALIBRATION_EVALUATOR: ORIGINAL_ENV.evaluator,
+    OMD_BENCH_CURSOR_PROJECTS_ROOT: ORIGINAL_ENV.projects,
   })) {
     if (value === undefined) delete process.env[key];
     else process.env[key] = value;
@@ -73,6 +76,8 @@ function plan(root, cells = [cell()]) {
 }
 
 function installFakeCursor(root, { reportedModel = null } = {}) {
+  const projects = join(root, "fake-cursor-projects");
+  mkdirSync(projects, { recursive: true });
   const cursor = executable(join(root, "fake-cursor-agent.mjs"), `
 import fs from "node:fs";
 import path from "node:path";
@@ -106,6 +111,7 @@ fs.writeFileSync(path.join(workspace, ".benchmark", "score.json"), JSON.stringif
   process.env.OMD_CURSOR_AGENT_BIN = cursor;
   process.env.OMD_BENCH_FAKE_RUNTIME = "1";
   process.env.OMD_BENCH_CALIBRATION_EVALUATOR = evaluator;
+  process.env.OMD_BENCH_CURSOR_PROJECTS_ROOT = projects;
 }
 
 describe("Cursor Agent fake runtime contract", () => {

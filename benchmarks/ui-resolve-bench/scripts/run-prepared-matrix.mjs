@@ -4,11 +4,14 @@ import { randomUUID } from "node:crypto";
 import {
   closeSync,
   existsSync,
+  mkdtempSync,
   openSync,
   readFileSync,
+  rmSync,
   unlinkSync,
   writeFileSync,
 } from "node:fs";
+import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 import { isDeepStrictEqual } from "node:util";
@@ -30,6 +33,39 @@ const PACING_MAX_OVERSHOOT_MS = 5_000;
 const PACING_MAX_CLOCK_DISAGREEMENT_MS = 5_000;
 const STOP_SENTINEL = "STOP";
 const INVOCATION_LEASE = ".matrix-execution.lock";
+
+export function preflightRuntimeEnvironment(
+  plan,
+  {
+    cursorProjectsRoot = process.env.OMD_BENCH_CURSOR_PROJECTS_ROOT
+      ?? join(homedir(), ".cursor", "projects"),
+  } = {},
+) {
+  const runtimes = [...new Set((plan?.cells ?? []).map((cell) => cell.runtime))].sort();
+  const checks = [];
+  if (!runtimes.includes("cursor")) {
+    return { status: "complete", runtimes, checks };
+  }
+
+  let probeRoot = null;
+  try {
+    probeRoot = mkdtempSync(join(resolve(cursorProjectsRoot), ".omd-runtime-preflight-"));
+    const probeFile = join(probeRoot, "write-probe");
+    writeFileSync(probeFile, "ok", { encoding: "utf8", flag: "wx" });
+    unlinkSync(probeFile);
+    checks.push({
+      runtime: "cursor",
+      resource: "project-cache",
+      status: "writable",
+    });
+  } catch (error) {
+    const code = typeof error?.code === "string" ? error.code : "unknown";
+    throw new Error(`runtime-preflight-failure:cursor-project-cache-not-writable:${code}`);
+  } finally {
+    if (probeRoot) rmSync(probeRoot, { recursive: true, force: true });
+  }
+  return { status: "complete", runtimes, checks };
+}
 
 export function preregisteredStopReason(cell, manifest, run, { schemaVersion = "0.1" } = {}) {
   if (!run) return "missing-run-result";
@@ -761,7 +797,6 @@ function executePreparedMatrixWithLease(root, {
   if (preparation.status !== "prepared" || preparation.prepared_cells !== plan.cells.length) {
     throw new Error("matrix preparation is incomplete");
   }
-
   const existing = existsSync(executionStatePath) ? readJson(executionStatePath) : null;
   const freshPreparedCellAttestations = {};
   const existingCheckpointBounded = existing?.execution_contract?.mode === "checkpoint-bounded";
@@ -796,6 +831,8 @@ function executePreparedMatrixWithLease(root, {
       freshPreparedCellAttestations[cell.id] = preparedCellAttestation(workspace);
     }
   }
+  const runtimePreflight = preflightRuntimeEnvironment(plan);
+  console.log(JSON.stringify({ event: "runtime-preflight-complete", ...runtimePreflight }));
   const state = existing ?? {
     schema_version: plan.schema_version ?? "0.1",
     experiment_id: plan.experiment_id,

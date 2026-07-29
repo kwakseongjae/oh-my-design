@@ -1,9 +1,13 @@
 import { describe, expect, it } from "vitest";
+import { mkdtempSync, mkdirSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
   directBrowserCommandCount,
   harnessDeliveryStopReason,
   firstProductWriteTransaction,
   lastAdvisoryToFirstProductWriteMs,
+  preflightRuntimeEnvironment,
   preregisteredStopReason,
   replacementVerifierAuthorship,
   runArgsForCell,
@@ -46,6 +50,33 @@ const validRun = {
 };
 
 describe("UI-Resolve prepared matrix execution", () => {
+  it("proves Cursor project-cache writeability before provider execution", () => {
+    const temp = mkdtempSync(join(tmpdir(), "omd-cursor-runtime-preflight-"));
+    const projects = join(temp, "projects");
+    mkdirSync(projects);
+    const result = preflightRuntimeEnvironment(
+      { cells: [{ runtime: "cursor" }] },
+      { cursorProjectsRoot: projects },
+    );
+    expect(result).toEqual({
+      status: "complete",
+      runtimes: ["cursor"],
+      checks: [{
+        runtime: "cursor",
+        resource: "project-cache",
+        status: "writable",
+      }],
+    });
+  });
+
+  it("fails before provider execution when Cursor project cache is unavailable", () => {
+    const temp = mkdtempSync(join(tmpdir(), "omd-cursor-runtime-preflight-fail-"));
+    expect(() => preflightRuntimeEnvironment(
+      { cells: [{ runtime: "cursor" }] },
+      { cursorProjectsRoot: join(temp, "missing", "projects") },
+    )).toThrow("runtime-preflight-failure:cursor-project-cache-not-writable:ENOENT");
+  });
+
   it("accepts an exact, complete harness attribution", () => {
     expect(preregisteredStopReason(cell, manifest, validRun)).toBeNull();
   });

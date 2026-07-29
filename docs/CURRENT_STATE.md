@@ -31,7 +31,9 @@
 - checkpoint 9/18 locale-t2-slate도 valid/UI-Resolved/85점, 268,494ms/97,899 tokens로 완료됐다. locale slate trial 1/2는 106,904→97,899 tokens이며 quality gate는 동일하다.
 - `/tmp/u1983`은 cell 10 `onboarding-t2-slate`에서 process-failure로 FROZEN됐다. pacing은 120,006.7ms/clock disagreement 1.7ms로 통과했지만 Cursor가 `~/.cursor/projects/private-tmp-u1983-onboarding-t2-slate`를 만들지 못해 EPERM/exit 1/398ms/event 0/product change 0으로 종료됐다.
 - retained partial은 9/18 valid/UI-Resolved/85이며 trial 1만 완결됐다. cell 10은 재시도·resume·rescore·모델 대체하지 않고 denominator 밖에 둔다.
-- 다음은 provider 시작 전 Cursor project-cache writeability를 fail-fast 검증하는 provider-free preflight patch다. 이를 acceptance한 뒤에만 fresh replacement root를 preregister한다.
+- 1.9.84 Cursor project-cache preflight가 provider-free ACCEPTED됐다. Cursor matrix는 invocation state·pacing·provider 전에 실제 cache root에 unique mkdir/write/remove를 수행하며 불가하면 stable runtime-preflight failure로 중단한다.
+- 실제 제한 환경은 EPERM fail-before-provider, 허용 환경은 writable pass였다. focused 59/59, lint/build/Node syntax green이고 provider generation은 0이다.
+- 다음은 동일 18-cell denominator를 fresh `/tmp/u1985`에 preregister/prepare한다. 실행은 cache preflight를 통과한 authorized environment에서만 one-cell checkpoint로 수행한다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
