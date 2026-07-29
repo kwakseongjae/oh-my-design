@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.85 checkpoint 17/18
+- onboarding trial 3 ember가 valid/UI-Resolved/85로 완료됐다.
+- pacing/cache green, 242s/103,623 tokens다.
+- onboarding 두 arms 모두 3/3 deterministic ceiling이다.
+- 마지막 incident trial 3 slate만 남았다.
+
 ## 2026-07-30 (Codex) · 1.9.85 checkpoint 16/18
 - locale trial 3 slate가 valid/UI-Resolved/85로 완료됐다.
 - pacing/cache green, 281s/72,557 tokens다.
