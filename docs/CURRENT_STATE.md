@@ -35,7 +35,8 @@
 - 실제 제한 환경은 EPERM fail-before-provider, 허용 환경은 writable pass였다. focused 59/59, lint/build/Node syntax green이고 provider generation은 0이다.
 - 1.9.85 fresh replacement를 LOCKED했다. 동일 opaque arms/task versions/order/Grok/effort/timeout/pacing/attribution의 18-cell denominator이며 유일한 orchestration delta는 accepted 1.9.84 cache preflight다.
 - `/tmp/u1985` 18/18 preparation과 task input equality/untouched product tree/exact detached arms를 통과했다. evaluator preflight, authorized Cursor cache mkdir/write/remove, repository/file/tool 0 Grok capacity probe(`OMD_CAPACITY_OK`, exact display name)도 green이다.
-- 다음은 committed preparation 뒤 authorized environment에서 cell 1 `onboarding-t1-slate`를 `--max-new-cells 1`로 연다. 첫 failure에만 freeze하고 동일 root retry/resume/substitution은 금지한다.
+- `/tmp/u1985` checkpoint 1/18 `onboarding-t1-slate`가 cache preflight green 뒤 valid/UI-Resolved/85점, 186,400ms/54,195 tokens로 완료됐다.
+- 다음은 `incident-t1-ember`다. authorized environment에서 one-cell checkpoint를 계속하며 첫 failure에만 freeze하고 동일 root retry/resume/substitution은 금지한다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.

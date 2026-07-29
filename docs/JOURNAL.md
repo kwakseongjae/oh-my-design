@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.85 checkpoint 1/18
+- onboarding trial 1 slate가 valid/UI-Resolved/85로 완료됐다.
+- cache preflight green, 186s/54,195 tokens다.
+- 다음 incident trial 1 ember, human input 불필요다.
+
 ## 2026-07-29 (Codex) · 1.9.85 replacement prepared
 - `/tmp/u1985` 18/18 + exact arms + task equality + untouched trees가 통과했다.
 - evaluator와 authorized Cursor cache preflight가 green이다.
