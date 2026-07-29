@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.80 versioned matrix preparation locked
+- single-cell pinned vendor install은 되지만 matrix controller 전달 경로가 없음을 확인했다.
+- optional absolute vendors_root 전달과 fail-closed 검증만 허용했다.
+- provider 0 real slate/ember minimal matrix acceptance 뒤 fresh 18-cell root를 연다.
+
 ## 2026-07-29 (Codex) · 1.9.79 versioned control accepted
 - opaque slate/ember arm으로 exact detached old/new OmD source를 고정했다.
 - attached clean exact-commit source를 reject하고 detached attestation을 추가했다.
