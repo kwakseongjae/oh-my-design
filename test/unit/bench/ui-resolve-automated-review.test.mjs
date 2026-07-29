@@ -264,4 +264,46 @@ describe("UI-Resolve automated blind review runner", () => {
     });
     expect((await runOne(process, processInvoke)).stop.reason).toBe("provider-process-failure");
   });
+
+  it("uses exact final assistant content instead of a prefixed Cursor result summary", async () => {
+    const round = executableRound();
+    const invoke = async ({ packetRoot }) => {
+      const packet = JSON.parse(readFileSync(join(packetRoot, "packet.json"), "utf8"));
+      const exact = JSON.stringify({
+        assignment_id: packet.assignment_id,
+        axes: {
+          functionality: "b",
+          usability: "b",
+          fidelity: "b",
+          ship_preference: "b",
+        },
+        reason: "B makes the intended next action more legible.",
+      });
+      return {
+        stdout: [
+          JSON.stringify({ model: "Cursor Grok 4.5 High" }),
+          JSON.stringify({
+            type: "assistant",
+            message: { role: "assistant", content: [{ type: "text", text: exact }] },
+          }),
+          JSON.stringify({ type: "result", result: `진행 문장${exact}` }),
+        ].join("\n"),
+        stderr: "",
+        exit_code: 0,
+        signal: null,
+        timed_out: false,
+        spawn_error: null,
+        wall_ms: 100,
+      };
+    };
+    const state = await runOne(round, invoke);
+    expect(state.status).toBe("prepared");
+    expect(state.completed_invocations).toBe(1);
+    const record = JSON.parse(readFileSync(
+      join(round.documentRoot, "results", "invocation-001", "run-record.json"),
+      "utf8",
+    ));
+    expect(record.final_message_source).toBe("assistant-content");
+    expect(record.judgment.axes.ship_preference).toBe("b");
+  });
 });

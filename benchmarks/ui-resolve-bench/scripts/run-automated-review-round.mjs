@@ -86,12 +86,23 @@ function finalMessageFromEvents(stdout) {
     || event?.type === "agent.result"
     || event?.subtype === "result"
   )) ?? null;
-  const finalMessage = [
+  const assistantEvent = [...events].reverse().find((event) => (
+    event?.type === "assistant"
+    && Array.isArray(event?.message?.content)
+    && event.message.content.some((item) => item?.type === "text" && typeof item.text === "string")
+  )) ?? null;
+  const assistantMessage = assistantEvent?.message?.content
+    ?.filter((item) => item?.type === "text" && typeof item.text === "string")
+    .map((item) => item.text)
+    .join("") ?? "";
+  const resultMessage = [
     resultEvent?.result,
     resultEvent?.text,
     resultEvent?.message?.text,
     typeof resultEvent?.message === "string" ? resultEvent.message : null,
   ].find((value) => typeof value === "string" && value.trim()) ?? "";
+  const finalMessage = assistantMessage.trim() ? assistantMessage : resultMessage;
+  const finalMessageSource = assistantMessage.trim() ? "assistant-content" : "result-event";
   const modelReported = events
     .map((event) => event?.model ?? event?.model_id ?? event?.data?.model ?? event?.session?.model ?? null)
     .find((value) => typeof value === "string" && value.length > 0) ?? null;
@@ -104,7 +115,7 @@ function finalMessageFromEvents(stdout) {
       output_tokens: Number(value.output_tokens ?? value.outputTokens ?? 0),
     }];
   });
-  return { events, finalMessage, modelReported, usage };
+  return { events, finalMessage, finalMessageSource, modelReported, usage };
 }
 
 async function liveCursorInvocation({ packetRoot, model, timeoutMs }) {
@@ -333,6 +344,7 @@ export async function runAutomatedReviewRound({
         wall_ms: raw.wall_ms,
       },
       usage: parsed.usage,
+      final_message_source: parsed.finalMessageSource,
       judgment,
       stop_reason: stopReason,
     });

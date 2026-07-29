@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.88 Cursor stream correction
+- 첫 live call은 모델 JSON이 아니라 Cursor result-summary prefix 때문에 0/54 frozen됐다.
+- 실패 root는 보존하고 resume/retry/rescore하지 않는다.
+- canonical assistant content 선택만 교정했고 JSON repair는 추가하지 않았다.
+- live-shape 포함 focused 10/10·lint·build green; fresh state가 다음이다.
+
 ## 2026-07-30 (Codex) · 1.9.87 automated judge runner
 - one-invocation checkpoint, 30s pacing, strict no-repair JSON runner를 완성했다.
 - primary/reversal 두 호출 전에는 review-unit judgment가 생성되지 않는다.

@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `de81b5a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.87 automated blind review runner ACCEPTED
+- 기준 커밋: `7cd0cc5` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-30 · 1.9.88 Cursor stream channel fix ACCEPTED
 
 ## 지금 (현재 위치)
 
@@ -64,7 +64,10 @@
 - 1.9.87 provider-free automated judge runner가 ACCEPTED됐다. controller call당 최대 한 invocation, 30s start pacing, 300s timeout, concurrency 1, no retry/fallback/repair/substitution을 고정했다.
 - strict JSON은 assignment_id/4 axes/reason 외 key를 거절하고 Markdown·wrong assignment·invalid choice·display-label drift·timeout/process/cache failure에서 root를 동결한다. primary와 별도 reversal이 모두 끝나야 aggregate-compatible judgment를 쓴다.
 - focused reviewer tests 9/9, Node syntax, lint, build가 green이며 provider generation은 0이다.
-- 다음은 accepted runner를 커밋한 뒤 fixed Grok 54-invocation root를 checkpoint별로 열고 첫 실패에서 멈추는 것이다.
+- 1.9.87 첫 live invocation은 Cursor/Grok이 50,936ms에 exact JSON assistant content를 냈지만 CLI result summary가 앞에 한국어 progress를 붙였고 runner가 잘못된 transport field를 정본으로 선택해 0/54 frozen됐다. root는 resume/rescore/retry하지 않는다.
+- 1.9.88 provider-free correction이 ACCEPTED됐다. 마지막 assistant text content를 canonical response로 쓰고 result event는 raw evidence/fallback으로만 유지한다. prefix trim·substring extraction·repair는 여전히 0이다.
+- exact live event-shape fixture를 포함한 focused tests 10/10, Node syntax, lint, build가 green이다.
+- 다음은 correction commit 뒤 immutable packets/reveals는 유지하되 fresh private execution state에서 첫 invocation을 새로 여는 것이다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
