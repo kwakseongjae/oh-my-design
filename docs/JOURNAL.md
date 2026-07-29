@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.83 checkpoint 6/18 · trial 1 complete
+- locale pair까지 두 arm valid/UI-Resolved/85로 trial 1 세 pair가 모두 완성됐다.
+- locale slate/ember는 208s·106,904 / 397s·282,273 tokens다.
+- deterministic은 3/3 ceiling tie, ember compute 증가는 세 task에서 반복됐다.
+- human review 없이 trial 2/3 자동 실행을 계속한다.
+
 ## 2026-07-29 (Codex) · 1.9.83 checkpoint 5/18
 - incident trial 1 pair도 두 arm valid/UI-Resolved/85로 완성됐다.
 - slate/ember는 283s·109,680 / 515s·253,121 tokens다.
