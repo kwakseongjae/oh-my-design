@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.88 live automated review 2/54
+- fresh root 첫 incident pair의 judge-001 primary/reversal을 별도 호출로 닫았다.
+- 54s/42s, exact assistant JSON/display/cache 모두 green이다.
+- usability/ship은 reversal-consistent, functionality/fidelity는 tie→choice로 비일관이다.
+- 사람 escalation 후보로 보존하고 judge-002로 계속한다.
+
 ## 2026-07-30 (Codex) · 1.9.88 Cursor stream correction
 - 첫 live call은 모델 JSON이 아니라 Cursor result-summary prefix 때문에 0/54 frozen됐다.
 - 실패 root는 보존하고 resume/retry/rescore하지 않는다.

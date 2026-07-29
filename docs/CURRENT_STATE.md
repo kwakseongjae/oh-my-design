@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7cd0cc5` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.88 Cursor stream channel fix ACCEPTED
+- 기준 커밋: `a05a9d4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-30 · 1.9.88 fresh automated review checkpoint 2/54
 
 ## 지금 (현재 위치)
 
@@ -67,7 +67,9 @@
 - 1.9.87 첫 live invocation은 Cursor/Grok이 50,936ms에 exact JSON assistant content를 냈지만 CLI result summary가 앞에 한국어 progress를 붙였고 runner가 잘못된 transport field를 정본으로 선택해 0/54 frozen됐다. root는 resume/rescore/retry하지 않는다.
 - 1.9.88 provider-free correction이 ACCEPTED됐다. 마지막 assistant text content를 canonical response로 쓰고 result event는 raw evidence/fallback으로만 유지한다. prefix trim·substring extraction·repair는 여전히 0이다.
 - exact live event-shape fixture를 포함한 focused tests 10/10, Node syntax, lint, build가 green이다.
-- 다음은 correction commit 뒤 immutable packets/reveals는 유지하되 fresh private execution state에서 첫 invocation을 새로 여는 것이다.
+- fresh `/tmp/u1988-private` 자동 심사는 2/54다. 첫 incident trial 1 judge unit의 primary/reversal이 각각 54,373ms/42,381ms에 exact assistant JSON, registered display label, cache preflight green으로 완료됐다.
+- identity-normalized reversal은 usability/ship preference가 일관되고 functionality/fidelity는 primary tie→reversal 특정 후보로 비일관이다. 이 unit은 reduced-human ladder의 reversal-inconsistency escalation 후보지만 전체 자동 judge denominator 전에는 identity preference를 해석하지 않는다.
+- 다음은 judge-002의 같은 exact pair primary/reversal을 별도 fresh contexts로 실행한다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
