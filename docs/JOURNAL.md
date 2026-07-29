@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.81 versioned live matrix locked
+- fresh `/tmp/u1980` 3 tasks×slate/ember×3 trials=18 cells을 고정했다.
+- task별 arm-first를 2/1로 균형화하고 Grok High·120s·global serial을 잠갔다.
+- preparation/preflight commit 전 provider cell 1을 열지 않는다.
+
 ## 2026-07-29 (Codex) · 1.9.80 versioned matrix preparation accepted
 - matrix plan의 absolute vendors_root를 cell preparer까지 fail-closed 전달한다.
 - 기존 plan argument shape는 그대로이고 relative root는 사전 거절한다.
