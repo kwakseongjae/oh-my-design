@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-29 (Codex) · 1.9.75 preference aggregator locked
+- strict judgment/reveal validation과 identity-normalized 집계를 잠갔다.
+- reversal은 bias 진단에만 쓰고 primary rating에서 제외한다.
+- tie/both-fail/agreement/BT/bootstrap CI·rank interval을 분리한다.
+- synthetic calibration만 허용하며 실제 OmD 선호도 주장은 금지한다.
+
 ## 2026-07-29 (Codex) · 1.9.74 Ship Preference contract accepted
 - gate-eligible artifact만 4축 A/B/tie/both-fail blind review에 들어간다.
 - schema 0.2가 epoch와 모든 축의 완료를 강제한다.
