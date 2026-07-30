@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `6d68144` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.90 fresh automated review checkpoint 48/54
+- 기준 커밋: `3af43a1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-30 · 1.9.91 reduced-human selection accepted
 
 ## 지금 (현재 위치)
 
@@ -91,7 +91,11 @@
 - onboarding trial 1 reversal은 10/12(83.33%): functionality 2/3, usability 3/3, fidelity 2/3, ship 3/3. fidelity primary modal agreement만 2/3이며 tie 1건이다.
 - onboarding trial 2까지 완료돼 fresh root는 48/54다. two-trial aggregate는 네 axes 모두 slate가 소폭 앞서지만 모든 rating CI와 rank interval이 겹쳐 automatic winner claim은 불가하다.
 - onboarding two-trial reversal은 16/24(66.67%): functionality 4/6, usability 4/6, fidelity 3/6, ship 5/6. primary modal agreement는 functionality/ship 5/6, usability/fidelity 4/6이며 tie 6, both-fail 0이다.
-- 다음은 마지막 onboarding trial 3의 calls 49–54이며 완료 뒤 full-round aggregate와 reduced-human escalation set을 만든다.
+- onboarding trial 3까지 fresh root `/tmp/u1990-private`는 54/54 `complete`, stop/retry/repair/fallback/substitution 0으로 닫혔다.
+- full-round reversal은 74/108(68.52%)이고 slate가 네 axes에서 소폭 앞서지만 모든 rating/rank 95% interval이 겹쳐 automatic winner는 없다.
+- 1.9.91 deterministic reduced-human selector가 ACCEPTED됐다. disagreement/reversal/tie-or-both-fail과 seeded audit 1개만 고르며 focused reviewer tests 23/23, lint/build가 green이다.
+- 실제 1.9.90 결과는 9 pair 중 unresolved 7, resolved 2, audit 1, selected 8이다. 이를 task family로 합치면 사람이 볼 화면은 incident/locale/onboarding 3개다.
+- 다음은 private selection manifest에서 세 task-family human review page를 만들고, 한 번의 practitioner pass로 calibration을 닫는 작업이다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.

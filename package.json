@@ -78,6 +78,7 @@
     "bench:ui:export": "node benchmarks/ui-resolve-bench/scripts/export-run-record.mjs",
     "bench:ui:gallery": "node benchmarks/ui-resolve-bench/scripts/build-gallery.mjs",
     "bench:ui:preference": "node benchmarks/ui-resolve-bench/scripts/aggregate-ship-preference.mjs",
+    "bench:ui:escalation": "node benchmarks/ui-resolve-bench/scripts/select-human-escalation.mjs",
     "bench:ui:review:prepare": "node benchmarks/ui-resolve-bench/scripts/prepare-review-round.mjs",
     "bench:ui:review:intake": "node benchmarks/ui-resolve-bench/scripts/intake-review-round.mjs",
     "bench:ui:public-data": "node scripts/build-ui-benchmark-public-data.mjs",

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.91 reduced-human selection
+- fresh automated review를 54/54, stop/retry/fallback 0으로 완료했다.
+- full-round reversal은 74/108이고 CI 중첩으로 automatic winner는 없다.
+- selector는 unresolved 7+audit 1 pair를 골라 3 task-family page로 줄인다.
+- focused 23/23, lint/build pass; 다음은 실제 3-page human packet이다.
+
 ## 2026-07-30 (Codex) · 1.9.90 live automated review 48/54
 - onboarding trial 2까지 6 review units/12 calls를 완료했다.
 - slate가 소폭 앞서지만 모든 CI/rank interval이 겹쳐 자동 결론은 불가하다.
