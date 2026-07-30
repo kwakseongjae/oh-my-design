@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.90 live automated review 36/54
+- locale 세 trial 9 review units/18 calls를 모두 완료했다.
+- functionality 외 축은 동률 또는 CI 중첩이고 reversal은 24/36이다.
+- automatic winner는 없으며 locale pair는 reduced-human escalation 대상이다.
+- 다음은 onboarding trial 1, calls 37–42이다.
+
 ## 2026-07-30 (Codex) · 1.9.90 live automated review 30/54
 - locale trial 2까지 6 review units/12 calls를 완료했다.
 - two-trial aggregate는 slate 우세지만 대부분 CI가 겹쳐 확정할 수 없다.

@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `6d68144` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.90 fresh automated review checkpoint 30/54
+- 갱신: 2026-07-30 · 1.9.90 fresh automated review checkpoint 36/54
 
 ## 지금 (현재 위치)
 
@@ -84,7 +84,10 @@
 - locale trial 1 전체 reversal consistency는 5/12(41.67%), both-fail 0이며 usability/fidelity/ship rating CI가 겹친다. 이 pair도 reduced-human escalation 대상이다.
 - locale trial 2까지 완료돼 fresh root는 30/54다. two-trial locale aggregate는 slate가 네 axes 모두 앞서지만 usability/fidelity/ship 95% CI와 rank interval이 겹치며 자동 승자 claim은 불가하다.
 - locale two-trial reversal은 15/24(62.5%): functionality 6/6, usability 3/6, fidelity 2/6, ship 4/6. primary modal agreement는 functionality 6/6, 나머지 5/6이며 tie 4(functionality 3/usability 1), both-fail 0이다.
-- 다음은 locale trial 3의 3 judges×primary/reversal, invocations 31–36이다.
+- locale trial 3까지 완료돼 fresh root는 36/54다. three-trial aggregate도 automatic winner를 만들지 못했으며 이 task pair는 reduced-human escalation 대상이다.
+- locale three-trial reversal은 24/36(66.67%): functionality 9/9, usability 5/9, fidelity 4/9, ship 6/9. usability는 rating 1000 대 1000 완전 동률이고 fidelity/ship도 95% CI와 rank interval이 겹친다.
+- functionality는 slate 1053.77 대 ember 946.23으로 방향이 가장 안정적이지만 primary tie 6/9다. 전체 primary modal agreement는 functionality 9/9, usability 7/9, fidelity 8/9, ship 7/9이며 both-fail은 0이다.
+- 다음은 onboarding trial 1의 3 judges×primary/reversal, invocations 37–42이다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
