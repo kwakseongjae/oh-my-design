@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.97 adaptive data-surface blind review preregistered
+- 갱신: 2026-07-30 · 1.9.97 adaptive data-surface blind review prepared
 
 ## 지금 (현재 위치)
 
@@ -133,6 +133,9 @@
 - 1.9.97 anonymous review를 LOCKED했다. `/tmp/u1996`의 pricing 3 exact pairs × 3 opaque judges × primary/reversal = 9 units/18 isolated invocations다.
 - Cursor/Grok 4.5 High, 300s timeout, 30s pacing, max-new 1, no retry/repair/fallback/substitution이며 Internal alias plane만 사용한다.
 - automated vote는 calibration/triage only이며 practitioner/public winner/model row가 아니다. 다음은 provider-free packet preparation이다.
+- `/tmp/u1997` packet preparation이 완료됐다. source state SHA `241d535a…`, private manifest SHA `a344e141…`, round `automated-review-625bfd4de35f8b02`다.
+- 3 exact pairs/3 judges/9 units/18 invocations/72 screenshots이며 public packet identity leak 0, prompt 18, focused tests 9/9, syntax pass, provider 0이다.
+- 다음은 `--max-new-invocations 1`로 18회 global serial 실행한다. first cache/registry/provider/strict-JSON/artifact failure에서 fresh review root를 동결한다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.

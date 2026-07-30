@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "adaptive-data-surface-blind-review-1.9.97",
+  "status": "prepared-awaiting-provider",
+  "provider_calls": 0,
+  "source": {
+    "execution_state": "/tmp/u1996/execution-state.json",
+    "experiment_id": "adaptive-data-surface-live-replacement-1.9.96",
+    "execution_state_sha256": "241d535aa057e414c36fa87fc91604ccc7a486a8340ac759f26d6b24bbaf5c02",
+    "completed_cells": 6
+  },
+  "round": {
+    "round_id": "automated-review-625bfd4de35f8b02",
+    "methodology_epoch": "pricing-adaptive-v1",
+    "manifest_sha256": "a344e141ee39cacfefb57189caa96e9428ca4958c5ca325929696ef3298f24a8",
+    "packets_root": "/tmp/u1997/packets",
+    "reveals_root": "/tmp/u1997-private/reveals",
+    "manifest": "/tmp/u1997-private/round-manifest.json",
+    "exact_pairs": 3,
+    "judges": 3,
+    "review_units": 9,
+    "invocations": 18,
+    "screenshots": 72
+  },
+  "proof": {
+    "same_task_and_trial_pairing": true,
+    "separate_reversal_invocations": true,
+    "identity_leak_scan": "passed",
+    "packet_prompt_count": 18,
+    "focused_tests": {
+      "passed": 9,
+      "failed": 0
+    },
+    "node_syntax": "passed",
+    "public_model_attribution_eligible": false
+  },
+  "execution_contract": {
+    "model": "cursor-grok-4.5-high",
+    "timeout_ms": 300000,
+    "pacing_ms": 30000,
+    "max_new_invocations": 1,
+    "retry_repair_fallback_substitution": 0
+  },
+  "next_invocation": 1
+}

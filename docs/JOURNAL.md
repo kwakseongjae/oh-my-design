@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.97 blind review prepared
+- 3 exact pairs/3 judges/9 units/18 calls packet을 만들었다.
+- 72 screenshots, prompt 18, public identity leak 0이다.
+- focused 9/9/syntax pass, provider call 0이다.
+- 다음은 one-invocation controller로 global serial 실행한다.
+
 ## 2026-07-30 (Codex) · 1.9.97 blind review preregistration
 - 1.9.96의 eligible pricing 3 pairs를 3 judges×reversal로 잠갔다.
 - 총 9 units/18 calls, 300s timeout/30s pacing/max-new 1이다.
