@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.103 payout frontier deterministic comparison complete
+- 갱신: 2026-07-30 · 1.9.104 payout owner review ready
 
 ## 지금 (현재 위치)
 
@@ -29,6 +29,9 @@
 - OmD mean/median은 321,257/334,675ms·182,213/148,689 tokens, Impeccable은 556,041/464,729ms·312,106/239,720 tokens다. latency comparable=false이고 1 task×3 trials이므로 efficiency는 descriptive-only다.
 - failure/timeout/retry/fallback/repair/replacement/model substitution은 0이고 5/5 pacing이 green이다. invocation 4 전 Codex sandbox cache EPERM은 experimental invocation/cell 생성 전에 발생했고 authorized sole invocation 4가 preflight를 통과했다.
 - deterministic ceiling tie이므로 current OmD skill은 변경하지 않는다. 다음은 same-trial 3 pairs를 identity-hidden owner gallery로 묶어 Functionality/Usability/Fidelity/Ship Preference를 판단하는 단계이며 그 전에는 winner/public rank를 선언하지 않는다.
+- 1.9.104 same-trial owner gallery가 `/tmp/u19104-public/payout-approval-v0.1/`에 준비됐다. trial 1/2/3 각 exact pair, desktop+mobile 양쪽으로 3 comparisons/12 screenshots다.
+- public identity leak 0이고 private reveal은 `/tmp/u19104-private/reveal.json`에 분리했다. browser-harness desktop 2545px/mobile 390px overflow 0, missing image 0, incomplete export block+focus pass다.
+- 인앱 브라우저 `http://127.0.0.1:4779/payout-approval-v0.1/`를 visible handoff로 열었다. STOP: 실제 owner가 3 comparisons×4 axes를 판단해 export한 JSON이 다음 유효 입력이며 synthetic judgment/reveal은 금지한다.
 - 1.9.79 provider-free versioned skill control이 ACCEPTED됐다. exact detached commits `1aa81ddb…`/`c285d255…`를 opaque `slate`/`ember` arm으로 설치하고 attached clean exact-commit source를 fail-closed 한다.
 - Codex와 Cursor에서 paired prompt/instructions/activation은 runtime별 byte-identical이고 skill hash만 다르다. path/PROMPT/AGENTS/full manifest identity leak scan, focused 2/2, lint/build, independent BLOCK 0/WARN 0, provider 0이다.
 - 1.9.80 provider-free versioned matrix preparation이 ACCEPTED됐다. optional absolute `vendors_root`를 matrix controller가 모든 cell preparer에 전달하고 relative root를 output 생성 전에 거절한다. real detached slate/ember matrix와 focused 5/5, lint/build/syntax/diff가 green이고 provider 0이다.

@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "status": "gallery-ready",
+  "source_root": "/tmp/u19103",
+  "public_gallery_root": "/tmp/u19104-public",
+  "private_reveal": "/tmp/u19104-private/reveal.json",
+  "reviewer_hash": "725f34687707ce50",
+  "families": 1,
+  "comparisons": 3,
+  "screenshots": 12,
+  "public_identity_leaks": 0,
+  "browser_harness": {
+    "desktop": {
+      "viewport_width": 2545,
+      "document_overflow_x": false,
+      "missing_images": 0
+    },
+    "mobile": {
+      "viewport_width": 390,
+      "document_overflow_x": false,
+      "missing_images": 0
+    },
+    "incomplete_export_blocked": true,
+    "incomplete_export_status": "Complete every axis first.",
+    "incomplete_export_focus_moved": true
+  },
+  "in_app_browser": {
+    "url": "http://127.0.0.1:4779/payout-approval-v0.1/",
+    "visible": true,
+    "dom_contract": {
+      "comparison_sections": 3,
+      "axes_per_comparison": 4,
+      "choices_per_axis": 4
+    }
+  },
+  "next_required_input": "actual owner judgment export",
+  "synthetic_judgment_allowed": false
+}

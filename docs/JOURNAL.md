@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.104 payout owner gallery ready
+- same-trial 3 pairs를 익명 gallery 1페이지/12 screenshots로 준비했다.
+- public identity leak 0, private reveal 분리, desktop/mobile overflow·missing image 0이다.
+- incomplete export block/focus가 통과했고 인앱 브라우저 4779에 visible handoff했다.
+- STOP: 실제 owner export JSON이 다음 입력이며 synthetic judgment는 만들지 않는다.
+
 ## 2026-07-30 (Codex) · 1.9.103 payout frontier deterministic complete
 - `/tmp/u19103` 6/6가 valid/UI-Resolved/85로 끝나 두 arms Reliability@3 100%, W/T/L 0/3/0이다.
 - OmD mean은 321,257ms/182,213 tokens, Impeccable은 556,041ms/312,106 tokens이나 descriptive-only다.

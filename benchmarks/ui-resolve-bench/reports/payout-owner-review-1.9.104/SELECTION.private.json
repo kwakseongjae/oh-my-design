@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1",
+  "methodology_epoch": "payout-owner-1.9.104-v1",
+  "selection_policy": {
+    "source": "deterministic-ceiling-tie",
+    "pairing": "same-task-same-trial-only",
+    "audit": null
+  },
+  "counts": {
+    "pairs_total": 3,
+    "unresolved": 3,
+    "resolved": 0,
+    "audit_selected": 0,
+    "selected": 3
+  },
+  "selected": [
+    {
+      "pair_key": "payout-approval-v0.1@0.1.0:5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e:trial-1",
+      "task": {
+        "id": "payout-approval-v0.1-trial-1",
+        "version": "0.1.0",
+        "core_prompt_sha256": "5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e"
+      },
+      "candidates": [
+        {
+          "variant_id": "impeccable-prompt-only",
+          "label": "Impeccable (prompt-only)",
+          "directories": ["payout-t1-ivory"]
+        },
+        {
+          "variant_id": "omd-portable-jade",
+          "label": "oh-my-design apply skill",
+          "directories": ["payout-t1-jade"]
+        }
+      ],
+      "reasons": {
+        "deterministic_objective": "tie",
+        "ui_resolved": "both-pass"
+      },
+      "selection": "deterministic_ceiling_tie"
+    },
+    {
+      "pair_key": "payout-approval-v0.1@0.1.0:5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e:trial-2",
+      "task": {
+        "id": "payout-approval-v0.1-trial-2",
+        "version": "0.1.0",
+        "core_prompt_sha256": "5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e"
+      },
+      "candidates": [
+        {
+          "variant_id": "impeccable-prompt-only",
+          "label": "Impeccable (prompt-only)",
+          "directories": ["payout-t2-ivory"]
+        },
+        {
+          "variant_id": "omd-portable-jade",
+          "label": "oh-my-design apply skill",
+          "directories": ["payout-t2-jade"]
+        }
+      ],
+      "reasons": {
+        "deterministic_objective": "tie",
+        "ui_resolved": "both-pass"
+      },
+      "selection": "deterministic_ceiling_tie"
+    },
+    {
+      "pair_key": "payout-approval-v0.1@0.1.0:5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e:trial-3",
+      "task": {
+        "id": "payout-approval-v0.1-trial-3",
+        "version": "0.1.0",
+        "core_prompt_sha256": "5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e"
+      },
+      "candidates": [
+        {
+          "variant_id": "impeccable-prompt-only",
+          "label": "Impeccable (prompt-only)",
+          "directories": ["payout-t3-ivory"]
+        },
+        {
+          "variant_id": "omd-portable-jade",
+          "label": "oh-my-design apply skill",
+          "directories": ["payout-t3-jade"]
+        }
+      ],
+      "reasons": {
+        "deterministic_objective": "tie",
+        "ui_resolved": "both-pass"
+      },
+      "selection": "deterministic_ceiling_tie"
+    }
+  ]
+}
