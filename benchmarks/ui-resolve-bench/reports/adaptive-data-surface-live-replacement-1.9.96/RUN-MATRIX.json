@@ -18,7 +18,7 @@
     "latency_comparison": "descriptive-only",
     "retry_policy": "none-primary",
     "timeout_policy": "count-as-valid-failure",
-    "infrastructure_policy": "retain-freeze-and-reregister",
+    "infrastructure_policy": "retain-freeze-and-repreregister",
     "task_order_policy": "fixed-preregistered",
     "pacing": {
       "policy": "fixed-inter-cell",
