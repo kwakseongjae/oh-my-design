@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.96 replacement complete
+- six cells 모두 valid/UI-Resolved/85, 두 arms Reliability@3 100%다.
+- candidate W/T/L 0/3/0이라 1.9.95 superiority claim은 하지 않는다.
+- target adaptive failure는 6/6에서 없었고 patch는 no-regression으로 retain한다.
+- 다음은 eligible 3 pairs의 anonymous automated visual review다.
+
 ## 2026-07-30 (Codex) · 1.9.96 replacement prepared
 - `/tmp/u1996` 6/6 exact-source preparation과 input equality를 확인했다.
 - slate 1.9.78/ember 1.9.95는 clean detached이며 activation은 동일하다.
