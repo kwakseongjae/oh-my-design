@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.93 practitioner calibration
+- 3 exports/8 comparisons/32 axes exact intake를 완료했다.
+- ship은 1.9.78 candidate 4/control 1/tie 2/both-fail 1로 patch를 retain한다.
+- automated modal agreement는 ship 12.5%라 judge는 triage-only로 제한한다.
+- focused 27/27, lint/build pass; 다음은 unseen-task judge holdout이다.
+
 ## 2026-07-30 (Codex) · 1.9.92 task-family human gallery
 - selected 8 pair를 incident 2/locale 3/onboarding 3의 3페이지로 묶었다.
 - desktop+390px overflow 0, missing image 0, JSON export pass다.
