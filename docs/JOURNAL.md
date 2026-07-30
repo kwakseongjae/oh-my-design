@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.92 task-family human gallery
+- selected 8 pair를 incident 2/locale 3/onboarding 3의 3페이지로 묶었다.
+- desktop+390px overflow 0, missing image 0, JSON export pass다.
+- focused 25/25, lint/build pass, identity/reveal 분리는 유지된다.
+- 이제 127.0.0.1:4777의 세 페이지 practitioner export가 필요하다.
+
 ## 2026-07-30 (Codex) · 1.9.91 reduced-human selection
 - fresh automated review를 54/54, stop/retry/fallback 0으로 완료했다.
 - full-round reversal은 74/108이고 CI 중첩으로 automatic winner는 없다.
