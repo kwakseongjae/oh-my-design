@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.103 payout frontier deterministic complete
+- `/tmp/u19103` 6/6가 valid/UI-Resolved/85로 끝나 두 arms Reliability@3 100%, W/T/L 0/3/0이다.
+- OmD mean은 321,257ms/182,213 tokens, Impeccable은 556,041ms/312,106 tokens이나 descriptive-only다.
+- failure/retry/fallback/repair/substitution 0, pacing 5/5 green이며 current skill은 변경하지 않는다.
+- 다음은 세 matched trial의 anonymous owner review 준비다.
+
 ## 2026-07-30 (Codex) · 1.9.103 payout frontier prepared
 - exact OmD `f013dbd9…`와 Impeccable `4d849eb7…`를 detached/clean vendor로 고정했다.
 - payout 2 arms×3 trials가 same task/core prompt/starter, alternating arm-first order로 준비됐다.
