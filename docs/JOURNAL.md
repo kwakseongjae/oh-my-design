@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.108 deletion decision matrix prepared
+- exact current control과 bounded experimental을 2 arms×3 trials로 fresh 준비했다.
+- 6 cells의 task/prompt/starter/DESIGN은 같고 arm skill hash만 다르다.
+- Grok 4.5 High·high·900s·serial·120s·no retry/fallback으로 잠갔고 provider call은 0이다.
+- 다음은 `deletion-t1-control` 단일 controller call이다.
+
 ## 2026-07-30 (Codex) · 1.9.107 bounded decision-context delta prepared
 - canonical apply와 정확히 한 문단만 다른 non-canonical 실험 skill을 만들었다.
 - target/evidence/state/action hierarchy만 복원하며 새 warning·사실·token·control 생성은 금지한다.

@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.107 bounded decision-context delta prepared
+- 갱신: 2026-07-30 · 1.9.108 deletion decision-context matrix prepared
 
 ## 지금 (현재 위치)
 
+- 1.9.108 exact current control vs non-canonical decision-context experimental matrix가 `/tmp/u19108`에 PREPARED됐다. 2 arms×3 trials, control-first 2/1 균형, provider call 0이다.
+- 6 cells는 task/version/core prompt/full prompt/starter/DESIGN이 같고 arm별 skill hash만 다르다. control은 detached exact `f013dbd9…`/`d7a890ac…`, experimental은 clean committed `adad3759…`/`c2ac9f7e…`다.
+- Cursor/Grok 4.5 High, effort high, 900s, serial, 120s pacing, no retry/fallback/repair/substitution, Internal registered display-name scope로 잠갔다. 다음 cell은 `deletion-t1-control`이다.
 - 1.9.107 non-canonical `decision-context hierarchy closure` delta가 PREPARED됐다. canonical `skills/omd-apply/SKILL.md`와의 차이는 고위험 결정에서 target→evidence→state/blocker→action boundary를 기존 사실·구조·token으로 복원하는 정확히 한 문단이다.
 - 새 warning/risk score/legal conclusion/state/control/token/container/color/icon/fact 생성은 명시적으로 금지했고 이미 hierarchy가 명확하면 preserve로 종료한다. canonical skill은 unchanged다.
 - skill validator, focused 3/3, lint/build가 green이다. dirty-source diagnostic install은 adapter/path/hash를 확인하는 용도이며 non-publishable이라 denominator에 포함하지 않는다.
@@ -836,11 +839,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. committed experimental source의 clean attestation과 exact current detached control vendor를 고정한다.
-2. `deletion-approval-v0.1`에서 two arms×3 trials를 같은 task/prompt/starter/model/effort로 fresh 준비한다.
-3. 6/6 complete면 Reliability@3와 paired deterministic W/T/L을 집계한다.
-4. 두 arm 모두 objective eligible일 때만 same-trial anonymous owner gallery로 이동한다.
-5. canonical skill 승격은 fresh holdout objective eligibility와 owner blind usability/ship 선호를 모두 통과할 때만 허용한다.
+1. `/tmp/u19108`을 `deletion-t1-control`부터 controller call당 한 cell씩 실행한다.
+2. 6/6 complete면 Reliability@3와 paired deterministic W/T/L을 집계한다.
+3. 두 arm 모두 objective eligible일 때만 same-trial anonymous owner gallery로 이동한다.
+4. canonical skill 승격은 fresh holdout objective eligibility와 owner blind usability/ship 선호를 모두 통과할 때만 허용한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
