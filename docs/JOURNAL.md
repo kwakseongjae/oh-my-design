@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.97 blind review complete
+- 18/18 calls, failure/retry/repair/fallback/substitution 0으로 완료했다.
+- ship은 candidate 방향 9/9 modal과 9/9 reversal consistency다.
+- overall reversal 24/36이며 usability/fidelity 불확실성이 남았다.
+- 3 exact pairs 모두 human escalation 대상이다.
+
 ## 2026-07-30 (Codex) · 1.9.97 blind review prepared
 - 3 exact pairs/3 judges/9 units/18 calls packet을 만들었다.
 - 72 screenshots, prompt 18, public identity leak 0이다.
