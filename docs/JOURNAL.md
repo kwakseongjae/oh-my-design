@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.90 live automated review 30/54
+- locale trial 2까지 6 review units/12 calls를 완료했다.
+- two-trial aggregate는 slate 우세지만 대부분 CI가 겹쳐 확정할 수 없다.
+- reversal 15/24; functionality 6/6 외 usability/fidelity/ship은 불안정하다.
+- 다음은 locale trial 3, calls 31–36이다.
+
 ## 2026-07-30 (Codex) · 1.9.90 live automated review 24/54
 - locale trial 1의 3 judges×좌우 반전을 닫았다.
 - functionality는 3/3 tie, usability reversal 0/3, 전체 reversal 5/12다.
