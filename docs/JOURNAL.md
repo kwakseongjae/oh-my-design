@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.98 owner gallery ready
+- pricing 3 unresolved pairs를 one-family blind page로 묶었다.
+- desktop/mobile overflow 0, image 12/12, export control pass다.
+- localhost:4778 page를 인앱 브라우저에 열었다.
+- STOP: owner JSON export가 다음 유효 입력이다.
+
 ## 2026-07-30 (Codex) · 1.9.97 blind review complete
 - 18/18 calls, failure/retry/repair/fallback/substitution 0으로 완료했다.
 - ship은 candidate 방향 9/9 modal과 9/9 reversal consistency다.
