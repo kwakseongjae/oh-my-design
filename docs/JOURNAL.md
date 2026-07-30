@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.96 replacement preregistration
+- exact 1.9.78 대 1.9.95의 fresh pricing 6-cell denominator를 잠갔다.
+- Grok 4.5 High/global serial/120s pacing/no retry 조건은 1.9.94와 동일하다.
+- focused 4/4, lint/build/diff pass이며 provider call은 0이다.
+- 다음은 `/tmp/u1996` exact-source preparation이다.
+
 ## 2026-07-30 (Codex) · 1.9.95 adaptive data-surface closure
 - wide data surface의 containment/overflow/focus를 한 closure로 추가했다.
 - focus affordance는 새 product action이 아닌 기존 data access로 분리했다.

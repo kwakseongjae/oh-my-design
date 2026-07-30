@@ -282,10 +282,10 @@ describe("UI-Resolve Bench sandbox preparation", () => {
 
   it("prepares clean pinned OmD skill versions without prompt identity leakage", () => {
     const expectedCommits = {
-      "omd-portable-slate": "1aa81ddb1aa15defbd12b4af36b4dd6784131c9f",
-      "omd-portable-ember": "c285d25515ec8959e66ceeb7703417aad531cd95",
+      "omd-portable-slate": "c285d25515ec8959e66ceeb7703417aad531cd95",
+      "omd-portable-ember": "7364cbde3b58733c9e732fb75c179d6f37cd4c5b",
     };
-    const identityLeak = /\b(?:old|new|control|candidate)\b|1\.9\.(?:77|78)/i;
+    const identityLeak = /\b(?:old|new|control|candidate)\b|1\.9\.(?:78|95)/i;
 
     withVersionedOmdVendors((vendors) => {
       for (const runtime of ["codex", "cursor"]) {

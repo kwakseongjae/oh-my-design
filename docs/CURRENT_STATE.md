@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `6b3250a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.94 unseen pricing holdout prepared
+- 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-30 · 1.9.96 adaptive data-surface live replacement preregistered
 
 ## 지금 (현재 위치)
 
@@ -120,6 +120,10 @@
 - six zero conditions는 outer document overflow, clipped adaptive content, unresolved owner, unreachable scroll region, unmeasurable focus indicator, unnecessary region tabstop이다.
 - focused channel adaptation 3/3, install-skills 36/36, lint/build/syntax/diff green, skill 240 lines/SHA `0c2440a4…`, provider 0이다. broader 52/54의 두 failure는 기존 non-Git third-party vendor fixture다.
 - 다음은 exact `c285d255…` 1.9.78 candidate와 committed 1.9.95 exact source를 비교하는 fresh pricing replacement denominator다. `/tmp/u1994`는 immutable이다.
+- 1.9.96 fresh replacement를 LOCKED했다. pricing `0.3.0`에서 exact detached 1.9.78 `c285d255…`와 1.9.95 `7364cbd…`를 동일 `omd:apply` activation으로 3회 비교한다.
+- `/tmp/u1996`, Cursor/Grok 4.5 High, High effort, 900s, global serial, 120s pacing, no retry/fallback/repair/substitution이며 provider call은 아직 0이다.
+- focused exact-source/controller tests 4/4, lint/build/diff가 green이다. broader 16/18의 두 failure는 기존 non-Git Taste/UI UX Pro Max fixture다.
+- 다음은 preregistration commit 뒤 `/tmp/u1996` 6-cell fresh preparation과 exact input/source attestation을 잠그는 것이다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
