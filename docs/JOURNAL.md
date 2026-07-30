@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.94 unseen pricing holdout preparation
+- pricing 0.3.0 × exact slate/ember × 3 trials의 6-cell denominator를 잠갔다.
+- `/tmp/u1994` 6/6 preparation, input equality, detached source, untouched product를 확인했다.
+- provider call은 0이고 focused 24/24(+1 skipped), lint/build가 green이다.
+- 다음은 `pricing-t1-slate`부터 global serial live execution이다.
+
 ## 2026-07-30 (Codex) · 1.9.93 practitioner calibration
 - 3 exports/8 comparisons/32 axes exact intake를 완료했다.
 - ship은 1.9.78 candidate 4/control 1/tie 2/both-fail 1로 patch를 retain한다.

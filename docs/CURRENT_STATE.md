@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `c73821a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.93 practitioner calibration accepted
+- 기준 커밋: `6b3250a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-30 · 1.9.94 unseen pricing holdout prepared
 
 ## 지금 (현재 위치)
 
@@ -101,6 +101,10 @@
 - ship preference는 1.9.78 candidate 4, preceding control 1, tie 2, both-fail 1이다. uncertainty-selected single-practitioner sample이므로 superiority claim은 금지하지만 candidate patch는 retain한다.
 - automated modal↔human agreement는 functionality 37.5%, usability 28.57%, fidelity 14.29%, ship 12.5%다. 현 Grok judge는 triage-only이며 winner/public reviewer plane에 사용할 수 없다.
 - 다음은 seen examples에 prompt를 맞추지 않고 새 task holdout을 preregister해 judge-rubric calibration과 2.0 task expansion을 함께 진행하는 것이다.
+- 1.9.94 unseen pricing holdout을 LOCKED하고 `/tmp/u1994`에 6/6 cells를 fresh preparation했다. pricing conversion 0.3.0 × exact detached slate/ember × 3 trials이며 provider call은 0이다.
+- 모든 셀이 core prompt `62b68d…`, starter `54bcf3…`, task version 0.3.0을 공유하고 slate `1aa81ddb…`/`793eef…`, ember `c285d255…`/`d7a890…`만 다르다. source는 clean/detached/publishable이고 product tree는 untouched다.
+- Internal registered-display-name attribution, Cursor/Grok 4.5 High, High effort, 900s timeout, global serial, 120s pacing, no retry/fallback/repair/substitution을 고정했다. focused 24/24(+1 skipped), lint/build가 green이다.
+- preparation checkpoint는 `6b3250a`; 다음 exact cell은 `pricing-t1-slate`다. 첫 failure는 root freeze이며 다른 모델로 denominator를 채우지 않는다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
@@ -755,10 +759,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.70 fresh three-task × Raw/OmD × trial 1–3 replacement를 사전등록한다. `Reliability@3`와 paired `Skill Lift` 결론을 PROTOCOL대로 분리하고, ceiling tie를 failure로 오판하지 않는다.
-2. Grok 셀을 `--max-new-cells 1` checkpoint/global serial로 실행하고 invocation마다 lease/artifact/state를 검사한다.
-3. Grok이 실제 capacity/quota로 동결될 때만 Terra High와 Luna High를 별도 denominator로 연다. Grok root를 다른 모델이 완성하지 않는다.
-4. Cursor 표시명-only 결과는 계속 Internal model×runtime evidence로만 남기며 public model attribution을 주장하지 않는다.
+1. `/tmp/u1994`의 `pricing-t1-slate`부터 Grok 셀을 `--max-new-cells 1` checkpoint/global serial로 실행하고 invocation마다 lease/artifact/state를 검사한다.
+2. 6/6 valid completion 뒤 deterministic Reliability@3와 paired objective result를 집계한다.
+3. 산출물 identity를 가린 automated multi-judge+side reversal을 fresh private root에서 실행하고, 기존 selector로 unresolved+audit만 사람에게 올린다.
+4. holdout human agreement로 judge calibration을 갱신하되, single-practitioner/uncertainty-selected 표본에서 superiority나 public model claim은 만들지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
