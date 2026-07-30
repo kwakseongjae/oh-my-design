@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.90 live automated review 42/54
+- onboarding trial 1의 3 review units/6 calls를 완료했다.
+- slate가 functionality/usability/ship 3/3, fidelity 2/3로 앞섰다.
+- reversal은 10/12이고 both-fail은 0이나 반복 trial 전 결론은 보류한다.
+- 다음은 onboarding trial 2, calls 43–48이다.
+
 ## 2026-07-30 (Codex) · 1.9.90 live automated review 36/54
 - locale 세 trial 9 review units/18 calls를 모두 완료했다.
 - functionality 외 축은 동률 또는 CI 중첩이고 reversal은 24/36이다.
