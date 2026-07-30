@@ -786,6 +786,15 @@ describe('install-skills', () => {
     expect(applySkill).toContain('invented_radius_value: 0');
     expect(applySkill).toContain('unresolved_changed_radius: 0');
     expect(applySkill).toContain('interactive closure');
+    expect(applySkill).toContain('adaptive-data-surface closure');
+    expect(applySkill).toContain('width_strategy(reflow|wrap|internal-scroll)');
+    expect(applySkill).toContain('outer_document_overflow: 0');
+    expect(applySkill).toContain('clipped_adaptive_content: 0');
+    expect(applySkill).toContain('unresolved_overflow_owner: 0');
+    expect(applySkill).toContain('unreachable_scroll_region: 0');
+    expect(applySkill).toContain('unmeasurable_focus_indicator: 0');
+    expect(applySkill).toContain('unnecessary_region_tabstop: 0');
+    expect(applySkill).toContain('`accessibility_affordance`');
     expect(applySkill).toContain('unauthorized_focusable_delta: 0');
     expect(applySkill).toContain('permanently_clipped_focusable: 0');
     expect(applySkill).toContain('unresolved_focus_reveal: 0');

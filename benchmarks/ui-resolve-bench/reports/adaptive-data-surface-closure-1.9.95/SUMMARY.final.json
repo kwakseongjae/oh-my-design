@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1",
+  "status": "provider-free-accepted",
+  "patch": "1.9.95",
+  "contract": {
+    "name": "adaptive-data-surface closure",
+    "fields": [
+      "identity",
+      "semantic_role",
+      "containment_owner",
+      "width_strategy",
+      "overflow_owner",
+      "keyboard_entry",
+      "focus_visible_proof"
+    ],
+    "width_strategies": ["reflow", "wrap", "internal-scroll"],
+    "zero_conditions": [
+      "outer_document_overflow",
+      "clipped_adaptive_content",
+      "unresolved_overflow_owner",
+      "unreachable_scroll_region",
+      "unmeasurable_focus_indicator",
+      "unnecessary_region_tabstop"
+    ],
+    "focus_affordance_classification": "accessibility_affordance",
+    "product_control_authority_delta": 0
+  },
+  "acceptance": {
+    "focused_adaptation_tests": {"passed": 3, "failed": 0},
+    "install_skills_tests": {"passed": 36, "failed": 0},
+    "broader_sandbox_tests": {
+      "passed": 52,
+      "failed": 2,
+      "failure_scope": "pre-existing non-Git third-party vendor fixtures"
+    },
+    "lint": "passed",
+    "build": "passed",
+    "node_syntax": "passed",
+    "diff_check": "passed",
+    "skill_lines": 240,
+    "skill_sha256_before": "22eb96d8ac5da85477c5120fadaa23605252ac9afed46ee19f33da16fd7a567d",
+    "skill_sha256_after": "0c2440a469fec92e9950761c97db54174f87a266c2b0eb92225607d32fb42036",
+    "provider_calls": 0
+  },
+  "claim_limit": "Contract and distribution acceptance only; live lift requires a fresh exact-version denominator."
+}

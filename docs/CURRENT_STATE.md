@@ -115,6 +115,11 @@
 - final candidate objective/UI-Resolved W/T/L은 2/1/0, resolved 2/3 대 0/3, mean objective lift +2.3529pp, observed resolved lift +66.67pp다. 하지만 95% interval 0–100pp, 단일 unseen task이고 두 arms 모두 Reliability@3 0%라 superiority claim은 금지한다.
 - 네 셀이 deterministic critical gate를 실패했으므로 preregistered automated blind review는 fail-closed로 ineligible하다. 사람 검수도 필요 없다. 남은 반복 결함은 narrow/zoom의 adaptive comparison surface containment·keyboard focusability·focus-visible이다.
 - 다음은 이 결함만 다루는 provider-free 1.9.95 adaptive-data-surface contract를 canonical `omd-apply`와 distribution tests에 추가하고, fresh pricing replacement denominator를 별도 사전등록하는 것이다.
+- 1.9.95 `adaptive-data-surface closure`가 provider-free ACCEPTED됐다. changed table/comparison/command/wide-data surface마다 semantic role, containment, reflow|wrap|internal-scroll, overflow owner, keyboard entry, focus-visible proof를 한 transaction으로 닫는다.
+- 실제 overflow owner의 labelled focus affordance는 새 제품 action이 아닌 `accessibility_affordance`로 interactive closure에 분리하며 product control/state/hook/fact/token 권한을 늘리지 않는다. decorative/non-scroll wrapper tab stop은 계속 금지한다.
+- six zero conditions는 outer document overflow, clipped adaptive content, unresolved owner, unreachable scroll region, unmeasurable focus indicator, unnecessary region tabstop이다.
+- focused channel adaptation 3/3, install-skills 36/36, lint/build/syntax/diff green, skill 240 lines/SHA `0c2440a4…`, provider 0이다. broader 52/54의 두 failure는 기존 non-Git third-party vendor fixture다.
+- 다음은 exact `c285d255…` 1.9.78 candidate와 committed 1.9.95 exact source를 비교하는 fresh pricing replacement denominator다. `/tmp/u1994`는 immutable이다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.

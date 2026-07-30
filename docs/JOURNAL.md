@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.95 adaptive data-surface closure
+- wide data surface의 containment/overflow/focus를 한 closure로 추가했다.
+- focus affordance는 새 product action이 아닌 기존 data access로 분리했다.
+- focused 3/3, install 36/36, lint/build/syntax/diff pass, provider 0이다.
+- 다음은 exact old/new fresh pricing replacement denominator다.
+
 ## 2026-07-30 (Codex) · 1.9.94 unseen pricing holdout complete
 - 6/6 valid complete; candidate W/T/L 2/1/0, resolved 2/3 대 control 0/3다.
 - mean objective lift +2.3529pp지만 CI 0–100pp, Reliability@3는 양쪽 0%다.
