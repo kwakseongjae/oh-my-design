@@ -14,6 +14,7 @@ const releaseTrain = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resol
 const pinnedVendors = "/tmp/omd-ui-skills-bench/vendors";
 const taskIds = ["pricing-conversion-v0.1", "onboarding-setup-v0.1", "incident-operations-v0.1"];
 const localeTaskId = "locale-cli-handoff-v0.1";
+const accessReviewTaskId = "access-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -191,6 +192,61 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("把專案設計依據交給 AI 程式助理");
     expect(starter).toContain("data-locale-panel=\"zh-TW\"");
     expect(starter).toContain("为 AI 编程助手添加项目设计依据");
+  });
+
+  it("adds an unseen access-review family through the existing dashboard evaluator contract", () => {
+    const task = JSON.parse(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", accessReviewTaskId, "task.json"),
+      "utf8",
+    ));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      track: "repair",
+      behavior_adapter: "dashboard-v1",
+      journey_oracle: {
+        filter: {
+          count: 3,
+          initial: "all",
+          selected: "urgent",
+          initial_visible_rows: 4,
+          selected_visible_rows: 2,
+        },
+        disclosure: { count: 2 },
+      },
+      protected_hook_counts: {
+        "[data-bench='filter-button']": 3,
+        "[data-bench='review-row']": 4,
+        "[data-bench='details-button']": 2,
+        "[data-bench='acknowledge']": 1,
+        "[data-bench='operation-status']": 1,
+        "[data-bench-design-role='main-console']": 1,
+      },
+    });
+    expect(task.viewports.map((viewport) => viewport.name)).toEqual([
+      "desktop",
+      "mobile",
+      "narrow-320",
+      "css-zoom-surrogate-200",
+    ]);
+    expect(task.design_oracle.selectors).toMatchObject({
+      primary_action: "[data-bench='acknowledge']",
+      card: "[data-bench-design-role='main-console']",
+      display: "h1",
+    });
+
+    const out = prepareVariant("raw-design-md", {
+      task: accessReviewTaskId,
+      outputName: "access-review",
+    });
+    const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+    expect(manifest.task).toMatchObject({
+      id: accessReviewTaskId,
+      version: "0.1.0",
+      track: "repair",
+    });
+    expect(readFileSync(join(out, "index.html"), "utf8")).toContain(
+      "data-bench-design-role=\"main-console\"",
+    );
   });
 
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {

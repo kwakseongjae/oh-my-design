@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.100 unseen access-review task
+- pricing과 분리된 access-review task/starter/DESIGN을 기존 dashboard evaluator에 추가했다.
+- 첫 diagnostic이 contrast와 ticket-metric oracle 문제를 잡았고 fixture만 최소 수정했다.
+- fresh root는 85/85, critical 6/6, 4-view geometry/keyboard/axe/evidence green이다.
+- focused 4/4, lint/build pass; 다음은 exact current-skill Reliability@3 baseline이다.
+
 ## 2026-07-30 (Codex) · 1.9.98 intake + 1.9.99 rollback
 - pricing owner export 3 comparisons/12 axes exact intake를 완료했다.
 - functionality는 3 ties, usability/ship은 control 2 wins + 1 tie였다.

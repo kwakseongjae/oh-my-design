@@ -1,0 +1,100 @@
+{
+  "id": "access-review-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "dashboard-v1",
+  "review_brief": "A compact access-review console for a small security team. Compare whether the result keeps identity, requested scope, urgency, evidence, and the next safe action scannable without flattening the review matrix into decorative cards.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": {
+    "landmarks": {
+      "h1_count": { "exact": 1 },
+      "main_count": { "exact": 1 },
+      "nav_count": { "min": 1 },
+      "footer_count": { "min": 1 }
+    }
+  },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='filter-button']",
+    "[data-bench='review-row']",
+    "[data-bench='details-button']",
+    "[data-bench='acknowledge']",
+    "[data-bench='operation-status']",
+    "[data-bench-design-role='main-console']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='filter-button']": 3,
+    "[data-bench='review-row']": 4,
+    "[data-bench='details-button']": 2,
+    "[data-bench='acknowledge']": 1,
+    "[data-bench='operation-status']": 1,
+    "[data-bench-design-role='main-console']": 1
+  },
+  "journey_oracle": {
+    "filter": {
+      "selector": "[data-bench='filter-button']",
+      "value_attribute": "data-filter",
+      "body_dataset": "filter",
+      "row_selector": "[data-bench='review-row']",
+      "count": 3,
+      "initial": "all",
+      "selected": "urgent",
+      "initial_visible_rows": 4,
+      "selected_visible_rows": 2
+    },
+    "disclosure": {
+      "selector": "[data-bench='details-button']",
+      "count": 2
+    },
+    "acknowledgement": {
+      "button_selector": "[data-bench='acknowledge']",
+      "status_selector": "[data-bench='operation-status']"
+    }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:best|fastest|leading|top-rated|award-winning)\\s+(?:security|access|identity|review|tool|platform)\\b",
+    "\\btrusted by\\b",
+    "\\b(?:zero risk|always secure|never breached|instant approval)\\b",
+    "\\b\\d[\\d,]*\\+?\\s+(?:customers|companies|teams|users|reviews|requests)\\b",
+    "[★☆]{3,}"
+  ],
+  "protected_known_patterns": [
+    "^(?:Showing all )?4 access requests(?: shown)?\\.?$",
+    "Ticket PRM-104 requests access through Friday"
+  ],
+  "protected_unknown_selectors": [
+    "blockquote",
+    "[class*='testimonial' i]",
+    "[class*='logo-wall' i]",
+    "[class*='social-proof' i]"
+  ],
+  "design_oracle": {
+    "page_background": "#F2F0E9",
+    "primary_action": "#1D5D4F",
+    "accent": "#C45A3B",
+    "ink": "#18231F",
+    "surface": "#FFFFFF",
+    "border": "#D7D3C8",
+    "muted_text": "#626C67",
+    "card_radius_px": 12,
+    "control_radius_px": 8,
+    "font_family": {
+      "body_any": ["Arial"],
+      "display_any": ["Georgia"]
+    },
+    "selectors": {
+      "primary_action": "[data-bench='acknowledge']",
+      "card": "[data-bench-design-role='main-console']",
+      "display": "h1"
+    }
+  }
+}

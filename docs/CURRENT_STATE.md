@@ -4,10 +4,16 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.99 adaptive-data-surface rollback accepted
+- 갱신: 2026-07-30 · 1.9.100 unseen access-review task contract accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.98 pricing owner blind review는 functionality 3/3 tie, usability/ship은 exact 1.9.78 control 2 wins + 1 tie였다. 1.9.95 adaptive-data-surface delta는 승격하지 않았다.
+- 1.9.99에서 current `omd-apply`를 exact control commit `c285d25515ec8959e66ceeb7703417aad531cd95`와 byte-identical하게 복원했다. historical evidence는 보존했고 install 36/36, portable channel 3/3, lint/build가 green이다.
+- 1.9.100 provider-free unseen `access-review-v0.1` task contract가 ACCEPTED됐다. fictional Permit access-review console은 기존 `dashboard-v1` evaluator를 재사용하며 4 requests, 3 filters, 2 disclosures, 1 acknowledgement와 desktop/390/320/200%-zoom을 고정한다.
+- 첫 diagnostic starter는 muted contrast 4.497:1과 `PRM-104 requests`의 fabricated-metric 오인으로 실패했다. fixture만 최소 수정하고 evaluator/skill/weight/history는 변경하지 않았으며 diagnostic root는 denominator로 재사용하지 않는다.
+- fresh `/tmp/u19100-access-starter-v2`는 85/85, critical 6/6, 4-view geometry/keyboard/axe/evidence 모두 green이다. starter SHA `95da4fc7…`, prompt SHA `a3041c9f…`, provider 0이다.
+- 다음은 이 unseen family에서 exact committed current skill 한 arm×3 trials Reliability@3 baseline이다. deterministic failure cluster가 있을 때만 bounded skill delta를 설계하고, 3/3 ceiling이면 규칙을 억지로 추가하지 않는다.
 - 1.9.79 provider-free versioned skill control이 ACCEPTED됐다. exact detached commits `1aa81ddb…`/`c285d255…`를 opaque `slate`/`ember` arm으로 설치하고 attached clean exact-commit source를 fail-closed 한다.
 - Codex와 Cursor에서 paired prompt/instructions/activation은 runtime별 byte-identical이고 skill hash만 다르다. path/PROMPT/AGENTS/full manifest identity leak scan, focused 2/2, lint/build, independent BLOCK 0/WARN 0, provider 0이다.
 - 1.9.80 provider-free versioned matrix preparation이 ACCEPTED됐다. optional absolute `vendors_root`를 matrix controller가 모든 cell preparer에 전달하고 relative root를 output 생성 전에 거절한다. real detached slate/ember matrix와 focused 5/5, lint/build/syntax/diff가 green이고 provider 0이다.
@@ -801,10 +807,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 기존 live results에서 아직 current skill patch로 닫지 않은 failure cluster를 provider-free로 재분류하고, pricing이 아닌 새 task family를 고른다.
-2. 새 family의 task/starter/DESIGN.md/evaluator를 먼저 provider-free acceptance하고 exact control/candidate denominator를 사전등록한다.
-3. 현재 triage-only automated judge는 escalation selection에만 사용하고, patch promotion은 deterministic eligibility 뒤 owner blind usability/ship 판단으로 닫는다.
-4. 2.0.0 frontier gate에는 모델/스킬/하네스 분리, Reliability@3, multi-family holdout, practitioner preference, compute telemetry를 계속 누적한다.
+1. `access-review-v0.1`에 exact committed current `omd-apply` 한 arm×3 trials를 fresh root로 사전등록한다.
+2. Cursor/Grok 4.5 High, effort high, 900s timeout, global serial, 120s pacing, no retry/fallback/repair/substitution으로 Reliability@3 baseline을 실행한다.
+3. deterministic failure가 반복될 때만 새로운 bounded skill delta를 설계한다. 3/3 ceiling이면 다른 unseen family 또는 blind visual selection으로 이동한다.
+4. 현재 triage-only automated judge는 escalation selection에만 사용하고, patch promotion은 deterministic eligibility 뒤 owner blind usability/ship 판단으로 닫는다.
+5. 2.0.0 frontier gate에는 모델/스킬/하네스 분리, Reliability@3, multi-family holdout, practitioner preference, compute telemetry를 계속 누적한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
