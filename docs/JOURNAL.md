@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.90 live automated review 24/54
+- locale trial 1의 3 judges×좌우 반전을 닫았다.
+- functionality는 3/3 tie, usability reversal 0/3, 전체 reversal 5/12다.
+- fidelity/ship도 2/3 합의와 겹치는 CI라 human escalation 대상이다.
+- 다음은 locale trial 2, calls 25–30이다.
+
 ## 2026-07-30 (Codex) · 1.9.90 live automated review 18/54
 - incident trial 1–3의 9 review units/18 calls를 모두 닫았다.
 - aggregate는 axes별 작은 엇갈림과 넓은 CI로 확실한 승자가 없다.

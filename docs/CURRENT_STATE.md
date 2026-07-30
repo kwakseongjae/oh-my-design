@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `06f26f0` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.90 fresh automated review checkpoint 18/54
+- 기준 커밋: `701cd68` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-07-30 · 1.9.90 fresh automated review checkpoint 24/54
 
 ## 지금 (현재 위치)
 
@@ -79,7 +79,10 @@
 - incident 12/54 시점에는 trial 1/2가 각 3/3 합의지만 서로 반대 후보여서 네 axes aggregate가 정확히 tie였다. trial 3까지 포함한 18/54 결과는 functionality/fidelity가 ember 쪽, usability/ship이 slate 쪽의 작은 rating 차이만 있고 모든 95% interval이 1–2 rank와 넓게 겹친다.
 - incident reversal consistency는 29/36(80.56%): functionality 8/9, 나머지 세 axes 7/9다. primary tie는 functionality/fidelity 각 2, both-fail 0, modal agreement는 axes별 8/9다.
 - incident task는 reversal inconsistency+wide uncertainty 때문에 reduced-human escalation 대상이다. 자동 결과를 승자 claim으로 쓰지 않는다.
-- 다음은 locale trial 1의 3 judges×primary/reversal, invocations 19–24다.
+- locale trial 1의 3 judges×primary/reversal까지 완료돼 fresh root는 24/54다. provider/cache/registry/strict JSON failure와 retry/fallback/repair/substitution은 계속 0이다.
+- locale trial 1 functionality는 primary 3/3 tie와 reversal 3/3 consistent다. usability는 primary 2/3 modal이지만 reversal 0/3 consistent, fidelity/ship은 primary 2/3 modal과 reversal 각 1/3 consistent다.
+- locale trial 1 전체 reversal consistency는 5/12(41.67%), both-fail 0이며 usability/fidelity/ship rating CI가 겹친다. 이 pair도 reduced-human escalation 대상이다.
+- 다음은 locale trial 2의 3 judges×primary/reversal, invocations 25–30이다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
