@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "pricing-practitioner-gallery-1.9.98",
+  "status": "accepted",
+  "methodology_epoch": "pricing-adaptive-v1",
+  "reviewer_hash": "35b8fbb03626391d",
+  "counts": {
+    "practitioners": 1,
+    "families": 1,
+    "comparisons": 3,
+    "axis_judgments": 12
+  },
+  "human_outcomes": {
+    "functionality": {
+      "candidate": 0,
+      "control": 0,
+      "tie": 3,
+      "both_fail": 0
+    },
+    "usability": {
+      "candidate": 0,
+      "control": 2,
+      "tie": 1,
+      "both_fail": 0
+    },
+    "fidelity": {
+      "candidate": 1,
+      "control": 1,
+      "tie": 1,
+      "both_fail": 0
+    },
+    "ship_preference": {
+      "candidate": 0,
+      "control": 2,
+      "tie": 1,
+      "both_fail": 0
+    }
+  },
+  "automated_modal_agreement": {
+    "functionality": 0,
+    "usability": 0,
+    "fidelity": 0.666667,
+    "ship_preference": 0
+  },
+  "decision": "do-not-promote-1.9.95-restore-preceding-skill-contract",
+  "superiority_claim": false,
+  "automated_judge_status": "triage-only-not-calibrated",
+  "validation": {
+    "exact_intake": true,
+    "missing_or_duplicate_comparisons": 0,
+    "repair_rescore_relabel": 0
+  },
+  "next_action": "Remove the adaptive-data-surface skill delta and its current-contract assertions, then run focused regression checks."
+}

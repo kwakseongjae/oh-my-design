@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.98 pricing practitioner gallery awaiting owner
+- 갱신: 2026-07-30 · 1.9.99 adaptive-data-surface rollback accepted
 
 ## 지금 (현재 위치)
 
@@ -141,8 +141,12 @@
 - deterministic selector는 3 pairs 모두 unresolved, resolved/audit 0으로 사람 검수를 요구한다. 다음은 pricing 3 comparisons를 한 task-family blind gallery로 묶어 practitioner에게 제시하는 것이다.
 - 1.9.98 owner gallery가 준비됐다. immutable 1.9.97 selection의 pricing 3 comparisons를 `/tmp/u1998-public` 한 페이지에 blind로 묶고 private reveal은 `/tmp/u1998-private/reveal.json`에 분리했다.
 - browser-harness 검수에서 desktop 1661px/mobile 390px horizontal overflow 0, missing images 0, comparisons 3, images 12, export control pass다.
-- `http://127.0.0.1:4778/pricing-conversion-v0.1/`을 인앱 브라우저에 열었다. STOP: owner가 3×4 axes를 완료하고 `ui-resolve-human-pricing-conversion-v0.1.json`을 export해 첨부해야 한다.
-- export intake 전 A/B identity를 reveal하거나 automated preference를 owner에게 노출하지 않는다.
+- owner export는 exact intake를 통과했다: 1 family/3 comparisons/12 axes, epoch/reviewer/comparison/trial exact match, missing/duplicate/repair/rescore/relabel 0이다.
+- blind human 결과는 functionality 0/0/3(candidate/control/tie), usability 0/2/1, fidelity 1/1/1, ship 0/2/1이다. 1.9.95는 기능 lift가 없고 control이 usability/ship에서 2승 1무라 promotion 실패다.
+- automated modal agreement는 functionality 0/3, usability 0/2 comparable, fidelity 2/3, ship 0/3이다. Grok judge plane은 계속 triage-only이며 winner나 public reviewer가 아니다.
+- 1.9.99 rollback이 ACCEPTED됐다. canonical `skills/omd-apply/SKILL.md`는 exact control commit `c285d255…`와 byte-identical이며 adaptive-data-surface clause/interactive exception/acceptance bullet/current-contract assertions만 제거했다.
+- install-channel 36/36, focused Codex/Cursor/Claude preparation 3/3, TypeScript/build/diff green, provider 0이다. broader combined 52/54의 두 failure는 기존 non-Git Taste/UI UX Pro Max `/tmp` fixture다.
+- 다음 adaptive/wide-surface replacement는 seen pricing examples를 재사용하지 않고 새 task family에서 기능 보존 + human usability/ship lift를 보여야 한다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
@@ -797,10 +801,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `/tmp/u1994`의 `pricing-t1-slate`부터 Grok 셀을 `--max-new-cells 1` checkpoint/global serial로 실행하고 invocation마다 lease/artifact/state를 검사한다.
-2. 6/6 valid completion 뒤 deterministic Reliability@3와 paired objective result를 집계한다.
-3. 산출물 identity를 가린 automated multi-judge+side reversal을 fresh private root에서 실행하고, 기존 selector로 unresolved+audit만 사람에게 올린다.
-4. holdout human agreement로 judge calibration을 갱신하되, single-practitioner/uncertainty-selected 표본에서 superiority나 public model claim은 만들지 않는다.
+1. 기존 live results에서 아직 current skill patch로 닫지 않은 failure cluster를 provider-free로 재분류하고, pricing이 아닌 새 task family를 고른다.
+2. 새 family의 task/starter/DESIGN.md/evaluator를 먼저 provider-free acceptance하고 exact control/candidate denominator를 사전등록한다.
+3. 현재 triage-only automated judge는 escalation selection에만 사용하고, patch promotion은 deterministic eligibility 뒤 owner blind usability/ship 판단으로 닫는다.
+4. 2.0.0 frontier gate에는 모델/스킬/하네스 분리, Reliability@3, multi-family holdout, practitioner preference, compute telemetry를 계속 누적한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

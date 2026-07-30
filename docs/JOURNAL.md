@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.98 intake + 1.9.99 rollback
+- pricing owner export 3 comparisons/12 axes exact intake를 완료했다.
+- functionality는 3 ties, usability/ship은 control 2 wins + 1 tie였다.
+- 1.9.95 delta를 승격하지 않고 exact 1.9.78 contract로 복원했다.
+- install 36/36, portable 3/3, lint/build pass; 다음은 unseen failure family 선택이다.
+
 ## 2026-07-30 (Codex) · 1.9.98 owner gallery ready
 - pricing 3 unresolved pairs를 one-family blind page로 묶었다.
 - desktop/mobile overflow 0, image 12/12, export control pass다.

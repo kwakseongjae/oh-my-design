@@ -241,9 +241,6 @@ describe("UI-Resolve Bench sandbox preparation", () => {
 
     expect(existsSync(join(out, ".agents/skills/omd-apply/SKILL.md"))).toBe(true);
     expect(installedSkillName(join(out, ".agents/skills/omd-apply/SKILL.md"))).toBe("omd:apply");
-    expect(readFileSync(join(out, ".agents/skills/omd-apply/SKILL.md"), "utf8")).toContain(
-      "adaptive-data-surface closure",
-    );
     expect(prompt).toContain("$omd:apply");
     expect(prompt).not.toContain("$omd-apply");
     expect(existsSync(join(out, ".codex/agents"))).toBe(false);
@@ -444,21 +441,6 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     );
     expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain("interactive closure");
     expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
-      "adaptive-data-surface closure",
-    );
-    for (const adaptiveClosure of [
-      "width_strategy(reflow|wrap|internal-scroll)",
-      "outer_document_overflow: 0",
-      "unreachable_scroll_region: 0",
-      "unmeasurable_focus_indicator: 0",
-      "unnecessary_region_tabstop: 0",
-      "`accessibility_affordance`",
-    ]) {
-      expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
-        adaptiveClosure,
-      );
-    }
-    expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
       "unauthorized_focusable_delta: 0",
     );
     expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8")).toContain(
@@ -487,7 +469,6 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       "foreground closure",
       "geometry-token closure",
       "interactive closure",
-      "adaptive-data-surface closure",
       "protected ledger",
       "확인되지 않은 정보 — fallback으로 채우지 않음",
       "replacement verifier",
@@ -555,9 +536,6 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
 
     expect(existsSync(join(out, ".claude/skills/omd-apply/SKILL.md"))).toBe(true);
-    expect(readFileSync(join(out, ".claude/skills/omd-apply/SKILL.md"), "utf8")).toContain(
-      "adaptive-data-surface closure",
-    );
     expect(existsSync(join(out, ".agents/skills/omd-apply/SKILL.md"))).toBe(false);
     expect(existsSync(join(out, "CLAUDE.md"))).toBe(true);
     expect(existsSync(join(out, "AGENTS.md"))).toBe(false);
