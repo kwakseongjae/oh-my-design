@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.106 deletion holdout contract accepted
+- payout와 다른 영구 삭제 승인 family를 기존 `approval-v1` 위에 provider-free로 추가했다.
+- fresh starter는 85/85, critical 6/6, states 3/3, four-view·keyboard·axe·evidence green이다.
+- diagnostic regex 오탐 root는 denominator에서 제외했고 fresh replacement만 acceptance로 잠갔다.
+- canonical skill은 유지하며 다음은 current control vs non-canonical bounded delta다.
+
 ## 2026-07-30 (Codex) · 1.9.105 payout owner result locked
 - owner-only strict intake와 hash lock을 추가했고 3 comparisons/12 axes를 exact 검증했다.
 - Functionality는 tie 2/both-fail 1, Usability·Fidelity·Ship은 Impeccable 2/both-fail 1이다.

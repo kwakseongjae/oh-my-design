@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.105 payout owner review complete
+- 갱신: 2026-07-30 · 1.9.106 deletion approval holdout contract accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.106 provider-free unseen `deletion-approval-v0.1` task contract가 ACCEPTED됐다. payout의 금융 맥락을 재사용하지 않고 영구 삭제 승인이라는 새 고위험 결정 family를 만들었으며 기존 `approval-v1` evaluator와 schema/weight는 변경하지 않았다.
+- untouched fresh `/tmp/u19106-deletion-starter-v2`는 85/85, critical 6/6, state groups 3/3, four-view geometry/keyboard/axe/evidence가 모두 green이다. prompt SHA `c482379f…`, product SHA `9b326324…`, provider 0이다.
+- 첫 diagnostic root는 task unknown-regex가 제공된 file count를 marketing proof로 오인해 80/85였고 denominator에서 제외했다. fixture/evaluator는 건드리지 않고 task regex만 최소 수정한 fresh root로 acceptance를 닫았다.
+- canonical `omd-apply`는 아직 변경하지 않았다. 다음은 exact current control과 `decision-context hierarchy closure` 한 규칙만 추가한 non-canonical experimental arm을 이 holdout에서 비교하는 단계다.
 - 1.9.98 pricing owner blind review는 functionality 3/3 tie, usability/ship은 exact 1.9.78 control 2 wins + 1 tie였다. 1.9.95 adaptive-data-surface delta는 승격하지 않았다.
 - 1.9.99에서 current `omd-apply`를 exact control commit `c285d25515ec8959e66ceeb7703417aad531cd95`와 byte-identical하게 복원했다. historical evidence는 보존했고 install 36/36, portable channel 3/3, lint/build가 green이다.
 - 1.9.100 provider-free unseen `access-review-v0.1` task contract가 ACCEPTED됐다. fictional Permit access-review console은 기존 `dashboard-v1` evaluator를 재사용하며 4 requests, 3 filters, 2 disclosures, 1 acknowledgement와 desktop/390/320/200%-zoom을 고정한다.
@@ -829,11 +833,11 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `/tmp/u19103`을 `payout-t1-jade`부터 한 controller call당 한 cell씩 실행한다.
-2. 6/6 complete면 Reliability@3와 paired deterministic W/T/L을 집계한다.
-3. deterministic failure가 반복될 때만 새로운 bounded skill delta를 설계한다. 두 arm 모두 eligible이면 anonymous visual review로 이동한다.
-4. 현재 triage-only automated judge는 escalation selection에만 사용하고, patch promotion은 deterministic eligibility 뒤 owner blind usability/ship 판단으로 닫는다.
-5. 2.0.0 frontier gate에는 모델/스킬/하네스 분리, Reliability@3, multi-family holdout, practitioner preference, compute telemetry를 계속 누적한다.
+1. exact current `omd-apply` control과 non-canonical bounded `decision-context hierarchy closure` experimental skill source를 고정한다.
+2. `deletion-approval-v0.1`에서 two arms×3 trials를 같은 task/prompt/starter/model/effort로 준비한다.
+3. 6/6 complete면 Reliability@3와 paired deterministic W/T/L을 집계한다.
+4. 두 arm 모두 objective eligible일 때만 same-trial anonymous owner gallery로 이동한다.
+5. canonical skill 승격은 fresh holdout objective eligibility와 owner blind usability/ship 선호를 모두 통과할 때만 허용한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

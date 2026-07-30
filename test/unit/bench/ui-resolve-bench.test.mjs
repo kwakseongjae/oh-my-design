@@ -17,6 +17,7 @@ const taskIds = ["pricing-conversion-v0.1", "onboarding-setup-v0.1", "incident-o
 const localeTaskId = "locale-cli-handoff-v0.1";
 const accessReviewTaskId = "access-review-v0.1";
 const payoutApprovalTaskId = "payout-approval-v0.1";
+const deletionApprovalTaskId = "deletion-approval-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -374,6 +375,61 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(readFileSync(join(out, "index.html"), "utf8")).toContain(
       "data-bench=\"approval-dialog\"",
     );
+  });
+
+  it("adds an unseen deletion approval holdout without changing the approval evaluator", () => {
+    const task = JSON.parse(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", deletionApprovalTaskId, "task.json"),
+      "utf8",
+    ));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      track: "repair",
+      behavior_adapter: "approval-v1",
+      journey_oracle: {
+        filter: {
+          count: 3,
+          initial: "all",
+          selected: "blocked",
+          initial_visible_rows: 4,
+          selected_visible_rows: 2,
+        },
+        disclosure: { count: 2 },
+        decision: {
+          open_button_selector: "[data-bench='open-approval']",
+          dialog_selector: "[data-bench='approval-dialog']",
+          cancel_button_selector: "[data-bench='cancel-approval']",
+          confirm_button_selector: "[data-bench='confirm-approval']",
+        },
+      },
+      protected_hook_counts: {
+        "[data-bench='approval-row']": 4,
+        "[data-bench='approval-dialog']": { total: 1, visible: 0 },
+        "[data-bench='confirm-approval']": { total: 1, visible: 0 },
+        "[data-bench-design-role='main-console']": 1,
+      },
+    });
+    expect(task.viewports.map((viewport) => viewport.name)).toEqual([
+      "desktop",
+      "mobile",
+      "narrow-320",
+      "css-zoom-surrogate-200",
+    ]);
+
+    const out = prepareVariant("raw-design-md", {
+      task: deletionApprovalTaskId,
+      outputName: "deletion-approval",
+    });
+    const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+    expect(manifest.task).toMatchObject({
+      id: deletionApprovalTaskId,
+      version: "0.1.0",
+      track: "repair",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter).toContain("data-bench=\"approval-dialog\"");
+    expect(starter).toContain("Export EX-204 records 18 project files and 3 shared folders");
+    expect(starter).not.toContain("North Market");
   });
 
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
