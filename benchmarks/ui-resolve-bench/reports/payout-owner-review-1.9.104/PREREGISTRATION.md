@@ -1,6 +1,6 @@
 # Payout matched-trial owner review — 1.9.104
 
-Status: **LOCKED; practitioner judgment not yet collected**.
+Status: **COMPLETE; practitioner judgment hash-locked**.
 
 ## Purpose
 

@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "methodology_epoch": "payout-owner-1.9.104-v1",
+  "reviewer_hash": "725f34687707ce50",
+  "family": "payout-approval-v0.1",
+  "comparisons": [
+    {
+      "comparison_id": "comparison-51fe64b2ff96",
+      "trial": 1
+    },
+    {
+      "comparison_id": "comparison-ec6b1d744342",
+      "trial": 2
+    },
+    {
+      "comparison_id": "comparison-6c5fdff93727",
+      "trial": 3
+    }
+  ],
+  "axes": [
+    "functionality",
+    "usability",
+    "fidelity",
+    "ship_preference"
+  ],
+  "exported_at": "2026-07-30T11:25:01.947Z",
+  "judgments": [
+    {
+      "comparison_id": "comparison-51fe64b2ff96",
+      "trial": 1,
+      "axes": {
+        "functionality": "both_fail",
+        "usability": "both_fail",
+        "fidelity": "both_fail",
+        "ship_preference": "both_fail"
+      }
+    },
+    {
+      "comparison_id": "comparison-ec6b1d744342",
+      "trial": 2,
+      "axes": {
+        "functionality": "tie",
+        "usability": "b",
+        "fidelity": "b",
+        "ship_preference": "b"
+      }
+    },
+    {
+      "comparison_id": "comparison-6c5fdff93727",
+      "trial": 3,
+      "axes": {
+        "functionality": "tie",
+        "usability": "a",
+        "fidelity": "a",
+        "ship_preference": "a"
+      }
+    }
+  ]
+}

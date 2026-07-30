@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.105 payout owner result locked
+- owner-only strict intake와 hash lock을 추가했고 3 comparisons/12 axes를 exact 검증했다.
+- Functionality는 tie 2/both-fail 1, Usability·Fidelity·Ship은 Impeccable 2/both-fail 1이다.
+- `decision-context hierarchy`를 provisional cluster로 기록했지만 canonical skill은 유지한다.
+- 다음은 새 unseen high-consequence holdout contract이며 payout으로 train+validate하지 않는다.
+
 ## 2026-07-30 (Codex) · 1.9.104 payout owner gallery ready
 - same-trial 3 pairs를 익명 gallery 1페이지/12 screenshots로 준비했다.
 - public identity leak 0, private reveal 분리, desktop/mobile overflow·missing image 0이다.

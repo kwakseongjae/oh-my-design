@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.104 payout owner review ready
+- 갱신: 2026-07-30 · 1.9.105 payout owner review complete
 
 ## 지금 (현재 위치)
 
@@ -32,6 +32,10 @@
 - 1.9.104 same-trial owner gallery가 `/tmp/u19104-public/payout-approval-v0.1/`에 준비됐다. trial 1/2/3 각 exact pair, desktop+mobile 양쪽으로 3 comparisons/12 screenshots다.
 - public identity leak 0이고 private reveal은 `/tmp/u19104-private/reveal.json`에 분리했다. browser-harness desktop 2545px/mobile 390px overflow 0, missing image 0, incomplete export block+focus pass다.
 - 인앱 브라우저 `http://127.0.0.1:4779/payout-approval-v0.1/`를 visible handoff로 열었다. STOP: 실제 owner가 3 comparisons×4 axes를 판단해 export한 JSON이 다음 유효 입력이며 synthetic judgment/reveal은 금지한다.
+- 실제 owner export를 strict owner-only intake로 검증·hash-lock했다. 3 comparisons/12 axes가 exact complete이며 schema/epoch/reviewer/family/trial/choice mismatch 0이다.
+- normalized 결과는 Functionality OmD 0/Impeccable 0/Tie 2/Both fail 1, Usability·Fidelity·Ship 각각 OmD 0/Impeccable 2/Tie 0/Both fail 1이다. Trial 1은 전축 both-fail, Trial 2/3은 functionality tie+나머지 Impeccable이다.
+- 반복 진단 가설은 `decision-context hierarchy closure`: 고위험 결정에서 selected entity/evidence/status/action boundary를 inline prose로 평평하게 만들지 않고 distinct metadata hierarchy와 stable dense-data geometry로 보존한다.
+- canonical OmD는 변경하지 않는다. 다음은 새 unseen high-consequence decision family의 provider-free task contract를 먼저 만들고, 그 뒤 non-canonical experimental delta를 exact current control과 비교한다. payout seen artifact로 train+validate 동시 사용 금지다.
 - 1.9.79 provider-free versioned skill control이 ACCEPTED됐다. exact detached commits `1aa81ddb…`/`c285d255…`를 opaque `slate`/`ember` arm으로 설치하고 attached clean exact-commit source를 fail-closed 한다.
 - Codex와 Cursor에서 paired prompt/instructions/activation은 runtime별 byte-identical이고 skill hash만 다르다. path/PROMPT/AGENTS/full manifest identity leak scan, focused 2/2, lint/build, independent BLOCK 0/WARN 0, provider 0이다.
 - 1.9.80 provider-free versioned matrix preparation이 ACCEPTED됐다. optional absolute `vendors_root`를 matrix controller가 모든 cell preparer에 전달하고 relative root를 output 생성 전에 거절한다. real detached slate/ember matrix와 focused 5/5, lint/build/syntax/diff가 green이고 provider 0이다.
