@@ -249,6 +249,47 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     );
   });
 
+  it("pins the restored current OmD skill as an exact detached access-review arm", () => {
+    const variantId = "omd-portable-jade";
+    const expectedCommit = "f013dbd9f94a1e018f7cf8a4e500207fe982b00a";
+    expect(competitors.variants[variantId]).toMatchObject({
+      commit: expectedCommit,
+      eligible_tracks: expect.arrayContaining(["repair"]),
+      activation: "Use the installed $omd:apply skill for this task.",
+    });
+
+    const vendors = mkdtempSync(join(tmpdir(), "omd-current-skill-vendor-"));
+    try {
+      cloneVersionedOmdVendor(vendors, variantId);
+      const out = prepareVariant(variantId, {
+        vendors,
+        runtime: "cursor",
+        task: accessReviewTaskId,
+        outputName: "access-review-current",
+      });
+      const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+      expect(manifest).toMatchObject({
+        task: {
+          id: accessReviewTaskId,
+          version: "0.1.0",
+        },
+        skill: {
+          source_commit: expectedCommit,
+          source_attestation: {
+            detached: true,
+            dirty: false,
+            publishable: true,
+          },
+        },
+      });
+      expect(manifest.skill.sha256).toBe(
+        "d7a890ac08f8a4cce8c541b186039c9fcd4245a363f7f97132a2bbf8f46f52d5",
+      );
+    } finally {
+      rmSync(vendors, { recursive: true, force: true });
+    }
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);

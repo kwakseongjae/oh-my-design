@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.101 access-review baseline prepared
+- exact detached current skill `f013dbd9…` one arm×3 trials를 `/tmp/u19101`에 준비했다.
+- 세 cell의 task/prompt/starter/activation/skill identity와 clean detached source를 확인했다.
+- focused 5/5, lint/build green, provider 0이다.
+- 다음은 Grok registry/cache/capacity preflight 뒤 checkpoint-bounded cell 1이다.
+
 ## 2026-07-30 (Codex) · 1.9.100 unseen access-review task
 - pricing과 분리된 access-review task/starter/DESIGN을 기존 dashboard evaluator에 추가했다.
 - 첫 diagnostic이 contrast와 ticket-metric oracle 문제를 잡았고 fixture만 최소 수정했다.
