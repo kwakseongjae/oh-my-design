@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.94 unseen pricing holdout 2/6
+- trial 1 control은 valid 81/85지만 390/320px 4px overflow로 unresolved다.
+- candidate는 valid/UI-Resolved/85로 같은 unseen task를 통과했다.
+- pacing 120.005s, failure/retry/fallback/substitution 0이다.
+- 다음은 `pricing-t2-ember`, 이후 trial 2 pair다.
+
 ## 2026-07-30 (Codex) · 1.9.94 unseen pricing holdout preparation
 - pricing 0.3.0 × exact slate/ember × 3 trials의 6-cell denominator를 잠갔다.
 - `/tmp/u1994` 6/6 preparation, input equality, detached source, untouched product를 확인했다.
