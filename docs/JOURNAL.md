@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.103 payout frontier prepared
+- exact OmD `f013dbd9…`와 Impeccable `4d849eb7…`를 detached/clean vendor로 고정했다.
+- payout 2 arms×3 trials가 same task/core prompt/starter, alternating arm-first order로 준비됐다.
+- `/tmp/u19103` 6/6 preparation, untouched product tree, distinct skill identity가 green이다.
+- 다음은 Grok checkpoint-bounded cell 1이며 provider call은 아직 0이다.
+
 ## 2026-07-30 (Codex) · 1.9.102 payout approval contract
 - unseen payout family와 generic approval-v1 dialog/focus evaluator를 추가했다.
 - starter는 85/85, dialog cancel/confirm focus restoration, 4-view geometry/keyboard/axe green이다.

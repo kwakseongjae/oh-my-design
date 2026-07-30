@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.102 unseen payout-approval task contract accepted
+- 갱신: 2026-07-30 · 1.9.103 payout frontier comparison prepared
 
 ## 지금 (현재 위치)
 
@@ -22,7 +22,10 @@
 - approval decision은 dialog initial closed → open+focus inside → cancel+trigger focus restore → reopen+confirm+status change+close+trigger focus restore를 fail-closed 검사한다. exact protected hooks에는 초기 hidden dialog/buttons visibility도 포함된다.
 - untouched `/tmp/u19102-payout-starter`는 85/85, critical 6/6, 4-view geometry/keyboard/axe/evidence green이다. starter SHA `4de76062…`, core prompt SHA `5682362e…`, provider 0이다.
 - focused task/decision 3/3, evaluator hardening 15/15, lint/build green이다. browser-gated failclosed e2e 1개는 환경 opt-in이 없어 skip됐고 실패는 아니다.
-- 다음은 payout family에서 exact current OmD와 pinned frontier repair skill의 balanced 2 arms×3 trials matrix를 provider-free로 준비한다.
+- 1.9.103 payout frontier comparison이 `/tmp/u19103`에 provider-free PREPARED됐다. exact current OmD `f013dbd9…`(skill SHA `d7a890ac…`)와 exact Impeccable prompt-only `4d849eb7…`(skill SHA `8612a4ec…`) 두 arms×3 trials다.
+- 6 cells는 task `0.1.0`, core prompt `5682362e…`, starter/DESIGN `4de76062…`가 같고 arm별 preregistered activation만 다르다. exact detached/clean/publishable source, within-arm skill identity, untouched product tree를 확인했다.
+- order는 jade/ivory → ivory/jade → jade/ivory로 arm-first 2/1 균형이다. Grok 4.5 High, effort high, 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only다.
+- 다음은 committed preparation 뒤 `payout-t1-jade`부터 checkpoint-bounded execution이다. 양쪽 eligible이면 anonymous review, deterministic failure는 denominator에 그대로 둔다.
 - 1.9.79 provider-free versioned skill control이 ACCEPTED됐다. exact detached commits `1aa81ddb…`/`c285d255…`를 opaque `slate`/`ember` arm으로 설치하고 attached clean exact-commit source를 fail-closed 한다.
 - Codex와 Cursor에서 paired prompt/instructions/activation은 runtime별 byte-identical이고 skill hash만 다르다. path/PROMPT/AGENTS/full manifest identity leak scan, focused 2/2, lint/build, independent BLOCK 0/WARN 0, provider 0이다.
 - 1.9.80 provider-free versioned matrix preparation이 ACCEPTED됐다. optional absolute `vendors_root`를 matrix controller가 모든 cell preparer에 전달하고 relative root를 output 생성 전에 거절한다. real detached slate/ember matrix와 focused 5/5, lint/build/syntax/diff가 green이고 provider 0이다.
@@ -816,8 +819,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. payout family에서 exact current OmD와 pinned frontier repair skill의 source/license/activation을 감사한다.
-2. 두 arms×3 trials를 alternating arm-first order, same task/prompt/starter로 fresh root에 사전등록·준비한다.
+1. `/tmp/u19103`을 `payout-t1-jade`부터 한 controller call당 한 cell씩 실행한다.
+2. 6/6 complete면 Reliability@3와 paired deterministic W/T/L을 집계한다.
 3. deterministic failure가 반복될 때만 새로운 bounded skill delta를 설계한다. 두 arm 모두 eligible이면 anonymous visual review로 이동한다.
 4. 현재 triage-only automated judge는 escalation selection에만 사용하고, patch promotion은 deterministic eligibility 뒤 owner blind usability/ship 판단으로 닫는다.
 5. 2.0.0 frontier gate에는 모델/스킬/하네스 분리, Reliability@3, multi-family holdout, practitioner preference, compute telemetry를 계속 누적한다.
