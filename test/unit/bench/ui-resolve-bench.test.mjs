@@ -432,6 +432,43 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).not.toContain("North Market");
   });
 
+  it("keeps the decision-context experiment bounded to one non-canonical rule", () => {
+    const canonical = readFileSync(join(repoRoot, "skills/omd-apply/SKILL.md"), "utf8");
+    const experimentPath = join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/experimental-skills/omd-decision-context-closure/SKILL.md",
+    );
+    const experimental = readFileSync(experimentPath, "utf8");
+    const boundedRulePrefix = "2e. **고위험 결정 화면에서 `decision-context hierarchy closure`를 수행한다.**";
+    const ruleLines = experimental.split("\n").filter((line) => line.startsWith(boundedRulePrefix));
+    expect(ruleLines).toHaveLength(1);
+    expect(ruleLines[0]).toContain("새 warning banner, risk score, 법적 판단");
+    expect(ruleLines[0]).toContain("기존 화면이 이미 네 역할을 명확히 구분하면");
+    expect(experimental.split("\n").filter((line) => !line.startsWith(boundedRulePrefix)).join("\n"))
+      .toBe(canonical);
+    expect(canonical).not.toContain("decision-context hierarchy closure");
+
+    const out = prepareVariant("omd-decision-context-experimental", {
+      task: deletionApprovalTaskId,
+      runtime: "cursor",
+      outputName: "decision-context-experimental",
+    });
+    const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+    expect(manifest).toMatchObject({
+      task: { id: deletionApprovalTaskId, version: "0.1.0" },
+      variant: {
+        id: "omd-decision-context-experimental",
+        kind: "local-skill-experimental",
+      },
+      skill: {
+        declared_name: "omd-apply",
+        source_path: "benchmarks/ui-resolve-bench/experimental-skills/omd-decision-context-closure",
+      },
+    });
+    expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8"))
+      .toContain("decision-context hierarchy closure");
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);

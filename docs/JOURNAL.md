@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.107 bounded decision-context delta prepared
+- canonical apply와 정확히 한 문단만 다른 non-canonical 실험 skill을 만들었다.
+- target/evidence/state/action hierarchy만 복원하며 새 warning·사실·token·control 생성은 금지한다.
+- validator, focused 3/3, lint/build green; dirty diagnostic root는 denominator 밖이다.
+- 다음은 clean exact current control vs experimental Reliability@3 준비다.
+
 ## 2026-07-30 (Codex) · 1.9.106 deletion holdout contract accepted
 - payout와 다른 영구 삭제 승인 family를 기존 `approval-v1` 위에 provider-free로 추가했다.
 - fresh starter는 85/85, critical 6/6, states 3/3, four-view·keyboard·axe·evidence green이다.
