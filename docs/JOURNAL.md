@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.94 unseen pricing holdout 4/6
+- trial 2는 두 arms 모두 valid 79/85·unresolved로 objective tie다.
+- 둘 다 320px/200% scrollable-region focusability/accessibility gate가 실패했다.
+- 2-trial candidate W/T/L은 1/1/0, pacing/failure policy는 green이다.
+- 다음은 trial 3 `pricing-t3-slate` → `pricing-t3-ember`다.
+
 ## 2026-07-30 (Codex) · 1.9.94 unseen pricing holdout 2/6
 - trial 1 control은 valid 81/85지만 390/320px 4px overflow로 unresolved다.
 - candidate는 valid/UI-Resolved/85로 같은 unseen task를 통과했다.

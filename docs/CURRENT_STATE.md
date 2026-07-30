@@ -108,6 +108,9 @@
 - `/tmp/u1994` trial 1은 2/6 checkpoint까지 완료됐다. `pricing-t1-slate`는 valid지만 responsive critical gate가 실패해 81/85·UI-Resolved false다: 390px/320px에서 Plan differences container가 양쪽 4px overflow/clipping을 만들었다.
 - `pricing-t1-ember`는 valid/UI-Resolved/85점으로 같은 unseen task를 통과했다. trial 1 candidate delta는 +4점/+1 resolved이나 3-trial denominator 전에는 Diagnostic으로만 본다.
 - 첫 pacing은 120,005ms green이고 provider/cache/attribution/evaluator failure, retry/fallback/repair/substitution은 0이다. 다음 exact cell은 `pricing-t2-ember`다.
+- `/tmp/u1994` trial 2도 완료돼 4/6 checkpoint다. ember와 slate 모두 responsive는 통과했지만 320px/200%의 scrollable-region focusability와 focus-visible 실패로 valid 79/85·UI-Resolved false다.
+- 2-trial objective/UI-Resolved W/T/L은 candidate 기준 1/1/0, objective delta sum +4다. 서로 다른 실패 유형이 나타났으므로 patch의 절대 reliability claim은 아직 불가하다.
+- 3/3 pacing green, provider/infrastructure/attribution/evaluator failure와 retry/fallback/repair/substitution은 0이다. 다음 exact cell은 `pricing-t3-slate`다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
