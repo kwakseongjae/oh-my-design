@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.101 access-review Reliability@3
+- exact current skill이 unseen access-review 3 trials를 모두 valid/UI-Resolved/85로 통과했다.
+- Reliability@3 3/3, evidence/unknown 3/3, failure/retry/fallback/repair/substitution 0이다.
+- median 320,520ms/186,999 tokens이며 compute 분산은 descriptive-only다.
+- 이 family에는 failure cluster가 없어 새 규칙을 만들지 않고 다음 unseen family로 이동한다.
+
 ## 2026-07-30 (Codex) · 1.9.101 access-review baseline prepared
 - exact detached current skill `f013dbd9…` one arm×3 trials를 `/tmp/u19101`에 준비했다.
 - 세 cell의 task/prompt/starter/activation/skill identity와 clean detached source를 확인했다.

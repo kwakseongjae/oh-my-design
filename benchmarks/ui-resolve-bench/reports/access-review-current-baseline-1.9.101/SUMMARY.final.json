@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "access-review-current-baseline-1.9.101",
+  "status": "complete",
+  "decision": "retain-current-skill-without-new-rule",
+  "root": "/tmp/u19101",
+  "task": {
+    "id": "access-review-v0.1",
+    "version": "0.1.0"
+  },
+  "arm": {
+    "opaque_id": "jade",
+    "source_commit": "f013dbd9f94a1e018f7cf8a4e500207fe982b00a",
+    "installed_skill_sha256": "d7a890ac08f8a4cce8c541b186039c9fcd4245a363f7f97132a2bbf8f46f52d5"
+  },
+  "execution": {
+    "scheduled_cells": 3,
+    "completed_cells": 3,
+    "valid_cells": 3,
+    "ui_resolved": 3,
+    "reliability_at_3": true,
+    "objective_scores": [85, 85, 85],
+    "wall_time_ms": [286669, 430861, 320520],
+    "tokens": [186999, 128698, 319840],
+    "evidence_and_unknown_pass": 3,
+    "pacing_checks_passed": 2,
+    "pacing_checks_total": 2,
+    "runtime_preflight_passed": 3,
+    "evaluator_preflight_passed": 3,
+    "retry_fallback_repair_substitution": 0
+  },
+  "telemetry": {
+    "wall_time_median_ms": 320520,
+    "wall_time_min_ms": 286669,
+    "wall_time_max_ms": 430861,
+    "tokens_median": 186999,
+    "tokens_min": 128698,
+    "tokens_max": 319840,
+    "latency_comparison": "descriptive-only"
+  },
+  "skill_changed": false,
+  "public_model_attribution_eligible": false,
+  "superiority_claim": false,
+  "next_action": "Select another unseen task family; do not invent an access-review rule from a 3/3 deterministic ceiling."
+}
