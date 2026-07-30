@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.90 live automated review 18/54
+- incident trial 1–3의 9 review units/18 calls를 모두 닫았다.
+- aggregate는 axes별 작은 엇갈림과 넓은 CI로 확실한 승자가 없다.
+- reversal 29/36, modal agreement 8/9, both-fail 0이라 human escalation 대상이다.
+- 다음은 locale trial 1, calls 19–24다.
+
 ## 2026-07-30 (Codex) · 1.9.90 live automated review 10/54
 - incident trial 2의 judge-001/002 primary+reversal까지 추가 완료했다.
 - 10 calls 모두 provider/cache/registry/strict JSON green, retry/fallback/repair 0이다.
