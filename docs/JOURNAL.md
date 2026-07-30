@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.109 deletion owner gallery ready
+- 1.9.108은 6/6 valid/UI-Resolved/85, 양 arm Reliability@3 100%, objective 0/3/0 tie다.
+- failure/retry/fallback/substitution 0이며 compute는 descriptive-only다.
+- same-trial 3 pairs를 12 screenshots 익명 gallery로 만들고 desktop/mobile QA를 통과했다.
+- STOP: 실제 owner export JSON이 다음 입력이며 canonical skill은 아직 unchanged다.
+
 ## 2026-07-30 (Codex) · 1.9.108 deletion decision matrix prepared
 - exact current control과 bounded experimental을 2 arms×3 trials로 fresh 준비했다.
 - 6 cells의 task/prompt/starter/DESIGN은 같고 arm skill hash만 다르다.

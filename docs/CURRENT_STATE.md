@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.108 deletion decision-context matrix prepared
+- 갱신: 2026-07-30 · 1.9.109 deletion owner review ready
 
 ## 지금 (현재 위치)
 
+- 1.9.108 `/tmp/u19108` 6/6 cells가 COMPLETE됐다. control과 experimental 모두 valid/UI-Resolved/85 3/3, Reliability@3 100%, paired objective W/T/L 0/3/0이다.
+- control mean/median은 271,476/275,831ms·135,446/112,950 tokens, experimental은 375,391/395,240ms·167,700/104,733 tokens다. latency comparable=false이고 1 task×3 trials이므로 compute는 descriptive-only다.
+- failure/timeout/retry/fallback/repair/replacement/model substitution은 0이고 5/5 pacing 및 모든 Cursor cache preflight가 green이다. canonical skill은 unchanged다.
+- 1.9.109 same-trial anonymous owner gallery가 `/tmp/u19109-public/deletion-approval-v0.1/`에 준비됐다. 3 comparisons/12 axes/12 screenshots, identity leak 0, desktop/mobile overflow 0, missing image 0, incomplete export block pass다.
+- 인앱 브라우저 `http://127.0.0.1:4780/deletion-approval-v0.1/`가 visible handoff다. STOP: 실제 owner export JSON이 다음 유효 입력이며 synthetic judgment/reveal은 금지한다.
 - 1.9.108 exact current control vs non-canonical decision-context experimental matrix가 `/tmp/u19108`에 PREPARED됐다. 2 arms×3 trials, control-first 2/1 균형, provider call 0이다.
 - 6 cells는 task/version/core prompt/full prompt/starter/DESIGN이 같고 arm별 skill hash만 다르다. control은 detached exact `f013dbd9…`/`d7a890ac…`, experimental은 clean committed `adad3759…`/`c2ac9f7e…`다.
 - Cursor/Grok 4.5 High, effort high, 900s, serial, 120s pacing, no retry/fallback/repair/substitution, Internal registered display-name scope로 잠갔다. 다음 cell은 `deletion-t1-control`이다.
@@ -839,10 +844,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `/tmp/u19108`을 `deletion-t1-control`부터 controller call당 한 cell씩 실행한다.
-2. 6/6 complete면 Reliability@3와 paired deterministic W/T/L을 집계한다.
-3. 두 arm 모두 objective eligible일 때만 same-trial anonymous owner gallery로 이동한다.
-4. canonical skill 승격은 fresh holdout objective eligibility와 owner blind usability/ship 선호를 모두 통과할 때만 허용한다.
+1. owner가 인앱 갤러리의 3 comparisons×4 axes를 판단하고 JSON을 export한다.
+2. export를 strict owner-only intake와 private reveal로 normalize/hash-lock한다.
+3. experimental이 usability/fidelity/ship에서 반복 우세할 때만 canonical promotion 후보로 이동한다.
+4. tie·mixed·control 우세면 canonical skill을 유지하고 실험 delta는 승격하지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
