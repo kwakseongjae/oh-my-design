@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.96 replacement prepared
+- `/tmp/u1996` 6/6 exact-source preparation과 input equality를 확인했다.
+- slate 1.9.78/ember 1.9.95는 clean detached이며 activation은 동일하다.
+- prompt·AGENTS identity leak 0, provider call 0이다.
+- 다음은 `pricing-t1-slate`부터 one-cell controller 실행이다.
+
 ## 2026-07-30 (Codex) · 1.9.96 replacement preregistration
 - exact 1.9.78 대 1.9.95의 fresh pricing 6-cell denominator를 잠갔다.
 - Grok 4.5 High/global serial/120s pacing/no retry 조건은 1.9.94와 동일하다.
