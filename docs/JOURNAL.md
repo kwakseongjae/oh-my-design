@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.97 blind review preregistration
+- 1.9.96의 eligible pricing 3 pairs를 3 judges×reversal로 잠갔다.
+- 총 9 units/18 calls, 300s timeout/30s pacing/max-new 1이다.
+- automated judgment는 calibration/triage only다.
+- 다음은 identity-free packet preparation이다.
+
 ## 2026-07-30 (Codex) · 1.9.96 replacement complete
 - six cells 모두 valid/UI-Resolved/85, 두 arms Reliability@3 100%다.
 - candidate W/T/L 0/3/0이라 1.9.95 superiority claim은 하지 않는다.
