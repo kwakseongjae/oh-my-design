@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.102 payout approval contract
+- unseen payout family와 generic approval-v1 dialog/focus evaluator를 추가했다.
+- starter는 85/85, dialog cancel/confirm focus restoration, 4-view geometry/keyboard/axe green이다.
+- focused 3/3, evaluator hardening 15/15, lint/build pass; provider 0이다.
+- 다음은 exact current OmD vs pinned frontier repair 2 arms×3 trials 준비다.
+
 ## 2026-07-30 (Codex) · 1.9.101 access-review Reliability@3
 - exact current skill이 unseen access-review 3 trials를 모두 valid/UI-Resolved/85로 통과했다.
 - Reliability@3 3/3, evidence/unknown 3/3, failure/retry/fallback/repair/substitution 0이다.

@@ -139,6 +139,35 @@ export function evaluateAcknowledgementObservation(observation) {
   };
 }
 
+export function evaluateApprovalDecisionObservation(observation) {
+  return {
+    required_elements_present:
+      observation?.presence?.open_button === true &&
+      observation?.presence?.dialog === true &&
+      observation?.presence?.cancel_button === true &&
+      observation?.presence?.confirm_button === true &&
+      observation?.presence?.status === true,
+    initially_closed:
+      observation?.initial?.open === false &&
+      observation?.initial?.visible === false,
+    opens_and_moves_focus:
+      observation?.opened?.open === true &&
+      observation?.opened?.visible === true &&
+      observation?.opened?.focus_inside === true,
+    cancel_closes_and_restores_focus:
+      observation?.cancelled?.open === false &&
+      observation?.cancelled?.visible === false &&
+      observation?.cancelled?.focus_restored === true,
+    confirm_changes_status_and_closes:
+      observation?.confirmed?.open === false &&
+      observation?.confirmed?.visible === false &&
+      Boolean(observation?.initial?.status) &&
+      Boolean(observation?.confirmed?.status) &&
+      observation.initial.status !== observation.confirmed.status &&
+      observation?.confirmed?.focus_restored === true,
+  };
+}
+
 const matchesPattern = (text, pattern) => {
   try {
     return new RegExp(pattern, "iu").test(String(text ?? ""));
@@ -955,6 +984,90 @@ async function main() {
           };
           return { filter, disclosure, acknowledgement };
         }, task.journey_oracle);
+        else if (behaviorAdapter === "approval-v1") behavior = await page.evaluate(async (oracle) => {
+          const visible = (element) => {
+            const style = getComputedStyle(element);
+            const rect = element.getBoundingClientRect();
+            return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+          };
+          const filterConfig = oracle.filter;
+          const filters = [...document.querySelectorAll(filterConfig.selector)];
+          const valueFor = (node) => node.getAttribute(filterConfig.value_attribute);
+          const filterState = () => ({
+            selected: document.body.dataset[filterConfig.body_dataset],
+            body_filter: document.body.dataset[filterConfig.body_dataset],
+            pressed: Object.fromEntries(filters.map((node) => [valueFor(node), node.getAttribute("aria-pressed")])),
+            visible_rows: [...document.querySelectorAll(filterConfig.row_selector)].filter(visible).length,
+          });
+          const filter = {
+            nodes: filters.map((node) => ({ value: valueFor(node), visible: visible(node) })),
+            initial: filterState(),
+          };
+          filters.find((node) => valueFor(node) === filterConfig.selected)?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          filter.filtered = filterState();
+          filters.find((node) => valueFor(node) === filterConfig.initial)?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          filter.restored = filterState();
+
+          const disclosure = [];
+          for (const button of document.querySelectorAll(oracle.disclosure.selector)) {
+            const controls = button.getAttribute("aria-controls");
+            const target = controls ? document.getElementById(controls) : null;
+            const state = () => ({ expanded: button.getAttribute("aria-expanded"), hidden: target?.hidden });
+            const entry = { controls, target_exists: Boolean(target), button_visible: visible(button), initial: state() };
+            button.click();
+            await new Promise((resolve) => setTimeout(resolve, 20));
+            entry.opened = state();
+            button.click();
+            await new Promise((resolve) => setTimeout(resolve, 20));
+            entry.closed = state();
+            disclosure.push(entry);
+          }
+
+          const config = oracle.decision;
+          const openButton = document.querySelector(config.open_button_selector);
+          const dialog = document.querySelector(config.dialog_selector);
+          const cancelButton = document.querySelector(config.cancel_button_selector);
+          const confirmButton = document.querySelector(config.confirm_button_selector);
+          const status = document.querySelector(config.status_selector);
+          const dialogState = () => ({
+            open: dialog instanceof HTMLDialogElement ? dialog.open : dialog?.getAttribute("aria-hidden") !== "true",
+            visible: dialog ? visible(dialog) : false,
+          });
+          const decision = {
+            presence: {
+              open_button: openButton instanceof HTMLButtonElement,
+              dialog: dialog instanceof HTMLDialogElement,
+              cancel_button: cancelButton instanceof HTMLButtonElement,
+              confirm_button: confirmButton instanceof HTMLButtonElement,
+              status: status instanceof HTMLElement,
+            },
+            initial: { ...dialogState(), status: status?.textContent.trim() },
+          };
+          openButton?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          decision.opened = {
+            ...dialogState(),
+            focus_inside: dialog instanceof HTMLElement && dialog.contains(document.activeElement),
+          };
+          cancelButton?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          decision.cancelled = {
+            ...dialogState(),
+            focus_restored: document.activeElement === openButton,
+          };
+          openButton?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          confirmButton?.click();
+          await new Promise((resolve) => setTimeout(resolve, 20));
+          decision.confirmed = {
+            ...dialogState(),
+            status: status?.textContent.trim(),
+            focus_restored: document.activeElement === openButton,
+          };
+          return { filter, disclosure, decision };
+        }, task.journey_oracle);
         else if (behaviorAdapter === "locale-switch-v1") behavior = await page.evaluate(async (oracle) => {
           const visible = (element) => {
             const style = getComputedStyle(element);
@@ -1178,6 +1291,23 @@ async function main() {
       filter: filterChecks,
       disclosure: disclosureChecks,
       acknowledgement: acknowledgementChecks,
+    };
+  } else if (behaviorAdapter === "approval-v1") {
+    const filterChecks = evaluateFilterObservation(behavior?.filter, task.journey_oracle?.filter);
+    const disclosureChecks = evaluateFaqObservations(
+      behavior?.disclosure,
+      task.journey_oracle?.disclosure?.count,
+    );
+    const decisionChecks = evaluateApprovalDecisionObservation(behavior?.decision);
+    stateChecks = {
+      filter: everyCheckPass(filterChecks),
+      disclosure: everyCheckPass(disclosureChecks),
+      decision: everyCheckPass(decisionChecks),
+    };
+    stateDetails = {
+      filter: filterChecks,
+      disclosure: disclosureChecks,
+      decision: decisionChecks,
     };
   } else if (behaviorAdapter === "locale-switch-v1") {
     const localeChecks = evaluateLocaleSwitchObservation(

@@ -5,6 +5,7 @@ import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { prepareRunMatrix } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs";
 import { treeManifest } from "../../../benchmarks/ui-resolve-bench/scripts/_lib.mjs";
+import { evaluateApprovalDecisionObservation } from "../../../benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const prepare = join(repoRoot, "benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs");
@@ -15,6 +16,7 @@ const pinnedVendors = "/tmp/omd-ui-skills-bench/vendors";
 const taskIds = ["pricing-conversion-v0.1", "onboarding-setup-v0.1", "incident-operations-v0.1"];
 const localeTaskId = "locale-cli-handoff-v0.1";
 const accessReviewTaskId = "access-review-v0.1";
+const payoutApprovalTaskId = "payout-approval-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -288,6 +290,90 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     } finally {
       rmSync(vendors, { recursive: true, force: true });
     }
+  });
+
+  it("fails closed unless an approval dialog opens, traps intent, and restores focus", () => {
+    const passing = {
+      presence: {
+        open_button: true,
+        dialog: true,
+        cancel_button: true,
+        confirm_button: true,
+        status: true,
+      },
+      initial: { open: false, visible: false, status: "Decision pending." },
+      opened: { open: true, visible: true, focus_inside: true },
+      cancelled: { open: false, visible: false, focus_restored: true },
+      confirmed: {
+        open: false,
+        visible: false,
+        status: "Batch approved.",
+        focus_restored: true,
+      },
+    };
+    expect(Object.values(evaluateApprovalDecisionObservation(passing)).every(Boolean)).toBe(true);
+    expect(evaluateApprovalDecisionObservation({
+      ...passing,
+      opened: { ...passing.opened, focus_inside: false },
+    }).opens_and_moves_focus).toBe(false);
+    expect(evaluateApprovalDecisionObservation({
+      ...passing,
+      confirmed: { ...passing.confirmed, status: passing.initial.status },
+    }).confirm_changes_status_and_closes).toBe(false);
+  });
+
+  it("adds a payout approval family with a modal decision boundary", () => {
+    const task = JSON.parse(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", payoutApprovalTaskId, "task.json"),
+      "utf8",
+    ));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      track: "repair",
+      behavior_adapter: "approval-v1",
+      journey_oracle: {
+        filter: {
+          count: 3,
+          initial: "all",
+          selected: "review",
+          initial_visible_rows: 4,
+          selected_visible_rows: 2,
+        },
+        disclosure: { count: 2 },
+        decision: {
+          open_button_selector: "[data-bench='open-approval']",
+          dialog_selector: "[data-bench='approval-dialog']",
+          cancel_button_selector: "[data-bench='cancel-approval']",
+          confirm_button_selector: "[data-bench='confirm-approval']",
+        },
+      },
+      protected_hook_counts: {
+        "[data-bench='approval-row']": 4,
+        "[data-bench='approval-dialog']": { total: 1, visible: 0 },
+        "[data-bench='confirm-approval']": { total: 1, visible: 0 },
+        "[data-bench-design-role='main-console']": 1,
+      },
+    });
+    expect(task.viewports.map((viewport) => viewport.name)).toEqual([
+      "desktop",
+      "mobile",
+      "narrow-320",
+      "css-zoom-surrogate-200",
+    ]);
+
+    const out = prepareVariant("raw-design-md", {
+      task: payoutApprovalTaskId,
+      outputName: "payout-approval",
+    });
+    const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+    expect(manifest.task).toMatchObject({
+      id: payoutApprovalTaskId,
+      version: "0.1.0",
+      track: "repair",
+    });
+    expect(readFileSync(join(out, "index.html"), "utf8")).toContain(
+      "data-bench=\"approval-dialog\"",
+    );
   });
 
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
