@@ -111,6 +111,10 @@
 - `/tmp/u1994` trial 2도 완료돼 4/6 checkpoint다. ember와 slate 모두 responsive는 통과했지만 320px/200%의 scrollable-region focusability와 focus-visible 실패로 valid 79/85·UI-Resolved false다.
 - 2-trial objective/UI-Resolved W/T/L은 candidate 기준 1/1/0, objective delta sum +4다. 서로 다른 실패 유형이 나타났으므로 patch의 절대 reliability claim은 아직 불가하다.
 - 3/3 pacing green, provider/infrastructure/attribution/evaluator failure와 retry/fallback/repair/substitution은 0이다. 다음 exact cell은 `pricing-t3-slate`다.
+- `/tmp/u1994`는 6/6 COMPLETE다. trial 3 slate는 focus-visible 실패로 83/85·unresolved, ember는 85/85·resolved다. 모든 셀은 valid/evidence+unknown pass이며 provider/infrastructure/attribution/evaluator failure와 retry/fallback/repair/substitution은 0이다.
+- final candidate objective/UI-Resolved W/T/L은 2/1/0, resolved 2/3 대 0/3, mean objective lift +2.3529pp, observed resolved lift +66.67pp다. 하지만 95% interval 0–100pp, 단일 unseen task이고 두 arms 모두 Reliability@3 0%라 superiority claim은 금지한다.
+- 네 셀이 deterministic critical gate를 실패했으므로 preregistered automated blind review는 fail-closed로 ineligible하다. 사람 검수도 필요 없다. 남은 반복 결함은 narrow/zoom의 adaptive comparison surface containment·keyboard focusability·focus-visible이다.
+- 다음은 이 결함만 다루는 provider-free 1.9.95 adaptive-data-surface contract를 canonical `omd-apply`와 distribution tests에 추가하고, fresh pricing replacement denominator를 별도 사전등록하는 것이다.
 - 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
 - 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
 - 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.

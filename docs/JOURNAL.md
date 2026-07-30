@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-30 (Codex) · 1.9.94 unseen pricing holdout complete
+- 6/6 valid complete; candidate W/T/L 2/1/0, resolved 2/3 대 control 0/3다.
+- mean objective lift +2.3529pp지만 CI 0–100pp, Reliability@3는 양쪽 0%다.
+- 네 deterministic failure 때문에 blind judge/human ladder는 fail-closed로 종료한다.
+- 다음은 adaptive data surface containment/focus contract의 provider-free 1.9.95다.
+
 ## 2026-07-30 (Codex) · 1.9.94 unseen pricing holdout 4/6
 - trial 2는 두 arms 모두 valid 79/85·unresolved로 objective tie다.
 - 둘 다 320px/200% scrollable-region focusability/accessibility gate가 실패했다.
