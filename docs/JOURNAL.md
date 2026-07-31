@@ -1951,3 +1951,8 @@
 - 세 cell의 task/prompt/starter/DESIGN/activation/skill identity와 detached clean source, untouched product tree를 확인했다.
 - Grok 4.5 High·900s·serial·120s pacing·no retry/fallback/substitution으로 잠갔고 provider call은 아직 0이다.
 - 다음: `data-import-t1-jade`부터 3회 실행하고 deterministic/visual 결과를 집계한다.
+# 2026-07-31 — 1.9.121 data-import current baseline complete
+- 3/3 valid cells가 81/81/77, UI-Resolved 0/3로 끝났고 3/3 모두 320px·200% atomic filename fragmentation을 반복했다.
+- trial 3에는 decision context containment 1/3 regression도 있었으나 기능·token·a11y·evidence는 전부 green이다.
+- 세 narrow screenshot과 120초 pacing을 확인했고 retry/fallback/substitution은 0, canonical은 아직 unchanged다.
+- 다음: reflow integrity 한 규칙의 non-canonical delta를 만들고 다른 unseen family에서 control과 비교한다.

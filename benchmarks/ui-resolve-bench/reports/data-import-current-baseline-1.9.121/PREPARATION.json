@@ -1,9 +1,9 @@
 {
   "schema_version": "0.1",
   "experiment_id": "data-import-current-baseline-1.9.121",
-  "status": "prepared-awaiting-provider",
+  "status": "complete",
   "prepared_root": "/tmp/u19121",
-  "provider_calls": 0,
+  "provider_calls": 3,
   "scheduled_cells": 3,
   "prepared_cells": 3,
   "task": {
@@ -40,7 +40,7 @@
     "attribution_scope": "internal-registered-display-name",
     "public_model_attribution_eligible": false
   },
-  "next_cell": "data-import-t1-jade",
+  "next_cell": null,
   "retry_fallback_repair_substitution": 0,
   "excluded_user_file": "web/public/llms-full.txt"
 }

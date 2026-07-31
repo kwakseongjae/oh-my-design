@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.121 data-import current OmD baseline prepared
+- 갱신: 2026-07-31 · 1.9.121 data-import current OmD baseline complete
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19121` 3/3 cells가 valid 완료됐지만 UI-Resolved 0/3, Reliability@3 0%다. objective는 81/81/77, median 95.3%이며 retry/fallback/repair/replacement/substitution은 0이다.
+- 3/3 모두 `customer-update-july.csv`가 320px·200%에서 두 줄로 분할돼 mid-token/short-atomic geometry를 실패했다. 세 narrow screenshot에서 직접 확인했고 기능·DESIGN grounding·accessibility·evidence는 3/3 green이다.
+- trial 3은 추가로 state/action을 decision context 밖에 둬 4-view `roles_inside_container`를 실패했다. 1/3 secondary regression이며 공통 cluster는 short atomic reflow closure 부재다.
+- canonical `omd-apply`는 이 checkpoint에서 unchanged다. 다음은 `reflow integrity closure` 한 규칙만 가진 non-canonical activation delta를 만들고, 이 task를 재사용하지 않은 다른 unseen family에서 exact current control과 비교하는 단계다.
 - 1.9.121 exact current canonical `omd-apply` Reliability@3 baseline을 fresh `/tmp/u19121`에 PREPARED했다. one opaque arm×3 trials, exact detached source `f013dbd9…`, canonical source SHA `22eb96d8…`, installed Cursor skill SHA `d7a890ac…`다.
 - 3 cells의 task/core+full prompt/starter/DESIGN/activation/skill identity가 같고 product tree untouched, text geometry + decision hierarchy oracle preregistered, source clean/detached/publishable을 확인했다.
 - 실행은 Cursor/Grok 4.5 High, effort high, timeout 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only로 잠갔다. provider call은 아직 0이며 다음 cell은 `data-import-t1-jade`다.
