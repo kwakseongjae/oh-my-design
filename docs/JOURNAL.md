@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.137 Luna High matrix complete; v4 rejected
+- 6/6 valid; previous 73/73/75, v4 79/79/81, paired v4 W/T/L 3/0/0이다.
+- 양 arm Reliability@3 0%; v4는 release gate를 통과하지 못했다.
+- failures는 compact-control label wrap과 single-text scroll a11y다.
+- v4는 시간 +11.8%, tokens +22.5%; 다음은 기존 closure v5 정제다.
+
 ## 2026-08-01 (Codex) · 1.9.137 Luna High previous-vs-v4 prepared
 - fresh `/tmp/u19137`에 exact 2 arms×3 trials를 준비했다.
 - task/prompt/starter/DESIGN/activation/provider controls는 동일하다.

@@ -1,9 +1,9 @@
 {
   "schema_version": "0.1",
   "experiment_id": "webhook-reflow-v4-luna-validation-1.9.137",
-  "status": "prepared-provider-0",
+  "status": "complete-rejected",
   "prepared_root": "/tmp/u19137",
-  "provider_calls": 0,
+  "provider_calls": 6,
   "scheduled_cells": 6,
   "prepared_cells": 6,
   "task": {
@@ -29,7 +29,7 @@
     "provider_scope_separate_from_prior_roots": true,
     "public_model_attribution_eligible": false
   },
-  "next_cell": "luna-webhook-t1-previous",
+  "next_cell": null,
   "retry_fallback_repair_substitution": 0,
   "excluded_user_file": "web/public/llms-full.txt"
 }

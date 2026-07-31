@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.137 Luna High previous-vs-v4 matrix prepared; provider 0
+- 갱신: 2026-08-01 · 1.9.137 Luna High matrix complete; v4 rejected
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19137` 6/6 valid COMPLETE. previous 73/73/75, v4 79/79/81이며 paired v4 W/T/L 3/0/0, median 79 vs 73다. 하지만 두 arm 모두 UI-Resolved 0/3, Reliability@3 0%라 v4 승격을 거절했다.
+- v4는 event/endpoint atomic fragmentation을 3/3 제거하고 function/hooks/evidence를 보존했다. 남은 candidate failures는 t1/t3의 `Require signature verification` label wrap과 t2가 single source/state text 자체에 `overflow-x:auto`를 둬 만든 scrollable-region-focusable axe + invisible keyboard focus다.
+- v4 mean wall time 약 376s vs previous 336s(+11.8%), mean reported tokens 약 902k vs 736k(+22.5%)로 더 비쌌다. 다음은 기존 2e를 v5로 정제해 compact control과 짝인 short label의 full-width mobile row를 우선하고 single atomic/state/label text 자체의 horizontal scroller를 금지하며, multi-item comparison container만 accessible internal scroll을 허용한 뒤 새 unseen family에서 검증한다.
 - 1.9.137 exact previous canonical vs v4를 fresh `/tmp/u19137`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
 - 6 cells의 task `0.1.0`, core prompt `9d1f30af…`, starter `29180738…`, DESIGN `e5324ddb…`, runtime/model/effort/timeout과 activation `79911390…`가 같다. installed skill tree만 previous `a8128ccc…` vs v4 `c62fbd11…`로 다르며 양 source는 exact detached clean/publishable이다.
 - Luna High/Codex·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal attribution으로 잠갔다. 다음 cell은 `luna-webhook-t1-previous`다.
