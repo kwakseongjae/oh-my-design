@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.133 Luna High replacement prepared
+- Grok frozen root와 분리해 Luna High/Codex 2×3 fresh root를 준비했다.
+- 양 arm provider/task/prompt/starter/DESIGN/activation equality를 확인했다.
+- exact installed skill tree만 다르고 provider scope는 Grok과 합치지 않는다.
+- provider 0; 다음은 `luna-secret-t1-previous`다.
+
 ## 2026-08-01 (Codex) · 1.9.132 environment-secret matrix frozen
 - 첫 previous cell이 Cursor HTTP 503/event 0/product write 0으로 중단됐다.
 - remaining 5 cells는 not-started, retry/resume/substitution 0이다.
