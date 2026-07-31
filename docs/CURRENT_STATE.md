@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.131 reflow v3 portable candidate pinned
+- 갱신: 2026-08-01 · 1.9.132 environment-secret v3 matrix prepared
 
 ## 지금 (현재 위치)
 
+- 1.9.132 exact previous canonical vs hardened v3를 fresh `/tmp/u19132`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core/full prompt `3cc24783…`/`cbddbeb0…`, starter `9d11df08…`, DESIGN `74063a0d…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. 유일한 factor는 installed skill tree(previous `d7a890ac…`, v3 `e420add7…`)다.
+- previous `f013dbd9…`와 v3 `b85ad330…`는 detached clean/publishable이고 product trees untouched다. Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution으로 잠갔다. 다음 cell은 `secret-t1-previous`다.
 - 1.9.131 exact v3 candidate를 `omd-portable-reflow-v3-candidate`로 고정했다. detached clean/publishable source는 `b85ad330…`, Cursor-adapted installed skill SHA는 `e420add7…`이며 exact previous와 activation은 같다. rejected v2 variant는 별도로 보존된다.
 - diagnostic prepare는 provider 0이며 denominator에 포함하지 않는다. 다음은 locked environment-secret task에서 previous vs v3 2 arms×3 trials를 fresh root에 준비하고 equality/attestation을 검증하는 것이다.
 - 1.9.130 새 unseen `environment-secret-mapping-v0.1`을 v3 commit 뒤, provider generation 전에 contract-lock했다. 기존 onboarding-v1 adapter를 쓰지만 새 release-secret configuration domain이며 environment choice/toggle/form, 3 atomic identifiers, 4-view geometry+decision hierarchy를 가진다.

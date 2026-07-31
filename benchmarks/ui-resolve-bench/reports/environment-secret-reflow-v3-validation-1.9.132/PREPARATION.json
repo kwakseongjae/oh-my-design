@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "environment-secret-reflow-v3-validation-1.9.132",
+  "status": "prepared",
+  "prepared_root": "/tmp/u19132",
+  "provider_calls": 0,
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "task": {
+    "id": "environment-secret-mapping-v0.1", "version": "0.1.0",
+    "core_prompt_sha256": "3cc247836ac459d434ee72cc52f6b19736247fa06c6532b8e419b95f86732af7",
+    "full_prompt_sha256": "cbddbeb0af7f9d6d7ca883fc3cc671715271037c7f67a660234ceaa7c8190be9",
+    "starter_sha256": "9d11df085fb80207a1c14b0cb2e94de5d9952e4d71e9aa907fefbd2132cdd91d",
+    "design_sha256": "74063a0dcfbb6b8260ddee750b9677a6fbe4db300f98429043236df28be12714"
+  },
+  "arms": {
+    "previous": {
+      "variant_id": "omd-portable-jade", "source_commit": "f013dbd9f94a1e018f7cf8a4e500207fe982b00a", "skill_sha256": "d7a890ac08f8a4cce8c541b186039c9fcd4245a363f7f97132a2bbf8f46f52d5",
+      "source_clean_detached_publishable": true
+    },
+    "candidate": {
+      "variant_id": "omd-portable-reflow-v3-candidate", "source_commit": "b85ad330b63d502ecabc6741c0a7c599da6d2f58", "skill_sha256": "e420add7cb2cb6bfefbcf2d88b93d8be0c980b95cfdde763e53a4ac2aac914e1",
+      "source_clean_detached_publishable": true
+    }
+  },
+  "activation_sha256": "01728b95555028b7db735816e304bd2e51ca60aee1a59fd65e9b97aa75c58a9f",
+  "controls": {
+    "same_task_prompt_starter_design": true, "same_activation_across_arms": true, "exact_skill_tree_is_only_factor": true,
+    "exact_detached_sources": true, "product_trees_untouched": true, "balanced_arm_first_order": "2/1",
+    "attribution_scope": "internal-registered-display-name", "public_model_attribution_eligible": false
+  },
+  "next_cell": "secret-t1-previous",
+  "retry_fallback_repair_substitution": 0,
+  "excluded_user_file": "web/public/llms-full.txt"
+}

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.132 environment-secret v3 matrix prepared
+- exact previous vs hardened v3 2×3을 fresh `/tmp/u19132`에 준비했다.
+- task/prompt/starter/DESIGN/activation/runtime equality와 detached attestation을 확인했다.
+- installed skill tree만 다르며 Grok High serial 조건을 잠갔다.
+- provider 0; 다음은 `secret-t1-previous`다.
+
 ## 2026-08-01 (Codex) · 1.9.131 reflow v3 portable candidate pinned
 - detached clean `b85ad330…`을 별도 portable candidate로 고정했다.
 - Cursor installed skill SHA `e420add7…`, previous와 activation equality를 확인했다.
