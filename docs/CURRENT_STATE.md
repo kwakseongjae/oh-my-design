@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.114 rollback current baseline prepared
+- 갱신: 2026-07-31 · 1.9.114 rollback current baseline complete
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19114` 3/3 cells가 valid/UI-Resolved/85로 COMPLETE됐다. Reliability@3 100%, text geometry 12/12, decision hierarchy 12/12, evidence/unknown 3/3이며 retry/fallback/repair/replacement/substitution은 0이다.
+- mobile screenshots 3개를 직접 확인했고 deletion owner review의 short-label 2-line wrap, vertical status fragmentation, pseudo collision, flat decision boundary가 재현되지 않았다. wall time median 281,392ms, token median 114,486이며 compute는 descriptive-only다.
+- preregistered 3/3 ceiling decision에 따라 rollback-specific rule을 만들지 않고 canonical `omd-apply`를 유지한다. 이 결과는 Internal structural reliability evidence이며 public model/superiority claim이 아니다.
 - 1.9.114 exact current canonical `omd-apply` Reliability@3 baseline이 `/tmp/u19114`에 provider-free PREPARED됐다. one opaque arm×3 trials, exact detached source `f013dbd9…`, canonical source SHA `22eb96d8…`, installed Cursor skill SHA `d7a890ac…`다.
 - 3 cells의 task/core+full prompt/starter/DESIGN/activation/skill identity가 같고 product tree untouched, text geometry + decision hierarchy oracle preregistered, source clean/detached/publishable이 확인됐다.
 - execution은 Cursor/Grok 4.5 High, effort high, timeout 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only로 잠겼다. provider call은 아직 0이며 다음 cell은 `rollback-t1-jade`다.
@@ -864,9 +867,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `/tmp/u19114`의 Grok availability와 Cursor cache preflight를 확인한다.
-2. 통과하면 fixed pacing을 지키며 `rollback-t1-jade`부터 serial 3 trials를 실행한다.
-3. baseline failure cluster가 반복될 때만 다음 non-canonical skill delta를 설계한다.
+1. 새 규칙을 만들지 않고 다음 unseen family 또는 preregistered anonymous visual comparison을 선택한다.
+2. 다음 family도 generation 전에 geometry/hierarchy role을 잠그고 Reliability@3를 측정한다.
+3. 반복 deterministic failure cluster가 생길 때만 bounded non-canonical skill delta를 설계한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

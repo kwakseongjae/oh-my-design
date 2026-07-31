@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-31 (Codex) · 1.9.114 rollback baseline complete
+- Grok current-skill 3/3이 valid/UI-Resolved/85, Reliability@3 100%로 끝났다.
+- text geometry·decision hierarchy는 각 12/12, mobile visual inspection은 3/3 pass다.
+- retry/fallback/repair/substitution 0, median 281,392ms/114,486 tokens다.
+- 3/3 ceiling이므로 rollback rule을 추가하지 않고 다음 unseen family로 이동한다.
+
 ## 2026-07-31 (Codex) · 1.9.114 rollback baseline prepared
 - exact current `omd-apply` one-arm×3 trials를 fresh `/tmp/u19114`에 준비했다.
 - task/prompt/starter/DESIGN/activation/skill identity와 두 새 oracle을 잠갔다.
