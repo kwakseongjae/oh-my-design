@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.129 reflow-integrity v3 implemented
+- 갱신: 2026-08-01 · 1.9.130 environment-secret holdout accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.130 새 unseen `environment-secret-mapping-v0.1`을 v3 commit 뒤, provider generation 전에 contract-lock했다. 기존 onboarding-v1 adapter를 쓰지만 새 release-secret configuration domain이며 environment choice/toggle/form, 3 atomic identifiers, 4-view geometry+decision hierarchy를 가진다.
+- untouched `/tmp/u19130-environment-secret-starter`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. 320px screenshot에서 desktop nth-child widths가 mobile stack에 남아 identifiers가 세로로 파편화되는 것을 직접 확인했다.
+- starter에는 injected `<wbr>`가 없고 prompt는 break opportunity 삽입을 명시적으로 금지한다. provider call은 0이다. 다음은 exact previous canonical vs exact v3를 fresh 2 arms×3 trials로 준비해 skill tree만 다르게 검증하는 것이다.
 - 1.9.129 canonical `omd-apply`의 기존 reflow-integrity closure를 v3로 보강했다. atomic identifier 내부 `<wbr>/<br>/U+200B/&shy;/generated break separator` 삽입을 금지하고, mobile stack 뒤 desktop `:nth-child` width/grid-area/flex-basis를 equal-or-higher specificity로 해제하며 computed full reading width를 확인한다.
 - zero-defect outcomes에 `injected_break_opportunity: 0`, `residual_mobile_column_width: 0`을 추가했다. browser proof가 없으면 source specificity로 fail-close하고 break tag 존재 자체를 성공으로 주장하지 못한다.
 - focused skill contract 7/7과 TypeScript lint가 green이다. 다음은 이 commit을 exact detached candidate로 고정한 뒤 새 unseen family를 generation 전에 contract-lock하고, exact previous canonical과 2 arms×3 trials로 비교하는 것이다.

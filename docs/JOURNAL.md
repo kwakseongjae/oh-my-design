@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.130 environment-secret holdout accepted
+- 새 onboarding/configuration family를 v3 이후·provider 이전에 잠갔다.
+- untouched starter는 기능/a11y/DESIGN/evidence green, reflow만 red인 79/85다.
+- 320px에서 residual desktop widths와 atomic vertical fragmentation을 직접 확인했다.
+- provider 0; 다음은 exact previous vs v3 2×3이다.
+
 ## 2026-08-01 (Codex) · 1.9.129 reflow-integrity v3 implemented
 - atomic ID에 injected break opportunity를 넣는 repair를 명시적으로 금지했다.
 - mobile stack 뒤 남는 desktop column-width specificity를 해제·검증하도록 잠갔다.

@@ -25,6 +25,7 @@ const dataImportMappingTaskId = "data-import-mapping-v0.1";
 const localizationBundleTaskId = "localization-bundle-handoff-v0.1";
 const releaseArtifactTaskId = "release-artifact-promotion-v0.1";
 const featureFlagTaskId = "feature-flag-rollout-review-v0.1";
+const environmentSecretTaskId = "environment-secret-mapping-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -816,6 +817,28 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
     expect(starter).toContain("checkout.express.v2");
     expect(starter).not.toContain("checkout-web-2.7.14.tgz");
+  });
+
+  it("locks an unseen environment-secret mapping family for reflow v3 validation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", environmentSecretTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { count: 3, initial: "preview", selected: "staging" },
+        toggle: { selector: "[data-bench='digest-toggle']" },
+        form: { valid_value: "August release mapping" },
+      },
+      text_geometry_oracle: { viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"], max_short_text_lines: 1 },
+      decision_hierarchy_oracle: { viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"], minimum_action_gap_px: 8 },
+    });
+    const out = prepareVariant("raw-design-md", { task: environmentSecretTaskId, outputName: "environment-secret-mapping" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter).toContain("PAYMENTS_API_KEY_V4");
+    expect(starter).not.toContain("checkout.express.v2");
+    expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
+    expect(starter).toContain('<span class="key">PAYMENTS_API_KEY_V4</span>');
   });
 
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
