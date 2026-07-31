@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.112",
+  "experiment_id": "decision-hierarchy-gate-1.9.112",
+  "status": "accepted",
+  "scope": "Provider-free evaluator capability",
+  "checks": {
+    "exact_marker_roles": true,
+    "role_visibility_and_containment": true,
+    "reading_order": true,
+    "target_emphasis_channel": true,
+    "state_distinction_channel": true,
+    "action_spatial_separation": true,
+    "flat_marker_only_fixture_rejected": true,
+    "legacy_tasks_unchanged": true,
+    "score_schema_changed": false,
+    "point_maximum_changed": false,
+    "seen_root_rescored": false
+  },
+  "validation": {
+    "focused_tests": "17/17",
+    "typescript": "green",
+    "provider_calls": 0
+  },
+  "claim_limit": "Forward-only, task-opt-in decision hierarchy. No global visual-style ranking.",
+  "next_action": "Create a new unseen holdout that preregisters both text-geometry and decision-hierarchy oracles before any model execution."
+}

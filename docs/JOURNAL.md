@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-31 (Codex) · 1.9.112 decision hierarchy gate accepted
+- future task의 container/target/evidence/state/action marker로 hierarchy를 opt-in 검사한다.
+- exact roles, containment/order, target/state distinction, action gap을 기존 geometry gate에 결합했다.
+- flat/reordered/overlapping/missing fixtures는 fail, focused 17/17와 TypeScript는 green이다.
+- 다음은 두 새 oracle을 preregister한 unseen high-consequence holdout이다.
+
 ## 2026-07-31 (Codex) · 1.9.111 text geometry gate accepted
 - task opt-in dense scope에서 mid-token/short-label wrap과 pseudo-content box overflow를 fail-closed 한다.
 - legacy task와 score schema 0.5/85 max는 unchanged이며 seen deletion root는 재채점하지 않았다.

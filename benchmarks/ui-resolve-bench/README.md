@@ -132,6 +132,32 @@ than its declared box, or a missing registered scope. Ordinary paragraph and
 headline wrapping outside the scopes is not judged. Historical tasks without
 the oracle retain their exact geometry contract.
 
+High-consequence tasks may additionally register a marker-backed hierarchy
+inside the same viewport-geometry gate:
+
+```json
+{
+  "decision_hierarchy_oracle": {
+    "viewports": ["mobile", "narrow-320"],
+    "minimum_action_gap_px": 8,
+    "roles": {
+      "container": "[data-bench-decision-role='context']",
+      "target": "[data-bench-decision-role='target']",
+      "evidence": "[data-bench-decision-role='evidence']",
+      "state": "[data-bench-decision-role='state']",
+      "action": "[data-bench-decision-role='action']"
+    }
+  }
+}
+```
+
+Every role must resolve exactly once, remain visible inside the context
+container, and preserve target → supporting context → action DOM order. The
+target must differ from evidence through a bounded size or weight channel, the
+state must differ from evidence through at least one registered visual channel,
+and the action must be spatially separated from every context role. This is an
+opt-in task contract, not a global aesthetic ranking.
+
 Claude Code is a separate Transfer Matrix runtime, not a replacement row in the
 Terra Skill Lift estimate. Prepare with `--runtime claude-code`, verify
 subscription auth without shadowing API credentials, then pin the exact model:

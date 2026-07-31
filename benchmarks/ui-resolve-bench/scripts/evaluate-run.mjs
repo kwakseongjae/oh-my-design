@@ -382,7 +382,79 @@ export function focusViewportVisibility(rect, viewport) {
   };
 }
 
-export function evaluateViewportGeometry(viewport, textGeometryOracle) {
+const numericFontWeight = (value) => {
+  if (value === "normal") return 400;
+  if (value === "bold") return 700;
+  const parsed = Number.parseInt(value, 10);
+  return Number.isFinite(parsed) ? parsed : 400;
+};
+
+export function evaluateDecisionHierarchy(viewport, oracle) {
+  const observation = viewport?.decision_hierarchy;
+  const roles = observation?.roles ?? {};
+  const expectedRoles = Object.keys(oracle?.roles ?? {});
+  const exactRoleCount =
+    expectedRoles.length >= 5 &&
+    expectedRoles.every((role) => roles[role]?.count === 1);
+  const roleEntries = expectedRoles.map((role) => roles[role]).filter(Boolean);
+  const target = roles.target;
+  const evidence = roles.evidence;
+  const state = roles.state;
+  const action = roles.action;
+  const contextRoles = [target, evidence, state].filter(Boolean);
+  const targetWeight = numericFontWeight(target?.style?.font_weight);
+  const evidenceWeight = numericFontWeight(evidence?.style?.font_weight);
+  const targetSize = Number.parseFloat(target?.style?.font_size);
+  const evidenceSize = Number.parseFloat(evidence?.style?.font_size);
+  const targetEmphasized =
+    Number.isFinite(targetSize) &&
+    Number.isFinite(evidenceSize) &&
+    (targetSize >= evidenceSize + 2 || targetWeight >= evidenceWeight + 100);
+  const stateDistinct =
+    Boolean(state?.style && evidence?.style) &&
+    (
+      numericFontWeight(state.style.font_weight) >= evidenceWeight + 100 ||
+      state.style.color !== evidence.style.color ||
+      state.style.background_color !== evidence.style.background_color ||
+      state.style.border_top_color !== evidence.style.border_top_color
+    );
+  const actionSeparated = Boolean(
+    action?.rect &&
+    contextRoles.every((role) => role?.rect) &&
+    contextRoles.every((role) => {
+      const horizontalGap = Math.max(
+        action.rect.left - role.rect.right,
+        role.rect.left - action.rect.right,
+      );
+      const verticalGap = Math.max(
+        action.rect.top - role.rect.bottom,
+        role.rect.top - action.rect.bottom,
+      );
+      return horizontalGap >= (oracle?.minimum_action_gap_px ?? 8) ||
+        verticalGap >= (oracle?.minimum_action_gap_px ?? 8);
+    }),
+  );
+  return {
+    exact_role_count: exactRoleCount,
+    roles_visible:
+      exactRoleCount && roleEntries.every((role) => role.visible === true),
+    roles_inside_container:
+      exactRoleCount &&
+      expectedRoles.filter((role) => role !== "container").every((role) => roles[role]?.inside_container === true),
+    target_precedes_supporting_context:
+      exactRoleCount &&
+      target.dom_index < evidence.dom_index &&
+      target.dom_index < state.dom_index,
+    action_follows_context:
+      exactRoleCount &&
+      contextRoles.every((role) => role.dom_index < action.dom_index),
+    target_emphasized: targetEmphasized,
+    state_distinct_from_evidence: stateDistinct,
+    action_spatially_separated: actionSeparated,
+  };
+}
+
+export function evaluateViewportGeometry(viewport, textGeometryOracle, decisionHierarchyOracle) {
   const checks = {
     no_horizontal_overflow:
       Number.isFinite(viewport?.scroll_width) &&
@@ -391,25 +463,29 @@ export function evaluateViewportGeometry(viewport, textGeometryOracle) {
     no_clipped_controls: Array.isArray(viewport?.clipped_controls) && viewport.clipped_controls.length === 0,
     no_overlapping_controls: Array.isArray(viewport?.overlapping_controls) && viewport.overlapping_controls.length === 0,
   };
-  if (!textGeometryOracle) return checks;
-  return {
-    ...checks,
-    text_geometry_scope_present:
-      Array.isArray(viewport?.text_geometry?.missing_scope_selectors) &&
-      viewport.text_geometry.missing_scope_selectors.length === 0,
-    no_mid_token_fragmentation:
-      Array.isArray(viewport?.text_geometry?.fragmented_tokens) &&
-      viewport.text_geometry.fragmented_tokens.length === 0,
-    short_atomic_text_within_line_budget:
-      Array.isArray(viewport?.text_geometry?.short_atomic_text_wraps) &&
-      viewport.text_geometry.short_atomic_text_wraps.length === 0,
-    short_control_labels_within_line_budget:
-      Array.isArray(viewport?.text_geometry?.short_control_label_wraps) &&
-      viewport.text_geometry.short_control_label_wraps.length === 0,
-    generated_content_fits_declared_box:
-      Array.isArray(viewport?.text_geometry?.generated_content_overflow) &&
-      viewport.text_geometry.generated_content_overflow.length === 0,
-  };
+  if (textGeometryOracle) {
+    Object.assign(checks, {
+      text_geometry_scope_present:
+        Array.isArray(viewport?.text_geometry?.missing_scope_selectors) &&
+        viewport.text_geometry.missing_scope_selectors.length === 0,
+      no_mid_token_fragmentation:
+        Array.isArray(viewport?.text_geometry?.fragmented_tokens) &&
+        viewport.text_geometry.fragmented_tokens.length === 0,
+      short_atomic_text_within_line_budget:
+        Array.isArray(viewport?.text_geometry?.short_atomic_text_wraps) &&
+        viewport.text_geometry.short_atomic_text_wraps.length === 0,
+      short_control_labels_within_line_budget:
+        Array.isArray(viewport?.text_geometry?.short_control_label_wraps) &&
+        viewport.text_geometry.short_control_label_wraps.length === 0,
+      generated_content_fits_declared_box:
+        Array.isArray(viewport?.text_geometry?.generated_content_overflow) &&
+        viewport.text_geometry.generated_content_overflow.length === 0,
+    });
+  }
+  if (decisionHierarchyOracle) {
+    Object.assign(checks, evaluateDecisionHierarchy(viewport, decisionHierarchyOracle));
+  }
+  return checks;
 }
 
 export function evaluateFontOracle(observation, oracle) {
@@ -603,7 +679,7 @@ async function main() {
         };
       });
 
-      const snapshot = await page.evaluate(({ protectedSelectors, textGeometryOracle }) => {
+      const snapshot = await page.evaluate(({ protectedSelectors, textGeometryOracle, decisionHierarchyOracle }) => {
         const visible = (element) => {
           const style = getComputedStyle(element);
           const rect = element.getBoundingClientRect();
@@ -775,6 +851,48 @@ async function main() {
           }
           return empty;
         })();
+        const decisionHierarchy = (() => {
+          if (!decisionHierarchyOracle) return null;
+          const roleSelectors = decisionHierarchyOracle.roles ?? {};
+          const allElements = [...document.querySelectorAll("*")];
+          const domIndex = new Map(allElements.map((element, index) => [element, index]));
+          const containerSelector = roleSelectors.container;
+          const containers = containerSelector ? [...document.querySelectorAll(containerSelector)] : [];
+          const container = containers.length === 1 ? containers[0] : null;
+          const observe = (selector) => {
+            const elements = selector ? [...document.querySelectorAll(selector)] : [];
+            const element = elements.length === 1 ? elements[0] : null;
+            if (!element) return { count: elements.length, visible: false, inside_container: false };
+            const style = getComputedStyle(element);
+            const rect = element.getBoundingClientRect();
+            return {
+              count: elements.length,
+              visible: visible(element),
+              inside_container: element === container || Boolean(container?.contains(element)),
+              dom_index: domIndex.get(element) ?? -1,
+              rect: {
+                left: rect.left,
+                right: rect.right,
+                top: rect.top,
+                bottom: rect.bottom,
+                width: rect.width,
+                height: rect.height,
+              },
+              style: {
+                font_size: style.fontSize,
+                font_weight: style.fontWeight,
+                color: style.color,
+                background_color: style.backgroundColor,
+                border_top_color: style.borderTopColor,
+              },
+            };
+          };
+          return {
+            roles: Object.fromEntries(
+              Object.entries(roleSelectors).map(([role, selector]) => [role, observe(selector)]),
+            ),
+          };
+        })();
         return {
           protected: Object.fromEntries(protectedSelectors.map((selector) => {
             const elements = [...document.querySelectorAll(selector)];
@@ -809,12 +927,17 @@ async function main() {
           }),
           visible_controls: controls.length,
           text_geometry: textGeometry,
+          decision_hierarchy: decisionHierarchy,
         };
       }, {
         protectedSelectors: task.protected_selectors,
         textGeometryOracle:
           task.text_geometry_oracle?.viewports?.includes(viewport.name)
             ? task.text_geometry_oracle
+            : null,
+        decisionHierarchyOracle:
+          task.decision_hierarchy_oracle?.viewports?.includes(viewport.name)
+            ? task.decision_hierarchy_oracle
             : null,
       });
 
@@ -1477,6 +1600,9 @@ async function main() {
       viewport,
       task.text_geometry_oracle?.viewports?.includes(viewport.name)
         ? task.text_geometry_oracle
+        : null,
+      task.decision_hierarchy_oracle?.viewports?.includes(viewport.name)
+        ? task.decision_hierarchy_oracle
         : null,
     ),
   ]));

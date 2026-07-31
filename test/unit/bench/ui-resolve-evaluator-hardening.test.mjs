@@ -5,6 +5,7 @@ import {
   evaluateAcknowledgementObservation,
   evaluateBillingObservation,
   evaluateChoiceObservation,
+  evaluateDecisionHierarchy,
   evaluateDesignObservation,
   evaluateFaqObservations,
   evaluateFilterObservation,
@@ -581,6 +582,91 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
         missing_scope_selectors: ["[data-bench='approval-row']"],
       },
     }, oracle).text_geometry_scope_present).toBe(false);
+  });
+
+  it("requires marker-backed decision hierarchy instead of inferring taste", () => {
+    const oracle = {
+      roles: {
+        container: "[data-bench-decision-role='context']",
+        target: "[data-bench-decision-role='target']",
+        evidence: "[data-bench-decision-role='evidence']",
+        state: "[data-bench-decision-role='state']",
+        action: "[data-bench-decision-role='action']",
+      },
+      minimum_action_gap_px: 8,
+    };
+    const role = (domIndex, rect, style = {}) => ({
+      count: 1,
+      visible: true,
+      inside_container: true,
+      dom_index: domIndex,
+      rect,
+      style: {
+        font_size: "16px",
+        font_weight: "400",
+        color: "rgb(36, 33, 40)",
+        background_color: "rgba(0, 0, 0, 0)",
+        border_top_color: "rgb(214, 208, 217)",
+        ...style,
+      },
+    });
+    const good = {
+      decision_hierarchy: {
+        roles: {
+          container: role(0, { left: 0, right: 360, top: 0, bottom: 260 }),
+          target: role(1, { left: 20, right: 220, top: 20, bottom: 48 }, {
+            font_size: "20px",
+            font_weight: "700",
+          }),
+          evidence: role(2, { left: 20, right: 220, top: 68, bottom: 92 }),
+          state: role(3, { left: 20, right: 220, top: 108, bottom: 132 }, {
+            font_weight: "700",
+            color: "rgb(160, 82, 69)",
+          }),
+          action: role(4, { left: 20, right: 220, top: 164, bottom: 208 }, {
+            background_color: "rgb(91, 61, 119)",
+          }),
+        },
+      },
+    };
+    expect(evaluateDecisionHierarchy(good, oracle)).toEqual({
+      exact_role_count: true,
+      roles_visible: true,
+      roles_inside_container: true,
+      target_precedes_supporting_context: true,
+      action_follows_context: true,
+      target_emphasized: true,
+      state_distinct_from_evidence: true,
+      action_spatially_separated: true,
+    });
+
+    const flat = structuredClone(good);
+    flat.decision_hierarchy.roles.target.style.font_size = "16px";
+    flat.decision_hierarchy.roles.target.style.font_weight = "400";
+    flat.decision_hierarchy.roles.state.style.font_weight = "400";
+    flat.decision_hierarchy.roles.state.style.color = flat.decision_hierarchy.roles.evidence.style.color;
+    flat.decision_hierarchy.roles.action.dom_index = 1;
+    flat.decision_hierarchy.roles.action.rect = { left: 180, right: 280, top: 108, bottom: 132 };
+    const flatChecks = evaluateDecisionHierarchy(flat, oracle);
+    expect(flatChecks.target_emphasized).toBe(false);
+    expect(flatChecks.state_distinct_from_evidence).toBe(false);
+    expect(flatChecks.action_follows_context).toBe(false);
+    expect(flatChecks.action_spatially_separated).toBe(false);
+
+    const missing = structuredClone(good);
+    missing.decision_hierarchy.roles.state = {
+      count: 0,
+      visible: false,
+      inside_container: false,
+    };
+    expect(evaluateDecisionHierarchy(missing, oracle).exact_role_count).toBe(false);
+    expect(Object.values(evaluateViewportGeometry({
+      scroll_width: 390,
+      client_width: 390,
+      clipped_controls: [],
+      overlapping_controls: [],
+      ...good,
+    }, null, oracle)).every(Boolean)).toBe(true);
   });
 
   it("uses WCAG 2.4.11 partial visibility for the AA focus gate", () => {
