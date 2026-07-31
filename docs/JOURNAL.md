@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.128 candidate validation prepared
+- exact previous vs canonical candidate 2×3을 fresh `/tmp/u19128`에 준비했다.
+- task/prompt/starter/DESIGN/activation/runtime/model equality를 검증했다.
+- 유일한 factor는 detached installed skill tree이며 Grok High serial 조건을 잠갔다.
+- provider 0; 다음은 `flag-t1-previous`다.
+
 ## 2026-08-01 (Codex) · 1.9.127 feature-flag holdout accepted
 - 새 feature-flag dashboard holdout을 candidate 이후·generation 전에 잠갔다.
 - untouched starter는 기능/a11y/evidence green, 의도한 reflow만 red인 79/85다.

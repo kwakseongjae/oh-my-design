@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.127 feature-flag final holdout accepted
+- 갱신: 2026-08-01 · 1.9.128 feature-flag candidate validation prepared
 
 ## 지금 (현재 위치)
 
+- 1.9.128 exact previous canonical vs reflow candidate를 fresh `/tmp/u19128`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `b97a308d…`, full prompt `cde162e3…`, starter `4aac3772…`, DESIGN `69e5d661…`, activation/runtime/model/effort/timeout이 같다. 유일한 factor는 installed skill tree(previous `d7a890ac…`, candidate `be055efb…`)다.
+- previous source `f013dbd9…`와 candidate `fb44964c…`는 detached clean/publishable, product trees untouched다. Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution으로 잠갔다. 다음 cell은 `flag-t1-previous`다.
 - 1.9.127 새 unseen `feature-flag-rollout-review-v0.1`을 candidate commit 뒤, provider generation 전에 contract-lock했다. dashboard-v1 filter/disclosure/acknowledgement이며 dot-separated flag key와 3 reflow viewports, 4-view hierarchy를 가진다.
 - untouched `/tmp/u19127-feature-flag-starter`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap은 green이고 mobile/320/200% short atomic/control line budget + action separation만 red다. 320px에서 narrow label column, two-line control, owner fragmentation, squeezed decision action을 직접 확인했다.
 - candidate는 detached `fb44964c…`, previous canonical은 detached `f013dbd9…`로 준비됐다. 다음은 exact previous vs candidate 2 arms×3 trials를 fresh root에 준비하고 동등성 검증 후 실행한다.
