@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.113 rollback authorization holdout accepted
+- 갱신: 2026-07-31 · 1.9.114 rollback current baseline prepared
 
 ## 지금 (현재 위치)
 
+- 1.9.114 exact current canonical `omd-apply` Reliability@3 baseline이 `/tmp/u19114`에 provider-free PREPARED됐다. one opaque arm×3 trials, exact detached source `f013dbd9…`, canonical source SHA `22eb96d8…`, installed Cursor skill SHA `d7a890ac…`다.
+- 3 cells의 task/core+full prompt/starter/DESIGN/activation/skill identity가 같고 product tree untouched, text geometry + decision hierarchy oracle preregistered, source clean/detached/publishable이 확인됐다.
+- execution은 Cursor/Grok 4.5 High, effort high, timeout 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only로 잠겼다. provider call은 아직 0이며 다음 cell은 `rollback-t1-jade`다.
 - 1.9.113 새 unseen `rollback-authorization-v0.1` task contract가 ACCEPTED됐다. payout/deletion과 다른 production rollback domain이며 generic `approval-v1` interaction만 재사용한다.
 - generation 전 text geometry scopes와 container/target/evidence/state/action hierarchy roles를 4 viewport에 preregister했다. untouched `/tmp/u19113-rollback-starter`는 browser evaluator 85/85, critical 6/6, states 3/3, viewports 4/4, 새 geometry/hierarchy checks 모두 green이다.
 - mobile fixture는 label-above-value metadata와 child status dot을 사용해 두 줄 short control, owner/status fragmentation, pseudo collision을 제거했다. screenshot도 직접 시각 확인했다.
@@ -861,10 +864,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. rollback holdout의 exact current canonical `omd-apply` Reliability@3 matrix를 fresh root에 준비한다.
-2. task/prompt/starter/DESIGN/oracle/skill identity와 execution controls를 잠근다.
-3. Grok availability를 확인하고 가능하면 serial 3 trials를 실행한다. 불가하면 preregistered Luna high fallback policy를 새 root 전에 명시한다.
-4. baseline failure cluster가 반복될 때만 다음 non-canonical skill delta를 설계한다.
+1. `/tmp/u19114`의 Grok availability와 Cursor cache preflight를 확인한다.
+2. 통과하면 fixed pacing을 지키며 `rollback-t1-jade`부터 serial 3 trials를 실행한다.
+3. baseline failure cluster가 반복될 때만 다음 non-canonical skill delta를 설계한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

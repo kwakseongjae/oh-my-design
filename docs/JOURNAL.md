@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-31 (Codex) · 1.9.114 rollback baseline prepared
+- exact current `omd-apply` one-arm×3 trials를 fresh `/tmp/u19114`에 준비했다.
+- task/prompt/starter/DESIGN/activation/skill identity와 두 새 oracle을 잠갔다.
+- exact detached source, clean/publishable state, untouched product trees를 확인했다.
+- provider 0; 다음은 Grok preflight 뒤 bounded cell 1이다.
+
 ## 2026-07-31 (Codex) · 1.9.113 rollback holdout accepted
 - text geometry + decision hierarchy를 generation 전에 잠근 새 rollback family를 추가했다.
 - untouched starter browser eval은 85/85, critical 6/6, states 3/3, 4-view+새 gates 모두 green이다.
