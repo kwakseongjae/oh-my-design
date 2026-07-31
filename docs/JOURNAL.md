@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.135 unseen webhook holdout accepted
+- v4 이후 새 integration-routing family를 provider 전에 contract-lock했다.
+- untouched starter 79/85; function/state/a11y/DESIGN/evidence/hierarchy green이다.
+- mobile/320/200% atomic geometry만 red이며 320px screenshot으로 확인했다.
+- provider 0; 다음은 exact previous-vs-v4 2×3 준비다.
+
 ## 2026-08-01 (Codex) · 1.9.134 reflow-integrity v4 implemented
 - 기존 closure를 decision-context atomic IDs와 accessible scroll까지 확장했다.
 - full-width/label-above-value를 우선하고 fixed generated-label track을 fail-close한다.

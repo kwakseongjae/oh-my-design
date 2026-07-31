@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.134 reflow-integrity v4 implemented; validation pending
+- 갱신: 2026-08-01 · 1.9.135 unseen webhook holdout accepted; provider 0
 
 ## 지금 (현재 위치)
 
+- 1.9.135 새 unseen `webhook-destination-routing-v0.1`을 v4 commit 뒤 provider generation 전에 contract-lock했다. 기존 onboarding-v1 adapter를 쓰지만 새 integration-routing domain이며 3 delivery lanes, signature toggle, route-label form, 3 event/endpoint atomic pairs, 4-view geometry+decision hierarchy를 가진다.
+- untouched `/tmp/u19134-webhook-starter-v2`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. 320px screenshot에서 residual percentage widths와 fixed generated-label track 때문에 event IDs와 endpoint paths가 세로로 파편화되고 selected source filename도 같은 decision context 안에서 wrap되는 것을 직접 확인했다.
+- task는 table/per-item card가 아닌 coherent definition surface이고 injected break opportunity가 없다. provider call은 0이다. 다음은 exact v4 `c8416c4…`를 detached candidate로 고정하고 exact previous canonical과 2 arms×3 trials를 fresh root에서 비교한다.
 - 1.9.134 canonical `omd-apply`의 기존 2e를 v4로 정제했다. table/list row뿐 아니라 같은 decision context의 선택 target·source filename·artifact ID를 atomic reflow 검사 범위에 포함한다.
 - mobile에서는 label-above-value/full-width reading cell을 internal scroller보다 우선하고, 의미상 필요한 scroll region은 accessible name + 자연 focus target 또는 `tabindex=0` + visible focus를 요구한다. generated label은 auto/max-content 또는 full-width row를 사용하고 fixed track은 모든 reflow viewport의 measured required width 이상일 때만 허용한다.
 - zero-defect outcomes에 `atomic_context_wrap: 0`, `unfocusable_scroll_region: 0`을 추가했다. focused skill contract 7/7과 TypeScript lint가 green이다. 다음은 이 commit을 exact detached v4 candidate로 고정한 뒤 새 unseen non-table family를 generation 전에 contract-lock하고 exact previous-vs-v4를 검증한다.

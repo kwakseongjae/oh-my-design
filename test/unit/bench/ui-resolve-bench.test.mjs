@@ -26,6 +26,7 @@ const localizationBundleTaskId = "localization-bundle-handoff-v0.1";
 const releaseArtifactTaskId = "release-artifact-promotion-v0.1";
 const featureFlagTaskId = "feature-flag-rollout-review-v0.1";
 const environmentSecretTaskId = "environment-secret-mapping-v0.1";
+const webhookDestinationTaskId = "webhook-destination-routing-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -858,6 +859,28 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).not.toContain("checkout.express.v2");
     expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
     expect(starter).toContain('<span class="key">PAYMENTS_API_KEY_V4</span>');
+  });
+
+  it("locks an unseen webhook destination family for reflow v4 validation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", webhookDestinationTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { count: 3, initial: "primary", selected: "backup" },
+        toggle: { selector: "[data-bench='digest-toggle']" },
+        form: { valid_value: "Checkout authorization route" },
+      },
+      text_geometry_oracle: { viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"], max_short_text_lines: 1 },
+      decision_hierarchy_oracle: { viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"], minimum_action_gap_px: 8 },
+    });
+    const out = prepareVariant("raw-design-md", { task: webhookDestinationTaskId, outputName: "webhook-destination-routing" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter).toContain("evt.checkout.authorization.v2");
+    expect(starter).toContain("checkout-events-production.json");
+    expect(starter).not.toContain("PAYMENTS_API_KEY_V4");
+    expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
   });
 
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
