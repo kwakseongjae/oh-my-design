@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.123 localization reflow comparison complete
+- 갱신: 2026-08-01 · 1.9.124 reflow v2 holdout accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.124 `omd-reflow-integrity-v2-experimental`을 activation-only로 잠갔다. exact current OmD source/commit/install identity는 control과 같고, full-width/minmax 선행·overflow를 만드는 nowrap 금지·generated label box·target emphasis·decision containment만 추가했다. canonical skill은 unchanged다.
+- 새 unseen `release-artifact-promotion-v0.1`을 generation 전에 contract-lock했다. approval-v1 interaction을 쓰지만 새 platform-release domain이며 atomic artifact filename, manifest disclosure, filter/dialog, 3 reflow viewports, 4-view decision hierarchy를 가진다.
+- untouched `/tmp/u19124-release-artifact-starter`는 79/85다. Function/state/a11y/DESIGN/evidence와 overflow/clipping/overlap은 green이고, mobile/320/200%의 artifact·owner·short control fragmentation과 2-column decision squeeze만 의도대로 red다. narrow screenshot을 직접 확인했다.
+- provider call은 0이다. 다음은 exact current control vs activation-only reflow v2를 fresh 2 arms×3 trials로 준비하고 동일 task/prompt/starter/DESIGN/runtime/model/effort/timeout/skill identity를 검증한 뒤 serial 실행한다.
 - `/tmp/u19123` 6/6 valid COMPLETE. control 79/79/79(UI-Resolved 0/3), reflow 83/85/81(UI-Resolved 1/3), paired experimental W/T/L 3/0/0이다.
 - experimental은 3/3에서 atomic/control fragmentation을 제거했지만 trial 1은 200% nowrap overflow+clipping, trial 3은 generated-label overflow+320px target emphasis 약화를 만들었다. 방향은 유효하지만 Reliability@3 0%라 그대로 promotion 금지다.
 - canonical은 unchanged다. 다음은 full-width reading row 우선, overflow를 만드는 nowrap 금지, generated label box+target emphasis 보존을 명시한 activation v2를 만들고 또 다른 unseen task에서 검증한다. objective failure라 owner review는 불필요하다.

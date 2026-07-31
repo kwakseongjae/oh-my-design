@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.124 reflow v2 holdout accepted
+- nowrap 회귀를 막는 bounded reflow v2 activation을 exact current skill 위에 잠갔다.
+- 새 release-artifact promotion holdout을 generation 전에 contract-lock했다.
+- untouched starter는 기능·a11y·evidence green, 의도한 reflow만 red인 79/85다.
+- provider 0; 다음은 current control vs v2 activation 2×3 비교다.
+
 ## 2026-07-31 (Codex) · 1.9.119 shipment owner result locked
 - actual owner 3 comparisons/12 axes를 strict intake하고 SHA `2170195b…`로 잠갔다.
 - Functionality 3 tie; Usability OmD 1+tie 2; Fidelity/Ship은 1:1:1이다.
