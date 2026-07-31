@@ -91,17 +91,23 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("full-width reading row 또는 충분한 `minmax` 영역");
     expect(skill).toContain("한 줄 보존은 acceptance 결과이지 첫 CSS 수단이 아니다");
     expect(skill).toContain("`white-space: nowrap`이 horizontal overflow·clipping·box collision을 만들면 사용하지 않으며");
-    expect(skill).toContain("CSS generated mobile label도 자신의 box 안에서 겹침 없이");
     expect(skill).toContain("atomic identifier에는 `<wbr>`, `<br>`, U+200B zero-width space");
     expect(skill).toContain("`&shy;`/soft hyphen, CSS·JS generated break separator를 삽입하지 않는다");
     expect(skill).toContain("desktop의 `:nth-child` column width, `grid-area`, `flex-basis`");
     expect(skill).toContain("selector specificity 때문에 남지 않도록 같거나 더 높은 specificity로 해제");
     expect(skill).toContain("break tag의 정적 존재를 성공 조건으로 주장하지 않는다");
+    expect(skill).toContain("선택 target, source filename, artifact ID까지 포함한다");
+    expect(skill).toContain("label-above-value 또는 full-width reading cell로 바꾸는 것을 내부 horizontal scroller보다 먼저 시도");
+    expect(skill).toContain("region 자체를 `tabindex=\"0\"`으로 keyboard-reachable");
+    expect(skill).toContain("CSS generated mobile label은 `auto`/`max-content` track 또는 자신의 full-width row");
+    expect(skill).toContain("fixed label track은 모든 reflow viewport에서 measured required width 이상일 때만 허용");
     expect(skill).toContain("decision boundary로 선언된 target·evidence·state·action");
     expect(skill).toContain("mid_token_fragmentation: 0");
     expect(skill).toContain("target_emphasis_loss: 0");
     expect(skill).toContain("injected_break_opportunity: 0");
     expect(skill).toContain("residual_mobile_column_width: 0");
+    expect(skill).toContain("atomic_context_wrap: 0");
+    expect(skill).toContain("unfocusable_scroll_region: 0");
   });
 
   it("preserves task-helpful visual equity under explicit change authority", () => {

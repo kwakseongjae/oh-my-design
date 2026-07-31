@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.134 reflow-integrity v4 implemented
+- 기존 closure를 decision-context atomic IDs와 accessible scroll까지 확장했다.
+- full-width/label-above-value를 우선하고 fixed generated-label track을 fail-close한다.
+- `atomic_context_wrap`·`unfocusable_scroll_region` zero-defect outcomes를 추가했다.
+- focused contract 7/7과 TypeScript lint green; 다음은 새 unseen family 검증이다.
+
 ## 2026-08-01 (Codex) · 1.9.133 Luna High matrix complete; v3 rejected
 - 6/6 valid; previous 81/75/65, v3 79/81/81, paired v3 W/T/L 2/0/1이다.
 - 양 arm Reliability@3 0%; v3는 release gate를 통과하지 못했다.

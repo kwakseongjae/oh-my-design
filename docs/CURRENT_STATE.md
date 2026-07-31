@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.133 Luna High matrix complete; v3 rejected
+- 갱신: 2026-08-01 · 1.9.134 reflow-integrity v4 implemented; validation pending
 
 ## 지금 (현재 위치)
 
+- 1.9.134 canonical `omd-apply`의 기존 2e를 v4로 정제했다. table/list row뿐 아니라 같은 decision context의 선택 target·source filename·artifact ID를 atomic reflow 검사 범위에 포함한다.
+- mobile에서는 label-above-value/full-width reading cell을 internal scroller보다 우선하고, 의미상 필요한 scroll region은 accessible name + 자연 focus target 또는 `tabindex=0` + visible focus를 요구한다. generated label은 auto/max-content 또는 full-width row를 사용하고 fixed track은 모든 reflow viewport의 measured required width 이상일 때만 허용한다.
+- zero-defect outcomes에 `atomic_context_wrap: 0`, `unfocusable_scroll_region: 0`을 추가했다. focused skill contract 7/7과 TypeScript lint가 green이다. 다음은 이 commit을 exact detached v4 candidate로 고정한 뒤 새 unseen non-table family를 generation 전에 contract-lock하고 exact previous-vs-v4를 검증한다.
 - `/tmp/u19133` 6/6 valid COMPLETE. previous 81/75/65, v3 79/81/81이며 paired v3 W/T/L 2/0/1, median 81 vs 75다. 하지만 두 arm 모두 UI-Resolved 0/3, Reliability@3 0%라 v3 승격을 거절했다.
 - v3는 injected break 0과 mapping-row atomic key repair는 3/3 달성했다. 남은 candidate failures는 t1 internal scroll region의 keyboard/axe failure, t2 selected source filename의 320/200% two-line wrap, t3 fixed 64px generated label `Requirement` overflow다.
 - previous는 generated-label overflow 3/3, a11y 2/3, protected-hook loss 1/3로 더 불안정했다. 다음은 새 규칙 추가가 아니라 기존 2e를 v4로 다듬어 모든 decision-context atomic ID, label-above-value/full-width 우선, 필요한 scroll region의 name+keyboard reachability, content-sized generated label track을 잠그고 다른 unseen family에서 검증한다.
