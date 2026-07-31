@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.132 environment-secret matrix frozen
+- 첫 previous cell이 Cursor HTTP 503/event 0/product write 0으로 중단됐다.
+- remaining 5 cells는 not-started, retry/resume/substitution 0이다.
+- arm quality evidence가 아니며 `/tmp/u19132`를 영구 frozen 보존한다.
+- 다음은 양 arm을 같은 대체 provider에 둔 fresh 별도 experiment다.
+
 ## 2026-08-01 (Codex) · 1.9.132 environment-secret v3 matrix prepared
 - exact previous vs hardened v3 2×3을 fresh `/tmp/u19132`에 준비했다.
 - task/prompt/starter/DESIGN/activation/runtime equality와 detached attestation을 확인했다.
