@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.118 shipment owner gallery ready
+- 갱신: 2026-07-31 · 1.9.119 shipment owner result locked
 
 ## 지금 (현재 위치)
 
+- 1.9.119 actual shipment owner export를 strict intake하고 SHA `2170195b…`로 hash-lock했다. 3 comparisons/12 axes가 exact complete이며 schema/epoch/reviewer/family/trial/choice mismatch는 0이다.
+- owner normalized 결과는 Functionality 3/3 tie, Usability OmD 1 win+2 tie, Fidelity와 Ship Preference는 각각 OmD 1/Impeccable 1/tie 1, both-fail 0이다. 전체 12축 중 tie는 7개다.
+- deterministic OmD W/T/L 2/1/0과 함께 읽어도 반복적인 owner-visible loss cluster가 없다. canonical `omd-apply`는 unchanged이며 새 rule은 만들지 않는다.
+- 다음 유효 단계는 이 결과를 seen training artifact로만 보존하고, 다른 unseen non-approval family를 generation 전에 contract-lock하는 것이다.
 - 1.9.118 same-trial anonymous owner gallery가 `/tmp/u19118-public-v2/shipment-exception-triage-v0.1/`에 준비됐다. 3 comparisons/12 screenshots/12 axes이며 private reveal은 `/tmp/u19118-private-v2/reveal.json`에 분리됐다.
 - browser-harness desktop 1676px/mobile 390px에서 overflow 0, missing image 0, identity leak 0이다. incomplete export는 차단되고 첫 unanswered axis로 focus한다.
 - 검수 탭은 `http://127.0.0.1:4781/shipment-exception-triage-v0.1/?v=2`에 열려 있다. STOP: actual owner export JSON이 다음 유효 입력이며 synthetic judgment/reveal은 금지한다.

@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1",
+  "methodology_epoch": "shipment-owner-1.9.118-v1",
+  "reviewer_hash": "3c5067e23ea1fdf6",
+  "family": "shipment-exception-triage-v0.1",
+  "status": "complete",
+  "counts": {
+    "comparisons": 3,
+    "axis_judgments": 12
+  },
+  "axis_outcomes": {
+    "functionality": {
+      "tie": 3
+    },
+    "usability": {
+      "omd-portable-jade": 1,
+      "tie": 2
+    },
+    "fidelity": {
+      "impeccable-prompt-only": 1,
+      "omd-portable-jade": 1,
+      "tie": 1
+    },
+    "ship_preference": {
+      "impeccable-prompt-only": 1,
+      "omd-portable-jade": 1,
+      "tie": 1
+    }
+  },
+  "comparisons": [
+    {
+      "comparison_id": "comparison-b86ed09a861c",
+      "trial": 1,
+      "pair_key": "shipment-exception-triage-v0.1@0.1.0:78810529c3053b30bd51ee26954ca3ce41ee3ed16162cfa01f1a798aa18da58e:trial-1",
+      "selection": "both_ui_resolved_visual_unresolved",
+      "task": {
+        "id": "shipment-exception-triage-v0.1-trial-1",
+        "version": "0.1.0",
+        "core_prompt_sha256": "78810529c3053b30bd51ee26954ca3ce41ee3ed16162cfa01f1a798aa18da58e"
+      },
+      "outcomes": {
+        "functionality": "tie",
+        "usability": "tie",
+        "fidelity": "impeccable-prompt-only",
+        "ship_preference": "impeccable-prompt-only"
+      }
+    },
+    {
+      "comparison_id": "comparison-605c5f5aa167",
+      "trial": 2,
+      "pair_key": "shipment-exception-triage-v0.1@0.1.0:78810529c3053b30bd51ee26954ca3ce41ee3ed16162cfa01f1a798aa18da58e:trial-2",
+      "selection": "both_ui_resolved_visual_unresolved",
+      "task": {
+        "id": "shipment-exception-triage-v0.1-trial-2",
+        "version": "0.1.0",
+        "core_prompt_sha256": "78810529c3053b30bd51ee26954ca3ce41ee3ed16162cfa01f1a798aa18da58e"
+      },
+      "outcomes": {
+        "functionality": "tie",
+        "usability": "omd-portable-jade",
+        "fidelity": "omd-portable-jade",
+        "ship_preference": "omd-portable-jade"
+      }
+    },
+    {
+      "comparison_id": "comparison-ded99b233d65",
+      "trial": 3,
+      "pair_key": "shipment-exception-triage-v0.1@0.1.0:78810529c3053b30bd51ee26954ca3ce41ee3ed16162cfa01f1a798aa18da58e:trial-3",
+      "selection": "both_ui_resolved_visual_unresolved",
+      "task": {
+        "id": "shipment-exception-triage-v0.1-trial-3",
+        "version": "0.1.0",
+        "core_prompt_sha256": "78810529c3053b30bd51ee26954ca3ce41ee3ed16162cfa01f1a798aa18da58e"
+      },
+      "outcomes": {
+        "functionality": "tie",
+        "usability": "tie",
+        "fidelity": "tie",
+        "ship_preference": "tie"
+      }
+    }
+  ]
+}

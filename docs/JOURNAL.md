@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-31 (Codex) · 1.9.119 shipment owner result locked
+- actual owner 3 comparisons/12 axes를 strict intake하고 SHA `2170195b…`로 잠갔다.
+- Functionality 3 tie; Usability OmD 1+tie 2; Fidelity/Ship은 1:1:1이다.
+- 12축 중 tie 7, both-fail 0이며 반복 loss cluster는 없다.
+- canonical OmD unchanged; 다음은 다른 unseen family다.
+
 ## 2026-07-31 (Codex) · 1.9.118 shipment owner gallery ready
 - 6/6 비교가 완료됐고 objective OmD W/T/L은 2/1/0, 양쪽 Reliability@3는 100%다.
 - 3 same-trial/12 screenshots 익명 gallery를 만들고 identity를 private reveal로 분리했다.
