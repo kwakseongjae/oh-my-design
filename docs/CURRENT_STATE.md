@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.128 candidate rejected; matrix frozen on HTTP 503
+- 갱신: 2026-08-01 · 1.9.129 reflow-integrity v3 implemented
 
 ## 지금 (현재 위치)
 
+- 1.9.129 canonical `omd-apply`의 기존 reflow-integrity closure를 v3로 보강했다. atomic identifier 내부 `<wbr>/<br>/U+200B/&shy;/generated break separator` 삽입을 금지하고, mobile stack 뒤 desktop `:nth-child` width/grid-area/flex-basis를 equal-or-higher specificity로 해제하며 computed full reading width를 확인한다.
+- zero-defect outcomes에 `injected_break_opportunity: 0`, `residual_mobile_column_width: 0`을 추가했다. browser proof가 없으면 source specificity로 fail-close하고 break tag 존재 자체를 성공으로 주장하지 못한다.
+- focused skill contract 7/7과 TypeScript lint가 green이다. 다음은 이 commit을 exact detached candidate로 고정한 뒤 새 unseen family를 generation 전에 contract-lock하고, exact previous canonical과 2 arms×3 trials로 비교하는 것이다.
 - `/tmp/u19128`은 preregistered stop으로 FROZEN이다. valid t1 previous=81/UI-Resolved, candidate=75/not resolved로 candidate가 paired loss했다. t2 candidate는 Cursor HTTP 503, 985ms, event 0, product write 0이며 이후 3 cells는 not-started다. retry/resume/fallback/substitution은 0이다.
 - candidate failure 원인은 atomic dot key에 `<wbr>`를 삽입하고, mobile `.matrix td` reset보다 specificity가 높은 desktop `td:nth-child` width 34/16/30/20%를 남긴 것이다. mobile/320/200% key/channel/owner/control fragmentation, 320/200% generated label failure가 났다.
 - 1.9.126 candidate는 release evidence로 rejected다. 다음은 canonical closure에 inserted break opportunity 0(`<wbr>/<br>/ZWSP/soft hyphen/generated separator`)와 residual mobile column width 0/equal-specificity reset을 추가한 v3를 만들고 fresh root에서 검증한다. `/tmp/u19128` 재개 금지다.

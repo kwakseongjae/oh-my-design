@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.129 reflow-integrity v3 implemented
+- atomic ID에 injected break opportunity를 넣는 repair를 명시적으로 금지했다.
+- mobile stack 뒤 남는 desktop column-width specificity를 해제·검증하도록 잠갔다.
+- 두 zero-defect outcome을 추가했고 focused 7/7 + lint가 green이다.
+- 다음은 새 unseen family의 exact previous-vs-v3 Reliability@3다.
+
 ## 2026-08-01 (Codex) · 1.9.128 candidate rejected and frozen
 - valid pair는 previous 81/pass, candidate 75/fail이며 candidate가 `<wbr>`+residual nth-child widths로 reflow를 악화했다.
 - 다음 candidate cell은 HTTP 503/product write 0으로 preregistered stop됐다.

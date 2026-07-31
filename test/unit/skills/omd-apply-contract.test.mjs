@@ -92,9 +92,16 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("한 줄 보존은 acceptance 결과이지 첫 CSS 수단이 아니다");
     expect(skill).toContain("`white-space: nowrap`이 horizontal overflow·clipping·box collision을 만들면 사용하지 않으며");
     expect(skill).toContain("CSS generated mobile label도 자신의 box 안에서 겹침 없이");
+    expect(skill).toContain("atomic identifier에는 `<wbr>`, `<br>`, U+200B zero-width space");
+    expect(skill).toContain("`&shy;`/soft hyphen, CSS·JS generated break separator를 삽입하지 않는다");
+    expect(skill).toContain("desktop의 `:nth-child` column width, `grid-area`, `flex-basis`");
+    expect(skill).toContain("selector specificity 때문에 남지 않도록 같거나 더 높은 specificity로 해제");
+    expect(skill).toContain("break tag의 정적 존재를 성공 조건으로 주장하지 않는다");
     expect(skill).toContain("decision boundary로 선언된 target·evidence·state·action");
     expect(skill).toContain("mid_token_fragmentation: 0");
     expect(skill).toContain("target_emphasis_loss: 0");
+    expect(skill).toContain("injected_break_opportunity: 0");
+    expect(skill).toContain("residual_mobile_column_width: 0");
   });
 
   it("preserves task-helpful visual equity under explicit change authority", () => {
