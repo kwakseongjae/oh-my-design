@@ -164,6 +164,21 @@
       "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
       "activation": "Use the installed $omd:apply skill for this task."
     },
+    "omd-portable-reflow-v3-candidate": {
+      "label": "oh-my-design apply skill with hardened atomic reflow integrity closure",
+      "kind": "local-skill",
+      "vendor_dir": "omd-1.9.129",
+      "source_path": "skills/omd-apply",
+      "install_adapter": "omd-channel-name-v1",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-apply",
+      "declared_name": "omd:apply",
+      "commit": "b85ad330b63d502ecabc6741c0a7c599da6d2f58",
+      "license": "MIT",
+      "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
+      "activation": "Use the installed $omd:apply skill for this task."
+    },
     "omd-reflow-integrity-experimental": {
       "label": "oh-my-design apply skill + reflow integrity closure",
       "kind": "local-skill-experimental",

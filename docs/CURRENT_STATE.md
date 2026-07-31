@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.130 environment-secret holdout accepted
+- 갱신: 2026-08-01 · 1.9.131 reflow v3 portable candidate pinned
 
 ## 지금 (현재 위치)
 
+- 1.9.131 exact v3 candidate를 `omd-portable-reflow-v3-candidate`로 고정했다. detached clean/publishable source는 `b85ad330…`, Cursor-adapted installed skill SHA는 `e420add7…`이며 exact previous와 activation은 같다. rejected v2 variant는 별도로 보존된다.
+- diagnostic prepare는 provider 0이며 denominator에 포함하지 않는다. 다음은 locked environment-secret task에서 previous vs v3 2 arms×3 trials를 fresh root에 준비하고 equality/attestation을 검증하는 것이다.
 - 1.9.130 새 unseen `environment-secret-mapping-v0.1`을 v3 commit 뒤, provider generation 전에 contract-lock했다. 기존 onboarding-v1 adapter를 쓰지만 새 release-secret configuration domain이며 environment choice/toggle/form, 3 atomic identifiers, 4-view geometry+decision hierarchy를 가진다.
 - untouched `/tmp/u19130-environment-secret-starter`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. 320px screenshot에서 desktop nth-child widths가 mobile stack에 남아 identifiers가 세로로 파편화되는 것을 직접 확인했다.
 - starter에는 injected `<wbr>`가 없고 prompt는 break opportunity 삽입을 명시적으로 금지한다. provider call은 0이다. 다음은 exact previous canonical vs exact v3를 fresh 2 arms×3 trials로 준비해 skill tree만 다르게 검증하는 것이다.

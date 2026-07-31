@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.131 reflow v3 portable candidate pinned
+- detached clean `b85ad330…`을 별도 portable candidate로 고정했다.
+- Cursor installed skill SHA `e420add7…`, previous와 activation equality를 확인했다.
+- rejected v2 source는 덮어쓰지 않고 별도 보존했다.
+- provider 0; 다음은 fresh previous-vs-v3 2×3 준비다.
+
 ## 2026-08-01 (Codex) · 1.9.130 environment-secret holdout accepted
 - 새 onboarding/configuration family를 v3 이후·provider 이전에 잠갔다.
 - untouched starter는 기능/a11y/DESIGN/evidence green, reflow만 red인 79/85다.
