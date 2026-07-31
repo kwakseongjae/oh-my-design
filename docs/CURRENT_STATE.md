@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.125 release-artifact reflow v2 comparison prepared
+- 갱신: 2026-08-01 · 1.9.125 release-artifact reflow v2 comparison complete
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19125` 6/6 valid COMPLETE. control 85/79/81(UI-Resolved 1/3, Reliability@3 0%), reflow v2 85/85/85(UI-Resolved 3/3, Reliability@3 100%), paired v2 W/T/L 2/1/0이다.
+- control t2는 mobile/320/200% atomic fragmentation + 320/200% generated label failure, t3는 320/200% short atomic wrap을 냈다. v2는 3/3에서 모두 제거했고 v1의 nowrap overflow/clipping, generated-label overflow, target emphasis 약화도 재발하지 않았다.
+- 320px control/v2 screenshot을 직접 대조했다. v2는 artifact/owner/channel/manifest/status를 full-width reading row로 만들고 선택 target→evidence→state→action 경계를 보존한다. function/DESIGN/a11y/evidence/overflow/clipping/overlap/hierarchy는 v2 3/3 green이다.
+- preregistered canonical-candidate threshold를 충족했다. 다음은 task/selector/filename 없이 일반화한 bounded reflow closure를 canonical `skills/omd-apply/SKILL.md`에 최소 반영하고, 또 다른 unseen family에서 exact previous vs candidate Reliability@3를 검증한다. owner review는 불필요하다.
 - 1.9.125 exact current control vs activation-only reflow v2를 fresh `/tmp/u19125`에 PREPARED했다. 2 arms×3 trials, control-first 2/1 balanced이며 provider call은 0이다.
 - 6 cells의 task `0.1.0`, core prompt `b7a2ab0a…`, starter `0ce6cb3d…`, DESIGN `67727674…`, runtime/model/effort/timeout과 installed skill SHA `d7a890ac…`가 같다. control full prompt `0ff29a42…`, v2 `ed02c018…`이며 activation만 다르다.
 - exact source는 양쪽 모두 detached clean `f013dbd9…`, product trees untouched다. Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal attribution으로 잠갔다. 다음 cell은 `artifact-t1-control`이다.

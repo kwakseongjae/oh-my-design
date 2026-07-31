@@ -1,9 +1,9 @@
 {
   "schema_version": "0.1",
   "experiment_id": "release-artifact-reflow-v2-comparison-1.9.125",
-  "status": "prepared",
+  "status": "complete",
   "prepared_root": "/tmp/u19125",
-  "provider_calls": 0,
+  "provider_calls": 6,
   "scheduled_cells": 6,
   "prepared_cells": 6,
   "task": {
@@ -44,7 +44,7 @@
     "attribution_scope": "internal-registered-display-name",
     "public_model_attribution_eligible": false
   },
-  "next_cell": "artifact-t1-control",
+  "next_cell": null,
   "retry_fallback_repair_substitution": 0,
   "excluded_user_file": "web/public/llms-full.txt"
 }

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.125 reflow v2 comparison complete
+- 6/6 valid; control 85/79/81, v2 85/85/85, paired v2 W/T/L 2/1/0이다.
+- v2 Reliability@3 100%, control 0%; v1 nowrap/generated-label/target 회귀도 0이다.
+- narrow screenshots에서 control fragmentation과 v2 full-width repair를 직접 대조했다.
+- 다음은 canonical candidate 최소 반영 후 또 다른 unseen validation이다.
+
 ## 2026-08-01 (Codex) · 1.9.125 reflow v2 comparison prepared
 - exact current control vs bounded reflow v2 2×3을 fresh `/tmp/u19125`에 준비했다.
 - task/prompt/starter/DESIGN/runtime/model/skill identity equality를 검증했다.
