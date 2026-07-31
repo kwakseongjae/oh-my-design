@@ -1,6 +1,6 @@
 {
   "id": "deletion-approval-v0.1",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "track": "repair",
   "grounding": "design-md",
   "locale": "en",
@@ -31,7 +31,12 @@
     "[data-bench='cancel-approval']",
     "[data-bench='confirm-approval']",
     "[data-bench='operation-status']",
-    "[data-bench-design-role='main-console']"
+    "[data-bench-design-role='main-console']",
+    "[data-bench-decision-role='context']",
+    "[data-bench-decision-role='target']",
+    "[data-bench-decision-role='evidence']",
+    "[data-bench-decision-role='state']",
+    "[data-bench-decision-role='action']"
   ],
   "protected_hook_counts": {
     "[data-bench='filter-button']": 3,
@@ -42,7 +47,12 @@
     "[data-bench='cancel-approval']": { "total": 1, "visible": 0 },
     "[data-bench='confirm-approval']": { "total": 1, "visible": 0 },
     "[data-bench='operation-status']": 1,
-    "[data-bench-design-role='main-console']": 1
+    "[data-bench-design-role='main-console']": 1,
+    "[data-bench-decision-role='context']": 1,
+    "[data-bench-decision-role='target']": 1,
+    "[data-bench-decision-role='evidence']": 1,
+    "[data-bench-decision-role='state']": 1,
+    "[data-bench-decision-role='action']": 1
   },
   "journey_oracle": {
     "filter": {
@@ -66,6 +76,23 @@
       "cancel_button_selector": "[data-bench='cancel-approval']",
       "confirm_button_selector": "[data-bench='confirm-approval']",
       "status_selector": "[data-bench='operation-status']"
+    }
+  },
+  "text_geometry_oracle": {
+    "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "scope_selectors": ["[data-bench='approval-row']", "[data-bench-decision-role='context']"],
+    "max_short_text_chars": 24,
+    "max_short_text_lines": 1
+  },
+  "decision_hierarchy_oracle": {
+    "viewports": ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "minimum_action_gap_px": 8,
+    "roles": {
+      "container": "[data-bench-decision-role='context']",
+      "target": "[data-bench-decision-role='target']",
+      "evidence": "[data-bench-decision-role='evidence']",
+      "state": "[data-bench-decision-role='state']",
+      "action": "[data-bench-decision-role='action']"
     }
   },
   "protected_unknown_patterns": [

@@ -26,6 +26,7 @@
       .hero { max-width: 780px; margin-bottom: 30px; }
       h1 { margin: 0 0 16px; font: 400 54px/58px Georgia, serif; }
       h2 { margin: 0; font: 400 30px/34px Georgia, serif; }
+      h3 { margin: 0; font-size: 20px; line-height: 26px; }
       .lede, .muted { color: var(--muted); }
       .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
       .button, .filters button {
@@ -64,14 +65,17 @@
       .payee strong, .payee span { display: block; }
       .payee span, .date small { color: var(--muted); }
       .amount { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
-      .status { font-weight: 700; }
-      .status::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--success); }
-      [data-state="review"] .status::before { background: var(--copper); }
+      .status { display: flex; align-items: flex-start; gap: 8px; font-weight: 700; }
+      .status-dot { flex: 0 0 auto; width: 8px; height: 8px; margin-top: 8px; border-radius: 50%; background: var(--success); }
+      [data-state="review"] .status-dot { background: var(--copper); }
       .details { margin-top: 8px; }
       .details button { padding: 0; border: 0; background: transparent; color: var(--blue); text-decoration: underline; cursor: pointer; }
       .details p { margin: 8px 0 0; color: var(--muted); max-width: 40ch; }
-      .decision-bar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 20px; border-top: 1px solid var(--line); }
-      [data-bench="operation-status"] { margin: 0; color: var(--muted); }
+      .decision-bar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px 32px; align-items: end; padding: 20px; border-top: 1px solid var(--line); }
+      .decision-copy { display: grid; gap: 8px; }
+      [data-bench-decision-role="evidence"] { margin: 0; color: var(--muted); }
+      [data-bench-decision-role="state"] { margin: 0; color: var(--copper); font-weight: 700; }
+      [data-bench-decision-role="action"] { align-self: end; }
       dialog {
         width: min(520px, calc(100% - 32px));
         padding: 0;
@@ -97,9 +101,9 @@
         .matrix thead { display: none; }
         .matrix tr { padding: 16px; border-bottom: 1px solid var(--line); }
         .matrix tr:last-child { border-bottom: 0; }
-        .matrix td { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 12px; padding: 5px 0; border: 0; }
-        .matrix td::before { content: attr(data-label); color: var(--muted); font-size: 13px; font-weight: 700; }
-        .decision-bar .button { width: 100%; }
+        .matrix td { display: block; padding: 6px 0; border: 0; }
+        .matrix td::before { content: attr(data-label); display: block; margin-bottom: 2px; color: var(--muted); font-size: 12px; line-height: 17px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+        [data-bench-decision-role="action"] { width: 100%; margin-top: 4px; }
       }
       @media (max-width: 420px) {
         .dialog-actions { display: grid; }
@@ -162,7 +166,7 @@
                   <p id="evidence-1" hidden>Invoice MARKET-208 covers the June produce delivery and names North Market as payee.</p>
                 </div>
               </td>
-              <td data-label="Status" class="status">Needs review</td>
+              <td data-label="Status"><span class="status"><span class="status-dot" aria-hidden="true"></span>Needs review</span></td>
             </tr>
             <tr data-bench="approval-row" data-state="review">
               <td data-label="Payee" class="payee"><strong>Studio Parcel</strong><span>Packaging vendor</span></td>
@@ -175,28 +179,32 @@
                   <p id="evidence-2" hidden>Invoice PARCEL-331 lists the packaging order delivered on June 26.</p>
                 </div>
               </td>
-              <td data-label="Status" class="status">Needs review</td>
+              <td data-label="Status"><span class="status"><span class="status-dot" aria-hidden="true"></span>Needs review</span></td>
             </tr>
             <tr data-bench="approval-row" data-state="ready">
               <td data-label="Payee" class="payee"><strong>Bright Cart</strong><span>Display vendor</span></td>
               <td data-label="Amount" class="amount">$1,960.00</td>
               <td data-label="Requested" class="date">June 30 <small>Standard transfer</small></td>
               <td data-label="Evidence">Display invoice</td>
-              <td data-label="Status" class="status">Ready</td>
+              <td data-label="Status"><span class="status"><span class="status-dot" aria-hidden="true"></span>Ready</span></td>
             </tr>
             <tr data-bench="approval-row" data-state="ready">
               <td data-label="Payee" class="payee"><strong>East Courier</strong><span>Delivery vendor</span></td>
               <td data-label="Amount" class="amount">$2,740.00</td>
               <td data-label="Requested" class="date">July 1 <small>Standard transfer</small></td>
               <td data-label="Evidence">Route statement</td>
-              <td data-label="Status" class="status">Ready</td>
+              <td data-label="Status"><span class="status"><span class="status-dot" aria-hidden="true"></span>Ready</span></td>
             </tr>
           </tbody>
         </table>
 
-        <div class="decision-bar">
-          <p data-bench="operation-status" role="status" aria-live="polite">Decision pending for North Market.</p>
-          <button class="button primary" type="button" data-bench="open-approval">Review approval</button>
+        <div class="decision-bar" data-bench-decision-role="context">
+          <div class="decision-copy">
+            <h3 data-bench-decision-role="target">North Market · $8,420.00</h3>
+            <p data-bench-decision-role="evidence">Evidence: Invoice MARKET-208</p>
+            <p data-bench="operation-status" data-bench-decision-role="state" role="status" aria-live="polite">Decision pending for North Market.</p>
+          </div>
+          <button class="button primary" type="button" data-bench="open-approval" data-bench-decision-role="action">Review approval</button>
         </div>
       </section>
 

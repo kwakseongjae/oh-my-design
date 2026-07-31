@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.114 rollback current baseline complete
+- 갱신: 2026-07-31 · 1.9.115 approval structural contract accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.115에서 모든 `approval-v1` future task가 text geometry + decision hierarchy를 반드시 선언하도록 sandbox preparation을 fail-closed 했다. missing oracle/viewport, row+context scope 누락, role exact-one protection 누락, 8px 미만 action gap은 provider 전에 거절된다.
+- payout/deletion task를 `0.2.0`으로 올리고 label-above-value mobile geometry, child status dot, visible target→evidence→state→action boundary를 적용했다. historical `0.1.0` records와 owner judgment는 unchanged다.
+- fresh `/tmp/u19115-payout-starter`와 `/tmp/u19115-deletion-starter`는 각각 85/85, critical 6/6, text geometry 12/12, decision hierarchy 12/12다. 두 mobile screenshot을 직접 확인했고 provider call은 0이다.
 - `/tmp/u19114` 3/3 cells가 valid/UI-Resolved/85로 COMPLETE됐다. Reliability@3 100%, text geometry 12/12, decision hierarchy 12/12, evidence/unknown 3/3이며 retry/fallback/repair/replacement/substitution은 0이다.
 - mobile screenshots 3개를 직접 확인했고 deletion owner review의 short-label 2-line wrap, vertical status fragmentation, pseudo collision, flat decision boundary가 재현되지 않았다. wall time median 281,392ms, token median 114,486이며 compute는 descriptive-only다.
 - preregistered 3/3 ceiling decision에 따라 rollback-specific rule을 만들지 않고 canonical `omd-apply`를 유지한다. 이 결과는 Internal structural reliability evidence이며 public model/superiority claim이 아니다.
@@ -867,9 +870,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 새 규칙을 만들지 않고 다음 unseen family 또는 preregistered anonymous visual comparison을 선택한다.
-2. 다음 family도 generation 전에 geometry/hierarchy role을 잠그고 Reliability@3를 측정한다.
-3. 반복 deterministic failure cluster가 생길 때만 bounded non-canonical skill delta를 설계한다.
+1. approval contract가 공통화됐으므로 다음 unseen non-approval family를 선택한다.
+2. generation 전에 그 family 고유의 geometry/hierarchy/state contract를 잠근다.
+3. Reliability@3 또는 anonymous visual comparison에서 반복 failure cluster가 생길 때만 bounded skill delta를 설계한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

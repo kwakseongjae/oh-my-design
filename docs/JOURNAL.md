@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-31 (Codex) · 1.9.115 approval contract accepted
+- 모든 future `approval-v1` task에 text geometry+decision hierarchy를 fail-closed 강제했다.
+- payout/deletion을 0.2.0으로 올리고 모바일 label flow·status dot·decision roles를 교정했다.
+- 두 fresh starter가 각각 85/85, geometry 12/12, hierarchy 12/12로 통과했다.
+- provider 0; 다음은 unseen non-approval family다.
+
 ## 2026-07-31 (Codex) · 1.9.114 rollback baseline complete
 - Grok current-skill 3/3이 valid/UI-Resolved/85, Reliability@3 100%로 끝났다.
 - text geometry·decision hierarchy는 각 12/12, mobile visual inspection은 3/3 pass다.

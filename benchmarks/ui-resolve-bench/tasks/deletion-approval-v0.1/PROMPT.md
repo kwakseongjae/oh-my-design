@@ -9,9 +9,11 @@ Treat it as the product contract, not optional inspiration. Do not add external
 dependencies, network calls, remote fonts, images, or unverified financial,
 fraud, settlement, customer, or performance claims.
 
-Keep every existing deletion-request fact, every `data-bench` hook, and exactly one
-`data-bench-design-role="main-console"` marker. That marker belongs to the
-overall deletion queue, not a row, dialog, table, or note.
+Keep every existing deletion-request fact, every `data-bench` hook, exactly one
+`data-bench-design-role="main-console"` marker, and exactly one of each
+`data-bench-decision-role` marker: `context`, `target`, `evidence`, `state`, and
+`action`. The decision roles belong to the visible selected-workspace deletion
+boundary. Do not move them into the hidden dialog or duplicate them in rows.
 
 Preserve and polish these working journeys:
 
@@ -24,9 +26,12 @@ Preserve and polish these working journeys:
 6. keep every control keyboard reachable with visible focus and respect reduced
    motion;
 7. preserve the relationship between workspace, owner, deletion scope,
-   requested date, evidence, and blocker state without useful-content clipping
-   or horizontal page scroll at
-   390×844, 320×720, or 200% zoom.
+   requested date, evidence, and blocker state without useful-content clipping,
+   mid-token fragmentation, short-control wrapping, or horizontal page scroll
+   at 390×844, 320×720, or 200% zoom;
+8. keep the selected workspace visibly emphasized over evidence, keep blocker
+   state distinct from evidence, and separate the final action from all three
+   context roles.
 
 Make the irreversible action explicit without adding warning theatre. Do not
 convert each field into an interchangeable card, hide the deletion scope in a

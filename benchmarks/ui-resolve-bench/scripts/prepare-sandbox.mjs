@@ -13,6 +13,7 @@ import {
   treeManifest,
   writeJson,
 } from "./_lib.mjs";
+import { validateTaskContract } from "./task-contract.mjs";
 
 const args = parseArgs();
 const taskId = args.get("task");
@@ -36,7 +37,7 @@ if (!variant) throw new Error(`unknown variant: ${variantId}`);
 
 const taskRoot = assertInside(join(benchRoot, "tasks"), join(benchRoot, "tasks", taskId));
 const starterRoot = join(taskRoot, "starter");
-const task = readJson(join(taskRoot, "task.json"));
+const task = validateTaskContract(readJson(join(taskRoot, "task.json")));
 const promptFile = readFileSync(join(taskRoot, "PROMPT.md"), "utf8");
 const promptSource = promptFile.trim();
 

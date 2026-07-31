@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import { prepareRunMatrix } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs";
 import { treeManifest } from "../../../benchmarks/ui-resolve-bench/scripts/_lib.mjs";
 import { evaluateApprovalDecisionObservation } from "../../../benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs";
+import { validateTaskContract } from "../../../benchmarks/ui-resolve-bench/scripts/task-contract.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const prepare = join(repoRoot, "benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs");
@@ -330,7 +331,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       "utf8",
     ));
     expect(task).toMatchObject({
-      version: "0.1.0",
+      version: "0.2.0",
       track: "repair",
       behavior_adapter: "approval-v1",
       journey_oracle: {
@@ -354,6 +355,11 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         "[data-bench='approval-dialog']": { total: 1, visible: 0 },
         "[data-bench='confirm-approval']": { total: 1, visible: 0 },
         "[data-bench-design-role='main-console']": 1,
+        "[data-bench-decision-role='context']": 1,
+        "[data-bench-decision-role='target']": 1,
+        "[data-bench-decision-role='evidence']": 1,
+        "[data-bench-decision-role='state']": 1,
+        "[data-bench-decision-role='action']": 1,
       },
     });
     expect(task.viewports.map((viewport) => viewport.name)).toEqual([
@@ -370,7 +376,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
     expect(manifest.task).toMatchObject({
       id: payoutApprovalTaskId,
-      version: "0.1.0",
+      version: "0.2.0",
       track: "repair",
     });
     expect(readFileSync(join(out, "index.html"), "utf8")).toContain(
@@ -384,7 +390,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       "utf8",
     ));
     expect(task).toMatchObject({
-      version: "0.1.0",
+      version: "0.2.0",
       track: "repair",
       behavior_adapter: "approval-v1",
       journey_oracle: {
@@ -408,6 +414,11 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         "[data-bench='approval-dialog']": { total: 1, visible: 0 },
         "[data-bench='confirm-approval']": { total: 1, visible: 0 },
         "[data-bench-design-role='main-console']": 1,
+        "[data-bench-decision-role='context']": 1,
+        "[data-bench-decision-role='target']": 1,
+        "[data-bench-decision-role='evidence']": 1,
+        "[data-bench-decision-role='state']": 1,
+        "[data-bench-decision-role='action']": 1,
       },
     });
     expect(task.viewports.map((viewport) => viewport.name)).toEqual([
@@ -424,13 +435,35 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
     expect(manifest.task).toMatchObject({
       id: deletionApprovalTaskId,
-      version: "0.1.0",
+      version: "0.2.0",
       track: "repair",
     });
     const starter = readFileSync(join(out, "index.html"), "utf8");
     expect(starter).toContain("data-bench=\"approval-dialog\"");
     expect(starter).toContain("Export EX-204 records 18 project files and 3 shared folders");
     expect(starter).not.toContain("North Market");
+  });
+
+  it("fails closed when an approval task omits structural oracles", () => {
+    const task = JSON.parse(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", payoutApprovalTaskId, "task.json"),
+      "utf8",
+    ));
+    expect(() => validateTaskContract({
+      ...task,
+      text_geometry_oracle: undefined,
+    })).toThrow(/text_geometry_oracle/);
+    expect(() => validateTaskContract({
+      ...task,
+      decision_hierarchy_oracle: {
+        ...task.decision_hierarchy_oracle,
+        roles: {
+          ...task.decision_hierarchy_oracle.roles,
+          action: "[data-bench-decision-role='missing-action']",
+        },
+      },
+    })).toThrow(/protected exactly once/);
+    expect(validateTaskContract(task)).toBe(task);
   });
 
   it("preregisters text geometry and decision hierarchy on a new rollback holdout", () => {
@@ -500,7 +533,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
     expect(manifest).toMatchObject({
-      task: { id: deletionApprovalTaskId, version: "0.1.0" },
+      task: { id: deletionApprovalTaskId, version: "0.2.0" },
       variant: {
         id: "omd-decision-context-experimental",
         kind: "local-skill-experimental",

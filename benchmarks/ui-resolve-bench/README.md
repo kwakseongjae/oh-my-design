@@ -158,6 +158,13 @@ state must differ from evidence through at least one registered visual channel,
 and the action must be spatially separated from every context role. This is an
 opt-in task contract, not a global aesthetic ranking.
 
+For `approval-v1` tasks, both the text-geometry and decision-hierarchy
+contracts are mandatory. Sandbox preparation fails before copying the starter
+when either oracle is missing, a registered viewport does not exist, row and
+decision scopes are not both covered, or any decision role is not protected
+exactly once. Historical run records keep their original task versions and are
+never silently rescored.
+
 Claude Code is a separate Transfer Matrix runtime, not a replacement row in the
 Terra Skill Lift estimate. Prepare with `--runtime claude-code`, verify
 subscription auth without shadowing API credentials, then pin the exact model:
