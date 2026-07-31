@@ -1961,3 +1961,8 @@
 - 새 `localization-bundle-handoff-v0.1`은 dashboard 상호작용과 locale artifact geometry를 generation 전에 잠갔다.
 - raw starter 57/85에서 function/a11y/evidence는 green, artifact·View source wrapping과 DESIGN/state hierarchy는 의도대로 fail했다.
 - 다음: current control과 activation-only experimental을 같은 unseen task에서 paired comparison한다.
+# 2026-07-31 — 1.9.123 localization reflow comparison prepared
+- `/tmp/u19123`에 current control vs reflow activation-only 2 arms×3 trials를 준비했다.
+- task/starter/DESIGN/model/effort/timeout과 installed skill SHA가 같고 activation paragraph만 다름을 확인했다.
+- exact detached source, untouched product tree, 2/1 arm-first balance를 잠갔고 provider call은 아직 0이다.
+- 다음: 6 cells를 serial·120s pacing·no retry로 실행한다.
