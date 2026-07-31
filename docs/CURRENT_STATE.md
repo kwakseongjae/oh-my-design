@@ -4,13 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.133 Luna High replacement matrix prepared
+- 갱신: 2026-08-01 · 1.9.133 Luna High matrix complete; v3 rejected
 
 ## 지금 (현재 위치)
 
-- 1.9.133 frozen Grok root와 분리된 Luna High/Codex fresh `/tmp/u19133`을 PREPARED했다. local model catalog에서 `gpt-5.6-luna` high 지원을 확인했고 양 arm 모두 동일 provider/runtime/effort를 쓴다.
-- 6 cells의 task/core+full prompt/starter/DESIGN/runtime/model/effort/timeout/activation이 같고 installed Codex skill tree(previous `a8128ccc…`, v3 `e8822c07…`)만 다르다. source는 detached clean/publishable, product trees untouched다.
-- serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution을 유지하며 provider call은 0이다. Grok 결과와 합치지 않는 별도 provider-scoped experiment이며 다음은 `luna-secret-t1-previous`다.
+- `/tmp/u19133` 6/6 valid COMPLETE. previous 81/75/65, v3 79/81/81이며 paired v3 W/T/L 2/0/1, median 81 vs 75다. 하지만 두 arm 모두 UI-Resolved 0/3, Reliability@3 0%라 v3 승격을 거절했다.
+- v3는 injected break 0과 mapping-row atomic key repair는 3/3 달성했다. 남은 candidate failures는 t1 internal scroll region의 keyboard/axe failure, t2 selected source filename의 320/200% two-line wrap, t3 fixed 64px generated label `Requirement` overflow다.
+- previous는 generated-label overflow 3/3, a11y 2/3, protected-hook loss 1/3로 더 불안정했다. 다음은 새 규칙 추가가 아니라 기존 2e를 v4로 다듬어 모든 decision-context atomic ID, label-above-value/full-width 우선, 필요한 scroll region의 name+keyboard reachability, content-sized generated label track을 잠그고 다른 unseen family에서 검증한다.
+- 1.9.133은 task/prompt/starter/DESIGN/runtime/model/effort/timeout/activation이 같고 installed skill tree만 다른 Luna High/Codex 2×3으로 준비됐다. 준비 동등성은 유효하며 완성 결과는 위 COMPLETE 기록이 정본이다.
 - `/tmp/u19132`은 첫 `secret-t1-previous`에서 Cursor HTTP 503로 FROZEN됐다. 1,026ms, event 0, product write 0, product SHA unchanged이며 나머지 5 cells는 not-started다. retry/resume/fallback/substitution은 0이다.
 - 이는 arm quality 결과가 아니다. exact preparation은 보존하지만 root 재개는 금지한다. 다음 유효 단계는 다른 사용 가능한 provider를 양 arm에 동일 적용한 별도 fresh/preregistered experiment이며, provider scope를 분리 보고해야 한다.
 - 1.9.132는 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout이 같고 installed skill tree만 다른 exact previous-vs-v3 2×3으로 준비됐다. 준비 동등성은 유효하며 실행 결과와 stop 상태는 위 frozen 기록이 정본이다.

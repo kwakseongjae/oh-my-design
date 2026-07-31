@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.133 Luna High matrix complete; v3 rejected
+- 6/6 valid; previous 81/75/65, v3 79/81/81, paired v3 W/T/L 2/0/1이다.
+- 양 arm Reliability@3 0%; v3는 release gate를 통과하지 못했다.
+- candidate failures는 scroll a11y, source filename wrap, fixed label-track overflow다.
+- 다음은 기존 closure를 v4로 정제하고 새 unseen family에서 검증한다.
+
 ## 2026-08-01 (Codex) · 1.9.133 Luna High replacement prepared
 - Grok frozen root와 분리해 Luna High/Codex 2×3 fresh root를 준비했다.
 - 양 arm provider/task/prompt/starter/DESIGN/activation equality를 확인했다.
