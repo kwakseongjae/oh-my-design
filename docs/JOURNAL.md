@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.125 reflow v2 comparison prepared
+- exact current control vs bounded reflow v2 2×3을 fresh `/tmp/u19125`에 준비했다.
+- task/prompt/starter/DESIGN/runtime/model/skill identity equality를 검증했다.
+- Grok High·serial·120s pacing·no retry/fallback/substitution으로 잠갔다.
+- provider 0; 다음은 `artifact-t1-control`이다.
+
 ## 2026-08-01 (Codex) · 1.9.124 reflow v2 holdout accepted
 - nowrap 회귀를 막는 bounded reflow v2 activation을 exact current skill 위에 잠갔다.
 - 새 release-artifact promotion holdout을 generation 전에 contract-lock했다.

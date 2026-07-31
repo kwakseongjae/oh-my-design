@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "release-artifact-reflow-v2-comparison-1.9.125",
+  "status": "prepared",
+  "prepared_root": "/tmp/u19125",
+  "provider_calls": 0,
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "task": {
+    "id": "release-artifact-promotion-v0.1",
+    "version": "0.1.0",
+    "core_prompt_sha256": "b7a2ab0a8a1ed48703b4b59bf4771533b0d184ce30b30f96c02411aa87899f8a",
+    "starter_sha256": "0ce6cb3d4652d1f97cb1f8144d5ba8736035e8c3b71876f107ea92a1e3bdd3a3",
+    "design_sha256": "677276749c5754f64d52a34782faf8d5999ede4d1facc6f0acfd6c299121319e"
+  },
+  "arms": {
+    "control": {
+      "variant_id": "omd-portable-jade",
+      "full_prompt_sha256": "0ff29a420bcc69eff488b69b691d0e2a2093f1954e597950a48a6b96a43aa8ed",
+      "activation_delta_sha256": "01728b95555028b7db735816e304bd2e51ca60aee1a59fd65e9b97aa75c58a9f",
+      "source_commit": "f013dbd9f94a1e018f7cf8a4e500207fe982b00a",
+      "skill_sha256": "d7a890ac08f8a4cce8c541b186039c9fcd4245a363f7f97132a2bbf8f46f52d5",
+      "detached": true, "dirty": false, "source_publishable": true
+    },
+    "reflow_v2": {
+      "variant_id": "omd-reflow-integrity-v2-experimental",
+      "full_prompt_sha256": "ed02c0187ebf6cd03e15908619192de36b5e5ad9de705650e144df780898a55c",
+      "activation_delta_sha256": "ca986ba7336afe44de2f074fd9e603d15c30bce19cf6a789d49318271b27f84a",
+      "source_commit": "f013dbd9f94a1e018f7cf8a4e500207fe982b00a",
+      "skill_sha256": "d7a890ac08f8a4cce8c541b186039c9fcd4245a363f7f97132a2bbf8f46f52d5",
+      "detached": true, "dirty": false, "source_publishable": true
+    }
+  },
+  "proof": {
+    "same_task_version_across_cells": true,
+    "same_core_prompt_across_cells": true,
+    "same_starter_across_cells": true,
+    "same_design_contract_across_cells": true,
+    "same_installed_skill_hash_across_arms": true,
+    "activation_delta_is_only_prompt_difference": true,
+    "exact_detached_sources": true,
+    "product_trees_untouched": true,
+    "balanced_arm_first_order": "2/1",
+    "attribution_scope": "internal-registered-display-name",
+    "public_model_attribution_eligible": false
+  },
+  "next_cell": "artifact-t1-control",
+  "retry_fallback_repair_substitution": 0,
+  "excluded_user_file": "web/public/llms-full.txt"
+}

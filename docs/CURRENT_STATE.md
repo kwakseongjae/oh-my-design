@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.124 reflow v2 holdout accepted
+- 갱신: 2026-08-01 · 1.9.125 release-artifact reflow v2 comparison prepared
 
 ## 지금 (현재 위치)
 
+- 1.9.125 exact current control vs activation-only reflow v2를 fresh `/tmp/u19125`에 PREPARED했다. 2 arms×3 trials, control-first 2/1 balanced이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `b7a2ab0a…`, starter `0ce6cb3d…`, DESIGN `67727674…`, runtime/model/effort/timeout과 installed skill SHA `d7a890ac…`가 같다. control full prompt `0ff29a42…`, v2 `ed02c018…`이며 activation만 다르다.
+- exact source는 양쪽 모두 detached clean `f013dbd9…`, product trees untouched다. Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal attribution으로 잠갔다. 다음 cell은 `artifact-t1-control`이다.
 - 1.9.124 `omd-reflow-integrity-v2-experimental`을 activation-only로 잠갔다. exact current OmD source/commit/install identity는 control과 같고, full-width/minmax 선행·overflow를 만드는 nowrap 금지·generated label box·target emphasis·decision containment만 추가했다. canonical skill은 unchanged다.
 - 새 unseen `release-artifact-promotion-v0.1`을 generation 전에 contract-lock했다. approval-v1 interaction을 쓰지만 새 platform-release domain이며 atomic artifact filename, manifest disclosure, filter/dialog, 3 reflow viewports, 4-view decision hierarchy를 가진다.
 - untouched `/tmp/u19124-release-artifact-starter`는 79/85다. Function/state/a11y/DESIGN/evidence와 overflow/clipping/overlap은 green이고, mobile/320/200%의 artifact·owner·short control fragmentation과 2-column decision squeeze만 의도대로 red다. narrow screenshot을 직접 확인했다.
