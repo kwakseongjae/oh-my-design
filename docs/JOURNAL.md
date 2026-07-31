@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-31 (Codex) · 1.9.118 shipment owner gallery ready
+- 6/6 비교가 완료됐고 objective OmD W/T/L은 2/1/0, 양쪽 Reliability@3는 100%다.
+- 3 same-trial/12 screenshots 익명 gallery를 만들고 identity를 private reveal로 분리했다.
+- desktop/mobile overflow·missing image 0, incomplete export block+focus를 browser 검증했다.
+- STOP: 실제 owner export JSON이 다음 입력이다.
+
 ## 2026-07-31 (Codex) · 1.9.117 shipment comparison prepared
 - exact OmD vs Impeccable prompt-only 2 arms×3 trials를 `/tmp/u19117`에 준비했다.
 - task/prompt/starter/DESIGN equality와 exact detached skill identity를 확인했다.

@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.117 shipment frontier comparison prepared
+- 갱신: 2026-07-31 · 1.9.118 shipment owner gallery ready
 
 ## 지금 (현재 위치)
 
+- 1.9.118 same-trial anonymous owner gallery가 `/tmp/u19118-public-v2/shipment-exception-triage-v0.1/`에 준비됐다. 3 comparisons/12 screenshots/12 axes이며 private reveal은 `/tmp/u19118-private-v2/reveal.json`에 분리됐다.
+- browser-harness desktop 1676px/mobile 390px에서 overflow 0, missing image 0, identity leak 0이다. incomplete export는 차단되고 첫 unanswered axis로 focus한다.
+- 검수 탭은 `http://127.0.0.1:4781/shipment-exception-triage-v0.1/?v=2`에 열려 있다. STOP: actual owner export JSON이 다음 유효 입력이며 synthetic judgment/reveal은 금지한다.
+- `/tmp/u19117` 6/6 cells가 COMPLETE됐다. 두 arm 모두 valid/UI-Resolved 3/3, Reliability@3 100%; objective paired OmD W/T/L은 2/1/0이며 OmD scores 85/85/81, Impeccable 81/81/81이다.
+- 반복 차이는 DESIGN-grounding `primary_action` color다. OmD median 85, Impeccable median 81; wall/token은 OmD가 낮지만 1 task×3 trials라 descriptive-only다.
 - 1.9.117 exact current OmD vs exact Impeccable prompt-only comparison이 fresh `/tmp/u19117`에 PREPARED됐다. 2 arms×3 trials, jade/ivory→ivory/jade→jade/ivory 순서이며 provider call은 0이다.
 - 6 cells의 task `0.1.0`, core prompt `78810529…`, starter `f871d45b…`, DESIGN `0bc7d897…`가 같고 arm별 activation+skill만 다르다. OmD는 exact detached `f013dbd9…`/`d7a890ac…`, Impeccable은 `4d849eb7…`/`8612a4ec…`다.
 - Cursor/Grok 4.5 High, effort high, 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only로 잠갔다. 다음 cell은 `shipment-t1-jade`다.

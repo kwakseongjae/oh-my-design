@@ -65,6 +65,7 @@ describe("UI-Resolve human escalation gallery", () => {
     expect(result).toMatchObject({ families: 1, comparisons: 1 });
     const html = readFileSync(join(out, "onboarding-setup-v0.1", "index.html"), "utf8");
     expect(html).toContain("Export this page");
+    expect(html).toContain("focus({preventScroll:true})");
     expect(html).not.toContain("private-slate");
     expect(html).not.toContain("private-ember");
     expect(readFileSync(reveal, "utf8")).toContain("private-slate");
