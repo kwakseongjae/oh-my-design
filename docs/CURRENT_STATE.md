@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.135 unseen webhook holdout accepted; provider 0
+- 갱신: 2026-08-01 · 1.9.136 exact reflow v4 candidate pinned; provider 0
 
 ## 지금 (현재 위치)
 
+- 1.9.136 exact v4 candidate를 `omd-portable-reflow-v4-candidate`로 고정했다. detached clean/publishable source는 `c8416c435d…`, Cursor-adapted installed skill SHA는 `8ebc7e7647…`이며 exact previous와 activation은 같다. rejected v2/v3 variants는 별도로 보존된다.
+- diagnostic prepare는 provider 0이며 denominator에 포함하지 않는다. 다음은 locked webhook destination task에서 exact previous vs v4 2 arms×3 trials를 fresh Luna High/Codex root에 준비하고 equality/attestation을 검증하는 것이다.
 - 1.9.135 새 unseen `webhook-destination-routing-v0.1`을 v4 commit 뒤 provider generation 전에 contract-lock했다. 기존 onboarding-v1 adapter를 쓰지만 새 integration-routing domain이며 3 delivery lanes, signature toggle, route-label form, 3 event/endpoint atomic pairs, 4-view geometry+decision hierarchy를 가진다.
 - untouched `/tmp/u19134-webhook-starter-v2`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. 320px screenshot에서 residual percentage widths와 fixed generated-label track 때문에 event IDs와 endpoint paths가 세로로 파편화되고 selected source filename도 같은 decision context 안에서 wrap되는 것을 직접 확인했다.
 - task는 table/per-item card가 아닌 coherent definition surface이고 injected break opportunity가 없다. provider call은 0이다. 다음은 exact v4 `c8416c4…`를 detached candidate로 고정하고 exact previous canonical과 2 arms×3 trials를 fresh root에서 비교한다.

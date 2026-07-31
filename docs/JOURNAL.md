@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.136 exact reflow v4 candidate pinned
+- detached clean `c8416c4…`를 별도 v4 variant로 고정했다.
+- Cursor installed tree SHA `8ebc7e7647…`, publishable=true를 확인했다.
+- activation은 exact previous와 동일하고 rejected v2/v3는 별도 보존한다.
+- provider 0; 다음은 Luna High/Codex previous-vs-v4 2×3 준비다.
+
 ## 2026-08-01 (Codex) · 1.9.135 unseen webhook holdout accepted
 - v4 이후 새 integration-routing family를 provider 전에 contract-lock했다.
 - untouched starter 79/85; function/state/a11y/DESIGN/evidence/hierarchy green이다.
