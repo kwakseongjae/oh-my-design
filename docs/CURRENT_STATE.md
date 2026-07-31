@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.116 shipment exception holdout accepted
+- 갱신: 2026-07-31 · 1.9.117 shipment frontier comparison prepared
 
 ## 지금 (현재 위치)
 
+- 1.9.117 exact current OmD vs exact Impeccable prompt-only comparison이 fresh `/tmp/u19117`에 PREPARED됐다. 2 arms×3 trials, jade/ivory→ivory/jade→jade/ivory 순서이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `78810529…`, starter `f871d45b…`, DESIGN `0bc7d897…`가 같고 arm별 activation+skill만 다르다. OmD는 exact detached `f013dbd9…`/`d7a890ac…`, Impeccable은 `4d849eb7…`/`8612a4ec…`다.
+- Cursor/Grok 4.5 High, effort high, 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only로 잠갔다. 다음 cell은 `shipment-t1-jade`다.
 - 1.9.116 새 unseen non-approval `shipment-exception-triage-v0.1` task contract가 ACCEPTED됐다. fictional RelayDesk 배송 예외 triage이며 generic `dashboard-v1` interaction만 재사용한다.
 - generation 전에 mobile/320/200% text geometry와 queue/selected-context의 target→evidence→state→action hierarchy를 4 viewport에 preregister했다. untouched `/tmp/u19116-shipment-starter`는 85/85, critical 6/6, text geometry 12/12, decision hierarchy 32/32다.
 - mobile screenshot에서 short label 수평 유지, label-above-value metadata, child status dot, 명확한 selected shipment boundary를 직접 확인했다. provider call은 0이다.

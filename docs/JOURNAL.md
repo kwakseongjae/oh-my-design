@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-31 (Codex) · 1.9.117 shipment comparison prepared
+- exact OmD vs Impeccable prompt-only 2 arms×3 trials를 `/tmp/u19117`에 준비했다.
+- task/prompt/starter/DESIGN equality와 exact detached skill identity를 확인했다.
+- Grok High, serial, 120s pacing, no retry/fallback/substitution으로 잠갔다.
+- provider 0; 다음은 bounded cell 1이다.
+
 ## 2026-07-31 (Codex) · 1.9.116 shipment holdout accepted
 - 새 non-approval 배송 예외 triage task와 구조 oracle을 generation 전에 잠갔다.
 - untouched starter가 85/85, geometry 12/12, hierarchy 32/32로 통과했다.
