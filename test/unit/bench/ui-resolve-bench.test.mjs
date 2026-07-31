@@ -21,6 +21,7 @@ const payoutApprovalTaskId = "payout-approval-v0.1";
 const deletionApprovalTaskId = "deletion-approval-v0.1";
 const rollbackAuthorizationTaskId = "rollback-authorization-v0.1";
 const shipmentExceptionTaskId = "shipment-exception-triage-v0.1";
+const dataImportMappingTaskId = "data-import-mapping-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -565,6 +566,58 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
     expect(starter).toContain("Scan EVT-204 records dock arrival at 09:42 UTC");
     expect(starter).not.toContain("Field Notes");
+  });
+
+  it("adds an unseen data-import configuration family with interaction and hierarchy oracles", () => {
+    const task = JSON.parse(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", dataImportMappingTaskId, "task.json"),
+      "utf8",
+    ));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: {
+          count: 3,
+          initial: "email",
+          selected: "account-id",
+          values: ["email", "account-id", "customer-id"],
+        },
+        toggle: { selector: "[data-bench='digest-toggle']" },
+        form: { valid_value: "July customer update" },
+      },
+      text_geometry_oracle: {
+        viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+        max_short_text_lines: 1,
+      },
+      decision_hierarchy_oracle: {
+        viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+        minimum_action_gap_px: 8,
+      },
+    });
+    expect(task.protected_hook_counts).toMatchObject({
+      "[data-bench='mapping-row']": 3,
+      "[data-bench-decision-role='context']": 1,
+      "[data-bench-decision-role='target']": 1,
+      "[data-bench-decision-role='evidence']": 1,
+      "[data-bench-decision-role='state']": 1,
+      "[data-bench-decision-role='action']": 1,
+    });
+
+    const out = prepareVariant("raw-design-md", {
+      task: dataImportMappingTaskId,
+      outputName: "data-import-mapping",
+    });
+    const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+    expect(manifest.task).toMatchObject({
+      id: dataImportMappingTaskId,
+      version: "0.1.0",
+      track: "repair",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter).toContain("customer-update-july.csv");
+    expect(starter).not.toContain("Scan EVT-204");
   });
 
   it("keeps the decision-context experiment bounded to one non-canonical rule", () => {

@@ -1941,3 +1941,8 @@
 - collector-first / browser-harness exception / in-app builder acceptance 최종 프로세스를 skill+spec+preflight로 고정.
 - builder에 canonical primary 기반 9개 color concept filter, 실제 색 swatch/count, GA event 추가.
 - Home → Blue 130 → Toss preview desktop/mobile green; 712 tests, typecheck, focused lint, production build green. 다음 PAGE0 → COLOR1.
+# 2026-07-31 — 1.9.120 data-import holdout contract
+- 새 `data-import-mapping-v0.1` configuration family와 choice/toggle/form·text geometry·decision hierarchy 계약을 generation 전에 잠갔다.
+- untouched starter는 기능·접근성·증거는 통과하고 DESIGN grounding·state hierarchy·320px/200% filename geometry를 의도대로 실패했다(57/85).
+- narrow screenshot까지 확인했으며 evaluator/score/canonical skill/provider call은 변경·실행하지 않았다.
+- 다음: exact current OmD one-arm Reliability@3를 fresh root에서 실행한다.

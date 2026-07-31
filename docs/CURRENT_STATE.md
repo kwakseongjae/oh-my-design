@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.119 shipment owner result locked
+- 갱신: 2026-07-31 · 1.9.120 data-import holdout contract accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.120 새 unseen non-approval `data-import-mapping-v0.1` task contract를 ACCEPTED했다. onboarding/dashboard/approval과 다른 CSV mapping configuration family이며 기존 `onboarding-v1` interaction adapter만 재사용한다.
+- generation 전에 matching-key choice, reversible missing-key policy, invalid/valid mapping name, 3 mapping rows, mobile/320/200% text geometry, 4-view target→evidence→state→action hierarchy를 잠갔다. 새 evaluator branch나 score weight 변경은 없다.
+- untouched `/tmp/u19120-data-import-starter`는 contract/state/access/evidence가 모두 green인 57/85 repair baseline이다. DESIGN mismatch, state/evidence 평탄화, 320px·200% filename fragmentation을 의도적으로 검출했고 narrow screenshot에서도 확인했다. provider call은 0이다.
+- 다음은 exact current canonical `omd-apply`를 fresh one-arm×3 trials로 실행해 Reliability@3와 visible defect cluster를 확인하는 단계다. 3/3 ceiling이면 canonical unchanged, 반복 실패면 seen task에서만 bounded diagnosis 후 다른 unseen family로 검증한다.
 - 1.9.119 actual shipment owner export를 strict intake하고 SHA `2170195b…`로 hash-lock했다. 3 comparisons/12 axes가 exact complete이며 schema/epoch/reviewer/family/trial/choice mismatch는 0이다.
 - owner normalized 결과는 Functionality 3/3 tie, Usability OmD 1 win+2 tie, Fidelity와 Ship Preference는 각각 OmD 1/Impeccable 1/tie 1, both-fail 0이다. 전체 12축 중 tie는 7개다.
 - deterministic OmD W/T/L 2/1/0과 함께 읽어도 반복적인 owner-visible loss cluster가 없다. canonical `omd-apply`는 unchanged이며 새 rule은 만들지 않는다.
