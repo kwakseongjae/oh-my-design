@@ -22,6 +22,7 @@ const deletionApprovalTaskId = "deletion-approval-v0.1";
 const rollbackAuthorizationTaskId = "rollback-authorization-v0.1";
 const shipmentExceptionTaskId = "shipment-exception-triage-v0.1";
 const dataImportMappingTaskId = "data-import-mapping-v0.1";
+const localizationBundleTaskId = "localization-bundle-handoff-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -620,6 +621,55 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).not.toContain("Scan EVT-204");
   });
 
+  it("adds an unseen localization handoff family before testing the reflow hypothesis", () => {
+    const task = JSON.parse(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", localizationBundleTaskId, "task.json"),
+      "utf8",
+    ));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "dashboard-v1",
+      journey_oracle: {
+        filter: {
+          count: 3,
+          initial: "all",
+          selected: "review",
+          initial_visible_rows: 4,
+          selected_visible_rows: 2,
+        },
+        disclosure: { count: 2 },
+        acknowledgement: {
+          button_selector: "[data-bench='acknowledge']",
+          status_selector: "[data-bench='operation-status']",
+        },
+      },
+      text_geometry_oracle: {
+        viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+        max_short_text_lines: 1,
+      },
+      decision_hierarchy_oracle: {
+        viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+        minimum_action_gap_px: 8,
+      },
+    });
+    expect(task.protected_hook_counts).toMatchObject({
+      "[data-bench='review-row']": 4,
+      "[data-bench-decision-role='context']": 1,
+      "[data-bench-decision-role='target']": 1,
+      "[data-bench-decision-role='evidence']": 1,
+      "[data-bench-decision-role='state']": 1,
+      "[data-bench-decision-role='action']": 1,
+    });
+    const out = prepareVariant("raw-design-md", {
+      task: localizationBundleTaskId,
+      outputName: "localization-bundle-handoff",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter).toContain("ja-JP-checkout-v12.json");
+    expect(starter).not.toContain("customer-update-july.csv");
+  });
+
   it("keeps the decision-context experiment bounded to one non-canonical rule", () => {
     const canonical = readFileSync(join(repoRoot, "skills/omd-apply/SKILL.md"), "utf8");
     const experimentPath = join(
@@ -655,6 +705,27 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     expect(readFileSync(join(out, ".cursor/skills/omd-apply/SKILL.md"), "utf8"))
       .toContain("decision-context hierarchy closure");
+  });
+
+  it("keeps the reflow-integrity experiment to one activation delta on the exact current skill", () => {
+    const control = competitors.variants["omd-portable-jade"];
+    const experimental = competitors.variants["omd-reflow-integrity-experimental"];
+    expect(experimental).toMatchObject({
+      kind: "local-skill-experimental",
+      vendor_dir: control.vendor_dir,
+      source_path: control.source_path,
+      install_adapter: control.install_adapter,
+      install_root: control.install_root,
+      install_dir: control.install_dir,
+      declared_name: control.declared_name,
+      commit: control.commit,
+      eligible_tracks: ["repair", "evidence-unknown"],
+    });
+    expect(experimental.activation).toContain("one reflow-integrity closure");
+    expect(experimental.activation).toContain("320px and 200% reflow");
+    expect(experimental.activation).toContain("never word-break, hidden duplication, invented abbreviation, or overflow");
+    expect(experimental.activation).toContain("keep target, evidence, state, and action inside it");
+    expect(control.activation).not.toContain("reflow-integrity closure");
   });
 
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {

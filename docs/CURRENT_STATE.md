@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.121 data-import current OmD baseline complete
+- 갱신: 2026-07-31 · 1.9.122 reflow experiment + localization holdout accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.122 `omd-reflow-integrity-experimental` activation-only delta를 PREPARED했다. exact current detached `f013dbd9…` skill/install hash는 control과 같고 유일한 차이는 320px·200% atomic identifier/short control closure + declared decision context containment 한 문단이다.
+- 새 unseen `localization-bundle-handoff-v0.1` task contract를 generation 전에 잠갔다. CSV form과 다른 localization dashboard family이며 filter/disclosure/acknowledgement, 4 artifacts, 2 evidence disclosures, 3 text-geometry viewports, 4-view decision hierarchy를 가진다.
+- untouched `/tmp/u19123-localization-starter`는 contract/state/a11y/evidence가 green인 57/85 repair baseline이다. locale artifact와 `View source` wrapping, state/evidence 평탄화, DESIGN mismatch를 의도대로 검출했다. provider call은 0이다.
+- 다음은 exact current control vs activation-only reflow experimental을 이 unseen task에서 paired comparison한다. task/starter/DESIGN/runtime/model/effort/timeout/installed skill hash는 같고 activation만 달라야 한다.
 - `/tmp/u19121` 3/3 cells가 valid 완료됐지만 UI-Resolved 0/3, Reliability@3 0%다. objective는 81/81/77, median 95.3%이며 retry/fallback/repair/replacement/substitution은 0이다.
 - 3/3 모두 `customer-update-july.csv`가 320px·200%에서 두 줄로 분할돼 mid-token/short-atomic geometry를 실패했다. 세 narrow screenshot에서 직접 확인했고 기능·DESIGN grounding·accessibility·evidence는 3/3 green이다.
 - trial 3은 추가로 state/action을 decision context 밖에 둬 4-view `roles_inside_container`를 실패했다. 1/3 secondary regression이며 공통 cluster는 short atomic reflow closure 부재다.

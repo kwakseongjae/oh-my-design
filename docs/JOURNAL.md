@@ -1956,3 +1956,8 @@
 - trial 3에는 decision context containment 1/3 regression도 있었으나 기능·token·a11y·evidence는 전부 green이다.
 - 세 narrow screenshot과 120초 pacing을 확인했고 retry/fallback/substitution은 0, canonical은 아직 unchanged다.
 - 다음: reflow integrity 한 규칙의 non-canonical delta를 만들고 다른 unseen family에서 control과 비교한다.
+# 2026-07-31 — 1.9.122 reflow experiment + localization holdout
+- exact current skill은 그대로 두고 320px/200% atomic text + decision containment 한 activation 문단만 실험 arm으로 추가했다.
+- 새 `localization-bundle-handoff-v0.1`은 dashboard 상호작용과 locale artifact geometry를 generation 전에 잠갔다.
+- raw starter 57/85에서 function/a11y/evidence는 green, artifact·View source wrapping과 DESIGN/state hierarchy는 의도대로 fail했다.
+- 다음: current control과 activation-only experimental을 같은 unseen task에서 paired comparison한다.

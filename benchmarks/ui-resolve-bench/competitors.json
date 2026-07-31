@@ -149,6 +149,21 @@
       "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
       "activation": "Use the installed $omd:apply skill for this task."
     },
+    "omd-reflow-integrity-experimental": {
+      "label": "oh-my-design apply skill + reflow integrity closure",
+      "kind": "local-skill-experimental",
+      "vendor_dir": "omd-1.9.100",
+      "source_path": "skills/omd-apply",
+      "install_adapter": "omd-channel-name-v1",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-apply",
+      "declared_name": "omd:apply",
+      "commit": "f013dbd9f94a1e018f7cf8a4e500207fe982b00a",
+      "license": "MIT",
+      "eligible_tracks": ["repair", "evidence-unknown"],
+      "activation": "Use the installed $omd:apply skill for this task. Before delivery, perform one reflow-integrity closure: at 320px and 200% reflow, inspect user-visible atomic identifiers and short control or state text that the product contract keeps intact; preserve exact content and keep each on one line using existing layout, width, spacing, and declared typography roles, never word-break, hidden duplication, invented abbreviation, or overflow. If the task declares a single decision-context boundary, keep target, evidence, state, and action inside it in the final DOM."
+    },
     "omd-decision-context-experimental": {
       "label": "oh-my-design apply skill",
       "kind": "local-skill-experimental",
