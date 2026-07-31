@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.137 Luna High previous-vs-v4 prepared
+- fresh `/tmp/u19137`에 exact 2 arms×3 trials를 준비했다.
+- task/prompt/starter/DESIGN/activation/provider controls는 동일하다.
+- installed skill tree만 previous `a8128ccc…` vs v4 `c62fbd11…`다.
+- provider 0; 다음 cell은 `luna-webhook-t1-previous`다.
+
 ## 2026-08-01 (Codex) · 1.9.136 exact reflow v4 candidate pinned
 - detached clean `c8416c4…`를 별도 v4 variant로 고정했다.
 - Cursor installed tree SHA `8ebc7e7647…`, publishable=true를 확인했다.
