@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.120 data-import holdout contract accepted
+- 갱신: 2026-07-31 · 1.9.121 data-import current OmD baseline prepared
 
 ## 지금 (현재 위치)
 
+- 1.9.121 exact current canonical `omd-apply` Reliability@3 baseline을 fresh `/tmp/u19121`에 PREPARED했다. one opaque arm×3 trials, exact detached source `f013dbd9…`, canonical source SHA `22eb96d8…`, installed Cursor skill SHA `d7a890ac…`다.
+- 3 cells의 task/core+full prompt/starter/DESIGN/activation/skill identity가 같고 product tree untouched, text geometry + decision hierarchy oracle preregistered, source clean/detached/publishable을 확인했다.
+- 실행은 Cursor/Grok 4.5 High, effort high, timeout 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only로 잠갔다. provider call은 아직 0이며 다음 cell은 `data-import-t1-jade`다.
 - 1.9.120 새 unseen non-approval `data-import-mapping-v0.1` task contract를 ACCEPTED했다. onboarding/dashboard/approval과 다른 CSV mapping configuration family이며 기존 `onboarding-v1` interaction adapter만 재사용한다.
 - generation 전에 matching-key choice, reversible missing-key policy, invalid/valid mapping name, 3 mapping rows, mobile/320/200% text geometry, 4-view target→evidence→state→action hierarchy를 잠갔다. 새 evaluator branch나 score weight 변경은 없다.
 - untouched `/tmp/u19120-data-import-starter`는 contract/state/access/evidence가 모두 green인 57/85 repair baseline이다. DESIGN mismatch, state/evidence 평탄화, 320px·200% filename fragmentation을 의도적으로 검출했고 narrow screenshot에서도 확인했다. provider call은 0이다.

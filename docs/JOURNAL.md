@@ -1946,3 +1946,8 @@
 - untouched starter는 기능·접근성·증거는 통과하고 DESIGN grounding·state hierarchy·320px/200% filename geometry를 의도대로 실패했다(57/85).
 - narrow screenshot까지 확인했으며 evaluator/score/canonical skill/provider call은 변경·실행하지 않았다.
 - 다음: exact current OmD one-arm Reliability@3를 fresh root에서 실행한다.
+# 2026-07-31 — 1.9.121 data-import current baseline prepared
+- `/tmp/u19121`에 exact current OmD one-arm×3 trials를 provider-free 준비했다.
+- 세 cell의 task/prompt/starter/DESIGN/activation/skill identity와 detached clean source, untouched product tree를 확인했다.
+- Grok 4.5 High·900s·serial·120s pacing·no retry/fallback/substitution으로 잠갔고 provider call은 아직 0이다.
+- 다음: `data-import-t1-jade`부터 3회 실행하고 deterministic/visual 결과를 집계한다.
