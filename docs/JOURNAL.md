@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-31 (Codex) · 1.9.116 shipment holdout accepted
+- 새 non-approval 배송 예외 triage task와 구조 oracle을 generation 전에 잠갔다.
+- untouched starter가 85/85, geometry 12/12, hierarchy 32/32로 통과했다.
+- mobile screenshot에서 wrap·pseudo collision·flat hierarchy가 없음을 직접 확인했다.
+- provider 0; 다음은 exact OmD vs Impeccable 2×3 비교다.
+
 ## 2026-07-31 (Codex) · 1.9.115 approval contract accepted
 - 모든 future `approval-v1` task에 text geometry+decision hierarchy를 fail-closed 강제했다.
 - payout/deletion을 0.2.0으로 올리고 모바일 label flow·status dot·decision roles를 교정했다.

@@ -20,6 +20,7 @@ const accessReviewTaskId = "access-review-v0.1";
 const payoutApprovalTaskId = "payout-approval-v0.1";
 const deletionApprovalTaskId = "deletion-approval-v0.1";
 const rollbackAuthorizationTaskId = "rollback-authorization-v0.1";
+const shipmentExceptionTaskId = "shipment-exception-triage-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -508,6 +509,62 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
     expect(starter).toContain("Change set CH-412 covers 6 services");
     expect(starter).not.toContain("Export EX-204");
+  });
+
+  it("adds an unseen non-approval shipment triage family with structural oracles", () => {
+    const task = JSON.parse(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", shipmentExceptionTaskId, "task.json"),
+      "utf8",
+    ));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "dashboard-v1",
+      journey_oracle: {
+        filter: {
+          count: 3,
+          initial: "all",
+          selected: "actionable",
+          initial_visible_rows: 4,
+          selected_visible_rows: 2,
+        },
+        disclosure: { count: 2 },
+        acknowledgement: {
+          button_selector: "[data-bench='acknowledge']",
+          status_selector: "[data-bench='operation-status']",
+        },
+      },
+      text_geometry_oracle: {
+        viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+        max_short_text_lines: 1,
+      },
+      decision_hierarchy_oracle: {
+        viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+        minimum_action_gap_px: 8,
+      },
+    });
+    expect(task.protected_hook_counts).toMatchObject({
+      "[data-bench='review-row']": 4,
+      "[data-bench-decision-role='context']": 1,
+      "[data-bench-decision-role='target']": 1,
+      "[data-bench-decision-role='evidence']": 1,
+      "[data-bench-decision-role='state']": 1,
+      "[data-bench-decision-role='action']": 1,
+    });
+
+    const out = prepareVariant("raw-design-md", {
+      task: shipmentExceptionTaskId,
+      outputName: "shipment-exception",
+    });
+    const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+    expect(manifest.task).toMatchObject({
+      id: shipmentExceptionTaskId,
+      version: "0.1.0",
+      track: "repair",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter).toContain("Scan EVT-204 records dock arrival at 09:42 UTC");
+    expect(starter).not.toContain("Field Notes");
   });
 
   it("keeps the decision-context experiment bounded to one non-canonical rule", () => {

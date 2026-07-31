@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RelayDesk shipment exception triage</title>
+    <style>
+      :root {
+        --page: #f1f2ee;
+        --surface: #fff;
+        --ink: #1e2522;
+        --muted: #5e6762;
+        --line: #d1d6d1;
+        --primary: #245a53;
+        --exception: #a8543f;
+        --monitoring: #39705d;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--page); font: 16px/1.55 Arial, Helvetica, sans-serif; }
+      button { font: inherit; }
+      .wrap { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+      header { padding: 18px 0; border-bottom: 1px solid var(--line); }
+      nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      nav a { color: inherit; }
+      main { padding: 52px 0 72px; }
+      .hero { max-width: 780px; margin-bottom: 28px; }
+      h1 { margin: 0 0 16px; font: 400 52px/56px Georgia, serif; }
+      h2 { margin: 0; font: 400 30px/34px Georgia, serif; }
+      h3 { margin: 0; font-size: 20px; line-height: 26px; }
+      .muted, .lede { color: var(--muted); }
+      .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
+      .button, .filters button {
+        min-height: 44px;
+        padding: 9px 14px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        color: var(--ink);
+        background: var(--surface);
+        cursor: pointer;
+      }
+      .filters button[aria-pressed="true"], .button.primary {
+        border-color: var(--primary);
+        color: #fff;
+        background: var(--primary);
+      }
+      .console {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+      .console-head { padding: 20px; border-bottom: 1px solid var(--line); }
+      .console-head p { margin: 4px 0 0; }
+      .matrix { width: 100%; border-collapse: collapse; }
+      .matrix th, .matrix td { padding: 14px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+      .matrix th { color: var(--muted); font: 700 12px/17px Arial, sans-serif; letter-spacing: .05em; text-transform: uppercase; }
+      .matrix tr:last-child td { border-bottom: 0; }
+      .shipment strong, .shipment span { display: block; }
+      .shipment span, .window small { color: var(--muted); }
+      .route { font-weight: 700; }
+      .state { display: flex; align-items: flex-start; gap: 8px; font-weight: 700; }
+      .state-dot { flex: 0 0 auto; width: 8px; height: 8px; margin-top: 8px; border-radius: 50%; background: var(--monitoring); }
+      [data-priority="actionable"] .state-dot { background: var(--exception); }
+      .details { margin-top: 8px; }
+      .details button { min-height: 44px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); cursor: pointer; }
+      .details p { max-width: 42ch; margin: 8px 0 0; color: var(--muted); }
+      .triage {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 20px 32px;
+        align-items: end;
+        padding: 20px;
+        border-top: 1px solid var(--line);
+        background: #f8f9f6;
+      }
+      .triage-copy { display: grid; gap: 8px; }
+      [data-bench-decision-role="evidence"] { margin: 0; color: var(--muted); }
+      [data-bench-decision-role="state"] { margin: 0; color: var(--exception); font-weight: 700; }
+      [data-bench-decision-role="action"] { align-self: end; }
+      footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); }
+      :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+      @media (max-width: 760px) {
+        h1 { font-size: 38px; line-height: 41px; }
+        .console { overflow: visible; }
+        .matrix, .matrix tbody, .matrix tr, .matrix td { display: block; width: 100%; }
+        .matrix thead { display: none; }
+        .matrix tr { padding: 16px; border-bottom: 1px solid var(--line); }
+        .matrix tr:last-child { border-bottom: 0; }
+        .matrix td { padding: 6px 0; border: 0; }
+        .matrix td::before {
+          content: attr(data-label);
+          display: block;
+          margin-bottom: 2px;
+          color: var(--muted);
+          font: 700 12px/17px Arial, sans-serif;
+          letter-spacing: .05em;
+          text-transform: uppercase;
+        }
+        .triage { grid-template-columns: 1fr; align-items: start; }
+        [data-bench-decision-role="action"] { width: 100%; margin-top: 4px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      }
+    </style>
+  </head>
+  <body data-filter="all">
+    <header>
+      <nav class="wrap" aria-label="Primary navigation">
+        <strong>RelayDesk</strong>
+        <a href="#exception-board">Exception triage</a>
+      </nav>
+    </header>
+    <main class="wrap">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="muted">Dispatch operations · Internal fixture</p>
+        <h1 id="page-title">Triage from the latest scan.</h1>
+        <p class="lede">Four delivery exceptions are ready for triage. Match each shipment, route, expected window, scan evidence, and current state before recording the selected handoff.</p>
+      </section>
+      <div class="filters" aria-label="Filter delivery exceptions">
+        <button type="button" data-bench="filter-button" data-filter="all" aria-pressed="true">All exceptions</button>
+        <button type="button" data-bench="filter-button" data-filter="actionable" aria-pressed="false">Actionable</button>
+        <button type="button" data-bench="filter-button" data-filter="monitoring" aria-pressed="false">Monitoring</button>
+      </div>
+      <section class="console" id="exception-board" data-bench-design-role="main-console" aria-labelledby="board-title">
+        <div class="console-head">
+          <h2 id="board-title">Exception board</h2>
+          <p class="muted">Use only the scan evidence attached to each shipment.</p>
+        </div>
+        <table class="matrix">
+          <thead>
+            <tr><th scope="col">Shipment</th><th scope="col">Route</th><th scope="col">Window</th><th scope="col">Evidence</th><th scope="col">State</th></tr>
+          </thead>
+          <tbody>
+            <tr data-bench="review-row" data-priority="actionable">
+              <td data-label="Shipment" class="shipment"><strong>RD-1842</strong><span>Owner: Nia Cole</span></td>
+              <td data-label="Route" class="route">North Dock → Market 7</td>
+              <td data-label="Window" class="window">10:15–10:45 <small>July 31</small></td>
+              <td data-label="Evidence">Dock arrival<div class="details"><button type="button" data-bench="details-button" aria-expanded="false" aria-controls="scan-1">View scan</button><p id="scan-1" hidden>Scan EVT-204 records dock arrival at 09:42 UTC. The outbound scan is not recorded.</p></div></td>
+              <td data-label="State"><span class="state"><span class="state-dot" aria-hidden="true"></span>Actionable · scan</span></td>
+            </tr>
+            <tr data-bench="review-row" data-priority="actionable">
+              <td data-label="Shipment" class="shipment"><strong>RD-1908</strong><span>Owner: Owen Park</span></td>
+              <td data-label="Route" class="route">East Hub → Depot 3</td>
+              <td data-label="Window" class="window">11:00–11:30 <small>July 31</small></td>
+              <td data-label="Evidence">Hub receipt<div class="details"><button type="button" data-bench="details-button" aria-expanded="false" aria-controls="scan-2">View scan</button><p id="scan-2" hidden>Scan EVT-219 records receipt at East Hub. The route handoff is not recorded.</p></div></td>
+              <td data-label="State"><span class="state"><span class="state-dot" aria-hidden="true"></span>Actionable · handoff</span></td>
+            </tr>
+            <tr data-bench="review-row" data-priority="monitoring">
+              <td data-label="Shipment" class="shipment"><strong>RD-1921</strong><span>Owner: Jae Wu</span></td>
+              <td data-label="Route" class="route">West Gate → Store 12</td>
+              <td data-label="Window" class="window">12:20–12:50 <small>July 31</small></td>
+              <td data-label="Evidence">Gate scan GS-48</td>
+              <td data-label="State"><span class="state"><span class="state-dot" aria-hidden="true"></span>Monitoring</span></td>
+            </tr>
+            <tr data-bench="review-row" data-priority="monitoring">
+              <td data-label="Shipment" class="shipment"><strong>RD-1937</strong><span>Owner: Mira Shah</span></td>
+              <td data-label="Route" class="route">Central Yard → Shop 5</td>
+              <td data-label="Window" class="window">13:10–13:40 <small>July 31</small></td>
+              <td data-label="Evidence">Yard scan YS-31</td>
+              <td data-label="State"><span class="state"><span class="state-dot" aria-hidden="true"></span>Monitoring</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="triage" data-bench-decision-role="context">
+          <div class="triage-copy">
+            <h3 data-bench-decision-role="target">RD-1842 · North Dock → Market 7</h3>
+            <p data-bench-decision-role="evidence">Evidence: Dock arrival · EVT-204</p>
+            <p data-bench="operation-status" data-bench-decision-role="state" role="status" aria-live="polite">Outbound scan is not recorded.</p>
+          </div>
+          <button class="button primary" type="button" data-bench="acknowledge" data-bench-decision-role="action" aria-pressed="false">Record triage handoff</button>
+        </div>
+      </section>
+    </main>
+    <footer><div class="wrap">RelayDesk · Fictional UI-Resolve Bench fixture</div></footer>
+    <script>
+      const filters = [...document.querySelectorAll('[data-bench="filter-button"]')];
+      const rows = [...document.querySelectorAll('[data-bench="review-row"]')];
+      filters.forEach((button) => button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        document.body.dataset.filter = filter;
+        filters.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+        rows.forEach((row) => { row.hidden = filter !== "all" && row.dataset.priority !== filter; });
+      }));
+      document.querySelectorAll('[data-bench="details-button"]').forEach((button) => button.addEventListener("click", () => {
+        const detail = document.getElementById(button.getAttribute("aria-controls"));
+        const open = button.getAttribute("aria-expanded") !== "true";
+        button.setAttribute("aria-expanded", String(open));
+        detail.hidden = !open;
+      }));
+      const complete = document.querySelector('[data-bench="acknowledge"]');
+      const status = document.querySelector('[data-bench="operation-status"]');
+      complete.addEventListener("click", () => {
+        complete.setAttribute("aria-pressed", "true");
+        complete.disabled = true;
+        complete.textContent = "Triage recorded";
+        status.textContent = "RD-1842 triage handoff recorded.";
+        status.style.color = "#39705d";
+      });
+    </script>
+  </body>
+</html>

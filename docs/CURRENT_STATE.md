@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.115 approval structural contract accepted
+- 갱신: 2026-07-31 · 1.9.116 shipment exception holdout accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.116 새 unseen non-approval `shipment-exception-triage-v0.1` task contract가 ACCEPTED됐다. fictional RelayDesk 배송 예외 triage이며 generic `dashboard-v1` interaction만 재사용한다.
+- generation 전에 mobile/320/200% text geometry와 queue/selected-context의 target→evidence→state→action hierarchy를 4 viewport에 preregister했다. untouched `/tmp/u19116-shipment-starter`는 85/85, critical 6/6, text geometry 12/12, decision hierarchy 32/32다.
+- mobile screenshot에서 short label 수평 유지, label-above-value metadata, child status dot, 명확한 selected shipment boundary를 직접 확인했다. provider call은 0이다.
+- 다음은 exact current OmD와 exact Impeccable prompt-only를 같은 task에서 2 arms×3 trials로 비교하고, deterministic tie인 경우에만 same-trial anonymous owner gallery를 만든다.
 - 1.9.115에서 모든 `approval-v1` future task가 text geometry + decision hierarchy를 반드시 선언하도록 sandbox preparation을 fail-closed 했다. missing oracle/viewport, row+context scope 누락, role exact-one protection 누락, 8px 미만 action gap은 provider 전에 거절된다.
 - payout/deletion task를 `0.2.0`으로 올리고 label-above-value mobile geometry, child status dot, visible target→evidence→state→action boundary를 적용했다. historical `0.1.0` records와 owner judgment는 unchanged다.
 - fresh `/tmp/u19115-payout-starter`와 `/tmp/u19115-deletion-starter`는 각각 85/85, critical 6/6, text geometry 12/12, decision hierarchy 12/12다. 두 mobile screenshot을 직접 확인했고 provider call은 0이다.
