@@ -18,6 +18,7 @@ const localeTaskId = "locale-cli-handoff-v0.1";
 const accessReviewTaskId = "access-review-v0.1";
 const payoutApprovalTaskId = "payout-approval-v0.1";
 const deletionApprovalTaskId = "deletion-approval-v0.1";
+const rollbackAuthorizationTaskId = "rollback-authorization-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -430,6 +431,50 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("data-bench=\"approval-dialog\"");
     expect(starter).toContain("Export EX-204 records 18 project files and 3 shared folders");
     expect(starter).not.toContain("North Market");
+  });
+
+  it("preregisters text geometry and decision hierarchy on a new rollback holdout", () => {
+    const task = JSON.parse(readFileSync(
+      join(repoRoot, "benchmarks/ui-resolve-bench/tasks", rollbackAuthorizationTaskId, "task.json"),
+      "utf8",
+    ));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "approval-v1",
+      text_geometry_oracle: {
+        viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+        max_short_text_chars: 24,
+        max_short_text_lines: 1,
+      },
+      decision_hierarchy_oracle: {
+        viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+        minimum_action_gap_px: 8,
+        roles: {
+          container: "[data-bench-decision-role='context']",
+          target: "[data-bench-decision-role='target']",
+          evidence: "[data-bench-decision-role='evidence']",
+          state: "[data-bench-decision-role='state']",
+          action: "[data-bench-decision-role='action']",
+        },
+      },
+    });
+    expect(task.protected_hook_counts).toMatchObject({
+      "[data-bench='approval-row']": 4,
+      "[data-bench-decision-role='context']": 1,
+      "[data-bench-decision-role='target']": 1,
+      "[data-bench-decision-role='evidence']": 1,
+      "[data-bench-decision-role='state']": 1,
+      "[data-bench-decision-role='action']": 1,
+    });
+
+    const out = prepareVariant("raw-design-md", {
+      task: rollbackAuthorizationTaskId,
+      outputName: "rollback-authorization",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter).toContain("Change set CH-412 covers 6 services");
+    expect(starter).not.toContain("Export EX-204");
   });
 
   it("keeps the decision-context experiment bounded to one non-canonical rule", () => {

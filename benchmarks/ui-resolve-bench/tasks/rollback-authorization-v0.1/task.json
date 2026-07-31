@@ -1,0 +1,136 @@
+{
+  "id": "rollback-authorization-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "approval-v1",
+  "review_brief": "A production-rollback authorization queue for a small reliability team. Compare whether the result keeps service, owner, rollback scope, requested window, supplied evidence, blocker state, and final authorization legible without inventing incident severity or turning the workflow into warning theatre.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": {
+    "landmarks": {
+      "h1_count": { "exact": 1 },
+      "main_count": { "exact": 1 },
+      "nav_count": { "min": 1 },
+      "footer_count": { "min": 1 }
+    }
+  },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='filter-button']",
+    "[data-bench='approval-row']",
+    "[data-bench='details-button']",
+    "[data-bench='open-approval']",
+    "[data-bench='approval-dialog']",
+    "[data-bench='cancel-approval']",
+    "[data-bench='confirm-approval']",
+    "[data-bench='operation-status']",
+    "[data-bench-design-role='main-console']",
+    "[data-bench-decision-role='context']",
+    "[data-bench-decision-role='target']",
+    "[data-bench-decision-role='evidence']",
+    "[data-bench-decision-role='state']",
+    "[data-bench-decision-role='action']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='filter-button']": 3,
+    "[data-bench='approval-row']": 4,
+    "[data-bench='details-button']": 2,
+    "[data-bench='open-approval']": 1,
+    "[data-bench='approval-dialog']": { "total": 1, "visible": 0 },
+    "[data-bench='cancel-approval']": { "total": 1, "visible": 0 },
+    "[data-bench='confirm-approval']": { "total": 1, "visible": 0 },
+    "[data-bench='operation-status']": 1,
+    "[data-bench-design-role='main-console']": 1,
+    "[data-bench-decision-role='context']": 1,
+    "[data-bench-decision-role='target']": 1,
+    "[data-bench-decision-role='evidence']": 1,
+    "[data-bench-decision-role='state']": 1,
+    "[data-bench-decision-role='action']": 1
+  },
+  "journey_oracle": {
+    "filter": {
+      "selector": "[data-bench='filter-button']",
+      "value_attribute": "data-filter",
+      "body_dataset": "filter",
+      "row_selector": "[data-bench='approval-row']",
+      "count": 3,
+      "initial": "all",
+      "selected": "blocked",
+      "initial_visible_rows": 4,
+      "selected_visible_rows": 2
+    },
+    "disclosure": {
+      "selector": "[data-bench='details-button']",
+      "count": 2
+    },
+    "decision": {
+      "open_button_selector": "[data-bench='open-approval']",
+      "dialog_selector": "[data-bench='approval-dialog']",
+      "cancel_button_selector": "[data-bench='cancel-approval']",
+      "confirm_button_selector": "[data-bench='confirm-approval']",
+      "status_selector": "[data-bench='operation-status']"
+    }
+  },
+  "text_geometry_oracle": {
+    "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "scope_selectors": ["[data-bench='approval-row']", "[data-bench-decision-role='context']"],
+    "max_short_text_chars": 24,
+    "max_short_text_lines": 1
+  },
+  "decision_hierarchy_oracle": {
+    "viewports": ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "minimum_action_gap_px": 8,
+    "roles": {
+      "container": "[data-bench-decision-role='context']",
+      "target": "[data-bench-decision-role='target']",
+      "evidence": "[data-bench-decision-role='evidence']",
+      "state": "[data-bench-decision-role='state']",
+      "action": "[data-bench-decision-role='action']"
+    }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:best|fastest|leading|top-rated|award-winning)\\s+(?:rollback|reliability|operations|tool|platform)\\b",
+    "\\btrusted by\\b",
+    "\\b(?:zero risk|always safe|instant recovery|fully compliant|risk-free)\\b",
+    "\\b\\d[\\d,]*\\+?\\s+(?:customers|companies|users|incidents|rollbacks)\\b",
+    "[★☆]{3,}"
+  ],
+  "protected_known_patterns": [
+    "Four rollback requests are ready for review",
+    "Change set CH-412 covers 6 services"
+  ],
+  "protected_unknown_selectors": [
+    "blockquote",
+    "[class*='testimonial' i]",
+    "[class*='logo-wall' i]",
+    "[class*='social-proof' i]"
+  ],
+  "design_oracle": {
+    "page_background": "#F2F3F0",
+    "primary_action": "#355C4A",
+    "accent": "#A34B3F",
+    "ink": "#202521",
+    "surface": "#FFFFFF",
+    "border": "#CFD5CF",
+    "muted_text": "#5E665F",
+    "card_radius_px": 8,
+    "control_radius_px": 4,
+    "font_family": {
+      "body_any": ["Arial"],
+      "display_any": ["Georgia"]
+    },
+    "selectors": {
+      "primary_action": "[data-bench='confirm-approval']",
+      "card": "[data-bench-design-role='main-console']",
+      "display": "h1"
+    }
+  }
+}

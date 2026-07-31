@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RunwayOps rollback authorization</title>
+    <style>
+      :root {
+        --page: #f2f3f0;
+        --surface: #ffffff;
+        --ink: #202521;
+        --muted: #5e665f;
+        --line: #cfd5cf;
+        --primary: #355c4a;
+        --blocked: #a34b3f;
+        --ready: #3e6954;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; font: 16px/1.55 Arial, Helvetica, sans-serif; color: var(--ink); background: var(--page); }
+      button { font: inherit; }
+      .wrap { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+      header { padding: 18px 0; border-bottom: 1px solid var(--line); }
+      nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+      nav a { color: inherit; }
+      main { padding: 52px 0 72px; }
+      .hero { max-width: 780px; margin-bottom: 28px; }
+      h1 { margin: 0 0 16px; font: 400 52px/56px Georgia, serif; }
+      h2 { margin: 0; font: 400 30px/34px Georgia, serif; }
+      h3 { margin: 0; font-size: 20px; line-height: 26px; }
+      .lede, .muted { color: var(--muted); }
+      .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
+      .button, .filters button {
+        min-height: 44px;
+        padding: 9px 14px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--surface);
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .filters button[aria-pressed="true"], .button.primary {
+        border-color: var(--primary);
+        background: var(--primary);
+        color: #fff;
+      }
+      .queue {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+      .queue-head { padding: 20px; border-bottom: 1px solid var(--line); }
+      .queue-head p { margin: 4px 0 0; }
+      .matrix { width: 100%; border-collapse: collapse; }
+      .matrix th, .matrix td { padding: 14px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+      .matrix th { color: var(--muted); font: 700 12px/17px Arial, sans-serif; letter-spacing: .05em; text-transform: uppercase; }
+      .matrix tr:last-child td { border-bottom: 0; }
+      .service strong, .service span { display: block; }
+      .service span, .window small { color: var(--muted); }
+      .scope { font-weight: 700; font-variant-numeric: tabular-nums; }
+      .status { display: flex; align-items: flex-start; gap: 8px; font-weight: 700; }
+      .status-dot { flex: 0 0 auto; width: 8px; height: 8px; margin-top: 8px; border-radius: 50%; background: var(--ready); }
+      [data-state="blocked"] .status-dot { background: var(--blocked); }
+      .details { margin-top: 8px; }
+      .details button { min-height: 44px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); cursor: pointer; }
+      .details p { margin: 8px 0 0; color: var(--muted); max-width: 42ch; }
+      .decision {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 20px 32px;
+        align-items: end;
+        padding: 20px;
+        border-top: 1px solid var(--line);
+        background: #f8f9f7;
+      }
+      .decision-copy { display: grid; gap: 8px; }
+      [data-bench-decision-role="evidence"] { margin: 0; color: var(--muted); }
+      [data-bench-decision-role="state"] { margin: 0; color: var(--blocked); font-weight: 700; }
+      [data-bench-decision-role="action"] { align-self: end; }
+      dialog {
+        width: min(520px, calc(100% - 32px));
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--ink);
+        background: var(--surface);
+        box-shadow: 0 18px 48px rgb(32 37 33 / 18%);
+      }
+      dialog::backdrop { background: rgb(32 37 33 / 48%); }
+      .dialog-body { padding: 24px; }
+      .dialog-body h2 { margin-bottom: 12px; }
+      .summary { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 16px 0; margin: 20px 0; border-block: 1px solid var(--line); }
+      .summary strong { text-align: right; }
+      .dialog-actions { display: flex; justify-content: flex-end; gap: 8px; }
+      footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); }
+      :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+      @media (max-width: 760px) {
+        h1 { font-size: 38px; line-height: 41px; }
+        .queue { overflow: visible; }
+        .matrix, .matrix tbody, .matrix tr, .matrix td { display: block; width: 100%; }
+        .matrix thead { display: none; }
+        .matrix tr { padding: 16px; border-bottom: 1px solid var(--line); }
+        .matrix tr:last-child { border-bottom: 0; }
+        .matrix td { padding: 6px 0; border: 0; }
+        .matrix td::before {
+          content: attr(data-label);
+          display: block;
+          margin-bottom: 2px;
+          color: var(--muted);
+          font: 700 12px/17px Arial, sans-serif;
+          letter-spacing: .05em;
+          text-transform: uppercase;
+        }
+        .decision { grid-template-columns: 1fr; align-items: start; }
+        [data-bench-decision-role="action"] { width: 100%; margin-top: 4px; }
+      }
+      @media (max-width: 420px) {
+        .dialog-actions { display: grid; }
+        .dialog-actions .button { width: 100%; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      }
+    </style>
+  </head>
+  <body data-filter="all">
+    <header><nav class="wrap" aria-label="Primary navigation"><strong>RunwayOps</strong><a href="#rollback-queue">Rollback authorizations</a></nav></header>
+    <main class="wrap">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="muted">Reliability operations · Internal fixture</p>
+        <h1 id="page-title">Rollback with the evidence in view.</h1>
+        <p class="lede">Four rollback requests are ready for review. Match each service, owner, scope, requested window, evidence, and blocker before authorizing the selected change.</p>
+      </section>
+      <div class="filters" aria-label="Filter rollback requests">
+        <button type="button" data-bench="filter-button" data-filter="all" aria-pressed="true">All requests</button>
+        <button type="button" data-bench="filter-button" data-filter="blocked" aria-pressed="false">Blocked</button>
+        <button type="button" data-bench="filter-button" data-filter="ready" aria-pressed="false">Ready</button>
+      </div>
+      <section class="queue" id="rollback-queue" data-bench-design-role="main-console" aria-labelledby="queue-title">
+        <div class="queue-head"><h2 id="queue-title">Rollback queue</h2><p class="muted">Use only the evidence attached to each request.</p></div>
+        <table class="matrix">
+          <thead><tr><th scope="col">Service</th><th scope="col">Scope</th><th scope="col">Window</th><th scope="col">Evidence</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr data-bench="approval-row" data-state="blocked">
+              <td data-label="Service" class="service"><strong>Checkout API</strong><span>Owner: Nia Cole</span></td>
+              <td data-label="Scope" class="scope">6 services</td>
+              <td data-label="Window" class="window">August 3 <small>02:00 UTC</small></td>
+              <td data-label="Evidence">Change set CH-412<div class="details"><button type="button" data-bench="details-button" aria-expanded="false" aria-controls="evidence-1">View evidence</button><p id="evidence-1" hidden>Change set CH-412 covers 6 services. The pre-rollback snapshot is incomplete.</p></div></td>
+              <td data-label="Status"><span class="status"><span class="status-dot" aria-hidden="true"></span>Blocked · snapshot</span></td>
+            </tr>
+            <tr data-bench="approval-row" data-state="blocked">
+              <td data-label="Service" class="service"><strong>Identity Gateway</strong><span>Owner: Owen Park</span></td>
+              <td data-label="Scope" class="scope">3 services</td>
+              <td data-label="Window" class="window">August 4 <small>01:30 UTC</small></td>
+              <td data-label="Evidence">Recovery drill RD-19<div class="details"><button type="button" data-bench="details-button" aria-expanded="false" aria-controls="evidence-2">View evidence</button><p id="evidence-2" hidden>Recovery drill RD-19 covers the gateway sequence. The change-owner approval is missing.</p></div></td>
+              <td data-label="Status"><span class="status"><span class="status-dot" aria-hidden="true"></span>Blocked · approval</span></td>
+            </tr>
+            <tr data-bench="approval-row" data-state="ready">
+              <td data-label="Service" class="service"><strong>Search Index</strong><span>Owner: Jae Wu</span></td>
+              <td data-label="Scope" class="scope">2 services</td>
+              <td data-label="Window" class="window">August 5 <small>03:00 UTC</small></td>
+              <td data-label="Evidence">Recovery drill RD-21</td>
+              <td data-label="Status"><span class="status"><span class="status-dot" aria-hidden="true"></span>Ready</span></td>
+            </tr>
+            <tr data-bench="approval-row" data-state="ready">
+              <td data-label="Service" class="service"><strong>Docs Edge</strong><span>Owner: Mira Shah</span></td>
+              <td data-label="Scope" class="scope">1 service</td>
+              <td data-label="Window" class="window">August 6 <small>04:00 UTC</small></td>
+              <td data-label="Evidence">Change set CH-417</td>
+              <td data-label="Status"><span class="status"><span class="status-dot" aria-hidden="true"></span>Ready</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="decision" data-bench-decision-role="context">
+          <div class="decision-copy">
+            <h3 data-bench-decision-role="target">Checkout API · 6 services</h3>
+            <p data-bench-decision-role="evidence">Evidence: Change set CH-412</p>
+            <p data-bench="operation-status" data-bench-decision-role="state" role="status" aria-live="polite">Blocked until the snapshot is complete.</p>
+          </div>
+          <button class="button primary" type="button" data-bench="open-approval" data-bench-decision-role="action">Review rollback</button>
+        </div>
+      </section>
+      <dialog data-bench="approval-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+        <div class="dialog-body">
+          <h2 id="dialog-title">Authorize Checkout API rollback?</h2>
+          <p id="dialog-description" class="muted">Confirm only after matching the service and rollback scope to Change set CH-412. The pre-rollback snapshot must be complete.</p>
+          <div class="summary"><span>Checkout API</span><strong>6 services</strong><span>Window</span><strong>August 3 · 02:00 UTC</strong></div>
+          <div class="dialog-actions"><button class="button" type="button" data-bench="cancel-approval">Cancel</button><button class="button primary" type="button" data-bench="confirm-approval">Authorize rollback</button></div>
+        </div>
+      </dialog>
+    </main>
+    <footer><div class="wrap">RunwayOps · Fictional UI-Resolve Bench fixture</div></footer>
+    <script>
+      const filterButtons = [...document.querySelectorAll('[data-bench="filter-button"]')];
+      const approvalRows = [...document.querySelectorAll('[data-bench="approval-row"]')];
+      filterButtons.forEach((button) => button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        document.body.dataset.filter = filter;
+        filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+        approvalRows.forEach((row) => { row.hidden = filter !== "all" && row.dataset.state !== filter; });
+      }));
+      document.querySelectorAll('[data-bench="details-button"]').forEach((button) => button.addEventListener("click", () => {
+        const detail = document.getElementById(button.getAttribute("aria-controls"));
+        const open = button.getAttribute("aria-expanded") !== "true";
+        button.setAttribute("aria-expanded", String(open));
+        detail.hidden = !open;
+      }));
+      const reviewButton = document.querySelector('[data-bench="open-approval"]');
+      const dialog = document.querySelector('[data-bench="approval-dialog"]');
+      const cancelButton = document.querySelector('[data-bench="cancel-approval"]');
+      const confirmButton = document.querySelector('[data-bench="confirm-approval"]');
+      const status = document.querySelector('[data-bench="operation-status"]');
+      reviewButton.addEventListener("click", () => dialog.showModal());
+      cancelButton.addEventListener("click", () => { dialog.close(); reviewButton.focus(); });
+      confirmButton.addEventListener("click", () => {
+        dialog.close();
+        status.textContent = "Checkout API rollback authorized for 6 services.";
+        status.style.color = "#3e6954";
+        reviewButton.textContent = "Authorization recorded";
+        reviewButton.setAttribute("aria-pressed", "true");
+        reviewButton.focus();
+      });
+    </script>
+  </body>
+</html>

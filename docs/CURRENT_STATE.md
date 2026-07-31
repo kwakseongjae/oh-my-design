@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.112 marker-backed decision hierarchy gate accepted
+- 갱신: 2026-07-31 · 1.9.113 rollback authorization holdout accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.113 새 unseen `rollback-authorization-v0.1` task contract가 ACCEPTED됐다. payout/deletion과 다른 production rollback domain이며 generic `approval-v1` interaction만 재사용한다.
+- generation 전 text geometry scopes와 container/target/evidence/state/action hierarchy roles를 4 viewport에 preregister했다. untouched `/tmp/u19113-rollback-starter`는 browser evaluator 85/85, critical 6/6, states 3/3, viewports 4/4, 새 geometry/hierarchy checks 모두 green이다.
+- mobile fixture는 label-above-value metadata와 child status dot을 사용해 두 줄 short control, owner/status fragmentation, pseudo collision을 제거했다. screenshot도 직접 시각 확인했다.
+- prompt SHA `2ecb8b11…`, task `28b2fe54…`, starter `1001d121…`, DESIGN `10e894e9…`; focused task 1/1 + evaluator 17/17, TypeScript green, provider 0이다.
+- 다음은 exact current canonical `omd-apply` Reliability@3 baseline 준비다. model/skill run은 아직 0이다.
 - 1.9.112 forward-only decision hierarchy evaluator capability가 ACCEPTED됐다. future task가 container/target/evidence/state/action selectors를 preregister하면 exact count·visibility·containment·DOM reading order·target emphasis·state distinction·action gap을 기존 geometry critical gate에서 검사한다.
 - marker만 붙이고 모든 역할을 평평하게 스타일링한 fixture, reordered/overlapping action, missing role은 fail하고 complete hierarchy는 7/7 pass다. focused 17/17, TypeScript green, provider 0이다.
 - 새 card/warning/icon/risk score/color/fact는 요구하지 않으며 legacy task, score schema 0.5, 85점 최대값, `/tmp/u19108` history는 unchanged다.
@@ -856,10 +861,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. deletion/payout과 다른 새 high-consequence task family를 선택한다.
-2. generation 전에 text geometry + decision hierarchy oracle과 marker-bearing accepted starter를 잠근다.
-3. fresh provider-free root에서 state/geometry/hierarchy/evidence acceptance를 닫는다.
-4. 그 holdout에서 current canonical Reliability@3 baseline을 측정한 뒤에만 다음 skill delta를 설계한다.
+1. rollback holdout의 exact current canonical `omd-apply` Reliability@3 matrix를 fresh root에 준비한다.
+2. task/prompt/starter/DESIGN/oracle/skill identity와 execution controls를 잠근다.
+3. Grok availability를 확인하고 가능하면 serial 3 trials를 실행한다. 불가하면 preregistered Luna high fallback policy를 새 root 전에 명시한다.
+4. baseline failure cluster가 반복될 때만 다음 non-canonical skill delta를 설계한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

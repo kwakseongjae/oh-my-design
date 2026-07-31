@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-31 (Codex) · 1.9.113 rollback holdout accepted
+- text geometry + decision hierarchy를 generation 전에 잠근 새 rollback family를 추가했다.
+- untouched starter browser eval은 85/85, critical 6/6, states 3/3, 4-view+새 gates 모두 green이다.
+- mobile label-above-value, child status dot, visible selected decision boundary를 확인했다.
+- focused task/evaluator tests와 TypeScript green; 다음은 canonical Reliability@3 baseline이다.
+
 ## 2026-07-31 (Codex) · 1.9.112 decision hierarchy gate accepted
 - future task의 container/target/evidence/state/action marker로 hierarchy를 opt-in 검사한다.
 - exact roles, containment/order, target/state distinction, action gap을 기존 geometry gate에 결합했다.
