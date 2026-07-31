@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-31 (Codex) · 1.9.110 deletion owner result locked
+- actual owner 3 comparisons/12 axes를 strict intake하고 제출/reveal/summary hash를 잠갔다.
+- Functionality·Usability는 3/3 tie, Fidelity·Ship은 3/3 both-fail이다.
+- 두 arm 모두 좁은 화면 text fragmentation과 flat hierarchy로 승격 실패했고 canonical은 unchanged다.
+- 다음은 seen root 재채점 없이 provider-free evaluator blind-spot closure다.
+
 ## 2026-07-30 (Codex) · 1.9.109 deletion owner gallery ready
 - 1.9.108은 6/6 valid/UI-Resolved/85, 양 arm Reliability@3 100%, objective 0/3/0 tie다.
 - failure/retry/fallback/substitution 0이며 compute는 descriptive-only다.

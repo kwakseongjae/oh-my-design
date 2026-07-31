@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.110",
+  "experiment_id": "deletion-owner-review-1.9.109",
+  "status": "complete",
+  "scope": "Internal Diagnostic",
+  "owner_review": {
+    "comparisons": 3,
+    "axis_judgments": 12,
+    "functionality": {
+      "control": 0,
+      "experimental": 0,
+      "tie": 3,
+      "both_fail": 0
+    },
+    "usability": {
+      "control": 0,
+      "experimental": 0,
+      "tie": 3,
+      "both_fail": 0
+    },
+    "fidelity": {
+      "control": 0,
+      "experimental": 0,
+      "tie": 0,
+      "both_fail": 3
+    },
+    "ship_preference": {
+      "control": 0,
+      "experimental": 0,
+      "tie": 0,
+      "both_fail": 3
+    }
+  },
+  "diagnostic_cluster": [
+    "narrow-view text fragmentation",
+    "flat decision-context hierarchy",
+    "objective geometry false positive"
+  ],
+  "experimental_skill_promoted": false,
+  "canonical_skill_changed": false,
+  "decision": "Retain canonical OmD, reject this experimental delta, and close the evaluator blind spot before another comparison.",
+  "claim_limit": "One owner, one task family, three trials, Internal Diagnostic. No public skill winner or model claim.",
+  "next_action": "Accept a provider-free text-fragmentation and decision-hierarchy evaluation contract, then exercise it on a new unseen holdout without rescoring the seen root."
+}

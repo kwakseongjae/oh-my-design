@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-30 · 1.9.109 deletion owner review ready
+- 갱신: 2026-07-31 · 1.9.110 deletion owner result locked
 
 ## 지금 (현재 위치)
 
+- 1.9.110 실제 owner export를 strict intake로 검증·hash-lock했다. 3 comparisons/12 axes가 exact complete이고 제출 SHA는 `07cc353f…`다.
+- normalized 결과는 Functionality 3/3 tie, Usability 3/3 tie, Fidelity 3/3 both-fail, Ship Preference 3/3 both-fail이다. canonical control과 decision-context experimental 모두 owner axis win 0이며 experimental 승격은 거절했다.
+- owner 진단은 좁은 화면의 두 줄/세로 글자 파편화와 workspace/evidence/status/scope/action 위계 평탄화다. 기존 85/85 evaluator가 overflow·clip·overlap은 잡지만 destructive wrapping과 decision hierarchy는 놓친 objective false positive로 기록했다.
+- canonical `omd-apply`는 unchanged다. 다음은 `/tmp/u19108`을 재채점하지 않고 provider-free text-fragmentation + decision-hierarchy evaluator contract를 accepted fixture와 새 unseen holdout에서 검증하는 단계다.
 - 1.9.108 `/tmp/u19108` 6/6 cells가 COMPLETE됐다. control과 experimental 모두 valid/UI-Resolved/85 3/3, Reliability@3 100%, paired objective W/T/L 0/3/0이다.
 - control mean/median은 271,476/275,831ms·135,446/112,950 tokens, experimental은 375,391/395,240ms·167,700/104,733 tokens다. latency comparable=false이고 1 task×3 trials이므로 compute는 descriptive-only다.
 - failure/timeout/retry/fallback/repair/replacement/model substitution은 0이고 5/5 pacing 및 모든 Cursor cache preflight가 green이다. canonical skill은 unchanged다.
@@ -844,10 +848,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. owner가 인앱 갤러리의 3 comparisons×4 axes를 판단하고 JSON을 export한다.
-2. export를 strict owner-only intake와 private reveal로 normalize/hash-lock한다.
-3. experimental이 usability/fidelity/ship에서 반복 우세할 때만 canonical promotion 후보로 이동한다.
-4. tie·mixed·control 우세면 canonical skill을 유지하고 실험 delta는 승격하지 않는다.
+1. provider-free text-fragmentation detector의 fail-closed 신호와 허용되는 정상 wrapping 경계를 고정한다.
+2. decision-context hierarchy는 새 사실·token을 요구하지 않고 제공된 target/evidence/state/action의 시각적 분리를 검사하도록 계약한다.
+3. accepted fixture + adversarial fixture에서 false-positive/false-negative를 닫고 evaluator 변경을 acceptance한다.
+4. 새 unseen holdout에서 current canonical baseline을 다시 측정한 뒤에만 다음 skill delta를 설계한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
