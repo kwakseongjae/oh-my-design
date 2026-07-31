@@ -24,6 +24,7 @@ const shipmentExceptionTaskId = "shipment-exception-triage-v0.1";
 const dataImportMappingTaskId = "data-import-mapping-v0.1";
 const localizationBundleTaskId = "localization-bundle-handoff-v0.1";
 const releaseArtifactTaskId = "release-artifact-promotion-v0.1";
+const featureFlagTaskId = "feature-flag-rollout-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -778,6 +779,43 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(experimental.activation).toContain("CSS-generated mobile label must fit its declared box without overlap");
     expect(experimental.activation).toContain("selected-target emphasis");
     expect(control.activation).not.toContain("bounded reflow-integrity closure");
+  });
+
+  it("pins the exact canonical reflow candidate separately from the previous source", () => {
+    const previous = competitors.variants["omd-portable-jade"];
+    const candidate = competitors.variants["omd-portable-reflow-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.126",
+      source_path: previous.source_path,
+      install_adapter: previous.install_adapter,
+      install_root: previous.install_root,
+      install_dir: previous.install_dir,
+      declared_name: previous.declared_name,
+      commit: "fb44964c5e177fc6fd55f1dd8bb0c29375132ff9",
+      activation: previous.activation,
+    });
+    expect(candidate.commit).not.toBe(previous.commit);
+  });
+
+  it("locks an unseen feature-flag rollout family for final candidate validation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", featureFlagTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "dashboard-v1",
+      journey_oracle: {
+        filter: { count: 3, initial: "all", selected: "review", initial_visible_rows: 4, selected_visible_rows: 2 },
+        disclosure: { count: 2 },
+        acknowledgement: { button_selector: "[data-bench='acknowledge']" },
+      },
+      text_geometry_oracle: { viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"], max_short_text_lines: 1 },
+      decision_hierarchy_oracle: { viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"], minimum_action_gap_px: 8 },
+    });
+    const out = prepareVariant("raw-design-md", { task: featureFlagTaskId, outputName: "feature-flag-rollout-review" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter).toContain("checkout.express.v2");
+    expect(starter).not.toContain("checkout-web-2.7.14.tgz");
   });
 
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {

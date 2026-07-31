@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.126 reflow integrity canonical candidate implemented
+- 갱신: 2026-08-01 · 1.9.127 feature-flag final holdout accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.127 새 unseen `feature-flag-rollout-review-v0.1`을 candidate commit 뒤, provider generation 전에 contract-lock했다. dashboard-v1 filter/disclosure/acknowledgement이며 dot-separated flag key와 3 reflow viewports, 4-view hierarchy를 가진다.
+- untouched `/tmp/u19127-feature-flag-starter`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap은 green이고 mobile/320/200% short atomic/control line budget + action separation만 red다. 320px에서 narrow label column, two-line control, owner fragmentation, squeezed decision action을 직접 확인했다.
+- candidate는 detached `fb44964c…`, previous canonical은 detached `f013dbd9…`로 준비됐다. 다음은 exact previous vs candidate 2 arms×3 trials를 fresh root에 준비하고 동등성 검증 후 실행한다.
 - 1.9.126 canonical `skills/omd-apply/SKILL.md`에 general `reflow-integrity closure` 후보를 additive 1개 규칙으로 반영했다. task/selector/brand/filename/new token 없이 reading width 우선, unsafe nowrap 금지, atomic/generated-label, decision containment와 target emphasis를 보존한다.
 - closure acceptance는 mid-token/control/generated-label/overflow/clipping/decision escape/target emphasis loss 7개가 모두 0이다. focused skill-contract+activation isolation tests와 TypeScript가 green이다.
 - 아직 public promotion이 아니다. exact previous `f013dbd9…` vs candidate commit을 새 unseen family에서 2 arms×3 trials로 비교해 candidate Reliability@3 100%와 guardrail 0 regression을 확인해야 한다.

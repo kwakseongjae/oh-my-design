@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.127 feature-flag holdout accepted
+- 새 feature-flag dashboard holdout을 candidate 이후·generation 전에 잠갔다.
+- untouched starter는 기능/a11y/evidence green, 의도한 reflow만 red인 79/85다.
+- previous `f013dbd9…`와 candidate `fb44964c…` detached source를 보존했다.
+- provider 0; 다음은 exact previous vs candidate 2×3이다.
+
 ## 2026-08-01 (Codex) · 1.9.126 reflow candidate implemented
 - validated v2 원칙을 canonical `omd-apply`에 general additive closure로 반영했다.
 - benchmark selector/task name/new token 없이 7개 objective zero-defect 결과만 잠갔다.
