@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.137 Luna High matrix complete; v4 rejected
+- 갱신: 2026-08-01 · 1.9.138 reflow-integrity v5 implemented; unseen validation pending
 
 ## 지금 (현재 위치)
 
+- 1.9.138 canonical `omd-apply`의 기존 2e를 v5로 정제했다. compact control/toggle과 짝인 short label이 line budget을 넘기면 mobile에서 label full-width row를 먼저 주고 control을 다음 row/별도 정렬 영역에 둔다.
+- single atomic identifier/filename/state/short label text node 자체의 `overflow-x:auto|scroll`은 repair로 금지하고, internal horizontal scroller는 여러 항목의 수평 관계를 보존하는 실제 comparison container에만 허용한다. zero-defect outcomes에 `compact_control_label_wrap: 0`, `single_text_scroller: 0`을 추가했다.
+- focused skill contract 7/7, decision-context additive contract 1/1, TypeScript lint가 green이다. 다음은 v5 commit 뒤 새 unseen family를 provider generation 전에 contract-lock하고 exact previous-vs-v5를 검증한다.
 - `/tmp/u19137` 6/6 valid COMPLETE. previous 73/73/75, v4 79/79/81이며 paired v4 W/T/L 3/0/0, median 79 vs 73다. 하지만 두 arm 모두 UI-Resolved 0/3, Reliability@3 0%라 v4 승격을 거절했다.
 - v4는 event/endpoint atomic fragmentation을 3/3 제거하고 function/hooks/evidence를 보존했다. 남은 candidate failures는 t1/t3의 `Require signature verification` label wrap과 t2가 single source/state text 자체에 `overflow-x:auto`를 둬 만든 scrollable-region-focusable axe + invisible keyboard focus다.
 - v4 mean wall time 약 376s vs previous 336s(+11.8%), mean reported tokens 약 902k vs 736k(+22.5%)로 더 비쌌다. 다음은 기존 2e를 v5로 정제해 compact control과 짝인 short label의 full-width mobile row를 우선하고 single atomic/state/label text 자체의 horizontal scroller를 금지하며, multi-item comparison container만 accessible internal scroll을 허용한 뒤 새 unseen family에서 검증한다.

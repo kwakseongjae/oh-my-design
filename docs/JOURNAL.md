@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.138 reflow-integrity v5 implemented
+- compact-control label에 mobile full-width-first 계약을 추가했다.
+- single identifier/state/label text node 자체의 horizontal scroll을 금지했다.
+- `compact_control_label_wrap`·`single_text_scroller` outcomes를 추가했다.
+- focused 8/8 + lint green; 다음은 새 unseen family 검증이다.
+
 ## 2026-08-01 (Codex) · 1.9.137 Luna High matrix complete; v4 rejected
 - 6/6 valid; previous 73/73/75, v4 79/79/81, paired v4 W/T/L 3/0/0이다.
 - 양 arm Reliability@3 0%; v4는 release gate를 통과하지 못했다.

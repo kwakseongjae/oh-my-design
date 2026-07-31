@@ -98,6 +98,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("break tag의 정적 존재를 성공 조건으로 주장하지 않는다");
     expect(skill).toContain("선택 target, source filename, artifact ID까지 포함한다");
     expect(skill).toContain("label-above-value 또는 full-width reading cell로 바꾸는 것을 내부 horizontal scroller보다 먼저 시도");
+    expect(skill).toContain("label에 full-width row를 먼저 주고 control을 다음 row 또는 별도 정렬 영역에 둔다");
+    expect(skill).toContain("단일 text node 자체에 `overflow-x:auto|scroll`을 두는 것은 text repair가 아니다");
+    expect(skill).toContain("실제 comparison container에만 허용한다");
     expect(skill).toContain("region 자체를 `tabindex=\"0\"`으로 keyboard-reachable");
     expect(skill).toContain("CSS generated mobile label은 `auto`/`max-content` track 또는 자신의 full-width row");
     expect(skill).toContain("fixed label track은 모든 reflow viewport에서 measured required width 이상일 때만 허용");
@@ -108,6 +111,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("residual_mobile_column_width: 0");
     expect(skill).toContain("atomic_context_wrap: 0");
     expect(skill).toContain("unfocusable_scroll_region: 0");
+    expect(skill).toContain("compact_control_label_wrap: 0");
+    expect(skill).toContain("single_text_scroller: 0");
   });
 
   it("preserves task-helpful visual equity under explicit change authority", () => {
