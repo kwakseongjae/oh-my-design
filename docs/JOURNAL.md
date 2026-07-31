@@ -1966,3 +1966,8 @@
 - task/starter/DESIGN/model/effort/timeout과 installed skill SHA가 같고 activation paragraph만 다름을 확인했다.
 - exact detached source, untouched product tree, 2/1 arm-first balance를 잠갔고 provider call은 아직 0이다.
 - 다음: 6 cells를 serial·120s pacing·no retry로 실행한다.
+# 2026-07-31 — 1.9.123 localization reflow comparison complete
+- control 79/79/79, experimental 83/85/81로 paired W/T/L 3/0/0이지만 양쪽 Reliability@3는 0%다.
+- experimental은 fragmentation을 3/3 제거했으나 nowrap overflow 1회, generated-label/target-emphasis regression 1회를 만들었다.
+- function/token/a11y/evidence는 6/6 green이고 canonical은 unchanged다.
+- 다음: full-width-first·nowrap overflow 금지·generated label/target emphasis 보존을 담은 v2를 다른 unseen task에서 검증한다.

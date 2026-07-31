@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.123 localization reflow comparison prepared
+- 갱신: 2026-07-31 · 1.9.123 localization reflow comparison complete
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19123` 6/6 valid COMPLETE. control 79/79/79(UI-Resolved 0/3), reflow 83/85/81(UI-Resolved 1/3), paired experimental W/T/L 3/0/0이다.
+- experimental은 3/3에서 atomic/control fragmentation을 제거했지만 trial 1은 200% nowrap overflow+clipping, trial 3은 generated-label overflow+320px target emphasis 약화를 만들었다. 방향은 유효하지만 Reliability@3 0%라 그대로 promotion 금지다.
+- canonical은 unchanged다. 다음은 full-width reading row 우선, overflow를 만드는 nowrap 금지, generated label box+target emphasis 보존을 명시한 activation v2를 만들고 또 다른 unseen task에서 검증한다. objective failure라 owner review는 불필요하다.
 - 1.9.123 current control vs reflow activation-only comparison을 fresh `/tmp/u19123`에 PREPARED했다. 2 arms×3 trials, control-first 2/1 균형이며 provider call은 0이다.
 - 6 cells의 task/core prompt/starter/DESIGN/runtime/model/effort/timeout과 installed skill SHA `d7a890ac…`가 같다. control full prompt `2d0fffd…`, experimental `b0f04dad…`이며 유일한 차이는 preregistered activation delta다.
 - exact source는 양쪽 모두 detached clean `f013dbd9…`, product trees untouched다. Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal attribution으로 잠갔다. 다음 cell은 `localization-t1-control`이다.

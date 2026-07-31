@@ -1,9 +1,9 @@
 {
   "schema_version": "0.1",
   "experiment_id": "localization-reflow-comparison-1.9.123",
-  "status": "prepared-awaiting-provider",
+  "status": "complete",
   "prepared_root": "/tmp/u19123",
-  "provider_calls": 0,
+  "provider_calls": 6,
   "scheduled_cells": 6,
   "prepared_cells": 6,
   "task": {
@@ -47,7 +47,7 @@
     "attribution_scope": "internal-registered-display-name",
     "public_model_attribution_eligible": false
   },
-  "next_cell": "localization-t1-control",
+  "next_cell": null,
   "retry_fallback_repair_substitution": 0,
   "excluded_user_file": "web/public/llms-full.txt"
 }
