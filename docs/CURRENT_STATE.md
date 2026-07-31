@@ -4,13 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.128 feature-flag candidate validation prepared
+- 갱신: 2026-08-01 · 1.9.128 candidate rejected; matrix frozen on HTTP 503
 
 ## 지금 (현재 위치)
 
-- 1.9.128 exact previous canonical vs reflow candidate를 fresh `/tmp/u19128`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
-- 6 cells의 task `0.1.0`, core prompt `b97a308d…`, full prompt `cde162e3…`, starter `4aac3772…`, DESIGN `69e5d661…`, activation/runtime/model/effort/timeout이 같다. 유일한 factor는 installed skill tree(previous `d7a890ac…`, candidate `be055efb…`)다.
-- previous source `f013dbd9…`와 candidate `fb44964c…`는 detached clean/publishable, product trees untouched다. Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution으로 잠갔다. 다음 cell은 `flag-t1-previous`다.
+- `/tmp/u19128`은 preregistered stop으로 FROZEN이다. valid t1 previous=81/UI-Resolved, candidate=75/not resolved로 candidate가 paired loss했다. t2 candidate는 Cursor HTTP 503, 985ms, event 0, product write 0이며 이후 3 cells는 not-started다. retry/resume/fallback/substitution은 0이다.
+- candidate failure 원인은 atomic dot key에 `<wbr>`를 삽입하고, mobile `.matrix td` reset보다 specificity가 높은 desktop `td:nth-child` width 34/16/30/20%를 남긴 것이다. mobile/320/200% key/channel/owner/control fragmentation, 320/200% generated label failure가 났다.
+- 1.9.126 candidate는 release evidence로 rejected다. 다음은 canonical closure에 inserted break opportunity 0(`<wbr>/<br>/ZWSP/soft hyphen/generated separator`)와 residual mobile column width 0/equal-specificity reset을 추가한 v3를 만들고 fresh root에서 검증한다. `/tmp/u19128` 재개 금지다.
+- 1.9.128은 exact previous canonical vs reflow candidate 2 arms×3 trials로 준비됐고 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout이 같으며 installed skill tree만 달랐다. 실행 결과와 중단 상태는 위 frozen 기록이 정본이다.
 - 1.9.127 새 unseen `feature-flag-rollout-review-v0.1`을 candidate commit 뒤, provider generation 전에 contract-lock했다. dashboard-v1 filter/disclosure/acknowledgement이며 dot-separated flag key와 3 reflow viewports, 4-view hierarchy를 가진다.
 - untouched `/tmp/u19127-feature-flag-starter`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap은 green이고 mobile/320/200% short atomic/control line budget + action separation만 red다. 320px에서 narrow label column, two-line control, owner fragmentation, squeezed decision action을 직접 확인했다.
 - candidate는 detached `fb44964c…`, previous canonical은 detached `f013dbd9…`로 준비됐다. 다음은 exact previous vs candidate 2 arms×3 trials를 fresh root에 준비하고 동등성 검증 후 실행한다.

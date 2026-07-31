@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.128 candidate rejected and frozen
+- valid pair는 previous 81/pass, candidate 75/fail이며 candidate가 `<wbr>`+residual nth-child widths로 reflow를 악화했다.
+- 다음 candidate cell은 HTTP 503/product write 0으로 preregistered stop됐다.
+- root를 frozen 보존하고 retry/resume/substitution하지 않았다.
+- 다음은 injected break 0 + residual mobile column 0을 명시한 v3다.
+
 ## 2026-08-01 (Codex) · 1.9.128 candidate validation prepared
 - exact previous vs canonical candidate 2×3을 fresh `/tmp/u19128`에 준비했다.
 - task/prompt/starter/DESIGN/activation/runtime/model equality를 검증했다.

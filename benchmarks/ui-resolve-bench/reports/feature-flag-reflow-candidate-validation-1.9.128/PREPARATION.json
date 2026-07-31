@@ -1,9 +1,9 @@
 {
   "schema_version": "0.1",
   "experiment_id": "feature-flag-reflow-candidate-validation-1.9.128",
-  "status": "prepared",
+  "status": "frozen-preregistered-stop",
   "prepared_root": "/tmp/u19128",
-  "provider_calls": 0,
+  "provider_calls": 3,
   "scheduled_cells": 6,
   "prepared_cells": 6,
   "task": {
@@ -28,7 +28,7 @@
     "same_activation_across_arms": true, "exact_skill_tree_is_only_factor": true, "exact_detached_sources": true, "product_trees_untouched": true,
     "balanced_arm_first_order": "2/1", "attribution_scope": "internal-registered-display-name", "public_model_attribution_eligible": false
   },
-  "next_cell": "flag-t1-previous",
+  "next_cell": null,
   "retry_fallback_repair_substitution": 0,
   "excluded_user_file": "web/public/llms-full.txt"
 }
