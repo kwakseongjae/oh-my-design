@@ -513,6 +513,76 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
     });
   });
 
+  it("fails opt-in text fragmentation without changing legacy geometry", () => {
+    const base = {
+      scroll_width: 390,
+      client_width: 390,
+      clipped_controls: [],
+      overlapping_controls: [],
+    };
+    expect(evaluateViewportGeometry(base)).toEqual({
+      no_horizontal_overflow: true,
+      no_clipped_controls: true,
+      no_overlapping_controls: true,
+    });
+
+    const oracle = {
+      scope_selectors: ["[data-bench='approval-row']"],
+      max_short_text_chars: 24,
+      max_short_text_lines: 1,
+    };
+    expect(evaluateViewportGeometry({
+      ...base,
+      text_geometry: {
+        fragmented_tokens: [],
+        short_atomic_text_wraps: [],
+        short_control_label_wraps: [],
+        generated_content_overflow: [],
+        missing_scope_selectors: [],
+      },
+    }, oracle)).toEqual({
+      no_horizontal_overflow: true,
+      no_clipped_controls: true,
+      no_overlapping_controls: true,
+      text_geometry_scope_present: true,
+      no_mid_token_fragmentation: true,
+      short_atomic_text_within_line_budget: true,
+      short_control_labels_within_line_budget: true,
+      generated_content_fits_declared_box: true,
+    });
+
+    expect(evaluateViewportGeometry({
+      ...base,
+      text_geometry: {
+        fragmented_tokens: [{ token: "STATUS", lines: 6 }],
+        short_atomic_text_wraps: [{ text: "Owner: Amara Singh", lines: 3 }],
+        short_control_label_wraps: [{ text: "View evidence", lines: 2 }],
+        generated_content_overflow: [{ text: "STATUS", declared_width: 8, required_width: 43 }],
+        missing_scope_selectors: [],
+      },
+    }, oracle)).toEqual({
+      no_horizontal_overflow: true,
+      no_clipped_controls: true,
+      no_overlapping_controls: true,
+      text_geometry_scope_present: true,
+      no_mid_token_fragmentation: false,
+      short_atomic_text_within_line_budget: false,
+      short_control_labels_within_line_budget: false,
+      generated_content_fits_declared_box: false,
+    });
+
+    expect(evaluateViewportGeometry({
+      ...base,
+      text_geometry: {
+        fragmented_tokens: [],
+        short_atomic_text_wraps: [],
+        short_control_label_wraps: [],
+        generated_content_overflow: [],
+        missing_scope_selectors: ["[data-bench='approval-row']"],
+      },
+    }, oracle).text_geometry_scope_present).toBe(false);
+  });
+
   it("uses WCAG 2.4.11 partial visibility for the AA focus gate", () => {
     expect(focusViewportVisibility(
       { left: 24, right: 696, top: 120, bottom: 980 },

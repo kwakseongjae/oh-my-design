@@ -109,6 +109,29 @@ node benchmarks/ui-resolve-bench/scripts/export-run-record.mjs \
   --trial 1
 ```
 
+### Opt-in text-geometry gate
+
+Tasks with dense metadata may opt into text-geometry checks without changing
+the score schema or retroactively changing historical runs:
+
+```json
+{
+  "text_geometry_oracle": {
+    "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "scope_selectors": ["[data-bench='approval-row']"],
+    "max_short_text_chars": 24,
+    "max_short_text_lines": 1
+  }
+}
+```
+
+Inside the registered scopes the evaluator fails the existing viewport-geometry
+gate when it observes a token split across lines, short atomic text or a short
+control label exceeding the line budget, generated `::before` label text wider
+than its declared box, or a missing registered scope. Ordinary paragraph and
+headline wrapping outside the scopes is not judged. Historical tasks without
+the oracle retain their exact geometry contract.
+
 Claude Code is a separate Transfer Matrix runtime, not a replacement row in the
 Terra Skill Lift estimate. Prepare with `--runtime claude-code`, verify
 subscription auth without shadowing API credentials, then pin the exact model:

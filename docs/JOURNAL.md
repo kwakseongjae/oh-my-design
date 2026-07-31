@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-31 (Codex) · 1.9.111 text geometry gate accepted
+- task opt-in dense scope에서 mid-token/short-label wrap과 pseudo-content box overflow를 fail-closed 한다.
+- legacy task와 score schema 0.5/85 max는 unchanged이며 seen deletion root는 재채점하지 않았다.
+- focused 18/18, TypeScript green, provider 0이다.
+- 다음은 marker-backed decision hierarchy contract와 새 unseen holdout이다.
+
 ## 2026-07-31 (Codex) · 1.9.110 deletion owner result locked
 - actual owner 3 comparisons/12 axes를 strict intake하고 제출/reveal/summary hash를 잠갔다.
 - Functionality·Usability는 3/3 tie, Fidelity·Ship은 3/3 both-fail이다.

@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-31 · 1.9.110 deletion owner result locked
+- 갱신: 2026-07-31 · 1.9.111 opt-in text geometry gate accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.111 forward-only text-geometry evaluator capability가 ACCEPTED됐다. task가 viewport+dense scope를 opt-in하면 mid-token split, 짧은 atomic text/control label line-budget 초과, generated pseudo-content box overflow, missing scope를 기존 geometry critical gate에서 fail-closed 한다.
+- historical task는 oracle이 없으면 exact 기존 3 geometry checks를 유지하고 score schema 0.5/85점 최대값도 unchanged다. `/tmp/u19108`은 재채점하지 않았다.
+- pure good/adversarial/missing-scope/legacy 관찰을 포함한 focused 18/18와 TypeScript가 green이고 provider call은 0이다.
+- 다음은 style heuristic이 아니라 target/evidence/state/action의 stable semantic marker를 쓰는 decision-context hierarchy contract와 새 unseen holdout이다.
 - 1.9.110 실제 owner export를 strict intake로 검증·hash-lock했다. 3 comparisons/12 axes가 exact complete이고 제출 SHA는 `07cc353f…`다.
 - normalized 결과는 Functionality 3/3 tie, Usability 3/3 tie, Fidelity 3/3 both-fail, Ship Preference 3/3 both-fail이다. canonical control과 decision-context experimental 모두 owner axis win 0이며 experimental 승격은 거절했다.
 - owner 진단은 좁은 화면의 두 줄/세로 글자 파편화와 workspace/evidence/status/scope/action 위계 평탄화다. 기존 85/85 evaluator가 overflow·clip·overlap은 잡지만 destructive wrapping과 decision hierarchy는 놓친 objective false positive로 기록했다.
@@ -848,10 +852,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. provider-free text-fragmentation detector의 fail-closed 신호와 허용되는 정상 wrapping 경계를 고정한다.
-2. decision-context hierarchy는 새 사실·token을 요구하지 않고 제공된 target/evidence/state/action의 시각적 분리를 검사하도록 계약한다.
-3. accepted fixture + adversarial fixture에서 false-positive/false-negative를 닫고 evaluator 변경을 acceptance한다.
-4. 새 unseen holdout에서 current canonical baseline을 다시 측정한 뒤에만 다음 skill delta를 설계한다.
+1. decision-context hierarchy를 target/evidence/state/action stable marker와 spatial grouping으로 측정하는 provider-free contract를 고정한다.
+2. marker만 추가하고 시각 hierarchy가 없는 adversarial fixture가 통과하지 않게 한다.
+3. text geometry + hierarchy oracle을 가진 새 unseen holdout을 provider-free acceptance한다.
+4. 그 holdout에서 current canonical baseline을 측정한 뒤에만 다음 skill delta를 설계한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

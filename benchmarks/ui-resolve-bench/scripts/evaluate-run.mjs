@@ -382,14 +382,33 @@ export function focusViewportVisibility(rect, viewport) {
   };
 }
 
-export function evaluateViewportGeometry(viewport) {
-  return {
+export function evaluateViewportGeometry(viewport, textGeometryOracle) {
+  const checks = {
     no_horizontal_overflow:
       Number.isFinite(viewport?.scroll_width) &&
       Number.isFinite(viewport?.client_width) &&
       viewport.scroll_width <= viewport.client_width + 1,
     no_clipped_controls: Array.isArray(viewport?.clipped_controls) && viewport.clipped_controls.length === 0,
     no_overlapping_controls: Array.isArray(viewport?.overlapping_controls) && viewport.overlapping_controls.length === 0,
+  };
+  if (!textGeometryOracle) return checks;
+  return {
+    ...checks,
+    text_geometry_scope_present:
+      Array.isArray(viewport?.text_geometry?.missing_scope_selectors) &&
+      viewport.text_geometry.missing_scope_selectors.length === 0,
+    no_mid_token_fragmentation:
+      Array.isArray(viewport?.text_geometry?.fragmented_tokens) &&
+      viewport.text_geometry.fragmented_tokens.length === 0,
+    short_atomic_text_within_line_budget:
+      Array.isArray(viewport?.text_geometry?.short_atomic_text_wraps) &&
+      viewport.text_geometry.short_atomic_text_wraps.length === 0,
+    short_control_labels_within_line_budget:
+      Array.isArray(viewport?.text_geometry?.short_control_label_wraps) &&
+      viewport.text_geometry.short_control_label_wraps.length === 0,
+    generated_content_fits_declared_box:
+      Array.isArray(viewport?.text_geometry?.generated_content_overflow) &&
+      viewport.text_geometry.generated_content_overflow.length === 0,
   };
 }
 
@@ -584,7 +603,7 @@ async function main() {
         };
       });
 
-      const snapshot = await page.evaluate((protectedSelectors) => {
+      const snapshot = await page.evaluate(({ protectedSelectors, textGeometryOracle }) => {
         const visible = (element) => {
           const style = getComputedStyle(element);
           const rect = element.getBoundingClientRect();
@@ -635,6 +654,127 @@ async function main() {
             if (overlapWidth > 1 && overlapHeight > 1) overlappingControls.push({ first: a, second: b });
           }
         }
+        const textGeometry = (() => {
+          const empty = {
+            fragmented_tokens: [],
+            short_atomic_text_wraps: [],
+            short_control_label_wraps: [],
+            generated_content_overflow: [],
+            missing_scope_selectors: [],
+          };
+          if (!textGeometryOracle) return empty;
+          const scopeSelectors = Array.isArray(textGeometryOracle.scope_selectors)
+            ? textGeometryOracle.scope_selectors
+            : [];
+          const missingScopeSelectors = scopeSelectors.filter((selector) =>
+            [...document.querySelectorAll(selector)].filter(visible).length === 0);
+          const roots = [...new Set(
+            scopeSelectors.flatMap((selector) => [...document.querySelectorAll(selector)]).filter(visible),
+          )];
+          if (roots.length === 0) return {
+            ...empty,
+            missing_scope_selectors: missingScopeSelectors.length ? missingScopeSelectors : scopeSelectors,
+          };
+          empty.missing_scope_selectors = missingScopeSelectors;
+          const maxChars = Number.isFinite(textGeometryOracle.max_short_text_chars)
+            ? textGeometryOracle.max_short_text_chars
+            : 24;
+          const maxLines = Number.isFinite(textGeometryOracle.max_short_text_lines)
+            ? textGeometryOracle.max_short_text_lines
+            : 1;
+          const lineTops = (node, start, end) => {
+            const tops = [];
+            for (let index = start; index < end; index += 1) {
+              if (/\s/u.test(node.data[index] ?? "")) continue;
+              const range = document.createRange();
+              range.setStart(node, index);
+              range.setEnd(node, index + 1);
+              const rect = range.getBoundingClientRect();
+              if (rect.width > 0 && rect.height > 0) tops.push(Math.round(rect.top * 2) / 2);
+            }
+            return [...new Set(tops)];
+          };
+          const textNodes = [];
+          for (const root of roots) {
+            const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+            while (walker.nextNode()) {
+              const node = walker.currentNode;
+              const parent = node.parentElement;
+              if (!parent || !visible(parent) || parent.closest("script, style, [hidden]")) continue;
+              if (!node.data.trim()) continue;
+              textNodes.push({ node, parent });
+            }
+          }
+          const seenNodes = new Set();
+          for (const { node, parent } of textNodes) {
+            if (seenNodes.has(node)) continue;
+            seenNodes.add(node);
+            const raw = node.data;
+            const trimmed = raw.trim();
+            const leading = raw.indexOf(trimmed);
+            const allLines = lineTops(node, leading, leading + trimmed.length);
+            if (trimmed.length <= maxChars && allLines.length > maxLines) {
+              empty.short_atomic_text_wraps.push({
+                text: trimmed.slice(0, 80),
+                tag: parent.tagName,
+                lines: allLines.length,
+              });
+            }
+            for (const match of raw.matchAll(/[\p{L}\p{N}][\p{L}\p{N}_-]{2,}/gu)) {
+              const tokenLines = lineTops(node, match.index, match.index + match[0].length);
+              if (tokenLines.length > 1) {
+                empty.fragmented_tokens.push({
+                  token: match[0].slice(0, 80),
+                  tag: parent.tagName,
+                  lines: tokenLines.length,
+                });
+              }
+            }
+          }
+          const controlSelector = textGeometryOracle.control_selector
+            ?? "button, a[href], [role='button'], input[type='button'], input[type='submit']";
+          const controlsInScope = roots.flatMap((root) => [...root.querySelectorAll(controlSelector)]).filter(visible);
+          for (const control of controlsInScope) {
+            const label = accessibleName(control);
+            if (!label || label.length > maxChars) continue;
+            const tops = [];
+            const walker = document.createTreeWalker(control, NodeFilter.SHOW_TEXT);
+            while (walker.nextNode()) {
+              const node = walker.currentNode;
+              tops.push(...lineTops(node, 0, node.data.length));
+            }
+            const lines = [...new Set(tops)].length;
+            if (lines > maxLines) {
+              empty.short_control_label_wraps.push({
+                text: label.slice(0, 80),
+                tag: control.tagName,
+                lines,
+              });
+            }
+          }
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          for (const root of roots) {
+            for (const element of [root, ...root.querySelectorAll("[data-label]")]) {
+              if (!element.hasAttribute("data-label") || !visible(element)) continue;
+              const pseudo = getComputedStyle(element, "::before");
+              const content = pseudo.content?.replace(/^['"]|['"]$/g, "");
+              const declaredWidth = Number.parseFloat(pseudo.width);
+              if (!content || content === "none" || !Number.isFinite(declaredWidth) || !context) continue;
+              context.font = pseudo.font;
+              const requiredWidth = context.measureText(content).width;
+              if (requiredWidth > declaredWidth + 1) {
+                empty.generated_content_overflow.push({
+                  text: content.slice(0, 80),
+                  tag: element.tagName,
+                  declared_width: Math.round(declaredWidth * 10) / 10,
+                  required_width: Math.round(requiredWidth * 10) / 10,
+                });
+              }
+            }
+          }
+          return empty;
+        })();
         return {
           protected: Object.fromEntries(protectedSelectors.map((selector) => {
             const elements = [...document.querySelectorAll(selector)];
@@ -668,8 +808,15 @@ async function main() {
             return { tag: element.tagName, text: element.textContent?.trim().slice(0, 60), width: Math.round(rect.width), height: Math.round(rect.height) };
           }),
           visible_controls: controls.length,
+          text_geometry: textGeometry,
         };
-      }, task.protected_selectors);
+      }, {
+        protectedSelectors: task.protected_selectors,
+        textGeometryOracle:
+          task.text_geometry_oracle?.viewports?.includes(viewport.name)
+            ? task.text_geometry_oracle
+            : null,
+      });
 
       const keyboardBaseline = await page.evaluate(() => {
         const focusStyle = (element) => {
@@ -1324,7 +1471,15 @@ async function main() {
   } else {
     throw new Error(`unsupported behavior adapter: ${behaviorAdapter}`);
   }
-  const geometry = Object.fromEntries(viewportResults.map((viewport) => [viewport.name, evaluateViewportGeometry(viewport)]));
+  const geometry = Object.fromEntries(viewportResults.map((viewport) => [
+    viewport.name,
+    evaluateViewportGeometry(
+      viewport,
+      task.text_geometry_oracle?.viewports?.includes(viewport.name)
+        ? task.text_geometry_oracle
+        : null,
+    ),
+  ]));
   const keyboard = Object.fromEntries(viewportResults.map((viewport) => [viewport.name, evaluateKeyboardTraversal(viewport.keyboard)]));
   const observationPresence = {
     all_viewports: viewportResults.length === task.viewports.length,

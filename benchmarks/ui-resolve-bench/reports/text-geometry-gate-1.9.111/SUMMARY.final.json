@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.111",
+  "experiment_id": "text-geometry-gate-1.9.111",
+  "status": "accepted",
+  "scope": "Provider-free evaluator capability",
+  "checks": {
+    "legacy_geometry_unchanged_without_oracle": true,
+    "opt_in_scope_fail_closed": true,
+    "mid_token_fragmentation_detected": true,
+    "short_atomic_text_line_budget_detected": true,
+    "short_control_label_line_budget_detected": true,
+    "generated_content_box_overflow_detected": true,
+    "score_schema_changed": false,
+    "point_maximum_changed": false,
+    "seen_root_rescored": false
+  },
+  "validation": {
+    "focused_tests": "18/18",
+    "typescript": "green",
+    "provider_calls": 0
+  },
+  "claim_limit": "Forward-only, task-opt-in severe text geometry. No global aesthetic or hierarchy verdict.",
+  "next_action": "Create and accept a marker-backed decision-context hierarchy contract, then register both contracts on a new unseen holdout."
+}
