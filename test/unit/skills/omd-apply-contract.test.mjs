@@ -87,6 +87,14 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("첫 transaction은 targeted `Edit`");
     expect(skill).toContain("공백·주석·timestamp·동일값 치환 같은 no-op");
     expect(skill).toContain("rejected_contract_drift");
+    expect(skill).toContain("reflow-integrity closure");
+    expect(skill).toContain("full-width reading row 또는 충분한 `minmax` 영역");
+    expect(skill).toContain("한 줄 보존은 acceptance 결과이지 첫 CSS 수단이 아니다");
+    expect(skill).toContain("`white-space: nowrap`이 horizontal overflow·clipping·box collision을 만들면 사용하지 않으며");
+    expect(skill).toContain("CSS generated mobile label도 자신의 box 안에서 겹침 없이");
+    expect(skill).toContain("decision boundary로 선언된 target·evidence·state·action");
+    expect(skill).toContain("mid_token_fragmentation: 0");
+    expect(skill).toContain("target_emphasis_loss: 0");
   });
 
   it("preserves task-helpful visual equity under explicit change authority", () => {

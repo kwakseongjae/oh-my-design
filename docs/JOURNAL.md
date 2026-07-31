@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.126 reflow candidate implemented
+- validated v2 원칙을 canonical `omd-apply`에 general additive closure로 반영했다.
+- benchmark selector/task name/new token 없이 7개 objective zero-defect 결과만 잠갔다.
+- focused contract tests와 TypeScript가 green이다.
+- 다음은 exact previous vs candidate의 또 다른 unseen Reliability@3다.
+
 ## 2026-08-01 (Codex) · 1.9.125 reflow v2 comparison complete
 - 6/6 valid; control 85/79/81, v2 85/85/85, paired v2 W/T/L 2/1/0이다.
 - v2 Reliability@3 100%, control 0%; v1 nowrap/generated-label/target 회귀도 0이다.
