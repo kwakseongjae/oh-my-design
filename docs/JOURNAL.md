@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.208 replacement prepared
+- exact replacement 2×3을 fresh `/tmp/u19208`에 PREPARED했다.
+- 모든 invariant와 policy-only delta, checkpoint fix 기준을 재확인했다.
+- provider 0이며 1.9.207 cell은 재사용하지 않는다.
+- next는 max-new 1 순차 실행이다.
+
 ## 2026-08-02 (Codex) · 1.9.207 frozen
 - first controller cell은 valid 79/85·proof compliant였다.
 - next invocation이 provider 전에 host-policy attestation key validator 누락으로 중단됐다.

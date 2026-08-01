@@ -1,0 +1,17 @@
+{
+  "schema_version":"0.1",
+  "experiment_id":"book-signature-host-policy-luna-replacement-1.9.208",
+  "status":"PREPARED",
+  "provider_calls":0,
+  "output_root":"/tmp/u19208",
+  "scheduled_cells":6,
+  "prepared_cells":6,
+  "locked_plan_sha256":"28ee9bb68aefa566d00d4f0ea383d25943c49fabc20322b9f743d0d08712dc33",
+  "preparation_state_sha256":"18eaa1f63516a65fb0d1df46722a32630b0a9567935c7b6e350e1cf54cd08d3d",
+  "invariants":{"core_prompt_sha256":"2236f4aff307f15658e158d4fdbcc802abcd68032ce235fc38661e3ee5d25814","prompt_sha256":"5336a1ce0e9031ab475ae12242fca93b6f23557f9fb1676a0989af891ba7cb0b","starter_and_product_sha256":"ca12dd6bafda913a1043b7a8ccc350794a83811d58dec83952ae349c728179e7","skill_sha256":"7336c0374eeef7f1e60a8992c582b99d5a09effc2faaa5a4e839f43ae8c7cbcb","skill_source_commit":"1d204afea6c3ab106752613b7f341ed2f76fd843","source_publishable":true,"activation_sha256":"79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7","runtime":"codex","model":"gpt-5.6-luna","effort":"high","timeout_seconds":900,"git_root_all_cells":true},
+  "sole_arm_delta":{"controller_hooks_enabled":false,"policy_hooks_enabled":true,"all_policy_attestations_ready":true},
+  "controller_fix_commit":"60416fa",
+  "next_cell":"luna-book-r1-controller",
+  "max_new_cells_per_invocation":1,
+  "same_root_retry":false
+}

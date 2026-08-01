@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.207 frozen; replacement controller fix in progress
+- 갱신: 2026-08-02 · 1.9.208 replacement matrix prepared
 
 ## 지금 (현재 위치)
 
+- 1.9.208 exact replacement를 `/tmp/u19208`에 fresh PREPARED했다. 6 cells의 task/prompt/starter/product/DESIGN/skill `1d204afe…`/activation/Codex/Luna high/timeout/Git root equality와 policy-only arm delta를 재확인했고 provider call 0이다.
+- checkpoint validator fix `60416fa`가 clean 기준이다. 다음은 `luna-book-r1-controller`부터 max-new 1로 순차 실행하며 1.9.207의 첫 셀은 재사용하지 않는다.
 - `/tmp/u19207` 1.9.207은 첫 controller cell만 valid 79/85·proof compliant로 완료한 뒤 두 번째 provider 호출 전에 checkpoint validator가 새 `host_policy` attestation key를 거부했다. controller implementation defect이므로 전체 비교는 execution-invalid로 동결했고 이 root를 재개하지 않는다.
 - validator가 host-policy matrix에서는 3번째 attestation을 구조 검증하도록 수정했고 focused regression을 추가했다. 다음은 clean fix commit 후 exact same contract를 1.9.208/new root로 재등록·fresh prepare하는 것이다. 첫 셀 결과는 분모에 재사용하지 않는다.
 - 1.9.207에서 controller-observation vs installed-opt-in host policy를 exact Luna/high 2×3으로 `/tmp/u19207`에 PREPARED했다. task/prompt/starter/DESIGN/skill `1d204afe…`/activation/runtime/model/effort/timeout/Git root가 같고 `.codex` policy config+4 managed executables만 다르다.
