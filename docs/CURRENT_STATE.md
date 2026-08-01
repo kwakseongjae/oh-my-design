@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.177 print-proof v13 transfer prepared
+- 갱신: 2026-08-01 · 1.9.177 print-proof v13 transfer rejected
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19177` 6/6 valid COMPLETE. previous 81/85/85 vs v13 81/83/85, paired v13 W/T/L 0/2/1이다. previous UI-Resolved 2/3, v13 1/3이므로 v13을 reject한다.
+- v13 t1은 compact copy를 고쳤지만 dynamic state wrap을 남겼고, t2는 scoped rows를 nowrap으로 만들며 200% page horizontal overflow를 새로 냈다. t3만 85/85다. mean wall +24.4%, mean tokens +65.9%다.
+- 다음은 v14 prose rule 추가가 아니다. 길어진 closure를 compact machine-readable work packet/checklist로 operationalize하거나 더 작은 ordered invariant set으로 단순화하는 구조적 단계다.
 - `/tmp/u19177` 6 cells PREPARED, provider 0이다. task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 동일하고 installed skill만 previous `d7a890ac…` vs v13 `bbb7903e…`다. 양 source exact detached clean/publishable이다.
 - 다음 cell은 `grok-proof-t1-previous`; invocation당 최대 1개와 fixed pacing/stop contract를 유지한다.
 - 1.9.177 exact previous canonical vs v13 print-proof transfer를 `/tmp/u19177`에 preregister했다. Cursor/Grok 4.5 High, 2×3, balanced/serial/120s/max-new 1/no retry-fallback-repair-replacement-substitution이다. provider call은 0이다.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.177 print-proof v13 transfer rejected
+- previous 81/85/85 vs v13 81/83/85; v13 W/T/L 0/2/1.
+- v13 UI-Resolved 1/3, wall +24.4%, tokens +65.9%.
+- t2가 unsafe nowrap으로 200% horizontal overflow를 새로 냈다.
+- 다음은 prose v14가 아니라 closure operationalization/simplification이다.
+
 ## 2026-08-01 (Codex) · 1.9.177 print-proof v13 transfer prepared
 - fresh `/tmp/u19177` 6 cells를 exact contract로 준비했다.
 - installed skill만 previous `d7a890ac…` vs v13 `bbb7903e…`다.
