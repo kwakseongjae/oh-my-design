@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.156 unseen museum-loan holdout accepted
+- 갱신: 2026-08-01 · 1.9.157 exact v9 portable candidate pinned
 
 ## 지금 (현재 위치)
 
+- 1.9.157 exact v9을 `omd-portable-reflow-v9-candidate`로 고정했다. detached clean/publishable source는 `b6fa87d1…`, Cursor installed skill tree SHA는 `eca9a09a…`, activation은 previous와 같은 `01728b95…`다.
+- provider-free `/tmp/u19157-v9-diagnostic`에서 task/starter/source attestation과 focused candidate pin 1/1, lint가 green이다. 다음은 locked museum-loan task에서 exact previous vs v9 Grok 2×3을 fresh root에 준비한다.
 - 1.9.156 새 unseen non-approval `museum-loan-routing-v0.1`을 v9 commit 뒤 provider generation 전에 contract-lock했다. 새 collections-operations domain이며 3 routing choices, reversible source-note toggle, handoff-label form, 3 object/destination/registrar mappings와 4-view geometry+hierarchy를 가진다.
 - untouched `/tmp/u19156-museum-starter`는 79/85다. function/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. desktop percentage child widths와 inherited 16px evidence가 identifier fragmentation 및 supplied-count wrap을 만드는 것을 320px screenshot으로 확인했다.
 - protected empty form-status는 selector 자신의 baseline min-height를 가진다. injected break/single-text scroller/provider call은 0이다. 다음은 exact v9 `b6fa87d…`를 detached candidate로 고정하고 exact previous canonical과 fresh 2×3으로 비교한다.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.157 exact v9 portable candidate pinned
+- detached clean `b6fa87d1…`를 별도 v9 variant로 고정했다.
+- Cursor installed tree `eca9a09a…`, activation `01728b95…`, publishable=true다.
+- diagnostic/focused pin/lint green; provider call은 0이다.
+- 다음은 museum-loan에서 Grok previous-vs-v9 2×3 준비다.
+
 ## 2026-08-01 (Codex) · 1.9.156 unseen museum-loan holdout accepted
 - v9 commit 뒤 새 collections-operations task를 provider 0 상태로 잠갔다.
 - untouched starter는 79/85; responsive text geometry만 의도대로 red다.
