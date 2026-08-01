@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.146 Grok previous-vs-v6 prepared
+- 로그인/catalog와 repository-free probe로 Grok 4.5 High 현재 호출을 확인했다.
+- Luna `/tmp/u19145`는 provider 0으로 보존하고 fresh `/tmp/u19146`을 준비했다.
+- task/prompt/starter/DESIGN/activation은 같고 installed Cursor skill만 다르다.
+- benchmark provider 0; 다음 cell은 `grok-rotation-t1-previous`다.
+
 ## 2026-08-01 (Codex) · 1.9.145 Luna High previous-vs-v6 prepared
 - fresh `/tmp/u19145`에 exact 2 arms×3 trials를 준비했다.
 - task/prompt/starter/DESIGN/activation/provider controls는 동일하다.

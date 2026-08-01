@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.145 Luna High previous-vs-v6 prepared; provider 0
+- 갱신: 2026-08-01 · 1.9.146 Grok previous-vs-v6 prepared; benchmark provider 0
 
 ## 지금 (현재 위치)
 
+- Cursor 계정 로그인과 live catalog의 `cursor-grok-4.5-high` 노출을 재확인했다. repository/file/tool-free probe는 exact `OMD_CAPACITY_OK`, reported `Cursor Grok 4.5 High`, exit 0, 5,659ms와 usage를 반환했다. 이는 현재 단일 호출 가용성만 증명하며 benchmark denominator에는 포함하지 않는다.
+- 1.9.146 exact previous canonical vs v6를 fresh `/tmp/u19146`에 PREPARED했다. Luna `/tmp/u19145`는 provider 0 상태로 보존하고 provider scope를 섞지 않았다. Grok matrix는 2 arms×3 trials, previous-first 2/1 balanced이며 benchmark provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `f13515bb…`, prompt `3fecf23c…`, starter `4c631a5f…`, DESIGN `1ac1a370…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. Cursor installed skill file만 previous `22eb96d8…` vs v6 `07c75167…`로 다르며 source는 exact detached clean/publishable이다.
+- Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal registered-display-name attribution으로 잠갔다. 다음 cell은 `grok-rotation-t1-previous`다. 첫 provider/attribution/controller failure에서 `/tmp/u19146`을 동결한다.
 - 1.9.145 exact previous canonical vs v6를 fresh `/tmp/u19145`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
 - 6 cells의 task `0.1.0`, core prompt `f13515bb…`, starter `4c631a5f…`, DESIGN `1ac1a370…`, runtime/model/effort/timeout과 activation `79911390…`가 같다. installed skill tree만 previous `a8128ccc…` vs v6 `a6009fde…`로 다르며 양 source는 exact detached clean/publishable이다.
 - Luna High/Codex·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal attribution으로 잠갔다. 다음 cell은 `luna-rotation-t1-previous`다.
