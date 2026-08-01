@@ -449,6 +449,33 @@ function preparedCellAttestation(workspace) {
   };
 }
 
+export function validPreparedCellAttestation(value, { hostPolicy = false } = {}) {
+  const expectedKeys = [
+    "benchmark_tree_sha256",
+    "product_tree_sha256",
+    ...(hostPolicy ? ["host_policy"] : []),
+  ].sort();
+  return Boolean(
+    value
+    && typeof value === "object"
+    && !Array.isArray(value)
+    && isDeepStrictEqual(Object.keys(value).sort(), expectedKeys)
+    && /^[a-f0-9]{64}$/.test(value.benchmark_tree_sha256)
+    && /^[a-f0-9]{64}$/.test(value.product_tree_sha256)
+    && (
+      !hostPolicy
+      || (
+        value.host_policy
+        && value.host_policy.schema_version === "0.1"
+        && value.host_policy.target === "codex"
+        && ["controller-observation", "installed-opt-in"].includes(value.host_policy.mode)
+        && value.host_policy.git_root === true
+        && value.host_policy.ready === true
+      )
+    )
+  );
+}
+
 function assertUntouchedCell(workspace, expectedAttestation = undefined) {
   const manifest = readJson(join(workspace, ".benchmark", "manifest.json"));
   if (untouchedCellPaths(workspace).some((path) => existsSync(path))) {
@@ -694,21 +721,13 @@ function assertCheckpointedResume(state, plan, matrixRoot, planSha, preparationS
   }
   const expectedAttestationIds = plan.cells.map((cell) => cell.id).sort();
   const receivedAttestationIds = Object.keys(state.prepared_cell_attestations ?? {}).sort();
-  const validAttestationValue = (value) => (
-    value
-    && typeof value === "object"
-    && !Array.isArray(value)
-    && isDeepStrictEqual(
-      Object.keys(value).sort(),
-      ["benchmark_tree_sha256", "product_tree_sha256"],
-    )
-    && /^[a-f0-9]{64}$/.test(value.benchmark_tree_sha256)
-    && /^[a-f0-9]{64}$/.test(value.product_tree_sha256)
-  );
   if (
     !isDeepStrictEqual(receivedAttestationIds, expectedAttestationIds)
     || expectedAttestationIds.some(
-      (id) => !validAttestationValue(state.prepared_cell_attestations[id]),
+      (id) => !validPreparedCellAttestation(
+        state.prepared_cell_attestations[id],
+        { hostPolicy: plan.host_policy_comparison !== undefined },
+      ),
     )
   ) {
     throw new Error("checkpoint preparation attestations are incomplete");

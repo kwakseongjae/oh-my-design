@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.207 frozen
+- first controller cell은 valid 79/85·proof compliant였다.
+- next invocation이 provider 전에 host-policy attestation key validator 누락으로 중단됐다.
+- `/tmp/u19207`은 execution-invalid로 동결하고 재개하지 않는다.
+- next는 validator fix commit 후 fresh 1.9.208 replacement다.
+
 ## 2026-08-02 (Codex) · 1.9.207 host-policy matrix prepared
 - Luna/high exact 2×3을 `/tmp/u19207`에 PREPARED했다.
 - denied policy attempt와 unblocked execution을 별도 계측한다.

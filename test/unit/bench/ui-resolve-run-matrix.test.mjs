@@ -11,6 +11,7 @@ import {
   preregisteredStopReason,
   replacementVerifierAuthorship,
   runArgsForCell,
+  validPreparedCellAttestation,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
 
 const cell = {
@@ -50,6 +51,25 @@ const validRun = {
 };
 
 describe("UI-Resolve prepared matrix execution", () => {
+  it("accepts the preregistered host-policy attestation during checkpoint resume", () => {
+    const hashes = {
+      benchmark_tree_sha256: "a".repeat(64),
+      product_tree_sha256: "b".repeat(64),
+    };
+    expect(validPreparedCellAttestation(hashes)).toBe(true);
+    expect(validPreparedCellAttestation({
+      ...hashes,
+      host_policy: {
+        schema_version: "0.1",
+        target: "codex",
+        mode: "installed-opt-in",
+        git_root: true,
+        ready: true,
+      },
+    }, { hostPolicy: true })).toBe(true);
+    expect(validPreparedCellAttestation(hashes, { hostPolicy: true })).toBe(false);
+  });
+
   it("proves Cursor project-cache writeability before provider execution", () => {
     const temp = mkdtempSync(join(tmpdir(), "omd-cursor-runtime-preflight-"));
     const projects = join(temp, "projects");

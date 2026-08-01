@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.207 installed host-policy matrix prepared
+- 갱신: 2026-08-02 · 1.9.207 frozen; replacement controller fix in progress
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19207` 1.9.207은 첫 controller cell만 valid 79/85·proof compliant로 완료한 뒤 두 번째 provider 호출 전에 checkpoint validator가 새 `host_policy` attestation key를 거부했다. controller implementation defect이므로 전체 비교는 execution-invalid로 동결했고 이 root를 재개하지 않는다.
+- validator가 host-policy matrix에서는 3번째 attestation을 구조 검증하도록 수정했고 focused regression을 추가했다. 다음은 clean fix commit 후 exact same contract를 1.9.208/new root로 재등록·fresh prepare하는 것이다. 첫 셀 결과는 분모에 재사용하지 않는다.
 - 1.9.207에서 controller-observation vs installed-opt-in host policy를 exact Luna/high 2×3으로 `/tmp/u19207`에 PREPARED했다. task/prompt/starter/DESIGN/skill `1d204afe…`/activation/runtime/model/effort/timeout/Git root가 같고 `.codex` policy config+4 managed executables만 다르다.
 - benchmark controller가 installed policy state를 자동 수집하고 denied attempt와 unblocked execution을 분리한다. policy arm은 valid state 필수이며 browser recovery/duplicate static/after-ready unblocked count 0을 요구한다. controller arm은 기존 promotion-report observation을 유지한다.
 - host-policy focused 4/4, runtime 21/21, matrix/export/controller 41/41, lint/diff green이다. full bench 102/104의 2 red는 기존 Taste/UI UX Pro 외부 vendor 폴더가 Git repo가 아닌 환경 문제다. provider call 0이다.
