@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.147 bounded width-recovery v7 implemented
+- 기존 step 2만 full-row-before-text-workaround invariant로 조였다.
+- nested lateral spacing/track/chrome 회수 전 wrap·nowrap·font 축소를 금지했다.
+- contract 7/7, lint green; known external vendor fixture 2건만 red다.
+- 다음은 v7 commit 뒤 새 unseen non-approval family lock이다.
+
 ## 2026-08-01 (Codex) · 1.9.146 Grok matrix complete; v6 rejected
 - 6/6 valid: previous 81/77/77, v6 83/85/81, paired v6 W/T/L 3/0/0이다.
 - v6 UI-Resolved 1/3라 Reliability@3 gate를 통과하지 못했다.

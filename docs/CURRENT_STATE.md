@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.146 Grok previous-vs-v6 complete; v6 rejected
+- 갱신: 2026-08-01 · 1.9.147 bounded width-recovery v7 implemented
 
 ## 지금 (현재 위치)
 
+- 1.9.147 canonical `omd-apply`의 기존 width-recovery 단계만 v7로 조였다. short atomic evidence/state/control label을 건드리기 전에 nested lateral margin/padding/fixed track/card chrome을 줄여 실제 full reading row를 확보하고, 그 전에는 wrap/nowrap/font 축소로 넘어가지 않는다. closure에 `full_row_before_text_workaround: 0`을 추가했다.
+- canonical contract 7/7과 TypeScript lint가 green이다. bench focused 47/49도 relevant tests는 green이며 남은 2개는 기존 `/tmp/omd-ui-skills-bench/vendors/{taste-skill,ui-ux-pro-max}` non-Git fixture 환경 실패다. 다음은 v7 commit 뒤 새 unseen non-approval family를 generation 전에 잠그는 것이다.
 - `/tmp/u19146` 6/6 valid COMPLETE. previous 81/77/77, v6 83/85/81이며 paired v6 W/T/L 3/0/0이다. 하지만 previous UI-Resolved 0/3, v6 1/3이고 양 Reliability@3는 0%라 v6 승격을 거절했다.
 - v6는 function/state/a11y/DESIGN/evidence/decision hierarchy와 supplied identifiers를 3/3 보존했다. residual은 t1의 `3 supplied services · 1 rollout window` 200% wrap, t3의 같은 evidence 320/200% wrap + `Require dual-operator confirmation` 200% wrap뿐이다. overflow/clipping/injected break/single-text scroller/semantic escape는 0이다.
 - 성공 t2는 mobile selected-plan surface의 lateral margin을 제거해 full reading row를 회복한 뒤 short evidence를 유지했다. t1/t3은 nested card margin/padding을 남기고 inherited 16px label을 사용했다. 다음 v7은 기존 width-recovery 단계만 full-row-before-wrap의 measured invariant로 조인다. task/selector/filename/token/evaluator branch는 추가하지 않는다.

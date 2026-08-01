@@ -120,6 +120,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("compact_control_label_wrap: 0");
     expect(skill).toContain("single_text_scroller: 0");
     expect(skill).toContain("undeclared_type_role_shrink: 0");
+    expect(skill).toContain("full_row_before_text_workaround: 0");
+    expect(skill).toContain("full row를 회수하지 않은 채 wrap·nowrap·font 축소로 넘어가지 않는다");
   });
 
   it("preserves task-helpful visual equity under explicit change authority", () => {
