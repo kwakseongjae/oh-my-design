@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.182 media-clearance Grok preregistered
+- exact previous vs packet 2×3을 fresh `/tmp/u19182`로 잠갔다.
+- Grok 4.5 High·serial·120s·max-new 1·no fallback 계약이다.
+- provider 0; pass/borderline이면 Luna 별도 replication이다.
+- 다음은 fresh preparation/equality attestation이다.
+
 ## 2026-08-02 (Codex) · 1.9.181 media-clearance holdout locked
 - 새 master–detail split-pane unseen task를 provider 전에 고정했다.
 - untouched starter 79/85; responsive geometry만 390/320/200% red다.

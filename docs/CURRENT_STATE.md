@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.181 unseen media-clearance task locked
+- 갱신: 2026-08-02 · 1.9.182 media-clearance Grok transfer preregistered
 
 ## 지금 (현재 위치)
 
+- 1.9.182 exact previous canonical vs packet candidate 2×3을 `/tmp/u19182` 대상으로 preregister했다. Cursor/Grok 4.5 High, balanced/serial/120s/max-new 1/no retry-fallback-repair-replacement-substitution이며 provider call은 0이다.
+- gate는 packet UI-Resolved 3/3 + Reliability@3 100% + paired loss 0 + material time/token regression 0이다. pass/borderline/model interaction이면 Luna xhigh를 별도 root/denominator로 복제한다.
+- 다음은 fresh `/tmp/u19182` preparation과 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout/source attestation 동등성 검증이다.
 - 1.9.181 새 unseen `media-clearance-routing-v0.1`을 provider generation 전에 잠갔다. 기존 표/순번 rail과 다른 asset queue + selected context의 master–detail split-pane topology다.
 - untouched `/tmp/u19181-media-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 390/320/200% atomic·dynamic state·relational compact copy geometry만 red다. provider call은 0이다.
 - task contract 1/1과 lint가 green이다. 다음은 exact previous canonical vs exact packet candidate를 Grok 4.5 High 2×3으로 preregister·prepare하는 것이다. trigger 충족 시 Luna xhigh는 별도 fresh root에서 동일 matrix를 복제한다.
