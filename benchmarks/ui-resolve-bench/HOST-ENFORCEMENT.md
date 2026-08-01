@@ -43,6 +43,20 @@ Primary host references:
 4. A future blocking adapter must be opt-in, channel-specific, fail closed only for a narrowly declared command class, and ship with an escape hatch. Adding prose to a skill cannot upgrade its assurance level.
 5. `data/workflow-capabilities.json` is the machine-readable source used by installed channels and `omd workflows --json`; `omd doctor` rejects an incomplete assurance contract.
 
+## Real-host result
+
+The 1.9.204 smoke confirmed deny-before-execution on fresh Git fixtures for
+Claude Code 2.1.219 with Sonnet 5/high and Codex CLI 0.144.1 with
+`gpt-5.6-luna`/high. In both hosts the first static closure executed and the
+second identical command was denied with one persisted
+`duplicate_static_closure` violation. The initial non-Git Codex fixture did not
+load project hooks and is explicitly excluded as execution-invalid. See
+`reports/proof-policy-host-smoke-1.9.204/FINDINGS.md`.
+
+This result validates the shared adapter at those two host boundaries. It does
+not change the installed-channel table above: OmD still installs no proof
+policy adapter by default.
+
 ## Next experiment boundary
 
 The provider-free policy state machine is implemented in
@@ -71,9 +85,11 @@ expiry, and fail-closed handling for corrupt, stale, or busy state. A new
 product edit can recover stale state; a proof command cannot silently bypass
 it. This remains benchmark-owned and is not installed into user projects.
 
-The next integration must run real Claude and Codex host fixtures, including
-their trust/review flow, before the CLI may expose an opt-in adapter.
-The next provider experiment should then compare the same close-latch skill
-under controller observation only and the real host pre-tool policy. Until that
-adapter exists, proof-execution compliance is a benchmark promotion criterion,
-not an execution guarantee.
+The next integration may expose a project-scoped opt-in adapter for Claude Code
+and Codex. It must preserve existing hook configuration, require an explicit
+flag, explain native trust/review and restart behavior, support doctor checks
+and removal, and leave the default install unchanged. The next provider
+experiment should then compare the same close-latch skill under controller
+observation only and the real host pre-tool policy. Until that opt-in adapter is
+installed and active, proof-execution compliance is a benchmark promotion
+criterion, not an execution guarantee.

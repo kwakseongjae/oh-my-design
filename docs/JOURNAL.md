@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.204 real-host proof smoke
+- Codex/Luna high와 Claude/Sonnet 5 high에서 first static allow, duplicate static deny를 확인했다.
+- 두 host state 모두 `duplicate_static_closure: 1`; 최초 non-Git Codex fixture는 execution-invalid로 제외했다.
+- adapter는 아직 default install 0이며 Opus는 사용하지 않았다.
+- next는 Claude+Codex project-only opt-in installer 1.9.205다.
+
 ## 2026-08-02 (Codex) · 1.9.203 executable proof adapter
 - session/turn atomic state, bounded lock, TTL을 가진 hook executable을 만들었다.
 - corrupt/stale/busy state의 proof command는 fail-closed하고 edit으로만 복구한다.

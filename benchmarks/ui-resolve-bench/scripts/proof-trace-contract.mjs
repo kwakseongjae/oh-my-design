@@ -16,6 +16,17 @@ const IGNORED_EDIT_BASENAMES = new Set([
 const BROWSER_MECHANISM = /(?:browser-harness(?!\s+--doctor)|google(?:\s+|\\\s*)chrome[^\n]*(?:--headless|--screenshot)|chromium[^\n]*(?:\.launch|--headless|--screenshot)|playwright[^\n]*(?:\.launch|screenshot|capture)|capture_screenshot|screenshot=)/i;
 const BROWSER_DISCOVERY = /(?:browser-harness\s+--doctor|command\s+-v\s+(?:chrom|google-chrome|playwright)|which\s+(?:chrom|google-chrome|playwright|osascript)|ls\s+[^\n]*(?:google\\?\s*chrome|chromium)|find\s+[^\n]*playwright|require\.resolve\(['"]playwright|import\s+playwright)/i;
 
+export function classifyProofCommand(command) {
+  const value = String(command ?? "");
+  const browser = BROWSER_MECHANISM.test(value);
+  const recoveryProbe = BROWSER_DISCOVERY.test(value);
+  return {
+    browser,
+    recovery_probe: recoveryProbe,
+    static_verification: !browser && !recoveryProbe,
+  };
+}
+
 function parseJsonl(text) {
   return text.split("\n").filter(Boolean).flatMap((line) => {
     try {
@@ -118,14 +129,11 @@ export function classifyProofTrace(events) {
     }
     if (action.kind !== "command" || !currentRevision) continue;
     commandSeenInRevision = true;
-    const browser = BROWSER_MECHANISM.test(action.command);
-    const discovery = BROWSER_DISCOVERY.test(action.command);
+    const classification = classifyProofCommand(action.command);
     currentRevision.commands.push({
       index: action.index,
       command: action.command,
-      browser,
-      recovery_probe: discovery,
-      static_verification: !browser && !discovery,
+      ...classification,
     });
   }
 

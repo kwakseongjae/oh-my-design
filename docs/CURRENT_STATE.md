@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.203 executable proof policy adapter complete
+- 갱신: 2026-08-02 · 1.9.204 Claude/Codex real-host proof policy smoke complete
 
 ## 지금 (현재 위치)
 
+- 1.9.204 real-host smoke에서 Codex CLI 0.144.1 + Luna/high와 Claude Code 2.1.219 + Sonnet 5/high가 동일한 실행 경계를 통과했다. 첫 static command는 실행됐고 두 번째 동일 command는 PreToolUse에서 실행 전 차단됐으며 두 state 모두 `duplicate_static_closure: 1`이다. Opus는 사용하지 않았다.
+- 최초 Codex non-Git fixture는 project hook이 로드되지 않아 execution-invalid로 제외했고 fresh Git replacement만 결과에 포함했다. 이 검증은 synthetic host-boundary smoke이며 UI quality/model promotion 근거가 아니다.
+- adapter는 여전히 benchmark-owned이고 default install 0이다. 다음 1.9.205는 Claude Code+Codex project install에만 explicit opt-in proof-policy flag, config 보존 merge, native trust/restart 안내, doctor/removal contract를 설계·구현한다. Cursor/OpenCode에는 dynamic blocker를 추정하지 않는다.
 - 1.9.203 executable hook adapter가 session+turn hash별 state를 atomic rename으로 저장하고 bounded lock으로 concurrent Pre/PostToolUse를 serialize한다.
 - state schema/session/turn/TTL이 맞지 않거나 JSON이 corrupt하거나 lock이 busy면 proof command를 `permissionDecision: deny`로 fail-closed한다. stale state는 새 product edit으로만 복구된다.
 - focused state/mapper/runtime/classifier 28/28, lint/diff green, provider 0이다. adapter는 benchmark-owned이고 사용자 프로젝트에는 아직 설치되지 않는다.
