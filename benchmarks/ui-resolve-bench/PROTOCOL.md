@@ -189,6 +189,35 @@ above.
 - retire or repair ambiguous tasks; a benchmark is also software and must be
   continuously reverified
 
+## 7.1 Cross-model replication
+
+Skill deltas are discovered and compared with one fixed model first. A second
+model is confirmation, not a replacement cell and not extra samples pooled into
+the first model's denominator.
+
+Run a Luna xhigh replication when any of these conditions is true:
+
+- the primary Grok matrix passes the promotion gate;
+- paired results disagree across trials or sit within one diagnostic band of
+  the gate;
+- wall time, reported tokens, or tool behavior changes materially enough to
+  suggest a model-by-skill interaction;
+- the failure is plausibly instruction-following specific rather than a shared
+  product defect.
+
+Freeze task, prompt, starter, DESIGN.md, skill commits, activation, effort,
+timeout, evaluator, trial count, order balance, pacing, and no-fallback policy.
+Prepare Luna xhigh in a new root and run the same arm matrix. Report Grok and
+Luna separately with per-model W/T/L, Reliability@N, time, tokens, and failure
+clusters; then report the direction of the model × skill interaction. Never
+substitute a Luna cell for a failed Grok cell or average both models into one
+headline score.
+
+Promotion requires a non-negative candidate direction on both models. If one
+model passes and the other regresses, stop promotion and classify the result as
+model-sensitive until a preregistered larger replication or third model resolves
+the disagreement.
+
 ## 8. Pilot-to-public sequence
 
 1. Patch smoke: 3 tasks × candidate and control × 3 runs.

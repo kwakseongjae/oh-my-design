@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.180 Luna cross-model contract
+- Luna xhigh를 Grok 대체가 아닌 별도 confirmation matrix로 고정했다.
+- 동일 task/skill/effort/timeout/order를 fresh root에서 복제한다.
+- 모델별 denominator를 분리하고 방향 불일치 시 promotion을 중단한다.
+- 다음 unseen packet transfer부터 trigger 충족 시 Luna 2×3을 연속 실행한다.
+
 ## 2026-08-01 (Codex) · 1.9.179 compact reflow packet pinned
 - exact candidate source `65f068cc…`를 detached clean/publishable로 고정했다.
 - installed skill tree `36216aea…`, activation `01728b95…`다.

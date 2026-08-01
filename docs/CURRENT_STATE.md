@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.179 compact reflow work-packet candidate pinned
+- 갱신: 2026-08-01 · 1.9.180 Luna xhigh cross-model replication contract
 
 ## 지금 (현재 위치)
 
+- 1.9.180에서 Luna xhigh를 교차 모델 확인군으로 정식 편입했다. Grok 1차 matrix와 task/prompt/starter/DESIGN/skill/activation/effort/timeout/evaluator/order/pacing을 동결한 별도 fresh root에서 동일 arm matrix를 복제한다.
+- Grok/Luna denominator와 통계는 합치지 않고 모델별 W/T/L·Reliability@N·시간·토큰·failure cluster를 분리한다. 한 모델 pass/다른 모델 regression이면 model-sensitive로 분류하고 promotion을 중단한다.
+- Luna replication trigger는 Grok promotion gate 통과, trial 간 경계/불일치, material efficiency/tool 변화, model×skill interaction 의심이다. Grok 실패 cell의 Luna 대체는 금지한다.
 - 1.9.179 exact packet candidate를 `omd-portable-reflow-packet-candidate`로 고정했다. detached clean/publishable source는 `65f068cc…`, installed Cursor skill tree SHA는 `36216aea…`, file SHA는 `dca7ae0e…`, activation은 previous와 같은 `01728b95…`다.
 - provider-free `/tmp/u19179-packet-diagnostic`에서 seen print-proof task의 task/starter/source/skill/activation attestation을 고정했다. provider call은 0이며 이 task는 promotion에 재사용하지 않는다.
 - focused pin+bounded parity 2/2가 green이다. 다음은 기존 transfer family와 다른 topology의 unseen non-approval task를 provider generation 전에 contract-lock하는 것이다.
