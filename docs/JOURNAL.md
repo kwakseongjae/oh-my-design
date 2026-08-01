@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.155 bounded reflow v9 implemented
+- 기존 type-role step에 short evidence/summary/metadata role resolution만 추가했다.
+- 선언된 label/metadata role이 없으면 current role을 보존하며 축소·fallback하지 않는다.
+- canonical 7/7, historical parity 1/1, lint green이다.
+- 다음은 v9 commit 뒤 새 unseen task contract-lock이다.
+
 ## 2026-08-01 (Codex) · 1.9.154 Grok previous-vs-v8 complete
 - 6/6 valid: previous 83/77/83, v8 83/85/83, v8 W/T/L 1/2/0이다.
 - v8은 회귀 없이 개선했지만 UI-Resolved 1/3이라 승격을 거절했다.

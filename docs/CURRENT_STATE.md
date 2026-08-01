@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.154 Grok previous-vs-v8 complete, v8 rejected
+- 갱신: 2026-08-01 · 1.9.155 bounded reflow v9 implemented
 
 ## 지금 (현재 위치)
 
+- 1.9.155 canonical `omd-apply`의 기존 type-role step만 v9로 조였다. 짧은 evidence/summary/metadata/supplied-count line도 DESIGN.md의 선언된 label/metadata role을 먼저 적용하며, 호환 role이 없으면 현재 role을 보존하고 작은 값을 추측하지 않는다.
+- closure에 `undeclared_evidence_type_role: 0`을 추가했다. task string/selector/filename/token/evaluator/weight/layout recipe는 추가하지 않았고 v8의 width/protected/semantic 제약을 모두 유지했다.
+- canonical contract 7/7, historical decision-context parity 1/1, lint green이다. 전체 bench file의 2 red는 기존 non-Git Taste/UI UX Pro fixture 환경 문제다. 다음은 v9 commit 뒤 새 unseen non-approval family를 provider generation 전에 잠그는 것이다.
 - `/tmp/u19154` 6/6 valid COMPLETE. previous 83/77/83, v8 83/85/83, paired v8 W/T/L 1/2/0이다. v8 UI-Resolved 1/3, Reliability@3 0%라 승격을 거절했다.
 - v8은 protected empty status geometry 회귀를 3/3 제거했고 paired loss도 0이다. 성공 t2는 85/85였지만 t1/t3은 200%에서 short evidence/summary metadata가 반복 wrap됐다. t1의 filename mid-token split은 단발이라 별도 규칙을 추가하지 않는다.
 - Grok 4.5 High는 두 연속 6-cell matrix를 총 12/12 requested/reported attribution 그대로 완료했다. provider/quota/timeout/retry/fallback/repair/substitution 0이며 현재 사용 가능하다.

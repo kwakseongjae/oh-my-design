@@ -91,6 +91,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("다음 순서로 수행한다");
     expect(skill).toContain("type role을 먼저 확정한다");
     expect(skill).toContain("compact control label은 body/heading 상속값으로 두지 않고 선언된 label role을 적용한다");
+    expect(skill).toContain("짧은 evidence/summary/metadata/supplied-count line");
+    expect(skill).toContain("DESIGN.md에 선언된 label/metadata role이 있으면 그 role을 적용한다");
+    expect(skill).toContain("호환되는 label/metadata role이 선언되지 않았다면 현재 role을 보존");
     expect(skill).toContain("`clamp()`의 더 작은 하한");
     expect(skill).toContain("semantic boundary를 보존한 뒤 측정한다");
     expect(skill).toContain("source selector specificity와 DOM ancestor를 대조해 fail-close");
@@ -120,6 +123,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("compact_control_label_wrap: 0");
     expect(skill).toContain("single_text_scroller: 0");
     expect(skill).toContain("undeclared_type_role_shrink: 0");
+    expect(skill).toContain("undeclared_evidence_type_role: 0");
     expect(skill).toContain("full_row_before_text_workaround: 0");
     expect(skill).toContain("full row를 회수하지 않은 채 wrap·nowrap·font 축소로 넘어가지 않는다");
     expect(skill).toContain("`inline-size budget ledger`");
