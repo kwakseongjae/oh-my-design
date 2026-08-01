@@ -77,6 +77,7 @@
     "bench:ui:collect": "node benchmarks/ui-resolve-bench/scripts/collect-run-records.mjs",
     "bench:ui:export": "node benchmarks/ui-resolve-bench/scripts/export-run-record.mjs",
     "bench:ui:proof-trace": "node benchmarks/ui-resolve-bench/scripts/classify-proof-trace.mjs",
+    "bench:ui:proof-policy": "node benchmarks/ui-resolve-bench/scripts/simulate-proof-policy.mjs",
     "bench:ui:gallery": "node benchmarks/ui-resolve-bench/scripts/build-gallery.mjs",
     "bench:ui:preference": "node benchmarks/ui-resolve-bench/scripts/aggregate-ship-preference.mjs",
     "bench:ui:escalation": "node benchmarks/ui-resolve-bench/scripts/select-human-escalation.mjs",

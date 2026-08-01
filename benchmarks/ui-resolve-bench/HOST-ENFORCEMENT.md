@@ -45,4 +45,24 @@ Primary host references:
 
 ## Next experiment boundary
 
-The next provider experiment should compare the same close-latch skill under two environments: controller observation only, and a real host pre-tool policy if a supported host adapter is implemented. Until that adapter exists, proof-execution compliance is a benchmark promotion criterion, not an execution guarantee.
+The provider-free policy state machine is implemented in
+`scripts/proof-policy-state.mjs`. It accepts semantic product-edit,
+static-proof, browser-proof, browser-recovery, and delivery events. It denies a
+duplicate static closure, browser recovery or second mechanism, proof before a
+product edit, browser proof before static closure, and any proof after delivery
+becomes ready. A corrective product edit reopens one static closure but never
+reopens the consumed browser attempt.
+
+Run a fixture without a provider call:
+
+```bash
+npm run bench:ui:proof-policy -- /path/to/events.json
+```
+
+This is a simulator, not an installed hook. The next integration must map raw
+Claude/Codex hook events into these semantic events and prove parity with the
+existing post-run classifier before the installer may expose an opt-in adapter.
+The next provider experiment should then compare the same close-latch skill
+under controller observation only and the real host pre-tool policy. Until that
+adapter exists, proof-execution compliance is a benchmark promotion criterion,
+not an execution guarantee.

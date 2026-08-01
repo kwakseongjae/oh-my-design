@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.200 native host policy feasibility complete
+- 갱신: 2026-08-02 · 1.9.201 proof policy state machine complete
 
 ## 지금 (현재 위치)
 
+- 1.9.201 provider-free proof policy state machine이 product edit→static closure→browser proof→delivery lifecycle을 deterministic하게 판정한다.
+- duplicate static, browser recovery/second mechanism, proof-before-edit, browser-before-static, ready 이후 verification을 사전 deny한다. corrective product edit은 static 1회만 reopen하고 소진된 browser attempt는 reopen하지 않는다.
+- simulator CLI `bench:ui:proof-policy`와 focused state/classifier 14/14, lint/diff green, provider 0이다. 아직 installed hook은 아니다.
+- 다음 1.9.202는 raw Claude/Codex Pre/PostToolUse payload를 semantic event로 변환하고 post-run classifier와 parity를 입증하는 adapter mapper다.
 - 1.9.200 공식 host contract 조사로 Claude Code와 Codex는 dynamic PreToolUse deny, Cursor는 project CLI permissions, OpenCode는 project permissions/plugin before-hook surface가 있음을 확인했다.
 - native policy surface 존재와 OmD adapter 설치 여부를 별도 필드로 분리했다. 현재 모든 채널의 default OmD adapter는 `not-installed`라서 host 기능만으로 OmD enforcement를 주장하지 않는다.
 - 공식 source links와 channel matrix를 `HOST-ENFORCEMENT.md`에 고정했고 manifest/doctor 정합성 41/41, lint/diff green, provider 0이다.

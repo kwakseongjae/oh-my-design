@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.201 proof policy state machine
+- edit→static→browser→delivery와 corrective edit 예외를 deterministic reducer로 만들었다.
+- duplicate/recovery/after-ready를 실행 전 deny하는 simulator CLI를 추가했다.
+- focused 14/14, lint/diff green, provider 0이다.
+- next는 Claude/Codex raw hook event mapper 1.9.202다.
+
 ## 2026-08-02 (Codex) · 1.9.200 native policy feasibility
 - Claude/Codex dynamic deny와 Cursor/OpenCode policy surface를 공식 문서로 확인했다.
 - host capability와 OmD adapter default를 분리해 미설치 enforcement 주장을 막았다.
