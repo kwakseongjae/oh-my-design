@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.209 runner boundary green; fresh 2×3 replacement next
+- 갱신: 2026-08-02 · 1.9.210 exact replacement PREPARED; provider 0
 
 ## 지금 (현재 위치)
+
+- 1.9.210 exact replacement를 fresh `/tmp/u19210`에 PREPARED했다. 6 cells의 task/prompt/starter/product/DESIGN/skill `1d204afe…`/activation/Codex/Luna high/timeout/Git root equality와 policy-only delta를 재확인했고 provider call 0이다.
+- 양 arm은 동일하게 Codex user config를 로드하고 installed arm만 trust bypass를 받는다. locked plan SHA `2baaf3cf…`, preparation state SHA `2771d3d8…`다. 다음은 `luna-book-r1-controller`부터 max-new 1로 순차 실행한다.
+
 
 - 1.9.209 actual Codex CLI 0.144.1 + Luna/high smoke가 production-installed policy를 통과했다. fresh Git root에서 product edit와 첫 `true`는 실행됐고 동일 두 번째 `true`는 PreToolUse에서 실행 전에 차단됐다. state schema 0.1, decisions 4, `duplicate_static_closure: 1`이 저장됐다.
 - 원인은 `--ignore-user-config`가 hook trust뿐 아니라 project hook discovery까지 끈 것이었다. host-policy 양 arm만 동일하게 user config를 로드하고 installed arm에만 native trust bypass를 준다. ordinary Codex benchmark는 계속 user config를 무시한다. focused 58/58과 lint가 green이다.

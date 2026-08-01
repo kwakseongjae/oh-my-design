@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.210 final replacement prepared
+- fresh `/tmp/u19210`에 exact Luna/high controller vs installed policy 2×3을 준비했다.
+- task/prompt/starter/DESIGN/skill/activation/runtime equality와 policy-only delta가 green이다.
+- provider 0, max-new 1, no retry/fallback/substitution을 유지한다.
+- next는 `luna-book-r1-controller`다.
+
 ## 2026-08-02 (Codex) · 1.9.209 runner boundary green
 - production-installed Codex policy가 Luna/high 실제 실행에서 duplicate static closure를 사전 차단했다.
 - host-policy 양 arm만 user config를 동일 로드하고 installed arm만 trust bypass하도록 runner를 교정했다.
