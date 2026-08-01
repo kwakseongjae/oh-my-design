@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.159 bounded reflow v10 implemented
+- 갱신: 2026-08-01 · 1.9.160 unseen research-sample holdout accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.160 새 unseen non-approval `research-sample-routing-v0.1`을 v10 commit 뒤 provider generation 전에 contract-lock했다. 새 field-research domain이며 3 choices, reversible field-note toggle, handoff form, 3 sample/destination/steward mappings와 4-view geometry+hierarchy를 가진다.
+- compact control naming copy는 semantic label이 아닌 `<span>`으로 구성해 tag가 아닌 paired-control 관계를 검증한다. untouched `/tmp/u19160-sample-starter`는 79/85이며 responsive text geometry만 red, 나머지 function/state/a11y/DESIGN/evidence/overflow/hierarchy는 green이다.
+- provider call은 0이다. 다음은 exact v10 `e3e5c6e…`를 detached candidate로 고정하고 exact previous canonical과 fresh 2×3으로 비교한다.
 - 1.9.159 canonical `omd-apply`의 기존 type-role classification만 v10으로 조였다. compact control copy를 tag가 아니라 paired toggle/button/select를 이름 붙이는 관계로 정의하고, source가 label/strong/span/p여도 선언 label role을 적용한다.
 - selected target/source filename/artifact ID/atomic identifier는 evidence/metadata role demotion에서 제외해 target emphasis를 보존한다. unresolved 관계나 compatible role 부재 시 현재 role을 유지하며 `unclassified_compact_control_copy: 0`을 추가했다.
 - task string/selector/filename/token/evaluator/weight/CSS recipe는 추가하지 않았다. canonical 7/7, historical parity 1/1, lint green이다. 다음은 v10 commit 뒤 새 unseen non-approval family를 잠근다.

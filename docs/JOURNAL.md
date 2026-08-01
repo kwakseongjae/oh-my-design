@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.160 unseen research-sample holdout accepted
+- v10 commit 뒤 새 field-research task를 provider 0 상태로 잠갔다.
+- `<span>` control naming copy가 paired toggle 관계를 테스트한다.
+- untouched starter 79/85; responsive text geometry만 red다.
+- 다음은 exact v10 pin과 Grok previous-vs-v10 2×3이다.
+
 ## 2026-08-01 (Codex) · 1.9.159 bounded reflow v10 implemented
 - compact control copy를 tag가 아닌 paired-control 관계로 분류한다.
 - target/filename/artifact identifier는 evidence-role demotion에서 제외했다.
