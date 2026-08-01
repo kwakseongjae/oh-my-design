@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.164 reflow v11 outcome table
+- scoped copy마다 type/required+available width/line count/proof/status를 강제했다.
+- display heading/body prose는 explicit one-line 계약 없이는 제외한다.
+- canonical 7/7, lint green; bench 46/48의 2 red는 기존 vendor fixture 문제다.
+- 다음은 v11 commit 뒤 explicit-scope unseen task lock이다.
+
 ## 2026-08-01 (Codex) · 1.9.163 text-geometry oracle scope fixed
 - `/tmp/u19162` 6/6 valid: previous/v10 모두 79/79/79, v10 승격 거절.
 - 전체 context가 mobile H1까지 atomic으로 판정하던 scope mismatch를 분리했다.

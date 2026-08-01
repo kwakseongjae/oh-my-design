@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.163 text-geometry oracle scope fixed
+- 갱신: 2026-08-01 · 1.9.164 reflow v11 outcome table implemented
 
 ## 지금 (현재 위치)
 
+- 1.9.164 canonical `omd-apply` reflow closure가 item-level outcome table을 요구한다. one-line 계약이 있는 identifier/control-state/evidence-metadata/relational compact copy만 semantic/type/required-width/390·320·200 available-width/line-count/proof/status를 기록한다.
+- 일반 display heading/body prose는 명시적 one-line 계약이 없으면 표에서 제외하고 benchmark 점수를 위해 shrink/nowrap/축약/rewrite하지 않는다. scoped row 전부 pass이고 unresolved 0일 때만 verified를 보고하며 page width/`width:100%`/overflow 0/육안/서술은 proof가 아니다.
+- closure에 `unmeasured_reflow_outcome_row: 0`, `false_reflow_verification_claim: 0`을 추가했다. canonical 7/7, lint green, bench 46/48이며 2 red는 기존 non-Git Taste/UI UX Pro fixture다. 다음은 v11 commit 뒤 explicit atomic/compact scopes를 쓰는 새 unseen non-approval task를 provider 0 상태로 잠근다.
 - 1.9.163 evaluator가 broad surface와 atomic/compact-copy text scope를 분리한다. future task는 optional `atomic_scope_selectors`와 `compact_copy_selectors`로 display heading/prose를 atomic gate에서 제외하면서 identifier/evidence/control naming copy는 계속 fail-closed한다. legacy task behavior와 historical score는 바꾸지 않는다.
 - provider-free headless contract 6/6, 기존 21 task contract, evaluator/task-contract syntax가 green이다. 다음은 outcome table을 요구하는 bounded v11 skill delta를 commit한 뒤 새 unseen non-approval task를 잠그는 것이다.
 - `/tmp/u19162` 6/6 valid COMPLETE. previous 79/79/79, v10 79/79/79, paired v10 W/T/L 0/3/0이며 두 arm UI-Resolved 0/3, Reliability@3 0%라 v10 승격을 거절했다.

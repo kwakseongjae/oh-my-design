@@ -135,6 +135,13 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("viewport_inline_size → page inset → card border/padding → section inset → reading_inline_size → required_inline_size");
     expect(skill).toContain("inner padding 하나만 줄이고 page/card/section ancestor inset을 남긴 채");
     expect(skill).toContain("unresolved_inline_size_budget: 0");
+    expect(skill).toContain("reflow outcome table로 닫는다");
+    expect(skill).toContain("일반 display heading이나 body prose는 제품 계약이 one-line을 요구하지 않는 한");
+    expect(skill).toContain("`required_inline_size`, `available_inline_size(390|320|200%)`");
+    expect(skill).toContain("`line_count(390|320|200%)`");
+    expect(skill).toContain("viewport 자체의 폭, `width:100%`, page horizontal overflow 0");
+    expect(skill).toContain("unmeasured_reflow_outcome_row: 0");
+    expect(skill).toContain("false_reflow_verification_claim: 0");
     expect(skill).toContain("`initial_visibility`, `own_geometry`");
     expect(skill).toContain("부모 wrapper에만 `min-height`를 주거나 selector를 DOM에 남겼다는 사실");
     expect(skill).toContain("protected_selector_visibility_loss: 0");
