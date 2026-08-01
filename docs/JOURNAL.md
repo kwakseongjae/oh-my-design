@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.153 exact v8 portable candidate pinned
+- detached clean `e33fd219…`를 별도 v8 variant로 고정했다.
+- Cursor installed tree `60b4fe6b…`, activation `01728b95…`, publishable=true다.
+- diagnostic/focused pin green; provider call은 0이다.
+- 다음은 warehouse-transfer에서 Grok previous-vs-v8 2×3 준비다.
+
 ## 2026-08-01 (Codex) · 1.9.152 unseen warehouse-transfer holdout accepted
 - 새 inventory-operations non-approval family를 provider 전에 잠갔다.
 - untouched starter 79/85; function/state/a11y/DESIGN/evidence/hierarchy green이다.

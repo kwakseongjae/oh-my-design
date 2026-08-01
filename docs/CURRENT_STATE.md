@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.152 unseen warehouse-transfer holdout locked
+- 갱신: 2026-08-01 · 1.9.153 exact v8 portable candidate pinned
 
 ## 지금 (현재 위치)
 
+- 1.9.153 exact v8을 `omd-portable-reflow-v8-candidate`로 고정했다. detached clean/publishable source는 `e33fd219…`, Cursor installed skill tree SHA는 `60b4fe6b…`, activation은 previous와 같은 `01728b95…`다.
+- diagnostic `/tmp/u19153-v8-diagnostic-v2`는 provider 0이며 task/starter identity와 source attestation이 green이다. 다음은 locked warehouse-transfer task에서 exact previous vs v8 Grok 2×3을 fresh root에 준비한다.
 - 1.9.152 새 unseen non-approval `warehouse-transfer-routing-v0.1`을 v8 commit 뒤 provider generation 전에 contract-lock했다. 새 inventory-operations domain이며 3 transfer choices, reversible bin-context toggle, handoff-label form, 3 request/warehouse/owner mappings와 4-view geometry+hierarchy를 가진다.
 - untouched `/tmp/u19152-warehouse-starter-v2`는 79/85다. function/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% atomic/short-label geometry만 red다. desktop percentage child widths가 mobile block에 남아 request/warehouse/owner를 세로 파편화하는 것을 320px screenshot으로 확인했다.
 - protected empty form-status는 selector 자체의 baseline min-height를 가진다. injected break/single-text scroller/provider call은 0이다. 다음은 exact v8 `e33fd21…`을 detached candidate로 고정하고 exact previous와 fresh 2×3으로 비교한다.
