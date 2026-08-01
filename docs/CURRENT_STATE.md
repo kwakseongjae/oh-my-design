@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.180 Luna xhigh cross-model replication contract
+- 갱신: 2026-08-02 · 1.9.181 unseen media-clearance task locked
 
 ## 지금 (현재 위치)
 
+- 1.9.181 새 unseen `media-clearance-routing-v0.1`을 provider generation 전에 잠갔다. 기존 표/순번 rail과 다른 asset queue + selected context의 master–detail split-pane topology다.
+- untouched `/tmp/u19181-media-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 390/320/200% atomic·dynamic state·relational compact copy geometry만 red다. provider call은 0이다.
+- task contract 1/1과 lint가 green이다. 다음은 exact previous canonical vs exact packet candidate를 Grok 4.5 High 2×3으로 preregister·prepare하는 것이다. trigger 충족 시 Luna xhigh는 별도 fresh root에서 동일 matrix를 복제한다.
 - 1.9.180에서 Luna xhigh를 교차 모델 확인군으로 정식 편입했다. Grok 1차 matrix와 task/prompt/starter/DESIGN/skill/activation/effort/timeout/evaluator/order/pacing을 동결한 별도 fresh root에서 동일 arm matrix를 복제한다.
 - Grok/Luna denominator와 통계는 합치지 않고 모델별 W/T/L·Reliability@N·시간·토큰·failure cluster를 분리한다. 한 모델 pass/다른 모델 regression이면 model-sensitive로 분류하고 promotion을 중단한다.
 - Luna replication trigger는 Grok promotion gate 통과, trial 간 경계/불일치, material efficiency/tool 변화, model×skill interaction 의심이다. Grok 실패 cell의 Luna 대체는 금지한다.

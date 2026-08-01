@@ -1,0 +1,22 @@
+{
+  "id": "media-clearance-routing-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "A media-rights clearance handoff. Preserve supplied asset, source, owner, territory, selected review lane, source-caption setting, handoff label, and final review action without inventing clearance or publication outcomes or breaking atomic values on narrow screens.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": { "landmarks": { "h1_count": { "exact": 1 }, "main_count": { "exact": 1 }, "nav_count": { "min": 1 }, "footer_count": { "min": 1 } } },
+  "viewports": [{"name":"desktop","width":1440,"height":1000},{"name":"mobile","width":390,"height":844},{"name":"narrow-320","width":320,"height":720},{"name":"css-zoom-surrogate-200","width":640,"height":900,"zoom":2}],
+  "protected_selectors": ["[data-bench='lane-option']","[data-bench='caption-toggle']","[data-bench='handoff-form']","[data-bench='handoff-name']","[data-bench='form-status']","[data-bench='asset-row']","[data-bench='compact-control-copy']","[data-bench-design-role='clearance-board']","[data-bench-decision-role='context']","[data-bench-decision-role='target']","[data-bench-decision-role='evidence']","[data-bench-decision-role='state']","[data-bench-decision-role='action']"],
+  "protected_hook_counts": {"[data-bench='lane-option']":3,"[data-bench='caption-toggle']":1,"[data-bench='handoff-form']":1,"[data-bench='handoff-name']":1,"[data-bench='form-status']":1,"[data-bench='asset-row']":4,"[data-bench='compact-control-copy']":1,"[data-bench-design-role='clearance-board']":1,"[data-bench-decision-role='context']":1,"[data-bench-decision-role='target']":1,"[data-bench-decision-role='evidence']":1,"[data-bench-decision-role='state']":1,"[data-bench-decision-role='action']":1},
+  "journey_oracle": {"choice":{"selector":"[data-bench='lane-option']","value_attribute":"data-lane","body_dataset":"lane","values":["rights","territory","caption"],"count":3,"initial":"rights","selected":"territory"},"toggle":{"selector":"[data-bench='caption-toggle']"},"form":{"form_selector":"[data-bench='handoff-form']","field_selector":"[data-bench='handoff-name']","status_selector":"[data-bench='form-status']","invalid_value":"","valid_value":"Autumn campaign clearance"}},
+  "text_geometry_oracle": {"viewports":["mobile","narrow-320","css-zoom-surrogate-200"],"scope_selectors":["[data-bench='asset-row']","[data-bench-decision-role='context']"],"atomic_scope_selectors":["[data-bench='asset-row']","[data-bench-decision-role='target']","[data-bench-decision-role='evidence']","[data-bench-decision-role='state']"],"compact_copy_selectors":["[data-bench='compact-control-copy']"],"max_short_text_chars":40,"max_short_text_lines":1},
+  "decision_hierarchy_oracle": {"viewports":["desktop","mobile","narrow-320","css-zoom-surrogate-200"],"minimum_action_gap_px":8,"roles":{"container":"[data-bench-decision-role='context']","target":"[data-bench-decision-role='target']","evidence":"[data-bench-decision-role='evidence']","state":"[data-bench-decision-role='state']","action":"[data-bench-decision-role='action']"}},
+  "protected_unknown_patterns": ["\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b","\\b(?:fully cleared|publication approved|rights secured|legally approved)\\b","\\btrusted by\\b","[★☆]{3,}"],
+  "protected_known_patterns": ["asset-campaign-hero-2409.tif","4 supplied assets · 3 territories"],
+  "protected_unknown_selectors": ["blockquote","[class*='testimonial' i]","[class*='logo-wall' i]","[class*='social-proof' i]"],
+  "design_oracle": {"page_background":"#EEEDE9","primary_action":"#263F53","accent":"#9A513F","ink":"#20262B","surface":"#FFFFFF","border":"#C9C7C0","muted_text":"#62686C","card_radius_px":2,"control_radius_px":3,"font_family":{"body_any":["Arial"],"display_any":["Georgia"]},"selectors":{"primary_action":"[data-primary-action]","card":"[data-bench-design-role='clearance-board']","display":"h1"}}
+}

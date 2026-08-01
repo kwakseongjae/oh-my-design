@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.181 media-clearance holdout locked
+- 새 master–detail split-pane unseen task를 provider 전에 고정했다.
+- untouched starter 79/85; responsive geometry만 390/320/200% red다.
+- task contract/lint/browser baseline green, provider 0.
+- 다음은 previous vs packet Grok 2×3 preregistration이다.
+
 ## 2026-08-01 (Codex) · 1.9.180 Luna cross-model contract
 - Luna xhigh를 Grok 대체가 아닌 별도 confirmation matrix로 고정했다.
 - 동일 task/skill/effort/timeout/order를 fresh root에서 복제한다.
