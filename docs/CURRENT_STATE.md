@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.174 bounded v13 final-selector closure
+- 갱신: 2026-08-01 · 1.9.175 exact v13 candidate pinned
 
 ## 지금 (현재 위치)
 
+- 1.9.175 exact v13을 `omd-portable-reflow-v13-candidate`로 고정했다. detached clean/publishable source는 `6baa5536…`, installed Cursor skill tree SHA는 `bbb7903e…`, file SHA는 `b9d2a0a0…`, activation은 previous와 같은 `01728b95…`다.
+- provider-free `/tmp/u19175-v13-diagnostic`에서 seen audio task/starter/source/skill attestation을 고정했으며 provider call은 0이다. focused candidate pin 1/1과 lint가 green이다.
+- 다음은 다른 topology와 dynamic one-line state를 가진 새 unseen non-approval task를 provider generation 전에 잠근 뒤 exact previous vs v13 Grok 2×3을 준비한다.
 - 1.9.174 bounded v13이 manifest one-line authority를 final selector의 실제 wrap decision으로 닫는다. 종료 상태는 measured 1-line+overflow/clipping 0, existing measured evidence가 있는 explicit selector-level nowrap, 또는 honest unresolved 셋뿐이다.
 - dynamic row는 render/template/state map의 longest string을 확인하며 자연-wrap 기대, 부모 `width:100%`, 작은 font, initial string만 본 source claim은 closure가 아니다. 새 counters는 `implicit_one_line_selector`, `one_line_authority_without_realization`, `source_claim_without_selector_decision`이다.
 - task string/selector/content threshold/CSS recipe/token/evaluator weight/inventory category는 추가하지 않았다. focused 7/7, lint green, full unit 348 pass/1 skip/2 red다. 두 red는 기존 non-Git Taste/UI UX Pro vendor fixture infrastructure다.

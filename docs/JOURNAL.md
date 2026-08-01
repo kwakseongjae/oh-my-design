@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.175 exact v13 candidate pinned
+- detached clean/publishable source `6baa5536…`를 고정했다.
+- installed tree `bbb7903e…`, file `b9d2a0a0…`, activation parity를 확인했다.
+- seen audio diagnostic provider 0; candidate pin 1/1 + lint green.
+- 다음은 새 unseen dynamic-state transfer task다.
+
 ## 2026-08-01 (Codex) · 1.9.174 bounded v13 final-selector closure
 - manifest one-line authority를 final selector decision으로 닫았다.
 - measured pass / measured-safe nowrap / unresolved 외의 prose pass를 금지했다.
