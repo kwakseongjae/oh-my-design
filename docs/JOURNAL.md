@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.176 unseen print-proof holdout locked
+- 새 prepress numbered-manifest task를 provider 0으로 고정했다.
+- 4 mappings, 3 routes, source-note toggle, dynamic state, handoff form을 보존한다.
+- untouched starter 79/85; scoped responsive geometry만 red다.
+- 다음은 exact previous vs v13 Grok 2×3 preregistration이다.
+
 ## 2026-08-01 (Codex) · 1.9.175 exact v13 candidate pinned
 - detached clean/publishable source `6baa5536…`를 고정했다.
 - installed tree `bbb7903e…`, file `b9d2a0a0…`, activation parity를 확인했다.

@@ -1,0 +1,38 @@
+{
+  "id": "print-proof-routing-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "A print-proof routing handoff for a prepress team. Compare whether the result preserves supplied proof, press, owner, and window identifiers, selected review route, source-note setting, handoff name, and final review action without inventing press, approval, print, legal, or delivery outcomes or breaking atomic values on narrow screens.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": { "landmarks": { "h1_count": { "exact": 1 }, "main_count": { "exact": 1 }, "nav_count": { "min": 1 }, "footer_count": { "min": 1 } } },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": ["[data-bench='route-option']", "[data-bench='source-note-toggle']", "[data-bench='handoff-form']", "[data-bench='handoff-name']", "[data-bench='form-status']", "[data-bench='proof-item']", "[data-bench='compact-control-copy']", "[data-bench-design-role='proof-board']", "[data-bench-decision-role='context']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']", "[data-bench-decision-role='action']"],
+  "protected_hook_counts": {"[data-bench='route-option']": 3, "[data-bench='source-note-toggle']": 1, "[data-bench='handoff-form']": 1, "[data-bench='handoff-name']": 1, "[data-bench='form-status']": 1, "[data-bench='proof-item']": 4, "[data-bench='compact-control-copy']": 1, "[data-bench-design-role='proof-board']": 1, "[data-bench-decision-role='context']": 1, "[data-bench-decision-role='target']": 1, "[data-bench-decision-role='evidence']": 1, "[data-bench-decision-role='state']": 1, "[data-bench-decision-role='action']": 1},
+  "journey_oracle": {
+    "choice": { "selector": "[data-bench='route-option']", "value_attribute": "data-route", "body_dataset": "mode", "values": ["imposition", "color", "legal"], "count": 3, "initial": "imposition", "selected": "color" },
+    "toggle": { "selector": "[data-bench='source-note-toggle']" },
+    "form": { "form_selector": "[data-bench='handoff-form']", "field_selector": "[data-bench='handoff-name']", "status_selector": "[data-bench='form-status']", "invalid_value": "", "valid_value": "August proof handoff" }
+  },
+  "text_geometry_oracle": {
+    "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "scope_selectors": ["[data-bench='proof-item']", "[data-bench-decision-role='context']"],
+    "atomic_scope_selectors": ["[data-bench='proof-item']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']"],
+    "compact_copy_selectors": ["[data-bench='compact-control-copy']"],
+    "max_short_text_chars": 40,
+    "max_short_text_lines": 1
+  },
+  "decision_hierarchy_oracle": { "viewports": ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"], "minimum_action_gap_px": 8, "roles": { "container": "[data-bench-decision-role='context']", "target": "[data-bench-decision-role='target']", "evidence": "[data-bench-decision-role='evidence']", "state": "[data-bench-decision-role='state']", "action": "[data-bench-decision-role='action']" } },
+  "protected_unknown_patterns": ["\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b", "\\b(?:best|fastest|leading|top-rated|award-winning)\\s+(?:print|proof|press|tool|platform)\\b", "\\btrusted by\\b", "\\b(?:fully approved|print complete|press accepted|legally cleared|flawless proof)\\b", "\\b\\d[\\d,]*\\+?\\s+(?:customers|studios|proofs|presses|deliveries)\\b", "[★☆]{3,}"],
+  "protected_known_patterns": ["proof-cover-wrap-0817", "4 supplied proofs · CMYK PDF/X-4"],
+  "protected_unknown_selectors": ["blockquote", "[class*='testimonial' i]", "[class*='logo-wall' i]", "[class*='social-proof' i]"],
+  "design_oracle": { "page_background": "#E8EAED", "primary_action": "#234F68", "accent": "#8B4337", "ink": "#1D252C", "surface": "#FFFFFF", "border": "#C4CBD1", "muted_text": "#606A73", "card_radius_px": 0, "control_radius_px": 3, "font_family": { "body_any": ["Verdana"], "display_any": ["Times New Roman"] }, "selectors": { "primary_action": "[data-primary-action]", "card": "[data-bench-design-role='proof-board']", "display": "h1" } }
+}

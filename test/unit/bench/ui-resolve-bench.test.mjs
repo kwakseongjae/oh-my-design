@@ -29,6 +29,7 @@ const environmentSecretTaskId = "environment-secret-mapping-v0.1";
 const webhookDestinationTaskId = "webhook-destination-routing-v0.1";
 const auditExportTaskId = "audit-export-delivery-v0.1";
 const editorialBriefTaskId = "editorial-brief-routing-v0.1";
+const printProofTaskId = "print-proof-routing-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1020,6 +1021,37 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
     expect(starter).toContain("source.citydesk.2026-081");
     expect(starter).toContain('data-bench="compact-control-copy"');
+    expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
+  });
+
+  it("locks an unseen numbered print-proof family for v13 transfer", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", printProofTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { count: 3, initial: "imposition", selected: "color" },
+        toggle: { selector: "[data-bench='source-note-toggle']" },
+        form: { valid_value: "August proof handoff" },
+      },
+      text_geometry_oracle: {
+        atomic_scope_selectors: [
+          "[data-bench='proof-item']",
+          "[data-bench-decision-role='target']",
+          "[data-bench-decision-role='evidence']",
+          "[data-bench-decision-role='state']",
+        ],
+        compact_copy_selectors: ["[data-bench='compact-control-copy']"],
+        max_short_text_lines: 1,
+      },
+    });
+    validateTaskContract(task);
+    const out = prepareVariant("raw-design-md", { task: printProofTaskId, outputName: "print-proof-routing" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="proof-item"/g)).toHaveLength(4);
+    expect(starter).toContain("proof-cover-wrap-0817");
+    expect(starter).toContain("Route: Imposition order · notes off");
     expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
   });
 
