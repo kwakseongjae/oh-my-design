@@ -1763,6 +1763,10 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       valid_state_files: 1,
       denied_decisions: 2,
       denied_reasons: { "duplicate-static-closure": 2 },
+      delivery_ready_state_files: 1,
+      delivery_blocked_state_files: 0,
+      browser_attempts_total: 1,
+      min_browser_attempts_per_state: 1,
       violations: {
         browser_recovery: 0,
         duplicate_static_closure: 2,
@@ -1777,6 +1781,8 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     };
     const gate = {
       require_installed_state: true,
+      require_delivery_ready: true,
+      require_browser_attempt: true,
       max_unblocked_browser_recovery_count: 0,
       max_unblocked_duplicate_static_closure_count: 0,
       max_unblocked_verification_after_ready_count: 0,
@@ -1795,6 +1801,29 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       pass: false,
       reasons: ["duplicate_static_closure-unblocked-limit"],
       observed: { unblocked: { duplicate_static_closure: 1 } },
+    });
+
+    expect(evaluateHostPolicyGate(installation, {
+      ...observed,
+      delivery_ready_state_files: 0,
+      delivery_blocked_state_files: 1,
+      browser_attempts_total: 0,
+      min_browser_attempts_per_state: 0,
+    }, {
+      ...trace,
+      browser_mechanism_count: 0,
+    }, gate)).toMatchObject({
+      pass: false,
+      reasons: [
+        "installed-policy-delivery-incomplete",
+        "installed-policy-browser-attempt-missing",
+      ],
+      observed: {
+        delivery_ready_state_files: 0,
+        delivery_blocked_state_files: 1,
+        browser_attempts_total: 0,
+        min_browser_attempts_per_state: 0,
+      },
     });
   });
 

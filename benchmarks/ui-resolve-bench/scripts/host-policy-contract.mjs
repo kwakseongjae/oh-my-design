@@ -160,6 +160,10 @@ export function summarizeHostPolicyStates(workspace) {
       decisions: 0,
       denied_decisions: 0,
       denied_reasons: {},
+      delivery_ready_state_files: 0,
+      delivery_blocked_state_files: 0,
+      browser_attempts_total: 0,
+      min_browser_attempts_per_state: null,
       violations: {
         browser_recovery: 0,
         duplicate_static_closure: 0,
@@ -179,6 +183,10 @@ export function summarizeHostPolicyStates(workspace) {
     decisions: 0,
     denied_decisions: 0,
     denied_reasons: {},
+    delivery_ready_state_files: 0,
+    delivery_blocked_state_files: 0,
+    browser_attempts_total: 0,
+    min_browser_attempts_per_state: null,
     violations: {
       browser_recovery: 0,
       duplicate_static_closure: 0,
@@ -194,6 +202,16 @@ export function summarizeHostPolicyStates(workspace) {
     try { parsed = JSON.parse(raw); } catch { continue; }
     if (parsed?.schema_version !== "0.1" || !Array.isArray(parsed?.state?.decisions)) continue;
     summary.valid_state_files += 1;
+    if (parsed.state.delivery === "ready") summary.delivery_ready_state_files += 1;
+    else summary.delivery_blocked_state_files += 1;
+    const browserAttempts = Number.isInteger(parsed.state.browser_attempts)
+      && parsed.state.browser_attempts >= 0
+      ? parsed.state.browser_attempts
+      : 0;
+    summary.browser_attempts_total += browserAttempts;
+    summary.min_browser_attempts_per_state = summary.min_browser_attempts_per_state === null
+      ? browserAttempts
+      : Math.min(summary.min_browser_attempts_per_state, browserAttempts);
     for (const decision of parsed.state.decisions) {
       summary.decisions += 1;
       if (decision?.allow === false) {
@@ -233,6 +251,24 @@ export function evaluateHostPolicyGate(installation, observed, proofTrace, gate)
   ) {
     reasons.push("installed-policy-state-invalid");
   }
+  if (
+    gate.require_delivery_ready === true
+    && (
+      observed?.valid_state_files < 1
+      || observed.delivery_ready_state_files !== observed.valid_state_files
+    )
+  ) {
+    reasons.push("installed-policy-delivery-incomplete");
+  }
+  if (
+    gate.require_browser_attempt === true
+    && (
+      observed?.valid_state_files < 1
+      || observed.min_browser_attempts_per_state < 1
+    )
+  ) {
+    reasons.push("installed-policy-browser-attempt-missing");
+  }
   if (proofTrace?.analyzable !== true) reasons.push("proof-trace-not-analyzable");
   const unblocked = {
     browser_recovery: Math.max(
@@ -268,11 +304,17 @@ export function evaluateHostPolicyGate(installation, observed, proofTrace, gate)
       state_files: observed?.state_files ?? 0,
       denied_decisions: observed?.denied_decisions ?? 0,
       denied_reasons: observed?.denied_reasons ?? {},
+      delivery_ready_state_files: observed?.delivery_ready_state_files ?? 0,
+      delivery_blocked_state_files: observed?.delivery_blocked_state_files ?? 0,
+      browser_attempts_total: observed?.browser_attempts_total ?? 0,
+      min_browser_attempts_per_state: observed?.min_browser_attempts_per_state ?? null,
       violations: observed?.violations ?? null,
       unblocked,
     },
     limits: {
       require_installed_state: gate.require_installed_state,
+      require_delivery_ready: gate.require_delivery_ready === true,
+      require_browser_attempt: gate.require_browser_attempt === true,
       max_unblocked_browser_recovery_count: gate.max_unblocked_browser_recovery_count,
       max_unblocked_duplicate_static_closure_count: gate.max_unblocked_duplicate_static_closure_count,
       max_unblocked_verification_after_ready_count: gate.max_unblocked_verification_after_ready_count,

@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.217 caption-cue host-policy comparison PREPARED; first cell next
+- 갱신: 2026-08-02 · 1.9.218 caption-cue comparison COMPLETE; incomplete proof gate fixed
 
 ## 지금 (현재 위치)
+
+- `/private/tmp/u19216` 1.9.216 comparison은 6/6 valid COMPLETE다. controller 81/81/79, policy 79/79/83, 양 arm UI-Resolved 0/3이다. paired objective delta -2/-2/+4(W/T/L 1/0/2), mean 0, median -2라 broader/default promotion은 HOLD다.
+- controller duplicate static은 3/2/1이고 proof compliance 0/3; installed arm은 unblocked violation 0/3이다. installed mean wall -10.9%, median wall -1.3%지만 mean token +17.8%, median token +8.3%다.
+- completion audit에서 installed 3번째가 `delivery:blocked`, `browser_attempts:0`인데 original gate가 pass한 누락을 발견했다. 1.9.218은 ready/blocked state와 browser attempts를 집계하고 future gate의 `require_delivery_ready`/`require_browser_attempt`를 지원한다. 실제 누락 fixture는 두 reason으로 fail-closed한다.
+- focused host-policy tests 6/6, 관련 suite 124/126(2 red는 동일 external Taste/UI UX Pro vendor Git precondition), lint/build가 green이다. 기존 1.9.216 gate/score는 소급 수정하지 않고 findings에 별도 기록했다. 다음은 final-response boundary로 browser proof completion을 강제할 공식 Codex hook surface가 있는지 provider-free 조사한다.
 
 - 1.9.217에서 fresh `/private/tmp/u19216` 6 cells를 provider call 0으로 PREPARED했다. core prompt `f7a397e2…`, runtime prompt `76162033…`, product `4a333328…`, skill `7336c037…`, activation `79911390…`, Codex/Luna high/900초/Git root가 전부 동일하다.
 - controller는 hook 0, installed arm은 production-rendered policy hook+valid attestation만 갖는다. locked plan SHA `e608829f…`, preparation state SHA `d3c483f9…`; sole delta와 user-config/hook-trust 경계를 재확인했다.

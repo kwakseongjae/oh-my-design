@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.218 completion gate fixed
+- caption comparison 6/6: controller 81/81/79, policy 79/79/83, UI-Resolved 양쪽 0/3이다.
+- policy는 unblocked violation 0이지만 1/3이 browser 없이 delivery blocked로 종료했다.
+- future gate에 delivery-ready/browser-attempt 필수를 추가했고 promotion은 HOLD다.
+
 ## 2026-08-02 (Codex) · 1.9.217 fresh matrix prepared
 - `/private/tmp/u19216`의 6 Git cells를 provider call 0으로 준비했다.
 - prompt/product/skill/model/effort/timeout equality와 policy-only delta가 green이다.

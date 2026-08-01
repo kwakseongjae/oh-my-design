@@ -60,6 +60,40 @@ describe("UI-Resolve run matrix preparation", () => {
     expect(validateRunMatrixPlan(plan()).cells).toHaveLength(1);
   });
 
+  it("validates optional installed host-policy completion gates", () => {
+    const common = {
+      task_id: "caption-cue-timing-review-v0.1",
+      variant_id: "omd-portable-proof-close-latch-candidate",
+      runtime: "codex",
+      model_id: "gpt-5.6-luna",
+      effort: "high",
+      timeout_seconds: 900,
+      trial_index: 1,
+    };
+    const current = plan({
+      host_policy_comparison: {
+        target_runtime: "codex",
+        sole_arm_delta: "project-proof-policy-installation",
+        require_installed_state: true,
+        require_delivery_ready: true,
+        require_browser_attempt: true,
+        max_unblocked_browser_recovery_count: 0,
+        max_unblocked_duplicate_static_closure_count: 0,
+        max_unblocked_verification_after_ready_count: 0,
+      },
+      cells: [
+        { ...common, id: "controller", system_id: "controller", host_policy_mode: "controller-observation" },
+        { ...common, id: "policy", system_id: "policy", host_policy_mode: "installed-opt-in" },
+      ],
+    });
+    expect(validateRunMatrixPlan(current).host_policy_comparison).toMatchObject({
+      require_delivery_ready: true,
+      require_browser_attempt: true,
+    });
+    current.host_policy_comparison.require_delivery_ready = "yes";
+    expect(() => validateRunMatrixPlan(current)).toThrow("require_delivery_ready must be boolean");
+  });
+
   it("accepts schema 0.2 only with suite, product, and purpose provenance", () => {
     const current = plan({
       schema_version: "0.2",

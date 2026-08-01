@@ -247,6 +247,11 @@ export function validateRunMatrixPlan(plan) {
     if (comparison.require_installed_state !== true) {
       throw new Error("matrix host_policy_comparison.require_installed_state must be true");
     }
+    for (const field of ["require_delivery_ready", "require_browser_attempt"]) {
+      if (comparison[field] !== undefined && typeof comparison[field] !== "boolean") {
+        throw new Error(`matrix host_policy_comparison.${field} must be boolean`);
+      }
+    }
     for (const field of [
       "max_unblocked_browser_recovery_count",
       "max_unblocked_duplicate_static_closure_count",
