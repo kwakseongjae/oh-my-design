@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.149 exact v7 portable candidate pinned
+- detached clean `0b81b526…`를 별도 v7 variant로 고정했다.
+- Cursor installed tree `079c32e6…`, activation `01728b95…`, publishable=true다.
+- focused pin test와 lint green; provider call은 0이다.
+- 다음은 unseen support-routing에서 Grok previous-vs-v7 2×3 준비다.
+
 ## 2026-08-01 (Codex) · 1.9.148 unseen support-routing holdout accepted
 - 새 customer-support operations non-approval family를 provider 전에 잠갔다.
 - untouched starter 79/85; function/state/a11y/DESIGN/evidence/hierarchy green이다.
