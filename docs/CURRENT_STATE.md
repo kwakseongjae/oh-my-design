@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.214 real-host outcome smoke PASS; unseen task contract next
+- 갱신: 2026-08-02 · 1.9.215 caption-cue unseen task LOCKED; exact comparison preregistration next
 
 ## 지금 (현재 위치)
+
+- 1.9.215 새 unseen non-approval `caption-cue-timing-review-v0.1`을 provider generation 전에 잠갔다. dark editorial timing rail, 5 cue/speaker+in→out pairs, 3 timebase choices, boundary-snap toggle, cue-set form, 4-view geometry/hierarchy contract다.
+- untouched starter는 79/85다. contract/design/state/a11y/evidence와 desktop geometry/targets는 green이고 390/320/200%의 identifier·timecode·compact-label text geometry만 red다. prompt SHA `f7a397e2…`, starter tree SHA `4a333328…`, provider call 0이다.
+- 다음 1.9.216은 exact Codex/Luna high controller vs installed opt-in policy 2×3 preregistration이다. sole delta는 project proof-policy installation이며 task/prompt/starter/DESIGN/model/effort/timeout/runtime은 동일해야 한다.
 
 - 1.9.214 fresh `/private/tmp/omd-proof-policy-outcome-smoke-1.9.214` actual Codex 0.144.1 + Luna/high replacement가 PASS했다. out-of-order browser deny→static 1회→browser 1회→종료이고 later tool call 0, violation 0이다.
 - exit 0 static string은 `static-closure-observed`, exit 1 browser string은 `browser-proof-unresolved`로 저장돼 host가 주지 않은 success를 주장하지 않는다. state는 delivery ready이며 6 decisions/browser attempt 1이다.

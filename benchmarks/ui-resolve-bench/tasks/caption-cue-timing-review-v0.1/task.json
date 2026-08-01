@@ -1,0 +1,128 @@
+{
+  "id": "caption-cue-timing-review-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "A caption-cue timing review for an editorial accessibility team. Preserve supplied cue, speaker, in, out, source-rate, selected timebase, boundary-snap setting, review-set name, and final review facts without inventing transcript, translation, playback, accessibility, editorial, approval, publishing, or delivery outcomes or breaking atomic timecodes and identifiers on narrow screens.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": {
+    "landmarks": {
+      "h1_count": { "exact": 1 },
+      "main_count": { "exact": 1 },
+      "nav_count": { "min": 1 },
+      "footer_count": { "min": 1 }
+    }
+  },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='timebase-option']",
+    "[data-bench='boundary-toggle']",
+    "[data-bench='cue-form']",
+    "[data-bench='cue-set-name']",
+    "[data-bench='form-status']",
+    "[data-bench='cue-item']",
+    "[data-bench='cue-identity']",
+    "[data-bench='timecode-pair']",
+    "[data-bench='compact-control-copy']",
+    "[data-bench-design-role='cue-timeline']",
+    "[data-bench-decision-role='context']",
+    "[data-bench-decision-role='target']",
+    "[data-bench-decision-role='evidence']",
+    "[data-bench-decision-role='state']",
+    "[data-bench-decision-role='action']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='timebase-option']": 3,
+    "[data-bench='boundary-toggle']": 1,
+    "[data-bench='cue-form']": 1,
+    "[data-bench='cue-set-name']": 1,
+    "[data-bench='form-status']": 1,
+    "[data-bench='cue-item']": 5,
+    "[data-bench='cue-identity']": 5,
+    "[data-bench='timecode-pair']": 5,
+    "[data-bench='compact-control-copy']": 1,
+    "[data-bench-design-role='cue-timeline']": 1,
+    "[data-bench-decision-role='context']": 1,
+    "[data-bench-decision-role='target']": 1,
+    "[data-bench-decision-role='evidence']": 1,
+    "[data-bench-decision-role='state']": 1,
+    "[data-bench-decision-role='action']": 1
+  },
+  "journey_oracle": {
+    "choice": {
+      "selector": "[data-bench='timebase-option']",
+      "value_attribute": "data-timebase",
+      "body_dataset": "timebase",
+      "values": ["frames", "milliseconds", "source"],
+      "count": 3,
+      "initial": "frames",
+      "selected": "milliseconds"
+    },
+    "toggle": { "selector": "[data-bench='boundary-toggle']" },
+    "form": {
+      "form_selector": "[data-bench='cue-form']",
+      "field_selector": "[data-bench='cue-set-name']",
+      "status_selector": "[data-bench='form-status']",
+      "invalid_value": "",
+      "valid_value": "Episode 04 dialogue cues"
+    }
+  },
+  "text_geometry_oracle": {
+    "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "scope_selectors": ["[data-bench='cue-item']", "[data-bench-decision-role='context']"],
+    "atomic_scope_selectors": [
+      "[data-bench='cue-identity']",
+      "[data-bench='timecode-pair']",
+      "[data-bench-decision-role='target']",
+      "[data-bench-decision-role='evidence']",
+      "[data-bench-decision-role='state']"
+    ],
+    "compact_copy_selectors": ["[data-bench='compact-control-copy']"],
+    "max_short_text_chars": 40,
+    "max_short_text_lines": 1
+  },
+  "decision_hierarchy_oracle": {
+    "viewports": ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "minimum_action_gap_px": 8,
+    "roles": {
+      "container": "[data-bench-decision-role='context']",
+      "target": "[data-bench-decision-role='target']",
+      "evidence": "[data-bench-decision-role='evidence']",
+      "state": "[data-bench-decision-role='state']",
+      "action": "[data-bench-decision-role='action']"
+    }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:transcript approved|captions verified|playback certified|accessibility passed|translation complete|publish ready|delivery confirmed)\\b",
+    "\\btrusted by\\b",
+    "[★☆]{3,}"
+  ],
+  "protected_known_patterns": ["cue-dialogue-014", "5 supplied cues · source 23.976 fps"],
+  "protected_unknown_selectors": ["blockquote", "[class*='testimonial' i]", "[class*='logo-wall' i]", "[class*='social-proof' i]"],
+  "design_oracle": {
+    "page_background": "#111518",
+    "primary_action": "#D7B45A",
+    "accent": "#D96F5F",
+    "ink": "#F2F0EA",
+    "surface": "#1A1F23",
+    "border": "#3D454B",
+    "muted_text": "#A8ADB1",
+    "card_radius_px": 0,
+    "control_radius_px": 2,
+    "font_family": { "body_any": ["Arial"], "display_any": ["Georgia"] },
+    "selectors": {
+      "primary_action": "[data-primary-action]",
+      "card": "[data-bench-design-role='cue-timeline']",
+      "display": "h1"
+    }
+  }
+}

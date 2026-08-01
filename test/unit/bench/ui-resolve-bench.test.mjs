@@ -44,6 +44,7 @@ const mediaClearanceTaskId = "media-clearance-routing-v0.1";
 const studioSlotTaskId = "studio-slot-routing-v0.1";
 const stagePowerPatchTaskId = "stage-power-patch-routing-v0.1";
 const bookSignatureTaskId = "book-signature-imposition-v0.1";
+const captionCueTaskId = "caption-cue-timing-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1247,6 +1248,35 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("signature-s04-front");
     expect(starter).toContain("Binding: Section sewn · creep compensation off");
     expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
+  });
+
+  it("locks an unseen caption-cue timing family before host-policy recovery validation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", captionCueTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { values: ["frames", "milliseconds", "source"], count: 3 },
+        toggle: { selector: "[data-bench='boundary-toggle']" },
+      },
+      text_geometry_oracle: {
+        atomic_scope_selectors: expect.arrayContaining([
+          "[data-bench='cue-identity']",
+          "[data-bench='timecode-pair']",
+        ]),
+        compact_copy_selectors: ["[data-bench='compact-control-copy']"],
+        max_short_text_lines: 1,
+      },
+    });
+    validateTaskContract(task);
+    const out = prepareVariant("raw-design-md", { task: captionCueTaskId, outputName: "caption-cue-timing" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="cue-item"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="timecode-pair"/g)).toHaveLength(5);
+    expect(starter).toContain("cue-dialogue-014");
+    expect(starter).toContain("Timebase: Source frames · boundary snap off");
+    expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
   });
 
   it("locks an unseen feature-flag rollout family for final candidate validation", () => {

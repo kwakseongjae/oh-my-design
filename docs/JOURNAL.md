@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.215 caption-cue contract locked
+- 새 dark editorial timing task를 provider 전에 잠갔다.
+- untouched 79/85; constrained text geometry만 red이고 나머지 gate는 green이다.
+- provider 0; 다음은 exact Luna/high controller vs installed policy 2×3 preregistration이다.
+
 ## 2026-08-02 (Codex) · 1.9.214 outcome smoke pass
 - actual Luna/high가 browser-before-static deny 뒤 정확히 static 1회→browser 1회→종료했다.
 - state는 static observed/browser unresolved/ready, violations 0, 허위 passed 0이다.
