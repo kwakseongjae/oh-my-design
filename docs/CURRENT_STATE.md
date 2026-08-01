@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.183 media-clearance Grok infrastructure replacement prepared
+- 갱신: 2026-08-02 · 1.9.184 media-clearance Luna xhigh replication locked
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19183` Grok 6/6 valid COMPLETE. previous 85/81/85(UI-Resolved 2/3) vs packet 85/85/85(3/3), packet paired W/T/L 1/2/0이며 quality·zero-loss gate는 pass다.
+- previous t2는 320px/200%에서 두 asset file ID를 2줄로 분절했다. packet은 atomic/dynamic/compact/overflow/clipping/overlap/target/evidence/state/hierarchy/a11y/protected-hook failure 0이다.
+- packet mean/median wall은 +11.3%/+22.0%, mean/median tokens는 -9.2%/-7.7%다. strict no-wall-regression gate 때문에 promotion은 HOLD이고, material efficiency interaction trigger로 1.9.184 Luna xhigh exact replication을 fresh `/tmp/u19184`에 잠갔다.
+- Luna는 Grok과 별도 denominator이며 exact task/arms/trials/order/timeout/pacing/no-fallback을 유지한다. 다음은 clean commit 후 prepare/equality attestation이다.
 - fresh `/tmp/u19183` 6/6을 PREPARED했다. task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 exact equality이고 installed skill만 previous `d7a890ac…` vs packet `36216aea…`다. 양 source는 detached clean/publishable이며 provider call은 0이다.
 - 다음 cell은 `grok-media-r1-previous`; invocation당 1셀과 fixed 120s pacing/first-failure stop을 유지한다.
 - `/tmp/u19182` 첫 bounded invocation은 lease와 `running` state만 남기고 controller process가 종료됐다. run result/usage/final/score/record/checkpoint는 0이므로 1.9.182 root 전체를 execution-invalid로 동결하며 same-root resume·lease 삭제·재시도·artifact repair·후속 denominator 결합을 금지한다.
