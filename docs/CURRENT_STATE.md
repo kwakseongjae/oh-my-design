@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.202 Claude/Codex hook mapper complete
+- 갱신: 2026-08-02 · 1.9.203 executable proof policy adapter complete
 
 ## 지금 (현재 위치)
 
+- 1.9.203 executable hook adapter가 session+turn hash별 state를 atomic rename으로 저장하고 bounded lock으로 concurrent Pre/PostToolUse를 serialize한다.
+- state schema/session/turn/TTL이 맞지 않거나 JSON이 corrupt하거나 lock이 busy면 proof command를 `permissionDecision: deny`로 fail-closed한다. stale state는 새 product edit으로만 복구된다.
+- focused state/mapper/runtime/classifier 28/28, lint/diff green, provider 0이다. adapter는 benchmark-owned이고 사용자 프로젝트에는 아직 설치되지 않는다.
+- 다음 1.9.204는 실제 Claude/Codex hook trust·config·payload fixture smoke다. 양 host에서 deny-before-execution이 확인되기 전 install flag를 열지 않는다.
 - 1.9.202 raw Claude/Codex Pre/PostToolUse payload를 공통 proof semantic event로 변환한다. Claude Edit/Write path와 Codex apply_patch marker를 모두 product revision으로 인식한다.
 - tool response가 없거나 실패면 fail-closed로 proof를 reopen하며, deny는 두 host가 공통 지원하는 `hookSpecificOutput.permissionDecision: deny` 형태다.
 - attempted command의 duplicate/recovery/after-ready counts가 post-run classifier와 parity다. focused state/mapper/classifier 22/22, lint/diff green, provider 0이다.

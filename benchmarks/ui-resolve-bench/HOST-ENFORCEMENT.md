@@ -65,9 +65,14 @@ Claude Edit/Write paths and Codex `apply_patch` markers, treats unknown tool
 responses as unsuccessful, emits the common `permissionDecision: deny` shape,
 and has attempted-command violation parity with the post-run classifier.
 
-This is still a simulator, not an installed hook. The next integration must
-persist state per session/turn, reject stale or corrupt state safely, and run a
-real host fixture before the installer may expose an opt-in adapter.
+`scripts/proof-policy-hook.mjs` is now an executable adapter with atomic
+session/turn-scoped state, a bounded cross-process lock, a six-hour default
+expiry, and fail-closed handling for corrupt, stale, or busy state. A new
+product edit can recover stale state; a proof command cannot silently bypass
+it. This remains benchmark-owned and is not installed into user projects.
+
+The next integration must run real Claude and Codex host fixtures, including
+their trust/review flow, before the CLI may expose an opt-in adapter.
 The next provider experiment should then compare the same close-latch skill
 under controller observation only and the real host pre-tool policy. Until that
 adapter exists, proof-execution compliance is a benchmark promotion criterion,

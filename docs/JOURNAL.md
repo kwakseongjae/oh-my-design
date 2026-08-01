@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.203 executable proof adapter
+- session/turn atomic state, bounded lock, TTL을 가진 hook executable을 만들었다.
+- corrupt/stale/busy state의 proof command는 fail-closed하고 edit으로만 복구한다.
+- focused 28/28, lint/diff green, provider 0이다.
+- next는 real Claude/Codex host smoke 1.9.204다.
+
 ## 2026-08-02 (Codex) · 1.9.202 Claude/Codex hook mapper
 - 두 host의 Pre/PostToolUse payload를 공통 proof event로 정규화했다.
 - missing/failed response는 reopen하고 공통 deny shape를 생성한다.
