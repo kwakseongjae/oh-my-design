@@ -911,6 +911,135 @@ describe('install-skills', () => {
     })).toBe(1);
   });
 
+  it('keeps proof policy absent by default and installs it only by explicit opt-in', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+    })).toBe(0);
+    expect(existsSync(join(
+      root,
+      '.claude/hooks/omd-proof-policy/proof-policy-hook.mjs',
+    ))).toBe(false);
+
+    const settingsPath = join(root, '.claude/settings.json');
+    const settings = JSON.parse(readFileSync(settingsPath, 'utf8'));
+    settings.hooks.PreToolUse = [{
+      matcher: 'Bash',
+      hooks: [{ type: 'command', command: 'node ./my-user-hook.mjs' }],
+    }];
+    writeFileSync(settingsPath, `${JSON.stringify(settings, null, 2)}\n`);
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(0);
+    const enabled = JSON.parse(readFileSync(settingsPath, 'utf8'));
+    expect(JSON.stringify(enabled)).toContain('node ./my-user-hook.mjs');
+    expect(JSON.stringify(enabled)).toContain(
+      'node ${CLAUDE_PROJECT_DIR}/.claude/hooks/omd-proof-policy/proof-policy-hook.mjs',
+    );
+    for (const event of ['PreToolUse', 'PostToolUse']) {
+      expect(JSON.stringify(enabled.hooks[event]).match(/omd-proof-policy/g)).toHaveLength(1);
+    }
+  });
+
+  it('installs Codex proof policy only in a Git root and preserves hooks on removal', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['codex'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(1);
+    expect(existsSync(join(root, '.codex/hooks.json'))).toBe(false);
+
+    mkdirSync(join(root, '.git'));
+    mkdirSync(join(root, '.codex'), { recursive: true });
+    writeFileSync(join(root, '.codex/hooks.json'), JSON.stringify({
+      description: 'user config',
+      hooks: {
+        PreToolUse: [{
+          matcher: 'Bash',
+          hooks: [{ type: 'command', command: 'node ./my-codex-hook.mjs' }],
+        }],
+      },
+    }));
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['codex'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(0);
+    const enabled = JSON.parse(readFileSync(join(root, '.codex/hooks.json'), 'utf8'));
+    expect(enabled.description).toBe('user config');
+    expect(JSON.stringify(enabled)).toContain('node ./my-codex-hook.mjs');
+    expect(JSON.stringify(enabled)).toContain('.codex/hooks/omd-proof-policy/proof-policy-hook.mjs');
+    expect(existsSync(join(
+      root,
+      '.codex/hooks/omd-proof-policy/proof-policy-hook.mjs',
+    ))).toBe(true);
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['codex'],
+      all: true,
+      removeProofPolicy: true,
+    })).toBe(0);
+    const removed = JSON.parse(readFileSync(join(root, '.codex/hooks.json'), 'utf8'));
+    expect(JSON.stringify(removed)).toContain('node ./my-codex-hook.mjs');
+    expect(JSON.stringify(removed)).not.toContain('omd-proof-policy');
+    expect(existsSync(join(root, '.codex/hooks/omd-proof-policy'))).toBe(false);
+  });
+
+  it('rejects unsupported or unsafe proof-policy option combinations', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['cursor'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(1);
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+      global: true,
+      proofPolicy: true,
+    })).toBe(1);
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+      proofPolicy: true,
+      removeProofPolicy: true,
+    })).toBe(1);
+  });
+
+  it('does not delete proof-policy executables when its active config cannot be edited safely', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(0);
+    const executable = join(
+      root,
+      '.claude/hooks/omd-proof-policy/proof-policy-hook.mjs',
+    );
+    expect(existsSync(executable)).toBe(true);
+    writeFileSync(join(root, '.claude/settings.json'), '{ invalid json\n');
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+      removeProofPolicy: true,
+    })).toBe(2);
+    expect(existsSync(executable)).toBe(true);
+  });
+
   it('detects installed agents and installs only for those (when present)', async () => {
     mkdirSync(join(root, '.claude'));
     // Codex/OpenCode not installed → only Claude should get skills

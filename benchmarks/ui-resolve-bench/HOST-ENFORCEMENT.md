@@ -10,8 +10,8 @@ No currently installed OmD channel has an OmD-owned pre-tool blocker. The packag
 
 | Surface | Skill contract | Native policy surface | OmD policy adapter | OmD proof trace | Effective claim |
 | --- | --- | --- | --- | --- | --- |
-| Claude Code project install | Advisory + OmD feedback hooks | Dynamic `PreToolUse` deny | Not installed | Not captured | Host feedback |
-| Codex install | Advisory | Dynamic `PreToolUse` deny or command-prefix rules | Not installed | Benchmark controller only | Skill contract |
+| Claude Code project install | Advisory + OmD feedback hooks | Dynamic `PreToolUse` deny | Explicit `--proof-policy`; default off | Not captured | Host feedback by default; pre-tool deny when installed and trusted |
+| Codex install | Advisory | Dynamic `PreToolUse` deny or command-prefix rules | Explicit `--proof-policy`; default off, Git root required | Benchmark controller only | Skill contract by default; pre-tool deny when installed and trusted |
 | OpenCode install | Advisory | Project permissions or plugin before-hook | Not installed | Not captured | Skill contract |
 | Cursor install | Advisory | Project CLI permissions | Not installed | Benchmark controller only | Skill contract |
 | OmD harness checkpoints | Orchestrator must halt for the user | Host-dependent | Not installed | Run artifacts | Orchestrator contract |
@@ -53,9 +53,20 @@ second identical command was denied with one persisted
 load project hooks and is explicitly excluded as execution-invalid. See
 `reports/proof-policy-host-smoke-1.9.204/FINDINGS.md`.
 
-This result validates the shared adapter at those two host boundaries. It does
-not change the installed-channel table above: OmD still installs no proof
-policy adapter by default.
+This result validates the shared adapter at those two host boundaries. OmD
+still installs no proof policy adapter by default. The project-scoped opt-in is:
+
+```bash
+npx oh-my-design-cli@latest install-skills --agent claude-code codex --all --proof-policy
+npx oh-my-design-cli@latest doctor
+```
+
+Restart the selected host and complete its native project-hook review/trust
+flow. To remove only this guard while preserving unrelated hooks:
+
+```bash
+npx oh-my-design-cli@latest install-skills --agent claude-code codex --all --remove-proof-policy
+```
 
 ## Next experiment boundary
 

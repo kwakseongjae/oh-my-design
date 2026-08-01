@@ -72,6 +72,15 @@ describe('omd workflows', () => {
       .toBe(true);
     expect(assurance.channels.every((channel) => channel.host_native_pretool_blocking === false))
       .toBe(true);
+    expect(assurance.channels.filter((channel) => channel.omd_policy_adapter_opt_in).map(
+      (channel) => channel.id,
+    )).toEqual(['claude-code', 'codex']);
+    expect(assurance.channels.find((channel) => channel.id === 'codex')?.omd_policy_adapter_opt_in)
+      .toMatchObject({
+        flag: '--proof-policy',
+        scope: 'project-git-root',
+        remove_flag: '--remove-proof-policy',
+      });
     expect(assurance.channels.find((channel) => channel.id === 'claude-code')?.effective_level)
       .toBe('host-feedback');
     expect(

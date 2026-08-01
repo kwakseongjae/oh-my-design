@@ -101,6 +101,35 @@ npx oh-my-design-cli@latest doctor --global
 
 Global installation does not modify global hooks or settings. Each project still needs its own `DESIGN.md`.
 
+## Optional proof-execution guard
+
+Claude Code and Codex can opt into a narrow project-local guard that prevents an
+agent from repeatedly running the same proof phase after that phase has already
+closed. It is deliberately off by default and does not change Cursor or
+OpenCode behavior.
+
+Run this from a Git project root, selecting only the hosts you actually use:
+
+```bash
+npx oh-my-design-cli@latest install-skills --agent claude-code codex --all --proof-policy
+npx oh-my-design-cli@latest doctor
+```
+
+Restart the selected agent, then review and trust the project hook using that
+host's native hook UI. The guard cannot make an untrusted or disabled hook
+effective. `doctor` checks the installed script set, configuration, and local
+drift without claiming the guard exists on default installations.
+
+To remove only the OmD guard and preserve every unrelated user hook:
+
+```bash
+npx oh-my-design-cli@latest install-skills --agent claude-code codex --all --remove-proof-policy
+```
+
+Codex requires a Git root because its installed command resolves the trusted
+project root before loading the hook. Global and `--skills-only` installations
+intentionally reject both proof-policy flags.
+
 ## Work inside your agent
 
 Once installed, prompts—not repeated CLI commands—are the main interface.

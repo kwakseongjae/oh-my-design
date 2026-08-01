@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.204 Claude/Codex real-host proof policy smoke complete
+- 갱신: 2026-08-02 · 1.9.205 opt-in proof-policy installer complete
 
 ## 지금 (현재 위치)
 
+- 1.9.205에서 Claude Code+Codex project install에만 explicit `--proof-policy`를 열었다. default install, Cursor/OpenCode, global, skills-only는 blocker 0을 유지하고 Codex는 Git root가 아니면 provider/file write 전에 거부한다.
+- installer는 기존 user hook/config를 구조적으로 보존하고 4개 managed runtime module을 설치한다. `omd doctor`는 opt-in 흔적이 있을 때만 event activation, hash/drift, unsafe path, Codex Git root를 검사한다. `--remove-proof-policy`는 exact OmD hook과 self-consistent managed file만 제거한다.
+- focused CLI/doctor/workflow/policy 110/110, lint/build/diff green, npm pack dry-run에 runtime 4개 포함, fresh Git built-CLI fixture에서 doctor-ready + first static allow/duplicate deny를 재확인했다. provider call 0이다.
+- 다음 1.9.206은 실제 installed opt-in policy와 controller-only close-latch를 동일 unseen task에서 exact paired 2×3로 비교할 preregistration이다. 먼저 provider-free source/task/prompt/runtime equality와 gate를 잠그고, host-policy arm의 denied attempt telemetry가 결과에 들어가는지 확인한다.
 - 1.9.204 real-host smoke에서 Codex CLI 0.144.1 + Luna/high와 Claude Code 2.1.219 + Sonnet 5/high가 동일한 실행 경계를 통과했다. 첫 static command는 실행됐고 두 번째 동일 command는 PreToolUse에서 실행 전 차단됐으며 두 state 모두 `duplicate_static_closure: 1`이다. Opus는 사용하지 않았다.
 - 최초 Codex non-Git fixture는 project hook이 로드되지 않아 execution-invalid로 제외했고 fresh Git replacement만 결과에 포함했다. 이 검증은 synthetic host-boundary smoke이며 UI quality/model promotion 근거가 아니다.
 - adapter는 여전히 benchmark-owned이고 default install 0이다. 다음 1.9.205는 Claude Code+Codex project install에만 explicit opt-in proof-policy flag, config 보존 merge, native trust/restart 안내, doctor/removal contract를 설계·구현한다. Cursor/OpenCode에는 dynamic blocker를 추정하지 않는다.

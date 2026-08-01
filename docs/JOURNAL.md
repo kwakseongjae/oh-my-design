@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.205 opt-in proof installer
+- Claude+Codex project-only `--proof-policy`, doctor, safe removal을 구현했다.
+- default/Cursor/OpenCode/global/skills-only blocker는 계속 0이다.
+- focused 110/110, lint/build/pack/install smoke green, provider 0이다.
+- next는 controller-only vs installed-policy exact paired prereg 1.9.206이다.
+
 ## 2026-08-02 (Codex) · 1.9.204 real-host proof smoke
 - Codex/Luna high와 Claude/Sonnet 5 high에서 first static allow, duplicate static deny를 확인했다.
 - 두 host state 모두 `duplicate_static_closure: 1`; 최초 non-Git Codex fixture는 execution-invalid로 제외했다.

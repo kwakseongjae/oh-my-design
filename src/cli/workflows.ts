@@ -30,6 +30,12 @@ export interface WorkflowManifest {
       host_feedback: string[];
       native_policy_surface: string;
       omd_policy_adapter_default: 'not-installed' | 'opt-in';
+      omd_policy_adapter_opt_in?: {
+        flag: '--proof-policy';
+        scope: 'project' | 'project-git-root';
+        enforcement: 'pre-tool-deny-after-host-trust';
+        remove_flag: '--remove-proof-policy';
+      };
       host_native_pretool_blocking: boolean;
       proof_trace: string;
       effective_level: 'skill-contract' | 'host-feedback' | 'host-policy-enforced';

@@ -24,6 +24,11 @@ import {
   renderManagedHook,
 } from './hook-contract.js';
 import { unsafeManagedPath } from './install-path.js';
+import {
+  installProofPolicy,
+  removeProofPolicy,
+  type ProofPolicyTarget,
+} from './proof-policy.js';
 
 export type SkillTarget = 'claude-code' | 'codex' | 'opencode' | 'cursor';
 
@@ -71,6 +76,10 @@ export interface InstallSkillsOptions {
   /** Compatibility mode for Cursor clients without Agent Skills support.
    *  Installs only the legacy project rule + shared catalog for Cursor. */
   cursorRuleOnly?: boolean;
+  /** Opt in to the project-local Claude Code/Codex proof-execution blocker. */
+  proofPolicy?: boolean;
+  /** Remove only the managed proof-policy hooks and files, preserving user hooks. */
+  removeProofPolicy?: boolean;
   /** Install to each channel's user-level directory instead of this project
    *  (`~/.claude`, `~/.agents` + `~/.codex`, or `~/.config/opencode`).
    *  Writes skills + sub-agents (+ data); never touches global hooks/settings.
@@ -1464,11 +1473,43 @@ export async function runInstallSkills(
     );
     return 1;
   }
+  if (opts.proofPolicy && opts.removeProofPolicy) {
+    console.error(pc.red('omd install-skills: --proof-policy and --remove-proof-policy are mutually exclusive.'));
+    return 1;
+  }
+  const proofPolicyTargets = targets.filter(
+    (target): target is ProofPolicyTarget => target === 'claude-code' || target === 'codex',
+  );
+  if ((opts.proofPolicy || opts.removeProofPolicy) && (
+    scope !== 'project' || minimal || proofPolicyTargets.length === 0
+  )) {
+    console.error(pc.red(
+      'omd install-skills: proof policy requires a project-scoped Claude Code or Codex target and cannot be combined with --skills-only.',
+    ));
+    return 1;
+  }
+  if (opts.proofPolicy && proofPolicyTargets.includes('codex') && !existsSync(join(projectRoot, '.git'))) {
+    console.error(pc.red('omd install-skills: Codex proof policy requires a Git project root so its trusted hook can resolve the repository safely.'));
+    return 1;
+  }
 
   // Global scope roots everything at the home dir, so channel plans resolve to
   // ~/.claude, ~/.agents + ~/.codex, or ~/.config/opencode. Project scope uses
   // cwd (or --dir).
   const installRoot = scope === 'global' ? homedir() : projectRoot;
+  if (opts.removeProofPolicy) {
+    const removed = proofPolicyTargets.flatMap((target) => removeProofPolicy(installRoot, target));
+    for (const result of removed) {
+      p.log.message(
+        `  ${STATUS_LABEL[result.status]}  ${pc.dim(result.target.padEnd(12))} ${relative(installRoot, result.destPath)}`,
+      );
+    }
+    const drift = removed.filter((result) => result.status === 'skipped-drift').length;
+    p.outro(drift > 0
+      ? pc.yellow(`Proof policy removal stopped at ${drift} modified or unsafe managed file(s).`)
+      : pc.green('Proof policy removed. Existing user hooks were preserved.'));
+    return drift > 0 ? 2 : 0;
+  }
   // Modern Cursor installs native Agent Skills. The explicit compatibility
   // flag is the only path that suppresses the Cursor skill tree.
   const skillChannelTargets = targets.filter(
@@ -1649,6 +1690,11 @@ export async function runInstallSkills(
     // settings.json (with merge, never clobber user)
     results.push(installSettingsJson(packageRoot, installRoot, force));
   }
+  if (scope === 'project' && opts.proofPolicy) {
+    for (const target of proofPolicyTargets) {
+      results.push(...installProofPolicy(packageRoot, installRoot, target, force));
+    }
+  }
   } // !minimal — skills-only skips data files, hooks, and settings.json
 
   p.log.message(pc.bold('\nResults:'));
@@ -1747,11 +1793,22 @@ export async function runInstallSkills(
         '',
         `${pc.yellow('⚠ Already-running session?')} ${pc.dim('Restart the coding agent after install. Codex must also trust the project before it loads project-local .codex/agents roles.')}`,
       ].join('\n');
+  if (opts.proofPolicy) {
+    p.note(
+      [
+        `${pc.bold('Proof policy is enabled for:')} ${proofPolicyTargets.join(', ')}`,
+        pc.dim('Restart the selected agent. Review/trust the project hook in the host before relying on it.'),
+        pc.dim('Check with `omd doctor`; remove with the same targets plus `--remove-proof-policy`.'),
+      ].join('\n'),
+      'Execution guard',
+    );
+  }
   p.note(nextSteps, 'Next');
 
   // Counts derived from what was actually resolved/installed — never hardcoded,
   // so the outro can't drift from the real skill/agent/hook set (or the README).
-  const hookCount = scope === 'project' && targets.includes('claude-code') ? 4 : 0;
+  const hookCount = (scope === 'project' && targets.includes('claude-code') ? 4 : 0) +
+    (opts.proofPolicy ? proofPolicyTargets.length : 0);
   if (catalogCount > 0) {
     p.log.message(
       pc.bold('Reference catalog: ') +

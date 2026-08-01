@@ -26,6 +26,12 @@
         "host_feedback": ["prompt-context", "session-state", "post-edit-context", "session-fold-in"],
         "native_policy_surface": "pre-tool-hook-deny",
         "omd_policy_adapter_default": "not-installed",
+        "omd_policy_adapter_opt_in": {
+          "flag": "--proof-policy",
+          "scope": "project",
+          "enforcement": "pre-tool-deny-after-host-trust",
+          "remove_flag": "--remove-proof-policy"
+        },
         "host_native_pretool_blocking": false,
         "proof_trace": "not-captured-by-omd",
         "effective_level": "host-feedback"
@@ -36,6 +42,12 @@
         "host_feedback": [],
         "native_policy_surface": "pre-tool-hook-deny-or-execpolicy-rules",
         "omd_policy_adapter_default": "not-installed",
+        "omd_policy_adapter_opt_in": {
+          "flag": "--proof-policy",
+          "scope": "project-git-root",
+          "enforcement": "pre-tool-deny-after-host-trust",
+          "remove_flag": "--remove-proof-policy"
+        },
         "host_native_pretool_blocking": false,
         "proof_trace": "benchmark-controller-only",
         "effective_level": "skill-contract"

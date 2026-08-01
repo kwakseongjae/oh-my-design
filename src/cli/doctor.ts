@@ -13,6 +13,7 @@ import {
   isCurrentManagedHook,
 } from './hook-contract.js';
 import { unsafeManagedPath } from './install-path.js';
+import { proofPolicyIssues } from './proof-policy.js';
 
 export interface DoctorOptions {
   dir?: string;
@@ -350,6 +351,16 @@ function coreIssues(
             channel.skill_contract !== 'advisory' ||
             typeof channel.native_policy_surface !== 'string' ||
             channel.omd_policy_adapter_default !== 'not-installed' ||
+            (
+              channel.omd_policy_adapter_opt_in !== undefined &&
+              (
+                !isJsonObject(channel.omd_policy_adapter_opt_in) ||
+                channel.omd_policy_adapter_opt_in.flag !== '--proof-policy' ||
+                !['project', 'project-git-root'].includes(String(channel.omd_policy_adapter_opt_in.scope)) ||
+                channel.omd_policy_adapter_opt_in.enforcement !== 'pre-tool-deny-after-host-trust' ||
+                channel.omd_policy_adapter_opt_in.remove_flag !== '--remove-proof-policy'
+              )
+            ) ||
             typeof channel.host_native_pretool_blocking !== 'boolean' ||
             typeof channel.effective_level !== 'string',
         ) ||
@@ -872,6 +883,7 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
         ),
         ...claudeAgentIssues(root),
         ...(opts.global ? [] : claudeActivationIssues(root)),
+        ...(opts.global ? [] : proofPolicyIssues(root, 'claude-code')),
       ]
     : [];
   const codexIssues = codexInstalled
@@ -884,6 +896,7 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
           'codex',
         ),
         ...codexAgentIssues(root),
+        ...(opts.global ? [] : proofPolicyIssues(root, 'codex')),
       ]
     : [];
   const opencodeIssues = opencodeInstalled

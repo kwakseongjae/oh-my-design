@@ -429,6 +429,44 @@ describe('omd doctor', () => {
     expect(collectDoctorReport({ dir: root }).state).toBe('ready');
   });
 
+  it('diagnoses opt-in proof-policy drift without claiming it exists by default', async () => {
+    mkdirSync(join(root, '.git'));
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code', 'codex'],
+      all: true,
+    })).toBe(0);
+    let report = collectDoctorReport({ dir: root });
+    expect(report.channels.find((channel) => channel.id === 'claude-code')?.issues)
+      .not.toEqual(expect.arrayContaining([expect.stringContaining('proof-policy')]));
+    expect(report.channels.find((channel) => channel.id === 'codex')?.issues)
+      .not.toEqual(expect.arrayContaining([expect.stringContaining('proof-policy')]));
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code', 'codex'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(0);
+    report = collectDoctorReport({ dir: root });
+    expect(report.channels.find((channel) => channel.id === 'claude-code')?.issues)
+      .not.toEqual(expect.arrayContaining([expect.stringContaining('proof-policy')]));
+    expect(report.channels.find((channel) => channel.id === 'codex')?.issues)
+      .not.toEqual(expect.arrayContaining([expect.stringContaining('proof-policy')]));
+
+    writeFileSync(
+      join(root, '.codex/hooks/omd-proof-policy/proof-policy-state.mjs'),
+      '// locally modified\n',
+    );
+    const codex = collectDoctorReport({ dir: root }).channels.find(
+      (channel) => channel.id === 'codex',
+    );
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues).toContain(
+      'stale or modified codex proof-policy file: proof-policy-state.mjs',
+    );
+  });
+
   it('refuses symlinked Claude hook paths instead of writing through them', async () => {
     installProductSkills(join(root, '.claude', 'skills'), 'claude-code');
     installAgentSet(join(root, '.claude', 'agents'), 'claude');
