@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.154 Grok previous-vs-v8 complete
+- 6/6 valid: previous 83/77/83, v8 83/85/83, v8 W/T/L 1/2/0이다.
+- v8은 회귀 없이 개선했지만 UI-Resolved 1/3이라 승격을 거절했다.
+- 반복 잔여는 200%의 short evidence/summary metadata role 누락으로 좁혀졌다.
+- 다음은 기존 type-role step만 조이는 bounded v9다.
+
 ## 2026-08-01 (Codex) · 1.9.154 Grok previous-vs-v8 prepared
 - fresh `/tmp/u19154`에 exact 2 arms×3 trials를 준비했다.
 - task/prompt/starter/DESIGN/activation/provider controls는 동일하다.

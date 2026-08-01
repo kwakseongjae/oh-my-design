@@ -4,13 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.154 Grok previous-vs-v8 prepared
+- 갱신: 2026-08-01 · 1.9.154 Grok previous-vs-v8 complete, v8 rejected
 
 ## 지금 (현재 위치)
 
-- 1.9.154 exact previous canonical vs v8을 fresh `/tmp/u19154`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
-- 6 cells의 task `0.1.0`, core prompt `477737f4…`, prompt `ce56fd28…`, starter `4f6ec8ea…`, DESIGN `d8b7891d…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. installed Cursor skill만 previous `d7a890ac…` vs v8 `60b4fe6b…`이고 양 source는 exact detached clean/publishable이다.
-- Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new 1·no retry/fallback/repair/substitution으로 잠갔다. 다음은 `grok-warehouse-t1-previous`; 첫 provider/attribution/controller failure에서 `/tmp/u19154`을 동결한다.
+- `/tmp/u19154` 6/6 valid COMPLETE. previous 83/77/83, v8 83/85/83, paired v8 W/T/L 1/2/0이다. v8 UI-Resolved 1/3, Reliability@3 0%라 승격을 거절했다.
+- v8은 protected empty status geometry 회귀를 3/3 제거했고 paired loss도 0이다. 성공 t2는 85/85였지만 t1/t3은 200%에서 short evidence/summary metadata가 반복 wrap됐다. t1의 filename mid-token split은 단발이라 별도 규칙을 추가하지 않는다.
+- Grok 4.5 High는 두 연속 6-cell matrix를 총 12/12 requested/reported attribution 그대로 완료했다. provider/quota/timeout/retry/fallback/repair/substitution 0이며 현재 사용 가능하다.
+- 다음 v9은 기존 type-role 단계만 보강한다. DESIGN.md에 선언된 label/metadata role을 short evidence/summary/supplied-count line에도 먼저 적용하되 role 미만 축소나 새 token은 금지한다. v9 commit 뒤 새로운 unseen non-approval family를 잠근다.
 - 1.9.153 exact v8을 `omd-portable-reflow-v8-candidate`로 고정했다. detached clean/publishable source는 `e33fd219…`, Cursor installed skill tree SHA는 `60b4fe6b…`, activation은 previous와 같은 `01728b95…`다.
 - diagnostic `/tmp/u19153-v8-diagnostic-v2`는 provider 0이며 task/starter identity와 source attestation이 green이다. 다음은 locked warehouse-transfer task에서 exact previous vs v8 Grok 2×3을 fresh root에 준비한다.
 - 1.9.152 새 unseen non-approval `warehouse-transfer-routing-v0.1`을 v8 commit 뒤 provider generation 전에 contract-lock했다. 새 inventory-operations domain이며 3 transfer choices, reversible bin-context toggle, handoff-label form, 3 request/warehouse/owner mappings와 4-view geometry+hierarchy를 가진다.
