@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.144 exact ordered reflow v6 candidate pinned
+- detached clean `d971174…`를 별도 v6 variant로 고정했다.
+- Cursor installed tree SHA `e0c111e0…`, publishable=true를 확인했다.
+- activation은 exact previous와 동일하고 rejected v2-v5는 별도 보존한다.
+- provider 0; 다음은 Luna High/Codex previous-vs-v6 2×3 준비다.
+
 ## 2026-08-01 (Codex) · 1.9.143 unseen certificate-rotation holdout accepted
 - v6 이후 새 infrastructure-rotation ordered-sequence family를 고정했다.
 - untouched starter 79/85; function/state/a11y/DESIGN/evidence/hierarchy green이다.

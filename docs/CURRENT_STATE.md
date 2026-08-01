@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.143 unseen certificate-rotation holdout accepted; provider 0
+- 갱신: 2026-08-01 · 1.9.144 exact ordered reflow v6 candidate pinned; provider 0
 
 ## 지금 (현재 위치)
 
+- 1.9.144 exact v6 candidate를 `omd-portable-reflow-v6-candidate`로 고정했다. detached clean/publishable source는 `d971174a…`, Cursor-adapted installed skill SHA는 `e0c111e0…`이며 exact previous와 activation은 같다. rejected v2-v5는 별도로 보존된다.
+- diagnostic prepare는 provider 0이며 denominator에 포함하지 않는다. 다음은 locked certificate-rotation task에서 exact previous vs v6 2 arms×3 trials를 fresh Luna High/Codex root에 준비하고 equality/attestation을 검증하는 것이다.
 - 1.9.143 새 unseen `certificate-rotation-plan-v0.1`을 v6 commit 뒤 provider generation 전에 contract-lock했다. 새 infrastructure-rotation domain과 ordered `<ol>` sequence 구조이며 3 rollout windows, dual-operator toggle, rotation-label form, 3 service/current/target certificate 관계, 4-view geometry+decision hierarchy를 가진다.
 - untouched `/tmp/u19143-certificate-starter`는 79/85다. task/state/a11y/DESIGN/evidence/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. residual percentage width가 service/certificate IDs를 세로 파편화하고 inherited body type의 compact label이 control과 경쟁하며 320/200% overflow가 발생하는 것을 320px screenshot으로 확인했다.
 - injected break와 single-text scroller는 없다. provider call은 0이다. 다음은 exact v6 `d971174…`를 detached candidate로 고정하고 exact previous canonical과 2 arms×3 trials를 fresh root에서 비교한다.
