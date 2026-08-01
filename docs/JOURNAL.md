@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.146 Grok matrix complete; v6 rejected
+- 6/6 valid: previous 81/77/77, v6 83/85/81, paired v6 W/T/L 3/0/0이다.
+- v6 UI-Resolved 1/3라 Reliability@3 gate를 통과하지 못했다.
+- residual은 full reading width 미회복 뒤 short evidence/control-label wrap이다.
+- Grok probe+장문 6셀 모두 성공; 다음은 bounded width-recovery v7이다.
+
 ## 2026-08-01 (Codex) · 1.9.146 Grok previous-vs-v6 prepared
 - 로그인/catalog와 repository-free probe로 Grok 4.5 High 현재 호출을 확인했다.
 - Luna `/tmp/u19145`는 provider 0으로 보존하고 fresh `/tmp/u19146`을 준비했다.

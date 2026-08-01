@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.146 Grok previous-vs-v6 prepared; benchmark provider 0
+- 갱신: 2026-08-01 · 1.9.146 Grok previous-vs-v6 complete; v6 rejected
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19146` 6/6 valid COMPLETE. previous 81/77/77, v6 83/85/81이며 paired v6 W/T/L 3/0/0이다. 하지만 previous UI-Resolved 0/3, v6 1/3이고 양 Reliability@3는 0%라 v6 승격을 거절했다.
+- v6는 function/state/a11y/DESIGN/evidence/decision hierarchy와 supplied identifiers를 3/3 보존했다. residual은 t1의 `3 supplied services · 1 rollout window` 200% wrap, t3의 같은 evidence 320/200% wrap + `Require dual-operator confirmation` 200% wrap뿐이다. overflow/clipping/injected break/single-text scroller/semantic escape는 0이다.
+- 성공 t2는 mobile selected-plan surface의 lateral margin을 제거해 full reading row를 회복한 뒤 short evidence를 유지했다. t1/t3은 nested card margin/padding을 남기고 inherited 16px label을 사용했다. 다음 v7은 기존 width-recovery 단계만 full-row-before-wrap의 measured invariant로 조인다. task/selector/filename/token/evaluator branch는 추가하지 않는다.
+- Grok은 repository-free probe와 6개 장문 cell을 모두 성공했다. 6/6 reported `Cursor Grok 4.5 High`, failure/timeout/retry/fallback/substitution 0, pacing 5/5와 cache preflight 6/6 green이다. 현재 workload에서 사용 가능하다.
 - Cursor 계정 로그인과 live catalog의 `cursor-grok-4.5-high` 노출을 재확인했다. repository/file/tool-free probe는 exact `OMD_CAPACITY_OK`, reported `Cursor Grok 4.5 High`, exit 0, 5,659ms와 usage를 반환했다. 이는 현재 단일 호출 가용성만 증명하며 benchmark denominator에는 포함하지 않는다.
 - 1.9.146 exact previous canonical vs v6를 fresh `/tmp/u19146`에 PREPARED했다. Luna `/tmp/u19145`는 provider 0 상태로 보존하고 provider scope를 섞지 않았다. Grok matrix는 2 arms×3 trials, previous-first 2/1 balanced이며 benchmark provider call은 0이다.
 - 6 cells의 task `0.1.0`, core prompt `f13515bb…`, prompt `3fecf23c…`, starter `4c631a5f…`, DESIGN `1ac1a370…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. Cursor installed skill file만 previous `22eb96d8…` vs v6 `07c75167…`로 다르며 source는 exact detached clean/publishable이다.
