@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.170 bounded v12 scope manifest
+- pre-edit dynamic state/relational control inventory를 mandatory로 만들었다.
+- final outcome table과 identity/cardinality 1:1 closure를 추가했다.
+- focused 7/7 + lint green; full 347 pass/3 vendor-fixture infra red.
+- 다음은 exact v12 pin 후 새 unseen transfer task다.
+
 ## 2026-08-01 (Codex) · 1.9.169 v11 broadcast transfer rejected
 - previous 81/81/81 vs v11 85/81/81, paired W/T/L 1/2/0.
 - v11 UI-Resolved 1/3; transfer gate failed, release-candidate fold blocked.

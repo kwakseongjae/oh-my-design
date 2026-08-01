@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.169 v11 transfer rejected; bounded scope manifest next
+- 갱신: 2026-08-01 · 1.9.170 v12 reflow scope manifest implemented
 
 ## 지금 (현재 위치)
 
+- 1.9.170 bounded v12가 첫 CSS edit 전 `reflow scope manifest`를 고정한다. DOM뿐 아니라 render function/template literal/state map에서 visible dynamic state row를 찾고, paired control 관계의 compact-control copy를 별도 row로 기록하며, outcome table identity/cardinality와 1:1 대조한다.
+- 새 closure counters는 `unmanifested_dynamic_state_row`, `unmanifested_relational_control_copy`, `scope_manifest_row_loss`다. task string/selector/evaluator/weight/CSS recipe/token은 추가하지 않았다. canonical focused 7/7, lint green이다.
+- full unit은 347 pass/1 skip/3 red다. red는 skill delta와 무관한 vendor fixture infrastructure: pinned vendor 준비 timeout 1건과 `/tmp/omd-ui-skills-bench/vendors`의 non-Git Taste/UI UX Pro fixture 2건이다.
+- 다음은 v12 commit/pin 후 seen broadcast는 provider-free diagnostic으로만 두고, 다른 layout topology/state wording의 새 unseen non-approval task를 generation 전에 잠가 exact previous vs v12 Grok 2×3을 수행한다.
 - `/tmp/u19169` 6/6 valid COMPLETE. previous 81/81/81 vs v11 85/81/81, paired v11 W/T/L 1/2/0이다. v11 UI-Resolved 1/3, Reliability@3 33.3%라 3/3 transfer gate를 실패했고 release-candidate 편입을 보류했다.
 - provider/quota/timeout/retry/fallback/repair/replacement/substitution 0, requested/reported Grok 4.5 High 6/6이다. mean wall은 previous 196,363ms vs v11 203,759ms(+3.8%), mean tokens는 79,310 vs 83,326(+5.1%)이며 설명 통계다.
 - v11 3/3은 four-column mapping과 identifier fragmentation을 고쳤지만 t2/t3이 dynamic state `Mode: Rundown sequence · notes off`를 scoped row/type role로 분류하지 않아 320/200% wrap이 남았다. t2는 relational compact copy도 놓쳤다. required outcome table을 세 final 모두 실제로 내지 않았고 t2/t3은 누락 row를 제외한 source-derived pass를 주장했다.
