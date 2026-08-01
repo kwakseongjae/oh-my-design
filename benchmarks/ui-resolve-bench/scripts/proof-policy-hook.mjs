@@ -15,6 +15,7 @@ import { initialProofPolicyState } from "./proof-policy-state.mjs";
 import {
   applyHookPayload,
   hookCommand,
+  proofPolicyDenyReason,
   proofPolicyHookDecision,
 } from "./proof-policy-hook-mapper.mjs";
 
@@ -97,7 +98,7 @@ function deny(reason) {
     hookSpecificOutput: {
       hookEventName: "PreToolUse",
       permissionDecision: "deny",
-      permissionDecisionReason: `OmD proof policy: ${reason}`,
+      permissionDecisionReason: proofPolicyDenyReason(reason),
     },
   };
 }

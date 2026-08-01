@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.210 host-policy comparison COMPLETE; promotion HOLD
+- 갱신: 2026-08-02 · 1.9.211 recovery guidance COMPLETE; real-host smoke next
 
 ## 지금 (현재 위치)
+
+- 1.9.211에서 proof-policy의 deny payload에 상태별 합법 다음 행동을 추가했다. `static-closure-required`는 static 1회→browser 1회, `duplicate-static-closure`는 static 재시도 금지→열려 있으면 browser 1회/아니면 종료, `verification-after-ready`는 즉시 도구 사용 종료를 안내한다. enforcement/state transition/fail-closed는 바꾸지 않았다.
+- proof-policy focused 22/22, full bench 61/63(2 red는 기존 external vendor Git precondition), lint/build/package dry-run이 green이고 production managed-renderer parity도 통과했다. package 545 files에 3개 proof-policy runtime이 포함된다. provider call은 0이다.
+- 다음 1.9.212는 fresh Git fixture에서 실제 Codex/Luna high가 browser-before-static 거절을 읽고 static 정확히 1회→browser 정확히 1회→종료로 회복하는 synthetic host smoke다. 통과 후에만 새 unseen task의 scored 2×3을 설계하며 book task를 재사용하지 않는다.
 
 - `/tmp/u19210` 1.9.210은 6/6 valid COMPLETE다. controller 81/85/79, UI-Resolved 1/3, duplicate static 1/1/6; installed policy 79/79/81, UI-Resolved 0/3, valid state 3/3, proof compliant 3/3, unblocked violation 0/3이다.
 - installed policy의 matched UI W/T/L은 0/2/1, point delta -2/-6/+2, mean objective -2.35pp다. mean wall -25.4%, mean tokens -26.4%지만 token 이득은 controller 1.08M outlier 영향을 받아 median은 -4.9%다.

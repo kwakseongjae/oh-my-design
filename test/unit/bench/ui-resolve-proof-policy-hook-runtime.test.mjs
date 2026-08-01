@@ -77,7 +77,9 @@ describe("proof policy executable hook", () => {
     const result = handleProofPolicyHook(pre("npm run lint"), { root, now: 130 });
     expect(result.output?.hookSpecificOutput).toMatchObject({
       permissionDecision: "deny",
-      permissionDecisionReason: "OmD proof policy: duplicate-static-closure",
+      permissionDecisionReason: expect.stringContaining(
+        "do not retry static verification; run one browser proof if it is still open",
+      ),
     });
   });
 

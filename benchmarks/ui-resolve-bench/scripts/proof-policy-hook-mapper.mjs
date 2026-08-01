@@ -97,6 +97,17 @@ export function applyHookPayload(previous, payload) {
   return event ? applyProofPolicyEvent(previous, event) : previous;
 }
 
+const DENY_RECOVERY_GUIDANCE = Object.freeze({
+  "static-closure-required": "Next allowed step: run exactly one static verification command, then run one browser proof.",
+  "duplicate-static-closure": "Next allowed step: do not retry static verification; run one browser proof if it is still open, otherwise stop tool use and deliver.",
+  "verification-after-ready": "Next allowed step: stop tool use and deliver the result.",
+});
+
+export function proofPolicyDenyReason(reason) {
+  const guidance = DENY_RECOVERY_GUIDANCE[reason];
+  return `OmD proof policy: ${reason}${guidance ? `. ${guidance}` : ""}`;
+}
+
 export function proofPolicyHookDecision(state) {
   const latest = state.decisions.at(-1);
   if (!latest || latest.allow) return null;
@@ -104,7 +115,7 @@ export function proofPolicyHookDecision(state) {
     hookSpecificOutput: {
       hookEventName: "PreToolUse",
       permissionDecision: "deny",
-      permissionDecisionReason: `OmD proof policy: ${latest.reason}`,
+      permissionDecisionReason: proofPolicyDenyReason(latest.reason),
     },
   };
 }

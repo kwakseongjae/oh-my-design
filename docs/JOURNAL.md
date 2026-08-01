@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.211 recovery guidance complete
+- deny-only proof policy에 상태별 legal-next-action을 추가했고 enforcement는 유지했다.
+- focused 22/22, full bench 61/63(known vendor precondition 2), lint/build/pack이 green이다.
+- provider call 0; 다음은 actual Codex/Luna recovery smoke 1.9.212다.
+
 ## 2026-08-02 (Codex) · 1.9.210 host policy comparison complete
 - fresh Luna/high 2×3이 6/6 valid로 완료됐다.
 - policy는 unblocked violation 0, proof compliant 3/3이지만 UI-Resolved 0/3, point delta -2/-6/+2다.

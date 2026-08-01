@@ -94,9 +94,29 @@ describe("proof policy host hook mapper", () => {
       hookSpecificOutput: {
         hookEventName: "PreToolUse",
         permissionDecision: "deny",
-        permissionDecisionReason: "OmD proof policy: duplicate-static-closure",
+        permissionDecisionReason: "OmD proof policy: duplicate-static-closure. Next allowed step: do not retry static verification; run one browser proof if it is still open, otherwise stop tool use and deliver.",
       },
     });
+  });
+
+  it("returns the legal next transition for out-of-order and ready-state denials", () => {
+    const outOfOrder = run([
+      edit("Edit", { file_path: "/tmp/run/index.html" }),
+      pre("browser-harness capture_screenshot"),
+    ]);
+    expect(proofPolicyHookDecision(outOfOrder)?.hookSpecificOutput.permissionDecisionReason)
+      .toContain("run exactly one static verification command, then run one browser proof");
+
+    const ready = run([
+      edit("Edit", { file_path: "/tmp/run/index.html" }),
+      pre("npm test"),
+      post("npm test"),
+      pre("browser-harness capture_screenshot"),
+      post("browser-harness capture_screenshot"),
+      pre("npm run lint"),
+    ]);
+    expect(proofPolicyHookDecision(ready)?.hookSpecificOutput.permissionDecisionReason)
+      .toContain("stop tool use and deliver the result");
   });
 
   it("denies browser discovery without executing a recovery command", () => {
