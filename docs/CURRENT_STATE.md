@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.173 audio-stem v12 transfer prepared
+- 갱신: 2026-08-01 · 1.9.173 audio-stem v12 transfer rejected
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19173` 6/6 valid COMPLETE. previous 79/79/79 vs v12 85/83/83, paired v12 W/T/L 3/0/0이다. v12 UI-Resolved 1/3, Reliability@3 33.3%라 3/3 transfer gate를 실패했고 release-candidate 편입을 보류했다.
+- v12는 dynamic state와 relational compact-control copy의 scope inventory를 3/3 보존해 v11의 omission을 해결했다. t2/t3은 state를 선언된 12/17 role로 분류했지만 final selector에 one-line rendering을 닫지 않아 200%에서 `Package: Session order · checksums off`가 2줄이 됐다.
+- candidate의 function/state/a11y/evidence/hierarchy/protected hooks/overflow/clipping/overlap은 3/3 green이다. provider/quota/timeout/retry/fallback/repair/replacement/substitution 0, requested/reported Grok 4.5 High 6/6이다.
+- mean wall은 previous 165,247ms vs v12 233,830ms(+41.5%), mean tokens는 70,966 vs 89,841(+26.6%)이며 설명 통계다.
+- 다음 bounded delta는 새 inventory가 아니라 manifest의 one-line authority를 final selector-level decision으로 닫는다. measured one-line, source-proven nowrap+no overflow/clipping, 또는 honest unresolved 중 하나를 강제하고 prose pass claim을 금지한다. seen audio는 provider-free diagnostic만 사용한 뒤 새 unseen transfer task를 잠근다.
 - `/tmp/u19173` 6 cells PREPARED, provider 0이다. task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 동일하고 installed skill만 previous `d7a890ac…` vs v12 `9704a9dd…`다. 양 source exact detached clean/publishable이다.
 - 다음 cell은 `grok-audio-t1-previous`; invocation당 최대 1개와 fixed pacing/stop contract를 유지한다.
 - 1.9.173 exact previous canonical vs v12 transfer를 `/tmp/u19173`에 preregister했다. Cursor/Grok 4.5 High, 2×3, balanced/serial/120s/max-new 1/no retry-fallback-repair-replacement-substitution이다. provider call은 0이다.

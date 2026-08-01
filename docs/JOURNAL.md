@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.173 audio-stem v12 transfer rejected
+- previous 79/79/79 vs v12 85/83/83, paired W/T/L 3/0/0.
+- v12 UI-Resolved 1/3; scope inventory는 해결했지만 200% state wrap이 2/3 남았다.
+- Grok/provider failures 0; v12 wall +41.5%, tokens +26.6%.
+- 다음은 final-selector one-line closure를 추가하는 bounded delta다.
+
 ## 2026-08-01 (Codex) · 1.9.173 audio-stem v12 transfer prepared
 - fresh `/tmp/u19173` 6 cells를 exact contract로 준비했다.
 - installed skill만 previous `d7a890ac…` vs v12 `9704a9dd…`다.
