@@ -3,7 +3,11 @@ import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync } from "node:fs";
 import { isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseArgs, readJson, writeJson } from "./_lib.mjs";
+import { parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
+import {
+  HOST_POLICY_MODES,
+  prepareHostPolicyCell,
+} from "./host-policy-contract.mjs";
 
 const VALID_RUNTIMES = new Set(["codex", "claude-code", "cursor"]);
 const VALID_EFFORTS = new Set(["low", "medium", "high", "xhigh"]);
@@ -229,6 +233,31 @@ export function validateRunMatrixPlan(plan) {
     }
   }
 
+  if (plan.host_policy_comparison !== undefined) {
+    const comparison = plan.host_policy_comparison;
+    if (!comparison || typeof comparison !== "object" || Array.isArray(comparison)) {
+      throw new Error("matrix host_policy_comparison must be an object");
+    }
+    if (comparison.target_runtime !== "codex") {
+      throw new Error("matrix host_policy_comparison.target_runtime must be codex");
+    }
+    if (comparison.sole_arm_delta !== "project-proof-policy-installation") {
+      throw new Error("matrix host_policy_comparison.sole_arm_delta is invalid");
+    }
+    if (comparison.require_installed_state !== true) {
+      throw new Error("matrix host_policy_comparison.require_installed_state must be true");
+    }
+    for (const field of [
+      "max_unblocked_browser_recovery_count",
+      "max_unblocked_duplicate_static_closure_count",
+      "max_unblocked_verification_after_ready_count",
+    ]) {
+      if (!Number.isInteger(comparison[field]) || comparison[field] < 0) {
+        throw new Error(`matrix host_policy_comparison.${field} must be a non-negative integer`);
+      }
+    }
+  }
+
   const ids = new Set();
   const pairKeys = new Set();
   for (const [index, cell] of plan.cells.entries()) {
@@ -250,6 +279,16 @@ export function validateRunMatrixPlan(plan) {
     if (cell.allow_dirty_source !== undefined && typeof cell.allow_dirty_source !== "boolean") {
       throw new Error(`${label}.allow_dirty_source must be boolean`);
     }
+    if (plan.host_policy_comparison) {
+      if (!HOST_POLICY_MODES.includes(cell.host_policy_mode)) {
+        throw new Error(`${label}.host_policy_mode is invalid`);
+      }
+      if (cell.runtime !== plan.host_policy_comparison.target_runtime) {
+        throw new Error(`${label}.runtime must match host_policy_comparison.target_runtime`);
+      }
+    } else if (cell.host_policy_mode !== undefined) {
+      throw new Error(`${label}.host_policy_mode requires matrix host_policy_comparison`);
+    }
     const pairKey = `${cell.task_id}\0${cell.trial_index}\0${cell.system_id}`;
     if (pairKeys.has(pairKey)) throw new Error(`duplicate task/trial/system cell: ${pairKey.replaceAll("\0", "/")}`);
     pairKeys.add(pairKey);
@@ -265,6 +304,28 @@ export function validateRunMatrixPlan(plan) {
     }
     if (targeted.some((cell) => !["codex", "cursor"].includes(cell.runtime))) {
       throw new Error("matrix proof_execution_gates supports only codex or cursor cells");
+    }
+  }
+  if (plan.host_policy_comparison) {
+    const modes = Object.fromEntries(HOST_POLICY_MODES.map((mode) => [
+      mode,
+      plan.cells.filter((cell) => cell.host_policy_mode === mode),
+    ]));
+    if (HOST_POLICY_MODES.some((mode) => modes[mode].length === 0)) {
+      throw new Error("matrix host_policy_comparison must include both policy modes");
+    }
+    const pairing = (cell) => JSON.stringify({
+      task_id: cell.task_id,
+      variant_id: cell.variant_id,
+      model_id: cell.model_id,
+      effort: cell.effort,
+      trial_index: cell.trial_index,
+      timeout_seconds: cell.timeout_seconds,
+    });
+    const observed = modes["controller-observation"].map(pairing).sort();
+    const installed = modes["installed-opt-in"].map(pairing).sort();
+    if (JSON.stringify(observed) !== JSON.stringify(installed)) {
+      throw new Error("matrix host_policy_comparison arms must be exactly paired");
     }
   }
   return plan;
@@ -314,6 +375,29 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
         stdio: "pipe",
       });
       const manifest = readJson(join(workspace, ".benchmark", "manifest.json"));
+      const hostPolicy = plan.host_policy_comparison
+        ? prepareHostPolicyCell(
+            resolve(fileURLToPath(new URL("../../..", import.meta.url))),
+            workspace,
+            cell.host_policy_mode,
+          )
+        : null;
+      if (hostPolicy) {
+        manifest.safety.hooks_enabled = hostPolicy.hooks_enabled;
+        manifest.host_policy = hostPolicy;
+        manifest.workspace.product_ignore = [
+          ...new Set([...(manifest.workspace.product_ignore ?? []), ".git"]),
+        ];
+        const preparedTree = treeManifest(workspace, { ignore: [".benchmark"] });
+        const preparedProductTree = treeManifest(workspace, {
+          ignore: manifest.workspace.product_ignore,
+        });
+        manifest.workspace.initial_sha256 = preparedTree.sha256;
+        manifest.workspace.initial_files = preparedTree.files.length;
+        manifest.workspace.product_initial_sha256 = preparedProductTree.sha256;
+        manifest.workspace.product_initial_files = preparedProductTree.files;
+        writeJson(join(workspace, ".benchmark", "manifest.json"), manifest);
+      }
       const matrixCell = {
         ...cell,
         execution_control: plan.control_contract ?? null,
@@ -321,6 +405,8 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
           ? plan.proof_execution_gates
           : null,
         attribution_scope: plan.attribution_scope ?? "provider-observed-only",
+        host_policy: hostPolicy,
+        host_policy_gate: hostPolicy ? plan.host_policy_comparison : null,
         workspace,
         task_version: manifest.task.version,
         task_prompt_sha256: manifest.task.core_prompt_sha256,

@@ -3,7 +3,17 @@ import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, 
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-import { prepareRunMatrix } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs";
+import {
+  prepareRunMatrix,
+  validateRunMatrixPlan,
+} from "../../../benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs";
+import {
+  PROOF_POLICY_FILES,
+  evaluateHostPolicyGate,
+  renderManagedProofPolicyFile,
+  summarizeHostPolicyStates,
+} from "../../../benchmarks/ui-resolve-bench/scripts/host-policy-contract.mjs";
+import { renderManagedHook } from "../../../src/cli/hook-contract.ts";
 import { treeManifest } from "../../../benchmarks/ui-resolve-bench/scripts/_lib.mjs";
 import { evaluateApprovalDecisionObservation } from "../../../benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs";
 import { validateTaskContract } from "../../../benchmarks/ui-resolve-bench/scripts/task-contract.mjs";
@@ -1624,6 +1634,166 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         rmSync(parent, { recursive: true, force: true });
       }
     });
+  });
+
+  it("prepares exactly paired controller and installed Codex host-policy arms", () => {
+    const parent = mkdtempSync(join(tmpdir(), "omd-host-policy-matrix-"));
+    const root = join(parent, "matrix");
+    const common = {
+      task_id: bookSignatureTaskId,
+      variant_id: "raw-design-md",
+      runtime: "codex",
+      model_id: "gpt-5.6-luna",
+      effort: "high",
+      timeout_seconds: 900,
+      trial_index: 1,
+    };
+    try {
+      const plan = {
+        schema_version: "0.1",
+        experiment_id: "host-policy-fixture",
+        output_root: root,
+        host_policy_comparison: {
+          target_runtime: "codex",
+          sole_arm_delta: "project-proof-policy-installation",
+          require_installed_state: true,
+          max_unblocked_browser_recovery_count: 0,
+          max_unblocked_duplicate_static_closure_count: 0,
+          max_unblocked_verification_after_ready_count: 0,
+        },
+        cells: [
+          {
+            ...common,
+            id: "controller-cell",
+            system_id: "controller-observation",
+            host_policy_mode: "controller-observation",
+          },
+          {
+            ...common,
+            id: "policy-cell",
+            system_id: "installed-policy",
+            host_policy_mode: "installed-opt-in",
+          },
+        ],
+      };
+      expect(prepareRunMatrix(plan).status).toBe("prepared");
+      const control = JSON.parse(readFileSync(
+        join(root, "controller-cell/.benchmark/manifest.json"),
+        "utf8",
+      ));
+      const policy = JSON.parse(readFileSync(
+        join(root, "policy-cell/.benchmark/manifest.json"),
+        "utf8",
+      ));
+      expect(existsSync(join(root, "controller-cell/.git"))).toBe(true);
+      expect(existsSync(join(root, "policy-cell/.git"))).toBe(true);
+      expect(control.host_policy).toMatchObject({
+        mode: "controller-observation",
+        hooks_enabled: false,
+        ready: true,
+      });
+      expect(policy.host_policy).toMatchObject({
+        mode: "installed-opt-in",
+        hooks_enabled: true,
+        ready: true,
+      });
+      expect(policy.safety.hooks_enabled).toBe(true);
+      expect(control.task).toEqual(policy.task);
+      expect(control.variant).toEqual(policy.variant);
+      expect(PROOF_POLICY_FILES.every((filename) => existsSync(join(
+        root,
+        "policy-cell/.codex/hooks/omd-proof-policy",
+        filename,
+      )))).toBe(true);
+      expect(summarizeHostPolicyStates(join(root, "policy-cell"))).toMatchObject({
+        available: false,
+        state_files: 0,
+      });
+    } finally {
+      rmSync(parent, { recursive: true, force: true });
+    }
+  });
+
+  it("keeps benchmark host-policy payloads byte-identical to the production managed renderer", () => {
+    for (const filename of PROOF_POLICY_FILES) {
+      const source = readFileSync(join(
+        repoRoot,
+        "benchmarks/ui-resolve-bench/scripts",
+        filename,
+      ), "utf8");
+      expect(renderManagedProofPolicyFile(source)).toBe(renderManagedHook(source));
+    }
+  });
+
+  it("counts denied policy attempts separately from unblocked proof executions", () => {
+    const installation = { mode: "installed-opt-in", ready: true, hooks_enabled: true };
+    const observed = {
+      available: true,
+      state_files: 1,
+      valid_state_files: 1,
+      denied_decisions: 2,
+      denied_reasons: { "duplicate-static-closure": 2 },
+      violations: {
+        browser_recovery: 0,
+        duplicate_static_closure: 2,
+        verification_after_ready: 0,
+      },
+    };
+    const trace = {
+      analyzable: true,
+      browser_recovery_count: 0,
+      duplicate_static_closure_count: 2,
+      verification_after_ready_count: 0,
+    };
+    const gate = {
+      require_installed_state: true,
+      max_unblocked_browser_recovery_count: 0,
+      max_unblocked_duplicate_static_closure_count: 0,
+      max_unblocked_verification_after_ready_count: 0,
+    };
+    expect(evaluateHostPolicyGate(installation, observed, trace, gate)).toMatchObject({
+      pass: true,
+      observed: {
+        denied_decisions: 2,
+        unblocked: { duplicate_static_closure: 0 },
+      },
+    });
+    expect(evaluateHostPolicyGate(installation, observed, {
+      ...trace,
+      duplicate_static_closure_count: 3,
+    }, gate)).toMatchObject({
+      pass: false,
+      reasons: ["duplicate_static_closure-unblocked-limit"],
+      observed: { unblocked: { duplicate_static_closure: 1 } },
+    });
+  });
+
+  it("rejects an unpaired host-policy comparison before workspace preparation", () => {
+    expect(() => validateRunMatrixPlan({
+      schema_version: "0.1",
+      experiment_id: "unpaired-host-policy",
+      output_root: "/tmp/unpaired-host-policy",
+      host_policy_comparison: {
+        target_runtime: "codex",
+        sole_arm_delta: "project-proof-policy-installation",
+        require_installed_state: true,
+        max_unblocked_browser_recovery_count: 0,
+        max_unblocked_duplicate_static_closure_count: 0,
+        max_unblocked_verification_after_ready_count: 0,
+      },
+      cells: [{
+        id: "controller-only",
+        task_id: bookSignatureTaskId,
+        variant_id: "raw-design-md",
+        system_id: "controller",
+        runtime: "codex",
+        model_id: "gpt-5.6-luna",
+        effort: "high",
+        timeout_seconds: 900,
+        trial_index: 1,
+        host_policy_mode: "controller-observation",
+      }],
+    })).toThrow(/both policy modes/);
   });
 
   it("adapts the canonical OmD skill to Cursor's native project skill contract", () => {

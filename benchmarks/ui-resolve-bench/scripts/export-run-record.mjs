@@ -6,6 +6,10 @@ import { parseArgs, readJson, writeJson } from "./_lib.mjs";
 import { summarizeClaudeToolErrors } from "./check-claude-runner.mjs";
 import { classifyProofTrace, evaluateProofExecutionGate } from "./proof-trace-contract.mjs";
 import { CURSOR_RUNTIME_DISPLAY_LABELS } from "./runtime-contract.mjs";
+import {
+  evaluateHostPolicyGate,
+  summarizeHostPolicyStates,
+} from "./host-policy-contract.mjs";
 
 const FAMILIES = new Set(["model", "skill", "harness", "prompt-arena", "factorial"]);
 
@@ -103,6 +107,7 @@ export function buildRunRecord({
   attributionScope = "provider-observed-only",
   proofTrace = null,
   proofExecutionGate = null,
+  hostPolicy = null,
 }) {
   if (!FAMILIES.has(family)) throw new Error(`unsupported benchmark family: ${family}`);
   if (!Number.isInteger(trialIndex) || trialIndex < 1) throw new Error("trial index must be a positive integer");
@@ -186,6 +191,7 @@ export function buildRunRecord({
       milestones: run?.output?.milestones ?? null,
       proof_trace: proofTrace,
       proof_execution_gate: proofExecutionGate,
+      host_policy: hostPolicy,
     },
     attribution: {
       runtime: {
@@ -221,6 +227,7 @@ export function buildRunRecord({
       score: score ? ".benchmark/score.json" : null,
       screenshots: score ? ".benchmark/screenshots" : null,
       proof_trace: proofTrace ? ".benchmark/proof-trace.json" : null,
+      host_policy_state: hostPolicy ? ".benchmark/host-policy-state.json" : null,
     },
   };
 }
@@ -272,6 +279,22 @@ async function main() {
     proofTrace,
     matrixCell?.proof_execution_gate ?? null,
   );
+  const hostPolicy = matrixCell?.host_policy
+    ? {
+        mode: matrixCell.host_policy.mode,
+        installation: matrixCell.host_policy,
+        observed: summarizeHostPolicyStates(workspace),
+      }
+    : null;
+  if (hostPolicy) {
+    hostPolicy.gate = evaluateHostPolicyGate(
+      hostPolicy.installation,
+      hostPolicy.observed,
+      proofTrace,
+      matrixCell?.host_policy_gate ?? null,
+    );
+  }
+  if (hostPolicy) writeJson(join(benchmarkDir, "host-policy-state.json"), hostPolicy);
   const record = buildRunRecord({
     workspace,
     manifest,
@@ -286,6 +309,7 @@ async function main() {
     attributionScope: matrixCell?.attribution_scope ?? "provider-observed-only",
     proofTrace,
     proofExecutionGate,
+    hostPolicy,
   });
   const out = args.get("out")
     ? resolve(String(args.get("out")))

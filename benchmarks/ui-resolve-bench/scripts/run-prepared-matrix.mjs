@@ -27,12 +27,17 @@ import {
   runnerSpecForCell,
   runtimeAttributionStopReason,
 } from "./runtime-contract.mjs";
+import {
+  inspectPreparedHostPolicy,
+  summarizeHostPolicyStates,
+} from "./host-policy-contract.mjs";
 
 const MAX_BUFFER = 64 * 1024 * 1024;
 const PACING_MAX_OVERSHOOT_MS = 5_000;
 const PACING_MAX_CLOCK_DISAGREEMENT_MS = 5_000;
 const STOP_SENTINEL = "STOP";
 const INVOCATION_LEASE = ".matrix-execution.lock";
+const REPO_ROOT = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
 
 export function preflightRuntimeEnvironment(
   plan,
@@ -353,11 +358,13 @@ function cellArtifactHashes(benchmarkDir) {
   const scorePath = join(benchmarkDir, "score.json");
   const recordPath = join(benchmarkDir, "run-record.json");
   const proofTracePath = join(benchmarkDir, "proof-trace.json");
+  const hostPolicyStatePath = join(benchmarkDir, "host-policy-state.json");
   return {
     run_result_sha256: fileSha256(resultPath),
     score_sha256: fileSha256(scorePath),
     run_record_sha256: fileSha256(recordPath),
     ...(existsSync(proofTracePath) ? { proof_trace_sha256: fileSha256(proofTracePath) } : {}),
+    ...(existsSync(hostPolicyStatePath) ? { host_policy_state_sha256: fileSha256(hostPolicyStatePath) } : {}),
     benchmark_tree_sha256: treeManifest(benchmarkDir).sha256,
   };
 }
@@ -397,6 +404,8 @@ function completedCellSummary(
     direct_browser_command_count: directBrowserCommandCount(events),
     proof_trace: record.runtime_diagnostics?.proof_trace ?? null,
     proof_execution_gate: record.runtime_diagnostics?.proof_execution_gate ?? null,
+    host_policy: record.runtime_diagnostics?.host_policy ?? null,
+    host_policy_gate: record.runtime_diagnostics?.host_policy?.gate ?? null,
   };
   if (includeArtifactHashes) summary.artifact_hashes = cellArtifactHashes(benchmarkDir);
   if (completedInInvocation !== undefined) {
@@ -422,6 +431,7 @@ function untouchedCellPaths(workspace) {
     join(benchmarkDir, "stderr.log"),
     join(benchmarkDir, "final-message.txt"),
     join(benchmarkDir, "proof-trace.json"),
+    join(benchmarkDir, "host-policy-state.json"),
   ];
 }
 
@@ -433,6 +443,9 @@ function preparedCellAttestation(workspace) {
   return {
     benchmark_tree_sha256: treeManifest(join(workspace, ".benchmark")).sha256,
     product_tree_sha256: currentProduct.sha256,
+    host_policy: manifest.host_policy
+      ? inspectPreparedHostPolicy(REPO_ROOT, workspace, manifest.host_policy.mode)
+      : null,
   };
 }
 
@@ -901,7 +914,7 @@ function executePreparedMatrixWithLease(root, {
   delete state.stop_reason;
   writeJson(executionStatePath, state);
 
-  const repo = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
+  const repo = REPO_ROOT;
   const evaluateScript = (
     plan.execution_purpose === "runtime-contract-calibration"
     && process.env.OMD_BENCH_CALIBRATION_EVALUATOR
@@ -1104,6 +1117,33 @@ function executePreparedMatrixWithLease(root, {
 
     if (!existsSync(resultPath)) {
       assertUnstartedWorkspace(workspace, manifest);
+      if (manifest.host_policy) {
+        const currentPolicy = inspectPreparedHostPolicy(repo, workspace, manifest.host_policy.mode);
+        if (!isDeepStrictEqual(currentPolicy, manifest.host_policy)) {
+          stopBeforeProvider(
+            state,
+            plan,
+            index,
+            matrixRoot,
+            "host-policy-preparation-drift",
+            executionStatePath,
+            invocation,
+            nowFn(),
+          );
+        }
+        if (summarizeHostPolicyStates(workspace).available) {
+          stopBeforeProvider(
+            state,
+            plan,
+            index,
+            matrixRoot,
+            "host-policy-state-exists-before-provider",
+            executionStatePath,
+            invocation,
+            nowFn(),
+          );
+        }
+      }
       const runnerSpec = runnerSpecForCell(cell, workspace);
       if (bounded && existsSync(join(matrixRoot, STOP_SENTINEL))) {
         stopBeforeProvider(
@@ -1244,6 +1284,17 @@ function executePreparedMatrixWithLease(root, {
         passed_cells: proofGatedCells.filter((entry) => entry.proof_execution_gate.pass).length,
         failed_cell_ids: proofGatedCells.filter((entry) => !entry.proof_execution_gate.pass).map((entry) => entry.id),
         pass: proofGatedCells.every((entry) => entry.proof_execution_gate.pass),
+      }
+    : null;
+  const hostPolicyCells = state.cells.filter((entry) => entry.host_policy_gate !== null);
+  state.host_policy_gate = hostPolicyCells.length
+    ? {
+        applicable_cells: hostPolicyCells.length,
+        passed_cells: hostPolicyCells.filter((entry) => entry.host_policy_gate.pass).length,
+        failed_cell_ids: hostPolicyCells
+          .filter((entry) => !entry.host_policy_gate.pass)
+          .map((entry) => entry.id),
+        pass: hostPolicyCells.every((entry) => entry.host_policy_gate.pass),
       }
     : null;
   if (bounded) {

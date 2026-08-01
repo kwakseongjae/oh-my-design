@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.207 host-policy matrix prepared
+- Luna/high exact 2×3을 `/tmp/u19207`에 PREPARED했다.
+- denied policy attempt와 unblocked execution을 별도 계측한다.
+- focused 66/66, matrix/export/controller 41/41, lint/diff green, provider 0이다.
+- next는 clean commit 후 max-new 1 순차 실행이다.
+
 ## 2026-08-02 (Codex) · 1.9.206 unseen task contract
 - print-imposition topology의 `book-signature-imposition-v0.1`을 잠갔다.
 - untouched starter는 79/85, mobile/320/200% text geometry만 red다.
