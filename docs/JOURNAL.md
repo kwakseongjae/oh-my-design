@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.189 infrastructure replacement
+- 1.9.188은 invalid latency enum으로 provider 전 동결했다.
+- prepared 0/provider 0이며 same-root repair는 금지했다.
+- exact 조건을 유지한 fresh `/tmp/u19189` replacement를 잠갔다.
+- 다음은 clean preparation/equality attestation이다.
+
 ## 2026-08-02 (Codex) · 1.9.188 Grok transfer locked
 - packet vs proof-budget 2×3을 새 studio-slot task에 preregister했다.
 - quality·mean wall/token·command-trace gate를 함께 고정했다.

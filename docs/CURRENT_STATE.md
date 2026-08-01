@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.188 Grok proof-budget transfer preregistered
+- 갱신: 2026-08-02 · 1.9.189 Grok transfer infrastructure replacement locked
 
 ## 지금 (현재 위치)
 
+- 1.9.188 preparation은 invalid latency enum을 controller가 provider 전 거부해 execution-invalid로 동결했다. prepared cell 0, provider call 0, `/tmp/u19188` 미생성이고 same-root edit/retry/resume를 금지한다.
+- 1.9.189는 동일 task/arms/order/runtime/model/effort/timeout/pacing/gate의 fresh-root replacement다. schema-valid within-provider latency enum `eligible`만 교정했고 `/tmp/u19189`를 사용한다.
+- 다음은 replacement source commit 후 fresh preparation/equality attestation이다. 1.9.188 artifact는 분모에 들어가지 않는다.
 - 1.9.188 exact packet vs proof-budget를 새 studio-slot task에서 Grok 4.5 High 2×3으로 preregister했다. `/tmp/u19188`, balanced serial, fixed 120s, max-new 1, no retry/fallback/repair/substitution이다.
 - quality는 proof-budget UI-Resolved 3/3 + Reliability@3 100% + paired loss 0, efficiency는 packet 대비 mean wall/token delta <= 0이며 browser recovery 0과 duplicate static closure 0을 요구한다. +5.2% skill context는 비용에 포함한다.
 - 다음은 source commit 후 fresh preparation과 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout/source equality attestation이다. provider call은 아직 0이다.
