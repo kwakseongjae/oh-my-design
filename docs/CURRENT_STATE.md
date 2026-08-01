@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.160 unseen research-sample holdout accepted
+- 갱신: 2026-08-01 · 1.9.161 exact v10 portable candidate pinned
 
 ## 지금 (현재 위치)
 
+- 1.9.161 exact v10을 `omd-portable-reflow-v10-candidate`로 고정했다. detached clean/publishable source는 `e3e5c6e4…`, Cursor installed skill tree SHA는 `fb7472d5…`, activation은 previous와 같은 `01728b95…`다.
+- provider-free `/tmp/u19161-v10-diagnostic`에서 task/starter/source attestation과 focused candidate pin 1/1, lint가 green이다. 다음은 locked research-sample task에서 exact previous vs v10 Grok 2×3을 fresh root에 준비한다.
 - 1.9.160 새 unseen non-approval `research-sample-routing-v0.1`을 v10 commit 뒤 provider generation 전에 contract-lock했다. 새 field-research domain이며 3 choices, reversible field-note toggle, handoff form, 3 sample/destination/steward mappings와 4-view geometry+hierarchy를 가진다.
 - compact control naming copy는 semantic label이 아닌 `<span>`으로 구성해 tag가 아닌 paired-control 관계를 검증한다. untouched `/tmp/u19160-sample-starter`는 79/85이며 responsive text geometry만 red, 나머지 function/state/a11y/DESIGN/evidence/overflow/hierarchy는 green이다.
 - provider call은 0이다. 다음은 exact v10 `e3e5c6e…`를 detached candidate로 고정하고 exact previous canonical과 fresh 2×3으로 비교한다.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.161 exact v10 portable candidate pinned
+- detached clean `e3e5c6e4…`를 별도 v10 variant로 고정했다.
+- Cursor installed tree `fb7472d5…`, activation `01728b95…`, publishable=true다.
+- diagnostic/focused pin/lint green; provider call은 0이다.
+- 다음은 research-sample에서 Grok previous-vs-v10 2×3 준비다.
+
 ## 2026-08-01 (Codex) · 1.9.160 unseen research-sample holdout accepted
 - v10 commit 뒤 새 field-research task를 provider 0 상태로 잠갔다.
 - `<span>` control naming copy가 paired toggle 관계를 테스트한다.
