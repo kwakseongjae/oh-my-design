@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.173 audio-stem v12 transfer prepared
+- fresh `/tmp/u19173` 6 cells를 exact contract로 준비했다.
+- installed skill만 previous `d7a890ac…` vs v12 `9704a9dd…`다.
+- source attestation/equality 6/6 green, provider 0.
+- 다음 cell은 `grok-audio-t1-previous`다.
+
 ## 2026-08-01 (Codex) · 1.9.173 audio-stem v12 transfer preregistered
 - exact previous vs v12 2×3 Grok matrix를 잠갔다.
 - balanced/serial/120s/max-new 1/no fallback contract다.

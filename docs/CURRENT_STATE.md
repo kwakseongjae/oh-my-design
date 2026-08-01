@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.173 audio-stem v12 transfer preregistered
+- 갱신: 2026-08-01 · 1.9.173 audio-stem v12 transfer prepared
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19173` 6 cells PREPARED, provider 0이다. task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 동일하고 installed skill만 previous `d7a890ac…` vs v12 `9704a9dd…`다. 양 source exact detached clean/publishable이다.
+- 다음 cell은 `grok-audio-t1-previous`; invocation당 최대 1개와 fixed pacing/stop contract를 유지한다.
 - 1.9.173 exact previous canonical vs v12 transfer를 `/tmp/u19173`에 preregister했다. Cursor/Grok 4.5 High, 2×3, balanced/serial/120s/max-new 1/no retry-fallback-repair-replacement-substitution이다. provider call은 0이다.
 - gate는 v12 UI-Resolved 3/3 + Reliability@3 100% + paired loss 0이다. 첫 provider/attribution/controller failure에서 root를 동결한다.
 - 1.9.172 새 unseen non-approval `audio-stem-delivery-v0.1`을 provider generation 전에 contract-lock했다. 새 post-production domain, 5 stem/bus/owner inventories, 2-column outer inventory + nested 3-fact grid, 3 package modes, checksum-context toggle, dynamic state render, delivery form을 가진다.
