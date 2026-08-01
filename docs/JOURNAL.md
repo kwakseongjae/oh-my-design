@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.192 close-latch candidate pinned
+- clean detached source와 exact competitor registry를 고정했다.
+- provider-free seen diagnostic에서 install/activation parity를 확인했다.
+- source clean/detached/publishable, provider 0이다.
+- next는 새 unseen non-approval contract-lock이다.
+
 ## 2026-08-02 (Codex) · 1.9.191 close latch accepted
 - proof counters를 revision-bound close latch로 교체했다.
 - closed proof 재실행과 ready 뒤 검증을 violation으로 잠갔다.

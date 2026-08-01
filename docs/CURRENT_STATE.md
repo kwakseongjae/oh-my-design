@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.191 proof close latch accepted provider-free
+- 갱신: 2026-08-02 · 1.9.192 proof close-latch candidate pinned
 
 ## 지금 (현재 위치)
 
+- 1.9.192에서 exact close-latch candidate를 `omd-portable-proof-close-latch-candidate`로 고정했다. detached clean/publishable source는 `1d204af…`다.
+- provider-free `/tmp/u19192-close-latch-diagnostic`에서 installed Cursor tree `26cd3169…`, SKILL `5c73e7fc…`, unchanged activation `01728b95…`를 확인했다. provider call 0이며 seen task는 promotion에 쓰지 않는다.
+- 다음은 기존 schedule/master-detail/ordinal/table family와 다른 unseen non-approval task를 provider generation 전에 contract-lock하는 것이다.
 - 1.9.191에서 advisory counters를 revision-bound `proof_execution_latch`로 교체했다. static/browser proof는 현재 product revision에 `closed|unresolved`로 잠기며 실제 product edit만 corrective static proof를 다시 열 수 있다.
 - 같은 revision의 추가 static command, browser recovery/second mechanism, `delivery: ready` 뒤 verification command는 각각 명시적 violation이다. browser proof는 한 번 소진되면 다시 열리지 않는다.
 - canonical은 277 lines/37,416 bytes로 proof-budget 대비 +763 bytes(+2.1%)다. historical experimental latch section byte parity가 true다.

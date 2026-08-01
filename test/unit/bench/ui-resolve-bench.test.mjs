@@ -1033,6 +1033,25 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(new Set([previous.commit, packet.commit, candidate.commit]).size).toBe(3);
   });
 
+  it("pins the revision-bound proof close-latch candidate separately", () => {
+    const previous = competitors.variants["omd-portable-jade"];
+    const packet = competitors.variants["omd-portable-reflow-packet-candidate"];
+    const budget = competitors.variants["omd-portable-proof-budget-candidate"];
+    const candidate = competitors.variants["omd-portable-proof-close-latch-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.191",
+      source_path: previous.source_path,
+      install_adapter: previous.install_adapter,
+      install_root: previous.install_root,
+      install_dir: previous.install_dir,
+      declared_name: previous.declared_name,
+      commit: "1d204afea6c3ab106752613b7f341ed2f76fd843",
+      activation: previous.activation,
+    });
+    expect(new Set([previous.commit, packet.commit, budget.commit, candidate.commit]).size).toBe(4);
+  });
+
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", editorialBriefTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({
