@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.183 media-clearance Grok prepared
+- fresh `/tmp/u19183` 6/6과 equality/source attestation이 green이다.
+- previous `d7a890ac…` vs packet `36216aea…`, provider 0이다.
+- next는 `grok-media-r1-previous`, max-new 1/120s pacing이다.
+
 ## 2026-08-02 (Codex) · 1.9.183 infrastructure replacement locked
 - 1.9.182 첫 invocation은 result/usage/score 없이 controller 종료돼 root를 동결했다.
 - stale lease/running state는 증거로 보존하고 same-root resume를 금지한다.
