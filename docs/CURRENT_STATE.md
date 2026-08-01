@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.190 Luna xhigh complete
+- 갱신: 2026-08-02 · 1.9.191 proof close latch accepted provider-free
 
 ## 지금 (현재 위치)
 
+- 1.9.191에서 advisory counters를 revision-bound `proof_execution_latch`로 교체했다. static/browser proof는 현재 product revision에 `closed|unresolved`로 잠기며 실제 product edit만 corrective static proof를 다시 열 수 있다.
+- 같은 revision의 추가 static command, browser recovery/second mechanism, `delivery: ready` 뒤 verification command는 각각 명시적 violation이다. browser proof는 한 번 소진되면 다시 열리지 않는다.
+- canonical은 277 lines/37,416 bytes로 proof-budget 대비 +763 bytes(+2.1%)다. historical experimental latch section byte parity가 true다.
+- focused skill 9/9, install 36/36, bounded advisory 2/2, lint/diff green이다. bench 54/56이며 2 red는 기존 non-Git Taste/UI UX Pro fixture다. provider call 0.
+- 다음은 clean commit에서 exact close-latch candidate pin 후 새로운 unseen non-approval task를 generation 전에 잠그는 것이다.
 - `/tmp/u19190` Luna xhigh 6/6 valid COMPLETE. packet과 proof-budget 모두 85/85×3, UI-Resolved 3/3, proof-budget W/T/L 0/3/0이며 paired quality loss 0이다.
 - proof-budget mean/median wall은 +1.0%/+10.1%, mean/median tokens는 -17.2%/-16.0%, mean/median command executions는 -25.6%/-23.1%다. 품질·token/command 방향은 좋지만 wall은 퇴행했다.
 - Luna command trace는 browser recovery-like 0/1/0, duplicate static closure 1/1/3이라 required 0/0을 실패했다. Grok과 Luna 모두 quality pass·command gate fail이며 promotion은 HOLD다.

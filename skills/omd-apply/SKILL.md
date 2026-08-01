@@ -196,22 +196,24 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
    4. **PROVE.** final selector의 computed type, line count, overflow/clipping과 target·evidence·state·action의 같은 decision boundary를 세 viewport에서 측정한다. one-line 행은 line count 1과 overflow/clipping 0일 때만 `pass`다. `width:100%`, page overflow 0, screenshot 육안, source 추정은 행 proof가 아니다. 시작/종료 identity와 개수가 다르거나 한 행이라도 측정되지 않으면 전체를 성공으로 말하지 않고 그 행을 `unresolved`로 전달한다.
 
    closure는 `same_row_count: true`, `same_decision_boundary: true`, `no_text_hack: true`, `unresolved_rows: 0`, `page_overflow: 0`일 때만 끝난다.
-2f. **`proof execution budget`으로 같은 증명을 반복하지 않는다.** 품질 gate는 유지하고 아래 counters를 같은 consumer route의 acceptance까지 유지한다.
+2f. **`proof execution close latch`로 끝난 증명을 다시 열지 않는다.** 품질 gate는 유지하고 아래 state를 같은 consumer route의 acceptance까지 유지한다.
 
    ```yaml
-   proof_execution_budget:
-     pre_edit_inventory_passes: { max: 1, used: 0 }
-     product_edit_transactions: { target: 1, used: 0 }
-     static_closure: { primary_max: 1, corrective_rerun_max: 1, used: 0 }
-     browser_mechanism_attempts: { max: 1, used: 0 }
-     browser_recovery_commands: { max: 0, used: 0 }
-     duplicate_contract_checks: { max: 0, used: 0 }
+   proof_execution_latch:
+     revision: 0
+     inventory: open|closed
+     product_edit: pending|changed|stable
+     static_closure: { state: open|closed, revision: null, runs: 0 }
+     browser_proof: { state: open|closed|unresolved, revision: null, attempts: 0, mechanism: null }
+     delivery: blocked|ready
+     violations: { browser_recovery: 0, duplicate_static_closure: 0, verification_after_ready: 0 }
    ```
 
-   - pre-edit 한 번에 token·hook/cardinality·state source·responsive risk·reflow rows를 inventory한다. 이후 전체 skill/DESIGN/제품 파일을 다시 읽지 않고 편집 위치와 실패 selector만 targeted reread한다.
-   - 제품 edit을 한 transaction으로 묶고, 마지막 edit 뒤 syntax·hook/cardinality·supplied facts·forbidden text hack·changed token을 **하나의 consolidated static closure**로 확인한다. 결함을 고쳐 제품이 바뀐 경우만 corrective rerun 한 번을 허용한다.
-   - browser는 준비된 mechanism 한 번으로 390px·320px·200%와 states를 같은 session에서 수집한다. attach/실행이 infrastructure error면 `unresolved`로 닫고 `--doctor`, `--help`, executable/process/port discovery, 직접 Chrome launch, 다른 browser/port/runtime, 설치·권한 변경을 시도하지 않는다. viewport마다 process를 열거나 같은 geometry를 재확인하지 않는다.
-   - `pre_edit_inventory_passes <= 1`, `static_closure.used <= 2`, `browser_mechanism_attempts <= 1`, `browser_recovery_commands: 0`, `duplicate_contract_checks: 0`으로 종료한다. 예산 소진 뒤에는 추가 탐색 대신 최소 완성 diff와 unresolved를 전달한다.
+   - pre-edit 한 번에 token·hook/cardinality·state source·responsive risk·reflow rows를 inventory하고 즉시 `inventory: closed`로 잠근다. 같은 revision에서 전체 skill/DESIGN/제품 파일 inventory를 다시 실행하지 않고 편집 위치와 실패 selector만 targeted reread한다.
+   - 제품 edit을 한 transaction으로 묶어 `revision`을 1 올리고 `product_edit: changed`, 두 proof state를 `open`으로 만든다. 마지막 edit 뒤 syntax·hook/cardinality·supplied facts·forbidden text hack·changed token을 **한 command cluster의 consolidated static closure**로 확인한 뒤 현재 revision을 기록하고 `closed`로 잠근다. 같은 revision에서 static 검증 명령을 하나라도 더 시작하면 `duplicate_static_closure` 위반이다.
+   - static closure가 닫힌 뒤 준비된 browser mechanism 한 번으로 390px·320px·200%와 states를 같은 session에서 수집한다. 성공이면 `closed`, attach/실행 infrastructure error면 `unresolved`로 잠근다. 둘 다 현재 revision과 mechanism을 기록한다. 그 뒤 `--doctor`, `--help`, executable/process/port discovery, 직접 Chrome launch, 다른 browser/port/runtime, 설치·권한 변경이나 두 번째 browser command를 시작하면 `browser_recovery` 위반이다.
+   - browser가 제품 결함을 찾아 실제 product edit이 필요할 때만 revision을 올리고 `static_closure: open`, `browser_proof: unresolved`로 다시 연다. corrective static closure는 한 번 수행할 수 있지만 browser attempt는 다시 열지 않는다. 제품 파일이 바뀌지 않았다면 어느 proof state도 reopen하지 않는다.
+   - 현재 revision의 static closure가 `closed`이고 browser proof가 `closed|unresolved`면 `delivery: ready`로 잠근다. 이 뒤 verification shell/browser command는 `verification_after_ready` 위반이다. 추가 탐색 대신 최소 완성 diff와 unresolved를 전달한다.
 3. **탐색 종료 조건을 둔다.** DESIGN.md, consumer route, protected ledger, visual equity ledger, semantic color ledger, 최소 acceptance를 확인했다면 optional research나 미적 아이디어 수집을 더 하지 않고 가장 작은 end-to-end 편집을 시작한다. specialist 자문이 꼭 필요한 위험을 해결하지 않는 한 첫 편집을 막지 않는다. specialist를 호출해도 전체 페이지 감사를 요청하지 않고, 이미 확인한 위험 질문 1-2개만 `bounded-repair-advisory`로 보낸다. state/status/accent token이 있으면 engineer 질문 중 하나는 semantic color ledger의 모든 planned pair를 normal text와 non-text 역할로 분리하고 unmeasured pair를 지적해야 한다. 자문 뒤 새 pair를 추가하면 별도 2차 audit 대신 위 fail-closed text+non-text 기본값을 적용한다.
 4. **delivery clock을 먼저 잠근다.** 런타임이나 작업 packet에 timeout이 있으면 첫 제품 편집을 총 예산의 50% 전, 선택 검증 종료를 80% 전, 최종 전달 시작을 90% 전으로 둔다. 필수 specialist가 있으면 마지막 결과가 도착한 뒤 `min(90초, 총 예산의 10%)` 안에 `first_safe_edit` 하나를 먼저 적용한다. 그 사이 사용자-facing ledger recap, 자문 요약, 계획 설명, 전체 파일 재독해, 2차 분석 pass를 출력하지 않는다. 기존 snippet을 안전하게 바꿀 수 있으면 첫 transaction은 targeted `Edit`이며 whole-file `Write`가 아니다. 첫 transaction은 원 요청의 acceptance에 기여하고 protected ledger를 보존하는 실제 제품 변경이어야 한다. 공백·주석·timestamp·동일값 치환 같은 no-op으로 clock만 찍지 않는다. specialist의 `first_safe_edit`가 ledger를 어기면 폐기하고, 이미 읽은 DESIGN.md와 원 요청이 직접 허용하는 가장 작은 계약-중립 변경을 같은 방식으로 적용한다. timeout을 알 수 없어도 ledger와 필수 자문이 준비된 뒤 optional 탐색을 한 번 더 돌리지 않는다. deadline을 놓치면 기능을 더 추가하지 않고 가장 작은 완성 diff와 정직한 `unresolved` 전달을 우선한다.
 5. **장식을 위해 제품 hook을 복제하지 않는다.** 가격 비교, 요약 카드, 모바일 사본처럼 같은 값을 다시 보여줘야 해도 기존 behavior hook·form field·live region·ID를 복제하지 않는다. 새 hook이나 상태를 추가하려면 요청 또는 제품 계약의 근거가 있어야 한다.

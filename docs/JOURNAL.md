@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.191 close latch accepted
+- proof counters를 revision-bound close latch로 교체했다.
+- closed proof 재실행과 ready 뒤 검증을 violation으로 잠갔다.
+- focused 47/47, lint/diff green, provider 0이다.
+- next는 exact candidate pin과 새 unseen transfer다.
+
 ## 2026-08-02 (Codex) · 1.9.190 Luna complete
 - both arms 85×3; proof-budget W/T/L 0/3/0이다.
 - budget tokens -17.2%, commands -25.6%지만 wall +1.0%다.

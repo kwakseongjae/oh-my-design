@@ -88,18 +88,20 @@ describe("omd:apply delivery contract", () => {
     expect(skill).not.toContain("source_claim_without_selector_decision");
   });
 
-  it("operationalizes proof as a single-pass execution budget", () => {
-    expect(skill).toContain("proof execution budget");
-    expect(skill).toContain("pre_edit_inventory_passes: { max: 1, used: 0 }");
-    expect(skill).toContain("product_edit_transactions: { target: 1, used: 0 }");
-    expect(skill).toContain("static_closure: { primary_max: 1, corrective_rerun_max: 1, used: 0 }");
-    expect(skill).toContain("browser_mechanism_attempts: { max: 1, used: 0 }");
-    expect(skill).toContain("browser_recovery_commands: { max: 0, used: 0 }");
-    expect(skill).toContain("duplicate_contract_checks: { max: 0, used: 0 }");
-    expect(skill).toContain("하나의 consolidated static closure");
+  it("operationalizes proof as a revision-bound close latch", () => {
+    expect(skill).toContain("proof execution close latch");
+    expect(skill).toContain("proof_execution_latch:");
+    expect(skill).toContain("inventory: open|closed");
+    expect(skill).toContain("product_edit: pending|changed|stable");
+    expect(skill).toContain("static_closure: { state: open|closed, revision: null, runs: 0 }");
+    expect(skill).toContain("browser_proof: { state: open|closed|unresolved, revision: null, attempts: 0, mechanism: null }");
+    expect(skill).toContain("delivery: blocked|ready");
+    expect(skill).toContain("verification_after_ready: 0");
+    expect(skill).toContain("한 command cluster의 consolidated static closure");
+    expect(skill).toContain("같은 revision에서 static 검증 명령을 하나라도 더 시작하면");
     expect(skill).toContain("`--doctor`, `--help`, executable/process/port discovery, 직접 Chrome launch");
-    expect(skill).toContain("viewport마다 process를 열거나 같은 geometry를 재확인하지 않는다");
-    expect(skill).toContain("예산 소진 뒤에는 추가 탐색 대신 최소 완성 diff와 unresolved");
+    expect(skill).toContain("제품 파일이 바뀌지 않았다면 어느 proof state도 reopen하지 않는다");
+    expect(skill).toContain("이 뒤 verification shell/browser command는");
   });
 
   it("preserves task-helpful visual equity under explicit change authority", () => {
