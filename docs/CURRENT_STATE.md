@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.171 exact v12 portable candidate pinned
+- 갱신: 2026-08-01 · 1.9.172 unseen audio-stem transfer holdout locked
 
 ## 지금 (현재 위치)
 
+- 1.9.172 새 unseen non-approval `audio-stem-delivery-v0.1`을 provider generation 전에 contract-lock했다. 새 post-production domain, 5 stem/bus/owner inventories, 2-column outer inventory + nested 3-fact grid, 3 package modes, checksum-context toggle, dynamic state render, delivery form을 가진다.
+- untouched `/tmp/u19172-audio-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 scoped responsive geometry만 390/320/200%에서 red다. provider call은 0이다.
+- 다음은 exact previous canonical vs exact v12를 Cursor/Grok 4.5 High 2×3 balanced/serial/no-fallback contract로 준비한다. gate는 v12 UI-Resolved 3/3 + paired loss 0이다.
 - 1.9.171 exact v12를 `omd-portable-reflow-v12-candidate`로 고정했다. detached clean/publishable source는 `0f52923d…`, installed Cursor skill SHA는 `9704a9dd…`, activation은 previous와 같은 `01728b95…`다.
 - provider-free `/tmp/u19171-v12-diagnostic`에서 seen broadcast task/starter/source/skill attestation을 고정했으며 provider call은 0이다. 이 seen task는 v12 promotion에 재사용하지 않는다.
 - 다음은 다른 topology와 dynamic-state wording을 가진 새 unseen non-approval task를 먼저 commit한 뒤 exact previous vs v12 Grok 2×3을 준비한다.

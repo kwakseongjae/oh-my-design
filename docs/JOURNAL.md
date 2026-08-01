@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.172 unseen audio-stem holdout locked
+- 새 post-production task를 provider generation 전에 고정했다.
+- two-column inventory+nested facts와 dynamic state/relational copy를 사용한다.
+- untouched starter 79/85; scoped responsive geometry만 red, provider 0.
+- 다음은 exact previous vs v12 Grok 2×3 transfer다.
+
 ## 2026-08-01 (Codex) · 1.9.171 exact v12 candidate pinned
 - detached clean/publishable source `0f52923d…`를 고정했다.
 - installed Cursor skill SHA `9704a9dd…`, activation parity를 확인했다.

@@ -1,0 +1,38 @@
+{
+  "id": "audio-stem-delivery-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "An audio-stem package handoff for a post-production team. Compare whether the result preserves supplied stem, bus, and owner identifiers, selected package mode, checksum-context setting, delivery name, and final review action without inventing delivery outcomes or breaking atomic values on narrow screens.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": { "landmarks": { "h1_count": { "exact": 1 }, "main_count": { "exact": 1 }, "nav_count": { "min": 1 }, "footer_count": { "min": 1 } } },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": ["[data-bench='mode-option']", "[data-bench='checksum-toggle']", "[data-bench='delivery-form']", "[data-bench='delivery-name']", "[data-bench='form-status']", "[data-bench='stem-item']", "[data-bench='compact-control-copy']", "[data-bench-design-role='delivery-board']", "[data-bench-decision-role='context']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']", "[data-bench-decision-role='action']"],
+  "protected_hook_counts": {"[data-bench='mode-option']": 3, "[data-bench='checksum-toggle']": 1, "[data-bench='delivery-form']": 1, "[data-bench='delivery-name']": 1, "[data-bench='form-status']": 1, "[data-bench='stem-item']": 5, "[data-bench='compact-control-copy']": 1, "[data-bench-design-role='delivery-board']": 1, "[data-bench-decision-role='context']": 1, "[data-bench-decision-role='target']": 1, "[data-bench-decision-role='evidence']": 1, "[data-bench-decision-role='state']": 1, "[data-bench-decision-role='action']": 1},
+  "journey_oracle": {
+    "choice": { "selector": "[data-bench='mode-option']", "value_attribute": "data-mode", "body_dataset": "mode", "values": ["session", "bus", "manual"], "count": 3, "initial": "session", "selected": "bus" },
+    "toggle": { "selector": "[data-bench='checksum-toggle']" },
+    "form": { "form_selector": "[data-bench='delivery-form']", "field_selector": "[data-bench='delivery-name']", "status_selector": "[data-bench='form-status']", "invalid_value": "", "valid_value": "Night mix stem package" }
+  },
+  "text_geometry_oracle": {
+    "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "scope_selectors": ["[data-bench='stem-item']", "[data-bench-decision-role='context']"],
+    "atomic_scope_selectors": ["[data-bench='stem-item']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']"],
+    "compact_copy_selectors": ["[data-bench='compact-control-copy']"],
+    "max_short_text_chars": 40,
+    "max_short_text_lines": 1
+  },
+  "decision_hierarchy_oracle": { "viewports": ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"], "minimum_action_gap_px": 8, "roles": { "container": "[data-bench-decision-role='context']", "target": "[data-bench-decision-role='target']", "evidence": "[data-bench-decision-role='evidence']", "state": "[data-bench-decision-role='state']", "action": "[data-bench-decision-role='action']" } },
+  "protected_unknown_patterns": ["\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b", "\\b(?:best|fastest|leading|top-rated|award-winning)\\s+(?:audio|delivery|mix|tool|platform)\\b", "\\btrusted by\\b", "\\b(?:fully approved|delivery complete|client accepted|always accurate|flawless package)\\b", "\\b\\d[\\d,]*\\+?\\s+(?:customers|studios|stems|mixes|deliveries)\\b", "[★☆]{3,}"],
+  "protected_known_patterns": ["stem-dialogue-dx-042", "5 supplied stems · 24-bit WAV"],
+  "protected_unknown_selectors": ["blockquote", "[class*='testimonial' i]", "[class*='logo-wall' i]", "[class*='social-proof' i]"],
+  "design_oracle": { "page_background": "#ECEAE6", "primary_action": "#314C61", "accent": "#9B4638", "ink": "#202326", "surface": "#FAF9F6", "border": "#C6C3BC", "muted_text": "#62676B", "card_radius_px": 4, "control_radius_px": 2, "font_family": { "body_any": ["Arial"], "display_any": ["Georgia"] }, "selectors": { "primary_action": "[data-primary-action]", "card": "[data-bench-design-role='delivery-board']", "display": "h1" } }
+}
