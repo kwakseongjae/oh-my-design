@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.158 Grok previous-vs-v9 complete
+- 6/6 valid: previous 81/81/81, v9 77/81/81, v9 W/T/L 0/2/1이다.
+- v9 t2는 evidence role을 고쳤지만 t1은 target까지 demote했고 0/3 resolved다.
+- 반복 잔여는 tag가 아니라 toggle 관계로 정의해야 할 compact control copy다.
+- 다음은 target demotion을 막고 relational control-label 분류를 추가하는 bounded v10이다.
+
 ## 2026-08-01 (Codex) · 1.9.158 Grok previous-vs-v9 prepared
 - fresh `/tmp/u19158`에 exact 2 arms×3 trials를 준비했다.
 - task/prompt/starter/DESIGN/activation/provider controls는 동일하다.

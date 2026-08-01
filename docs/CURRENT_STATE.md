@@ -4,13 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.158 Grok previous-vs-v9 prepared
+- 갱신: 2026-08-01 · 1.9.158 Grok previous-vs-v9 complete, v9 rejected
 
 ## 지금 (현재 위치)
 
-- 1.9.158 exact previous canonical vs v9을 fresh `/tmp/u19158`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
-- 6 cells의 task `0.1.0`, core prompt `f512b7f6…`, prompt `a2764a0f…`, starter `1c838a6b…`, DESIGN `d3a07624…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. installed Cursor skill만 previous `d7a890ac…` vs v9 `eca9a09a…`이고 양 source는 exact detached clean/publishable이다.
-- Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new 1·no retry/fallback/repair/substitution으로 잠갔다. 다음은 `grok-museum-t1-previous`; 첫 provider/attribution/controller failure에서 `/tmp/u19158`을 동결한다.
+- `/tmp/u19158` 6/6 valid COMPLETE. previous 81/81/81, v9 77/81/81, paired v9 W/T/L 0/2/1이다. 두 arm 모두 UI-Resolved 0/3, Reliability@3 0%라 v9 승격을 거절했다.
+- v9 t2는 supplied-count evidence를 선언된 12/17 metadata role로 정확히 바꿔 해당 wrap을 제거했다. t3은 적용하지 않았고 t1은 selected target까지 12px로 demote해 네 viewport의 target emphasis를 잃었다.
+- 세 v9 trial 모두 compact toggle과 짝인 `<strong>` copy를 control label로 안정적으로 분류하지 못해 320/200% wrap이 남았다. 다음 v10은 tag가 아니라 control 관계로 compact control copy를 정의하고 target/identifier를 evidence demotion에서 명시적으로 제외한다.
+- Grok 4.5 High는 이번 6/6도 requested/reported attribution 그대로 완료했다. provider/quota/timeout/retry/fallback/repair/substitution 0이다.
 - 1.9.157 exact v9을 `omd-portable-reflow-v9-candidate`로 고정했다. detached clean/publishable source는 `b6fa87d1…`, Cursor installed skill tree SHA는 `eca9a09a…`, activation은 previous와 같은 `01728b95…`다.
 - provider-free `/tmp/u19157-v9-diagnostic`에서 task/starter/source attestation과 focused candidate pin 1/1, lint가 green이다. 다음은 locked museum-loan task에서 exact previous vs v9 Grok 2×3을 fresh root에 준비한다.
 - 1.9.156 새 unseen non-approval `museum-loan-routing-v0.1`을 v9 commit 뒤 provider generation 전에 contract-lock했다. 새 collections-operations domain이며 3 routing choices, reversible source-note toggle, handoff-label form, 3 object/destination/registrar mappings와 4-view geometry+hierarchy를 가진다.
