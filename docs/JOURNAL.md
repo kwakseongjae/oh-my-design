@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.182 media-clearance Grok prepared
+- fresh `/tmp/u19182` 6 cells, equality/source attestation 6/6 green이다.
+- installed skill만 previous `d7a890ac…` vs packet `36216aea…`다.
+- provider 0; next는 `grok-media-t1-previous`다.
+- max-new 1과 120s pacing/stop contract를 유지한다.
+
 ## 2026-08-02 (Codex) · 1.9.182 media-clearance Grok preregistered
 - exact previous vs packet 2×3을 fresh `/tmp/u19182`로 잠갔다.
 - Grok 4.5 High·serial·120s·max-new 1·no fallback 계약이다.
