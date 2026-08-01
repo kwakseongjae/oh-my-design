@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.173 audio-stem v12 transfer preregistered
+- exact previous vs v12 2×3 Grok matrix를 잠갔다.
+- balanced/serial/120s/max-new 1/no fallback contract다.
+- provider 0; 다음은 fresh `/tmp/u19173` preparation이다.
+
 ## 2026-08-01 (Codex) · 1.9.172 unseen audio-stem holdout locked
 - 새 post-production task를 provider generation 전에 고정했다.
 - two-column inventory+nested facts와 dynamic state/relational copy를 사용한다.
