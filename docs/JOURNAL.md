@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.151 width-budget + protected-visibility v8
+- full row를 ancestor inset을 포함한 inline-size budget으로 증명하게 했다.
+- protected empty status도 selector 자신의 baseline geometry를 보존한다.
+- task/evaluator/token 추가 0; contract 7/7, parity 2/2, lint green이다.
+- 다음은 v8 commit 뒤 새 unseen non-approval family lock이다.
+
 ## 2026-08-01 (Codex) · 1.9.150 Grok matrix complete; v7 rejected
 - 6/6 valid: previous 83/81/81, v7 85/71/81, paired 1/1/1이다.
 - v7 UI-Resolved 1/3로 Reliability@3 gate를 통과하지 못했다.

@@ -122,6 +122,13 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("undeclared_type_role_shrink: 0");
     expect(skill).toContain("full_row_before_text_workaround: 0");
     expect(skill).toContain("full row를 회수하지 않은 채 wrap·nowrap·font 축소로 넘어가지 않는다");
+    expect(skill).toContain("`inline-size budget ledger`");
+    expect(skill).toContain("viewport_inline_size → page inset → card border/padding → section inset → reading_inline_size → required_inline_size");
+    expect(skill).toContain("inner padding 하나만 줄이고 page/card/section ancestor inset을 남긴 채");
+    expect(skill).toContain("unresolved_inline_size_budget: 0");
+    expect(skill).toContain("`initial_visibility`, `own_geometry`");
+    expect(skill).toContain("부모 wrapper에만 `min-height`를 주거나 selector를 DOM에 남겼다는 사실");
+    expect(skill).toContain("protected_selector_visibility_loss: 0");
   });
 
   it("preserves task-helpful visual equity under explicit change authority", () => {

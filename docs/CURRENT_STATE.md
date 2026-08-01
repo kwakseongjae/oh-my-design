@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.150 Grok matrix complete; v7 rejected
+- 갱신: 2026-08-01 · 1.9.151 width-budget + protected-visibility v8 implemented
 
 ## 지금 (현재 위치)
 
+- 1.9.151 canonical `omd-apply`의 기존 protected ledger와 reflow step 2만 v8로 조였다. full row는 `viewport→page inset→card border/padding→section inset→reading→required inline size` ledger로 증명하며 `width:100%`만으로 통과하지 않는다.
+- 초기 문자열이 빈 protected dynamic status/live region도 selector 자신의 baseline rendered geometry를 보존해야 한다. parent wrapper min-height나 DOM presence는 proof가 아니며 closure는 `unresolved_inline_size_budget: 0`, `protected_selector_visibility_loss: 0`이다.
+- task string/selector/filename/token/evaluator/weight 추가는 없다. canonical contract 7/7, historical experiment parity 2/2, lint green이다. 다음은 이 commit 뒤 또 다른 unseen non-approval family를 provider generation 전에 잠그는 것이다.
 - `/tmp/u19150` 6/6 valid COMPLETE. previous 83/81/81, v7 85/71/81, paired v7 W/T/L 1/1/1이다. v7 UI-Resolved 1/3, Reliability@3 0%라 승격을 거절했다.
 - v7 성공 t1은 outer/card lateral chrome을 줄여 320px full reading row와 short control label 한 줄을 모두 달성했다. t2/t3은 더 큰 side inset을 남겨 `3 supplied queues · 1 routing policy`와 `Preserve original-assignee context`가 320/200%에서 반복 wrap됐다.
 - t2는 별도로 protected `form-status` selector 자체를 initial empty state에서 zero geometry로 만들어 protected_hooks_exact도 실패했다. parent status row의 min-height는 selector visibility 보존이 아니며 71점 회귀 원인이다.
