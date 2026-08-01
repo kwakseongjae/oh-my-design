@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.218 caption-cue comparison COMPLETE; incomplete proof gate fixed
+- 갱신: 2026-08-02 · 1.9.219 Stop boundary code complete; real-host smoke pending
 
 ## 지금 (현재 위치)
+
+- 1.9.219은 official Codex `Stop` hook을 opt-in proof policy의 final-response boundary로 연결했다. product edit 뒤 proof가 미완료면 첫 Stop을 block하고 남은 합법 단계를 continuation prompt로 주며, `stop_hook_active` 재진입은 허용해 무한 루프를 막는다. edit 없는 Stop은 건드리지 않는다.
+- installer/removal/doctor와 benchmark managed config가 Pre/Post/Stop 3-event contract를 공유한다. busy/corrupt/stale state도 첫 Stop은 fail-closed, active re-entry는 fail-open이다. focused 109/109, TypeScript, build, diff check가 green이고 provider call 0이다.
+- broader/default promotion은 여전히 HOLD다. 다음은 fresh Git fixture의 actual Codex/Luna high에서 모델이 static 뒤 조기 종료를 시도했을 때 Stop 1회 차단→browser proof 1회→ready 종료로 회복하는 1.9.220 smoke다. retry/same-root repair 없이 검증한다.
 
 - `/private/tmp/u19216` 1.9.216 comparison은 6/6 valid COMPLETE다. controller 81/81/79, policy 79/79/83, 양 arm UI-Resolved 0/3이다. paired objective delta -2/-2/+4(W/T/L 1/0/2), mean 0, median -2라 broader/default promotion은 HOLD다.
 - controller duplicate static은 3/2/1이고 proof compliance 0/3; installed arm은 unblocked violation 0/3이다. installed mean wall -10.9%, median wall -1.3%지만 mean token +17.8%, median token +8.3%다.

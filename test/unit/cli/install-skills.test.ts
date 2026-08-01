@@ -941,7 +941,7 @@ describe('install-skills', () => {
     expect(JSON.stringify(enabled)).toContain(
       'node ${CLAUDE_PROJECT_DIR}/.claude/hooks/omd-proof-policy/proof-policy-hook.mjs',
     );
-    for (const event of ['PreToolUse', 'PostToolUse']) {
+    for (const event of ['PreToolUse', 'PostToolUse', 'Stop']) {
       expect(JSON.stringify(enabled.hooks[event]).match(/omd-proof-policy/g)).toHaveLength(1);
     }
   });

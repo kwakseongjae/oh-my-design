@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.219 Stop boundary implemented
+- incomplete final delivery를 첫 Stop에서 한 번 되돌리고 active re-entry는 허용한다.
+- install/remove/doctor/benchmark config와 109 focused tests, lint/build가 green이다.
+- 다음은 fresh Codex/Luna high의 one-shot recovery smoke다.
+
 ## 2026-08-02 (Codex) · 1.9.218 completion gate fixed
 - caption comparison 6/6: controller 81/81/79, policy 79/79/83, UI-Resolved 양쪽 0/3이다.
 - policy는 unblocked violation 0이지만 1/3이 browser 없이 delivery blocked로 종료했다.

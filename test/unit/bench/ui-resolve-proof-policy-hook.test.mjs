@@ -7,6 +7,7 @@ import {
   hookToolOutcome,
   hookToolSucceeded,
   proofPolicyHookDecision,
+  proofPolicyStopDecision,
 } from "../../../benchmarks/ui-resolve-bench/scripts/proof-policy-hook-mapper.mjs";
 
 const pre = (command) => ({
@@ -145,6 +146,35 @@ describe("proof policy host hook mapper", () => {
     ]);
     expect(proofPolicyHookDecision(ready)?.hookSpecificOutput.permissionDecisionReason)
       .toContain("stop tool use and deliver the result");
+  });
+
+  it("blocks one incomplete stop continuation without looping forever", () => {
+    const incomplete = run([
+      edit("Edit", { file_path: "/tmp/run/index.html" }),
+      pre("npm test"),
+      post("npm test"),
+      { hook_event_name: "Stop", stop_hook_active: false },
+    ]);
+    expect(proofPolicyStopDecision(incomplete)).toEqual({
+      decision: "block",
+      reason: "OmD proof policy: proof-incomplete. Next allowed step: finish the one remaining proof stage, then deliver the result.",
+    });
+    expect(proofPolicyStopDecision(incomplete, { stop_hook_active: true })).toBeNull();
+
+    const complete = run([
+      edit("Edit", { file_path: "/tmp/run/index.html" }),
+      pre("npm test"),
+      post("npm test"),
+      pre("browser-harness capture_screenshot"),
+      post("browser-harness capture_screenshot"),
+      { hook_event_name: "Stop", stop_hook_active: false },
+    ]);
+    expect(proofPolicyStopDecision(complete)).toBeNull();
+    expect(complete.decisions.at(-1)).toMatchObject({
+      event: "delivery",
+      allow: true,
+      reason: "delivery-ready",
+    });
   });
 
   it("denies browser discovery without executing a recovery command", () => {

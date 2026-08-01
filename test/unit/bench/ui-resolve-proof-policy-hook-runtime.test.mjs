@@ -40,6 +40,11 @@ const post = (command, exit_code = 0) => ({
   tool_input: { command },
   tool_response: { exit_code },
 });
+const stop = (stop_hook_active = false) => ({
+  ...base,
+  hook_event_name: "Stop",
+  stop_hook_active,
+});
 
 describe("proof policy executable hook", () => {
   let root;
@@ -81,6 +86,22 @@ describe("proof policy executable hook", () => {
         "do not retry static verification; run one browser proof if it is still open",
       ),
     });
+  });
+
+  it("forces one continuation when delivery proof is incomplete", () => {
+    handleProofPolicyHook(edit, { root, now: 100 });
+    handleProofPolicyHook(pre("npm test"), { root, now: 110 });
+    handleProofPolicyHook(post("npm test"), { root, now: 120 });
+    const blocked = handleProofPolicyHook(stop(), { root, now: 130 });
+    expect(blocked.output).toMatchObject({
+      decision: "block",
+      reason: expect.stringContaining("proof-incomplete"),
+    });
+    expect(handleProofPolicyHook(stop(true), { root, now: 140 }).output).toBeNull();
+
+    handleProofPolicyHook(pre("browser-harness capture_screenshot"), { root, now: 150 });
+    handleProofPolicyHook(post("browser-harness capture_screenshot"), { root, now: 160 });
+    expect(handleProofPolicyHook(stop(), { root, now: 170 }).output).toBeNull();
   });
 
   it("denies a proof command when persisted state is corrupt", () => {

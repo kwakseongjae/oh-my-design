@@ -63,6 +63,10 @@ export function mapHookPayloadToProofEvent(payload, state) {
   const event = eventName(payload);
   const tool = toolName(payload);
 
+  if (event === "Stop") {
+    return state.revision > 0 ? { type: "delivery" } : null;
+  }
+
   if (event === "PostToolUse" && isEditTool(tool)) {
     const productEdit = hookEditPaths(payload).some(isProductEditPath);
     return productEdit && hookToolOutcome(payload) !== "failed" ? { type: "product-edit" } : null;
@@ -107,6 +111,7 @@ const DENY_RECOVERY_GUIDANCE = Object.freeze({
   "static-closure-required": "Next allowed step: run exactly one static verification command, then run one browser proof.",
   "duplicate-static-closure": "Next allowed step: do not retry static verification; run one browser proof if it is still open, otherwise stop tool use and deliver.",
   "verification-after-ready": "Next allowed step: stop tool use and deliver the result.",
+  "proof-incomplete": "Next allowed step: finish the one remaining proof stage, then deliver the result.",
 });
 
 export function proofPolicyDenyReason(reason) {
@@ -123,5 +128,18 @@ export function proofPolicyHookDecision(state) {
       permissionDecision: "deny",
       permissionDecisionReason: proofPolicyDenyReason(latest.reason),
     },
+  };
+}
+
+export function proofPolicyStopDecision(state, payload = {}) {
+  const latest = state.decisions.at(-1);
+  if (!latest || latest.event !== "delivery" || latest.allow) return null;
+  // A single forced continuation is enough to expose the legal next step.
+  // If the model still stops incomplete, allow the host to terminate and let
+  // the completion gate fail rather than creating an unbounded stop loop.
+  if (payload.stop_hook_active === true || payload.stopHookActive === true) return null;
+  return {
+    decision: "block",
+    reason: proofPolicyDenyReason(latest.reason),
   };
 }

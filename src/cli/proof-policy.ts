@@ -79,6 +79,16 @@ function proofHookGroup(target: ProofPolicyTarget): JsonObject {
   };
 }
 
+function proofStopHookGroup(target: ProofPolicyTarget): JsonObject {
+  return {
+    hooks: [{
+      type: 'command',
+      command: proofPolicyCommand(target),
+      timeout: 3,
+    }],
+  };
+}
+
 function isProofPolicyHook(value: unknown, target: ProofPolicyTarget): boolean {
   return isJsonObject(value) &&
     value.type === 'command' &&
@@ -100,13 +110,15 @@ function withProofPolicyHooks(existing: JsonObject, target: ProofPolicyTarget): 
     const groups = Array.isArray(existingHooks[event]) ? existingHooks[event] : [];
     hooks[event] = [...stripProofPolicyGroups(groups, target), proofHookGroup(target)];
   }
+  const stopGroups = Array.isArray(existingHooks.Stop) ? existingHooks.Stop : [];
+  hooks.Stop = [...stripProofPolicyGroups(stopGroups, target), proofStopHookGroup(target)];
   return { ...existing, hooks };
 }
 
 function withoutProofPolicyHooks(existing: JsonObject, target: ProofPolicyTarget): JsonObject {
   if (!isJsonObject(existing.hooks)) return existing;
   const hooks: JsonObject = { ...existing.hooks };
-  for (const event of ['PreToolUse', 'PostToolUse']) {
+  for (const event of ['PreToolUse', 'PostToolUse', 'Stop']) {
     const groups = Array.isArray(existing.hooks[event]) ? existing.hooks[event] : [];
     const retained = stripProofPolicyGroups(groups, target);
     if (retained.length > 0) hooks[event] = retained;
@@ -265,14 +277,16 @@ export function proofPolicyIssues(root: string, target: ProofPolicyTarget): stri
   const anyFiles = installedPaths.some(existsSync);
   const parsed = existsSync(config) ? parseJsonObject(readFileSync(config, 'utf8')) : null;
   const anyHook = Boolean(parsed && (
-    hasExactHook(parsed, 'PreToolUse', target) || hasExactHook(parsed, 'PostToolUse', target)
+    hasExactHook(parsed, 'PreToolUse', target) ||
+    hasExactHook(parsed, 'PostToolUse', target) ||
+    hasExactHook(parsed, 'Stop', target)
   ));
   if (!anyFiles && !anyHook) return [];
 
   const issues: string[] = [];
   if (!parsed) issues.push(`${target} proof-policy hook config is missing or invalid`);
   else {
-    for (const event of ['PreToolUse', 'PostToolUse']) {
+    for (const event of ['PreToolUse', 'PostToolUse', 'Stop']) {
       if (!hasExactHook(parsed, event, target)) {
         issues.push(`${target} proof-policy hook is not activated for ${event}`);
       }

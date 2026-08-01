@@ -51,6 +51,7 @@ function policyConfig() {
     hooks: {
       PreToolUse: [hookGroup()],
       PostToolUse: [hookGroup()],
+      Stop: [{ hooks: [{ type: "command", command: POLICY_COMMAND, timeout: 3 }] }],
     },
   };
 }

@@ -17,6 +17,7 @@ import {
   hookCommand,
   proofPolicyDenyReason,
   proofPolicyHookDecision,
+  proofPolicyStopDecision,
 } from "./proof-policy-hook-mapper.mjs";
 
 const STATE_SCHEMA = "0.1";
@@ -107,6 +108,15 @@ function isPreToolCommand(payload) {
   return payload?.hook_event_name === "PreToolUse" && hookCommand(payload).length > 0;
 }
 
+function isStop(payload) {
+  return payload?.hook_event_name === "Stop" || payload?.hookEventName === "Stop";
+}
+
+function stopDeny(reason, payload) {
+  if (payload?.stop_hook_active === true || payload?.stopHookActive === true) return null;
+  return { decision: "block", reason: proofPolicyDenyReason(reason) };
+}
+
 export function handleProofPolicyHook(payload, options = {}) {
   const root = options.root ?? process.env.OMD_PROOF_POLICY_STATE_DIR ?? ".omd/proof-policy";
   const path = statePathFor(payload, root);
@@ -122,21 +132,35 @@ export function handleProofPolicyHook(payload, options = {}) {
     ),
   );
   if (lock == null) {
-    return { output: isPreToolCommand(payload) ? deny("policy-state-busy") : null, status: "busy" };
+    return {
+      output: isPreToolCommand(payload)
+        ? deny("policy-state-busy")
+        : isStop(payload)
+          ? stopDeny("policy-state-busy", payload)
+          : null,
+      status: "busy",
+    };
   }
 
   try {
     const loaded = readProofPolicyState(path, payload, options);
     if (
       (loaded.status === "corrupt" || loaded.status === "stale-or-invalid") &&
-      isPreToolCommand(payload)
+      (isPreToolCommand(payload) || isStop(payload))
     ) {
-      return { output: deny("policy-state-unavailable"), status: loaded.status };
+      return {
+        output: isPreToolCommand(payload)
+          ? deny("policy-state-unavailable")
+          : stopDeny("policy-state-unavailable", payload),
+        status: loaded.status,
+      };
     }
     const next = applyHookPayload(loaded.state, payload);
     if (next !== loaded.state) writeProofPolicyState(path, payload, next, options.now ?? Date.now());
     const output = payload?.hook_event_name === "PreToolUse"
       ? proofPolicyHookDecision(next)
+      : isStop(payload)
+        ? proofPolicyStopDecision(next, payload)
       : null;
     return { output, status: loaded.status, state: next };
   } finally {
