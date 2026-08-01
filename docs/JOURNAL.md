@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.159 bounded reflow v10 implemented
+- compact control copy를 tag가 아닌 paired-control 관계로 분류한다.
+- target/filename/artifact identifier는 evidence-role demotion에서 제외했다.
+- canonical 7/7, historical parity 1/1, lint green이다.
+- 다음은 v10 commit 뒤 새 unseen task contract-lock이다.
+
 ## 2026-08-01 (Codex) · 1.9.158 Grok previous-vs-v9 complete
 - 6/6 valid: previous 81/81/81, v9 77/81/81, v9 W/T/L 0/2/1이다.
 - v9 t2는 evidence role을 고쳤지만 t1은 target까지 demote했고 0/3 resolved다.

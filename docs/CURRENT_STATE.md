@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.158 Grok previous-vs-v9 complete, v9 rejected
+- 갱신: 2026-08-01 · 1.9.159 bounded reflow v10 implemented
 
 ## 지금 (현재 위치)
 
+- 1.9.159 canonical `omd-apply`의 기존 type-role classification만 v10으로 조였다. compact control copy를 tag가 아니라 paired toggle/button/select를 이름 붙이는 관계로 정의하고, source가 label/strong/span/p여도 선언 label role을 적용한다.
+- selected target/source filename/artifact ID/atomic identifier는 evidence/metadata role demotion에서 제외해 target emphasis를 보존한다. unresolved 관계나 compatible role 부재 시 현재 role을 유지하며 `unclassified_compact_control_copy: 0`을 추가했다.
+- task string/selector/filename/token/evaluator/weight/CSS recipe는 추가하지 않았다. canonical 7/7, historical parity 1/1, lint green이다. 다음은 v10 commit 뒤 새 unseen non-approval family를 잠근다.
 - `/tmp/u19158` 6/6 valid COMPLETE. previous 81/81/81, v9 77/81/81, paired v9 W/T/L 0/2/1이다. 두 arm 모두 UI-Resolved 0/3, Reliability@3 0%라 v9 승격을 거절했다.
 - v9 t2는 supplied-count evidence를 선언된 12/17 metadata role로 정확히 바꿔 해당 wrap을 제거했다. t3은 적용하지 않았고 t1은 selected target까지 12px로 demote해 네 viewport의 target emphasis를 잃었다.
 - 세 v9 trial 모두 compact toggle과 짝인 `<strong>` copy를 control label로 안정적으로 분류하지 못해 320/200% wrap이 남았다. 다음 v10은 tag가 아니라 control 관계로 compact control copy를 정의하고 target/identifier를 evidence demotion에서 명시적으로 제외한다.
