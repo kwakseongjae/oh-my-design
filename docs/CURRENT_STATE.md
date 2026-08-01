@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.168 unseen broadcast transfer holdout locked
+- 갱신: 2026-08-01 · 1.9.169 broadcast v11 transfer preregistered
 
 ## 지금 (현재 위치)
 
+- 1.9.169 exact previous canonical vs promoted v11 transfer를 `/tmp/u19169`에 preregister했다. Cursor/Grok 4.5 High, 2 arms×3 trials, balanced order, serial, 120s pacing, max-new 1, no retry/fallback/repair/replacement/substitution이다. 아직 provider call은 0이다.
+- transfer gate는 v11 UI-Resolved 3/3 + Reliability@3 100% + paired loss 0이다. 첫 provider/attribution/controller failure에서 root를 동결한다.
 - 1.9.168 새 unseen non-approval `broadcast-segment-routing-v0.1`을 provider generation 전에 contract-lock했다. 새 broadcast-operations domain, 4 segment/destination/producer/duration mappings, 3 routing modes, reversible rundown-context toggle, handoff form, 4-view geometry+hierarchy를 가진다.
 - broad surface/atomic facts+target-evidence-state/relational compact-copy scope를 분리했다. multiline display/prose는 atomic gate 밖이며 untouched `/tmp/u19168-broadcast-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 실제 scoped responsive text geometry만 390/320/200%에서 red다. provider call은 0이다.
 - 다음은 exact previous canonical vs promoted v11을 Cursor/Grok 4.5 High 2×3 balanced/serial/no-fallback contract로 준비한다. transfer gate는 v11 UI-Resolved 3/3 및 paired loss 0이다.

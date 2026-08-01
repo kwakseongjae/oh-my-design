@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.169 v11 broadcast transfer preregistered
+- exact previous vs promoted v11 2×3 Grok matrix를 잠갔다.
+- balanced/serial/120s/max-new 1/no fallback contract다.
+- provider 0; 다음은 fresh `/tmp/u19169` preparation이다.
+
 ## 2026-08-01 (Codex) · 1.9.168 unseen broadcast holdout locked
 - 새 non-approval broadcast task를 provider generation 전에 고정했다.
 - 4 mappings와 explicit atomic/compact scopes로 layout pressure를 바꿨다.
