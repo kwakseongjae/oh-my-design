@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.187 unseen studio-slot locked
+- resource-time schedule topology의 새 과제를 generation 전에 고정했다.
+- untouched starter는 responsive geometry만 red인 79/85다.
+- task 1/1, lint/diff green, provider 0이다.
+- 다음은 packet vs proof-budget Grok 2×3이다.
+
 ## 2026-08-02 (Codex) · 1.9.186 proof-budget candidate pinned
 - clean detached source와 exact competitor registry를 고정했다.
 - provider-free seen diagnostic에서 install/activation parity를 확인했다.

@@ -31,6 +31,7 @@ const auditExportTaskId = "audit-export-delivery-v0.1";
 const editorialBriefTaskId = "editorial-brief-routing-v0.1";
 const printProofTaskId = "print-proof-routing-v0.1";
 const mediaClearanceTaskId = "media-clearance-routing-v0.1";
+const studioSlotTaskId = "studio-slot-routing-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1121,6 +1122,37 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter.match(/data-bench="asset-row"/g)).toHaveLength(4);
     expect(starter).toContain("asset-campaign-hero-2409.tif");
     expect(starter).toContain("Lane: Rights record · captions off");
+    expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
+  });
+
+  it("locks an unseen resource-time studio routing family before proof-budget generation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", studioSlotTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { count: 3, initial: "stage-a", selected: "stage-b" },
+        toggle: { selector: "[data-bench='buffer-toggle']" },
+        form: { valid_value: "Night session routing" },
+      },
+      text_geometry_oracle: {
+        atomic_scope_selectors: [
+          "[data-bench='slot-row']",
+          "[data-bench-decision-role='target']",
+          "[data-bench-decision-role='evidence']",
+          "[data-bench-decision-role='state']",
+        ],
+        compact_copy_selectors: ["[data-bench='compact-control-copy']"],
+        max_short_text_lines: 1,
+      },
+    });
+    validateTaskContract(task);
+    const out = prepareVariant("raw-design-md", { task: studioSlotTaskId, outputName: "studio-slot-routing" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="slot-row"/g)).toHaveLength(4);
+    expect(starter).toContain("hold-stage-b-1430-1515");
+    expect(starter).toContain("Room: Stage A · buffer off");
     expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
   });
 

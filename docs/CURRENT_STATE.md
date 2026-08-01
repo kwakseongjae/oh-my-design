@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.186 proof-budget candidate pinned
+- 갱신: 2026-08-02 · 1.9.187 unseen studio-slot contract locked
 
 ## 지금 (현재 위치)
 
+- 1.9.187 새 unseen `studio-slot-routing-v0.1`을 provider generation 전에 잠갔다. 기존 master-detail·표·순번 rail과 다른 resource-time schedule topology이며 mobile에서 chronological full-width slot rows로 reflow해야 한다.
+- untouched `/tmp/u19187-studio-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 390/320/200%의 hold·crew identifier, target/evidence/state, relational compact copy geometry만 red다. provider call은 0이다.
+- task contract 1/1, lint/diff green이다. 다음은 exact packet candidate vs proof-budget candidate를 Grok 4.5 High 2×3으로 preregister·prepare하는 것이다. trigger 충족 시 Luna xhigh는 별도 fresh root에서 복제한다.
 - 1.9.186에서 exact proof-budget candidate를 `omd-portable-proof-budget-candidate`로 고정했다. detached clean/publishable source는 `a7d4c03…`, installed Cursor tree SHA는 `d2f2258d…`, file SHA는 `f8e44bae…`, activation은 packet과 같은 `01728b95…`다.
 - provider-free `/tmp/u19186-proof-budget-diagnostic`에서 seen print-proof task의 task/prompt/starter/DESIGN/source/skill/activation attestation을 확인했다. provider call 0이며 이 task는 promotion에 쓰지 않는다.
 - pin+historical experimental parity focused 2/2, lint/diff green이다. full bench unit의 별도 2 red는 기존 non-Git Taste/UI UX Pro fixture이고 신규 pin test는 green이다. 다음은 새 unseen non-approval family를 provider generation 전에 contract-lock하는 것이다.
