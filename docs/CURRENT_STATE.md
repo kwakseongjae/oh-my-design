@@ -4,12 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.190 Luna xhigh prepared
+- 갱신: 2026-08-02 · 1.9.190 Luna xhigh complete
 
 ## 지금 (현재 위치)
 
-- fresh `/tmp/u19190` Luna xhigh 6/6을 PREPARED했다. 6 cells의 task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 exact equality이고 installed Codex skill만 packet `5a388f5b…` vs proof-budget `87d5f0fc…`다.
-- 양 source는 detached clean/publishable이고 provider call은 0이다. 다음 cell은 `luna-studio-r1-packet`; max-new 1, fixed 120s, first-failure freeze를 유지한다.
+- `/tmp/u19190` Luna xhigh 6/6 valid COMPLETE. packet과 proof-budget 모두 85/85×3, UI-Resolved 3/3, proof-budget W/T/L 0/3/0이며 paired quality loss 0이다.
+- proof-budget mean/median wall은 +1.0%/+10.1%, mean/median tokens는 -17.2%/-16.0%, mean/median command executions는 -25.6%/-23.1%다. 품질·token/command 방향은 좋지만 wall은 퇴행했다.
+- Luna command trace는 browser recovery-like 0/1/0, duplicate static closure 1/1/3이라 required 0/0을 실패했다. Grok과 Luna 모두 quality pass·command gate fail이며 promotion은 HOLD다.
+- 다음은 prose/heuristic 추가가 아니라 `static_closure`와 `browser_proof`를 명시적으로 닫고 product edit만 phase를 다시 여는 machine-readable close latch 1.9.191이다.
 - `/tmp/u19189` Grok 6/6 valid COMPLETE. packet과 proof-budget 모두 85/85×3, UI-Resolved 3/3, proof-budget W/T/L 0/3/0이며 paired quality loss 0이다.
 - proof-budget mean/median wall은 -36.9%/-32.8%, mean/median tokens는 -37.4%/-61.3%, mean/median tool calls는 -46.6%/-47.5%로 numeric efficiency gate를 통과했다. third paired token은 +68.4% outlier지만 mean gate를 뒤집지 않았다.
 - command trace는 budget trials별 browser recovery-like 2/3/2와 duplicate static clusters 1/4/1이라 required 0/0을 실패했다. quality·numeric efficiency pass지만 promotion은 HOLD다.

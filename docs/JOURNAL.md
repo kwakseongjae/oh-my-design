@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.190 Luna complete
+- both arms 85×3; proof-budget W/T/L 0/3/0이다.
+- budget tokens -17.2%, commands -25.6%지만 wall +1.0%다.
+- browser/static trace 0/0 gate 실패로 promotion은 HOLD다.
+- next는 machine-readable proof close latch 1.9.191이다.
+
 ## 2026-08-02 (Codex) · 1.9.190 Luna matrix prepared
 - fresh `/tmp/u19190` 6/6 equality attestation을 완료했다.
 - exact task/arms/order이며 runtime/model/effort만 Luna xhigh다.
