@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.145 Luna High previous-vs-v6 prepared
+- fresh `/tmp/u19145`에 exact 2 arms×3 trials를 준비했다.
+- task/prompt/starter/DESIGN/activation/provider controls는 동일하다.
+- installed skill tree만 previous `a8128ccc…` vs v6 `a6009fde…`다.
+- provider 0; 다음 cell은 `luna-rotation-t1-previous`다.
+
 ## 2026-08-01 (Codex) · 1.9.144 exact ordered reflow v6 candidate pinned
 - detached clean `d971174…`를 별도 v6 variant로 고정했다.
 - Cursor installed tree SHA `e0c111e0…`, publishable=true를 확인했다.
