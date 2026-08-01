@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.156 unseen museum-loan holdout accepted
+- v9 commit 뒤 새 collections-operations task를 provider 0 상태로 잠갔다.
+- untouched starter는 79/85; responsive text geometry만 의도대로 red다.
+- function/state/a11y/DESIGN/evidence/hierarchy 및 horizontal overflow는 green이다.
+- 다음은 exact v9 detached candidate pin과 Grok 2×3이다.
+
 ## 2026-08-01 (Codex) · 1.9.155 bounded reflow v9 implemented
 - 기존 type-role step에 short evidence/summary/metadata role resolution만 추가했다.
 - 선언된 label/metadata role이 없으면 current role을 보존하며 축소·fallback하지 않는다.

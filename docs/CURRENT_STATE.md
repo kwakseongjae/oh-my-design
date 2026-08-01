@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.155 bounded reflow v9 implemented
+- 갱신: 2026-08-01 · 1.9.156 unseen museum-loan holdout accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.156 새 unseen non-approval `museum-loan-routing-v0.1`을 v9 commit 뒤 provider generation 전에 contract-lock했다. 새 collections-operations domain이며 3 routing choices, reversible source-note toggle, handoff-label form, 3 object/destination/registrar mappings와 4-view geometry+hierarchy를 가진다.
+- untouched `/tmp/u19156-museum-starter`는 79/85다. function/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. desktop percentage child widths와 inherited 16px evidence가 identifier fragmentation 및 supplied-count wrap을 만드는 것을 320px screenshot으로 확인했다.
+- protected empty form-status는 selector 자신의 baseline min-height를 가진다. injected break/single-text scroller/provider call은 0이다. 다음은 exact v9 `b6fa87d…`를 detached candidate로 고정하고 exact previous canonical과 fresh 2×3으로 비교한다.
 - 1.9.155 canonical `omd-apply`의 기존 type-role step만 v9로 조였다. 짧은 evidence/summary/metadata/supplied-count line도 DESIGN.md의 선언된 label/metadata role을 먼저 적용하며, 호환 role이 없으면 현재 role을 보존하고 작은 값을 추측하지 않는다.
 - closure에 `undeclared_evidence_type_role: 0`을 추가했다. task string/selector/filename/token/evaluator/weight/layout recipe는 추가하지 않았고 v8의 width/protected/semantic 제약을 모두 유지했다.
 - canonical contract 7/7, historical decision-context parity 1/1, lint green이다. 전체 bench file의 2 red는 기존 non-Git Taste/UI UX Pro fixture 환경 문제다. 다음은 v9 commit 뒤 새 unseen non-approval family를 provider generation 전에 잠그는 것이다.
