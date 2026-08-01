@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.210 host policy comparison complete
+- fresh Luna/high 2×3이 6/6 valid로 완료됐다.
+- policy는 unblocked violation 0, proof compliant 3/3이지만 UI-Resolved 0/3, point delta -2/-6/+2다.
+- deny-only guard가 2/3에서 browser proof 회복을 막아 broader promotion은 HOLD다.
+- next는 state-specific legal-next-action deny guidance 1.9.211이다.
+
 ## 2026-08-02 (Codex) · 1.9.210 final replacement prepared
 - fresh `/tmp/u19210`에 exact Luna/high controller vs installed policy 2×3을 준비했다.
 - task/prompt/starter/DESIGN/skill/activation/runtime equality와 policy-only delta가 green이다.

@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.210 exact replacement PREPARED; provider 0
+- 갱신: 2026-08-02 · 1.9.210 host-policy comparison COMPLETE; promotion HOLD
 
 ## 지금 (현재 위치)
+
+- `/tmp/u19210` 1.9.210은 6/6 valid COMPLETE다. controller 81/85/79, UI-Resolved 1/3, duplicate static 1/1/6; installed policy 79/79/81, UI-Resolved 0/3, valid state 3/3, proof compliant 3/3, unblocked violation 0/3이다.
+- installed policy의 matched UI W/T/L은 0/2/1, point delta -2/-6/+2, mean objective -2.35pp다. mean wall -25.4%, mean tokens -26.4%지만 token 이득은 controller 1.08M outlier 영향을 받아 median은 -4.9%다.
+- 정책은 중복 실행을 확실히 막았지만 2/3 policy trials가 deny 뒤 browser proof로 회복하지 못했다. current opt-in은 유지하되 broader/default promotion은 HOLD다. 다음 1.9.211은 deny payload에 state-specific legal next action을 추가하는 provider-free bounded delta다.
+
 
 - 1.9.210 exact replacement를 fresh `/tmp/u19210`에 PREPARED했다. 6 cells의 task/prompt/starter/product/DESIGN/skill `1d204afe…`/activation/Codex/Luna high/timeout/Git root equality와 policy-only delta를 재확인했고 provider call 0이다.
 - 양 arm은 동일하게 Codex user config를 로드하고 installed arm만 trust bypass를 받는다. locked plan SHA `2baaf3cf…`, preparation state SHA `2771d3d8…`다. 다음은 `luna-book-r1-controller`부터 max-new 1로 순차 실행한다.
