@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.169 v11 broadcast transfer prepared
+- fresh `/tmp/u19169`에 exact 2 arms×3 trials를 준비했다.
+- task/prompt/starter/DESIGN/activation/provider controls는 동일하다.
+- installed skill만 previous `d7a890ac…` vs v11 `5d0323ab…`다.
+- provider 0; 다음 cell은 `grok-broadcast-t1-previous`다.
+
 ## 2026-08-01 (Codex) · 1.9.169 v11 broadcast transfer preregistered
 - exact previous vs promoted v11 2×3 Grok matrix를 잠갔다.
 - balanced/serial/120s/max-new 1/no fallback contract다.

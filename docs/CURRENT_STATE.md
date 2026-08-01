@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.169 broadcast v11 transfer preregistered
+- 갱신: 2026-08-01 · 1.9.169 broadcast v11 transfer prepared
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19169` 6 cells PREPARED, provider call 0이다. task/core-prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 6/6 동일하고 installed Cursor skill만 previous `d7a890ac…` vs v11 `5d0323ab…`이다. 양 source는 exact detached clean/publishable이다.
+- 다음 실행 cell은 `grok-broadcast-t1-previous`다. 각 invocation은 새 cell 최대 1개이며 preregistered pacing과 stop contract를 유지한다.
 - 1.9.169 exact previous canonical vs promoted v11 transfer를 `/tmp/u19169`에 preregister했다. Cursor/Grok 4.5 High, 2 arms×3 trials, balanced order, serial, 120s pacing, max-new 1, no retry/fallback/repair/replacement/substitution이다. 아직 provider call은 0이다.
 - transfer gate는 v11 UI-Resolved 3/3 + Reliability@3 100% + paired loss 0이다. 첫 provider/attribution/controller failure에서 root를 동결한다.
 - 1.9.168 새 unseen non-approval `broadcast-segment-routing-v0.1`을 provider generation 전에 contract-lock했다. 새 broadcast-operations domain, 4 segment/destination/producer/duration mappings, 3 routing modes, reversible rundown-context toggle, handoff form, 4-view geometry+hierarchy를 가진다.
