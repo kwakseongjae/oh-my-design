@@ -64,6 +64,12 @@ describe('omd workflows', () => {
       'opencode',
     ]);
     expect(assurance.channels.every((channel) => channel.skill_contract === 'advisory')).toBe(true);
+    expect(assurance.channels.every((channel) => channel.native_policy_surface.length > 0))
+      .toBe(true);
+    expect(assurance.channels.every(
+      (channel) => channel.omd_policy_adapter_default === 'not-installed',
+    ))
+      .toBe(true);
     expect(assurance.channels.every((channel) => channel.host_native_pretool_blocking === false))
       .toBe(true);
     expect(assurance.channels.find((channel) => channel.id === 'claude-code')?.effective_level)
@@ -93,6 +99,8 @@ describe('omd workflows', () => {
 
     expect(omdPreToolHooks).toEqual([]);
     expect(claude?.host_native_pretool_blocking).toBe(false);
+    expect(claude?.native_policy_surface).toBe('pre-tool-hook-deny');
+    expect(claude?.omd_policy_adapter_default).toBe('not-installed');
     expect(claude?.host_feedback).toContain('post-edit-context');
   });
 

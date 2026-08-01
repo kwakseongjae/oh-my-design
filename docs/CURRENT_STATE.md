@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.199 host execution-assurance boundary complete
+- 갱신: 2026-08-02 · 1.9.200 native host policy feasibility complete
 
 ## 지금 (현재 위치)
 
+- 1.9.200 공식 host contract 조사로 Claude Code와 Codex는 dynamic PreToolUse deny, Cursor는 project CLI permissions, OpenCode는 project permissions/plugin before-hook surface가 있음을 확인했다.
+- native policy surface 존재와 OmD adapter 설치 여부를 별도 필드로 분리했다. 현재 모든 채널의 default OmD adapter는 `not-installed`라서 host 기능만으로 OmD enforcement를 주장하지 않는다.
+- 공식 source links와 channel matrix를 `HOST-ENFORCEMENT.md`에 고정했고 manifest/doctor 정합성 41/41, lint/diff green, provider 0이다.
+- 다음 1.9.201은 Claude Code+Codex 공통 event schema를 이용한 narrow opt-in proof policy adapter의 state protocol과 simulator다. Cursor/OpenCode에는 동적 blocker를 추정 구현하지 않는다.
 - 1.9.199에서 skill prose, host feedback, host-native pre-tool enforcement, benchmark observation을 분리한 machine-readable `execution_assurance` 계약을 설치 manifest에 추가했다.
 - 현재 OmD-owned pre-tool blocker는 0개다. Claude Code는 prompt/session/post-edit feedback, Codex·Cursor는 UI-Resolve controller 안에서만 proof trace와 promotion-report gate를 제공하며 OpenCode는 skill contract만 제공한다.
 - `omd doctor`가 불완전하거나 과장된 assurance manifest를 거부하고 source Claude settings와 no-PreToolUse claim의 정합성을 테스트한다. focused 77/77, lint/diff green, provider 0이다.

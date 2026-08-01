@@ -28,6 +28,8 @@ export interface WorkflowManifest {
       id: 'claude-code' | 'codex' | 'opencode' | 'cursor';
       skill_contract: 'advisory';
       host_feedback: string[];
+      native_policy_surface: string;
+      omd_policy_adapter_default: 'not-installed' | 'opt-in';
       host_native_pretool_blocking: boolean;
       proof_trace: string;
       effective_level: 'skill-contract' | 'host-feedback' | 'host-policy-enforced';

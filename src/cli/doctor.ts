@@ -348,6 +348,8 @@ function coreIssues(
             !isJsonObject(channel) ||
             typeof channel.id !== 'string' ||
             channel.skill_contract !== 'advisory' ||
+            typeof channel.native_policy_surface !== 'string' ||
+            channel.omd_policy_adapter_default !== 'not-installed' ||
             typeof channel.host_native_pretool_blocking !== 'boolean' ||
             typeof channel.effective_level !== 'string',
         ) ||

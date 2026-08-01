@@ -92,6 +92,8 @@ describe('omd doctor', () => {
                   channels: ['claude-code', 'codex', 'opencode', 'cursor'].map((id) => ({
                     id,
                     skill_contract: 'advisory',
+                    native_policy_surface: 'test-policy-surface',
+                    omd_policy_adapter_default: 'not-installed',
                     host_native_pretool_blocking: false,
                     effective_level: id === 'claude-code' ? 'host-feedback' : 'skill-contract',
                   })),

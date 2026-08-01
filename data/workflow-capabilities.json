@@ -24,6 +24,8 @@
         "id": "claude-code",
         "skill_contract": "advisory",
         "host_feedback": ["prompt-context", "session-state", "post-edit-context", "session-fold-in"],
+        "native_policy_surface": "pre-tool-hook-deny",
+        "omd_policy_adapter_default": "not-installed",
         "host_native_pretool_blocking": false,
         "proof_trace": "not-captured-by-omd",
         "effective_level": "host-feedback"
@@ -32,6 +34,8 @@
         "id": "codex",
         "skill_contract": "advisory",
         "host_feedback": [],
+        "native_policy_surface": "pre-tool-hook-deny-or-execpolicy-rules",
+        "omd_policy_adapter_default": "not-installed",
         "host_native_pretool_blocking": false,
         "proof_trace": "benchmark-controller-only",
         "effective_level": "skill-contract"
@@ -40,6 +44,8 @@
         "id": "opencode",
         "skill_contract": "advisory",
         "host_feedback": [],
+        "native_policy_surface": "project-permissions-or-plugin-before-hook",
+        "omd_policy_adapter_default": "not-installed",
         "host_native_pretool_blocking": false,
         "proof_trace": "not-captured-by-omd",
         "effective_level": "skill-contract"
@@ -48,6 +54,8 @@
         "id": "cursor",
         "skill_contract": "advisory",
         "host_feedback": [],
+        "native_policy_surface": "project-cli-permissions",
+        "omd_policy_adapter_default": "not-installed",
         "host_native_pretool_blocking": false,
         "proof_trace": "benchmark-controller-only",
         "effective_level": "skill-contract"

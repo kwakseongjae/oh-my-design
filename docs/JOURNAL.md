@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.200 native policy feasibility
+- Claude/Codex dynamic deny와 Cursor/OpenCode policy surface를 공식 문서로 확인했다.
+- host capability와 OmD adapter default를 분리해 미설치 enforcement 주장을 막았다.
+- focused 41/41, lint/diff green, provider 0이다.
+- next는 Claude+Codex opt-in proof policy simulator 1.9.201이다.
+
 ## 2026-08-02 (Codex) · 1.9.199 host assurance boundary
 - skill contract, host feedback, pre-tool enforcement, benchmark observation을 분리했다.
 - 설치 manifest와 doctor가 채널별 실제 보장 수준을 fail-closed 검증한다.
