@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.189 Grok transfer prepared
+- 갱신: 2026-08-02 · 1.9.189 Grok complete · 1.9.190 Luna locked
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19189` Grok 6/6 valid COMPLETE. packet과 proof-budget 모두 85/85×3, UI-Resolved 3/3, proof-budget W/T/L 0/3/0이며 paired quality loss 0이다.
+- proof-budget mean/median wall은 -36.9%/-32.8%, mean/median tokens는 -37.4%/-61.3%, mean/median tool calls는 -46.6%/-47.5%로 numeric efficiency gate를 통과했다. third paired token은 +68.4% outlier지만 mean gate를 뒤집지 않았다.
+- command trace는 budget trials별 browser recovery-like 2/3/2와 duplicate static clusters 1/4/1이라 required 0/0을 실패했다. quality·numeric efficiency pass지만 promotion은 HOLD다.
+- 1.9.190 Luna xhigh exact replication을 `/tmp/u19190`에 preregister했다. task/arms/order/timeout/pacing은 Grok과 동일하며 runtime/model/effort만 codex/`gpt-5.6-luna`/xhigh로 분리한다. provider call은 아직 0이다.
 - fresh `/tmp/u19189` 6/6을 PREPARED했다. 6 cells의 task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 exact equality이고 installed skill만 packet `36216aea…` vs proof-budget `d2f2258d…`다.
 - 양 source는 detached clean/publishable이고 third-party installer/hooks/agent tools/provider call은 0이다. 다음 cell은 `grok-studio-r1-packet`; max-new 1, fixed 120s, first-failure freeze를 유지한다.
 - 1.9.188 preparation은 invalid latency enum을 controller가 provider 전 거부해 execution-invalid로 동결했다. prepared cell 0, provider call 0, `/tmp/u19188` 미생성이고 same-root edit/retry/resume를 금지한다.

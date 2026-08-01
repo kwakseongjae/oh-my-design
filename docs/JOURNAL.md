@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.189 Grok complete · Luna locked
+- both arms 85×3; proof-budget W/T/L 0/3/0이다.
+- budget mean wall -36.9%, tokens -37.4%, tools -46.6%다.
+- browser/static trace 0/0 gate 실패로 promotion은 HOLD다.
+- exact Luna xhigh 1.9.190을 별도 denominator로 잠갔다.
+
 ## 2026-08-02 (Codex) · 1.9.189 Grok matrix prepared
 - fresh `/tmp/u19189` 6/6 equality attestation을 완료했다.
 - only installed skill differs; both sources clean/detached/publishable이다.
