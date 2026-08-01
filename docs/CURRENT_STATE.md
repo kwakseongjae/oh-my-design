@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.215 caption-cue unseen task LOCKED; exact comparison preregistration next
+- 갱신: 2026-08-02 · 1.9.216 caption-cue host-policy comparison PREREGISTERED; fresh preparation next
 
 ## 지금 (현재 위치)
+
+- 1.9.216 exact Codex/Luna high controller-observation vs installed opt-in policy 2×3를 provider 전에 잠갔다. unseen `caption-cue-timing-review-v0.1`, prompt/starter/DESIGN/skill/runtime/model/effort/timeout은 동일하고 sole delta는 project proof-policy installation이다.
+- balanced order, max-new 1, 120초 pacing, no retry/fallback/same-root repair를 고정했다. execution-valid는 6/6 complete + policy state 3/3 + unblocked violation 0이고, broader/default promotion은 installed UI-Resolved 3/3 + paired objective loss 0일 때만 허용한다.
+- matrix JSON과 current task contract는 green이다. focused bench 62/64이며 2 red는 동일 external Taste/UI UX Pro vendor Git precondition이다. provider call 0; 다음은 fresh `/private/tmp/u19216` preparation과 exact equality attestation이다.
 
 - 1.9.215 새 unseen non-approval `caption-cue-timing-review-v0.1`을 provider generation 전에 잠갔다. dark editorial timing rail, 5 cue/speaker+in→out pairs, 3 timebase choices, boundary-snap toggle, cue-set form, 4-view geometry/hierarchy contract다.
 - untouched starter는 79/85다. contract/design/state/a11y/evidence와 desktop geometry/targets는 green이고 390/320/200%의 identifier·timecode·compact-label text geometry만 red다. prompt SHA `f7a397e2…`, starter tree SHA `4a333328…`, provider call 0이다.

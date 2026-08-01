@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.216 comparison preregistered
+- unseen caption task에 Luna/high controller vs installed policy 2×3를 잠갔다.
+- sole delta, balanced order, max-new 1, pacing, no-retry와 promotion gate를 고정했다.
+- provider 0; 다음은 fresh root preparation/equality attestation이다.
+
 ## 2026-08-02 (Codex) · 1.9.215 caption-cue contract locked
 - 새 dark editorial timing task를 provider 전에 잠갔다.
 - untouched 79/85; constrained text geometry만 red이고 나머지 gate는 green이다.
