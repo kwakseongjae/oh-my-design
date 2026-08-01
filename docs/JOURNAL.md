@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.184 Luna xhigh prepared
+- fresh `/tmp/u19184` 6/6 equality/source attestation이 green이다.
+- exact previous vs packet, codex/Luna/xhigh, provider 0이다.
+- next는 `luna-media-t1-previous`, max-new 1/120s pacing이다.
+
 ## 2026-08-02 (Codex) · 1.9.184 Luna xhigh replication locked
 - Grok 6/6: packet 3/3 UI-Resolved, previous 2/3, W/T/L 1/2/0이다.
 - packet tokens 평균 -9.2%지만 wall 평균 +11.3%라 promotion은 hold다.
