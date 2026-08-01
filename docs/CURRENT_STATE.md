@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.196 proof-trace pipeline integration complete
+- 갱신: 2026-08-02 · 1.9.197 proof-trace aggregate complete
 
 ## 지금 (현재 위치)
 
+- 1.9.197 aggregate가 proof trace availability/analyzable/compliance rate와 browser recovery·duplicate static·after-ready 분포를 group별로 계산한다. Markdown table에도 Proof analyzed/compliant 열을 추가했다.
+- 모든 valid run이 analyzable trace를 가질 때만 별도 `compliance_publication_ready:true`다. 기존 quality-only group을 소급 무효화하지 않으며 malformed trace는 fail-closed한다.
+- focused aggregate/classifier/export 19/19과 lint가 green이다. 다음은 이 compliance gate를 preregistered matrix contract에서 선언·자동 판정할 수 있는 1.9.198 gate schema다.
 - 1.9.196에서 Cursor/Codex cell export가 `.benchmark/proof-trace.json`을 자동 생성하고 run-record diagnostics/evidence, completion summary, artifact SHA, checkpoint tree integrity에 포함한다.
 - unstarted cell의 stray proof trace는 dirtiness로 거부하며, 인식 가능한 edit evidence가 없는 stream은 `analyzable:false`로 fail-closed한다. Claude Code는 아직 `proof_trace:null`이다.
 - focused controller/export/runtime/classifier 58/58과 lint가 green이다. 다음 1.9.197은 aggregate 결과에 proof compliance 분포와 failure cluster를 넣어 matrix 비교에서 수동 집계를 제거한다.

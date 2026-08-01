@@ -50,6 +50,21 @@ function validateRecord(record, index) {
   ]) {
     if (record[field] != null && finite(record[field], `${label}.${field}`) < 0) throw new Error(`${label}.${field} must be non-negative`);
   }
+  const proofTrace = record.runtime_diagnostics?.proof_trace;
+  if (proofTrace != null) {
+    if (typeof proofTrace.analyzable !== "boolean" || typeof proofTrace.compliance_pass !== "boolean") {
+      throw new Error(`${label}.runtime_diagnostics.proof_trace booleans are required`);
+    }
+    for (const field of [
+      "browser_recovery_count",
+      "duplicate_static_closure_count",
+      "verification_after_ready_count",
+    ]) {
+      if (!Number.isInteger(proofTrace[field]) || proofTrace[field] < 0) {
+        throw new Error(`${label}.runtime_diagnostics.proof_trace.${field} must be a non-negative integer`);
+      }
+    }
+  }
   return record;
 }
 
@@ -245,6 +260,16 @@ function summarizeGroup(records, options) {
     && new Set(controlValues).size === 1
   );
   const resolvedCount = resolvedValues.reduce((sum, value) => sum + value, 0);
+  const proofAvailable = valid.filter((record) => record.runtime_diagnostics?.proof_trace != null);
+  const proofAnalyzable = proofAvailable.filter(
+    (record) => record.runtime_diagnostics.proof_trace.analyzable === true,
+  );
+  const proofCompliant = proofAnalyzable.filter(
+    (record) => record.runtime_diagnostics.proof_trace.compliance_pass === true,
+  );
+  const proofMetric = (field) => describe(proofAnalyzable.map(
+    (record) => record.runtime_diagnostics.proof_trace[field],
+  ));
   return {
     benchmark_family: sample.benchmark_family,
     suite_version: sample.suite_version,
@@ -285,6 +310,23 @@ function summarizeGroup(records, options) {
     human_interventions: describe(
       valid.map((record) => record.human_interventions).filter((value) => value != null),
     ),
+    proof_execution: {
+      scheduled_valid_runs: valid.length,
+      available_runs: proofAvailable.length,
+      analyzable_runs: proofAnalyzable.length,
+      analyzable_rate: valid.length ? round(proofAnalyzable.length / valid.length) : null,
+      compliant_runs: proofCompliant.length,
+      compliance_rate: proofAnalyzable.length
+        ? round(proofCompliant.length / proofAnalyzable.length)
+        : null,
+      browser_recovery_count: proofMetric("browser_recovery_count"),
+      duplicate_static_closure_count: proofMetric("duplicate_static_closure_count"),
+      verification_after_ready_count: proofMetric("verification_after_ready_count"),
+      compliance_publication_ready:
+        valid.length > 0
+        && proofAvailable.length === valid.length
+        && proofAnalyzable.length === valid.length,
+    },
     usage_telemetry: {
       scheduled_valid_runs: valid.length,
       available_runs: usageAvailable.length,
@@ -421,9 +463,9 @@ const markdown = [
   "",
   `> ${samples.toLocaleString()} task→run hierarchical bootstrap samples · Reliability@${reliabilityK}`,
   "",
-  "| Family | System | Valid / scheduled | UI-Resolved | 95% CI | Reliability | Objective median [P10–P90] | Completion |",
-  "|---|---|---:|---:|---:|---:|---:|---:|",
-  ...groups.map((group) => `| ${group.benchmark_family} | ${group.system_id} | ${group.runs.valid_trials}/${group.runs.scheduled_trials} | ${percent(group.ui_resolved.rate)} | ${interval(group.ui_resolved.confidence_95)} | ${percent(group.reliability.rate)} | ${group.objective_percent.median == null ? "—" : `${group.objective_percent.median.toFixed(1)} [${group.objective_percent.p10.toFixed(1)}–${group.objective_percent.p90.toFixed(1)}]`} | ${percent(group.runs.completion_rate)} |`),
+  "| Family | System | Valid / scheduled | UI-Resolved | 95% CI | Reliability | Objective median [P10–P90] | Proof analyzed | Proof compliant | Completion |",
+  "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|",
+  ...groups.map((group) => `| ${group.benchmark_family} | ${group.system_id} | ${group.runs.valid_trials}/${group.runs.scheduled_trials} | ${percent(group.ui_resolved.rate)} | ${interval(group.ui_resolved.confidence_95)} | ${percent(group.reliability.rate)} | ${group.objective_percent.median == null ? "—" : `${group.objective_percent.median.toFixed(1)} [${group.objective_percent.p10.toFixed(1)}–${group.objective_percent.p90.toFixed(1)}]`} | ${percent(group.proof_execution.analyzable_rate)} | ${percent(group.proof_execution.compliance_rate)} | ${percent(group.runs.completion_rate)} |`),
   "",
   "Min/max are descriptive only. Failed, timed-out, and incomplete valid runs remain in the UI-Resolved denominator; missing objective scores are not imputed.",
   "",

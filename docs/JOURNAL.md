@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.197 proof aggregate
+- proof analyzed/compliant와 세 violation 분포를 group 집계에 추가했다.
+- Markdown 비교표와 별도 publication-ready flag를 연결했다.
+- focused 19/19, lint green, provider 0이다.
+- next는 preregistered compliance gate schema 1.9.198이다.
+
 ## 2026-08-02 (Codex) · 1.9.196 proof trace integrated
 - Cursor/Codex run export가 proof-trace artifact를 자동 저장한다.
 - run record/summary/hash/checkpoint integrity까지 연결했다.

@@ -16,6 +16,7 @@ function record({
   status = "complete",
   validity = "valid",
   suffix = "",
+  proofTrace = null,
 }) {
   return {
     run_id: `${system}-${task}-${trial}${suffix}`,
@@ -64,6 +65,7 @@ function record({
     },
     tool_calls: 10 + trial,
     human_interventions: 0,
+    runtime_diagnostics: { proof_trace: proofTrace },
   };
 }
 
@@ -216,5 +218,68 @@ describe("UI-Resolve aggregate statistics", () => {
       && group.publication_ready === false
     ))).toBe(true);
     expect(summary.paired_comparisons).toEqual([]);
+  });
+
+  it("aggregates proof execution availability, compliance, and violation distributions", () => {
+    const dir = mkdtempSync(join(tmpdir(), "ui-resolve-proof-aggregate-"));
+    const input = join(dir, "runs.json");
+    const out = join(dir, "summary.json");
+    const trace = (pass, recovery, duplicate, afterReady) => ({
+      analyzable: true,
+      compliance_pass: pass,
+      browser_recovery_count: recovery,
+      duplicate_static_closure_count: duplicate,
+      verification_after_ready_count: afterReady,
+    });
+    const records = [
+      record({ system: "omd", task: "a", trial: 1, resolved: true, score: 85, proofTrace: trace(true, 0, 0, 0) }),
+      record({ system: "omd", task: "a", trial: 2, resolved: true, score: 85, proofTrace: trace(false, 2, 1, 3) }),
+      record({ system: "omd", task: "a", trial: 3, resolved: true, score: 85 }),
+    ];
+    writeFileSync(input, `${JSON.stringify(records, null, 2)}\n`, "utf8");
+    execFileSync(process.execPath, [aggregate, "--input", input, "--out", out, "--reliability", "3"], {
+      cwd: repoRoot,
+      encoding: "utf8",
+    });
+    const group = JSON.parse(readFileSync(out, "utf8")).groups[0];
+    expect(group.proof_execution).toMatchObject({
+      scheduled_valid_runs: 3,
+      available_runs: 2,
+      analyzable_runs: 2,
+      analyzable_rate: 0.6667,
+      compliant_runs: 1,
+      compliance_rate: 0.5,
+      compliance_publication_ready: false,
+      browser_recovery_count: { count: 2, mean: 1, median: 1, min: 0, max: 2 },
+      duplicate_static_closure_count: { count: 2, mean: 0.5, median: 0.5 },
+      verification_after_ready_count: { count: 2, mean: 1.5, median: 1.5 },
+    });
+    expect(readFileSync(out.replace(/\.json$/, ".md"), "utf8")).toContain("| 66.7% | 50.0% |");
+  });
+
+  it("fails closed on malformed proof execution evidence", () => {
+    const dir = mkdtempSync(join(tmpdir(), "ui-resolve-proof-invalid-"));
+    const input = join(dir, "runs.json");
+    const out = join(dir, "summary.json");
+    const malformed = record({
+      system: "omd",
+      task: "a",
+      trial: 1,
+      resolved: true,
+      score: 85,
+      proofTrace: {
+        analyzable: true,
+        compliance_pass: true,
+        browser_recovery_count: -1,
+        duplicate_static_closure_count: 0,
+        verification_after_ready_count: 0,
+      },
+    });
+    writeFileSync(input, `${JSON.stringify([malformed])}\n`, "utf8");
+    expect(() => execFileSync(process.execPath, [aggregate, "--input", input, "--out", out], {
+      cwd: repoRoot,
+      encoding: "utf8",
+      stdio: "pipe",
+    })).toThrow(/browser_recovery_count must be a non-negative integer/i);
   });
 });
