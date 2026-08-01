@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.209 runner boundary green
+- production-installed Codex policy가 Luna/high 실제 실행에서 duplicate static closure를 사전 차단했다.
+- host-policy 양 arm만 user config를 동일 로드하고 installed arm만 trust bypass하도록 runner를 교정했다.
+- focused 58/58 + lint green; invalid disposable fixtures는 제외했다.
+- next는 fresh `/tmp/u19210` exact 2×3 replacement다.
+
 ## 2026-08-02 (Codex) · 1.9.208 frozen
 - controller 79/85, policy 85/85였지만 policy state가 생성되지 않았다.
 - runner의 native hook-trust bypass 누락으로 policy 비교가 execution-invalid다.

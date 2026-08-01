@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.208 frozen; hook trust activation fix in progress
+- 갱신: 2026-08-02 · 1.9.209 runner boundary green; fresh 2×3 replacement next
 
 ## 지금 (현재 위치)
+
+- 1.9.209 actual Codex CLI 0.144.1 + Luna/high smoke가 production-installed policy를 통과했다. fresh Git root에서 product edit와 첫 `true`는 실행됐고 동일 두 번째 `true`는 PreToolUse에서 실행 전에 차단됐다. state schema 0.1, decisions 4, `duplicate_static_closure: 1`이 저장됐다.
+- 원인은 `--ignore-user-config`가 hook trust뿐 아니라 project hook discovery까지 끈 것이었다. host-policy 양 arm만 동일하게 user config를 로드하고 installed arm에만 native trust bypass를 준다. ordinary Codex benchmark는 계속 user config를 무시한다. focused 58/58과 lint가 green이다.
+- 두 disposable 실패 fixture는 execution-invalid로 제외했다. 다음은 새 `/tmp/u19210`에 exact Luna/high controller vs installed-opt-in 2×3을 preregister/prepare하고 max-new 1로 순차 실행한다. 1.9.207/1.9.208은 재개하지 않는다.
 
 - `/tmp/u19208` 1.9.208은 controller 79/85·duplicate 2와 policy 85/85까지 완료했지만 policy state 0, unblocked duplicate 1이라 execution-invalid로 동결했다. prepared files가 아니라 non-interactive Codex runner가 native hook trust bypass를 전달하지 않은 것이 원인이다.
 - installed-opt-in Codex arm에만 `--dangerously-bypass-hook-trust`를 전달하고 runtime attribution에 기록하도록 수정했다. controller arm은 flag 0을 유지한다. focused regression 후 1.9.209 fresh root replacement가 다음이다.

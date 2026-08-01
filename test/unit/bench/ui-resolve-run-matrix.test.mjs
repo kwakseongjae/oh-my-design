@@ -77,14 +77,18 @@ describe("UI-Resolve prepared matrix execution", () => {
       effort: "high",
       timeout_seconds: 900,
     };
-    expect(runArgsForCell({
+    const control = runArgsForCell({
       ...base,
       host_policy_mode: "controller-observation",
-    }, "/tmp/control")).not.toContain("--bypass-hook-trust");
-    expect(runArgsForCell({
+    }, "/tmp/control");
+    const policy = runArgsForCell({
       ...base,
       host_policy_mode: "installed-opt-in",
-    }, "/tmp/policy")).toContain("--bypass-hook-trust");
+    }, "/tmp/policy");
+    expect(control).toContain("--load-user-config");
+    expect(control).not.toContain("--bypass-hook-trust");
+    expect(policy).toContain("--load-user-config");
+    expect(policy).toContain("--bypass-hook-trust");
   });
 
   it("proves Cursor project-cache writeability before provider execution", () => {
