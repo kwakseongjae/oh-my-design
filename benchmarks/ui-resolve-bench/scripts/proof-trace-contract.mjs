@@ -13,17 +13,21 @@ const IGNORED_EDIT_BASENAMES = new Set([
   "DESIGN.md",
 ]);
 
-const BROWSER_MECHANISM = /(?:browser-harness(?!\s+--doctor)|google(?:\s+|\\\s*)chrome[^\n]*(?:--headless|--screenshot)|chromium[^\n]*(?:\.launch|--headless|--screenshot)|playwright[^\n]*(?:\.launch|screenshot|capture)|capture_screenshot|screenshot=)/i;
+const BROWSER_HARNESS_INVOCATION = /(?:^|[\n;&|()"'`])\s*(?:[A-Z_][A-Z0-9_]*=\S+\s+)*(?:\S*\/)?browser-harness(?:\s+(?!--doctor\b)|\s*$)/i;
+const OTHER_BROWSER_MECHANISM = /(?:google(?:\s+|\\\s*)chrome[^\n]*(?:--headless|--screenshot)|chromium[^\n]*(?:\.launch|--headless|--screenshot)|playwright[^\n]*(?:\.launch|screenshot|capture)|screenshot=)/i;
 const BROWSER_DISCOVERY = /(?:browser-harness\s+--doctor|command\s+-v\s+(?:chrom|google-chrome|playwright)|which\s+(?:chrom|google-chrome|playwright|osascript)|ls\s+[^\n]*(?:google\\?\s*chrome|chromium)|find\s+[^\n]*playwright|require\.resolve\(['"]playwright|import\s+playwright)/i;
+const BROWSER_INSTRUCTION_READ = /(?:sed|cat|head|tail|less|rg)\b[^\n]*browser-harness[^\n]*SKILL\.md/i;
 
 export function classifyProofCommand(command) {
   const value = String(command ?? "");
-  const browser = BROWSER_MECHANISM.test(value);
+  const neutral = BROWSER_INSTRUCTION_READ.test(value);
+  const browser = BROWSER_HARNESS_INVOCATION.test(value) || OTHER_BROWSER_MECHANISM.test(value);
   const recoveryProbe = BROWSER_DISCOVERY.test(value);
   return {
-    browser,
-    recovery_probe: recoveryProbe,
-    static_verification: !browser && !recoveryProbe,
+    browser: !neutral && browser,
+    recovery_probe: !neutral && recoveryProbe,
+    static_verification: !neutral && !browser && !recoveryProbe,
+    neutral,
   };
 }
 
@@ -144,7 +148,7 @@ export function classifyProofTrace(events) {
     const firstBrowserIndex = browserCommands.at(0)?.index ?? null;
     const afterReady = firstBrowserIndex == null
       ? []
-      : revision.commands.filter((action) => action.index > firstBrowserIndex);
+      : revision.commands.filter((action) => action.index > firstBrowserIndex && !action.neutral);
     revision.static_closure_count = staticCommands.length;
     revision.browser_mechanism_count = browserCommands.length;
     revision.browser_recovery_probe_count = recoveryProbes.length;

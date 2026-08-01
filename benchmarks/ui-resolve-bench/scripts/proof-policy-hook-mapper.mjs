@@ -79,6 +79,7 @@ export function mapHookPayloadToProofEvent(payload, state) {
 
   if (event === "PreToolUse") {
     if (state.revision === 0) return null;
+    if (classification.neutral) return null;
     if (classification.recovery_probe) return { type: "browser-recovery" };
     if (classification.browser) return { type: "browser-proof-start" };
     return { type: "static-proof-start" };

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.219 Stop boundary code complete; real-host smoke pending
+- 갱신: 2026-08-02 · 1.9.220 Stop smoke exposed/fixed instruction-read attribution; replacement pending
 
 ## 지금 (현재 위치)
+
+- 1.9.220 fresh Codex/Luna high Stop smoke에서 첫 incomplete Stop 차단과 one-shot continuation은 실제로 작동했다. 다만 continuation 중 browser-harness `SKILL.md`를 읽은 `sed`가 경로 문자열 때문에 browser proof로 오인돼 state가 ready가 되었고, 실제 capture는 after-ready로 차단됐다. root는 실패 증거로 동결했다.
+- classifier는 이제 executable shell boundary가 있는 browser-harness만 actual browser proof로 보고, browser-harness `SKILL.md`의 narrow read는 neutral로 처리한다. direct/wrapped/env/heredoc 실행은 계속 proof다. focused 100/100, TypeScript, build가 green이다.
+- 다음 1.9.221은 fresh root replacement다. acceptance는 incomplete Stop 1회 block, instruction read 0 proof consumption, actual browser attempt 1, delivery ready, unblocked violation 0이며 same-root retry는 없다.
 
 - 1.9.219은 official Codex `Stop` hook을 opt-in proof policy의 final-response boundary로 연결했다. product edit 뒤 proof가 미완료면 첫 Stop을 block하고 남은 합법 단계를 continuation prompt로 주며, `stop_hook_active` 재진입은 허용해 무한 루프를 막는다. edit 없는 Stop은 건드리지 않는다.
 - installer/removal/doctor와 benchmark managed config가 Pre/Post/Stop 3-event contract를 공유한다. busy/corrupt/stale state도 첫 Stop은 fail-closed, active re-entry는 fail-open이다. focused 109/109, TypeScript, build, diff check가 green이고 provider call 0이다.

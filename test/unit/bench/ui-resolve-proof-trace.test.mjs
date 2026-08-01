@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  classifyProofCommand,
   classifyProofTrace,
   evaluateProofExecutionGate,
   isProductEditPath,
@@ -46,6 +47,33 @@ describe("proof trace contract", () => {
     expect(isProductEditPath("/tmp/run/.benchmark/check.mjs")).toBe(false);
     expect(isProductEditPath("/tmp/run/.agents/skills/omd/SKILL.md")).toBe(false);
     expect(isProductEditPath("/tmp/run/DESIGN.md")).toBe(false);
+  });
+
+  it("distinguishes browser-harness execution from reading its instructions", () => {
+    expect(classifyProofCommand("browser-harness capture_screenshot").browser).toBe(true);
+    expect(classifyProofCommand("/opt/homebrew/bin/zsh -lc \"browser-harness <<'PY'\ncapture_screenshot()\nPY\"").browser).toBe(true);
+    expect(classifyProofCommand("BU_NAME=smoke browser-harness capture_screenshot").browser).toBe(true);
+    expect(classifyProofCommand("sed -n '1,240p' /Users/me/Developer/browser-harness/SKILL.md")).toMatchObject({
+      browser: false,
+      recovery_probe: false,
+      static_verification: false,
+      neutral: true,
+    });
+  });
+
+  it("does not count a browser instruction read as verification after ready", () => {
+    const result = classifyProofTrace([
+      codexEdit(),
+      codexCommand("npm test"),
+      codexCommand("browser-harness capture_screenshot"),
+      codexCommand("sed -n '1,240p' /Users/me/Developer/browser-harness/SKILL.md"),
+    ]);
+    expect(result).toMatchObject({
+      static_closure_count: 1,
+      browser_mechanism_count: 1,
+      verification_after_ready_count: 0,
+      compliance_pass: true,
+    });
   });
 
   it("passes one static closure followed by one browser mechanism", () => {

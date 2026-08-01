@@ -75,6 +75,21 @@ describe("proof policy host hook mapper", () => {
     expect(state.decisions.map((entry) => entry.reason)).toContain("browser-proof-unresolved");
   });
 
+  it("does not consume browser proof when the agent only reads browser-harness instructions", () => {
+    const state = run([
+      edit("Edit", { file_path: "/tmp/run/index.html" }),
+      pre("rg -n after index.html"),
+      post("rg -n after index.html"),
+      pre("sed -n '1,240p' /Users/me/Developer/browser-harness/SKILL.md"),
+    ]);
+    expect(state).toMatchObject({
+      browser_proof: "open",
+      browser_attempts: 0,
+      delivery: "blocked",
+    });
+    expect(state.decisions.at(-1)).toMatchObject({ reason: "static-closure-closed" });
+  });
+
   it("produces the same compliant state from Claude and Codex edit shapes", () => {
     const commands = [
       pre("npm test"),

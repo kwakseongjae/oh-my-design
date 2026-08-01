@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.220 Stop smoke frozen
+- incomplete Stop block은 작동했지만 SKILL.md read를 browser proof로 오인했다.
+- root를 동결하고 instruction read를 neutral로 좁혔다; focused 100/100과 build green이다.
+- 다음은 fresh 1.9.221 replacement smoke다.
+
 ## 2026-08-02 (Codex) · 1.9.219 Stop boundary implemented
 - incomplete final delivery를 첫 Stop에서 한 번 되돌리고 active re-entry는 허용한다.
 - install/remove/doctor/benchmark config와 109 focused tests, lint/build가 green이다.
