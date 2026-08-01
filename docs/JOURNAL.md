@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.141 Luna High complete; v5 rejected
+- 6/6 valid; previous 81/79/79, v5 77/81/81, paired v5 W/T/L 2/0/1이다.
+- 두 arm 모두 Reliability@3 0%라 v5는 release gate를 통과하지 못했다.
+- v5 failures는 compact-label 2/3, decision containment 1/3, 200% overflow 1/3이다.
+- 다음은 additive rule 없이 기존 2e를 순서형 v6로 재구성한다.
+
 ## 2026-08-01 (Codex) · 1.9.141 Luna High previous-vs-v5 prepared
 - fresh `/tmp/u19141`에 exact 2 arms×3 trials를 준비했다.
 - task/prompt/starter/DESIGN/activation/provider controls는 동일하다.
