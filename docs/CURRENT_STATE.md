@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.151 width-budget + protected-visibility v8 implemented
+- 갱신: 2026-08-01 · 1.9.152 unseen warehouse-transfer holdout locked
 
 ## 지금 (현재 위치)
 
+- 1.9.152 새 unseen non-approval `warehouse-transfer-routing-v0.1`을 v8 commit 뒤 provider generation 전에 contract-lock했다. 새 inventory-operations domain이며 3 transfer choices, reversible bin-context toggle, handoff-label form, 3 request/warehouse/owner mappings와 4-view geometry+hierarchy를 가진다.
+- untouched `/tmp/u19152-warehouse-starter-v2`는 79/85다. function/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% atomic/short-label geometry만 red다. desktop percentage child widths가 mobile block에 남아 request/warehouse/owner를 세로 파편화하는 것을 320px screenshot으로 확인했다.
+- protected empty form-status는 selector 자체의 baseline min-height를 가진다. injected break/single-text scroller/provider call은 0이다. 다음은 exact v8 `e33fd21…`을 detached candidate로 고정하고 exact previous와 fresh 2×3으로 비교한다.
 - 1.9.151 canonical `omd-apply`의 기존 protected ledger와 reflow step 2만 v8로 조였다. full row는 `viewport→page inset→card border/padding→section inset→reading→required inline size` ledger로 증명하며 `width:100%`만으로 통과하지 않는다.
 - 초기 문자열이 빈 protected dynamic status/live region도 selector 자신의 baseline rendered geometry를 보존해야 한다. parent wrapper min-height나 DOM presence는 proof가 아니며 closure는 `unresolved_inline_size_budget: 0`, `protected_selector_visibility_loss: 0`이다.
 - task string/selector/filename/token/evaluator/weight 추가는 없다. canonical contract 7/7, historical experiment parity 2/2, lint green이다. 다음은 이 commit 뒤 또 다른 unseen non-approval family를 provider generation 전에 잠그는 것이다.

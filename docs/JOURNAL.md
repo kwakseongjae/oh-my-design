@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.152 unseen warehouse-transfer holdout accepted
+- 새 inventory-operations non-approval family를 provider 전에 잠갔다.
+- untouched starter 79/85; function/state/a11y/DESIGN/evidence/hierarchy green이다.
+- mobile/320/200% atomic+short-label geometry만 red, protected empty status geometry는 green이다.
+- provider 0; 다음은 exact previous-vs-v8 candidate pin이다.
+
 ## 2026-08-01 (Codex) · 1.9.151 width-budget + protected-visibility v8
 - full row를 ancestor inset을 포함한 inline-size budget으로 증명하게 했다.
 - protected empty status도 selector 자신의 baseline geometry를 보존한다.
