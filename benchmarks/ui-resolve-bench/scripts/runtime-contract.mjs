@@ -62,6 +62,9 @@ export function runnerSpecForCell(cell, workspace) {
       "--model", cell.model_id,
       registered.effort_flag, cell.effort,
       "--timeout-ms", String(cell.timeout_seconds * 1000),
+      ...(cell.runtime === "codex" && cell.host_policy_mode === "installed-opt-in"
+        ? ["--bypass-hook-trust"]
+        : []),
     ],
   };
 }

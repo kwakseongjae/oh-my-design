@@ -209,6 +209,7 @@ export function buildRunRecord({
         auth_mode: run?.runtime?.auth_mode ?? null,
         provider_route: run?.runtime?.provider_route ?? null,
         provider_effort_argument: run?.runtime?.provider_effort_argument ?? null,
+        hook_trust_bypassed: run?.runtime?.hook_trust_bypassed ?? false,
         usage_attribution: run?.output?.usage_attribution ?? null,
       },
       source_commit: manifest?.skill?.source_commit ?? null,

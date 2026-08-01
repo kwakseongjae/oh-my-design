@@ -9,6 +9,7 @@ const workspace = args.get("workspace") ? resolve(String(args.get("workspace")))
 const model = String(args.get("model") ?? "gpt-5.6-terra");
 const reasoning = String(args.get("reasoning") ?? "xhigh");
 const timeoutMs = Number(args.get("timeout-ms") ?? 900_000);
+const bypassHookTrust = args.get("bypass-hook-trust") === true;
 
 if (!workspace) {
   console.error("usage: run-codex.mjs --workspace <prepared-dir> [--model gpt-5.6-terra] [--reasoning xhigh]");
@@ -32,6 +33,7 @@ const command = [
   "--ephemeral",
   "--ignore-user-config",
   "--skip-git-repo-check",
+  ...(bypassHookTrust ? ["--dangerously-bypass-hook-trust"] : []),
   "--sandbox",
   "workspace-write",
   "--cd",
@@ -157,6 +159,7 @@ const result = {
     sandbox: "workspace-write",
     ephemeral: true,
     ignored_user_config: true,
+    hook_trust_bypassed: bypassHookTrust,
   },
   process: {
     exit_code: exit.code,

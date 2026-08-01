@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.208 frozen
+- controller 79/85, policy 85/85였지만 policy state가 생성되지 않았다.
+- runner의 native hook-trust bypass 누락으로 policy 비교가 execution-invalid다.
+- `/tmp/u19208`은 2 cells 뒤 동결하고 재개하지 않는다.
+- next는 installed arm-only trust flag fix 후 fresh 1.9.209다.
+
 ## 2026-08-02 (Codex) · 1.9.208 replacement prepared
 - exact replacement 2×3을 fresh `/tmp/u19208`에 PREPARED했다.
 - 모든 invariant와 policy-only delta, checkpoint fix 기준을 재확인했다.

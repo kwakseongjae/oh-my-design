@@ -70,6 +70,23 @@ describe("UI-Resolve prepared matrix execution", () => {
     expect(validPreparedCellAttestation(hashes, { hostPolicy: true })).toBe(false);
   });
 
+  it("bypasses native hook trust only for the explicitly installed Codex policy arm", () => {
+    const base = {
+      runtime: "codex",
+      model_id: "gpt-5.6-luna",
+      effort: "high",
+      timeout_seconds: 900,
+    };
+    expect(runArgsForCell({
+      ...base,
+      host_policy_mode: "controller-observation",
+    }, "/tmp/control")).not.toContain("--bypass-hook-trust");
+    expect(runArgsForCell({
+      ...base,
+      host_policy_mode: "installed-opt-in",
+    }, "/tmp/policy")).toContain("--bypass-hook-trust");
+  });
+
   it("proves Cursor project-cache writeability before provider execution", () => {
     const temp = mkdtempSync(join(tmpdir(), "omd-cursor-runtime-preflight-"));
     const projects = join(temp, "projects");

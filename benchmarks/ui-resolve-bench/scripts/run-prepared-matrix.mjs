@@ -443,9 +443,9 @@ function preparedCellAttestation(workspace) {
   return {
     benchmark_tree_sha256: treeManifest(join(workspace, ".benchmark")).sha256,
     product_tree_sha256: currentProduct.sha256,
-    host_policy: manifest.host_policy
-      ? inspectPreparedHostPolicy(REPO_ROOT, workspace, manifest.host_policy.mode)
-      : null,
+    ...(manifest.host_policy
+      ? { host_policy: inspectPreparedHostPolicy(REPO_ROOT, workspace, manifest.host_policy.mode) }
+      : {}),
   };
 }
 

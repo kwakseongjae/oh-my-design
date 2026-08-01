@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.208 replacement matrix prepared
+- 갱신: 2026-08-02 · 1.9.208 frozen; hook trust activation fix in progress
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19208` 1.9.208은 controller 79/85·duplicate 2와 policy 85/85까지 완료했지만 policy state 0, unblocked duplicate 1이라 execution-invalid로 동결했다. prepared files가 아니라 non-interactive Codex runner가 native hook trust bypass를 전달하지 않은 것이 원인이다.
+- installed-opt-in Codex arm에만 `--dangerously-bypass-hook-trust`를 전달하고 runtime attribution에 기록하도록 수정했다. controller arm은 flag 0을 유지한다. focused regression 후 1.9.209 fresh root replacement가 다음이다.
 - 1.9.208 exact replacement를 `/tmp/u19208`에 fresh PREPARED했다. 6 cells의 task/prompt/starter/product/DESIGN/skill `1d204afe…`/activation/Codex/Luna high/timeout/Git root equality와 policy-only arm delta를 재확인했고 provider call 0이다.
 - checkpoint validator fix `60416fa`가 clean 기준이다. 다음은 `luna-book-r1-controller`부터 max-new 1로 순차 실행하며 1.9.207의 첫 셀은 재사용하지 않는다.
 - `/tmp/u19207` 1.9.207은 첫 controller cell만 valid 79/85·proof compliant로 완료한 뒤 두 번째 provider 호출 전에 checkpoint validator가 새 `host_policy` attestation key를 거부했다. controller implementation defect이므로 전체 비교는 execution-invalid로 동결했고 이 root를 재개하지 않는다.
