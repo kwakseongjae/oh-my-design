@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.186 proof-budget candidate pinned
+- clean detached source와 exact competitor registry를 고정했다.
+- provider-free seen diagnostic에서 install/activation parity를 확인했다.
+- focused 2/2, lint/diff green, provider 0이다.
+- 다음은 새 unseen non-approval contract-lock이다.
+
 ## 2026-08-02 (Codex) · 1.9.185 proof budget accepted
 - single-pass inventory/static/browser budget을 `omd-apply`에 구현했다.
 - 기존 quality gate delta 0, skill +5.2% context cost다.

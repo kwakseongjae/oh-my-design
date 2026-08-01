@@ -1014,6 +1014,24 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(new Set([previous.commit, v12.commit, v13.commit, candidate.commit]).size).toBe(4);
   });
 
+  it("pins the single-pass proof-budget candidate separately", () => {
+    const previous = competitors.variants["omd-portable-jade"];
+    const packet = competitors.variants["omd-portable-reflow-packet-candidate"];
+    const candidate = competitors.variants["omd-portable-proof-budget-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.185",
+      source_path: previous.source_path,
+      install_adapter: previous.install_adapter,
+      install_root: previous.install_root,
+      install_dir: previous.install_dir,
+      declared_name: previous.declared_name,
+      commit: "a7d4c03df6f4bbe5691dec4874fc5ca961e0c118",
+      activation: previous.activation,
+    });
+    expect(new Set([previous.commit, packet.commit, candidate.commit]).size).toBe(3);
+  });
+
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", editorialBriefTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({

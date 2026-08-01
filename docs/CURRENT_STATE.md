@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.185 proof execution budget provider-free accepted
+- 갱신: 2026-08-02 · 1.9.186 proof-budget candidate pinned
 
 ## 지금 (현재 위치)
 
+- 1.9.186에서 exact proof-budget candidate를 `omd-portable-proof-budget-candidate`로 고정했다. detached clean/publishable source는 `a7d4c03…`, installed Cursor tree SHA는 `d2f2258d…`, file SHA는 `f8e44bae…`, activation은 packet과 같은 `01728b95…`다.
+- provider-free `/tmp/u19186-proof-budget-diagnostic`에서 seen print-proof task의 task/prompt/starter/DESIGN/source/skill/activation attestation을 확인했다. provider call 0이며 이 task는 promotion에 쓰지 않는다.
+- pin+historical experimental parity focused 2/2, lint/diff green이다. full bench unit의 별도 2 red는 기존 non-Git Taste/UI UX Pro fixture이고 신규 pin test는 green이다. 다음은 새 unseen non-approval family를 provider generation 전에 contract-lock하는 것이다.
 - 1.9.185 provider-free proof budget을 구현했다. pre-edit inventory 1회, target product edit 1 transaction, static closure 1회(+실제 product 교정 뒤 rerun 1회), browser mechanism 1회이며 infra failure 뒤 doctor/help/executable/process/port/direct launch/alternate/install/permission recovery를 금지한다.
 - reflow/product/a11y/evidence/token/geometry/delivery gate delta는 0이다. canonical skill은 34,854→36,653 bytes(+5.2%)라 live comparison에서 command/token 절감으로 context 비용을 회수해야 한다.
 - focused skill 9/9, install 36/36, bounded advisory 2/2, lint/diff green이며 provider call 0이다. 다음은 clean commit에서 exact candidate pin 후 다른 unseen non-approval task의 exact packet vs proof-budget Grok 2×3이다.
