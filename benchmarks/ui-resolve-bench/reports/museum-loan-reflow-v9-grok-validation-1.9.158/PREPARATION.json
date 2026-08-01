@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "museum-loan-reflow-v9-grok-validation-1.9.158",
+  "status": "prepared-provider-zero",
+  "provider_calls": 0,
+  "output_root": "/tmp/u19158",
+  "prepared_cells": 6,
+  "equality": {
+    "task_version": "0.1.0",
+    "core_prompt_sha256": "f512b7f6bf2ea2474953f9f8ec98cae6095effa49007e5da5091c1a76e85bf10",
+    "prompt_sha256": "a2764a0f1a57882e95de0e9bbeca25ff58ad87ff356ac8fab3e8b1b21cb35fcc",
+    "starter_sha256": "1c838a6b6eebeb41b5795c8ff0c754cb620ecc0d831f93686a4ffdb01cb58a47",
+    "design_md_sha256": "d3a07624a9bd4784b1f9d26b67221190c315add918e5f9f585741ba1eeb65109",
+    "activation_delta_sha256": "01728b95555028b7db735816e304bd2e51ca60aee1a59fd65e9b97aa75c58a9f",
+    "runtime": "cursor",
+    "model": "cursor-grok-4.5-high",
+    "effort": "high",
+    "timeout_seconds": 900
+  },
+  "arms": {
+    "previous": { "variant_id": "omd-portable-jade", "source_commit": "f013dbd9f94a1e018f7cf8a4e500207fe982b00a", "installed_cursor_skill_sha256": "d7a890ac08f8a4cce8c541b186039c9fcd4245a363f7f97132a2bbf8f46f52d5", "source_clean": true, "source_detached": true, "source_publishable": true },
+    "candidate": { "variant_id": "omd-portable-reflow-v9-candidate", "source_commit": "b6fa87d1d274b5b74283ccdc9d7717aa765ea6fc", "installed_cursor_skill_sha256": "eca9a09a79b8cf991604b96c4141a48f782c77bde66a0b061044bc5ba4c91a8b", "source_clean": true, "source_detached": true, "source_publishable": true }
+  },
+  "execution_contract": { "serial": true, "inter_cell_delay_seconds": 120, "max_new_cells_per_invocation": 1, "retry": false, "fallback": false, "repair": false, "replacement": false, "model_substitution": false },
+  "next_cell": "grok-museum-t1-previous"
+}
