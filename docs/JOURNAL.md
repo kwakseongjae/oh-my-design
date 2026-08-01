@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.178 compact reflow packet implemented
+- 7-stage/26-counter closure를 `INVENTORY → FIT → REFLOW → PROVE` packet으로 교체했다.
+- canonical -18.9%, reflow section -69.0%; unsafe source-derived pass를 제거했다.
+- focused 8/8, full 351 pass/1 skip/2 known fixture red; provider 0.
+- 다음은 exact commit/pin과 새 unseen transfer다.
+
 ## 2026-08-01 (Codex) · 1.9.177 print-proof v13 transfer rejected
 - previous 81/85/85 vs v13 81/83/85; v13 W/T/L 0/2/1.
 - v13 UI-Resolved 1/3, wall +24.4%, tokens +65.9%.

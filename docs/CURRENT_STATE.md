@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.177 print-proof v13 transfer rejected
+- 갱신: 2026-08-01 · 1.9.178 compact reflow work-packet candidate implemented
 
 ## 지금 (현재 위치)
 
+- 1.9.178은 v14 prose rule을 추가하지 않고 기존 7-stage/26-counter reflow closure를 단일 machine-readable `reflow_work_packet`과 `INVENTORY → FIT → REFLOW → PROVE` 네 단계로 교체했다.
+- canonical skill은 42,996→34,854 bytes(-18.9%), reflow closure는 11,164→3,462 bytes(-69.0%)다. source-derived one-line pass를 없애고 measured line count 1 + overflow/clipping 0만 pass로 둔다. nowrap은 longest value가 390/320/200%에서 실제 fit하고 page overflow 0일 때만 허용한다.
+- focused skill contract 8/8, decision-context experimental parity, lint가 green이다. full unit은 351 pass/1 skip/2 red이며 두 red는 기존 non-Git Taste/UI UX Pro fixture다. provider call은 0이다.
+- 다음은 이 구조 후보를 commit/pin하고 provider-free diagnostic을 거친 뒤, 새로운 unseen topology를 generation 전에 잠가 exact previous canonical vs packet candidate 2×3 transfer를 수행하는 것이다.
 - `/tmp/u19177` 6/6 valid COMPLETE. previous 81/85/85 vs v13 81/83/85, paired v13 W/T/L 0/2/1이다. previous UI-Resolved 2/3, v13 1/3이므로 v13을 reject한다.
 - v13 t1은 compact copy를 고쳤지만 dynamic state wrap을 남겼고, t2는 scoped rows를 nowrap으로 만들며 200% page horizontal overflow를 새로 냈다. t3만 85/85다. mean wall +24.4%, mean tokens +65.9%다.
 - 다음은 v14 prose rule 추가가 아니다. 길어진 closure를 compact machine-readable work packet/checklist로 operationalize하거나 더 작은 ordered invariant set으로 단순화하는 구조적 단계다.
