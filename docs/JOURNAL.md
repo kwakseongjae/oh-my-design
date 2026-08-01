@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.162 Grok previous-vs-v10 prepared
+- fresh `/tmp/u19162`에 exact 2 arms×3 trials를 준비했다.
+- task/prompt/starter/DESIGN/activation/provider controls는 동일하다.
+- installed skill만 previous `d7a890ac…` vs v10 `fb7472d5…`다.
+- provider 0; 다음 cell은 `grok-sample-t1-previous`다.
+
 ## 2026-08-01 (Codex) · 1.9.161 exact v10 portable candidate pinned
 - detached clean `e3e5c6e4…`를 별도 v10 variant로 고정했다.
 - Cursor installed tree `fb7472d5…`, activation `01728b95…`, publishable=true다.
