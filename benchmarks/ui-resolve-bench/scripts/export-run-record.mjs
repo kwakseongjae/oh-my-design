@@ -4,7 +4,7 @@ import { basename, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, writeJson } from "./_lib.mjs";
 import { summarizeClaudeToolErrors } from "./check-claude-runner.mjs";
-import { classifyProofTrace } from "./proof-trace-contract.mjs";
+import { classifyProofTrace, evaluateProofExecutionGate } from "./proof-trace-contract.mjs";
 import { CURSOR_RUNTIME_DISPLAY_LABELS } from "./runtime-contract.mjs";
 
 const FAMILIES = new Set(["model", "skill", "harness", "prompt-arena", "factorial"]);
@@ -102,6 +102,7 @@ export function buildRunRecord({
   executionControl = null,
   attributionScope = "provider-observed-only",
   proofTrace = null,
+  proofExecutionGate = null,
 }) {
   if (!FAMILIES.has(family)) throw new Error(`unsupported benchmark family: ${family}`);
   if (!Number.isInteger(trialIndex) || trialIndex < 1) throw new Error("trial index must be a positive integer");
@@ -184,6 +185,7 @@ export function buildRunRecord({
       agent_calls: run?.output?.agent_calls ?? [],
       milestones: run?.output?.milestones ?? null,
       proof_trace: proofTrace,
+      proof_execution_gate: proofExecutionGate,
     },
     attribution: {
       runtime: {
@@ -266,6 +268,10 @@ async function main() {
   const score = existsSync(scorePath) ? readJson(scorePath) : null;
   const matrixCellPath = join(benchmarkDir, "matrix-cell.json");
   const matrixCell = existsSync(matrixCellPath) ? readJson(matrixCellPath) : null;
+  const proofExecutionGate = evaluateProofExecutionGate(
+    proofTrace,
+    matrixCell?.proof_execution_gate ?? null,
+  );
   const record = buildRunRecord({
     workspace,
     manifest,
@@ -279,6 +285,7 @@ async function main() {
     executionControl: matrixCell?.execution_control ?? null,
     attributionScope: matrixCell?.attribution_scope ?? "provider-observed-only",
     proofTrace,
+    proofExecutionGate,
   });
   const out = args.get("out")
     ? resolve(String(args.get("out")))

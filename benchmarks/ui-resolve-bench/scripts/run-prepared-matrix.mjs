@@ -396,6 +396,7 @@ function completedCellSummary(
     replacement_verifier_authored: replacementVerifierAuthorship(events).detected,
     direct_browser_command_count: directBrowserCommandCount(events),
     proof_trace: record.runtime_diagnostics?.proof_trace ?? null,
+    proof_execution_gate: record.runtime_diagnostics?.proof_execution_gate ?? null,
   };
   if (includeArtifactHashes) summary.artifact_hashes = cellArtifactHashes(benchmarkDir);
   if (completedInInvocation !== undefined) {
@@ -1235,6 +1236,16 @@ function executePreparedMatrixWithLease(root, {
 
   state.status = "complete";
   state.current_cell = null;
+  const proofGatedCells = state.cells.filter((entry) => entry.proof_execution_gate !== null);
+  state.proof_execution_gate = proofGatedCells.length
+    ? {
+        enforcement: "promotion-report",
+        applicable_cells: proofGatedCells.length,
+        passed_cells: proofGatedCells.filter((entry) => entry.proof_execution_gate.pass).length,
+        failed_cell_ids: proofGatedCells.filter((entry) => !entry.proof_execution_gate.pass).map((entry) => entry.id),
+        pass: proofGatedCells.every((entry) => entry.proof_execution_gate.pass),
+      }
+    : null;
   if (bounded) {
     const finishedAt = nowFn();
     if (!invocationFinishContainsEvidence(state, invocation, finishedAt)) {

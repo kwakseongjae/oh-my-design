@@ -216,6 +216,33 @@ describe("UI-Resolve run matrix preparation", () => {
     }))).toThrow("variant_kinds");
   });
 
+  it("validates report-only proof execution gates for supported runtimes", () => {
+    const value = plan({
+      proof_execution_gates: {
+        system_ids: ["omd-portable"],
+        enforcement: "promotion-report",
+        require_analyzable: true,
+        max_browser_recovery_count: 0,
+        max_duplicate_static_closure_count: 0,
+        max_verification_after_ready_count: 0,
+      },
+    });
+    value.cells[0].runtime = "codex";
+    expect(validateRunMatrixPlan(value).proof_execution_gates.max_browser_recovery_count).toBe(0);
+
+    const unsupported = structuredClone(value);
+    unsupported.cells[0].runtime = "claude-code";
+    expect(() => validateRunMatrixPlan(unsupported)).toThrow("only codex or cursor");
+
+    const unknown = structuredClone(value);
+    unknown.proof_execution_gates.system_ids = ["missing-system"];
+    expect(() => validateRunMatrixPlan(unknown)).toThrow(/target at least one|unknown system/);
+
+    const malformed = structuredClone(value);
+    malformed.proof_execution_gates.max_browser_recovery_count = -1;
+    expect(() => validateRunMatrixPlan(malformed)).toThrow("non-negative integer");
+  });
+
   it("maps a cell to the isolated sandbox preparer without provider execution", () => {
     expect(prepareArgsForCell(plan().cells[0], "/tmp/u197/pricing-t1-portable")).toEqual([
       "--task", "pricing-conversion-v0.1",

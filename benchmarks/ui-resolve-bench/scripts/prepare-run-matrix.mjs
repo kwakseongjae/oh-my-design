@@ -200,6 +200,35 @@ export function validateRunMatrixPlan(plan) {
     }
   }
 
+  if (plan.proof_execution_gates !== undefined) {
+    const gates = plan.proof_execution_gates;
+    if (!gates || typeof gates !== "object" || Array.isArray(gates)) {
+      throw new Error("matrix proof_execution_gates must be an object");
+    }
+    if (
+      !Array.isArray(gates.system_ids)
+      || !gates.system_ids.length
+      || gates.system_ids.some((id) => typeof id !== "string" || !id)
+    ) {
+      throw new Error("matrix proof_execution_gates.system_ids must be a non-empty string array");
+    }
+    if (gates.enforcement !== "promotion-report") {
+      throw new Error("matrix proof_execution_gates.enforcement must be promotion-report");
+    }
+    if (gates.require_analyzable !== true) {
+      throw new Error("matrix proof_execution_gates.require_analyzable must be true");
+    }
+    for (const field of [
+      "max_browser_recovery_count",
+      "max_duplicate_static_closure_count",
+      "max_verification_after_ready_count",
+    ]) {
+      if (!Number.isInteger(gates[field]) || gates[field] < 0) {
+        throw new Error(`matrix proof_execution_gates.${field} must be a non-negative integer`);
+      }
+    }
+  }
+
   const ids = new Set();
   const pairKeys = new Set();
   for (const [index, cell] of plan.cells.entries()) {
@@ -224,6 +253,19 @@ export function validateRunMatrixPlan(plan) {
     const pairKey = `${cell.task_id}\0${cell.trial_index}\0${cell.system_id}`;
     if (pairKeys.has(pairKey)) throw new Error(`duplicate task/trial/system cell: ${pairKey.replaceAll("\0", "/")}`);
     pairKeys.add(pairKey);
+  }
+  if (plan.proof_execution_gates) {
+    const targeted = plan.cells.filter((cell) => plan.proof_execution_gates.system_ids.includes(cell.system_id));
+    if (!targeted.length) {
+      throw new Error("matrix proof_execution_gates must target at least one cell");
+    }
+    const knownSystems = new Set(plan.cells.map((cell) => cell.system_id));
+    if (plan.proof_execution_gates.system_ids.some((id) => !knownSystems.has(id))) {
+      throw new Error("matrix proof_execution_gates.system_ids contains an unknown system");
+    }
+    if (targeted.some((cell) => !["codex", "cursor"].includes(cell.runtime))) {
+      throw new Error("matrix proof_execution_gates supports only codex or cursor cells");
+    }
   }
   return plan;
 }
@@ -275,6 +317,9 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
       const matrixCell = {
         ...cell,
         execution_control: plan.control_contract ?? null,
+        proof_execution_gate: plan.proof_execution_gates?.system_ids.includes(cell.system_id)
+          ? plan.proof_execution_gates
+          : null,
         attribution_scope: plan.attribution_scope ?? "provider-observed-only",
         workspace,
         task_version: manifest.task.version,

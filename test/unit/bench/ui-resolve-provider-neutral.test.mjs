@@ -441,6 +441,35 @@ describe("provider-neutral prepared matrix contract", () => {
     expect(invocationCount(root, "fake-codex", "codex")).toBe(1);
   });
 
+  it("reports a preregistered proof gate verdict after completing every cell", () => {
+    const temp = mkdtempSync(join(tmpdir(), "omd-provider-proof-gate-"));
+    const root = join(temp, "matrix");
+    installFakeRuntimes(temp);
+    const current = calibrationPlan(root);
+    current.proof_execution_gates = {
+      system_ids: ["fake-codex"],
+      enforcement: "promotion-report",
+      require_analyzable: true,
+      max_browser_recovery_count: 0,
+      max_duplicate_static_closure_count: 0,
+      max_verification_after_ready_count: 0,
+    };
+    prepareRunMatrix(current);
+    const state = executePreparedMatrix(root);
+    expect(state.status).toBe("complete");
+    expect(state.proof_execution_gate).toEqual({
+      enforcement: "promotion-report",
+      applicable_cells: 1,
+      passed_cells: 0,
+      failed_cell_ids: ["fake-codex"],
+      pass: false,
+    });
+    expect(state.cells.find((cell) => cell.id === "fake-codex").proof_execution_gate)
+      .toMatchObject({ pass: false, reasons: ["proof-trace-not-analyzable"] });
+    expect(invocationCount(root, "fake-claude", "claude")).toBe(1);
+    expect(invocationCount(root, "fake-codex", "codex")).toBe(1);
+  });
+
   it("checkpoints one new cell, resumes once, and never replays a completed matrix", () => {
     const temp = mkdtempSync(join(tmpdir(), "omd-provider-checkpoint-"));
     const root = join(temp, "matrix");

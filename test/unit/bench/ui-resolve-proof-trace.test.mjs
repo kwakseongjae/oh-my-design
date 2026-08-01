@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   classifyProofTrace,
+  evaluateProofExecutionGate,
   isProductEditPath,
   normalizeProofTrace,
 } from "../../../benchmarks/ui-resolve-bench/scripts/proof-trace-contract.mjs";
@@ -113,6 +114,31 @@ describe("proof trace contract", () => {
     expect(classifyProofTrace([cursorCommand("npm test")])).toMatchObject({
       analyzable: false,
       compliance_pass: false,
+    });
+  });
+
+  it("evaluates preregistered promotion limits without stopping the run", () => {
+    const gate = {
+      enforcement: "promotion-report",
+      require_analyzable: true,
+      max_browser_recovery_count: 0,
+      max_duplicate_static_closure_count: 0,
+      max_verification_after_ready_count: 0,
+    };
+    expect(evaluateProofExecutionGate({
+      analyzable: true,
+      browser_recovery_count: 0,
+      duplicate_static_closure_count: 0,
+      verification_after_ready_count: 0,
+    }, gate)).toMatchObject({ pass: true, reasons: [] });
+    expect(evaluateProofExecutionGate({
+      analyzable: true,
+      browser_recovery_count: 2,
+      duplicate_static_closure_count: 1,
+      verification_after_ready_count: 3,
+    }, gate)).toMatchObject({
+      pass: false,
+      reasons: ["browser-recovery-limit", "duplicate-static-limit", "verification-after-ready-limit"],
     });
   });
 });

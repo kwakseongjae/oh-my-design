@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.197 proof-trace aggregate complete
+- 갱신: 2026-08-02 · 1.9.198 preregistered proof-execution gate complete
 
 ## 지금 (현재 위치)
 
+- 1.9.198 matrix `proof_execution_gates`가 exact system IDs에 analyzable trace와 recovery/static/after-ready maxima를 preregister한다. 지원 enforcement는 denominator를 보존하는 `promotion-report`뿐이다.
+- gate는 cell manifest→run record observed/limits/reasons→completion summary→matrix 전체 applicable/passed/failed verdict까지 자동 전달된다. unknown system, Claude target, malformed limit는 provider 전에 거부한다.
+- focused schema/classifier/export/controller 67/67과 lint가 green이다. 다음은 새 unseen task에서 proof-budget vs close-latch를 이 자동 gate로 재검증할지, 아니면 host-native enforcement capability 설계로 바로 갈지 결정하는 1.9.199 architecture boundary다.
 - 1.9.197 aggregate가 proof trace availability/analyzable/compliance rate와 browser recovery·duplicate static·after-ready 분포를 group별로 계산한다. Markdown table에도 Proof analyzed/compliant 열을 추가했다.
 - 모든 valid run이 analyzable trace를 가질 때만 별도 `compliance_publication_ready:true`다. 기존 quality-only group을 소급 무효화하지 않으며 malformed trace는 fail-closed한다.
 - focused aggregate/classifier/export 19/19과 lint가 green이다. 다음은 이 compliance gate를 preregistered matrix contract에서 선언·자동 판정할 수 있는 1.9.198 gate schema다.

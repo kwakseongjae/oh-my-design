@@ -158,6 +158,27 @@ describe("UI-Resolve normalized run exporter", () => {
     expect(record.evidence.proof_trace).toBe(".benchmark/proof-trace.json");
   });
 
+  it("embeds the preregistered proof promotion verdict", () => {
+    const verdict = {
+      enforcement: "promotion-report",
+      pass: false,
+      reasons: ["browser-recovery-limit"],
+    };
+    const record = buildRunRecord({
+      workspace: "/tmp/run-proof-gate",
+      manifest,
+      run,
+      score,
+      family: "skill",
+      systemId: "omd-portable",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "standard",
+      proofExecutionGate: verdict,
+    });
+    expect(record.runtime_diagnostics.proof_execution_gate).toEqual(verdict);
+  });
+
   it("sums usage without double-counting cached input or reasoning subsets", () => {
     expect(summarizeTokenUsage({
       output: {

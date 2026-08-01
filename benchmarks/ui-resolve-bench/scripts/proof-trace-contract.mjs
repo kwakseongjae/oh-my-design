@@ -178,3 +178,35 @@ export function classifyProofTrace(events) {
 export function classifyProofTraceFile(path) {
   return classifyProofTrace(parseJsonl(readFileSync(path, "utf8")));
 }
+
+export function evaluateProofExecutionGate(trace, gate) {
+  if (!gate) return null;
+  const reasons = [];
+  if (gate.require_analyzable === true && trace?.analyzable !== true) {
+    reasons.push("proof-trace-not-analyzable");
+  }
+  for (const [field, limitField, reason] of [
+    ["browser_recovery_count", "max_browser_recovery_count", "browser-recovery-limit"],
+    ["duplicate_static_closure_count", "max_duplicate_static_closure_count", "duplicate-static-limit"],
+    ["verification_after_ready_count", "max_verification_after_ready_count", "verification-after-ready-limit"],
+  ]) {
+    if (Number(trace?.[field] ?? Number.POSITIVE_INFINITY) > gate[limitField]) reasons.push(reason);
+  }
+  return {
+    enforcement: gate.enforcement,
+    pass: reasons.length === 0,
+    reasons,
+    observed: {
+      analyzable: trace?.analyzable === true,
+      browser_recovery_count: trace?.browser_recovery_count ?? null,
+      duplicate_static_closure_count: trace?.duplicate_static_closure_count ?? null,
+      verification_after_ready_count: trace?.verification_after_ready_count ?? null,
+    },
+    limits: {
+      require_analyzable: gate.require_analyzable,
+      max_browser_recovery_count: gate.max_browser_recovery_count,
+      max_duplicate_static_closure_count: gate.max_duplicate_static_closure_count,
+      max_verification_after_ready_count: gate.max_verification_after_ready_count,
+    },
+  };
+}
