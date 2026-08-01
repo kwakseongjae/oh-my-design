@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.190 Luna matrix prepared
+- fresh `/tmp/u19190` 6/6 equality attestation을 완료했다.
+- exact task/arms/order이며 runtime/model/effort만 Luna xhigh다.
+- both sources clean/detached/publishable, provider 0이다.
+- next는 `luna-studio-r1-packet`이다.
+
 ## 2026-08-02 (Codex) · 1.9.189 Grok complete · Luna locked
 - both arms 85×3; proof-budget W/T/L 0/3/0이다.
 - budget mean wall -36.9%, tokens -37.4%, tools -46.6%다.

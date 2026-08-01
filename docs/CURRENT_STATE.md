@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.189 Grok complete · 1.9.190 Luna locked
+- 갱신: 2026-08-02 · 1.9.190 Luna xhigh prepared
 
 ## 지금 (현재 위치)
 
+- fresh `/tmp/u19190` Luna xhigh 6/6을 PREPARED했다. 6 cells의 task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 exact equality이고 installed Codex skill만 packet `5a388f5b…` vs proof-budget `87d5f0fc…`다.
+- 양 source는 detached clean/publishable이고 provider call은 0이다. 다음 cell은 `luna-studio-r1-packet`; max-new 1, fixed 120s, first-failure freeze를 유지한다.
 - `/tmp/u19189` Grok 6/6 valid COMPLETE. packet과 proof-budget 모두 85/85×3, UI-Resolved 3/3, proof-budget W/T/L 0/3/0이며 paired quality loss 0이다.
 - proof-budget mean/median wall은 -36.9%/-32.8%, mean/median tokens는 -37.4%/-61.3%, mean/median tool calls는 -46.6%/-47.5%로 numeric efficiency gate를 통과했다. third paired token은 +68.4% outlier지만 mean gate를 뒤집지 않았다.
 - command trace는 budget trials별 browser recovery-like 2/3/2와 duplicate static clusters 1/4/1이라 required 0/0을 실패했다. quality·numeric efficiency pass지만 promotion은 HOLD다.
