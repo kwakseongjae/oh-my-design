@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.216 caption-cue host-policy comparison PREREGISTERED; fresh preparation next
+- 갱신: 2026-08-02 · 1.9.217 caption-cue host-policy comparison PREPARED; first cell next
 
 ## 지금 (현재 위치)
+
+- 1.9.217에서 fresh `/private/tmp/u19216` 6 cells를 provider call 0으로 PREPARED했다. core prompt `f7a397e2…`, runtime prompt `76162033…`, product `4a333328…`, skill `7336c037…`, activation `79911390…`, Codex/Luna high/900초/Git root가 전부 동일하다.
+- controller는 hook 0, installed arm은 production-rendered policy hook+valid attestation만 갖는다. locked plan SHA `e608829f…`, preparation state SHA `d3c483f9…`; sole delta와 user-config/hook-trust 경계를 재확인했다.
+- 다음은 `luna-caption-r1-controller` 한 셀만 실행한다. 모든 continuation은 max-new 1이며 infra/timeout/identity/attribution/policy-state drift가 생기면 `/private/tmp/u19216` 전체를 freeze한다.
 
 - 1.9.216 exact Codex/Luna high controller-observation vs installed opt-in policy 2×3를 provider 전에 잠갔다. unseen `caption-cue-timing-review-v0.1`, prompt/starter/DESIGN/skill/runtime/model/effort/timeout은 동일하고 sole delta는 project proof-policy installation이다.
 - balanced order, max-new 1, 120초 pacing, no retry/fallback/same-root repair를 고정했다. execution-valid는 6/6 complete + policy state 3/3 + unblocked violation 0이고, broader/default promotion은 installed UI-Resolved 3/3 + paired objective loss 0일 때만 허용한다.

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.217 fresh matrix prepared
+- `/private/tmp/u19216`의 6 Git cells를 provider call 0으로 준비했다.
+- prompt/product/skill/model/effort/timeout equality와 policy-only delta가 green이다.
+- 다음은 max-new 1로 첫 controller cell을 실행한다.
+
 ## 2026-08-02 (Codex) · 1.9.216 comparison preregistered
 - unseen caption task에 Luna/high controller vs installed policy 2×3를 잠갔다.
 - sole delta, balanced order, max-new 1, pacing, no-retry와 promotion gate를 고정했다.
