@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.153 exact v8 portable candidate pinned
+- 갱신: 2026-08-01 · 1.9.154 Grok previous-vs-v8 prepared
 
 ## 지금 (현재 위치)
 
+- 1.9.154 exact previous canonical vs v8을 fresh `/tmp/u19154`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `477737f4…`, prompt `ce56fd28…`, starter `4f6ec8ea…`, DESIGN `d8b7891d…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. installed Cursor skill만 previous `d7a890ac…` vs v8 `60b4fe6b…`이고 양 source는 exact detached clean/publishable이다.
+- Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new 1·no retry/fallback/repair/substitution으로 잠갔다. 다음은 `grok-warehouse-t1-previous`; 첫 provider/attribution/controller failure에서 `/tmp/u19154`을 동결한다.
 - 1.9.153 exact v8을 `omd-portable-reflow-v8-candidate`로 고정했다. detached clean/publishable source는 `e33fd219…`, Cursor installed skill tree SHA는 `60b4fe6b…`, activation은 previous와 같은 `01728b95…`다.
 - diagnostic `/tmp/u19153-v8-diagnostic-v2`는 provider 0이며 task/starter identity와 source attestation이 green이다. 다음은 locked warehouse-transfer task에서 exact previous vs v8 Grok 2×3을 fresh root에 준비한다.
 - 1.9.152 새 unseen non-approval `warehouse-transfer-routing-v0.1`을 v8 commit 뒤 provider generation 전에 contract-lock했다. 새 inventory-operations domain이며 3 transfer choices, reversible bin-context toggle, handoff-label form, 3 request/warehouse/owner mappings와 4-view geometry+hierarchy를 가진다.
