@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.138 reflow-integrity v5 implemented; unseen validation pending
+- 갱신: 2026-08-01 · 1.9.139 unseen audit-export holdout accepted; provider 0
 
 ## 지금 (현재 위치)
 
+- 1.9.139 새 unseen `audit-export-delivery-v0.1`을 v5 commit 뒤 provider generation 전에 contract-lock했다. onboarding-v1 interaction을 쓰지만 새 compliance-delivery domain과 `<dl>`-style manifest 구조이며 3 channels, recipient-verification toggle, export-label form, 3 artifact/destination pairs, 4-view geometry+decision hierarchy를 가진다.
+- untouched `/tmp/u19139-audit-starter`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. residual percentage widths와 fixed label track이 atomic artifact/destination을 세로로 파편화하고 compact verification control이 label과 경쟁하는 것을 320px screenshot으로 확인했다.
+- native table/per-item card가 아니며 injected break와 single-text scroller가 없다. provider call은 0이다. 다음은 exact v5 `c615067…`를 detached candidate로 고정하고 exact previous canonical과 2 arms×3 trials를 fresh root에서 비교한다.
 - 1.9.138 canonical `omd-apply`의 기존 2e를 v5로 정제했다. compact control/toggle과 짝인 short label이 line budget을 넘기면 mobile에서 label full-width row를 먼저 주고 control을 다음 row/별도 정렬 영역에 둔다.
 - single atomic identifier/filename/state/short label text node 자체의 `overflow-x:auto|scroll`은 repair로 금지하고, internal horizontal scroller는 여러 항목의 수평 관계를 보존하는 실제 comparison container에만 허용한다. zero-defect outcomes에 `compact_control_label_wrap: 0`, `single_text_scroller: 0`을 추가했다.
 - focused skill contract 7/7, decision-context additive contract 1/1, TypeScript lint가 green이다. 다음은 v5 commit 뒤 새 unseen family를 provider generation 전에 contract-lock하고 exact previous-vs-v5를 검증한다.

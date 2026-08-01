@@ -27,6 +27,7 @@ const releaseArtifactTaskId = "release-artifact-promotion-v0.1";
 const featureFlagTaskId = "feature-flag-rollout-review-v0.1";
 const environmentSecretTaskId = "environment-secret-mapping-v0.1";
 const webhookDestinationTaskId = "webhook-destination-routing-v0.1";
+const auditExportTaskId = "audit-export-delivery-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -899,6 +900,28 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("evt.checkout.authorization.v2");
     expect(starter).toContain("checkout-events-production.json");
     expect(starter).not.toContain("PAYMENTS_API_KEY_V4");
+    expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
+  });
+
+  it("locks an unseen audit-export delivery family for reflow v5 validation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", auditExportTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { count: 3, initial: "secure-link", selected: "archive" },
+        toggle: { selector: "[data-bench='digest-toggle']" },
+        form: { valid_value: "August audit delivery" },
+      },
+      text_geometry_oracle: { viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"], max_short_text_lines: 1 },
+      decision_hierarchy_oracle: { viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"], minimum_action_gap_px: 8 },
+    });
+    const out = prepareVariant("raw-design-md", { task: auditExportTaskId, outputName: "audit-export-delivery" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter).toContain("audit.events.production.2026-08");
+    expect(starter).toContain("Require recipient identity verification");
+    expect(starter).not.toContain("evt.checkout.authorization.v2");
     expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
   });
 

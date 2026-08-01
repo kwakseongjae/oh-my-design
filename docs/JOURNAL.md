@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.139 unseen audit-export holdout accepted
+- v5 이후 새 compliance-delivery `<dl>` family를 provider 전에 고정했다.
+- untouched starter 79/85; function/state/a11y/DESIGN/evidence/hierarchy green이다.
+- mobile/320/200% atomic + compact-label geometry만 red다.
+- provider 0; 다음은 exact previous-vs-v5 candidate 고정이다.
+
 ## 2026-08-01 (Codex) · 1.9.138 reflow-integrity v5 implemented
 - compact-control label에 mobile full-width-first 계약을 추가했다.
 - single identifier/state/label text node 자체의 horizontal scroll을 금지했다.
