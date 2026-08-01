@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.194 Grok matrix prepared
+- fresh `/tmp/u19194` 6/6 equality attestation을 완료했다.
+- only installed skill differs; both sources clean/detached/publishable이다.
+- provider 0, next는 `grok-power-r1-budget`이다.
+- max-new1/120s/first-failure freeze를 유지한다.
+
 ## 2026-08-02 (Codex) · 1.9.194 Grok close-latch transfer locked
 - exact proof-budget vs close-latch 2×3을 preregister했다.
 - quality와 browser/static/ready trace 0 gate를 함께 잠갔다.
