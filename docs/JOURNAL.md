@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.177 print-proof v13 transfer preregistered
+- exact previous vs v13 2×3 Grok matrix를 잠갔다.
+- balanced/serial/120s/max-new 1/no fallback contract다.
+- provider 0; 다음은 fresh `/tmp/u19177` preparation이다.
+
 ## 2026-08-01 (Codex) · 1.9.176 unseen print-proof holdout locked
 - 새 prepress numbered-manifest task를 provider 0으로 고정했다.
 - 4 mappings, 3 routes, source-note toggle, dynamic state, handoff form을 보존한다.

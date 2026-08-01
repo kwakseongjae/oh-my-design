@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.176 unseen print-proof holdout locked
+- 갱신: 2026-08-01 · 1.9.177 print-proof v13 transfer preregistered
 
 ## 지금 (현재 위치)
 
+- 1.9.177 exact previous canonical vs v13 print-proof transfer를 `/tmp/u19177`에 preregister했다. Cursor/Grok 4.5 High, 2×3, balanced/serial/120s/max-new 1/no retry-fallback-repair-replacement-substitution이다. provider call은 0이다.
+- gate는 v13 UI-Resolved 3/3 + Reliability@3 100% + paired loss 0이다. 첫 provider/attribution/controller failure에서 root를 동결한다. 다음은 fresh root preparation과 equality/attestation 검증이다.
 - 1.9.176 새 unseen non-approval `print-proof-routing-v0.1`을 provider generation 전에 contract-lock했다. 새 fictional prepress domain이며 ordinal rail + 4 fact tracks의 numbered vertical manifest, 3 review routes, source-note toggle, dynamic route state, handoff form을 가진다.
 - untouched `/tmp/u19176-proof-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 390/320/200% scoped responsive text geometry만 red다. 320px screenshot에서 desktop 4-track ticket이 identifier를 파편화하고 dynamic state/relational copy가 감싸는 것을 확인했다.
 - task contract 1/1과 lint가 green이며 provider call은 0이다. 다음은 exact previous canonical vs exact v13을 Cursor/Grok 4.5 High 2×3 balanced/serial/no-fallback contract로 preregister·prepare한다.
