@@ -19,6 +19,161 @@ const exactList = (actual, expected) =>
   actual.length === expected.length &&
   actual.every((value, index) => value === expected[index]);
 
+export function collectTextGeometryInPage(textGeometryOracle) {
+  const empty = {
+    fragmented_tokens: [],
+    short_atomic_text_wraps: [],
+    short_control_label_wraps: [],
+    generated_content_overflow: [],
+    missing_scope_selectors: [],
+  };
+  if (!textGeometryOracle) return empty;
+
+  const visible = (element) => {
+    const style = getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+    if (typeof element.checkVisibility === "function" &&
+      !element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true })) return false;
+    return style.display !== "none" && style.visibility !== "hidden" &&
+      style.opacity !== "0" && rect.width > 0 && rect.height > 0;
+  };
+  const accessibleName = (element) => {
+    if (element.getAttribute("aria-label")) return element.getAttribute("aria-label").trim();
+    if (element.id) {
+      const label = document.querySelector(`label[for="${CSS.escape(element.id)}"]`);
+      if (label?.textContent?.trim()) return label.textContent.trim();
+    }
+    return (element.textContent || element.getAttribute("value") || element.getAttribute("title") || "").trim();
+  };
+  const uniqueVisibleRoots = (selectors) => [...new Set(
+    selectors.flatMap((selector) => [...document.querySelectorAll(selector)]).filter(visible),
+  )];
+  const scopeSelectors = Array.isArray(textGeometryOracle.scope_selectors)
+    ? textGeometryOracle.scope_selectors
+    : [];
+  const atomicScopeSelectors = Array.isArray(textGeometryOracle.atomic_scope_selectors)
+    ? textGeometryOracle.atomic_scope_selectors
+    : scopeSelectors;
+  const compactCopySelectors = Array.isArray(textGeometryOracle.compact_copy_selectors)
+    ? textGeometryOracle.compact_copy_selectors
+    : [];
+  const requiredSelectors = [...new Set([
+    ...scopeSelectors,
+    ...atomicScopeSelectors,
+    ...compactCopySelectors,
+  ])];
+  const missingScopeSelectors = requiredSelectors.filter((selector) =>
+    [...document.querySelectorAll(selector)].filter(visible).length === 0);
+  const roots = uniqueVisibleRoots(scopeSelectors);
+  const atomicRoots = uniqueVisibleRoots([...atomicScopeSelectors, ...compactCopySelectors]);
+  if (roots.length === 0 || atomicRoots.length === 0) return {
+    ...empty,
+    missing_scope_selectors: missingScopeSelectors.length ? missingScopeSelectors : requiredSelectors,
+  };
+  empty.missing_scope_selectors = missingScopeSelectors;
+
+  const maxChars = Number.isFinite(textGeometryOracle.max_short_text_chars)
+    ? textGeometryOracle.max_short_text_chars
+    : 24;
+  const maxLines = Number.isFinite(textGeometryOracle.max_short_text_lines)
+    ? textGeometryOracle.max_short_text_lines
+    : 1;
+  const lineTops = (node, start, end) => {
+    const tops = [];
+    for (let index = start; index < end; index += 1) {
+      if (/\s/u.test(node.data[index] ?? "")) continue;
+      const range = document.createRange();
+      range.setStart(node, index);
+      range.setEnd(node, index + 1);
+      const rect = range.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) tops.push(Math.round(rect.top * 2) / 2);
+    }
+    return [...new Set(tops)];
+  };
+  const textNodes = [];
+  for (const root of atomicRoots) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      const parent = node.parentElement;
+      if (!parent || !visible(parent) || parent.closest("script, style, [hidden]")) continue;
+      if (!node.data.trim()) continue;
+      textNodes.push({ node, parent });
+    }
+  }
+  const seenNodes = new Set();
+  for (const { node, parent } of textNodes) {
+    if (seenNodes.has(node)) continue;
+    seenNodes.add(node);
+    const raw = node.data;
+    const trimmed = raw.trim();
+    const leading = raw.indexOf(trimmed);
+    const allLines = lineTops(node, leading, leading + trimmed.length);
+    if (trimmed.length <= maxChars && allLines.length > maxLines) {
+      empty.short_atomic_text_wraps.push({
+        text: trimmed.slice(0, 80),
+        tag: parent.tagName,
+        lines: allLines.length,
+      });
+    }
+    for (const match of raw.matchAll(/[\p{L}\p{N}][\p{L}\p{N}_-]{2,}/gu)) {
+      const tokenLines = lineTops(node, match.index, match.index + match[0].length);
+      if (tokenLines.length > 1) {
+        empty.fragmented_tokens.push({
+          token: match[0].slice(0, 80),
+          tag: parent.tagName,
+          lines: tokenLines.length,
+        });
+      }
+    }
+  }
+
+  const controlSelector = textGeometryOracle.control_selector
+    ?? "button, a[href], [role='button'], input[type='button'], input[type='submit']";
+  const controlsInScope = roots.flatMap((root) => [...root.querySelectorAll(controlSelector)]).filter(visible);
+  for (const control of controlsInScope) {
+    const label = accessibleName(control);
+    if (!label || label.length > maxChars) continue;
+    const tops = [];
+    const walker = document.createTreeWalker(control, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      tops.push(...lineTops(node, 0, node.data.length));
+    }
+    const lines = [...new Set(tops)].length;
+    if (lines > maxLines) {
+      empty.short_control_label_wraps.push({
+        text: label.slice(0, 80),
+        tag: control.tagName,
+        lines,
+      });
+    }
+  }
+
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  for (const root of roots) {
+    for (const element of [root, ...root.querySelectorAll("[data-label]")]) {
+      if (!element.hasAttribute("data-label") || !visible(element)) continue;
+      const pseudo = getComputedStyle(element, "::before");
+      const content = pseudo.content?.replace(/^['"]|['"]$/g, "");
+      const declaredWidth = Number.parseFloat(pseudo.width);
+      if (!content || content === "none" || !Number.isFinite(declaredWidth) || !context) continue;
+      context.font = pseudo.font;
+      const requiredWidth = context.measureText(content).width;
+      if (requiredWidth > declaredWidth + 1) {
+        empty.generated_content_overflow.push({
+          text: content.slice(0, 80),
+          tag: element.tagName,
+          declared_width: Math.round(declaredWidth * 10) / 10,
+          required_width: Math.round(requiredWidth * 10) / 10,
+        });
+      }
+    }
+  }
+  return empty;
+}
+
 export function evaluateBillingObservation(observation, expected) {
   const monthly = expected?.monthly ?? [];
   const annual = expected?.annual ?? [];
@@ -679,7 +834,11 @@ async function main() {
         };
       });
 
-      const snapshot = await page.evaluate(({ protectedSelectors, textGeometryOracle, decisionHierarchyOracle }) => {
+      const textGeometryOracle = task.text_geometry_oracle?.viewports?.includes(viewport.name)
+        ? task.text_geometry_oracle
+        : null;
+      const textGeometry = await page.evaluate(collectTextGeometryInPage, textGeometryOracle);
+      const snapshot = await page.evaluate(({ protectedSelectors, textGeometry, decisionHierarchyOracle }) => {
         const visible = (element) => {
           const style = getComputedStyle(element);
           const rect = element.getBoundingClientRect();
@@ -730,127 +889,6 @@ async function main() {
             if (overlapWidth > 1 && overlapHeight > 1) overlappingControls.push({ first: a, second: b });
           }
         }
-        const textGeometry = (() => {
-          const empty = {
-            fragmented_tokens: [],
-            short_atomic_text_wraps: [],
-            short_control_label_wraps: [],
-            generated_content_overflow: [],
-            missing_scope_selectors: [],
-          };
-          if (!textGeometryOracle) return empty;
-          const scopeSelectors = Array.isArray(textGeometryOracle.scope_selectors)
-            ? textGeometryOracle.scope_selectors
-            : [];
-          const missingScopeSelectors = scopeSelectors.filter((selector) =>
-            [...document.querySelectorAll(selector)].filter(visible).length === 0);
-          const roots = [...new Set(
-            scopeSelectors.flatMap((selector) => [...document.querySelectorAll(selector)]).filter(visible),
-          )];
-          if (roots.length === 0) return {
-            ...empty,
-            missing_scope_selectors: missingScopeSelectors.length ? missingScopeSelectors : scopeSelectors,
-          };
-          empty.missing_scope_selectors = missingScopeSelectors;
-          const maxChars = Number.isFinite(textGeometryOracle.max_short_text_chars)
-            ? textGeometryOracle.max_short_text_chars
-            : 24;
-          const maxLines = Number.isFinite(textGeometryOracle.max_short_text_lines)
-            ? textGeometryOracle.max_short_text_lines
-            : 1;
-          const lineTops = (node, start, end) => {
-            const tops = [];
-            for (let index = start; index < end; index += 1) {
-              if (/\s/u.test(node.data[index] ?? "")) continue;
-              const range = document.createRange();
-              range.setStart(node, index);
-              range.setEnd(node, index + 1);
-              const rect = range.getBoundingClientRect();
-              if (rect.width > 0 && rect.height > 0) tops.push(Math.round(rect.top * 2) / 2);
-            }
-            return [...new Set(tops)];
-          };
-          const textNodes = [];
-          for (const root of roots) {
-            const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-            while (walker.nextNode()) {
-              const node = walker.currentNode;
-              const parent = node.parentElement;
-              if (!parent || !visible(parent) || parent.closest("script, style, [hidden]")) continue;
-              if (!node.data.trim()) continue;
-              textNodes.push({ node, parent });
-            }
-          }
-          const seenNodes = new Set();
-          for (const { node, parent } of textNodes) {
-            if (seenNodes.has(node)) continue;
-            seenNodes.add(node);
-            const raw = node.data;
-            const trimmed = raw.trim();
-            const leading = raw.indexOf(trimmed);
-            const allLines = lineTops(node, leading, leading + trimmed.length);
-            if (trimmed.length <= maxChars && allLines.length > maxLines) {
-              empty.short_atomic_text_wraps.push({
-                text: trimmed.slice(0, 80),
-                tag: parent.tagName,
-                lines: allLines.length,
-              });
-            }
-            for (const match of raw.matchAll(/[\p{L}\p{N}][\p{L}\p{N}_-]{2,}/gu)) {
-              const tokenLines = lineTops(node, match.index, match.index + match[0].length);
-              if (tokenLines.length > 1) {
-                empty.fragmented_tokens.push({
-                  token: match[0].slice(0, 80),
-                  tag: parent.tagName,
-                  lines: tokenLines.length,
-                });
-              }
-            }
-          }
-          const controlSelector = textGeometryOracle.control_selector
-            ?? "button, a[href], [role='button'], input[type='button'], input[type='submit']";
-          const controlsInScope = roots.flatMap((root) => [...root.querySelectorAll(controlSelector)]).filter(visible);
-          for (const control of controlsInScope) {
-            const label = accessibleName(control);
-            if (!label || label.length > maxChars) continue;
-            const tops = [];
-            const walker = document.createTreeWalker(control, NodeFilter.SHOW_TEXT);
-            while (walker.nextNode()) {
-              const node = walker.currentNode;
-              tops.push(...lineTops(node, 0, node.data.length));
-            }
-            const lines = [...new Set(tops)].length;
-            if (lines > maxLines) {
-              empty.short_control_label_wraps.push({
-                text: label.slice(0, 80),
-                tag: control.tagName,
-                lines,
-              });
-            }
-          }
-          const canvas = document.createElement("canvas");
-          const context = canvas.getContext("2d");
-          for (const root of roots) {
-            for (const element of [root, ...root.querySelectorAll("[data-label]")]) {
-              if (!element.hasAttribute("data-label") || !visible(element)) continue;
-              const pseudo = getComputedStyle(element, "::before");
-              const content = pseudo.content?.replace(/^['"]|['"]$/g, "");
-              const declaredWidth = Number.parseFloat(pseudo.width);
-              if (!content || content === "none" || !Number.isFinite(declaredWidth) || !context) continue;
-              context.font = pseudo.font;
-              const requiredWidth = context.measureText(content).width;
-              if (requiredWidth > declaredWidth + 1) {
-                empty.generated_content_overflow.push({
-                  text: content.slice(0, 80),
-                  tag: element.tagName,
-                  declared_width: Math.round(declaredWidth * 10) / 10,
-                  required_width: Math.round(requiredWidth * 10) / 10,
-                });
-              }
-            }
-          }
-          return empty;
-        })();
         const decisionHierarchy = (() => {
           if (!decisionHierarchyOracle) return null;
           const roleSelectors = decisionHierarchyOracle.roles ?? {};
@@ -931,10 +969,7 @@ async function main() {
         };
       }, {
         protectedSelectors: task.protected_selectors,
-        textGeometryOracle:
-          task.text_geometry_oracle?.viewports?.includes(viewport.name)
-            ? task.text_geometry_oracle
-            : null,
+        textGeometry,
         decisionHierarchyOracle:
           task.decision_hierarchy_oracle?.viewports?.includes(viewport.name)
             ? task.decision_hierarchy_oracle

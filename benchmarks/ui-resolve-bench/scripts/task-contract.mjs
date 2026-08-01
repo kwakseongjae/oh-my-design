@@ -17,6 +17,33 @@ function requireUniqueKnownViewports(task, names, label) {
   }
 }
 
+function requireSelectorList(value, label) {
+  if (!Array.isArray(value) || !value.length || new Set(value).size !== value.length ||
+    value.some((selector) => typeof selector !== "string" || !selector.trim())) {
+    throw new Error(`${label} must declare unique non-empty selectors`);
+  }
+}
+
+export function validateTextGeometryContract(task) {
+  if (task.text_geometry_oracle === undefined) return task;
+  const text = requireObject(task.text_geometry_oracle, "text_geometry_oracle");
+  requireUniqueKnownViewports(task, text.viewports, "text_geometry_oracle.viewports");
+  requireSelectorList(text.scope_selectors, "text_geometry_oracle.scope_selectors");
+  if (text.atomic_scope_selectors !== undefined) {
+    requireSelectorList(text.atomic_scope_selectors, "text_geometry_oracle.atomic_scope_selectors");
+  }
+  if (text.compact_copy_selectors !== undefined) {
+    requireSelectorList(text.compact_copy_selectors, "text_geometry_oracle.compact_copy_selectors");
+  }
+  if (!Number.isInteger(text.max_short_text_chars) || text.max_short_text_chars < 1) {
+    throw new Error("max_short_text_chars must be a positive integer");
+  }
+  if (!Number.isInteger(text.max_short_text_lines) || text.max_short_text_lines < 1) {
+    throw new Error("max_short_text_lines must be a positive integer");
+  }
+  return task;
+}
+
 export function validateApprovalStructuralContract(task) {
   const text = requireObject(task.text_geometry_oracle, "approval-v1 text_geometry_oracle");
   requireUniqueKnownViewports(task, text.viewports, "approval-v1 text_geometry_oracle.viewports");
@@ -66,6 +93,7 @@ export function validateTaskContract(task) {
   if (!task || typeof task !== "object" || Array.isArray(task)) {
     throw new Error("task contract must be an object");
   }
+  validateTextGeometryContract(task);
   if (task.behavior_adapter === "approval-v1") validateApprovalStructuralContract(task);
   return task;
 }

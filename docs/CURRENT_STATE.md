@@ -4,13 +4,16 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.162 Grok previous-vs-v10 prepared
+- 갱신: 2026-08-01 · 1.9.163 text-geometry oracle scope fixed
 
 ## 지금 (현재 위치)
 
-- 1.9.162 exact previous canonical vs v10을 fresh `/tmp/u19162`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
-- 6 cells의 task `0.1.0`, core prompt `cfd01edd…`, prompt `821214b9…`, starter `30926173…`, DESIGN `8804e99a…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. installed Cursor skill만 previous `d7a890ac…` vs v10 `fb7472d5…`이고 양 source는 exact detached clean/publishable이다.
-- Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new 1·no retry/fallback/repair/substitution으로 잠갔다. 다음은 `grok-sample-t1-previous`; 첫 provider/attribution/controller failure에서 `/tmp/u19162`을 동결한다.
+- 1.9.163 evaluator가 broad surface와 atomic/compact-copy text scope를 분리한다. future task는 optional `atomic_scope_selectors`와 `compact_copy_selectors`로 display heading/prose를 atomic gate에서 제외하면서 identifier/evidence/control naming copy는 계속 fail-closed한다. legacy task behavior와 historical score는 바꾸지 않는다.
+- provider-free headless contract 6/6, 기존 21 task contract, evaluator/task-contract syntax가 green이다. 다음은 outcome table을 요구하는 bounded v11 skill delta를 commit한 뒤 새 unseen non-approval task를 잠그는 것이다.
+- `/tmp/u19162` 6/6 valid COMPLETE. previous 79/79/79, v10 79/79/79, paired v10 W/T/L 0/3/0이며 두 arm UI-Resolved 0/3, Reliability@3 0%라 v10 승격을 거절했다.
+- Grok 4.5 High는 requested/reported attribution 그대로 6/6 완료했고 provider/quota/timeout/retry/fallback/repair/substitution은 0이다. 현재 사용 가능하다.
+- v10 t1은 relational `<span>` control copy에 12/17 role을 적용해 paired previous보다 320px residual을 줄였지만 200% wrap이 남았다. t2/t3은 type role 또는 ancestor width ledger 적용이 불안정해 evidence/control wrap이 반복됐다.
+- v10 holdout의 broad decision-context oracle가 40-char H1을 short atomic으로 오분류했다. 모바일 34/38 multiline display와 atomic/label one-line 계약이 충돌하므로 이 task는 seen으로 동결하고 재채점하지 않는다. 스킬이 heading을 억지로 축소/nowrap/rewrite해 evaluator를 게임하지 않도록 oracle contract를 먼저 교정했다.
 - 1.9.161 exact v10을 `omd-portable-reflow-v10-candidate`로 고정했다. detached clean/publishable source는 `e3e5c6e4…`, Cursor installed skill tree SHA는 `fb7472d5…`, activation은 previous와 같은 `01728b95…`다.
 - provider-free `/tmp/u19161-v10-diagnostic`에서 task/starter/source attestation과 focused candidate pin 1/1, lint가 green이다. 다음은 locked research-sample task에서 exact previous vs v10 Grok 2×3을 fresh root에 준비한다.
 - 1.9.160 새 unseen non-approval `research-sample-routing-v0.1`을 v10 commit 뒤 provider generation 전에 contract-lock했다. 새 field-research domain이며 3 choices, reversible field-note toggle, handoff form, 3 sample/destination/steward mappings와 4-view geometry+hierarchy를 가진다.
