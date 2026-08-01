@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.212 real-host recovery smoke
+- Luna/high가 deny guidance 뒤 static 1회→browser 1회→종료로 회복했고 violation은 0이다.
+- 실제 browser exit 1을 state가 passed로 오판하는 Codex formatted-response 결함을 발견했다.
+- recovery PASS, attribution FAIL로 promotion은 HOLD; 다음은 provider-free parser fix다.
+
 ## 2026-08-02 (Codex) · 1.9.211 recovery guidance complete
 - deny-only proof policy에 상태별 legal-next-action을 추가했고 enforcement는 유지했다.
 - focused 22/22, full bench 61/63(known vendor precondition 2), lint/build/pack이 green이다.

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.211 recovery guidance COMPLETE; real-host smoke next
+- 갱신: 2026-08-02 · 1.9.212 recovery smoke PASS; outcome attribution fix next
 
 ## 지금 (현재 위치)
+
+- 1.9.212 actual Codex 0.144.1 + Luna/high smoke에서 모델이 browser-before-static 거절 안내를 읽고 static 정확히 1회→browser 정확히 1회→추가 도구 없이 종료했다. fresh `/private/tmp/omd-proof-policy-recovery-smoke-1.9.212`의 installed state는 6 decisions, browser attempt 1, 세 violation 모두 0이다. 1.9.210의 deny recovery dead end는 해소됐다.
+- 단, 실제 browser 명령이 exit 1이었는데 state는 `browser-proof-passed`로 기록했다. Codex PostToolUse의 formatted string response에서 non-zero exit를 현재 mapper가 빈 값이 아닌 성공으로 오판한다. behavioral recovery는 PASS지만 outcome attribution은 FAIL이라 promotion/scored comparison은 계속 HOLD다.
+- 다음 1.9.213은 explicit non-zero exit marker를 fail-closed `unresolved`로, explicit zero를 success로 판정하는 cross-host parser fixture를 추가한다. provider-free 검증 후 fresh root real-host negative-outcome smoke를 반복하며 book task/scored matrix는 아직 실행하지 않는다.
 
 - 1.9.211에서 proof-policy의 deny payload에 상태별 합법 다음 행동을 추가했다. `static-closure-required`는 static 1회→browser 1회, `duplicate-static-closure`는 static 재시도 금지→열려 있으면 browser 1회/아니면 종료, `verification-after-ready`는 즉시 도구 사용 종료를 안내한다. enforcement/state transition/fail-closed는 바꾸지 않았다.
 - proof-policy focused 22/22, full bench 61/63(2 red는 기존 external vendor Git precondition), lint/build/package dry-run이 green이고 production managed-renderer parity도 통과했다. package 545 files에 3개 proof-policy runtime이 포함된다. provider call은 0이다.
