@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.182 media-clearance Grok transfer prepared
+- 갱신: 2026-08-02 · 1.9.183 media-clearance Grok infrastructure replacement locked
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19182` 첫 bounded invocation은 lease와 `running` state만 남기고 controller process가 종료됐다. run result/usage/final/score/record/checkpoint는 0이므로 1.9.182 root 전체를 execution-invalid로 동결하며 same-root resume·lease 삭제·재시도·artifact repair·후속 denominator 결합을 금지한다.
+- 1.9.183은 동일 task/arms/order/model/effort/timeout/pacing의 fresh-root infrastructure replacement다. `/tmp/u19183`, Grok 4.5 High 2×3, max-new 1, no retry/fallback/repair/substitution이며 1.9.182 artifact는 분모에 들어가지 않는다.
+- 다음은 1.9.183 source commit 후 fresh preparation/equality attestation이다. 유효 Grok matrix가 gate를 통과하거나 borderline/model-sensitive일 때만 Luna xhigh를 별도 root/denominator로 연다.
 - fresh `/tmp/u19182` 6 cells PREPARED, provider 0이다. 6/6 task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout이 동일하고 installed skill만 previous `d7a890ac…` vs packet `36216aea…`다. 양 source exact detached clean/publishable이다.
 - 다음 cell은 `grok-media-t1-previous`이며 invocation당 최대 1개와 fixed 120s pacing/stop contract를 유지한다.
 - 1.9.182 exact previous canonical vs packet candidate 2×3을 `/tmp/u19182` 대상으로 preregister했다. Cursor/Grok 4.5 High, balanced/serial/120s/max-new 1/no retry-fallback-repair-replacement-substitution이며 provider call은 0이다.

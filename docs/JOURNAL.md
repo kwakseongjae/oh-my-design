@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.183 infrastructure replacement locked
+- 1.9.182 첫 invocation은 result/usage/score 없이 controller 종료돼 root를 동결했다.
+- stale lease/running state는 증거로 보존하고 same-root resume를 금지한다.
+- 동일 조건의 fresh `/tmp/u19183` replacement를 preregister했다.
+- 다음은 clean commit 후 prepare/equality 검증이다.
+
 ## 2026-08-02 (Codex) · 1.9.182 media-clearance Grok prepared
 - fresh `/tmp/u19182` 6 cells, equality/source attestation 6/6 green이다.
 - installed skill만 previous `d7a890ac…` vs packet `36216aea…`다.
