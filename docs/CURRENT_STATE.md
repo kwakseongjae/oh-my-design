@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.164 reflow v11 outcome table implemented
+- 갱신: 2026-08-01 · 1.9.165 unseen editorial-brief holdout accepted
 
 ## 지금 (현재 위치)
 
+- 1.9.165 새 unseen non-approval `editorial-brief-routing-v0.1`을 v11 commit 뒤 provider generation 전에 contract-lock했다. 새 editorial-operations domain이며 3 policies, reversible source-context toggle, handoff form, 3 source/destination/editor mappings와 4-view geometry+hierarchy를 가진다.
+- future oracle의 broad surface/atomic identifiers+target-evidence-state/relational compact-copy scopes가 분리되어 mobile H1/body prose는 자연스럽게 wrap해도 atomic failure가 아니다. compact copy는 protected task-owned hook으로 잠갔다.
+- untouched `/tmp/u19165-editorial-starter`는 79/85다. function/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 실제 scoped identifier/compact-copy text geometry만 mobile/320/200%에서 red다. provider call은 0이다.
+- 다음은 exact v11 `4c27cb4…`를 detached candidate로 고정하고 exact previous canonical과 fresh Grok 2×3을 준비한다.
 - 1.9.164 canonical `omd-apply` reflow closure가 item-level outcome table을 요구한다. one-line 계약이 있는 identifier/control-state/evidence-metadata/relational compact copy만 semantic/type/required-width/390·320·200 available-width/line-count/proof/status를 기록한다.
 - 일반 display heading/body prose는 명시적 one-line 계약이 없으면 표에서 제외하고 benchmark 점수를 위해 shrink/nowrap/축약/rewrite하지 않는다. scoped row 전부 pass이고 unresolved 0일 때만 verified를 보고하며 page width/`width:100%`/overflow 0/육안/서술은 proof가 아니다.
 - closure에 `unmeasured_reflow_outcome_row: 0`, `false_reflow_verification_claim: 0`을 추가했다. canonical 7/7, lint green, bench 46/48이며 2 red는 기존 non-Git Taste/UI UX Pro fixture다. 다음은 v11 commit 뒤 explicit atomic/compact scopes를 쓰는 새 unseen non-approval task를 provider 0 상태로 잠근다.

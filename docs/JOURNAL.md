@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.165 unseen editorial-brief holdout accepted
+- v11 commit 뒤 새 editorial-operations task를 provider 0으로 잠갔다.
+- explicit atomic/compact scopes가 H1/prose와 실제 one-line 계약을 분리한다.
+- untouched starter 79/85; function/state/a11y/hierarchy green, scoped reflow만 red다.
+- 다음은 exact v11 detached candidate pin이다.
+
 ## 2026-08-01 (Codex) · 1.9.164 reflow v11 outcome table
 - scoped copy마다 type/required+available width/line count/proof/status를 강제했다.
 - display heading/body prose는 explicit one-line 계약 없이는 제외한다.
