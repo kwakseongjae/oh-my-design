@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.167 v11 promoted on Grok Reliability@3
+- previous 81/83/81 vs v11 85/85/85, paired W/T/L 3/0/0.
+- v11 UI-Resolved 3/3, Reliability@3 100%; protected/evidence/a11y/hierarchy green.
+- wall -21.5%, reported tokens -5.0%; Grok/provider failures 0.
+- 다음은 다른 explicit-scope non-approval transfer holdout이다.
+
 ## 2026-08-01 (Codex) · 1.9.167 Grok previous-vs-v11 prepared
 - fresh `/tmp/u19167`에 exact 2 arms×3 trials를 준비했다.
 - task/prompt/starter/DESIGN/activation/provider controls는 동일하다.
