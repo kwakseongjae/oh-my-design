@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.184 Luna xhigh complete
+- Luna packet 85/85/85 vs previous 83/85/85, W/T/L 1/2/0이다.
+- quality direction은 Grok과 동일하지만 mean wall +10.3%, tokens +15.7%다.
+- 중복 browser/static proof가 efficiency failure cluster다.
+- 다음은 heuristic이 아닌 single-pass proof budget 1.9.185다.
+
 ## 2026-08-02 (Codex) · 1.9.184 Luna xhigh prepared
 - fresh `/tmp/u19184` 6/6 equality/source attestation이 green이다.
 - exact previous vs packet, codex/Luna/xhigh, provider 0이다.

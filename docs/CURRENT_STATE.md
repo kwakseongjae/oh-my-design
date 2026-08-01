@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.184 media-clearance Luna xhigh replication prepared
+- 갱신: 2026-08-02 · 1.9.184 media-clearance Luna xhigh replication complete
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19184` Luna xhigh 6/6 valid COMPLETE. previous 83/85/85(UI-Resolved 2/3) vs packet 85/85/85(3/3), packet W/T/L 1/2/0이다. quality direction은 Grok과 동일한 positive이고 두 모델 모두 packet paired quality loss 0이다.
+- Luna packet mean/median wall은 +10.3%/-1.1%, mean/median tokens는 +15.7%/-2.5%다. mean wall regression은 Grok(+11.3%)과 재현됐고 token 방향은 Grok -9.2% vs Luna +15.7%로 model-sensitive다. strict efficiency gate 때문에 promotion은 계속 HOLD다.
+- Luna command trace의 bounded 원인은 규칙 부족이 아니라 중복 proof다: 반복 source/full read, browser-harness 실패 뒤 doctor/executable discovery/Chrome direct launch 2회, 중복 hook·forbidden-pattern·syntax 검사다.
+- 다음 1.9.185는 reflow heuristic을 추가하지 않는다. machine-readable proof budget으로 pre-edit inventory 1회, product edit transaction 1회, consolidated static closure 1회, browser mechanism 1회만 허용하고 infra failure 뒤 doctor/launch/install/alternative probe를 금지하는 provider-free bounded repair다.
 - fresh `/tmp/u19184` Luna xhigh 6/6을 PREPARED했다. Grok과 task/core prompt/prompt/starter/DESIGN/두 exact skill commits/activation/trial order/timeout/pacing이 동일하고 runtime/model/effort만 codex/`gpt-5.6-luna`/xhigh로 분리했다. provider call은 0이다.
 - 다음 cell은 `luna-media-t1-previous`; max-new 1, fixed 120s pacing, first-failure freeze를 유지한다.
 - `/tmp/u19183` Grok 6/6 valid COMPLETE. previous 85/81/85(UI-Resolved 2/3) vs packet 85/85/85(3/3), packet paired W/T/L 1/2/0이며 quality·zero-loss gate는 pass다.
