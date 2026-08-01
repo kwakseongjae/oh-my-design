@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.189 Grok matrix prepared
+- fresh `/tmp/u19189` 6/6 equality attestation을 완료했다.
+- only installed skill differs; both sources clean/detached/publishable이다.
+- provider 0, next는 `grok-studio-r1-packet`이다.
+- max-new1/120s/first-failure freeze를 유지한다.
+
 ## 2026-08-02 (Codex) · 1.9.189 infrastructure replacement
 - 1.9.188은 invalid latency enum으로 provider 전 동결했다.
 - prepared 0/provider 0이며 same-root repair는 금지했다.

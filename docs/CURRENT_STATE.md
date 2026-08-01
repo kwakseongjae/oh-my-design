@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.189 Grok transfer infrastructure replacement locked
+- 갱신: 2026-08-02 · 1.9.189 Grok transfer prepared
 
 ## 지금 (현재 위치)
 
+- fresh `/tmp/u19189` 6/6을 PREPARED했다. 6 cells의 task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 exact equality이고 installed skill만 packet `36216aea…` vs proof-budget `d2f2258d…`다.
+- 양 source는 detached clean/publishable이고 third-party installer/hooks/agent tools/provider call은 0이다. 다음 cell은 `grok-studio-r1-packet`; max-new 1, fixed 120s, first-failure freeze를 유지한다.
 - 1.9.188 preparation은 invalid latency enum을 controller가 provider 전 거부해 execution-invalid로 동결했다. prepared cell 0, provider call 0, `/tmp/u19188` 미생성이고 same-root edit/retry/resume를 금지한다.
 - 1.9.189는 동일 task/arms/order/runtime/model/effort/timeout/pacing/gate의 fresh-root replacement다. schema-valid within-provider latency enum `eligible`만 교정했고 `/tmp/u19189`를 사용한다.
 - 다음은 replacement source commit 후 fresh preparation/equality attestation이다. 1.9.188 artifact는 분모에 들어가지 않는다.
