@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.170 v12 reflow scope manifest implemented
+- 갱신: 2026-08-01 · 1.9.171 exact v12 portable candidate pinned
 
 ## 지금 (현재 위치)
 
+- 1.9.171 exact v12를 `omd-portable-reflow-v12-candidate`로 고정했다. detached clean/publishable source는 `0f52923d…`, installed Cursor skill SHA는 `9704a9dd…`, activation은 previous와 같은 `01728b95…`다.
+- provider-free `/tmp/u19171-v12-diagnostic`에서 seen broadcast task/starter/source/skill attestation을 고정했으며 provider call은 0이다. 이 seen task는 v12 promotion에 재사용하지 않는다.
+- 다음은 다른 topology와 dynamic-state wording을 가진 새 unseen non-approval task를 먼저 commit한 뒤 exact previous vs v12 Grok 2×3을 준비한다.
 - 1.9.170 bounded v12가 첫 CSS edit 전 `reflow scope manifest`를 고정한다. DOM뿐 아니라 render function/template literal/state map에서 visible dynamic state row를 찾고, paired control 관계의 compact-control copy를 별도 row로 기록하며, outcome table identity/cardinality와 1:1 대조한다.
 - 새 closure counters는 `unmanifested_dynamic_state_row`, `unmanifested_relational_control_copy`, `scope_manifest_row_loss`다. task string/selector/evaluator/weight/CSS recipe/token은 추가하지 않았다. canonical focused 7/7, lint green이다.
 - full unit은 347 pass/1 skip/3 red다. red는 skill delta와 무관한 vendor fixture infrastructure: pinned vendor 준비 timeout 1건과 `/tmp/omd-ui-skills-bench/vendors`의 non-Git Taste/UI UX Pro fixture 2건이다.

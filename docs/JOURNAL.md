@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.171 exact v12 candidate pinned
+- detached clean/publishable source `0f52923d…`를 고정했다.
+- installed Cursor skill SHA `9704a9dd…`, activation parity를 확인했다.
+- seen broadcast diagnostic provider 0; promotion에는 재사용하지 않는다.
+- 다음은 새 unseen dynamic-state transfer task다.
+
 ## 2026-08-01 (Codex) · 1.9.170 bounded v12 scope manifest
 - pre-edit dynamic state/relational control inventory를 mandatory로 만들었다.
 - final outcome table과 identity/cardinality 1:1 closure를 추가했다.
