@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.206 unseen task contract
+- print-imposition topology의 `book-signature-imposition-v0.1`을 잠갔다.
+- untouched starter는 79/85, mobile/320/200% text geometry만 red다.
+- task test/lint/diff green, provider 0이다.
+- next는 controller-only vs installed-policy exact matrix preparation이다.
+
 ## 2026-08-02 (Codex) · 1.9.205 opt-in proof installer
 - Claude+Codex project-only `--proof-policy`, doctor, safe removal을 구현했다.
 - default/Cursor/OpenCode/global/skills-only blocker는 계속 0이다.

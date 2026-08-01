@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.205 opt-in proof-policy installer complete
+- 갱신: 2026-08-02 · 1.9.206 unseen host-policy task contract complete
 
 ## 지금 (현재 위치)
 
+- 1.9.206에서 unseen `book-signature-imposition-v0.1`을 provider generation 전에 잠갔다. 기존 table/schedule/master-detail/ordinal/patch-bay와 다른 2-column·4-pair print-imposition topology다.
+- untouched starter는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 모두 green이고 390/320/200%의 sheet-side·folio-pair identifier text geometry만 red다. provider call 0이다.
+- task contract 1/1, lint/diff green이며 prompt SHA `2236f4af…`, starter/product SHA `ca12dd6b…`를 기록했다. 다음 1.9.207은 controller-only와 installed host-policy 2×3의 exact matrix schema·preparation attestation을 구현하고 provider 전 gate를 잠근다.
 - 1.9.205에서 Claude Code+Codex project install에만 explicit `--proof-policy`를 열었다. default install, Cursor/OpenCode, global, skills-only는 blocker 0을 유지하고 Codex는 Git root가 아니면 provider/file write 전에 거부한다.
 - installer는 기존 user hook/config를 구조적으로 보존하고 4개 managed runtime module을 설치한다. `omd doctor`는 opt-in 흔적이 있을 때만 event activation, hash/drift, unsafe path, Codex Git root를 검사한다. `--remove-proof-policy`는 exact OmD hook과 self-consistent managed file만 제거한다.
 - focused CLI/doctor/workflow/policy 110/110, lint/build/diff green, npm pack dry-run에 runtime 4개 포함, fresh Git built-CLI fixture에서 doctor-ready + first static allow/duplicate deny를 재확인했다. provider call 0이다.
