@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.150 Grok matrix complete; v7 rejected
+- 6/6 valid: previous 83/81/81, v7 85/71/81, paired 1/1/1이다.
+- v7 UI-Resolved 1/3로 Reliability@3 gate를 통과하지 못했다.
+- residual은 side inset 미회수 short-label wrap + t2 protected status zero geometry다.
+- Grok 6/6 정상; 다음은 bounded width-budget + protected-visibility v8이다.
+
 ## 2026-08-01 (Codex) · 1.9.150 Grok previous-vs-v7 prepared
 - fresh `/tmp/u19150`에 exact 2 arms×3 trials를 준비했다.
 - task/prompt/starter/DESIGN/activation/provider controls는 동일하다.

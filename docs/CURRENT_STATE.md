@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.150 Grok previous-vs-v7 prepared
+- 갱신: 2026-08-01 · 1.9.150 Grok matrix complete; v7 rejected
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19150` 6/6 valid COMPLETE. previous 83/81/81, v7 85/71/81, paired v7 W/T/L 1/1/1이다. v7 UI-Resolved 1/3, Reliability@3 0%라 승격을 거절했다.
+- v7 성공 t1은 outer/card lateral chrome을 줄여 320px full reading row와 short control label 한 줄을 모두 달성했다. t2/t3은 더 큰 side inset을 남겨 `3 supplied queues · 1 routing policy`와 `Preserve original-assignee context`가 320/200%에서 반복 wrap됐다.
+- t2는 별도로 protected `form-status` selector 자체를 initial empty state에서 zero geometry로 만들어 protected_hooks_exact도 실패했다. parent status row의 min-height는 selector visibility 보존이 아니며 71점 회귀 원인이다.
+- Grok 4.5 High는 장문 6/6을 requested/reported attribution 그대로 완료했다. provider/quota/timeout/retry/fallback/repair/substitution 0이며 현재 사용 가능하다.
+- 다음 v8은 기존 closure만 보강한다: viewport→page inset→card padding→section inset→required label width의 auditable inline-size budget과 protected dynamic status selector 자체의 baseline geometry 보존이다. v8 commit 뒤 새 unseen family를 잠그며 support-routing은 재사용하지 않는다.
 - 1.9.150 exact previous canonical vs v7을 fresh `/tmp/u19150`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
 - 6 cells의 task `0.1.0`, core prompt `21008e52…`, prompt `f200de8b…`, starter `ea6e6a8e…`, DESIGN `23e2ca9a…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. installed Cursor skill만 previous `d7a890ac…` vs v7 `079c32e6…`이고 양 source는 exact detached clean/publishable이다.
 - Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal registered-display-name attribution으로 잠갔다. 다음 cell은 `grok-support-t1-previous`; 첫 provider/attribution/controller failure에서 `/tmp/u19150`을 동결한다.
