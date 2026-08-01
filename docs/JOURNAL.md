@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.168 unseen broadcast holdout locked
+- 새 non-approval broadcast task를 provider generation 전에 고정했다.
+- 4 mappings와 explicit atomic/compact scopes로 layout pressure를 바꿨다.
+- untouched starter 79/85; scoped responsive geometry만 red, provider 0.
+- 다음은 exact previous vs promoted v11 Grok 2×3 transfer다.
+
 ## 2026-08-01 (Codex) · 1.9.167 v11 promoted on Grok Reliability@3
 - previous 81/83/81 vs v11 85/85/85, paired W/T/L 3/0/0.
 - v11 UI-Resolved 3/3, Reliability@3 100%; protected/evidence/a11y/hierarchy green.

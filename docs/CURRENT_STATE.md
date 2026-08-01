@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.167 v11 promoted on Grok Reliability@3
+- 갱신: 2026-08-01 · 1.9.168 unseen broadcast transfer holdout locked
 
 ## 지금 (현재 위치)
 
+- 1.9.168 새 unseen non-approval `broadcast-segment-routing-v0.1`을 provider generation 전에 contract-lock했다. 새 broadcast-operations domain, 4 segment/destination/producer/duration mappings, 3 routing modes, reversible rundown-context toggle, handoff form, 4-view geometry+hierarchy를 가진다.
+- broad surface/atomic facts+target-evidence-state/relational compact-copy scope를 분리했다. multiline display/prose는 atomic gate 밖이며 untouched `/tmp/u19168-broadcast-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 실제 scoped responsive text geometry만 390/320/200%에서 red다. provider call은 0이다.
+- 다음은 exact previous canonical vs promoted v11을 Cursor/Grok 4.5 High 2×3 balanced/serial/no-fallback contract로 준비한다. transfer gate는 v11 UI-Resolved 3/3 및 paired loss 0이다.
 - `/tmp/u19167` 6/6 valid COMPLETE. previous 81/83/81, v11 85/85/85, paired v11 W/T/L 3/0/0이다. v11 UI-Resolved 3/3, Reliability@3 100%이며 preregistered gate를 통과해 v11을 explicit-scope non-approval reflow family에 승격했다.
 - previous는 3/3 모두 relational compact copy가 320px에서 wrap했고 2/3은 200%에서도 wrap했다. v11은 세 trial의 390/320/200% scoped wrap과 token fragmentation이 모두 0이며 function/state/a11y/evidence/hierarchy/protected hooks도 전부 green이다.
 - mean wall은 previous 191,399ms vs v11 150,281ms(-21.5%), mean reported tokens는 72,009 vs 68,429(-5.0%)다. Grok requested/reported 6/6, provider/quota/timeout/retry/fallback/repair/substitution 0이다.
