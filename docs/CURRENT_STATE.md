@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.141 Luna High complete; v5 rejected
+- 갱신: 2026-08-01 · 1.9.142 ordered reflow v6 implemented; provider 0
 
 ## 지금 (현재 위치)
 
+- 1.9.142 canonical `omd-apply`의 기존 2e를 additive 규칙 없이 v6 순서형 절차로 재구성했다. `type role → width recovery → structure reflow → no text workaround → semantic boundary + measurement` 순서다.
+- compact control label은 declared label role을 먼저 적용하고 body/heading 상속, type role 미만 축소, 더 작은 `clamp()` 하한으로 통과하지 못한다. reflow 전후 decision container와 target/evidence/state/action ancestor 관계를 기록·대조하며 `undeclared_type_role_shrink: 0`을 closure에 추가했다.
+- canonical contract 7/7, historical one-delta experiment parity 1/1, TypeScript lint가 green이다. full suite 338/341은 green이며 2개 실패는 `/tmp/omd-ui-skills-bench/vendors`의 non-Git external vendor fixture 환경 문제다. 다음은 이 commit 뒤 새 unseen family를 provider generation 전에 고정한다.
 - `/tmp/u19141` 6/6 valid COMPLETE. previous 81/79/79, v5 77/81/81이며 paired v5 W/T/L 2/0/1이다. 하지만 두 arm 모두 UI-Resolved 0/3, Reliability@3 0%라 v5 승격을 거절했다.
 - v5는 artifact/destination 파편화를 크게 줄였지만 t2/t3에서 `Require recipient identity verification`이 320px·200% 한 줄 조건을 반복 실패했고 t2는 200% horizontal overflow도 냈다. t1은 text geometry를 통과하는 대신 target/evidence/state/action을 decision context 밖으로 이동시켜 4 viewport 모두 containment를 실패했다.
 - 생성물은 선언된 12px label role 대신 inherited 16px로 wrap하거나 `clamp(8px, ...)`로 role 아래 축소하는 양상을 보였다. 다음은 새 문장을 더하지 않고 기존 2e를 `type role → width recovery → control reflow → semantic boundary → measurement`의 짧은 순서형 v6로 재구성하고, v6 commit 뒤 또 다른 unseen family를 고정하는 것이다.

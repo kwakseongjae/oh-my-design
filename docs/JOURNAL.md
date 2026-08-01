@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.142 ordered reflow v6 implemented
+- 기존 2e를 5단계 순서형 절차로 재구성하고 additive prose를 피했다.
+- declared label role과 decision ancestor invariant를 fail-closed로 잠갔다.
+- focused 8/8 + lint green; full suite의 2 failures는 external vendor fixture 환경 문제다.
+- provider 0; 다음은 v6 commit 뒤 새 unseen family 고정이다.
+
 ## 2026-08-01 (Codex) · 1.9.141 Luna High complete; v5 rejected
 - 6/6 valid; previous 81/79/79, v5 77/81/81, paired v5 W/T/L 2/0/1이다.
 - 두 arm 모두 Reliability@3 0%라 v5는 release gate를 통과하지 못했다.
