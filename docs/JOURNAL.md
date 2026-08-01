@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.169 v11 broadcast transfer rejected
+- previous 81/81/81 vs v11 85/81/81, paired W/T/L 1/2/0.
+- v11 UI-Resolved 1/3; transfer gate failed, release-candidate fold blocked.
+- repeated residual은 누락된 dynamic state row, t2는 compact copy도 누락했다.
+- 다음은 mandatory pre-edit reflow scope manifest를 추가하는 bounded v12다.
+
 ## 2026-08-01 (Codex) · 1.9.169 v11 broadcast transfer prepared
 - fresh `/tmp/u19169`에 exact 2 arms×3 trials를 준비했다.
 - task/prompt/starter/DESIGN/activation/provider controls는 동일하다.

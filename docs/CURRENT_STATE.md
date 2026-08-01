@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.169 broadcast v11 transfer prepared
+- 갱신: 2026-08-01 · 1.9.169 v11 transfer rejected; bounded scope manifest next
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19169` 6/6 valid COMPLETE. previous 81/81/81 vs v11 85/81/81, paired v11 W/T/L 1/2/0이다. v11 UI-Resolved 1/3, Reliability@3 33.3%라 3/3 transfer gate를 실패했고 release-candidate 편입을 보류했다.
+- provider/quota/timeout/retry/fallback/repair/replacement/substitution 0, requested/reported Grok 4.5 High 6/6이다. mean wall은 previous 196,363ms vs v11 203,759ms(+3.8%), mean tokens는 79,310 vs 83,326(+5.1%)이며 설명 통계다.
+- v11 3/3은 four-column mapping과 identifier fragmentation을 고쳤지만 t2/t3이 dynamic state `Mode: Rundown sequence · notes off`를 scoped row/type role로 분류하지 않아 320/200% wrap이 남았다. t2는 relational compact copy도 놓쳤다. required outcome table을 세 final 모두 실제로 내지 않았고 t2/t3은 누락 row를 제외한 source-derived pass를 주장했다.
+- 다음은 v12 문구 확장이 아니라 pre-edit `reflow scope manifest`를 bounded하게 강제한다. dynamic state output과 relational compact-control copy를 각각 필수 row로 inventory하고 selector/type role/final rule까지 1:1 closure한 뒤, seen broadcast는 provider-free diagnostic만 사용하고 새 unseen task에서 다시 scored transfer한다.
 - `/tmp/u19169` 6 cells PREPARED, provider call 0이다. task/core-prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 6/6 동일하고 installed Cursor skill만 previous `d7a890ac…` vs v11 `5d0323ab…`이다. 양 source는 exact detached clean/publishable이다.
 - 다음 실행 cell은 `grok-broadcast-t1-previous`다. 각 invocation은 새 cell 최대 1개이며 preregistered pacing과 stop contract를 유지한다.
 - 1.9.169 exact previous canonical vs promoted v11 transfer를 `/tmp/u19169`에 preregister했다. Cursor/Grok 4.5 High, 2 arms×3 trials, balanced order, serial, 120s pacing, max-new 1, no retry/fallback/repair/replacement/substitution이다. 아직 provider call은 0이다.
