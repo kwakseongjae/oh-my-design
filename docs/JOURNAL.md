@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.148 unseen support-routing holdout accepted
+- 새 customer-support operations non-approval family를 provider 전에 잠갔다.
+- untouched starter 79/85; function/state/a11y/DESIGN/evidence/hierarchy green이다.
+- mobile/320/200% atomic+short-label geometry와 320/200% overflow만 red다.
+- provider 0; 다음은 exact previous-vs-v7 candidate 고정이다.
+
 ## 2026-08-01 (Codex) · 1.9.147 bounded width-recovery v7 implemented
 - 기존 step 2만 full-row-before-text-workaround invariant로 조였다.
 - nested lateral spacing/track/chrome 회수 전 wrap·nowrap·font 축소를 금지했다.

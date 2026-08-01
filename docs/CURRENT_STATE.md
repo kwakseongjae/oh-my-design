@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.147 bounded width-recovery v7 implemented
+- 갱신: 2026-08-01 · 1.9.148 unseen support-routing holdout locked
 
 ## 지금 (현재 위치)
 
+- 1.9.148 새 unseen non-approval `support-routing-handoff-v0.1`을 v7 commit 뒤 provider generation 전에 contract-lock했다. 새 customer-support operations domain이며 3 routing choices, reversible assignee-context toggle, handoff-label form, 3 queue/destination/owner mappings와 4-view geometry+decision hierarchy를 가진다.
+- untouched `/tmp/u19148-support-starter`는 79/85다. task/state/a11y/DESIGN/evidence/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry와 320/200% overflow만 red다. desktop percentage/nth-child widths가 mobile에 남아 destination/owner identifiers를 파편화하고 short evidence/context label이 감싸지는 것을 screenshot으로 확인했다.
+- injected break와 single-text scroller는 없다. provider call은 0이다. 다음은 exact v7 `0b81b52…`를 detached candidate로 고정하고 exact previous canonical과 fresh 2 arms×3 trials로 비교한다.
 - 1.9.147 canonical `omd-apply`의 기존 width-recovery 단계만 v7로 조였다. short atomic evidence/state/control label을 건드리기 전에 nested lateral margin/padding/fixed track/card chrome을 줄여 실제 full reading row를 확보하고, 그 전에는 wrap/nowrap/font 축소로 넘어가지 않는다. closure에 `full_row_before_text_workaround: 0`을 추가했다.
 - canonical contract 7/7과 TypeScript lint가 green이다. bench focused 47/49도 relevant tests는 green이며 남은 2개는 기존 `/tmp/omd-ui-skills-bench/vendors/{taste-skill,ui-ux-pro-max}` non-Git fixture 환경 실패다. 다음은 v7 commit 뒤 새 unseen non-approval family를 generation 전에 잠그는 것이다.
 - `/tmp/u19146` 6/6 valid COMPLETE. previous 81/77/77, v6 83/85/81이며 paired v6 W/T/L 3/0/0이다. 하지만 previous UI-Resolved 0/3, v6 1/3이고 양 Reliability@3는 0%라 v6 승격을 거절했다.

@@ -986,6 +986,28 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
   });
 
+  it("locks an unseen support-routing family after bounded width recovery v7", () => {
+    const taskId = "support-routing-handoff-v0.1";
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", taskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { count: 3, initial: "follow-sun", selected: "regional" },
+        form: { valid_value: "Weekend support handoff" },
+      },
+      text_geometry_oracle: { viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"], max_short_text_lines: 1 },
+      decision_hierarchy_oracle: { viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"], minimum_action_gap_px: 8 },
+    });
+    const out = prepareVariant("raw-design-md", { task: taskId, outputName: "support-routing-handoff" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="mapping-row"/g)).toHaveLength(3);
+    expect(starter).toContain("billing.refund.pending");
+    expect(starter).toContain("Preserve original-assignee context");
+    expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);
