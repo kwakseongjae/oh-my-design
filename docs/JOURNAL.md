@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.194 Grok close-latch transfer locked
+- exact proof-budget vs close-latch 2×3을 preregister했다.
+- quality와 browser/static/ready trace 0 gate를 함께 잠갔다.
+- balanced serial/120s/max-new1/no-fallback, provider 0이다.
+- next는 clean preparation/equality attestation이다.
+
 ## 2026-08-02 (Codex) · 1.9.193 unseen stage-power task locked
 - node-link patch-bay topology를 generation 전에 고정했다.
 - untouched starter는 responsive text geometry만 red인 79/85다.

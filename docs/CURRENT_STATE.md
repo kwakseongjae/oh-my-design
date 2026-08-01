@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.193 unseen stage-power task locked
+- 갱신: 2026-08-02 · 1.9.194 Grok close-latch transfer locked
 
 ## 지금 (현재 위치)
 
+- 1.9.194 exact proof-budget vs close-latch 2×3을 `/tmp/u19194` 대상으로 preregister했다. Cursor/Grok 4.5 High, balanced serial, fixed 120s, max-new1, no retry/fallback/repair/substitution이다.
+- gate는 latch UI-Resolved 3/3 + paired loss 0, 그리고 latch trials의 browser recovery 0, duplicate static closure 0, verification-after-ready 0이다. provider call 0.
+- 다음은 clean prereg commit 후 fresh preparation과 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout/source equality attestation이다.
 - 1.9.193 새 unseen `stage-power-patch-routing-v0.1`을 provider generation 전에 잠갔다. circuit→route trace→outlet→load의 node-link patch-bay topology로 기존 table/ordinal/master-detail/schedule과 다르다.
 - untouched `/tmp/u19193-stage-power-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 390/320/200% atomic·dynamic·compact text geometry만 red다.
 - task contract 1/1, lint/diff green이며 provider call 0이다. 다음은 exact proof-budget vs close-latch를 Grok 4.5 High 2×3으로 preregister·prepare하는 것이다.
