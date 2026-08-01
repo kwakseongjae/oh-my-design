@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.221 Stop replacement passed
+- fresh Luna/high가 incomplete Stop 1회 차단 뒤 actual browser proof 1회로 회복했다.
+- CDP 실패는 unresolved로 기록됐고 delivery ready, policy violation 0이다.
+- 다음은 completion gate를 처음부터 켠 새 unseen scored task다.
+
 ## 2026-08-02 (Codex) · 1.9.220 Stop smoke frozen
 - incomplete Stop block은 작동했지만 SKILL.md read를 browser proof로 오인했다.
 - root를 동결하고 instruction read를 neutral로 좁혔다; focused 100/100과 build green이다.

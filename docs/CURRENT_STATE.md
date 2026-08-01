@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.220 Stop smoke exposed/fixed instruction-read attribution; replacement pending
+- 갱신: 2026-08-02 · 1.9.221 Stop replacement PASS; next unseen scored task ready
 
 ## 지금 (현재 위치)
+
+- 1.9.221 fresh Codex 0.144.1/Luna high replacement가 PASS했다. product edit→static 1회→incomplete Stop block 1회→actual browser 1회→final Stop allow 순서이며 final state는 7 decisions, browser attempt 1, delivery ready, violation 0이다.
+- browser-harness는 Chrome remote-debug permission/CDP timeout으로 exit 1이었고 정책은 이를 `browser-proof-unresolved`로 정직하게 기록했다. 성공 증명은 아니지만 실제 검증 시도 budget과 종료 회복 계약은 충족했다.
+- Stop boundary는 existing opt-in Codex policy에 accepted다. broader/default install은 UI-quality evidence가 아니므로 HOLD 유지한다. 다음은 새 unseen UI family를 generation 전에 잠그고 `require_delivery_ready`/`require_browser_attempt`가 처음부터 켜진 scored comparison을 설계한다.
 
 - 1.9.220 fresh Codex/Luna high Stop smoke에서 첫 incomplete Stop 차단과 one-shot continuation은 실제로 작동했다. 다만 continuation 중 browser-harness `SKILL.md`를 읽은 `sed`가 경로 문자열 때문에 browser proof로 오인돼 state가 ready가 되었고, 실제 capture는 after-ready로 차단됐다. root는 실패 증거로 동결했다.
 - classifier는 이제 executable shell boundary가 있는 browser-harness만 actual browser proof로 보고, browser-harness `SKILL.md`의 narrow read는 neutral로 처리한다. direct/wrapped/env/heredoc 실행은 계속 proof다. focused 100/100, TypeScript, build가 green이다.
