@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.174 bounded v13 final-selector closure
+- manifest one-line authority를 final selector decision으로 닫았다.
+- measured pass / measured-safe nowrap / unresolved 외의 prose pass를 금지했다.
+- focused 7/7 + lint green; full 348 pass/2 기존 vendor-fixture infra red.
+- 다음은 exact v13 pin 후 새 unseen dynamic-state transfer다.
+
 ## 2026-08-01 (Codex) · 1.9.173 audio-stem v12 transfer rejected
 - previous 79/79/79 vs v12 85/83/83, paired W/T/L 3/0/0.
 - v12 UI-Resolved 1/3; scope inventory는 해결했지만 200% state wrap이 2/3 남았다.

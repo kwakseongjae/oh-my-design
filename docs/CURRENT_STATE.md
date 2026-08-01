@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.173 audio-stem v12 transfer rejected
+- 갱신: 2026-08-01 · 1.9.174 bounded v13 final-selector closure
 
 ## 지금 (현재 위치)
 
+- 1.9.174 bounded v13이 manifest one-line authority를 final selector의 실제 wrap decision으로 닫는다. 종료 상태는 measured 1-line+overflow/clipping 0, existing measured evidence가 있는 explicit selector-level nowrap, 또는 honest unresolved 셋뿐이다.
+- dynamic row는 render/template/state map의 longest string을 확인하며 자연-wrap 기대, 부모 `width:100%`, 작은 font, initial string만 본 source claim은 closure가 아니다. 새 counters는 `implicit_one_line_selector`, `one_line_authority_without_realization`, `source_claim_without_selector_decision`이다.
+- task string/selector/content threshold/CSS recipe/token/evaluator weight/inventory category는 추가하지 않았다. focused 7/7, lint green, full unit 348 pass/1 skip/2 red다. 두 red는 기존 non-Git Taste/UI UX Pro vendor fixture infrastructure다.
+- 다음은 v13 commit/pin 후 seen audio는 provider-free diagnostic으로만 두고, 다른 topology와 dynamic state를 가진 새 unseen non-approval task를 contract-lock해 exact previous vs v13 transfer를 수행한다.
 - `/tmp/u19173` 6/6 valid COMPLETE. previous 79/79/79 vs v12 85/83/83, paired v12 W/T/L 3/0/0이다. v12 UI-Resolved 1/3, Reliability@3 33.3%라 3/3 transfer gate를 실패했고 release-candidate 편입을 보류했다.
 - v12는 dynamic state와 relational compact-control copy의 scope inventory를 3/3 보존해 v11의 omission을 해결했다. t2/t3은 state를 선언된 12/17 role로 분류했지만 final selector에 one-line rendering을 닫지 않아 200%에서 `Package: Session order · checksums off`가 2줄이 됐다.
 - candidate의 function/state/a11y/evidence/hierarchy/protected hooks/overflow/clipping/overlap은 3/3 green이다. provider/quota/timeout/retry/fallback/repair/replacement/substitution 0, requested/reported Grok 4.5 High 6/6이다.

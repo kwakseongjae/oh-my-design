@@ -156,6 +156,13 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("unmanifested_dynamic_state_row: 0");
     expect(skill).toContain("unmanifested_relational_control_copy: 0");
     expect(skill).toContain("scope_manifest_row_loss: 0");
+    expect(skill).toContain("one-line authority를 final selector에서 실현한다");
+    expect(skill).toContain("selector-level `white-space: nowrap`을 명시하고");
+    expect(skill).toContain("longest static/dynamic string");
+    expect(skill).toContain("final selector의 wrap 정책을 생략한 채 `pass`로 닫는 것은 실패");
+    expect(skill).toContain("implicit_one_line_selector: 0");
+    expect(skill).toContain("one_line_authority_without_realization: 0");
+    expect(skill).toContain("source_claim_without_selector_decision: 0");
     expect(skill).toContain("`initial_visibility`, `own_geometry`");
     expect(skill).toContain("부모 wrapper에만 `min-height`를 주거나 selector를 DOM에 남겼다는 사실");
     expect(skill).toContain("protected_selector_visibility_loss: 0");
