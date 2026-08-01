@@ -88,6 +88,20 @@ describe("omd:apply delivery contract", () => {
     expect(skill).not.toContain("source_claim_without_selector_decision");
   });
 
+  it("operationalizes proof as a single-pass execution budget", () => {
+    expect(skill).toContain("proof execution budget");
+    expect(skill).toContain("pre_edit_inventory_passes: { max: 1, used: 0 }");
+    expect(skill).toContain("product_edit_transactions: { target: 1, used: 0 }");
+    expect(skill).toContain("static_closure: { primary_max: 1, corrective_rerun_max: 1, used: 0 }");
+    expect(skill).toContain("browser_mechanism_attempts: { max: 1, used: 0 }");
+    expect(skill).toContain("browser_recovery_commands: { max: 0, used: 0 }");
+    expect(skill).toContain("duplicate_contract_checks: { max: 0, used: 0 }");
+    expect(skill).toContain("하나의 consolidated static closure");
+    expect(skill).toContain("`--doctor`, `--help`, executable/process/port discovery, 직접 Chrome launch");
+    expect(skill).toContain("viewport마다 process를 열거나 같은 geometry를 재확인하지 않는다");
+    expect(skill).toContain("예산 소진 뒤에는 추가 탐색 대신 최소 완성 diff와 unresolved");
+  });
+
   it("preserves task-helpful visual equity under explicit change authority", () => {
     expect(skill).toContain("visual equity ledger");
     expect(skill).toContain("최대 5개");

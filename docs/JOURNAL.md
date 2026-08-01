@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.185 proof budget accepted
+- single-pass inventory/static/browser budget을 `omd-apply`에 구현했다.
+- 기존 quality gate delta 0, skill +5.2% context cost다.
+- focused 47/47, lint/diff green, provider 0이다.
+- 다음은 clean candidate pin과 새 unseen transfer다.
+
 ## 2026-08-02 (Codex) · 1.9.184 Luna xhigh complete
 - Luna packet 85/85/85 vs previous 83/85/85, W/T/L 1/2/0이다.
 - quality direction은 Grok과 동일하지만 mean wall +10.3%, tokens +15.7%다.
