@@ -994,6 +994,25 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(new Set([previous.commit, v11.commit, v12.commit, candidate.commit]).size).toBe(4);
   });
 
+  it("pins the compact reflow work-packet candidate separately", () => {
+    const previous = competitors.variants["omd-portable-jade"];
+    const v12 = competitors.variants["omd-portable-reflow-v12-candidate"];
+    const v13 = competitors.variants["omd-portable-reflow-v13-candidate"];
+    const candidate = competitors.variants["omd-portable-reflow-packet-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.178",
+      source_path: previous.source_path,
+      install_adapter: previous.install_adapter,
+      install_root: previous.install_root,
+      install_dir: previous.install_dir,
+      declared_name: previous.declared_name,
+      commit: "65f068cc081ebf7be1bfc2ea4811ef285919b1a1",
+      activation: previous.activation,
+    });
+    expect(new Set([previous.commit, v12.commit, v13.commit, candidate.commit]).size).toBe(4);
+  });
+
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", editorialBriefTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({

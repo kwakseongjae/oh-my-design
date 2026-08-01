@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.179 compact reflow packet pinned
+- exact candidate source `65f068cc…`를 detached clean/publishable로 고정했다.
+- installed skill tree `36216aea…`, activation `01728b95…`다.
+- seen print-proof diagnostic은 provider 0; focused pin/parity 2/2 green이다.
+- 다음은 새 unseen topology contract-lock이다.
+
 ## 2026-08-01 (Codex) · 1.9.178 compact reflow packet implemented
 - 7-stage/26-counter closure를 `INVENTORY → FIT → REFLOW → PROVE` packet으로 교체했다.
 - canonical -18.9%, reflow section -69.0%; unsafe source-derived pass를 제거했다.
