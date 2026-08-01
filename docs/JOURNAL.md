@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.177 print-proof v13 transfer prepared
+- fresh `/tmp/u19177` 6 cells를 exact contract로 준비했다.
+- installed skill만 previous `d7a890ac…` vs v13 `bbb7903e…`다.
+- source/equality/activation 6/6 green, provider 0.
+- 다음 cell은 `grok-proof-t1-previous`다.
+
 ## 2026-08-01 (Codex) · 1.9.177 print-proof v13 transfer preregistered
 - exact previous vs v13 2×3 Grok matrix를 잠갔다.
 - balanced/serial/120s/max-new 1/no fallback contract다.

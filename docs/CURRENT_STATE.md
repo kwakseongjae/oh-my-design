@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.177 print-proof v13 transfer preregistered
+- 갱신: 2026-08-01 · 1.9.177 print-proof v13 transfer prepared
 
 ## 지금 (현재 위치)
 
+- `/tmp/u19177` 6 cells PREPARED, provider 0이다. task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 동일하고 installed skill만 previous `d7a890ac…` vs v13 `bbb7903e…`다. 양 source exact detached clean/publishable이다.
+- 다음 cell은 `grok-proof-t1-previous`; invocation당 최대 1개와 fixed pacing/stop contract를 유지한다.
 - 1.9.177 exact previous canonical vs v13 print-proof transfer를 `/tmp/u19177`에 preregister했다. Cursor/Grok 4.5 High, 2×3, balanced/serial/120s/max-new 1/no retry-fallback-repair-replacement-substitution이다. provider call은 0이다.
 - gate는 v13 UI-Resolved 3/3 + Reliability@3 100% + paired loss 0이다. 첫 provider/attribution/controller failure에서 root를 동결한다. 다음은 fresh root preparation과 equality/attestation 검증이다.
 - 1.9.176 새 unseen non-approval `print-proof-routing-v0.1`을 provider generation 전에 contract-lock했다. 새 fictional prepress domain이며 ordinal rail + 4 fact tracks의 numbered vertical manifest, 3 review routes, source-note toggle, dynamic route state, handoff form을 가진다.
