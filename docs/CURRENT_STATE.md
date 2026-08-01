@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.149 exact v7 portable candidate pinned
+- 갱신: 2026-08-01 · 1.9.150 Grok previous-vs-v7 prepared
 
 ## 지금 (현재 위치)
 
+- 1.9.150 exact previous canonical vs v7을 fresh `/tmp/u19150`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `21008e52…`, prompt `f200de8b…`, starter `ea6e6a8e…`, DESIGN `23e2ca9a…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. installed Cursor skill만 previous `d7a890ac…` vs v7 `079c32e6…`이고 양 source는 exact detached clean/publishable이다.
+- Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal registered-display-name attribution으로 잠갔다. 다음 cell은 `grok-support-t1-previous`; 첫 provider/attribution/controller failure에서 `/tmp/u19150`을 동결한다.
 - 1.9.149 exact v7을 `omd-portable-reflow-v7-candidate`로 고정했다. detached clean/publishable source는 `0b81b526…`, Cursor installed skill tree SHA는 `079c32e6…`, activation SHA는 previous와 같은 `01728b95…`다.
 - diagnostic prepare는 `/tmp/u19149-v7-diagnostic`, provider 0이다. focused pin 1/1과 lint가 green이고 전체 bench의 2 red는 기존 non-Git Taste/UI UX Pro fixture뿐이다. 다음은 locked support-routing task에서 exact previous vs v7 2 arms×3 trials를 fresh Grok root에 준비하고 동등성을 잠그는 것이다.
 - 1.9.148 새 unseen non-approval `support-routing-handoff-v0.1`을 v7 commit 뒤 provider generation 전에 contract-lock했다. 새 customer-support operations domain이며 3 routing choices, reversible assignee-context toggle, handoff-label form, 3 queue/destination/owner mappings와 4-view geometry+decision hierarchy를 가진다.
