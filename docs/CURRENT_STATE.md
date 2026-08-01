@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.201 proof policy state machine complete
+- 갱신: 2026-08-02 · 1.9.202 Claude/Codex hook mapper complete
 
 ## 지금 (현재 위치)
 
+- 1.9.202 raw Claude/Codex Pre/PostToolUse payload를 공통 proof semantic event로 변환한다. Claude Edit/Write path와 Codex apply_patch marker를 모두 product revision으로 인식한다.
+- tool response가 없거나 실패면 fail-closed로 proof를 reopen하며, deny는 두 host가 공통 지원하는 `hookSpecificOutput.permissionDecision: deny` 형태다.
+- attempted command의 duplicate/recovery/after-ready counts가 post-run classifier와 parity다. focused state/mapper/classifier 22/22, lint/diff green, provider 0이다.
+- 다음 1.9.203은 session/turn-scoped atomic state persistence, corrupt/stale-state recovery, concurrent hook serialization을 구현한 executable adapter다. 아직 installer에는 연결하지 않는다.
 - 1.9.201 provider-free proof policy state machine이 product edit→static closure→browser proof→delivery lifecycle을 deterministic하게 판정한다.
 - duplicate static, browser recovery/second mechanism, proof-before-edit, browser-before-static, ready 이후 verification을 사전 deny한다. corrective product edit은 static 1회만 reopen하고 소진된 browser attempt는 reopen하지 않는다.
 - simulator CLI `bench:ui:proof-policy`와 focused state/classifier 14/14, lint/diff green, provider 0이다. 아직 installed hook은 아니다.

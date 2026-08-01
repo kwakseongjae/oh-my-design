@@ -1,0 +1,110 @@
+import { isProductEditPath, classifyProofCommand } from "./proof-trace-contract.mjs";
+import { applyProofPolicyEvent } from "./proof-policy-state.mjs";
+
+function eventName(payload) {
+  return String(payload?.hook_event_name ?? payload?.hookEventName ?? "");
+}
+
+function toolName(payload) {
+  return String(payload?.tool_name ?? payload?.toolName ?? "");
+}
+
+function toolInput(payload) {
+  const input = payload?.tool_input ?? payload?.toolInput;
+  return input && typeof input === "object" ? input : {};
+}
+
+function patchPaths(value) {
+  return String(value ?? "").split("\n").flatMap((line) => {
+    const match = /^\*\*\* (?:Add|Update|Delete) File:\s+(.+?)\s*$/.exec(line);
+    return match ? [match[1]] : [];
+  });
+}
+
+export function hookEditPaths(payload) {
+  const input = toolInput(payload);
+  const direct = [input.file_path, input.path].filter((value) => typeof value === "string");
+  const patch = input.patchText ?? input.patch ?? input.command;
+  return [...new Set([...direct, ...patchPaths(patch)])];
+}
+
+export function hookCommand(payload) {
+  const input = toolInput(payload);
+  return typeof input.command === "string" ? input.command : "";
+}
+
+export function hookToolSucceeded(payload) {
+  const response = payload?.tool_response ?? payload?.toolResponse;
+  if (response == null) return false;
+  if (typeof response === "string") return !/^\s*(?:error|failed|failure)\b/i.test(response);
+  if (typeof response !== "object") return false;
+  if (response.is_error === true || response.isError === true || response.error) return false;
+  const exitCode = response.exit_code ?? response.exitCode ?? response.code;
+  if (typeof exitCode === "number") return exitCode === 0;
+  const status = String(response.status ?? response.outcome ?? "").toLowerCase();
+  if (["error", "failed", "failure", "denied", "cancelled", "canceled"].includes(status)) {
+    return false;
+  }
+  if (["success", "succeeded", "completed", "ok"].includes(status)) return true;
+  return Object.keys(response).length > 0;
+}
+
+function isEditTool(name) {
+  return /^(?:Edit|Write|MultiEdit|apply_patch)$/i.test(name);
+}
+
+export function mapHookPayloadToProofEvent(payload, state) {
+  const event = eventName(payload);
+  const tool = toolName(payload);
+
+  if (event === "PostToolUse" && isEditTool(tool)) {
+    const productEdit = hookEditPaths(payload).some(isProductEditPath);
+    return productEdit && hookToolSucceeded(payload) ? { type: "product-edit" } : null;
+  }
+
+  if (tool !== "Bash") return null;
+  const command = hookCommand(payload);
+  if (!command) return null;
+  const classification = classifyProofCommand(command);
+
+  if (event === "PreToolUse") {
+    if (state.revision === 0) return null;
+    if (classification.recovery_probe) return { type: "browser-recovery" };
+    if (classification.browser) return { type: "browser-proof-start" };
+    return { type: "static-proof-start" };
+  }
+
+  if (event === "PostToolUse") {
+    if (classification.recovery_probe) return null;
+    if (classification.browser && state.browser_proof === "running") {
+      return {
+        type: "browser-proof-finish",
+        outcome: hookToolSucceeded(payload) ? "passed" : "unresolved",
+      };
+    }
+    if (classification.static_verification && state.static_closure === "running") {
+      return {
+        type: "static-proof-finish",
+        outcome: hookToolSucceeded(payload) ? "passed" : "failed",
+      };
+    }
+  }
+  return null;
+}
+
+export function applyHookPayload(previous, payload) {
+  const event = mapHookPayloadToProofEvent(payload, previous);
+  return event ? applyProofPolicyEvent(previous, event) : previous;
+}
+
+export function proofPolicyHookDecision(state) {
+  const latest = state.decisions.at(-1);
+  if (!latest || latest.allow) return null;
+  return {
+    hookSpecificOutput: {
+      hookEventName: "PreToolUse",
+      permissionDecision: "deny",
+      permissionDecisionReason: `OmD proof policy: ${latest.reason}`,
+    },
+  };
+}

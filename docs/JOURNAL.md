@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.202 Claude/Codex hook mapper
+- 두 host의 Pre/PostToolUse payload를 공통 proof event로 정규화했다.
+- missing/failed response는 reopen하고 공통 deny shape를 생성한다.
+- classifier parity 포함 focused 22/22, lint/diff green, provider 0이다.
+- next는 atomic session state adapter 1.9.203이다.
+
 ## 2026-08-02 (Codex) · 1.9.201 proof policy state machine
 - edit→static→browser→delivery와 corrective edit 예외를 deterministic reducer로 만들었다.
 - duplicate/recovery/after-ready를 실행 전 deny하는 simulator CLI를 추가했다.

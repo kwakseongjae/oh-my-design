@@ -59,9 +59,15 @@ Run a fixture without a provider call:
 npm run bench:ui:proof-policy -- /path/to/events.json
 ```
 
-This is a simulator, not an installed hook. The next integration must map raw
-Claude/Codex hook events into these semantic events and prove parity with the
-existing post-run classifier before the installer may expose an opt-in adapter.
+`scripts/proof-policy-hook-mapper.mjs` now maps the shared Claude/Codex
+`PreToolUse` and `PostToolUse` payloads into those semantic events. It extracts
+Claude Edit/Write paths and Codex `apply_patch` markers, treats unknown tool
+responses as unsuccessful, emits the common `permissionDecision: deny` shape,
+and has attempted-command violation parity with the post-run classifier.
+
+This is still a simulator, not an installed hook. The next integration must
+persist state per session/turn, reject stale or corrupt state safely, and run a
+real host fixture before the installer may expose an opt-in adapter.
 The next provider experiment should then compare the same close-latch skill
 under controller observation only and the real host pre-tool policy. Until that
 adapter exists, proof-execution compliance is a benchmark promotion criterion,

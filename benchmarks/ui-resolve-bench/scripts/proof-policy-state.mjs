@@ -45,11 +45,11 @@ function markReadyWhenClosed(state) {
 
 function denyAfterReady(state, event) {
   state.violations.verification_after_ready += 1;
-  if (event.type === "static-proof" && state.static_closure === "closed") {
+  if (event.type === "static-proof-start" && state.static_closure === "closed") {
     state.violations.duplicate_static_closure += 1;
   }
   if (
-    (event.type === "browser-proof" || event.type === "browser-recovery") &&
+    (event.type === "browser-proof-start" || event.type === "browser-recovery") &&
     state.browser_attempts > 0
   ) {
     state.violations.browser_recovery += 1;
@@ -58,6 +58,22 @@ function denyAfterReady(state, event) {
 }
 
 export function applyProofPolicyEvent(previous, event) {
+  if (event?.type === "static-proof") {
+    const started = applyProofPolicyEvent(previous, { type: "static-proof-start" });
+    if (started.decisions.at(-1)?.allow !== true) return started;
+    return applyProofPolicyEvent(started, {
+      type: "static-proof-finish",
+      outcome: event.outcome,
+    });
+  }
+  if (event?.type === "browser-proof") {
+    const started = applyProofPolicyEvent(previous, { type: "browser-proof-start" });
+    if (started.decisions.at(-1)?.allow !== true) return started;
+    return applyProofPolicyEvent(started, {
+      type: "browser-proof-finish",
+      outcome: event.outcome,
+    });
+  }
   const state = copyState(previous);
   if (!event || typeof event.type !== "string") {
     return decision(state, { type: "invalid" }, false, "invalid-event");
@@ -71,25 +87,38 @@ export function applyProofPolicyEvent(previous, event) {
     return decision(state, event, true, "product-revision-opened");
   }
 
-  if (["static-proof", "browser-proof", "browser-recovery"].includes(event.type)) {
+  if (["static-proof-start", "browser-proof-start", "browser-recovery"].includes(event.type)) {
     if (state.delivery === "ready") return denyAfterReady(state, event);
     if (state.revision === 0) return decision(state, event, false, "product-edit-required");
   }
 
-  if (event.type === "static-proof") {
+  if (event.type === "static-proof-start") {
     if (state.static_closure === "closed") {
       state.violations.duplicate_static_closure += 1;
       return decision(state, event, false, "duplicate-static-closure");
     }
-    if (event.outcome !== "passed") {
-      return decision(state, event, false, "static-proof-not-passed");
+    if (state.static_closure === "running") {
+      return decision(state, event, false, "static-proof-in-flight");
     }
-    state.static_closure = "closed";
-    markReadyWhenClosed(state);
-    return decision(state, event, true, "static-closure-closed");
+    state.static_closure = "running";
+    return decision(state, event, true, "static-proof-started");
   }
 
-  if (event.type === "browser-proof") {
+  if (event.type === "static-proof-finish") {
+    if (state.static_closure !== "running") {
+      return decision(state, event, false, "static-proof-not-running");
+    }
+    state.static_closure = event.outcome === "passed" ? "closed" : "open";
+    markReadyWhenClosed(state);
+    return decision(
+      state,
+      event,
+      true,
+      event.outcome === "passed" ? "static-closure-closed" : "static-proof-reopened",
+    );
+  }
+
+  if (event.type === "browser-proof-start") {
     if (state.static_closure !== "closed") {
       return decision(state, event, false, "static-closure-required");
     }
@@ -97,10 +126,18 @@ export function applyProofPolicyEvent(previous, event) {
       state.violations.browser_recovery += 1;
       return decision(state, event, false, "browser-proof-already-consumed");
     }
+    state.browser_attempts += 1;
+    state.browser_proof = "running";
+    return decision(state, event, true, "browser-proof-started");
+  }
+
+  if (event.type === "browser-proof-finish") {
+    if (state.browser_proof !== "running") {
+      return decision(state, event, false, "browser-proof-not-running");
+    }
     if (!["passed", "unresolved"].includes(event.outcome)) {
       return decision(state, event, false, "browser-proof-outcome-required");
     }
-    state.browser_attempts += 1;
     state.browser_proof = event.outcome === "passed" ? "closed" : "unresolved";
     markReadyWhenClosed(state);
     return decision(state, event, true, `browser-proof-${event.outcome}`);
