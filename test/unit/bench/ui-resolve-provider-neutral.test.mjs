@@ -403,6 +403,7 @@ describe("provider-neutral prepared matrix contract", () => {
 
     const claudeRecord = JSON.parse(readFileSync(join(root, "fake-claude", ".benchmark", "run-record.json")));
     const codexRecord = JSON.parse(readFileSync(join(root, "fake-codex", ".benchmark", "run-record.json")));
+    const codexProofTrace = JSON.parse(readFileSync(join(root, "fake-codex", ".benchmark", "proof-trace.json")));
     expect(claudeRecord).toMatchObject({
       suite_version: "ui-resolve-v0.1",
       model_id: "claude-fake-5",
@@ -420,6 +421,11 @@ describe("provider-neutral prepared matrix contract", () => {
         diagnostic_availability: { available: false },
         tool_error_count: null,
         sandbox_error_count: null,
+        proof_trace: {
+          runtime: null,
+          analyzable: false,
+          compliance_pass: false,
+        },
       },
       attribution: { runtime: {
         runtime_target: "codex",
@@ -428,6 +434,7 @@ describe("provider-neutral prepared matrix contract", () => {
         effort_requested: "xhigh",
       } },
     });
+    expect(codexProofTrace).toEqual(codexRecord.runtime_diagnostics.proof_trace);
     expect(readFileSync(join(root, "fake-claude", ".benchmark", "events.jsonl"), "utf8"))
       .not.toBe(readFileSync(join(root, "fake-codex", ".benchmark", "events.jsonl"), "utf8"));
     expect(invocationCount(root, "fake-claude", "claude")).toBe(1);

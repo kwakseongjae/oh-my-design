@@ -4,6 +4,7 @@ import { basename, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, writeJson } from "./_lib.mjs";
 import { summarizeClaudeToolErrors } from "./check-claude-runner.mjs";
+import { classifyProofTrace } from "./proof-trace-contract.mjs";
 import { CURSOR_RUNTIME_DISPLAY_LABELS } from "./runtime-contract.mjs";
 
 const FAMILIES = new Set(["model", "skill", "harness", "prompt-arena", "factorial"]);
@@ -100,6 +101,7 @@ export function buildRunRecord({
   budgetTier,
   executionControl = null,
   attributionScope = "provider-observed-only",
+  proofTrace = null,
 }) {
   if (!FAMILIES.has(family)) throw new Error(`unsupported benchmark family: ${family}`);
   if (!Number.isInteger(trialIndex) || trialIndex < 1) throw new Error("trial index must be a positive integer");
@@ -181,6 +183,7 @@ export function buildRunRecord({
       requested_agent_ids: run?.output?.requested_agent_ids ?? [],
       agent_calls: run?.output?.agent_calls ?? [],
       milestones: run?.output?.milestones ?? null,
+      proof_trace: proofTrace,
     },
     attribution: {
       runtime: {
@@ -215,6 +218,7 @@ export function buildRunRecord({
       run_result: ".benchmark/run-result.json",
       score: score ? ".benchmark/score.json" : null,
       screenshots: score ? ".benchmark/screenshots" : null,
+      proof_trace: proofTrace ? ".benchmark/proof-trace.json" : null,
     },
   };
 }
@@ -240,18 +244,25 @@ async function main() {
   const manifest = readJson(manifestPath);
   const run = readJson(runPath);
   const eventsPath = join(benchmarkDir, "events.jsonl");
+  let events = null;
+  if (existsSync(eventsPath)) {
+    events = readFileSync(eventsPath, "utf8").split("\n").filter(Boolean).flatMap((line) => {
+      try { return [JSON.parse(line)]; } catch { return []; }
+    });
+  }
   if (
-    existsSync(eventsPath)
+    events
     && (
       run?.runtime?.runtime_target === "claude-code"
       || run?.output?.diagnostic_availability === undefined
     )
   ) {
-    const events = readFileSync(eventsPath, "utf8").split("\n").filter(Boolean).flatMap((line) => {
-      try { return [JSON.parse(line)]; } catch { return []; }
-    });
     run.output = { ...run.output, ...summarizeClaudeToolErrors(events) };
   }
+  const proofTrace = events && ["codex", "cursor"].includes(run?.runtime?.runtime_target)
+    ? classifyProofTrace(events)
+    : null;
+  if (proofTrace) writeJson(join(benchmarkDir, "proof-trace.json"), proofTrace);
   const score = existsSync(scorePath) ? readJson(scorePath) : null;
   const matrixCellPath = join(benchmarkDir, "matrix-cell.json");
   const matrixCell = existsSync(matrixCellPath) ? readJson(matrixCellPath) : null;
@@ -267,6 +278,7 @@ async function main() {
     budgetTier: String(args.get("budget-tier") ?? "standard"),
     executionControl: matrixCell?.execution_control ?? null,
     attributionScope: matrixCell?.attribution_scope ?? "provider-observed-only",
+    proofTrace,
   });
   const out = args.get("out")
     ? resolve(String(args.get("out")))

@@ -352,10 +352,12 @@ function cellArtifactHashes(benchmarkDir) {
   const resultPath = join(benchmarkDir, "run-result.json");
   const scorePath = join(benchmarkDir, "score.json");
   const recordPath = join(benchmarkDir, "run-record.json");
+  const proofTracePath = join(benchmarkDir, "proof-trace.json");
   return {
     run_result_sha256: fileSha256(resultPath),
     score_sha256: fileSha256(scorePath),
     run_record_sha256: fileSha256(recordPath),
+    ...(existsSync(proofTracePath) ? { proof_trace_sha256: fileSha256(proofTracePath) } : {}),
     benchmark_tree_sha256: treeManifest(benchmarkDir).sha256,
   };
 }
@@ -393,6 +395,7 @@ function completedCellSummary(
     first_product_write_transaction: firstProductWriteTransaction(run, events),
     replacement_verifier_authored: replacementVerifierAuthorship(events).detected,
     direct_browser_command_count: directBrowserCommandCount(events),
+    proof_trace: record.runtime_diagnostics?.proof_trace ?? null,
   };
   if (includeArtifactHashes) summary.artifact_hashes = cellArtifactHashes(benchmarkDir);
   if (completedInInvocation !== undefined) {
@@ -417,6 +420,7 @@ function untouchedCellPaths(workspace) {
     join(benchmarkDir, "events.jsonl"),
     join(benchmarkDir, "stderr.log"),
     join(benchmarkDir, "final-message.txt"),
+    join(benchmarkDir, "proof-trace.json"),
   ];
 }
 

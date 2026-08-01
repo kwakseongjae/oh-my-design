@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.196 proof trace integrated
+- Cursor/Codex run export가 proof-trace artifact를 자동 저장한다.
+- run record/summary/hash/checkpoint integrity까지 연결했다.
+- focused 58/58, lint green, provider 0이다.
+- next는 aggregate compliance distribution 1.9.197이다.
+
 ## 2026-08-02 (Codex) · 1.9.195 proof trace classifier
 - Cursor/Codex event를 revision transaction으로 자동 판정한다.
 - latch recovery 3/2/2, duplicate 3/1/2, after-ready 1/1/5다.
