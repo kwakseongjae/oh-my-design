@@ -4,12 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.194 Grok close-latch transfer prepared
+- 갱신: 2026-08-02 · 1.9.194 Grok close-latch transfer complete
 
 ## 지금 (현재 위치)
 
-- fresh `/tmp/u19194` 6/6을 PREPARED했다. task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 exact equality이고 installed skill만 budget `d2f2258d…` vs latch `26cd3169…`다.
-- 양 source는 detached clean/publishable이고 provider call은 0이다. 다음 cell은 `grok-power-r1-budget`; max-new1, fixed 120s, first-failure freeze를 유지한다.
+- `/tmp/u19194` Grok 6/6 valid COMPLETE. proof-budget과 close-latch 모두 85/85×3, UI-Resolved 3/3이며 paired quality loss 0이다.
+- close-latch mean/median tokens는 -28.1%/-17.4%지만 wall은 +4.7%/+14.9%다. 세 latch trial의 shell call은 9/5/9이고 반복 static/browser discovery·direct Chrome·proof 뒤 추가 verification이 남아 compliance gate를 0/3으로 실패했다.
+- skill prose/state만으로 host tool execution을 강제할 수 없으므로 candidate promotion은 HOLD다. 다음은 Cursor/Codex event stream을 같은 taxonomy로 판정하는 deterministic proof-trace classifier 1.9.195이며, 추가 prose는 금지한다.
 - 1.9.194 exact proof-budget vs close-latch 2×3을 `/tmp/u19194` 대상으로 preregister했다. Cursor/Grok 4.5 High, balanced serial, fixed 120s, max-new1, no retry/fallback/repair/substitution이다.
 - gate는 latch UI-Resolved 3/3 + paired loss 0, 그리고 latch trials의 browser recovery 0, duplicate static closure 0, verification-after-ready 0이다. provider call 0.
 - 다음은 clean prereg commit 후 fresh preparation과 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout/source equality attestation이다.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.194 Grok complete
+- both arms 85×3; close latch paired quality loss 0이다.
+- latch tokens -28.1%지만 wall +4.7%, compliance 0/3이다.
+- prose/state enforcement는 HOLD하고 자동 trace classifier로 전환한다.
+- next는 provider-free 1.9.195다.
+
 ## 2026-08-02 (Codex) · 1.9.194 Grok matrix prepared
 - fresh `/tmp/u19194` 6/6 equality attestation을 완료했다.
 - only installed skill differs; both sources clean/detached/publishable이다.
