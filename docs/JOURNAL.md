@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.188 Grok transfer locked
+- packet vs proof-budget 2×3을 새 studio-slot task에 preregister했다.
+- quality·mean wall/token·command-trace gate를 함께 고정했다.
+- balanced serial/120s/max-new1/no-fallback, provider 0이다.
+- 다음은 clean preparation/equality attestation이다.
+
 ## 2026-08-02 (Codex) · 1.9.187 unseen studio-slot locked
 - resource-time schedule topology의 새 과제를 generation 전에 고정했다.
 - untouched starter는 responsive geometry만 red인 79/85다.

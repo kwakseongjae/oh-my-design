@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.187 unseen studio-slot contract locked
+- 갱신: 2026-08-02 · 1.9.188 Grok proof-budget transfer preregistered
 
 ## 지금 (현재 위치)
 
+- 1.9.188 exact packet vs proof-budget를 새 studio-slot task에서 Grok 4.5 High 2×3으로 preregister했다. `/tmp/u19188`, balanced serial, fixed 120s, max-new 1, no retry/fallback/repair/substitution이다.
+- quality는 proof-budget UI-Resolved 3/3 + Reliability@3 100% + paired loss 0, efficiency는 packet 대비 mean wall/token delta <= 0이며 browser recovery 0과 duplicate static closure 0을 요구한다. +5.2% skill context는 비용에 포함한다.
+- 다음은 source commit 후 fresh preparation과 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout/source equality attestation이다. provider call은 아직 0이다.
 - 1.9.187 새 unseen `studio-slot-routing-v0.1`을 provider generation 전에 잠갔다. 기존 master-detail·표·순번 rail과 다른 resource-time schedule topology이며 mobile에서 chronological full-width slot rows로 reflow해야 한다.
 - untouched `/tmp/u19187-studio-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 390/320/200%의 hold·crew identifier, target/evidence/state, relational compact copy geometry만 red다. provider call은 0이다.
 - task contract 1/1, lint/diff green이다. 다음은 exact packet candidate vs proof-budget candidate를 Grok 4.5 High 2×3으로 preregister·prepare하는 것이다. trigger 충족 시 Luna xhigh는 별도 fresh root에서 복제한다.
