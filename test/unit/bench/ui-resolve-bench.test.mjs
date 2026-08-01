@@ -32,6 +32,7 @@ const editorialBriefTaskId = "editorial-brief-routing-v0.1";
 const printProofTaskId = "print-proof-routing-v0.1";
 const mediaClearanceTaskId = "media-clearance-routing-v0.1";
 const studioSlotTaskId = "studio-slot-routing-v0.1";
+const stagePowerPatchTaskId = "stage-power-patch-routing-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1172,6 +1173,37 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter.match(/data-bench="slot-row"/g)).toHaveLength(4);
     expect(starter).toContain("hold-stage-b-1430-1515");
     expect(starter).toContain("Room: Stage A · buffer off");
+    expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
+  });
+
+  it("locks an unseen node-link stage power patch family before close-latch generation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", stagePowerPatchTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { count: 3, initial: "bank-east", selected: "bank-west" },
+        toggle: { selector: "[data-bench='isolation-toggle']" },
+        form: { valid_value: "Matinee power handoff" },
+      },
+      text_geometry_oracle: {
+        atomic_scope_selectors: [
+          "[data-bench='patch-path']",
+          "[data-bench-decision-role='target']",
+          "[data-bench-decision-role='evidence']",
+          "[data-bench-decision-role='state']",
+        ],
+        compact_copy_selectors: ["[data-bench='compact-control-copy']"],
+        max_short_text_lines: 1,
+      },
+    });
+    validateTaskContract(task);
+    const out = prepareVariant("raw-design-md", { task: stagePowerPatchTaskId, outputName: "stage-power-patch-routing" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="patch-path"/g)).toHaveLength(4);
+    expect(starter).toContain("circuit-west-07");
+    expect(starter).toContain("Bank: Bank East · isolation off");
     expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
   });
 

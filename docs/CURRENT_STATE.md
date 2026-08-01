@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.192 proof close-latch candidate pinned
+- 갱신: 2026-08-02 · 1.9.193 unseen stage-power task locked
 
 ## 지금 (현재 위치)
 
+- 1.9.193 새 unseen `stage-power-patch-routing-v0.1`을 provider generation 전에 잠갔다. circuit→route trace→outlet→load의 node-link patch-bay topology로 기존 table/ordinal/master-detail/schedule과 다르다.
+- untouched `/tmp/u19193-stage-power-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 390/320/200% atomic·dynamic·compact text geometry만 red다.
+- task contract 1/1, lint/diff green이며 provider call 0이다. 다음은 exact proof-budget vs close-latch를 Grok 4.5 High 2×3으로 preregister·prepare하는 것이다.
 - 1.9.192에서 exact close-latch candidate를 `omd-portable-proof-close-latch-candidate`로 고정했다. detached clean/publishable source는 `1d204af…`다.
 - provider-free `/tmp/u19192-close-latch-diagnostic`에서 installed Cursor tree `26cd3169…`, SKILL `5c73e7fc…`, unchanged activation `01728b95…`를 확인했다. provider call 0이며 seen task는 promotion에 쓰지 않는다.
 - 다음은 기존 schedule/master-detail/ordinal/table family와 다른 unseen non-approval task를 provider generation 전에 contract-lock하는 것이다.
