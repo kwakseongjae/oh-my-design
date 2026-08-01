@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.214 outcome smoke pass
+- actual Luna/high가 browser-before-static deny 뒤 정확히 static 1회→browser 1회→종료했다.
+- state는 static observed/browser unresolved/ready, violations 0, 허위 passed 0이다.
+- 다음은 새 unseen non-approval UI task contract preregistration이다.
+
 ## 2026-08-02 (Codex) · 1.9.213 outcome attribution fixed
 - Codex output-only PostToolUse string은 success가 아니라 unresolved로 기록한다.
 - static은 observed로 예산을 닫고 browser는 unresolved로 종료해 허위 passed를 제거했다.

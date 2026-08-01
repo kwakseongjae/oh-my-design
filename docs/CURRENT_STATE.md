@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.213 outcome attribution fix COMPLETE; replacement smoke next
+- 갱신: 2026-08-02 · 1.9.214 real-host outcome smoke PASS; unseen task contract next
 
 ## 지금 (현재 위치)
+
+- 1.9.214 fresh `/private/tmp/omd-proof-policy-outcome-smoke-1.9.214` actual Codex 0.144.1 + Luna/high replacement가 PASS했다. out-of-order browser deny→static 1회→browser 1회→종료이고 later tool call 0, violation 0이다.
+- exit 0 static string은 `static-closure-observed`, exit 1 browser string은 `browser-proof-unresolved`로 저장돼 host가 주지 않은 success를 주장하지 않는다. state는 delivery ready이며 6 decisions/browser attempt 1이다.
+- host behavior+attribution gate가 green이므로 다음은 새 unseen non-approval UI family의 geometry/hierarchy/state contract를 generation 전에 잠그는 1.9.215다. proof policy는 opt-in 유지하고 book task는 재사용하지 않는다.
 
 - 1.9.213은 Codex의 PostToolUse shell string이 exit code 없는 stdout/stderr라는 upstream contract에 맞춰 결과 판정을 교정했다. string은 성공으로 승격하지 않고 `unresolved`; structured explicit exit/status만 passed/failed다.
 - proof policy는 품질 판정기가 아니라 순서·시도 예산 제어기다. Codex static string 결과는 `static-closure-observed`로 시도 예산을 닫고 browser 1회를 허용하며, browser string 결과는 `browser-proof-unresolved`로 종료한다. 성공했다는 허위 주장은 사라지고 enforcement는 유지된다.
