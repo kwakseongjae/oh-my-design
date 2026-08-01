@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.139 unseen audit-export holdout accepted; provider 0
+- 갱신: 2026-08-01 · 1.9.140 exact reflow v5 candidate pinned; provider 0
 
 ## 지금 (현재 위치)
 
+- 1.9.140 exact v5 candidate를 `omd-portable-reflow-v5-candidate`로 고정했다. detached clean/publishable source는 `c61506779…`, Cursor-adapted installed skill SHA는 `16a5fbbc…`이며 exact previous와 activation은 같다. rejected v2/v3/v4는 별도로 보존된다.
+- diagnostic prepare는 provider 0이며 denominator에 포함하지 않는다. 다음은 locked audit-export task에서 exact previous vs v5 2 arms×3 trials를 fresh Luna High/Codex root에 준비하고 equality/attestation을 검증하는 것이다.
 - 1.9.139 새 unseen `audit-export-delivery-v0.1`을 v5 commit 뒤 provider generation 전에 contract-lock했다. onboarding-v1 interaction을 쓰지만 새 compliance-delivery domain과 `<dl>`-style manifest 구조이며 3 channels, recipient-verification toggle, export-label form, 3 artifact/destination pairs, 4-view geometry+decision hierarchy를 가진다.
 - untouched `/tmp/u19139-audit-starter`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. residual percentage widths와 fixed label track이 atomic artifact/destination을 세로로 파편화하고 compact verification control이 label과 경쟁하는 것을 320px screenshot으로 확인했다.
 - native table/per-item card가 아니며 injected break와 single-text scroller가 없다. provider call은 0이다. 다음은 exact v5 `c615067…`를 detached candidate로 고정하고 exact previous canonical과 2 arms×3 trials를 fresh root에서 비교한다.

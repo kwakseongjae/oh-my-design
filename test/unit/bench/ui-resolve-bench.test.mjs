@@ -839,6 +839,26 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(new Set([previous.commit, v2.commit, v3.commit, candidate.commit]).size).toBe(4);
   });
 
+  it("pins the compact-label v5 candidate separately from every prior source", () => {
+    const previous = competitors.variants["omd-portable-jade"];
+    const v2 = competitors.variants["omd-portable-reflow-candidate"];
+    const v3 = competitors.variants["omd-portable-reflow-v3-candidate"];
+    const v4 = competitors.variants["omd-portable-reflow-v4-candidate"];
+    const candidate = competitors.variants["omd-portable-reflow-v5-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.138",
+      source_path: previous.source_path,
+      install_adapter: previous.install_adapter,
+      install_root: previous.install_root,
+      install_dir: previous.install_dir,
+      declared_name: previous.declared_name,
+      commit: "c61506779faa672b754ccd7acc2bb66b34a9a01c",
+      activation: previous.activation,
+    });
+    expect(new Set([previous.commit, v2.commit, v3.commit, v4.commit, candidate.commit]).size).toBe(5);
+  });
+
   it("locks an unseen feature-flag rollout family for final candidate validation", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", featureFlagTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({

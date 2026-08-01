@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.140 exact reflow v5 candidate pinned
+- detached clean `c615067…`을 별도 v5 variant로 고정했다.
+- Cursor installed tree SHA `16a5fbbc…`, publishable=true를 확인했다.
+- activation은 exact previous와 동일하고 rejected v2/v3/v4는 별도 보존한다.
+- provider 0; 다음은 Luna High/Codex previous-vs-v5 2×3 준비다.
+
 ## 2026-08-01 (Codex) · 1.9.139 unseen audit-export holdout accepted
 - v5 이후 새 compliance-delivery `<dl>` family를 provider 전에 고정했다.
 - untouched starter 79/85; function/state/a11y/DESIGN/evidence/hierarchy green이다.
