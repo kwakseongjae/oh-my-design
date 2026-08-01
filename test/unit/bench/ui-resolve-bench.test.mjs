@@ -945,6 +945,28 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
   });
 
+  it("locks an unseen certificate-rotation family after ordered reflow v6", () => {
+    const taskId = "certificate-rotation-plan-v0.1";
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", taskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { count: 3, initial: "staged", selected: "maintenance" },
+        form: { valid_value: "Q3 certificate rotation" },
+      },
+      text_geometry_oracle: { viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"], max_short_text_lines: 1 },
+      decision_hierarchy_oracle: { viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"], minimum_action_gap_px: 8 },
+    });
+    const out = prepareVariant("raw-design-md", { task: taskId, outputName: "certificate-rotation-plan" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="mapping-row"/g)).toHaveLength(3);
+    expect(starter).toContain("edge-api.production");
+    expect(starter).toContain("Require dual-operator confirmation");
+    expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.143 unseen certificate-rotation holdout accepted
+- v6 이후 새 infrastructure-rotation ordered-sequence family를 고정했다.
+- untouched starter 79/85; function/state/a11y/DESIGN/evidence/hierarchy green이다.
+- mobile/320/200% atomic + compact-label geometry만 red다.
+- provider 0; 다음은 exact previous-vs-v6 candidate 고정이다.
+
 ## 2026-08-01 (Codex) · 1.9.142 ordered reflow v6 implemented
 - 기존 2e를 5단계 순서형 절차로 재구성하고 additive prose를 피했다.
 - declared label role과 decision ancestor invariant를 fail-closed로 잠갔다.

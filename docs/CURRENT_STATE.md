@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.142 ordered reflow v6 implemented; provider 0
+- 갱신: 2026-08-01 · 1.9.143 unseen certificate-rotation holdout accepted; provider 0
 
 ## 지금 (현재 위치)
 
+- 1.9.143 새 unseen `certificate-rotation-plan-v0.1`을 v6 commit 뒤 provider generation 전에 contract-lock했다. 새 infrastructure-rotation domain과 ordered `<ol>` sequence 구조이며 3 rollout windows, dual-operator toggle, rotation-label form, 3 service/current/target certificate 관계, 4-view geometry+decision hierarchy를 가진다.
+- untouched `/tmp/u19143-certificate-starter`는 79/85다. task/state/a11y/DESIGN/evidence/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. residual percentage width가 service/certificate IDs를 세로 파편화하고 inherited body type의 compact label이 control과 경쟁하며 320/200% overflow가 발생하는 것을 320px screenshot으로 확인했다.
+- injected break와 single-text scroller는 없다. provider call은 0이다. 다음은 exact v6 `d971174…`를 detached candidate로 고정하고 exact previous canonical과 2 arms×3 trials를 fresh root에서 비교한다.
 - 1.9.142 canonical `omd-apply`의 기존 2e를 additive 규칙 없이 v6 순서형 절차로 재구성했다. `type role → width recovery → structure reflow → no text workaround → semantic boundary + measurement` 순서다.
 - compact control label은 declared label role을 먼저 적용하고 body/heading 상속, type role 미만 축소, 더 작은 `clamp()` 하한으로 통과하지 못한다. reflow 전후 decision container와 target/evidence/state/action ancestor 관계를 기록·대조하며 `undeclared_type_role_shrink: 0`을 closure에 추가했다.
 - canonical contract 7/7, historical one-delta experiment parity 1/1, TypeScript lint가 green이다. full suite 338/341은 green이며 2개 실패는 `/tmp/omd-ui-skills-bench/vendors`의 non-Git external vendor fixture 환경 문제다. 다음은 이 commit 뒤 새 unseen family를 provider generation 전에 고정한다.
