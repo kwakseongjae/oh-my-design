@@ -33,20 +33,26 @@ export function hookCommand(payload) {
   return typeof input.command === "string" ? input.command : "";
 }
 
-export function hookToolSucceeded(payload) {
+export function hookToolOutcome(payload) {
   const response = payload?.tool_response ?? payload?.toolResponse;
-  if (response == null) return false;
-  if (typeof response === "string") return !/^\s*(?:error|failed|failure)\b/i.test(response);
-  if (typeof response !== "object") return false;
-  if (response.is_error === true || response.isError === true || response.error) return false;
+  if (response == null) return "unresolved";
+  // Codex intentionally exposes only formatted stdout/stderr here, without
+  // the shell exit code. Command output is not proof of command success.
+  if (typeof response === "string") return "unresolved";
+  if (typeof response !== "object") return "unresolved";
+  if (response.is_error === true || response.isError === true || response.error) return "failed";
   const exitCode = response.exit_code ?? response.exitCode ?? response.code;
-  if (typeof exitCode === "number") return exitCode === 0;
+  if (typeof exitCode === "number") return exitCode === 0 ? "passed" : "failed";
   const status = String(response.status ?? response.outcome ?? "").toLowerCase();
   if (["error", "failed", "failure", "denied", "cancelled", "canceled"].includes(status)) {
-    return false;
+    return "failed";
   }
-  if (["success", "succeeded", "completed", "ok"].includes(status)) return true;
-  return Object.keys(response).length > 0;
+  if (["success", "succeeded", "completed", "ok"].includes(status)) return "passed";
+  return "unresolved";
+}
+
+export function hookToolSucceeded(payload) {
+  return hookToolOutcome(payload) === "passed";
 }
 
 function isEditTool(name) {
@@ -59,7 +65,7 @@ export function mapHookPayloadToProofEvent(payload, state) {
 
   if (event === "PostToolUse" && isEditTool(tool)) {
     const productEdit = hookEditPaths(payload).some(isProductEditPath);
-    return productEdit && hookToolSucceeded(payload) ? { type: "product-edit" } : null;
+    return productEdit && hookToolOutcome(payload) !== "failed" ? { type: "product-edit" } : null;
   }
 
   if (tool !== "Bash") return null;
@@ -79,13 +85,13 @@ export function mapHookPayloadToProofEvent(payload, state) {
     if (classification.browser && state.browser_proof === "running") {
       return {
         type: "browser-proof-finish",
-        outcome: hookToolSucceeded(payload) ? "passed" : "unresolved",
+        outcome: hookToolOutcome(payload) === "passed" ? "passed" : "unresolved",
       };
     }
     if (classification.static_verification && state.static_closure === "running") {
       return {
         type: "static-proof-finish",
-        outcome: hookToolSucceeded(payload) ? "passed" : "failed",
+        outcome: hookToolOutcome(payload),
       };
     }
   }

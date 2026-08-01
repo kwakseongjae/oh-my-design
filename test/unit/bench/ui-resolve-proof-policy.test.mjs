@@ -52,6 +52,16 @@ describe("proof policy state machine", () => {
     });
   });
 
+  it("closes the static attempt budget without claiming success when the host omits outcome", () => {
+    const state = simulateProofPolicy([
+      { type: "product-edit" },
+      { type: "static-proof-start" },
+      { type: "static-proof-finish", outcome: "unresolved" },
+    ]);
+    expect(state).toMatchObject({ static_closure: "closed", delivery: "blocked" });
+    expect(state.decisions.at(-1)?.reason).toBe("static-closure-observed");
+  });
+
   it("denies browser recovery and a second browser mechanism", () => {
     const state = simulateProofPolicy([
       { type: "product-edit" },

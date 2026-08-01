@@ -4,6 +4,7 @@ import { classifyProofTrace } from "../../../benchmarks/ui-resolve-bench/scripts
 import {
   applyHookPayload,
   hookEditPaths,
+  hookToolOutcome,
   hookToolSucceeded,
   proofPolicyHookDecision,
 } from "../../../benchmarks/ui-resolve-bench/scripts/proof-policy-hook-mapper.mjs";
@@ -44,6 +45,33 @@ describe("proof policy host hook mapper", () => {
     expect(hookToolSucceeded({ tool_response: { exit_code: 1 } })).toBe(false);
     expect(hookToolSucceeded({ tool_response: { is_error: true } })).toBe(false);
     expect(hookToolSucceeded({ tool_response: { exit_code: 0 } })).toBe(true);
+  });
+
+  it("does not promote Codex output-only hook responses to proof success", () => {
+    expect(hookToolOutcome({ tool_response: "10: <h1>after</h1>\n" })).toBe("unresolved");
+    expect(hookToolOutcome({ tool_response: "Usage: browser-harness <command>\n" })).toBe("unresolved");
+    expect(hookToolOutcome({ tool_response: { exit_code: 0 } })).toBe("passed");
+    expect(hookToolOutcome({ tool_response: { exit_code: 1 } })).toBe("failed");
+  });
+
+  it("closes the attempt budget without claiming success for Codex string responses", () => {
+    const state = run([
+      edit("apply_patch", {
+        command: "*** Begin Patch\n*** Update File: /tmp/run/index.html\n*** End Patch",
+      }),
+      pre("rg -n after index.html"),
+      post("rg -n after index.html", "10: <h1>after</h1>\n"),
+      pre("browser-harness capture_screenshot"),
+      post("browser-harness capture_screenshot", "Usage: browser-harness <command>\n"),
+    ]);
+    expect(state).toMatchObject({
+      static_closure: "closed",
+      browser_proof: "unresolved",
+      browser_attempts: 1,
+      delivery: "ready",
+    });
+    expect(state.decisions.map((entry) => entry.reason)).toContain("static-closure-observed");
+    expect(state.decisions.map((entry) => entry.reason)).toContain("browser-proof-unresolved");
   });
 
   it("produces the same compliant state from Claude and Codex edit shapes", () => {

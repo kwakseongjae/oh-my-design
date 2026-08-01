@@ -108,13 +108,21 @@ export function applyProofPolicyEvent(previous, event) {
     if (state.static_closure !== "running") {
       return decision(state, event, false, "static-proof-not-running");
     }
-    state.static_closure = event.outcome === "passed" ? "closed" : "open";
+    if (!["passed", "failed", "unresolved"].includes(event.outcome)) {
+      return decision(state, event, false, "static-proof-outcome-required");
+    }
+    state.static_closure = event.outcome === "failed" ? "open" : "closed";
     markReadyWhenClosed(state);
+    const reason = event.outcome === "passed"
+      ? "static-closure-closed"
+      : event.outcome === "unresolved"
+        ? "static-closure-observed"
+        : "static-proof-reopened";
     return decision(
       state,
       event,
       true,
-      event.outcome === "passed" ? "static-closure-closed" : "static-proof-reopened",
+      reason,
     );
   }
 

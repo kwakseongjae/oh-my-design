@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.213 outcome attribution fixed
+- Codex output-only PostToolUse string은 success가 아니라 unresolved로 기록한다.
+- static은 observed로 예산을 닫고 browser는 unresolved로 종료해 허위 passed를 제거했다.
+- focused 25/25, full 61/63 known precondition, lint/build green; replacement smoke가 다음이다.
+
 ## 2026-08-02 (Codex) · 1.9.212 real-host recovery smoke
 - Luna/high가 deny guidance 뒤 static 1회→browser 1회→종료로 회복했고 violation은 0이다.
 - 실제 browser exit 1을 state가 passed로 오판하는 Codex formatted-response 결함을 발견했다.

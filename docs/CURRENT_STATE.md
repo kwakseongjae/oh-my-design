@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.212 recovery smoke PASS; outcome attribution fix next
+- 갱신: 2026-08-02 · 1.9.213 outcome attribution fix COMPLETE; replacement smoke next
 
 ## 지금 (현재 위치)
+
+- 1.9.213은 Codex의 PostToolUse shell string이 exit code 없는 stdout/stderr라는 upstream contract에 맞춰 결과 판정을 교정했다. string은 성공으로 승격하지 않고 `unresolved`; structured explicit exit/status만 passed/failed다.
+- proof policy는 품질 판정기가 아니라 순서·시도 예산 제어기다. Codex static string 결과는 `static-closure-observed`로 시도 예산을 닫고 browser 1회를 허용하며, browser string 결과는 `browser-proof-unresolved`로 종료한다. 성공했다는 허위 주장은 사라지고 enforcement는 유지된다.
+- focused 25/25, full bench 61/63(동일 known external vendor Git precondition 2), lint/build/managed-renderer parity가 green이고 provider call 0이다. 다음은 fresh root actual Codex/Luna negative-outcome replacement smoke이며 acceptance는 observed→unresolved, violation 0이다.
 
 - 1.9.212 actual Codex 0.144.1 + Luna/high smoke에서 모델이 browser-before-static 거절 안내를 읽고 static 정확히 1회→browser 정확히 1회→추가 도구 없이 종료했다. fresh `/private/tmp/omd-proof-policy-recovery-smoke-1.9.212`의 installed state는 6 decisions, browser attempt 1, 세 violation 모두 0이다. 1.9.210의 deny recovery dead end는 해소됐다.
 - 단, 실제 browser 명령이 exit 1이었는데 state는 `browser-proof-passed`로 기록했다. Codex PostToolUse의 formatted string response에서 non-zero exit를 현재 mapper가 빈 값이 아닌 성공으로 오판한다. behavioral recovery는 PASS지만 outcome attribution은 FAIL이라 promotion/scored comparison은 계속 HOLD다.
