@@ -339,6 +339,21 @@ function coreIssues(
       if (
         !isJsonObject(workflows) ||
         workflows.schema_version !== 1 ||
+        !isJsonObject(workflows.execution_assurance) ||
+        workflows.execution_assurance.contract_version !== 1 ||
+        !Array.isArray(workflows.execution_assurance.channels) ||
+        workflows.execution_assurance.channels.length !== 4 ||
+        workflows.execution_assurance.channels.some(
+          (channel) =>
+            !isJsonObject(channel) ||
+            typeof channel.id !== 'string' ||
+            channel.skill_contract !== 'advisory' ||
+            typeof channel.host_native_pretool_blocking !== 'boolean' ||
+            typeof channel.effective_level !== 'string',
+        ) ||
+        !isJsonObject(workflows.execution_assurance.benchmark_controller) ||
+        workflows.execution_assurance.benchmark_controller.enforcement !== 'promotion-report' ||
+        workflows.execution_assurance.benchmark_controller.execution_blocking !== false ||
         !Array.isArray(workflows.workflows) ||
         workflows.workflows.length === 0 ||
         workflows.workflows.some(

@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import {
   buildRoutedPrompt,
   loadWorkflowManifest,
@@ -49,6 +51,49 @@ describe('omd workflows', () => {
     expect(manifest.work_packet.repair_advisory.first_transaction)
       .toBe('targeted-acceptance-relevant-edit');
     expect(manifest.work_packet.specialist_response).toContain('first_safe_edit');
+  });
+
+  it('does not promote advisory prose or post-tool feedback as host enforcement', () => {
+    const assurance = manifest.execution_assurance;
+    expect(assurance.contract_version).toBe(1);
+    expect(assurance.levels['host-policy-enforced']).toContain('before execution');
+    expect(assurance.channels.map((channel) => channel.id).sort()).toEqual([
+      'claude-code',
+      'codex',
+      'cursor',
+      'opencode',
+    ]);
+    expect(assurance.channels.every((channel) => channel.skill_contract === 'advisory')).toBe(true);
+    expect(assurance.channels.every((channel) => channel.host_native_pretool_blocking === false))
+      .toBe(true);
+    expect(assurance.channels.find((channel) => channel.id === 'claude-code')?.effective_level)
+      .toBe('host-feedback');
+    expect(
+      assurance.channels
+        .filter((channel) => channel.id !== 'claude-code')
+        .every((channel) => channel.effective_level === 'skill-contract'),
+    ).toBe(true);
+    expect(assurance.harness.host_native_pretool_blocking).toBe(false);
+    expect(assurance.benchmark_controller).toMatchObject({
+      supported_runtimes: ['codex', 'cursor'],
+      enforcement: 'promotion-report',
+      execution_blocking: false,
+    });
+  });
+
+  it('keeps the Claude assurance claim aligned with the hooks that actually ship', () => {
+    const settings = JSON.parse(readFileSync(join(process.cwd(), '.claude/settings.json'), 'utf8'));
+    const preToolGroups = settings.hooks?.PreToolUse ?? [];
+    const omdPreToolHooks = preToolGroups.flatMap(
+      (group: { hooks?: Array<{ command?: string }> }) => group.hooks ?? [],
+    ).filter((hook: { command?: string }) => hook.command?.includes('/.claude/hooks/'));
+    const claude = manifest.execution_assurance.channels.find(
+      (channel) => channel.id === 'claude-code',
+    );
+
+    expect(omdPreToolHooks).toEqual([]);
+    expect(claude?.host_native_pretool_blocking).toBe(false);
+    expect(claude?.host_feedback).toContain('post-edit-context');
   });
 
   it('wraps the actual user task instead of returning an unrelated canned example', () => {

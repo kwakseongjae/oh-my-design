@@ -75,7 +75,9 @@ See [`BENCHMARK-FAMILIES.md`](./BENCHMARK-FAMILIES.md) and
 and cost controls are fixed in
 [`COMPUTE-CONTROL.md`](./COMPUTE-CONTROL.md). The future public result browser is specified
 in [`PUBLIC-SITE.md`](./PUBLIC-SITE.md), and the `1.9.1 → 2.0.0` experiment train
-is in [`RELEASE-TRAIN.md`](./RELEASE-TRAIN.md).
+is in [`RELEASE-TRAIN.md`](./RELEASE-TRAIN.md). The boundary between an advisory
+skill, host feedback, actual pre-tool enforcement, and post-run benchmark
+observation is fixed in [`HOST-ENFORCEMENT.md`](./HOST-ENFORCEMENT.md).
 
 ## Local pilot
 

@@ -85,7 +85,27 @@ describe('omd doctor', () => {
           : file === 'reference-quality.json'
             ? '{"count":1,"items":[{"id":"toss","status":"verified_v2"}]}'
           : file === 'workflow-capabilities.json'
-            ? '{"schema_version":1,"workflows":[{"id":"repair-existing-ui","entry_skill":"omd:apply","stages":["inspect","implement","verify"]}]}'
+            ? JSON.stringify({
+                schema_version: 1,
+                execution_assurance: {
+                  contract_version: 1,
+                  channels: ['claude-code', 'codex', 'opencode', 'cursor'].map((id) => ({
+                    id,
+                    skill_contract: 'advisory',
+                    host_native_pretool_blocking: false,
+                    effective_level: id === 'claude-code' ? 'host-feedback' : 'skill-contract',
+                  })),
+                  benchmark_controller: {
+                    enforcement: 'promotion-report',
+                    execution_blocking: false,
+                  },
+                },
+                workflows: [{
+                  id: 'repair-existing-ui',
+                  entry_skill: 'omd:apply',
+                  stages: ['inspect', 'implement', 'verify'],
+                }],
+              })
             : '{}',
       );
     }

@@ -21,6 +21,28 @@ export interface WorkflowManifest {
   schema_version: number;
   product_version: string;
   principles: string[];
+  execution_assurance: {
+    contract_version: number;
+    levels: Record<string, string>;
+    channels: Array<{
+      id: 'claude-code' | 'codex' | 'opencode' | 'cursor';
+      skill_contract: 'advisory';
+      host_feedback: string[];
+      host_native_pretool_blocking: boolean;
+      proof_trace: string;
+      effective_level: 'skill-contract' | 'host-feedback' | 'host-policy-enforced';
+    }>;
+    harness: {
+      checkpoint_control: string;
+      host_native_pretool_blocking: boolean;
+    };
+    benchmark_controller: {
+      supported_runtimes: string[];
+      proof_trace: string;
+      enforcement: string;
+      execution_blocking: boolean;
+    };
+  };
   work_packet: {
     required: string[];
     intents: string[];

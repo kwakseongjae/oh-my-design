@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.199 host assurance boundary
+- skill contract, host feedback, pre-tool enforcement, benchmark observation을 분리했다.
+- 설치 manifest와 doctor가 채널별 실제 보장 수준을 fail-closed 검증한다.
+- focused 77/77, lint/diff green, provider 0이다.
+- next는 narrow opt-in host policy feasibility 1.9.200이다.
+
 ## 2026-08-02 (Codex) · 1.9.198 proof gate schema
 - exact system에 proof maxima를 preregister하는 promotion-report gate를 추가했다.
 - cell/run/matrix verdict와 fail reasons를 자동 연결했다.

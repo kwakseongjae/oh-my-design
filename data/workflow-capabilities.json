@@ -11,6 +11,59 @@
     "preserve-observable-contract",
     "same-surface-reverification"
   ],
+  "execution_assurance": {
+    "contract_version": 1,
+    "levels": {
+      "skill-contract": "Instructions describe required behavior but cannot block a host tool call.",
+      "host-feedback": "An installed host hook can inject context or report after a tool call, but does not deny execution.",
+      "host-policy-enforced": "A host-native pre-tool policy denies a prohibited call before execution.",
+      "benchmark-observed": "A controller classifies the event stream after execution and can fail promotion without blocking the run."
+    },
+    "channels": [
+      {
+        "id": "claude-code",
+        "skill_contract": "advisory",
+        "host_feedback": ["prompt-context", "session-state", "post-edit-context", "session-fold-in"],
+        "host_native_pretool_blocking": false,
+        "proof_trace": "not-captured-by-omd",
+        "effective_level": "host-feedback"
+      },
+      {
+        "id": "codex",
+        "skill_contract": "advisory",
+        "host_feedback": [],
+        "host_native_pretool_blocking": false,
+        "proof_trace": "benchmark-controller-only",
+        "effective_level": "skill-contract"
+      },
+      {
+        "id": "opencode",
+        "skill_contract": "advisory",
+        "host_feedback": [],
+        "host_native_pretool_blocking": false,
+        "proof_trace": "not-captured-by-omd",
+        "effective_level": "skill-contract"
+      },
+      {
+        "id": "cursor",
+        "skill_contract": "advisory",
+        "host_feedback": [],
+        "host_native_pretool_blocking": false,
+        "proof_trace": "benchmark-controller-only",
+        "effective_level": "skill-contract"
+      }
+    ],
+    "harness": {
+      "checkpoint_control": "orchestrator-contract-requires-user-resume",
+      "host_native_pretool_blocking": false
+    },
+    "benchmark_controller": {
+      "supported_runtimes": ["codex", "cursor"],
+      "proof_trace": "event-stream-classified",
+      "enforcement": "promotion-report",
+      "execution_blocking": false
+    }
+  },
   "work_packet": {
     "required": [
       "intent",
