@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.195 proof trace classifier
+- Cursor/Codex event를 revision transaction으로 자동 판정한다.
+- latch recovery 3/2/2, duplicate 3/1/2, after-ready 1/1/5다.
+- unit 6/6, lint green, provider 0이다.
+- next는 matrix/run-record 자동 저장 1.9.196이다.
+
 ## 2026-08-02 (Codex) · 1.9.194 Grok complete
 - both arms 85×3; close latch paired quality loss 0이다.
 - latch tokens -28.1%지만 wall +4.7%, compliance 0/3이다.

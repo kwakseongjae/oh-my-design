@@ -1,0 +1,118 @@
+import { describe, expect, it } from "vitest";
+import {
+  classifyProofTrace,
+  isProductEditPath,
+  normalizeProofTrace,
+} from "../../../benchmarks/ui-resolve-bench/scripts/proof-trace-contract.mjs";
+
+const cursorEdit = (path = "/tmp/run/index.html") => ({
+  type: "tool_call",
+  subtype: "started",
+  tool_call: { editToolCall: { args: { path } } },
+});
+
+const cursorCommand = (command) => ({
+  type: "tool_call",
+  subtype: "started",
+  tool_call: { shellToolCall: { args: { command } } },
+});
+
+const codexEdit = (path = "/tmp/run/index.html") => ({
+  type: "item.started",
+  item: { type: "file_change", changes: [{ path, kind: "update" }] },
+});
+
+const codexCommand = (command) => ({
+  type: "item.started",
+  item: { type: "command_execution", command },
+});
+
+describe("proof trace contract", () => {
+  it("normalizes Cursor and Codex event streams without double-counting completions", () => {
+    const events = [
+      cursorEdit(),
+      cursorCommand("npm test"),
+      codexEdit(),
+      codexCommand("browser-harness capture"),
+      { type: "item.completed", item: { type: "command_execution", command: "ignored" } },
+    ];
+    expect(normalizeProofTrace(events)).toHaveLength(4);
+  });
+
+  it("ignores benchmark and instruction edits as product revisions", () => {
+    expect(isProductEditPath("/tmp/run/index.html")).toBe(true);
+    expect(isProductEditPath("/tmp/run/src/App.tsx")).toBe(true);
+    expect(isProductEditPath("/tmp/run/.benchmark/check.mjs")).toBe(false);
+    expect(isProductEditPath("/tmp/run/.agents/skills/omd/SKILL.md")).toBe(false);
+    expect(isProductEditPath("/tmp/run/DESIGN.md")).toBe(false);
+  });
+
+  it("passes one static closure followed by one browser mechanism", () => {
+    const result = classifyProofTrace([
+      cursorCommand("ls -la"),
+      cursorEdit(),
+      cursorCommand("npm test"),
+      cursorCommand("browser-harness capture_screenshot"),
+    ]);
+    expect(result).toMatchObject({
+      runtime: "cursor",
+      analyzable: true,
+      static_closure_count: 1,
+      browser_mechanism_count: 1,
+      browser_recovery_count: 0,
+      duplicate_static_closure_count: 0,
+      verification_after_ready_count: 0,
+      compliance_pass: true,
+    });
+  });
+
+  it("fails repeated static closure, browser discovery, and work after browser proof", () => {
+    const result = classifyProofTrace([
+      codexEdit(),
+      codexCommand("npm test"),
+      codexCommand("npm run lint"),
+      codexCommand("which playwright; ls /Applications/Google\\ Chrome.app"),
+      codexCommand("Google Chrome --headless --screenshot=one.png index.html"),
+      codexCommand("Google Chrome --headless --screenshot=two.png index.html"),
+      codexCommand("npm test"),
+    ]);
+    expect(result).toMatchObject({
+      runtime: "codex",
+      analyzable: true,
+      static_closure_count: 3,
+      browser_mechanism_count: 2,
+      browser_recovery_probe_count: 1,
+      browser_recovery_count: 2,
+      duplicate_static_closure_count: 2,
+      verification_after_ready_count: 2,
+      compliance_pass: false,
+    });
+  });
+
+  it("keeps violations from an earlier revision after a corrective edit", () => {
+    const result = classifyProofTrace([
+      cursorEdit(),
+      cursorCommand("npm test"),
+      cursorCommand("npm run lint"),
+      cursorCommand("Google Chrome --headless --screenshot=one.png index.html"),
+      cursorCommand("npm test"),
+      cursorEdit(),
+      cursorEdit(),
+      cursorCommand("npm test"),
+    ]);
+    expect(result).toMatchObject({
+      product_edit_count: 3,
+      product_revision_count: 2,
+      duplicate_static_closure_count: 2,
+      verification_after_ready_count: 1,
+      compliance_pass: false,
+    });
+  });
+
+  it("fails closed when no product edit exists", () => {
+    expect(classifyProofTrace([cursorCommand("npm test")])).toMatchObject({
+      analyzable: false,
+      compliance_pass: false,
+    });
+  });
+});
