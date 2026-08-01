@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-01 · 1.9.165 unseen editorial-brief holdout accepted
+- 갱신: 2026-08-01 · 1.9.166 exact v11 portable candidate pinned
 
 ## 지금 (현재 위치)
 
+- 1.9.166 exact v11을 `omd-portable-reflow-v11-candidate`로 고정했다. detached clean/publishable source는 `4c27cb48…`, Cursor installed skill tree SHA는 `5d0323ab…`, file SHA는 `c94e7559…`, activation은 previous와 같은 `01728b95…`다.
+- provider-free `/tmp/u19166-v11-diagnostic`에서 task/starter/source attestation과 focused candidate/task pin 2/2, lint가 green이다. 다음은 locked editorial-brief task에서 exact previous canonical vs v11 Grok 2×3을 fresh root에 준비한다.
 - 1.9.165 새 unseen non-approval `editorial-brief-routing-v0.1`을 v11 commit 뒤 provider generation 전에 contract-lock했다. 새 editorial-operations domain이며 3 policies, reversible source-context toggle, handoff form, 3 source/destination/editor mappings와 4-view geometry+hierarchy를 가진다.
 - future oracle의 broad surface/atomic identifiers+target-evidence-state/relational compact-copy scopes가 분리되어 mobile H1/body prose는 자연스럽게 wrap해도 atomic failure가 아니다. compact copy는 protected task-owned hook으로 잠갔다.
 - untouched `/tmp/u19165-editorial-starter`는 79/85다. function/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 실제 scoped identifier/compact-copy text geometry만 mobile/320/200%에서 red다. provider call은 0이다.

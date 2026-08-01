@@ -28,6 +28,7 @@ const featureFlagTaskId = "feature-flag-rollout-review-v0.1";
 const environmentSecretTaskId = "environment-secret-mapping-v0.1";
 const webhookDestinationTaskId = "webhook-destination-routing-v0.1";
 const auditExportTaskId = "audit-export-delivery-v0.1";
+const editorialBriefTaskId = "editorial-brief-routing-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -952,6 +953,55 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       activation: previous.activation,
     });
     expect(new Set([previous.commit, v8.commit, v9.commit, candidate.commit]).size).toBe(4);
+  });
+
+  it("pins the measured reflow outcome v11 candidate separately", () => {
+    const previous = competitors.variants["omd-portable-jade"];
+    const v9 = competitors.variants["omd-portable-reflow-v9-candidate"];
+    const v10 = competitors.variants["omd-portable-reflow-v10-candidate"];
+    const candidate = competitors.variants["omd-portable-reflow-v11-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.164",
+      source_path: previous.source_path,
+      install_adapter: previous.install_adapter,
+      install_root: previous.install_root,
+      install_dir: previous.install_dir,
+      declared_name: previous.declared_name,
+      commit: "4c27cb484ae19ceac3f72dedf4324592f2c60946",
+      activation: previous.activation,
+    });
+    expect(new Set([previous.commit, v9.commit, v10.commit, candidate.commit]).size).toBe(4);
+  });
+
+  it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", editorialBriefTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { count: 3, initial: "chronology", selected: "desk" },
+        toggle: { selector: "[data-bench='digest-toggle']" },
+        form: { valid_value: "Morning brief handoff" },
+      },
+      text_geometry_oracle: {
+        atomic_scope_selectors: [
+          "[data-bench='mapping-row']",
+          "[data-bench-decision-role='target']",
+          "[data-bench-decision-role='evidence']",
+          "[data-bench-decision-role='state']",
+        ],
+        compact_copy_selectors: ["[data-bench='compact-control-copy']"],
+        max_short_text_lines: 1,
+      },
+    });
+    validateTaskContract(task);
+    const out = prepareVariant("raw-design-md", { task: editorialBriefTaskId, outputName: "editorial-brief-routing" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter).toContain("source.citydesk.2026-081");
+    expect(starter).toContain('data-bench="compact-control-copy"');
+    expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
   });
 
   it("locks an unseen feature-flag rollout family for final candidate validation", () => {

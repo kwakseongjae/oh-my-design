@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-01 (Codex) · 1.9.166 exact v11 portable candidate pinned
+- detached clean `4c27cb48…`를 v11 candidate로 고정했다.
+- Cursor installed tree `5d0323ab…`, activation `01728b95…`, publishable=true다.
+- focused v11 candidate/task pin 2/2와 lint green, provider 0이다.
+- 다음은 editorial-brief Grok previous-vs-v11 2×3 준비다.
+
 ## 2026-08-01 (Codex) · 1.9.165 unseen editorial-brief holdout accepted
 - v11 commit 뒤 새 editorial-operations task를 provider 0으로 잠갔다.
 - explicit atomic/compact scopes가 H1/prose와 실제 one-line 계약을 분리한다.
