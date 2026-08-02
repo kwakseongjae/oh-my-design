@@ -1,6 +1,6 @@
 # Production cue all-carrier-set transfer — findings
 
-Status: **5/6 cells complete**
+Status: **6/6 cells complete — candidate rejected**
 
 ## Checkpoint 1 — control trial 1
 
@@ -93,3 +93,33 @@ repeated control trial 2: responsive geometry remains red at 390px, 320px, and
 - cumulative attempt-2 experimental tokens: **3,737,534**
 
 Final pair claims are withheld until `luna-cue-r3-carrier-set` completes.
+
+## Pair 3 and final decision
+
+The candidate and control both scored **75/85** and remained unresolved. The
+candidate left both responsive atomic-line failures and 4.42:1 muted contrast.
+It also opened a browser session without completing a browser attempt, so its
+installed host-policy gate failed with `installed-policy-delivery-incomplete`
+and `installed-policy-browser-attempt-missing`. The deterministic proof trace
+itself remained analyzable and compliant.
+
+- candidate wall: **242,038ms** vs control **211,217ms** (**+14.59%**)
+- candidate tokens: **660,645** vs control **489,099** (**+35.07%**)
+- candidate score mean: **77.67** vs control **76.33**
+- candidate quality W/T/L: **1/2/0**
+- candidate/control UI-Resolved: **0/3 / 0/3**
+- candidate/control mean wall: **291,504.67ms / 219,121.67ms**
+  (**+33.03%**)
+- candidate/control mean tokens: **1,048,797.67 / 417,262**
+  (**+151.35%**)
+- candidate/control/total attempt-2 tokens: **3,146,393 / 1,251,786 /
+  4,398,179**
+
+The all-carrier-set patch is rejected. Adding a plural carrier-set requirement
+to prose did not cause the model to bind the separate handoff target/evidence
+carrier into its implementation closure: that carrier remained unresolved in
+all three candidate trials. The next bounded repair must make carrier discovery
+an explicit pre-edit artifact with one row per protected/named atomic scope and
+must prevent static closure when any discovered row lacks concrete 390px,
+320px, and 200% outcomes. It should reuse the existing phase and proof-policy
+machinery rather than add another advisory paragraph.

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.295 production-cue control r3
+- 갱신: 2026-08-03 · 1.9.296 production-cue Reliability@3 final
 
 ## 지금 (현재 위치)
+
+- 1.9.296 all-carrier-set 6/6은 candidate 79/79/75 vs control 79/75/75, W/T/L 1/2/0이며 양쪽 resolved 0/3이다. candidate를 승격하지 않는다.
+- candidate mean score 77.67 vs 76.33이나 mean wall +33.03%, mean tokens +151.35%다. 마지막 candidate는 browser attempt 미완료로 host-policy도 fail했다.
+- attempt-2 candidate/control/total tokens는 3,146,393 / 1,251,786 / 4,398,179다. 다음 bounded delta는 advisory prose 추가가 아니라 pre-edit carrier inventory를 실제 closure artifact로 만들고 모든 row의 390/320/200% outcome 없이는 static closure를 막는 것이다.
 
 - 1.9.295 control r3는 valid/policy-green 75/85 unresolved다. 390/320/200% responsive와 4.42:1 muted contrast 실패가 control에서 2회 연속 재현됐다.
 - wall 211,217ms, total 489,099 tokens(input 479,366, cached 431,104, output 9,733, reasoning 4,499)다. attempt-2 누적은 3,737,534다.

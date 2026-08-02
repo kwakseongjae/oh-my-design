@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.296 production-cue final
+- 6/6은 candidate 79/79/75 vs control 79/75/75, W/T/L 1/2/0이다.
+- candidate resolved 0/3, mean wall +33.03%, tokens +151.35%다.
+- attempt-2 총 4,398,179 tokens; candidate는 승격하지 않는다.
+- 다음은 carrier inventory를 실행 가능한 closure artifact로 강제한다.
+
 ## 2026-08-03 (Codex) · 1.9.295 production-cue control r3
 - control r3는 75/85 unresolved, proof/host green이다.
 - responsive와 4.42:1 contrast 실패가 control에서 재현됐다.
