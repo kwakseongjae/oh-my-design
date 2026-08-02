@@ -44,6 +44,13 @@ describe("omd:apply delivery contract", () => {
 
   it("locks observable behavior before visual expansion", () => {
     expect(skill).toContain("Contract-first edit + acceptance packet");
+    expect(skill).toContain("Release-blocker pass — polish보다 먼저 한 번만 닫기");
+    expect(skill.indexOf("Release-blocker pass")).toBeLessThan(
+      skill.indexOf("Acceptance packet은 실행 파일이 아니라 체크리스트와 관찰 결과"),
+    );
+    expect(skill).toContain("첫 edit transaction의 완료 조건");
+    expect(skill).toContain("consolidated static closure 1회");
+    expect(skill).toContain("browser mechanism 1회만");
     expect(skill).toContain("current_count");
     expect(skill).toContain("allowed_delta");
     expect(skill).toContain("장식을 위해 제품 hook을 복제하지 않는다");

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.240 spectrum replacement complete · candidate rejected
+- 갱신: 2026-08-02 · 1.9.241 compact release-blocker candidate · provider pending
 
 ## 지금 (현재 위치)
+
+- 1.9.241은 rejected candidate의 규칙을 더 늘리지 않고 foreground/reflow/stop을 첫 edit transaction의 세 release blocker로 전면 배치했다. 상세 packet은 evidence schema일 뿐 추가 실행 단계가 아니라고 명시했다.
+- 중복 foreground/reflow prose를 줄여 canonical skill은 37,756→37,465 bytes(-291)다. benchmark selector·task literal·새 token/component는 없다.
+- contract 9/9, decision-context one-rule isolation, install coverage, TypeScript, build가 green이다. full bench 66/68이며 2 red는 동일 external Taste/UI UX Pro non-Git precondition이다. 아직 품질 promotion은 아니다.
 
 - 1.9.240 replacement는 6/6 provider cells와 objective score를 완료했다. close 85/79/85, readable 83/85/81로 candidate W/T/L 1/0/2, 평균은 양쪽 83, 중앙값은 close 85 vs readable 83, UI-Resolved는 close 2/3 vs readable 1/3이다.
 - candidate는 contrast green 2/3, 200% reflow green 2/3으로 baseline과 동일했고, 평균 wall +54.4%, provider tokens +66.9%였다. final candidate는 browser recovery/after-ready 위반으로 proof·host-policy gate도 fail했다.
@@ -1351,9 +1355,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 기존 close-latch source를 기준선으로 유지하고 compact release-blocker pass를 별도 bounded candidate로 작성한다.
-2. skill contract/activation isolation을 provider-free로 검증하고 exact commit/source tree를 pin한다.
-3. spectrum과 다른 fresh unseen UI family를 generation 전에 잠근 뒤 Reliability@3를 실행한다.
+1. 1.9.241 exact commit/source/installed tree를 portable candidate로 pin한다.
+2. spectrum과 다른 fresh unseen UI family를 provider generation 전에 잠근다.
+3. close-latch baseline vs release-blocker candidate Reliability@3를 같은 proof/host policy와 efficiency gate로 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

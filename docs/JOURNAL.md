@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.241 compact release-blocker candidate
+- foreground/reflow/stop을 첫 edit transaction의 3개 blocker로 전면 배치했다.
+- 중복 prose를 줄여 skill은 291 bytes 작아졌고 새 task literal/token은 없다.
+- contract·isolation·install·lint·build green, full bench의 2 red는 known external non-Git이다.
+- 다음은 exact pin 후 fresh unseen task Reliability@3다.
+
 ## 2026-08-02 (Codex) · 1.9.240 spectrum candidate rejected
 - replacement 6/6은 close 85/79/85, readable 83/85/81로 끝났다.
 - candidate W/T/L 1/0/2, resolved 1/3이며 contrast/reflow도 baseline과 동률이다.
