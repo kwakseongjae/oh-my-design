@@ -1,0 +1,19 @@
+{
+  "goal_id": "omd-2.0.0-frontier-gates-from-1.9.278",
+  "target_contract": "All nine gates in RELEASE-TRAIN.md section '2.0.0 frontier gates' pass without changing their normative definitions.",
+  "attempts": [
+    {
+      "order": 1,
+      "patch_version": "1.9.278",
+      "goal_passed": false,
+      "runs": [
+        { "role": "control", "status": "valid", "provider_tokens": 543427, "components": { "cached_input": 480512, "output": 8355, "reasoning_output": 3488 } },
+        { "role": "candidate", "status": "valid", "provider_tokens": 500414, "components": { "cached_input": 432640, "output": 10585, "reasoning_output": 5803 } },
+        { "role": "candidate", "status": "valid", "provider_tokens": 491306, "components": { "cached_input": 429312, "output": 11524, "reasoning_output": 5475 } },
+        { "role": "control", "status": "valid", "provider_tokens": 692346, "components": { "cached_input": 619008, "output": 11249, "reasoning_output": 6393 } },
+        { "role": "control", "status": "valid", "provider_tokens": 422468, "components": { "cached_input": 369152, "output": 7834, "reasoning_output": 3915 } },
+        { "role": "candidate", "status": "valid", "provider_tokens": 451786, "components": { "cached_input": 385792, "output": 7992, "reasoning_output": 4428 } }
+      ]
+    }
+  ]
+}

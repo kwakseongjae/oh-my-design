@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.285 conjunctive release rejected
+- 6/6은 close 77/77/77 vs candidate 79/81/81, W/T/L 3/0/0이다.
+- candidate resolved 0/3; contrast/proof/host 3/3, wall -6.67%, tokens -12.95%다.
+- goal attempt 1은 right-censored, total spend 3,101,747 tokens다.
+- 다음은 decision context 포함 all-carrier-set bounded delta다.
+
 ## 2026-08-02 (Codex) · 1.9.284 final single-line baseline
 - close r3은 77/85 unresolved; baseline 77/77/77로 고정됐다.
 - proof/host green, wall 164,877ms, 422,468 tokens다.

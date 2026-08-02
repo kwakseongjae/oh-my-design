@@ -1,5 +1,11 @@
+import { execFileSync } from "node:child_process";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { aggregateTokensToTarget } from "../../../benchmarks/ui-resolve-bench/scripts/aggregate-tokens-to-target.mjs";
+
+const script = resolve("benchmarks/ui-resolve-bench/scripts/aggregate-tokens-to-target.mjs");
 
 function run(role, provider_tokens, status = "valid", components) {
   return { role, provider_tokens, status, ...(components ? { components } : {}) };
@@ -78,5 +84,27 @@ describe("UI-Resolve tokens-to-target accounting", () => {
     expect(summary.component_telemetry.fresh_input).toMatchObject({ coverage: 1, tokens: 60 });
     expect(summary.component_telemetry.cached_input).toMatchObject({ coverage: 0, tokens: null });
     expect(summary.component_telemetry.reasoning_output).toMatchObject({ coverage: 0, tokens: null });
+  });
+
+  it("accepts the documented CLI input and output flags", () => {
+    const root = mkdtempSync(join(tmpdir(), "ui-resolve-ttt-"));
+    const input = join(root, "ledger.json");
+    const output = join(root, "summary.json");
+    try {
+      writeFileSync(input, JSON.stringify({
+        goal_id: "frontier-ui-skill-v2",
+        target_contract: "promotion gate passes",
+        attempts: [{
+          order: 1,
+          patch_version: "1.9.10",
+          goal_passed: false,
+          runs: [run("candidate", 100)],
+        }],
+      }));
+      execFileSync(process.execPath, [script, "--input", input, "--out", output]);
+      expect(JSON.parse(readFileSync(output, "utf8")).tokens_to_target.candidate).toBe(100);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
   });
 });

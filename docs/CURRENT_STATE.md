@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.284 final single-line baseline · 5/6 cells
+- 갱신: 2026-08-02 · 1.9.285 conjunctive release rejected · 6/6 cells
 
 ## 지금 (현재 위치)
+
+- 1.9.285 single-line 6/6은 close 77/77/77 vs conjunctive 79/81/81, candidate W/T/L 3/0/0이지만 resolved는 양쪽 0/3이다. candidate contrast/proof/host는 3/3 green이다.
+- candidate mean wall -6.67%, tokens -12.95%로 efficiency는 통과했다. 하지만 세 trial 모두 primary diagram carrier만 닫고 adjacent decision target/state atomic one-line을 하나 이상 남겼다.
+- 1.9.274는 승격하지 않는다. Tokens-to-Target attempt 1은 right-censored이며 candidate/control/total은 1,443,506 / 1,658,241 / 3,101,747이다.
+- 다음 bounded delta는 새 phase 없이 pre-edit carrier set을 모든 protected/named atomic relationship scope—decision context 포함—로 확장하고 각 scope의 390/320/200% concrete result를 static closure 전에 요구한다.
 
 - 1.9.284 `luna-single-line-r3-close`는 valid/policy-green 77/85 unresolved다. baseline은 77/77/77로 고정돼 앞선 candidate +2/+4의 점수 방향은 안정적이다.
 - wall 164,877ms, total 422,468 tokens이며 누적 control 1,658,241 / total experimental 2,649,961이다.

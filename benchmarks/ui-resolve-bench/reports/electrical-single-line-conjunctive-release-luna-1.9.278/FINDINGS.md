@@ -1,6 +1,6 @@
 # Electrical single-line conjunctive-release transfer — findings
 
-Status: **IN PROGRESS — 5/6 cells complete**
+Status: **REJECTED — 6/6 cells complete**
 
 ## Checkpoint 1 — baseline trial 1
 
@@ -91,3 +91,52 @@ does not turn an unresolved candidate into a quality promotion.
 
 The last candidate determines the attainable ceiling and final efficiency
 ratios; it cannot restore the already-failed 3/3 resolved gate.
+
+## Final result
+
+All six preregistered cells completed valid. The conjunctive candidate won all
+three paired deterministic comparisons but resolved none of the three trials.
+
+| trial | close-latch | conjunctive release | candidate delta |
+| --- | ---: | ---: | ---: |
+| 1 | 77 | 79 | +2 |
+| 2 | 77 | 81 | +4 |
+| 3 | 77 | 81 | +4 |
+
+- candidate W/T/L: **3/0/0**
+- mean score: close **77.00**, candidate **80.33**
+- UI-Resolved: close **0/3**, candidate **0/3**
+- serious/critical contrast clean: close **0/3**, candidate **3/3**
+- proof execution and installed host policy: both arms **3/3**
+- mean wall: close **220,659ms**, candidate **205,950ms** (**-6.67%**)
+- mean total tokens: close **552,747**, candidate **481,169** (**-12.95%**)
+
+The candidate reliably fixed exact foreground contrast and raised the objective
+score floor without quality, proof, or efficiency losses. It did not include
+every relationship-bearing scope in the responsive carrier closure: all three
+trials left the decision target/state atomic-line contract unresolved at one or
+more of 390px, 320px, and 200%. The diagram carrier was repaired while its
+adjacent decision carrier remained outside the conjunction.
+
+Promotion verdict:
+
+- candidate UI-Resolved 3/3: **fail (0/3)**
+- contrast clean 3/3: **pass**
+- paired losses 0: **pass**
+- proof and host-policy 3/3: **pass**
+- mean wall ratio ≤1.10: **pass (0.9333)**
+- mean token ratio ≤1.10: **pass (0.8705)**
+
+The 1.9.274 conjunctive-release candidate is not promoted. The next bounded
+delta should keep the same phase and require the pre-edit carrier set to include
+every protected or named relationship scope containing registered atomic text,
+including decision context—not only the primary diagram/table/rack carrier.
+Each carrier must have concrete 390/320/200% results before static closure.
+
+## Prospective Tokens-to-Target
+
+Attempt 1 is right-censored because all nine 2.0.0 frontier gates have not
+passed. Candidate spend is **1,443,506** tokens; control spend is **1,658,241**;
+total experimental spend is **3,101,747**. Cached input, output, and reasoning
+coverage are complete. Fresh-input telemetry is not natively separated by this
+runtime and remains null rather than being inferred or set to zero.

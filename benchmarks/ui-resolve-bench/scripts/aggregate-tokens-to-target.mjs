@@ -114,10 +114,12 @@ export function aggregateTokensToTarget(input) {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  if (!args.input || !args.out) {
+  const input = args.get("input");
+  const out = args.get("out");
+  if (!input || !out) {
     throw new Error("Usage: aggregate-tokens-to-target.mjs --input <goal-ledger.json> --out <summary.json>");
   }
-  writeJson(resolve(args.out), aggregateTokensToTarget(readJson(resolve(args.input))));
+  writeJson(resolve(String(out)), aggregateTokensToTarget(readJson(resolve(String(input)))));
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url))) main();
