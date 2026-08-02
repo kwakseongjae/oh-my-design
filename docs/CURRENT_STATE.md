@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.237 replacement checkpoint 1/6 GREEN
+- 갱신: 2026-08-02 · 1.9.238 replacement checkpoint 2/6 · pair1 candidate -2
 
 ## 지금 (현재 위치)
+
+- 1.9.238 first pair가 valid/policy-green으로 완료됐다. close 85/85 UI-Resolved vs readable 83/85 UI-Resolved false, paired candidate -2다.
+- candidate는 serious contrast 0을 달성했지만 200% geometry를 놓쳤다. zero paired loss gate 때문에 이번 experiment의 promotion은 이미 불가능하다. 나머지는 구조적 failure인지 variance인지 진단하기 위해 계속한다.
+- 다음 locked cell은 `luna-spectrum-r2-readable` 한 셀이다. canonical bounded continuation과 pacing을 유지한다.
 
 - 1.9.237 canonical bounded 실행이 replacement 첫 셀 `luna-spectrum-r1-close` 정확히 하나에서 checkpoint됐다. valid, UI-Resolved, 85/85, contrast 0, responsive all green, browser attempt 1, proof/host-policy gates pass다.
 - baseline도 이번 반복에서는 full resolve했으므로 candidate 우위 claim은 전혀 없다. 3 paired trials 전체가 필요하다. provider-reported tokens 437,733, wall 222,784ms다.
@@ -1339,9 +1343,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `luna-spectrum-r1-readable` 한 셀을 canonical bounded continuation으로 실행한다.
+1. `luna-spectrum-r2-readable` 한 셀을 canonical bounded continuation으로 실행한다.
 2. 이후 locked order를 1-cell checkpoints로 6/6까지 이어간다.
-3. candidate UI-Resolved 3/3, contrast 0/3, paired loss 0을 최종 판정한다.
+3. failed promotion gate는 유지하고 contrast/reflow transfer variance를 최종 진단한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

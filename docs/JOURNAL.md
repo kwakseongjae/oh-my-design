@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.238 replacement checkpoint 2/6
+- pair1은 close 85 vs readable 83, candidate -2다.
+- candidate contrast는 green이나 200% geometry가 red다.
+- zero-loss gate가 깨져 promotion은 이미 불가능하다.
+- 나머지는 구조적 failure와 variance 진단을 위해 계속한다.
+
 ## 2026-08-02 (Codex) · 1.9.237 replacement checkpoint 1/6
 - first close baseline이 exact one-cell checkpoint에서 valid 완료됐다.
 - UI-Resolved 85/85, contrast/responsive/proof/policy가 모두 green이다.
