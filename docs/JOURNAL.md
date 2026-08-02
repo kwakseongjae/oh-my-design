@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.251 release-blocker rejected
+- 6/6은 close 81/65/81 vs release 65/65/65, candidate W/T/L 0/1/2다.
+- candidate는 gateway semantic scope와 contrast를 반복 실패했고 proof/host도 2/3뿐이다.
+- wall +9.81%, tokens -2.41%로 efficiency만 통과해 승격하지 않는다.
+- 다음은 visible relationship relocation + first-edit foreground closure delta다.
+
 ## 2026-08-02 (Codex) · 1.9.250 final sensor baseline
 - close r3은 81/85 unresolved, proof/host green이다.
 - r1처럼 reflow/task contract를 해결하고 contrast만 남겼다.

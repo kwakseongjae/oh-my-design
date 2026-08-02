@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.250 sensor r3 baseline checkpoint · provider cells 5/6
+- 갱신: 2026-08-02 · 1.9.251 sensor release-blocker rejected · provider cells 6/6
 
 ## 지금 (현재 위치)
+
+- 1.9.251 sensor Reliability@3 6/6은 close 81/65/81 vs release 65/65/65로 끝났다. candidate W/T/L 0/1/2, mean 65 vs 75.67, median 65 vs 81, resolved는 양쪽 0/3이다.
+- candidate는 세 번 모두 narrow reflow에서 canonical gateway identifier scope를 숨기고 시각적 duplicate만 만들어 task contract/mobile geometry를 실패했으며 exact contrast도 0/3 해결했다. proof/host는 close 3/3 vs candidate 2/3이다.
+- candidate mean wall +9.81%, tokens -2.41%로 efficiency cap은 통과했지만 quality/proof gate가 실패해 1.9.241을 승격하지 않는다.
+- 다음 bounded delta는 early release-blocker pass를 유지하되 desktop header/legend를 숨길 때 기존 semantic relationship carrier를 mobile parent로 relocate하도록 만들고, exact foreground closure를 첫 edit outcome으로 강제하는 것이다. 새 unseen task 이전에 candidate 작성·contract·exact pin을 진행한다.
 
 - 1.9.250 `luna-sensor-r3-close`는 valid/policy-green 81/85, UI-Resolved false다. r1과 같이 reflow와 task contract는 해결하고 exact contrast만 남겼다.
 - wall 322,767ms, tokens 470,871이다. close arm은 81/65/81, resolved 0/3이며 중앙값 81이다.
@@ -1391,9 +1396,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 마지막 `luna-sensor-r3-release`를 `--max-new-cells 1`로 실행한다.
-2. 각 셀 후 objective/proof/host-policy/token/wall 결과를 상태에 고정한다.
-3. 6/6 뒤 paired quality·proof·efficiency gate로 promotion 또는 rejection을 결정한다.
+1. visible semantic relationship carrier relocation + first-edit exact foreground closure의 bounded skill delta를 작성한다.
+2. contract/isolation/lint/build 후 exact commit으로 pin한다.
+3. 새 unseen topology를 lock하고 다시 Reliability@3를 preregister한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
