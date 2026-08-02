@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.243 fresh sensor matrix task lock · provider call 0
+- 갱신: 2026-08-02 · 1.9.244 release-blocker Reliability@3 preregistration · provider call 0
 
 ## 지금 (현재 위치)
+
+- 1.9.244는 exact close-latch `1d204afe…` vs compact release-blocker `aa074ab…` Luna/high 2×3를 fresh sensor matrix task에 preregister했다. balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다.
+- 양 arm에는 같은 installed opt-in proof policy를 적용한다. 승격 gate는 candidate UI-Resolved 3/3, serious contrast 0/3, paired objective loss 0, proof/host-policy 전부 green, mean wall과 provider tokens 각각 baseline +10% 이하다.
+- provider call 0이다. 다음은 fresh detached vendor worktrees와 `/private/tmp/u19244` 6-cell root를 준비해 equality attestation 후 one-cell checkpoint로 실행한다.
 
 - 1.9.243은 fresh `sensor-channel-matrix-review-v0.1`을 provider 전에 잠갔다. 기존 list/card/timeline/routing/approval/assay/spectrum과 다른 5×4 cross-matrix topology이며 untouched starter는 75/85다.
 - task/state/design/evidence/desktop/keyboard는 green이다. 의도한 red는 `#66716C` on `#F3F1EA` exact 4.4844:1 contrast와 390/320/200% atomic identifier·parent-matrix reflow뿐이다. prompt `4e197bd3…`, starter product `aeae25b2…`, provider call 0이다.
@@ -1363,8 +1367,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. close-latch baseline vs release-blocker candidate Reliability@3를 같은 proof/host policy와 efficiency gate로 preregister한다.
-2. fresh worktrees/root를 준비하고 one-cell checkpoint 방식으로 실행한다.
+1. fresh worktrees/root를 준비하고 equality attestation을 기록한다.
+2. 6개 셀을 `--max-new-cells 1` one-cell checkpoint로 순서대로 실행한다.
 3. 6/6 뒤 paired quality·proof·efficiency gate로 promotion 또는 rejection을 결정한다.
 
 ## 막힘 / 대기 (없으면 "없음")

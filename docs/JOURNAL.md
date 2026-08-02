@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.244 release-blocker preregistration
+- close-latch vs compact release-blocker Luna/high 2×3를 fresh sensor holdout에 잠갔다.
+- balanced order, 900초, 120초 pacing, same installed proof policy, no retry다.
+- quality·proof와 함께 wall/token +10% efficiency gate도 고정했다.
+- 다음은 fresh exact worktree와 6-cell root 준비다.
+
 ## 2026-08-02 (Codex) · 1.9.243 sensor matrix task lock
 - 새 5×4 channel/gateway cross-matrix holdout을 provider 전에 잠갔다.
 - untouched 75/85; desktop은 green, exact contrast와 390/320/200% reflow만 의도대로 red다.
