@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.262 semantic-carrier rejected · 6/6 cells
+- 갱신: 2026-08-02 · 1.9.263 pre-edit release invariant authored
 
 ## 지금 (현재 위치)
+
+- 1.9.263은 성공 trial의 foreground/carrier/browser 행동을 세 필드 `pre_edit_release_invariant`로 압축했다. 빈 값이면 edit을 시작하지 않고, 첫 diff에 실제 foreground+carrier 변경이 있어야 하며 browser session 생성이 아닌 same-route navigate를 요구한다.
+- canonical은 38,232→39,093 bytes, 4,300→4,397 words다. benchmark selector/task literal/token은 추가하지 않았다. quick validation, contract 9/9, isolation, lint, build가 green이다.
+- full bench 72/74의 두 red는 동일 external Taste/UI UX Pro non-Git precondition이다. 아직 quality promotion은 아니며 다음은 exact commit pin과 fresh unseen topology다.
 
 - 1.9.262 transit Reliability@3 6/6은 close 75/75/75 vs carrier 73/85/73, candidate W/T/L 1/0/2다. mean은 carrier 77 vs close 75지만 median은 73 vs 75, resolved는 carrier 1/3 vs close 0/3이다.
 - carrier는 한 번 exact contrast·atomic reflow·named carrier·browser proof를 전부 해결해 ceiling은 입증했지만 두 번 같은 실패를 반복했다. proof는 3/3이나 host는 2/3다.
@@ -1442,9 +1446,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 성공 trial의 foreground/carrier/browser 결과를 한 pre-edit invariant로 압축한 bounded skill delta를 작성한다.
-2. contract/isolation/install/lint/build로 benchmark-specific overfit이 없는지 검증한다.
-3. exact candidate pin 뒤 또 다른 fresh unseen topology에서 Reliability@3를 반복한다.
+1. 1.9.263 exact commit을 별도 candidate로 pin하고 provider-free install provenance를 검증한다.
+2. transit/sensor/spectrum과 다른 fresh unseen topology를 provider 전에 lock한다.
+3. exact close-latch vs new candidate Reliability@3를 preregister한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

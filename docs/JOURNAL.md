@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.263 pre-edit invariant authored
+- foreground/carrier/browser를 세 필드 pre-edit release invariant로 압축했다.
+- session 생성은 proof가 아니며 same-route navigate를 요구한다.
+- quick validate, contract 9/9, isolation, lint/build green; full 72/74는 기존 vendor precondition이다.
+- 다음은 exact pin과 fresh unseen topology다.
+
 ## 2026-08-02 (Codex) · 1.9.262 semantic-carrier rejected
 - 6/6은 close 75/75/75 vs carrier 73/85/73, candidate W/T/L 1/0/2다.
 - carrier는 resolved 1/3, host 2/3; wall +23.08%, tokens +11.31%다.

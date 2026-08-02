@@ -49,6 +49,12 @@ describe("omd:apply delivery contract", () => {
       skill.indexOf("Acceptance packet은 실행 파일이 아니라 체크리스트와 관찰 결과"),
     );
     expect(skill).toContain("첫 edit transaction의 완료 조건");
+    expect(skill).toContain("pre_edit_release_invariant:");
+    expect(skill).toContain("foreground_change:");
+    expect(skill).toContain("comparison_carrier:");
+    expect(skill).toContain("browser_attempt:");
+    expect(skill).toContain("browser session 생성은 결과가 아니다");
+    expect(skill).toContain("실제 route를 열어야");
     expect(skill).toContain("첫 edit diff에서 DESIGN.md의 검증된 text-role/ink token으로 실제 교체");
     expect(skill).toContain("ratio 기록만 하고 교정을 미루면 transaction 미완료");
     expect(skill).toContain("consolidated static closure 1회");

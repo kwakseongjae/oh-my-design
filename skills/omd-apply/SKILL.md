@@ -171,6 +171,17 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 
 아래 세 항목은 서로 다른 문서 작업이 아니라 **첫 edit transaction의 완료 조건**이다. 긴 ledger를 다시 설명하거나 검증을 반복하지 말고, 제품을 읽을 때 위험을 표시한 뒤 한 번의 edit으로 같이 고친다.
 
+편집 전에 아래 세 값을 한 줄씩 확정한다. 빈 값이 있으면 제품 edit을 시작하지 않는다.
+
+```yaml
+pre_edit_release_invariant:
+  foreground_change: "failing normal-text selector → existing verified text-role/ink token"
+  comparison_carrier: "existing semantic carrier → named containment or exact relocation"
+  browser_attempt: "one prepared command that navigates the same consumer route"
+```
+
+이것은 계획 메모가 아니라 edit 범위다. 첫 diff에 `foreground_change`의 실제 선언 교체와 `comparison_carrier`의 containment/relocation이 둘 다 없으면 transaction은 미완료다. static grep이나 browser session 생성은 결과가 아니다. static closure 뒤 `browser_attempt`가 실제 route를 열어야 하며, infrastructure가 막힌 실제 navigate 시도만 `unresolved`로 닫을 수 있다.
+
 1. **Foreground:** visible normal text의 실제 foreground/background pair를 exact ratio로 계산한다. 4.5 미만이거나 미계측이면 첫 edit diff에서 DESIGN.md의 검증된 text-role/ink token으로 실제 교체하고 accent는 non-text cue에만 남긴다. ratio 기록만 하고 교정을 미루면 transaction 미완료다.
 2. **Reflow:** desktop·390px·320px·200%에서 atomic identifier와 짧은 label을 먼저 본다. fit하지 않으면 글자를 쪼개거나 줄이는 대신 parent row를 full-row→stack하고 desktop track/min-width 제약을 해제한다. shared header·legend가 관계를 전달하면 기본값은 그 carrier가 보이는 named `comparison-scroll`이다. 숨기고 unbound visual copy를 만들지 않으며, stack이 필요하면 기존 semantic carrier의 identity·cardinality·visibility를 mobile parent로 옮긴다.
 3. **Stop:** 제품 edit 뒤 consolidated static closure 1회, 준비된 browser mechanism 1회만 쓴다. browser infrastructure가 막히면 `unresolved`로 닫고 다른 browser·port·runtime을 찾지 않은 채 전달한다.
