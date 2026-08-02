@@ -49,6 +49,8 @@ describe("omd:apply delivery contract", () => {
       skill.indexOf("Acceptance packet은 실행 파일이 아니라 체크리스트와 관찰 결과"),
     );
     expect(skill).toContain("첫 edit transaction의 완료 조건");
+    expect(skill).toContain("첫 edit diff에서 DESIGN.md의 검증된 text-role/ink token으로 실제 교체");
+    expect(skill).toContain("ratio 기록만 하고 교정을 미루면 transaction 미완료");
     expect(skill).toContain("consolidated static closure 1회");
     expect(skill).toContain("browser mechanism 1회만");
     expect(skill).toContain("current_count");
@@ -87,6 +89,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("3. **REFLOW.**");
     expect(skill).toContain("가장 좁은 조건에서 먼저 각 row의 longest atomic child");
     expect(skill).toContain("parent row를 `full-row`, 다음으로 `stack`");
+    expect(skill).toContain("carrier를 보존한 named `comparison-scroll`을 먼저 쓴다");
+    expect(skill).toContain("기존 carrier 자체를 mobile parent로 relocate");
+    expect(skill).toContain("generated content, `data-*`, aria-label, hook 없는 span");
     expect(skill).toContain("단일 text scroller");
     expect(skill).toContain("`nowrap`은 세 viewport에서 longest value가 실제 측정으로 fit");
     expect(skill).toContain("4. **PROVE.**");

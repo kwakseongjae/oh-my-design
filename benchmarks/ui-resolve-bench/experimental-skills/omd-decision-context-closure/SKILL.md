@@ -171,8 +171,8 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 
 아래 세 항목은 서로 다른 문서 작업이 아니라 **첫 edit transaction의 완료 조건**이다. 긴 ledger를 다시 설명하거나 검증을 반복하지 말고, 제품을 읽을 때 위험을 표시한 뒤 한 번의 edit으로 같이 고친다.
 
-1. **Foreground:** visible normal text의 실제 foreground/background pair를 exact ratio로 계산한다. 4.5 미만이거나 미계측이면 DESIGN.md의 검증된 text-role/ink token으로 교체하고 accent는 non-text cue에만 남긴다.
-2. **Reflow:** desktop·390px·320px·200%에서 atomic identifier와 짧은 label을 먼저 본다. fit하지 않으면 글자를 쪼개거나 줄이는 대신 parent row를 full-row→stack하고 desktop track/min-width 제약을 해제한다.
+1. **Foreground:** visible normal text의 실제 foreground/background pair를 exact ratio로 계산한다. 4.5 미만이거나 미계측이면 첫 edit diff에서 DESIGN.md의 검증된 text-role/ink token으로 실제 교체하고 accent는 non-text cue에만 남긴다. ratio 기록만 하고 교정을 미루면 transaction 미완료다.
+2. **Reflow:** desktop·390px·320px·200%에서 atomic identifier와 짧은 label을 먼저 본다. fit하지 않으면 글자를 쪼개거나 줄이는 대신 parent row를 full-row→stack하고 desktop track/min-width 제약을 해제한다. shared header·legend가 관계를 전달하면 기본값은 그 carrier가 보이는 named `comparison-scroll`이다. 숨기고 unbound visual copy를 만들지 않으며, stack이 필요하면 기존 semantic carrier의 identity·cardinality·visibility를 mobile parent로 옮긴다.
 3. **Stop:** 제품 edit 뒤 consolidated static closure 1회, 준비된 browser mechanism 1회만 쓴다. browser infrastructure가 막히면 `unresolved`로 닫고 다른 browser·port·runtime을 찾지 않은 채 전달한다.
 
 이 pass가 끝난 뒤에만 optional polish로 간다. 아래 packet은 이 세 결정을 증명하는 필드 정의이지 추가 실행 단계가 아니다.
@@ -203,7 +203,7 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 
    1. **INVENTORY.** `rows`에는 one-line 계약이 있는 visible atomic identifier, 선택 target/source/artifact filename, 짧은 evidence·summary·metadata·supplied-count, short control label, visible dynamic state/status를 넣는다. 초기 문자열만 보지 말고 render function/template/state map의 가장 긴 실제 값을 `longest_value`로 기록한다. paired toggle/button/select를 이름 붙이는 copy는 tag와 무관하게 `control-label`이다. 일반 heading/body prose는 명시적 one-line 계약이 없으면 제외한다.
    2. **FIT.** 각 행의 선언된 DESIGN.md type role과 target emphasis를 보존한다. 더 작은 임의 type, 축약, `clamp()` 하한으로 맞추지 않는다. `required`와 `available`은 browser 측정값만 pass proof다. source-only이면 `unresolved`로 둔다. `viewport → page inset → card padding → section inset → reading width` 순서로 폭을 회수하고, text를 건드리기 전에 불필요한 바깥 chrome과 fixed track을 줄인다.
-   3. **REFLOW.** 가장 좁은 조건에서 먼저 각 row의 longest atomic child와 padding/gap을 판단한다. metadata·identifier·evidence·state가 fit하지 않으면 text를 깨지 말고 parent row를 `full-row`, 다음으로 `stack`한다. mobile cascade에서 desktop track·basis·min-width를 해제하고 필요한 child에 `min-width: 0`을 둔다. 비교 관계가 있는 묶음만 named `comparison-scroll`을 허용한다. 단일 text scroller, 숨김·복제·word-break·세로 쌓기, break character, generated separator는 금지한다. `nowrap`은 세 viewport에서 longest value가 실제 측정으로 fit하고 overflow·clipping이 0일 때만 쓴다.
+   3. **REFLOW.** 가장 좁은 조건에서 먼저 각 row의 longest atomic child와 padding/gap을 판단한다. metadata·identifier·evidence·state가 fit하지 않으면 text를 깨지 말고 parent row를 `full-row`, 다음으로 `stack`한다. mobile cascade에서 desktop track·basis·min-width를 해제하고 필요한 child에 `min-width: 0`을 둔다. shared header·legend가 cell의 의미 관계를 제공하는 비교 묶음은 그 carrier를 보존한 named `comparison-scroll`을 먼저 쓴다. stack으로 바꾸려면 기존 carrier 자체를 mobile parent로 relocate해 identity·cardinality·visibility와 header/cell association을 유지한다. carrier를 `display:none`으로 숨긴 뒤 generated content, `data-*`, aria-label, hook 없는 span으로 같은 문구를 복제하는 것은 실패다. 단일 text scroller, 숨김·복제·word-break·세로 쌓기, break character, generated separator는 금지한다. `nowrap`은 세 viewport에서 longest value가 실제 측정으로 fit하고 overflow·clipping이 0일 때만 쓴다.
    4. **PROVE.** final selector의 computed type, line count, overflow/clipping과 target·evidence·state·action의 같은 decision boundary를 세 viewport에서 측정한다. one-line 행은 line count 1과 overflow/clipping 0일 때만 `pass`다. `width:100%`, page overflow 0, screenshot 육안, source 추정은 행 proof가 아니다. 시작/종료 identity와 개수가 다르거나 한 행이라도 측정되지 않으면 전체를 성공으로 말하지 않고 그 행을 `unresolved`로 전달한다.
 
    closure는 `same_row_count: true`, `same_decision_boundary: true`, `no_text_hack: true`, `unresolved_rows: 0`, `page_overflow: 0`일 때만 끝난다.

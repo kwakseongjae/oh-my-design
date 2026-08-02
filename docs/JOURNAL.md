@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.252 semantic-carrier closure
+- first-edit foreground 적용과 visible shared relationship carrier 보존을 bounded delta로 작성했다.
+- hidden header + unbound generated/data/aria/span copy를 실패로 명시했다.
+- contract 9/9, isolation, install 40/40, lint/build green; 아직 quality claim은 없다.
+- 다음은 exact pin과 fresh unseen task다.
+
 ## 2026-08-02 (Codex) · 1.9.251 release-blocker rejected
 - 6/6은 close 81/65/81 vs release 65/65/65, candidate W/T/L 0/1/2다.
 - candidate는 gateway semantic scope와 contrast를 반복 실패했고 proof/host도 2/3뿐이다.
