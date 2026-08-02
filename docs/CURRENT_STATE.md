@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.274 conjunctive release latch authored · provider call 0 after comparison
+- 갱신: 2026-08-02 · 1.9.275 conjunctive release exact pin · provider call 0
 
 ## 지금 (현재 위치)
+
+- 1.9.275는 exact source `3a414a0a…`를 `omd-portable-conjunctive-release-candidate`로 pin했다. source는 clean/detached/publishable이다.
+- installed tree `2d577464…`, installed SKILL `79428c05…`, activation `79911390…`다. rack은 provenance-only이며 promotion에서 제외한다. provider/hook/agent/third-party installer call 0이다.
+- 다음은 rack과 다른 fresh unseen topology를 provider 전에 lock하는 것이다.
 
 - 1.9.274는 기존 pre-edit invariant의 foreground/carrier를 AND gate로 강화했다. foreground는 exact before/after ratio 또는 verified text-role fail-close, carrier는 390/320/실제 200%를 모두 구체화해야 static closure로 넘어간다.
 - 새 phase/script/benchmark literal/token은 추가하지 않았다. canonical은 39,093→39,610 bytes, 4,397→4,460 words다. quick validation, contract 9/9, lint, build가 green이다.

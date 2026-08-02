@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.275 conjunctive release exact pin
+- exact source `3a414a0a…`를 clean/detached/publishable candidate로 pin했다.
+- installed tree `2d577464…`, SKILL `79428c05…`, activation `79911390…`다.
+- rack은 provenance-only, provider/hook/agent/third-party installer call 0이다.
+- 다음은 fresh unseen topology lock이다.
+
 ## 2026-08-02 (Codex) · 1.9.274 conjunctive release latch
 - foreground와 390/320/실제 200% carrier 결과를 AND gate로 강화했다.
 - 새 phase/script/benchmark literal/token 없이 +517 bytes/+63 words다.
