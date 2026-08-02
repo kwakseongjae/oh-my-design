@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.249 sensor pair 2
+- release 65 vs close 65 동률, 양쪽 unresolved/policy-green이다.
+- 누적 candidate W/T/L 0/1/1, resolved 0/2다.
+- candidate는 pair 2에서 wall +32.5%, tokens +58.0%였다.
+- 다음은 마지막 close→release pair다.
+
 ## 2026-08-02 (Codex) · 1.9.248 second sensor candidate
 - release r2도 65/85 unresolved로 gateway contract/reflow/contrast 실패를 반복했다.
 - proof/host는 pass했으므로 quality 실패가 policy artifact만은 아니다.
