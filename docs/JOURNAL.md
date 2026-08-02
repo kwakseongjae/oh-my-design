@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.271 rack pair 2
+- invariant 81 vs close 75, 누적 candidate W/T/L 2/0/0이다.
+- candidate resolved 0/2라 3/3 promotion은 이미 불가능하다.
+- pair2 wall +5.81%, tokens -25.12%; 누적 wall은 +40.12%다.
+- 다음은 close r3, invariant r3 진단이다.
+
 ## 2026-08-02 (Codex) · 1.9.270 second rack candidate
 - invariant r2는 valid/policy-green 81/85 unresolved다.
 - full reflow는 green이나 exact contrast가 red다.
