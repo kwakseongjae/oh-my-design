@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.262 semantic-carrier rejected
+- 6/6은 close 75/75/75 vs carrier 73/85/73, candidate W/T/L 1/0/2다.
+- carrier는 resolved 1/3, host 2/3; wall +23.08%, tokens +11.31%다.
+- ceiling은 입증했지만 reliability·proof·efficiency gate가 모두 부족해 승격하지 않는다.
+- 다음은 foreground/carrier/browser를 한 pre-edit release invariant로 압축한다.
+
 ## 2026-08-02 (Codex) · 1.9.261 final transit baseline
 - close r3은 valid/policy-green 75/85 unresolved다.
 - baseline은 75/75/75, resolved 0/3, proof/host 3/3으로 고정됐다.

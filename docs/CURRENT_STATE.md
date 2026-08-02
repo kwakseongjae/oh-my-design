@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.261 final transit baseline · 5/6 cells
+- 갱신: 2026-08-02 · 1.9.262 semantic-carrier rejected · 6/6 cells
 
 ## 지금 (현재 위치)
+
+- 1.9.262 transit Reliability@3 6/6은 close 75/75/75 vs carrier 73/85/73, candidate W/T/L 1/0/2다. mean은 carrier 77 vs close 75지만 median은 73 vs 75, resolved는 carrier 1/3 vs close 0/3이다.
+- carrier는 한 번 exact contrast·atomic reflow·named carrier·browser proof를 전부 해결해 ceiling은 입증했지만 두 번 같은 실패를 반복했다. proof는 3/3이나 host는 2/3다.
+- mean wall +23.08%, tokens +11.31%로 둘 다 +10% cap을 넘었다. quality/proof/efficiency gate 실패로 1.9.252를 승격하지 않는다.
+- 다음 bounded delta는 규칙/phase를 더 늘리지 않고 성공 trial의 세 결과—verified foreground, named comparison containment, real browser navigation—를 pre-edit release invariant로 압축한다.
 
 - 1.9.261 `luna-transit-r3-close`는 valid/policy-green 75/85 unresolved다. baseline은 75/75/75, resolved 0/3, proof/host 3/3으로 고정됐다.
 - r3도 task/evidence와 browser proof를 보존했지만 exact contrast와 narrow reflow를 남겼다. wall 190,306ms, tokens 294,132다.
@@ -1437,9 +1442,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 마지막 `luna-transit-r3-carrier`를 실행해 reliability를 완성한다.
-2. six-cell result에 final quality/proof/efficiency rejection gate를 적용한다.
-3. 반복 실패만 겨냥한 다음 bounded skill delta를 설계한다.
+1. 성공 trial의 foreground/carrier/browser 결과를 한 pre-edit invariant로 압축한 bounded skill delta를 작성한다.
+2. contract/isolation/install/lint/build로 benchmark-specific overfit이 없는지 검증한다.
+3. exact candidate pin 뒤 또 다른 fresh unseen topology에서 Reliability@3를 반복한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
