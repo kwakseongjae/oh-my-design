@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.239 replacement checkpoint 4/6
+- pair2는 readable 85 vs close 79, candidate +6이다.
+- pair1과 반대로 뒤집혀 W/L 1/1, candidate resolved 1/2다.
+- promotion은 fail이지만 variance 진단을 위해 final pair를 계속한다.
+- 다음은 third close baseline 한 셀이다.
+
 ## 2026-08-02 (Codex) · 1.9.238 replacement checkpoint 2/6
 - pair1은 close 85 vs readable 83, candidate -2다.
 - candidate contrast는 green이나 200% geometry가 red다.

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.238 replacement checkpoint 2/6 · pair1 candidate -2
+- 갱신: 2026-08-02 · 1.9.239 replacement checkpoint 4/6 · W/L 1/1
 
 ## 지금 (현재 위치)
+
+- 1.9.239 two pairs/4 cells가 valid/policy-green으로 완료됐다. pair1 candidate -2, pair2 candidate +6, W/T/L 1/0/1이며 candidate UI-Resolved 1/2다.
+- 방향이 뒤집혀 run variance가 크다. promotion은 zero-loss와 candidate 3/3 양쪽에서 이미 fail이지만 마지막 pair는 effect direction과 recurring failure surface 진단에 필요하다.
+- 다음 locked cell은 `luna-spectrum-r3-close`, 그다음 `luna-spectrum-r3-readable`이다. 각각 canonical one-cell checkpoint로 실행한다.
 
 - 1.9.238 first pair가 valid/policy-green으로 완료됐다. close 85/85 UI-Resolved vs readable 83/85 UI-Resolved false, paired candidate -2다.
 - candidate는 serious contrast 0을 달성했지만 200% geometry를 놓쳤다. zero paired loss gate 때문에 이번 experiment의 promotion은 이미 불가능하다. 나머지는 구조적 failure인지 variance인지 진단하기 위해 계속한다.
@@ -1343,9 +1347,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `luna-spectrum-r2-readable` 한 셀을 canonical bounded continuation으로 실행한다.
-2. 이후 locked order를 1-cell checkpoints로 6/6까지 이어간다.
-3. failed promotion gate는 유지하고 contrast/reflow transfer variance를 최종 진단한다.
+1. `luna-spectrum-r3-close` 한 셀을 canonical bounded continuation으로 실행한다.
+2. `luna-spectrum-r3-readable`까지 6/6을 완성한다.
+3. failed promotion gate를 유지하고 contrast/reflow transfer variance와 다음 bounded delta를 결정한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
