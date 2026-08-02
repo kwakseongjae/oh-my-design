@@ -176,11 +176,11 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 ```yaml
 pre_edit_release_invariant:
   foreground_change: "selector + surface + exact before ratio → existing verified text-role/ink token + exact after ratio or fail-closed replacement"
-  comparison_carrier: "existing semantic carrier → named containment or exact relocation covering 390px + 320px + actual 200% zoom/reflow"
+  comparison_carrier_set: "every protected or named relationship scope containing registered atomic text → named containment or exact relocation + concrete 390px + 320px + actual 200% zoom/reflow outcomes per carrier"
   browser_attempt: "one prepared command that navigates the same consumer route"
 ```
 
-이것은 계획 메모가 아니라 conjunctive edit 범위다. `foreground_change AND comparison_carrier`가 한 transaction에서 모두 구체화되어야 한다. 첫 diff와 consolidated static closure에는 foreground의 exact numeric result(또는 verified text-role fail-close)와 390px·320px·실제 200% 각각을 해소하는 carrier 선언이 둘 다 있어야 한다. 한 breakpoint, 최대 너비, `width:100%`, page overflow 0, 또는 미계측 placeholder는 carrier 결과가 아니다. 하나라도 빠지면 static closure로 넘어가지 않고 transaction을 미완료로 둔다. static grep은 결과가 아니며 browser session 생성은 결과가 아니다. static closure 뒤 `browser_attempt`가 실제 route를 열어야 하며, infrastructure가 막힌 실제 navigate 시도만 `unresolved`로 닫을 수 있다.
+이것은 계획 메모가 아니라 conjunctive edit 범위다. `foreground_change AND comparison_carrier_set`이 한 transaction에서 모두 구체화되어야 한다. carrier set은 protected ledger와 reflow row에서 `target|identifier|evidence|state|control-label`을 담는 모든 보호된 또는 이름 붙은 relationship scope를 포함한다. 인접한 scope를 대표 carrier 하나로 합치거나 주요 다이어그램만 기록하지 않는다. 첫 diff와 consolidated static closure에는 foreground의 exact numeric result(또는 verified text-role fail-close)와 **carrier별** 390px·320px·실제 200% 결과가 있어야 한다. 한 breakpoint, 최대 너비, `width:100%`, page overflow 0, 또는 미계측 placeholder는 carrier 결과가 아니다. carrier 하나나 viewport 결과 하나라도 빠지면 static closure로 넘어가지 않고 transaction을 미완료로 둔다. static grep은 결과가 아니며 browser session 생성은 결과가 아니다. static closure 뒤 `browser_attempt`가 실제 route를 열어야 하며, infrastructure가 막힌 실제 navigate 시도만 `unresolved`로 닫을 수 있다.
 
 1. **Foreground:** visible normal text의 실제 foreground/background pair를 exact ratio로 계산한다. 4.5 미만이거나 미계측이면 첫 edit diff에서 DESIGN.md의 검증된 text-role/ink token으로 실제 교체하고 accent는 non-text cue에만 남긴다. ratio 기록만 하고 교정을 미루면 transaction 미완료다.
 2. **Reflow:** desktop·390px·320px·200%에서 atomic identifier와 짧은 label을 먼저 본다. fit하지 않으면 글자를 쪼개거나 줄이는 대신 parent row를 full-row→stack하고 desktop track/min-width 제약을 해제한다. shared header·legend가 관계를 전달하면 기본값은 그 carrier가 보이는 named `comparison-scroll`이다. 숨기고 unbound visual copy를 만들지 않으며, stack이 필요하면 기존 semantic carrier의 identity·cardinality·visibility를 mobile parent로 옮긴다.
@@ -202,6 +202,10 @@ pre_edit_release_invariant:
 
    ```yaml
    reflow_work_packet:
+     carriers:
+       - identity: "stable relationship scope id"
+         binds_rows: ["registered row id"]
+         final: { outcome_390: pass|unresolved, outcome_320: pass|unresolved, outcome_200pct: pass|unresolved }
      rows:
        - identity: "stable row id"
          source: { selector: "...", origin: static|dynamic, longest_value: "..." }
@@ -209,15 +213,15 @@ pre_edit_release_invariant:
          fit: { required: measured|unresolved, available_390: measured|unresolved, available_320: measured|unresolved, available_200pct: measured|unresolved }
          decision: full-row|stack|comparison-scroll|keep|unresolved
          final: { selector: "...", line_count_390: measured|unresolved, line_count_320: measured|unresolved, line_count_200pct: measured|unresolved, overflow: measured|unresolved, status: pass|unresolved }
-     invariants: { same_row_count: true|false, same_decision_boundary: true|false, no_text_hack: true|false }
+     invariants: { same_row_count: true|false, same_decision_boundary: true|false, all_registered_carriers_closed: true|false, no_text_hack: true|false }
    ```
 
-   1. **INVENTORY.** `rows`에는 one-line 계약이 있는 visible atomic identifier, 선택 target/source/artifact filename, 짧은 evidence·summary·metadata·supplied-count, short control label, visible dynamic state/status를 넣는다. 초기 문자열만 보지 말고 render function/template/state map의 가장 긴 실제 값을 `longest_value`로 기록한다. paired toggle/button/select를 이름 붙이는 copy는 tag와 무관하게 `control-label`이다. 일반 heading/body prose는 명시적 one-line 계약이 없으면 제외한다.
+   1. **INVENTORY.** `rows`에는 one-line 계약이 있는 visible atomic identifier, 선택 target/source/artifact filename, 짧은 evidence·summary·metadata·supplied-count, short control label, visible dynamic state/status를 넣는다. 초기 문자열만 보지 말고 render function/template/state map의 가장 긴 실제 값을 `longest_value`로 기록한다. paired toggle/button/select를 이름 붙이는 copy는 tag와 무관하게 `control-label`이다. 일반 heading/body prose는 명시적 one-line 계약이 없으면 제외한다. 각 row를 소유하거나 그 row와 다른 내용의 관계를 전달하는 protected/named scope를 `carriers`에 전부 등록한다. 하나의 row가 여러 relationship scope에 속하면 모두 등록하며, 인접한 decision context나 state/action scope를 대표 visual carrier에 흡수시키지 않는다.
    2. **FIT.** 각 행의 선언된 DESIGN.md type role과 target emphasis를 보존한다. 더 작은 임의 type, 축약, `clamp()` 하한으로 맞추지 않는다. `required`와 `available`은 browser 측정값만 pass proof다. source-only이면 `unresolved`로 둔다. `viewport → page inset → card padding → section inset → reading width` 순서로 폭을 회수하고, text를 건드리기 전에 불필요한 바깥 chrome과 fixed track을 줄인다.
    3. **REFLOW.** 가장 좁은 조건에서 먼저 각 row의 longest atomic child와 padding/gap을 판단한다. metadata·identifier·evidence·state가 fit하지 않으면 text를 깨지 말고 parent row를 `full-row`, 다음으로 `stack`한다. mobile cascade에서 desktop track·basis·min-width를 해제하고 필요한 child에 `min-width: 0`을 둔다. shared header·legend가 cell의 의미 관계를 제공하는 비교 묶음은 그 carrier를 보존한 named `comparison-scroll`을 먼저 쓴다. stack으로 바꾸려면 기존 carrier 자체를 mobile parent로 relocate해 identity·cardinality·visibility와 header/cell association을 유지한다. carrier를 `display:none`으로 숨긴 뒤 generated content, `data-*`, aria-label, hook 없는 span으로 같은 문구를 복제하는 것은 실패다. 단일 text scroller, 숨김·복제·word-break·세로 쌓기, break character, generated separator는 금지한다. `nowrap`은 세 viewport에서 longest value가 실제 측정으로 fit하고 overflow·clipping이 0일 때만 쓴다.
-   4. **PROVE.** final selector의 computed type, line count, overflow/clipping과 target·evidence·state·action의 같은 decision boundary를 세 viewport에서 측정한다. one-line 행은 line count 1과 overflow/clipping 0일 때만 `pass`다. `width:100%`, page overflow 0, screenshot 육안, source 추정은 행 proof가 아니다. 시작/종료 identity와 개수가 다르거나 한 행이라도 측정되지 않으면 전체를 성공으로 말하지 않고 그 행을 `unresolved`로 전달한다.
+   4. **PROVE.** final selector의 computed type, line count, overflow/clipping과 target·evidence·state·action의 같은 decision boundary를 세 viewport에서 측정한다. one-line 행은 line count 1과 overflow/clipping 0일 때만 `pass`다. 그런 뒤 등록된 **각 carrier**에 연결된 row의 identity·cardinality·association을 다시 대조하고 390px·320px·200% 결과를 각각 기록한다. 대표 carrier 하나의 통과나 페이지 전체 overflow 0으로 다른 carrier를 통과시키지 않는다. `width:100%`, page overflow 0, screenshot 육안, source 추정은 행이나 carrier proof가 아니다. 시작/종료 identity와 개수가 다르거나 한 행·carrier·viewport라도 측정되지 않으면 전체를 성공으로 말하지 않고 그 항목을 `unresolved`로 전달한다.
 
-   closure는 `same_row_count: true`, `same_decision_boundary: true`, `no_text_hack: true`, `unresolved_rows: 0`, `page_overflow: 0`일 때만 끝난다.
+   closure는 `same_row_count: true`, `same_decision_boundary: true`, `all_registered_carriers_closed: true`, `no_text_hack: true`, `unresolved_rows: 0`, `unresolved_carriers: 0`, `page_overflow: 0`일 때만 끝난다.
 2f. **`proof execution close latch`로 끝난 증명을 다시 열지 않는다.** 품질 gate는 유지하고 아래 state를 같은 consumer route의 acceptance까지 유지한다.
 
    ```yaml

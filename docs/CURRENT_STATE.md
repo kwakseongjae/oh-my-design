@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.285 conjunctive release rejected · 6/6 cells
+- 갱신: 2026-08-02 · 1.9.286 all-carrier-set candidate authored
 
 ## 지금 (현재 위치)
+
+- 1.9.286은 반복 실패를 직접 겨냥해 singular `comparison_carrier`를 모든 protected/named atomic relationship scope의 `comparison_carrier_set`으로 바꾸었다.
+- reflow packet에 carrier→row binding과 carrier별 390/320/실제 200% 결과를 추가했고 `all_registered_carriers_closed: true`, `unresolved_carriers: 0`이 static closure 조건이다.
+- canonical 39,610→40,956 bytes, 4,460→4,587 words다. quick validation 2/2, contract 9/9, install 40/40, lint, build, diff check가 green이다. 아직 quality promotion은 아니다.
+- 다음은 exact source pin 후 1.9.274 exact control과 fresh unseen topology Reliability@3를 preregister한다. single-line task는 promotion에 재사용하지 않는다.
 
 - 1.9.285 single-line 6/6은 close 77/77/77 vs conjunctive 79/81/81, candidate W/T/L 3/0/0이지만 resolved는 양쪽 0/3이다. candidate contrast/proof/host는 3/3 green이다.
 - candidate mean wall -6.67%, tokens -12.95%로 efficiency는 통과했다. 하지만 세 trial 모두 primary diagram carrier만 닫고 adjacent decision target/state atomic one-line을 하나 이상 남겼다.

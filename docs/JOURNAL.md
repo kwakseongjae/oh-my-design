@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.286 all-carrier-set candidate
+- singular carrier를 protected/named relationship carrier set으로 확장했다.
+- carrier별 390/320/200% outcome과 row binding을 static closure에 잠그었다.
+- contract 9/9, install 40/40, quick validation, lint, build가 green이다.
+- 다음은 exact pin 후 fresh unseen Reliability@3다.
+
 ## 2026-08-02 (Codex) · 1.9.285 conjunctive release rejected
 - 6/6은 close 77/77/77 vs candidate 79/81/81, W/T/L 3/0/0이다.
 - candidate resolved 0/3; contrast/proof/host 3/3, wall -6.67%, tokens -12.95%다.

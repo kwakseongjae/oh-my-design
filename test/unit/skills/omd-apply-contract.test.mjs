@@ -51,7 +51,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("첫 edit transaction의 완료 조건");
     expect(skill).toContain("pre_edit_release_invariant:");
     expect(skill).toContain("foreground_change:");
-    expect(skill).toContain("comparison_carrier:");
+    expect(skill).toContain("comparison_carrier_set:");
+    expect(skill).toContain("every protected or named relationship scope containing registered atomic text");
+    expect(skill).toContain("carrier별** 390px·320px·실제 200% 결과");
     expect(skill).toContain("browser_attempt:");
     expect(skill).toContain("browser session 생성은 결과가 아니다");
     expect(skill).toContain("실제 route를 열어야");
@@ -85,6 +87,10 @@ describe("omd:apply delivery contract", () => {
   it("runs reflow through one compact, measurable work packet", () => {
     expect(skill).toContain("reflow-integrity closure");
     expect(skill).toContain("reflow_work_packet:");
+    expect(skill).toContain("carriers:");
+    expect(skill).toContain('identity: "stable relationship scope id"');
+    expect(skill).toContain('binds_rows: ["registered row id"]');
+    expect(skill).toContain("all_registered_carriers_closed: true");
     expect(skill).toContain("source: { selector: \"...\", origin: static|dynamic, longest_value: \"...\" }");
     expect(skill).toContain("contract: { role: target|identifier|evidence|state|control-label");
     expect(skill).toContain("decision: full-row|stack|comparison-scroll|keep|unresolved");
@@ -106,6 +112,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("same_decision_boundary: true");
     expect(skill).toContain("no_text_hack: true");
     expect(skill).toContain("unresolved_rows: 0");
+    expect(skill).toContain("unresolved_carriers: 0");
     expect(skill).toContain("page_overflow: 0");
     expect(skill).not.toContain("implicit_one_line_selector");
     expect(skill).not.toContain("source_claim_without_selector_decision");
