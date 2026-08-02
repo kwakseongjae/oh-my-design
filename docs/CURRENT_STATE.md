@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.236 replacement matrix PREPARED
+- 갱신: 2026-08-02 · 1.9.237 replacement checkpoint 1/6 GREEN
 
 ## 지금 (현재 위치)
+
+- 1.9.237 canonical bounded 실행이 replacement 첫 셀 `luna-spectrum-r1-close` 정확히 하나에서 checkpoint됐다. valid, UI-Resolved, 85/85, contrast 0, responsive all green, browser attempt 1, proof/host-policy gates pass다.
+- baseline도 이번 반복에서는 full resolve했으므로 candidate 우위 claim은 전혀 없다. 3 paired trials 전체가 필요하다. provider-reported tokens 437,733, wall 222,784ms다.
+- 다음은 locked order 2번 `luna-spectrum-r1-readable`이며 continuation도 `--max-new-cells 1`을 유지한다. 시작 전 preregistered 120초 pacing이 적용된다.
 
 - 1.9.236 replacement `spectrum-readable-reflow-luna-1.9.236`을 fresh `/private/tmp/u19236-vendors` + `/private/tmp/u19236`에 provider call 0으로 PREPARED했다. frozen 1.9.233 산출물은 유입되지 않는다.
 - task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/installed policy equality가 전부 1 unique, skill만 2 unique다. all Git roots, clean/detached/publishable sources다.
@@ -1335,9 +1339,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. canonical `--max-new-cells 1`로 replacement 첫 close 셀 하나만 실행한다.
-2. checkpoint가 정확히 1 cell에서 멈추고 equality/identity/policy gate가 green인지 확인한다.
-3. locked order로 6/6까지 이어 candidate UI-Resolved 3/3, contrast 0/3, paired loss 0을 판정한다.
+1. `luna-spectrum-r1-readable` 한 셀을 canonical bounded continuation으로 실행한다.
+2. 이후 locked order를 1-cell checkpoints로 6/6까지 이어간다.
+3. candidate UI-Resolved 3/3, contrast 0/3, paired loss 0을 최종 판정한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

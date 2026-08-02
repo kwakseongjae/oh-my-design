@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.237 replacement checkpoint 1/6
+- first close baseline이 exact one-cell checkpoint에서 valid 완료됐다.
+- UI-Resolved 85/85, contrast/responsive/proof/policy가 모두 green이다.
+- baseline도 해결했으므로 아직 candidate 우위 claim은 없다.
+- 다음은 first readable candidate 한 셀이다.
+
 ## 2026-08-02 (Codex) · 1.9.236 replacement matrix prepared
 - frozen root와 분리된 fresh sources/six cells를 provider call 0으로 준비했다.
 - 모든 실행 조건은 1 unique이고 exact skill source만 2 unique다.
