@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.297 carrier inventory closure
+- immutable carrier inventory + hash/count closure manifest를 추가했다.
+- 모든 carrier의 390/320/200% 측정 없이는 static closure를 막는다.
+- contract 9/9, lint, build, fresh install smoke, diff check가 green이다.
+- 다음은 exact pin과 fresh unseen topology lock이다.
+
 ## 2026-08-03 (Codex) · 1.9.296 production-cue final
 - 6/6은 candidate 79/79/75 vs control 79/75/75, W/T/L 1/2/0이다.
 - candidate resolved 0/3, mean wall +33.03%, tokens +151.35%다.

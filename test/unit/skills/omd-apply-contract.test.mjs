@@ -87,10 +87,15 @@ describe("omd:apply delivery contract", () => {
   it("runs reflow through one compact, measurable work packet", () => {
     expect(skill).toContain("reflow-integrity closure");
     expect(skill).toContain("reflow_work_packet:");
+    expect(skill).toContain("carrier_inventory:");
+    expect(skill).toContain('inventory_sha256: "sha256 of ordered carrier_ids + binds_rows + ordered row_ids"');
     expect(skill).toContain("carriers:");
     expect(skill).toContain('identity: "stable relationship scope id"');
     expect(skill).toContain('binds_rows: ["registered row id"]');
     expect(skill).toContain("all_registered_carriers_closed: true");
+    expect(skill).toContain("closure_manifest:");
+    expect(skill).toContain("registered_carriers === measured_390 === measured_320 === measured_200pct");
+    expect(skill).toContain("manifest가 없거나 assertion이 non-zero이면 static closure는 시작하지 않은 것으로 취급");
     expect(skill).toContain("source: { selector: \"...\", origin: static|dynamic, longest_value: \"...\" }");
     expect(skill).toContain("contract: { role: target|identifier|evidence|state|control-label");
     expect(skill).toContain("decision: full-row|stack|comparison-scroll|keep|unresolved");
