@@ -1526,6 +1526,40 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("preregisters the exact close-latch versus semantic-carrier transit comparison", () => {
+    const plan = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/transit-semantic-carrier-luna-1.9.255/RUN-MATRIX.json",
+    ), "utf8"));
+    validateRunMatrixPlan(plan);
+    expect(plan.cells).toHaveLength(6);
+    expect(new Set(plan.cells.map((cell) => cell.task_id))).toEqual(new Set([transitStopTimetableTaskId]));
+    expect(new Set(plan.cells.map((cell) => cell.model_id))).toEqual(new Set(["gpt-5.6-luna"]));
+    expect(new Set(plan.cells.map((cell) => cell.effort))).toEqual(new Set(["high"]));
+    expect(new Set(plan.cells.map((cell) => cell.host_policy_mode))).toEqual(new Set(["installed-opt-in"]));
+    expect(plan.cells.map((cell) => cell.variant_id)).toEqual([
+      "omd-portable-proof-close-latch-candidate",
+      "omd-portable-semantic-carrier-candidate",
+      "omd-portable-semantic-carrier-candidate",
+      "omd-portable-proof-close-latch-candidate",
+      "omd-portable-proof-close-latch-candidate",
+      "omd-portable-semantic-carrier-candidate",
+    ]);
+    expect(plan.shared_host_policy).toMatchObject({
+      mode: "installed-opt-in",
+      require_delivery_ready: true,
+      require_browser_attempt: true,
+    });
+    expect(plan.promotion_gates).toMatchObject({
+      ui_resolved_trials_required: 3,
+      serious_or_critical_contrast_trials_allowed: 0,
+      paired_objective_losses_allowed: 0,
+      proof_and_host_policy_trials_required: 3,
+      candidate_mean_wall_time_ratio_max: 1.1,
+      candidate_mean_provider_tokens_ratio_max: 1.1,
+    });
+  });
+
   it("locks an unseen feature-flag rollout family for final candidate validation", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", featureFlagTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({

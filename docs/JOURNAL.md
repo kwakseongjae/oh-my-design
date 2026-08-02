@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.255 semantic-carrier preregistration
+- close-latch vs semantic-carrier Luna/high 2×3를 fresh transit holdout에 잠갔다.
+- balanced order, 900초, 120초 pacing, same proof policy, no retry다.
+- quality/proof와 wall/token +10% efficiency gate를 사전 고정했다.
+- 다음은 fresh exact worktrees와 6-cell equality preparation이다.
+
 ## 2026-08-02 (Codex) · 1.9.254 transit timetable lock
 - 새 4×5 service/stop timetable holdout을 provider 전에 잠갔다.
 - untouched 75/85; contrast와 390/320/200% reflow만 의도대로 red다.
