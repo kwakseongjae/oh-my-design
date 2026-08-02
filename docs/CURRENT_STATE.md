@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.267 equipment rack exact preparation · provider call 0
+- 갱신: 2026-08-02 · 1.9.268 first equipment rack baseline · 1/6 cells complete
 
 ## 지금 (현재 위치)
+
+- 1.9.268 첫 셀 `luna-rack-r1-close`는 valid/policy-green 73/85, UI-Resolved false다. page overflow는 제거했지만 390/320/200% atomic rack/decision metadata reflow와 exact contrast를 남겼고 keyboard traversal도 red다.
+- task/evidence/state는 보존했고 proof execution과 installed host-policy는 pass했다. wall 194,230ms, provider-reported tokens 485,318이다.
+- 아직 baseline 단일 셀이므로 paired/promotion claim은 없다. 다음 locked cell은 `luna-rack-r1-invariant`다.
 
 - 1.9.267은 fresh detached `/private/tmp/u19267-vendors/{omd-1.9.191,omd-1.9.263}`와 `/private/tmp/u19267` 6 Git cells를 provider call 0으로 PREPARED했다.
 - core prompt `2e4508fc…`, runtime prompt `d73e779a…`, product `281f22ea…`, DESIGN `f0bb09da…`, activation `79911390…`, Codex/Luna/high/900초와 installed proof policy가 모두 같다. source는 clean/detached/publishable이며 sole delta는 skill tree `7336c037…` vs `769db1d8…`다.

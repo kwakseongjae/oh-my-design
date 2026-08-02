@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.268 first rack baseline
+- close r1은 valid/policy-green 73/85 unresolved다.
+- overflow는 닫았지만 atomic reflow, exact contrast, keyboard가 red다.
+- wall 194,230ms, tokens 485,318이다.
+- 다음은 `luna-rack-r1-invariant`다.
+
 ## 2026-08-02 (Codex) · 1.9.267 equipment rack exact preparation
 - fresh exact detached vendors와 6 Git cells를 provider call 0으로 준비했다.
 - task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/policy equality가 모두 green이다.
