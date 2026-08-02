@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.298 carrier inventory exact pin
+- exact source `a57c374…`를 새 candidate ID로 pin했다.
+- canonical/installed/tree/activation hash를 고정했다.
+- provider call 0, 아직 quality promotion은 아니다.
+- 다음은 fresh unseen task lock이다.
+
 ## 2026-08-03 (Codex) · 1.9.297 carrier inventory closure
 - immutable carrier inventory + hash/count closure manifest를 추가했다.
 - 모든 carrier의 390/320/200% 측정 없이는 static closure를 막는다.

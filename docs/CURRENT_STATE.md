@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.297 carrier inventory closure
+- 갱신: 2026-08-03 · 1.9.298 carrier inventory exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.298은 1.9.297 exact source `a57c374…`를 `omd-portable-carrier-inventory-closure-candidate`로 pin했다. source는 committed/publishable이고 provider call은 0이다.
+- canonical `975990d…`, installed skill `96e43d5…`, installed tree `a88848a…`, activation `f0ad529…`다. 아직 quality promotion은 아니다.
+- 다음은 기존 topology와 다른 fresh unseen task를 provider 전에 lock하고 exact 1.9.274 control과 Reliability@3를 preregister하는 것이다.
 
 - 1.9.297은 기존 reflow packet에 immutable `carrier_inventory`와 hash/count-bound `closure_manifest`를 추가했다. 문구 추가가 아니라 static closure command가 모든 carrier의 390/320/200% 측정 동등성과 unresolved 0을 assertion하도록 했다.
 - canonical은 40,956→42,163 bytes, 4,587→4,711 words다. 새 phase/verifier/browser attempt/benchmark selector/task literal/token은 없다.

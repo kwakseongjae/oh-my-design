@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.1",
+  "variant_id": "omd-portable-carrier-inventory-closure-candidate",
+  "source_commit": "a57c374152dede7d3e17e856eda5f806d6c7c375",
+  "source_publishable": true,
+  "canonical_skill_sha256": "975990d94897bca5a9d517561e27fdce5903e88054ca3577123202189c727842",
+  "installed_skill_sha256": "96e43d523f43faf2605dbdfe46f0ef0a42b95fa473225b7b728b2bb72bf99ff4",
+  "installed_tree_sha256": "a88848a3cf7a54b714b92497f9642388527a70c87944f51a01fe52c384b1b2cb",
+  "activation_sha256": "f0ad5294de3f599bbed124708c61988be9098e20d4723ce3574023144751253e",
+  "quality_promoted": false,
+  "provider_calls": 0
+}
