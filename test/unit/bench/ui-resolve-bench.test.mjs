@@ -1122,6 +1122,20 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(new Set([baseline.commit, rejected.commit, candidate.commit]).size).toBe(3);
   });
 
+  it("pins the pre-edit invariant candidate separately from rejected semantic carrier", () => {
+    const competitors = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/competitors.json"), "utf8"));
+    const previous = competitors.variants["omd-portable-semantic-carrier-candidate"];
+    const candidate = competitors.variants["omd-portable-pre-edit-invariant-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.263",
+      source_path: "skills/omd-apply",
+      declared_name: "omd:apply",
+      commit: "c67c9c1b43f3e7263f7fd0ccf23ff5690ec191b0",
+    });
+    expect(candidate.commit).not.toBe(previous.commit);
+  });
+
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", editorialBriefTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({

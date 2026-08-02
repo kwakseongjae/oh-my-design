@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.263 pre-edit release invariant authored
+- 갱신: 2026-08-02 · 1.9.264 pre-edit invariant exact pin · provider call 0
 
 ## 지금 (현재 위치)
+
+- 1.9.264는 exact 1.9.263 source `c67c9c1b…`를 `omd-portable-pre-edit-invariant-candidate`로 pin했다. source는 clean/detached/publishable이다.
+- installed tree `769db1d8…`, installed SKILL `a9fa8805…`, activation `79911390…`다. transit diagnostic은 provenance/install 전용이며 promotion에서 제외한다. provider/hook/agent/third-party installer call 0이다.
+- 다음은 transit/sensor/spectrum과 다른 fresh unseen topology를 provider 전에 lock하는 것이다.
 
 - 1.9.263은 성공 trial의 foreground/carrier/browser 행동을 세 필드 `pre_edit_release_invariant`로 압축했다. 빈 값이면 edit을 시작하지 않고, 첫 diff에 실제 foreground+carrier 변경이 있어야 하며 browser session 생성이 아닌 same-route navigate를 요구한다.
 - canonical은 38,232→39,093 bytes, 4,300→4,397 words다. benchmark selector/task literal/token은 추가하지 않았다. quick validation, contract 9/9, isolation, lint, build가 green이다.
@@ -1446,9 +1450,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.263 exact commit을 별도 candidate로 pin하고 provider-free install provenance를 검증한다.
-2. transit/sensor/spectrum과 다른 fresh unseen topology를 provider 전에 lock한다.
-3. exact close-latch vs new candidate Reliability@3를 preregister한다.
+1. transit/sensor/spectrum과 다른 fresh unseen topology를 provider 전에 lock한다.
+2. exact close-latch vs new candidate Reliability@3를 preregister한다.
+3. fresh equality-attested matrix를 one-cell checkpoints로 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

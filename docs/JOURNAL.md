@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.264 pre-edit invariant exact pin
+- exact source `c67c9c1b…`를 detached/clean/publishable candidate로 pin했다.
+- installed tree `769db1d8…`, SKILL `a9fa8805…`, activation `79911390…`다.
+- seen transit는 provenance-only, provider/hook/agent/third-party installer call 0이다.
+- 다음은 fresh unseen topology lock이다.
+
 ## 2026-08-02 (Codex) · 1.9.263 pre-edit invariant authored
 - foreground/carrier/browser를 세 필드 pre-edit release invariant로 압축했다.
 - session 생성은 proof가 아니며 same-route navigate를 요구한다.
