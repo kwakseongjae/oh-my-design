@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.292 production-cue pair 1
+- candidate/control은 79/79 tie, 둘 다 unresolved다.
+- candidate도 fourth handoff carrier atomic-line을 남겼다.
+- candidate wall +48.45%, tokens +168.38%; 누적 1,402,684다.
+- promotion 불가; 다음 2 pair는 진단용이다.
+
 ## 2026-08-02 (Codex) · 1.9.291 first production-cue control
 - control r1은 79/85 unresolved, proof/host green이다.
 - contrast/page는 닫았지만 handoff target/evidence atomic line을 남겼다.
