@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.294 production-cue pair 2
+- candidate/control 79/75, 둘 다 unresolved; W/T/L 1/1/0이다.
+- handoff carrier 실패가 반복되고 control은 contrast도 남겼다.
+- candidate wall +36.05%, tokens +283.28%; 누적 3,248,435다.
+- 다음은 마지막 진단 pair의 control r3다.
+
 ## 2026-08-03 (Codex) · 1.9.293 production-cue candidate r2
 - candidate r2도 79/85 unresolved, proof/host green이다.
 - handoff carrier atomic-line 실패가 candidate 2/2로 재현됐다.

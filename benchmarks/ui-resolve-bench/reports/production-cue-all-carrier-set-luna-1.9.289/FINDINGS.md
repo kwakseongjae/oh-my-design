@@ -1,6 +1,6 @@
 # Production cue all-carrier-set transfer — findings
 
-Status: **3/6 cells complete**
+Status: **4/6 cells complete**
 
 ## Checkpoint 1 — control trial 1
 
@@ -55,3 +55,26 @@ interactions, accessibility, proof execution, and installed host policy pass.
 
 This is a candidate-only checkpoint. Pair-2 quality and efficiency deltas are
 withheld until `luna-cue-r2-control` completes.
+
+## Pair 2
+
+The candidate scored **79/85** against the control's **75/85**, but both
+remain unresolved. Both arms repeated the handoff target/evidence atomic-line
+failure. The candidate closed exact contrast; the control additionally left
+the supplied muted foreground at 4.42:1, producing serious axe
+`color-contrast` findings in every tested viewport.
+
+- candidate wall: **327,330ms** vs control **240,596ms** (**+36.05%**)
+- candidate tokens: **1,463,832** vs control **381,919** (**+283.28%**)
+- control input / cached / output / reasoning: **370,296 / 281,344 / 11,623 /
+  5,741**
+- both proof execution and installed host-policy gates: pass
+- two-pair candidate/control mean wall: **316,238ms / 223,074ms**
+  (**+41.76%**)
+- two-pair candidate/control mean tokens: **1,242,874 / 381,343.5**
+  (**+225.92%**)
+- cumulative attempt-2 experimental tokens: **3,248,435**
+
+The candidate now leads quality W/T/L **1/1/0**, but candidate UI-Resolved is
+still **0/2** and the efficiency gate is decisively red. The last pair remains
+diagnostic only.
