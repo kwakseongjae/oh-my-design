@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.223 assay-plate Luna policy comparison preregistered; preparation next
+- 갱신: 2026-08-02 · 1.9.224 assay-plate matrix PREPARED; first cell next
 
 ## 지금 (현재 위치)
+
+- 1.9.224 fresh `/private/tmp/u19223`에 6 Git cells를 provider call 0으로 PREPARED했다. core prompt `e2e77921…`, runtime prompt `b3358285…`, product `38546c36…`, skill `7336c037…`, activation `79911390…`가 전부 동일하다.
+- controller hooks 0, policy hooks/attestation ready, all Git root, Codex/Luna high/900초가 green이다. locked plan SHA `be87e95d…`, preparation state SHA `d741ee28…`; sole delta 외 차이는 없다.
+- 다음 허용 동작은 `luna-assay-r1-controller` 한 셀이다. max-new 1과 120초 pacing을 유지하고 첫 infra/identity/attribution/policy-state drift에서 전체 root를 freeze한다.
 
 - 1.9.223 exact Codex/Luna high controller-observation vs installed-opt-in policy 2×3를 provider 전에 잠갔다. task/prompt/starter/DESIGN/skill/runtime/model/effort/timeout은 동일하고 sole delta는 project proof-policy installation이다.
 - balanced order, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. installed arm은 valid state뿐 아니라 delivery ready와 actual browser attempt ≥1을 최초 plan부터 요구하고 unblocked violation 세 종류는 모두 0이어야 한다.

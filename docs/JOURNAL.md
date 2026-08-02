@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.224 assay matrix prepared
+- `/private/tmp/u19223` 6 Git cells와 equality attestation을 provider 0으로 준비했다.
+- sole delta와 policy readiness가 green이다.
+- 다음은 max-new 1의 first controller cell이다.
+
 ## 2026-08-02 (Codex) · 1.9.223 assay matrix preregistered
 - Luna/high controller vs installed policy 2×3와 sole delta를 잠갔다.
 - installed arm은 delivery ready와 actual browser attempt를 최초부터 필수화했다.
