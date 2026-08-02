@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.222 assay task locked
+- 새 spatial well-map family를 provider 전에 고정했다.
+- starter 79/85; 기능/a11y/design은 green이고 narrow geometry만 red다.
+- 다음은 completion gate 포함 Luna/high policy 2×3 preregistration다.
+
 ## 2026-08-02 (Codex) · 1.9.221 Stop replacement passed
 - fresh Luna/high가 incomplete Stop 1회 차단 뒤 actual browser proof 1회로 회복했다.
 - CDP 실패는 unresolved로 기록됐고 delivery ready, policy violation 0이다.

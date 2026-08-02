@@ -45,6 +45,7 @@ const studioSlotTaskId = "studio-slot-routing-v0.1";
 const stagePowerPatchTaskId = "stage-power-patch-routing-v0.1";
 const bookSignatureTaskId = "book-signature-imposition-v0.1";
 const captionCueTaskId = "caption-cue-timing-review-v0.1";
+const assayPlateTaskId = "assay-plate-layout-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1277,6 +1278,35 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("cue-dialogue-014");
     expect(starter).toContain("Timebase: Source frames · boundary snap off");
     expect(starter).not.toMatch(/<wbr\b[^>]*>/i);
+  });
+
+  it("locks an unseen assay-plate spatial family before scored host-policy validation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", assayPlateTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { values: ["96-well", "384-well", "custom"], count: 3 },
+        toggle: { selector: "[data-bench='edge-toggle']" },
+      },
+      text_geometry_oracle: {
+        atomic_scope_selectors: expect.arrayContaining([
+          "[data-bench='well-coordinate']",
+          "[data-bench='sample-identity']",
+        ]),
+        max_short_text_lines: 1,
+      },
+    });
+    validateTaskContract(task);
+    const out = prepareVariant("raw-design-md", { task: assayPlateTaskId, outputName: "assay-plate-layout" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="well-item"/g)).toHaveLength(12);
+    expect(starter.match(/data-bench="well-coordinate"/g)).toHaveLength(12);
+    expect(starter.match(/data-bench="sample-identity"/g)).toHaveLength(12);
+    expect(starter).toContain("PLT-07 · Batch BX-2408");
+    expect(starter).toContain("CTRL-REF-1");
+    expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
   });
 
   it("locks an unseen feature-flag rollout family for final candidate validation", () => {
