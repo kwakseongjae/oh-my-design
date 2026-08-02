@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.290 all-carrier-set matrix prepared
+- fresh exact vendors + 6 Git cells를 provider call 0으로 PREPARED했다.
+- shared task/prompt/product/DESIGN/activation/runtime/proof policy equality가 green이다.
+- sole delta는 skill tree `2d577464…` vs `58a0552c…`다.
+- 다음은 `luna-cue-r1-control` 한 cell이다.
+
 ## 2026-08-02 (Codex) · 1.9.289 all-carrier-set preregistration
 - exact 1.9.274 control vs 1.9.286 candidate Luna/high 2×3를 잠그었다.
 - 900s, concurrency 1, 120s pacing, no retry, installed proof policy다.

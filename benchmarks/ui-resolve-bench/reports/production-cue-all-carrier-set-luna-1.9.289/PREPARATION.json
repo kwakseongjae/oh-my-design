@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "production-cue-all-carrier-set-luna-1.9.289",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19290",
+  "vendors_root": "/private/tmp/u19290-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "3589f3e072bfe1eb481612d3222eb276eff3f4ff9e4c3ada58cc9382f41daed1",
+  "preparation_state_sha256": "03d7b99954752a4ec425aea69358d8dea673cba9e68f25157beecfdcc9cc0cf4",
+  "source_attestation": {
+    "conjunctive_control_commit": "3a414a0a70dcc7fc70fb166e923ff318d3c53c66",
+    "conjunctive_control_skill_tree_sha256": "2d57746474c4ba4ae440ed3ce0e0df9413291f67077ed2e519288edc2ffe0b24",
+    "all_carrier_set_commit": "64565bc69c6411491c8d9615d86ffa889f05a59c",
+    "all_carrier_set_skill_tree_sha256": "58a0552c19f731a587e6e89e394f32da3bf2d2e935f3bb293c140bd214731a71"
+  },
+  "shared_attestation": {
+    "core_prompt_sha256": "4cb0fbcbd4fc45f2d32eb55ef4b67da8f5f856253a5a21b480be5172c16c941d",
+    "runtime_prompt_sha256": "8189f0775c516582f1691a6f199ba8a6540b0dd7108a1a931c6759c9ad927bc2",
+    "product_sha256": "d753dbe3b6e3ea7a0995174013f99b436e258b7fff952ce61793a6e0d06946ca",
+    "design_sha256": "dd61349f8029251dd4a0de587b639074cee5d267731418edc3fd99518209d45c",
+    "activation_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+    "host_policy_config_sha256": "57abe807f0c49ca67a94e75666fda10ad37e874ea2b428db38bcbb2b67803a4c"
+  },
+  "equality": { "task": true, "prompt": true, "product": true, "design": true, "activation": true, "runtime": true, "model": true, "effort": true, "timeout": true, "installed_proof_policy": true, "git_root_all_cells": true, "source_detached_all_cells": true, "source_publishable_all_cells": true },
+  "sole_arm_delta": "exact-installed-skill-source",
+  "tokens_to_target_attempt_order": 2,
+  "next_command": "node benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs --root /private/tmp/u19290 --max-new-cells 1",
+  "next_cell": "luna-cue-r1-control",
+  "same_root_retry": false
+}
