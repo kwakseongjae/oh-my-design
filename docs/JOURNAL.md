@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.247 sensor pair 1
+- close 81 vs release 65로 candidate -16, 양쪽 unresolved다.
+- candidate는 gateway hook·reflow·contrast와 proof/host-policy까지 실패했다.
+- promotion gate는 이미 불가능하며 남은 두 pair는 구조적 진단용이다.
+- 다음은 r2 release candidate다.
+
 ## 2026-08-02 (Codex) · 1.9.246 first sensor baseline
 - close-latch r1은 valid/policy-green 81/85, UI-Resolved false다.
 - reflow는 전부 해결했지만 exact contrast를 네 viewport 모두 남겼다.
