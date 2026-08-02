@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.288 production cue holdout lock
+- 3 named cue lanes + separate handoff carrier의 fresh task를 lock했다.
+- untouched starter 75/85; 의도한 red는 contrast와 390/320/200% reflow뿐이다.
+- task/state/design/evidence/desktop/keyboard는 green, provider call은 0이다.
+- 다음은 exact control vs candidate 2×3 preregistration이다.
+
 ## 2026-08-02 (Codex) · 1.9.287 all-carrier-set exact pin
 - exact source `64565bc6…`는 clean/detached/publishable로 고정됐다.
 - installed tree `58a0552c…`, SKILL `48538ab3…`, activation `79911390…`다.

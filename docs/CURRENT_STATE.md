@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.287 all-carrier-set exact pin
+- 갱신: 2026-08-02 · 1.9.288 production cue dependency holdout locked
 
 ## 지금 (현재 위치)
+
+- 1.9.288은 fresh `production-cue-dependency-review-v0.1`을 provider 전에 lock했다. audio/lighting/stage 3개 named lane과 별도 handoff context가 독립 relationship carrier다.
+- untouched starter는 75/85다. task/state/design/evidence/desktop/keyboard는 green이고 의도한 red는 exact contrast와 390/320/200% 다중-carrier overflow·atomic reflow뿐이다.
+- prompt `4cb0fbc…`, product `d753dbe3…`, index `78f4ecc7…`, DESIGN `dd61349f…`다. provider call 0, focused task contract green이다.
+- 다음은 exact 1.9.274 control vs exact 1.9.286 candidate Luna/high 2×3 Reliability@3를 preregister한다.
 
 - 1.9.287은 1.9.286 exact source `64565bc6…`를 `omd-portable-all-carrier-set-candidate`로 pin했다. source는 clean/detached/publishable이다.
 - installed tree `58a0552c…`, installed SKILL `48538ab3…`, activation `79911390…`다. provider/hook/agent/third-party installer call은 0이다.
