@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.289 all-carrier-set preregistration
+- exact 1.9.274 control vs 1.9.286 candidate Luna/high 2×3를 잠그었다.
+- 900s, concurrency 1, 120s pacing, no retry, installed proof policy다.
+- Tokens-to-Target attempt 2며 attempt 1 spend 3,101,747을 보존한다.
+- provider call 0; 다음은 fresh 6-cell preparation이다.
+
 ## 2026-08-02 (Codex) · 1.9.288 production cue holdout lock
 - 3 named cue lanes + separate handoff carrier의 fresh task를 lock했다.
 - untouched starter 75/85; 의도한 red는 contrast와 390/320/200% reflow뿐이다.

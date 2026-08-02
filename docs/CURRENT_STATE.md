@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.288 production cue dependency holdout locked
+- 갱신: 2026-08-02 · 1.9.289 all-carrier-set Reliability@3 preregistered
 
 ## 지금 (현재 위치)
+
+- 1.9.289는 exact conjunctive `3a414a0a…` vs all-carrier-set `64565bc6…` Luna/high 2×3를 fresh production cue task에 preregister했다.
+- balanced order, 900초, concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. gate는 candidate resolved/contrast/proof/host 3/3, paired loss 0, mean wall/token 각각 +10% 이하다.
+- Tokens-to-Target attempt 2로 잠그었고 attempt 1의 3,101,747 tokens는 right-censored cumulative로 보존한다. provider call 0이다.
+- 다음은 fresh detached vendor/workspace 6개를 prepare하고 equality attestation 후 한 cell씩 실행한다.
 
 - 1.9.288은 fresh `production-cue-dependency-review-v0.1`을 provider 전에 lock했다. audio/lighting/stage 3개 named lane과 별도 handoff context가 독립 relationship carrier다.
 - untouched starter는 75/85다. task/state/design/evidence/desktop/keyboard는 green이고 의도한 red는 exact contrast와 390/320/200% 다중-carrier overflow·atomic reflow뿐이다.
