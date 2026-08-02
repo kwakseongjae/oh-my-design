@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.243 sensor matrix task lock
+- 새 5×4 channel/gateway cross-matrix holdout을 provider 전에 잠갔다.
+- untouched 75/85; desktop은 green, exact contrast와 390/320/200% reflow만 의도대로 red다.
+- prompt `4e197bd3…`, product `aeae25b2…`, provider call 0이다.
+- 다음은 close-latch vs release-blocker Luna/high Reliability@3다.
+
 ## 2026-08-02 (Codex) · 1.9.242 release-blocker exact pin
 - 1.9.241 exact source를 detached/clean/publishable candidate로 pin했다.
 - installed tree `b89bb7c…`, SKILL `f13ce0bd…`, activation `79911390…`다.

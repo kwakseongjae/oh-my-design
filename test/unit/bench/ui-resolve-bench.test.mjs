@@ -47,6 +47,7 @@ const bookSignatureTaskId = "book-signature-imposition-v0.1";
 const captionCueTaskId = "caption-cue-timing-review-v0.1";
 const assayPlateTaskId = "assay-plate-layout-review-v0.1";
 const spectrumAllocationTaskId = "spectrum-allocation-review-v0.1";
+const sensorChannelMatrixTaskId = "sensor-channel-matrix-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1375,6 +1376,42 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter.match(/data-bench="allocation-id"/g)).toHaveLength(7);
     expect(starter).toContain("OBS-N14 · Receiver RX-03");
     expect(starter).toContain("ALLOC-REF-F3");
+    expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
+  });
+
+  it("locks an unseen channel-by-gateway matrix before release-blocker validation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", sensorChannelMatrixTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { values: ["coverage", "protocol", "power"], count: 3 },
+        toggle: { selector: "[data-bench='reserved-toggle']" },
+        form: { valid_value: "North array matrix review" },
+      },
+      text_geometry_oracle: {
+        atomic_scope_selectors: expect.arrayContaining([
+          "[data-bench='channel-id']",
+          "[data-bench='gateway-id']",
+        ]),
+        max_short_text_lines: 1,
+      },
+      design_oracle: {
+        muted_text: "#66716C",
+        ink: "#17211F",
+      },
+    });
+    validateTaskContract(task);
+    const out = prepareVariant("raw-design-md", { task: sensorChannelMatrixTaskId, outputName: "sensor-channel-matrix" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="matrix-row"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="matrix-cell"/g)).toHaveLength(20);
+    expect(starter.match(/data-bench="channel-id"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="gateway-id"/g)).toHaveLength(4);
+    expect(starter).toContain("MX-NORTH-14 · ARRAY-03");
+    expect(starter).toContain("CHAN-SOLAR-E9");
+    expect(starter).toContain("GATE-WEST-21");
     expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
   });
 

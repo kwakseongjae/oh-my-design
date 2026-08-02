@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Meridian sensor channel matrix review</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#F3F1EA;color:#17211F;font:16px/1.5 Arial,sans-serif}
+    nav,main,footer{max-width:1120px;margin:auto;padding:20px}
+    nav{display:flex;justify-content:space-between;border-bottom:1px solid #A9B2AC}
+    h1,h2{font-family:Georgia,serif;font-weight:400}
+    h1{font-size:46px;line-height:1.06;max-width:780px}
+    .muted,.eyebrow,.matrix-note{color:#66716C}
+    .controls,.decision{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .control,.matrix,.decision{background:#FCFBF7;border:1px solid #A9B2AC;padding:18px}
+    .views{display:flex;gap:8px}
+    button,input{font:inherit;border:1px solid #A9B2AC;border-radius:2px;background:#FCFBF7;padding:10px 12px;min-height:44px}
+    button[aria-pressed=true],[data-primary-action]{background:#173F3A;color:white}
+    .matrix{margin-top:20px;overflow:hidden}
+    table{width:100%;border-collapse:collapse;table-layout:fixed}
+    th,td{border:1px solid #A9B2AC;padding:12px 10px;text-align:left}
+    thead th{background:#F3F1EA;font-size:12px;letter-spacing:.04em}
+    tbody th{font-weight:700}
+    .state-link{color:#173F3A;font-weight:700}
+    .state-observe{color:#D96A3A;font-weight:700}
+    .decision{margin-top:20px;grid-template-columns:1.45fr 1fr 1fr auto;align-items:center}
+    .decision>div{display:flex;flex-direction:column;min-width:0}
+    form{display:flex;gap:8px;margin-top:18px;align-items:center}
+    input{flex:1;min-width:0}
+    :focus-visible{outline:3px solid #173F3A;outline-offset:2px}
+    .status{min-height:24px}
+    @media(max-width:720px){
+      h1{font-size:32px}
+      .controls{grid-template-columns:1fr}
+      .decision{grid-template-columns:1fr 1fr}
+      th,td{padding:8px 4px;font-size:12px}
+      [data-bench='channel-id'],[data-bench='gateway-id']{word-break:break-all}
+      form{display:grid;grid-template-columns:1fr auto}
+      form label{grid-column:1/-1}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body data-view="coverage">
+  <nav><strong>MERIDIAN</strong><span class="muted">Field systems</span></nav>
+  <main>
+    <header>
+      <p class="eyebrow">CHANNEL MATRIX REVIEW</p>
+      <h1>Keep every supplied relationship explicit.</h1>
+      <p class="muted">Review MX-NORTH-14 · ARRAY-03 before the matrix moves to handoff.</p>
+    </header>
+    <section class="controls" aria-label="Matrix controls">
+      <div class="control"><strong>Matrix view</strong><div class="views"><button type="button" data-bench="matrix-view-option" data-view="coverage" aria-pressed="true">Coverage</button><button type="button" data-bench="matrix-view-option" data-view="protocol" aria-pressed="false">Protocol</button><button type="button" data-bench="matrix-view-option" data-view="power" aria-pressed="false">Power</button></div></div>
+      <div class="control"><strong>Reserved notes</strong><button type="button" data-bench="reserved-toggle" aria-pressed="false">Include reserved notes</button></div>
+      <div class="control" data-bench="compact-control-copy"><strong>Supplied scope</strong><div>5 channels · 4 gateways · 20 supplied relationships</div></div>
+    </section>
+    <section class="matrix" data-bench-design-role="channel-matrix" aria-labelledby="matrix-title">
+      <h2 id="matrix-title">Channel × gateway</h2>
+      <p class="matrix-note">Supplied compatibility values only</p>
+      <table>
+        <thead><tr><th scope="col">Channel</th><th scope="col" data-bench="gateway-id">GATE-NORTH-04</th><th scope="col" data-bench="gateway-id">GATE-EAST-12</th><th scope="col" data-bench="gateway-id">GATE-SOUTH-07</th><th scope="col" data-bench="gateway-id">GATE-WEST-21</th></tr></thead>
+        <tbody>
+          <tr data-bench="matrix-row"><th scope="row" data-bench="channel-id">CHAN-TEMP-A1</th><td data-bench="matrix-cell" class="state-link">Linked</td><td data-bench="matrix-cell">Observe</td><td data-bench="matrix-cell">Reserved</td><td data-bench="matrix-cell">Linked</td></tr>
+          <tr data-bench="matrix-row"><th scope="row" data-bench="channel-id">CHAN-HUM-B7</th><td data-bench="matrix-cell">Observe</td><td data-bench="matrix-cell" class="state-link">Linked</td><td data-bench="matrix-cell">Linked</td><td data-bench="matrix-cell">Reserved</td></tr>
+          <tr data-bench="matrix-row"><th scope="row" data-bench="channel-id">CHAN-WIND-C2</th><td data-bench="matrix-cell">Reserved</td><td data-bench="matrix-cell">Observe</td><td data-bench="matrix-cell" class="state-link">Linked</td><td data-bench="matrix-cell">Observe</td></tr>
+          <tr data-bench="matrix-row"><th scope="row" data-bench="channel-id">CHAN-RAIN-D4</th><td data-bench="matrix-cell" class="state-link">Linked</td><td data-bench="matrix-cell">Reserved</td><td data-bench="matrix-cell">Observe</td><td data-bench="matrix-cell" class="state-link">Linked</td></tr>
+          <tr data-bench="matrix-row"><th scope="row" data-bench="channel-id">CHAN-SOLAR-E9</th><td data-bench="matrix-cell">Observe</td><td data-bench="matrix-cell" class="state-link">Linked</td><td data-bench="matrix-cell">Reserved</td><td data-bench="matrix-cell">Observe</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="decision" data-bench-decision-role="context">
+      <div><small>TARGET</small><strong data-bench-decision-role="target">MX-NORTH-14 · ARRAY-03</strong></div>
+      <div><small>EVIDENCE</small><span data-bench-decision-role="evidence">20 supplied relationships</span></div>
+      <div><small>STATE</small><span class="state-observe" data-bench-decision-role="state">Matrix review open</span></div>
+      <button type="button" data-primary-action data-bench-decision-role="action">Open handoff</button>
+    </section>
+    <form data-bench="matrix-form">
+      <label for="review-name">Review name</label>
+      <input id="review-name" data-bench="review-name">
+      <button data-primary-action>Save review</button>
+    </form>
+    <p class="status" data-bench="form-status" aria-live="polite"></p>
+  </main>
+  <footer class="muted">Meridian · supplied matrix evidence only</footer>
+  <script>
+    const options=[...document.querySelectorAll('[data-bench="matrix-view-option"]')];
+    options.forEach(button=>button.addEventListener('click',()=>{options.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));document.body.dataset.view=button.dataset.view}));
+    const toggle=document.querySelector('[data-bench="reserved-toggle"]');
+    toggle.addEventListener('click',()=>toggle.setAttribute('aria-pressed',String(toggle.getAttribute('aria-pressed')!=='true')));
+    const form=document.querySelector('[data-bench="matrix-form"]');
+    const field=document.querySelector('[data-bench="review-name"]');
+    const status=document.querySelector('[data-bench="form-status"]');
+    form.addEventListener('submit',event=>{event.preventDefault();if(!field.value.trim()){field.setAttribute('aria-invalid','true');status.textContent='Enter a review name.';field.focus();return}field.removeAttribute('aria-invalid');status.textContent=`Saved ${field.value.trim()}.`});
+  </script>
+</body>
+</html>
