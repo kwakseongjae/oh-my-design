@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.253 semantic-carrier exact pin
+- exact source `ba8fb546…`를 detached/clean/publishable candidate로 pin했다.
+- installed tree `3a45091b…`, SKILL `5c06fc81…`, activation `79911390…`다.
+- seen sensor는 provenance-only, provider/hook/agent/third-party installer call 0이다.
+- 다음은 fresh unseen topology lock이다.
+
 ## 2026-08-02 (Codex) · 1.9.252 semantic-carrier closure
 - first-edit foreground 적용과 visible shared relationship carrier 보존을 bounded delta로 작성했다.
 - hidden header + unbound generated/data/aria/span copy를 실패로 명시했다.

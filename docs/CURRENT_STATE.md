@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.252 semantic-carrier closure candidate · provider call 0
+- 갱신: 2026-08-02 · 1.9.253 semantic-carrier exact pin · provider call 0
 
 ## 지금 (현재 위치)
+
+- 1.9.253은 exact 1.9.252 source `ba8fb546…`를 `omd-portable-semantic-carrier-candidate`로 pin했다. source는 clean/detached/publishable이다.
+- installed tree `3a45091b…`, installed SKILL `5c06fc81…`, activation `79911390…`다. sensor diagnostic은 provenance/install 전용이며 promotion에서 제외한다. provider call/hook/agent/third-party installer 0이다.
+- 다음은 sensor·spectrum과 다른 fresh unseen topology를 provider 전에 lock하는 것이다.
 
 - 1.9.252는 rejected run의 두 반복 실패만 겨냥한 bounded `omd:apply` delta를 작성했다. contrast ratio를 기록만 하지 않고 첫 edit diff에서 verified text-role/ink로 실제 교정하게 했다.
 - shared header/legend가 관계 carrier면 named comparison-scroll에서 보존하고, stack 전환은 기존 carrier의 identity/cardinality/visibility/association을 mobile parent로 relocate한다. hidden header + generated/data/aria/hookless visual copy는 실패로 명시했다.
@@ -1401,9 +1405,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.252 source를 exact detached candidate로 pin한다.
-2. sensor와 다른 fresh unseen topology를 provider 전에 lock하고 untouched calibration을 기록한다.
-3. exact baseline vs new candidate Reliability@3를 preregister한다.
+1. sensor와 다른 fresh unseen topology를 provider 전에 lock하고 untouched calibration을 기록한다.
+2. exact close-latch baseline vs semantic-carrier candidate Reliability@3를 preregister한다.
+3. fresh worktrees/root equality attestation 후 one-cell checkpoint로 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
