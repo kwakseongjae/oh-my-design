@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.260 transit pair 2 · 4/6 cells
+- 갱신: 2026-08-02 · 1.9.261 final transit baseline · 5/6 cells
 
 ## 지금 (현재 위치)
+
+- 1.9.261 `luna-transit-r3-close`는 valid/policy-green 75/85 unresolved다. baseline은 75/75/75, resolved 0/3, proof/host 3/3으로 고정됐다.
+- r3도 task/evidence와 browser proof를 보존했지만 exact contrast와 narrow reflow를 남겼다. wall 190,306ms, tokens 294,132다.
+- 다음은 마지막 `luna-transit-r3-carrier`다. 완료 뒤 6/6 quality/proof/efficiency gate와 반복 실패를 판정한다.
 
 - 1.9.260 pair 2는 carrier 85/85 UI-Resolved vs close 75/85 unresolved로 candidate +10이며 둘 다 proof/host-policy green이다.
 - 2 pair 누적 candidate W/T/L 1/0/1, candidate resolved 1/2 vs baseline 0/2다. pair 1 -2에서 방향이 뒤집혀 run variance가 크다.
@@ -1433,9 +1437,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `luna-transit-r3-close`를 실행한다.
-2. 마지막 `luna-transit-r3-carrier`를 실행해 reliability를 완성한다.
-3. six-cell result에 final quality/proof/efficiency rejection gate를 적용한다.
+1. 마지막 `luna-transit-r3-carrier`를 실행해 reliability를 완성한다.
+2. six-cell result에 final quality/proof/efficiency rejection gate를 적용한다.
+3. 반복 실패만 겨냥한 다음 bounded skill delta를 설계한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

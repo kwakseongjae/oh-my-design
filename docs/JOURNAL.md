@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.261 final transit baseline
+- close r3은 valid/policy-green 75/85 unresolved다.
+- baseline은 75/75/75, resolved 0/3, proof/host 3/3으로 고정됐다.
+- wall 190,306ms, tokens 294,132다.
+- 다음은 마지막 carrier r3와 최종 판정이다.
+
 ## 2026-08-02 (Codex) · 1.9.260 transit pair 2
 - carrier 85 vs close 75로 candidate +10, 둘 다 policy-green이다.
 - 누적 W/T/L 1/0/1, candidate resolved 1/2 vs baseline 0/2다.
