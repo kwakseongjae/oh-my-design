@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.267 equipment rack exact preparation
+- fresh exact detached vendors와 6 Git cells를 provider call 0으로 준비했다.
+- task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/policy equality가 모두 green이다.
+- sole delta는 close `7336c037…` vs invariant `769db1d8…` skill tree다.
+- 다음은 `luna-rack-r1-close` one-cell checkpoint다.
+
 ## 2026-08-02 (Codex) · 1.9.266 equipment rack preregistration
 - close-latch vs pre-edit invariant Luna/high 2×3를 provider 전에 잠갔다.
 - UI-Resolved 3/3, zero contrast red/loss, proof/host 3/3, wall/token +10% cap이다.
