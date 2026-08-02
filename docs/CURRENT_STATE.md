@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.222 assay-plate unseen task locked; matrix preregistration next
+- 갱신: 2026-08-02 · 1.9.223 assay-plate Luna policy comparison preregistered; preparation next
 
 ## 지금 (현재 위치)
+
+- 1.9.223 exact Codex/Luna high controller-observation vs installed-opt-in policy 2×3를 provider 전에 잠갔다. task/prompt/starter/DESIGN/skill/runtime/model/effort/timeout은 동일하고 sole delta는 project proof-policy installation이다.
+- balanced order, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. installed arm은 valid state뿐 아니라 delivery ready와 actual browser attempt ≥1을 최초 plan부터 요구하고 unblocked violation 세 종류는 모두 0이어야 한다.
+- broader/default promotion은 installed UI-Resolved 3/3 + paired objective loss 0일 때만 가능하다. provider call 0; 다음은 fresh `/private/tmp/u19223` 6-cell preparation과 exact equality attestation이다.
 
 - 1.9.222 unseen `assay-plate-layout-review-v0.1`을 provider generation 전에 잠갔다. 기존 list/card/timeline/routing/approval과 다른 4×3 spatial well-map topology이며 12 coordinate/sample pairs, 3 formats, edge toggle, form, decision hierarchy를 보존한다.
 - untouched starter는 79/85다. task/state/a11y/design/evidence/desktop은 green이고 390/320/200%의 atomic identifiers, overflow/clipping, short decision/control copy geometry만 red다. prompt SHA `e2e77921…`, starter SHA `38546c36…`, provider call 0이다.

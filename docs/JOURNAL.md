@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.223 assay matrix preregistered
+- Luna/high controller vs installed policy 2×3와 sole delta를 잠갔다.
+- installed arm은 delivery ready와 actual browser attempt를 최초부터 필수화했다.
+- provider 0; 다음은 fresh six-cell preparation이다.
+
 ## 2026-08-02 (Codex) · 1.9.222 assay task locked
 - 새 spatial well-map family를 provider 전에 고정했다.
 - starter 79/85; 기능/a11y/design은 green이고 narrow geometry만 red다.
