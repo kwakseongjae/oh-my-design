@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.278 electrical single-line preregistration · provider call 0
+- 갱신: 2026-08-02 · 1.9.279 electrical single-line matrix prepared · provider call 0
 
 ## 지금 (현재 위치)
+
+- 1.9.279는 fresh detached `/private/tmp/u19279-vendors/{omd-1.9.191,omd-1.9.274}`와 `/private/tmp/u19279` 6 Git cells를 provider call 0으로 PREPARED했다.
+- core `0daf594c…`, runtime prompt `02cde37b…`, product `b72cc067…`, DESIGN `36b1851c…`, activation `79911390…`, Luna/high/900초와 installed proof policy가 같다. sole delta는 skill tree `7336c037…` vs `2d577464…`다.
+- 다음 허용 셀은 `luna-single-line-r1-close` 하나다. canonical `--max-new-cells 1`, 120초 pacing, no same-root retry를 유지한다.
 
 - 1.9.278은 exact close-latch `1d204afe…` vs conjunctive-release `3a414a0a…` Luna/high 2×3를 fresh electrical single-line task에 preregister했다.
 - balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. candidate gate는 resolved/contrast/proof/host 3/3, paired loss 0, mean wall/token 각각 +10% 이하다.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.279 electrical single-line matrix prepared
+- exact detached 1.9.191/1.9.274 sources와 6 Git cells를 준비했다.
+- task/prompt/product/DESIGN/activation/runtime/policy equality가 green이다.
+- sole delta는 installed skill tree이며 provider call 0이다.
+- 다음은 `luna-single-line-r1-close` one-cell 실행이다.
+
 ## 2026-08-02 (Codex) · 1.9.278 electrical single-line preregistration
 - close vs conjunctive Luna/high 2×3, 900초/120초/one-cell을 잠갔다.
 - resolved/contrast/proof/host 3/3, zero loss, wall/token +10% gate다.
