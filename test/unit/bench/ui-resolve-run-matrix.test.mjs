@@ -12,6 +12,7 @@ import {
   replacementVerifierAuthorship,
   runArgsForCell,
   validPreparedCellAttestation,
+  validateRunPreparedMatrixCliArgs,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
 
 const cell = {
@@ -51,6 +52,17 @@ const validRun = {
 };
 
 describe("UI-Resolve prepared matrix execution", () => {
+  it("rejects unknown CLI options instead of silently dropping checkpoint bounds", () => {
+    expect(() => validateRunPreparedMatrixCliArgs(new Map([
+      ["root", "/private/tmp/example"],
+      ["max-new", "1"],
+    ]))).toThrow("unknown option(s): --max-new");
+    expect(validateRunPreparedMatrixCliArgs(new Map([
+      ["root", "/private/tmp/example"],
+      ["max-new-cells", "1"],
+    ])).get("max-new-cells")).toBe("1");
+  });
+
   it("accepts the preregistered host-policy attestation during checkpoint resume", () => {
     const hashes = {
       benchmark_tree_sha256: "a".repeat(64),

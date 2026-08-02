@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.234 readable-reflow 2×3 PREPARED
+- 갱신: 2026-08-02 · 1.9.235 matrix invocation FROZEN + CLI fail-fast fixed
 
 ## 지금 (현재 위치)
+
+- 1.9.235는 `/private/tmp/u19233`을 execution-control nonconformance로 FROZEN했다. operator가 canonical `--max-new-cells 1` 대신 unsupported `--max-new 1`을 썼고 CLI가 이를 무시해 120초 뒤 2번째 셀을 시작했기 때문이다. 즉시 interrupt했으며 same-root resume/repair/substitution은 금지다.
+- 첫 close 셀 자체는 valid 81/85, responsive all green, contrast serious all viewports로 UI-Resolved false, proof/host-policy gate pass였다. second readable은 8 events partial이므로 어떤 비교 claim에도 쓰지 않는다.
+- runner는 이제 unknown CLI option을 preflight 전에 fail-fast한다. 다음은 새 experiment/root로 replacement preregistration+preparation 후 canonical `--max-new-cells 1` 실행이다.
 
 - 1.9.234는 fresh `/private/tmp/u19233-vendors` exact detached sources와 `/private/tmp/u19233` 6 Git cells를 provider call 0으로 PREPARED했다.
 - core prompt `84d07dae…`, runtime prompt `75402ac…`, product `4828618f…`, DESIGN `ba897c62…`, activation `79911390…`, Codex/Luna/high/900초와 installed proof policy가 전부 동일하다. sole delta는 close tree `7336c037…` vs readable tree `0cd7b71a…`다.
@@ -1327,9 +1331,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `luna-spectrum-r1-close` 한 셀만 실행·평가·동결한다.
-2. execution/identity/attribution/policy gate가 green이면 locked order를 max-new 1로 이어간다.
-3. 6/6 뒤 candidate UI-Resolved 3/3, contrast 0/3, paired loss 0을 판정한다.
+1. fresh replacement experiment/root를 새 ID로 preregister하고 exact equality를 다시 attest한다.
+2. canonical `--max-new-cells 1`로 셀 하나만 실행되는 CLI contract를 확인한다.
+3. replacement 6/6 뒤 candidate UI-Resolved 3/3, contrast 0/3, paired loss 0을 판정한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

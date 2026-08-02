@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.235 matrix invocation frozen
+- unsupported `--max-new`가 무시돼 second cell이 시작되어 root를 즉시 동결했다.
+- first close cell은 valid 81/85지만 contrast red, second readable은 partial이다.
+- runner가 unknown CLI options를 preflight 전에 거부하도록 고쳤다.
+- 다음은 fresh replacement root + canonical bounded execution이다.
+
 ## 2026-08-02 (Codex) · 1.9.234 readable-reflow matrix prepared
 - fresh exact sources와 six Git cells를 provider call 0으로 준비했다.
 - prompt/product/DESIGN/runtime/model/effort/timeout/proof policy equality가 green이다.

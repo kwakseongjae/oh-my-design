@@ -1347,8 +1347,17 @@ export function executePreparedMatrix(root, options = {}) {
   }
 }
 
+export function validateRunPreparedMatrixCliArgs(args) {
+  const allowed = new Set(["root", "max-new-cells"]);
+  const unknown = [...args.keys()].filter((key) => !allowed.has(key));
+  if (unknown.length) {
+    throw new Error(`unknown option(s): ${unknown.map((key) => `--${key}`).join(", ")}`);
+  }
+  return args;
+}
+
 async function main() {
-  const args = parseArgs();
+  const args = validateRunPreparedMatrixCliArgs(parseArgs());
   const root = args.get("root") ? resolve(String(args.get("root"))) : null;
   if (!root) {
     console.error(
