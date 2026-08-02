@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.245 release-blocker matrix prepared · provider call 0
+- 갱신: 2026-08-02 · 1.9.246 sensor pair 1 baseline checkpoint · provider cell 1/6
 
 ## 지금 (현재 위치)
+
+- 1.9.246 첫 셀 `luna-sensor-r1-close`는 valid/policy-green 81/85, UI-Resolved false다. desktop/390/320/200% reflow는 전부 해결했지만 exact muted contrast를 네 viewport 모두 남겼다.
+- wall 377,691ms, provider-reported tokens 959,127이다. proof gate는 one static + one browser, recovery/duplicate/after-ready 0으로 pass했고 installed host-policy도 delivery ready/browser attempt 1/unblocked violation 0으로 pass했다.
+- 아직 baseline trial 1뿐이므로 paired/promotion claim은 없다. 다음은 `luna-sensor-r1-release` 한 셀이다.
 
 - 1.9.245는 fresh detached `/private/tmp/u19244-vendors/{omd-1.9.191,omd-1.9.241}`와 `/private/tmp/u19244` 6 Git cells를 provider call 0으로 PREPARED했다.
 - core prompt `4e197bd3…`, runtime prompt `a1836a91…`, product `aeae25b2…`, activation `79911390…`, Codex/Luna/high/900초와 installed proof policy가 모두 같다. source는 clean/detached/publishable이며 sole delta는 skill tree `7336c037…` vs `b89bb7c…`다.
@@ -1371,7 +1375,7 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `luna-sensor-r1-close`부터 6개 셀을 `--max-new-cells 1` one-cell checkpoint로 순서대로 실행한다.
+1. `luna-sensor-r1-release`부터 남은 5개 셀을 `--max-new-cells 1` one-cell checkpoint로 순서대로 실행한다.
 2. 각 셀 후 objective/proof/host-policy/token/wall 결과를 상태에 고정한다.
 3. 6/6 뒤 paired quality·proof·efficiency gate로 promotion 또는 rejection을 결정한다.
 

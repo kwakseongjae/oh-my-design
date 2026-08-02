@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.246 first sensor baseline
+- close-latch r1은 valid/policy-green 81/85, UI-Resolved false다.
+- reflow는 전부 해결했지만 exact contrast를 네 viewport 모두 남겼다.
+- wall 377,691ms, tokens 959,127, proof/host-policy pass다.
+- 다음은 r1 release-blocker candidate다.
+
 ## 2026-08-02 (Codex) · 1.9.245 sensor matrix prepared
 - exact detached baseline/candidate와 6개 fresh Git cell을 준비했다.
 - prompt/product/activation/runtime/model/effort/timeout/proof policy equality가 green이다.
