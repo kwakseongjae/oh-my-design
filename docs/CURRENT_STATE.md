@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.281 electrical single-line pair 1 · 2/6 cells
+- 갱신: 2026-08-02 · 1.9.282 second single-line candidate · 3/6 cells
 
 ## 지금 (현재 위치)
+
+- 1.9.282 `luna-single-line-r2-conjunctive`는 valid/policy-green 81/85 unresolved다. contrast/page/390은 green이고 320/200% decision atomic one-line만 red다.
+- pair 1과 같은 carrier-boundary failure가 더 좁은 범위로 반복됐다. wall 235,650ms, total 491,306 tokens이며 누적 candidate 991,720 / total experimental 1,535,147이다.
+- pair 2 delta는 baseline 전에는 주장하지 않는다. 다음 locked cell은 `luna-single-line-r2-close`다.
 
 - 1.9.281 pair 1은 conjunctive 79/85 vs close 77/85, candidate +2이며 둘 다 unresolved다. candidate는 contrast와 diagram/page containment를 닫았지만 decision target/state one-line atomic budget을 390/320/200% 모두 남겼다.
 - candidate proof/host는 pass했고 wall -17.29%, total tokens -7.92%다. 누적 prospective spend는 candidate 500,414, control 543,427, total 1,043,841이다.

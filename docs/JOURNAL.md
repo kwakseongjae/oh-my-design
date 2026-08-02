@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.282 second single-line candidate
+- conjunctive r2는 81/85 unresolved, proof/host green이다.
+- contrast/page/390은 닫고 320/200% decision atomic line을 남겼다.
+- 누적 candidate 991,720 / total 1,535,147 tokens다.
+- 다음은 paired close r2다.
+
 ## 2026-08-02 (Codex) · 1.9.281 single-line pair 1
 - conjunctive 79 vs close 77, candidate +2지만 둘 다 unresolved다.
 - candidate는 contrast/diagram carrier를 닫고 decision atomic lines를 남겼다.

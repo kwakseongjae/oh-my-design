@@ -1,6 +1,6 @@
 # Electrical single-line conjunctive-release transfer — findings
 
-Status: **IN PROGRESS — 2/6 cells complete**
+Status: **IN PROGRESS — 3/6 cells complete**
 
 ## Checkpoint 1 — baseline trial 1
 
@@ -45,3 +45,19 @@ not included in that closure.
 Because candidate UI-Resolved 3/3 is now impossible, this patch cannot be
 promoted. The remaining pairs are diagnostic evidence for recurrence and the
 smallest next repair; they cannot restore promotion eligibility.
+
+## Checkpoint 3 — candidate trial 2
+
+The second conjunctive candidate scored **81/85** and remained unresolved. It
+closed exact contrast, page containment, token fragmentation, and the 390px
+atomic budget. The 320px and 200% decision target/state one-line budget remains
+red, repeating the same carrier-boundary failure family as trial 1 with a
+smaller viewport scope. Proof execution and installed host policy pass.
+
+- wall time: **235,650ms**
+- provider-reported total tokens: **491,306**
+- input/cached/output/reasoning: **479,782 / 429,312 / 11,524 / 5,475**
+- cumulative candidate tokens: **991,720**
+- cumulative total experimental tokens: **1,535,147**
+
+Pair 2 has no comparative result until its close-latch baseline completes.
