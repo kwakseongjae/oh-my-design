@@ -49,6 +49,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("장식을 위해 제품 hook을 복제하지 않는다");
     expect(skill).toContain("semantic_color_ledger");
     expect(skill).toContain("foreground closure");
+    expect(skill).toContain("`muted`, `secondary`, `supporting`도 normal text면 exact pair");
+    expect(skill).toContain("반올림 전 값이 4.5 미만이면 실패");
+    expect(skill).toContain("failed_or_unresolved_normal_text_pairs: 0");
     expect(skill).toContain("geometry-token closure");
     expect(skill).toContain("interactive closure");
     expect(skill).toContain("unauthorized_focusable_delta: 0");
@@ -75,6 +78,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("2. **FIT.**");
     expect(skill).toContain("source-only이면 `unresolved`");
     expect(skill).toContain("3. **REFLOW.**");
+    expect(skill).toContain("가장 좁은 조건에서 먼저 각 row의 longest atomic child");
+    expect(skill).toContain("parent row를 `full-row`, 다음으로 `stack`");
     expect(skill).toContain("단일 text scroller");
     expect(skill).toContain("`nowrap`은 세 viewport에서 longest value가 실제 측정으로 fit");
     expect(skill).toContain("4. **PROVE.**");

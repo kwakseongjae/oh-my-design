@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.229 native browser Stop reconciliation PASS
+- 갱신: 2026-08-02 · 1.9.230 readable-reflow skill delta AUTHORED
 
 ## 지금 (현재 위치)
+
+- 1.9.230은 1.9.225의 반복 실패만 겨냥한 bounded `omd:apply` delta를 작성했다. 모든 현재/planned normal-text pair에서 muted/secondary/supporting token도 exact contrast를 계산하고 4.48을 4.5로 반올림하지 않으며, 실패·미계측 pair는 기존 verified ink/text-role token으로 fail-close한다.
+- reflow는 가장 좁은 조건에서 atomic child가 감싸지기 전에 parent metadata/decision row를 full-row→stack하고 desktop min-width/track 제약을 해제하도록 좁혔다. benchmark selector·fixture literal·새 token은 넣지 않았다. skill quick validation, contract 9/9, experimental exact-copy parity, lint/build가 green이다.
+- full focused bench는 72/74이며 2 red는 동일 external Taste/UI UX Pro vendor 디렉터리가 non-Git인 precondition이다. candidate는 아직 품질 claim이나 promotion이 아니며 다음은 exact commit pin + fresh unseen task contract다.
 
 - 1.9.229 actual Codex 0.144.1/Luna high runner smoke가 PASS했다. runner가 쓰는 JSONL에서 native `agent-browser.browser_navigate` 1회를 Stop 경계가 관찰해 browser attempt 1, proof `unresolved`, delivery ready, violation 0으로 정직하게 복원했다. final message도 `ERR_NAME_NOT_RESOLVED`를 그대로 밝혔다.
 - 이는 live native MCP interception이 아니라 runner-scoped final-boundary accounting이다. 2회 이상 관찰되면 `native_browser_unintercepted`로 acceptance를 fail하며, 일반 interactive install에는 JSONL trace가 없으므로 동일 보장을 주장하지 않는다. focused 107/107, lint, build, diff check가 green이다.
@@ -1308,9 +1312,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.225의 6개 결과에서 공통 contrast와 390/320/200% text-geometry 실패를 claim 단위로 추출한다.
-2. 기존 OmD skill 전체를 넓게 재작성하지 말고, responsive hierarchy와 contrast verification에만 한정한 bounded delta를 provider 전에 잠근다.
-3. 새 unseen non-approval family로 controller vs delta 2×3를 preregister하고 UI-Resolved 3/3, paired objective loss 0을 promotion 기준으로 유지한다.
+1. 1.9.230 exact source commit과 installed skill hash를 새 candidate variant로 pin한다.
+2. 이전 assay/list/card/timeline/routing과 겹치지 않는 unseen non-approval family의 contract를 provider 전에 잠근다.
+3. exact current-vs-candidate 2×3를 preregister하고 candidate UI-Resolved 3/3, paired objective loss 0을 promotion 기준으로 둔다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

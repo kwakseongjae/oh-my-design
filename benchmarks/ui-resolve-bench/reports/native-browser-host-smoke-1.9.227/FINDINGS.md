@@ -1,8 +1,8 @@
 # Native browser real-host smoke — 1.9.227
 
-Status: **FAIL; fresh diagnostic required**  
-Host: Codex CLI 0.144.1  
-Model: `gpt-5.6-luna`, high effort  
+Status: **FAIL; fresh diagnostic required**
+Host: Codex CLI 0.144.1
+Model: `gpt-5.6-luna`, high effort
 Fixture: frozen Git root `/private/tmp/omd-native-browser-policy-smoke-1.9.227`
 
 ## Acceptance result
@@ -25,5 +25,5 @@ The canonical MCP name is not speculative: the Codex 0.144.1 source constructs `
 
 The current wildcard matcher must not be treated as accepted. Freeze this root and run one fresh diagnostic with an exact native tool matcher. If exact matching works, production should install an explicit finite matcher list; if it does not, Codex native MCP enforcement remains host-blocked and only offline trace auditing can cover it.
 
-Events SHA-256: `0afc85d6019fcd49f5228a31a51832deb75d77b0c141f36ef8f69e41e2531341`.  
+Events SHA-256: `0afc85d6019fcd49f5228a31a51832deb75d77b0c141f36ef8f69e41e2531341`.
 Policy state SHA-256: `6be18cfb93f96521892a1b77d0ea1c1b5216abb40cd29c640ef86cd8ab15ef70`.

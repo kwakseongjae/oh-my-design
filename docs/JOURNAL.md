@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.230 readable-reflow delta authored
+- 1.9.225의 4.48 muted-text와 narrow parent-row failure만 skill에 반영했다.
+- 새 token·fixture selector 없이 exact contrast와 parent-first stack을 규정했다.
+- validation/contract/lint/build green; vendor Git precondition 2건만 기존 red다.
+- 다음은 exact candidate pin과 fresh unseen task lock이다.
+
 ## 2026-08-02 (Codex) · 1.9.225–1.9.229 native proof boundary closed
 - assay 2×3은 policy +4.67 mean이지만 UI-Resolved 0/3이라 promotion HOLD다.
 - Codex native MCP Pre/Post interception은 wildcard/exact 모두 실패로 동결했다.

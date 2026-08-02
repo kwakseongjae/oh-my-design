@@ -1,8 +1,8 @@
 # Native browser Stop reconciliation smoke — 1.9.229
 
-Status: **PASS within the declared final-boundary scope**  
-Host: Codex CLI 0.144.1  
-Model: `gpt-5.6-luna`, high effort  
+Status: **PASS within the declared final-boundary scope**
+Host: Codex CLI 0.144.1
+Model: `gpt-5.6-luna`, high effort
 Fixture: frozen Git root `/private/tmp/omd-native-stop-reconcile-smoke-1.9.229`
 
 ## Acceptance result
@@ -33,6 +33,6 @@ the Stop hook observe one native call and fail acceptance when extra calls were
 allowed to execute. Normal interactive installs without that runner trace do
 not receive this guarantee.
 
-Events SHA-256: `188ff2b30d0a17f2ff5daf1652643d820a87588c5ebd041c4b52d2a828a75380`.  
-Policy state SHA-256: `ebff99e0e8969b3d688f0897190a473ffd035dc3c4100d95c54698c912505914`.  
+Events SHA-256: `188ff2b30d0a17f2ff5daf1652643d820a87588c5ebd041c4b52d2a828a75380`.
+Policy state SHA-256: `ebff99e0e8969b3d688f0897190a473ffd035dc3c4100d95c54698c912505914`.
 Product SHA-256: `61c4e7b7aaa7cc99ed44cf8d7b3664504942d37da5fbe9ad7f7681da78404c94`.
