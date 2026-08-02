@@ -49,6 +49,7 @@ const assayPlateTaskId = "assay-plate-layout-review-v0.1";
 const spectrumAllocationTaskId = "spectrum-allocation-review-v0.1";
 const sensorChannelMatrixTaskId = "sensor-channel-matrix-review-v0.1";
 const transitStopTimetableTaskId = "transit-stop-timetable-review-v0.1";
+const equipmentRackElevationTaskId = "equipment-rack-elevation-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1478,6 +1479,39 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("TT-NORTH-22 · LOOP-05");
     expect(starter).toContain("SVC-DEPOT-31");
     expect(starter).toContain("STOP-GARDEN-14");
+    expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
+  });
+
+  it("locks an unseen equipment rack elevation before pre-edit invariant validation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", equipmentRackElevationTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { values: ["front", "power", "network"], count: 3 },
+        toggle: { selector: "[data-bench='thermal-toggle']" },
+        form: { valid_value: "East rack elevation review" },
+      },
+      text_geometry_oracle: {
+        atomic_scope_selectors: expect.arrayContaining([
+          "[data-bench='unit-id']",
+          "[data-bench='device-id']",
+        ]),
+        max_short_text_lines: 1,
+      },
+      design_oracle: { muted_text: "#68716D", ink: "#1C2422" },
+    });
+    validateTaskContract(task);
+    const out = prepareVariant("raw-design-md", { task: equipmentRackElevationTaskId, outputName: "equipment-rack-elevation" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="rack-unit"/g)).toHaveLength(12);
+    expect(starter.match(/data-bench="unit-id"/g)).toHaveLength(12);
+    expect(starter.match(/data-bench="device-block"/g)).toHaveLength(6);
+    expect(starter.match(/data-bench="device-id"/g)).toHaveLength(6);
+    expect(starter.match(/data-bench="reserved-gap"/g)).toHaveLength(3);
+    expect(starter).toContain("RACK-EAST-04 · U01–U12");
+    expect(starter).toContain("DEV-EDGE-A17");
     expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
   });
 

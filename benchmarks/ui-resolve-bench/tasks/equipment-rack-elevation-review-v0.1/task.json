@@ -1,0 +1,70 @@
+{
+  "id": "equipment-rack-elevation-review-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "An equipment rack elevation review for infrastructure operators. Preserve supplied unit identifiers, device identifiers, reserved gaps, elevation view, thermal-note setting, review name, and summary facts without inventing health, capacity, redundancy, approval, safety, maintenance, power, network, temperature, or release outcomes or breaking atomic rack relationships on narrow screens.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": { "landmarks": { "h1_count": { "exact": 1 }, "main_count": { "exact": 1 }, "nav_count": { "min": 1 }, "footer_count": { "min": 1 } } },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='elevation-view-option']", "[data-bench='thermal-toggle']", "[data-bench='rack-form']", "[data-bench='review-name']", "[data-bench='form-status']", "[data-bench='rack-unit']", "[data-bench='unit-id']", "[data-bench='device-block']", "[data-bench='device-id']", "[data-bench='reserved-gap']", "[data-bench='compact-control-copy']", "[data-bench-design-role='rack-elevation']", "[data-bench-decision-role='context']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']", "[data-bench-decision-role='action']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='elevation-view-option']": 3,
+    "[data-bench='thermal-toggle']": 1,
+    "[data-bench='rack-form']": 1,
+    "[data-bench='review-name']": 1,
+    "[data-bench='form-status']": 1,
+    "[data-bench='rack-unit']": 12,
+    "[data-bench='unit-id']": 12,
+    "[data-bench='device-block']": 6,
+    "[data-bench='device-id']": 6,
+    "[data-bench='reserved-gap']": 3,
+    "[data-bench='compact-control-copy']": 1,
+    "[data-bench-design-role='rack-elevation']": 1,
+    "[data-bench-decision-role='context']": 1,
+    "[data-bench-decision-role='target']": 1,
+    "[data-bench-decision-role='evidence']": 1,
+    "[data-bench-decision-role='state']": 1,
+    "[data-bench-decision-role='action']": 1
+  },
+  "journey_oracle": {
+    "choice": { "selector": "[data-bench='elevation-view-option']", "value_attribute": "data-view", "body_dataset": "view", "values": ["front", "power", "network"], "count": 3, "initial": "front", "selected": "power" },
+    "toggle": { "selector": "[data-bench='thermal-toggle']" },
+    "form": { "form_selector": "[data-bench='rack-form']", "field_selector": "[data-bench='review-name']", "status_selector": "[data-bench='form-status']", "invalid_value": "", "valid_value": "East rack elevation review" }
+  },
+  "text_geometry_oracle": {
+    "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "scope_selectors": ["[data-bench-design-role='rack-elevation']", "[data-bench-decision-role='context']"],
+    "atomic_scope_selectors": ["[data-bench='unit-id']", "[data-bench='device-id']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']"],
+    "compact_copy_selectors": ["[data-bench='compact-control-copy']"],
+    "max_short_text_chars": 40,
+    "max_short_text_lines": 1
+  },
+  "decision_hierarchy_oracle": {
+    "viewports": ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "minimum_action_gap_px": 8,
+    "roles": { "container": "[data-bench-decision-role='context']", "target": "[data-bench-decision-role='target']", "evidence": "[data-bench-decision-role='evidence']", "state": "[data-bench-decision-role='state']", "action": "[data-bench-decision-role='action']" }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:healthy|capacity confirmed|redundancy verified|rack approved|safety checked|maintenance complete|power stable|network ready|temperature normal|release ready)\\b",
+    "\\btrusted by\\b", "[★☆]{3,}"
+  ],
+  "protected_known_patterns": ["RACK-EAST-04 · U01–U12", "12 rack units · 6 devices · 3 reserved gaps"],
+  "protected_unknown_selectors": ["blockquote", "[class*='testimonial' i]", "[class*='logo-wall' i]", "[class*='social-proof' i]"],
+  "design_oracle": {
+    "page_background": "#F4F0E8", "primary_action": "#24423C", "accent": "#C7653C", "ink": "#1C2422", "surface": "#FFFCF6", "border": "#AAB1AD", "muted_text": "#68716D", "card_radius_px": 0, "control_radius_px": 2,
+    "font_family": { "body_any": ["Arial"], "display_any": ["Georgia"] },
+    "selectors": { "primary_action": "[data-primary-action]", "card": "[data-bench-design-role='rack-elevation']", "display": "h1" }
+  }
+}

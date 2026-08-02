@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.265 equipment rack holdout
+- fresh vertical 12U rack topology를 provider 전에 잠갔다.
+- untouched starter는 75/85, intended red는 contrast와 narrow rack/identifier reflow뿐이다.
+- prompt `2e4508fc…`, product `281f22ea…`, provider call 0이다.
+- 다음은 close-latch vs pre-edit invariant Luna/high 2×3 preregistration이다.
+
 ## 2026-08-02 (Codex) · 1.9.264 pre-edit invariant exact pin
 - exact source `c67c9c1b…`를 detached/clean/publishable candidate로 pin했다.
 - installed tree `769db1d8…`, SKILL `a9fa8805…`, activation `79911390…`다.
