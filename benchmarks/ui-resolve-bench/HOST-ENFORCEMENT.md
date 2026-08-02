@@ -4,20 +4,29 @@
 
 OmD must describe execution assurance using four distinct terms. A skill contract is advisory. Host feedback can add context before a response or diagnose an edit afterward. Host-policy enforcement must deny a prohibited tool call before it executes. Benchmark observation classifies a completed event stream and may fail promotion, but it does not control the model's run.
 
-No currently installed OmD channel has an OmD-owned pre-tool blocker. The package therefore makes no host-policy-enforced claim.
+OmD now offers an explicit, project-scoped proof-policy adapter for Claude Code
+and Codex. It is still off by default. Its assurance is tool-boundary specific:
+the adapter can deny matched local edit and shell calls before execution, while
+Codex native MCP browser calls require a separate observation boundary described
+below.
 
 ## Current channel capability
 
 | Surface | Skill contract | Native policy surface | OmD policy adapter | OmD proof trace | Effective claim |
 | --- | --- | --- | --- | --- | --- |
 | Claude Code project install | Advisory + OmD feedback hooks | Dynamic `PreToolUse` deny | Explicit `--proof-policy`; default off | Not captured | Host feedback by default; pre-tool deny when installed and trusted |
-| Codex install | Advisory | Dynamic `PreToolUse` deny or command-prefix rules | Explicit `--proof-policy`; default off, Git root required | Benchmark controller only | Skill contract by default; pre-tool deny when installed and trusted |
+| Codex install | Advisory | Dynamic `PreToolUse` deny or command-prefix rules | Explicit `--proof-policy`; default off, Git root required | Runner JSONL at `Stop` for native browser calls | Skill contract by default; pre-tool deny for matched local tools, final-boundary accounting for native browser calls when the runner supplies a trace |
 | OpenCode install | Advisory | Project permissions or plugin before-hook | Not installed | Not captured | Skill contract |
 | Cursor install | Advisory | Project CLI permissions | Not installed | Benchmark controller only | Skill contract |
 | OmD harness checkpoints | Orchestrator must halt for the user | Host-dependent | Not installed | Run artifacts | Orchestrator contract |
 | UI-Resolve benchmark | N/A | Event-stream diagnostics | Promotion-report only | Cursor and Codex | Promotion-report gate |
 
-Claude's installed `PostToolUse` hook is not enforcement: it runs after an edit. `UserPromptSubmit` injects DESIGN.md guidance but does not deny a tool. Codex and Cursor event streams are visible only when the UI-Resolve controller owns the benchmark invocation. A normal installed skill has no equivalent trace or blocker.
+Claude's installed `PostToolUse` hook is not enforcement: it runs after an edit.
+`UserPromptSubmit` injects DESIGN.md guidance but does not deny a tool. Codex and
+Cursor event streams are visible only when the UI-Resolve controller owns the
+benchmark invocation. A normal installed Codex skill does not receive the
+runner-owned JSONL trace, so native MCP browser accounting must not be claimed
+outside that boundary.
 
 The host feasibility result is narrower than “hooks exist.” Claude Code and
 Codex both document a dynamic `PreToolUse` decision that can deny a supported
@@ -68,7 +77,24 @@ flow. To remove only this guard while preserving unrelated hooks:
 npx oh-my-design-cli@latest install-skills --agent claude-code codex --all --remove-proof-policy
 ```
 
-## Next experiment boundary
+### Codex native browser boundary
+
+The 1.9.227 wildcard-matcher and 1.9.228 exact-matcher smokes both showed the
+same limitation on Codex CLI 0.144.1: native `agent-browser` MCP calls appeared
+in the `codex exec --json` stream but did not invoke the project `PreToolUse` or
+`PostToolUse` adapter. OmD therefore does not claim deny-before-execution for
+that path.
+
+The 1.9.229 runner smoke adds an honest final-boundary reconciliation. The
+benchmark runner streams its JSONL to a per-run file and passes that path only
+to the project `Stop` hook. One observed native browser call consumes the
+single browser-proof attempt and is recorded as `unresolved`; additional calls
+are recorded as `native_browser_unintercepted` and fail installed-policy
+acceptance. This detects and scores the violation after execution. It does not
+turn the native MCP path into live interception, and it is not available in a
+normal interactive install without a runner-provided trace.
+
+## Policy contract
 
 The provider-free policy state machine is implemented in
 `scripts/proof-policy-state.mjs`. It accepts semantic product-edit,
@@ -94,13 +120,12 @@ and has attempted-command violation parity with the post-run classifier.
 session/turn-scoped state, a bounded cross-process lock, a six-hour default
 expiry, and fail-closed handling for corrupt, stale, or busy state. A new
 product edit can recover stale state; a proof command cannot silently bypass
-it. This remains benchmark-owned and is not installed into user projects.
+it. The CLI installs this adapter only through the explicit `--proof-policy`
+flag, preserves unrelated hook configuration, supports doctor attestation and
+targeted removal, and leaves the default install unchanged.
 
-The next integration may expose a project-scoped opt-in adapter for Claude Code
-and Codex. It must preserve existing hook configuration, require an explicit
-flag, explain native trust/review and restart behavior, support doctor checks
-and removal, and leave the default install unchanged. The next provider
-experiment should then compare the same close-latch skill under controller
-observation only and the real host pre-tool policy. Until that opt-in adapter is
-installed and active, proof-execution compliance is a benchmark promotion
-criterion, not an execution guarantee.
+Proof-execution compliance remains a benchmark promotion criterion. For matched
+local tools it may additionally be an execution guarantee after the host trusts
+the installed project hook. For native Codex browser calls it remains
+post-execution observation until Codex exposes a project-hook path that passes a
+real-host interception smoke.

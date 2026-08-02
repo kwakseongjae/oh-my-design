@@ -24,7 +24,7 @@ export const PROOF_POLICY_FILES = Object.freeze([
 ]);
 
 const POLICY_COMMAND = "node \"$(git rev-parse --show-toplevel)/.codex/hooks/omd-proof-policy/proof-policy-hook.mjs\"";
-const POLICY_MATCHER = "Bash|apply_patch|Edit|Write|mcp__agent-browser__browser_.*";
+const POLICY_MATCHER = "Bash|apply_patch|Edit|Write";
 
 function stripManagedMarker(content) {
   return content.replace(/^\/\/ omd:installed-hook sha256=[0-9a-f]{64}\r?\n/m, "");
@@ -169,6 +169,7 @@ export function summarizeHostPolicyStates(workspace) {
         browser_recovery: 0,
         duplicate_static_closure: 0,
         verification_after_ready: 0,
+        native_browser_unintercepted: 0,
       },
     };
   }
@@ -192,6 +193,7 @@ export function summarizeHostPolicyStates(workspace) {
       browser_recovery: 0,
       duplicate_static_closure: 0,
       verification_after_ready: 0,
+      native_browser_unintercepted: 0,
     },
     state_tree_sha256: null,
   };
@@ -269,6 +271,9 @@ export function evaluateHostPolicyGate(installation, observed, proofTrace, gate)
     )
   ) {
     reasons.push("installed-policy-browser-attempt-missing");
+  }
+  if (Number(observed?.violations?.native_browser_unintercepted ?? 0) > 0) {
+    reasons.push("native-browser-unintercepted");
   }
   if (proofTrace?.analyzable !== true) reasons.push("proof-trace-not-analyzable");
   const unblocked = {

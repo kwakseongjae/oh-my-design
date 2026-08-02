@@ -45,6 +45,10 @@ const stop = (stop_hook_active = false) => ({
   hook_event_name: "Stop",
   stop_hook_active,
 });
+const nativeEvent = (id, tool = "browser_navigate") => JSON.stringify({
+  type: "item.started",
+  item: { id, type: "mcp_tool_call", server: "agent-browser", tool },
+});
 
 describe("proof policy executable hook", () => {
   let root;
@@ -102,6 +106,48 @@ describe("proof policy executable hook", () => {
     handleProofPolicyHook(pre("browser-harness capture_screenshot"), { root, now: 150 });
     handleProofPolicyHook(post("browser-harness capture_screenshot"), { root, now: 160 });
     expect(handleProofPolicyHook(stop(), { root, now: 170 }).output).toBeNull();
+  });
+
+  it("reconciles one native browser call from the ephemeral runner trace at Stop", () => {
+    const trace = join(root, "events.jsonl");
+    writeFileSync(trace, `${nativeEvent("native-1")}\n`, "utf8");
+    handleProofPolicyHook(edit, { root, now: 100 });
+    handleProofPolicyHook(pre("npm test"), { root, now: 110 });
+    handleProofPolicyHook(post("npm test"), { root, now: 120 });
+    const result = handleProofPolicyHook(stop(), { root, now: 130, trace_path: trace });
+    expect(result.output).toBeNull();
+    expect(result.state).toMatchObject({
+      browser_attempts: 1,
+      browser_proof: "unresolved",
+      delivery: "ready",
+      native_observation: { observed_calls: 1, unblocked_calls: 0 },
+    });
+  });
+
+  it("fails the final boundary honestly when repeated native calls were not intercepted", () => {
+    const trace = join(root, "events.jsonl");
+    writeFileSync(trace, `${nativeEvent("native-1")}\n${nativeEvent("native-2")}\n`, "utf8");
+    handleProofPolicyHook(edit, { root, now: 100 });
+    handleProofPolicyHook(pre("npm test"), { root, now: 110 });
+    handleProofPolicyHook(post("npm test"), { root, now: 120 });
+    const result = handleProofPolicyHook(stop(), { root, now: 130, trace_path: trace });
+    expect(result.output).toMatchObject({
+      decision: "block",
+      reason: expect.stringContaining("native-browser-unintercepted"),
+    });
+    expect(result.state).toMatchObject({
+      browser_attempts: 1,
+      delivery: "ready",
+      violations: { native_browser_unintercepted: 1 },
+      native_observation: { observed_calls: 2, unblocked_calls: 1 },
+    });
+    const reentry = handleProofPolicyHook(stop(true), {
+      root,
+      now: 140,
+      trace_path: trace,
+    });
+    expect(reentry.output).toBeNull();
+    expect(reentry.state.native_observation.unblocked_calls).toBe(1);
   });
 
   it("denies a proof command when persisted state is corrupt", () => {

@@ -10,6 +10,12 @@ export function initialProofPolicyState() {
       browser_recovery: 0,
       duplicate_static_closure: 0,
       verification_after_ready: 0,
+      native_browser_unintercepted: 0,
+    },
+    native_observation: {
+      observed_calls: 0,
+      unblocked_calls: 0,
+      source: null,
     },
     decisions: [],
   };
@@ -19,6 +25,7 @@ function copyState(state) {
   return {
     ...state,
     violations: { ...state.violations },
+    native_observation: { ...state.native_observation },
     decisions: [...state.decisions],
   };
 }
@@ -157,6 +164,16 @@ export function applyProofPolicyEvent(previous, event) {
       return decision(state, event, false, "browser-recovery-forbidden");
     }
     return decision(state, event, false, "browser-proof-not-attempted");
+  }
+
+  if (event.type === "native-browser-unintercepted") {
+    state.violations.native_browser_unintercepted = Number(
+      state.violations.native_browser_unintercepted ?? 0,
+    ) + 1;
+    state.native_observation.unblocked_calls = Number(
+      state.native_observation.unblocked_calls ?? 0,
+    ) + 1;
+    return decision(state, event, true, "native-browser-unintercepted");
   }
 
   if (event.type === "delivery") {

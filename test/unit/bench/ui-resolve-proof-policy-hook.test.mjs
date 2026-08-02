@@ -293,6 +293,7 @@ describe("proof policy host hook mapper", () => {
       browser_recovery: trace.browser_recovery_count,
       duplicate_static_closure: trace.duplicate_static_closure_count,
       verification_after_ready: trace.verification_after_ready_count,
+      native_browser_unintercepted: 0,
     });
   });
 });

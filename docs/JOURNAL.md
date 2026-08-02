@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.225–1.9.229 native proof boundary closed
+- assay 2×3은 policy +4.67 mean이지만 UI-Resolved 0/3이라 promotion HOLD다.
+- Codex native MCP Pre/Post interception은 wildcard/exact 모두 실패로 동결했다.
+- runner JSONL→Stop reconciliation은 실제 Luna/high 1-call smoke를 통과했다.
+- 다음은 contrast와 narrow/zoom geometry를 겨냥한 bounded skill delta다.
+
 ## 2026-08-02 (Codex) · 1.9.224 assay matrix prepared
 - `/private/tmp/u19223` 6 Git cells와 equality attestation을 provider 0으로 준비했다.
 - sole delta와 policy readiness가 green이다.

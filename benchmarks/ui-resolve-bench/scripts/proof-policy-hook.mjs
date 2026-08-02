@@ -19,6 +19,8 @@ import {
   proofPolicyHookDecision,
   proofPolicyStopDecision,
 } from "./proof-policy-hook-mapper.mjs";
+import { countNativeBrowserProofCallsFile } from "./proof-trace-contract.mjs";
+import { applyProofPolicyEvent } from "./proof-policy-state.mjs";
 
 const STATE_SCHEMA = "0.1";
 const DEFAULT_TTL_MS = 6 * 60 * 60 * 1000;
@@ -117,6 +119,37 @@ function stopDeny(reason, payload) {
   return { decision: "block", reason: proofPolicyDenyReason(reason) };
 }
 
+function reconcileNativeBrowserProof(state, payload, options = {}) {
+  if (!isStop(payload) || state.revision === 0) return state;
+  const tracePath = options.trace_path ?? process.env.OMD_PROOF_POLICY_EVENTS_PATH;
+  if (!tracePath || !existsSync(tracePath)) return state;
+  let observed;
+  try {
+    observed = countNativeBrowserProofCallsFile(tracePath);
+  } catch {
+    return state;
+  }
+  const previous = Number(state.native_observation?.observed_calls ?? 0);
+  if (!Number.isInteger(observed) || observed <= previous) return state;
+  let next = state;
+  for (let index = previous; index < observed; index += 1) {
+    if (next.browser_attempts === 0) {
+      next = applyProofPolicyEvent(next, { type: "browser-proof-start" });
+      if (next.decisions.at(-1)?.allow === true) {
+        next = applyProofPolicyEvent(next, {
+          type: "browser-proof-finish",
+          outcome: "unresolved",
+        });
+      }
+    } else {
+      next = applyProofPolicyEvent(next, { type: "native-browser-unintercepted" });
+    }
+  }
+  next.native_observation.observed_calls = observed;
+  next.native_observation.source = "runner-events";
+  return next;
+}
+
 export function handleProofPolicyHook(payload, options = {}) {
   const root = options.root ?? process.env.OMD_PROOF_POLICY_STATE_DIR ?? ".omd/proof-policy";
   const path = statePathFor(payload, root);
@@ -155,7 +188,8 @@ export function handleProofPolicyHook(payload, options = {}) {
         status: loaded.status,
       };
     }
-    const next = applyHookPayload(loaded.state, payload);
+    const reconciled = reconcileNativeBrowserProof(loaded.state, payload, options);
+    const next = applyHookPayload(reconciled, payload);
     if (next !== loaded.state) writeProofPolicyState(path, payload, next, options.now ?? Date.now());
     const output = payload?.hook_event_name === "PreToolUse"
       ? proofPolicyHookDecision(next)

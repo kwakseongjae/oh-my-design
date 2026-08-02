@@ -3,6 +3,7 @@ import {
   classifyProofCommand,
   classifyProofTool,
   classifyProofTrace,
+  countNativeBrowserProofCalls,
   evaluateProofExecutionGate,
   isProductEditPath,
   normalizeProofTrace,
@@ -99,6 +100,15 @@ describe("proof trace contract", () => {
       verification_after_ready_count: 1,
       compliance_pass: false,
     });
+  });
+
+  it("counts only proof-bearing native browser starts for Stop reconciliation", () => {
+    expect(countNativeBrowserProofCalls([
+      codexNativeBrowser("browser_new_session"),
+      codexNativeBrowser("browser_navigate"),
+      codexNativeBrowser("browser_screenshot"),
+      { type: "item.completed", item: { type: "mcp_tool_call", server: "agent-browser", tool: "browser_navigate" } },
+    ])).toBe(2);
   });
 
   it("does not count a browser instruction read as verification after ready", () => {

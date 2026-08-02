@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { spawn } from "node:child_process";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
 
@@ -28,6 +28,8 @@ if (manifest.runtime_target !== "codex") {
 }
 const prompt = readFileSync(join(benchmarkDir, "PROMPT.md"), "utf8");
 const finalMessagePath = join(benchmarkDir, "final-message.txt");
+const eventsPath = join(benchmarkDir, "events.jsonl");
+writeFileSync(eventsPath, "", "utf8");
 const maxLogBytes = 50 * 1024 * 1024;
 const command = [
   "exec",
@@ -65,6 +67,7 @@ Object.assign(childEnv, {
   DISABLE_TELEMETRY: "1",
   DO_NOT_TRACK: "1",
   CI: "1",
+  OMD_PROOF_POLICY_EVENTS_PATH: eventsPath,
 });
 
 const appendCapped = (current, chunk) => {
@@ -89,7 +92,10 @@ const exit = await new Promise((resolveExit) => {
     timedOut = true;
     try { process.kill(-child.pid, "SIGTERM"); } catch { child.kill("SIGTERM"); }
   }, timeoutMs);
-  child.stdout.on("data", (chunk) => { stdout = appendCapped(stdout, chunk); });
+  child.stdout.on("data", (chunk) => {
+    appendFileSync(eventsPath, chunk);
+    stdout = appendCapped(stdout, chunk);
+  });
   child.stderr.on("data", (chunk) => { stderr = appendCapped(stderr, chunk); });
   child.on("error", (error) => {
     clearTimeout(timer);
@@ -104,7 +110,7 @@ const exit = await new Promise((resolveExit) => {
 });
 
 const wallMs = Number(process.hrtime.bigint() - startedNs) / 1_000_000;
-writeFileSync(join(benchmarkDir, "events.jsonl"), stdout, "utf8");
+writeFileSync(eventsPath, stdout, "utf8");
 writeFileSync(join(benchmarkDir, "stderr.log"), stderr, "utf8");
 
 const events = stdout.split("\n").filter(Boolean).flatMap((line) => {

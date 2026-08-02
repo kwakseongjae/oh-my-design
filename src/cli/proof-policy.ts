@@ -40,7 +40,7 @@ const SOURCE_DIR = join('benchmarks', 'ui-resolve-bench', 'scripts');
 const DEST_DIR = join('hooks', 'omd-proof-policy');
 const PROOF_POLICY_MATCHERS: Record<ProofPolicyTarget, string> = {
   'claude-code': 'Bash|Edit|Write|MultiEdit',
-  codex: 'Bash|apply_patch|Edit|Write|mcp__agent-browser__browser_.*',
+  codex: 'Bash|apply_patch|Edit|Write',
 };
 
 function isJsonObject(value: unknown): value is JsonObject {

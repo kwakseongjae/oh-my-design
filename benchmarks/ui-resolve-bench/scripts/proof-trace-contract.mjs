@@ -129,6 +129,16 @@ export function normalizeProofTrace(events) {
   });
 }
 
+export function countNativeBrowserProofCalls(events) {
+  return normalizeProofTrace(events).filter(
+    (action) => action.kind === "native-tool" && action.classification?.browser === true,
+  ).length;
+}
+
+export function countNativeBrowserProofCallsFile(path) {
+  return countNativeBrowserProofCalls(parseJsonl(readFileSync(path, "utf8")));
+}
+
 export function classifyProofTrace(events) {
   const actions = normalizeProofTrace(events);
   const runtimes = [...new Set(actions.map((action) => action.runtime))];

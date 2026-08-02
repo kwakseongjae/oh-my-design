@@ -4,13 +4,17 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.224 assay-plate matrix PREPARED; first cell next
+- 갱신: 2026-08-02 · 1.9.229 native browser Stop reconciliation PASS
 
 ## 지금 (현재 위치)
 
-- 1.9.224 fresh `/private/tmp/u19223`에 6 Git cells를 provider call 0으로 PREPARED했다. core prompt `e2e77921…`, runtime prompt `b3358285…`, product `38546c36…`, skill `7336c037…`, activation `79911390…`가 전부 동일하다.
-- controller hooks 0, policy hooks/attestation ready, all Git root, Codex/Luna high/900초가 green이다. locked plan SHA `be87e95d…`, preparation state SHA `d741ee28…`; sole delta 외 차이는 없다.
-- 다음 허용 동작은 `luna-assay-r1-controller` 한 셀이다. max-new 1과 120초 pacing을 유지하고 첫 infra/identity/attribution/policy-state drift에서 전체 root를 freeze한다.
+- 1.9.229 actual Codex 0.144.1/Luna high runner smoke가 PASS했다. runner가 쓰는 JSONL에서 native `agent-browser.browser_navigate` 1회를 Stop 경계가 관찰해 browser attempt 1, proof `unresolved`, delivery ready, violation 0으로 정직하게 복원했다. final message도 `ERR_NAME_NOT_RESOLVED`를 그대로 밝혔다.
+- 이는 live native MCP interception이 아니라 runner-scoped final-boundary accounting이다. 2회 이상 관찰되면 `native_browser_unintercepted`로 acceptance를 fail하며, 일반 interactive install에는 JSONL trace가 없으므로 동일 보장을 주장하지 않는다. focused 107/107, lint, build, diff check가 green이다.
+- 1.9.227 wildcard와 1.9.228 exact MCP matcher real-host 진단은 둘 다 hook attempt 0으로 FAIL했다. Codex project hook은 tested deferred native MCP path를 Pre/Post에서 가로채지 못하므로 production matcher는 local edit/shell boundary로 복귀했고 두 frozen root와 실패 보고서를 보존했다.
+- 1.9.226은 native Codex MCP events를 offline proof trace에서 정규화했다. 기존 R2 trace의 native call 2개를 찾아 recovery 1/after-ready 1/noncompliant로 재분류했으며 과거 점수는 수정하지 않았다.
+- 1.9.225 assay comparison은 6/6 COMPLETE: controller 79/63/81(mean 74.33), installed 81/77/79(mean 79), paired +2/+14/-2(W/T/L 2/0/1)지만 양 arm UI-Resolved 0/3이다. proof policy broader/default promotion은 HOLD이며 다음 품질 delta는 반복된 color contrast와 390/320/200% geometry 실패를 직접 겨냥해야 한다.
+
+- 1.9.224 fresh `/private/tmp/u19223`에 동일 task/runtime/model의 6 Git cells를 준비했고 이후 1.9.225에서 전부 실행·평가·동결했다.
 
 - 1.9.223 exact Codex/Luna high controller-observation vs installed-opt-in policy 2×3를 provider 전에 잠갔다. task/prompt/starter/DESIGN/skill/runtime/model/effort/timeout은 동일하고 sole delta는 project proof-policy installation이다.
 - balanced order, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. installed arm은 valid state뿐 아니라 delivery ready와 actual browser attempt ≥1을 최초 plan부터 요구하고 unblocked violation 세 종류는 모두 0이어야 한다.
@@ -1304,9 +1308,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. approval contract가 공통화됐으므로 다음 unseen non-approval family를 선택한다.
-2. generation 전에 그 family 고유의 geometry/hierarchy/state contract를 잠근다.
-3. Reliability@3 또는 anonymous visual comparison에서 반복 failure cluster가 생길 때만 bounded skill delta를 설계한다.
+1. 1.9.225의 6개 결과에서 공통 contrast와 390/320/200% text-geometry 실패를 claim 단위로 추출한다.
+2. 기존 OmD skill 전체를 넓게 재작성하지 말고, responsive hierarchy와 contrast verification에만 한정한 bounded delta를 provider 전에 잠근다.
+3. 새 unseen non-approval family로 controller vs delta 2×3를 preregister하고 UI-Resolved 3/3, paired objective loss 0을 promotion 기준으로 유지한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

@@ -459,7 +459,7 @@ describe('omd doctor', () => {
     for (const event of ['PreToolUse', 'PostToolUse']) {
       const managed = codexHooks.hooks[event].find((group: { hooks?: Array<{ command?: string }> }) =>
         group.hooks?.some((hook) => hook.command?.includes('omd-proof-policy')));
-      managed.matcher = 'Bash|apply_patch|Edit|Write';
+      managed.matcher = 'Bash|apply_patch|Edit';
     }
     writeFileSync(codexHooksPath, `${JSON.stringify(codexHooks, null, 2)}\n`);
     const staleMatcher = collectDoctorReport({ dir: root }).channels.find(
