@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.259 second transit candidate
+- carrier r2는 valid/policy-green 85/85 UI-Resolved다.
+- contrast·atomic reflow·overflow와 실제 browser proof를 한 revision에서 닫았다.
+- candidate 누적 73/85·85/85, resolved 1/2; promotion 자격은 복구되지 않는다.
+- 다음은 paired close r2다.
+
 ## 2026-08-02 (Codex) · 1.9.258 transit pair 1
 - close 75 vs carrier 73, candidate -2로 양쪽 unresolved다.
 - candidate는 overflow만 줄이고 atomic reflow·contrast·keyboard를 남겼다.
