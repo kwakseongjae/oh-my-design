@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.249 sensor pair 2 complete · provider cells 4/6
+- 갱신: 2026-08-02 · 1.9.250 sensor r3 baseline checkpoint · provider cells 5/6
 
 ## 지금 (현재 위치)
+
+- 1.9.250 `luna-sensor-r3-close`는 valid/policy-green 81/85, UI-Resolved false다. r1과 같이 reflow와 task contract는 해결하고 exact contrast만 남겼다.
+- wall 322,767ms, tokens 470,871이다. close arm은 81/65/81, resolved 0/3이며 중앙값 81이다.
+- 다음은 마지막 `luna-sensor-r3-release`다. 완료 뒤 6/6 최종 quality/proof/efficiency gate를 계산한다.
 
 - 1.9.249 pair 2는 release 65/85 vs close 65/85 동률이다. 둘 다 protected gateway scope/task contract, mobile/320/200% geometry, contrast를 실패했고 proof/host는 pass했다.
 - 2 pair 누적 candidate W/T/L 0/1/1, resolved 0/2다. pair 2 candidate는 baseline보다 wall +32.5%, provider tokens +58.0%였다.
@@ -1387,7 +1391,7 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `luna-sensor-r3-close`, `luna-sensor-r3-release`를 `--max-new-cells 1`로 실행한다.
+1. 마지막 `luna-sensor-r3-release`를 `--max-new-cells 1`로 실행한다.
 2. 각 셀 후 objective/proof/host-policy/token/wall 결과를 상태에 고정한다.
 3. 6/6 뒤 paired quality·proof·efficiency gate로 promotion 또는 rejection을 결정한다.
 

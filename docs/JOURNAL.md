@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.250 final sensor baseline
+- close r3은 81/85 unresolved, proof/host green이다.
+- r1처럼 reflow/task contract를 해결하고 contrast만 남겼다.
+- close arm 81/65/81, 중앙값 81; wall 322,767ms, tokens 470,871이다.
+- 다음은 마지막 release r3와 최종 판정이다.
+
 ## 2026-08-02 (Codex) · 1.9.249 sensor pair 2
 - release 65 vs close 65 동률, 양쪽 unresolved/policy-green이다.
 - 누적 candidate W/T/L 0/1/1, resolved 0/2다.
