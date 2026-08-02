@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.272 final rack baseline
+- close r3은 81/85 unresolved, baseline 73/75/81로 고정됐다.
+- full reflow green, exact contrast red다.
+- native browser 추가 사용으로 proof/host가 fail했다.
+- 다음은 마지막 invariant r3와 최종 판정이다.
+
 ## 2026-08-02 (Codex) · 1.9.271 rack pair 2
 - invariant 81 vs close 75, 누적 candidate W/T/L 2/0/0이다.
 - candidate resolved 0/2라 3/3 promotion은 이미 불가능하다.

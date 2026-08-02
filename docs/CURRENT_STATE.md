@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.271 equipment rack pair 2 · 4/6 cells complete
+- 갱신: 2026-08-02 · 1.9.272 final equipment rack baseline · 5/6 cells complete
 
 ## 지금 (현재 위치)
+
+- 1.9.272 `luna-rack-r3-close`는 valid 81/85, UI-Resolved false다. full reflow는 green이나 exact contrast를 남겼다. baseline은 73/75/81, resolved 0/3으로 고정됐다.
+- r3 close는 native browser를 session 뒤 추가 사용해 proof가 browser-recovery/after-ready, host가 native-browser-unintercepted로 fail했다. wall 253,306ms, tokens 735,763이다.
+- 다음은 마지막 `luna-rack-r3-invariant`다. 완료 뒤 6/6 quality/proof/efficiency gate와 bounded delta 방향을 판정한다.
 
 - 1.9.271 pair 2는 invariant 81/85 vs close 75/85로 candidate +6이며 양쪽 unresolved다. 2 pair 누적 candidate W/T/L 2/0/0, scores 83/81 vs 73/75다.
 - candidate UI-Resolved 0/2라 preregistered 3/3 promotion은 이미 불가능하다. pair 2 candidate wall +5.81%, tokens -25.12%지만 누적 평균 wall은 +40.12%다.
