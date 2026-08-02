@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.242 release-blocker exact pin
+- 1.9.241 exact source를 detached/clean/publishable candidate로 pin했다.
+- installed tree `b89bb7c…`, SKILL `f13ce0bd…`, activation `79911390…`다.
+- seen assay는 provenance-only, provider call/hook/agent/third-party installer는 0이다.
+- 다음은 다른 unseen topology task lock이다.
+
 ## 2026-08-02 (Codex) · 1.9.241 compact release-blocker candidate
 - foreground/reflow/stop을 첫 edit transaction의 3개 blocker로 전면 배치했다.
 - 중복 prose를 줄여 skill은 291 bytes 작아졌고 새 task literal/token은 없다.

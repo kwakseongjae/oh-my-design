@@ -1084,6 +1084,24 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(candidate.commit).not.toBe(previous.commit);
   });
 
+  it("pins the compact release-blocker candidate separately from rejected readable reflow", () => {
+    const baseline = competitors.variants["omd-portable-proof-close-latch-candidate"];
+    const rejected = competitors.variants["omd-portable-readable-reflow-candidate"];
+    const candidate = competitors.variants["omd-portable-release-blocker-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.241",
+      source_path: baseline.source_path,
+      install_adapter: baseline.install_adapter,
+      install_root: baseline.install_root,
+      install_dir: baseline.install_dir,
+      declared_name: baseline.declared_name,
+      commit: "aa074ab40a0db98fedb8d7233f8ff9871e8c15f9",
+      activation: baseline.activation,
+    });
+    expect(new Set([baseline.commit, rejected.commit, candidate.commit]).size).toBe(3);
+  });
+
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", editorialBriefTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({

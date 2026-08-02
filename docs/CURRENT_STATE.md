@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.241 compact release-blocker candidate · provider pending
+- 갱신: 2026-08-02 · 1.9.242 compact release-blocker exact pin · provider call 0
 
 ## 지금 (현재 위치)
+
+- 1.9.242는 1.9.241 exact source `aa074ab…`를 `omd-portable-release-blocker-candidate`로 pin했다. detached/clean/publishable source이며 installed tree `b89bb7c…`, installed SKILL `f13ce0bd…`, activation `79911390…`다.
+- seen assay diagnostic은 provenance/install 확인에만 사용했고 promotion에서 제외한다. provider call 0, third-party installer/hook/agent tool 0이다.
+- 다음은 spectrum과 다른 fresh unseen task를 generation 전에 lock하는 것이다.
 
 - 1.9.241은 rejected candidate의 규칙을 더 늘리지 않고 foreground/reflow/stop을 첫 edit transaction의 세 release blocker로 전면 배치했다. 상세 packet은 evidence schema일 뿐 추가 실행 단계가 아니라고 명시했다.
 - 중복 foreground/reflow prose를 줄여 canonical skill은 37,756→37,465 bytes(-291)다. benchmark selector·task literal·새 token/component는 없다.
@@ -1355,9 +1359,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.241 exact commit/source/installed tree를 portable candidate로 pin한다.
-2. spectrum과 다른 fresh unseen UI family를 provider generation 전에 잠근다.
-3. close-latch baseline vs release-blocker candidate Reliability@3를 같은 proof/host policy와 efficiency gate로 실행한다.
+1. spectrum과 다른 fresh unseen UI family를 provider generation 전에 잠근다.
+2. close-latch baseline vs release-blocker candidate Reliability@3를 같은 proof/host policy와 efficiency gate로 preregister한다.
+3. fresh worktrees/root를 준비하고 one-cell checkpoint 방식으로 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
