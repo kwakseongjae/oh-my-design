@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.260 transit pair 2
+- carrier 85 vs close 75로 candidate +10, 둘 다 policy-green이다.
+- 누적 W/T/L 1/0/1, candidate resolved 1/2 vs baseline 0/2다.
+- pair 1과 방향이 뒤집혀 마지막 pair로 recurrence를 확인한다.
+- 다음은 close r3, 이어 carrier r3다.
+
 ## 2026-08-02 (Codex) · 1.9.259 second transit candidate
 - carrier r2는 valid/policy-green 85/85 UI-Resolved다.
 - contrast·atomic reflow·overflow와 실제 browser proof를 한 revision에서 닫았다.

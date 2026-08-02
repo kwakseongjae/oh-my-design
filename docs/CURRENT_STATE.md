@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.259 second transit candidate · 3/6 cells
+- 갱신: 2026-08-02 · 1.9.260 transit pair 2 · 4/6 cells
 
 ## 지금 (현재 위치)
+
+- 1.9.260 pair 2는 carrier 85/85 UI-Resolved vs close 75/85 unresolved로 candidate +10이며 둘 다 proof/host-policy green이다.
+- 2 pair 누적 candidate W/T/L 1/0/1, candidate resolved 1/2 vs baseline 0/2다. pair 1 -2에서 방향이 뒤집혀 run variance가 크다.
+- promotion은 복구되지 않지만 recurrence 판단을 위해 마지막 close→carrier pair를 완료한다. 다음 locked cell은 `luna-transit-r3-close`다.
 
 - 1.9.259 `luna-transit-r2-carrier`는 valid/policy-green 85/85 UI-Resolved다. exact cardinality와 named comparison-scroll을 보존하며 contrast, atomic reflow, page overflow, interaction browser proof를 한 revision에서 모두 닫았다.
 - wall 288,968ms, tokens 681,520이다. candidate 누적 73/85·85/85, resolved 1/2, proof/host 1/2다. trial 1 때문에 promotion은 복구되지 않는다.
@@ -1429,8 +1433,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. paired `luna-transit-r2-close`를 실행해 pair 2 방향을 판정한다.
-2. 마지막 close→carrier pair를 실행해 reliability를 완성한다.
+1. `luna-transit-r3-close`를 실행한다.
+2. 마지막 `luna-transit-r3-carrier`를 실행해 reliability를 완성한다.
 3. six-cell result에 final quality/proof/efficiency rejection gate를 적용한다.
 
 ## 막힘 / 대기 (없으면 "없음")
