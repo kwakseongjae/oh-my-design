@@ -1,6 +1,6 @@
 # Electrical single-line conjunctive-release transfer — findings
 
-Status: **IN PROGRESS — 3/6 cells complete**
+Status: **IN PROGRESS — 4/6 cells complete**
 
 ## Checkpoint 1 — baseline trial 1
 
@@ -61,3 +61,18 @@ smaller viewport scope. Proof execution and installed host policy pass.
 - cumulative total experimental tokens: **1,535,147**
 
 Pair 2 has no comparative result until its close-latch baseline completes.
+
+## Pair 2
+
+The close-latch baseline scored **77/85**, making the candidate delta **+4**.
+Both are unresolved. Across two pairs the candidate is 2 wins / 0 ties / 0
+losses, but remains 0/2 UI-Resolved because the decision carrier's narrow
+atomic-line contract is not reliably included in the same closure.
+
+- pair 2 wall: candidate **235,650ms** vs baseline **241,135ms** (**-2.27%**)
+- pair 2 tokens: candidate **491,306** vs baseline **692,346** (**-29.03%**)
+- two-pair mean wall: candidate **223,677ms** vs baseline **248,551ms** (**-10.01%**)
+- two-pair mean tokens: candidate **495,860** vs baseline **617,887** (**-19.75%**)
+- cumulative candidate/control/total tokens: **991,720 / 1,235,773 / 2,227,493**
+
+The final pair remains diagnostic for variance and attainable ceiling.

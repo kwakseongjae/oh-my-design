@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.283 single-line pair 2
+- candidate 81 vs close 77, 누적 W/T/L 2/0/0이다.
+- candidate resolved 0/2로 decision carrier failure가 반복됐다.
+- mean wall -10.01%, tokens -19.75%; 누적 2,227,493 tokens다.
+- 다음은 final close→candidate pair다.
+
 ## 2026-08-02 (Codex) · 1.9.282 second single-line candidate
 - conjunctive r2는 81/85 unresolved, proof/host green이다.
 - contrast/page/390은 닫고 320/200% decision atomic line을 남겼다.
