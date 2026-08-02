@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.239 replacement checkpoint 4/6 · W/L 1/1
+- 갱신: 2026-08-02 · 1.9.240 spectrum replacement complete · candidate rejected
 
 ## 지금 (현재 위치)
+
+- 1.9.240 replacement는 6/6 provider cells와 objective score를 완료했다. close 85/79/85, readable 83/85/81로 candidate W/T/L 1/0/2, 평균은 양쪽 83, 중앙값은 close 85 vs readable 83, UI-Resolved는 close 2/3 vs readable 1/3이다.
+- candidate는 contrast green 2/3, 200% reflow green 2/3으로 baseline과 동일했고, 평균 wall +54.4%, provider tokens +66.9%였다. final candidate는 browser recovery/after-ready 위반으로 proof·host-policy gate도 fail했다.
+- 따라서 readable-reflow candidate는 승격하지 않는다. 다음 bounded delta는 instruction을 더 늘리지 않고 release-blocker pass를 짧게 전면 배치해 exact foreground closure, 390/320/200% reflow, one-static/one-browser stop을 한 번에 닫는 방향이다. spectrum task는 promotion에 재사용하지 않는다.
 
 - 1.9.239 two pairs/4 cells가 valid/policy-green으로 완료됐다. pair1 candidate -2, pair2 candidate +6, W/T/L 1/0/1이며 candidate UI-Resolved 1/2다.
 - 방향이 뒤집혀 run variance가 크다. promotion은 zero-loss와 candidate 3/3 양쪽에서 이미 fail이지만 마지막 pair는 effect direction과 recurring failure surface 진단에 필요하다.
@@ -1347,9 +1351,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `luna-spectrum-r3-close` 한 셀을 canonical bounded continuation으로 실행한다.
-2. `luna-spectrum-r3-readable`까지 6/6을 완성한다.
-3. failed promotion gate를 유지하고 contrast/reflow transfer variance와 다음 bounded delta를 결정한다.
+1. 기존 close-latch source를 기준선으로 유지하고 compact release-blocker pass를 별도 bounded candidate로 작성한다.
+2. skill contract/activation isolation을 provider-free로 검증하고 exact commit/source tree를 pin한다.
+3. spectrum과 다른 fresh unseen UI family를 generation 전에 잠근 뒤 Reliability@3를 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

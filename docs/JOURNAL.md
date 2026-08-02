@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.240 spectrum candidate rejected
+- replacement 6/6은 close 85/79/85, readable 83/85/81로 끝났다.
+- candidate W/T/L 1/0/2, resolved 1/3이며 contrast/reflow도 baseline과 동률이다.
+- 평균 wall +54.4%, tokens +66.9%이고 final policy gate도 fail했다.
+- 다음은 더 짧은 release-blocker pass를 fresh unseen task에서 검증한다.
+
 ## 2026-08-02 (Codex) · 1.9.239 replacement checkpoint 4/6
 - pair2는 readable 85 vs close 79, candidate +6이다.
 - pair1과 반대로 뒤집혀 W/L 1/1, candidate resolved 1/2다.
