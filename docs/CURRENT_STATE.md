@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.230 readable-reflow skill delta AUTHORED
+- 갱신: 2026-08-02 · 1.9.231 readable-reflow candidate PINNED
 
 ## 지금 (현재 위치)
+
+- 1.9.231은 exact 1.9.230 source `7915723…`를 `omd-portable-readable-reflow-candidate`로 pin했다. detached clean/publishable source와 provider-free Codex install이 green이며 installed tree `0cd7b71a…`, installed SKILL `f0eeca82…`, activation `79911390…`다.
+- seen assay diagnostic은 provenance/install 확인에만 사용했고 promotion에서 제외한다. provider call 0, hook/agent/third-party installer 0이다. 다음은 새 unseen task lock이다.
 
 - 1.9.230은 1.9.225의 반복 실패만 겨냥한 bounded `omd:apply` delta를 작성했다. 모든 현재/planned normal-text pair에서 muted/secondary/supporting token도 exact contrast를 계산하고 4.48을 4.5로 반올림하지 않으며, 실패·미계측 pair는 기존 verified ink/text-role token으로 fail-close한다.
 - reflow는 가장 좁은 조건에서 atomic child가 감싸지기 전에 parent metadata/decision row를 full-row→stack하고 desktop min-width/track 제약을 해제하도록 좁혔다. benchmark selector·fixture literal·새 token은 넣지 않았다. skill quick validation, contract 9/9, experimental exact-copy parity, lint/build가 green이다.
@@ -1312,9 +1315,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.230 exact source commit과 installed skill hash를 새 candidate variant로 pin한다.
-2. 이전 assay/list/card/timeline/routing과 겹치지 않는 unseen non-approval family의 contract를 provider 전에 잠근다.
-3. exact current-vs-candidate 2×3를 preregister하고 candidate UI-Resolved 3/3, paired objective loss 0을 promotion 기준으로 둔다.
+1. 이전 assay/list/card/timeline/routing과 겹치지 않는 unseen non-approval family의 contract를 provider 전에 잠근다.
+2. exact close-latch-vs-readable-reflow 2×3를 preregister하고 task/prompt/starter/DESIGN/runtime/model/effort/timeout equality를 고정한다.
+3. candidate UI-Resolved 3/3, serious/critical contrast 0/3, paired objective loss 0을 promotion 기준으로 둔다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

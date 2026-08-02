@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.231 readable-reflow candidate pinned
+- exact 7915723 source를 새 local-skill variant로 고정했다.
+- detached clean install과 declared name/activation/tree hash가 green이다.
+- seen assay는 provenance diagnostic만 수행했고 provider call은 0이다.
+- 다음은 fresh unseen non-approval task lock이다.
+
 ## 2026-08-02 (Codex) · 1.9.230 readable-reflow delta authored
 - 1.9.225의 4.48 muted-text와 narrow parent-row failure만 skill에 반영했다.
 - 새 token·fixture selector 없이 exact contrast와 parent-first stack을 규정했다.
