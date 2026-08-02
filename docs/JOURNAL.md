@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.278 electrical single-line preregistration
+- close vs conjunctive Luna/high 2×3, 900초/120초/one-cell을 잠갔다.
+- resolved/contrast/proof/host 3/3, zero loss, wall/token +10% gate다.
+- 2.0.0 prospective Tokens-to-Target attempt 1을 함께 잠갔다. provider call 0이다.
+- 다음은 fresh detached sources와 6-cell 준비다.
+
 ## 2026-08-02 (Codex) · 1.9.277 electrical single-line task lock
 - fresh 8-node/7-connection branching topology를 provider 전에 잠갔다.
 - untouched 75/85; red는 exact contrast와 390/320/200% relationship reflow뿐이다.

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.277 electrical single-line task lock · provider call 0
+- 갱신: 2026-08-02 · 1.9.278 electrical single-line preregistration · provider call 0
 
 ## 지금 (현재 위치)
+
+- 1.9.278은 exact close-latch `1d204afe…` vs conjunctive-release `3a414a0a…` Luna/high 2×3를 fresh electrical single-line task에 preregister했다.
+- balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. candidate gate는 resolved/contrast/proof/host 3/3, paired loss 0, mean wall/token 각각 +10% 이하다.
+- 2.0.0 Tokens-to-Target prospective ledger를 attempt 1부터 잠갔다. all 9 frontier gates 전에는 right-censored이며 provider간 token 합산은 금지한다. provider call 0이다. 다음은 fresh detached source와 6-cell root 준비다.
 
 - 1.9.277은 fresh `electrical-single-line-review-v0.1`을 provider 전에 잠갔다. 기존 표/카드/시간표/vertical rack과 다른 source→breaker→bus→junction→4 loads branching topology다.
 - untouched starter는 75/85다. task/state/design/evidence/desktop/keyboard/labels는 green이고 의도한 red는 exact contrast와 390/320/200% page overflow·atomic relationship reflow뿐이다.
