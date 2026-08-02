@@ -170,6 +170,27 @@ distributions. It exposes usage-telemetry coverage and refuses to mark
 efficiency publication-ready unless every valid run has complete input/output
 usage and one consistent execution-control contract.
 
+### Tokens-to-Target
+
+Long-term development efficiency is reported as two cumulative measures through
+the **first preregistered full-goal pass**:
+
+1. `candidate_tokens_to_target` — provider-reported tokens spent by candidate
+   runs through the first passing patch;
+2. `total_experimental_tokens_to_target` — candidate and control spend through
+   that same patch, including timed-out and invalid scheduled runs.
+
+The goal contract and attempt order must be frozen before outcomes are known.
+If no observed patch passes, the result is `right-censored`; it is not reported
+as a completed token cost. Attempts after the first pass are excluded from this
+metric and remain available as ordinary post-promotion evidence.
+
+Fresh input, cached input, output, and reasoning-output telemetry stay separate.
+Missing components are `not-reported`, never zero. Tokens-to-Target values are
+comparable only inside a provider/runtime telemetry stratum with compatible
+token semantics; cross-provider totals are published side by side, not pooled
+into a false common currency.
+
 ## Repetition and reporting
 
 - Patch calibration: 3 trials per cell.

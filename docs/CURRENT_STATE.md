@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.275 conjunctive release exact pin · provider call 0
+- 갱신: 2026-08-02 · 1.9.276 Tokens-to-Target contract · provider call 0
 
 ## 지금 (현재 위치)
+
+- 1.9.276은 장기 목표의 첫 preregistered full pass까지 누적 provider token을 계산한다. candidate-only와 control/timeout/invalid를 포함한 total-experimental 두 분모를 분리했다.
+- 미달성 목표는 right-censored이며, cached/reasoning 등 누락 component는 0이 아니라 null+coverage로 남긴다. provider/runtime별 token 의미가 달라 cross-provider 합산은 금지한다.
+- focused 3/3, lint, diff check가 green이고 provider/hook/agent/third-party installer call 0이다. 다음은 rack과 다른 fresh unseen topology를 provider 전에 lock한다.
 
 - 1.9.275는 exact source `3a414a0a…`를 `omd-portable-conjunctive-release-candidate`로 pin했다. source는 clean/detached/publishable이다.
 - installed tree `2d577464…`, installed SKILL `79428c05…`, activation `79911390…`다. rack은 provenance-only이며 promotion에서 제외한다. provider/hook/agent/third-party installer call 0이다.

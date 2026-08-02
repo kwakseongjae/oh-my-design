@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.276 Tokens-to-Target contract
+- 첫 preregistered goal pass까지 candidate/total-experimental token을 분리 계측한다.
+- 미달성은 right-censored, 누락 component는 null+coverage다.
+- focused 3/3, lint/diff green; provider call 0이다.
+- 다음은 fresh unseen topology lock이다.
+
 ## 2026-08-02 (Codex) · 1.9.275 conjunctive release exact pin
 - exact source `3a414a0a…`를 clean/detached/publishable candidate로 pin했다.
 - installed tree `2d577464…`, SKILL `79428c05…`, activation `79911390…`다.
