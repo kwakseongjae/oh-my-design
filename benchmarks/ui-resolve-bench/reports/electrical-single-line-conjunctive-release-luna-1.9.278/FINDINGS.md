@@ -1,6 +1,6 @@
 # Electrical single-line conjunctive-release transfer — findings
 
-Status: **IN PROGRESS — 4/6 cells complete**
+Status: **IN PROGRESS — 5/6 cells complete**
 
 ## Checkpoint 1 — baseline trial 1
 
@@ -76,3 +76,18 @@ atomic-line contract is not reliably included in the same closure.
 - cumulative candidate/control/total tokens: **991,720 / 1,235,773 / 2,227,493**
 
 The final pair remains diagnostic for variance and attainable ceiling.
+
+## Checkpoint 5 — baseline trial 3
+
+The final close-latch baseline again scored **77/85** and remained unresolved.
+The baseline is now fixed at 77/77/77 with proof and host-policy gates green.
+This removes score-direction ambiguity from the first two candidate gains, but
+does not turn an unresolved candidate into a quality promotion.
+
+- wall time: **164,877ms**
+- provider-reported total tokens: **422,468**
+- cumulative control tokens: **1,658,241**
+- cumulative total experimental tokens: **2,649,961**
+
+The last candidate determines the attainable ceiling and final efficiency
+ratios; it cannot restore the already-failed 3/3 resolved gate.

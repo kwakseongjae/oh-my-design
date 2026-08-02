@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.284 final single-line baseline
+- close r3은 77/85 unresolved; baseline 77/77/77로 고정됐다.
+- proof/host green, wall 164,877ms, 422,468 tokens다.
+- 누적 control 1,658,241 / total 2,649,961 tokens다.
+- 다음은 마지막 conjunctive r3와 최종 판정이다.
+
 ## 2026-08-02 (Codex) · 1.9.283 single-line pair 2
 - candidate 81 vs close 77, 누적 W/T/L 2/0/0이다.
 - candidate resolved 0/2로 decision carrier failure가 반복됐다.
