@@ -1,6 +1,6 @@
 # Production cue all-carrier-set transfer — findings
 
-Status: **4/6 cells complete**
+Status: **5/6 cells complete**
 
 ## Checkpoint 1 — control trial 1
 
@@ -78,3 +78,18 @@ the supplied muted foreground at 4.42:1, producing serious axe
 The candidate now leads quality W/T/L **1/1/0**, but candidate UI-Resolved is
 still **0/2** and the efficiency gate is decisively red. The last pair remains
 diagnostic only.
+
+## Checkpoint 5 — control trial 3
+
+`luna-cue-r3-control` completed valid at **75/85** and is not UI-Resolved. It
+repeated control trial 2: responsive geometry remains red at 390px, 320px, and
+200%, and the 4.42:1 muted foreground produces serious axe contrast findings.
+
+- wall time: **211,217ms**
+- provider-reported total tokens: **489,099**
+- input / cached input / output / reasoning output: **479,366 / 431,104 /
+  9,733 / 4,499**
+- proof execution and installed host policy: pass
+- cumulative attempt-2 experimental tokens: **3,737,534**
+
+Final pair claims are withheld until `luna-cue-r3-carrier-set` completes.

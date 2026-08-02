@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.295 production-cue control r3
+- control r3는 75/85 unresolved, proof/host green이다.
+- responsive와 4.42:1 contrast 실패가 control에서 재현됐다.
+- wall 211,217ms, 489,099 tokens; 누적 3,737,534다.
+- 다음은 마지막 candidate r3다.
+
 ## 2026-08-03 (Codex) · 1.9.294 production-cue pair 2
 - candidate/control 79/75, 둘 다 unresolved; W/T/L 1/1/0이다.
 - handoff carrier 실패가 반복되고 control은 contrast도 남겼다.

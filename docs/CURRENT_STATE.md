@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.294 production-cue pair 2
+- 갱신: 2026-08-03 · 1.9.295 production-cue control r3
 
 ## 지금 (현재 위치)
+
+- 1.9.295 control r3는 valid/policy-green 75/85 unresolved다. 390/320/200% responsive와 4.42:1 muted contrast 실패가 control에서 2회 연속 재현됐다.
+- wall 211,217ms, total 489,099 tokens(input 479,366, cached 431,104, output 9,733, reasoning 4,499)다. attempt-2 누적은 3,737,534다.
+- final pair claim은 보류한다. 다음 locked cell은 마지막 `luna-cue-r3-carrier-set`이다.
 
 - 1.9.294 pair 2는 candidate 79 vs control 75로 +4지만 둘 다 unresolved다. 양쪽 handoff carrier 실패가 반복됐고 control은 4.42:1 muted contrast도 남겼다.
 - pair 2 candidate wall +36.05%, tokens +283.28%다. 2-pair W/T/L 1/1/0, candidate resolved 0/2, mean wall +41.76%, mean tokens +225.92%다.
