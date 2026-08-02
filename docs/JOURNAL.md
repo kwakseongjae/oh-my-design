@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.232 unseen spectrum task locked
+- 연속 7-band allocation topology를 provider 전에 고정했다.
+- untouched starter는 75/85이며 contrast·narrow reflow만 의도대로 red다.
+- 4.4436:1을 반올림하지 않는 transfer test와 parent-first reflow를 함께 격리했다.
+- 다음은 close-latch vs readable-reflow exact 2×3 preregistration이다.
+
 ## 2026-08-02 (Codex) · 1.9.231 readable-reflow candidate pinned
 - exact 7915723 source를 새 local-skill variant로 고정했다.
 - detached clean install과 declared name/activation/tree hash가 green이다.

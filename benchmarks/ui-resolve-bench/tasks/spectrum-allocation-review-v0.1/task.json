@@ -1,0 +1,139 @@
+{
+  "id": "spectrum-allocation-review-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "A radio-observatory frequency-allocation review surface. Preserve every supplied frequency range, allocation identifier, receiver mode, guard-band setting, session name, and review fact without inventing interference, calibration, signal, safety, approval, observation, science, or release outcomes or breaking atomic range and allocation values on narrow screens.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": {
+    "landmarks": {
+      "h1_count": { "exact": 1 },
+      "main_count": { "exact": 1 },
+      "nav_count": { "min": 1 },
+      "footer_count": { "min": 1 }
+    }
+  },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='receiver-option']",
+    "[data-bench='guard-toggle']",
+    "[data-bench='session-form']",
+    "[data-bench='session-name']",
+    "[data-bench='form-status']",
+    "[data-bench='band-item']",
+    "[data-bench='band-range']",
+    "[data-bench='allocation-id']",
+    "[data-bench='compact-control-copy']",
+    "[data-bench-design-role='spectrum-board']",
+    "[data-bench-decision-role='context']",
+    "[data-bench-decision-role='target']",
+    "[data-bench-decision-role='evidence']",
+    "[data-bench-decision-role='state']",
+    "[data-bench-decision-role='action']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='receiver-option']": 3,
+    "[data-bench='guard-toggle']": 1,
+    "[data-bench='session-form']": 1,
+    "[data-bench='session-name']": 1,
+    "[data-bench='form-status']": 1,
+    "[data-bench='band-item']": 7,
+    "[data-bench='band-range']": 7,
+    "[data-bench='allocation-id']": 7,
+    "[data-bench='compact-control-copy']": 1,
+    "[data-bench-design-role='spectrum-board']": 1,
+    "[data-bench-decision-role='context']": 1,
+    "[data-bench-decision-role='target']": 1,
+    "[data-bench-decision-role='evidence']": 1,
+    "[data-bench-decision-role='state']": 1,
+    "[data-bench-decision-role='action']": 1
+  },
+  "journey_oracle": {
+    "choice": {
+      "selector": "[data-bench='receiver-option']",
+      "value_attribute": "data-receiver",
+      "body_dataset": "receiver",
+      "values": ["l-band", "s-band", "wideband"],
+      "count": 3,
+      "initial": "l-band",
+      "selected": "s-band"
+    },
+    "toggle": { "selector": "[data-bench='guard-toggle']" },
+    "form": {
+      "form_selector": "[data-bench='session-form']",
+      "field_selector": "[data-bench='session-name']",
+      "status_selector": "[data-bench='form-status']",
+      "invalid_value": "",
+      "valid_value": "Night 14 allocation review"
+    }
+  },
+  "text_geometry_oracle": {
+    "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "scope_selectors": ["[data-bench='band-item']", "[data-bench-decision-role='context']"],
+    "atomic_scope_selectors": [
+      "[data-bench='band-range']",
+      "[data-bench='allocation-id']",
+      "[data-bench-decision-role='target']",
+      "[data-bench-decision-role='evidence']",
+      "[data-bench-decision-role='state']"
+    ],
+    "compact_copy_selectors": ["[data-bench='compact-control-copy']"],
+    "max_short_text_chars": 40,
+    "max_short_text_lines": 1
+  },
+  "decision_hierarchy_oracle": {
+    "viewports": ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "minimum_action_gap_px": 8,
+    "roles": {
+      "container": "[data-bench-decision-role='context']",
+      "target": "[data-bench-decision-role='target']",
+      "evidence": "[data-bench-decision-role='evidence']",
+      "state": "[data-bench-decision-role='state']",
+      "action": "[data-bench-decision-role='action']"
+    }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:interference cleared|calibration complete|signal confirmed|safety approved|observation ready|science validated|release approved)\\b",
+    "\\btrusted by\\b",
+    "[★☆]{3,}"
+  ],
+  "protected_known_patterns": [
+    "OBS-N14 · Receiver RX-03",
+    "7 supplied bands · 118 MHz total"
+  ],
+  "protected_unknown_selectors": [
+    "blockquote",
+    "[class*='testimonial' i]",
+    "[class*='logo-wall' i]",
+    "[class*='social-proof' i]"
+  ],
+  "design_oracle": {
+    "page_background": "#EEECE6",
+    "primary_action": "#203D3A",
+    "accent": "#A64A32",
+    "ink": "#1B2524",
+    "surface": "#FFFEFA",
+    "border": "#BDB9AE",
+    "muted_text": "#696D6B",
+    "card_radius_px": 0,
+    "control_radius_px": 2,
+    "font_family": {
+      "body_any": ["Arial"],
+      "display_any": ["Georgia"]
+    },
+    "selectors": {
+      "primary_action": "[data-primary-action]",
+      "card": "[data-bench-design-role='spectrum-board']",
+      "display": "h1"
+    }
+  }
+}

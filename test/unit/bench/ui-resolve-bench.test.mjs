@@ -46,6 +46,7 @@ const stagePowerPatchTaskId = "stage-power-patch-routing-v0.1";
 const bookSignatureTaskId = "book-signature-imposition-v0.1";
 const captionCueTaskId = "caption-cue-timing-review-v0.1";
 const assayPlateTaskId = "assay-plate-layout-review-v0.1";
+const spectrumAllocationTaskId = "spectrum-allocation-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1323,6 +1324,39 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter.match(/data-bench="sample-identity"/g)).toHaveLength(12);
     expect(starter).toContain("PLT-07 · Batch BX-2408");
     expect(starter).toContain("CTRL-REF-1");
+    expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
+  });
+
+  it("locks an unseen continuous-spectrum family before readable-reflow validation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", spectrumAllocationTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { values: ["l-band", "s-band", "wideband"], count: 3 },
+        toggle: { selector: "[data-bench='guard-toggle']" },
+      },
+      text_geometry_oracle: {
+        atomic_scope_selectors: expect.arrayContaining([
+          "[data-bench='band-range']",
+          "[data-bench='allocation-id']",
+        ]),
+        max_short_text_lines: 1,
+      },
+      design_oracle: {
+        muted_text: "#696D6B",
+        ink: "#1B2524",
+      },
+    });
+    validateTaskContract(task);
+    const out = prepareVariant("raw-design-md", { task: spectrumAllocationTaskId, outputName: "spectrum-allocation" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="band-item"/g)).toHaveLength(7);
+    expect(starter.match(/data-bench="band-range"/g)).toHaveLength(7);
+    expect(starter.match(/data-bench="allocation-id"/g)).toHaveLength(7);
+    expect(starter).toContain("OBS-N14 · Receiver RX-03");
+    expect(starter).toContain("ALLOC-REF-F3");
     expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
   });
 

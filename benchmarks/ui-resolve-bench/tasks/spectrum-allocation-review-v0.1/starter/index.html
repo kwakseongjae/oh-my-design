@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Northline spectrum allocation review</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#EEECE6;color:#1B2524;font:16px/1.5 Arial,sans-serif}
+    nav,main,footer{max-width:1120px;margin:auto;padding:20px}
+    nav{display:flex;justify-content:space-between;border-bottom:1px solid #BDB9AE}
+    h1,h2{font-family:Georgia,serif;font-weight:400}
+    h1{font-size:46px;line-height:1.06;max-width:760px}
+    .muted,.eyebrow,.band small{color:#696D6B}
+    .controls,.decision{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .control,.spectrum,.decision{background:#FFFEFA;border:1px solid #BDB9AE;padding:18px}
+    .modes{display:flex;gap:8px}
+    button,input{font:inherit;border:1px solid #BDB9AE;border-radius:2px;background:#FFFEFA;padding:10px 12px;min-height:44px}
+    button[aria-pressed=true],[data-primary-action]{background:#203D3A;color:white}
+    .spectrum{margin-top:20px;overflow:hidden}
+    .strip{display:grid;grid-template-columns:1fr 1.3fr .85fr 1.1fr .9fr 1.25fr 1fr;min-width:860px;border:1px solid #BDB9AE}
+    .band{min-width:0;padding:14px 10px;border-right:1px solid #BDB9AE;display:flex;flex-direction:column;gap:6px}
+    .band:last-child{border-right:0}
+    .range,.allocation{white-space:nowrap}
+    .allocation{font-weight:700}
+    .decision{margin-top:20px;grid-template-columns:1.45fr 1fr 1fr auto;align-items:center}
+    .decision>div{display:flex;flex-direction:column;min-width:0}
+    .state{color:#A64A32;font-weight:700}
+    form{display:flex;gap:8px;margin-top:18px;align-items:center}
+    input{flex:1;min-width:0}
+    :focus-visible{outline:3px solid #203D3A;outline-offset:2px}
+    .status{min-height:24px}
+    @media(max-width:600px){
+      h1{font-size:32px}
+      .controls{grid-template-columns:1fr}
+      .decision{grid-template-columns:1fr 1fr}
+      .strip{min-width:0;grid-template-columns:repeat(2,minmax(0,1fr))}
+      .band{border-bottom:1px solid #BDB9AE}
+      .compact{font-size:12px}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body data-receiver="l-band">
+  <nav><strong>NORTHLINE</strong><span class="muted">Observatory operations</span></nav>
+  <main>
+    <header>
+      <p class="eyebrow">SPECTRUM ALLOCATION REVIEW</p>
+      <h1>Keep every supplied band in view.</h1>
+      <p class="muted">Review OBS-N14 · Receiver RX-03 before the allocation moves to handoff.</p>
+    </header>
+    <section class="controls" aria-label="Review controls">
+      <div class="control"><strong>Receiver mode</strong><div class="modes"><button type="button" data-bench="receiver-option" data-receiver="l-band" aria-pressed="true">L-band</button><button type="button" data-bench="receiver-option" data-receiver="s-band" aria-pressed="false">S-band</button><button type="button" data-bench="receiver-option" data-receiver="wideband" aria-pressed="false">Wideband</button></div></div>
+      <div class="control"><strong>Guard-band notes</strong><button type="button" data-bench="guard-toggle" aria-pressed="false">Include guard-band notes</button></div>
+      <div class="control compact" data-bench="compact-control-copy"><strong>Supplied scope</strong><div>7 supplied bands · 118 MHz total</div></div>
+    </section>
+    <section class="spectrum" data-bench-design-role="spectrum-board" aria-labelledby="spectrum-title">
+      <h2 id="spectrum-title">Ordered spectrum</h2>
+      <div class="strip">
+        <div class="band" data-bench="band-item"><span class="range" data-bench="band-range">1370–1384 MHz</span><span class="allocation" data-bench="allocation-id">ALLOC-RX-A1</span><small>14 MHz</small></div>
+        <div class="band" data-bench="band-item"><span class="range" data-bench="band-range">1384–1402 MHz</span><span class="allocation" data-bench="allocation-id">ALLOC-RX-B7</span><small>18 MHz</small></div>
+        <div class="band" data-bench="band-item"><span class="range" data-bench="band-range">1402–1414 MHz</span><span class="allocation" data-bench="allocation-id">ALLOC-CAL-C2</span><small>12 MHz</small></div>
+        <div class="band" data-bench="band-item"><span class="range" data-bench="band-range">1414–1430 MHz</span><span class="allocation" data-bench="allocation-id">ALLOC-RX-D4</span><small>16 MHz</small></div>
+        <div class="band" data-bench="band-item"><span class="range" data-bench="band-range">1430–1444 MHz</span><span class="allocation" data-bench="allocation-id">ALLOC-RX-E9</span><small>14 MHz</small></div>
+        <div class="band" data-bench="band-item"><span class="range" data-bench="band-range">1444–1468 MHz</span><span class="allocation" data-bench="allocation-id">ALLOC-REF-F3</span><small>24 MHz</small></div>
+        <div class="band" data-bench="band-item"><span class="range" data-bench="band-range">1468–1488 MHz</span><span class="allocation" data-bench="allocation-id">ALLOC-RX-G6</span><small>20 MHz</small></div>
+      </div>
+    </section>
+    <section class="decision" data-bench-decision-role="context">
+      <div><small>TARGET</small><strong data-bench-decision-role="target">OBS-N14 · RX-03</strong></div>
+      <div><small>EVIDENCE</small><span data-bench-decision-role="evidence">7 supplied allocations</span></div>
+      <div><small>STATE</small><span class="state" data-bench-decision-role="state">Allocation review open</span></div>
+      <button type="button" data-primary-action data-bench-decision-role="action">Open handoff</button>
+    </section>
+    <form data-bench="session-form">
+      <label for="session">Session name</label>
+      <input id="session" data-bench="session-name">
+      <button data-primary-action>Save review</button>
+    </form>
+    <p class="status" data-bench="form-status" aria-live="polite"></p>
+  </main>
+  <footer class="muted">Northline · supplied allocation evidence only</footer>
+  <script>
+    const options=[...document.querySelectorAll('[data-bench="receiver-option"]')];
+    options.forEach(button=>button.addEventListener('click',()=>{options.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));document.body.dataset.receiver=button.dataset.receiver}));
+    const toggle=document.querySelector('[data-bench="guard-toggle"]');
+    toggle.addEventListener('click',()=>toggle.setAttribute('aria-pressed',String(toggle.getAttribute('aria-pressed')!=='true')));
+    const form=document.querySelector('[data-bench="session-form"]');
+    const field=document.querySelector('[data-bench="session-name"]');
+    const status=document.querySelector('[data-bench="form-status"]');
+    form.addEventListener('submit',event=>{event.preventDefault();if(!field.value.trim()){field.setAttribute('aria-invalid','true');status.textContent='Enter a session name.';field.focus();return}field.removeAttribute('aria-invalid');status.textContent=`Saved ${field.value.trim()}.`});
+  </script>
+</body>
+</html>
