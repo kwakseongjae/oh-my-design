@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.281 single-line pair 1
+- conjunctive 79 vs close 77, candidate +2지만 둘 다 unresolved다.
+- candidate는 contrast/diagram carrier를 닫고 decision atomic lines를 남겼다.
+- wall -17.29%, tokens -7.92%; 누적 spend 1,043,841이다.
+- promotion 불가; 다음 r2 candidate부터 recurrence를 진단한다.
+
 ## 2026-08-02 (Codex) · 1.9.280 first single-line baseline
 - close r1은 valid/policy-green 77/85 unresolved다.
 - 390은 green, 320/200% atomic line budget과 contrast는 red다.

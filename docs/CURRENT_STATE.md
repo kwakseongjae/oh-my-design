@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.280 first electrical single-line baseline · 1/6 cells
+- 갱신: 2026-08-02 · 1.9.281 electrical single-line pair 1 · 2/6 cells
 
 ## 지금 (현재 위치)
+
+- 1.9.281 pair 1은 conjunctive 79/85 vs close 77/85, candidate +2이며 둘 다 unresolved다. candidate는 contrast와 diagram/page containment를 닫았지만 decision target/state one-line atomic budget을 390/320/200% 모두 남겼다.
+- candidate proof/host는 pass했고 wall -17.29%, total tokens -7.92%다. 누적 prospective spend는 candidate 500,414, control 543,427, total 1,043,841이다.
+- candidate resolved 0/1이라 3/3 promotion은 이미 불가능하다. 남은 2 pair는 recurrence와 최소 repair 진단용이다. 다음 locked cell은 `luna-single-line-r2-conjunctive`다.
 
 - 1.9.280 `luna-single-line-r1-close`는 valid/policy-green 77/85, UI-Resolved false다. desktop/390은 green이나 320/200% short atomic line budget과 exact contrast가 red다.
 - wall 255,966ms, provider total 543,427 tokens(input 535,072, cached 480,512, output 8,355, reasoning 3,488)로 telemetry가 complete다. 이 spend는 2.0.0 total-experimental Tokens-to-Target에 포함된다.

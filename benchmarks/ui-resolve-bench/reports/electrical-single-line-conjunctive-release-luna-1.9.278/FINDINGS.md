@@ -1,6 +1,6 @@
 # Electrical single-line conjunctive-release transfer — findings
 
-Status: **IN PROGRESS — 1/6 cells complete**
+Status: **IN PROGRESS — 2/6 cells complete**
 
 ## Checkpoint 1 — baseline trial 1
 
@@ -24,3 +24,24 @@ one-line budget.
 No paired claim is available until `luna-single-line-r1-conjunctive` completes.
 The 2.0.0 Tokens-to-Target goal remains right-censored; this spend is retained
 in total experimental cost even if the bounded patch later fails.
+
+## Pair 1
+
+The conjunctive candidate scored **79/85** against the close-latch baseline's
+**77/85**, a paired delta of **+2**. Both are unresolved. The candidate closed
+all serious/critical contrast violations and removed page overflow while
+preserving all eight nodes, seven connections, four branches, interactions,
+and evidence. It did not keep the decision target and state within the
+registered one-line atomic budget at 390px, 320px, or 200%. The foreground and
+diagram-carrier outcomes were conjunctive, but the related decision carrier was
+not included in that closure.
+
+- candidate wall: **211,703ms** vs baseline **255,966ms** (**-17.29%**)
+- candidate total tokens: **500,414** vs baseline **543,427** (**-7.92%**)
+- candidate input/cached/output/reasoning: **489,829 / 432,640 / 10,585 / 5,803**
+- candidate proof execution and installed host policy: pass
+- cumulative prospective experimental tokens: **1,043,841**
+
+Because candidate UI-Resolved 3/3 is now impossible, this patch cannot be
+promoted. The remaining pairs are diagnostic evidence for recurrence and the
+smallest next repair; they cannot restore promotion eligibility.
