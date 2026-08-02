@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.233 readable-reflow 2×3 PREREGISTERED
+- 갱신: 2026-08-02 · 1.9.234 readable-reflow 2×3 PREPARED
 
 ## 지금 (현재 위치)
+
+- 1.9.234는 fresh `/private/tmp/u19233-vendors` exact detached sources와 `/private/tmp/u19233` 6 Git cells를 provider call 0으로 PREPARED했다.
+- core prompt `84d07dae…`, runtime prompt `75402ac…`, product `4828618f…`, DESIGN `ba897c62…`, activation `79911390…`, Codex/Luna/high/900초와 installed proof policy가 전부 동일하다. sole delta는 close tree `7336c037…` vs readable tree `0cd7b71a…`다.
+- all sources clean/detached/publishable, all cells unstarted다. 다음 허용 셀은 `luna-spectrum-r1-close` 하나이며 max-new 1, 120초 pacing, no same-root retry를 유지한다.
 
 - 1.9.233은 exact close-latch `1d204afe…` vs readable-reflow `7915723…` Luna/high 2×3를 provider 전에 잠갔다. balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다.
 - 새 `shared_host_policy` matrix contract가 installed opt-in proof policy를 양 skill arm에 똑같이 설치한다. 즉 sole delta는 skill source뿐이며 delivery ready, actual browser attempt ≥1, unblocked violation 0을 모든 셀에 요구한다.
@@ -1323,9 +1327,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fresh `/private/tmp/u19233-vendors` exact detached sources와 `/private/tmp/u19233` 6 cells를 provider call 전에 prepare한다.
-2. task/prompt/starter/DESIGN/runtime/model/effort/timeout/proof-policy equality와 sole skill delta를 hash attestation한다.
-3. 첫 locked cell부터 max-new 1로 실행하며 candidate UI-Resolved 3/3, contrast 0/3, paired loss 0을 판정한다.
+1. `luna-spectrum-r1-close` 한 셀만 실행·평가·동결한다.
+2. execution/identity/attribution/policy gate가 green이면 locked order를 max-new 1로 이어간다.
+3. 6/6 뒤 candidate UI-Resolved 3/3, contrast 0/3, paired loss 0을 판정한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

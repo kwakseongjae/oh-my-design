@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.234 readable-reflow matrix prepared
+- fresh exact sources와 six Git cells를 provider call 0으로 준비했다.
+- prompt/product/DESIGN/runtime/model/effort/timeout/proof policy equality가 green이다.
+- sole delta는 close-latch tree와 readable-reflow tree뿐이다.
+- 다음 허용 실행은 `luna-spectrum-r1-close` 한 셀이다.
+
 ## 2026-08-02 (Codex) · 1.9.233 readable-reflow comparison preregistered
 - close-latch vs readable-reflow exact Luna/high 2×3를 provider 전에 잠갔다.
 - shared installed proof policy로 양 arm의 실행 경계를 동일하게 만들었다.
