@@ -726,7 +726,7 @@ function assertCheckpointedResume(state, plan, matrixRoot, planSha, preparationS
     || expectedAttestationIds.some(
       (id) => !validPreparedCellAttestation(
         state.prepared_cell_attestations[id],
-        { hostPolicy: plan.host_policy_comparison !== undefined },
+        { hostPolicy: plan.host_policy_comparison !== undefined || plan.shared_host_policy !== undefined },
       ),
     )
   ) {

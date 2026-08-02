@@ -94,6 +94,39 @@ describe("UI-Resolve run matrix preparation", () => {
     expect(() => validateRunMatrixPlan(current)).toThrow("require_delivery_ready must be boolean");
   });
 
+  it("installs one equal proof policy across skill-comparison cells", () => {
+    const shared = {
+      target_runtime: "codex",
+      mode: "installed-opt-in",
+      require_installed_state: true,
+      require_delivery_ready: true,
+      require_browser_attempt: true,
+      max_unblocked_browser_recovery_count: 0,
+      max_unblocked_duplicate_static_closure_count: 0,
+      max_unblocked_verification_after_ready_count: 0,
+    };
+    const common = {
+      task_id: "spectrum-allocation-review-v0.1",
+      runtime: "codex",
+      model_id: "gpt-5.6-luna",
+      effort: "high",
+      timeout_seconds: 900,
+      trial_index: 1,
+      host_policy_mode: "installed-opt-in",
+    };
+    const current = plan({
+      shared_host_policy: shared,
+      cells: [
+        { ...common, id: "close", system_id: "close", variant_id: "omd-portable-proof-close-latch-candidate" },
+        { ...common, id: "readable", system_id: "readable", variant_id: "omd-portable-readable-reflow-candidate" },
+      ],
+    });
+    expect(validateRunMatrixPlan(current).shared_host_policy).toEqual(shared);
+
+    current.cells[1].host_policy_mode = "controller-observation";
+    expect(() => validateRunMatrixPlan(current)).toThrow("must match shared_host_policy.mode");
+  });
+
   it("accepts schema 0.2 only with suite, product, and purpose provenance", () => {
     const current = plan({
       schema_version: "0.2",

@@ -233,6 +233,10 @@ export function validateRunMatrixPlan(plan) {
     }
   }
 
+  if (plan.host_policy_comparison !== undefined && plan.shared_host_policy !== undefined) {
+    throw new Error("matrix cannot combine host_policy_comparison and shared_host_policy");
+  }
+
   if (plan.host_policy_comparison !== undefined) {
     const comparison = plan.host_policy_comparison;
     if (!comparison || typeof comparison !== "object" || Array.isArray(comparison)) {
@@ -259,6 +263,36 @@ export function validateRunMatrixPlan(plan) {
     ]) {
       if (!Number.isInteger(comparison[field]) || comparison[field] < 0) {
         throw new Error(`matrix host_policy_comparison.${field} must be a non-negative integer`);
+      }
+    }
+  }
+
+  if (plan.shared_host_policy !== undefined) {
+    const shared = plan.shared_host_policy;
+    if (!shared || typeof shared !== "object" || Array.isArray(shared)) {
+      throw new Error("matrix shared_host_policy must be an object");
+    }
+    if (shared.target_runtime !== "codex") {
+      throw new Error("matrix shared_host_policy.target_runtime must be codex");
+    }
+    if (shared.mode !== "installed-opt-in") {
+      throw new Error("matrix shared_host_policy.mode must be installed-opt-in");
+    }
+    if (shared.require_installed_state !== true) {
+      throw new Error("matrix shared_host_policy.require_installed_state must be true");
+    }
+    for (const field of ["require_delivery_ready", "require_browser_attempt"]) {
+      if (shared[field] !== undefined && typeof shared[field] !== "boolean") {
+        throw new Error(`matrix shared_host_policy.${field} must be boolean`);
+      }
+    }
+    for (const field of [
+      "max_unblocked_browser_recovery_count",
+      "max_unblocked_duplicate_static_closure_count",
+      "max_unblocked_verification_after_ready_count",
+    ]) {
+      if (!Number.isInteger(shared[field]) || shared[field] < 0) {
+        throw new Error(`matrix shared_host_policy.${field} must be a non-negative integer`);
       }
     }
   }
@@ -291,8 +325,15 @@ export function validateRunMatrixPlan(plan) {
       if (cell.runtime !== plan.host_policy_comparison.target_runtime) {
         throw new Error(`${label}.runtime must match host_policy_comparison.target_runtime`);
       }
+    } else if (plan.shared_host_policy) {
+      if (cell.host_policy_mode !== plan.shared_host_policy.mode) {
+        throw new Error(`${label}.host_policy_mode must match shared_host_policy.mode`);
+      }
+      if (cell.runtime !== plan.shared_host_policy.target_runtime) {
+        throw new Error(`${label}.runtime must match shared_host_policy.target_runtime`);
+      }
     } else if (cell.host_policy_mode !== undefined) {
-      throw new Error(`${label}.host_policy_mode requires matrix host_policy_comparison`);
+      throw new Error(`${label}.host_policy_mode requires matrix host policy configuration`);
     }
     const pairKey = `${cell.task_id}\0${cell.trial_index}\0${cell.system_id}`;
     if (pairKeys.has(pairKey)) throw new Error(`duplicate task/trial/system cell: ${pairKey.replaceAll("\0", "/")}`);
@@ -380,7 +421,8 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
         stdio: "pipe",
       });
       const manifest = readJson(join(workspace, ".benchmark", "manifest.json"));
-      const hostPolicy = plan.host_policy_comparison
+      const hostPolicyConfig = plan.host_policy_comparison ?? plan.shared_host_policy ?? null;
+      const hostPolicy = hostPolicyConfig
         ? prepareHostPolicyCell(
             resolve(fileURLToPath(new URL("../../..", import.meta.url))),
             workspace,
@@ -411,7 +453,7 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
           : null,
         attribution_scope: plan.attribution_scope ?? "provider-observed-only",
         host_policy: hostPolicy,
-        host_policy_gate: hostPolicy ? plan.host_policy_comparison : null,
+        host_policy_gate: hostPolicy ? hostPolicyConfig : null,
         workspace,
         task_version: manifest.task.version,
         task_prompt_sha256: manifest.task.core_prompt_sha256,

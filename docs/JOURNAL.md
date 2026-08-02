@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.233 readable-reflow comparison preregistered
+- close-latch vs readable-reflow exact Luna/high 2×3를 provider 전에 잠갔다.
+- shared installed proof policy로 양 arm의 실행 경계를 동일하게 만들었다.
+- UI-Resolved 3/3, contrast 0/3, paired loss 0을 candidate gate로 고정했다.
+- 다음은 fresh 6-cell preparation과 equality attestation이다.
+
 ## 2026-08-02 (Codex) · 1.9.232 unseen spectrum task locked
 - 연속 7-band allocation topology를 provider 전에 고정했다.
 - untouched starter는 75/85이며 contrast·narrow reflow만 의도대로 red다.

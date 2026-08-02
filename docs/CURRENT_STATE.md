@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.232 unseen spectrum-allocation task LOCKED
+- 갱신: 2026-08-02 · 1.9.233 readable-reflow 2×3 PREREGISTERED
 
 ## 지금 (현재 위치)
+
+- 1.9.233은 exact close-latch `1d204afe…` vs readable-reflow `7915723…` Luna/high 2×3를 provider 전에 잠갔다. balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다.
+- 새 `shared_host_policy` matrix contract가 installed opt-in proof policy를 양 skill arm에 똑같이 설치한다. 즉 sole delta는 skill source뿐이며 delivery ready, actual browser attempt ≥1, unblocked violation 0을 모든 셀에 요구한다.
+- 승격 gate는 candidate UI-Resolved 3/3, serious/critical contrast 0/3, paired objective loss 0이다. provider call 0이며 다음은 fresh `/private/tmp/u19233` 6-cell preparation과 equality attestation이다.
 
 - 1.9.232는 fresh `spectrum-allocation-review-v0.1`을 provider 전에 잠갔다. 기존 list/card/timeline/routing/approval/assay와 다른 연속 7-band topology이며 untouched starter는 75/85다.
 - task/state/design/evidence/desktop/keyboard는 green이다. 의도한 red는 `#696D6B` on `#EEECE6` exact 4.4436:1 contrast와 390/320/200% atomic metadata·parent-row reflow뿐이다. prompt `84d07dae…`, starter product `4828618f…`, provider call 0이다.
@@ -1319,9 +1323,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact close-latch-vs-readable-reflow 2×3를 preregister하고 task/prompt/starter/DESIGN/runtime/model/effort/timeout/proof-policy equality를 고정한다.
-2. fresh roots 6개를 provider call 전에 prepare하고 sole-delta/hash attestation을 통과시킨다.
-3. candidate UI-Resolved 3/3, serious/critical contrast 0/3, paired objective loss 0을 promotion 기준으로 둔다.
+1. fresh `/private/tmp/u19233-vendors` exact detached sources와 `/private/tmp/u19233` 6 cells를 provider call 전에 prepare한다.
+2. task/prompt/starter/DESIGN/runtime/model/effort/timeout/proof-policy equality와 sole skill delta를 hash attestation한다.
+3. 첫 locked cell부터 max-new 1로 실행하며 candidate UI-Resolved 3/3, contrast 0/3, paired loss 0을 판정한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
