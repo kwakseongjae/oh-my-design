@@ -38,6 +38,10 @@ type JsonObject = Record<string, unknown>;
 
 const SOURCE_DIR = join('benchmarks', 'ui-resolve-bench', 'scripts');
 const DEST_DIR = join('hooks', 'omd-proof-policy');
+const PROOF_POLICY_MATCHERS: Record<ProofPolicyTarget, string> = {
+  'claude-code': 'Bash|Edit|Write|MultiEdit',
+  codex: 'Bash|apply_patch|Edit|Write|mcp__agent-browser__browser_.*',
+};
 
 function isJsonObject(value: unknown): value is JsonObject {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -68,9 +72,7 @@ export function proofPolicyCommand(target: ProofPolicyTarget): string {
 
 function proofHookGroup(target: ProofPolicyTarget): JsonObject {
   return {
-    matcher: target === 'claude-code'
-      ? 'Bash|Edit|Write|MultiEdit'
-      : 'Bash|apply_patch|Edit|Write',
+    matcher: PROOF_POLICY_MATCHERS[target],
     hooks: [{
       type: 'command',
       command: proofPolicyCommand(target),
@@ -251,10 +253,16 @@ export function removeProofPolicy(
   return results;
 }
 
-function hasExactHook(config: JsonObject, event: string, target: ProofPolicyTarget): boolean {
+function hasExactHook(
+  config: JsonObject,
+  event: string,
+  target: ProofPolicyTarget,
+  requireMatcher = false,
+): boolean {
   if (!isJsonObject(config.hooks) || !Array.isArray(config.hooks[event])) return false;
   return config.hooks[event].some((group) =>
     isJsonObject(group) &&
+    (!requireMatcher || group.matcher === PROOF_POLICY_MATCHERS[target]) &&
     Array.isArray(group.hooks) &&
     group.hooks.some((hook) => isProofPolicyHook(hook, target)));
 }
@@ -287,7 +295,7 @@ export function proofPolicyIssues(root: string, target: ProofPolicyTarget): stri
   if (!parsed) issues.push(`${target} proof-policy hook config is missing or invalid`);
   else {
     for (const event of ['PreToolUse', 'PostToolUse', 'Stop']) {
-      if (!hasExactHook(parsed, event, target)) {
+      if (!hasExactHook(parsed, event, target, event !== 'Stop')) {
         issues.push(`${target} proof-policy hook is not activated for ${event}`);
       }
     }

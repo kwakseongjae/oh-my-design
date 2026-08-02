@@ -27,6 +27,17 @@ const edit = (tool_name, tool_input) => ({
   tool_input,
   tool_response: { status: "completed" },
 });
+const nativePre = (tool_name, tool_input = {}) => ({
+  hook_event_name: "PreToolUse",
+  tool_name,
+  tool_input,
+});
+const nativePost = (tool_name, tool_input = {}, response = { status: "completed" }) => ({
+  hook_event_name: "PostToolUse",
+  tool_name,
+  tool_input,
+  tool_response: response,
+});
 
 function run(payloads) {
   return payloads.reduce(applyHookPayload, initialProofPolicyState());
@@ -88,6 +99,43 @@ describe("proof policy host hook mapper", () => {
       delivery: "blocked",
     });
     expect(state.decisions.at(-1)).toMatchObject({ reason: "static-closure-closed" });
+  });
+
+  it("observes native Codex browser tools without consuming session-management calls", () => {
+    const state = run([
+      edit("apply_patch", {
+        command: "*** Begin Patch\n*** Update File: /tmp/run/index.html\n*** End Patch",
+      }),
+      pre("npm test"),
+      post("npm test"),
+      nativePre("mcp__agent-browser__browser_new_session", { viewport: { width: 390 } }),
+      nativePost("mcp__agent-browser__browser_new_session", {}, { status: "failed" }),
+      nativePre("mcp__agent-browser__browser_navigate", { url: "file:///tmp/run/index.html" }),
+      nativePost(
+        "mcp__agent-browser__browser_navigate",
+        { url: "file:///tmp/run/index.html" },
+        { isError: true },
+      ),
+    ]);
+    expect(state).toMatchObject({
+      browser_proof: "unresolved",
+      browser_attempts: 1,
+      delivery: "ready",
+    });
+    expect(state.decisions.map((entry) => entry.reason)).toContain("browser-proof-unresolved");
+  });
+
+  it("blocks a second native browser mechanism after the attempt budget is consumed", () => {
+    const state = run([
+      edit("Edit", { file_path: "/tmp/run/index.html" }),
+      pre("npm test"),
+      post("npm test"),
+      nativePre("mcp__agent-browser__browser_navigate", { url: "file:///tmp/run/index.html" }),
+      nativePost("mcp__agent-browser__browser_navigate", {}, { isError: true }),
+      nativePre("mcp__agent-browser__browser_navigate", { url: "data:text/html,test" }),
+    ]);
+    expect(state.violations.browser_recovery).toBe(1);
+    expect(proofPolicyHookDecision(state)?.hookSpecificOutput.permissionDecision).toBe("deny");
   });
 
   it("produces the same compliant state from Claude and Codex edit shapes", () => {

@@ -1,4 +1,8 @@
-import { isProductEditPath, classifyProofCommand } from "./proof-trace-contract.mjs";
+import {
+  isProductEditPath,
+  classifyProofCommand,
+  classifyProofTool,
+} from "./proof-trace-contract.mjs";
 import { applyProofPolicyEvent } from "./proof-policy-state.mjs";
 
 function eventName(payload) {
@@ -72,10 +76,13 @@ export function mapHookPayloadToProofEvent(payload, state) {
     return productEdit && hookToolOutcome(payload) !== "failed" ? { type: "product-edit" } : null;
   }
 
-  if (tool !== "Bash") return null;
-  const command = hookCommand(payload);
-  if (!command) return null;
-  const classification = classifyProofCommand(command);
+  const classification = tool === "Bash"
+    ? classifyProofCommand(hookCommand(payload))
+    : classifyProofTool(tool);
+  if (tool === "Bash" && !hookCommand(payload)) return null;
+  if (!classification.browser && !classification.recovery_probe && !classification.static_verification) {
+    return null;
+  }
 
   if (event === "PreToolUse") {
     if (state.revision === 0) return null;

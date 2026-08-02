@@ -24,7 +24,7 @@ export const PROOF_POLICY_FILES = Object.freeze([
 ]);
 
 const POLICY_COMMAND = "node \"$(git rev-parse --show-toplevel)/.codex/hooks/omd-proof-policy/proof-policy-hook.mjs\"";
-const POLICY_MATCHER = "Bash|apply_patch|Edit|Write";
+const POLICY_MATCHER = "Bash|apply_patch|Edit|Write|mcp__agent-browser__browser_.*";
 
 function stripManagedMarker(content) {
   return content.replace(/^\/\/ omd:installed-hook sha256=[0-9a-f]{64}\r?\n/m, "");

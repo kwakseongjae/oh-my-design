@@ -454,6 +454,30 @@ describe('omd doctor', () => {
     expect(report.channels.find((channel) => channel.id === 'codex')?.issues)
       .not.toEqual(expect.arrayContaining([expect.stringContaining('proof-policy')]));
 
+    const codexHooksPath = join(root, '.codex/hooks.json');
+    const codexHooks = JSON.parse(readFileSync(codexHooksPath, 'utf8'));
+    for (const event of ['PreToolUse', 'PostToolUse']) {
+      const managed = codexHooks.hooks[event].find((group: { hooks?: Array<{ command?: string }> }) =>
+        group.hooks?.some((hook) => hook.command?.includes('omd-proof-policy')));
+      managed.matcher = 'Bash|apply_patch|Edit|Write';
+    }
+    writeFileSync(codexHooksPath, `${JSON.stringify(codexHooks, null, 2)}\n`);
+    const staleMatcher = collectDoctorReport({ dir: root }).channels.find(
+      (channel) => channel.id === 'codex',
+    );
+    expect(staleMatcher?.ready).toBe(false);
+    expect(staleMatcher?.issues).toEqual(expect.arrayContaining([
+      'codex proof-policy hook is not activated for PreToolUse',
+      'codex proof-policy hook is not activated for PostToolUse',
+    ]));
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['codex'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(0);
+
     writeFileSync(
       join(root, '.codex/hooks/omd-proof-policy/proof-policy-state.mjs'),
       '// locally modified\n',

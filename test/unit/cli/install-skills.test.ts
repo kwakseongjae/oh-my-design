@@ -977,6 +977,7 @@ describe('install-skills', () => {
     expect(enabled.description).toBe('user config');
     expect(JSON.stringify(enabled)).toContain('node ./my-codex-hook.mjs');
     expect(JSON.stringify(enabled)).toContain('.codex/hooks/omd-proof-policy/proof-policy-hook.mjs');
+    expect(JSON.stringify(enabled)).toContain('mcp__agent-browser__browser_.*');
     expect(existsSync(join(
       root,
       '.codex/hooks/omd-proof-policy/proof-policy-hook.mjs',

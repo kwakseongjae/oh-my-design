@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   classifyProofCommand,
+  classifyProofTool,
   classifyProofTrace,
   evaluateProofExecutionGate,
   isProductEditPath,
@@ -27,6 +28,11 @@ const codexEdit = (path = "/tmp/run/index.html") => ({
 const codexCommand = (command) => ({
   type: "item.started",
   item: { type: "command_execution", command },
+});
+
+const codexNativeBrowser = (tool, server = "agent-browser") => ({
+  type: "item.started",
+  item: { type: "mcp_tool_call", server, tool, arguments: {} },
 });
 
 describe("proof trace contract", () => {
@@ -58,6 +64,40 @@ describe("proof trace contract", () => {
       recovery_probe: false,
       static_verification: false,
       neutral: true,
+    });
+  });
+
+  it("classifies native browser proof separately from session management", () => {
+    expect(classifyProofTool("mcp__agent-browser__browser_navigate")).toMatchObject({
+      browser: true,
+      neutral: false,
+    });
+    expect(classifyProofTool("mcp__agent-browser__browser_new_session")).toMatchObject({
+      browser: false,
+      neutral: true,
+    });
+    expect(classifyProofTool("mcp__node_repl__js")).toMatchObject({
+      browser: false,
+      neutral: false,
+    });
+  });
+
+  it("includes native browser calls in the offline proof trace", () => {
+    const result = classifyProofTrace([
+      codexEdit(),
+      codexCommand("npm test"),
+      codexNativeBrowser("browser_new_session"),
+      codexNativeBrowser("browser_navigate"),
+      codexNativeBrowser("browser_navigate"),
+    ]);
+    expect(result).toMatchObject({
+      runtime: "codex",
+      analyzable: true,
+      static_closure_count: 1,
+      browser_mechanism_count: 2,
+      browser_recovery_count: 1,
+      verification_after_ready_count: 1,
+      compliance_pass: false,
     });
   });
 
