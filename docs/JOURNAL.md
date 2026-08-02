@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.280 first single-line baseline
+- close r1은 valid/policy-green 77/85 unresolved다.
+- 390은 green, 320/200% atomic line budget과 contrast는 red다.
+- wall 255,966ms, total 543,427 tokens; usage telemetry complete다.
+- 다음은 paired conjunctive r1이다.
+
 ## 2026-08-02 (Codex) · 1.9.279 electrical single-line matrix prepared
 - exact detached 1.9.191/1.9.274 sources와 6 Git cells를 준비했다.
 - task/prompt/product/DESIGN/activation/runtime/policy equality가 green이다.

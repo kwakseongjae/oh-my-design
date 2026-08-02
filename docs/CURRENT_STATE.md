@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.279 electrical single-line matrix prepared · provider call 0
+- 갱신: 2026-08-02 · 1.9.280 first electrical single-line baseline · 1/6 cells
 
 ## 지금 (현재 위치)
+
+- 1.9.280 `luna-single-line-r1-close`는 valid/policy-green 77/85, UI-Resolved false다. desktop/390은 green이나 320/200% short atomic line budget과 exact contrast가 red다.
+- wall 255,966ms, provider total 543,427 tokens(input 535,072, cached 480,512, output 8,355, reasoning 3,488)로 telemetry가 complete다. 이 spend는 2.0.0 total-experimental Tokens-to-Target에 포함된다.
+- 아직 baseline 단일 셀이므로 paired claim은 없다. 다음 locked cell은 `luna-single-line-r1-conjunctive`다.
 
 - 1.9.279는 fresh detached `/private/tmp/u19279-vendors/{omd-1.9.191,omd-1.9.274}`와 `/private/tmp/u19279` 6 Git cells를 provider call 0으로 PREPARED했다.
 - core `0daf594c…`, runtime prompt `02cde37b…`, product `b72cc067…`, DESIGN `36b1851c…`, activation `79911390…`, Luna/high/900초와 installed proof policy가 같다. sole delta는 skill tree `7336c037…` vs `2d577464…`다.
