@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Meridian transit stop timetable review</title>
+  <style>
+    :root{--canvas:#F3F1EA;--surface:#FCFBF7;--ink:#17211F;--muted:#66716C;--border:#A9B2AC;--action:#173F3A;--signal:#D96A3A}
+    *{box-sizing:border-box} body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.5 Arial,sans-serif} h1{font:48px/1.04 Georgia,serif;margin:8px 0 14px;max-width:760px} button,input{font:inherit;border:1px solid var(--border);border-radius:2px;background:var(--surface);color:var(--ink);min-height:44px} button{padding:10px 16px;cursor:pointer} button[aria-pressed=true],[data-primary-action]{background:var(--action);color:white} input{padding:10px 12px;width:100%} .shell{max-width:1180px;margin:auto;padding:34px 28px 52px} nav{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:16px} .eyebrow,small{font-size:11px;letter-spacing:.16em;text-transform:uppercase}.muted{color:var(--muted)} .intro{margin:42px 0 28px}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.toggle-line{display:flex;gap:12px;align-items:center;margin:18px 0}.express-note{border-left:3px solid var(--signal);padding:8px 12px}.timetable-frame{border:1px solid var(--border);background:var(--surface);padding:18px}.timetable{width:100%;border-collapse:collapse;table-layout:fixed;min-width:760px}.timetable th,.timetable td{border-bottom:1px solid var(--border);padding:14px 10px;text-align:left}.timetable thead th{font-size:12px;letter-spacing:.05em}.timetable tbody th{font-family:monospace}.time{font-variant-numeric:tabular-nums}.decision{display:grid;grid-template-columns:1.2fr 1fr 1fr auto;gap:18px;align-items:end;border:1px solid var(--border);background:var(--surface);margin-top:22px;padding:20px}.decision div{display:grid;gap:5px}.decision strong{font-size:18px}.state{color:var(--signal);font-weight:700}.form-card{border-top:1px solid var(--border);margin-top:26px;padding-top:24px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}.field{display:grid;gap:7px}.status{grid-column:1/-1;min-height:24px}.compact{white-space:nowrap} footer{margin-top:32px;border-top:1px solid var(--border);padding-top:18px}
+    @media(max-width:720px){.shell{padding:22px 16px 36px}h1{font-size:38px}.timetable-frame{padding:10px}.timetable{min-width:700px}.timetable [data-bench="service-id"],.timetable [data-bench="stop-id"]{word-break:break-all}.decision{grid-template-columns:1fr 1fr}.decision [data-bench-decision-role="action"]{grid-column:1/-1}.form-card{grid-template-columns:1fr}.form-card button{width:100%}.status{grid-column:auto}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body data-view="arrival">
+<div class="shell">
+  <nav aria-label="Review navigation"><strong>MERIDIAN / DISPATCH</strong><span class="muted">North loop</span></nav>
+  <main>
+    <header class="intro"><span class="eyebrow">Timetable evidence</span><h1>Review the supplied stop sequence.</h1><p class="muted">Inspect four services across five stops. Times are supplied planning evidence, not operational outcomes.</p></header>
+    <section aria-label="Timetable controls">
+      <div class="controls">
+        <button type="button" data-bench="timetable-view-option" data-view="arrival" aria-pressed="true">Arrival</button>
+        <button type="button" data-bench="timetable-view-option" data-view="dwell" aria-pressed="false">Dwell</button>
+        <button type="button" data-bench="timetable-view-option" data-view="platform" aria-pressed="false">Platform</button>
+      </div>
+      <div class="toggle-line"><button type="button" data-bench="express-toggle" aria-pressed="false"><span data-bench="compact-control-copy" class="compact">Show express notes</span></button><span class="muted">Optional supplied annotations</span></div>
+      <p class="express-note" hidden>Express note: SVC-NORTH-17 has no supplied dwell entry at STOP-QUAY-08.</p>
+    </section>
+    <section class="timetable-frame" data-bench-design-role="timetable" aria-label="Supplied stop timetable">
+      <table class="timetable">
+        <thead><tr><th scope="col">Service</th><th scope="col" data-bench="stop-id">STOP-HARBOR-02</th><th scope="col" data-bench="stop-id">STOP-MARKET-11</th><th scope="col" data-bench="stop-id">STOP-QUAY-08</th><th scope="col" data-bench="stop-id">STOP-GARDEN-14</th><th scope="col" data-bench="stop-id">STOP-DEPOT-05</th></tr></thead>
+        <tbody>
+          <tr data-bench="service-row"><th scope="row" data-bench="service-id">SVC-NORTH-17</th><td data-bench="time-cell" class="time">06:42</td><td data-bench="time-cell" class="time">06:51</td><td data-bench="time-cell" class="time">07:03</td><td data-bench="time-cell" class="time">07:14</td><td data-bench="time-cell" class="time">07:26</td></tr>
+          <tr data-bench="service-row"><th scope="row" data-bench="service-id">SVC-LOOP-23</th><td data-bench="time-cell" class="time">07:10</td><td data-bench="time-cell" class="time">07:19</td><td data-bench="time-cell" class="time">07:31</td><td data-bench="time-cell" class="time">07:42</td><td data-bench="time-cell" class="time">07:54</td></tr>
+          <tr data-bench="service-row"><th scope="row" data-bench="service-id">SVC-RIVER-09</th><td data-bench="time-cell" class="time">07:38</td><td data-bench="time-cell" class="time">07:47</td><td data-bench="time-cell" class="time">07:59</td><td data-bench="time-cell" class="time">08:10</td><td data-bench="time-cell" class="time">08:22</td></tr>
+          <tr data-bench="service-row"><th scope="row" data-bench="service-id">SVC-DEPOT-31</th><td data-bench="time-cell" class="time">08:06</td><td data-bench="time-cell" class="time">08:15</td><td data-bench="time-cell" class="time">08:27</td><td data-bench="time-cell" class="time">08:38</td><td data-bench="time-cell" class="time">08:50</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="decision" data-bench-decision-role="context" aria-label="Review handoff">
+      <div><small>Target</small><strong data-bench-decision-role="target">TT-NORTH-22 · LOOP-05</strong></div>
+      <div><small>Evidence</small><span data-bench-decision-role="evidence">20 supplied times</span></div>
+      <div><small>State</small><span class="state" data-bench-decision-role="state">Timetable review open</span></div>
+      <button type="button" data-primary-action data-bench-decision-role="action">Open handoff</button>
+    </section>
+    <form class="form-card" data-bench="timetable-form" novalidate>
+      <div class="field"><label for="review-name">Review name</label><input id="review-name" data-bench="review-name" required></div><button data-primary-action>Save review</button><p class="status muted" data-bench="form-status" role="status"></p>
+    </form>
+  </main>
+  <footer class="muted">Meridian · supplied timetable evidence only</footer>
+</div>
+<script>
+  const views=[...document.querySelectorAll('[data-bench="timetable-view-option"]')];
+  views.forEach(button=>button.addEventListener('click',()=>{views.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));document.body.dataset.view=button.dataset.view}));
+  const toggle=document.querySelector('[data-bench="express-toggle"]');const note=document.querySelector('.express-note');toggle.addEventListener('click',()=>{const pressed=toggle.getAttribute('aria-pressed')!=='true';toggle.setAttribute('aria-pressed',String(pressed));note.hidden=!pressed});
+  const form=document.querySelector('[data-bench="timetable-form"]');const field=document.querySelector('[data-bench="review-name"]');const status=document.querySelector('[data-bench="form-status"]');form.addEventListener('submit',event=>{event.preventDefault();if(!field.value.trim()){field.setAttribute('aria-invalid','true');status.textContent='Enter a review name.';field.focus();return}field.removeAttribute('aria-invalid');status.textContent=`Saved ${field.value.trim()}.`});
+</script>
+</body>
+</html>

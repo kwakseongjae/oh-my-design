@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.254 transit timetable lock
+- 새 4×5 service/stop timetable holdout을 provider 전에 잠갔다.
+- untouched 75/85; contrast와 390/320/200% reflow만 의도대로 red다.
+- explicit input label 보정 뒤 fresh workspace에서 접근성 오탐을 제거했다.
+- 다음은 close-latch vs semantic-carrier Luna/high Reliability@3 preregistration이다.
+
 ## 2026-08-02 (Codex) · 1.9.253 semantic-carrier exact pin
 - exact source `ba8fb546…`를 detached/clean/publishable candidate로 pin했다.
 - installed tree `3a45091b…`, SKILL `5c06fc81…`, activation `79911390…`다.

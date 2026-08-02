@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.253 semantic-carrier exact pin · provider call 0
+- 갱신: 2026-08-02 · 1.9.254 transit timetable task lock · provider call 0
 
 ## 지금 (현재 위치)
+
+- 1.9.254는 fresh `transit-stop-timetable-review-v0.1`을 provider 전에 잠갔다. 기존 topology와 다른 4-service × 5-stop timetable이며 untouched starter는 75/85다.
+- task/state/design/evidence/desktop/keyboard/labels는 green이다. 의도한 red는 exact foreground contrast와 390/320/200% timetable overflow·atomic identifier reflow뿐이다. prompt `1ce4c5df…`, starter product `87ac1327…`, provider call 0이다.
+- 다음은 exact close-latch `1d204afe…` vs semantic-carrier `ba8fb546…` Luna/high 2×3 preregistration이다.
 
 - 1.9.253은 exact 1.9.252 source `ba8fb546…`를 `omd-portable-semantic-carrier-candidate`로 pin했다. source는 clean/detached/publishable이다.
 - installed tree `3a45091b…`, installed SKILL `5c06fc81…`, activation `79911390…`다. sensor diagnostic은 provenance/install 전용이며 promotion에서 제외한다. provider call/hook/agent/third-party installer 0이다.
@@ -1405,9 +1409,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. sensor와 다른 fresh unseen topology를 provider 전에 lock하고 untouched calibration을 기록한다.
-2. exact close-latch baseline vs semantic-carrier candidate Reliability@3를 preregister한다.
-3. fresh worktrees/root equality attestation 후 one-cell checkpoint로 실행한다.
+1. exact close-latch baseline vs semantic-carrier candidate Reliability@3를 preregister한다.
+2. fresh worktrees/root equality attestation 후 one-cell checkpoint로 실행한다.
+3. six-cell result에 quality/proof/efficiency promotion gate를 적용한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
