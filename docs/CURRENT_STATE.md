@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.292 production-cue pair 1
+- 갱신: 2026-08-03 · 1.9.293 production-cue candidate r2
 
 ## 지금 (현재 위치)
+
+- 1.9.293 candidate r2도 valid/policy-green 79/85 unresolved다. handoff target 390/320/200%, evidence 320/200% atomic-line 실패가 candidate에서 2/2 재현됐다.
+- wall 327,330ms, total 1,463,832 tokens(input 1,449,303, cached 1,362,176, output 14,529, reasoning 8,277)다. attempt-2 누적은 2,866,516 tokens다.
+- pair 2 delta는 paired control 전에는 주장하지 않는다. 다음 locked cell은 `luna-cue-r2-control`이다.
 
 - 1.9.292 pair 1은 all-carrier-set 79 vs control 79 tie이며 둘 다 unresolved다. candidate도 handoff target/evidence의 같은 390/320/200% atomic-line 실패를 그대로 남겼다.
 - candidate wall +48.45%, tokens +168.38%(1,021,916 vs 380,768)로 효율 gate도 현재 red다. 누적 attempt-2 spend는 1,402,684 tokens다.

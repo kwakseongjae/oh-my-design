@@ -1,6 +1,6 @@
 # Production cue all-carrier-set transfer — findings
 
-Status: **1/6 cells complete**
+Status: **3/6 cells complete**
 
 ## Checkpoint 1 — control trial 1
 
@@ -38,3 +38,20 @@ close the fourth registered handoff carrier at 390px, 320px, or 200%.
 Candidate UI-Resolved 3/3 is now impossible, so this patch cannot be promoted.
 The remaining two pairs are diagnostic evidence for recurrence and the next
 smallest repair; they cannot restore promotion eligibility.
+
+## Checkpoint 3 — candidate trial 2
+
+`luna-cue-r2-carrier-set` completed valid at **79/85** and is not
+UI-Resolved. It repeated the candidate's first-trial failure: the separate
+handoff target wraps at 390px, 320px, and 200%, while the handoff evidence
+wraps at 320px and 200%. Exact contrast, page containment, task facts,
+interactions, accessibility, proof execution, and installed host policy pass.
+
+- wall time: **327,330ms**
+- provider-reported total tokens: **1,463,832**
+- input / cached input / output / reasoning output: **1,449,303 / 1,362,176 /
+  14,529 / 8,277**
+- cumulative attempt-2 experimental tokens: **2,866,516**
+
+This is a candidate-only checkpoint. Pair-2 quality and efficiency deltas are
+withheld until `luna-cue-r2-control` completes.

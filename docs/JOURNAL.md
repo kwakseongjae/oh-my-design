@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.293 production-cue candidate r2
+- candidate r2도 79/85 unresolved, proof/host green이다.
+- handoff carrier atomic-line 실패가 candidate 2/2로 재현됐다.
+- wall 327,330ms, 1,463,832 tokens; 누적 2,866,516이다.
+- pair delta는 보류; 다음은 paired control r2다.
+
 ## 2026-08-02 (Codex) · 1.9.292 production-cue pair 1
 - candidate/control은 79/79 tie, 둘 다 unresolved다.
 - candidate도 fourth handoff carrier atomic-line을 남겼다.
