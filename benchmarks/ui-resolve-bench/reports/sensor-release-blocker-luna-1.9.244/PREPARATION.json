@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "sensor-release-blocker-luna-1.9.244",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19244",
+  "vendors_root": "/private/tmp/u19244-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "bb5232f5ca51407de17445232a96d1e2ef4e40bed50985e502c6910f1d42a01a",
+  "preparation_state_sha256": "6087d06f5d27eccbf0a91bf1c943828d7f2b7339c5621a25b5fd0dae5d5ee5f8",
+  "source_attestation": {
+    "close_latch_commit": "1d204afea6c3ab106752613b7f341ed2f76fd843",
+    "close_latch_skill_tree_sha256": "7336c0374eeef7f1e60a8992c582b99d5a09effc2faaa5a4e839f43ae8c7cbcb",
+    "release_blocker_commit": "aa074ab40a0db98fedb8d7233f8ff9871e8c15f9",
+    "release_blocker_skill_tree_sha256": "b89bb7c0c6274629fffbe014250cbc91e8242e4b677d8168ba6c58b15c32b587"
+  },
+  "shared_attestation": {
+    "core_prompt_sha256": "4e197bd3339c7ccbf84049caf3280d2647b0a78a750a1aec71f8da285c0055ee",
+    "runtime_prompt_sha256": "a1836a91be71f45ea2faec930b1ac33c39e6faae9740504b0c9060cb2722f0d3",
+    "product_sha256": "aeae25b28150805f17f1a35907c7e2b7a458a8f70a673fefd349edcb1df8e804",
+    "activation_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+    "host_policy_config_sha256": "57abe807f0c49ca67a94e75666fda10ad37e874ea2b428db38bcbb2b67803a4c"
+  },
+  "equality": {
+    "task": true,
+    "prompt": true,
+    "product": true,
+    "design": true,
+    "activation": true,
+    "runtime": true,
+    "model": true,
+    "effort": true,
+    "timeout": true,
+    "installed_proof_policy": true,
+    "git_root_all_cells": true,
+    "source_detached_all_cells": true,
+    "source_publishable_all_cells": true
+  },
+  "sole_arm_delta": "exact-installed-skill-source",
+  "next_command": "node benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs --root /private/tmp/u19244 --max-new-cells 1",
+  "next_cell": "luna-sensor-r1-close",
+  "same_root_retry": false
+}

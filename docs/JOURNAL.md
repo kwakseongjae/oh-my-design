@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.245 sensor matrix prepared
+- exact detached baseline/candidate와 6개 fresh Git cell을 준비했다.
+- prompt/product/activation/runtime/model/effort/timeout/proof policy equality가 green이다.
+- sole delta는 skill tree `7336c037…` vs `b89bb7c…`, provider call 0이다.
+- 다음은 `luna-sensor-r1-close` 한 셀이다.
+
 ## 2026-08-02 (Codex) · 1.9.244 release-blocker preregistration
 - close-latch vs compact release-blocker Luna/high 2×3를 fresh sensor holdout에 잠갔다.
 - balanced order, 900초, 120초 pacing, same installed proof policy, no retry다.

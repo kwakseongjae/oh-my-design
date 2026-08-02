@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.244 release-blocker Reliability@3 preregistration · provider call 0
+- 갱신: 2026-08-02 · 1.9.245 release-blocker matrix prepared · provider call 0
 
 ## 지금 (현재 위치)
+
+- 1.9.245는 fresh detached `/private/tmp/u19244-vendors/{omd-1.9.191,omd-1.9.241}`와 `/private/tmp/u19244` 6 Git cells를 provider call 0으로 PREPARED했다.
+- core prompt `4e197bd3…`, runtime prompt `a1836a91…`, product `aeae25b2…`, activation `79911390…`, Codex/Luna/high/900초와 installed proof policy가 모두 같다. source는 clean/detached/publishable이며 sole delta는 skill tree `7336c037…` vs `b89bb7c…`다.
+- 다음 허용 셀은 `luna-sensor-r1-close` 하나다. canonical `--max-new-cells 1`, 120초 pacing, no same-root retry를 유지한다.
 
 - 1.9.244는 exact close-latch `1d204afe…` vs compact release-blocker `aa074ab…` Luna/high 2×3를 fresh sensor matrix task에 preregister했다. balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다.
 - 양 arm에는 같은 installed opt-in proof policy를 적용한다. 승격 gate는 candidate UI-Resolved 3/3, serious contrast 0/3, paired objective loss 0, proof/host-policy 전부 green, mean wall과 provider tokens 각각 baseline +10% 이하다.
@@ -1367,8 +1371,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fresh worktrees/root를 준비하고 equality attestation을 기록한다.
-2. 6개 셀을 `--max-new-cells 1` one-cell checkpoint로 순서대로 실행한다.
+1. `luna-sensor-r1-close`부터 6개 셀을 `--max-new-cells 1` one-cell checkpoint로 순서대로 실행한다.
+2. 각 셀 후 objective/proof/host-policy/token/wall 결과를 상태에 고정한다.
 3. 6/6 뒤 paired quality·proof·efficiency gate로 promotion 또는 rejection을 결정한다.
 
 ## 막힘 / 대기 (없으면 "없음")
