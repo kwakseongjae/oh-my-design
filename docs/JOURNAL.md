@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.270 second rack candidate
+- invariant r2는 valid/policy-green 81/85 unresolved다.
+- full reflow는 green이나 exact contrast가 red다.
+- candidate 83/81, resolved 0/2; wall 211,696ms, tokens 371,333이다.
+- 다음은 paired close r2다.
+
 ## 2026-08-02 (Codex) · 1.9.269 rack pair 1
 - invariant 83 vs close 73, candidate +10이나 양쪽 unresolved다.
 - candidate는 contrast·390/320을 닫고 200% atomic reflow를 남겼다.
