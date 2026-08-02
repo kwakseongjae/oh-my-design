@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.257 first transit baseline
+- close-latch r1은 valid/policy-green 75/85, unresolved다.
+- narrow reflow와 contrast를 모두 남겼고 evidence/desktop은 보존했다.
+- wall 192,082ms, tokens 638,236, browser attempt 1이다.
+- 다음은 paired semantic-carrier r1이다.
+
 ## 2026-08-02 (Codex) · 1.9.256 transit matrix prepared
 - exact detached baseline/candidate와 6개 fresh Git cell을 준비했다.
 - prompt/product/activation/runtime/model/effort/timeout/proof policy equality가 green이다.

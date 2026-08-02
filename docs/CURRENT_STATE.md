@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.256 transit matrix prepared · provider call 0
+- 갱신: 2026-08-02 · 1.9.257 first transit baseline · 1/6 cells
 
 ## 지금 (현재 위치)
+
+- 1.9.257 첫 셀 `luna-transit-r1-close`는 valid/policy-green 75/85, UI-Resolved false다. evidence와 desktop은 보존했지만 390/320/200% reflow와 exact contrast를 모두 남겼다.
+- wall 192,082ms, provider-reported tokens 638,236이다. browser attempt 1, proof/host-policy unblocked violation 0이다.
+- 아직 baseline 단일 셀이므로 paired/promotion claim은 없다. 다음 locked cell은 `luna-transit-r1-carrier`다.
 
 - 1.9.256은 fresh detached `/private/tmp/u19256-vendors/{omd-1.9.191,omd-1.9.252}`와 `/private/tmp/u19256` 6 Git cells를 provider call 0으로 PREPARED했다.
 - core prompt `1ce4c5df…`, runtime prompt `2aeff0b6…`, product `87ac1327…`, activation `79911390…`, Codex/Luna/high/900초와 installed proof policy가 모두 같다. source는 clean/detached/publishable이며 sole delta는 skill tree `7336c037…` vs `3a45091b…`다.
@@ -1417,8 +1421,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `luna-transit-r1-close` 한 셀을 canonical bounded runner로 실행한다.
-2. 각 셀 뒤 score·proof·host policy를 기록하며 locked order를 이어간다.
+1. `luna-transit-r1-carrier` 한 셀을 canonical bounded runner로 실행한다.
+2. pair 1 score·proof·host policy를 판정하고 locked order를 이어간다.
 3. six-cell result에 quality/proof/efficiency promotion gate를 적용한다.
 
 ## 막힘 / 대기 (없으면 "없음")
