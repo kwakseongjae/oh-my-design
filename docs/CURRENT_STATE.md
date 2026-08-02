@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.257 first transit baseline · 1/6 cells
+- 갱신: 2026-08-02 · 1.9.258 transit pair 1 · 2/6 cells
 
 ## 지금 (현재 위치)
+
+- 1.9.258 pair 1은 close 75/85 vs semantic-carrier 73/85로 candidate -2, 양쪽 unresolved다. candidate는 page overflow를 제거했지만 atomic metadata, contrast, keyboard를 닫지 못했다.
+- candidate는 browser session만 열고 navigate하지 않아 installed host policy도 delivery-incomplete/browser-attempt-missing으로 fail했다. paired loss 0과 proof/host 3/3 gate가 깨져 promotion은 이미 불가능하다.
+- 남은 2 pair는 transfer variance와 반복 실패 surface 진단용이며 자격을 복구하지 못한다. 다음 locked cell은 `luna-transit-r2-carrier`다.
 
 - 1.9.257 첫 셀 `luna-transit-r1-close`는 valid/policy-green 75/85, UI-Resolved false다. evidence와 desktop은 보존했지만 390/320/200% reflow와 exact contrast를 모두 남겼다.
 - wall 192,082ms, provider-reported tokens 638,236이다. browser attempt 1, proof/host-policy unblocked violation 0이다.
@@ -1421,9 +1425,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `luna-transit-r1-carrier` 한 셀을 canonical bounded runner로 실행한다.
-2. pair 1 score·proof·host policy를 판정하고 locked order를 이어간다.
-3. six-cell result에 quality/proof/efficiency promotion gate를 적용한다.
+1. `luna-transit-r2-carrier` 한 셀을 canonical bounded runner로 실행한다.
+2. 이어서 paired `luna-transit-r2-close`를 실행해 반복 방향을 판정한다.
+3. six-cell result에 final quality/proof/efficiency rejection gate를 적용한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.258 transit pair 1
+- close 75 vs carrier 73, candidate -2로 양쪽 unresolved다.
+- candidate는 overflow만 줄이고 atomic reflow·contrast·keyboard를 남겼다.
+- browser navigate가 없어 host policy도 fail해 promotion gate가 깨졌다.
+- 다음 두 pair는 반복 실패/variance 진단용으로 계속한다.
+
 ## 2026-08-02 (Codex) · 1.9.257 first transit baseline
 - close-latch r1은 valid/policy-green 75/85, unresolved다.
 - narrow reflow와 contrast를 모두 남겼고 evidence/desktop은 보존했다.
