@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.277 electrical single-line task lock
+- fresh 8-node/7-connection branching topology를 provider 전에 잠갔다.
+- untouched 75/85; red는 exact contrast와 390/320/200% relationship reflow뿐이다.
+- 7/8 author mismatch는 lock 전 교정·재평가했다. provider call 0이다.
+- 다음은 close vs conjunctive 2×3 preregistration이다.
+
 ## 2026-08-02 (Codex) · 1.9.276 Tokens-to-Target contract
 - 첫 preregistered goal pass까지 candidate/total-experimental token을 분리 계측한다.
 - 미달성은 right-censored, 누락 component는 null+coverage다.

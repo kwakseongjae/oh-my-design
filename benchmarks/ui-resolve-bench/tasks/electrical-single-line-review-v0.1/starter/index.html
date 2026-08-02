@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Northline electrical single-line review</title>
+  <style>
+    :root{--canvas:#F4F0E8;--surface:#FFFCF6;--ink:#1C2422;--muted:#68716D;--border:#AAB1AD;--action:#24423C;--signal:#C7653C}
+    *{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.5 Arial,sans-serif}h1{font:48px/1.04 Georgia,serif;margin:8px 0 14px;max-width:760px}button,input{font:inherit;border:1px solid var(--border);border-radius:2px;background:var(--surface);color:var(--ink);min-height:44px}button{padding:10px 16px;cursor:pointer}button[aria-pressed=true],[data-primary-action]{background:var(--action);color:white}input{padding:10px 12px;width:100%}.shell{max-width:1180px;margin:auto;padding:34px 28px 52px}nav{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:16px}.eyebrow,small{font-size:11px;letter-spacing:.16em;text-transform:uppercase}.muted{color:var(--muted)}.intro{margin:42px 0 28px}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.toggle-line{display:flex;gap:12px;align-items:center;margin:18px 0}.annotation{border-left:3px solid var(--signal);padding:8px 12px}.diagram-frame{border:1px solid var(--border);background:var(--surface);padding:22px}.single-line{min-width:860px;display:grid;grid-template-columns:110px 36px 110px 36px 130px 36px 1fr;align-items:center}.node{min-height:88px;border:1px solid var(--ink);display:grid;align-content:center;justify-items:center;gap:7px;padding:12px;background:#E8EEE9}.node-id,.branch-id{font-family:monospace;font-weight:700}.connector{height:2px;background:var(--ink);position:relative}.connector::after{content:"";position:absolute;right:0;top:-4px;border-left:7px solid var(--ink);border-top:5px solid transparent;border-bottom:5px solid transparent}.loads{display:grid;gap:10px}.load-row{display:grid;grid-template-columns:80px 26px 1fr;align-items:center}.load-row .node{min-height:52px;display:flex;justify-content:space-between}.branch-id{font-size:12px}.decision{display:grid;grid-template-columns:1.2fr 1fr 1fr auto;gap:18px;align-items:end;border:1px solid var(--border);background:var(--surface);margin-top:22px;padding:20px}.decision div{display:grid;gap:5px}.decision strong{font-size:18px}.state{color:var(--signal);font-weight:700}.form-card{border-top:1px solid var(--border);margin-top:26px;padding-top:24px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}.field{display:grid;gap:7px}.status{grid-column:1/-1;min-height:24px}.compact{white-space:nowrap}footer{margin-top:32px;border-top:1px solid var(--border);padding-top:18px}
+    @media(max-width:720px){.shell{padding:22px 16px 36px}h1{font-size:38px}.diagram-frame{padding:10px}.single-line{min-width:820px}.node-id,.branch-id{word-break:break-all}.decision{grid-template-columns:1fr 1fr}.decision [data-bench-decision-role="action"]{grid-column:1/-1}.form-card{grid-template-columns:1fr}.form-card button{width:100%}.status{grid-column:auto}}
+    :focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+  </style>
+</head>
+<body data-view="overview">
+  <div class="shell">
+    <nav aria-label="Review navigation"><strong>NORTHLINE / FACILITIES</strong><span class="muted">East electrical room</span></nav>
+    <main>
+      <header class="intro"><span class="eyebrow">Single-line drawing evidence</span><h1>Review the supplied source-to-load path.</h1><p class="muted">Inspect eight named nodes, seven supplied connections, and four load branches. Drawing relationships are planning evidence, not operational outcomes.</p></header>
+      <section aria-label="Diagram controls">
+        <div class="controls">
+          <button type="button" data-bench="diagram-view-option" data-view="overview" aria-pressed="true">Overview</button>
+          <button type="button" data-bench="diagram-view-option" data-view="protection" aria-pressed="false">Protection</button>
+          <button type="button" data-bench="diagram-view-option" data-view="loads" aria-pressed="false">Loads</button>
+        </div>
+        <div class="toggle-line"><button type="button" data-bench="annotation-toggle" aria-pressed="false"><span data-bench="compact-control-copy" class="compact">Show drawing notes</span></button><span class="muted">Optional supplied annotations</span></div>
+        <p class="annotation" hidden>Drawing note: BR-L03 and BR-L04 originate at BUS-E07.</p>
+      </section>
+      <section class="diagram-frame" data-bench-design-role="single-line-diagram" aria-label="Supplied electrical single-line diagram">
+        <div class="single-line">
+          <div class="node" data-bench="electrical-node"><small>Source</small><span class="node-id" data-bench="node-id">SRC-A</span></div>
+          <span class="connector" data-bench="electrical-connector" aria-hidden="true"></span>
+          <div class="node" data-bench="electrical-node"><small>Main breaker</small><span class="node-id" data-bench="node-id">CB-M01</span></div>
+          <span class="connector" data-bench="electrical-connector" aria-hidden="true"></span>
+          <div class="node" data-bench="electrical-node"><small>Distribution bus</small><span class="node-id" data-bench="node-id">BUS-E07</span></div>
+          <span class="connector" data-bench="electrical-connector" aria-hidden="true"></span>
+          <div class="loads">
+            <div class="node" data-bench="electrical-node"><small>Branch junction</small><span class="node-id" data-bench="node-id">JCT-E07</span></div>
+            <div class="load-row"><span class="branch-id" data-bench="branch-id">BR-L01</span><span class="connector" data-bench="electrical-connector" aria-hidden="true"></span><div class="node" data-bench="electrical-node"><small>Lighting</small><span class="node-id" data-bench="node-id">LD-LIGHT-01</span></div></div>
+            <div class="load-row"><span class="branch-id" data-bench="branch-id">BR-L02</span><span class="connector" data-bench="electrical-connector" aria-hidden="true"></span><div class="node" data-bench="electrical-node"><small>Ventilation</small><span class="node-id" data-bench="node-id">LD-VENT-02</span></div></div>
+            <div class="load-row"><span class="branch-id" data-bench="branch-id">BR-L03</span><span class="connector" data-bench="electrical-connector" aria-hidden="true"></span><div class="node" data-bench="electrical-node"><small>Controls</small><span class="node-id" data-bench="node-id">LD-CTRL-03</span></div></div>
+            <div class="load-row"><span class="branch-id" data-bench="branch-id">BR-L04</span><span class="connector" data-bench="electrical-connector" aria-hidden="true"></span><div class="node" data-bench="electrical-node"><small>Service</small><span class="node-id" data-bench="node-id">LD-SVC-04</span></div></div>
+          </div>
+        </div>
+      </section>
+      <section class="decision" data-bench-decision-role="context" aria-label="Drawing handoff">
+        <div><small>Target</small><strong data-bench-decision-role="target">SLD-EAST-07 · SRC-A to BUS-E07</strong></div>
+        <div><small>Evidence</small><span data-bench-decision-role="evidence">8 nodes · 7 connections · 4 load branches</span></div>
+        <div><small>State</small><span class="state" data-bench-decision-role="state">Drawing review open</span></div>
+        <button type="button" data-primary-action data-bench-decision-role="action">Open handoff</button>
+      </section>
+      <form class="form-card" data-bench="single-line-form" novalidate>
+        <div class="field"><label for="review-name">Review name</label><input id="review-name" data-bench="review-name" required></div><button data-primary-action>Save review</button><p class="status muted" data-bench="form-status" role="status"></p>
+      </form>
+    </main>
+    <footer class="muted">Northline · supplied electrical drawing evidence only</footer>
+  </div>
+  <script>
+    const views=[...document.querySelectorAll('[data-bench="diagram-view-option"]')];
+    views.forEach(button=>button.addEventListener('click',()=>{views.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));document.body.dataset.view=button.dataset.view}));
+    const toggle=document.querySelector('[data-bench="annotation-toggle"]');const note=document.querySelector('.annotation');
+    toggle.addEventListener('click',()=>{const on=toggle.getAttribute('aria-pressed')!=='true';toggle.setAttribute('aria-pressed',String(on));note.hidden=!on});
+    const form=document.querySelector('[data-bench="single-line-form"]');const field=document.querySelector('[data-bench="review-name"]');const status=document.querySelector('[data-bench="form-status"]');
+    form.addEventListener('submit',event=>{event.preventDefault();const value=field.value.trim();if(!value){field.setAttribute('aria-invalid','true');status.textContent='Enter a review name.';field.focus();return}field.removeAttribute('aria-invalid');status.textContent=`Saved ${value}.`});
+  </script>
+</body>
+</html>
