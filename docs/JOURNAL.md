@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.269 rack pair 1
+- invariant 83 vs close 73, candidate +10이나 양쪽 unresolved다.
+- candidate는 contrast·390/320을 닫고 200% atomic reflow를 남겼다.
+- proof/host pass; candidate wall +75.46%, tokens +41.75%다.
+- 다음은 invariant r2다.
+
 ## 2026-08-02 (Codex) · 1.9.268 first rack baseline
 - close r1은 valid/policy-green 73/85 unresolved다.
 - overflow는 닫았지만 atomic reflow, exact contrast, keyboard가 red다.

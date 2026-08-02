@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.268 first equipment rack baseline · 1/6 cells complete
+- 갱신: 2026-08-02 · 1.9.269 equipment rack pair 1 · 2/6 cells complete
 
 ## 지금 (현재 위치)
+
+- 1.9.269 pair 1은 close 73/85 vs invariant 83/85로 candidate +10이며 양쪽 unresolved다. candidate는 exact contrast와 390/320 geometry를 닫았지만 200% atomic rack/decision metadata reflow를 남겼다.
+- candidate proof/host-policy는 pass했다. wall 340,808ms vs 194,230ms(+75.46%), tokens 687,935 vs 485,318(+41.75%)라 효율 cap은 현재 크게 초과한다.
+- 단일 pair이므로 reliability 판정은 보류한다. 다음 locked cell은 `luna-rack-r2-invariant`다.
 
 - 1.9.268 첫 셀 `luna-rack-r1-close`는 valid/policy-green 73/85, UI-Resolved false다. page overflow는 제거했지만 390/320/200% atomic rack/decision metadata reflow와 exact contrast를 남겼고 keyboard traversal도 red다.
 - task/evidence/state는 보존했고 proof execution과 installed host-policy는 pass했다. wall 194,230ms, provider-reported tokens 485,318이다.
