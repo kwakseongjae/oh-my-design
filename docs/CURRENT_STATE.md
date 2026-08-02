@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.235 matrix invocation FROZEN + CLI fail-fast fixed
+- 갱신: 2026-08-02 · 1.9.236 replacement matrix PREPARED
 
 ## 지금 (현재 위치)
+
+- 1.9.236 replacement `spectrum-readable-reflow-luna-1.9.236`을 fresh `/private/tmp/u19236-vendors` + `/private/tmp/u19236`에 provider call 0으로 PREPARED했다. frozen 1.9.233 산출물은 유입되지 않는다.
+- task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/installed policy equality가 전부 1 unique, skill만 2 unique다. all Git roots, clean/detached/publishable sources다.
+- 다음 canonical command는 `run-prepared-matrix.mjs --root /private/tmp/u19236 --max-new-cells 1`이며 runner는 unknown option을 preflight 전에 거부한다.
 
 - 1.9.235는 `/private/tmp/u19233`을 execution-control nonconformance로 FROZEN했다. operator가 canonical `--max-new-cells 1` 대신 unsupported `--max-new 1`을 썼고 CLI가 이를 무시해 120초 뒤 2번째 셀을 시작했기 때문이다. 즉시 interrupt했으며 same-root resume/repair/substitution은 금지다.
 - 첫 close 셀 자체는 valid 81/85, responsive all green, contrast serious all viewports로 UI-Resolved false, proof/host-policy gate pass였다. second readable은 8 events partial이므로 어떤 비교 claim에도 쓰지 않는다.
@@ -1331,9 +1335,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fresh replacement experiment/root를 새 ID로 preregister하고 exact equality를 다시 attest한다.
-2. canonical `--max-new-cells 1`로 셀 하나만 실행되는 CLI contract를 확인한다.
-3. replacement 6/6 뒤 candidate UI-Resolved 3/3, contrast 0/3, paired loss 0을 판정한다.
+1. canonical `--max-new-cells 1`로 replacement 첫 close 셀 하나만 실행한다.
+2. checkpoint가 정확히 1 cell에서 멈추고 equality/identity/policy gate가 green인지 확인한다.
+3. locked order로 6/6까지 이어 candidate UI-Resolved 3/3, contrast 0/3, paired loss 0을 판정한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

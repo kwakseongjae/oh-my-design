@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.236 replacement matrix prepared
+- frozen root와 분리된 fresh sources/six cells를 provider call 0으로 준비했다.
+- 모든 실행 조건은 1 unique이고 exact skill source만 2 unique다.
+- canonical `--max-new-cells 1` command를 preparation evidence에 고정했다.
+- 다음은 first close cell 단일 checkpoint 실행이다.
+
 ## 2026-08-02 (Codex) · 1.9.235 matrix invocation frozen
 - unsupported `--max-new`가 무시돼 second cell이 시작되어 root를 즉시 동결했다.
 - first close cell은 valid 81/85지만 contrast red, second readable은 partial이다.
