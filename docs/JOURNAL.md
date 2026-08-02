@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.287 all-carrier-set exact pin
+- exact source `64565bc6…`는 clean/detached/publishable로 고정됐다.
+- installed tree `58a0552c…`, SKILL `48538ab3…`, activation `79911390…`다.
+- provider/hook/agent/third-party installer call은 0이다.
+- 다음은 fresh unseen topology lock이다.
+
 ## 2026-08-02 (Codex) · 1.9.286 all-carrier-set candidate
 - singular carrier를 protected/named relationship carrier set으로 확장했다.
 - carrier별 390/320/200% outcome과 row binding을 static closure에 잠그었다.

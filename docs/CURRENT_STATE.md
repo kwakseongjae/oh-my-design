@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.286 all-carrier-set candidate authored
+- 갱신: 2026-08-02 · 1.9.287 all-carrier-set exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.287은 1.9.286 exact source `64565bc6…`를 `omd-portable-all-carrier-set-candidate`로 pin했다. source는 clean/detached/publishable이다.
+- installed tree `58a0552c…`, installed SKILL `48538ab3…`, activation `79911390…`다. provider/hook/agent/third-party installer call은 0이다.
+- 기존 single-line은 provenance/install 확인에만 썼고 promotion에서 제외한다. 다음은 fresh unseen topology를 provider 전에 lock한다.
 
 - 1.9.286은 반복 실패를 직접 겨냥해 singular `comparison_carrier`를 모든 protected/named atomic relationship scope의 `comparison_carrier_set`으로 바꾸었다.
 - reflow packet에 carrier→row binding과 carrier별 390/320/실제 200% 결과를 추가했고 `all_registered_carriers_closed: true`, `unresolved_carriers: 0`이 static closure 조건이다.

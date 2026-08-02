@@ -1150,6 +1150,20 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(candidate.commit).not.toBe(previous.commit);
   });
 
+  it("pins the all-carrier-set candidate separately from rejected conjunctive release", () => {
+    const competitors = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/competitors.json"), "utf8"));
+    const previous = competitors.variants["omd-portable-conjunctive-release-candidate"];
+    const candidate = competitors.variants["omd-portable-all-carrier-set-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.286",
+      source_path: "skills/omd-apply",
+      declared_name: "omd:apply",
+      commit: "64565bc69c6411491c8d9615d86ffa889f05a59c",
+    });
+    expect(candidate.commit).not.toBe(previous.commit);
+  });
+
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", editorialBriefTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({
