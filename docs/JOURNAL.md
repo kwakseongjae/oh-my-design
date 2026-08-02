@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.291 first production-cue control
+- control r1은 79/85 unresolved, proof/host green이다.
+- contrast/page는 닫았지만 handoff target/evidence atomic line을 남겼다.
+- wall 205,552ms, 380,768 tokens다.
+- paired claim 없음; 다음은 candidate r1이다.
+
 ## 2026-08-02 (Codex) · 1.9.290 all-carrier-set matrix prepared
 - fresh exact vendors + 6 Git cells를 provider call 0으로 PREPARED했다.
 - shared task/prompt/product/DESIGN/activation/runtime/proof policy equality가 green이다.

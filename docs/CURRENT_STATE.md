@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.290 all-carrier-set matrix prepared
+- 갱신: 2026-08-02 · 1.9.291 first production-cue control
 
 ## 지금 (현재 위치)
+
+- 1.9.291 `luna-cue-r1-control`은 valid/policy-green 79/85 unresolved다. contrast와 page overflow는 닫았고 3 lane carrier는 보존했지만 별도 handoff target이 390/320/200%, evidence가 320/200%에서 two-line이다.
+- wall 205,552ms, total 380,768 tokens(input 370,624, cached 314,368, output 10,144, reasoning 5,667)다. proof/host gate는 pass다.
+- 아직 control 단일 cell이므로 paired claim은 없다. 다음은 `luna-cue-r1-carrier-set`이다.
 
 - 1.9.290은 fresh detached `/private/tmp/u19290-vendors/{omd-1.9.274,omd-1.9.286}`와 `/private/tmp/u19290` 6 Git cells를 provider call 0으로 PREPARED했다.
 - task/prompt/product/DESIGN/activation/Luna/high/900s/proof policy가 6개 전부 같고 sole delta는 skill tree `2d577464…` vs `58a0552c…`다. source는 모두 detached/publishable이다.
