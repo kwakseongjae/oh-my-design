@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.247 sensor pair 1 complete · provider cells 2/6
+- 갱신: 2026-08-02 · 1.9.248 sensor r2 candidate checkpoint · provider cells 3/6
 
 ## 지금 (현재 위치)
+
+- 1.9.248 `luna-sensor-r2-release`도 valid 65/85, UI-Resolved false로 candidate의 first failure를 그대로 반복했다. protected gateway-id scope/task contract, mobile/320/200% geometry, contrast가 다시 실패했다.
+- 이번 proof/host-policy는 pass했지만 wall 495,285ms, tokens 879,058로 r1 candidate보다 느리고 컸다. quality failure는 정책 실패에만 기인하지 않는다.
+- 다음은 paired baseline `luna-sensor-r2-close`다. 완료 전에는 pair 2 delta를 주장하지 않는다.
 
 - 1.9.247 pair 1은 close 81/85 vs release 65/85, candidate delta -16이다. 둘 다 UI-Resolved false이며 candidate가 protected gateway-id scope를 제거해 task contract까지 실패했다.
 - candidate는 contrast를 남기고 mobile/320/200% geometry도 실패했다. browser 뒤 second revision을 열어 proof와 installed host-policy가 recovery/after-ready/native-browser-unintercepted로 fail했다. wall 330,687ms, tokens 622,875다.
@@ -1379,7 +1383,7 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `luna-sensor-r2-release`부터 남은 4개 셀을 `--max-new-cells 1` one-cell checkpoint로 순서대로 실행한다.
+1. `luna-sensor-r2-close`부터 남은 3개 셀을 `--max-new-cells 1` one-cell checkpoint로 순서대로 실행한다.
 2. 각 셀 후 objective/proof/host-policy/token/wall 결과를 상태에 고정한다.
 3. 6/6 뒤 paired quality·proof·efficiency gate로 promotion 또는 rejection을 결정한다.
 

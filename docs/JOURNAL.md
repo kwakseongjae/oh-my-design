@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.248 second sensor candidate
+- release r2도 65/85 unresolved로 gateway contract/reflow/contrast 실패를 반복했다.
+- proof/host는 pass했으므로 quality 실패가 policy artifact만은 아니다.
+- wall 495,285ms, tokens 879,058이다.
+- 다음은 paired close r2다.
+
 ## 2026-08-02 (Codex) · 1.9.247 sensor pair 1
 - close 81 vs release 65로 candidate -16, 양쪽 unresolved다.
 - candidate는 gateway hook·reflow·contrast와 proof/host-policy까지 실패했다.
