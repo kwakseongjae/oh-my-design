@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.273 pre-edit invariant rejected · 6/6 cells complete
+- 갱신: 2026-08-02 · 1.9.274 conjunctive release latch authored · provider call 0 after comparison
 
 ## 지금 (현재 위치)
+
+- 1.9.274는 기존 pre-edit invariant의 foreground/carrier를 AND gate로 강화했다. foreground는 exact before/after ratio 또는 verified text-role fail-close, carrier는 390/320/실제 200%를 모두 구체화해야 static closure로 넘어간다.
+- 새 phase/script/benchmark literal/token은 추가하지 않았다. canonical은 39,093→39,610 bytes, 4,397→4,460 words다. quick validation, contract 9/9, lint, build가 green이다.
+- 아직 quality promotion이 아니다. 다음은 exact commit pin 후 rack과 다른 fresh unseen topology를 provider 전에 lock한다.
 
 - 1.9.273 equipment rack Reliability@3 6/6은 close 73/75/81 vs invariant 83/81/85, candidate W/T/L 3/0/0이다. mean 83 vs 76.33, median 83 vs 75, resolved는 candidate 1/3 vs close 0/3이다.
 - candidate contrast clean 2/3, proof/host 3/3이며 final trial은 85/85로 ceiling을 입증했다. 하지만 resolved 3/3과 contrast 3/3 gate를 실패했다.

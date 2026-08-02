@@ -175,12 +175,12 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 
 ```yaml
 pre_edit_release_invariant:
-  foreground_change: "failing normal-text selector → existing verified text-role/ink token"
-  comparison_carrier: "existing semantic carrier → named containment or exact relocation"
+  foreground_change: "selector + surface + exact before ratio → existing verified text-role/ink token + exact after ratio or fail-closed replacement"
+  comparison_carrier: "existing semantic carrier → named containment or exact relocation covering 390px + 320px + actual 200% zoom/reflow"
   browser_attempt: "one prepared command that navigates the same consumer route"
 ```
 
-이것은 계획 메모가 아니라 edit 범위다. 첫 diff에 `foreground_change`의 실제 선언 교체와 `comparison_carrier`의 containment/relocation이 둘 다 없으면 transaction은 미완료다. static grep이나 browser session 생성은 결과가 아니다. static closure 뒤 `browser_attempt`가 실제 route를 열어야 하며, infrastructure가 막힌 실제 navigate 시도만 `unresolved`로 닫을 수 있다.
+이것은 계획 메모가 아니라 conjunctive edit 범위다. `foreground_change AND comparison_carrier`가 한 transaction에서 모두 구체화되어야 한다. 첫 diff와 consolidated static closure에는 foreground의 exact numeric result(또는 verified text-role fail-close)와 390px·320px·실제 200% 각각을 해소하는 carrier 선언이 둘 다 있어야 한다. 한 breakpoint, 최대 너비, `width:100%`, page overflow 0, 또는 미계측 placeholder는 carrier 결과가 아니다. 하나라도 빠지면 static closure로 넘어가지 않고 transaction을 미완료로 둔다. static grep은 결과가 아니며 browser session 생성은 결과가 아니다. static closure 뒤 `browser_attempt`가 실제 route를 열어야 하며, infrastructure가 막힌 실제 navigate 시도만 `unresolved`로 닫을 수 있다.
 
 1. **Foreground:** visible normal text의 실제 foreground/background pair를 exact ratio로 계산한다. 4.5 미만이거나 미계측이면 첫 edit diff에서 DESIGN.md의 검증된 text-role/ink token으로 실제 교체하고 accent는 non-text cue에만 남긴다. ratio 기록만 하고 교정을 미루면 transaction 미완료다.
 2. **Reflow:** desktop·390px·320px·200%에서 atomic identifier와 짧은 label을 먼저 본다. fit하지 않으면 글자를 쪼개거나 줄이는 대신 parent row를 full-row→stack하고 desktop track/min-width 제약을 해제한다. shared header·legend가 관계를 전달하면 기본값은 그 carrier가 보이는 named `comparison-scroll`이다. 숨기고 unbound visual copy를 만들지 않으며, stack이 필요하면 기존 semantic carrier의 identity·cardinality·visibility를 mobile parent로 옮긴다.

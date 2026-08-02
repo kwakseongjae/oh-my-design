@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.274 conjunctive release latch
+- foreground와 390/320/실제 200% carrier 결과를 AND gate로 강화했다.
+- 새 phase/script/benchmark literal/token 없이 +517 bytes/+63 words다.
+- quick validate, contract 9/9, lint/build green; 아직 quality promotion 아님.
+- 다음은 exact pin과 fresh unseen topology다.
+
 ## 2026-08-02 (Codex) · 1.9.273 pre-edit invariant rejected
 - 6/6은 close 73/75/81 vs invariant 83/81/85, candidate W/T/L 3/0/0이다.
 - candidate resolved 1/3, contrast 2/3, proof/host 3/3; final은 85/85다.
