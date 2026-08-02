@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.272 final equipment rack baseline · 5/6 cells complete
+- 갱신: 2026-08-02 · 1.9.273 pre-edit invariant rejected · 6/6 cells complete
 
 ## 지금 (현재 위치)
+
+- 1.9.273 equipment rack Reliability@3 6/6은 close 73/75/81 vs invariant 83/81/85, candidate W/T/L 3/0/0이다. mean 83 vs 76.33, median 83 vs 75, resolved는 candidate 1/3 vs close 0/3이다.
+- candidate contrast clean 2/3, proof/host 3/3이며 final trial은 85/85로 ceiling을 입증했다. 하지만 resolved 3/3과 contrast 3/3 gate를 실패했다.
+- candidate mean wall +26.92%로 cap 실패, tokens -11.77%로 통과했다. 1.9.263을 승격하지 않는다. 다음 bounded delta는 새 phase 없이 기존 foreground/carrier 두 edit outcome을 numeric contrast + 390/320/200% 결과가 모두 있어야 static closure로 넘어가는 conjunctive latch로 강화한다.
 
 - 1.9.272 `luna-rack-r3-close`는 valid 81/85, UI-Resolved false다. full reflow는 green이나 exact contrast를 남겼다. baseline은 73/75/81, resolved 0/3으로 고정됐다.
 - r3 close는 native browser를 session 뒤 추가 사용해 proof가 browser-recovery/after-ready, host가 native-browser-unintercepted로 fail했다. wall 253,306ms, tokens 735,763이다.

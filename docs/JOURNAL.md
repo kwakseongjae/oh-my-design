@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.273 pre-edit invariant rejected
+- 6/6은 close 73/75/81 vs invariant 83/81/85, candidate W/T/L 3/0/0이다.
+- candidate resolved 1/3, contrast 2/3, proof/host 3/3; final은 85/85다.
+- wall +26.92%, tokens -11.77%; reliability/wall gate 실패로 승격하지 않는다.
+- 다음은 foreground+390/320/200% carrier conjunctive latch다.
+
 ## 2026-08-02 (Codex) · 1.9.272 final rack baseline
 - close r3은 81/85 unresolved, baseline 73/75/81로 고정됐다.
 - full reflow green, exact contrast red다.
