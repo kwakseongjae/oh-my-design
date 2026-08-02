@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-02 · 1.9.265 equipment rack holdout lock · provider call 0
+- 갱신: 2026-08-02 · 1.9.266 equipment rack preregistration · provider call 0
 
 ## 지금 (현재 위치)
+
+- 1.9.266은 exact close-latch `1d204afe…` vs pre-edit invariant `c67c9c1b…` Luna/high 2×3를 fresh equipment rack task에 preregister했다.
+- balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. 양 arm은 동일 installed opt-in proof policy를 받는다.
+- candidate gate는 UI-Resolved 3/3, contrast red 0/3, paired loss 0, proof/host 3/3, mean wall/token 각각 baseline +10% 이하다. provider call 0이다. 다음은 fresh exact worktrees와 6-cell root 준비다.
 
 - 1.9.265는 fresh `equipment-rack-elevation-review-v0.1`을 provider 전에 잠갔다. 기존 표·시간표와 다른 vertical 12U rack topology이며 untouched starter는 75/85다.
 - task/state/design/evidence/desktop/keyboard/label은 green이다. 의도한 red는 exact foreground contrast와 390/320/200% rack overflow·atomic identifier reflow뿐이다. prompt `2e4508fc…`, starter product `281f22ea…`, provider call 0이다.

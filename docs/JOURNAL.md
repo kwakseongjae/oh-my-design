@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-02 (Codex) · 1.9.266 equipment rack preregistration
+- close-latch vs pre-edit invariant Luna/high 2×3를 provider 전에 잠갔다.
+- UI-Resolved 3/3, zero contrast red/loss, proof/host 3/3, wall/token +10% cap이다.
+- balanced order, one-cell execution, 120초 pacing, no retry/repair다.
+- 다음은 fresh exact worktrees와 6-cell root 준비다.
+
 ## 2026-08-02 (Codex) · 1.9.265 equipment rack holdout
 - fresh vertical 12U rack topology를 provider 전에 잠갔다.
 - untouched starter는 75/85, intended red는 contrast와 narrow rack/identifier reflow뿐이다.
