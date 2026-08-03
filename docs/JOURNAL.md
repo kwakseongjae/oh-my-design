@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.363 cold-chain matrix preparation
+- exact detached vendors와 6 committed/detached/clean cells를 fresh roots에 준비했다.
+- equality 6/6, sole delta는 control `2d577464…` vs compact `36a44a1…` skill tree다.
+- provider 0; 다음은 permission-parity preflight 뒤 r1 control 한 셀이다.
+
 ## 2026-08-03 (Codex) · 1.9.362 cold-chain matrix preregistration
 - Luna/high exact control vs compact candidate 2×3을 fresh task에 잠갔다.
 - admission/resume/timeout/browser pins, 900s/pacing/no-retry/strict gates를 고정했다.

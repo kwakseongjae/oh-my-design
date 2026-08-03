@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.362 cold-chain matrix preregistration
+- 갱신: 2026-08-03 · 1.9.363 cold-chain matrix preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.363은 `/private/tmp/u19362-vendors` exact detached sources와 `/private/tmp/u19362` 6 committed/detached/clean cells를 준비했다.
+- task/prompt/product/DESIGN/runtime/model/effort/timeout/host/proof와 admission·resume·timeout·browser pins equality가 6/6이다.
+- sole arm delta는 skill tree `2d577464…` control vs `36a44a1…` compact이며 provider 0이다.
+- 다음 허용 cell은 permission-parity browser preflight 뒤 `luna-coldchain-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
 
 - 1.9.362는 exact control `3a414a0a…` vs compact candidate `c1de0e4e…`를 cold-chain holdout에 Luna/high 2×3으로 preregister했다.
 - 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
@@ -1876,9 +1881,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `/private/tmp/u19362-vendors` exact detached vendors와 `/private/tmp/u19362` 6 clean cells를 prepare한다.
-2. task/prompt/product/DESIGN/runtime/model/effort/host pins equality와 sole skill delta를 증명한다.
-3. fresh permission-parity preflight 후 one-cell checkpoint로 r1 control을 실행한다.
+1. fresh permission-parity browser preflight를 exact scored-cell sandbox 경로로 통과시킨다.
+2. `luna-coldchain-r1-control` 한 셀만 `--max-new-cells 1`, no retry로 실행한다.
+3. evaluate/export/checkpoint와 host/proof admission을 검증한 뒤 paired compact의 도달 가능성을 판정한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

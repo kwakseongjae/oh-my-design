@@ -9,3 +9,7 @@ Host-policy admission uses exact pin 1.9.341, checkpoint reconstruction uses exa
 Promotion requires candidate resolution 3/3, no serious or critical contrast result, no paired objective loss, proof and host-policy passage 3/3, and candidate mean wall time and provider tokens no more than 1.10× control. Infrastructure invalidity, checkpoint drift, or browser permission mismatch freezes the matrix and requires fresh preregistration.
 
 This is Tokens-to-Target attempt 9. Prior observed spend is at least 18,188,850 provider-reported tokens plus four usage-unavailable cells. No prior score is pooled into this task. Provider calls at preregistration: 0.
+
+## Preparation — 1.9.363
+
+Fresh detached vendor worktrees and six committed, detached, clean cells were prepared under the preregistered roots. Equality is 6/6 for task, prompt, starter product, DESIGN.md, activation, runtime, model, effort, timeout, host config, proof policy, admission, resume, timeout-accounting, and browser-execution pins. The sole arm delta is the exact installed skill tree (`2d577464…` control vs `36a44a1…` compact). Provider calls at preparation: 0. The only permitted next cell is `luna-coldchain-r1-control`, after a permission-parity browser preflight, with `--max-new-cells 1` and no retry.
