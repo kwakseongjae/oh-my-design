@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.324 exact repaired host-policy pin
+- 107bce09 source/installed hashes와 browser-before-provider sequence를 pin했다.
+- browser-harness는 Chrome/daemon/active connection 1개 ready다.
+- provider call 0, quality promotion 없음이다.
+- 다음은 fresh 1.9.325 replacement preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.323 browser/preflight closure repair
 - u19321 첫 Luna cell을 infrastructure-invalid로 동결하고 81/85를 제외했다.
 - provider 전 active-browser preflight, honest unresolved closure, host-gate admission 차단을 구현했다.

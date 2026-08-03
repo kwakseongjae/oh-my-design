@@ -22,3 +22,7 @@ The 1.9.321 first control cell is infrastructure-invalid. Browser-harness had no
 - no skill, model, efficiency, reliability, or frontier promotion claim follows.
 
 The next live matrix is prohibited until browser-harness reports an active local browser connection. Once that prerequisite is restored, a fresh root and exact 1.9.323 host-policy pin are required; the frozen root is never resumed.
+
+## Exact host-policy pin
+
+1.9.324 pins committed source `107bce09…`, the unchanged managed Codex config, all source and rendered installed hook hashes, the provider-before-browser preflight, honest closure accounting, and host-policy score admission boundary in `HOST-POLICY-PIN.json`. Local browser diagnostics subsequently reported Chrome, daemon, and one active connection ready. This is an infrastructure pin, not a quality promotion.

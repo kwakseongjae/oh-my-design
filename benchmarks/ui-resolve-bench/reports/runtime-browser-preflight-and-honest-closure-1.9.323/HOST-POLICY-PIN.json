@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1",
+  "pin_id": "runtime-browser-preflight-honest-closure-host-policy-1.9.324",
+  "source_commit": "107bce09bd9ff7db6302658a67c87d28156c1e38",
+  "source_publishable": true,
+  "target": "codex",
+  "mode": "installed-opt-in",
+  "config_sha256": "85b197bd92e7f2f937d9b7702904f3a1ca3a5027c68113a628c8b5b19b32b407",
+  "source_files": {
+    "proof-policy-hook.mjs": "70d38b5cbe3a7157b92219e6589cb3a6a52843f99e0fc08c1f675589e094cc48",
+    "proof-policy-hook-mapper.mjs": "1b1bbd92d139ec88ea9c4d8382e90e4413b2f2c493d9f4dcdd9472c203e6f44d",
+    "proof-policy-state.mjs": "fbd2a08eb4ff66b376324b7571a57e3146b2bf4ec222cc553b1663cee9e5c12f",
+    "proof-trace-contract.mjs": "8d260ed553436b7e7fd8274704b94d988e92d8eb57366c12b3e8083722931b08"
+  },
+  "installed_files": {
+    "proof-policy-hook.mjs": "a696e607a799e32983a9d52515fc65efcd083eb99faaf597e12111ef7ca6be3f",
+    "proof-policy-hook-mapper.mjs": "cb66a3db28ed3a9b707c385cb04db60c2106021d526ecbd4db53e9c753843d9d",
+    "proof-policy-state.mjs": "ad1152d4a6eacb2b5657d17c1f12920973af45d3e31dd9867f7f4dbfa880c0c2",
+    "proof-trace-contract.mjs": "e9b762ed9cbee8c18f360cb2b9cd88e1c5e0eb5621453cc29ddb4692352f4295"
+  },
+  "browser_preflight": {
+    "command": "browser-harness --doctor",
+    "requires_exit_zero": true,
+    "requires_active_connection": true,
+    "runs_before_provider": true
+  },
+  "executable_sequence": [
+    "browser-readiness-preflight",
+    "reflow-inventory-lock",
+    "product-edit",
+    "static-proof",
+    "browser-proof",
+    "reflow-closure-account",
+    "host-policy-admission",
+    "delivery"
+  ],
+  "quality_promoted": false,
+  "provider_calls": 0
+}

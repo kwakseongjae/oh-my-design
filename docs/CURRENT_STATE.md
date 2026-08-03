@@ -8,6 +8,10 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.324는 committed source `107bce09…`의 exact Codex installed-opt-in policy, source/rendered hash, active-browser preflight, honest closure, host-policy admission sequence를 pin했다.
+- browser-harness doctor는 초기 daemon/connection 실패 후 연결 초기화로 Chrome/daemon/active connection 1개가 모두 ready다. cloud auth는 이 local run에 불필요하다.
+- 다음은 u19321을 버리고 동일 task/control/candidate/Luna-high/gates/order를 유지한 fresh 1.9.325 preregistration이다.
+
 - 1.9.323은 browser-required matrix가 provider 전에 browser-harness daemon + active connection을 확인하도록 fail-fast preflight를 추가했다.
 - reflow closure는 이제 모든 carrier/row의 `pass|unresolved` 완전 계정을 뜻한다. honest unresolved는 delivery bookkeeping을 닫되 품질/승격 성공으로 바뀌지 않는다.
 - shared host-policy gate false/null cell은 `invalid-infrastructure`로 기록하고 checkpoint/score admission 전에 matrix를 동결한다. focused 72/72, wider 85/85, lint/build/diff가 green이다.
