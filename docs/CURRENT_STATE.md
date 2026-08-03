@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.340 host-policy validity classification repaired
+- 갱신: 2026-08-03 · 1.9.341 host-policy admission exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.341은 committed `38328c8a…`의 runner·contract tests·acceptance hash와 3-way admission 의미를 exact pin했다.
+- provider 0, quality promotion 없음이다. 다음은 orbital과 겹치지 않는 fresh unseen task를 provider 전에 lock하는 것이다.
 
 - 1.9.340은 ready/analyzable host가 system output을 거부한 경우를 valid unresolved system failure로 집계한다. score/time/token이 reliability·efficiency에서 사라지지 않는다.
 - install/state/trace/interception/enforcement가 없거나 불일치한 경우만 infrastructure-invalid로 동결한다.

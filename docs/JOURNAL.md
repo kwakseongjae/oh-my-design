@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.341 host admission pin
+- committed 38328c8a의 runner·tests·acceptance와 3-way 의미를 exact pin했다.
+- provider 0, promotion 없음; 다음은 fresh unseen task lock이다.
+
 ## 2026-08-03 (Codex) · 1.9.340 host validity classification
 - ready host rejection은 valid unresolved system failure로 비용·신뢰도에 포함한다.
 - 실제 install/state/trace/interception/enforcement 결함만 infrastructure-invalid다.
