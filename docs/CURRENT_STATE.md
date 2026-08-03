@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.359 Codex browser sandbox + artifact finalization repair
+- 갱신: 2026-08-03 · 1.9.360 execution contract exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.360은 committed `ebe51283…`의 browser sandbox, Codex/matrix runner, proof trace, runtime tests, acceptance를 exact hash로 pin했다.
+- browser-required outer `:workspace` + exact socket, matching preflight, non-browser `workspace-write`, neutral artifact lifecycle 의미가 고정됐다.
+- provider 0, quality promotion 없음이다. 다음은 과거 holdout과 다른 fresh unseen task lock이다.
 
 - 1.9.359는 browser-proof Codex 셀을 `:workspace` outer sandbox + exact browser-harness Unix socket으로 실행하고 preflight도 동일 권한 경로로 통일했다.
 - provider-free real-tab fixture가 같은 제한 경로에서 `page_info()`를 읽었다. non-browser Codex 셀은 기존 `workspace-write`를 유지한다.
@@ -1862,9 +1866,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. committed 1.9.359 execution/artifact contract를 exact hash로 pin한다.
-2. generator/harbor/orbital/museum과 다른 fresh unseen task를 provider 전에 lock한다.
-3. 새 root에 admission/resume/timeout/browser pin을 포함해 preregister·prepare한 뒤 one-cell checkpoint를 재개한다.
+1. generator/harbor/orbital/museum과 다른 fresh unseen task를 provider 전에 lock한다.
+2. 새 root에 admission/resume/timeout/browser pin을 포함해 preregister·prepare한다.
+3. one-cell checkpoint로 control/candidate를 재개하고 promotion reachability를 매 셀 뒤 평가한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

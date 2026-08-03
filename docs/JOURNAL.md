@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.360 execution contract exact pin
+- committed ebe51283의 browser sandbox·runner·proof trace·tests·acceptance를 exact hash로 고정했다.
+- frozen museum root 재사용 금지와 fresh preregistration 의무를 명시했다.
+- provider 0; 다음은 새 unseen task lock이다.
+
 ## 2026-08-03 (Codex) · 1.9.359 browser sandbox + artifact repair
 - browser-proof 셀과 preflight를 exact `:workspace` + harness socket 경로로 통일했다.
 - real-tab provider-free fixture 성공; artifact finalize는 neutral, 임의 재검증은 계속 차단한다.
