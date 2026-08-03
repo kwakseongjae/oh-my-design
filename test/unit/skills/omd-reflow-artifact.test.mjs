@@ -30,7 +30,14 @@ function hostState(browser_attempts, browser_proof) {
 
 function draft() {
   return {
-    schema_version: "0.2",
+    schema_version: "0.3",
+    browser_connection_contract: {
+      transport: "existing-cdp",
+      connection_name_env: "BU_NAME",
+      cdp_url_env: "BU_CDP_URL",
+      allow_browser_launch: false,
+      mechanism: "browser-harness named consumer CDP attachment",
+    },
     acceptance_sequence: {
       source_inspection_complete: true,
       product_edit_transaction: "single-planned-transaction",
@@ -53,8 +60,8 @@ function draft() {
       { id: "handoff", selector: "[data-handoff]", expected_count: 1, binds_row_groups: ["status"] },
     ],
     row_groups: [
-      { id: "identifier", selector: "[data-id]", role: "identifier", expected_count: 8, longest_value: "ULD-AKE-73102", line_contract: "single-token", decision: "keep" },
-      { id: "status", selector: "[role=status]", role: "state", expected_count: 1, longest_value: "Ground review open", line_contract: "single-token", decision: "keep" },
+      { id: "identifier", selector: "[data-id]", role: "identifier", expected_count: 8, longest_value: "ULD-AKE-73102", line_contract: "single-token", typography_contract: { font_size_px: 14, line_height_px: 20, font_weight: "400" }, required_fit_reserve_css_px: 8, decision: "keep" },
+      { id: "status", selector: "[role=status]", role: "state", expected_count: 1, longest_value: "Ground review open", line_contract: "single-token", typography_contract: { font_size_px: 14, line_height_px: 20, font_weight: "600" }, required_fit_reserve_css_px: 8, decision: "keep" },
     ],
     invariants: {
       same_row_count: true,
@@ -74,10 +81,39 @@ function staticClosed(artifact, source = "required-fact data-id=") {
 
 function measuredConditions() {
   return [
-    { id: "390", viewport_width: 390, zoom: 1, observed_document_zoom: 1 },
-    { id: "320", viewport_width: 320, zoom: 1, observed_document_zoom: 1 },
-    { id: "200pct", viewport_width: 640, zoom: 2, observed_document_zoom: 2 },
+    { id: "390", viewport_width: 390, zoom: 1, observed_document_zoom: 1, document_scroll_width: 390, document_client_width: 390, body_scroll_width: 390, body_client_width: 390 },
+    { id: "320", viewport_width: 320, zoom: 1, observed_document_zoom: 1, document_scroll_width: 320, document_client_width: 320, body_scroll_width: 320, body_client_width: 320 },
+    { id: "200pct", viewport_width: 640, zoom: 2, observed_document_zoom: 2, document_scroll_width: 320, document_client_width: 320, body_scroll_width: 320, body_client_width: 320 },
   ];
+}
+
+const browserEnv = { BU_NAME: "bench-test", BU_CDP_URL: "http://127.0.0.1:9336" };
+
+function measuredAttempt(conditions = measuredConditions()) {
+  return {
+    attempts: 1,
+    outcome: "measured",
+    mechanism: "browser-harness named consumer CDP attachment",
+    connection: { transport: "existing-cdp", connection_name: "bench-test", cdp_url: "http://127.0.0.1:9336", attached_existing: true, launched_browser: false },
+    oracle: "character-range-line-tops",
+    conditions,
+  };
+}
+
+function resolvedRowFinal(row) {
+  return {
+    status: "pass",
+    outcome_390: "pass",
+    outcome_320: "pass",
+    outcome_200pct: "pass",
+    measurements: ["390", "320", "200pct"].map((id) => ({
+      id,
+      observed_font_size_px: row.typography_contract.font_size_px,
+      observed_line_height_px: row.typography_contract.line_height_px,
+      observed_font_weight: row.typography_contract.font_weight,
+      inline_reserve_css_px: 8,
+    })),
+  };
 }
 
 describe("compact reflow artifact helper", () => {
@@ -154,11 +190,12 @@ describe("compact reflow artifact helper", () => {
     locked.browser_attempt = {
       attempts: 1,
       outcome: "infrastructure-error",
-      mechanism: "browser-harness named connection",
+      mechanism: "browser-harness named consumer CDP attachment",
+      connection: { transport: "existing-cdp", connection_name: "bench-test", cdp_url: "http://127.0.0.1:9336", attached_existing: false, launched_browser: false },
       oracle: "character-range-line-tops",
       conditions: measuredConditions(),
     };
-    const result = finalizeArtifact(staticClosed(locked), { unresolved: true });
+    const result = finalizeArtifact(staticClosed(locked), { unresolved: true, env: browserEnv });
     expect(result.closure).toEqual({ state: "unresolved" });
     expect(result.known_failure_closure).toEqual({ state: "unresolved", unresolved: 11 });
     expect(result.closure_manifest).toMatchObject({
@@ -187,18 +224,19 @@ describe("compact reflow artifact helper", () => {
     locked.browser_attempt = {
       attempts: 1,
       outcome: "infrastructure-error",
-      mechanism: "osascript Google Chrome same-route navigation",
+      mechanism: "browser-harness named consumer CDP attachment",
+      connection: { transport: "existing-cdp", connection_name: "bench-test", cdp_url: "http://127.0.0.1:9336", attached_existing: false, launched_browser: false },
       oracle: "character-range-line-tops",
       conditions: measuredConditions(),
     };
     const unobserved = hostState(0, "open");
     expect(hostObservedBrowserAttempt(unobserved)).toBe(false);
-    expect(() => finalizeArtifact(staticClosed(locked), { unresolved: true, hostStateDir: unobserved }))
+    expect(() => finalizeArtifact(staticClosed(locked), { unresolved: true, hostStateDir: unobserved, env: browserEnv }))
       .toThrow(/host-observed browser attempt/);
 
     const observed = hostState(1, "unresolved");
     expect(hostObservedBrowserAttempt(observed)).toBe(true);
-    expect(finalizeArtifact(staticClosed(locked), { unresolved: true, hostStateDir: observed }).closure)
+    expect(finalizeArtifact(staticClosed(locked), { unresolved: true, hostStateDir: observed, env: browserEnv }).closure)
       .toEqual({ state: "unresolved" });
   });
 
@@ -256,20 +294,15 @@ describe("compact reflow artifact helper", () => {
     });
     locked.carriers[0].final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     locked.row_groups[0].final = {
+      ...resolvedRowFinal(locked.row_groups[0]),
       status: "pass",
       outcome_390: "pass",
       outcome_320: "pass",
       outcome_200pct: "pass",
       passive_text_scroll_container: true,
     };
-    locked.browser_attempt = {
-      attempts: 1,
-      outcome: "measured",
-      mechanism: "browser-harness same-route measurement",
-      oracle: "character-range-line-tops",
-      conditions: measuredConditions(),
-    };
-    expect(() => finalizeArtifact(staticClosed(locked))).toThrow(/passive_text_scroll_container must be false/);
+    locked.browser_attempt = measuredAttempt();
+    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv })).toThrow(/passive_text_scroll_container must be false/);
   });
 
   it("rejects a resolved closure when a relationship invariant is false", () => {
@@ -279,16 +312,10 @@ describe("compact reflow artifact helper", () => {
       carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     }
     for (const row of locked.row_groups) {
-      row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+      row.final = resolvedRowFinal(row);
     }
-    locked.browser_attempt = {
-      attempts: 1,
-      outcome: "measured",
-      mechanism: "Playwright same-route character range measurement",
-      oracle: "character-range-line-tops",
-      conditions: measuredConditions(),
-    };
-    expect(() => finalizeArtifact(staticClosed(locked))).toThrow(/every invariant to pass/);
+    locked.browser_attempt = measuredAttempt();
+    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv })).toThrow(/every invariant to pass/);
   });
 
   it("rejects a resolved closure while any registered row remains unresolved", () => {
@@ -297,17 +324,11 @@ describe("compact reflow artifact helper", () => {
       carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     }
     for (const row of locked.row_groups) {
-      row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+      row.final = resolvedRowFinal(row);
     }
-    locked.browser_attempt = {
-      attempts: 1,
-      outcome: "measured",
-      mechanism: "Playwright same-route character range measurement",
-      oracle: "character-range-line-tops",
-      conditions: measuredConditions(),
-    };
+    locked.browser_attempt = measuredAttempt();
     locked.row_groups[1].final.outcome_320 = "unresolved";
-    expect(() => finalizeArtifact(staticClosed(locked))).toThrow(/zero unresolved carriers and rows/);
+    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv })).toThrow(/zero unresolved carriers and rows/);
   });
 
   it("rejects resolved closure without a measured character-range browser attempt", () => {
@@ -316,7 +337,7 @@ describe("compact reflow artifact helper", () => {
       carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     }
     for (const row of locked.row_groups) {
-      row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+      row.final = resolvedRowFinal(row);
     }
     expect(() => finalizeArtifact(staticClosed(locked))).toThrow(/character-range line oracle/);
   });
@@ -327,18 +348,42 @@ describe("compact reflow artifact helper", () => {
       carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     }
     for (const row of locked.row_groups) {
-      row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+      row.final = resolvedRowFinal(row);
     }
     const conditions = measuredConditions();
     conditions[2].observed_document_zoom = 1;
-    locked.browser_attempt = {
-      attempts: 1,
-      outcome: "measured",
-      mechanism: "browser-harness same-route measurement",
-      oracle: "character-range-line-tops",
-      conditions,
-    };
-    expect(() => finalizeArtifact(staticClosed(locked))).toThrow(/must observe document zoom 2/);
+    locked.browser_attempt = measuredAttempt(conditions);
+    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv })).toThrow(/must observe document zoom 2/);
+  });
+
+  it("rejects a newly launched browser or a different named consumer connection", () => {
+    const locked = lockArtifact(draft());
+    for (const carrier of locked.carriers) carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    for (const row of locked.row_groups) row.final = resolvedRowFinal(row);
+    locked.browser_attempt = measuredAttempt();
+    locked.browser_attempt.connection.launched_browser = true;
+    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv })).toThrow(/exact named consumer CDP connection/);
+
+    locked.browser_attempt.connection.launched_browser = false;
+    locked.browser_attempt.connection.connection_name = "another-browser";
+    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv })).toThrow(/exact named consumer CDP connection/);
+  });
+
+  it("rejects consumer document overflow, typography shrink, and zero-edge fit", () => {
+    const locked = lockArtifact(draft());
+    for (const carrier of locked.carriers) carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    for (const row of locked.row_groups) row.final = resolvedRowFinal(row);
+    locked.browser_attempt = measuredAttempt();
+    locked.browser_attempt.conditions[1].document_scroll_width = 330;
+    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv })).toThrow(/consumer document overflow/);
+
+    locked.browser_attempt = measuredAttempt();
+    locked.row_groups[0].final.measurements[1].observed_font_size_px = 13;
+    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv })).toThrow(/changed its locked typography role/);
+
+    locked.row_groups[0].final = resolvedRowFinal(locked.row_groups[0]);
+    locked.row_groups[0].final.measurements[1].inline_reserve_css_px = 0;
+    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv })).toThrow(/8px measured inline fit reserve/);
   });
 
   it("derives the terminal marker from deterministic closure state", () => {
@@ -355,21 +400,15 @@ describe("compact reflow artifact helper", () => {
       carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     }
     for (const row of locked.row_groups) {
-      row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+      row.final = resolvedRowFinal(row);
     }
-    locked.browser_attempt = {
-      attempts: 1,
-      outcome: "measured",
-      mechanism: "browser-harness same-route measurement",
-      oracle: "character-range-line-tops",
-      conditions: measuredConditions(),
-    };
+    locked.browser_attempt = measuredAttempt();
     writeFileSync(path, JSON.stringify(staticClosed(locked)));
     const output = execFileSync(process.execPath, [
       join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
       "finalize",
       path,
-    ], { encoding: "utf8" });
+    ], { encoding: "utf8", env: { ...process.env, ...browserEnv } });
     expect(output.trim().split("\n").at(-1)).toBe("OMD_DELIVERY_READY");
   });
 });

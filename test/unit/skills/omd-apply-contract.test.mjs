@@ -93,7 +93,10 @@ describe("omd:apply delivery contract", () => {
   it("runs reflow through one compact, measurable work packet", () => {
     expect(skill).toContain("reflow-integrity closure");
     expect(skill).toContain("reflow_work_packet:");
-    expect(skill).toContain('schema_version: "0.2"');
+    expect(skill).toContain('schema_version: "0.3"');
+    expect(skill).toContain("browser-harness named consumer CDP attachment");
+    expect(skill).toContain("required_fit_reserve_css_px: 8");
+    expect(skill).toContain("typography_contract:");
     expect(skill).toContain('measurement_conditions:');
     expect(skill).toContain('{ id: "200pct", viewport_width: 640, zoom: 2 }');
     expect(skill).toContain("acceptance_sequence:");
@@ -131,7 +134,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("character-range-line-tops");
     expect(skill).toContain("`element.getClientRects().length`는 line-count proof로 사용하지 않는다");
     expect(skill).toContain("2. **FIT.**");
-    expect(skill).toContain("source-only이면 `unresolved`");
+    expect(skill).toContain("source-only 또는 경계에 딱 맞는 결과는 `unresolved`");
     expect(skill).toContain("3. **REFLOW.**");
     expect(skill).toContain("가장 좁은 조건에서 group의 longest atomic child");
     expect(skill).toContain("parent row를 `full-row`, 다음으로 `stack`");
@@ -176,7 +179,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("helper가 red면 exactly-once static budget이 소비된다");
     expect(skill).toContain("helper를 고쳐서 다시 실행하지 않고");
     expect(skill).toContain("`--doctor`, `--help`, executable/process/port discovery, 직접 Chrome launch");
-    expect(skill).toContain("준비된 mechanism은 `browser-harness <<'PY' … PY`");
+    expect(skill).toContain("준비된 mechanism은 exact named consumer connection을 쓰는 `browser-harness <<'PY' … PY`");
+    expect(skill).toContain("`p.chromium.launch()`");
+    expect(skill).toContain("document/body `scrollWidth`와 `clientWidth`");
     expect(skill).toContain("`browser-harness --help`, `browser-harness skill`, `command -v`");
     expect(skill).toContain("task 전체 deterministic static-close helper 1회 + task 전체 browser-harness command 1회");
     expect(skill).toContain("첫 product edit 뒤 첫 shell command 하나가 static closure 전체");

@@ -4,9 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.466 satellite pair freeze
+- 갱신: 2026-08-04 · 1.9.467 consumer-browser fit repair
 
 ## 지금 (현재 위치)
+
+- 1.9.467은 provider-free로 reflow artifact schema 0.3과 consumer-browser fit contract를 구현했다.
+- exact `BU_NAME`/`BU_CDP_URL` existing-CDP attach만 허용하고 새 Playwright/Chromium launch는 host policy와 helper 양쪽에서 차단한다.
+- protected row의 pre-edit font size/line height/weight, 8 CSS px inline reserve, document/body scroll/client widths를 세 조건에서 강제한다.
+- focused 84/84, install distribution 포함 85/85, lint/diff green이다. broad 첫 pass 526 green/1 skip 후 관련 stale usage 기대값은 수리했고 외부 vendor Git-root 2건과 기존 timeout attribution 1건만 이번 diff 밖에 남았다.
+- provider 0, promotion false다. 다음은 exact immutable pin 1.9.468과 genuinely unseen transfer task다.
 
 - 1.9.466 r1 candidate는 valid 81/85 + proof pass: 365.260s, 618,457 tokens다. control 대비 wall 0.8324× / token 0.9953×다.
 - exact shipped `static-close` 1회와 browser1/recovery0/duplicate0/post-ready0는 green이나 320px document overflow 10px, actual 200% overflow 20px가 red다.

@@ -68,6 +68,12 @@ describe("proof trace contract", () => {
     });
   });
 
+  it("treats a fresh browser launch inside browser-harness as forbidden recovery", () => {
+    const result = classifyProofCommand("browser-harness <<'PY'\nbrowser = p.chromium.launch(headless=True)\nPY");
+    expect(result.browser).toBe(true);
+    expect(result.recovery_probe).toBe(true);
+  });
+
   it("classifies same-route osascript Chrome automation as browser proof", () => {
     const command = "osascript -e 'tell application \"Google Chrome\" to set URL of active tab of front window to \"file:///tmp/run/index.html\"'";
     expect(classifyProofCommand(command)).toMatchObject({

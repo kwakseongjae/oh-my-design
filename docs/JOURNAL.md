@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.467 consumer-browser fit repair
+- exact named consumer attach, typography lock, 8px reserve, document/body overflow gate를 schema 0.3에 강제했다.
+- focused 84/84 + install 포함 85/85, lint/diff green, provider 0. 다음은 exact pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.466 satellite pair freeze
 - candidate는 365.260s/618,457 tokens와 proof pass였지만 320/actual200 overflow 10/20px로 81/85다.
 - 남은 4셀을 frozen했다. 다음은 provider-free consumer-browser attachment + fit reserve/type-role repair다.

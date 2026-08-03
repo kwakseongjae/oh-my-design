@@ -280,7 +280,7 @@ describe('install-skills', () => {
       expect(existsSync(helper), helper).toBe(true);
       const usage = spawnSync(process.execPath, [helper], { encoding: 'utf8' });
       expect(usage.status).toBe(2);
-      expect(usage.stderr).toContain('reflow-artifact.mjs <lock|finalize|finalize-unresolved>');
+      expect(usage.stderr).toContain('reflow-artifact.mjs <lock|static-close|finalize|finalize-unresolved>');
     }
   });
 

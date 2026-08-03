@@ -16,6 +16,8 @@ const COMPOUND_ATOMIC_SEPARATOR = /\s(?:\+|→|←|↔)\s/u;
 const LINE_CONTRACTS = new Set(["single-token", "parent-one-line"]);
 const FIT_STRATEGIES = new Set(["full-row", "stack", "relocate", "comparison-scroll", "keep", "unresolved"]);
 const REQUIRED_POST_EDIT_COMMANDS = ["consolidated-static-closure", "browser-harness-terminal"];
+const NAMED_CONSUMER_MECHANISM = "browser-harness named consumer CDP attachment";
+const REQUIRED_FIT_RESERVE_CSS_PX = 8;
 const REQUIRED_MEASUREMENT_CONDITIONS = [
   { id: "390", viewport_width: 390, zoom: 1 },
   { id: "320", viewport_width: 320, zoom: 1 },
@@ -57,7 +59,41 @@ function validateMeasurementConditions(value, label, { observed = false } = {}) 
     if (observed && condition.observed_document_zoom !== expected.zoom) {
       fail(`${label}[${index}] must observe document zoom ${expected.zoom}`);
     }
+    if (observed) {
+      for (const pair of [["document_scroll_width", "document_client_width"], ["body_scroll_width", "body_client_width"]]) {
+        const [scrollField, clientField] = pair;
+        if (!Number.isFinite(condition[scrollField]) || !Number.isFinite(condition[clientField])) {
+          fail(`${label}[${index}] must record ${scrollField} and ${clientField}`);
+        }
+        if (condition[scrollField] > condition[clientField]) {
+          fail(`${label}[${index}] has consumer document overflow`);
+        }
+      }
+    }
   }
+  return value;
+}
+
+function validateBrowserConnectionContract(value) {
+  if (
+    value?.transport !== "existing-cdp"
+    || value?.connection_name_env !== "BU_NAME"
+    || value?.cdp_url_env !== "BU_CDP_URL"
+    || value?.allow_browser_launch !== false
+    || value?.mechanism !== NAMED_CONSUMER_MECHANISM
+  ) fail("browser_connection_contract must require the named existing consumer CDP connection and forbid browser launch");
+  return value;
+}
+
+function validateTypographyContract(row) {
+  const value = row.typography_contract;
+  if (
+    !Number.isFinite(value?.font_size_px)
+    || value.font_size_px <= 0
+    || !Number.isFinite(value?.line_height_px)
+    || value.line_height_px <= 0
+    || !(typeof value?.font_weight === "string" || Number.isFinite(value?.font_weight))
+  ) fail(`row group ${row.id} typography_contract must lock pre-edit font size, line height, and weight`);
   return value;
 }
 
@@ -168,6 +204,7 @@ function validateFitStrategy(row) {
 export function inventoryDigest(artifact) {
   return createHash("sha256").update(JSON.stringify({
     measurement_conditions: artifact.measurement_conditions,
+    browser_connection_contract: artifact.browser_connection_contract,
     acceptance_sequence: artifact.acceptance_sequence,
     static_closure_manifest: artifact.static_closure_manifest,
     carrier_ids: artifact.inventory.carrier_ids,
@@ -185,6 +222,8 @@ export function inventoryDigest(artifact) {
       longest_value: row.longest_value,
       atomic_parts: row.atomic_parts ?? null,
       line_contract: row.line_contract,
+      typography_contract: row.typography_contract,
+      required_fit_reserve_css_px: row.required_fit_reserve_css_px,
       decision: row.decision,
       scroll_contract: row.scroll_contract ?? null,
     })),
@@ -193,10 +232,11 @@ export function inventoryDigest(artifact) {
 
 export function lockArtifact(input) {
   const artifact = structuredClone(input);
-  if (artifact.schema_version !== "0.2") fail("schema_version must be 0.2");
+  if (artifact.schema_version !== "0.3") fail("schema_version must be 0.3");
   if (!Array.isArray(artifact.carriers) || !artifact.carriers.length) fail("carriers are required");
   if (!Array.isArray(artifact.row_groups) || !artifact.row_groups.length) fail("row_groups are required");
   validateMeasurementConditions(artifact.measurement_conditions, "measurement_conditions");
+  validateBrowserConnectionContract(artifact.browser_connection_contract);
   validateAcceptanceSequence(artifact.acceptance_sequence);
   validateStaticClosureManifest(artifact.static_closure_manifest);
   const carrierIds = uniqueStrings(artifact.carriers.map((carrier) => carrier?.id), "carrier ids");
@@ -219,6 +259,10 @@ export function lockArtifact(input) {
     if (typeof row.longest_value !== "string" || !row.longest_value) fail(`row group ${row.id} longest_value is required`);
     const atomicParts = validateAtomicParts(row);
     if (atomicParts) row.atomic_parts = atomicParts;
+    validateTypographyContract(row);
+    if (row.required_fit_reserve_css_px !== REQUIRED_FIT_RESERVE_CSS_PX) {
+      fail(`row group ${row.id} required_fit_reserve_css_px must be ${REQUIRED_FIT_RESERVE_CSS_PX}`);
+    }
     const scrollContract = validateFitStrategy(row);
     if (scrollContract) row.scroll_contract = scrollContract;
     delete row.final;
@@ -308,6 +352,40 @@ function completeOutcome(value, label, { compound = false, unresolved = false } 
   }
 }
 
+function validateResolvedRowMeasurements(row) {
+  const values = row.final?.measurements;
+  if (!Array.isArray(values) || values.length !== REQUIRED_MEASUREMENT_CONDITIONS.length) {
+    fail(`row group ${row.id}.final.measurements must cover every condition`);
+  }
+  for (const [index, expected] of REQUIRED_MEASUREMENT_CONDITIONS.entries()) {
+    const value = values[index];
+    if (value?.id !== expected.id) fail(`row group ${row.id}.final.measurements[${index}] must be ${expected.id}`);
+    if (
+      value.observed_font_size_px !== row.typography_contract.font_size_px
+      || value.observed_line_height_px !== row.typography_contract.line_height_px
+      || String(value.observed_font_weight) !== String(row.typography_contract.font_weight)
+    ) fail(`row group ${row.id} changed its locked typography role`);
+    if (
+      row.decision !== "comparison-scroll"
+      && (!Number.isFinite(value.inline_reserve_css_px) || value.inline_reserve_css_px < row.required_fit_reserve_css_px)
+    ) fail(`row group ${row.id} must preserve ${row.required_fit_reserve_css_px}px measured inline fit reserve`);
+  }
+}
+
+function validateBrowserConnection(attempt, contract, env, { unresolved = false } = {}) {
+  const expectedName = env?.[contract.connection_name_env];
+  const expectedUrl = env?.[contract.cdp_url_env];
+  if (!expectedName || !expectedUrl) fail("named consumer browser environment is unavailable");
+  if (
+    attempt?.mechanism !== contract.mechanism
+    || attempt?.connection?.transport !== contract.transport
+    || attempt.connection.connection_name !== expectedName
+    || attempt.connection.cdp_url !== expectedUrl
+    || attempt.connection.launched_browser !== false
+    || (!unresolved && attempt.connection.attached_existing !== true)
+  ) fail("browser attempt must attach to the exact named consumer CDP connection without launching another browser");
+}
+
 export function hostObservedBrowserAttempt(stateDir) {
   if (!stateDir || !existsSync(stateDir)) return null;
   const records = readdirSync(stateDir, { withFileTypes: true })
@@ -325,7 +403,7 @@ export function hostObservedBrowserAttempt(stateDir) {
   ));
 }
 
-export function finalizeArtifact(input, { unresolved = false, hostStateDir = null } = {}) {
+export function finalizeArtifact(input, { unresolved = false, hostStateDir = null, env = process.env } = {}) {
   const artifact = structuredClone(input);
   const locked = lockArtifact({
     ...artifact,
@@ -351,6 +429,7 @@ export function finalizeArtifact(input, { unresolved = false, hostStateDir = nul
       unresolved,
     });
     if (!OUTCOMES.has(row.final.status)) fail(`row group ${row.id}.status must be pass or unresolved`);
+    if (!unresolved) validateResolvedRowMeasurements(row);
   }
   if (!unresolved && INVARIANTS.some((field) => artifact.invariants[field] !== true)) {
     fail("resolved closure requires every invariant to pass");
@@ -380,6 +459,7 @@ export function finalizeArtifact(input, { unresolved = false, hostStateDir = nul
     ) {
       fail("unresolved accounting requires one recorded browser infrastructure attempt");
     }
+    validateBrowserConnection(attempt, artifact.browser_connection_contract, env, { unresolved: true });
     if (hostStateDir && hostObservedBrowserAttempt(hostStateDir) !== true) {
       fail("unresolved accounting requires one host-observed browser attempt");
     }
@@ -395,6 +475,7 @@ export function finalizeArtifact(input, { unresolved = false, hostStateDir = nul
     ) {
       fail("resolved closure requires one measured browser attempt using the character-range line oracle");
     }
+    validateBrowserConnection(attempt, artifact.browser_connection_contract, env);
     validateMeasurementConditions(attempt.conditions, "browser_attempt.conditions", { observed: true });
     if (hostStateDir && hostObservedBrowserAttempt(hostStateDir) !== true) {
       fail("resolved closure requires one host-observed browser attempt");
