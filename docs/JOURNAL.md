@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.312 aircraft matrix prepared
+- fresh exact vendors + 6 clean Git cells를 provider call 0으로 준비했다.
+- shared runtime artifact gate 포함 모든 조건이 같고 sole delta는 skill tree다.
+- treatment 귀속은 artifact-aware skill의 gate coordination으로 고정했다.
+- 다음은 `luna-load-r1-control` 한 cell이다.
+
 ## 2026-08-03 (Codex) · 1.9.311 aircraft runtime-artifact preregistration
 - exact control vs runtime artifact Luna/high 2×3를 잠갔다.
 - balanced order, proof/host, quality, +10% efficiency gate를 고정했다.

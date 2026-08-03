@@ -1879,6 +1879,28 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       count_all_scheduled_spend: true,
       unmet_goal_disposition: "right-censored",
     });
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/aircraft-load-plan-runtime-artifact-luna-1.9.311/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      status: "PREPARED",
+      provider_calls: 0,
+      scheduled_cells: 6,
+      prepared_cells: 6,
+      sole_arm_delta: "exact-installed-skill-source",
+      next_cell: "luna-load-r1-control",
+      equality: {
+        task: true,
+        prompt: true,
+        product: true,
+        activation: true,
+        installed_proof_policy: true,
+        clean_baseline_all_cells: true,
+        source_detached_all_cells: true,
+        source_publishable_all_cells: true,
+      },
+    });
   });
 
   it("locks an unseen feature-flag rollout family for final candidate validation", () => {

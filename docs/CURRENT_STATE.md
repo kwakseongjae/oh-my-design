@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.311 aircraft runtime-artifact preregistration
+- 갱신: 2026-08-03 · 1.9.312 aircraft runtime-artifact matrix prepared
 
 ## 지금 (현재 위치)
+
+- 1.9.312는 fresh detached `/private/tmp/u19311-vendors/{omd-1.9.274,omd-1.9.309}`와 `/private/tmp/u19311` 6 clean Git cells를 provider call 0으로 PREPARED했다.
+- task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/runtime artifact proof policy가 6개 전부 같고 sole delta는 skill tree `2d577464…` vs `bb3ac833…`다.
+- control/candidate 모두 같은 fail-close gate를 받는다. candidate만 artifact protocol을 설명하므로 이번 귀속은 gate 유무가 아니라 skill의 runtime-gate coordination이다.
+- 다음 허용 cell은 `luna-load-r1-control` 하나이며 canonical `--max-new-cells 1`, 120초 pacing, no retry를 유지한다.
 
 - 1.9.311은 exact control `3a414a0a…` vs exact runtime-artifact candidate `8f8cec6e…`를 fresh aircraft load-plan task에 Luna/high 2×3으로 preregister했다.
 - C/N, N/C, C/N balanced order, 900초, concurrency 1, 120초 pacing, no retry를 고정했다. candidate gate는 resolved/contrast/proof/host 3/3, paired loss 0, mean wall/token 각각 +10% 이하다.

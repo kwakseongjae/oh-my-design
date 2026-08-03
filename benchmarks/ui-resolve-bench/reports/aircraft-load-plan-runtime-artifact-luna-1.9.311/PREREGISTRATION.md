@@ -1,6 +1,6 @@
 # Aircraft load-plan runtime-artifact transfer — 1.9.311
 
-This experiment compares exact conjunctive-release control `3a414a0a…` with exact runtime-artifact candidate `8f8cec6e…` on the fresh `aircraft-load-plan-review-v0.1` holdout. Task, prompt, starter, DESIGN.md, activation, Codex/Luna/high runtime, 900-second timeout, balanced order, and 120-second pacing are held equal. Each source installs its own exact managed proof policy; the candidate treatment is the exact skill plus runtime-enforced reflow artifact gate shipped by its pinned source.
+This experiment compares exact conjunctive-release control `3a414a0a…` with exact runtime-artifact-aware candidate `8f8cec6e…` on the fresh `aircraft-load-plan-review-v0.1` holdout. Task, prompt, starter, DESIGN.md, activation, Codex/Luna/high runtime, 900-second timeout, balanced order, 120-second pacing, and the installed runtime artifact proof policy are held byte-identical. The sole treatment difference is the exact installed skill tree: the candidate tells the model how to materialize and close the artifact that the shared gate enforces.
 
 Promotion requires candidate UI-Resolved 3/3, zero serious/critical contrast violations 3/3, no paired objective loss, and proof plus installed host-policy passes 3/3. Candidate mean wall time and provider-reported tokens must each be at most 1.1× control. Timeout is a valid failure; retry, fallback, same-root repair, and post-hoc substitution are forbidden. Each execution uses `--max-new-cells 1`.
 

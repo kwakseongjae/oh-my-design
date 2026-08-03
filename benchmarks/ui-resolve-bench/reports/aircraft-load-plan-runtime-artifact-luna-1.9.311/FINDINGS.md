@@ -1,7 +1,7 @@
 # Aircraft load-plan runtime-artifact transfer — findings
 
-Status: **preregistered; fresh preparation not started**
+Status: **fresh 6/6 preparation complete; provider not started**
 
-Exact control/candidate source commits, the fresh task, Luna/high runtime, 2×3 balanced order, installed proof policy, promotion gates, pacing, retry policy, and Tokens-to-Target accounting are locked. Provider calls: **0**.
+Six independent clean Git workspaces were prepared from detached, clean, publishable source commits. Task, runtime prompt, product, DESIGN.md, activation, Codex/Luna/high runtime, timeout, and the installed runtime artifact proof policy are byte-identical. The sole arm delta is the exact installed skill tree: control `2d577464…`, candidate `bb3ac833…`. Provider calls: **0**.
 
-Next: prepare two fresh detached vendor sources and six independent Git workspaces, attest shared task/product/runtime equality and exact source differences, then run at most one new cell.
+The only allowed next cell is `luna-load-r1-control`, executed with `--max-new-cells 1`. No same-root retry is allowed.
