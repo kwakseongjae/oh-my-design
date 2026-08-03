@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.449 grid actual-zoom transfer preregistration
+- exact 1.9.409 vs 1.9.447 Luna/high 2×3과 actual zoom·proof·efficiency gate를 잠갔다.
+- provider 0. 다음은 detached vendors/cells preparation과 equality 검증이다.
+
 ## 2026-08-04 (Codex) · 1.9.448 grid battery dispatch unseen task lock
 - fresh grid task를 75/85 unresolved로 잠갔다; actual 200%와 compound/state line 실패를 포함한다.
 - provider 0. 다음은 exact 1.9.409 vs 1.9.447 Luna/high 2×3 preregistration이다.

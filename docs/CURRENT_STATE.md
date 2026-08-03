@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.448 grid battery dispatch unseen task lock
+- 갱신: 2026-08-04 · 1.9.449 grid actual-zoom transfer preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.449는 exact 1.9.409 control `1480d7cc…` vs exact 1.9.447 candidate `5d5ee041…`를 fresh grid task에 Luna/high 2×3으로 사전등록했다.
+- actual 200%=`640px + document zoom 2`, one static closure, helper terminal marker, 900s/concurrency 1/120s pacing/no retry를 고정했다.
+- attempt 25, prior TTT 40,974,913+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 fresh exact vendors/cells preparation과 equality 검증이다.
 
 - 1.9.448은 fresh `grid-battery-dispatch-release-v0.1`을 provider 전에 lock했다.
 - 6 battery rack/8 inverter·grid certificate/4 dispatch window와 register·window strip·energization decision 세 carrier를 보존한다.
@@ -2245,9 +2250,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact 1.9.409 control vs exact 1.9.447 candidate의 Luna/high 2×3을 fresh root에 preregister한다.
-2. detached vendors와 six untouched cells를 준비하고 task/prompt/product/runtime/model/effort/timeout equality를 검증한다.
-3. r1 control → fixed pacing → r1 candidate를 no-retry로 실행하고 Reliability@3 가능 여부를 조기 판정한다.
+1. exact detached vendors와 `/private/tmp/u19449` six untouched cells를 준비한다.
+2. task/prompt/product/runtime/model/effort/timeout/browser/measurement equality와 installed source hash를 검증한다.
+3. exact browser/auth/CLI preflight 뒤 r1 control을 no-retry로 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
