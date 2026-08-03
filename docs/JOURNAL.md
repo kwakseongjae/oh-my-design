@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.475 attribute-aware exact pin
+- 1.9.474를 exact commit/tree/file hashes와 새 immutable competitor id로 고정했다.
+- provider 0/promotion false. 다음은 shipped consumer-browser runner다.
+
 ## 2026-08-04 (Codex) · 1.9.474 verifier repair
 - actual HTML attribute count와 containment-aware overlap을 구현했고 실패 candidate replay가 77→81/85로 복구됐다.
 - lint/focused+install 89/89 green, provider 0. 다음은 exact pin과 shipped consumer-browser runner다.

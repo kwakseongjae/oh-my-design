@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.475",
+  "status": "PINNED",
+  "provider_calls": 0,
+  "source_commit": "e848d129667d661a240546762a25691e732de5d5",
+  "skill_tree_sha256": "d4ee144a33df4c2bd3a969e0e03734349128459f",
+  "skill_file_sha256": "3030791a902b1de71b4c4297f18d941ed5bfe4916c77cd5be2a8befc4e2eb56c",
+  "reflow_helper_sha256": "58e5eacf088f0722d930f396127b8e3640d49a8a77519f61651280ccf19d2cbf",
+  "skill_contract_test_sha256": "3fdaa1f5cdd98755a43a065f99ec61cdb3eea4ef9c8d9dc38d834c016118eb28",
+  "artifact_contract_test_sha256": "c951470f08da85185bca93e0b83a0abdd058728775fe24744205fdded8730f0a",
+  "objective_evaluator_sha256": "91cb1aed5df5df7125816392cb62270e28f2c20a56639cde2e397cb2e2d274c7",
+  "objective_evaluator_test_sha256": "4d2826a57b74915726c6098e1bb20dc8d8b891fa9d6d00e3eaffc8b44d94b112",
+  "competitor_id": "omd-attribute-aware-consumer-fit-candidate",
+  "vendor_dir": "omd-1.9.474",
+  "promotion": false,
+  "next": "implement-model-independent-consumer-browser-runner"
+}

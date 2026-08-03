@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.474 static attribute + overlap repair
+- 갱신: 2026-08-04 · 1.9.475 attribute-aware exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.475는 1.9.474 repair를 exact `e848d129…`, skill tree `d4ee144a…`와 helper/evaluator/test hash로 pin했다.
+- 새 competitor는 `omd-attribute-aware-consumer-fit-candidate`, vendor dir `omd-1.9.474`이며 provider 0/promotion false다.
+- 다음은 모델이 browser 측정 코드를 즉석 작성하지 않도록 schema0.3 artifact를 소비하는 shipped browser-harness runner를 provider-free로 구현한다.
 
 - 1.9.474는 provider-free로 raw hook literal count를 실제 HTML start-tag attribute count로 교체하고 script/style selector decoy를 제외했다.
 - evaluator는 서로 독립된 control overlap은 계속 잡되 focusable ancestor와 descendant의 정상 containment를 collision에서 제외한다.
