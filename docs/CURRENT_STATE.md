@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.370 isolated cold-chain preregistration
+- 갱신: 2026-08-03 · 1.9.371 isolated cold-chain preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.371은 fresh u19370 exact detached vendors와 6 committed/detached/clean cells를 준비했다.
+- shared inputs/execution pins equality 6/6, sole delta는 exact skill tree, provider 0이다.
+- 다음 허용 cell은 named `bench19366` + isolated-auth dual preflight 뒤 r1 control 하나다.
 
 - 1.9.370은 cold-chain task를 fresh `/private/tmp/u19370{,-vendors}`에 attempt 11로 preregister했다.
 - 1.9.365 isolated Codex state + 1.9.369 named CDP browser pins를 함께 고정하고 기존 2×3/no-retry/strict gates를 유지했다.

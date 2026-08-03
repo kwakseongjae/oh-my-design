@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.371 isolated cold-chain preparation
+- fresh u19370 exact vendors와 6 clean/detached cells, equality 6/6을 확인했다.
+- provider 0; 다음은 named isolated browser로 r1 control 한 셀이다.
+
 ## 2026-08-03 (Codex) · 1.9.370 isolated cold-chain preregistration
 - fresh u19370 roots에 attempt 11을 잠그고 isolated-state + named-browser pins를 결합했다.
 - 기존 exact 2×3/no-retry/strict gates 유지, provider 0. 다음은 preparation이다.
