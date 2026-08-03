@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.305 digital-master pair 2
+- candidate/control 73/77로 candidate loss, 둘 다 unresolved다.
+- control은 summary만, candidate는 handoff target·summary·keyboard를 남겼다.
+- candidate wall -19.09%, tokens +71.33%; 누적 2,562,390다.
+- 다음은 마지막 진단 pair의 control r3다.
+
 ## 2026-08-03 (Codex) · 1.9.304 digital-master candidate r2
 - candidate r2는 73/85 unresolved, proof/host green이다.
 - page는 닫았지만 atomic-line 2/2, keyboard/axe도 red다.

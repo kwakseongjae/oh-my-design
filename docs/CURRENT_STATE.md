@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.304 digital-master candidate r2
+- 갱신: 2026-08-03 · 1.9.305 digital-master pair 2
 
 ## 지금 (현재 위치)
+
+- 1.9.305 pair 2는 candidate 73/85 vs control 77/85로 candidate loss이며 둘 다 unresolved다. control은 handoff target을 닫고 summary만 남겼지만 candidate는 target과 summary, keyboard를 남겼다.
+- pair-2 candidate wall -19.09%, tokens +71.33%다. 2-pair W/T/L 0/1/1, mean wall -21.49%, mean tokens +53.94%다.
+- attempt-3 누적은 2,562,390 tokens다. 마지막 pair는 진단용이며 다음 locked cell은 control r3다.
 
 - 1.9.304 candidate r2는 valid/policy-green 73/85 unresolved다. page containment는 닫았지만 handoff target/summary atomic-line 실패가 candidate 2/2 재현됐다.
 - 이번 trial은 keyboard traversal과 serious axe도 red다. wall 295,346ms, total 960,428 tokens(input 946,220, cached 881,152, output 14,208, reasoning 8,198)다.

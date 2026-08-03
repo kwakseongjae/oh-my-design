@@ -1,6 +1,6 @@
 # Digital master carrier-inventory transfer — findings
 
-Status: **3/6 cells complete — promotion gate already unreachable**
+Status: **4/6 cells complete — promotion gate already unreachable**
 
 ## Preparation checkpoint
 
@@ -78,3 +78,23 @@ failure.
 
 Pair-2 quality and efficiency deltas are withheld until
 `luna-master-r2-control` completes.
+
+## Pair 2
+
+The candidate scored **73/85** against control **77/85**, and both remain
+unresolved. Control closed the handoff target at 390px and left only the
+summary atomic-line failure at 320px and 200%. Candidate retained the handoff
+target failure across all narrow conditions and added a keyboard traversal
+failure. Serious axe findings remained in both arms.
+
+- candidate wall: **295,346ms** vs control **365,026ms** (**-19.09%**)
+- candidate tokens: **960,428** vs control **560,575** (**+71.33%**)
+- two-pair candidate/control mean wall: **300,684ms / 383,007ms**
+  (**-21.49%**)
+- two-pair candidate/control mean tokens: **776,668 / 504,527**
+  (**+53.94%**)
+- candidate quality W/T/L: **0/1/1**
+- cumulative attempt-3 experimental tokens: **2,562,390**
+
+The final pair remains diagnostic only. It cannot restore the failed quality
+or token-efficiency promotion gates.
