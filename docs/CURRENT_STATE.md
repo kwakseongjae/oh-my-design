@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.433 atomic browser proof budget exact pin
+- 갱신: 2026-08-04 · 1.9.434 maritime container seal transfer task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.434는 fresh `maritime-container-seal-release-v0.1`을 provider 전에 lock했다.
+- 6 container/8 seal/4 inspection window와 container register·inspection strip·seal-release decision 세 carrier를 보존한다.
+- untouched baseline은 75/85 unresolved이며 좁은 화면 overflow·character-range atomic line·4.11 contrast만 의도적으로 red다.
+- provider 0이다. 다음은 exact historical control vs 1.9.432 candidate의 runtime-bound Reliability@3를 fresh root에 사전등록한다.
 
 - 1.9.433은 1.9.432 candidate를 exact commit `f346610a…`, skill tree `1ec8703d…`로 pin했다.
 - provider 0, promotion false다. 다음은 이 source가 보지 못한 fresh compound one-line + browser-proof transfer task를 lock하는 것이다.

@@ -1,0 +1,5 @@
+Improve the supplied maritime container seal release review so terminal release coordinators can inspect container-to-seal assignments, inspection windows, and the seal-release decision confidently on desktop and narrow screens.
+
+Preserve all six container identifiers, all eight seal identifiers and their exact container assignments, all four supplied inspection windows, the three review views, the field-note toggle, the release-review form, and all stated summary evidence. Do not invent customs clearance, seal-integrity certification, cargo release, terminal acceptance, inspection closure, manifest approval, carrier authorization, or custody-chain closure. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The container register, separate inspection-window strip, and separate seal-release decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

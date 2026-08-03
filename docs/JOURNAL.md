@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.434 maritime container seal task lock
+- fresh 6-container/8-seal/4-window transfer task를 unseen 상태로 고정했다.
+- untouched 75/85 unresolved, provider 0. 다음은 runtime-bound exact 2×3 preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.433 atomic browser proof budget exact pin
 - source `f346610a…`, skill tree `1ec8703d…`로 exact pin했다. provider 0/promotion false.
 - 다음은 fresh compound one-line + browser-proof transfer task lock이다.

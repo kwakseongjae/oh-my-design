@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.434",
+  "task_id": "maritime-container-seal-release-v0.1",
+  "status": "locked-unseen",
+  "facts": {
+    "containers": 6,
+    "seals": 8,
+    "inspection_windows": 4,
+    "relationship_carriers": [
+      "container-seal-register",
+      "inspection-window-strip",
+      "seal-release-decision"
+    ],
+    "compound_atomic_target": "CTR-EISU-308114 + SEAL-CUS-77421"
+  },
+  "baseline": {
+    "deterministic_score": 75,
+    "deterministic_max": 85,
+    "ui_resolved": false,
+    "green": [
+      "task-contract",
+      "state-journey",
+      "design-grounding",
+      "evidence-honesty",
+      "desktop-geometry",
+      "keyboard"
+    ],
+    "red": [
+      "390px-overflow-and-character-range-atomic-lines",
+      "320px-overflow-and-character-range-atomic-lines",
+      "200%-reflow-overflow-and-character-range-atomic-lines",
+      "serious-color-contrast"
+    ],
+    "contrast_ratios": {
+      "muted_on_canvas": 4.11
+    }
+  },
+  "sha256": {
+    "task": "a98dab3652975c64c87c1f38847c192d2e3f16e6501e5ab417c49809cb815a08",
+    "prompt": "810c3618f1b161d3784395a957c2fc096f8294d858bcd8304aebf3e930d8102b",
+    "index": "5f9bed8093821a69c86f48f1c11149a23c977d10e9ae24364bbdd0223d029465",
+    "design": "10712a946b4dc032d06d67fcc694d2a4cae1874baad52f13392d18836e488583",
+    "baseline_score": "a1ef6078ee7a992ed1daafbae2efb8e9e865de3d6d52d78b31d6278b289c5787"
+  },
+  "provider_calls": 0,
+  "next": "Preregister the exact historical control versus exact 1.9.432 candidate in a fresh runtime-bound Reliability@3 matrix."
+}
