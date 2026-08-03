@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.361 cold-chain holdout lock
+- 갱신: 2026-08-03 · 1.9.362 cold-chain matrix preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.362는 exact control `3a414a0a…` vs compact candidate `c1de0e4e…`를 cold-chain holdout에 Luna/high 2×3으로 preregister했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
+- admission 1.9.341·resume 1.9.347·timeout 1.9.353·browser/artifact 1.9.360 pins를 공유한다. Tokens-to-Target attempt 9, prior minimum 18,188,850 tokens + unavailable 4, provider 0이다.
+- 다음은 `/private/tmp/u19362-vendors` exact detached vendors와 `/private/tmp/u19362` 6 clean cells를 prepare하고 equality를 증명하는 것이다.
 
 - 1.9.361은 fresh `cold-chain-release-routing-review-v0.1`을 provider 전에 lock했다.
 - 6 lot/8 logger/4 carrier window와 lot register·carrier strip·release handoff 세 carrier를 보존한다.
@@ -1871,9 +1876,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact control/candidate와 admission/resume/timeout/browser pins를 새 Reliability@3 matrix에 preregister한다.
-2. fresh detached vendors와 6 clean cells를 prepare하고 sole-delta equality를 증명한다.
-3. one-cell checkpoint로 control/candidate를 재개하고 promotion reachability를 매 셀 뒤 평가한다.
+1. `/private/tmp/u19362-vendors` exact detached vendors와 `/private/tmp/u19362` 6 clean cells를 prepare한다.
+2. task/prompt/product/DESIGN/runtime/model/effort/host pins equality와 sole skill delta를 증명한다.
+3. fresh permission-parity preflight 후 one-cell checkpoint로 r1 control을 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.362 cold-chain matrix preregistration
+- Luna/high exact control vs compact candidate 2×3을 fresh task에 잠갔다.
+- admission/resume/timeout/browser pins, 900s/pacing/no-retry/strict gates를 고정했다.
+- prior minimum 18,188,850 tokens + unavailable 4; provider 0, 다음은 fresh prepare다.
+
 ## 2026-08-03 (Codex) · 1.9.361 cold-chain holdout lock
 - fresh 6 lot/8 logger/4 carrier-window task를 provider 전에 잠갔다.
 - baseline 75/85; narrow/200% overflow·atomic lines와 4.10 contrast만 red다.
