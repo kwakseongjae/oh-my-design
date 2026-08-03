@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.393 rail r1 control
+- control은 valid timeout, 75/85 unresolved, usage unavailable, browser 0·delivery incomplete다.
+- retry 없이 보존한다. 다음은 paired repaired candidate 한 셀이다.
+
 ## 2026-08-03 (Codex) · 1.9.392 rail matrix preparation
 - exact detached vendors와 6 clean/detached cells, equality 6/6을 준비했다.
 - provider 0; 다음은 isolated browser/auth preflight 뒤 r1 control 한 셀이다.

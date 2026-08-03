@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.392 rail matrix preparation
+- 갱신: 2026-08-03 · 1.9.393 rail r1 control timeout
 
 ## 지금 (현재 위치)
+
+- 1.9.393 first rail control은 900,014ms valid timeout: 75/85, `ui_resolved=false`, usage unavailable이다.
+- 한 번 product edit은 했지만 browser attempt 0·delivery incomplete이며, admission은 `valid-system-failure / preregistered-valid-timeout`이다.
+- retry 0으로 결과를 보존한다. 다음은 fixed pacing + fresh preflight 뒤 `luna-rail-r1-candidate` 한 셀이다.
 
 - 1.9.392는 `/private/tmp/u19391-vendors` exact detached sources와 `/private/tmp/u19391` 6 committed/detached/clean cells를 준비했다.
 - task/prompt/product/runtime/model/effort/timeout/host/proof와 모든 browser pin equality가 6/6이다.
