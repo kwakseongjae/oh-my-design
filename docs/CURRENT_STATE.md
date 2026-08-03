@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.462 satellite telemetry unseen task lock
+- 갱신: 2026-08-04 · 1.9.463 satellite deterministic static-closure preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.463은 exact 1.9.453 control `f578e8a6…` vs exact 1.9.460 candidate `8315182e…`를 satellite task에 Luna/high 2×3으로 사전등록했다.
+- pre-edit manifest + exactly-once shipped `static-close`, actual 200%=640/zoom2, passive scroll 0, terminal browser, 900s/concurrency1/120s/no-retry를 고정했다.
+- attempt 27, prior TTT 45,082,351+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 fresh detached vendors와 six untouched cells를 준비하고 equality를 검증한다.
 
 - 1.9.462는 fresh `satellite-telemetry-release-review-v0.1`을 provider 전에 lock했다.
 - 4 payload/6 telemetry archive/3 ground pass와 manifest·pass strip·release decision 세 carrier를 보존한다.

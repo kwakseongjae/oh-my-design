@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.463 satellite static-closure preregistration
+- exact 1.9.453 vs 1.9.460, Luna/high 2×3와 exactly-once manifest/helper gate를 고정했다.
+- provider 0. 다음은 fresh detached vendors/cells preparation이다.
+
 ## 2026-08-04 (Codex) · 1.9.462 satellite telemetry task lock
 - fresh 4 payload/6 archive/3 pass task를 baseline 75/85와 exact hashes로 잠갔다.
 - provider 0. 다음은 exact control/candidate Reliability@3 preregistration이다.
