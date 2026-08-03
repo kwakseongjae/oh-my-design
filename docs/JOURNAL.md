@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.450 grid actual-zoom transfer preparation
+- six cells equality 6/6, exact detached sources, install hashes, actual-zoom condition을 검증했다.
+- provider 0. 다음은 exact browser/auth/CLI preflight 뒤 r1 control이다.
+
 ## 2026-08-04 (Codex) · 1.9.449 grid actual-zoom transfer preregistration
 - exact 1.9.409 vs 1.9.447 Luna/high 2×3과 actual zoom·proof·efficiency gate를 잠갔다.
 - provider 0. 다음은 detached vendors/cells preparation과 equality 검증이다.

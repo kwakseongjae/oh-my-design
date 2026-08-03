@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.449 grid actual-zoom transfer preregistration
+- 갱신: 2026-08-04 · 1.9.450 grid actual-zoom transfer preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.450은 `/private/tmp/u19449-vendors` exact detached control/candidate와 `/private/tmp/u19449` six untouched cells를 준비했다.
+- task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.
+- control install hash `ef6e0199…`, candidate `921a9e56…`; actual-zoom condition도 shared이며 provider 0이다.
+- 다음은 exact `bench19366`와 isolated auth/CLI preflight 뒤 r1 control 한 셀을 no-retry 실행한다.
 
 - 1.9.449는 exact 1.9.409 control `1480d7cc…` vs exact 1.9.447 candidate `5d5ee041…`를 fresh grid task에 Luna/high 2×3으로 사전등록했다.
 - actual 200%=`640px + document zoom 2`, one static closure, helper terminal marker, 900s/concurrency 1/120s pacing/no retry를 고정했다.
@@ -2250,9 +2255,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact detached vendors와 `/private/tmp/u19449` six untouched cells를 준비한다.
-2. task/prompt/product/runtime/model/effort/timeout/browser/measurement equality와 installed source hash를 검증한다.
-3. exact browser/auth/CLI preflight 뒤 r1 control을 no-retry로 실행한다.
+1. exact named browser, isolated auth link, Codex CLI 0.144.1, Luna/high identity를 preflight한다.
+2. `luna-grid-r1-control` 한 셀을 900s/no-retry로 실행하고 objective/proof/token 결과를 보존한다.
+3. fixed 120s pacing 뒤 r1 candidate를 같은 조건으로 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
