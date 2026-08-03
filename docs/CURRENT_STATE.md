@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.383 shared-socket cold-chain preparation
+- 갱신: 2026-08-03 · 1.9.384 cold-chain r1 control checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.384 first control은 valid 85/85, `ui_resolved=true`, 564,375ms, 1,561,627 tokens이다.
+- host/proof gate와 independent 1440·390·320·200%/behavior/a11y 평가가 모두 pass했다. retry 0; 다음은 fixed pacing 후 r1 compact 한 셀이다.
 
 - 1.9.383은 fresh u19382 vendors/6 clean detached cells와 equality 6/6을 준비했다.
 - provider 0; 다음은 exact named shared socket으로 r1 control 한 셀이다.

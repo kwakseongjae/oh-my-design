@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.384 cold-chain r1 control
+- control은 valid 85/85, resolved, 564,375ms, 1,561,627 tokens이다.
+- host/proof/evaluator gates 전부 pass; retry 0. 다음은 paired compact 한 셀이다.
+
 ## 2026-08-03 (Codex) · 1.9.383 shared-socket cold-chain preparation
 - u19382 vendors/6 cells와 equality 6/6을 준비했다.
 - provider 0; 다음은 r1 control 한 셀이다.
