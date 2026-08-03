@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.408 sterile-tray r1 rejection and early stop
+- candidate는 421.239s/834,250 tokens에 browser 1/delivery-ready를 닫았지만 compound target line-wrap으로 79/85에 머물렀다.
+- Reliability 0/1이라 남은 4 calls를 skip/freeze했다. 다음은 atomic child 분리와 character-range oracle repair다.
+
 ## 2026-08-03 (Codex) · 1.9.407 sterile-tray r1 control checkpoint
 - control은 900.016s timeout, 79/85 unresolved였고 browser attempt 0/delivery incomplete로 host gate를 통과하지 못했다.
 - provider usage는 unavailable 누계 6. 120초 pacing 후 exact preflight와 r1 candidate를 실행한다.

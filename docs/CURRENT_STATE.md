@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.407 sterile-tray r1 control checkpoint
+- 갱신: 2026-08-03 · 1.9.408 sterile-tray r1 rejection and early stop
 
 ## 지금 (현재 위치)
+
+- 1.9.408에서 r1 candidate는 421.239s/834,250 tokens, 79/85 unresolved로 종료됐다. control 대비 53% 빠르고 browser 1/delivery-ready/host gate pass를 달성했지만 객관 점수 우위는 없었다.
+- 남은 red는 `TRAY-VASC-2417 + IND-CHEM-77241` compound target이 390/320/200%에서 두 character-range line으로 감기는 단일 원인이다.
+- candidate verifier가 element rect만 확인해 이를 one-line으로 오판했다. Reliability@3 0/1의 최대 도달치는 2/3이므로 남은 4 provider call을 skip하고 `/private/tmp/u19405`를 freeze했다.
+- Tokens-to-Target minimum은 28,116,906, usage unavailable은 6이다. 다음은 compound atomic child와 character-range oracle을 workflow에 결합하는 provider-free repair다.
 
 - 1.9.407에서 `luna-sterile-r1-control`은 900.016s timeout의 valid-system-failure, 79/85 unresolved로 종료됐다.
 - task/state/design/evidence/desktop/a11y/keyboard는 green이나 390/320/200% atomic line budget이 red다.
@@ -2063,9 +2068,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 120초 inter-cell pacing을 충족한다.
-2. exact named browser `bench19366`와 Luna auth를 다시 preflight한다.
-3. `luna-sterile-r1-candidate` 한 셀을 no-retry로 실행하고 r1 pair를 판정한다.
+1. protected compound target wrapper를 보존하면서 semantic atomic child를 분리하는 규칙을 skill에 추가한다.
+2. browser proof가 element rect가 아니라 per-character line tops로 one-line 계약을 측정하게 한다.
+3. focused/broad tests 후 exact pin하고 새 unseen task/root로 3/3을 다시 검증한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
