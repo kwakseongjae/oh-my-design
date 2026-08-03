@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.432 atomic browser proof budget repair
+- 갱신: 2026-08-04 · 1.9.433 atomic browser proof budget exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.433은 1.9.432 candidate를 exact commit `f346610a…`, skill tree `1ec8703d…`로 pin했다.
+- provider 0, promotion false다. 다음은 이 source가 보지 못한 fresh compound one-line + browser-proof transfer task를 lock하는 것이다.
 
 - 1.9.432는 one-line compound wrapper에서 parts+separator 전체를 atomic으로 유지하고 carrier 폭을 먼저 회수하도록 고쳤다.
 - 첫 browser call을 `browser-harness <<'PY' … PY`로 고정하고 help/skill/command discovery와 post-edit static reread를 proof budget 위반으로 명시했다.

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.433 atomic browser proof budget exact pin
+- source `f346610a…`, skill tree `1ec8703d…`로 exact pin했다. provider 0/promotion false.
+- 다음은 fresh compound one-line + browser-proof transfer task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.432 atomic browser proof budget repair
 - compound parent atomicity와 first-call browser-harness recipe, single closure budget을 canonical/experimental skill에 반영했다.
 - focused 10 green + lint/diff, provider 0. 다음은 exact pin과 fresh unseen task다.
