@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.337 orbital matrix preregistration
+- exact 1.9.274 control vs c1de0e4 compact candidate Luna/high 2×3를 잠갔다.
+- 900s, 120s pacing, no retry, strict quality/proof/efficiency gates다.
+- provider 0; 다음은 fresh detached vendors + 6-cell preparation이다.
+
 ## 2026-08-03 (Codex) · 1.9.336 orbital contact task lock
 - fresh orbital task가 6 pass/8 bundle/4 antenna와 세 carrier를 잠근다.
 - baseline 75/85, 의도한 red는 reflow·atomic line·4.43 contrast다.

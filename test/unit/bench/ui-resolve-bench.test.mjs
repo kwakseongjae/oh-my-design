@@ -1196,6 +1196,19 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(candidate.commit).not.toBe(previous.commit);
   });
 
+  it("pins the compact reflow artifact candidate separately from the timed-out runtime candidate", () => {
+    const previous = competitors.variants["omd-runtime-reflow-artifact-gate-candidate"];
+    const candidate = competitors.variants["omd-compact-reflow-artifact-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.334",
+      source_path: "skills/omd-apply",
+      declared_name: "omd:apply",
+      commit: "c1de0e4e9520c8ca333b59557217dd40219ae195",
+    });
+    expect(candidate.commit).not.toBe(previous.commit);
+  });
+
   it("locks an unseen spatial aircraft load-plan family before runtime artifact validation", () => {
     const task = JSON.parse(readFileSync(join(
       repoRoot,
@@ -1938,6 +1951,45 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         source_detached_all_cells: true,
         source_publishable_all_cells: true,
       },
+    });
+  });
+
+  it("preregisters the exact control versus compact-artifact orbital contact comparison", () => {
+    const plan = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/orbital-contact-plan-compact-artifact-luna-1.9.337/RUN-MATRIX.json",
+    ), "utf8"));
+    validateRunMatrixPlan(plan);
+    expect(plan.cells).toHaveLength(6);
+    expect(new Set(plan.cells.map((cell) => cell.task_id))).toEqual(new Set([orbitalContactPlanTaskId]));
+    expect(new Set(plan.cells.map((cell) => cell.model_id))).toEqual(new Set(["gpt-5.6-luna"]));
+    expect(new Set(plan.cells.map((cell) => cell.effort))).toEqual(new Set(["high"]));
+    expect(plan.cells.map((cell) => cell.variant_id)).toEqual([
+      "omd-portable-conjunctive-release-candidate",
+      "omd-compact-reflow-artifact-candidate",
+      "omd-compact-reflow-artifact-candidate",
+      "omd-portable-conjunctive-release-candidate",
+      "omd-portable-conjunctive-release-candidate",
+      "omd-compact-reflow-artifact-candidate",
+    ]);
+    expect(plan.shared_host_policy).toMatchObject({
+      source_commit: "c1de0e4e9520c8ca333b59557217dd40219ae195",
+      pin_id: "compact-reflow-artifact-transactional-proof-host-policy-1.9.335",
+      require_delivery_ready: true,
+      require_browser_attempt: true,
+    });
+    expect(plan.promotion_gates).toMatchObject({
+      candidate_system_id: "luna-compact-artifact",
+      ui_resolved_trials_required: 3,
+      paired_objective_losses_allowed: 0,
+      proof_and_host_policy_trials_required: 3,
+      candidate_mean_wall_time_ratio_max: 1.1,
+      candidate_mean_provider_tokens_ratio_max: 1.1,
+    });
+    expect(plan.tokens_to_target_contract).toMatchObject({
+      attempt_order: 5,
+      prior_observed_provider_tokens_minimum: 12935549,
+      prior_usage_unavailable_cells: 2,
     });
   });
 

@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.336 orbital contact-plan task locked
+- 갱신: 2026-08-03 · 1.9.337 orbital compact-artifact matrix preregistered
 
 ## 지금 (현재 위치)
+
+- 1.9.337은 exact control `3a414a0a…` vs compact candidate `c1de0e4e…`를 fresh orbital task에 Luna/high 2×3으로 preregister했다.
+- 900초, concurrency 1, 120초 pacing, no retry, C/N–N/C–C/N order와 candidate resolved 3/3·paired loss 0·proof/host 3/3·wall/token ≤1.10× gate를 고정했다.
+- Tokens-to-Target attempt 5이며 prior observed minimum 12,935,549 tokens + usage-unavailable 2를 보존한다. provider call 0이다.
+- 다음은 `/private/tmp/u19337-vendors` exact detached vendor 2개와 `/private/tmp/u19337` 6개 clean Git cell을 prepare하고 equality를 증명하는 것이다.
 
 - 1.9.336은 fresh `orbital-contact-plan-review-v0.1`을 provider 전에 lock했다. 6 pass/8 command bundle/4 antenna window와 contact plan·antenna strip·scheduling handoff 세 carrier를 보존한다.
 - untouched baseline은 75/85다. task/state/design/evidence/desktop/keyboard는 green이고 의도한 red는 390/320/200% containment·atomic line과 4.43:1 muted contrast다.
