@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.317 clean-baseline replacement preregistered
+- 갱신: 2026-08-03 · 1.9.318 clean-baseline matrix prepared
 
 ## 지금 (현재 위치)
+
+- 1.9.318은 `/private/tmp/u19317` 6개 cell을 provider call 0으로 PREPARED했다. shared contract 1개, host ready 6/6, source detached/publishable 6/6이다.
+- workspace baseline committed/detached/clean도 6/6이며 sole delta는 skill tree `2d577464…` vs `bb3ac833…`다.
+- retained invalid spend 2,932,219 tokens는 attempt 4에 남아 있다. 새 실행은 아직 0이다.
+- 다음 허용 cell은 `luna-load-r1-control-clean` 하나이며 `--max-new-cells 1`, no retry를 유지한다.
 
 - 1.9.317은 1.9.315 계약을 그대로 유지하고 prepared Git baseline만 1.9.316 방식으로 강제하는 두 번째 infrastructure replacement다.
 - fresh root는 `/private/tmp/u19317`, vendor는 clean detached `/private/tmp/u19315-vendors`; preparation source `06086c37…`, shared host policy `7d21ea23…`다.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.318 clean-baseline matrix prepared
+- u19317 6개 cell의 shared equality와 exact skill delta를 확인했다.
+- baseline commit/detached/clean, host ready, source publishable가 모두 6/6이다.
+- provider call 0, retained invalid spend 2,932,219 tokens다.
+- 다음은 첫 clean control 한 cell이다.
+
 ## 2026-08-03 (Codex) · 1.9.317 clean-baseline replacement preregistration
 - same attempt/task/treatment/gates를 유지한 두 번째 infrastructure replacement다.
 - u19317 + preparation `06086c37…`, clean/detached/baseline commit을 추가 강제한다.
