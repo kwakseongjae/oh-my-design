@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `ab066c45` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.319 runtime artifact proof order repaired
+- 갱신: 2026-08-03 · 1.9.320 proof-order host policy pinned
 
 ## 지금 (현재 위치)
+
+- 1.9.320은 committed source `e5f1e307…`의 exact Codex installed-opt-in policy를 config + source/installed 4개 hash와 executable six-step sequence로 pin했다.
+- provider-free runtime fixture가 inventory → edit → static → browser → artifact → Stop 성공과 open/changed closure의 fail-close를 실행한다. provider call 0, quality promotion 아님이다.
+- 다음은 same attempt/task/treatment/gates를 유지한 fresh 1.9.321 preregistration과 새 root preparation이다.
 
 - 1.9.319는 1.9.317 첫 Luna/high cell을 infrastructure-invalid로 동결했다. `index.html`은 바뀌었지만 900,026ms timeout, final/score/usage event가 없으므로 모델·skill 품질과 토큰 수치를 주장하지 않는다. 남은 5 cell은 미실행이다.
 - 원인은 apply_patch 본문의 proof 단어를 static command로 오인한 것과 browser 측정 전에 measured closure를 요구한 순서 deadlock이다.

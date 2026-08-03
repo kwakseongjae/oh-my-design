@@ -33,3 +33,7 @@ Only `Bash` can now be classified as a static proof command. Artifact patches co
 - 1.9.317 provider calls retained: 1; quality score excluded; token usage unavailable.
 
 No skill, model, reliability, efficiency, or frontier claim follows. A new exact policy pin and a fresh preregistered root are required before any more provider cells run.
+
+## Exact host-policy pin
+
+1.9.320 pins committed source `e5f1e307…`, the unchanged managed Codex config, all four source and installed hook hashes, and the executable six-step sequence in `HOST-POLICY-PIN.json`. The runtime regression executes the complete inventory → edit → static → browser → artifact → Stop path and the open/changed closure failures without a provider. This remains an infrastructure pin, not a skill treatment or quality promotion.
