@@ -1,0 +1,71 @@
+{
+  "id": "cold-chain-release-routing-review-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "A cold-chain release routing review for quality operations. Preserve six supplied lot identifiers, eight logger identifiers, their exact lot assignments, the separate carrier-window strip, three review views, review-note setting, release-review name, and summary facts without inventing temperature clearance, logger validation, carrier assignment, quality release, customs clearance, quarantine removal, disposition approval, or handoff completion.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": { "landmarks": { "h1_count": { "exact": 1 }, "main_count": { "exact": 1 }, "nav_count": { "min": 1 }, "footer_count": { "min": 1 } } },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='routing-view-option']", "[data-bench='draft-note-toggle']", "[data-bench='routing-review-form']", "[data-bench='routing-name']", "[data-bench='form-status']", "[data-bench='release-lot']", "[data-bench='lot-id']", "[data-bench='logger-id']", "[data-bench='carrier-strip']", "[data-bench='carrier-id']", "[data-bench='carrier-window']", "[data-bench='compact-control-copy']", "[data-bench-design-role='lot-register']", "[data-bench-decision-role='context']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']", "[data-bench-decision-role='action']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='routing-view-option']": 3,
+    "[data-bench='draft-note-toggle']": 1,
+    "[data-bench='routing-review-form']": 1,
+    "[data-bench='routing-name']": 1,
+    "[data-bench='form-status']": 1,
+    "[data-bench='release-lot']": 6,
+    "[data-bench='lot-id']": 6,
+    "[data-bench='logger-id']": 8,
+    "[data-bench='carrier-strip']": 1,
+    "[data-bench='carrier-id']": 4,
+    "[data-bench='carrier-window']": 4,
+    "[data-bench='compact-control-copy']": 1,
+    "[data-bench-design-role='lot-register']": 1,
+    "[data-bench-decision-role='context']": 1,
+    "[data-bench-decision-role='target']": 1,
+    "[data-bench-decision-role='evidence']": 1,
+    "[data-bench-decision-role='state']": 1,
+    "[data-bench-decision-role='action']": 1
+  },
+  "journey_oracle": {
+    "choice": { "selector": "[data-bench='routing-view-option']", "value_attribute": "data-view", "body_dataset": "view", "values": ["lots", "carriers", "handoff"], "count": 3, "initial": "lots", "selected": "carriers" },
+    "toggle": { "selector": "[data-bench='draft-note-toggle']" },
+    "form": { "form_selector": "[data-bench='routing-review-form']", "field_selector": "[data-bench='routing-name']", "status_selector": "[data-bench='form-status']", "invalid_value": "", "valid_value": "North depot release review" }
+  },
+  "text_geometry_oracle": {
+    "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "scope_selectors": ["[data-bench-design-role='lot-register']", "[data-bench='carrier-strip']", "[data-bench-decision-role='context']"],
+    "atomic_scope_selectors": ["[data-bench='lot-id']", "[data-bench='logger-id']", "[data-bench='carrier-id']", "[data-bench='carrier-window']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']"],
+    "compact_copy_selectors": ["[data-bench='compact-control-copy']"],
+    "max_short_text_chars": 48,
+    "max_short_text_lines": 1
+  },
+  "decision_hierarchy_oracle": {
+    "viewports": ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "minimum_action_gap_px": 8,
+    "roles": { "container": "[data-bench-decision-role='context']", "target": "[data-bench-decision-role='target']", "evidence": "[data-bench-decision-role='evidence']", "state": "[data-bench-decision-role='state']", "action": "[data-bench-decision-role='action']" }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:temperature cleared|logger validated|carrier assigned|quality released|customs cleared|quarantine removed|disposition approved|handoff complete)\\b",
+    "\\btrusted by\\b", "[★☆]{3,}"
+  ],
+  "protected_known_patterns": ["LOT-DTP-4402 + LOGGER-TEMP-78152", "6 lots · 8 loggers · 4 carrier windows"],
+  "protected_unknown_selectors": ["blockquote", "[class*='testimonial' i]", "[class*='logo-wall' i]", "[class*='social-proof' i]"],
+  "design_oracle": {
+    "page_background": "#E9F0EE", "primary_action": "#174F46", "accent": "#A14B32", "ink": "#172522", "surface": "#FCFFFE", "border": "#91A39E", "muted_text": "#687672", "card_radius_px": 0, "control_radius_px": 2,
+    "font_family": { "body_any": ["Trebuchet MS"], "display_any": ["Arial"] },
+    "selectors": { "primary_action": "[data-primary-action]", "card": "[data-bench-design-role='lot-register']", "display": "h1" }
+  }
+}

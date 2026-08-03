@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.360 execution contract exact pin
+- 갱신: 2026-08-03 · 1.9.361 cold-chain holdout lock
 
 ## 지금 (현재 위치)
+
+- 1.9.361은 fresh `cold-chain-release-routing-review-v0.1`을 provider 전에 lock했다.
+- 6 lot/8 logger/4 carrier window와 lot register·carrier strip·release handoff 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·atomic line과 4.10 contrast다.
+- provider 0이다. 다음은 exact control/candidate와 admission/resume/timeout/browser pins를 새 Reliability@3 matrix에 preregister하는 것이다.
 
 - 1.9.360은 committed `ebe51283…`의 browser sandbox, Codex/matrix runner, proof trace, runtime tests, acceptance를 exact hash로 pin했다.
 - browser-required outer `:workspace` + exact socket, matching preflight, non-browser `workspace-write`, neutral artifact lifecycle 의미가 고정됐다.
@@ -1866,8 +1871,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. generator/harbor/orbital/museum과 다른 fresh unseen task를 provider 전에 lock한다.
-2. 새 root에 admission/resume/timeout/browser pin을 포함해 preregister·prepare한다.
+1. exact control/candidate와 admission/resume/timeout/browser pins를 새 Reliability@3 matrix에 preregister한다.
+2. fresh detached vendors와 6 clean cells를 prepare하고 sole-delta equality를 증명한다.
 3. one-cell checkpoint로 control/candidate를 재개하고 promotion reachability를 매 셀 뒤 평가한다.
 
 ## 막힘 / 대기 (없으면 "없음")

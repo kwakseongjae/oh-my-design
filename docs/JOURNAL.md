@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.361 cold-chain holdout lock
+- fresh 6 lot/8 logger/4 carrier-window task를 provider 전에 잠갔다.
+- baseline 75/85; narrow/200% overflow·atomic lines와 4.10 contrast만 red다.
+- provider 0; 다음은 browser pin 포함 exact Reliability@3 preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.360 execution contract exact pin
 - committed ebe51283의 browser sandbox·runner·proof trace·tests·acceptance를 exact hash로 고정했다.
 - frozen museum root 재사용 금지와 fresh preregistration 의무를 명시했다.
