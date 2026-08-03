@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.334 compact artifact repair
+- schema 0.2가 반복 row를 group/count로 압축하고 helper가 hash/manifest를 소유한다.
+- missing static PostToolUse는 unresolved로 원자 정리되어 proof deadlock을 막는다.
+- focused 46/46, install 3채널, runnable wider 84/84, lint/build/diff green이다.
+- provider 0, promotion 없음; 다음은 exact pin + fresh unseen task다.
+
 ## 2026-08-03 (Codex) · 1.9.333 runtime-artifact candidate rejected
 - paired candidate는 product changed 뒤 900,022ms timeout, score/usage 없음이다.
 - 6 carrier/41 row 조율 뒤 static running·browser 0·delivery blocked로 끝났다.

@@ -41,6 +41,12 @@ function stringArray(value) {
 }
 
 const ACCOUNTED_OUTCOMES = new Set(["pass", "unresolved"]);
+const REFLOW_INVARIANTS = [
+  "same_row_count",
+  "same_decision_boundary",
+  "all_registered_carriers_closed",
+  "no_text_hack",
+];
 
 function outcomeSet(value) {
   return ACCOUNTED_OUTCOMES.has(value?.outcome_390)
@@ -48,7 +54,11 @@ function outcomeSet(value) {
     && ACCOUNTED_OUTCOMES.has(value?.outcome_200pct);
 }
 
-function inventoryDigest(artifact) {
+function positiveInteger(value) {
+  return Number.isInteger(value) && value > 0;
+}
+
+function inventoryDigestV1(artifact) {
   return createHash("sha256").update(JSON.stringify({
     carrier_ids: artifact.inventory.carrier_ids,
     carrier_bindings: artifact.carriers.map((carrier) => ({
@@ -59,15 +69,28 @@ function inventoryDigest(artifact) {
   })).digest("hex");
 }
 
-export function validateReflowClosureArtifact(artifact, mode = "inventory") {
-  if (!artifact || typeof artifact !== "object" || Array.isArray(artifact)) {
-    return { pass: false, reason: "reflow-inventory-required" };
-  }
-  if (artifact.schema_version !== "0.1" || artifact.inventory?.state !== "locked") {
-    return { pass: false, reason: "reflow-inventory-required" };
-  }
+function inventoryDigestV2(artifact) {
+  return createHash("sha256").update(JSON.stringify({
+    carrier_ids: artifact.inventory.carrier_ids,
+    carrier_groups: artifact.carriers.map((carrier) => ({
+      id: carrier.id,
+      selector: carrier.selector,
+      expected_count: carrier.expected_count,
+      binds_row_groups: carrier.binds_row_groups,
+    })),
+    row_groups: artifact.row_groups.map((row) => ({
+      id: row.id,
+      selector: row.selector,
+      role: row.role,
+      expected_count: row.expected_count,
+      longest_value: row.longest_value,
+    })),
+  })).digest("hex");
+}
+
+function normalizeV1Inventory(artifact) {
   if (!stringArray(artifact.inventory.carrier_ids) || !stringArray(artifact.inventory.row_ids)) {
-    return { pass: false, reason: "reflow-inventory-required" };
+    return null;
   }
   if (
     !Array.isArray(artifact.carriers)
@@ -75,7 +98,7 @@ export function validateReflowClosureArtifact(artifact, mode = "inventory") {
     || !Array.isArray(artifact.rows)
     || artifact.rows.length !== artifact.inventory.row_ids.length
   ) {
-    return { pass: false, reason: "reflow-inventory-required" };
+    return null;
   }
   const carrierIds = artifact.carriers.map((carrier) => carrier?.id);
   const rowIds = artifact.rows.map((row) => row?.id);
@@ -83,53 +106,145 @@ export function validateReflowClosureArtifact(artifact, mode = "inventory") {
     JSON.stringify(carrierIds) !== JSON.stringify(artifact.inventory.carrier_ids)
     || JSON.stringify(rowIds) !== JSON.stringify(artifact.inventory.row_ids)
   ) {
-    return { pass: false, reason: "reflow-inventory-required" };
+    return null;
   }
   const knownRows = new Set(rowIds);
   if (artifact.carriers.some((carrier) => (
     !stringArray(carrier?.binds_rows)
     || carrier.binds_rows.some((row) => !knownRows.has(row))
   ))) {
+    return null;
+  }
+  return {
+    carrierIds,
+    rows: artifact.rows,
+    carriers: artifact.carriers,
+    carrierCount: carrierIds.length,
+    rowCount: rowIds.length,
+    rowGroupCount: rowIds.length,
+    digest: inventoryDigestV1(artifact),
+    schema: "0.1",
+  };
+}
+
+function normalizeV2Inventory(artifact) {
+  if (
+    !stringArray(artifact.inventory.carrier_ids)
+    || !stringArray(artifact.inventory.row_group_ids)
+    || !Array.isArray(artifact.carriers)
+    || !Array.isArray(artifact.row_groups)
+    || artifact.carriers.length !== artifact.inventory.carrier_ids.length
+    || artifact.row_groups.length !== artifact.inventory.row_group_ids.length
+  ) {
+    return null;
+  }
+  const carrierIds = artifact.carriers.map((carrier) => carrier?.id);
+  const rowGroupIds = artifact.row_groups.map((row) => row?.id);
+  if (
+    JSON.stringify(carrierIds) !== JSON.stringify(artifact.inventory.carrier_ids)
+    || JSON.stringify(rowGroupIds) !== JSON.stringify(artifact.inventory.row_group_ids)
+  ) {
+    return null;
+  }
+  const knownRows = new Set(rowGroupIds);
+  if (
+    !artifact.invariants
+    || REFLOW_INVARIANTS.some((field) => typeof artifact.invariants[field] !== "boolean")
+  ) {
+    return null;
+  }
+  if (artifact.carriers.some((carrier) => (
+    typeof carrier?.selector !== "string"
+    || !carrier.selector
+    || !positiveInteger(carrier.expected_count)
+    || !stringArray(carrier.binds_row_groups)
+    || carrier.binds_row_groups.some((row) => !knownRows.has(row))
+  ))) {
+    return null;
+  }
+  if (artifact.row_groups.some((row) => (
+    typeof row?.selector !== "string"
+    || !row.selector
+    || typeof row?.role !== "string"
+    || !row.role
+    || !positiveInteger(row.expected_count)
+    || typeof row?.longest_value !== "string"
+    || !row.longest_value
+  ))) {
+    return null;
+  }
+  return {
+    carrierIds,
+    rows: artifact.row_groups,
+    carriers: artifact.carriers,
+    carrierCount: artifact.carriers.reduce((sum, carrier) => sum + carrier.expected_count, 0),
+    rowCount: artifact.row_groups.reduce((sum, row) => sum + row.expected_count, 0),
+    rowGroupCount: rowGroupIds.length,
+    digest: inventoryDigestV2(artifact),
+    schema: "0.2",
+  };
+}
+
+export function validateReflowClosureArtifact(artifact, mode = "inventory") {
+  if (!artifact || typeof artifact !== "object" || Array.isArray(artifact)) {
     return { pass: false, reason: "reflow-inventory-required" };
   }
-  const digest = inventoryDigest(artifact);
+  if (!["0.1", "0.2"].includes(artifact.schema_version) || artifact.inventory?.state !== "locked") {
+    return { pass: false, reason: "reflow-inventory-required" };
+  }
+  const normalized = artifact.schema_version === "0.2"
+    ? normalizeV2Inventory(artifact)
+    : normalizeV1Inventory(artifact);
+  if (!normalized) return { pass: false, reason: "reflow-inventory-required" };
+  const { carrierIds, rows, carriers, carrierCount, rowCount, rowGroupCount, digest, schema } = normalized;
   if (artifact.inventory.sha256 !== digest) {
     return { pass: false, reason: "reflow-inventory-hash-invalid" };
   }
   const inventory = {
     inventory_sha256: digest,
-    carrier_count: carrierIds.length,
-    row_count: rowIds.length,
+    carrier_count: carrierCount,
+    row_count: rowCount,
+    row_group_count: rowGroupCount,
+    artifact_schema: schema,
   };
   if (mode === "inventory") return { pass: true, ...inventory };
 
   const manifest = artifact.closure_manifest;
-  const measured390 = artifact.carriers.filter((carrier) => carrier.final?.outcome_390 === "pass").length;
-  const measured320 = artifact.carriers.filter((carrier) => carrier.final?.outcome_320 === "pass").length;
-  const measured200pct = artifact.carriers.filter((carrier) => carrier.final?.outcome_200pct === "pass").length;
-  const unresolvedCarriers = artifact.carriers.filter((carrier) => (
+  const weight = (entry) => schema === "0.2" ? entry.expected_count : 1;
+  const measured390 = carriers.filter((carrier) => carrier.final?.outcome_390 === "pass")
+    .reduce((sum, carrier) => sum + weight(carrier), 0);
+  const measured320 = carriers.filter((carrier) => carrier.final?.outcome_320 === "pass")
+    .reduce((sum, carrier) => sum + weight(carrier), 0);
+  const measured200pct = carriers.filter((carrier) => carrier.final?.outcome_200pct === "pass")
+    .reduce((sum, carrier) => sum + weight(carrier), 0);
+  const unresolvedCarriers = carriers.filter((carrier) => (
     carrier.final?.outcome_390 !== "pass"
     || carrier.final?.outcome_320 !== "pass"
     || carrier.final?.outcome_200pct !== "pass"
-  )).length;
-  const unresolvedRows = artifact.rows.filter((row) => (
+  )).reduce((sum, carrier) => sum + weight(carrier), 0);
+  const unresolvedRows = rows.filter((row) => (
     row?.final?.status !== "pass"
     || row.final?.outcome_390 !== "pass"
     || row.final?.outcome_320 !== "pass"
     || row.final?.outcome_200pct !== "pass"
-  )).length;
+  )).reduce((sum, row) => sum + weight(row), 0);
+  const invariantsPass = schema === "0.1"
+    || REFLOW_INVARIANTS.every((field) => artifact.invariants[field] === true);
   if (
     artifact.closure?.state !== "closed"
-    || artifact.carriers.some((carrier) => !outcomeSet(carrier.final))
-    || artifact.rows.some((row) => !ACCOUNTED_OUTCOMES.has(row?.final?.status) || !outcomeSet(row.final))
+    || carriers.some((carrier) => !outcomeSet(carrier.final))
+    || rows.some((row) => !ACCOUNTED_OUTCOMES.has(row?.final?.status) || !outcomeSet(row.final))
     || manifest?.inventory_sha256 !== digest
-    || manifest?.registered_carriers !== carrierIds.length
-    || manifest?.registered_rows !== rowIds.length
+    || manifest?.registered_carriers !== carrierCount
+    || manifest?.registered_rows !== rowCount
+    || (schema === "0.2" && manifest?.registered_carrier_groups !== carrierIds.length)
+    || (schema === "0.2" && manifest?.registered_row_groups !== rowGroupCount)
     || manifest?.measured_390 !== measured390
     || manifest?.measured_320 !== measured320
     || manifest?.measured_200pct !== measured200pct
     || manifest?.unresolved_carriers !== unresolvedCarriers
     || manifest?.unresolved_rows !== unresolvedRows
+    || (unresolvedCarriers === 0 && unresolvedRows === 0 && !invariantsPass)
   ) {
     return { pass: false, reason: "reflow-closure-required" };
   }
@@ -278,6 +393,26 @@ function isPreNativeBrowserProof(payload) {
   return event === "PreToolUse" && tool !== "Bash" && classifyProofTool(tool).browser === true;
 }
 
+function proofClassification(payload) {
+  const event = String(payload?.hook_event_name ?? payload?.hookEventName ?? "");
+  if (event !== "PreToolUse") return null;
+  const tool = String(payload?.tool_name ?? payload?.toolName ?? "");
+  if (tool === "Bash") return classifyProofCommand(hookCommand(payload));
+  return classifyProofTool(tool);
+}
+
+function settleInterruptedStaticProof(state, payload) {
+  if (state.static_closure !== "running") return state;
+  const classification = proofClassification(payload);
+  if (!classification || (!classification.static_verification && !classification.browser)) {
+    return state;
+  }
+  return applyProofPolicyEvent(state, {
+    type: "static-proof-finish",
+    outcome: "unresolved",
+  });
+}
+
 function stopDeny(reason, payload) {
   if (payload?.stop_hook_active === true || payload?.stopHookActive === true) return null;
   return { decision: "block", reason: proofPolicyDenyReason(reason) };
@@ -352,7 +487,10 @@ export function handleProofPolicyHook(payload, options = {}) {
         status: loaded.status,
       };
     }
-    const reconciled = reconcileNativeBrowserProof(loaded.state, payload, options);
+    const reconciled = settleInterruptedStaticProof(
+      reconcileNativeBrowserProof(loaded.state, payload, options),
+      payload,
+    );
     const requireReflowArtifact = options.require_reflow_artifact
       ?? process.env.OMD_PROOF_POLICY_REFLOW_ARTIFACT === "1";
     let gated = reconciled;

@@ -261,6 +261,29 @@ describe('install-skills', () => {
     }
   });
 
+  it('ships the deterministic reflow artifact helper with omd-apply', async () => {
+    const code = await runInstallSkills({
+      dir: root,
+      agents: ['claude-code', 'codex', 'opencode'],
+      skillsFilter: ['omd-apply'],
+      agentsFilter: [],
+      skillsOnly: true,
+    });
+
+    expect(code).toBe(0);
+    for (const channelRoot of [
+      join(root, '.claude', 'skills'),
+      join(root, '.agents', 'skills'),
+      join(root, '.opencode', 'skills'),
+    ]) {
+      const helper = join(channelRoot, 'omd-apply', 'scripts', 'reflow-artifact.mjs');
+      expect(existsSync(helper), helper).toBe(true);
+      const usage = spawnSync(process.execPath, [helper], { encoding: 'utf8' });
+      expect(usage.status).toBe(2);
+      expect(usage.stderr).toContain('reflow-artifact.mjs <lock|finalize|finalize-unresolved>');
+    }
+  });
+
   it('skips drift on existing user-edited files without marker', async () => {
     const target = join(root, '.claude/skills/omd-init/SKILL.md');
     mkdirSync(join(root, '.claude/skills/omd-init'), { recursive: true });

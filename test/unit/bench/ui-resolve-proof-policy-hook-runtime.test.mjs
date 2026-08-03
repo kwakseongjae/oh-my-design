@@ -15,6 +15,7 @@ import {
   handleProofPolicyHook,
   readProofPolicyState,
   statePathFor,
+  validateReflowClosureArtifact,
 } from "../../../benchmarks/ui-resolve-bench/scripts/proof-policy-hook.mjs";
 
 const base = {
@@ -140,6 +141,69 @@ function writeReflowArtifact(workspace, {
   writeFileSync(join(workspace, ".omd", "reflow-closure.json"), `${JSON.stringify(artifact, null, 2)}\n`, "utf8");
 }
 
+function groupedReflowArtifact({ closed = false, unresolved = false } = {}) {
+  const carriers = [
+    { id: "plan", selector: "[data-plan]", expected_count: 1, binds_row_groups: ["ids", "status"] },
+    { id: "handoff", selector: "[data-handoff]", expected_count: 1, binds_row_groups: ["status"] },
+  ];
+  const rowGroups = [
+    { id: "ids", selector: "[data-id]", role: "identifier", expected_count: 8, longest_value: "ULD-AKE-73102" },
+    { id: "status", selector: "[role=status]", role: "state", expected_count: 1, longest_value: "Ground review open" },
+  ];
+  const inventory = {
+    state: "locked",
+    carrier_ids: carriers.map(({ id }) => id),
+    row_group_ids: rowGroups.map(({ id }) => id),
+    sha256: null,
+  };
+  const artifact = {
+    schema_version: "0.2",
+    inventory,
+    carriers: carriers.map((carrier) => ({
+      ...carrier,
+      final: {
+        outcome_390: closed && !unresolved ? "pass" : "unresolved",
+        outcome_320: closed && !unresolved ? "pass" : "unresolved",
+        outcome_200pct: closed && !unresolved ? "pass" : "unresolved",
+      },
+    })),
+    row_groups: rowGroups.map((row) => ({
+      ...row,
+      final: {
+        status: closed && !unresolved ? "pass" : "unresolved",
+        outcome_390: closed && !unresolved ? "pass" : "unresolved",
+        outcome_320: closed && !unresolved ? "pass" : "unresolved",
+        outcome_200pct: closed && !unresolved ? "pass" : "unresolved",
+      },
+    })),
+    invariants: {
+      same_row_count: true,
+      same_decision_boundary: true,
+      all_registered_carriers_closed: true,
+      no_text_hack: true,
+    },
+    closure: { state: closed ? "closed" : "open" },
+  };
+  inventory.sha256 = createHash("sha256").update(JSON.stringify({
+    carrier_ids: inventory.carrier_ids,
+    carrier_groups: artifact.carriers.map(({ id, selector, expected_count, binds_row_groups }) => ({ id, selector, expected_count, binds_row_groups })),
+    row_groups: artifact.row_groups.map(({ id, selector, role, expected_count, longest_value }) => ({ id, selector, role, expected_count, longest_value })),
+  })).digest("hex");
+  artifact.closure_manifest = {
+    registered_carrier_groups: 2,
+    registered_carriers: 2,
+    registered_row_groups: 2,
+    registered_rows: 9,
+    measured_390: closed && !unresolved ? 2 : 0,
+    measured_320: closed && !unresolved ? 2 : 0,
+    measured_200pct: closed && !unresolved ? 2 : 0,
+    unresolved_carriers: closed && !unresolved ? 0 : 2,
+    unresolved_rows: closed && !unresolved ? 0 : 9,
+    inventory_sha256: inventory.sha256,
+  };
+  return artifact;
+}
+
 describe("proof policy executable hook", () => {
   let root;
 
@@ -180,6 +244,25 @@ describe("proof policy executable hook", () => {
         "do not retry static verification; run one browser proof if it is still open",
       ),
     });
+  });
+
+  it("settles a missing static PostToolUse before the next proof phase", () => {
+    handleProofPolicyHook(edit, { root, now: 100 });
+    expect(handleProofPolicyHook(pre("npm test"), { root, now: 110 }).output).toBeNull();
+
+    const duplicate = handleProofPolicyHook(pre("npm run lint"), { root, now: 120 });
+    expect(duplicate.output?.hookSpecificOutput).toMatchObject({
+      permissionDecision: "deny",
+      permissionDecisionReason: expect.stringContaining("duplicate-static-closure"),
+    });
+    expect(duplicate.state).toMatchObject({ static_closure: "closed" });
+
+    const browser = handleProofPolicyHook(pre("browser-harness capture_screenshot"), {
+      root,
+      now: 130,
+    });
+    expect(browser.output).toBeNull();
+    expect(browser.state).toMatchObject({ static_closure: "closed", browser_proof: "running" });
   });
 
   it("forces one continuation when delivery proof is incomplete", () => {
@@ -406,6 +489,33 @@ describe("proof policy executable hook", () => {
     expect(complete.state.decisions.map((entry) => entry.reason))
       .toContain("reflow-closure-accounted-unresolved");
     expect(complete.output).toBeNull();
+  });
+
+  it("accepts compact grouped reflow accounting with expanded instance counts", () => {
+    const open = groupedReflowArtifact();
+    expect(validateReflowClosureArtifact(open, "inventory")).toMatchObject({
+      pass: true,
+      artifact_schema: "0.2",
+      carrier_count: 2,
+      row_count: 9,
+      row_group_count: 2,
+    });
+    const closed = groupedReflowArtifact({ closed: true, unresolved: true });
+    expect(validateReflowClosureArtifact(closed, "closure")).toMatchObject({
+      pass: true,
+      closure_outcome: "unresolved",
+      carrier_count: 2,
+      row_count: 9,
+    });
+  });
+
+  it("rejects a falsely resolved grouped closure when an invariant is red", () => {
+    const closed = groupedReflowArtifact({ closed: true });
+    closed.invariants.same_decision_boundary = false;
+    expect(validateReflowClosureArtifact(closed, "closure")).toEqual({
+      pass: false,
+      reason: "reflow-closure-required",
+    });
   });
 
   it("rejects a changed carrier inventory after product editing starts", () => {

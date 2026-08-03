@@ -198,38 +198,43 @@ pre_edit_release_invariant:
 2c. **마지막 제품 편집 직후 `interactive closure`를 수행한다.** optional browser 검증이나 전달로 넘어가기 전에 이번 product diff에서 추가·변경한 모든 focusable element를 전수한다. native control과 link뿐 아니라 `tabindex`, `contenteditable`, focusable ARIA widget, skip/navigation control을 포함하고, 각 항목에 `identity`, `before_count`, `after_count`, `allowed_delta`, `change_authority`, `hidden_method`, `focus_reveal_path`, `decision(keep|remove|make-visible)`를 붙인다. 실제 diff를 protected ledger와 대조했을 때 원 사용자 요청의 추가 권한이 없고 `allowed_delta: 0`이면 접근성 개선 의도, “production-ready”, specialist 제안과 무관하게 그 focusable addition을 검증 전에 제거한다. 의도적으로 숨긴 focusable control은 기존 제품 계약 또는 원 사용자 요청의 권한이 있어야 하고, 같은 selector의 source-level `:focus`/`:focus-visible` reveal path가 clip·크기·위치를 해제하며 same-route keyboard acceptance에서 viewport 안에 들어오는지 확인한다. base `.sr-only`/visually-hidden 규칙만 있고 focus reveal이 없으면 영구 clipping으로 판정한다. browser proof가 불가능한 새 hidden focusable은 `unresolved`로 출고하지 않고 제거하거나, 원 요청상 control이 꼭 필요하면 평상시에도 보이게 만든다. closure는 `unauthorized_focusable_delta: 0`, `permanently_clipped_focusable: 0`, `unresolved_focus_reveal: 0`이 모두 성립하기 전에는 acceptance를 시작하지 않는다. 새 verifier를 만드는 대신 기존 diff·테스트·같은 route 검증으로 이 transaction을 증명한다.
 2d. **`visual-equity closure`를 수행한다.** `visual_equity: []`이면 desktop/mobile 대조 없이 `visual-equity closure: N/A`로 종료한다. ledger가 비어 있지 않으면 마지막 제품 편집 뒤 같은 consumer route/state의 desktop과 mobile을 before/after로 대조한다. 변경된 high-salience 항목은 ledger의 authority에 매핑하고, 권한 없는 변경은 token 안에서 복원한다. `unsupported_hierarchy_loss: 0`, `unsupported_state_signal_weakening: 0`, `unsupported_reassurance_removal: 0`, `unsupported_decision_boundary_collapse: 0`이 모두 성립하기 전에는 acceptance를 시작하지 않는다. visual equity 보존은 모든 옛 스타일의 동결이 아니며, 근거 있는 replace/reinforce와 measured defect 교정은 허용한다.
 2e. **고위험 결정 화면에서 `decision-context hierarchy closure`를 수행한다.** 삭제·승인·권한·송금처럼 실행 후 되돌리기 어렵거나 피해가 큰 결정을 최종 확인하는 화면에만 적용한다. 결정 경계 안에서 (1) 선택된 대상, (2) 결정에 직접 필요한 제공된 사실·증거, (3) 현재 상태 또는 blocker, (4) 취소와 최종 action boundary가 한 번에 구분되는지 확인한다. 이 네 역할이 긴 설명 한 문단이나 서로 동등한 장식 카드로 평평해졌다면 기존 DESIGN.md 토큰과 사실만 사용해 label-value metadata, semantic table/list, summary block 중 현재 구조에 가장 작은 표현으로 hierarchy를 복원한다. 좁은 화면에서도 대상→사실/증거→상태→행동 순서를 유지하고 dense-data 열의 비교 geometry를 안정적으로 보존한다. 이 closure는 새 warning banner, risk score, 법적 판단, 상태, control, token, container, 색, 아이콘 또는 사실을 만들 권한이 아니다. 대상이나 blocker가 unresolved면 추측하지 않고 해당 unresolved field만 생략한다. 기존 화면이 이미 네 역할을 명확히 구분하면 `decision-context hierarchy closure: preserve`로 끝내고 시각 변형을 추가하지 않는다.
-2e. **`reflow-integrity closure`는 아래 work packet 하나로 실행한다.** 같은 consumer route의 390px·320px·200% reflow를 검사한다. 첫 CSS 편집 전에 이 packet을 **`.omd/reflow-closure.json`에 schema `0.1` JSON으로 실제 저장**하고 `inventory.state: "locked"`로 잠근다. 파일이 없거나 inventory hash가 틀리면 installed proof policy가 제품 편집을 거부한다. 마지막 측정까지 carrier/row를 합치거나 지우지 않으며, 모든 final outcome과 closure manifest가 닫히기 전에는 static verification도 거부된다. 채팅·todo·shell 출력만으로 packet을 대신하지 않는다.
+2e. **`reflow-integrity closure`는 compact group packet 하나로 실행한다.** 같은 consumer route의 390px·320px·200% reflow를 검사한다. 첫 CSS 편집 전에 **`.omd/reflow-closure.json`에 schema `0.2` 초안을 실제 저장**한다. 같은 selector·역할·longest value를 공유하는 반복 행은 인스턴스마다 복제하지 않고 `row_groups.expected_count`로 전부 계상한다. 인접한 의미 관계가 다른 carrier는 합치지 않는다.
+
+   초안을 저장한 즉시 현재 skill 디렉터리의 `scripts/reflow-artifact.mjs lock .omd/reflow-closure.json`을 **한 번** 실행해 ordered group inventory와 hash를 결정론적으로 채운다. hash를 손으로 계산하거나 hook 구현을 읽지 않는다. 제품 편집 뒤에는 carrier/row group·selector·count·binding을 바꾸지 않는다. 브라우저 proof가 끝나면 실제 측정 결과를 group final에 기록하고 `scripts/reflow-artifact.mjs finalize`를 한 번 실행한다. browser infrastructure가 막혔다면 `finalize-unresolved`로 모든 등록 인스턴스를 정직하게 계상한다. helper가 없거나 실행되지 않으면 기존 schema `0.1`을 손으로 재구성하지 말고 해당 reflow proof를 `unresolved`로 전달한다.
 
    ```yaml
    reflow_work_packet:
-     schema_version: "0.1"
+     schema_version: "0.2"
      inventory:
-       state: locked
-       carrier_ids: ["stable relationship scope id"]
-       row_ids: ["stable row id"]
-       inventory_sha256: "sha256 of ordered carrier_ids + binds_rows + ordered row_ids"
+       state: "filled by lock helper"
+       carrier_ids: ["filled by lock helper"]
+       row_group_ids: ["filled by lock helper"]
+       sha256: "filled by lock helper"
      carriers:
        - id: "stable relationship scope id"
-         binds_rows: ["registered row id"]
+         selector: "one selector covering this relationship scope"
+         expected_count: 1
+         binds_row_groups: ["registered row group id"]
          final: { outcome_390: pass|unresolved, outcome_320: pass|unresolved, outcome_200pct: pass|unresolved }
-     rows:
-       - id: "stable row id"
-         source: { selector: "...", origin: static|dynamic, longest_value: "..." }
-         contract: { role: target|identifier|evidence|state|control-label, type: "DESIGN.md role", one_line: true|false }
-         fit: { required: measured|unresolved, available_390: measured|unresolved, available_320: measured|unresolved, available_200pct: measured|unresolved }
+     row_groups:
+       - id: "stable row group id"
+         selector: "one selector matching every instance in the group"
+         role: target|identifier|evidence|state|control-label
+         expected_count: 1
+         longest_value: "longest actual state/template value in this group"
          decision: full-row|stack|comparison-scroll|keep|unresolved
-         final: { selector: "...", outcome_390: pass|unresolved, outcome_320: pass|unresolved, outcome_200pct: pass|unresolved, status: pass|unresolved }
+         final: { outcome_390: pass|unresolved, outcome_320: pass|unresolved, outcome_200pct: pass|unresolved, status: pass|unresolved }
      invariants: { same_row_count: true|false, same_decision_boundary: true|false, all_registered_carriers_closed: true|false, no_text_hack: true|false }
      closure: { state: open|closed }
-     closure_manifest: { registered_carriers: 0, registered_rows: 0, measured_390: 0, measured_320: 0, measured_200pct: 0, unresolved_carriers: 0, unresolved_rows: 0, inventory_sha256: "same immutable hash" }
+     closure_manifest: "filled by finalize helper; includes group counts and expanded instance counts"
    ```
 
-   1. **INVENTORY.** `rows`에는 one-line 계약이 있는 visible atomic identifier, 선택 target/source/artifact filename, 짧은 evidence·summary·metadata·supplied-count, short control label, visible dynamic state/status를 넣는다. 초기 문자열만 보지 말고 render function/template/state map의 가장 긴 실제 값을 `longest_value`로 기록한다. paired toggle/button/select를 이름 붙이는 copy는 tag와 무관하게 `control-label`이다. 일반 heading/body prose는 명시적 one-line 계약이 없으면 제외한다. 각 row를 소유하거나 그 row와 다른 내용의 관계를 전달하는 protected/named scope를 `carriers`에 전부 등록한다. 하나의 row가 여러 relationship scope에 속하면 모두 등록하며, 인접한 decision context나 state/action scope를 대표 visual carrier에 흡수시키지 않는다. 그런 뒤 ordered `carrier_ids + carrier별 binds_rows + row_ids` JSON의 SHA-256을 기록하고 `.omd/reflow-closure.json`의 `inventory.state: "locked"`로 잠근다. 첫 제품 edit 뒤에는 inventory 항목을 합치거나 지우거나 hash를 바꾸지 않는다. 실제 DOM 변경으로 새 protected/named scope가 생기면 제품 edit을 미완료로 두고 원래 inventory로 돌아가 그 추가를 제거한다.
-   2. **FIT.** 각 행의 선언된 DESIGN.md type role과 target emphasis를 보존한다. 더 작은 임의 type, 축약, `clamp()` 하한으로 맞추지 않는다. `required`와 `available`은 browser 측정값만 pass proof다. source-only이면 `unresolved`로 둔다. `viewport → page inset → card padding → section inset → reading width` 순서로 폭을 회수하고, text를 건드리기 전에 불필요한 바깥 chrome과 fixed track을 줄인다.
-   3. **REFLOW.** 가장 좁은 조건에서 먼저 각 row의 longest atomic child와 padding/gap을 판단한다. metadata·identifier·evidence·state가 fit하지 않으면 text를 깨지 말고 parent row를 `full-row`, 다음으로 `stack`한다. mobile cascade에서 desktop track·basis·min-width를 해제하고 필요한 child에 `min-width: 0`을 둔다. shared header·legend가 cell의 의미 관계를 제공하는 비교 묶음은 그 carrier를 보존한 named `comparison-scroll`을 먼저 쓴다. stack으로 바꾸려면 기존 carrier 자체를 mobile parent로 relocate해 identity·cardinality·visibility와 header/cell association을 유지한다. carrier를 `display:none`으로 숨긴 뒤 generated content, `data-*`, aria-label, hook 없는 span으로 같은 문구를 복제하는 것은 실패다. 단일 text scroller, 숨김·복제·word-break·세로 쌓기, break character, generated separator는 금지한다. `nowrap`은 세 viewport에서 longest value가 실제 측정으로 fit하고 overflow·clipping이 0일 때만 쓴다.
-   4. **PROVE.** final selector의 computed type, line count, overflow/clipping과 target·evidence·state·action의 같은 decision boundary를 세 viewport에서 측정한다. one-line 행은 line count 1과 overflow/clipping 0일 때만 `pass`다. 그런 뒤 등록된 **각 carrier**에 연결된 row의 identity·cardinality·association을 다시 대조하고 390px·320px·200% 결과를 각각 `.omd/reflow-closure.json`에 기록한다. 대표 carrier 하나의 통과나 페이지 전체 overflow 0으로 다른 carrier를 통과시키지 않는다. `width:100%`, page overflow 0, screenshot 육안, source 추정은 행이나 carrier proof가 아니다. 시작/종료 identity와 개수가 다르거나 한 행·carrier·viewport라도 측정되지 않으면 전체를 성공으로 말하지 않고 그 항목을 `unresolved`로 전달한다. consolidated static closure 전에 `closure.state: "closed"`와 manifest를 저장하고 `inventory_sha256` 동일성, `registered_carriers === measured_390 === measured_320 === measured_200pct`, `registered_rows === rows.length`, `unresolved_carriers === 0`, `unresolved_rows === 0`을 만족해야 한다. installed proof policy가 이 파일을 직접 검증하므로 model-authored grep/assertion만으로 우회할 수 없다.
+   1. **INVENTORY.** `row_groups`에는 one-line 계약이 있는 visible atomic identifier, 선택 target/source/artifact filename, 짧은 evidence·summary·metadata·supplied-count, short control label, visible dynamic state/status를 넣는다. 같은 selector/role의 반복은 `expected_count`로 묶되 render function/template/state map의 가장 긴 실제 값을 `longest_value`로 기록한다. paired toggle/button/select copy는 tag와 무관하게 `control-label`이다. 일반 heading/body prose는 명시적 one-line 계약이 없으면 제외한다. 각 group을 소유하거나 다른 내용과의 관계를 전달하는 protected/named scope를 `carriers`에 전부 등록한다. `lock` helper가 성공하면 즉시 제품 편집으로 넘어가며 helper source나 hash 알고리즘을 읽지 않는다.
+   2. **FIT.** 각 group의 DESIGN.md type role과 target emphasis를 보존한다. 더 작은 임의 type, 축약, `clamp()` 하한으로 맞추지 않는다. pass는 browser 측정값만 가능하고 source-only이면 `unresolved`다. `viewport → page inset → card padding → section inset → reading width` 순서로 폭을 회수한다.
+   3. **REFLOW.** 가장 좁은 조건에서 group의 longest atomic child와 padding/gap을 판단한다. fit하지 않으면 text를 깨지 말고 parent row를 `full-row`, 다음으로 `stack`한다. mobile cascade에서 desktop track·basis·min-width를 해제하고 필요한 child에 `min-width: 0`을 둔다. shared header·legend가 의미 관계를 제공하면 carrier를 보존한 named `comparison-scroll`을 먼저 쓴다. stack은 기존 carrier 자체를 relocate한다. `display:none` 뒤 generated content·`data-*`·aria-label·hook 없는 span 복제, 단일 text scroller, word-break, break character, generated separator는 실패다.
+   4. **PROVE.** 한 browser command 안에서 group selector의 **모든 matched instance**에 대해 computed type, line count, overflow/clipping, cardinality, association을 세 viewport에서 측정한다. 하나라도 실패하거나 count가 `expected_count`와 다르면 그 group은 pass가 아니다. 실제 결과를 기록하고 `finalize`를 실행한다. 대표 instance, page overflow 0, screenshot 육안, source 추정은 group proof가 아니다. helper가 만든 manifest의 expanded `registered_carriers/registered_rows`가 시작 count와 다르거나 미계측 instance가 있으면 성공을 말하지 않는다.
 
-   closure는 `same_row_count: true`, `same_decision_boundary: true`, `all_registered_carriers_closed: true`, `no_text_hack: true`, `unresolved_rows: 0`, `unresolved_carriers: 0`, `page_overflow: 0`일 때만 끝난다.
+   quality closure는 `same_row_count: true`, `same_decision_boundary: true`, `all_registered_carriers_closed: true`, `no_text_hack: true`, `unresolved_rows: 0`, `unresolved_carriers: 0`, `page_overflow: 0`일 때만 통과한다. `finalize-unresolved`는 delivery accounting만 닫고 quality closure를 통과시키지 않는다.
 2f. **`proof execution close latch`로 끝난 증명을 다시 열지 않는다.** 품질 gate는 유지하고 아래 state를 같은 consumer route의 acceptance까지 유지한다.
 
    ```yaml
@@ -244,7 +249,7 @@ pre_edit_release_invariant:
    ```
 
    - pre-edit 한 번에 token·hook/cardinality·state source·responsive risk·reflow rows를 inventory하고 즉시 `inventory: closed`로 잠근다. 같은 revision에서 전체 skill/DESIGN/제품 파일 inventory를 다시 실행하지 않고 편집 위치와 실패 selector만 targeted reread한다.
-   - 제품 edit을 한 transaction으로 묶어 `revision`을 1 올리고 `product_edit: changed`, 두 proof state를 `open`으로 만든다. 마지막 edit 뒤 syntax·hook/cardinality·supplied facts·forbidden text hack·changed token을 **한 command cluster의 consolidated static closure**로 확인한 뒤 현재 revision을 기록하고 `closed`로 잠근다. 같은 revision에서 static 검증 명령을 하나라도 더 시작하면 `duplicate_static_closure` 위반이다.
+   - 제품 edit을 한 transaction으로 묶어 `revision`을 1 올리고 `product_edit: changed`, 두 proof state를 `open`으로 만든다. 마지막 edit 뒤 syntax·hook/cardinality·supplied facts·forbidden text hack·changed token을 **한 짧은 command cluster의 consolidated static closure**로 확인한다. 큰 전체 diff 출력이나 static 명령 반복은 금지한다. host가 PostToolUse를 누락해도 다음 proof 시작 시 이전 static attempt는 `unresolved`로 원자적으로 닫히며, 동일 static command를 다시 실행하지 않고 browser proof로 넘어간다.
    - static closure가 닫힌 뒤 준비된 browser mechanism 한 번으로 390px·320px·200%와 states를 같은 session에서 수집한다. 성공이면 `closed`, attach/실행 infrastructure error면 `unresolved`로 잠근다. 둘 다 현재 revision과 mechanism을 기록한다. 그 뒤 `--doctor`, `--help`, executable/process/port discovery, 직접 Chrome launch, 다른 browser/port/runtime, 설치·권한 변경이나 두 번째 browser command를 시작하면 `browser_recovery` 위반이다.
    - browser가 제품 결함을 찾아 실제 product edit이 필요할 때만 revision을 올리고 `static_closure: open`, `browser_proof: unresolved`로 다시 연다. corrective static closure는 한 번 수행할 수 있지만 browser attempt는 다시 열지 않는다. 제품 파일이 바뀌지 않았다면 어느 proof state도 reopen하지 않는다.
    - 현재 revision의 static closure가 `closed`이고 browser proof가 `closed|unresolved`면 `delivery: ready`로 잠근다. 이 뒤 verification shell/browser command는 `verification_after_ready` 위반이다. 추가 탐색 대신 최소 완성 diff와 unresolved를 전달한다.

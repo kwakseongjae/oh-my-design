@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `ffd75773` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.333 runtime-artifact candidate rejected after valid timeout
+- 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-03 · 1.9.334 compact artifact + transactional proof repair accepted
 
 ## 지금 (현재 위치)
+
+- 1.9.334는 반복 row를 selector/role/longest-value group + expected count로 압축하는 reflow schema 0.2와 deterministic lock/finalize helper를 추가했다. resolved closure는 네 relationship invariant까지 강제한다.
+- host가 static PostToolUse를 누락하면 다음 proof 전 이전 attempt를 unresolved로 원자적으로 닫는다. 반복 static은 계속 거부되고 browser/delivery deadlock만 제거된다.
+- focused 46/46, 3-channel install smoke, lint/build/diff는 green이다. wider benchmark는 runnable 84/84 green, 기존 external vendor Git root 2건만 unavailable이다. provider call 0, quality promotion 없음이다.
+- 다음은 committed 1.9.334 exact pin → 기존과 다른 fresh unseen task → preregistration/preparation → 한 cell씩 quality validation이다. aircraft/u19330 재사용은 금지다.
 
 - 1.9.333 paired candidate는 product를 바꿨지만 900,022ms timeout, final/score/proof/usage가 없어 valid timeout failure다. 재시도하지 않고 u19330과 남은 4셀을 동결했다.
 - candidate는 6 carrier/41 row artifact 조율에 시간을 쓰고 static proof를 `running`에 남겼다. browser attempts 0, delivery blocked, native unblocked 0이다.
