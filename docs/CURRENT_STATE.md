@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.298 carrier inventory exact pin
+- 갱신: 2026-08-03 · 1.9.299 digital-master lineage holdout lock
 
 ## 지금 (현재 위치)
+
+- 1.9.299는 branching+merge lineage graph, 별도 checksum manifest, 별도 handoff context의 fresh `digital-master-lineage-review-v0.1`을 provider 전에 lock했다.
+- untouched starter는 75/85다. task/state/design/evidence/desktop/keyboard는 green이고 의도한 red는 exact contrast와 390/320/200% 세 carrier overflow·atomic fragmentation뿐이다.
+- prompt `c41e37e…`, product `777f5de…`, index `ca6a412…`, DESIGN `074f6a8…`다. focused 2/2 green, provider call 0이다. 다음은 exact 1.9.274 control vs 1.9.298 candidate Reliability@3 preregistration이다.
 
 - 1.9.298은 1.9.297 exact source `a57c374…`를 `omd-portable-carrier-inventory-closure-candidate`로 pin했다. source는 committed/publishable이고 provider call은 0이다.
 - canonical `975990d…`, installed skill `96e43d5…`, installed tree `a88848a…`, activation `f0ad529…`다. 아직 quality promotion은 아니다.

@@ -202,6 +202,11 @@ pre_edit_release_invariant:
 
    ```yaml
    reflow_work_packet:
+     carrier_inventory:
+       state: open|closed
+       carrier_ids: ["stable relationship scope id"]
+       row_ids: ["stable row id"]
+       inventory_sha256: "sha256 of ordered carrier_ids + binds_rows + ordered row_ids"
      carriers:
        - identity: "stable relationship scope id"
          binds_rows: ["registered row id"]
@@ -214,12 +219,13 @@ pre_edit_release_invariant:
          decision: full-row|stack|comparison-scroll|keep|unresolved
          final: { selector: "...", line_count_390: measured|unresolved, line_count_320: measured|unresolved, line_count_200pct: measured|unresolved, overflow: measured|unresolved, status: pass|unresolved }
      invariants: { same_row_count: true|false, same_decision_boundary: true|false, all_registered_carriers_closed: true|false, no_text_hack: true|false }
+     closure_manifest: { registered_carriers: 0, measured_390: 0, measured_320: 0, measured_200pct: 0, unresolved_carriers: 0, inventory_sha256: "same immutable hash" }
    ```
 
-   1. **INVENTORY.** `rows`에는 one-line 계약이 있는 visible atomic identifier, 선택 target/source/artifact filename, 짧은 evidence·summary·metadata·supplied-count, short control label, visible dynamic state/status를 넣는다. 초기 문자열만 보지 말고 render function/template/state map의 가장 긴 실제 값을 `longest_value`로 기록한다. paired toggle/button/select를 이름 붙이는 copy는 tag와 무관하게 `control-label`이다. 일반 heading/body prose는 명시적 one-line 계약이 없으면 제외한다. 각 row를 소유하거나 그 row와 다른 내용의 관계를 전달하는 protected/named scope를 `carriers`에 전부 등록한다. 하나의 row가 여러 relationship scope에 속하면 모두 등록하며, 인접한 decision context나 state/action scope를 대표 visual carrier에 흡수시키지 않는다.
+   1. **INVENTORY.** `rows`에는 one-line 계약이 있는 visible atomic identifier, 선택 target/source/artifact filename, 짧은 evidence·summary·metadata·supplied-count, short control label, visible dynamic state/status를 넣는다. 초기 문자열만 보지 말고 render function/template/state map의 가장 긴 실제 값을 `longest_value`로 기록한다. paired toggle/button/select를 이름 붙이는 copy는 tag와 무관하게 `control-label`이다. 일반 heading/body prose는 명시적 one-line 계약이 없으면 제외한다. 각 row를 소유하거나 그 row와 다른 내용의 관계를 전달하는 protected/named scope를 `carriers`에 전부 등록한다. 하나의 row가 여러 relationship scope에 속하면 모두 등록하며, 인접한 decision context나 state/action scope를 대표 visual carrier에 흡수시키지 않는다. 그런 뒤 ordered `carrier_ids + binds_rows + row_ids`의 SHA-256을 기록하고 `carrier_inventory.state: closed`로 잠근다. 첫 제품 edit 뒤에는 inventory 항목을 합치거나 지우거나 hash를 바꾸지 않는다. 실제 DOM 변경으로 새 protected/named scope가 생기면 제품 edit을 미완료로 두고 원래 inventory로 돌아가 그 추가를 제거한다.
    2. **FIT.** 각 행의 선언된 DESIGN.md type role과 target emphasis를 보존한다. 더 작은 임의 type, 축약, `clamp()` 하한으로 맞추지 않는다. `required`와 `available`은 browser 측정값만 pass proof다. source-only이면 `unresolved`로 둔다. `viewport → page inset → card padding → section inset → reading width` 순서로 폭을 회수하고, text를 건드리기 전에 불필요한 바깥 chrome과 fixed track을 줄인다.
    3. **REFLOW.** 가장 좁은 조건에서 먼저 각 row의 longest atomic child와 padding/gap을 판단한다. metadata·identifier·evidence·state가 fit하지 않으면 text를 깨지 말고 parent row를 `full-row`, 다음으로 `stack`한다. mobile cascade에서 desktop track·basis·min-width를 해제하고 필요한 child에 `min-width: 0`을 둔다. shared header·legend가 cell의 의미 관계를 제공하는 비교 묶음은 그 carrier를 보존한 named `comparison-scroll`을 먼저 쓴다. stack으로 바꾸려면 기존 carrier 자체를 mobile parent로 relocate해 identity·cardinality·visibility와 header/cell association을 유지한다. carrier를 `display:none`으로 숨긴 뒤 generated content, `data-*`, aria-label, hook 없는 span으로 같은 문구를 복제하는 것은 실패다. 단일 text scroller, 숨김·복제·word-break·세로 쌓기, break character, generated separator는 금지한다. `nowrap`은 세 viewport에서 longest value가 실제 측정으로 fit하고 overflow·clipping이 0일 때만 쓴다.
-   4. **PROVE.** final selector의 computed type, line count, overflow/clipping과 target·evidence·state·action의 같은 decision boundary를 세 viewport에서 측정한다. one-line 행은 line count 1과 overflow/clipping 0일 때만 `pass`다. 그런 뒤 등록된 **각 carrier**에 연결된 row의 identity·cardinality·association을 다시 대조하고 390px·320px·200% 결과를 각각 기록한다. 대표 carrier 하나의 통과나 페이지 전체 overflow 0으로 다른 carrier를 통과시키지 않는다. `width:100%`, page overflow 0, screenshot 육안, source 추정은 행이나 carrier proof가 아니다. 시작/종료 identity와 개수가 다르거나 한 행·carrier·viewport라도 측정되지 않으면 전체를 성공으로 말하지 않고 그 항목을 `unresolved`로 전달한다.
+   4. **PROVE.** final selector의 computed type, line count, overflow/clipping과 target·evidence·state·action의 같은 decision boundary를 세 viewport에서 측정한다. one-line 행은 line count 1과 overflow/clipping 0일 때만 `pass`다. 그런 뒤 등록된 **각 carrier**에 연결된 row의 identity·cardinality·association을 다시 대조하고 390px·320px·200% 결과를 각각 기록한다. 대표 carrier 하나의 통과나 페이지 전체 overflow 0으로 다른 carrier를 통과시키지 않는다. `width:100%`, page overflow 0, screenshot 육안, source 추정은 행이나 carrier proof가 아니다. 시작/종료 identity와 개수가 다르거나 한 행·carrier·viewport라도 측정되지 않으면 전체를 성공으로 말하지 않고 그 항목을 `unresolved`로 전달한다. consolidated static closure의 같은 command cluster는 `closure_manifest`를 직렬화하고 `inventory_sha256` 동일성 및 `registered_carriers === measured_390 === measured_320 === measured_200pct`, `unresolved_carriers === 0`을 assertion으로 실행해야 한다. manifest가 없거나 assertion이 non-zero이면 static closure는 시작하지 않은 것으로 취급하고 browser proof로 넘어가지 않는다.
 
    closure는 `same_row_count: true`, `same_decision_boundary: true`, `all_registered_carriers_closed: true`, `no_text_hack: true`, `unresolved_rows: 0`, `unresolved_carriers: 0`, `page_overflow: 0`일 때만 끝난다.
 2f. **`proof execution close latch`로 끝난 증명을 다시 열지 않는다.** 품질 gate는 유지하고 아래 state를 같은 consumer route의 acceptance까지 유지한다.

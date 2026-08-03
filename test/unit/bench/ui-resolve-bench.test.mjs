@@ -51,6 +51,7 @@ const sensorChannelMatrixTaskId = "sensor-channel-matrix-review-v0.1";
 const transitStopTimetableTaskId = "transit-stop-timetable-review-v0.1";
 const equipmentRackElevationTaskId = "equipment-rack-elevation-review-v0.1";
 const productionCueDependencyTaskId = "production-cue-dependency-review-v0.1";
+const digitalMasterLineageTaskId = "digital-master-lineage-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1381,6 +1382,42 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter.match(/data-bench="cue-card"/g)).toHaveLength(8);
     expect(starter.match(/data-bench="dependency-link"/g)).toHaveLength(7);
     expect(starter).toContain("ACT-02 · AUDIO-C17 to STAGE-CUE-42");
+    expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
+  });
+
+  it("locks an unseen graph, manifest, and handoff carrier family before generation", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", digitalMasterLineageTaskId, "task.json"), "utf8"));
+    expect(task).toMatchObject({
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { values: ["lineage", "manifest", "handoff"], count: 3, initial: "lineage", selected: "manifest" },
+        toggle: { selector: "[data-bench='source-note-toggle']" },
+        form: { valid_value: "OTT lineage review" },
+      },
+      text_geometry_oracle: {
+        scope_selectors: [
+          "[data-bench-design-role='lineage-map']",
+          "[data-bench='checksum-carrier']",
+          "[data-bench-decision-role='context']",
+        ],
+        atomic_scope_selectors: expect.arrayContaining([
+          "[data-bench='asset-id']",
+          "[data-bench='parent-id']",
+          "[data-bench='checksum-value']",
+          "[data-bench-decision-role='target']",
+        ]),
+        max_short_text_lines: 1,
+      },
+    });
+    validateTaskContract(task);
+    const out = prepareVariant("raw-design-md", { task: digitalMasterLineageTaskId, outputName: "digital-master-lineage" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="asset-node"/g)).toHaveLength(7);
+    expect(starter.match(/data-bench="dependency-link"/g)).toHaveLength(7);
+    expect(starter.match(/data-bench="checksum-value"/g)).toHaveLength(2);
+    expect(starter).toContain("PACKAGE-OTT-502 + QC-MANIFEST-610");
     expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
   });
 

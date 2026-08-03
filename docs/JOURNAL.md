@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.299 digital-master holdout lock
+- graph + checksum + handoff 세 carrier의 fresh task를 lock했다.
+- untouched starter 75/85, 의도한 contrast/reflow만 red다.
+- focused 2/2 green, hashes 고정, provider call 0이다.
+- 다음은 exact control/candidate Reliability@3 preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.298 carrier inventory exact pin
 - exact source `a57c374…`를 새 candidate ID로 pin했다.
 - canonical/installed/tree/activation hash를 고정했다.

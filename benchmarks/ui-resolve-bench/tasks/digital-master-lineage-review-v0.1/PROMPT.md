@@ -1,0 +1,5 @@
+Improve the supplied digital master lineage review so archive operators can inspect the supplied derivation graph, checksum manifest, and handoff context confidently on desktop and narrow screens.
+
+Preserve all seven asset identifiers, all seven parent relationships including the two-parent package merge, both supplied checksum fragments, the three review views, the source-note toggle, the review-name form, and all stated summary evidence. Do not invent validation, approval, rights, delivery, checksum verification, release, archival, or completion conclusions. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The lineage graph, separate checksum manifest, and separate handoff decision context are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.
