@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.464 satellite deterministic static-closure preparation
+- 갱신: 2026-08-04 · 1.9.465 satellite r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.465 r1 control은 valid 85/85 + proof pass: 438.796s, 621,392 tokens다.
+- desktop/390/320/actual200, contrast, evidence, passive scroll0가 모두 green이고 edit1/static1/browser1/recovery0/duplicate0/post-ready0이다.
+- control은 한 번이지만 긴 task-specific inline Node verifier를 직접 작성했다. TTT 45,703,743+ / unavailable 6이다.
+- 다음은 fixed pacing 뒤 r1 candidate를 same Luna/high/no-retry로 실행한다.
 
 - 1.9.464는 `/private/tmp/u19463-vendors` exact detached control/candidate와 `/private/tmp/u19463` six untouched cells를 준비했다.
 - equality 6/6, control skill/helper `80645672…`/`7676d67a…`, candidate `95d03c80…`/`c66c5099…`, sources detached+clean이다.

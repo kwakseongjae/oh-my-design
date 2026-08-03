@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.465 satellite r1 control
+- valid 85/85 + proof pass, 438.796s/621,392 tokens; static1/browser1/recovery0이다.
+- TTT 45,703,743+. 다음은 fixed pacing 뒤 r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.464 satellite preparation
 - six untouched cells/equality와 detached skill+helper hashes, browser/auth/CLI preflight를 검증했다.
 - provider 0. 다음은 r1 control no-retry다.
