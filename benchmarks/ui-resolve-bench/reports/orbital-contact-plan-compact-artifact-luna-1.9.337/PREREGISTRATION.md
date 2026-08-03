@@ -11,3 +11,7 @@ This is Tokens-to-Target attempt 5. Prior observed spend is at least 12,935,549 
 ## Preparation — 1.9.338
 
 Fresh detached vendors and six committed, detached, clean Git cells were prepared at the preregistered roots. Task, prompt, product, DESIGN.md, activation, runtime, model, effort, timeout, and installed proof policy are equal in all cells. The sole arm delta is skill tree `2d577464…` versus `36a44a1…`. Provider calls remain zero; the only permitted next cell is `luna-orbit-r1-control` after a fresh browser preflight.
+
+## Frozen checkpoint — 1.9.339
+
+The first control produced 75/85 in 763,451 ms with 2,004,054 provider-reported tokens, but the installed host policy kept delivery blocked. The model-authored compact artifact declared 34 rows while the installed state registered 33 and it marked its one browser attempt unresolved. Under the frozen infrastructure rule the matrix stops before the candidate, with no retry. The score is diagnostic only; `/private/tmp/u19337` and all remaining cells are permanently frozen.

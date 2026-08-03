@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.338 orbital compact-artifact matrix prepared
+- 갱신: 2026-08-03 · 1.9.339 orbital control invalid/frozen
 
 ## 지금 (현재 위치)
+
+- 1.9.339 첫 Luna/high control은 75/85·763,451ms·2,004,054 tokens였지만 installed host delivery가 blocked라 infrastructure-invalid로 제외했다.
+- 원인은 browser 부재가 아니라 model artifact 34 rows vs host state 33 rows 불일치와 실제 browser attempt를 daemon-unresolved로 잘못 기록한 것이다. candidate call은 0이다.
+- preregistration대로 `/private/tmp/u19337` 전체를 동결하고 retry하지 않는다. 다음은 host installation failure와 ready-host rejection을 분리하는 validity classification repair다.
 
 - 1.9.338은 `/private/tmp/u19337-vendors/{omd-1.9.274,omd-1.9.334}` exact detached source와 `/private/tmp/u19337` 6개 committed/detached/clean cell을 준비했다.
 - task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/installed policy가 6/6 동일하고 sole delta는 skill tree `2d577464…` vs `36a44a1…`다.
