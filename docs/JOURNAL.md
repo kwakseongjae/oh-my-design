@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.378 final-runtime cold-chain preregistration
+- fresh u19378 attempt 13에 모든 runtime pins와 bootstrap order를 고정했다.
+- provider 0; 다음은 fresh preparation이다.
+
 ## 2026-08-03 (Codex) · 1.9.377 isolated home bootstrap exact pin
 - committed c4760219의 five-stage bootstrap order를 고정했다.
 - 네 이전 roots frozen, provider 0. 다음은 fresh all-pin replacement다.

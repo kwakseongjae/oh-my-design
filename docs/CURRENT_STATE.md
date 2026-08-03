@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.377 isolated home bootstrap exact pin
+- 갱신: 2026-08-03 · 1.9.378 final-runtime cold-chain preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.378은 fresh u19378 attempt 13에 모든 runtime pins와 5-stage bootstrap order를 고정했다.
+- 네 이전 roots frozen, provider 0. 다음은 fresh preparation이다.
 
 - 1.9.377은 committed `c4760219…`의 empty-home/browser/auth/login/provider 순서를 exact pin했다.
 - 네 이전 roots frozen, provider 0. 다음은 fresh all-pin replacement다.
