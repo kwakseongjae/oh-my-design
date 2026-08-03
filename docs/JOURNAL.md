@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.325 honest-closure replacement preregistration
+- same attempt/task/treatment/Luna-high/gates를 fresh u19325에 잠갔다.
+- sole shared delta는 107bce09 browser/preflight/closure policy다.
+- invalid minimum 4,968,562 tokens + usage-unavailable 1 cell, provider call 0이다.
+- 다음은 fresh detached vendor + six-cell preparation/equality다.
+
 ## 2026-08-03 (Codex) · 1.9.324 exact repaired host-policy pin
 - 107bce09 source/installed hashes와 browser-before-provider sequence를 pin했다.
 - browser-harness는 Chrome/daemon/active connection 1개 ready다.

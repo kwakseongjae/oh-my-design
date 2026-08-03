@@ -8,6 +8,10 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.325는 same attempt/task/control/candidate/Luna-high/gates/order를 fresh `/private/tmp/u19325`에 사전등록했다.
+- sole shared infrastructure delta는 committed `107bce09…`의 browser preflight + honest closure + host-policy admission이며 양 arm 공통이다.
+- retained invalid minimum 4,968,562 tokens + usage-unavailable 1 cell, provider call 0이다. 다음은 fresh vendor/cell preparation과 equality attestation이다.
+
 - 1.9.324는 committed source `107bce09…`의 exact Codex installed-opt-in policy, source/rendered hash, active-browser preflight, honest closure, host-policy admission sequence를 pin했다.
 - browser-harness doctor는 초기 daemon/connection 실패 후 연결 초기화로 Chrome/daemon/active connection 1개가 모두 ready다. cloud auth는 이 local run에 불필요하다.
 - 다음은 u19321을 버리고 동일 task/control/candidate/Luna-high/gates/order를 유지한 fresh 1.9.325 preregistration이다.
