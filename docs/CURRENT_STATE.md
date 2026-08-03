@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.374 runtime-complete cold-chain preregistration
+- 갱신: 2026-08-03 · 1.9.375 runtime-complete cold-chain preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.375는 fresh u19374 exact vendors와 6 clean/detached cells를 준비하고 shared equality 6/6을 확인했다.
+- provider 0; 다음은 `bench19366` controller-only CDP bootstrap으로 r1 control 한 셀이다.
 
 - 1.9.374는 fresh `/private/tmp/u19374{,-vendors}`에 attempt 12를 preregister했다.
 - validity/resume/timeout + isolated-state 1.9.365 + named-browser 1.9.369 + bootstrap-boundary 1.9.373을 모두 고정했다.

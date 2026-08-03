@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.375 runtime-complete cold-chain preparation
+- fresh u19374 vendors/6 cells와 shared equality 6/6을 확인했다.
+- provider 0; 다음은 registered named browser로 r1 control 한 셀이다.
+
 ## 2026-08-03 (Codex) · 1.9.374 runtime-complete cold-chain preregistration
 - fresh u19374 attempt 12에 isolated state/named browser/bootstrap boundary pins를 모두 고정했다.
 - provider 0; 다음은 fresh preparation이다.
