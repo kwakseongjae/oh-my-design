@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.436 maritime matrix preparation
+- exact detached sources와 6 clean cells를 준비했고 shared equality 6/6을 확인했다.
+- provider 0. 다음은 named browser/auth/CLI preflight 뒤 r1 control이다.
+
 ## 2026-08-04 (Codex) · 1.9.435 maritime atomic browser-proof preregistration
 - exact 1.9.409 vs 1.9.432, Luna/high 2×3과 one-browser/single-closure gate를 고정했다.
 - task exposure 0/0, provider 0. 다음은 fresh exact preparation/equality다.

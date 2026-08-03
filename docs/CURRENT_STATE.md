@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.435 maritime atomic browser-proof preregistration
+- 갱신: 2026-08-04 · 1.9.436 maritime atomic browser-proof preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.436은 `/private/tmp/u19435-vendors`의 exact detached control/candidate와 `/private/tmp/u19435` 6개 clean cell을 준비했다.
+- task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.
+- control install hash `ef6e0199…`, candidate `b9e96ed3…`; provider 0이다.
+- 다음은 exact `bench19366`와 isolated auth/CLI preflight 뒤 r1 control 한 셀을 no-retry 실행한다.
 
 - 1.9.435는 exact 1.9.409 control `1480d7cc…` vs 1.9.432 candidate `f346610a…`를 fresh maritime task에 Luna/high 2×3으로 사전등록했다.
 - Codex CLI 0.144.1, 900s, concurrency 1, 120s pacing, no retry, runtime-bound model identity와 one-browser/single-closure proof gate를 고정했다.
