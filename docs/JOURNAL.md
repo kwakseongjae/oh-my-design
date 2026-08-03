@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.431 rail-signal r1 pair stop
+- candidate 79/85, 650.802s, 2,707,408 tokens; compound line/proof 모두 red, ratio 2.17×/6.73×다.
+- 3/3 불가능으로 남은 4셀 freeze. TTT 37,317,990+ / unavailable 6, 다음은 provider-free proof recipe/budget repair다.
+
 ## 2026-08-04 (Codex) · 1.9.430 rail-signal r1 control
 - valid 79/85, 299.973s, 402,095 tokens; compound atomic line과 proof compliance가 red다.
 - execution-home identity는 성공했다. TTT 34,610,582+ / unavailable 6, 다음은 paced r1 candidate다.
