@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.426 Codex execution-home runtime identity
+- 갱신: 2026-08-04 · 1.9.428 runtime-bound rail-signal controller preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.427은 execution-home identity patch를 exact commit `8b6c3d81…`과 5개 artifact hash로 pin했다.
+- 1.9.428은 exact Codex CLI 0.144.1 + post-run isolated-home profile 관측으로 동일 rail-signal 2×3을 fresh preregister했다.
+- attempt 22, TTT 34,208,487+ / unavailable 6, exposure 2/0, provider 0이다. 다음은 fresh preparation/equality와 exact browser preflight다.
 
 - 1.9.426은 shared auth cache가 app 0.146/CLI 0.144.1에 의해 교대로 쓰이는 경합을 닫았다.
 - controller preflight는 exact CLI version을 강제하고, 실제 model profile은 isolated execution home에서 post-run 관측한다. shared cache는 provenance-only다.
