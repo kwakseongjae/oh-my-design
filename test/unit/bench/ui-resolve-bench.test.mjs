@@ -1209,6 +1209,19 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(candidate.commit).not.toBe(previous.commit);
   });
 
+  it("pins the known-failure closure candidate separately from the compact artifact candidate", () => {
+    const previous = competitors.variants["omd-compact-reflow-artifact-candidate"];
+    const candidate = competitors.variants["omd-known-failure-closure-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.389",
+      source_path: "skills/omd-apply",
+      declared_name: "omd:apply",
+      commit: "e6513930bb29905190d193dfd7ee111aaf91c917",
+    });
+    expect(candidate.commit).not.toBe(previous.commit);
+  });
+
   it("locks an unseen spatial aircraft load-plan family before runtime artifact validation", () => {
     const task = JSON.parse(readFileSync(join(
       repoRoot,

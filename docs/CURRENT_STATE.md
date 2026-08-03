@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.394 rail r1 rejection
+- 갱신: 2026-08-03 · 1.9.395 runtime conjunctive reflow repair
 
 ## 지금 (현재 위치)
+
+- 1.9.395는 reflow helper와 host validator를 conjunctive quality closure로 수리했다.
+- resolved finalize는 unresolved carrier/row 0만 허용하고, finalize-unresolved는 실제 browser infrastructure attempt 1회를 요구하며 `closure: unresolved`, `quality_pass: false`로 남는다.
+- focused 74/74 + candidate pin 1/1, lint/diff green; broad contract는 144 pass + 기존 external-vendor Git-root 2 fail이다. provider 0이다.
+- 다음은 repair commit exact pin 후 fresh unseen replacement task를 provider 전에 lock하는 것이다.
 
 - 1.9.394 r1 candidate는 valid 81/85 unresolved, 336,121ms, 760,540 tokens이다.
 - overflow·identifier fragmentation·contrast는 닫았지만 320/200% decision evidence 한 줄이 wrap되어 responsive fail; host delivery도 blocked다.

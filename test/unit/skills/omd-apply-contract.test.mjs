@@ -97,6 +97,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("reflow-artifact.mjs lock");
     expect(skill).toContain("reflow-artifact.mjs finalize");
     expect(skill).toContain("finalize-unresolved");
+    expect(skill).toContain("등록 row/carrier 하나라도 unresolved면 resolved finalize를 거부");
+    expect(skill).toContain("browser를 시도하지 않았거나 제품 결함을 발견한 상태는 unresolved accounting으로 우회할 수 없다");
     expect(skill).toContain("row_group_ids:");
     expect(skill).toContain("carriers:");
     expect(skill).toContain('id: "stable relationship scope id"');
@@ -105,6 +107,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("row_groups:");
     expect(skill).toContain("all_registered_carriers_closed: true");
     expect(skill).toContain("closure_manifest:");
+    expect(skill).toContain("quality_pass: true");
     expect(skill).toContain("expanded instance counts");
     expect(skill).toContain("같은 selector·역할·longest value를 공유하는 반복 행");
     expect(skill).toContain("helper source나 hash 알고리즘을 읽지 않는다");

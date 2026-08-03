@@ -83,6 +83,8 @@ export function lockArtifact(input) {
   };
   artifact.inventory.sha256 = inventoryDigest(artifact);
   artifact.closure = { state: "open" };
+  artifact.known_failure_closure = { state: "open", unresolved: null };
+  artifact.browser_attempt = { attempts: 0, outcome: "not-run", mechanism: null };
   delete artifact.closure_manifest;
   return artifact;
 }
@@ -129,7 +131,26 @@ export function finalizeArtifact(input, { unresolved = false } = {}) {
   const unresolvedRowCount = artifact.row_groups
     .filter((row) => row.final.status !== "pass" || ["outcome_390", "outcome_320", "outcome_200pct"].some((field) => row.final[field] !== "pass"))
     .reduce((sum, row) => sum + row.expected_count, 0);
-  artifact.closure = { state: "closed" };
+  if (!unresolved && (unresolvedCarrierCount > 0 || unresolvedRowCount > 0)) {
+    fail("resolved closure requires zero unresolved carriers and rows");
+  }
+  if (unresolved) {
+    const attempt = artifact.browser_attempt;
+    if (
+      attempt?.attempts !== 1
+      || attempt?.outcome !== "infrastructure-error"
+      || typeof attempt?.mechanism !== "string"
+      || !attempt.mechanism
+    ) {
+      fail("unresolved accounting requires one recorded browser infrastructure attempt");
+    }
+  }
+  const qualityPass = unresolvedCarrierCount === 0 && unresolvedRowCount === 0;
+  artifact.closure = { state: qualityPass ? "closed" : "unresolved" };
+  artifact.known_failure_closure = {
+    state: qualityPass ? "closed" : "unresolved",
+    unresolved: unresolvedCarrierCount + unresolvedRowCount,
+  };
   artifact.closure_manifest = {
     registered_carrier_groups: artifact.carriers.length,
     registered_carriers: carrierCount,
@@ -140,6 +161,8 @@ export function finalizeArtifact(input, { unresolved = false } = {}) {
     measured_200pct: passedCarrierCount("outcome_200pct"),
     unresolved_carriers: unresolvedCarrierCount,
     unresolved_rows: unresolvedRowCount,
+    quality_pass: qualityPass,
+    browser_attempt: artifact.browser_attempt,
     inventory_sha256: artifact.inventory.sha256,
   };
   return artifact;
@@ -172,6 +195,8 @@ function main() {
     registered_carriers: result.closure_manifest?.registered_carriers ?? null,
     registered_rows: result.closure_manifest?.registered_rows ?? null,
     closure: result.closure.state,
+    quality_pass: result.closure_manifest?.quality_pass ?? null,
+    unresolved_known_failures: result.known_failure_closure?.unresolved ?? null,
   }));
 }
 

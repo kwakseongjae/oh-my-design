@@ -38,8 +38,15 @@ describe("compact reflow artifact helper", () => {
   });
 
   it("closes honest unresolved accounting across expanded instance counts", () => {
-    const result = finalizeArtifact(lockArtifact(draft()), { unresolved: true });
-    expect(result.closure).toEqual({ state: "closed" });
+    const locked = lockArtifact(draft());
+    locked.browser_attempt = {
+      attempts: 1,
+      outcome: "infrastructure-error",
+      mechanism: "browser-harness named connection",
+    };
+    const result = finalizeArtifact(locked, { unresolved: true });
+    expect(result.closure).toEqual({ state: "unresolved" });
+    expect(result.known_failure_closure).toEqual({ state: "unresolved", unresolved: 11 });
     expect(result.closure_manifest).toMatchObject({
       registered_carrier_groups: 2,
       registered_carriers: 2,
@@ -50,8 +57,15 @@ describe("compact reflow artifact helper", () => {
       measured_200pct: 0,
       unresolved_carriers: 2,
       unresolved_rows: 9,
+      quality_pass: false,
+      browser_attempt: locked.browser_attempt,
       inventory_sha256: result.inventory.sha256,
     });
+  });
+
+  it("rejects unresolved accounting without one real browser infrastructure attempt", () => {
+    expect(() => finalizeArtifact(lockArtifact(draft()), { unresolved: true }))
+      .toThrow(/one recorded browser infrastructure attempt/);
   });
 
   it("rejects unknown bindings and changed locked inventory", () => {
@@ -74,5 +88,17 @@ describe("compact reflow artifact helper", () => {
       row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     }
     expect(() => finalizeArtifact(locked)).toThrow(/every invariant to pass/);
+  });
+
+  it("rejects a resolved closure while any registered row remains unresolved", () => {
+    const locked = lockArtifact(draft());
+    for (const carrier of locked.carriers) {
+      carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    }
+    for (const row of locked.row_groups) {
+      row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    }
+    locked.row_groups[1].final.outcome_320 = "unresolved";
+    expect(() => finalizeArtifact(locked)).toThrow(/zero unresolved carriers and rows/);
   });
 });

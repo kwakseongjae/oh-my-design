@@ -230,8 +230,17 @@ export function validateReflowClosureArtifact(artifact, mode = "inventory") {
   )).reduce((sum, row) => sum + weight(row), 0);
   const invariantsPass = schema === "0.1"
     || REFLOW_INVARIANTS.every((field) => artifact.invariants[field] === true);
+  const qualityPass = unresolvedCarriers === 0 && unresolvedRows === 0;
+  const expectedClosureState = schema === "0.2" && !qualityPass ? "unresolved" : "closed";
+  const unresolvedAttempt = artifact.browser_attempt;
+  const unresolvedAttemptValid = (
+    unresolvedAttempt?.attempts === 1
+    && unresolvedAttempt?.outcome === "infrastructure-error"
+    && typeof unresolvedAttempt?.mechanism === "string"
+    && unresolvedAttempt.mechanism.length > 0
+  );
   if (
-    artifact.closure?.state !== "closed"
+    artifact.closure?.state !== expectedClosureState
     || carriers.some((carrier) => !outcomeSet(carrier.final))
     || rows.some((row) => !ACCOUNTED_OUTCOMES.has(row?.final?.status) || !outcomeSet(row.final))
     || manifest?.inventory_sha256 !== digest
@@ -244,6 +253,10 @@ export function validateReflowClosureArtifact(artifact, mode = "inventory") {
     || manifest?.measured_200pct !== measured200pct
     || manifest?.unresolved_carriers !== unresolvedCarriers
     || manifest?.unresolved_rows !== unresolvedRows
+    || (schema === "0.2" && manifest?.quality_pass !== qualityPass)
+    || (schema === "0.2" && artifact.known_failure_closure?.state !== (qualityPass ? "closed" : "unresolved"))
+    || (schema === "0.2" && artifact.known_failure_closure?.unresolved !== unresolvedCarriers + unresolvedRows)
+    || (schema === "0.2" && !qualityPass && !unresolvedAttemptValid)
     || (unresolvedCarriers === 0 && unresolvedRows === 0 && !invariantsPass)
   ) {
     return { pass: false, reason: "reflow-closure-required" };
@@ -251,7 +264,7 @@ export function validateReflowClosureArtifact(artifact, mode = "inventory") {
   return {
     pass: true,
     ...inventory,
-    closure_outcome: unresolvedCarriers === 0 && unresolvedRows === 0
+    closure_outcome: qualityPass
       ? "closed"
       : "unresolved",
   };

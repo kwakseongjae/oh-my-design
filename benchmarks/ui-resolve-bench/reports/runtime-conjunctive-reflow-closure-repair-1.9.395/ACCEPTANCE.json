@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.395",
+  "status": "PASS",
+  "cause": "runtime-finalize-accepted-unresolved-rows-and-browserless-unresolved-accounting",
+  "repair": {
+    "resolved_finalize_requires_zero_unresolved_carriers": true,
+    "resolved_finalize_requires_zero_unresolved_rows": true,
+    "unresolved_finalize_requires_one_browser_infrastructure_attempt": true,
+    "unresolved_finalize_rejects_skipped_browser": true,
+    "unresolved_finalize_rejects_measured_product_defect_as-infrastructure": true,
+    "unresolved_closure_state": "unresolved",
+    "resolved_quality_pass_required": true,
+    "host_validator_parity": true,
+    "experimental_skill_parity": true
+  },
+  "verification": {
+    "focused_tests": {"passed": 74, "failed": 0},
+    "candidate_pin_test": {"passed": 1, "failed": 0},
+    "typecheck": "pass",
+    "diff_check": "pass",
+    "wider_benchmark_contract": {"passed": 144, "failed": 2, "failure_disposition": "pre-existing-external-vendor-git-root-fixtures"}
+  },
+  "sha256": {
+    "canonical_skill": "0d84cc917fb6f00a8c35966f3b406c0b9249e7bbd6cfd07da4e8ac233a77f1f8",
+    "reflow_helper": "cff87455db63307b2e694ea4ca738252db7625357f9a5186eef80b42d924cf27",
+    "host_validator": "5cdcd25225f05397d80974597f49f013f1547b90dad15fed639f45a5d5c6c55a",
+    "experimental_skill": "8a65dd9c22fb6de72bea627332b552a8a83478bb9b12e880e0b313ebcb2a041f",
+    "reflow_helper_tests": "0dfba851ac4f6d25ad2fc85fba8de87820fea4981677f3fc73429ed4875b2d17",
+    "skill_contract_tests": "ce88413a121349f320c49a29e9c3c71bbca1ebb22a78d64b206cdc9cc5203968",
+    "host_runtime_tests": "71c5fb03b429d39221d1a6060539e5478e7a9310b640cb3b5344a5a202b85a08",
+    "benchmark_contract_tests": "9775cf5b46fc6fa93f495f66b96b264d7bda2130a5528a8fc735bfc98b75dbd7"
+  },
+  "provider_calls": 0,
+  "next": "Commit and exact-pin this repair, then lock another fresh unseen holdout before any scored provider call."
+}

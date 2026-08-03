@@ -182,7 +182,13 @@ function groupedReflowArtifact({ closed = false, unresolved = false } = {}) {
       all_registered_carriers_closed: true,
       no_text_hack: true,
     },
-    closure: { state: closed ? "closed" : "open" },
+    browser_attempt: unresolved
+      ? { attempts: 1, outcome: "infrastructure-error", mechanism: "browser-harness" }
+      : { attempts: 0, outcome: "not-run", mechanism: null },
+    known_failure_closure: closed
+      ? { state: unresolved ? "unresolved" : "closed", unresolved: unresolved ? 11 : 0 }
+      : { state: "open", unresolved: null },
+    closure: { state: closed ? (unresolved ? "unresolved" : "closed") : "open" },
   };
   inventory.sha256 = createHash("sha256").update(JSON.stringify({
     carrier_ids: inventory.carrier_ids,
@@ -199,6 +205,8 @@ function groupedReflowArtifact({ closed = false, unresolved = false } = {}) {
     measured_200pct: closed && !unresolved ? 2 : 0,
     unresolved_carriers: closed && !unresolved ? 0 : 2,
     unresolved_rows: closed && !unresolved ? 0 : 9,
+    quality_pass: closed && !unresolved,
+    browser_attempt: artifact.browser_attempt,
     inventory_sha256: inventory.sha256,
   };
   return artifact;
@@ -540,6 +548,25 @@ describe("proof policy executable hook", () => {
       closure_outcome: "unresolved",
       carrier_count: 2,
       row_count: 9,
+    });
+  });
+
+  it("rejects grouped unresolved accounting that skipped the browser attempt", () => {
+    const unresolved = groupedReflowArtifact({ closed: true, unresolved: true });
+    unresolved.browser_attempt = { attempts: 0, outcome: "not-run", mechanism: null };
+    unresolved.closure_manifest.browser_attempt = unresolved.browser_attempt;
+    expect(validateReflowClosureArtifact(unresolved, "closure")).toEqual({
+      pass: false,
+      reason: "reflow-closure-required",
+    });
+  });
+
+  it("rejects unresolved grouped rows disguised as a closed quality result", () => {
+    const unresolved = groupedReflowArtifact({ closed: true, unresolved: true });
+    unresolved.closure.state = "closed";
+    expect(validateReflowClosureArtifact(unresolved, "closure")).toEqual({
+      pass: false,
+      reason: "reflow-closure-required",
     });
   });
 

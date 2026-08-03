@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.395 runtime conjunctive reflow repair
+- unresolved row/carrier resolved-finalize를 차단하고 browserless finalize-unresolved 우회를 제거했다.
+- focused 74/74 + pin 1/1, lint/diff green, provider 0. 다음은 commit exact pin/fresh holdout이다.
+
 ## 2026-08-03 (Codex) · 1.9.394 rail r1 rejection
 - candidate는 81/85; overflow/contrast는 닫았지만 decision evidence wrap과 delivery block이 남았다.
 - Reliability@3 최대 2/3이라 남은 4셀 provider 0으로 중단. 다음은 runtime conjunctive closure 수리다.

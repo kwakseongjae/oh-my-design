@@ -203,7 +203,7 @@ pre_edit_release_invariant:
 2e. **고위험 결정 화면에서 `decision-context hierarchy closure`를 수행한다.** 삭제·승인·권한·송금처럼 실행 후 되돌리기 어렵거나 피해가 큰 결정을 최종 확인하는 화면에만 적용한다. 결정 경계 안에서 (1) 선택된 대상, (2) 결정에 직접 필요한 제공된 사실·증거, (3) 현재 상태 또는 blocker, (4) 취소와 최종 action boundary가 한 번에 구분되는지 확인한다. 이 네 역할이 긴 설명 한 문단이나 서로 동등한 장식 카드로 평평해졌다면 기존 DESIGN.md 토큰과 사실만 사용해 label-value metadata, semantic table/list, summary block 중 현재 구조에 가장 작은 표현으로 hierarchy를 복원한다. 좁은 화면에서도 대상→사실/증거→상태→행동 순서를 유지하고 dense-data 열의 비교 geometry를 안정적으로 보존한다. 이 closure는 새 warning banner, risk score, 법적 판단, 상태, control, token, container, 색, 아이콘 또는 사실을 만들 권한이 아니다. 대상이나 blocker가 unresolved면 추측하지 않고 해당 unresolved field만 생략한다. 기존 화면이 이미 네 역할을 명확히 구분하면 `decision-context hierarchy closure: preserve`로 끝내고 시각 변형을 추가하지 않는다.
 2e. **`reflow-integrity closure`는 compact group packet 하나로 실행한다.** 같은 consumer route의 390px·320px·200% reflow를 검사한다. 첫 CSS 편집 전에 **`.omd/reflow-closure.json`에 schema `0.2` 초안을 실제 저장**한다. 같은 selector·역할·longest value를 공유하는 반복 행은 인스턴스마다 복제하지 않고 `row_groups.expected_count`로 전부 계상한다. 인접한 의미 관계가 다른 carrier는 합치지 않는다.
 
-   초안을 저장한 즉시 현재 skill 디렉터리의 `scripts/reflow-artifact.mjs lock .omd/reflow-closure.json`을 **한 번** 실행해 ordered group inventory와 hash를 결정론적으로 채운다. hash를 손으로 계산하거나 hook 구현을 읽지 않는다. 제품 편집 뒤에는 carrier/row group·selector·count·binding을 바꾸지 않는다. 브라우저 proof가 끝나면 실제 측정 결과를 group final에 기록하고 `scripts/reflow-artifact.mjs finalize`를 한 번 실행한다. browser infrastructure가 막혔다면 `finalize-unresolved`로 모든 등록 인스턴스를 정직하게 계상한다. helper가 없거나 실행되지 않으면 기존 schema `0.1`을 손으로 재구성하지 말고 해당 reflow proof를 `unresolved`로 전달한다.
+   초안을 저장한 즉시 현재 skill 디렉터리의 `scripts/reflow-artifact.mjs lock .omd/reflow-closure.json`을 **한 번** 실행해 ordered group inventory와 hash를 결정론적으로 채운다. hash를 손으로 계산하거나 hook 구현을 읽지 않는다. 제품 편집 뒤에는 carrier/row group·selector·count·binding을 바꾸지 않는다. 브라우저 proof가 끝나면 실제 측정 결과를 group final에 기록하고 `scripts/reflow-artifact.mjs finalize`를 한 번 실행한다. 이 helper는 등록 row/carrier 하나라도 unresolved면 resolved finalize를 거부한다. browser infrastructure가 막힌 경우에만 실제 navigate 시도의 `mechanism`과 `infrastructure-error`를 `browser_attempt`에 기록한 뒤 `finalize-unresolved`로 모든 등록 인스턴스를 정직하게 계상한다. browser를 시도하지 않았거나 제품 결함을 발견한 상태는 unresolved accounting으로 우회할 수 없다. helper가 없거나 실행되지 않으면 기존 schema `0.1`을 손으로 재구성하지 말고 해당 reflow proof를 `unresolved`로 전달한다.
 
    ```yaml
    reflow_work_packet:
@@ -228,8 +228,10 @@ pre_edit_release_invariant:
          decision: full-row|stack|comparison-scroll|keep|unresolved
          final: { outcome_390: pass|unresolved, outcome_320: pass|unresolved, outcome_200pct: pass|unresolved, status: pass|unresolved }
      invariants: { same_row_count: true|false, same_decision_boundary: true|false, all_registered_carriers_closed: true|false, no_text_hack: true|false }
-     closure: { state: open|closed }
-     closure_manifest: "filled by finalize helper; includes group counts and expanded instance counts"
+     browser_attempt: { attempts: 0|1, outcome: not-run|infrastructure-error|measured, mechanism: null|"exact mechanism" }
+     known_failure_closure: { state: open|closed|unresolved, unresolved: null|0|positive_integer }
+     closure: { state: open|closed|unresolved }
+     closure_manifest: "filled by finalize helper; includes group counts, expanded instance counts, quality_pass, and browser attempt"
    ```
 
    1. **INVENTORY.** `row_groups`에는 one-line 계약이 있는 visible atomic identifier, 선택 target/source/artifact filename, 짧은 evidence·summary·metadata·supplied-count, short control label, visible dynamic state/status를 넣는다. 같은 selector/role의 반복은 `expected_count`로 묶되 render function/template/state map의 가장 긴 실제 값을 `longest_value`로 기록한다. paired toggle/button/select copy는 tag와 무관하게 `control-label`이다. 일반 heading/body prose는 명시적 one-line 계약이 없으면 제외한다. 각 group을 소유하거나 다른 내용과의 관계를 전달하는 protected/named scope를 `carriers`에 전부 등록한다. `lock` helper가 성공하면 즉시 제품 편집으로 넘어가며 helper source나 hash 알고리즘을 읽지 않는다.
@@ -237,7 +239,7 @@ pre_edit_release_invariant:
    3. **REFLOW.** 가장 좁은 조건에서 group의 longest atomic child와 padding/gap을 판단한다. fit하지 않으면 text를 깨지 말고 parent row를 `full-row`, 다음으로 `stack`한다. mobile cascade에서 desktop track·basis·min-width를 해제하고 필요한 child에 `min-width: 0`을 둔다. shared header·legend가 의미 관계를 제공하면 carrier를 보존한 named `comparison-scroll`을 먼저 쓴다. stack은 기존 carrier 자체를 relocate한다. `display:none` 뒤 generated content·`data-*`·aria-label·hook 없는 span 복제, 단일 text scroller, word-break, break character, generated separator는 실패다.
    4. **PROVE.** 한 browser command 안에서 group selector의 **모든 matched instance**에 대해 computed type, line count, overflow/clipping, cardinality, association을 세 viewport에서 측정한다. 하나라도 실패하거나 count가 `expected_count`와 다르면 그 group은 pass가 아니다. 실제 결과를 기록하고 `finalize`를 실행한다. 대표 instance, page overflow 0, screenshot 육안, source 추정은 group proof가 아니다. helper가 만든 manifest의 expanded `registered_carriers/registered_rows`가 시작 count와 다르거나 미계측 instance가 있으면 성공을 말하지 않는다.
 
-   quality closure는 `same_row_count: true`, `same_decision_boundary: true`, `all_registered_carriers_closed: true`, `no_text_hack: true`, `unresolved_rows: 0`, `unresolved_carriers: 0`, `page_overflow: 0`일 때만 통과한다. `finalize-unresolved`는 delivery accounting만 닫고 quality closure를 통과시키지 않는다.
+   quality closure는 `same_row_count: true`, `same_decision_boundary: true`, `all_registered_carriers_closed: true`, `no_text_hack: true`, `unresolved_rows: 0`, `unresolved_carriers: 0`, `page_overflow: 0`, `quality_pass: true`, `known_failure_closure: { state: closed, unresolved: 0 }`일 때만 통과한다. `finalize-unresolved`는 실제 browser infrastructure attempt가 기록된 경우에만 accounting을 `closure.state: unresolved`로 잠그며 quality closure나 구현 완료를 통과시키지 않는다.
 2f. **`proof execution close latch`로 끝난 증명을 다시 열지 않는다.** 품질 gate는 유지하고 아래 state를 같은 consumer route의 acceptance까지 유지한다.
 
    ```yaml
