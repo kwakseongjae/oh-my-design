@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.387 cold-chain rejection
+- r2 control도 81/85 unresolved; candidate 1/2 resolved로 Reliability@3가 수학적으로 불가능해졌다.
+- u19382/r3를 frozen. 다음은 provider-free required-closure 수리와 fresh unseen replacement이다.
+
 ## 2026-08-03 (Codex) · 1.9.386 cold-chain r2 candidate
 - compact는 81/85 unresolved; muted/canvas 4.107 contrast를 측정하고도 남겨 a11y fail했다.
 - retry 0. 다음은 r2 control로 shared variance를 분리한다.
