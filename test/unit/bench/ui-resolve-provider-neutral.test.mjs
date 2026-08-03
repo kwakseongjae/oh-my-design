@@ -339,6 +339,7 @@ describe("provider-neutral prepared matrix contract", () => {
     plan.shared_host_policy = { require_browser_attempt: true };
     expect(() => preflightRuntimeEnvironment(plan, {
       browserProbe: () => ({ status: 1, stdout: "[FAIL] daemon alive" }),
+      codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
     })).toThrow("runtime-preflight-failure:browser-harness-not-ready");
 
     expect(preflightRuntimeEnvironment(plan, {
@@ -346,18 +347,39 @@ describe("provider-neutral prepared matrix contract", () => {
         status: 1,
         stdout: "[ok  ] daemon alive\n[FAIL] Chrome process list unavailable\n[ok  ] active browser connections — 1",
       }),
+      codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
     }).checks).toContainEqual({
       runtime: "shared-host-policy",
       resource: "browser-harness",
       status: "ready",
-      sandbox: "external-workspace-browser-socket",
+      sandbox: "external-workspace-openai-browser",
+    });
+    expect(preflightRuntimeEnvironment(plan, {
+      browserProbe: () => ({
+        status: 0,
+        stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1",
+      }),
+      codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
+    }).checks).toContainEqual({
+      runtime: "shared-host-policy",
+      resource: "codex-auth",
+      status: "ready",
+      sandbox: "external-workspace-openai-browser",
     });
     expect(() => preflightRuntimeEnvironment(plan, {
       browserProbe: () => ({
         status: 0,
         stdout: "[ok  ] daemon alive\n[FAIL] active browser connections — 0",
       }),
+      codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
     })).toThrow("runtime-preflight-failure:browser-harness-not-ready");
+    expect(() => preflightRuntimeEnvironment(plan, {
+      browserProbe: () => ({
+        status: 0,
+        stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1",
+      }),
+      codexProbe: () => ({ status: 1, stderr: "Not logged in" }),
+    })).toThrow("runtime-preflight-failure:codex-auth-not-ready");
   });
 
   it("keeps a ready host rejection as a scored system failure", () => {

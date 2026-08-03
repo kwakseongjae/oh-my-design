@@ -4,9 +4,17 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.363 cold-chain matrix preparation
+- 갱신: 2026-08-03 · 1.9.364 isolated Codex home/browser sandbox repair
 
 ## 지금 (현재 위치)
+
+- 1.9.364는 각 cell의 HOME/CODEX_HOME을 `.benchmark/codex-home`으로 격리하고 global Codex home에서는 `auth.json`만 exact symlink한다.
+- outer sandbox는 workspace write + OpenAI/ChatGPT domain + exact browser-harness socket만 허용하며, browser readiness와 isolated login을 동일 profile에서 preflight한다.
+- live login과 Luna/high minimal handshake가 성공했다. 두 handshake는 diagnostic-only(14,485/11,168 input, 각 8,960 cached·5 output)이고 scored quality에는 포함하지 않는다.
+- focused 71/71, bench 324 pass + 기존 external vendor Git-root 2 fail/1 skip, lint/build/diff green이다. 다음은 exact pin 뒤 fresh replacement preregistration이다.
+
+- `/private/tmp/u19362` 첫 control은 130ms, event 0, model null, usage null로 provider inference 전 infrastructure-invalid다.
+- retry 0이며 root 전체를 frozen한다. Luna/skill 결과로 집계하지 않고 새 root·새 exact pin 없이는 재개하지 않는다.
 
 - 1.9.363은 `/private/tmp/u19362-vendors` exact detached sources와 `/private/tmp/u19362` 6 committed/detached/clean cells를 준비했다.
 - task/prompt/product/DESIGN/runtime/model/effort/timeout/host/proof와 admission·resume·timeout·browser pins equality가 6/6이다.

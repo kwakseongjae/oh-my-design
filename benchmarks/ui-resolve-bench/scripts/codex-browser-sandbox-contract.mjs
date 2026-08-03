@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, lstatSync, mkdirSync, readFileSync, readlinkSync, symlinkSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 
@@ -8,6 +8,41 @@ export function browserHarnessRuntimeDir(env = process.env) {
 
 export function browserHarnessTempDir(workspace) {
   return join(resolve(workspace), ".benchmark", "browser-harness");
+}
+
+export function isolatedCodexHome(workspace) {
+  return join(resolve(workspace), ".benchmark", "codex-home");
+}
+
+export function prepareIsolatedCodexHome(workspace, env = process.env) {
+  const target = isolatedCodexHome(workspace);
+  const sourceHome = resolve(env.OMD_BENCH_AUTH_CODEX_HOME ?? join(homedir(), ".codex"));
+  const sourceAuth = join(sourceHome, "auth.json");
+  const targetAuth = join(target, "auth.json");
+  if (!existsSync(sourceAuth)) throw new Error(`codex benchmark auth missing: ${sourceAuth}`);
+  mkdirSync(target, { recursive: true });
+  if (!existsSync(targetAuth)) {
+    symlinkSync(sourceAuth, targetAuth);
+  } else if (!lstatSync(targetAuth).isSymbolicLink() || resolve(target, readlinkSync(targetAuth)) !== sourceAuth) {
+    throw new Error(`codex benchmark auth link mismatch: ${targetAuth}`);
+  }
+  return target;
+}
+
+export function codexBenchmarkPermissionProfile() {
+  return "{extends=\":workspace\",network={enabled=true,mode=\"limited\",domains={\"chatgpt.com\"=\"allow\",\"*.chatgpt.com\"=\"allow\",\"api.openai.com\"=\"allow\",\"*.openai.com\"=\"allow\"}}}";
+}
+
+function outerSandboxArgs({ root, runtimeDir }) {
+  const profile = "omd-benchmark-browser";
+  return [
+    "sandbox",
+    "-c", `permissions.${profile}=${codexBenchmarkPermissionProfile()}`,
+    "-c", `default_permissions=\"${profile}\"`,
+    "-P", profile,
+    "-C", root,
+    "--allow-unix-socket", runtimeDir,
+  ];
 }
 
 export function preparedWorkspaceRequiresBrowserProof(workspace, { readJson } = {}) {
@@ -26,22 +61,23 @@ export function codexBrowserSandboxSpec({
   const root = resolve(workspace);
   const runtimeDir = browserHarnessRuntimeDir(env);
   const tempDir = browserHarnessTempDir(root);
+  const codexHome = isolatedCodexHome(root);
   return {
     executable: codexBin,
     args: [
-      "sandbox",
-      "-P", ":workspace",
-      "-C", root,
-      "--allow-unix-socket", runtimeDir,
+      ...outerSandboxArgs({ root, runtimeDir }),
       codexBin,
       ...innerArgs,
     ],
     env: {
+      HOME: codexHome,
+      CODEX_HOME: codexHome,
       BH_RUNTIME_DIR: runtimeDir,
       BH_TMP_DIR: tempDir,
     },
-    sandbox: "external-workspace-browser-socket",
+    sandbox: "external-workspace-openai-browser",
     runtime_dir: runtimeDir,
+    codex_home: codexHome,
     temp_dir: tempDir,
   };
 }
@@ -54,21 +90,50 @@ export function codexBrowserDoctorSpec({
   const root = resolve(workspace);
   const runtimeDir = browserHarnessRuntimeDir(env);
   const tempDir = browserHarnessTempDir(root);
+  const codexHome = isolatedCodexHome(root);
   return {
     executable: codexBin,
     args: [
-      "sandbox",
-      "-P", ":workspace",
-      "-C", root,
-      "--allow-unix-socket", runtimeDir,
+      ...outerSandboxArgs({ root, runtimeDir }),
       "browser-harness",
       "--doctor",
     ],
     env: {
       ...env,
+      HOME: codexHome,
+      CODEX_HOME: codexHome,
       BH_RUNTIME_DIR: runtimeDir,
       BH_TMP_DIR: tempDir,
     },
-    sandbox: "external-workspace-browser-socket",
+    sandbox: "external-workspace-openai-browser",
+    codex_home: codexHome,
+  };
+}
+
+export function codexAuthDoctorSpec({
+  workspace,
+  codexBin = process.env.OMD_BENCH_CODEX_BIN ?? "codex",
+  env = process.env,
+}) {
+  const root = resolve(workspace);
+  const runtimeDir = browserHarnessRuntimeDir(env);
+  const codexHome = isolatedCodexHome(root);
+  return {
+    executable: codexBin,
+    args: [
+      ...outerSandboxArgs({ root, runtimeDir }),
+      codexBin,
+      "login",
+      "status",
+    ],
+    env: {
+      ...env,
+      HOME: codexHome,
+      CODEX_HOME: codexHome,
+      BH_RUNTIME_DIR: runtimeDir,
+      BH_TMP_DIR: browserHarnessTempDir(root),
+    },
+    sandbox: "external-workspace-openai-browser",
+    codex_home: codexHome,
   };
 }

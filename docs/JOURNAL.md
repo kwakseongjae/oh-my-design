@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.364 isolated Codex home/browser sandbox repair
+- u19362 first control은 provider 전 infrastructure-invalid라 retry 없이 root를 동결했다.
+- cell-local HOME/CODEX_HOME + auth-only link, OpenAI-only egress, exact browser socket을 구현했다.
+- login/Luna handshake와 focused 71/71을 통과; 다음은 exact pin과 fresh replacement다.
+
 ## 2026-08-03 (Codex) · 1.9.363 cold-chain matrix preparation
 - exact detached vendors와 6 committed/detached/clean cells를 fresh roots에 준비했다.
 - equality 6/6, sole delta는 control `2d577464…` vs compact `36a44a1…` skill tree다.

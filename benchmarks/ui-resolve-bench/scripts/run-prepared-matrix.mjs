@@ -32,7 +32,11 @@ import {
   inspectPreparedHostPolicy,
   summarizeHostPolicyStates,
 } from "./host-policy-contract.mjs";
-import { codexBrowserDoctorSpec } from "./codex-browser-sandbox-contract.mjs";
+import {
+  codexAuthDoctorSpec,
+  codexBrowserDoctorSpec,
+  prepareIsolatedCodexHome,
+} from "./codex-browser-sandbox-contract.mjs";
 
 const MAX_BUFFER = 64 * 1024 * 1024;
 const PACING_MAX_OVERSHOOT_MS = 5_000;
@@ -48,6 +52,7 @@ export function preflightRuntimeEnvironment(
       ?? join(homedir(), ".cursor", "projects"),
     workspaceRoot = process.cwd(),
     browserProbe,
+    codexProbe,
   } = {},
 ) {
   const runtimes = [...new Set((plan?.cells ?? []).map((cell) => cell.runtime))].sort();
@@ -56,7 +61,10 @@ export function preflightRuntimeEnvironment(
     || plan?.host_policy_comparison?.require_browser_attempt === true;
   if (browserProofRequired) {
     const spec = codexBrowserDoctorSpec({ workspace: workspaceRoot });
-    if (!browserProbe) mkdirSync(spec.env.BH_TMP_DIR, { recursive: true });
+    if (!browserProbe) {
+      mkdirSync(spec.env.BH_TMP_DIR, { recursive: true });
+      prepareIsolatedCodexHome(workspaceRoot);
+    }
     const probe = browserProbe
       ? browserProbe(spec)
       : spawnSync(spec.executable, spec.args, {
@@ -82,6 +90,31 @@ export function preflightRuntimeEnvironment(
       resource: "browser-harness",
       status: "ready",
       sandbox: spec.sandbox,
+    });
+
+    const authSpec = codexAuthDoctorSpec({ workspace: workspaceRoot });
+    const authProbe = codexProbe
+      ? codexProbe(authSpec)
+      : spawnSync(authSpec.executable, authSpec.args, {
+          cwd: resolve(workspaceRoot),
+          env: authSpec.env,
+          encoding: "utf8",
+          maxBuffer: MAX_BUFFER,
+          timeout: 30_000,
+        });
+    const authOutput = `${String(authProbe?.stdout ?? "")}\n${String(authProbe?.stderr ?? "")}`;
+    if (authProbe?.error || authProbe?.status !== 0 || !/logged in/i.test(authOutput)) {
+      const detail = String(authProbe?.stderr || authProbe?.stdout || authProbe?.error?.message || "unavailable")
+        .trim()
+        .replace(/\s+/g, " ")
+        .slice(0, 240);
+      throw new Error(`runtime-preflight-failure:codex-auth-not-ready:${detail || "unavailable"}`);
+    }
+    checks.push({
+      runtime: "shared-host-policy",
+      resource: "codex-auth",
+      status: "ready",
+      sandbox: authSpec.sandbox,
     });
   }
 
@@ -975,7 +1008,8 @@ function executePreparedMatrixWithLease(root, {
   }
   const runtimePreflight = preflightRuntimeEnvironment(plan, {
     ...runtimePreflightOptions,
-    workspaceRoot: runtimePreflightOptions?.workspaceRoot ?? matrixRoot,
+    workspaceRoot: runtimePreflightOptions?.workspaceRoot
+      ?? join(matrixRoot, plan.cells[existing?.completed_cells ?? 0]?.id ?? ""),
   });
   console.log(JSON.stringify({ event: "runtime-preflight-complete", ...runtimePreflight }));
   const state = existing ?? {

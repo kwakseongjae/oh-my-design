@@ -5,6 +5,7 @@ import { join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
 import {
   codexBrowserSandboxSpec,
+  prepareIsolatedCodexHome,
   preparedWorkspaceRequiresBrowserProof,
 } from "./codex-browser-sandbox-contract.mjs";
 
@@ -62,7 +63,10 @@ const execution = browserProofRequired
       env: {},
       sandbox: "workspace-write",
     };
-if (browserProofRequired) mkdirSync(execution.temp_dir, { recursive: true });
+if (browserProofRequired) {
+  mkdirSync(execution.temp_dir, { recursive: true });
+  prepareIsolatedCodexHome(workspace);
+}
 
 const startedAt = new Date();
 const startedNs = process.hrtime.bigint();
@@ -179,6 +183,7 @@ const result = {
     reasoning,
     sandbox: execution.sandbox,
     browser_socket_scope: browserProofRequired ? execution.runtime_dir : null,
+    codex_home: browserProofRequired ? execution.codex_home : null,
     browser_temp_dir: browserProofRequired ? execution.temp_dir : null,
     ephemeral: true,
     ignored_user_config: !loadUserConfig,
