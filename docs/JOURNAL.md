@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.480 shipped-runner transfer preparation
+- six untouched cells/equality, detached sources, candidate runner isolation, bench19366/CLI/auth preflight를 검증했다.
+- provider 0. 다음은 Luna/high r1 control no-retry 실행이다.
+
 ## 2026-08-04 (Codex) · 1.9.479 shipped-runner transfer preregistration
 - exact 1.9.474 control vs exact 1.9.476 candidate를 fresh semiconductor task에 Luna/high 2×3으로 고정했다.
 - task exposure/provider 0. 다음은 detached vendors와 six untouched cells preparation이다.

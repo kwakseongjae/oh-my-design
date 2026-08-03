@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.479 shipped-runner transfer preregistration
+- 갱신: 2026-08-04 · 1.9.480 shipped-runner transfer preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.480은 `/private/tmp/u19479-vendors` exact detached control/candidate와 `/private/tmp/u19479` six untouched cells를 준비했다.
+- equality 6/6, detached+clean source 2, shared helper hash, candidate runner present 3/3·control absent 3/3를 검증했다.
+- `bench19366` existing attach/no-launch, Codex CLI 0.144.1, ChatGPT auth가 ready이며 provider 0이다.
+- 다음은 r1 control 한 셀을 Luna/high, 900s, no-retry로 실행한다.
 
 - 1.9.479는 exact 1.9.474 control `e848d129…` vs exact 1.9.476 candidate `6bfdc7bc…`를 fresh semiconductor task에 Luna/high 2×3으로 사전등록했다.
 - schema 0.3, exact named existing-CDP/no-launch, actual200, typography lock, 8px reserve, attribute-aware static1/browser1과 candidate shipped-runner-only를 고정했다.
