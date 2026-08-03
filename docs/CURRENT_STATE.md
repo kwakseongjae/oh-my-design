@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.375 runtime-complete cold-chain preparation
+- 갱신: 2026-08-03 · 1.9.376 isolated home bootstrap order repair
 
 ## 지금 (현재 위치)
+
+- 1.9.376은 empty cell-local CODEX_HOME → named browser → auth link → login → provider 순서를 고정했다.
+- u19374 provider 0/frozen, focused 72/72, lint/diff green이다. 다음은 exact pin이다.
 
 - 1.9.375는 fresh u19374 exact vendors와 6 clean/detached cells를 준비하고 shared equality 6/6을 확인했다.
 - provider 0; 다음은 `bench19366` controller-only CDP bootstrap으로 r1 control 한 셀이다.

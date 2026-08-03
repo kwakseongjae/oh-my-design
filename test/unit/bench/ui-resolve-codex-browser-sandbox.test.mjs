@@ -40,6 +40,7 @@ describe("Codex browser proof sandbox contract", () => {
       BH_TMP_DIR: browserHarnessTempDir(workspace),
     });
     expect(spec.codex_home).toBe(isolatedCodexHome(workspace));
+    expect(spec.codex_home).toBe("/tmp/omd-browser-cell/.benchmark/codex-home");
     expect(spec.sandbox).toBe("external-workspace-openai-browser");
   });
 

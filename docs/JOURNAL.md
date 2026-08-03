@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.376 isolated home bootstrap order repair
+- empty CODEX_HOME → browser → auth → login → provider 순서를 고정했다.
+- u19374 frozen, provider 0, focused 72/72. 다음은 exact pin이다.
+
 ## 2026-08-03 (Codex) · 1.9.375 runtime-complete cold-chain preparation
 - fresh u19374 vendors/6 cells와 shared equality 6/6을 확인했다.
 - provider 0; 다음은 registered named browser로 r1 control 한 셀이다.

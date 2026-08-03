@@ -69,6 +69,7 @@ export function preflightRuntimeEnvironment(
     const spec = codexBrowserDoctorSpec({ workspace: workspaceRoot, env: browserEnv });
     if (!browserProbe) {
       mkdirSync(spec.env.BH_TMP_DIR, { recursive: true });
+      mkdirSync(spec.codex_home, { recursive: true });
     }
     const probe = browserProbe
       ? browserProbe(spec)
