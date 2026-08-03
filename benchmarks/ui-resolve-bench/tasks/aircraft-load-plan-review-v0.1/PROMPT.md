@@ -1,0 +1,5 @@
+Improve the supplied aircraft hold load-plan review so ground operators can inspect the bay assignments, balance strip, and dispatch handoff context confidently on desktop and narrow screens.
+
+Preserve all six bay identifiers, all eight baggage-container identifiers and their exact bay assignments, all four supplied station readings, the three review views, the load-note toggle, the review-name form, and all stated summary evidence. Do not invent weight validation, balance approval, airworthiness, loading completion, dispatch release, safety, security, or departure conclusions. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The spatial hold plan, separate balance strip, and separate dispatch decision context are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

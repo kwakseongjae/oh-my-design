@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.310 aircraft load-plan holdout lock
+- fresh 6-bay plan + balance strip + dispatch context task를 lock했다.
+- untouched starter는 75/85, 의도한 contrast/reflow만 red다.
+- contract/preparation/baseline green, hashes 고정, provider call 0이다.
+- 다음은 exact control/candidate Reliability@3 preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.309 runtime reflow exact pin
 - exact source `8f8cec6…`를 runtime artifact candidate로 pin했다.
 - skill·activation·host-policy config/tree hash를 고정했다.

@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.309 runtime reflow exact pin
+- 갱신: 2026-08-03 · 1.9.310 aircraft load-plan holdout lock
 
 ## 지금 (현재 위치)
+
+- 1.9.310은 irregular 6-bay spatial plan + 별도 4-station balance strip + 별도 dispatch context의 fresh `aircraft-load-plan-review-v0.1`을 provider 전에 lock했다.
+- untouched starter는 75/85다. task/state/design/evidence/desktop/keyboard는 green이고 의도한 red는 muted 4.43:1 contrast와 390/320/200% 세 carrier overflow·atomic wrapping뿐이다.
+- prompt `cdfa345…`, product `58f34eb…`, index `c1432fa…`, DESIGN `fa3b60f…`, task `352f114…`다. focused contract/preparation과 deterministic baseline이 green, provider call 0이다.
+- 다음은 exact 1.9.274 control vs exact 1.9.309 runtime-artifact candidate Reliability@3 preregistration이다.
 
 - 1.9.309는 exact source `8f8cec6…`를 `omd-runtime-reflow-artifact-gate-candidate`로 pin했다. canonical/installed skill, installed tree, host-policy config/tree, activation hash를 고정했고 provider call은 0이다.
 - candidate source는 committed/publishable이고 아직 quality promotion은 아니다. 다음은 과거 3개 task family와 겹치지 않는 fresh unseen topology를 provider 전에 lock하는 것이다.

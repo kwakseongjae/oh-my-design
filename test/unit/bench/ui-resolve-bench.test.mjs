@@ -52,6 +52,7 @@ const transitStopTimetableTaskId = "transit-stop-timetable-review-v0.1";
 const equipmentRackElevationTaskId = "equipment-rack-elevation-review-v0.1";
 const productionCueDependencyTaskId = "production-cue-dependency-review-v0.1";
 const digitalMasterLineageTaskId = "digital-master-lineage-review-v0.1";
+const aircraftLoadPlanTaskId = "aircraft-load-plan-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1192,6 +1193,42 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       commit: "8f8cec6e1e4ac482b9c4afae603d31413521c767",
     });
     expect(candidate.commit).not.toBe(previous.commit);
+  });
+
+  it("locks an unseen spatial aircraft load-plan family before runtime artifact validation", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/tasks",
+      aircraftLoadPlanTaskId,
+      "task.json",
+    ), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: aircraftLoadPlanTaskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      protected_hook_counts: {
+        "[data-bench='hold-bay']": 6,
+        "[data-bench='container-id']": 8,
+        "[data-bench='station-id']": 4,
+        "[data-bench='station-weight']": 4,
+      },
+      text_geometry_oracle: {
+        scope_selectors: [
+          "[data-bench-design-role='load-plan']",
+          "[data-bench='balance-carrier']",
+          "[data-bench-decision-role='context']",
+        ],
+      },
+    });
+    const out = prepareVariant("raw-design-md", {
+      task: aircraftLoadPlanTaskId,
+      outputName: "aircraft-load-plan-lock",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/data-bench="hold-bay"/g)).toHaveLength(6);
+    expect(starter.match(/data-bench="container-id"/g)).toHaveLength(8);
+    expect(starter).toContain("HOLD-AFT-21 + ULD-AKE-73018");
+    expect(starter).toContain("6 bays · 8 containers · 4 station readings");
   });
 
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
