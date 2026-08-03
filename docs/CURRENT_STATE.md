@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `fc76b6e5` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.487 water-treatment transfer preparation
+- 기준 커밋: `bfe6e7d9` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.488 water-treatment r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.488 r1 control은 valid 85/85 UI-resolved: 272.526s, 588,027 tokens다.
+- desktop/390/320/actual200, contrast, atomic text는 green이고 edit1/static1/shipped-runner1/recovery0/duplicate0/post-ready0다.
+- artifact는 static passed지만 browser attempts0/not-run/attachment null/closure open이라 automatic proof gate가 7개 이유로 fail-close했다.
+- TTT 49,827,498+ / unavailable 6. 다음은 fixed 120s pacing 뒤 r1 candidate no-retry 실행이다.
 
 - 1.9.487은 `/private/tmp/u19486-vendors` exact detached control/candidate와 `/private/tmp/u19486` six untouched cells를 준비했다.
 - equality 6/6, product tree 동일, source detached+clean, control/candidate runner 3/3, artifact-aware gate shared를 검증했다.

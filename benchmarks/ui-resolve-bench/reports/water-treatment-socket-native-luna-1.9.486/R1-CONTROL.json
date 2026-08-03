@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.488",
+  "experiment_id": "water-treatment-socket-native-luna-1.9.486",
+  "cell_id": "luna-water-r1-control",
+  "status": "COMPLETE",
+  "validity": "valid",
+  "run_status": "complete",
+  "provider_calls": 1,
+  "model": "gpt-5.6-luna",
+  "effort": "high",
+  "objective_score": 85,
+  "objective_max": 85,
+  "ui_resolved": true,
+  "wall_time_ms": 272526,
+  "provider_tokens": 588027,
+  "proof_trace": {
+    "product_edits": 1,
+    "static_closures": 1,
+    "browser_commands": 1,
+    "browser_recoveries": 0,
+    "duplicate_static_closures": 0,
+    "verification_after_ready": 0,
+    "shipped_runner_invoked": true
+  },
+  "artifact_proof": {
+    "pass": false,
+    "static_closure": "passed",
+    "browser_attempts": 0,
+    "browser_outcome": "not-run",
+    "attached_existing": null,
+    "closure": "open",
+    "reasons": [
+      "reflow-browser-attempt-not-measured",
+      "reflow-exact-consumer-attachment-missing",
+      "reflow-browser-launch-detected",
+      "reflow-measurement-conditions-incomplete",
+      "reflow-document-overflow-limit",
+      "reflow-locked-typography-changed",
+      "reflow-artifact-not-closed"
+    ]
+  },
+  "objective_observation": {
+    "desktop_overflow_px": 0,
+    "mobile_overflow_px": 0,
+    "narrow_320_overflow_px": 0,
+    "actual_200pct_overflow_px": 0,
+    "atomic_wraps": 0,
+    "serious_or_critical_contrast": 0
+  },
+  "tokens_to_target_observed_minimum": 49827498,
+  "usage_unavailable_cells": 6,
+  "next": "After the preregistered 120-second pacing boundary, run luna-water-r1-candidate once with no retry."
+}

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.488 water r1 control
+- exact control은 85/85, 272.526s, 588,027 tokens이나 browser attempts0/closure open으로 proof fail이다.
+- 다음은 fixed pacing 뒤 exact socket-native r1 candidate no-retry다.
+
 ## 2026-08-04 (Codex) · 1.9.487 water transfer preparation
 - detached exact sources와 six untouched cells/equality/runner isolation/browser/CLI/auth preflight를 완료했다.
 - provider 0. 다음은 Luna/high r1 control no-retry다.
