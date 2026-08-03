@@ -1166,6 +1166,21 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(candidate.commit).not.toBe(previous.commit);
   });
 
+  it("pins the carrier-inventory closure candidate separately from both earlier carrier contracts", () => {
+    const conjunctive = competitors.variants["omd-portable-conjunctive-release-candidate"];
+    const allCarrier = competitors.variants["omd-portable-all-carrier-set-candidate"];
+    const candidate = competitors.variants["omd-portable-carrier-inventory-closure-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.298",
+      source_path: "skills/omd-apply",
+      declared_name: "omd:apply",
+      commit: "a57c374152dede7d3e17e856eda5f806d6c7c375",
+    });
+    expect(candidate.commit).not.toBe(conjunctive.commit);
+    expect(candidate.commit).not.toBe(allCarrier.commit);
+  });
+
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", editorialBriefTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({
@@ -1732,6 +1747,41 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       require_browser_attempt: true,
     });
     expect(plan.promotion_gates).toMatchObject({
+      ui_resolved_trials_required: 3,
+      serious_or_critical_contrast_trials_allowed: 0,
+      paired_objective_losses_allowed: 0,
+      proof_and_host_policy_trials_required: 3,
+      candidate_mean_wall_time_ratio_max: 1.1,
+      candidate_mean_provider_tokens_ratio_max: 1.1,
+    });
+  });
+
+  it("preregisters the exact conjunctive-release versus carrier-inventory digital-master comparison", () => {
+    const plan = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/digital-master-carrier-inventory-luna-1.9.300/RUN-MATRIX.json",
+    ), "utf8"));
+    validateRunMatrixPlan(plan);
+    expect(plan.cells).toHaveLength(6);
+    expect(new Set(plan.cells.map((cell) => cell.task_id))).toEqual(new Set([digitalMasterLineageTaskId]));
+    expect(new Set(plan.cells.map((cell) => cell.model_id))).toEqual(new Set(["gpt-5.6-luna"]));
+    expect(new Set(plan.cells.map((cell) => cell.effort))).toEqual(new Set(["high"]));
+    expect(new Set(plan.cells.map((cell) => cell.host_policy_mode))).toEqual(new Set(["installed-opt-in"]));
+    expect(plan.cells.map((cell) => cell.variant_id)).toEqual([
+      "omd-portable-conjunctive-release-candidate",
+      "omd-portable-carrier-inventory-closure-candidate",
+      "omd-portable-carrier-inventory-closure-candidate",
+      "omd-portable-conjunctive-release-candidate",
+      "omd-portable-conjunctive-release-candidate",
+      "omd-portable-carrier-inventory-closure-candidate",
+    ]);
+    expect(plan.shared_host_policy).toMatchObject({
+      mode: "installed-opt-in",
+      require_delivery_ready: true,
+      require_browser_attempt: true,
+    });
+    expect(plan.promotion_gates).toMatchObject({
+      candidate_system_id: "luna-carrier-inventory",
       ui_resolved_trials_required: 3,
       serious_or_critical_contrast_trials_allowed: 0,
       paired_objective_losses_allowed: 0,

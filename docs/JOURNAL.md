@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.300 digital-master preregistration
+- exact conjunctive vs carrier-inventory Luna/high 2×3를 잠갔다.
+- balanced order, proof/host, quality, +10% efficiency gate를 고정했다.
+- focused 3/3 green, provider call 0이다.
+- 다음은 fresh detached vendors와 6개 cell prepare다.
+
 ## 2026-08-03 (Codex) · 1.9.299 digital-master holdout lock
 - graph + checksum + handoff 세 carrier의 fresh task를 lock했다.
 - untouched starter 75/85, 의도한 contrast/reflow만 red다.

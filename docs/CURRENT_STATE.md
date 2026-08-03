@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.299 digital-master lineage holdout lock
+- 갱신: 2026-08-03 · 1.9.300 digital-master carrier-inventory preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.300은 exact conjunctive control `3a414a0a…` vs exact carrier-inventory candidate `a57c374…`를 fresh digital-master task에 Luna/high 2×3으로 preregister했다.
+- 순서는 C/N, N/C, C/N으로 균형화했고 900초, concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. gate는 candidate resolved/contrast/proof/host 3/3, paired loss 0, mean wall/token 각각 +10% 이하다.
+- Tokens-to-Target attempt 3으로 잠갔고 attempts 1/2의 3,101,747 / 4,398,179 tokens는 right-censored로 보존한다. focused 3/3 green, provider call 0이다.
+- 다음은 exact detached vendor 두 개와 6개 Git cell을 fresh prepare하고 equality attestation 후 한 cell씩 실행하는 것이다.
 
 - 1.9.299는 branching+merge lineage graph, 별도 checksum manifest, 별도 handoff context의 fresh `digital-master-lineage-review-v0.1`을 provider 전에 lock했다.
 - untouched starter는 75/85다. task/state/design/evidence/desktop/keyboard는 green이고 의도한 red는 exact contrast와 390/320/200% 세 carrier overflow·atomic fragmentation뿐이다.
