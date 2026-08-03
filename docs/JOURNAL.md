@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.426 Codex execution-home runtime identity
+- shared auth cache의 app/CLI version race를 확인해 u19425를 provider 0으로 freeze했다.
+- exact CLI preflight + isolated execution-home post-run profile attribution을 추가했다. 29/29 + lint/diff green, 다음은 exact pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.424–1.9.425 exact pin + controller replacement
 - semantic profile patch를 `e473a2d9…`로 pin하고 동일 rail-signal 2×3을 fresh root로 재사전등록했다.
 - attempt 21, TTT 34,208,487+ / unavailable 6, exposure 2/0, provider 0. 다음은 fresh preparation이다.

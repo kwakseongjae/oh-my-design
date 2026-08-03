@@ -39,6 +39,7 @@ import {
 } from "./codex-browser-sandbox-contract.mjs";
 import {
   inspectCodexModelToolMode,
+  inspectCodexCliRuntime,
   installedCodexPolicyToolModeStopReason,
 } from "./codex-tool-mode-contract.mjs";
 
@@ -63,6 +64,7 @@ export function preflightRuntimeEnvironment(
     browserProbe,
     codexProbe,
     codexToolModeProbe = inspectCodexModelToolMode,
+    codexCliProbe = inspectCodexCliRuntime,
     browserEnv = process.env,
   } = {},
 ) {
@@ -75,6 +77,25 @@ export function preflightRuntimeEnvironment(
     || (plan?.host_policy_comparison && (plan?.cells ?? []).some(
       (cell) => cell.host_policy_mode === "installed-opt-in",
     ));
+  const controllerContract = plan?.controller_observation_contract;
+  if (controllerContract && runtimes.includes("codex")) {
+    const observed = codexCliProbe();
+    if (!observed?.ready || observed.version !== controllerContract.codex_cli_version) {
+      throw new Error(
+        `runtime-preflight-failure:codex-cli-version-mismatch:${controllerContract.codex_cli_version ?? "missing"}:${observed?.version ?? "unavailable"}`,
+      );
+    }
+    if (controllerContract.model_profile_policy !== "post-run-execution-home-observed") {
+      throw new Error("runtime-preflight-failure:codex-model-profile-policy-invalid");
+    }
+    checks.push({
+      runtime: "codex",
+      resource: "cli-runtime",
+      status: "ready",
+      version: observed.version,
+      model_profile_policy: controllerContract.model_profile_policy,
+    });
+  }
   if (installedPolicyRequested) {
     const modelIds = [...new Set((plan?.cells ?? [])
       .filter((cell) => cell.runtime === "codex" && cell.host_policy_mode === "installed-opt-in")

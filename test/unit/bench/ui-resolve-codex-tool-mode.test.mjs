@@ -4,10 +4,21 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
   inspectCodexModelToolMode,
+  inspectCodexCliRuntime,
   installedCodexPolicyToolModeStopReason,
 } from "../../../benchmarks/ui-resolve-bench/scripts/codex-tool-mode-contract.mjs";
 
 describe("Codex benchmark tool-mode admission", () => {
+  it("parses the exact Codex CLI runtime version", () => {
+    expect(inspectCodexCliRuntime({
+      codexBin: "/pinned/codex",
+      probe: (bin) => ({ status: 0, stdout: `codex-cli 0.144.1 (${bin})` }),
+    })).toMatchObject({
+      executable: "/pinned/codex",
+      version: "0.144.1",
+      ready: true,
+    });
+  });
   it("reads and pins the selected model profile", () => {
     const root = mkdtempSync(join(tmpdir(), "omd-codex-tool-mode-"));
     mkdirSync(join(root, ".codex"));

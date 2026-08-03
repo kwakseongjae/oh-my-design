@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
@@ -76,4 +77,22 @@ export function inspectCodexModelToolMode(modelId, env = process.env) {
 export function installedCodexPolicyToolModeStopReason(observation) {
   if (observation?.installed_policy_eligible === true) return null;
   return `codex-installed-policy-tool-mode-uninterceptable:${observation?.model_id ?? "unknown"}:${observation?.tool_mode ?? observation?.reason ?? "unknown"}`;
+}
+
+export function inspectCodexCliRuntime({
+  codexBin = process.env.OMD_BENCH_CODEX_BIN ?? "codex",
+  probe,
+} = {}) {
+  const result = probe ? probe(codexBin) : spawnSync(codexBin, ["--version"], {
+    encoding: "utf8",
+    timeout: 10_000,
+  });
+  const output = `${String(result?.stdout ?? "")}\n${String(result?.stderr ?? "")}`.trim();
+  const match = output.match(/codex-cli\s+([^\s]+)/i);
+  return {
+    executable: codexBin,
+    version: match?.[1] ?? null,
+    ready: result?.status === 0 && Boolean(match),
+    output: output.replace(/\s+/g, " ").slice(0, 240),
+  };
 }

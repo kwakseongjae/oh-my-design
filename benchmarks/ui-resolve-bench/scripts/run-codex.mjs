@@ -38,7 +38,7 @@ const eventsPath = join(benchmarkDir, "events.jsonl");
 writeFileSync(eventsPath, "", "utf8");
 const maxLogBytes = 50 * 1024 * 1024;
 const browserProofRequired = preparedWorkspaceRequiresBrowserProof(workspace, { readJson });
-const modelToolMode = inspectCodexModelToolMode(model);
+const sourceModelToolMode = inspectCodexModelToolMode(model);
 const innerCommand = [
   "exec",
   "--ephemeral",
@@ -130,6 +130,12 @@ const exit = await new Promise((resolveExit) => {
 });
 
 const wallMs = Number(process.hrtime.bigint() - startedNs) / 1_000_000;
+const executionModelToolMode = browserProofRequired
+  ? inspectCodexModelToolMode(model, { OMD_BENCH_AUTH_CODEX_HOME: execution.codex_home })
+  : sourceModelToolMode;
+const modelToolMode = executionModelToolMode.reason === "model-cache-missing"
+  ? sourceModelToolMode
+  : executionModelToolMode;
 writeFileSync(eventsPath, stdout, "utf8");
 writeFileSync(join(benchmarkDir, "stderr.log"), stderr, "utf8");
 
@@ -181,10 +187,17 @@ const result = {
     effort_requested: reasoning,
     model_tool_mode: modelToolMode.tool_mode,
     model_tool_mode_evidence: {
+      scope: modelToolMode === executionModelToolMode ? "execution-home-post-run" : "auth-source-fallback",
       cache_sha256: modelToolMode.cache_sha256,
       model_profile_sha256: modelToolMode.model_profile_sha256,
       cache_fetched_at: modelToolMode.cache_fetched_at,
       cache_client_version: modelToolMode.cache_client_version,
+      auth_source_before_run: {
+        cache_sha256: sourceModelToolMode.cache_sha256,
+        model_profile_sha256: sourceModelToolMode.model_profile_sha256,
+        cache_fetched_at: sourceModelToolMode.cache_fetched_at,
+        cache_client_version: sourceModelToolMode.cache_client_version,
+      },
     },
     auth_mode: null,
     provider_route: null,

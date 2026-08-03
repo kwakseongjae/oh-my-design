@@ -55,6 +55,27 @@ const validRun = {
 };
 
 describe("UI-Resolve prepared matrix execution", () => {
+  it("pins controller observation to the exact Codex CLI and post-run execution-home profile", () => {
+    const plan = {
+      controller_observation_contract: {
+        codex_cli_version: "0.144.1",
+        model_profile_policy: "post-run-execution-home-observed",
+      },
+      cells: [{ runtime: "codex", model_id: "gpt-5.6-luna" }],
+    };
+    expect(preflightRuntimeEnvironment(plan, {
+      codexCliProbe: () => ({ ready: true, version: "0.144.1" }),
+    }).checks).toContainEqual({
+      runtime: "codex",
+      resource: "cli-runtime",
+      status: "ready",
+      version: "0.144.1",
+      model_profile_policy: "post-run-execution-home-observed",
+    });
+    expect(() => preflightRuntimeEnvironment(plan, {
+      codexCliProbe: () => ({ ready: true, version: "0.146.0" }),
+    })).toThrow("runtime-preflight-failure:codex-cli-version-mismatch:0.144.1:0.146.0");
+  });
   it("excludes isolated Codex and browser runtime state from benchmark attestation", () => {
     const root = mkdtempSync(join(tmpdir(), "omd-runtime-attestation-"));
     const benchmark = join(root, ".benchmark");
