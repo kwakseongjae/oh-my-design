@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.349 generator compact matrix preregistration
+- 갱신: 2026-08-03 · 1.9.350 generator compact matrix preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.350은 `/private/tmp/u19349-vendors/{omd-1.9.274,omd-1.9.334}` exact detached source와 `/private/tmp/u19349` 6 committed/detached/clean cell을 준비했다.
+- equality 6/6이며 sole arm delta는 skill tree `2d577464…` vs `36a44a1…`; admission 1.9.341과 resume 1.9.347 pin도 동일하다.
+- provider 0이다. 다음 허용 cell은 fresh browser preflight 뒤 `luna-generator-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
 
 - 1.9.349는 exact control `3a414a0a…` vs candidate `c1de0e4e…`를 generator holdout에 Luna/high 2×3으로 preregister했다.
 - 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
@@ -1815,9 +1819,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fresh detached vendors와 6 clean generator cells의 equality를 증명한다.
-2. browser preflight 뒤 first control 한 cell만 실행한다.
-3. checkpoint equality를 확인한 뒤 paired candidate로 진행한다.
+1. fresh browser preflight 뒤 first control 한 cell만 실행한다.
+2. checkpoint admission round-trip equality를 확인한다.
+3. fixed pacing 뒤 paired candidate 한 cell로 진행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.350 generator matrix prepared
+- exact detached vendors와 6 committed/detached/clean cells를 준비했다.
+- equality 6/6, sole delta는 skill tree; admission/resume pins도 동일하다.
+- provider 0; 다음은 preflight 후 r1 control 한 cell이다.
+
 ## 2026-08-03 (Codex) · 1.9.349 generator matrix preregistration
 - Luna/high exact control vs compact candidate 2×3를 fresh task에 잠갔다.
 - admission 1.9.341 + resume 1.9.347, 900s/pacing/no-retry/strict gates다.
