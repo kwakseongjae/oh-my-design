@@ -1269,6 +1269,15 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(candidate.commit).not.toBe(previous.commit);
   });
 
+  it("pins the actual-zoom single-static candidate separately from the parent-line candidate", () => {
+    const previous = competitors.variants["omd-parent-one-line-terminal-browser-candidate"];
+    const candidate = competitors.variants["omd-actual-zoom-single-static-terminal-candidate"];
+    expect(candidate.vendor_dir).toBe("omd-1.9.446");
+    expect(candidate.commit).toBe("5d5ee0410a5b066f65f279b97287ff9f13826d95");
+    expect(candidate.commit).not.toBe(previous.commit);
+    expect(candidate.declared_name).toBe("omd:apply");
+  });
+
   it("locks an unseen spatial aircraft load-plan family before runtime artifact validation", () => {
     const task = JSON.parse(readFileSync(join(
       repoRoot,

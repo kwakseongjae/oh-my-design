@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.446 actual zoom + single static terminal repair
+- 갱신: 2026-08-04 · 1.9.447 actual zoom single-static terminal exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.447은 1.9.446 repair를 exact commit `5d5ee041…`, skill tree `fe3581b3…`와 helper/test hash로 pin했다.
+- provider 0, promotion false다. 이후 candidate sandbox는 이 detached commit만 설치한다.
+- 다음은 다른 facts/carriers/state/visual contract와 actual 200% failure를 가진 fresh unseen task를 lock한다.
 
 - 1.9.446은 reflow artifact에 390/1×, 320/1×, 640/actual 2× 조건과 observed document zoom을 결정론적으로 고정했다.
 - final edit 뒤 첫 acceptance shell command가 static closure 전체이며 두 번째는 범위와 무관하게 duplicate라고 명시했다.
