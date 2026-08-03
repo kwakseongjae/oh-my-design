@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.354 museum loan routing holdout lock
+- fresh 6 object/8 crate/4 courier-window task를 provider 전에 잠갔다.
+- baseline 75/85; narrow/200% reflow·atomic lines와 4.06 contrast만 red다.
+- provider 0; 다음은 exact Reliability@3 preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.353 timeout accounting exact pin
 - committed e6e4c615의 runner/export/tests/acceptance를 exact hash로 고정했다.
 - valid timeout의 status/validity/usage/no-replay 의미를 잠갔다.

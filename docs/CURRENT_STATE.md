@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.353 timeout accounting exact pin
+- 갱신: 2026-08-03 · 1.9.354 museum loan routing holdout lock
 
 ## 지금 (현재 위치)
+
+- 1.9.354는 fresh `museum-loan-routing-review-v0.1`을 provider 전에 lock했다.
+- 6 object/8 crate/4 courier window와 object register·courier strip·routing handoff 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·atomic line과 4.06 contrast다. provider 0이다.
+- 다음은 exact control/candidate와 admission 1.9.341·resume 1.9.347·timeout 1.9.353 pin을 새 Reliability@3 matrix에 preregister하는 것이다.
 
 - 1.9.353은 committed `e6e4c615…`의 runner/export/tests/acceptance와 timeout 의미를 exact hash로 pin했다.
 - explicit `count-as-valid-failure`, timed_out/valid/unresolved/null usage/no-replay를 고정했다. provider 0, quality promotion 없음이다.
