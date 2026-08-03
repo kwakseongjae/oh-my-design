@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.440 parent one-line terminal browser exact pin
+- 갱신: 2026-08-04 · 1.9.441 pharmacy controlled dispense task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.441은 fresh `pharmacy-controlled-dispense-review-v0.1`을 provider 전에 lock했다.
+- 6 prescription/8 medicine lot/4 verification window와 register·window strip·dispense decision 세 carrier를 보존한다.
+- untouched baseline 75/85 unresolved이며 narrow overflow·character-range atomic line·4.11 contrast만 의도적으로 red다.
+- provider 0이다. 다음은 exact historical control vs 1.9.439 candidate의 fresh runtime-bound Reliability@3 preregistration이다.
 
 - 1.9.440은 1.9.439 repair를 exact commit `3c00a4c1…`, skill tree `37a1c6e5…`와 helper/test hash로 pin했다.
 - provider 0, promotion false다. 다음은 다른 facts/carriers/state/visual contract의 fresh compound-parent task를 lock한다.

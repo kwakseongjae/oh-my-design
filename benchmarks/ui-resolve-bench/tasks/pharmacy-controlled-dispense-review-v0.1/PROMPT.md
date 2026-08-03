@@ -1,0 +1,5 @@
+Improve the supplied controlled medicine dispense review so pharmacy release coordinators can inspect prescription-to-lot assignments, verification windows, and the dispense decision confidently on desktop and narrow screens.
+
+Preserve all six prescription identifiers, all eight lot identifiers and their exact prescription assignments, all four supplied verification windows, the three review views, the dispensing-note toggle, the dispense-review form, and all stated summary evidence. Do not invent identity verification, pharmacist approval, prescription dispensing, inventory release, verification closure, insurance acceptance, controlled-substance logging, or patient notification. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The prescription register, separate verification-window strip, and separate dispense decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.
