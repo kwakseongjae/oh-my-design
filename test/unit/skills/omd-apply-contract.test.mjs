@@ -123,6 +123,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("3. **REFLOW.**");
     expect(skill).toContain("가장 좁은 조건에서 group의 longest atomic child");
     expect(skill).toContain("parent row를 `full-row`, 다음으로 `stack`");
+    expect(skill).toContain("`atomic_parts`는 separator wrap 허가가 아니다");
+    expect(skill).toContain("parts와 separator 전체를 한 atomic group으로 유지");
     expect(skill).toContain("carrier를 보존한 named `comparison-scroll`을 먼저 쓴다");
     expect(skill).toContain("기존 carrier 자체를 relocate");
     expect(skill).toContain("generated content·`data-*`·aria-label·hook 없는 span 복제");
@@ -154,6 +156,10 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("한 짧은 command cluster의 consolidated static closure");
     expect(skill).toContain("동일 static command를 다시 실행하지 않고 browser proof로 넘어간다");
     expect(skill).toContain("`--doctor`, `--help`, executable/process/port discovery, 직접 Chrome launch");
+    expect(skill).toContain("준비된 mechanism은 `browser-harness <<'PY' … PY`");
+    expect(skill).toContain("`browser-harness --help`, `browser-harness skill`, `command -v`");
+    expect(skill).toContain("revision당 consolidated static closure 1회 + 전체 task browser-harness command 1회");
+    expect(skill).toContain("`sed`/`rg`/`wc`도 제품 diff 뒤 acceptance 사실을 재확인하면 static closure");
     expect(skill).toContain("제품 파일이 바뀌지 않았다면 어느 proof state도 reopen하지 않는다");
     expect(skill).toContain("이 뒤 verification shell/browser command는");
   });

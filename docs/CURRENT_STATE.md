@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.431 rail-signal r1 pair stop
+- 갱신: 2026-08-04 · 1.9.432 atomic browser proof budget repair
 
 ## 지금 (현재 위치)
+
+- 1.9.432는 one-line compound wrapper에서 parts+separator 전체를 atomic으로 유지하고 carrier 폭을 먼저 회수하도록 고쳤다.
+- 첫 browser call을 `browser-harness <<'PY' … PY`로 고정하고 help/skill/command discovery와 post-edit static reread를 proof budget 위반으로 명시했다.
+- focused 10 pass/90 skip, lint/diff green, broad red 2는 known external vendor Git-root뿐이다. provider 0, 다음은 exact pin + fresh unseen transfer task다.
 
 - 1.9.431 r1 candidate도 valid 79/85 unresolved: 650.802s, 2,707,408 tokens였다. control 대비 2.17×/6.73×다.
 - browser 3을 썼지만 recovery 3/duplicate static 12/post-ready 6으로 proof fail했고 compound atomic line도 그대로 red다.

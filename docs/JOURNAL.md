@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.432 atomic browser proof budget repair
+- compound parent atomicity와 first-call browser-harness recipe, single closure budget을 canonical/experimental skill에 반영했다.
+- focused 10 green + lint/diff, provider 0. 다음은 exact pin과 fresh unseen task다.
+
 ## 2026-08-04 (Codex) · 1.9.431 rail-signal r1 pair stop
 - candidate 79/85, 650.802s, 2,707,408 tokens; compound line/proof 모두 red, ratio 2.17×/6.73×다.
 - 3/3 불가능으로 남은 4셀 freeze. TTT 37,317,990+ / unavailable 6, 다음은 provider-free proof recipe/budget repair다.
