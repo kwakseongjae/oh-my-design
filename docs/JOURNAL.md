@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.479 shipped-runner transfer preregistration
+- exact 1.9.474 control vs exact 1.9.476 candidate를 fresh semiconductor task에 Luna/high 2×3으로 고정했다.
+- task exposure/provider 0. 다음은 detached vendors와 six untouched cells preparation이다.
+
 ## 2026-08-04 (Codex) · 1.9.478 semiconductor task lock
 - fresh wafer-disposition task를 provider 전에 잠그고 untouched baseline 75/85를 재현했다.
 - task contract/focused test green, provider 0. 다음은 exact control/candidate preregistration이다.
