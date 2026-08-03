@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.385 cold-chain r1 pair
+- compact는 85/85 resolved, 448,469ms, 876,213 tokens이다.
+- control 대비 20.5% faster/43.9% fewer tokens; Reliability@3 1/3. 다음은 r2 compact이다.
+
 ## 2026-08-03 (Codex) · 1.9.384 cold-chain r1 control
 - control은 valid 85/85, resolved, 564,375ms, 1,561,627 tokens이다.
 - host/proof/evaluator gates 전부 pass; retry 0. 다음은 paired compact 한 셀이다.

@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.385",
+  "experiment_id": "cold-chain-compact-artifact-luna-shared-socket-1.9.382",
+  "status": "valid-pair-checkpoint",
+  "completed_cells": 2,
+  "pair": {
+    "control": {
+      "cell_id": "luna-coldchain-r1-control",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": true,
+      "objective_score": 85,
+      "objective_max": 85,
+      "wall_time_ms": 564375,
+      "tokens": 1561627,
+      "host_policy_gate_pass": true
+    },
+    "candidate": {
+      "cell_id": "luna-coldchain-r1-compact",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": true,
+      "objective_score": 85,
+      "objective_max": 85,
+      "wall_time_ms": 448469,
+      "tokens": 876213,
+      "host_policy_gate_pass": true
+    }
+  },
+  "efficiency": {
+    "candidate_to_control_wall_time_ratio": 0.794629,
+    "candidate_wall_time_reduction": 0.205371,
+    "candidate_to_control_token_ratio": 0.561090,
+    "candidate_token_reduction": 0.438910
+  },
+  "promotion_progress": {
+    "candidate_ui_resolved_required": 3,
+    "candidate_ui_resolved_observed": 1,
+    "candidate_trials_observed": 1,
+    "objective_regressions": 0,
+    "decision": "continue-reliability-at-3"
+  },
+  "artifact_sha256": {
+    "execution_state": "3270af34ba454432a5858672a675c4b6a5d36fac85de6f91b14da14534588603",
+    "candidate_run_result": "f641c3cfa5edc9bd98fdbad112ad8ad1895e2651cd6627eec8288cbcb8a90295",
+    "candidate_score": "6a7ec3d977ed1db56842ebd2008732d1aac782634c060c49595461186975aa04",
+    "candidate_run_record": "af2f939c534d80b73c0123828fe99afdac3fa9d6abc512d8c3ea5587f326700b",
+    "candidate_proof_trace": "23026ff1a6f7638ea0064af50dbd0543b2f24a0a75f85e4f834832e3a7f73336",
+    "candidate_host_policy_state": "78247cc39ab0a27cd680b985bc4f1bc58f5c0e80297e9ae4a6dcc3f557acba72"
+  },
+  "retry": false,
+  "next": "After fixed pacing, run only luna-coldchain-r2-compact; do not replay either r1 cell."
+}
