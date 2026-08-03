@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.428 runtime-bound rail-signal controller preregistration
+- 갱신: 2026-08-04 · 1.9.429 runtime-bound rail-signal preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.429는 `/private/tmp/u19428-vendors` exact detached sources와 `/private/tmp/u19428` 6개 controller cell을 fresh prepare했다.
+- task/prompt/product/runtime/model/effort/timeout/browser/host-absence equality는 6/6이고 sole arm delta는 exact skill source다.
+- Codex CLI 0.144.1을 확인했고 provider 0이다. 다음은 exact `bench19366` doctor/auth preflight 뒤 r1 control 한 셀 no-retry 실행이다.
 
 - 1.9.427은 execution-home identity patch를 exact commit `8b6c3d81…`과 5개 artifact hash로 pin했다.
 - 1.9.428은 exact Codex CLI 0.144.1 + post-run isolated-home profile 관측으로 동일 rail-signal 2×3을 fresh preregister했다.

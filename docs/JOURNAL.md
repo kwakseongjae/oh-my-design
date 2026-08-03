@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.429 runtime-bound rail-signal preparation
+- u19428 exact vendors/6 cells의 task/product/runtime/browser/host-absence equality 6/6을 확인했다.
+- CLI 0.144.1, sole skill delta, provider 0. 다음은 exact browser/auth preflight 후 r1 control이다.
+
 ## 2026-08-04 (Codex) · 1.9.427–1.9.428 runtime exact pin + preregistration
 - execution-home identity를 `8b6c3d81…`로 pin하고 CLI 0.144.1-bound rail-signal 2×3을 fresh 등록했다.
 - attempt 22, TTT 34,208,487+ / unavailable 6, exposure 2/0, provider 0. 다음은 fresh preparation이다.
