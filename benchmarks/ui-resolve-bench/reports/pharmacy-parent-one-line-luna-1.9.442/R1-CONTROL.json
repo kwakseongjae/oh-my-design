@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.444",
+  "cell_id": "luna-pharmacy-r1-control",
+  "status": "complete",
+  "validity": "valid-system-failure",
+  "retry": false,
+  "objective": {
+    "score": 81,
+    "max": 85,
+    "ui_resolved": false
+  },
+  "process": {
+    "wall_time_ms": 522453,
+    "timed_out": false
+  },
+  "provider_usage": {
+    "input_tokens": 1011368,
+    "cached_input_tokens": 941056,
+    "output_tokens": 27379,
+    "reasoning_output_tokens": 10667,
+    "total_observed_tokens": 1038747
+  },
+  "runtime_identity": {
+    "requested_model": "gpt-5.6-luna",
+    "effort": "high",
+    "codex_cli_version": "0.144.1",
+    "model_profile_sha256": "0efd579e76b5f1ccc5b68f61fdf079c7df0adfe03281f65ec6bc07383e8c335f",
+    "model_tool_mode": "code_mode_only",
+    "evidence_scope": "execution-home-post-run"
+  },
+  "objective_failure": {
+    "gate": "responsive-and-accessibility",
+    "viewports": [
+      "narrow-320"
+    ],
+    "reasons": [
+      "clipped-control",
+      "keyboard-traversal-and-focus-visible"
+    ]
+  },
+  "proof_trace": {
+    "analyzable": true,
+    "browser_mechanism_count": 1,
+    "browser_recovery_count": 0,
+    "duplicate_static_closure_count": 2,
+    "verification_after_ready_count": 1,
+    "compliance_pass": false
+  },
+  "proof_gate_reasons": [
+    "duplicate-static-limit",
+    "verification-after-ready-limit"
+  ],
+  "artifact_hashes": {
+    "run_result_sha256": "8c04ba67cf4eaab2abba67e9d4b94e79511918883826622667040cf34ffdd435",
+    "score_sha256": "e7a5eb10371c6d49941291ae4d67bd6a5d33ab98700259b851503d437d569bcc",
+    "run_record_sha256": "28e18319ed01a3a8b7bd29000aeb0f09a7c8a5bf6597fe3baa01f91479e72e20",
+    "proof_trace_sha256": "657742332a3a35f1d6f18def4a0780e843dbbf7577919305e7e2bc31ad059ba0"
+  },
+  "tokens_to_target_observed_minimum_after_cell": 40549861,
+  "prior_usage_unavailable_cells": 6,
+  "next": "Run luna-pharmacy-r1-candidate after fixed pacing and fresh exact preflight."
+}

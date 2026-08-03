@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.443 pharmacy parent-line terminal-browser preparation
+- 갱신: 2026-08-04 · 1.9.444 pharmacy r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.444 r1 control은 valid system failure 81/85, 522.453s, 1,038,747 tokens다.
+- compound line은 닫았지만 320px clipped control과 keyboard traversal/focus-visible이 red라 UI unresolved다.
+- browser 1/recovery 0이나 duplicate static 2/post-ready 1로 proof fail이다. TTT 40,549,861+ / unavailable 6이다.
+- 다음은 fixed 120s pacing 뒤 r1 candidate 한 셀을 같은 Luna/high identity로 no-retry 실행한다.
 
 - 1.9.443은 `/private/tmp/u19442-vendors`의 exact detached control/candidate와 `/private/tmp/u19442` 6개 untouched cell을 준비했다.
 - task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.

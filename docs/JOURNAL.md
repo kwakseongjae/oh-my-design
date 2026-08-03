@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.444 pharmacy r1 control
+- 81/85, 522.453s, 1,038,747 tokens; 320px control/keyboard와 proof가 red다.
+- no retry. 다음은 paced r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.443 pharmacy parent-line terminal-browser preparation
 - exact detached vendors와 untouched 6셀을 준비하고 equality 6/6을 확인했다.
 - provider 0. 다음은 r1 control no-retry 실행이다.
