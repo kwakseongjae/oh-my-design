@@ -47,6 +47,8 @@ const REFLOW_INVARIANTS = [
   "all_registered_carriers_closed",
   "no_text_hack",
 ];
+const CHARACTER_RANGE_ORACLE = "character-range-line-tops";
+const COMPOUND_ATOMIC_SEPARATOR = /\s(?:\+|→|←|↔)\s/u;
 
 function outcomeSet(value) {
   return ACCOUNTED_OUTCOMES.has(value?.outcome_390)
@@ -56,6 +58,18 @@ function outcomeSet(value) {
 
 function positiveInteger(value) {
   return Number.isInteger(value) && value > 0;
+}
+
+function validAtomicParts(row) {
+  if (row.atomic_parts == null) return !COMPOUND_ATOMIC_SEPARATOR.test(row.longest_value);
+  if (!stringArray(row.atomic_parts) || row.atomic_parts.length < 2) return false;
+  let cursor = -1;
+  return row.atomic_parts.every((part) => {
+    const index = row.longest_value.indexOf(part, cursor + 1);
+    if (index < 0) return false;
+    cursor = index;
+    return true;
+  });
 }
 
 function inventoryDigestV1(artifact) {
@@ -84,6 +98,7 @@ function inventoryDigestV2(artifact) {
       role: row.role,
       expected_count: row.expected_count,
       longest_value: row.longest_value,
+      atomic_parts: row.atomic_parts ?? null,
     })),
   })).digest("hex");
 }
@@ -170,6 +185,7 @@ function normalizeV2Inventory(artifact) {
     || !positiveInteger(row.expected_count)
     || typeof row?.longest_value !== "string"
     || !row.longest_value
+    || !validAtomicParts(row)
   ))) {
     return null;
   }
@@ -238,6 +254,14 @@ export function validateReflowClosureArtifact(artifact, mode = "inventory") {
     && unresolvedAttempt?.outcome === "infrastructure-error"
     && typeof unresolvedAttempt?.mechanism === "string"
     && unresolvedAttempt.mechanism.length > 0
+    && unresolvedAttempt?.oracle === CHARACTER_RANGE_ORACLE
+  );
+  const measuredAttemptValid = (
+    unresolvedAttempt?.attempts === 1
+    && unresolvedAttempt?.outcome === "measured"
+    && typeof unresolvedAttempt?.mechanism === "string"
+    && unresolvedAttempt.mechanism.length > 0
+    && unresolvedAttempt?.oracle === CHARACTER_RANGE_ORACLE
   );
   if (
     artifact.closure?.state !== expectedClosureState
@@ -257,6 +281,7 @@ export function validateReflowClosureArtifact(artifact, mode = "inventory") {
     || (schema === "0.2" && artifact.known_failure_closure?.state !== (qualityPass ? "closed" : "unresolved"))
     || (schema === "0.2" && artifact.known_failure_closure?.unresolved !== unresolvedCarriers + unresolvedRows)
     || (schema === "0.2" && !qualityPass && !unresolvedAttemptValid)
+    || (schema === "0.2" && qualityPass && !measuredAttemptValid)
     || (unresolvedCarriers === 0 && unresolvedRows === 0 && !invariantsPass)
   ) {
     return { pass: false, reason: "reflow-closure-required" };

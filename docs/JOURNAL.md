@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.409 compound-atomic range-oracle repair
+- compound target의 ordered atomic parts와 character-range line oracle을 helper·host·skill에 결합했다.
+- focused 56/56, broad 367 pass/1 skip, lint pass, provider 0. 다음은 exact pin과 새 unseen task다.
+
 ## 2026-08-03 (Codex) · 1.9.408 sterile-tray r1 rejection and early stop
 - candidate는 421.239s/834,250 tokens에 browser 1/delivery-ready를 닫았지만 compound target line-wrap으로 79/85에 머물렀다.
 - Reliability 0/1이라 남은 4 calls를 skip/freeze했다. 다음은 atomic child 분리와 character-range oracle repair다.

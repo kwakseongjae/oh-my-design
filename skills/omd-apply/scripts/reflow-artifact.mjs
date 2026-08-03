@@ -11,6 +11,8 @@ const INVARIANTS = [
   "all_registered_carriers_closed",
   "no_text_hack",
 ];
+const CHARACTER_RANGE_ORACLE = "character-range-line-tops";
+const COMPOUND_ATOMIC_SEPARATOR = /\s(?:\+|→|←|↔)\s/u;
 
 function fail(message) {
   throw new Error(`reflow artifact: ${message}`);
@@ -31,6 +33,23 @@ function positiveInteger(value, label) {
   return value;
 }
 
+function validateAtomicParts(row) {
+  const compound = COMPOUND_ATOMIC_SEPARATOR.test(row.longest_value);
+  if (row.atomic_parts == null) {
+    if (compound) fail(`row group ${row.id} atomic_parts are required for a compound atomic value`);
+    return null;
+  }
+  const parts = uniqueStrings(row.atomic_parts, `row group ${row.id} atomic_parts`);
+  if (parts.length < 2) fail(`row group ${row.id} atomic_parts must contain at least two values`);
+  let cursor = -1;
+  for (const part of parts) {
+    const index = row.longest_value.indexOf(part, cursor + 1);
+    if (index < 0) fail(`row group ${row.id} atomic_parts must appear in longest_value order`);
+    cursor = index;
+  }
+  return parts;
+}
+
 export function inventoryDigest(artifact) {
   return createHash("sha256").update(JSON.stringify({
     carrier_ids: artifact.inventory.carrier_ids,
@@ -46,6 +65,7 @@ export function inventoryDigest(artifact) {
       role: row.role,
       expected_count: row.expected_count,
       longest_value: row.longest_value,
+      atomic_parts: row.atomic_parts ?? null,
     })),
   })).digest("hex");
 }
@@ -73,6 +93,8 @@ export function lockArtifact(input) {
     if (typeof row.role !== "string" || !row.role) fail(`row group ${row.id} role is required`);
     positiveInteger(row.expected_count, `row group ${row.id} expected_count`);
     if (typeof row.longest_value !== "string" || !row.longest_value) fail(`row group ${row.id} longest_value is required`);
+    const atomicParts = validateAtomicParts(row);
+    if (atomicParts) row.atomic_parts = atomicParts;
     delete row.final;
   }
   artifact.inventory = {
@@ -84,7 +106,12 @@ export function lockArtifact(input) {
   artifact.inventory.sha256 = inventoryDigest(artifact);
   artifact.closure = { state: "open" };
   artifact.known_failure_closure = { state: "open", unresolved: null };
-  artifact.browser_attempt = { attempts: 0, outcome: "not-run", mechanism: null };
+  artifact.browser_attempt = {
+    attempts: 0,
+    outcome: "not-run",
+    mechanism: null,
+    oracle: CHARACTER_RANGE_ORACLE,
+  };
   delete artifact.closure_manifest;
   return artifact;
 }
@@ -158,11 +185,27 @@ export function finalizeArtifact(input, { unresolved = false, hostStateDir = nul
       || attempt?.outcome !== "infrastructure-error"
       || typeof attempt?.mechanism !== "string"
       || !attempt.mechanism
+      || attempt?.oracle !== CHARACTER_RANGE_ORACLE
     ) {
       fail("unresolved accounting requires one recorded browser infrastructure attempt");
     }
     if (hostStateDir && hostObservedBrowserAttempt(hostStateDir) !== true) {
       fail("unresolved accounting requires one host-observed browser attempt");
+    }
+  }
+  if (!unresolved) {
+    const attempt = artifact.browser_attempt;
+    if (
+      attempt?.attempts !== 1
+      || attempt?.outcome !== "measured"
+      || typeof attempt?.mechanism !== "string"
+      || !attempt.mechanism
+      || attempt?.oracle !== CHARACTER_RANGE_ORACLE
+    ) {
+      fail("resolved closure requires one measured browser attempt using the character-range line oracle");
+    }
+    if (hostStateDir && hostObservedBrowserAttempt(hostStateDir) !== true) {
+      fail("resolved closure requires one host-observed browser attempt");
     }
   }
   const qualityPass = unresolvedCarrierCount === 0 && unresolvedRowCount === 0;

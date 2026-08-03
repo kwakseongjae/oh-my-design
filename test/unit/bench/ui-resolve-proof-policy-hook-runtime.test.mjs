@@ -183,8 +183,10 @@ function groupedReflowArtifact({ closed = false, unresolved = false } = {}) {
       no_text_hack: true,
     },
     browser_attempt: unresolved
-      ? { attempts: 1, outcome: "infrastructure-error", mechanism: "browser-harness" }
-      : { attempts: 0, outcome: "not-run", mechanism: null },
+      ? { attempts: 1, outcome: "infrastructure-error", mechanism: "browser-harness", oracle: "character-range-line-tops" }
+      : closed
+        ? { attempts: 1, outcome: "measured", mechanism: "Playwright character ranges", oracle: "character-range-line-tops" }
+        : { attempts: 0, outcome: "not-run", mechanism: null, oracle: "character-range-line-tops" },
     known_failure_closure: closed
       ? { state: unresolved ? "unresolved" : "closed", unresolved: unresolved ? 11 : 0 }
       : { state: "open", unresolved: null },
@@ -193,7 +195,14 @@ function groupedReflowArtifact({ closed = false, unresolved = false } = {}) {
   inventory.sha256 = createHash("sha256").update(JSON.stringify({
     carrier_ids: inventory.carrier_ids,
     carrier_groups: artifact.carriers.map(({ id, selector, expected_count, binds_row_groups }) => ({ id, selector, expected_count, binds_row_groups })),
-    row_groups: artifact.row_groups.map(({ id, selector, role, expected_count, longest_value }) => ({ id, selector, role, expected_count, longest_value })),
+    row_groups: artifact.row_groups.map(({ id, selector, role, expected_count, longest_value, atomic_parts }) => ({
+      id,
+      selector,
+      role,
+      expected_count,
+      longest_value,
+      atomic_parts: atomic_parts ?? null,
+    })),
   })).digest("hex");
   artifact.closure_manifest = {
     registered_carrier_groups: 2,
@@ -548,6 +557,17 @@ describe("proof policy executable hook", () => {
       closure_outcome: "unresolved",
       carrier_count: 2,
       row_count: 9,
+    });
+    const resolved = groupedReflowArtifact({ closed: true });
+    expect(validateReflowClosureArtifact(resolved, "closure")).toMatchObject({
+      pass: true,
+      closure_outcome: "closed",
+    });
+    resolved.browser_attempt.oracle = "element-rectangles";
+    resolved.closure_manifest.browser_attempt = resolved.browser_attempt;
+    expect(validateReflowClosureArtifact(resolved, "closure")).toEqual({
+      pass: false,
+      reason: "reflow-closure-required",
     });
   });
 

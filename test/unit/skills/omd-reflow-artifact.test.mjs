@@ -63,6 +63,7 @@ describe("compact reflow artifact helper", () => {
       attempts: 1,
       outcome: "infrastructure-error",
       mechanism: "browser-harness named connection",
+      oracle: "character-range-line-tops",
     };
     const result = finalizeArtifact(locked, { unresolved: true });
     expect(result.closure).toEqual({ state: "unresolved" });
@@ -94,6 +95,7 @@ describe("compact reflow artifact helper", () => {
       attempts: 1,
       outcome: "infrastructure-error",
       mechanism: "osascript Google Chrome same-route navigation",
+      oracle: "character-range-line-tops",
     };
     const unobserved = hostState(0, "open");
     expect(hostObservedBrowserAttempt(unobserved)).toBe(false);
@@ -116,6 +118,16 @@ describe("compact reflow artifact helper", () => {
     expect(() => finalizeArtifact(locked, { unresolved: true })).toThrow(/immutable inventory hash changed/);
   });
 
+  it("requires ordered atomic parts for a compound protected value", () => {
+    const missing = draft();
+    missing.row_groups[0].longest_value = "ULD-AKE-73102 + ULD-AKE-73103";
+    expect(() => lockArtifact(missing)).toThrow(/atomic_parts are required/);
+
+    missing.row_groups[0].atomic_parts = ["ULD-AKE-73102", "ULD-AKE-73103"];
+    expect(lockArtifact(missing).row_groups[0].atomic_parts)
+      .toEqual(["ULD-AKE-73102", "ULD-AKE-73103"]);
+  });
+
   it("rejects a resolved closure when a relationship invariant is false", () => {
     const locked = lockArtifact(draft());
     locked.invariants.same_decision_boundary = false;
@@ -125,6 +137,12 @@ describe("compact reflow artifact helper", () => {
     for (const row of locked.row_groups) {
       row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     }
+    locked.browser_attempt = {
+      attempts: 1,
+      outcome: "measured",
+      mechanism: "Playwright same-route character range measurement",
+      oracle: "character-range-line-tops",
+    };
     expect(() => finalizeArtifact(locked)).toThrow(/every invariant to pass/);
   });
 
@@ -136,7 +154,24 @@ describe("compact reflow artifact helper", () => {
     for (const row of locked.row_groups) {
       row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     }
+    locked.browser_attempt = {
+      attempts: 1,
+      outcome: "measured",
+      mechanism: "Playwright same-route character range measurement",
+      oracle: "character-range-line-tops",
+    };
     locked.row_groups[1].final.outcome_320 = "unresolved";
     expect(() => finalizeArtifact(locked)).toThrow(/zero unresolved carriers and rows/);
+  });
+
+  it("rejects resolved closure without a measured character-range browser attempt", () => {
+    const locked = lockArtifact(draft());
+    for (const carrier of locked.carriers) {
+      carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    }
+    for (const row of locked.row_groups) {
+      row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    }
+    expect(() => finalizeArtifact(locked)).toThrow(/character-range line oracle/);
   });
 });

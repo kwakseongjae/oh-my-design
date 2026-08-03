@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.408 sterile-tray r1 rejection and early stop
+- 갱신: 2026-08-03 · 1.9.409 compound-atomic range-oracle repair
 
 ## 지금 (현재 위치)
+
+- 1.9.409는 compound protected value에 ordered `atomic_parts`를 강제하고, wrapper/accessible text를 보존한 token-child reflow 규칙을 추가했다.
+- resolved finalize는 host-observed measured browser attempt와 `character-range-line-tops` oracle을 필수로 하며 element rectangle 오판을 허용하지 않는다.
+- focused 56/56와 lint/diff가 통과했다. broad는 367 pass/1 skip이며 외부 vendor Git-root 2건과 unrelated fake-timeout attribution 기대값 1건만 실패했다.
+- provider 호출은 0이다. 다음은 exact pin 후 새 unseen compound task/root를 lock하는 것이다.
 
 - 1.9.408에서 r1 candidate는 421.239s/834,250 tokens, 79/85 unresolved로 종료됐다. control 대비 53% 빠르고 browser 1/delivery-ready/host gate pass를 달성했지만 객관 점수 우위는 없었다.
 - 남은 red는 `TRAY-VASC-2417 + IND-CHEM-77241` compound target이 390/320/200%에서 두 character-range line으로 감기는 단일 원인이다.
@@ -2068,9 +2073,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. protected compound target wrapper를 보존하면서 semantic atomic child를 분리하는 규칙을 skill에 추가한다.
-2. browser proof가 element rect가 아니라 per-character line tops로 one-line 계약을 측정하게 한다.
-3. focused/broad tests 후 exact pin하고 새 unseen task/root로 3/3을 다시 검증한다.
+1. 1.9.409 변경을 커밋하고 exact artifact hashes/source commit을 별도 pin한다.
+2. 새 unseen compound-atomic repair task를 provider 전에 만들고 baseline을 lock한다.
+3. 새 root의 exact Luna/high 2×3을 preregister하고 3/3 reliability를 다시 검증한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

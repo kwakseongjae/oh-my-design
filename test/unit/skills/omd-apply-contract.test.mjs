@@ -115,6 +115,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("decision: full-row|stack|comparison-scroll|keep|unresolved");
     expect(skill).toContain("1. **INVENTORY.**");
     expect(skill).toContain("render function/template/state map의 가장 긴 실제 값");
+    expect(skill).toContain("ordered `atomic_parts`");
+    expect(skill).toContain("character-range-line-tops");
+    expect(skill).toContain("`element.getClientRects().length`는 line-count proof로 사용하지 않는다");
     expect(skill).toContain("2. **FIT.**");
     expect(skill).toContain("source-only이면 `unresolved`");
     expect(skill).toContain("3. **REFLOW.**");
