@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.445 pharmacy r1 pair freeze
+- candidate 83/85, 400.660s, 425,052 tokens; 200% zoom 미적용과 static closure 1회 초과다.
+- 3/3 불가능으로 4셀 skip. 다음은 provider-free zoom/static repair다.
+
 ## 2026-08-04 (Codex) · 1.9.444 pharmacy r1 control
 - 81/85, 522.453s, 1,038,747 tokens; 320px control/keyboard와 proof가 red다.
 - no retry. 다음은 paced r1 candidate다.

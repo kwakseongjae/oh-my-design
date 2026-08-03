@@ -4,9 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.444 pharmacy r1 control
+- 갱신: 2026-08-04 · 1.9.445 pharmacy r1 pair freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.445 r1 candidate는 valid 83/85, 400.660s, 425,052 tokens다. control 대비 0.7669×/0.4092×다.
+- 접근성, browser 1/recovery 0/post-ready 0은 닫았지만 200%에서 page overflow와 `Pharmacist review open` 2-line이 red다.
+- browser proof가 640px만 쓰고 실제 zoom 2를 적용하지 않았으며 pre-browser static closure도 2회라 proof fail이다.
+- candidate 3/3 최대치가 2/3이라 남은 4셀을 skip/freeze했다. TTT 40,974,913+ / unavailable 6이다.
+- 다음은 provider-free actual zoom oracle + exactly-one pre-browser static closure repair다.
 
 - 1.9.444 r1 control은 valid system failure 81/85, 522.453s, 1,038,747 tokens다.
 - compound line은 닫았지만 320px clipped control과 keyboard traversal/focus-visible이 red라 UI unresolved다.
