@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.387 cold-chain promotion rejection
+- 갱신: 2026-08-03 · 1.9.388 known-failure closure repair
 
 ## 지금 (현재 위치)
+
+- 1.9.388은 supplied baseline/pre-edit measured failure를 conjunctive `known_failure_ledger`로 잠그고 measured-but-unchanged를 delivery blocker로 만들었다.
+- contract 9/9, experimental delta 1/1, lint/diff green; broad bench는 96 pass + 기존 external-vendor Git-root 2 fail이다. provider 0; 다음은 exact pin/fresh unseen replacement이다.
 
 - 1.9.387 r2 control도 valid 81/85 unresolved이지만 responsive fail, candidate는 a11y fail로 서로 다른 경로였다.
 - candidate Reliability@3은 1/2로 남은 1 trial을 다 통과해도 2/3이므로 수학적으로 불가능하다. u19382를 frozen, r3 provider 0으로 early-stop한다.

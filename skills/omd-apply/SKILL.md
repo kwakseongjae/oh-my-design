@@ -175,10 +175,13 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 
 ```yaml
 pre_edit_release_invariant:
+  known_failure_ledger: "every supplied baseline failure and every pre-edit measured failing critical gate → selector/condition + evidence + required correction or fail-closed outcome"
   foreground_change: "selector + surface + exact before ratio → existing verified text-role/ink token + exact after ratio or fail-closed replacement"
   comparison_carrier_set: "every protected or named relationship scope containing registered atomic text → named containment or exact relocation + concrete 390px + 320px + actual 200% zoom/reflow outcomes per carrier"
   browser_attempt: "one prepared command that navigates the same consumer route"
 ```
+
+`known_failure_ledger AND foreground_change AND comparison_carrier_set`이 한 transaction에서 모두 닫혀야 한다. 사용자 요청·task packet·baseline 증거가 실패로 명시한 gate와 pre-edit 계산에서 실제 실패한 gate는 headline 수정 영역이 아니어도 모두 ledger에 올린다. 값을 계산하거나 실패라고 언급한 뒤 제품 diff에서 교정하지 않으면 `measured-but-unchanged`로 transaction은 미완료다. known failure가 하나라도 `open|unresolved|measured-but-unchanged`면 static closure·browser proof·delivery로 넘어가지 않는다.
 
 이것은 계획 메모가 아니라 conjunctive edit 범위다. `foreground_change AND comparison_carrier_set`이 한 transaction에서 모두 구체화되어야 한다. carrier set은 protected ledger와 reflow row에서 `target|identifier|evidence|state|control-label`을 담는 모든 보호된 또는 이름 붙은 relationship scope를 포함한다. 인접한 scope를 대표 carrier 하나로 합치거나 주요 다이어그램만 기록하지 않는다. 첫 diff와 consolidated static closure에는 foreground의 exact numeric result(또는 verified text-role fail-close)와 **carrier별** 390px·320px·실제 200% 결과가 있어야 한다. 한 breakpoint, 최대 너비, `width:100%`, page overflow 0, 또는 미계측 placeholder는 carrier 결과가 아니다. carrier 하나나 viewport 결과 하나라도 빠지면 static closure로 넘어가지 않고 transaction을 미완료로 둔다. static grep은 결과가 아니며 browser session 생성은 결과가 아니다. static closure 뒤 `browser_attempt`가 실제 route를 열어야 하며, infrastructure가 막힌 실제 navigate 시도만 `unresolved`로 닫을 수 있다.
 
@@ -241,6 +244,7 @@ pre_edit_release_invariant:
      revision: 0
      inventory: open|closed
      product_edit: pending|changed|stable
+     known_failure_closure: { state: open|closed, unresolved: 0 }
      static_closure: { state: open|closed, revision: null, runs: 0 }
      browser_proof: { state: open|closed|unresolved, revision: null, attempts: 0, mechanism: null }
      delivery: blocked|ready
@@ -256,6 +260,7 @@ pre_edit_release_invariant:
 4. **delivery clock을 먼저 잠근다.** 런타임이나 작업 packet에 timeout이 있으면 첫 제품 편집을 총 예산의 50% 전, 선택 검증 종료를 80% 전, 최종 전달 시작을 90% 전으로 둔다. 필수 specialist가 있으면 마지막 결과가 도착한 뒤 `min(90초, 총 예산의 10%)` 안에 `first_safe_edit` 하나를 먼저 적용한다. 그 사이 사용자-facing ledger recap, 자문 요약, 계획 설명, 전체 파일 재독해, 2차 분석 pass를 출력하지 않는다. 기존 snippet을 안전하게 바꿀 수 있으면 첫 transaction은 targeted `Edit`이며 whole-file `Write`가 아니다. 첫 transaction은 원 요청의 acceptance에 기여하고 protected ledger를 보존하는 실제 제품 변경이어야 한다. 공백·주석·timestamp·동일값 치환 같은 no-op으로 clock만 찍지 않는다. specialist의 `first_safe_edit`가 ledger를 어기면 폐기하고, 이미 읽은 DESIGN.md와 원 요청이 직접 허용하는 가장 작은 계약-중립 변경을 같은 방식으로 적용한다. timeout을 알 수 없어도 ledger와 필수 자문이 준비된 뒤 optional 탐색을 한 번 더 돌리지 않는다. deadline을 놓치면 기능을 더 추가하지 않고 가장 작은 완성 diff와 정직한 `unresolved` 전달을 우선한다.
 5. **장식을 위해 제품 hook을 복제하지 않는다.** 가격 비교, 요약 카드, 모바일 사본처럼 같은 값을 다시 보여줘야 해도 기존 behavior hook·form field·live region·ID를 복제하지 않는다. 새 hook이나 상태를 추가하려면 요청 또는 제품 계약의 근거가 있어야 한다.
 6. **최종 acceptance packet을 한 번 실행한다.** 같은 route에서 다음을 묶어 확인하고, 고칠 수 없는 항목은 `unresolved`로 전달한다.
+   - known failure ledger의 모든 supplied/measured failure가 실제 diff의 교정 또는 검증된 fail-close에 매핑되어 `measured_but_unchanged: 0`, `unresolved_known_failures: 0`
    - protected ledger의 identity·개수·before/action/after가 변경 전 계약과 일치하고, baseline에서 보이던 dynamic status/live-region selector 자체의 initial rendered geometry가 보존되어 `protected_selector_visibility_loss: 0`
    - 일반 텍스트 contrast 4.5:1, 큰 텍스트와 비텍스트 경계·focus 3:1. accent token이라는 이유만으로 작은 텍스트 색으로 쓰지 않음
    - foreground closure가 이번 diff의 모든 changed foreground 선언을 분류했고 `unresolved normal-text accent pair`가 0

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.388 known-failure closure
+- supplied/measured failure를 conjunctive ledger로 잠그고 measured-but-unchanged delivery를 차단했다.
+- focused 10/10, lint/diff green, provider 0. 다음은 exact pin/fresh unseen replacement이다.
+
 ## 2026-08-03 (Codex) · 1.9.387 cold-chain rejection
 - r2 control도 81/85 unresolved; candidate 1/2 resolved로 Reliability@3가 수학적으로 불가능해졌다.
 - u19382/r3를 frozen. 다음은 provider-free required-closure 수리와 fresh unseen replacement이다.

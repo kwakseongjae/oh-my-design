@@ -50,6 +50,12 @@ describe("omd:apply delivery contract", () => {
     );
     expect(skill).toContain("첫 edit transaction의 완료 조건");
     expect(skill).toContain("pre_edit_release_invariant:");
+    expect(skill).toContain("known_failure_ledger:");
+    expect(skill).toContain("every supplied baseline failure and every pre-edit measured failing critical gate");
+    expect(skill).toContain("known_failure_ledger AND foreground_change AND comparison_carrier_set");
+    expect(skill).toContain("measured-but-unchanged");
+    expect(skill).toContain("measured_but_unchanged: 0");
+    expect(skill).toContain("unresolved_known_failures: 0");
     expect(skill).toContain("foreground_change:");
     expect(skill).toContain("comparison_carrier_set:");
     expect(skill).toContain("every protected or named relationship scope containing registered atomic text");
@@ -134,6 +140,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("proof_execution_latch:");
     expect(skill).toContain("inventory: open|closed");
     expect(skill).toContain("product_edit: pending|changed|stable");
+    expect(skill).toContain("known_failure_closure: { state: open|closed, unresolved: 0 }");
     expect(skill).toContain("static_closure: { state: open|closed, revision: null, runs: 0 }");
     expect(skill).toContain("browser_proof: { state: open|closed|unresolved, revision: null, attempts: 0, mechanism: null }");
     expect(skill).toContain("delivery: blocked|ready");
