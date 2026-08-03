@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.434 maritime container seal transfer task lock
+- 갱신: 2026-08-04 · 1.9.435 maritime atomic browser-proof preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.435는 exact 1.9.409 control `1480d7cc…` vs 1.9.432 candidate `f346610a…`를 fresh maritime task에 Luna/high 2×3으로 사전등록했다.
+- Codex CLI 0.144.1, 900s, concurrency 1, 120s pacing, no retry, runtime-bound model identity와 one-browser/single-closure proof gate를 고정했다.
+- attempt 23, prior TTT 37,317,990+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 exact detached vendors와 `/private/tmp/u19435` 6개 clean cell을 prepare하고 equality를 증명한다.
 
 - 1.9.434는 fresh `maritime-container-seal-release-v0.1`을 provider 전에 lock했다.
 - 6 container/8 seal/4 inspection window와 container register·inspection strip·seal-release decision 세 carrier를 보존한다.

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.435 maritime atomic browser-proof preregistration
+- exact 1.9.409 vs 1.9.432, Luna/high 2×3과 one-browser/single-closure gate를 고정했다.
+- task exposure 0/0, provider 0. 다음은 fresh exact preparation/equality다.
+
 ## 2026-08-04 (Codex) · 1.9.434 maritime container seal task lock
 - fresh 6-container/8-seal/4-window transfer task를 unseen 상태로 고정했다.
 - untouched 75/85 unresolved, provider 0. 다음은 runtime-bound exact 2×3 preregistration이다.
