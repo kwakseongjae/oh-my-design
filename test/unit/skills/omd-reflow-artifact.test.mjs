@@ -33,8 +33,8 @@ function draft() {
       { id: "handoff", selector: "[data-handoff]", expected_count: 1, binds_row_groups: ["status"] },
     ],
     row_groups: [
-      { id: "identifier", selector: "[data-id]", role: "identifier", expected_count: 8, longest_value: "ULD-AKE-73102" },
-      { id: "status", selector: "[role=status]", role: "state", expected_count: 1, longest_value: "Ground review open" },
+      { id: "identifier", selector: "[data-id]", role: "identifier", expected_count: 8, longest_value: "ULD-AKE-73102", line_contract: "single-token" },
+      { id: "status", selector: "[role=status]", role: "state", expected_count: 1, longest_value: "Ground review open", line_contract: "single-token" },
     ],
     invariants: {
       same_row_count: true,
@@ -124,6 +124,8 @@ describe("compact reflow artifact helper", () => {
     expect(() => lockArtifact(missing)).toThrow(/atomic_parts are required/);
 
     missing.row_groups[0].atomic_parts = ["ULD-AKE-73102", "ULD-AKE-73103"];
+    expect(() => lockArtifact(missing)).toThrow(/line_contract parent-one-line/);
+    missing.row_groups[0].line_contract = "parent-one-line";
     expect(lockArtifact(missing).row_groups[0].atomic_parts)
       .toEqual(["ULD-AKE-73102", "ULD-AKE-73103"]);
   });

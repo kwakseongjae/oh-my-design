@@ -116,6 +116,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("1. **INVENTORY.**");
     expect(skill).toContain("render function/template/state map의 가장 긴 실제 값");
     expect(skill).toContain("ordered `atomic_parts`");
+    expect(skill).toContain("`line_contract: parent-one-line`");
     expect(skill).toContain("character-range-line-tops");
     expect(skill).toContain("`element.getClientRects().length`는 line-count proof로 사용하지 않는다");
     expect(skill).toContain("2. **FIT.**");
@@ -125,6 +126,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("parent row를 `full-row`, 다음으로 `stack`");
     expect(skill).toContain("`atomic_parts`는 separator wrap 허가가 아니다");
     expect(skill).toContain("parts와 separator 전체를 한 atomic group으로 유지");
+    expect(skill).toContain("parent selector 전체의 non-space character top 고유값이 정확히 1");
     expect(skill).toContain("carrier를 보존한 named `comparison-scroll`을 먼저 쓴다");
     expect(skill).toContain("기존 carrier 자체를 relocate");
     expect(skill).toContain("generated content·`data-*`·aria-label·hook 없는 span 복제");
@@ -159,6 +161,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("준비된 mechanism은 `browser-harness <<'PY' … PY`");
     expect(skill).toContain("`browser-harness --help`, `browser-harness skill`, `command -v`");
     expect(skill).toContain("revision당 consolidated static closure 1회 + 전체 task browser-harness command 1회");
+    expect(skill).toContain("`OMD_DELIVERY_READY` 또는 `OMD_DELIVERY_UNRESOLVED`");
+    expect(skill).toContain("browser command가 반환된 뒤 `rg`/`sed`/`cat`/helper를 실행하지 않는다");
     expect(skill).toContain("`sed`/`rg`/`wc`도 제품 diff 뒤 acceptance 사실을 재확인하면 static closure");
     expect(skill).toContain("제품 파일이 바뀌지 않았다면 어느 proof state도 reopen하지 않는다");
     expect(skill).toContain("이 뒤 verification shell/browser command는");

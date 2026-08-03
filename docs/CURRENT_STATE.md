@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.438 maritime r1 pair stop
+- 갱신: 2026-08-04 · 1.9.439 parent one-line terminal browser closure repair
 
 ## 지금 (현재 위치)
+
+- 1.9.439는 앞단의 contradictory separator-wrap 허용을 제거하고 compound parent 전체 one-line을 명시적 `line_contract`로 고정했다.
+- helper는 compound=`parent-one-line`, simple=`single-token`을 lock/hash하며 누락·불일치를 거부한다.
+- browser-harness 한 command 내부에서 measure→artifact write→finalize→terminal marker까지 끝내고 이후 artifact read/helper 실행을 금지했다.
+- focused 72/72 + TypeScript/diff green, provider 0. 다음은 exact pin 뒤 fresh unseen task lock이다.
 
 - 1.9.438 r1 candidate도 valid 81/85 unresolved: 474.434s, 1,151,694 tokens다.
 - browser recovery는 0으로 개선했지만 compound parent를 child stack으로 바꿔 320/200% line red, post-ready static 2로 proof fail이다.

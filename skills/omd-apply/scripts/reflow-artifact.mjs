@@ -13,6 +13,7 @@ const INVARIANTS = [
 ];
 const CHARACTER_RANGE_ORACLE = "character-range-line-tops";
 const COMPOUND_ATOMIC_SEPARATOR = /\s(?:\+|→|←|↔)\s/u;
+const LINE_CONTRACTS = new Set(["single-token", "parent-one-line"]);
 
 function fail(message) {
   throw new Error(`reflow artifact: ${message}`);
@@ -35,9 +36,16 @@ function positiveInteger(value, label) {
 
 function validateAtomicParts(row) {
   const compound = COMPOUND_ATOMIC_SEPARATOR.test(row.longest_value);
+  if (!LINE_CONTRACTS.has(row.line_contract)) {
+    fail(`row group ${row.id} line_contract must be single-token or parent-one-line`);
+  }
   if (row.atomic_parts == null) {
     if (compound) fail(`row group ${row.id} atomic_parts are required for a compound atomic value`);
+    if (row.line_contract !== "single-token") fail(`row group ${row.id} single atomic value must use line_contract single-token`);
     return null;
+  }
+  if (!compound || row.line_contract !== "parent-one-line") {
+    fail(`row group ${row.id} compound atomic value must use line_contract parent-one-line`);
   }
   const parts = uniqueStrings(row.atomic_parts, `row group ${row.id} atomic_parts`);
   if (parts.length < 2) fail(`row group ${row.id} atomic_parts must contain at least two values`);
@@ -66,6 +74,7 @@ export function inventoryDigest(artifact) {
       expected_count: row.expected_count,
       longest_value: row.longest_value,
       atomic_parts: row.atomic_parts ?? null,
+      line_contract: row.line_contract,
     })),
   })).digest("hex");
 }

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.439 parent one-line terminal closure repair
+- compound parent `line_contract`와 one-command browser terminal closure를 deterministic하게 고정했다.
+- focused 72 green + lint/diff, provider 0. 다음은 exact pin과 fresh unseen task다.
+
 ## 2026-08-04 (Codex) · 1.9.438 maritime r1 pair stop
 - candidate 81/85, 474.434s, 1,151,694 tokens; parent line과 post-ready proof가 red다.
 - 3/3 불가능으로 4셀 skip. TTT 39,511,114+ / unavailable 6, 다음은 provider-free terminal closure repair다.
