@@ -1,0 +1,9 @@
+# Genomic consumer-browser fit transfer — 1.9.473 final
+
+The experiment stopped after the first pair. The control scored 81/85 and the candidate 77/85; neither resolved the UI or supplied promotion-valid browser proof. Because promotion required candidate UI-Resolved and proof compliance in all three trials, the first valid candidate failure made 3/3 impossible. The four untouched cells are frozen and no retry is allowed.
+
+The candidate failure exposed a deterministic verifier defect rather than a reason to loosen the acceptance bar. `count_literals` counted both real HTML attributes and the same selector text inside page scripts. Three protected-hook counts therefore doubled, static closure failed, and the browser terminal was recorded without ever attaching to the named consumer browser. The trace classifier correctly saw one static and one browser-shaped command with no recovery, but trace shape alone is not proof: successful schema 0.3 closure and exact existing-CDP measurement remained absent.
+
+The candidate also left the evidence summary on two lines at 320px and actual 200%. Both arms received false overlap failures because the evaluator treated a decision container and its descendant action as overlapping peers. These are two separate provider-free repairs: count actual attribute occurrences instead of raw source literals, and exclude ancestor/descendant containment from sibling-overlap detection. Neither finding changes this experiment's frozen result.
+
+The candidate used 0.7796× the control's observed provider tokens and 1.0276× its wall time, but efficiency cannot promote an unresolved UI. Tokens-to-Target is now at least 47,697,272 observed provider tokens plus six usage-unavailable cells. The next candidate must be repaired, tested, and pinned without provider calls before any fresh unseen transfer run.

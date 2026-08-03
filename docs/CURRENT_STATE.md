@@ -4,9 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.472 genomic r1 control
+- 갱신: 2026-08-04 · 1.9.473 genomic consumer-browser transfer stopped
 
 ## 지금 (현재 위치)
+
+- 1.9.473 r1 candidate는 valid failure 77/85, 359.021s, 602,380 tokens다. control 대비 wall 1.0276× / token 0.7796×다.
+- raw `count_literals`가 실제 속성과 script selector 문자열을 함께 세 static closure가 실패했고, exact named consumer browser 측정은 시작되지 않았다.
+- trace shape는 static1/browser1/recovery0/duplicate0/post-ready0이나 schema0.3 closure와 consumer attachment가 없어 promotion proof는 fail이다.
+- candidate 3/3이 불가능해 남은 4셀은 frozen했다. TTT 47,697,272+ / unavailable 6이다.
+- 다음은 provider-free attribute-aware count와 ancestor/descendant containment-aware overlap evaluator 수리, focused/broad 검증, exact pin이다.
 
 - 1.9.472 r1 control은 valid 81/85, 349.379s, 772,692 tokens다.
 - desktop/390, contrast, behavior, document overflow0은 green이나 evidence summary가 320/actual200에서 2줄이라 UI unresolved다.
