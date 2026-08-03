@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.332 first native-enforced control
+- R1 control은 valid 79/85, 726,928ms, 2,519,978 tokens다.
+- proof/host/delivery pass, browser recovery 0, closure unresolved다.
+- red는 mobile/320/200% atomic wrapping과 fragmentation이다.
+- 다음은 paired R1 candidate 한 cell이다.
+
 ## 2026-08-03 (Codex) · 1.9.331 native-enforced matrix prepared
 - u19330 6-cell shared equality와 exact skill delta를 확인했다.
 - baseline/source detached·clean·publishable, provider call 0이다.

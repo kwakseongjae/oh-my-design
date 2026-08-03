@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `ffd75773` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.331 native-browser-enforced matrix prepared
+- 갱신: 2026-08-03 · 1.9.332 first native-enforced control checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.332 첫 control은 valid: 79/85, unresolved, 726,928ms, 2,519,978 tokens다.
+- browser preflight/proof/host-policy/delivery는 pass했고 recovery 0이다. red는 mobile/320/200% atomic wrapping과 320/200% mid-token fragmentation이다.
+- observed attempt total은 12,935,549 tokens + usage-unavailable 1 cell이다. 다음은 fixed pacing 후 paired R1 candidate 한 cell이다.
 
 - 1.9.331은 `/private/tmp/u19330` 6-cell shared equality와 exact skill delta를 provider call 0으로 확인했다.
 - baseline committed/detached/clean 6/6, exact vendor detached/clean/publishable 2/2, browser preflight ready다.
