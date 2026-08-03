@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.330 native-enforced replacement preregistration
+- same aircraft/control/candidate/Luna-high/gates/order를 u19330에 잠갔다.
+- shared delta는 682c094d native-browser-enforced policy 하나다.
+- provider call 0; 다음은 fresh 6-cell preparation/equality다.
+
 ## 2026-08-03 (Codex) · 1.9.329 exact host-policy pin
 - source 682c094d의 config/source/installed hashes와 native matcher 3종을 pin했다.
 - browser-harness doctor는 Chrome/daemon/active connection 1을 확인했다.
