@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.458 radiotherapy r1 control
+- objective 85/85, passive scroll 0이나 static 6/post-ready 2로 proof fail; 410.471s, 1,132,170 tokens.
+- TTT 44,391,403+. 다음은 fixed pacing 뒤 r1 candidate no-retry다.
+
 ## 2026-08-04 (Codex) · 1.9.457 radiotherapy accessible atomic-fit preparation
 - six cells equality 6/6, exact detached sources, install hashes, actual-zoom/passive-scroll gates를 검증했다.
 - provider 0. 다음은 exact browser/auth/CLI preflight 뒤 r1 control이다.

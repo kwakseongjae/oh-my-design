@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.457 radiotherapy accessible atomic-fit preparation
+- 갱신: 2026-08-04 · 1.9.458 radiotherapy r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.458 r1 control은 valid system proof failure: objective 85/85 UI-resolved, 410.471s, 1,132,170 tokens다.
+- desktop/390/320/actual 200%, accessibility, evidence, passive protected-text scroll 0은 모두 green이다.
+- browser recovery 0이지만 static closure 6(duplicate 5)/post-ready 2라 proof gate는 fail이다.
+- TTT 44,391,403+ / unavailable 6. 다음은 fixed pacing 뒤 r1 candidate 한 셀을 same Luna/high/no-retry로 실행한다.
 
 - 1.9.457은 `/private/tmp/u19456-vendors` exact detached control/candidate와 `/private/tmp/u19456` six untouched cells를 준비했다.
 - task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.
