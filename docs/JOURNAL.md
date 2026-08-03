@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.413 rail-signal compound-atomic preparation
+- exact detached vendors 2개와 clean/detached cells 6개를 만들고 shared input/execution equality 6/6을 확인했다.
+- control `2d577464…` vs candidate `ef6e0199…`, provider 0. 다음은 exact browser preflight와 r1 control이다.
+
 ## 2026-08-03 (Codex) · 1.9.412 rail-signal compound-atomic preregistration
 - exact control vs `1480d7cc…`를 Luna/high 2×3, 900s/no-retry/120s pacing으로 고정했다.
 - attempt 18, prior 28,116,906+ tokens/unavailable 6, provider 0. 다음은 clean preparation이다.

@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.412 rail-signal compound-atomic preregistration
+- 갱신: 2026-08-03 · 1.9.413 rail-signal compound-atomic preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.413은 `/private/tmp/u19412-vendors`의 exact detached control/candidate와 `/private/tmp/u19412` 6개 clean/detached cell을 준비했다.
+- task·product·runtime·model·effort·timeout·host policy equality는 6/6이고 유일한 arm delta는 설치된 skill source다.
+- control skill은 `2d577464…`, candidate skill은 `ef6e0199…`; provider 호출은 아직 0이다.
+- 다음은 exact named browser `bench19366` preflight 뒤 `luna-signal-r1-control` 한 셀만 실행하는 것이다.
 
 - 1.9.412는 exact control `3a414a0a…` vs character-range candidate `1480d7cc…`를 rail-signal holdout에 Luna/high 2×3으로 사전등록했다.
 - 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 character-range proof·strict quality/efficiency gates를 고정했다.
