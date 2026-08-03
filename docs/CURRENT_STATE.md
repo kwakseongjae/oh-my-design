@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.398 field-sample runtime closure preregistration
+- 갱신: 2026-08-03 · 1.9.399 field-sample runtime closure preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.399는 `/private/tmp/u19398-vendors` exact detached sources와 `/private/tmp/u19398` 6 committed/detached/clean cells를 준비했다.
+- task/core prompt/product/runtime/model/effort/timeout/host/proof/browser pin equality가 6/6이다.
+- sole arm delta는 installed skill tree `2d577464…` control vs `9e68583f…` runtime-conjunctive candidate이며 provider 0이다.
+- 다음 허용 cell은 named `bench19366` + isolated-auth dual preflight 뒤 `luna-field-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
 
 - 1.9.398은 exact control `3a414a0a…` vs runtime-conjunctive candidate `effd1d93…`를 fresh field-sample holdout에 Luna/high 2×3으로 preregister했다.
 - 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
@@ -2020,9 +2025,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `/private/tmp/u19398-vendors`에 control/candidate exact detached sources를 만든다.
-2. `/private/tmp/u19398`에 6 committed/detached/clean cells를 prepare한다.
-3. task/prompt/product/runtime/model/effort/timeout/host/proof/browser equality 6/6과 sole skill delta를 증명한다.
+1. exact `bench19366` browser와 shared named socket, isolated runtime/auth 상태를 preflight한다.
+2. `luna-field-r1-control` 한 셀만 `--max-new-cells 1`, no retry로 실행한다.
+3. evaluate/export/checkpoint와 host/proof admission을 검증한 뒤 paired candidate로 진행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

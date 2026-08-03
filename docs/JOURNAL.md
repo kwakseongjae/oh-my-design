@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.399 field-sample runtime closure preparation
+- exact detached vendors와 6 clean cells, shared equality 6/6을 준비했다.
+- sole delta는 skill hash `2d577464…` vs `9e68583f…`, provider 0. 다음은 r1 control 한 셀이다.
+
 ## 2026-08-03 (Codex) · 1.9.398 field-sample runtime closure preregistration
 - exact control vs `effd1d93…` candidate를 Luna/high 2×3, 900s/no-retry/120s pacing으로 고정했다.
 - attempt 16, prior 24,629,940+ tokens/unavailable 5, provider 0. 다음은 clean preparation이다.
