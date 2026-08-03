@@ -6,4 +6,12 @@ The scientific treatment, task, runtime, effort, pacing, retry, ordering, and pr
 
 All six cells now share one task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/host-policy contract. Each workspace begins committed, detached, and clean. Both source vendors are detached, clean, and publishable. Exact installed skill tree `2d577464…` versus `bb3ac833…` is the sole arm delta.
 
-Provider calls remain 0. The only allowed next cell is `luna-load-r1-control-honest-closure` through canonical `--max-new-cells 1`; no retry, substitution, or same-root repair is permitted.
+At preparation, provider calls remained 0 and the only allowed first cell was `luna-load-r1-control-honest-closure` through canonical `--max-new-cells 1`; no retry, substitution, or same-root repair was permitted.
+
+## Checkpoint 1 — 1.9.327
+
+The first control cell is valid and checkpointed. Browser readiness passed before provider execution; the run changed `index.html`, used one static and one browser proof, reached delivery ready, and passed both proof-execution and installed host-policy gates. Honest reflow/browser outcomes remained unresolved rather than being promoted to success.
+
+Quality is not resolved: 75/85, with responsive atomic-label wrapping at mobile/320/200% and a serious-or-critical axe result. This is now model/skill outcome evidence rather than infrastructure failure. Runtime was 656,064ms and provider-reported usage was 1,962,159 tokens. Known attempt spend is at least 6,930,721 tokens including retained infrastructure-invalid spend, plus one usage-unavailable cell.
+
+The next allowed cell is the paired round-1 candidate `luna-load-r1-artifact-honest-closure`, after the fixed 120-second pacing boundary. The control is never retried.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.327 first valid honest-closure control
+- R1 control은 75/85, unresolved, 656,064ms, 1,962,159 tokens다.
+- browser preflight/proof/host-policy/delivery는 모두 pass했다.
+- red는 atomic wrapping·fragmentation과 axe serious/critical로 실제 품질 결손이다.
+- 다음은 120s pacing 후 paired R1 candidate 한 cell이다.
+
 ## 2026-08-03 (Codex) · 1.9.326 honest-closure matrix prepared
 - u19325 6-cell shared equality와 exact skill delta를 확인했다.
 - baseline committed/detached/clean 6/6, source publishable 2/2다.

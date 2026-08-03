@@ -8,6 +8,11 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.327 첫 control은 valid checkpoint다: 75/85, `ui_resolved=false`, 656,064ms, 1,962,159 tokens.
+- provider-before-browser preflight, proof execution, installed host policy는 모두 pass했고 delivery ready다. honest closure는 unresolved로 보존됐다.
+- 실제 품질 red는 mobile/320/200% atomic wrapping·mid-token fragmentation과 axe serious/critical이다. infrastructure failure가 아니다.
+- known attempt spend minimum은 6,930,721 tokens + usage-unavailable 1 cell이다. 다음은 fixed 120s pacing 후 paired R1 candidate 한 cell이다.
+
 - 1.9.326은 `/private/tmp/u19325` 6개 cell을 provider call 0으로 PREPARED했다. shared contract와 exact sole skill delta를 확인했다.
 - workspace baseline committed/detached/clean 6/6, source detached/clean/publishable 2/2, browser preflight ready다.
 - 다음 허용 cell은 `luna-load-r1-control-honest-closure` 하나, canonical `--max-new-cells 1`, no retry다.
