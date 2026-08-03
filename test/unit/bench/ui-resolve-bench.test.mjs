@@ -58,6 +58,7 @@ const gridBatteryDispatchTaskId = "grid-battery-dispatch-release-v0.1";
 const radiotherapyPlanExportTaskId = "radiotherapy-plan-export-review-v0.1";
 const satelliteTelemetryReleaseTaskId = "satellite-telemetry-release-review-v0.1";
 const genomicSequencingReleaseTaskId = "genomic-sequencing-run-release-v0.1";
+const semiconductorWaferDispositionTaskId = "semiconductor-wafer-disposition-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1581,6 +1582,46 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("LIBRARY-ONC-048271 + READSET-R2-905184");
     expect(starter).toContain("5 libraries · 7 read sets · 3 instrument lanes");
     expect(starter).not.toContain("PAYLOAD-SR-057432");
+  });
+
+  it("locks an unseen semiconductor disposition family before shipped consumer-browser validation", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/tasks",
+      semiconductorWaferDispositionTaskId,
+      "task.json",
+    ), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: semiconductorWaferDispositionTaskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: {
+          values: ["lot-register", "process-chambers", "disposition-decision"],
+          initial: "lot-register",
+          selected: "process-chambers",
+        },
+        form: { valid_value: "Etch batch disposition" },
+      },
+      protected_hook_counts: {
+        "[data-bench='wafer-lot']": 5,
+        "[data-bench='lot-id']": 5,
+        "[data-bench='metrology-id']": 7,
+        "[data-bench='chamber-id']": 3,
+        "[data-bench='process-window']": 3,
+      },
+    });
+    const out = prepareVariant("raw-design-md", {
+      task: semiconductorWaferDispositionTaskId,
+      outputName: "semiconductor-wafer-disposition-lock",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/data-bench="wafer-lot"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="metrology-id"/g)).toHaveLength(7);
+    expect(starter.match(/data-bench="process-window"/g)).toHaveLength(3);
+    expect(starter).toContain("LOT-ETCH-048271 + METROLOGY-CD-905184");
+    expect(starter).toContain("5 wafer lots · 7 metrology scans · 3 process chambers");
+    expect(starter).not.toContain("LIBRARY-ONC-048271");
   });
 
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {

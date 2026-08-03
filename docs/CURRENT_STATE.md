@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.477 shipped runner exact pin
+- 갱신: 2026-08-04 · 1.9.478 semiconductor task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.478은 fresh `semiconductor-wafer-disposition-v0.1`을 provider 전에 lock했다.
+- 5 wafer lot/7 metrology scan/3 process chamber와 lot register·chamber strip·disposition decision 세 carrier를 보존한다.
+- untouched baseline은 75/85: 390/320/actual200 overflow 595/665/1330px, atomic/state wrap, muted contrast 3.88만 red이고 passive protected-text scroll은 0이다.
+- exact 1.9.474 control과 exact 1.9.476 candidate의 task exposure/provider는 0이다. 다음은 shipped-runner Reliability@3 preregistration이다.
 
 - 1.9.477은 shipped runner를 exact `6bfdc7bc…`, skill tree `c62907bb…`와 skill/helper/runner/test hashes로 pin했다.
 - 새 competitor는 `omd-shipped-consumer-browser-candidate`, vendor dir `omd-1.9.476`이며 provider 0/promotion false다.

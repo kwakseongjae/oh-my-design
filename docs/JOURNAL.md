@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.478 semiconductor task lock
+- fresh wafer-disposition task를 provider 전에 잠그고 untouched baseline 75/85를 재현했다.
+- task contract/focused test green, provider 0. 다음은 exact control/candidate preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.477 shipped runner exact pin
 - runner candidate를 exact commit/tree/file hashes와 immutable competitor id로 고정했다.
 - provider 0/promotion false. 다음은 unseen transfer task lock이다.
