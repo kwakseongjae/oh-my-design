@@ -35,3 +35,7 @@ The broader sandbox suite was also run: 114/116 passed, with the two existing ex
 ## Decision
 
 Freeze `/private/tmp/u19311`; do not resume or repair a cell in place. Pin this repair from a committed source, then preregister and prepare a fresh six-cell replacement before any further provider call. Provider calls in the frozen attempt: 1. Provider calls in this repair: 0.
+
+## Exact host-policy pin
+
+1.9.314 pins committed source `7d21ea23…` and the exact managed Codex config plus four source/installed hook hashes in `HOST-POLICY-PIN.json`. This is an infrastructure pin, not a new skill treatment and not a quality promotion. The replacement experiment must keep this exact host policy byte-identical across both arms.

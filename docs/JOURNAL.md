@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.314 hook-safe host policy pin
+- committed `7d21ea23…`의 Codex config와 8개 source/installed hash를 고정했다.
+- 양 arm 공통 infrastructure pin이며 skill treatment·quality promotion은 아니다.
+- provider call 0이다.
+- 다음은 fresh aircraft replacement preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.313 runtime artifact hook bypass repair
 - 첫 aircraft control은 infrastructure-invalid로 frozen했다; 점수 제외, 2,932,219 tokens는 보존한다.
 - relative `.omd` 오인, sticky denial, node_repl 직접쓰기 우회를 닫았다.

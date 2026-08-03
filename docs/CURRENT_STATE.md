@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.313 runtime artifact hook-bypass repaired
+- 갱신: 2026-08-03 · 1.9.314 hook-safe host policy exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.314는 committed source `7d21ea23…`의 exact Codex installed-opt-in host policy를 config + source 4개 + installed 4개 hash로 pin했다.
+- 이것은 새 skill treatment나 quality promotion이 아니라 replacement matrix 양 arm에 동일하게 적용할 infrastructure pin이다. provider call 0이다.
+- 다음은 기존 aircraft holdout·control/candidate skill을 유지하고 이 exact host policy만 공유하는 fresh replacement preregistration이다.
 
 - 1.9.313은 첫 aircraft control을 infrastructure-invalid로 판정하고 frozen 처리했다. 77/85는 quality evidence에서 제외하며 640,087ms·2,932,219 tokens만 attempt 4 비용에 보존한다.
 - 원인은 relative `.omd` product 오인, 이전 denial의 sticky 재방출, matcher 밖 `mcp__node_repl__js` 직접 파일쓰기다. product는 바뀌었지만 proof trace product edit 0이므로 analyzable하지 않다.
