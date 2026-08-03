@@ -27,3 +27,7 @@ This preserves the scientific boundary: shared enforcement defects invalidate a 
 - quality promotion: none.
 
 The next live attempt requires an exact committed 1.9.328 host-policy pin, a fresh preregistration, and fresh committed/detached/clean cells. `/private/tmp/u19325` is permanently excluded from resumption.
+
+## Exact host-policy pin — 1.9.329
+
+Committed source `682c094d…` is pinned in `HOST-POLICY-PIN.json` with the managed Codex config hash, all four source and rendered installed hook hashes, the three native-browser matcher namespaces, and the executable proof sequence. A same-permission browser-harness doctor run confirmed Chrome, daemon, and one active connection before any provider call; optional cloud authentication remains irrelevant to local proof. This is an infrastructure pin, not a treatment or quality promotion.

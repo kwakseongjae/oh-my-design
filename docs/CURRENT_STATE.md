@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `ffd75773` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.328 native browser hook enforcement repair accepted
+- 갱신: 2026-08-03 · 1.9.329 exact native browser host policy pin
 
 ## 지금 (현재 위치)
+
+- 1.9.329는 committed source `682c094d…`의 exact Codex host policy를 config/source/installed hashes와 native browser matcher 3종으로 pin했다.
+- same-permission browser-harness doctor는 Chrome/daemon/active connection 1을 확인했다. provider call 0, quality promotion 아님이다.
+- 다음은 동일 aircraft task/control/candidate/Luna-high/gates/order를 유지하고 1.9.329 shared policy만 적용한 fresh preregistration이다.
 
 - 1.9.328은 native agent-browser/browser-harness/browser tool namespace를 Claude/Codex installed matcher에 추가했다. 첫 native proof는 허용하고 그 이후 recovery는 PreToolUse에서 실행 전 차단하며, hook-observed 호출은 Stop에서 unblocked로 오판하지 않는다.
 - focused 101/101, wider 94/94, lint/build/diff가 green이고 repair provider call은 0이다. 다음은 committed 1.9.328 exact pin → fresh preregistration/preparation → one-cell replacement다.

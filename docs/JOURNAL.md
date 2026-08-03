@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.329 exact host-policy pin
+- source 682c094d의 config/source/installed hashes와 native matcher 3종을 pin했다.
+- browser-harness doctor는 Chrome/daemon/active connection 1을 확인했다.
+- provider call 0, promotion 없음; 다음은 fresh preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.328 native browser hook repair
 - 1.9.325 candidate 77/85는 native matcher gap으로 제외하고 u19325를 동결했다.
 - invalid minimum 8,453,412 tokens, observed total 10,415,571 tokens + unavailable 1이다.
