@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.417 rail-signal fresh host-repaired preregistration
+- 갱신: 2026-08-04 · 1.9.418 rail-signal repaired-host preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.418은 `/private/tmp/u19417-vendors` exact detached sources와 `/private/tmp/u19417` 6개 clean/detached cell을 준비했다.
+- task/product/runtime/model/effort/timeout/host equality는 6/6이고 repaired host hook `bef877c9…`도 6/6 exact다.
+- sole arm delta는 skill `2d577464…` control vs `ef6e0199…` candidate이며 provider 0이다.
+- 다음은 exact `bench19366` preflight 후 `luna-signal-r1-control` 한 셀만 no-retry로 실행하는 것이다.
 
 - 1.9.417은 exact skill arms를 유지하고 repaired host `060f1d31…`로 rail-signal Luna/high 2×3을 fresh root에 재사전등록했다.
 - attempt 19, prior Tokens-to-Target 31,625,601 + unavailable 6이며 control exposure 1/candidate exposure 0을 명시했다.

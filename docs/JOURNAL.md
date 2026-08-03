@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.418 rail-signal repaired-host preparation
+- fresh exact vendors/cells와 repaired host `bef877c9…` equality 6/6을 확인했다.
+- control `2d577464…` vs candidate `ef6e0199…`, provider 0. 다음은 r1 control 한 셀이다.
+
 ## 2026-08-04 (Codex) · 1.9.417 rail-signal fresh host-repaired preregistration
 - repaired host `060f1d31…`와 동일 skill arms를 Luna/high 2×3 fresh root로 고정했다.
 - attempt 19, TTT 31,625,601+ / unavailable 6, control exposure 1/candidate 0. 다음은 fresh preparation이다.
