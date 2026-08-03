@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.305 digital-master pair 2
+- 갱신: 2026-08-03 · 1.9.306 digital-master control r3
 
 ## 지금 (현재 위치)
+
+- 1.9.306 control r3는 valid/policy-green 77/85 unresolved다. control r2와 같이 390은 green이고 320/200% summary atomic-line과 4.42:1 contrast만 red다.
+- wall 342,420ms, total 395,684 tokens(input 377,936, cached 329,472, output 17,748, reasoning 8,253)다. attempt-3 누적은 2,958,074다.
+- final pair claim은 보류하며 다음 locked cell은 마지막 candidate r3다.
 
 - 1.9.305 pair 2는 candidate 73/85 vs control 77/85로 candidate loss이며 둘 다 unresolved다. control은 handoff target을 닫고 summary만 남겼지만 candidate는 target과 summary, keyboard를 남겼다.
 - pair-2 candidate wall -19.09%, tokens +71.33%다. 2-pair W/T/L 0/1/1, mean wall -21.49%, mean tokens +53.94%다.

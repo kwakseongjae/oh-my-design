@@ -1,6 +1,6 @@
 # Digital master carrier-inventory transfer — findings
 
-Status: **4/6 cells complete — promotion gate already unreachable**
+Status: **5/6 cells complete — promotion gate already unreachable**
 
 ## Preparation checkpoint
 
@@ -98,3 +98,18 @@ failure. Serious axe findings remained in both arms.
 
 The final pair remains diagnostic only. It cannot restore the failed quality
 or token-efficiency promotion gates.
+
+## Checkpoint 5 — control trial 3
+
+`luna-master-r3-control` completed valid at **77/85** and is not UI-Resolved.
+It reproduces control trial 2: 390px passes, while the summary
+`7 assets · 7 parent links · 2 checksums` exceeds its one-line budget at 320px
+and 200%. Supplied muted text remains at 4.42:1. Task, states, design,
+evidence, keyboard, proof execution, and installed host policy pass.
+
+- wall time: **342,420ms**
+- provider-reported total tokens: **395,684**
+- input / cached / output / reasoning: **377,936 / 329,472 / 17,748 / 8,253**
+- cumulative attempt-3 experimental tokens: **2,958,074**
+
+Final-pair claims are withheld until `luna-master-r3-inventory` completes.

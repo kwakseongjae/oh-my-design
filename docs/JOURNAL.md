@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.306 digital-master control r3
+- control r3는 77/85 unresolved, proof/host green이다.
+- control r2처럼 320/200% summary와 4.42:1 contrast만 red다.
+- wall 342,420ms, 395,684 tokens; 누적 2,958,074다.
+- 다음은 마지막 candidate r3다.
+
 ## 2026-08-03 (Codex) · 1.9.305 digital-master pair 2
 - candidate/control 73/77로 candidate loss, 둘 다 unresolved다.
 - control은 summary만, candidate는 handoff target·summary·keyboard를 남겼다.
