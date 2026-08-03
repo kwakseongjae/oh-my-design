@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.390 rail consist holdout lock
+- fresh rail task는 6 wagon/8 seal/4 departure window와 세 relationship carrier를 보존한다.
+- baseline 75/85 unresolved, provider 0. 다음은 exact pinned Reliability@3 preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.389 known-failure exact pin
 - committed e6513930의 skill/helper/test/acceptance를 exact hash로 pin했다.
 - provider 0. 다음은 fresh unseen replacement task lock/preregistration이다.

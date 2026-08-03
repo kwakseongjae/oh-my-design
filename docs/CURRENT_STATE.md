@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.389 known-failure closure exact pin
+- 갱신: 2026-08-03 · 1.9.390 rail consist holdout lock
 
 ## 지금 (현재 위치)
+
+- 1.9.390은 fresh `rail-consist-handoff-review-v0.1`을 provider 전에 lock했다.
+- 6 wagon/8 seal/4 departure window와 consist register·departure strip·handoff decision 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·atomic line과 4.295 contrast다.
+- provider 0이다. 다음은 exact historical control vs known-failure-closure candidate의 fresh Reliability@3 preregistration이다.
 
 - 1.9.389은 committed `e6513930…`의 known-failure conjunctive closure와 helper/test/acceptance를 exact hash로 pin했다.
 - provider 0; 다음은 이 pin만 candidate로 쓰는 fresh unseen Reliability@3 task lock/preregistration이다.
