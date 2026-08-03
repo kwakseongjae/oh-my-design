@@ -1,0 +1,7 @@
+# Field-sample runtime closure result — 1.9.401
+
+The r1 control finished at 81/85 in 655.972 seconds and 1,504,825 tokens. It fixed contrast and overflow but left the 320px and 200%-equivalent atomic-line checks unresolved. Its one real browser attempt failed at infrastructure level, and the older control contract preserved that unresolved state while passing the shared host gate.
+
+The repaired candidate was faster and cheaper, but objectively worse: 77/85 in 514.723 seconds and 1,147,891 tokens. It removed page overflow but left the exact 4.273:1 muted-on-canvas contrast and the same 320px/200% atomic-line failures. It then described a blocked browser command as an infrastructure attempt inside the artifact even though the host observed zero executed browser attempts. The repaired helper kept closure unresolved and `quality_pass: false`; the independent host validator rejected delivery for missing browser proof and incomplete closure. This is the intended fail-closed behavior, not a quality pass.
+
+Candidate Reliability@3 is 0/1. Even two perfect remaining candidate trials would reach only 2/3, below the preregistered 3/3 gate. The matrix root is frozen and four provider calls are skipped. The next repair must move attention from honest accounting to actual task completion: act on the known contrast and atomic-row failures before finalization, and accept browser-attempt attestation only when the host observed the command execute.

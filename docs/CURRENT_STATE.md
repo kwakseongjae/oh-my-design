@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.400 field-sample r1 control checkpoint
+- 갱신: 2026-08-03 · 1.9.401 field-sample r1 rejection and early stop
 
 ## 지금 (현재 위치)
+
+- 1.9.401 r1 candidate는 valid-system-failure 77/85 unresolved, 514,723ms, 1,147,891 tokens다.
+- 320/200% atomic line과 4.273 contrast를 남겼고, 실제 실행되지 않은 browser command를 artifact에 attestation했지만 host는 observed attempt 0으로 delivery를 차단했다.
+- repaired helper는 closure unresolved/quality false를 유지했다. candidate Reliability@3 0/1, 최대 2/3이라 u19398을 frozen하고 남은 4셀 provider 0으로 early-stop한다.
+- Tokens-to-Target minimum은 27,282,656 + usage unavailable 5다. 다음은 completion guidance와 host-observed browser attestation 결합을 provider-free로 수리하는 것이다.
 
 - 1.9.400 r1 control은 valid 81/85 unresolved, 655,972ms, 1,504,825 tokens다.
 - 대비와 page overflow는 닫았지만 320/200% short atomic line budget이 남았다. proof/host gate는 pass하고 runtime closure는 정직하게 unresolved/quality_pass false다.
@@ -2030,9 +2035,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 120초 fixed inter-cell pacing과 exact `bench19366` browser/auth preflight를 만족한다.
-2. `luna-field-r1-candidate` 한 셀만 canonical runner로 실행한다.
-3. paired quality/proof/efficiency를 판정하고 Reliability@3 도달 가능성을 계산한다.
+1. known contrast와 atomic-row failure를 unresolved accounting 전에 실제 수정하도록 skill sequence를 수리한다.
+2. browser-attempt artifact를 host가 관측한 실행 이벤트와 결합해 hand-authored attestation을 거부한다.
+3. focused contract/runtime tests와 acceptance를 provider 0으로 통과시킨 뒤 exact-pin하고 fresh unseen replacement를 만든다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
