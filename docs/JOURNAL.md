@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.382 shared-socket cold-chain preregistration
+- fresh u19382 attempt 14에 shared named-socket pin까지 고정했다.
+- provider 0; 다음은 fresh preparation이다.
+
 ## 2026-08-03 (Codex) · 1.9.381 shared named browser socket exact pin
 - committed ed3ee6bd의 shared named socket contract를 고정했다.
 - 다섯 roots frozen, provider 0. 다음은 fresh all-pin matrix다.
