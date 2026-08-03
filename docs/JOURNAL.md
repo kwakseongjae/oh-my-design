@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.391 rail Reliability@3 preregistration
+- exact control vs known-failure candidate를 Luna/high 2×3, no-retry, all-runtime-pin 조건으로 고정했다.
+- provider 0; 다음은 fresh detached vendors/6 clean cells 준비와 equality 증명이다.
+
 ## 2026-08-03 (Codex) · 1.9.390 rail consist holdout lock
 - fresh rail task는 6 wagon/8 seal/4 departure window와 세 relationship carrier를 보존한다.
 - baseline 75/85 unresolved, provider 0. 다음은 exact pinned Reliability@3 preregistration이다.

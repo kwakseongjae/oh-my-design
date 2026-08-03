@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.390 rail consist holdout lock
+- 갱신: 2026-08-03 · 1.9.391 rail known-failure closure preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.391은 exact control `3a414a0a…` vs repaired candidate `e6513930…`를 fresh rail holdout에 Luna/high 2×3으로 preregister했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
+- 모든 runtime/browser pin을 유지한다. Tokens-to-Target attempt 15, prior minimum 23,869,400 tokens + unavailable 4, provider 0이다.
+- 다음은 `/private/tmp/u19391-vendors` exact detached vendors와 `/private/tmp/u19391` 6 clean cells를 prepare하고 equality를 증명하는 것이다.
 
 - 1.9.390은 fresh `rail-consist-handoff-review-v0.1`을 provider 전에 lock했다.
 - 6 wagon/8 seal/4 departure window와 consist register·departure strip·handoff decision 세 carrier를 보존한다.
