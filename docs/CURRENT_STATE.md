@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.350 generator compact matrix preparation
+- 갱신: 2026-08-03 · 1.9.351 generator control timeout checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.351 first generator control은 900,026ms timeout, product edit 0, final 없음, usage unavailable이다. candidate provider call은 0이다.
+- host가 `reflow-inventory-required`로 편집을 차단했고 model은 artifact를 충족하지 못했다. system failure지만 runner가 score/run-record/checkpoint 전에 전체 matrix를 동결했다.
+- prereg의 `timeout_policy=count-as-valid-failure`와 실제 runner 동작이 불일치한다. `/private/tmp/u19349`는 동결하고 재개하지 않는다.
+- 다음은 timeout을 evaluate·unresolved record·checkpoint하도록 runner를 수리하고 synthetic timeout 회귀를 추가하는 것이다. provider 0이다.
 
 - 1.9.350은 `/private/tmp/u19349-vendors/{omd-1.9.274,omd-1.9.334}` exact detached source와 `/private/tmp/u19349` 6 committed/detached/clean cell을 준비했다.
 - equality 6/6이며 sole arm delta는 skill tree `2d577464…` vs `36a44a1…`; admission 1.9.341과 resume 1.9.347 pin도 동일하다.
@@ -1819,9 +1824,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fresh browser preflight 뒤 first control 한 cell만 실행한다.
-2. checkpoint admission round-trip equality를 확인한다.
-3. fixed pacing 뒤 paired candidate 한 cell로 진행한다.
+1. preregistered valid timeout을 평가·기록·checkpoint하는 runner 계약을 수리한다.
+2. fake timeout으로 no-replay/resume/usage-unavailable semantics를 검증하고 exact pin한다.
+3. 새 unseen task와 fresh root에서만 다음 비교를 재개한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

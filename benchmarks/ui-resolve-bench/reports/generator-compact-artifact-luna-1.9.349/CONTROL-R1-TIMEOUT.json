@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.351",
+  "experiment_id": "generator-compact-artifact-luna-1.9.349",
+  "cell_id": "luna-generator-r1-control",
+  "status": "valid-timeout-unscored-by-runner",
+  "validity": "valid-failure-by-preregistered-contract",
+  "ui_resolved": false,
+  "provider": {
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "wall_time_ms": 900026,
+    "usage_available": false,
+    "usage_reason": "provider-stream-contained-no-usage"
+  },
+  "workspace": {
+    "product_changed": false,
+    "changed_product_files": [],
+    "product_initial_sha256": "224cad3c2d94d8b96a79bf977a6ca2ebfef7d5ae4e92fa47fac678cb4d2e40de",
+    "product_final_sha256": "224cad3c2d94d8b96a79bf977a6ca2ebfef7d5ae4e92fa47fac678cb4d2e40de"
+  },
+  "observed_failure": {
+    "reflow_artifact_attempted": true,
+    "host_rejected_product_edits": true,
+    "reason": "reflow-inventory-required",
+    "product_edit_count": 0,
+    "final_message_present": false
+  },
+  "runner_contract_gap": {
+    "declared_timeout_policy": "count-as-valid-failure",
+    "actual_behavior": "stopped-before-evaluation-score-run-record-and-checkpoint",
+    "matrix_frozen": true,
+    "candidate_provider_calls": 0,
+    "retry_allowed": false
+  },
+  "evidence_sha256": {
+    "execution_state": "bf838e88648113908039b7259a3ed9bdf34235cfbe8e207b129c8536c8a26f04",
+    "run_result": "75f23531f7d6496364528546c90a82dbaa66d43cc569637c7f5c67fbdc45a447",
+    "events": "0e38fe94f3b3d287dbf5029d9569146c28713b7f7b3e0951b305bc106b33cd7e",
+    "stderr": "f4c70b563d366dbc6675812b9a0ff6ec1e6b0bb202e8b3755bd84904acdb0de6"
+  },
+  "next": "Freeze /private/tmp/u19349. Repair the runner so a preregistered valid timeout is evaluated, recorded unresolved, and checkpointed without replay; validate with synthetic timeout tests before any fresh provider matrix."
+}

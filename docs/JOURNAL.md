@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.351 generator control timeout
+- control은 900,026ms timeout, product edit 0, final/usage 없음이다.
+- candidate 0; runner가 valid-timeout을 평가 전 동결하는 계약 불일치를 발견했다.
+- u19349는 동결; 다음은 timeout record/checkpoint 수리와 회귀 테스트다.
+
 ## 2026-08-03 (Codex) · 1.9.350 generator matrix prepared
 - exact detached vendors와 6 committed/detached/clean cells를 준비했다.
 - equality 6/6, sole delta는 skill tree; admission/resume pins도 동일하다.

@@ -13,3 +13,7 @@ This is Tokens-to-Target attempt 7. Prior observed spend is at least 16,933,255 
 ## Preparation — 1.9.350
 
 Fresh detached vendors and six committed, detached, clean Git cells were prepared at the preregistered roots. Task, prompt, product, DESIGN.md, activation, runtime, model, effort, timeout, installed proof policy, validity-admission pin, and checkpoint-resume pin are equal in all cells. The sole arm delta is skill tree `2d577464…` versus `36a44a1…`. Provider calls remain zero; the only permitted next cell is `luna-generator-r1-control` after a fresh browser preflight.
+
+## Control R1 timeout — 1.9.351
+
+The first control reached the exact 900-second timeout after repeatedly failing to satisfy the installed reflow-inventory contract. It changed no product file, emitted no final message, and exposed no provider usage. The candidate was never called. Although the preregistration declares timeout a valid failure, the runner froze before evaluation, score, run record, or checkpoint creation. `/private/tmp/u19349` is frozen and will not be resumed. The runner contract must be repaired and tested before any fresh comparison.
