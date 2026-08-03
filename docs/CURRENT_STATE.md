@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.368 named isolated browser/runtime attestation repair
+- 갱신: 2026-08-03 · 1.9.369 named isolated browser exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.369는 committed `3b9fde84…`의 named CDP connection gate와 narrow runtime attestation ignore를 exact hash로 pin했다.
+- u19362/u19366 roots는 frozen이다. 다음은 1.9.365 + 1.9.369 pins를 함께 쓰는 fresh replacement preregistration이며 provider 0이다.
 
 - 1.9.368은 browser-required 실행에 exact `BU_NAME` + CDP endpoint를 요구하고 doctor에서 그 named connection의 active 상태를 검증한다.
 - 개인 Gmail이 열린 default Chrome은 안전상 거부했고, fresh temp profile `bench19366`/9336/about:blank fixture는 성공했다.

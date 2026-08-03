@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.369 named isolated browser exact pin
+- committed 3b9fde84의 named CDP gate와 narrow runtime attestation ignore를 고정했다.
+- u19362/u19366 frozen, provider 0; 다음은 combined-pin fresh replacement다.
+
 ## 2026-08-03 (Codex) · 1.9.368 named isolated browser/runtime attestation repair
 - 개인 default Chrome을 거부하고 named fresh CDP browser만 허용하도록 preflight를 강화했다.
 - codex-home/browser runtime만 artifact attestation에서 제외했다. focused 72/72.
