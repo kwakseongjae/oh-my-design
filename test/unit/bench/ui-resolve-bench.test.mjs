@@ -1252,6 +1252,23 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(candidate.commit).not.toBe(previous.commit);
   });
 
+  it("pins the parent-line terminal-browser candidate separately from the proof-budget candidate", () => {
+    const previous = competitors.variants["omd-atomic-browser-proof-budget-candidate"];
+    const candidate = competitors.variants["omd-parent-one-line-terminal-browser-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.439",
+      source_path: "skills/omd-apply",
+      install_adapter: previous.install_adapter,
+      install_root: previous.install_root,
+      install_dir: previous.install_dir,
+      declared_name: "omd:apply",
+      commit: "3c00a4c1519ec681c1f088e8daf6a7daba39be12",
+      activation: previous.activation,
+    });
+    expect(candidate.commit).not.toBe(previous.commit);
+  });
+
   it("locks an unseen spatial aircraft load-plan family before runtime artifact validation", () => {
     const task = JSON.parse(readFileSync(join(
       repoRoot,

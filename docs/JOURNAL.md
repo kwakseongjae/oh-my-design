@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.442 pharmacy parent-line terminal-browser preregistration
+- exact 1.9.409 vs 1.9.439, Luna/high 2×3과 terminal browser closure를 고정했다.
+- task exposure 0/0, provider 0. 다음은 fresh exact preparation/equality다.
+
 ## 2026-08-04 (Codex) · 1.9.441 pharmacy controlled dispense task lock
 - fresh 6-prescription/8-lot/4-window task를 unseen 상태로 고정했다.
 - untouched 75/85 unresolved, provider 0. 다음은 exact 2×3 preregistration이다.
