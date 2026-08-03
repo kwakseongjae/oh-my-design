@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.437 maritime r1 control
+- valid 81/85, 367.461s, 1,041,430 tokens; compound line과 proof budget이 red다.
+- TTT 38,359,420+ / unavailable 6. 다음은 paced r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.436 maritime matrix preparation
 - exact detached sources와 6 clean cells를 준비했고 shared equality 6/6을 확인했다.
 - provider 0. 다음은 named browser/auth/CLI preflight 뒤 r1 control이다.

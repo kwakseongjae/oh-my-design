@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.436 maritime atomic browser-proof preparation
+- 갱신: 2026-08-04 · 1.9.437 maritime r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.437 r1 control은 valid system failure: 81/85, 367.461s, 1,041,430 tokens다.
+- 320px/200% compound character-range line만 red이며, browser 1은 했지만 recovery 1/duplicate static 2/post-ready 1로 proof fail이다.
+- execution-home Luna profile `0efd579e…`와 CLI 0.144.1은 일치했다. TTT 38,359,420+ / unavailable 6이다.
+- 다음은 fixed 120s pacing과 exact preflight 뒤 r1 candidate 한 셀을 no-retry 실행한다.
 
 - 1.9.436은 `/private/tmp/u19435-vendors`의 exact detached control/candidate와 `/private/tmp/u19435` 6개 clean cell을 준비했다.
 - task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.
