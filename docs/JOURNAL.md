@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.338 orbital matrix prepared
+- exact detached vendors와 6 committed/detached/clean cells를 준비했다.
+- shared equality 6/6, sole delta는 skill tree 2d577464 vs 36a44a1이다.
+- provider 0; 다음은 preflight 후 r1 control 한 cell이다.
+
 ## 2026-08-03 (Codex) · 1.9.337 orbital matrix preregistration
 - exact 1.9.274 control vs c1de0e4 compact candidate Luna/high 2×3를 잠갔다.
 - 900s, 120s pacing, no retry, strict quality/proof/efficiency gates다.

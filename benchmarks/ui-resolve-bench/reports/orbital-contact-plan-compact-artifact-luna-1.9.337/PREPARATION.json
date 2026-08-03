@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.338",
+  "experiment_id": "orbital-contact-plan-compact-artifact-luna-1.9.337",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19337",
+  "vendors_root": "/private/tmp/u19337-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "next_cell": "luna-orbit-r1-control",
+  "sole_arm_delta": "exact-installed-skill-source",
+  "hashes": {
+    "preregistered_plan_sha256": "f3506e4b64d1e30cad494fe7763911782f6b98b55cfad3ff26d4d43b2f2555c1",
+    "locked_plan_sha256": "25e7008ced10afa9a2d9cc9e51c153f24682d5b53e4eef6b38511209cd6e1562",
+    "matrix_state_sha256": "37b8fb8b7c44c9480c3e797f2f4ea6f2312aa5b2cbe15df7a0d976b14df54f0d",
+    "product_initial_sha256": "1cf3afb715ee8f0f9a31235a043ac0fcb9544ff9256fc9c70a516a888856f52b",
+    "index_sha256": "704620b777005a4536360c0f7c83bb828a21bb54b8326b0e174c1764f5ba5c5c",
+    "design_md_sha256": "06b3df5bfc6cdada9dae86526aededf01c1cc2bbd77154fbfe046492c6c23e01",
+    "activated_prompt_sha256": "68fef8fffdaf98b5f74013e095330f99dd964f08fd7698e89ba31d866c973e67",
+    "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+    "host_config_sha256": "f9391c21eb68de265eb854e488d5ad37d7390eba452fa1ca293a1a1c7d267c39",
+    "installed_proof_policy_sha256": "de29ef030793f3c12268eb014d37a8a89b18ea8299fadb70e5ab36a9a5cd515d",
+    "control_skill_tree_sha256": "2d57746474c4ba4ae440ed3ce0e0df9413291f67077ed2e519288edc2ffe0b24",
+    "candidate_skill_tree_sha256": "36a44a1bb41fa1e584a6732d2e0c57a572eba6b9ca20c82c5462125eec07fd92"
+  },
+  "sources": {
+    "control": { "commit": "3a414a0a70dcc7fc70fb166e923ff318d3c53c66", "detached": true, "clean": true, "publishable": true },
+    "candidate": { "commit": "c1de0e4e9520c8ca333b59557217dd40219ae195", "detached": true, "clean": true, "publishable": true }
+  },
+  "equality": {
+    "task": true,
+    "prompt": true,
+    "product": true,
+    "design_md": true,
+    "activation": true,
+    "runtime": true,
+    "model": true,
+    "effort": true,
+    "timeout": true,
+    "installed_proof_policy": true,
+    "clean_baseline_all_cells": true,
+    "workspace_detached_all_cells": true,
+    "source_detached_all_cells": true,
+    "source_publishable_all_cells": true
+  },
+  "workspace_baselines": {
+    "luna-orbit-r1-control": "352b98a655611bb4d1c40b5b48b04c46484c3fdf",
+    "luna-orbit-r1-compact": "fd85232f7c0737750cada42642437f1c4cfffe1c",
+    "luna-orbit-r2-compact": "8459a8cd2e1137c79b5af890d65437906806dc23",
+    "luna-orbit-r2-control": "d9a0bedbbbfd2c754e3e7f36fad93a5f366a0935",
+    "luna-orbit-r3-control": "d9a0bedbbbfd2c754e3e7f36fad93a5f366a0935",
+    "luna-orbit-r3-compact": "8459a8cd2e1137c79b5af890d65437906806dc23"
+  },
+  "execution_contract": {
+    "max_new_cells": 1,
+    "retry": false,
+    "inter_cell_delay_seconds": 120,
+    "browser_preflight_required_before_provider": true
+  }
+}

@@ -1991,6 +1991,31 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       prior_observed_provider_tokens_minimum: 12935549,
       prior_usage_unavailable_cells: 2,
     });
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/orbital-contact-plan-compact-artifact-luna-1.9.337/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.338",
+      status: "PREPARED",
+      provider_calls: 0,
+      scheduled_cells: 6,
+      prepared_cells: 6,
+      sole_arm_delta: "exact-installed-skill-source",
+      next_cell: "luna-orbit-r1-control",
+      equality: {
+        task: true,
+        prompt: true,
+        product: true,
+        design_md: true,
+        activation: true,
+        installed_proof_policy: true,
+        clean_baseline_all_cells: true,
+        workspace_detached_all_cells: true,
+        source_detached_all_cells: true,
+        source_publishable_all_cells: true,
+      },
+    });
   });
 
   it("locks an unseen feature-flag rollout family for final candidate validation", () => {

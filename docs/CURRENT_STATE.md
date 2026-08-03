@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.337 orbital compact-artifact matrix preregistered
+- 갱신: 2026-08-03 · 1.9.338 orbital compact-artifact matrix prepared
 
 ## 지금 (현재 위치)
+
+- 1.9.338은 `/private/tmp/u19337-vendors/{omd-1.9.274,omd-1.9.334}` exact detached source와 `/private/tmp/u19337` 6개 committed/detached/clean cell을 준비했다.
+- task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/installed policy가 6/6 동일하고 sole delta는 skill tree `2d577464…` vs `36a44a1…`다.
+- provider call 0이다. 다음 허용 cell은 fresh browser preflight 뒤 `luna-orbit-r1-control` 하나이며 canonical `--max-new-cells 1`, no retry다.
 
 - 1.9.337은 exact control `3a414a0a…` vs compact candidate `c1de0e4e…`를 fresh orbital task에 Luna/high 2×3으로 preregister했다.
 - 900초, concurrency 1, 120초 pacing, no retry, C/N–N/C–C/N order와 candidate resolved 3/3·paired loss 0·proof/host 3/3·wall/token ≤1.10× gate를 고정했다.

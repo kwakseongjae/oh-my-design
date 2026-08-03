@@ -7,3 +7,7 @@ Luna/high, a 900-second per-cell timeout, fixed 120-second inter-cell pacing, co
 Promotion requires candidate resolution 3/3, no serious or critical contrast result, no paired objective loss, proof and host-policy passage 3/3, and candidate mean wall time and provider tokens no more than 1.10× control. A timeout is a valid failure; infrastructure invalidity freezes the matrix and requires a fresh preregistration.
 
 This is Tokens-to-Target attempt 5. Prior observed spend is at least 12,935,549 provider-reported tokens plus two usage-unavailable cells. No prior score is pooled into this task. Provider calls at preregistration: 0.
+
+## Preparation — 1.9.338
+
+Fresh detached vendors and six committed, detached, clean Git cells were prepared at the preregistered roots. Task, prompt, product, DESIGN.md, activation, runtime, model, effort, timeout, and installed proof policy are equal in all cells. The sole arm delta is skill tree `2d577464…` versus `36a44a1…`. Provider calls remain zero; the only permitted next cell is `luna-orbit-r1-control` after a fresh browser preflight.
