@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `ab066c45` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.321 proof-order replacement preregistered
+- 갱신: 2026-08-03 · 1.9.322 proof-order replacement prepared
 
 ## 지금 (현재 위치)
+
+- 1.9.322는 `/private/tmp/u19321` 6개 cell을 provider call 0으로 PREPARED했다. task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/host policy가 6/6 동일하다.
+- workspace는 baseline committed/detached/clean 6/6, source는 detached/publishable 6/6이며 sole delta는 skill tree `2d577464…` vs `bb3ac833…`다.
+- known invalid spend minimum 2,932,219 tokens와 usage-unavailable 1 cell을 유지한다. 다음 허용 cell은 `luna-load-r1-control-proof-order` 하나, `--max-new-cells 1`, no retry다.
 
 - 1.9.321은 same attempt/task/control/candidate/Luna-high/gates/order를 유지한 세 번째 infrastructure replacement를 `/private/tmp/u19321`에 사전등록했다.
 - sole shared infrastructure delta는 exact host policy `e5f1e307…`이며 양 arm에 동일하다. known invalid spend 2,932,219 tokens와 usage-unavailable 1 cell을 분리 보존한다.

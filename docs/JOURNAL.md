@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.322 proof-order matrix prepared
+- u19321 6-cell shared equality와 exact skill delta를 확인했다.
+- baseline committed/detached/clean, host ready, source publishable가 6/6이다.
+- provider call 0; known invalid minimum 2,932,219 tokens다.
+- 다음은 첫 control 한 cell만 canonical 실행이다.
+
 ## 2026-08-03 (Codex) · 1.9.321 proof-order replacement preregistration
 - same attempt/task/treatment/Luna-high/gates를 fresh u19321에 잠갔다.
 - sole shared delta는 e5f1e307 proof-order policy이며 양 arm 공통이다.
