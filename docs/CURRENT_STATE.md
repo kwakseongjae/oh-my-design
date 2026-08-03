@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.315 aircraft replacement preregistered
+- 갱신: 2026-08-03 · 1.9.316 prepared Git baseline seal
 
 ## 지금 (현재 위치)
+
+- 1.9.316은 prepared cell의 시작 파일을 local baseline commit으로 봉인하고 detached HEAD + clean status를 강제한다. agent-visible Git diff도 이제 유효한 before/after 경계다.
+- `/private/tmp/u19315`는 shared equality는 green이었지만 시작 파일이 untracked라 provider 전에 rejected했다. provider call 0이고 root는 재사용하지 않는다.
+- focused host 2/2, provider-neutral 71/71, lint/build/diff가 green이다.
+- 다음은 committed repair를 새 root에 preregister하고 fresh 6-cell prepare/equality를 다시 수행하는 것이다.
 
 - 1.9.315는 frozen 1.9.311의 clean infrastructure replacement를 preregister했다. 기존 task/control/candidate/Luna-high/gate/order는 유지하고 exact host policy `7d21ea23…`만 양 arm에 동일 적용한다.
 - attempt order는 4로 유지하며 invalid control 2,932,219 tokens와 replacement spend를 같은 attempt에 합산한다. invalid score/behavior는 제외한다.

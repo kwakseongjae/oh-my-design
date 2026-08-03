@@ -2341,6 +2341,20 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       ));
       expect(existsSync(join(root, "controller-cell/.git"))).toBe(true);
       expect(existsSync(join(root, "policy-cell/.git"))).toBe(true);
+      for (const cell of ["controller-cell", "policy-cell"]) {
+        expect(execFileSync(
+          "git",
+          ["-C", join(root, cell), "status", "--porcelain=v1", "--untracked-files=all"],
+          { encoding: "utf8" },
+        )).toBe("");
+        expect(spawnSync(
+          "git",
+          ["-C", join(root, cell), "symbolic-ref", "-q", "HEAD"],
+          { encoding: "utf8" },
+        ).status).toBe(1);
+      }
+      expect(control.workspace.git_baseline).toMatchObject({ clean: true, detached: true });
+      expect(policy.workspace.git_baseline).toMatchObject({ clean: true, detached: true });
       expect(control.host_policy).toMatchObject({
         mode: "controller-observation",
         hooks_enabled: false,

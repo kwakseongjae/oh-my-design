@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.316 prepared Git baseline seal
+- u19315 준비본이 시작 파일 untracked임을 발견해 provider 전 rejected했다.
+- 모든 prepared 시작 파일을 local commit, detached HEAD, clean status로 봉인한다.
+- focused 2/2 + provider-neutral 71/71, lint/build/diff green, provider 0이다.
+- 다음은 새 root preregistration과 6-cell 재준비다.
+
 ## 2026-08-03 (Codex) · 1.9.315 aircraft replacement preregistration
 - frozen matrix의 same-attempt clean replacement를 잠갔다.
 - task/treatment/Luna-high/gate/order 유지, hook-safe policy는 양 arm 공통이다.

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
@@ -388,6 +388,36 @@ export function prepareArgsForCell(cell, workspace, { vendorsRoot = null } = {})
   ];
 }
 
+export function sealPreparedGitBaseline(workspace) {
+  const root = resolve(workspace);
+  const gitRoot = join(root, ".git");
+  if (!existsSync(gitRoot)) throw new Error(`prepared workspace is not a Git root: ${root}`);
+  writeFileSync(
+    join(gitRoot, "info", "exclude"),
+    "\n# OmD benchmark runtime artifacts\n.benchmark/\n.omd/\n.t/\n",
+    { encoding: "utf8", flag: "a" },
+  );
+  execFileSync("git", ["-C", root, "add", "--all"], { stdio: "pipe" });
+  execFileSync("git", [
+    "-C", root,
+    "-c", "user.name=OmD Benchmark",
+    "-c", "user.email=benchmark@local.invalid",
+    "commit", "--quiet", "--message", "prepared benchmark baseline",
+  ], { stdio: "pipe" });
+  execFileSync("git", ["-C", root, "checkout", "--quiet", "--detach"], { stdio: "pipe" });
+  const status = execFileSync(
+    "git",
+    ["-C", root, "status", "--porcelain=v1", "--untracked-files=all"],
+    { encoding: "utf8" },
+  );
+  if (status.trim()) throw new Error(`prepared Git baseline is dirty at ${root}`);
+  return {
+    commit: execFileSync("git", ["-C", root, "rev-parse", "HEAD"], { encoding: "utf8" }).trim(),
+    detached: true,
+    clean: true,
+  };
+}
+
 export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
   validateRunMatrixPlan(plan);
   const root = resolve(outputRoot);
@@ -435,14 +465,6 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
         manifest.workspace.product_ignore = [
           ...new Set([...(manifest.workspace.product_ignore ?? []), ".git"]),
         ];
-        const preparedTree = treeManifest(workspace, { ignore: [".benchmark"] });
-        const preparedProductTree = treeManifest(workspace, {
-          ignore: manifest.workspace.product_ignore,
-        });
-        manifest.workspace.initial_sha256 = preparedTree.sha256;
-        manifest.workspace.initial_files = preparedTree.files.length;
-        manifest.workspace.product_initial_sha256 = preparedProductTree.sha256;
-        manifest.workspace.product_initial_files = preparedProductTree.files;
         writeJson(join(workspace, ".benchmark", "manifest.json"), manifest);
       }
       const matrixCell = {
@@ -464,6 +486,18 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
         source_publishable: manifest.skill?.source_attestation?.publishable ?? true,
       };
       writeJson(join(workspace, ".benchmark", "matrix-cell.json"), matrixCell);
+      if (hostPolicy) {
+        manifest.workspace.git_baseline = sealPreparedGitBaseline(workspace);
+        const preparedTree = treeManifest(workspace, { ignore: [".benchmark"] });
+        const preparedProductTree = treeManifest(workspace, {
+          ignore: manifest.workspace.product_ignore,
+        });
+        manifest.workspace.initial_sha256 = preparedTree.sha256;
+        manifest.workspace.initial_files = preparedTree.files.length;
+        manifest.workspace.product_initial_sha256 = preparedProductTree.sha256;
+        manifest.workspace.product_initial_files = preparedProductTree.files;
+        writeJson(join(workspace, ".benchmark", "manifest.json"), manifest);
+      }
       state.cells.push({ id: cell.id, status: "prepared", workspace });
       state.prepared_cells += 1;
       writeJson(join(root, "matrix-state.json"), state);
