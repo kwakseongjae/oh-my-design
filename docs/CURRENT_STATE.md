@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.406 sterile-tray completion-loop preparation
+- 갱신: 2026-08-03 · 1.9.407 sterile-tray r1 control checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.407에서 `luna-sterile-r1-control`은 900.016s timeout의 valid-system-failure, 79/85 unresolved로 종료됐다.
+- task/state/design/evidence/desktop/a11y/keyboard는 green이나 390/320/200% atomic line budget이 red다.
+- 증명 스키마 보정에 시간을 소진해 browser attempt 0, delivery incomplete, host gate false였고 provider usage는 미제공이라 unavailable 누계는 6이다.
+- 다음은 120초 pacing 뒤 fresh exact preflight를 거쳐 r1 candidate 한 셀을 no-retry로 실행하는 것이다.
 
 - 1.9.406은 `/private/tmp/u19405-vendors`의 exact detached control/candidate와 `/private/tmp/u19405` 6개 clean/detached cell을 준비했다.
 - task·product·runtime·model·effort·timeout·host policy equality는 6/6이고 유일한 arm delta는 설치된 skill source다.
@@ -2058,9 +2063,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact named browser `bench19366`와 Luna auth preflight를 통과시킨다.
-2. `luna-sterile-r1-control` 한 셀만 no-retry로 실행한다.
-3. 결과를 checkpoint한 뒤 120초 pacing을 지켜 r1 candidate를 실행한다.
+1. 120초 inter-cell pacing을 충족한다.
+2. exact named browser `bench19366`와 Luna auth를 다시 preflight한다.
+3. `luna-sterile-r1-candidate` 한 셀을 no-retry로 실행하고 r1 pair를 판정한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

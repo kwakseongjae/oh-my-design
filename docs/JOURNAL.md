@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.407 sterile-tray r1 control checkpoint
+- control은 900.016s timeout, 79/85 unresolved였고 browser attempt 0/delivery incomplete로 host gate를 통과하지 못했다.
+- provider usage는 unavailable 누계 6. 120초 pacing 후 exact preflight와 r1 candidate를 실행한다.
+
 ## 2026-08-03 (Codex) · 1.9.406 sterile-tray completion-loop preparation
 - exact detached vendors 2개와 clean/detached cells 6개를 만들고 shared input/execution equality 6/6을 확인했다.
 - control `2d577464…` vs candidate `729de4d2…`, provider 0. 다음은 exact browser preflight와 r1 control이다.
