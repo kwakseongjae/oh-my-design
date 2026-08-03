@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.482 shipped-runner transfer stopped
+- candidate는 85/85·0.6720× wall·0.8383× tokens이나 named-socket/raw-CDP mismatch로 runner proof가 없었다.
+- proof 3/3 불가능으로 4셀 frozen. 다음은 socket-native runner + artifact-aware proof gate repair다.
+
 ## 2026-08-04 (Codex) · 1.9.481 semiconductor r1 control
 - exact control은 83/85, 384.069s, 838,924 tokens이며 desktop action gap만 red다.
 - exact consumer attach/schema closure proof는 fail. 다음은 fixed pacing 뒤 r1 candidate다.

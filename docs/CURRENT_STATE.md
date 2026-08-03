@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.481 semiconductor r1 control
+- 갱신: 2026-08-04 · 1.9.482 semiconductor shipped-runner transfer stopped
 
 ## 지금 (현재 위치)
+
+- 1.9.482 r1 candidate는 valid objective success/proof failure: 85/85, 258.087s, 703,275 tokens다.
+- control 대비 wall 0.6720× / token 0.8383×이며 UI는 완전 green, edit1/static1/shipped-runner1/recovery0/duplicate0/post-ready0다.
+- runner가 raw `BU_CDP_URL`을 요구하지만 controller는 exact named socket만 노출해 browser attempts0/not-run/attachment false/schema open으로 proof fail이다.
+- candidate proof 3/3이 불가능해 4셀을 frozen했다. TTT 49,239,471+ / unavailable 6. 다음은 socket-native runner와 artifact-aware automatic proof gate의 provider-free repair다.
 
 - 1.9.481 r1 control은 valid 83/85 unresolved: 384.069s, 838,924 tokens다.
 - narrow/actual200/contrast/atomic text는 green이나 desktop decision action 8px separation만 red다.
