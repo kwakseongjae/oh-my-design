@@ -1,0 +1,6 @@
+{
+  "schema_version":"0.1","product_version":"1.9.379","experiment_id":"cold-chain-compact-artifact-luna-final-runtime-1.9.378","status":"PREPARED","provider_calls":0,"output_root":"/private/tmp/u19378","vendors_root":"/private/tmp/u19378-vendors","scheduled_cells":6,"prepared_cells":6,"next_cell":"luna-coldchain-r1-control","sole_arm_delta":"exact-installed-skill-source",
+  "hashes":{"preregistered_plan_sha256":"409618399372158d2c1c8db35d04c2465acb5ee0a82404bbef57639f467b4542","locked_plan_sha256":"cbe6916174f30c315a49c09a6a785140c41c868e1e4c94dc7e3e8d36e43c8ede","matrix_state_sha256":"adbff7675d59b301a7183e7f9c5461ef1c6d67b2300f3e876161539393f23f2b"},
+  "equality":{"shared_inputs_and_execution_pins":"6/6","clean_detached_cells":6,"clean_detached_sources":2},
+  "execution_contract":{"max_new_cells":1,"retry":false,"named_browser":"bench19366","controller_cdp_endpoint":"http://127.0.0.1:9336","execution_order":["empty-home","named-browser","auth-link","login","provider"]}
+}

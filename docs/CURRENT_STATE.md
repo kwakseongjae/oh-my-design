@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.378 final-runtime cold-chain preregistration
+- 갱신: 2026-08-03 · 1.9.379 final-runtime cold-chain preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.379는 fresh u19378 exact vendors/6 clean detached cells와 equality 6/6을 준비했다.
+- provider 0; 다음은 final pinned runtime으로 r1 control 한 셀이다.
 
 - 1.9.378은 fresh u19378 attempt 13에 모든 runtime pins와 5-stage bootstrap order를 고정했다.
 - 네 이전 roots frozen, provider 0. 다음은 fresh preparation이다.

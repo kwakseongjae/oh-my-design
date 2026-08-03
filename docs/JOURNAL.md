@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.379 final-runtime cold-chain preparation
+- u19378 exact vendors/6 clean cells와 equality 6/6을 준비했다.
+- provider 0; 다음은 final pinned r1 control이다.
+
 ## 2026-08-03 (Codex) · 1.9.378 final-runtime cold-chain preregistration
 - fresh u19378 attempt 13에 모든 runtime pins와 bootstrap order를 고정했다.
 - provider 0; 다음은 fresh preparation이다.
