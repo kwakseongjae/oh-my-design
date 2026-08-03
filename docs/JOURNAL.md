@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.410 compound-atomic range-oracle exact pin
+- 1.9.409 source `1480d7cc…`와 9개 artifact hash를 exact pin했다.
+- provider 0/quality promotion false. 다음은 새 unseen compound task와 baseline lock이다.
+
 ## 2026-08-03 (Codex) · 1.9.409 compound-atomic range-oracle repair
 - compound target의 ordered atomic parts와 character-range line oracle을 helper·host·skill에 결합했다.
 - focused 56/56, broad 367 pass/1 skip, lint pass, provider 0. 다음은 exact pin과 새 unseen task다.

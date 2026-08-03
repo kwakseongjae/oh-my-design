@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.409 compound-atomic range-oracle repair
+- 갱신: 2026-08-03 · 1.9.410 compound-atomic range-oracle exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.410은 1.9.409의 exact source `1480d7cc…`와 9개 artifact hash를 pin했다.
+- provider 호출 0, quality promotion false이며 이후 실험 source는 이 commit에서만 설치한다.
+- 다음은 protected compound atomic target을 가진 새 unseen task를 provider 전에 lock하는 것이다.
 
 - 1.9.409는 compound protected value에 ordered `atomic_parts`를 강제하고, wrapper/accessible text를 보존한 token-child reflow 규칙을 추가했다.
 - resolved finalize는 host-observed measured browser attempt와 `character-range-line-tops` oracle을 필수로 하며 element rectangle 오판을 허용하지 않는다.
@@ -2073,9 +2077,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.409 변경을 커밋하고 exact artifact hashes/source commit을 별도 pin한다.
-2. 새 unseen compound-atomic repair task를 provider 전에 만들고 baseline을 lock한다.
-3. 새 root의 exact Luna/high 2×3을 preregister하고 3/3 reliability를 다시 검증한다.
+1. 새 unseen compound-atomic repair task를 만들고 task/prompt/product hash를 잠근다.
+2. untouched baseline을 평가해 의도한 compound line-wrap와 다른 failure shape를 확인한다.
+3. exact control vs `1480d7cc…`의 Luna/high 2×3을 새 root에 preregister한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
