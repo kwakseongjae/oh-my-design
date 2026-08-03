@@ -57,6 +57,7 @@ const orbitalContactPlanTaskId = "orbital-contact-plan-review-v0.1";
 const gridBatteryDispatchTaskId = "grid-battery-dispatch-release-v0.1";
 const radiotherapyPlanExportTaskId = "radiotherapy-plan-export-review-v0.1";
 const satelliteTelemetryReleaseTaskId = "satellite-telemetry-release-review-v0.1";
+const genomicSequencingReleaseTaskId = "genomic-sequencing-run-release-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1506,6 +1507,46 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("PAYLOAD-SR-057432 + TLM-ARC-920176");
     expect(starter).toContain("4 payloads · 6 telemetry archives · 3 ground passes");
     expect(starter).not.toContain("PLAN-HN-042731");
+  });
+
+  it("locks an unseen genomic sequencing family before consumer-browser fit validation", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/tasks",
+      genomicSequencingReleaseTaskId,
+      "task.json",
+    ), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: genomicSequencingReleaseTaskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: {
+          values: ["library-manifest", "instrument-lanes", "release-decision"],
+          initial: "library-manifest",
+          selected: "instrument-lanes",
+        },
+        form: { valid_value: "NovaSeq batch release" },
+      },
+      protected_hook_counts: {
+        "[data-bench='library-case']": 5,
+        "[data-bench='library-id']": 5,
+        "[data-bench='readset-id']": 7,
+        "[data-bench='lane-id']": 3,
+        "[data-bench='qc-window']": 3,
+      },
+    });
+    const out = prepareVariant("raw-design-md", {
+      task: genomicSequencingReleaseTaskId,
+      outputName: "genomic-sequencing-release-lock",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/data-bench="library-case"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="readset-id"/g)).toHaveLength(7);
+    expect(starter.match(/data-bench="qc-window"/g)).toHaveLength(3);
+    expect(starter).toContain("LIBRARY-ONC-048271 + READSET-R2-905184");
+    expect(starter).toContain("5 libraries · 7 read sets · 3 instrument lanes");
+    expect(starter).not.toContain("PAYLOAD-SR-057432");
   });
 
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {

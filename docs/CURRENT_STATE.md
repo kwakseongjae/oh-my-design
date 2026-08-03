@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.468 consumer-browser fit exact pin
+- 갱신: 2026-08-04 · 1.9.469 genomic sequencing holdout lock
 
 ## 지금 (현재 위치)
+
+- 1.9.469는 fresh `genomic-sequencing-run-release-v0.1`을 provider 전에 lock했다.
+- 5 library/7 read set/3 instrument lane과 manifest·lane strip·release decision 세 carrier, compound target/state를 보존한다.
+- untouched baseline은 75/85: 390/320/actual200 overflow 595/665/1330px, atomic/state wrap, muted contrast 3.88만 red이고 passive protected-text scroll은 0이다.
+- exact 1.9.467 source는 task exposure 0, provider 0이다. 다음은 historical control과 exact candidate의 runtime-bound Reliability@3 preregistration이다.
 
 - 1.9.468은 consumer-browser fit repair를 exact commit `757bb270…`, skill tree `c4a942b1…` 및 여섯 file hash로 pin했다.
 - 새 competitor id는 `omd-consumer-browser-fit-candidate`, vendor dir은 `omd-1.9.467`이며 mutable working tree를 provider에 쓰지 않는다.

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.469 genomic sequencing holdout lock
+- fresh 5-library/7-read-set/3-lane task를 75/85 unresolved baseline과 hash로 잠갔다.
+- provider 0. 다음은 exact historical control vs 1.9.467 candidate preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.468 consumer-browser fit exact pin
 - repair를 exact `757bb270…` / skill tree `c4a942b1…`로 고정하고 새 competitor id를 등록했다.
 - provider 0, promotion false. 다음은 fresh unseen transfer task lock이다.
