@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.446 actual zoom + single static terminal repair
+- actual document zoom oracle, one static command, helper terminal marker를 결정론적으로 고정했다.
+- focused 62 green + lint/diff, provider 0. 다음은 exact pin과 fresh unseen task다.
+
 ## 2026-08-04 (Codex) · 1.9.445 pharmacy r1 pair freeze
 - candidate 83/85, 400.660s, 425,052 tokens; 200% zoom 미적용과 static closure 1회 초과다.
 - 3/3 불가능으로 4셀 skip. 다음은 provider-free zoom/static repair다.

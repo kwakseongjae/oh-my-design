@@ -94,6 +94,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("reflow-integrity closure");
     expect(skill).toContain("reflow_work_packet:");
     expect(skill).toContain('schema_version: "0.2"');
+    expect(skill).toContain('measurement_conditions:');
+    expect(skill).toContain('{ id: "200pct", viewport_width: 640, zoom: 2 }');
     expect(skill).toContain("reflow-artifact.mjs lock");
     expect(skill).toContain("reflow-artifact.mjs finalize");
     expect(skill).toContain("finalize-unresolved");
@@ -133,6 +135,10 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("단일 text scroller");
     expect(skill).toContain("count가 `expected_count`와 다르면 그 group은 pass가 아니다");
     expect(skill).toContain("4. **PROVE.**");
+    expect(skill).toContain('document.documentElement.style.zoom = String(zoom)');
+    expect(skill).toContain("640px만 열고 zoom을 생략한 결과는 200% proof가 아니다");
+    expect(skill).toContain("observed_document_zoom");
+    expect(skill).toContain("helper가 closure state에서 `OMD_DELIVERY_READY` 또는 `OMD_DELIVERY_UNRESOLVED`를 자동 출력");
     expect(skill).toContain("모든 matched instance");
     expect(skill).toContain("same_row_count: true");
     expect(skill).toContain("same_decision_boundary: true");
@@ -161,6 +167,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("준비된 mechanism은 `browser-harness <<'PY' … PY`");
     expect(skill).toContain("`browser-harness --help`, `browser-harness skill`, `command -v`");
     expect(skill).toContain("revision당 consolidated static closure 1회 + 전체 task browser-harness command 1회");
+    expect(skill).toContain("마지막 product edit 뒤 첫 acceptance shell command 하나가 static closure 전체");
+    expect(skill).toContain("두 번째 shell command는 duplicate static closure");
     expect(skill).toContain("`OMD_DELIVERY_READY` 또는 `OMD_DELIVERY_UNRESOLVED`");
     expect(skill).toContain("browser command가 반환된 뒤 `rg`/`sed`/`cat`/helper를 실행하지 않는다");
     expect(skill).toContain("`sed`/`rg`/`wc`도 제품 diff 뒤 acceptance 사실을 재확인하면 static closure");

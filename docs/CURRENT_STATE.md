@@ -4,9 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.445 pharmacy r1 pair freeze
+- 갱신: 2026-08-04 · 1.9.446 actual zoom + single static terminal repair
 
 ## 지금 (현재 위치)
+
+- 1.9.446은 reflow artifact에 390/1×, 320/1×, 640/actual 2× 조건과 observed document zoom을 결정론적으로 고정했다.
+- final edit 뒤 첫 acceptance shell command가 static closure 전체이며 두 번째는 범위와 무관하게 duplicate라고 명시했다.
+- finalize helper가 `OMD_DELIVERY_READY|UNRESOLVED`를 직접 출력해 terminal marker 누락과 post-browser read 필요를 제거했다.
+- focused 62/62 + candidate pin + TypeScript/diff green; broad 91 green/known external vendor Git-root 2 red, provider 0이다.
+- 다음은 exact source pin 뒤 다른 facts/carriers/state의 fresh unseen 200% task를 lock한다.
 
 - 1.9.445 r1 candidate는 valid 83/85, 400.660s, 425,052 tokens다. control 대비 0.7669×/0.4092×다.
 - 접근성, browser 1/recovery 0/post-ready 0은 닫았지만 200%에서 page overflow와 `Pharmacist review open` 2-line이 red다.

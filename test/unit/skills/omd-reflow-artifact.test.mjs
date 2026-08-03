@@ -1,8 +1,10 @@
 import { afterEach, describe, expect, it } from "vitest";
+import { execFileSync } from "node:child_process";
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
+  deliveryMarker,
   finalizeArtifact,
   hostObservedBrowserAttempt,
   inventoryDigest,
@@ -28,6 +30,11 @@ function hostState(browser_attempts, browser_proof) {
 function draft() {
   return {
     schema_version: "0.2",
+    measurement_conditions: [
+      { id: "390", viewport_width: 390, zoom: 1 },
+      { id: "320", viewport_width: 320, zoom: 1 },
+      { id: "200pct", viewport_width: 640, zoom: 2 },
+    ],
     carriers: [
       { id: "plan", selector: "[data-plan]", expected_count: 1, binds_row_groups: ["identifier", "status"] },
       { id: "handoff", selector: "[data-handoff]", expected_count: 1, binds_row_groups: ["status"] },
@@ -45,6 +52,14 @@ function draft() {
   };
 }
 
+function measuredConditions() {
+  return [
+    { id: "390", viewport_width: 390, zoom: 1, observed_document_zoom: 1 },
+    { id: "320", viewport_width: 320, zoom: 1, observed_document_zoom: 1 },
+    { id: "200pct", viewport_width: 640, zoom: 2, observed_document_zoom: 2 },
+  ];
+}
+
 describe("compact reflow artifact helper", () => {
   it("locks grouped inventory without model-authored hashes", () => {
     const result = lockArtifact(draft());
@@ -57,6 +72,12 @@ describe("compact reflow artifact helper", () => {
     expect(result.closure).toEqual({ state: "open" });
   });
 
+  it("rejects a 200pct condition that only widens the viewport without applying zoom", () => {
+    const invalid = draft();
+    invalid.measurement_conditions[2].zoom = 1;
+    expect(() => lockArtifact(invalid)).toThrow(/200pct at 640px with zoom 2/);
+  });
+
   it("closes honest unresolved accounting across expanded instance counts", () => {
     const locked = lockArtifact(draft());
     locked.browser_attempt = {
@@ -64,6 +85,7 @@ describe("compact reflow artifact helper", () => {
       outcome: "infrastructure-error",
       mechanism: "browser-harness named connection",
       oracle: "character-range-line-tops",
+      conditions: measuredConditions(),
     };
     const result = finalizeArtifact(locked, { unresolved: true });
     expect(result.closure).toEqual({ state: "unresolved" });
@@ -96,6 +118,7 @@ describe("compact reflow artifact helper", () => {
       outcome: "infrastructure-error",
       mechanism: "osascript Google Chrome same-route navigation",
       oracle: "character-range-line-tops",
+      conditions: measuredConditions(),
     };
     const unobserved = hostState(0, "open");
     expect(hostObservedBrowserAttempt(unobserved)).toBe(false);
@@ -144,6 +167,7 @@ describe("compact reflow artifact helper", () => {
       outcome: "measured",
       mechanism: "Playwright same-route character range measurement",
       oracle: "character-range-line-tops",
+      conditions: measuredConditions(),
     };
     expect(() => finalizeArtifact(locked)).toThrow(/every invariant to pass/);
   });
@@ -161,6 +185,7 @@ describe("compact reflow artifact helper", () => {
       outcome: "measured",
       mechanism: "Playwright same-route character range measurement",
       oracle: "character-range-line-tops",
+      conditions: measuredConditions(),
     };
     locked.row_groups[1].final.outcome_320 = "unresolved";
     expect(() => finalizeArtifact(locked)).toThrow(/zero unresolved carriers and rows/);
@@ -175,5 +200,57 @@ describe("compact reflow artifact helper", () => {
       row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     }
     expect(() => finalizeArtifact(locked)).toThrow(/character-range line oracle/);
+  });
+
+  it("rejects a measured closure when the actual document zoom was not observed", () => {
+    const locked = lockArtifact(draft());
+    for (const carrier of locked.carriers) {
+      carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    }
+    for (const row of locked.row_groups) {
+      row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    }
+    const conditions = measuredConditions();
+    conditions[2].observed_document_zoom = 1;
+    locked.browser_attempt = {
+      attempts: 1,
+      outcome: "measured",
+      mechanism: "browser-harness same-route measurement",
+      oracle: "character-range-line-tops",
+      conditions,
+    };
+    expect(() => finalizeArtifact(locked)).toThrow(/must observe document zoom 2/);
+  });
+
+  it("derives the terminal marker from deterministic closure state", () => {
+    expect(deliveryMarker({ closure: { state: "closed" } })).toBe("OMD_DELIVERY_READY");
+    expect(deliveryMarker({ closure: { state: "unresolved" } })).toBe("OMD_DELIVERY_UNRESOLVED");
+  });
+
+  it("prints the terminal marker from the finalize helper process", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-cli-"));
+    temporaryRoots.push(root);
+    const path = join(root, "artifact.json");
+    const locked = lockArtifact(draft());
+    for (const carrier of locked.carriers) {
+      carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    }
+    for (const row of locked.row_groups) {
+      row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    }
+    locked.browser_attempt = {
+      attempts: 1,
+      outcome: "measured",
+      mechanism: "browser-harness same-route measurement",
+      oracle: "character-range-line-tops",
+      conditions: measuredConditions(),
+    };
+    writeFileSync(path, JSON.stringify(locked));
+    const output = execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "finalize",
+      path,
+    ], { encoding: "utf8" });
+    expect(output.trim().split("\n").at(-1)).toBe("OMD_DELIVERY_READY");
   });
 });

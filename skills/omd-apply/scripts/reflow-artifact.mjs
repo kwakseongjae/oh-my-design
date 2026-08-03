@@ -14,6 +14,11 @@ const INVARIANTS = [
 const CHARACTER_RANGE_ORACLE = "character-range-line-tops";
 const COMPOUND_ATOMIC_SEPARATOR = /\s(?:\+|→|←|↔)\s/u;
 const LINE_CONTRACTS = new Set(["single-token", "parent-one-line"]);
+const REQUIRED_MEASUREMENT_CONDITIONS = [
+  { id: "390", viewport_width: 390, zoom: 1 },
+  { id: "320", viewport_width: 320, zoom: 1 },
+  { id: "200pct", viewport_width: 640, zoom: 2 },
+];
 
 function fail(message) {
   throw new Error(`reflow artifact: ${message}`);
@@ -31,6 +36,26 @@ function uniqueStrings(value, label) {
 
 function positiveInteger(value, label) {
   if (!Number.isInteger(value) || value < 1) fail(`${label} must be a positive integer`);
+  return value;
+}
+
+function validateMeasurementConditions(value, label, { observed = false } = {}) {
+  if (!Array.isArray(value) || value.length !== REQUIRED_MEASUREMENT_CONDITIONS.length) {
+    fail(`${label} must contain 390, 320, and actual 200pct conditions`);
+  }
+  for (const [index, expected] of REQUIRED_MEASUREMENT_CONDITIONS.entries()) {
+    const condition = value[index];
+    if (
+      condition?.id !== expected.id
+      || condition?.viewport_width !== expected.viewport_width
+      || condition?.zoom !== expected.zoom
+    ) {
+      fail(`${label}[${index}] must be ${expected.id} at ${expected.viewport_width}px with zoom ${expected.zoom}`);
+    }
+    if (observed && condition.observed_document_zoom !== expected.zoom) {
+      fail(`${label}[${index}] must observe document zoom ${expected.zoom}`);
+    }
+  }
   return value;
 }
 
@@ -60,6 +85,7 @@ function validateAtomicParts(row) {
 
 export function inventoryDigest(artifact) {
   return createHash("sha256").update(JSON.stringify({
+    measurement_conditions: artifact.measurement_conditions,
     carrier_ids: artifact.inventory.carrier_ids,
     carrier_groups: artifact.carriers.map((carrier) => ({
       id: carrier.id,
@@ -84,6 +110,7 @@ export function lockArtifact(input) {
   if (artifact.schema_version !== "0.2") fail("schema_version must be 0.2");
   if (!Array.isArray(artifact.carriers) || !artifact.carriers.length) fail("carriers are required");
   if (!Array.isArray(artifact.row_groups) || !artifact.row_groups.length) fail("row_groups are required");
+  validateMeasurementConditions(artifact.measurement_conditions, "measurement_conditions");
   const carrierIds = uniqueStrings(artifact.carriers.map((carrier) => carrier?.id), "carrier ids");
   const rowGroupIds = uniqueStrings(artifact.row_groups.map((row) => row?.id), "row group ids");
   const knownRows = new Set(rowGroupIds);
@@ -120,6 +147,7 @@ export function lockArtifact(input) {
     outcome: "not-run",
     mechanism: null,
     oracle: CHARACTER_RANGE_ORACLE,
+    conditions: [],
   };
   delete artifact.closure_manifest;
   return artifact;
@@ -213,6 +241,7 @@ export function finalizeArtifact(input, { unresolved = false, hostStateDir = nul
     ) {
       fail("resolved closure requires one measured browser attempt using the character-range line oracle");
     }
+    validateMeasurementConditions(attempt.conditions, "browser_attempt.conditions", { observed: true });
     if (hostStateDir && hostObservedBrowserAttempt(hostStateDir) !== true) {
       fail("resolved closure requires one host-observed browser attempt");
     }
@@ -238,6 +267,10 @@ export function finalizeArtifact(input, { unresolved = false, hostStateDir = nul
     inventory_sha256: artifact.inventory.sha256,
   };
   return artifact;
+}
+
+export function deliveryMarker(artifact) {
+  return artifact.closure?.state === "closed" ? "OMD_DELIVERY_READY" : "OMD_DELIVERY_UNRESOLVED";
 }
 
 function write(path, artifact) {
@@ -279,6 +312,7 @@ function main() {
     quality_pass: result.closure_manifest?.quality_pass ?? null,
     unresolved_known_failures: result.known_failure_closure?.unresolved ?? null,
   }));
+  if (command !== "lock") console.log(deliveryMarker(result));
 }
 
 if (
