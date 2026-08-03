@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `ab066c45` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.320 proof-order host policy pinned
+- 갱신: 2026-08-03 · 1.9.321 proof-order replacement preregistered
 
 ## 지금 (현재 위치)
+
+- 1.9.321은 same attempt/task/control/candidate/Luna-high/gates/order를 유지한 세 번째 infrastructure replacement를 `/private/tmp/u19321`에 사전등록했다.
+- sole shared infrastructure delta는 exact host policy `e5f1e307…`이며 양 arm에 동일하다. known invalid spend 2,932,219 tokens와 usage-unavailable 1 cell을 분리 보존한다.
+- provider call 0이다. 다음은 fresh detached vendor와 committed/detached/clean 6-cell preparation 및 equality attestation이다.
 
 - 1.9.320은 committed source `e5f1e307…`의 exact Codex installed-opt-in policy를 config + source/installed 4개 hash와 executable six-step sequence로 pin했다.
 - provider-free runtime fixture가 inventory → edit → static → browser → artifact → Stop 성공과 open/changed closure의 fail-close를 실행한다. provider call 0, quality promotion 아님이다.

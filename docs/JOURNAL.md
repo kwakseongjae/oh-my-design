@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.321 proof-order replacement preregistration
+- same attempt/task/treatment/Luna-high/gates를 fresh u19321에 잠갔다.
+- sole shared delta는 e5f1e307 proof-order policy이며 양 arm 공통이다.
+- known invalid 2,932,219 tokens와 usage-unavailable cell을 분리 보존한다.
+- 다음은 fresh vendor + 6-cell clean preparation/equality다.
+
 ## 2026-08-03 (Codex) · 1.9.320 proof-order policy pin
 - committed e5f1e307의 config·source·installed hook hash를 exact pin했다.
 - provider-free full sequence와 open/changed closure fail-close를 고정했다.
