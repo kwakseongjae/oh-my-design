@@ -1,6 +1,6 @@
 # Digital master carrier-inventory transfer — findings
 
-Status: **1/6 cells complete**
+Status: **2/6 cells complete — promotion gate already unreachable**
 
 ## Preparation checkpoint
 
@@ -39,3 +39,23 @@ axe `color-contrast` findings.
 
 No paired claim is available until `luna-master-r1-inventory` completes. This
 spend is retained in Tokens-to-Target attempt 3.
+
+## Pair 1
+
+The carrier-inventory candidate tied the control at **75/85**; both remain
+unresolved. Unlike control, candidate closed page overflow and clipped control
+geometry at 390px, 320px, and 200%. It still left the same handoff target
+`PACKAGE-OTT-502 + QC-MANIFEST-610` fragmented and two-line at all three narrow
+conditions, plus the summary line at 320px and 200%. The supplied muted color
+also remained at **4.42:1** in both arms.
+
+- candidate wall: **306,022ms** vs control **400,988ms** (**-23.68%**)
+- candidate tokens: **592,908** vs control **448,479** (**+32.20%**)
+- candidate input / cached / output / reasoning: **577,262 / 519,168 /
+  15,646 / 6,112**
+- both deterministic proof execution and installed host-policy gates: pass
+- cumulative attempt-3 experimental tokens: **1,041,387**
+
+Candidate UI-Resolved 3/3 is now impossible, so this patch cannot be promoted.
+The remaining two pairs are diagnostic evidence for recurrence and the next
+smallest repair; they cannot restore promotion eligibility.

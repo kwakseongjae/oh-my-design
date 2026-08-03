@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.302 digital-master control r1
+- 갱신: 2026-08-03 · 1.9.303 digital-master pair 1
 
 ## 지금 (현재 위치)
+
+- 1.9.303 pair 1은 carrier-inventory 75/85 vs control 75/85 tie이며 둘 다 unresolved다. candidate도 handoff target/summary atomic-line과 4.42:1 contrast를 남겼다.
+- candidate는 control과 달리 390/320/200% page overflow와 clipped control geometry를 닫았다. wall -23.68%지만 tokens +32.20%다.
+- candidate resolved 0/1이라 3/3 promotion은 이미 불가능하다. 누적 attempt-3 spend는 1,041,387 tokens이며 다음 locked cell은 candidate r2다.
 
 - 1.9.302 `luna-master-r1-control`은 valid/policy-green 75/85 unresolved다. task/state/design/evidence/desktop/keyboard는 green이다.
 - 390/320/200%에서 handoff target과 summary atomic-line, page containment가 red이고 supplied muted 4.42:1 contrast도 남았다.

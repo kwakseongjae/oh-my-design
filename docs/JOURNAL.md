@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.303 digital-master pair 1
+- candidate/control은 75/75 tie, 둘 다 unresolved다.
+- candidate는 page/clipping을 닫았지만 atomic-line과 contrast는 남겼다.
+- candidate wall -23.68%, tokens +32.20%; 누적 1,041,387다.
+- promotion 불가; 다음 2 pair는 진단용이다.
+
 ## 2026-08-03 (Codex) · 1.9.302 digital-master control r1
 - control r1은 75/85 unresolved, proof/host green이다.
 - 390/320/200% carrier atomic-line/page와 4.42:1 contrast가 red다.
