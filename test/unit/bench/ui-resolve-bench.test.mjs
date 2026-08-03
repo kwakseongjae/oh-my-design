@@ -1222,6 +1222,19 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(candidate.commit).not.toBe(previous.commit);
   });
 
+  it("pins the runtime conjunctive closure candidate separately from the known-failure candidate", () => {
+    const previous = competitors.variants["omd-known-failure-closure-candidate"];
+    const candidate = competitors.variants["omd-runtime-conjunctive-closure-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.395",
+      source_path: "skills/omd-apply",
+      declared_name: "omd:apply",
+      commit: "effd1d93d415f625cc9fb6222b9a2e89aca6f110",
+    });
+    expect(candidate.commit).not.toBe(previous.commit);
+  });
+
   it("locks an unseen spatial aircraft load-plan family before runtime artifact validation", () => {
     const task = JSON.parse(readFileSync(join(
       repoRoot,

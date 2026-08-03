@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
-import { readFileSync, realpathSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -96,7 +96,24 @@ function completeOutcome(value, label) {
   }
 }
 
-export function finalizeArtifact(input, { unresolved = false } = {}) {
+export function hostObservedBrowserAttempt(stateDir) {
+  if (!stateDir || !existsSync(stateDir)) return null;
+  const records = readdirSync(stateDir, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
+    .flatMap((entry) => {
+      try {
+        return [JSON.parse(readFileSync(resolve(stateDir, entry.name), "utf8"))];
+      } catch {
+        return [];
+      }
+    });
+  return records.some((record) => (
+    record?.state?.browser_attempts === 1
+    && ["closed", "unresolved"].includes(record?.state?.browser_proof)
+  ));
+}
+
+export function finalizeArtifact(input, { unresolved = false, hostStateDir = null } = {}) {
   const artifact = structuredClone(input);
   const locked = lockArtifact({
     ...artifact,
@@ -144,6 +161,9 @@ export function finalizeArtifact(input, { unresolved = false } = {}) {
     ) {
       fail("unresolved accounting requires one recorded browser infrastructure attempt");
     }
+    if (hostStateDir && hostObservedBrowserAttempt(hostStateDir) !== true) {
+      fail("unresolved accounting requires one host-observed browser attempt");
+    }
   }
   const qualityPass = unresolvedCarrierCount === 0 && unresolvedRowCount === 0;
   artifact.closure = { state: qualityPass ? "closed" : "unresolved" };
@@ -181,9 +201,18 @@ function main() {
   }
   const path = resolve(rawPath);
   const artifact = JSON.parse(readFileSync(path, "utf8"));
+  const defaultHostStateDir = resolve(process.cwd(), ".omd/proof-policy");
+  const hostStateDir = process.env.OMD_PROOF_POLICY_STATE_DIR
+    ? resolve(process.env.OMD_PROOF_POLICY_STATE_DIR)
+    : existsSync(defaultHostStateDir)
+      ? defaultHostStateDir
+      : null;
   const result = command === "lock"
     ? lockArtifact(artifact)
-    : finalizeArtifact(artifact, { unresolved: command === "finalize-unresolved" });
+    : finalizeArtifact(artifact, {
+      unresolved: command === "finalize-unresolved",
+      hostStateDir,
+    });
   write(path, result);
   console.log(JSON.stringify({
     command,

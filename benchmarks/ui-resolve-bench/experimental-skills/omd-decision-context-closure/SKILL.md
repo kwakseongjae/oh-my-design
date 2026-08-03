@@ -171,6 +171,16 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 
 아래 세 항목은 서로 다른 문서 작업이 아니라 **첫 edit transaction의 완료 조건**이다. 긴 ledger를 다시 설명하거나 검증을 반복하지 말고, 제품을 읽을 때 위험을 표시한 뒤 한 번의 edit으로 같이 고친다.
 
+#### Completion loop — accounting 전에 실제 결함 닫기
+
+사용자 prompt·task packet·DESIGN.md가 이미 실패라고 말한 항목은 `must_fix`다. 첫 제품 diff 직후, static closure 전에 딱 한 번 아래 순서로 확인한다.
+
+1. **Contrast:** normal text pair가 4.5 미만이면 그 요소를 확인된 Ink/text-role token으로 바꾼다. palette 전체를 새 hex로 바꾸거나 “unresolved”만 기록하지 않는다.
+2. **Atomic rows:** 320px·200%에서 exact identifier/summary가 한 줄에 안 맞으면 carrier 자체를 full-row/stack한 뒤, 여전히 물리적으로 안 맞는 exact row만 carrier-local named `comparison-scroll`로 둔다. page overflow, word-break, 글자 축소, 복제는 금지다.
+3. **Second edit gate:** `must_fix` 중 제품 diff에 실제 교정이 없는 항목이 하나라도 있으면 static proof로 넘어가지 않고 두 번째 제품 edit을 한다. `finalize-unresolved`는 수정 대신 쓰는 출구가 아니다.
+
+브라우저 명령은 static closure 뒤 한 번만 실행한다. host hook이 있는 환경에서는 artifact의 `browser_attempt` 자가진술로 충분하지 않다. helper가 `.omd/proof-policy`의 실제 실행 관측을 확인해야 `finalize-unresolved`를 허용한다. hook이 명령을 실행 전에 차단했다면 attempt가 아니므로, deny guidance에 따라 올바르게 분류되는 browser command 한 번을 실행하거나 delivery를 unresolved로 남긴다.
+
 편집 전에 아래 세 값을 한 줄씩 확정한다. 빈 값이 있으면 제품 edit을 시작하지 않는다.
 
 ```yaml

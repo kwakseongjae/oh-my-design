@@ -109,6 +109,24 @@ describe("proof policy host hook mapper", () => {
     expect(state.decisions.map((entry) => entry.reason)).toContain("browser-proof-unresolved");
   });
 
+  it("allows one osascript Chrome proof after static closure instead of treating it as duplicate static work", () => {
+    const browser = "osascript -e 'tell application \"Google Chrome\" to set URL of active tab of front window to \"file:///tmp/run/index.html\"'";
+    const state = run([
+      edit("Edit", { file_path: "/tmp/run/index.html" }),
+      pre("npm test"),
+      post("npm test"),
+      pre(browser),
+      post(browser, { exit_code: 1 }),
+    ]);
+    expect(state).toMatchObject({
+      static_closure: "closed",
+      browser_proof: "unresolved",
+      browser_attempts: 1,
+      delivery: "ready",
+    });
+    expect(state.violations.duplicate_static_closure).toBe(0);
+  });
+
   it("does not consume browser proof when the agent only reads browser-harness instructions", () => {
     const state = run([
       edit("Edit", { file_path: "/tmp/run/index.html" }),

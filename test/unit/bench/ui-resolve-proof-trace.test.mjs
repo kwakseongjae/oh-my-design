@@ -68,6 +68,16 @@ describe("proof trace contract", () => {
     });
   });
 
+  it("classifies same-route osascript Chrome automation as browser proof", () => {
+    const command = "osascript -e 'tell application \"Google Chrome\" to set URL of active tab of front window to \"file:///tmp/run/index.html\"'";
+    expect(classifyProofCommand(command)).toMatchObject({
+      browser: true,
+      recovery_probe: false,
+      static_verification: false,
+      neutral: false,
+    });
+  });
+
   it("classifies native browser proof separately from session management", () => {
     expect(classifyProofTool("mcp__agent-browser__browser_navigate")).toMatchObject({
       browser: true,

@@ -1,9 +1,29 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
   finalizeArtifact,
+  hostObservedBrowserAttempt,
   inventoryDigest,
   lockArtifact,
 } from "../../../skills/omd-apply/scripts/reflow-artifact.mjs";
+
+const temporaryRoots = [];
+
+afterEach(() => {
+  for (const root of temporaryRoots.splice(0)) rmSync(root, { recursive: true, force: true });
+});
+
+function hostState(browser_attempts, browser_proof) {
+  const root = mkdtempSync(join(tmpdir(), "omd-reflow-host-"));
+  temporaryRoots.push(root);
+  mkdirSync(root, { recursive: true });
+  writeFileSync(join(root, "state.json"), JSON.stringify({
+    state: { browser_attempts, browser_proof },
+  }));
+  return root;
+}
 
 function draft() {
   return {
@@ -66,6 +86,24 @@ describe("compact reflow artifact helper", () => {
   it("rejects unresolved accounting without one real browser infrastructure attempt", () => {
     expect(() => finalizeArtifact(lockArtifact(draft()), { unresolved: true }))
       .toThrow(/one recorded browser infrastructure attempt/);
+  });
+
+  it("binds unresolved accounting to a host-observed browser attempt when host state exists", () => {
+    const locked = lockArtifact(draft());
+    locked.browser_attempt = {
+      attempts: 1,
+      outcome: "infrastructure-error",
+      mechanism: "osascript Google Chrome same-route navigation",
+    };
+    const unobserved = hostState(0, "open");
+    expect(hostObservedBrowserAttempt(unobserved)).toBe(false);
+    expect(() => finalizeArtifact(locked, { unresolved: true, hostStateDir: unobserved }))
+      .toThrow(/host-observed browser attempt/);
+
+    const observed = hostState(1, "unresolved");
+    expect(hostObservedBrowserAttempt(observed)).toBe(true);
+    expect(finalizeArtifact(locked, { unresolved: true, hostStateDir: observed }).closure)
+      .toEqual({ state: "unresolved" });
   });
 
   it("rejects unknown bindings and changed locked inventory", () => {

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.402 browser-attempt + completion-loop repair
+- osascript Chrome을 browser proof로 분류하고 unresolved helper를 host-observed attempt에 결합했다.
+- completion loop 추가, focused 67/67 + pin 1/1, lint/diff green; provider 0. 다음은 exact pin이다.
+
 ## 2026-08-03 (Codex) · 1.9.401 field-sample r1 rejection and early stop
 - candidate 77/85, 514,723ms, 1,147,891 tokens; contrast/atomic line과 browser attempt가 미해결이다.
 - Reliability@3 최대 2/3이라 남은 4셀을 skip/freeze. 다음은 completion guidance + observed attempt binding 수리다.
