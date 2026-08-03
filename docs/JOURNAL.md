@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.381 shared named browser socket exact pin
+- committed ed3ee6bd의 shared named socket contract를 고정했다.
+- 다섯 roots frozen, provider 0. 다음은 fresh all-pin matrix다.
+
 ## 2026-08-03 (Codex) · 1.9.380 shared named browser socket repair
 - shared runtime flag + exact named socket으로 outer sandbox fixture가 성공했다.
 - focused 73/73, u19378 frozen, provider 0. 다음은 exact pin이다.

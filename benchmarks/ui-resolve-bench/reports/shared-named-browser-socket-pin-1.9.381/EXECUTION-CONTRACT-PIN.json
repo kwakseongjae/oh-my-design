@@ -1,0 +1,3 @@
+{
+  "schema_version":"0.1","product_version":"1.9.381","pin_id":"shared-named-browser-socket-1.9.381","source_commit":"ed3ee6bda17bd5e0a2229580f5a8012db99d3c98","acceptance":{"path":"benchmarks/ui-resolve-bench/reports/shared-named-browser-socket-1.9.380/ACCEPTANCE.json","sha256":"03027b33e5232be2cdd39e55683aefc8aa9aab8fec286c5b86019785814aad19"},"provider_calls":0,"quality_promotion":false,"next":"Fresh all-pin matrix only."
+}
