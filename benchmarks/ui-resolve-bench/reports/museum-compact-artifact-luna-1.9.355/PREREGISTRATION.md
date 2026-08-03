@@ -9,3 +9,7 @@ Host-policy admission uses exact pin 1.9.341, checkpoint reconstruction uses exa
 Promotion requires candidate resolution 3/3, no serious or critical contrast result, no paired objective loss, proof and host-policy passage 3/3, and candidate mean wall time and provider tokens no more than 1.10× control. Infrastructure invalidity or checkpoint drift freezes the matrix and requires fresh preregistration.
 
 This is Tokens-to-Target attempt 8. Prior observed spend is at least 16,933,255 provider-reported tokens plus three usage-unavailable cells. No prior score is pooled into this task. Provider calls at preregistration: 0.
+
+## Preparation — 1.9.356
+
+Fresh detached vendors and six committed, detached, clean Git cells were prepared at the preregistered roots. Task, prompt, product, DESIGN.md, activation, runtime, model, effort, timeout, installed proof policy, validity-admission pin, checkpoint-resume pin, and timeout-accounting pin are equal in all cells. The sole arm delta is skill tree `2d577464…` versus `36a44a1…`. Provider calls remain zero; the only permitted next cell is `luna-museum-r1-control` after a fresh browser preflight.

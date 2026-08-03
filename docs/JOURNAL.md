@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.356 museum matrix prepared
+- exact detached vendors와 6 committed/detached/clean cells를 준비했다.
+- equality 6/6, sole delta는 skill tree; admission/resume/timeout pins도 동일하다.
+- provider 0; 다음은 preflight 후 r1 control 한 cell이다.
+
 ## 2026-08-03 (Codex) · 1.9.355 museum matrix preregistration
 - Luna/high exact control vs compact candidate 2×3을 fresh task에 잠갔다.
 - admission/resume/timeout pins, 900s/pacing/no-retry/strict gates를 고정했다.
