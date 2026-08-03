@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.343 harbor compact-artifact matrix preregistered
+- 갱신: 2026-08-03 · 1.9.344 harbor compact-artifact matrix prepared
 
 ## 지금 (현재 위치)
+
+- 1.9.344는 `/private/tmp/u19343-vendors/{omd-1.9.274,omd-1.9.334}` exact detached source와 `/private/tmp/u19343` 6 committed/detached/clean cell을 준비했다.
+- shared equality 6/6이고 sole delta는 skill tree `2d577464…` vs `36a44a1…`다. admission pin 1.9.341도 동일하다.
+- provider 0이다. 다음 허용 cell은 fresh browser preflight 뒤 `luna-harbor-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
 
 - 1.9.343은 exact control `3a414a0a…` vs candidate `c1de0e4e…`를 fresh harbor task에 Luna/high 2×3으로 preregister했다.
 - 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 유지하며 admission pin 1.9.341을 추가했다.

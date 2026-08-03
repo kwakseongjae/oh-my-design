@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.344 harbor matrix prepared
+- exact detached vendors와 6 committed/detached/clean cells를 준비했다.
+- equality 6/6, sole delta는 skill tree 2d577464 vs 36a44a1이다.
+- provider 0; 다음은 preflight 후 r1 control 한 cell이다.
+
 ## 2026-08-03 (Codex) · 1.9.343 harbor matrix preregistration
 - exact control vs compact candidate Luna/high 2×3를 fresh harbor task에 잠갔다.
 - admission pin 1.9.341, 900s, pacing, no retry, strict gates다.
