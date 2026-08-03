@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.307 digital-master final
+- 6/6은 candidate/control mean 76.33/76.33, W/T/L 1/1/1이다.
+- 양쪽 resolved 0/3; candidate wall -15.48%, tokens +45.74%다.
+- attempt-3 3,451,991, 3-attempt 누적 10,951,917 tokens다.
+- candidate reject; 다음은 runtime-enforced reflow artifact gate다.
+
 ## 2026-08-03 (Codex) · 1.9.306 digital-master control r3
 - control r3는 77/85 unresolved, proof/host green이다.
 - control r2처럼 320/200% summary와 4.42:1 contrast만 red다.

@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.306 digital-master control r3
+- 갱신: 2026-08-03 · 1.9.307 digital-master final
 
 ## 지금 (현재 위치)
+
+- 1.9.307 digital-master 6/6은 candidate 75/73/81 vs control 75/77/77, W/T/L 1/1/1이며 양쪽 resolved 0/3이다. candidate를 승격하지 않는다.
+- candidate/control mean score는 76.33/76.33, mean wall은 candidate -15.48%, mean tokens는 candidate +45.74%다. attempt-3 candidate/control/total은 2,047,253 / 1,404,738 / 3,451,991 tokens다.
+- Tokens-to-Target 3 attempts 누적은 candidate 6,637,152 / control 4,314,765 / total 10,951,917이며 목표는 right-censored 미달성이다.
+- root cause는 inventory/manifest가 skill prose일 뿐 runtime-enforced artifact가 아니라는 점이다. 다음 bounded delta는 installed proof policy가 versioned `.omd` reflow-closure artifact를 static closure 전에 검증·fail-close하도록 만드는 것이다.
 
 - 1.9.306 control r3는 valid/policy-green 77/85 unresolved다. control r2와 같이 390은 green이고 320/200% summary atomic-line과 4.42:1 contrast만 red다.
 - wall 342,420ms, total 395,684 tokens(input 377,936, cached 329,472, output 17,748, reasoning 8,253)다. attempt-3 누적은 2,958,074다.

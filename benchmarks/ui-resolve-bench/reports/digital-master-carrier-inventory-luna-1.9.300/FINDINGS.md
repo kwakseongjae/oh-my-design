@@ -1,6 +1,6 @@
 # Digital master carrier-inventory transfer — findings
 
-Status: **5/6 cells complete — promotion gate already unreachable**
+Status: **6/6 cells complete — candidate rejected**
 
 ## Preparation checkpoint
 
@@ -113,3 +113,31 @@ evidence, keyboard, proof execution, and installed host policy pass.
 - cumulative attempt-3 experimental tokens: **2,958,074**
 
 Final-pair claims are withheld until `luna-master-r3-inventory` completes.
+
+## Pair 3 and final decision
+
+The candidate scored **81/85** against control **77/85**, but both remain
+unresolved. Candidate closed contrast, keyboard traversal, the handoff target,
+and 390px geometry; it still left the supplied-count summary two-line at 320px
+and 200%. Control retained the same summary failure plus 4.42:1 contrast.
+
+- candidate wall: **335,490ms** vs control **342,420ms** (**-2.02%**)
+- candidate tokens: **493,917** vs control **395,684** (**+24.82%**)
+- candidate/control score mean: **76.33 / 76.33**
+- candidate quality W/T/L: **1/1/1**
+- candidate/control UI-Resolved: **0/3 / 0/3**
+- candidate/control mean wall: **312,286ms / 369,478ms** (**-15.48%**)
+- candidate/control mean tokens: **682,417.67 / 468,246** (**+45.74%**)
+- candidate/control/total attempt-3 tokens: **2,047,253 / 1,404,738 /
+  3,451,991**
+
+The carrier-inventory patch is rejected. The immutable inventory and closure
+manifest are described by the skill but are not runtime-enforced artifacts:
+all candidate trials reached a static closure without materializing a
+machine-checkable carrier inventory, and all three remained unresolved. The
+next bounded repair must move this contract out of advisory prose. The
+installed proof policy should require a versioned `.omd` reflow-closure
+artifact before accepting static closure, validate immutable carrier/row
+cardinality and per-carrier 390px/320px/200% outcomes, and fail closed when the
+artifact is absent or contains unresolved rows. It must not add another
+planning phase or rely on model-authored grep assertions.
