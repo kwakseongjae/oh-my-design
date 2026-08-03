@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.364 isolated Codex home/browser sandbox repair
+- 갱신: 2026-08-03 · 1.9.365 isolated runtime exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.365는 committed `9fc5d854…`의 cell-local HOME/CODEX_HOME, auth-only bridge, OpenAI-only egress, exact browser socket과 dual preflight를 hash-pin했다.
+- `/private/tmp/u19362` 및 vendor root는 frozen/no-resume/no-retry다. 다음은 이 pin만 사용하는 fresh replacement preregistration이며 provider 0이다.
 
 - 1.9.364는 각 cell의 HOME/CODEX_HOME을 `.benchmark/codex-home`으로 격리하고 global Codex home에서는 `auth.json`만 exact symlink한다.
 - outer sandbox는 workspace write + OpenAI/ChatGPT domain + exact browser-harness socket만 허용하며, browser readiness와 isolated login을 동일 profile에서 preflight한다.

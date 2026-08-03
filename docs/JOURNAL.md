@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.365 isolated runtime exact pin
+- committed 9fc5d854의 isolated state·auth bridge·network/socket·dual preflight를 고정했다.
+- frozen u19362 재사용을 금지했다. provider 0; 다음은 fresh replacement preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.364 isolated Codex home/browser sandbox repair
 - u19362 first control은 provider 전 infrastructure-invalid라 retry 없이 root를 동결했다.
 - cell-local HOME/CODEX_HOME + auth-only link, OpenAI-only egress, exact browser socket을 구현했다.
