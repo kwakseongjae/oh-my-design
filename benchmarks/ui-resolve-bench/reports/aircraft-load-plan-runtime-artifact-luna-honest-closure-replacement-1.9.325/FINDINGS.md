@@ -1,7 +1,9 @@
 # Aircraft runtime-artifact honest-closure replacement — findings
 
-Status: **locked; fresh preparation required**
+Status: **fresh 6/6 preparation complete; provider not started**
 
 The scientific treatment, task, runtime, effort, pacing, retry, ordering, and promotion contract are unchanged. Only the equally shared committed host-policy infrastructure advances to `107bce09…`.
 
-No provider has been called. The next step is fresh detached vendor and six-cell preparation under `/private/tmp/u19325-vendors` and `/private/tmp/u19325`, followed by equality and publishability attestation. No cell may run before preparation passes.
+All six cells now share one task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/host-policy contract. Each workspace begins committed, detached, and clean. Both source vendors are detached, clean, and publishable. Exact installed skill tree `2d577464…` versus `bb3ac833…` is the sole arm delta.
+
+Provider calls remain 0. The only allowed next cell is `luna-load-r1-control-honest-closure` through canonical `--max-new-cells 1`; no retry, substitution, or same-root repair is permitted.

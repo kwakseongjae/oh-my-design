@@ -8,6 +8,10 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.326은 `/private/tmp/u19325` 6개 cell을 provider call 0으로 PREPARED했다. shared contract와 exact sole skill delta를 확인했다.
+- workspace baseline committed/detached/clean 6/6, source detached/clean/publishable 2/2, browser preflight ready다.
+- 다음 허용 cell은 `luna-load-r1-control-honest-closure` 하나, canonical `--max-new-cells 1`, no retry다.
+
 - 1.9.325는 same attempt/task/control/candidate/Luna-high/gates/order를 fresh `/private/tmp/u19325`에 사전등록했다.
 - sole shared infrastructure delta는 committed `107bce09…`의 browser preflight + honest closure + host-policy admission이며 양 arm 공통이다.
 - retained invalid minimum 4,968,562 tokens + usage-unavailable 1 cell, provider call 0이다. 다음은 fresh vendor/cell preparation과 equality attestation이다.

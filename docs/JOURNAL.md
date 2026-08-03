@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.326 honest-closure matrix prepared
+- u19325 6-cell shared equality와 exact skill delta를 확인했다.
+- baseline committed/detached/clean 6/6, source publishable 2/2다.
+- provider call 0; browser preflight ready다.
+- 다음은 첫 control 한 cell만 canonical 실행이다.
+
 ## 2026-08-03 (Codex) · 1.9.325 honest-closure replacement preregistration
 - same attempt/task/treatment/Luna-high/gates를 fresh u19325에 잠갔다.
 - sole shared delta는 107bce09 browser/preflight/closure policy다.
