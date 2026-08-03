@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.382 shared-socket cold-chain preregistration
+- 갱신: 2026-08-03 · 1.9.383 shared-socket cold-chain preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.383은 fresh u19382 vendors/6 clean detached cells와 equality 6/6을 준비했다.
+- provider 0; 다음은 exact named shared socket으로 r1 control 한 셀이다.
 
 - 1.9.382는 fresh u19382 attempt 14에 shared named-socket 1.9.381을 포함한 모든 runtime pins를 고정했다.
 - 이전 cold-chain roots frozen, provider 0. 다음은 fresh preparation이다.
