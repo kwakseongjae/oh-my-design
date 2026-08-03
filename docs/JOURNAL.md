@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.355 museum matrix preregistration
+- Luna/high exact control vs compact candidate 2×3을 fresh task에 잠갔다.
+- admission/resume/timeout pins, 900s/pacing/no-retry/strict gates를 고정했다.
+- prior minimum 16,933,255 tokens + unavailable 3; provider 0이다.
+
 ## 2026-08-03 (Codex) · 1.9.354 museum loan routing holdout lock
 - fresh 6 object/8 crate/4 courier-window task를 provider 전에 잠갔다.
 - baseline 75/85; narrow/200% reflow·atomic lines와 4.06 contrast만 red다.
