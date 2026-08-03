@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.489",
+  "experiment_id": "water-treatment-socket-native-luna-1.9.486",
+  "cell_id": "luna-water-r1-candidate",
+  "status": "COMPLETE",
+  "validity": "valid",
+  "run_status": "complete",
+  "provider_calls": 1,
+  "model": "gpt-5.6-luna",
+  "effort": "high",
+  "objective_score": 85,
+  "objective_max": 85,
+  "ui_resolved": true,
+  "wall_time_ms": 393400,
+  "provider_tokens": 609088,
+  "paired_ratios": {"wall_time":1.4435,"provider_tokens":1.0358},
+  "proof_trace": {"product_edits":1,"static_closures":1,"browser_commands":1,"browser_recoveries":0,"duplicate_static_closures":0,"verification_after_ready":0,"shipped_runner_invoked":true},
+  "artifact_proof": {
+    "pass": false,
+    "static_closure": "passed",
+    "browser_attempts": 1,
+    "browser_outcome": "measured",
+    "attached_existing": true,
+    "launched_browser": false,
+    "conditions": ["390","320","200pct"],
+    "closure": "unresolved",
+    "registered_carriers": 12,
+    "registered_rows": 30,
+    "unresolved_carriers": 0,
+    "unresolved_rows": 3,
+    "reasons": ["reflow-inline-fit-reserve-insufficient","reflow-artifact-not-closed"]
+  },
+  "unresolved_row_groups": [
+    {"id":"operator-note-label","expanded_rows":1,"cause":"1px measured reserve because carrier padding is excluded"},
+    {"id":"decision-evidence","expanded_rows":1,"cause":"multi-line prose was registered as an atomic one-line row"},
+    {"id":"form-status","expanded_rows":1,"cause":"initially empty dynamic status was registered without a visible measured state"}
+  ],
+  "tokens_to_target_observed_minimum": 50436586,
+  "usage_unavailable_cells": 6
+}

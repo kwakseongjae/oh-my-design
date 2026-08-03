@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `bfe6e7d9` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.488 water-treatment r1 control
+- 기준 커밋: `51456ecf` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.489 water-treatment transfer stopped
 
 ## 지금 (현재 위치)
+
+- 1.9.489 r1 candidate는 valid 85/85 UI-resolved: 393.400s, 609,088 tokens, control 대비 wall 1.4435×/token 1.0358×다.
+- existing attach true/no-launch/browser1/390·320·actual200 measured/static1/recovery0는 모두 green이며 socket repair는 실전 검증됐다.
+- operator note reserve가 padding 제외로 1px, multi-line evidence와 initially-empty form status가 atomic inventory에 들어가 unresolved row 3/proof fail이다.
+- proof 3/3 불가능으로 4셀 frozen, TTT 50,436,586+ / unavailable 6이다. 다음은 provider-free reserve boundary + visible one-line inventory repair다.
 
 - 1.9.488 r1 control은 valid 85/85 UI-resolved: 272.526s, 588,027 tokens다.
 - desktop/390/320/actual200, contrast, atomic text는 green이고 edit1/static1/shipped-runner1/recovery0/duplicate0/post-ready0다.

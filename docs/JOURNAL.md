@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.489 water transfer stopped
+- candidate는 85/85·exact attach/세 조건 실측이나 reserve/inventory 경계 3행이 unresolved라 proof fail이다.
+- 4셀 frozen. 다음은 provider-free carrier padding reserve + visible one-line inventory repair다.
+
 ## 2026-08-04 (Codex) · 1.9.488 water r1 control
 - exact control은 85/85, 272.526s, 588,027 tokens이나 browser attempts0/closure open으로 proof fail이다.
 - 다음은 fixed pacing 뒤 exact socket-native r1 candidate no-retry다.
