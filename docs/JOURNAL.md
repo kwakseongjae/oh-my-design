@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.462 satellite telemetry task lock
+- fresh 4 payload/6 archive/3 pass task를 baseline 75/85와 exact hashes로 잠갔다.
+- provider 0. 다음은 exact control/candidate Reliability@3 preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.461 deterministic static closure exact pin
 - repair를 exact commit/tree/file hashes와 새 competitor id로 고정했다.
 - provider 0, promotion false. 다음은 genuinely unseen transfer task lock이다.

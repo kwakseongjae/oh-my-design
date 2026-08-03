@@ -56,6 +56,7 @@ const aircraftLoadPlanTaskId = "aircraft-load-plan-review-v0.1";
 const orbitalContactPlanTaskId = "orbital-contact-plan-review-v0.1";
 const gridBatteryDispatchTaskId = "grid-battery-dispatch-release-v0.1";
 const radiotherapyPlanExportTaskId = "radiotherapy-plan-export-review-v0.1";
+const satelliteTelemetryReleaseTaskId = "satellite-telemetry-release-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1448,6 +1449,46 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("PLAN-HN-042731 + DICOM-RS-849103");
     expect(starter).toContain("5 treatment plans · 7 DICOM bundles · 3 QA windows");
     expect(starter).not.toContain("BESS-RACK-308114");
+  });
+
+  it("locks an unseen satellite telemetry family before deterministic static-closure validation", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/tasks",
+      satelliteTelemetryReleaseTaskId,
+      "task.json",
+    ), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: satelliteTelemetryReleaseTaskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: {
+          values: ["payload-manifest", "ground-passes", "release-decision"],
+          initial: "payload-manifest",
+          selected: "ground-passes",
+        },
+        form: { valid_value: "Asteria relay release" },
+      },
+      protected_hook_counts: {
+        "[data-bench='payload-case']": 4,
+        "[data-bench='payload-id']": 4,
+        "[data-bench='archive-id']": 6,
+        "[data-bench='station-id']": 3,
+        "[data-bench='pass-window']": 3,
+      },
+    });
+    const out = prepareVariant("raw-design-md", {
+      task: satelliteTelemetryReleaseTaskId,
+      outputName: "satellite-telemetry-release-lock",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/data-bench="payload-case"/g)).toHaveLength(4);
+    expect(starter.match(/data-bench="archive-id"/g)).toHaveLength(6);
+    expect(starter.match(/data-bench="pass-window"/g)).toHaveLength(3);
+    expect(starter).toContain("PAYLOAD-SR-057432 + TLM-ARC-920176");
+    expect(starter).toContain("4 payloads · 6 telemetry archives · 3 ground passes");
+    expect(starter).not.toContain("PLAN-HN-042731");
   });
 
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
