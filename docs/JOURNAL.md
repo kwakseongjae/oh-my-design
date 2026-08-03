@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.414 rail-signal r1 infrastructure stop
+- control은 870.043s/3,508,695 tokens, 79/85였으나 host가 duplicate static closure를 차단하지 못해 invalid-infrastructure다.
+- u19412/남은 5셀을 freeze했다. TTT 31,625,601+ / unavailable 6. 다음은 provider-free interception repair다.
+
 ## 2026-08-03 (Codex) · 1.9.413 rail-signal compound-atomic preparation
 - exact detached vendors 2개와 clean/detached cells 6개를 만들고 shared input/execution equality 6/6을 확인했다.
 - control `2d577464…` vs candidate `ef6e0199…`, provider 0. 다음은 exact browser preflight와 r1 control이다.

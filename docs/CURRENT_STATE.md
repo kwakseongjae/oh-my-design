@@ -4,9 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.413 rail-signal compound-atomic preparation
+- 갱신: 2026-08-04 · 1.9.414 rail-signal r1 control infrastructure stop
 
 ## 지금 (현재 위치)
+
+- 1.9.414에서 r1 control은 870.043s/3,508,695 tokens, 79/85 unresolved로 종료됐다.
+- overflow와 contrast는 닫았지만 390/320/200% character-range atomic line은 red다.
+- proof trace는 duplicate static closure 1회를 잡았으나 host hook이 이를 차단하지 못해 `duplicate-static-closure-unblocked-limit`; validity는 invalid-infrastructure다.
+- `/private/tmp/u19412`와 남은 5셀은 retry 없이 freeze했다. Tokens-to-Target minimum은 31,625,601 + unavailable 6이다.
+- 다음은 provider-free duplicate-static interception repair, exact pin, fresh preregistration/root다.
 
 - 1.9.413은 `/private/tmp/u19412-vendors`의 exact detached control/candidate와 `/private/tmp/u19412` 6개 clean/detached cell을 준비했다.
 - task·product·runtime·model·effort·timeout·host policy equality는 6/6이고 유일한 arm delta는 설치된 skill source다.
