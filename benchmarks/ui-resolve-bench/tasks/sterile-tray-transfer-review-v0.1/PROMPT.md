@@ -1,0 +1,5 @@
+Improve the supplied sterile-processing tray transfer review so sterile processing coordinators can inspect tray-to-indicator assignments, sterilizer cycle windows, and the transfer decision confidently on desktop and narrow screens.
+
+Preserve all six tray identifiers, all eight chemical-indicator identifiers and their exact tray assignments, all four supplied cycle windows, the three review views, the processing-note toggle, the transfer-review form, and all stated summary evidence. Do not invent sterility confirmation, exposure clearance, biological-indicator verification, transfer approval, sterilizer acceptance, cycle completion, load release, or chain-of-transfer closure. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The tray register, separate sterilizer-cycle strip, and separate transfer decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

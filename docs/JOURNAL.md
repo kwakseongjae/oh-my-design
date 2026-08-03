@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.404 sterile-tray transfer fresh task lock
+- 새 sterile-processing task를 provider 전에 고정했고 baseline은 75/85 unresolved다.
+- 390/320/200% reflow·atomic identifier와 4.401 contrast만 red다. 다음은 exact 2×3 preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.403 browser-attempt + completion-loop exact pin
 - repair `f55815d…`와 skill/helper/classifier/tests/acceptance 9개 hash를 봉인했다.
 - provider 0, promotion 없음. 다음은 fresh unseen replacement lock이다.

@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.404",
+  "task_id": "sterile-tray-transfer-review-v0.1",
+  "status": "locked-unseen",
+  "facts": {
+    "trays": 6,
+    "chemical_indicators": 8,
+    "cycle_windows": 4,
+    "relationship_carriers": ["tray-register", "sterilizer-cycle-strip", "transfer-decision"]
+  },
+  "baseline": {
+    "deterministic_score": 75,
+    "deterministic_max": 85,
+    "ui_resolved": false,
+    "green": ["task-contract", "state-journey", "design-grounding", "evidence-honesty", "desktop-geometry", "keyboard"],
+    "red": ["390px-overflow-and-atomic-lines", "320px-overflow-and-atomic-lines", "200%-reflow-overflow-and-atomic-lines", "serious-color-contrast"],
+    "contrast_ratios": { "muted_on_canvas": 4.401 }
+  },
+  "sha256": {
+    "task": "cb8b33f8657aeea1c01acf34f979bc8bf2787398c1caaa6a724521d98fc7ff2d",
+    "prompt": "c545c824e332ae1ee4e199322fdf87457d698017713736195133fedafd5f1cab",
+    "index": "64cbb0f180a97b2fdb598abf913f1cf0189d9c29e62f3427a5c02d83e88bce2e",
+    "design": "ba185a210c277421d01f8f6adb56e22c5d87e68b8a0c20b5cd9a86a7b886d92f",
+    "baseline_score": "9a186fd4a962f96aac249dc863168f0b22c39cf452a6e1ac7554a6cf2d1508d9"
+  },
+  "provider_calls": 0,
+  "next": "Preregister exact historical control versus exact 1.9.403 candidate with all runtime and browser execution pins."
+}
