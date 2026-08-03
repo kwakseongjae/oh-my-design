@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.474 verifier repair
+- actual HTML attribute count와 containment-aware overlap을 구현했고 실패 candidate replay가 77→81/85로 복구됐다.
+- lint/focused+install 89/89 green, provider 0. 다음은 exact pin과 shipped consumer-browser runner다.
+
 ## 2026-08-04 (Codex) · 1.9.473 genomic transfer stopped
 - candidate 77/85, 359.021s/602,380 tokens; raw literal-count 오탐으로 browser 측정 전 closure가 막혔다.
 - candidate 3/3 불가로 4셀 frozen, TTT 47,697,272+. 다음은 provider-free verifier repair다.

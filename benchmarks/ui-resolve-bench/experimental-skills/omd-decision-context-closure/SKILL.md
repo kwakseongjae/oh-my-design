@@ -233,7 +233,7 @@ pre_edit_release_invariant:
        forbidden_literals: ["forbidden fallback or supplied-bad literal"]
        forbidden_patterns: ["forbidden\\s+source\\s+pattern"]
        count_literals:
-         - { literal: 'data-bench="stable-hook"', expected_count: 1 }
+         - { literal: 'data-bench="stable-hook"', expected_count: 1 } # 실제 HTML start-tag attribute만 계산하며 script selector 문자열은 제외
      inventory:
        state: "filled by lock helper"
        carrier_ids: ["filled by lock helper"]

@@ -298,6 +298,70 @@ function literalCount(source, literal) {
   return count;
 }
 
+function htmlStartTags(source) {
+  const tags = [];
+  const lowerSource = source.toLowerCase();
+  let cursor = 0;
+  while ((cursor = source.indexOf("<", cursor)) >= 0) {
+    if (source.startsWith("<!--", cursor)) {
+      const end = source.indexOf("-->", cursor + 4);
+      cursor = end < 0 ? source.length : end + 3;
+      continue;
+    }
+    const next = source[cursor + 1];
+    if (!next || next === "/" || next === "!" || next === "?" || !/[A-Za-z]/u.test(next)) {
+      cursor += 1;
+      continue;
+    }
+    let end = cursor + 2;
+    let quote = null;
+    for (; end < source.length; end += 1) {
+      const character = source[end];
+      if (quote) {
+        if (character === quote) quote = null;
+      } else if (character === '"' || character === "'") {
+        quote = character;
+      } else if (character === ">") {
+        break;
+      }
+    }
+    if (end >= source.length) break;
+    const tag = source.slice(cursor + 1, end);
+    tags.push(tag);
+    const tagName = tag.match(/^([^\s/>]+)/u)?.[1]?.toLowerCase();
+    if (tagName === "script" || tagName === "style") {
+      const rawTextEnd = lowerSource.indexOf(`</${tagName}`, end + 1);
+      if (rawTextEnd < 0) break;
+      cursor = rawTextEnd;
+      continue;
+    }
+    cursor = end + 1;
+  }
+  return tags;
+}
+
+function attributeAssertion(literal) {
+  const match = literal.match(/^([^\s=<>"']+)\s*=\s*(?:(["'])(.*?)\2)?$/u);
+  if (!match) fail(`static_closure_manifest count literal must be an HTML attribute assertion: ${literal}`);
+  return { name: match[1], value: match[3] };
+}
+
+function attributeCount(source, literal) {
+  const assertion = attributeAssertion(literal);
+  let count = 0;
+  for (const tag of htmlStartTags(source)) {
+    const nameEnd = tag.search(/\s|\//u);
+    const attributes = nameEnd < 0 ? "" : tag.slice(nameEnd);
+    const pattern = /([^\s"'<>\/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/gu;
+    for (const match of attributes.matchAll(pattern)) {
+      if (match[1] !== assertion.name) continue;
+      const value = match[2] ?? match[3] ?? match[4];
+      if (assertion.value === undefined || value === assertion.value) count += 1;
+    }
+  }
+  return count;
+}
+
 function comparablePath(value) {
   const absolute = resolve(value);
   return existsSync(absolute) ? realpathSync(absolute) : absolute;
@@ -328,7 +392,7 @@ export function executeStaticClosure(input, { productPath, source }) {
     if (new RegExp(pattern, "u").test(source)) failures.push(`matched forbidden pattern: ${pattern}`);
   }
   for (const entry of artifact.static_closure_manifest.count_literals) {
-    const observed = literalCount(source, entry.literal);
+    const observed = attributeCount(source, entry.literal);
     if (observed !== entry.expected_count) {
       failures.push(`literal count ${entry.literal}: ${observed}, expected ${entry.expected_count}`);
     }

@@ -882,6 +882,9 @@ async function main() {
         const overlappingControls = [];
         for (let first = 0; first < controlDetails.length; first += 1) {
           for (let second = first + 1; second < controlDetails.length; second += 1) {
+            const firstElement = interactiveControls[first];
+            const secondElement = interactiveControls[second];
+            if (firstElement.contains(secondElement) || secondElement.contains(firstElement)) continue;
             const a = controlDetails[first];
             const b = controlDetails[second];
             const overlapWidth = Math.min(a.right, b.right) - Math.max(a.left, b.left);

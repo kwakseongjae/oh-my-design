@@ -455,6 +455,7 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
   });
 
   it("fails clipped/overlapping geometry and incomplete keyboard traversal", () => {
+    expect(readFileSync(evaluatorPath, "utf8")).toContain("firstElement.contains(secondElement) || secondElement.contains(firstElement)");
     expect(evaluateViewportGeometry({
       scroll_width: 320,
       client_width: 320,

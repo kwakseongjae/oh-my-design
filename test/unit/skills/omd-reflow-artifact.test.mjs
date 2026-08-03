@@ -72,7 +72,7 @@ function draft() {
   };
 }
 
-function staticClosed(artifact, source = "required-fact data-id=") {
+function staticClosed(artifact, source = '<div data-id="fixture">required-fact</div>') {
   return executeStaticClosure(artifact, {
     productPath: join(process.cwd(), "index.html"),
     source,
@@ -162,13 +162,35 @@ describe("compact reflow artifact helper", () => {
     expect(() => staticClosed(failed)).toThrow(/exactly-once/);
   });
 
+  it("counts actual HTML attributes without counting selector strings in scripts", () => {
+    const input = draft();
+    input.static_closure_manifest.count_literals = [
+      { literal: 'data-bench="review-view-option"', expected_count: 2 },
+      { literal: "data-id=", expected_count: 1 },
+    ];
+    const source = `
+      <p>required-fact</p>
+      <button data-bench="review-view-option" data-id="first">One</button>
+      <button data-bench='review-view-option'>Two</button>
+      <script>
+        document.querySelectorAll('[data-bench="review-view-option"]');
+        const decoy = '<not-a-real-tag data-bench="review-view-option">';
+      </script>
+    `;
+    const result = executeStaticClosure(lockArtifact(input), {
+      productPath: join(process.cwd(), "index.html"),
+      source,
+    });
+    expect(result.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
+  });
+
   it("persists a failed CLI static attempt before returning non-zero", () => {
     const root = mkdtempSync(join(tmpdir(), "omd-reflow-static-cli-"));
     temporaryRoots.push(root);
     const artifactPath = join(root, "artifact.json");
     const productPath = join(root, "index.html");
     writeFileSync(artifactPath, JSON.stringify(lockArtifact(draft())));
-    writeFileSync(productPath, "required-fact data-id= forbidden-claim");
+    writeFileSync(productPath, '<div data-id="fixture">required-fact forbidden-claim</div>');
 
     const result = spawnSync(process.execPath, [
       join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),

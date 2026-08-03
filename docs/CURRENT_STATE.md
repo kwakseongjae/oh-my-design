@@ -4,9 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.473 genomic consumer-browser transfer stopped
+- 갱신: 2026-08-04 · 1.9.474 static attribute + overlap repair
 
 ## 지금 (현재 위치)
+
+- 1.9.474는 provider-free로 raw hook literal count를 실제 HTML start-tag attribute count로 교체하고 script/style selector decoy를 제외했다.
+- evaluator는 서로 독립된 control overlap은 계속 잡되 focusable ancestor와 descendant의 정상 containment를 collision에서 제외한다.
+- 실패 candidate 사본에서 static closure passed, overlap 전 viewport green, 77→81/85로 복구됐다. 남은 실제 red는 320/actual200 evidence summary 2줄뿐이다.
+- lint + focused/install 89/89 green. broad는 새 mirror failure를 수정·재검증했고, 기존 외부 vendor Git-root 2건/timeout attribution 1건만 남는다. provider 0이다.
+- 다음은 exact immutable pin 뒤 model-independent shipped consumer-browser measurement runner를 구현한다.
 
 - 1.9.473 r1 candidate는 valid failure 77/85, 359.021s, 602,380 tokens다. control 대비 wall 1.0276× / token 0.7796×다.
 - raw `count_literals`가 실제 속성과 script selector 문자열을 함께 세 static closure가 실패했고, exact named consumer browser 측정은 시작되지 않았다.
