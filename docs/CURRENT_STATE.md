@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.310 aircraft load-plan holdout lock
+- 갱신: 2026-08-03 · 1.9.311 aircraft runtime-artifact preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.311은 exact control `3a414a0a…` vs exact runtime-artifact candidate `8f8cec6e…`를 fresh aircraft load-plan task에 Luna/high 2×3으로 preregister했다.
+- C/N, N/C, C/N balanced order, 900초, concurrency 1, 120초 pacing, no retry를 고정했다. candidate gate는 resolved/contrast/proof/host 3/3, paired loss 0, mean wall/token 각각 +10% 이하다.
+- Tokens-to-Target attempt 4이며 attempts 1–3 누적 10,951,917 tokens는 right-censored로 보존한다. focused plan validation green, provider call 0이다.
+- 다음은 exact detached vendor 두 개와 6개 fresh Git cell을 prepare하고 equality attestation 후 한 cell씩 실행하는 것이다.
 
 - 1.9.310은 irregular 6-bay spatial plan + 별도 4-station balance strip + 별도 dispatch context의 fresh `aircraft-load-plan-review-v0.1`을 provider 전에 lock했다.
 - untouched starter는 75/85다. task/state/design/evidence/desktop/keyboard는 green이고 의도한 red는 muted 4.43:1 contrast와 390/320/200% 세 carrier overflow·atomic wrapping뿐이다.

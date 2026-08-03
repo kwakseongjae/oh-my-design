@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.311 aircraft runtime-artifact preregistration
+- exact control vs runtime artifact Luna/high 2×3를 잠갔다.
+- balanced order, proof/host, quality, +10% efficiency gate를 고정했다.
+- Tokens-to-Target attempt 4, provider call 0이다.
+- 다음은 fresh detached vendors와 6개 cell prepare다.
+
 ## 2026-08-03 (Codex) · 1.9.310 aircraft load-plan holdout lock
 - fresh 6-bay plan + balance strip + dispatch context task를 lock했다.
 - untouched starter는 75/85, 의도한 contrast/reflow만 red다.
