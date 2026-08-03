@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.455 radiotherapy plan export fresh task lock
+- 갱신: 2026-08-04 · 1.9.456 radiotherapy accessible atomic-fit preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.456은 exact 1.9.409 control `1480d7cc…` vs exact 1.9.453 candidate `f578e8a6…`를 fresh radiotherapy task에 Luna/high 2×3으로 사전등록했다.
+- actual 200%=640px + document zoom 2, passive protected-text scroll 0, task-wide one static closure, helper terminal marker, 900s/concurrency 1/120s pacing/no retry를 고정했다.
+- attempt 26, prior TTT 43,259,233+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 fresh exact vendors/cells preparation과 equality 검증이다.
 
 - 1.9.455는 fresh `radiotherapy-plan-export-review-v0.1`을 provider 전에 lock했다.
 - 5 treatment plan/7 DICOM bundle/3 QA window와 plan manifest·QA strip·export decision 세 carrier를 보존한다.
