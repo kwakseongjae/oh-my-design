@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `1de91207` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.483 socket-native runner + artifact-aware gate validated
+- 기준 커밋: `aa0d680d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.484 socket-native candidate exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.484는 1.9.483 수리를 exact commit `aa0d680d…`, skill tree `e6a01cae…`, skill/helper/runner hash로 pin했다.
+- 새 competitor는 `omd-socket-native-consumer-browser-candidate`, vendor dir `omd-1.9.483`이며 provider 0/promotion false다.
+- 다음은 genuinely unseen task를 provider 전에 lock하고 historical control 대비 exact transfer를 사전등록한다.
 
 - 1.9.483은 raw CDP endpoint 없이 exact `BU_NAME` socket으로 shipped runner가 consumer browser에 붙도록 수리했다.
 - `bench19366` 실재생에서 existing attach true/launch false, 390·320·actual200 세 조건을 1회 측정했고 static은 passed다.

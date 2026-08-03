@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.484 socket-native exact pin
+- 1.9.483을 exact commit/tree/file hashes와 `omd-1.9.483` detached vendor identity로 등록했다.
+- provider 0/promotion false. 다음은 genuinely unseen task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.483 socket-native proof repair
 - raw CDP 없이 exact BU_NAME socket attach·세 조건 실측·no-launch를 실제 consumer browser에서 재현했다.
 - 측정 실패는 unresolved로 닫고 artifact-aware gate가 인프라 실패와 품질 실패를 분리한다. 다음은 exact pin이다.
