@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.340 host validity classification
+- ready host rejection은 valid unresolved system failure로 비용·신뢰도에 포함한다.
+- 실제 install/state/trace/interception/enforcement 결함만 infrastructure-invalid다.
+- focused 62/62, wider 312 pass + known vendor 2 fail, lint/build green이다.
+- 다음은 exact pin + fresh unseen task다.
+
 ## 2026-08-03 (Codex) · 1.9.339 orbital control frozen
 - R1 control은 75/85, 763,451ms, 2,004,054 tokens였지만 host delivery blocked다.
 - artifact 34 rows와 host 33 rows 불일치, 잘못된 browser unresolved가 원인이다.

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.339 orbital control invalid/frozen
+- 갱신: 2026-08-03 · 1.9.340 host-policy validity classification repaired
 
 ## 지금 (현재 위치)
+
+- 1.9.340은 ready/analyzable host가 system output을 거부한 경우를 valid unresolved system failure로 집계한다. score/time/token이 reliability·efficiency에서 사라지지 않는다.
+- install/state/trace/interception/enforcement가 없거나 불일치한 경우만 infrastructure-invalid로 동결한다.
+- focused 62/62, wider bench 312 pass + 기존 external vendor Git-root 2 fail, lint/build/diff green, provider 0이다. 다음은 exact pin → fresh unseen task → 새 preregistration이다.
 
 - 1.9.339 첫 Luna/high control은 75/85·763,451ms·2,004,054 tokens였지만 installed host delivery가 blocked라 infrastructure-invalid로 제외했다.
 - 원인은 browser 부재가 아니라 model artifact 34 rows vs host state 33 rows 불일치와 실제 browser attempt를 daemon-unresolved로 잘못 기록한 것이다. candidate call은 0이다.

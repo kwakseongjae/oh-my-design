@@ -6,6 +6,7 @@ import {
   directBrowserCommandCount,
   harnessDeliveryStopReason,
   firstProductWriteTransaction,
+  hostPolicyAdmissionDisposition,
   lastAdvisoryToFirstProductWriteMs,
   preflightRuntimeEnvironment,
   preregisteredStopReason,
@@ -52,6 +53,41 @@ const validRun = {
 };
 
 describe("UI-Resolve prepared matrix execution", () => {
+  it("separates host infrastructure faults from a ready host rejecting system output", () => {
+    const plan = { shared_host_policy: { require_delivery_ready: true } };
+    const base = {
+      proof_trace: { analyzable: true },
+      host_policy: {
+        installation: { ready: true },
+        observed: { available: true, state_files: 1, valid_state_files: 1 },
+      },
+    };
+    expect(hostPolicyAdmissionDisposition(plan, {
+      ...base,
+      host_policy_gate: {
+        pass: false,
+        reasons: ["installed-policy-delivery-incomplete"],
+      },
+    })).toEqual({
+      disposition: "valid-system-failure",
+      reason: "installed-host-policy-rejected-system-output",
+    });
+    expect(hostPolicyAdmissionDisposition(plan, {
+      ...base,
+      host_policy_gate: {
+        pass: false,
+        reasons: ["installed-policy-state-invalid"],
+      },
+    })).toEqual({
+      disposition: "invalid-infrastructure",
+      reason: "installed-host-policy-gate-failed",
+    });
+    expect(hostPolicyAdmissionDisposition(plan, {
+      ...base,
+      host_policy_gate: { pass: true, reasons: [] },
+    })).toEqual({ disposition: "admit", reason: null });
+  });
+
   it("rejects unknown CLI options instead of silently dropping checkpoint bounds", () => {
     expect(() => validateRunPreparedMatrixCliArgs(new Map([
       ["root", "/private/tmp/example"],

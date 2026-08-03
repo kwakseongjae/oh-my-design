@@ -97,11 +97,47 @@ export function preflightRuntimeEnvironment(
   return { status: "complete", runtimes, checks };
 }
 
+const HOST_POLICY_INFRASTRUCTURE_REASONS = new Set([
+  "installed-policy-not-ready",
+  "installed-policy-state-missing",
+  "installed-policy-state-invalid",
+  "native-browser-unintercepted",
+  "proof-trace-not-analyzable",
+]);
+
+export function hostPolicyAdmissionDisposition(plan, summary) {
+  if (!plan?.shared_host_policy) return { disposition: "admit", reason: null };
+  const hostPolicy = summary?.host_policy;
+  const gate = summary?.host_policy_gate;
+  if (gate?.pass === true) return { disposition: "admit", reason: null };
+  if (!hostPolicy || !gate) {
+    return { disposition: "invalid-infrastructure", reason: "installed-host-policy-gate-missing" };
+  }
+  const installation = hostPolicy.installation;
+  const observed = hostPolicy.observed;
+  const proofTrace = summary?.proof_trace;
+  const reasons = Array.isArray(gate.reasons) ? gate.reasons : [];
+  const inconsistentInstallation = installation?.ready !== true
+    || observed?.available !== true
+    || Number(observed?.state_files ?? 0) < 1
+    || Number(observed?.valid_state_files ?? 0) !== Number(observed?.state_files ?? 0)
+    || proofTrace?.analyzable !== true
+    || reasons.some((reason) => (
+      HOST_POLICY_INFRASTRUCTURE_REASONS.has(reason)
+      || String(reason).endsWith("-unblocked-limit")
+    ));
+  if (inconsistentInstallation) {
+    return { disposition: "invalid-infrastructure", reason: "installed-host-policy-gate-failed" };
+  }
+  return {
+    disposition: "valid-system-failure",
+    reason: "installed-host-policy-rejected-system-output",
+  };
+}
+
 export function hostPolicyAdmissionStopReason(plan, summary) {
-  if (!plan?.shared_host_policy) return null;
-  return summary?.host_policy_gate?.pass === true
-    ? null
-    : "installed-host-policy-gate-failed";
+  const admission = hostPolicyAdmissionDisposition(plan, summary);
+  return admission.disposition === "invalid-infrastructure" ? admission.reason : null;
 }
 
 export function preregisteredStopReason(cell, manifest, run, { schemaVersion = "0.1" } = {}) {
@@ -1280,7 +1316,10 @@ function executePreparedMatrixWithLease(root, {
         ? { completedInInvocation: invocation.invocation }
         : { includeArtifactHashes: false },
     );
-    const hostPolicyStopReason = hostPolicyAdmissionStopReason(plan, summary);
+    const hostPolicyAdmission = hostPolicyAdmissionDisposition(plan, summary);
+    const hostPolicyStopReason = hostPolicyAdmission.disposition === "invalid-infrastructure"
+      ? hostPolicyAdmission.reason
+      : null;
     if (hostPolicyStopReason) {
       const record = readJson(recordPath);
       record.validity = "invalid-infrastructure";
@@ -1308,7 +1347,26 @@ function executePreparedMatrixWithLease(root, {
       writeJson(executionStatePath, state);
       throw new Error(`preregistered stop at ${cell.id}: ${hostPolicyStopReason}`);
     }
-    upsertCell(state, summary);
+    let admittedSummary = summary;
+    if (hostPolicyAdmission.disposition === "valid-system-failure") {
+      const record = readJson(recordPath);
+      record.ui_resolved = false;
+      record.runtime_diagnostics = {
+        ...(record.runtime_diagnostics ?? {}),
+        host_policy_admission: hostPolicyAdmission,
+      };
+      writeJson(recordPath, record);
+      admittedSummary = completedCellSummary(
+        cell,
+        index,
+        workspace,
+        bounded
+          ? { completedInInvocation: invocation.invocation }
+          : { includeArtifactHashes: false },
+      );
+      admittedSummary.host_policy_admission = hostPolicyAdmission;
+    }
+    upsertCell(state, admittedSummary);
     state.completed_cells = state.cells.filter((entry) => entry.status === "complete").length;
     state.current_cell = null;
     if (bounded) {
@@ -1316,7 +1374,7 @@ function executePreparedMatrixWithLease(root, {
       invocation.completed_cells_after = state.completed_cells;
     }
     writeJson(executionStatePath, state);
-    console.log(JSON.stringify({ event: "cell-complete", ...summary }));
+    console.log(JSON.stringify({ event: "cell-complete", ...admittedSummary }));
 
     if (
       bounded

@@ -358,11 +358,24 @@ describe("provider-neutral prepared matrix contract", () => {
     })).toThrow("runtime-preflight-failure:browser-harness-not-ready");
   });
 
-  it("rejects a shared host-policy failure from score admission", () => {
+  it("keeps a ready host rejection as a scored system failure", () => {
     const plan = calibrationPlan("/tmp/provider-neutral-host-policy");
     plan.shared_host_policy = { require_browser_attempt: true };
     expect(hostPolicyAdmissionStopReason(plan, {
-      host_policy_gate: { pass: false },
+      proof_trace: { analyzable: true },
+      host_policy: {
+        installation: { ready: true },
+        observed: { available: true, state_files: 1, valid_state_files: 1 },
+      },
+      host_policy_gate: { pass: false, reasons: ["installed-policy-delivery-incomplete"] },
+    })).toBeNull();
+    expect(hostPolicyAdmissionStopReason(plan, {
+      proof_trace: { analyzable: false },
+      host_policy: {
+        installation: { ready: true },
+        observed: { available: true, state_files: 1, valid_state_files: 1 },
+      },
+      host_policy_gate: { pass: false, reasons: ["proof-trace-not-analyzable"] },
     })).toBe("installed-host-policy-gate-failed");
     expect(hostPolicyAdmissionStopReason(plan, {
       host_policy_gate: { pass: true },
