@@ -939,7 +939,7 @@ describe('install-skills', () => {
     const enabled = JSON.parse(readFileSync(settingsPath, 'utf8'));
     expect(JSON.stringify(enabled)).toContain('node ./my-user-hook.mjs');
     expect(JSON.stringify(enabled)).toContain(
-      'node ${CLAUDE_PROJECT_DIR}/.claude/hooks/omd-proof-policy/proof-policy-hook.mjs',
+      'OMD_PROOF_POLICY_REFLOW_ARTIFACT=1 node ${CLAUDE_PROJECT_DIR}/.claude/hooks/omd-proof-policy/proof-policy-hook.mjs',
     );
     for (const event of ['PreToolUse', 'PostToolUse', 'Stop']) {
       expect(JSON.stringify(enabled.hooks[event]).match(/omd-proof-policy/g)).toHaveLength(1);
@@ -976,7 +976,9 @@ describe('install-skills', () => {
     const enabled = JSON.parse(readFileSync(join(root, '.codex/hooks.json'), 'utf8'));
     expect(enabled.description).toBe('user config');
     expect(JSON.stringify(enabled)).toContain('node ./my-codex-hook.mjs');
-    expect(JSON.stringify(enabled)).toContain('.codex/hooks/omd-proof-policy/proof-policy-hook.mjs');
+    expect(JSON.stringify(enabled)).toContain(
+      'OMD_PROOF_POLICY_REFLOW_ARTIFACT=1 node \\"$(git rev-parse --show-toplevel)/.codex/hooks/omd-proof-policy/proof-policy-hook.mjs\\"',
+    );
     expect(existsSync(join(
       root,
       '.codex/hooks/omd-proof-policy/proof-policy-hook.mjs',

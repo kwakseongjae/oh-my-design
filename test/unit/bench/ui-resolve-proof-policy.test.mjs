@@ -115,4 +115,23 @@ describe("proof policy state machine", () => {
     expect(seed.revision).toBe(0);
     expect(state.revision).toBe(1);
   });
+
+  it("locks one reflow inventory and refuses a changed carrier set", () => {
+    const state = simulateProofPolicy([
+      { type: "reflow-inventory-lock", inventory_sha256: "first", carrier_count: 3, row_count: 4 },
+      { type: "product-edit" },
+      { type: "reflow-inventory-lock", inventory_sha256: "changed", carrier_count: 1, row_count: 1 },
+    ]);
+    expect(state.reflow_contract).toMatchObject({
+      required: true,
+      inventory_sha256: "first",
+      carrier_count: 3,
+      row_count: 4,
+      closure: "open",
+    });
+    expect(state.decisions.at(-1)).toMatchObject({
+      allow: false,
+      reason: "reflow-inventory-changed",
+    });
+  });
 });

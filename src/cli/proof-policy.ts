@@ -66,8 +66,8 @@ function configPath(root: string, target: ProofPolicyTarget): string {
 
 export function proofPolicyCommand(target: ProofPolicyTarget): string {
   return target === 'claude-code'
-    ? 'node ${CLAUDE_PROJECT_DIR}/.claude/hooks/omd-proof-policy/proof-policy-hook.mjs'
-    : 'node "$(git rev-parse --show-toplevel)/.codex/hooks/omd-proof-policy/proof-policy-hook.mjs"';
+    ? 'OMD_PROOF_POLICY_REFLOW_ARTIFACT=1 node ${CLAUDE_PROJECT_DIR}/.claude/hooks/omd-proof-policy/proof-policy-hook.mjs'
+    : 'OMD_PROOF_POLICY_REFLOW_ARTIFACT=1 node "$(git rev-parse --show-toplevel)/.codex/hooks/omd-proof-policy/proof-policy-hook.mjs"';
 }
 
 function proofHookGroup(target: ProofPolicyTarget): JsonObject {

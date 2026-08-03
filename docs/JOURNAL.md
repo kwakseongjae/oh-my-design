@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.308 runtime reflow artifact gate
+- installed proof policy가 `.omd/reflow-closure.json` inventory를 edit 전에 잠근다.
+- changed hash와 incomplete 390/320/200% closure는 static proof 전에 차단된다.
+- focused 139/139, lint/build/diff-check green, provider call 0이다.
+- 다음은 exact candidate pin과 fresh unseen Reliability@3다.
+
 ## 2026-08-03 (Codex) · 1.9.307 digital-master final
 - 6/6은 candidate/control mean 76.33/76.33, W/T/L 1/1/1이다.
 - 양쪽 resolved 0/3; candidate wall -15.48%, tokens +45.74%다.

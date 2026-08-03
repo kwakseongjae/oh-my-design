@@ -17,6 +17,13 @@ export function initialProofPolicyState() {
       unblocked_calls: 0,
       source: null,
     },
+    reflow_contract: {
+      required: false,
+      inventory_sha256: null,
+      carrier_count: 0,
+      row_count: 0,
+      closure: "not-required",
+    },
     decisions: [],
   };
 }
@@ -26,6 +33,14 @@ function copyState(state) {
     ...state,
     violations: { ...state.violations },
     native_observation: { ...state.native_observation },
+    reflow_contract: {
+      required: false,
+      inventory_sha256: null,
+      carrier_count: 0,
+      row_count: 0,
+      closure: "not-required",
+      ...(state.reflow_contract ?? {}),
+    },
     decisions: [...state.decisions],
   };
 }
@@ -44,7 +59,8 @@ function decision(state, event, allow, reason) {
 function markReadyWhenClosed(state) {
   if (
     state.static_closure === "closed" &&
-    (state.browser_proof === "closed" || state.browser_proof === "unresolved")
+    (state.browser_proof === "closed" || state.browser_proof === "unresolved") &&
+    (!state.reflow_contract?.required || state.reflow_contract.closure === "closed")
   ) {
     state.delivery = "ready";
   }
@@ -91,7 +107,45 @@ export function applyProofPolicyEvent(previous, event) {
     state.static_closure = "open";
     state.browser_proof = state.browser_attempts > 0 ? "unresolved" : "open";
     state.delivery = "blocked";
+    if (state.reflow_contract.required) state.reflow_contract.closure = "open";
     return decision(state, event, true, "product-revision-opened");
+  }
+
+  if (event.type === "reflow-inventory-lock") {
+    if (
+      state.reflow_contract.required &&
+      state.reflow_contract.inventory_sha256 !== event.inventory_sha256
+    ) {
+      return decision(state, event, false, "reflow-inventory-changed");
+    }
+    state.reflow_contract = {
+      required: true,
+      inventory_sha256: event.inventory_sha256,
+      carrier_count: event.carrier_count,
+      row_count: event.row_count,
+      closure: "open",
+    };
+    state.delivery = "blocked";
+    return decision(state, event, true, "reflow-inventory-locked");
+  }
+
+  if (event.type === "reflow-inventory-reject") {
+    return decision(state, event, false, event.reason ?? "reflow-inventory-required");
+  }
+
+  if (event.type === "reflow-closure-validate") {
+    if (!state.reflow_contract.required) {
+      return decision(state, event, false, "reflow-inventory-required");
+    }
+    if (state.reflow_contract.inventory_sha256 !== event.inventory_sha256) {
+      return decision(state, event, false, "reflow-inventory-changed");
+    }
+    state.reflow_contract.closure = "closed";
+    return decision(state, event, true, "reflow-closure-validated");
+  }
+
+  if (event.type === "reflow-closure-reject") {
+    return decision(state, event, false, event.reason ?? "reflow-closure-required");
   }
 
   if (["static-proof-start", "browser-proof-start", "browser-recovery"].includes(event.type)) {

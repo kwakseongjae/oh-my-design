@@ -15,16 +15,142 @@ import { initialProofPolicyState } from "./proof-policy-state.mjs";
 import {
   applyHookPayload,
   hookCommand,
+  hookEditPaths,
   proofPolicyDenyReason,
   proofPolicyHookDecision,
   proofPolicyStopDecision,
 } from "./proof-policy-hook-mapper.mjs";
-import { countNativeBrowserProofCallsFile } from "./proof-trace-contract.mjs";
+import {
+  classifyProofCommand,
+  countNativeBrowserProofCallsFile,
+  isProductEditPath,
+} from "./proof-trace-contract.mjs";
 import { applyProofPolicyEvent } from "./proof-policy-state.mjs";
 
 const STATE_SCHEMA = "0.1";
 const DEFAULT_TTL_MS = 6 * 60 * 60 * 1000;
 const DEFAULT_LOCK_TIMEOUT_MS = 500;
+const REFLOW_ARTIFACT_PATH = join(".omd", "reflow-closure.json");
+
+function stringArray(value) {
+  return Array.isArray(value)
+    && value.length > 0
+    && value.every((item) => typeof item === "string" && item.length > 0)
+    && new Set(value).size === value.length;
+}
+
+function outcomeSet(value, expected = "pass") {
+  return value?.outcome_390 === expected
+    && value?.outcome_320 === expected
+    && value?.outcome_200pct === expected;
+}
+
+function inventoryDigest(artifact) {
+  return createHash("sha256").update(JSON.stringify({
+    carrier_ids: artifact.inventory.carrier_ids,
+    carrier_bindings: artifact.carriers.map((carrier) => ({
+      id: carrier.id,
+      binds_rows: carrier.binds_rows,
+    })),
+    row_ids: artifact.inventory.row_ids,
+  })).digest("hex");
+}
+
+export function validateReflowClosureArtifact(artifact, mode = "inventory") {
+  if (!artifact || typeof artifact !== "object" || Array.isArray(artifact)) {
+    return { pass: false, reason: "reflow-inventory-required" };
+  }
+  if (artifact.schema_version !== "0.1" || artifact.inventory?.state !== "locked") {
+    return { pass: false, reason: "reflow-inventory-required" };
+  }
+  if (!stringArray(artifact.inventory.carrier_ids) || !stringArray(artifact.inventory.row_ids)) {
+    return { pass: false, reason: "reflow-inventory-required" };
+  }
+  if (
+    !Array.isArray(artifact.carriers)
+    || artifact.carriers.length !== artifact.inventory.carrier_ids.length
+    || !Array.isArray(artifact.rows)
+    || artifact.rows.length !== artifact.inventory.row_ids.length
+  ) {
+    return { pass: false, reason: "reflow-inventory-required" };
+  }
+  const carrierIds = artifact.carriers.map((carrier) => carrier?.id);
+  const rowIds = artifact.rows.map((row) => row?.id);
+  if (
+    JSON.stringify(carrierIds) !== JSON.stringify(artifact.inventory.carrier_ids)
+    || JSON.stringify(rowIds) !== JSON.stringify(artifact.inventory.row_ids)
+  ) {
+    return { pass: false, reason: "reflow-inventory-required" };
+  }
+  const knownRows = new Set(rowIds);
+  if (artifact.carriers.some((carrier) => (
+    !stringArray(carrier?.binds_rows)
+    || carrier.binds_rows.some((row) => !knownRows.has(row))
+  ))) {
+    return { pass: false, reason: "reflow-inventory-required" };
+  }
+  const digest = inventoryDigest(artifact);
+  if (artifact.inventory.sha256 !== digest) {
+    return { pass: false, reason: "reflow-inventory-hash-invalid" };
+  }
+  const inventory = {
+    inventory_sha256: digest,
+    carrier_count: carrierIds.length,
+    row_count: rowIds.length,
+  };
+  if (mode === "inventory") return { pass: true, ...inventory };
+
+  const manifest = artifact.closure_manifest;
+  if (
+    artifact.closure?.state !== "closed"
+    || artifact.carriers.some((carrier) => !outcomeSet(carrier.final))
+    || artifact.rows.some((row) => row?.final?.status !== "pass" || !outcomeSet(row.final))
+    || manifest?.inventory_sha256 !== digest
+    || manifest?.registered_carriers !== carrierIds.length
+    || manifest?.registered_rows !== rowIds.length
+    || manifest?.measured_390 !== carrierIds.length
+    || manifest?.measured_320 !== carrierIds.length
+    || manifest?.measured_200pct !== carrierIds.length
+    || manifest?.unresolved_carriers !== 0
+    || manifest?.unresolved_rows !== 0
+  ) {
+    return { pass: false, reason: "reflow-closure-required" };
+  }
+  return { pass: true, ...inventory };
+}
+
+function workspaceRootFor(payload, options) {
+  return resolve(
+    options.workspace_root
+      ?? payload?.cwd
+      ?? payload?.tool_input?.cwd
+      ?? process.env.CLAUDE_PROJECT_DIR
+      ?? process.cwd(),
+  );
+}
+
+function readReflowArtifact(payload, options) {
+  const path = join(workspaceRootFor(payload, options), REFLOW_ARTIFACT_PATH);
+  if (!existsSync(path)) return null;
+  try {
+    return JSON.parse(readFileSync(path, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+function isPreProductEdit(payload) {
+  const event = String(payload?.hook_event_name ?? payload?.hookEventName ?? "");
+  const tool = String(payload?.tool_name ?? payload?.toolName ?? "");
+  return event === "PreToolUse"
+    && /^(?:Edit|Write|MultiEdit|apply_patch)$/i.test(tool)
+    && hookEditPaths(payload).some(isProductEditPath);
+}
+
+function isPreStaticProof(payload) {
+  return String(payload?.hook_event_name ?? payload?.hookEventName ?? "") === "PreToolUse"
+    && classifyProofCommand(hookCommand(payload)).static_verification;
+}
 
 function sleep(ms) {
   Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
@@ -189,7 +315,37 @@ export function handleProofPolicyHook(payload, options = {}) {
       };
     }
     const reconciled = reconcileNativeBrowserProof(loaded.state, payload, options);
-    const next = applyHookPayload(reconciled, payload);
+    const requireReflowArtifact = options.require_reflow_artifact
+      ?? process.env.OMD_PROOF_POLICY_REFLOW_ARTIFACT === "1";
+    let gated = reconciled;
+    if (requireReflowArtifact && isPreProductEdit(payload)) {
+      const validation = validateReflowClosureArtifact(
+        readReflowArtifact(payload, options),
+        "inventory",
+      );
+      gated = applyProofPolicyEvent(gated, validation.pass
+        ? { type: "reflow-inventory-lock", ...validation }
+        : { type: "reflow-inventory-reject", reason: validation.reason });
+    } else if (requireReflowArtifact && reconciled.revision > 0 && isPreStaticProof(payload)) {
+      const validation = validateReflowClosureArtifact(
+        readReflowArtifact(payload, options),
+        "closure",
+      );
+      gated = applyProofPolicyEvent(gated, validation.pass
+        ? { type: "reflow-closure-validate", ...validation }
+        : { type: "reflow-closure-reject", reason: validation.reason });
+    }
+    if (gated.decisions.at(-1)?.allow === false && gated !== reconciled) {
+      writeProofPolicyState(path, payload, gated, options.now ?? Date.now());
+      return {
+        output: payload?.hook_event_name === "PreToolUse"
+          ? proofPolicyHookDecision(gated)
+          : null,
+        status: loaded.status,
+        state: gated,
+      };
+    }
+    const next = applyHookPayload(gated, payload);
     if (next !== loaded.state) writeProofPolicyState(path, payload, next, options.now ?? Date.now());
     const output = payload?.hook_event_name === "PreToolUse"
       ? proofPolicyHookDecision(next)

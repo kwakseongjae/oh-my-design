@@ -23,7 +23,7 @@ export const PROOF_POLICY_FILES = Object.freeze([
   "proof-trace-contract.mjs",
 ]);
 
-const POLICY_COMMAND = "node \"$(git rev-parse --show-toplevel)/.codex/hooks/omd-proof-policy/proof-policy-hook.mjs\"";
+const POLICY_COMMAND = "OMD_PROOF_POLICY_REFLOW_ARTIFACT=1 node \"$(git rev-parse --show-toplevel)/.codex/hooks/omd-proof-policy/proof-policy-hook.mjs\"";
 const POLICY_MATCHER = "Bash|apply_patch|Edit|Write";
 
 function stripManagedMarker(content) {

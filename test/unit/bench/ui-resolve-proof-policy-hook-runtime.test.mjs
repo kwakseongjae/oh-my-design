@@ -10,6 +10,7 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { createHash } from "node:crypto";
 import {
   handleProofPolicyHook,
   readProofPolicyState,
@@ -26,6 +27,12 @@ const edit = {
   tool_name: "Edit",
   tool_input: { file_path: "/tmp/run/index.html" },
   tool_response: { status: "completed" },
+};
+const preEdit = {
+  ...base,
+  hook_event_name: "PreToolUse",
+  tool_name: "Edit",
+  tool_input: { file_path: "/tmp/run/index.html" },
 };
 const pre = (command) => ({
   ...base,
@@ -49,6 +56,58 @@ const nativeEvent = (id, tool = "browser_navigate") => JSON.stringify({
   type: "item.started",
   item: { id, type: "mcp_tool_call", server: "agent-browser", tool },
 });
+
+function writeReflowArtifact(workspace, { closed = false, carrierIds = ["lineage", "manifest", "handoff"] } = {}) {
+  const rowIds = ["asset-id", "checksum", "handoff-target", "summary"];
+  const bindings = {
+    lineage: ["asset-id", "summary"],
+    manifest: ["checksum", "summary"],
+    handoff: ["handoff-target", "summary"],
+    changed: ["summary"],
+  };
+  const carriers = carrierIds.map((id) => ({
+    id,
+    binds_rows: bindings[id],
+    final: {
+      outcome_390: closed ? "pass" : "unresolved",
+      outcome_320: closed ? "pass" : "unresolved",
+      outcome_200pct: closed ? "pass" : "unresolved",
+    },
+  }));
+  const rows = rowIds.map((id) => ({
+    id,
+    final: {
+      status: closed ? "pass" : "unresolved",
+      outcome_390: closed ? "pass" : "unresolved",
+      outcome_320: closed ? "pass" : "unresolved",
+      outcome_200pct: closed ? "pass" : "unresolved",
+    },
+  }));
+  const digest = createHash("sha256").update(JSON.stringify({
+    carrier_ids: carrierIds,
+    carrier_bindings: carriers.map(({ id, binds_rows }) => ({ id, binds_rows })),
+    row_ids: rowIds,
+  })).digest("hex");
+  const artifact = {
+    schema_version: "0.1",
+    inventory: { state: "locked", carrier_ids: carrierIds, row_ids: rowIds, sha256: digest },
+    carriers,
+    rows,
+    closure: { state: closed ? "closed" : "open" },
+    closure_manifest: {
+      registered_carriers: carrierIds.length,
+      registered_rows: rowIds.length,
+      measured_390: closed ? carrierIds.length : 0,
+      measured_320: closed ? carrierIds.length : 0,
+      measured_200pct: closed ? carrierIds.length : 0,
+      unresolved_carriers: closed ? 0 : carrierIds.length,
+      unresolved_rows: closed ? 0 : rowIds.length,
+      inventory_sha256: digest,
+    },
+  };
+  mkdirSync(join(workspace, ".omd"), { recursive: true });
+  writeFileSync(join(workspace, ".omd", "reflow-closure.json"), `${JSON.stringify(artifact, null, 2)}\n`, "utf8");
+}
 
 describe("proof policy executable hook", () => {
   let root;
@@ -196,5 +255,59 @@ describe("proof policy executable hook", () => {
     expect(statePathFor(base, root)).not.toBe(statePathFor(other, root));
     expect(readProofPolicyState(statePathFor(other, root), other, { now: 100 }).status)
       .toBe("missing");
+  });
+
+  it("requires an immutable reflow artifact before product editing and a closed manifest before static proof", () => {
+    const stateRoot = join(root, "state");
+    const options = {
+      root: stateRoot,
+      workspace_root: root,
+      require_reflow_artifact: true,
+    };
+    const missing = handleProofPolicyHook(preEdit, { ...options, now: 100 });
+    expect(missing.output?.hookSpecificOutput).toMatchObject({
+      permissionDecision: "deny",
+      permissionDecisionReason: expect.stringContaining("reflow-inventory-required"),
+    });
+
+    writeReflowArtifact(root);
+    expect(handleProofPolicyHook(preEdit, { ...options, now: 110 }).output).toBeNull();
+    const edited = handleProofPolicyHook(edit, { ...options, now: 120 });
+    expect(edited.state).toMatchObject({
+      revision: 1,
+      reflow_contract: { required: true, carrier_count: 3, row_count: 4, closure: "open" },
+    });
+
+    const incomplete = handleProofPolicyHook(pre("npm test"), { ...options, now: 130 });
+    expect(incomplete.output?.hookSpecificOutput.permissionDecisionReason)
+      .toContain("reflow-closure-required");
+
+    writeReflowArtifact(root, { closed: true });
+    expect(handleProofPolicyHook(pre("npm test"), { ...options, now: 140 }).output).toBeNull();
+    handleProofPolicyHook(post("npm test"), { ...options, now: 150 });
+    handleProofPolicyHook(pre("browser-harness capture_screenshot"), { ...options, now: 160 });
+    const complete = handleProofPolicyHook(
+      post("browser-harness capture_screenshot"),
+      { ...options, now: 170 },
+    );
+    expect(complete.state).toMatchObject({
+      delivery: "ready",
+      reflow_contract: { closure: "closed" },
+    });
+  });
+
+  it("rejects a changed carrier inventory after product editing starts", () => {
+    const options = {
+      root: join(root, "state"),
+      workspace_root: root,
+      require_reflow_artifact: true,
+    };
+    writeReflowArtifact(root);
+    handleProofPolicyHook(preEdit, { ...options, now: 100 });
+    handleProofPolicyHook(edit, { ...options, now: 110 });
+    writeReflowArtifact(root, { closed: true, carrierIds: ["changed"] });
+    const result = handleProofPolicyHook(pre("npm test"), { ...options, now: 120 });
+    expect(result.output?.hookSpecificOutput.permissionDecisionReason)
+      .toContain("reflow-inventory-changed");
   });
 });

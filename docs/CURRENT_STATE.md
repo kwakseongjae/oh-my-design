@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.307 digital-master final
+- 갱신: 2026-08-03 · 1.9.308 runtime reflow artifact gate
 
 ## 지금 (현재 위치)
+
+- 1.9.308은 installed proof policy가 versioned `.omd/reflow-closure.json`을 직접 검증하도록 만들었다. 제품 edit 전 locked inventory/hash가 없으면 거부하고, static proof 전 390/320/200% carrier·row 전수 pass와 exact manifest가 없으면 거부한다.
+- edit 이후 inventory hash가 달라지면 fail-close한다. Claude Code/Codex managed hook은 `OMD_PROOF_POLICY_REFLOW_ARTIFACT=1`로 이 gate를 활성화하며 proof policy 미설치 기본 경로는 바꾸지 않았다.
+- proof/install/doctor 106/106, canonical parity 1/1, host parity 2/2, matrix 30/30, lint/build/diff-check가 green이고 provider call은 0이다. 아직 quality promotion은 아니다.
+- 다음은 exact candidate pin → fresh unseen topology/task lock → exact control 대비 Reliability@3 preregistration이다.
 
 - 1.9.307 digital-master 6/6은 candidate 75/73/81 vs control 75/77/77, W/T/L 1/1/1이며 양쪽 resolved 0/3이다. candidate를 승격하지 않는다.
 - candidate/control mean score는 76.33/76.33, mean wall은 candidate -15.48%, mean tokens는 candidate +45.74%다. attempt-3 candidate/control/total은 2,047,253 / 1,404,738 / 3,451,991 tokens다.
