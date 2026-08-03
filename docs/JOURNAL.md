@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.377 isolated home bootstrap exact pin
+- committed c4760219의 five-stage bootstrap order를 고정했다.
+- 네 이전 roots frozen, provider 0. 다음은 fresh all-pin replacement다.
+
 ## 2026-08-03 (Codex) · 1.9.376 isolated home bootstrap order repair
 - empty CODEX_HOME → browser → auth → login → provider 순서를 고정했다.
 - u19374 frozen, provider 0, focused 72/72. 다음은 exact pin이다.
