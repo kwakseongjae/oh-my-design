@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `a385a16c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.486 water-treatment socket-native preregistration
+- 기준 커밋: `fc76b6e5` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.487 water-treatment transfer preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.487은 `/private/tmp/u19486-vendors` exact detached control/candidate와 `/private/tmp/u19486` six untouched cells를 준비했다.
+- equality 6/6, product tree 동일, source detached+clean, control/candidate runner 3/3, artifact-aware gate shared를 검증했다.
+- `bench19366`, Codex CLI 0.144.1, ChatGPT auth가 ready이며 provider 0이다. 다음은 r1 control 한 셀을 Luna/high no-retry로 실행한다.
 
 - 1.9.486은 exact 1.9.476 endpoint-bound control `6bfdc7bc…` vs exact 1.9.483 socket-native candidate `aa0d680d…`를 fresh water task에 Luna/high 2×3으로 사전등록했다.
 - artifact-aware gate, both-arm shipped runner, exact named socket/no-launch, actual200, locked type, 8px reserve, static1/browser1을 고정했다.
