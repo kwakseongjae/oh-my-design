@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.389 known-failure exact pin
+- committed e6513930의 skill/helper/test/acceptance를 exact hash로 pin했다.
+- provider 0. 다음은 fresh unseen replacement task lock/preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.388 known-failure closure
 - supplied/measured failure를 conjunctive ledger로 잠그고 measured-but-unchanged delivery를 차단했다.
 - focused 10/10, lint/diff green, provider 0. 다음은 exact pin/fresh unseen replacement이다.

@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.388 known-failure closure repair
+- 갱신: 2026-08-03 · 1.9.389 known-failure closure exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.389은 committed `e6513930…`의 known-failure conjunctive closure와 helper/test/acceptance를 exact hash로 pin했다.
+- provider 0; 다음은 이 pin만 candidate로 쓰는 fresh unseen Reliability@3 task lock/preregistration이다.
 
 - 1.9.388은 supplied baseline/pre-edit measured failure를 conjunctive `known_failure_ledger`로 잠그고 measured-but-unchanged를 delivery blocker로 만들었다.
 - contract 9/9, experimental delta 1/1, lint/diff green; broad bench는 96 pass + 기존 external-vendor Git-root 2 fail이다. provider 0; 다음은 exact pin/fresh unseen replacement이다.
