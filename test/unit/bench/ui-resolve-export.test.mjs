@@ -240,6 +240,17 @@ describe("UI-Resolve normalized run exporter", () => {
     offLabel.variant.track_eligibility.off_label = true;
     expect(classifyValidity(offLabel, "complete", score)).toBe("invalid-task");
     expect(classifyRunStatus({ process: { timed_out: true } }, null)).toBe("timed_out");
+    const timedOut = structuredClone(run);
+    timedOut.process.timed_out = true;
+    timedOut.workspace.product_changed = false;
+    expect(classifyValidity(manifest, "timed_out", score, timedOut)).toBe("invalid-infrastructure");
+    expect(classifyValidity(
+      manifest,
+      "timed_out",
+      score,
+      timedOut,
+      { executionControl: { timeout_policy: "count-as-valid-failure" } },
+    )).toBe("valid");
     expect(classifyRunStatus({ process: { exit_code: 1 } }, null)).toBe("failed");
     expect(classifyRunStatus({
       process: { exit_code: 0 },
@@ -323,6 +334,36 @@ describe("UI-Resolve normalized run exporter", () => {
     expect(record.validity).toBe("valid");
     expect(record.delivery.product_changed).toBe(false);
     expect(record.ui_resolved).toBe(false);
+  });
+
+  it("records a preregistered timeout as valid, unresolved, and usage-unavailable", () => {
+    const timedOut = structuredClone(run);
+    timedOut.process.timed_out = true;
+    timedOut.output.usage_events = [];
+    timedOut.output.usage_attribution = {
+      available: false,
+      evidence_mode: "unavailable",
+      reason: "provider-stream-contained-no-usage",
+    };
+    timedOut.workspace.product_changed = false;
+    timedOut.workspace.changed_product_files = [];
+    const record = buildRunRecord({
+      workspace: "/tmp/run-timeout",
+      manifest,
+      run: timedOut,
+      score,
+      family: "skill",
+      systemId: "omd-portable",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "high",
+      executionControl: { timeout_policy: "count-as-valid-failure" },
+    });
+    expect(record.run_status).toBe("timed_out");
+    expect(record.validity).toBe("valid");
+    expect(record.ui_resolved).toBe(false);
+    expect(record.tokens).toBeNull();
+    expect(record.usage_completeness.available).toBe(false);
   });
 
   it("fails closed when an agent harness skips a preregistered specialist", () => {

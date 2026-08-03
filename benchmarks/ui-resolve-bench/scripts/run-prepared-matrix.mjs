@@ -107,6 +107,12 @@ const HOST_POLICY_INFRASTRUCTURE_REASONS = new Set([
 
 export function hostPolicyAdmissionDisposition(plan, summary) {
   if (!plan?.shared_host_policy) return { disposition: "admit", reason: null };
+  if (summary?.run_status === "timed_out" && summary?.validity === "valid") {
+    return {
+      disposition: "valid-system-failure",
+      reason: "preregistered-valid-timeout",
+    };
+  }
   const hostPolicy = summary?.host_policy;
   const gate = summary?.host_policy_gate;
   if (gate?.pass === true) return { disposition: "admit", reason: null };
@@ -140,23 +146,39 @@ export function hostPolicyAdmissionStopReason(plan, summary) {
   return admission.disposition === "invalid-infrastructure" ? admission.reason : null;
 }
 
-export function preregisteredStopReason(cell, manifest, run, { schemaVersion = "0.1" } = {}) {
+export function preregisteredStopReason(
+  cell,
+  manifest,
+  run,
+  { schemaVersion = "0.1", timeoutPolicy = null } = {},
+) {
   if (!run) return "missing-run-result";
-  if (run.process?.timed_out === true) return "timeout";
-  if (run.process?.exit_code !== 0 || run.process?.child_exit_code !== 0) return "process-failure";
-  if (run.output?.final_message_present !== true) return "missing-final-response";
+  const validTimeout = (
+    run.process?.timed_out === true
+    && timeoutPolicy === "count-as-valid-failure"
+  );
+  if (run.process?.timed_out === true && !validTimeout) return "timeout";
+  if (
+    !validTimeout
+    && (run.process?.exit_code !== 0 || run.process?.child_exit_code !== 0)
+  ) return "process-failure";
+  if (!validTimeout && run.output?.final_message_present !== true) return "missing-final-response";
   if (Number(run.output?.infrastructure_tool_error_count ?? 0) > 0) return "infrastructure-tool-error";
   if (Number(run.output?.sandbox_error_count ?? 0) > 0) return "sandbox-error";
   if (Number(run.output?.sandbox_cwd_error_count ?? 0) > 0) return "sandbox-cwd-error";
   if (schemaVersion === "0.2" || schemaVersion === "0.3") {
     const attributionReason = runtimeAttributionStopReason(cell, manifest, run);
-    if (attributionReason) return attributionReason;
+    if (attributionReason && !(validTimeout && attributionReason === "incomplete-usage-attribution")) {
+      return attributionReason;
+    }
   } else {
     if (run.runtime?.model !== cell.model_id) return "parent-model-mismatch";
     if (!(run.output?.model_usage ?? []).some((usage) => usage.model === cell.model_id)) {
       return "observed-model-mismatch";
     }
   }
+
+  if (validTimeout) return null;
 
   if (manifest.variant?.kind === "agent-harness") {
     const requiredIds = (manifest.agents?.installed ?? []).map((agent) => agent.id).sort();
@@ -457,6 +479,7 @@ export function completedCellSummary(
     status: "complete",
     workspace,
     validity: record.validity,
+    run_status: record.run_status,
     ui_resolved: record.ui_resolved,
     objective_score: record.objective_score,
     objective_max: record.objective_max,
@@ -1262,6 +1285,7 @@ function executePreparedMatrixWithLease(root, {
     const run = readJson(resultPath);
     const stopReason = preregisteredStopReason(cell, manifest, run, {
       schemaVersion: plan.schema_version ?? "0.1",
+      timeoutPolicy: plan.control_contract?.timeout_policy ?? null,
     })
       ?? harnessDeliveryStopReason(manifest, run, plan.harness_delivery_gates, readEvents(eventsPath));
     if (stopReason) {

@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.351 generator control timeout checkpoint
+- 갱신: 2026-08-03 · 1.9.352 preregistered timeout accounting
 
 ## 지금 (현재 위치)
+
+- 1.9.352는 `timeout_policy=count-as-valid-failure`를 실제로 evaluate·export·checkpoint한다.
+- record는 `run_status=timed_out`, `validity=valid`, `ui_resolved=false`, usage unavailable/null을 보존하고 host admission은 valid system failure다.
+- synthetic flow는 timeout provider 1회·evaluator 1회·exporter 1회, resume 뒤 provider replay 0과 다음 cell 완료를 증명했다.
+- focused 75/75, wider 316 pass + 기존 external vendor Git-root 2 fail, lint/build/diff green, provider 0이다. 다음은 exact pin 후 fresh matrix다.
 
 - 1.9.351 first generator control은 900,026ms timeout, product edit 0, final 없음, usage unavailable이다. candidate provider call은 0이다.
 - host가 `reflow-inventory-required`로 편집을 차단했고 model은 artifact를 충족하지 못했다. system failure지만 runner가 score/run-record/checkpoint 전에 전체 matrix를 동결했다.
@@ -1824,9 +1829,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. preregistered valid timeout을 평가·기록·checkpoint하는 runner 계약을 수리한다.
-2. fake timeout으로 no-replay/resume/usage-unavailable semantics를 검증하고 exact pin한다.
-3. 새 unseen task와 fresh root에서만 다음 비교를 재개한다.
+1. committed 1.9.352 timeout accounting contract를 exact pin한다.
+2. 새 unseen task와 fresh root에 timeout pin을 포함해 preregister한다.
+3. one-cell checkpoint로 control/candidate 비교를 재개한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

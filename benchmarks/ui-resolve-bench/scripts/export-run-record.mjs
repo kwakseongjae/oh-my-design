@@ -29,7 +29,7 @@ export function classifyValidity(
   runStatus,
   score,
   run = null,
-  { attributionScope = "provider-observed-only" } = {},
+  { attributionScope = "provider-observed-only", executionControl = null } = {},
 ) {
   if (manifest?.variant?.track_eligibility?.off_label === true) return "invalid-task";
   if (manifest?.skill?.source_attestation?.publishable === false) return "invalid-attribution";
@@ -52,7 +52,13 @@ export function classifyValidity(
       call.agent_id === agentId && call.requested_model === requiredModel
     )))) return "invalid-attribution";
   }
-  if (runStatus !== "complete" || !score) return "invalid-infrastructure";
+  const preregisteredValidTimeout = (
+    runStatus === "timed_out"
+    && executionControl?.timeout_policy === "count-as-valid-failure"
+  );
+  if ((runStatus !== "complete" && !preregisteredValidTimeout) || !score) {
+    return "invalid-infrastructure";
+  }
   return "valid";
 }
 
@@ -112,7 +118,10 @@ export function buildRunRecord({
   if (!FAMILIES.has(family)) throw new Error(`unsupported benchmark family: ${family}`);
   if (!Number.isInteger(trialIndex) || trialIndex < 1) throw new Error("trial index must be a positive integer");
   const runStatus = classifyRunStatus(run, score);
-  const validity = classifyValidity(manifest, runStatus, score, run, { attributionScope });
+  const validity = classifyValidity(manifest, runStatus, score, run, {
+    attributionScope,
+    executionControl,
+  });
   const automatedPass = score?.status?.automated_gate_pass === true;
   const productChanged = run?.workspace?.product_changed ?? run?.workspace?.changed ?? false;
   const tokenUsage = summarizeTokenUsage(run);
@@ -145,7 +154,9 @@ export function buildRunRecord({
     public_model_attribution_eligible:
       attributionScope === "provider-observed-only"
       && run?.runtime?.model_evidence_mode === "provider-observed",
-    ui_resolved: validity === "valid" ? automatedPass && productChanged : false,
+    ui_resolved: validity === "valid" && runStatus === "complete"
+      ? automatedPass && productChanged
+      : false,
     objective_score: score?.points?.deterministic_total ?? 0,
     objective_max: score?.points?.deterministic_max ?? 85,
     wall_time_ms: run?.process?.wall_ms ?? 0,

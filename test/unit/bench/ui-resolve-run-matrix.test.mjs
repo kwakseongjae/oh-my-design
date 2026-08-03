@@ -223,6 +223,45 @@ describe("UI-Resolve prepared matrix execution", () => {
     const timeout = structuredClone(validRun);
     timeout.process.timed_out = true;
     expect(preregisteredStopReason(cell, manifest, timeout)).toBe("timeout");
+    const attributableTimeoutCell = {
+      runtime: "codex",
+      model_id: "gpt-5.6-luna",
+      effort: "high",
+    };
+    const attributableTimeout = {
+      ...structuredClone(timeout),
+      runtime: {
+        runtime_target: "codex",
+        agent: "codex-cli",
+        model_requested: "gpt-5.6-luna",
+        model_reported: null,
+        model_evidence_mode: "cli-argument",
+        effort_requested: "high",
+        auth_mode: null,
+        provider_route: null,
+      },
+      process: { ...timeout.process, spawn_error: null },
+      output: {
+        ...timeout.output,
+        final_message_present: false,
+        diagnostic_availability: { available: false, fields: [], reason: "unsupported" },
+        usage_attribution: {
+          available: false,
+          evidence_mode: "unavailable",
+          reason: "provider-stream-contained-no-usage",
+        },
+        usage_events: [],
+      },
+    };
+    expect(preregisteredStopReason(
+      attributableTimeoutCell,
+      { runtime_target: "codex", variant: { kind: "portable-skill" } },
+      attributableTimeout,
+      {
+      schemaVersion: "0.3",
+      timeoutPolicy: "count-as-valid-failure",
+      },
+    )).toBeNull();
 
     const sandbox = structuredClone(validRun);
     sandbox.output.sandbox_error_count = 1;
@@ -231,6 +270,16 @@ describe("UI-Resolve prepared matrix execution", () => {
     const model = structuredClone(validRun);
     model.output.model_usage = [{ model: "claude-sonnet-4-6" }];
     expect(preregisteredStopReason(cell, manifest, model)).toBe("observed-model-mismatch");
+  });
+
+  it("admits a preregistered timeout as a valid unresolved host failure", () => {
+    expect(hostPolicyAdmissionDisposition(
+      { shared_host_policy: { require_delivery_ready: true } },
+      { run_status: "timed_out", validity: "valid" },
+    )).toEqual({
+      disposition: "valid-system-failure",
+      reason: "preregistered-valid-timeout",
+    });
   });
 
   it("maps the frozen cell budget to the Claude runner", () => {

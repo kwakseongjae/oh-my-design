@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.352 preregistered timeout accounting
+- valid timeout을 evaluate/export/unresolved checkpoint하도록 수리했다.
+- synthetic timeout은 provider replay 0과 다음 cell 진행을 증명했다.
+- focused 75/75, wider 316+known 2, lint/build/diff green; 다음은 exact pin이다.
+
 ## 2026-08-03 (Codex) · 1.9.351 generator control timeout
 - control은 900,026ms timeout, product edit 0, final/usage 없음이다.
 - candidate 0; runner가 valid-timeout을 평가 전 동결하는 계약 불일치를 발견했다.

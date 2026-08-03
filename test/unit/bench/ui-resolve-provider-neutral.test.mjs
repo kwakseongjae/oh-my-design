@@ -270,7 +270,7 @@ process.exit(child.status ?? 1);
   return wrapper;
 }
 
-function installFakeRuntimes(root, { emptyClaude = false } = {}) {
+function installFakeRuntimes(root, { emptyClaude = false, slowClaude = false } = {}) {
   const claude = executable(join(root, "fake-claude.mjs"), `
 import fs from "node:fs";
 import path from "node:path";
@@ -281,6 +281,7 @@ const countPath = path.join(benchmarkDir, "fake-claude-invocation-count.txt");
 const count = fs.existsSync(countPath) ? Number(fs.readFileSync(countPath, "utf8")) : 0;
 fs.writeFileSync(invocationPath, JSON.stringify(argv));
 fs.writeFileSync(countPath, String(count + 1));
+${slowClaude ? "await new Promise((resolve) => setTimeout(resolve, 5_000));" : ""}
 const model = argv[argv.indexOf("--model") + 1];
 console.log(JSON.stringify({type:"system",subtype:"init",model}));
 console.log(JSON.stringify({
@@ -494,6 +495,48 @@ describe("provider-neutral prepared matrix contract", () => {
       .not.toBe(readFileSync(join(root, "fake-codex", ".benchmark", "events.jsonl"), "utf8"));
     expect(invocationCount(root, "fake-claude", "claude")).toBe(1);
     expect(invocationCount(root, "fake-codex", "codex")).toBe(1);
+  });
+
+  it("scores and checkpoints a preregistered timeout without replaying its provider", () => {
+    const temp = mkdtempSync(join(tmpdir(), "omd-provider-valid-timeout-"));
+    const root = join(temp, "matrix");
+    installFakeRuntimes(temp, { slowClaude: true });
+    const plan = calibrationPlan(root);
+    plan.control_contract = { timeout_policy: "count-as-valid-failure" };
+    plan.cells[0].timeout_seconds = 1;
+    prepareRunMatrix(plan);
+    installCountingNodeWrapper(temp);
+    const first = join(root, "fake-claude");
+
+    const checkpoint = executePreparedMatrix(root, { maxNewCells: 1 });
+    expect(checkpoint.status).toBe("checkpointed");
+    expect(checkpoint.completed_cells).toBe(1);
+    expect(checkpoint.cells[0]).toMatchObject({
+      id: "fake-claude",
+      status: "complete",
+      validity: "valid",
+      run_status: "timed_out",
+      ui_resolved: false,
+      tokens: null,
+    });
+    expect(invocationCount(root, "fake-claude", "claude")).toBe(1);
+    expect(evaluatorInvocationCount(root, "fake-claude")).toBe(1);
+    expect(exporterInvocationCount(root, "fake-claude")).toBe(1);
+
+    const complete = executePreparedMatrix(root, { maxNewCells: 1 });
+    expect(complete.status).toBe("complete");
+    expect(invocationCount(root, "fake-claude", "claude")).toBe(1);
+    expect(invocationCount(root, "fake-codex", "codex")).toBe(1);
+    const timeoutRecord = JSON.parse(readFileSync(
+      join(first, ".benchmark", "run-record.json"),
+      "utf8",
+    ));
+    expect(timeoutRecord).toMatchObject({
+      run_status: "timed_out",
+      validity: "valid",
+      ui_resolved: false,
+      tokens: null,
+    });
   });
 
   it("reports a preregistered proof gate verdict after completing every cell", () => {
