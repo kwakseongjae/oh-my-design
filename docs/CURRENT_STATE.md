@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.385 cold-chain r1 pair checkpoint
+- 갱신: 2026-08-03 · 1.9.386 cold-chain r2 candidate checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.386 r2 compact는 valid 81/85, unresolved, 332,411ms, 766,628 tokens이다.
+- responsive는 pass했지만 이미 측정한 muted/canvas 4.107 대비를 고치지 않아 a11y fail이다. retry 0; 다음은 r2 control이다.
 
 - 1.9.385 r1 compact는 valid 85/85, resolved, 448,469ms, 876,213 tokens로 control과 품질 tie이다.
 - candidate는 20.5% faster, 43.9% fewer tokens; Reliability@3 1/3, regression 0이다. 다음은 r2 compact 한 셀이다.

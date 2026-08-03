@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.386 cold-chain r2 candidate
+- compact는 81/85 unresolved; muted/canvas 4.107 contrast를 측정하고도 남겨 a11y fail했다.
+- retry 0. 다음은 r2 control로 shared variance를 분리한다.
+
 ## 2026-08-03 (Codex) · 1.9.385 cold-chain r1 pair
 - compact는 85/85 resolved, 448,469ms, 876,213 tokens이다.
 - control 대비 20.5% faster/43.9% fewer tokens; Reliability@3 1/3. 다음은 r2 compact이다.
