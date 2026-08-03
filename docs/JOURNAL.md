@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.343 harbor matrix preregistration
+- exact control vs compact candidate Luna/high 2×3를 fresh harbor task에 잠갔다.
+- admission pin 1.9.341, 900s, pacing, no retry, strict gates다.
+- prior minimum 14,939,603 tokens + unavailable 2; provider 0이다.
+
 ## 2026-08-03 (Codex) · 1.9.342 harbor task lock
 - fresh harbor task가 6 vessel/8 tow/4 pilot와 세 carrier를 잠근다.
 - baseline 75/85, red는 narrow/200% reflow와 4.12/4.36 contrast다.

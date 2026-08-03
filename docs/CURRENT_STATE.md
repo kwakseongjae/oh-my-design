@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.342 fresh harbor holdout locked
+- 갱신: 2026-08-03 · 1.9.343 harbor compact-artifact matrix preregistered
 
 ## 지금 (현재 위치)
+
+- 1.9.343은 exact control `3a414a0a…` vs candidate `c1de0e4e…`를 fresh harbor task에 Luna/high 2×3으로 preregister했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 유지하며 admission pin 1.9.341을 추가했다.
+- Tokens-to-Target attempt 6, prior observed minimum 14,939,603 tokens + usage-unavailable 2, provider 0이다. 다음은 fresh vendor/cell preparation과 equality attestation이다.
 
 - 1.9.342는 fresh `harbor-berth-dispatch-review-v0.1`을 provider 전에 lock했다. 6 vessel call/8 tow order/4 pilot window와 세 relationship carrier다.
 - untouched baseline은 75/85다. task/state/design/evidence/desktop/keyboard green, 의도한 red는 390/320/200% overflow·atomic line과 4.12/4.36 contrast다.
