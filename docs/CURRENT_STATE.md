@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.414 rail-signal r1 control infrastructure stop
+- 갱신: 2026-08-04 · 1.9.415 Codex shell proof interception repair
 
 ## 지금 (현재 위치)
+
+- 1.9.415는 live host hook에 Codex `exec_command`/`cmd` 분류를 추가해 Claude `Bash`/`command`와 같은 proof budget을 적용한다.
+- 동일 product revision의 두 번째 Codex static closure는 실행 전에 deny되며 host state와 post-run trace의 분류가 일치한다.
+- focused 71/71, installed-config fixture, lint/diff가 통과했다. broad는 185 pass와 기존 external vendor Git-root 2 fail뿐이다.
+- provider 0이다. 다음은 repair commit exact pin 후 frozen u19412를 재사용하지 않는 fresh preregistration/root다.
 
 - 1.9.414에서 r1 control은 870.043s/3,508,695 tokens, 79/85 unresolved로 종료됐다.
 - overflow와 contrast는 닫았지만 390/320/200% character-range atomic line은 red다.

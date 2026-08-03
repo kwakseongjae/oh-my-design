@@ -25,6 +25,17 @@ const post = (command, response = { exit_code: 0 }) => ({
   tool_input: { command },
   tool_response: response,
 });
+const execPre = (cmd) => ({
+  hook_event_name: "PreToolUse",
+  tool_name: "exec_command",
+  tool_input: { cmd },
+});
+const execPost = (cmd, response = { exit_code: 0 }) => ({
+  hook_event_name: "PostToolUse",
+  tool_name: "exec_command",
+  tool_input: { cmd },
+  tool_response: response,
+});
 const edit = (tool_name, tool_input) => ({
   hook_event_name: "PostToolUse",
   tool_name,
@@ -107,6 +118,25 @@ describe("proof policy host hook mapper", () => {
     });
     expect(state.decisions.map((entry) => entry.reason)).toContain("static-closure-observed");
     expect(state.decisions.map((entry) => entry.reason)).toContain("browser-proof-unresolved");
+  });
+
+  it("maps Codex exec_command cmd payloads into the same static proof budget", () => {
+    const state = run([
+      edit("apply_patch", {
+        command: "*** Begin Patch\n*** Update File: /tmp/run/index.html\n*** End Patch",
+      }),
+      execPre("npm test"),
+      execPost("npm test"),
+      execPre("npm run lint"),
+    ]);
+    expect(state).toMatchObject({
+      static_closure: "closed",
+      violations: { duplicate_static_closure: 1 },
+    });
+    expect(state.decisions.at(-1)).toMatchObject({
+      allow: false,
+      reason: "duplicate-static-closure",
+    });
   });
 
   it("allows one osascript Chrome proof after static closure instead of treating it as duplicate static work", () => {

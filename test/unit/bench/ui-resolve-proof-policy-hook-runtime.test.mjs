@@ -62,6 +62,19 @@ const post = (command, exit_code = 0) => ({
   tool_input: { command },
   tool_response: { exit_code },
 });
+const execPre = (cmd) => ({
+  ...base,
+  hook_event_name: "PreToolUse",
+  tool_name: "exec_command",
+  tool_input: { cmd },
+});
+const execPost = (cmd, exit_code = 0) => ({
+  ...base,
+  hook_event_name: "PostToolUse",
+  tool_name: "exec_command",
+  tool_input: { cmd },
+  tool_response: { exit_code },
+});
 const nativePre = (tool_name, tool_input = {}) => ({
   ...base,
   hook_event_name: "PreToolUse",
@@ -260,6 +273,21 @@ describe("proof policy executable hook", () => {
       permissionDecisionReason: expect.stringContaining(
         "do not retry static verification; run one browser proof if it is still open",
       ),
+    });
+  });
+
+  it("denies a second Codex exec_command before it can escape the host budget", () => {
+    handleProofPolicyHook(edit, { root, now: 100 });
+    handleProofPolicyHook(execPre("npm test"), { root, now: 110 });
+    handleProofPolicyHook(execPost("npm test"), { root, now: 120 });
+    const result = handleProofPolicyHook(execPre("npm run lint"), { root, now: 130 });
+    expect(result.output?.hookSpecificOutput).toMatchObject({
+      permissionDecision: "deny",
+      permissionDecisionReason: expect.stringContaining("duplicate-static-closure"),
+    });
+    expect(result.state).toMatchObject({
+      static_closure: "closed",
+      violations: { duplicate_static_closure: 1 },
     });
   });
 

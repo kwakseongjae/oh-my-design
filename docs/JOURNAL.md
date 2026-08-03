@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.415 Codex shell proof interception repair
+- Codex `exec_command`/`cmd`를 live hook budget에 연결해 duplicate static closure를 실행 전에 차단한다.
+- focused 71/71 + config fixture/lint/diff green, broad 185 pass + known vendor 2 fail, provider 0. 다음은 exact pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.414 rail-signal r1 infrastructure stop
 - control은 870.043s/3,508,695 tokens, 79/85였으나 host가 duplicate static closure를 차단하지 못해 invalid-infrastructure다.
 - u19412/남은 5셀을 freeze했다. TTT 31,625,601+ / unavailable 6. 다음은 provider-free interception repair다.

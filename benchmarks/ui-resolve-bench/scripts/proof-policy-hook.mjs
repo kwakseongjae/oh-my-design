@@ -327,7 +327,7 @@ function isPreStaticProof(payload) {
   const event = String(payload?.hook_event_name ?? payload?.hookEventName ?? "");
   const tool = String(payload?.tool_name ?? payload?.toolName ?? "");
   return event === "PreToolUse"
-    && tool === "Bash"
+    && /^(?:Bash|exec_command|functions\.exec(?:_command)?)$/i.test(tool)
     && classifyProofCommand(hookCommand(payload)).static_verification;
 }
 
@@ -435,7 +435,9 @@ function proofClassification(payload) {
   const event = String(payload?.hook_event_name ?? payload?.hookEventName ?? "");
   if (event !== "PreToolUse") return null;
   const tool = String(payload?.tool_name ?? payload?.toolName ?? "");
-  if (tool === "Bash") return classifyProofCommand(hookCommand(payload));
+  if (/^(?:Bash|exec_command|functions\.exec(?:_command)?)$/i.test(tool)) {
+    return classifyProofCommand(hookCommand(payload));
+  }
   return classifyProofTool(tool);
 }
 

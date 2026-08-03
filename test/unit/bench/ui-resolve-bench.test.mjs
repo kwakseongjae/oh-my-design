@@ -2507,6 +2507,12 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         ready: true,
       });
       expect(policy.safety.hooks_enabled).toBe(true);
+      const policyConfig = JSON.parse(readFileSync(
+        join(root, "policy-cell/.codex/hooks.json"),
+        "utf8",
+      ));
+      expect(policyConfig.hooks.PreToolUse[0].matcher).toContain("exec_command");
+      expect(policyConfig.hooks.PostToolUse[0].matcher).toContain("functions\\.exec");
       expect(control.task).toEqual(policy.task);
       expect(control.variant).toEqual(policy.variant);
       expect(PROOF_POLICY_FILES.every((filename) => existsSync(join(

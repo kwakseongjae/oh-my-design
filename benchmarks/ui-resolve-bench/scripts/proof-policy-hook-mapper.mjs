@@ -34,7 +34,8 @@ export function hookEditPaths(payload) {
 
 export function hookCommand(payload) {
   const input = toolInput(payload);
-  return typeof input.command === "string" ? input.command : "";
+  if (typeof input.command === "string") return input.command;
+  return typeof input.cmd === "string" ? input.cmd : "";
 }
 
 export function hookToolOutcome(payload) {
@@ -63,6 +64,10 @@ function isEditTool(name) {
   return /^(?:Edit|Write|MultiEdit|apply_patch)$/i.test(name);
 }
 
+function isShellTool(name) {
+  return /^(?:Bash|exec_command|functions\.exec(?:_command)?)$/i.test(name);
+}
+
 export function mapHookPayloadToProofEvent(payload, state) {
   const event = eventName(payload);
   const tool = toolName(payload);
@@ -76,10 +81,10 @@ export function mapHookPayloadToProofEvent(payload, state) {
     return productEdit && hookToolOutcome(payload) !== "failed" ? { type: "product-edit" } : null;
   }
 
-  const classification = tool === "Bash"
+  const classification = isShellTool(tool)
     ? classifyProofCommand(hookCommand(payload))
     : classifyProofTool(tool);
-  if (tool === "Bash" && !hookCommand(payload)) return null;
+  if (isShellTool(tool) && !hookCommand(payload)) return null;
   if (!classification.browser && !classification.recovery_probe && !classification.static_verification) {
     return null;
   }

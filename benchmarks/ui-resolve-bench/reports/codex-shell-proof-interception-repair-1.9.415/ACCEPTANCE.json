@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.415",
+  "status": "ACCEPTED_PROVIDER_FREE",
+  "root_cause": "The installed Codex host policy matched and classified Claude-style Bash/command payloads but did not classify Codex exec_command/cmd payloads, so static and browser shell proofs escaped the host budget while the post-run trace still counted them.",
+  "repair": {
+    "matcher": ["Bash", "exec_command", "functions.exec", "functions.exec_command"],
+    "command_fields": ["command", "cmd"],
+    "pre_execution_duplicate_static_denial": true,
+    "proof_trace_and_host_classification_aligned": true
+  },
+  "validation": {
+    "focused": {"passed": 71, "failed": 0},
+    "installed_config_fixture": {"passed": 1, "failed": 0},
+    "broad": {
+      "passed": 185,
+      "failed": 2,
+      "known_external_fixture_failures": [
+        "/tmp/omd-ui-skills-bench/vendors/taste-skill is not a Git root",
+        "/tmp/omd-ui-skills-bench/vendors/ui-ux-pro-max is not a Git root"
+      ]
+    },
+    "lint": "pass",
+    "diff_check": "pass"
+  },
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "sha256": {
+    "benchmarks/ui-resolve-bench/scripts/host-policy-contract.mjs": "870aa19e65bd56642789a80781fe9207b19a3b648ddbc669165b276f82c3ffb4",
+    "benchmarks/ui-resolve-bench/scripts/proof-policy-hook-mapper.mjs": "5fc6a000f4fb205516c60e53b83c6ffa8e848a9661deaf690addecca4a5abadf",
+    "benchmarks/ui-resolve-bench/scripts/proof-policy-hook.mjs": "bef877c9b54674e48d08ba02d4dcfe00067557648ae4ed2362be13ad0104f7ee",
+    "test/unit/bench/ui-resolve-bench.test.mjs": "5a267a32b48d044f79de6558b5da0004aae104a2c157f779a1b18bf97062435c",
+    "test/unit/bench/ui-resolve-proof-policy-hook-runtime.test.mjs": "c5ffe49387cd0af1b0b751a34faa82e1cb6316625337afc4e7661cbdbc7ba0bd",
+    "test/unit/bench/ui-resolve-proof-policy-hook.test.mjs": "0c04b5edba26134862840a328f1aa974159e64fe0922bb486d0ebac4dd210167"
+  },
+  "next": "Commit and exact-pin this repair, then preregister a fresh matrix/root; never resume the frozen u19412 root."
+}
