@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.347 checkpoint admission exact pin
+- committed 65e3894a의 runner/tests/acceptance를 exact hash로 고정했다.
+- canonical admission source와 harbor root 재개 금지를 잠갔다.
+- provider 0; 다음은 fresh unseen task lock이다.
+
 ## 2026-08-03 (Codex) · 1.9.346 checkpoint admission round-trip
 - resume drift 원인은 reconstructed summary의 host admission 누락이었다.
 - canonical record에서 복원하도록 수리했고 focused 63/63·lint/build/diff green이다.

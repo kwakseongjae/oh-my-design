@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.347",
+  "pin_id": "checkpoint-host-admission-roundtrip-1.9.347",
+  "source_commit": "65e3894a88f9a6656cbda8c0fb9096a0cc4b9b36",
+  "files": {
+    "runner": {
+      "path": "benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs",
+      "sha256": "bad457fb2d021d5d3fed8673799a66e885f26159ed9ff454193bf7ba8b9adbdb"
+    },
+    "runner_contract_test": {
+      "path": "test/unit/bench/ui-resolve-run-matrix.test.mjs",
+      "sha256": "922fc648539fbf90d2deb21ab22515a44c946ab4a0638e25e57b09d828f5d75a"
+    },
+    "provider_neutral_test": {
+      "path": "test/unit/bench/ui-resolve-provider-neutral.test.mjs",
+      "sha256": "408cd027375a75b3207dd953e337244c23d53c14b2c1fa9f0c7fcbdafb459de6"
+    },
+    "acceptance": {
+      "path": "benchmarks/ui-resolve-bench/reports/checkpoint-host-admission-roundtrip-1.9.346/ACCEPTANCE.json",
+      "sha256": "72d8c819b0b9dfca203ffedb8f541358ef0e24d2c97f6b2c3dc2c824db9bbfbb"
+    }
+  },
+  "resume_contract": {
+    "canonical_source": "run-record.runtime_diagnostics.host_policy_admission",
+    "live_and_reconstructed_summary_equal": true,
+    "frozen_harbor_root_resumable": false
+  },
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "next": "Lock a fresh unseen task before any new provider comparison."
+}
