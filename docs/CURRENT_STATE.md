@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.429 runtime-bound rail-signal preparation
+- 갱신: 2026-08-04 · 1.9.430 rail-signal r1 control result
 
 ## 지금 (현재 위치)
+
+- 1.9.430 r1 control은 valid system failure: 79/85, 299.973s, 402,095 tokens, UI unresolved다.
+- red는 390/320/200% compound atomic line이며 browser 0 + duplicate static 1로 proof gate도 fail했다.
+- execution-home identity는 CLI 0.144.1/profile `0efd579e…`로 성공했다. TTT 34,610,582+ / unavailable 6, 다음은 paced r1 candidate다.
 
 - 1.9.429는 `/private/tmp/u19428-vendors` exact detached sources와 `/private/tmp/u19428` 6개 controller cell을 fresh prepare했다.
 - task/prompt/product/runtime/model/effort/timeout/browser/host-absence equality는 6/6이고 sole arm delta는 exact skill source다.

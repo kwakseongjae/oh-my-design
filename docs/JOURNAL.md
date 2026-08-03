@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.430 rail-signal r1 control
+- valid 79/85, 299.973s, 402,095 tokens; compound atomic line과 proof compliance가 red다.
+- execution-home identity는 성공했다. TTT 34,610,582+ / unavailable 6, 다음은 paced r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.429 runtime-bound rail-signal preparation
 - u19428 exact vendors/6 cells의 task/product/runtime/browser/host-absence equality 6/6을 확인했다.
 - CLI 0.144.1, sole skill delta, provider 0. 다음은 exact browser/auth preflight 후 r1 control이다.
