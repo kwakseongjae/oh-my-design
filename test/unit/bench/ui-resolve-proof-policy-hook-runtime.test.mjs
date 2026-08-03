@@ -71,7 +71,11 @@ const nativeEvent = (id, tool = "browser_navigate") => JSON.stringify({
   item: { id, type: "mcp_tool_call", server: "agent-browser", tool },
 });
 
-function writeReflowArtifact(workspace, { closed = false, carrierIds = ["lineage", "manifest", "handoff"] } = {}) {
+function writeReflowArtifact(workspace, {
+  closed = false,
+  unresolved = false,
+  carrierIds = ["lineage", "manifest", "handoff"],
+} = {}) {
   const rowIds = ["asset-id", "checksum", "handoff-target", "summary"];
   const bindings = {
     lineage: ["asset-id", "summary"],
@@ -83,18 +87,18 @@ function writeReflowArtifact(workspace, { closed = false, carrierIds = ["lineage
     id,
     binds_rows: bindings[id],
     final: {
-      outcome_390: closed ? "pass" : "unresolved",
-      outcome_320: closed ? "pass" : "unresolved",
-      outcome_200pct: closed ? "pass" : "unresolved",
+      outcome_390: closed && !unresolved ? "pass" : "unresolved",
+      outcome_320: closed && !unresolved ? "pass" : "unresolved",
+      outcome_200pct: closed && !unresolved ? "pass" : "unresolved",
     },
   }));
   const rows = rowIds.map((id) => ({
     id,
     final: {
-      status: closed ? "pass" : "unresolved",
-      outcome_390: closed ? "pass" : "unresolved",
-      outcome_320: closed ? "pass" : "unresolved",
-      outcome_200pct: closed ? "pass" : "unresolved",
+      status: closed && !unresolved ? "pass" : "unresolved",
+      outcome_390: closed && !unresolved ? "pass" : "unresolved",
+      outcome_320: closed && !unresolved ? "pass" : "unresolved",
+      outcome_200pct: closed && !unresolved ? "pass" : "unresolved",
     },
   }));
   const digest = createHash("sha256").update(JSON.stringify({
@@ -111,11 +115,11 @@ function writeReflowArtifact(workspace, { closed = false, carrierIds = ["lineage
     closure_manifest: {
       registered_carriers: carrierIds.length,
       registered_rows: rowIds.length,
-      measured_390: closed ? carrierIds.length : 0,
-      measured_320: closed ? carrierIds.length : 0,
-      measured_200pct: closed ? carrierIds.length : 0,
-      unresolved_carriers: closed ? 0 : carrierIds.length,
-      unresolved_rows: closed ? 0 : rowIds.length,
+      measured_390: closed && !unresolved ? carrierIds.length : 0,
+      measured_320: closed && !unresolved ? carrierIds.length : 0,
+      measured_200pct: closed && !unresolved ? carrierIds.length : 0,
+      unresolved_carriers: closed && !unresolved ? 0 : carrierIds.length,
+      unresolved_rows: closed && !unresolved ? 0 : rowIds.length,
       inventory_sha256: digest,
     },
   };
@@ -331,6 +335,32 @@ describe("proof policy executable hook", () => {
       permissionDecision: "deny",
       permissionDecisionReason: expect.stringContaining("untracked-local-executor"),
     });
+  });
+
+  it("allows honest unresolved measurements to close accounting without claiming proof success", () => {
+    const options = {
+      root: join(root, "state"),
+      workspace_root: root,
+      require_reflow_artifact: true,
+    };
+    writeReflowArtifact(root);
+    handleProofPolicyHook(preEdit, { ...options, now: 100 });
+    handleProofPolicyHook(edit, { ...options, now: 110 });
+    handleProofPolicyHook(pre("npm test"), { ...options, now: 120 });
+    handleProofPolicyHook(post("npm test"), { ...options, now: 130 });
+    handleProofPolicyHook(pre("browser-harness capture_screenshot"), { ...options, now: 140 });
+    handleProofPolicyHook(post("browser-harness capture_screenshot", 1), { ...options, now: 150 });
+
+    writeReflowArtifact(root, { closed: true, unresolved: true });
+    const complete = handleProofPolicyHook(stop(), { ...options, now: 160 });
+    expect(complete.state).toMatchObject({
+      browser_proof: "unresolved",
+      delivery: "ready",
+      reflow_contract: { closure: "unresolved" },
+    });
+    expect(complete.state.decisions.map((entry) => entry.reason))
+      .toContain("reflow-closure-accounted-unresolved");
+    expect(complete.output).toBeNull();
   });
 
   it("rejects a changed carrier inventory after product editing starts", () => {

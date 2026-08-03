@@ -44,10 +44,35 @@ export function preflightRuntimeEnvironment(
   {
     cursorProjectsRoot = process.env.OMD_BENCH_CURSOR_PROJECTS_ROOT
       ?? join(homedir(), ".cursor", "projects"),
+    browserProbe = () => spawnSync("browser-harness", ["--doctor"], {
+      encoding: "utf8",
+      maxBuffer: MAX_BUFFER,
+      timeout: 30_000,
+    }),
   } = {},
 ) {
   const runtimes = [...new Set((plan?.cells ?? []).map((cell) => cell.runtime))].sort();
   const checks = [];
+  const browserProofRequired = plan?.shared_host_policy?.require_browser_attempt === true;
+  if (browserProofRequired) {
+    const probe = browserProbe();
+    const output = String(probe?.stdout ?? "");
+    const activeConnection = probe?.ready === true
+      || /\[ok\s*\]\s+active browser connections\b/i.test(output);
+    if (probe?.status !== 0 || !activeConnection) {
+      const detail = String(probe?.stderr || probe?.stdout || probe?.error?.message || "unavailable")
+        .trim()
+        .replace(/\s+/g, " ")
+        .slice(0, 240);
+      throw new Error(`runtime-preflight-failure:browser-harness-not-ready:${detail || "unavailable"}`);
+    }
+    checks.push({
+      runtime: "shared-host-policy",
+      resource: "browser-harness",
+      status: "ready",
+    });
+  }
+
   if (!runtimes.includes("cursor")) {
     return { status: "complete", runtimes, checks };
   }
@@ -70,6 +95,13 @@ export function preflightRuntimeEnvironment(
     if (probeRoot) rmSync(probeRoot, { recursive: true, force: true });
   }
   return { status: "complete", runtimes, checks };
+}
+
+export function hostPolicyAdmissionStopReason(plan, summary) {
+  if (!plan?.shared_host_policy) return null;
+  return summary?.host_policy_gate?.pass === true
+    ? null
+    : "installed-host-policy-gate-failed";
 }
 
 export function preregisteredStopReason(cell, manifest, run, { schemaVersion = "0.1" } = {}) {
@@ -817,6 +849,7 @@ function executePreparedMatrixWithLease(root, {
   nowFn = () => new Date().toISOString(),
   monotonicNowFn = () => performance.now(),
   maxNewCells,
+  runtimePreflightOptions,
 } = {}) {
   const matrixRoot = resolve(root);
   const lockedPlanPath = join(matrixRoot, "RUN-MATRIX.locked.json");
@@ -868,7 +901,7 @@ function executePreparedMatrixWithLease(root, {
       freshPreparedCellAttestations[cell.id] = preparedCellAttestation(workspace);
     }
   }
-  const runtimePreflight = preflightRuntimeEnvironment(plan);
+  const runtimePreflight = preflightRuntimeEnvironment(plan, runtimePreflightOptions);
   console.log(JSON.stringify({ event: "runtime-preflight-complete", ...runtimePreflight }));
   const state = existing ?? {
     schema_version: plan.schema_version ?? "0.1",
@@ -1247,6 +1280,34 @@ function executePreparedMatrixWithLease(root, {
         ? { completedInInvocation: invocation.invocation }
         : { includeArtifactHashes: false },
     );
+    const hostPolicyStopReason = hostPolicyAdmissionStopReason(plan, summary);
+    if (hostPolicyStopReason) {
+      const record = readJson(recordPath);
+      record.validity = "invalid-infrastructure";
+      record.runtime_diagnostics = {
+        ...(record.runtime_diagnostics ?? {}),
+        infrastructure_invalid_reason: hostPolicyStopReason,
+      };
+      writeJson(recordPath, record);
+      const invalidSummary = completedCellSummary(
+        cell,
+        index,
+        workspace,
+        bounded
+          ? { completedInInvocation: invocation.invocation }
+          : { includeArtifactHashes: false },
+      );
+      invalidSummary.status = "stopped";
+      invalidSummary.reason = hostPolicyStopReason;
+      state.status = "stopped-preregistered";
+      state.stop_reason = hostPolicyStopReason;
+      state.current_cell = null;
+      stopCurrentInvocation(hostPolicyStopReason);
+      upsertCell(state, invalidSummary);
+      freezeRemainingCells(state, plan, index, matrixRoot, hostPolicyStopReason);
+      writeJson(executionStatePath, state);
+      throw new Error(`preregistered stop at ${cell.id}: ${hostPolicyStopReason}`);
+    }
     upsertCell(state, summary);
     state.completed_cells = state.cells.filter((entry) => entry.status === "complete").length;
     state.current_cell = null;

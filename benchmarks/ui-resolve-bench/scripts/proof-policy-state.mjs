@@ -60,7 +60,11 @@ function markReadyWhenClosed(state) {
   if (
     state.static_closure === "closed" &&
     (state.browser_proof === "closed" || state.browser_proof === "unresolved") &&
-    (!state.reflow_contract?.required || state.reflow_contract.closure === "closed")
+    (
+      !state.reflow_contract?.required
+      || state.reflow_contract.closure === "closed"
+      || state.reflow_contract.closure === "unresolved"
+    )
   ) {
     state.delivery = "ready";
   }
@@ -140,9 +144,18 @@ export function applyProofPolicyEvent(previous, event) {
     if (state.reflow_contract.inventory_sha256 !== event.inventory_sha256) {
       return decision(state, event, false, "reflow-inventory-changed");
     }
-    state.reflow_contract.closure = "closed";
+    state.reflow_contract.closure = event.closure_outcome === "unresolved"
+      ? "unresolved"
+      : "closed";
     markReadyWhenClosed(state);
-    return decision(state, event, true, "reflow-closure-validated");
+    return decision(
+      state,
+      event,
+      true,
+      state.reflow_contract.closure === "closed"
+        ? "reflow-closure-validated"
+        : "reflow-closure-accounted-unresolved",
+    );
   }
 
   if (event.type === "reflow-closure-reject") {

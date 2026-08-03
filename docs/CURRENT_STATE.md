@@ -3,10 +3,16 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `ab066c45` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.322 proof-order replacement prepared
+- 기준 커밋: `ffd75773` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-03 · 1.9.323 browser preflight + honest closure repair accepted
 
 ## 지금 (현재 위치)
+
+- 1.9.323은 browser-required matrix가 provider 전에 browser-harness daemon + active connection을 확인하도록 fail-fast preflight를 추가했다.
+- reflow closure는 이제 모든 carrier/row의 `pass|unresolved` 완전 계정을 뜻한다. honest unresolved는 delivery bookkeeping을 닫되 품질/승격 성공으로 바뀌지 않는다.
+- shared host-policy gate false/null cell은 `invalid-infrastructure`로 기록하고 checkpoint/score admission 전에 matrix를 동결한다. focused 72/72, wider 85/85, lint/build/diff가 green이다.
+- `/private/tmp/u19321` 첫 cell의 81/85는 제외한다. 693,461ms·2,036,343 tokens만 보존하며 known invalid minimum은 4,968,562 tokens + usage-unavailable 1 cell이다.
+- 다음 live run 전 사용자 개입 지점은 Chrome remote debugging 활성화다. 그 뒤 exact 1.9.323 pin과 fresh root를 만들며 u19321은 절대 재개하지 않는다.
 
 - 1.9.322는 `/private/tmp/u19321` 6개 cell을 provider call 0으로 PREPARED했다. task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/host policy가 6/6 동일하다.
 - workspace는 baseline committed/detached/clean 6/6, source는 detached/publishable 6/6이며 sole delta는 skill tree `2d577464…` vs `bb3ac833…`다.

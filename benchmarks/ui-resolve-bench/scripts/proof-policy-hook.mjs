@@ -39,10 +39,12 @@ function stringArray(value) {
     && new Set(value).size === value.length;
 }
 
-function outcomeSet(value, expected = "pass") {
-  return value?.outcome_390 === expected
-    && value?.outcome_320 === expected
-    && value?.outcome_200pct === expected;
+const ACCOUNTED_OUTCOMES = new Set(["pass", "unresolved"]);
+
+function outcomeSet(value) {
+  return ACCOUNTED_OUTCOMES.has(value?.outcome_390)
+    && ACCOUNTED_OUTCOMES.has(value?.outcome_320)
+    && ACCOUNTED_OUTCOMES.has(value?.outcome_200pct);
 }
 
 function inventoryDigest(artifact) {
@@ -101,22 +103,42 @@ export function validateReflowClosureArtifact(artifact, mode = "inventory") {
   if (mode === "inventory") return { pass: true, ...inventory };
 
   const manifest = artifact.closure_manifest;
+  const measured390 = artifact.carriers.filter((carrier) => carrier.final?.outcome_390 === "pass").length;
+  const measured320 = artifact.carriers.filter((carrier) => carrier.final?.outcome_320 === "pass").length;
+  const measured200pct = artifact.carriers.filter((carrier) => carrier.final?.outcome_200pct === "pass").length;
+  const unresolvedCarriers = artifact.carriers.filter((carrier) => (
+    carrier.final?.outcome_390 !== "pass"
+    || carrier.final?.outcome_320 !== "pass"
+    || carrier.final?.outcome_200pct !== "pass"
+  )).length;
+  const unresolvedRows = artifact.rows.filter((row) => (
+    row?.final?.status !== "pass"
+    || row.final?.outcome_390 !== "pass"
+    || row.final?.outcome_320 !== "pass"
+    || row.final?.outcome_200pct !== "pass"
+  )).length;
   if (
     artifact.closure?.state !== "closed"
     || artifact.carriers.some((carrier) => !outcomeSet(carrier.final))
-    || artifact.rows.some((row) => row?.final?.status !== "pass" || !outcomeSet(row.final))
+    || artifact.rows.some((row) => !ACCOUNTED_OUTCOMES.has(row?.final?.status) || !outcomeSet(row.final))
     || manifest?.inventory_sha256 !== digest
     || manifest?.registered_carriers !== carrierIds.length
     || manifest?.registered_rows !== rowIds.length
-    || manifest?.measured_390 !== carrierIds.length
-    || manifest?.measured_320 !== carrierIds.length
-    || manifest?.measured_200pct !== carrierIds.length
-    || manifest?.unresolved_carriers !== 0
-    || manifest?.unresolved_rows !== 0
+    || manifest?.measured_390 !== measured390
+    || manifest?.measured_320 !== measured320
+    || manifest?.measured_200pct !== measured200pct
+    || manifest?.unresolved_carriers !== unresolvedCarriers
+    || manifest?.unresolved_rows !== unresolvedRows
   ) {
     return { pass: false, reason: "reflow-closure-required" };
   }
-  return { pass: true, ...inventory };
+  return {
+    pass: true,
+    ...inventory,
+    closure_outcome: unresolvedCarriers === 0 && unresolvedRows === 0
+      ? "closed"
+      : "unresolved",
+  };
 }
 
 function workspaceRootFor(payload, options) {

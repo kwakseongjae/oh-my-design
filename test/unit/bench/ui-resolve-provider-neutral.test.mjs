@@ -10,7 +10,11 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { prepareRunMatrix } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs";
-import { executePreparedMatrix } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
+import {
+  executePreparedMatrix,
+  hostPolicyAdmissionStopReason,
+  preflightRuntimeEnvironment,
+} from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
 import {
   runnerSpecForCell,
   runtimeAttributionStopReason,
@@ -329,6 +333,44 @@ fs.writeFileSync(path.join(workspace, ".benchmark", "score.json"), JSON.stringif
 }
 
 describe("provider-neutral prepared matrix contract", () => {
+  it("preflights required browser proof before any provider execution", () => {
+    const plan = calibrationPlan("/tmp/provider-neutral-browser-preflight");
+    plan.shared_host_policy = { require_browser_attempt: true };
+    expect(() => preflightRuntimeEnvironment(plan, {
+      browserProbe: () => ({ status: 1, stdout: "[FAIL] daemon alive" }),
+    })).toThrow("runtime-preflight-failure:browser-harness-not-ready");
+
+    expect(preflightRuntimeEnvironment(plan, {
+      browserProbe: () => ({
+        status: 0,
+        stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1",
+      }),
+    }).checks).toContainEqual({
+      runtime: "shared-host-policy",
+      resource: "browser-harness",
+      status: "ready",
+    });
+    expect(() => preflightRuntimeEnvironment(plan, {
+      browserProbe: () => ({
+        status: 0,
+        stdout: "[ok  ] daemon alive\n[FAIL] active browser connections — 0",
+      }),
+    })).toThrow("runtime-preflight-failure:browser-harness-not-ready");
+  });
+
+  it("rejects a shared host-policy failure from score admission", () => {
+    const plan = calibrationPlan("/tmp/provider-neutral-host-policy");
+    plan.shared_host_policy = { require_browser_attempt: true };
+    expect(hostPolicyAdmissionStopReason(plan, {
+      host_policy_gate: { pass: false },
+    })).toBe("installed-host-policy-gate-failed");
+    expect(hostPolicyAdmissionStopReason(plan, {
+      host_policy_gate: { pass: true },
+    })).toBeNull();
+    expect(hostPolicyAdmissionStopReason(calibrationPlan("/tmp/no-policy"), {
+      host_policy_gate: null,
+    })).toBeNull();
+  });
   it("maps each runtime to only its native runner and effort flag", () => {
     const claude = runnerSpecForCell(calibrationPlan("/tmp/x").cells[0], "/tmp/claude");
     const codex = runnerSpecForCell(calibrationPlan("/tmp/x").cells[1], "/tmp/codex");

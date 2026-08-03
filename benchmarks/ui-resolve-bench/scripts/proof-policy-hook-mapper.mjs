@@ -123,7 +123,7 @@ const DENY_RECOVERY_GUIDANCE = Object.freeze({
   "reflow-inventory-required": "Next allowed step: create .omd/reflow-closure.json with a locked carrier and row inventory before editing product UI.",
   "reflow-inventory-hash-invalid": "Next allowed step: recompute the immutable inventory hash from the ordered carrier bindings and rows before editing.",
   "reflow-inventory-changed": "Next allowed step: restore the pre-edit carrier inventory; do not remove or merge registered carriers after product editing starts.",
-  "reflow-closure-required": "Next allowed step: close every registered carrier and row at 390px, 320px, and 200% in .omd/reflow-closure.json before static verification.",
+  "reflow-closure-required": "Next allowed step: after the browser attempt, account for every registered carrier and row at 390px, 320px, and 200% in .omd/reflow-closure.json before delivery.",
   "untracked-local-executor": "Next allowed step: use tracked read or native file-edit tools. Local REPL filesystem writes cannot satisfy or bypass the proof policy.",
   "native-browser-unintercepted": "The host did not intercept repeated native browser calls. Stop tool use and let the execution gate reject this run.",
 });

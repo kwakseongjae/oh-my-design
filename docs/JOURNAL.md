@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.323 browser/preflight closure repair
+- u19321 첫 Luna cell을 infrastructure-invalid로 동결하고 81/85를 제외했다.
+- provider 전 active-browser preflight, honest unresolved closure, host-gate admission 차단을 구현했다.
+- 72/72 focused, 85/85 wider, lint/build/diff green; repair provider call 0이다.
+- 다음 live run은 Chrome remote debugging 활성화 후 fresh pin/root에서만 가능하다.
+
 ## 2026-08-03 (Codex) · 1.9.322 proof-order matrix prepared
 - u19321 6-cell shared equality와 exact skill delta를 확인했다.
 - baseline committed/detached/clean, host ready, source publishable가 6/6이다.
