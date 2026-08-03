@@ -1,0 +1,5 @@
+Improve the supplied railway signal possession handback review so signalling coordinators can inspect signal-to-certificate assignments, possession windows, and the handback decision confidently on desktop and narrow screens.
+
+Preserve all six signal-asset identifiers, all eight test-certificate identifiers and their exact asset assignments, all four supplied possession windows, the three review views, the field-note toggle, the handback-review form, and all stated summary evidence. Do not invent energization clearance, test acceptance, interlocking verification, handback authorization, operations acceptance, possession closure, route release, or custody-chain closure. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The asset register, separate possession-window strip, and separate handback decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

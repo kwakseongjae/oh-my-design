@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.411",
+  "task_id": "rail-signal-possession-handback-v0.1",
+  "status": "locked-unseen",
+  "facts": {
+    "signal_assets": 6,
+    "test_certificates": 8,
+    "possession_windows": 4,
+    "relationship_carriers": [
+      "signal-asset-register",
+      "possession-window-strip",
+      "handback-decision"
+    ],
+    "compound_atomic_target": "SIG-AX14-204 + CERT-IR-77421"
+  },
+  "baseline": {
+    "deterministic_score": 75,
+    "deterministic_max": 85,
+    "ui_resolved": false,
+    "green": [
+      "task-contract",
+      "state-journey",
+      "design-grounding",
+      "evidence-honesty",
+      "desktop-geometry",
+      "keyboard"
+    ],
+    "red": [
+      "390px-overflow-and-character-range-atomic-lines",
+      "320px-overflow-and-character-range-atomic-lines",
+      "200%-reflow-overflow-and-character-range-atomic-lines",
+      "serious-color-contrast"
+    ],
+    "contrast_ratios": {
+      "muted_on_canvas": 4.11
+    }
+  },
+  "sha256": {
+    "task": "5a9bf3f89b92ba574c724463cda74af77956fd42e5f3fafa8722d23792313e26",
+    "prompt": "7829ffb3c2ab4979672d362191c35873da594862cbf58ad4add2f10a10bd75c2",
+    "index": "30162ec10a4e9b5f489837ba9f29ec7e4de5a299f38b100a2e11ef6e6b9204b8",
+    "design": "9c15dcc1031f5ba6e9f2faca4c44dccd50378d3368376d6815482975f9cbe939",
+    "baseline_score": "b5359684dd0fcf319d4997a6eda6f1981161a499ec821a0816c3b73f251ceb6e"
+  },
+  "provider_calls": 0,
+  "next": "Preregister exact historical control versus exact 1.9.409 candidate with all runtime, character-range oracle, and browser execution pins."
+}

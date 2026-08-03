@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.411 rail-signal possession fresh task lock
+- 새 railway handback task를 provider 전에 고정했고 baseline은 75/85 unresolved다.
+- 390/320/200% overflow·character-range atomic line과 4.11 contrast만 red다. 다음은 exact 2×3 preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.410 compound-atomic range-oracle exact pin
 - 1.9.409 source `1480d7cc…`와 9개 artifact hash를 exact pin했다.
 - provider 0/quality promotion false. 다음은 새 unseen compound task와 baseline lock이다.
