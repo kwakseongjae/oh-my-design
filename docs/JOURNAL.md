@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.346 checkpoint admission round-trip
+- resume drift 원인은 reconstructed summary의 host admission 누락이었다.
+- canonical record에서 복원하도록 수리했고 focused 63/63·lint/build/diff green이다.
+- harbor candidate provider 0; root는 동결하고 다음은 exact pin과 fresh task다.
+
 ## 2026-08-03 (Codex) · 1.9.345 first harbor control
 - valid unresolved: 77/85, 565,610ms, 1,993,652 tokens다.
 - host는 정상이나 browser 0·delivery blocked; valid system failure로 보존했다.

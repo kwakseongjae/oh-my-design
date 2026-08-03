@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { mkdtempSync, mkdirSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
   directBrowserCommandCount,
+  completedCellSummary,
   harnessDeliveryStopReason,
   firstProductWriteTransaction,
   hostPolicyAdmissionDisposition,
@@ -53,6 +54,42 @@ const validRun = {
 };
 
 describe("UI-Resolve prepared matrix execution", () => {
+  it("round-trips host-policy admission through a checkpoint summary", () => {
+    const workspace = mkdtempSync(join(tmpdir(), "omd-host-admission-summary-"));
+    const benchmarkDir = join(workspace, ".benchmark");
+    mkdirSync(benchmarkDir);
+    writeFileSync(join(benchmarkDir, "run-result.json"), JSON.stringify({
+      output: {},
+    }));
+    writeFileSync(join(benchmarkDir, "score.json"), JSON.stringify({
+      critical_gates: { evidence_honesty: true },
+    }));
+    writeFileSync(join(benchmarkDir, "run-record.json"), JSON.stringify({
+      validity: "valid",
+      ui_resolved: false,
+      objective_score: 77,
+      objective_max: 85,
+      wall_time_ms: 565610,
+      tokens: 1993652,
+      runtime_diagnostics: {
+        host_policy: { gate: { pass: false } },
+        host_policy_admission: {
+          disposition: "valid-system-failure",
+          reason: "installed-host-policy-rejected-system-output",
+        },
+      },
+    }));
+    expect(completedCellSummary(
+      { id: "control" },
+      0,
+      workspace,
+      { includeArtifactHashes: false },
+    ).host_policy_admission).toEqual({
+      disposition: "valid-system-failure",
+      reason: "installed-host-policy-rejected-system-output",
+    });
+  });
+
   it("separates host infrastructure faults from a ready host rejecting system output", () => {
     const plan = { shared_host_policy: { require_delivery_ready: true } };
     const base = {

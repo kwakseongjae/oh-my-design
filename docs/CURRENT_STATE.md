@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.345 first harbor control valid checkpoint
+- 갱신: 2026-08-03 · 1.9.346 checkpoint admission round-trip repair
 
 ## 지금 (현재 위치)
+
+- 1.9.346은 checkpoint 재구성에서 누락되던 `host_policy_admission`을 canonical run record로부터 복원한다.
+- Harbor candidate는 provider 호출 전에 summary drift로 중단됐고 호출 수 0이다. `/private/tmp/u19343`은 asymmetric exposure로 동결하며 재개하지 않는다.
+- focused 63/63, lint/build/diff green, provider 0, quality promotion 없음이다. 다음은 exact pin 뒤 fresh unseen task와 새 matrix다.
 
 - 1.9.345 first harbor control은 valid unresolved system failure: 77/85, 565,610ms, 1,993,652 tokens다.
 - exact host install/state/trace는 정상이나 browser attempt 0·delivery blocked라 host gate false다. admission 1.9.341이 이를 비용·신뢰도에 보존했다.
@@ -1797,9 +1801,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. transit/sensor/spectrum과 다른 fresh unseen topology를 provider 전에 lock한다.
-2. exact close-latch vs new candidate Reliability@3를 preregister한다.
-3. fresh equality-attested matrix를 one-cell checkpoints로 실행한다.
+1. committed 1.9.346 checkpoint round-trip contract를 exact pin한다.
+2. harbor/orbital과 다른 fresh unseen topology를 provider 전에 lock한다.
+3. exact control/candidate Reliability@3를 새 root에 preregister하고 one-cell checkpoints로 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

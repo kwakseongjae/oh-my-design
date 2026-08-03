@@ -437,7 +437,7 @@ function cellArtifactHashes(benchmarkDir) {
   };
 }
 
-function completedCellSummary(
+export function completedCellSummary(
   cell,
   index,
   workspace,
@@ -474,6 +474,7 @@ function completedCellSummary(
     proof_execution_gate: record.runtime_diagnostics?.proof_execution_gate ?? null,
     host_policy: record.runtime_diagnostics?.host_policy ?? null,
     host_policy_gate: record.runtime_diagnostics?.host_policy?.gate ?? null,
+    host_policy_admission: record.runtime_diagnostics?.host_policy_admission ?? null,
   };
   if (includeArtifactHashes) summary.artifact_hashes = cellArtifactHashes(benchmarkDir);
   if (completedInInvocation !== undefined) {
@@ -1364,7 +1365,6 @@ function executePreparedMatrixWithLease(root, {
           ? { completedInInvocation: invocation.invocation }
           : { includeArtifactHashes: false },
       );
-      admittedSummary.host_policy_admission = hostPolicyAdmission;
     }
     upsertCell(state, admittedSummary);
     state.completed_cells = state.cells.filter((entry) => entry.status === "complete").length;

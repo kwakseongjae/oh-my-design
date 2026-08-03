@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.346",
+  "change": "checkpoint-host-admission-roundtrip",
+  "status": "accepted-for-exact-pin",
+  "defect": {
+    "trigger": "Resume the harbor matrix after checkpointing a valid-system-failure control.",
+    "observed": "Checkpoint drift detection rejected the saved control summary before the paired candidate provider could start.",
+    "root_cause": "The live completion path appended host_policy_admission after summary construction, while checkpoint reconstruction used completedCellSummary without that field.",
+    "impact": "The frozen harbor root contains one valid control and zero candidate provider calls. No quality comparison was produced."
+  },
+  "repair": {
+    "contract": "completedCellSummary reads host_policy_admission from the canonical run record for both live completion and resume reconstruction.",
+    "regression": "A valid-system-failure admission now round-trips through an independently reconstructed checkpoint summary."
+  },
+  "validation": {
+    "focused_tests": { "passed": 63, "failed": 0 },
+    "lint": "pass",
+    "build": "pass",
+    "diff_check": "pass"
+  },
+  "harbor_resume": {
+    "root": "/private/tmp/u19343",
+    "status": "frozen-asymmetric-exposure",
+    "completed_cells": 1,
+    "candidate_provider_calls": 0,
+    "retry_allowed": false
+  },
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "next": "Commit and exact-pin the repair, then lock a fresh unseen task and preregister a new matrix. Never resume the harbor root."
+}
