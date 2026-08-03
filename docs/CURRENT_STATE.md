@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.419 rail-signal code-mode host stop
+- 갱신: 2026-08-04 · 1.9.420 Codex tool-mode admission
 
 ## 지금 (현재 위치)
+
+- 1.9.420은 Codex model cache의 exact tool mode를 provider 전에 읽어 installed proof-policy 적격성을 fail-closed 판정한다.
+- `function`만 direct-hook eligible이며 `code_mode_only`/unknown/missing은 provider 전 중단한다. 현재 Sol/Terra/Luna는 모두 `code_mode_only`다.
+- run attribution에 tool mode와 cache hash/fetched_at/client_version을 남긴다. frozen 1.9.417 plan은 이제 추가 token 없이 preflight stop한다.
+- focused 70/70, bench 338 green + skip 1이며 red 2는 기존 external vendor Git-root precondition뿐이다. 다음은 controller-observation 기반 fresh skill matrix다.
 
 - 1.9.419에서 fresh r1 control은 701.833s/2,582,886 tokens, 79/85로 끝났지만 infrastructure-invalid다.
 - Codex 0.144.1의 Luna profile은 `code_mode_only`였고 trace는 shell closure 3/duplicate 1을 관측했으나 installed state는 edit denial 12/shell decision 0이었다.

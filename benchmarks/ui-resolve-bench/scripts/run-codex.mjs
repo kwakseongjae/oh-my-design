@@ -8,6 +8,7 @@ import {
   prepareIsolatedCodexHome,
   preparedWorkspaceRequiresBrowserProof,
 } from "./codex-browser-sandbox-contract.mjs";
+import { inspectCodexModelToolMode } from "./codex-tool-mode-contract.mjs";
 
 const args = parseArgs();
 const workspace = args.get("workspace") ? resolve(String(args.get("workspace"))) : null;
@@ -37,6 +38,7 @@ const eventsPath = join(benchmarkDir, "events.jsonl");
 writeFileSync(eventsPath, "", "utf8");
 const maxLogBytes = 50 * 1024 * 1024;
 const browserProofRequired = preparedWorkspaceRequiresBrowserProof(workspace, { readJson });
+const modelToolMode = inspectCodexModelToolMode(model);
 const innerCommand = [
   "exec",
   "--ephemeral",
@@ -177,6 +179,12 @@ const result = {
     model_reported: modelReported,
     model_evidence_mode: modelReported ? "provider-observed" : "cli-argument",
     effort_requested: reasoning,
+    model_tool_mode: modelToolMode.tool_mode,
+    model_tool_mode_evidence: {
+      cache_sha256: modelToolMode.cache_sha256,
+      cache_fetched_at: modelToolMode.cache_fetched_at,
+      cache_client_version: modelToolMode.cache_client_version,
+    },
     auth_mode: null,
     provider_route: null,
     model,

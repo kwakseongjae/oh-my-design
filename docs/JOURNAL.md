@@ -3738,3 +3738,6 @@
 ## 2026-08-04 (Codex) · 1.9.419 rail-signal code-mode host stop
 - r1 control 701.833s/2,582,886 tokens/79점은 code-mode-only shell hook gap으로 infrastructure-invalid다.
 - u19417 6셀을 freeze했고 TTT는 34,208,487+ / unavailable 6. 다음은 tool-mode admission repair다.
+## 2026-08-04 (Codex) · 1.9.420 Codex tool-mode admission
+- installed proof enforcement는 direct `function` mode만 허용하고 code-mode-only는 provider 전에 차단한다.
+- focused 70/70, bench 338 green+skip1; 다음은 honest controller-observation skill matrix다.

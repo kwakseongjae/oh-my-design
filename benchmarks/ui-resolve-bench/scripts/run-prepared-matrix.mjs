@@ -37,6 +37,10 @@ import {
   codexBrowserDoctorSpec,
   prepareIsolatedCodexHome,
 } from "./codex-browser-sandbox-contract.mjs";
+import {
+  inspectCodexModelToolMode,
+  installedCodexPolicyToolModeStopReason,
+} from "./codex-tool-mode-contract.mjs";
 
 const MAX_BUFFER = 64 * 1024 * 1024;
 const PACING_MAX_OVERSHOOT_MS = 5_000;
@@ -58,6 +62,7 @@ export function preflightRuntimeEnvironment(
     workspaceRoot = process.cwd(),
     browserProbe,
     codexProbe,
+    codexToolModeProbe = inspectCodexModelToolMode,
     browserEnv = process.env,
   } = {},
 ) {
@@ -65,6 +70,28 @@ export function preflightRuntimeEnvironment(
   const checks = [];
   const browserProofRequired = plan?.shared_host_policy?.require_browser_attempt === true
     || plan?.host_policy_comparison?.require_browser_attempt === true;
+  const installedPolicyRequested = plan?.shared_host_policy?.mode === "installed-opt-in"
+    || (plan?.host_policy_comparison && (plan?.cells ?? []).some(
+      (cell) => cell.host_policy_mode === "installed-opt-in",
+    ));
+  if (installedPolicyRequested) {
+    const modelIds = [...new Set((plan?.cells ?? [])
+      .filter((cell) => cell.runtime === "codex" && cell.host_policy_mode === "installed-opt-in")
+      .map((cell) => cell.model_id))].sort();
+    for (const modelId of modelIds) {
+      const observation = codexToolModeProbe(modelId, browserEnv);
+      const stopReason = installedCodexPolicyToolModeStopReason(observation);
+      if (stopReason) throw new Error(`runtime-preflight-failure:${stopReason}`);
+      checks.push({
+        runtime: "codex",
+        resource: "installed-proof-policy-tool-mode",
+        status: "eligible",
+        model_id: modelId,
+        tool_mode: observation.tool_mode,
+        cache_sha256: observation.cache_sha256 ?? null,
+      });
+    }
+  }
   if (browserProofRequired) {
     const spec = codexBrowserDoctorSpec({ workspace: workspaceRoot, env: browserEnv });
     if (!browserProbe) {

@@ -219,6 +219,52 @@ describe("UI-Resolve prepared matrix execution", () => {
     )).toThrow("runtime-preflight-failure:cursor-project-cache-not-writable:ENOENT");
   });
 
+  it("rejects installed Codex proof enforcement for code-mode-only models before provider use", () => {
+    const plan = {
+      shared_host_policy: { mode: "installed-opt-in", require_browser_attempt: false },
+      cells: [{
+        runtime: "codex",
+        model_id: "gpt-5.6-luna",
+        host_policy_mode: "installed-opt-in",
+      }],
+    };
+    expect(() => preflightRuntimeEnvironment(plan, {
+      codexToolModeProbe: (modelId) => ({
+        model_id: modelId,
+        tool_mode: "code_mode_only",
+        installed_policy_eligible: false,
+      }),
+    })).toThrow(
+      "runtime-preflight-failure:codex-installed-policy-tool-mode-uninterceptable:gpt-5.6-luna:code_mode_only",
+    );
+  });
+
+  it("admits only a directly interceptable Codex tool mode for installed enforcement", () => {
+    const plan = {
+      shared_host_policy: { mode: "installed-opt-in", require_browser_attempt: false },
+      cells: [{
+        runtime: "codex",
+        model_id: "direct-model",
+        host_policy_mode: "installed-opt-in",
+      }],
+    };
+    expect(preflightRuntimeEnvironment(plan, {
+      codexToolModeProbe: (modelId) => ({
+        model_id: modelId,
+        tool_mode: "function",
+        installed_policy_eligible: true,
+        cache_sha256: "a".repeat(64),
+      }),
+    }).checks).toContainEqual({
+      runtime: "codex",
+      resource: "installed-proof-policy-tool-mode",
+      status: "eligible",
+      model_id: "direct-model",
+      tool_mode: "function",
+      cache_sha256: "a".repeat(64),
+    });
+  });
+
   it("accepts an exact, complete harness attribution", () => {
     expect(preregisteredStopReason(cell, manifest, validRun)).toBeNull();
   });
