@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `ffd75773` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.323 browser preflight + honest closure repair accepted
+- 갱신: 2026-08-03 · 1.9.328 native browser hook enforcement repair accepted
 
 ## 지금 (현재 위치)
+
+- 1.9.328은 native agent-browser/browser-harness/browser tool namespace를 Claude/Codex installed matcher에 추가했다. 첫 native proof는 허용하고 그 이후 recovery는 PreToolUse에서 실행 전 차단하며, hook-observed 호출은 Stop에서 unblocked로 오판하지 않는다.
+- focused 101/101, wider 94/94, lint/build/diff가 green이고 repair provider call은 0이다. 다음은 committed 1.9.328 exact pin → fresh preregistration/preparation → one-cell replacement다.
+- 1.9.325 paired candidate는 77/85를 냈지만 matcher gap 때문에 infrastructure-invalid로 제외했다. 795,163ms·3,484,850 tokens만 보존하고 `/private/tmp/u19325`은 STOP/frozen이며 남은 4 cell은 미실행이다.
+- known invalid minimum은 8,453,412 tokens + usage-unavailable 1 cell, valid control까지 포함한 observed attempt total은 10,415,571 tokens + usage-unavailable 1 cell이다.
 
 - 1.9.327 첫 control은 valid checkpoint다: 75/85, `ui_resolved=false`, 656,064ms, 1,962,159 tokens.
 - provider-before-browser preflight, proof execution, installed host policy는 모두 pass했고 delivery ready다. honest closure는 unresolved로 보존됐다.

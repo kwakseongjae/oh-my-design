@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.328",
+  "status": "provider-free-infrastructure-repair-accepted",
+  "source_incident": {
+    "matrix_root": "/private/tmp/u19325",
+    "cell_id": "luna-load-r1-artifact-honest-closure",
+    "classification": "invalid-infrastructure",
+    "excluded_objective_score": 77,
+    "objective_max": 85,
+    "wall_time_ms": 795163,
+    "provider_tokens": 3484850,
+    "host_policy_gate_pass": false,
+    "native_browser_attempts": 3,
+    "unblocked_browser_recovery": 2,
+    "unblocked_verification_after_ready": 2
+  },
+  "spend": {
+    "known_invalid_minimum_provider_tokens": 8453412,
+    "total_observed_attempt_provider_tokens": 10415571,
+    "usage_unavailable_cells": 1
+  },
+  "repairs": {
+    "native_agent_browser_matcher": true,
+    "native_browser_harness_matcher": true,
+    "native_browser_matcher": true,
+    "pre_tool_observation_recorded": true,
+    "recovery_denied_before_execution": true,
+    "intercepted_attempt_not_counted_unblocked": true
+  },
+  "focused_tests": {
+    "passed": 101,
+    "failed": 0
+  },
+  "wider_regression": {
+    "passed": 94,
+    "failed": 0,
+    "lint": "pass",
+    "build": "pass",
+    "diff_check": "pass"
+  },
+  "provider_calls_during_repair": 0,
+  "quality_promotion": false,
+  "same_root_resume_allowed": false
+}

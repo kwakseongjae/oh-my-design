@@ -22,6 +22,7 @@ import {
 } from "./proof-policy-hook-mapper.mjs";
 import {
   classifyProofCommand,
+  classifyProofTool,
   countNativeBrowserProofCallsFile,
   isProductEditPath,
 } from "./proof-trace-contract.mjs";
@@ -271,6 +272,12 @@ function isStop(payload) {
   return payload?.hook_event_name === "Stop" || payload?.hookEventName === "Stop";
 }
 
+function isPreNativeBrowserProof(payload) {
+  const event = String(payload?.hook_event_name ?? payload?.hookEventName ?? "");
+  const tool = String(payload?.tool_name ?? payload?.toolName ?? "");
+  return event === "PreToolUse" && tool !== "Bash" && classifyProofTool(tool).browser === true;
+}
+
 function stopDeny(reason, payload) {
   if (payload?.stop_hook_active === true || payload?.stopHookActive === true) return null;
   return { decision: "block", reason: proofPolicyDenyReason(reason) };
@@ -389,6 +396,12 @@ export function handleProofPolicyHook(payload, options = {}) {
       };
     }
     const next = applyHookPayload(gated, payload);
+    if (isPreNativeBrowserProof(payload)) {
+      next.native_observation.observed_calls = Number(
+        next.native_observation?.observed_calls ?? 0,
+      ) + 1;
+      next.native_observation.source = "host-hook";
+    }
     if (next !== loaded.state) writeProofPolicyState(path, payload, next, options.now ?? Date.now());
     const decisionAddedByPayload = next.decisions.length > gated.decisions.length;
     const output = payload?.hook_event_name === "PreToolUse"

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.328 native browser hook repair
+- 1.9.325 candidate 77/85는 native matcher gap으로 제외하고 u19325를 동결했다.
+- invalid minimum 8,453,412 tokens, observed total 10,415,571 tokens + unavailable 1이다.
+- native proof 첫 시도만 허용하고 recovery는 실행 전 차단한다.
+- 101 focused + 94 wider, lint/build/diff green; 다음은 exact pin이다.
+
 ## 2026-08-03 (Codex) · 1.9.327 first valid honest-closure control
 - R1 control은 75/85, unresolved, 656,064ms, 1,962,159 tokens다.
 - browser preflight/proof/host-policy/delivery는 모두 pass했다.

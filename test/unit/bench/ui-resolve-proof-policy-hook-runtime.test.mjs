@@ -61,6 +61,19 @@ const post = (command, exit_code = 0) => ({
   tool_input: { command },
   tool_response: { exit_code },
 });
+const nativePre = (tool_name, tool_input = {}) => ({
+  ...base,
+  hook_event_name: "PreToolUse",
+  tool_name,
+  tool_input,
+});
+const nativePost = (tool_name, tool_input = {}, tool_response = { status: "completed" }) => ({
+  ...base,
+  hook_event_name: "PostToolUse",
+  tool_name,
+  tool_input,
+  tool_response,
+});
 const stop = (stop_hook_active = false) => ({
   ...base,
   hook_event_name: "Stop",
@@ -225,6 +238,38 @@ describe("proof policy executable hook", () => {
     });
     expect(reentry.output).toBeNull();
     expect(reentry.state.native_observation.unblocked_calls).toBe(1);
+  });
+
+  it("records hook-intercepted native attempts and denies recovery without false unblocked evidence", () => {
+    const trace = join(root, "events.jsonl");
+    writeFileSync(trace, `${nativeEvent("native-1")}\n${nativeEvent("native-2")}\n`, "utf8");
+    handleProofPolicyHook(edit, { root, now: 100 });
+    handleProofPolicyHook(pre("npm test"), { root, now: 110 });
+    handleProofPolicyHook(post("npm test"), { root, now: 120 });
+
+    const tool = "mcp__agent-browser__browser_navigate";
+    expect(handleProofPolicyHook(nativePre(tool, { url: "file:///tmp/run/index.html" }), {
+      root,
+      now: 130,
+    }).output).toBeNull();
+    handleProofPolicyHook(nativePost(tool, {}, { status: "failed" }), { root, now: 140 });
+    const denied = handleProofPolicyHook(nativePre(tool, { url: "data:text/html,retry" }), {
+      root,
+      now: 150,
+    });
+    expect(denied.output?.hookSpecificOutput).toMatchObject({ permissionDecision: "deny" });
+
+    const result = handleProofPolicyHook(stop(), { root, now: 160, trace_path: trace });
+    expect(result.output).toBeNull();
+    expect(result.state).toMatchObject({
+      delivery: "ready",
+      native_observation: {
+        observed_calls: 2,
+        unblocked_calls: 0,
+        source: "host-hook",
+      },
+      violations: { native_browser_unintercepted: 0, browser_recovery: 1 },
+    });
   });
 
   it("denies a proof command when persisted state is corrupt", () => {

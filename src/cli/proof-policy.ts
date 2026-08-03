@@ -39,8 +39,8 @@ type JsonObject = Record<string, unknown>;
 const SOURCE_DIR = join('benchmarks', 'ui-resolve-bench', 'scripts');
 const DEST_DIR = join('hooks', 'omd-proof-policy');
 const PROOF_POLICY_MATCHERS: Record<ProofPolicyTarget, string> = {
-  'claude-code': 'Bash|Edit|Write|MultiEdit|mcp__node_repl__js|node_repl',
-  codex: 'Bash|apply_patch|Edit|Write|mcp__node_repl__js|node_repl',
+  'claude-code': 'Bash|Edit|Write|MultiEdit|mcp__node_repl__js|node_repl|mcp__agent-browser__browser_.*|mcp__browser-harness__browser_.*|mcp__browser__browser_.*',
+  codex: 'Bash|apply_patch|Edit|Write|mcp__node_repl__js|node_repl|mcp__agent-browser__browser_.*|mcp__browser-harness__browser_.*|mcp__browser__browser_.*',
 };
 
 function isJsonObject(value: unknown): value is JsonObject {
