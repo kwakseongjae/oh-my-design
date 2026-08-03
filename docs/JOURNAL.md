@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.412 rail-signal compound-atomic preregistration
+- exact control vs `1480d7cc…`를 Luna/high 2×3, 900s/no-retry/120s pacing으로 고정했다.
+- attempt 18, prior 28,116,906+ tokens/unavailable 6, provider 0. 다음은 clean preparation이다.
+
 ## 2026-08-03 (Codex) · 1.9.411 rail-signal possession fresh task lock
 - 새 railway handback task를 provider 전에 고정했고 baseline은 75/85 unresolved다.
 - 390/320/200% overflow·character-range atomic line과 4.11 contrast만 red다. 다음은 exact 2×3 preregistration이다.

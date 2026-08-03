@@ -554,6 +554,21 @@
       "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
       "activation": "Use the installed $omd:apply skill for this task."
     },
+    "omd-compound-atomic-range-oracle-candidate": {
+      "label": "oh-my-design apply skill with compound atomic children and character-range proof",
+      "kind": "local-skill",
+      "vendor_dir": "omd-1.9.409",
+      "source_path": "skills/omd-apply",
+      "install_adapter": "omd-channel-name-v1",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-apply",
+      "declared_name": "omd:apply",
+      "commit": "1480d7cc4235600980fab64cf344cb58e3929e74",
+      "license": "MIT",
+      "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
+      "activation": "Use the installed $omd:apply skill for this task."
+    },
     "omd-reflow-integrity-experimental": {
       "label": "oh-my-design apply skill + reflow integrity closure",
       "kind": "local-skill-experimental",

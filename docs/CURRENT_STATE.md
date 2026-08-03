@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.411 rail-signal possession fresh task lock
+- 갱신: 2026-08-03 · 1.9.412 rail-signal compound-atomic preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.412는 exact control `3a414a0a…` vs character-range candidate `1480d7cc…`를 rail-signal holdout에 Luna/high 2×3으로 사전등록했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 character-range proof·strict quality/efficiency gates를 고정했다.
+- Tokens-to-Target attempt 18, prior minimum 28,116,906 tokens + unavailable 6, provider 0이다.
+- 다음은 `/private/tmp/u19412-vendors` exact detached vendors와 `/private/tmp/u19412` 6 clean cells를 prepare하고 equality를 증명하는 것이다.
 
 - 1.9.411은 fresh `rail-signal-possession-handback-v0.1`을 provider 전에 lock했다.
 - 6 signal assets/8 test certificates/4 possession windows와 signal register·possession strip·handback decision 세 carrier를 보존한다.
