@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.476 shipped consumer-browser runner
+- 갱신: 2026-08-04 · 1.9.477 shipped runner exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.477은 shipped runner를 exact `6bfdc7bc…`, skill tree `c62907bb…`와 skill/helper/runner/test hashes로 pin했다.
+- 새 competitor는 `omd-shipped-consumer-browser-candidate`, vendor dir `omd-1.9.476`이며 provider 0/promotion false다.
+- 다음은 genuinely unseen runner transfer task를 provider 전에 lock하고 exact 1.9.474 control vs exact 1.9.476 candidate를 preregister한다.
 
 - 1.9.476은 `reflow-browser.py`를 apply skill과 세 채널에 배포해 model-authored browser program을 제거했다.
 - runner는 exact `BU_NAME`/`BU_CDP_URL` attach, no-launch, 390/320/actual200, character range, locked type, carrier-relative 8px reserve, cardinality/binding/document overflow를 한 command에서 측정·finalize한다.
