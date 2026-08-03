@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.423 Codex selected-model semantic pin
+- 갱신: 2026-08-04 · 1.9.425 rail-signal semantic-profile replacement preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.424는 semantic profile patch를 exact commit `e473a2d9…`와 5개 artifact hash로 pin했다.
+- 1.9.425는 동일 rail-signal skill arms/task/gates를 selected Luna profile `0efd579e…` 기반 fresh 2×3으로 재사전등록했다.
+- attempt 21, prior TTT 34,208,487 + unavailable 6, exposure control 2/candidate 0, provider 0이다. 다음은 fresh vendors/cells preparation과 equality 검증이다.
 
 - 1.9.423은 volatile whole-cache hash와 selected-model semantic profile hash를 분리했다.
 - 1.9.422의 6개 prepared cell은 equality 6/6이었지만 첫 provider 호출 전 cache container hash가 바뀌어 provider 0으로 freeze했다.
