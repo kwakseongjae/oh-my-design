@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.357 museum R1 control valid timeout checkpoint
+- 갱신: 2026-08-03 · 1.9.358 museum R1 pair promotion rejection
 
 ## 지금 (현재 위치)
+
+- 1.9.358 paired compact는 79/85, 509,334ms, 1,255,595 tokens, valid unresolved다. control과 objective tie지만 candidate도 responsive gate와 host delivery를 닫지 못했다.
+- browser attempt 1은 기존 Chrome session attach를 daemon startup failure로 처리한 browser-harness 0.1.5 경로에서 navigation 전 실패했다. retry 0이다.
+- candidate resolved 0/1이라 required 3/3은 남은 2 trial로 달성 불가다. `/private/tmp/u19355`와 남은 4셀을 frozen하며 추가 provider call은 하지 않는다.
+- cumulative minimum 18,188,850 tokens + usage-unavailable 4다. 다음은 provider-free browser attachment parity + deterministic compact artifact finalize 수리, exact pin, fresh unseen replacement다.
 
 - 1.9.357 first museum control은 900,019ms valid timeout: 79/85, `ui_resolved=false`, usage unavailable다.
 - 한 번의 late product revision은 있었지만 browser attempt 0·delivery blocked다. admission은 `valid-system-failure / preregistered-valid-timeout`이다.

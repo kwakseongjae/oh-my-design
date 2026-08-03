@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.358 museum R1 pair rejection
+- compact는 79/85, 509,334ms, 1,255,595 tokens이나 unresolved다.
+- browser attach 실패 + responsive red + host delivery reject; candidate 0/1로 3/3 불가다.
+- u19355/남은 4셀 frozen; 다음은 provider-free browser/artifact repair다.
+
 ## 2026-08-03 (Codex) · 1.9.357 museum R1 control timeout
 - control은 79/85, 900,019ms, valid timeout, usage unavailable다.
 - late edit 1회 뒤 browser 0·delivery blocked지만 evaluate/export/checkpoint는 성공했다.

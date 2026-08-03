@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.358",
+  "experiment_id": "museum-compact-artifact-luna-1.9.355",
+  "status": "promotion-rejected-early-stop",
+  "completed_cells": 2,
+  "unexecuted_cells": 4,
+  "provider_calls": { "control": 1, "candidate": 1 },
+  "pair": {
+    "control": {
+      "cell_id": "luna-museum-r1-control",
+      "run_status": "timed_out",
+      "validity": "valid",
+      "ui_resolved": false,
+      "objective_score": 79,
+      "objective_max": 85,
+      "wall_time_ms": 900019,
+      "tokens": null,
+      "host_policy_admission": "preregistered-valid-timeout"
+    },
+    "candidate": {
+      "cell_id": "luna-museum-r1-compact",
+      "run_status": "complete",
+      "validity": "valid",
+      "ui_resolved": false,
+      "objective_score": 79,
+      "objective_max": 85,
+      "wall_time_ms": 509334,
+      "tokens": 1255595,
+      "browser_mechanism_count": 1,
+      "browser_recovery_count": 0,
+      "host_policy_gate_pass": false,
+      "host_policy_admission": "installed-host-policy-rejected-system-output",
+      "remaining_objective_failure": "mobile-320-and-200-percent-responsive-geometry"
+    }
+  },
+  "promotion_gate": {
+    "candidate_ui_resolved_required": 3,
+    "candidate_ui_resolved_observed": 0,
+    "candidate_trials_observed": 1,
+    "maximum_possible_after_remaining_trials": 2,
+    "mathematically_reachable": false,
+    "decision": "reject"
+  },
+  "efficiency": {
+    "candidate_to_control_wall_time_ratio": 0.566,
+    "token_ratio": null,
+    "token_ratio_reason": "control-provider-usage-unavailable"
+  },
+  "tokens_to_target": {
+    "observed_provider_tokens_minimum": 18188850,
+    "usage_unavailable_cells": 4,
+    "right_censored": true
+  },
+  "candidate_root_cause": [
+    "The compact artifact reduced time to product edit but did not close narrow-screen and 200%-equivalent atomic containment.",
+    "The sole browser attempt failed before navigation because browser-harness 0.1.5 treated an attached existing session as daemon startup failure.",
+    "The installed host then rejected delivery for incomplete reflow closure and an invalid inventory hash."
+  ],
+  "artifact_sha256": {
+    "run_result": "2d76bb58fd3eebf4a3fb797a5ad49704d66eefd7d21ba694486e14af2178a1b4",
+    "score": "80d6589d0d8cbb6d86bf5b02aaddf14792dd414c2bb29338018f8ddc2ceb3187",
+    "run_record": "2321ccfe49fcfe6252fb6f938b883afb0b2edeb86d182c432c0ada6cd3689bff",
+    "proof_trace": "28ada19e38f920f5983ac50093abe700ceff3ff57ee23b173b30a9dedb286e0d",
+    "host_policy_state": "d3eb4173cd5c025c623f48ee2fe32c0d791dd44ffd04a8da8a93af2fe51cdf95",
+    "execution_state": "d1f48b79ae1fa308c47429355ae0e9e23dcadcc12970260780d11840dc0f1a33"
+  },
+  "frozen_roots": ["/private/tmp/u19355", "/private/tmp/u19355-vendors"],
+  "next": "Repair browser attachment preflight/launch parity and deterministic compact artifact finalization provider-free, then exact-pin and preregister a fresh unseen replacement matrix."
+}

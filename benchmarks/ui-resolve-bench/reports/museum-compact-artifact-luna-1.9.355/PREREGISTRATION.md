@@ -17,3 +17,9 @@ Fresh detached vendors and six committed, detached, clean Git cells were prepare
 ## Control R1 timeout — 1.9.357
 
 The first control was evaluated and checkpointed after the exact 900-second timeout. It reached 79/85 through one late product revision but never attempted browser verification or completed installed-policy delivery. The run is a valid unresolved system failure, not infrastructure invalid: `run_status=timed_out`, `validity=valid`, `ui_resolved=false`, and provider usage unavailable/null. The candidate has not been called. This is the first live-provider confirmation that the 1.9.353 timeout contract preserves evaluation, export, admission, and a single-cell checkpoint instead of freezing before evidence collection.
+
+## Pair R1 rejection — 1.9.358
+
+The paired compact candidate completed in 509,334ms with 1,255,595 provider-reported tokens and the same 79/85 objective score, but remained unresolved. It made one product revision and one browser attempt. That attempt failed before navigation because browser-harness 0.1.5 treated the attached existing Chrome session as daemon startup failure; no recovery was attempted. The deterministic evaluator still found mobile, 320px, and 200%-equivalent geometry unresolved, and the installed host rejected incomplete reflow delivery.
+
+Candidate resolution is now 0/1. Because promotion requires 3/3 and only two candidate trials remain, the gate is mathematically unreachable. The remaining four cells are not executed. `/private/tmp/u19355` and its vendors are frozen. Attempt-8 spend is right-censored at a cumulative observed minimum of 18,188,850 tokens plus four usage-unavailable cells. The next experiment must first repair browser attachment parity and deterministic compact-artifact finalization without provider calls, then use a fresh unseen task and root.
