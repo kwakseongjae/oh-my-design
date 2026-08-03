@@ -59,6 +59,7 @@ const radiotherapyPlanExportTaskId = "radiotherapy-plan-export-review-v0.1";
 const satelliteTelemetryReleaseTaskId = "satellite-telemetry-release-review-v0.1";
 const genomicSequencingReleaseTaskId = "genomic-sequencing-run-release-v0.1";
 const semiconductorWaferDispositionTaskId = "semiconductor-wafer-disposition-v0.1";
+const waterTreatmentBatchReleaseTaskId = "water-treatment-batch-release-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1639,6 +1640,46 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("LOT-ETCH-048271 + METROLOGY-CD-905184");
     expect(starter).toContain("5 wafer lots · 7 metrology scans · 3 process chambers");
     expect(starter).not.toContain("LIBRARY-ONC-048271");
+  });
+
+  it("locks an unseen water-treatment release family before socket-native transfer", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/tasks",
+      waterTreatmentBatchReleaseTaskId,
+      "task.json",
+    ), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: waterTreatmentBatchReleaseTaskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: {
+          values: ["batch-register", "treatment-trains", "release-decision"],
+          initial: "batch-register",
+          selected: "treatment-trains",
+        },
+        form: { valid_value: "North basin batch release" },
+      },
+      protected_hook_counts: {
+        "[data-bench='treatment-batch']": 5,
+        "[data-bench='batch-id']": 5,
+        "[data-bench='sample-id']": 7,
+        "[data-bench='train-id']": 3,
+        "[data-bench='run-window']": 3,
+      },
+    });
+    const out = prepareVariant("raw-design-md", {
+      task: waterTreatmentBatchReleaseTaskId,
+      outputName: "water-treatment-batch-release-lock",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/data-bench="treatment-batch"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="sample-id"/g)).toHaveLength(7);
+    expect(starter.match(/data-bench="run-window"/g)).toHaveLength(3);
+    expect(starter).toContain("BATCH-NORTH-048271 + SAMPLE-MICRO-905184");
+    expect(starter).toContain("5 treatment batches · 7 laboratory samples · 3 treatment trains");
+    expect(starter).not.toContain("LOT-ETCH-048271");
   });
 
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {

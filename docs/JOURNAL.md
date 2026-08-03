@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.485 water-treatment task lock
+- 5 batch/7 sample/3 train의 fresh task를 provider 전에 잠그고 untouched 75/85 난이도를 측정했다.
+- task exposure/provider 0. 다음은 exact control/candidate Reliability@3 preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.484 socket-native exact pin
 - 1.9.483을 exact commit/tree/file hashes와 `omd-1.9.483` detached vendor identity로 등록했다.
 - provider 0/promotion false. 다음은 genuinely unseen task lock이다.

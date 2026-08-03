@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `aa0d680d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.484 socket-native candidate exact pin
+- 기준 커밋: `04d68899` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.485 water-treatment unseen task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.485는 fresh `water-treatment-batch-release-v0.1`을 provider 전에 lock했다.
+- 5 treatment batch/7 laboratory sample/3 treatment train과 batch register·train strip·release decision 세 carrier를 보존한다.
+- untouched baseline은 75/85: 390/320/actual200 overflow 595/665/1330px, compound target·state wrap, atomic fragmentation, contrast 3.83/4.47만 red다.
+- task contract/focused preparation green, provider/task exposure 0이다. 다음은 exact control vs exact 1.9.483 candidate의 Reliability@3 preregistration이다.
 
 - 1.9.484는 1.9.483 수리를 exact commit `aa0d680d…`, skill tree `e6a01cae…`, skill/helper/runner hash로 pin했다.
 - 새 competitor는 `omd-socket-native-consumer-browser-candidate`, vendor dir `omd-1.9.483`이며 provider 0/promotion false다.
