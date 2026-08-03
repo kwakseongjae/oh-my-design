@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.348 generator transfer holdout lock
+- fresh 6 feeder/8 load/4 generator-window task를 provider 전에 잠갔다.
+- baseline 75/85; narrow/200% reflow·atomic lines와 4.03 contrast만 red다.
+- provider 0; 다음은 exact Reliability@3 preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.347 checkpoint admission exact pin
 - committed 65e3894a의 runner/tests/acceptance를 exact hash로 고정했다.
 - canonical admission source와 harbor root 재개 금지를 잠갔다.

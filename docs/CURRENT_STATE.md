@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.347 checkpoint admission exact pin
+- 갱신: 2026-08-03 · 1.9.348 generator transfer holdout lock
 
 ## 지금 (현재 위치)
+
+- 1.9.348은 fresh `generator-transfer-readiness-review-v0.1`을 provider 전에 lock했다.
+- 6 feeder/8 load/4 generator window와 feeder map·generator strip·transfer handoff 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·atomic fragmentation과 4.03 contrast다. provider 0이다.
+- 다음은 exact control/candidate와 1.9.347 resume pin을 새 Reliability@3 matrix에 preregister하는 것이다.
 
 - 1.9.347은 committed `65e3894a…`의 runner·contract tests·acceptance와 resume 의미를 exact hash로 pin했다.
 - harbor root 재개 금지와 canonical host admission source를 고정했다. provider 0, quality promotion 없음이다.
@@ -1805,9 +1810,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. harbor/orbital과 다른 fresh unseen topology를 provider 전에 lock한다.
-2. exact control/candidate Reliability@3를 새 root에 preregister한다.
-3. fresh equality-attested matrix를 one-cell checkpoints로 실행한다.
+1. exact control/candidate Reliability@3를 generator holdout에 preregister한다.
+2. fresh detached vendors와 6 clean cells의 equality를 증명한다.
+3. browser preflight 뒤 one-cell checkpoints로 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
