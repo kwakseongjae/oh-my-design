@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `ffd75773` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.332 first native-enforced control checkpoint
+- 갱신: 2026-08-03 · 1.9.333 runtime-artifact candidate rejected after valid timeout
 
 ## 지금 (현재 위치)
+
+- 1.9.333 paired candidate는 product를 바꿨지만 900,022ms timeout, final/score/proof/usage가 없어 valid timeout failure다. 재시도하지 않고 u19330과 남은 4셀을 동결했다.
+- candidate는 6 carrier/41 row artifact 조율에 시간을 쓰고 static proof를 `running`에 남겼다. browser attempts 0, delivery blocked, native unblocked 0이다.
+- exact 1.9.309 candidate는 3 resolved/paired loss/proof-host/time gates를 만족할 수 없어 broader promotion rejected다. observed minimum 12,935,549 tokens + usage-unavailable 2 cells다.
+- 다음은 model-authored bookkeeping 축소 + transactional static lifecycle + deterministic artifact bootstrap을 갖는 새 candidate 설계/구현이며, fresh task/matrix만 허용한다.
 
 - 1.9.332 첫 control은 valid: 79/85, unresolved, 726,928ms, 2,519,978 tokens다.
 - browser preflight/proof/host-policy/delivery는 pass했고 recovery 0이다. red는 mobile/320/200% atomic wrapping과 320/200% mid-token fragmentation이다.

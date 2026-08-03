@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "checkpoint": 2,
+  "product_version": "1.9.333",
+  "matrix_root": "/private/tmp/u19330",
+  "cell_id": "luna-load-r1-artifact-native-enforced",
+  "status": "valid-candidate-timeout-failure",
+  "validity": "valid-timeout-failure",
+  "ui_resolved": false,
+  "objective_score": null,
+  "objective_max": 85,
+  "wall_time_ms": 900022,
+  "provider_tokens": null,
+  "provider_usage_available": false,
+  "product_changed": true,
+  "final_message_present": false,
+  "proof_trace_available": false,
+  "score_available": false,
+  "host_policy_summary_available": false,
+  "runtime_policy_state": {
+    "revision": 1,
+    "static_closure": "running",
+    "browser_attempts": 0,
+    "delivery": "blocked",
+    "native_browser_unintercepted": 0,
+    "registered_carriers": 6,
+    "registered_rows": 41
+  },
+  "promotion_gate_disposition": {
+    "three_resolved_trials": "failed",
+    "paired_objective_losses": "failed",
+    "proof_and_host_policy_3_of_3": "failed",
+    "mean_wall_time_ratio": "failed",
+    "mean_provider_tokens_ratio": "not-computable"
+  },
+  "retained_invalid_spend_tokens": 8453412,
+  "observed_attempt_tokens_known_minimum": 12935549,
+  "usage_unavailable_cells": 2,
+  "remaining_cells_started": 0,
+  "same_root_retry": false,
+  "candidate_promoted": false
+}

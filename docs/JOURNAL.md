@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.333 runtime-artifact candidate rejected
+- paired candidate는 product changed 뒤 900,022ms timeout, score/usage 없음이다.
+- 6 carrier/41 row 조율 뒤 static running·browser 0·delivery blocked로 끝났다.
+- u19330/남은 4셀 동결, exact 1.9.309 candidate promotion rejected다.
+- 다음은 deterministic artifact bootstrap + transactional proof lifecycle candidate다.
+
 ## 2026-08-03 (Codex) · 1.9.332 first native-enforced control
 - R1 control은 valid 79/85, 726,928ms, 2,519,978 tokens다.
 - proof/host/delivery pass, browser recovery 0, closure unresolved다.
