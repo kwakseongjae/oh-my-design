@@ -226,11 +226,42 @@ export function validateRunMatrixPlan(plan) {
       "max_browser_recovery_count",
       "max_duplicate_static_closure_count",
       "max_verification_after_ready_count",
+      "max_document_overflow_px",
+      "max_passive_protected_text_scroll_containers",
     ]) {
-      if (!Number.isInteger(gates[field]) || gates[field] < 0) {
+      if (gates[field] !== undefined && (!Number.isInteger(gates[field]) || gates[field] < 0)) {
         throw new Error(`matrix proof_execution_gates.${field} must be a non-negative integer`);
       }
     }
+    for (const field of [
+      "require_closed_reflow_artifact",
+      "require_measured_browser_attempt",
+      "require_character_range_line_oracle",
+      "require_actual_zoom_observation",
+      "require_exact_named_consumer_attachment",
+      "forbid_launched_browser",
+      "require_locked_typography",
+    ]) {
+      if (gates[field] !== undefined && typeof gates[field] !== "boolean") {
+        throw new Error(`matrix proof_execution_gates.${field} must be boolean`);
+      }
+    }
+    if (
+      gates.minimum_inline_fit_reserve_css_px !== undefined
+      && (!Number.isFinite(gates.minimum_inline_fit_reserve_css_px) || gates.minimum_inline_fit_reserve_css_px < 0)
+    ) throw new Error("matrix proof_execution_gates.minimum_inline_fit_reserve_css_px must be non-negative");
+    if (
+      gates.shipped_runner_system_ids !== undefined
+      && (
+        !Array.isArray(gates.shipped_runner_system_ids)
+        || !gates.shipped_runner_system_ids.length
+        || gates.shipped_runner_system_ids.some((id) => typeof id !== "string" || !id)
+      )
+    ) throw new Error("matrix proof_execution_gates.shipped_runner_system_ids must be a non-empty string array");
+    if (
+      gates.shipped_runner_command_suffix !== undefined
+      && (typeof gates.shipped_runner_command_suffix !== "string" || !gates.shipped_runner_command_suffix)
+    ) throw new Error("matrix proof_execution_gates.shipped_runner_command_suffix must be a non-empty string");
   }
 
   if (plan.host_policy_comparison !== undefined && plan.shared_host_policy !== undefined) {
@@ -360,6 +391,11 @@ export function validateRunMatrixPlan(plan) {
     const knownSystems = new Set(plan.cells.map((cell) => cell.system_id));
     if (plan.proof_execution_gates.system_ids.some((id) => !knownSystems.has(id))) {
       throw new Error("matrix proof_execution_gates.system_ids contains an unknown system");
+    }
+    if (plan.proof_execution_gates.shipped_runner_system_ids?.some((id) => (
+      !knownSystems.has(id) || !plan.proof_execution_gates.system_ids.includes(id)
+    ))) {
+      throw new Error("matrix proof_execution_gates.shipped_runner_system_ids must target known gated systems");
     }
     if (targeted.some((cell) => !["codex", "cursor"].includes(cell.runtime))) {
       throw new Error("matrix proof_execution_gates supports only codex or cursor cells");

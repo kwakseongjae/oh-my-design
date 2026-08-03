@@ -232,7 +232,137 @@ export function classifyProofTraceFile(path) {
   return classifyProofTrace(parseJsonl(readFileSync(path, "utf8")));
 }
 
-export function evaluateProofExecutionGate(trace, gate) {
+const REQUIRED_REFLOW_CONDITIONS = [
+  { id: "390", viewport_width: 390, zoom: 1 },
+  { id: "320", viewport_width: 320, zoom: 1 },
+  { id: "200pct", viewport_width: 640, zoom: 2 },
+];
+
+function shippedRunnerInvoked(trace, suffix = "scripts/reflow-browser.py") {
+  return (trace?.revisions ?? []).some((revision) => (revision.commands ?? []).some((entry) => (
+    entry.browser === true && String(entry.command ?? "").includes(suffix)
+  )));
+}
+
+function artifactProofReasons(artifact, gate, context) {
+  const enabled = gate.require_closed_reflow_artifact === true
+    || gate.require_measured_browser_attempt === true
+    || gate.require_exact_named_consumer_attachment === true
+    || gate.require_actual_zoom_observation === true
+    || gate.require_character_range_line_oracle === true
+    || gate.require_locked_typography === true;
+  if (!enabled) return { reasons: [], observed: null };
+  if (!artifact || typeof artifact !== "object" || Array.isArray(artifact)) {
+    return { reasons: ["reflow-artifact-missing"], observed: { artifact_present: false } };
+  }
+
+  const reasons = [];
+  const attempt = artifact.browser_attempt;
+  const conditions = Array.isArray(attempt?.conditions) ? attempt.conditions : [];
+  if (artifact.static_closure?.state !== "passed" || artifact.static_closure?.attempts !== 1) {
+    reasons.push("reflow-static-closure-not-passed");
+  }
+  if (gate.require_measured_browser_attempt === true && (
+    attempt?.attempts !== 1 || attempt?.outcome !== "measured"
+  )) reasons.push("reflow-browser-attempt-not-measured");
+  if (gate.require_character_range_line_oracle === true && attempt?.oracle !== "character-range-line-tops") {
+    reasons.push("reflow-character-range-oracle-missing");
+  }
+  if (gate.require_exact_named_consumer_attachment === true) {
+    const expectedName = context.expectedConnectionName;
+    if (
+      attempt?.connection?.attached_existing !== true
+      || attempt?.connection?.launched_browser !== false
+      || typeof attempt?.connection?.connection_name !== "string"
+      || !attempt.connection.connection_name
+      || (expectedName && attempt.connection.connection_name !== expectedName)
+    ) reasons.push("reflow-exact-consumer-attachment-missing");
+  }
+  if (gate.forbid_launched_browser === true && attempt?.connection?.launched_browser !== false) {
+    reasons.push("reflow-browser-launch-detected");
+  }
+  if (gate.require_actual_zoom_observation === true) {
+    const exactConditions = conditions.length === REQUIRED_REFLOW_CONDITIONS.length
+      && REQUIRED_REFLOW_CONDITIONS.every((expected, index) => {
+        const actual = conditions[index];
+        return actual?.id === expected.id
+          && actual?.viewport_width === expected.viewport_width
+          && actual?.zoom === expected.zoom
+          && actual?.observed_document_zoom === expected.zoom;
+      });
+    if (!exactConditions) reasons.push("reflow-measurement-conditions-incomplete");
+  }
+  if (Number.isFinite(gate.max_document_overflow_px)) {
+    const max = gate.max_document_overflow_px;
+    const overflow = conditions.some((condition) => (
+      !Number.isFinite(condition?.document_scroll_width)
+      || !Number.isFinite(condition?.document_client_width)
+      || !Number.isFinite(condition?.body_scroll_width)
+      || !Number.isFinite(condition?.body_client_width)
+      || condition.document_scroll_width - condition.document_client_width > max
+      || condition.body_scroll_width - condition.body_client_width > max
+    ));
+    if (!conditions.length || overflow) reasons.push("reflow-document-overflow-limit");
+  }
+  if (gate.require_locked_typography === true) {
+    const changed = (artifact.row_groups ?? []).some((row) => {
+      const measurements = row?.final?.measurements;
+      if (!Array.isArray(measurements) || measurements.length !== REQUIRED_REFLOW_CONDITIONS.length) return true;
+      return measurements.some((value) => (
+        value.observed_font_size_px !== row.typography_contract?.font_size_px
+        || value.observed_line_height_px !== row.typography_contract?.line_height_px
+        || String(value.observed_font_weight) !== String(row.typography_contract?.font_weight)
+      ));
+    });
+    if (changed) reasons.push("reflow-locked-typography-changed");
+  }
+  if (Number.isFinite(gate.minimum_inline_fit_reserve_css_px)) {
+    const insufficient = (artifact.row_groups ?? []).some((row) => (
+      row.decision !== "comparison-scroll"
+      && (row.final?.measurements ?? []).some((value) => (
+        !Number.isFinite(value.inline_reserve_css_px)
+        || value.inline_reserve_css_px < gate.minimum_inline_fit_reserve_css_px
+      ))
+    ));
+    if (insufficient) reasons.push("reflow-inline-fit-reserve-insufficient");
+  }
+  if (Number.isInteger(gate.max_passive_protected_text_scroll_containers)) {
+    const count = (artifact.row_groups ?? []).filter((row) => (
+      row?.final?.passive_text_scroll_container === true
+    )).length;
+    if (count > gate.max_passive_protected_text_scroll_containers) {
+      reasons.push("reflow-passive-text-scroll-limit");
+    }
+  }
+  if (gate.require_closed_reflow_artifact === true && (
+    artifact.closure?.state !== "closed"
+    || artifact.known_failure_closure?.state !== "closed"
+    || artifact.invariants?.all_registered_carriers_closed !== true
+  )) reasons.push("reflow-artifact-not-closed");
+
+  const runnerRequired = Array.isArray(gate.shipped_runner_system_ids)
+    && gate.shipped_runner_system_ids.includes(context.systemId);
+  const runnerInvoked = shippedRunnerInvoked(context.trace, gate.shipped_runner_command_suffix);
+  if (runnerRequired && !runnerInvoked) reasons.push("shipped-reflow-runner-not-invoked");
+
+  return {
+    reasons,
+    observed: {
+      artifact_present: true,
+      static_closure_state: artifact.static_closure?.state ?? null,
+      browser_attempts: attempt?.attempts ?? null,
+      browser_outcome: attempt?.outcome ?? null,
+      attached_existing: attempt?.connection?.attached_existing ?? null,
+      launched_browser: attempt?.connection?.launched_browser ?? null,
+      measured_conditions: conditions.map((condition) => condition?.id ?? null),
+      closure_state: artifact.closure?.state ?? null,
+      shipped_runner_required: runnerRequired,
+      shipped_runner_invoked: runnerInvoked,
+    },
+  };
+}
+
+export function evaluateProofExecutionGate(trace, gate, context = {}) {
   if (!gate) return null;
   const reasons = [];
   if (gate.require_analyzable === true && trace?.analyzable !== true) {
@@ -245,6 +375,11 @@ export function evaluateProofExecutionGate(trace, gate) {
   ]) {
     if (Number(trace?.[field] ?? Number.POSITIVE_INFINITY) > gate[limitField]) reasons.push(reason);
   }
+  const artifactProof = artifactProofReasons(context.reflowArtifact, gate, {
+    ...context,
+    trace,
+  });
+  reasons.push(...artifactProof.reasons);
   return {
     enforcement: gate.enforcement,
     pass: reasons.length === 0,
@@ -254,12 +389,16 @@ export function evaluateProofExecutionGate(trace, gate) {
       browser_recovery_count: trace?.browser_recovery_count ?? null,
       duplicate_static_closure_count: trace?.duplicate_static_closure_count ?? null,
       verification_after_ready_count: trace?.verification_after_ready_count ?? null,
+      reflow_artifact: artifactProof.observed,
     },
     limits: {
       require_analyzable: gate.require_analyzable,
       max_browser_recovery_count: gate.max_browser_recovery_count,
       max_duplicate_static_closure_count: gate.max_duplicate_static_closure_count,
       max_verification_after_ready_count: gate.max_verification_after_ready_count,
+      require_closed_reflow_artifact: gate.require_closed_reflow_artifact ?? false,
+      require_measured_browser_attempt: gate.require_measured_browser_attempt ?? false,
+      require_exact_named_consumer_attachment: gate.require_exact_named_consumer_attachment ?? false,
     },
   };
 }

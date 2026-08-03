@@ -416,7 +416,7 @@ function completeOutcome(value, label, { compound = false, unresolved = false } 
   }
 }
 
-function validateResolvedRowMeasurements(row) {
+function validateResolvedRowMeasurements(row, { allowFailedFit = false } = {}) {
   const values = row.final?.measurements;
   if (!Array.isArray(values) || values.length !== REQUIRED_MEASUREMENT_CONDITIONS.length) {
     fail(`row group ${row.id}.final.measurements must cover every condition`);
@@ -430,7 +430,8 @@ function validateResolvedRowMeasurements(row) {
       || String(value.observed_font_weight) !== String(row.typography_contract.font_weight)
     ) fail(`row group ${row.id} changed its locked typography role`);
     if (
-      row.decision !== "comparison-scroll"
+      !allowFailedFit
+      && row.decision !== "comparison-scroll"
       && (!Number.isFinite(value.inline_reserve_css_px) || value.inline_reserve_css_px < row.required_fit_reserve_css_px)
     ) fail(`row group ${row.id} must preserve ${row.required_fit_reserve_css_px}px measured inline fit reserve`);
   }
@@ -439,12 +440,14 @@ function validateResolvedRowMeasurements(row) {
 function validateBrowserConnection(attempt, contract, env, { unresolved = false } = {}) {
   const expectedName = env?.[contract.connection_name_env];
   const expectedUrl = env?.[contract.cdp_url_env];
-  if (!expectedName || !expectedUrl) fail("named consumer browser environment is unavailable");
+  if (!expectedName) fail("named consumer browser environment is unavailable");
+  const observedUrl = attempt?.connection?.cdp_url ?? null;
+  const endpointMatches = expectedUrl ? observedUrl === expectedUrl : observedUrl === null;
   if (
     attempt?.mechanism !== contract.mechanism
     || attempt?.connection?.transport !== contract.transport
     || attempt.connection.connection_name !== expectedName
-    || attempt.connection.cdp_url !== expectedUrl
+    || !endpointMatches
     || attempt.connection.launched_browser !== false
     || (!unresolved && attempt.connection.attached_existing !== true)
   ) fail("browser attempt must attach to the exact named consumer CDP connection without launching another browser");
@@ -467,7 +470,14 @@ export function hostObservedBrowserAttempt(stateDir) {
   ));
 }
 
-export function finalizeArtifact(input, { unresolved = false, hostStateDir = null, env = process.env } = {}) {
+export function finalizeArtifact(input, {
+  unresolved = false,
+  measuredUnresolved = false,
+  hostStateDir = null,
+  env = process.env,
+} = {}) {
+  if (unresolved && measuredUnresolved) fail("finalization mode cannot be both infrastructure and measured unresolved");
+  const unresolvedClosure = unresolved || measuredUnresolved;
   const artifact = structuredClone(input);
   const locked = lockArtifact({
     ...artifact,
@@ -486,16 +496,16 @@ export function finalizeArtifact(input, { unresolved = false, hostStateDir = nul
       row.final = { status: "unresolved", outcome_390: "unresolved", outcome_320: "unresolved", outcome_200pct: "unresolved" };
     }
   }
-  for (const carrier of artifact.carriers) completeOutcome(carrier.final, `carrier ${carrier.id}`, { unresolved });
+  for (const carrier of artifact.carriers) completeOutcome(carrier.final, `carrier ${carrier.id}`, { unresolved: unresolvedClosure });
   for (const row of artifact.row_groups) {
     completeOutcome(row.final, `row group ${row.id}`, {
       compound: row.line_contract === "parent-one-line",
-      unresolved,
+      unresolved: unresolvedClosure,
     });
     if (!OUTCOMES.has(row.final.status)) fail(`row group ${row.id}.status must be pass or unresolved`);
-    if (!unresolved) validateResolvedRowMeasurements(row);
+    if (!unresolved) validateResolvedRowMeasurements(row, { allowFailedFit: measuredUnresolved });
   }
-  if (!unresolved && INVARIANTS.some((field) => artifact.invariants[field] !== true)) {
+  if (!unresolvedClosure && INVARIANTS.some((field) => artifact.invariants[field] !== true)) {
     fail("resolved closure requires every invariant to pass");
   }
   const carrierCount = artifact.carriers.reduce((sum, carrier) => sum + carrier.expected_count, 0);
@@ -509,7 +519,7 @@ export function finalizeArtifact(input, { unresolved = false, hostStateDir = nul
   const unresolvedRowCount = artifact.row_groups
     .filter((row) => row.final.status !== "pass" || ["outcome_390", "outcome_320", "outcome_200pct"].some((field) => row.final[field] !== "pass"))
     .reduce((sum, row) => sum + row.expected_count, 0);
-  if (!unresolved && (unresolvedCarrierCount > 0 || unresolvedRowCount > 0)) {
+  if (!unresolvedClosure && (unresolvedCarrierCount > 0 || unresolvedRowCount > 0)) {
     fail("resolved closure requires zero unresolved carriers and rows");
   }
   if (unresolved) {
@@ -578,8 +588,8 @@ function write(path, artifact) {
 
 function main() {
   const [command, rawPath, rawProductPath] = process.argv.slice(2);
-  if (!command || !rawPath || !["lock", "static-close", "finalize", "finalize-unresolved"].includes(command)) {
-    console.error("usage: reflow-artifact.mjs <lock|static-close|finalize|finalize-unresolved> <artifact.json> [product-file]");
+  if (!command || !rawPath || !["lock", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
+    console.error("usage: reflow-artifact.mjs <lock|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-file]");
     process.exitCode = 2;
     return;
   }
@@ -604,6 +614,7 @@ function main() {
   } else {
     result = finalizeArtifact(artifact, {
       unresolved: command === "finalize-unresolved",
+      measuredUnresolved: command === "finalize-measured-unresolved",
       hostStateDir,
     });
   }
@@ -623,7 +634,7 @@ function main() {
     static_closure: result.static_closure,
   }));
   if (command === "static-close" && result.static_closure.state !== "passed") process.exitCode = 1;
-  if (["finalize", "finalize-unresolved"].includes(command)) console.log(deliveryMarker(result));
+  if (["finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) console.log(deliveryMarker(result));
 }
 
 if (

@@ -287,9 +287,16 @@ async function main() {
   const score = existsSync(scorePath) ? readJson(scorePath) : null;
   const matrixCellPath = join(benchmarkDir, "matrix-cell.json");
   const matrixCell = existsSync(matrixCellPath) ? readJson(matrixCellPath) : null;
+  const reflowArtifactPath = join(workspace, ".omd", "reflow-closure.json");
+  const reflowArtifact = existsSync(reflowArtifactPath) ? readJson(reflowArtifactPath) : null;
   const proofExecutionGate = evaluateProofExecutionGate(
     proofTrace,
     matrixCell?.proof_execution_gate ?? null,
+    {
+      reflowArtifact,
+      systemId: matrixCell?.system_id ?? systemId,
+      expectedConnectionName: process.env.BU_NAME ?? null,
+    },
   );
   const hostPolicy = matrixCell?.host_policy
     ? {

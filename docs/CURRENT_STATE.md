@@ -3,10 +3,16 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.482 semiconductor shipped-runner transfer stopped
+- 기준 커밋: `1de91207` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.483 socket-native runner + artifact-aware gate validated
 
 ## 지금 (현재 위치)
+
+- 1.9.483은 raw CDP endpoint 없이 exact `BU_NAME` socket으로 shipped runner가 consumer browser에 붙도록 수리했다.
+- `bench19366` 실재생에서 existing attach true/launch false, 390·320·actual200 세 조건을 1회 측정했고 static은 passed다.
+- 기존 UI의 8px fit reserve 실패 2행은 측정을 버리지 않고 terminal `OMD_DELIVERY_UNRESOLVED`로 닫혔다.
+- automatic proof gate는 command shape가 아니라 artifact까지 읽어 frozen not-run은 7개 인프라 이유, replay는 실제 품질 이유 2개만 보고한다.
+- lint, focused 63/63, bounded experimental mirror 1/1, diff green, provider 0이다. 다음은 exact immutable pin 1.9.484다.
 
 - 1.9.482 r1 candidate는 valid objective success/proof failure: 85/85, 258.087s, 703,275 tokens다.
 - control 대비 wall 0.6720× / token 0.8383×이며 UI는 완전 green, edit1/static1/shipped-runner1/recovery0/duplicate0/post-ready0다.

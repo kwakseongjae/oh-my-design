@@ -124,10 +124,33 @@ describe("compact reflow artifact helper", () => {
     expect(runner).toContain('MECHANISM = "browser-harness named consumer CDP attachment"');
     expect(runner).toContain('os.environ.get("BU_NAME")');
     expect(runner).toContain('os.environ.get("BU_CDP_URL")');
+    expect(runner).not.toContain("if not connection_name or not cdp_url");
     expect(runner).toContain('"Emulation.setDeviceMetricsOverride"');
     expect(runner).toContain('ORACLE = "character-range-line-tops"');
-    expect(runner).toContain('["node", str(helper_path), "finalize", str(artifact_path)]');
+    expect(runner).toContain('finalize_command = "finalize" if all_pass else "finalize-measured-unresolved"');
+    expect(runner).toContain('["node", str(helper_path), finalize_command, str(artifact_path)]');
     expect(runner).not.toMatch(/chromium\.launch|launch_persistent_context|connect_over_cdp/u);
+  });
+
+  it("accepts an exact named socket when the controller withholds the raw CDP endpoint", () => {
+    const locked = lockArtifact(draft());
+    for (const carrier of locked.carriers) {
+      carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    }
+    for (const row of locked.row_groups) row.final = resolvedRowFinal(row);
+    locked.browser_attempt = measuredAttempt();
+    locked.browser_attempt.connection.cdp_url = null;
+
+    const result = finalizeArtifact(staticClosed(locked), {
+      env: { BU_NAME: "bench-test", BH_RUNTIME_DIR: "/tmp/browser-harness-runtime" },
+    });
+    expect(result.closure).toEqual({ state: "closed" });
+    expect(result.browser_attempt.connection).toMatchObject({
+      connection_name: "bench-test",
+      cdp_url: null,
+      attached_existing: true,
+      launched_browser: false,
+    });
   });
 
   it("locks grouped inventory without model-authored hashes", () => {
@@ -247,6 +270,32 @@ describe("compact reflow artifact helper", () => {
       browser_attempt: locked.browser_attempt,
       inventory_sha256: result.inventory.sha256,
     });
+  });
+
+  it("preserves measured failures as terminal unresolved evidence", () => {
+    const locked = lockArtifact(draft());
+    for (const carrier of locked.carriers) {
+      carrier.final = { outcome_390: "pass", outcome_320: "unresolved", outcome_200pct: "pass" };
+    }
+    for (const row of locked.row_groups) row.final = resolvedRowFinal(row);
+    locked.row_groups[0].final.status = "unresolved";
+    locked.row_groups[0].final.outcome_320 = "unresolved";
+    locked.row_groups[0].final.measurements[1].inline_reserve_css_px = 0;
+    locked.invariants.all_registered_carriers_closed = false;
+    locked.browser_attempt = measuredAttempt();
+
+    const result = finalizeArtifact(staticClosed(locked), {
+      measuredUnresolved: true,
+      env: browserEnv,
+    });
+    expect(result.closure).toEqual({ state: "unresolved" });
+    expect(result.browser_attempt).toMatchObject({ attempts: 1, outcome: "measured" });
+    expect(result.row_groups[0].final).toMatchObject({
+      status: "unresolved",
+      outcome_320: "unresolved",
+      measurements: expect.any(Array),
+    });
+    expect(deliveryMarker(result)).toBe("OMD_DELIVERY_UNRESOLVED");
   });
 
   it("rejects unresolved accounting without one real browser infrastructure attempt", () => {

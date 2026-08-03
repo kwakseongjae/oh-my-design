@@ -312,6 +312,11 @@ describe("UI-Resolve run matrix preparation", () => {
         max_browser_recovery_count: 0,
         max_duplicate_static_closure_count: 0,
         max_verification_after_ready_count: 0,
+        require_closed_reflow_artifact: true,
+        require_measured_browser_attempt: true,
+        require_exact_named_consumer_attachment: true,
+        shipped_runner_system_ids: ["omd-portable"],
+        shipped_runner_command_suffix: "scripts/reflow-browser.py",
       },
     });
     value.cells[0].runtime = "codex";
@@ -328,6 +333,14 @@ describe("UI-Resolve run matrix preparation", () => {
     const malformed = structuredClone(value);
     malformed.proof_execution_gates.max_browser_recovery_count = -1;
     expect(() => validateRunMatrixPlan(malformed)).toThrow("non-negative integer");
+
+    const malformedArtifactGate = structuredClone(value);
+    malformedArtifactGate.proof_execution_gates.require_closed_reflow_artifact = "yes";
+    expect(() => validateRunMatrixPlan(malformedArtifactGate)).toThrow("must be boolean");
+
+    const malformedRunnerIds = structuredClone(value);
+    malformedRunnerIds.proof_execution_gates.shipped_runner_system_ids = [];
+    expect(() => validateRunMatrixPlan(malformedRunnerIds)).toThrow("non-empty string array");
   });
 
   it("maps a cell to the isolated sandbox preparer without provider execution", () => {

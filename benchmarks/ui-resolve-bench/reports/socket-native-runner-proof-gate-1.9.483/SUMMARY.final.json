@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.483",
+  "experiment_id": "socket-native-runner-proof-gate-1.9.483",
+  "status": "PROVIDER_FREE_REPAIR_VALIDATED",
+  "provider_calls": 0,
+  "promotion": false,
+  "repair": {
+    "connection_contract": "exact BU_NAME browser-harness socket; raw BU_CDP_URL or BU_CDP_WS optional metadata only",
+    "measured_failure_contract": "measured product failures close as unresolved without discarding measurements",
+    "automatic_gate": "run trace plus reflow artifact; command shape alone cannot satisfy browser proof"
+  },
+  "real_consumer_replay": {
+    "connection_name": "bench19366",
+    "raw_endpoint_disclosed": false,
+    "attached_existing": true,
+    "launched_browser": false,
+    "browser_attempts": 1,
+    "browser_outcome": "measured",
+    "conditions": ["390", "320", "200pct"],
+    "static_closure": "passed",
+    "terminal_marker": "OMD_DELIVERY_UNRESOLVED",
+    "closure": "unresolved",
+    "unresolved_carriers": 0,
+    "unresolved_rows": 2
+  },
+  "automatic_gate_replay": {
+    "frozen_candidate": {
+      "pass": false,
+      "browser_attempts": 0,
+      "closure": "open",
+      "reason_count": 7
+    },
+    "socket_native_replay": {
+      "pass": false,
+      "browser_attempts": 1,
+      "exact_attachment": true,
+      "closure": "unresolved",
+      "reasons": ["reflow-inline-fit-reserve-insufficient", "reflow-artifact-not-closed"]
+    }
+  },
+  "validation": {
+    "typescript": "passed",
+    "focused_tests": {"passed": 63, "failed": 0},
+    "experimental_mirror_contract": {"passed": 1, "failed": 0},
+    "diff_check": "passed"
+  },
+  "source_sha256": {
+    "skill": "1c5669326914788dd2ba88c3ab6a137a4b6ac10f4ebe1559a6761e5fc67244ee",
+    "artifact_helper": "169efc3cf4a42dc35900d2bbca807d2ef7b36ed62c5e40dd0c333ceba8d19796",
+    "browser_runner": "b64d7d6c421d889ebf933d0dd6f43b8d8fa1f8a9fd6e16b82bd7e51ca6a00a14",
+    "proof_gate": "46bc1b84b116125c826f02b3616b817d248f53c9db62aec2fc5930fa19f6bfe6",
+    "run_export": "76812bcf347a6670d00f847b4d41bb21a815e612cf392a39e3774e4cd7b0cf32",
+    "matrix_prepare": "3008ba075e3b0e1cb4f84bbb158d9e6b1ed64461c5ff208956eee6feae6c2d9a"
+  },
+  "next": "Commit and exact-pin this provider-free repair, then lock a genuinely unseen task before the next Luna/high transfer."
+}

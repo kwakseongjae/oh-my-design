@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.483 socket-native proof repair
+- raw CDP 없이 exact BU_NAME socket attach·세 조건 실측·no-launch를 실제 consumer browser에서 재현했다.
+- 측정 실패는 unresolved로 닫고 artifact-aware gate가 인프라 실패와 품질 실패를 분리한다. 다음은 exact pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.482 shipped-runner transfer stopped
 - candidate는 85/85·0.6720× wall·0.8383× tokens이나 named-socket/raw-CDP mismatch로 runner proof가 없었다.
 - proof 3/3 불가능으로 4셀 frozen. 다음은 socket-native runner + artifact-aware proof gate repair다.

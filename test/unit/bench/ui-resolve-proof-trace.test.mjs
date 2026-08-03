@@ -235,4 +235,92 @@ describe("proof trace contract", () => {
       reasons: ["browser-recovery-limit", "duplicate-static-limit", "verification-after-ready-limit"],
     });
   });
+
+  it("fails closed on command-shaped proof until the reflow artifact records the exact measured consumer", () => {
+    const trace = {
+      analyzable: true,
+      browser_recovery_count: 0,
+      duplicate_static_closure_count: 0,
+      verification_after_ready_count: 0,
+      revisions: [{
+        commands: [{ browser: true, command: "browser-harness < /skill/scripts/reflow-browser.py" }],
+      }],
+    };
+    const gate = {
+      enforcement: "promotion-report",
+      require_analyzable: true,
+      max_browser_recovery_count: 0,
+      max_duplicate_static_closure_count: 0,
+      max_verification_after_ready_count: 0,
+      require_closed_reflow_artifact: true,
+      require_measured_browser_attempt: true,
+      require_character_range_line_oracle: true,
+      require_actual_zoom_observation: true,
+      require_exact_named_consumer_attachment: true,
+      forbid_launched_browser: true,
+      require_locked_typography: true,
+      minimum_inline_fit_reserve_css_px: 8,
+      max_document_overflow_px: 0,
+      max_passive_protected_text_scroll_containers: 0,
+      shipped_runner_system_ids: ["candidate"],
+      shipped_runner_command_suffix: "scripts/reflow-browser.py",
+    };
+    const conditions = [
+      { id: "390", viewport_width: 390, zoom: 1, observed_document_zoom: 1, document_scroll_width: 390, document_client_width: 390, body_scroll_width: 390, body_client_width: 390 },
+      { id: "320", viewport_width: 320, zoom: 1, observed_document_zoom: 1, document_scroll_width: 320, document_client_width: 320, body_scroll_width: 320, body_client_width: 320 },
+      { id: "200pct", viewport_width: 640, zoom: 2, observed_document_zoom: 2, document_scroll_width: 320, document_client_width: 320, body_scroll_width: 320, body_client_width: 320 },
+    ];
+    const artifact = {
+      static_closure: { state: "passed", attempts: 1 },
+      browser_attempt: {
+        attempts: 1,
+        outcome: "measured",
+        oracle: "character-range-line-tops",
+        connection: { connection_name: "bench-test", attached_existing: true, launched_browser: false },
+        conditions,
+      },
+      invariants: { all_registered_carriers_closed: true },
+      closure: { state: "closed" },
+      known_failure_closure: { state: "closed" },
+      row_groups: [{
+        decision: "keep",
+        typography_contract: { font_size_px: 14, line_height_px: 20, font_weight: 600 },
+        final: {
+          passive_text_scroll_container: false,
+          measurements: conditions.map(({ id }) => ({
+            id,
+            observed_font_size_px: 14,
+            observed_line_height_px: 20,
+            observed_font_weight: 600,
+            inline_reserve_css_px: 8,
+          })),
+        },
+      }],
+    };
+    expect(evaluateProofExecutionGate(trace, gate, {
+      reflowArtifact: artifact,
+      systemId: "candidate",
+      expectedConnectionName: "bench-test",
+    })).toMatchObject({
+      pass: true,
+      reasons: [],
+      observed: { reflow_artifact: { shipped_runner_invoked: true, closure_state: "closed" } },
+    });
+
+    const notRun = structuredClone(artifact);
+    notRun.browser_attempt = { attempts: 0, outcome: "not-run", conditions: [] };
+    notRun.closure.state = "open";
+    expect(evaluateProofExecutionGate(trace, gate, {
+      reflowArtifact: notRun,
+      systemId: "candidate",
+      expectedConnectionName: "bench-test",
+    })).toMatchObject({
+      pass: false,
+      reasons: expect.arrayContaining([
+        "reflow-browser-attempt-not-measured",
+        "reflow-exact-consumer-attachment-missing",
+        "reflow-artifact-not-closed",
+      ]),
+    });
+  });
 });

@@ -34,9 +34,9 @@ artifact_path = required_path("OMD_REFLOW_ARTIFACT")
 product_path = required_path("OMD_REFLOW_PRODUCT")
 helper_path = required_path("OMD_REFLOW_HELPER")
 connection_name = os.environ.get("BU_NAME")
-cdp_url = os.environ.get("BU_CDP_URL")
-if not connection_name or not cdp_url:
-    raise RuntimeError("BU_NAME and BU_CDP_URL are required")
+cdp_url = os.environ.get("BU_CDP_URL") or os.environ.get("BU_CDP_WS")
+if not connection_name:
+    raise RuntimeError("BU_NAME is required")
 
 artifact = json.loads(artifact_path.read_text())
 if artifact.get("schema_version") != "0.3":
@@ -313,5 +313,6 @@ artifact["invariants"]["all_registered_carriers_closed"] = all_pass
 artifact["known_failure_closure"] = {"state": "closed" if all_pass else "unresolved", "unresolved": 0 if all_pass else 1}
 artifact["closure"] = {"state": "open"}
 artifact_path.write_text(json.dumps(artifact, indent=2) + "\n")
-result = subprocess.run(["node", str(helper_path), "finalize", str(artifact_path)], check=False)
+finalize_command = "finalize" if all_pass else "finalize-measured-unresolved"
+result = subprocess.run(["node", str(helper_path), finalize_command, str(artifact_path)], check=False)
 raise SystemExit(result.returncode)
