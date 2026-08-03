@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.317 clean-baseline replacement preregistration
+- same attempt/task/treatment/gates를 유지한 두 번째 infrastructure replacement다.
+- u19317 + preparation `06086c37…`, clean/detached/baseline commit을 추가 강제한다.
+- provider call 0, retained invalid spend는 2,932,219 tokens다.
+- 다음은 fresh 6-cell prepare와 equality attestation이다.
+
 ## 2026-08-03 (Codex) · 1.9.316 prepared Git baseline seal
 - u19315 준비본이 시작 파일 untracked임을 발견해 provider 전 rejected했다.
 - 모든 prepared 시작 파일을 local commit, detached HEAD, clean status로 봉인한다.

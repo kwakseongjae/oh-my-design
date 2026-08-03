@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.316 prepared Git baseline seal
+- 갱신: 2026-08-03 · 1.9.317 clean-baseline replacement preregistered
 
 ## 지금 (현재 위치)
+
+- 1.9.317은 1.9.315 계약을 그대로 유지하고 prepared Git baseline만 1.9.316 방식으로 강제하는 두 번째 infrastructure replacement다.
+- fresh root는 `/private/tmp/u19317`, vendor는 clean detached `/private/tmp/u19315-vendors`; preparation source `06086c37…`, shared host policy `7d21ea23…`다.
+- invalid 2,932,219 tokens는 attempt 4에 보존하고 u19315은 provider 0이라 비용 0이다. 새 provider call도 아직 0이다.
+- 다음은 6-cell prepare 후 equality + detached/clean/baseline commit attestation을 확인하는 것이다.
 
 - 1.9.316은 prepared cell의 시작 파일을 local baseline commit으로 봉인하고 detached HEAD + clean status를 강제한다. agent-visible Git diff도 이제 유효한 before/after 경계다.
 - `/private/tmp/u19315`는 shared equality는 green이었지만 시작 파일이 untracked라 provider 전에 rejected했다. provider call 0이고 root는 재사용하지 않는다.
