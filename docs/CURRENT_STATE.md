@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.460 deterministic static-closure helper repair
+- 갱신: 2026-08-04 · 1.9.461 deterministic static-closure exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.461은 repair를 exact commit `8315182e…`, skill tree `d3566da6…` 및 네 file hash로 pin했다.
+- 새 competitor id는 `omd-deterministic-static-closure-candidate`; mutable working tree는 provider sandbox에 사용할 수 없다.
+- targeted competitor/candidate 31 green, provider 0, promotion false다. 다음은 genuinely unseen transfer task 1.9.462를 lock한다.
 
 - 1.9.460은 pre-edit `static_closure_manifest`와 exactly-once `static-close` helper를 canonical/experimental skill에 연결했다.
 - helper는 product file을 한 번 읽어 required/forbidden literal·pattern·cardinality를 닫고, pass/fail을 1회로 영구 기록하며 pass 전 finalize를 거부한다.

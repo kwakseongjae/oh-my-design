@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.461 deterministic static closure exact pin
+- repair를 exact commit/tree/file hashes와 새 competitor id로 고정했다.
+- provider 0, promotion false. 다음은 genuinely unseen transfer task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.460 deterministic static closure
 - pre-edit manifest + exactly-once shipped helper로 ad-hoc post-edit verifier 경로를 닫았다.
 - focused 121 green, provider 0. 다음은 exact pin 1.9.461과 unseen transfer다.
