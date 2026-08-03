@@ -22,3 +22,7 @@ The valid 1.9.333 timeout showed that the runtime artifact contract was scientif
 - provider calls during repair: 0.
 
 This patch removes bookkeeping and proof-lifecycle failure modes. It does not prove better UI quality. The 1.9.309 candidate, aircraft task, and `/private/tmp/u19330` remain frozen. The next quality experiment must pin this committed source and use a fresh unseen task, fresh preregistration, and fresh committed/detached/clean cells.
+
+## Exact host-policy pin — 1.9.335
+
+Committed source `c1de0e4e…` is pinned in `HOST-POLICY-PIN.json`. The pin binds the canonical and installed skill, deterministic reflow helper, managed Codex config, and every source/rendered hook file. A same-permission browser-harness doctor run confirmed Chrome, daemon, and one active browser connection; optional cloud authentication is irrelevant to local proof. Provider calls remain zero and this pin is not a quality promotion.

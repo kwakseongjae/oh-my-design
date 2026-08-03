@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.334 compact artifact + transactional proof repair accepted
+- 갱신: 2026-08-03 · 1.9.335 compact artifact host policy pinned
 
 ## 지금 (현재 위치)
+
+- 1.9.335는 committed `c1de0e4e…`의 canonical/installed skill, reflow helper, Codex config, source/rendered hook을 exact hash로 pin했다.
+- same-permission browser preflight는 Chrome/daemon/active connection 1을 확인했다. provider call 0, quality promotion 없음이다.
+- 다음은 과거 task family와 겹치지 않는 fresh unseen task를 lock하고 이 pin의 control/candidate 비교를 preregister하는 것이다.
 
 - 1.9.334는 반복 row를 selector/role/longest-value group + expected count로 압축하는 reflow schema 0.2와 deterministic lock/finalize helper를 추가했다. resolved closure는 네 relationship invariant까지 강제한다.
 - host가 static PostToolUse를 누락하면 다음 proof 전 이전 attempt를 unresolved로 원자적으로 닫는다. 반복 static은 계속 거부되고 browser/delivery deadlock만 제거된다.

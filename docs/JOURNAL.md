@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.335 exact compact-artifact pin
+- c1de0e4e source/installed skill, helper, config, hook hashes를 pin했다.
+- browser preflight는 Chrome/daemon/active connection 1로 ready다.
+- provider 0, promotion 없음; 다음은 fresh unseen task lock이다.
+
 ## 2026-08-03 (Codex) · 1.9.334 compact artifact repair
 - schema 0.2가 반복 row를 group/count로 압축하고 helper가 hash/manifest를 소유한다.
 - missing static PostToolUse는 unresolved로 원자 정리되어 proof deadlock을 막는다.
