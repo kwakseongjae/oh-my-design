@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.366 cold-chain replacement preregistration
+- 갱신: 2026-08-03 · 1.9.367 cold-chain replacement preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.367은 fresh `/private/tmp/u19366-vendors` exact detached sources와 `/private/tmp/u19366` 6 committed/detached/clean cells를 준비했다.
+- task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/host/proof/admission/resume/timeout/browser pin equality가 6/6이다.
+- sole arm delta는 skill tree `2d577464…` control vs `36a44a1…` compact이며 provider 0이다.
+- 다음 허용 cell은 browser + isolated-auth preflight 뒤 `luna-coldchain-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
 
 - 1.9.366은 scored model에 노출되지 않은 cold-chain task를 fresh `/private/tmp/u19366{,-vendors}` root로 다시 preregister했다.
 - Luna/high exact control vs compact 2×3, 900s/concurrency 1/120s pacing/no retry/C-N rotation과 strict gates는 유지한다.

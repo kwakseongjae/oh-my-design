@@ -9,3 +9,7 @@ Host validity remains pinned to 1.9.341, checkpoint reconstruction to 1.9.347, t
 Promotion still requires candidate resolution 3/3, no serious or critical contrast result, no paired objective loss, proof and host-policy passage 3/3, and candidate mean wall time and provider tokens no more than 1.10× control. Infrastructure invalidity, checkpoint drift, or permission mismatch freezes the replacement root and requires another preregistration.
 
 This is Tokens-to-Target attempt 10. Prior scored spend remains at least 18,188,850 provider-reported tokens plus four usage-unavailable cells. The transport repair additionally consumed 25,653 diagnostic input tokens, 17,920 cached input tokens, and 10 output tokens; diagnostic usage is tracked separately and never pooled into quality scores. Provider calls at preregistration: 0.
+
+## Preparation — 1.9.367
+
+Fresh detached vendor worktrees and six committed, detached, clean cells were prepared under `/private/tmp/u19366-vendors` and `/private/tmp/u19366`. Equality is 6/6 for task, prompt, starter product, DESIGN.md, activation, runtime, model, effort, timeout, host configuration, proof policy, admission, resume, timeout accounting, and isolated browser execution. The sole arm delta is the exact installed skill tree (`2d577464…` control vs `36a44a1…` compact). Provider calls at preparation: 0. The only permitted next cell is `luna-coldchain-r1-control`, after browser and isolated-auth preflight, with `--max-new-cells 1` and no retry.

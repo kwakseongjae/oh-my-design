@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.367 cold-chain replacement preparation
+- fresh exact detached vendors와 6 committed/detached/clean cells를 준비했다.
+- equality 6/6, sole delta는 control `2d577464…` vs compact `36a44a1…` skill tree다.
+- provider 0; 다음은 dual preflight 뒤 r1 control 한 셀이다.
+
 ## 2026-08-03 (Codex) · 1.9.366 cold-chain replacement preregistration
 - provider-before-failure였던 cold-chain task를 fresh u19366 roots에 다시 잠갔다.
 - isolated runtime 1.9.365와 exact 2×3/no-retry gates를 고정했다. provider 0.
