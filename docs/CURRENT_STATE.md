@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.301 digital-master matrix prepared
+- 갱신: 2026-08-03 · 1.9.302 digital-master control r1
 
 ## 지금 (현재 위치)
+
+- 1.9.302 `luna-master-r1-control`은 valid/policy-green 75/85 unresolved다. task/state/design/evidence/desktop/keyboard는 green이다.
+- 390/320/200%에서 handoff target과 summary atomic-line, page containment가 red이고 supplied muted 4.42:1 contrast도 남았다.
+- wall 400,988ms, total 448,479 tokens(input 427,321, cached 367,360, output 21,158, reasoning 9,734)다. pair claim은 아직 없으며 다음 locked cell은 candidate r1이다.
 
 - 1.9.301은 fresh detached `/private/tmp/u19300-vendors/{omd-1.9.274,omd-1.9.298}`와 `/private/tmp/u19300` 6 Git cells를 provider call 0으로 PREPARED했다.
 - task/prompt/product/DESIGN/runtime/model/effort/timeout/installed proof policy가 6개 전부 같고 sole delta는 skill tree `2d577464…` vs `b9edc281…`다.
