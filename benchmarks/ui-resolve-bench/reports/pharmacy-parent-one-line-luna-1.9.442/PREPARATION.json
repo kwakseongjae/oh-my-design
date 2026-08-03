@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.443",
+  "experiment_id": "pharmacy-parent-one-line-luna-1.9.442",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19442",
+  "vendors_root": "/private/tmp/u19442-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "next_cell": "luna-pharmacy-r1-control",
+  "sole_arm_delta": "exact-installed-skill-source",
+  "sources": {
+    "control_commit": "1480d7cc4235600980fab64cf344cb58e3929e74",
+    "control_skill_sha256": "ef6e0199c90f6fcda5069505548baeedce3b58bb1208eb612bea8de44d7881f5",
+    "candidate_commit": "3c00a4c1519ec681c1f088e8daf6a7daba39be12",
+    "candidate_skill_sha256": "bfd00be5cff3c00b8a3d41981b1b4395cb0173327cafd7cf949d90a6ea8636b7"
+  },
+  "hashes": {
+    "preregistered_plan_sha256": "66c2738b2a8025f1dc24c065ba75b72dce59004159a926e4f49919eefed57c81",
+    "locked_plan_sha256": "5a344e371c1ef6d8c14221eacd33b93d449456236f7a084c29a9344d6d24a5f3",
+    "matrix_state_sha256": "3230b03e0bacebe5a5b1e6adf2bebf26250065833c2f45cf0cc9e4daca8df696",
+    "task_prompt_sha256": "8529da01a416f522e1433a995133fe4b78d3574a2b69c40dcf9315abe6459a48",
+    "starter_and_product_sha256": "10cad33fc2ecc9b4a2390033d87fb040a71853d0101cc040825736f243d80ca5"
+  },
+  "equality": {
+    "task_prompt_product_runtime_model_effort_timeout": "6/6",
+    "untouched_product_trees": 6,
+    "clean_detached_sources": 2,
+    "activation_delta_shared": true,
+    "named_browser_shared": true
+  },
+  "execution_contract": {
+    "max_new_cells": 1,
+    "retry": false,
+    "named_browser": "bench19366",
+    "runtime_dir_shared": true,
+    "exact_named_socket": true,
+    "inter_cell_delay_seconds": 120
+  }
+}

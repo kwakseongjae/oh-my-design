@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.442 pharmacy parent-line terminal-browser preregistration
+- 갱신: 2026-08-04 · 1.9.443 pharmacy parent-line terminal-browser preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.443은 `/private/tmp/u19442-vendors`의 exact detached control/candidate와 `/private/tmp/u19442` 6개 untouched cell을 준비했다.
+- task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.
+- control install hash `ef6e0199…`, candidate `bfd00be5…`; provider 0이다.
+- 다음은 exact `bench19366`와 isolated auth/CLI preflight 뒤 r1 control 한 셀을 no-retry 실행한다.
 
 - 1.9.442는 exact 1.9.409 control `1480d7cc…` vs 1.9.439 candidate `3c00a4c1…`를 fresh pharmacy task에 Luna/high 2×3으로 사전등록했다.
 - explicit parent-one-line, one browser command terminal marker, post-browser read 0과 기존 runtime/proof/efficiency gate를 고정했다.

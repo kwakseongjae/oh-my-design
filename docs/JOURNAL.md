@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.443 pharmacy parent-line terminal-browser preparation
+- exact detached vendors와 untouched 6셀을 준비하고 equality 6/6을 확인했다.
+- provider 0. 다음은 r1 control no-retry 실행이다.
+
 ## 2026-08-04 (Codex) · 1.9.442 pharmacy parent-line terminal-browser preregistration
 - exact 1.9.409 vs 1.9.439, Luna/high 2×3과 terminal browser closure를 고정했다.
 - task exposure 0/0, provider 0. 다음은 fresh exact preparation/equality다.
