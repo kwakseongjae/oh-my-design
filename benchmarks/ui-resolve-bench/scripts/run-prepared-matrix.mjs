@@ -90,6 +90,7 @@ export function preflightRuntimeEnvironment(
         model_id: modelId,
         tool_mode: observation.tool_mode,
         cache_sha256: observation.cache_sha256 ?? null,
+        model_profile_sha256: observation.model_profile_sha256 ?? null,
       });
     }
   }

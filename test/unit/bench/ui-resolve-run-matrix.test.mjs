@@ -254,6 +254,7 @@ describe("UI-Resolve prepared matrix execution", () => {
         tool_mode: "function",
         installed_policy_eligible: true,
         cache_sha256: "a".repeat(64),
+        model_profile_sha256: "b".repeat(64),
       }),
     }).checks).toContainEqual({
       runtime: "codex",
@@ -262,6 +263,7 @@ describe("UI-Resolve prepared matrix execution", () => {
       model_id: "direct-model",
       tool_mode: "function",
       cache_sha256: "a".repeat(64),
+      model_profile_sha256: "b".repeat(64),
     });
   });
 

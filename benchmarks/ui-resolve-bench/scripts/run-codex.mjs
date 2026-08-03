@@ -182,6 +182,7 @@ const result = {
     model_tool_mode: modelToolMode.tool_mode,
     model_tool_mode_evidence: {
       cache_sha256: modelToolMode.cache_sha256,
+      model_profile_sha256: modelToolMode.model_profile_sha256,
       cache_fetched_at: modelToolMode.cache_fetched_at,
       cache_client_version: modelToolMode.cache_client_version,
     },

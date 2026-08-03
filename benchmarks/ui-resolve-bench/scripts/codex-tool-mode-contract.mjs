@@ -5,6 +5,20 @@ import { join, resolve } from "node:path";
 
 const DIRECT_HOOK_ELIGIBLE_TOOL_MODES = new Set(["function"]);
 
+function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value).sort().map((key) => (
+      `${JSON.stringify(key)}:${canonicalJson(value[key])}`
+    )).join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+function sha256(value) {
+  return createHash("sha256").update(value).digest("hex");
+}
+
 export function codexModelCachePath(env = process.env) {
   const home = resolve(env.OMD_BENCH_AUTH_CODEX_HOME ?? join(homedir(), ".codex"));
   return join(home, "models_cache.json");
@@ -20,6 +34,7 @@ export function inspectCodexModelToolMode(modelId, env = process.env) {
       reason: "model-cache-missing",
       cache_path: path,
       cache_sha256: null,
+      model_profile_sha256: null,
       cache_fetched_at: null,
       cache_client_version: null,
     };
@@ -36,6 +51,7 @@ export function inspectCodexModelToolMode(modelId, env = process.env) {
       reason: "model-cache-invalid",
       cache_path: path,
       cache_sha256: createHash("sha256").update(source).digest("hex"),
+      model_profile_sha256: null,
       cache_fetched_at: null,
       cache_client_version: null,
     };
@@ -51,6 +67,7 @@ export function inspectCodexModelToolMode(modelId, env = process.env) {
     reason: profile ? (toolMode ? null : "tool-mode-missing") : "model-profile-missing",
     cache_path: path,
     cache_sha256: createHash("sha256").update(source).digest("hex"),
+    model_profile_sha256: profile ? sha256(canonicalJson(profile)) : null,
     cache_fetched_at: cache?.fetched_at ?? null,
     cache_client_version: cache?.client_version ?? null,
   };

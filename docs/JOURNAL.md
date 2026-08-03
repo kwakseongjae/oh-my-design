@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.423 Codex selected-model semantic pin
+- u19422는 6/6 equality 뒤 volatile whole-cache drift를 감지해 provider 0으로 freeze했다.
+- selected model canonical profile hash를 추가했고 focused 27/27 + lint/diff green이다. 다음은 exact pin과 fresh preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.418 rail-signal repaired-host preparation
 - fresh exact vendors/cells와 repaired host `bef877c9…` equality 6/6을 확인했다.
 - control `2d577464…` vs candidate `ef6e0199…`, provider 0. 다음은 r1 control 한 셀이다.
