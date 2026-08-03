@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.349 generator matrix preregistration
+- Luna/high exact control vs compact candidate 2×3를 fresh task에 잠갔다.
+- admission 1.9.341 + resume 1.9.347, 900s/pacing/no-retry/strict gates다.
+- prior minimum 16,933,255 tokens + unavailable 2; provider 0이다.
+
 ## 2026-08-03 (Codex) · 1.9.348 generator transfer holdout lock
 - fresh 6 feeder/8 load/4 generator-window task를 provider 전에 잠갔다.
 - baseline 75/85; narrow/200% reflow·atomic lines와 4.03 contrast만 red다.
