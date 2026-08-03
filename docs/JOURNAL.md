@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.416 Codex shell proof interception exact pin
+- repaired host source `060f1d31…`와 8개 artifact hash를 exact pin했다.
+- provider 0/promotion false. 다음은 frozen root를 버리고 fresh rail-signal matrix를 재사전등록한다.
+
 ## 2026-08-04 (Codex) · 1.9.415 Codex shell proof interception repair
 - Codex `exec_command`/`cmd`를 live hook budget에 연결해 duplicate static closure를 실행 전에 차단한다.
 - focused 71/71 + config fixture/lint/diff green, broad 185 pass + known vendor 2 fail, provider 0. 다음은 exact pin이다.
