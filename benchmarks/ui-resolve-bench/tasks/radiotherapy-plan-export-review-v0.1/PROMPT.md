@@ -1,0 +1,5 @@
+Improve the supplied radiotherapy plan export review so treatment-planning staff can inspect plan-to-DICOM assignments, QA windows, and the export decision confidently on desktop and narrow screens.
+
+Preserve all five treatment-plan identifiers, all seven DICOM evidence-bundle identifiers and their exact plan assignments, all three supplied QA windows, the three review views, the transfer-note toggle, the export-review form, and all stated summary evidence. Do not invent patient match verification, dosimetrist approval, physics sign-off, treatment authorization, dose delivery, image guidance confirmation, or export completion. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and actual 200% zoom conditions. The plan manifest, separate QA-window strip, and separate export decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow, broken atomic identifiers, or passive protected text becoming a scroll container.

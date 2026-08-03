@@ -55,6 +55,7 @@ const digitalMasterLineageTaskId = "digital-master-lineage-review-v0.1";
 const aircraftLoadPlanTaskId = "aircraft-load-plan-review-v0.1";
 const orbitalContactPlanTaskId = "orbital-contact-plan-review-v0.1";
 const gridBatteryDispatchTaskId = "grid-battery-dispatch-release-v0.1";
+const radiotherapyPlanExportTaskId = "radiotherapy-plan-export-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1407,6 +1408,46 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("BESS-RACK-308114 + CERT-INVR-77421");
     expect(starter).toContain("6 battery racks · 8 inverter certificates · 4 dispatch windows");
     expect(starter).not.toContain("RX-CONTROL-308114");
+  });
+
+  it("locks an unseen radiotherapy export family before accessible atomic-fit validation", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/tasks",
+      radiotherapyPlanExportTaskId,
+      "task.json",
+    ), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: radiotherapyPlanExportTaskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: {
+          values: ["plan-manifest", "qa-windows", "export-decision"],
+          initial: "plan-manifest",
+          selected: "qa-windows",
+        },
+        form: { valid_value: "Vault R7 export review" },
+      },
+      protected_hook_counts: {
+        "[data-bench='plan-case']": 5,
+        "[data-bench='plan-id']": 5,
+        "[data-bench='dicom-id']": 7,
+        "[data-bench='qa-room-id']": 3,
+        "[data-bench='qa-window']": 3,
+      },
+    });
+    const out = prepareVariant("raw-design-md", {
+      task: radiotherapyPlanExportTaskId,
+      outputName: "radiotherapy-plan-export-lock",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/data-bench="plan-case"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="dicom-id"/g)).toHaveLength(7);
+    expect(starter.match(/data-bench="qa-window"/g)).toHaveLength(3);
+    expect(starter).toContain("PLAN-HN-042731 + DICOM-RS-849103");
+    expect(starter).toContain("5 treatment plans · 7 DICOM bundles · 3 QA windows");
+    expect(starter).not.toContain("BESS-RACK-308114");
   });
 
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {

@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.454 accessible atomic-fit/static latch exact pin
+- 갱신: 2026-08-04 · 1.9.455 radiotherapy plan export fresh task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.455는 fresh `radiotherapy-plan-export-review-v0.1`을 provider 전에 lock했다.
+- 5 treatment plan/7 DICOM bundle/3 QA window와 plan manifest·QA strip·export decision 세 carrier를 보존한다.
+- untouched baseline은 75/85 unresolved: 390/320/actual 200% overflow·compound atomic fragmentation, narrow/actual state 2-line, muted contrast 4.12만 red이며 passive text scroll container는 0이다.
+- provider 0이다. 다음은 exact 1.9.409 control vs exact 1.9.453 candidate의 runtime-bound Luna/high Reliability@3 preregistration이다.
 
 - 1.9.454는 1.9.453 repair를 exact commit `f578e8a6…`, skill tree `86227e35…`와 skill/helper/test hash로 pin했다.
 - 새 competitor id는 `omd-accessible-atomic-fit-static-latch-candidate`이며 mutable working tree는 provider sandbox에 사용할 수 없다.

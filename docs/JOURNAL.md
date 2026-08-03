@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.455 radiotherapy export fresh task lock
+- 5 plans/7 DICOM bundles/3 QA windows의 unseen task를 lock; baseline 75/85 unresolved다.
+- narrow/actual overflow·atomic/state·contrast red, passive text scroll 0, provider 0.
+- 다음은 exact control/candidate Luna-high Reliability@3 preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.454 accessible atomic-fit/static latch exact pin
 - exact commit `f578e8a6…`, skill tree `86227e35…`와 helper/test hash를 고정했다.
 - provider 0. 다음은 fresh unseen accessible atomic-fit transfer task lock이다.
