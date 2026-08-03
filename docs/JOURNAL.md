@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.357 museum R1 control timeout
+- control은 79/85, 900,019ms, valid timeout, usage unavailable다.
+- late edit 1회 뒤 browser 0·delivery blocked지만 evaluate/export/checkpoint는 성공했다.
+- candidate 0; 다음은 pacing/preflight 후 paired compact 한 cell이다.
+
 ## 2026-08-03 (Codex) · 1.9.356 museum matrix prepared
 - exact detached vendors와 6 committed/detached/clean cells를 준비했다.
 - equality 6/6, sole delta는 skill tree; admission/resume/timeout pins도 동일하다.

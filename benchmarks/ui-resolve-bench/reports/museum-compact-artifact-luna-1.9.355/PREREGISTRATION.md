@@ -13,3 +13,7 @@ This is Tokens-to-Target attempt 8. Prior observed spend is at least 16,933,255 
 ## Preparation — 1.9.356
 
 Fresh detached vendors and six committed, detached, clean Git cells were prepared at the preregistered roots. Task, prompt, product, DESIGN.md, activation, runtime, model, effort, timeout, installed proof policy, validity-admission pin, checkpoint-resume pin, and timeout-accounting pin are equal in all cells. The sole arm delta is skill tree `2d577464…` versus `36a44a1…`. Provider calls remain zero; the only permitted next cell is `luna-museum-r1-control` after a fresh browser preflight.
+
+## Control R1 timeout — 1.9.357
+
+The first control was evaluated and checkpointed after the exact 900-second timeout. It reached 79/85 through one late product revision but never attempted browser verification or completed installed-policy delivery. The run is a valid unresolved system failure, not infrastructure invalid: `run_status=timed_out`, `validity=valid`, `ui_resolved=false`, and provider usage unavailable/null. The candidate has not been called. This is the first live-provider confirmation that the 1.9.353 timeout contract preserves evaluation, export, admission, and a single-cell checkpoint instead of freezing before evidence collection.

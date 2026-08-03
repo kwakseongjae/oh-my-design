@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.356 museum compact-artifact matrix prepared
+- 갱신: 2026-08-03 · 1.9.357 museum R1 control valid timeout checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.357 first museum control은 900,019ms valid timeout: 79/85, `ui_resolved=false`, usage unavailable다.
+- 한 번의 late product revision은 있었지만 browser attempt 0·delivery blocked다. admission은 `valid-system-failure / preregistered-valid-timeout`이다.
+- 1.9.353 계약대로 evaluate/export/run-record/checkpoint가 모두 생성됐고 completed 1에서 멈췄다. candidate provider call은 0이다.
+- 다음은 fixed 120s pacing + fresh browser preflight 뒤 `luna-museum-r1-compact` 한 cell이며 control replay는 금지다.
 
 - 1.9.356은 `/private/tmp/u19355-vendors/{omd-1.9.274,omd-1.9.334}` exact detached source와 `/private/tmp/u19355` 6 committed/detached/clean cell을 준비했다.
 - equality 6/6이며 sole arm delta는 skill tree `2d577464…` vs `36a44a1…`; admission/resume/timeout pins도 동일하다.
