@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.448 grid battery dispatch unseen task lock
+- fresh grid task를 75/85 unresolved로 잠갔다; actual 200%와 compound/state line 실패를 포함한다.
+- provider 0. 다음은 exact 1.9.409 vs 1.9.447 Luna/high 2×3 preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.447 actual zoom single-static terminal exact pin
 - source `5d5ee041…`, skill tree `fe3581b3…`로 exact pin했다. provider 0/promotion false.
 - 다음은 fresh unseen actual-zoom transfer task lock이다.

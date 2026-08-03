@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.447 actual zoom single-static terminal exact pin
+- 갱신: 2026-08-04 · 1.9.448 grid battery dispatch unseen task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.448은 fresh `grid-battery-dispatch-release-v0.1`을 provider 전에 lock했다.
+- 6 battery rack/8 inverter·grid certificate/4 dispatch window와 register·window strip·energization decision 세 carrier를 보존한다.
+- untouched baseline은 75/85 unresolved이며 390/320/actual 200% overflow·atomic line fragmentation, actual 200% state 2-line, 4.35 contrast만 의도적으로 red다.
+- provider 0이다. 다음은 exact 1.9.409 control vs exact 1.9.447 candidate의 fresh runtime-bound Luna/high Reliability@3 preregistration이다.
 
 - 1.9.447은 1.9.446 repair를 exact commit `5d5ee041…`, skill tree `fe3581b3…`와 helper/test hash로 pin했다.
 - provider 0, promotion false다. 이후 candidate sandbox는 이 detached commit만 설치한다.
@@ -2240,9 +2245,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 새 unseen compound-atomic repair task를 만들고 task/prompt/product hash를 잠근다.
-2. untouched baseline을 평가해 의도한 compound line-wrap와 다른 failure shape를 확인한다.
-3. exact control vs `1480d7cc…`의 Luna/high 2×3을 새 root에 preregister한다.
+1. exact 1.9.409 control vs exact 1.9.447 candidate의 Luna/high 2×3을 fresh root에 preregister한다.
+2. detached vendors와 six untouched cells를 준비하고 task/prompt/product/runtime/model/effort/timeout equality를 검증한다.
+3. r1 control → fixed pacing → r1 candidate를 no-retry로 실행하고 Reliability@3 가능 여부를 조기 판정한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

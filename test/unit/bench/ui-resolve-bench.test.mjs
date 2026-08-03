@@ -54,6 +54,7 @@ const productionCueDependencyTaskId = "production-cue-dependency-review-v0.1";
 const digitalMasterLineageTaskId = "digital-master-lineage-review-v0.1";
 const aircraftLoadPlanTaskId = "aircraft-load-plan-review-v0.1";
 const orbitalContactPlanTaskId = "orbital-contact-plan-review-v0.1";
+const gridBatteryDispatchTaskId = "grid-battery-dispatch-release-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1349,6 +1350,46 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("PASS-GEO-204 + CMD-PKG-73018");
     expect(starter).toContain("6 passes · 8 command bundles · 4 antenna windows");
     expect(starter).not.toContain("HOLD-AFT-21");
+  });
+
+  it("locks an unseen grid battery dispatch family before actual-zoom validation", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/tasks",
+      gridBatteryDispatchTaskId,
+      "task.json",
+    ), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: gridBatteryDispatchTaskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: {
+          values: ["battery-register", "dispatch-windows", "energization-decision"],
+          initial: "battery-register",
+          selected: "dispatch-windows",
+        },
+        form: { valid_value: "Block C energization review" },
+      },
+      protected_hook_counts: {
+        "[data-bench='container-case']": 6,
+        "[data-bench='container-id']": 6,
+        "[data-bench='certificate-id']": 8,
+        "[data-bench='unit-id']": 4,
+        "[data-bench='dispatch-window']": 4,
+      },
+    });
+    const out = prepareVariant("raw-design-md", {
+      task: gridBatteryDispatchTaskId,
+      outputName: "grid-battery-dispatch-lock",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/data-bench="container-case"/g)).toHaveLength(6);
+    expect(starter.match(/data-bench="certificate-id"/g)).toHaveLength(8);
+    expect(starter.match(/data-bench="dispatch-window"/g)).toHaveLength(4);
+    expect(starter).toContain("BESS-RACK-308114 + CERT-INVR-77421");
+    expect(starter).toContain("6 battery racks · 8 inverter certificates · 4 dispatch windows");
+    expect(starter).not.toContain("RX-CONTROL-308114");
   });
 
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
