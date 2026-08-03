@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.417 rail-signal fresh host-repaired preregistration
+- repaired host `060f1d31…`와 동일 skill arms를 Luna/high 2×3 fresh root로 고정했다.
+- attempt 19, TTT 31,625,601+ / unavailable 6, control exposure 1/candidate 0. 다음은 fresh preparation이다.
+
 ## 2026-08-04 (Codex) · 1.9.416 Codex shell proof interception exact pin
 - repaired host source `060f1d31…`와 8개 artifact hash를 exact pin했다.
 - provider 0/promotion false. 다음은 frozen root를 버리고 fresh rail-signal matrix를 재사전등록한다.

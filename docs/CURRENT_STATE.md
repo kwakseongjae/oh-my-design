@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.416 Codex shell proof interception exact pin
+- 갱신: 2026-08-04 · 1.9.417 rail-signal fresh host-repaired preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.417은 exact skill arms를 유지하고 repaired host `060f1d31…`로 rail-signal Luna/high 2×3을 fresh root에 재사전등록했다.
+- attempt 19, prior Tokens-to-Target 31,625,601 + unavailable 6이며 control exposure 1/candidate exposure 0을 명시했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 Codex-shell interception/character-range gates를 고정했다.
+- 다음은 `/private/tmp/u19417-vendors`와 `/private/tmp/u19417`을 fresh prepare하고 equality를 증명하는 것이다.
 
 - 1.9.416은 repaired host source `060f1d31…`와 8개 artifact hash를 exact pin했다.
 - provider 0, quality promotion false이며 frozen `/private/tmp/u19412`는 재사용하지 않는다.
