@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.304 digital-master candidate r2
+- candidate r2는 73/85 unresolved, proof/host green이다.
+- page는 닫았지만 atomic-line 2/2, keyboard/axe도 red다.
+- wall 295,346ms, 960,428 tokens; 누적 2,001,815다.
+- pair-2 claim 보류; 다음은 control r2다.
+
 ## 2026-08-03 (Codex) · 1.9.303 digital-master pair 1
 - candidate/control은 75/75 tie, 둘 다 unresolved다.
 - candidate는 page/clipping을 닫았지만 atomic-line과 contrast는 남겼다.

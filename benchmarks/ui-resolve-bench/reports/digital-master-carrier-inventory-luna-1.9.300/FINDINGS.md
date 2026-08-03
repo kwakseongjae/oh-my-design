@@ -1,6 +1,6 @@
 # Digital master carrier-inventory transfer — findings
 
-Status: **2/6 cells complete — promotion gate already unreachable**
+Status: **3/6 cells complete — promotion gate already unreachable**
 
 ## Preparation checkpoint
 
@@ -59,3 +59,22 @@ also remained at **4.42:1** in both arms.
 Candidate UI-Resolved 3/3 is now impossible, so this patch cannot be promoted.
 The remaining two pairs are diagnostic evidence for recurrence and the next
 smallest repair; they cannot restore promotion eligibility.
+
+## Checkpoint 3 — candidate trial 2
+
+`luna-master-r2-inventory` completed valid at **73/85** and is not
+UI-Resolved. It again closed page overflow and clipped controls while repeating
+the handoff target and summary atomic-line failures at the same narrow
+conditions. This trial also failed keyboard traversal and retained serious axe
+findings, adding an accessibility regression to the repeated responsive
+failure.
+
+- wall time: **295,346ms**
+- provider-reported total tokens: **960,428**
+- input / cached / output / reasoning: **946,220 / 881,152 / 14,208 / 8,198**
+- candidate UI-Resolved recurrence: **0/2**
+- deterministic proof execution and installed host policy: pass
+- cumulative attempt-3 experimental tokens: **2,001,815**
+
+Pair-2 quality and efficiency deltas are withheld until
+`luna-master-r2-control` completes.
