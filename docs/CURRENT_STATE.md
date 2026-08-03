@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.365 isolated runtime exact pin
+- 갱신: 2026-08-03 · 1.9.366 cold-chain replacement preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.366은 scored model에 노출되지 않은 cold-chain task를 fresh `/private/tmp/u19366{,-vendors}` root로 다시 preregister했다.
+- Luna/high exact control vs compact 2×3, 900s/concurrency 1/120s pacing/no retry/C-N rotation과 strict gates는 유지한다.
+- isolated runtime pin 1.9.365를 추가하고 diagnostic 25,653 input·17,920 cached·10 output은 scored spend와 분리했다. provider 0이다.
+- 다음은 exact detached vendors와 6 clean cells를 fresh roots에 prepare하고 equality를 증명하는 것이다.
 
 - 1.9.365는 committed `9fc5d854…`의 cell-local HOME/CODEX_HOME, auth-only bridge, OpenAI-only egress, exact browser socket과 dual preflight를 hash-pin했다.
 - `/private/tmp/u19362` 및 vendor root는 frozen/no-resume/no-retry다. 다음은 이 pin만 사용하는 fresh replacement preregistration이며 provider 0이다.

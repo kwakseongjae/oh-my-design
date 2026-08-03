@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.366 cold-chain replacement preregistration
+- provider-before-failure였던 cold-chain task를 fresh u19366 roots에 다시 잠갔다.
+- isolated runtime 1.9.365와 exact 2×3/no-retry gates를 고정했다. provider 0.
+- 다음은 fresh vendors/cells preparation과 equality 증명이다.
+
 ## 2026-08-03 (Codex) · 1.9.365 isolated runtime exact pin
 - committed 9fc5d854의 isolated state·auth bridge·network/socket·dual preflight를 고정했다.
 - frozen u19362 재사용을 금지했다. provider 0; 다음은 fresh replacement preregistration이다.
