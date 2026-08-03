@@ -60,7 +60,8 @@ export function preparedWorkspaceRequiresBrowserProof(workspace, { readJson } = 
   const path = join(resolve(workspace), ".benchmark", "matrix-cell.json");
   if (!existsSync(path)) return false;
   const cell = readJson ? readJson(path) : JSON.parse(readFileSync(path, "utf8"));
-  return cell?.host_policy_gate?.require_browser_attempt === true;
+  return cell?.browser_execution?.require_browser_proof === true
+    || cell?.host_policy_gate?.require_browser_attempt === true;
 }
 
 export function codexBrowserSandboxSpec({

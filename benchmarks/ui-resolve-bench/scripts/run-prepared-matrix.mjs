@@ -68,7 +68,8 @@ export function preflightRuntimeEnvironment(
 ) {
   const runtimes = [...new Set((plan?.cells ?? []).map((cell) => cell.runtime))].sort();
   const checks = [];
-  const browserProofRequired = plan?.shared_host_policy?.require_browser_attempt === true
+  const browserProofRequired = plan?.browser_execution_contract?.require_browser_proof === true
+    || plan?.shared_host_policy?.require_browser_attempt === true
     || plan?.host_policy_comparison?.require_browser_attempt === true;
   const installedPolicyRequested = plan?.shared_host_policy?.mode === "installed-opt-in"
     || (plan?.host_policy_comparison && (plan?.cells ?? []).some(

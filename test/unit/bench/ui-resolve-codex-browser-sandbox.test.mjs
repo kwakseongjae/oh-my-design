@@ -116,13 +116,18 @@ describe("Codex browser proof sandbox contract", () => {
     expect(() => browserHarnessSocketPath({ BU_NAME: "../private" })).toThrow("invalid browser-harness connection name");
   });
 
-  it("derives browser proof need only from the prepared cell gate", () => {
+  it("derives browser proof need from either the independent browser contract or legacy host gate", () => {
     const workspace = mkdtempSync(join(tmpdir(), "omd-browser-cell-contract-"));
     const benchmark = join(workspace, ".benchmark");
     mkdirSync(benchmark);
     expect(preparedWorkspaceRequiresBrowserProof(workspace)).toBe(false);
     writeFileSync(join(benchmark, "matrix-cell.json"), JSON.stringify({
       host_policy_gate: { require_browser_attempt: true },
+    }));
+    expect(preparedWorkspaceRequiresBrowserProof(workspace)).toBe(true);
+    writeFileSync(join(benchmark, "matrix-cell.json"), JSON.stringify({
+      browser_execution: { require_browser_proof: true },
+      host_policy_gate: null,
     }));
     expect(preparedWorkspaceRequiresBrowserProof(workspace)).toBe(true);
   });

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.420 Codex tool-mode admission
+- 갱신: 2026-08-04 · 1.9.421 controller browser decoupling
 
 ## 지금 (현재 위치)
+
+- 1.9.421은 real browser proof를 installed host-policy에서 분리했다.
+- controller-observation matrix도 exact named socket/shared runtime/isolated Codex home을 요구하면서 host enforcement claim은 하지 않는다.
+- focused 46/46, TypeScript/diff green, provider 0이다. 다음은 exact skill arms를 유지한 fresh controller-observation 2×3 preregistration이다.
 
 - 1.9.420은 Codex model cache의 exact tool mode를 provider 전에 읽어 installed proof-policy 적격성을 fail-closed 판정한다.
 - `function`만 direct-hook eligible이며 `code_mode_only`/unknown/missing은 provider 전 중단한다. 현재 Sol/Terra/Luna는 모두 `code_mode_only`다.

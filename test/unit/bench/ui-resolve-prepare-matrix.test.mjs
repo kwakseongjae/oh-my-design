@@ -127,6 +127,26 @@ describe("UI-Resolve run matrix preparation", () => {
     expect(() => validateRunMatrixPlan(current)).toThrow("must match shared_host_policy.mode");
   });
 
+  it("allows browser proof without claiming installed host enforcement", () => {
+    const current = plan({
+      browser_execution_contract: {
+        require_browser_proof: true,
+        runtime_dir_shared: true,
+        exact_named_socket: true,
+      },
+      cells: [{
+        ...plan().cells[0],
+        runtime: "codex",
+        model_id: "gpt-5.6-luna",
+        effort: "high",
+      }],
+    });
+    expect(validateRunMatrixPlan(current).browser_execution_contract.require_browser_proof).toBe(true);
+    expect(current.cells[0]).not.toHaveProperty("host_policy_mode");
+    current.browser_execution_contract.exact_named_socket = false;
+    expect(() => validateRunMatrixPlan(current)).toThrow("shared runtime and exact named socket");
+  });
+
   it("accepts schema 0.2 only with suite, product, and purpose provenance", () => {
     const current = plan({
       schema_version: "0.2",

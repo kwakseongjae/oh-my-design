@@ -3741,3 +3741,6 @@
 ## 2026-08-04 (Codex) · 1.9.420 Codex tool-mode admission
 - installed proof enforcement는 direct `function` mode만 허용하고 code-mode-only는 provider 전에 차단한다.
 - focused 70/70, bench 338 green+skip1; 다음은 honest controller-observation skill matrix다.
+## 2026-08-04 (Codex) · 1.9.421 controller browser decoupling
+- real browser proof를 installed hook과 분리해 code-mode controller matrix에서도 exact socket을 강제한다.
+- focused 46/46, provider 0. 다음은 fresh 2×3 controller-observation preregistration이다.

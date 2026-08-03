@@ -237,6 +237,19 @@ export function validateRunMatrixPlan(plan) {
     throw new Error("matrix cannot combine host_policy_comparison and shared_host_policy");
   }
 
+  if (plan.browser_execution_contract !== undefined) {
+    const browser = plan.browser_execution_contract;
+    if (!browser || typeof browser !== "object" || Array.isArray(browser)) {
+      throw new Error("matrix browser_execution_contract must be an object");
+    }
+    if (browser.require_browser_proof !== true) {
+      throw new Error("matrix browser_execution_contract.require_browser_proof must be true");
+    }
+    if (browser.runtime_dir_shared !== true || browser.exact_named_socket !== true) {
+      throw new Error("matrix browser_execution_contract must require shared runtime and exact named socket");
+    }
+  }
+
   if (plan.host_policy_comparison !== undefined) {
     const comparison = plan.host_policy_comparison;
     if (!comparison || typeof comparison !== "object" || Array.isArray(comparison)) {
@@ -476,6 +489,7 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
         attribution_scope: plan.attribution_scope ?? "provider-observed-only",
         host_policy: hostPolicy,
         host_policy_gate: hostPolicy ? hostPolicyConfig : null,
+        browser_execution: plan.browser_execution_contract ?? null,
         workspace,
         task_version: manifest.task.version,
         task_prompt_sha256: manifest.task.core_prompt_sha256,
