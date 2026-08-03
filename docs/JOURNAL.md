@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.374 runtime-complete cold-chain preregistration
+- fresh u19374 attempt 12에 isolated state/named browser/bootstrap boundary pins를 모두 고정했다.
+- provider 0; 다음은 fresh preparation이다.
+
 ## 2026-08-03 (Codex) · 1.9.373 registered-browser bootstrap exact pin
 - committed 1a5a178d의 controller/runtime browser boundary를 고정했다.
 - 세 이전 root frozen, provider 0; 다음은 all-pin fresh preregistration이다.
