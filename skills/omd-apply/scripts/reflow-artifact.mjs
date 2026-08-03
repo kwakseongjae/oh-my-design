@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { isAbsolute, normalize, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const OUTCOMES = new Set(["pass", "unresolved"]);
@@ -98,6 +98,49 @@ function validateAcceptanceSequence(value) {
   return value;
 }
 
+function relativeProductPath(value, label) {
+  if (typeof value !== "string" || !value || isAbsolute(value)) fail(`${label} must be a relative product path`);
+  const normalized = normalize(value);
+  if (normalized === ".." || normalized.startsWith(`..${sep}`)) fail(`${label} must stay inside the product workspace`);
+  return normalized;
+}
+
+function stringList(value, label, { allowEmpty = false } = {}) {
+  if (
+    !Array.isArray(value)
+    || (!allowEmpty && value.length === 0)
+    || value.some((item) => typeof item !== "string" || item.length === 0)
+    || new Set(value).size !== value.length
+  ) fail(`${label} must be ${allowEmpty ? "" : "non-empty "}unique strings`);
+  return value;
+}
+
+function validateStaticClosureManifest(value) {
+  if (!value || typeof value !== "object") fail("static_closure_manifest is required");
+  value.product_path = relativeProductPath(value.product_path, "static_closure_manifest.product_path");
+  value.required_literals = stringList(value.required_literals, "static_closure_manifest.required_literals");
+  value.forbidden_literals = stringList(value.forbidden_literals ?? [], "static_closure_manifest.forbidden_literals", { allowEmpty: true });
+  value.forbidden_patterns = stringList(value.forbidden_patterns ?? [], "static_closure_manifest.forbidden_patterns", { allowEmpty: true });
+  for (const pattern of value.forbidden_patterns) {
+    try {
+      new RegExp(pattern, "u");
+    } catch {
+      fail(`static_closure_manifest forbidden pattern is invalid: ${pattern}`);
+    }
+  }
+  if (!Array.isArray(value.count_literals) || value.count_literals.length === 0) {
+    fail("static_closure_manifest.count_literals must be non-empty");
+  }
+  const seen = new Set();
+  for (const entry of value.count_literals) {
+    if (typeof entry?.literal !== "string" || !entry.literal) fail("static_closure_manifest count literal is required");
+    if (seen.has(entry.literal)) fail("static_closure_manifest count literals must be unique");
+    seen.add(entry.literal);
+    positiveInteger(entry.expected_count, `static_closure_manifest count ${entry.literal}`);
+  }
+  return value;
+}
+
 function validateFitStrategy(row) {
   if (!FIT_STRATEGIES.has(row.decision)) {
     fail(`row group ${row.id} decision must be ${[...FIT_STRATEGIES].join(", ")}`);
@@ -126,6 +169,7 @@ export function inventoryDigest(artifact) {
   return createHash("sha256").update(JSON.stringify({
     measurement_conditions: artifact.measurement_conditions,
     acceptance_sequence: artifact.acceptance_sequence,
+    static_closure_manifest: artifact.static_closure_manifest,
     carrier_ids: artifact.inventory.carrier_ids,
     carrier_groups: artifact.carriers.map((carrier) => ({
       id: carrier.id,
@@ -154,6 +198,7 @@ export function lockArtifact(input) {
   if (!Array.isArray(artifact.row_groups) || !artifact.row_groups.length) fail("row_groups are required");
   validateMeasurementConditions(artifact.measurement_conditions, "measurement_conditions");
   validateAcceptanceSequence(artifact.acceptance_sequence);
+  validateStaticClosureManifest(artifact.static_closure_manifest);
   const carrierIds = uniqueStrings(artifact.carriers.map((carrier) => carrier?.id), "carrier ids");
   const rowGroupIds = uniqueStrings(artifact.row_groups.map((row) => row?.id), "row group ids");
   const knownRows = new Set(rowGroupIds);
@@ -194,7 +239,62 @@ export function lockArtifact(input) {
     oracle: CHARACTER_RANGE_ORACLE,
     conditions: [],
   };
+  artifact.static_closure = { state: "open", attempts: 0, failures: [] };
   delete artifact.closure_manifest;
+  return artifact;
+}
+
+function literalCount(source, literal) {
+  let count = 0;
+  let cursor = 0;
+  while ((cursor = source.indexOf(literal, cursor)) >= 0) {
+    count += 1;
+    cursor += literal.length;
+  }
+  return count;
+}
+
+function comparablePath(value) {
+  const absolute = resolve(value);
+  return existsSync(absolute) ? realpathSync(absolute) : absolute;
+}
+
+export function executeStaticClosure(input, { productPath, source }) {
+  const artifact = structuredClone(input);
+  const locked = lockArtifact({
+    ...artifact,
+    carriers: artifact.carriers,
+    row_groups: artifact.row_groups,
+  });
+  if (artifact.inventory?.sha256 !== locked.inventory.sha256) fail("immutable inventory hash changed");
+  if (artifact.static_closure?.state !== "open" || artifact.static_closure?.attempts !== 0) {
+    fail("static closure is exactly-once and has already been attempted");
+  }
+  const expectedPath = comparablePath(artifact.static_closure_manifest.product_path);
+  if (comparablePath(productPath) !== expectedPath) fail("static closure product path does not match the locked manifest");
+  if (typeof source !== "string") fail("static closure product source is required");
+  const failures = [];
+  for (const literal of artifact.static_closure_manifest.required_literals) {
+    if (!source.includes(literal)) failures.push(`missing required literal: ${literal}`);
+  }
+  for (const literal of artifact.static_closure_manifest.forbidden_literals) {
+    if (source.includes(literal)) failures.push(`found forbidden literal: ${literal}`);
+  }
+  for (const pattern of artifact.static_closure_manifest.forbidden_patterns) {
+    if (new RegExp(pattern, "u").test(source)) failures.push(`matched forbidden pattern: ${pattern}`);
+  }
+  for (const entry of artifact.static_closure_manifest.count_literals) {
+    const observed = literalCount(source, entry.literal);
+    if (observed !== entry.expected_count) {
+      failures.push(`literal count ${entry.literal}: ${observed}, expected ${entry.expected_count}`);
+    }
+  }
+  artifact.static_closure = {
+    state: failures.length ? "failed" : "passed",
+    attempts: 1,
+    failures,
+    product_path: artifact.static_closure_manifest.product_path,
+  };
   return artifact;
 }
 
@@ -233,6 +333,9 @@ export function finalizeArtifact(input, { unresolved = false, hostStateDir = nul
     row_groups: artifact.row_groups,
   });
   if (artifact.inventory?.sha256 !== locked.inventory.sha256) fail("immutable inventory hash changed");
+  if (artifact.static_closure?.state !== "passed" || artifact.static_closure?.attempts !== 1) {
+    fail("finalization requires one passed deterministic static closure");
+  }
   if (unresolved) {
     for (const carrier of artifact.carriers) {
       carrier.final = { outcome_390: "unresolved", outcome_320: "unresolved", outcome_200pct: "unresolved" };
@@ -329,9 +432,9 @@ function write(path, artifact) {
 }
 
 function main() {
-  const [command, rawPath] = process.argv.slice(2);
-  if (!command || !rawPath || !["lock", "finalize", "finalize-unresolved"].includes(command)) {
-    console.error("usage: reflow-artifact.mjs <lock|finalize|finalize-unresolved> <artifact.json>");
+  const [command, rawPath, rawProductPath] = process.argv.slice(2);
+  if (!command || !rawPath || !["lock", "static-close", "finalize", "finalize-unresolved"].includes(command)) {
+    console.error("usage: reflow-artifact.mjs <lock|static-close|finalize|finalize-unresolved> <artifact.json> [product-file]");
     process.exitCode = 2;
     return;
   }
@@ -343,12 +446,22 @@ function main() {
     : existsSync(defaultHostStateDir)
       ? defaultHostStateDir
       : null;
-  const result = command === "lock"
-    ? lockArtifact(artifact)
-    : finalizeArtifact(artifact, {
+  let result;
+  if (command === "lock") {
+    result = lockArtifact(artifact);
+  } else if (command === "static-close") {
+    if (!rawProductPath) fail("static-close requires the locked product file");
+    const productPath = resolve(rawProductPath);
+    result = executeStaticClosure(artifact, {
+      productPath,
+      source: readFileSync(productPath, "utf8"),
+    });
+  } else {
+    result = finalizeArtifact(artifact, {
       unresolved: command === "finalize-unresolved",
       hostStateDir,
     });
+  }
   write(path, result);
   console.log(JSON.stringify({
     command,
@@ -362,8 +475,10 @@ function main() {
     closure: result.closure.state,
     quality_pass: result.closure_manifest?.quality_pass ?? null,
     unresolved_known_failures: result.known_failure_closure?.unresolved ?? null,
+    static_closure: result.static_closure,
   }));
-  if (command !== "lock") console.log(deliveryMarker(result));
+  if (command === "static-close" && result.static_closure.state !== "passed") process.exitCode = 1;
+  if (["finalize", "finalize-unresolved"].includes(command)) console.log(deliveryMarker(result));
 }
 
 if (

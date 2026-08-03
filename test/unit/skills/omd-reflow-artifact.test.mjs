@@ -1,10 +1,11 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { execFileSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { execFileSync, spawnSync } from "node:child_process";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
   deliveryMarker,
+  executeStaticClosure,
   finalizeArtifact,
   hostObservedBrowserAttempt,
   inventoryDigest,
@@ -35,6 +36,13 @@ function draft() {
       product_edit_transaction: "single-planned-transaction",
       post_edit_commands: ["consolidated-static-closure", "browser-harness-terminal"],
     },
+    static_closure_manifest: {
+      product_path: "index.html",
+      required_literals: ["required-fact"],
+      forbidden_literals: ["forbidden-claim"],
+      forbidden_patterns: ["word-break\\s*:"],
+      count_literals: [{ literal: "data-id=", expected_count: 1 }],
+    },
     measurement_conditions: [
       { id: "390", viewport_width: 390, zoom: 1 },
       { id: "320", viewport_width: 320, zoom: 1 },
@@ -55,6 +63,13 @@ function draft() {
       no_text_hack: true,
     },
   };
+}
+
+function staticClosed(artifact, source = "required-fact data-id=") {
+  return executeStaticClosure(artifact, {
+    productPath: join(process.cwd(), "index.html"),
+    source,
+  });
 }
 
 function measuredConditions() {
@@ -89,6 +104,51 @@ describe("compact reflow artifact helper", () => {
     expect(() => lockArtifact(invalid)).toThrow(/acceptance_sequence/);
   });
 
+  it("locks a declarative static closure manifest before product editing", () => {
+    const invalid = draft();
+    invalid.static_closure_manifest.product_path = "../index.html";
+    expect(() => lockArtifact(invalid)).toThrow(/stay inside the product workspace/);
+
+    const invalidPattern = draft();
+    invalidPattern.static_closure_manifest.forbidden_patterns = ["["];
+    expect(() => lockArtifact(invalidPattern)).toThrow(/forbidden pattern is invalid/);
+  });
+
+  it("executes the deterministic static closure exactly once without an authored script", () => {
+    const locked = lockArtifact(draft());
+    const passed = staticClosed(locked);
+    expect(passed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
+    expect(() => staticClosed(passed)).toThrow(/exactly-once/);
+
+    const failed = staticClosed(lockArtifact(draft()), "required-fact data-id= forbidden-claim");
+    expect(failed.static_closure.state).toBe("failed");
+    expect(failed.static_closure.failures).toContain("found forbidden literal: forbidden-claim");
+    expect(() => staticClosed(failed)).toThrow(/exactly-once/);
+  });
+
+  it("persists a failed CLI static attempt before returning non-zero", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-static-cli-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    writeFileSync(artifactPath, JSON.stringify(lockArtifact(draft())));
+    writeFileSync(productPath, "required-fact data-id= forbidden-claim");
+
+    const result = spawnSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "static-close",
+      artifactPath,
+      productPath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(result.stderr).toBe("");
+    expect(result.status).toBe(1);
+    expect(JSON.parse(readFileSync(artifactPath, "utf8")).static_closure).toMatchObject({
+      state: "failed",
+      attempts: 1,
+      failures: ["found forbidden literal: forbidden-claim"],
+    });
+  });
+
   it("closes honest unresolved accounting across expanded instance counts", () => {
     const locked = lockArtifact(draft());
     locked.browser_attempt = {
@@ -98,7 +158,7 @@ describe("compact reflow artifact helper", () => {
       oracle: "character-range-line-tops",
       conditions: measuredConditions(),
     };
-    const result = finalizeArtifact(locked, { unresolved: true });
+    const result = finalizeArtifact(staticClosed(locked), { unresolved: true });
     expect(result.closure).toEqual({ state: "unresolved" });
     expect(result.known_failure_closure).toEqual({ state: "unresolved", unresolved: 11 });
     expect(result.closure_manifest).toMatchObject({
@@ -118,7 +178,7 @@ describe("compact reflow artifact helper", () => {
   });
 
   it("rejects unresolved accounting without one real browser infrastructure attempt", () => {
-    expect(() => finalizeArtifact(lockArtifact(draft()), { unresolved: true }))
+    expect(() => finalizeArtifact(staticClosed(lockArtifact(draft())), { unresolved: true }))
       .toThrow(/one recorded browser infrastructure attempt/);
   });
 
@@ -133,12 +193,12 @@ describe("compact reflow artifact helper", () => {
     };
     const unobserved = hostState(0, "open");
     expect(hostObservedBrowserAttempt(unobserved)).toBe(false);
-    expect(() => finalizeArtifact(locked, { unresolved: true, hostStateDir: unobserved }))
+    expect(() => finalizeArtifact(staticClosed(locked), { unresolved: true, hostStateDir: unobserved }))
       .toThrow(/host-observed browser attempt/);
 
     const observed = hostState(1, "unresolved");
     expect(hostObservedBrowserAttempt(observed)).toBe(true);
-    expect(finalizeArtifact(locked, { unresolved: true, hostStateDir: observed }).closure)
+    expect(finalizeArtifact(staticClosed(locked), { unresolved: true, hostStateDir: observed }).closure)
       .toEqual({ state: "unresolved" });
   });
 
@@ -149,7 +209,7 @@ describe("compact reflow artifact helper", () => {
 
     const locked = lockArtifact(draft());
     locked.row_groups[0].expected_count = 7;
-    expect(() => finalizeArtifact(locked, { unresolved: true })).toThrow(/immutable inventory hash changed/);
+    expect(() => finalizeArtifact(staticClosed(locked), { unresolved: true })).toThrow(/immutable inventory hash changed/);
   });
 
   it("requires ordered atomic parts for a compound protected value", () => {
@@ -209,7 +269,7 @@ describe("compact reflow artifact helper", () => {
       oracle: "character-range-line-tops",
       conditions: measuredConditions(),
     };
-    expect(() => finalizeArtifact(locked)).toThrow(/passive_text_scroll_container must be false/);
+    expect(() => finalizeArtifact(staticClosed(locked))).toThrow(/passive_text_scroll_container must be false/);
   });
 
   it("rejects a resolved closure when a relationship invariant is false", () => {
@@ -228,7 +288,7 @@ describe("compact reflow artifact helper", () => {
       oracle: "character-range-line-tops",
       conditions: measuredConditions(),
     };
-    expect(() => finalizeArtifact(locked)).toThrow(/every invariant to pass/);
+    expect(() => finalizeArtifact(staticClosed(locked))).toThrow(/every invariant to pass/);
   });
 
   it("rejects a resolved closure while any registered row remains unresolved", () => {
@@ -247,7 +307,7 @@ describe("compact reflow artifact helper", () => {
       conditions: measuredConditions(),
     };
     locked.row_groups[1].final.outcome_320 = "unresolved";
-    expect(() => finalizeArtifact(locked)).toThrow(/zero unresolved carriers and rows/);
+    expect(() => finalizeArtifact(staticClosed(locked))).toThrow(/zero unresolved carriers and rows/);
   });
 
   it("rejects resolved closure without a measured character-range browser attempt", () => {
@@ -258,7 +318,7 @@ describe("compact reflow artifact helper", () => {
     for (const row of locked.row_groups) {
       row.final = { status: "pass", outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     }
-    expect(() => finalizeArtifact(locked)).toThrow(/character-range line oracle/);
+    expect(() => finalizeArtifact(staticClosed(locked))).toThrow(/character-range line oracle/);
   });
 
   it("rejects a measured closure when the actual document zoom was not observed", () => {
@@ -278,7 +338,7 @@ describe("compact reflow artifact helper", () => {
       oracle: "character-range-line-tops",
       conditions,
     };
-    expect(() => finalizeArtifact(locked)).toThrow(/must observe document zoom 2/);
+    expect(() => finalizeArtifact(staticClosed(locked))).toThrow(/must observe document zoom 2/);
   });
 
   it("derives the terminal marker from deterministic closure state", () => {
@@ -304,7 +364,7 @@ describe("compact reflow artifact helper", () => {
       oracle: "character-range-line-tops",
       conditions: measuredConditions(),
     };
-    writeFileSync(path, JSON.stringify(locked));
+    writeFileSync(path, JSON.stringify(staticClosed(locked)));
     const output = execFileSync(process.execPath, [
       join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
       "finalize",

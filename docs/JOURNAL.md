@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.460 deterministic static closure
+- pre-edit manifest + exactly-once shipped helper로 ad-hoc post-edit verifier 경로를 닫았다.
+- focused 121 green, provider 0. 다음은 exact pin 1.9.461과 unseen transfer다.
+
 ## 2026-08-04 (Codex) · 1.9.459 radiotherapy r1 pair freeze
 - candidate 85/85, accessible carrier repair green, 457.012s/690,948 tokens; static 3로 proof fail.
 - 3/3 불가능으로 4셀 skip. TTT 45,082,351+; 다음은 deterministic static helper repair다.
