@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.453 accessible atomic-fit/static latch repair
+- 갱신: 2026-08-04 · 1.9.454 accessible atomic-fit/static latch exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.454는 1.9.453 repair를 exact commit `f578e8a6…`, skill tree `86227e35…`와 skill/helper/test hash로 pin했다.
+- 새 competitor id는 `omd-accessible-atomic-fit-static-latch-candidate`이며 mutable working tree는 provider sandbox에 사용할 수 없다.
+- provider 0, promotion false다. 다음은 다른 facts/carriers/state/visual contract와 narrow/actual-zoom accessibility failure를 가진 fresh unseen task를 lock한다.
 
 - 1.9.453은 protected target/identifier/state passive text의 `overflow:auto|scroll`을 금지하고, fit 순서를 width recovery → token inset → reading width → full-row → stack/relocate로 고정했다.
 - comparison scroll은 별도 relationship carrier + accessible name + keyboard reachability + visible focus가 있을 때만 허용하며 resolved compound row는 `passive_text_scroll_container: false`를 증명한다.

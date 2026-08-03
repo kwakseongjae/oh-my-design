@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.454 accessible atomic-fit/static latch exact pin
+- exact commit `f578e8a6…`, skill tree `86227e35…`와 helper/test hash를 고정했다.
+- provider 0. 다음은 fresh unseen accessible atomic-fit transfer task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.453 accessible atomic-fit/static latch repair
 - passive protected text scroll을 금지하고 distinct accessible comparison carrier만 허용했다.
 - task-wide one-static→terminal-browser sequence를 artifact로 잠갔다. focused 60 green, broad 93 green/known vendor 2 red, provider 0.
