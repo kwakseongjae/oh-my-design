@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.402 browser-attempt + completion-loop repair
+- 갱신: 2026-08-03 · 1.9.403 browser-attempt + completion-loop exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.403은 1.9.402 repair를 commit `f55815d…`과 9개 exact artifact hash로 pin했다.
+- provider 0, quality promotion 없음이다. 다음은 이 pin만 candidate로 쓰는 fresh unseen replacement task를 provider 전에 lock하는 것이다.
 
 - 1.9.402는 osascript Chrome same-route 명령을 browser proof로 분류하고, installed host state가 observed attempt 1을 증명해야 finalize-unresolved를 허용한다.
 - skill 앞단에 known contrast·atomic row를 실제 교정하고 미교정 must_fix가 있으면 second product edit을 강제하는 completion loop를 올렸다.
@@ -2040,9 +2043,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.402 repair commit과 skill/helper/classifier/tests/acceptance exact hash를 pin한다.
-2. fresh unseen replacement task를 새 도메인·새 content/selectors로 작성하고 provider 전에 baseline lock한다.
-3. exact historical control vs 새 candidate의 다음 Reliability@3를 preregister한다.
+1. fresh unseen replacement task를 새 도메인·새 content/selectors로 작성하고 provider 전에 baseline lock한다.
+2. exact historical control vs 1.9.403 candidate의 다음 Reliability@3를 preregister한다.
+3. fresh clean vendors/cells를 준비하고 동일한 one-cell/no-retry/early-stop 규칙으로 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

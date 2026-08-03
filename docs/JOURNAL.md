@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.403 browser-attempt + completion-loop exact pin
+- repair `f55815d…`와 skill/helper/classifier/tests/acceptance 9개 hash를 봉인했다.
+- provider 0, promotion 없음. 다음은 fresh unseen replacement lock이다.
+
 ## 2026-08-03 (Codex) · 1.9.402 browser-attempt + completion-loop repair
 - osascript Chrome을 browser proof로 분류하고 unresolved helper를 host-observed attempt에 결합했다.
 - completion loop 추가, focused 67/67 + pin 1/1, lint/diff green; provider 0. 다음은 exact pin이다.
