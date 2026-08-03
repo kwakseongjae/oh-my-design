@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.397 field-sample custody fresh task lock
+- 새 archaeology custody task를 provider 전에 고정했고 baseline은 의도대로 75/85 unresolved다.
+- 390/320/200% reflow·atomic identifier와 4.273 contrast만 red다. 다음은 exact 2×3 preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.396 runtime conjunctive reflow exact pin
 - repair commit `effd1d93…`과 skill/helper/validator/tests/acceptance 9개 해시를 봉인했다.
 - provider 0, promotion 없음. 다음은 fresh unseen replacement lock이다.

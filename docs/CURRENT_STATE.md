@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.396 runtime conjunctive reflow exact pin
+- 갱신: 2026-08-03 · 1.9.397 field-sample custody fresh task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.397은 fresh `field-sample-custody-review-v0.1`을 provider 전에 lock했다.
+- 6 samples/8 bag seals/4 intake windows와 field register·laboratory intake strip·custody decision 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·atomic line과 4.273 contrast다.
+- provider 0이다. 다음은 exact historical control vs 1.9.396 runtime-conjunctive candidate의 fresh Reliability@3 preregistration이다.
 
 - 1.9.396은 runtime conjunctive reflow repair를 commit `effd1d93…`과 9개 exact artifact hash로 pin했다.
 - provider 0, quality promotion 없음이다. 다음은 이 pin만 candidate로 쓰는 fresh unseen replacement task를 provider 전에 lock하는 것이다.
@@ -2010,9 +2015,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fresh unseen replacement task를 새 도메인·새 content/selectors로 작성하고 provider 전에 lock한다.
-2. untouched baseline을 독립 평가해 target failure shape를 확인하고 exact source/hash를 봉인한다.
-3. exact control vs 1.9.396 candidate의 Luna/high 2×3을 preregister한 뒤 fresh clean cells를 준비한다.
+1. exact control `3a414a0a…` vs candidate `effd1d93…`의 Luna/high 2×3을 preregister한다.
+2. timeout 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정한다.
+3. fresh exact detached vendors와 6 clean cells를 준비하고 equality 6/6을 증명한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
