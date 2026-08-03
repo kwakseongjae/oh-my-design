@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.345 first harbor control
+- valid unresolved: 77/85, 565,610ms, 1,993,652 tokens다.
+- host는 정상이나 browser 0·delivery blocked; valid system failure로 보존했다.
+- 다음은 pacing 후 paired R1 compact candidate 하나다.
+
 ## 2026-08-03 (Codex) · 1.9.344 harbor matrix prepared
 - exact detached vendors와 6 committed/detached/clean cells를 준비했다.
 - equality 6/6, sole delta는 skill tree 2d577464 vs 36a44a1이다.

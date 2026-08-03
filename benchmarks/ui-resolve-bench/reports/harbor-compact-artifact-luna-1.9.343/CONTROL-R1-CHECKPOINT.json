@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.345",
+  "experiment_id": "harbor-compact-artifact-luna-1.9.343",
+  "cell_id": "luna-harbor-r1-control",
+  "status": "valid-checkpoint",
+  "validity": "valid",
+  "ui_resolved": false,
+  "host_policy_admission": {
+    "disposition": "valid-system-failure",
+    "reason": "installed-host-policy-rejected-system-output"
+  },
+  "objective": {
+    "score": 77,
+    "max": 85,
+    "responsive": 6,
+    "responsive_gate": false,
+    "accessibility_gate": false,
+    "task_contract": true,
+    "state_journey": true,
+    "design_grounding": true,
+    "evidence_honesty": true
+  },
+  "provider": {
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "wall_time_ms": 565610,
+    "input_tokens": 1964992,
+    "cached_input_tokens": 1856000,
+    "output_tokens": 28660,
+    "reasoning_output_tokens": 9070,
+    "accounted_total_tokens": 1993652
+  },
+  "proof": {
+    "proof_execution_gate": true,
+    "host_policy_gate": false,
+    "host_gate_reasons": ["installed-policy-delivery-incomplete", "installed-policy-browser-attempt-missing"],
+    "browser_attempts": 0,
+    "delivery_ready_state_files": 0,
+    "delivery_blocked_state_files": 1,
+    "unblocked_violations": 0
+  },
+  "evidence_sha256": {
+    "execution_state": "bfe550c191da4bd088da7398445629ae49df64702ab3403aa3334ec3fd3c0095",
+    "run_result": "c917b0ad88b3b1cb515b0e9fabfb94bba0cd4810bb039dc6afe7ba568fee3e6b",
+    "score": "328a5b18663918ea93c5e30a33526952f63e84c06b6682379758b5d8a171d1a8",
+    "run_record": "77dad5933e117b6daefd3c6f9821aa6995f835e106a8cc1f836086277f96f356",
+    "proof_trace": "c27f05913e4e5105fca63a78bfa4e26e816ada781ba7c8b3e2839be1a0df2a7a",
+    "host_policy_state": "4bc15f0d776011f8af4f711b1210dbf13d0f33637190da2a2ecd9df913aaaac5"
+  },
+  "retry": false,
+  "next": "After the frozen 120-second pacing boundary and a fresh browser preflight, run only luna-harbor-r1-compact."
+}

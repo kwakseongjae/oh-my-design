@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.344 harbor compact-artifact matrix prepared
+- 갱신: 2026-08-03 · 1.9.345 first harbor control valid checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.345 first harbor control은 valid unresolved system failure: 77/85, 565,610ms, 1,993,652 tokens다.
+- exact host install/state/trace는 정상이나 browser attempt 0·delivery blocked라 host gate false다. admission 1.9.341이 이를 비용·신뢰도에 보존했다.
+- retry 없음이다. 다음은 fixed 120s pacing + fresh browser preflight 뒤 `luna-harbor-r1-compact` 하나다.
 
 - 1.9.344는 `/private/tmp/u19343-vendors/{omd-1.9.274,omd-1.9.334}` exact detached source와 `/private/tmp/u19343` 6 committed/detached/clean cell을 준비했다.
 - shared equality 6/6이고 sole delta는 skill tree `2d577464…` vs `36a44a1…`다. admission pin 1.9.341도 동일하다.

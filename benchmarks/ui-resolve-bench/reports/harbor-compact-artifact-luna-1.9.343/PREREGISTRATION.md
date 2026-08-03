@@ -13,3 +13,7 @@ This is Tokens-to-Target attempt 6. Prior observed spend is at least 14,939,603 
 ## Preparation — 1.9.344
 
 Fresh detached vendors and six committed, detached, clean Git cells were prepared at the preregistered roots. Task, prompt, product, DESIGN.md, activation, runtime, model, effort, timeout, installed proof policy, and validity-admission pin are equal in all cells. The sole arm delta is skill tree `2d577464…` versus `36a44a1…`. Provider calls remain zero; the only permitted next cell is `luna-harbor-r1-control` after a fresh browser preflight.
+
+## Control R1 checkpoint — 1.9.345
+
+The first control is a valid unresolved system failure: 77/85 in 565,610 ms with 1,993,652 provider-reported tokens. The exact host was installed, state-valid, and analyzable, but correctly kept delivery blocked because the system made no browser attempt and left proof incomplete. Admission pin 1.9.341 retains this result instead of misclassifying it as broken infrastructure. There is no retry. After the fixed pacing boundary, only paired R1 candidate may run.
