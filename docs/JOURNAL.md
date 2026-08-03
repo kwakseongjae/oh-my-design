@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.342 harbor task lock
+- fresh harbor task가 6 vessel/8 tow/4 pilot와 세 carrier를 잠근다.
+- baseline 75/85, red는 narrow/200% reflow와 4.12/4.36 contrast다.
+- provider 0; 다음은 exact 1.9.341 admission pin 기반 preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.341 host admission pin
 - committed 38328c8a의 runner·tests·acceptance와 3-way 의미를 exact pin했다.
 - provider 0, promotion 없음; 다음은 fresh unseen task lock이다.

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.341 host-policy admission exact pin
+- 갱신: 2026-08-03 · 1.9.342 fresh harbor holdout locked
 
 ## 지금 (현재 위치)
+
+- 1.9.342는 fresh `harbor-berth-dispatch-review-v0.1`을 provider 전에 lock했다. 6 vessel call/8 tow order/4 pilot window와 세 relationship carrier다.
+- untouched baseline은 75/85다. task/state/design/evidence/desktop/keyboard green, 의도한 red는 390/320/200% overflow·atomic line과 4.12/4.36 contrast다.
+- task `30e6cd2…`, prompt `3ac4fb1…`, index `7f160f0…`, DESIGN `f5d6cad…`, provider 0이다. 다음은 exact control/candidate와 1.9.341 admission pin을 새 matrix에 preregister하는 것이다.
 
 - 1.9.341은 committed `38328c8a…`의 runner·contract tests·acceptance hash와 3-way admission 의미를 exact pin했다.
 - provider 0, quality promotion 없음이다. 다음은 orbital과 겹치지 않는 fresh unseen task를 provider 전에 lock하는 것이다.

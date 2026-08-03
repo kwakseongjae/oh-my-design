@@ -1,0 +1,5 @@
+Improve the supplied harbor berth-dispatch review so port coordinators can inspect vessel-call assignments, pilot windows, and the dispatch handoff confidently on desktop and narrow screens.
+
+Preserve all six vessel-call identifiers, all eight tow-order identifiers and their exact call assignments, all four supplied pilot windows, the three review views, the draft-note toggle, the dispatch-review form, and all stated summary evidence. Do not invent berth clearance, pilot assignment, tug dispatch, arrival approval, maneuver safety, cargo release, or port outcomes. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The berth board, separate pilot-window strip, and separate dispatch handoff are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.
