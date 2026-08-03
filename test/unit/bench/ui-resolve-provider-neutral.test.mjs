@@ -343,13 +343,14 @@ describe("provider-neutral prepared matrix contract", () => {
 
     expect(preflightRuntimeEnvironment(plan, {
       browserProbe: () => ({
-        status: 0,
-        stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1",
+        status: 1,
+        stdout: "[ok  ] daemon alive\n[FAIL] Chrome process list unavailable\n[ok  ] active browser connections — 1",
       }),
     }).checks).toContainEqual({
       runtime: "shared-host-policy",
       resource: "browser-harness",
       status: "ready",
+      sandbox: "external-workspace-browser-socket",
     });
     expect(() => preflightRuntimeEnvironment(plan, {
       browserProbe: () => ({

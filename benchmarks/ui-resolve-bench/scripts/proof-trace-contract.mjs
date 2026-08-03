@@ -17,12 +17,13 @@ const BROWSER_HARNESS_INVOCATION = /(?:^|[\n;&|()"'`])\s*(?:[A-Z_][A-Z0-9_]*=\S+
 const OTHER_BROWSER_MECHANISM = /(?:google(?:\s+|\\\s*)chrome[^\n]*(?:--headless|--screenshot)|chromium[^\n]*(?:\.launch|--headless|--screenshot)|playwright[^\n]*(?:\.launch|screenshot|capture)|screenshot=)/i;
 const BROWSER_DISCOVERY = /(?:browser-harness\s+--doctor|command\s+-v\s+(?:chrom|google-chrome|playwright)|which\s+(?:chrom|google-chrome|playwright|osascript)|ls\s+[^\n]*(?:google\\?\s*chrome|chromium)|find\s+[^\n]*playwright|require\.resolve\(['"]playwright|import\s+playwright)/i;
 const BROWSER_INSTRUCTION_READ = /(?:sed|cat|head|tail|less|rg)\b[^\n]*browser-harness[^\n]*SKILL\.md/i;
+const REFLOW_ARTIFACT_LIFECYCLE = /^\s*(?:node\s+)?(?:["']?[^;\n|&]*\/)?reflow-artifact\.mjs["']?\s+(?:lock|finalize|finalize-unresolved)\s+["']?[^;\n|&]+["']?\s*$/i;
 const NATIVE_BROWSER_TOOL = /^mcp__(?:agent-browser|browser-harness|browser)__browser_(?!new_session$|close(?:_|$)|list(?:_|$)|get_url$)/i;
 const NATIVE_BROWSER_NEUTRAL_TOOL = /^mcp__(?:agent-browser|browser-harness|browser)__browser_(?:new_session|close(?:_|$)|list(?:_|$)|get_url$)/i;
 
 export function classifyProofCommand(command) {
   const value = String(command ?? "");
-  const neutral = BROWSER_INSTRUCTION_READ.test(value);
+  const neutral = BROWSER_INSTRUCTION_READ.test(value) || REFLOW_ARTIFACT_LIFECYCLE.test(value);
   const browser = BROWSER_HARNESS_INVOCATION.test(value) || OTHER_BROWSER_MECHANISM.test(value);
   const recoveryProbe = BROWSER_DISCOVERY.test(value);
   return {

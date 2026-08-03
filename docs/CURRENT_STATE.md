@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.358 museum R1 pair promotion rejection
+- 갱신: 2026-08-03 · 1.9.359 Codex browser sandbox + artifact finalization repair
 
 ## 지금 (현재 위치)
+
+- 1.9.359는 browser-proof Codex 셀을 `:workspace` outer sandbox + exact browser-harness Unix socket으로 실행하고 preflight도 동일 권한 경로로 통일했다.
+- provider-free real-tab fixture가 같은 제한 경로에서 `page_info()`를 읽었다. non-browser Codex 셀은 기존 `workspace-write`를 유지한다.
+- `reflow-artifact.mjs lock|finalize|finalize-unresolved`만 neutral bookkeeping으로 분리했다. compound command와 임의의 두 번째 static verification은 계속 차단된다.
+- focused 82/82, bench 325 pass + 기존 external vendor Git-root 2 fail/1 skip, lint/build/diff green, provider 0이다. 다음은 exact pin 후 fresh unseen replacement다.
 
 - 1.9.358 paired compact는 79/85, 509,334ms, 1,255,595 tokens, valid unresolved다. control과 objective tie지만 candidate도 responsive gate와 host delivery를 닫지 못했다.
 - browser attempt 1은 기존 Chrome session attach를 daemon startup failure로 처리한 browser-harness 0.1.5 경로에서 navigation 전 실패했다. retry 0이다.
@@ -1857,9 +1862,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. generator/harbor/orbital과 다른 fresh unseen task를 provider 전에 lock한다.
-2. 새 root에 timeout 1.9.353 pin을 포함해 preregister하고 prepare한다.
-3. one-cell checkpoint로 control/candidate 비교를 재개한다.
+1. committed 1.9.359 execution/artifact contract를 exact hash로 pin한다.
+2. generator/harbor/orbital/museum과 다른 fresh unseen task를 provider 전에 lock한다.
+3. 새 root에 admission/resume/timeout/browser pin을 포함해 preregister·prepare한 뒤 one-cell checkpoint를 재개한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

@@ -491,6 +491,40 @@ describe("proof policy executable hook", () => {
     expect(complete.output).toBeNull();
   });
 
+  it("keeps compact artifact lifecycle commands neutral after the single static closure", () => {
+    const options = {
+      root: join(root, "state"),
+      workspace_root: root,
+      require_reflow_artifact: true,
+    };
+    const lifecycle = "node skills/omd-apply/scripts/reflow-artifact.mjs finalize-unresolved .omd/reflow-closure.json";
+    writeReflowArtifact(root);
+    handleProofPolicyHook(preEdit, { ...options, now: 100 });
+    handleProofPolicyHook(edit, { ...options, now: 110 });
+    handleProofPolicyHook(pre("npm test"), { ...options, now: 120 });
+    handleProofPolicyHook(post("npm test"), { ...options, now: 130 });
+    handleProofPolicyHook(pre("browser-harness capture_screenshot"), { ...options, now: 140 });
+    handleProofPolicyHook(post("browser-harness capture_screenshot", 1), { ...options, now: 150 });
+
+    const before = handleProofPolicyHook(pre(lifecycle), { ...options, now: 160 });
+    expect(before.output).toBeNull();
+    const after = handleProofPolicyHook(post(lifecycle), { ...options, now: 170 });
+    expect(after.state.violations.duplicate_static_closure).toBe(0);
+
+    writeReflowArtifact(root, { closed: true, unresolved: true });
+    const complete = handleProofPolicyHook(stop(), { ...options, now: 180 });
+    expect(complete.state).toMatchObject({
+      delivery: "ready",
+      reflow_contract: { closure: "unresolved" },
+      violations: { duplicate_static_closure: 0 },
+    });
+    expect(complete.output).toBeNull();
+
+    const arbitrarySecondStatic = handleProofPolicyHook(pre("npm run lint"), { ...options, now: 190 });
+    expect(arbitrarySecondStatic.output?.hookSpecificOutput?.permissionDecisionReason)
+      .toContain("duplicate-static-closure");
+  });
+
   it("accepts compact grouped reflow accounting with expanded instance counts", () => {
     const open = groupedReflowArtifact();
     expect(validateReflowClosureArtifact(open, "inventory")).toMatchObject({

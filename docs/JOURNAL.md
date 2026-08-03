@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.359 browser sandbox + artifact repair
+- browser-proof 셀과 preflight를 exact `:workspace` + harness socket 경로로 통일했다.
+- real-tab provider-free fixture 성공; artifact finalize는 neutral, 임의 재검증은 계속 차단한다.
+- focused 82/82, bench 325 pass + known 2 fail/1 skip, provider 0; 다음은 exact pin이다.
+
 ## 2026-08-03 (Codex) · 1.9.358 museum R1 pair rejection
 - compact는 79/85, 509,334ms, 1,255,595 tokens이나 unresolved다.
 - browser attach 실패 + responsive red + host delivery reject; candidate 0/1로 3/3 불가다.

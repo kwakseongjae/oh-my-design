@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 import { spawn } from "node:child_process";
-import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
+import {
+  codexBrowserSandboxSpec,
+  preparedWorkspaceRequiresBrowserProof,
+} from "./codex-browser-sandbox-contract.mjs";
 
 const args = parseArgs();
 const workspace = args.get("workspace") ? resolve(String(args.get("workspace"))) : null;
@@ -31,14 +35,14 @@ const finalMessagePath = join(benchmarkDir, "final-message.txt");
 const eventsPath = join(benchmarkDir, "events.jsonl");
 writeFileSync(eventsPath, "", "utf8");
 const maxLogBytes = 50 * 1024 * 1024;
-const command = [
+const browserProofRequired = preparedWorkspaceRequiresBrowserProof(workspace, { readJson });
+const innerCommand = [
   "exec",
   "--ephemeral",
   ...(!loadUserConfig ? ["--ignore-user-config"] : []),
   "--skip-git-repo-check",
   ...(bypassHookTrust ? ["--dangerously-bypass-hook-trust"] : []),
-  "--sandbox",
-  "workspace-write",
+  ...(browserProofRequired ? ["--dangerously-bypass-approvals-and-sandbox"] : ["--sandbox", "workspace-write"]),
   "--cd",
   workspace,
   "--model",
@@ -50,6 +54,15 @@ const command = [
   finalMessagePath,
   "-",
 ];
+const execution = browserProofRequired
+  ? codexBrowserSandboxSpec({ workspace, innerArgs: innerCommand })
+  : {
+      executable: process.env.OMD_BENCH_CODEX_BIN ?? "codex",
+      args: innerCommand,
+      env: {},
+      sandbox: "workspace-write",
+    };
+if (browserProofRequired) mkdirSync(execution.temp_dir, { recursive: true });
 
 const startedAt = new Date();
 const startedNs = process.hrtime.bigint();
@@ -68,6 +81,7 @@ Object.assign(childEnv, {
   DO_NOT_TRACK: "1",
   CI: "1",
   OMD_PROOF_POLICY_EVENTS_PATH: eventsPath,
+  ...execution.env,
 });
 
 const appendCapped = (current, chunk) => {
@@ -82,7 +96,7 @@ const appendCapped = (current, chunk) => {
 };
 
 const exit = await new Promise((resolveExit) => {
-  const child = spawn(process.env.OMD_BENCH_CODEX_BIN ?? "codex", command, {
+  const child = spawn(execution.executable, execution.args, {
     cwd: workspace,
     env: childEnv,
     detached: true,
@@ -163,7 +177,9 @@ const result = {
     provider_route: null,
     model,
     reasoning,
-    sandbox: "workspace-write",
+    sandbox: execution.sandbox,
+    browser_socket_scope: browserProofRequired ? execution.runtime_dir : null,
+    browser_temp_dir: browserProofRequired ? execution.temp_dir : null,
     ephemeral: true,
     ignored_user_config: !loadUserConfig,
     hook_trust_bypassed: bypassHookTrust,

@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.359",
+  "change": "codex-browser-sandbox-artifact-finalize",
+  "status": "accepted-for-exact-pin",
+  "contract": {
+    "browser_execution": "A Codex cell that requires browser proof runs inside the :workspace permission profile with only the browser-harness runtime Unix socket admitted.",
+    "inner_codex": "The inner Codex process bypasses its own sandbox only because the outer Codex sandbox already enforces workspace-only writes and the exact socket allowance.",
+    "preflight_parity": "The readiness probe uses the same workspace profile, workspace root, socket path, and browser temp path as the scored cell.",
+    "non_browser_compatibility": "Codex cells without a browser-proof gate retain the existing workspace-write execution path.",
+    "artifact_lifecycle": "Exact reflow-artifact lock, finalize, and finalize-unresolved commands are neutral bookkeeping and do not consume the one static verification budget.",
+    "fail_closed": "Compound helper commands and arbitrary second static verification commands remain non-neutral and are denied."
+  },
+  "validation": {
+    "focused_tests": { "passed": 82, "failed": 0 },
+    "bench_unit_tests": { "passed": 325, "failed": 2, "skipped": 1 },
+    "known_environment_failures": [
+      "/tmp/omd-ui-skills-bench/vendors/taste-skill is not a Git repository",
+      "/tmp/omd-ui-skills-bench/vendors/ui-ux-pro-max is not a Git repository"
+    ],
+    "provider_free_browser_fixture": {
+      "outer_profile": ":workspace",
+      "allowed_unix_socket": "/Users/kwakseongjae/.config/browser-harness/runtime",
+      "browser_temp_scope": ".benchmark/browser-harness",
+      "page_info_read": true,
+      "observed_url": "https://kwakseongjae.github.io/auto-hwp/",
+      "provider_calls": 0
+    },
+    "artifact_runtime_regression": {
+      "single_static_closure": 1,
+      "browser_attempt": 1,
+      "finalize_unresolved_allowed": true,
+      "duplicate_static_closure_violations": 0,
+      "delivery": "ready-unresolved",
+      "arbitrary_second_static_denied": true
+    },
+    "lint": "pass",
+    "build": "pass",
+    "diff_check": "pass"
+  },
+  "sha256": {
+    "sandbox_contract": "e7486bcd8960a970f68c308ac070f177313790b3e62b3e5c13f1cab22a24cfe2",
+    "codex_runner": "694719fb6d16d488956106768e0cba845ba0ca2a1aa6c3b425bca43216e7923c",
+    "matrix_runner": "6f901c20a4596ab291ba5378c226b79bcc943b1b86c64ed89d445040d1f19f0e",
+    "proof_trace_contract": "90d1c2f665a7993513b061ed038d95cf1751e25857151f620258a9b3662cc8cd"
+  },
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "next": "Commit and exact-pin this execution contract, then lock a fresh unseen task and prepare a new matrix root. Frozen museum cells remain frozen."
+}

@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { initialProofPolicyState } from "../../../benchmarks/ui-resolve-bench/scripts/proof-policy-state.mjs";
-import { classifyProofTrace } from "../../../benchmarks/ui-resolve-bench/scripts/proof-trace-contract.mjs";
-import { isProductEditPath } from "../../../benchmarks/ui-resolve-bench/scripts/proof-trace-contract.mjs";
+import {
+  classifyProofCommand,
+  classifyProofTrace,
+  isProductEditPath,
+} from "../../../benchmarks/ui-resolve-bench/scripts/proof-trace-contract.mjs";
 import {
   applyHookPayload,
   hookEditPaths,
@@ -57,6 +60,19 @@ describe("proof policy host hook mapper", () => {
     expect(isProductEditPath(".omd/reflow-closure.json")).toBe(false);
     expect(isProductEditPath("/tmp/run/.omd/reflow-closure.json")).toBe(false);
     expect(isProductEditPath("src/App.tsx")).toBe(true);
+  });
+
+  it("treats only exact compact artifact lifecycle commands as neutral bookkeeping", () => {
+    const command = "node skills/omd-apply/scripts/reflow-artifact.mjs finalize-unresolved .omd/reflow-closure.json";
+    expect(classifyProofCommand(command)).toMatchObject({
+      neutral: true,
+      static_verification: false,
+      browser: false,
+    });
+    expect(classifyProofCommand(`${command} && npm test`)).toMatchObject({
+      neutral: false,
+      static_verification: true,
+    });
   });
 
   it("fails closed on absent or explicit failed tool responses", () => {

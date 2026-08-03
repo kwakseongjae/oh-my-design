@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import {
   closeSync,
   existsSync,
+  mkdirSync,
   mkdtempSync,
   openSync,
   readFileSync,
@@ -31,6 +32,7 @@ import {
   inspectPreparedHostPolicy,
   summarizeHostPolicyStates,
 } from "./host-policy-contract.mjs";
+import { codexBrowserDoctorSpec } from "./codex-browser-sandbox-contract.mjs";
 
 const MAX_BUFFER = 64 * 1024 * 1024;
 const PACING_MAX_OVERSHOOT_MS = 5_000;
@@ -44,22 +46,31 @@ export function preflightRuntimeEnvironment(
   {
     cursorProjectsRoot = process.env.OMD_BENCH_CURSOR_PROJECTS_ROOT
       ?? join(homedir(), ".cursor", "projects"),
-    browserProbe = () => spawnSync("browser-harness", ["--doctor"], {
-      encoding: "utf8",
-      maxBuffer: MAX_BUFFER,
-      timeout: 30_000,
-    }),
+    workspaceRoot = process.cwd(),
+    browserProbe,
   } = {},
 ) {
   const runtimes = [...new Set((plan?.cells ?? []).map((cell) => cell.runtime))].sort();
   const checks = [];
-  const browserProofRequired = plan?.shared_host_policy?.require_browser_attempt === true;
+  const browserProofRequired = plan?.shared_host_policy?.require_browser_attempt === true
+    || plan?.host_policy_comparison?.require_browser_attempt === true;
   if (browserProofRequired) {
-    const probe = browserProbe();
+    const spec = codexBrowserDoctorSpec({ workspace: workspaceRoot });
+    if (!browserProbe) mkdirSync(spec.env.BH_TMP_DIR, { recursive: true });
+    const probe = browserProbe
+      ? browserProbe(spec)
+      : spawnSync(spec.executable, spec.args, {
+          cwd: resolve(workspaceRoot),
+          env: spec.env,
+          encoding: "utf8",
+          maxBuffer: MAX_BUFFER,
+          timeout: 30_000,
+        });
     const output = String(probe?.stdout ?? "");
+    const daemonAlive = probe?.ready === true || /\[ok\s*\]\s+daemon alive\b/i.test(output);
     const activeConnection = probe?.ready === true
       || /\[ok\s*\]\s+active browser connections\b/i.test(output);
-    if (probe?.status !== 0 || !activeConnection) {
+    if (probe?.error || !daemonAlive || !activeConnection) {
       const detail = String(probe?.stderr || probe?.stdout || probe?.error?.message || "unavailable")
         .trim()
         .replace(/\s+/g, " ")
@@ -70,6 +81,7 @@ export function preflightRuntimeEnvironment(
       runtime: "shared-host-policy",
       resource: "browser-harness",
       status: "ready",
+      sandbox: spec.sandbox,
     });
   }
 
@@ -961,7 +973,10 @@ function executePreparedMatrixWithLease(root, {
       freshPreparedCellAttestations[cell.id] = preparedCellAttestation(workspace);
     }
   }
-  const runtimePreflight = preflightRuntimeEnvironment(plan, runtimePreflightOptions);
+  const runtimePreflight = preflightRuntimeEnvironment(plan, {
+    ...runtimePreflightOptions,
+    workspaceRoot: runtimePreflightOptions?.workspaceRoot ?? matrixRoot,
+  });
   console.log(JSON.stringify({ event: "runtime-preflight-complete", ...runtimePreflight }));
   const state = existing ?? {
     schema_version: plan.schema_version ?? "0.1",
