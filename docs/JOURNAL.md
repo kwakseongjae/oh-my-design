@@ -3735,3 +3735,6 @@
 - experimental은 fragmentation을 3/3 제거했으나 nowrap overflow 1회, generated-label/target-emphasis regression 1회를 만들었다.
 - function/token/a11y/evidence는 6/6 green이고 canonical은 unchanged다.
 - 다음: full-width-first·nowrap overflow 금지·generated label/target emphasis 보존을 담은 v2를 다른 unseen task에서 검증한다.
+## 2026-08-04 (Codex) · 1.9.419 rail-signal code-mode host stop
+- r1 control 701.833s/2,582,886 tokens/79점은 code-mode-only shell hook gap으로 infrastructure-invalid다.
+- u19417 6셀을 freeze했고 TTT는 34,208,487+ / unavailable 6. 다음은 tool-mode admission repair다.

@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.418 rail-signal repaired-host preparation
+- 갱신: 2026-08-04 · 1.9.419 rail-signal code-mode host stop
 
 ## 지금 (현재 위치)
+
+- 1.9.419에서 fresh r1 control은 701.833s/2,582,886 tokens, 79/85로 끝났지만 infrastructure-invalid다.
+- Codex 0.144.1의 Luna profile은 `code_mode_only`였고 trace는 shell closure 3/duplicate 1을 관측했으나 installed state는 edit denial 12/shell decision 0이었다.
+- direct-shell real-host smoke를 code-mode-only nested execution에 확대 주장할 수 없으므로 `/private/tmp/u19417`과 남은 5셀을 no-retry freeze했다.
+- Tokens-to-Target minimum은 34,208,487 + unavailable 6이다. 다음은 provider-free runtime tool-mode admission과 honest controller-observation fallback이다.
 
 - 1.9.418은 `/private/tmp/u19417-vendors` exact detached sources와 `/private/tmp/u19417` 6개 clean/detached cell을 준비했다.
 - task/product/runtime/model/effort/timeout/host equality는 6/6이고 repaired host hook `bef877c9…`도 6/6 exact다.
