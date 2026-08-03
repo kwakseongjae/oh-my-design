@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.470 genomic consumer-browser preregistration
+- exact 1.9.460 control vs exact 1.9.467 candidate를 Luna/high 2×3, schema0.3/no-launch/8px reserve로 고정했다.
+- attempt 28, prior TTT 46,322,200+ / unavailable 6, provider 0. 다음은 preparation이다.
+
 ## 2026-08-04 (Codex) · 1.9.469 genomic sequencing holdout lock
 - fresh 5-library/7-read-set/3-lane task를 75/85 unresolved baseline과 hash로 잠갔다.
 - provider 0. 다음은 exact historical control vs 1.9.467 candidate preregistration이다.

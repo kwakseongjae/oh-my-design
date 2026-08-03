@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.469 genomic sequencing holdout lock
+- 갱신: 2026-08-04 · 1.9.470 genomic consumer-browser preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.470은 exact 1.9.460 control `8315182e…` vs exact 1.9.467 candidate `757bb270…`를 fresh genomic task에 Luna/high 2×3으로 사전등록했다.
+- schema 0.3, exact named existing-CDP attach/no-launch, typography lock, 8px reserve, document/body overflow0, actual200, static1/browser1을 고정했다.
+- attempt 28, prior TTT 46,322,200+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 fresh detached vendors와 six untouched cells를 준비하고 equality/browser/auth/CLI preflight를 검증한다.
 
 - 1.9.469는 fresh `genomic-sequencing-run-release-v0.1`을 provider 전에 lock했다.
 - 5 library/7 read set/3 instrument lane과 manifest·lane strip·release decision 세 carrier, compound target/state를 보존한다.
