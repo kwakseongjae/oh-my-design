@@ -14,6 +14,8 @@ const INVARIANTS = [
 const CHARACTER_RANGE_ORACLE = "character-range-line-tops";
 const COMPOUND_ATOMIC_SEPARATOR = /\s(?:\+|→|←|↔)\s/u;
 const LINE_CONTRACTS = new Set(["single-token", "parent-one-line"]);
+const FIT_STRATEGIES = new Set(["full-row", "stack", "relocate", "comparison-scroll", "keep", "unresolved"]);
+const REQUIRED_POST_EDIT_COMMANDS = ["consolidated-static-closure", "browser-harness-terminal"];
 const REQUIRED_MEASUREMENT_CONDITIONS = [
   { id: "390", viewport_width: 390, zoom: 1 },
   { id: "320", viewport_width: 320, zoom: 1 },
@@ -83,9 +85,47 @@ function validateAtomicParts(row) {
   return parts;
 }
 
+function validateAcceptanceSequence(value) {
+  if (
+    value?.source_inspection_complete !== true
+    || value?.product_edit_transaction !== "single-planned-transaction"
+    || !Array.isArray(value?.post_edit_commands)
+    || value.post_edit_commands.length !== REQUIRED_POST_EDIT_COMMANDS.length
+    || value.post_edit_commands.some((command, index) => command !== REQUIRED_POST_EDIT_COMMANDS[index])
+  ) {
+    fail("acceptance_sequence must close source inspection before one planned product edit and allow only static closure then terminal browser proof");
+  }
+  return value;
+}
+
+function validateFitStrategy(row) {
+  if (!FIT_STRATEGIES.has(row.decision)) {
+    fail(`row group ${row.id} decision must be ${[...FIT_STRATEGIES].join(", ")}`);
+  }
+  if (row.decision !== "comparison-scroll") {
+    if (row.scroll_contract != null) fail(`row group ${row.id} scroll_contract is only valid for comparison-scroll`);
+    return null;
+  }
+  const contract = row.scroll_contract;
+  if (
+    typeof contract?.container_selector !== "string"
+    || !contract.container_selector
+    || contract.container_selector === row.selector
+    || typeof contract?.accessible_name !== "string"
+    || !contract.accessible_name
+    || contract.keyboard_reachable !== true
+    || contract.focus_visible !== true
+    || contract.passive_text_scroll_container !== false
+  ) {
+    fail(`row group ${row.id} comparison-scroll requires a distinct named, keyboard-reachable, focus-visible carrier and forbids passive text scrolling`);
+  }
+  return contract;
+}
+
 export function inventoryDigest(artifact) {
   return createHash("sha256").update(JSON.stringify({
     measurement_conditions: artifact.measurement_conditions,
+    acceptance_sequence: artifact.acceptance_sequence,
     carrier_ids: artifact.inventory.carrier_ids,
     carrier_groups: artifact.carriers.map((carrier) => ({
       id: carrier.id,
@@ -101,6 +141,8 @@ export function inventoryDigest(artifact) {
       longest_value: row.longest_value,
       atomic_parts: row.atomic_parts ?? null,
       line_contract: row.line_contract,
+      decision: row.decision,
+      scroll_contract: row.scroll_contract ?? null,
     })),
   })).digest("hex");
 }
@@ -111,6 +153,7 @@ export function lockArtifact(input) {
   if (!Array.isArray(artifact.carriers) || !artifact.carriers.length) fail("carriers are required");
   if (!Array.isArray(artifact.row_groups) || !artifact.row_groups.length) fail("row_groups are required");
   validateMeasurementConditions(artifact.measurement_conditions, "measurement_conditions");
+  validateAcceptanceSequence(artifact.acceptance_sequence);
   const carrierIds = uniqueStrings(artifact.carriers.map((carrier) => carrier?.id), "carrier ids");
   const rowGroupIds = uniqueStrings(artifact.row_groups.map((row) => row?.id), "row group ids");
   const knownRows = new Set(rowGroupIds);
@@ -131,6 +174,8 @@ export function lockArtifact(input) {
     if (typeof row.longest_value !== "string" || !row.longest_value) fail(`row group ${row.id} longest_value is required`);
     const atomicParts = validateAtomicParts(row);
     if (atomicParts) row.atomic_parts = atomicParts;
+    const scrollContract = validateFitStrategy(row);
+    if (scrollContract) row.scroll_contract = scrollContract;
     delete row.final;
   }
   artifact.inventory = {
@@ -153,10 +198,13 @@ export function lockArtifact(input) {
   return artifact;
 }
 
-function completeOutcome(value, label) {
+function completeOutcome(value, label, { compound = false, unresolved = false } = {}) {
   if (!value || typeof value !== "object") fail(`${label} final outcome is required`);
   for (const field of ["outcome_390", "outcome_320", "outcome_200pct"]) {
     if (!OUTCOMES.has(value[field])) fail(`${label}.${field} must be pass or unresolved`);
+  }
+  if (!unresolved && compound && value.passive_text_scroll_container !== false) {
+    fail(`${label}.passive_text_scroll_container must be false for a resolved compound atomic row`);
   }
 }
 
@@ -193,9 +241,12 @@ export function finalizeArtifact(input, { unresolved = false, hostStateDir = nul
       row.final = { status: "unresolved", outcome_390: "unresolved", outcome_320: "unresolved", outcome_200pct: "unresolved" };
     }
   }
-  for (const carrier of artifact.carriers) completeOutcome(carrier.final, `carrier ${carrier.id}`);
+  for (const carrier of artifact.carriers) completeOutcome(carrier.final, `carrier ${carrier.id}`, { unresolved });
   for (const row of artifact.row_groups) {
-    completeOutcome(row.final, `row group ${row.id}`);
+    completeOutcome(row.final, `row group ${row.id}`, {
+      compound: row.line_contract === "parent-one-line",
+      unresolved,
+    });
     if (!OUTCOMES.has(row.final.status)) fail(`row group ${row.id}.status must be pass or unresolved`);
   }
   if (!unresolved && INVARIANTS.some((field) => artifact.invariants[field] !== true)) {

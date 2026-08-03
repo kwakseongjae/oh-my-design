@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.453 accessible atomic-fit/static latch repair
+- passive protected text scroll을 금지하고 distinct accessible comparison carrier만 허용했다.
+- task-wide one-static→terminal-browser sequence를 artifact로 잠갔다. focused 60 green, broad 93 green/known vendor 2 red, provider 0.
+- 다음은 exact source pin 뒤 fresh unseen task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.452 grid r1 pair freeze
 - candidate 79/85, 596.243s, 1,559,380 tokens; passive target scroll-region와 duplicate static 1로 fail.
 - 3/3 불가능으로 4셀 skip. TTT 43,259,233+; 다음은 provider-free atomic-fit/static latch repair다.

@@ -30,6 +30,11 @@ function hostState(browser_attempts, browser_proof) {
 function draft() {
   return {
     schema_version: "0.2",
+    acceptance_sequence: {
+      source_inspection_complete: true,
+      product_edit_transaction: "single-planned-transaction",
+      post_edit_commands: ["consolidated-static-closure", "browser-harness-terminal"],
+    },
     measurement_conditions: [
       { id: "390", viewport_width: 390, zoom: 1 },
       { id: "320", viewport_width: 320, zoom: 1 },
@@ -40,8 +45,8 @@ function draft() {
       { id: "handoff", selector: "[data-handoff]", expected_count: 1, binds_row_groups: ["status"] },
     ],
     row_groups: [
-      { id: "identifier", selector: "[data-id]", role: "identifier", expected_count: 8, longest_value: "ULD-AKE-73102", line_contract: "single-token" },
-      { id: "status", selector: "[role=status]", role: "state", expected_count: 1, longest_value: "Ground review open", line_contract: "single-token" },
+      { id: "identifier", selector: "[data-id]", role: "identifier", expected_count: 8, longest_value: "ULD-AKE-73102", line_contract: "single-token", decision: "keep" },
+      { id: "status", selector: "[role=status]", role: "state", expected_count: 1, longest_value: "Ground review open", line_contract: "single-token", decision: "keep" },
     ],
     invariants: {
       same_row_count: true,
@@ -76,6 +81,12 @@ describe("compact reflow artifact helper", () => {
     const invalid = draft();
     invalid.measurement_conditions[2].zoom = 1;
     expect(() => lockArtifact(invalid)).toThrow(/200pct at 640px with zoom 2/);
+  });
+
+  it("requires source inspection to close before one planned edit and terminal acceptance", () => {
+    const invalid = draft();
+    invalid.acceptance_sequence.source_inspection_complete = false;
+    expect(() => lockArtifact(invalid)).toThrow(/acceptance_sequence/);
   });
 
   it("closes honest unresolved accounting across expanded instance counts", () => {
@@ -151,6 +162,54 @@ describe("compact reflow artifact helper", () => {
     missing.row_groups[0].line_contract = "parent-one-line";
     expect(lockArtifact(missing).row_groups[0].atomic_parts)
       .toEqual(["ULD-AKE-73102", "ULD-AKE-73103"]);
+  });
+
+  it("forbids comparison scrolling on passive atomic text itself", () => {
+    const invalid = draft();
+    invalid.row_groups[0].decision = "comparison-scroll";
+    invalid.row_groups[0].scroll_contract = {
+      container_selector: "[data-id]",
+      accessible_name: "Container comparison",
+      keyboard_reachable: true,
+      focus_visible: true,
+      passive_text_scroll_container: false,
+    };
+    expect(() => lockArtifact(invalid)).toThrow(/distinct named, keyboard-reachable/);
+  });
+
+  it("requires resolved compound rows to prove passive text is not the scroll container", () => {
+    const locked = lockArtifact({
+      ...draft(),
+      row_groups: [{
+        ...draft().row_groups[0],
+        longest_value: "ULD-AKE-73102 + ULD-AKE-73103",
+        atomic_parts: ["ULD-AKE-73102", "ULD-AKE-73103"],
+        line_contract: "parent-one-line",
+        decision: "full-row",
+      }],
+      carriers: [{
+        id: "plan",
+        selector: "[data-plan]",
+        expected_count: 1,
+        binds_row_groups: ["identifier"],
+      }],
+    });
+    locked.carriers[0].final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    locked.row_groups[0].final = {
+      status: "pass",
+      outcome_390: "pass",
+      outcome_320: "pass",
+      outcome_200pct: "pass",
+      passive_text_scroll_container: true,
+    };
+    locked.browser_attempt = {
+      attempts: 1,
+      outcome: "measured",
+      mechanism: "browser-harness same-route measurement",
+      oracle: "character-range-line-tops",
+      conditions: measuredConditions(),
+    };
+    expect(() => finalizeArtifact(locked)).toThrow(/passive_text_scroll_container must be false/);
   });
 
   it("rejects a resolved closure when a relationship invariant is false", () => {

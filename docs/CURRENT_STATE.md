@@ -4,9 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.452 grid r1 pair freeze
+- 갱신: 2026-08-04 · 1.9.453 accessible atomic-fit/static latch repair
 
 ## 지금 (현재 위치)
+
+- 1.9.453은 protected target/identifier/state passive text의 `overflow:auto|scroll`을 금지하고, fit 순서를 width recovery → token inset → reading width → full-row → stack/relocate로 고정했다.
+- comparison scroll은 별도 relationship carrier + accessible name + keyboard reachability + visible focus가 있을 때만 허용하며 resolved compound row는 `passive_text_scroll_container: false`를 증명한다.
+- acceptance sequence가 source inspection 완료 → 단일 product edit transaction → consolidated static closure → terminal browser를 잠근다. 앞선 partial check는 task-wide budget을 소비하며 이후 revision으로 proof를 복구할 수 없다.
+- focused 59/59 + candidate pin + TypeScript/diff green; broad 93 green/known external vendor Git-root 2 red, provider 0이다.
+- 다음은 exact source pin 뒤 genuinely unseen task를 lock하고 동일 runtime-bound transfer를 사전등록한다.
 
 - 1.9.452 r1 candidate는 valid 79/85 unresolved: 596.243s, 1,559,380 tokens다. control 대비 1.5924×/2.1510×다.
 - actual 200%, parent one-line, browser recovery 0, post-browser 0은 닫았지만 compound target에 `overflow-x:auto`를 써 320/200% scrollable-region와 keyboard focus가 red다.
