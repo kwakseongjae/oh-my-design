@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.471 genomic consumer-browser preparation
+- six untouched cells/equality, detached source hashes, bench19366/CLI/auth preflight를 검증했다.
+- provider 0. 다음은 r1 control one-cell no-retry다.
+
 ## 2026-08-04 (Codex) · 1.9.470 genomic consumer-browser preregistration
 - exact 1.9.460 control vs exact 1.9.467 candidate를 Luna/high 2×3, schema0.3/no-launch/8px reserve로 고정했다.
 - attempt 28, prior TTT 46,322,200+ / unavailable 6, provider 0. 다음은 preparation이다.
