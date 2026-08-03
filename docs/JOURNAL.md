@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.459 radiotherapy r1 pair freeze
+- candidate 85/85, accessible carrier repair green, 457.012s/690,948 tokens; static 3로 proof fail.
+- 3/3 불가능으로 4셀 skip. TTT 45,082,351+; 다음은 deterministic static helper repair다.
+
 ## 2026-08-04 (Codex) · 1.9.458 radiotherapy r1 control
 - objective 85/85, passive scroll 0이나 static 6/post-ready 2로 proof fail; 410.471s, 1,132,170 tokens.
 - TTT 44,391,403+. 다음은 fixed pacing 뒤 r1 candidate no-retry다.

@@ -4,9 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.458 radiotherapy r1 control
+- 갱신: 2026-08-04 · 1.9.459 radiotherapy r1 pair freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.459 r1 candidate는 valid 85/85 UI-resolved: 457.012s, 690,948 tokens다. control 대비 1.1134×/0.6103×다.
+- actual 200%, contrast, target one-line, passive protected-text scroll 0, distinct named/focusable comparison carrier, browser recovery 0, post-browser 0은 모두 green이다.
+- 모델이 ad-hoc static script를 두 번 고쳐 static closure 3(duplicate 2)이 되어 proof fail이다. wall ratio도 1.1을 소폭 초과했다.
+- proof 3/3 최대치가 2/3이라 남은 4셀을 skip/freeze했다. TTT 45,082,351+ / unavailable 6이다.
+- 다음은 provider-free declarative static-closure manifest + exactly-once helper repair다.
 
 - 1.9.458 r1 control은 valid system proof failure: objective 85/85 UI-resolved, 410.471s, 1,132,170 tokens다.
 - desktop/390/320/actual 200%, accessibility, evidence, passive protected-text scroll 0은 모두 green이다.
