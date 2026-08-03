@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.456 radiotherapy accessible atomic-fit preregistration
+- 갱신: 2026-08-04 · 1.9.457 radiotherapy accessible atomic-fit preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.457은 `/private/tmp/u19456-vendors` exact detached control/candidate와 `/private/tmp/u19456` six untouched cells를 준비했다.
+- task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.
+- control install hash `ef6e0199…`, candidate `9d6fbba9…`; actual-zoom 및 passive-text-scroll gate도 shared이며 provider 0이다.
+- 다음은 exact `bench19366`와 isolated auth/CLI preflight 뒤 r1 control 한 셀을 no-retry 실행한다.
 
 - 1.9.456은 exact 1.9.409 control `1480d7cc…` vs exact 1.9.453 candidate `f578e8a6…`를 fresh radiotherapy task에 Luna/high 2×3으로 사전등록했다.
 - actual 200%=640px + document zoom 2, passive protected-text scroll 0, task-wide one static closure, helper terminal marker, 900s/concurrency 1/120s pacing/no retry를 고정했다.

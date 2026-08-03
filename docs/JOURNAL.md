@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.457 radiotherapy accessible atomic-fit preparation
+- six cells equality 6/6, exact detached sources, install hashes, actual-zoom/passive-scroll gates를 검증했다.
+- provider 0. 다음은 exact browser/auth/CLI preflight 뒤 r1 control이다.
+
 ## 2026-08-04 (Codex) · 1.9.456 radiotherapy accessible atomic-fit preregistration
 - exact control/candidate Luna-high 2×3, actual zoom, task-wide static latch와 passive-scroll gate를 고정했다.
 - attempt 26, TTT 43,259,233+ / unavailable 6, provider 0. 다음은 fresh preparation이다.
