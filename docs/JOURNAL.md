@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.452 grid r1 pair freeze
+- candidate 79/85, 596.243s, 1,559,380 tokens; passive target scroll-region와 duplicate static 1로 fail.
+- 3/3 불가능으로 4셀 skip. TTT 43,259,233+; 다음은 provider-free atomic-fit/static latch repair다.
+
 ## 2026-08-04 (Codex) · 1.9.451 grid r1 control
 - objective 85/85지만 static 4/recovery 1/post-ready 1로 proof fail; 374.437s, 724,940 tokens다.
 - TTT 41,699,853+. 다음은 fixed pacing 뒤 r1 candidate no-retry다.

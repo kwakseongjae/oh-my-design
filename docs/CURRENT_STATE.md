@@ -4,9 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.451 grid r1 control result
+- 갱신: 2026-08-04 · 1.9.452 grid r1 pair freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.452 r1 candidate는 valid 79/85 unresolved: 596.243s, 1,559,380 tokens다. control 대비 1.5924×/2.1510×다.
+- actual 200%, parent one-line, browser recovery 0, post-browser 0은 닫았지만 compound target에 `overflow-x:auto`를 써 320/200% scrollable-region와 keyboard focus가 red다.
+- final revision static은 1회지만 이전 revision exploratory static 2회 때문에 task-level duplicate 1로 proof fail이다.
+- candidate 3/3 최대치가 2/3이라 남은 4셀을 skip/freeze했다. TTT 43,259,233+ / unavailable 6이다.
+- 다음은 provider-free accessible atomic-fit priority + explicit final-revision static latch repair다.
 
 - 1.9.451 r1 control은 valid system proof failure: objective 85/85 UI-resolved, 374.437s, 724,940 tokens다.
 - desktop/390/320/actual 200%, accessibility, evidence는 전부 green이다.
@@ -2260,9 +2266,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fixed 120s pacing과 fresh exact browser/auth/CLI preflight를 확인한다.
-2. `luna-grid-r1-candidate` 한 셀을 900s/no-retry로 실행한다.
-3. objective 85/85 보존과 actual zoom·single-static·terminal proof transfer를 paired 판정한다.
+1. passive protected text의 scroll-container화를 금지하고 accessible atomic-fit priority를 skill/helper contract에 고정한다.
+2. exploratory inspection과 final acceptance를 구분하는 explicit final-revision static latch를 결정론적으로 만든다.
+3. focused contract/evaluator tests와 exact pin 뒤 다른 fresh unseen task로 transfer를 재검증한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

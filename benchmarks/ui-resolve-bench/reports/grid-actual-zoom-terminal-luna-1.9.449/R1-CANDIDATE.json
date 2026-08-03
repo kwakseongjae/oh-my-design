@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.452",
+  "cell_id": "luna-grid-r1-candidate",
+  "status": "complete",
+  "validity": "valid-system-failure",
+  "retry": false,
+  "objective": {
+    "score": 79,
+    "max": 85,
+    "ui_resolved": false
+  },
+  "process": {
+    "wall_time_ms": 596243,
+    "timed_out": false
+  },
+  "provider_usage": {
+    "input_tokens": 1532933,
+    "cached_input_tokens": 1442560,
+    "output_tokens": 26447,
+    "reasoning_output_tokens": 10423,
+    "total_observed_tokens": 1559380
+  },
+  "runtime_identity": {
+    "requested_model": "gpt-5.6-luna",
+    "effort": "high",
+    "codex_cli_version": "0.144.1",
+    "model_profile_sha256": "0efd579e76b5f1ccc5b68f61fdf079c7df0adfe03281f65ec6bc07383e8c335f",
+    "model_tool_mode": "code_mode_only",
+    "evidence_scope": "execution-home-post-run"
+  },
+  "objective_failure": {
+    "gate": "accessibility",
+    "viewports": ["narrow-320", "css-zoom-surrogate-200"],
+    "reasons": [
+      "scrollable-region-focusable",
+      "keyboard-traversal-and-focus-visible"
+    ],
+    "root_cause": "The protected compound decision target was made an overflow-x:auto scroll container without becoming an intentional, labelled focusable region."
+  },
+  "transferred_repairs": {
+    "all_responsive_conditions": true,
+    "actual_200pct_geometry": true,
+    "compound_parent_one_line": true,
+    "browser_recovery_zero": true,
+    "post_browser_verification_zero": true
+  },
+  "proof_trace": {
+    "analyzable": true,
+    "browser_mechanism_count": 1,
+    "browser_recovery_count": 0,
+    "duplicate_static_closure_count": 1,
+    "verification_after_ready_count": 0,
+    "compliance_pass": false
+  },
+  "proof_gate_reasons": ["duplicate-static-limit"],
+  "paired_ratios": {
+    "wall_time": 1.5924,
+    "provider_tokens": 2.1510
+  },
+  "artifact_hashes": {
+    "run_result_sha256": "8addb18d68834e99b0c04b17bef23fac4ee6fade9b17eeb777ef206e4625eeb9",
+    "score_sha256": "9bad90886b7cd94c37ba1cead430f50d54d8a3f0add7f64888b44de518e19e72",
+    "run_record_sha256": "2abecf55067a9b3db919e02e861b19ea44dabe6ec034763763de69e40d5c2d27",
+    "proof_trace_sha256": "bdb1b92ac1194d19480c8262fa8364c3a2a1ef0b3b8085bb9ba5603fedfb4f9b"
+  },
+  "tokens_to_target_observed_minimum_after_cell": 43259233,
+  "prior_usage_unavailable_cells": 6,
+  "next": "Freeze the remaining four cells because candidate Reliability@3 is mathematically unreachable; repair accessible atomic-fit selection and revision-scoped static closure."
+}
