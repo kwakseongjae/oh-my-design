@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.369 named isolated browser exact pin
+- 갱신: 2026-08-03 · 1.9.370 isolated cold-chain preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.370은 cold-chain task를 fresh `/private/tmp/u19370{,-vendors}`에 attempt 11로 preregister했다.
+- 1.9.365 isolated Codex state + 1.9.369 named CDP browser pins를 함께 고정하고 기존 2×3/no-retry/strict gates를 유지했다.
+- u19362/u19366은 frozen, provider 0이다. 다음은 fresh exact vendors/cells preparation과 equality 증명이다.
 
 - 1.9.369는 committed `3b9fde84…`의 named CDP connection gate와 narrow runtime attestation ignore를 exact hash로 pin했다.
 - u19362/u19366 roots는 frozen이다. 다음은 1.9.365 + 1.9.369 pins를 함께 쓰는 fresh replacement preregistration이며 provider 0이다.

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.370 isolated cold-chain preregistration
+- fresh u19370 roots에 attempt 11을 잠그고 isolated-state + named-browser pins를 결합했다.
+- 기존 exact 2×3/no-retry/strict gates 유지, provider 0. 다음은 preparation이다.
+
 ## 2026-08-03 (Codex) · 1.9.369 named isolated browser exact pin
 - committed 3b9fde84의 named CDP gate와 narrow runtime attestation ignore를 고정했다.
 - u19362/u19366 frozen, provider 0; 다음은 combined-pin fresh replacement다.
