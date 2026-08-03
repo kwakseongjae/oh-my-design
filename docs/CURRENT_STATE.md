@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.314 hook-safe host policy exact pin
+- 갱신: 2026-08-03 · 1.9.315 aircraft replacement preregistered
 
 ## 지금 (현재 위치)
+
+- 1.9.315는 frozen 1.9.311의 clean infrastructure replacement를 preregister했다. 기존 task/control/candidate/Luna-high/gate/order는 유지하고 exact host policy `7d21ea23…`만 양 arm에 동일 적용한다.
+- attempt order는 4로 유지하며 invalid control 2,932,219 tokens와 replacement spend를 같은 attempt에 합산한다. invalid score/behavior는 제외한다.
+- fresh roots는 `/private/tmp/u19315-vendors`, `/private/tmp/u19315`; provider call 0이며 equality attestation 전 실행 금지다.
+- 다음은 detached clean vendor 2개와 6개 Git cell prepare 후 첫 replacement control 하나만 실행하는 것이다.
 
 - 1.9.314는 committed source `7d21ea23…`의 exact Codex installed-opt-in host policy를 config + source 4개 + installed 4개 hash로 pin했다.
 - 이것은 새 skill treatment나 quality promotion이 아니라 replacement matrix 양 arm에 동일하게 적용할 infrastructure pin이다. provider call 0이다.

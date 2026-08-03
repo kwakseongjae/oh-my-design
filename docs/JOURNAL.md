@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.315 aircraft replacement preregistration
+- frozen matrix의 same-attempt clean replacement를 잠갔다.
+- task/treatment/Luna-high/gate/order 유지, hook-safe policy는 양 arm 공통이다.
+- invalid 2,932,219 tokens는 보존하고 점수는 제외한다; provider call 0이다.
+- 다음은 fresh vendor와 6-cell equality preparation이다.
+
 ## 2026-08-03 (Codex) · 1.9.314 hook-safe host policy pin
 - committed `7d21ea23…`의 Codex config와 8개 source/installed hash를 고정했다.
 - 양 arm 공통 infrastructure pin이며 skill treatment·quality promotion은 아니다.
