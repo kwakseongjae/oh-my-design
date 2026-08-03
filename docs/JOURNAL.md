@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.373 registered-browser bootstrap exact pin
+- committed 1a5a178d의 controller/runtime browser boundary를 고정했다.
+- 세 이전 root frozen, provider 0; 다음은 all-pin fresh preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.372 registered-browser bootstrap boundary repair
 - CDP URL은 controller에만 남기고 scored sandbox에는 BU_NAME + harness socket만 전달한다.
 - browser pass 전 auth materialization을 금지했다. focused 72/72, provider 0.
