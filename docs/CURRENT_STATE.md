@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.395 runtime conjunctive reflow repair
+- 갱신: 2026-08-03 · 1.9.396 runtime conjunctive reflow exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.396은 runtime conjunctive reflow repair를 commit `effd1d93…`과 9개 exact artifact hash로 pin했다.
+- provider 0, quality promotion 없음이다. 다음은 이 pin만 candidate로 쓰는 fresh unseen replacement task를 provider 전에 lock하는 것이다.
 
 - 1.9.395는 reflow helper와 host validator를 conjunctive quality closure로 수리했다.
 - resolved finalize는 unresolved carrier/row 0만 허용하고, finalize-unresolved는 실제 browser infrastructure attempt 1회를 요구하며 `closure: unresolved`, `quality_pass: false`로 남는다.
@@ -2007,9 +2010,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fresh permission-parity browser preflight를 exact scored-cell sandbox 경로로 통과시킨다.
-2. `luna-coldchain-r1-control` 한 셀만 `--max-new-cells 1`, no retry로 실행한다.
-3. evaluate/export/checkpoint와 host/proof admission을 검증한 뒤 paired compact의 도달 가능성을 판정한다.
+1. fresh unseen replacement task를 새 도메인·새 content/selectors로 작성하고 provider 전에 lock한다.
+2. untouched baseline을 독립 평가해 target failure shape를 확인하고 exact source/hash를 봉인한다.
+3. exact control vs 1.9.396 candidate의 Luna/high 2×3을 preregister한 뒤 fresh clean cells를 준비한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

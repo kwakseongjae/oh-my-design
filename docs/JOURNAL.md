@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.396 runtime conjunctive reflow exact pin
+- repair commit `effd1d93…`과 skill/helper/validator/tests/acceptance 9개 해시를 봉인했다.
+- provider 0, promotion 없음. 다음은 fresh unseen replacement lock이다.
+
 ## 2026-08-03 (Codex) · 1.9.395 runtime conjunctive reflow repair
 - unresolved row/carrier resolved-finalize를 차단하고 browserless finalize-unresolved 우회를 제거했다.
 - focused 74/74 + pin 1/1, lint/diff green, provider 0. 다음은 commit exact pin/fresh holdout이다.
