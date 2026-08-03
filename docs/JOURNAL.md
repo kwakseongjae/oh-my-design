@@ -3744,3 +3744,6 @@
 ## 2026-08-04 (Codex) · 1.9.421 controller browser decoupling
 - real browser proof를 installed hook과 분리해 code-mode controller matrix에서도 exact socket을 강제한다.
 - focused 46/46, provider 0. 다음은 fresh 2×3 controller-observation preregistration이다.
+## 2026-08-04 (Codex) · 1.9.422 rail-signal controller preregistration
+- exact skill arms를 Luna/high controller-observation 2×3, independent browser proof로 고정했다.
+- attempt 20, TTT 34,208,487+ / unavailable 6, provider 0. 다음은 fresh preparation이다.

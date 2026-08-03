@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.421 controller browser decoupling
+- 갱신: 2026-08-04 · 1.9.422 rail-signal controller preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.422는 exact control `3a414a0a…` vs candidate `1480d7cc…`를 Luna/high controller-observation 2×3으로 fresh preregister했다.
+- host enforcement claim은 false이며 exact browser socket/shared runtime/isolated home과 post-run proof gate는 유지한다.
+- attempt 20, prior TTT 34,208,487 + unavailable 6, control exposure 2/candidate 0, provider 0이다.
+- 다음은 exact detached vendors와 `/private/tmp/u19422` 6 clean cells를 fresh prepare하고 equality를 증명하는 것이다.
 
 - 1.9.421은 real browser proof를 installed host-policy에서 분리했다.
 - controller-observation matrix도 exact named socket/shared runtime/isolated Codex home을 요구하면서 host enforcement claim은 하지 않는다.
