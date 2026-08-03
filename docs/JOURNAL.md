@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.466 satellite pair freeze
+- candidate는 365.260s/618,457 tokens와 proof pass였지만 320/actual200 overflow 10/20px로 81/85다.
+- 남은 4셀을 frozen했다. 다음은 provider-free consumer-browser attachment + fit reserve/type-role repair다.
+
 ## 2026-08-04 (Codex) · 1.9.465 satellite r1 control
 - valid 85/85 + proof pass, 438.796s/621,392 tokens; static1/browser1/recovery0이다.
 - TTT 45,703,743+. 다음은 fixed pacing 뒤 r1 candidate다.

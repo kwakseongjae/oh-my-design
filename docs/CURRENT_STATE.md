@@ -4,9 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.465 satellite r1 control
+- 갱신: 2026-08-04 · 1.9.466 satellite pair freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.466 r1 candidate는 valid 81/85 + proof pass: 365.260s, 618,457 tokens다. control 대비 wall 0.8324× / token 0.9953×다.
+- exact shipped `static-close` 1회와 browser1/recovery0/duplicate0/post-ready0는 green이나 320px document overflow 10px, actual 200% overflow 20px가 red다.
+- 모델이 protected decision typography를 13px로 축소하고도 충분한 fit reserve/distinct carrier를 만들지 않았으며, 새 Playwright Chromium을 띄운 browser-harness proof가 실제 consumer browser overflow를 놓쳤다.
+- paired objective loss로 Reliability@3 최대치가 2/3이므로 남은 4셀은 실행하지 않고 frozen했다. TTT 46,322,200+ / unavailable 6이다.
+- 다음은 provider-free로 exact named consumer-browser attachment, measurable fit reserve, protected typography role lock을 helper/skill에 강제한다.
 
 - 1.9.465 r1 control은 valid 85/85 + proof pass: 438.796s, 621,392 tokens다.
 - desktop/390/320/actual200, contrast, evidence, passive scroll0가 모두 green이고 edit1/static1/browser1/recovery0/duplicate0/post-ready0이다.
