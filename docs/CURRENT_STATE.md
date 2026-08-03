@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.467 consumer-browser fit repair
+- 갱신: 2026-08-04 · 1.9.468 consumer-browser fit exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.468은 consumer-browser fit repair를 exact commit `757bb270…`, skill tree `c4a942b1…` 및 여섯 file hash로 pin했다.
+- 새 competitor id는 `omd-consumer-browser-fit-candidate`, vendor dir은 `omd-1.9.467`이며 mutable working tree를 provider에 쓰지 않는다.
+- targeted pin contract green, provider 0, promotion false다. 다음은 genuinely unseen transfer task 1.9.469를 provider 전에 lock한다.
 
 - 1.9.467은 provider-free로 reflow artifact schema 0.3과 consumer-browser fit contract를 구현했다.
 - exact `BU_NAME`/`BU_CDP_URL` existing-CDP attach만 허용하고 새 Playwright/Chromium launch는 host policy와 helper 양쪽에서 차단한다.

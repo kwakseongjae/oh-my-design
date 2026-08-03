@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.468",
+  "status": "PINNED",
+  "provider_calls": 0,
+  "source_commit": "757bb270bad8cef70342f416053d3941d259429e",
+  "skill_tree_sha256": "c4a942b1828f0dad8fa70c0442f3a13059c9f703",
+  "skill_file_sha256": "1196572ca20b4554d3eb50cf6edde3874b2179f34215486f17364c1ceea8485d",
+  "reflow_helper_sha256": "d03928f3deb163418e4c356361caee5d5795f181f0a55856832bfb5f43847c32",
+  "skill_contract_test_sha256": "3fdaa1f5cdd98755a43a065f99ec61cdb3eea4ef9c8d9dc38d834c016118eb28",
+  "artifact_contract_test_sha256": "64c201bc2ac49395b10d700509dd5660d0711f902ef816d03023c8a36cab0e61",
+  "proof_trace_contract_sha256": "a29303bc4a9265403547d1cc5765f42ad607b21dff92e4a3dbac889f341d412b",
+  "proof_trace_test_sha256": "694f4f2c084dcc14fc056e0dc3eee243e324d17c7b87681e7cd615773ee65df1",
+  "promotion": false,
+  "next": "lock-fresh-unseen-consumer-browser-fit-transfer-task"
+}

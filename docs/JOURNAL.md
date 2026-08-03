@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.468 consumer-browser fit exact pin
+- repair를 exact `757bb270…` / skill tree `c4a942b1…`로 고정하고 새 competitor id를 등록했다.
+- provider 0, promotion false. 다음은 fresh unseen transfer task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.467 consumer-browser fit repair
 - exact named consumer attach, typography lock, 8px reserve, document/body overflow gate를 schema 0.3에 강제했다.
 - focused 84/84 + install 포함 85/85, lint/diff green, provider 0. 다음은 exact pin이다.
