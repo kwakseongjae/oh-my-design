@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.480 shipped-runner transfer preparation
+- 갱신: 2026-08-04 · 1.9.481 semiconductor r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.481 r1 control은 valid 83/85 unresolved: 384.069s, 838,924 tokens다.
+- narrow/actual200/contrast/atomic text는 green이나 desktop decision action 8px separation만 red다.
+- trace shape edit1/static1/browser1/recovery0/duplicate0/post-ready0이나 browser artifact가 infrastructure-error/attached false/schema open이라 experiment proof는 fail이다.
+- TTT 48,536,196+ / unavailable 6. 다음은 fixed pacing 뒤 r1 candidate를 no-retry 실행한다.
 
 - 1.9.480은 `/private/tmp/u19479-vendors` exact detached control/candidate와 `/private/tmp/u19479` six untouched cells를 준비했다.
 - equality 6/6, detached+clean source 2, shared helper hash, candidate runner present 3/3·control absent 3/3를 검증했다.

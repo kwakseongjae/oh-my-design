@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.481",
+  "cell_id": "luna-semiconductor-r1-control",
+  "status": "complete",
+  "validity": "valid",
+  "retry": false,
+  "objective": {"score":83,"max":85,"ui_resolved":false},
+  "process": {"wall_time_ms":384069,"timed_out":false},
+  "provider_usage": {
+    "input_tokens": 819051,
+    "cached_input_tokens": 745728,
+    "output_tokens": 19873,
+    "reasoning_output_tokens": 8681,
+    "total_observed_tokens": 838924
+  },
+  "runtime_identity": {
+    "requested_model": "gpt-5.6-luna",
+    "effort": "high",
+    "codex_cli_version": "0.144.1",
+    "model_profile_sha256": "0efd579e76b5f1ccc5b68f61fdf079c7df0adfe03281f65ec6bc07383e8c335f",
+    "model_tool_mode": "code_mode_only",
+    "evidence_scope": "execution-home-post-run"
+  },
+  "objective_result": {
+    "all_critical_gates": false,
+    "responsive_viewports_green": ["mobile","narrow-320","css-zoom-surrogate-200"],
+    "responsive_viewports_red": ["desktop"],
+    "remaining_failure": "desktop-action-spatial-separation-below-8px",
+    "document_overflow_px": {"desktop":0,"mobile":0,"narrow_320":0,"actual_200pct":0},
+    "serious_or_critical_contrast": 0,
+    "passive_protected_text_scroll_containers": 0
+  },
+  "proof_trace": {
+    "analyzable": true,
+    "product_edit_count": 1,
+    "browser_mechanism_count": 1,
+    "browser_recovery_probe_count": 0,
+    "browser_recovery_count": 0,
+    "static_closure_count": 1,
+    "duplicate_static_closure_count": 0,
+    "verification_after_ready_count": 0,
+    "generic_trace_gate_pass": true,
+    "experiment_proof_compliance_pass": false,
+    "failure": "browser-attempt-infrastructure-error-attached-existing-false-and-schema-closure-open"
+  },
+  "artifact_hashes": {
+    "run_result_sha256": "384d9ed3d299809374702cf95dd073fe26dc6e66527305638dc9e25c39b92445",
+    "score_sha256": "b9c2e260f579349c36e0cf039adc86ec65cd3338d80b7fef525ce45871526c9c",
+    "run_record_sha256": "6f622eab0fd447d220f05b31f5c6fea37e456339bd26127bb45c1c5e9a939971",
+    "proof_trace_sha256": "0683407f787a1029765164b75d8ced02e7eaf6ddf3f4143d57a8057f94d5e2e8"
+  },
+  "tokens_to_target_observed_minimum_after_cell": 48536196,
+  "prior_usage_unavailable_cells": 6,
+  "next": "Run luna-semiconductor-r1-candidate after fixed pacing; retain the candidate runner's socket/CDP behavior without retry."
+}

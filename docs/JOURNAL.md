@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.481 semiconductor r1 control
+- exact control은 83/85, 384.069s, 838,924 tokens이며 desktop action gap만 red다.
+- exact consumer attach/schema closure proof는 fail. 다음은 fixed pacing 뒤 r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.480 shipped-runner transfer preparation
 - six untouched cells/equality, detached sources, candidate runner isolation, bench19366/CLI/auth preflight를 검증했다.
 - provider 0. 다음은 Luna/high r1 control no-retry 실행이다.
