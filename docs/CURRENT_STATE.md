@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.463 satellite deterministic static-closure preregistration
+- 갱신: 2026-08-04 · 1.9.464 satellite deterministic static-closure preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.464는 `/private/tmp/u19463-vendors` exact detached control/candidate와 `/private/tmp/u19463` six untouched cells를 준비했다.
+- equality 6/6, control skill/helper `80645672…`/`7676d67a…`, candidate `95d03c80…`/`c66c5099…`, sources detached+clean이다.
+- `bench19366`, Codex CLI 0.144.1, isolated auth preflight가 모두 ready이며 provider 0이다.
+- 다음은 r1 control 한 셀을 Luna/high, 900s, no-retry로 실행한다.
 
 - 1.9.463은 exact 1.9.453 control `f578e8a6…` vs exact 1.9.460 candidate `8315182e…`를 satellite task에 Luna/high 2×3으로 사전등록했다.
 - pre-edit manifest + exactly-once shipped `static-close`, actual 200%=640/zoom2, passive scroll 0, terminal browser, 900s/concurrency1/120s/no-retry를 고정했다.

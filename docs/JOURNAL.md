@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.464 satellite preparation
+- six untouched cells/equality와 detached skill+helper hashes, browser/auth/CLI preflight를 검증했다.
+- provider 0. 다음은 r1 control no-retry다.
+
 ## 2026-08-04 (Codex) · 1.9.463 satellite static-closure preregistration
 - exact 1.9.453 vs 1.9.460, Luna/high 2×3와 exactly-once manifest/helper gate를 고정했다.
 - provider 0. 다음은 fresh detached vendors/cells preparation이다.
