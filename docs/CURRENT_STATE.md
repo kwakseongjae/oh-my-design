@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.391 rail known-failure closure preregistration
+- 갱신: 2026-08-03 · 1.9.392 rail matrix preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.392는 `/private/tmp/u19391-vendors` exact detached sources와 `/private/tmp/u19391` 6 committed/detached/clean cells를 준비했다.
+- task/prompt/product/runtime/model/effort/timeout/host/proof와 모든 browser pin equality가 6/6이다.
+- sole arm delta는 skill tree `2d577464…` control vs `b0d170da…` repaired candidate이며 provider 0이다.
+- 다음 허용 cell은 named `bench19366` + isolated-auth dual preflight 뒤 `luna-rail-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
 
 - 1.9.391은 exact control `3a414a0a…` vs repaired candidate `e6513930…`를 fresh rail holdout에 Luna/high 2×3으로 preregister했다.
 - 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
