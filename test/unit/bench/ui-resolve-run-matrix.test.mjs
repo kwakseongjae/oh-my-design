@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
+import { mkdtempSync, mkdirSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
+  benchmarkArtifactManifest,
   directBrowserCommandCount,
   completedCellSummary,
   harnessDeliveryStopReason,
@@ -54,6 +55,21 @@ const validRun = {
 };
 
 describe("UI-Resolve prepared matrix execution", () => {
+  it("excludes isolated Codex and browser runtime state from benchmark attestation", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-runtime-attestation-"));
+    const benchmark = join(root, ".benchmark");
+    mkdirSync(benchmark);
+    writeFileSync(join(benchmark, "manifest.json"), "{}\n");
+    const before = benchmarkArtifactManifest(benchmark).sha256;
+    mkdirSync(join(benchmark, "codex-home"));
+    mkdirSync(join(benchmark, "browser-harness"));
+    const auth = join(root, "source-auth.json");
+    writeFileSync(auth, "{}\n");
+    symlinkSync(auth, join(benchmark, "codex-home", "auth.json"));
+    writeFileSync(join(benchmark, "browser-harness", "debug.log"), "runtime\n");
+    expect(benchmarkArtifactManifest(benchmark).sha256).toBe(before);
+    expect(benchmarkArtifactManifest(benchmark).files.map((file) => file.path)).toEqual(["manifest.json"]);
+  });
   it("round-trips host-policy admission through a checkpoint summary", () => {
     const workspace = mkdtempSync(join(tmpdir(), "omd-host-admission-summary-"));
     const benchmarkDir = join(workspace, ".benchmark");

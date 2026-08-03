@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.368 named isolated browser/runtime attestation repair
+- 개인 default Chrome을 거부하고 named fresh CDP browser만 허용하도록 preflight를 강화했다.
+- codex-home/browser runtime만 artifact attestation에서 제외했다. focused 72/72.
+- u19366 frozen, provider 0; 다음은 exact pin과 fresh replacement다.
+
 ## 2026-08-03 (Codex) · 1.9.367 cold-chain replacement preparation
 - fresh exact detached vendors와 6 committed/detached/clean cells를 준비했다.
 - equality 6/6, sole delta는 control `2d577464…` vs compact `36a44a1…` skill tree다.

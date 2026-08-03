@@ -4,9 +4,16 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.367 cold-chain replacement preparation
+- 갱신: 2026-08-03 · 1.9.368 named isolated browser/runtime attestation repair
 
 ## 지금 (현재 위치)
+
+- 1.9.368은 browser-required 실행에 exact `BU_NAME` + CDP endpoint를 요구하고 doctor에서 그 named connection의 active 상태를 검증한다.
+- 개인 Gmail이 열린 default Chrome은 안전상 거부했고, fresh temp profile `bench19366`/9336/about:blank fixture는 성공했다.
+- `.benchmark/codex-home`과 `browser-harness`만 runtime attestation에서 제외하며 product/skill/host/evidence hashes는 유지한다.
+- focused 72/72, bench 325 pass + 기존 vendor Git-root 2 fail/1 skip, lint/build/diff green, provider 0이다. 다음은 exact pin이다.
+
+- `/private/tmp/u19366`은 provider 전 auth runtime이 materialize되어 frozen/no-resume다. 새 pin·prereg·root 없이는 실행하지 않는다.
 
 - 1.9.367은 fresh `/private/tmp/u19366-vendors` exact detached sources와 `/private/tmp/u19366` 6 committed/detached/clean cells를 준비했다.
 - task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/host/proof/admission/resume/timeout/browser pin equality가 6/6이다.

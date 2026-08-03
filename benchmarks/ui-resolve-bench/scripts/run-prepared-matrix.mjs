@@ -44,6 +44,11 @@ const PACING_MAX_CLOCK_DISAGREEMENT_MS = 5_000;
 const STOP_SENTINEL = "STOP";
 const INVOCATION_LEASE = ".matrix-execution.lock";
 const REPO_ROOT = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
+const BENCHMARK_RUNTIME_IGNORE = ["browser-harness", "codex-home"];
+
+export function benchmarkArtifactManifest(benchmarkDir) {
+  return treeManifest(benchmarkDir, { ignore: BENCHMARK_RUNTIME_IGNORE });
+}
 
 export function preflightRuntimeEnvironment(
   plan,
@@ -53,6 +58,7 @@ export function preflightRuntimeEnvironment(
     workspaceRoot = process.cwd(),
     browserProbe,
     codexProbe,
+    browserEnv = process.env,
   } = {},
 ) {
   const runtimes = [...new Set((plan?.cells ?? []).map((cell) => cell.runtime))].sort();
@@ -60,10 +66,10 @@ export function preflightRuntimeEnvironment(
   const browserProofRequired = plan?.shared_host_policy?.require_browser_attempt === true
     || plan?.host_policy_comparison?.require_browser_attempt === true;
   if (browserProofRequired) {
-    const spec = codexBrowserDoctorSpec({ workspace: workspaceRoot });
+    const spec = codexBrowserDoctorSpec({ workspace: workspaceRoot, env: browserEnv });
     if (!browserProbe) {
       mkdirSync(spec.env.BH_TMP_DIR, { recursive: true });
-      prepareIsolatedCodexHome(workspaceRoot);
+      prepareIsolatedCodexHome(workspaceRoot, browserEnv);
     }
     const probe = browserProbe
       ? browserProbe(spec)
@@ -78,21 +84,33 @@ export function preflightRuntimeEnvironment(
     const daemonAlive = probe?.ready === true || /\[ok\s*\]\s+daemon alive\b/i.test(output);
     const activeConnection = probe?.ready === true
       || /\[ok\s*\]\s+active browser connections\b/i.test(output);
-    if (probe?.error || !daemonAlive || !activeConnection) {
+    const isolatedName = String(spec.env.BU_NAME ?? "").trim();
+    const isolatedEndpoint = String(spec.env.BU_CDP_URL ?? spec.env.BU_CDP_WS ?? "").trim();
+    const namedConnection = isolatedName
+      && new RegExp(`^\\s*${isolatedName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s+—\\s+active page:`, "mi").test(output);
+    if (
+      probe?.error
+      || !daemonAlive
+      || !activeConnection
+      || !isolatedName
+      || !isolatedEndpoint
+      || !namedConnection
+    ) {
       const detail = String(probe?.stderr || probe?.stdout || probe?.error?.message || "unavailable")
         .trim()
         .replace(/\s+/g, " ")
         .slice(0, 240);
-      throw new Error(`runtime-preflight-failure:browser-harness-not-ready:${detail || "unavailable"}`);
+      throw new Error(`runtime-preflight-failure:isolated-browser-harness-not-ready:${detail || "unavailable"}`);
     }
     checks.push({
       runtime: "shared-host-policy",
       resource: "browser-harness",
       status: "ready",
       sandbox: spec.sandbox,
+      connection: isolatedName,
     });
 
-    const authSpec = codexAuthDoctorSpec({ workspace: workspaceRoot });
+    const authSpec = codexAuthDoctorSpec({ workspace: workspaceRoot, env: browserEnv });
     const authProbe = codexProbe
       ? codexProbe(authSpec)
       : spawnSync(authSpec.executable, authSpec.args, {
@@ -500,7 +518,7 @@ function cellArtifactHashes(benchmarkDir) {
     run_record_sha256: fileSha256(recordPath),
     ...(existsSync(proofTracePath) ? { proof_trace_sha256: fileSha256(proofTracePath) } : {}),
     ...(existsSync(hostPolicyStatePath) ? { host_policy_state_sha256: fileSha256(hostPolicyStatePath) } : {}),
-    benchmark_tree_sha256: treeManifest(benchmarkDir).sha256,
+    benchmark_tree_sha256: benchmarkArtifactManifest(benchmarkDir).sha256,
   };
 }
 
@@ -578,7 +596,7 @@ function preparedCellAttestation(workspace) {
     ignore: [...new Set([...(manifest.workspace?.product_ignore ?? [".benchmark"]), ".t"])],
   });
   return {
-    benchmark_tree_sha256: treeManifest(join(workspace, ".benchmark")).sha256,
+    benchmark_tree_sha256: benchmarkArtifactManifest(join(workspace, ".benchmark")).sha256,
     product_tree_sha256: currentProduct.sha256,
     ...(manifest.host_policy
       ? { host_policy: inspectPreparedHostPolicy(REPO_ROOT, workspace, manifest.host_policy.mode) }

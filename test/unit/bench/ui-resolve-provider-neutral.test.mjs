@@ -337,29 +337,38 @@ describe("provider-neutral prepared matrix contract", () => {
   it("preflights required browser proof before any provider execution", () => {
     const plan = calibrationPlan("/tmp/provider-neutral-browser-preflight");
     plan.shared_host_policy = { require_browser_attempt: true };
+    const browserEnv = {
+      BH_RUNTIME_DIR: "/tmp/runtime",
+      BU_NAME: "bench-test",
+      BU_CDP_URL: "http://127.0.0.1:9336",
+    };
     expect(() => preflightRuntimeEnvironment(plan, {
       browserProbe: () => ({ status: 1, stdout: "[FAIL] daemon alive" }),
       codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
-    })).toThrow("runtime-preflight-failure:browser-harness-not-ready");
+      browserEnv,
+    })).toThrow("runtime-preflight-failure:isolated-browser-harness-not-ready");
 
     expect(preflightRuntimeEnvironment(plan, {
       browserProbe: () => ({
         status: 1,
-        stdout: "[ok  ] daemon alive\n[FAIL] Chrome process list unavailable\n[ok  ] active browser connections — 1",
+        stdout: "[ok  ] daemon alive\n[FAIL] Chrome process list unavailable\n[ok  ] active browser connections — 1\n  bench-test — active page: about:blank",
       }),
       codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
+      browserEnv,
     }).checks).toContainEqual({
       runtime: "shared-host-policy",
       resource: "browser-harness",
       status: "ready",
       sandbox: "external-workspace-openai-browser",
+      connection: "bench-test",
     });
     expect(preflightRuntimeEnvironment(plan, {
       browserProbe: () => ({
         status: 0,
-        stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1",
+        stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1\n  bench-test — active page: about:blank",
       }),
       codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
+      browserEnv,
     }).checks).toContainEqual({
       runtime: "shared-host-policy",
       resource: "codex-auth",
@@ -372,14 +381,24 @@ describe("provider-neutral prepared matrix contract", () => {
         stdout: "[ok  ] daemon alive\n[FAIL] active browser connections — 0",
       }),
       codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
-    })).toThrow("runtime-preflight-failure:browser-harness-not-ready");
+      browserEnv,
+    })).toThrow("runtime-preflight-failure:isolated-browser-harness-not-ready");
     expect(() => preflightRuntimeEnvironment(plan, {
       browserProbe: () => ({
         status: 0,
-        stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1",
+        stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1\n  bench-test — active page: about:blank",
       }),
       codexProbe: () => ({ status: 1, stderr: "Not logged in" }),
+      browserEnv,
     })).toThrow("runtime-preflight-failure:codex-auth-not-ready");
+    expect(() => preflightRuntimeEnvironment(plan, {
+      browserProbe: () => ({
+        status: 0,
+        stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1\n  default — active page: private",
+      }),
+      codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
+      browserEnv,
+    })).toThrow("runtime-preflight-failure:isolated-browser-harness-not-ready");
   });
 
   it("keeps a ready host rejection as a scored system failure", () => {
