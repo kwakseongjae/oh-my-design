@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.379 final-runtime cold-chain preparation
+- 갱신: 2026-08-03 · 1.9.380 shared named browser socket repair
 
 ## 지금 (현재 위치)
+
+- 1.9.380은 `BH_RUNTIME_DIR_SHARED=1`과 exact `bu-$BU_NAME.sock`을 결합했다.
+- provider-free outer sandbox fixture에서 daemon/named connection/example.com 접근이 성공했다.
+- focused 73/73, lint/diff green, u19378 provider 0/frozen이다. 다음은 exact pin이다.
 
 - 1.9.379는 fresh u19378 exact vendors/6 clean detached cells와 equality 6/6을 준비했다.
 - provider 0; 다음은 final pinned runtime으로 r1 control 한 셀이다.

@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import {
   browserHarnessTempDir,
+  browserHarnessSocketPath,
   codexAuthDoctorSpec,
   codexBenchmarkPermissionProfile,
   codexBrowserDoctorSpec,
@@ -29,7 +30,7 @@ describe("Codex browser proof sandbox contract", () => {
       "-c", `permissions.omd-benchmark-browser=${codexBenchmarkPermissionProfile()}`,
       "-c", "default_permissions=\"omd-benchmark-browser\"",
       "-P", "omd-benchmark-browser", "-C", workspace,
-      "--allow-unix-socket", runtime,
+      "--allow-unix-socket", `${runtime}/bu-default.sock`,
       "/opt/bin/codex", "exec", "--dangerously-bypass-approvals-and-sandbox", "-",
     ]);
     expect(spec.args).not.toContain("workspace-write");
@@ -37,6 +38,7 @@ describe("Codex browser proof sandbox contract", () => {
       HOME: isolatedCodexHome(workspace),
       CODEX_HOME: isolatedCodexHome(workspace),
       BH_RUNTIME_DIR: runtime,
+      BH_RUNTIME_DIR_SHARED: "1",
       BH_TMP_DIR: browserHarnessTempDir(workspace),
     });
     expect(spec.codex_home).toBe(isolatedCodexHome(workspace));
@@ -60,15 +62,17 @@ describe("Codex browser proof sandbox contract", () => {
       "-c", `permissions.omd-benchmark-browser=${codexBenchmarkPermissionProfile()}`,
       "-c", "default_permissions=\"omd-benchmark-browser\"",
       "-P", "omd-benchmark-browser", "-C", "/tmp/matrix",
-      "--allow-unix-socket", "/tmp/runtime",
+      "--allow-unix-socket", "/tmp/runtime/bu-bench-test.sock",
       "browser-harness", "--doctor",
     ]);
     expect(spec.env).toMatchObject({
       BH_RUNTIME_DIR: "/tmp/runtime",
+      BH_RUNTIME_DIR_SHARED: "1",
       BH_TMP_DIR: "/tmp/matrix/.benchmark/browser-harness",
       BU_NAME: "bench-test",
     });
     expect(spec.env).not.toHaveProperty("BU_CDP_URL");
+    expect(spec.browser_socket).toBe("/tmp/runtime/bu-bench-test.sock");
   });
 
   it("checks isolated authentication through the identical permission path", () => {
@@ -82,7 +86,7 @@ describe("Codex browser proof sandbox contract", () => {
       "-c", `permissions.omd-benchmark-browser=${codexBenchmarkPermissionProfile()}`,
       "-c", "default_permissions=\"omd-benchmark-browser\"",
       "-P", "omd-benchmark-browser", "-C", "/tmp/matrix",
-      "--allow-unix-socket", "/tmp/runtime",
+      "--allow-unix-socket", "/tmp/runtime/bu-default.sock",
       "codex-test", "login", "status",
     ]);
   });
@@ -104,6 +108,12 @@ describe("Codex browser proof sandbox contract", () => {
     expect(profile).toContain("mode=\"limited\"");
     expect(profile).toContain("\"chatgpt.com\"=\"allow\"");
     expect(profile).toContain("\"*.openai.com\"=\"allow\"");
+  });
+
+  it("derives one exact Unix socket from the named browser connection", () => {
+    expect(browserHarnessSocketPath({ BH_RUNTIME_DIR: "/tmp/runtime", BU_NAME: "bench-test" }))
+      .toBe("/tmp/runtime/bu-bench-test.sock");
+    expect(() => browserHarnessSocketPath({ BU_NAME: "../private" })).toThrow("invalid browser-harness connection name");
   });
 
   it("derives browser proof need only from the prepared cell gate", () => {

@@ -6,6 +6,12 @@ export function browserHarnessRuntimeDir(env = process.env) {
   return resolve(env.BH_RUNTIME_DIR ?? join(homedir(), ".config", "browser-harness", "runtime"));
 }
 
+export function browserHarnessSocketPath(env = process.env) {
+  const name = String(env.BU_NAME ?? "default");
+  if (!/^[a-zA-Z0-9_-]+$/.test(name)) throw new Error(`invalid browser-harness connection name: ${name}`);
+  return join(browserHarnessRuntimeDir(env), `bu-${name}.sock`);
+}
+
 export function browserHarnessTempDir(workspace) {
   return join(resolve(workspace), ".benchmark", "browser-harness");
 }
@@ -33,7 +39,7 @@ export function codexBenchmarkPermissionProfile() {
   return "{extends=\":workspace\",network={enabled=true,mode=\"limited\",domains={\"chatgpt.com\"=\"allow\",\"*.chatgpt.com\"=\"allow\",\"api.openai.com\"=\"allow\",\"*.openai.com\"=\"allow\"}}}";
 }
 
-function outerSandboxArgs({ root, runtimeDir }) {
+function outerSandboxArgs({ root, socketPath }) {
   const profile = "omd-benchmark-browser";
   return [
     "sandbox",
@@ -41,7 +47,7 @@ function outerSandboxArgs({ root, runtimeDir }) {
     "-c", `default_permissions=\"${profile}\"`,
     "-P", profile,
     "-C", root,
-    "--allow-unix-socket", runtimeDir,
+    "--allow-unix-socket", socketPath,
   ];
 }
 
@@ -65,12 +71,13 @@ export function codexBrowserSandboxSpec({
 }) {
   const root = resolve(workspace);
   const runtimeDir = browserHarnessRuntimeDir(env);
+  const socketPath = browserHarnessSocketPath(env);
   const tempDir = browserHarnessTempDir(root);
   const codexHome = isolatedCodexHome(root);
   return {
     executable: codexBin,
     args: [
-      ...outerSandboxArgs({ root, runtimeDir }),
+      ...outerSandboxArgs({ root, socketPath }),
       codexBin,
       ...innerArgs,
     ],
@@ -78,11 +85,13 @@ export function codexBrowserSandboxSpec({
       HOME: codexHome,
       CODEX_HOME: codexHome,
       BH_RUNTIME_DIR: runtimeDir,
+      BH_RUNTIME_DIR_SHARED: "1",
       BH_TMP_DIR: tempDir,
       ...(env.BU_NAME ? { BU_NAME: env.BU_NAME } : {}),
     },
     sandbox: "external-workspace-openai-browser",
     runtime_dir: runtimeDir,
+    browser_socket: socketPath,
     codex_home: codexHome,
     temp_dir: tempDir,
   };
@@ -95,12 +104,13 @@ export function codexBrowserDoctorSpec({
 }) {
   const root = resolve(workspace);
   const runtimeDir = browserHarnessRuntimeDir(env);
+  const socketPath = browserHarnessSocketPath(env);
   const tempDir = browserHarnessTempDir(root);
   const codexHome = isolatedCodexHome(root);
   return {
     executable: codexBin,
     args: [
-      ...outerSandboxArgs({ root, runtimeDir }),
+      ...outerSandboxArgs({ root, socketPath }),
       "browser-harness",
       "--doctor",
     ],
@@ -109,10 +119,12 @@ export function codexBrowserDoctorSpec({
       HOME: codexHome,
       CODEX_HOME: codexHome,
       BH_RUNTIME_DIR: runtimeDir,
+      BH_RUNTIME_DIR_SHARED: "1",
       BH_TMP_DIR: tempDir,
     },
     sandbox: "external-workspace-openai-browser",
     codex_home: codexHome,
+    browser_socket: socketPath,
   };
 }
 
@@ -123,11 +135,12 @@ export function codexAuthDoctorSpec({
 }) {
   const root = resolve(workspace);
   const runtimeDir = browserHarnessRuntimeDir(env);
+  const socketPath = browserHarnessSocketPath(env);
   const codexHome = isolatedCodexHome(root);
   return {
     executable: codexBin,
     args: [
-      ...outerSandboxArgs({ root, runtimeDir }),
+      ...outerSandboxArgs({ root, socketPath }),
       codexBin,
       "login",
       "status",
@@ -137,9 +150,11 @@ export function codexAuthDoctorSpec({
       HOME: codexHome,
       CODEX_HOME: codexHome,
       BH_RUNTIME_DIR: runtimeDir,
+      BH_RUNTIME_DIR_SHARED: "1",
       BH_TMP_DIR: browserHarnessTempDir(root),
     },
     sandbox: "external-workspace-openai-browser",
     codex_home: codexHome,
+    browser_socket: socketPath,
   };
 }
