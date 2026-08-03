@@ -1,12 +1,12 @@
 import { readFileSync } from "node:fs";
 
-const IGNORED_EDIT_SEGMENTS = [
-  "/.agents/",
-  "/.benchmark/",
-  "/.codex/",
-  "/.cursor/",
-  "/.omd/",
-];
+const IGNORED_EDIT_DIRECTORIES = new Set([
+  ".agents",
+  ".benchmark",
+  ".codex",
+  ".cursor",
+  ".omd",
+]);
 
 const IGNORED_EDIT_BASENAMES = new Set([
   "AGENTS.md",
@@ -62,7 +62,7 @@ function basename(path) {
 export function isProductEditPath(path) {
   const normalized = String(path ?? "").replaceAll("\\", "/");
   if (!normalized) return false;
-  if (IGNORED_EDIT_SEGMENTS.some((segment) => normalized.includes(segment))) return false;
+  if (normalized.split("/").some((segment) => IGNORED_EDIT_DIRECTORIES.has(segment))) return false;
   return !IGNORED_EDIT_BASENAMES.has(basename(normalized));
 }
 

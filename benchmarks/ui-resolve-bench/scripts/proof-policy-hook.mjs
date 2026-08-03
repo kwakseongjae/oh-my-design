@@ -152,6 +152,12 @@ function isPreStaticProof(payload) {
     && classifyProofCommand(hookCommand(payload)).static_verification;
 }
 
+function isPreUntrackedLocalExecutor(payload) {
+  const event = String(payload?.hook_event_name ?? payload?.hookEventName ?? "");
+  const tool = String(payload?.tool_name ?? payload?.toolName ?? "");
+  return event === "PreToolUse" && /^(?:mcp__)?node[_-]?repl(?:__js)?$/i.test(tool);
+}
+
 function sleep(ms) {
   Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 }
@@ -318,7 +324,9 @@ export function handleProofPolicyHook(payload, options = {}) {
     const requireReflowArtifact = options.require_reflow_artifact
       ?? process.env.OMD_PROOF_POLICY_REFLOW_ARTIFACT === "1";
     let gated = reconciled;
-    if (requireReflowArtifact && isPreProductEdit(payload)) {
+    if (requireReflowArtifact && isPreUntrackedLocalExecutor(payload)) {
+      gated = applyProofPolicyEvent(gated, { type: "untracked-local-executor-reject" });
+    } else if (requireReflowArtifact && isPreProductEdit(payload)) {
       const validation = validateReflowClosureArtifact(
         readReflowArtifact(payload, options),
         "inventory",
@@ -347,8 +355,11 @@ export function handleProofPolicyHook(payload, options = {}) {
     }
     const next = applyHookPayload(gated, payload);
     if (next !== loaded.state) writeProofPolicyState(path, payload, next, options.now ?? Date.now());
+    const decisionAddedByPayload = next.decisions.length > gated.decisions.length;
     const output = payload?.hook_event_name === "PreToolUse"
-      ? proofPolicyHookDecision(next)
+      ? decisionAddedByPayload
+        ? proofPolicyHookDecision(next)
+        : null
       : isStop(payload)
         ? proofPolicyStopDecision(next, payload)
       : null;

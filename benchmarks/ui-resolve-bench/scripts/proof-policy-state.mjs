@@ -148,6 +148,10 @@ export function applyProofPolicyEvent(previous, event) {
     return decision(state, event, false, event.reason ?? "reflow-closure-required");
   }
 
+  if (event.type === "untracked-local-executor-reject") {
+    return decision(state, event, false, "untracked-local-executor");
+  }
+
   if (["static-proof-start", "browser-proof-start", "browser-recovery"].includes(event.type)) {
     if (state.delivery === "ready") return denyAfterReady(state, event);
     if (state.revision === 0) return decision(state, event, false, "product-edit-required");

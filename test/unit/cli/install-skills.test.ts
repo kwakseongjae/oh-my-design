@@ -941,6 +941,7 @@ describe('install-skills', () => {
     expect(JSON.stringify(enabled)).toContain(
       'OMD_PROOF_POLICY_REFLOW_ARTIFACT=1 node ${CLAUDE_PROJECT_DIR}/.claude/hooks/omd-proof-policy/proof-policy-hook.mjs',
     );
+    expect(JSON.stringify(enabled)).toContain('mcp__node_repl__js');
     for (const event of ['PreToolUse', 'PostToolUse', 'Stop']) {
       expect(JSON.stringify(enabled.hooks[event]).match(/omd-proof-policy/g)).toHaveLength(1);
     }
@@ -979,6 +980,7 @@ describe('install-skills', () => {
     expect(JSON.stringify(enabled)).toContain(
       'OMD_PROOF_POLICY_REFLOW_ARTIFACT=1 node \\"$(git rev-parse --show-toplevel)/.codex/hooks/omd-proof-policy/proof-policy-hook.mjs\\"',
     );
+    expect(JSON.stringify(enabled)).toContain('mcp__node_repl__js');
     expect(existsSync(join(
       root,
       '.codex/hooks/omd-proof-policy/proof-policy-hook.mjs',

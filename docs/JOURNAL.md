@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.313 runtime artifact hook bypass repair
+- 첫 aircraft control은 infrastructure-invalid로 frozen했다; 점수 제외, 2,932,219 tokens는 보존한다.
+- relative `.omd` 오인, sticky denial, node_repl 직접쓰기 우회를 닫았다.
+- focused 108/108, host parity 3/3, matrix 30/30, lint/build/diff green이다.
+- 다음은 exact pin과 fresh replacement preregistration/root다.
+
 ## 2026-08-03 (Codex) · 1.9.312 aircraft matrix prepared
 - fresh exact vendors + 6 clean Git cells를 provider call 0으로 준비했다.
 - shared runtime artifact gate 포함 모든 조건이 같고 sole delta는 skill tree다.

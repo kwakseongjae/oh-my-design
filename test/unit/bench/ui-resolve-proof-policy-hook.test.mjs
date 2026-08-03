@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { initialProofPolicyState } from "../../../benchmarks/ui-resolve-bench/scripts/proof-policy-state.mjs";
 import { classifyProofTrace } from "../../../benchmarks/ui-resolve-bench/scripts/proof-trace-contract.mjs";
+import { isProductEditPath } from "../../../benchmarks/ui-resolve-bench/scripts/proof-trace-contract.mjs";
 import {
   applyHookPayload,
   hookEditPaths,
@@ -50,6 +51,12 @@ describe("proof policy host hook mapper", () => {
     expect(hookEditPaths(edit("apply_patch", {
       command: "*** Begin Patch\n*** Update File: src/App.tsx\n*** Add File: src/new.css\n*** End Patch",
     }))).toEqual(["src/App.tsx", "src/new.css"]);
+  });
+
+  it("treats managed artifact paths as non-product for both relative and absolute edits", () => {
+    expect(isProductEditPath(".omd/reflow-closure.json")).toBe(false);
+    expect(isProductEditPath("/tmp/run/.omd/reflow-closure.json")).toBe(false);
+    expect(isProductEditPath("src/App.tsx")).toBe(true);
   });
 
   it("fails closed on absent or explicit failed tool responses", () => {

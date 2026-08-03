@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.312 aircraft runtime-artifact matrix prepared
+- 갱신: 2026-08-03 · 1.9.313 runtime artifact hook-bypass repaired
 
 ## 지금 (현재 위치)
+
+- 1.9.313은 첫 aircraft control을 infrastructure-invalid로 판정하고 frozen 처리했다. 77/85는 quality evidence에서 제외하며 640,087ms·2,932,219 tokens만 attempt 4 비용에 보존한다.
+- 원인은 relative `.omd` product 오인, 이전 denial의 sticky 재방출, matcher 밖 `mcp__node_repl__js` 직접 파일쓰기다. product는 바뀌었지만 proof trace product edit 0이므로 analyzable하지 않다.
+- relative/absolute managed path 판정 통일, current-payload decision만 방출, Claude/Codex/benchmark matcher의 node_repl 차단을 구현했다. focused 108/108, host parity 3/3, matrix 30/30, lint/build/diff-check가 green이다.
+- `/private/tmp/u19311`은 재사용하지 않는다. 다음은 1.9.313 exact pin → fresh replacement preregistration/root → 한 cell씩 재실행이며, candidate를 포함한 남은 기존 matrix cell은 실행 금지다.
 
 - 1.9.312는 fresh detached `/private/tmp/u19311-vendors/{omd-1.9.274,omd-1.9.309}`와 `/private/tmp/u19311` 6 clean Git cells를 provider call 0으로 PREPARED했다.
 - task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/runtime artifact proof policy가 6개 전부 같고 sole delta는 skill tree `2d577464…` vs `bb3ac833…`다.

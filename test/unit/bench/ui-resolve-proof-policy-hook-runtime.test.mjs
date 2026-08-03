@@ -34,6 +34,20 @@ const preEdit = {
   tool_name: "Edit",
   tool_input: { file_path: "/tmp/run/index.html" },
 };
+const preArtifactEdit = {
+  ...base,
+  hook_event_name: "PreToolUse",
+  tool_name: "apply_patch",
+  tool_input: {
+    command: "*** Begin Patch\n*** Add File: .omd/reflow-closure.json\n*** End Patch",
+  },
+};
+const preNodeRepl = {
+  ...base,
+  hook_event_name: "PreToolUse",
+  tool_name: "mcp__node_repl__js",
+  tool_input: { code: "await fs.writeFile('index.html', html)" },
+};
 const pre = (command) => ({
   ...base,
   hook_event_name: "PreToolUse",
@@ -269,6 +283,7 @@ describe("proof policy executable hook", () => {
       permissionDecision: "deny",
       permissionDecisionReason: expect.stringContaining("reflow-inventory-required"),
     });
+    expect(handleProofPolicyHook(preArtifactEdit, { ...options, now: 105 }).output).toBeNull();
 
     writeReflowArtifact(root);
     expect(handleProofPolicyHook(preEdit, { ...options, now: 110 }).output).toBeNull();
@@ -293,6 +308,19 @@ describe("proof policy executable hook", () => {
     expect(complete.state).toMatchObject({
       delivery: "ready",
       reflow_contract: { closure: "closed" },
+    });
+  });
+
+  it("blocks an untracked local executor from bypassing the artifact and product-edit gates", () => {
+    const result = handleProofPolicyHook(preNodeRepl, {
+      root: join(root, "state"),
+      workspace_root: root,
+      require_reflow_artifact: true,
+      now: 100,
+    });
+    expect(result.output?.hookSpecificOutput).toMatchObject({
+      permissionDecision: "deny",
+      permissionDecisionReason: expect.stringContaining("untracked-local-executor"),
     });
   });
 
