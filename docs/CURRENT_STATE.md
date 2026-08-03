@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `ffd75773` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.330 native-browser-enforced replacement preregistered
+- 갱신: 2026-08-03 · 1.9.331 native-browser-enforced matrix prepared
 
 ## 지금 (현재 위치)
+
+- 1.9.331은 `/private/tmp/u19330` 6-cell shared equality와 exact skill delta를 provider call 0으로 확인했다.
+- baseline committed/detached/clean 6/6, exact vendor detached/clean/publishable 2/2, browser preflight ready다.
+- 다음 허용 cell은 `luna-load-r1-control-native-enforced` 하나, canonical `--max-new-cells 1`, no retry다.
 
 - 1.9.330은 same aircraft task/control/candidate/Luna-high/gates/order를 fresh `/private/tmp/u19330`에 사전등록했다.
 - sole shared infrastructure delta는 committed `682c094d…` native-browser-enforced policy다. provider call 0이며 과거 root는 모두 frozen이다.

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.331 native-enforced matrix prepared
+- u19330 6-cell shared equality와 exact skill delta를 확인했다.
+- baseline/source detached·clean·publishable, provider call 0이다.
+- 다음은 첫 control 한 cell만 canonical 실행이다.
+
 ## 2026-08-03 (Codex) · 1.9.330 native-enforced replacement preregistration
 - same aircraft/control/candidate/Luna-high/gates/order를 u19330에 잠갔다.
 - shared delta는 682c094d native-browser-enforced policy 하나다.
