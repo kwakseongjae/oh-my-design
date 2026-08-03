@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.353",
+  "pin_id": "preregistered-timeout-accounting-1.9.353",
+  "source_commit": "e6e4c61514c39621494a2cc4625c316a7f2e3ef2",
+  "files": {
+    "matrix_runner": { "path": "benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs", "sha256": "70fe1060a5f505482314fd1791f747dfd99d5e8750258de85256bd232b78125d" },
+    "record_exporter": { "path": "benchmarks/ui-resolve-bench/scripts/export-run-record.mjs", "sha256": "30b37cb34cdbdeae4c261517380fa86e3d82f81d3877087188f7a41d22864a23" },
+    "runner_contract_test": { "path": "test/unit/bench/ui-resolve-run-matrix.test.mjs", "sha256": "7ad51860b25688079c2fd6149c950a86c5c8e7a218b7b7de8f0153c59f318173" },
+    "export_contract_test": { "path": "test/unit/bench/ui-resolve-export.test.mjs", "sha256": "5dd7761883e00603e927fbff235a68e3ed54c6ff111cbadb2e1eb906daef2f42" },
+    "end_to_end_test": { "path": "test/unit/bench/ui-resolve-provider-neutral.test.mjs", "sha256": "79be8feaa9e974f650382cea14a0b101f171f54985370a99d19249e7cf912e64" },
+    "acceptance": { "path": "benchmarks/ui-resolve-bench/reports/preregistered-timeout-accounting-1.9.352/ACCEPTANCE.json", "sha256": "838a1bca305c0d504d267cc01f3eea787c382156da8b76a2c93834018b90cb99" }
+  },
+  "timeout_contract": {
+    "explicit_policy_required": "count-as-valid-failure",
+    "run_status": "timed_out",
+    "validity": "valid",
+    "ui_resolved": false,
+    "usage_unavailable_is_null": true,
+    "provider_replay_on_resume": false
+  },
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "next": "Lock a fresh unseen task and include this exact pin in its preregistration before provider use."
+}

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.353 timeout accounting exact pin
+- committed e6e4c615의 runner/export/tests/acceptance를 exact hash로 고정했다.
+- valid timeout의 status/validity/usage/no-replay 의미를 잠갔다.
+- provider 0; 다음은 fresh unseen task lock이다.
+
 ## 2026-08-03 (Codex) · 1.9.352 preregistered timeout accounting
 - valid timeout을 evaluate/export/unresolved checkpoint하도록 수리했다.
 - synthetic timeout은 provider replay 0과 다음 cell 진행을 증명했다.
