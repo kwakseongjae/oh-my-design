@@ -1181,6 +1181,19 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(candidate.commit).not.toBe(allCarrier.commit);
   });
 
+  it("pins the runtime reflow artifact gate separately from the prose-only inventory candidate", () => {
+    const previous = competitors.variants["omd-portable-carrier-inventory-closure-candidate"];
+    const candidate = competitors.variants["omd-runtime-reflow-artifact-gate-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.309",
+      source_path: "skills/omd-apply",
+      declared_name: "omd:apply",
+      commit: "8f8cec6e1e4ac482b9c4afae603d31413521c767",
+    });
+    expect(candidate.commit).not.toBe(previous.commit);
+  });
+
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", editorialBriefTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({

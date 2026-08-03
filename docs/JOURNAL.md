@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.309 runtime reflow exact pin
+- exact source `8f8cec6…`를 runtime artifact candidate로 pin했다.
+- skill·activation·host-policy config/tree hash를 고정했다.
+- source publishable, provider call 0, quality promotion은 아직 아니다.
+- 다음은 fresh unseen topology task lock이다.
+
 ## 2026-08-03 (Codex) · 1.9.308 runtime reflow artifact gate
 - installed proof policy가 `.omd/reflow-closure.json` inventory를 edit 전에 잠근다.
 - changed hash와 incomplete 390/320/200% closure는 static proof 전에 차단된다.

@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.308 runtime reflow artifact gate
+- 갱신: 2026-08-03 · 1.9.309 runtime reflow exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.309는 exact source `8f8cec6…`를 `omd-runtime-reflow-artifact-gate-candidate`로 pin했다. canonical/installed skill, installed tree, host-policy config/tree, activation hash를 고정했고 provider call은 0이다.
+- candidate source는 committed/publishable이고 아직 quality promotion은 아니다. 다음은 과거 3개 task family와 겹치지 않는 fresh unseen topology를 provider 전에 lock하는 것이다.
 
 - 1.9.308은 installed proof policy가 versioned `.omd/reflow-closure.json`을 직접 검증하도록 만들었다. 제품 edit 전 locked inventory/hash가 없으면 거부하고, static proof 전 390/320/200% carrier·row 전수 pass와 exact manifest가 없으면 거부한다.
 - edit 이후 inventory hash가 달라지면 fail-close한다. Claude Code/Codex managed hook은 `OMD_PROOF_POLICY_REFLOW_ARTIFACT=1`로 이 gate를 활성화하며 proof policy 미설치 기본 경로는 바꾸지 않았다.
