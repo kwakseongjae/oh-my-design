@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.438 maritime r1 pair stop
+- candidate 81/85, 474.434s, 1,151,694 tokens; parent line과 post-ready proof가 red다.
+- 3/3 불가능으로 4셀 skip. TTT 39,511,114+ / unavailable 6, 다음은 provider-free terminal closure repair다.
+
 ## 2026-08-04 (Codex) · 1.9.437 maritime r1 control
 - valid 81/85, 367.461s, 1,041,430 tokens; compound line과 proof budget이 red다.
 - TTT 38,359,420+ / unavailable 6. 다음은 paced r1 candidate다.

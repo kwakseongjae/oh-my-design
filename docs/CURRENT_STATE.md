@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.437 maritime r1 control
+- 갱신: 2026-08-04 · 1.9.438 maritime r1 pair stop
 
 ## 지금 (현재 위치)
+
+- 1.9.438 r1 candidate도 valid 81/85 unresolved: 474.434s, 1,151,694 tokens다.
+- browser recovery는 0으로 개선했지만 compound parent를 child stack으로 바꿔 320/200% line red, post-ready static 2로 proof fail이다.
+- control 대비 wall 1.2911×, tokens 1.1059×이고 candidate 3/3 최대치가 2/3이라 남은 4셀을 skip/freeze했다.
+- TTT 39,511,114+ / unavailable 6. 다음은 provider-free parent-one-line 우선순위와 browser-terminal closure 수리다.
 
 - 1.9.437 r1 control은 valid system failure: 81/85, 367.461s, 1,041,430 tokens다.
 - 320px/200% compound character-range line만 red이며, browser 1은 했지만 recovery 1/duplicate static 2/post-ready 1로 proof fail이다.
