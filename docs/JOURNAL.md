@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.486 socket-native transfer preregistration
+- exact 1.9.476 control vs 1.9.483 candidate를 water task에 Luna/high 2×3, artifact-backed proof로 고정했다.
+- provider 0. 다음은 detached vendors와 six untouched cells preparation이다.
+
 ## 2026-08-04 (Codex) · 1.9.485 water-treatment task lock
 - 5 batch/7 sample/3 train의 fresh task를 provider 전에 잠그고 untouched 75/85 난이도를 측정했다.
 - task exposure/provider 0. 다음은 exact control/candidate Reliability@3 preregistration이다.
