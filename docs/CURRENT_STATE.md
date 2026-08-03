@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7364cbd` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.318 clean-baseline matrix prepared
+- 기준 커밋: `ab066c45` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-03 · 1.9.319 runtime artifact proof order repaired
 
 ## 지금 (현재 위치)
+
+- 1.9.319는 1.9.317 첫 Luna/high cell을 infrastructure-invalid로 동결했다. `index.html`은 바뀌었지만 900,026ms timeout, final/score/usage event가 없으므로 모델·skill 품질과 토큰 수치를 주장하지 않는다. 남은 5 cell은 미실행이다.
+- 원인은 apply_patch 본문의 proof 단어를 static command로 오인한 것과 browser 측정 전에 measured closure를 요구한 순서 deadlock이다.
+- executable order를 inventory → edit → static → browser → measured artifact → Stop/delivery로 고쳤다. focused 37/37, provider-neutral 계열 159/161(기존 external vendor Git precondition 2건만 red), lint/build/diff가 green이고 repair provider call은 0이다.
+- `/private/tmp/u19317`은 재사용하지 않는다. 다음은 exact 1.9.319 policy pin → provider-free full-sequence simulation → fresh replacement preregistration/preparation이다.
 
 - 1.9.318은 `/private/tmp/u19317` 6개 cell을 provider call 0으로 PREPARED했다. shared contract 1개, host ready 6/6, source detached/publishable 6/6이다.
 - workspace baseline committed/detached/clean도 6/6이며 sole delta는 skill tree `2d577464…` vs `bb3ac833…`다.

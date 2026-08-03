@@ -141,6 +141,7 @@ export function applyProofPolicyEvent(previous, event) {
       return decision(state, event, false, "reflow-inventory-changed");
     }
     state.reflow_contract.closure = "closed";
+    markReadyWhenClosed(state);
     return decision(state, event, true, "reflow-closure-validated");
   }
 

@@ -148,7 +148,10 @@ function isPreProductEdit(payload) {
 }
 
 function isPreStaticProof(payload) {
-  return String(payload?.hook_event_name ?? payload?.hookEventName ?? "") === "PreToolUse"
+  const event = String(payload?.hook_event_name ?? payload?.hookEventName ?? "");
+  const tool = String(payload?.tool_name ?? payload?.toolName ?? "");
+  return event === "PreToolUse"
+    && tool === "Bash"
     && classifyProofCommand(hookCommand(payload)).static_verification;
 }
 
@@ -337,6 +340,14 @@ export function handleProofPolicyHook(payload, options = {}) {
     } else if (requireReflowArtifact && reconciled.revision > 0 && isPreStaticProof(payload)) {
       const validation = validateReflowClosureArtifact(
         readReflowArtifact(payload, options),
+        "inventory",
+      );
+      gated = applyProofPolicyEvent(gated, validation.pass
+        ? { type: "reflow-inventory-lock", ...validation }
+        : { type: "reflow-inventory-reject", reason: validation.reason });
+    } else if (requireReflowArtifact && reconciled.revision > 0 && isStop(payload)) {
+      const validation = validateReflowClosureArtifact(
+        readReflowArtifact(payload, options),
         "closure",
       );
       gated = applyProofPolicyEvent(gated, validation.pass
@@ -348,7 +359,9 @@ export function handleProofPolicyHook(payload, options = {}) {
       return {
         output: payload?.hook_event_name === "PreToolUse"
           ? proofPolicyHookDecision(gated)
-          : null,
+          : isStop(payload)
+            ? stopDeny(gated.decisions.at(-1)?.reason ?? "reflow-closure-required", payload)
+            : null,
         status: loaded.status,
         state: gated,
       };

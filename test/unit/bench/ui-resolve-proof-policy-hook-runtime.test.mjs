@@ -271,7 +271,7 @@ describe("proof policy executable hook", () => {
       .toBe("missing");
   });
 
-  it("requires an immutable reflow artifact before product editing and a closed manifest before static proof", () => {
+  it("requires an immutable inventory before editing and validates measured closure at delivery", () => {
     const stateRoot = join(root, "state");
     const options = {
       root: stateRoot,
@@ -293,22 +293,31 @@ describe("proof policy executable hook", () => {
       reflow_contract: { required: true, carrier_count: 3, row_count: 4, closure: "open" },
     });
 
-    const incomplete = handleProofPolicyHook(pre("npm test"), { ...options, now: 130 });
-    expect(incomplete.output?.hookSpecificOutput.permissionDecisionReason)
-      .toContain("reflow-closure-required");
+    expect(handleProofPolicyHook(pre("npm test"), { ...options, now: 130 }).output).toBeNull();
+    handleProofPolicyHook(post("npm test"), { ...options, now: 140 });
+    handleProofPolicyHook(pre("browser-harness capture_screenshot"), { ...options, now: 150 });
+    const observed = handleProofPolicyHook(
+      post("browser-harness capture_screenshot"),
+      { ...options, now: 160 },
+    );
+    expect(observed.state).toMatchObject({ delivery: "blocked", browser_proof: "closed" });
+
+    const closurePatch = {
+      ...preArtifactEdit,
+      tool_input: {
+        command: "*** Begin Patch\n*** Update File: .omd/reflow-closure.json\n+  closure_manifest: static verification closed\n*** End Patch",
+      },
+    };
+    expect(handleProofPolicyHook(closurePatch, { ...options, now: 170 }).output).toBeNull();
+    expect(handleProofPolicyHook(stop(), { ...options, now: 180 }).output?.decision).toBe("block");
 
     writeReflowArtifact(root, { closed: true });
-    expect(handleProofPolicyHook(pre("npm test"), { ...options, now: 140 }).output).toBeNull();
-    handleProofPolicyHook(post("npm test"), { ...options, now: 150 });
-    handleProofPolicyHook(pre("browser-harness capture_screenshot"), { ...options, now: 160 });
-    const complete = handleProofPolicyHook(
-      post("browser-harness capture_screenshot"),
-      { ...options, now: 170 },
-    );
+    const complete = handleProofPolicyHook(stop(), { ...options, now: 190 });
     expect(complete.state).toMatchObject({
       delivery: "ready",
       reflow_contract: { closure: "closed" },
     });
+    expect(complete.output).toBeNull();
   });
 
   it("blocks an untracked local executor from bypassing the artifact and product-edit gates", () => {
@@ -334,8 +343,9 @@ describe("proof policy executable hook", () => {
     handleProofPolicyHook(preEdit, { ...options, now: 100 });
     handleProofPolicyHook(edit, { ...options, now: 110 });
     writeReflowArtifact(root, { closed: true, carrierIds: ["changed"] });
-    const result = handleProofPolicyHook(pre("npm test"), { ...options, now: 120 });
-    expect(result.output?.hookSpecificOutput.permissionDecisionReason)
-      .toContain("reflow-inventory-changed");
+    const result = handleProofPolicyHook(stop(), { ...options, now: 120 });
+    expect(result.output?.hookSpecificOutput?.permissionDecisionReason)
+      .toBeUndefined();
+    expect(result.output?.reason).toContain("reflow-inventory-changed");
   });
 });

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.319 proof-order repair
+- u19317 첫 Luna cell은 900,026ms timeout·usage 없음으로 infrastructure-invalid 동결했다.
+- artifact patch 오인과 browser 전 measured-closure 요구의 deadlock을 해소했다.
+- 새 순서는 inventory→edit→static→browser→artifact→Stop이며 focused 37/37이다.
+- 다음은 exact pin, provider-free full-sequence simulation, fresh replacement다.
+
 ## 2026-08-03 (Codex) · 1.9.318 clean-baseline matrix prepared
 - u19317 6개 cell의 shared equality와 exact skill delta를 확인했다.
 - baseline commit/detached/clean, host ready, source publishable가 모두 6/6이다.
