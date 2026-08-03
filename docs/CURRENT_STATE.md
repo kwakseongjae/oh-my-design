@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.404 sterile-tray transfer fresh task lock
+- 갱신: 2026-08-03 · 1.9.405 sterile-tray completion-loop preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.405는 exact control `3a414a0a…` vs browser-attempt completion candidate `f55815d…`를 sterile-tray holdout에 Luna/high 2×3으로 preregister했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
+- Tokens-to-Target attempt 17, prior minimum 27,282,656 tokens + unavailable 5, provider 0이다.
+- 다음은 `/private/tmp/u19405-vendors` exact detached vendors와 `/private/tmp/u19405` 6 clean cells를 prepare하고 equality를 증명하는 것이다.
 
 - 1.9.404는 fresh `sterile-tray-transfer-review-v0.1`을 provider 전에 lock했다.
 - 6 trays/8 chemical indicators/4 cycle windows와 tray register·sterilizer cycle strip·transfer decision 세 carrier를 보존한다.
@@ -2048,9 +2053,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact control `3a414a0a…` vs candidate `f55815d…`의 Luna/high 2×3을 preregister한다.
-2. fresh clean vendors/cells를 준비하고 equality 6/6을 증명한다.
-3. 동일한 one-cell/no-retry/120s pacing/early-stop 규칙으로 실행한다.
+1. `/private/tmp/u19405-vendors`에 exact control/candidate detached sources를 만든다.
+2. `/private/tmp/u19405`에 6 clean/detached cells를 prepare하고 equality 6/6을 증명한다.
+3. exact browser/auth preflight 뒤 r1 control 한 셀만 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

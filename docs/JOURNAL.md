@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.405 sterile-tray completion-loop preregistration
+- exact control vs `f55815d…`를 Luna/high 2×3, 900s/no-retry/120s pacing으로 고정했다.
+- attempt 17, prior 27,282,656+ tokens/unavailable 5, provider 0. 다음은 clean preparation이다.
+
 ## 2026-08-03 (Codex) · 1.9.404 sterile-tray transfer fresh task lock
 - 새 sterile-processing task를 provider 전에 고정했고 baseline은 75/85 unresolved다.
 - 390/320/200% reflow·atomic identifier와 4.401 contrast만 red다. 다음은 exact 2×3 preregistration이다.
