@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.450 grid actual-zoom transfer preparation
+- 갱신: 2026-08-04 · 1.9.451 grid r1 control result
 
 ## 지금 (현재 위치)
+
+- 1.9.451 r1 control은 valid system proof failure: objective 85/85 UI-resolved, 374.437s, 724,940 tokens다.
+- desktop/390/320/actual 200%, accessibility, evidence는 전부 green이다.
+- browser 1이지만 recovery 1/static closure 4(duplicate 3)/post-ready 1이라 proof gate는 fail이다.
+- TTT 41,699,853+ / unavailable 6. 다음은 fixed pacing 뒤 r1 candidate 한 셀을 same Luna/high/no-retry로 실행한다.
 
 - 1.9.450은 `/private/tmp/u19449-vendors` exact detached control/candidate와 `/private/tmp/u19449` six untouched cells를 준비했다.
 - task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.
@@ -2255,9 +2260,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact named browser, isolated auth link, Codex CLI 0.144.1, Luna/high identity를 preflight한다.
-2. `luna-grid-r1-control` 한 셀을 900s/no-retry로 실행하고 objective/proof/token 결과를 보존한다.
-3. fixed 120s pacing 뒤 r1 candidate를 같은 조건으로 실행한다.
+1. fixed 120s pacing과 fresh exact browser/auth/CLI preflight를 확인한다.
+2. `luna-grid-r1-candidate` 한 셀을 900s/no-retry로 실행한다.
+3. objective 85/85 보존과 actual zoom·single-static·terminal proof transfer를 paired 판정한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.451 grid r1 control
+- objective 85/85지만 static 4/recovery 1/post-ready 1로 proof fail; 374.437s, 724,940 tokens다.
+- TTT 41,699,853+. 다음은 fixed pacing 뒤 r1 candidate no-retry다.
+
 ## 2026-08-04 (Codex) · 1.9.450 grid actual-zoom transfer preparation
 - six cells equality 6/6, exact detached sources, install hashes, actual-zoom condition을 검증했다.
 - provider 0. 다음은 exact browser/auth/CLI preflight 뒤 r1 control이다.
