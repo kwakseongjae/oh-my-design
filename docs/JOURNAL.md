@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.406 sterile-tray completion-loop preparation
+- exact detached vendors 2개와 clean/detached cells 6개를 만들고 shared input/execution equality 6/6을 확인했다.
+- control `2d577464…` vs candidate `729de4d2…`, provider 0. 다음은 exact browser preflight와 r1 control이다.
+
 ## 2026-08-03 (Codex) · 1.9.405 sterile-tray completion-loop preregistration
 - exact control vs `f55815d…`를 Luna/high 2×3, 900s/no-retry/120s pacing으로 고정했다.
 - attempt 17, prior 27,282,656+ tokens/unavailable 5, provider 0. 다음은 clean preparation이다.

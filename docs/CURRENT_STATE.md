@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.405 sterile-tray completion-loop preregistration
+- 갱신: 2026-08-03 · 1.9.406 sterile-tray completion-loop preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.406은 `/private/tmp/u19405-vendors`의 exact detached control/candidate와 `/private/tmp/u19405` 6개 clean/detached cell을 준비했다.
+- task·product·runtime·model·effort·timeout·host policy equality는 6/6이고 유일한 arm delta는 설치된 skill source다.
+- control skill은 `2d577464…`, candidate skill은 `729de4d2…`; provider 호출은 아직 0이다.
+- 다음은 exact named browser `bench19366` preflight 뒤 `luna-sterile-r1-control` 한 셀만 실행하는 것이다.
 
 - 1.9.405는 exact control `3a414a0a…` vs browser-attempt completion candidate `f55815d…`를 sterile-tray holdout에 Luna/high 2×3으로 preregister했다.
 - 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
@@ -2053,9 +2058,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `/private/tmp/u19405-vendors`에 exact control/candidate detached sources를 만든다.
-2. `/private/tmp/u19405`에 6 clean/detached cells를 prepare하고 equality 6/6을 증명한다.
-3. exact browser/auth preflight 뒤 r1 control 한 셀만 실행한다.
+1. exact named browser `bench19366`와 Luna auth preflight를 통과시킨다.
+2. `luna-sterile-r1-control` 한 셀만 no-retry로 실행한다.
+3. 결과를 checkpoint한 뒤 120초 pacing을 지켜 r1 candidate를 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
