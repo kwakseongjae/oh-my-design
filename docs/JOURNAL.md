@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.336 orbital contact task lock
+- fresh orbital task가 6 pass/8 bundle/4 antenna와 세 carrier를 잠근다.
+- baseline 75/85, 의도한 red는 reflow·atomic line·4.43 contrast다.
+- provider 0; 다음은 exact control/candidate Reliability@3 preregistration이다.
+
 ## 2026-08-03 (Codex) · 1.9.335 exact compact-artifact pin
 - c1de0e4e source/installed skill, helper, config, hook hashes를 pin했다.
 - browser preflight는 Chrome/daemon/active connection 1로 ready다.

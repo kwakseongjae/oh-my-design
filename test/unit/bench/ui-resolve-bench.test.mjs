@@ -53,6 +53,7 @@ const equipmentRackElevationTaskId = "equipment-rack-elevation-review-v0.1";
 const productionCueDependencyTaskId = "production-cue-dependency-review-v0.1";
 const digitalMasterLineageTaskId = "digital-master-lineage-review-v0.1";
 const aircraftLoadPlanTaskId = "aircraft-load-plan-review-v0.1";
+const orbitalContactPlanTaskId = "orbital-contact-plan-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1229,6 +1230,43 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter.match(/data-bench="container-id"/g)).toHaveLength(8);
     expect(starter).toContain("HOLD-AFT-21 + ULD-AKE-73018");
     expect(starter).toContain("6 bays · 8 containers · 4 station readings");
+  });
+
+  it("locks an unseen orbital contact-plan family before compact artifact validation", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/tasks",
+      orbitalContactPlanTaskId,
+      "task.json",
+    ), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: orbitalContactPlanTaskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      protected_hook_counts: {
+        "[data-bench='contact-window']": 6,
+        "[data-bench='command-bundle-id']": 8,
+        "[data-bench='antenna-id']": 4,
+        "[data-bench='link-window']": 4,
+      },
+      text_geometry_oracle: {
+        scope_selectors: [
+          "[data-bench-design-role='contact-plan']",
+          "[data-bench='antenna-strip']",
+          "[data-bench-decision-role='context']",
+        ],
+      },
+    });
+    const out = prepareVariant("raw-design-md", {
+      task: orbitalContactPlanTaskId,
+      outputName: "orbital-contact-plan-lock",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/data-bench="contact-window"/g)).toHaveLength(6);
+    expect(starter.match(/data-bench="command-bundle-id"/g)).toHaveLength(8);
+    expect(starter).toContain("PASS-GEO-204 + CMD-PKG-73018");
+    expect(starter).toContain("6 passes · 8 command bundles · 4 antenna windows");
+    expect(starter).not.toContain("HOLD-AFT-21");
   });
 
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {

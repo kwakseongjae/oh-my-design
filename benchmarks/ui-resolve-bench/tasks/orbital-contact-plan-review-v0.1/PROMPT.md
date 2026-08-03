@@ -1,0 +1,5 @@
+Improve the supplied orbital contact-plan review so mission planners can inspect pass assignments, antenna windows, and the scheduling handoff confidently on desktop and narrow screens.
+
+Preserve all six pass identifiers, all eight command-bundle identifiers and their exact pass assignments, all four supplied antenna windows, the three review views, the conflict-note toggle, the contact-review form, and all stated summary evidence. Do not invent orbit validation, command authorization, antenna booking, link readiness, mission approval, execution, safety, or spacecraft conclusions. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The contact plan, separate antenna availability strip, and separate scheduling handoff are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.
