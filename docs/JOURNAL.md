@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.476 shipped consumer-browser runner
+- model-authored browser code를 shipped runner로 교체하고 exact named attach/no-launch/3 conditions를 실제 replay로 입증했다.
+- compile/lint/focused 73/73, provider 0. 다음은 exact pin과 unseen task다.
+
 ## 2026-08-04 (Codex) · 1.9.475 attribute-aware exact pin
 - 1.9.474를 exact commit/tree/file hashes와 새 immutable competitor id로 고정했다.
 - provider 0/promotion false. 다음은 shipped consumer-browser runner다.

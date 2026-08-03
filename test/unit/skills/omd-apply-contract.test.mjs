@@ -95,6 +95,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("reflow_work_packet:");
     expect(skill).toContain('schema_version: "0.3"');
     expect(skill).toContain("browser-harness named consumer CDP attachment");
+    expect(skill).toContain("scripts/reflow-browser.py");
+    expect(skill).toContain("OMD_REFLOW_ARTIFACT=.omd/reflow-closure.json");
     expect(skill).toContain("required_fit_reserve_css_px: 8");
     expect(skill).toContain("typography_contract:");
     expect(skill).toContain('measurement_conditions:');
@@ -123,6 +125,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("quality_pass: true");
     expect(skill).toContain("expanded instance counts");
     expect(skill).toContain("같은 selector·역할·longest value를 공유하는 반복 행");
+    expect(skill).toContain("row selector 자체의 rendered text/value가 `longest_value`와 정확히 대응");
     expect(skill).toContain("helper source나 hash 알고리즘을 읽지 않는다");
     expect(skill).toContain("role: target|identifier|evidence|state|control-label");
     expect(skill).toContain("decision: full-row|stack|relocate|comparison-scroll|keep|unresolved");
@@ -179,7 +182,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("helper가 red면 exactly-once static budget이 소비된다");
     expect(skill).toContain("helper를 고쳐서 다시 실행하지 않고");
     expect(skill).toContain("`--doctor`, `--help`, executable/process/port discovery, 직접 Chrome launch");
-    expect(skill).toContain("준비된 mechanism은 exact named consumer connection을 쓰는 `browser-harness <<'PY' … PY`");
+    expect(skill).toContain("준비된 mechanism은 shipped runner를 exact named consumer connection에서 실행하는 단일 command");
+    expect(skill).toContain("browser-harness < <current-skill-dir>/scripts/reflow-browser.py");
     expect(skill).toContain("`p.chromium.launch()`");
     expect(skill).toContain("document/body `scrollWidth`와 `clientWidth`");
     expect(skill).toContain("`browser-harness --help`, `browser-harness skill`, `command -v`");
@@ -188,7 +192,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("두 번째 shell command는 duplicate static closure");
     expect(skill).toContain("static_closure.state: passed");
     expect(skill).toContain("`OMD_DELIVERY_READY` 또는 `OMD_DELIVERY_UNRESOLVED`");
-    expect(skill).toContain("browser command가 반환된 뒤 `rg`/`sed`/`cat`/helper를 실행하지 않는다");
+    expect(skill).toContain("command 반환 뒤 artifact `rg`/`sed`/`cat`을 실행하지 않는다");
     expect(skill).toContain("`sed`/`rg`/`awk`/`wc`/diff도 제품 diff 뒤 실행하면 static closure");
     expect(skill).toContain("이후 수정으로 revision을 올려도 task-level proof compliance는 복구되지 않는다");
     expect(skill).toContain("제품 파일이 바뀌지 않았다면 어느 proof state도 reopen하지 않는다");

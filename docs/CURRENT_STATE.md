@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.475 attribute-aware exact pin
+- 갱신: 2026-08-04 · 1.9.476 shipped consumer-browser runner
 
 ## 지금 (현재 위치)
+
+- 1.9.476은 `reflow-browser.py`를 apply skill과 세 채널에 배포해 model-authored browser program을 제거했다.
+- runner는 exact `BU_NAME`/`BU_CDP_URL` attach, no-launch, 390/320/actual200, character range, locked type, carrier-relative 8px reserve, cardinality/binding/document overflow를 한 command에서 측정·finalize한다.
+- frozen genomic candidate 사본에서 `bench19366` existing attach/launch false/세 조건/overflow0를 입증했고, 실제 summary wrap과 잘못 등록된 broad container·empty input·reserve 부족을 정직하게 unresolved 처리했다.
+- Python compile, lint, focused skill/helper/install 73/73 green, provider 0/promotion false다. 다음은 exact runner pin과 genuinely unseen task lock이다.
 
 - 1.9.475는 1.9.474 repair를 exact `e848d129…`, skill tree `d4ee144a…`와 helper/evaluator/test hash로 pin했다.
 - 새 competitor는 `omd-attribute-aware-consumer-fit-candidate`, vendor dir `omd-1.9.474`이며 provider 0/promotion false다.

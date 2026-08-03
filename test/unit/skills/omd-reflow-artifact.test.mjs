@@ -12,6 +12,8 @@ import {
   lockArtifact,
 } from "../../../skills/omd-apply/scripts/reflow-artifact.mjs";
 
+const browserRunnerPath = join(process.cwd(), "skills/omd-apply/scripts/reflow-browser.py");
+
 const temporaryRoots = [];
 
 afterEach(() => {
@@ -117,6 +119,17 @@ function resolvedRowFinal(row) {
 }
 
 describe("compact reflow artifact helper", () => {
+  it("ships a named-CDP browser runner without a browser launch fallback", () => {
+    const runner = readFileSync(browserRunnerPath, "utf8");
+    expect(runner).toContain('MECHANISM = "browser-harness named consumer CDP attachment"');
+    expect(runner).toContain('os.environ.get("BU_NAME")');
+    expect(runner).toContain('os.environ.get("BU_CDP_URL")');
+    expect(runner).toContain('"Emulation.setDeviceMetricsOverride"');
+    expect(runner).toContain('ORACLE = "character-range-line-tops"');
+    expect(runner).toContain('["node", str(helper_path), "finalize", str(artifact_path)]');
+    expect(runner).not.toMatch(/chromium\.launch|launch_persistent_context|connect_over_cdp/u);
+  });
+
   it("locks grouped inventory without model-authored hashes", () => {
     const result = lockArtifact(draft());
     expect(result.inventory).toMatchObject({

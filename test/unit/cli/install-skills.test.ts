@@ -277,7 +277,9 @@ describe('install-skills', () => {
       join(root, '.opencode', 'skills'),
     ]) {
       const helper = join(channelRoot, 'omd-apply', 'scripts', 'reflow-artifact.mjs');
+      const browserRunner = join(channelRoot, 'omd-apply', 'scripts', 'reflow-browser.py');
       expect(existsSync(helper), helper).toBe(true);
+      expect(existsSync(browserRunner), browserRunner).toBe(true);
       const usage = spawnSync(process.execPath, [helper], { encoding: 'utf8' });
       expect(usage.status).toBe(2);
       expect(usage.stderr).toContain('reflow-artifact.mjs <lock|static-close|finalize|finalize-unresolved>');
