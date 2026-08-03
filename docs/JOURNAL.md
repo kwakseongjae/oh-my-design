@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.472 genomic r1 control
+- valid 81/85, 349.379s/772,692 tokens; 320/actual summary wrap와 independent Chromium launch proof fail이다.
+- TTT 47,094,892+. 다음은 fixed pacing 뒤 r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.471 genomic consumer-browser preparation
 - six untouched cells/equality, detached source hashes, bench19366/CLI/auth preflight를 검증했다.
 - provider 0. 다음은 r1 control one-cell no-retry다.

@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.471 genomic consumer-browser preparation
+- 갱신: 2026-08-04 · 1.9.472 genomic r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.472 r1 control은 valid 81/85, 349.379s, 772,692 tokens다.
+- desktop/390, contrast, behavior, document overflow0은 green이나 evidence summary가 320/actual200에서 2줄이라 UI unresolved다.
+- static1/browser1/duplicate0/post-ready0이지만 independent Playwright Chromium launch가 recovery1로 검출돼 proof fail이다.
+- TTT 47,094,892+ / unavailable 6. 다음은 fixed pacing 뒤 r1 candidate를 same Luna/high/no-retry로 실행한다.
 
 - 1.9.471은 `/private/tmp/u19470-vendors` exact detached control/candidate와 `/private/tmp/u19470` six untouched cells를 준비했다.
 - task/core prompt/prompt/product/runtime/model/effort/timeout equality 6/6, sources detached+clean, installed skill/helper hashes를 고정했다.
