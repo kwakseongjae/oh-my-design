@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.399 field-sample runtime closure preparation
+- 갱신: 2026-08-03 · 1.9.400 field-sample r1 control checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.400 r1 control은 valid 81/85 unresolved, 655,972ms, 1,504,825 tokens다.
+- 대비와 page overflow는 닫았지만 320/200% short atomic line budget이 남았다. proof/host gate는 pass하고 runtime closure는 정직하게 unresolved/quality_pass false다.
+- retry 0, Tokens-to-Target minimum은 26,134,765 + usage unavailable 5다.
+- 다음은 fixed pacing + exact browser/auth preflight 뒤 `luna-field-r1-candidate` 한 셀이다.
 
 - 1.9.399는 `/private/tmp/u19398-vendors` exact detached sources와 `/private/tmp/u19398` 6 committed/detached/clean cells를 준비했다.
 - task/core prompt/product/runtime/model/effort/timeout/host/proof/browser pin equality가 6/6이다.
@@ -2025,9 +2030,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact `bench19366` browser와 shared named socket, isolated runtime/auth 상태를 preflight한다.
-2. `luna-field-r1-control` 한 셀만 `--max-new-cells 1`, no retry로 실행한다.
-3. evaluate/export/checkpoint와 host/proof admission을 검증한 뒤 paired candidate로 진행한다.
+1. 120초 fixed inter-cell pacing과 exact `bench19366` browser/auth preflight를 만족한다.
+2. `luna-field-r1-candidate` 한 셀만 canonical runner로 실행한다.
+3. paired quality/proof/efficiency를 판정하고 Reliability@3 도달 가능성을 계산한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

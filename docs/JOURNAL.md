@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.400 field-sample r1 control checkpoint
+- control은 81/85 unresolved, 655,972ms, 1,504,825 tokens; 320/200% atomic line만 red다.
+- runtime은 unresolved/quality false를 정직하게 보존했다. 다음은 paced r1 candidate 한 셀이다.
+
 ## 2026-08-03 (Codex) · 1.9.399 field-sample runtime closure preparation
 - exact detached vendors와 6 clean cells, shared equality 6/6을 준비했다.
 - sole delta는 skill hash `2d577464…` vs `9e68583f…`, provider 0. 다음은 r1 control 한 셀이다.
