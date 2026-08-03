@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.394 rail r1 rejection
+- candidate는 81/85; overflow/contrast는 닫았지만 decision evidence wrap과 delivery block이 남았다.
+- Reliability@3 최대 2/3이라 남은 4셀 provider 0으로 중단. 다음은 runtime conjunctive closure 수리다.
+
 ## 2026-08-03 (Codex) · 1.9.393 rail r1 control
 - control은 valid timeout, 75/85 unresolved, usage unavailable, browser 0·delivery incomplete다.
 - retry 없이 보존한다. 다음은 paired repaired candidate 한 셀이다.

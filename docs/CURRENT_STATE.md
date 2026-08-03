@@ -4,9 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.393 rail r1 control timeout
+- 갱신: 2026-08-03 · 1.9.394 rail r1 rejection
 
 ## 지금 (현재 위치)
+
+- 1.9.394 r1 candidate는 valid 81/85 unresolved, 336,121ms, 760,540 tokens이다.
+- overflow·identifier fragmentation·contrast는 닫았지만 320/200% decision evidence 한 줄이 wrap되어 responsive fail; host delivery도 blocked다.
+- candidate Reliability@3는 0/1이며 남은 두 trial을 모두 통과해도 2/3이라 수학적으로 불가능하다. u19391/남은 4셀을 frozen, provider 0으로 early-stop한다.
+- 다음은 provider-free로 registered measured row가 하나라도 unresolved면 finalize/delivery를 막는 runtime conjunctive closure를 수리하고 exact pin/fresh unseen replacement를 준비하는 것이다.
 
 - 1.9.393 first rail control은 900,014ms valid timeout: 75/85, `ui_resolved=false`, usage unavailable이다.
 - 한 번 product edit은 했지만 browser attempt 0·delivery incomplete이며, admission은 `valid-system-failure / preregistered-valid-timeout`이다.
