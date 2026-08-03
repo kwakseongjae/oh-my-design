@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-03 (Codex) · 1.9.372 registered-browser bootstrap boundary repair
+- CDP URL은 controller에만 남기고 scored sandbox에는 BU_NAME + harness socket만 전달한다.
+- browser pass 전 auth materialization을 금지했다. focused 72/72, provider 0.
+- u19370 frozen; 다음은 exact pin이다.
+
 ## 2026-08-03 (Codex) · 1.9.371 isolated cold-chain preparation
 - fresh u19370 exact vendors와 6 clean/detached cells, equality 6/6을 확인했다.
 - provider 0; 다음은 named isolated browser로 r1 control 한 셀이다.

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-03 · 1.9.371 isolated cold-chain preparation
+- 갱신: 2026-08-03 · 1.9.372 registered-browser bootstrap boundary repair
 
 ## 지금 (현재 위치)
+
+- 1.9.372는 CDP endpoint를 controller registration evidence로만 유지하고 scored sandbox에는 registered `BU_NAME`만 전달한다.
+- browser readiness가 통과한 뒤에만 cell-local auth를 materialize하도록 preflight 순서를 바꿨다.
+- focused 72/72, lint/build/diff green, provider 0이다. u19370은 frozen이며 다음은 exact pin이다.
 
 - 1.9.371은 fresh u19370 exact detached vendors와 6 committed/detached/clean cells를 준비했다.
 - shared inputs/execution pins equality 6/6, sole delta는 exact skill tree, provider 0이다.

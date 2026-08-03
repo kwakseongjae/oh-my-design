@@ -45,6 +45,11 @@ function outerSandboxArgs({ root, runtimeDir }) {
   ];
 }
 
+function registeredBrowserEnv(env) {
+  const { BU_CDP_URL: _url, BU_CDP_WS: _ws, ...registered } = env;
+  return registered;
+}
+
 export function preparedWorkspaceRequiresBrowserProof(workspace, { readJson } = {}) {
   const path = join(resolve(workspace), ".benchmark", "matrix-cell.json");
   if (!existsSync(path)) return false;
@@ -74,6 +79,7 @@ export function codexBrowserSandboxSpec({
       CODEX_HOME: codexHome,
       BH_RUNTIME_DIR: runtimeDir,
       BH_TMP_DIR: tempDir,
+      ...(env.BU_NAME ? { BU_NAME: env.BU_NAME } : {}),
     },
     sandbox: "external-workspace-openai-browser",
     runtime_dir: runtimeDir,
@@ -99,7 +105,7 @@ export function codexBrowserDoctorSpec({
       "--doctor",
     ],
     env: {
-      ...env,
+      ...registeredBrowserEnv(env),
       HOME: codexHome,
       CODEX_HOME: codexHome,
       BH_RUNTIME_DIR: runtimeDir,
@@ -127,7 +133,7 @@ export function codexAuthDoctorSpec({
       "status",
     ],
     env: {
-      ...env,
+      ...registeredBrowserEnv(env),
       HOME: codexHome,
       CODEX_HOME: codexHome,
       BH_RUNTIME_DIR: runtimeDir,

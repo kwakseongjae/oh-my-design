@@ -50,6 +50,8 @@ describe("Codex browser proof sandbox contract", () => {
       env: {
         BH_RUNTIME_DIR: "/tmp/runtime",
         PATH: "/bin",
+        BU_NAME: "bench-test",
+        BU_CDP_URL: "http://127.0.0.1:9336",
       },
     });
     expect(spec.args).toEqual([
@@ -63,7 +65,9 @@ describe("Codex browser proof sandbox contract", () => {
     expect(spec.env).toMatchObject({
       BH_RUNTIME_DIR: "/tmp/runtime",
       BH_TMP_DIR: "/tmp/matrix/.benchmark/browser-harness",
+      BU_NAME: "bench-test",
     });
+    expect(spec.env).not.toHaveProperty("BU_CDP_URL");
   });
 
   it("checks isolated authentication through the identical permission path", () => {

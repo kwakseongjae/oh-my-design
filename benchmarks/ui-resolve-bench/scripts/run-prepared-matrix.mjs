@@ -69,7 +69,6 @@ export function preflightRuntimeEnvironment(
     const spec = codexBrowserDoctorSpec({ workspace: workspaceRoot, env: browserEnv });
     if (!browserProbe) {
       mkdirSync(spec.env.BH_TMP_DIR, { recursive: true });
-      prepareIsolatedCodexHome(workspaceRoot, browserEnv);
     }
     const probe = browserProbe
       ? browserProbe(spec)
@@ -85,7 +84,7 @@ export function preflightRuntimeEnvironment(
     const activeConnection = probe?.ready === true
       || /\[ok\s*\]\s+active browser connections\b/i.test(output);
     const isolatedName = String(spec.env.BU_NAME ?? "").trim();
-    const isolatedEndpoint = String(spec.env.BU_CDP_URL ?? spec.env.BU_CDP_WS ?? "").trim();
+    const isolatedEndpoint = String(browserEnv.BU_CDP_URL ?? browserEnv.BU_CDP_WS ?? "").trim();
     const namedConnection = isolatedName
       && new RegExp(`^\\s*${isolatedName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s+—\\s+active page:`, "mi").test(output);
     if (
@@ -109,6 +108,8 @@ export function preflightRuntimeEnvironment(
       sandbox: spec.sandbox,
       connection: isolatedName,
     });
+
+    if (!browserProbe) prepareIsolatedCodexHome(workspaceRoot, browserEnv);
 
     const authSpec = codexAuthDoctorSpec({ workspace: workspaceRoot, env: browserEnv });
     const authProbe = codexProbe
