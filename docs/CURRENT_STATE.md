@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `27c8bbd1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.439 parent one-line terminal browser closure repair
+- 갱신: 2026-08-04 · 1.9.440 parent one-line terminal browser exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.440은 1.9.439 repair를 exact commit `3c00a4c1…`, skill tree `37a1c6e5…`와 helper/test hash로 pin했다.
+- provider 0, promotion false다. 다음은 다른 facts/carriers/state/visual contract의 fresh compound-parent task를 lock한다.
 
 - 1.9.439는 앞단의 contradictory separator-wrap 허용을 제거하고 compound parent 전체 one-line을 명시적 `line_contract`로 고정했다.
 - helper는 compound=`parent-one-line`, simple=`single-token`을 lock/hash하며 누락·불일치를 거부한다.

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.440 parent one-line terminal browser exact pin
+- source `3c00a4c1…`, skill tree `37a1c6e5…`로 exact pin했다. provider 0/promotion false.
+- 다음은 fresh unseen compound-parent transfer task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.439 parent one-line terminal closure repair
 - compound parent `line_contract`와 one-command browser terminal closure를 deterministic하게 고정했다.
 - focused 72 green + lint/diff, provider 0. 다음은 exact pin과 fresh unseen task다.
