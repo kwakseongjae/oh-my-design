@@ -31,8 +31,33 @@ function hostState(browser_attempts, browser_proof) {
   return root;
 }
 
-function draft() {
+function measuredFitPlan(rows) {
   return {
+    state: "measured",
+    attempts: 1,
+    mechanism: "browser-harness named consumer CDP attachment",
+    connection: {
+      transport: "existing-cdp",
+      connection_name: "bench-test",
+      cdp_url: "http://127.0.0.1:9336",
+      attached_existing: true,
+      launched_browser: false,
+    },
+    oracle: "intrinsic-nowrap-text-width",
+    conditions: measuredConditions(),
+    rows: rows.map((row, rowIndex) => ({
+      id: row.id,
+      measurements: ["390", "320", "200pct"].map((id, conditionIndex) => ({
+        id,
+        intrinsic_text_width_css_px: 100 + rowIndex + conditionIndex,
+        required_carrier_inner_width_css_px: 116 + rowIndex + conditionIndex,
+      })),
+    })),
+  };
+}
+
+function draft() {
+  const artifact = {
     schema_version: "0.3",
     browser_connection_contract: {
       transport: "existing-cdp",
@@ -91,6 +116,8 @@ function draft() {
       no_text_hack: true,
     },
   };
+  artifact.pre_edit_fit_plan = measuredFitPlan(artifact.row_groups);
+  return artifact;
 }
 
 function staticClosed(artifact, source = '<div data-id="fixture">required-fact</div>') {
@@ -146,6 +173,10 @@ describe("compact reflow artifact helper", () => {
     expect(runner).not.toContain("if not connection_name or not cdp_url");
     expect(runner).toContain('"Emulation.setDeviceMetricsOverride"');
     expect(runner).toContain('ORACLE = "character-range-line-tops"');
+    expect(runner).toContain('FIT_PLAN_ORACLE = "intrinsic-nowrap-text-width"');
+    expect(runner).toContain('mode = os.environ.get("OMD_REFLOW_MODE", "final")');
+    expect(runner).toContain("browser_fit_plan_script");
+    expect(runner).toContain('"plan-close"');
     expect(runner).toContain('PRE_EDIT_SNAPSHOT_SOURCE = "deterministic-pre-edit-snapshot"');
     expect(runner).toContain("browser_typography_script");
     expect(runner).toContain("pre_edit_snapshot_sha256");
@@ -215,6 +246,38 @@ describe("compact reflow artifact helper", () => {
     expect(locked.inventory.sha256).toBe(inventoryDigest(locked));
   });
 
+  it("snapshots first, then locks a browser-measured pre-edit width plan", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-plan-cli-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const input = draft();
+    delete input.pre_edit_fit_plan;
+    writeFileSync(artifactPath, JSON.stringify(input));
+    writeFileSync(productPath, '<div data-id="fixture">required-fact</div>');
+
+    execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "snapshot",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    const pending = JSON.parse(readFileSync(artifactPath, "utf8"));
+    expect(pending.pre_edit_fit_plan).toEqual({ state: "pending" });
+    pending.pre_edit_fit_plan = draft().pre_edit_fit_plan;
+    writeFileSync(artifactPath, JSON.stringify(pending));
+    const stdout = execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "plan-close",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    const summary = JSON.parse(stdout);
+    expect(summary.static_edit_guardrails.pre_edit_fit_plan[0]).toMatchObject({
+      id: "identifier",
+      required_carrier_inner_width_css_px: { "390": 116, "320": 117, "200pct": 118 },
+    });
+    expect(JSON.parse(readFileSync(artifactPath, "utf8")).pre_edit_fit_plan.state).toBe("measured");
+  });
+
   it("rejects a 200pct condition that only widens the viewport without applying zoom", () => {
     const invalid = draft();
     invalid.measurement_conditions[2].zoom = 1;
@@ -249,6 +312,14 @@ describe("compact reflow artifact helper", () => {
     const loweredPlan = draft();
     loweredPlan.row_groups[0].planned_fit_reserve_css_px = 8;
     expect(() => lockArtifact(loweredPlan)).toThrow(/planned_fit_reserve_css_px must be 16/);
+
+    const missingMeasurement = draft();
+    delete missingMeasurement.pre_edit_fit_plan;
+    expect(() => lockArtifact(missingMeasurement)).toThrow(/pre_edit_fit_plan must be one measured/);
+
+    const invalidArithmetic = draft();
+    invalidArithmetic.pre_edit_fit_plan.rows[0].measurements[0].required_carrier_inner_width_css_px = 115;
+    expect(() => lockArtifact(invalidArithmetic)).toThrow(/must bind intrinsic width to the 16px planning margin/);
   });
 
   it("locks a declarative static closure manifest before product editing", () => {
@@ -549,6 +620,7 @@ describe("compact reflow artifact helper", () => {
     input.carriers = [{ id: "form", selector: '[data-bench="event-log-form"]', expected_count: 1, binds_row_groups: ["form-save"] }];
     input.acceptance_debt_ledger[0].selector = '[data-bench="event-log-form"] button';
     input.acceptance_debt_ledger[0].bound_row_group_ids = ["form-save"];
+    input.pre_edit_fit_plan = measuredFitPlan(input.row_groups);
 
     expect(() => lockArtifact(input)).toThrow(/selector is unresolved in the pre-edit snapshot.*class:event-log-form/);
     input.row_groups[0].selector = '[data-bench="event-log-form"] button';
@@ -556,7 +628,7 @@ describe("compact reflow artifact helper", () => {
   });
 
   it("requires resolved compound rows to prove passive text is not the scroll container", () => {
-    const locked = lockArtifact({
+    const input = {
       ...draft(),
       row_groups: [{
         ...draft().row_groups[0],
@@ -571,7 +643,9 @@ describe("compact reflow artifact helper", () => {
         expected_count: 1,
         binds_row_groups: ["identifier"],
       }],
-    });
+    };
+    input.pre_edit_fit_plan = measuredFitPlan(input.row_groups);
+    const locked = lockArtifact(input);
     locked.carriers[0].final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     locked.row_groups[0].final = {
       ...resolvedRowFinal(locked.row_groups[0]),

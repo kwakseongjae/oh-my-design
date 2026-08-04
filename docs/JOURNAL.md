@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.525 measured pre-edit fit plan
+- exact browser가 편집 전 intrinsic width+16px를 row/condition별로 잠근 뒤 첫 edit을 허용한다.
+- focused42+parity1+installer1+lint+live smoke green; full556/기존3 red, provider0. 다음은 exact pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.524 wafer transfer freeze
 - candidate objective85/85, 470.382s/1,757,491 tokens지만 reserve4.56/12.07로 debt2·proof red다.
 - proof max2/3+efficiency 초과라 4셀 frozen, TTT60,390,306+. 다음은 measured pre-edit fit plan이다.

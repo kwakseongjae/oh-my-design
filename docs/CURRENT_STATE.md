@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.524 wafer acceptance-debt transfer freeze
+- 갱신: 2026-08-04 · 1.9.525 measured pre-edit fit-plan repair
 
 ## 지금 (현재 위치)
+
+- 1.9.525는 선언형 16px margin을 exact named consumer의 편집 전 실측 폭 예산으로 교체했다.
+- `snapshot → OMD_REFLOW_MODE=plan → plan-close`가 모든 row/390/320/actual200의 intrinsic nowrap width+16px를 inventory digest에 잠근 뒤에만 product edit을 허용한다.
+- focused42/42+parity1/1+installer1/1+lint+live browser smoke green, full556 pass/1 skip/기존3 red, provider0다. 다음은 exact immutable pin 뒤 genuinely unseen task lock이다.
 
 - 1.9.524 r1 candidate는 objective 85/85지만 proof fail: 470.382s, 1,757,491 tokens, control 대비 wall1.1081×/token1.7587×다.
 - overflow/clipping/axe는 전 조건 green이고 contrast debt도 닫혔지만 metrology packet reserve가 320=4.5625px, actual200=12.0664px라 browser debt2가 unresolved다.
@@ -2596,9 +2600,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. pre-edit measured width budget과 16px plan margin을 artifact lock에 기계적으로 결박한다.
-2. focused/broad regression으로 기존 proof semantics를 보존한다.
-3. exact pin 뒤 fresh unseen task에서 Reliability@3를 다시 사전등록한다.
+1. 1.9.525 repair를 exact immutable competitor로 pin한다.
+2. provider/candidate에 노출되지 않은 fresh unseen task를 lock한다.
+3. exact prior control vs measured-fit-plan candidate Reliability@3를 사전등록한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

@@ -16,7 +16,9 @@ from pathlib import Path
 
 MECHANISM = "browser-harness named consumer CDP attachment"
 ORACLE = "character-range-line-tops"
+FIT_PLAN_ORACLE = "intrinsic-nowrap-text-width"
 PRE_EDIT_SNAPSHOT_SOURCE = "deterministic-pre-edit-snapshot"
+PLANNED_FIT_RESERVE_CSS_PX = 16
 CONDITIONS = (
     {"id": "390", "viewport_width": 390, "zoom": 1},
     {"id": "320", "viewport_width": 320, "zoom": 1},
@@ -39,14 +41,21 @@ product_path = required_path("OMD_REFLOW_PRODUCT")
 helper_path = required_path("OMD_REFLOW_HELPER")
 connection_name = os.environ.get("BU_NAME")
 cdp_url = os.environ.get("BU_CDP_URL") or os.environ.get("BU_CDP_WS")
+mode = os.environ.get("OMD_REFLOW_MODE", "final")
 if not connection_name:
     raise RuntimeError("BU_NAME is required")
+if mode not in {"plan", "final"}:
+    raise RuntimeError("OMD_REFLOW_MODE must be plan or final")
 
 artifact = json.loads(artifact_path.read_text())
 if artifact.get("schema_version") != "0.3":
     raise RuntimeError("reflow artifact schema 0.3 is required")
-if artifact.get("static_closure", {}).get("state") != "passed":
+if mode == "plan" and artifact.get("pre_edit_fit_plan", {}).get("state") != "pending":
+    raise RuntimeError("plan mode requires a pending pre-edit fit plan")
+if mode == "final" and artifact.get("static_closure", {}).get("state") != "passed":
     raise RuntimeError("one passed deterministic static closure is required")
+if mode == "final" and artifact.get("pre_edit_fit_plan", {}).get("state") != "measured":
+    raise RuntimeError("final mode requires a measured pre-edit fit plan")
 
 snapshot_contract = artifact.get("pre_edit_product_snapshot")
 snapshot_rows = [
@@ -98,6 +107,56 @@ payload = {
         for carrier in artifact["carriers"]
     ],
 }
+
+
+def browser_fit_plan_script(measurement_payload, zoom):
+    encoded = json.dumps(measurement_payload)
+    return f"""
+(() => {{
+  const packet = {encoded};
+  const zoom = {json.dumps(zoom)};
+  const visible = (element) => {{
+    const style = getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+    return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.height > 0;
+  }};
+  const intrinsicWidth = (element, value) => {{
+    const style = getComputedStyle(element);
+    const probe = document.createElement('span');
+    probe.textContent = value;
+    Object.assign(probe.style, {{
+      position: 'fixed', left: '-100000px', top: '0', visibility: 'hidden',
+      display: 'inline-block', width: 'max-content', maxWidth: 'none', minWidth: '0',
+      margin: '0', padding: '0', border: '0', whiteSpace: 'nowrap',
+      fontFamily: style.fontFamily, fontSize: style.fontSize, fontStyle: style.fontStyle,
+      fontWeight: style.fontWeight, fontStretch: style.fontStretch,
+      fontVariant: style.fontVariant, fontKerning: style.fontKerning,
+      fontFeatureSettings: style.fontFeatureSettings, fontVariationSettings: style.fontVariationSettings,
+      letterSpacing: style.letterSpacing, textTransform: style.textTransform,
+    }});
+    document.body.appendChild(probe);
+    const width = probe.getBoundingClientRect().width / zoom;
+    probe.remove();
+    return width;
+  }};
+  const rows = Object.fromEntries(packet.rows.map((row) => {{
+    const elements = [...document.querySelectorAll(row.selector)].filter(visible);
+    const widths = elements.map((element) => intrinsicWidth(element, row.longest_value));
+    return [row.id, {{
+      count: elements.length,
+      intrinsic_text_width_css_px: widths.length ? Math.max(...widths) : null,
+    }}];
+  }}));
+  return JSON.stringify({{
+    observed_document_zoom: parseFloat(getComputedStyle(document.documentElement).zoom || '1'),
+    document_scroll_width: document.documentElement.scrollWidth,
+    document_client_width: document.documentElement.clientWidth,
+    body_scroll_width: document.body.scrollWidth,
+    body_client_width: document.body.clientWidth,
+    rows,
+  }});
+}})()
+"""
 
 
 def browser_typography_script(measurement_payload):
@@ -284,6 +343,97 @@ def browser_measurement_script(measurement_payload, zoom, baseline_typography):
   }});
 }})()
 """
+
+
+def failed_fit_plan(error):
+    artifact["pre_edit_fit_plan"] = {
+        "state": "infrastructure-error",
+        "attempts": 1,
+        "mechanism": MECHANISM,
+        "connection": {
+            "transport": "existing-cdp",
+            "connection_name": connection_name,
+            "cdp_url": cdp_url,
+            "attached_existing": False,
+            "launched_browser": False,
+        },
+        "oracle": FIT_PLAN_ORACLE,
+        "conditions": [],
+        "rows": [],
+        "error": str(error),
+    }
+    artifact_path.write_text(json.dumps(artifact, indent=2) + "\n")
+    return 1
+
+
+if mode == "plan":
+    plan_observations = []
+    try:
+        ensure_real_tab()
+        for condition in CONDITIONS:
+            cdp(
+                "Emulation.setDeviceMetricsOverride",
+                width=condition["viewport_width"],
+                height=1000,
+                deviceScaleFactor=1,
+                mobile=False,
+            )
+            goto_url(product_path.as_uri())
+            if not wait_for_load(timeout=15):
+                raise RuntimeError("pre-edit consumer route did not finish loading")
+            js(f"document.documentElement.style.zoom = {json.dumps(str(condition['zoom']))}")
+            observed = json.loads(js(browser_fit_plan_script(payload, condition["zoom"])))
+            for row in artifact["row_groups"]:
+                result = observed["rows"][row["id"]]
+                if result["count"] != row["expected_count"] or not result["intrinsic_text_width_css_px"]:
+                    raise RuntimeError(f"pre-edit fit-plan row {row['id']} did not resolve its locked instances")
+            plan_observations.append({**condition, **observed})
+    except Exception as error:
+        raise SystemExit(failed_fit_plan(error))
+
+    artifact["pre_edit_fit_plan"] = {
+        "state": "measured",
+        "attempts": 1,
+        "mechanism": MECHANISM,
+        "connection": {
+            "transport": "existing-cdp",
+            "connection_name": connection_name,
+            "cdp_url": cdp_url,
+            "attached_existing": True,
+            "launched_browser": False,
+        },
+        "oracle": FIT_PLAN_ORACLE,
+        "conditions": [
+            {key: observation[key] for key in (
+                "id", "viewport_width", "zoom", "observed_document_zoom",
+                "document_scroll_width", "document_client_width",
+                "body_scroll_width", "body_client_width",
+            )}
+            for observation in plan_observations
+        ],
+        "rows": [
+            {
+                "id": row["id"],
+                "measurements": [
+                    {
+                        "id": observation["id"],
+                        "intrinsic_text_width_css_px": round(
+                            observation["rows"][row["id"]]["intrinsic_text_width_css_px"], 4
+                        ),
+                        "required_carrier_inner_width_css_px": round(
+                            observation["rows"][row["id"]]["intrinsic_text_width_css_px"]
+                            + PLANNED_FIT_RESERVE_CSS_PX, 4
+                        ),
+                    }
+                    for observation in plan_observations
+                ],
+            }
+            for row in artifact["row_groups"]
+        ],
+    }
+    artifact_path.write_text(json.dumps(artifact, indent=2) + "\n")
+    result = subprocess.run(["node", str(helper_path), "plan-close", str(artifact_path)], check=False)
+    raise SystemExit(result.returncode)
 
 
 def unresolved_attempt():

@@ -282,7 +282,7 @@ describe('install-skills', () => {
       expect(existsSync(browserRunner), browserRunner).toBe(true);
       const usage = spawnSync(process.execPath, [helper], { encoding: 'utf8' });
       expect(usage.status).toBe(2);
-      expect(usage.stderr).toContain('reflow-artifact.mjs <lock|static-close|finalize|finalize-unresolved|finalize-measured-unresolved>');
+      expect(usage.stderr).toContain('reflow-artifact.mjs <snapshot|lock|plan-close|static-close|finalize|finalize-unresolved|finalize-measured-unresolved>');
     }
   });
 

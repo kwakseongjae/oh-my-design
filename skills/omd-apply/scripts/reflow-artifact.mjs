@@ -21,6 +21,7 @@ const NAMED_CONSUMER_MECHANISM = "browser-harness named consumer CDP attachment"
 const REQUIRED_FIT_RESERVE_CSS_PX = 8;
 const PLANNED_FIT_RESERVE_CSS_PX = 16;
 const ACCEPTANCE_DEBT_PROOF_MODES = new Set(["static-fail-close", "browser-row"]);
+const PRE_EDIT_FIT_PLAN_ORACLE = "intrinsic-nowrap-text-width";
 const REQUIRED_MEASUREMENT_CONDITIONS = [
   { id: "390", viewport_width: 390, zoom: 1 },
   { id: "320", viewport_width: 320, zoom: 1 },
@@ -46,7 +47,7 @@ function positiveInteger(value, label) {
   return value;
 }
 
-function validateMeasurementConditions(value, label, { observed = false } = {}) {
+function validateMeasurementConditions(value, label, { observed = false, allowOverflow = false } = {}) {
   if (!Array.isArray(value) || value.length !== REQUIRED_MEASUREMENT_CONDITIONS.length) {
     fail(`${label} must contain 390, 320, and actual 200pct conditions`);
   }
@@ -68,7 +69,7 @@ function validateMeasurementConditions(value, label, { observed = false } = {}) 
         if (!Number.isFinite(condition[scrollField]) || !Number.isFinite(condition[clientField])) {
           fail(`${label}[${index}] must record ${scrollField} and ${clientField}`);
         }
-        if (condition[scrollField] > condition[clientField]) {
+        if (!allowOverflow && condition[scrollField] > condition[clientField]) {
           fail(`${label}[${index}] has consumer document overflow`);
         }
       }
@@ -343,6 +344,51 @@ function validateAcceptanceDebtLedger(value, manifest, knownRows) {
   return value;
 }
 
+function validatePreEditFitPlan(value, rows, { allowPending = false } = {}) {
+  if (allowPending && value?.state === "pending") return { state: "pending" };
+  if (
+    value?.state !== "measured"
+    || value.attempts !== 1
+    || value.mechanism !== NAMED_CONSUMER_MECHANISM
+    || value.oracle !== PRE_EDIT_FIT_PLAN_ORACLE
+    || value.connection?.transport !== "existing-cdp"
+    || typeof value.connection?.connection_name !== "string"
+    || !value.connection.connection_name
+    || value.connection.attached_existing !== true
+    || value.connection.launched_browser !== false
+  ) fail("pre_edit_fit_plan must be one measured intrinsic-width attempt on the named existing consumer browser");
+  validateMeasurementConditions(value.conditions, "pre_edit_fit_plan.conditions", { observed: true, allowOverflow: true });
+  if (!Array.isArray(value.rows) || value.rows.length !== rows.length) {
+    fail("pre_edit_fit_plan.rows must cover every row group exactly once");
+  }
+  uniqueStrings(value.rows.map((row) => row?.id), "pre-edit fit-plan row ids");
+  const plans = new Map(value.rows.map((row) => [row.id, row]));
+  for (const row of rows) {
+    const plan = plans.get(row.id);
+    if (!plan) fail(`pre_edit_fit_plan is missing row group ${row.id}`);
+    if (!Array.isArray(plan.measurements) || plan.measurements.length !== REQUIRED_MEASUREMENT_CONDITIONS.length) {
+      fail(`pre_edit_fit_plan row ${row.id} must cover every condition`);
+    }
+    for (const [index, condition] of REQUIRED_MEASUREMENT_CONDITIONS.entries()) {
+      const measurement = plan.measurements[index];
+      if (measurement?.id !== condition.id) {
+        fail(`pre_edit_fit_plan row ${row.id} measurement ${index} must be ${condition.id}`);
+      }
+      if (
+        !Number.isFinite(measurement.intrinsic_text_width_css_px)
+        || measurement.intrinsic_text_width_css_px <= 0
+        || !Number.isFinite(measurement.required_carrier_inner_width_css_px)
+        || Math.abs(
+          measurement.required_carrier_inner_width_css_px
+          - measurement.intrinsic_text_width_css_px
+          - PLANNED_FIT_RESERVE_CSS_PX
+        ) >= 0.01
+      ) fail(`pre_edit_fit_plan row ${row.id} must bind intrinsic width to the ${PLANNED_FIT_RESERVE_CSS_PX}px planning margin`);
+    }
+  }
+  return value;
+}
+
 function validateFitStrategy(row) {
   if (!FIT_STRATEGIES.has(row.decision)) {
     fail(`row group ${row.id} decision must be ${[...FIT_STRATEGIES].join(", ")}`);
@@ -375,6 +421,7 @@ export function inventoryDigest(artifact) {
     static_closure_manifest: artifact.static_closure_manifest,
     pre_edit_product_snapshot_sha256: artifact.pre_edit_product_snapshot?.sha256 ?? null,
     acceptance_debt_ledger: artifact.acceptance_debt_ledger,
+    pre_edit_fit_plan: artifact.pre_edit_fit_plan,
     carrier_ids: artifact.inventory.carrier_ids,
     carrier_groups: artifact.carriers.map((carrier) => ({
       id: carrier.id,
@@ -399,7 +446,7 @@ export function inventoryDigest(artifact) {
   })).digest("hex");
 }
 
-export function lockArtifact(input) {
+export function lockArtifact(input, { allowPendingFitPlan = false } = {}) {
   const artifact = structuredClone(input);
   if (artifact.schema_version !== "0.3") fail("schema_version must be 0.3");
   if (!Array.isArray(artifact.carriers) || !artifact.carriers.length) fail("carriers are required");
@@ -450,6 +497,11 @@ export function lockArtifact(input) {
     artifact.acceptance_debt_ledger,
     artifact.static_closure_manifest,
     knownRows,
+  );
+  artifact.pre_edit_fit_plan = validatePreEditFitPlan(
+    artifact.pre_edit_fit_plan,
+    artifact.row_groups,
+    { allowPending: allowPendingFitPlan },
   );
   for (const row of artifact.row_groups.filter((entry) => entry.decision === "comparison-scroll")) {
     const carrier = artifact.carriers.filter((entry) => entry.selector === row.scroll_contract.container_selector);
@@ -833,13 +885,21 @@ function staticEditGuardrails(artifact) {
     })),
     planned_fit_reserve_css_px: PLANNED_FIT_RESERVE_CSS_PX,
     measured_fit_reserve_css_px: REQUIRED_FIT_RESERVE_CSS_PX,
+    pre_edit_fit_plan: artifact.pre_edit_fit_plan.state === "measured"
+      ? artifact.pre_edit_fit_plan.rows.map((row) => ({
+          id: row.id,
+          required_carrier_inner_width_css_px: Object.fromEntries(
+            row.measurements.map((measurement) => [measurement.id, measurement.required_carrier_inner_width_css_px]),
+          ),
+        }))
+      : { state: artifact.pre_edit_fit_plan.state },
   };
 }
 
 function main() {
   const [command, rawPath, rawProductPath] = process.argv.slice(2);
-  if (!command || !rawPath || !["lock", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
-    console.error("usage: reflow-artifact.mjs <lock|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-file]");
+  if (!command || !rawPath || !["snapshot", "lock", "plan-close", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
+    console.error("usage: reflow-artifact.mjs <snapshot|lock|plan-close|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-file]");
     process.exitCode = 2;
     return;
   }
@@ -852,7 +912,19 @@ function main() {
       ? defaultHostStateDir
       : null;
   let result;
-  if (command === "lock") {
+  if (command === "snapshot") {
+    const productPath = resolve(artifact.static_closure_manifest?.product_path ?? "");
+    if (!existsSync(productPath)) fail("snapshot requires the pre-edit product file from static_closure_manifest.product_path");
+    const source = readFileSync(productPath, "utf8");
+    result = lockArtifact({
+      ...artifact,
+      pre_edit_fit_plan: { state: "pending" },
+      pre_edit_product_snapshot: productSnapshot(
+        source,
+        artifact.static_closure_manifest.product_path,
+      ),
+    }, { allowPendingFitPlan: true });
+  } else if (command === "lock") {
     const productPath = resolve(artifact.static_closure_manifest?.product_path ?? "");
     if (!existsSync(productPath)) fail("lock requires the pre-edit product file from static_closure_manifest.product_path");
     const source = readFileSync(productPath, "utf8");
@@ -863,6 +935,8 @@ function main() {
         artifact.static_closure_manifest.product_path,
       ),
     });
+  } else if (command === "plan-close") {
+    result = lockArtifact(artifact);
   } else if (command === "static-close") {
     if (!rawProductPath) fail("static-close requires the locked product file");
     const productPath = resolve(rawProductPath);
@@ -891,7 +965,7 @@ function main() {
     quality_pass: result.closure_manifest?.quality_pass ?? null,
     unresolved_known_failures: result.known_failure_closure?.unresolved ?? null,
     static_closure: result.static_closure,
-    static_edit_guardrails: command === "lock" ? staticEditGuardrails(result) : undefined,
+    static_edit_guardrails: ["lock", "plan-close"].includes(command) ? staticEditGuardrails(result) : undefined,
   }));
   if (command === "static-close" && result.static_closure.state !== "passed") process.exitCode = 1;
   if (["finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) console.log(deliveryMarker(result));
