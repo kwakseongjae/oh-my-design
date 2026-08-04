@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.598",
+  "task_id": "backup-restore-point-handoff-v0.1",
+  "status": "FRESH_UNSEEN_TASK_BASELINED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "task_tree_sha256": "b49d193cf699de2be1cb1e615223f5c5c360653ad1ccfac6e30e81d3bfbe6d96",
+  "baseline": {
+    "variant_id": "raw-design-md",
+    "score_sha256": "2e5e0451f5a4f48e5e14e99b2f2813808b691b89324fc0d0e09b718898a94838",
+    "objective_score": 75,
+    "objective_max": 85,
+    "automated_gate_pass": false,
+    "critical_gates": {
+      "task_contract": true,
+      "state_journey": true,
+      "responsive": false,
+      "accessibility": false,
+      "design_grounding": true,
+      "evidence_honesty": true
+    },
+    "document_widths": {
+      "desktop": {"scroll": 1440, "client": 1440},
+      "mobile": {"scroll": 1115, "client": 390},
+      "narrow_320": {"scroll": 1115, "client": 320},
+      "actual_200pct": {"scroll": 2230, "client": 640}
+    },
+    "fragmented_target_tokens_each_narrow_condition": 2,
+    "wrapped_short_atomic_rows": {
+      "mobile": 2,
+      "narrow_320": 2,
+      "actual_200pct": 2
+    },
+    "axe_serious_or_critical_each_viewport": 1,
+    "contrast_ratio_observed": 2.73
+  },
+  "locked_facts": {
+    "restore_points": 4,
+    "manifests": 6,
+    "recovery_regions": 2,
+    "view_controls": 3,
+    "target_only_pre_edit_carrier": "[data-bench-decision-carrier='target']",
+    "protected_hook_mismatches": 0
+  },
+  "unknown_boundary": [
+    "checksum validity",
+    "malware clearance",
+    "restore completion",
+    "recovery-point compliance",
+    "key availability",
+    "region readiness",
+    "failover approval",
+    "production release"
+  ],
+  "freshness": {
+    "prompt_sha256": "0d424ee978e7877a9c5b28030f15cbeb00a054d7d69b7a3458dbd96f5943e9f8",
+    "task_contract_sha256": "7cb521e00dd06be5c828af9c6f552320d47f0f9ad9703319ab77462761fd9edd",
+    "starter_design_sha256": "eefcb2af12b13775eafecce96e7a79c1afab4ab2f93bfb657cc2784b98455371",
+    "starter_product_sha256": "38fb3e3ebb7c2f825621742692d4e33f2f31a4bf684db28253a2dc190d235797"
+  },
+  "next": "Commit and exact-pin the unseen task before any model or compared skill sees it."
+}

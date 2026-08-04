@@ -4189,6 +4189,29 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("records the fresh backup restore task before model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/backup-restore-task-baseline-1.9.598/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.598",
+      task_id: "backup-restore-point-handoff-v0.1",
+      status: "FRESH_UNSEEN_TASK_BASELINED",
+      provider_calls: 0,
+      model_exposures: 0,
+      task_tree_sha256: "b49d193cf699de2be1cb1e615223f5c5c360653ad1ccfac6e30e81d3bfbe6d96",
+      baseline: {
+        objective_score: 75,
+        objective_max: 85,
+        critical_gates: { task_contract: true, state_journey: true, responsive: false, accessibility: false, design_grounding: true, evidence_honesty: true },
+        document_widths: { mobile: { scroll: 1115, client: 390 }, actual_200pct: { scroll: 2230, client: 640 } },
+        contrast_ratio_observed: 2.73,
+      },
+      locked_facts: { restore_points: 4, manifests: 6, recovery_regions: 2, view_controls: 3, protected_hook_mismatches: 0 },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

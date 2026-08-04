@@ -4472,3 +4472,7 @@
 ## 2026-08-04 (Codex) · 1.9.422 rail-signal controller preregistration
 - exact skill arms를 Luna/high controller-observation 2×3, independent browser proof로 고정했다.
 - attempt 20, TTT 34,208,487+ / unavailable 6, provider 0. 다음은 fresh preparation이다.
+## 2026-08-05 (Codex) · 1.9.598 backup restore unseen baseline
+- model-unseen backup restore task를 provider 노출 전에 author/evaluate했다.
+- baseline75/85, narrow widths1115/1115/2230, fragments2, wraps2, contrast2.73이다.
+- task tree b49d193c/score2e5e0451, exposure0; 다음 exact source pin이다.

@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `5eaa26c9` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.597 decision-context candidate pin
+- 기준 커밋: `bcea030c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.598 backup restore unseen baseline
 
 ## 지금 (현재 위치)
+
+- 1.9.598은 model-unseen `backup-restore-point-handoff-v0.1`을 provider 노출 전에 생성·평가했다. task tree `b49d193c...`, score `2e5e0451...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red. widths1440/1115/1115/2230, target fragments2, short wraps2, contrast2.73이다.
+- 다음은 task source exact commit/tree와 baseline hash pin이다. 모델 실행은 그 뒤에만 허용한다.
 
 - 1.9.597은 repair commit `5eaa26c9739a9e697f4707b06c31a32773706c16`, source tree `0a5b004b...`, skill tree `ae1306fe...`를 exact pin했다.
 - 새 candidate는 `omd-decision-context-closure-candidate`, vendor `omd-1.9.596`, provider0/promotion false다.
@@ -2882,9 +2886,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. runtime browser/CLI/auth/evaluator preflight를 한다.
-2. preregistered `luna-pharma-r1-control`을 no-retry로 실행한다.
-3. 결과를 기록하고 fixed 120s pacing 뒤 r1 candidate로 간다.
+1. 1.9.598 task와 baseline을 commit하고 exact source/tree/hash를 pin한다.
+2. exact contained-budget control vs decision-context closure candidate의 Luna/high 2×3 replacement를 preregister한다.
+3. detached vendors와 six untouched cells를 준비·동등성 검증한 뒤 순차 no-retry 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
