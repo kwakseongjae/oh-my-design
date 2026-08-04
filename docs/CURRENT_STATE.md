@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `c45acda6` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.585 orbital r1 control
+- 기준 커밋: `9ba93751` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.586 orbital matrix freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.586 r1 candidate는 valid85/85, 652,673ms, 3,392,946 tokens였지만 proof red다. carrier-inner plan은 관찰됐으나 static closure가 pre-edit register 1038px > document390px를 거부해 browser0/open으로 끝났다.
+- candidate는 control83보다 UI +2지만 proof0/3이라 남은 candidate2로 3/3가 불가능하다. remaining4는 untouched freeze, causal transfer/efficiency claim은 금지한다.
+- 누적 TTT89,713,443+ / unavailable6. 다음은 raw live carrier inner width를 `min(live inner, document - horizontal chrome)`로 clamp하는 provider-free producer repair다.
 
 - 1.9.585 r1 control은 valid83/85, 408,701ms, 1,594,744 tokens다. narrow/actual200/contrast/a11y는 green이고 desktop action separation 하나만 red다.
 - proof는 edit1/static1/browser1/recovery0/duplicate0/closed로 green이다. 누적 TTT86,320,497+ / unavailable6.

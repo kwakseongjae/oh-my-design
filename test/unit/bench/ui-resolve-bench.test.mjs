@@ -4089,6 +4089,27 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes the orbital carrier-inner matrix after a UI-green but proof-red candidate", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/orbital-carrier-inner-fit-replacement-luna-1.9.583/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.586",
+      status: "FROZEN_PROMOTION_UNREACHABLE",
+      provider_calls: 2,
+      completed_cells: 2,
+      r1: {
+        control: { ui_resolved: false, proof_pass: true, score: 83, tokens: 1594744 },
+        candidate: { ui_resolved: true, proof_pass: false, score: 85, tokens: 3392946, carrier_inner_plan_observed: true },
+      },
+      promotion_reachability: { promotion_reachable: false, maximum_reachable_proof_compliant_trials: 2 },
+      root_cause: { class: "overflowing-pre-edit-carrier-width-not-clamped-to-contained-budget" },
+      tokens_to_target: { cumulative_observed_provider_tokens_minimum: 89713443, goal_status: "right-censored-open" },
+    });
+    expect(result.frozen_unstarted_cells).toHaveLength(4);
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
