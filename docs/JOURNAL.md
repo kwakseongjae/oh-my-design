@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.559 spent-fuel matrix preparation
+- exact detached control/candidate와 six untouched cells, equality6/6+target guardrail9/9를 확인했다.
+- provider0; 다음 runtime/browser/auth preflight 뒤 r1 control이다.
+
 ## 2026-08-04 (Codex) · 1.9.558 spent-fuel decision-target prereg
 - exact 1.9.548 control vs 1.9.555 candidate를 Luna/high 2×3, timeout900/pacing120/no-retry로 고정했다.
 - attempt40/TTT73,512,685+/provider0; 다음 detached vendors+six cells다.

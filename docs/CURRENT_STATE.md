@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7622360f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.558 spent-fuel decision-target inventory preregistration
+- 기준 커밋: `f7bc6099` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.559 spent-fuel decision-target matrix preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.559는 `/private/tmp/u19558-vendors` exact detached control/candidate와 `/private/tmp/u19558` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, detached+clean2, candidate target-inventory guardrail9/9와 identical runner를 확인했다. provider0다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
 
 - 1.9.558은 exact 1.9.548 control `84329948…` vs exact 1.9.555 candidate `6142925c…`를 fresh spent-fuel task에 Luna/high 2×3으로 사전등록했다.
 - 양 arm은 measured row+aggregate plan, fit feasibility, checklist, static1/browser1이 같고 candidate만 protected target snapshot completeness gate를 추가한다. timeout900/pacing120/no-retry/R@3다.

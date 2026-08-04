@@ -3304,6 +3304,45 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(new Set(matrix.cells.map((cell) => `${cell.model_id}/${cell.effort}`))).toEqual(new Set(["gpt-5.6-luna/high"]));
   });
 
+  it("prepares six untouched spent-fuel decision-target cells from exact detached sources", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/spent-fuel-decision-target-luna-1.9.558/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.559",
+      status: "SIX_CELLS_PREPARED",
+      provider_calls: 0,
+      equality: {
+        scheduled_cells: 6,
+        prepared_cells: 6,
+        core_prompt_equal: 6,
+        prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: { commit: "84329948762fc75b33de39e13e68535d89fd3447", detached: true, clean: true },
+        candidate: { commit: "6142925c153dbf9e8c17f7f456279c86c539c8e8", detached: true, clean: true },
+      },
+      candidate_guardrail_presence: {
+        snapshot_target_presence_witness: true,
+        exact_one_target_row: true,
+        target_hook_cardinality_match: true,
+        stable_target_selector_anchor: true,
+        distinct_target_carrier: true,
+        target_only_binding: true,
+        fit_strategy_feasibility_retained: true,
+        structured_first_edit_checklist_retained: true,
+        browser_runner_identical: true,
+      },
+    });
+  });
+
   it("preregisters exact measured pre-edit fit planning on the unseen observatory task", () => {
     const matrix = JSON.parse(readFileSync(join(
       repoRoot,
