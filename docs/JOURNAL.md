@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.527 observatory task lock
+- fresh 4 frame/6 packet/2 station task를 provider/candidate 전에 잠갔다.
+- baseline75/85, narrow overflow645/715/1430px·target 분절·contrast3.81, provider0다.
+
 ## 2026-08-04 (Codex) · 1.9.526 measured-fit-plan exact pin
 - 1.9.525를 exact commit/tree/hash와 `omd-measured-pre-edit-fit-plan-candidate`로 pin했다.
 - provider0/promotion false. 다음은 genuinely unseen task lock이다.

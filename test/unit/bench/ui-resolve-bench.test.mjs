@@ -2832,6 +2832,44 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
   });
 
+  it("locks an unseen observatory frame-calibration family before measured-fit-plan exposure", () => {
+    const taskId = "observatory-frame-calibration-review-v0.1";
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", taskId, "task.json"), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: taskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      protected_hook_counts: {
+        "[data-bench='observation-frame-case']": 4,
+        "[data-bench='calibration-packet-id']": 6,
+        "[data-bench='station-id']": 2,
+      },
+      journey_oracle: {
+        choice: { count: 3, initial: "observation-frame-manifest", selected: "telescope-stations" },
+        toggle: { selector: "[data-bench='observer-note-toggle']" },
+        form: { valid_value: "Aperture 42 frame archive review" },
+      },
+      text_geometry_oracle: {
+        viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+        max_short_text_lines: 1,
+      },
+      decision_hierarchy_oracle: {
+        viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+        minimum_action_gap_px: 8,
+      },
+    });
+    const out = prepareVariant("raw-design-md", { task: taskId, outputName: "observatory-frame-calibration" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="observation-frame-case"/g)).toHaveLength(4);
+    expect(starter.match(/data-bench="calibration-packet-id"/g)).toHaveLength(6);
+    expect(starter.match(/data-bench="station-id"/g)).toHaveLength(2);
+    expect(starter).toContain("OBSERVATION-FRAME-APERTURE-042 + CALIBRATION-PACKET-FLAT-903175");
+    expect(starter).toContain("4 observation frames · 6 calibration packets · 2 telescope stations");
+    expect(starter).not.toMatch(/calibration validated|artifact cause confirmed|packets complete|pointing approved|science released|reprocessing authorized|archive ready/i);
+    expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);

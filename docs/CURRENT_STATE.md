@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.526 measured pre-edit fit-plan exact pin
+- 갱신: 2026-08-04 · 1.9.527 observatory frame-calibration task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.527은 fresh `observatory-frame-calibration-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 observation frame/6 calibration packet/2 telescope station과 manifest·station strip·archive decision 세 carrier, exact behavior/fact boundary를 보존한다.
+- untouched baseline 75/85: 390/320/actual200 overflow645/715/1430px, target token3+3/4+3/4+3줄, state2줄, contrast3.81이다. provider/task exposure0. 다음은 exact control/candidate preregistration이다.
 
 - 1.9.526은 1.9.525 수리를 exact commit `b3b83bf7…`, skill tree `b56ca22e…`, skill/helper/runner/test hashes로 pin했다.
 - 새 competitor는 `omd-measured-pre-edit-fit-plan-candidate`, vendor dir `omd-1.9.525`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
