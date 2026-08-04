@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.528 observatory measured-fit-plan preregistration
+- 갱신: 2026-08-04 · 1.9.529 observatory six-cell preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.529는 `/private/tmp/u19528-vendors` exact detached control/candidate와 `/private/tmp/u19528` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, source detached+clean2, exact runner/helper hashes, candidate measured-plan guardrail7/7이다. provider0이다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
 
 - 1.9.528은 exact 1.9.518 control `8d647987…` vs exact 1.9.525 candidate `b3b83bf7…`를 fresh observatory task에 Luna/high 2×3으로 사전등록했다.
 - candidate는 snapshot→named plan→plan-close를 편집 전에 수행하고 intrinsic nowrap width+16px plan을 digest에 결박한다. 양 arm은 acceptance debt와 static1/final-browser1을 유지한다.

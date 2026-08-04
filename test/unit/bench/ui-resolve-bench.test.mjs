@@ -2913,6 +2913,42 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]);
   });
 
+  it("attests six equal observatory cells and two exact detached skill sources", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/observatory-measured-fit-plan-luna-1.9.528/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.529",
+      status: "SIX_CELLS_PREPARED",
+      provider_calls: 0,
+      equality: {
+        scheduled_cells: 6,
+        prepared_cells: 6,
+        core_prompt_equal: 6,
+        prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: { commit: "8d647987fbcacabcf406c6eb393d8d40330ced05", detached: true, clean: true },
+        candidate: { commit: "b3b83bf7cc3808c643beb34934ad1096ee334270", detached: true, clean: true },
+      },
+      candidate_guardrail_presence: {
+        skill_measured_fit_plan_rule: true,
+        helper_plan_close_command: true,
+        browser_named_plan_mode: true,
+        intrinsic_nowrap_width_oracle: true,
+        planned_fit_reserve_16: true,
+        measured_fit_reserve_8: true,
+      },
+    });
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);
