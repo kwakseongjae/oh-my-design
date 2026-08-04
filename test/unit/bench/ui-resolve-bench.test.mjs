@@ -3948,6 +3948,47 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("locks a fresh orbital sample-return task before model exposure", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/tasks/orbital-sample-return-custody-v0.1/task.json",
+    ), "utf8"));
+    const baseline = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/orbital-sample-task-baseline-1.9.581/SUMMARY.final.json",
+    ), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: "orbital-sample-return-custody-v0.1",
+      protected_hook_counts: {
+        "[data-bench='return-canister-case']": 4,
+        "[data-bench='custody-seal-id']": 6,
+        "[data-bench='quarantine-bay-id']": 2,
+        "[data-bench-decision-carrier='target']": 1,
+      },
+      text_geometry_oracle: {
+        scope_selectors: [
+          "[data-bench-design-role='canister-register']",
+          "[data-bench='quarantine-bay-strip']",
+          "[data-bench-decision-role='context']",
+        ],
+      },
+    });
+    expect(baseline).toMatchObject({
+      product_version: "1.9.581",
+      status: "FRESH_UNSEEN_TASK_BASELINED",
+      provider_calls: 0,
+      task_tree_sha256: "ae226298de7d182066e61dc9eef3a247ee66534fa6f1b25ba265a20305ebc975",
+      baseline: {
+        score_sha256: "bb82f178c52703b693ed4975c4c28509c9fe071f28dc672df0ef98c7f4530a44",
+        objective_score: 75,
+        objective_max: 85,
+        critical_gates: { task_contract: true, state_journey: true, responsive: false, accessibility: false, design_grounding: true, evidence_honesty: true },
+        document_widths: { mobile: { scroll: 1075, client: 390 }, narrow_320: { scroll: 1075, client: 320 }, actual_200pct: { scroll: 2150, client: 640 } },
+      },
+      locked_facts: { return_canisters: 4, custody_seals: 6, quarantine_bays: 2, protected_hook_mismatches: 0 },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

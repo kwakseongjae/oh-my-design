@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.581 orbital sample unseen task
+- model-unseen orbital custody task를 생성하고 raw baseline75/85로 잠갔다.
+- contract/state/design/evidence green, responsive/a11y red; 1075/1075/2150px overflow다.
+- 4 canister/6 seal/2 bay, target-only carrier, exposure0; 다음 exact task pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.580 carrier-inner source pin
 - exact commit `853db7bf…`, source tree `18b80a41…`, skill tree `8657f278…`로 수리를 고정했다.
 - competitor `omd-carrier-inner-fit-candidate`, provider0/promotion false다.
