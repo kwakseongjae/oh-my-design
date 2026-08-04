@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.543 offshore turbine task lock
+- fresh turbine/finding/engineering-desk task를 provider 노출0에서 잠갔다.
+- baseline75/85, narrow overflow685/755/1510px, contrast3.88; 다음 exact prereg다.
+
 ## 2026-08-04 (Codex) · 1.9.542 first-edit checklist exact pin
 - 1.9.541을 exact commit/tree/artifact hashes와 `omd-1.9.541` vendor id로 고정했다.
 - provider0/promotion false; 다음은 genuinely unseen task lock이다.

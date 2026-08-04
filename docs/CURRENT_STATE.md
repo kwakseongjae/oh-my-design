@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `28f96200` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.542 first-edit static checklist exact pin
+- 갱신: 2026-08-04 · 1.9.543 offshore turbine inspection task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.543은 fresh `offshore-turbine-inspection-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 turbine/6 finding/2 engineering desk와 register·desk strip·maintenance decision 세 carrier를 보존한다. untouched baseline75/85, narrow overflow685/755/1510px, target4/4·5/6·5/6줄, state2줄, contrast3.88이다.
+- task contract/state/design/evidence는 green, provider/task exposure0다. 다음은 exact control/candidate Reliability@3 preregistration이다.
 
 - 1.9.542는 1.9.541 수리를 exact commit `28f96200…`, skill tree `d80cfd62…`, skill/helper/runner/test/report 해시로 pin했다.
 - 새 competitor는 `omd-first-edit-static-checklist-candidate`, vendor dir `omd-1.9.541`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.

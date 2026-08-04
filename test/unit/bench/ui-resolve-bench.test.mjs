@@ -2976,6 +2976,78 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("locks an unseen offshore turbine inspection family before structured-checklist exposure", () => {
+    const taskId = "offshore-turbine-inspection-review-v0.1";
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", taskId, "task.json"), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: taskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      protected_hook_counts: {
+        "[data-bench='turbine-case']": 4,
+        "[data-bench='finding-id']": 6,
+        "[data-bench='engineering-desk-id']": 2,
+      },
+      journey_oracle: {
+        choice: { count: 3, initial: "turbine-register", selected: "engineering-desks" },
+        toggle: { selector: "[data-bench='reviewer-note-toggle']" },
+        form: { valid_value: "North array maintenance review" },
+      },
+      text_geometry_oracle: {
+        viewports: ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+        max_short_text_lines: 1,
+      },
+      decision_hierarchy_oracle: {
+        viewports: ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+        minimum_action_gap_px: 8,
+      },
+    });
+    const out = prepareVariant("raw-design-md", { task: taskId, outputName: "offshore-turbine-inspection" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/<[^>]+data-bench-decision-role="[^"]+"/g)).toHaveLength(5);
+    expect(starter.match(/data-bench="turbine-case"/g)).toHaveLength(4);
+    expect(starter.match(/data-bench="finding-id"/g)).toHaveLength(6);
+    expect(starter.match(/data-bench="engineering-desk-id"/g)).toHaveLength(2);
+    expect(starter).toContain("OFFSHORE-TURBINE-NORTH-ARRAY-B12-2026 + INSPECTION-FINDING-BLADE-LEADING-EDGE-739204");
+    expect(starter).toContain("4 turbines · 6 inspection findings · 2 engineering desks");
+    expect(starter).not.toMatch(/defect closed|root cause confirmed|blade repair complete|foundation cleared|return to service approved|work order authorized|maintenance ready/i);
+    expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
+    const lock = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/offshore-turbine-inspection-task-lock-1.9.543/SUMMARY.final.json",
+    ), "utf8"));
+    expect(lock).toMatchObject({
+      product_version: "1.9.543",
+      status: "TASK_LOCKED_BEFORE_PROVIDER",
+      provider_calls: 0,
+      candidate_task_exposure: 0,
+      promotion: false,
+      task: {
+        id: taskId,
+        registered_turbines: 4,
+        registered_inspection_findings: 6,
+        registered_engineering_desks: 2,
+      },
+      untouched_baseline: {
+        objective_score: 75,
+        objective_max: 85,
+        desktop_overflow_px: 0,
+        mobile_overflow_px: 685,
+        narrow_320_overflow_px: 755,
+        actual_200pct_overflow_px: 1510,
+        muted_contrast_ratio: 3.88,
+      },
+      contract_validation: {
+        task_contract: true,
+        state_journey: true,
+        design_grounding: true,
+        evidence_honesty: true,
+        responsive_intentionally_red: true,
+        accessibility_intentionally_red: true,
+      },
+    });
+  });
+
   it("preregisters exact measured pre-edit fit planning on the unseen observatory task", () => {
     const matrix = JSON.parse(readFileSync(join(
       repoRoot,
