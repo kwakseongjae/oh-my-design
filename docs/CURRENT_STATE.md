@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.536 pharmaceutical aggregate-carrier preregistration
+- 갱신: 2026-08-04 · 1.9.537 pharmaceutical aggregate-carrier preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.537은 `/private/tmp/u19536-vendors` exact detached control/candidate와 `/private/tmp/u19536` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, source detached+clean2, exact runner/helper hashes와 candidate aggregate guardrail9/9를 확인했다. provider0다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
 
 - 1.9.536은 exact 1.9.525 row-only control `b3b83bf7…` vs exact 1.9.533 aggregate candidate `0b93fa97…`를 fresh pharma task에 Luna/high 2×3으로 사전등록했다.
 - both arm snapshot→plan→single edit→static1→final browser, candidate exact-one aggregate carrier/max-content+16px, timeout900/pacing120/no-retry/Reliability@3를 고정했다.
@@ -2642,9 +2646,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact detached control/candidate vendors와 six untouched cells를 준비한다.
-2. equality/source-detached-clean/runner+contract hash를 preflight한다.
-3. runtime/browser/provider preflight 뒤 preregistered 첫 control cell로 간다.
+1. runtime browser/CLI/auth/evaluator preflight를 한다.
+2. preregistered `luna-pharma-r1-control`을 no-retry로 실행한다.
+3. 결과를 기록하고 fixed 120s pacing 뒤 r1 candidate로 간다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

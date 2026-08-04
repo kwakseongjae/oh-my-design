@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.537 pharma matrix preparation
+- exact detached 1.9.525/1.9.533 vendors와 six untouched cells를 준비했다.
+- equality6/6, detached+clean2, runner/helper hash와 aggregate guardrail9/9, provider0다.
+
 ## 2026-08-04 (Codex) · 1.9.536 pharma aggregate prereg
 - exact 1.9.525 control vs 1.9.533 candidate를 Luna/high 2×3, timeout900/pacing120/no-retry로 고정했다.
 - candidate exact-one aggregate carrier/max-content+16px, attempt37/TTT63,373,931+/provider0다.

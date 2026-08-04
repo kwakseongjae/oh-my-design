@@ -3173,6 +3173,43 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       .toEqual(new Set(["gpt-5.6-luna/high"]));
   });
 
+  it("prepares six untouched pharmaceutical aggregate-carrier cells from exact detached sources", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/pharmaceutical-aggregate-carrier-luna-1.9.536/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.537",
+      status: "SIX_CELLS_PREPARED",
+      provider_calls: 0,
+      output_root: "/private/tmp/u19536",
+      vendors_root: "/private/tmp/u19536-vendors",
+      equality: {
+        scheduled_cells: 6,
+        prepared_cells: 6,
+        core_prompt_equal: 6,
+        prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: { commit: "b3b83bf7cc3808c643beb34934ad1096ee334270", detached: true, clean: true },
+        candidate: { commit: "0b93fa971c5d4e086b2645f2de9dd09fe1b365fe", detached: true, clean: true },
+      },
+      candidate_guardrail_presence: {
+        skill_exact_one_aggregate_carrier_rule: true,
+        helper_exact_one_binding_gate: true,
+        browser_max_content_clone: true,
+        browser_aggregate_outer_width_fields: true,
+        requires_reflow_gate: true,
+      },
+    });
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);
