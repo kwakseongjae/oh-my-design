@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `c69e8a26` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.635 cold-chain unseen task baseline
+- 기준 커밋: `8c0c0451` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.636 cold-chain task exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.636은 task commit `8c0c0451...`, git task tree `47f3baec...`, portable tree `e3b30391...`, baseline score `82b26b6d...`를 exact pin했다.
+- model/control/candidate exposure0이며 이후 task mutation은 금지다. 다음은 exact historical control vs measured-plan-reconcile candidate Luna/high2×3 preregistration이다.
 
 - 1.9.635는 model-unseen `cold-chain-excursion-disposition-v0.1`을 provider 노출 전에 생성·평가했다. task tree `e3b30391...`, score `82b26b6d...`, exposure0이다.
 - raw baseline75/85: contract/state/design/evidence green, responsive/a11y red다. widths1440/1115/1115/2230, target fragments2, short wraps2/2/2, contrast2.79다.
@@ -3029,8 +3032,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. cold-chain task commit/tree/baseline hash를 model exposure 전에 별도 pin한다.
-2. historical control과 measured-plan-reconcile candidate의 isolated delta matrix를 provider0으로 사전등록한다.
+1. historical control과 measured-plan-reconcile candidate의 isolated delta matrix를 provider0으로 사전등록한다.
+2. executable order/equality/pacing/stop contract를 잠그고 exact detached cells를 준비한다.
 3. 이후 Luna/high no-retry transfer를 실행하되 frozen rail-signal matrix는 재개하지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")

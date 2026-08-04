@@ -5506,6 +5506,34 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(result.unknown_boundary).toHaveLength(8);
   });
 
+  it("pins the cold-chain task and baseline before model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/cold-chain-task-pin-1.9.636/TASK-PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.636",
+      status: "TASK_PINNED_BEFORE_MODEL_EXPOSURE",
+      provider_calls: 0,
+      model_exposures: 0,
+      task: {
+        id: "cold-chain-excursion-disposition-v0.1",
+        source_commit: "8c0c0451994037cd751eb67245d48e3a03429f3b",
+        source_tree: "7a0461161a3cee14b61384549693bbd5e7013c51",
+        git_task_tree: "47f3baec2ddc8bbe9b4cdf845c9d0c4e86a78170",
+        portable_task_tree_sha256: "e3b30391ed802cd61dc6780f53941cbe3b8b07d30f9f9cf4e9c007f868f75773",
+        baseline_summary_sha256: "8e7ba42645b324b55e0580d9c4c643986138543faa084ffb63e4253db63a83f2",
+        baseline_score_sha256: "82b26b6d5280cf1a134ea7f79bd0820f05f8b01bdf6a7477f0fd480634ec1728",
+      },
+      immutability: {
+        prompt_mutation_allowed: false,
+        task_contract_mutation_allowed: false,
+        starter_mutation_allowed: false,
+        baseline_mutation_allowed: false,
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

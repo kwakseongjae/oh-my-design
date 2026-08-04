@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.636 cold-chain task exact pin
+- task commit8c0c0451, git tree47f3baec, portable treee3b30391, baseline score82b26b6d를 잠갔다.
+- model/control/candidate exposure0이며 이후 task mutation을 금지했다.
+- 다음은 historical control vs reconcile candidate Luna/high preregistration이다.
+
 ## 2026-08-05 (Codex) · 1.9.635 cold-chain unseen baseline
 - model-unseen cold-chain disposition task를 provider 노출 전 생성·평가했다.
 - raw baseline75/85, responsive/a11y red, task tree e3b30391, score82b26b6d다.
