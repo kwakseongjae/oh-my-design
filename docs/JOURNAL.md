@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.509 rail r1 control
+- control 85/85+proof pass, 259.353s/580,237 tokens; exact attach와 세 조건 모두 green이다.
+- TTT55,689,402+; 다음은 fixed pacing 뒤 r1 candidate no-retry다.
+
 ## 2026-08-04 (Codex) · 1.9.508 rail matrix preparation
 - exact detached sources와 six untouched cells, equality6/6, product tree identical6을 준비했다.
 - shared runner6/6, candidate guardrail helper3/3, provider0이다. 다음은 r1 control no-retry다.
