@@ -4480,3 +4480,7 @@
 - task commit84b54559/tree75925301/portable b49d193c/score2e5e0451를 exact pin했다.
 - model/control/candidate exposure0이며 task mutation을 금지했다.
 - 다음 contained-budget control vs decision-context candidate Luna/high2×3 preregistration이다.
+## 2026-08-05 (Codex) · 1.9.600 backup decision-context preregistration
+- exact contained control5f78f1c5 vs decision candidate5eaa26c9를 Luna/high2×3으로 잠갔다.
+- isolated delta는 concise evidence inventory+target full-row/order/spatial gate다.
+- attempt45/TTT96173681+/unavailable6; 다음 executable matrix와 six untouched cells다.

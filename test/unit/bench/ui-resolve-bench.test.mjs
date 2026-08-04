@@ -4231,6 +4231,27 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("preregisters the backup decision-context replacement without provider exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/backup-decision-context-replacement-luna-1.9.600/PREREGISTRATION.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.600",
+      status: "PREREGISTERED_PROVIDER_ZERO",
+      provider_calls: 0,
+      tokens_to_target: { attempt_order: 45, prior_observed_provider_tokens_minimum: 96173681, prior_usage_unavailable_cells: 6 },
+      task: { id: "backup-restore-point-handoff-v0.1", source_commit: "84b54559fbbde15f5cf78004139113fcd292046c", model_exposures: 0 },
+      sources: {
+        control: { source_commit: "5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2", variant_id: "omd-contained-carrier-budget-candidate" },
+        candidate: { source_commit: "5eaa26c9739a9e697f4707b06c31a32773706c16", variant_id: "omd-decision-context-closure-candidate" },
+      },
+      isolated_delta_contract: { shared_contained_carrier_budget: true, candidate_adds_concise_evidence_inventory: true, candidate_adds_target_full_row_order_and_spatial_gate: true },
+      matrix: { model_id: "gpt-5.6-luna", effort: "high", trials_per_arm: 3, scheduled_cells: 6, timeout_seconds: 900, max_concurrency: 1, inter_cell_delay_seconds: 120, retry_policy: "none-primary" },
+      promotion_gates: { candidate_ui_resolved_trials_required: 3, candidate_proof_compliant_trials_required: 3, candidate_concise_evidence_row_observed_trials_required: 3, candidate_target_full_row_order_spatial_trials_required: 3 },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

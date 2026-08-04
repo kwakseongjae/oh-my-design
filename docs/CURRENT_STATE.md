@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `84b54559` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.599 backup restore task pin
+- 기준 커밋: `991f16ff` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.600 backup decision-context preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.600은 exact contained-budget control `5f78f1c5...` vs decision-context candidate `5eaa26c9...`를 pinned backup task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 shared contained budget 대비 concise evidence inventory+dedicated target full-row/order/spatial gate다. 900s/120s/no-retry/concurrency1, 3/3 UI+proof+hierarchy다.
+- attempt45, prior TTT96,173,681+ / unavailable6다. 다음은 executable matrix+detached vendors+six untouched cells materialization이다.
 
 - 1.9.599는 task commit `84b54559...`, task tree `75925301...`, portable tree `b49d193c...`, baseline score `2e5e0451...`를 exact pin했다.
 - model/control/candidate exposure0이며 이제 task mutation은 금지다. 다음은 exact contained-budget control vs decision-context closure candidate Luna/high2×3 preregistration이다.
@@ -2889,9 +2893,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact contained-budget control vs decision-context closure candidate의 Luna/high 2×3 replacement를 preregister한다.
-2. executable matrix를 lock하고 detached vendors와 six untouched cells를 준비·동등성 검증한다.
-3. runtime preflight 뒤 순차 no-retry 실행하고 3/3 UI+proof+hierarchy gate로 판정한다.
+1. executable matrix를 lock하고 exact detached vendors를 만든다.
+2. six untouched cells를 준비하고 core/prompt/starter/product/runtime/model/effort/timeout 동등성을 검증한다.
+3. runtime preflight 뒤 r1 control/candidate부터 순차 no-retry 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
