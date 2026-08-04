@@ -4252,6 +4252,32 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("locks a valid executable backup decision-context matrix", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/backup-decision-context-replacement-luna-1.9.600/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(() => validateRunMatrixPlan(matrix)).not.toThrow();
+    expect(matrix).toMatchObject({
+      schema_version: "0.3",
+      product_version: "1.9.601",
+      status: "locked-awaiting-fresh-preparation",
+      task_lock_contract: { task_id: "backup-restore-point-handoff-v0.1", prior_control_exposures: 0, prior_candidate_exposures: 0 },
+      control_source_contract: { source_commit: "5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2" },
+      candidate_source_contract: { source_commit: "5eaa26c9739a9e697f4707b06c31a32773706c16" },
+      decision_context_closure_contract: { shared_contained_carrier_budget: true, candidate_concise_evidence_inventory_required: true, candidate_target_dedicated_full_row_required: true },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.variant_id)).toEqual([
+      "omd-contained-carrier-budget-candidate",
+      "omd-decision-context-closure-candidate",
+      "omd-decision-context-closure-candidate",
+      "omd-contained-carrier-budget-candidate",
+      "omd-contained-carrier-budget-candidate",
+      "omd-decision-context-closure-candidate",
+    ]);
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

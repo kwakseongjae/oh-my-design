@@ -4484,3 +4484,7 @@
 - exact contained control5f78f1c5 vs decision candidate5eaa26c9를 Luna/high2×3으로 잠갔다.
 - isolated delta는 concise evidence inventory+target full-row/order/spatial gate다.
 - attempt45/TTT96173681+/unavailable6; 다음 executable matrix와 six untouched cells다.
+## 2026-08-05 (Codex) · 1.9.601 backup decision-context matrix lock
+- executable schema0.3, Luna/high2×3, order C/T/T/C/C/T를 고정했다.
+- shared contained-budget/proof/runner와 candidate-only evidence+target hierarchy gate를 잠갔다.
+- provider0; 다음 exact detached vendors와 six untouched cells preparation이다.

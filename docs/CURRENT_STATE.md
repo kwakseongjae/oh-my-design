@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `991f16ff` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.600 backup decision-context preregistration
+- 기준 커밋: `b4b5ab14` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.601 backup decision-context matrix lock
 
 ## 지금 (현재 위치)
+
+- 1.9.601은 executable schema0.3 matrix를 잠갔다. order control/candidate/candidate/control/control/candidate, Luna/high, timeout900, pacing120, no-retry다.
+- 양 arm 모두 shared contained-budget/proof/shipped-runner 계약을 적용하고 candidate만 concise evidence inventory와 target full-row/order/spatial gate를 요구한다. provider0다.
+- 다음은 `/private/tmp/u19601-vendors` exact detached sources와 `/private/tmp/u19601` six untouched cells preparation/equality attestation이다.
 
 - 1.9.600은 exact contained-budget control `5f78f1c5...` vs decision-context candidate `5eaa26c9...`를 pinned backup task에서 Luna/high2×3으로 provider0 사전등록했다.
 - isolated delta는 shared contained budget 대비 concise evidence inventory+dedicated target full-row/order/spatial gate다. 900s/120s/no-retry/concurrency1, 3/3 UI+proof+hierarchy다.
@@ -2893,8 +2897,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. executable matrix를 lock하고 exact detached vendors를 만든다.
-2. six untouched cells를 준비하고 core/prompt/starter/product/runtime/model/effort/timeout 동등성을 검증한다.
+1. `/private/tmp/u19601-vendors`에 exact detached clean control/candidate를 만든다.
+2. `/private/tmp/u19601` six untouched cells를 준비하고 equality attestation을 기록한다.
 3. runtime preflight 뒤 r1 control/candidate부터 순차 no-retry 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
