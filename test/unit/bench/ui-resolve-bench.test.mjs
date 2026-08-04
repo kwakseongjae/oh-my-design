@@ -4554,6 +4554,26 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("checkpoints the UI-resolved museum control while preserving its proof blind spot", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/museum-desktop-decision-context-luna-1.9.609/R1-CONTROL.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.613",
+      cell_id: "luna-museum-r1-control",
+      status: "CHECKPOINTED_VALID_CONTROL_UI_RESOLVED_PROOF_BLIND_SPOT",
+      validity: "valid",
+      retry_count: 0,
+      wall_time_ms: 373337,
+      provider_tokens: { comparison_total: 1062466 },
+      objective: { score: 85, max: 85, ui_resolved: true, responsive: true, accessibility: true, narrow_atomic_wraps: 0, actual_200pct_atomic_wraps: 0, desktop_target_action_spatially_separated: true },
+      proof: { analyzable: true, static_closure_count: 1, browser_mechanism_count: 1, browser_recovery_count: 0, shipped_runner_invoked: true, artifact_closed: true, execution_gate_pass: true, decision_context_required_flags: [false, false, false], desktop_final_decision_context_observed: false, nested_carrier_containment_attested: false },
+      implementation_observation: { target_carrier_is_dedicated: true, gallery_zone_outer_carrier_binds_all_protected_rows: true, nested_registered_gallery_carriers_authored: false, observable_ui_passes_despite_proof_blind_spot: true },
+      tokens_to_target: { observed_provider_tokens_minimum_after_cell: 102906624, usage_unavailable_cells: 6, goal_status: "right-censored" },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

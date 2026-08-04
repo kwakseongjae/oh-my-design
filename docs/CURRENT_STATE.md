@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `e77c3d8a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.612 museum desktop-context matrix prepared
+- 갱신: 2026-08-05 · 1.9.613 museum r1 control checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.613 r1 control은 valid85/85, UI-resolved, 373,337ms, 1,062,466 tokens다. responsive/a11y/design/evidence와 old proof gate가 모두 green이다.
+- 실제 구현은 dedicated target+outer gallery carrier로 올바르지만 old artifact의 decision required flags는 false×3, desktop final/nested containment attestation은 없다. proof blind spot을 숨기지 않는다.
+- 누적 TTT102,906,624+ / unavailable6. fixed120s pacing 뒤 untouched `luna-museum-r1-candidate` no-retry 단일 실행이다.
 
 - 1.9.612는 `/private/tmp/u19611-vendors` exact detached clean sources와 `/private/tmp/u19611` six untouched Luna/high cells를 준비했다.
 - prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이다. control은 desktop/nesting gate가 없고 missing default가 있으며 candidate는 반대다. provider0다.

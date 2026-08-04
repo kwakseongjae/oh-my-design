@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.613 museum r1 control
+- valid85/85, UI/proof green, 373337ms, 1062466 tokens다.
+- 구현은 올바르지만 old proof required=false×3, desktop/nesting attestation 없음도 기록했다.
+- TTT102906624+; fixed120s 뒤 untouched r1 candidate no-retry다.
+
 ## 2026-08-05 (Codex) · 1.9.612 museum matrix preparation
 - exact detached clean control/candidate와 six untouched Luna/high cells를 준비했다.
 - equality7종6/6, isolated desktop/nesting/default delta를 재확인했다.
