@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `536aa793` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.582 orbital task pin
+- 기준 커밋: `6607336a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.583 orbital carrier-inner prereg
 
 ## 지금 (현재 위치)
+
+- 1.9.583은 exact anchor control `a6ebdc8a…` vs exact carrier-inner candidate `853db7bf…`를 fresh orbital task에 Luna/high 2×3으로 provider-zero preregister했다.
+- 양 arm은 self-dispatch/anchor/aggregate/static/browser 계약이 같고 row feasibility budget만 document width vs measured bound-carrier content-box width로 다르다.
+- timeout900/pacing120/no-retry/R@3, attempt43, prior TTT84,725,753+다. 다음은 detached vendors와 six untouched cells preparation이다.
 
 - 1.9.582는 orbital sample task를 exact commit `536aa793…`, task tree `32800908…`, baseline summary `2e335440…`, score `bb82f178…`로 pin했다.
 - model/control/candidate exposure는 모두0이다. 다음은 exact historical anchor control vs carrier-inner candidate Reliability@3 preregistration이다.

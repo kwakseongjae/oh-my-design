@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.583 orbital carrier-inner prereg
+- exact `a6ebdc8a…` vs `853db7bf…`, Luna/high2×3을 provider0 고정했다.
+- isolated delta는 document width 대비 bound carrier content-box width feasibility다.
+- 900s/120s/no-retry/R@3; 다음 detached vendors+six cells다.
+
 ## 2026-08-04 (Codex) · 1.9.582 orbital task pin
 - exact commit `536aa793…`, task tree `32800908…`, baseline hashes로 task를 pin했다.
 - model/control/candidate exposure0이다.

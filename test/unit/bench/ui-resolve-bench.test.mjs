@@ -4011,6 +4011,46 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("preregisters carrier-inner fit on the unseen orbital sample task", () => {
+    const reportDir = join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/orbital-carrier-inner-fit-replacement-luna-1.9.583",
+    );
+    const prereg = JSON.parse(readFileSync(join(reportDir, "PREREGISTRATION.json"), "utf8"));
+    const matrix = JSON.parse(readFileSync(join(reportDir, "RUN-MATRIX.json"), "utf8"));
+    expect(prereg).toMatchObject({
+      product_version: "1.9.583",
+      status: "PREREGISTERED_PROVIDER_ZERO",
+      provider_calls: 0,
+      tokens_to_target: { attempt_order: 43, prior_observed_provider_tokens_minimum: 84725753 },
+      task: { id: "orbital-sample-return-custody-v0.1", source_commit: "536aa793d851d178827c4780bb8adccd98c1da65", model_exposures: 0 },
+      sources: {
+        control: { source_commit: "a6ebdc8a923538a997d2724f90a09e1eb63f46f2", row_fit_budget: "available_document_width_css_px" },
+        candidate: { source_commit: "853db7bfe0939e0c58b1c8d01e7d2348100a14c8", row_fit_budget: "available_carrier_inner_width_css_px" },
+      },
+      isolated_delta_contract: { shared_runner_self_dispatch: true, shared_snapshot_carrier_anchor_gate: true, causal_transfer_claim_requires_candidate_carrier_inner_plan_observed: true },
+      matrix: { model_id: "gpt-5.6-luna", effort: "high", scheduled_cells: 6, timeout_seconds: 900, inter_cell_delay_seconds: 120, retry_policy: "none-primary" },
+      promotion_gates: { candidate_ui_resolved_trials_required: 3, candidate_proof_compliant_trials_required: 3, candidate_carrier_inner_plan_trials_required: 3 },
+    });
+    expect(matrix).toMatchObject({
+      product_version: "1.9.583",
+      status: "locked-awaiting-fresh-preparation",
+      task_lock_contract: { task_id: "orbital-sample-return-custody-v0.1", prior_control_exposures: 0, prior_candidate_exposures: 0 },
+      control_source_contract: { source_commit: "a6ebdc8a923538a997d2724f90a09e1eb63f46f2" },
+      candidate_source_contract: { source_commit: "853db7bfe0939e0c58b1c8d01e7d2348100a14c8" },
+      carrier_inner_fit_contract: { candidate_required: true, control_required: false, multiple_instance_aggregation: "minimum" },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.variant_id)).toEqual([
+      "omd-pre-edit-carrier-anchor-candidate",
+      "omd-carrier-inner-fit-candidate",
+      "omd-carrier-inner-fit-candidate",
+      "omd-pre-edit-carrier-anchor-candidate",
+      "omd-pre-edit-carrier-anchor-candidate",
+      "omd-carrier-inner-fit-candidate",
+    ]);
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
