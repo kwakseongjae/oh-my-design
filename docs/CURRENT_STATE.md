@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `94746f40` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.603 backup r1 control checkpoint
+- 기준 커밋: `76da0d1b` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.604 backup matrix frozen
 
 ## 지금 (현재 위치)
+
+- 1.9.604 r1 candidate는 valid83/85, 514,958ms, 2,987,373 tokens다. concise evidence one-line transfer는 관찰됐지만 UI/proof는 red다.
+- desktop target/action separation은 여전히 false인데 runner가 comparison-scroll target을 required:false로 면제했고 desktop 조건도 proof에서 빠졌다. recovery-region carrier도 unresolved다.
+- candidate UI/proof/hierarchy 3/3 최대치가2로 내려가 remaining4를 untouched 동결했다. wall0.977× green, tokens1.113× red, 누적 TTT101,844,158+ / unavailable6이다.
+- 다음은 provider-free로 desktop-inclusive mandatory target hierarchy와 carrier closure semantics를 수리한다. 이 matrix는 재개하지 않는다.
 
 - 1.9.603 r1 control은 valid79/85, 526,814ms, 2,683,104 tokens다. a11y/overflow/evidence는 green이지만 responsive와 proof가 red다.
 - concise evidence가 320/actual200에서 각2줄이고 desktop target/action spatial separation이 false다. shipped runner는 썼으나 `review-controls` carrier unresolved1로 artifact가 open이다.
@@ -2905,9 +2910,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fixed120s pacing이 충족됐는지 execution state로 확인한다.
-2. untouched `luna-backup-r1-candidate`를 no-retry 한 번 실행한다.
-3. UI+proof+evidence+target hierarchy와 control 대비 time/token ratio를 기록한다.
+1. actual candidate artifact로 decision-context required:false와 recovery-region carrier unresolved 원인을 재현한다.
+2. runner/helper/skill을 provider-free로 fail-closed 수리하고 focused tests+artifact replay를 통과시킨다.
+3. exact source를 pin한 뒤 또 다른 unseen task에서 replacement matrix를 구성한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

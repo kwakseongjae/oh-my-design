@@ -4496,3 +4496,7 @@
 - valid79/85, 526814ms, 2683104 tokens; a11y/overflow/evidence green이다.
 - evidence 320/200pct wrap, desktop target/action separation false, review-controls carrier unresolved다.
 - no retry, 누적 TTT98856785+; 다음 fixed120s 뒤 r1 candidate다.
+## 2026-08-05 (Codex) · 1.9.604 backup matrix frozen
+- candidate83/85, 514958ms, 2987373 tokens; evidence one-line은 전이됐지만 UI/proof red다.
+- desktop target separation을 required:false로 면제했고 recovery-region carrier unresolved, token ratio1.113 red다.
+- remaining4 untouched freeze, 누적 TTT101844158+; 다음 provider-free proof/closure repair다.

@@ -4336,6 +4336,30 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes backup replacement after partial evidence transfer without UI or proof reliability", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/backup-decision-context-replacement-luna-1.9.600/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.604",
+      status: "FROZEN_PROMOTION_UNREACHABLE",
+      promotion: false,
+      provider_calls: 2,
+      completed_cells: 2,
+      r1: {
+        control: { score: 79, ui_resolved: false, proof_pass: false, tokens: 2683104 },
+        candidate: { score: 83, ui_resolved: false, proof_pass: false, tokens: 2987373 },
+      },
+      candidate_transfer_evidence: { concise_evidence_inventory_observed: true, concise_evidence_one_line_320: true, decision_context_required_flags: [false, false, false], artifact_closed: false },
+      candidate_failures: { desktop_target_action_spatial_separation: false, target_full_row_gate_was_required: false, target_full_row_gate_fail_closed: false, unresolved_carrier_id: "recovery-region-strip" },
+      promotion_reachability: { candidate_ui_resolved_observed: 0, maximum_reachable_ui_resolved_trials: 2, candidate_proof_compliant_observed: 0, maximum_reachable_proof_compliant_trials: 2, promotion_reachable: false },
+      paired_efficiency: { wall_time_gate: true, token_gate: false, causal_efficiency_claim_allowed: false },
+      tokens_to_target: { cumulative_observed_provider_tokens_minimum: 101844158, usage_unavailable_cells: 6, goal_status: "right-censored-open" },
+    });
+    expect(result.frozen_unstarted_cells).toHaveLength(4);
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
