@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.628 rail-signal plan-bootstrap preregistration
+- exact control0c4af927 vs candidate4ac756df를 rail-signal Luna/high2×3으로 provider0 prereg했다.
+- isolated delta는 atomic snapshot bootstrap+zero-attempt validation+pre-edit mutation gate다.
+- attempt48, prior TTT107050263+; 다음은 executable matrix lock이다.
+
 ## 2026-08-05 (Codex) · 1.9.627 rail-signal task pin
 - task commit e41f7daf/git tree02f724df/portable474d984e/score c3bf6115를 exact pin했다.
 - model/control/candidate exposure0, task mutation 금지다.

@@ -5086,6 +5086,69 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("preregisters the rail-signal plan-bootstrap replacement without provider exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/rail-signal-plan-bootstrap-luna-1.9.628/PREREGISTRATION.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.628",
+      experiment_id: "rail-signal-plan-bootstrap-luna-1.9.628",
+      status: "PREREGISTERED_PROVIDER_ZERO",
+      provider_calls: 0,
+      execution_purpose: "pre-edit-plan-self-bootstrap-transfer-reliability",
+      tokens_to_target: {
+        attempt_order: 48,
+        prior_observed_provider_tokens_minimum: 107050263,
+        prior_usage_unavailable_cells: 6,
+      },
+      task: {
+        id: "rail-signal-speed-restriction-release-v0.1",
+        source_commit: "e41f7daf89dde48e5aabd35af0c2961ec5a1eea8",
+        task_tree: "02f724df21e9da668ed8aea0014dc7a252a07219",
+        portable_task_tree_sha256: "474d984e11a7cc3d2496e63399f61ff12b75d45a136c3ddb80cd01ebf60d15e5",
+        baseline_score_sha256: "c3bf6115094ca92178b448c882ccca85f53ba1d158e947dd4558d06ac90e5b1f",
+        model_exposures: 0,
+      },
+      sources: {
+        control: {
+          variant_id: "omd-content-box-decision-context-candidate",
+          source_commit: "0c4af9273a19bbb7cdcf6a17ef2a58f3627f1419",
+        },
+        candidate: {
+          variant_id: "omd-plan-self-bootstrap-candidate",
+          source_commit: "4ac756df227d4f0cf42dc77d722819242d07d6b8",
+        },
+      },
+      isolated_delta_contract: {
+        shared_content_box_decision_context_formula: true,
+        candidate_bootstraps_missing_snapshot_before_navigation: true,
+        candidate_marks_pre_navigation_validation_as_zero_attempt: true,
+        candidate_requires_plan_close_and_guardrails_before_product_edit: true,
+        candidate_forbids_rerun_after_measured_or_infrastructure_attempt: true,
+        candidate_does_not_change_product_acceptance_or_task_prompt: true,
+      },
+      matrix: {
+        model_id: "gpt-5.6-luna",
+        effort: "high",
+        trials_per_arm: 3,
+        scheduled_cells: 6,
+        order: ["r1-control", "r1-candidate", "r2-candidate", "r2-control", "r3-control", "r3-candidate"],
+        timeout_seconds: 900,
+        max_concurrency: 1,
+        inter_cell_delay_seconds: 120,
+        retry_policy: "none-primary",
+      },
+      promotion_gates: {
+        candidate_ui_resolved_trials_required: 3,
+        candidate_proof_compliant_trials_required: 3,
+        candidate_measured_pre_edit_plan_trials_required: 3,
+        candidate_product_edit_before_plan_allowed: 0,
+        freeze_when_three_of_three_unreachable: true,
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
