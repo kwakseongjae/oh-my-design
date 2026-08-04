@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.637 cold-chain reconcile preregistration
+- plan-self-bootstrap control vs measured-plan-reconcile candidate Luna/high2×3을 provider0 사전등록했다.
+- isolated delta는 artifact-only reconcile+pre-edit mutation/static stamp enforcement다.
+- attempt49, prior TTT111241511+; 다음은 executable matrix lock이다.
+
 ## 2026-08-05 (Codex) · 1.9.636 cold-chain task exact pin
 - task commit8c0c0451, git tree47f3baec, portable treee3b30391, baseline score82b26b6d를 잠갔다.
 - model/control/candidate exposure0이며 이후 task mutation을 금지했다.

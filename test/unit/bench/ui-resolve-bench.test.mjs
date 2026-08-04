@@ -5534,6 +5534,57 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("preregisters the cold-chain measured-plan reconcile transfer without provider exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/cold-chain-plan-reconcile-luna-1.9.637/PREREGISTRATION.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.637",
+      experiment_id: "cold-chain-plan-reconcile-luna-1.9.637",
+      status: "PREREGISTERED_PROVIDER_ZERO",
+      provider_calls: 0,
+      execution_purpose: "measured-plan-reconcile-transfer-reliability",
+      tokens_to_target: {
+        attempt_order: 49,
+        prior_observed_provider_tokens_minimum: 111241511,
+        prior_usage_unavailable_cells: 6,
+      },
+      task: {
+        id: "cold-chain-excursion-disposition-v0.1",
+        source_commit: "8c0c0451994037cd751eb67245d48e3a03429f3b",
+        task_tree: "47f3baec2ddc8bbe9b4cdf845c9d0c4e86a78170",
+        model_exposures: 0,
+      },
+      sources: {
+        control: { variant_id: "omd-plan-self-bootstrap-candidate", source_commit: "4ac756df227d4f0cf42dc77d722819242d07d6b8" },
+        candidate: { variant_id: "omd-measured-plan-reconcile-candidate", source_commit: "e4b0c890ccdcc1e736cc70babcfbc1a5b72b7391" },
+      },
+      isolated_delta_contract: {
+        shared_atomic_snapshot_bootstrap: true,
+        shared_zero_attempt_pre_navigation_validation: true,
+        candidate_persists_measurement_before_semantic_close: true,
+        candidate_allows_artifact_only_plan_reconcile: true,
+        candidate_forbids_browser_rerun_after_measured_rejection: true,
+        candidate_rejects_product_mutation_before_successful_plan_close: true,
+        candidate_requires_plan_stamp_and_measured_plan_hash_for_static_close: true,
+      },
+      matrix: {
+        model_id: "gpt-5.6-luna",
+        effort: "high",
+        scheduled_cells: 6,
+        timeout_seconds: 900,
+        inter_cell_delay_seconds: 120,
+        retry_policy: "none-primary",
+      },
+      promotion_gates: {
+        candidate_ui_resolved_trials_required: 3,
+        candidate_proof_compliant_trials_required: 3,
+        candidate_successful_plan_close_trials_required: 3,
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
