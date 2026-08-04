@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `84329948` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.549 fit-strategy feasibility exact pin
+- 기준 커밋: `6ec873e1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.550 subsea valve intervention task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.550은 fresh `subsea-valve-intervention-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 valve/6 anomaly/2 intervention console과 register·console strip·decision carrier를 보존한다. untouched baseline75/85, narrow overflow685/755/1510px, target4+4/4+5/4+5줄, state2줄, contrast3.88이다.
+- task contract/state/design/evidence는 green, provider/task exposure0다. 다음은 exact 1.9.541 control vs 1.9.548 candidate Reliability@3 preregistration이다.
 
 - 1.9.549는 1.9.548을 exact commit `84329948…`, skill tree `4033a8f8…`, skill/helper/runner/test/report 해시로 pin했다.
 - 새 competitor는 `omd-fit-strategy-feasibility-candidate`, vendor dir `omd-1.9.548`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.

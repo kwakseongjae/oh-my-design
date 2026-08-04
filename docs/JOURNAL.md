@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.550 subsea task lock
+- fresh valve/anomaly/intervention-console task를 provider 노출0에서 잠갔다.
+- baseline75/85, narrow overflow685/755/1510px, contrast3.88; 다음 exact prereg다.
+
 ## 2026-08-04 (Codex) · 1.9.549 fit-strategy exact pin
 - 1.9.548을 exact commit/tree/artifact hashes와 `omd-1.9.548` vendor id로 고정했다.
 - provider0/promotion false; 다음은 genuinely unseen transfer task lock이다.
