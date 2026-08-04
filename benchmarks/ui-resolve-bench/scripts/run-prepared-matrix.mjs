@@ -137,7 +137,10 @@ export function preflightRuntimeEnvironment(
     const isolatedName = String(spec.env.BU_NAME ?? "").trim();
     const isolatedEndpoint = String(browserEnv.BU_CDP_URL ?? browserEnv.BU_CDP_WS ?? "").trim();
     const namedConnection = isolatedName
-      && new RegExp(`^\\s*${isolatedName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s+—\\s+active page:`, "mi").test(output);
+      && new RegExp(
+        `^\\s*${isolatedName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s+—\\s+active(?:\\s+page:\\s*.*)?\\s*$`,
+        "mi",
+      ).test(output);
     if (
       probe?.error
       || !daemonAlive

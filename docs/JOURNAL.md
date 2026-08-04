@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.576 browser active-line compat
+- exact named connection의 concise/legacy 출력 둘을 허용하고 wrong-name/zero/endpoint gates는 유지했다.
+- 첫 provider 셀 전 preflight stop이므로 spend0, six cells untouched다.
+
 ## 2026-08-04 (Codex) · Luna Max one-prompt plan v0.1
 - portable 7-arm Preview와 Harness Track을 분리하고 실행 전 attribution/source/task pin gates를 고정했다.
 - median+range 시간/토큰, all-run 공개, no-retry/no-manual-edit다; provider0.

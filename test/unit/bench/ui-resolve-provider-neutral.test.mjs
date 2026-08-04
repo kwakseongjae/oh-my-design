@@ -375,6 +375,20 @@ describe("provider-neutral prepared matrix contract", () => {
       status: "ready",
       sandbox: "external-workspace-openai-browser",
     });
+    expect(preflightRuntimeEnvironment(plan, {
+      browserProbe: () => ({
+        status: 0,
+        stdout: "[FAIL] chrome running — start chrome/edge\n[ok  ] daemon alive\n[ok  ] active browser connections — 1\n  bench-test — active",
+      }),
+      codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
+      browserEnv,
+    }).checks).toContainEqual({
+      runtime: "shared-host-policy",
+      resource: "browser-harness",
+      status: "ready",
+      sandbox: "external-workspace-openai-browser",
+      connection: "bench-test",
+    });
     expect(() => preflightRuntimeEnvironment(plan, {
       browserProbe: () => ({
         status: 0,
@@ -395,6 +409,14 @@ describe("provider-neutral prepared matrix contract", () => {
       browserProbe: () => ({
         status: 0,
         stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1\n  default — active page: private",
+      }),
+      codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
+      browserEnv,
+    })).toThrow("runtime-preflight-failure:isolated-browser-harness-not-ready");
+    expect(() => preflightRuntimeEnvironment(plan, {
+      browserProbe: () => ({
+        status: 0,
+        stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1\n  default — active",
       }),
       codexProbe: () => ({ status: 0, stderr: "Logged in using ChatGPT" }),
       browserEnv,
