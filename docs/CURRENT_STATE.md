@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `4a5cf11c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.552 subsea fit-strategy matrix preparation
+- 기준 커밋: `fb6aac1a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.553 subsea r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.553 Luna/high r1 control은 valid77/85, 547.996s, 1,572,472 tokens다. overflow/fragmentation/axe0이나 narrow clipping4+target emphasis red다.
+- 첫 plan을 `python3 runner`로 직접 실행해 `ensure_real_tab` undefined로 artifact를 infrastructure-error에 잠갔고, 이후 correct browser-harness도 pending이 아니어서 plan/static/browser proof가 open이다.
+- 무재시도 protocol failure로 보존, TTT71,628,250+ / unavailable6이다. 다음은 fixed pacing 뒤 r1 candidate다.
 
 - 1.9.552는 `/private/tmp/u19551-vendors` exact detached control/candidate와 `/private/tmp/u19551` six untouched cells를 준비했다.
 - equality6/6, product tree identical6, detached+clean2, candidate feasibility guardrail9/9와 identical runner를 확인했다. provider0다.

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.553 subsea r1 control
+- Luna/high control은 valid77/85, 547.996s/1,572,472 tokens; direct-python plan misuse로 artifact/proof open이다.
+- narrow clipping4+target emphasis red, TTT71,628,250+; 다음 fixed pacing 뒤 r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.552 subsea matrix preparation
 - exact detached control/candidate와 six untouched cells, equality6/6+guardrail9/9를 확인했다.
 - provider0; 다음 runtime/browser/auth preflight 뒤 r1 control이다.
