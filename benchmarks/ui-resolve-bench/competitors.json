@@ -929,6 +929,21 @@
       "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
       "activation": "Use the installed $omd:apply skill for this task."
     },
+    "omd-desktop-decision-context-candidate": {
+      "label": "oh-my-design apply skill with desktop-inclusive final decision-context and nested carrier closure",
+      "kind": "local-skill",
+      "vendor_dir": "omd-1.9.605",
+      "source_path": "skills/omd-apply",
+      "install_adapter": "omd-channel-name-v1",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-apply",
+      "declared_name": "omd:apply",
+      "commit": "e8a6f083f5cb278d18d1ab812b7d154a486a8c1b",
+      "license": "MIT",
+      "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
+      "activation": "Use the installed $omd:apply skill for this task."
+    },
     "omd-reflow-integrity-experimental": {
       "label": "oh-my-design apply skill + reflow integrity closure",
       "kind": "local-skill-experimental",

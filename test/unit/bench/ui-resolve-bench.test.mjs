@@ -4387,6 +4387,36 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the exact desktop-inclusive decision-context candidate before fresh model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/desktop-decision-context-pin-1.9.606/PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.606",
+      status: "PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      candidate: {
+        system_id: "omd-desktop-decision-context-candidate",
+        vendor_version: "omd-1.9.605",
+        source_commit: "e8a6f083f5cb278d18d1ab812b7d154a486a8c1b",
+        source_tree: "3a55a636947858bcb16a6416b00202b17ce21a0a",
+        skill_tree: "38eee231c7f2faaed855b8e671ee535f7691f155",
+      },
+      repair_contract: {
+        desktop_final_decision_context: true,
+        narrow_final_decision_context: true,
+        missing_final_observation_fails_closed: true,
+        nested_comparison_carrier_rejected_pre_edit: true,
+        contained_carrier_budget_retained: true,
+      },
+    });
+    expect(competitors.variants["omd-desktop-decision-context-candidate"]).toMatchObject({
+      vendor_dir: "omd-1.9.605",
+      commit: "e8a6f083f5cb278d18d1ab812b7d154a486a8c1b",
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `2162d03f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.605 desktop decision-context + nested-carrier repair green
+- 기준 커밋: `e8a6f083` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.606 desktop decision-context repair exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.606은 repair commit `e8a6f083...`, source tree `3a55a636...`, skill tree `38eee231...`를 exact pin했다.
+- 새 candidate는 `omd-desktop-decision-context-candidate`, vendor `omd-1.9.605`, provider0/promotion false다. 다음은 genuinely unseen task 생성·baseline이다.
 
 - 1.9.605 provider-free repair는 final product의 desktop1440+390+320+actual200%에서 target full-row/order/spatial separation을 필수 측정하며 missing proof를 더 이상 pass로 간주하지 않는다.
 - pre-edit plan은 comparison-scroll outer carrier 안의 nested registered carrier를 기록하고 edit 전에 거부한다. 기존 실패 artifact replay도 새 containment attestation 부재로 fail-closed했다.

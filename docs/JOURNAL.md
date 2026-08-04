@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.606 desktop decision-context source pin
+- repair commit e8a6f083/source tree3a55a636/skill tree38eee231을 exact pin했다.
+- candidate `omd-desktop-decision-context-candidate`, vendor1.9.605, provider0/promotion false다.
+- 다음 genuinely unseen decision-context task 생성·baseline이다.
+
 ## 2026-08-05 (Codex) · 1.9.605 desktop decision-context repair
 - final product의 desktop+narrow target hierarchy proof를 필수화하고 missing proof pass 기본값을 제거했다.
 - comparison-scroll 안 nested registered carrier를 pre-edit containment inventory로 거부한다.
