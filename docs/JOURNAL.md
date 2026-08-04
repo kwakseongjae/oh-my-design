@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.504 grid repro frozen + static guardrail repair
+- clean repro control/candidate 모두 85/85; candidate 0.8802× wall/0.6803× tokens이나 static proof가 red다.
+- `word-break: normal`도 forbidden pattern이라는 absence semantics를 lock stdout+skill에 고정, 4셀 frozen했다.
+- TTT 55,109,165+; 다음은 provider-free 검증과 fresh replay다.
+
 ## 2026-08-04 (Codex) · 1.9.503 grid r1 candidate + evaluator repair
 - candidate 85/85+proof pass, 312.356s/824,978 tokens; computed type·target-only carrier·unresolved0가 green이다.
 - snapshot contract를 legacy contract로 읽던 evaluator false negative를 provider/model/product mutation 없이 수리했다.

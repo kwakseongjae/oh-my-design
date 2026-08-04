@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.504",
+  "execution_root": "/private/tmp/u19503",
+  "cell_id": "luna-grid-r1-candidate",
+  "status": "VALID_UI_RESOLVED_PROOF_FAILED",
+  "objective": {"score":85,"max":85,"ui_resolved":true},
+  "efficiency": {
+    "wall_time_seconds":310.876,
+    "provider_tokens":771626,
+    "paired_wall_ratio":0.880154,
+    "paired_token_ratio":0.68032
+  },
+  "proof": {
+    "pass": false,
+    "product_edits": 2,
+    "static_closures": 1,
+    "browser_mechanisms": 1,
+    "browser_recovery": 0,
+    "static_closure_state": "failed",
+    "browser_attempts": 0,
+    "closure_state": "open"
+  },
+  "root_cause": "The product patch introduced word-break: normal even though the locked manifest forbade the presence of any word-break declaration. The exactly-once static closure failed; the model then removed the declaration but correctly did not retry the consumed proof budget.",
+  "reliability": {"observed":"0/1","maximum":"2/3","required":"3/3"}
+}

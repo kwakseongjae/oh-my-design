@@ -277,6 +277,27 @@ describe("compact reflow artifact helper", () => {
     });
   });
 
+  it("prints absence semantics for forbidden edit patterns at lock", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-lock-guardrails-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    writeFileSync(artifactPath, JSON.stringify(draft()));
+    writeFileSync(productPath, '<div data-id="fixture">required-fact</div>');
+
+    const stdout = execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "lock",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    const summary = JSON.parse(stdout);
+    expect(summary.static_edit_guardrails).toMatchObject({
+      forbidden_patterns: ["word-break\\s*:"],
+      forbidden_pattern_semantics: "absence-required-delete-matching-declaration",
+      neutral_values_still_forbidden: ["normal", "initial", "unset", "revert", "inherit"],
+    });
+  });
+
   it("closes honest unresolved accounting across expanded instance counts", () => {
     const locked = lockArtifact(draft());
     locked.browser_attempt = {

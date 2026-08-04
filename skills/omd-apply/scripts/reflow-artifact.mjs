@@ -655,6 +655,17 @@ function write(path, artifact) {
   writeFileSync(path, `${JSON.stringify(artifact, null, 2)}\n`, "utf8");
 }
 
+function staticEditGuardrails(artifact) {
+  return {
+    required_literals: artifact.static_closure_manifest.required_literals,
+    forbidden_literals: artifact.static_closure_manifest.forbidden_literals,
+    forbidden_patterns: artifact.static_closure_manifest.forbidden_patterns,
+    count_literals: artifact.static_closure_manifest.count_literals,
+    forbidden_pattern_semantics: "absence-required-delete-matching-declaration",
+    neutral_values_still_forbidden: ["normal", "initial", "unset", "revert", "inherit"],
+  };
+}
+
 function main() {
   const [command, rawPath, rawProductPath] = process.argv.slice(2);
   if (!command || !rawPath || !["lock", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
@@ -710,6 +721,7 @@ function main() {
     quality_pass: result.closure_manifest?.quality_pass ?? null,
     unresolved_known_failures: result.known_failure_closure?.unresolved ?? null,
     static_closure: result.static_closure,
+    static_edit_guardrails: command === "lock" ? staticEditGuardrails(result) : undefined,
   }));
   if (command === "static-close" && result.static_closure.state !== "passed") process.exitCode = 1;
   if (["finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) console.log(deliveryMarker(result));

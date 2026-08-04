@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `895a4917` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.503 grid r1 candidate + evaluator repair
+- 기준 커밋: `f6bc8fc0` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.504 grid repro frozen + static guardrail repair
 
 ## 지금 (현재 위치)
+
+- 1.9.504 clean repro는 control 85/85 353.206s/1,134,209 tokens, candidate 85/85 310.876s/771,626 tokens다.
+- candidate wall 0.8802×/token 0.6803×지만 patch에 `word-break: normal`을 넣어 exactly-once static close가 red; 수정 뒤 정직하게 retry하지 않아 proof fail이다.
+- candidate Reliability@3 최대 2/3이라 4셀 frozen, TTT 55,109,165+ / unavailable6이다.
+- provider-free repair는 lock stdout에 exact static edit guardrails와 forbidden CSS absence semantics를 노출하고 skill에 neutral-value 대체도 금지했다. 다음은 focused/broad 검증과 fresh replay다.
 
 - 1.9.503 r1 candidate는 valid UI-resolved+proof pass 85/85: 312.356s, 824,978 tokens다.
 - control 대비 wall 0.9959×, token 1.2803×이며 snapshot computed type(14/21.7/700, 18/27.9/700), target-only carrier, unresolved0가 green이다.
