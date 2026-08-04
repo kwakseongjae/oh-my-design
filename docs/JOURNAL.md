@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.508 rail matrix preparation
+- exact detached sources와 six untouched cells, equality6/6, product tree identical6을 준비했다.
+- shared runner6/6, candidate guardrail helper3/3, provider0이다. 다음은 r1 control no-retry다.
+
 ## 2026-08-04 (Codex) · 1.9.507 rail static-absence preregistration
 - exact 1.9.497 control vs 1.9.504 candidate를 fresh rail task에 Luna/high 2×3으로 잠갔다.
 - static absence guardrail·snapshot type·target-only carrier·shipped runner, provider/exposure0이다.
