@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.564 organ transport custody task lock
+- fresh organ container/custody scan/receiving bay task를 provider 노출0에서 잠갔다.
+- baseline75/85, narrow overflow685/755/1510px, target6+3/6+5/6+5줄, contrast3.81; 다음 exact prereg다.
+
 ## 2026-08-04 (Codex) · 1.9.563 runner self-dispatch exact pin
 - 1.9.562를 exact commit/source tree/skill tree/artifact hashes와 `omd-1.9.562` vendor id로 고정했다.
 - provider0/promotion false; 다음 genuinely unseen task lock이다.
