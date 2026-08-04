@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.562 runner self-dispatch repair
+- plain-Python runner 오용을 artifact access 전 exact browser-harness stdin으로 self-dispatch하도록 수리했다.
+- focused89+parity1+lint green, full582 pass/1 skip/기존3 red, provider0; 다음 exact pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.561 spent-fuel matrix freeze
 - candidate는 UI85/85, 443.875s/1,612,523 tokens이나 plain-Python plan runner 오용으로 proof red다.
 - target inventory는 exact lock; R@3 최대2/3으로 잔여4셀 frozen, TTT78,112,464+; 다음 runner self-dispatch repair다.

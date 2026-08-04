@@ -26,6 +26,35 @@ CONDITIONS = (
 )
 
 
+def dispatch_through_browser_harness_when_needed():
+    """Keep a mistaken plain-Python invocation on the one allowed browser path.
+
+    browser-harness evaluates this source with its helpers pre-imported. A model may
+    still invoke the visible .py file with Python despite the exact skill command;
+    in that case, re-exec the unchanged source through browser-harness before any
+    artifact is read or mutated. The latch prevents recursion if the executable is
+    broken or replaced by a non-conforming wrapper.
+    """
+    if "ensure_real_tab" in globals():
+        return
+    if os.environ.get("OMD_REFLOW_BROWSER_DISPATCHED") == "1":
+        raise RuntimeError("browser-harness did not provide its required helpers")
+    runner_source = Path(__file__).resolve()
+    env = dict(os.environ)
+    env["OMD_REFLOW_BROWSER_DISPATCHED"] = "1"
+    result = subprocess.run(
+        ["browser-harness"],
+        input=runner_source.read_text(),
+        text=True,
+        env=env,
+        check=False,
+    )
+    raise SystemExit(result.returncode)
+
+
+dispatch_through_browser_harness_when_needed()
+
+
 def required_path(name):
     value = os.environ.get(name)
     if not value:

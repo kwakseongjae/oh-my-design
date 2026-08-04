@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { execFileSync, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { chmodSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
@@ -228,6 +228,28 @@ describe("compact reflow artifact helper", () => {
     expect(runner).toContain('finalize_command = "finalize" if all_pass else "finalize-measured-unresolved"');
     expect(runner).toContain('["node", str(helper_path), finalize_command, str(artifact_path)]');
     expect(runner).not.toMatch(/chromium\.launch|launch_persistent_context|connect_over_cdp/u);
+  });
+
+  it("self-dispatches a mistaken plain-Python runner invocation before artifact access", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-browser-dispatch-"));
+    temporaryRoots.push(root);
+    const capturePath = join(root, "captured-runner.py");
+    const fakeHarness = join(root, "browser-harness");
+    writeFileSync(fakeHarness, `#!/bin/sh\ncat > "$OMD_REFLOW_DISPATCH_CAPTURE"\nexit 23\n`);
+    chmodSync(fakeHarness, 0o755);
+
+    const result = spawnSync("python3", [browserRunnerPath], {
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        PATH: `${root}:${process.env.PATH}`,
+        OMD_REFLOW_DISPATCH_CAPTURE: capturePath,
+      },
+    });
+
+    expect(result.status).toBe(23);
+    expect(result.stderr).toBe("");
+    expect(readFileSync(capturePath, "utf8")).toBe(readFileSync(browserRunnerPath, "utf8"));
   });
 
   it("accepts an exact named socket when the controller withholds the raw CDP endpoint", () => {
