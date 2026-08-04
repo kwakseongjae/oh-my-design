@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.643 complete diagnostic pin
+- repair commit/source tree/skill tree와 3-state diagnosis contract를 exact candidate로 고정했다.
+- provider0/promotion false; fresh unseen task 전 공개 우위 주장은 금지다.
+- 다음은 model-unseen task 생성·baseline이다.
+
 ## 2026-08-05 (Codex) · 1.9.642 deterministic reconcile diagnostic
 - plan-diagnose가 모든 measured carrier/row 충돌과 complete patch를 한 번에 non-mutating 반환한다.
 - frozen cold-chain replay는 nested carrier를 즉시 irreconcilable로 판정해 5회 추측 loop를 제거했다.

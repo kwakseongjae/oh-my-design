@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `a2562cc4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.642 deterministic reconcile diagnostic repair
+- 기준 커밋: `7df5be63` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.643 complete diagnostic candidate pin
 
 ## 지금 (현재 위치)
+
+- 1.9.643은 repair commit `7df5be63...`, source tree `40880b48...`, skill tree `c282458d...`를 `omd-complete-plan-diagnostic-candidate`로 exact pin했다.
+- provider0/promotion false이며 fresh transfer 전 공개 우위 주장은 금지다. 다음은 이 exact candidate에 노출되지 않은 genuinely unseen task 생성·baseline이다.
 
 - 1.9.642는 measured-plan semantic conflict를 한 건씩 throw하던 `plan-reconcile` 앞에 non-mutating `plan-diagnose`를 추가했다. 모든 충돌과 complete row patch를 한 번에 내며 `ready|patch-required|irreconcilable`로 판정한다.
 - frozen cold-chain artifact replay는 nested carrier 때문에 즉시 irreconcilable을 반환하면서 별도 compatible patch row도 함께 보고했다. 이전 5회 추측 loop 대신 product edit 전 한 번에 중단할 수 있다.

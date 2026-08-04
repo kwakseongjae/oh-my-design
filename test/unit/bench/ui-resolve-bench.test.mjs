@@ -5826,6 +5826,36 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the complete measured-plan diagnostic candidate without provider exposure", () => {
+    const pin = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/complete-plan-diagnostic-pin-1.9.643/PIN.json",
+    ), "utf8"));
+    const competitors = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/competitors.json"), "utf8"));
+    expect(pin).toMatchObject({
+      product_version: "1.9.643",
+      status: "PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      candidate: {
+        system_id: "omd-complete-plan-diagnostic-candidate",
+        vendor_version: "omd-1.9.642",
+        source_commit: "7df5be63beff5083265e0013f2f51f72e8c4bef9",
+        source_tree: "40880b482b3787502f67689a3bfa49b26c761426",
+        skill_tree: "c282458d0d9456780451050056a09fd800be54ef",
+      },
+      repair_contract: {
+        complete_non_mutating_diagnosis_available: true,
+        diagnosis_states: ["ready", "patch-required", "irreconcilable"],
+        plan_reconcile_requires_ready_diagnosis: true,
+      },
+    });
+    expect(competitors.variants["omd-complete-plan-diagnostic-candidate"]).toMatchObject({
+      vendor_dir: "omd-1.9.642",
+      commit: pin.candidate.source_commit,
+      declared_name: "omd:apply",
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
