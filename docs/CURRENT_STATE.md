@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `bd0d9309` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.637 cold-chain measured-plan reconcile preregistration
+- 기준 커밋: `cba54fa3` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.638 cold-chain executable matrix lock
 
 ## 지금 (현재 위치)
+
+- 1.9.638은 executable schema0.3 matrix를 잠갔다. order C/T/T/C/C/T, Luna/high, timeout900, pacing120, no-retry다.
+- 양 arm의 snapshot bootstrap/content-box/decision-context 계약은 같고 candidate만 measured-plan persist+artifact reconcile+pre-edit/static stamp enforcement가 다르다. provider0다.
+- 다음은 `/private/tmp/u19638-vendors` exact detached sources와 `/private/tmp/u19638` six untouched cells preparation/equality attestation이다.
 
 - 1.9.637은 exact plan-self-bootstrap control `4ac756df...` vs measured-plan-reconcile candidate `e4b0c890...`를 pinned cold-chain task에서 Luna/high2×3으로 provider0 사전등록했다.
 - isolated delta는 measured semantic-close 뒤 artifact-only reconcile, browser rerun 금지, pre-edit product hash, static-close stamp/hash enforcement다. 900s/120s/no-retry/concurrency1, UI/proof/plan 3/3다.
@@ -3036,8 +3040,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. executable order/equality/pacing/stop contract를 잠근다.
-2. exact detached clean control/candidate sources와 six untouched cells를 준비한다.
+1. exact detached clean control/candidate sources와 six untouched cells를 준비한다.
+2. prompt/starter/product/runtime/model/effort/timeout equality와 clean source를 attestation한다.
 3. 이후 Luna/high no-retry transfer를 실행하되 frozen rail-signal matrix는 재개하지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")

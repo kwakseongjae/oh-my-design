@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.638 cold-chain executable matrix lock
+- schema0.3 C/T/T/C/C/T, Luna/high, 900s/120s/no-retry matrix를 잠갔다.
+- shared snapshot/content-box 계약 대비 measured reconcile+mutation/static stamp delta만 유지했다.
+- provider0; 다음은 exact detached sources와 six untouched cells 준비다.
+
 ## 2026-08-05 (Codex) · 1.9.637 cold-chain reconcile preregistration
 - plan-self-bootstrap control vs measured-plan-reconcile candidate Luna/high2×3을 provider0 사전등록했다.
 - isolated delta는 artifact-only reconcile+pre-edit mutation/static stamp enforcement다.

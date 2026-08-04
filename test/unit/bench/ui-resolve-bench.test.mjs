@@ -5585,6 +5585,55 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("locks a valid executable cold-chain measured-plan reconcile matrix", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/cold-chain-plan-reconcile-luna-1.9.637/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(() => validateRunMatrixPlan(matrix)).not.toThrow();
+    expect(matrix).toMatchObject({
+      schema_version: "0.3",
+      product_version: "1.9.638",
+      status: "locked-awaiting-fresh-preparation",
+      task_lock_contract: {
+        task_id: "cold-chain-excursion-disposition-v0.1",
+        source_commit: "8c0c0451994037cd751eb67245d48e3a03429f3b",
+        prior_control_exposures: 0,
+        prior_candidate_exposures: 0,
+      },
+      control_source_contract: {
+        variant_id: "omd-plan-self-bootstrap-candidate",
+        source_commit: "4ac756df227d4f0cf42dc77d722819242d07d6b8",
+        measured_close: "no-deterministic-reconcile-after-semantic-close-rejection",
+      },
+      candidate_source_contract: {
+        variant_id: "omd-measured-plan-reconcile-candidate",
+        source_commit: "e4b0c890ccdcc1e736cc70babcfbc1a5b72b7391",
+        measured_close: "artifact-only-reconcile-with-pre-edit-hash-and-plan-stamp",
+      },
+      measured_reconcile_contract: {
+        shared_missing_snapshot_bootstrapped_before_navigation: true,
+        shared_pre_navigation_validation_attempt_count: 0,
+        candidate_persists_measurement_before_semantic_close: true,
+        candidate_plan_reconcile_is_artifact_only: true,
+        candidate_measured_browser_rerun_allowed: false,
+        candidate_product_edit_before_plan_close_allowed: false,
+        candidate_static_close_requires_plan_stamp_and_measured_hash: true,
+      },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.id)).toEqual([
+      "luna-cold-r1-control",
+      "luna-cold-r1-candidate",
+      "luna-cold-r2-candidate",
+      "luna-cold-r2-control",
+      "luna-cold-r3-control",
+      "luna-cold-r3-candidate",
+    ]);
+    expect(matrix.cells.filter((cell) => cell.variant_id === "omd-plan-self-bootstrap-candidate")).toHaveLength(3);
+    expect(matrix.cells.filter((cell) => cell.variant_id === "omd-measured-plan-reconcile-candidate")).toHaveLength(3);
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
