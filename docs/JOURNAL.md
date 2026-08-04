@@ -4476,3 +4476,7 @@
 - model-unseen backup restore task를 provider 노출 전에 author/evaluate했다.
 - baseline75/85, narrow widths1115/1115/2230, fragments2, wraps2, contrast2.73이다.
 - task tree b49d193c/score2e5e0451, exposure0; 다음 exact source pin이다.
+## 2026-08-05 (Codex) · 1.9.599 backup restore task pin
+- task commit84b54559/tree75925301/portable b49d193c/score2e5e0451를 exact pin했다.
+- model/control/candidate exposure0이며 task mutation을 금지했다.
+- 다음 contained-budget control vs decision-context candidate Luna/high2×3 preregistration이다.

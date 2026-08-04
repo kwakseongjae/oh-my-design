@@ -4212,6 +4212,25 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the backup restore task before model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/backup-restore-task-pin-1.9.599/TASK-PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.599",
+      status: "TASK_PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      model_exposures: 0,
+      task_id: "backup-restore-point-handoff-v0.1",
+      source_commit: "84b54559fbbde15f5cf78004139113fcd292046c",
+      task_git_tree: "759253016aabbdc1f0996fcc668325d358a59539",
+      portable_task_tree_sha256: "b49d193cf699de2be1cb1e615223f5c5c360653ad1ccfac6e30e81d3bfbe6d96",
+      baseline_score_sha256: "2e5e0451f5a4f48e5e14e99b2f2813808b691b89324fc0d0e09b718898a94838",
+      freshness_contract: { model_seen: false, control_seen: false, candidate_seen: false, task_mutation_after_pin_allowed: false },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
