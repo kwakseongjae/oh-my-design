@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.549 fit-strategy exact pin
+- 1.9.548을 exact commit/tree/artifact hashes와 `omd-1.9.548` vendor id로 고정했다.
+- provider0/promotion false; 다음은 genuinely unseen transfer task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.548 fit-strategy feasibility repair
 - plan-close가 intrinsic+16px/document width로 stack 불가능 row를 비교 scroll 계약에 강제 결박한다.
 - shared carrier는 passive identifier만 허용; focused46/46+lint green, provider0/frozen matrix 유지다.

@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `cce573b2` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.548 measured fit-strategy feasibility repair
+- 기준 커밋: `84329948` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.549 fit-strategy feasibility exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.549는 1.9.548을 exact commit `84329948…`, skill tree `4033a8f8…`, skill/helper/runner/test/report 해시로 pin했다.
+- 새 competitor는 `omd-fit-strategy-feasibility-candidate`, vendor dir `omd-1.9.548`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
 
 - 1.9.548 provider-free repair는 row intrinsic+16px가 available document width를 넘으면 `plan-close`에서 `comparison-scroll` 선언을 강제한다.
 - decision target은 target-only를 유지하고, shared 관계 carrier는 passive identifier만 허용해 register 의미는 보존하면서 state/action 혼입을 차단한다.
