@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.523 wafer r1 control
+- 갱신: 2026-08-04 · 1.9.524 wafer acceptance-debt transfer freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.524 r1 candidate는 objective 85/85지만 proof fail: 470.382s, 1,757,491 tokens, control 대비 wall1.1081×/token1.7587×다.
+- overflow/clipping/axe는 전 조건 green이고 contrast debt도 닫혔지만 metrology packet reserve가 320=4.5625px, actual200=12.0664px라 browser debt2가 unresolved다.
+- proof Reliability@3 최대2/3이고 효율 gate도 초과해 잔여4셀을 frozen했다. TTT60,390,306+ / unavailable6. 다음은 provider-free measured pre-edit fit-plan repair다.
 
 - 1.9.523 Luna/high r1 control은 valid 81/85 unresolved: 424.499s, 999,293 tokens다.
 - contrast는 green이고 390px도 overflow0이지만 320/actual200에 27/53px overflow와 clipped control1씩, target reserve -56.73/-49.23px가 남았다.
@@ -2592,9 +2596,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fixed 120s pacing 뒤 `luna-wafer-r1-candidate`를 Luna/high 900s no-retry로 실행한다.
-2. pair 결과로 Reliability@3 continuation 또는 mathematical freeze를 결정한다.
-3. 새 root cause면 provider-free repair, 아니면 preregistered continuation을 수행한다.
+1. pre-edit measured width budget과 16px plan margin을 artifact lock에 기계적으로 결박한다.
+2. focused/broad regression으로 기존 proof semantics를 보존한다.
+3. exact pin 뒤 fresh unseen task에서 Reliability@3를 다시 사전등록한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.524",
+  "experiment_id": "wafer-acceptance-debt-luna-1.9.521",
+  "status": "FROZEN_NO_PROMOTION",
+  "provider_calls": 2,
+  "scheduled_cells": 6,
+  "completed_cells": 2,
+  "frozen_cells": 4,
+  "arms": {
+    "control": {
+      "completed": 1,
+      "ui_resolved": 0,
+      "proof_compliant": 0,
+      "reliability_at_3_max": "2/3",
+      "objective_score": 81,
+      "wall_time_seconds": 424.499,
+      "provider_tokens": 999293
+    },
+    "candidate": {
+      "completed": 1,
+      "ui_resolved": 1,
+      "proof_compliant": 0,
+      "proof_reliability_at_3_max": "2/3",
+      "objective_score": 85,
+      "wall_time_seconds": 470.382,
+      "provider_tokens": 1757491,
+      "wall_ratio_to_control": 1.108087416,
+      "token_ratio_to_control": 1.7587344252
+    }
+  },
+  "acceptance_debt_transfer": {
+    "ledger_executed": true,
+    "contrast_debt_closed": true,
+    "unresolved_debt_blocked_delivery": true,
+    "planned_16px_margin_proven": false,
+    "promotion_conclusion": "not established because the candidate failed independent inline-reserve proof and exceeded both preregistered efficiency ratios"
+  },
+  "promotion": false,
+  "freeze_reason": "Candidate trial 1 failed proof compliance. Proof-compliant Reliability@3 cannot reach the preregistered 3/3 threshold, so four additional provider calls cannot restore eligibility.",
+  "tokens_to_target_observed_minimum": 60390306,
+  "tokens_to_target_usage_unavailable_cells": 6
+}
