@@ -5677,6 +5677,60 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("checkpoints the cold-chain r1 control as UI green but proof red", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/cold-chain-plan-reconcile-luna-1.9.637/R1-CONTROL.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.640",
+      status: "CHECKPOINT_1_CONTROL_COMPLETE_PROOF_RED",
+      provider_calls: 1,
+      completed_cells: 1,
+      cell: {
+        id: "luna-cold-r1-control",
+        validity: "valid",
+        run_status: "complete",
+        objective_score: 85,
+        objective_max: 85,
+        ui_resolved: true,
+      },
+      efficiency: {
+        wall_time_ms: 837070,
+        provider_tokens: 4623570,
+        input_tokens: 4586988,
+        cached_input_tokens: 4451840,
+        output_tokens: 36582,
+        reasoning_output_tokens: 15171,
+      },
+      pre_edit_plan: {
+        plan_runner_invocations: 11,
+        zero_attempt_validation_markers: 9,
+        measured_plan_attempts: 1,
+        measured_plan_close_rejections: 1,
+        successful_plan_closes: 0,
+        product_edit_before_successful_plan_close: true,
+        artifact_only_reconcile_available: false,
+      },
+      proof: {
+        analyzable: true,
+        product_edit_count: 1,
+        static_commands: 1,
+        static_closure_state: "open",
+        final_browser_commands: 0,
+        browser_attempts: 0,
+        shipped_runner_invoked: false,
+        artifact_closed: false,
+        execution_gate_pass: false,
+      },
+      tokens_to_target: {
+        observed_provider_tokens_minimum_after_cell: 115865081,
+        usage_unavailable_cells: 6,
+        goal_status: "right-censored-open",
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

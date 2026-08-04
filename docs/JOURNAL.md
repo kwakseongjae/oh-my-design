@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.640 cold-chain r1 control checkpoint
+- r1 control valid85/85, UI green, 837070ms/4623570 tokens지만 proof red다.
+- measured close rejection 뒤 제품 edit, successful plan0/static open/final browser0/shipped runner0다.
+- TTT115865081+; fixed120s 뒤 untouched r1 candidate다.
+
 ## 2026-08-05 (Codex) · 1.9.639 cold-chain exact-cell preparation
 - exact detached clean control/candidate와 six untouched Luna/high cells를 준비했다.
 - prompt/starter/product/runtime/model/effort/timeout equality6/6, provider0다.
