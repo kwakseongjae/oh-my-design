@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7dffde41` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.546 offshore r1 aggregate control
+- 갱신: 2026-08-04 · 1.9.547 offshore checklist transfer freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.547 r1 candidate는 valid83/85, 430.143s/1,329,206 tokens, control 대비 wall0.8211×/token0.6126×다.
+- structured checklist/static1은 green이나 intrinsic+reserve가 document보다 큰 identifier3그룹을 `stack`으로 선언하고 CSS는 local scroll을 써 전략 불일치로 artifact unresolved다. desktop action gap도 red다.
+- candidate proof R@3 최대2/3이라 잔여4셀 frozen, TTT70,055,778+ / unavailable6이다. 다음은 provider-free fit-strategy feasibility gate다.
 
 - 1.9.546 Luna/high r1 aggregate control은 valid83/85, 523.863s, 2,169,742 tokens다.
 - 모든 viewport overflow/fragmentation/clipping/axe는0이나 desktop action separation이 red다. register/desk에 horizontal scroll을 써 identifier 3그룹의 inline reserve가 부족해 artifact unresolved/proof fail이다.

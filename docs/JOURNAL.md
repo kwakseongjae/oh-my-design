@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.547 offshore transfer freeze
+- candidate83/85, 430.143s/1,329,206 tokens; checklist/static은 green이나 stack↔local-scroll 전략 불일치로 proof red다.
+- R@3 최대2/3, 잔여4셀 frozen, TTT70,055,778+; 다음 fit-strategy feasibility repair다.
+
 ## 2026-08-04 (Codex) · 1.9.546 offshore r1 control
 - Luna/high control은 valid83/85, 523.863s/2,169,742 tokens; narrow surface checks는 green이다.
 - inline reserve3그룹+desktop action gap red로 proof fail, TTT68,726,572+; 다음 r1 candidate다.
