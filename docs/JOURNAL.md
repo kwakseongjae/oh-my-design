@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.535 pharmaceutical task lock
+- fresh batch-deviation task를 provider 전 lock; 4 batch/6 deviation/2 desk와 세 carrier를 보존했다.
+- baseline75/85, overflow665/735/1470, target3+3줄/state2줄/contrast3.88, provider0다.
+
 ## 2026-08-04 (Codex) · 1.9.534 aggregate carrier fit-plan pin
 - 1.9.533을 exact commit `0b93fa97…`/skill tree `50037b94…`와 artifact hashes로 고정했다.
 - candidate `omd-aggregate-carrier-fit-plan-candidate`, vendor `omd-1.9.533`, provider0/promotion false다.

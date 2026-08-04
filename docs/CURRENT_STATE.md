@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.534 aggregate carrier fit-plan exact pin
+- 갱신: 2026-08-04 · 1.9.535 pharmaceutical batch-deviation task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.535는 fresh `pharmaceutical-batch-deviation-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 manufacturing batch/6 deviation record/2 quality desk와 ledger·desk strip·disposition decision 세 carrier를 보존한다. untouched baseline 75/85, narrow overflow665/735/1470px, target3+3줄, state2줄, contrast3.88이다.
+- task contract/state/design/evidence는 green, provider/task exposure0다. 다음은 exact 1.9.525 control vs exact 1.9.533 candidate Reliability@3 preregistration이다.
 
 - 1.9.534는 1.9.533 repair를 exact commit `0b93fa97…`, skill tree `50037b94…`, skill/helper/runner/test/report hashes로 pin했다.
 - 새 competitor는 `omd-aggregate-carrier-fit-plan-candidate`, vendor dir `omd-1.9.533`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
@@ -2634,9 +2638,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. provider/candidate에 노출되지 않은 fresh unseen task를 lock한다.
-2. exact row-only control vs aggregate-carrier candidate Reliability@3를 사전등록한다.
-3. detached vendors와 untouched cells를 준비한 뒤 runtime preflight로 간다.
+1. exact row-only control vs aggregate-carrier candidate Reliability@3를 사전등록한다.
+2. detached vendors와 untouched cells를 준비한다.
+3. runtime/browser/provider preflight 뒤 preregistered 첫 control cell로 간다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
