@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `28f96200` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.543 offshore turbine inspection task lock
+- 기준 커밋: `7dffde41` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.544 offshore first-edit checklist preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.544는 exact 1.9.533 aggregate control `0b93fa97…` vs exact 1.9.541 checklist candidate `28f96200…`를 fresh offshore task에 Luna/high 2×3으로 사전등록했다.
+- 양 arm은 aggregate plan/browser/static budget이 같고 candidate만 structured CSS+ordered first-edit checklist를 추가한다. timeout900/pacing120/no-retry/Reliability@3다.
+- attempt38, prior TTT66,556,830+ / unavailable6, provider0다. 다음은 exact detached vendors와 six untouched cells preparation이다.
 
 - 1.9.543은 fresh `offshore-turbine-inspection-review-v0.1`을 provider/candidate 노출 전에 lock했다.
 - 4 turbine/6 finding/2 engineering desk와 register·desk strip·maintenance decision 세 carrier를 보존한다. untouched baseline75/85, narrow overflow685/755/1510px, target4/4·5/6·5/6줄, state2줄, contrast3.88이다.

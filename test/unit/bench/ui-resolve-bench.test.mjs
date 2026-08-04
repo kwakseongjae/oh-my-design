@@ -3091,6 +3091,50 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]);
   });
 
+  it("preregisters exact structured first-edit closure on the unseen offshore task", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/offshore-first-edit-checklist-luna-1.9.544/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(matrix).toMatchObject({
+      product_version: "1.9.544",
+      status: "locked-awaiting-fresh-preparation",
+      task_lock_contract: {
+        task_id: "offshore-turbine-inspection-review-v0.1",
+        source_commit: "7dffde417a5abe54ca9c605925097bddd8b21d6d",
+        prior_control_exposures: 0,
+        prior_candidate_exposures: 0,
+      },
+      control_source_contract: { source_commit: "0b93fa971c5d4e086b2645f2de9dd09fe1b365fe" },
+      candidate_source_contract: { source_commit: "28f9620035fc1adae32b17965a7f51312c3ca2f5" },
+      aggregate_carrier_fit_plan_contract: { both_arms_required: true },
+      first_edit_static_checklist_contract: {
+        candidate_required: true,
+        control_required: false,
+        structured_css_declarations_required: true,
+        safe_zero_containment_reset_allowed: true,
+        ordered_checklist_required: true,
+        red_static_close_terminal: true,
+      },
+      promotion_gates: {
+        candidate_system_id: "luna-first-edit-static-checklist-candidate",
+        ui_resolved_trials_required: 3,
+        proof_compliant_trials_required: 3,
+        aggregate_carrier_fit_plan_trials_required: 3,
+        first_edit_static_checklist_trials_required: 3,
+      },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.system_id)).toEqual([
+      "luna-aggregate-carrier-fit-plan-control",
+      "luna-first-edit-static-checklist-candidate",
+      "luna-first-edit-static-checklist-candidate",
+      "luna-aggregate-carrier-fit-plan-control",
+      "luna-aggregate-carrier-fit-plan-control",
+      "luna-first-edit-static-checklist-candidate",
+    ]);
+  });
+
   it("attests six equal observatory cells and two exact detached skill sources", () => {
     const preparation = JSON.parse(readFileSync(join(
       repoRoot,

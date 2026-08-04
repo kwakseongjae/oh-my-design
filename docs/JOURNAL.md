@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.544 offshore checklist prereg
+- exact 1.9.533 control vs 1.9.541 candidate를 Luna/high 2×3, timeout900/pacing120/no-retry로 고정했다.
+- attempt38/TTT66,556,830+/provider0; 다음 detached vendors+six cells다.
+
 ## 2026-08-04 (Codex) · 1.9.543 offshore turbine task lock
 - fresh turbine/finding/engineering-desk task를 provider 노출0에서 잠갔다.
 - baseline75/85, narrow overflow685/755/1510px, contrast3.88; 다음 exact prereg다.
