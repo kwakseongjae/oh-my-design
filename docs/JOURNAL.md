@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.534 aggregate carrier fit-plan pin
+- 1.9.533을 exact commit `0b93fa97…`/skill tree `50037b94…`와 artifact hashes로 고정했다.
+- candidate `omd-aggregate-carrier-fit-plan-candidate`, vendor `omd-1.9.533`, provider0/promotion false다.
+
 ## 2026-08-04 (Codex) · 1.9.533 aggregate carrier fit-plan repair
 - row exact-one carrier binding과 max-content aggregate plan을 추가해 sibling/control/chrome/gap 누락을 차단했다.
 - live smoke는 row52.55px 대 carrier478.93px를 분리해 세 조건 reflow를 선판정; focused45 green, provider0다.

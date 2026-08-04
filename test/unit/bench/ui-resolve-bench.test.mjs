@@ -1440,6 +1440,40 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(candidate.commit).not.toBe(previous.commit);
   });
 
+  it("pins aggregate carrier planning separately from row-only measured planning", () => {
+    const previous = competitors.variants["omd-measured-pre-edit-fit-plan-candidate"];
+    const candidate = competitors.variants["omd-aggregate-carrier-fit-plan-candidate"];
+    const pin = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/aggregate-carrier-fit-plan-pin-1.9.534/PIN.json",
+    ), "utf8"));
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.533",
+      source_path: "skills/omd-apply",
+      install_adapter: previous.install_adapter,
+      install_root: previous.install_root,
+      install_dir: previous.install_dir,
+      declared_name: "omd:apply",
+      commit: "0b93fa971c5d4e086b2645f2de9dd09fe1b365fe",
+      activation: previous.activation,
+    });
+    expect(candidate.commit).not.toBe(previous.commit);
+    expect(pin).toMatchObject({
+      product_version: "1.9.534",
+      source_commit: candidate.commit,
+      skill_tree: "50037b947ba4f704ef45395aa948777f9d7e7992",
+      status: "PINNED",
+      provider_calls: 0,
+      quality_promotion: false,
+      competitor: {
+        id: "omd-aggregate-carrier-fit-plan-candidate",
+        vendor_directory: "omd-1.9.533",
+        exact_source_required: true,
+      },
+    });
+  });
+
   it("locks an unseen spatial aircraft load-plan family before runtime artifact validation", () => {
     const task = JSON.parse(readFileSync(join(
       repoRoot,
