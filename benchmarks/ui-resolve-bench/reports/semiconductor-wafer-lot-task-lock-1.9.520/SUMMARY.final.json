@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.520",
+  "experiment_id": "semiconductor-wafer-lot-task-lock-1.9.520",
+  "status": "TASK_LOCKED_BEFORE_PROVIDER",
+  "provider_calls": 0,
+  "candidate_task_exposure": 0,
+  "promotion": false,
+  "task": {
+    "id": "semiconductor-wafer-lot-review-v0.1",
+    "version": "0.1.0",
+    "domain": "semiconductor wafer-lot review",
+    "registered_wafer_lots": 4,
+    "registered_metrology_packets": 6,
+    "registered_inspection_stations": 2,
+    "relationship_carriers": [
+      "wafer-lot-manifest",
+      "inspection-station-strip",
+      "lot-disposition-decision"
+    ]
+  },
+  "untouched_baseline": {
+    "objective_score": 75,
+    "objective_max": 85,
+    "desktop_overflow_px": 0,
+    "mobile_overflow_px": 635,
+    "narrow_320_overflow_px": 705,
+    "actual_200pct_overflow_px": 1410,
+    "compound_target_fragment_lines": {
+      "mobile": 5,
+      "narrow_320": 6,
+      "actual_200pct": 6
+    },
+    "state_fragment_lines": {
+      "mobile": 2,
+      "narrow_320": 2,
+      "actual_200pct": 2
+    },
+    "muted_contrast_ratio": 4.1,
+    "serious_or_critical_axe_violations": 1,
+    "passive_protected_text_scroll_containers": 0
+  },
+  "contract_validation": {
+    "task_contract": true,
+    "state_journey": true,
+    "design_grounding": true,
+    "evidence_honesty": true,
+    "responsive_intentionally_red": true,
+    "accessibility_intentionally_red": true
+  },
+  "next": "Preregister an exact historical selector-provenance control versus exact omd-1.9.518 candidate on Luna/high Reliability@3 before preparing any provider workspace."
+}

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.520 semiconductor wafer-lot task lock
+- fresh 4 lot/6 packet/2 station task를 provider/candidate 전에 잠갔다.
+- baseline75/85, narrow overflow635/705/1410px·target5/6/6줄·contrast4.1, provider0다.
+
 ## 2026-08-04 (Codex) · 1.9.519 acceptance-debt exact pin
 - 1.9.518을 commit/tree/helper/test hash와 `omd-1.9.518` competitor로 고정했다.
 - provider0/promotion false다. 다음은 genuinely unseen task lock이다.

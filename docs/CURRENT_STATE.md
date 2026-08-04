@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.519 acceptance-debt + fit-margin immutable pin
+- 갱신: 2026-08-04 · 1.9.520 semiconductor wafer-lot unseen task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.520은 fresh `semiconductor-wafer-lot-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 wafer lot/6 metrology packet/2 inspection station과 manifest·station strip·disposition decision 세 carrier, exact behavior/fact boundary를 보존한다.
+- untouched baseline 75/85: 390/320/actual200 overflow635/705/1410px, target5/6/6줄, state2줄, contrast4.1이다. provider/task exposure0. 다음은 exact control/candidate preregistration이다.
 
 - 1.9.519는 1.9.518 수리를 exact commit `8d647987…`, skill tree `dc065afc…`, skill/helper/test hash로 pin했다.
 - 새 competitor는 `omd-acceptance-debt-fit-margin-candidate`, vendor dir `omd-1.9.518`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
@@ -2576,9 +2580,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. genuinely unseen task를 provider 전에 lock하고 untouched baseline을 측정한다.
-2. exact historical control/candidate Reliability@3를 사전등록한다.
-3. detached vendors와 fresh six cells를 준비하고 equality/preflight를 증명한다.
+1. exact 1.9.511 control과 exact 1.9.518 candidate를 Luna/high Reliability@3 2×3으로 사전등록한다.
+2. detached vendors와 fresh six cells를 준비하고 equality/preflight를 증명한다.
+3. runtime browser/CLI/auth preflight 뒤 r1 control을 no-retry로 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
