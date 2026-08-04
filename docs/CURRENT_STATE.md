@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `ef0b9630` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.584 orbital matrix preparation
+- 기준 커밋: `c45acda6` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.585 orbital r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.585 r1 control은 valid83/85, 408,701ms, 1,594,744 tokens다. narrow/actual200/contrast/a11y는 green이고 desktop action separation 하나만 red다.
+- proof는 edit1/static1/browser1/recovery0/duplicate0/closed로 green이다. 누적 TTT86,320,497+ / unavailable6.
+- 다음은 fixed 120s pacing 뒤 untouched r1 candidate no-retry다.
 
 - 1.9.584는 `/private/tmp/u19583-vendors` exact detached control/candidate와 `/private/tmp/u19583` six untouched cells를 준비했다.
 - equality6/6, product tree identical6, detached+clean2다. shared self-dispatch/anchor/aggregate gates와 candidate-only carrier-inner field/formula를 확인했다. provider0.

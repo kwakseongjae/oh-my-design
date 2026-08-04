@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.585 orbital r1 control
+- valid83/85, 408.701s, 1,594,744 tokens; desktop action gap만 red다.
+- narrow/actual200/a11y/proof는 green, edit1/static1/browser1/closed다.
+- TTT86,320,497+; 다음 120s pacing 뒤 r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.584 orbital matrix preparation
 - exact detached control/candidate와 six untouched Luna/high cells를 준비했다.
 - equality6/6, shared gates와 candidate-only carrier-inner delta를 확인했다.

@@ -4071,6 +4071,24 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("records the orbital carrier-inner r1 control as proof-green and UI-partial", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/orbital-carrier-inner-fit-replacement-luna-1.9.583/R1-CONTROL.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.585",
+      cell_id: "luna-orbital-sample-r1-control",
+      status: "CHECKPOINTED_VALID_CONTROL_PARTIAL",
+      validity: "valid",
+      wall_time_ms: 408701,
+      provider_tokens: { comparison_total: 1594744 },
+      objective: { score: 83, max: 85, ui_resolved: false, responsive: false, narrow_conditions_pass: true, accessibility: true, serious_or_critical_axe_nodes: 0 },
+      proof: { analyzable: true, static_closure_count: 1, browser_mechanism_count: 1, browser_recovery_count: 0, duplicate_static_closure_count: 0, shipped_runner_invoked: true, artifact_closed: true, execution_gate_pass: true },
+      tokens_to_target: { observed_provider_tokens_minimum_after_cell: 86320497, goal_status: "right-censored" },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
